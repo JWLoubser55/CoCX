@@ -295,7 +295,7 @@ public class Combat extends BaseContent {
     internal function applyAutocast0():void {
         outputText("\n\n");
         if (flags[kFLAGS.AUTO_FLIGHT] > 0 && !player.hasStatusEffect(StatusEffects.FlyingDisabled)) {
-            if (flags[kFLAGS.AUTO_FLIGHT] == 1 && player.canFly()) {
+            if (flags[kFLAGS.AUTO_FLIGHT] == 1 && player.canFly() && player.fatigueLeft() >= flyingWithWingsCost()) {
                 if (player.wings.type == Wings.WINDY_AURA && player.arms.type == Arms.KAMAITACHI) outputText("You create a small cyclone to ride upon and lift yourself up in the air.");
                 else if (player.wings.type == Wings.THUNDEROUS_AURA) outputText("You take flight, letting the raging storm carry you into the air.");
                 else if (player.wings.type == Wings.ETHEREAL) outputText("You take flight, ascending through the storm.");
@@ -322,7 +322,7 @@ public class Combat extends BaseContent {
             monster.createStatusEffect(StatusEffects.MonsterAttacksDisabled, 0, 0, 0, 0);
             outputText("\n\n");
         }
-		if (flags[kFLAGS.AUTO_GALLOP] > 0 && player.fatigueLeft() > gallopingcoooooost()) {// && !player.hasStatusEffect(StatusEffects.FlyingDisabled)
+		if (flags[kFLAGS.AUTO_GALLOP] > 0 && player.fatigueLeft() >= gallopingcoooooost()) {// && !player.hasStatusEffect(StatusEffects.FlyingDisabled)
 			var costPercent:Number = 100;
 			var mod:Number = gallopingcoooooost();
 			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 2) costPercent -= (5*(player.perkv1(IMutationsLib.EquineMuscleIM)-1));
@@ -997,7 +997,7 @@ public class Combat extends BaseContent {
         }
         if (!player.isFlying()) {
             if (player.canFly()) buttons.add("Take Flight", takeFlightWings)
-                .hint("Make use of your wings or other options avilable to take flight into the air for up to 7 turns. \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
+                .hint("Make use of your wings or other options avilable to take flight into the air for up to 7 turns. \n\nFatigue cost per turn: "+flyingWithWingsCost()+"  \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
                 .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
 			if (player.weaponFlyingSwordsName != "nothing" && player.canFlyOnFlyingSwords()) buttons.add("Take Flight", takeFlightByFlyingSword)
                 .hint("Make use of your flying sword to take flight into the air. \n\nSoulforce cost per turn: "+flyingSwordUseCost()+" \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
@@ -1031,7 +1031,7 @@ public class Combat extends BaseContent {
         if (CombatAbilities.Devourer.isKnown) {
             buttons.append(CombatAbilities.Devourer.createButton(monster));
         }
-		if ((monster.hasStatusEffect(StatusEffects.Stunned) || monster.hasStatusEffect(StatusEffects.StunnedTornado) || monster.hasStatusEffect(StatusEffects.Polymorphed) || monster.hasStatusEffect(StatusEffects.Sleep) || monster.hasStatusEffect(StatusEffects.Fascinated)) && (player.fatigueLeft() > combat.physicalCost(20)) && player.perkv1(IMutationsLib.HollowFangsIM) >= 2) {
+		if ((monster.hasStatusEffect(StatusEffects.Stunned) || monster.hasStatusEffect(StatusEffects.StunnedTornado) || monster.hasStatusEffect(StatusEffects.Polymorphed) || monster.hasStatusEffect(StatusEffects.Sleep) || monster.hasStatusEffect(StatusEffects.Fascinated)) && (player.fatigueLeft() >= combat.physicalCost(20)) && player.perkv1(IMutationsLib.HollowFangsIM) >= 2) {
 			bd = buttons.add("Bite", VampiricBite).hint("Suck on the blood of an opponent. \n\nFatigue Cost: " + physicalCost(20) + "");
 		}// || monster.hasStatusEffect(StatusEffects.InvisibleOrStealth)
 		if (player.hasPerk(PerkLib.SwordIntentAura)) {
@@ -12720,6 +12720,11 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         if (player.isFlying()) {
 			if (player.statusEffectv2(StatusEffects.Flying) == 0) {
 				if (!player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) player.addStatusValue(StatusEffects.Flying, 1, -1);
+				if (player.fatigueLeft() < flyingWithWingsCost()) {
+					player.removeStatusEffect(StatusEffects.Flying);
+					outputText("<b>You land gently on the ground, been too tired to keep yourself aloft. </b>\n\n");
+				}
+				else fatigue(flyingWithWingsCost(), USEFATG_PHYSICAL);
 			}
             if (player.statusEffectv2(StatusEffects.Flying) == 1) {
 				if (player.soulforce < flyingSwordUseCost()) {
@@ -17970,6 +17975,17 @@ public function greatDive():void {
         }
         monster.removeStatusEffect(StatusEffects.MonsterAttacksDisabled);
     }
+	if ((player.perkv1(IMutationsLib.HarpyHollowBonesIM) >= 3 || Forgefather.channelInlay == "emerald") && player.statusEffectv1(StatusEffects.Flying) == 0) {
+		if (player.fatigueLeft() >= flyingWithWingsCost()) fatigue(flyingWithWingsCost(), USEFATG_PHYSICAL);
+		else {
+			if (player.isFlying()) player.removeStatusEffect(StatusEffects.Flying);
+			if (player.hasStatusEffect(StatusEffects.FlyingNoStun)) {
+				player.removeStatusEffect(StatusEffects.FlyingNoStun);
+				player.removePerk(PerkLib.Resolute);
+			}
+			monster.removeStatusEffect(StatusEffects.MonsterAttacksDisabled);
+		}
+	}
     checkAchievementDamage(damage);
     enemyAIImpl();
 }
@@ -18646,6 +18662,13 @@ public function flyingWithSoulforceCost():Number {
     var fwsc:Number = 500;
     if (player.perkv1(PerkLib.Dantain) > 2) fwsc -= 100;
     return fwsc;
+}
+
+public function flyingWithWingsCost():Number {
+    var fwwc:Number = player.maxFatigue()*0.05;
+    if (player.hasPerk(PerkLib.IronMan)) fwwc *= 0.5;
+	fwwc = Math.round(fwwc);
+    return fwwc;
 }
 
 public function flyingSwordForRangeSneakAttack():Boolean {
