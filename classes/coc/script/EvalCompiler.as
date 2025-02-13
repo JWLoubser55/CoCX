@@ -197,9 +197,10 @@ public class EvalCompiler {
 			case OPCODE_MOD:
 				return execute(code[1], scopes) % execute(code[2], scopes);
 			case OPCODE_ISIN:
-				return execute(code[1], scopes).indexOf(execute(code[2], scopes)) >= 0;
+				//trace("OPCODE ISIN: "+JSON.stringify(code[2])+ " indexOf " + JSON.stringify(code[1]));
+				return execute(code[2], scopes).indexOf(execute(code[1], scopes)) >= 0;
 			case OPCODE_NOTIN:
-				return execute(code[1], scopes).indexOf(execute(code[2], scopes)) < 0;
+				return execute(code[2], scopes).indexOf(execute(code[1], scopes)) < 0;
 		}
 		throw new Error("Unknown Eval opcode "+String(opcode));
 	}
@@ -229,9 +230,9 @@ public class EvalCompiler {
 		if (expr.match(RX_INT)) return parseInt(expr);
 		if (expr.match(RX_FLOAT)) return parseFloat(expr);
 		if (expr.match(RX_SIMPLESTRING)) return expr.substring(1, expr.length-1);
-		return new EvalCompiler(expr).evalUntil("");
-//		trace("Expression "+JSON.stringify(expr)+" compiled into "+JSON.stringify(value));
-//		return value;
+		var value:* = new EvalCompiler(expr).evalUntil("");
+		//trace("Expression "+JSON.stringify(expr)+" compiled into "+JSON.stringify(value));
+		return value;
 	}
 	
 	private function evalUntil(until:String):* {
@@ -272,7 +273,7 @@ public class EvalCompiler {
 		} else if ((m = eat(/^['"]/))) {
 			var delim:String = m[0];
 			var s:String = '';
-			var rex:RegExp = delim == '"' ?  new RegExp('^[^"\\]+') : new RegExp("^[^'\\]+");
+			var rex:RegExp = delim == '"' ?  new RegExp('^[^"\\\\]+') : new RegExp("^[^'\\\\]+");
 			while(true) {
 				if (eatStr('\\')) {
 					var c:String = eatN(1);

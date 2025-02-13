@@ -612,7 +612,8 @@
 		<cell rect="901,90,49,59" name="clothe/krakenB" dx="79" dy="64"/>
 		<cell rect="401,90,49,59" name="clothe/krakenD" dx="79" dy="64"/>
 		<cell rect="851,90,49,59" name="clothe/krakenF" dx="79" dy="64"/>
-		<cell rect="851,90,49,59" name="clothe/krakenF" dx="79" dy="64"/>
+		<cell rect="851,90,49,59" name="clothe/krakenG" dx="79" dy="64"/>
+		<cell rect="851,90,49,59" name="clothe/krakenH" dx="79" dy="64"/>
 	</spritemap>
 	<spritemap file="extra.png">
 		<cell rect="2,55,147,128" name="legs_fg/alraune" dx="34" dy="82"/>
@@ -799,16 +800,19 @@
 		<cell rect="776,12,45,27" name="armorNeck/fullplatetopD" dx="80" dy="63"/>
 		<cell rect="728,12,45,27" name="armorNeck/fullplatetopF" dx="80" dy="63"/>
 		<cell rect="728,12,45,27" name="armorNeck/fullplatetopG" dx="80" dy="63"/>
+		<cell rect="728,12,45,27" name="armorNeck/fullplatetopH" dx="80" dy="63"/>
 		<cell rect="1161,12,45,27" name="armorNeck/blackFullplatetop0" dx="80" dy="63"/>
 		<cell rect="1161,12,45,27" name="armorNeck/blackFullplatetopB" dx="80" dy="63"/>
 		<cell rect="1104,12,45,27" name="armorNeck/blackFullplatetopD" dx="80" dy="63"/>
 		<cell rect="1056,12,45,27" name="armorNeck/blackFullplatetopF" dx="80" dy="63"/>
 		<cell rect="1056,12,45,27" name="armorNeck/blackFullplatetopG" dx="80" dy="63"/>
+		<cell rect="1056,12,45,27" name="armorNeck/blackFullplatetopH" dx="80" dy="63"/>
 		<cell rect="1446,12,45,27" name="armorNeck/gooplatetop0" dx="80" dy="63"/>
 		<cell rect="1446,12,45,27" name="armorNeck/gooplatetopB" dx="80" dy="63"/>
 		<cell rect="1389,12,45,27" name="armorNeck/gooplatetopD" dx="80" dy="63"/>
 		<cell rect="1341,12,45,27" name="armorNeck/gooplatetopF" dx="80" dy="63"/>
 		<cell rect="1341,12,45,27" name="armorNeck/gooplatetopG" dx="80" dy="63"/>
+		<cell rect="1341,12,45,27" name="armorNeck/gooplatetopH" dx="80" dy="63"/>
 		<cell rect="644,798,173,156" name="armorNeck/walpurgisClothes" dx="20" dy="12"/>
 		<cell rect="992,798,173,156" name="armorNeck/wendigoCloak" dx="20" dy="12"/>
 		<cell rect="1688,798,173,156" name="armorNeck/francescaClothes" dx="20" dy="12"/>
@@ -822,14 +826,17 @@
 		<cell rect="1919,494,49,29" name="armorNeck/LizBladeTopD" dx="80" dy="66"/>
 		<cell rect="1919,524,49,29" name="armorNeck/LizBladeTopF" dx="80" dy="66"/>
 		<cell rect="1919,524,49,29" name="armorNeck/LizBladeTopG" dx="80" dy="66"/>
+		<cell rect="1919,524,49,29" name="armorNeck/LizBladeTopH" dx="80" dy="66"/>
 		<cell rect="2123,12,48,29" name="armorNeck/scalemailTopB" dx="80" dy="66"/>
 		<cell rect="2066,12,56,29" name="armorNeck/scalemailTopD" dx="76" dy="66"/>
 		<cell rect="2066,12,56,29" name="armorNeck/scalemailTopF" dx="76" dy="66"/>
 		<cell rect="2066,12,56,29" name="armorNeck/scalemailTopG" dx="76" dy="66"/>
+		<cell rect="2066,12,56,29" name="armorNeck/scalemailTopH" dx="76" dy="66"/>
 		<cell rect="2104,493,48,29" name="armorNeck/chainmailChestB" dx="80" dy="68"/>
 		<cell rect="2047,493,56,29" name="armorNeck/chainmailChestD" dx="76" dy="69"/>
 		<cell rect="2203,434,49,29" name="armorNeck/chainmailChestF" dx="79" dy="68"/>
 		<cell rect="2203,434,49,29" name="armorNeck/chainmailChestG" dx="79" dy="68"/>
+		<cell rect="2203,434,49,29" name="armorNeck/chainmailChestH" dx="79" dy="68"/>
 		<cell rect="833,42,45,58" name="armorChest/fullplatebottom" dx="82" dy="75"/>
 		<cell rect="1161,42,45,58" name="armorChest/blackFullplatebottom" dx="82" dy="75"/>
 		<cell rect="1446,42,45,58" name="armorChest/gooplatebottom" dx="82" dy="75"/>
@@ -938,6 +945,7 @@
 		<cell rect="296,1490,49,29" name="breasts/Dliliraune" dx="43" dy="68"/>
 		<cell rect="296,1520,49,29" name="breasts/Fliliraune" dx="43" dy="68"/>
 		<cell rect="606,1490,49,29" name="breasts/Gliliraune" dx="43" dy="69"/>
+		<cell rect="606,1490,49,29" name="breasts/Hliliraune" dx="43" dy="69"/>
 		<cell rect="122,1620,80,102" name="weapon/staffGeneric" dx="38" dy="55"/>
 		<cell rect="122,1726,80,102" name="weapon/staffHoly" dx="38" dy="55"/>
 		<cell rect="122,1832,80,102" name="weapon/staffUnholy" dx="38" dy="55"/>
@@ -1702,7 +1710,7 @@
 		<cell rect="361,500,49,29" name="panty/sexyWhiteBikiniPanty" dx="79" dy="99"/>
 		<cell rect="411,500,49,29" name="panty/sexyYellowBikiniPanty" dx="79" dy="99"/>
 		<cell rect="461,500,49,29" name="panty/scandalousSuccubusClothingPanty" dx="79" dy="94"/>
-		<cell rect="511,500,49,48" name="panty/scandalousSuccubusClothingPantyTaur" dx="79" dy="94"/>
+		<cell rect="511,500,49,48" name="overGenitals/scandalousSuccubusClothingPantyTaur" dx="79" dy="94"/>
 		<cell rect="761,500,49,29" name="panty/chainMailPanty" dx="79" dy="99"/>
 		<cell rect="811,500,49,29" name="panty/dragonScalePanty" dx="79" dy="99"/>
 		<cell rect="1011,500,49,29" name="panty/comfortablePanty" dx="79" dy="99"/>
@@ -2218,6 +2226,12 @@
 		<set var="IsWaterElemental" value="ElementalBodyType == 4"/>
 		<set var="cowBra" value="BraSprite=='cowBra'"/>
 
+		<set var="armStanceNonBannedList" value="ArmorSprite isin ['scandalousSuccubusClothing','chainMailBikini','elfClothing','elfWizardDress','blueQipao','greenQipao','purpleQipao','redQipao','vladimirRegalia']"/>
+		<set var="sleevelessList" value="ArmorSprite isin ['blueQipao','greenQipao','purpleQipao','redQipao','berserkerArmor']"/>
+		<set var="playerWearsAStanceBannedDress" value="ArmorSprite isin ['yukiDress','sakuraPetalKimono','whiteKimono','blueKimono','redKimono','purpleKimono','blackKimono','legendKimono','OniLegendaryKimono','goblinTechnomancerClothe','krakenBlackDress']"/>
+		<set var="playerWearsAStanceBannedArmor" value="ArmorSprite isin ['platemail','centaurPaladinArmor']"/>
+		<set var="PlayerHasBreastViewOutfit" value="ArmorSprite isin ['CowGirlOutfit','goblinTechnomancerClothe']"/>
+
 		<set var="playerHasWeaponWings" value="true"/>
 		<set var="showWeapon" value="true"/>
 		<set var="showShield" value="true"/>
@@ -2241,16 +2255,16 @@
 				<set var="playerHasLargeLowerBody" value="true"/>
 				<set var="playerHasWeirdLowerBody" value="true"/>
 			</if>
-			<if test="PlayerIsStancing">
+			<if test="PlayerIsStancing and not (playerWearsAStanceBannedDress or playerWearsAStanceBannedArmor)">
 				<set var="showLegClothing" value="false"/>
-				<set var="showPanty" value="false"/>
+				<set var="showArmClothing" value="false"/>
 				<set var="PlayerIsStancing" value="false"/>
 				<if test="PlayerIsSitStancing or PlayerIsGargoyleStancing">
 					<set var="showClothing" value="false"/>
 				</if>
 			</if>
 			<if test="arms.type isin [Arms.DISPLACER,Arms.GAZER]">
-				<set var="showClothing" value="false"/>
+				<set var="showArmClothing" value="false"/>
 			</if>
 			<if test="arms.type isin [Arms.DISPLACER,Arms.CANCER,Arms.FROSTWYRM,Arms.GAZER,Arms.YETI]">
 				<set var="showWeapon" value="false"/>
@@ -2294,16 +2308,9 @@
 			<set var="ShieldSprite" value="''"/>
 		</if>
 
-		<!-- CLOTHING VARS SHOULDN'T CHANGE BELOW.
-		     SETUP VARIABLES THAT DEPEND ON CLOTHING -->
 		<if test="showPanty and PantySprite or showLegClothing and ArmorSprite">
 			<set var="showDickDrippies" value="false"/>
 		</if>
-		<set var="armStanceNonBannedList" value="ArmorSprite isin ['scandalousSuccubusClothing','elfClothing','elfWizardDress','blueQipao','greenQipao','purpleQipao','redQipao','vladimirRegalia']"/>
-		<set var="sleevelessList" value="ArmorSprite isin ['blueQipao','greenQipao','purpleQipao','redQipao','berserkerArmor']"/>
-		<set var="playerWearsAStanceBannedDress" value="ArmorSprite isin ['yukiDress','sakuraPetalKimono','whiteKimono','blueKimono','redKimono','purpleKimono','blackKimono','legendKimono','OniLegendaryKimono','goblinTechnomancerClothe','krakenBlackDress']"/>
-		<set var="playerWearsAStanceBannedArmor" value="ArmorSprite isin ['platemail','centaurPaladinArmor']"/>
-		<set var="PlayerHasBreastViewOutfit" value="ArmorSprite isin ['CowGirlOutfit','goblinTechnomancerClothe']"/>
 
 		<!-- - - - - - - - - - - - - - - - - - -
 		VARIABLE SECTION END - SHOW&HIDE SECTION
@@ -3798,13 +3805,13 @@
 
 		<!-- ARMS AREA -->
 		<switch value="arms.type">
-			<case values="Arms.HUMAN,Arms.KITSUNE,Arms.ELF,Arms.RAIJU,Arms.CENTIPEDE">
+			<case values="Arms.HUMAN,Arms.KITSUNE,Arms.ELF,Arms.RAIJU,Arms.CENTIPEDE,Arms.DEMON">
 				<if test="wings.type==Wings.VAMPIRE">
 					<show part="arms_bg/human"/>
 					<show part="arms/human"/>
 				<else/>
 					<if test="succuPose">
-						<if test="not (ArmorSprite and not armStanceNonBannedList)">
+						<if test="armStanceNonBannedList or not ArmorSprite">
 							<hide part="hands/*"/>
 							<hide part="arms/*"/>
 							<if test="MeleeWeaponSprite">
@@ -4232,36 +4239,19 @@
 
 		<!-- LEGS AREA -->
 		<switch value="lowerBody">
-			<case values="LowerBody.HUMAN,LowerBody.ELF,LowerBody.DEMONIC_HIGH_HEELS">
+			<case values="LowerBody.HUMAN,LowerBody.ELF,LowerBody.DEMONIC_HIGH_HEELS,LowerBody.DEMONIC_GRACEFUL_FEET">
 				<!--see switch[value=skin.coverage]-->
-				<if test="ArmorSprite">
-					<if test ="armStanceNonBannedList">
-						<if test="succuPose">
-							<switch value="arms.type">
-								<case values="Arms.HUMAN,Arms.ELF,Arms.KITSUNE,Arms.RAIJU,Arms.CENTIPEDE">
-									<hide part="feet/*"/>
-									<hide part="legs/*"/>
-									<show part="legs/demonlewd"/>
-									<set var="succuLegs" value="true"/>
-								</case>
-								<default>
-								</default>
-							</switch>
-						</if>
-					</if>
-				<else/>
-					<if test="succuPose">
-						<switch value="arms.type">
-							<case values="Arms.HUMAN,Arms.ELF,Arms.KITSUNE,Arms.RAIJU,Arms.CENTIPEDE">
-								<hide part="feet/*"/>
-								<hide part="legs/*"/>
-								<show part="legs/demonlewd"/>
-								<set var="succuLegs" value="true"/>
-							</case>
-							<default>
-							</default>
-						</switch>
-					</if>
+				<if test="succuPose and (armStanceNonBannedList or not ArmorSprite)">
+					<switch value="arms.type">
+						<case values="Arms.HUMAN,Arms.ELF,Arms.KITSUNE,Arms.RAIJU,Arms.CENTIPEDE,Arms.DEMON">
+							<hide part="feet/*"/>
+							<hide part="legs/*"/>
+							<show part="legs/demonlewd"/>
+							<set var="succuLegs" value="true"/>
+						</case>
+						<default>
+						</default>
+					</switch>
 				</if>
 			</case>
 			<case values="LowerBody.HOOFED,LowerBody.PONY,LowerBody.CLOVEN_HOOFED">
@@ -5961,7 +5951,7 @@
 		<if test="ArmorSprite=='platemail'">
 			<show part="armorNeck/fullplatetop${cup}"/>
 			<show part="armorChest/fullplatebottom"/>
-			<if test="(legCount!=4) and (showLegClothing)">
+			<if test="(legCount!=4) and showLegClothing">
 				<show part="armorLegs/fullplateLegs"/>
 			</if>
 			<if test="showArmClothing">
@@ -6034,11 +6024,12 @@
 
 		<!--Full Chainmail set -->
 		<if test="ArmorSprite=='chainMail'">
-			<if test="breastTier gt 0">
+			<if test="cup ne 0">
+				<hide part="breasts/*"/>
 				<show part="armorNeck/chainmailChest${cup}"/>
 			</if>
 			<show part="clothe/chainmailchest"/>
-			<if test="not isTaur()">
+			<if test="showLegClothing">
 				<show part="clotheLegs/chainmailLegs"/>
 				<hide part="panty/*"/>
 				<set var="HideCrotch" value="true"/>
@@ -6472,7 +6463,7 @@
 					</if>
 				</if>
 				<if test="playerHasWeirdLowerBody">
-					<show part="panty/scandalousSuccubusClothingPantyTaur"/>
+					<show part="overGenitals/scandalousSuccubusClothingPantyTaur"/>
 				<else/>
 					<hide part="penis/*"/>
 					<hide part="balls/*"/>
@@ -6656,11 +6647,9 @@
 		<if test="ArmorSprite=='chainMailBikini'">
 			<show part="bra/chainMailBra${cup}"/>
 			<if test="showClothing">
-				<if test="showLegClothing">
-					<if test="isTaur()==false">
-						<show part="panty/chainMailPanty"/>
-						<set var="HideCrotch" value="true"/>
-					</if>
+				<if test="showPanty">
+					<show part="panty/chainMailPanty"/>
+					<set var="HideCrotch" value="true"/>
 				</if>
 			</if>
 		</if>
