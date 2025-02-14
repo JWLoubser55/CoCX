@@ -311,7 +311,7 @@ public class Changelog extends BaseContent
 			outputText("-Arcane circle can be upgraded 8th and 9th time enabling 2 more steps in making elementals stronger per added circle.\n");
 			outputText("-Fix demonChanges. (Stadler)\n");
 			outputText("-For Yuki Onna encounters it will now only req. to find Yu shop.\n");
-			outputText("-Non goblonoid PC's can now buy and craft few simpler gadgets at Tripxi gunshop: Flasherbang, Fire Grenade, Fire Grenade II\n");
+			outputText("-Non goblonoid PC's can now buy and craft few simpler gadgets at Tripxi gunshop: Flasherbang, Goonade, Fire Grenade, Fire Grenade II, Stun Grenade\n");
 			outputText("-Training Dummy now got bit more sponge on it and each upgrade increase it lvl by 60.\n");
 			outputText("-Dracula scene fix racial check. (DigitalKitsune)\n");
 			outputText("-New tier 2 wisdom lvl-up perk: They Fight, They Protect. Req. Three times a tame perk and 80+ wisdom. Effect: You could now command tamed monster with full health to protect you from next enemy attack. After protecting they recover 5% HP per turn or 10% HP per hour.\n");
@@ -321,10 +321,10 @@ public class Changelog extends BaseContent
 			outputText("-New key Item (by Liadri): Fire Grenade II - req. Fire Grenade - Upgrade the fire grenade explosion to also deal fire damage.\n");
 			outputText("-Charge special cost base calculation capping at 10k fatigue. When PC have more then 10k fatigue (not counting in overmax fatigue) it will not longer increase charge cost.\n");
 			outputText("-Added fatigue cost for flying using natural wings: 5% per turn. Using Great Dive when PC can keep flying after it (having harpy bones tier 3 or specific gargoyle channel inlay) would add also 5% fatigue cost to take off into the sky after dive.\n");
-			outputText("-\n");//New tier 3 misc lvl-up perk: . Req. . Effect: .
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 3 misc lvl-up perk: Magnetize. Req. Polarize perk, 60+ wisdom and 60+ intelligence. Effect: Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.\n");
+			outputText("-New key Item (by Liadri): Stun Grenade - req. Toolbelt - Toss a grenade that sets stun foe for 1 round. (4 round cd)\n");
+			outputText("-New key Item (by Liadri): Goonade - req. Toolbelt - Toss a grenade that splatter sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground\n");
+			outputText("-New key Item (by Liadri): Flasherbang II - req. Flasherbang -The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds \n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

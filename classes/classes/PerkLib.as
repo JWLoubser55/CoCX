@@ -773,6 +773,9 @@ public class PerkLib
 		public static const SimplifiedInterface:PerkType = mk("Simplified Interface", "Simplified Interface",
 				"You did what goblins did not and simplified the interface slightly in order to quicken the usage of your gadgets. Once per round use a gadget as a free action.",
 				"You've chosen the 'Simplified Interface' perk. You did what goblins did not and simplified the interface slightly in order to quicken the usage of your gadgets. Once per round use a gadget as a free action.");
+		public static const Magnetize:PerkType = mk("Magnetize", "Magnetize",
+				"Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.",
+				"You've chosen the 'Magnetize' perk. Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -786,9 +789,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8173,6 +8173,10 @@ public class PerkLib
 					.requireSpe(40);
             LawOfPerpetualMotion.requireLevel(18)
                     .requirePerk(StoredMomentum)
+                    .requireInt(60)
+					.requireWis(60);
+            Magnetize.requireLevel(18)
+                    .requirePerk(Polarize)
                     .requireInt(60)
 					.requireWis(60);
 			ImprovedMetabolization.requirePerk(Metabolization)

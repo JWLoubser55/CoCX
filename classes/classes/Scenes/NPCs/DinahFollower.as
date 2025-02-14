@@ -244,6 +244,7 @@ public class DinahFollower extends NPCAwareContent// implements TimeAwareInterfa
 			addButton(8, consumables.STRASCA.shortName, buyItem2, 8).hint("Buy a Strawberry shortcake.");
 			addButton(9, consumables.BCHCAKE.shortName, buyItem2, 9).hint("Buy a Big chocolate cake.");
 			addButton(10, consumables.MADMENK.shortName, buyItem3, 11).hint("Buy a Madmen knowledge.");
+			addButton(11, consumables.METHIRC.shortName, buyItem3, 12).hint("Buy a Methir crystal.");
 			if (player.hasItem(weaponsrange.HARKON1, 2)) addButton(12, "Harkonnen II", getHarkonnenIIMade);
 			else addButtonDisabled(12, "???", "Req. to have 2x Harkonnen and 4,500 gems.");
 			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(13, consumables.PODBONE.shortName, buyItem1, 10).hint("Buy a pack of demon bones.");
@@ -307,9 +308,11 @@ public class DinahFollower extends NPCAwareContent// implements TimeAwareInterfa
 		}
 		private function buyItem3(item:Number = 0):void {
 			if (item == 5) catChimeraBuy3(consumables.MANTICV);
-			if (item == 6) catChimeraBuy3(consumables.VOLTTOP);
+			//if (item == 6) catChimeraBuy3(consumables.);
 			if (item == 7) catChimeraBuy3(consumables.REDVIAL);
-			if (item == 11) catChimeraBuy1(consumables.MADMENK);
+			if (item == 11) catChimeraBuy3(consumables.MADMENK);
+			if (item == 6) catChimeraBuy3(consumables.VOLTTOP);
+			if (item == 12) catChimeraBuy3(consumables.METHIRC);
 		}
 		private function buyItem4(item:Number = 0):void {
 			if (item == 20) catChimeraBuy4(consumables.DSLIMEJ);

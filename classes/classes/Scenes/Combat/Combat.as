@@ -4873,7 +4873,13 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.PhantomShooting)) damage *= 1.05;
 			if (player.hasPerk(PerkLib.SilverForMonsters) && monster.hasPerk(PerkLib.EnemyTrueDemon)) damage *= 1.2;
             if (monster.hasStatusEffect(StatusEffects.WoundPoison)) damage *= 1 + (monster.statusEffectv1(StatusEffects.WoundPoison) / 100);
-			if (monster.hasStatusEffect(StatusEffects.Polarize)) damage *= 1.5;//later add exclusion for energy weapon shoots
+			if (monster.hasStatusEffect(StatusEffects.Polarize)) {
+				if (player.hasPerk(PerkLib.Ghostslinger)) {
+					if (monster.hasPerk(PerkLib.LightningVulnerability) || monster.hasPerk(PerkLib.DarknessNature)) damage *= 4;
+					else damage *= 2;
+				}
+				else damage *= 1.5;//later add exclusion for energy weapon shoots
+			}
             //Determine if critical hit!
 			var crit:Boolean;
             var critChance:Number = calculateCritFirearms();
@@ -12389,6 +12395,11 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			player.addStatusValue(StatusEffects.Nailed, 1, -1);
             if (player.statusEffectv1(StatusEffects.Nailed) <= 0) player.removeStatusEffect(StatusEffects.Nailed);
 		}
+		//Grounded
+		if (monster.hasStatusEffect(StatusEffects.Grounded)) {
+			player.addStatusValue(StatusEffects.Grounded, 1, -1);
+            if (player.statusEffectv1(StatusEffects.Grounded) <= 0) player.removeStatusEffect(StatusEffects.Grounded);
+		}
         //Giant boulder
         if (player.hasStatusEffect(StatusEffects.GiantBoulder)) {
             outputText("<b>There is a large boulder coming your way. If you don't avoid it in time, you might be crushed!</b>\n\n");
@@ -15242,7 +15253,7 @@ public function Tremor():void {
     flags[kFLAGS.LAST_ATTACK_TYPE] = LAST_ATTACK_PHYS;
     var damage:int;
     clearOutput();
-    if (monster.hasStatusEffect(StatusEffects.Flying)) {
+    if (monster.isFlying()) {
         clearOutput();
         outputText("There is no point in causing a tremor against an opponent that isn't even touching the ground!");
         //Gone		menuLoc = 1;

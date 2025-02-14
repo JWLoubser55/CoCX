@@ -26,7 +26,7 @@ public class StalagmiteSwiftcastSpell extends AbstractGreySpell {
 	}
 	
 	override protected function usabilityCheck():String {
-		if (monster.hasStatusEffect(StatusEffects.Flying)) {
+		if (monster.isFlying()) {
 			return "You can only use earth magic against enemy on the ground."
 		}
 		if (player.hasStatusEffect(StatusEffects.Flying)) {

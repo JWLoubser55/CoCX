@@ -579,13 +579,24 @@ public class PhysicalSpecials extends BaseCombatContent {
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
 			}
-			if (player.hasKeyItem("Flasherbang") >= 0) {
+			if (player.hasKeyItem("Flasherbang") >= 0 || player.hasKeyItem("Flasherbang II") >= 0) {
 				bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Goonade") >= 0) {// || player.hasKeyItem("Caustic Goonade") >= 0
+				
+				bd = buttons.add("Goonade", gadgetGoonade).hint("Throw a grenade that splatter sticky goo everywhere hindering movement and flight.");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.Grounded)) bd.disable("<b>You need wait until previous used Goonade effect wear off.</b>\n\n");
 			}
 			if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
 				bd = buttons.add("Flasherbang", gadgetFireGrenade).hint("Throw a flasherbang to blind and arouse your opponents.");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Stun Grenade") >= 0) {// || player.hasKeyItem("Stun Grenade II") >= 0
+				bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round. (4 round cd)");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
 			}
 			if (player.hasKeyItem("Goblin Bomber") >= 0) {
 				bd = buttons.add("Goblin Bomber", optionGoblinBomber).hint("Call for an airstrike.");
@@ -3344,6 +3355,32 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
 		}
 		combat.bonusExpAfterSuccesfullTease();
+		if (player.hasKeyItem("Flasherbang II") >= 0) {
+			if (monster.hasStatusEffect(StatusEffects.Flasherbang)) monster.removeStatusEffect(StatusEffects.Flasherbang);
+			monster.createStatusEffect(StatusEffects.Flasherbang, 6, 0, 0, 0);
+		}
+		if (player.hasPerk(PerkLib.SimplifiedInterface) && flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] == 0) {
+			flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+		}
+		else enemyAI();
+	}
+	
+	public function gadgetGoonade():void {
+		clearOutput();
+		outputText("You pull the metal plug and throw the goonade forward looking away as it explodes with a bang splattering goo everywhere and restraining your opponent movement. ");
+		monster.createStatusEffect(StatusEffects.Grounded, 10, 0, 0, 0);
+		if (player.hasKeyItem("Caustic Goonade") >= 0) {
+			
+			outputText("\n\n");
+			//combat.heroBaneProc(damage);
+			statScreenRefresh();
+		}
+		if (player.hasPerk(PerkLib.GreasedLightning)) {
+			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
+			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
+		}
 		if (player.hasPerk(PerkLib.SimplifiedInterface) && flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] == 0) {
 			flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] = 1;
 			menu();
@@ -3379,6 +3416,29 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			outputText("\n\n");
 			combat.heroBaneProc(damage);
+			statScreenRefresh();
+		}
+		if (player.hasPerk(PerkLib.GreasedLightning)) {
+			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
+			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
+		}
+		if (player.hasPerk(PerkLib.SimplifiedInterface) && flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] == 0) {
+			flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+		}
+		else enemyAI();
+	}
+	
+	public function gadgetStunGrenade():void {
+		clearOutput();
+		outputText("You pull the metal plug and throw the stun grenade ahead watching with satisfaction as it explodes unleashing a discharge of electricity and stunning your opponent. ");
+		if (!monster.hasPerk(PerkLib.Resolute)) monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
+		player.createStatusEffect(StatusEffects.CooldownStunGrenade,4,0,0,0);
+		if (player.hasKeyItem("Caustic Goonade") >= 0) {
+			
+			outputText("\n\n");
+			//combat.heroBaneProc(damage);
 			statScreenRefresh();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
@@ -7350,4 +7410,4 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function PhysicalSpecials() {
 	}
 }
-}
+}

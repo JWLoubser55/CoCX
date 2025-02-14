@@ -1140,7 +1140,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		}
 		
 		override public function isFlying():Boolean {
-			return hasStatusEffect(StatusEffects.Flying) && !hasStatusEffect(StatusEffects.EntangledByNet) && !hasStatusEffect(StatusEffects.Nailed);
+			return hasStatusEffect(StatusEffects.Flying) && !hasStatusEffect(StatusEffects.EntangledByNet) && !hasStatusEffect(StatusEffects.Nailed) && !hasStatusEffect(StatusEffects.Grounded);
 		}
 
 		public function canMonsterBleed():Boolean
@@ -4494,6 +4494,19 @@ import classes.Scenes.Combat.CombatAbilities;
 						if (rand(10) == 0 && hasPerk(PerkLib.Resolute)) createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 					}
 				}
+			}
+			//Flasherbang
+			if (hasStatusEffect(StatusEffects.Flasherbang)) {
+				var lustDmg4:Number = SceneLib.combat.teases.teaseBaseLustDamage();
+				if (game.player.hasPerk(PerkLib.KingOfTheJungle)) lustDmg4 *= 1.2;
+				lustDmg4 = Math.round(lustDmg4);
+				outputText("The lingering image of the arousing grenade further arouses [themonster]. ");
+				teased(lustDmg4, false);
+				outputText("\n\n");
+				addStatusValue(StatusEffects.Flasherbang, 1, -1);
+				if (lustVuln != 0 && !player.enemiesImmuneToLustResistanceDebuff()) lustVuln += 0.01;
+				if (lustVuln > lustVulnCap()) lustVuln = lustVulnCap();
+				if (statusEffectv1(StatusEffects.Flasherbang) <= 0) removeStatusEffect(StatusEffects.Flasherbang);
 			}
 			//Venom damage calculation
 			var venomLustDmg:Number = 0;
