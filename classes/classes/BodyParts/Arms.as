@@ -528,7 +528,7 @@ public class Arms extends SaveableBodyPart {
 		appearanceDesc: "Your arms are covered by thick [fur color] fur, ending in hands with paw pads and four fingers ending with hoof-like fingernails.",
 		fur: true
 	});
-	
+
 	public static const MOTH:int = 68;
 	EnumValue.add(Types, MOTH, "MOTH", {
 		name:"moth",
@@ -570,7 +570,13 @@ public class Arms extends SaveableBodyPart {
 		name:"mummy",
 		appearanceDesc: "Your arms are human in shape and appearance but the skin is extremely sensitive to the touch. As such they are covered from the elbows to the tip of your fingers with bandages."
 	});
-	
+  
+  public static const HUMANCHAINED:int = 74;
+  EnumValue.add(Types, HUMANCHAINED, "HUMAN", {
+    name:"human chained",
+    appearanceDesc: "You have a pair of normal human arms and though they dont have any unusual traits thick magical silver chains coils around your arms protecting them from arms. You know those chains to be fully part of your body and can use them to fight if necessary."
+  });
+   
 	public static function canFly(id: int): Boolean {
 		return Types[id].canFly || false;
 	}
