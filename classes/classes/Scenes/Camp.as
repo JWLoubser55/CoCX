@@ -4609,7 +4609,7 @@ public class Camp extends NPCAwareContent{
 				.hint("Visit Xuviel’s lair.")
 				.disableIf(player.statusEffectv1(StatusEffects.MeetXuviel) < 4, "Only for Xuviel’s 9th Wife.", null, "???");
 		bd.add("Woodcutting", camp.cabinProgress.gatherWoods)
-				.hint("You need to explore the Forest more to unlock this place.")
+				.hint("You can cut some trees here to get wood.")
 				.disableIf(player.statusEffectv1(StatusEffects.ResourceNode1) < 5, "You need to explore the Forest more to unlock this place.", null, "???")
 				.disableIf(!player.hasStatusEffect(StatusEffects.ResourceNode1), "Search the forest.", null, "???");
 		bd.add("Quarry", camp.cabinProgress.quarrySite)

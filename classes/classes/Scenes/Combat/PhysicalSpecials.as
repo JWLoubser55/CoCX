@@ -583,18 +583,22 @@ public class PhysicalSpecials extends BaseCombatContent {
 				bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if (player.hasKeyItem("Goonade") >= 0) {// || player.hasKeyItem("Caustic Goonade") >= 0
-				
-				bd = buttons.add("Goonade", gadgetGoonade).hint("Throw a grenade that splatter sticky goo everywhere hindering movement and flight.");
+			if (player.hasKeyItem("Goonade") >= 0 || player.hasKeyItem("Caustic Goonade") >= 0) {
+				var goonade1:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "corrosive " : "";
+				var goonade2:String = player.hasKeyItem("Caustic Goonade") >= 0 ? " The acid within the goo also corrodes the opponent's armor." : "";
+				var goonade3:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "Caustic Goonade" : "Goonade";
+				bd = buttons.add(""+goonade3+"", gadgetGoonade).hint("Throw a grenade that splatter "+goonade1+"sticky goo everywhere hindering movement and flight."+goonade2+"");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				else if (player.hasStatusEffect(StatusEffects.Grounded)) bd.disable("<b>You need wait until previous used Goonade effect wear off.</b>\n\n");
 			}
 			if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
-				bd = buttons.add("Flasherbang", gadgetFireGrenade).hint("Throw a flasherbang to blind and arouse your opponents.");
+				var fireGrenade:String = player.hasKeyItem("Fire Grenade II") >= 0 ? " Upgrade the fire grenade explosion to also deal fire damage." : "";
+				bd = buttons.add("Fire Grenade", gadgetFireGrenade).hint("Toss a grenade that sets foes on fire inflicting the burn status effect."+fireGrenade+"");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if (player.hasKeyItem("Stun Grenade") >= 0) {// || player.hasKeyItem("Stun Grenade II") >= 0
-				bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round. (4 round cd)");
+			if (player.hasKeyItem("Stun Grenade") >= 0 || player.hasKeyItem("Stun Grenade II") >= 0) {
+				var stunGrenade:String = player.hasKeyItem("Stun Grenade II") >= 0 ? " Upgrade the stun grenade explosion to also deal lightning damage." : "";
+				bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round."+stunGrenade+" (4 round cd)");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
 			}
@@ -3371,12 +3375,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		clearOutput();
 		outputText("You pull the metal plug and throw the goonade forward looking away as it explodes with a bang splattering goo everywhere and restraining your opponent movement. ");
 		monster.createStatusEffect(StatusEffects.Grounded, 10, 0, 0, 0);
-		if (player.hasKeyItem("Caustic Goonade") >= 0) {
-			
-			outputText("\n\n");
-			//combat.heroBaneProc(damage);
-			statScreenRefresh();
-		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
@@ -3435,10 +3433,28 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("You pull the metal plug and throw the stun grenade ahead watching with satisfaction as it explodes unleashing a discharge of electricity and stunning your opponent. ");
 		if (!monster.hasPerk(PerkLib.Resolute)) monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 		player.createStatusEffect(StatusEffects.CooldownStunGrenade,4,0,0,0);
-		if (player.hasKeyItem("Caustic Goonade") >= 0) {
-			
+		if (player.hasKeyItem("Stun Grenade II") >= 0) {
+			var damage:Number;
+			damage = scalingBonusIntelligence() * spellModWhite() * 8;
+			damage = calcVoltageMod(damage, true);
+			damage = combat.tinkerDamageBonus(damage);
+			damage = combat.goblinDamageBonus(damage);
+			//Determine if critical hit!
+			var crit:Boolean = false;
+			var critChance:int = 5;
+			critChance += combatMagicalCritical();
+			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+			if (rand(100) < critChance) {
+				crit = true;
+				damage *= 1.75;
+			}
+			if (monster is GooGirl) damage = Math.round(damage * 1.5);
+			if (monster.short == "tentacle beast") damage = Math.round(damage * 1.2);
+			damage = Math.round(damage);
+			doLightningDamage(damage, true, true);
+			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			outputText("\n\n");
-			//combat.heroBaneProc(damage);
+			combat.heroBaneProc(damage);
 			statScreenRefresh();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {

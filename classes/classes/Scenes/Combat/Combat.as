@@ -8472,6 +8472,8 @@ public class Combat extends BaseContent {
 		var tinkering:Number = 1;
 		if (player.hasPerk(PerkLib.JobTinker)) tinkering += 0.05;
 		if (player.hasPerk(PerkLib.GreasedLightning)) tinkering += 0.1;
+		if (player.hasPerk(PerkLib.Polarize)) tinkering += 0.15;
+		if (player.hasPerk(PerkLib.Magnetize)) tinkering += 0.2;
 		if (player.hasPerk(PerkLib.JobArtificier)) tinkering += 0.15;
 		if (player.hasKeyItem("GOBX Chemical Improved formula") >= 0) tinkering += 0.5;
 		damage *= tinkering;
@@ -10104,7 +10106,7 @@ public class Combat extends BaseContent {
 
     public function doDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
-        if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damagePercent() / 100);
+        if (!ignoreDR && !tinkerDeconstruct() && !(player.hasKeyItem("Caustic Goonade") >= 0 && monster.hasStatusEffect(StatusEffects.Grounded))) damage *= (monster.damagePercent() / 100);
 		if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1) damage *= doDamageAscensionModifer();
 		if (damage < 1) damage = 1;
 		if (monster.damageReductionBasedOnDifficulty() > 1) damage *= (1 / monster.damageReductionBasedOnDifficulty());

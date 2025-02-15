@@ -1349,12 +1349,14 @@ public function tripxiShopMainMenu1a():void {
 	addButton(0, "Talk", tripxiShopTalk);
 	addButton(1, "Gunshop", tripxiShopMainMenu2a);
 	addButton(2, "Rent Workshop", tripxiRentWorkshop);
-	if (player.hasKeyItem("Flasherbang II") < 0 && player.hasKeyItem("Blueprint - Flasherbang II") < 0) addButton(5, "Flasherbang II", curry(tripxiEngineeringBuyBlueprint, 1000, "Flasherbang II")).hint("Flasherbang II BP - 1000 gems");
-	if (player.hasKeyItem("Flasherbang") < 0 && player.hasKeyItem("Blueprint - Flasherbang") < 0) addButton(5, "Flasherbang", curry(tripxiEngineeringBuyBlueprint, 500, "Flasherbang")).hint("Flasherbang BP - 500 gems");
-	if (player.hasKeyItem("Goonade") < 0 && player.hasKeyItem("Blueprint - Goonade") < 0) addButton(6, "Goonade", curry(tripxiEngineeringBuyBlueprint, 500, "Goonade")).hint("Goonade BP - 500 gems");
-	if (player.hasKeyItem("Fire Grenade II") < 0 && player.hasKeyItem("Blueprint - Fire Grenade II") < 0) addButton(7, "Fire Grenade II", curry(tripxiEngineeringBuyBlueprint, 1000, "Fire Grenade II")).hint("Fire Grenade II BP - 1000 gems");
+	if (player.hasKeyItem("Flasherbang II") < 0 && player.hasKeyItem("Blueprint - Flasherbang") < 0 && player.hasKeyItem("Blueprint - Flasherbang II") < 0) addButton(5, "Flasherbang II", curry(tripxiEngineeringBuyBlueprint, 1000, "Flasherbang II")).hint("Flasherbang II BP - 1000 gems");
+	if (player.hasKeyItem("Flasherbang") < 0 && player.hasKeyItem("Flasherbang II") < 0 && player.hasKeyItem("Blueprint - Flasherbang") < 0) addButton(5, "Flasherbang", curry(tripxiEngineeringBuyBlueprint, 500, "Flasherbang")).hint("Flasherbang BP - 500 gems");
+	if (player.hasKeyItem("Caustic Goonade") < 0 && player.hasKeyItem("Blueprint - Goonade") < 0 && player.hasKeyItem("Blueprint - Caustic Goonade") < 0) addButton(6, "Caustic Goonade", curry(tripxiEngineeringBuyBlueprint, 1000, "Caustic Goonade")).hint("Caustic Goonade BP - 1000 gems");
+	if (player.hasKeyItem("Goonade") < 0 && player.hasKeyItem("Caustic Goonade") < 0 && player.hasKeyItem("Blueprint - Goonade") < 0) addButton(6, "Goonade", curry(tripxiEngineeringBuyBlueprint, 500, "Goonade")).hint("Goonade BP - 500 gems");
+	if (player.hasKeyItem("Fire Grenade II") < 0 && player.hasKeyItem("Blueprint - Fire Grenade") < 0 && player.hasKeyItem("Blueprint - Fire Grenade II") < 0) addButton(7, "Fire Grenade II", curry(tripxiEngineeringBuyBlueprint, 1000, "Fire Grenade II")).hint("Fire Grenade II BP - 1000 gems");
 	if (player.hasKeyItem("Fire Grenade") < 0 && player.hasKeyItem("Fire Grenade II") < 0 && player.hasKeyItem("Blueprint - Fire Grenade") < 0) addButton(7, "Fire Grenade", curry(tripxiEngineeringBuyBlueprint, 500, "Fire Grenade")).hint("Fire Grenade II BP - 500 gems");
-	if (player.hasKeyItem("Stun Grenade") < 0 && player.hasKeyItem("Blueprint - Stun Grenade") < 0) addButton(8, "Stun Grenade", curry(tripxiEngineeringBuyBlueprint, 500, "Stun Grenade")).hint("Flasherbang BP - 500 gems");
+	if (player.hasKeyItem("Stun Grenade II") < 0 && player.hasKeyItem("Blueprint - Stun Grenade") < 0 && player.hasKeyItem("Blueprint - Stun Grenade II") < 0) addButton(8, "Stun Grenade II", curry(tripxiEngineeringBuyBlueprint, 1000, "Stun Grenade II")).hint("Stun Grenade II BP - 1000 gems");
+	if (player.hasKeyItem("Stun Grenade") < 0 && player.hasKeyItem("Stun Grenade II") < 0 && player.hasKeyItem("Blueprint - Stun Grenade") < 0) addButton(8, "Stun Grenade", curry(tripxiEngineeringBuyBlueprint, 500, "Stun Grenade")).hint("Stun Grenade BP - 500 gems");
 	addButton(14, "Leave", telAdreMenu);
 }
 
@@ -1564,18 +1566,22 @@ private function tripxiRentWorkshopYes():void {
 	outputText("Energy Cores: " + CampStatsAndResources.EnergyCoreResc + "/200" + "\n");
 	outputText("\nWhich blueprints will you work on today?\n\n");
 	if (player.hasKeyItem("Blueprint - Flasherbang II") >= 0) outputText("Flasherbang II - Req. 200+ int, Flasherbang, 10 metal pieces, 5 energy cores.\n");
-	if (player.hasKeyItem("Blueprint - Flasherbang") >= 0) outputText("Flasherbang - Req. 100+ int, 10 metal pieces, 1 energy core.\n");
-	if (player.hasKeyItem("Blueprint - Goonade") >= 0) outputText("Goonade - Req. 100+ int, 10 metal pieces, 1 wet cloth.\n");
+	if (player.hasKeyItem("Blueprint - Flasherbang") >= 0) outputText("Flasherbang - Req. 100+ int, 2 metal pieces, 1 energy core.\n");
+	if (player.hasKeyItem("Blueprint - Caustic Goonade") >= 0) outputText("Caustic Goonade - Req. 200+ int, Goonade, 10 metal pieces, 5 wet cloth, 1 methir crystal.\n");
+	if (player.hasKeyItem("Blueprint - Goonade") >= 0) outputText("Goonade - Req. 100+ int, 2 metal pieces, 1 wet cloth.\n");
 	if (player.hasKeyItem("Blueprint - Fire Grenade II") >= 0) outputText("Fire Grenade II - Req. 200+ int, Fire Grenade, 10 metal pieces, 5 salamander firewaters.\n");
-	if (player.hasKeyItem("Blueprint - Fire Grenade") >= 0) outputText("Fire Grenade - Req. 100+ int, 10 metal pieces, 1 salamander firewater.\n");
-	if (player.hasKeyItem("Blueprint - Stun Grenade") >= 0) outputText("Stun Grenade - Req. 100+ int, 10 metal pieces, 1 raiju plasma.\n");
+	if (player.hasKeyItem("Blueprint - Fire Grenade") >= 0) outputText("Fire Grenade - Req. 100+ int, 2 metal pieces, 1 salamander firewater.\n");
+	if (player.hasKeyItem("Blueprint - Stun Grenade II") >= 0) outputText("Stun Grenade II - Req. 200+ int, Stun Grenade, 10 metal pieces, 1 raiju plasma.\n");
+	if (player.hasKeyItem("Blueprint - Stun Grenade") >= 0) outputText("Stun Grenade - Req. 100+ int, 2 metal pieces, 1 raiju plasma.\n");
 	menu();
 	if (player.hasKeyItem("Blueprint - Flasherbang II") >= 0 && player.hasKeyItem("Flasherbang") >= 0 && player.inte >= 200 && CampStatsAndResources.MetalPieces >= 10 && CampStatsAndResources.EnergyCoreResc >= 5) addButton(0, "Flasherbang II", tripxiWorkshopFlasherbangII).hint("Flasherbang II - The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds - 200+ int, 10 metal pieces, 5 energy cores, 8 hours of work");
-	if (player.hasKeyItem("Blueprint - Flasherbang") >= 0 && player.inte >= 100 && CampStatsAndResources.MetalPieces >= 10 && CampStatsAndResources.EnergyCoreResc >= 1) addButton(0, "Flasherbang", tripxiWorkshopFlasherbang).hint("Flasherbang - Toss a grenade that overloads the brain with lewd images and light rendering one blind, aroused and increasingly susceptible to lust chemicals - 100+ int, 10 metal pieces, 1 energy core, 4 hours of work");
-	if (player.hasKeyItem("Blueprint - Goonade") >= 0 && player.inte >= 100 && CampStatsAndResources.MetalPieces >= 10 && player.hasItem(consumables.WETCLTH, 1)) addButton(1, "Goonade", tripxiWorkshopGoonade).hint("Goonade - Toss a grenade that splatter sticky goo everywhere hindering movement and flight for 10 turns. Enemies hit by this lose the flight status effect and can be targeted as if on the ground - 100+ int, 10 metal pieces, 1 wet cloth, 4 hours of work");
+	if (player.hasKeyItem("Blueprint - Flasherbang") >= 0 && player.inte >= 100 && CampStatsAndResources.MetalPieces >= 2 && CampStatsAndResources.EnergyCoreResc >= 1) addButton(0, "Flasherbang", tripxiWorkshopFlasherbang).hint("Flasherbang - Toss a grenade that overloads the brain with lewd images and light rendering one blind, aroused and increasingly susceptible to lust chemicals - 100+ int, 2 metal pieces, 1 energy core, 4 hours of work");
+	if (player.hasKeyItem("Blueprint - Caustic Goonade") >= 0 && player.hasKeyItem("Goonade") >= 0 && player.inte >= 200 && CampStatsAndResources.MetalPieces >= 10 && player.hasItem(consumables.WETCLTH, 5) && player.hasItem(consumables.METHIRC, 1)) addButton(4, "Flasherbang II", tripxiWorkshopCausticGoonade).hint("Flasherbang II - Toss a grenade that splatter acidic sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground. Drop opponent armor class by 100% - 200+ int, Flasherbang, 10 metal pieces, 5 wet cloths, 1 methir crystal, 8 hours of work");
+	if (player.hasKeyItem("Blueprint - Goonade") >= 0 && player.inte >= 100 && CampStatsAndResources.MetalPieces >= 2 && player.hasItem(consumables.WETCLTH, 1)) addButton(1, "Goonade", tripxiWorkshopGoonade).hint("Goonade - Toss a grenade that splatter sticky goo everywhere hindering movement and flight for 10 turns. Enemies hit by this lose the flight status effect and can be targeted as if on the ground - 100+ int, 2 metal pieces, 1 wet cloth, 4 hours of work");
 	if (player.hasKeyItem("Blueprint - Fire Grenade II") >= 0 && player.hasKeyItem("Fire Grenade") >= 0 && player.inte >= 200 && CampStatsAndResources.MetalPieces >= 10 && player.hasItem(consumables.SALAMFW, 5)) addButton(2, "Fire Grenade II", tripxiWorkshopFireGrenadeII).hint("Fire Grenade II - Upgrade the fire grenade explosion to also deal fire damage - 200+ int, Fire Grenade, 10 metal pieces, 5 salamander firewaters, 8 hours of work");
-	if (player.hasKeyItem("Blueprint - Fire Grenade") >= 0 && player.inte >= 100 && CampStatsAndResources.MetalPieces >= 10 && player.hasItem(consumables.SALAMFW, 1)) addButton(2, "Fire Grenade", tripxiWorkshopFireGrenade).hint("Fire Grenade - Toss a grenade that sets foes on fire inflicting the burn status effect - 100+ int, Toolbelt, 10 metal pieces, 1 salamander firewater, 4 hours of work");
-	if (player.hasKeyItem("Blueprint - Stun Grenade") >= 0 && player.inte >= 100 && CampStatsAndResources.MetalPieces >= 10 && player.hasItem(consumables.VOLTTOP, 1)) addButton(3, "Stun Grenade", tripxiWorkshopStunGrenade).hint("Stun Grenade - Toss a grenade that sets stun foe for 1 round. (4 round cd) - 100+ int, 10 metal pieces, 1 voltage topaz, 4 hours of work");
+	if (player.hasKeyItem("Blueprint - Fire Grenade") >= 0 && player.inte >= 100 && CampStatsAndResources.MetalPieces >= 2 && player.hasItem(consumables.SALAMFW, 1)) addButton(2, "Fire Grenade", tripxiWorkshopFireGrenade).hint("Fire Grenade - Toss a grenade that sets foes on fire inflicting the burn status effect - 100+ int, 2 metal pieces, 1 salamander firewater, 4 hours of work");
+	if (player.hasKeyItem("Blueprint - Stun Grenade II") >= 0 && player.hasKeyItem("Stun Grenade") >= 0 && player.inte >= 200 && CampStatsAndResources.MetalPieces >= 10 && player.hasItem(consumables.VOLTTOP, 5) && player.hasItem(useables.RPLASMA, 1)) addButton(7, "Stun Grenade II", tripxiWorkshopStunGrenadeII).hint("Stun Grenade II - Upgrade the stun grenade explosion to also deal lightning damage - 200+ int, Fire Grenade, 10 metal pieces, 5 voltage topazs, 1 raiju plasma, 8 hours of work");
+	if (player.hasKeyItem("Blueprint - Stun Grenade") >= 0 && player.inte >= 100 && CampStatsAndResources.MetalPieces >= 2 && player.hasItem(consumables.VOLTTOP, 1)) addButton(3, "Stun Grenade", tripxiWorkshopStunGrenade).hint("Stun Grenade - Toss a grenade that sets stun foe for 1 round. (4 round cd) - 100+ int, 2 metal pieces, 1 voltage topaz, 4 hours of work");
 	addButton(14, "Back", tripxiShopInside);
 }
 public function tripxiWorkshopFlasherbangII():void {
@@ -1593,7 +1599,7 @@ public function tripxiWorkshopFlasherbangII():void {
 public function tripxiWorkshopFlasherbang():void {
 	clearOutput();
 	player.gems -= 100;
-	CampStatsAndResources.MetalPieces -= 10;
+	CampStatsAndResources.MetalPieces -= 2;
 	CampStatsAndResources.EnergyCoreResc -= 1;
 	outputText("You get to work spending the necessary time to craft your newest toy. After four hours your brand new Flasherbang is ready.\n\n");
 	player.createKeyItem("Flasherbang", 0, 0, 0, 0);
@@ -1601,10 +1607,23 @@ public function tripxiWorkshopFlasherbang():void {
 	statScreenRefresh();
 	doNext(camp.returnToCampUseFourHours);
 }
-public function tripxiWorkshopGoonade():void {
+public function tripxiWorkshopCausticGoonade():void {
 	clearOutput();
 	player.gems -= 100;
 	CampStatsAndResources.MetalPieces -= 10;
+	player.destroyItems(consumables.WETCLTH, 5);
+	player.destroyItems(consumables.METHIRC, 1);
+	outputText("You get to work spending the necessary time to craft your newest toy. After eight hours your brand new Caustic Goonade is ready.\n\n");
+	player.createKeyItem("Caustic Goonade", 0, 0, 0, 0);
+	player.removeKeyItem("Blueprint - Caustic Goonade");
+	player.removeKeyItem("Goonade");
+	statScreenRefresh();
+	doNext(camp.returnToCampUseEightHours);
+}
+public function tripxiWorkshopGoonade():void {
+	clearOutput();
+	player.gems -= 100;
+	CampStatsAndResources.MetalPieces -= 2;
 	player.destroyItems(consumables.WETCLTH, 1);
 	outputText("You get to work spending the necessary time to craft your newest toy. After four hours your brand new Goonade is ready.\n\n");
 	player.createKeyItem("Goonade", 0, 0, 0, 0);
@@ -1627,7 +1646,7 @@ public function tripxiWorkshopFireGrenadeII():void {
 public function tripxiWorkshopFireGrenade():void {
 	clearOutput();
 	player.gems -= 100;
-	CampStatsAndResources.MetalPieces -= 10;
+	CampStatsAndResources.MetalPieces -= 2;
 	player.destroyItems(consumables.SALAMFW, 1);
 	outputText("You get to work spending the necessary time to craft your newest toy. After four hours your brand new Fire Grenade is ready.\n\n");
 	player.createKeyItem("Fire Grenade", 0, 0, 0, 0);
@@ -1635,10 +1654,23 @@ public function tripxiWorkshopFireGrenade():void {
 	statScreenRefresh();
 	doNext(camp.returnToCampUseFourHours);
 }
-public function tripxiWorkshopStunGrenade():void {
+public function tripxiWorkshopStunGrenadeII():void {
 	clearOutput();
 	player.gems -= 100;
 	CampStatsAndResources.MetalPieces -= 10;
+	player.destroyItems(consumables.VOLTTOP, 5);
+	player.destroyItems(useables.RPLASMA, 1);
+	outputText("You get to work spending the necessary time to craft your newest toy. After eight hours your brand new Stun Grenade II is ready.\n\n");
+	player.createKeyItem("Stun Grenade II", 0, 0, 0, 0);
+	player.removeKeyItem("Blueprint - Stun Grenade II");
+	player.removeKeyItem("Stun Grenade");
+	statScreenRefresh();
+	doNext(camp.returnToCampUseEightHours);
+}
+public function tripxiWorkshopStunGrenade():void {
+	clearOutput();
+	player.gems -= 100;
+	CampStatsAndResources.MetalPieces -= 2;
 	player.destroyItems(consumables.VOLTTOP, 1);
 	outputText("You get to work spending the necessary time to craft your newest toy. After four hours your brand new Stun Grenade is ready.\n\n");
 	player.createKeyItem("Stun Grenade", 0, 0, 0, 0);

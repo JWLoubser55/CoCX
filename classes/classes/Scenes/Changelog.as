@@ -323,10 +323,10 @@ public class Changelog extends BaseContent
 			outputText("-Added fatigue cost for flying using natural wings: 5% per turn. Using Great Dive when PC can keep flying after it (having harpy bones tier 3 or specific gargoyle channel inlay) would add also 5% fatigue cost to take off into the sky after dive.\n");
 			outputText("-New tier 3 misc lvl-up perk: Magnetize. Req. Polarize perk, 60+ wisdom and 60+ intelligence. Effect: Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.\n");
 			outputText("-New key Item (by Liadri): Stun Grenade - req. Toolbelt - Toss a grenade that sets stun foe for 1 round. (4 round cd)\n");
-			outputText("-New key Item (by Liadri): Goonade - req. Toolbelt - Toss a grenade that splatter sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground\n");
-			outputText("-New key Item (by Liadri): Flasherbang II - req. Flasherbang -The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds \n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New key Item (by Liadri): Goonade - req. Toolbelt - Toss a grenade that splatter sticky goo everywhere hindering movement and flight for 10 turns. Enemies hit by this lose the flight status effect and can be targeted as if on the ground\n");
+			outputText("-New key Item (by Liadri): Flasherbang II - req. Flasherbang - The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds\n");
+			outputText("-New key Item (by Liadri): Stun Grenade II - req. Flasherbang - Upgrade the stun grenade explosion to also deal lightning damage\n");
+			outputText("-New key Item (by Liadri): Caustic Goonade - req. Goonade - Toss a grenade that splatter acidic sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground. Drop opponent armor class by 100%\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

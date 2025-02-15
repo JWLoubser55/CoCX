@@ -906,7 +906,7 @@ public class LowerBody extends SaveableBodyPart {
 		appearanceDesc: "While your legs are human in appearance your body is quite rigid due to pseudo rigor mortis thus you mostly move by magical means."
   });
   
-  public static const HUMANCHAINED:int = 89;
+	public static const HUMANCHAINED:int = 89;
 	EnumValue.add(Types, HUMANCHAINED, "HUMAN_CHAINED", {
 		name: "human chained",
 		appearanceDesc: "{legCount} human legs grow down from your [hips], ending in normal human feet. Thick magical silver chains coils around your legs protecting them from arms. You know those chains to be fully part of your body and can use them to fight if necessary."

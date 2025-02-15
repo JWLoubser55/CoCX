@@ -52,7 +52,7 @@ public class SandWitchScene extends BaseContent implements TimeAwareInterface {
 			}
 			else {
 				menu();
-				addButtonIfTrue(0, "Yes", allowSandWitchMagic, "Your body no longer can be altered by her magic.", !player.blockingBodyTransformations());
+				addButtonIfTrue(1, "Yes", allowSandWitchMagic, "Your body no longer can be altered by her magic.", !player.blockingBodyTransformations());
 				addButton(3, "No", refuseSandWitchMagic);
 			}
 		}
