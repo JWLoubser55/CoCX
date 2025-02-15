@@ -801,8 +801,10 @@ use namespace CoC;
 					speedBonus += Math.round(spe / 25);
 				}
 			}
-			if (hasPerk(PerkLib.ArmorMaster)) {
-				if (isInHeavyArmor()) speedBonus += Math.round(spe / 50);
+			if (hasPerk(PerkLib.ArmorMaster) && isInHeavyArmor()) speedBonus += Math.round(spe / 50);
+			if (hasPerk(PerkLib.AyoArmorMaster) && isInAyoArmor()) {
+				if (flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] > 0) speedBonus += Math.round(spe / 50);
+				else speedBonus += Math.round(spe / 100);
 			}
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment6)) {
 				var PE6:Number = Math.round(inte / 20);
@@ -1043,9 +1045,7 @@ use namespace CoC;
 					speedBonus += Math.round(spe / 25);
 				}
 			}
-			if (hasPerk(PerkLib.ArmorMaster)) {
-				if (isInHeavyArmor()) speedBonus += Math.round(spe / 50);
-			}*/
+			if (hasPerk(PerkLib.ArmorMaster) && isInHeavyArmor()) speedBonus += Math.round(spe / 50);*/
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment6)) {
 				var PE6:Number = Math.round(inte / 20);
 				if (PE6 > Math.round(level / 2)) PE6 = Math.round(level / 2);

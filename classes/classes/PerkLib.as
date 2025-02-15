@@ -776,6 +776,9 @@ public class PerkLib
 		public static const Magnetize:PerkType = mk("Magnetize", "Magnetize",
 				"Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.",
 				"You've chosen the 'Magnetize' perk. Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.");
+		public static const AyoArmorMaster:PerkType = mk("Ayo Armor Master", "Ayo Armor Master",
+				"Boosts armor points by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)",
+				"You've chosen the 'Ayo Armor Master' perk, increasing the effectiveness of ayo armor by a portion of your speed. (unpowered - 1:100)(powered - 1:50)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -5107,7 +5110,7 @@ public class PerkLib
 			[CycloneStage1, CycloneStage2, CycloneStage3, CycloneStage4, CycloneStage5],
 			[DancersVitalityI, DancersVitalityII, DancersVitalityIII, DancersVitalityIV, DancersVitalityV, DancersVitalityVI],
 			[DemonicDesireI, DemonicDesireII, DemonicDesireIII, DemonicDesireIV, DemonicDesireV, DemonicDesireVI],
-			[Desensitization, GreaterDesensitization, EpicDesensitization, LegendaryDesensitization/*, MythicalDesensitization*/],
+			[Desensitization, GreaterDesensitization, EpicDesensitization, LegendaryDesensitization, MythicalDesensitization],
 			[Diehard, ImprovedDiehard, GreaterDiehard, EpicDiehard],
 			[DoorKnob, Bicycle, MeatHole, BedWarmer, TensionTamer, PartyBoyGirl],
 			ELEMENTAL_CONTRACT_TIER_LIST,
@@ -5708,12 +5711,15 @@ public class PerkLib
             ShieldExpertise.requirePerk(JobKnight)
                     .requireTou(70)
                     .requireLevel(12);
+            AyoArmorMaster.requireTou(75)
+					.requirePerk(JobArtificier)
+                    .requireLevel(12);
             //Tier 3 Toughness Perks
             Juggernaut.requireTou(100)
                     .requirePerk(HeavyArmorProficiency)
                     .requireLevel(18);
             AyoArmorProficiency.requireTou(100)
-					.requirePerk(JobArtificier)
+					.requirePerk(AyoArmorMaster)
                     .requireLevel(18);
             HalfStepToAdvancedEndurance.requireTou(120)
                     .requireStr(80)
@@ -6967,6 +6973,9 @@ public class PerkLib
                     .requireInt(35)
                     .requireSpe(30)
                     .requireLevel(18);
+    //        AyoArmorProficiency.requireLevel(18)
+	//				.requirePerk(JobArtificier)
+    //                .requireTou(100);
             //Tier 4 Wisdom perks
             EmpoweredTaming.requireLevel(24)
                     .requirePerk(FourthTamerOfTheApocalypse)
@@ -7607,9 +7616,9 @@ public class PerkLib
             //Tier 18 Sensitivity Perks
             //Tier 19 Sensitivity Perks
             //Tier 20 Sensitivity Perks
-            //MythicalDesensitization.requireSen(200)
-            //        .requirePerk(LegendaryDesensitization)
-            //        .requireLevel(120);
+            MythicalDesensitization.requireSen(200)
+                    .requirePerk(LegendaryDesensitization)
+                    .requireLevel(120);
             //Tier 21 Sensitivity Perks
             //------------
             // CORRUPTION
