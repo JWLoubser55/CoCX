@@ -5023,7 +5023,10 @@ public class Combat extends BaseContent {
 								monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							}
-							else doPhysicalDamage(damage, true, true, ignoreDR);
+							else {
+								doPhysicalDamage(damage, true, true, ignoreDR);
+								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+							}
 							if (player.weaponRange == weaponsrange.M1CERBE || player.weaponRange == weaponsrange.TM1CERB) {
                                 for (var cerbAttack:int = 0; cerbAttack < maxFirearmAttacks; cerbAttack++) {
                                     if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
@@ -8243,8 +8246,8 @@ public class Combat extends BaseContent {
 		return damage;
 	}
 	
-	public function addGreasedLightning(damage:Number):void {
-		doLightningDamage((damage * player.statusEffectv1(StatusEffects.GreasedLightning)), true, true);
+	public function addGreasedLightning(damage:Number, display:Boolean = true):void {
+		doLightningDamage(Math.round(damage * player.statusEffectv1(StatusEffects.GreasedLightning) * lightningDamageBoostedByDao()), true, display);
 		player.removeStatusEffect(StatusEffects.GreasedLightning);
 	}
 
@@ -8474,7 +8477,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.GreasedLightning)) tinkering += 0.1;
 		if (player.hasPerk(PerkLib.Polarize)) tinkering += 0.15;
 		if (player.hasPerk(PerkLib.Magnetize)) tinkering += 0.2;
-		if (player.hasPerk(PerkLib.JobArtificier)) tinkering += 0.15;
+		//if (player.hasPerk(PerkLib.JobArtificier)) tinkering += 0.15;
 		if (player.hasKeyItem("GOBX Chemical Improved formula") >= 0) tinkering += 0.5;
 		damage *= tinkering;
 		return damage;
@@ -11308,11 +11311,6 @@ public class Combat extends BaseContent {
                 player.addStatusValue(StatusEffects.GooArmorSilence, 1, 1);
             }
         }
-		if (player.hasStatusEffect(StatusEffects.StoredMomentum)) {
-            player.addStatusValue(StatusEffects.StoredMomentum, 1, -0.25);
-			player.addStatusValue(StatusEffects.StoredMomentum, 2, -1);
-            if (player.statusEffectv2(StatusEffects.StoredMomentum) < 0) player.removeStatusEffect(StatusEffects.StoredMomentum);
-        }
 		if (player.hasStatusEffect(StatusEffects.GreasedLightning)) {
 			player.addStatusValue(StatusEffects.GreasedLightning, 2, -1);
             if (player.statusEffectv2(StatusEffects.GreasedLightning) < 0) player.removeStatusEffect(StatusEffects.GreasedLightning);
@@ -13187,6 +13185,14 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
                 player.removeStatusEffect(StatusEffects.CooldownMalfunction);
             } else {
                 player.addStatusValue(StatusEffects.CooldownMalfunction, 1, -1);
+            }
+        }
+        //Stun Grenade
+        if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) {
+            if (player.statusEffectv1(StatusEffects.CooldownStunGrenade) <= 0) {
+                player.removeStatusEffect(StatusEffects.CooldownStunGrenade);
+            } else {
+                player.addStatusValue(StatusEffects.CooldownStunGrenade, 1, -1);
             }
         }
         //Tazer

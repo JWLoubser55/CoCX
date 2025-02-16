@@ -6000,11 +6000,6 @@ use namespace CoC;
 				var touD:Number = Math.round(tou/2);
 				statStore.replaceBuffObject({'str': strD, 'tou': touD}, 'Dracoforce', { text: 'Dracoforce' });
 			}
-			if (hasStatusEffect(StatusEffects.StoredMomentum)) {
-				var strSM:Number = Math.round(strengthBase*(1+statusEffectv1(StatusEffects.StoredMomentum)));
-				var speSM:Number = Math.round(spe*(1+statusEffectv1(StatusEffects.StoredMomentum)));
-				statStore.replaceBuffObject({'str': strSM, 'spe': speSM}, 'Stored Momentum', { text: 'Stored Momentum' });
-			}
 			if (!hasPerk(PerkLib.DeathlyPower) && statStore.hasBuff('Deathly power')) statStore.removeBuffs('Deathly power');
 			if (hasPerk(PerkLib.Enigma)) statStore.replaceBuffObject({'str.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2))),'tou.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2)))}, 'Enigma', { text: 'Enigma' });
 			if (!hasPerk(PerkLib.Enigma) && statStore.hasBuff('Enigma')) statStore.removeBuffs('Enigma');

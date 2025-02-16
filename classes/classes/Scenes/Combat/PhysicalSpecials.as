@@ -3253,13 +3253,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		checkAchievementDamage(damage);
 		outputText("\n\n");
 		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
 			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.StoredMomentum)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) {
-				if (player.statusEffectv2(StatusEffects.StoredMomentum) < limit) player.addStatusValue(StatusEffects.StoredMomentum, 2, 1);
-				player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			}
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, limit, 0, 0);
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
@@ -3346,13 +3352,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
 		}
 		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
 			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.StoredMomentum)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) {
-				if (player.statusEffectv2(StatusEffects.StoredMomentum) < limit) player.addStatusValue(StatusEffects.StoredMomentum, 2, 1);
-				player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			}
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, limit, 0, 0);
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
@@ -3375,6 +3387,21 @@ public class PhysicalSpecials extends BaseCombatContent {
 		clearOutput();
 		outputText("You pull the metal plug and throw the goonade forward looking away as it explodes with a bang splattering goo everywhere and restraining your opponent movement. ");
 		monster.createStatusEffect(StatusEffects.Grounded, 10, 0, 0, 0);
+		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
+			var limit:Number = 5;
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
+		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
@@ -3416,6 +3443,21 @@ public class PhysicalSpecials extends BaseCombatContent {
 			combat.heroBaneProc(damage);
 			statScreenRefresh();
 		}
+		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
+			var limit:Number = 5;
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
+		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
@@ -3456,6 +3498,21 @@ public class PhysicalSpecials extends BaseCombatContent {
 			outputText("\n\n");
 			combat.heroBaneProc(damage);
 			statScreenRefresh();
+		}
+		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
+			var limit:Number = 5;
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
@@ -7158,13 +7215,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		player.createStatusEffect(StatusEffects.GoblinMechStimpack, 10, heal, 0, 0);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
 			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.StoredMomentum)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) {
-				if (player.statusEffectv2(StatusEffects.StoredMomentum) < limit) player.addStatusValue(StatusEffects.StoredMomentum, 2, 1);
-				player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			}
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, limit, 0, 0);
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
