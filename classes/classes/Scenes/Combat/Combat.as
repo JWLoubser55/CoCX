@@ -3864,7 +3864,7 @@ public class Combat extends BaseContent {
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
 		}
-		else if (player.isUnarmedCombat() || IsFeralCombat || !player.hasAetherTwinsFormsNotAllowingDualWield()) {
+		else if (player.isUnarmedCombat() || IsFeralCombat || player.hasAetherTwinsTier1() || player.hasAetherTwinsTier2()) {
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			doPhysicalDamage(damage, true, true);
