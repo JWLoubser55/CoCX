@@ -7640,6 +7640,18 @@ use namespace CoC;
 			else if (isAlraune()) knockUp(PregnancyStore.PREGNANCY_ALRAUNE, PregnancyStore.INCUBATION_ALRAUNE);
 		}
 
+		public function updateBirthedCount():void {
+			if (!hasStatusEffect(StatusEffects.Birthed)) {
+				createStatusEffect(StatusEffects.Birthed,1,0,0,0);
+			} else {
+				addStatusValue(StatusEffects.Birthed,1,1);
+				if(!hasPerk(PerkLib.BroodMother) && statusEffectv1(StatusEffects.Birthed) >= 10) {
+					EngineCore.outputText("\n<b>You have gained the Brood Mother perk</b> (Pregnancies progress twice as fast as a normal woman's).\n");
+					createPerk(PerkLib.BroodMother,0,0,0,0);
+				}
+			}
+		}
+
 		protected override function maxHP_base():Number {
 			var max:Number = super.maxHP_base();
 			if (isGargoyle() && Forgefather.material == "granite")
