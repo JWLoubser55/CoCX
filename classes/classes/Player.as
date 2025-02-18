@@ -803,7 +803,7 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.ArmorMaster) && isInHeavyArmor()) speedBonus += Math.round(spe / 50);
 			if (hasPerk(PerkLib.AyoArmorMaster) && isInAyoArmor()) {
-				if (flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] > 0) speedBonus += Math.round(spe / 50);
+				if (buff("Ayo Armor").isPresent()) speedBonus += Math.round(spe / 50);
 				else speedBonus += Math.round(spe / 100);
 			}
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment6)) {
@@ -1204,6 +1204,7 @@ use namespace CoC;
 		public function isHavingEnhancedHearing():Boolean { return (ears.type == Ears.ELVEN); }
 		public function isTechSavvyPC():Boolean { return (isGoblinoid() || (hasPerk(IMutationsLib.HumanSmartsIM) && perkv1(IMutationsLib.HumanSmartsIM) >= 2) || isRace(Races.WEREFOX)); }
 		public function isTechWeapons():Boolean { return (weapon.isTechWeapon()); }
+		public function isAbleToOneHandWieldLargeWeapon():Boolean { return (hasPerk(PerkLib.GigantGrip) || (isInAyoArmor() && buff("Ayo Armor").isPresent())); } 
 		//Weapons for Whirlwind
 		public function isWeaponForWhirlwind():Boolean
 		{
@@ -3326,7 +3327,7 @@ use namespace CoC;
 				mult -= 10;
 			}
 			if (hasPerk(PerkLib.AyoArmorProficiency) && tou >= 100 && isInAyoArmor()) {
-				if (flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] > 0) mult -= 20;
+				if (buff("Ayo Armor").isPresent()) mult -= 20;
 				else mult -= 10;
 			}
 			if (hasPerk(PerkLib.HeavyArmorProficiency) && tou >= 75 && isInHeavyArmor()) {

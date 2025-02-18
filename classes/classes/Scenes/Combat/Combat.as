@@ -4874,7 +4874,7 @@ public class Combat extends BaseContent {
 			if (player.hasPerk(PerkLib.SilverForMonsters) && monster.hasPerk(PerkLib.EnemyTrueDemon)) damage *= 1.2;
             if (monster.hasStatusEffect(StatusEffects.WoundPoison)) damage *= 1 + (monster.statusEffectv1(StatusEffects.WoundPoison) / 100);
 			if (monster.hasStatusEffect(StatusEffects.Polarize)) {
-				if (player.hasPerk(PerkLib.Ghostslinger)) {
+				if (player.hasPerk(PerkLib.Magnetize)) {
 					if (monster.hasPerk(PerkLib.LightningVulnerability) || monster.hasPerk(PerkLib.DarknessNature)) damage *= 4;
 					else damage *= 2;
 				}
@@ -8468,6 +8468,7 @@ public class Combat extends BaseContent {
 		if (player.upperGarment == undergarments.TECHBRA) damage *= 1.05;
 		if (player.lowerGarment == undergarments.T_PANTY) damage *= 1.05;
         if (player.hasStatusEffect(StatusEffects.TechOverdrive)) damage *= 1.2;
+		if (player.hasPerk(PerkLib.GoblinatusGraduate) && player.isGoblinoid()) damage *= 2;
         return damage;
     }
 	
@@ -8477,8 +8478,9 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.GreasedLightning)) tinkering += 0.1;
 		if (player.hasPerk(PerkLib.Polarize)) tinkering += 0.15;
 		if (player.hasPerk(PerkLib.Magnetize)) tinkering += 0.2;
-		//if (player.hasPerk(PerkLib.JobArtificier)) tinkering += 0.15;
+		if (player.hasPerk(PerkLib.GoblinatusGraduate)) tinkering += 0.25;
 		if (player.hasKeyItem("GOBX Chemical Improved formula") >= 0) tinkering += 0.5;
+		if (player.hasPerk(PerkLib.GoblinatusGraduate) && player.isGoblinoid()) damage *= 2;
 		damage *= tinkering;
 		return damage;
 	}

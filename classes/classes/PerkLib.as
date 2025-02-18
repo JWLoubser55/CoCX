@@ -779,6 +779,9 @@ public class PerkLib
 		public static const AyoArmorMaster:PerkType = mk("Ayo Armor Master", "Ayo Armor Master",
 				"Boosts armor points by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)",
 				"You've chosen the 'Ayo Armor Master' perk, increasing the effectiveness of ayo armor by a portion of your speed. (unpowered - 1:100)(powered - 1:50)");
+		public static const GoblinatusGraduate:PerkType = mk("Goblinatus Graduate", "Goblinatus Graduate",
+				"You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.",
+				"You've chosen the 'Goblinatus Graduate' perk. You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -792,9 +795,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8242,6 +8242,10 @@ public class PerkLib
                     .requireLevel(24);
             FirstAttackGolems.requireLevel(24)
                     .requirePerk(MasterGolemMaker);
+            GoblinatusGraduate.requireLevel(24)
+                    .requirePerk(SimplifiedInterface)
+                    .requireInt(75)
+					.requireWis(75);
             NaturalHealingEpic.requireLevel(24)
                     .requirePerk(NaturalHealingMajor)
                     .requireInt(25)
