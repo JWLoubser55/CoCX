@@ -287,7 +287,7 @@ public class Weapon extends Equipable
 						} 
 					}
 				}
-				else if (!game.player.hasPerk(PerkLib.GigantGrip)) {
+				else if (!game.player.isAbleToOneHandWieldLargeWeapon()) {
 					if (slot == SLOT_WEAPON_MELEE_OFF) noMainHandAllowed = true;
 					else noShieldOffHandAllowed = true;
 					//if (doOutput) outputText(getItemText("dual_fail"));
@@ -316,7 +316,7 @@ public class Weapon extends Equipable
 				else if (!game.player.hasPerk(PerkLib.TitanGrip)) {
 					if (slot == SLOT_WEAPON_MELEE_OFF) noMainHandAllowed = true;
 					else noShieldOffHandAllowed = true;
-					if (!game.player.hasPerk(PerkLib.GigantGrip)) {
+					if (!game.player.isAbleToOneHandWieldLargeWeapon()) {
 						if (doOutput) outputText(getItemText("massive_fail"));
 						return false;
 					}
@@ -380,19 +380,19 @@ public class Weapon extends Equipable
 		
 		override public function beforeEquip(doOutput:Boolean, slot:int):Equipable {
 			if (!game.player.shield.isNothing) {
-				if (isLarge() && !game.player.hasPerk(PerkLib.GigantGrip)
+				if (isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
 					|| isMassive() && !game.player.hasPerk(PerkLib.TitanGrip)){
 					SceneLib.inventory.unequipShield();
 				}
 			}
 			if (!game.player.weaponOff.isNothing) {
-				if (game.player.weapon.isLarge() && !game.player.hasPerk(PerkLib.GigantGrip)
+				if (game.player.weapon.isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
 					|| game.player.weapon.isMassive() && !game.player.hasPerk(PerkLib.TitanGrip)){
 					SceneLib.inventory.unequipWeaponOff();
 				}
 			}
 			if (!game.player.weapon.isNothing) {
-				if (game.player.weaponOff.isLarge() && !game.player.hasPerk(PerkLib.GigantGrip)
+				if (game.player.weaponOff.isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
 					|| game.player.weaponOff.isMassive() && !game.player.hasPerk(PerkLib.TitanGrip)){
 					SceneLib.inventory.unequipWeapon();
 				}

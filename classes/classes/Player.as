@@ -806,6 +806,7 @@ use namespace CoC;
 				if (buff("Ayo Armor").isPresent()) speedBonus += Math.round(spe / 50);
 				else speedBonus += Math.round(spe / 100);
 			}
+			if (hasPerk(PerkLib.HyperServosMastery) && (isInGoblinMech() || isInNonGoblinMech())) speedBonus += Math.round(spe / 100);
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment6)) {
 				var PE6:Number = Math.round(inte / 20);
 				if (PE6 > Math.round(level / 2)) PE6 = Math.round(level / 2);
@@ -1033,7 +1034,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.FFclassHeavenTribulationSurvivor)) armorMDef += 10 * newGamePlusMod;
 			if (hasPerk(PerkLib.EclassHeavenTribulationSurvivor)) armorMDef += 12 * newGamePlusMod;
 			//Agility boosts armor ratings!
-			var speedBonus:int = 0;/*
+			var speedBonus:int = 0;
 			if (hasPerk(PerkLib.Agility)) {
 				if (armor.name == "some taur paladin armor" || armor.name == "some taur blackguard armor") {
 					speedBonus += Math.round(spe / 5);
@@ -1045,7 +1046,12 @@ use namespace CoC;
 					speedBonus += Math.round(spe / 25);
 				}
 			}
-			if (hasPerk(PerkLib.ArmorMaster) && isInHeavyArmor()) speedBonus += Math.round(spe / 50);*/
+			if (hasPerk(PerkLib.ArmorMaster) && isInHeavyArmor()) speedBonus += Math.round(spe / 50);
+			if (hasPerk(PerkLib.AyoArmorMaster) && isInAyoArmor()) {
+				if (buff("Ayo Armor").isPresent()) speedBonus += Math.round(spe / 50);
+				else speedBonus += Math.round(spe / 100);
+			}
+			if (hasPerk(PerkLib.HyperServosMastery) && (isInGoblinMech() || isInNonGoblinMech())) speedBonus += Math.round(spe / 100);
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment6)) {
 				var PE6:Number = Math.round(inte / 20);
 				if (PE6 > Math.round(level / 2)) PE6 = Math.round(level / 2);
@@ -1204,7 +1210,7 @@ use namespace CoC;
 		public function isHavingEnhancedHearing():Boolean { return (ears.type == Ears.ELVEN); }
 		public function isTechSavvyPC():Boolean { return (isGoblinoid() || (hasPerk(IMutationsLib.HumanSmartsIM) && perkv1(IMutationsLib.HumanSmartsIM) >= 2) || isRace(Races.WEREFOX)); }
 		public function isTechWeapons():Boolean { return (weapon.isTechWeapon()); }
-		public function isAbleToOneHandWieldLargeWeapon():Boolean { return (hasPerk(PerkLib.GigantGrip) || (isInAyoArmor() && buff("Ayo Armor").isPresent())); } 
+		public function isAbleToOneHandWieldLargeWeapon():Boolean { return (hasPerk(PerkLib.GigantGrip) || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent())); } 
 		//Weapons for Whirlwind
 		public function isWeaponForWhirlwind():Boolean
 		{

@@ -159,7 +159,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 wisdom lvl-up perk: Fourth Tamer of the Apocalypse. Req. Three times a tame perk and 100+ wisdom. Effect: Now you can assemble 4 horsema... monsters team.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Improved Kineses. Req. one of perks: Pyrokinesis, Hydrokinesis, Cryokinesis, Geokinesis, Electrokinesis, Aerokinesis, Umbrakinesis, Acidokinesis, Ionikinesis, Cocytokinesis and 75+ sensitivity. Effect: All of your kinesis type specials damage have added minor inteligence/wisdom scaling.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Psychic Bolt. Req. Psychic Barrier perk and 75+ sensitivity. Effect: Enable use of Psychic Bolt. (scaless off Sensitivity and deal psychic type of dmg)\n");
-			outputText("-New tier 4 wisdom lvl-up perk: Conduction Soulforce Charge. Req. Job: Artificier perk and 125+ wisdom. Effect: As long you have sufficient amount of soulforce, expend them to keep Ayo Armor active instead of using internal storage.\n");
+			outputText("-New tier 4 wisdom lvl-up perk: Conduction Soulforce Charge. Req. Ayo Armor Proficiency perk and 125+ wisdom. Effect: As long you have sufficient amount of soulforce, expend them to keep Ayo Armor active instead of using internal storage.\n");
 			outputText("-New tier 4 wisdom lvl-up perk: Empowered Taming. Req. Fourth Tamer of the Apocalypse perk and 130+ wisdom. Effect: During taming monster it wisdom is treated as if it was 80% lower.\n");
 			outputText("-New tier 4 sensitivity lvl-up perk: Wide Area Kineses. Req. Improved Kineses perk and 100+ sensitivity. Effect: All of your kinesis type specials would be treated as AoE attacks against any group of enemies.\n");
 			outputText("-New tier 4 sensitivity lvl-up perk: Telekinetic Grapple. Req. Psychic Bolt perk and 100+ sensitivity. Effect: Enable use of Telekinetic Grab (with 2x shorter then normally cooldown).\n");
@@ -327,13 +327,13 @@ public class Changelog extends BaseContent
 			outputText("-New key Item (by Liadri): Flasherbang II - req. Flasherbang - The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds\n");
 			outputText("-New key Item (by Liadri): Stun Grenade II - req. Flasherbang - Upgrade the stun grenade explosion to also deal lightning damage\n");
 			outputText("-New key Item (by Liadri): Caustic Goonade - req. Goonade - Toss a grenade that splatter acidic sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground. Drop opponent armor class by 100%\n");
-			outputText("-New tier 2 toughness lvl-up perk: Ayo Armor Master. Req. Job: Artificier perk and 75+ toughness. Effect: Boosts armor points by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)\n");
+			outputText("-New tier 2 toughness lvl-up perk: Ayo Armor Master. Req. Job: Artificier perk and 75+ toughness. Effect: Boosts armor and magical resistance by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)\n");
 			outputText("-New tier 20 sensitivity lvl-up perk: Mythical Desensitization. Req. Legendary Desensitization perk and 200+ sens. Effect: Negative effects of sensitivity are reduced by 25%.\n");
 			outputText("-Fix not counting basilisk womb births towards times given birth. (Stadler)\n");
 			outputText("-New tier 4 misc lvl-up perk: Goblinatus Graduate. Req. Simplified Interface perk, 75+ wisdom and 75+ intelligence. Effect: You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 3 wisdom lvl-up perk: Exo-Giant’s Grip. Req. Ayo Armor Master perk and 100+ wisdom. Effect: Gain an ability to wield large (melee or range) weapons and massive shields in one hand as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)\n");
+			outputText("-New tier 3 toughness lvl-up perk: Hyper-Servos Mastery. Req. Job: Artificier perk and 100+ toughness Effect: Boosts armor and magical resistance by a portion of your speed on vehicle armors. (1:100 ratio)\n");
+			outputText("-Agility and Armor Master perks now also boost magic resistance with the same ratio as they boost armor.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -343,9 +343,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: bigger meat shields, bigger claws, bigger muscles \o/ bigger everything???
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
@@ -355,7 +353,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier 4 wisdom lvl-up perk: ???. Req. Fourth Tamer of the Apocalypse perk and 125+ wisdom. Effect: 5th slot
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");//New tier 4 wisdom lvl-up perk: Fifth Tamed. Req. Fourth Tamer of the Apocalypse perk and 125+ wisdom. Effect: 5th slot
 			outputText("-\n");//New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. ??? perk and 130+ wisdom. Effect: allow exchange single monsters variants > group monsters variants
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Job: Tamer and 50+ wisdom. Effect: 8th kaiju joins your team of monsters.
 			outputText("-\n");

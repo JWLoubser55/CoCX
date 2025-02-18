@@ -41,7 +41,7 @@ package classes.Items.Weapons
 		}
 		
 		override public function canEquip(doOutput:Boolean, slot:int):Boolean {
-			if (game.player.hasPerk(PerkLib.GigantGrip)) return super.canEquip(doOutput, slot);
+			if (game.player.isAbleToOneHandWieldLargeWeapon()) return super.canEquip(doOutput, slot);
 			if (doOutput) outputText("You aren't yet skilled enough to handle large weapons with one hand effectively. Unless you want to hurt yourself instead of your enemies when trying to use it...  ");
 			return false;
 		}

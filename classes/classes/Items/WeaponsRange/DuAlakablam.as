@@ -17,10 +17,10 @@ package classes.Items.WeaponsRange
 		}
 		
 		override public function canEquip(doOutput:Boolean, slot:int):Boolean {
-			if ((game.player.hasPerk(PerkLib.DualWield) && (game.player.hasPerk(PerkLib.GigantGrip) || game.player.hasPerk(PerkLib.AntyDexterity))) || (game.player.hasPerk(PerkLib.GigantGrip) && game.player.hasPerk(PerkLib.AntyDexterity))) {
+			if ((game.player.hasPerk(PerkLib.DualWield) && (game.player.isAbleToOneHandWieldLargeWeapon() || game.player.hasPerk(PerkLib.AntyDexterity))) || (game.player.isAbleToOneHandWieldLargeWeapon() && game.player.hasPerk(PerkLib.AntyDexterity))) {
 				return super.canEquip(doOutput, slot);
 			}
-			if (!game.player.hasPerk(PerkLib.GigantGrip) && !game.player.hasPerk(PerkLib.AntyDexterity)) {
+			if (!game.player.isAbleToOneHandWieldLargeWeapon() && !game.player.hasPerk(PerkLib.AntyDexterity)) {
 				if (doOutput) outputText("You aren't skilled enough to handle this pair of firearms!  ");
 				return false;
 			}

@@ -777,11 +777,20 @@ public class PerkLib
 				"Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.",
 				"You've chosen the 'Magnetize' perk. Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.");
 		public static const AyoArmorMaster:PerkType = mk("Ayo Armor Master", "Ayo Armor Master",
-				"Boosts armor points by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)",
+				"Boosts armor and magical resistance by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)",
 				"You've chosen the 'Ayo Armor Master' perk, increasing the effectiveness of ayo armor by a portion of your speed. (unpowered - 1:100)(powered - 1:50)");
 		public static const GoblinatusGraduate:PerkType = mk("Goblinatus Graduate", "Goblinatus Graduate",
 				"You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.",
 				"You've chosen the 'Goblinatus Graduate' perk. You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.");
+		public static const ExoGiantsGrip:PerkType = mk("Exo-Giant’s Grip", "Exo-Giant’s Grip",
+				"Gain an ability to wield large (melee or range) weapons and massive shields in one hand as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)",
+				"You've chosen the 'Exo-Giant’s Grip' perk, gaining an ability to wield large (melee or range) weapons and massive shields in one hand as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)").withBuffs({'str.mult':0.5});
+		public static const HyperServosMastery:PerkType = mk("Hyper-Servos Mastery", "Hyper-Servos Mastery",
+				"Boosts armor points by a portion of your speed on vehicle armors. (1:100 ratio)",
+				"You've chosen the 'Hyper-Servos Mastery' perk. Boosts armor points by a portion of your speed on vehicle armors. (1:100 ratio)");
+		public static const FifthTamed:PerkType = mk("Fifth Tamed", "Fifth Tamed",
+				"Now you can add fifth wheel... tamed monster to your team.",
+				"You've chosen the 'Fifth Wheel' perk. Now you can add fifth wheel... tamed monster to your team.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -795,9 +804,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -876,8 +882,8 @@ public class PerkLib
 				"You understand the properties of wind resistance and aerodynamics and how to optimize your situation in the air. (increase accuracy to melee/range attacks by 20% when flying)",
 				"You've chosen the 'Aerobatics' perk. You understand the properties of wind resistance and aerodynamics and how to optimize your situation in the air.");
 		public static const Agility:PerkType = mk("Agility", "Agility",
-				"Boosts physical defense or armor by a portion of your speed on light/medium armors.",
-				"You've chosen the 'Agility' perk, increasing the effectiveness (physical defense) of light/medium armor by a portion of your speed.");
+				"Boosts physical defense and magical resistance by a portion of your speed on light/medium armors. (1:5-1:25 ratio)",
+				"You've chosen the 'Agility' perk, increasing the effectiveness (physical defense and magical resistance) of light/medium armor by a portion of your speed. (1:5-1:25 ratio)");
 		public static const AlchemicalCartridge:PerkType = mk("Alchemical cartridge", "Alchemical cartridge",
 				"Add your intelligence to gun damage as a modifier. (+5% firearms attacks multiplier)",
 				"You've chosen the 'Alchemical cartridge' perk, adding intelligence scaling to firearms damage. (+5% firearms attacks multiplier)");
@@ -1017,8 +1023,8 @@ public class PerkLib
 				"You finally forged your best piece of work! With all of your accumulated knowledge and tools, you can make good armor better, and forge great armor, further increasing your proficiency all things armor! (+5% phys/mag resistance)",
 				"You've chosen the 'Armor' perk, increasing armor proficiency. (+5% phys/mag resistance)");
 		public static const ArmorMaster:PerkType = mk("Armor Master", "Armor Master",
-				"Boosts armor points by a portion of your speed on heavy armors.",
-				"You've chosen the 'Armor Master' perk, increasing the effectiveness of heavy armor by a portion of your speed.");
+				"Boosts armor and magical resistance by a portion of your speed on heavy armors. (1:50 ratio)",
+				"You've chosen the 'Armor Master' perk, increasing the effectiveness of heavy armor by a portion of your speed. (1:50 ratio)");
 		public static const ArouseTheAudience:PerkType = mk("Arouse the audience", "Arouse the audience",
 				"Increase the damage of non periodic tease against groups by 50% and periodic by 20%.",
 				"You've chosen the 'Arouse the audience' perk, increasing the damage of tease against groups.");
@@ -5734,6 +5740,9 @@ public class PerkLib
             Lifeline.requirePerk(JobDefender)
                     .requireTou(75)
                     .requireLevel(18);
+            HyperServosMastery.requireTou(100)
+					.requirePerk(JobArtificier)
+                    .requireLevel(18);
             //Tier 4 Toughness Perks
             AdvancedEndurance.requireLevel(24)
                     .requireTou(150)
@@ -6973,9 +6982,9 @@ public class PerkLib
                     .requireInt(35)
                     .requireSpe(30)
                     .requireLevel(18);
-    //        AyoArmorProficiency.requireLevel(18)
-	//				.requirePerk(JobArtificier)
-    //                .requireTou(100);
+            ExoGiantsGrip.requirePerk(AyoArmorMaster)
+                    .requireWis(100)
+                    .requireLevel(18);
             //Tier 4 Wisdom perks
             EmpoweredTaming.requireLevel(24)
                     .requirePerk(FourthTamerOfTheApocalypse)
@@ -7027,8 +7036,11 @@ public class PerkLib
                     .requireSpe(60)
                     .requireLevel(24);
             ConductionSoulforceCharge.requireLevel(24)
-                    .requirePerk(JobArtificier)
+                    .requirePerk(AyoArmorProficiency)
                     .requireWis(125);
+    //        AyoArmorProficiency.requireLevel(30)
+	//				.requirePerk(JobArtificier)
+    //                .requireTou(150);
 			//Tier 5 Wisdom perks
             UnlockSpirit2ndStage.requirePerk(UnlockSpirit)
                     .requireWis(125)

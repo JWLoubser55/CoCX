@@ -359,8 +359,19 @@ public class EventParser {
             SceneLib.inventory.takeItem(player.unequipUnderBottom(false, true), playerMenu);
             return true;
         }
+		//Unequip large weapon if your Ayo armor is unpowered
+		if (player.weaponOff.isSingleLarge() && !player.hasPerk(PerkLib.GigantGrip) && player.hasPerk(PerkLib.ExoGiantsGrip) && player.isInAyoArmor() && !player.buff("Ayo Armor").isPresent()) {
+			EngineCore.outputText("Your ayo armor is unpowered and you can't no longer wield large weapon singelahanded. As such, your off hand weapon has been unequipped automatically. ");
+            SceneLib.inventory.takeItem(player.unequipWeaponOff(), playerMenu);
+            return true;
+		}
+		if (player.weapon.isSingleLarge() && !player.hasPerk(PerkLib.GigantGrip) && player.hasPerk(PerkLib.ExoGiantsGrip) && player.isInAyoArmor() && !player.buff("Ayo Armor").isPresent()) {
+			EngineCore.outputText("Your ayo armor is unpowered and you can't no longer wield large weapon singelahanded. As such, your main hand weapon has been unequipped automatically. ");
+            SceneLib.inventory.takeItem(player.unequipWeapon(), playerMenu);
+            return true;
+		}
         //Unequip shield if you're wielding a large weapon.
-        if (((player.weapon.isSingleLarge() && player.weapon != CoC.instance.weapons.AETHERD && !player.hasPerk(PerkLib.GigantGrip) && !player.hasPerk(PerkLib.AntyDexterity)) || (player.weapon.isDualMedium() && player.weapon != CoC.instance.weapons.AETHERD && !player.hasPerk(PerkLib.AntyDexterity))
+        if (((player.weapon.isSingleLarge() && player.weapon != CoC.instance.weapons.AETHERD && !player.isAbleToOneHandWieldLargeWeapon() && !player.hasPerk(PerkLib.AntyDexterity)) || (player.weapon.isDualMedium() && player.weapon != CoC.instance.weapons.AETHERD && !player.hasPerk(PerkLib.AntyDexterity))
 			|| (player.weapon.isDualLarge() && player.weapon != CoC.instance.weapons.AETHERD) || player.weapon == CoC.instance.weapons.DAISHO) && !player.shield.isNothing) {
             EngineCore.outputText("Your current weapon requires the use of two hands. As such, your shield has been unequipped automatically. ");
             SceneLib.inventory.takeItem(player.unequipShield(), playerMenu);
