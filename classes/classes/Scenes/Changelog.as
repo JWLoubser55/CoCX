@@ -329,7 +329,7 @@ public class Changelog extends BaseContent
 			outputText("-New key Item (by Liadri): Caustic Goonade - req. Goonade - Toss a grenade that splatter acidic sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground. Drop opponent armor class by 100%\n");
 			outputText("-New tier 2 toughness lvl-up perk: Ayo Armor Master. Req. Job: Artificier perk and 75+ toughness. Effect: Boosts armor points by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)\n");
 			outputText("-New tier 20 sensitivity lvl-up perk: Mythical Desensitization. Req. Legendary Desensitization perk and 200+ sens. Effect: Negative effects of sensitivity are reduced by 25%.\n");
-			outputText("-\n");
+			outputText("-Fix not counting basilisk womb births towards times given birth. (Stadler)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
