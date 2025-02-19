@@ -764,7 +764,7 @@ public static const SOPHIE_FOLLOWER_PROGRESS:int                                
 public static const KID_A_XP:int                                                    =  756; //
 public static const KID_SITTER:int                                                  =  757; // 0 = no sitter, 1 = possible, 2 = doing dat shit
 public static const HAD_KID_A_DREAM:int                                             =  758; //
-public static const CUSTOM_PC_ENABLED:int                                           =  759; //No longer in use
+public static const TAMED_00_NAME:int                                           	=  759; //
 public static const SHEILA_CORRUPTION:int                                           =  760; //
 public static const SHEILA_XP:int                                                   =  761; //
 public static const SHEILA_PREGNANCY_INCUBATION:int                                 =  762; //Previously SHEILA_PREG

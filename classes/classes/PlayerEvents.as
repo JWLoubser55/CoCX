@@ -970,21 +970,29 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster01) && player.statusEffectv2(StatusEffects.TamedMonster01) > 0) {
-				/*if (player.hasPerk(PerkLib.TheyFightTheyProtect)) player.addStatusValue(StatusEffects.TamedMonster01, 2, -20);
-				else */player.addStatusValue(StatusEffects.TamedMonster01, 2, -10);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster01, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster01, 2, -10);
 				if (player.statusEffectv2(StatusEffects.TamedMonster01) < 0) player.changeStatusValue(StatusEffects.TamedMonster01, 2, 0);
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster02) && player.statusEffectv2(StatusEffects.TamedMonster02) > 0) {
-				player.addStatusValue(StatusEffects.TamedMonster02, 2, -10);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster02, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster02, 2, -10);
 				if (player.statusEffectv2(StatusEffects.TamedMonster02) < 0) player.changeStatusValue(StatusEffects.TamedMonster02, 2, 0);
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster03) && player.statusEffectv2(StatusEffects.TamedMonster03) > 0) {
-				player.addStatusValue(StatusEffects.TamedMonster03, 2, -10);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster03, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster03, 2, -10);
 				if (player.statusEffectv2(StatusEffects.TamedMonster03) < 0) player.changeStatusValue(StatusEffects.TamedMonster03, 2, 0);
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster04) && player.statusEffectv2(StatusEffects.TamedMonster04) > 0) {
-				player.addStatusValue(StatusEffects.TamedMonster04, 2, -10);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster04, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster04, 2, -10);
 				if (player.statusEffectv2(StatusEffects.TamedMonster04) < 0) player.changeStatusValue(StatusEffects.TamedMonster04, 2, 0);
+			}
+			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster05) && player.statusEffectv2(StatusEffects.TamedMonster05) > 0) {
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster05, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster05, 2, -10);
+				if (player.statusEffectv2(StatusEffects.TamedMonster05) < 0) player.changeStatusValue(StatusEffects.TamedMonster05, 2, 0);
 			}
 
 			if (CoC.instance.model.time.hours == 6) {

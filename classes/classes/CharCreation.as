@@ -111,8 +111,7 @@ import classes.Scenes.Combat.CombatAbility;
 			mainView.hideMenuButton( MainView.MENU_PERKS );
 			//Hide perk boxes
 			mainView.hideComboBox();
-			mainView.setButtonText(0, "Newgame"); // b1Text.text = "Newgame";
-			//flags[kFLAGS.CUSTOM_PC_ENABLED] = 0;
+			mainView.setButtonText(0, "Newgame");
 
 			var showSpecialNames:Boolean = true; // achievements[kACHIEVEMENTS.STORY_FINALBOSS] > 0;
 

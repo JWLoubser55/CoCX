@@ -334,14 +334,14 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 wisdom lvl-up perk: Exo-Giant’s Grip. Req. Ayo Armor Master perk and 100+ wisdom. Effect: Gain an ability to wield large (melee or range) weapons and massive shields in one hand as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)\n");
 			outputText("-New tier 3 toughness lvl-up perk: Hyper-Servos Mastery. Req. Job: Artificier perk and 100+ toughness Effect: Boosts armor and magical resistance by a portion of your speed on vehicle armors. (1:100 ratio)\n");
 			outputText("-Agility and Armor Master perks now also boost magic resistance with the same ratio as they boost armor.\n");
+			outputText("-New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)\n");
+			outputText("-New tier 4 wisdom lvl-up perk: Fifth Tamed. Req. Fourth Tamer of the Apocalypse perk and 125+ wisdom. Effect: Now you can add fifth wheel... tamed monster to your team.\n");
+			outputText("-When taming monster capable of spellcasting it would add option in tamed monsters menu to commnad them to use magic bolt.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: bigger meat shields, bigger claws, bigger muscles \o/ bigger everything???
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
@@ -355,8 +355,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier 4 wisdom lvl-up perk: Fifth Tamed. Req. Fourth Tamer of the Apocalypse perk and 125+ wisdom. Effect: 5th slot
 			outputText("-\n");//New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. ??? perk and 130+ wisdom. Effect: allow exchange single monsters variants > group monsters variants
+			outputText("-\n");//New tier 6 wisdom lvl-up perk: ???. Req. ??? perk and 155+ wisdom. Effect: allow to retry taming attempt in case of failure with then adding rand(player.wis) score to player check and substract rand(player.wis) from monster wisdom check
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Job: Tamer and 50+ wisdom. Effect: 8th kaiju joins your team of monsters.
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: ???. Req. ?Quasi Domain Kineses? perk and 175+ sensitivity. Effect: add wis to sens

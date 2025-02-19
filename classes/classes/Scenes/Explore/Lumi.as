@@ -2285,4 +2285,3 @@ public class Lumi extends BaseContent {
 	}
 }
 }
-//

@@ -92,6 +92,7 @@ use namespace CoC;
 				player.hasVagina(), "You could ride the drider's retractible demon-cock or her ovipositor.");
 			addButton(6, "RideOviAnal", victoryVSDriderRideOviAnal).hint("You could always ride her ovipositor anally...");
 			LustyMaidensArmor.addTitfuckButton(7);
+			addButtonIfTrue(12, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			addButton(14, "Leave", cleanupAfterCombat);
 			SceneLib.uniqueSexScene.pcUSSPreChecksV2(defeatDriderIntro);
 		}

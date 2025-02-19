@@ -72,6 +72,7 @@ use namespace CoC;
 			this.long = "You are fighting a cow-like succubus.  She stands about seven feet tall and is hugely voluptuous, with breasts two times the size of her head, tipped with a cluster of four obscenely teat-like nipples.  Her hips flare out into an exaggerated hourglass shape, with a long tail tipped with a fleshy arrow-head spade that waves above her spankable butt.  A small cowbell is tied at the base of the arrow-head with a cute little ribbon.  Wide, cow-like horns, easily appropriate for a minotaur, rise from her head, and she flicks bovine ears about the sides of her head whilst sashaying from side to side on demonic, high-heeled feet.  Her skin is a vibrant purple with splotches of shiny black here and there, including one large spot covering her left eye.  She's using a succubi whip as a weapon.";
 			// this.plural = false;
 			this.flyer = true;
+			this.magicuser = true;
 			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_GAPING);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 100, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("RR"));
@@ -115,7 +116,7 @@ use namespace CoC;
 			this.drop = new WeightedDrop().
 					add(consumables.BIMBOLQ, 1).
 					add(weapons.SUCWHIP, 2).
-					//add(consumables., 6).	- for lacta bovinba milk (like mino cum)
+					//add(consumables., 6).	- for lacta bovina milk (like mino cum)
 					add(consumables.LABOVA_, 8).
 					add(consumables.SUCMILK, 10);
 			this.createPerk(PerkLib.EnemyBeastOrAnimalMorphType, 0, 0, 0, 0);

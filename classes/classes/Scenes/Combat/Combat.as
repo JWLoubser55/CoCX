@@ -867,21 +867,29 @@ public class Combat extends BaseContent {
 			}
 			if (player.hasStatusEffect(StatusEffects.TyrantiaTraining30) && player.lust < player.maxOverLust()) player.removeStatusEffect(StatusEffects.TyrantiaTraining30);
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster01) && player.statusEffectv2(StatusEffects.TamedMonster01) > 0) {
-				/*if (player.hasPerk(PerkLib.TheyFightTheyProtect)) player.addStatusValue(StatusEffects.TamedMonster01, 2, -10);
-				else */player.addStatusValue(StatusEffects.TamedMonster01, 2, -5);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster01, 2, -10);
+				else player.addStatusValue(StatusEffects.TamedMonster01, 2, -5);
 				if (player.statusEffectv2(StatusEffects.TamedMonster01) < 0) player.changeStatusValue(StatusEffects.TamedMonster01, 2, 0);
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster02) && player.statusEffectv2(StatusEffects.TamedMonster02) > 0) {
-				player.addStatusValue(StatusEffects.TamedMonster02, 2, -5);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster02, 2, -10);
+				else player.addStatusValue(StatusEffects.TamedMonster02, 2, -5);
 				if (player.statusEffectv2(StatusEffects.TamedMonster02) < 0) player.changeStatusValue(StatusEffects.TamedMonster02, 2, 0);
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster03) && player.statusEffectv2(StatusEffects.TamedMonster03) > 0) {
-				player.addStatusValue(StatusEffects.TamedMonster03, 2, -5);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster03, 2, -10);
+				else player.addStatusValue(StatusEffects.TamedMonster03, 2, -5);
 				if (player.statusEffectv2(StatusEffects.TamedMonster03) < 0) player.changeStatusValue(StatusEffects.TamedMonster03, 2, 0);
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster04) && player.statusEffectv2(StatusEffects.TamedMonster04) > 0) {
-				player.addStatusValue(StatusEffects.TamedMonster04, 2, -5);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster04, 2, -10);
+				else player.addStatusValue(StatusEffects.TamedMonster04, 2, -5);
 				if (player.statusEffectv2(StatusEffects.TamedMonster04) < 0) player.changeStatusValue(StatusEffects.TamedMonster04, 2, 0);
+			}
+			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster05) && player.statusEffectv2(StatusEffects.TamedMonster05) > 0) {
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster05, 2, -10);
+				else player.addStatusValue(StatusEffects.TamedMonster05, 2, -5);
+				if (player.statusEffectv2(StatusEffects.TamedMonster05) < 0) player.changeStatusValue(StatusEffects.TamedMonster05, 2, 0);
 			}
         }
         mainView.hideMenuButton(MainView.MENU_DATA);
@@ -18845,10 +18853,11 @@ private function ghostRealStrengthCompanion():Number {
 
 private function ghostRealStrengthTamedMonster(no:Number):Number {
 	var ghostRealStrTamedMonster:Number = 0;
-	if (no == 1) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster01a);
-	if (no == 2) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster02a);
-	if (no == 3) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster03a);
-	if (no == 4) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster04a);
+	if (no == 1) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster01a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 2) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster02a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 3) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster03a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 4) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster04a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 5) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster05a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
 	return ghostRealStrTamedMonster;
 }
 
@@ -18913,6 +18922,16 @@ private function ghostRealIntelligenceCompanion():Number {
     if (flags[kFLAGS.PLAYER_COMPANION_2] == "Tyrantia") ghostRealInteCompanion += player.statusEffectv3(StatusEffects.CombatFollowerTyrantia);
     if (flags[kFLAGS.PLAYER_COMPANION_3] == "Tyrantia") ghostRealInteCompanion += player.statusEffectv3(StatusEffects.CombatFollowerTyrantia);
     return ghostRealInteCompanion;
+}
+
+private function ghostRealIntelligenceTamedMonster(no:Number):Number {
+	var ghostRealIntTamedMonster:Number = 0;
+	if (no == 1) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster01b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 2) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster02b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 3) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster03b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 4) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster04b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 5) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster05b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	return ghostRealIntTamedMonster;
 }
 
 private function ghostRealWisdomCompanion():Number {
@@ -19010,6 +19029,11 @@ private function touSpeStrScale(stat:int):Number {
         else return inteWisLibScale(ghostRealIntelligenceCompanion(), randomize);
     }
 
+    public function scalingBonusIntelligenceTamedMonster(no:Number, randomize:Boolean = true):Number {
+        if (flags[kFLAGS.INTELLIGENCE_SCALING] == 1) return touSpeStrScale(ghostRealIntelligenceTamedMonster(no));
+        else return inteWisLibScale(ghostRealIntelligenceTamedMonster(no), randomize);
+    }
+
     public function scalingBonusLibido(randomize:Boolean = true):Number {
         return inteWisLibScale(player.lib, randomize);
     }
@@ -19049,4 +19073,3 @@ private function touSpeStrScale(stat:int):Number {
     }
 }
 }
-

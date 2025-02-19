@@ -8,6 +8,7 @@ import classes.*;
 import classes.BodyParts.Gills;
 import classes.BodyParts.Skin;
 import classes.BodyParts.Tail;
+import classes.Scenes.SceneLib;
 import classes.display.SpriteDb;
 import classes.lists.BreastCup;
 
@@ -57,6 +58,7 @@ public class DarkSlimeScene extends BaseContent
         addButton(1, "Leave", beatingDarkSlimeScram).hint("Scram");
         addButton(2, "Use her", beatingDarkSlimeUseHer);
         addButton(3, "Letz rape", curry(tfScene, true));
+		addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
     }
 
     public function tfScene(letzRape:Boolean = false):void {

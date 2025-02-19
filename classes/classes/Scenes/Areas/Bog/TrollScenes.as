@@ -33,6 +33,7 @@ public class TrollScenes extends BaseContent
 			else addButtonDisabled(1, "Female Rape", "You need a vagina for this scene.");
 			if (player.hasCock()) addButton(2, "Anal Rape", encounterAdultMaleTrollLostAnalRape);
 			else addButtonDisabled(2, "Anal Rape", "You need a penis for this scene.");
+			addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			addButton(14, "Leave", encounterAdultMaleTrollLostLeave);
 			LustyMaidensArmor.addTitfuckButton(7);
 		}
@@ -150,6 +151,7 @@ public class TrollScenes extends BaseContent
 			}
 			if (player.hasVagina()) addButton(3, "Female Rape", encounterAdultFemaleTrollLostFemaleRape);
 			else addButtonDisabled(3, "Female Rape", "You need a vagina for this scene.");
+			addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			addButton(14, "Leave", encounterAdultFemaleTrollLostLeave);
 		}
 		public function encounterAdultFemaleTrollLostRape():void {

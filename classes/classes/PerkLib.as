@@ -788,6 +788,9 @@ public class PerkLib
 		public static const HyperServosMastery:PerkType = mk("Hyper-Servos Mastery", "Hyper-Servos Mastery",
 				"Boosts armor points by a portion of your speed on vehicle armors. (1:100 ratio)",
 				"You've chosen the 'Hyper-Servos Mastery' perk. Boosts armor points by a portion of your speed on vehicle armors. (1:100 ratio)");
+		public static const StrongerTamedMosters:PerkType = mk("Stronger Tamed Mosters", "Stronger Tamed Mosters",
+				"Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)",
+				"You've chosen the 'Stronger Tamed Mosters' perk. Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)");
 		public static const FifthTamed:PerkType = mk("Fifth Tamed", "Fifth Tamed",
 				"Now you can add fifth wheel... tamed monster to your team.",
 				"You've chosen the 'Fifth Wheel' perk. Now you can add fifth wheel... tamed monster to your team.");
@@ -795,12 +798,10 @@ public class PerkLib
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
 				"You've chosen the 'Elements of Mareth: ' perk, your time spent in Mareth allowing you to get basic understanding of native elements that aren't classified as one of the traditional four.");
-		/*public static const :PerkType = mk("", "",
+		/*
+		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk, increasing amount of food you can eat. As side effect your vitality increased (+x to max Tou (scalable)).");
-		public static const StrongerTamedMosters:PerkType = mk("Stronger Tamed Mosters", "Stronger Tamed Mosters",
-				".",
-				"You've chosen the 'Stronger Tamed Mosters' perk. .");
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
@@ -827,7 +828,8 @@ public class PerkLib
 				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
-				"You've chosen the '' perk. .");*/
+				"You've chosen the '' perk. .");
+		*/
 		public static const Acclimation:PerkType = mk("Acclimation", "Acclimation",
 				"Reduces lust gain by 15%.",
 				"You've chosen the 'Acclimation' perk, making your body 15% more resistant to lust, up to a maximum of 75%.");
@@ -6946,9 +6948,9 @@ public class PerkLib
             FourthTamerOfTheApocalypse.requireLevel(18)
                     .requirePerk(ThreeTimesATame)
                     .requireWis(100);
-//            StrongerTamedMosters.requireLevel(18)
-//                    .requirePerk(FourthTamerOfTheApocalypse)
-//                    .requireWis(105);
+            StrongerTamedMosters.requireLevel(18)
+                    .requirePerk(FourthTamerOfTheApocalypse)
+                    .requireWis(105);
 			ElementalConjurerKnowledge.requireWis(100)
                     .requireLevel(18)
 					.requirePerk(JobElementalConjurer)
@@ -6986,8 +6988,11 @@ public class PerkLib
                     .requireWis(100)
                     .requireLevel(18);
             //Tier 4 Wisdom perks
-            EmpoweredTaming.requireLevel(24)
+            FifthTamed.requireLevel(24)
                     .requirePerk(FourthTamerOfTheApocalypse)
+                    .requireWis(125);
+            EmpoweredTaming.requireLevel(24)
+                    .requirePerk(FifthTamed)
                     .requireWis(130);
 //            ComboMaster.requirePerk(Combo)
 //                    .requireWis(125)

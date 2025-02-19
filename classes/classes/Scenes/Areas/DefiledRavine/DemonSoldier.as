@@ -306,7 +306,6 @@ public class DemonSoldier extends Monster {
         this.a = "the ";
         this.short = "Demon Soldier";
         this.imageName = "demon";
-
         this.long = "You are fighting " + (this.demonGender == DEMON_GENDER_MALEHERM ? "what, at first appears to be a manly Incubus, but a glimpse of drooling, demonic snatch reveals to be an unusually masculine Omnibus" : this.demonTitle(1)) + ", which appears to be some form of soldier, as " + this.mf("he", "she") + "'s wearing a suit of bronze armour... of a sort: "
         this.long += "a helmet with holes cut for the creature's horns; a sculpted breastplate with a stylised 'L' in the middle of it and jeweled nipples (naturally) and a pair of armoured bracers and shin-guards, etched with scenes of orgiastic debauchery. ";
         if (rand(3) == 0) {
@@ -320,7 +319,8 @@ public class DemonSoldier extends Monster {
             this.long += " fully exposed to view. ";
         }
         this.long += "\n\nThe " + this.demonTitle(0) + " holds " + this.mf("his", "her") + " weapon, a serrated-edged scimitar, with a practiced familiarity which speaks of martial skill, and regards you with an unmistakable, predatory lust.";
-
+		this.flyer = true;
+		this.magicuser = true;
         this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
         this.ass.analWetness = AssClass.WETNESS_NORMAL;
         this.tallness = rand(31) + 54;

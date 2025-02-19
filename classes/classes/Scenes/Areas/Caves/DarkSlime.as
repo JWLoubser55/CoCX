@@ -176,6 +176,7 @@ use namespace CoC;
 			this.imageName = "googirl";
 			this.long = "This slime looks similar to the goo girls from the lake. However, it’s nucleus is the size of an apple and spherical, not to mention it's purple gel coloration. Surprisingly, it seems intelligent enough to even speak so you better watch out for other oddities.";
 			// this.long = false;
+			this.magicuser = true;
 			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 9001, 0, 0, 0);
 			this.createBreastRow(3);
