@@ -99,6 +99,7 @@ import classes.internals.*;
 			this.imageName = "glacialtrollmale";
 			this.long = "You are fighting what appears to be an glacial troll male. He is just over 9 feet tall, covered in white fur and has a large, muscular, yet stout build. He has tusks protruding from his mouth each about 8 inches long curving upwards. Like all ice trolls, his hands and feet end in sharp claws ready to grip and tear through anything. He is wearing fur armor that conceals most of his body.";
 			// this.plural = false;
+			this.magicuser = true;
 			createBreastRow(Appearance.breastCupInverse("flat"));
 			this.createCock(10, 2, CockTypesEnum.HUMAN);
 			this.balls = 2;

@@ -81,6 +81,7 @@ import classes.internals.*;
 			this.imageName = "glacialtrollfemale";
 			this.long = "You are fighting what appears to be an glacial troll female. She is nearly 9 feet tall, covered in white hair and has a bit of heft to her weight, but she seemingly remains very agile. She has tusks protruding from her mouth each about 5 inches long curving upwards. Like all ice trolls, her hands and feet end in sharp claws ready to grip and tear through anything. She is wearing fur armor that conceals the most of her body.";
 			// this.plural = false;
+			this.magicuser = true;
 			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_LOOSE);
 			createBreastRow(Appearance.breastCupInverse("B"));
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;

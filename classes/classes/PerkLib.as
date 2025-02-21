@@ -794,6 +794,9 @@ public class PerkLib
 		public static const FifthTamed:PerkType = mk("Fifth Tamed", "Fifth Tamed",
 				"Now you can add fifth wheel... tamed monster to your team.",
 				"You've chosen the 'Fifth Wheel' perk. Now you can add fifth wheel... tamed monster to your team.");
+		public static const SicEmSix:PerkType = mk("Sic ‘Em Six", "Sic ‘Em Six",
+				"No leash is too tight, no beast too wild. Heel or feel—obedience is a six-step process.",
+				"You've chosen the 'Sic ‘Em Six' perk. No leash is too tight, no beast too wild. Heel or feel—obedience is a six-step process.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -805,9 +808,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -7047,6 +7047,9 @@ public class PerkLib
 	//				.requirePerk(JobArtificier)
     //                .requireTou(150);
 			//Tier 5 Wisdom perks
+            SicEmSix.requireLevel(30)
+                    .requirePerk(FifthTamed)
+                    .requireWis(150);
             UnlockSpirit2ndStage.requirePerk(UnlockSpirit)
                     .requireWis(125)
                     .requireLevel(30);

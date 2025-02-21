@@ -148,22 +148,36 @@ public class Changelog extends BaseContent
 			outputText("-New tier 0 wisdom lvl-up perk: (Basic) Job: Tamer. Req. 10+ wisdom. Effect: Allow to tame 1 beast with feral level of intelligence.\n");
 			outputText("-New tier 0 sensitivity lvl-up perk: (Basic) Job: Esper. Req. 10+ sensitivity. Effect: The same effects as perk Telekinesis (You have the power to wield and throw objects with your mind alone. Gain a bonus to damage based on inteligence when using thrown weapons.) (+1 exploration reveal)\n");
 			outputText("-New tier 0 wisdom lvl-up perk: Beast Knowledge. Req. Job: Tamer perk and 25+ wisdom. Effect: During taming monster check player wisdom is treated as if it was 2x higher.\n");
+			outputText("-New tier 0 misc lvl-up perk: Stored Momentum. Req. Job: Tinker perk, 15+ wisdom and 15+ intelligence. Effect: After using a gadget you store the latent kinetic energy increasing your speed and strength by 25% for 5 rounds. This effect stacks upon itself.\n");
+			outputText("-New tier 0 misc lvl-up perk: Deconstruct. Req. Job: Tinker perk, 15+ wisdom and 15+ intelligence. Effect: You are an expert at building and dismantling things. This also applies to golems and other constructed creatures made of materials. Your attacks ignore construct armors and deal 50% more damage to them. When harvesting construct you scavenge more materials.\n");
 			outputText("-New tier 1 wisdom lvl-up perk: Beast 02. Req. Job: Tamer perk and 50+ wisdom. Effect: You can have 2 tamed monsters.\n");
 			outputText("-New tier 1 wisdom lvl-up perk: Working Together. Req. Beast 02 perk and 55+ wisdom. Effect: Cooperating between all your tamed monsters would empower the one attacking. (+1x to dmg multi of attacking monster per tamed monster after 1st)\n");
 			outputText("-New tier 1 sensitivity lvl-up perk: Sixth Sense. Req. Job: Esper perk and 25+ sensitivity. Effect: You are not affected by blind and other confusing effects. Increase melee/range accuracy by 10%.\n");
 			outputText("-New tier 1 strength lvl-up perk: Challenging shout (Ex). Req. Challenging shout perk and 50+ str. Effect: Allow to automaticaly use weakened Warrior Shout special at the combat round end if wrath is below 500.\n");
+			outputText("-New tier 1 misc lvl-up perk: Master Gadgeteer. Req. Stored Momentum perk, 30+ wisdom and 30+ intelligence. Effect: Gadgets now gain an added intelligence scaling.\n");
+			outputText("-New tier 1 misc lvl-up perk: Greased lightning. Req. Job: Tinker perk, 30+ wisdom and 30+ intelligence. Effect: After activating a gadget or mechanical ability overcharge yourself with electric current. The next set of attacks deals extra electricity damage equal to the damage dealt, expending the charge. Multiple charges can be stacked which increase the damage multiplier.\n");
 			outputText("-New tier 2 wisdom lvl-up perk: (Advanced) Job: Artificier. Req. Job: Tinker perk, free advanced job slot and 75+ wisdom. Effect: Increase damage of consumable items / technologic weapons by 15%.\n");
 			outputText("-New tier 2 wisdom lvl-up perk: Three times a tame. Req. Beast 02 perk and 75+ wisdom. Effect: Now you can control 3 monsters at the same time.\n");
 			outputText("-New tier 2 sensitivity lvl-up perk: Psychic Barrier. Req. Sixth Sense perk and 50+ sensitivity. Effect: You learn to create an invisible barrier, using your psychokinesis that boost phys/magic resistance by 10% and giving very minor (1%) boost to toughness.\n");
 			outputText("-New tier 2 strength lvl-up perk: Challenging shout (Su). Req. Challenging shout (Ex) perk and 75+ str. Effect: Warrior Shout special can be used any turn but amount of gained wrath would depend how long it was used last time in combat. (4% per turn up to 40% after 10 turns)\n");
+			outputText("-New tier 2 wisdom lvl-up perk: They Fight, They Protect. Req. Three times a tame perk and 80+ wisdom. Effect: You could now command tamed monster with full health to protect you from next enemy attack. After protecting they recover 5% HP per turn or 10% HP per hour.\n");
+			outputText("-New tier 2 misc lvl-up perk: Polarize. Req. Greased lightning perk, 45+ wisdom and 45+ intelligence. Effect: Lightning attacks magnetize your foes making physical attacks dealt by metallic objects such as ammunition or a conventional blade deal 50% increased damage for two rounds.\n");
+			outputText("-New tier 2 misc lvl-up perk: Simplified Interface. Req. Master Gadgeteer perk, 45+ wisdom and 45+ intelligence. Effect: You did what goblins did not and simplified the interface slightly in order to quicken the usage of your gadgets. Once per round use a gadget as a free action.\n");
+			outputText("-New tier 2 toughness lvl-up perk: Ayo Armor Master. Req. Job: Artificier perk and 75+ toughness. Effect: Boosts armor and magical resistance by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)\n");
 			outputText("-New tier 3 wisdom lvl-up perk: Fourth Tamer of the Apocalypse. Req. Three times a tame perk and 100+ wisdom. Effect: Now you can assemble 4 horsema... monsters team.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Improved Kineses. Req. one of perks: Pyrokinesis, Hydrokinesis, Cryokinesis, Geokinesis, Electrokinesis, Aerokinesis, Umbrakinesis, Acidokinesis, Ionikinesis, Cocytokinesis and 75+ sensitivity. Effect: All of your kinesis type specials damage have added minor inteligence/wisdom scaling.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Psychic Bolt. Req. Psychic Barrier perk and 75+ sensitivity. Effect: Enable use of Psychic Bolt. (scaless off Sensitivity and deal psychic type of dmg)\n");
+			outputText("-New tier 3 misc lvl-up perk: Law of perpetual motion. Req. Stored Momentum perk, 60+ wisdom and 60+ intelligence. Effect: Stored Momentum duration increases to 10 rounds.\n");
+			outputText("-New tier 3 misc lvl-up perk: Magnetize. Req. Polarize perk, 60+ wisdom and 60+ intelligence. Effect: Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.\n");
+			outputText("-New tier 3 wisdom lvl-up perk: Exo-Giant’s Grip. Req. Ayo Armor Master perk and 100+ wisdom. Effect: Gain an ability to wield large (melee or range) weapons and massive shields in one hand as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)\n");
+			outputText("-New tier 3 toughness lvl-up perk: Hyper-Servos Mastery. Req. Job: Artificier perk and 100+ toughness Effect: Boosts armor and magical resistance by a portion of your speed on vehicle armors. (1:100 ratio)\n");
+			outputText("-New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)\n");
 			outputText("-New tier 4 wisdom lvl-up perk: Conduction Soulforce Charge. Req. Ayo Armor Proficiency perk and 125+ wisdom. Effect: As long you have sufficient amount of soulforce, expend them to keep Ayo Armor active instead of using internal storage.\n");
 			outputText("-New tier 4 wisdom lvl-up perk: Empowered Taming. Req. Fourth Tamer of the Apocalypse perk and 130+ wisdom. Effect: During taming monster it wisdom is treated as if it was 80% lower.\n");
 			outputText("-New tier 4 sensitivity lvl-up perk: Wide Area Kineses. Req. Improved Kineses perk and 100+ sensitivity. Effect: All of your kinesis type specials would be treated as AoE attacks against any group of enemies.\n");
 			outputText("-New tier 4 sensitivity lvl-up perk: Telekinetic Grapple. Req. Psychic Bolt perk and 100+ sensitivity. Effect: Enable use of Telekinetic Grab (with 2x shorter then normally cooldown).\n");
 			outputText("-New tier 4 misc lvl-up perk: All-Rounder Training ( Basic ). Req. Job: All-Rounder perk. Effect: Limit of train caps for stats is increased by 5.\n");
+			outputText("-New tier 4 misc lvl-up perk: Goblinatus Graduate. Req. Simplified Interface perk, 75+ wisdom and 75+ intelligence. Effect: You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.\n");
 			outputText("-New tier 5 wisdom lvl-up perk: Efficient Usage of Soulforce. Req. Conduction Soulforce Charge perk and 150+ wisdom. Effect: You learned how to more efficient use soulforce powering your Ayo Armor to further fortify your basic physical and magic resitances. (+core tou % up to 300%)\n");
 			outputText("-New tier 5 sensitivity lvl-up perk: Advanced Kineses. Req. Wide Area Kineses perk and 125+ sensitivity. Effect: All of your kinesis type specials damage have improved scaling from sensitivity, wisdom and intelligence.\n");
 			outputText("-New tier 5 misc lvl-up perk: All-Rounder Mental Training. Req. All-Rounder Training ( Basic ) perk. Effect: Limit of train caps for int/wis/lib stats is increased by 10.\n");
@@ -183,7 +197,23 @@ public class Changelog extends BaseContent
 			outputText("-New tier 13 libido lvl-up perk: Seducer Resilience. Req. Magical Charm perk. Effect: Increase HP based on Libido and Sensitivity. (+12 extra LP per point of libido / sensitivity)\n");
 			outputText("-New tier 14 libido lvl-up perk: Spellsong. Req. Seducer Resilience perk. Effect: You learned how to naturally weave your spell with seductive music, melding your artistic talent into your spellcasting. (Spells gain a Libido scaling so long as lust is above 35%)\n");
 			outputText("-New tier 16 misc lvl-up perk: All-Rounder Training ( Grand Master ). Req. All-Rounder Training ( Master ) perk and 7+ advanced jobs. Effect: Limit of train caps for stats is increased by 10.\n");
+			outputText("-New tier 19 misc lvl-up perk: All-Rounder Training ( Semi-Epic ). Req. All-Rounder Training ( Grand Master ) perk and 10+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
 			outputText("-New tier 20 intelligence lvl-up perk: Ultimate Magic. Req. Prestige Job: Warlock or Prestige Job: Arch-priest perk and 475+ int. Effect: You may ignore all constraints to your spell book usage from a dedicated path and may even learn its opposite as a prestige class.\n");
+			outputText("-New tier 22 misc lvl-up perk: All-Rounder Training ( Epic ). Req. All-Rounder Training ( Semi-Epic ) perk and 13+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
+			outputText("-New tier 17 misc lvl-up perk: Limit Breaker: Body (3rd stage). Req. Limit Breaker: Soul (2nd stage) perk. Effect: +15% max HP and Wrath.\n");
+			outputText("-New tier 18 misc lvl-up perk: Limit Breaker: Heart (3rd stage). Req. Limit Breaker: Body (3rd stage) perk. Effect: +15% max Lust and Fatigue.\n");
+			outputText("-New tier 19 misc lvl-up perk: Limit Breaker: Flesh (3rd stage). Req. Limit Breaker: Heart (3rd stage) perk. Effect: +30% Str, Tou, Spe multi.\n");
+			outputText("-New tier 20 misc lvl-up perk: Limit Breaker: Psyche (3rd stage). Req. Limit Breaker: Flesh (3rd stage) perk. Effect: +30% Int, Wis, Lib multi.\n");
+			outputText("-New tier 20 sensitivity lvl-up perk: Mythical Desensitization. Req. Legendary Desensitization perk and 200+ sens. Effect: Negative effects of sensitivity are reduced by 25%.\n");
+			outputText("-New tier 21 misc lvl-up perk: Limit Breaker: Soul (3rd stage). Req. Limit Breaker: Psyche (3rd stage) perk. Effect: +15% max Mana and Soulforce.\n");
+			outputText("-New tier 31 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 32. Req. perk Elemental Contract Rank 31 and 800+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (low) viscount rank\n");
+			outputText("-New tier 32 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 33. Req. perk Elemental Contract Rank 32 and 825+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (mid) viscount rank\n");
+			outputText("-New tier 33 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 34. Req. perk Elemental Contract Rank 33 and 850+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (advanced) viscount rank\n");
+			outputText("-New tier 34 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 35. Req. perk Elemental Contract Rank 34 and 875+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (peak) viscount rank\n");
+			outputText("-New tier 35 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 36. Req. perk Elemental Contract Rank 35 and 900+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (low) earl rank\n");
+			outputText("-New tier 36 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 37. Req. perk Elemental Contract Rank 36 and 925+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (mid) viscount rank\n");
+			outputText("-New tier 37 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 38. Req. perk Elemental Contract Rank 37 and 950+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (advanced) viscount rank\n");
+			outputText("-New tier 38 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 39. Req. perk Elemental Contract Rank 38 and 975+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (peak) viscount rank\n");
 			outputText("-Areas and Places with enemies to fight have their general levels and stats increased. Areas/Places adjusted (new lvl range of enemies): Lake (3-10), Boat (15-29), Forest (O)(8-16), Forest (I)(19-27), Deepwoods (32-52), Desert (O)(13-20), Desert (I)(25-39), Battlefield (B)(18-41), Battlefield (O)(36-65), Hills (23-30), Low Mountains (35-49), Mountains (54-74), High Mountains (79-104), ");
 			outputText("Plains (28-37), Swamp (33-43), Bog (48-64)\n");
 			outputText("-15 new achievments. (13 shadow ones)\n");
@@ -251,13 +281,6 @@ public class Changelog extends BaseContent
 			outputText("-More fixes for displaying balls correctly on charview (mostly for shark-taur). (Stadler)\n");
 			outputText("-Tigershark TF didn't check properly, if the tiger shark stripes skin TF is already present, so it repeated, wasting tigershark tooths. (Stadler)\n");
 			outputText("-Restrained Black/White/Grey Tome initial spellpower is 400% and initial cooldown is -4 turns. It mean also that their effect would be presesnt until lvl 24 not 18.\n");
-			outputText("-New tier 19 misc lvl-up perk: All-Rounder Training ( Semi-Epic ). Req. All-Rounder Training ( Grand Master ) perk and 10+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
-			outputText("-New tier 22 misc lvl-up perk: All-Rounder Training ( Epic ). Req. All-Rounder Training ( Semi-Epic ) perk and 13+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
-			outputText("-New tier 17 misc lvl-up perk: Limit Breaker: Body (3rd stage). Req. Limit Breaker: Soul (2nd stage) perk. Effect: +15% max HP and Wrath.\n");
-			outputText("-New tier 18 misc lvl-up perk: Limit Breaker: Heart (3rd stage). Req. Limit Breaker: Body (3rd stage) perk. Effect: +15% max Lust and Fatigue.\n");
-			outputText("-New tier 19 misc lvl-up perk: Limit Breaker: Flesh (3rd stage). Req. Limit Breaker: Heart (3rd stage) perk. Effect: +30% Str, Tou, Spe multi.\n");
-			outputText("-New tier 20 misc lvl-up perk: Limit Breaker: Psyche (3rd stage). Req. Limit Breaker: Flesh (3rd stage) perk. Effect: +30% Int, Wis, Lib multi.\n");
-			outputText("-New tier 21 misc lvl-up perk: Limit Breaker: Soul (3rd stage). Req. Limit Breaker: Psyche (3rd stage) perk. Effect: +15% max Mana and Soulforce.\n");
 			outputText("-Thief enemy in Ignam was renamed (totaly not degraded) into Thief Associate. Also he no longer play with dagger and just use knife as it was intended. Exploration in Ignam if not founded any enemy would only take 5 min instead of 15. ");
 			outputText("And chance to find enemy would change from default 25% to instead increase with PC level from 50% below lvl 3 to 100% at lvl 9+ (been famous and strong would easier attract all the shady people).\n");
 			outputText("-Passive ability: Manaforce - req. to be Lich. Effect: Effects that restores mana also restores soulforce.\n");
@@ -279,15 +302,10 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Challenging shout (Mastered). Gained by use of the Pocket Watch when req. are meet. Effects: You can now use the ability Warrior Shout! Can be used at any turn but amount of gained wrath would depend how long it was used since last time during combat. ");
 			outputText("(4% per turn up to 60% after 15 turns - first use in combat giving 60%) Also allow to automaticaly use weakened version at the combat round end if wrath is below 750.\n");
 			outputText("-In character creation if Herm option is unlocked can choose now between: Man, Woman, Herm (without balls), Herm (with balls)\n");
-			outputText("-New tier 0 misc lvl-up perk: Stored Momentum. Req. Job: Tinker perk, 15+ wisdom and 15+ intelligence. Effect: After using a gadget you store the latent kinetic energy increasing your speed and strength by 25% for 5 rounds. This effect stacks upon itself.\n");
-			outputText("-New tier 1 misc lvl-up perk: Master Gadgeteer. Req. Stored Momentum perk, 30+ wisdom and 30+ intelligence. Effect: Gadgets now gain an added intelligence scaling.\n");
-			outputText("-New tier 3 misc lvl-up perk: Law of perpetual motion. Req. Stored Momentum perk, 60+ wisdom and 60+ intelligence. Effect: Stored Momentum duration increases to 10 rounds.\n");
 			outputText("-New key Item (by Liadri): Flasherbang - req. Toolbelt - Toss a grenade that overloads the brain with lewd images and light rendering one blind, aroused and increasingly susceptible to lust chemicals.\n");
 			outputText("-New key Item (by Liadri): Goblin Bomber - req. Toolbelt - Unlock the goblin bomber P.Attack during battle summoning one of your many daughters to the field in order to carpet bomb the area. Can be used once per Hour. (Deals massive tech damage and stun for two round)\n");
-			outputText("-New tier 0 misc lvl-up perk: Deconstruct. Req. Job: Tinker perk, 15+ wisdom and 15+ intelligence. Effect: You are an expert at building and dismantling things. This also applies to golems and other constructed creatures made of materials. Your attacks ignore construct armors and deal 50% more damage to them. When harvesting construct you scavenge more materials.\n");
 			outputText("-New key Item (by Liadri): GOBX Chemical - req. Potent Drug injectors and Goblinoid Race - Raises your libido by 100%, sensitivity by 15% and Intelligence by 100% but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins).\n");
 			outputText("-New event perk: GOBX Chemical. Gained by use of GOBX Chemical key item. Effects: Raises your libido, sensitivity and Intelligence but locks your race permanently to goblinoid.\n");
-			outputText("-New tier 1 misc lvl-up perk: Greased lightning. Req. Job: Tinker perk, 30+ wisdom and 30+ intelligence. Effect: After activating a gadget or mechanical ability overcharge yourself with electric current. The next set of attacks deals extra electricity damage equal to the damage dealt, expending the charge. Multiple charges can be stacked which increase the damage multiplier.\n");
 			outputText("-Fixed cockdescript in Herm Centaur 'Stud' Loss scene. (DigitalKitsune)\n");
 			outputText("-New key Item (by Liadri): GOBX Chemical Improved formula - req. GOBX Chemical - Raises your libido by 200%, sensitivity by 30% and Intelligence by 200% while increasing the potency of firearms and technological weapons by 50% but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins).\n");
 			outputText("-A bunch of fixes and Tifa's Hive. (DigitalKitsune)\n");
@@ -300,52 +318,35 @@ public class Changelog extends BaseContent
 			outputText("-I heard you all like prime numbers level cap so here is another new prime number lvl cap: 233 (worry no new prime number cap until 2026 at least)\n");
 			outputText("-Winions unbloat #1, #2. (DigitalKitsune)\n");
 			outputText("-Unbloated perklib a little. (DigitalKitsune)\n");
-			outputText("-New tier 31 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 32. Req. perk Elemental Contract Rank 31 and 800+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (low) viscount rank\n");
-			outputText("-New tier 32 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 33. Req. perk Elemental Contract Rank 32 and 825+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (mid) viscount rank\n");
-			outputText("-New tier 33 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 34. Req. perk Elemental Contract Rank 33 and 850+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (advanced) viscount rank\n");
-			outputText("-New tier 34 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 35. Req. perk Elemental Contract Rank 34 and 875+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (peak) viscount rank\n");
-			outputText("-New tier 35 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 36. Req. perk Elemental Contract Rank 35 and 900+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (low) earl rank\n");
-			outputText("-New tier 36 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 37. Req. perk Elemental Contract Rank 36 and 925+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (mid) viscount rank\n");
-			outputText("-New tier 37 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 38. Req. perk Elemental Contract Rank 37 and 950+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (advanced) viscount rank\n");
-			outputText("-New tier 38 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 39. Req. perk Elemental Contract Rank 38 and 975+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (peak) viscount rank\n");
 			outputText("-Arcane circle can be upgraded 8th and 9th time enabling 2 more steps in making elementals stronger per added circle.\n");
 			outputText("-Fix demonChanges. (Stadler)\n");
 			outputText("-For Yuki Onna encounters it will now only req. to find Yu shop.\n");
 			outputText("-Non goblonoid PC's can now buy and craft few simpler gadgets at Tripxi gunshop: Flasherbang, Goonade, Fire Grenade, Fire Grenade II, Stun Grenade\n");
 			outputText("-Training Dummy now got bit more sponge on it and each upgrade increase it lvl by 60.\n");
 			outputText("-Dracula scene fix racial check. (DigitalKitsune)\n");
-			outputText("-New tier 2 wisdom lvl-up perk: They Fight, They Protect. Req. Three times a tame perk and 80+ wisdom. Effect: You could now command tamed monster with full health to protect you from next enemy attack. After protecting they recover 5% HP per turn or 10% HP per hour.\n");
-			outputText("-New tier 2 misc lvl-up perk: Polarize. Req. Greased lightning perk, 45+ wisdom and 45+ intelligence. Effect: Lightning attacks magnetize your foes making physical attacks dealt by metallic objects such as ammunition or a conventional blade deal 50% increased damage for two rounds.\n");
-			outputText("-New tier 2 misc lvl-up perk: Simplified Interface. Req. Master Gadgeteer perk, 45+ wisdom and 45+ intelligence. Effect: You did what goblins did not and simplified the interface slightly in order to quicken the usage of your gadgets. Once per round use a gadget as a free action.\n");
 			outputText("-New key Item (by Liadri): Fire Grenade - req. Toolbelt - Toss a grenade that sets foes on fire inflicting the burn status effect.\n");
 			outputText("-New key Item (by Liadri): Fire Grenade II - req. Fire Grenade - Upgrade the fire grenade explosion to also deal fire damage.\n");
 			outputText("-Charge special cost base calculation capping at 10k fatigue. When PC have more then 10k fatigue (not counting in overmax fatigue) it will not longer increase charge cost.\n");
 			outputText("-Added fatigue cost for flying using natural wings: 5% per turn. Using Great Dive when PC can keep flying after it (having harpy bones tier 3 or specific gargoyle channel inlay) would add also 5% fatigue cost to take off into the sky after dive.\n");
-			outputText("-New tier 3 misc lvl-up perk: Magnetize. Req. Polarize perk, 60+ wisdom and 60+ intelligence. Effect: Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.\n");
 			outputText("-New key Item (by Liadri): Stun Grenade - req. Toolbelt - Toss a grenade that sets stun foe for 1 round. (4 round cd)\n");
 			outputText("-New key Item (by Liadri): Goonade - req. Toolbelt - Toss a grenade that splatter sticky goo everywhere hindering movement and flight for 10 turns. Enemies hit by this lose the flight status effect and can be targeted as if on the ground\n");
 			outputText("-New key Item (by Liadri): Flasherbang II - req. Flasherbang - The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds\n");
 			outputText("-New key Item (by Liadri): Stun Grenade II - req. Flasherbang - Upgrade the stun grenade explosion to also deal lightning damage\n");
 			outputText("-New key Item (by Liadri): Caustic Goonade - req. Goonade - Toss a grenade that splatter acidic sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground. Drop opponent armor class by 100%\n");
-			outputText("-New tier 2 toughness lvl-up perk: Ayo Armor Master. Req. Job: Artificier perk and 75+ toughness. Effect: Boosts armor and magical resistance by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)\n");
-			outputText("-New tier 20 sensitivity lvl-up perk: Mythical Desensitization. Req. Legendary Desensitization perk and 200+ sens. Effect: Negative effects of sensitivity are reduced by 25%.\n");
 			outputText("-Fix not counting basilisk womb births towards times given birth. (Stadler)\n");
-			outputText("-New tier 4 misc lvl-up perk: Goblinatus Graduate. Req. Simplified Interface perk, 75+ wisdom and 75+ intelligence. Effect: You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.\n");
-			outputText("-New tier 3 wisdom lvl-up perk: Exo-Giant’s Grip. Req. Ayo Armor Master perk and 100+ wisdom. Effect: Gain an ability to wield large (melee or range) weapons and massive shields in one hand as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)\n");
-			outputText("-New tier 3 toughness lvl-up perk: Hyper-Servos Mastery. Req. Job: Artificier perk and 100+ toughness Effect: Boosts armor and magical resistance by a portion of your speed on vehicle armors. (1:100 ratio)\n");
 			outputText("-Agility and Armor Master perks now also boost magic resistance with the same ratio as they boost armor.\n");
-			outputText("-New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)\n");
 			outputText("-New tier 4 wisdom lvl-up perk: Fifth Tamed. Req. Fourth Tamer of the Apocalypse perk and 125+ wisdom. Effect: Now you can add fifth wheel... tamed monster to your team.\n");
-			outputText("-When taming monster capable of spellcasting it would add option in tamed monsters menu to commnad them to use magic bolt.\n");
+			outputText("-When taming monster capable of spellcasting it would add option in tamed monsters menu to command them to use magic bolt.\n");
+			outputText("-New tier 5 wisdom lvl-up perk: Sic ‘Em Six. Req. Fifth Tamed perk and 150+ wisdom. Effect: No leash is too tight, no beast too wild. Heel or feel—obedience is a six-step process.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: x. Req. . Effect: .
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -353,11 +354,10 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier 6 wisdom lvl-up perk: Lucky Number Tamer. Req. Sic ‘Em Six perk and 175+ wisdom. Effect: .
 			outputText("-\n");//New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. ??? perk and 130+ wisdom. Effect: allow exchange single monsters variants > group monsters variants
 			outputText("-\n");//New tier 6 wisdom lvl-up perk: ???. Req. ??? perk and 155+ wisdom. Effect: allow to retry taming attempt in case of failure with then adding rand(player.wis) score to player check and substract rand(player.wis) from monster wisdom check
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Job: Tamer and 50+ wisdom. Effect: 8th kaiju joins your team of monsters.
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Seven Pets, Seven Toys perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: ???. Req. ?Quasi Domain Kineses? perk and 175+ sensitivity. Effect: add wis to sens
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: ???. Req. ?Quasi Domain Kineses? perk and 175+ sensitivity. Effect: add int to sens
@@ -3504,7 +3504,7 @@ public class Changelog extends BaseContent
 			outputText("-Beginner/Apprentice/Expert/Master Golem Maker perks will have changed values of lowering shatter chance for golem cores of temporal golems to respectively 2/2/3/3%. Default chance to shatter core would be lowered from 20% to 10%\n");
 			outputText("-Limit for temporaly golems was increased 2x for all perks aside Job: Golemancer that will rise limit by 5 instead of 3. Also golem core bags to carry cores for later use capacity was increased by 50%.\n");
 			outputText("-Chance to find tree cutting location in forest/deepwoods and quarry site in mountains was increased by large margin to make them easier to encounter. After finding place to cut wood 15 times or mine stones 5 times they will be moved to Places menu (page 3).\n");
-			outputText("-Raiju and Maticore encounter was limited to been lvl 20+ before both show up first time in any area.\n");
+			outputText("-Raiju and Manticore encounter was limited to been lvl 20+ before both show up first time in any area.\n");
 			outputText("-She also can give player that is golemancer 15 golem cores... as long player agree to 'return a favor' to her at undetermined yet point in the future.\n");
 			outputText("-Postfight with golems now have option to leave or to try scavenge them for materials like golem core and possibly other loot too. Having Golemancer job OR last attempt with group of golems will increase chance of successful scavenging to 100%. Higher level golems would also give few stones depending if core was successful scavenged, with failure giving more stones. (texts atm placeholders)\n");
 			outputText("-Making temporaly golem was shortened from 15 to 10 min and permanent golem making was given 20 min (as it was before without any time used for making it).\n");

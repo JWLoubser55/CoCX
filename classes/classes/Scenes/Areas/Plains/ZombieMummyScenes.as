@@ -8,6 +8,7 @@ import classes.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.Areas.Desert.Mummy;
 import classes.Scenes.Areas.Plains.*;
+import classes.Scenes.SceneLib;
 	
 	public class ZombieMummyScenes extends BaseContent
 	{
@@ -40,6 +41,12 @@ import classes.Scenes.Areas.Plains.*;
 		public function defeatZombieMummy():void {
 			clearOutput();
 			outputText("The undead falls to the ground, clearly in need of rest after taking so much punishment. You know better than to try and fuck something that might drain you dry and leave with whatever spoil this thing dropped.");
+			menu();
+			addButtonIfTrue(3, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+			addButton(4, "Leave", defeatZombieMummyLeave);
+		}
+		private function defeatZombieMummyLeave():void {
+			outputText(" You know better than to try and fuck something that might drain you dry and leave with whatever spoil this thing dropped.");
 			inventory.takeItem(consumables.L_DRAFT, cleanupAfterCombat);
 		}
 		public function loseToZombie(female:Boolean = false):void {
