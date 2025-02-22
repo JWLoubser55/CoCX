@@ -22,7 +22,8 @@ use namespace CoC;
 		override public function defeated(hpVictory:Boolean):void
 		{
 			game.flags[kFLAGS.DEMONS_DEFEATED]++;
-			SceneLib.defiledravine.demonScene.defeatIncubus();
+			if (player.hasStatusEffect(StatusEffects.FeralDemon)) SceneLib.defiledravine.demonScene.defeatFeralIncubus();
+			else SceneLib.defiledravine.demonScene.defeatIncubus();
 		}
 		
 		override public function won(hpVictory:Boolean,pcCameWorms:Boolean):void
@@ -123,27 +124,51 @@ use namespace CoC;
 				this.additionalXP = mod > 20 ? 0 : Math.floor(500 * Math.exp(0.3*mod));
 				this.createPerk(PerkLib.OverMaxHP, (62 + 5*mod), 0, 0, 0);
 			}
+			else if (player.hasStatusEffect(StatusEffects.FeralDemon)) {
+				this.short = "feral incubus";
+				initStrTouSpeInte(510, 120, 240, 110);
+				initWisLibSensCor(110, 110, 70, 100);
+				this.weaponAttack = 128;
+				this.armorDef = 90;
+				this.armorMDef = 15;
+				this.bonusHP = 500;
+				this.bonusWrath = 500;
+				this.bonusLust = 221;
+				this.level = 41;
+				this.additionalXP = 100;
+			    this.gems = rand(30) + 20;
+				this.createPerk(PerkLib.OverMaxHP, 41, 0, 0, 0);
+			}
 			else {
 				this.short = "incubus";
-				initStrTouSpeInte(150, 100, 110, 105);
-				initWisLibSensCor(105, 110, 70, 100);
-				this.weaponAttack = 16;
-				this.armorDef = 18;
-				this.armorMDef = 3;
-				this.bonusHP = 500;
-				this.bonusLust = 206;
-				this.level = 26;
-				this.additionalXP = 50;
+				initStrTouSpeInte(340, 240, 240, 220);
+				initWisLibSensCor(220, 220, 140, 100);
+				this.weaponAttack = 64;
+				this.armorDef = 180;
+				this.armorMDef = 30;
+				this.bonusHP = 1000;
+				this.bonusLust = 398;
+				this.level = 38;
+				this.additionalXP = 80;
 			    this.gems = rand(30) + 15;
-				this.createPerk(PerkLib.OverMaxHP, 26, 0, 0, 0);
+				this.createPerk(PerkLib.OverMaxHP, 38, 0, 0, 0);
+			}
+			if (player.hasStatusEffect(StatusEffects.FeralDemon)) {
+				this.long = "The demon before you is clad only in cut-off denim overalls.  There is a large hole ripped in the crotch, allowing the demon member to hang free.  His skin is light purple and perfect, face rugged and handsome, topped with a simple black ponytail and two large horns that sprout from his forehead like twisted tree-trunks.  He not seems to be using any weapon aside of his own claws.";
+				this.createCock(6,1.25,CockTypesEnum.DEMON);
+				this.createPerk(PerkLib.EnemyFeralType, 0, 0, 0, 0);
+			}
+			else {
+				this.long = "The demon before you is clad only in cut-off denim overalls.  There is a large hole ripped in the crotch, allowing the demon's foot-long member to hang free.  His skin is light purple and perfect, face rugged and handsome, topped with a simple black ponytail and two large horns that sprout from his forehead like twisted tree-trunks.  He not seems to be using any weapon aside of his own claws.";
+				this.magicuser = true;
+				this.createCock(12,1.75,CockTypesEnum.DEMON);
+				this.special1 = cockTripAttack2;
+				this.special2 = spoogeAttack2;
 			}
 			this.a = "the ";
 			this.imageName = "incubus";
-			this.long = "The demon before you is clad only in cut-off denim overalls.  There is a large hole ripped in the crotch, allowing the demon's foot-long member to hang free.  His skin is light purple and perfect, face rugged and handsome, topped with a simple black ponytail and two large horns that sprout from his forehead like twisted tree-trunks.  He not seems to be using any weapon aside of his own claws.";
 			// this.plural = false;
 			this.flyer = true;
-			this.magicuser = true;
-			this.createCock(12,1.75,CockTypesEnum.DEMON);
 			this.balls = 2;
 			this.ballSize = 2;
 			this.cumMultiplier = 3;
@@ -171,10 +196,8 @@ use namespace CoC;
 			this.drop = new WeightedDrop().
 					add(consumables.BROBREW, 1).
 					add(consumables.INCUBID, 12);
-			this.special1 = cockTripAttack2;
-			this.special2 = spoogeAttack2;
 			this.tailType = Tail.DEMONIC;
-			this.wings.type = Wings.BAT_LIKE_TINY;
+			this.wings.type = Wings.BAT_LIKE_LARGE;
 			this.wings.desc = "tiny hidden";
 			this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);

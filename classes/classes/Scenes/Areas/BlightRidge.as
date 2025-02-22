@@ -149,7 +149,7 @@ use namespace CoC;
 			});
 		}
 		
-		public const areaLevel:int = 21;
+		public const areaLevel:int = 35;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.blightRidge > 0;
 		}

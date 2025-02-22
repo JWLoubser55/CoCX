@@ -23,7 +23,8 @@ use namespace CoC;
 		override public function defeated(hpVictory:Boolean):void
 		{
 			game.flags[kFLAGS.DEMONS_DEFEATED]++;
-			SceneLib.defiledravine.demonScene.defeatSuccubus();
+			if (player.hasStatusEffect(StatusEffects.FeralDemon)) SceneLib.defiledravine.demonScene.defeatFeralSuccubus();
+			else SceneLib.defiledravine.demonScene.defeatSuccubus();
 		}
 		
 		override public function won(hpVictory:Boolean,pcCameWorms:Boolean):void
@@ -49,34 +50,61 @@ use namespace CoC;
 				this.additionalXP = mod > 20 ? 0 : Math.floor(500 * Math.exp(0.3*mod));
 				this.createPerk(PerkLib.OverMaxHP, (62 + 5*mod), 0, 0, 0);
             }
+			else if (player.hasStatusEffect(StatusEffects.FeralDemon)) {
+				this.short = "feral succubus";
+				initStrTouSpeInte(450, 100, 240, 130);
+				initWisLibSensCor(130, 130, 60, 100);
+				this.weaponAttack = 128;
+				this.armorDef = 90;
+				this.armorMDef = 15;
+				this.bonusHP = 480;
+				this.bonusWrath = 480;
+				this.bonusLust = 231;
+				this.level = 41;
+				this.additionalXP = 100;
+			    this.gems = rand(30) + 20;
+				this.createPerk(PerkLib.OverMaxHP, 41, 0, 0, 0);
+			}
 			else {
 				this.short = "succubus";
-				initStrTouSpeInte(140, 100, 110, 115);
-				initWisLibSensCor(115, 120, 60, 100);
-				this.weaponAttack = 16;
-				this.armorDef = 18;
-				this.armorMDef = 3;
-				this.bonusHP = 480;
-				this.bonusLust = 206;
-				this.level = 26;
-				this.additionalXP = 50;
+				initStrTouSpeInte(300, 200, 240, 260);
+				initWisLibSensCor(260, 260, 120, 100);
+				this.weaponAttack = 64;
+				this.armorDef = 180;
+				this.armorMDef = 30;
+				this.bonusHP = 960;
+				this.bonusLust = 418;
+				this.level = 38;
+				this.additionalXP = 80;
 			    this.gems = rand(30) + 15;
-				this.createPerk(PerkLib.OverMaxHP, 26, 0, 0, 0);
+				this.createPerk(PerkLib.OverMaxHP, 38, 0, 0, 0);
+			}
+			if (player.hasStatusEffect(StatusEffects.FeralDemon)) {
+				this.long = "She stands about six feet tall and is moderate voluptuous, her large breasts wobble as she moves.  Her hips flare out into a hourglass shape, with a long tail tipped with a fleshy arrow-head spade that waves above her butt.  She is wearing rags that cover only a tiny fraction of her body, concealing just her naughty bits to make the whole display more erotic.  She's using a leather whip as a weapon.";
+				createBreastRow(Appearance.breastCupInverse("C"));
+				this.hips.type = Hips.RATING_AMPLE;
+				this.butt.type = Butt.RATING_AVERAGE + 1;
+				this.createPerk(PerkLib.EnemyFeralType, 0, 0, 0, 0);
+			}
+			else {
+				this.long = "She stands about six feet tall and is hugely voluptuous, her impressive breasts wobble delightfully as she moves.  Her hips flare out into an exaggerated hourglass shape, with a long tail tipped with a fleshy arrow-head spade that waves above her spankable butt.  She is wearing rags that cover only a tiny fraction of her body, concealing just her naughty bits to make the whole display more erotic.  She's using a leather whip as a weapon.";
+				this.magicuser = true;
+				createBreastRow(Appearance.breastCupInverse("DD"));
+				this.hips.type = Hips.RATING_CURVY;
+				this.butt.type = Butt.RATING_LARGE + 1;
+				this.special1 = kissAttack;
+				this.special2 = seduceAttack;
+				this.special3 = whipAttack;
 			}
 			this.a = "the ";
 			this.imageName = "succubus";
-			this.long = "She stands about six feet tall and is hugely voluptuous, her impressive breasts wobble delightfully as she moves.  Her hips flare out into an exaggerated hourglass shape, with a long tail tipped with a fleshy arrow-head spade that waves above her spankable butt.  She is wearing rags that cover only a tiny fraction of her body, concealing just her naughty bits to make the whole display more erotic.  She's using a leather whip as a weapon.";
 			// this.plural = false;
 			this.flyer = true;
-			this.magicuser = true;
 			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 30, 0, 0, 0);
-			createBreastRow(Appearance.breastCupInverse("DD"));
+			this.tallness = 72;
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
-			this.tallness = 72;
-			this.hips.type = Hips.RATING_CURVY;
-			this.butt.type = Butt.RATING_LARGE + 1;
 			this.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
 			this.bodyColor = "blue";
 			this.hairColor = "black";
@@ -95,12 +123,9 @@ use namespace CoC;
 					add(consumables.BIMBOLQ, 1).
 					add(weapons.WHIP, 2).
 					add(consumables.SUCMILK,12);
-			this.wings.type = Wings.BAT_LIKE_TINY;
+			this.wings.type = Wings.BAT_LIKE_LARGE;
 			this.wings.desc = "tiny hidden";
 			this.tailType = Tail.DEMONIC;
-			this.special1 = kissAttack;
-			this.special2 = seduceAttack;
-			this.special3 = whipAttack;
 			this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);
 			checkMonster();

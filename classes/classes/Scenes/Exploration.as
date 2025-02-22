@@ -755,17 +755,20 @@ public class Exploration extends BaseContent implements SaveableState
 			var demonChooser:int = rand(15);
 			//Succubus
 			if (demonChooser >= 5 && demonChooser < 10) {
-				SceneLib.defiledravine.demonScene.SuccubusEncounter();
+				if (rand(4) == 0) SceneLib.defiledravine.demonScene.FeralSuccubusEncounter();
+				else SceneLib.defiledravine.demonScene.SuccubusEncounter();
 				return;
 			}
 			//Incubus
 			else if (demonChooser >= 10) {
-				SceneLib.defiledravine.demonScene.IncubusEncounter();
+				if (rand(4) == 0) SceneLib.defiledravine.demonScene.FeralIncubusEncounter();
+				else SceneLib.defiledravine.demonScene.IncubusEncounter();
 				return;
 			}
 			//Omnibus
 			else {
-				SceneLib.defiledravine.demonScene.OmnibusEncounter();
+				if (rand(4) == 0) SceneLib.defiledravine.demonScene.FeralOmnibusEncounter();
+				else SceneLib.defiledravine.demonScene.OmnibusEncounter();
 				return;
 			}
 		}

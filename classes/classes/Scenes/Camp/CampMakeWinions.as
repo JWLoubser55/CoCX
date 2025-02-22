@@ -136,7 +136,7 @@ public class CampMakeWinions extends BaseContent
 					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster06) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster06) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
-				addButtonIfTrue(7, "No.6", curry(tamingAttemptRelease, 6, true), "You do not have Monster No.6 tamed", player.hasStatusEffect(StatusEffects.TamedMonster06), "Release Monster No.6");
+				addButtonIfTrue(5, "No.6", curry(tamingAttemptRelease, 6, true), "You do not have Monster No.6 tamed", player.hasStatusEffect(StatusEffects.TamedMonster06), "Release Monster No.6");
 			}
 			addButton(14, "Back", camp.campWinionsArmySim);
 		}

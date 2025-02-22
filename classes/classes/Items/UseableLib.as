@@ -147,9 +147,12 @@ use namespace CoC;
 		public const ENECORE:SimpleUseable = new SimpleUseable("EneCore", "Energy Core", "an Energy Core", 1015,
 			"A power source for devices.",
 			"You look at Energy Core.  It's component used to make goblin tech.");
+		public const FDEMSKL:SimpleUseable = new SimpleUseable("FDemSkl", "FDemSkull", "a feral demon skull", 50,
+			"A skull taken from a slain feral demon.",
+			"You look at the feral demon skull.  A pair of horns protrude from the deformed skull.  You admire the overall frame of the skull yet you find no obvious uses for it.");
 		public const FIMPSKL:SimpleUseable = new SimpleUseable("FImpSkl", "FImpSkul", "a feral imp skull", 25,
 			"A skull taken from a slain feral imp.",
-			"You look at the feral imp skull.  A pair of horns protrude from the deformed skull. You admire the overall frame of the skull yet you find no obvious uses for it.");
+			"You look at the feral imp skull.  A pair of horns protrude from the deformed skull.  You admire the overall frame of the skull yet you find no obvious uses for it.");
 		public const GOBOEAR:SimpleUseable = new SimpleUseable("GoboEar", "GoblinEar", "a goblin ear", 25,
 			"A goblin ear taken from a slain goblin.",
 			"You look at the goblin ear.  You admire the overall curve of the ear yet you find no obvious uses for it.");

@@ -25,7 +25,8 @@ use namespace CoC;
 			if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) cleanupAfterCombat();
 			else {
 				game.flags[kFLAGS.DEMONS_DEFEATED]++;
-				SceneLib.defiledravine.demonScene.defeatOmnibus();
+				if (player.hasStatusEffect(StatusEffects.FeralDemon)) SceneLib.defiledravine.demonScene.defeatFeralOmnibus();
+				else SceneLib.defiledravine.demonScene.defeatOmnibus();
 			}
 		}
 		
@@ -70,40 +71,68 @@ use namespace CoC;
 				this.additionalXP = mod > 20 ? 0 : Math.floor(700 * Math.exp(0.3*mod));
 				this.createPerk(PerkLib.OverMaxHP, (63 + 5*mod), 0, 0, 0);
 			}
+			else if (player.hasStatusEffect(StatusEffects.FeralDemon)) {
+				this.short = "feral omnibus";
+				initStrTouSpeInte(540, 135, 280, 120);
+				initWisLibSensCor(120, 160, 80, 100);
+				this.weaponAttack = 208;
+				this.armorDef = 60;
+				this.armorMDef = 10;
+				this.bonusHP = 575;
+				this.bonusWrath = 575;
+				this.bonusLust = 289;
+				this.level = 49;
+				this.additionalXP = 125;
+			    this.gems = rand(40) + 25;
+				this.createPerk(PerkLib.OverMaxHP, 49, 0, 0, 0);
+			}
 			else {
 				this.short = "omnibus";
-				initStrTouSpeInte(160, 115, 120, 110);
-				initWisLibSensCor(110, 120, 60, 100);
-				this.weaponAttack = 26;
-				this.armorDef = 24;
-				this.armorMDef = 4;
-				this.bonusHP = 575;
-				this.bonusLust = 209;
-				this.level = 29;
-				this.additionalXP = 70;
+				initStrTouSpeInte(360, 270, 280, 240);
+				initWisLibSensCor(240, 320, 160, 100);
+				this.weaponAttack = 104;
+				this.armorDef = 240;
+				this.armorMDef = 40;
+				this.bonusHP = 1150;
+				this.bonusLust = 525;
+				this.level = 45;
+				this.additionalXP = 90;
 			    this.gems = rand(40) + 20;
-				this.createPerk(PerkLib.OverMaxHP, 29, 0, 0, 0);
+				this.createPerk(PerkLib.OverMaxHP, 45, 0, 0, 0);
+			}
+			if (player.hasStatusEffect(StatusEffects.FeralDemon)) {
+				this.createCock(5, 1, CockTypesEnum.DEMON);
+				createBreastRow(Appearance.breastCupInverse("C"));
+				this.hips.type = Hips.RATING_AMPLE;
+				this.butt.type = Butt.RATING_AVERAGE + 1;
+				this.createPerk(PerkLib.EnemyFeralType, 0, 0, 0, 0);
+			}
+			else {
+				this.magicuser = true;
+				this.createCock(10,1.5,CockTypesEnum.DEMON);
+				createBreastRow(Appearance.breastCupInverse("DD"));
+				this.hips.type = Hips.RATING_CURVY;
+				this.butt.type = Butt.RATING_LARGE + 1;
+				this.special1 = kissAttack;
+				this.special2 = seduceAttack;
+				this.special3 = whipAttack;
 			}
 			this.a = "the ";
 			this.imageName = "omnibus";
 			if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) this.long = "She stands about six feet tall and is hugely voluptuous, her impressive breasts wobble delightfully as she moves.  Her hips flare out into an exaggerated hourglass shape, with a long tail tipped with a fleshy arrow-head spade that waves above her spankable butt.  She is wearing rags that cover only a tiny fraction of her glowing vein covered body, concealing just her naughty bits to make the whole display more erotic.  Her crotch is a combination of both genders – a drooling cunt topped with a thick demonic shaft, sprouting from where a clit should be.  She's using a leather whip as a weapon.";
+			else if (player.hasStatusEffect(StatusEffects.FeralDemon)) this.long = "She stands about six feet tall and is moderate voluptuous, her large breasts wobble as she moves.  Her hips flare out into a hourglass shape, with a long tail tipped with a fleshy arrow-head spade that waves above her butt.  She is wearing rags that cover only a tiny fraction of her body, concealing just her naughty bits to make the whole display more erotic.  Her crotch is a combination of both genders – a drooling cunt topped with a demonic shaft, sprouting from where a clit should be.  She's using a leather whip as a weapon.";
 			else this.long = "She stands about six feet tall and is hugely voluptuous, her impressive breasts wobble delightfully as she moves.  Her hips flare out into an exaggerated hourglass shape, with a long tail tipped with a fleshy arrow-head spade that waves above her spankable butt.  She is wearing rags that cover only a tiny fraction of her body, concealing just her naughty bits to make the whole display more erotic.  Her crotch is a combination of both genders – a drooling cunt topped with a thick demonic shaft, sprouting from where a clit should be.  She's using a leather whip as a weapon.";
 			// this.plural = false;
 			this.flyer = true;
-			this.magicuser = true;
-			this.createCock(10,1.5,CockTypesEnum.DEMON);
 			this.balls = 0;
 			this.ballSize = 0;
 			this.cumMultiplier = 3;
 			// this.hoursSinceCum = 0;
 			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 30, 0, 0, 0);
-			createBreastRow(Appearance.breastCupInverse("DD"));
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_SLIME_DROOLING;
 			this.tallness = 72;
-			this.hips.type = Hips.RATING_CURVY;
-			this.butt.type = Butt.RATING_LARGE + 1;
 			this.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
 			this.bodyColor = "purple";
 			this.hairColor = "black";
@@ -132,12 +161,9 @@ use namespace CoC;
 						add(consumables.SUCMILK, 12).
 						add(consumables.INCUBID, 12);
 			}
-			this.wings.type = Wings.BAT_LIKE_TINY;
+			this.wings.type = Wings.BAT_LIKE_LARGE;
 			this.wings.desc = "tiny hidden";
 			this.tailType = Tail.DEMONIC;
-			this.special1 = kissAttack;
-			this.special2 = seduceAttack;
-			this.special3 = whipAttack;
 			this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);
 			checkMonster();
