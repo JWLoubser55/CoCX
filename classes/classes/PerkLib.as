@@ -622,8 +622,8 @@ public class PerkLib
 				"You can have 2 tamed monsters.",
 				"You've chosen the 'Beast 02' perk. You can have 2 tamed monsters.");
 		public static const BeastKnowledge:PerkType = mk("Beast Knowledge", "Beast Knowledge",
-				"During tame monster checks, the player's wisdom is treated as if it were 2x higher.",
-				"You've chosen the 'Beast Knowledge' perk. During tame monster checks, the player's wisdom is treated as if it were 2x higher.");
+				"During tame monster checks, the player's wisdom is treated as if it were 2,5x higher.",
+				"You've chosen the 'Beast Knowledge' perk. During tame monster checks, the player's wisdom is treated as if it were 2,5x higher.");
 		public static const ThreeTimesATame:PerkType = mk("Three times a tame", "Three times a tame",
 				"Now you can control 3 monsters at the same time.",
 				"You've chosen the 'Three times a tame' perk. Now you can control 3 monsters at the same time.");
@@ -797,6 +797,18 @@ public class PerkLib
 		public static const SicEmSix:PerkType = mk("Sic ‘Em Six", "Sic ‘Em Six",
 				"No leash is too tight, no beast too wild. Heel or feel—obedience is a six-step process.",
 				"You've chosen the 'Sic ‘Em Six' perk. No leash is too tight, no beast too wild. Heel or feel—obedience is a six-step process.");
+		public static const HighStakesTamer:PerkType = mk("High Stakes Tamer", "High Stakes Tamer",
+				"Your mastery over taming extends beyond common beasts, allowing you to tame highly intelligent creatures that would normally resist control. Beings like Glacial Trolls and other sentient monsters now recognize your dominance, making them potential allies rather than just foes. However, the truly corrupted still elude you.",
+				"You've chosen the 'High Stakes Tamer' perk. Your mastery over taming extends beyond common beasts, allowing you to tame highly intelligent creatures that would normally resist control. Beings like Glacial Trolls and other sentient monsters now recognize your dominance, making them potential allies rather than just foes. However, the truly corrupted still elude you.");
+		public static const TheHopelessHandler:PerkType = mk("The Hopeless Handler", "The Hopeless Handler",
+				"No setback can break your spirit—no rejection, no failure, not even the most stubborn of creatures. If a taming attempt fails, you gain one extra chance to try again, adjusting your approach in hopes of finally making a connection. Call it perseverance, call it madness—but you refuse to give up.",
+				"You've chosen the 'The Hopeless Handler' perk. No setback can break your spirit—no rejection, no failure, not even the most stubborn of creatures. If a taming attempt fails, you gain one extra chance to try again, adjusting your approach in hopes of finally making a connection. Call it perseverance, call it madness—but you refuse to give up.");
+		public static const TheDesperateDegenerate:PerkType = mk("The Desperate Degenerate", "The Desperate Degenerate",
+				"At this point, it’s just getting sad. Failure after failure, rejection after rejection—yet here you are, still trying. Whether it's sheer determination or complete lack of self-respect, you now get two extra chances to tame a creature, scraping at any sliver of hope left. Maybe, just maybe, this time they won’t look at you with utter disdain.",
+				"You've chosen the 'The Desperate Degenerate' perk. At this point, it’s just getting sad. Failure after failure, rejection after rejection—yet here you are, still trying. Whether it's sheer determination or complete lack of self-respect, you now get two extra chances to tame a creature, scraping at any sliver of hope left. Maybe, just maybe, this time they won’t look at you with utter disdain.");
+		public static const TheLoveableLoser:PerkType = mk("The Loveable Loser", "The Loveable Loser",
+				"Bless your heart, you just don’t know when to quit. No matter how many times you fail, you flash that same goofy grin and try again, convinced that this time, for sure, you’ll get it right! You now get three extra chances to tame a creature, not because you’re particularly skilled—just because you’re too dumb to realize you should’ve given up ages ago.",
+				"You've chosen the 'The Loveable Loser' perk. Bless your heart, you just don’t know when to quit. No matter how many times you fail, you flash that same goofy grin and try again, convinced that this time, for sure, you’ll get it right! You now get three extra chances to tame a creature, not because you’re particularly skilled—just because you’re too dumb to realize you should’ve given up ages ago.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -808,6 +820,15 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -6803,7 +6824,9 @@ public class PerkLib
             // WISDOM
             //------------
             JobTamer.requireWis(10);
-            BeastKnowledge.requirePerk(JobTamer)
+            HighStakesTamer.requirePerk(JobTamer)
+                    .requireWis(25);
+            TheHopelessHandler.requirePerk(JobTamer)
                     .requireWis(25);
             JobElementalConjurer.requireAdvancedJobSlot()
 					.requirePerk(JobLeader)
@@ -6830,7 +6853,9 @@ public class PerkLib
             WorkingTogether.requireLevel(6)
                     .requirePerk(Beast02)
                     .requireWis(55);
-            InsightfulResourcesI.requireLevel(6)
+		//	.requirePerk(HighStakesTamer)
+        //            .requireWis(55);
+			InsightfulResourcesI.requireLevel(6)
                     .requireWis(50)
                     .requirePerk(JobSoulCultivator);
             InsightfulResourcesII.requireLevel(6)
@@ -6880,6 +6905,9 @@ public class PerkLib
                     .requireWis(75);
             TheyFightTheyProtect.requireLevel(12)
                     .requirePerk(ThreeTimesATame)
+                    .requireWis(80);
+            TheDesperateDegenerate.requireLevel(12)
+                    .requirePerk(TheHopelessHandler)
                     .requireWis(80);
             InsightfulResourcesIV.requireLevel(12)
                     .requirePerk(InsightfulResourcesIII)
@@ -6948,6 +6976,9 @@ public class PerkLib
             FourthTamerOfTheApocalypse.requireLevel(18)
                     .requirePerk(ThreeTimesATame)
                     .requireWis(100);
+            BeastKnowledge.requireLevel(18)
+                    .requirePerk(FourthTamerOfTheApocalypse)
+                    .requireWis(105);
             StrongerTamedMosters.requireLevel(18)
                     .requirePerk(FourthTamerOfTheApocalypse)
                     .requireWis(105);
@@ -6991,8 +7022,11 @@ public class PerkLib
             FifthTamed.requireLevel(24)
                     .requirePerk(FourthTamerOfTheApocalypse)
                     .requireWis(125);
-            EmpoweredTaming.requireLevel(24)
-                    .requirePerk(FifthTamed)
+        //    .requireLevel(24)
+        //            .requirePerk(FifthTamed)
+        //            .requireWis(130);
+            TheLoveableLoser.requireLevel(24)
+                    .requirePerk(TheDesperateDegenerate)
                     .requireWis(130);
 //            ComboMaster.requirePerk(Combo)
 //                    .requireWis(125)
@@ -7050,6 +7084,9 @@ public class PerkLib
             SicEmSix.requireLevel(30)
                     .requirePerk(FifthTamed)
                     .requireWis(150);
+        //    .requireLevel(30)
+        //            .requirePerk(SicEmSix)
+        //            .requireWis(155);
             UnlockSpirit2ndStage.requirePerk(UnlockSpirit)
                     .requireWis(125)
                     .requireLevel(30);
@@ -7080,6 +7117,12 @@ public class PerkLib
                     .requirePerk(ConductionSoulforceCharge)
                     .requireWis(150);
             //Tier 6 Wisdom perks
+        //    .requireLevel(36)
+        //            .requirePerk(SicEmSix)
+        //            .requireWis(175);
+            EmpoweredTaming.requireLevel(36)
+                    .requirePerk(SicEmSix)
+                    .requireWis(180);
             StrongElementalBondSu.requirePerks(StrongElementalBondEx)
                     .requireWis(175)
                     .requireLevel(36)

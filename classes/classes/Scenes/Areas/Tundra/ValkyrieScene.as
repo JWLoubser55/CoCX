@@ -64,7 +64,7 @@ public class ValkyrieScene extends BaseContent
 				SceneLib.uniqueSexScene.pcUSSPreChecksV2(winAgainstValkyrie);
 			}
 			else outputText("You're not aroused enough to rape her.");
-			addButtonIfTrue(12, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+			addButtonIfTrue(12, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer & High Stakes Tamer", player.hasPerk(PerkLib.HighStakesTamer));
 			addButton(14, "Leave", cleanupAfterCombat);
 		}
 		

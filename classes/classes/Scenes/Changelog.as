@@ -147,7 +147,6 @@ public class Changelog extends BaseContent
 			outputText("-New tier 0 misc lvl-up perk: (Basic) Job: Tinker. Req. 10+ wisdom and 10+ intelligence. Effect: Increase damage of consumable items / technologic weapons by 5%.\n");
 			outputText("-New tier 0 wisdom lvl-up perk: (Basic) Job: Tamer. Req. 10+ wisdom. Effect: Allow to tame 1 beast with feral level of intelligence.\n");
 			outputText("-New tier 0 sensitivity lvl-up perk: (Basic) Job: Esper. Req. 10+ sensitivity. Effect: The same effects as perk Telekinesis (You have the power to wield and throw objects with your mind alone. Gain a bonus to damage based on inteligence when using thrown weapons.) (+1 exploration reveal)\n");
-			outputText("-New tier 0 wisdom lvl-up perk: Beast Knowledge. Req. Job: Tamer perk and 25+ wisdom. Effect: During taming monster check player wisdom is treated as if it was 2x higher.\n");
 			outputText("-New tier 0 misc lvl-up perk: Stored Momentum. Req. Job: Tinker perk, 15+ wisdom and 15+ intelligence. Effect: After using a gadget you store the latent kinetic energy increasing your speed and strength by 25% for 5 rounds. This effect stacks upon itself.\n");
 			outputText("-New tier 0 misc lvl-up perk: Deconstruct. Req. Job: Tinker perk, 15+ wisdom and 15+ intelligence. Effect: You are an expert at building and dismantling things. This also applies to golems and other constructed creatures made of materials. Your attacks ignore construct armors and deal 50% more damage to them. When harvesting construct you scavenge more materials.\n");
 			outputText("-New tier 1 wisdom lvl-up perk: Beast 02. Req. Job: Tamer perk and 50+ wisdom. Effect: You can have 2 tamed monsters.\n");
@@ -165,6 +164,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 misc lvl-up perk: Simplified Interface. Req. Master Gadgeteer perk, 45+ wisdom and 45+ intelligence. Effect: You did what goblins did not and simplified the interface slightly in order to quicken the usage of your gadgets. Once per round use a gadget as a free action.\n");
 			outputText("-New tier 2 toughness lvl-up perk: Ayo Armor Master. Req. Job: Artificier perk and 75+ toughness. Effect: Boosts armor and magical resistance by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)\n");
 			outputText("-New tier 3 wisdom lvl-up perk: Fourth Tamer of the Apocalypse. Req. Three times a tame perk and 100+ wisdom. Effect: Now you can assemble 4 horsema... monsters team.\n");
+			outputText("-New tier 3 wisdom lvl-up perk: Beast Knowledge. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: During taming monster check player wisdom is treated as if it was 2,5x higher.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Improved Kineses. Req. one of perks: Pyrokinesis, Hydrokinesis, Cryokinesis, Geokinesis, Electrokinesis, Aerokinesis, Umbrakinesis, Acidokinesis, Ionikinesis, Cocytokinesis and 75+ sensitivity. Effect: All of your kinesis type specials damage have added minor inteligence/wisdom scaling.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Psychic Bolt. Req. Psychic Barrier perk and 75+ sensitivity. Effect: Enable use of Psychic Bolt. (scaless off Sensitivity and deal psychic type of dmg)\n");
 			outputText("-New tier 3 misc lvl-up perk: Law of perpetual motion. Req. Stored Momentum perk, 60+ wisdom and 60+ intelligence. Effect: Stored Momentum duration increases to 10 rounds.\n");
@@ -173,11 +173,11 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 toughness lvl-up perk: Hyper-Servos Mastery. Req. Job: Artificier perk and 100+ toughness Effect: Boosts armor and magical resistance by a portion of your speed on vehicle armors. (1:100 ratio)\n");
 			outputText("-New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)\n");
 			outputText("-New tier 4 wisdom lvl-up perk: Conduction Soulforce Charge. Req. Ayo Armor Proficiency perk and 125+ wisdom. Effect: As long you have sufficient amount of soulforce, expend them to keep Ayo Armor active instead of using internal storage.\n");
-			outputText("-New tier 4 wisdom lvl-up perk: Empowered Taming. Req. Fourth Tamer of the Apocalypse perk and 130+ wisdom. Effect: During taming monster it wisdom is treated as if it was 80% lower.\n");
 			outputText("-New tier 4 sensitivity lvl-up perk: Wide Area Kineses. Req. Improved Kineses perk and 100+ sensitivity. Effect: All of your kinesis type specials would be treated as AoE attacks against any group of enemies.\n");
 			outputText("-New tier 4 sensitivity lvl-up perk: Telekinetic Grapple. Req. Psychic Bolt perk and 100+ sensitivity. Effect: Enable use of Telekinetic Grab (with 2x shorter then normally cooldown).\n");
 			outputText("-New tier 4 misc lvl-up perk: All-Rounder Training ( Basic ). Req. Job: All-Rounder perk. Effect: Limit of train caps for stats is increased by 5.\n");
 			outputText("-New tier 4 misc lvl-up perk: Goblinatus Graduate. Req. Simplified Interface perk, 75+ wisdom and 75+ intelligence. Effect: You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.\n");
+			outputText("-New tier 4 wisdom lvl-up perk: Fifth Tamed. Req. Fourth Tamer of the Apocalypse perk and 125+ wisdom. Effect: Now you can add fifth wheel... tamed monster to your team.\n");
 			outputText("-New tier 5 wisdom lvl-up perk: Efficient Usage of Soulforce. Req. Conduction Soulforce Charge perk and 150+ wisdom. Effect: You learned how to more efficient use soulforce powering your Ayo Armor to further fortify your basic physical and magic resitances. (+core tou % up to 300%)\n");
 			outputText("-New tier 5 sensitivity lvl-up perk: Advanced Kineses. Req. Wide Area Kineses perk and 125+ sensitivity. Effect: All of your kinesis type specials damage have improved scaling from sensitivity, wisdom and intelligence.\n");
 			outputText("-New tier 5 misc lvl-up perk: All-Rounder Mental Training. Req. All-Rounder Training ( Basic ) perk. Effect: Limit of train caps for int/wis/lib stats is increased by 10.\n");
@@ -335,15 +335,24 @@ public class Changelog extends BaseContent
 			outputText("-New key Item (by Liadri): Caustic Goonade - req. Goonade - Toss a grenade that splatter acidic sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground. Drop opponent armor class by 100%\n");
 			outputText("-Fix not counting basilisk womb births towards times given birth. (Stadler)\n");
 			outputText("-Agility and Armor Master perks now also boost magic resistance with the same ratio as they boost armor.\n");
-			outputText("-New tier 4 wisdom lvl-up perk: Fifth Tamed. Req. Fourth Tamer of the Apocalypse perk and 125+ wisdom. Effect: Now you can add fifth wheel... tamed monster to your team.\n");
+			outputText("-New tier 6 wisdom lvl-up perk: Empowered Taming. Req. Sic ‘Em Six perk and 180+ wisdom. Effect: During taming monster it wisdom is treated as if it was 80% lower.\n");
 			outputText("-When taming monster capable of spellcasting it would add option in tamed monsters menu to command them to use magic bolt.\n");
 			outputText("-New tier 5 wisdom lvl-up perk: Sic ‘Em Six. Req. Fifth Tamed perk and 150+ wisdom. Effect: No leash is too tight, no beast too wild. Heel or feel—obedience is a six-step process.\n");
+			outputText("-New tier 0 wisdom lvl-up perk: High Stakes Tamer. Req. Job: Tamer perk and 25+ wisdom. Effect: Your mastery over taming extends beyond common beasts, allowing you to tame highly intelligent creatures that would normally resist control. Beings like Glacial Trolls and other sentient monsters now recognize your dominance, making them potential allies rather than just foes. However, the truly corrupted still elude you.\n");
+			outputText("-New tier 0 wisdom lvl-up perk: The Hopeless Handler. Req. Job: Tamer perk and 25+ wisdom. Effect: No setback can break your spirit—no rejection, no failure, not even the most stubborn of creatures. If a taming attempt fails, you gain one extra chance to try again, adjusting your approach in hopes of finally making a connection. Call it perseverance, call it madness—but you refuse to give up.\n");
+			outputText("-New tier 2 wisdom lvl-up perk: The Desperate Degenerate. Req. The Hopeless Handler perk and 80+ wisdom. Effect: At this point, it’s just getting sad. Failure after failure, rejection after rejection—yet here you are, still trying. Whether it's sheer determination or complete lack of self-respect, you now get two extra chances to tame a creature, scraping at any sliver of hope left. ");
+			outputText("Maybe, just maybe, this time they won’t look at you with utter disdain.\n");
+			outputText("-New tier 4 wisdom lvl-up perk: The Loveable Loser. Req. The Desperate Degenerate perk and 130+ wisdom. Effect: Bless your heart, you just don’t know when to quit. No matter how many times you fail, you flash that same goofy grin and try again, convinced that this time, for sure, you’ll get it right! You now get three extra chances to tame a creature, ");
+			outputText("not because you’re particularly skilled—just because you’re too dumb to realize you should’ve given up ages ago.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: x. Req. . Effect: .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
@@ -351,13 +360,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New tier 6 wisdom lvl-up perk: Lucky Number Tamer. Req. Sic ‘Em Six perk and 175+ wisdom. Effect: .
-			outputText("-\n");//New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. ??? perk and 130+ wisdom. Effect: allow exchange single monsters variants > group monsters variants
-			outputText("-\n");//New tier 6 wisdom lvl-up perk: ???. Req. ??? perk and 155+ wisdom. Effect: allow to retry taming attempt in case of failure with then adding rand(player.wis) score to player check and substract rand(player.wis) from monster wisdom check
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Seven Pets, Seven Toys perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: ???. Req. ?Quasi Domain Kineses? perk and 175+ sensitivity. Effect: add wis to sens
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: ???. Req. ?Quasi Domain Kineses? perk and 175+ sensitivity. Effect: add int to sens
@@ -369,10 +371,10 @@ public class Changelog extends BaseContent
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
 			outputText("-\n");// (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Stadler) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier 6 wisdom lvl-up perk: Lucky Number Tamer. Req. Sic ‘Em Six perk and 175+ wisdom. Effect: You played your cards right, tames now come in 7.
+			outputText("-\n");//New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. ??? perk and 130+ wisdom. Effect: allow exchange single monsters variants > group monsters variants
+			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accesable by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -447,8 +449,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -480,6 +488,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

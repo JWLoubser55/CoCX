@@ -25,6 +25,7 @@ public class CampMakeWinions extends BaseContent
 		//
 		//-------------
 
+		private var retrycount:Number = 0;
 		private function playerAlreadyHaveAnyTamedMonster():Boolean {
 			if (player.hasStatusEffect(StatusEffects.TamedMonster01) || player.hasStatusEffect(StatusEffects.TamedMonster02) || player.hasStatusEffect(StatusEffects.TamedMonster03) || player.hasStatusEffect(StatusEffects.TamedMonster04)) return true;
 			else return false;
@@ -50,7 +51,10 @@ public class CampMakeWinions extends BaseContent
 		}
 		private function playerWisdomCheck():Number {
 			var pWc:Number = player.wis;
-			if (player.hasPerk(PerkLib.BeastKnowledge)) pWc += player.wis;
+			if (player.hasPerk(PerkLib.BeastKnowledge)) pWc += player.wis*1.5;
+			if (retrycount > 0) pWc += rand(player.wis);
+			if (retrycount > 1) pWc += rand(player.wis);
+			if (retrycount > 2) pWc += rand(player.wis);
 			return pWc;
 		}
 		private function monsterWisdomCheck():Number {
@@ -59,8 +63,11 @@ public class CampMakeWinions extends BaseContent
 			if (monster.hasPerk(PerkLib.EnemyFeralType)) mWc1 *= 0.1;
 			if (!monster.hasPerk(PerkLib.EnemyFeralType) && monster.hasPerk(PerkLib.EnemyTrueDemon)) mWc1 *= 0.5;
 			if (player.hasPerk(PerkLib.EmpoweredTaming)) mWc1 *= 0.2;
-			if (mWc1 < 1) mWc1 = 1;
 			mWc *= mWc1;
+			if (retrycount > 0) mWc -= rand(monster.wis);
+			if (retrycount > 1) mWc -= rand(monster.wis);
+			if (retrycount > 2) mWc -= rand(monster.wis);
+			if (mWc < 1) mWc = 1;
 			return mWc;
 		}
 		public function monsterBaseStatsMultiplier():Number {
@@ -207,8 +214,28 @@ public class CampMakeWinions extends BaseContent
 					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster06, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
+				retrycount = 0;
 			}
-			else outputText("Yet, despite your efforts, [themonster] refuses to back down and scampers off before you can establish any rapport.");
+			else {
+				if (player.hasPerk(PerkLib.TheHopelessHandler)) {
+					if (player.hasPerk(PerkLib.TheDesperateDegenerate) && retrycount == 1) {
+						if (player.hasPerk(PerkLib.TheLoveableLoser) && retrycount == 2) {
+							retrycount = 3;
+							tamingAttempt();
+						}
+						else {
+							retrycount = 2;
+							tamingAttempt();
+						}
+					}
+					else {
+						retrycount = 1;
+						tamingAttempt();
+					}
+					
+				}
+				else outputText("Yet, despite your efforts, [themonster] refuses to back down and scampers off before you can establish any rapport.");
+			}
 			cleanupAfterCombat();
 		}
 		public function tamingAttemptRelease(tameMon:Number, inCamp:Boolean = false):void {
