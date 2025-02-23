@@ -48,6 +48,11 @@ package classes.Scenes.Monsters
 			}
 		}
 		
+		override public function defeated(hpVictory:Boolean):void
+		{
+			SceneLib.fleshGolemScenes.wonWithFleshGolem();
+		}
+		
 		public function CorruptedFleshGolemBasic()
 		{
 			super(false);
@@ -55,6 +60,8 @@ package classes.Scenes.Monsters
 			this.short = "corrupted basic flesh golem";
 			this.imageName = "corrupted basic flesh golem";
 			this.long = "You're currently fighting a corrupted basic flesh golem. She's seven feet tall, her flesh covered sporadically by fragments of what must have once been a decorative set of armour. They seem to have been broken in places, but the shards of armor still provide decent protection. Several large holes in the armour were clearly made intentionally, exposing a throbbing cock and firm breasts. The golem keeps its head aligned with you, large, gaping mouth open constantly. She clutches a pair of swords in her meaty fists.";
+			this.flyer = true;
+			this.magicuser = true;
 			this.createCock(12,2,CockTypesEnum.DEMON);
 			this.balls = 0;
 			this.ballSize = 0;

@@ -45,17 +45,17 @@ use namespace CoC;
 				outputText("  You land hard on your ass, momentarily stunned as the demonic cock-tentacle curls around your [legs], smearing them with oozing demonic fluids.");
 				if (player.lust >= 80 || player.cor >= 80) {
 					outputText("  Moaning with desire, you lick your lips as you slide your well-lubricated [legs] free.  You gather a dollop of cum and lick it seductively, winking at the incubus and hoping to make him cave into his desire.");
-					player.dynStats("lus", 12, "cor", 0.5);
+					player.dynStats("lus", 60, "cor", 1);
 				}
 				else if (player.lust >= 50 || player.cor >= 50) {
 					outputText("  Blushing at the scent and feel of cum on your [legs], you twist and pull free.  You find yourself wondering what this demon's dick would taste like.");
-					player.takeLustDamage(7 + player.cor / 25, true);
+					player.takeLustDamage(35 + player.cor / 5, true);
 				}
 				else {
 					outputText("  Disgusted, you pull away from the purplish monstrosity, the act made easier by your well-slimed [legs].");
-					player.takeLustDamage(4 + player.cor / 25, true);
+					player.takeLustDamage(20 + player.cor / 5, true);
 				}
-				player.takePhysDamage(4);
+				player.takePhysDamage(20);
 			}
 			outputText("\nThe incubus gives an overconfident smile as his cock retracts away from you, returning to its normal size.");
 		}
@@ -103,8 +103,8 @@ use namespace CoC;
 					}
 					else outputText("crotch.  Thankfully, it doesn't seem to have much effect.");
 			}
-			lust -= 10;
-			if (lust < 0) lust = 10;
+			if (lust > 50) lust -= 50;
+			else lust = 1;
 		}
 		
 		public function Incubus()
