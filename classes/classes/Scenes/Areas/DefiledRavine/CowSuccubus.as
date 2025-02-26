@@ -85,11 +85,11 @@ use namespace CoC;
 				this.armorDef = 250;
 				this.armorMDef = 125;
 				this.bonusHP = 1000;
-				this.bonusLust = 274;
-				this.level = 64;
+				this.bonusLust = 275;
+				this.level = 65;
 				this.gems = rand(40)+55;
 				this.additionalXP = 125;
-				this.createPerk(PerkLib.OverMaxHP, 64, 0, 0, 0);
+				this.createPerk(PerkLib.OverMaxHP, 65, 0, 0, 0);
 			}
 			else {
 				this.short = "cow succubus";
@@ -104,11 +104,11 @@ use namespace CoC;
 				this.armorDef = 500;
 				this.armorMDef = 250;
 				this.bonusHP = 2000;
-				this.bonusLust = 479;
-				this.level = 59;
+				this.bonusLust = 481;
+				this.level = 61;
 				this.gems = rand(40)+50;
 				this.additionalXP = 100;
-				this.createPerk(PerkLib.OverMaxHP, 59, 0, 0, 0);
+				this.createPerk(PerkLib.OverMaxHP, 61, 0, 0, 0);
 			}
 			this.a = "the ";
 			this.imageName = "milkysuccubus";

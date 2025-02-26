@@ -52,7 +52,7 @@ public class DemonPackDefiledRavine extends Monster
 			this.bodyColor = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			initStrTouSpeInte(450, 510, 270, 200);
+			initStrTouSpeInte(452, 514, 275, 200);
 			initWisLibSensCor(160, 160, 160, 100);
 			this.weaponName = "claws";
 			this.weaponVerb="claw";
@@ -61,9 +61,9 @@ public class DemonPackDefiledRavine extends Monster
 			this.armorDef = 350;
 			this.armorMDef = 50;
 			this.bonusHP = 2000;
-			this.bonusLust = 392;
+			this.bonusLust = 395;
 			this.lust = 30;
-			this.level = 72;
+			this.level = 75;
 			this.gems = rand(40)+70;
 			this.randomDropChance = 0.1;
 			this.randomDropParams = {
@@ -84,7 +84,7 @@ public class DemonPackDefiledRavine extends Monster
 			this.horns.count = 2;
 			this.createPerk(PerkLib.EnemyLargeGroupType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);
-			this.createPerk(PerkLib.OverMaxHP, 72, 0, 0, 0);
+			this.createPerk(PerkLib.OverMaxHP, 75, 0, 0, 0);
 			checkMonster();
 		}
 	}

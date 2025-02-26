@@ -68,7 +68,7 @@ package classes.Scenes.Monsters
 			this.ass.analLooseness = AssClass.LOOSENESS_LOOSE;
 			this.ass.analWetness = AssClass.WETNESS_SLIMY;
 			this.createStatusEffect(StatusEffects.BonusACapacity, 250, 0, 0, 0);
-			initStrTouSpeInte(480, 560, 440, 30);
+			initStrTouSpeInte(488, 570, 446, 30);
 			initWisLibSensCor(30, 240, 120, 100);
 			this.tallness = 96;
 			this.hips.type = Hips.RATING_AMPLE;
@@ -76,15 +76,15 @@ package classes.Scenes.Monsters
 			this.bodyColor = "pink";
 			this.weaponName = "dual swords";
 			this.weaponVerb = "slash";
-			this.weaponAttack = 300;
+			this.weaponAttack = 310;
 			this.armorName = "white armor";
 			this.armorDef = 600;
 			this.armorMDef = 300;
-			this.bonusHP = 1400;
+			this.bonusHP = 1500;
 			this.lust = 30;
-			this.bonusLust = 439;
+			this.bonusLust = 441;
 			this.lustVuln = .4;
-			this.level = 79;
+			this.level = 81;
 			this.additionalXP = 500;
 			this.gems = rand(10)+5;
 			this.wings.type = Wings.BAT_LIKE_TINY;

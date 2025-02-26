@@ -120,9 +120,9 @@ use namespace CoC;
 				this.armorMDef = 60;
 				this.bonusHP = 250 + rand(this.ballSize);
 				this.bonusLust = 165 + this.ballSize * 3 + rand(this.ballSize * 2);
-				this.level = 65;
+				this.level = 67;
 				this.gems = rand(15) + 20;
-				this.createPerk(PerkLib.OverMaxHP, 65, 0, 0, 0);
+				this.createPerk(PerkLib.OverMaxHP, 67, 0, 0, 0);
 			}
 			else {
 				this.short = "mino incubus";
@@ -135,10 +135,10 @@ use namespace CoC;
 				this.armorDef = 600;
 				this.armorMDef = 120;
 				this.bonusHP = 500 + rand(this.ballSize * 2);
-				this.bonusLust = 390 + this.ballSize * 5 + rand(this.ballSize * 3);
-				this.level = 60;
+				this.bonusLust = 393 + this.ballSize * 5 + rand(this.ballSize * 3);
+				this.level = 63;
 				this.gems = rand(15) + 15;
-				this.createPerk(PerkLib.OverMaxHP, 60, 0, 0, 0);
+				this.createPerk(PerkLib.OverMaxHP, 63, 0, 0, 0);
 			}
 			this.a = "the ";
 			this.imageName = "minotaur";

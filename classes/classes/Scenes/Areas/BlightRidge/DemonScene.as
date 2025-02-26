@@ -9,8 +9,10 @@ import classes.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Items.Armors.LustyMaidensArmor;
 import classes.Scenes.Areas.DefiledRavine.CowSuccubus;
+import classes.Scenes.Areas.DefiledRavine.FeralDemonHellHound;
 import classes.Scenes.Areas.DefiledRavine.MinoIncubus;
 import classes.Scenes.SceneLib;
+import classes.display.SpriteDb;
 
 //use namespace CoC;
 	
@@ -649,6 +651,26 @@ import classes.Scenes.SceneLib;
 			cleanupAfterCombat();
 		}
 		
+		//Feral Demon Hellhound
+		public function FeralDemonHellhoundEncounter():void {
+			clearOutput();
+			outputText("You hear a fiery howl as a demonic, feral two-headed beast-man leaps out in front of you!  Looks like there is no way around it, you ready your [weapon] for the fight.");
+			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_HELLHOUNDS);
+			startCombat(new FeralDemonHellHound());
+			spriteSelect(SpriteDb.s_hellhound);
+			doNext(playerMenu);
+		}
+		
+		public function defeatFeralDemonHellhound():void {
+			clearOutput();
+			menu();
+			outputText("The demon hellhound's flames dim, and the heads let out a whine before the creature slumps down, defeated and nearly unconscious.");
+			player.removeStatusEffect(StatusEffects.FeralDemon);
+			if (monster.HP < 1) addButton (5, "Kill Him", killDemonHellhound);
+			//addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+			addButton (14, "Leave", cleanupAfterCombat);
+		}
+		
 		private function killDemon():void {
 			clearOutput();
 			flags[kFLAGS.TRUE_DEMONS_KILLED]++;
@@ -693,15 +715,46 @@ import classes.Scenes.SceneLib;
 			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(3, "Harvest", harvestBones);
 			else addButtonDisabled(3, "???", "Req. Prestige Job: Necromancer.");
 		}
+		private function killDemonHellhound():void {
+			clearOutput();
+			flags[kFLAGS.HELLHOUNDS_KILLED]++;
+			flags[kFLAGS.TRUE_DEMONS_KILLED]++;
+			outputText("You finish off the demon hellhound and claim his two tongues as your prize. ");
+			if (player.cor < 25) dynStats("cor", -0.5);
+			if (player.enemiesKillCount() >= 10 && !player.hasPerk(PerkLib.KillingIntent)) {
+				outputText("Kill upon kill, corpse after corpse... Ashes... to ashes... Your fingers itch, your blood boils, there's still more to kill, more fiends to slay. The fire burning inside is but another weapon of murder. <b>(You have gained the Killing Intent perk!)</b> ");
+				player.createPerk(PerkLib.KillingIntent, 0, 0, 0, 0);
+			}
+			menu();
+			addButton(1, "Leave", cleanupAfterCombat);
+			addButton(2, "Take Skulls", takeSkull3);
+			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(3, "Harvest", harvestBones2);
+			else addButtonDisabled(3, "???", "Req. Prestige Job: Necromancer.");
+		}
 		private function takeSkull():void {
 			inventory.takeItem(useables.DEMSKLL, cleanupAfterCombat);
 		}
 		private function takeSkull2():void {
 			inventory.takeItem(useables.FDEMSKL, cleanupAfterCombat);
 		}
+		public function takeSkull3():void {
+			inventory.takeItem(useables.FDEMSKL, takeSkull3a);
+		}
+		public function takeSkull3a():void {
+			outputText("\n\n");
+			inventory.takeItem(useables.FDEMSKL, takeSkull3b);
+		}
+		public function takeSkull3b():void {
+			outputText("\n\n");
+			inventory.takeItem(useables.THHTONG, cleanupAfterCombat);
+		}
 		private function harvestBones():void {
 			harvestDemonBones();
 			cleanupAfterCombat();
+		}
+		private function harvestBones2():void {
+			harvestDemonBones();
+			inventory.takeItem(useables.THHTONG, cleanupAfterCombat);
 		}
 		public function harvestDemonBones():void {
 			var harv:Number = 1 + rand(5);

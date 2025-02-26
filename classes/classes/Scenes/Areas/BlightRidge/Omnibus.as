@@ -73,29 +73,29 @@ use namespace CoC;
 			}
 			else if (player.hasStatusEffect(StatusEffects.FeralDemon)) {
 				this.short = "feral omnibus";
-				initStrTouSpeInte(540, 135, 280, 120);
-				initWisLibSensCor(120, 160, 80, 100);
+				initStrTouSpeInte(555, 135, 285, 120);
+				initWisLibSensCor(120, 165, 85, 100);
 				this.weaponAttack = 208;
 				this.armorDef = 60;
 				this.armorMDef = 10;
 				this.bonusHP = 575;
 				this.bonusWrath = 575;
-				this.bonusLust = 289;
-				this.level = 49;
+				this.bonusLust = 301;
+				this.level = 51;
 				this.additionalXP = 125;
 			    this.gems = rand(40) + 25;
 				this.createPerk(PerkLib.OverMaxHP, 49, 0, 0, 0);
 			}
 			else {
 				this.short = "omnibus";
-				initStrTouSpeInte(360, 270, 280, 240);
-				initWisLibSensCor(240, 320, 160, 100);
+				initStrTouSpeInte(370, 270, 285, 240);
+				initWisLibSensCor(240, 330, 170, 100);
 				this.weaponAttack = 104;
 				this.armorDef = 240;
 				this.armorMDef = 40;
 				this.bonusHP = 1150;
-				this.bonusLust = 525;
-				this.level = 45;
+				this.bonusLust = 547;
+				this.level = 47;
 				this.additionalXP = 90;
 			    this.gems = rand(40) + 20;
 				this.createPerk(PerkLib.OverMaxHP, 45, 0, 0, 0);

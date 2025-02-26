@@ -350,18 +350,18 @@ public class DemonSoldier extends Monster {
         this.tail.type = Tail.DEMONIC;
         this.horns.type = Horns.DEMON;
         this.horns.count = 2;
-        initStrTouSpeInte(480, 480, 540, 280);
-        initWisLibSensCor(240, 320, 180, 100);
+        initStrTouSpeInte(490, 490, 545, 284);
+        initWisLibSensCor(243, 320, 180, 100);
+        this.weaponAttack = 270;
         this.weaponName = "claws";
         this.weaponVerb = "claw-slash";
-        this.armorName = "leathery skin";
-        this.lust = 40;
-        this.level = 67;
-        this.bonusHP = 2000;
-		this.bonusLust = 567;
-		this.weaponAttack = 270;
         this.armorDef = 600;
         this.armorMDef = 350;
+        this.armorName = "leathery skin";
+		this.bonusHP = 2000;
+		this.bonusLust = 572;
+		this.lust = 40;
+        this.level = 72;
         this.gems = rand(5) + 5;
         this.randomDropChance = 0.1;
         this.randomDropParams = {
@@ -377,7 +377,7 @@ public class DemonSoldier extends Monster {
         this.special3 = demonPhysicalAttack;
         this.createPerk(PerkLib.Evade, 0, 0, 0, 0);
         this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);
-		this.createPerk(PerkLib.OverMaxHP, 67, 0, 0, 0);
+		this.createPerk(PerkLib.OverMaxHP, 72, 0, 0, 0);
 		checkMonster();
     }
 

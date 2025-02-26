@@ -72,7 +72,7 @@ package classes.Scenes.Monsters
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_MOIST;
 			this.createStatusEffect(StatusEffects.BonusACapacity, 200, 0, 0, 0);
-			initStrTouSpeInte(360, 420, 330, 20);
+			initStrTouSpeInte(360, 425, 333, 20);
 			initWisLibSensCor(20, 200, 100, 100);
 			this.tallness = 84;
 			this.hips.type = Hips.RATING_AVERAGE + 1;
@@ -86,9 +86,9 @@ package classes.Scenes.Monsters
 			this.armorMDef = 200;
 			this.bonusHP = 700;
 			this.lust = 30;
-			this.bonusLust = 352;
+			this.bonusLust = 354;
 			this.lustVuln = .5;
-			this.level = 52;
+			this.level = 54;
 			this.additionalXP = 400;
 			this.gems = rand(10)+10;
 			this.tailType = Tail.DEMONIC;
