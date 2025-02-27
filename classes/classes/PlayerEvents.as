@@ -383,6 +383,14 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
+			//without Ayo Armor but with Ayo Armor buff present
+			if (!player.isInAyoArmor() && player.buff("Ayo Armor").isPresent()) {
+				var oldHPratioA:Number = player.hp100 / 100;
+				player.buff("Ayo Armor").remove();
+				player.HP = oldHPratioA*player.maxHP();
+				EngineCore.statScreenRefresh();
+				needNext = true;
+			}
 			//Konstantin buffs to equipment
 			if (player.hasStatusEffect(StatusEffects.KonstantinArmorPolishing)) {
 				if (player.statusEffectv1(StatusEffects.KonstantinArmorPolishing) <= 0) player.removeStatusEffect(StatusEffects.KonstantinArmorPolishing);

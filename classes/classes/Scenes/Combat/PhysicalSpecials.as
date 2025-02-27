@@ -637,7 +637,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use Dynapunch Glove again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if (player.hasKeyItem("Taser") >= 0 && player.vehicles != vehicles.GS_MECH) {
+			if ((player.hasKeyItem("Taser") >= 0 || player.hasKeyItem("Taser with an overcharged battery") >= 0) && player.vehicles != vehicles.GS_MECH) {
 				if (player.hasKeyItem("Taser with an overcharged battery") >= 0) bd = buttons.add("Tazer", mechTazer).hint("A voltage rod set on the mech as an upgrade can be used to temporarily paralyse the opponent. Deals some lesser lightning damage and stun for 4 rounds. \n\nWould go into cooldown after use for: 8 rounds");
 				else bd = buttons.add("Tazer", mechTazer).hint("A voltage rod set on the mech as an upgrade can be used to temporarily paralyse the opponent. Deals no damage and stun for 2 rounds. \n\nWould go into cooldown after use for: 8 rounds");
 				if (player.hasStatusEffect(StatusEffects.CooldownTazer)) {
@@ -839,7 +839,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use Dynapunch Glove again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if (player.hasKeyItem("Taser") >= 0 && player.vehicles != vehicles.GS_MECH) {
+			if ((player.hasKeyItem("Taser") >= 0 || player.hasKeyItem("Taser with an overcharged battery") >= 0) && player.vehicles != vehicles.GS_MECH) {
 				if (player.hasKeyItem("Taser with an overcharged battery") >= 0) bd = buttons.add("Tazer", mechTazer).hint("A voltage rod set on the mech as an upgrade can be used to temporarily paralyse the opponent. Deals some lesser lightning damage and stun for 4 rounds. \n\nWould go into cooldown after use for: 8 rounds");
 				else bd = buttons.add("Tazer", mechTazer).hint("A voltage rod set on the mech as an upgrade can be used to temporarily paralyse the opponent. Deals no damage and stun for 2 rounds. \n\nWould go into cooldown after use for: 8 rounds");
 				if (player.hasStatusEffect(StatusEffects.CooldownTazer)) {
@@ -902,7 +902,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (halfPower) mechDynapunchGlove(true, true);
 			else mechDynapunchGlove(true);
 		}
-		if (player.hasKeyItem("Taser") >= 0 && player.vehicles != vehicles.GS_MECH && !player.hasStatusEffect(StatusEffects.CooldownTazer) && !alreadyUsedWeaponFunction) {
+		if ((player.hasKeyItem("Taser") >= 0 || player.hasKeyItem("Taser with an overcharged battery") >= 0) && player.vehicles != vehicles.GS_MECH && !player.hasStatusEffect(StatusEffects.CooldownTazer) && !alreadyUsedWeaponFunction) {
 			alreadyUsedWeaponFunction = true;
 			if (halfPower) mechTazer(true, true);
 			else mechTazer(true);

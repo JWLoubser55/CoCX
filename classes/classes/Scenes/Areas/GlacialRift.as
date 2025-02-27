@@ -131,7 +131,7 @@ use namespace CoC;
 				unique: true,
 				chance: 0.20,
 				when: function():Boolean {
-					return (player.faceType == Face.WOLF || player.faceType == Face.ANIMAL_TOOTHS) && player.ears.type == Ears.WOLF && player.arms.type == Arms.WOLF && player.lowerBody == LowerBody.WOLF && player.tailType == Tail.WOLF && player.isFurCovered() && player.hairColor == "glacial white" && player.furColor == "glacial white" && player.hasKeyItem("Gleipnir Collar") < 0;
+					return player.racialScore(Races.WOLF) > 9 && player.hasKeyItem("Gleipnir Collar") < 0;
 				},
 				call: FenrirRuinedShrine
 			}, {
