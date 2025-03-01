@@ -31,7 +31,7 @@ import classes.Scenes.SceneLib;
 		public var gooGirlScene:GooGirlScene = new GooGirlScene();
 		public var arigeanOmnibusAbominationScene:ArigeanOmnibusAbominationScene = new ArigeanOmnibusAbominationScene();
 
-		public const areaLevel:int = 25;
+		public const areaLevel:int = 40;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.beach > 0;
 		}

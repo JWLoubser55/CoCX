@@ -41,8 +41,8 @@ public class SeaAnemone extends Monster
 					//Kick back to main if no damage occured!
 					// so cute! skip remaining attacks
 					cuteCheck = false;
-
-				} else outputText("Though you lose a bit of steam to the display, the drive for dominance still motivates you to follow through on your swing.");
+				}
+				else outputText("Though you lose a bit of steam to the display, the drive for dominance still motivates you to follow through on your swing.");
 			}
 			return damage;
 		}
