@@ -1176,17 +1176,14 @@ package classes.Scenes {
 
 				if (!genMem.transformationCoverage) {
 					const partsInUse: Boolean = genMem.transformation().isPresent();
-					//if (unlocked && !partsInUse && enoughSF) addButton(currentButton, buttonStr, doMetamorph, title, genMem).hint("Cost: " + genMem.cost + " SF" + (genMem.info ? "\n\n" + genMem.info : ""));
-					//else if (unlocked && partsInUse) addButtonDisabled(currentButton, buttonStr, "You already have this, the metamorphosis would have no effect!");
-					//else if (unlocked && !partsInUse && !enoughSF) addButtonDisabled(currentButton, buttonStr, "Cost: " + genMem.cost + " SF (You don't have enough Soulforce for this metamorphosis!)");
-					if (unlocked && !partsInUse && (enoughSF || (enoughMana && player.hasPerk(PerkLib.Soulless)))) addButton(currentButton++, buttonStr, doMetamorph, title, genMem).hint("Cost: " + cost + " SF" + (genMem.info ? "\n\n" + genMem.info : "") + " OR " + (player.maxMana()/10) + " mana (for True Demons)");
-					else if (unlocked && partsInUse) addButtonDisabled(currentButton++, buttonStr, (!genMem.hint? "You already have this, the metamorphosis would have no effect!":genMem.hint));
-					else if (unlocked && !partsInUse && !enoughSF && !enoughMana) addButtonDisabled(currentButton++, buttonStr, "Cost: " + cost + " SF (You don't have enough Soulforce for this metamorphosis!)"+ " OR " + (player.maxMana()/10) + " mana");
-					else if (!unlocked) addButtonDisabled(currentButton, buttonStr, "You haven't unlocked this metamorphosis yet!" + (genMem.lockedInfo ? "\n\n" + genMem.lockedInfo : ""));
+					if ((unlocked || player.hasPerk(PerkLib.Soulless)) && !partsInUse && (enoughSF || (enoughMana && player.hasPerk(PerkLib.Soulless)))) addButton(currentButton++, buttonStr, doMetamorph, title, genMem).hint("Cost: " + cost + " SF" + (genMem.info ? "\n\n" + genMem.info : "") + " OR " + (player.maxMana()/10) + " mana (for True Demons)");
+					else if ((unlocked || player.hasPerk(PerkLib.Soulless)) && partsInUse) addButtonDisabled(currentButton++, buttonStr, (!genMem.hint? "You already have this, the metamorphosis would have no effect!":genMem.hint));
+					else if ((unlocked || player.hasPerk(PerkLib.Soulless)) && !partsInUse && !enoughSF && !enoughMana) addButtonDisabled(currentButton++, buttonStr, "Cost: " + cost + " SF (You don't have enough Soulforce for this metamorphosis!)"+ " OR " + (player.maxMana()/10) + " mana");
+					else if (!unlocked && !player.hasPerk(PerkLib.Soulless)) addButtonDisabled(currentButton, buttonStr, "You haven't unlocked this metamorphosis yet!" + (genMem.lockedInfo ? "\n\n" + genMem.lockedInfo : ""));
 					currentButton++;
 				} else {
-					if (unlocked) addButton(currentButton, buttonStr, openCoverageMenu, genMem);
-					else if (!unlocked) addButtonDisabled(currentButton, buttonStr, "You haven't unlocked this metamorphosis yet!" + (genMem.lockedInfo ? "\n\n" + genMem.lockedInfo : ""));
+					if (unlocked || player.hasPerk(PerkLib.Soulless)) addButton(currentButton, buttonStr, openCoverageMenu, genMem);
+					else if (!unlocked && !player.hasPerk(PerkLib.Soulless)) addButtonDisabled(currentButton, buttonStr, "You haven't unlocked this metamorphosis yet!" + (genMem.lockedInfo ? "\n\n" + genMem.lockedInfo : ""));
 					currentButton++;
 				}
 			}
@@ -2187,4 +2184,4 @@ package classes.Scenes {
 			//player.killCocks(-1) - remove all	
 		}
 	}
-}
+}

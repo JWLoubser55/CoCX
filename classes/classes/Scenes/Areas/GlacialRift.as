@@ -413,6 +413,7 @@ use namespace CoC;
 
 		private function FenrirRuinedShrine():void {
 			clearOutput();
+			menu();
 			if (flags[kFLAGS.FENRIR_COLLAR] == 2) {
 				outputText("Once more you are drawn into the Temple of Fenrir, and the collar stands before you on Fenrir's petrified form. The god does not speak, but you feel him watching you, silently posing his dreadful question again.\n\n");
 				outputText("Will you take the collar and inherit the dark god's will, or will you refuse, for now?\n\n");

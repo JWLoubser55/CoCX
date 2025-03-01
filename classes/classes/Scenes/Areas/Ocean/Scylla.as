@@ -17,20 +17,20 @@ public class Scylla extends Monster
 			outputText("" + this.capitalA + this.short + "’s tentacles grab you all at once and start to squeeze you!");
 			player.createStatusEffect(StatusEffects.ScyllaBind,0,0,0,0);
 			if (!player.hasPerk(PerkLib.Juggernaut) && armorPerk != "Heavy") {
-				player.takePhysDamage(4+rand(6));
+				player.takePhysDamage(400+rand(60));
 			}
 		}
 		
 		public function scyllaInkSpray():void {
 			clearOutput();
 			outputText("" + this.capitalA + this.short + " stretches all her tentacles apart revealing a huge gaping pussy at the center which spray a cloud of ink all around you impairing your vision. ");
-			if (!player.isImmuneToBlind()) player.createStatusEffect(StatusEffects.Blind, 2, 0, 0, 0);
+			if (!player.isImmuneToBlind()) player.createStatusEffect(StatusEffects.Blind, 3, 0, 0, 0);
 		}
 		
 		public function scyllaTentacleSlap():void {
 			clearOutput();
 			var damage:Number = 0;
-			damage += eBaseStrengthDamage() * 2;
+			damage += eBaseStrengthDamage() * 3;
 			outputText("" + this.capitalA + this.short + " slaps you with her tentacles, dealing ");
 			player.takePhysDamage(damage, true);
 			player.takePhysDamage(damage, true);
@@ -43,7 +43,7 @@ public class Scylla extends Monster
 		public function scyllaTentacleSlap2():void {
 			clearOutput();
 			var damage:Number = 0;
-			damage += eBaseStrengthDamage() * 2;
+			damage += eBaseStrengthDamage() * 3;
 			outputText("" + this.capitalA + this.short + " slaps you with her tentacles, dealing ");
 			player.takePhysDamage(damage, true);
 			player.takePhysDamage(damage, true);
@@ -97,19 +97,19 @@ public class Scylla extends Monster
 			this.skin.setBaseOnly({color:"slippery"});
 			this.hairColor = "brown";
 			this.hairLength = 5;
-			initStrTouSpeInte(450, 250, 250, 150);
-			initWisLibSensCor(150, 200, 150, 0);
+			initStrTouSpeInte(1350, 750, 750, 300);
+			initWisLibSensCor(300, 400, 300, 0);
 			this.weaponName = "tentacle";
 			this.weaponVerb="slash";
-			this.weaponAttack = 86;
+			this.weaponAttack = 430;
 			this.armorName = "thick skin";
-			this.armorDef = 104;
-			this.armorMDef = 52;
-			this.bonusHP = 5000;
-			this.bonusLust = 420;
+			this.armorDef = 1040;
+			this.armorMDef = 520;
+			this.bonusHP = 20000;
+			this.bonusLust = 801;
 			this.lust = 20;
 			this.lustVuln = .2;
-			this.level = 70;
+			this.level = 101;
 			this.gems = 0;
 			this.drop = new WeightedDrop(consumables.BLACKIN, 1);
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);

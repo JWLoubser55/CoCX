@@ -26,7 +26,7 @@ use namespace CoC;
 		public var scyllaScene:ScyllaScene = new ScyllaScene();
 		public var abyssalsharkScene:AbyssalSharkScene = new AbyssalSharkScene();
 		
-		public const areaLevel:int = 25;
+		public const areaLevel:int = 63;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.ocean > 0;
 		}
@@ -35,6 +35,17 @@ use namespace CoC;
 		}
 		public function timesExplored():int {
 			return SceneLib.exploration.counters.ocean;
+		}
+		
+		public const areaLevelInnerOcean:int = 89;
+		public function isDiscoveredInnerOcean():Boolean {
+			return SceneLib.exploration.counters.oceanInner > 0;
+		}
+		public function canDiscoverInnerOcean():Boolean {
+			return !isDiscoveredInnerOcean() && adjustedPlayerLevel() >= areaLevelInnerOcean;
+		}
+		public function timesExploredInnerOcean():int {
+			return SceneLib.exploration.counters.oceanInner;
 		}
 		
 		public function discover():void {
@@ -47,6 +58,12 @@ use namespace CoC;
 			endEncounter(120);
 		}
 		
+		public function discoverInnerOcean():void {
+			clearOutput();
+			outputText("As you sail over the ocean, you reach an unfamiliar region. Marked by much cooler, darker waters beneath you. As you look around, you could almost swear you could saw faint rays of light deep off in the distance... Is it a lighthouse?\n\n<b>You've discovered the Inner Ocean!</b>");
+			SceneLib.exploration.counters.oceanInner = 1;
+			endEncounter(120);
+		}
 		
 		public function Ocean() {
 			onGameInit(init);
@@ -55,6 +72,11 @@ use namespace CoC;
 		private var _oceanEncounter:GroupEncounter = null;
 		public function get oceanEncounter():GroupEncounter {
 			return _oceanEncounter;
+		}
+
+		private var _oceanInnerEncounter:GroupEncounter = null;
+		public function get oceanInnerEncounter():GroupEncounter {
+			return _oceanInnerEncounter;
 		}
 
 		private function init():void {
@@ -67,6 +89,14 @@ use namespace CoC;
 					return player.hasKeyItem("Fishing Pole") >= 0
 				},
 				call: fishing
+			}, {
+				name: "inner ocean",
+				label : "New Area",
+				kind  : 'place',
+				unique: true,
+				when: canDiscoverInnerOcean,
+				call: discoverInnerOcean,
+				chance: Encounters.ALWAYS
 			}, {
 				name: "nothing",
 				chance:  0.25,
@@ -94,15 +124,6 @@ use namespace CoC;
 					SceneLib.boat.anemoneScene.mortalAnemoneeeeee();
 				}
 			}, {
-				name: "scylla",
-				label : "Scylla",
-				kind : 'monster',
-				call: function ():void {
-					player.createStatusEffect(StatusEffects.NearWater,0,0,0,0);
-					player.createStatusEffect(StatusEffects.InWater,0,0,0,0);
-					scyllaScene.oceanScyllaEncounter();
-				}
-			}, {
 				name: "sharkgirl",
 				label : "Shark girl",
 				kind : 'monster',
@@ -123,26 +144,6 @@ use namespace CoC;
 					sharkGirlScene.oceanTigersharkGirlEncounter();
 				}
 			}, {
-				name: "sharkgirlpack",
-				label : "Shark girls pack",
-				kind : 'monster',
-				call: function ():void {
-					flags[kFLAGS.SHARK_OR_TIGERSHARK_GIRL] = 1;
-					player.createStatusEffect(StatusEffects.NearWater,0,0,0,0);
-					player.createStatusEffect(StatusEffects.InWater,0,0,0,0);
-					sharkGirlScene.oceanSharkGirlsPackEncounter();
-				}
-			}, {
-				name: "juvenileabyssalshark",
-				label : "Juvenile A. Shark",
-				kind : 'monster',
-				chance:  0.75,
-				call: function ():void {
-					player.createStatusEffect(StatusEffects.NearWater,0,0,0,0);
-					player.createStatusEffect(StatusEffects.InWater,0,0,0,0);
-					abyssalsharkScene.oceanJuvenileAbyssalSharkEncounter();
-				}
-			}, {
 				name  : "arigean",
 				label : "Arigean",
 				kind : 'monster',
@@ -158,17 +159,67 @@ use namespace CoC;
 				call  : SceneLib.weresharkScene.weresharkEncounter,
 				chance: 0.50
 			})
+			_oceanInnerEncounter = Encounters.group("inner ocean", {
+				name: "fishing",
+				label : "Fishing",
+				kind  : 'event',
+				unique: true,
+				when: function ():Boolean {
+					return player.hasKeyItem("Fishing Pole") >= 0
+				},
+				call: fishing
+			}, {
+				name: "sharkgirlpack",
+				label : "Shark girls pack",
+				kind : 'monster',
+				call: function ():void {
+					flags[kFLAGS.SHARK_OR_TIGERSHARK_GIRL] = 1;
+					player.createStatusEffect(StatusEffects.NearWater,0,0,0,0);
+					player.createStatusEffect(StatusEffects.InWater,0,0,0,0);
+					sharkGirlScene.oceanSharkGirlsPackEncounter();
+				}
+			}, {
+				name: "scylla",
+				label : "Scylla",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.NearWater,0,0,0,0);
+					player.createStatusEffect(StatusEffects.InWater,0,0,0,0);
+					scyllaScene.oceanScyllaEncounter();
+				}
+			}, {
+				name: "juvenileabyssalshark",
+				label : "Juvenile A. Shark",
+				kind : 'monster',
+				chance:  0.75,
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.NearWater,0,0,0,0);
+					player.createStatusEffect(StatusEffects.InWater,0,0,0,0);
+					abyssalsharkScene.oceanJuvenileAbyssalSharkEncounter();
+				}
+			})
 		}
 
 		public function exploreOcean():void {
 			explorer.prepareArea(oceanEncounter);
 			explorer.setTags("ocean","water");
-			explorer.prompt = "You explore the ocean surface.";
+			explorer.prompt = "You explore the outer ocean surface.";
 			explorer.onEncounter = function(e:ExplorationEntry):void {
 				SceneLib.exploration.counters.ocean++;
 			}
 			explorer.leave.hint("Leave the ocean");
 			explorer.skillBasedReveal(areaLevel, timesExplored());
+			explorer.doExplore();
+		}
+		public function exploreInnerOcean():void {
+			explorer.prepareArea(oceanInnerEncounter);
+			explorer.setTags("inner ocean","water");
+			explorer.prompt = "You explore the inner ocean surface.";
+			explorer.onEncounter = function(e:ExplorationEntry):void {
+				SceneLib.exploration.counters.oceaninner++;
+			}
+			explorer.leave.hint("Leave the low mountains");
+			explorer.skillBasedReveal(areaLevelInnerOcean, timesExploredInnerOcean());
 			explorer.doExplore();
 		}
 

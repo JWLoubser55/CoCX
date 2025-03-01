@@ -65,6 +65,7 @@ public class Exploration extends BaseContent implements SaveableState
 			highMountains: 0,
 			
 			plains: 0,
+			// plainsInner
 			
 			swamp: 0,
 			bog: 0,
@@ -74,6 +75,7 @@ public class Exploration extends BaseContent implements SaveableState
 			
 			beach: 0,
 			ocean: 0,
+			oceanInner: 0,
 			// deepSea: 0,
 			
 			caves: 0,
@@ -156,7 +158,7 @@ public class Exploration extends BaseContent implements SaveableState
 		private function btnExploreDeepwoods():ButtonData {
 			return new ButtonData("Deepwoods", SceneLib.forest.exploreDeepwoods)
 					.hint("Visit the dark, bioluminescent deepwoods. "
-							+ (debug ? "\n\nTimes explored: " + SceneLib.forest.timesExploredDeepwoods() : ""))
+							+ "\n\nTimes explored: " + SceneLib.forest.timesExploredDeepwoods())
 					.disableIf(!SceneLib.forest.isDiscoveredDeepwoods(), "Discovered when exploring the Forest (I)." +
 							" (Lvl "+SceneLib.forest.areaLevelDeepwoods+"+)");
 		}
@@ -274,11 +276,18 @@ public class Exploration extends BaseContent implements SaveableState
 							" (Lvl "+SceneLib.beach.areaLevel+"+)");
 		}
 		private function btnExploreOcean():ButtonData {
-			return new ButtonData("Ocean", SceneLib.ocean.exploreOcean)
-					.hint("Explore the ocean surface. But beware of... sharks. "
+			return new ButtonData("Ocean (O)", SceneLib.ocean.exploreOcean)
+					.hint("Explore the outer ocean surface. But beware of... sharks. "
 							+ "\n\nTimes explored: " + SceneLib.ocean.timesExplored())
 					.disableIf(!SceneLib.ocean.isDiscovered(), "You need to first find a way to sail over the water's surface to explore this area.")
 					.disableIf(!SceneLib.beach.isDiscovered(), "You need to discover the Beach first, then find a way to sail on the water.");
+		}
+		private function btnExploreInnerOcean():ButtonData {
+			return new ButtonData("Ocean (I)", SceneLib.ocean.exploreInnerOcean)
+					.hint("Explore the inner ocean surface. But beware of... abyssal sharks. "
+							+ "\n\nTimes explored: " + SceneLib.ocean.timesExplored())
+					.disableIf(!SceneLib.ocean.isDiscoveredInnerOcean(), "Discovered when exploring the Outer Ocean." +
+							" (Lvl "+SceneLib.ocean.areaLevelInnerOcean+"+)");
 		}
 		private function btnExploreCaves():ButtonData {
 			return new ButtonData("Caves", SceneLib.caves.exploreCaves)
@@ -390,9 +399,9 @@ public class Exploration extends BaseContent implements SaveableState
 				// Row 9
 				bd.append(btnExploreBeach());
 				bd.append(btnExploreOcean());
+				bd.append(btnExploreInnerOcean());
 				bd.add(""); // Deep Sea
 				// if (flags[kFLAGS.DISCOVERED_DEEP_SEA] > 0 && player.canSwimUnderwater()) addButton(2, "Deep Sea", SceneLib.deepsea.exploreDeepSea).hint("Visit the 'almost virgin' deep sea. But beware of... krakens. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_DEEP_SEA] : ""));
-				bd.add("");
 				bd.add("");
 				// Row 10
 				bd.append(btnExploreCaves());
@@ -563,6 +572,7 @@ public class Exploration extends BaseContent implements SaveableState
 			menu();
 			
 			btnExploreMountainsHigh().applyTo(button(6));
+			btnExploreInnerOcean().applyTo(button(8));
 			//if (flags[kFLAGS.DISCOVERED_DEEP_SEA] > 0 && player.canSwimUnderwater()) addButton(8, "Deep Sea", SceneLib.deepsea.exploreDeepSea).hint("Visit the 'almost virgin' deep sea. But beware of... krakens. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_DEEP_SEA] : ""));
 			
 			addButton(4, "Next", goBackToPageV);

@@ -17,7 +17,7 @@ public class Grayda extends Monster
 			damage += this.str;
 			damage += eBaseDamage();
 			damage += eBaseStrengthDamage();
-			damage *= 2;
+			damage *= 4;
 			player.takePhysDamage(damage, true);
 			if (rand(4) == 0 && !player.immuneToBleed()) {
 				if (player.hasStatusEffect(StatusEffects.Hemorrhage)) player.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
@@ -30,7 +30,7 @@ public class Grayda extends Monster
 			damage += this.str;
 			damage += eBaseDamage();
 			damage += eBaseStrengthDamage();
-			damage *= 3;
+			damage *= 6;
 			player.takePhysDamage(damage, true);
 			if (rand(5) == 0 && !player.hasPerk(PerkLib.Resolute)) player.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
@@ -40,7 +40,7 @@ public class Grayda extends Monster
 			damage += this.str;
 			damage += eBaseDamage();
 			damage += eBaseSpeedDamage();
-			damage *= 4;
+			damage *= 8;
 			//damage += this.inte;
 			//damage += this.wis;
 			//damage += eBaseIntelligenceDamage();
@@ -56,7 +56,7 @@ public class Grayda extends Monster
 			damage += this.str;
 			damage += eBaseDamage();
 			damage += eBaseStrengthDamage();
-			damage *= 4;
+			damage *= 8;
 			var fC:Number = 12;
 			while (fC-->0) {
 				outputText("A construct firing at you before fizzling out of existence. ");
@@ -75,7 +75,7 @@ public class Grayda extends Monster
 			var damage:Number = 0;
 			damage += this.str;
 			damage += eBaseDamage();
-			damage *= 3;
+			damage *= 6;
 			player.takeMagicDamage(damage, true);
 			outputText("\n\n");
 			if (!player.hasPerk(PerkLib.Resolute)) player.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
@@ -136,19 +136,19 @@ public class Grayda extends Monster
 			this.bodyColor = "albino";
 			this.hairColor = "white";
 			this.hairLength = 16;
-			initStrTouSpeInte(230, 190, 210, 290);
-			initWisLibSensCor(290, 106, 75, 45);
+			initStrTouSpeInte(780, 570, 630, 580);
+			initWisLibSensCor(580, 318, 225, 45);
 			this.weaponName = "staff";
 			this.weaponVerb="bite";
-			this.weaponAttack = 35;
+			this.weaponAttack = 210;
 			this.armorName = "white one-piece swimsuit";
-			this.armorDef = 60;
-			this.armorMDef = 60;
-			this.bonusHP = 250;
-			this.bonusLust = 251;
+			this.armorDef = 600;
+			this.armorMDef = 600;
+			this.bonusHP = 5000;
+			this.bonusLust = 630;
 			this.lust = 40;
 			this.lustVuln = .8;
-			this.level = 70;
+			this.level = 87;
 			this.gems = rand(30) + 25;
 			this.drop = new WeightedDrop()
 					.add(consumables.SFILLET,1)

@@ -173,20 +173,20 @@ public class ArigeanOmnibusAbomination extends Monster
 			this.bodyColor = "albino";
 			this.hairColor = "white";
 			this.hairLength = 16;
-			initStrTouSpeInte(253, 191, 224, 342);
-			initWisLibSensCor(321, 306, 125, 90);
+			initStrTouSpeInte(759, 573, 672, 684);
+			initWisLibSensCor(642, 612, 250, 90);
 			this.weaponName = "tentacles";
 			this.weaponVerb="slap";
-			this.weaponAttack = 35;
+			this.weaponAttack = 210;
 			this.armorName = "white one-piece swimsuit";
-			this.armorDef = 30;
-			this.armorMDef = 30;
-			this.bonusHP = 100;
-			this.bonusLust = 511;
+			this.armorDef = 300;
+			this.armorMDef = 300;
+			this.bonusHP = 1000;
+			this.bonusLust = 942;
 			this.lust = 40;
 			this.lustVuln = .2;
 			this.level = 80;
-			this.gems = rand(30) + 25;
+			this.gems = rand(20) + 50;
 			this.drop = new WeightedDrop()
 					.add(consumables.SIINGOT,3)
 					.add(consumables.L_B_BAR,3)

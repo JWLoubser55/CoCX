@@ -17,10 +17,10 @@ public class JuvenileAbyssalShark extends Monster
 			outputText("Letting soulforce leak out around him, "+this.short+" form twelve ethereal two meter long weapons looking like swordfishes in two rows. Then he thrust his hand outwards and in the blink of an eye, weapons shoot forwards you. Weapons hits you, dealing ");
 			addSoulforce(-90);
 			var hobD:Number = 6;
-			while (hobD-->0) bladesD(2);
+			while (hobD-->0) bladesD();
 			outputText("damage!");
 		}
-		private function bladesD(hits:Number = 1):void {
+		private function bladesD():void {
 			var bd:Number = 0;
 			bd += this.wis * 0.5;
 			bd += wisdomscalingbonus() * 0.5;
@@ -41,11 +41,9 @@ public class JuvenileAbyssalShark extends Monster
 			bd = player.takeMagicDamage(bd, true);
 			if (crit == true) outputText(" <b>*Critical Hit!*</b>");
 			outputText(" ");
-			if (hits == 2) {
-				bd = player.takeMagicDamage(bd, true);
-				if (crit == true) outputText(" <b>*Critical Hit!*</b>");
-				outputText(" ");
-			}
+			bd = player.takeMagicDamage(bd, true);
+			if (crit == true) outputText(" <b>*Critical Hit!*</b>");
+			outputText(" ");
 		}
 		
 		public function createElement():void {
@@ -123,23 +121,23 @@ public class JuvenileAbyssalShark extends Monster
 			this.bodyColor = "gray";
 			this.hairColor = "silver";
 			this.hairLength = 5;
-			initStrTouSpeInte(400, 300, 300, 150);
-			initWisLibSensCor(300, 100, 300, 100);
+			initStrTouSpeInte(1200, 900, 900, 450);
+			initWisLibSensCor(900, 300, 900, 100);
 			this.weaponName = "shark teeth";
 			this.weaponVerb="bite";
-			this.weaponAttack = 35;
+			this.weaponAttack = 280;
 			this.armorName = "tough skin";
-			this.armorDef = 100;
-			this.armorMDef = 10;
-			this.bonusHP = 2000;
-			this.bonusLust = 473;
-			this.bonusSoulforce = 100;
+			this.armorDef = 1000;
+			this.armorMDef = 200;
+			this.bonusHP = 20000;
+			this.bonusLust = 1311;
+			this.bonusSoulforce = 500;
 			this.lust = 20;
 			this.lustVuln = .2;
-			this.level = 73;
+			this.level = 111;
 			this.gems = 0;
 			this.drop = new WeightedDrop()
-					.add(consumables.BAGOCA1,1)
+					.add(consumables.BAGOCA3,1)
 					.add(consumables.SHARK_T,1)
 					.add(consumables.ASTOOTH,3);
 			this.createPerk(PerkLib.EnemyHugeType, 0, 0, 0, 0);

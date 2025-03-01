@@ -216,7 +216,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 37 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 38. Req. perk Elemental Contract Rank 37 and 950+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (advanced) viscount rank\n");
 			outputText("-New tier 38 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 39. Req. perk Elemental Contract Rank 38 and 975+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (peak) viscount rank\n");
 			outputText("-Areas and Places with enemies to fight have their general levels and stats increased. Areas/Places adjusted (new lvl range of enemies): Lake (3-10), Boat (15-29), Forest (O)(8-16), Forest (I)(19-27), Deepwoods (32-52), Desert (O)(13-20), Desert (I)(25-39), Battlefield (B)(18-41), Battlefield (O)(36-65), Hills (23-30), Low Mountains (35-49), Mountains (54-74), High Mountains (79-104), ");
-			outputText("Plains (28-37), Swamp (33-43), Bog (48-64), Blight Ridge (38-56), Defiled Ravine (61-81), Beach (43-61)\n");
+			outputText("Plains (28-37), Swamp (33-43), Bog (48-64), Blight Ridge (38-56), Defiled Ravine (61-81), Beach (43-61), Ocean (O) (66-87)\n");
 			outputText("-15 new achievments. (13 shadow ones)\n");
 			outputText("-Minerva and Izumi base level was increased and accordly their max lvl they can gain by leveling increased too to each reaching within 120-130 lvl range.\n");
 			outputText("-Off hand Equipment slot added. It's mutal exclusive with shield slot and can't have item in both offhand and shield slots. Dual Wield perk desc changed to account for adding this slot.\n");
@@ -347,6 +347,11 @@ public class Changelog extends BaseContent
 			outputText("not because you’re particularly skilled—just because you’re too dumb to realize you should’ve given up ages ago.\n");
 			outputText("-New usable item: Feral Demon Skull. Costing 50 gems and it's obtainable from killing feral demon enemies.\n");
 			outputText("-Ruined Shrine event check in Glacial Rift now would use wolf race score check (10+) instead of lookign for specific bodyparts. Should amke finding shrine bit more forgiving when it come to winter wolf part check.\n");
+			outputText("-Ocean was changed to Outer Ocean and part of encounter from it was moved to next area.\n");
+			outputText("-New Area: Inner Ocean (92-111). Exploring outer ocean allows now to find it. For all that want know what is down there in depth whenever it's Deep One nest, Arigean settlements, Abyssal Cities or just marvels of Gopture, we're one step closer to find out.\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -356,11 +361,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: ???. Req. ?Quasi Domain Kineses? perk and 175+ sensitivity. Effect: add wis to sens
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: ???. Req. ?Quasi Domain Kineses? perk and 175+ sensitivity. Effect: add int to sens
