@@ -809,6 +809,12 @@ public class PerkLib
 		public static const TheLoveableLoser:PerkType = mk("The Loveable Loser", "The Loveable Loser",
 				"Bless your heart, you just don’t know when to quit. No matter how many times you fail, you flash that same goofy grin and try again, convinced that this time, for sure, you’ll get it right! You now get three extra chances to tame a creature, not because you’re particularly skilled—just because you’re too dumb to realize you should’ve given up ages ago.",
 				"You've chosen the 'The Loveable Loser' perk. Bless your heart, you just don’t know when to quit. No matter how many times you fail, you flash that same goofy grin and try again, convinced that this time, for sure, you’ll get it right! You now get three extra chances to tame a creature, not because you’re particularly skilled—just because you’re too dumb to realize you should’ve given up ages ago.");
+		public static const LuckyNumberTamer:PerkType = mk("Lucky Number Tamer", "Lucky Number Tamer",
+				"You played your cards right, tames now come in 7.",
+				"You've chosen the 'Lucky Number Tamer' perk. You played your cards right, tames now come in 7.");
+		public static const ApesTogetherStrong:PerkType = mk("Apes Together Strong", "Apes Together Strong",
+				"You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.",
+				"You've chosen the 'Apes Together Strong' perk. You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -820,12 +826,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -7084,9 +7084,9 @@ public class PerkLib
             SicEmSix.requireLevel(30)
                     .requirePerk(FifthTamed)
                     .requireWis(150);
-        //    .requireLevel(30)
-        //            .requirePerk(SicEmSix)
-        //            .requireWis(155);
+            ApesTogetherStrong.requireLevel(30)
+                    .requirePerk(SicEmSix)
+                    .requireWis(155);
             UnlockSpirit2ndStage.requirePerk(UnlockSpirit)
                     .requireWis(125)
                     .requireLevel(30);
@@ -7117,11 +7117,11 @@ public class PerkLib
                     .requirePerk(ConductionSoulforceCharge)
                     .requireWis(150);
             //Tier 6 Wisdom perks
-        //    .requireLevel(36)
-        //            .requirePerk(SicEmSix)
-        //            .requireWis(175);
-            EmpoweredTaming.requireLevel(36)
+            LuckyNumberTamer.requireLevel(36)
                     .requirePerk(SicEmSix)
+                    .requireWis(175);
+            EmpoweredTaming.requireLevel(36)
+                    .requirePerk(LuckyNumberTamer)
                     .requireWis(180);
             StrongElementalBondSu.requirePerks(StrongElementalBondEx)
                     .requireWis(175)

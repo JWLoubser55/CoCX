@@ -18859,6 +18859,7 @@ private function ghostRealStrengthTamedMonster(no:Number):Number {
 	if (no == 4) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster04a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
 	if (no == 5) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster05a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
 	if (no == 6) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster06a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 7) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster07a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
 	return ghostRealStrTamedMonster;
 }
 
@@ -18933,6 +18934,7 @@ private function ghostRealIntelligenceTamedMonster(no:Number):Number {
 	if (no == 4) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster04b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
 	if (no == 5) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster05b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
 	if (no == 6) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster06b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 7) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster07b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
 	return ghostRealIntTamedMonster;
 }
 
@@ -19074,4 +19076,4 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
-}
+}

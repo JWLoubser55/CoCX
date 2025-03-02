@@ -91,7 +91,8 @@ package classes.Scenes.Monsters
 		public function wonWithFleshGolem():void {
 			clearOutput();
 			menu();
-			outputText("You smile in satisfaction as the "+monster.short+" collapses, unable to continue fighting.");
+			outputText("You smile in satisfaction as the " + monster.short + " collapses, unable to continue fighting.");
+			//addButtonIfTrue(12, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer & ", player.hasPerk(PerkLib.));
 			addButton (14, "Leave", cleanupAfterCombat);
 		}
 	}

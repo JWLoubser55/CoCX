@@ -30,7 +30,7 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasStatusEffect(StatusEffects.TamedMonster01) || player.hasStatusEffect(StatusEffects.TamedMonster02) || player.hasStatusEffect(StatusEffects.TamedMonster03) || player.hasStatusEffect(StatusEffects.TamedMonster04)) return true;
 			else return false;
 		}
-		public function currentTamedMonstersCount():Number {
+		private function currentTamedMonstersCount():Number {
 			var cTMC:Number = 0;
 			if (player.hasStatusEffect(StatusEffects.TamedMonster01)) cTMC += 1;
 			if (player.hasStatusEffect(StatusEffects.TamedMonster02)) cTMC += 1;
@@ -38,7 +38,14 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasStatusEffect(StatusEffects.TamedMonster04)) cTMC += 1;
 			if (player.hasStatusEffect(StatusEffects.TamedMonster05)) cTMC += 1;
 			if (player.hasStatusEffect(StatusEffects.TamedMonster06)) cTMC += 1;
+			if (player.hasStatusEffect(StatusEffects.TamedMonster07)) cTMC += 1;
 			return cTMC;
+		}
+		public function currentTamedMonstersIncludingGroupsCount():Number {
+			var cTMIGC:Number = currentTamedMonstersCount();
+			if (player.statusEffectv4(StatusEffects.TamedMonster01) > 0) cTMIGC += player.statusEffectv4(StatusEffects.TamedMonster01);
+			if (player.statusEffectv4(StatusEffects.TamedMonster02) > 0) cTMIGC += player.statusEffectv4(StatusEffects.TamedMonster02);
+			return cTMIGC;
 		}
 		private function currentTamingCap():Number {
 			var cTC:Number = 1;
@@ -47,7 +54,12 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.FourthTamerOfTheApocalypse)) cTC += 1;
 			if (player.hasPerk(PerkLib.FifthTamed)) cTC += 1;
 			if (player.hasPerk(PerkLib.SicEmSix)) cTC += 1;
+			if (player.hasPerk(PerkLib.LuckyNumberTamer)) cTC += 1;
 			return cTC;
+		}
+		private function currentGroupCap():Number {
+			var cGC:Number = 2;
+			return cGC;
 		}
 		private function playerWisdomCheck():Number {
 			var pWc:Number = player.wis;
@@ -78,66 +90,77 @@ public class CampMakeWinions extends BaseContent
 		public function accessTamedWinionsMainMenu():void {
 			clearOutput();
 			outputText("Check on your tamed monsters.\n\n");
-			//TAMED_00_NAME - for monsters tamed using ring of taming (after it's added)
+			//outputText("<b>Tamed Monster No.0 (ring of taming):</b> ");TAMED_00_NAME - for monsters tamed using ring of taming (after it's added)
 			outputText("<b>Tamed Monster No.1:</b> ");
 			if (player.hasStatusEffect(StatusEffects.TamedMonster01)) {
-				outputText(flags[kFLAGS.TAMED_01_NAME] + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster01)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier() + ", ");
+				outputText(flags[kFLAGS.TAMED_01_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster01)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster01)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster01)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier() + ", ");
 				outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster01b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster01b)*monsterBaseStatsMultiplier() + ", ");
 				outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster01b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster01) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster01) > 0?"Yes":"No") + ")");
 			}
 			else outputText("None");
 			menu();
-			addButtonIfTrue(0, "No.1", curry(tamingAttemptRelease, 1, true), "You do not have Monster No.1 tamed", player.hasStatusEffect(StatusEffects.TamedMonster01), "Release Monster No.1");
+			addButtonIfTrue(1, "No.1", curry(tamingAttemptRelease, 1, true), "You do not have Monster No.1 tamed", player.hasStatusEffect(StatusEffects.TamedMonster01), "Release Monster No.1");
 			if (player.hasPerk(PerkLib.Beast02)) {
 				outputText("\n<b>Tamed Monster No.2:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster02)) {
-					outputText(flags[kFLAGS.TAMED_02_NAME] + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster02)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier() + ", ");
+					outputText(flags[kFLAGS.TAMED_02_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster02)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster02)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster02)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster02b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster02b)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster02b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster02) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster02) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
-				addButtonIfTrue(1, "No.2", curry(tamingAttemptRelease, 2, true), "You do not have Monster No.2 tamed", player.hasStatusEffect(StatusEffects.TamedMonster02), "Release Monster No.2");
+				addButtonIfTrue(2, "No.2", curry(tamingAttemptRelease, 2, true), "You do not have Monster No.2 tamed", player.hasStatusEffect(StatusEffects.TamedMonster02), "Release Monster No.2");
 			}
 			if (player.hasPerk(PerkLib.ThreeTimesATame)) {
 				outputText("\n<b>Tamed Monster No.3:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster03)) {
-					outputText(flags[kFLAGS.TAMED_03_NAME] + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster03)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier() + ", ");
+					outputText(flags[kFLAGS.TAMED_03_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster03)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster03)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster03)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster03b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster03b)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster03b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster03) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster03) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
-				addButtonIfTrue(2, "No.3", curry(tamingAttemptRelease, 3, true), "You do not have Monster No.3 tamed", player.hasStatusEffect(StatusEffects.TamedMonster03), "Release Monster No.3");
+				addButtonIfTrue(3, "No.3", curry(tamingAttemptRelease, 3, true), "You do not have Monster No.3 tamed", player.hasStatusEffect(StatusEffects.TamedMonster03), "Release Monster No.3");
 			}
 			if (player.hasPerk(PerkLib.FourthTamerOfTheApocalypse)) {
 				outputText("\n<b>Tamed Monster No.4:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster04)) {
-					outputText(flags[kFLAGS.TAMED_04_NAME] + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster04)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier() + ", ");
+					outputText(flags[kFLAGS.TAMED_04_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster04)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster04)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster04)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster04b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster04b)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster04b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster04) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster04) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
-				addButtonIfTrue(3, "No.4", curry(tamingAttemptRelease, 4, true), "You do not have Monster No.4 tamed", player.hasStatusEffect(StatusEffects.TamedMonster04), "Release Monster No.4");
+				addButtonIfTrue(4, "No.4", curry(tamingAttemptRelease, 4, true), "You do not have Monster No.4 tamed", player.hasStatusEffect(StatusEffects.TamedMonster04), "Release Monster No.4");
 			}
 			if (player.hasPerk(PerkLib.FifthTamed)) {
 				outputText("\n<b>Tamed Monster No.5:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster05)) {
-					outputText(flags[kFLAGS.TAMED_05_NAME] + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster05)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier() + ", ");
+					outputText(flags[kFLAGS.TAMED_05_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster05)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster05)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster05)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster05b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster05b)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster05b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster05) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster05) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
-				addButtonIfTrue(4, "No.5", curry(tamingAttemptRelease, 5, true), "You do not have Monster No.5 tamed", player.hasStatusEffect(StatusEffects.TamedMonster05), "Release Monster No.5");
+				addButtonIfTrue(5, "No.5", curry(tamingAttemptRelease, 5, true), "You do not have Monster No.5 tamed", player.hasStatusEffect(StatusEffects.TamedMonster05), "Release Monster No.5");
 			}
 			if (player.hasPerk(PerkLib.SicEmSix)) {
 				outputText("\n<b>Tamed Monster No.6:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster06)) {
-					outputText(flags[kFLAGS.TAMED_06_NAME] + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster06)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier() + ", ");
+					outputText(flags[kFLAGS.TAMED_06_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster06)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster06)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster06)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier() + ", ");
 					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster06) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster06) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
-				addButtonIfTrue(5, "No.6", curry(tamingAttemptRelease, 6, true), "You do not have Monster No.6 tamed", player.hasStatusEffect(StatusEffects.TamedMonster06), "Release Monster No.6");
+				addButtonIfTrue(6, "No.6", curry(tamingAttemptRelease, 6, true), "You do not have Monster No.6 tamed", player.hasStatusEffect(StatusEffects.TamedMonster06), "Release Monster No.6");
 			}
+			if (player.hasPerk(PerkLib.LuckyNumberTamer)) {
+				outputText("\n<b>Tamed Monster No.7:</b> ");
+				if (player.hasStatusEffect(StatusEffects.TamedMonster07)) {
+					outputText(flags[kFLAGS.TAMED_07_NAME] + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster07)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster07a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster07a)*monsterBaseStatsMultiplier() + ", ");
+					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster07a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster07b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster07b)*monsterBaseStatsMultiplier() + ", ");
+					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster07b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster07) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster07) > 0?"Yes":"No") + ")");
+				}
+				else outputText("None");
+				addButtonIfTrue(7, "No.7", curry(tamingAttemptRelease, 7, true), "You do not have Monster No.7 tamed", player.hasStatusEffect(StatusEffects.TamedMonster07), "Release Monster No.7");
+			}
+			addButtonIfTrue(13, "Group", groupUpTamedMonsters, "You do not have Apes Together Strong perk.", player.hasPerk(PerkLib.ApesTogetherStrong), "Group your tamed monsters.");
 			addButton(14, "Back", camp.campWinionsArmySim);
 		}
 		public function tamingAttempt():void {
@@ -152,6 +175,7 @@ public class CampMakeWinions extends BaseContent
 				if (player.hasPerk(PerkLib.FourthTamerOfTheApocalypse)) addButtonIfTrue(5, "Release 04", curry(tamingAttemptRelease, 4), "You do not have any tamed monster No.4", player.hasStatusEffect(StatusEffects.TamedMonster04), "Release Monster No.4");
 				if (player.hasPerk(PerkLib.FifthTamed)) addButtonIfTrue(6, "Release 05", curry(tamingAttemptRelease, 5), "You do not have any tamed monster No.5", player.hasStatusEffect(StatusEffects.TamedMonster05), "Release Monster No.5");
 				if (player.hasPerk(PerkLib.SicEmSix)) addButtonIfTrue(7, "Release 06", curry(tamingAttemptRelease, 6), "You do not have any tamed monster No.6", player.hasStatusEffect(StatusEffects.TamedMonster06), "Release Monster No.6");
+				if (player.hasPerk(PerkLib.LuckyNumberTamer)) addButtonIfTrue(8, "Release 07", curry(tamingAttemptRelease, 7), "You do not have any tamed monster No.7", player.hasStatusEffect(StatusEffects.TamedMonster07), "Release Monster No.7");
 			}
 			else tamingAttemptYes();
 		}
@@ -160,6 +184,7 @@ public class CampMakeWinions extends BaseContent
 			if (playerWisdomCheck() > monsterWisdomCheck()) {
 				outputText("Fortunately, after some effort, you manage to successfully claim a new ally—for now, at least.");
 				var onlyOneTamingAtTime:Boolean = false;
+				//ring of taming monster
 				if (!player.hasStatusEffect(StatusEffects.TamedMonster01)) {
 					flags[kFLAGS.TAMED_01_NAME] = monster.short;
 					player.createStatusEffect(StatusEffects.TamedMonster01, monster.weaponAttack, 0, 0, 0);
@@ -214,6 +239,15 @@ public class CampMakeWinions extends BaseContent
 					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster06, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
+				if (!player.hasStatusEffect(StatusEffects.TamedMonster07) && !onlyOneTamingAtTime) {
+					flags[kFLAGS.TAMED_07_NAME] = monster.short;
+					player.createStatusEffect(StatusEffects.TamedMonster07, monster.weaponAttack, 0, 0, 0);
+					player.createStatusEffect(StatusEffects.TamedMonster07a, monster.strStat.core.value, monster.touStat.core.value, monster.speStat.core.value, 0);
+					player.createStatusEffect(StatusEffects.TamedMonster07b, monster.intStat.core.value, monster.wisStat.core.value, monster.libStat.core.value, 0);
+					if (monster.magicuser == true) player.addStatusValue(StatusEffects.TamedMonster07, 2, 1);
+					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster07, 3, 1);
+					onlyOneTamingAtTime = true;
+				}
 				retrycount = 0;
 			}
 			else {
@@ -238,54 +272,119 @@ public class CampMakeWinions extends BaseContent
 			}
 			cleanupAfterCombat();
 		}
+		public function groupUpTamedMonsters():void {
+			clearOutput();
+			var maxGroups:Number = 2;
+			outputText("Which one tamed monsters you decide to group up?\n\n");
+			outputText("<b>Only first "+maxGroups+" tamed monster slots can be used to form groups.</b>");
+			menu();
+			addButtonIfTrue(0, "-1-", curry(groupUpTamedMonsters2, 1), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster01) && (player.statusEffectv4(StatusEffects.TamedMonster01) < (currentGroupCap() - 1)), "Add monster to No.1 tamed group.");
+			addButtonIfTrue(1, "-2-", curry(groupUpTamedMonsters2, 2), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster02) && (player.statusEffectv4(StatusEffects.TamedMonster02) < (currentGroupCap() - 1)), "Add monster to No.2 tamed group.");
+			addButton(14, "Back", accessTamedWinionsMainMenu);
+		}
+		public function groupUpTamedMonsters2(tameMon:Number):void {
+			menu();
+			if (tameMon == 1) {
+				//0 for ring of taming monster
+				addButtonIfTrue(1, "-2-",  curry(groupUpTamedMonsters3, 1, 2, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_02_NAME]), "You do not have Monster No.2 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster02) && player.statusEffectv4(StatusEffects.TamedMonster02) == 0), "Add to Group No.1 monster from slot 2.");
+				addButtonIfTrue(2, "-3-",  curry(groupUpTamedMonsters3, 1, 3, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_03_NAME]), "You do not have Monster No.3 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster03) && player.statusEffectv4(StatusEffects.TamedMonster03) == 0), "Add to Group No.1 monster from slot 3.");
+				addButtonIfTrue(3, "-4-",  curry(groupUpTamedMonsters3, 1, 4, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_04_NAME]), "You do not have Monster No.4 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster04) && player.statusEffectv4(StatusEffects.TamedMonster04) == 0), "Add to Group No.1 monster from slot 4.");
+				addButtonIfTrue(4, "-5-",  curry(groupUpTamedMonsters3, 1, 5, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_05_NAME]), "You do not have Monster No.5 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster05) && player.statusEffectv4(StatusEffects.TamedMonster05) == 0), "Add to Group No.1 monster from slot 5.");
+				addButtonIfTrue(5, "-6-",  curry(groupUpTamedMonsters3, 1, 6, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_06_NAME]), "You do not have Monster No.6 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster06) && player.statusEffectv4(StatusEffects.TamedMonster06) == 0), "Add to Group No.1 monster from slot 6.");
+				addButtonIfTrue(6, "-7-",  curry(groupUpTamedMonsters3, 1, 7, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_07_NAME]), "You do not have Monster No.7 tamed", player.hasStatusEffect(StatusEffects.TamedMonster07), "Add to Group No.1 monster from slot 7.");
+			}
+			if (tameMon == 2) {
+				//0 for ring of taming monster
+				addButtonIfTrue(1, "-1-",  curry(groupUpTamedMonsters3, 2, 1, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_01_NAME]), "You do not have Monster No.1 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster01) && player.statusEffectv4(StatusEffects.TamedMonster01) == 0), "Add to Group No.2 monster from slot 1.");
+				addButtonIfTrue(2, "-3-",  curry(groupUpTamedMonsters3, 2, 3, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_03_NAME]), "You do not have Monster No.3 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster03) && player.statusEffectv4(StatusEffects.TamedMonster03) == 0), "Add to Group No.2 monster from slot 3.");
+				addButtonIfTrue(3, "-4-",  curry(groupUpTamedMonsters3, 2, 4, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_04_NAME]), "You do not have Monster No.4 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster04) && player.statusEffectv4(StatusEffects.TamedMonster04) == 0), "Add to Group No.2 monster from slot 4.");
+				addButtonIfTrue(4, "-5-",  curry(groupUpTamedMonsters3, 2, 5, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_05_NAME]), "You do not have Monster No.5 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster05) && player.statusEffectv4(StatusEffects.TamedMonster05) == 0), "Add to Group No.2 monster from slot 5.");
+				addButtonIfTrue(5, "-6-",  curry(groupUpTamedMonsters3, 2, 6, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_06_NAME]), "You do not have Monster No.6 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster06) && player.statusEffectv4(StatusEffects.TamedMonster06) == 0), "Add to Group No.2 monster from slot 6.");
+				addButtonIfTrue(6, "-7-",  curry(groupUpTamedMonsters3, 2, 7, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_07_NAME]), "You do not have Monster No.7 tamed", player.hasStatusEffect(StatusEffects.TamedMonster07), "Add to Group No.2 monster from slot 7.");
+			}
+			addButton(14, "Back", groupUpTamedMonsters);
+		}
+		public function groupUpTamedMonsters3(tameMonA:Number, tameMonB:Number, tameMon1:String, tameMon2:String):void {
+			if (tameMonA == 1) {
+				if (tameMon1 == tameMon2) groupUpTamedMonstersSuccess(tameMonA, tameMonB);
+				else groupUpTamedMonstersFail();
+			}
+			if (tameMonA == 2) {
+				if (tameMon1 == tameMon2) groupUpTamedMonstersSuccess(tameMonA, tameMonB);
+				else groupUpTamedMonstersFail();
+			}
+		}
+		public function groupUpTamedMonstersSuccess(tameMonA:Number, tameMonB:Number):void {
+			clearOutput();
+			outputText("You succeed to add monster to form/expand group of monsters.");
+			if (tameMonA == 1) player.addStatusValue(StatusEffects.TamedMonster01, 4, 1);
+			if (tameMonA == 2) player.addStatusValue(StatusEffects.TamedMonster02, 4, 1);
+			clearingTamedMonsterSlot(tameMonB, true);
+			doNext(accessTamedWinionsMainMenu);
+		}
+		public function groupUpTamedMonstersFail():void {
+			clearOutput();
+			outputText("You failed to add monster to form/expand group of monsters.");
+			doNext(accessTamedWinionsMainMenu);
+		}
 		public function tamingAttemptRelease(tameMon:Number, inCamp:Boolean = false):void {
 			outputText("\n\nYou decide to set ");
-			var tame:Number = 0;
+			clearingTamedMonsterSlot(tameMon, true);
+			outputText(" free, unleashing your friend back into Mareth.");
+			if (inCamp) doNext(accessTamedWinionsMainMenu);
+			else doNext(tamingAttemptYes);
+		}
+		
+		private function clearingTamedMonsterSlot(tameMon:Number, textOn:Boolean = false):void {
 			if (tameMon == 1) {
-				outputText("" + flags[kFLAGS.TAMED_01_NAME] + "");
+				if (textOn) outputText("" + flags[kFLAGS.TAMED_01_NAME] + "");
 				player.removeStatusEffect(StatusEffects.TamedMonster01);
 				player.removeStatusEffect(StatusEffects.TamedMonster01a);
 				player.removeStatusEffect(StatusEffects.TamedMonster01b);
 				flags[kFLAGS.TAMED_01_NAME] = "";
 			}
 			if (tameMon == 2) {
-				outputText(""+flags[kFLAGS.TAMED_02_NAME]+"");
+				if (textOn) outputText(""+flags[kFLAGS.TAMED_02_NAME]+"");
 				player.removeStatusEffect(StatusEffects.TamedMonster02);
 				player.removeStatusEffect(StatusEffects.TamedMonster02a);
 				player.removeStatusEffect(StatusEffects.TamedMonster02b);
 				flags[kFLAGS.TAMED_02_NAME] = "";
 			}
 			if (tameMon == 3) {
-				outputText(""+flags[kFLAGS.TAMED_03_NAME]+"");
+				if (textOn) outputText(""+flags[kFLAGS.TAMED_03_NAME]+"");
 				player.removeStatusEffect(StatusEffects.TamedMonster03);
 				player.removeStatusEffect(StatusEffects.TamedMonster03a);
 				player.removeStatusEffect(StatusEffects.TamedMonster03b);
 				flags[kFLAGS.TAMED_03_NAME] = "";
 			}
 			if (tameMon == 4) {
-				outputText(""+flags[kFLAGS.TAMED_04_NAME]+"");
+				if (textOn) outputText(""+flags[kFLAGS.TAMED_04_NAME]+"");
 				player.removeStatusEffect(StatusEffects.TamedMonster04);
 				player.removeStatusEffect(StatusEffects.TamedMonster04a);
 				player.removeStatusEffect(StatusEffects.TamedMonster04b);
 				flags[kFLAGS.TAMED_04_NAME] = "";
 			}
 			if (tameMon == 5) {
-				outputText(""+flags[kFLAGS.TAMED_05_NAME]+"");
+				if (textOn) outputText(""+flags[kFLAGS.TAMED_05_NAME]+"");
 				player.removeStatusEffect(StatusEffects.TamedMonster05);
 				player.removeStatusEffect(StatusEffects.TamedMonster05a);
 				player.removeStatusEffect(StatusEffects.TamedMonster05b);
 				flags[kFLAGS.TAMED_05_NAME] = "";
 			}
 			if (tameMon == 6) {
-				outputText(""+flags[kFLAGS.TAMED_06_NAME]+"");
+				if (textOn) outputText(""+flags[kFLAGS.TAMED_06_NAME]+"");
 				player.removeStatusEffect(StatusEffects.TamedMonster06);
 				player.removeStatusEffect(StatusEffects.TamedMonster06a);
 				player.removeStatusEffect(StatusEffects.TamedMonster06b);
 				flags[kFLAGS.TAMED_06_NAME] = "";
 			}
-			outputText(" free, unleashing your friend back into Mareth.");
-			if (inCamp) doNext(accessTamedWinionsMainMenu);
-			else doNext(tamingAttemptYes);
+			if (tameMon == 7) {
+				if (textOn) outputText(""+flags[kFLAGS.TAMED_07_NAME]+"");
+				player.removeStatusEffect(StatusEffects.TamedMonster07);
+				player.removeStatusEffect(StatusEffects.TamedMonster07a);
+				player.removeStatusEffect(StatusEffects.TamedMonster07b);
+				flags[kFLAGS.TAMED_07_NAME] = "";
+			}
 		}
 
 		//-----------
@@ -1242,11 +1341,7 @@ public class CampMakeWinions extends BaseContent
 				idx = player.statusEffectv2(StatusEffects.SummonedElementalsWaterE);
 				outputText(ELITE_ELEMENTAL_RANKS[idx]);
 			}
-			outputText("</i>");/*	usunąć za jakiś czas wykorektorowaną cześć
-			outputText("\n"+player.statusEffectv1(StatusEffects.ElementalPearlGolems)+"");
-			outputText("\n"+player.perkv1(PerkLib.ElementalConjurerResolve)+"");
-			outputText("\n"+player.perkv1(PerkLib.ElementalConjurerDedication)+"");
-			outputText("\n"+player.perkv1(PerkLib.ElementalConjurerSacrifice)+"");*/
+			outputText("</i>");
 			menu();
 			if (player.hasPerk(PerkLib.JobElementalConjurer) && (currentSizeOfElementalsArmy() < maxSizeOfElementalsArmy())) addButton(0, "Summon(N)", summoningElementalsSubmenu).hint("Summon a Normal-tier Elementals");
 			else addButtonDisabled(0, "Summon(N)", "You have either summoned all available Normal-tier elementals or reached the limit of how many elementals you can command at once.");

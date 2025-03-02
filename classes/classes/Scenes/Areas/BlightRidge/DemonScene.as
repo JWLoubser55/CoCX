@@ -55,7 +55,7 @@ import classes.display.SpriteDb;
 			outputText("You smile in satisfaction as the feral mino incubus collapses, unable to continue fighting.");
 			player.removeStatusEffect(StatusEffects.FeralDemon);
 			if (monster.HP < 1) addButton (5, "Kill Him", killDemon2);
-			//addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+			addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			addButton (14, "Leave", cleanupAfterCombat);
 		}
 		
@@ -73,7 +73,7 @@ import classes.display.SpriteDb;
 			outputText("You smile in satisfaction as the feral incubus collapses, unable to continue fighting.");
 			player.removeStatusEffect(StatusEffects.FeralDemon);
 			if (monster.HP < 1) addButton (5, "Kill Her", killDemon2);
-			//addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+			addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			addButton (14, "Leave", cleanupAfterCombat);
 		}
 		
@@ -240,7 +240,7 @@ import classes.display.SpriteDb;
 			outputText("You smile in satisfaction as the feral omnibus collapses, unable to continue fighting.");
 			player.removeStatusEffect(StatusEffects.FeralDemon);
 			if (monster.HP < 1) addButton (5, "Kill Her", killDemon2);
-			//addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+			addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			addButton (14, "Leave", cleanupAfterCombat);
 		}
 		
@@ -436,7 +436,7 @@ import classes.display.SpriteDb;
 			outputText("You smile in satisfaction as the feral cow succubus collapses, unable to continue fighting.");
 			player.removeStatusEffect(StatusEffects.FeralDemon);
 			if (monster.HP < 1) addButton (5, "Kill Her", killDemon2);
-			//addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+			addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			addButton (14, "Leave", cleanupAfterCombat);
 		}
 		
@@ -455,7 +455,7 @@ import classes.display.SpriteDb;
 			outputText("You smile in satisfaction as the feral succubus collapses, unable to continue fighting.");
 			player.removeStatusEffect(StatusEffects.FeralDemon);
 			if (monster.HP < 1) addButton (5, "Kill Her", killDemon2);
-			//addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+			addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			addButton (14, "Leave", cleanupAfterCombat);
 		}
 		
@@ -667,7 +667,7 @@ import classes.display.SpriteDb;
 			outputText("The demon hellhound's flames dim, and the heads let out a whine before the creature slumps down, defeated and nearly unconscious.");
 			player.removeStatusEffect(StatusEffects.FeralDemon);
 			if (monster.HP < 1) addButton (5, "Kill Him", killDemonHellhound);
-			//addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+			addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			addButton (14, "Leave", cleanupAfterCombat);
 		}
 		

@@ -37,6 +37,7 @@ import classes.StatusEffects;
 			if (player.hasStatusEffect(StatusEffects.TamedMonster04)) outputText("<b>Tamed Monster No.4 HP:</b> "+(100-player.statusEffectv2(StatusEffects.TamedMonster04))+"%");
 			if (player.hasStatusEffect(StatusEffects.TamedMonster05)) outputText("<b>Tamed Monster No.5 HP:</b> "+(100-player.statusEffectv2(StatusEffects.TamedMonster05))+"%");
 			if (player.hasStatusEffect(StatusEffects.TamedMonster06)) outputText("<b>Tamed Monster No.6 HP:</b> "+(100-player.statusEffectv2(StatusEffects.TamedMonster06))+"%");
+			if (player.hasStatusEffect(StatusEffects.TamedMonster07)) outputText("<b>Tamed Monster No.7 HP:</b> "+(100-player.statusEffectv2(StatusEffects.TamedMonster07))+"%");
 			if (player.hasStatusEffect(StatusEffects.TamedMonster01)) addButton(0, "No.1", tamedMonstersActionMenu, 1).hint("Use tamed monster No.1");
 			else addButtonDisabled(0, "No.1", "You do not have Monster No.1 tamed.");
 			if (player.hasPerk(PerkLib.Beast02)) {
@@ -58,6 +59,10 @@ import classes.StatusEffects;
 			if (player.hasPerk(PerkLib.SicEmSix)) {
 				if (player.hasStatusEffect(StatusEffects.TamedMonster06)) addButton(5, "No.6", tamedMonstersActionMenu, 6).hint("Use tamed monster No.6");
 				else addButtonDisabled(5, "No.6", "You do not have Monster No.6 tamed.");
+			}
+			if (player.hasPerk(PerkLib.LuckyNumberTamer)) {
+				if (player.hasStatusEffect(StatusEffects.TamedMonster07)) addButton(6, "No.7", tamedMonstersActionMenu, 7).hint("Use tamed monster No.7");
+				else addButtonDisabled(6, "No.7", "You do not have Monster No.7 tamed.");
 			}
 			addButton(14, "Back", SceneLib.combat.combatMenu, false);
 		}
@@ -106,6 +111,13 @@ import classes.StatusEffects;
 				if (flags[kFLAGS.TAMED_MONSTER_PROTECTING] > 0) addButtonIfTrue(4, "Protect", curry(tamedMonsterProtect, 6), "Tamed monster No.6 has not yet fully recovered.", player.statusEffectv2(StatusEffects.TamedMonster06)>0, "Command tamed monster No.6 to protect you.");
 				else addButtonDisabled(4, "Protect", "You already commanded one of the tamed monsters to protect you.");
 			}
+			if (no == 7) {
+				if (monster.isFlying() || monster.flyer) addButtonIfTrue(0, "Attack", curry(tamedMonsterAttackMelee, 7), "Your tamed monster can’t attack flying enemies.", player.statusEffectv3(StatusEffects.TamedMonster07)>0, "Command tamed monster No.7 to attack.");
+				else addButton(0, "Attack", curry(tamedMonsterAttackMelee, 7)).hint("Command tamed monster No.7 to attack.");
+				addButtonIfTrue(1, "M.Bolt", curry(tamedMonsterAttackMagic, 7), "Your tamed monster can’t spellcast.", player.statusEffectv2(StatusEffects.TamedMonster07)>0, "Command tamed monster No.7 to cast magic bolt.");
+				if (flags[kFLAGS.TAMED_MONSTER_PROTECTING] > 0) addButtonIfTrue(4, "Protect", curry(tamedMonsterProtect, 7), "Tamed monster No.7 has not yet fully recovered.", player.statusEffectv2(StatusEffects.TamedMonster07)>0, "Command tamed monster No.7 to protect you.");
+				else addButtonDisabled(4, "Protect", "You already commanded one of the tamed monsters to protect you.");
+			}
 			addButton(14, "Back", tamedMonstersMenu);
 		}
 		
@@ -113,13 +125,16 @@ import classes.StatusEffects;
 			clearOutput();
 			var weapon:Number = 0;
 			var dmg:Number = 0;
+			var repeat:Number = 0;
 			if (no == 1) {
 				weapon += player.statusEffectv1(StatusEffects.TamedMonster01);
 				dmg += SceneLib.combat.scalingBonusStrengthTamedMonster(1);
+				if (player.statusEffectv4(StatusEffects.TamedMonster01) > 0) repeat += player.statusEffectv4(StatusEffects.TamedMonster01);
 			}
 			if (no == 2) {
 				weapon += player.statusEffectv1(StatusEffects.TamedMonster02);
 				dmg += SceneLib.combat.scalingBonusStrengthTamedMonster(2);
+				if (player.statusEffectv4(StatusEffects.TamedMonster02) > 0) repeat += player.statusEffectv4(StatusEffects.TamedMonster02);
 			}
 			if (no == 3) {
 				weapon += player.statusEffectv1(StatusEffects.TamedMonster03);
@@ -137,13 +152,18 @@ import classes.StatusEffects;
 				weapon += player.statusEffectv1(StatusEffects.TamedMonster06);
 				dmg += SceneLib.combat.scalingBonusStrengthTamedMonster(6);
 			}
+			if (no == 7) {
+				weapon += player.statusEffectv1(StatusEffects.TamedMonster07);
+				dmg += SceneLib.combat.scalingBonusStrengthTamedMonster(7);
+			}
 			if (weapon < 51) dmg *= (1 + (weapon * 0.03));
 			else if (weapon >= 51 && weapon < 101) dmg *= (2.5 + ((weapon - 50) * 0.025));
 			else if (weapon >= 101 && weapon < 151) dmg *= (3.75 + ((weapon - 100) * 0.02));
 			else if (weapon >= 151 && weapon < 201) dmg *= (4.75 + ((weapon - 150) * 0.015));
 			else dmg *= (5.5 + (weapon * 0.01));
+			if (repeat > 0) dmg *= (1 + (0.5 * repeat));
 			dmg *= increasedEfficiencyOfTamedMostersAttacks();
-			if (player.hasPerk(PerkLib.WorkingTogether) && SceneLib.campMakeWinions.currentTamedMonstersCount() > 1) dmg *= SceneLib.campMakeWinions.currentTamedMonstersCount();
+			if (player.hasPerk(PerkLib.WorkingTogether) && SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount() > 1) dmg *= SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount();
 			dmg = Math.round(dmg * SceneLib.combat.comfoll.increasedEfficiencyOfAttacks());
 			outputText("Your tamed ");
 			if (no == 1) outputText(""+flags[kFLAGS.TAMED_01_NAME]+"");
@@ -152,8 +172,10 @@ import classes.StatusEffects;
 			if (no == 4) outputText(""+flags[kFLAGS.TAMED_04_NAME]+"");
 			if (no == 5) outputText(""+flags[kFLAGS.TAMED_05_NAME]+"");
 			if (no == 6) outputText(""+flags[kFLAGS.TAMED_06_NAME]+"");
+			if (no == 7) outputText(""+flags[kFLAGS.TAMED_07_NAME]+"");
 			outputText(" attacks [themonster]. ");
 			doDamage(dmg, true, true);
+			if (repeat > 0) doDamage(dmg, true, true);
 			outputText("\n\n");
 			SceneLib.combat.enemyAIImpl();
 		}
@@ -161,19 +183,28 @@ import classes.StatusEffects;
 			clearOutput();
 			var weapon:Number = 0;
 			var dmg:Number = 0;
-			if (no == 1) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(1);
-			if (no == 2) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(2);
+			var repeat:Number = 0;
+			if (no == 1) {
+				dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(1);
+				if (player.statusEffectv4(StatusEffects.TamedMonster01) > 0) repeat += player.statusEffectv4(StatusEffects.TamedMonster01);
+			}
+			if (no == 2) {
+				dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(2);
+				if (player.statusEffectv4(StatusEffects.TamedMonster02) > 0) repeat += player.statusEffectv4(StatusEffects.TamedMonster02);
+			}
 			if (no == 3) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(3);
 			if (no == 4) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(4);
 			if (no == 5) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(5);
 			if (no == 6) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(6);
+			if (no == 7) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(7);
 			if (weapon < 51) dmg *= (1 + (weapon * 0.03));
 			else if (weapon >= 51 && weapon < 101) dmg *= (2.5 + ((weapon - 50) * 0.025));
 			else if (weapon >= 101 && weapon < 151) dmg *= (3.75 + ((weapon - 100) * 0.02));
 			else if (weapon >= 151 && weapon < 201) dmg *= (4.75 + ((weapon - 150) * 0.015));
 			else dmg *= (5.5 + (weapon * 0.01));
+			if (repeat > 0) dmg *= (1 + (0.5 * repeat));
 			dmg *= increasedEfficiencyOfTamedMostersAttacks();
-			if (player.hasPerk(PerkLib.WorkingTogether) && SceneLib.campMakeWinions.currentTamedMonstersCount() > 1) dmg *= SceneLib.campMakeWinions.currentTamedMonstersCount();
+			if (player.hasPerk(PerkLib.WorkingTogether) && SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount() > 1) dmg *= SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount();
 			dmg = Math.round(dmg * SceneLib.combat.comfoll.increasedEfficiencyOfAttacks());
 			outputText("Your tamed ");
 			if (no == 1) outputText(""+flags[kFLAGS.TAMED_01_NAME]+"");
@@ -182,8 +213,10 @@ import classes.StatusEffects;
 			if (no == 4) outputText(""+flags[kFLAGS.TAMED_04_NAME]+"");
 			if (no == 5) outputText(""+flags[kFLAGS.TAMED_05_NAME]+"");
 			if (no == 6) outputText(""+flags[kFLAGS.TAMED_06_NAME]+"");
+			if (no == 7) outputText(""+flags[kFLAGS.TAMED_07_NAME]+"");
 			outputText(" shoot a magic bolt toward [themonster]. ");
 			doMagicDamage(dmg, true, true);
+			if (repeat > 0) doMagicDamage(dmg, true, true);
 			outputText("\n\n");
 			SceneLib.combat.enemyAIImpl();
 		}
@@ -196,6 +229,7 @@ import classes.StatusEffects;
 			if (no == 4) outputText(""+flags[kFLAGS.TAMED_04_NAME]+"");
 			if (no == 5) outputText(""+flags[kFLAGS.TAMED_05_NAME]+"");
 			if (no == 6) outputText(""+flags[kFLAGS.TAMED_06_NAME]+"");
+			if (no == 7) outputText(""+flags[kFLAGS.TAMED_07_NAME]+"");
 			outputText(" to protect you from next enemy attack.");
 			flags[kFLAGS.TAMED_MONSTER_PROTECTING] = no;
 			menu();
