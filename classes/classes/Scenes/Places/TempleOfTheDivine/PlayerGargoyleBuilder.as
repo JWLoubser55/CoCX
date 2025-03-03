@@ -173,8 +173,8 @@ use namespace CoC;
 
 		public function SculptWings():void {
 			menu();
-			addButton(0, "Bat", SculptWings_chosen, 2).hint("Sculpt bat wings.");
-			addButton(1, "Feathered", SculptWings_chosen, 1).hint("Sculpt feathered wings.");
+			addButton(0, "Bat", SculptWings_chosen, 1).hint("Sculpt bat wings.");
+			addButton(1, "Feathered", SculptWings_chosen, 2).hint("Sculpt feathered wings.");
 			addButton(14, "Back", currentStateOfStatue);
 		}
 		public function SculptWings_chosen(wings:int):void {
