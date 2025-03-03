@@ -165,7 +165,7 @@ use namespace CoC;
 			})
 		}
 
-		public const areaLevel:int = 30;
+		public const areaLevel:int = 45;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.caves > 0;
 		}

@@ -150,6 +150,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 0 sensitivity lvl-up perk: (Basic) Job: Esper. Req. 10+ sensitivity. Effect: The same effects as perk Telekinesis (You have the power to wield and throw objects with your mind alone. Gain a bonus to damage based on inteligence when using thrown weapons.) (+1 exploration reveal)\n");
 			outputText("-New tier 0 misc lvl-up perk: Stored Momentum. Req. Job: Tinker perk, 15+ wisdom and 15+ intelligence. Effect: After using a gadget you store the latent kinetic energy increasing your speed and strength by 25% for 5 rounds. This effect stacks upon itself.\n");
 			outputText("-New tier 0 misc lvl-up perk: Deconstruct. Req. Job: Tinker perk, 15+ wisdom and 15+ intelligence. Effect: You are an expert at building and dismantling things. This also applies to golems and other constructed creatures made of materials. Your attacks ignore construct armors and deal 50% more damage to them. When harvesting construct you scavenge more materials.\n");
+			outputText("-New tier 0 wisdom lvl-up perk: The Hopeless Handler. Req. Job: Tamer perk and 25+ wisdom. Effect: No setback can break your spirit—no rejection, no failure, not even the most stubborn of creatures. If a taming attempt fails, you gain one extra chance to try again, adjusting your approach in hopes of finally making a connection. Call it perseverance, call it madness—but you refuse to give up.\n");
 			outputText("-New tier 1 wisdom lvl-up perk: Beast 02. Req. Job: Tamer perk and 50+ wisdom. Effect: You can have 2 tamed monsters.\n");
 			outputText("-New tier 1 wisdom lvl-up perk: Working Together. Req. Beast 02 perk and 55+ wisdom. Effect: Cooperating between all your tamed monsters would empower the one attacking. (+1x to dmg multi of attacking monster per tamed monster after 1st)\n");
 			outputText("-New tier 1 sensitivity lvl-up perk: Sixth Sense. Req. Job: Esper perk and 25+ sensitivity. Effect: You are not affected by blind and other confusing effects. Increase melee/range accuracy by 10%.\n");
@@ -164,6 +165,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 misc lvl-up perk: Polarize. Req. Greased lightning perk, 45+ wisdom and 45+ intelligence. Effect: Lightning attacks magnetize your foes making physical attacks dealt by metallic objects such as ammunition or a conventional blade deal 50% increased damage for two rounds.\n");
 			outputText("-New tier 2 misc lvl-up perk: Simplified Interface. Req. Master Gadgeteer perk, 45+ wisdom and 45+ intelligence. Effect: You did what goblins did not and simplified the interface slightly in order to quicken the usage of your gadgets. Once per round use a gadget as a free action.\n");
 			outputText("-New tier 2 toughness lvl-up perk: Ayo Armor Master. Req. Job: Artificier perk and 75+ toughness. Effect: Boosts armor and magical resistance by a portion of your speed on ayo armors. (unpowered - 1:100)(powered - 1:50)\n");
+			outputText("-New tier 2 wisdom lvl-up perk: The Desperate Degenerate. Req. The Hopeless Handler perk and 80+ wisdom. Effect: At this point, it’s just getting sad. Failure after failure, rejection after rejection—yet here you are, still trying. Whether it's sheer determination or complete lack of self-respect, you now get two extra chances to tame a creature, scraping at any sliver of hope left. ");
+			outputText("Maybe, just maybe, this time they won’t look at you with utter disdain.\n");
 			outputText("-New tier 3 wisdom lvl-up perk: Fourth Tamer of the Apocalypse. Req. Three times a tame perk and 100+ wisdom. Effect: Now you can assemble 4 horsema... monsters team.\n");
 			outputText("-New tier 3 wisdom lvl-up perk: Beast Knowledge. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: During taming monster check player wisdom is treated as if it was 2,5x higher.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Improved Kineses. Req. one of perks: Pyrokinesis, Hydrokinesis, Cryokinesis, Geokinesis, Electrokinesis, Aerokinesis, Umbrakinesis, Acidokinesis, Ionikinesis, Cocytokinesis and 75+ sensitivity. Effect: All of your kinesis type specials damage have added minor inteligence/wisdom scaling.\n");
@@ -179,6 +182,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 4 misc lvl-up perk: All-Rounder Training ( Basic ). Req. Job: All-Rounder perk. Effect: Limit of train caps for stats is increased by 5.\n");
 			outputText("-New tier 4 misc lvl-up perk: Goblinatus Graduate. Req. Simplified Interface perk, 75+ wisdom and 75+ intelligence. Effect: You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.\n");
 			outputText("-New tier 4 wisdom lvl-up perk: Fifth Tamed. Req. Fourth Tamer of the Apocalypse perk and 125+ wisdom. Effect: Now you can add fifth wheel... tamed monster to your team.\n");
+			outputText("-New tier 4 wisdom lvl-up perk: The Loveable Loser. Req. The Desperate Degenerate perk and 130+ wisdom. Effect: Bless your heart, you just don’t know when to quit. No matter how many times you fail, you flash that same goofy grin and try again, convinced that this time, for sure, you’ll get it right! You now get three extra chances to tame a creature, ");
+			outputText("not because you’re particularly skilled—just because you’re too dumb to realize you should’ve given up ages ago.\n");
 			outputText("-New tier 5 wisdom lvl-up perk: Efficient Usage of Soulforce. Req. Conduction Soulforce Charge perk and 150+ wisdom. Effect: You learned how to more efficient use soulforce powering your Ayo Armor to further fortify your basic physical and magic resitances. (+core tou % up to 300%)\n");
 			outputText("-New tier 5 sensitivity lvl-up perk: Advanced Kineses. Req. Wide Area Kineses perk and 125+ sensitivity. Effect: All of your kinesis type specials damage have improved scaling from sensitivity, wisdom and intelligence.\n");
 			outputText("-New tier 5 misc lvl-up perk: All-Rounder Mental Training. Req. All-Rounder Training ( Basic ) perk. Effect: Limit of train caps for int/wis/lib stats is increased by 10.\n");
@@ -186,6 +191,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 5 speed lvl-up perk: Lewd Poisoning. Req. Wound Poison. Effect: Attacks that are imbued with poison dealing lust damage now inflicts half of your tease damage.\n");
 			outputText("-New tier 6 sensitivity lvl-up perk: Quasi Domain Kineses. Req. Advanced Kineses perk and 150+ sensitivity. Effect: All of your kinesis type specials would deal higher damage against single and group enemies. The larger group the higher bonus damage. (2x/10x/50x)\n");
 			outputText("-New tier 6 misc lvl-up perk: All-Rounder Training ( Intermediate ). Req. All-Rounder Training ( Basic ) perk. Effect: Limit of train caps for stats is increased by 5.\n");
+			outputText("-New tier 6 wisdom lvl-up perk: Empowered Taming. Req. Lucky Number Tamer perk and 180+ wisdom. Effect: During taming monster it wisdom is treated as if it was 80% lower.\n");
 			outputText("-New tier 7 intelligence lvl-up perk: Vampiric Magic. Req. Grand Archmage (3rd Circle) perk and 200+ int. Effect: Nospheratu cooldown is reduced by 1 round and blood magic spells are 50% stronger.\n");
 			outputText("-New tier 8 misc lvl-up perk: All-Rounder Training ( Advanced ). Req. All-Rounder Training ( Intermediate ) perk. Effect: Limit of train caps for stats is increased by 5.\n");
 			outputText("-New tier 9 misc lvl-up perk: Utility Skills: Professional. Req. Utility Skills: Skilled & any non combat skill at lvl 10. Effect: Increasing mastery gains in non-combat skills by 400% of base and decreasing a bit req. exp to level up.\n");
@@ -303,9 +309,6 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Challenging shout (Mastered). Gained by use of the Pocket Watch when req. are meet. Effects: You can now use the ability Warrior Shout! Can be used at any turn but amount of gained wrath would depend how long it was used since last time during combat. ");
 			outputText("(4% per turn up to 60% after 15 turns - first use in combat giving 60%) Also allow to automaticaly use weakened version at the combat round end if wrath is below 750.\n");
 			outputText("-In character creation if Herm option is unlocked can choose now between: Man, Woman, Herm (without balls), Herm (with balls)\n");
-			outputText("-New key Item (by Liadri): Flasherbang - req. Toolbelt - Toss a grenade that overloads the brain with lewd images and light rendering one blind, aroused and increasingly susceptible to lust chemicals.\n");
-			outputText("-New key Item (by Liadri): Goblin Bomber - req. Toolbelt - Unlock the goblin bomber P.Attack during battle summoning one of your many daughters to the field in order to carpet bomb the area. Can be used once per Hour. (Deals massive tech damage and stun for two round)\n");
-			outputText("-New key Item (by Liadri): GOBX Chemical - req. Potent Drug injectors and Goblinoid Race - Raises your libido by 100%, sensitivity by 15% and Intelligence by 100% but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins).\n");
 			outputText("-New event perk: GOBX Chemical. Gained by use of GOBX Chemical key item. Effects: Raises your libido, sensitivity and Intelligence but locks your race permanently to goblinoid.\n");
 			outputText("-Fixed cockdescript in Herm Centaur 'Stud' Loss scene. (DigitalKitsune)\n");
 			outputText("-New key Item (by Liadri): GOBX Chemical Improved formula - req. GOBX Chemical - Raises your libido by 200%, sensitivity by 30% and Intelligence by 200% while increasing the potency of firearms and technological weapons by 50% but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins).\n");
@@ -325,33 +328,20 @@ public class Changelog extends BaseContent
 			outputText("-Non goblonoid PC's can now buy and craft few simpler gadgets at Tripxi gunshop: Flasherbang, Goonade, Fire Grenade, Fire Grenade II, Stun Grenade\n");
 			outputText("-Training Dummy now got bit more sponge on it and each upgrade increase it lvl by 60.\n");
 			outputText("-Dracula scene fix racial check. (DigitalKitsune)\n");
-			outputText("-New key Item (by Liadri): Fire Grenade - req. Toolbelt - Toss a grenade that sets foes on fire inflicting the burn status effect.\n");
-			outputText("-New key Item (by Liadri): Fire Grenade II - req. Fire Grenade - Upgrade the fire grenade explosion to also deal fire damage.\n");
 			outputText("-Charge special cost base calculation capping at 10k fatigue. When PC have more then 10k fatigue (not counting in overmax fatigue) it will not longer increase charge cost.\n");
 			outputText("-Added fatigue cost for flying using natural wings: 5% per turn. Using Great Dive when PC can keep flying after it (having harpy bones tier 3 or specific gargoyle channel inlay) would add also 5% fatigue cost to take off into the sky after dive.\n");
-			outputText("-New key Item (by Liadri): Stun Grenade - req. Toolbelt - Toss a grenade that sets stun foe for 1 round. (4 round cd)\n");
-			outputText("-New key Item (by Liadri): Goonade - req. Toolbelt - Toss a grenade that splatter sticky goo everywhere hindering movement and flight for 10 turns. Enemies hit by this lose the flight status effect and can be targeted as if on the ground\n");
-			outputText("-New key Item (by Liadri): Flasherbang II - req. Flasherbang - The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds\n");
-			outputText("-New key Item (by Liadri): Stun Grenade II - req. Flasherbang - Upgrade the stun grenade explosion to also deal lightning damage\n");
-			outputText("-New key Item (by Liadri): Caustic Goonade - req. Goonade - Toss a grenade that splatter acidic sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground. Drop opponent armor class by 100%\n");
 			outputText("-Fix not counting basilisk womb births towards times given birth. (Stadler)\n");
 			outputText("-Agility and Armor Master perks now also boost magic resistance with the same ratio as they boost armor.\n");
-			outputText("-New tier 6 wisdom lvl-up perk: Empowered Taming. Req. Lucky Number Tamer perk and 180+ wisdom. Effect: During taming monster it wisdom is treated as if it was 80% lower.\n");
 			outputText("-When taming monster capable of spellcasting it would add option in tamed monsters menu to command them to use magic bolt.\n");
 			outputText("-New tier 5 wisdom lvl-up perk: Sic ‘Em Six. Req. Fifth Tamed perk and 150+ wisdom. Effect: No leash is too tight, no beast too wild. Heel or feel—obedience is a six-step process.\n");
 			outputText("-New tier 0 wisdom lvl-up perk: High Stakes Tamer. Req. Job: Tamer perk and 25+ wisdom. Effect: Your mastery over taming extends beyond common beasts, allowing you to tame highly intelligent creatures that would normally resist control. Beings like Glacial Trolls and other sentient monsters now recognize your dominance, making them potential allies rather than just foes. However, the truly corrupted still elude you.\n");
-			outputText("-New tier 0 wisdom lvl-up perk: The Hopeless Handler. Req. Job: Tamer perk and 25+ wisdom. Effect: No setback can break your spirit—no rejection, no failure, not even the most stubborn of creatures. If a taming attempt fails, you gain one extra chance to try again, adjusting your approach in hopes of finally making a connection. Call it perseverance, call it madness—but you refuse to give up.\n");
-			outputText("-New tier 2 wisdom lvl-up perk: The Desperate Degenerate. Req. The Hopeless Handler perk and 80+ wisdom. Effect: At this point, it’s just getting sad. Failure after failure, rejection after rejection—yet here you are, still trying. Whether it's sheer determination or complete lack of self-respect, you now get two extra chances to tame a creature, scraping at any sliver of hope left. ");
-			outputText("Maybe, just maybe, this time they won’t look at you with utter disdain.\n");
-			outputText("-New tier 4 wisdom lvl-up perk: The Loveable Loser. Req. The Desperate Degenerate perk and 130+ wisdom. Effect: Bless your heart, you just don’t know when to quit. No matter how many times you fail, you flash that same goofy grin and try again, convinced that this time, for sure, you’ll get it right! You now get three extra chances to tame a creature, ");
-			outputText("not because you’re particularly skilled—just because you’re too dumb to realize you should’ve given up ages ago.\n");
 			outputText("-New usable item: Feral Demon Skull. Costing 50 gems and it's obtainable from killing feral demon enemies.\n");
 			outputText("-Ruined Shrine event check in Glacial Rift now would use wolf race score check (10+) instead of lookign for specific bodyparts. Should amke finding shrine bit more forgiving when it come to winter wolf part check.\n");
 			outputText("-Ocean was changed to Outer Ocean and part of encounter from it was moved to next area.\n");
 			outputText("-New Area: Inner Ocean (92-111). Exploring outer ocean allows now to find it. For all that want know what is down there in depth whenever it's Deep One nest, Arigean settlements, Abyssal Cities or just marvels of Gopture, we're one step closer to find out.\n");
 			outputText("-New tier 6 wisdom lvl-up perk: Lucky Number Tamer. Req. Sic ‘Em Six perk and 175+ wisdom. Effect: You played your cards right, tames now come in 7.\n");
 			outputText("-New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. Sic ‘Em Six perk and 130+ wisdom. Effect: You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.\n");
-			outputText("-\n");
+			outputText("-Fix swapped values for gargoyle wings. (Stadler)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -460,8 +450,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -493,6 +489,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -735,6 +734,16 @@ public class Changelog extends BaseContent
 			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK4 - req. Improved Ammo Chemistry MK3 - Add four extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire.\n");
 			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK5 - req. Improved Ammo Chemistry MK4 - Add five extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire. Ammo now has a caustic property dealing tripled damage as acid.\n");
 			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK6 - req. Improved Ammo Chemistry MK5 - Add six extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire. Ammo now has a caustic property dealing tripled damage as acid.\n");
+			outputText("-New key Item (by Liadri): Flasherbang - req. Toolbelt - Toss a grenade that overloads the brain with lewd images and light rendering one blind, aroused and increasingly susceptible to lust chemicals.\n");
+			outputText("-New key Item (by Liadri): Flasherbang II - req. Flasherbang - The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds\n");
+			outputText("-New key Item (by Liadri): Goblin Bomber - req. Toolbelt - Unlock the goblin bomber P.Attack during battle summoning one of your many daughters to the field in order to carpet bomb the area. Can be used once per Hour. (Deals massive tech damage and stun for two round)\n");
+			outputText("-New key Item (by Liadri): GOBX Chemical - req. Potent Drug injectors and Goblinoid Race - Raises your libido by 100%, sensitivity by 15% and Intelligence by 100% but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins).\n");
+			outputText("-New key Item (by Liadri): Fire Grenade - req. Toolbelt - Toss a grenade that sets foes on fire inflicting the burn status effect.\n");
+			outputText("-New key Item (by Liadri): Fire Grenade II - req. Fire Grenade - Upgrade the fire grenade explosion to also deal fire damage.\n");
+			outputText("-New key Item (by Liadri): Stun Grenade - req. Toolbelt - Toss a grenade that sets stun foe for 1 round. (4 round cd)\n");
+			outputText("-New key Item (by Liadri): Stun Grenade II - req. Flasherbang - Upgrade the stun grenade explosion to also deal lightning damage\n");
+			outputText("-New key Item (by Liadri): Goonade - req. Toolbelt - Toss a grenade that splatter sticky goo everywhere hindering movement and flight for 10 turns. Enemies hit by this lose the flight status effect and can be targeted as if on the ground\n");
+			outputText("-New key Item (by Liadri): Caustic Goonade - req. Goonade - Toss a grenade that splatter acidic sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground. Drop opponent armor class by 100%\n");
 			outputText("-New melee weapon (by Lord Shadeogorath): Glacial Graveaxe - pulled from unnamed grave at tundra. Base atk is 160. It's massive axe type low grade wrath weapon. Normally it deal 80% of physical dmg and 20% ice dmg. When using charge weapon it will deal 100% ice damage and have 10% to apply Frostburn DoT after critical hit.\n");
 			outputText("-New melee weapon (by Lord Shadeogorath): Volcanic Gravehammer - pulled from unnamed grave at ashlands. Base atk is 160. It's massive mace/hammer type low grade wrath weapon. Normally it deal 80% of physical dmg and 20% fire dmg. When using charge weapon it will deal 100% fire damage and have 10% to apply Burn DoT after critical hit.\n");
 			outputText("-New melee weapon (by Liadri): Machine Spear - craftable at goblin workshop (3 metal pieces, 200 nails, 1 energy core, 2 mechanisms and BP). Cost 2720 gems, have 19 atk, have 100% armor penetration and increases critical damage by +25%\n");
