@@ -7902,6 +7902,7 @@ use namespace CoC;
 			if (flags[kFLAGS.AMILY_FOLLOWER] == 1) {
 				flags[kFLAGS.AMILY_FOLLOWER] = 0;
 				flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] = 1;
+				flags[kFLAGS.AMILY_WARNING] = 1;
 				flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 0;
 				if (hasStatusEffect(StatusEffects.CombatFollowerAmily)) removeStatusEffect(StatusEffects.CombatFollowerAmily);
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "Amily") flags[kFLAGS.PLAYER_COMPANION_1] = "";
@@ -7909,8 +7910,8 @@ use namespace CoC;
 				if (flags[kFLAGS.PLAYER_COMPANION_3] == "Amily") flags[kFLAGS.PLAYER_COMPANION_3] = "";
 			}
 			if (flags[kFLAGS.KIHA_FOLLOWER] > 0) {
-				flags[kFLAGS.KIHA_CORRUPTION_BITCH] == 1;
-				if (hasStatusEffect(StatusEffects.CombatFollowerAmily)) removeStatusEffect(StatusEffects.CombatFollowerAmily);
+				flags[kFLAGS.KIHA_CORRUPTION_BITCH] = 1;
+				if (hasStatusEffect(StatusEffects.CombatFollowerKiha)) removeStatusEffect(StatusEffects.CombatFollowerKiha);
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "Kiha") flags[kFLAGS.PLAYER_COMPANION_1] = "";
 				if (flags[kFLAGS.PLAYER_COMPANION_2] == "Kiha") flags[kFLAGS.PLAYER_COMPANION_2] = "";
 				if (flags[kFLAGS.PLAYER_COMPANION_3] == "Kiha") flags[kFLAGS.PLAYER_COMPANION_3] = "";
