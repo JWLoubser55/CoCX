@@ -2718,6 +2718,7 @@ public class SaveUpdater extends NPCAwareContent {
 					if (flags[kFLAGS.AMILY_FOLLOWER] == 1) {
 						flags[kFLAGS.AMILY_FOLLOWER] = 0;
 						flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] = 1;
+						flags[kFLAGS.AMILY_WARNING] = 1;
 						flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 0;
 						if (player.hasStatusEffect(StatusEffects.CombatFollowerAmily)) player.removeStatusEffect(StatusEffects.CombatFollowerAmily);
 						if (flags[kFLAGS.PLAYER_COMPANION_1] == "Amily") flags[kFLAGS.PLAYER_COMPANION_1] = "";
@@ -2725,8 +2726,8 @@ public class SaveUpdater extends NPCAwareContent {
 						if (flags[kFLAGS.PLAYER_COMPANION_3] == "Amily") flags[kFLAGS.PLAYER_COMPANION_3] = "";
 					}
 					if (flags[kFLAGS.KIHA_FOLLOWER] > 0) {
-						flags[kFLAGS.KIHA_CORRUPTION_BITCH] == 1;
-						if (player.hasStatusEffect(StatusEffects.CombatFollowerAmily)) player.removeStatusEffect(StatusEffects.CombatFollowerAmily);
+						flags[kFLAGS.KIHA_CORRUPTION_BITCH] = 1;
+						if (player.hasStatusEffect(StatusEffects.CombatFollowerKiha)) player.removeStatusEffect(StatusEffects.CombatFollowerKiha);
 						if (flags[kFLAGS.PLAYER_COMPANION_1] == "Kiha") flags[kFLAGS.PLAYER_COMPANION_1] = "";
 						if (flags[kFLAGS.PLAYER_COMPANION_2] == "Kiha") flags[kFLAGS.PLAYER_COMPANION_2] = "";
 						if (flags[kFLAGS.PLAYER_COMPANION_3] == "Kiha") flags[kFLAGS.PLAYER_COMPANION_3] = "";
