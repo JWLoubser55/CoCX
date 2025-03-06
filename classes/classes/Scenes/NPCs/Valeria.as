@@ -34,7 +34,7 @@ public class Valeria extends GooGirl
 			//HIT!
 			else {
 				outputText("The goo-armor rushes forward and swings her sword in a mighty arc.  You aren't quite quick enough to dodge her blow, and the goopy sword slams into you, throwing you back and leaving a nasty welt. ");
-				var damage:Number = Math.round((str + weaponAttack) - rand(player.tou) - player.armorDef);
+				var damage:Number = Math.round(((str + weaponAttack)*5) - rand(player.tou) - player.armorDef);
 				if(damage <= 0) damage = 1;
 				damage = player.takePhysDamage(damage, true);
 			}
@@ -111,19 +111,19 @@ public class Valeria extends GooGirl
 			this.hairColor = "black";
 			this.hairLength = 15;
 			this.hairType = Hair.GOO;
-			initStrTouSpeInte(120, 110, 100, 80);
-			initWisLibSensCor(80, 90, 35, 50);
+			initStrTouSpeInte(720, 660, 600, 200);
+			initWisLibSensCor(200, 180, 70, 50);
 			this.weaponName = "goo sword";
 			this.weaponVerb="slash";
-			this.weaponAttack = 70;
+			this.weaponAttack = 350;
 			this.armorName = "armor";
-			this.armorDef = 60;
-			this.armorMDef = 5;
-			this.bonusHP = 500;
-			this.bonusLust = 155;
+			this.armorDef = 600;
+			this.armorMDef = 50;
+			this.bonusHP = 5000;
+			this.bonusLust = 330;
 			this.lustVuln = .35;
-			this.level = 30;
-			this.gems = rand(50)+80;
+			this.level = 80;
+			this.gems = rand(50)+180;
 			this.drop = NO_DROP;
 			this.createPerk(PerkLib.EnemyGooType, 0, 0, 0, 0);
 			checkMonster();

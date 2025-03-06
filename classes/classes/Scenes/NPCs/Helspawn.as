@@ -44,7 +44,7 @@ private function helspawnTwinStrikes():void {
 // Super-high chance of hitting. On hit, speed debuff
 private function calledShot():void {
 	outputText(flags[kFLAGS.HELSPAWN_NAME] + " draws back her bowstring, spending an extra second aiming before letting fly!");
-	var damage:Number = int((str + weaponAttack) - rand(player.tou) - player.armorDef);
+	var damage:Number = int(((str + weaponAttack)*3) - rand(player.tou) - player.armorDef);
 	//standard dodge/miss text
 	if(damage <= 0 || (rand(2) == 0 && (player.getEvasionRoll()))) outputText("\nYou avoid the hit!");
 	else {
@@ -66,7 +66,7 @@ private function calledShot():void {
 		//Shield Bash (Shieldmander Only)
 		private function helSpawnShieldBash():void {
 			clearOutput();
-			var damage:Number = int((str) - rand(player.tou) - player.armorDef);
+			var damage:Number = int((str*3) - rand(player.tou) - player.armorDef);
 			// Stuns a bitch
 			outputText(flags[kFLAGS.HELSPAWN_NAME] + " lashes out with her shield, trying to knock you back!");
 			//standard dodge/miss text
@@ -84,7 +84,7 @@ private function calledShot():void {
 		//Tail Whip
 		private function tailWhipShitYo():void {
 			// Light physical, armor piercing (fire, bitch). Random chance to get this on top of any other attack
-			var damage:Number = int((str) - rand(player.tou));
+			var damage:Number = int((str*3) - rand(player.tou));
 			outputText("\n" + flags[kFLAGS.HELSPAWN_NAME] + " whips at you with her tail, trying to sear you with her brilliant flames!");
 			//standard dodge/miss text
 			if(damage <= 0 || player.getEvasionRoll()) outputText("\nYou evade the strike.");
@@ -102,7 +102,7 @@ private function calledShot():void {
 			if(rand(2) == 0) outputText("\nWhat the fuck is she trying to do?  You walk over and give her a sharp kick in the kiester, \"<i>Keep your head in the game, kiddo.  Pick up your weapon!</i>\"");
 			else {
 				outputText("\nDat ass.  You lean back, enjoying the show as the slutty little salamander slips right past your guard, practically grinding up against you until you can feel a fire boiling in your loins!");
-				var lustDelta:Number = player.lustVuln * (10 + player.lib/10);
+				var lustDelta:Number = player.lustVuln * (100 + player.lib/5);
 				player.lust += lustDelta;
 				game.mainView.statsView.showStatUp( 'lust' );
 				// lustDown.visible = false;
@@ -118,7 +118,7 @@ private function calledShot():void {
 			outputText("Seeing a momentary lull in the melee, " + flags[kFLAGS.HELSPAWN_NAME] + " slips out of reach, stumbling back and clutching at the bruises forming all over her body.  \"<i>Come on, " + flags[kFLAGS.HELSPAWN_NAME] + ", you can do this. Focus, focus,</i>\" she mutters, trying to catch her breath.  A moment later and she seems to have taken a second wind as she readies her weapon with a renewed vigor.");
 			lust -= 30;
 			if(lust < 0) lust = 0;
-			addHP(maxHP() / 3.0);
+			addHP(maxHP() * 0.4);
 		}
 
 		override public function defeated(hpVictory:Boolean):void
@@ -162,20 +162,20 @@ private function calledShot():void {
 			this.bodyColor = "dusky";
 			this.hairColor = "red";
 			this.hairLength = 13;
-			initStrTouSpeInte(60, 60, 64, 50);
-			initWisLibSensCor(50, 45, 55, 20);
+			initStrTouSpeInte(120, 120, 128, 80);
+			initWisLibSensCor(80, 45, 55, -60);
 			this.weaponName = weapon;
 			this.weaponVerb = {
 				'bow': "blunted arrow",
 				'scimitar': "slash",
 				'scimitar and shield': "slash"}[weapon];
-			this.weaponAttack = 20;
+			this.weaponAttack = 40;
 			this.armorName = "scales";
-			this.armorDef = 18;
-			this.armorMDef = 2;
+			this.armorDef = 180;
+			this.armorMDef = 20;
 			this.armorPerk = "";
 			this.armorValue = 50;
-			this.bonusHP = 175;
+			this.bonusHP = 350;
 			this.bonusLust = 118;
 			this.lust = 30;
 			this.lustVuln = .55;

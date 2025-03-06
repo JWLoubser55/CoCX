@@ -975,13 +975,13 @@ public function soularena():void {
         statScreenRefresh();
 		menu();
         //addButton(0, "Goblin", );//Goblinka
-        addButton(5, "D.Golem", arenaSelection2,GolemDummy,0).hint("Dummy Golem LVL 6");
-        addButton(6, "I.D.Golem", arenaSelection1,GolemDummyImproved).hint("Improved Dummy Golem LVL 12");
-        addButton(7, "A.D.Golem", arenaSelection1,GolemDummyAdvanced).hint("Advanced Dummy Golem LVL 18");
-        addButton(8, "S.D.Golem", arenaSelection1,GolemDummySuperior).hint("Superior Dummy Golem LVL 24");
-        addButton(10, "B.T.Golem", arenaSelection1,GolemTrueBasic).hint("Basic True Golem LVL 33");
-        addButton(11, "I.T.Golem", arenaSelection1,GolemTrueImproved).hint("Improved True Golem LVL 42");
-        addButton(12, "A.T.Golem", arenaSelection1,GolemTrueAdvanced).hint("Advanced True Golem LVL 51");
+        addButton(5, "D.Golem", arenaSelection2,GolemDummy,0).hint("Dummy Golem LVL 15");
+        addButton(6, "I.D.Golem", arenaSelection1,GolemDummy,2).hint("Improved Dummy Golem LVL 24");
+        addButton(7, "A.D.Golem", arenaSelection1,GolemDummy,4).hint("Advanced Dummy Golem LVL 33");
+        addButton(8, "S.D.Golem", arenaSelection1,GolemDummy,6).hint("Superior Dummy Golem LVL 42");
+        addButton(10, "B.T.Golem", arenaSelection1,GolemTrue,8).hint("Basic True Golem LVL 51");
+        addButton(11, "I.T.Golem", arenaSelection1,GolemTrue,10).hint("Improved True Golem LVL 60");
+        addButton(12, "A.T.Golem", arenaSelection1,GolemTrue,12).hint("Advanced True Golem LVL 69");
         addButton(14, "Back", soularenaSoloBack);
     }
 	public function soularenaSoloBack():void {
@@ -1002,8 +1002,8 @@ public function soularena():void {
         addButton(7, "A.D.Golems", arenaSelection2,GolemsDummy,5).hint("Advanced Dummy Golems LVL 33");
         addButton(8, "S.D.Golems", arenaSelection2,GolemsDummy,7).hint("Superior Dummy Golems LVL 42");
         addButton(10, "B.T.Golems", arenaSelection2,GolemsTrue,9).hint("Basic True Golems LVL 51");
-        //addButton(11, "I.T.Golems", arenaSelection2,GolemsTrue,11).hint("Improved True Golems LVL 60");
-        //addButton(12, "A.T.Golems", arenaSelection2,GolemsTrue,13).hint("Advanced True Golems LVL 69");
+        addButton(11, "I.T.Golems", arenaSelection2,GolemsTrue,11).hint("Improved True Golems LVL 60");
+        addButton(12, "A.T.Golems", arenaSelection2,GolemsTrue,13).hint("Advanced True Golems LVL 69");
         addButton(14, "Back", soularenaGroupBack);
     }
 	public function soularenaGroupBack():void {
@@ -1875,4 +1875,4 @@ public function soularena():void {
         doNext(camp.returnToCampUseOneHour);
     }
 }
-}
+}

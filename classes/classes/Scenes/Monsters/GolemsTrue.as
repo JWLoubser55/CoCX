@@ -105,7 +105,6 @@ package classes.Scenes.Monsters
 				this.short = "advanced true golems";
 				this.imageName = "advanced true golems";
 				this.long = "You're currently fighting advanced true golems. They're all around eight feet tall without any sexual characteristics, their stone body covered in cracks and using bare stone fists to smash enemies.";
-				this.plural = true;
 				initStrTouSpeInte(570, 560, 300, 10);
 				initWisLibSensCor(10, 10, 10, 0);
 				this.tallness = 96;
@@ -118,6 +117,7 @@ package classes.Scenes.Monsters
 				this.armorMDef = 110;
 			}
 			this.a = "the ";
+			this.plural = true;
 			this.drop = NO_DROP;
 			this.weaponName = "stone fists";
 			this.weaponVerb = "smash";

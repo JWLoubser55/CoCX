@@ -108,10 +108,10 @@ public class GolemsDummy extends AbstractGolem
 			if (flags[kFLAGS.GOLEM_ENEMY_TYPE] == 7) {
 				this.short = "superior dummy golems";
 				this.imageName = "superior dummy golems";
-				this.long = "You're currently fighting superior dummy golems. They're all around seven feet tall without any sexual characteristics, their stone body covered in cracks and using bare stone fists to smash enemies.";
+				this.long = "You're currently fighting superior dummy golems. They're all around seven and half feet tall without any sexual characteristics, their stone body covered in cracks and using bare stone fists to smash enemies.";
 				initStrTouSpeInte(340, 340, 170, 10);
 				initWisLibSensCor(10, 10, 10, 0);
-				this.tallness = 84;
+				this.tallness = 90;
 				this.level = 42;
 				this.bonusHP = 200;
 				this.bonusLust = 62;
@@ -121,6 +121,7 @@ public class GolemsDummy extends AbstractGolem
 				this.armorMDef = 50;
 			}
 			this.a = "the ";
+			this.plural = true;
 			this.drop = NO_DROP;
 			this.weaponName = "stone fists";
 			this.weaponVerb = "smash";

@@ -651,7 +651,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered an improved dummy golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 2;
-			startCombat(new GolemDummyImproved());
+			startCombat(new GolemDummy());
 		}
 		private function golemEncounterImprovedGroup():void {
 			clearOutput();
@@ -663,7 +663,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered an advanced dummy golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 4;
-			startCombat(new GolemDummyAdvanced());
+			startCombat(new GolemDummy());
 		}
 		private function golemEncounterAdvancedGroup():void {
 			clearOutput();
@@ -675,7 +675,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered a superior dummy golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 6;
-			startCombat(new GolemDummySuperior());
+			startCombat(new GolemDummy());
 		}
 		private function golemEncounterSuperiorGroup():void {
 			clearOutput();
@@ -687,7 +687,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered a basic true golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 8;
-			startCombat(new GolemTrueBasic());
+			startCombat(new GolemTrue());
 		}
 		private function golemEncounterTrueBasicGroup():void {
 			clearOutput();
@@ -699,7 +699,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered an improved true golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 10;
-			startCombat(new GolemTrueImproved());
+			startCombat(new GolemTrue());
 		}
 		private function golemEncounterTrueImprovedGroup():void {
 			clearOutput();
@@ -711,7 +711,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered an advanced true golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 12;
-			startCombat(new GolemTrueAdvanced());
+			startCombat(new GolemTrue());
 		}
 		private function golemEncounterTrueAdvancedGroup():void {
 			clearOutput();
@@ -922,7 +922,7 @@ public class Exploration extends BaseContent implements SaveableState
 						label: "Dummy Golem",
 						shortLabel: "Golem II+",
 						kind: "monster",
-						when:fn.ifLevelMin(6),
+						when:fn.ifLevelMin(15),
 						call: golemEncounterBasicGroup
 					}, {
 						name: "golem3group",
