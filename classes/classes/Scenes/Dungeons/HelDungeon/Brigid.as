@@ -102,6 +102,7 @@ public class Brigid extends Monster
 			this.horns.type = Horns.DEMON;
 			this.horns.count = 2;
 			this.drop = NO_DROP;
+			this.createPerk(PerkLib.EnemyChampionType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.ShieldWielder, 0, 0, 0, 0);
 			checkMonster();
 		}

@@ -142,6 +142,7 @@ public class HarpyMob extends Monster
 				{ call: harpyHordeGangBangAttack, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_BODY]},
 				{ call: harpyHordeLustAttack, type: ABILITY_TEASE, range: RANGE_MELEE, tags:[TAG_BODY]}
 			];
+			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyGroupType, 0, 0, 0, 0);
 			this.createStatusEffect(StatusEffects.Flying,50,0,0,0);
 			checkMonster();

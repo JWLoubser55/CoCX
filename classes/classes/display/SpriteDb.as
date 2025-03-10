@@ -1053,6 +1053,11 @@ public class SpriteDb {
 	public static function get s_venus_herm(): Class {
 		return is8bit ? null : s_venus_herm_16bit;
 	}
+	[Embed(source="../../../res/sprites/tripxi.png")]
+	public static const s_tripxi_16bit:Class;
+	public static function get s_tripxi(): Class {
+		return is8bit ? null : s_tripxi_16bit;
+	}
 	[Embed(source="../../../res/sprites/zetaz_imp.png")]
 	public static const s_zetaz_imp_16bit:Class;
 	public static function get s_zetaz_imp(): Class {

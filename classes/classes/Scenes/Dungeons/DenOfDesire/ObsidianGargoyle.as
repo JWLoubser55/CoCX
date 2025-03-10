@@ -147,6 +147,7 @@ public class ObsidianGargoyle extends AbstractGargoyle
 			this.armorName = "stone";
 			this.armorDef = 750;
 			this.armorMDef = 250;
+			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			checkMonster();

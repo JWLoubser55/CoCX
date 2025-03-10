@@ -332,21 +332,21 @@ private function buyCarrotFromOswald():void {
 	addButton(0,"Next",oswaldPawn);
 }
 
-	private function oswaldPawnMenuNew():void {
-		clearOutput();
-		outputText("You see Oswald fiddling with a top hat as you approach his stand again.  He looks up and smiles, padding up to you and rubbing his furry hands together.  He asks, \"<i>Have any merchandise for me " + player.mf("sir","dear") + "?</i>\"\n\n");
-		var merchantMenu:MerchantMenu = new MerchantMenu();
-		merchantMenu.playerCanSell = true;
-		merchantMenu.playerSellFactor = 0.5;
-		if (merchantMenu.greedCheck()) {
-			outputText("Thanks to a little magic and a lot of hard bargaining you managed to sell your items for more than normal. ");
-			merchantMenu.playerSellFactor = 1.0;
-		}
-		merchantMenu.onShow = function():void {
-			button(10).show("Misc", oswaldPawnMenu2);
-		}
-		merchantMenu.show(telAdreMenu);
+private function oswaldPawnMenuNew():void {
+	clearOutput();
+	outputText("You see Oswald fiddling with a top hat as you approach his stand again.  He looks up and smiles, padding up to you and rubbing his furry hands together.  He asks, \"<i>Have any merchandise for me " + player.mf("sir","dear") + "?</i>\"\n\n");
+	var merchantMenu:MerchantMenu = new MerchantMenu();
+	merchantMenu.playerCanSell = true;
+	merchantMenu.playerSellFactor = 0.5;
+	if (merchantMenu.greedCheck()) {
+		outputText("Thanks to a little magic and a lot of hard bargaining you managed to sell your items for more than normal. ");
+		merchantMenu.playerSellFactor = 1.0;
 	}
+	merchantMenu.onShow = function():void {
+		button(10).show("Misc", oswaldPawnMenu2);
+	}
+	merchantMenu.show(telAdreMenu);
+}
 private function oswaldPawnMenu(page:int = 1, refresh:Boolean = true):void { //Moved here from Inventory.as
 	var slot:int;
 	spriteSelect(SpriteDb.s_oswald);
@@ -1346,6 +1346,7 @@ public function tripxiShopMainMenu():void {
 
 public function tripxiShopMainMenu1a():void {
 	menu();
+	spriteSelect(SpriteDb.s_tripxi);
 	addButton(0, "Talk", tripxiShopTalk);
 	addButton(1, "Gunshop", tripxiShopMainMenu2a);
 	addButton(2, "Rent Workshop", tripxiRentWorkshop);

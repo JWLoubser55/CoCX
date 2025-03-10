@@ -342,7 +342,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 6 wisdom lvl-up perk: Lucky Number Tamer. Req. Sic ‘Em Six perk and 175+ wisdom. Effect: You played your cards right, tames now come in 7.\n");
 			outputText("-New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. Sic ‘Em Six perk and 130+ wisdom. Effect: You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.\n");
 			outputText("-Fix swapped values for gargoyle wings. (Stadler)\n");
-			outputText("-\n");
+			outputText("-New sprite: Tripxi.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

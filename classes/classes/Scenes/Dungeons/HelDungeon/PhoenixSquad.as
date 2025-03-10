@@ -113,6 +113,7 @@ public class PhoenixSquad extends Monster
 			this.tailType = Tail.SALAMANDER;
 			this.wings.type = Wings.FEATHERED_PHOENIX;
 			this.drop = new WeightedDrop(consumables.NOCELIQ, 1);
+			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyGroupType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.ShieldWielder, 0, 0, 0, 0);
 			this.createPerk(PerkLib.IceVulnerability, 0, 0, 0, 0);
