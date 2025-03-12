@@ -2521,7 +2521,7 @@ public class Camp extends NPCAwareContent{
 			.disableIf(!player.hasPerk(PerkLib.GreaterDiehard), "Req. Greater Diehard perk")
 			.disableIf(player.hasPerk(PerkLib.GreaterDiehardEx), "You've already merged this perk");
 
-			addButton(0, "Challenging Shout (Mst)", mainPagePocketWatchChallengingShoutMastered)
+			addButton(1, "Challenging Shout (Mst)", mainPagePocketWatchChallengingShoutMastered)
 			.disableIf(!player.hasPerk(PerkLib.ChallengingShoutSu), "Req. Challenging Shout (Su) perk")
 			.disableIf(player.hasPerk(PerkLib.ChallengingShoutMastered), "You've already merged this perk");
 

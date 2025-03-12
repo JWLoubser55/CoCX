@@ -66,9 +66,10 @@ import classes.VaginaClass;
 			this.createPerk(PerkLib.NoDodges, 0, 0, 0, 0);
 			this.createPerk(PerkLib.NoExpGained, 0, 0, 0, 0);
 			this.createPerk(PerkLib.NoItemsGained, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DieHardHP, 50, 0, 0, 0);
-			this.createPerk(PerkLib.OverMaxHP, 50, 0, 0, 0);
-			this.createPerk(PerkLib.OverMaxLust, 50, 0, 0, 0);
+			this.createPerk(PerkLib.NoSilverNecklaceGained, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DieHardHP, player.level, 0, 0, 0);
+			this.createPerk(PerkLib.OverMaxHP, player.level, 0, 0, 0);
+			this.createPerk(PerkLib.OverMaxLust, player.level, 0, 0, 0);
 			this.createPerk(PerkLib.AlwaysSuccesfullRunaway, 0, 0, 0, 0);
 			checkMonster();
 		}

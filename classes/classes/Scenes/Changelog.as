@@ -387,8 +387,8 @@ public class Changelog extends BaseContent
 			outputText("bad end or combat end, scene with Ayane when PC visit shrine as already 9 tailed kitusne without star sphere not gaining star sphere during the scene, Meteor Shower and Polar Midnight not recognized as spells for Channeling perk req., Healer npc in JttE never having her cure/heal options going off cooldown, Vixen&Cream with Urta unclosed tag, Straddle Tease variant for Harpies ");
 			outputText("not checking if enemy have cock, Mist Phouka enemies dropping tarnished shard of metal, PC mummies behaviour choice menu buttons wrong labeled, pair of black cat gloves not allowing swiftcasting, Wood Elfs appearing for soulless PC's, cow maid and Excellia switching places for Minotaur Challanger fight, drinking from Oni enchanted drinking gourd not triggering Aelfwine effect, ");
 			outputText("Dark Charm not gained by Gremlins, some of Nocello Liqueur TF effects ignoring TF immunity effect, Munchkin@Biolab perk not properly increasing max for stat training caps, Vitality Tincture not restoring Arian health, Iron Man perk not affecting fatigue cost of some physical specials, Taser with an overcharged battery upgrade causing Tazer special to be not accesable, keeping debuff ");
-			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons");
-			outputText("\n\n");
+			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, ");
+			outputText("one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");

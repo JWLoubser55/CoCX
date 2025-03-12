@@ -2030,9 +2030,29 @@ import classes.Scenes.Combat.CombatAbility;
 		private function chooseGameModesDesc():void {
 			outputText("Choose a game modifiers. Depending on picked amount final difficulty would be adjusted.\n\n");
 			outputText("<b>Primary Difficulty Modifier:</b> "+(flags[kFLAGS.PRIMARY_DIFFICULTY] == 0?"Disabled":"Enabled (Opponent(s) take less HP/Lust dmg, deal more damage and gives more EXP)")+"\n");
-			outputText("<b>Secondary Stats Modifier:</b> "+(flags[kFLAGS.SECONDARY_STATS_SCALING] == 0?"Disabled":"Enabled (Opponent(s) would have more HP/Lust/Wrath/Fatigue/Mana/Soulforce)")+"\n");
-			outputText("<b>Elite/Champion/Boss Enemies Modifier:</b> "+(flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 0?"Disabled":"Enabled (Elite/Champion/Boss Enemies would have more Health)")+"\n");
-			outputText("<b>Hardcore Modifier:</b> "+(flags[kFLAGS.HARDCORE_MODE] == 1?"Enabled (No level limits for unlocking new areas)":"Disabled")+"\n");
+			outputText("<b>Secondary Stats Modifier:</b> ");
+			if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 0) outputText("Disabled");
+			else {
+				outputText("Enabled (Opponent(s) would have ");
+				if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 1) outputText("10x (bosses) and 5x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 2) outputText("30x (bosses) and 10x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 3) outputText("100x (bosses) and 25x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 4) outputText("500x (bosses) and 100x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 5) outputText("1500x (bosses) and 500x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] >= 6) outputText("21000x (bosses) and 3000x (rest)");
+				outputText(" more HP/Lust/Wrath/Fatigue/Mana/Soulforce)");
+			}
+			outputText("\n<b>Elite/Champion/Boss Enemies Modifier:</b> ");
+			if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 0) outputText("Disabled");
+			else {
+				outputText("Enabled (Elite/Champion/Boss Enemies would have ");
+				if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 1) outputText("1.25x / 2.5x / 5x");
+				else if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 2) outputText("2.5x / 5x / 10x");
+				else if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 3) outputText("3.75x / 7.5x / 15x");
+				else if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] >= 4) outputText("5x / 10x / 20x");
+				outputText(" more Health)");
+			}
+			outputText("\n<b>Hardcore Modifier:</b> "+(flags[kFLAGS.HARDCORE_MODE] == 1?"Enabled (No level limits for unlocking new areas)":"Disabled")+"\n");
 			outputText("<b>Hunger Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0?"Enabled (PC must manage his own hunger lest you want see his death from starvation)":"Disabled")+"\n");
 			outputText("<b>Realistic Mode Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0.5?"Enabled (PC must manage his own hunger lest you want see his death from starvation + your cum production is capped and having oversized parts will weigh you down)":"Disabled")+"\n");
 			outputText("\n");
@@ -2138,7 +2158,51 @@ import classes.Scenes.Combat.CombatAbility;
 		private function startTheGame():void {
 			player.hunger = 100;
 			player.startingRace = player.race();
+			var newFlags:DefaultDict = new DefaultDict();
+			for each(var flag:int in [
+				kFLAGS.BACKGROUND_STYLE,
+				kFLAGS.CUSTOM_FONT_SIZE,
+				kFLAGS.NEW_GAME_PLUS_LEVEL,
+				kFLAGS.HUNGER_ENABLED,
+				kFLAGS.SECONDARY_STATS_SCALING,
+				kFLAGS.PRIMARY_DIFFICULTY,
+				kFLAGS.HARDCORE_MODE,
+				kFLAGS.GAME_DIFFICULTY,
+				kFLAGS.EASY_MODE_ENABLE_FLAG,
+				kFLAGS.WISDOM_SCALING,
+				kFLAGS.INTELLIGENCE_SCALING,
+				kFLAGS.STRENGTH_SCALING,
+				kFLAGS.SPEED_SCALING,
+				kFLAGS.BOSS_CHAMPION_ELITE_SCALING,
+				kFLAGS.WATERSPORTS_ENABLED,
+			    kFLAGS.SILLY_MODE_ENABLE_FLAG,
+				kFLAGS.SCENEHUNTER_PRINT_CHECKS,
+				kFLAGS.SCENEHUNTER_SHORT_PREG,
+				kFLAGS.SCENEHUNTER_OTHER,
+				kFLAGS.SCENEHUNTER_DICK_SELECT,
+				kFLAGS.SCENEHUNTER_LOSS_SELECT,
+				kFLAGS.SCENEHUNTER_MOCK_FIGHTS,
+				kFLAGS.SCENEHUNTER_UNI_HERMS,
+				kFLAGS.LOW_STANDARDS_FOR_ALL,
+				kFLAGS.HYPER_HAPPY,
+				kFLAGS.NEW_GAME_PLUS_BONUS_UNLOCKED_HERM,
+				kFLAGS.LVL_UP_FAST,
+				kFLAGS.MUTATIONS_SPOILERS,
+				kFLAGS.INVT_MGMT_TYPE,
+				kFLAGS.NEWPERKSDISPLAY,
+				kFLAGS.CHARVIEW_STYLE,
+				kFLAGS.CHARVIEW_ARMOR_HIDDEN,
+				kFLAGS.EXPLORE_MENU_STYLE,
+				kFLAGS.SPIRIT_STONES,
+				kFLAGS.HP_STATBAR_PERCENTAGE,
+				kFLAGS.LUST_STATBAR_PERCENTAGE,
+				kFLAGS.WRATH_STATBAR_PERCENTAGE,
+				kFLAGS.ANGELIC_FRACTION_TOGGLE,
+				kFLAGS.HUMAN_BLOODLINE]) {
+				    newFlags[flag] = flags[flag];
+			}
 			CoC.instance.saves.loadPermObject();
+			CoC.instance.flags = newFlags;
 			flags[kFLAGS.MOD_SAVE_VERSION] = CoC.instance.modSaveVersion;
 			statScreenRefresh();
 			if (player.hasPerk(PerkLib.PastLifeCultivator) || player.hasPerk(PerkLib.PastLifeFighter) || player.hasPerk(PerkLib.PastLifeScout) || player.hasPerk(PerkLib.PastLifeScholar) || player.hasPerk(PerkLib.PastLifeSmith) || player.hasPerk(PerkLib.PastLifeTactician) || player.hasPerk(PerkLib.PastLifeWhore)) chooseToPlayHalf();

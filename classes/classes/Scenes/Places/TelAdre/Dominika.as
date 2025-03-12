@@ -714,7 +714,7 @@ private function dominikaBlowjobs():void {
 	if(player.inte < 50) outputText("Her words echo in your head.  Though at first they bothered you there is a bizarre sense to them.  For reasons, you cannot quite determine and yet do not care about, the fact that they are coming from those succulent, perfect lips gives them further credence.  Those statements must be true – beyond true, absolute even – if those full, gorgeous cockkissers are saying them.  You find yourself nodding along with what she says, staring and ogling her mouth.  Dominika and Dominika's lips mean the world to you in that moment, and nothing could come between you.\n\n");
 	//(if high intelligence)
 	else outputText("It's magic.  You're positive of it, you can practically feel it in the air.  It was hidden when she first started speaking, when she told you to relax, obfuscated by the twisting circles around the room.  The feeling that twists the most in the gut is the knowledge that you do not care.  You know she is ensnaring your mind – you can practically envision her lips dragging chains around you – but you trust her.  You know that the only reason you trust her right now is further magic and yet you dismiss this as a non-issue.  Worst of all even though you try as hard as you can to keep this knowledge in the forefront of your mind, every word Dominika utters pulls at your attention, demanding you surrender and let her lips engulf your mind – and you don't see a reason to deny her.\n\n");
-	sceneHunter.selectGender(dickF, vagF, null, null, 0);
+	sceneHunter.selectGender(dickF, vagF, null, dickF, 0);
 
 	//====================================================
 	//(Penis)
