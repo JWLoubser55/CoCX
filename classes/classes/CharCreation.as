@@ -68,6 +68,11 @@ import classes.Scenes.Combat.CombatAbility;
 
 		private var specialCharacters:CharSpecial = new CharSpecial();
 		private var customPlayerProfile:Function;
+		private var primarySetting:Number;
+		private var secondarySetting:Number;
+		private var elitechampionbossSetting:Number;
+		private var hardcoreSetting:Number;
+		private var hungerSetting:Number;
 
 //		private var boxNames:ComboBox;
 
@@ -2156,55 +2161,24 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 
 		private function startTheGame():void {
+			primarySetting = flags[kFLAGS.PRIMARY_DIFFICULTY];
+			secondarySetting = flags[kFLAGS.SECONDARY_STATS_SCALING];
+			elitechampionbossSetting = flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING];
+			hardcoreSetting = flags[kFLAGS.HARDCORE_MODE];
+			hungerSetting = flags[kFLAGS.HUNGER_ENABLED];
+			startTheGame2();
+		}
+		private function startTheGame2():void {
 			player.hunger = 100;
 			player.startingRace = player.race();
-			var newFlags:DefaultDict = new DefaultDict();
-			for each(var flag:int in [
-				kFLAGS.BACKGROUND_STYLE,
-				kFLAGS.CUSTOM_FONT_SIZE,
-				kFLAGS.NEW_GAME_PLUS_LEVEL,
-				kFLAGS.HUNGER_ENABLED,
-				kFLAGS.SECONDARY_STATS_SCALING,
-				kFLAGS.PRIMARY_DIFFICULTY,
-				kFLAGS.HARDCORE_MODE,
-				kFLAGS.GAME_DIFFICULTY,
-				kFLAGS.EASY_MODE_ENABLE_FLAG,
-				kFLAGS.WISDOM_SCALING,
-				kFLAGS.INTELLIGENCE_SCALING,
-				kFLAGS.STRENGTH_SCALING,
-				kFLAGS.SPEED_SCALING,
-				kFLAGS.BOSS_CHAMPION_ELITE_SCALING,
-				kFLAGS.WATERSPORTS_ENABLED,
-			    kFLAGS.SILLY_MODE_ENABLE_FLAG,
-				kFLAGS.SCENEHUNTER_PRINT_CHECKS,
-				kFLAGS.SCENEHUNTER_SHORT_PREG,
-				kFLAGS.SCENEHUNTER_OTHER,
-				kFLAGS.SCENEHUNTER_DICK_SELECT,
-				kFLAGS.SCENEHUNTER_LOSS_SELECT,
-				kFLAGS.SCENEHUNTER_MOCK_FIGHTS,
-				kFLAGS.SCENEHUNTER_UNI_HERMS,
-				kFLAGS.LOW_STANDARDS_FOR_ALL,
-				kFLAGS.HYPER_HAPPY,
-				kFLAGS.NEW_GAME_PLUS_BONUS_UNLOCKED_HERM,
-				kFLAGS.LVL_UP_FAST,
-				kFLAGS.MUTATIONS_SPOILERS,
-				kFLAGS.INVT_MGMT_TYPE,
-				kFLAGS.NEWPERKSDISPLAY,
-				kFLAGS.CHARVIEW_STYLE,
-				kFLAGS.CHARVIEW_ARMOR_HIDDEN,
-				kFLAGS.EXPLORE_MENU_STYLE,
-				kFLAGS.SPIRIT_STONES,
-				kFLAGS.HP_STATBAR_PERCENTAGE,
-				kFLAGS.LUST_STATBAR_PERCENTAGE,
-				kFLAGS.WRATH_STATBAR_PERCENTAGE,
-				kFLAGS.ANGELIC_FRACTION_TOGGLE,
-				kFLAGS.HUMAN_BLOODLINE]) {
-				    newFlags[flag] = flags[flag];
-			}
 			CoC.instance.saves.loadPermObject();
-			CoC.instance.flags = newFlags;
 			flags[kFLAGS.MOD_SAVE_VERSION] = CoC.instance.modSaveVersion;
 			statScreenRefresh();
+			flags[kFLAGS.PRIMARY_DIFFICULTY] = primarySetting;
+			flags[kFLAGS.SECONDARY_STATS_SCALING] = secondarySetting;
+			flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] = elitechampionbossSetting;
+			flags[kFLAGS.HARDCORE_MODE] = hardcoreSetting;
+			flags[kFLAGS.HUNGER_ENABLED] = hungerSetting;
 			if (player.hasPerk(PerkLib.PastLifeCultivator) || player.hasPerk(PerkLib.PastLifeFighter) || player.hasPerk(PerkLib.PastLifeScout) || player.hasPerk(PerkLib.PastLifeScholar) || player.hasPerk(PerkLib.PastLifeSmith) || player.hasPerk(PerkLib.PastLifeTactician) || player.hasPerk(PerkLib.PastLifeWhore)) chooseToPlayHalf();
 			else chooseToPlay();
 		}
