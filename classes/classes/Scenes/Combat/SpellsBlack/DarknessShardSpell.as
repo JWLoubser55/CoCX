@@ -52,7 +52,7 @@ public class DarknessShardSpell extends AbstractBlackSpell {
 	}
 	
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
-		var baseDamage:Number = 2 * scalingBonusIntelligence(randomize);
+		var baseDamage:Number = damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
 		if (ex) baseDamage *= 2;
 		return adjustSpellDamage(baseDamage, DamageType.DARKNESS, CAT_SPELL_BLACK, monster, true, casting);

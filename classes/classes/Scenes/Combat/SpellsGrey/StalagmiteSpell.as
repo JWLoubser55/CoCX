@@ -61,7 +61,7 @@ public class StalagmiteSpell extends AbstractGreySpell {
 	}
 	
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
-		var baseDamage:Number = 2 * scalingBonusIntelligence(randomize);
+		var baseDamage:Number = damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
 		if (ex) baseDamage *= 2;
 		return adjustSpellDamage(baseDamage, DamageType.EARTH, CAT_SPELL_GREY, monster, true, casting);

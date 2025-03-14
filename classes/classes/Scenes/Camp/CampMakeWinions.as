@@ -27,7 +27,8 @@ public class CampMakeWinions extends BaseContent
 
 		private var retrycount:Number = 0;
 		private function playerAlreadyHaveAnyTamedMonster():Boolean {
-			if (player.hasStatusEffect(StatusEffects.TamedMonster01) || player.hasStatusEffect(StatusEffects.TamedMonster02) || player.hasStatusEffect(StatusEffects.TamedMonster03) || player.hasStatusEffect(StatusEffects.TamedMonster04)) return true;
+			if (player.hasStatusEffect(StatusEffects.TamedMonster01) || player.hasStatusEffect(StatusEffects.TamedMonster02) || player.hasStatusEffect(StatusEffects.TamedMonster03) || player.hasStatusEffect(StatusEffects.TamedMonster04)
+			 || player.hasStatusEffect(StatusEffects.TamedMonster05) || player.hasStatusEffect(StatusEffects.TamedMonster06) || player.hasStatusEffect(StatusEffects.TamedMonster07)) return true;
 			else return false;
 		}
 		private function currentTamedMonstersCount():Number {

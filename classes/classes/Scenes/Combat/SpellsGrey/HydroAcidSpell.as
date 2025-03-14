@@ -29,7 +29,7 @@ public class HydroAcidSpell extends AbstractGreySpell {
 	}
 	
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
-		var baseDamage:Number = 6 * scalingBonusIntelligence(randomize);
+		var baseDamage:Number = damageCalculationTier2Spells(randomize);
 		daaamageaddons(baseDamage);
 		return adjustSpellDamage(baseDamage, DamageType.ACID, CAT_SPELL_GREY, monster, true, casting);
 	}

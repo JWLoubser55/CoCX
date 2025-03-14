@@ -60,7 +60,7 @@ public class MeteorShowerSpell extends AbstractWhiteSpell{
 	}
 	
 	public function calcDamage(target:Monster, randomize:Boolean=true, casting:Boolean = true):Number {
-		var baseDamage:Number = scalingBonusIntelligence(randomize)*2;
+		var baseDamage:Number = damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
 		return adjustSpellDamage(
 				baseDamage,

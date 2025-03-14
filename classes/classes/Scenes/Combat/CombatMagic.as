@@ -535,12 +535,14 @@ public class CombatMagic extends BaseCombatContent {
 			else mod -= 1;
 		}
 		if (player.hasPerk(PerkLib.HyperCasting)) mod -= 1;
+		if (player.hasPerk(PerkLib.JobSorcerer)) mod -= 3;
 		if (mod < 0) mod = 0;
 		return mod;
 	}
 
 	internal function spellGreyTier2CooldownImpl():Number {
 		var mod:Number = 6;
+		if (player.weapon == weapons.PARACEL) mod -= 2;
 		if (player.hasPerk(PerkLib.NaturalSpellcasting)) {
 			if (player.necklace == necklaces.LEAFAMU && player.isElf()) mod -= 2;
 			else mod -= 1;
@@ -559,12 +561,14 @@ public class CombatMagic extends BaseCombatContent {
 			else mod -= 1;
 		}
 		if (player.hasPerk(PerkLib.HyperCasting)) mod -= 1;
+		if (player.hasPerk(PerkLib.JobSorcerer)) mod -= 3;
 		if (mod < 0) mod = 0;
 		return mod;
 	}
 
 	internal function spellWhiteTier2CooldownImpl():Number {
 		var mod:Number = 6;
+		if (player.weapon == weapons.PARACEL) mod -= 2;
 		if (player.hasPerk(PerkLib.AvatorOfPurity)) mod -= 1;
 		if (player.hasPerk(PerkLib.NaturalSpellcasting)) {
 			if (player.necklace == necklaces.LEAFAMU && player.isElf()) mod -= 2;
@@ -577,6 +581,7 @@ public class CombatMagic extends BaseCombatContent {
 
 	internal function spellWhiteTier3CooldownImpl():Number {
 		var mod:Number = 12;
+		if (player.weapon == weapons.PARACEL) mod -= 3;
 		if (player.hasPerk(PerkLib.AvatorOfPurity)) mod -= 1;
 		if (player.hasPerk(PerkLib.NaturalSpellcasting)) {
 			if (player.necklace == necklaces.LEAFAMU && player.isElf()) mod -= 2;
@@ -598,12 +603,14 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.Necromancy)) mod -= 1;
 		if (player.hasPerk(PerkLib.DeathlyPower)) mod -= 1;
 		if (player.hasPerk(PerkLib.HyperCasting)) mod -= 1;
+		if (player.hasPerk(PerkLib.JobSorcerer)) mod -= 3;
 		if (mod < 0) mod = 0;
 		return mod;
 	}
 
 	internal function spellBlackTier2CooldownImpl():Number {
 		var mod:Number = 6;
+		if (player.weapon == weapons.PARACEL) mod -= 2;
 		if (player.hasPerk(PerkLib.AvatorOfCorruption)) mod -= 1;
 		if (player.hasPerk(PerkLib.NaturalSpellcasting)) {
 			if (player.necklace == necklaces.LEAFAMU && player.isElf()) mod -= 2;
@@ -618,6 +625,7 @@ public class CombatMagic extends BaseCombatContent {
 
 	internal function spellBlackTier3CooldownImpl():Number {
 		var mod:Number = 12;
+		if (player.weapon == weapons.PARACEL) mod -= 3;
 		if (player.hasPerk(PerkLib.AvatorOfCorruption)) mod -= 1;
 		if (player.hasPerk(PerkLib.NaturalSpellcasting)) {
 			if (player.necklace == necklaces.LEAFAMU && player.isElf()) mod -= 2;

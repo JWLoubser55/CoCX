@@ -39,7 +39,7 @@ public class NosferatuSpell extends AbstractBlackSpell {
 	}
 	
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
-		var damage:Number = 5 * scalingBonusIntelligence(randomize);
+		var damage:Number = damageCalculationTier2Spells(randomize);
 		if (player.hasPerk(PerkLib.WisenedHealer)) damage += scalingBonusWisdom();
 		return adjustSpellDamage(damage, DamageType.DARKNESS, CAT_SPELL_BLACK, monster, true, casting);
 	}

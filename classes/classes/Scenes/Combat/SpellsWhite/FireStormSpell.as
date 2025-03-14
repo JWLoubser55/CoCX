@@ -11,7 +11,7 @@ public class FireStormSpell extends AbstractWhiteSpell{
 			"Drawing your own force of the willpower to fuel radical change in the surrounding you can call forth an Fire Storm that will attack enemies in a wide area.",
 			TARGET_ENEMY,
 			TIMING_INSTANT,
-			[TAG_DAMAGING,TAG_AOE,TAG_FIRE, TAG_TIER2]
+			[TAG_DAMAGING, TAG_AOE,TAG_FIRE, TAG_TIER2]
 		);
 		baseManaCost = 500;
 	}
@@ -30,7 +30,7 @@ public class FireStormSpell extends AbstractWhiteSpell{
 	}
 	
 	public function calcDamage(monster:Monster, randomize:Boolean=true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
-		var baseDamage:Number = scalingBonusIntelligence(randomize)*6;
+		var baseDamage:Number = damageCalculationTier2Spells(randomize);
 		daaamageaddons(baseDamage);
 		return adjustSpellDamage(baseDamage,DamageType.FIRE,CAT_SPELL_WHITE,monster, true, casting);
 	}

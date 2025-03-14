@@ -432,6 +432,25 @@ public class AbstractSpell extends CombatAbility {
 		return dTIA;
 	}
 	
+	public function damageCalculationTier1Spells(randomize:Boolean=true):Number {
+		var dCT1S:Number = 0;
+		dCT1S += 8 * scalingBonusIntelligence(randomize);
+		dCT1S += 2 * scalingBonusWisdom(randomize);
+		return dCT1S;
+	}
+	public function damageCalculationTier2Spells(randomize:Boolean=true):Number {
+		var dCT1S:Number = 0;
+		dCT1S += 24 * scalingBonusIntelligence(randomize);
+		dCT1S += 6 * scalingBonusWisdom(randomize);
+		return dCT1S;
+	}
+	public function damageCalculationTier3Spells(randomize:Boolean=true):Number {
+		var dCT1S:Number = 0;
+		dCT1S += 64 * scalingBonusIntelligence(randomize);
+		dCT1S += 16 * scalingBonusWisdom(randomize);
+		return dCT1S;
+	}
+	
 	public function daaamageaddons(dmg:Number):Number {
 		var daaamageaddon:Number = dmg;
 		if (player.hasPerk(PerkLib.Spellsong) && player.lust > player.lust100 * 0.35) daaamageaddon += combat.scalingBonusLibido();
