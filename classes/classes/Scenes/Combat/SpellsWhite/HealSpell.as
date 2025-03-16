@@ -24,9 +24,16 @@ public class HealSpell extends AbstractWhiteSpell {
 	}
 	
 	override public function calcCooldown():int {
-		var calcC:int = 3;
-		calcC += spellGenericCooldown();
+		var calcC:int = 0;
+		if (!player.hasPerk(PerkLib.JobHealer)) calcC += spellGenericCooldown();
+		if (player.weaponRange == weaponsrange.RW_TOME && player.level < 24) {
+			if (player.level < 6) calcC -= 1;
+			if (player.level < 12) calcC -= 1;
+			if (player.level < 18) calcC -= 1;
+			calcC -= 1;
+		}
 		if (player.weapon == weapons.U_STAFF) calcC -= 2;
+		if (calcC < 0) calcC = 0;
 		return calcC;
 	}
 	

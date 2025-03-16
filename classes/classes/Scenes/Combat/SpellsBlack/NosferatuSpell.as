@@ -32,9 +32,16 @@ public class NosferatuSpell extends AbstractBlackSpell {
 	}
 	
 	override public function calcCooldown():int {
-		var calcC:int = 4;
-		calcC += spellGenericCooldown();
+		var calcC:int = 0;
+		calcC += spellBlackTier2Cooldown();
+		if (player.weaponRange == weaponsrange.RB_TOME && player.level < 24) {
+			if (player.level < 6) calcC -= 1;
+			if (player.level < 12) calcC -= 1;
+			if (player.level < 18) calcC -= 1;
+			calcC -= 1;
+		}
 		if (player.hasPerk(PerkLib.VampiricMagic)) calcC -= 1;
+		if (calcC < 0) calcC = 0;
 		return calcC;
 	}
 	

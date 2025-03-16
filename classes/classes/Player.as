@@ -2970,7 +2970,7 @@ use namespace CoC;
 			var physTeaseDmg:Boolean = false;
 			var remainingHit:Array = [];
 			//all dmg reduction effect(s)
-			if (CoC.instance.monster.hasStatusEffect(StatusEffects.EnergyDrain)) damage *= 0.8;
+			if (CoC.instance.monster.hasStatusEffect(StatusEffects.EnergyDrain)) damage *= 0.75;
 			if (hasStatusEffect(StatusEffects.GreenCovenant)) damage *= 0.25;
 			if (CoC.instance.monster.hasStatusEffect(StatusEffects.BloodShower)) damage *= 0.2;
 			if (CoC.instance.monster.hasStatusEffect(StatusEffects.CorpseExplosion)) damage *= (1 - (0.2 * CoC.instance.monster.statusEffectv1(StatusEffects.CorpseExplosion)));
@@ -8193,4 +8193,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}

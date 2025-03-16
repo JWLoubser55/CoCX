@@ -1,4 +1,5 @@
 package classes.Scenes.Combat.SpellsGrey {
+import classes.PerkLib;
 import classes.Scenes.Combat.AbstractGreySpell;
 import classes.Scenes.Combat.CombatAbilities;
 import classes.StatusEffects;
@@ -10,7 +11,7 @@ public class RestoreSpell extends AbstractGreySpell {
 			"Heal for a decent amount of health and regenerate a little over time.  ",
 			TARGET_SELF,
 			TIMING_LASTING,
-			[TAG_HEALING]
+			[TAG_BUFF, TAG_HEALING]
 		);
 		baseManaCost = 80;
 		isLastResortApplicable = false;
@@ -30,14 +31,14 @@ public class RestoreSpell extends AbstractGreySpell {
 	}
 	
 	override public function calcCooldown():int {
-		var calcC:int = 5;
-		calcC += spellGenericCooldown();
+		var calcC:int = 3;
+		if (!player.hasPerk(PerkLib.JobHealer)) calcC += spellGenericCooldown();
 		if (player.weapon == weapons.U_STAFF) calcC -= 2;
 		return calcC;
 	}
 	
 	override public function calcDuration():int {
-		return 7;
+		return 3;
 	}
 	
 	override public function advance(display:Boolean):void {

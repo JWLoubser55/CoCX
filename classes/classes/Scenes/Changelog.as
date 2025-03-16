@@ -343,12 +343,12 @@ public class Changelog extends BaseContent
 			outputText("-New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. Sic ‘Em Six perk and 130+ wisdom. Effect: You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.\n");
 			outputText("-Fix swapped values for gargoyle wings. (Stadler)\n");
 			outputText("-New sprite: Tripxi.\n");
-			outputText("-(Basic) Job: Sorcerer perk have now one additonal effect (for making beginer mages life easier) of lowering all tier 1 white/black/grey spells cd down to 0.\n");
+			outputText("-Job: Sorcerer perk have now one additonal effect (for making beginer mages life easier) of lowering all tier 1 white/black/grey spells cd down to 0.\n");
 			outputText("-Offensive spells tier 1,2,3 have their base scaling on intelligence improved (4x higher) and added scaling based on wisdom (as high as previously intelligence scaling was).\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Nosferatu spell cooldown decreasewd from 7 to 6 turns and reduction of cd is the same as for any tier 2 black spells.\n");
+			outputText("-Heal, Cure, Regenerate and Restore, Balance of Life spells cooldowns was unified to be the same as tier 2 spells (Restore, Balance of Life) or tier 1 spell. Additionaly having Job: Healer would reduce all of those spells cooldowns by 3 turns. Regenerate and HoT part of Restore was changed to last only 3 turns and heal 2,5x more HP each turn. Balance of Life base duration increased by 1 turn.\n");
+			outputText("-Nosferatu, Heal, Cure cooldown are now affected by effects of Restrined Black/White Tome.\n");
+			outputText("-Energy Drain spell cooldown is shortened to 6 turns and effect increased to changed to -25% dmg for 6 turns.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

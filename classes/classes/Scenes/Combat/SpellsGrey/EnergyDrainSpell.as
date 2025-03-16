@@ -8,7 +8,7 @@ public class EnergyDrainSpell extends AbstractGreySpell {
 	public function EnergyDrainSpell() {
 		super(
 			"Energy Drain",
-			"Fatigue the target (-20% damage for 7 rounds) and recover mana by draining the target's mana (up to 4x of spell cost).",
+			"Fatigue the target (-25% damage for 6 rounds) and recover mana by draining the target's mana (up to 4x of spell cost).",
 			TARGET_ENEMY,
 			TIMING_LASTING,
 			[TAG_DEBUFF,TAG_RECOVERY]
@@ -25,13 +25,13 @@ public class EnergyDrainSpell extends AbstractGreySpell {
 	}
 	
 	override public function calcCooldown():int {
-		var calcC:int = 4;
+		var calcC:int = 3;
 		calcC += spellGenericCooldown();
 		return calcC;
 	}
 	
 	override public function calcDuration():int {
-		return 7;
+		return 6;
 	}
 	
 	public function calcMagnitude(target:Monster):Number {
@@ -54,8 +54,7 @@ public class EnergyDrainSpell extends AbstractGreySpell {
 				outputText("You point at [themonster] and with a sharp pulling gesture you rip out some of their vigor for your own use. They won’t be hitting at full strength for a while.");
 			}
 			var magnitude:Number = calcMagnitude(monster);
-            if (magnitude > 0)
-			    monster.createStatusEffect(StatusEffects.EnergyDrain, calcDuration(), 0, 0, 0);
+            if (magnitude > 0) monster.createStatusEffect(StatusEffects.EnergyDrain, calcDuration(), 0, 0, 0);
 			player.mana += magnitude;
 			monster.mana -= magnitude;
 		}

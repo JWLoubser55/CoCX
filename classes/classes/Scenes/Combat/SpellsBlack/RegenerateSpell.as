@@ -28,6 +28,10 @@ public class RegenerateSpell extends AbstractBlackSpell {
 		return player.hasStatusEffect(StatusEffects.PlayerRegenerate);
 	}
 	
+	override public function isStackable():Boolean {
+		return true;
+	}
+	
 	override public function describeEffectVs(target:Monster):String {
 		return ""+calcHeal()+" HP for "+calcDuration()+" rounds"
 	}
@@ -44,11 +48,12 @@ public class RegenerateSpell extends AbstractBlackSpell {
 			if (player.hasPerk(PerkLib.CheatDeath) && player.HP < (player.maxHP() * 0.1)) hpChange2 *= 2.5;
 			else hpChange2 *= 1.5;
 		}
+		hpChange2 *= 2.5;
 		return Math.round(hpChange2);
 	}
 	
 	override public function calcDuration():int {
-		return 7;
+		return 3;
 	}
 	
 	override public function advance(display:Boolean):void {
@@ -76,9 +81,13 @@ public class RegenerateSpell extends AbstractBlackSpell {
 			outputText("You focus on your body and its desire to end pain, trying to draw on your arousal without enhancing it.");
 		}
 		if (!backfired(display)) {
-			if (player.hasStatusEffect(StatusEffects.PlayerRegenerate)) player.addStatusValue(StatusEffects.PlayerRegenerate, 1, calcDuration());
-			else player.createStatusEffect(StatusEffects.PlayerRegenerate, 7, 0, 0, 0);
-			outputText(" This should hold up for about seven rounds.");
+			outputText(" This should hold up for about three ");
+			if (player.hasStatusEffect(StatusEffects.PlayerRegenerate)) {
+				player.addStatusValue(StatusEffects.PlayerRegenerate, 1, calcDuration());
+				outputText("more ");
+			}
+			else player.createStatusEffect(StatusEffects.PlayerRegenerate, calcDuration(), 0, 0, 0);
+			outputText("rounds.");
 		}
 		
 	}

@@ -28,15 +28,19 @@ public class BalanceOfLifeSpell extends AbstractGreySpell {
 		return player.hasStatusEffect(StatusEffects.BalanceOfLife);
 	}
 	
+	override public function isStackable():Boolean {
+		return true;
+	}
+	
 	override public function calcCooldown():int {
-		var calcC:int = 5;
-		calcC += spellGenericCooldown();
+		var calcC:int = 3;
+		if (!player.hasPerk(PerkLib.JobHealer)) calcC += spellGenericCooldown();
 		if (player.weapon == weapons.U_STAFF) calcC -= 2;
 		return calcC;
 	}
 	
 	override public function calcDuration():int {
-		var duration:Number = 4;
+		var duration:Number = 5;
 		if (player.hasPerk(PerkLib.DefensiveStaffChanneling) && (player.weapon.isStaffType() || player.weaponOff.isStaffType() || player.weapon.isWandType() || player.weaponOff.isWandType())) duration *= 1.2;
 		return Math.round(duration);
 	}
@@ -54,7 +58,8 @@ public class BalanceOfLifeSpell extends AbstractGreySpell {
 			if (display) {
 				outputText("A red aura envelop you as you begin converting some of your destructive magic to healing.");
 			}
-			player.createStatusEffect(StatusEffects.BalanceOfLife,calcDuration(),0,0,0);
+			if (player.hasStatusEffect(StatusEffects.BalanceOfLife)) player.addStatusValue(StatusEffects.BalanceOfLife,1,calcDuration());
+			else player.createStatusEffect(StatusEffects.BalanceOfLife,calcDuration(),0,0,0);
 		}
 	}
 }
