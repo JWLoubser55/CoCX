@@ -2568,11 +2568,11 @@ public class PerkLib
 				"You've chosen the 'Mage' perk.  You are able to focus your magical abilities even more keenly, boosting your base spell effects by 10%, mana pool by 90 and lust bar by 15.")
 				.withBuffs({'maxlust_base':+15});
 		public static const MagesWrath:PerkType = mk("Mage's Wrath", "Mage's Wrath",
-				"Magic Bolt (and Elemental Bolt if PC knows it) will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5%.",
-				"You've chosen the 'Mage's Wrath' perk, allowing you to cast some simple spells, while using wrath to empower them, and increase the safe limit of wrath for spellcasting.");
+				"Magic Bolt (and Elemental Bolt if PC knows it) will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5% and spells crit chance by 10%.",
+				"You've chosen the 'Mage's Wrath' perk. Magic Bolt (and Elemental Bolt if PC knows it) will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5% and spells crit chance by 10%.");
 		public static const MagesWrathEx:PerkType = mk("Mage's Wrath (Ex)", "Mage's Wrath (Ex)",
-				"Tier 1 elemental spells will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5%.",
-				"You've chosen the 'Mage's Wrath (Ex)' perk, allowing you to cast tier 1 elemental spells, while using wrath to empower them, and increase the safe limit of wrath for spellcasting.");
+				"Tier 1 elemental spells will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5%(10%) and spells crit chance by 10%(20%).",
+				"You've chosen the 'Mage's Wrath (Ex)' perk. Tier 1 elemental spells will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5%(10%) and spells crit chance by 10%(20%).");
 		public static const MagicMetabolism:PerkType = mk("Magic Metabolism", "Magic Metabolism",
 				"When your hunger level go down below 50, you start losing mana (5:1 ratio for mana:hunger decay) instead of hunger when it should happen. If your mana is empty, hunger works as usual.",
 				"You've chosen the 'Magic Metabolism' perk. If PC have enough mana can use it as way to keep hunger around 50 pts.");

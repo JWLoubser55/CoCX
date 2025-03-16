@@ -9822,6 +9822,17 @@ public class Combat extends BaseContent {
 		}
         return critMChance;
     }
+	
+	public function combatSpellsCritical():Number {
+		var critSChance:int = 0;
+		if (player.hasPerk(PerkLib.MagesWrath)) critSChance += 10;
+		if (player.hasPerk(PerkLib.MagesWrathEx)) critSChance += 10;
+		if (player.weapon.isStaffType()) critSChance += 20;
+		if (player.weaponOff.isStaffType()) critSChance += 20;
+		if (player.weapon.isWandType() || player.weapon.isStaffPart()) critSChance += 10;
+		if (player.weaponOff.isWandType() || player.weaponOff.isStaffPart()) critSChance += 10;
+		return critSChance;
+	}
 
     public function combatBlock(doFatigue:Boolean = false):Boolean {
         if (autoHitPlayer()) return false;

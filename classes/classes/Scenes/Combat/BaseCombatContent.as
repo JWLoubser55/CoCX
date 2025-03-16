@@ -105,6 +105,9 @@ public class BaseCombatContent extends BaseContent {
 	protected function combatMagicalCritical():Number {
 		return combat.combatMagicalCritical();
 	}
+	protected function combatSpellsCritical():Number {
+		return combat.combatSpellsCritical();
+	}
 	protected function combatBlock(doFatigue:Boolean = false):Boolean {
 		return combat.combatBlock(doFatigue);
 	}

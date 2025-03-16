@@ -650,7 +650,9 @@ public class AbstractSpell extends CombatAbility {
 		}
 		//Determine if critical hit!
 		var crit:Boolean = false;
-		var critChance:int = 5 + combatMagicalCritical();
+		var critChance:int = 5;
+		critChance += combatMagicalCritical();
+		critChance += combatSpellsCritical();
         if (player.perkv1(IMutationsLib.ElvishPeripheralNervSysIM) >= 4) critChance += 10;
 		if (player.perkv1(IMutationsLib.GazerEyesIM) >= 3) critChance += 10;
 		if (player.perkv1(IMutationsLib.GazerEyesIM) >= 4) critChance += 25;

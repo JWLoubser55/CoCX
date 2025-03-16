@@ -343,12 +343,15 @@ public class Changelog extends BaseContent
 			outputText("-New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. Sic ‘Em Six perk and 130+ wisdom. Effect: You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.\n");
 			outputText("-Fix swapped values for gargoyle wings. (Stadler)\n");
 			outputText("-New sprite: Tripxi.\n");
-			outputText("-Job: Sorcerer perk have now one additonal effect (for making beginer mages life easier) of lowering all tier 1 white/black/grey spells cd down to 0.\n");
+			outputText("-Job: Sorcerer perk have now one additonal effect (for making beginner mages life easier) of lowering all tier 1 white/black/grey spells cd down to 0.\n");
 			outputText("-Offensive spells tier 1,2,3 have their base scaling on intelligence improved (4x higher) and added scaling based on wisdom (as high as previously intelligence scaling was).\n");
-			outputText("-Nosferatu spell cooldown decreasewd from 7 to 6 turns and reduction of cd is the same as for any tier 2 black spells.\n");
+			outputText("-Nosferatu spell cooldown decreased from 7 to 6 turns and reduction of cd is the same as for any tier 2 black spells.\n");
 			outputText("-Heal, Cure, Regenerate and Restore, Balance of Life spells cooldowns was unified to be the same as tier 2 spells (Restore, Balance of Life) or tier 1 spell. Additionaly having Job: Healer would reduce all of those spells cooldowns by 3 turns. Regenerate and HoT part of Restore was changed to last only 3 turns and heal 2,5x more HP each turn. Balance of Life base duration increased by 1 turn.\n");
 			outputText("-Nosferatu, Heal, Cure cooldown are now affected by effects of Restrined Black/White Tome.\n");
 			outputText("-Energy Drain spell cooldown is shortened to 6 turns and effect increased to changed to -25% dmg for 6 turns.\n");
+			outputText("-Spells critical chance can be now affected by weapon PC use: wands/partstaff main or offhand weapon would add 10% crit chance and staff weapon adds 20%.\n");
+			outputText("-Swiftcasted spells costs and dmg was adjusted to be 75% of their non swiftcast counterparts.\n");
+			outputText("-Mage's Wrath and Mage's Wrath (Ex) perks now would additionaly increase spells crit chance by 10%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -356,11 +359,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New monster perk: Darkness Vulnerability - decrease darkness dmg done to monster by 50% and increase lightning dmg by 100%. Currently given to Anubis enemy.
-			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
-			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Stadler) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
@@ -374,11 +374,11 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: ???. Req. ?Quasi Domain Kineses? perk and 175+ sensitivity. Effect: add int to sens
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req.  perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New monster perk: Darkness Vulnerability - decrease darkness dmg done to monster by 50% and increase lightning dmg by 100%. Currently given to Anubis enemy.
+			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
+			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Stadler) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
