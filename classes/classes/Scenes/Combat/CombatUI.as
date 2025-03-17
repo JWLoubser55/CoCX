@@ -117,8 +117,8 @@ public class CombatUI extends BaseCombatContent {
 				//No shooting fuckbolts from Tidarion!!!
 				if (!Wings.Types[player.wings.type].canFly && Arms.Types[player.arms.type].canFly && player.isFlying && player.statusEffectv2(StatusEffects.Flying) == 0) btnMelee.disable("No way you could use your melee weapon with those arms while flying.");
 				else {
-					if (player.hasPerk(PerkLib.ElementalBolt)) btnMelee.show("E.Bolt", combat.magic.spellElementalBolt, "Attempt to attack the enemy with elemental bolt from your [weapon].  Damage done is determined by your intelligence and weapon.").icon("A_Melee");
-					else btnMelee.show("M.Bolt", combat.magic.spellMagicBolt, "Attempt to attack the enemy with magic bolt from your [weapon].  Damage done is determined by your intelligence and weapon.").icon("A_Melee");
+					if (player.hasPerk(PerkLib.ElementalBolt)) btnMelee.show("E.Bolt", combat.magic.spellElementalBolt, "Attempt to attack the enemy with elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.").icon("A_Melee");
+					else btnMelee.show("M.Bolt", combat.magic.spellMagicBolt, "Attempt to attack the enemy with magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.").icon("A_Melee");
 				}
 			}
 			else if (player.hasStatusEffect(StatusEffects.Gallop)) btnMelee.disable("No way you could hit enemy with melee attacks while galloping. Unless you stop for a moment or two.");
@@ -860,8 +860,8 @@ public class CombatUI extends BaseCombatContent {
 		//Most basic spell ever ^^
 		if (player.hasPerk(PerkLib.JobSorcerer)) {
 			bd = buttons.add("M.Bolt", combat.magic.spellMagicBolt);
-			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with magic bolt from your [weapon].  Damage done is determined by your intelligence and weapon.", "Magic Bolt");
-			else bd.hint("Attempt to attack the enemy with magic bolt.  Damage done is determined by your intelligence.", "Magic Bolt");
+			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Magic Bolt");
+			else bd.hint("Attempt to attack the enemy with magic bolt.  Damage done is determined by your intelligence and wisdom.", "Magic Bolt");
 			if (player.mana < spellCost(40)) {
 				bd.disable("Your mana is too low to cast this spell.");
 			} else if (monster.hasStatusEffect(StatusEffects.Dig)) {
@@ -871,8 +871,8 @@ public class CombatUI extends BaseCombatContent {
 			}
 			if (player.hasPerk(PerkLib.MagesWrath)) {
 				bd = buttons.add("M.Bolt(Ex)", combat.magic.spellEdgyMagicBolt);
-				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt from your [weapon].  Damage done is determined by your intelligence and weapon.", "Wrath-Empowered Magic Bolt");
-				else bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt.  Damage done is determined by your intelligence.", "Wrath-Empowered Magic Bolt");
+				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Magic Bolt");
+				else bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt.  Damage done is determined by your intelligence and wisdom.", "Wrath-Empowered Magic Bolt");
 				if (player.mana < spellCost(40)) {
 					bd.disable("Your mana is too low to cast this spell.");
 				} else if (player.wrath < 100) {
@@ -886,8 +886,8 @@ public class CombatUI extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.ElementalBolt)) {
 			bd = buttons.add("E.Bolt", combat.magic.spellElementalBolt);
-			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with elemental bolt from your [weapon].  Damage done is determined by your intelligence and weapon.", "Elemental Bolt");
-			else bd.hint("Attempt to attack the enemy with elemental bolt.  Damage done is determined by your intelligence.", "Elemental Bolt");
+			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Elemental Bolt");
+			else bd.hint("Attempt to attack the enemy with elemental bolt.  Damage done is determined by your intelligence and wisdom.", "Elemental Bolt");
 			if (player.mana < spellCost(80)) {
 				bd.disable("Your mana is too low to cast this spell.");
 			} else if (monster.hasStatusEffect(StatusEffects.Dig)) {
@@ -897,8 +897,8 @@ public class CombatUI extends BaseCombatContent {
 			}
 			if (player.hasPerk(PerkLib.MagesWrath)) {
 				bd = buttons.add("E.Bolt(Ex)", combat.magic.spellEdgyElementalBolt);
-				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt from your [weapon].  Damage done is determined by your intelligence and weapon.", "Wrath-Empowered Elemental Bolt");
-				else bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt.  Damage done is determined by your intelligence.", "Wrath-Empowered Elemental Bolt");
+				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Elemental Bolt");
+				else bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt.  Damage done is determined by your intelligence and wisdom.", "Wrath-Empowered Elemental Bolt");
 				if (player.mana < spellCost(80)) {
 					bd.disable("Your mana is too low to cast this spell.");
 				} else if (player.wrath < 100) {

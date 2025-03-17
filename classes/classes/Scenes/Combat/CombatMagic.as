@@ -985,14 +985,18 @@ public class CombatMagic extends BaseCombatContent {
 		clearOutput();
 		combat.darkRitualCheckDamage();
 		if (handleShell()) return;
+		if (handleLowtierMagicImmunity()) return;
 		outputText("You narrow your eyes, focusing your mind with deadly intent.  ");
 		if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isStaffType() || player.weaponOff.isStaffType() || player.weapon.isWandType() || player.weaponOff.isWandType())) {
 			if (player.weapon.isWandType() || player.weaponOff.isWandType()) outputText("You point your wand and shoot a magic bolt toward [themonster]!\n\n");
 			else outputText("You point your staff and shoot a magic bolt toward [themonster]!\n\n");
 		}
 		else outputText("You point your hand toward [themonster] and shoot a magic bolt!\n\n");
-		var damage:Number = scalingBonusIntelligence() * spellMod() * 1.2;
+		var damage:Number = 0;
+		damage += 4 * combat.scalingBonusIntelligence();
+		damage += combat.scalingBonusWisdom();
 		if (damage < 10) damage = 10;
+		damage *= spellMod();
 		//weapon bonus
 		if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isStaffType() || player.weaponOff.isStaffType() || player.weapon.isWandType() || player.weaponOff.isWandType())) {
 			var weaponAtk:Number = player.weaponAttack;
@@ -1057,6 +1061,18 @@ public class CombatMagic extends BaseCombatContent {
 	private function handleShell():Boolean{
         if(monster.hasStatusEffect(StatusEffects.Shell)) {
             outputText("As soon as your magic touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+            flags[kFLAGS.SPELLS_CAST]++;
+            if(!player.hasStatusEffect(StatusEffects.CastedSpell)) player.createStatusEffect(StatusEffects.CastedSpell,0,0,0,0);
+            spellPerkUnlock();
+            enemyAI();
+            return true;
+        }
+		return false;
+	}
+	
+	private function handleLowtierMagicImmunity():Boolean{
+        if(monster.hasStatusEffect(StatusEffects.LowtierMagicImmunity)) {
+            outputText("As soon as your magic touches [themonster], it sizzles and fades to nothing.\n\n");
             flags[kFLAGS.SPELLS_CAST]++;
             if(!player.hasStatusEffect(StatusEffects.CastedSpell)) player.createStatusEffect(StatusEffects.CastedSpell,0,0,0,0);
             spellPerkUnlock();

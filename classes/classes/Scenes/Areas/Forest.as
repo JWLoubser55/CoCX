@@ -142,12 +142,11 @@ use namespace CoC;
 						name  : "innerforest",
 						label : "New Area",
 						kind  : 'event',
+						kind  : 'place',
 						unique: true,
-						call  : discoverInner,
-						when  : function ():Boolean {
-							return ((player.level + combat.playerLevelAdjustment()) >= 7) && !isDiscoveredInner();
-						},
-						chance: Encounters.ALWAYS
+						when: canDiscoverInner,
+						chance: 30,
+						call  : discoverInner
 					}, {
 						name  : "Tamani",
 						kind  : 'npc',

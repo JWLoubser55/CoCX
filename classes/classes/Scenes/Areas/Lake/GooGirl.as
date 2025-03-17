@@ -186,8 +186,8 @@ public class GooGirl extends Monster
 			this.weaponVerb="slap";
 			this.weaponAttack = 7;
 			this.armorName = "gelatinous skin";
-			this.armorDef = 8;
-			this.armorMDef = 24;
+			this.armorDef = 24;
+			this.armorMDef = 8;
 			this.bonusHP = 40;
 			this.bonusLust = 107;
 			this.lust = 45;
