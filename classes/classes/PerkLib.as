@@ -815,6 +815,12 @@ public class PerkLib
 		public static const ApesTogetherStrong:PerkType = mk("Apes Together Strong", "Apes Together Strong",
 				"You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.",
 				"You've chosen the 'Apes Together Strong' perk. You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.");
+		public static const SpiritualAlignment:PerkType = mk("Spiritual Alignment", "Spiritual Alignment",
+				"The universe opens to you and you are able to synergize your spiritual understanding with your psychic powers. (Adds current Wisdom score to Sensitivity)",
+				"You've chosen the 'Spiritual Alignment' perk. The universe opens to you and you are able to synergize your spiritual understanding with your psychic powers. (Adds current Wisdom score to Sensitivity)");
+		public static const MentalAttunement:PerkType = mk("Mental Attunement", "Mental Attunement",
+				"You unlock full usage of your brain, increasing your psychic potential. (Adds current Intelligence score to Sensitivity)",
+				"You've chosen the 'Mental Attunement' perk. You unlock full usage of your brain, increasing your psychic potential. (Adds current Intelligence score to Sensitivity)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -826,12 +832,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -7608,14 +7608,14 @@ public class PerkLib
                     .requirePerk(EyesOfTheHunterExpert)
                     .requireLevel(18);
             //Tier 4 Sensitivity Perks
+            TelekineticGrapple.requireSen(100)
+                    .requirePerk(PsychicBolt)
+                    .requireLevel(24);
             Electrokinesis.requireSen(110)
                     .requirePerk(JobPsychic)
                     .requireLevel(24);
             Aerokinesis.requireSen(110)
                     .requirePerk(JobPsychic)
-                    .requireLevel(24);
-            TelekineticGrapple.requireSen(100)
-                    .requirePerk(PsychicBolt)
                     .requireLevel(24);
             WideAreaKineses.requireSen(100)
                     .requirePerk(ImprovedKineses)
@@ -7654,6 +7654,12 @@ public class PerkLib
             //Tier 7 Sensitivity Perks
             EyesOfTheHunterSu.requireSen(25)
                     .requirePerk(EyesOfTheHunterEx)
+                    .requireLevel(42);
+            SpiritualAlignment.requireSen(175)
+                    .requirePerk(AdvancedKineses)
+                    .requireLevel(42);
+            MentalAttunement.requireSen(175)
+                    .requirePerk(AdvancedKineses)
                     .requireLevel(42);
             //Tier 8 Sensitivity Perks
             //Tier 9 Sensitivity Perks

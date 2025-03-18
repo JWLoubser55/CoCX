@@ -862,7 +862,7 @@ public class CombatUI extends BaseCombatContent {
 			bd = buttons.add("M.Bolt", combat.magic.spellMagicBolt);
 			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Magic Bolt");
 			else bd.hint("Attempt to attack the enemy with magic bolt.  Damage done is determined by your intelligence and wisdom.", "Magic Bolt");
-			if (player.mana < spellCost(40)) {
+			if (player.mana < spellCost(30)) {
 				bd.disable("Your mana is too low to cast this spell.");
 			} else if (monster.hasStatusEffect(StatusEffects.Dig)) {
 				bd.disable("You can only use buff magic while underground.");
@@ -873,7 +873,7 @@ public class CombatUI extends BaseCombatContent {
 				bd = buttons.add("M.Bolt(Ex)", combat.magic.spellEdgyMagicBolt);
 				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Magic Bolt");
 				else bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt.  Damage done is determined by your intelligence and wisdom.", "Wrath-Empowered Magic Bolt");
-				if (player.mana < spellCost(40)) {
+				if (player.mana < spellCost(60)) {
 					bd.disable("Your mana is too low to cast this spell.");
 				} else if (player.wrath < 100) {
 					bd.disable("Your wrath is too low to cast this spell.");
@@ -888,7 +888,7 @@ public class CombatUI extends BaseCombatContent {
 			bd = buttons.add("E.Bolt", combat.magic.spellElementalBolt);
 			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Elemental Bolt");
 			else bd.hint("Attempt to attack the enemy with elemental bolt.  Damage done is determined by your intelligence and wisdom.", "Elemental Bolt");
-			if (player.mana < spellCost(80)) {
+			if (player.mana < spellCost(30)) {
 				bd.disable("Your mana is too low to cast this spell.");
 			} else if (monster.hasStatusEffect(StatusEffects.Dig)) {
 				bd.disable("You can only use buff magic while underground.");
@@ -899,7 +899,7 @@ public class CombatUI extends BaseCombatContent {
 				bd = buttons.add("E.Bolt(Ex)", combat.magic.spellEdgyElementalBolt);
 				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Elemental Bolt");
 				else bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt.  Damage done is determined by your intelligence and wisdom.", "Wrath-Empowered Elemental Bolt");
-				if (player.mana < spellCost(80)) {
+				if (player.mana < spellCost(60)) {
 					bd.disable("Your mana is too low to cast this spell.");
 				} else if (player.wrath < 100) {
 					bd.disable("Your wrath is too low to cast this spell.");

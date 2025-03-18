@@ -149,6 +149,67 @@ public class MagicSpecials extends BaseCombatContent {
 				}
 			}
 		}
+		//Esper cool beans (start)
+		if (player.hasPerk(PerkLib.PsychicBarrier)) {
+			if (player.statStore.hasBuff("PsychoBarrier")) {
+				buttons.add("Psycho-Barrier/Off", combat.deactivatePsychoBarrier).hint("Disperse Psycho-Barrier.");
+			} else {
+				bd = buttons.add("Psycho-Barrier/On", combat.activatePsychoBarrier, "Cover yourself with Psycho-Barrier. (It would drain fatigue until dispersed)\n");
+				bd.requireFatigue(20);
+			}
+		}
+		if (player.hasPerk(PerkLib.PsychicBolt)) {
+			bd = buttons.add("Psychic Bolt", combat.castPsychicBolt, "Attempt to attack the enemy with psychic bolt.  Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(10);
+		}
+		if (player.hasPerk(PerkLib.TelekineticGrapple) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
+			bd = buttons.add("Telekinetic Grab", TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 6 rounds");
+			bd.requireMana(spellCost(50));
+			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
+				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+		}
+		if (player.hasPerk(PerkLib.Pyrokinesis)) {
+			bd = buttons.add("Pyrokinesis", combat.usePyrokinesis, "Attempt to attack the enemy with fire ball. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Hydrokinesis)) {
+			bd = buttons.add("Hydrokinesis", combat.useHydrokinesis, "Attempt to attack the enemy with water sphere. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Cryokinesis)) {
+			bd = buttons.add("Cryokinesis", combat.useCryokinesis, "Attempt to attack the enemy with icicle. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Geokinesis)) {
+			bd = buttons.add("Geokinesis", combat.useGeokinesis, "Attempt to attack the enemy with rock. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Electrokinesis)) {
+			bd = buttons.add("Electrokinesis", combat.useElectrokinesis, "Attempt to attack the enemy with bolt of lightning. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Aerokinesis)) {
+			bd = buttons.add("Aerokinesis", combat.useAerokinesis, "Attempt to attack the enemy with wind sphere. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Umbrakinesis)) {
+			bd = buttons.add("Umbrakinesis", combat.useUmbrakinesis, "Attempt to attack the enemy with darkness sphere. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Acidokinesis)) {
+			bd = buttons.add("Acidokinesis", combat.useAcidokinesis, "Attempt to attack the enemy with acid ball. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Ionikinesis)) {
+			bd = buttons.add("Ionikinesis", combat.useIonikinesis, "Attempt to attack the enemy with plasma ball. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Cocytokinesis)) {
+			bd = buttons.add("Cocytokinesis", combat.useCocytokinesis, "Attempt to attack the enemy with black icicle. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		//Esper cool beans (end)
 		if (!player.hasPerk(PerkLib.ElementalBody)) {
 			if ((player.hasPerk(PerkLib.Incorporeality) || player.isRaceCached(Races.WENDIGO))) {
 				bd = buttons.add("Possess", possess).hint("Attempt to temporarily possess a foe and force them to raise their own lusts.\nWould go into cooldown after use for: " + (player.hasPerk(PerkLib.NaturalInstincts) ? "1 round" : "2 rounds") + "\n");

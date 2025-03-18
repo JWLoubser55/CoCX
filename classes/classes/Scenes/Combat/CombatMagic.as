@@ -979,7 +979,7 @@ public class CombatMagic extends BaseCombatContent {
 		spellMagicBolt2(true, true);
 	}
 	public function spellMagicBolt2(elemental:Boolean = false, edgy:Boolean = false):void {
-		useMana(elemental ? 80 : 40, Combat.USEMANA_MAGIC);
+		useMana(elemental ? 60 : 30, Combat.USEMANA_MAGIC);
 		if (edgy) player.wrath -= 100;
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
@@ -993,8 +993,8 @@ public class CombatMagic extends BaseCombatContent {
 		}
 		else outputText("You point your hand toward [themonster] and shoot a magic bolt!\n\n");
 		var damage:Number = 0;
-		damage += 4 * combat.scalingBonusIntelligence();
-		damage += combat.scalingBonusWisdom();
+		damage += 6 * combat.scalingBonusIntelligence();
+		damage += 1.5 * combat.scalingBonusWisdom();
 		if (damage < 10) damage = 10;
 		damage *= spellMod();
 		//weapon bonus
