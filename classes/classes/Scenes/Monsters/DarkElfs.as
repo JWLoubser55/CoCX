@@ -25,12 +25,12 @@ public class DarkElfs extends Monster
 			else outputText("An arrow missed you.\n\n");
 			if (rand(100) < (80 + Acc)) PoisonedBowShoot();//Dark Elf Scout
 			else outputText("An arrow missed you.\n\n");
-			if (rand(100) < (70 + Acc)) PoisonedBowShoot();//Dark Elf Slaver
-			else outputText("An arrow missed you.\n\n");
-			if (rand(100) < (60 + Acc)) PoisonedBowShoot();//Dark Elf Ranger
-			else outputText("An arrow missed you.\n\n");
-			if (rand(100) < (50 + Acc)) PoisonedBowShoot();//Dark Elf Sniper
-			else outputText("An arrow missed you.\n\n");
+			//if (rand(100) < (70 + Acc)) PoisonedBowShoot();//Dark Elf Slaver
+			//else outputText("An arrow missed you.\n\n");
+			//if (rand(100) < (60 + Acc)) PoisonedBowShoot();//Dark Elf Ranger
+			//else outputText("An arrow missed you.\n\n");
+			//if (rand(100) < (50 + Acc)) PoisonedBowShoot();//Dark Elf Sniper
+			//else outputText("An arrow missed you.\n\n");
 		}
 		
 		public function PoisonedBowShoot():void
@@ -88,6 +88,12 @@ public class DarkElfs extends Monster
 		
 		public function DarkElfs()
 		{
+			//if () {
+				
+			//}
+			//if () {
+				
+			//}
 			this.a = "the ";
 			this.short = "dark elf sniper";
 			this.imageName = "dark elf";

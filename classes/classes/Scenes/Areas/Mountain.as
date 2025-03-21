@@ -39,8 +39,6 @@ public class Mountain extends BaseContent
 		public var basiliskScene:BasiliskScene = new BasiliskScene();
 		public var harpyScene:HarpyScene = new HarpyScene();
 		
-		
-		
 		public const areaLevelHills:int = 20;
 		public function isDiscoveredHills():Boolean {
 			return SceneLib.exploration.counters.hills > 0;
@@ -57,7 +55,6 @@ public class Mountain extends BaseContent
 			outputText("As you walk the large open wasteland of Mareth you begin to notice an elevation in the ground. Far in the distance you can see a mountain chain but from where you stand is a hillside. Well, you got tired of the monotony of the flat land anyway maybe going up will yield new interesting discoveries.\n\n<b>You found the Hills!</b>");
 			endEncounter();
 		}
-		
 		
 		public const areaLevelLow:int = 32;
 		public function isDiscoveredLow():Boolean {

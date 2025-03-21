@@ -13,7 +13,6 @@ import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
 import classes.IMutations.WhiteFacedOneBirthrightMutation;
 import classes.Scenes.SceneLib;
-import classes.Scenes.Areas.Desert.AnubisScene;
 import classes.Stats.Buff;
 import classes.internals.*;
 

@@ -9,51 +9,25 @@ package classes.Scenes.Monsters
 	
 	public class GolemsBasic extends AbstractGolem
 	{
-		public function backhand():void {
-			outputText("The golems visage twists into a grimace of irritation, and few of them swings their hands at you in a vicious backhand.");
-			var damage:Number = int (((str + weaponAttack) * 6) - rand(player.tou) - player.armorDef);
-			//Dodge
-			if (damage <= 0 || (player.getEvasionRoll())) outputText(" You slide underneath the surprise swings!");
-			else
-			{
-				if (hasStatusEffect(StatusEffects.Provoke)) damage = Math.round(damage * statusEffectv2(StatusEffects.Provoke));
-				outputText(" They hits you square in the chest from a few different angles. ");
-				damage = player.takePhysDamage(damage, true);
-			}
-		}
-		
-		public function overhandSmash():void {
-			outputText("Raising their fists high overhead, the golems swiftly brings them down in a punishing strike!");
-			
-			var damage:Number = 150 + int(((str + weaponAttack) * 6) - rand(player.tou) - player.armorDef);
-			if (damage <= 0 || rand(100) < 25 || player.getEvasionRoll()) outputText(" You're able to sidestep it just in time.");
-			else
-			{
-				if (hasStatusEffect(StatusEffects.Provoke)) damage = Math.round(damage * statusEffectv2(StatusEffects.Provoke));
-				outputText(" The concussive strikes impacts you with a bonecrushing force. ");
-				damage = player.takePhysDamage(damage, true);
-			}
-		}
-		
 		override protected function performCombatAction():void
 		{
 			if (hasStatusEffect(StatusEffects.Provoke)) {
 				var choiceP:Number = rand(3);
 				if (choiceP == 0) eAttack();
-				if (choiceP == 1) backhand();
-				if (choiceP == 2) overhandSmash();
+				if (choiceP == 1) backhand2();
+				if (choiceP == 2) overhandSmash2();
 			}
 			else {
 				if (this.HPRatio() < 0.6) {
 					var choice2:Number = rand(5);
 					if (choice2 < 3) eAttack();
-					if (choice2 == 3) backhand();
-					if (choice2 == 4) overhandSmash();
+					if (choice2 == 3) backhand2();
+					if (choice2 == 4) overhandSmash2();
 				}
 				else if (this.HPRatio() < 0.8) {
 					var choice1:Number = rand(4);
 					if (choice1 < 3) eAttack();
-					if (choice1 == 3) backhand();
+					if (choice1 == 3) backhand2();
 				}
 				else eAttack();
 			}

@@ -10,7 +10,6 @@ import classes.BodyParts.Face;
 import classes.BodyParts.Hips;
 import classes.BodyParts.LowerBody;
 //import classes.BodyParts.Skin;
-import classes.Scenes.Areas.Desert.AnubisScene;
 import classes.Scenes.SceneLib;
 import classes.Stats.Buff;
 import classes.internals.*;

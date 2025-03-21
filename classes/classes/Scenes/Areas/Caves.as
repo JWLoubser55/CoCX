@@ -11,6 +11,7 @@ import classes.Scenes.API.Encounters;
 import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.Caves.*;
+import classes.Scenes.Monsters.CaveGolems;
 import classes.Scenes.Monsters.DarkElfScene;
 import classes.Scenes.NPCs.Forgefather;
 import classes.Scenes.SceneLib;
@@ -28,9 +29,16 @@ use namespace CoC;
 			onGameInit(init);
 		}
 
+		//Caves: lvl 48-66
+		//Tunnels: lvl 71-95
+		//Bedrock: lvl 100-135
 		private var _cavesEncounter:GroupEncounter = null;
+		private var _tunnelsEncounter:GroupEncounter = null;
 		public function get cavesEncounter():GroupEncounter {
 			return _cavesEncounter;
+		}
+		public function get tunnelsEncounter():GroupEncounter {
+			return _tunnelsEncounter;
 		}
 
 		private function init():void {
@@ -79,13 +87,7 @@ use namespace CoC;
 				},
 				chance: cavesChance,
 				call: manticoreEncounterFn
-			}/*, {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					//antworker.();
-					clearOutput();
-					//outputText("You spend one hour exploring the caves but you don't manage to find anything interesting, unless feeling like you are becoming slightly tougher counts.");
-					break;
-			}*/, {
+			}, {
 				name: "mine",
 				label : "Mine",
 				kind  : 'place',
@@ -101,7 +103,7 @@ use namespace CoC;
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					cavewyrmScene.berserkingCaveWyrmEncounter();
 				}
-			}, {
+			},/* {
 				name: "darkelf",
 				label : "Dark Elf",
 				kind : 'monster',
@@ -109,21 +111,13 @@ use namespace CoC;
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					darkelfScene.introDarkELfRangerCaves();
 				}
-			}, {
-				name: "darkslime",
-				label : "Dark Slime",
+			},*/ {
+				name: "gemgolem",
+				label : "Gem Golem",
 				kind : 'monster',
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					darkslimeScene.cavesDarkSlimeEncounter();
-				}
-			}, {
-				name: "displacerbeast",
-				label : "Displacer Beast",
-				kind : 'monster',
-				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					displacerbeastScene.displacerBeastEncounter();
+					gemGolemEncount()
 				}
 			}, {
 				name: "",
@@ -162,7 +156,59 @@ use namespace CoC;
 					return SceneLib.exploration.demonLabProjectEncountersEnabled();
 				},
 				call: curry(SceneLib.exploration.demonLabProjectEncounters, 1)
-			})
+			});
+			_tunnelsEncounter = Encounters.group("tunnels", {
+				name: "mine",
+				label : "Mine",
+				kind  : 'place',
+				when: function ():Boolean {
+					return player.hasKeyItem("Old Pickaxe") > 0 && Forgefather.materialsExplained
+				},
+				call: cavesMine
+			}, /*{
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					//antworker.();
+					clearOutput();
+					//outputText("You spend one hour exploring the caves but you don't manage to find anything interesting, unless feeling like you are becoming slightly tougher counts.");
+					break;
+			}, {
+				name: "darkelf",
+				label : "Dark Elf",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					darkelfScene.introDarkELfRangerCaves();
+				}
+			}, {
+				name: "darkslime",
+				label : "Dark Slime",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					darkslimeScene.cavesDarkSlimeEncounter();
+				}
+			}, {
+				name: "displacerbeast",
+				label : "Displacer Beast",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					displacerbeastScene.displacerBeastEncounter();
+				}
+			},*/{
+				name: "",
+				label : 'Walk',
+				kind : 'walk',
+				when: function ():Boolean {
+					return true
+				},
+				call: findNothing
+			}, {
+				name: "findnothing",
+				label : "Walk",
+				kind  : 'walk',
+				call: findNothing
+			});
 		}
 
 		public const areaLevel:int = 45;
@@ -182,7 +228,42 @@ use namespace CoC;
 			outputText("<b>You've discovered the Caves!</b>");
 			endEncounter(120);
 		}
-
+		
+		public const areaLevelTunnels:int = 68;
+		public function isDiscoveredTunnels():Boolean {
+			return SceneLib.exploration.counters.tunnels > 0;
+		}
+		public function canDiscoverTunnels():Boolean {
+			return !isDiscoveredTunnels() && adjustedPlayerLevel() >= areaLevelTunnels;
+		}
+		public function timesExploredTunnels():int {
+			return SceneLib.exploration.counters.tunnels;
+		}
+		public function discoverTunnels():void {
+			SceneLib.exploration.counters.tunnels = 1;
+			clearOutput();
+			outputText("\n\n");
+			outputText("<b>You've discovered the Tunnels!</b>");
+			endEncounter(120);
+		}
+		
+		public const areaLevelBedrock:int = 51;
+		public function isDiscoveredBedrock():Boolean {
+			return SceneLib.exploration.counters.bedrock > 0;
+		}
+		public function canDiscoverBedrock():Boolean {
+			return !isDiscoveredBedrock() && adjustedPlayerLevel() >= areaLevelBedrock;
+		}
+		public function timesExploredBedrock():int {
+			return SceneLib.exploration.counters.bedrock;
+		}
+		public function discoverBedrock():void {
+			SceneLib.exploration.counters.bedrock = 1;
+			clearOutput();
+			outputText("\n\n");
+			outputText("<b>You've discovered the Bedrock!</b>");
+			endEncounter(120);
+		}
 
 		public function exploreCaves():void {
 			explorer.prepareArea(cavesEncounter);
@@ -193,6 +274,17 @@ use namespace CoC;
 			}
 			explorer.leave.hint("Leave the gloomy caves");
 			explorer.skillBasedReveal(areaLevel, timesExplored());
+			explorer.doExplore();
+		}
+		public function exploreTunnels():void {
+			explorer.prepareArea(tunnelsEncounter);
+			explorer.setTags("caves", "tunnels");
+			explorer.prompt = "You explore the gloomy tunnels.";
+			explorer.onEncounter = function(e:ExplorationEntry):void {
+				SceneLib.exploration.counters.tunnels++;
+			}
+			explorer.leave.hint("Leave the gloomy tunnels");
+			explorer.skillBasedReveal(areaLevel, timesExploredTunnels());
 			explorer.doExplore();
 		}
 
@@ -309,6 +401,14 @@ use namespace CoC;
 				outputText(" Your mining skill is too low to find any Amethysts.");
 				endEncounter(120);
 			}
+		}
+
+		private function gemGolemEncount():void {
+			clearOutput();
+			outputText("As you take a stroll, a golem emerges from the nearby shadow. Looks like you've encountered a gem golem! You ready your [weapon] for a fight!");
+			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_GOLEMS);
+			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 20;
+			startCombat(new CaveGolems());
 		}
 
 	}

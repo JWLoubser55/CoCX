@@ -41,7 +41,7 @@ use namespace CoC;
 			damage += this.weaponAttack;
 			damage += rand(str);
 			damage += rand(weaponAttack);
-			damage += 1.2;
+			damage += 2.5;
 			damage = Math.round(damage);
 			damage = player.takePhysDamage(damage, true);
 			if (rand(10) == 0 && !player.immuneToBleed()) {
@@ -125,6 +125,16 @@ use namespace CoC;
 				this.ballSize = 4 + rand(6);
 				this.cumMultiplier = 1.5;
 				this.hoursSinceCum = ballSize * 10;
+				initStrTouSpeInte(446, 262, 290, 197);
+				initWisLibSensCor(197, 220, 110, -40);
+				this.weaponAttack = 180;
+				this.bonusLust = 381;
+			}
+			else {
+				initStrTouSpeInte(426, 242, 330, 222);
+				initWisLibSensCor(222, 200, 100, -40);
+				this.weaponAttack = 150;
+				this.bonusLust = 351;
 			}
 			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 120, 0, 0, 0);
@@ -139,22 +149,18 @@ use namespace CoC;
 			this.bodyColor = "dark blue";
 			this.hairColor = "black";
 			this.hairLength = 9;
-			initStrTouSpeInte(142, 121, 110, 74);
-			initWisLibSensCor(74, 100, 50, -40);
 			this.weaponName = "double axe";
 			this.weaponVerb= "double cleave";
-			this.weaponAttack = 30;
 			this.armorName = "scales";
-			this.armorDef = 45;
-			this.armorMDef = 15;
-			this.bonusHP = 500;
-			this.bonusWrath = 250;
+			this.armorDef = 270;
+			this.armorMDef = 90;
+			this.bonusHP = 1500;
+			this.bonusWrath = 750;
 			this.wrath = 130;
-			this.bonusLust = 185;
 			this.lustVuln = .35;
 			this.lust = 30;
-			this.level = 35;
-			this.gems = rand(10) + 20;
+			this.level = 51;
+			this.gems = rand(20) + 40;
 			this.drop = new ChainedDrop().
 					add(useables.EBONBLO,1/20).
 					add(consumables.METHIRC,0.7);

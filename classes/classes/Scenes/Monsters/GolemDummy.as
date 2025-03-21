@@ -11,32 +11,19 @@ package classes.Scenes.Monsters
 	
 	public class GolemDummy extends AbstractGolem
 	{
-		public function backhand():void {
-			outputText("The golem's visage twists into a grimace of irritation, and it swings its hand at you in a vicious backhand.");
-			var damage:Number = int ((str + weaponAttack) - rand(player.tou) - player.armorDef);
-			//Dodge
-			if (damage <= 0 || (player.getEvasionRoll())) outputText(" You slide underneath the surprise swing!");
-			else
-			{
-				if (hasStatusEffect(StatusEffects.Provoke)) damage = Math.round(damage * statusEffectv2(StatusEffects.Provoke));
-				outputText(" It hits you square in the chest. ");
-				damage = player.takePhysDamage(damage, true);
-			}
-		}
-		
 		override protected function performCombatAction():void
 		{
 			if ((this.lust100 >= 85 && rand(2) == 0) || this.lust100 < 85) {
 				if (hasStatusEffect(StatusEffects.Provoke)) {
 					var choiceP:Number = rand(4);
 					if (choiceP < 2) eAttack();
-					if (choiceP > 1) backhand();
+					if (choiceP > 1) backhand1();
 				}
 				else {
 					if (this.HPRatio() < 0.75) {
 						var choice:Number = rand(4);
 						if (choice < 3) eAttack();
-						if (choice == 3) backhand();
+						if (choice == 3) backhand1();
 					}
 					else eAttack();
 				}

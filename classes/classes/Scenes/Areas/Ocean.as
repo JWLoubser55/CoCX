@@ -60,7 +60,7 @@ use namespace CoC;
 		
 		public function discoverInnerOcean():void {
 			clearOutput();
-			outputText("As you sail over the ocean, you reach an unfamiliar region. Marked by much cooler, darker waters beneath you. As you look around, you could almost swear you could saw faint rays of light deep off in the distance... Is it a lighthouse?\n\n<b>You've discovered the Inner Ocean!</b>");
+			outputText("As you sail over the coastal waters, you reach an unfamiliar region. Marked by much cooler, darker waters beneath you. As you look around, you could almost swear you could saw faint rays of light deep off in the distance... Is it a lighthouse?\n\n<b>You've discovered the Ocean!</b>");
 			SceneLib.exploration.counters.oceanInner = 1;
 			endEncounter(120);
 		}
@@ -80,7 +80,7 @@ use namespace CoC;
 		}
 
 		private function init():void {
-			_oceanEncounter = Encounters.group("ocean", {
+			_oceanEncounter = Encounters.group("coastal waters", {
 				name: "fishing",
 				label : "Fishing",
 				kind  : 'event',
@@ -90,7 +90,7 @@ use namespace CoC;
 				},
 				call: fishing
 			}, {
-				name: "inner ocean",
+				name: "ocean",
 				label : "New Area",
 				kind  : 'place',
 				unique: true,
@@ -202,23 +202,23 @@ use namespace CoC;
 
 		public function exploreOcean():void {
 			explorer.prepareArea(oceanEncounter);
-			explorer.setTags("ocean","water");
-			explorer.prompt = "You explore the outer ocean surface.";
+			explorer.setTags("coastal waters","water");
+			explorer.prompt = "You explore the coastal waters surface.";
 			explorer.onEncounter = function(e:ExplorationEntry):void {
 				SceneLib.exploration.counters.ocean++;
 			}
-			explorer.leave.hint("Leave the ocean");
+			explorer.leave.hint("Leave the coastal waters");
 			explorer.skillBasedReveal(areaLevel, timesExplored());
 			explorer.doExplore();
 		}
 		public function exploreInnerOcean():void {
 			explorer.prepareArea(oceanInnerEncounter);
-			explorer.setTags("inner ocean","water");
-			explorer.prompt = "You explore the inner ocean surface.";
+			explorer.setTags("ocean","water");
+			explorer.prompt = "You explore the ocean surface.";
 			explorer.onEncounter = function(e:ExplorationEntry):void {
 				SceneLib.exploration.counters.oceaninner++;
 			}
-			explorer.leave.hint("Leave the low mountains");
+			explorer.leave.hint("Leave the ocean");
 			explorer.skillBasedReveal(areaLevelInnerOcean, timesExploredInnerOcean());
 			explorer.doExplore();
 		}

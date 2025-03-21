@@ -79,13 +79,16 @@ public class Exploration extends BaseContent implements SaveableState
 			// deepSea: 0,
 			
 			caves: 0,
-			// deepCaves or cavesDeep: 0,
+			tunnels: 0,
+			bedrock: 0,
 			
 			tundra: 0,
 			glacialRiftOuter: 0,
 			
 			ashlands: 0,
-			volcanicCragOuter: 0
+			volcanicCragOuter: 0,
+			
+			lightlessReach: 0
 		};
 		private var emptyCounters:Object = deepCopy(counters);
 		public function resetState():void {
@@ -276,17 +279,17 @@ public class Exploration extends BaseContent implements SaveableState
 							" (Lvl "+SceneLib.beach.areaLevel+"+)");
 		}
 		private function btnExploreOcean():ButtonData {
-			return new ButtonData("Ocean (O)", SceneLib.ocean.exploreOcean)
-					.hint("Explore the outer ocean surface. But beware of... sharks. "
+			return new ButtonData("Coastal Waters", SceneLib.ocean.exploreOcean)
+					.hint("Explore the coastal waters surface. But beware of... sharks. "
 							+ "\n\nTimes explored: " + SceneLib.ocean.timesExplored())
-					.disableIf(!SceneLib.ocean.isDiscovered(), "You need to first find a way to sail over the water's surface to explore this area.")
-					.disableIf(!SceneLib.beach.isDiscovered(), "You need to discover the Beach first, then find a way to sail on the water.");
+					.disableIf(!SceneLib.ocean.isDiscovered(), "You need to first find a way to sail over the water's surface to explore this area." +
+							" (Lvl "+SceneLib.ocean.areaLevel+"+)");
 		}
 		private function btnExploreInnerOcean():ButtonData {
-			return new ButtonData("Ocean (I)", SceneLib.ocean.exploreInnerOcean)
-					.hint("Explore the inner ocean surface. But beware of... abyssal sharks. "
-							+ "\n\nTimes explored: " + SceneLib.ocean.timesExplored())
-					.disableIf(!SceneLib.ocean.isDiscoveredInnerOcean(), "Discovered when exploring the Outer Ocean." +
+			return new ButtonData("Ocean", SceneLib.ocean.exploreInnerOcean)
+					.hint("Explore the ocean surface. But beware of... abyssal sharks. "
+							+ "\n\nTimes explored: " + SceneLib.ocean.timesExploredInnerOcean())
+					.disableIf(!SceneLib.ocean.isDiscoveredInnerOcean(), "Discovered when exploring the Coastal Waters." +
 							" (Lvl "+SceneLib.ocean.areaLevelInnerOcean+"+)");
 		}
 		private function btnExploreCaves():ButtonData {
@@ -295,6 +298,13 @@ public class Exploration extends BaseContent implements SaveableState
 							+ "\n\nTimes explored: " + SceneLib.caves.timesExplored())
 					.disableIf(!SceneLib.caves.isDiscovered(), "Discovered when using 'Explore' after finding the Beach." +
 							" (Lvl "+SceneLib.caves.areaLevel+"+)");
+		}
+		private function btnExploreTunnels():ButtonData {
+			return new ButtonData("Tunnels", SceneLib.caves.exploreTunnels)
+					.hint("Visit the gloomy tunnels. "
+							+ "\n\nTimes explored: " + SceneLib.caves.timesExploredTunnels())
+					.disableIf(!SceneLib.caves.isDiscoveredTunnels(), "Discovered when exploring the Caves." +
+							" (Lvl "+SceneLib.caves.areaLevelTunnels+"+)");
 		}
 		private function btnExploreTundra():ButtonData {
 			return new ButtonData("Tundra", SceneLib.tundra.exploreTundra)
@@ -405,7 +415,7 @@ public class Exploration extends BaseContent implements SaveableState
 				bd.add("");
 				// Row 10
 				bd.append(btnExploreCaves());
-				bd.add("");
+				bd.append(btnExploreTunnels());
 				bd.add("");
 				bd.add("");
 				bd.add("");
@@ -555,7 +565,8 @@ public class Exploration extends BaseContent implements SaveableState
 			//if (flags[kFLAGS.DISCOVERED_PIT] > 0) addButton(5, "Pit", CoC.instance.abyss.explorePit).hint("Visit the pit. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_PIT] : ""));
 			//if (flags[kFLAGS.DISCOVERED_ABYSS] > 0) addButton(5, "Abyss", CoC.instance.abyss.exploreAbyss).hint("Visit the abyss. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_ABYSS] : ""));
 			btnExploreMountainsMid().applyTo(button(6));
-			btnExploreOcean().applyTo(button(8));
+			btnExploreOcean().applyTo(button(7));
+			btnExploreTunnels().applyTo(button(8));
 			
 			btnExploreGlacialRiftOuter().applyTo(button(10));
 			btnExploreVolcanicCragOuter().applyTo(button(11));
