@@ -9763,12 +9763,12 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Legs
-        if (player.lowerBody == LowerBody.GHOST && player.lowerBody != LowerBody.GHOST_2 && rand(3) == 0 && changes < changeLimit && type == 1) {
+        if (type == 1 && player.lowerBody == LowerBody.GHOST && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.LowerBodyGhost2.applyEffect();
             changes++;
         }
-        if (player.hairType == 2 && player.lowerBody != LowerBody.GHOST && rand(3) == 0 && changes < changeLimit) {
+        if (player.hairType == Hair.GHOST && !InCollection(player.lowerBody, LowerBody.GHOST, LowerBody.GHOST_2) && rand(3) == 0 && changes < changeLimit) {
             if (player.lowerBody == LowerBody.HUMAN) {
                 outputText("[pg]");
                 transformations.LowerBodyGhost.applyEffect();
