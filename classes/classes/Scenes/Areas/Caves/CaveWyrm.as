@@ -128,13 +128,13 @@ use namespace CoC;
 				initStrTouSpeInte(446, 262, 290, 197);
 				initWisLibSensCor(197, 220, 110, -40);
 				this.weaponAttack = 180;
-				this.bonusLust = 381;
+				this.bonusLust = 384;
 			}
 			else {
 				initStrTouSpeInte(426, 242, 330, 222);
 				initWisLibSensCor(222, 200, 100, -40);
 				this.weaponAttack = 150;
-				this.bonusLust = 351;
+				this.bonusLust = 354;
 			}
 			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 120, 0, 0, 0);
@@ -159,7 +159,7 @@ use namespace CoC;
 			this.wrath = 130;
 			this.lustVuln = .35;
 			this.lust = 30;
-			this.level = 51;
+			this.level = 54;
 			this.gems = rand(20) + 40;
 			this.drop = new ChainedDrop().
 					add(useables.EBONBLO,1/20).

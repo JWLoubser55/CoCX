@@ -356,7 +356,7 @@ public class Changelog extends BaseContent
 			outputText("-Mimic enemies got bit of more HP given with slight armor increases and their special Bite attack hurt more. Their loot table was tossed out replaced with bit more usefull loot and they even could drop (?) items too. All Slime / Goo / Ooze enemies got their armor and mres switched.\n");
 			outputText("-New tier 7 sensitivity lvl-up perk: Spiritual Alignment. Req. Advanced Kineses perk and 175+ sensitivity. Effect: The universe opens to you and you are able to synergize your spiritual understanding with your psychic powers. (Adds current Wisdom score to Sensitivity)\n");
 			outputText("-New tier 7 sensitivity lvl-up perk: Mental Attunement. Req. Advanced Kineses perk and 175+ sensitivity. Effect: You unlock full usage of your brain, increasing your psychic potential. (Adds current Intelligence score to Sensitivity)\n");
-			outputText("-\n");
+			outputText("-Fix poltergeist legs TF. (Stadler)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -405,8 +405,8 @@ public class Changelog extends BaseContent
 			outputText("bad end or combat end, scene with Ayane when PC visit shrine as already 9 tailed kitusne without star sphere not gaining star sphere during the scene, Meteor Shower and Polar Midnight not recognized as spells for Channeling perk req., Healer npc in JttE never having her cure/heal options going off cooldown, Vixen&Cream with Urta unclosed tag, Straddle Tease variant for Harpies ");
 			outputText("not checking if enemy have cock, Mist Phouka enemies dropping tarnished shard of metal, PC mummies behaviour choice menu buttons wrong labeled, pair of black cat gloves not allowing swiftcasting, Wood Elfs appearing for soulless PC's, cow maid and Excellia switching places for Minotaur Challanger fight, drinking from Oni enchanted drinking gourd not triggering Aelfwine effect, ");
 			outputText("Dark Charm not gained by Gremlins, some of Nocello Liqueur TF effects ignoring TF immunity effect, Munchkin@Biolab perk not properly increasing max for stat training caps, Vitality Tincture not restoring Arian health, Iron Man perk not affecting fatigue cost of some physical specials, Taser with an overcharged battery upgrade causing Tazer special to be not accesable, keeping debuff ");
-			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, ");
-			outputText("one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female\n\n");
+			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, ");
+			outputText("Grey magic or White/Diving magic not taking into account overmaxLust, Grand Grey Archmage perk effect incorrectly applied\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");

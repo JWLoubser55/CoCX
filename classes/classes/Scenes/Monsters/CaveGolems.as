@@ -8,6 +8,7 @@ package classes.Scenes.Monsters
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.SceneLib;
+	import classes.internals.WeightedDrop;
 	
 	public class CaveGolems extends AbstractGolem
 	{
@@ -54,9 +55,15 @@ package classes.Scenes.Monsters
 				this.armorDef = 250;
 				this.armorMDef = 100;
 				this.gems = rand(50) + 500;
+				this.drop = new WeightedDrop()
+					.add(useables.AMEGEM, 1)
+					.add(useables.EMDGEM, 1)
+					.add(useables.RBYGEM, 1)
+					.add(useables.SAPPGEM, 1)
+					.add(useables.TPAZGEM, 1)
+					.add(null, 5);
 			}
 			this.tallness = 72;
-			this.drop = NO_DROP;
 			this.weaponName = "gem fists";
 			this.weaponVerb = "smash";
 			this.armorName = "gem";

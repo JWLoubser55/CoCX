@@ -1080,7 +1080,7 @@ public class CampMakeWinions extends BaseContent
 			clearOutput();
 			outputText("What are you gonna do now?\n\n");
 			menu();
-			addButton(10, "Scavenge", golemScavenge1);
+			addButton(10, "Scavenge", golemScavenge5);
 			addButton(14, "Leave", cleanupAfterCombat);
 		}
 		private function golemScavenge1():void {

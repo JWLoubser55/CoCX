@@ -27,10 +27,8 @@ public class AbstractGreySpell extends AbstractSpell {
 		if (uc) return uc;
 		
 		var threshold:Number = 50;
-		if (!(
-				player.hasPerk(PerkLib.GrandGreyArchmage) ||
-				(threshold <= player.lust && player.lust <= player.maxLust() - threshold)
-		)){
+		if (player.hasPerk(PerkLib.GrandGreyArchmage)) threshold -= 50;
+		if (threshold <= player.lust || player.lust >= player.maxOverLust() - threshold){
 			return "You can't use any grey magics."
 		}
 		if (player.statusEffectv2(StatusEffects.Sealed) == 10) {
