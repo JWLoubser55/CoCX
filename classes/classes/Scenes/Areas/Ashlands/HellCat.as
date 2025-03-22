@@ -17,14 +17,14 @@ import classes.internals.*;
 		
 		public function castArouse():void {
 			outputText("She makes a series of arcane gestures, drawing on her lust to inflict it upon you! ");
-			var lustDamage:int = (inte / 5) + rand(10);
+			var lustDamage:int = (inte / 2) + rand(50);
 			player.takeLustDamage(lustDamage);
 			mana -= spellCostArouse;
 		}
 		
 		public function hellcatFireball():void
 		{
-			var damage:int = (inte * 1.1) + rand(25);
+			var damage:int = (inte * 3) + rand(125);
 			damage = Math.round(damage);
 			outputText("The hellcat holds out her hand, a fireball forming in her palm. She launches the ball of molten heat towards you.");
 			player.takeFireDamage(damage, true);
@@ -33,7 +33,7 @@ import classes.internals.*;
 		public function hellcatInfernalClaw():void
 		{
 			outputText("The hellcat growls at you, unsheathing her claws. She crouches, her claws beginning to glow with orange-red heat. The smell of molten iron fills the air as she pounces at you, claws outstretched. ");
-			var firedamage:int = (inte * 0.45) + rand(10);
+			var firedamage:int = (inte * 1.5) + rand(50);
 			firedamage = Math.round(firedamage);
 			player.takeFireDamage(firedamage, true);
 			if (!player.immuneToBurn()) {
@@ -110,22 +110,22 @@ import classes.internals.*;
 			this.bodyColor = "ashen";
 			this.hairColor = "midnight black";
 			this.hairLength = 13;
-			initStrTouSpeInte(70, 70, 150, 210);
-			initWisLibSensCor(140, 145, 50, 70);
+			initStrTouSpeInte(140, 140, 300, 630);
+			initWisLibSensCor(210, 290, 100, 70);
 			this.weaponName = "claws";
 			this.weaponVerb="slash";
-			this.weaponAttack = 2;
+			this.weaponAttack = 10;
 			this.armorName = "hooded cape";
-			this.armorDef = 3;
-			this.armorMDef = 50;
+			this.armorDef = 30;
+			this.armorMDef = 500;
 			this.armorPerk = "";
 			this.armorValue = 50;
-			this.bonusHP = 222;
-			this.bonusLust = 241;
+			this.bonusHP = 777;
+			this.bonusLust = 460;
 			this.lust = 20;
 			this.lustVuln = .1;
-			this.level = 46;
-			this.gems = rand(55) + 40;
+			this.level = 70;
+			this.gems = rand(55) + 140;
 			this.drop = new WeightedDrop().addMany(5,
 					consumables.W_FRUIT,
 					weapons.H_WAND,

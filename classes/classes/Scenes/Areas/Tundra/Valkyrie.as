@@ -35,10 +35,10 @@ public class Valkyrie extends Monster
 			else
 			{
 				outputText("but she follows through with a rapid flurry of spear strikes, tearing into your " + (player.armor.name == "nothing" ? "" : "[armorName] and the underlying") + " flesh. ");
-				var attacks:int = 1 + rand(3);
+				var attacks:int = 2 + rand(4);
 				var damage:int = 0;
 				while (attacks > 0) {
-					damage += ((str * 1.25) + rand(65));
+					damage += ((str * 2.5) + rand(120));
 					attacks--;
 				}
 				player.takePhysDamage(damage, true);
@@ -77,7 +77,7 @@ public class Valkyrie extends Monster
 					player.createStatusEffect(StatusEffects.Stunned, 0, 0, 0, 0);
 				}
 				else outputText("backwards. ");
-				var damage:int = (((str * 1.25) + 65) + rand(65));
+				var damage:int = (((str * 2.5) + 120) + rand(120));
 				player.takePhysDamage(damage, true);
 			}
 		}
@@ -108,7 +108,7 @@ public class Valkyrie extends Monster
 			else
 			{
 				outputText("Before you can react, she launches into the air, propelling the two of you upwards with her powerful wings.  You struggle, but it’s no use -- until she lets go.  You cry out in terror as you fall back to the earth, crashing painfully into a convenient snowbank, while your opponent lands gracefully a few feet away. ");
-				var damage:int = (((str * 1.25) + 300) + rand(150));
+				var damage:int = (((str * 2.5) + 500) + rand(250));
 				player.takePhysDamage(damage, true);
 			}
 		}
@@ -141,20 +141,20 @@ public class Valkyrie extends Monster
 			this.skin.setBaseOnly({color:"light"});
 			this.hairColor = "white";
 			this.hairLength = 12;
-			initStrTouSpeInte(185, 165, 140, 75);
-			initWisLibSensCor(75, 40, 50, -70);
+			initStrTouSpeInte(555, 495, 420, 150);
+			initWisLibSensCor(150, 80, 100, -70);
 			this.weaponName = "spear and shield";
 			this.weaponVerb="lunge";
-			this.weaponAttack = 38;
+			this.weaponAttack = 138;
 			this.armorName = "bronze plates";
-			this.armorDef = 0;
-			this.armorMDef = 0;
-			this.bonusHP = 450;
-			this.bonusLust = 134;
+			this.armorDef = 250;
+			this.armorMDef = 250;
+			this.bonusHP = 1000;
+			this.bonusLust = 249;
 			this.lust = 25 + rand(15);
 			this.lustVuln = 0.46;
-			this.level = 44;
-			this.gems = 55 + rand(20);
+			this.level = 69;
+			this.gems = 115 + rand(20);
 			this.drop = new WeightedDrop()
 					.add(weapons.SPEAR, 1)
 					.add(shields.GREATSH, 3)

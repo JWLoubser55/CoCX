@@ -63,13 +63,13 @@ public class Cinderbloom extends Alraune
 					//	.elseDrop(useables.B_CHITN);
 			}
 			else {
-				initStrTouSpeInte(10, 250, 10, 100);
-				initWisLibSensCor(100, 200, 50, 10);
-				this.armorDef = 90;
-				this.armorMDef = 9;
-				this.bonusHP = 200;
-				this.bonusLust = 290;
-				this.level = 40;
+				initStrTouSpeInte(34, 700, 34, 250);
+				initWisLibSensCor(250, 420, 170, 10);
+				this.armorDef = 500;
+				this.armorMDef = 120;
+				this.bonusHP = 1000;
+				this.bonusLust = 656;
+				this.level = 66;
 				this.drop = new ChainedDrop().add(consumables.EMBER_F, 1 / 6)
 						.add(consumables.MARAFRU, 1 / 4);
 					//	.add(consumables.BEEHONY, 1 / 2)

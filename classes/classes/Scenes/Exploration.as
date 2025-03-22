@@ -420,14 +420,14 @@ public class Exploration extends BaseContent implements SaveableState
 				bd.add("");
 				bd.add("");
 				// Row 11
-				bd.add("");
 				bd.append(btnExploreTundra());
+				bd.add("");
 				bd.append(btnExploreGlacialRiftOuter());
 				bd.add("");
 				bd.add("");
 				// Row 12
-				bd.add("");
 				bd.append(btnExploreAshlands());
+				bd.add("");
 				bd.append(btnExploreVolcanicCragOuter());
 				bd.add("");
 				bd.add("");

@@ -23,7 +23,7 @@ use namespace CoC;
 		public var alrauneScene:AlrauneScene = new AlrauneScene();
 		public var swordInStone:SwordInStone = new SwordInStone();
 
-		public const areaLevel:int = 35;
+		public const areaLevel:int = 50;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.tundra > 0;
 		}
@@ -59,25 +59,22 @@ use namespace CoC;
 				},
 				call: swordInStone.findGlacialGraveaxe
 			},{
-				// choice[choice.length] = 0; //Valkyrie (lvl 44)
 				name: "valkyrie",
 				label : "Valkyrie",
 				kind : 'monster',
 				night : false,
 				call: valkyrieEncounter
 			}, /*{
-				// ?? (lvl 52)
+				// ?? (lvl 65)
 				// wendigoScene.encounterWendigo();
 				name: "wendigo"
 			}, */{
-				// choice[choice.length] = 2; //Young Frost Giant (lvl 47)
 				name: "frostgiant",
 				label : "Young Frost Giant",
 				kind : 'monster',
 				night : false,
 				call: frostGiantEncounter
 			}, {
-				// choice[choice.length] = 3; //Snow Lily (lvl 40)
 				name: "snow lily",
 				label : "Snow Lily",
 				kind : 'monster',
@@ -89,7 +86,7 @@ use namespace CoC;
 				kind  : 'item',
 				call: findATear,
 				chance: 0.25
-			}, {
+			}, /*{some werebeast for cold climate (lvl 57)
 				// Werewolf huntress
 				name: "werewolf huntress",
 				label : "Werewolf Huntress",
@@ -97,8 +94,7 @@ use namespace CoC;
 				day : false,
 				call: SceneLib.werewolfFemaleScene.introWerewolfHuntress,
 				chance: 0.50
-			}, {
-				// choice[choice.length] = 4; //Ice Golem (lvl 64)
+			}, */{
 				name: "ice golem",
 				label : "Ice Golem",
 				kind : 'monster',

@@ -63,13 +63,13 @@ public class SnowLily extends Alraune
 					//	.elseDrop(useables.B_CHITN);
 			}
 			else {
-				initStrTouSpeInte(10, 250, 10, 100);
-				initWisLibSensCor(100, 200, 50, 10);
-				this.armorDef = 90;
-				this.armorMDef = 9;
-				this.bonusHP = 200;
-				this.bonusLust = 290;
-				this.level = 40;
+				initStrTouSpeInte(32, 670, 32, 230);
+				initWisLibSensCor(230, 400, 150, 10);
+				this.armorDef = 450;
+				this.armorMDef = 100;
+				this.bonusHP = 1000;
+				this.bonusLust = 611;
+				this.level = 61;
 				this.drop = new ChainedDrop().add(consumables.SNOWFLO, 1 / 6)
 						.add(consumables.MARAFRU, 1 / 4);
 					//	.add(consumables.BEEHONY, 1 / 2)

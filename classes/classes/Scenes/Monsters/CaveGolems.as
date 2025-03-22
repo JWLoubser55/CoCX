@@ -63,7 +63,6 @@ package classes.Scenes.Monsters
 					.add(useables.TPAZGEM, 1)
 					.add(null, 5);
 			}
-			this.tallness = 72;
 			this.weaponName = "gem fists";
 			this.weaponVerb = "smash";
 			this.armorName = "gem";
