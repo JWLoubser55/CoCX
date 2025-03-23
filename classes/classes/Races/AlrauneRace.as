@@ -11,9 +11,9 @@ import classes.VaginaClass;
 import classes.internals.Utils;
 
 public class AlrauneRace extends Race {
-	public static const AlrauneEyeColor:/*String*/Array = ["light purple", "green", "light green", "pale blue", "fiery red", "red"];
-	public static const AlrauneHairColor:/*String*/Array = ["green", "light purple", "pink", "white", "bluish white", "orange", "red", "bright pink"];
-	public static const AlrauneSkinColor:/*String*/Array = ["leaf green", "lime green", "turquoise", "light green", "pale blue", "burnt brown", "lavender"];
+	public static const AlrauneEyeColor:/*String*/Array = ["light purple", "green", "light green", "light blue", "fiery red", "red"];
+	public static const AlrauneHairColor:/*String*/Array = ["green", "light purple", "pink", "snow white", "silver-white", "orange", "red", "bright pink"];
+	public static const AlrauneSkinColor:/*String*/Array = ["leaf green", "lime green", "turquoise", "light green", "light blue", "burnt brown", "lavender"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Plant",
