@@ -6,30 +6,18 @@ package classes.Scenes.Dungeons.HiddenCave
 {
 import classes.*;
 import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.Monsters.AbstractGolem;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
 
-public class GuardianGolems extends Monster
+public class GuardianGolems extends AbstractGolem
 	{
-		public function backhand():void {
-			outputText("The golems visage twists into a grimace of irritation, and few of them swings their hands at you in a vicious backhand.");
-			var damage:Number = int (((str + weaponAttack) * 5) - rand(player.tou) - player.armorDef);
-			//Dodge
-			if (damage <= 0 || (player.getEvasionRoll())) outputText(" You slide underneath the surprise swings!");
-			else
-			{
-				if (hasStatusEffect(StatusEffects.Provoke)) damage = Math.round(damage * statusEffectv2(StatusEffects.Provoke));
-				outputText(" They hits you square in the chest from a few different angles. ");
-				damage = player.takePhysDamage(damage, true);
-			}
-		}
-		
 		override protected function performCombatAction():void
 		{
 			if ((this.lust100 >= 85 && rand(2) == 0) || this.lust100 < 85) {
 				var choice:Number = rand(3);
 				if (choice < 2) eAttack();
-				if (choice == 2) backhand();
+				if (choice == 2) backhand2();
 			}
 		}
 		
@@ -45,6 +33,7 @@ public class GuardianGolems extends Monster
 		
 		public function GuardianGolems() 
 		{
+			super(false);
 			this.a = "the ";
 			this.short = "guardian golems";
 			this.imageName = "guardian golems";
@@ -53,24 +42,26 @@ public class GuardianGolems extends Monster
 			this.lustVuln = 0.01;
 			this.createBreastRow(0, 1);
 			initGenderless();
-			initStrTouSpeInte(20, 25, 20, 10);
+			initStrTouSpeInte(40, 50, 40, 10);
 			initWisLibSensCor(10, 10, 10, 0);
 			this.tallness = 72;
 			this.drop = new ChainedDrop()
 					.add(useables.GOLCORE, 1);
 			this.level = 7;
 			this.bonusHP = 75;
+			this.bonusLust = 27;
 			this.weaponName = "stone fists";
 			this.weaponVerb = "smash";
-			this.weaponAttack = 12;
+			this.weaponAttack = 18;
 			this.armorName = "cracked stone";
-			this.armorDef = 12;
-			this.armorMDef = 12;
+			this.armorDef = 60;
+			this.armorMDef = 60;
 			this.createPerk(PerkLib.Resolute, 0, 0, 0, 0);
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyGroupType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyConstructType, 0, 0, 0, 0);
+			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			checkMonster();
 		}
 		

@@ -1038,7 +1038,7 @@ public function soularena():void {
 			addButton(9, "-2-", soularenaChallengeSubpages, page + 1);
 			addButton(10, "LvL 33 Golems", arenaSelection1,GolemsBasic).hint("Basic Golems LVL 33");
 			addButton(11, "LvL 42 Golems", arenaSelection1,GolemsImproved).hint("Improved Golems LVL 42");
-			addButton(12, "LvL 51 Golems", arenaSelection1, GolemsAdvanced).hint("Advanced Golems LVL 51");
+			addButton(12, "LvL 51 Golems", arenaSelection1,GolemsAdvanced).hint("Advanced Golems LVL 51");
 			addButton(14, "Back", soularenaChallengeBack);
 		}
 		if (page == 2) {

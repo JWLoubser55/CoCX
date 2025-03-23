@@ -46,7 +46,7 @@ package classes.Scenes.Monsters
 			this.short = "basic golems";
 			this.imageName = "basic golems";
 			this.long = "You're currently fighting basic golems. They're all around seven feet tall without any sexual characteristics, their stone body covered in cracks and using bare stone fists to smash enemies.";
-			initStrTouSpeInte(200, 150, 100, 10);
+			initStrTouSpeInte(240, 180, 120, 10);
 			initWisLibSensCor(10, 10, 10, 0);
 			this.tallness = 84;
 			this.drop = NO_DROP;
@@ -57,8 +57,8 @@ package classes.Scenes.Monsters
 			this.weaponVerb = "smash";
 			this.weaponAttack = 50;
 			this.armorName = "stone";
-			this.armorDef = 50;
-			this.armorMDef = 10;
+			this.armorDef = 100;
+			this.armorMDef = 20;
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyGroupType, 0, 0, 0, 0);

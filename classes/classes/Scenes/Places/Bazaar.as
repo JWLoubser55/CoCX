@@ -1,7 +1,6 @@
 ﻿package classes.Scenes.Places{
 import classes.*;
 import classes.GlobalFlags.kFLAGS;
-import classes.Scenes.Areas.Plains.BazaarGatekeeper;
 import classes.Scenes.Places.Bazaar.*;
 import classes.Scenes.SceneLib;
 

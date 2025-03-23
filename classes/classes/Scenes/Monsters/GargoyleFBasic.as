@@ -52,7 +52,7 @@ package classes.Scenes.Monsters
 			createBreastRow(Appearance.breastCupInverse("B"));
 			initGenderless();
 			this.tallness = 120;
-			initStrTouSpeInte(150, 120, 90, 10);
+			initStrTouSpeInte(200, 160, 120, 10);
 			initWisLibSensCor(10, 10, 10, 0);
 			this.tallness = 120;
 			this.drop = new ChainedDrop()
@@ -65,8 +65,8 @@ package classes.Scenes.Monsters
 			this.weaponVerb = "claw-slash";
 			this.weaponAttack = 75;
 			this.armorName = "stone";
-			this.armorDef = 75;
-			this.armorMDef = 75;
+			this.armorDef = 150;
+			this.armorMDef = 150;
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			checkMonster();

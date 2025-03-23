@@ -87,8 +87,8 @@ use namespace CoC;
 			}
 			else {
 				var damage:Number = 0;
-				damage += eBaseSpeedDamage() * 0.2;
-				if (damage < 10) damage = 10;
+				damage += eBaseSpeedDamage() * 0.4;
+				if (damage < 50) damage = 50;
 				//weapon bonus
 				if (this.weaponRangeAttack < 51) damage *= (1 + (this.weaponRangeAttack * 0.03));
 				else if (this.weaponRangeAttack >= 51 && this.weaponRangeAttack < 101) damage *= (2.5 + ((this.weaponRangeAttack - 50) * 0.025));
@@ -108,22 +108,22 @@ use namespace CoC;
 			outputText(" gulps down a bottle of sheep milk.\n");
 			if (flags[kFLAGS.KINDRA_LVL_UP] >= 15) {
 				fatigue -= 240;
-				if (lust >= 81) lust -= 80;
+				if (lust >= 121) lust -= 120;
 				else lust = 0;
 			}
 			else if (flags[kFLAGS.KINDRA_LVL_UP] >= 11) {
 				fatigue -= 180;
-				if (lust >= 61) lust -= 60;
+				if (lust >= 91) lust -= 90;
 				else lust = 0;
 			}
 			else if (flags[kFLAGS.KINDRA_LVL_UP] >= 7) {
 				fatigue -= 120;
-				if (lust >= 41) lust -= 40;
+				if (lust >= 61) lust -= 60;
 				else lust = 0;
 			}
 			else {
 				fatigue -= 60;
-				if (lust >= 21) lust -= 20;
+				if (lust >= 31) lust -= 30;
 				else lust = 0;
 			}
 		}
@@ -132,9 +132,9 @@ use namespace CoC;
 			outputText("Kindra thrust her hand outwards with deadly intent, and in the blink of an eye a crystals shoots towards you.  Crystals hits you, dealing ");
 			var soulforcecost:int = 9;
 			soulforce -= soulforcecost;
-			var damage:Number = wisdomscalingbonus();
+			var damage:Number = wisdomscalingbonus() * 2;
 			damage *= soulskillMulti();
-			if (damage < 10) damage = 10;
+			if (damage < 50) damage = 50;
 			damage = Math.round(damage);
 			player.takeMagicDamage(damage, true);
 			outputText(" damage!");
@@ -142,7 +142,15 @@ use namespace CoC;
 		
 		override protected function performCombatAction():void
 		{
-			if (flags[kFLAGS.KINDRA_LVL_UP] >= 7 && HPRatio() < .5 && soulforce >= 100 && !hasStatusEffect(StatusEffects.MonsterVPT)) {
+			if (flags[kFLAGS.KINDRA_LVL_UP] >= 15 && HPRatio() < .5 && soulforce >= 100 && !hasStatusEffect(StatusEffects.MonsterVPT)) {
+				outputText("Kindra eyes starts to glow with a violet hue and you can see all of her wounds are now slowly healing.\n");
+				createStatusEffect(StatusEffects.MonsterVPT, 600, 0, 0, 0);
+			}
+			if (flags[kFLAGS.KINDRA_LVL_UP] >= 11 && flags[kFLAGS.KINDRA_LVL_UP] < 15 && HPRatio() < .5 && soulforce >= 100 && !hasStatusEffect(StatusEffects.MonsterVPT)) {
+				outputText("Kindra eyes starts to glow with a violet hue and you can see all of her wounds are now slowly healing.\n");
+				createStatusEffect(StatusEffects.MonsterVPT, 400, 0, 0, 0);
+			}
+			if (flags[kFLAGS.KINDRA_LVL_UP] >= 7 && flags[kFLAGS.KINDRA_LVL_UP] < 11 && HPRatio() < .5 && soulforce >= 100 && !hasStatusEffect(StatusEffects.MonsterVPT)) {
 				outputText("Kindra eyes starts to glow with a violet hue and you can see all of her wounds are now slowly healing.\n");
 				createStatusEffect(StatusEffects.MonsterVPT, 200, 0, 0, 0);
 			}
@@ -279,7 +287,9 @@ use namespace CoC;
 				this.imageName = "kindra";
 				this.long = "You fight against sheep-morph archer.";//6'4"
 				this.weaponName = "dagger";
+				this.weaponAttack = 24;
 				this.weaponRangeName = "bow";
+				this.weaponRangeAttack = 60;
 				this.armorName = "clothes";
 			}
 			if (flags[kFLAGS.KINDRA_AFFECTION] >= 7) {
@@ -289,7 +299,9 @@ use namespace CoC;
 				if (flags[kFLAGS.KINDRA_LVL_UP] < 7) {
 					this.long = "You fight against Kindra.";//6'4"
 					this.weaponName = "dagger";
+					this.weaponAttack = 24;
 					this.weaponRangeName = "bow";
+					this.weaponRangeAttack = 60;
 					this.armorName = "clothes";
 				}
 				if (flags[kFLAGS.KINDRA_LVL_UP] >= 7 && flags[kFLAGS.KINDRA_LVL_UP] < 15) {
@@ -306,188 +318,176 @@ use namespace CoC;
 				}
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 1) {
-				initStrTouSpeInte(30, 50, 100, 80);
-				initWisLibSensCor(80, 30, 40, -80);
-				this.weaponAttack = 8;
-				this.weaponRangeAttack = 20;
-				this.armorDef = 5;
-				this.armorMDef = 5;
+				initStrTouSpeInte(60, 00, 200, 160);
+				initWisLibSensCor(160, 30, 40, -80);
+				this.armorDef = 25;
+				this.armorMDef = 25;
 				this.bonusHP = 50;
 				this.bonusLust = 90;
 				this.level = 20;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 2) {
-				initStrTouSpeInte(40, 65, 120, 100);
-				initWisLibSensCor(100, 30, 40, -80);
-				this.weaponAttack = 8;
-				this.weaponRangeAttack = 20;
-				this.armorDef = 5;
-				this.armorMDef = 5;
+				initStrTouSpeInte(80, 130, 240, 200);
+				initWisLibSensCor(200, 30, 40, -80);
+				this.armorDef = 25;
+				this.armorMDef = 25;
 				this.bonusHP = 100;
 				this.bonusLust = 95;
 				this.level = 25;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 3) {
-				initStrTouSpeInte(50, 80, 140, 120);
-				initWisLibSensCor(120, 30, 40, -80);
-				this.weaponAttack = 8;
-				this.weaponRangeAttack = 20;
-				this.armorDef = 5;
-				this.armorMDef = 5;
+				initStrTouSpeInte(100, 160, 280, 240);
+				initWisLibSensCor(240, 30, 40, -80);
+				this.armorDef = 25;
+				this.armorMDef = 25;
 				this.bonusHP = 150;
 				this.bonusLust = 100;
 				this.level = 30;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 4) {
-				initStrTouSpeInte(60, 95, 160, 140);
-				initWisLibSensCor(140, 30, 40, -80);
-				this.weaponAttack = 8;
-				this.weaponRangeAttack = 20;
-				this.armorDef = 5;
-				this.armorMDef = 5;
+				initStrTouSpeInte(120, 190, 320, 280);
+				initWisLibSensCor(280, 30, 40, -80);
+				this.armorDef = 25;
+				this.armorMDef = 25;
 				this.bonusHP = 200;
 				this.bonusLust = 105;
 				this.level = 35;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 5) {
-				initStrTouSpeInte(70, 110, 180, 150);
-				initWisLibSensCor(150, 30, 40, -80);
-				this.weaponAttack = 8;
-				this.weaponRangeAttack = 20;
-				this.armorDef = 5;
-				this.armorMDef = 5;
+				initStrTouSpeInte(140, 220, 360, 300);
+				initWisLibSensCor(300, 30, 40, -80);
+				this.armorDef = 25;
+				this.armorMDef = 25;
 				this.bonusHP = 250;
 				this.bonusLust = 110;
 				this.level = 40;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 6) {
-				initStrTouSpeInte(80, 130, 205, 150);
-				initWisLibSensCor(150, 30, 40, -80);
-				this.weaponAttack = 8;
-				this.weaponRangeAttack = 20;
-				this.armorDef = 5;
-				this.armorMDef = 5;
+				initStrTouSpeInte(160, 260, 410, 320);
+				initWisLibSensCor(320, 30, 40, -80);
+				this.armorDef = 25;
+				this.armorMDef = 25;
 				this.bonusHP = 300;
 				this.bonusLust = 115;
 				this.level = 45;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 7) {
-				initStrTouSpeInte(100, 150, 235, 150);
-				initWisLibSensCor(150, 50, 50, -80);
-				this.weaponAttack = 16;
-				this.weaponRangeAttack = 50;
-				this.armorDef = 16;
-				this.armorMDef = 5;
+				initStrTouSpeInte(200, 300, 470, 340);
+				initWisLibSensCor(340, 50, 50, -80);
+				this.weaponAttack = 48;
+				this.weaponRangeAttack = 150;
+				this.armorDef = 80;
+				this.armorMDef = 25;
 				this.bonusHP = 320;
 				this.bonusLust = 151;
 				this.level = 51;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 8) {
-				initStrTouSpeInte(120, 170, 270, 160);
-				initWisLibSensCor(160, 70, 60, -80);
-				this.weaponAttack = 17;
-				this.weaponRangeAttack = 55;
-				this.armorDef = 18;
-				this.armorMDef = 5;
+				initStrTouSpeInte(240, 340, 540, 380);
+				initWisLibSensCor(380, 70, 60, -80);
+				this.weaponAttack = 51;
+				this.weaponRangeAttack = 165;
+				this.armorDef = 90;
+				this.armorMDef = 25;
 				this.bonusHP = 340;
 				this.bonusLust = 187;
 				this.level = 57;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 9) {
-				initStrTouSpeInte(140, 190, 305, 170);
-				initWisLibSensCor(170, 90, 70, -80);
-				this.weaponAttack = 18;
-				this.weaponRangeAttack = 60;
-				this.armorDef = 20;
-				this.armorMDef = 5;
+				initStrTouSpeInte(280, 380, 610, 420);
+				initWisLibSensCor(420, 90, 70, -80);
+				this.weaponAttack = 54;
+				this.weaponRangeAttack = 180;
+				this.armorDef = 100;
+				this.armorMDef = 25;
 				this.bonusHP = 360;
 				this.bonusLust = 223;
 				this.level = 63;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 10) {
-				initStrTouSpeInte(160, 210, 340, 180);
-				initWisLibSensCor(180, 110, 80, -80);
-				this.weaponAttack = 19;
-				this.weaponRangeAttack = 65;
-				this.armorDef = 22;
-				this.armorMDef = 6;
+				initStrTouSpeInte(320, 420, 680, 460);
+				initWisLibSensCor(460, 110, 80, -80);
+				this.weaponAttack = 57;
+				this.weaponRangeAttack = 195;
+				this.armorDef = 110;
+				this.armorMDef = 30;
 				this.bonusHP = 380;
 				this.bonusLust = 259;
 				this.level = 69;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 11) {
-				initStrTouSpeInte(180, 230, 375, 190);
-				initWisLibSensCor(190, 130, 90, -80);
-				this.weaponAttack = 20;
-				this.weaponRangeAttack = 70;
-				this.armorDef = 24;
-				this.armorMDef = 7;
+				initStrTouSpeInte(360, 460, 750, 500);
+				initWisLibSensCor(500, 130, 90, -80);
+				this.weaponAttack = 60;
+				this.weaponRangeAttack = 210;
+				this.armorDef = 120;
+				this.armorMDef = 35;
 				this.bonusHP = 400;
 				this.bonusLust = 295;
 				this.level = 75;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 12) {
-				initStrTouSpeInte(200, 250, 410, 200);
-				initWisLibSensCor(200, 150, 100, -80);
-				this.weaponAttack = 21;
-				this.weaponRangeAttack = 75;
-				this.armorDef = 26;
-				this.armorMDef = 8;
+				initStrTouSpeInte(400, 500, 820, 540);
+				initWisLibSensCor(540, 150, 100, -80);
+				this.weaponAttack = 63;
+				this.weaponRangeAttack = 225;
+				this.armorDef = 130;
+				this.armorMDef = 40;
 				this.bonusHP = 420;
 				this.bonusLust = 331;
 				this.level = 81;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 13) {
-				initStrTouSpeInte(220, 270, 445, 210);
-				initWisLibSensCor(210, 170, 110, -80);
-				this.weaponAttack = 22;
-				this.weaponRangeAttack = 80;
-				this.armorDef = 28;
-				this.armorMDef = 9;
+				initStrTouSpeInte(440, 540, 890, 580);
+				initWisLibSensCor(580, 170, 110, -80);
+				this.weaponAttack = 66;
+				this.weaponRangeAttack = 240;
+				this.armorDef = 140;
+				this.armorMDef = 45;
 				this.bonusHP = 440;
 				this.bonusLust = 367;
 				this.level = 87;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 14) {
-				initStrTouSpeInte(240, 290, 480, 220);
-				initWisLibSensCor(220, 190, 120, -80);
-				this.weaponAttack = 23;
-				this.weaponRangeAttack = 85;
-				this.armorDef = 30;
-				this.armorMDef = 10;
+				initStrTouSpeInte(480, 580, 960, 620);
+				initWisLibSensCor(620, 190, 120, -80);
+				this.weaponAttack = 69;
+				this.weaponRangeAttack = 255;
+				this.armorDef = 150;
+				this.armorMDef = 50;
 				this.bonusHP = 460;
 				this.bonusLust = 403;
 				this.level = 93;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 15) {
-				initStrTouSpeInte(260, 310, 515, 230);
-				initWisLibSensCor(230, 210, 130, -80);
-				this.weaponAttack = 24;
+				initStrTouSpeInte(520, 620, 1030, 660);
+				initWisLibSensCor(660, 210, 130, -80);
+				this.weaponAttack = 72;
 				this.weaponRangeAttack = 90;
-				this.armorDef = 45;
-				this.armorMDef = 15;
+				this.armorDef = 225;
+				this.armorMDef = 75;
 				this.bonusHP = 480;
 				this.bonusLust = 439;
 				this.level = 99;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 16) {
-				initStrTouSpeInte(300, 350, 585, 250);
-				initWisLibSensCor(250, 250, 150, -80);
-				this.weaponAttack = 30;
-				this.weaponRangeAttack = 120;
-				this.armorDef = 50;
-				this.armorMDef = 17;
+				initStrTouSpeInte(600, 700, 1170, 740);
+				initWisLibSensCor(740, 250, 150, -80);
+				this.weaponAttack = 90;
+				this.weaponRangeAttack = 360;
+				this.armorDef = 250;
+				this.armorMDef = 85;
 				this.bonusHP = 600;
 				this.bonusLust = 505;
 				this.level = 105;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 17) {
-				initStrTouSpeInte(340, 390, 655, 270);
-				initWisLibSensCor(270, 290, 170, -80);
-				this.weaponAttack = 32;
-				this.weaponRangeAttack = 130;
-				this.armorDef = 55;
-				this.armorMDef = 19;
+				initStrTouSpeInte(680, 780, 1310, 820);
+				initWisLibSensCor(820, 290, 170, -80);
+				this.weaponAttack = 96;
+				this.weaponRangeAttack = 390;
+				this.armorDef = 275;
+				this.armorMDef = 95;
 				this.bonusHP = 650;
 				this.bonusLust = 571;
 				this.level = 111;
@@ -591,6 +591,9 @@ use namespace CoC;
 				this.createPerk(PerkLib.HalfStepToPeerlessSelfControl, 0, 0, 0, 0);
 				this.createPerk(PerkLib.DaoistElderStage, 0, 0, 0, 0);
 				this.createPerk(PerkLib.SoulKing, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.KINDRA_LVL_UP] >= 16) {
+				this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			}
 			//if (flags[kFLAGS.KINDRA_LVL_UP] >= ) this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);kiedy zacznie sie KindraQuest
 			checkMonster();

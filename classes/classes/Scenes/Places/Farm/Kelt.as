@@ -21,7 +21,7 @@ public class Kelt extends Monster
 			}
 
 			//Determine damage - str modified by enemy toughness!
-			var damage:int = Math.round((str + weaponAttack) - rand(player.tou) - player.armorDef);
+			var damage:int = Math.round((str + weaponAttack) * 2 - rand(player.tou) - player.armorDef);
 			
 			//Block:
 			if(damage <= 0) {
@@ -52,7 +52,7 @@ public class Kelt extends Monster
 			}
 
 			var damage:Number = 0;
-			damage = int((20 + str/3 + 100) + spe/3 - rand(player.tou) - player.armorDef);
+			damage = int((str + 200 + spe) - rand(player.tou) - player.armorDef);
 			if(damage < 0) damage = 0;
 			if(damage == 0) {
 				outputText("You deflect the hit, preventing it from damaging you.");
@@ -77,7 +77,7 @@ public class Kelt extends Monster
 				if(player.lust >= 80) outputText("Your hand moves towards your groin seemingly of its own volition.");
 				else outputText("Your hands twitch towards your groin but you arrest them.  Still, the idea seems to buzz at the back of your brain, exciting you.");
 			}
-			player.takeLustDamage(player.lib/5 + rand(10), true);
+			player.takeLustDamage(player.lib/2 + rand(25), true);
 		}
 
 		//Attacks as normal + daydream "attack"
@@ -162,8 +162,8 @@ public class Kelt extends Monster
 			this.weaponVerb="punch";
 			this.weaponAttack = 30;
 			this.armorName = "tough skin";
-			this.armorDef = 30;
-			this.armorMDef = 5;
+			this.armorDef = 120;
+			this.armorMDef = 20;
 			this.bonusHP = 750;
 			this.bonusLust = 221;
 			this.lust = 40;

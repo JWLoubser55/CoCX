@@ -48,7 +48,7 @@ package classes.Scenes.Monsters
 			this.short = "improved golems";
 			this.imageName = "improved golems";
 			this.long = "You're currently improved fighting golems. They're all around seven and half feet tall without any sexual characteristics, their stone body covered in cracks and using bare stone fists to smash enemies.";
-			initStrTouSpeInte(260, 200, 140, 10);
+			initStrTouSpeInte(320, 245, 170, 10);
 			initWisLibSensCor(10, 10, 10, 0);
 			this.tallness = 90;
 			this.drop = NO_DROP;
@@ -59,8 +59,8 @@ package classes.Scenes.Monsters
 			this.weaponVerb = "smash";
 			this.weaponAttack = 75;
 			this.armorName = "stone";
-			this.armorDef = 75;
-			this.armorMDef = 15;
+			this.armorDef = 150;
+			this.armorMDef = 30;
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyGroupType, 0, 0, 0, 0);

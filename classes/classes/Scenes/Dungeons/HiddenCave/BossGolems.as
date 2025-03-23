@@ -77,23 +77,25 @@ public class BossGolems extends AbstractGargoyle
 		{
 			if (player.hasStatusEffect(StatusEffects.SoulArenaGauntlet)) {
 				this.long = "You're currently fighting guardian quasi-gargoyles. They're all around six feet tall without any sexual characteristics, their stone body covered in cracks, with rudimental wings and fully formed mace or axe tails, using bare stone fists to smash you.";
-				initStrTouSpeInte(70, 90, 70, 30);
+				initStrTouSpeInte(105, 135, 105, 30);
 				initWisLibSensCor(30, 10, 10, 0);
 				this.level = 17;
 				this.bonusHP = 500;
-				this.weaponAttack = 27;
-				this.armorDef = 27;
-				this.armorMDef = 27;
+				this.bonusLust = 37;
+				this.weaponAttack = 32;
+				this.armorDef = 55;
+				this.armorMDef = 55;
 			}
 			else {
 				this.long = "You're currently fighting guardian quasi-gargoyles. They're all around six feet tall without any sexual characteristics, their stone body covered in cracks, with rudimental wings and fully formed mace or axe tails, using bare stone fists to smash intruders.";
-				initStrTouSpeInte(30, 40, 30, 20);
+				initStrTouSpeInte(45, 60, 45, 20);
 				initWisLibSensCor(20, 10, 10, 0);
 				this.level = 9;
 				this.bonusHP = 100;
-				this.weaponAttack = 16;
-				this.armorDef = 16;
-				this.armorMDef = 16;
+				this.bonusLust = 29;
+				this.weaponAttack = 24;
+				this.armorDef = 40;
+				this.armorMDef = 40;
 				this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
 			}
 			this.a = "the ";
@@ -112,6 +114,7 @@ public class BossGolems extends AbstractGargoyle
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyGroupType, 0, 0, 0, 0);
+			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			checkMonster();
 		}
 	}

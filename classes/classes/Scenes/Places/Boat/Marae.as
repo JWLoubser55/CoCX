@@ -15,7 +15,7 @@ public class Marae extends Monster
 			else if (evade != null) outputText("and you successfully dodge her tentacles thanks to your superior evasion!");
 			else {
 				outputText("but you fail and get hit instead! The feel of the tentacles left your groin slightly warmer. ");
-				var damage:int = (eBaseStrengthDamage() + rand(str));
+				var damage:int = (eBaseStrengthDamage() * 2 + rand(str));
 				damage = Math.round(damage);
 				player.dynStats("lust", rand(25) + 100);
 				player.takePhysDamage(damage, true);
@@ -35,7 +35,7 @@ public class Marae extends Monster
 			else if (evade != null) outputText("You manage to avoid her tentacles thanks to your superior evasion!");
 			else {
 				outputText("You attempt to slap away the tentacles but it's too late! The tentacles tickle your groin and you can feel your [ass] being teased! \"<i>You know you want me!</i>\" Marae giggles. ");
-				player.takeLustDamage(150 + rand(player.cor / 5) + rand(player.effectiveSensitivity() / 5) + rand(player.lib / 5) + rand(50), true);
+				player.takeLustDamage(1500 + rand(player.cor / 2) + rand(player.effectiveSensitivity() / 2) + rand(player.lib / 2) + rand(100), true);
 			}
 		}
 		public function maraePollenCloud():void {
@@ -53,7 +53,7 @@ public class Marae extends Monster
 			else if (evade != null) outputText("and you successfully dodge her vines thanks to your superior evasion!");
 			else {
 				outputText("but you fail and get hit instead! ");
-				var damage:int = (eBaseStrengthDamage() + rand(str));
+				var damage:int = (eBaseStrengthDamage() * 2 + rand(str));
 				damage = Math.round(damage);
 				player.takePhysDamage(damage, true);
 				player.takePhysDamage(damage, true);
@@ -84,7 +84,7 @@ public class Marae extends Monster
 			else {
 				outputText("Without warning, the lightning hits you! Surge of electricity rushes through you painfully. ");
 				if (player.cor >= 50) outputText("The intensity of the pain is unbearable. ");
-				var damage:int = (1100 + rand(150) + eBaseIntelligenceDamage() + eBaseWisdomDamage() + (player.cor * 20)) * 2.5;
+				var damage:int = (11000 + rand(300) + ((eBaseIntelligenceDamage() + eBaseWisdomDamage()) * 2) + (player.cor * 50)) * 5;
 				damage = Math.round(damage);
 				player.takeLightningDamage(damage, true);
 			}
@@ -140,14 +140,14 @@ public class Marae extends Monster
 				this.long = "This being is known as the goddess of Mareth. She is corrupted due to the aftermath of the factory valves being blown up. She's white all over and textured with bark. The \"flower\" below her belly button resembles more of a vagina than a flower. Her G-cup sized breasts jiggle with every motion.";
 				this.createVagina(false, VaginaClass.WETNESS_DROOLING, VaginaClass.LOOSENESS_NORMAL);
 				createBreastRow(Appearance.breastCupInverse("G"));
-				initStrTouSpeInte(420, 420, 400, 270);
-				initWisLibSensCor(270, 800, 610, 100);
+				initStrTouSpeInte(840, 840, 800, 540);
+				initWisLibSensCor(540, 1600, 1220, 100);
 				this.weaponName = "tentacles";
 				this.weaponVerb="slap";
-				this.armorDef = 2000;
-				this.armorMDef = 2000;
-				this.weaponAttack = 120;
-				this.bonusLust = 1550;
+				this.armorDef = 3000;
+				this.armorMDef = 3000;
+				this.weaponAttack = 240;
+				this.bonusLust = 3000;
 				this.additionalXP = 4000;
 				this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);
 				this.createPerk(PerkLib.MonsterRegeneration, 3, 0, 0, 0);
@@ -157,24 +157,24 @@ public class Marae extends Monster
 				this.long = "This being is known as the goddess of Mareth. She is no longer corrupted thanks to your actions at the factory. She's white all over and textured with bark. Her breasts are modestly sized.";
 				this.createVagina(false, VaginaClass.WETNESS_WET, VaginaClass.LOOSENESS_NORMAL);
 				createBreastRow(Appearance.breastCupInverse("DD"));
-				initStrTouSpeInte(640, 640, 440, 390);
-				initWisLibSensCor(390, 150, 320, -100);
+				initStrTouSpeInte(1480, 1480, 980, 980);
+				initWisLibSensCor(980, 300, 640, -100);
 				this.weaponName = "fists";
 				this.weaponVerb="wrathful punch";
-				this.armorDef = 3000;
-				this.armorMDef = 3000;
-				this.weaponAttack = 180;
-				this.bonusHP += 35000;
-				this.bonusLust = 610;
+				this.armorDef = 4500;
+				this.armorMDef = 4500;
+				this.weaponAttack = 360;
+				this.bonusHP += 50000;
+				this.bonusLust = 1120;
 				this.additionalXP = 6000;
 				if (game.flags[kFLAGS.MINERVA_TOWER_TREE] > 0) {
-					this.armorDef += 1100;
-					this.armorMDef += 1100;
-					this.strStat.core.value += 290;
-					this.touStat.core.value += 290;
-					this.weaponAttack += 40;
-					this.bonusHP += 25000;
-					this.additionalXP += 2000;
+					this.armorDef += 1500;
+					this.armorMDef += 1500;
+					this.strStat.core.value += 420;
+					this.touStat.core.value += 420;
+					this.weaponAttack += 80;
+					this.bonusHP += 50000;
+					this.additionalXP += 3000;
 					this.createPerk(PerkLib.MonsterRegeneration, 11, 0, 0, 0);
 				}
 				else this.createPerk(PerkLib.MonsterRegeneration, 6, 0, 0, 0);
@@ -192,9 +192,9 @@ public class Marae extends Monster
 			this.bonusHP = 17500;
 			this.lust = 30;
 			this.lustVuln = .04;
-			this.level = 140;
+			this.level = 180;
 			this.drop = NO_DROP;
-			this.gems = 1000;
+			this.gems = 2500 + rand(100);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);

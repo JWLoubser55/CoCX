@@ -19,7 +19,7 @@ public class Marble extends Monster
 				return;
 			}
 			//Determine damage - str modified by enemy toughness!
-			damage = int((str + 20 + weaponAttack) - player.armorDef);
+			damage = int((str + 20 + weaponAttack) * 2 - player.armorDef);
 			if(damage <= 0) {
 				damage = 0;
 				//Due to toughness or amor...
@@ -40,7 +40,7 @@ public class Marble extends Monster
 				return;
 			}
 			//Determine damage - str modified by enemy toughness!
-			damage = int((str + 40 + weaponAttack) - player.armorDef);
+			damage = int((str + 40 + weaponAttack) * 2 - player.armorDef);
 			damage /= 2;
 			if(damage <= 0) {
 				damage = 0;
