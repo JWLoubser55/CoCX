@@ -12,24 +12,14 @@ import classes.internals.WeightedDrop;
 
 public class WinterWolf extends Monster
 	{
-		override public function defeated(hpVictory:Boolean):void
-		{
-			SceneLib.glacialRift.winterwolfScene.winAgainstWinterWolf();
-		}
-
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
-		{
-			SceneLib.glacialRift.winterwolfScene.loseToWinterWolf();
-		}
-
 		public function frostbite():void {
 			outputText("The wolf lunge, biting viciously at your leg.");
 			var dmgtaken:Number = 0;
 			var damage:Number = 0;
 			if(!player.hasStatusEffect(StatusEffects.FrostburnDoT)) {
 				outputText(" You feel the cold enter your body and shake you to the very core weakening your resolve just as much as slowing down your movement.");
-				if(player.str > 7) {
-					player.addCurse("str", 6,2);
+				if(player.str > 15) {
+					player.addCurse("str", 14,2);
 					showStatDown( 'str' );
 					if (!player.immuneToFrostBurn()) {
 						player.createStatusEffect(StatusEffects.FrostburnDoT,6,0,0,0);
@@ -39,28 +29,28 @@ public class WinterWolf extends Monster
 					if (!player.immuneToFrostBurn()) {
 						player.createStatusEffect(StatusEffects.FrostburnDoT,0,0,0,0);
 					}
-					damage += 30 + Math.round(rand((str + weaponAttack) / 2));
+					damage += 300 + Math.round(rand((str + weaponAttack) * 2));
 					player.takeIceDamage(damage);
 					dmgtaken += damage;
 				}
-				damage += 30 + Math.round(rand((str + weaponAttack) / 2));
+				damage += 300 + Math.round(rand((str + weaponAttack) * 2));
 				player.takeIceDamage(damage);
 				dmgtaken += damage;
 				outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			}
 			else {
 				outputText(" The coldness effects intensify as your movement slowing down even more.");
-				if(player.str > 6) {
-					player.addCurse("str", 5,2);
+				if(player.str > 12) {
+					player.addCurse("str", 11,2);
 					showStatDown( 'str' );
 					player.addStatusValue(StatusEffects.FrostburnDoT,1,5);
 				}
 				else {
-					damage += 30 + Math.round(rand((str + weaponAttack) / 2));
+					damage += 300 + Math.round(rand((str + weaponAttack) * 2));
 					player.takeIceDamage(damage);
 					dmgtaken += damage;
 				}
-				damage += 30 + Math.round(rand((str + weaponAttack) / 2));
+				damage += 300 + Math.round(rand((str + weaponAttack) * 2));
 				player.takeIceDamage(damage);
 				dmgtaken += damage;
 				outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
@@ -71,16 +61,26 @@ public class WinterWolf extends Monster
 			outputText("The wolf suddenly grab you crushing you under its paw as it start tearing you apart with its maw.");
 			player.createStatusEffect(StatusEffects.WolfHold,0,0,0,0); 
 			if (!player.hasPerk(PerkLib.Juggernaut) && armorPerk != "Heavy") {
-				player.takePhysDamage(12+rand(15));
+				player.takePhysDamage(120+rand(150));
 			}
 		}
 
 		public function paw():void {
 			outputText("The wolf smash you with its enormous paw you rail at the impact as it sends you flying across the field.");
-			player.takePhysDamage(str + weaponAttack);
+			player.takePhysDamage((str + weaponAttack) * 2);
 			player.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 			createStatusEffect(StatusEffects.AbilityCooldown1, 3, 0, 0, 0);
 			if (player.hasStatusEffect(StatusEffects.WolfHold)) player.removeStatusEffect(StatusEffects.WolfHold);
+		}
+
+		override public function defeated(hpVictory:Boolean):void
+		{
+			SceneLib.glacialRift.winterwolfScene.winAgainstWinterWolf();
+		}
+
+		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		{
+			SceneLib.glacialRift.winterwolfScene.loseToWinterWolf();
 		}
 
 		public function WinterWolf()
@@ -103,20 +103,20 @@ public class WinterWolf extends Monster
 			this.skin.growFur({color:"glacial white"});
 			this.hairColor = "glacial white";
 			this.hairLength = 8;
-			initStrTouSpeInte(400, 420, 375, 120);
-			initWisLibSensCor(100, 75, 150, 50);
+			initStrTouSpeInte(800, 840, 750, 240);
+			initWisLibSensCor(200, 150, 300, 50);
 			this.weaponName = "paws";
 			this.weaponVerb="paw-slash";
-			this.weaponAttack = 274;
+			this.weaponAttack = 548;
 			this.armorName = "fur";
-			this.armorDef = 328;
-			this.armorMDef = 261;
-			this.bonusHP = 15000;
-			this.bonusLust = 324;
+			this.armorDef = 3287;
+			this.armorMDef = 2615;
+			this.bonusHP = 25000;
+			this.bonusLust = 552;
 			this.lust = 10;
 			this.lustVuln = 0.4;
-			this.level = 99;
-			this.additionalXP = 5000;
+			this.level = 102
+			this.additionalXP = 8000;
 			this.gems = 200 + rand(50);
 			this.drop = new WeightedDrop()
 					.add(consumables.CHILLYP, 1)

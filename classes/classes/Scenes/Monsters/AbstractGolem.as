@@ -26,9 +26,17 @@ public class AbstractGolem extends Monster {
 			damage = player.takePhysDamage(damage, true);
 		}
 	}
-	protected function backhand2():void {
+	protected function backhand2(subtype:Number = 0):void {
 		outputText(capitalA + short + " visage twists into a grimace of irritation, and few of them swings their hands at you in a vicious backhand.");
 		var damage:Number = int (((this.str + this.weaponAttack) * 6) - rand(player.tou) - player.armorDef);
+		if (subtype == 1) {
+			if (player.hasPerk(PerkLib.FromTheFrozenWaste) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 0.3;
+			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 3;
+		}
+		if (subtype == 2) {
+			if (player.hasPerk(PerkLib.FromTheFrozenWaste) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 3;
+			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 0.3;
+		}
 		//Dodge
 		if (damage <= 0 || (player.getEvasionRoll())) outputText(" You slide underneath the surprise swings!");
 		else
@@ -50,9 +58,17 @@ public class AbstractGolem extends Monster {
 			damage = player.takePhysDamage(damage, true);
 		}
 	}
-	protected function overhandSmash2():void {
+	protected function overhandSmash2(subtype:Number = 0):void {
 		outputText("Raising their fists high overhead, " + a + short + " swiftly brings them down in a punishing strike!");
 		var damage:Number = 150 + int(((str + weaponAttack) * 6) - rand(player.tou) - player.armorDef);
+		if (subtype == 1) {
+			if (player.hasPerk(PerkLib.FromTheFrozenWaste) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 0.3;
+			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 3;
+		}
+		if (subtype == 2) {
+			if (player.hasPerk(PerkLib.FromTheFrozenWaste) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 3;
+			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 0.3;
+		}
 		if (damage <= 0 || rand(100) < 25 || player.getEvasionRoll()) outputText(" You're able to sidestep it just in time.");
 		else
 		{
