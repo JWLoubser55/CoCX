@@ -225,10 +225,11 @@ public class Changelog extends BaseContent
 			outputText("-Areas and Places with enemies to fight have their general levels and stats increased. Areas/Places adjusted (new lvl range of enemies): Lake (3-10), Boat (15-29), Forest (O)(8-16), Forest (I)(19-27), Deepwoods (32-52), Desert (O)(13-20), Desert (I)(25-39), Battlefield (B)(18-41), Battlefield (O)(36-65), Hills (23-30), Low Mountains (35-49), Mountains (54-74), High Mountains (79-104), ");
 			outputText("Plains (28-37), Swamp (33-43), Bog (48-64), Blight Ridge (38-56), Defiled Ravine (61-81), Beach (43-61), Ocean (O) (66-87), Caves (48-66), Tundra (53-73), Ashlands (58-78), Glacial Rift (78-106), Vulcanic Crag (83-111), HXD Soul Arena (15-69), Owca (34-38), Baazar (30)\n");
 			outputText("-15 new achievments. (13 shadow ones)\n");
-			outputText("-Minerva and Izumi base level was increased and accordly their max lvl they can gain by leveling increased too to each reaching within 120-130 lvl range. Angry Dragon-Boi got his stat adjusted with no lvl changes.\n");
+			outputText("-Minerva and Izumi base level was increased and accordly their max lvl they can gain by leveling increased too to each reaching within 120-130 lvl range. Kitsune sisters can level up more until reaching lvl 67. Angry Dragon-Boi got his stat adjusted with no lvl changes.\n");
 			outputText("-Off hand Equipment slot added. It's mutal exclusive with shield slot and can't have item in both offhand and shield slots. Dual Wield perk desc changed to account for adding this slot.\n");
 			outputText("-Dungeon enemies have their general levels and stats adjusted/increased. Dungeons adjusted (new lvl range of enemies): River Dungeon (floor 1-4) (only stats adjustments), Desert Cave (14-24), Den of Desire (48-52), Phoenix Tower (80-89), Hidden Cave (only stats adjustments)\n");
-			outputText("-Due to new general levels and stats for enemies sparrable npc's in camp can reach new height of power (also any npc that go over lvl 100 will gain elite enemy tag, some that had before boss tag would loose it): Isabella (lvl 32-128), Helia (adjusted to lvl 36), Helspawn (just stat adjusting with no lvl change)\n");
+			outputText("-Due to new general levels and stats for enemies sparrable npc's in camp can reach new height of power (also any npc that go over lvl 100 will gain elite enemy tag, some that had before boss tag would loose it): Isabella (lvl 32-128), Helia (adjusted to lvl 36), Helspawn (just stat adjusting with no lvl change), Zenji (he missed last time PC could go up to 200+ lvl ");
+			outputText("when he sadly sit at max 185 so... he decided to match pc again on top of making his stats better then before - lvl 25-233)\n");
 			outputText("-After having equipped Silver Cross Necklace PC would be periodicaly visiting Demon Lair place (when req. to get new visit PC would travel there on next Exploration). Each visit brings PC closer to become true demon. To stop vistiing PC must remove somehow Silver Cross Necklace (which been cursed item for no true demon PC would be quite difficult).\n");
 			outputText("-Req. min level to find Celess Senior was removed.\n");
 			outputText("-Golemancer npc in HXD will no longer req. PC to reach specific golemancer perks to unlock metal plates, energy cores or mechanisms sell options. Also metal plates can be now sold in even large amounts at once: x20 and x50\n");
@@ -357,9 +358,9 @@ public class Changelog extends BaseContent
 			outputText("-New tier 7 sensitivity lvl-up perk: Spiritual Alignment. Req. Advanced Kineses perk and 175+ sensitivity. Effect: The universe opens to you and you are able to synergize your spiritual understanding with your psychic powers. (Adds current Wisdom score to Sensitivity)\n");
 			outputText("-New tier 7 sensitivity lvl-up perk: Mental Attunement. Req. Advanced Kineses perk and 175+ sensitivity. Effect: You unlock full usage of your brain, increasing your psychic potential. (Adds current Intelligence score to Sensitivity)\n");
 			outputText("-Fix poltergeist legs TF. (Stadler)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Some of the stat checks for enemies changed from checking total stat values to core stat values: Frost Gigant str check, kitsune enemies Seal/Illusion special int checks\n");
+			outputText("-Yamata combat desc would desc how much PC is close to be her masochostic pet (not large change of text but carefull observer would notice smlight changes in her last part of descrtiption that was sitting hidden in code before). Still no news on more stuff for her or getting her weapon...yet.\n");
+			outputText("-Minor changes to the spred file to add burnt brown and lavander fixed some alraune color issues (Liadri) + correcting lovander into lavender color (Stadler)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

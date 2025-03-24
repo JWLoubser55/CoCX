@@ -1060,7 +1060,9 @@ public class PlayerInfo extends BaseContent {
 		if (flags[kFLAGS.IZUMI_LVL_UP] == 9) outsideCampNpcsStats += "<b>Izumi lvl:</b> 127 (current max lvl she can reach)\n";
 		else if (flags[kFLAGS.IZUMI_LVL_UP] < 1) outsideCampNpcsStats += "<b>Izumi lvl:</b> 63\n";
 		else outsideCampNpcsStats += getNPCLevel("Izumi", 63, 0, 9, 6, flags[kFLAGS.IZUMI_LVL_UP]);
-		if (flags[kFLAGS.MET_KITSUNES] == 4) outsideCampNpcsStats += "<b>Kitsune sisters lvl:</b> 55 (current max lvl they can reach)\n";
+		if (flags[kFLAGS.MET_KITSUNES] == 6) outsideCampNpcsStats += "<b>Kitsune sisters lvl:</b> 67 (current max lvl they can reach)\n";
+		if (flags[kFLAGS.MET_KITSUNES] == 5) outsideCampNpcsStats += "<b>Kitsune sisters lvl:</b> 61\n";
+		if (flags[kFLAGS.MET_KITSUNES] == 4) outsideCampNpcsStats += "<b>Kitsune sisters lvl:</b> 55\n";
 		if (flags[kFLAGS.MET_KITSUNES] == 3) outsideCampNpcsStats += "<b>Kitsune sisters lvl:</b> 49\n";
 		if (flags[kFLAGS.MET_KITSUNES] == 2) outsideCampNpcsStats += "<b>Kitsune sisters lvl:</b> 43\n";
 		if (flags[kFLAGS.MET_KITSUNES] < 2) outsideCampNpcsStats += "<b>Kitsune sisters lvl:</b> 37\n";

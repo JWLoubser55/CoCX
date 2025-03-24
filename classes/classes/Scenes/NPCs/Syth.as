@@ -17,7 +17,7 @@ public class Syth extends Monster
 		private function sythBerserk():void {
 			wrath -= 50;
 			outputText("Salamander roar and unleash his lustful fury in order to destroy you!\n\n");
-			this.weaponAttack += (15 + (15 * (1 + player.newGamePlusMod())));
+			this.weaponAttack += (30 + (30 * (1 + player.newGamePlusMod())));
 			createStatusEffect(StatusEffects.Lustzerking,10,0,0,0);
 		}
 		
@@ -37,7 +37,7 @@ public class Syth extends Monster
 			wrath -= 30;
 			var damage:Number = this.weaponAttack;
 			damage += eBaseStrengthDamage();
-			damage *= 2;
+			damage *= 4;
 			outputText(capitalA + short + " lift it weapons with all his strength and smash them on your head. ");
 			if(damage > 0) damage = player.takePhysDamage(damage, true);
 			outputText("\n");
@@ -53,7 +53,7 @@ public class Syth extends Monster
 				return;
 			}
 			//Determine damage - str modified by enemy toughness!
-			damage = int((str) - rand(player.tou) - player.armorDef);
+			damage = int((str*2) - rand(player.tou) - player.armorDef);
 			damage = Math.round(damage);
 			//No damage
 			if(damage <= 0) {
@@ -76,7 +76,7 @@ public class Syth extends Monster
 		
 		private function sythAttack3():void {
 			outputText("Salamander start drawing symbols in the air toward you.");
-			var lustDmg:Number = this.lust / 10 + this.lib / 10 + this.inte / 10 + this.wis / 10 + this.sens / 10;
+			var lustDmg:Number = this.lust / 5 + this.lib / 5 + this.inte / 5 + this.wis / 5 + this.sens / 5;
 			lustDmg = Math.round(lustDmg);
 			player.takeLustDamage(lustDmg, true);
 		}
@@ -176,14 +176,14 @@ public class Syth extends Monster
 			this.lowerBody = LowerBody.SALAMANDER;
 			this.hairColor = "white";
 			this.hairLength = 1;
-			initStrTouSpeInte(160, 120, 70, 60);
-			initWisLibSensCor(60, 120, 25, 70);
+			initStrTouSpeInte(320, 240, 140, 120);
+			initWisLibSensCor(120, 240, 50, 70);
 			this.weaponName = "pair of big fucking swords";//later make him wield 'pair of big fucking two handed swords' 
 			this.weaponVerb= "slash";
-			this.weaponAttack = 56;
+			this.weaponAttack = 112;
 			this.armorName = "scales";
-			this.armorDef = 27;
-			this.armorMDef = 9;
+			this.armorDef = 270;
+			this.armorMDef = 90;
 			this.bonusHP = 300;
 			this.additionalXP = 300;
 			this.bonusLust = 175;

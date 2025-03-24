@@ -22,25 +22,26 @@ public class Yamata extends Monster
 		{
 			var x:int = rand(4);
 			var damage:int;
-			if (x==0)
-			{
+			if (x==0) {
 				outputText("Rushing toward you, Yamata drops down low, then leaps up into a wide swing. You flinch as you see the tip of her blade glide across your skin, but she dances away at the last second, leaving behind an angry red wound that hurts like hell, but is far from life-threatening. <i>\"Oh yeah, scream for me baby!\"</i> The realization that she’s toying with you is practically infuriating!  ");
-				damage = int(str/2) + rand(15);
-			} else if (x == 1) {
+				damage = int(str) + rand(15);
+			}
+			else if (x == 1) {
 				outputText("You back away as Yamata goes into the offensive, doing your best to dodge her attacks. The tip of her blade grazes you a few times, and the shallow wounds they leave behind hurt far worse than they really should. She raises the blade to her lips and gently licks it, grinning vindictively at you. You’re certain now that Yamata is just trying to inflict as much pain as possible before finishing you off.  ");
-				damage = int(str/2) + rand(35);
-			} else if (x == 2) {
+				damage = int(str) + rand(35);
+			}
+			else if (x == 2) {
 				outputText("Yamata digs her heels into the ground, taunting you with a crude gesture. Her serpentine hair suddenly lashes forward, morphing before your eyes into countless blades! Thankfully, she seems to purposely avoid anything vital, but the grazing cuts they leave behind hurt terribly. <i>\"Ahahahaha! Doesn’t it just make you HARD?!\"</i>  ");
-				damage = int(str) - rand(25);
-				player.takeLustDamage(7, true);
-				flags[kFLAGS.YAMATA_MASOCHIST]++;
-			} else {
-				outputText("With a quick whipping motion, Yamata’s serpentine hair lashes toward you, splitting into thousands of thin strands that whip against your flesh. Pain lances through your body wherever they touch, but the intense tingling sends blood boiling to your loins involuntarily.  ");
-				damage = int(str/2) + rand(50);
-				player.takeLustDamage(12, true);
+				damage = int(str*2) - rand(25);
+				player.takeLustDamage(70, true);
 				flags[kFLAGS.YAMATA_MASOCHIST]++;
 			}
-			
+			else {
+				outputText("With a quick whipping motion, Yamata’s serpentine hair lashes toward you, splitting into thousands of thin strands that whip against your flesh. Pain lances through your body wherever they touch, but the intense tingling sends blood boiling to your loins involuntarily.  ");
+				damage = int(str) + rand(50);
+				player.takeLustDamage(120, true);
+				flags[kFLAGS.YAMATA_MASOCHIST]++;
+			}
 			player.takePhysDamage(damage, true);
 			yamataSodomasochistApply(damage);
 			if (!player.immuneToBleed()) {
@@ -52,9 +53,9 @@ public class Yamata extends Monster
 		private function yamataDarkFoxfire():void
 		{
 			outputText("Yamata moves her fingers through the air in a circle, conjuring up a corrupted purple flame. She twists her upper body into a batter’s stance and strikes it with the flat of her blade, making the fireball rocket toward you like a missile, bursting on impact! The flames burn intensely as they engulf you, but the more it burns, the more you start to LIKE it.  ");
-			player.takeFireDamage(int(str/2) + rand(15), true);
+			player.takeFireDamage(int((inte+wis)*2) + rand(75), true);
 			//if masochist, take more damage
-			(player.hasPerk(PerkLib.Masochist) ?  player.takeLustDamage(15 + player.effectiveSensitivity()/10, true) : player.takeLustDamage((10 + player.effectiveSensitivity()/10)*2, true), true);
+			(player.hasPerk(PerkLib.Masochist) ?  player.takeLustDamage(75 + player.effectiveSensitivity()/5, true) : player.takeLustDamage((50 + player.effectiveSensitivity()/5)*2, true), true);
 			flags[kFLAGS.YAMATA_MASOCHIST]++;
 		}
 		
@@ -76,10 +77,10 @@ public class Yamata extends Monster
 					player.removeStatusEffect(StatusEffects.Fear);
 			} else {
 				outputText("You know that none of this could be real, but you are too terrified to act this round!");
-				if (player.hasStatusEffect(StatusEffects.Fear)) addCombatBuff("spe", -12, "Nightmare", "Nightmare");
+				if (player.hasStatusEffect(StatusEffects.Fear)) addCombatBuff("spe", -30, "Nightmare", "Nightmare");
 				else {
 					createStatusEffect(StatusEffects.Fear, 0, 0, 0, 0);
-					addCombatBuff("spe", -18, "Nightmare", "Nightmare");
+					addCombatBuff("spe", -45, "Nightmare", "Nightmare");
 				}
 			}
 		}
@@ -90,27 +91,30 @@ public class Yamata extends Monster
 			+"The eight serpents that make up Yamata’s hair suddenly slam into you, latching onto you with their fangs and lifting you into the air. As you squirm in their grip, one of them dives into your [armor], and with a look of horror you feel it "
 			+(player.hasCock()? "engulfing your [cock] whole, sinking fangs into the base and filling your groin with corrupted fire!"+(player.hasVagina()?" Another of her snakes impale your [vagina], filling your womb with corrupted fire!":""):"impaling your [vagina], filling your womb with corrupted fire!")
 			+"\n\nShe roughly tosses you to the ground, smirking as you struggle to your feet, lust burning in your loins.  ");
-			
-			var lustDmg:int = 15 + player.effectiveSensitivity() / 3 + player.lib/5;
+			var lustDmg:int = 150 + player.effectiveSensitivity() / 2 + player.lib/3;
 			player.takeLustDamage(lustDmg, true);
 			if (player.hasCock()) player.dynStats("cor", 1);
 			if (player.hasVagina()) player.dynStats("cor", 1);
-			player.takeFireDamage(15+rand(26), true);
+			player.takeFireDamage(150+rand(260), true);
 			yamataSodomasochistApply(lustDmg+5);
 			flags[kFLAGS.YAMATA_MASOCHIST]++;
 		}
 
 		private function yamataIllusionLust():void
 		{
-			var lustDmg:int = 10 + player.effectiveSensitivity() / 5;
+			if (player.hasPerk(PerkLib.TrueSeeing)) {
+				outputText("Yamata tries to cast an illusion, but your magical sight easily pierces her attempt!\n\n");
+				return;
+			}
+			var lustDmg:int = 100 + player.effectiveSensitivity() / 3;
 			outputText("Yamata splits herself into a series of illusions that quickly surround you! You try to find the real one but you're too slow! A fireball comes from the side, blasting you with broiling corrupted flames!  ");
-			player.takeFireDamage(int(str/2) + rand(15), true);
+			player.takeFireDamage(int(inte+wis) + rand(75), true);
 			if (player.hasStatusEffect(StatusEffects.Fear))
 				switch (rand(3)) {
 					case 0:
 						outputText("\n\nYou attack Yamata, but her figure was just an illusion! She appears behind you and her hair lengthens rapidly, one of the snake-hair serpents lashes out and bites into your ankle, injecting a burst of corrupted flames directly into you!");
-						lustDmg += 4;
-						player.dynStats("cor", 1);
+						lustDmg += 40;
+						player.dynStats("cor", 2);
 						flags[kFLAGS.YAMATA_MASOCHIST]++;
 						break;
 					case 1:
@@ -122,7 +126,6 @@ public class Yamata extends Monster
 						+"Yamata pauses for a moment, placing a hand on her taut abs and sliding her fingers downward slowly, gazing deep into your eyes. Her tails fan out around her, curling around her limbs seductively, and she gives you a flirtatious leer as she watches your body tremble with desire.  ");
 						player.takeLustDamage(lustDmg*2, true);
 						break;
-						
 					default:
 						outputText("This is a bug, please report it - yamataIllusionLust");
 						break;
@@ -131,11 +134,11 @@ public class Yamata extends Monster
 			+"<i>\"Why dont you just surrender already? We can have so much fun in my torture devices, it will feel so good! We might even have some fun on the side if you scream prettily enough, hehehe.\"</i> Yamata whispers sultrily, running a hand along her tails and making them fan out around her seductively.\n\n");
 			if (flags[kFLAGS.YAMATA_MASOCHIST]>60) {
 				outputText("You find yourself giving it a moments thought before pulling yourself beck to the present. What is she doing to you?!  ");
-				lustDmg += 5;
+				lustDmg += 50;
 			}
 			if (flags[kFLAGS.YAMATA_MASOCHIST]>80) {
 				outputText(" Though come to think of it, her proposition might not be so bad...  ");
-				lustDmg += 3;
+				lustDmg += 30;
 				flags[kFLAGS.YAMATA_MASOCHIST]++;
 			}
 			player.takeLustDamage(lustDmg, true);
@@ -146,12 +149,11 @@ public class Yamata extends Monster
 			outputText("Yamata’s hair whips toward you with a blinding speed, each of the snakes sinking its fangs into a different part of you and lifting you into the air. <I>\"You’re MINE!\"</I> she yells, bringing you in close as her hair begins to constrict around you. You can feel the bite wounds begin to tingle, and look in horror as you see that each of the snakes is injecting her corrupted purple flames directly into your body! If you can’t escape soon, you’ll be reduced to a gibbering masochistic heap in no time!\n\n"
 			+"You are bound by Yamata’s snake-like hair. The only thing you can do is try to struggle free!\n\n"
 			+"As the venomous flames course through your system, you start to become more and more turned on by the thought of being abused and degraded...  ");
-			
-			player.dynStats("cor", 2);
-			player.addCombatBuff('str',-10, "Entwine", "Entwine");
-			player.addCombatBuff('spe',-10, "Entwine", "Entwine");
-			var damage:int = 40+25/(rand(3)+1);
-			player.takeLustDamage(rand(6) + 10, true);
+			player.dynStats("cor", 4);
+			player.addCombatBuff('str',-20, "Entwine", "Entwine");
+			player.addCombatBuff('spe',-20, "Entwine", "Entwine");
+			var damage:int = 400+250/(rand(3)+1);
+			player.takeLustDamage(rand(60) + 100, true);
 			player.takePhysDamage(damage, true);
 			yamataSodomasochistApply(damage);
 			this.createStatusEffect(StatusEffects.YamataEntwine, 0, 0, 0, 0);
@@ -169,15 +171,15 @@ public class Yamata extends Monster
 				entwineEscape();
 			} else {
 				outputText("You thrash about fruitlessly, your struggles only getting you even more entangled in her serpentine hair. Yamata cackles evilly, reaching out to drag her nails across your chest, crooning about all the myriad torments she’ll subject you to when you’re her loyal slave. Still fighting against her");
-				if (player.str < 90)
+				if (player.strStat.core.value < 90)
 					outputText(" immense");
 				else
 					outputText(" impressive");
 				outputText(" strength, in an attempt to free yourself from her corrupting embrace, without success.");
-				var damage:int = 25 + rand(15);
+				var damage:int = 250 + rand(150);
 				player.takePhysDamage(damage, true);
 				yamataSodomasochistApply(damage);
-				player.takeLustDamage(rand(6) + 10, true);
+				player.takeLustDamage(rand(60) + 100, true);
 				player.dynStats("cor", 1);
 				performCombatAction();
 			}
@@ -194,7 +196,7 @@ public class Yamata extends Monster
 		{
 			clearOutput();
 			outputText("You don't see the point of struggling against such a powerful foe, letting Yamata have her fun. The snakes entangling you continue to pump their foul fires into you and it is turning you on just watching them do so! The pain bocomes more pleasurable the longer you are subjected to it!");
-			player.dynStats("cor", 1);
+			player.dynStats("cor", 2);
 			flags[kFLAGS.YAMATA_MASOCHIST] += 2;
 			performCombatAction();
 		}
@@ -215,14 +217,14 @@ public class Yamata extends Monster
 				outputText("The air is suddenly filled with missiles of corrupted flame as each of the eight snake heads launches its own projectile at you! You do your best to block or dodge them all, but your previous actions this round have put you at a slight disadvantage.\n\n");
 				if(hits == 0) {
 					outputText("You somehow manage to emerge unscathed, but the effort of avoiding or deflecting them all has put a strain on your muscles!");
-					player.fatigue += 10;
+					player.fatigue += 100;
 				} else {
 					outputText("" + hits + (hits>1?" fireballs rocket":" fireball rockets")+" into you with deadly force! As the corrupted flames wash over you, you start to enjoy the pain, gripping yourself in masochistic pleasure!  ");
 					for(var i:int = 0; i < hits; i++) {
-						var x:int = rand(10)+5;
-						player.dynStats("cor", 1);
-						player.takeFireDamage(x*2, true);
-						player.takeLustDamage(x/2, true);
+						var x:int = ((wis+inte)*5)+rand(50);
+						player.dynStats("cor", 2);
+						player.takeFireDamage(x*4, true);
+						player.takeLustDamage(x, true);
 						totaldmg += x*2;
 					}
 				}
@@ -239,9 +241,11 @@ public class Yamata extends Monster
 		private function yamataSodomasochistApply(dmg:int):void
 		{
 			outputText("\n\nYamata delights in the pain being caused...  ");
-			this.takeLustDamage(int(dmg/2), true);
-			this.dynStats("spe", -dmg/30);
-			this.statStore.addBuff("str",dmg/25, "DispelablePowerUP",{});
+			this.takeLustDamage(int(dmg/3), true);
+			this.dynStats("spe", -dmg/50);
+			this.statStore.addBuff("str",dmg/25, "DispelablePowerUPStr",{});
+			this.statStore.addBuff("inte",dmg/25, "DispelablePowerUPInte",{});
+			this.statStore.addBuff("wis",dmg/25, "DispelablePowerUPWis",{});
 		}
 		
 		//<Masochism Aura> Passive ability
@@ -253,7 +257,7 @@ public class Yamata extends Monster
 		private function kitsuneSealAttack():void
 		{
 			var resist:int = 0;
-			if (player.inte < 30) resist = Math.round(player.inte);
+			if (player.intStat.core.value < 30) resist = Math.round(player.intStat.core.value);
 			else resist = 30;
 			if (player.hasPerk(PerkLib.Whispered)) resist += 20;
 			if ((player.hasPerk(PerkLib.HistoryReligious) || player.hasPerk(PerkLib.PastLifeReligious)) && player.cor < 20) resist += 20 - player.cor;
@@ -262,7 +266,6 @@ public class Yamata extends Monster
 			if (select == 0) {
 				outputText("The kitsune playfully darts around you, grinning coyly.  She somehow slips in under your reach, and before you can react, draws a small circle on your chest with her fingertip.  As you move to strike again, the flaming runic symbol she left on you glows brightly, and your movements are halted mid-swing.");
 				outputText("\n\n\"<i>Naughty naughty, you should be careful with that.</i>\"");
-
 				outputText("\n\nDespite your best efforts, every time you attempt to attack her, your muscles recoil involuntarily and prevent you from going through with it.  <b>The kitsune's spell has sealed your attack!</b>  You'll have to wait for it to wear off before you can use your basic attacks.");
 				player.createStatusEffect(StatusEffects.Sealed, 4, 0, 0, 0);
 			}
@@ -369,12 +372,23 @@ public class Yamata extends Monster
 			SceneLib.aikoScene.yamataWins();
 		}
 
+		override public function get long():String
+		{
+			var str:String = "";
+			str += "Yamata stands before you, grinning psychotically as her nine fox tails flare out behind her. Her jet black hair twists and writhes in the air, forming eight serpentine heads that snap at anything within reach. A pair of demonic horns curves up in front of her ears, and she is wielding a cursed black sword that resembles an oversized billhook bathed in demonic power. Just looking at her for too long causes strange thoughts to enter your mind, urging you to submit to her and become her loyal masochistic pet. ";
+			if (flags[kFLAGS.YAMATA_MASOCHIST] == 100) str += "While it is tempting, you're just holding on to your sanity, but parts of you are revealing your true feelings through the pain.";
+			else if (flags[kFLAGS.YAMATA_MASOCHIST] >= 75 && flags[kFLAGS.YAMATA_MASOCHIST] < 100) str += "At this point you're just putting up a front, hiding your growing pleasure from being whipped behind a strong face.";
+			else if (flags[kFLAGS.YAMATA_MASOCHIST] >= 50 && flags[kFLAGS.YAMATA_MASOCHIST] < 75) str += "Despite the lashings you've taken, a small part of you is starting to enjoy the pain!";
+			else str += "You’ll have to keep your wits about you, or you might start enjoying the pain!";
+			return str;
+		}
+
 		public function Yamata()
 		{
 			this.a = "";
 			this.short = "Yamata";
 			this.imageName = "yamata";
-			this.long = "Yamata stands before you, grinning psychotically as her nine fox tails flare out behind her. Her jet black hair twists and writhes in the air, forming eight serpentine heads that snap at anything within reach. A pair of demonic horns curves up in front of her ears, and she is wielding a cursed black sword that resembles an oversized billhook bathed in demonic power. Just looking at her for too long causes strange thoughts to enter your mind, urging you to submit to her and become her loyal masochistic pet. You’ll have to keep your wits about you, or you might start enjoying the pain!"; //+(flags[kFLAGS.YAMATA_MASOCHIST] = 100)?"While it is tempting, you're just holding on to your sanity, but parts of you are revealing your true feelings through the pain.":(flags[kFLAGS.YAMATA_MASOCHIST] >= 75)?"At this point you're just putting up a front, hiding your growing pleasure from being whipped behind a strong face.":(flags[kFLAGS.YAMATA_MASOCHIST] >= 50)?"Despite the lashings you've taken, a small part of you is starting to enjoy the pain!":" You’ll have to keep your wits about you, or you might start enjoying the pain!";
+			this.long = "";
 			this.createVagina(false, VaginaClass.WETNESS_WET, VaginaClass.LOOSENESS_LOOSE);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 8000, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("E"));
@@ -387,18 +401,19 @@ public class Yamata extends Monster
 			this.bodyColor = "light tan";			//might need to change to russet
 			this.hairColor = "black";
 			this.hairLength = 22;
-			initStrTouSpeInte(120, 140, 270, 200);
-			initWisLibSensCor(200, 120, 130, 100);
+			initStrTouSpeInte(240, 280, 540, 500);
+			initWisLibSensCor(500, 360, 390, 100);
 			this.weaponName = "Muramasa";
 			this.weaponVerb = "slash"
 			this.armorName = "tight chest wrap and baggy pants";
-			this.armorDef = 16;
-			this.bonusHP = 2400;
+			this.armorDef = 160;
+			this.armorMDef = 160;
+			this.bonusHP = 4000;
 			this.lust = 25;
-			this.bonusLust = 310;
+			this.bonusLust = 810;
 			this.lustVuln = 0.35;
 			this.level = 60;
-			this.gems = rand(20) + 30;
+			this.gems = rand(20) + 100;
 			this.drop = new WeightedDrop(consumables.MYSTJWL, 1);
 			this.tail.type = Tail.FOX;
 			this.tail.count = 9;

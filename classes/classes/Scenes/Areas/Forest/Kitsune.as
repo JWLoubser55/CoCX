@@ -57,6 +57,7 @@ public class Kitsune extends Monster
 		{
 			outputText("The kitsune makes a small circle in the air with her fingers, conjuring up a pale blue flame into her palm with the sound of flint striking against steel.  Pursing her lips, she blows it toward you with a kiss.");
 			var damage:int = this.inte + this.wis + rand(20);
+			if (flags[kFLAGS.MET_KITSUNES] >= 4) damage *= (flags[kFLAGS.MET_KITSUNES] * 0.5);
 			if (player.hasStatusEffect(StatusEffects.Blizzard)) {
 				player.addStatusValue(StatusEffects.Blizzard,1,-1);
 				outputText("\n\nThe flames burn furiously but power was negated by surround you blizzard, but still it leave you with an incredibly pleasant tingling sensation all over your body.  Your skin flushes with excitement, and you can feel blood rushing to your extremities, making you shudder with pleasure. ");
@@ -67,7 +68,7 @@ public class Kitsune extends Monster
 			}
 			damage = Math.round(damage);
 			damage = player.takeFireDamage(damage, true);
-			player.takeLustDamage(15 + player.effectiveSensitivity() / 10, true);
+			player.takeLustDamage(25 + player.effectiveSensitivity() / 5, true);
 		}
 
 //Illusion: - Raises enemy evasion, but can be resisted.
@@ -78,7 +79,7 @@ public class Kitsune extends Monster
 			outputText("You struggle to keep your eyes on the kitsune, ghostly laughter echoing all around you as you turn to and fro, trying to track her movements.  It almost seems like the edges of reality are blurring around her, severely distorting your perceptions and making it hard to follow her.  It's going to be much harder to hit her if she keeps this up!");
 			//Resist: - successfully resisting deals small health & lust damage to kitsune
 			var resist:int = 0;
-			if (player.inte < 30) resist = Math.round(player.inte);
+			if (player.intStat.core.value < 30) resist = Math.round(player.intStat.core.value);
 			else resist = 30;
 			if (player.hasPerk(PerkLib.Whispered)) resist += 20;
 			if ((player.hasPerk(PerkLib.HistoryReligious) || player.hasPerk(PerkLib.PastLifeReligious)) && player.cor < 20) resist += 20 - player.cor;
@@ -99,7 +100,7 @@ public class Kitsune extends Monster
 		protected function kitsuneSealAttack():void
 		{
 			var resist:int = 0;
-			if (player.inte < 30) resist = Math.round(player.inte);
+			if (player.intStat.core.value < 30) resist = Math.round(player.intStat.core.value);
 			else resist = 30;
 			if (player.hasPerk(PerkLib.Whispered)) resist += 20;
 			if ((player.hasPerk(PerkLib.HistoryReligious) || player.hasPerk(PerkLib.PastLifeReligious)) && player.cor < 20) resist += 20 - player.cor;
@@ -161,7 +162,7 @@ public class Kitsune extends Monster
 			else if (select == 2) outputText("Turning her back to you, the kitsune fans out her tails, peering back as she lifts the hem of her robe to expose her plump hindquarters.  Her tails continually shift and twist, blocking your view, but it only serves to make you want it even <i>more</i>, licking your lips in anticipation.");
 			//Redhead only:
 			else outputText("The kitsune sways her hips enticingly as she appears in front of you abruptly, rubbing up against your side.  Her teasing caresses make you shiver with arousal, and you can feel something thick and warm pressing against your [hips].  She gives you a wry grin as she breaks away from you, sporting an obvious tent in her robes.  \"<i>Just you wait...</i>\"");
-			player.takeLustDamage(5 + player.effectiveSensitivity() / 7, true);
+			player.takeLustDamage((flags[kFLAGS.MET_KITSUNES] * 3) + player.effectiveSensitivity() / 5, true);
 		}
 
 	override public function preAttackSeal():Boolean
@@ -272,6 +273,28 @@ public class Kitsune extends Monster
 				this.bonusLust = 525;
 				this.level = 55;
 			}
+			if (flags[kFLAGS.MET_KITSUNES] == 5) {
+				initStrTouSpeInte(250, 315, 465, 455);
+				initWisLibSensCor(485, 260, 270, -60);
+				this.weaponAttack = 32;
+				this.armorDef = 45;
+				this.armorMDef = 270;
+				this.tailCount = 6;
+				this.bonusHP = 450;
+				this.bonusLust = 591;
+				this.level = 61;
+			}
+			if (flags[kFLAGS.MET_KITSUNES] == 6) {
+				initStrTouSpeInte(280, 355, 500, 490);
+				initWisLibSensCor(525, 290, 300, -60);
+				this.weaponAttack = 36;
+				this.armorDef = 50;
+				this.armorMDef = 300;
+				this.tailCount = 6;
+				this.bonusHP = 500;
+				this.bonusLust = 657;
+				this.level = 67;
+			}
 			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_NORMAL);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 20, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
@@ -299,6 +322,7 @@ public class Kitsune extends Monster
 			if (flags[kFLAGS.MET_KITSUNES] >= 3) this.createPerk(PerkLib.EpicIntelligence, 0, 0, 0, 0);
 			if (flags[kFLAGS.MET_KITSUNES] >= 4) this.createPerk(PerkLib.LegendaryWisdom, 0, 0, 0, 0);
 			if (flags[kFLAGS.MET_KITSUNES] >= 5) this.createPerk(PerkLib.LegendaryIntelligence, 0, 0, 0, 0);
+			if (flags[kFLAGS.MET_KITSUNES] >= 6) this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
 			checkMonster();
 		}
 
