@@ -270,12 +270,12 @@ import classes.internals.*;
 		
 		public function Iridesian()
 		{
-			initStrTouSpeInte(32, 259, 97, 112);
-            initWisLibSensCor(270, 160, 103, -100);
+			initStrTouSpeInte(64, 518, 194, 224);
+            initWisLibSensCor(540, 320, 206, -100);
             this.armorDef = 150;
             this.armorMDef = 150;
             this.bonusHP = 2000;
-            this.bonusLust = 323;
+            this.bonusLust = 586;
 			this.bonusWrath = 500;
 			this.bonusSoulforce = 1000;
             this.level = 60;
@@ -313,7 +313,7 @@ import classes.internals.*;
 			this.drop = new WeightedDrop()
 					.add(useables.SRESIDUE, 1)
 					.add(consumables.ME_DROP, 1);
-			this.createStatusEffect(StatusEffects.TranscendentSoulField, 10, 10, 0, 0);//X times less dmg, +X lvl diff bonus
+			this.createStatusEffect(StatusEffects.TranscendentSoulField, 40, 40, 0, 0);//X times less dmg, +X lvl diff bonus
 			this.createPerk(PerkLib.EpicWisdom, 0, 0, 0, 0);
 			//this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.InsightfulResourcesI, 0, 0, 0, 0);

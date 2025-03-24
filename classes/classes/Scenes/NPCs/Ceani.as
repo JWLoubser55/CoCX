@@ -133,7 +133,6 @@ use namespace CoC;
 			this.armorMDef = 5 + lvl4;
 			this.bonusLust = 280 + lvl*21;
 			this.level = 35 + lvl*7;
-
 			this.a = "";
 			this.short = "Ceani";
 			this.long = "You are sparing with Ceani the orca morph. While she is normally smiling all the time this time around she looks like an angry beast about to tear you to shreds. You realize only now how scary her sharp teeth are let alone that massive harpoon she wields. Both strong and swift, she easily proves that underneath her friendly, and at time goofy, demeanor she still is a deadly fighter most people on Mareth would rather avoid the wrath of.";

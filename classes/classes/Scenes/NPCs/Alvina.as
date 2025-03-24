@@ -34,7 +34,7 @@ public class Alvina extends Monster
 			createStatusEffect(StatusEffects.AbilityCooldown1, 4, 0, 0, 0);
 			var nosferatu:Number = this.inte;
 			nosferatu += this.wis;
-			nosferatu *= 20;
+			nosferatu *= 25;
 			outputText("Alvina chants and her shadow surges toward you, grabbing at your own. You feel your energy being drained as her shadow retreats back to her, Alvina laughs as she steals your vitality. <b>([font-damage]" + nosferatu + "[/font])</b>");
 			this.HP += nosferatu;
 			player.HP -= nosferatu;
@@ -43,7 +43,7 @@ public class Alvina extends Monster
 		}
 
 		private function alvinaWaveOfEcstasy():void {
-			var lustDmg:Number = player.lustPercent() * (this.inte / 3 + rand(this.lib - this.inte * 2 + 100) / 3);
+			var lustDmg:Number = player.lustPercent() * (this.inte / 2 + rand(this.lib - this.inte * 2 + 100) / 3);
 			if (hasStatusEffect(StatusEffects.CreepingDoom)) lustDmg *= 2;
 			outputText("Alvina moans a word of power, squirting in orgasmic pleasure as a nova of black magic explodes from her. Unable to dodge, you are squarely hit by the energy wave and feel your arousal and sensitivity rise.\n\n");
 			lustDmg = Math.round(lustDmg);
@@ -61,7 +61,7 @@ public class Alvina extends Monster
 			else {
 				if (PolarMidnightSequance == 1) {
 					var damage:Number = 0;
-					damage += eBaseIntelligenceDamage() * 40;
+					damage += eBaseIntelligenceDamage() * 60;
 					if (hasStatusEffect(StatusEffects.Maleficium)) damage *= 2;
 					outputText("The room gets darker as lights are snuffed out, and it gets colder by the second. ");
 					if (flags[kFLAGS.PRIMARY_DIFFICULTY] >= 2){
@@ -85,7 +85,7 @@ public class Alvina extends Monster
 
 		private function alvinaInfernalFlare():void {
 			var damage:Number = 0;
-			damage += eBaseIntelligenceDamage() * 2;
+			damage += eBaseIntelligenceDamage() * 3;
 			if (player.cor >= 66) damage = Math.round(damage * 1.0);
 			else if (player.cor >= 50) damage = Math.round(damage * 1.1);
 			else if (player.cor >= 25) damage = Math.round(damage * 1.2);
@@ -111,7 +111,7 @@ public class Alvina extends Monster
 				clearTempResolute(false);
 			} else {
 				var damage:Number = 0;
-				damage += eBaseIntelligenceDamage() * 10;
+				damage += eBaseIntelligenceDamage() * 15;
 				outputText("“<i>You know [name], I wonder if you can endure this. I doubt it, but again no such thing as overkill when it comes to getting rid of you. Be glad you get to see true magic! Magic worthy of gods before your end!</i>”\n\n");
 				outputText("A seal forms under your feet as the two of you are teleported outside. You're in the middle of the blight ridge and Alvina is standing on a faraway hill, incanting god knows what. You're about to run to her when you see it, in the sky above you, a massive arcane circle the size of the entire ridge with patterns so complex, even if you had her level of skill with magic you would fail to get a grasp of whatever spell she is using!\n\n");
 				outputText("The clouds part if only for an instant to reveal a vision of horrors. A full set of meteors, each the size of a small house, are falling in your direction.  You are sure to be caught in the barrage and so you hope whatever protection you have will be enough.\n\n");
@@ -368,37 +368,37 @@ public class Alvina extends Monster
 			if (flags[kFLAGS.PRIMARY_DIFFICULTY] >= 2 || SceneLib.alvinaFollower.FightForAlvina) {
 				this.long = "Alvina is a goat-like succubus. She is obviously an accomplished spellcaster.  She holds a pair of burning scythes in both hands, her spellbook levitating around her. The aura of black magic emanating from her is almost smothering you. She has taken on a way more intimidating form, reaching 11 feet tall with ease. Her black wings stretch from one side of the room to the other while the very ground she walks catches on fire as if unable to support her energy pressure.";
 				this.tallness = 11*12;
-				initStrTouSpeInte(800, 930, 840, 1160);
-				initWisLibSensCor(900, 800, 240, 100);
-				this.weaponAttack = 800;
-				this.armorDef = 120;
-				this.armorMDef = 120;
+				initStrTouSpeInte(1600, 1960, 1680, 2320);
+				initWisLibSensCor(1800, 1600, 480, 100);
+				this.weaponAttack = 1600;
+				this.armorDef = 600;
+				this.armorMDef = 600;
 				if (SceneLib.alvinaFollower.DefeatedAlvinaFirstStage){
 					this.bonusHP = 4250000;
 					alvinaMaleficium();
 				}
-				else {
-					this.bonusHP = 425000;
-				}
+				else this.bonusHP = 425000;
 				this.bonusMana = 32000;
-				this.bonusLust = 1310;
-				this.level = 205;
+				this.bonusLust = 2313;
+				this.level = 233;
+				this.createPerk(PerkLib.OverMaxHP, 233, 0, 0, 0);
 			} else {
 				this.long = "Alvina is a goat-like succubus. While she is barely taller than 4 and a half feet, she is obviously an accomplished spellcaster.  From the way she holds her scythe in one hand and her spellbook in the other you also expect her to be very strong,  despite the fact that she wears glasses. A powerful aura of black magic emanates from her.";
 				this.tallness = 4*12+6;
-				initStrTouSpeInte(375, 455, 390, 480);
-				initWisLibSensCor(480, 375, 115, 100);
-				this.weaponAttack = 25;
-				this.armorDef = 50;
-				this.armorMDef = 50;
+				initStrTouSpeInte(750, 910, 780, 960);
+				initWisLibSensCor(960, 750, 230, 100);
+				this.weaponAttack = 100;
+				this.armorDef = 250;
+				this.armorMDef = 250;
 				if (SceneLib.alvinaFollower.DefeatedAlvinaFirstStage){
 					this.bonusHP = 2000000;
 					alvinaMaleficium();
 				}
 				else this.bonusHP = 200000;
 				this.bonusMana = 15000;
-				this.bonusLust = 590;
+				this.bonusLust = 1080;
 				this.level = 100;
+				this.createPerk(PerkLib.OverMaxHP, 100, 0, 0, 0);
 			}
 			this.weaponName = "demonic scythe";
 			this.weaponVerb="slash";
@@ -411,7 +411,6 @@ public class Alvina extends Monster
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.MindOverBodyI, 0, 0, 0, 0);
-			this.createPerk(PerkLib.OverMaxHP, 100, 0, 0, 0);
 			this.createPerk(PerkLib.Phylactery, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);

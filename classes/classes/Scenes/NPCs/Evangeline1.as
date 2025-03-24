@@ -343,8 +343,8 @@ public class Evangeline1 extends Monster
 				this.weaponVerb="spiked punch";
 				this.weaponAttack = 6;
 				this.armorName = "practically indecent steel armor";
-				this.armorDef = 11;
-				this.armorMDef = 1;
+				this.armorDef = 33;
+				this.armorMDef = 3;
 				this.bonusHP = 90;
 				this.bonusLust = 29;
 				this.additionalXP += 15;
@@ -355,35 +355,35 @@ public class Evangeline1 extends Monster
 				initStrTouSpeInte(32, 32, 45, 100);
 				this.weaponName = "inscribed spellblade";
 				this.weaponVerb="slash";
-				this.weaponAttack = 9;
+				this.weaponAttack = 18;
 				this.armorName = "practically indecent steel armor";
-				this.armorDef = 11;
-				this.armorMDef = 1;
+				this.armorDef = 33;
+				this.armorMDef = 3;
 				this.bonusHP = 120;
 				this.bonusLust = 32;
 				this.additionalXP += 20;
 				this.level = 12;
 			}
 			if (flags[kFLAGS.EVANGELINE_LVL_UP] == 5) {
-				initStrTouSpeInte(46, 48, 68, 110);
-				initWisLibSensCor(20, 25, 35, 0);
-				this.weaponAttack = 10;
-				this.armorDef = 14;
-				this.armorMDef = 3;
+				initStrTouSpeInte(46, 48, 68, 140);
+				initWisLibSensCor(20, 50, 70, 0);
+				this.weaponAttack = 20;
+				this.armorDef = 42;
+				this.armorMDef = 9;
 				this.bonusHP = 240;
-				this.bonusLust = 75;
+				this.bonusLust = 136;
 				this.lust = 70;
 				this.additionalXP += 40;
 				this.level = 16;
 			}
 			if (flags[kFLAGS.EVANGELINE_LVL_UP] == 6) {
-				initStrTouSpeInte(82, 87, 105, 115);
-				initWisLibSensCor(25, 30, 45, 0);
-				this.weaponAttack = 12;
-				this.armorDef = 18;
-				this.armorMDef = 5;
+				initStrTouSpeInte(82, 87, 105, 195);
+				initWisLibSensCor(25, 80, 115, 0);
+				this.weaponAttack = 22;
+				this.armorDef = 54;
+				this.armorMDef = 15;
 				this.bonusHP = 360;
-				this.bonusLust = 89;
+				this.bonusLust = 219;
 				this.additionalXP += 60;
 				this.level = 24;
 			}

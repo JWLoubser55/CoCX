@@ -29,7 +29,7 @@ public class Diva extends Monster {
             player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
         } else {
             outputText("The [monster name]'s grip on you tightens as you struggle to break free from the stimulating pressure.");
-            player.takeLustDamage(player.effectiveSensitivity() / 10 + 2, true);
+            player.takeLustDamage(player.effectiveSensitivity() / 5 + 2, true);
             moveBite();
         }
         return true;
@@ -39,8 +39,8 @@ public class Diva extends Monster {
         clearOutput();
         moveBite();
         outputText("The [monster name]'s grip on you tightens as you relax into the stimulating pressure.");
-        player.takeLustDamage(player.effectiveSensitivity() / 5 + 5, true);
-        player.takePhysDamage(5 + rand(5));
+        player.takeLustDamage(player.effectiveSensitivity() / 3 + 5, true);
+        player.takePhysDamage(50 + rand(5));
         return true;
     }
 
