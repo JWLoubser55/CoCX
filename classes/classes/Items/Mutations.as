@@ -15961,9 +15961,9 @@ public final class Mutations extends MutationsHelper {
 		clearOutput();
 		if (player.isRaceCached(Races.ALRAUNE)) {
 			outputText("You smell the flower, taking in the scent. Suddenly you feel yourself changing, your green skin progressively turning blue and your petals white. Your eyes also lose their green shade in favor of taking on a pale blue. Somehow you feel the cold won’t be bothering you much anymore, although you're afraid you might have become highly flammable. <b>You are now a snow lily alraune and gained the perk Snow Lily and Cold Affinity.</b>");
-			player.skinColor = "pale blue";
-			player.hairColor = randomChoice("pink", "white", "bluish white");
-			player.eyes.colour = "pale blue";
+			player.skinColor = "light blue";
+			player.hairColor = randomChoice("pink", "snow white", "silver-white");
+			player.eyes.colour = "light blue";
 			player.createPerk(PerkLib.SnowLily, 0, 0, 0, 0);
 			if (player.hasPerk(PerkLib.Cinderbloom)) player.removePerk(PerkLib.Cinderbloom);
 			if (player.hasPerk(PerkLib.Nightshade)) player.removePerk(PerkLib.Nightshade);
