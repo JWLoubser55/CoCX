@@ -136,7 +136,7 @@ public class CharViewContext extends ExecContext {
 				if (player.weaponOff == game.weapons.Q_GUARD) return 'rapier_holy_oh';
 				if (player.weaponOff == game.weapons.B_WIDOW) return 'rapier_unholy_oh';
 				if (player.weaponOff == game.weapons.LHSCYTH) return 'scythe_holy_oh';
-				if (player.weaponOff == game.weapons.ATWINSCY || player.weaponOff == game.weapons.HATWINSCY player.weaponOff == game.weapons.HELRAIS) return 'scythe_unholy_oh';
+				if (player.weaponOff == game.weapons.ATWINSCY || player.weaponOff == game.weapons.HATWINSCY || player.weaponOff == game.weapons.HELRAIS) return 'scythe_unholy_oh';
 				// if (???) return 'dagger_holy_oh';
 				// if (???) return 'dagger_unholy_oh';
 				
