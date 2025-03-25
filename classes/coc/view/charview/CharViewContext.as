@@ -45,6 +45,7 @@ public class CharViewContext extends ExecContext {
 			var player:Player = character as Player;
 			var game:CoC = CoC.instance;
 			var weaponSubtype:String = (player.weapon is DynamicWeapon) ? (player.weapon as DynamicWeapon).subtypeId : "";
+			var weaponOffSubtype:String = (player.weaponOff is DynamicWeapon) ? (player.weaponOff as DynamicWeapon).subtypeId : "";
 			var armorSubtype:String = (player.armor is DynamicArmor) ? (player.armor as DynamicArmor).subtypeId : "";
 			var shieldSubtype:String = (player.shield is DynamicShield) ? (player.shield as DynamicShield).subtypeId : "";
 			
@@ -79,7 +80,7 @@ public class CharViewContext extends ExecContext {
 				if (player.weapon == game.weapons.Q_GUARD) return 'rapier_holy';
 				if (player.weapon == game.weapons.B_WIDOW) return 'rapier_unholy';
 				if (player.weapon == game.weapons.LHSCYTH) return 'scythe_holy';
-				if (player.weapon == game.weapons.ATWINSCY || player.weaponOff == game.weapons.ATWINSCY || player.weapon == game.weapons.HATWINSCY || player.weaponOff == game.weapons.HATWINSCY || player.weapon == game.weapons.HELRAIS || player.weaponOff == game.weapons.HELRAIS) return 'scythe_unholy';
+				if (player.weapon == game.weapons.ATWINSCY || player.weapon == game.weapons.HATWINSCY || player.weapon == game.weapons.HELRAIS) return 'scythe_unholy';
 				if (player.hasAetherTwinsTierWeapon()) return 'dagger_aether';
 				// if (???) return 'dagger_holy';
 				// if (???) return 'dagger_unholy';
@@ -98,11 +99,6 @@ public class CharViewContext extends ExecContext {
 					if (player.weapon.isMassive()) return 'massive_sword';
 					return 'sword';
 				}
-				if (player.weaponOff.isSwordType()) {
-					if (player.weapon.isLarge()) return 'large_sword_oh';
-					if (player.weapon.isMassive()) return 'massive_sword_oh';
-					return 'sword_oh';
-				}
 				if (player.weapon.isAxeType()) return 'axe';
 				if (player.weapon.isMaceHammerType()) return 'hammer';
 				if (player.isSpearTypeWeapon()) return 'spear'
@@ -112,6 +108,59 @@ public class CharViewContext extends ExecContext {
 				// default - no sprite
 				return '';
 			}
+			function meleeWeaponOHSprite():String {
+				// Variants
+				if (player.weaponOff == game.weapons.OCCULUS) return 'wand_holy_oh';
+				if (player.weaponOff == game.weapons.ECLIPSE) return 'wand_unholy_oh';
+				if (player.weaponOff == game.weapons.EXCALIB) return 'sword_holy_oh';
+				if (player.weaponOff == game.weapons.SCARBLD) return 'sword_unholy_oh';
+				if (player.weaponOff == game.weapons.MGSWORD) return 'sword_moongs_oh';
+				if (player.weaponOff == game.weapons.NPHBLDE || player.weaponOff == game.weapons.T_HEART) return 'large_sword_holy_oh';
+				if (player.weaponOff == game.weapons.EBNYBLD || player.weaponOff == game.weapons.DORSOUL) return 'large_sword_unholy_oh';
+				if (player.weaponOff == game.weapons.ARMAGED) return 'massive_sword_holy_oh';
+				if (player.weaponOff == game.weapons.CHAOSEA) return 'massive_sword_unholy_oh';
+				if (player.weaponOff == game.weapons.WG_GAXE || player.weaponOff == game.weapons.GGRAVEA) return 'axe_holy_oh';
+				if (player.weapon == game.weapons.DE_GAXE || player.weaponOff == game.weapons.ASTERIUS) return 'axe_unholy_oh';
+				// if (player.weaponOff == ???) return 'hammer_holy_oh';
+				if (player.weaponOff == game.weapons.VGRAVEH) return 'hammer_unholy_oh';
+				if (player.weaponOff == game.weapons.POCDEST) return 'tetsu_holy_oh';
+				if (player.weaponOff == game.weapons.DOCDEST) return 'tetsu_unholy_oh';
+				if (player.weaponOff == game.weapons.SESPEAR) return 'spear_holy_oh';
+				if (player.weaponOff == game.weapons.DSSPEAR) return 'spear_unholy_oh';
+				if (player.weaponOff == game.weapons.PHALLUS || player.weaponOff == game.weapons.PHALUSS) return 'spear_phallus_oh';
+				if (player.weaponOff == game.weapons.MOONLIT) return 'katana_holy_oh';
+				if (player.weaponOff == game.weapons.C_BLADE) return 'katana_unholy_oh';
+				if (player.weaponOff == game.weapons.MASAMUN) return 'nodachi_holy_oh';
+				if (player.weaponOff == game.weapons.BLETTER) return 'nodachi_unholy_oh';
+				if (player.weaponOff == game.weapons.DAISHO) return 'daisho_oh';
+				if (player.weaponOff == game.weapons.Q_GUARD) return 'rapier_holy_oh';
+				if (player.weaponOff == game.weapons.B_WIDOW) return 'rapier_unholy_oh';
+				if (player.weaponOff == game.weapons.LHSCYTH) return 'scythe_holy_oh';
+				if (player.weaponOff == game.weapons.ATWINSCY || player.weaponOff == game.weapons.HATWINSCY player.weaponOff == game.weapons.HELRAIS) return 'scythe_unholy_oh';
+				// if (???) return 'dagger_holy_oh';
+				// if (???) return 'dagger_unholy_oh';
+				
+				// Generics
+				if (weaponOffSubtype == 'katana' || weaponOffSubtype == 'uchigatana' || player.weaponOff == game.weapons.UGATANA || player.weaponOff == game.weapons.MOONLIT || player.weaponOff == game.weapons.C_BLADE || player.weaponOff == game.weapons.DKATANA) return 'katana_oh';
+				if ((weaponOffSubtype == 'katana' && weaponOffSubtype != 'uchigatana') || player.weaponOff == game.weapons.NODACHI  || player.weaponOff == game.weapons.DNODACHI || player.weaponOff == game.weapons.BLETTER  || player.weaponOff == game.weapons.KATANA || player.weaponOff == game.weapons.MASAMUN) return 'nodachi_oh';
+				if (player.weaponOff.hasTag(ItemConstants.W_RAPIER)) return 'rapier_oh';
+				if (player.weaponOff.hasTag(ItemConstants.W_TETSUBO)) return 'tetsubo_oh';
+				
+				// Weapon type-based
+				if (player.weaponOff.isWandType()) return 'wand_oh';
+				if (player.weaponOff.isSwordType()) {
+					if (player.weaponOff.isLarge()) return 'large_sword_oh';
+					if (player.weaponOff.isMassive()) return 'massive_sword_oh';
+					return 'sword_oh';
+				}
+				if (player.weaponOff.isAxeType()) return 'axe_oh';
+				if (player.weaponOff.isMaceHammerType()) return 'hammer_oh';
+				if (player.weaponOff.isSpearType()) return 'spear_oh'
+				if (player.weaponOff.isDaggerType() && player.weaponOff != game.weapons.AETHERD && player.shield != game.shields.AETHERS) return 'dagger_oh';
+				if (player.weaponOff.isScytheType() || player.weaponOff == game.weapons.DEMSCYT || player.weaponOff == game.weapons.KAMA || player.weaponOff == game.weapons.KAMAWHIP || player.weaponOff == game.weapons.D_KAMA) return 'scythe_oh';
+				
+				// default - no sprite
+				return '';
 			function shieldSprite():String {
 				if (player.shield.isNothing) return '';
 				if (player.shield == game.shields.AETHERS || player.shield == game.shields.BATTNET || player.shield == game.shields.MABRACE || player.shield == game.shields.SPI_FOC || player.shield == game.shields.Y_U_PAN) return '';
