@@ -948,121 +948,7 @@
 		<cell rect="296,1520,49,29" name="breasts/Fliliraune" dx="43" dy="68"/>
 		<cell rect="606,1490,49,29" name="breasts/Gliliraune" dx="43" dy="69"/>
 		<cell rect="606,1490,49,29" name="breasts/Hliliraune" dx="43" dy="69"/>
-		<cell rect="122,1620,80,102" name="weapon/staffGeneric" dx="38" dy="55"/>
-		<cell rect="122,1726,80,102" name="weapon/staffHoly" dx="38" dy="55"/>
-		<cell rect="122,1832,80,102" name="weapon/staffUnholy" dx="38" dy="55"/>
-		<cell rect="1202,1620,80,102" name="weapon/wandGeneric" dx="38" dy="55"/>
-		<cell rect="1202,1726,80,102" name="weapon/wandHoly" dx="38" dy="55"/>
-		<cell rect="1202,1832,80,102" name="weapon/wandUnholy" dx="38" dy="55"/>
-		<cell rect="212,1620,80,90" name="weapon/swordGeneric" dx="38" dy="55"/>
-		<cell rect="212,1726,80,90" name="weapon/swordHoly" dx="38" dy="55"/>
-		<cell rect="212,1832,80,90" name="weapon/swordUnholy" dx="38" dy="55"/>
-		<cell rect="122,1938,80,90" name="weaponBuff/swordFireBuff" dx="34" dy="31"/>
-		<cell rect="212,1938,80,90" name="weapon/swordGenericOH" dx="82" dy="55"/>
-		<cell rect="212,2044,80,90" name="weapon/swordHolyOH" dx="82" dy="55"/>
-		<cell rect="212,2150,80,90" name="weapon/swordUnholyOH" dx="82" dy="55"/>
-		<cell rect="122,2044,80,90" name="weaponBuff/swordFireBuffOH" dx="86" dy="31"/>
-		<cell rect="122,2150,89,105" name="weapon/swordMoonlightGS" dx="34" dy="42"/>
-		<cell rect="32,2150,89,105" name="weaponBuff/swordFireBuffMlGS" dx="30" dy="34"/>
-		<cell rect="122,2256,89,105" name="weapon/swordLargeGeneric" dx="38" dy="55"/>
-		<cell rect="212,2256,89,105" name="weapon/swordLargeGenericOH" dx="82" dy="55"/>
-		<cell rect="122,2362,89,105" name="weapon/swordLargeHoly" dx="38" dy="55"/>
-		<cell rect="212,2362,89,105" name="weapon/swordLargeHolyOH" dx="82" dy="55"/>
-		<cell rect="122,2468,89,105" name="weapon/swordLargeUnholy" dx="38" dy="55"/>
-		<cell rect="212,2468,89,105" name="weapon/swordLargeUnholyOH" dx="82" dy="55"/>
-		<cell rect="122,2574,89,105" name="weaponBuff/swordLargeFireBuff" dx="31" dy="22"/>
-		<cell rect="212,2574,89,105" name="weaponBuff/swordLargeFireBuffOH" dx="89" dy="22"/>
-		<cell rect="302,2256,89,105" name="weapon/swordMassiveGeneric" dx="26" dy="43"/>
-		<cell rect="392,2256,89,105" name="weapon/swordMassiveGenericOH" dx="94" dy="43"/>
-		<cell rect="302,2362,89,105" name="weapon/swordMassiveHoly" dx="26" dy="43"/>
-		<cell rect="392,2362,89,105" name="weapon/swordMassiveHolyOH" dx="94" dy="43"/>
-		<cell rect="302,2468,89,105" name="weapon/swordMassiveUnholy" dx="26" dy="43"/>
-		<cell rect="392,2468,89,105" name="weapon/swordMassiveUnholyOH" dx="94" dy="43"/>
-		<cell rect="302,2574,89,105" name="weaponBuff/swordMassiveFireBuff" dx="38" dy="11"/>
-		<cell rect="392,2574,89,105" name="weaponBuff/swordMassiveFireBuffOH" dx="82" dy="11"/>
-		<cell rect="302,1620,80,90" name="weapon/axeGeneric" dx="38" dy="55"/>
-		<cell rect="302,1726,80,90" name="weapon/axeHoly" dx="38" dy="55"/>
-		<cell rect="302,1832,80,90" name="weapon/axeUnholy" dx="38" dy="55"/>
-		<cell rect="302,1938,80,90" name="weapon/axeGenericOH" dx="82" dy="55"/>
-		<cell rect="302,2044,80,90" name="weapon/axeHolyOH" dx="82" dy="55"/>
-		<cell rect="302,2150,80,90" name="weapon/axeUnholyOH" dx="82" dy="55"/>
-		<cell rect="392,1620,80,90" name="weapon/hammerGeneric" dx="38" dy="55"/>
-		<cell rect="392,1726,80,90" name="weapon/hammerHoly" dx="38" dy="55"/>
-		<cell rect="392,1832,80,90" name="weapon/hammerUnholy" dx="38" dy="55"/>
-		<cell rect="392,1938,80,90" name="weapon/hammerGenericOH" dx="82" dy="55"/>
-		<cell rect="392,2044,80,90" name="weapon/hammerHolyOH" dx="82" dy="55"/>
-		<cell rect="392,2150,80,90" name="weapon/hammerUnholyOH" dx="82" dy="55"/>
-		<cell rect="482,1620,80,107" name="weapon/spearGeneric" dx="39" dy="53"/>
-		<cell rect="482,1729,80,107" name="weapon/spearHoly" dx="39" dy="53"/>
-		<cell rect="482,1838,80,107" name="weapon/spearUnholy" dx="39" dy="53"/>
-		<cell rect="482,1947,89,154" name="weapon/spearPhallus" dx="35" dy="19"/>
-		<cell rect="482,2102,89,153" name="weapon/spearPhallusOH" dx="86" dy="20"/>
 
-		<cell rect="1472,1620,80,90" name="weapon/nodachiGeneric" dx="38" dy="55"/>
-		<cell rect="1472,1726,80,90" name="weapon/nodachiHoly" dx="38" dy="55"/>
-		<cell rect="1472,1832,80,90" name="weapon/nodachiUnholy" dx="38" dy="55"/>
-		<cell rect="1472,1938,80,90" name="weaponBuff/nodachiFireBuff" dx="28" dy="37"/>
-		<cell rect="1562,1620,80,90" name="weapon/nodachiGenericOH" dx="82" dy="55"/>
-		<cell rect="1562,1726,80,90" name="weapon/nodachiHolyOH" dx="82" dy="55"/>
-		<cell rect="1562,1832,80,90" name="weapon/nodachiUnholyOH" dx="82" dy="55"/>
-		<cell rect="1562,1938,80,90" name="weaponBuff/nodachiFireBuffOH" dx="91" dy="38"/>
-
-		<cell rect="1292,1620,87,107" name="weapon/scytheShaftGeneric" dx="39" dy="53"/>
-		<cell rect="1292,1729,87,107" name="weapon/scytheShaftHoly" dx="39" dy="53"/>
-		<cell rect="1292,1838,87,107" name="weapon/scytheShaftUnholy" dx="39" dy="53"/>
-		<cell rect="1382,1620,87,107" name="weapon_bg/scytheBladeGeneric" dx="53" dy="39"/>
-		<cell rect="1382,1729,87,107" name="weapon_bg/scytheBladeHoly" dx="53" dy="39"/>
-		<cell rect="1382,1838,87,107" name="weapon_bg/scytheBladeUnholy" dx="53" dy="39"/>
-		<cell rect="1382,1947,87,107" name="weaponBuff_bg/scytheFireBuff" dx="53" dy="1"/>
-		<cell rect="1382,2165,89,108" name="weapon/scytheShaftGenericOH" dx="81" dy="53"/>
-		<cell rect="1292,2165,89,108" name="weapon_bg/scytheBladeGenericOH" dx="67" dy="39"/>
-		<cell rect="1382,2056,89,108" name="weapon/scytheShaftUnholyOH" dx="81" dy="53"/>
-		<cell rect="1292,2056,89,108" name="weapon_bg/scytheBladeUnholyOH" dx="67" dy="39"/>
-		<cell rect="1292,1947,89,108" name="weaponBuff_bg/scytheFireBuffOH" dx="67" dy="1"/>
-
-		<cell rect="662,1620,80,90" name="weapon/rapierGeneric" dx="38" dy="55"/>
-		<cell rect="662,1726,80,90" name="weapon/rapierHoly" dx="38" dy="55"/>
-		<cell rect="662,1832,80,90" name="weapon/rapierUnholy" dx="38" dy="55"/>
-		<cell rect="662,1938,80,90" name="weaponBuff/rapierFireBuff" dx="38" dy="55"/>
-		<cell rect="752,1620,80,90" name="weapon/katanaGeneric" dx="38" dy="55"/>
-		<cell rect="752,1726,80,90" name="weapon/katanaHoly" dx="38" dy="55"/>
-		<cell rect="752,1832,80,90" name="weapon/katanaUnholy" dx="38" dy="55"/>
-		<cell rect="752,1938,80,90" name="weaponBuff/katanaFireBuff" dx="25" dy="35"/>
-		<cell rect="752,2044,89,105" name="weapon/katanaGenericOH" dx="82" dy="55"/>
-		<cell rect="752,2150,89,105" name="weapon/katanaHolyOH" dx="82" dy="55"/>
-		<cell rect="752,2256,89,105" name="weapon/katanaUnholyOH" dx="82" dy="55"/>
-		<cell rect="752,2362,89,105" name="weaponBuff/katanaFireBuffOH" dx="95" dy="35"/>
-		<cell rect="842,2044,89,105" name="weapon/daishoOH" dx="82" dy="55"/>
-		<cell rect="842,2150,89,105" name="weaponBuff/daishoFireBuffOH" dx="95" dy="35"/>
-		<cell rect="842,1620,80,90" name="weapon/tetsuGeneric" dx="38" dy="55"/>
-		<cell rect="842,1726,80,90" name="weapon/tetsuHoly" dx="38" dy="55"/>
-		<cell rect="842,1832,80,90" name="weapon/tetsuUnholy" dx="38" dy="55"/>
-		<cell rect="1022,2100,89,55" name="weapon/panFlute" dx="43" dy="94"/>
-		<cell rect="1112,1620,80,90" name="weapon/daggerGeneric" dx="38" dy="55"/>
-		<cell rect="1112,1726,80,90" name="weapon/daggerHoly" dx="38" dy="55"/>
-		<cell rect="1112,1832,80,90" name="weapon/daggerUnholy" dx="38" dy="55"/>
-		<cell rect="1022,1832,80,90" name="weaponBuff/daggerFireBuff" dx="39" dy="55"/>
-		<cell rect="1112,1938,80,90" name="weapon/daggerGenericOH" dx="82" dy="55"/>
-		<cell rect="1112,2044,80,90" name="weapon/daggerHolyOH" dx="82" dy="55"/>
-		<cell rect="1112,2150,80,90" name="weapon/daggerUnholyOH" dx="82" dy="55"/>
-		<cell rect="1022,1938,80,90" name="weaponBuff/daggerFireBuffOH" dx="81" dy="55"/>
-		<cell rect="932,1620,80,107" name="weapon/bowGeneric" dx="51" dy="54"/>
-		<cell rect="932,1729,80,107" name="weapon/bowHoly" dx="51" dy="54"/>
-		<cell rect="932,1838,80,107" name="weapon/bowUnholy" dx="51" dy="54"/>
-		<cell rect="572,2256,89,105" name="shield/shieldSmGeneric" dx="66" dy="60"/>
-		<cell rect="482,2256,89,105" name="shield/shieldSmHoly" dx="66" dy="60"/>
-		<cell rect="662,2256,89,105" name="shield/shieldSmUnholy" dx="66" dy="60"/>
-		<cell rect="572,1620,80,90" name="shield/shieldGeneric" dx="66" dy="60"/>
-		<cell rect="572,2044,88,105" name="shield/shieldHoly" dx="66" dy="60"/>
-		<cell rect="662,2044,89,105" name="shield/shieldUnholy" dx="66" dy="60"/>
-		<cell rect="572,2150,89,105" name="shield/shieldLgGeneric" dx="66" dy="60"/>
-		<cell rect="572,1726,80,90" name="shield/shieldLgHoly" dx="66" dy="60"/>
-		<cell rect="572,1832,80,90" name="shield/shieldLgUnholy" dx="66" dy="60"/>
-		<cell rect="572,2362,89,105" name="shield/shieldMsGeneric" dx="66" dy="60"/>
-		<cell rect="482,2362,89,105" name="shield/shieldMSHoly" dx="66" dy="60"/>
-		<cell rect="662,2362,89,105" name="shield/shieldMSUnholy" dx="66" dy="60"/>
-		<cell rect="572,1938,88,90" name="shield/CasterTomeOfImps" dx="80" dy="50"/>
-		<cell rect="1022,1620,80,90" name="backAccessory/LactoblasterTank" dx="59" dy="32"/>
 		<cell rect="2325,325,77,44" name="backAccessory/kabutoMempoBack" dx="67" dy="32"/>
 		<cell rect="1022,1726,85,45" name="weapon/LactoblasterGun" dx="60" dy="97"/>
 		<cell rect="1022,1776,80,45" name="weapon/LactoblasterMilker" dx="59" dy="62"/>
@@ -1868,6 +1754,158 @@
 		<cell rect="1,1172,173,156" name="tail_bg_overlay/firefox9" dx="21" dy="37"/>
 		<cell rect="tail_bg_overlay/firefox9" name="tail_bg_overlay/firefox9_taur" dx="60" dy="47"/>
 	</spritemap>
+	<spritemap file="weapons.png">
+		<cell rect="1094,652,89,105" name="weapon/staffGeneric" dx="38" dy="55"/>
+		<cell rect="1094,758,89,105" name="weapon/staffHoly" dx="38" dy="55"/>
+		<cell rect="1094,864,89,105" name="weapon/staffUnholy" dx="38" dy="55"/>
+		<cell rect="1184,652,89,105" name="weapon/staffGenericOH" dx="82" dy="55"/>
+		<cell rect="1184,758,89,105" name="weapon/staffHolyOH" dx="82" dy="55"/>
+		<cell rect="1184,864,89,105" name="weapon/staffUnholyOH" dx="82" dy="55"/>
+		<cell rect="1094,970,89,105" name="weapon/wandGeneric" dx="38" dy="55"/>
+		<cell rect="1094,1076,89,105" name="weapon/wandHoly" dx="38" dy="55"/>
+		<cell rect="1094,1182,89,105" name="weapon/wandUnholy" dx="38" dy="55"/>
+		<cell rect="1184,970,89,105" name="weapon/wandGenericOH" dx="82" dy="55"/>
+		<cell rect="1184,1076,89,105" name="weapon/wandHolyOH" dx="82" dy="55"/>
+		<cell rect="1084,1182,89,105" name="weapon/wandUnholyOH" dx="82" dy="55"/>
+		
+		<cell rect="14,16,89,105" name="weapon/swordGeneric" dx="38" dy="55"/>
+		<cell rect="14,122,89,105" name="weapon/swordHoly" dx="38" dy="55"/>
+		<cell rect="14,228,89,105" name="weapon/swordUnholy" dx="38" dy="55"/>
+		<cell rect="194,16,89,105" name="weaponBuff/swordFireBuff" dx="34" dy="31"/>
+		<cell rect="104,16,89,105" name="weapon/swordGenericOH" dx="82" dy="55"/>
+		<cell rect="104,122,89,105" name="weapon/swordHolyOH" dx="82" dy="55"/>
+		<cell rect="104,228,89,105" name="weapon/swordUnholyOH" dx="82" dy="55"/>
+		<cell rect="284,16,89,105" name="weaponBuff/swordFireBuffOH" dx="86" dy="31"/>
+		<cell rect="14,970,89,105" name="weapon/swordMoonlightGS" dx="34" dy="42"/>
+		<cell rect="194,970,89,105" name="weaponBuff/swordFireBuffMlGS" dx="30" dy="34"/>
+		<cell rect="104,970,89,105" name="weapon/swordMoonlightGSOH" dx="86" dy="42"/>
+		<cell rect="284,970,89,105" name="weaponBuff/swordFireBuffMlGSOH" dx="90" dy="34"/>
+		<cell rect="14,334,89,105" name="weapon/swordLargeGeneric" dx="38" dy="55"/>
+		<cell rect="14,440,89,105" name="weapon/swordLargeHoly" dx="38" dy="55"/>
+		<cell rect="14,546,89,105" name="weapon/swordLargeUnholy" dx="38" dy="55"/>
+		<cell rect="194,334,89,105" name="weaponBuff/swordLargeFireBuff" dx="31" dy="22"/>
+		<cell rect="104,334,89,105" name="weapon/swordLargeGenericOH" dx="82" dy="55"/>
+		<cell rect="104,440,89,105" name="weapon/swordLargeHolyOH" dx="82" dy="55"/>
+		<cell rect="104,546,89,105" name="weapon/swordLargeUnholyOH" dx="82" dy="55"/>
+		<cell rect="284,334,89,105" name="weaponBuff/swordLargeFireBuffOH" dx="89" dy="22"/>
+		<cell rect="14,652,89,105" name="weapon/swordMassiveGeneric" dx="26" dy="43"/>
+		<cell rect="14,758,89,105" name="weapon/swordMassiveHoly" dx="26" dy="43"/>
+		<cell rect="14,846,89,105" name="weapon/swordMassiveUnholy" dx="26" dy="43"/>
+		<cell rect="194,652,89,105" name="weaponBuff/swordMassiveFireBuff" dx="38" dy="11"/>
+		<cell rect="104,652,89,105" name="weapon/swordMassiveGenericOH" dx="94" dy="43"/>
+		<cell rect="104,758,89,105" name="weapon/swordMassiveHolyOH" dx="94" dy="43"/>
+		<cell rect="104,864,89,105" name="weapon/swordMassiveUnholyOH" dx="94" dy="43"/>
+		<cell rect="284,652,89,105" name="weaponBuff/swordMassiveFireBuffOH" dx="82" dy="11"/>
+		
+		<cell rect="734,670,89,105" name="weapon/axeGeneric" dx="38" dy="55"/>
+		<cell rect="734,776,89,105" name="weapon/axeHoly" dx="38" dy="55"/>
+		<cell rect="734,882,89,105" name="weapon/axeUnholy" dx="38" dy="55"/>
+		<cell rect="824,670,89,105" name="weapon/axeGenericOH" dx="82" dy="55"/>
+		<cell rect="824,776,89,105" name="weapon/axeHolyOH" dx="82" dy="55"/>
+		<cell rect="824,882,89,105" name="weapon/axeUnholyOH" dx="82" dy="55"/>
+		
+		<cell rect="1274,16,89,105" name="weapon/hammerGeneric" dx="38" dy="55"/>
+		<cell rect="1274,122,89,105" name="weapon/hammerHoly" dx="38" dy="55"/>
+		<cell rect="1274,228,89,105" name="weapon/hammerUnholy" dx="38" dy="55"/>
+		<cell rect="1364,16,89,105" name="weapon/hammerGenericOH" dx="82" dy="55"/>
+		<cell rect="1364,122,89,105" name="weapon/hammerHolyOH" dx="82" dy="55"/>
+		<cell rect="1364,228,89,105" name="weapon/hammerUnholyOH" dx="82" dy="55"/>
+		
+		<cell rect="1094,16,89,108" name="weapon/spearGeneric" dx="39" dy="53"/>
+		<cell rect="1094,125,89,108" name="weapon/spearHoly" dx="39" dy="53"/>
+		<cell rect="1094,234,89,108" name="weapon/spearUnholy" dx="39" dy="53"/>
+		<cell rect="1184,16,89,108" name="weapon/spearGenericOH" dx="81" dy="53"/>
+		<cell rect="1184,125,89,108" name="weapon/spearHolyOH" dx="81" dy="53"/>
+		<cell rect="1184,234,89,108" name="weapon/spearUnholyOH" dx="81" dy="53"/>
+		<cell rect="1094,343,89,154" name="weapon/spearPhallus" dx="35" dy="19"/>
+		<cell rect="1184,343,89,154" name="weapon/spearPhallusOH" dx="86" dy="20"/>
+		
+		<cell rect="734,16,89,108" name="weapon/scytheShaftGeneric" dx="39" dy="53"/>
+		<cell rect="734,125,89,108" name="weapon/scytheShaftHoly" dx="39" dy="53"/>
+		<cell rect="734,234,89,108" name="weapon/scytheShaftUnholy" dx="39" dy="53"/>
+		<cell rect="734,343,89,108" name="weapon_bg/scytheBladeGeneric" dx="53" dy="39"/>
+		<cell rect="734,452,89,108" name="weapon_bg/scytheBladeHoly" dx="53" dy="39"/>
+		<cell rect="734,561,89,108" name="weapon_bg/scytheBladeUnholy" dx="53" dy="39"/>
+		<cell rect="914,16,89,108" name="weaponBuff_bg/scytheFireBuff" dx="53" dy="1"/>
+		<cell rect="824,16,89,108" name="weapon/scytheShaftGenericOH" dx="81" dy="53"/>
+		<cell rect="824,125,89,108" name="weapon/scytheShaftHolyOH" dx="81" dy="53"/>
+		<cell rect="824,234,89,108" name="weapon/scytheShaftUnholyOH" dx="81" dy="53"/>
+		<cell rect="824,343,89,108" name="weapon_bg/scytheBladeGenericOH" dx="67" dy="39"/>
+		<cell rect="824,452,89,108" name="weapon_bg/scytheBladeHolyOH" dx="67" dy="39"/>
+		<cell rect="824,561,89,108" name="weapon_bg/scytheBladeUnholyOH" dx="67" dy="39"/>
+		<cell rect="1004,16,89,108" name="weaponBuff_bg/scytheFireBuffOH" dx="67" dy="1"/>
+		
+		<cell rect="374,16,89,105" name="weapon/rapierGeneric" dx="38" dy="55"/>
+		<cell rect="374,122,89,105" name="weapon/rapierHoly" dx="38" dy="55"/>
+		<cell rect="374,228,89,105" name="weapon/rapierUnholy" dx="38" dy="55"/>
+		<cell rect="554,16,89,105" name="weaponBuff/rapierFireBuff" dx="38" dy="55"/>
+		<cell rect="464,16,89,105" name="weapon/rapierGenericOH" dx="82" dy="55"/>
+		<cell rect="464,122,89,105" name="weapon/rapierHolyOH" dx="82" dy="55"/>
+		<cell rect="464,228,89,105" name="weapon/rapierUnholyOH" dx="82" dy="55"/>
+		<cell rect="644,16,89,105" name="weaponBuff/rapierFireBuffOH" dx="82" dy="55"/>
+		
+		<cell rect="374,652,89,105" name="weapon/katanaGeneric" dx="38" dy="55"/>
+		<cell rect="374,758,89,105" name="weapon/katanaHoly" dx="38" dy="55"/>
+		<cell rect="374,864,89,105" name="weapon/katanaUnholy" dx="38" dy="55"/>
+		<cell rect="554,652,89,105" name="weaponBuff/katanaFireBuff" dx="25" dy="35"/>
+		<cell rect="464,652,89,105" name="weapon/katanaGenericOH" dx="82" dy="55"/>
+		<cell rect="464,758,89,105" name="weapon/katanaHolyOH" dx="82" dy="55"/>
+		<cell rect="464,864,89,105" name="weapon/katanaUnholyOH" dx="82" dy="55"/>
+		<cell rect="644,652,89,105" name="weaponBuff/katanaFireBuffOH" dx="95" dy="35"/>
+		<cell rect="464,1288,89,105" name="weapon/daishoOH" dx="82" dy="55"/>
+		<cell rect="554,1288,89,105" name="weaponBuff/daishoFireBuffOH" dx="25" dy="35"/>
+		<cell rect="374,1288,89,105" name="weapon/daisho" dx="38" dy="55"/>
+		<cell rect="644,1288,89,105" name="weaponBuff/daishoFireBuff" dx="95" dy="35"/>
+		<cell rect="374,970,89,105" name="weapon/nodachiGeneric" dx="38" dy="55"/>
+		<cell rect="374,1076,89,105" name="weapon/nodachiHoly" dx="38" dy="55"/>
+		<cell rect="374,1182,89,105" name="weapon/nodachiUnholy" dx="38" dy="55"/>
+		<cell rect="554,970,89,105" name="weaponBuff/nodachiFireBuff" dx="28" dy="37"/>
+		<cell rect="464,970,89,105" name="weapon/nodachiGenericOH" dx="82" dy="55"/>
+		<cell rect="464,1076,89,105" name="weapon/nodachiHolyOH" dx="82" dy="55"/>
+		<cell rect="464,1182,89,105" name="weapon/nodachiUnholyOH" dx="82" dy="55"/>
+		<cell rect="644,970,89,105" name="weaponBuff/nodachiFireBuffOH" dx="91" dy="38"/>
+		
+		<cell rect="1274,334,89,105" name="weapon/tetsuGeneric" dx="38" dy="55"/>
+		<cell rect="1274,440,89,105" name="weapon/tetsuHoly" dx="38" dy="55"/>
+		<cell rect="1274,546,89,105" name="weapon/tetsuUnholy" dx="38" dy="55"/>
+		<cell rect="1364,334,89,105" name="weapon/tetsuGenericOH" dx="82" dy="55"/>
+		<cell rect="1364,440,89,105" name="weapon/tetsuHolyOH" dx="82" dy="55"/>
+		<cell rect="1364,546,89,105" name="weapon/tetsuUnholyOH" dx="82" dy="55"/>
+		
+		<cell rect="374,334,89,105" name="weapon/daggerGeneric" dx="38" dy="55"/>
+		<cell rect="374,440,89,105" name="weapon/daggerHoly" dx="38" dy="55"/>
+		<cell rect="374,546,89,105" name="weapon/daggerUnholy" dx="38" dy="55"/>
+		<cell rect="554,334,89,105" name="weaponBuff/daggerFireBuff" dx="39" dy="55"/>
+		<cell rect="464,334,89,105" name="weapon/daggerGenericOH" dx="82" dy="55"/>
+		<cell rect="464,440,89,105" name="weapon/daggerHolyOH" dx="82" dy="55"/>
+		<cell rect="464,546,89,105" name="weapon/daggerUnholyOH" dx="82" dy="55"/>
+		<cell rect="644,334,89,105" name="weaponBuff/daggerFireBuffOH" dx="81" dy="55"/>
+		
+		<cell rect="1634,325,89,108" name="weapon/bowGeneric" dx="51" dy="54"/>
+		<cell rect="1634,434,89,108" name="weapon/bowHoly" dx="51" dy="54"/>
+		<cell rect="1634,543,89,108" name="weapon/bowUnholy" dx="51" dy="54"/>
+		
+		<cell rect="1724,593,89,55" name="weapon/panFlute" dx="43" dy="94"/>
+		
+		<cell rect="1724,325,89,105" name="backAccessory/LactoblasterTank" dx="59" dy="32"/>
+		<cell rect="1724,431,89,49" name="weapon/LactoblasterGun" dx="60" dy="97"/>
+		<cell rect="1724,481,89,55" name="weapon/LactoblasterMilker" dx="59" dy="62"/>
+		<cell rect="1724,537,89,55" name="weapon/LactoblasterMilkerMega" dx="59" dy="62"/>
+		
+		<cell rect="1454,652,89,105" name="shield/shieldSmGeneric" dx="66" dy="60"/>
+		<cell rect="1544,652,89,105" name="shield/shieldSmHoly" dx="66" dy="60"/>
+		<cell rect="1634,652,89,105" name="shield/shieldSmUnholy" dx="66" dy="60"/>
+		<cell rect="1454,758,89,105" name="shield/shieldGeneric" dx="66" dy="60"/>
+		<cell rect="1544,758,89,105" name="shield/shieldHoly" dx="66" dy="60"/>
+		<cell rect="1634,758,89,105" name="shield/shieldUnholy" dx="66" dy="60"/>
+		<cell rect="1454,864,89,105" name="shield/shieldLgGeneric" dx="66" dy="60"/>
+		<cell rect="1544,864,89,105" name="shield/shieldLgHoly" dx="66" dy="60"/>
+		<cell rect="1634,864,89,105" name="shield/shieldLgUnholy" dx="66" dy="60"/>
+		<cell rect="1454,970,89,105" name="shield/shieldMsGeneric" dx="66" dy="60"/>
+		<cell rect="1544,970,89,105" name="shield/shieldMSHoly" dx="66" dy="60"/>
+		<cell rect="1634,970,89,105" name="shield/shieldMSUnholy" dx="66" dy="60"/>
+		<cell rect="1454,1076,89,105" name="shield/CasterTomeOfImps" dx="80" dy="50"/>
+	</spritemap>	
 	<spritemap file="wings.png">
 		<cell rect="1,70,84,139" name="wings_bg/mantibig" dx="20" dy="20"/>
 		<cell rect="86,70,83,139" name="wings/mantibig" dx="105" dy="20"/>
@@ -2301,6 +2339,7 @@
 		</if>
 		<if test="not showWeapon">
 			<set var="MeleeWeaponSprite" value="''"/>
+			<set var="meleeWeaponOffSprite" value="''"/>
 			<set var="RangedWeaponSprite" value="''"/>
 			<set var="PlayerHasADaggerTwin" value="false"/>
 			<set var="PlayerHasAShieldTwin" value="false"/>
@@ -2369,10 +2408,12 @@
 						<show part="weapon/swordUnholyOH"/>
 					</if>
 				</case>
+				
 				<case value="'sword_moongs'">
 					<set var="fireBuffType">sword_moongs</set>
 					<show part="weapon/swordMoonlightGS"/>
 				</case>
+
 				<case value="'large_sword'">
 					<set var="fireBuffType">sword_large</set>
 					<show part="weapon/swordLargeGeneric"/>
@@ -2394,6 +2435,7 @@
 						<show part="weapon/swordLargeUnholyOH"/>
 					</if>
 				</case>
+				
 				<case value="'massive_sword'">
 					<set var="fireBuffType">sword_massive</set>
 					<show part="weapon/swordMassiveGeneric"/>
@@ -2490,6 +2532,13 @@
 				</case>
 
 				<!-- Katana -->
+				<case value="'katana'">
+					<set var="fireBuffType">katana</set>
+					<show part="weapon/katanaGeneric"/>
+					<if test="PlayerHasADualMeleeWeapon">
+						<show part="weapon/katanaGenericOH"/>
+					</if>
+				</case>
 				<case value="'katana_holy'">
 					<set var="fireBuffType">katana</set>
 					<show part="weapon/katanaHoly"/>
@@ -2504,13 +2553,6 @@
 						<show part="weapon/katanaUnholyOH"/>
 					</if>
 				</case>
-				<case value="'katana_generic'">
-					<set var="fireBuffType">katana</set>
-					<show part="weapon/katanaGeneric"/>
-					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/katanaGenericOH"/>
-					</if>
-				</case>
 
 				<!-- Daisho -->
 				<case value="'daisho'">
@@ -2520,6 +2562,13 @@
 				</case>
 
 				<!-- Nodachi -->
+				<case value="'nodachi'">
+					<set var="fireBuffType">nodachi</set>
+					<show part="weapon/nodachiGeneric"/>
+					<if test="PlayerHasADualMeleeWeapon">
+						<show part="weapon/nodachiGenericOH"/>
+					</if>
+				</case>
 				<case value="'nodachi_holy'">
 					<set var="fireBuffType">nodachi</set>
 					<show part="weapon/nodachiHoly"/>
@@ -2534,15 +2583,12 @@
 						<show part="weapon/nodachiUnholyOH"/>
 					</if>
 				</case>
-				<case value="'nodachi_generic'">
-					<set var="fireBuffType">nodachi</set>
-					<show part="weapon/nodachiGeneric"/>
-					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/nodachiGenericOH"/>
-					</if>
-				</case>
 
 				<!-- Rapiers -->
+				<case value="'rapier'">
+					<set var="fireBuffType">rapier</set>
+					<show part="weapon/rapierGeneric"/>
+				</case>
 				<case value="'rapier_holy'">
 					<set var="fireBuffType">rapier</set>
 					<show part="weapon/rapierHoly"/>
@@ -2551,49 +2597,31 @@
 					<set var="fireBuffType">rapier</set>
 					<show part="weapon/rapierUnholy"/>
 				</case>
-				<case value="'rapier'">
-					<set var="fireBuffType">rapier</set>
-					<show part="weapon/rapierGeneric"/>
-				</case>
 
 				<!-- Dagger -->
 				<case value="'dagger'">
-					<set var="fireBuffType">dagger</set>
-					<show part="weapon/daggerHoly"/>
-					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/daggerHolyOH"/>
-					</if>
-				</case>
-				<case value="'dagger_holy'">
-					<set var="fireBuffType">dagger</set>
-					<show part="weapon/daggerUnholy"/>
-					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/daggerUnholyOH"/>
-					</if>
-				</case>
-				<case value="'dagger_unholy'">
 					<set var="fireBuffType">dagger</set>
 					<show part="weapon/daggerGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
 						<show part="weapon/daggerGenericOH"/>
 					</if>
 				</case>
-
-				<!-- Scythe -->
-				<case value="'scythe_holy'">
-					<set var="fireBuffType">scythe</set>
-					<show part="weapon/scytheShaftHoly"/>
-					<show part="weapon_bg/scytheBladeHoly"/>
-				</case>
-				<case value="'scythe_unholy'">
-					<set var="fireBuffType">scythe</set>
-					<show part="weapon/scytheShaftUnholy"/>
-					<show part="weapon_bg/scytheBladeUnholy"/>
+				<case value="'dagger_holy'">
+					<set var="fireBuffType">dagger</set>
+					<show part="weapon/daggerHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/scytheShaftUnholyOH"/>
-						<show part="weapon_bg/scytheBladeUnholyOH"/>
+						<show part="weapon/daggerHolyOH"/>
 					</if>
 				</case>
+				<case value="'dagger_unholy'">
+					<set var="fireBuffType">dagger</set>
+					<show part="weapon/daggerUnholy"/>
+					<if test="PlayerHasADualMeleeWeapon">
+						<show part="weapon/daggerUnholyOH"/>
+					</if>
+				</case>
+
+				<!-- Scythe -->
 				<case value="'scythe'">
 					<set var="fireBuffType">scythe</set>
 					<show part="weapon/scytheShaftGeneric"/>
@@ -2603,6 +2631,196 @@
 						<show part="weapon_bg/scytheBladeGenericOH"/>
 					</if>
 				</case>
+				<case value="'scythe_holy'">
+					<set var="fireBuffType">scythe</set>
+					<show part="weapon/scytheShaftHoly"/>
+					<show part="weapon_bg/scytheBladeHoly"/>
+					<if test="PlayerHasADualMeleeWeapon">
+						<show part="weapon/scytheShaftHolyOH"/>
+						<show part="weapon_bg/scytheBladeHolyOH"/>
+					</if>
+				</case>	
+			</switch>
+			
+			<set var="fireBuffOhType"></set>
+			<switch value="MeleeWeaponOffSprite">
+				<!-- Values from CharViewContext.meleeWeaponOffSprite -->
+
+				<!-- Wand OH -->
+				<case value="'wand_oh'">
+					<show part="weapon/wandGenericOH"/>
+				</case>
+				<case value="'wand_holy_oh'">
+					<show part="weapon/wandHolyOH"/>
+				</case>
+				<case value="'wand_unholy_oh'">
+					<show part="weapon/wandUnholyOH"/>
+				</case>
+
+				<!-- Sword OH -->
+				<case value="'sword_oh'">
+					<set var="fireBuffOhType">sword_oh</set>
+					<show part="weapon/swordGenericOH"/>
+				</case>
+				<case value="'sword_holy_oh'">
+					<set var="fireBuffOhType">sword_oh</set>
+					<show part="weapon/swordHolyOH"/>
+				</case>
+				<case value="'sword_unholy_oh'">
+					<set var="fireBuffOhType">sword_oh</set>
+					<show part="weapon/swordUnholyOH"/>
+				</case>
+				
+				<case value="'sword_moongs_oh'">
+					<set var="fireBuffOhType">sword_moongs_oh</set>
+					<show part="weapon/swordMoonlightGSOH"/>
+				</case>
+				
+				<case value="'large_sword_oh'">
+					<set var="fireBuffOhType">sword_large_oh</set>
+					<show part="weapon/swordLargeGenericOH"/>
+				</case>
+				<case value="'large_sword_holy_oh'">
+					<set var="fireBuffOhType">sword_large_oh</set>
+					<show part="weapon/swordLargeHolyOH"/>
+				</case>
+				<case value="'large_sword_unholy_oh'">
+					<set var="fireBuffOhType">sword_large_oh</set>
+					<show part="weapon/swordLargeUnholyOH"/>
+				</case>
+				
+				<case value="'massive_sword_oh'">
+					<set var="fireBuffOhType">sword_massive_oh</set>
+					<show part="weapon/swordMassiveGenericOH"/>
+				</case>
+				<case value="'massive_sword_holy_oh'">
+					<set var="fireBuffOhType">sword_massive_oh</set>
+					<show part="weapon/swordMassiveHolyOH"/>
+				</case>
+				<case value="'massive_sword_unholy_oh'">
+					<set var="fireBuffOhType">sword_massive_oh</set>
+					<show part="weapon/swordMassiveUnholyOH"/>
+				</case>
+
+				<!-- Axe OH -->
+				<case value="'axe_oh'">
+					<show part="weapon/axeGenericOH"/>
+				</case>
+				<case value="'axe_holy_oh'">
+					<show part="weapon/axeHolyOH"/>
+				</case>
+				<case value="'axe_unholy_oh'">
+					<show part="weapon/axeUnholyOH"/>
+				</case>
+
+				<!-- Tetsubo OH -->
+				<case value="'tetsubo_oh'">
+					<show part="weapon/tetsuGenericOH"/>
+				</case>
+				<case value="'tetsu_holy_oh'">
+					<show part="weapon/tetsuHolyOH"/>
+				</case>
+				<case value="'tetsu_unholy_oh'">
+					<show part="weapon/tetsuUnholyOH"/>
+				</case>
+
+				<!-- Hammer OH -->
+				<case value="'hammer_oh'">
+					<show part="weapon/hammerGenericOH"/>
+				</case>
+				<case value="'hammer_holy_oh'">
+					<show part="weapon/hammerHolyOH"/>
+				</case>
+				<case value="'hammer_unholy_oh'">
+					<show part="weapon/hammerUnholyOH"/>
+				</case>
+
+				<!-- Spear OH -->
+				<case value="'spear_oh'">
+					<show part="weapon/spearGenericOH"/>
+				</case>
+				<case value="'spear_holy_oh'">
+					<show part="weapon/spearHolyOH"/>
+				</case>
+				<case value="'spear_unholy_oh'">
+					<show part="weapon/spearUnholyOH"/>
+				</case>
+				<case value="'spear_phallus_oh'">
+					<show part="weapon/spearPhallusOH"/>
+				</case>
+
+				<!-- Katana OH -->
+				<case value="'katana_oh'">
+					<set var="fireBuffOhType">katana_oh</set>
+					<show part="weapon/katanaGenericOH"/>
+				</case>
+				<case value="'katana_holy_oh'">
+					<set var="fireBuffOhType">katana_oh</set>
+					<show part="weapon/katanaHolyOH"/>
+				</case>
+				<case value="'katana_unholy_oh'">
+					<set var="fireBuffOhType">katana_oh</set>
+					<show part="weapon/katanaUnholyOH"/>
+				</case>
+
+				<!-- Nodachi OH -->
+				<case value="'nodachi_oh'">
+					<set var="fireBuffOhType">nodachi_oh</set>
+					<show part="weapon/nodachiGenericOH"/>
+				</case>
+				<case value="'nodachi_holy_oh'">
+					<set var="fireBuffOhType">nodachi_oh</set>
+					<show part="weapon/nodachiHolyOH"/>
+				</case>
+				<case value="'nodachi_unholy_oh'">
+					<set var="fireBuffOhType">nodachi_oh</set>
+					<show part="weapon/nodachiUnholyOH"/>
+				</case>
+
+				<!-- Rapiers OH -->
+				<case value="'rapier_oh'">
+					<set var="fireBuffOhType">rapier_oh</set>
+					<show part="weapon/rapierGenericOH"/>
+				</case>
+				<case value="'rapier_holy_oh'">
+					<set var="fireBuffOhType">rapier_oh</set>
+					<show part="weapon/rapierHolyOH"/>
+				</case>
+				<case value="'rapier_unholy_oh'">
+					<set var="fireBuffOhType">rapier_oh</set>
+					<show part="weapon/rapierUnholyOH"/>
+				</case>
+
+				<!-- Dagger OH -->
+				<case value="'dagger_oh'">
+					<set var="fireBuffOhType">dagger_oh</set>
+					<show part="weapon/daggerGenericOH"/>
+				</case>
+				<case value="'dagger_holy_oh'">
+					<set var="fireBuffOhType">dagger_oh</set>
+					<show part="weapon/daggerHolyOH"/>
+				</case>
+				<case value="'dagger_unholy_oh'">
+					<set var="fireBuffOhType">dagger_oh</set>
+					<show part="weapon/daggerUnholyOH"/>
+				</case>
+
+				<!-- Scythe OH -->
+				<case value="'scythe_oh'">
+					<set var="fireBuffOhType">scythe_oh</set>
+					<show part="weapon/scytheShaftGenericOH"/>
+					<show part="weapon_bg/scytheBladeGenericOH"/>
+				</case>
+				<case value="'scythe_holy_oh'">
+					<set var="fireBuffOhType">scythe_oh</set>
+					<show part="weapon/scytheShaftHolyOH"/>
+					<show part="weapon_bg/scytheBladeHolyOH"/>
+				</case>
+				<case value="'scythe_unholy_oh'">
+					<set var="fireBuffOhType">scythe_oh</set>
+					<show part="weapon/scytheShaftUnholyOH"/>
+					<show part="weapon_bg/scytheBladeUnholyOH"/>
+				</case>	
 			</switch>
 
 			<if test="FireBuff">
@@ -2613,7 +2831,7 @@
 						<if test="PlayerHasADualMeleeWeapon">
 							<show part="weaponBuff/swordFireBuffOH"/>
 						</if>
-					</case>
+					</case>	
 					<case value="'sword_moongs'">
 						<show part="weaponBuff/swordFireBuffMlGS"/>
 					</case>
@@ -2659,6 +2877,35 @@
 						<if test="PlayerHasADualMeleeWeapon">
 							<show part="weaponBuff_bg/scytheFireBuffOH"/>
 						</if>
+					</case>
+				</switch>
+				<switch value="fireBuffOhType">
+					<case value="'sword_oh'">
+						<show part="weaponBuff/swordFireBuffOH"/>
+					</case>
+					<case value="'sword_moongs_oh'">
+						<show part="weaponBuff/swordFireBuffMlGSOH"/>
+					</case>
+					<case value="'sword_large_oh'">
+						<show part="weaponBuff/swordLargeFireBuffOH"/>
+					</case>
+					<case value="'sword_massive_oh'">
+						<show part="weaponBuff/swordMassiveFireBuffOH"/>
+					</case>
+					<case value="'katana_oh'">
+						<show part="weaponBuff/katanaFireBuffOH"/>
+					</case>
+					<case value="'nodachi_oh'">
+						<show part="weaponBuff/nodachiFireBuffOH"/>
+					</case>
+					<case value="'rapier_oh'">
+						<show part="weaponBuff/rapierFireBuffOH"/>
+					</case>
+					<case value="'dagger_oh'">
+						<show part="weaponBuff/daggerFireBuffOH"/>
+					</case>
+					<case value="'scythe_oh'">
+						<show part="weaponBuff_bg/scytheFireBuffOH"/>
 					</case>
 				</switch>
 			</if>
