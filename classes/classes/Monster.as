@@ -3491,9 +3491,9 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (this.soulforce > maxOverSoulforce()) this.soulforce = maxOverSoulforce();
 			if (this.mana > maxOverMana()) this.mana = maxMana();
 			//health, soulforce and mana regeneration for monsters
-			if (((hasPerk(PerkLib.Regeneration) || hasPerk(PerkLib.LizanRegeneration) || perkv1(IMutationsLib.LizanMarrowIM) >= 1 || perkv1(IMutationsLib.DrakeHeartIM) >= 3 || perkv1(IMutationsLib.DrakeBloodIM) >= 1 || perkv1(IMutationsLib.FerasBirthrightIM) >= 1 || perkv1(IMutationsLib.HydraBloodIM) >= 1 || hasPerk(PerkLib.EnemyPlantType)
-			|| hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration) || hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline) || hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh)
-			|| hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor) || hasStatusEffect(StatusEffects.MonsterRegen)
+			if (((hasPerk(PerkLib.Regeneration) || hasPerk(PerkLib.LizanRegeneration) || hasPerk(PerkLib.LustyRegeneration) || perkv1(IMutationsLib.LizanMarrowIM) >= 1 || perkv1(IMutationsLib.DrakeHeartIM) >= 3 || perkv1(IMutationsLib.DrakeBloodIM) >= 1 || perkv1(IMutationsLib.FerasBirthrightIM) >= 1 || perkv1(IMutationsLib.HydraBloodIM) >= 1
+			|| hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration) || hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline) || hasPerk(PerkLib.EpicLifeline)
+			|| hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor) || hasStatusEffect(StatusEffects.MonsterRegen)
 			|| hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP()) || (hasStatusEffect(StatusEffects.MonsterVPT) && (this.HP < maxOverHP()) && (this.HP > minHP()))) {
 				var healingPercent:Number = 0;
 				var temp2:Number = 0;
@@ -3502,6 +3502,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasPerk(PerkLib.IceQueenGown) && player.isRace(Races.YUKIONNA)) healingPercent += 5;
 				if (hasPerk(PerkLib.VladimirRegalia) && !isNightTime()) healingPercent -= 5;
 				if (hasPerk(PerkLib.VladimirRegalia) && isNightTime()) healingPercent += 5;
+				if (hasPerk(PerkLib.LustyRegeneration)) healingPercent += 0.5;
 				if (hasPerk(PerkLib.LizanRegeneration) && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 1.5;
 				if (perkv1(IMutationsLib.LizanMarrowIM) >= 1 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 0.5 * perkv1(IMutationsLib.LizanMarrowIM);
 				if (perkv1(IMutationsLib.LizanMarrowIM) == 3 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify) && this.HP < (this.maxHP() * 0.25)) healingPercent += 1.5;

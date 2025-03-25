@@ -855,7 +855,7 @@ private function LevelingHerself():void {
 	if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2) {
 		if (flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER] >= 1) flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER]++;
 		else flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER] = 1;
-		if (flags[kFLAGS.TYRANTIA_LVL_UP] < 4 && flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER] >= flags[kFLAGS.TYRANTIA_LVL_UP] + 9) {
+		if (flags[kFLAGS.TYRANTIA_LVL_UP] < 13 && flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER] >= flags[kFLAGS.TYRANTIA_LVL_UP] + 9) {
 			var addToV1:Number = player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER];
 			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers5)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers5, 1, addToV1);
 			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers5, addToV1, 0, 0, 0);

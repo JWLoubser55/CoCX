@@ -88,6 +88,7 @@ use namespace CoC;
 			else {
 				var damage:Number = 0;
 				damage += eBaseSpeedDamage() * 0.4;
+				damage += eBaseStrengthDamage() * 0.2;
 				if (damage < 50) damage = 50;
 				//weapon bonus
 				if (this.weaponRangeAttack < 51) damage *= (1 + (this.weaponRangeAttack * 0.03));

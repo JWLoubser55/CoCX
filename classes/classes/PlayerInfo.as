@@ -741,7 +741,7 @@ public class PlayerInfo extends BaseContent {
 		
 		if (BelisaFollower.BelisaEncounternum > 0) {
 			interpersonStats += "<b>Belisa Affection:</b> " + BelisaFollower.BelisaAffectionMeter + "%\n";
-			interpersonStats += getNPCLevel("Belisa", 20, 0, 8, 6, flags[kFLAGS.BELISA_LVL_UP]);
+			interpersonStats += getNPCLevel("Belisa", 20, 0, 18, 6, flags[kFLAGS.BELISA_LVL_UP]);
 		}
 
 		if (SceneLib.bazaar.benoit.benoitAffection() > 0)
@@ -875,9 +875,9 @@ public class PlayerInfo extends BaseContent {
 		if (flags[kFLAGS.LILY_LVL_UP] > 0) {
 			interpersonStats += "<b>Lily Affection:</b> " + LilyFollower.LilyAffectionMeter + "%\n";
 			interpersonStats += "<b>Lily Submissiveness:</b> " + LilyFollower.LilySubmissivenessMeter + "%\n";
-			if (flags[kFLAGS.LILY_LVL_UP] == 9) interpersonStats += "<b>Lily lvl:</b> 70 (current max lvl)\n";
+			if (flags[kFLAGS.LILY_LVL_UP] == 19) interpersonStats += "<b>Lily lvl:</b> 130 (current max lvl)\n";
 			else if (flags[kFLAGS.LILY_LVL_UP] < 2) interpersonStats += "<b>Lily lvl:</b> 22\n";
-			else interpersonStats += getNPCLevel("Lily", 22, 1, 9, 6, flags[kFLAGS.LILY_LVL_UP]);
+			else interpersonStats += getNPCLevel("Lily", 22, 1, 19, 6, flags[kFLAGS.LILY_LVL_UP]);
 		}
 
 		//Lottie stuff
@@ -888,9 +888,9 @@ public class PlayerInfo extends BaseContent {
         if (flags[kFLAGS.LUNA_FOLLOWER] > 3) {
 			interpersonStats += "<b>Luna Affection:</b> " + Math.round(flags[kFLAGS.LUNA_AFFECTION]) + "%\n";
 			interpersonStats += "<b>Luna Jealousy:</b> " + Math.round(flags[kFLAGS.LUNA_JEALOUSY]) + "%\n";
-			if (flags[kFLAGS.LUNA_LVL_UP] == 15) interpersonStats += "<b>Luna lvl:</b> 99 (current max lvl)\n";
+			if (flags[kFLAGS.LUNA_LVL_UP] == 20) interpersonStats += "<b>Luna lvl:</b> 129 (current max lvl)\n";
 			else if (flags[kFLAGS.LUNA_LVL_UP] == 0) interpersonStats += "<b>Luna lvl:</b> 9\n";
-			else interpersonStats += getNPCLevel("Luna", 9, 0, 15, 6, flags[kFLAGS.LUNA_LVL_UP]);
+			else interpersonStats += getNPCLevel("Luna", 9, 0, 20, 6, flags[kFLAGS.LUNA_LVL_UP]);
 		}
 
 		if (player.hasStatusEffect(StatusEffects.Marble))
@@ -957,7 +957,16 @@ public class PlayerInfo extends BaseContent {
 		if (TyrantiaFollower.TyrantiaFollowerStage > 0) {
 			interpersonStats += "<b>Tyrantia Affection:</b> " + TyrantiaFollower.TyrantiaAffectionMeter + "%\n";
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 1) interpersonStats += "<b>Training sessions with Tyrantia:</b> " + TyrantiaFollower.TyrantiaTrainingSessions + " / 40\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 4) interpersonStats += "<b>Tyrantia lvl:</b> 76 (current max lvl)\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 13) interpersonStats += "<b>Tyrantia lvl:</b> 130 (current max lvl)\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 12) interpersonStats += "<b>Tyrantia lvl:</b> 124\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 11) interpersonStats += "<b>Tyrantia lvl:</b> 118\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 10) interpersonStats += "<b>Tyrantia lvl:</b> 112\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 9) interpersonStats += "<b>Tyrantia lvl:</b> 106\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 8) interpersonStats += "<b>Tyrantia lvl:</b> 100\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 7) interpersonStats += "<b>Tyrantia lvl:</b> 94\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 6) interpersonStats += "<b>Tyrantia lvl:</b> 88\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 5) interpersonStats += "<b>Tyrantia lvl:</b> 82\n";
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 4) interpersonStats += "<b>Tyrantia lvl:</b> 76\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 3) interpersonStats += "<b>Tyrantia lvl:</b> 70\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 2) interpersonStats += "<b>Tyrantia lvl:</b> 64\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] < 2) interpersonStats += "<b>Tyrantia lvl:</b> 58\n";

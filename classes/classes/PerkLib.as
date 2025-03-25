@@ -7329,8 +7329,6 @@ public class PerkLib
                     .requireLevel(6);
             ArcaneLash.requirePerk(JobEromancer)
 					.requireLevel(6);
-            ArcaneLash.requirePerk(JobEromancer)
-					.requireLevel(6);
             EromancyBeginner.requirePerk(JobEromancer)
 					.requireLib(45)
                     .requireInt(45)

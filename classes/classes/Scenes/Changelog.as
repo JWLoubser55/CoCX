@@ -229,7 +229,7 @@ public class Changelog extends BaseContent
 			outputText("-Off hand Equipment slot added. It's mutal exclusive with shield slot and can't have item in both offhand and shield slots. Dual Wield perk desc changed to account for adding this slot.\n");
 			outputText("-Dungeon enemies have their general levels and stats adjusted/increased. Dungeons adjusted (new lvl range of enemies): River Dungeon (floor 1-4) (only stats adjustments), Desert Cave (14-24), Den of Desire (48-52), Phoenix Tower (80-89), Hidden Cave (only stats adjustments)\n");
 			outputText("-Due to new general levels and stats for enemies sparrable npc's in camp can reach new height of power (also any npc that go over lvl 100 will gain elite enemy tag, some that had before boss tag would loose it; when going over lvl 200 they would gain champion enemy tag): Isabella (lvl 32-128), Helia (adjusted to lvl 36), Helspawn (just stat adjusting with no lvl change), Zenji ");
-			outputText("(he missed last time PC could go up to 200+ lvl when he sadly sit at max 185 so... he decided to match pc again on top of making his stats better then before - lvl 25-233)\n");
+			outputText("(he missed last time PC could go up to 200+ lvl when he sadly sit at max 185 so... he decided to match pc again on top of making his stats better then before - lvl 25-233), Tyrantia (lvl 58-130), Lily (lvl 22-130), Belisa (lvl 20-128), Luna (9-129)\n");
 			outputText("-After having equipped Silver Cross Necklace PC would be periodicaly visiting Demon Lair place (when req. to get new visit PC would travel there on next Exploration). Each visit brings PC closer to become true demon. To stop vistiing PC must remove somehow Silver Cross Necklace (which been cursed item for no true demon PC would be quite difficult).\n");
 			outputText("-Req. min level to find Celess Senior was removed.\n");
 			outputText("-Golemancer npc in HXD will no longer req. PC to reach specific golemancer perks to unlock metal plates, energy cores or mechanisms sell options. Also metal plates can be now sold in even large amounts at once: x20 and x50\n");
@@ -394,6 +394,24 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accesable by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -406,8 +424,8 @@ public class Changelog extends BaseContent
 			outputText("bad end or combat end, scene with Ayane when PC visit shrine as already 9 tailed kitusne without star sphere not gaining star sphere during the scene, Meteor Shower and Polar Midnight not recognized as spells for Channeling perk req., Healer npc in JttE never having her cure/heal options going off cooldown, Vixen&Cream with Urta unclosed tag, Straddle Tease variant for Harpies ");
 			outputText("not checking if enemy have cock, Mist Phouka enemies dropping tarnished shard of metal, PC mummies behaviour choice menu buttons wrong labeled, pair of black cat gloves not allowing swiftcasting, Wood Elfs appearing for soulless PC's, cow maid and Excellia switching places for Minotaur Challanger fight, drinking from Oni enchanted drinking gourd not triggering Aelfwine effect, ");
 			outputText("Dark Charm not gained by Gremlins, some of Nocello Liqueur TF effects ignoring TF immunity effect, Munchkin@Biolab perk not properly increasing max for stat training caps, Vitality Tincture not restoring Arian health, Iron Man perk not affecting fatigue cost of some physical specials, Taser with an overcharged battery upgrade causing Tazer special to be not accesable, keeping debuff ");
-			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, ");
-			outputText("Grey magic or White/Diving magic not taking into account overmaxLust, Grand Grey Archmage perk effect incorrectly applied\n\n");
+			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, Grey magic or White/Diving magic not taking into account overmaxLust, ");
+			outputText("Grand Grey Archmage perk effect incorrectly applied, Zombiefied Cursed Tag unlimited fatigue not working in camp building menu\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");
@@ -463,20 +481,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -502,12 +508,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

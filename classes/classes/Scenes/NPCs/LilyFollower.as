@@ -931,7 +931,7 @@ use namespace CoC;
 		private function LevelingHerself():void {
 			if (flags[kFLAGS.LILY_DEFEATS_COUNTER] >= 1) flags[kFLAGS.LILY_DEFEATS_COUNTER]++;
 			else flags[kFLAGS.LILY_DEFEATS_COUNTER] = 1;
-			if (flags[kFLAGS.LILY_LVL_UP] < 9 && flags[kFLAGS.LILY_DEFEATS_COUNTER] >= flags[kFLAGS.LILY_LVL_UP] + 3) {
+			if (flags[kFLAGS.LILY_LVL_UP] < 19 && flags[kFLAGS.LILY_DEFEATS_COUNTER] >= flags[kFLAGS.LILY_LVL_UP] + 3) {
 				var addToV2:Number = player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.LILY_DEFEATS_COUNTER];
 				if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers5))
 					player.addStatusValue(StatusEffects.CampSparingNpcsTimers5, 2, addToV2);

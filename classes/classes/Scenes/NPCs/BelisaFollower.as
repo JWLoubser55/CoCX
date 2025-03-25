@@ -603,7 +603,7 @@ public class BelisaFollower extends NPCAwareContent implements SaveableState
 	private function LevelingHerself():void {
 		if (flags[kFLAGS.BELISA_DEFEATS_COUNTER] >= 1) flags[kFLAGS.BELISA_DEFEATS_COUNTER]++;
 		else flags[kFLAGS.BELISA_DEFEATS_COUNTER] = 1;
-		if (flags[kFLAGS.BELISA_LVL_UP] < 8 && flags[kFLAGS.BELISA_DEFEATS_COUNTER] >= flags[kFLAGS.BELISA_LVL_UP] + 4) {
+		if (flags[kFLAGS.BELISA_LVL_UP] < 18 && flags[kFLAGS.BELISA_DEFEATS_COUNTER] >= flags[kFLAGS.BELISA_LVL_UP] + 4) {
 			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers5)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers5, 3, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.BELISA_DEFEATS_COUNTER]));
 			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers5, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.BELISA_DEFEATS_COUNTER]), 0);
 			flags[kFLAGS.BELISA_DEFEATS_COUNTER] = 0;
