@@ -98,6 +98,11 @@ public class CharViewContext extends ExecContext {
 					if (player.weapon.isMassive()) return 'massive_sword';
 					return 'sword';
 				}
+				if (player.weaponOff.isSwordType()) {
+					if (player.weapon.isLarge()) return 'large_sword_oh';
+					if (player.weapon.isMassive()) return 'massive_sword_oh';
+					return 'sword_oh';
+				}
 				if (player.weapon.isAxeType()) return 'axe';
 				if (player.weapon.isMaceHammerType()) return 'hammer';
 				if (player.isSpearTypeWeapon()) return 'spear'
