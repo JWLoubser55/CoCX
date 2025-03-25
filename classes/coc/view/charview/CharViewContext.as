@@ -161,6 +161,7 @@ public class CharViewContext extends ExecContext {
 				
 				// default - no sprite
 				return '';
+			}
 			function shieldSprite():String {
 				if (player.shield.isNothing) return '';
 				if (player.shield == game.shields.AETHERS || player.shield == game.shields.BATTNET || player.shield == game.shields.MABRACE || player.shield == game.shields.SPI_FOC || player.shield == game.shields.Y_U_PAN) return '';
