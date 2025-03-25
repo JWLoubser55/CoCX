@@ -334,7 +334,7 @@ public class CharViewContext extends ExecContext {
 
 					//Detect Weapon Skins
 					MeleeWeaponSprite: meleeWeaponSprite(),
-					MeleeWeaponOHSprite: meleeWeaponOHSprite(),
+					MeleeWeaponOffSprite: meleeWeaponOffSprite(),
 					ShieldSprite: shieldSprite(), // incl. tome
 					RangedWeaponSprite: rangedWeaponSprite(),
 					ArmorSprite: armorSprite(),
