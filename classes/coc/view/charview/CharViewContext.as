@@ -108,7 +108,7 @@ public class CharViewContext extends ExecContext {
 				// default - no sprite
 				return '';
 			}
-			function meleeWeaponOHSprite():String {
+			function meleeWeaponOffSprite():String {
 				// Variants
 				if (player.weaponOff == game.weapons.OCCULUS) return 'wand_holy_oh';
 				if (player.weaponOff == game.weapons.ECLIPSE) return 'wand_unholy_oh';
@@ -120,7 +120,7 @@ public class CharViewContext extends ExecContext {
 				if (player.weaponOff == game.weapons.ARMAGED) return 'massive_sword_holy_oh';
 				if (player.weaponOff == game.weapons.CHAOSEA) return 'massive_sword_unholy_oh';
 				if (player.weaponOff == game.weapons.WG_GAXE || player.weaponOff == game.weapons.GGRAVEA) return 'axe_holy_oh';
-				if (player.weapon == game.weapons.DE_GAXE || player.weaponOff == game.weapons.ASTERIUS) return 'axe_unholy_oh';
+				if (player.weaponOff == game.weapons.DE_GAXE || player.weaponOff == game.weapons.ASTERIUS) return 'axe_unholy_oh';
 				// if (player.weaponOff == ???) return 'hammer_holy_oh';
 				if (player.weaponOff == game.weapons.VGRAVEH) return 'hammer_unholy_oh';
 				if (player.weaponOff == game.weapons.POCDEST) return 'tetsu_holy_oh';
