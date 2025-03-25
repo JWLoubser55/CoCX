@@ -292,7 +292,7 @@ public class CharViewContext extends ExecContext {
 					PlayerHasAShieldTwin: player.hasAetherTwinsTierLeftShield(),
 					PlayerHasAnOffhandDaggerTwin: player.hasAetherTwinsTierLeftDagger(),
 					PlayerHasADualWeapon: player.isDualWield(),
-					PlayerHasADualMeleeWeapon: player.weapon.isDualWielded(),
+					PlayerHasADualMeleeWeapon: player.isDualWieldMelee(),
 					PlayerHasADualRangedWeapon: player.isDualWieldRanged(),
 					
 					ArmorHiddenFlag: game.flags[kFLAGS.CHARVIEW_ARMOR_HIDDEN],
