@@ -361,7 +361,7 @@ public class Changelog extends BaseContent
 			outputText("-Some of the stat checks for enemies changed from checking total stat values to core stat values: Frost Gigant str check, kitsune enemies Seal/Illusion special int checks\n");
 			outputText("-Yamata combat desc would desc how much PC is close to become her masochostic pet (not large change of text but carefull observer would notice smlight changes in her last part of descrtiption that was sitting hidden in code before). Still no news on more stuff for her or getting her weapon...yet.\n");
 			outputText("-Minor changes to the spred file to add burnt brown and lavander fixed some alraune color issues (Liadri) + correcting lovander into lavender color (Stadler)\n");
-			outputText("-\n");
+			outputText("-Weapon sprite found new home, and offhand weapons now display sprites (Lord Shadeogorath)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -393,6 +393,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 and 325% and max 6 groups
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -478,14 +487,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -508,9 +511,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
