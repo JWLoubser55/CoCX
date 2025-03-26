@@ -243,15 +243,15 @@ public class Tyrantia extends Monster
 				this.bonusLust = 828 + 106*mod;
 				this.level = 58 + 6*mod;
 			}
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 13) {
-				initStrTouSpeInte(1000, 1140, 770, 660);
-				initWisLibSensCor(380, 1280, 650, 100);
-				this.weaponAttack = 510;
-				this.armorDef = 900;
-				this.armorMDef = 900;
-				this.bonusHP = 21000;
-				this.bonusLust = 2060;
-				this.level = 130;
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 15) {
+				initStrTouSpeInte(1100, 1260, 850, 720);
+				initWisLibSensCor(410, 1400, 730, 100);
+				this.weaponAttack = 570;
+				this.armorDef = 1000;
+				this.armorMDef = 1000;
+				this.bonusHP = 24000;
+				this.bonusLust = 2272;
+				this.level = 142;
 			}
 			this.a = "";
 			this.short = "Tyrantia";
@@ -288,7 +288,7 @@ public class Tyrantia extends Monster
 			this.createPerk(PerkLib.TankI,0,0,0,0);
 			this.createPerk(PerkLib.GoliathI,0,0,0,0);
 			this.createPerk(PerkLib.CheetahI,0,0,0,0);
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 8 && flags[kFLAGS.TYRANTIA_LVL_UP] < 14) this.createPerk(PerkLib.EnemyEliteType,0,0,0,0);
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 8 && flags[kFLAGS.TYRANTIA_LVL_UP] < 16) this.createPerk(PerkLib.EnemyEliteType,0,0,0,0);
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2) {
 				this.createPerk(PerkLib.EpicStrength,0,0,0,0);
 				this.createPerk(PerkLib.Naturaljouster,0,0,0,0);
@@ -336,7 +336,15 @@ public class Tyrantia extends Monster
 			}
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 13) {
 				this.createPerk(PerkLib.LegendaryIntelligence,0,0,0,0);
+				this.createPerk(PerkLib.Diehard,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 14) {
 				this.createPerk(PerkLib.LimitBreakerBody2ndStage,0,0,0,0);
+				this.createPerk(PerkLib.LimitBreakerHeart1stStage,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 15) {
+				this.createPerk(PerkLib.LimitBreakerFlesh1stStage,0,0,0,0);
+				this.createPerk(PerkLib.ImprovedDiehard,0,0,0,0);
 			}
 			checkMonster();
 		}

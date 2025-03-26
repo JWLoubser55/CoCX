@@ -171,38 +171,38 @@ import classes.Scenes.Combat.CombatAbilities;
 		public function Lily()
 		{
 			if (flags[kFLAGS.LILY_LVL_UP] < 2) {
-				initStrTouSpeInte(140, 150, 220, 200);
-				initWisLibSensCor(190, 160, 100, 80);
-				this.weaponAttack = 3;
-				this.weaponRangeAttack = 30;
-				this.armorDef = 120;
-				this.armorMDef = 60;
-				this.bonusHP = 400;
-				this.bonusLust = 282;
-				this.level = 22;
+				initStrTouSpeInte(164, 186, 340, 290);
+				initWisLibSensCor(220, 310, 220, 80);
+				this.weaponAttack = 5;
+				this.weaponRangeAttack = 60;
+				this.armorDef = 140;
+				this.armorMDef = 70;
+				this.bonusHP = 500;
+				this.bonusLust = 564;
+				this.level = 34;
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 2 && flags[kFLAGS.LILY_LVL_UP] < 19) {
 				var mod:int = (flags[kFLAGS.LILY_LVL_UP] - 1);
-				initStrTouSpeInte(140 + 12*mod, 150 + 18*mod, 220 + 60*mod, 200 + 45*mod);
-				initWisLibSensCor(190 + 15*mod, 160 + 75*mod, 100 + 60*mod, 80);
-				this.weaponAttack = 3 + 1*mod;
-				this.weaponRangeAttack = 30 + 15*mod;
-				this.armorDef = 120 + 10*mod;
-				this.armorMDef = 60 + 5*mod;
-				this.bonusHP = 400 + 50*mod;
-				this.bonusLust = 282 + 141*mod;
+				initStrTouSpeInte(164 + 12*mod, 186 + 18*mod, 340 + 60*mod, 290 + 45*mod);
+				initWisLibSensCor(220 + 15*mod, 310 + 75*mod, 220 + 60*mod, 80);
+				this.weaponAttack = 5 + 1*mod;
+				this.weaponRangeAttack = 60 + 15*mod;
+				this.armorDef = 140 + 10*mod;
+				this.armorMDef = 70 + 5*mod;
+				this.bonusHP = 500 + 50*mod;
+				this.bonusLust = 564 + 141*mod;
 				this.level = 22 + 6*mod;
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] == 19) {
-				initStrTouSpeInte(356, 474, 1300, 1010);
-				initWisLibSensCor(460, 1510, 1180, 80);
-				this.weaponAttack = 21;
-				this.weaponRangeAttack = 300;
-				this.armorDef = 300;
-				this.armorMDef = 150;
-				this.bonusHP = 1300;
-				this.bonusLust = 2820;
-				this.level = 130;
+				initStrTouSpeInte(380, 510, 1420, 1100);
+				initWisLibSensCor(490, 1510, 1300, 80);
+				this.weaponAttack = 23;
+				this.weaponRangeAttack = 330;
+				this.armorDef = 320;
+				this.armorMDef = 160;
+				this.bonusHP = 1400;
+				this.bonusLust = 3102;
+				this.level = 142;
 			}
 			this.imageName = "corrupteddrider";
 			if (LilyFollower.LilyTalked > 0) {
@@ -287,6 +287,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 12) {
+				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
 				this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
 				this.createPerk(PerkLib.JobGuardian, 0, 0, 0, 0);
 			}
@@ -295,7 +296,6 @@ import classes.Scenes.Combat.CombatAbilities;
 				this.createPerk(PerkLib.LegendaryLibido, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 14) {
-				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
 				this.createPerk(PerkLib.PrestigeJobArcaneArcher, 0, 0, 0, 0);
 				this.createPerk(PerkLib.PrestigeJobBindmaster, 0, 0, 0, 0);
 			}

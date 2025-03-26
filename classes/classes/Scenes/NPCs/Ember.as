@@ -199,7 +199,7 @@ public class Ember extends Monster
 				createBreastRow(Appearance.breastCupInverse("flat"));
 			}
 			if (flags[kFLAGS.EMBER_LVL_UP] < 1) {
-				initStrTouSpeInte(120, 90, 100, 90);
+				initStrTouSpeInte(130, 90, 100, 90);
 				initWisLibSensCor(90, 50, 35, game.flags[kFLAGS.EMBER_COR]);
 				this.weaponAttack = 36;
 				this.armorDef = 54;
@@ -208,125 +208,16 @@ public class Ember extends Monster
 				this.bonusLust = 105 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
 				this.level = 20;
 			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 1) {
-				initStrTouSpeInte(140, 110, 115, 105);
-				initWisLibSensCor(105, 60, 40, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 43;
-				this.armorDef = 73;
-				this.armorMDef = 73;
-				this.bonusHP = 900;
-				this.bonusLust = 126 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 26;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 2) {
-				initStrTouSpeInte(165, 135, 130, 120);
-				initWisLibSensCor(120, 70, 45, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 50;
-				this.armorDef = 92;
-				this.armorMDef = 92;
-				this.bonusHP = 1000;
-				this.bonusLust = 147 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 32;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 3) {
-				initStrTouSpeInte(190, 160, 145, 135);
-				initWisLibSensCor(135, 80, 50, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 57;
-				this.armorDef = 111;
-				this.armorMDef = 111;
-				this.bonusHP = 1200;
-				this.bonusLust = 168 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 38;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 4) {
-				initStrTouSpeInte(220, 190, 160, 150);
-				initWisLibSensCor(150, 90, 55, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 64;
-				this.armorDef = 130;
-				this.armorMDef = 130;
-				this.bonusHP = 1400;
-				this.bonusLust = 189 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 44;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 5) {
-				initStrTouSpeInte(250, 220, 175, 165);
-				initWisLibSensCor(165, 100, 60, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 71;
-				this.armorDef = 150;
-				this.armorMDef = 150;
-				this.bonusHP = 1600;
-				this.bonusLust = 210 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 50;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 6) {
-				initStrTouSpeInte(280, 250, 190, 180);
-				initWisLibSensCor(180, 110, 65, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 78;
-				this.armorDef = 170;
-				this.armorMDef = 170;
-				this.bonusHP = 1800;
-				this.bonusLust = 231 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 56;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 7) {
-				initStrTouSpeInte(310, 280, 205, 195);
-				initWisLibSensCor(195, 120, 70, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 85;
-				this.armorDef = 190;
-				this.armorMDef = 190;
-				this.bonusHP = 2000;
-				this.bonusLust = 252 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 62;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 8) {
-				initStrTouSpeInte(340, 310, 220, 210);
-				initWisLibSensCor(210, 130, 75, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 92;
-				this.armorDef = 210;
-				this.armorMDef = 210;
-				this.bonusHP = 2200;
-				this.bonusLust = 273 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 68;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 9) {
-				initStrTouSpeInte(370, 340, 235, 225);
-				initWisLibSensCor(225, 140, 80, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 99;
-				this.armorDef = 230;
-				this.armorMDef = 230;
-				this.bonusHP = 2400;
-				this.bonusLust = 294 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 74;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 10) {
-				initStrTouSpeInte(400, 370, 250, 240);
-				initWisLibSensCor(240, 150, 85, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 106;
-				this.armorDef = 250;
-				this.armorMDef = 250;
-				this.bonusHP = 2600;
-				this.bonusLust = 315 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 80;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 11) {
-				initStrTouSpeInte(430, 400, 265, 255);
-				initWisLibSensCor(255, 160, 90, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 113;
-				this.armorDef = 270;
-				this.armorMDef = 270;
-				this.bonusHP = 2800;
-				this.bonusLust = 336 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 86;
-			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 12) {
-				initStrTouSpeInte(460, 430, 280, 270);
-				initWisLibSensCor(270, 170, 95, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 120;
-				this.armorDef = 290;
-				this.armorMDef = 290;
-				this.bonusHP = 3000;
-				this.bonusLust = 357 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 92;
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 1 && flags[kFLAGS.EMBER_LVL_UP] < 13) {
+				var mod:int = flags[kFLAGS.EMBER_LVL_UP];
+				initStrTouSpeInte(130+30*mod, 90+20*mod, 100+15*mod, 90+15*mod);
+				initWisLibSensCor(90+15*mod, 50+10*mod, 35+5*mod, game.flags[kFLAGS.EMBER_COR]);
+				this.weaponAttack = 36+7*mod;
+				this.armorDef = 54+19*mod;
+				this.armorMDef = 54+19*mod;
+				this.bonusHP = 800+100*mod;
+				this.bonusLust = 105 + 21*mod + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
+				this.level = 20+6*mod;
 			}
 			if (flags[kFLAGS.EMBER_LVL_UP] == 13) {
 				initStrTouSpeInte(490, 460, 295, 285);

@@ -99,15 +99,15 @@ package classes.Scenes.NPCs
 				this.bonusLust = 129;
 				this.level = 9;
 			}
-			else if (flags[kFLAGS.LUNA_LVL_UP] == 20) {
-				initStrTouSpeInte(790, 1100, 860, 690);
-				initWisLibSensCor(690, 580, 440, 50);
-				this.weaponAttack = 396;
-				this.armorDef = 4200;
-				this.armorMDef = 105;
-				this.bonusHP = 6800;
-				this.bonusLust = 1149;
-				this.level = 129;
+			else if (flags[kFLAGS.LUNA_LVL_UP] == 22) {
+				initStrTouSpeInte(866, 1200, 942, 754);
+				initWisLibSensCor(754, 630, 480, 50);
+				this.weaponAttack = 432;
+				this.armorDef = 4600;
+				this.armorMDef = 115;
+				this.bonusHP = 7400;
+				this.bonusLust = 1251;
+				this.level = 141;
 			}
 			else {  //leave min and max levels to easily balance npc combat
 				var lvlMulti:Number = flags[kFLAGS.LUNA_LVL_UP];
@@ -145,7 +145,7 @@ package classes.Scenes.NPCs
 			this.drop = NO_DROP;
 			this.createPerk(PerkLib.EnemyBeastOrAnimalMorphType, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] < 16) this.createPerk(PerkLib.MonsterRegeneration, 5, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 16 && flags[kFLAGS.LUNA_LVL_UP] < 21) {
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 16 && flags[kFLAGS.LUNA_LVL_UP] < 23) {
 				this.createPerk(PerkLib.MonsterRegeneration, 10, 0, 0, 0);
 				this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			}
@@ -161,14 +161,16 @@ package classes.Scenes.NPCs
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 10) this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 11) this.createPerk(PerkLib.LimitBreakerBody1stStage, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 12) this.createPerk(PerkLib.GreaterDiehard, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 13) this.createPerk(PerkLib.LegendaryToughness, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 13) this.createPerk(PerkLib.EpicLibido, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 14) this.createPerk(PerkLib.ImmovableObject, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 15) this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 16) this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 17) this.createPerk(PerkLib.EpicDiehard, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 16) this.createPerk(PerkLib.LegendaryToughness, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 17) this.createPerk(PerkLib.LimitBreakerFlesh1stStage, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 18) this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 19) this.createPerk(PerkLib.LegendaryStrength, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 20) this.createPerk(PerkLib.LimitBreakerBody2ndStage, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 19) this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 20) this.createPerk(PerkLib.EpicDiehard, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 21) this.createPerk(PerkLib.LimitBreakerBody2ndStage, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 22) this.createPerk(PerkLib.LegendaryStrength, 0, 0, 0, 0);
 			this.abilities = [
 				{call: usingRavage, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_BODY], weight:2 },
 				{call: usingClawCombo, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_BODY]},

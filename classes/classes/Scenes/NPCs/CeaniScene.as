@@ -635,8 +635,8 @@ public function sparringWithCeaniWon():void
 	if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2 && flags[kFLAGS.CEANI_LVL_UP] >= 4) {
 		if (flags[kFLAGS.CEANI_DEFEATS_COUNTER] >= 1) flags[kFLAGS.CEANI_DEFEATS_COUNTER]++;
 		else flags[kFLAGS.CEANI_DEFEATS_COUNTER] = 1;
-		if (flags[kFLAGS.CEANI_LVL_UP] < 9) {
-			if (flags[kFLAGS.CEANI_DEFEATS_COUNTER] >= 7 + flags[kFLAGS.CEANI_LVL_UP]) {
+		if (flags[kFLAGS.CEANI_LVL_UP] < 12) {
+			if (flags[kFLAGS.CEANI_DEFEATS_COUNTER] >= 14 + flags[kFLAGS.CEANI_LVL_UP]) {
 				if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers2))
 					player.addStatusValue(StatusEffects.CampSparingNpcsTimers2, 3,
 						player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.CEANI_DEFEATS_COUNTER]);

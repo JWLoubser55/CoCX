@@ -429,7 +429,7 @@ public class LunaFollower extends NPCAwareContent implements SaveableState, Time
 			if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2) {
 				if (flags[kFLAGS.LUNA_DEFEATS_COUNTER] >= 1) flags[kFLAGS.LUNA_DEFEATS_COUNTER]++;
 				else flags[kFLAGS.LUNA_DEFEATS_COUNTER] = 1;
-				if (flags[kFLAGS.LUNA_LVL_UP] < 15 && flags[kFLAGS.LUNA_DEFEATS_COUNTER] >= flags[kFLAGS.LUNA_LVL_UP] + 2) {
+				if (flags[kFLAGS.LUNA_LVL_UP] < 22 && flags[kFLAGS.LUNA_DEFEATS_COUNTER] >= flags[kFLAGS.LUNA_LVL_UP] + 2) {
 					if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers3))
 						player.addStatusValue(StatusEffects.CampSparingNpcsTimers3, 1, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.LUNA_DEFEATS_COUNTER]));
 					else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers3, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.LUNA_DEFEATS_COUNTER]), 0, 0, 0);

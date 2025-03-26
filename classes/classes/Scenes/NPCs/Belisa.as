@@ -61,6 +61,7 @@ public class Belisa extends Monster
 			if (hasPerk(PerkLib.Archmage)) mod2 += .3;
 			if (hasPerk(PerkLib.GrandArchmage)) mod2 += .4;
 			if (hasPerk(PerkLib.GrandArchmage2ndCircle)) mod2 += .5;
+			if (hasPerk(PerkLib.GrandArchmage3rdCircle)) mod2 += .6;
 			if (hasPerk(PerkLib.JobSorcerer)) mod2 += .1;
 			return mod2;
 		}
@@ -76,41 +77,26 @@ public class Belisa extends Monster
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 14) slashes = "twenty";
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 16) slashes = "twenty-two";
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 18) slashes = "twenty-four";
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 20) slashes = "twenty-six";
 			outputText("The nimble drider-girl leaps towards you. You raise your [weapon] to intercept, but she shoots a web above and into the trees with a sharp thwip, nimbly evading your block. She gets inside your guard. \"<i>Hya, Hya! Heeeyah!!</i>\" She slashes "+slashes+" times, cutting cleanly through your [color] [skin.type] before leaping backwards and out of your reach. Blood begins to flow from your injuries.");
 			var bleedP:Number = 0.05;
 			var dmg0:Number = 0;
+			var bBA:Number = 6;
 			dmg0 += this.str;
 			dmg0 += eBaseStrengthDamage();
 			dmg0 += this.spe * 0.5;
 			dmg0 += eBaseSpeedDamage() * 0.5;
 			dmg0 += this.weaponAttack;
 			dmg0 = Math.round(dmg0 * 0.75);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 2) {
-				player.takePhysDamage(dmg0, true);
-				player.takePhysDamage(dmg0, true);
+			if (flags[kFLAGS.BELISA_LVL_UP] == 2) {
+				bBA += 2;
 				bleedP += 0.01;
 			}
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 4) {
-				player.takePhysDamage(dmg0, true);
-				player.takePhysDamage(dmg0, true);
-				bleedP += 0.01;
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 3) {
+				bBA += Math.round(flags[kFLAGS.BELISA_LVL_UP]+1)*2;
+				bleedP += Math.round(flags[kFLAGS.BELISA_LVL_UP]+1)*0.01;
 			}
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 6) {
-				player.takePhysDamage(dmg0, true);
-				player.takePhysDamage(dmg0, true);
-				bleedP += 0.01;
-			}
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 8) {
-				player.takePhysDamage(dmg0, true);
-				player.takePhysDamage(dmg0, true);
-				bleedP += 0.01;
-			}
+			while (bBA-->0) player.takePhysDamage(dmg0, true);
 			if (!player.immuneToBleed()) {
 				if (player.hasStatusEffect(StatusEffects.Hemorrhage)) player.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
 				else player.createStatusEffect(StatusEffects.Hemorrhage, SceneLib.combat.debuffsOrDoTDuration(2 + rand(2)), bleedP, 0, 0);
@@ -239,15 +225,15 @@ public class Belisa extends Monster
 				this.bonusLust = 200 + 51*mod;
 				this.level = 20 + 6*mod;
 			}
-			if (flags[kFLAGS.BELISA_LVL_UP] == 18) {
-				initStrTouSpeInte(404, 522, 720, 1150);
-				initWisLibSensCor(1010, 440, 600, -100);
-				this.weaponAttack = 240;
-				this.armorDef = 60;
-				this.armorMDef = 200;
-				this.bonusHP = 400;
-				this.bonusLust = 1118;
-				this.level = 128;
+			if (flags[kFLAGS.BELISA_LVL_UP] == 20) {
+				initStrTouSpeInte(440, 570, 840, 1250);
+				initWisLibSensCor(1100, 480, 650, -100);
+				this.weaponAttack = 260;
+				this.armorDef = 66;
+				this.armorMDef = 220;
+				this.bonusHP = 450;
+				this.bonusLust = 1220;
+				this.level = 140;
 			}
 			this.a = "";
 			this.short = "Belisa";
@@ -283,6 +269,7 @@ public class Belisa extends Monster
 			this.createPerk(PerkLib.Mage, 0, 0, 0, 0);
 			this.createPerk(PerkLib.JobHealer, 0, 0, 0, 0);
 			this.createPerk(PerkLib.BasicSpirituality, 0, 0, 0, 0);
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 14 && flags[kFLAGS.BELISA_LVL_UP] < 21) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 1) {
 				this.createPerk(PerkLib.HalfStepToImprovedSpirituality, 0, 0, 0, 0);
 				this.createPerk(PerkLib.WisenedHealer, 0, 0, 0, 0);
@@ -332,6 +319,11 @@ public class Belisa extends Monster
 				this.createPerk(PerkLib.LegendaryWisdom, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 18) this.createPerk(PerkLib.GrandArchmage2ndCircle, 0, 0, 0, 0);
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 19) {
+				this.createPerk(PerkLib.ArcaneRegenerationEpic, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ManaAffinityI, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 20) this.createPerk(PerkLib.GrandArchmage3rdCircle, 0, 0, 0, 0);
 			checkMonster();
 		}
 	}

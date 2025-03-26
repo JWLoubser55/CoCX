@@ -4796,6 +4796,10 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.EpicLibido)) this.libStat.core.value += Math.round(this.libStat.core.value * 0.35);
 			if (hasPerk(PerkLib.LegendaryLibido)) this.libStat.core.value += Math.round(this.libStat.core.value * 0.5);
 			if (hasPerk(PerkLib.MythicalLibido)) this.libStat.core.value += Math.round(this.libStat.core.value * 0.65);
+			if (hasPerk(PerkLib.ArmorMaster)) {
+				armorDef += Math.round(this.speStat.core.value / 50);
+				armorMDef += Math.round(this.speStat.core.value / 50);
+			}
 			if (hasPerk(PerkLib.EnemyHugeType)) {
 				this.strStat.core.value += Math.round(this.strStat.core.value * 0.25);
 				this.touStat.core.value += Math.round(this.touStat.core.value * 0.3);

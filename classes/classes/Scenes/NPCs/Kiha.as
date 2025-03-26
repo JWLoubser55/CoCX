@@ -170,125 +170,16 @@ public class Kiha extends Monster
 				this.bonusLust = 116;
 				this.level = 21;
 			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 1) {
-				initStrTouSpeInte(110, 105, 110, 70);
-				initWisLibSensCor(70, 70, 55, 32);
-				this.weaponAttack = 38;
-				this.armorDef = 50;
-				this.armorMDef = 30;
-				this.bonusHP = 600;
-				this.bonusLust = 152;
-				this.level = 27;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 2) {
-				initStrTouSpeInte(135, 130, 135, 80);
-				initWisLibSensCor(80, 90, 65, 32);
-				this.weaponAttack = 48;
-				this.armorDef = 65;
-				this.armorMDef = 35;
-				this.bonusHP = 700;
-				this.bonusLust = 188;
-				this.level = 33;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 3) {
-				initStrTouSpeInte(160, 155, 160, 90);
-				initWisLibSensCor(90, 110, 75, 32);
-				this.weaponAttack = 58;
-				this.armorDef = 80;
-				this.armorMDef = 40;
-				this.bonusHP = 800;
-				this.bonusLust = 224;
-				this.level = 39;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 4) {
-				initStrTouSpeInte(185, 180, 185, 100);
-				initWisLibSensCor(100, 130, 85, 32);
-				this.weaponAttack = 68;
-				this.armorDef = 95;
-				this.armorMDef = 45;
-				this.bonusHP = 900;
-				this.bonusLust = 260;
-				this.level = 45;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 5) {
-				initStrTouSpeInte(210, 205, 210, 110);
-				initWisLibSensCor(110, 150, 95, 32);
-				this.weaponAttack = 78;
-				this.armorDef = 110;
-				this.armorMDef = 50;
-				this.bonusHP = 1000;
-				this.bonusLust = 296;
-				this.level = 51;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 6) {
-				initStrTouSpeInte(235, 230, 235, 120);
-				initWisLibSensCor(120, 170, 105, 32);
-				this.weaponAttack = 88;
-				this.armorDef = 125;
-				this.armorMDef = 55;
-				this.bonusHP = 1200;
-				this.bonusLust = 332;
-				this.level = 57;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 7) {
-				initStrTouSpeInte(260, 255, 260, 130);
-				initWisLibSensCor(130, 190, 115, 32);
-				this.weaponAttack = 98;
-				this.armorDef = 140;
-				this.armorMDef = 60;
-				this.bonusHP = 1400;
-				this.bonusLust = 368;
-				this.level = 63;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 8) {
-				initStrTouSpeInte(285, 280, 285, 140);
-				initWisLibSensCor(140, 210, 125, 32);
-				this.weaponAttack = 108;
-				this.armorDef = 155;
-				this.armorMDef = 65;
-				this.bonusHP = 1600;
-				this.bonusLust = 404;
-				this.level = 69;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 9) {
-				initStrTouSpeInte(310, 305, 310, 150);
-				initWisLibSensCor(150, 230, 135, 32);
-				this.weaponAttack = 118;
-				this.armorDef = 170;
-				this.armorMDef = 70;
-				this.bonusHP = 1800;
-				this.bonusLust = 440;
-				this.level = 75;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 10) {
-				initStrTouSpeInte(335, 330, 335, 160);
-				initWisLibSensCor(160, 250, 145, 32);
-				this.weaponAttack = 128;
-				this.armorDef = 185;
-				this.armorMDef = 75;
-				this.bonusHP = 2000;
-				this.bonusLust = 476;
-				this.level = 81;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 11) {
-				initStrTouSpeInte(360, 355, 360, 170);
-				initWisLibSensCor(170, 270, 155, 32);
-				this.weaponAttack = 138;
-				this.armorDef = 200;
-				this.armorMDef = 80;
-				this.bonusHP = 2200;
-				this.bonusLust = 512;
-				this.level = 87;
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 12) {
-				initStrTouSpeInte(385, 380, 385, 180);
-				initWisLibSensCor(180, 290, 165, 32);
-				this.weaponAttack = 148;
-				this.armorDef = 215;
-				this.armorMDef = 85;
-				this.bonusHP = 2400;
-				this.bonusLust = 548;
-				this.level = 93;
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 1 && flags[kFLAGS.KIHA_LVL_UP] < 13) {
+				var mod:int = flags[kFLAGS.KIHA_LVL_UP];
+				initStrTouSpeInte(85+25*mod, 80+25*mod, 85+25*mod, 60+10*mod);
+				initWisLibSensCor(60+10*mod, 50+20*mod, 45+10*mod, 32);
+				this.weaponAttack = 28+10*mod;
+				this.armorDef = 35+15*mod;
+				this.armorMDef = 25+5*mod;
+				this.bonusHP = 500+100*mod;
+				this.bonusLust = 116+36*mod;
+				this.level = 27+6*mod;
 			}
 			if (flags[kFLAGS.KIHA_LVL_UP] == 13) {
 				initStrTouSpeInte(410, 405, 410, 190);
