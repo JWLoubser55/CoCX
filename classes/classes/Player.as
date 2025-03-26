@@ -1742,7 +1742,11 @@ use namespace CoC;
 			return attack;
 		}
 		//Is DualWield
-		public function isDualWieldRanged():Boolean
+	public function isDualWieldMelee():Boolean
+        {
+        	return weapon.isDual()
+	}
+	public function isDualWieldRanged():Boolean
         {
         	return weaponRangePerk == ItemConstants.WT_DUAL_FIREARMS || weaponRangePerk == ItemConstants.WT_DUAL_2H_FIREARMS;
         }
