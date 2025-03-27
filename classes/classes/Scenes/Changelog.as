@@ -229,7 +229,7 @@ public class Changelog extends BaseContent
 			outputText("-Off hand Equipment slot added. It's mutal exclusive with shield slot and can't have item in both offhand and shield slots. Dual Wield perk desc changed to account for adding this slot.\n");
 			outputText("-Dungeon enemies have their general levels and stats adjusted/increased. Dungeons adjusted (new lvl range of enemies): River Dungeon (floor 1-4) (only stats adjustments), Desert Cave (14-24), Den of Desire (48-52), Phoenix Tower (80-89), Hidden Cave (only stats adjustments)\n");
 			outputText("-Due to new general levels and stats for enemies sparrable npc's in camp can reach new height of power (also any npc that go over lvl 100 will gain elite enemy tag, some that had before boss tag would loose it; when going over lvl 200 they would gain champion enemy tag): Isabella (lvl 32-140), Helia (adjusted to lvl 36), Helspawn (just stat adjusting with no lvl change), Zenji ");
-			outputText("(he missed last time PC could go up to 200+ lvl when he sadly sit at max 185 so... he decided to match pc again on top of making his stats better then before - lvl 25-233), Tyrantia (lvl 58-142), Lily (lvl 34-142), Belisa (lvl 20-140), Luna (9-141), Ceani (84-138)\n");
+			outputText("(he missed last time PC could go up to 200+ lvl when he sadly sit at max 185 so... he decided to match pc again on top of making his stats better then before - lvl 25-233), Tyrantia (lvl 58-142), Lily (lvl 34-142), Belisa (lvl 20-140), Luna (9-141), Ceani (84-138), Kiha (39-141), Ember (38-140), Electra (36-138), Etna (36-138)\n");
 			outputText("-After having equipped Silver Cross Necklace PC would be periodicaly visiting Demon Lair place (when req. to get new visit PC would travel there on next Exploration). Each visit brings PC closer to become true demon. To stop vistiing PC must remove somehow Silver Cross Necklace (which been cursed item for no true demon PC would be quite difficult).\n");
 			outputText("-Req. min level to find Celess Senior was removed.\n");
 			outputText("-Golemancer npc in HXD will no longer req. PC to reach specific golemancer perks to unlock metal plates, energy cores or mechanisms sell options. Also metal plates can be now sold in even large amounts at once: x20 and x50\n");
@@ -487,8 +487,20 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -511,6 +523,12 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

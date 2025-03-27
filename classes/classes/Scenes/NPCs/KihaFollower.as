@@ -2075,7 +2075,7 @@ private function warmLoverKihaIntro(output:Boolean = true):void {
                 if (flags[kFLAGS.KIHA_DEFEATS_COUNTER] >= 1) flags[kFLAGS.KIHA_DEFEATS_COUNTER]++;
                 else flags[kFLAGS.KIHA_DEFEATS_COUNTER] = 1;
             }
-            if (flags[kFLAGS.KIHA_LVL_UP] < 13 && flags[kFLAGS.KIHA_DEFEATS_COUNTER] >= flags[kFLAGS.KIHA_LVL_UP] + 4) {
+            if (flags[kFLAGS.KIHA_LVL_UP] < 17 && flags[kFLAGS.KIHA_DEFEATS_COUNTER] >= flags[kFLAGS.KIHA_LVL_UP] + 7) {
                 var addToV3:Number = player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.KIHA_DEFEATS_COUNTER];
                 if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1))
                     player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 3, addToV3);

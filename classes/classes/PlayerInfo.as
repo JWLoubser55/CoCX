@@ -796,19 +796,19 @@ public class PlayerInfo extends BaseContent {
 
 		if (flags[kFLAGS.ETNA_AFFECTION] > 0) {
 			interpersonStats += "<b>Etna Affection:</b> " + Math.round(flags[kFLAGS.ETNA_AFFECTION]) + "%\n";
-			interpersonStats += getNPCLevel("Etna", 30, 0, 11, 6, flags[kFLAGS.ETNA_LVL_UP]);
+			interpersonStats += getNPCLevel("Etna", 36, 0, 17, 6, flags[kFLAGS.ETNA_LVL_UP]);
 		}
 
 		if (flags[kFLAGS.ELECTRA_AFFECTION] > 0) {
 			interpersonStats += "<b>Electra Affection:</b> " + Math.round(flags[kFLAGS.ELECTRA_AFFECTION]) + "%\n";
 			if (flags[kFLAGS.ELECTRA_LVL_UP] == 12) interpersonStats += "<b>Electra lvl:</b> 96 (current max lvl)\n";
 			else if (flags[kFLAGS.ELECTRA_LVL_UP] < 2) interpersonStats += "<b>Electra lvl:</b> 30\n";
-			else interpersonStats += getNPCLevel("Electra", 30, 1, 12, 6, flags[kFLAGS.ELECTRA_LVL_UP]);
+			else interpersonStats += getNPCLevel("Electra", 36, 1, 18, 6, flags[kFLAGS.ELECTRA_LVL_UP]);
 		}
 
 		if (SceneLib.emberScene.emberAffection() > 0) {
             interpersonStats += "<b>Ember Affection:</b> " + Math.round(SceneLib.emberScene.emberAffection()) + "%\n";
-            interpersonStats += getNPCLevel("Ember", 20, 0, 13, 6, flags[kFLAGS.EMBER_LVL_UP]);
+            interpersonStats += getNPCLevel("Ember", 38, 0, 17, 6, flags[kFLAGS.EMBER_LVL_UP]);
 		}
 
 		if (flags[kFLAGS.THE_TRENCH_ENTERED] > 14) {
@@ -861,7 +861,7 @@ public class PlayerInfo extends BaseContent {
 				interpersonStats += "<b>Kiha Affection:</b> " + Math.round(flags[kFLAGS.KIHA_AFFECTION]) + "%\n";
 			if (flags[kFLAGS.KIHA_LVL_UP] == 13) interpersonStats += "<b>Kiha lvl:</b> 99 (current max lvl)\n";
 			else if (flags[kFLAGS.KIHA_LVL_UP] < 1) interpersonStats += "<b>Kiha lvl:</b> 21\n";
-			else interpersonStats += getNPCLevel("Kiha", 21, 0, 13, 6, flags[kFLAGS.KIHA_LVL_UP]);
+			else interpersonStats += getNPCLevel("Kiha", 39, 0, 17, 6, flags[kFLAGS.KIHA_LVL_UP]);
 		}
 
 		if (flags[kFLAGS.KINDRA_FOLLOWER] > 0)
@@ -2859,4 +2859,4 @@ public class PlayerInfo extends BaseContent {
 		doNext(superPerkBuyMenu, 6);
 	}
 }
-}
+}

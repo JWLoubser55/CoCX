@@ -6,6 +6,7 @@ import classes.BodyParts.Hips;
 import classes.BodyParts.Horns;
 import classes.BodyParts.Tail;
 import classes.GlobalFlags.kFLAGS;
+import classes.IMutations.*;
 import classes.Scenes.SceneLib;
 import classes.internals.ChainedDrop;
 
@@ -44,12 +45,15 @@ public class Ember extends Monster
 				var damage:Number = 0;
 				if (wrath >= 100) {
 					wrath -= 100;
-					damage += (((str + weaponAttack) * 2) - rand(player.tou) - player.armorDef);
+					damage += (((str + weaponAttack) * 4) - rand(player.tou) - player.armorDef);
 				}
-				else damage += ((str + weaponAttack) - rand(player.tou) - player.armorDef);
-				if (flags[kFLAGS.EMBER_LVL_UP] >= 1) damage += (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.1));
-				if (flags[kFLAGS.EMBER_LVL_UP] >= 8) damage += (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
-				if (flags[kFLAGS.EMBER_LVL_UP] >= 13) damage *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
+				else damage += (((str + weaponAttack) * 2) - rand(player.tou) - player.armorDef);
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 1) damage += (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 4) damage += (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 7) damage += (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 10) damage *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 13) damage *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 16) damage *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
 				if(damage <= 0) outputText("Ember's claws scrape noisily but harmlessly off your [armor].");
 				else {
 					outputText("Ember's claws rip into you, leaving stinging wounds. ");
@@ -74,16 +78,19 @@ public class Ember extends Monster
 					if (player.hasStatusEffect(StatusEffects.Blizzard)) {
 						player.addStatusValue(StatusEffects.Blizzard, 1, -1);
 						outputText("  The pain as the deadly combination washes over you is indescribable.  Despite it wasn't pure fire attack surrounding you blizzard still managed to block prt of it power and you endure it somehow making even Ember looks amazed to see you still standing. ");
-						damage2 += 140 + (this.inte * 1.5) + rand(140);
+						damage2 += (eBaseIntelligenceDamage() * 3) + 280 + rand(280);
 					}
 					else {
 						outputText("  The pain as the deadly combination washes over you is indescribable.  It's a miracle that you endure it, and even Ember looks amazed to see you still standing. ");
-						damage2 += 200 + (this.inte * 2) + rand(200);
+						damage2 += (eBaseIntelligenceDamage() * 4) + 400 + rand(400);
 					}
 					if (player.hasPerk(PerkLib.FromTheFrozenWaste) || player.hasPerk(PerkLib.ColdAffinity) || player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage2 *= 1.6;
-					if (flags[kFLAGS.EMBER_LVL_UP] >= 1) damage2 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.1));
-					if (flags[kFLAGS.EMBER_LVL_UP] >= 8) damage2 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
-					if (flags[kFLAGS.EMBER_LVL_UP] >= 13) damage2 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
+					if (flags[kFLAGS.EMBER_LVL_UP] >= 1) damage2 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
+					if (flags[kFLAGS.EMBER_LVL_UP] >= 4) damage2 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+					if (flags[kFLAGS.EMBER_LVL_UP] >= 7) damage2 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+					if (flags[kFLAGS.EMBER_LVL_UP] >= 10) damage2 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+					if (flags[kFLAGS.EMBER_LVL_UP] >= 13) damage2 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+					if (flags[kFLAGS.EMBER_LVL_UP] >= 16) damage2 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
 					damage2 = Math.round(damage2);
 					damage2 = player.takeMagicDamage(damage2, true);
 				}
@@ -106,17 +113,20 @@ public class Ember extends Monster
 			}
 			else {
 				var damage3:Number = 0;
-				damage3 += ((str + weaponAttack + 100) - rand(player.tou) - player.armorDef);
-				if (flags[kFLAGS.EMBER_LVL_UP] >= 1) damage3 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.1));
-				if (flags[kFLAGS.EMBER_LVL_UP] >= 8) damage3 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
-				if (flags[kFLAGS.EMBER_LVL_UP] >= 13) damage3 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
+				damage3 += ((((str + weaponAttack) * 2) + 100) - rand(player.tou) - player.armorDef);
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 1) damage3 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 4) damage3 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 7) damage3 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 10) damage3 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 13) damage3 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 16) damage3 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
 				outputText("  The tail slams into you with bone-cracking force, knocking you heavily to the ground even as the spines jab you wickedly.  You gasp for breath in pain and shock, but manage to struggle to your feet again. ");
 				damage3 = player.takePhysDamage(damage3, true);
 			}
 		}
 		
 		//Dragon Force: Tainted Ember only
-		private function dragonFarce():void {
+		private function dragonForce():void {
 			//Effect: Stuns the PC for one turn and deals some damage, not much though. (Note: PC's version of this does something different and Ember has no cooldown to use this again. Obviously do not spam or peeps will rage.)
 			//Description:
 			outputText("Ember bares "+ emberMF("his","her") + " teeth and releases a deafening roar; a concussive blast of force heads straight for you!  ");
@@ -131,9 +141,12 @@ public class Ember extends Monster
 				}
 				createStatusEffect(StatusEffects.StunCooldown,2,0,0,0);
 				var damage4:Number = 10 + rand(10);
-				if (flags[kFLAGS.EMBER_LVL_UP] >= 1) damage4 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.1));
-				if (flags[kFLAGS.EMBER_LVL_UP] >= 8) damage4 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
-				if (flags[kFLAGS.EMBER_LVL_UP] >= 13) damage4 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 1) damage4 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.2));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 4) damage4 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 7) damage4 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 10) damage4 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 13) damage4 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
+				if (flags[kFLAGS.EMBER_LVL_UP] >= 16) damage4 *= (1 + (flags[kFLAGS.EMBER_LVL_UP] * 0.3));
 				damage4 = player.takePhysDamage(damage4, true);
 			}
 		}
@@ -153,7 +166,7 @@ public class Ember extends Monster
 			if (choice == 1) emberTailSlap();
 			if (choice == 2) {
 				if (hasStatusEffect(StatusEffects.StunCooldown)) emberTailSlap();
-				else dragonFarce();
+				else dragonForce();
 			}
 			if (choice > 2) emberAttack();
 		}
@@ -199,36 +212,36 @@ public class Ember extends Monster
 				createBreastRow(Appearance.breastCupInverse("flat"));
 			}
 			if (flags[kFLAGS.EMBER_LVL_UP] < 1) {
-				initStrTouSpeInte(130, 90, 100, 90);
-				initWisLibSensCor(90, 50, 35, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 36;
-				this.armorDef = 54;
-				this.armorMDef = 54;
+				initStrTouSpeInte(520, 360, 400, 360);
+				initWisLibSensCor(360, 200, 140, game.flags[kFLAGS.EMBER_COR]);
+				this.weaponAttack = 70;
+				this.armorDef = 540;
+				this.armorMDef = 540;
 				this.bonusHP = 800;
-				this.bonusLust = 105 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 20;
+				this.bonusLust = 378 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
+				this.level = 38;
 			}
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 1 && flags[kFLAGS.EMBER_LVL_UP] < 13) {
 				var mod:int = flags[kFLAGS.EMBER_LVL_UP];
-				initStrTouSpeInte(130+30*mod, 90+20*mod, 100+15*mod, 90+15*mod);
-				initWisLibSensCor(90+15*mod, 50+10*mod, 35+5*mod, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 36+7*mod;
-				this.armorDef = 54+19*mod;
-				this.armorMDef = 54+19*mod;
-				this.bonusHP = 800+100*mod;
-				this.bonusLust = 105 + 21*mod + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 20+6*mod;
+				initStrTouSpeInte(520+90*mod, 360+60*mod, 400+45*mod, 360+45*mod);
+				initWisLibSensCor(360+45*mod, 200+30*mod, 140+15*mod, game.flags[kFLAGS.EMBER_COR]);
+				this.weaponAttack = 70+35*mod;
+				this.armorDef = 540+57*mod;
+				this.armorMDef = 540+57*mod;
+				this.bonusHP = 800+200*mod;
+				this.bonusLust = 378 + 51*mod + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
+				this.level = 38+6*mod;
 			}
-			if (flags[kFLAGS.EMBER_LVL_UP] == 13) {
-				initStrTouSpeInte(490, 460, 295, 285);
-				initWisLibSensCor(285, 180, 100, game.flags[kFLAGS.EMBER_COR]);
-				this.weaponAttack = 127;
-				this.armorDef = 310;
-				this.armorMDef = 310;
-				this.bonusHP = 3200;
-				this.bonusLust = 378 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
-				this.level = 98;
-			}//level up giving 2x all growns and so follow next level ups's as long each npc break lvl 100 (also makes npc use new better gear)
+			if (flags[kFLAGS.EMBER_LVL_UP] == 17) {
+				initStrTouSpeInte(2050, 1380, 715, 675);
+				initWisLibSensCor(675, 410, 245, game.flags[kFLAGS.EMBER_COR]);
+				this.weaponAttack = 665;
+				this.armorDef = 1236;
+				this.armorMDef = 1236;
+				this.bonusHP = 4200;
+				this.bonusLust = 1245 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
+				this.level = 140;
+			}
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = rand(8) + 70;
@@ -248,37 +261,61 @@ public class Ember extends Monster
 			this.drop = new ChainedDrop().add(useables.D_SCALE, 0.2);
 			this.noFetishDrop = true;
 			this.createPerk(PerkLib.EnemyDragonType, 0, 0, 0, 0);
+			this.createPerk(IMutationsLib.LizanMarrowIM, 1, 0, 0, 0);
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 11 && flags[kFLAGS.EMBER_LVL_UP] < 14) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 1) this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 2) {
-				this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
+				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 				this.createPerk(PerkLib.BasicSelfControl, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.EMBER_LVL_UP] >= 3) this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 3) {
+				this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
+				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,2);
+			}
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 4) {
-				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicToughness, 0, 0, 0, 0);
 				this.createPerk(PerkLib.HalfStepToImprovedSelfControl, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 5) this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 6) {
-				this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
 				this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.EMBER_LVL_UP] >= 7) this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 7) {
+				this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
+				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,3);
+			}
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 8) {
-				this.createPerk(PerkLib.EpicToughness, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
 				this.createPerk(PerkLib.HalfStepToAdvancedSelfControl, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.EMBER_LVL_UP] >= 9) this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 9) this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 10) {
-				this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LimitBreakerBody1stStage, 0, 0, 0, 0);
 				this.createPerk(PerkLib.AdvancedSelfControl, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.EMBER_LVL_UP] >= 11) this.createPerk(PerkLib.LegendaryToughness, 0, 0, 0, 0);
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 11) {
+				this.createPerk(PerkLib.LimitBreakerFlesh1stStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
+			}
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 12) {
-				this.createPerk(PerkLib.LegendaryStrength, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LegendaryToughness, 0, 0, 0, 0);
 				this.createPerk(PerkLib.HalfStepToSuperiorSelfControl, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.EMBER_LVL_UP] >= 13) this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 13) this.createPerk(PerkLib.LimitBreakerPsyche1stStage, 0, 0, 0, 0);
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 14) {
+				this.createPerk(PerkLib.LegendaryStrength, 0, 0, 0, 0);
+				this.createPerk(PerkLib.SuperiorSelfControl, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 15) {
+				this.createPerk(PerkLib.LimitBreakerBody2ndStage, 0, 0, 0, 0);
+				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,4);
+			}
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 16) {
+				this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
+				this.createPerk(PerkLib.HalfStepToPeerlessSelfControl, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 17) this.createPerk(PerkLib.LimitBreakerFlesh2ndStage, 0, 0, 0, 0);
 			checkMonster();
 		}
 		

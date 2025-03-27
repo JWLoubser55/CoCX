@@ -378,8 +378,8 @@ public function PlayerSexElectraPostSpar():void {
 	if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2) {
 		if (flags[kFLAGS.ELECTRA_DEFEATS_COUNTER] >= 1) flags[kFLAGS.ELECTRA_DEFEATS_COUNTER]++;
 		else flags[kFLAGS.ELECTRA_DEFEATS_COUNTER] = 1;
-		if (flags[kFLAGS.ELECTRA_LVL_UP] < 12) {
-			if (flags[kFLAGS.ELECTRA_DEFEATS_COUNTER] == 4 + flags[kFLAGS.ELECTRA_LVL_UP]) {
+		if (flags[kFLAGS.ELECTRA_LVL_UP] < 18) {
+			if (flags[kFLAGS.ELECTRA_DEFEATS_COUNTER] >= 5 + flags[kFLAGS.ELECTRA_LVL_UP]) {
 				if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 3, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 4 + flags[kFLAGS.ELECTRA_LVL_UP]));
 				else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 4 + flags[kFLAGS.ELECTRA_LVL_UP]), 0);
 				flags[kFLAGS.ELECTRA_DEFEATS_COUNTER] = 0;

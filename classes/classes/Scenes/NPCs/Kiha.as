@@ -18,13 +18,16 @@ public class Kiha extends Monster
 	{
 		private function kihaTimeWaster():void {
 			outputText("She supports the axe on a shoulder, cracking her neck and arching her back to stretch herself, giving you an unintended show.  ");
-			player.takeLustDamage(5, true);
+			player.takeLustDamage(50, true);
 		}
 
 		private function finalizeDamage(damage:int):int {
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 1) damage *= (1 + (flags[kFLAGS.KIHA_LVL_UP] * 0.1));
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 8) damage *= (1 + (flags[kFLAGS.KIHA_LVL_UP] * 0.2));
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 13) damage *= (1 + (flags[kFLAGS.KIHA_LVL_UP] * 0.3));
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 4) damage *= (1 + (flags[kFLAGS.KIHA_LVL_UP] * 0.2));
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 7) damage *= (1 + (flags[kFLAGS.KIHA_LVL_UP] * 0.3));
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 10) damage *= (1 + (flags[kFLAGS.KIHA_LVL_UP] * 0.4));
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 13) damage *= (1 + (flags[kFLAGS.KIHA_LVL_UP] * 0.5));
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 17) damage *= (1 + (flags[kFLAGS.KIHA_LVL_UP] * 0.6));
 			return damage;
 		}
 
@@ -39,14 +42,13 @@ public class Kiha extends Monster
 			}
 			else {
 				//Determine damage - str modified by enemy toughness!
-				var damage:int = int((str + weaponAttack) - rand(player.tou) - player.armorDef);
+				var damage:int = int(((str + weaponAttack)*2) - rand(player.tou) - player.armorDef);
 				damage += 5;
 				damage = finalizeDamage(damage);
 				if (player.hasStatusEffect(StatusEffects.Blizzard)) {
 					player.addStatusValue(StatusEffects.Blizzard, 1, -1);
 					damage *= 0.2;
 				}
-				
 				outputText("A torrent of heat bursts from between her fingertips as she thrusts her clenched fist forward, the ball of intense flame writhing and burning with a fury unknown to mankind. With one fell swoop, the combined power of her love, anger, and sorrow pushes you backward, launching you out of the swamp and into Marble's pillowy chest. \"<i>Ara ara,</i>\" she begins, but you've already pushed yourself away from the milky hell-prison as you run back towards ");
 				if(!SceneLib.kihaFollower.followerKiha()) outputText("the swamp");
 				else outputText("the fight");
@@ -59,14 +61,13 @@ public class Kiha extends Monster
 
 		private function kihaFirePunch():void {
 			outputText("The draconic girl throws her trusty weapon into the sodden ground, using the distraction to build up balls of flame around her fists.  She runs towards you, launching herself in your direction with a flurry of punches.\n");
-
 			//Dodged
 			if(player.getEvasionRoll()) {
 				outputText("You manage to jump to the side, intense heat rushing past you as you narrowly avoid her advance.  You twist around, finding that she's reunited with her axe and angrier than before.");
 			}
 			//HIT!
 			else {
-				var damage:int = int((str) - (player.armorDef));
+				var damage:int = int((eBaseStrengthDamage()*2) - (player.armorDef));
 				damage = finalizeDamage(damage);
 				outputText("Before you can react, you're struck by the power of her blows, feeling an intense pain in your chest as each fist makes contact.  With a final thrust, you're pushed backwards onto the ground; the dragoness smiles as she pulls her axe out of the ground, her hands still steaming from the fingertips. ");
 				player.takeFireDamage(damage, true);
@@ -84,7 +85,7 @@ public class Kiha extends Monster
 				outputText("Using your talent for evasion, you manage to sidestep the flames in the nick of time; much to the dragoness' displeasure.");
 			}
 			else {
-				var damage:Number = Math.round(90 + rand(10) + (player.newGamePlusMod() * 30));
+				var damage:Number = eBaseIntelligenceDamage()*2;
 				damage = finalizeDamage(damage);
 				outputText("You try to avoid the flames, but you're too slow!  The inferno slams into you, setting you alight!  You drop and roll on the ground, putting out the fires as fast as you can.  As soon as the flames are out, you climb back up, smelling of smoke and soot. ");
 				player.takeFireDamage(damage, true);
@@ -161,36 +162,36 @@ public class Kiha extends Monster
 		public function Kiha()
 		{
 			if (flags[kFLAGS.KIHA_LVL_UP] < 1) {
-				initStrTouSpeInte(85, 80, 85, 60);
-				initWisLibSensCor(60, 50, 45, 32);
-				this.weaponAttack = 28;
-				this.armorDef = 35;
-				this.armorMDef = 25;
+				initStrTouSpeInte(340, 320, 340, 240);
+				initWisLibSensCor(240, 200, 180, 32);
+				this.weaponAttack = 60;
+				this.armorDef = 350;
+				this.armorMDef = 250;
 				this.bonusHP = 500;
-				this.bonusLust = 116;
-				this.level = 21;
+				this.bonusLust = 419;
+				this.level = 39;
 			}
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 1 && flags[kFLAGS.KIHA_LVL_UP] < 13) {
 				var mod:int = flags[kFLAGS.KIHA_LVL_UP];
-				initStrTouSpeInte(85+25*mod, 80+25*mod, 85+25*mod, 60+10*mod);
-				initWisLibSensCor(60+10*mod, 50+20*mod, 45+10*mod, 32);
-				this.weaponAttack = 28+10*mod;
-				this.armorDef = 35+15*mod;
-				this.armorMDef = 25+5*mod;
+				initStrTouSpeInte(340+50*mod, 320+50*mod, 340+50*mod, 240+20*mod);
+				initWisLibSensCor(240+20*mod, 200+40*mod, 180+20*mod, 32);
+				this.weaponAttack = 60+30*mod;
+				this.armorDef = 350+45*mod;
+				this.armorMDef = 250+30*mod;
 				this.bonusHP = 500+100*mod;
-				this.bonusLust = 116+36*mod;
-				this.level = 27+6*mod;
+				this.bonusLust = 419+66*mod;
+				this.level = 39+6*mod;
 			}
-			if (flags[kFLAGS.KIHA_LVL_UP] == 13) {
-				initStrTouSpeInte(410, 405, 410, 190);
-				initWisLibSensCor(190, 310, 175, 32);
-				this.weaponAttack = 158;
-				this.armorDef = 230;
-				this.armorMDef = 90;
-				this.bonusHP = 2600;
-				this.bonusLust = 584;
-				this.level = 99;
-			}//level up giving 2x all growns and so follow next level ups's as long each npc break lvl 100 (also makes npc use new better gear)
+			if (flags[kFLAGS.KIHA_LVL_UP] == 17) {
+				initStrTouSpeInte(1190, 1170, 1190, 580);
+				initWisLibSensCor(580, 880, 520, 32);
+				this.weaponAttack = 570;
+				this.armorDef = 1115;
+				this.armorMDef = 760;
+				this.bonusHP = 2200;
+				this.bonusLust = 1541;
+				this.level = 141;
+			}
 			this.a = "";
 			this.short = "Kiha";
 			this.imageName = "kiha";
@@ -245,60 +246,78 @@ public class Kiha extends Monster
 				]
 			);
 			this.createPerk(PerkLib.EnemyDragonType, 0, 0, 0, 0);
+			this.createPerk(PerkLib.BasicTranquilness, 0, 0, 0, 0);
+			this.createPerk(IMutationsLib.LizanMarrowIM, 1, 0, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 11 && flags[kFLAGS.KIHA_LVL_UP] < 14) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 1) {
 				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Lifeline, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 2) {
 				this.createPerk(PerkLib.LizanRegeneration, 0, 0, 0, 0);
-				this.createPerk(PerkLib.BasicTranquilness, 0, 0, 0, 0);
+				this.createPerk(PerkLib.HalfStepToImprovedTranquilness, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 3) {
 				this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 				this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 4) {
-				this.createPerk(PerkLib.ImprovedLifeline, 0, 0, 0, 0);
-				this.createPerk(PerkLib.HalfStepToImprovedTranquilness, 0, 0, 0, 0);
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 5) {
 				this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
-				this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
-			}
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 6) {
-				this.createPerk(IMutationsLib.LizanMarrowIM, 1, 0, 0, 0);
 				this.createPerk(PerkLib.ImprovedTranquilness, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 7) {
-				this.createPerk(PerkLib.EpicToughness, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 5) {
+				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,2);
+				this.createPerk(PerkLib.ImprovedLifeline, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 8) {
-				this.createPerk(PerkLib.GreaterLifeline, 0, 0, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 6) {
+				this.createPerk(PerkLib.EpicToughness, 0, 0, 0, 0);
 				this.createPerk(PerkLib.HalfStepToAdvancedTranquilness, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 9) {
-				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,2);
-				this.createPerk(PerkLib.EpicLibido, 0, 0, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 7) {
+				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,3);
+				this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 10) {
-				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 8) {
+				this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
 				this.createPerk(PerkLib.AdvancedTranquilness, 0, 0, 0, 0);
 			}
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 9) {
+				this.createPerk(PerkLib.GreaterLifeline, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LimitBreakerBody1stStage, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 10) {
+				this.createPerk(PerkLib.HalfStepToSuperiorTranquilness, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicLibido, 0, 0, 0, 0);
+			}
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 11) {
+				this.createPerk(PerkLib.LegendaryStrength, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LimitBreakerFlesh1stStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 12) {
+				this.createPerk(PerkLib.LimitBreakerHeart1stStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.SuperiorTranquilness, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 13) {
 				this.createPerk(PerkLib.EpicLifeline, 0, 0, 0, 0);
 				this.createPerk(PerkLib.LegendaryToughness, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 12) {
-				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,3);
-				this.createPerk(PerkLib.HalfStepToSuperiorTranquilness, 0, 0, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 14) {
+				this.createPerk(PerkLib.LimitBreakerBody2ndStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.HalfStepToPeerlessTranquilness, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 13) {
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 15) {
+				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,4);
 				this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
-				this.createPerk(PerkLib.LegendaryLibido, 0, 0, 0, 0);
 			}
-			this.createPerk(PerkLib.Lifeline, 0, 0, 0, 0);
-			IMutationsLib.LizanMarrowIM.acquireMutation(this, "none");
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 16) {
+				this.createPerk(PerkLib.LimitBreakerFlesh2ndStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.PeerlessTranquilness, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 17) {
+				this.createPerk(PerkLib.LegendaryLibido, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LimitBreakerHeart2ndStage, 0, 0, 0, 0);
+			}
 			checkMonster();
 		}
 
