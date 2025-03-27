@@ -262,7 +262,7 @@ public class Ember extends Monster
 			this.noFetishDrop = true;
 			this.createPerk(PerkLib.EnemyDragonType, 0, 0, 0, 0);
 			this.createPerk(IMutationsLib.LizanMarrowIM, 1, 0, 0, 0);
-			if (flags[kFLAGS.EMBER_LVL_UP] >= 11 && flags[kFLAGS.EMBER_LVL_UP] < 14) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 11 && flags[kFLAGS.EMBER_LVL_UP] < 18) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 1) this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			if (flags[kFLAGS.EMBER_LVL_UP] >= 2) {
 				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);

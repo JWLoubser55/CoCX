@@ -915,9 +915,9 @@ public class PlayerInfo extends BaseContent {
 			else interpersonStats += "<b>Neisa Loyalty:</b> 100%\n";
 			if (flags[kFLAGS.NEISA_FOLLOWER] >= 14)  interpersonStats += "<b>Days that passed since last paycheck for Neisa:</b> " + (Math.round(flags[kFLAGS.NEISA_FOLLOWER]) - 7) + " days (If you not pay before 10th day she would leave)\n";
 			else interpersonStats += "<b>Days that passed since last paycheck for Neisa:</b> " + (Math.round(flags[kFLAGS.NEISA_FOLLOWER]) - 7) + " days\n";
-			if (flags[kFLAGS.NEISA_LVL_UP] == 8) interpersonStats += "<b>Neisa lvl:</b> 45 (current max lvl)\n";
+			if (flags[kFLAGS.NEISA_LVL_UP] == 24) interpersonStats += "<b>Neisa lvl:</b> 141 (current max lvl)\n";
 			else if (flags[kFLAGS.NEISA_LVL_UP] == 1) interpersonStats += "<b>Neisa lvl:</b> 3\n";
-			else interpersonStats += getNPCLevel("Neisa", 3, 1, 8, 6, flags[kFLAGS.NEISA_LVL_UP]);
+			else interpersonStats += getNPCLevel("Neisa", 3, 1, 24, 6, flags[kFLAGS.NEISA_LVL_UP]);
 		}
 		if (flags[kFLAGS.OWCAS_ATTITUDE] > 0)
 			interpersonStats += "<b>Owca's Attitude:</b> " + flags[kFLAGS.OWCAS_ATTITUDE] + "\n";
@@ -2859,4 +2859,4 @@ public class PlayerInfo extends BaseContent {
 		doNext(superPerkBuyMenu, 6);
 	}
 }
-}
+}

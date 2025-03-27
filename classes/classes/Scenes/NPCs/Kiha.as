@@ -171,7 +171,7 @@ public class Kiha extends Monster
 				this.bonusLust = 419;
 				this.level = 39;
 			}
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 1 && flags[kFLAGS.KIHA_LVL_UP] < 13) {
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 1 && flags[kFLAGS.KIHA_LVL_UP] < 17) {
 				var mod:int = flags[kFLAGS.KIHA_LVL_UP];
 				initStrTouSpeInte(340+50*mod, 320+50*mod, 340+50*mod, 240+20*mod);
 				initWisLibSensCor(240+20*mod, 200+40*mod, 180+20*mod, 32);
@@ -248,7 +248,7 @@ public class Kiha extends Monster
 			this.createPerk(PerkLib.EnemyDragonType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.BasicTranquilness, 0, 0, 0, 0);
 			this.createPerk(IMutationsLib.LizanMarrowIM, 1, 0, 0, 0);
-			if (flags[kFLAGS.KIHA_LVL_UP] >= 11 && flags[kFLAGS.KIHA_LVL_UP] < 14) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 11 && flags[kFLAGS.KIHA_LVL_UP] < 18) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 1) {
 				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 				this.createPerk(PerkLib.Lifeline, 0, 0, 0, 0);

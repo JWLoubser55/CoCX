@@ -5277,7 +5277,7 @@ use namespace CoC;
 				var percent:Number = 0.01;
 				percent += (0.01 * perkv1(IMutationsLib.SlimeMetabolismIM));
 				EngineCore.HPChange(Math.round(maxHP() * percent), true, false);
-				EngineCore.ManaChange(Math.round(maxHP() * percent));
+				EngineCore.ManaChange(Math.round(maxMana() * percent));
 				EngineCore.changeFatigue(-Math.round(maxFatigue() * percent));
 			}
 			if (perkv1(IMutationsLib.SlimeMetabolismIM) >= 3 && !hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) createStatusEffect(StatusEffects.PostfluidIntakeRegeneration, 0, 0, 0, 0);
@@ -8199,4 +8199,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}

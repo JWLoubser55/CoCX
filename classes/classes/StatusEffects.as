@@ -912,6 +912,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const OrcaHasSmashed:StatusEffectType 		= mk("Orca has armor crushed the target");
 		public static const OrcaHasWackedFinish:StatusEffectType 	= mk("Orca has stunned the target finish");
 		public static const OrcaHasWacked:StatusEffectType 			= mk("Orca has stunned the target");
+		public static const PostfluidIntakeRegen:StatusEffectType   = mk("Postfluid Intake Regene");
 		public static const Pounce:StatusEffectType  				= mk("Pounce");
 		public static const RaijuUltReady:StatusEffectType      	= mk("Raiju Ult Ready");
 		public static const RisingInferno:StatusEffectType      	= mk("Rising inferno");

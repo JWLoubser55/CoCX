@@ -2941,6 +2941,14 @@ import classes.Scenes.Combat.CombatAbilities;
 			return true;
 		}
 
+		public function monsterSlimeMetabolismRecovery():void {
+			var percent:Number = 0.01;
+			percent += (0.01 * perkv1(IMutationsLib.SlimeMetabolismIM));
+			EngineCore.HPChange(Math.round(maxHP() * percent), false, false);
+			EngineCore.ManaChange(Math.round(maxMana() * percent));
+			EngineCore.changeFatigue(-Math.round(maxFatigue() * percent));
+		}
+
 		/**
 		 * <p>Combat.doDamage() Override Series - Part 1 (Ongoing maybe)</p>
 		 * <ul>
@@ -3289,32 +3297,43 @@ import classes.Scenes.Combat.CombatAbilities;
 
 		protected function outputDefaultTeaseReaction(lustDelta:Number):void
 		{
-			if (plural) {
-				if (lustDelta == 0) outputText("\n\n[Themonster] seem unimpressed.");
-				if (lustDelta > 0 && lustDelta < 4) outputText("\n[Themonster] look intrigued by what " + pronoun1 + " see.");
-				if (lustDelta >= 4 && lustDelta < 10) outputText("\n[Themonster] definitely seem to be enjoying the show.");
-				if (lustDelta >= 10 && lustDelta < 15) outputText("\n[Themonster] openly stroke " + pronoun2 + "selves as " + pronoun1 + " watch you.");
-				if (lustDelta >= 15 && lustDelta < 20) outputText("\n[Themonster] flush hotly with desire, " + pronoun3 + " eyes filled with longing.");
-				if (lustDelta >= 20) outputText("\n[Themonster] lick " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " bodies.");
+			if (hasPerk(PerkLib.EnemyConstructType) && !hasPerk(PerkLib.Sentience)) {
+				if (lustDelta == 0) outputText("\n\nYour actions do not seem to leave any visible change on [themonster].");
+				if (lustDelta >= 0 && lustDelta < 10) outputText("\n\nYour actions causes visible cracks over [themonster] rigid body. It would seem lust is a form of energy highly incompatible with this magical construct"+(plural ? "s" : "")+" constitution.");
+				if (lustDelta >= 10 && lustDelta < 20) outputText("\n\nYour action causes the already visible crack in [themonster] structure to expend as lust clash with whatever magic is making the golem"+(plural ? "s" : "")+" function ravaging "+(plural ? "their" : "its")+" body from the inside.");
+				if (lustDelta >= 20) {
+					outputText("\n\nYour action causes visible chunks of [themonster] to fall apart as lust ravage its magical structure just a little more and the construct" + (plural ? "s" : "") + " will break down into rubbles! ");
+					outputText("At time the construct" + (plural ? "s" : "") + " movement seems to stop or freeze causing it to eraticaly halt and resume " + (plural ? "their" : "its") + " action at random.  ");
+				}
 			}
 			else {
-				if (lustDelta == 0) outputText("\n[Themonster] seems unimpressed.");
-				if (lustDelta > 0 && lustDelta < 4) {
-					if (plural) outputText("\n[Themonster] looks intrigued by what " + pronoun1 + " see.");
-					else outputText("\n[Themonster] looks intrigued by what " + pronoun1 + " sees.");
+				if (plural) {
+					if (lustDelta == 0) outputText("\n\n[Themonster] seem unimpressed.");
+					if (lustDelta > 0 && lustDelta < 4) outputText("\n[Themonster] look intrigued by what " + pronoun1 + " see.");
+					if (lustDelta >= 4 && lustDelta < 10) outputText("\n[Themonster] definitely seem to be enjoying the show.");
+					if (lustDelta >= 10 && lustDelta < 15) outputText("\n[Themonster] openly stroke " + pronoun2 + "selves as " + pronoun1 + " watch you.");
+					if (lustDelta >= 15 && lustDelta < 20) outputText("\n[Themonster] flush hotly with desire, " + pronoun3 + " eyes filled with longing.");
+					if (lustDelta >= 20) outputText("\n[Themonster] lick " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " bodies.");
 				}
-				if (lustDelta >= 4 && lustDelta < 10) outputText("\n[Themonster] definitely seems to be enjoying the show.");
-				if (lustDelta >= 10 && lustDelta < 15) {
-					if (plural) outputText("\n[Themonster] openly strokes " + pronoun2 + "selves as " + pronoun1 + " watch you.");
-					else outputText("\n[Themonster] openly strokes " + pronoun2 + "self as " + pronoun1 + " watches you.");
-				}
-				if (lustDelta >= 15 && lustDelta < 20) {
-					if (plural) outputText("\n[Themonster] flush hotly with desire, " + pronoun3 + " eyes filling with longing.");
-					else outputText("\n[Themonster] flushes hotly with desire, " + pronoun3 + " eyes filled with longing.");
-				}
-				if (lustDelta >= 20) {
-					if (plural) outputText("\n[Themonster] licks " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " own bodies.");
-					else outputText("\n[Themonster] licks " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " own body.");
+				else {
+					if (lustDelta == 0) outputText("\n[Themonster] seems unimpressed.");
+					if (lustDelta > 0 && lustDelta < 4) {
+						if (plural) outputText("\n[Themonster] looks intrigued by what " + pronoun1 + " see.");
+						else outputText("\n[Themonster] looks intrigued by what " + pronoun1 + " sees.");
+					}
+					if (lustDelta >= 4 && lustDelta < 10) outputText("\n[Themonster] definitely seems to be enjoying the show.");
+					if (lustDelta >= 10 && lustDelta < 15) {
+						if (plural) outputText("\n[Themonster] openly strokes " + pronoun2 + "selves as " + pronoun1 + " watch you.");
+						else outputText("\n[Themonster] openly strokes " + pronoun2 + "self as " + pronoun1 + " watches you.");
+					}
+					if (lustDelta >= 15 && lustDelta < 20) {
+						if (plural) outputText("\n[Themonster] flush hotly with desire, " + pronoun3 + " eyes filling with longing.");
+						else outputText("\n[Themonster] flushes hotly with desire, " + pronoun3 + " eyes filled with longing.");
+					}
+					if (lustDelta >= 20) {
+						if (plural) outputText("\n[Themonster] licks " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " own bodies.");
+						else outputText("\n[Themonster] licks " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " own body.");
+					}
 				}
 			}
 		}
@@ -3492,9 +3511,9 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (this.mana > maxOverMana()) this.mana = maxMana();
 			//health, soulforce and mana regeneration for monsters
 			if (((hasPerk(PerkLib.Regeneration) || hasPerk(PerkLib.LizanRegeneration) || hasPerk(PerkLib.LustyRegeneration) || perkv1(IMutationsLib.LizanMarrowIM) >= 1 || perkv1(IMutationsLib.DrakeHeartIM) >= 3 || perkv1(IMutationsLib.DrakeBloodIM) >= 1 || perkv1(IMutationsLib.FerasBirthrightIM) >= 1 || perkv1(IMutationsLib.HydraBloodIM) >= 1
-			|| hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration) || hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline) || hasPerk(PerkLib.EpicLifeline)
-			|| hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor) || hasStatusEffect(StatusEffects.MonsterRegen)
-			|| hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP()) || (hasStatusEffect(StatusEffects.MonsterVPT) && (this.HP < maxOverHP()) && (this.HP > minHP()))) {
+			|| perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 || hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration) || hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline)
+			|| hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor)
+			|| hasStatusEffect(StatusEffects.PostfluidIntakeRegen) || hasStatusEffect(StatusEffects.MonsterRegen) || hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP()) || (hasStatusEffect(StatusEffects.MonsterVPT) && (this.HP < maxOverHP()) && (this.HP > minHP()))) {
 				var healingPercent:Number = 0;
 				var temp2:Number = 0;
 				var temp3:Number = 0;
@@ -3525,6 +3544,8 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (perkv1(IMutationsLib.FerasBirthrightIM) >= 3) healingPercent += 2;
 					healingPercent += 2;
 				}
+				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1) healingPercent += perkv1(IMutationsLib.HumanThyroidGlandIM);
+				if (hasStatusEffect(StatusEffects.PostfluidIntakeRegen)) healingPercent += 1 * (perkv1(IMutationsLib.SlimeMetabolismIM)-2);
 				if ((hasPerk(PerkLib.HydraRegeneration) || perkv1(IMutationsLib.HydraBloodIM) >= 1) && !hasStatusEffect(StatusEffects.HydraRegenerationDisabled) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) {
 					if (hasPerk(PerkLib.HydraRegeneration)) healingPercent += 1 * perkv1(PerkLib.HydraRegeneration);
 					if (perkv1(IMutationsLib.HydraBloodIM) >= 1) healingPercent += 1 * perkv1(IMutationsLib.HydraBloodIM);
@@ -3633,6 +3654,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 2) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 3) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 4) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
+				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3) soulforceRecovery += Math.round(maxSoulforce() * 0.01 * (perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
 				soulforceRecovery *= soulforceRecoveryMulti;
 				if (hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) soulforceRecovery = 0;
 				addSoulforce(soulforceRecovery);
@@ -3650,6 +3672,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 2) manaRecovery += 5;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) manaRecovery += 5;
 				if (perkv1(IMutationsLib.DrakeBloodIM) >= 1) manaRecovery += Math.round(maxMana() * 0.01 * perkv1(IMutationsLib.DrakeBloodIM));
+				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3) manaRecovery += Math.round(maxMana() * 0.005 * (perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
 				if (hasPerk(PerkLib.GreyMageApprentice)) manaRecoveryMulti += 0.25;
 				if (hasPerk(PerkLib.GreyMage)) manaRecoveryMulti += 0.5;
 				if (hasPerk(PerkLib.GreyArchmage)) manaRecoveryMulti += 0.75;
@@ -4663,6 +4686,118 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (perkv1(IMutationsLib.MantislikeAgilityIM) >= 1) this.speStat.core.value += (10 * (1 + newGamePlusMod()));
 			if (perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) this.speStat.core.value += (20 * (1 + newGamePlusMod()));
 			if (level > 25) bonusStatsAmp += 0.3*((int)(level-1)/25);
+			if (hasPerk(PerkLib.LimitBreakerFlesh1stStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.1 * spe * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerFlesh2ndStage)) {
+				bonusAscStr += 0.2 * str * newGamePlusMod();
+				bonusAscTou += 0.2 * tou * newGamePlusMod();
+				bonusAscSpe += 0.2 * spe * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerFlesh3rdStage)) {
+				bonusAscStr += 0.3 * str * newGamePlusMod();
+				bonusAscTou += 0.3 * tou * newGamePlusMod();
+				bonusAscSpe += 0.3 * spe * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerPsyche1stStage)) {
+				bonusAscInt += 0.1 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscLib += 0.1 * lib * newGamePlusMod();
+				bonusAscSen += 10 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerPsyche2ndStage)) {
+				bonusAscInt += 0.2 * inte * newGamePlusMod();
+				bonusAscWis += 0.2 * wis * newGamePlusMod();
+				bonusAscLib += 0.2 * lib * newGamePlusMod();
+				bonusAscSen += 20 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerPsyche3rdStage)) {
+				bonusAscInt += 0.3 * inte * newGamePlusMod();
+				bonusAscWis += 0.3 * wis * newGamePlusMod();
+				bonusAscLib += 0.3 * lib * newGamePlusMod();
+				bonusAscSen += 30 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyInitialStage)) {
+				bonusAscTou += 0.05 * tou * newGamePlusMod();
+				bonusAscLib += 0.05 * lib * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodySemiBasicStage)) {
+				bonusAscStr += 0.05 * str * newGamePlusMod();
+				bonusAscSpe += 0.05 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyBasicStage)) {
+				bonusAscStr += 0.05 * str * newGamePlusMod();
+				bonusAscTou += 0.05 * tou * newGamePlusMod();
+				bonusAscSpe += 0.05 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyImprovedStage)) {
+				bonusAscStr += 0.05 * str * newGamePlusMod();
+				bonusAscTou += 0.05 * tou * newGamePlusMod();
+				bonusAscSpe += 0.05 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.05 * wis * newGamePlusMod();
+				bonusAscLib += 0.1 * lib * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodySemiAdvancedStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.05 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.05 * wis * newGamePlusMod();
+				bonusAscLib += 0.05 * lib * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyAdvancedStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.15 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodySuperiorStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.1 * spe * newGamePlusMod();
+				bonusAscInt += 0.1 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscLib += 0.05 * lib * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodySemiPeerlessStage)) {
+				bonusAscStr += 0.15 * str * newGamePlusMod();
+				bonusAscTou += 0.15 * tou * newGamePlusMod();
+				bonusAscSpe += 0.15 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.05 * wis * newGamePlusMod();
+				bonusAscLib += 0.1 * lib * newGamePlusMod();
+				bonusAscSen += 10 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyPeerlessStage)) {
+				bonusAscStr += 0.15 * str * newGamePlusMod();
+				bonusAscTou += 0.15 * tou * newGamePlusMod();
+				bonusAscSpe += 0.15 * spe * newGamePlusMod();
+				bonusAscInt += 0.1 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscLib += 0.05 * lib * newGamePlusMod();
+				bonusAscSen += 10 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyEpicStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.1 * spe * newGamePlusMod();
+				bonusAscInt += 0.2 * inte * newGamePlusMod();
+				bonusAscWis += 0.2 * wis * newGamePlusMod();
+				bonusAscLib += 0.15 * lib * newGamePlusMod();
+				bonusAscSen += 15 * newGamePlusMod();
+			}
 			bonusAscStr += bonusStatsAmp * str * newGamePlusMod();
 			bonusAscTou += bonusStatsAmp * tou * newGamePlusMod();
 			bonusAscSpe += bonusStatsAmp * spe * newGamePlusMod();

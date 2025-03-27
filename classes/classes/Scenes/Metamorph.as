@@ -2184,4 +2184,4 @@ package classes.Scenes {
 			//player.killCocks(-1) - remove all	
 		}
 	}
-}
+}
