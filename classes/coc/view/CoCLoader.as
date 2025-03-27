@@ -113,6 +113,10 @@ public class CoCLoader {
 	[Embed(source="../../../res/charview/tails2.png", mimeType="image/png")]
 	public static var BUNDLE_RES_CHARVIEW_TAILS2_PNG:Class;
 	bundleImage("res/charview/tails2.png", BUNDLE_RES_CHARVIEW_TAILS2_PNG);
+
+	[Embed(source="../../../res/charview/weapons.png", mimeType="image/png")]
+	public static var BUNDLE_RES_CHARVIEW_WEAPONS_PNG:Class;
+	bundleImage("res/charview/weapons.png", BUNDLE_RES_CHARVIEW_WEAPONS_PNG);
 	
 	[Embed(source="../../../res/charview/wings.png", mimeType="image/png")]
 	public static var BUNDLE_RES_CHARVIEW_WINGS_PNG:Class;
