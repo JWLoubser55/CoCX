@@ -822,11 +822,11 @@ public function etnaHenchmanOption2(slot:Number = 1):void
 	if (slot < 21) {
 		outputText("\"<i>Nyaaaaa we hunting together [name]? This is going to be enjoyable!</i>\"\n\n");
 		outputText("Etna is now following you around.\n\n");
-		var strEtna:Number = 100;
-		var libEtna:Number = 170;
+		var strEtna:Number = 210;
+		var libEtna:Number = 380;
 		if (flags[kFLAGS.ETNA_LVL_UP] >= 1) {
-			strEtna += 10 * flags[kFLAGS.ETNA_LVL_UP];
-			libEtna += 20 * flags[kFLAGS.ETNA_LVL_UP];
+			strEtna += 20 * flags[kFLAGS.ETNA_LVL_UP];
+			libEtna += 50 * flags[kFLAGS.ETNA_LVL_UP];
 		}
 		strEtna *= (1 + (0.2 * player.newGamePlusMod()));
 		strEtna = Math.round(strEtna);

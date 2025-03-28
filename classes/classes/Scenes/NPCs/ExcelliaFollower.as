@@ -485,8 +485,8 @@ public function excelliaHenchmanOption2(slot:Number = 1):void {
 		outputText("The [exc race] grins and stretches, pumping herself up.\n\n");
 		outputText("\"<i>Of course, I'll help you out [name]. I'm ready for anything the world throws at us!</i>\"\n\n");
 		outputText("Excellia is now following you around.\n\n");
-		var strExcellia:Number = 290;//tyle i miałby mino king an tym samym levelu ^^
-		var unarmedExcellia:Number = 90;//j.w.
+		var strExcellia:Number = 390;//tyle i miałby mino king an tym samym levelu ^^
+		var unarmedExcellia:Number = 190;//j.w.
 		/*if (flags[kFLAGS.ETNA_LVL_UP] >= 1) {
 			strExcellia += 10 * flags[kFLAGS.ETNA_LVL_UP];
 			unarmedExcellia += 20 * flags[kFLAGS.ETNA_LVL_UP];

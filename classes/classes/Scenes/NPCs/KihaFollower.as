@@ -3203,11 +3203,11 @@ private function warmLoverKihaIntro(output:Boolean = true):void {
 		if (slot < 21) {
 			outputText("\"<i>Hey my idiot. Want me to tarry along and scorch their hides? Why not, give those demons what they deserve!</i>\"\n\n");
             outputText("Kiha is now following you around.\n\n");
-            var strKiha:Number = 85;
-            var meleeAtkKiha:Number = 28
+            var strKiha:Number = 340;
+            var meleeAtkKiha:Number = 60;
             if (flags[kFLAGS.KIHA_LVL_UP] >= 1) {
-                strKiha += 25 * flags[kFLAGS.KIHA_LVL_UP];
-                meleeAtkKiha += 10 * flags[kFLAGS.KIHA_LVL_UP];
+                strKiha += 50 * flags[kFLAGS.KIHA_LVL_UP];
+                meleeAtkKiha += 30 * flags[kFLAGS.KIHA_LVL_UP];
             }
             strKiha *= (1 + (0.2 * player.newGamePlusMod()));
             strKiha = Math.round(strKiha);

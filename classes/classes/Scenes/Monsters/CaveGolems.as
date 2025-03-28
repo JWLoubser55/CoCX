@@ -40,10 +40,9 @@ package classes.Scenes.Monsters
 		{
 			super(false);
 			if (flags[kFLAGS.GOLEM_ENEMY_TYPE] == 20) {
-				this.a = "the ";
 				this.short = "gem golem";
 				this.imageName = "gem golem";
-				this.long = "You're currently fighting the gem golem. It's six feet tall, without any sexual characteristics. It has a gembody covered in cracks. It has no weapons, using its grey gem fists to smash enemies.";
+				this.long = "You're currently fighting the gem golem. It's six feet tall, without any sexual characteristics. It has a gembody covered in cracks and has no weapons, using its grey gem fists to smash enemies.";
 				initStrTouSpeInte(500, 500, 250, 20);
 				initWisLibSensCor(20, 10, 10, 0);
 				this.tallness = 72;
@@ -51,7 +50,9 @@ package classes.Scenes.Monsters
 				this.bonusHP = 1000;
 				this.bonusLust = 86;
 				this.additionalXP = 250;
+				this.weaponName = "gem fists";
 				this.weaponAttack = 100;
+				this.armorName = "gem";
 				this.armorDef = 250;
 				this.armorMDef = 100;
 				this.gems = rand(50) + 500;
@@ -63,9 +64,33 @@ package classes.Scenes.Monsters
 					.add(useables.TPAZGEM, 1)
 					.add(null, 5);
 			}
-			this.weaponName = "gem fists";
+			if (flags[kFLAGS.GOLEM_ENEMY_TYPE] == 21) {
+				this.short = "adamantine golem";
+				this.imageName = "adamantine golem";
+				this.long = "You're currently fighting the adamantine golem. It's six feet tall, without any sexual characteristics. It has a adamantine body and has no weapons, using its grey metalic fists to smash enemies.";
+				initStrTouSpeInte(500, 500, 250, 20);
+				initWisLibSensCor(20, 10, 10, 0);
+				this.tallness = 72;
+				this.level = 89;
+				this.bonusHP = 1000;
+				this.bonusLust = 86;
+				this.additionalXP = 250;
+				this.weaponName = "adamantine fists";
+				this.weaponAttack = 100;
+				this.armorName = "adamantine";
+				this.armorDef = 250;
+				this.armorMDef = 100;
+				this.gems = rand(50) + 200;
+				this.drop = new WeightedDrop()
+					.add(useables.TIN_ORE, 1)
+					.add(useables.COP_ORE, 1)
+					.add(useables.IRONORE, 1)
+					.add(useables.MOONSTO, 1)
+					.add(useables.SKYMETA, 1)
+					.add(null, 5);
+			}
+			this.a = "the ";
 			this.weaponVerb = "smash";
-			this.armorName = "gem";
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			checkMonster();

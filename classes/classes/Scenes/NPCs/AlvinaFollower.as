@@ -1341,9 +1341,9 @@ public function alvinaHenchmanOption2(slot:Number = 1):void
 	if (slot < 21) {
 		outputText("\"<i>Such sloth, you truly do ask me to fight for you? Well I might just humor you and practice my more ‘experimental’ magic on your enemies. New spells requires experiments and I am always eager for new ‘living’ test subjects.</i>\"\n\n");
 		outputText("Alvina is now following you around.\n\n");
-		var strAlvina:Number = 375;
-		var inteAlvina:Number = 480;
-		var libAlvina:Number = 375;
+		var strAlvina:Number = 750;
+		var inteAlvina:Number = 960;
+		var libAlvina:Number = 750;
 		strAlvina *= (1 + (0.2 * player.newGamePlusMod()));
 		strAlvina = Math.round(strAlvina);
 		inteAlvina *= (1 + (0.2 * player.newGamePlusMod()));

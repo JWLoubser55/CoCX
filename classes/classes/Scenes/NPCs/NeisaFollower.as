@@ -223,10 +223,10 @@ public function neisaHenchmanOption2(slot:Number = 1):void {
 		outputText("\"<i>Yeah sure, I will join, just make sure to share the loot.</i>\"\n\n");
 		outputText("Neisa is now following you around.\n\n");
 		var strNeisa:Number = 50;
-		var meleeAtkNeisa:Number = 12;
+		var meleeAtkNeisa:Number = 32;
 		if (flags[kFLAGS.NEISA_LVL_UP] >= 2) {
-			strNeisa += 15 * (flags[kFLAGS.NEISA_LVL_UP] - 1);
-			meleeAtkNeisa += 3 * (flags[kFLAGS.NEISA_LVL_UP] - 1);
+			strNeisa += 45 * (flags[kFLAGS.NEISA_LVL_UP] - 1);
+			meleeAtkNeisa += 24 * (flags[kFLAGS.NEISA_LVL_UP] - 1);
 		}
 		strNeisa *= (1 + (0.2 * player.newGamePlusMod()));
 		strNeisa = Math.round(strNeisa);

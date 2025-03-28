@@ -117,8 +117,8 @@ public function ghoulishVampireServantHenchmanOption2(slot:Number = 1):void
 		outputText("The ghoul gives a toothy smile as you order "+(ghoulGender()?"her":"him")+" to follow you around into battle.\n\n");
 		outputText("\"<i>As my "+player.mf("master","mistress")+" wishes, it will be a pleasure.</i>\"\n\n");
 		outputText(flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+" is now following you around.\n\n");
-		var strGhoulishVampireServant:Number = 100;
-		var meleeAtkGhoulishVampireServant:Number = 50;
+		var strGhoulishVampireServant:Number = 300;
+		var meleeAtkGhoulishVampireServant:Number = 100;
 		strGhoulishVampireServant *= (1 + (0.2 * player.newGamePlusMod()));
 		strGhoulishVampireServant = Math.round(strGhoulishVampireServant);
 		meleeAtkGhoulishVampireServant += (1 + (int)(meleeAtkGhoulishVampireServant / 5)) * player.newGamePlusMod();

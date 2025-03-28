@@ -21,6 +21,53 @@ import classes.Scenes.SceneLib;
 
 	public class Neisa extends Monster
 	{
+		public function bastardswordStab():void {
+			outputText("Neisa stabs you with her bastard sword.  You let out a cry in pain. ");
+			var damage:int = eBaseStrengthDamage() * 2 + eBaseSpeedDamage();
+			if (weaponAttack < 51) damage *= (1 + (weaponAttack * 0.03));
+			else if (weaponAttack >= 51 && weaponAttack < 101) damage *= (2.5 + ((weaponAttack - 50) * 0.025));
+			else if (weaponAttack >= 101 && weaponAttack < 151) damage *= (3.75 + ((weaponAttack - 100) * 0.02));
+			else if (weaponAttack >= 151 && weaponAttack < 201) damage *= (4.75 + ((weaponAttack - 150) * 0.015));
+			else damage *= (5.5 + ((weaponAttack - 200) * 0.01));
+			if (damage < 50) damage = 50;
+			if (wrath >= 800 && rand(2) == 0) {
+				wrath -= 800;
+				damage *= 10;
+			}
+			else if (wrath >= 700 && rand(2) == 0) {
+				wrath -= 700;
+				damage *= 9;
+			}
+			else if (wrath >= 600 && rand(2) == 0) {
+				wrath -= 600;
+				damage *= 8;
+			}
+			else if (wrath >= 500 && rand(2) == 0) {
+				wrath -= 500;
+				damage *= 7;
+			}
+			else if (wrath >= 400 && rand(2) == 0) {
+				wrath -= 400;
+				damage *= 6;
+			}
+			else if (wrath >= 300 && rand(2) == 0) {
+				wrath -= 300;
+				damage *= 5;
+			}
+			else if (wrath >= 200 && rand(2) == 0) {
+				wrath -= 200;
+				damage *= 4;
+			}
+			else if (wrath >= 100 && rand(2) == 0) {
+				wrath -= 100;
+				damage *= 3;
+			}
+			else {
+				wrath -= 50;
+				damage *= 2;
+			}
+			player.takePhysDamage(damage, true);
+		}
 		public function drinkPotion():void {
 			outputText("She grab health potion, pull the cork off and swiftly chug it down.");
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 20) HP += 8640;
@@ -58,13 +105,31 @@ import classes.Scenes.SceneLib;
 		}
 
 		override protected function performCombatAction():void {
-			var choice1:Number = rand(4);
-			if (choice1 < 2) bastardswordSlash();
-			if (choice1 == 2) {
-				if (player.hasStatusEffect(StatusEffects.Stunned)) bastardswordSlash();
-				else ramingWithShield();
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 9) {
+				var choice2:Number = rand(4);
+				if (choice2 == 0) bastardswordSlash();
+				if (choice2 == 1) {
+					if (wrath >= 50) bastardswordStab();
+					else bastardswordSlash();
+				}
+				if (choice2 == 2) {
+					if (player.hasStatusEffect(StatusEffects.Stunned)) {
+						if (wrath >= 50) bastardswordStab();
+						else bastardswordSlash();
+					}
+					else ramingWithShield();
+				}
+				if (choice2 == 3) drinkPotion();
 			}
-			if (choice1 == 3) drinkPotion();
+			else {
+				var choice1:Number = rand(4);
+				if (choice1 < 2) bastardswordSlash();
+				if (choice1 == 2) {
+					if (player.hasStatusEffect(StatusEffects.Stunned)) bastardswordSlash();
+					else ramingWithShield();
+				}
+				if (choice1 == 3) drinkPotion();
+			}
 		}
 
 		override public function defeated(hpVictory:Boolean):void
@@ -191,6 +256,7 @@ import classes.Scenes.SceneLib;
 				this.setPerkValue(IMutationsLib.HumanThyroidGlandIM, 1,2);
 				this.setPerkValue(IMutationsLib.CatLikeNimblenessIM, 1,2);
 				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.JobWarrior, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 10) {
 				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,2);

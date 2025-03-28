@@ -7129,8 +7129,8 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 			if (slot < 21) {
 				outputText("Amily nods her head, \"<i>Sure, I have my darts ready, I can lend a hand</i>\"\n\n");
 				outputText("Amily is now following you around.\n\n");
-				var strAmily:Number = 40;
-				var libAmily:Number = 44;/*
+				var strAmily:Number = 80;
+				var libAmily:Number = 74;/*
 				if (flags[kFLAGS.ETNA_LVL_UP] >= 1) {
 					strAmily += 10 * flags[kFLAGS.ETNA_LVL_UP];
 					libEtna += 20 * flags[kFLAGS.ETNA_LVL_UP];
