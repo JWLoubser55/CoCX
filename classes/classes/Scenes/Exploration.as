@@ -88,7 +88,9 @@ public class Exploration extends BaseContent implements SaveableState
 			ashlands: 0,
 			volcanicCragOuter: 0,
 			
-			lightlessReach: 0
+			lightlessReach: 0,
+			
+			cliffs: 0
 		};
 		private var emptyCounters:Object = deepCopy(counters);
 		public function resetState():void {
@@ -334,6 +336,20 @@ public class Exploration extends BaseContent implements SaveableState
 					.disableIf(!SceneLib.volcanicCrag.isDiscovered(), "Discovered when exploring the Ashlands." +
 							" (Lvl "+SceneLib.volcanicCrag.areaLevel+"+)");
 		}
+		private function btnExploreLightlessReach():ButtonData {
+			return new ButtonData("LightlessReach", SceneLib.lightlessReach.exploreLightlessReach)
+					.hint("Visit the lightless reach. "
+							+ "\n\nTimes explored: " + SceneLib.lightlessReach.timesExplored())
+					.disableIf(!SceneLib.lightlessReach.isDiscovered(), "Discovered when exploring the Tunnels." +
+							" (Lvl "+SceneLib.lightlessReach.areaLevel+"+)");
+		}
+		private function btnExploreCliffs():ButtonData {
+			return new ButtonData("Cliffs", SceneLib.cliffs.exploreCliffs)
+					.hint("Visit the cliffs. "
+							+ "\n\nTimes explored: " + SceneLib.cliffs.timesExplored())
+					.disableIf(!SceneLib.cliffs.isDiscovered(), "Discovered when exploring the Tunnels." +
+							" (Lvl "+SceneLib.cliffs.areaLevel+"+)");
+		}
 		
 		private function canMeetXuviel():Boolean {
 			if (player.necklace == necklaces.SILCNEC && player.gender != 1 && !player.blockingBodyTransformations() && player.hasStatusEffect(StatusEffects.MeetXuviel) && player.statusEffectv1(StatusEffects.MeetXuviel) < 4 && player.statusEffectv2(StatusEffects.MeetXuviel) == 0 &&
@@ -432,17 +448,17 @@ public class Exploration extends BaseContent implements SaveableState
 				bd.add("");
 				bd.add("");
 				// Row 13
-				//bd.add("");
-				//bd.append(btnExploreAshlands());//underdark entrance
-				//bd.append(btnExploreVolcanicCragOuter());
-				//bd.add("");
-				//bd.add("");
+				bd.append(btnExploreLightlessReach());
+				bd.add("");
+				bd.add("");
+				bd.add("");
+				bd.add("");
 				// Row 14
-				//bd.add("");
-				//bd.append(btnExploreAshlands());//cliffs
-				//bd.append(btnExploreVolcanicCragOuter());
-				//bd.add("");
-				//bd.add("");
+				bd.append(btnExploreCliffs());
+				bd.add("");
+				bd.add("");
+				bd.add("");
+				bd.add("");
 				
 				//if (flags[kFLAGS.DISCOVERED_] > 0) addButton(5, "",	//Wuxia related area - ?latająca wyspa?
 				//if (flags[kFLAGS.DISCOVERED_] > 0) addButton(9, "",	//Wuxia related area - ?latająca wyspa?
@@ -543,12 +559,11 @@ public class Exploration extends BaseContent implements SaveableState
 			
 			btnExploreTundra().applyTo(button(10));
 			btnExploreAshlands().applyTo(button(11));
-			//12 - darkness area
-			//13 - lightning area
+			btnExploreLightlessReach().applyTo(button(12));
+			btnExploreCliffs().applyTo(button(13));
 			
 			addButton(4, "Next", explorePageIII);
 			addButton(9, "Previous", goBackToPageI);
-			if (debug) addButton(13, "Debug", exploreDebug.doExploreDebug);
 			addButton(14, "Back", playerMenu);
 		}
 		
@@ -573,7 +588,6 @@ public class Exploration extends BaseContent implements SaveableState
 			
 			addButton(4, "Next", goBackToPageIV);
 			addButton(9, "Previous", goBackToPageII);
-			if (debug) addButton(13, "Debug", exploreDebug.doExploreDebug);
 			addButton(14, "Back", playerMenu);
 		}
 		
@@ -588,7 +602,6 @@ public class Exploration extends BaseContent implements SaveableState
 			
 			addButton(4, "Next", goBackToPageV);
 			addButton(9, "Previous", goBackToPageIII);
-			if (debug) addButton(13, "Debug", exploreDebug.doExploreDebug);
 			addButton(14, "Back", playerMenu);
 		}
 		
@@ -1804,4 +1817,4 @@ public class Exploration extends BaseContent implements SaveableState
 		}
 
 	}
-}
+}

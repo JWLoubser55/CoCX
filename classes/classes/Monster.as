@@ -30,6 +30,7 @@ import classes.Items.WeaponLib;
 import classes.Items.WeaponRangeLib;
 import classes.Items.Weapons.HuntsmansCane;
 import classes.Races.HumanRace;
+import classes.Scenes.Areas.Caves.Matango;
 import classes.Scenes.Areas.DeepSea.JuvenileAbyssalShark;
 import classes.Scenes.Areas.Forest.Alraune;
 import classes.Scenes.Areas.Ocean.UnderwaterSharkGirl;
@@ -4201,7 +4202,40 @@ import classes.Scenes.Combat.CombatAbilities;
 					if(player.lust >= (player.maxLust() * 0.33) && player.lust < (player.maxLust() * 0.66)) outputText("The pollen in the air is getting to you. ");
 					if(player.lust >= (player.maxLust() * 0.66)) outputText("You flush bright red with desire as the lust in the air worms its way inside you. ");
 				}
-				player.takeLustDamage(((eBaseLibidoDamage() / 40) + int(player.lib/20 + player.cor/25)), true);
+				if (this is Matango) {
+					if (!player.isRaceCached(Races.ALRAUNE) && !player.isRaceCached(Races.GARGOYLE)/* || !player.isRaceCached(Races.automaton)*/) {
+						if (statusEffectv1(StatusEffects.ImmolationDoT) < 4) outputText("The spores in the air gradually increase your arousal. ");
+						if (statusEffectv1(StatusEffects.ImmolationDoT) == 4) outputText("The spores in the air are getting to you. ");
+						if (statusEffectv1(StatusEffects.ImmolationDoT) == 5) outputText("The spores in the air are driving you mad with desire, you barely can hold yourself back anymore from jumping into the mushroom girl’s lap. ");
+						if (statusEffectv1(StatusEffects.ImmolationDoT) == 6) outputText("Unable to fully control yourself anymore, you begin walking toward the mushroom girl of your own volition! If this continues, you will give in fully! ");
+						if (statusEffectv1(StatusEffects.ImmolationDoT) == 7) {
+							if (player.isRace(Races.RAIJU, 2) || player.isRace(Races.THUNDERBIRD) || player.isRace(Races.KIRIN)) {
+								outputText("You would lose all semblance of control to leap into the mushroom girl open embrace, but this state of mind is nothing new to you. You entered this battle determined to rape your opponent by any means necessary in order to deliver your electric payload. ");
+								outputText("A lewd, sinister smile breaks on your face as you become more feral and crazier by the second. Realizing this, the mushroom girl backs away in fear. ");
+								if (silly()) outputText("It was at this moment that the mushroom girl realized… she fucked up. ");
+								player.lust = Math.round(player.maxLust()*0.81);
+								var buff:Number = 1;
+								if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2
+								player.statStore.replaceBuffObject({'spe.mult':Math.round(speStat.mult.value)*buff}, 'Supercharged', { text: 'Supercharged!' });
+								CoC.instance.mainView.statsView.refreshStats(CoC.instance);
+								CoC.instance.mainView.statsView.showStatUp('spe');
+								outputText("\n\nYour body suddenly begins to generate a massive amount of electricity and the barely contained lightning uncontrollably starts surging left and right around you in short bursts as what's left of your sanity completely gets washed away by the supercharged state. ");
+							}
+							else {
+								outputText("You lose all semblance of control and leap into the mushroom girl’s open embrace. All you can think of with your desire-overloaded brain is sex! ");
+								player.lust = player.maxOverLust();
+								EngineCore.doNext(SceneLib.combat.endLustLoss);
+								return;
+							}
+						}
+						if (statusEffectv1(StatusEffects.ImmolationDoT) > 7 && player.statStore.hasBuff('Supercharged')) outputText("Well you would normally become crazier right now except you are already in the supercharged state. There's no way you can become more lustcrazed than you already are. ");
+						addStatusValue(StatusEffects.LustAura,1,1);
+					}
+				}
+				if (statusEffectv1(StatusEffects.ImmolationDoT) < 8) {
+					if (this is Matango) player.takeLustDamage(((eBaseLibidoDamage() / 10) + int(player.lib/10 + player.cor/10)), true);
+					else player.takeLustDamage(((eBaseLibidoDamage() / 40) + int(player.lib/20 + player.cor/25)), true);
+				}
 				outputText("\n\n");
 			}
 			//immolation DoT

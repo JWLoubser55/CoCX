@@ -91,6 +91,10 @@ public class SceneLib {
 
     public static var volcanicCrag:VolcanicCrag = new VolcanicCrag();
 
+    public static var lightlessReach:LightlessReach = new LightlessReach();
+
+    public static var cliffs:Cliffs = new Cliffs();
+
     public static var brigidScene:BrigidScene = new BrigidScene();
 
     public static var d3:D3 = new D3();

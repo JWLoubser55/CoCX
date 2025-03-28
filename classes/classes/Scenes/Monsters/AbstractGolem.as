@@ -17,6 +17,14 @@ public class AbstractGolem extends Monster {
 			if (player.hasPerk(PerkLib.FromTheFrozenWaste) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 3;
 			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 0.3;
 		}
+		if (subtype == 3) {
+			if (player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.DarknessAffinity)) damage *= 0.3;
+			if (player.hasPerk(PerkLib.LightningAffinity)) damage *= 3;
+		}
+		if (subtype == 4) {
+			if (player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.DarknessAffinity)) damage *= 3;
+			if (player.hasPerk(PerkLib.LightningAffinity)) damage *= 0.3;
+		}
 		//Dodge
 		if (damage <= 0 || (player.getEvasionRoll())) outputText(" You slide underneath the surprise swing!");
 		else
@@ -36,6 +44,14 @@ public class AbstractGolem extends Monster {
 		if (subtype == 2) {
 			if (player.hasPerk(PerkLib.FromTheFrozenWaste) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 3;
 			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 0.3;
+		}
+		if (subtype == 3) {
+			if (player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.DarknessAffinity)) damage *= 0.3;
+			if (player.hasPerk(PerkLib.LightningAffinity)) damage *= 3;
+		}
+		if (subtype == 4) {
+			if (player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.DarknessAffinity)) damage *= 3;
+			if (player.hasPerk(PerkLib.LightningAffinity)) damage *= 0.3;
 		}
 		//Dodge
 		if (damage <= 0 || (player.getEvasionRoll())) outputText(" You slide underneath the surprise swings!");
@@ -68,6 +84,14 @@ public class AbstractGolem extends Monster {
 		if (subtype == 2) {
 			if (player.hasPerk(PerkLib.FromTheFrozenWaste) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 3;
 			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 0.3;
+		}
+		if (subtype == 3) {
+			if (player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.DarknessAffinity)) damage *= 0.3;
+			if (player.hasPerk(PerkLib.LightningAffinity)) damage *= 3;
+		}
+		if (subtype == 4) {
+			if (player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.DarknessAffinity)) damage *= 3;
+			if (player.hasPerk(PerkLib.LightningAffinity)) damage *= 0.3;
 		}
 		if (damage <= 0 || rand(100) < 25 || player.getEvasionRoll()) outputText(" You're able to sidestep it just in time.");
 		else

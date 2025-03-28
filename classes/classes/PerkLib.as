@@ -4906,7 +4906,7 @@ public class PerkLib
 		public static const AcidVulnerability:PerkType = mk("Acid Vulnerability", "Acid Vulnerability", "");//NYU
 		public static const AlwaysSuccesfullRunaway:PerkType = mk("Always Succesfull Runaway", "Always Succesfull Runaway", "");
 		public static const DarknessNature:PerkType = mk("Darkness Nature", "Darkness Nature", "");
-		public static const DarknessVulnerability:PerkType = mk("Darkness Vulnerability", "Darkness Vulnerability", "");//NYU
+		public static const DarknessVulnerability:PerkType = mk("Darkness Vulnerability", "Darkness Vulnerability", "");
 		public static const DieHardHP:PerkType = mk("DieHard HP", "DieHard HP", "");
 		public static const EarthNature:PerkType = mk("Earth Nature", "Earth Nature", "");
 		public static const EarthVulnerability:PerkType = mk("Earth Vulnerability", "Earth Vulnerability", "");//NYU
@@ -4936,6 +4936,7 @@ public class PerkLib
 		public static const EnemyUndeadType:PerkType = mk("Undead-type enemy", "Undead-type enemy", "");
 		public static const FireNature:PerkType = mk("Fire Nature", "Fire Nature", "");
 		public static const FireVulnerability:PerkType = mk("Fire Vulnerability", "Fire Vulnerability", "");
+		public static const HiveMind:PerkType = mk("Hive Mind", "Hive Mind", "");
 		public static const IceNature:PerkType = mk("Ice Nature", "Ice Nature", "");
 		public static const IceVulnerability:PerkType = mk("Ice Vulnerability", "Ice Vulnerability", "");
 		public static const LightningNature:PerkType = mk("Lightning Nature", "Lightning Nature", "");
@@ -4951,6 +4952,7 @@ public class PerkLib
 		public static const OverMaxMana:PerkType = mk("OverMax Mana", "OverMax Mana", "");//NYU
 		public static const OverMaxSoulforce:PerkType = mk("OverMax Soulforce", "OverMax Soulforce", "");//NYU
 		public static const OverMaxWrath:PerkType = mk("OverMax Wrath", "OverMax Wrath", "");//NYU
+		public static const PhysicalDamageResistance:PerkType = mk("Physical Damage Resistance", "Physical Damage Resistance", "");
 		public static const PoisonNature:PerkType = mk("Poison Nature", "Poison Nature", "");
 		public static const PoisonVulnerability:PerkType = mk("Poison Vulnerability", "Poison Vulnerability", "");
 		public static const Sentience:PerkType = mk("Sentience", "Sentience", "");
@@ -5006,6 +5008,7 @@ public class PerkLib
 			ePerkL.push(EnemyUndeadType);
 			ePerkL.push(FireNature);
 			ePerkL.push(FireVulnerability);
+			ePerkL.push(HiveMind);
 			ePerkL.push(IceNature);
 			ePerkL.push(IceVulnerability);
 			ePerkL.push(LightningNature);
@@ -5020,6 +5023,7 @@ public class PerkLib
 			ePerkL.push(OverMaxMana);
 			ePerkL.push(OverMaxSoulforce);
 			ePerkL.push(OverMaxWrath);
+			ePerkL.push(PhysicalDamageResistance);
 			ePerkL.push(PoisonNature);
 			ePerkL.push(PoisonVulnerability);
 			ePerkL.push(Sentience);

@@ -22,6 +22,7 @@ use namespace CoC;
 	{
 		public var darkelfScene:DarkElfScene = new DarkElfScene();
 		public var cavewyrmScene:CaveWyrmScene = new CaveWyrmScene();
+		public var matangoScene:MatangoScene = new MatangoScene();
 		public var displacerbeastScene:DisplacerBeastScene = new DisplacerBeastScene();
 		public var darkslimeScene:DarkSlimeScene = new DarkSlimeScene();
 
@@ -102,6 +103,14 @@ use namespace CoC;
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					cavewyrmScene.berserkingCaveWyrmEncounter();
+				}
+			}, {
+				name: "matango",
+				label : "Matango",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					matangoScene.mantangoEncounter();
 				}
 			},/* {
 				name: "darkelf",
@@ -196,6 +205,14 @@ use namespace CoC;
 					displacerbeastScene.displacerBeastEncounter();
 				}
 			},*/{
+				name: "adamantinegolem",
+				label : "Adamantine Golem",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					adamantineGolemEncount()
+				}
+			}, {
 				name: "",
 				label : 'Walk',
 				kind : 'walk',
@@ -410,6 +427,12 @@ use namespace CoC;
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 20;
 			startCombat(new CaveGolems());
 		}
-
+		private function adamantineGolemEncount():void {
+			clearOutput();
+			outputText("As you take a stroll, a golem emerges from the nearby shadow. Looks like you've encountered an adamantine golem! You ready your [weapon] for a fight!");
+			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_GOLEMS);
+			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 21;
+			startCombat(new CaveGolems());
+		}
 	}
 }

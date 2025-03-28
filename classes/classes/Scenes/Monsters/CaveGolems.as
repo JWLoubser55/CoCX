@@ -68,19 +68,19 @@ package classes.Scenes.Monsters
 				this.short = "adamantine golem";
 				this.imageName = "adamantine golem";
 				this.long = "You're currently fighting the adamantine golem. It's six feet tall, without any sexual characteristics. It has a adamantine body and has no weapons, using its grey metalic fists to smash enemies.";
-				initStrTouSpeInte(500, 500, 250, 20);
+				initStrTouSpeInte(700, 700, 350, 20);
 				initWisLibSensCor(20, 10, 10, 0);
 				this.tallness = 72;
 				this.level = 89;
-				this.bonusHP = 1000;
-				this.bonusLust = 86;
-				this.additionalXP = 250;
+				this.bonusHP = 1200;
+				this.bonusLust = 109;
+				this.additionalXP = 350;
 				this.weaponName = "adamantine fists";
-				this.weaponAttack = 100;
+				this.weaponAttack = 130;
 				this.armorName = "adamantine";
-				this.armorDef = 250;
+				this.armorDef = 100;
 				this.armorMDef = 100;
-				this.gems = rand(50) + 200;
+				this.gems = rand(50) + 100;
 				this.drop = new WeightedDrop()
 					.add(useables.TIN_ORE, 1)
 					.add(useables.COP_ORE, 1)
@@ -88,6 +88,7 @@ package classes.Scenes.Monsters
 					.add(useables.MOONSTO, 1)
 					.add(useables.SKYMETA, 1)
 					.add(null, 5);
+				this.createPerk(PerkLib.PhysicalDamageResistance, 0, 0, 0, 0);
 			}
 			this.a = "the ";
 			this.weaponVerb = "smash";
