@@ -610,6 +610,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const PocketWatch:StatusEffectType                   	= mk("PocketWatch");
 		public static const PostAkbalSubmission:StatusEffectType            = mk("Post Akbal Submission");
 		public static const PostAnemoneBeatdown:StatusEffectType            = mk("Post Anemone Beatdown");
+		public static const PostAutomatonBeatdown:StatusEffectType          = mk("Post Automaton Beatdown");
 		public static const PostfluidIntakeRegeneration:StatusEffectType    = mk("Postfluid Intake Regeneration");
 		public static const PureCampJojo:StatusEffectType                   = mk("PureCampJojo");
 		public static const RaijuLightningStatus:StatusEffectType           = mk("Raiju lightning status");

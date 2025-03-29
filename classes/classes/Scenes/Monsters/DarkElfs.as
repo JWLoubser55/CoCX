@@ -71,9 +71,7 @@ public class DarkElfs extends Monster
 			else {
 				outputText("The dark elf smirks wickedly before shooting an arrow straight into your wing. You fall, unable to fly, and crash into the ground. ");
 				player.removeStatusEffect(StatusEffects.Flying);
-				var damage:Number = 0;
-				damage += this.str * 2.5;
-				damage += eBaseSpeedDamage() * 2.5;
+				var damage:Number = eBaseSpeedDamage() * 4 + eBaseStrengthDamage() * 2;
 				if (damage < 10) damage = 10;
 				if (this.weaponRangeAttack < 51) damage *= (1 + (this.weaponRangeAttack * 0.03));
 				else if (this.weaponRangeAttack >= 51 && this.weaponRangeAttack < 101) damage *= (2.5 + ((this.weaponRangeAttack - 50) * 0.025));
@@ -147,7 +145,7 @@ public class DarkElfs extends Monster
 					range: RANGE_RANGED,
 					tags:[TAG_WEAPON],
 					condition: function():Boolean {
-						return player.isFlying()
+						return (player.isFlying() && player.statusEffectv2(StatusEffects.Flying) == 0)
 					},
 					weight: Infinity
 				}

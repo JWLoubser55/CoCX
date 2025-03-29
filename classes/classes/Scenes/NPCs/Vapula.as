@@ -494,7 +494,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 			outputText("Who do you invite?");
 			addButton(0, "Amily", vapulaAndAmilyThreesome)
 				.disableIf(!player.hasCock(), "You need a <b>REAL</b> cock for that.")
-				.disableIf(amilyScene.amilyFollower() && !amilyScene.amilyCorrupt(),
+				.disableIf(!amilyScene.amilyCorrupt(),
 					"You need a corrupted mouse for this.", "???");
 			addButton(1, "Jojo", vapulaJojoThreesomes)
 				.disableIf((!jojoScene.campCorruptJojo() || flags[kFLAGS.JOJO_BIMBO_STATE] == 3 || JojoScene.monk == JojoScene.JOJO_NOT_MET), "You need a corrupted mouse with a dick.", "???");

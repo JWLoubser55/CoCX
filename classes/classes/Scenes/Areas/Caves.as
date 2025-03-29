@@ -23,6 +23,7 @@ use namespace CoC;
 		public var darkelfScene:DarkElfScene = new DarkElfScene();
 		public var cavewyrmScene:CaveWyrmScene = new CaveWyrmScene();
 		public var matangoScene:MatangoScene = new MatangoScene();
+		public var automatonScene:AutomatonScene = new AutomatonScene();
 		public var displacerbeastScene:DisplacerBeastScene = new DisplacerBeastScene();
 		public var darkslimeScene:DarkSlimeScene = new DarkSlimeScene();
 
@@ -60,15 +61,13 @@ use namespace CoC;
 				chance: 30,
 				call: discoverTundra
 			}, {
-				name: "discoverebonlab",
-				label : "Ebon Labyrinth",
+				name: "discovertunnels",
+				label : "New Area",
 				kind  : 'place',
 				unique: true,
-				when: function ():Boolean {
-					return flags[kFLAGS.EBON_LABYRINTH] < 1
-				},
+				when: canDiscoverTunnels,
 				chance: 30,
-				call: SceneLib.dungeons.ebonlabyrinth.ebonlabyrinthdiscovery
+				call: discoverTunnels
 			}, {
 				name: "gunparts",
 				label : "Gun Parts",
@@ -174,6 +173,24 @@ use namespace CoC;
 					return player.hasKeyItem("Old Pickaxe") > 0 && Forgefather.materialsExplained
 				},
 				call: cavesMine
+			}, {
+				name: "discoverebonlab",
+				label : "Ebon Labyrinth",
+				kind  : 'place',
+				unique: true,
+				when: function ():Boolean {
+					return flags[kFLAGS.EBON_LABYRINTH] < 1
+				},
+				chance: 30,
+				call: SceneLib.dungeons.ebonlabyrinth.ebonlabyrinthdiscovery
+			}, {
+				name: "automaton",
+				label : "Automaton",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					automatonScene.automatonEncounter();
+				}
 			}, /*{
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					//antworker.();
@@ -259,8 +276,8 @@ use namespace CoC;
 		public function discoverTunnels():void {
 			SceneLib.exploration.counters.tunnels = 1;
 			clearOutput();
-			outputText("\n\n");
-			outputText("<b>You've discovered the Tunnels!</b>");
+			outputText("As you explore the caves you step into a path that does not seem to be naturaly made. Examining it properly reveals this area has been dug through by some collosal beast. Whatever monsters awaits you down there in the darkness of these tunnels is bound to be far more dangerous.\n\n");
+			outputText("<b>You have found the tunnels!</b>");
 			endEncounter(120);
 		}
 		

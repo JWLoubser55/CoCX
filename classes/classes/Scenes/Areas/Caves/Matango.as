@@ -7,15 +7,13 @@ package classes.Scenes.Areas.Caves
 import classes.*;
 import classes.BodyParts.*;
 import classes.GlobalFlags.kFLAGS;
-import classes.Scenes.Areas.Caves.MatangoScene;
+import classes.Scenes.SceneLib;
 import classes.internals.*;
 
 use namespace CoC;
 
 	public class Matango extends Monster
 	{
-		public var matangoScene:MatangoScene = new MatangoScene();
-		
 		override public function playerBoundStruggle():Boolean{
 			clearOutput();
 			//33% chance to break free + up to 50% chance for strength
@@ -86,12 +84,12 @@ use namespace CoC;
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			matangoScene.winningOverMantango();
+			SceneLib.matangoScene.winningOverMantango();
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			matangoScene.losingToMantango();
+			SceneLib.matangoScene.losingToMantango();
 		}
 		
 		public function Matango() 
@@ -135,7 +133,6 @@ use namespace CoC;
 					add(consumables.BLADEFERN,1/12).
 					add(consumables.RAUNENECT,1/12).
 					add(consumables.HEALHERB,1/7);
-			this.tailRecharge = 0;
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.HiveMind, 0.5, 0, 0, 0);

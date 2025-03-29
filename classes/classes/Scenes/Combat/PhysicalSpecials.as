@@ -2385,7 +2385,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function takeFlightGoglinMech():void {
 		clearOutput();
 		outputText("You activate the fly function and get some distance from the ground.\n\n");
-		player.createStatusEffect(StatusEffects.Flying, 5, 0, 0, 0);
+		player.createStatusEffect(StatusEffects.Flying, 5, 10, 0, 0);
 		if (!player.hasPerk(PerkLib.Resolute)) {
 			player.createStatusEffect(StatusEffects.FlyingNoStun, 0, 0, 0, 0);
 			player.createPerk(PerkLib.Resolute, 0, 0, 0, 0);

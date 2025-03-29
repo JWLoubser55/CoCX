@@ -5079,6 +5079,22 @@ public class Combat extends BaseContent {
 							if (crit) outputText(" <b>*Critical Hit!*</b>");
                         }
 					}
+					if (player.weaponRange == weaponsrange.ENERGYG) {
+						outputText(" ");
+                        doFireDamage(damage, true, true, ignoreDR);
+						if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+						if (crit) outputText(" <b>*Critical Hit!*</b>");
+                        for (var enegAttack:int = 0; enegAttack < maxFirearmAttacks; enegAttack++) {
+                            outputText(" ");
+                            doFireDamage(damage, true, true, ignoreDR);
+							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+							if (crit) outputText(" <b>*Critical Hit!*</b>");
+							outputText(" ");
+                            doFireDamage(damage, true, true, ignoreDR);
+							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+							if (crit) outputText(" <b>*Critical Hit!*</b>");
+                        }
+					}
                 }
                 //Lust raising weapon bonuses
                 if (monster.lustVuln > 0) {
@@ -5286,6 +5302,7 @@ public class Combat extends BaseContent {
 			if (mininails2 > 20) mininails2 = 20;
             player.ammo = mininails;
 		}
+		if (player.weaponRange == weaponsrange.ENERGYG) player.ammo = 20;
         if (player.weaponRange == weaponsrange.TWINGRA) player.ammo = 12;
         if (player.weaponRange == weaponsrange.IVIARG_) player.ammo = 12;
         if (player.weaponRange == weaponsrange.TWINSIXS) player.ammo = 12;
@@ -12752,53 +12769,70 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         }
         //Flying
         if (player.isFlying()) {
-			if (player.statusEffectv2(StatusEffects.Flying) == 0) {
-				if (!player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) player.addStatusValue(StatusEffects.Flying, 1, -1);
-				if (player.fatigueLeft() < flyingWithWingsCost()) {
-					player.removeStatusEffect(StatusEffects.Flying);
-					outputText("<b>You land gently on the ground, been too tired to keep yourself aloft. </b>\n\n");
-				}
-				else fatigue(flyingWithWingsCost(), USEFATG_PHYSICAL);
-			}
-            if (player.statusEffectv2(StatusEffects.Flying) == 1) {
-				if (player.soulforce < flyingSwordUseCost()) {
-					player.removeStatusEffect(StatusEffects.Flying);
-					outputText("<b>You land gently on the ground, having too little soulforce to keep yourself aloft. </b>\n\n");
-				}
-				else player.soulforce -= flyingSwordUseCost();
-			}
-			if (player.statusEffectv2(StatusEffects.Flying) == 2) {
-				if (player.soulforce < flyingWithSoulforceCost()) {
-					player.removeStatusEffect(StatusEffects.Flying);
-					outputText("<b>You realize that your SoulForce can't sustain your flight any longer. You land lightly, sighing as the drain on your Soul stops. </b>\n\n");
-				}
-				else player.soulforce -= flyingWithSoulforceCost();
-			}
-			if (player.statusEffectv2(StatusEffects.Flying) == 3) {
-				if (player.soulforce < (25 * soulskillCost() * soulskillcostmulti()) || player.mana < spellCost(50 * combat.mspecials.kitsuneskill2Cost())) {
-					player.removeStatusEffect(StatusEffects.Flying);
-					outputText("<b>You realize that your can't sustain your flight any longer. You land lightly, sighing as the drain on your soulforce and mana stops. </b>\n\n");
-				}
-				else {
-					player.soulforce -= (25 * soulskillCost() * soulskillcostmulti());
-					player.mana -= spellCost(50 * combat.mspecials.kitsuneskill2Cost());
-				}
-			}
             if (player.statusEffectv1(StatusEffects.Flying) >= 0) outputText("<b>You keep out of reach, flying circles in the air around your opponent.</b>\n\n");
             else {
 				if (player.statusEffectv2(StatusEffects.Flying) == 0) {
-					if (player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0) {
-						outputText("<b>You hear the fuel gauge beeping, and you land your mech before you run out of fuel completely.</b>\n\n");
-						player.createStatusEffect(StatusEffects.CooldownJetpack, 3, 0, 0, 0);
+					if (!player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) player.addStatusValue(StatusEffects.Flying, 1, -1);
+					if (player.fatigueLeft() < flyingWithWingsCost()) {
+						player.removeStatusEffect(StatusEffects.Flying);
+						if (player.hasStatusEffect(StatusEffects.FlyingNoStun)) {
+							player.removeStatusEffect(StatusEffects.FlyingNoStun);
+							player.removePerk(PerkLib.Resolute);
+						}
+						monster.removeStatusEffect(StatusEffects.MonsterAttacksDisabled);
+						outputText("<b>You land gently on the ground, been too tired to keep yourself aloft. </b>\n\n");
 					}
-					else outputText("<b>You land, too tired to keep flying.</b>\n\n");
+					else fatigue(flyingWithWingsCost(), USEFATG_PHYSICAL);
 				}
-                if (player.hasStatusEffect(StatusEffects.FlyingNoStun)) {
-                    player.removeStatusEffect(StatusEffects.FlyingNoStun);
-                    player.removePerk(PerkLib.Resolute);
-                }
-                monster.removeStatusEffect(StatusEffects.MonsterAttacksDisabled);
-                player.removeStatusEffect(StatusEffects.Flying);
+				if (player.statusEffectv2(StatusEffects.Flying) == 1) {
+					if (player.soulforce < flyingSwordUseCost()) {
+						player.removeStatusEffect(StatusEffects.Flying);
+						if (player.hasStatusEffect(StatusEffects.FlyingNoStun)) {
+							player.removeStatusEffect(StatusEffects.FlyingNoStun);
+							player.removePerk(PerkLib.Resolute);
+						}
+						monster.removeStatusEffect(StatusEffects.MonsterAttacksDisabled);
+						outputText("<b>You land gently on the ground, having too little soulforce to keep yourself aloft. </b>\n\n");
+					}
+					else player.soulforce -= flyingSwordUseCost();
+				}
+				if (player.statusEffectv2(StatusEffects.Flying) == 2) {
+					if (player.soulforce < flyingWithSoulforceCost()) {
+						player.removeStatusEffect(StatusEffects.Flying);
+						if (player.hasStatusEffect(StatusEffects.FlyingNoStun)) {
+							player.removeStatusEffect(StatusEffects.FlyingNoStun);
+							player.removePerk(PerkLib.Resolute);
+						}
+						monster.removeStatusEffect(StatusEffects.MonsterAttacksDisabled);
+						outputText("<b>You realize that your SoulForce can't sustain your flight any longer. You land lightly, sighing as the drain on your Soul stops. </b>\n\n");
+					}
+					else player.soulforce -= flyingWithSoulforceCost();
+				}
+				if (player.statusEffectv2(StatusEffects.Flying) == 3) {
+					if (player.soulforce < (25 * soulskillCost() * soulskillcostmulti()) || player.mana < spellCost(50 * combat.mspecials.kitsuneskill2Cost())) {
+						player.removeStatusEffect(StatusEffects.Flying);
+						if (player.hasStatusEffect(StatusEffects.FlyingNoStun)) {
+							player.removeStatusEffect(StatusEffects.FlyingNoStun);
+							player.removePerk(PerkLib.Resolute);
+						}
+						monster.removeStatusEffect(StatusEffects.MonsterAttacksDisabled);
+						outputText("<b>You realize that your can't sustain your flight any longer. You land lightly, sighing as the drain on your soulforce and mana stops. </b>\n\n");
+					}
+					else {
+						player.soulforce -= (25 * soulskillCost() * soulskillcostmulti());
+						player.mana -= spellCost(50 * combat.mspecials.kitsuneskill2Cost());
+					}
+				}
+				if (player.statusEffectv2(StatusEffects.Flying) == 10) {
+					outputText("<b>You hear the fuel gauge beeping, and you land your mech before you run out of fuel completely.</b>\n\n");
+					player.createStatusEffect(StatusEffects.CooldownJetpack, 3, 0, 0, 0);
+					if (player.hasStatusEffect(StatusEffects.FlyingNoStun)) {
+						player.removeStatusEffect(StatusEffects.FlyingNoStun);
+						player.removePerk(PerkLib.Resolute);
+					}
+					monster.removeStatusEffect(StatusEffects.MonsterAttacksDisabled);
+					player.removeStatusEffect(StatusEffects.Flying);
+				}
             }
         }
 		//Flying disabled
@@ -14293,6 +14327,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (mininails2 > 20) mininails2 = 20;
             player.ammo = mininails2;
 		}
+		if (player.weaponRange == weaponsrange.ENERGYG) player.ammo = 20;
         if (player.weaponRange == weaponsrange.TWINGRA) player.ammo = 12;
         if (player.weaponRange == weaponsrange.IVIARG_) player.ammo = 12;
         if (player.weaponRange == weaponsrange.TWINSIXS) player.ammo = 12;
