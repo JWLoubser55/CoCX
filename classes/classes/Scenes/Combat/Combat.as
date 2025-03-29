@@ -9035,8 +9035,9 @@ public class Combat extends BaseContent {
                     }
                 }
             }
-            if (player.hasPerk(PerkLib.BrutalBlows) && player.str > 75) {
-                var bbc:Number = (Math.round(monster.armorDef * 0.1) + 5);
+            if (player.hasPerk(PerkLib.BrutalBlows) && player.str > 75 && damage > 0) {
+                if (monster.armorDef > 0) outputText("\nYour hits are so brutal that you damage [themonster]'s defenses!");
+                   var bbc:Number = (Math.round(monster.armorDef * 0.1) + 5);
 				if (monster.armorDef - bbc > 0) monster.armorDef -= bbc;
                 else monster.armorDef = 0;
             }

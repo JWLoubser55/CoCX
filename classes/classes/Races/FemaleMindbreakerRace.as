@@ -68,6 +68,8 @@ public class FemaleMindbreakerRace extends Race{
 		addMutation(IMutationsLib.MightyLowerHalfIM, +3);
 		
 		buildTier(20,"mindbreaker")
+				.requirePerk(PerkLib.MindbreakerBrain1toX)
+				.requirePerk(PerkLib.Insanity)
 				.buffs({
 					"str.mult": -0.60,
 					"spe.mult": -0.10,

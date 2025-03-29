@@ -189,6 +189,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 5 misc lvl-up perk: All-Rounder Mental Training. Req. All-Rounder Training ( Basic ) perk. Effect: Limit of train caps for int/wis/lib stats is increased by 10.\n");
 			outputText("-New tier 5 misc lvl-up perk: All-Rounder Physical Training. Req. All-Rounder Training ( Basic ) perk. Effect: Limit of train caps for str/tou/spe stats is increased by 10.\n");
 			outputText("-New tier 5 speed lvl-up perk: Lewd Poisoning. Req. Wound Poison. Effect: Attacks that are imbued with poison dealing lust damage now inflicts half of your tease damage.\n");
+			outputText("-New tier 5 wisdom lvl-up perk: Sic ‘Em Six. Req. Fifth Tamed perk and 150+ wisdom. Effect: No leash is too tight, no beast too wild. Heel or feel—obedience is a six-step process.\n");
 			outputText("-New tier 6 sensitivity lvl-up perk: Quasi Domain Kineses. Req. Advanced Kineses perk and 150+ sensitivity. Effect: All of your kinesis type specials would deal higher damage against single and group enemies. The larger group the higher bonus damage. (2x/10x/50x)\n");
 			outputText("-New tier 6 misc lvl-up perk: All-Rounder Training ( Intermediate ). Req. All-Rounder Training ( Basic ) perk. Effect: Limit of train caps for stats is increased by 5.\n");
 			outputText("-New tier 6 wisdom lvl-up perk: Empowered Taming. Req. Lucky Number Tamer perk and 180+ wisdom. Effect: During taming monster it wisdom is treated as if it was 80% lower.\n");
@@ -203,16 +204,12 @@ public class Changelog extends BaseContent
 			outputText("-New tier 13 misc lvl-up perk: All-Rounder Training ( Master ). Req. All-Rounder Training ( Expert ) perk and 5+ advanced jobs. Effect: Limit of train caps for stats is increased by 10.\n");
 			outputText("-New tier 13 libido lvl-up perk: Seducer Resilience. Req. Magical Charm perk. Effect: Increase HP based on Libido and Sensitivity. (+12 extra LP per point of libido / sensitivity)\n");
 			outputText("-New tier 14 libido lvl-up perk: Spellsong. Req. Seducer Resilience perk. Effect: You learned how to naturally weave your spell with seductive music, melding your artistic talent into your spellcasting. (Spells gain a Libido scaling so long as lust is above 35%)\n");
+			outputText("-New tier 15 intelligence lvl-up perk: Ultimate Magic. Req. Prestige Job: Warlock or Prestige Job: Arch-priest perk and 350+ int. Effect: You may ignore all constraints from a dedicated path and may even learn its opposite as a prestige class.\n");
 			outputText("-New tier 16 misc lvl-up perk: All-Rounder Training ( Grand Master ). Req. All-Rounder Training ( Master ) perk and 7+ advanced jobs. Effect: Limit of train caps for stats is increased by 10.\n");
-			outputText("-New tier 19 misc lvl-up perk: All-Rounder Training ( Semi-Epic ). Req. All-Rounder Training ( Grand Master ) perk and 10+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
-			outputText("-New tier 20 intelligence lvl-up perk: Ultimate Magic. Req. Prestige Job: Warlock or Prestige Job: Arch-priest perk and 475+ int. Effect: You may ignore all constraints to your spell book usage from a dedicated path and may even learn its opposite as a prestige class.\n");
-			outputText("-New tier 22 misc lvl-up perk: All-Rounder Training ( Epic ). Req. All-Rounder Training ( Semi-Epic ) perk and 13+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
 			outputText("-New tier 17 misc lvl-up perk: Limit Breaker: Body (3rd stage). Req. Limit Breaker: Soul (2nd stage) perk. Effect: +15% max HP and Wrath.\n");
 			outputText("-New tier 18 misc lvl-up perk: Limit Breaker: Heart (3rd stage). Req. Limit Breaker: Body (3rd stage) perk. Effect: +15% max Lust and Fatigue.\n");
-			outputText("-New tier 19 misc lvl-up perk: Limit Breaker: Flesh (3rd stage). Req. Limit Breaker: Heart (3rd stage) perk. Effect: +30% Str, Tou, Spe multi.\n");
-			outputText("-New tier 20 misc lvl-up perk: Limit Breaker: Psyche (3rd stage). Req. Limit Breaker: Flesh (3rd stage) perk. Effect: +30% Int, Wis, Lib multi.\n");
-			outputText("-New tier 20 sensitivity lvl-up perk: Mythical Desensitization. Req. Legendary Desensitization perk and 200+ sens. Effect: Negative effects of sensitivity are reduced by 25%.\n");
-			outputText("-New tier 21 misc lvl-up perk: Limit Breaker: Soul (3rd stage). Req. Limit Breaker: Psyche (3rd stage) perk. Effect: +15% max Mana and Soulforce.\n");
+			outputText("-New tier 19 misc lvl-up perk: All-Rounder Training ( Semi-Epic ). Req. All-Rounder Training ( Grand Master ) perk and 10+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
+			outputText("-New tier 22 misc lvl-up perk: All-Rounder Training ( Epic ). Req. All-Rounder Training ( Semi-Epic ) perk and 13+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
 			outputText("-New tier 31 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 32. Req. perk Elemental Contract Rank 31 and 800+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (low) viscount rank\n");
 			outputText("-New tier 32 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 33. Req. perk Elemental Contract Rank 32 and 825+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (mid) viscount rank\n");
 			outputText("-New tier 33 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 34. Req. perk Elemental Contract Rank 33 and 850+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (advanced) viscount rank\n");
@@ -334,14 +331,15 @@ public class Changelog extends BaseContent
 			outputText("-Fix not counting basilisk womb births towards times given birth. (Stadler)\n");
 			outputText("-Agility and Armor Master perks now also boost magic resistance with the same ratio as they boost armor.\n");
 			outputText("-When taming monster capable of spellcasting it would add option in tamed monsters menu to command them to use magic bolt.\n");
-			outputText("-New tier 5 wisdom lvl-up perk: Sic ‘Em Six. Req. Fifth Tamed perk and 150+ wisdom. Effect: No leash is too tight, no beast too wild. Heel or feel—obedience is a six-step process.\n");
 			outputText("-New tier 0 wisdom lvl-up perk: High Stakes Tamer. Req. Job: Tamer perk and 25+ wisdom. Effect: Your mastery over taming extends beyond common beasts, allowing you to tame highly intelligent creatures that would normally resist control. Beings like Glacial Trolls and other sentient monsters now recognize your dominance, making them potential allies rather than just foes. However, the truly corrupted still elude you.\n");
+			outputText("-New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. Sic ‘Em Six perk and 130+ wisdom. Effect: You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.\n");
+			outputText("-New tier 6 wisdom lvl-up perk: Lucky Number Tamer. Req. Sic ‘Em Six perk and 175+ wisdom. Effect: You played your cards right, tames now come in 7.\n");
+			outputText("-New tier 7 sensitivity lvl-up perk: Spiritual Alignment. Req. Advanced Kineses perk and 175+ sensitivity. Effect: The universe opens to you and you are able to synergize your spiritual understanding with your psychic powers. (Adds current Wisdom score to Sensitivity)\n");
+			outputText("-New tier 7 sensitivity lvl-up perk: Mental Attunement. Req. Advanced Kineses perk and 175+ sensitivity. Effect: You unlock full usage of your brain, increasing your psychic potential. (Adds current Intelligence score to Sensitivity)\n");
 			outputText("-New usable item: Feral Demon Skull. Costing 50 gems and it's obtainable from killing feral demon enemies.\n");
 			outputText("-Ruined Shrine event check in Glacial Rift now would use wolf race score check (10+) instead of lookign for specific bodyparts. Should amke finding shrine bit more forgiving when it come to winter wolf part check.\n");
 			outputText("-Ocean was changed to Outer Ocean and part of encounter from it was moved to next area.\n");
 			outputText("-New Area: Inner Ocean (92-111). Exploring outer ocean allows now to find it. For all that want know what is down there in depth whenever it's Deep One nest, Arigean settlements, Abyssal Cities or just marvels of Gopture, we're one step closer to find out.\n");
-			outputText("-New tier 6 wisdom lvl-up perk: Lucky Number Tamer. Req. Sic ‘Em Six perk and 175+ wisdom. Effect: You played your cards right, tames now come in 7.\n");
-			outputText("-New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. Sic ‘Em Six perk and 130+ wisdom. Effect: You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.\n");
 			outputText("-Fix swapped values for gargoyle wings. (Stadler)\n");
 			outputText("-New sprite: Tripxi.\n");
 			outputText("-Job: Sorcerer perk have now one additonal effect (for making beginner mages life easier) of lowering all tier 1 white/black/grey spells cd down to 0.\n");
@@ -355,8 +353,6 @@ public class Changelog extends BaseContent
 			outputText("-Mage's Wrath and Mage's Wrath (Ex) perks now would additionaly increase spells crit chance by 10%.\n");
 			outputText("-Magic / Elemental Bolt spells get their dmg adjusted to be 75% of scaling for tier 1 spells and lowered costs by 25% but also would no longer work on enemies with low tier magic immunity.\n");
 			outputText("-Mimic enemies got bit of more HP given with slight armor increases and their special Bite attack hurt more. Their loot table was tossed out replaced with bit more usefull loot and they even could drop (?) items too. All Slime / Goo / Ooze enemies got their armor and mres switched.\n");
-			outputText("-New tier 7 sensitivity lvl-up perk: Spiritual Alignment. Req. Advanced Kineses perk and 175+ sensitivity. Effect: The universe opens to you and you are able to synergize your spiritual understanding with your psychic powers. (Adds current Wisdom score to Sensitivity)\n");
-			outputText("-New tier 7 sensitivity lvl-up perk: Mental Attunement. Req. Advanced Kineses perk and 175+ sensitivity. Effect: You unlock full usage of your brain, increasing your psychic potential. (Adds current Intelligence score to Sensitivity)\n");
 			outputText("-Fix poltergeist legs TF. (Stadler)\n");
 			outputText("-Some of the stat checks for enemies changed from checking total stat values to core stat values: Frost Gigant str check, kitsune enemies Seal/Illusion special int checks\n");
 			outputText("-Yamata combat desc would desc how much PC is close to become her masochostic pet (not large change of text but carefull observer would notice smlight changes in her last part of descrtiption that was sitting hidden in code before). Still no news on more stuff for her or getting her weapon...yet.\n");
@@ -366,6 +362,7 @@ public class Changelog extends BaseContent
 			outputText("-New enemy perk: Hive Mind. Enemy takes x% less damage from mental and Esper attacks.\n");
 			outputText("-New monster perk: Darkness Vulnerability - decrease lightning dmg done to monster by 50% and increase darkness dmg by 100%.\n");
 			outputText("-Mindbreaker races got +100% more to libido multi and +100 to sensitivity. Their special - Mind Trust - deal now psionic dmg not true damage.\n");
+			outputText("-New tier 20 intelligence lvl-up perk: Ultimate Magic (Ex). Req. Ultimate Magic perk and 475+ int. Effect: You may ignore all constraints to your spell book usage.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -375,13 +372,12 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//
-			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
-			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Stadler) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
@@ -394,10 +390,10 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
+			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Stadler) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -430,11 +426,11 @@ public class Changelog extends BaseContent
 			outputText("perk not adding sensitivity, Selachimorphanthropy bonuses not changing with moon phases, inconsistencies for damage type dealt in melee/range base attacks and specials, flame blade bonus dmg from libido, combining fire and lightning damage on melee weapons, lust defeat text for non sentient constructs not using it own variant, Abyssal Ink and Displacer Beast post fight scenes ");
 			outputText("bypassing perm races transformation immunity, defeating pod plant by lust (which was before impossible) allowing to pick unlimited rapiers from it, Frog Girl 'forever ignore' option not disabling her encounters, aura not capping to 10% lust dmg per aura application in turn, Dark Slimes sex scenes does not count towards recovering hunger with demonic hunger perk, Atlach Nacha ");
 			outputText("locking corruption to 100 before PC get pernamently locked to this race, post Drider Incubus fight sex scenes not reseting lust/giving sexp rewards/other effects of sex scene, during Urta scenes game mix up Urta and PC when checking for sex scenes selection, Cure spell not removing Blind, Whisker Fruit not giving multiple breast rows, some of status effects not cleaning up after ");
-			outputText("bad end or combat end, scene with Ayane when PC visit shrine as already 9 tailed kitusne without star sphere not gaining star sphere during the scene, Meteor Shower and Polar Midnight not recognized as spells for Channeling perk req., Healer npc in JttE never having her cure/heal options going off cooldown, Vixen&Cream with Urta unclosed tag, Straddle Tease variant for Harpies ");
+			outputText("bad end or combat end, scene with Ayane when PC visit shrine as already 9 tailed kitsune without star sphere not gaining star sphere during the scene, Meteor Shower and Polar Midnight not recognized as spells for Channeling perk req., Healer npc in JttE never having her cure/heal options going off cooldown, Vixen&Cream with Urta unclosed tag, Straddle Tease variant for Harpies ");
 			outputText("not checking if enemy have cock, Mist Phouka enemies dropping tarnished shard of metal, PC mummies behaviour choice menu buttons wrong labeled, pair of black cat gloves not allowing swiftcasting, Wood Elfs appearing for soulless PC's, cow maid and Excellia switching places for Minotaur Challanger fight, drinking from Oni enchanted drinking gourd not triggering Aelfwine effect, ");
 			outputText("Dark Charm not gained by Gremlins, some of Nocello Liqueur TF effects ignoring TF immunity effect, Munchkin@Biolab perk not properly increasing max for stat training caps, Vitality Tincture not restoring Arian health, Iron Man perk not affecting fatigue cost of some physical specials, Taser with an overcharged battery upgrade causing Tazer special to be not accesable, keeping debuff ");
-			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, Grey magic or White/Diving magic not taking into account overmaxLust, ");
-			outputText("Grand Grey Archmage perk effect incorrectly applied, Zombiefied Cursed Tag unlimited fatigue not working in camp building menu, Slime Metabolism restoring wrong amount of mana\n\n");
+			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, Grey magic or White/Diving magic not taking into account overmaxLust, Grand Grey Archmage perk effect incorrectly applied, ");
+			outputText("Zombiefied Cursed Tag unlimited fatigue not working in camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach wthout becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");
