@@ -596,29 +596,31 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 //                                                                                                                    ==
 //======================================================================================================================
     public var hair: HairTransformations = new HairTransformations();
-    public const HairHuman: Transformation 		= hair.HairHuman.registerTf(AS_HAIR, AE_HUMAN);
-    public const HairFeather: Transformation 	= hair.HairFeather.registerTfMultiple(AS_HAIR, AE_AVIAN, AE_GRYPHON);
-    public const HairGorgon: Transformation 	= hair.HairGorgon.registerTf(AS_HAIR, AE_GORGON);
-    public const HairSilky: Transformation 		= hair.HairSilky.registerTf(AS_HAIR, AE_ELF);
-    public const HairStorm: Transformation 		= hair.HairStorm.registerTfMultiple(AS_HAIR, AE_RAIJU, AE_KIRIN, AE_THUNDERBIRD).withAlchemyNames("StormHair","Storm hair");
-    public const HairBurning: Transformation 	= hair.HairBurning.registerTfMultiple(AS_HAIR, AE_FIRE_SNAIL, AE_HELLCAT, AE_HINEZUMI).withAlchemyNames("BurningHair", "Burning hair");
-    public const HairSnowy: Transformation 		= hair.HairSnowy.registerTf(AS_HAIR, AE_YUKI_ONNA);
-    public const HairLeaf: Transformation 		= hair.HairLeaf.registerTfMultiple(AS_HAIR, AE_PLANT, AE_ALRAUNE, AE_YGGDRASIL);
-    public const HairGrass: Transformation 		= hair.HairGrass.registerTfMultiple(AS_HAIR, AE_PLANT, AE_ALRAUNE, AE_YGGDRASIL);
-    public const HairGoo: Transformation 		= hair.HairGoo.registerTf(AS_HAIR, AE_GOO);
-    public const HairGhost: Transformation 		= hair.HairGhost.registerTf(AS_HAIR, AE_GHOST);
-    public const HairRatatoskr: Transformation 	= hair.HairRatatoskr.registerTf(AS_HAIR, AE_SQUIRREL);
-    public const HairWindswept: Transformation 	= hair.HairWindswept.registerTf(AS_HAIR, AE_KAMAITACHI);
-    public const HairWild: Transformation 		= hair.HairWild;
-    public const HairAnemone: Transformation 	= hair.HairAnemone.registerTf(AS_HAIR, AE_ANEMONE);
-    public const HairFluffy: Transformation 	= hair.HairFluffy.registerTf(AS_HAIR, AE_YETI);
-    public const HairCrazy: Transformation 		= hair.HairCrazy.registerTf(AS_HAIR, AE_GREMLIN);
-    public const HairPrismatic: Transformation 	= hair.HairPrismatic.registerTf(AS_HAIR, AE_SEA_DRAGON);
-    public const HairQuill: Transformation 		= hair.HairQuill.registerTf(AS_HAIR, AE_ECHIDNA);
-    public const HairFairy: Transformation 		= hair.HairFairy.registerTf(AS_HAIR, AE_FAIRY);
-    public const HairCow: Transformation 		= hair.HairCow.registerTf(AS_HAIR, AE_COW);
-    public const HairDripping: Transformation 	= hair.HairDripping.registerTf(AS_HAIR, AE_SAND_WORM);
-    public const HairPeafowlFeather: Transformation = hair.HairPeafowlFeather.registerTf(AS_HAIR, AE_PEAFOWL);
+    public const HairHuman: Transformation 				= hair.HairHuman.registerTf(AS_HAIR, AE_HUMAN);
+    public const HairFeather: Transformation 			= hair.HairFeather.registerTfMultiple(AS_HAIR, AE_AVIAN, AE_GRYPHON);
+    public const HairGorgon: Transformation 			= hair.HairGorgon.registerTf(AS_HAIR, AE_GORGON);
+    public const HairSilky: Transformation 				= hair.HairSilky.registerTf(AS_HAIR, AE_ELF);
+    public const HairStorm: Transformation 				= hair.HairStorm.registerTfMultiple(AS_HAIR, AE_RAIJU, AE_KIRIN, AE_THUNDERBIRD).withAlchemyNames("StormHair","Storm hair");
+    public const HairBurning: Transformation 			= hair.HairBurning.registerTfMultiple(AS_HAIR, AE_FIRE_SNAIL, AE_HELLCAT, AE_HINEZUMI).withAlchemyNames("BurningHair", "Burning hair");
+    public const HairSnowy: Transformation 				= hair.HairSnowy.registerTf(AS_HAIR, AE_YUKI_ONNA);
+    public const HairLeaf: Transformation 				= hair.HairLeaf.registerTfMultiple(AS_HAIR, AE_PLANT, AE_ALRAUNE, AE_YGGDRASIL);
+    public const HairGrass: Transformation 				= hair.HairGrass.registerTfMultiple(AS_HAIR, AE_PLANT, AE_ALRAUNE, AE_YGGDRASIL);
+    public const HairGoo: Transformation 				= hair.HairGoo.registerTf(AS_HAIR, AE_GOO);
+    public const HairGhost: Transformation 				= hair.HairGhost.registerTf(AS_HAIR, AE_GHOST);
+    public const HairRatatoskr: Transformation 			= hair.HairRatatoskr.registerTf(AS_HAIR, AE_SQUIRREL);
+    public const HairWindswept: Transformation 			= hair.HairWindswept.registerTf(AS_HAIR, AE_KAMAITACHI);
+    public const HairWild: Transformation 				= hair.HairWild;
+    public const HairAnemone: Transformation 			= hair.HairAnemone.registerTf(AS_HAIR, AE_ANEMONE);
+    public const HairFluffy: Transformation 			= hair.HairFluffy.registerTf(AS_HAIR, AE_YETI);
+    public const HairCrazy: Transformation 				= hair.HairCrazy.registerTf(AS_HAIR, AE_GREMLIN);
+    public const HairPrismatic: Transformation 			= hair.HairPrismatic.registerTf(AS_HAIR, AE_SEA_DRAGON);
+    public const HairQuill: Transformation 				= hair.HairQuill.registerTf(AS_HAIR, AE_ECHIDNA);
+    public const HairFairy: Transformation 				= hair.HairFairy.registerTf(AS_HAIR, AE_FAIRY);
+    public const HairCow: Transformation 				= hair.HairCow.registerTf(AS_HAIR, AE_COW);
+    public const HairDripping: Transformation 			= hair.HairDripping.registerTf(AS_HAIR, AE_SAND_WORM);
+    public const HairPeafowlFeather: Transformation		= hair.HairPeafowlFeather.registerTf(AS_HAIR, AE_PEAFOWL);
+    public const HairGlowingMushroom: Transformation	= hair.HairGlowingMushroom.registerTf(AS_HAIR, AE_MYCONID);
+    public const HairGlowingSynthetic: Transformation	= hair.HairPeafowlFeather.registerTf(AS_HAIR, AE_AUTOMATA);
     public function HairChangeColor(colors: /*String*/ Array): Transformation { return hair.HairChangeColor(colors); }
 
 
@@ -657,6 +659,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const HornsUshiOni: Transformation 				= horns.HornsUshiOni.registerTf(AS_HORNS, AE_USHI_ONI);
     public const HornsJiangshi: Transformation 				= horns.HornsJiangshi.registerTf(AS_HORNS, AE_JIANGSHI);
     public const HornsArchImp: Transformation 				= horns.HornsArchImp.registerTf(AS_HORNS, AE_IMP);
+    public const HornsShroomHeadcap: Transformation 		= horns.HornsShroomHeadcap.registerTf(AS_HORNS, AE_MYCONID);
+    public const HornsAutomataHeadset: Transformation 		= horns.HornsAutomataHeadset.registerTf(AS_HORNS, AE_AUTOMATA);
 
 
 //LOWER BODY ( LEGS )
@@ -854,6 +858,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const RearBodyArigeanAuraRed: Transformation 	= rearBody.RearBodyArigeanAuraRed.registerTf(AS_REAR, AE_ARIGEAN);
 	public const RearBodyArigeanAuraYellow: Transformation 	= rearBody.RearBodyArigeanAuraYellow.registerTf(AS_REAR, AE_ARIGEAN);
     public const RearBodyMoth: Transformation               = rearBody.RearBodyMoth.registerTf(AS_REAR, AE_MOTH);
+    public const RearBodyMyconidBraAndNeck: Transformation  = rearBody.RearBodyMyconidBraAndNeck.registerTf(AS_REAR, AE_MYCONID);
+    public const RearBodySerialCode: Transformation         = rearBody.RearBodySerialCode.registerTf(AS_REAR, AE_AUTOMATA);
 
 
 //SKIN

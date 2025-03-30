@@ -912,6 +912,18 @@ public class LowerBody extends SaveableBodyPart {
 		appearanceDesc: "{legCount} human legs grow down from your [hips], ending in normal human feet. Thick magical silver chains coils around your legs protecting them from arms. You know those chains to be fully part of your body and can use them to fight if necessary."
 	});
 
+	public static const SHROOM_SKIRT:int = 90;
+	EnumValue.add(Types, SHROOM_SKIRT, "SHROOM_SKIRT", {
+		name: "myconid",
+		appearanceDesc: "From your tight extends a long fungal frill that to the far looker may appear as a skirt/pair of pants. Your legs look human up to the ankle level where they turn into frills like those of a dress. Beneath those you have what appears to be normal human feet though you know these feet let you suck the moisture from the very ground."
+	});
+
+	public static const MECHANICAL_DOLL_LEGS:int = 91;
+	EnumValue.add(Types, MECHANICAL_DOLL_LEGS, "MECHANICAL_DOLL_LEGS", {
+		name: "automata",
+		appearanceDesc: "Your two mechanical legs are segmented at the junctions and innerly reinforced with hydraulic systems granting you a jump and running power strong enough to outspeed any organics. A pair of heavy metal boots ornate your steel leg reminiscent of body armor except it's all part of your body."
+	});
+
 	override public function set type(value:int):void {
 		super.type = value;
 		// Reset leg count

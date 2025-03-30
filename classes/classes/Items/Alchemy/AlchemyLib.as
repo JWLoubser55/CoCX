@@ -729,6 +729,14 @@ public class AlchemyLib extends BaseContent {
 		short: "Lich",
 		name : "Lich"
 	});
+	public static const AE_MYCONID:int        = EnumValue.add(Essences, 221, "MYCONID", {
+		short: "Myconid",
+		name : "Myconid"
+	});
+	public static const AE_AUTOMATA:int        = EnumValue.add(Essences, 222, "AUTOMATA", {
+		short: "Automata",
+		name : "Automata"
+	});
 	public static function DEFAULT_ESSENCE_DROP_TABLE(mainEssencee:int, withHuman:Boolean = false):Array {
 		var result:Array = [
 			[10, mainEssencee],

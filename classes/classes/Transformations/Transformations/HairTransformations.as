@@ -494,6 +494,34 @@ public class HairTransformations extends MutationsHelper {
 			}
 	);
 
+	public const HairGlowingMushroom: Transformation = new SimpleTransformation("Glowing Mushroom Hair",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				if (doOutput) outputText(desc);
+				player.hairType = Hair.MYCONID;
+			},
+			// is present
+			function (): Boolean {
+				return player.hairType === Hair.MYCONID;
+			}
+	);
+
+	public const HairGlowingSynthetic: Transformation = new SimpleTransformation("Glowing Synthetic Hair",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				if (doOutput) outputText(desc);
+				player.hairType = Hair.SYNTHETIC;
+			},
+			// is present
+			function (): Boolean {
+				return player.hairType === Hair.SYNTHETIC;
+			}
+	);
+
 	public function HairChangeColor(colors: /*String*/ Array): Transformation {
 		return new SimpleTransformation("Hair Color: " + colors.join("|"),
 				// apply effect

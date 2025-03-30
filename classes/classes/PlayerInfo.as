@@ -960,14 +960,8 @@ public class PlayerInfo extends BaseContent {
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 11) interpersonStats += "<b>Tyrantia lvl:</b> 118\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 10) interpersonStats += "<b>Tyrantia lvl:</b> 112\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 9) interpersonStats += "<b>Tyrantia lvl:</b> 106\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 8) interpersonStats += "<b>Tyrantia lvl:</b> 100\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 7) interpersonStats += "<b>Tyrantia lvl:</b> 94\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 6) interpersonStats += "<b>Tyrantia lvl:</b> 88\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 5) interpersonStats += "<b>Tyrantia lvl:</b> 82\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 4) interpersonStats += "<b>Tyrantia lvl:</b> 76\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 3) interpersonStats += "<b>Tyrantia lvl:</b> 70\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 2) interpersonStats += "<b>Tyrantia lvl:</b> 64\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] < 2) interpersonStats += "<b>Tyrantia lvl:</b> 58\n";
+			else interpersonStats += getNPCLevel("Tyrantia", 64, 2, 15, 6, flags[kFLAGS.GALIA_LVL_UP]);
 		}
 
 		if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] != 0) {
@@ -1050,10 +1044,16 @@ public class PlayerInfo extends BaseContent {
 		// Begin Galia Stats
 		var galiaStats:String = "";
 		if (flags[kFLAGS.GALIA_AFFECTION] >= 2) {
+			/*if (flags[kFLAGS.GALIA_LVL_UP] == 11) galiaStats += "<b>Galia lvl:</b> 61\n";
+			if (flags[kFLAGS.GALIA_LVL_UP] == 10) galiaStats += "<b>Galia lvl:</b> 55\n";
+			if (flags[kFLAGS.GALIA_LVL_UP] == 9) galiaStats += "<b>Galia lvl:</b> 49\n";
+			if (flags[kFLAGS.GALIA_LVL_UP] == 8) galiaStats += "<b>Galia lvl:</b> 43\n";
+			if (flags[kFLAGS.GALIA_LVL_UP] == 7) galiaStats += "<b>Galia lvl:</b> 37\n";
+			if (flags[kFLAGS.GALIA_LVL_UP] == 6) galiaStats += "<b>Galia lvl:</b> 31\n";
+			if (flags[kFLAGS.GALIA_LVL_UP] == 5) galiaStats += "<b>Galia lvl:</b> 25\n";*/
 			if (flags[kFLAGS.GALIA_LVL_UP] == 4) galiaStats += "<b>Galia lvl:</b> 19 (current max lvl)\n";
-			if (flags[kFLAGS.GALIA_LVL_UP] == 3) galiaStats += "<b>Galia lvl:</b> 13\n";
-			if (flags[kFLAGS.GALIA_LVL_UP] == 2) galiaStats += "<b>Galia lvl:</b> 7\n";
-			if (flags[kFLAGS.GALIA_LVL_UP] < 2) galiaStats += "<b>Galia lvl:</b> 1\n";
+			else if (flags[kFLAGS.GALIA_LVL_UP] < 2) galiaStats += "<b>Galia lvl:</b> 1\n";
+			else galiaStats += getNPCLevel("Galia", 7, 2, 4, 6, flags[kFLAGS.GALIA_LVL_UP]);
 		}
 		if (galiaStats != "")
 			outputText("\n<b><u>Galia Stats</u></b>\n" + galiaStats);

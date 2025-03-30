@@ -284,6 +284,17 @@ import classes.CoC;
 			}
 		});
 
+		public static const BRA_AND_NECK:int = _partid++;
+		EnumValue.add(Memories, BRA_AND_NECK, "BRA_AND_NECK", {
+			id: "Myconid Bra and Neck",
+			name: "Myconid B&N",
+			cost: 100,
+			title: "Myconid B&N",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.RearBodyAbyssalSharkFin;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

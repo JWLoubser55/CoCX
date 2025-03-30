@@ -4879,12 +4879,12 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.PhantomShooting)) damage *= 1.05;
 			if (player.hasPerk(PerkLib.SilverForMonsters) && monster.hasPerk(PerkLib.EnemyTrueDemon)) damage *= 1.2;
             if (monster.hasStatusEffect(StatusEffects.WoundPoison)) damage *= 1 + (monster.statusEffectv1(StatusEffects.WoundPoison) / 100);
-			if (monster.hasStatusEffect(StatusEffects.Polarize)) {
+			if (monster.hasStatusEffect(StatusEffects.Polarize) && !player.isEnergyRangeWeapon()) {
 				if (player.hasPerk(PerkLib.Magnetize)) {
 					if (monster.hasPerk(PerkLib.LightningVulnerability) || monster.hasPerk(PerkLib.DarknessNature)) damage *= 4;
 					else damage *= 2;
 				}
-				else damage *= 1.5;//later add exclusion for energy weapon shoots
+				else damage *= 1.5;
 			}
             //Determine if critical hit!
 			var crit:Boolean;

@@ -1801,7 +1801,12 @@ use namespace CoC;
 		//Energy Melee Weapons
 		public function isEnergyMeleeWeapon():Boolean
 		{
-			return weapon == game.weapons.TIDAR;// || weapon == game.weapons.TIDAR
+			return weapon == game.weapons.TIDAR || weapon == game.weapons.ENESWOR || weapon == game.weapons.ENESPEA;
+		}
+		//Energy Range Weapons
+		public function isEnergyRangeWeapon():Boolean
+		{
+			return weaponRange == game.weaponsrange.ENERGYG;// || weaponRange == game.weaponsrange.ENERGYG
 		}
 		//override public function get weapons
 		override public function get weaponRangeName():String {

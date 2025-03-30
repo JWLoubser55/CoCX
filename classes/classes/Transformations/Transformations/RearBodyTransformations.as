@@ -492,6 +492,38 @@ public class RearBodyTransformations extends MutationsHelper {
 				return player.rearBody.type === RearBody.MOTH_COLLAR;
 			}
 	);
+
+	public const RearBodyMyconidBraAndNeck: Transformation = new SimpleTransformation("Myconid Bra and Neck",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.rearBody.type = RearBody.BRA_AND_NECK;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.rearBody.type === RearBody.BRA_AND_NECK;
+			}
+	);
+
+	public const RearBodySerialCode: Transformation = new SimpleTransformation("Serial Code",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.rearBody.type = RearBody.SERIAL_CODE;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.rearBody.type === RearBody.SERIAL_CODE;
+			}
+	);
 	/*
   */
 }

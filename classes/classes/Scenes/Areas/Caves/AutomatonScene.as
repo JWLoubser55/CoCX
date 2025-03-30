@@ -7,9 +7,9 @@ package classes.Scenes.Areas.Caves
 
 import classes.BaseContent;
 import classes.GlobalFlags.kFLAGS;
-//import classes.PerkLib;
 import classes.Races;
 import classes.StatusEffects;
+import classes.Scenes.Camp.CampStatsAndResources;
 
 public class AutomatonScene extends BaseContent
 {
@@ -35,9 +35,14 @@ public function winningOverAutomaton():void {
 		outputText("As you overload the automaton with lust it begins to smoke. It looks like you broke something in it or whatever. A few seconds later it explodes sending its part in all directions");
 		player.takeFireDamage(Math.round(player.maxHP()*0.1),true);
 	}
-	outputText(". Looks like you broke the nasty thing beyond repair which is good. Amidst the wreckage you find a single energy core.\n\n");
+	outputText(". Looks like you broke the nasty thing beyond repair which is good.");
+	if (CampStatsAndResources.EnergyCoreResc < 200) {
+		CampStatsAndResources.EnergyCoreResc += 1;
+		outputText(" Amidst the wreckage you find a single energy core.\n\n");
+	}
+	outputText("\n\n");
 	if (player.hasStatusEffect(StatusEffects.PostAutomatonBeatdown)) player.removeStatusEffect(StatusEffects.PostAutomatonBeatdown);
-	inventory.takeItem(useables.ENECORE, cleanupAfterCombat);
+	cleanupAfterCombat();
 }
 
 public function losingToAutomaton():void {

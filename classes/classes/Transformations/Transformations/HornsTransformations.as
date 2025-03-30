@@ -597,6 +597,44 @@ public class HornsTransformations extends MutationsHelper {
 				return player.horns.type === Horns.ARCH_IMP;
 			}
 	);
+
+	public const HornsShroomHeadcap: Transformation = new SimpleTransformation("Shroom Headcap Horns",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Thinking becomes increasingly harder as a small shroom cap grows up your head, your hair strands turning white like those of a shroom girl. Breed… fuck… spread… this is all your mind needs to think about right now, everything else is inconsequential.\n\nMany parts of your body changes starting with your back which grows a beautiful, long, organic skirt, not unlike a shroom frill to match ";
+				desc += "the color of the small growing mushroom on your head as your arms grow frilled sleeves similar to those on ankles. Completing this setup, a frilly necklace and bra grows on your body as well. By the sixth ejaculation, you look just like a shroom girl. Well not exactly like her yet, the cap on your head is way smaller and there's still a last part of you that has to change first.\n\nYou cum hard onto the ground as ";
+				if (player.hasVagina()) desc += "your clit suddenly engorges, growing longer and fatter into a mushroom-like shape. It seems your clit grew into a mushroom-like penis that slides right out of your vagina";
+				if (player.gender > 2) desc += ". Meanwhile ";
+				if (player.hasCock()) desc += "your cock suddenly throbs as it undergoes changes, the crown and shape changing to match that of a mushroom";
+				desc += ". You have successfully used your metamorph ability to transform into a mushroom person again. <b>you now have an Shroom Headcap.</b>";
+
+				player.horns.count = 2;
+
+				player.horns.type = Horns.SHROOM_HEADCAP;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.horns.type === Horns.SHROOM_HEADCAP;
+			}
+	);
+
+	public const HornsAutomataHeadset: Transformation = new SimpleTransformation("Automata Headset Horns",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				player.horns.count = 2;
+
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.horns.type === Horns.HEADSET;
+			}
+	);
 	/*
   */
 

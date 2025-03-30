@@ -31,27 +31,27 @@ public class AutomataRace extends Race {
         /*Perks*/		"Human"];
 
 	public function AutomataRace(id:int) {
-		super("Automata", id, []);//RaceBody);
-		disabled = true;
-		chimeraTier = 0;
-		grandChimeraTier = 0;
-        //tfRace = RaceMem.appendEnumVal("Automata", CoC.instance.transformations.FullBanshee);
+		super("Automata", id, RaceBody);
 	}
 	
 	public override function setup():void {
 		addScores()
-				.hairType(Hair.GHOST, +1)
+				.hairType(Hair.SYNTHETIC, +1)
+				.hornType(Horns.HEADSET, +1)
+				.armType(Arms.MECHANICAL_DOLL_ARMS, +1)
+				.legType(LowerBody.MECHANICAL_DOLL_LEGS, +1)
+				.rearType(RearBody.SERIAL_CODE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
-		buildTier(1000, "tierName")
+		buildTier(23, "Automata")
 				.buffs({
-					"str.mult": +0.00,
-					"tou.mult": +0.00,
-					"spe.mult": +0.00,
-					"int.mult": +0.00,
-					"wis.mult": +0.00,
-					"lib.mult": +0.00,
-					"sens": +0
+					"str.mult": +2.50,
+					"tou.mult": +2.50,
+					"spe.mult": +2.50,
+					"int.mult": +2.50,
+					"wis.mult": -0.65,
+					"lib.mult": +2.50,
+					"sens": +150
 				})
 				.end();
 	}

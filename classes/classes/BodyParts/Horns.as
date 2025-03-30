@@ -354,6 +354,30 @@ public class Horns extends BodyPart {
 		}
 	});
 
+	public static const SHROOM_HEADCAP: int = 27;
+	EnumValue.add(Types, SHROOM_HEADCAP, "SHROOM_HEADCAP", {
+		name:"shroom headcap",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = "";
+
+			if (player.horns.count > 0) desc += " On your head grows a very large mushroom reminiscent of a hat. This is where most of your spores are stored.";
+
+			return desc;
+		}
+	});
+
+	public static const HEADSET: int = 28;
+	EnumValue.add(Types, HEADSET, "HEADSET", {
+		name:"headset",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = "";
+
+			if (player.horns.count > 0) desc += " Your [hair] hides what to someone familiar with the technology would call a headset.";
+
+			return desc;
+		}
+	});
+
 	public function Horns(creature:Creature) {
 		super(creature, null);
 	}
