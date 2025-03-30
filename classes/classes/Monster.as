@@ -2890,8 +2890,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		protected function tentacleBindStruggle():Boolean{
 			clearOutput();
 			outputText("You struggle with all of your might to free yourself from the tentacles before the creature can fulfill whatever unholy desire it has for you.\n");
-			//33% chance to break free + up to 50% chance for strength
-			if (rand(3) == 0 || rand(80) < player.str / 2 || player.hasPerk(PerkLib.FluidBody)) {
+			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
 				outputText("As the creature attempts to adjust your position in its grip, you free one of your [legs] and hit the beast in its beak, causing it to let out an inhuman cry and drop you to the ground smartly.\n\n");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 				createStatusEffect(StatusEffects.TentacleCoolDown, 3, 0, 0, 0);

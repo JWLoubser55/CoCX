@@ -364,8 +364,10 @@ public class Changelog extends BaseContent
 			outputText("-Mindbreaker races got +100% more to libido multi and +100 to sensitivity. Their special - Mind Trust - deal now psionic dmg not true damage.\n");
 			outputText("-New tier 20 intelligence lvl-up perk: Ultimate Magic (Ex). Req. Ultimate Magic perk and 475+ int. Effect: You may ignore all constraints to your spell book usage.\n");
 			outputText("-New Area: Tunnels (71-95). Exploring caves allows now to find it.\n");
-			outputText("-New range weapon (by Liadri): Energy Gun - dropped by Automaton enemy. Cost 620 gems. Base atk is 25, ammo clip size 1 and it dealing fire damage. Each perk for mutli attacks per turn increase times it deal dmg by 2.\n");
+			outputText("-New range weapon (by Liadri): Energy Gun - dropped by Automaton enemy. Cost 1280 gems. Base atk is 25, ammo clip size 1 and it dealing fire damage. Each perk for mutli attacks per turn increase times it deal dmg by 2.\n");
 			outputText("-New usable item: skymetal (adamantine) ore. It can gained as drop from Adamantine Golem.\n");
+			outputText("-New melee weapon (by Liadri): Energy Sword - dropped by Automaton enemy. Cost 2800 gems, have 35 atk and it dealing fire damage. High tech weapon and Large Exotic type weapon.\n");
+			outputText("-New melee weapon (by Liadri): Energy Spear - dropped by Automaton enemy. Cost 3600 gems, have 45 atk and it dealing fire damage. High tech weapon and Massive Exotic type weapon.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -390,10 +392,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
-			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Stadler) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
@@ -407,10 +407,10 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
+			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Stadler) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

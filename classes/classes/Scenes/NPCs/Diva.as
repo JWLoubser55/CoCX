@@ -24,7 +24,7 @@ public class Diva extends Monster {
     }
 
     override public function playerBoundStruggle():Boolean{clearOutput();
-        if (rand(3) == 0 || rand(80) < player.str / 1.5 || player.hasPerk(PerkLib.FluidBody)) {
+        if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
             outputText("You wriggle and squirm violently, tearing yourself out from within [themonster]'s coils.");
             player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
         } else {

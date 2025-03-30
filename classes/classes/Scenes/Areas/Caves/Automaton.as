@@ -211,8 +211,8 @@ use namespace CoC;
 			this.level = 74;
 			this.gems = rand(20) + 40;
 			this.drop = new ChainedDrop()
-					.add(weaponsrange.ENERGYG,0.1)
-					.add(weaponsrange.ENERGYG,0.1)
+					.add(weapons.ENESPEA,0.1)
+					.add(weapons.ENESWOR,0.1)
 					.add(weaponsrange.ENERGYG,0.1)
 					.add(null,0.7);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);

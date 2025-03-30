@@ -16,10 +16,10 @@ use namespace CoC;
 	{
 		override public function playerBoundStruggle():Boolean{
 			clearOutput();
-			//33% chance to break free + up to 50% chance for strength
-			if (rand(3) == 0 || rand(80) < player.str / 2 || player.hasPerk(PerkLib.FluidBody)) {
+			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
 				outputText("You barely manage to slide out of her embrace as the mushroom girl closes her eyes and attempts to kiss the space where your lips were a few seconds before. She stares at the empty air for a few seconds, confused that you somehow managed to slide out of her iron vice.\n\n");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
+				createStatusEffect(StatusEffects.AbilityCooldown1, 2, 0, 0, 0);
 			}
 			//Fail to break free
 			else {
@@ -51,7 +51,7 @@ use namespace CoC;
 				return;
 			}
 			else {
-				outputText("You try to avoid her, but she successfully embraces you, forcing your head against her breast. You attempt to escape her grip right away, but she proves stronger than her frame would suggest! What is it with her superstrength?!  ");
+				outputText("You try to avoid her, but she successfully grabs you, forcing your head against her breast. You attempt to escape her grip right away, but she proves stronger than her frame would suggest! What is it with her superstrength?!  ");
 				player.createStatusEffect(StatusEffects.PlayerBoundPhysical, 0, 0, 0, 0);
 			}
 		}
@@ -77,8 +77,8 @@ use namespace CoC;
 		{
 			if (!hasStatusEffect(StatusEffects.LustAura)) moveMantagoSporeCloud();
 			else {
-				if (!player.hasStatusEffect(StatusEffects.PlayerBoundPhysical)) moveMantagoGrab();
-				else moveMantagoPunch();
+				if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical) || hasStatusEffect(StatusEffects.AbilityCooldown1)) moveMantagoPunch();
+				else moveMantagoGrab();
 			}
 		}
 		
@@ -95,7 +95,7 @@ use namespace CoC;
 		public function Matango() 
 		{
 			this.a = "the ";
-			this.short = "matangom";
+			this.short = "matango";
 			this.imageName = "matango";
 			this.long = "You are fighting a human woman… or what perhaps used to be a human woman? She is fully naked and looks to be high on aphrodisiacs or something as she walks toward you in what appears to be a lust-induced trance, something you can properly determine to be the fault of the many mushrooms growing out of her as if she had actually herself became a mushroom. If she is sentient enough to speak, she does not show it, instead communicating through moans of pleasure. Her drooling, perverted smile promises a rather lewd mess, should you lose this battle.";
 			this.createVagina(false, VaginaClass.WETNESS_SLAVERING, VaginaClass.LOOSENESS_NORMAL);
@@ -110,7 +110,7 @@ use namespace CoC;
 			this.bodyColor = "light";
 			this.hairColor = "silver white";
 			this.hairLength = 9;
-			initStrTouSpeInte(462, 426, 342, 201);
+			initStrTouSpeInte(662, 426, 342, 201);
 			initWisLibSensCor(201, 400, 300, -40);
 			this.weaponAttack = 50;
 			this.weaponName = "fist";
@@ -135,6 +135,7 @@ use namespace CoC;
 					add(consumables.HEALHERB,1/7);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
+			this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
 			this.createPerk(PerkLib.HiveMind, 0.5, 0, 0, 0);
 			checkMonster();
 		}

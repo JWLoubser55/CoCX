@@ -575,6 +575,18 @@ public final class WeaponLib extends ItemConstants
 				.withTags(W_RAPIER)
 				.withEffect(IELib.LustDamage, 10, 1/8) as Weapon;
 		public const MACE   :Weapon = findCommonDynamicWeapon("mace");
+		public const ENESPEA:Weapon = new Weapon(
+				"EneSpea","Energy Spear","Energy Spear","an Energy Spear","piercing stab",45,3600,
+				"A spear created using ancient lost technology to be wielded by automatons. The blade is made of raw energy and the burning wounds it leaves are about as deadly as that of any metal weapon.",
+				WT_EXOTIC, WSZ_MASSIVE)//WT_SPEAR, 
+				.withTags(W_HTECHWEAPON, W_FIRE_TYPE)
+				.withEffect(IELib.ArmorPenetration, 100)
+				.withEffect(IELib.ScaleAttack_Spe, 75)  as Weapon;
+		public const ENESWOR:Weapon = new Weapon(
+				"EneSwor","EnergySword","Energy Sword","an Energy Sword","slash",35,2800,
+				"A sword created using ancient lost technology to be wielded by automatons. The blade is made of raw energy and the burning wounds it leaves are about as deadly as that of any metal weapon. It seems the ancient were quite fond of an old trend in the past as the word WEEB is written on the handle of this energy blade of wich the shape resembles a katana.",
+				WT_EXOTIC, WSZ_LARGE)//WT_DUELING, 
+				.withTags(W_HTECHWEAPON, W_FIRE_TYPE)  as Weapon;
 		public const MACGRSW:Weapon = new Weapon(
 				"Macgrsw","Mach.greatsword","Machine Greatsword","a Machine Greatsword","slash",19,2720,
 				"This greatsword is half invention and half weapon. Instead of a sharp straight blade, the weapon’s sides are a set of metal teeth that constantly move in order to properly saw through flesh and more solid matter, creating grievous wounds. Very good for cutting down trees too.",

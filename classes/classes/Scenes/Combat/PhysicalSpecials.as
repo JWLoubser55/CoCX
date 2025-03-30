@@ -458,7 +458,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 					challengingShout += "% of max/overmax wrath on use as a free action.";
 				}
 				if (player.hasPerk(PerkLib.ChallengingShoutMastered)) {
-					
+					var no2:Number = 60;
+					if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout)) no1 -= (player.statusEffectv1(StatusEffects.CooldownWarriorShout) * 4);
+					challengingShout = ""+no2+"";
+					challengingShout += "% of max/overmax wrath on use as a free action.";
 				}
 				bd = buttons.add("Warrior Shout", warriorShout).hint("Embolden yourself with a mighty shout. Generate "+challengingShout+"");
 				if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout) && !player.hasPerk(PerkLib.ChallengingShoutSu) && !player.hasPerk(PerkLib.ChallengingShoutMastered)) {
@@ -779,6 +782,25 @@ public class PhysicalSpecials extends BaseCombatContent {
 				else if (player.weaponRangePerk != "Bow" && player.weaponRangePerk != "Crossbow" && player.weaponRangePerk != "Throwing") {
 					bd.disable("<b>You need to use bow, crossbow or throwing weapon before you can use Power Shoot.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasPerk(PerkLib.ChallengingShout) || player.hasPerk(PerkLib.ChallengingShoutMastered)) {
+				var challengingShout:String = "20% of max/overmax wrath on use as a free action.\nWould go into cooldown after use for: 10 rounds";
+				if (player.hasPerk(PerkLib.ChallengingShoutSu)) {
+					var no1:Number = 40;
+					if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout)) no1 -= (player.statusEffectv1(StatusEffects.CooldownWarriorShout) * 4);
+					challengingShout = ""+no1+"";
+					challengingShout += "% of max/overmax wrath on use as a free action.";
+				}
+				if (player.hasPerk(PerkLib.ChallengingShoutMastered)) {
+					var no2:Number = 60;
+					if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout)) no1 -= (player.statusEffectv1(StatusEffects.CooldownWarriorShout) * 4);
+					challengingShout = ""+no2+"";
+					challengingShout += "% of max/overmax wrath on use as a free action.";
+				}
+				bd = buttons.add("Warrior Shout", warriorShout).hint("Embolden yourself with a mighty shout. Generate "+challengingShout+"");
+				if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout) && !player.hasPerk(PerkLib.ChallengingShoutSu) && !player.hasPerk(PerkLib.ChallengingShoutMastered)) {
+					bd.disable("<b>You need more time before you can perform Warrior Shout again.</b>\n\n");
+				}
 			}
 			if (player.hasVagina() && (player.isRaceCached(Races.COW) || player.perkv1(IMutationsLib.LactaBovinaOvariesIM) >= 1 || (player.perkv1(IMutationsLib.HumanOvariesIM) >= 3 && player.racialScore(Races.HUMAN) > 17)) && !player.hasPerk(PerkLib.ElementalBody)) {
 				var blaaaast2:String = player.perkv1(IMutationsLib.LactaBovinaOvariesIM) >= 3 ? " (cooldown of "+(player.hasPerk(PerkLib.NaturalInstincts) ? "3":"4")+" rounds before it can be used again)" : "";

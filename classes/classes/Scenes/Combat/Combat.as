@@ -2586,7 +2586,7 @@ public class Combat extends BaseContent {
         else if (player.hasStatusEffect(StatusEffects.ArcaneWeb)) {
 			clearOutput();
 			outputText("You struggle against your magical bonds");
-			if (rand(3) == 0 || rand(80) < player.str) {
+			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value) {
 				outputText(" breaking free of the insidious spell");
 				player.removeStatusEffect(StatusEffects.ArcaneWeb);
 			}
@@ -2598,8 +2598,7 @@ public class Combat extends BaseContent {
         } else if (player.hasStatusEffect(StatusEffects.Straddle)) {
             if (monster is ProjectNightwalker)(monster as ProjectNightwalker).struggleFaceSitting();
             else {
-                //33% chance to break free + up to 50% chance for strength
-                if (rand(3) == 0 || rand(80) < player.str / 2 || player.hasPerk(PerkLib.FluidBody)) {
+                if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
                     outputText("You grunt in anger, bending your body as quickly as you can. You slam [themonster] into the ground, and you can feel her legs loosen around your neck. With a roar of effort, you get a hold of her ankles, break her grip on your face, and throw [monster him] away from you.\n\n");
                     player.removeStatusEffect(StatusEffects.Straddle);
                 }
@@ -2608,8 +2607,7 @@ public class Combat extends BaseContent {
         } else if (player.hasStatusEffect(StatusEffects.DragonsNom)) {
             if (monster is UltimisFlamespreader)(monster as UltimisFlamespreader).struggleNom(true);
             else {
-                //33% chance to break free + up to 50% chance for strength
-                if (rand(3) == 0 || rand(80) < player.str / 2 || player.hasPerk(PerkLib.FluidBody)) {
+                if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
                     outputText("You grunt in anger, managing to slip out of [themonster]'s jaws and roll away.\n\n");
                     player.removeStatusEffect(StatusEffects.DragonsNom);
                 }
@@ -2643,7 +2641,7 @@ public class Combat extends BaseContent {
             skipMonsterAction = true;
         } else if (player.hasStatusEffect(StatusEffects.WolfHold)) {
             clearOutput();
-            if (rand(3) == 0 || rand(80) < player.str / 1.5 || player.hasPerk(PerkLib.FluidBody)) {
+            if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
                 if (monster is WinterWolf) outputText("You slam your forehead in the wolf's sensitive muzzle. It recoils, whining in pain. Its focus shattered, you push the winter wolf off you, allowing you to stand up.");
                 if (monster is Luna || monster is WerewolfFemale || monster is WerewolfHuntress) outputText("You shove [themonster] off of you, standing back up; she growls at you, licking her lips hungrily.");
                 player.removeStatusEffect(StatusEffects.WolfHold);
@@ -2666,7 +2664,7 @@ public class Combat extends BaseContent {
             skipMonsterAction = true;
         } else if (player.hasStatusEffect(StatusEffects.TrollHold)) {
 			clearOutput();
-			if (rand(3) == 0 || rand(80) < player.str / 1.5 || player.hasPerk(PerkLib.FluidBody)) {
+			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
 				outputText("You squirm violently, trying to shake out of his grasp. You break free, pushing him away. The troll staggers back, disoriented.");
 				player.removeStatusEffect(StatusEffects.TrollHold);
 			}
@@ -2686,7 +2684,7 @@ public class Combat extends BaseContent {
 		} else if (player.hasStatusEffect(StatusEffects.PossessionWendigo)) {
             clearOutput();
             outputText("You struggle for control over your body ");
-            if (rand(3) == 0 || rand(80) < player.str / 1.5) {
+            if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value) {
 				outputText("and manage to force the fiend out.");
 				player.removeStatusEffect(StatusEffects.PossessionWendigo);
 			}
@@ -5302,7 +5300,6 @@ public class Combat extends BaseContent {
 			if (mininails2 > 20) mininails2 = 20;
             player.ammo = mininails;
 		}
-		if (player.weaponRange == weaponsrange.ENERGYG) player.ammo = 20;
         if (player.weaponRange == weaponsrange.TWINGRA) player.ammo = 12;
         if (player.weaponRange == weaponsrange.IVIARG_) player.ammo = 12;
         if (player.weaponRange == weaponsrange.TWINSIXS) player.ammo = 12;
@@ -5327,6 +5324,7 @@ public class Combat extends BaseContent {
 		if (player.weaponRange == weaponsrange.DBDRAGG) player.ammo = 2;
         if (player.weaponRange == weaponsrange.TM1CERB) player.ammo = 2;
         if (player.weaponRange == weaponsrange.HARKON2) player.ammo = 2;
+		if (player.weaponRange == weaponsrange.ENERGYG) player.ammo = 1;
         if (player.weaponRange == weaponsrange.FLINTLK) player.ammo = 1;
         if (player.weaponRange == weaponsrange.DUEL_P_) player.ammo = 1;
         if (player.weaponRange == weaponsrange.M1CERBE) player.ammo = 1;
@@ -8536,7 +8534,7 @@ public class Combat extends BaseContent {
         return ((player.weapon == weapons.ACLAYMO || player.weapon == weapons.TACLAYM || player.weapon == weapons.ADAGGER) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
     }
     public function isPlasmaTypeWeaponMain():Boolean {
-        return (isFireTypeWeaponMain() && isIceTypeWeaponMain());
+        return (isFireTypeWeaponMain() && isLightningTypeWeaponMain());
     }
     public function isBlackIceTypeWeaponMain():Boolean {
         return (isIceTypeWeaponMain() && isDarknessTypeWeaponMain());
@@ -14327,7 +14325,6 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (mininails2 > 20) mininails2 = 20;
             player.ammo = mininails2;
 		}
-		if (player.weaponRange == weaponsrange.ENERGYG) player.ammo = 20;
         if (player.weaponRange == weaponsrange.TWINGRA) player.ammo = 12;
         if (player.weaponRange == weaponsrange.IVIARG_) player.ammo = 12;
         if (player.weaponRange == weaponsrange.TWINSIXS) player.ammo = 12;
@@ -14352,6 +14349,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         if (player.weaponRange == weaponsrange.DBDRAGG) player.ammo = 2;
         if (player.weaponRange == weaponsrange.TM1CERB) player.ammo = 2;
         if (player.weaponRange == weaponsrange.HARKON2) player.ammo = 2;
+		if (player.weaponRange == weaponsrange.ENERGYG) player.ammo = 1;
         if (player.weaponRange == weaponsrange.FLINTLK) player.ammo = 1;
         if (player.weaponRange == weaponsrange.DUEL_P_) player.ammo = 1;
         if (player.weaponRange == weaponsrange.M1CERBE) player.ammo = 1;
@@ -19124,4 +19122,4 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
-}
+}
