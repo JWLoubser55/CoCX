@@ -381,6 +381,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const SHROOM:int = _partid++;
+		EnumValue.add(Memories, SHROOM, "SHROOM", {
+			id: "Shroom cock",
+			name: "Shroom cock",
+			cost: 200,
+			title: "Myconid",
+			transformation: function(cockIndex:int): Transformation {
+				return CoC.instance.transformations.CockShroom(cockIndex);
+			}
+		});
+
 
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];

@@ -1,10 +1,12 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
+import classes.CockTypesEnum;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 import classes.StatusEffects;
+import classes.VaginaClass;
 
 public class MyconidRace extends Race {
     
@@ -82,6 +84,12 @@ public class MyconidRace extends Race {
 				.noTail(+1)
 				.skinColor1(ANY(MyconidSkinColors), +1)
 				.biggestTitSize(GREATER_THAN(3), +1)
+				.vaginaType(VaginaClass.SHROOM, +1)
+				.hasCockOfType(CockTypesEnum.SHROOM, +1)
+				.customRequirement("","clit bigger then 9 inch",
+						function (body:BodyData):Boolean {
+							return body.player.clitLength >= 10;
+						}, +1)
 				.customRequirement("","glowing nipples",
 						function (body:BodyData):Boolean {
 							return body.player.hasStatusEffect(StatusEffects.GlowingNipples);

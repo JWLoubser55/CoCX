@@ -204,6 +204,17 @@ public class VaginaMem extends BaseContent {
 			}
 		});
 
+		public static const SHROOM:int = _partid++;
+		EnumValue.add(Memories, SHROOM, "SHROOM", {
+			id: "Shroom Vagina",
+			name: "Shroom Vagina",
+			cost: 200,
+			title: "Myconid",
+			transformation: function(vaginaIndex:int): Transformation {
+				return CoC.instance.transformations.VaginaShroom(vaginaIndex);
+			}
+		});
+
 
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];

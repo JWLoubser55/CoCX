@@ -5079,16 +5079,16 @@ public class Combat extends BaseContent {
 					}
 					if (player.weaponRange == weaponsrange.ENERGYG) {
 						outputText(" ");
-                        doFireDamage(damage, true, true, ignoreDR);
+                        doPlasmaDamage(damage, true, true, ignoreDR);
 						if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 						if (crit) outputText(" <b>*Critical Hit!*</b>");
                         for (var enegAttack:int = 0; enegAttack < maxFirearmAttacks; enegAttack++) {
                             outputText(" ");
-                            doFireDamage(damage, true, true, ignoreDR);
+                            doPlasmaDamage(damage, true, true, ignoreDR);
 							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							if (crit) outputText(" <b>*Critical Hit!*</b>");
 							outputText(" ");
-                            doFireDamage(damage, true, true, ignoreDR);
+                            doPlasmaDamage(damage, true, true, ignoreDR);
 							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							if (crit) outputText(" <b>*Critical Hit!*</b>");
                         }
@@ -6747,7 +6747,13 @@ public class Combat extends BaseContent {
         if (player.weaponOff.isSpearType() && player.hasPerk(PerkLib.ElvenRangerArmor)) damage *= 1.5;
         if ((player.weaponOff == weapons.S_RULER || player.weaponOff == weapons.TSRULER) && (monster.hasPerk(PerkLib.EnemyHugeType) || monster.hasPerk(PerkLib.EnemyGigantType) || monster.hasPerk(PerkLib.EnemyColossalType))) damage *= 1.5;
 		if (monster.hasStatusEffect(StatusEffects.Stunned) && player.weaponOff.isMaceHammerType() && player.hasPerk(PerkLib.Backbreaker)) damage *= 1.5;
-		if (monster.hasStatusEffect(StatusEffects.Polarize) && !player.isEnergyMeleeWeapon()) damage *= 1.5;
+		if (monster.hasStatusEffect(StatusEffects.Polarize) && !player.isEnergyMeleeWeapon()) {
+			if (player.hasPerk(PerkLib.Magnetize)) {
+				if (monster.hasPerk(PerkLib.LightningVulnerability) || monster.hasPerk(PerkLib.DarknessNature)) damage *= 4;
+				else damage *= 2;
+			}
+			else damage *= 1.5;
+		}
         // Mastery bonus damage
 		damage *= MasteryBonusDamageMelee(false, true);
 		//Thunderous Strikes
@@ -8534,7 +8540,7 @@ public class Combat extends BaseContent {
         return ((player.weapon == weapons.ACLAYMO || player.weapon == weapons.TACLAYM || player.weapon == weapons.ADAGGER) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
     }
     public function isPlasmaTypeWeaponMain():Boolean {
-        return (isFireTypeWeaponMain() && isLightningTypeWeaponMain());
+        return ((isFireTypeWeaponMain() && isLightningTypeWeaponMain()) || player.weapon.hasTag(ItemConstants.W_PLASMA_TYPE));
     }
     public function isBlackIceTypeWeaponMain():Boolean {
         return (isIceTypeWeaponMain() && isDarknessTypeWeaponMain());
@@ -8557,7 +8563,7 @@ public class Combat extends BaseContent {
         return ((player.weaponOff == weapons.ACLAYMO || player.weaponOff == weapons.TACLAYM || player.weaponOff == weapons.ADAGGER) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
     }
     public function isPlasmaTypeWeaponOff():Boolean {
-        return (isFireTypeWeaponOff() && isLightningTypeWeaponOff());
+        return ((isFireTypeWeaponOff() && isLightningTypeWeaponOff()) || player.weaponOff.hasTag(ItemConstants.W_PLASMA_TYPE));
     }
     public function isBlackIceTypeWeaponOff():Boolean {
         return (isIceTypeWeaponOff() && isDarknessTypeWeaponOff());

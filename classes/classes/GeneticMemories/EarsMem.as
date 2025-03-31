@@ -277,7 +277,7 @@ package classes.GeneticMemories {
 		EnumValue.add(Memories, INSECT, "INSECT", {
 			id: "Insect Ears",
 			name: "Insect Ears",
-			cost: 100,
+			cost: 200,
 			title: "Insect",
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.EarsInsect;

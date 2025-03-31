@@ -1296,6 +1296,72 @@ public class CockTransformations extends MutationsHelper {
 		);
 	}
 
+	public function CockShroom(index:int = 0, length:Number = 5.5, thickness:Number = 1): Transformation {
+		return new SimpleTransformation("Shroom Cock",
+				// apply effect
+				function (doOutput:Boolean):void {
+					var desc:String = "[pg]";
+					var cock:int = cockIndex(index, CockTypesEnum.SHROOM);
+
+					if (player.cocks.length > cock){
+						desc += "[pg]<b>HOW THE HELL, IT DOES NOT EXIST YET</b>[pg]" +
+								"<b> You now have a Shroom cock!</b>";
+					}
+					else {
+						desc += GrowCockGenericText();
+						desc += "[pg]<b>HOW THE HELL, IT DOES NOT EXIST YET</b>[pg]" +
+								"<b> You now have a Shroom cock!</b>";
+						player.createCock();
+					}
+					if (doOutput) outputText(desc);
+					if (length != 5.5)
+						player.cocks[cock].cockLength = length;
+					if (thickness != 1)
+						player.cocks[cock].cockThickness = thickness;
+					player.cocks[cock].cockType = CockTypesEnum.SHROOM;
+
+					transformations.UnlockCocks();
+				},
+				// is present
+				function ():Boolean {
+					return isPresentCock(index, CockTypesEnum.SHROOM)
+				}
+		);
+	}
+
+	public function CockAutomata(index:int = 0, length:Number = 5.5, thickness:Number = 1): Transformation {
+		return new SimpleTransformation("Automata Cock",
+				// apply effect
+				function (doOutput:Boolean):void {
+					var desc:String = "[pg]";
+					var cock:int = cockIndex(index, CockTypesEnum.AUTOMATA);
+
+					if (player.cocks.length > cock){
+						desc += "[pg]<b>HOW THE HELL, IT DOES NOT EXIST YET</b>[pg]" +
+								"<b> You now have an Automata cock!</b>";
+					}
+					else {
+						desc += GrowCockGenericText();
+						desc += "[pg]<b>HOW THE HELL, IT DOES NOT EXIST YET</b>[pg]" +
+								"<b> You now have an Automata cock!</b>";
+						player.createCock();
+					}
+					if (doOutput) outputText(desc);
+					if (length != 5.5)
+						player.cocks[cock].cockLength = length;
+					if (thickness != 1)
+						player.cocks[cock].cockThickness = thickness;
+					player.cocks[cock].cockType = CockTypesEnum.AUTOMATA;
+
+					transformations.UnlockCocks();
+				},
+				// is present
+				function ():Boolean {
+					return isPresentCock(index, CockTypesEnum.AUTOMATA)
+				}
+		);
+	}
+
 	public function GrowKnot(cock:int = 0, crit:Number = 1, mod:Number = 1, div:Number = 20): Transformation { return new SimpleTransformation( "Grow knot of cock",
 			// apply effect
 			function (doOutput:Boolean): void {

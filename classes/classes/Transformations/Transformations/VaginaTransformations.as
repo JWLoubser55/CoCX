@@ -624,6 +624,58 @@ public class VaginaTransformations extends MutationsHelper {
 				}
 		);
 	}
+
+	public function VaginaShroom(index:int = 0): Transformation {
+		return new SimpleTransformation("Shroom Vagina",
+				// apply effect
+				function (doOutput:Boolean):void {
+					var desc:String = "[pg]";
+					var vagina:int = vaginaIndex(index, VaginaClass.SHROOM);
+
+					if (player.vaginas.length > vagina){
+						desc += "Insert Text for Shroom Vagina TF";
+					}
+					else {
+						desc += GrowVaginaGenericText();
+						desc += "Insert Text for Shroom Vagina TF";
+					}
+					if (doOutput) outputText(desc);
+					player.vaginaType(VaginaClass.SHROOM, vagina);
+
+					transformations.UnlockVagina();
+				},
+				// is present
+				function ():Boolean {
+					return isPresentVagina(index, VaginaClass.SHROOM);
+				}
+		);
+	}
+
+	public function VaginaAutomata(index:int = 0): Transformation {
+		return new SimpleTransformation("Automata Vagina",
+				// apply effect
+				function (doOutput:Boolean):void {
+					var desc:String = "[pg]";
+					var vagina:int = vaginaIndex(index, VaginaClass.AUTOMATA);
+
+					if (player.vaginas.length > vagina){
+						desc += "Insert Text for Automata Vagina TF";
+					}
+					else {
+						desc += GrowVaginaGenericText();
+						desc += "Insert Text for Automata Vagina TF";
+					}
+					if (doOutput) outputText(desc);
+					player.vaginaType(VaginaClass.AUTOMATA, vagina);
+
+					transformations.UnlockVagina();
+				},
+				// is present
+				function ():Boolean {
+					return isPresentVagina(index, VaginaClass.AUTOMATA);
+				}
+		);
+	}
 	/*
 */
 }

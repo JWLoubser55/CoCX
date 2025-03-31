@@ -1,9 +1,12 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
+import classes.CockTypesEnum;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.VaginaClass;
+
 public class AutomataRace extends Race {
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
@@ -41,6 +44,7 @@ public class AutomataRace extends Race {
 				.armType(Arms.MECHANICAL_DOLL_ARMS, +1)
 				.legType(LowerBody.MECHANICAL_DOLL_LEGS, +1)
 				.rearType(RearBody.SERIAL_CODE, +1)
+				.cockOrVaginaOfType(CockTypesEnum.AUTOMATA, VaginaClass.AUTOMATA, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		buildTier(23, "Automata")

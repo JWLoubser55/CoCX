@@ -81,6 +81,14 @@ public class VaginaClass implements IOrifice {
 		EnumValue.add(Types, ARIGEAN, "ARIGEAN", {
 			name: "arigean"
 		});
+		public static const SHROOM:int         = 20;
+		EnumValue.add(Types, SHROOM, "SHROOM", {
+			name: "shroom"
+		});
+		public static const AUTOMATA:int         = 21;
+		EnumValue.add(Types, AUTOMATA, "AUTOMATA", {
+			name: "automata"
+		});
 		
 		public static const WETNESS_DRY:int       = 0;
 		public static const WETNESS_NORMAL:int    = 1;

@@ -791,6 +791,17 @@ import classes.CoC;
 			}
 		});
 
+		public static const SHROOM_ARMS:int = _partid++;
+		EnumValue.add(Memories, SHROOM_ARMS, "SHROOM_ARMS", {
+			id: "Shroom Arms",
+			name: "Shroom Arms",
+			cost: 100,
+			title: "Myconid",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.ArmsShroom;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

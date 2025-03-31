@@ -485,7 +485,7 @@ public class RearBodyTransformations extends MutationsHelper {
 				player.rearBody.type = RearBody.MOTH_COLLAR;
 
 				if (doOutput) outputText(desc);
-				//Metamorph.unlockMetamorph(RearBodyMem.getMemory(RearBodyMem.ABYSSAL_SHARK_FIN));
+				Metamorph.unlockMetamorph(RearBodyMem.getMemory(RearBodyMem.MOTH_COLLAR));
 			},
 			// is present
 			function (): Boolean {
@@ -502,6 +502,7 @@ public class RearBodyTransformations extends MutationsHelper {
 
 				player.rearBody.type = RearBody.BRA_AND_NECK;
 				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(RearBodyMem.getMemory(RearBodyMem.BRA_AND_NECK));
 			},
 			// is present
 			function (): Boolean {

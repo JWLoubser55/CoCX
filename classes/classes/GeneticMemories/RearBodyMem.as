@@ -284,12 +284,23 @@ import classes.CoC;
 			}
 		});
 
+		public static const MOTH_COLLAR:int = _partid++;
+		EnumValue.add(Memories, MOTH_COLLAR, "MOTH_COLLAR", {
+			id: "Moth Collar Rear Body",
+			name: "Moth Collar",
+			cost: 100,
+			title: "Moth",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.RearBodyMoth;
+			}
+		});
+
 		public static const BRA_AND_NECK:int = _partid++;
 		EnumValue.add(Memories, BRA_AND_NECK, "BRA_AND_NECK", {
 			id: "Myconid Bra and Neck",
 			name: "Myconid B&N",
 			cost: 100,
-			title: "Myconid B&N",
+			title: "Myconid",
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.RearBodyAbyssalSharkFin;
 			}

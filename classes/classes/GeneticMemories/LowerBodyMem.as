@@ -577,6 +577,13 @@ package classes.GeneticMemories {
           title: "G.Troll Legs",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyGlacialTroll}});
 
+      public static const SHROOM_SKIRT: int = _partid++;
+      EnumValue.add(Memories, SHROOM_SKIRT, "SHROOM_SKIRT", {
+          id: "Shroom Shirt Lower Body",name: "Myconid Legs",
+          cost: 100,
+          title: "Myconid Legs",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyShroomShirt}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

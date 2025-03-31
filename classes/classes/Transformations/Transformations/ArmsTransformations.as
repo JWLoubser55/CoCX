@@ -1404,6 +1404,39 @@ public class ArmsTransformations extends MutationsHelper {
 				return player.arms.type === Arms.GLACIAL_TROLL;
 			}
 	);
+
+	public const ArmsShroom: Transformation = new SimpleTransformation("Shroom Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.arms.type = Arms.SHROOM_ARMS;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.SHROOM_ARMS));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.SHROOM_ARMS;
+			}
+	);
+
+	public const ArmsMechanicalDoll: Transformation = new SimpleTransformation("Mechanical Doll Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.arms.type = Arms.MECHANICAL_DOLL_ARMS;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.MECHANICAL_DOLL_ARMS;
+			}
+	);
 	/*
   */
 }

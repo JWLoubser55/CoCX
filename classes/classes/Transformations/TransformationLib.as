@@ -189,6 +189,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const ArmsSatyr: Transformation              = arms.ArmsSatyr.registerTf(AS_ARMS, AE_SATYR);
     public const ArmsTroll: Transformation              = arms.ArmsTroll.registerTf(AS_ARMS, AE_TROLL);
     public const ArmsGlacialTroll: Transformation       = arms.ArmsGlacialTroll.registerTf(AS_ARMS, AE_GLACIAL_TROLL);
+    public const ArmsShroom: Transformation       		= arms.ArmsShroom.registerTf(AS_ARMS, AE_MYCONID);
+    public const ArmsMechanicalDoll: Transformation 	= arms.ArmsMechanicalDoll.registerTf(AS_ARMS, AE_AUTOMATA);
 
 
 //ASS
@@ -343,6 +345,10 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const CockAnyInsect:Transformation = CockInsect(-1).registerTfMultiple(AS_COCK, AE_BEE, AE_ANT, AE_MANTIS);
     public function CockArigean(cock:int = 0, length:Number = 5.5, thickness:Number = 1): Transformation 		{ return cocks.CockArigean(cock, length, thickness); }
 	public const CockAnyArigean:Transformation = CockArigean(-1).registerTf(AS_COCK, AE_ARIGEAN);
+    public function CockShroom(cock:int = 0, length:Number = 5.5, thickness:Number = 1): Transformation 		{ return cocks.CockShroom(cock, length, thickness); }
+	public const CockAnyShroom:Transformation = CockShroom(-1).registerTf(AS_COCK, AE_MYCONID);
+    public function CockAutomata(cock:int = 0, length:Number = 5.5, thickness:Number = 1): Transformation 		{ return cocks.CockAutomata(cock, length, thickness); }
+	public const CockAnyAutomata:Transformation = CockArigean(-1).registerTf(AS_COCK, AE_AUTOMATA);
     public function GrowKnot(cock:int = 0, crit:Number = 1, mod:Number = 1, div:Number = 20): Transformation 	{ return cocks.GrowKnot(cock, crit, mod, div); }
     public function CockChangeType(type:CockTypesEnum, grow:Boolean, oneByOne:Boolean=false):Transformation 	{ return cocks.CockChangeType(type, grow, oneByOne); }
 
@@ -378,7 +384,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const EarsOrca: Transformation 			= ears.EarsOrca.registerTf(AS_EARS, AE_ORCA);
 	public const EarsOrca2: Transformation 			= ears.EarsOrca2.registerTf(AS_EARS, AE_ORCA);
 	public const EarsLizard: Transformation 		= ears.EarsLizard.registerTf(AS_EARS, AE_LIZARD);
-	public const EarsInsect: Transformation 		= ears.EarsInsect.registerTf(AS_EARS, AE_BEE);
+	public const EarsInsect: Transformation 		= ears.EarsInsect.registerTfMultiple(AS_EARS, AE_BEE, AE_ANT, AE_MANTIS);
 	public const EarsFox: Transformation 			= ears.EarsFox.registerTf(AS_EARS, AE_FOX);
 	public const EarsElfin: Transformation 			= ears.EarsElfin.registerTfMultiple(AS_EARS, AE_IMP, AE_GOBLIN);
 	public const EarsWolf: Transformation 			= ears.EarsWolf.registerTf(AS_EARS, AE_WOLF);
@@ -796,6 +802,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const LowerBodyMoth:Transformation                   = lowerBody.LowerBodyMoth.registerTf(AS_LEGS, AE_MOTH);
     public const LowerBodyTroll:Transformation                  = lowerBody.LowerBodyTroll.registerTf(AS_LEGS, AE_TROLL);
     public const LowerBodyGlacialTroll:Transformation           = lowerBody.LowerBodyGlacialTroll.registerTf(AS_LEGS, AE_GLACIAL_TROLL);
+    public const LowerBodyShroomShirt:Transformation           	= lowerBody.LowerBodyShroomShirt.registerTf(AS_LEGS, AE_MYCONID);
+    public const LowerBodyMechanicalDoll:Transformation         = lowerBody.LowerBodyMechanicalDoll.registerTf(AS_LEGS, AE_AUTOMATA);
 
 
 //OTHER ( SPECIAL )
@@ -1093,6 +1101,10 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const VaginaAnyAlraune:Transformation = VaginaAlraune(-1).registerTf(AS_VAGINA, AE_ALRAUNE);
     public function VaginaArigean(vagina:int = 0): Transformation { return vaginas.VaginaArigean(vagina); }
 	public const VaginaAnyArigean:Transformation = VaginaArigean(-1).registerTf(AS_VAGINA, AE_ARIGEAN);
+    public function VaginaShroom(vagina:int = 0): Transformation { return vaginas.VaginaShroom(vagina); }
+	public const VaginaAnyShroom:Transformation = VaginaShroom(-1).registerTf(AS_VAGINA, AE_MYCONID);
+    public function VaginaAutomata(vagina:int = 0): Transformation { return vaginas.VaginaAutomata(vagina); }
+	public const VaginaAnyAutomata:Transformation = VaginaAutomata(-1).registerTf(AS_VAGINA, AE_AUTOMATA);
 
 
 //WINGS
