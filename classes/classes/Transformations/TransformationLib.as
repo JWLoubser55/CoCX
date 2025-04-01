@@ -267,7 +267,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const RemoveLactation:Transformation 		= breasts.RemoveLactation;
     public const NipplesNoColor:Transformation 			= breasts.NipplesNoColor;
     public const NipplesBlack:Transformation 			= breasts.NipplesBlack.registerTfMultiple(AS_NIPPLES, AE_SPIDER, AE_SAND_TRAP);
-    public const NipplesGlowing:Transformation 			= breasts.NipplesGlowing.registerTf(AS_NIPPLES, AE_CAVE_WYRM);
+    public const NipplesGlowing:Transformation 			= breasts.NipplesGlowing.registerTfMultiple(AS_NIPPLES, AE_CAVE_WYRM, AE_MYCONID);
 	public const NipplessHumanize:Transformation        = new TransformationGroupAll("Humanize nipples",[NipplesUnfuck, NipplesNoColor]).registerTf(AS_NIPPLES, AE_HUMAN);
 
 

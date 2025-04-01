@@ -4291,11 +4291,11 @@ public class PerkLib
 				"Regenerates 1.5% of HP per round in combat and 3% of HP per hour and additional slightly increasing maximal attainable natural healing rate.");
 		public static const LustingWarrior:PerkType = mk("Lusting Warrior", "Lusting Warrior",
 				"As a salamander, while in heat or rutting add your libido to your strength as your lust for battle and sex empowers you with might.");
+		public static const LustyStrength:PerkType = mk("Lusty Strength", "Lusty Strength",
+				"Add your libido to your toughness score. Your strength score is also added to your libido.");
 		public static const Lustzerker:PerkType = mk("Lustzerker", "Lustzerker",
 				"Lustserking increases attack and physical defenses resistance but reduces lust resistance.")
 				.withBuffs({'maxwrath_base':+500});
-		public static const TechOverdrive:PerkType = mk("Tech Overdrive", "Tech Overdrive",
-				"Empower your technological equipment, causing it to deal increased damage but weaken your defenses as a result.");
 		public static const MagmaSlimeCore:PerkType = mk("Magma Slime Core", "Magma Slime Core",
 				"Grants more control over your slimy body, allowing you to go twice as long without fluids.");
 		public static const ManticoreCumAddict:PerkType = mk("Manticore Cum Addict", "Manticore Cum Addict",
@@ -4370,6 +4370,8 @@ public class PerkLib
 				"Double Speed when over 75% lust and gain immunity to defeat by lust but lose the ability to use magic other than racial spells.");
 		public static const SuperStrength:PerkType = mk("Super strength", "Super strength",
 				"Unarmed strike damage modifier from strength is doubled.");
+		public static const TechOverdrive:PerkType = mk("Tech Overdrive", "Tech Overdrive",
+				"Empower your technological equipment, causing it to deal increased damage but weaken your defenses as a result.");
 		public static const Telekinesis:PerkType = mk("Telekinesis", "Telekinesis",
 				"You have the power to wield and throw objects with your mind alone. Gain a bonus to damage based on intelligence when using various -kinesis specials, using thrown weapons and aquire additional attacks based on character level.");
 		public static const ThickSkin:PerkType = mk("Thick Skin", "Thick Skin",

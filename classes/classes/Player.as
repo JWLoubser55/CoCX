@@ -5786,6 +5786,7 @@ use namespace CoC;
 			}*/
 			//Others
 			if (racialScore(Races.GREMLIN) >= 15) min += 30;
+			if (racialScore(Races.MYCONID) >= 16) min += 20;
 			if (this.hasStatusEffect(StatusEffects.TookSagittariusBanefulGreatBow) && this.statusEffectv2(StatusEffects.TookSagittariusBanefulGreatBow) > 0) {
 				min += (minCap * 0.1 * this.statusEffectv1(StatusEffects.TookSagittariusBanefulGreatBow));
 				if (min > Math.round(minCap * 0.99)) min = Math.round(minCap * 0.99);
@@ -5989,7 +5990,8 @@ use namespace CoC;
 			if (statStore.hasBuff('Titanic Strength')) statStore.removeBuffs('Titanic Strength');
 			if (statStore.hasBuff('Condensed Power')) statStore.removeBuffs('Condensed Power');
 			if (statStore.hasBuff('Dracoforce')) statStore.removeBuffs('Dracoforce');
-			if (statStore.hasBuff('Stored Momentum')) statStore.removeBuffs('Stored Momentum');
+			if (statStore.hasBuff('Lusty Strength')) statStore.removeBuffs('Lusty Strength');
+			//if (statStore.hasBuff('Stored Momentum')) statStore.removeBuffs('Stored Momentum');
 			var strengthBase:Number = str;
 			if (effectiveTallness >= 108 && hasPerk(PerkLib.TitanicStrength)) {
 				var strTS:Number = Math.round(0.01 * strengthBase * Math.round(effectiveTallness / 6));
@@ -6026,6 +6028,7 @@ use namespace CoC;
 			if (!hasPerk(PerkLib.LaquineMight) && statStore.hasBuff('Laquine Might')) statStore.removeBuffs('Laquine Might');
 			if (hasPerk(PerkLib.WisdomoftheAges)) statStore.replaceBuffObject({'str.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2))),'tou.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2)))}, 'Wisdom of the Ages', { text: 'Wisdom of the Ages' });
 			if (!hasPerk(PerkLib.WisdomoftheAges) && statStore.hasBuff('Wisdom of the Ages')) statStore.removeBuffs('Wisdom of the Ages');
+			if (hasPerk(PerkLib.LustyStrength)) statStore.replaceBuffObject({'tou': lib,'lib': strengthBase}, 'Lusty Strength', { text: 'Lusty Strength' });
 			if (hasPerk(PerkLib.DeathPriest)) statStore.replaceBuffObject({'int.mult':Math.round(wisStat.mult.value)}, 'Death Priest', { text: 'Death Priest' });
 			if (!hasPerk(PerkLib.DeathPriest) && statStore.hasBuff('Death Priest')) statStore.removeBuffs('Death Priest');
 			if (hasPerk(PerkLib.LustingWarrior) && (inHeat || inRut)) statStore.replaceBuffObject({'str.mult':Math.round(libStat.mult.value)}, 'Lusting Warrior', { text: 'Lusting Warrior' });

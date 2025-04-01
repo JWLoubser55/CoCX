@@ -8741,7 +8741,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
             transformations.BreastRowsRemoveToOne.applyEffect();
         }
-                //-Shrink tits if above DDs.
+        //-Shrink tits if above DDs.
         //Cannot happen at same time as row removal
         else if (changes < changeLimit && player.breastRows.length == 1 && rand(3) == 0 && player.breastRows[0].breastRating >= 7 && !flags[kFLAGS.HYPER_HAPPY]) {
             changes++;
