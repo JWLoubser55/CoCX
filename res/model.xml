@@ -1766,7 +1766,7 @@
 		<cell rect="1094,1182,89,105" name="weapon/wandUnholy" dx="38" dy="55"/>
 		<cell rect="1184,970,89,105" name="weapon/wandGenericOH" dx="82" dy="55"/>
 		<cell rect="1184,1076,89,105" name="weapon/wandHolyOH" dx="82" dy="55"/>
-		<cell rect="1084,1182,89,105" name="weapon/wandUnholyOH" dx="82" dy="55"/>
+		<cell rect="1184,1182,89,105" name="weapon/wandUnholyOH" dx="82" dy="55"/>
 		
 		<cell rect="14,16,89,105" name="weapon/swordGeneric" dx="38" dy="55"/>
 		<cell rect="14,122,89,105" name="weapon/swordHoly" dx="38" dy="55"/>
@@ -1790,7 +1790,7 @@
 		<cell rect="284,334,89,105" name="weaponBuff/swordLargeFireBuffOH" dx="89" dy="22"/>
 		<cell rect="14,652,89,105" name="weapon/swordMassiveGeneric" dx="26" dy="43"/>
 		<cell rect="14,758,89,105" name="weapon/swordMassiveHoly" dx="26" dy="43"/>
-		<cell rect="14,846,89,105" name="weapon/swordMassiveUnholy" dx="26" dy="43"/>
+		<cell rect="14,864,89,105" name="weapon/swordMassiveUnholy" dx="26" dy="43"/>
 		<cell rect="194,652,89,105" name="weaponBuff/swordMassiveFireBuff" dx="38" dy="11"/>
 		<cell rect="104,652,89,105" name="weapon/swordMassiveGenericOH" dx="94" dy="43"/>
 		<cell rect="104,758,89,105" name="weapon/swordMassiveHolyOH" dx="94" dy="43"/>
