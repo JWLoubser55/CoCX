@@ -708,9 +708,8 @@ public class Appearance extends Utils
 					"light blue shaft");
 			}
 			else if (cockType == CockTypesEnum.SHROOM) {
-				return randomChoice("glowing shroom-like dick",
-					"glowing shroom-like cock",
-					"glowing shroom-like member");
+				return randomChoice("glowing fungal clit cock",
+					"mushroom futa dick");
 			}
 			else if (cockType == CockTypesEnum.AUTOMATA) {
 				return randomChoice("steel hard dick",

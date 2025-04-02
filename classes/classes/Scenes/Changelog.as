@@ -369,7 +369,7 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Liadri): Energy Sword - dropped by Automaton enemy. Cost 2800 gems, have 35 atk and it dealing plasma damage. High tech weapon and Large Exotic type weapon.\n");
 			outputText("-New melee weapon (by Liadri): Energy Spear - dropped by Automaton enemy. Cost 3600 gems, have 45 atk and it dealing plasma damage. High tech weapon and Massive Exotic type weapon.\n");
 			outputText("-New event perk: Lusty Strength. Gained by becoming Mantago. Effects: Add your libido to your toughness score. Your strength score is also added to your libido.\n");
-			outputText("-\n");
+			outputText("-Changes including Tome of Imps and Imps birth. Tome of Imp and Demonhood is now accounted for when birthing imps. Giving birth to imps adds 5 imps to the tome directly. (Liadri)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

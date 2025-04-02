@@ -800,7 +800,7 @@ public class PlayerAppearance extends BaseContent {
 			case CockTypesEnum.OOMUKADE: cockDesc += " It constantly drips with venom."; break;
 			case CockTypesEnum.USHI_ONI: cockDesc += " It's starfish tipped shaft."; break;
 			case CockTypesEnum.MINDBREAKER: cockDesc += " Hidden in a slit along with the rest of your male equipment, it constantly fills with your thick green slimy cum, to the point that your cum constantly leaks out of your genital slit, leaving a sticky trail of green \"slime\" in your wake."; break;
-			case CockTypesEnum.SHROOM: cockDesc += " Sheathed within your pussy wall is your [clit inches] inches long glowing fungal clit cock always eager to slide out of your folds to spread your infectious spore around when you are excited."; break;
+			case CockTypesEnum.SHROOM: cockDesc += " It is glowing, shroom-like in appearance."; break;
 			case CockTypesEnum.AUTOMATA: cockDesc += " Similar to a tentacle it can extend out of its socket into a long flexible cable which you can use to plug a female. A reservoir in your body allows you to produce and shoot pseudo cum produced by alchemy, a process female automaton particularly enjoy."; break;
 			default: //Nothing here, move along!
 		}
@@ -946,7 +946,7 @@ public class PlayerAppearance extends BaseContent {
 				pussyDesc += " is deep and wide just like that of a horse. Sometime you lament that most of your partners are no longer big enough to satisfy you. It constantly drools plasma, small puffs of electrified matter wafting up from beneath where you're standing. Your equine static chamber hides a ";
 				break;
 			case VaginaClass.SHROOM:
-				pussyDesc += " glowing walls contain a mushroom shaped sensitive clit that can get as big and hard as a penis. When ready to spread your spores around, it pleasantly grows out of your fold making you gasp in pleasure. Your instincts drives you to fuck your victims with it given the chance.";
+				pussyDesc += " glowing walls contain a mushroom shaped "+Measurements.shortSuffix(int(player.clitLength * 10) / 10)+" sensitive clit that can get as big and hard as a penis. When ready to spread your spores around, it pleasantly grows out of your fold making you gasp in pleasure.";
 				clitExists++
 				break;
 			case VaginaClass.AUTOMATA:
