@@ -138,15 +138,19 @@ public class Pregnancy extends NPCAwareContent {
                         displayedUpdate = true;
                     }
                     if (womb["incubation"] == sceneHunter.adjustPregEventTimer(280, womb["type"])) {
-                        EngineCore.outputText("\n<b>Your belly is getting more noticeably distended.   You are probably pregnant.</b>\n");
+                        if(player.hasPerk(PerkLib.Soulless)) EngineCore.outputText("\n<b>You feel something change in the depths of your body. Seems you might be pregnant and, as a demon, you know exactly with what. You giggle as you pat your belly, a few imps wouldn’t be a bad thing, you could use some extra pets.</b>\n");
+                        else EngineCore.outputText("\n<b>Your belly is getting more noticeably distended.   You are probably pregnant.</b>\n");
                         displayedUpdate = true;
                     }
                     if (womb["incubation"] == sceneHunter.adjustPregEventTimer(216, womb["type"])) {
-                        EngineCore.outputText("\n<b>The unmistakable bulge of pregnancy is visible in your tummy.  ");
-                        if (player.cor < 40) EngineCore.outputText("You are distressed by your unwanted pregnancy, and your inability to force this thing out of you.</b>");
-                        if (player.cor >= 40 && player.cor < 75) EngineCore.outputText("Considering the size of the creatures you've fucked, you hope it doesn't hurt when it comes out.</b>");
-                        if (player.cor >= 75) EngineCore.outputText("You think dreamily about the monstrous cocks that have recently been fucking you, and hope that your offspring inherit such a pleasure tool.</b>");
-                        player.dynStats("spe", -1, "lib", 1, "sen", 1, "lus", 2);
+                        if(player.hasPerk(PerkLib.Soulless)) EngineCore.outputText("\n<b>You thank your corrupted body for magically hiding your pregnancy. While you feel distended from the inside by the many imps forming in your womb, anyone looking from outside wouldn’t notice a thing. Sucks though, you could have tried for a milf roleplay or two.</b>\n");
+                        else {
+                            EngineCore.outputText("\n<b>The unmistakable bulge of pregnancy is visible in your tummy.  ");
+                            if (player.cor < 40) EngineCore.outputText("You are distressed by your unwanted pregnancy, and your inability to force this thing out of you.</b>");
+                            if (player.cor >= 40 && player.cor < 75) EngineCore.outputText("Considering the size of the creatures you've fucked, you hope it doesn't hurt when it comes out.</b>");
+                            if (player.cor >= 75) EngineCore.outputText("You think dreamily about the monstrous cocks that have recently been fucking you, and hope that your offspring inherit such a pleasure tool.</b>");
+                            player.dynStats("spe", -1, "lib", 1, "sen", 1, "lus", 2);
+                        }
                         EngineCore.outputText("\n");
                         displayedUpdate = true;
                     }
@@ -159,19 +163,25 @@ public class Pregnancy extends NPCAwareContent {
                         displayedUpdate = true;
                     }
                     if (womb["incubation"] == sceneHunter.adjustPregEventTimer(72, womb["type"])) {
-                        EngineCore.outputText("\n<b>Your belly is painfully distended, ");
-                        if (player.cor < 40) EngineCore.outputText("making it difficult to function.</b>");
-                        if (player.cor >= 40 && player.cor < 75) EngineCore.outputText("and you wonder how much longer you have to wait.</b>");
-                        if (player.cor >= 75) EngineCore.outputText("and you're eager to give birth, so you can get impregnated again by corrupted or monstrous cum filling out your eager womb.</b>");
-                        EngineCore.outputText("\n");
-                        player.dynStats("spe", -3, "lib", 1, "sen", 1, "lus", 4);
+                        if(player.hasPerk(PerkLib.Soulless)) EngineCore.outputText("\n<b>You gasp in delight as your kids move inside rubbing against your inner walls. You make a depraved smile as you imagine them actually fucking each other inside of your womb and Hells under, the delicious taste of cum in your depths seems to suggest just that.</b>\n");
+                        else {
+                            EngineCore.outputText("\n<b>Your belly is painfully distended, ");
+                            if (player.cor < 40) EngineCore.outputText("making it difficult to function.</b>");
+                            if (player.cor >= 40 && player.cor < 75) EngineCore.outputText("and you wonder how much longer you have to wait.</b>");
+                            if (player.cor >= 75) EngineCore.outputText("and you're eager to give birth, so you can get impregnated again by corrupted or monstrous cum filling out your eager womb.</b>");
+                            EngineCore.outputText("\n");
+                            player.dynStats("spe", -3, "lib", 1, "sen", 1, "lus", 4);
+                        }
                         displayedUpdate = true;
                     }
                     if (womb["incubation"] == sceneHunter.adjustPregEventTimer(48, womb["type"])) {
-                        EngineCore.outputText("\n<b>You rub your hands over your bulging belly, lost in the sensations of motherhood.  ");
-                        if (player.cor < 40) EngineCore.outputText("Afterwards you feel somewhat disgusted with yourself.</b>\n");
-                        if (player.cor >= 40 && player.cor < 75) EngineCore.outputText("You estimate you'll give birth in the next few days.</b>\n");
-                        if (player.cor >= 75) EngineCore.outputText("You find yourself daydreaming about birthing demons repeatedly, each time being re-impregnated by your hordes of lusty adolescent children.</b>\n");
+                        if(player.hasPerk(PerkLib.Soulless)) EngineCore.outputText("\n<b>Those kids are getting rowdy down there, they must be eager to get a pussy to slot themselves in. You would rather they get out already, though the now constant taste of sloshing cum inside isn’t exactly unwelcome.</b>\n");
+                        else {
+                            EngineCore.outputText("\n<b>You rub your hands over your bulging belly, lost in the sensations of motherhood.  ");
+                            if (player.cor < 40) EngineCore.outputText("Afterwards you feel somewhat disgusted with yourself.</b>\n");
+                            if (player.cor >= 40 && player.cor < 75) EngineCore.outputText("You estimate you'll give birth in the next few days.</b>\n");
+                            if (player.cor >= 75) EngineCore.outputText("You find yourself daydreaming about birthing demons repeatedly, each time being re-impregnated by your hordes of lusty adolescent children.</b>\n");
+                        }
                         displayedUpdate = true;
                     }
                 }
@@ -1726,7 +1736,7 @@ public class Pregnancy extends NPCAwareContent {
                 SceneLib.zenjiScene.birthScene();
             }
             //Give birth if it's time (to an imp!)
-            if (player.pregnancyType == PregnancyStore.PREGNANCY_IMP) {
+            if (player.pregnancyType == PregnancyStore.PREGNANCY_IMP && !player.hasPerk(PerkLib.Soulless)) {
                 EngineCore.outputText("\n");
                 //Add imp birth status - used to control frequency of night imp gangbag
                 if(player.hasStatusEffect(StatusEffects.BirthedImps)) player.addStatusValue(StatusEffects.BirthedImps,1,1);
@@ -1778,6 +1788,29 @@ public class Pregnancy extends NPCAwareContent {
                     EngineCore.outputText("\n\nAfter the birth your [armor] fits a bit more snugly about your " + hipDescript() + ".");
                 }
                 EngineCore.outputText("\n");
+                displayedUpdate = true;
+            }
+            //Give birth if it's time (to an imp! Soulless Variation)
+            if (player.pregnancyType == PregnancyStore.PREGNANCY_IMP && player.hasPerk(PerkLib.Soulless)) {
+                EngineCore.outputText("\n");
+                //Add imp birth status - used to control frequency of night imp gangbag
+                if(player.hasStatusEffect(StatusEffects.BirthedImps)) player.addStatusValue(StatusEffects.BirthedImps,1,1);
+                else player.createStatusEffect(StatusEffects.BirthedImps,1,0,0,0);
+
+                EngineCore.outputText("A sudden gush of fluids erupts from your vagina - your water just broke and the contractions have abruptly started." +
+                        " You smile wide as you feel wriggling and squirming inside your belly, muscle contractions forcing your long-awaited kids downwards." +
+                        " There is no pain to it, your succubus body is made for pleasure and as such pleasure is exactly what you get as your delivery continues." +
+                        " You moan in delight as the contractions intensify, and as you feel the first of your many children pass through your lips you have a small orgasm." +
+                        "\n\nOf course, this is only the beginning, and the contractions resume, pushing you to orgasm again as you pass the second one." +
+                        " It repeats, over and over, nearly a dozen times you birth and orgasm." +
+                        " After an eternity of procreation and pleasure, you sense your ordeal is over and disappointed, take a look at the whelps you gave birth to." +
+                        "\n\nAbout a dozen somewhat disoriented imps look at you, cocks still hard but that's about the only thing useful about them. You could keep these lesser demons as laborers or tell them to scram.");
+                player.knockUpForce(); //Clear Pregnancy
+
+                EngineCore.outputText("\n");
+                addButton(1, "Keep them", handleImpKidsKeepEm);
+                addButton(2, "Get out", handleImpKidsGetOut);
+                addButton(3, "Tome of Imps", handleImpKidsTomeOfImps);
                 displayedUpdate = true;
             }
             //Give birth if it's time (to a cowgirl!)
@@ -2383,7 +2416,7 @@ public class Pregnancy extends NPCAwareContent {
                 SceneLib.zenjiScene.birthScene();
             }
             //Give birth if it's time (to an imp!)
-            if (player.pregnancy2Type == PregnancyStore.PREGNANCY_IMP) {
+            if (player.pregnancy2Type == PregnancyStore.PREGNANCY_IMP && !player.hasPerk(PerkLib.Soulless)) {
                 EngineCore.outputText("\n");
                 //Add imp birth status - used to control frequency of night imp gangbag
                 if(player.hasStatusEffect(StatusEffects.BirthedImps)) player.addStatusValue(StatusEffects.BirthedImps,1,1);
@@ -2435,6 +2468,29 @@ public class Pregnancy extends NPCAwareContent {
                     EngineCore.outputText("\n\nAfter the birth your [armor] fits a bit more snugly about your " + hipDescript() + ".");
                 }
                 EngineCore.outputText("\n");
+                displayedUpdate = true;
+            }
+            //Give birth if it's time (to an imp! Soulless Variation)
+            if (player.pregnancy2Type == PregnancyStore.PREGNANCY_IMP && player.hasPerk(PerkLib.Soulless)) {
+                EngineCore.outputText("\n");
+                //Add imp birth status - used to control frequency of night imp gangbag
+                if(player.hasStatusEffect(StatusEffects.BirthedImps)) player.addStatusValue(StatusEffects.BirthedImps,1,1);
+                else player.createStatusEffect(StatusEffects.BirthedImps,1,0,0,0);
+
+                EngineCore.outputText("A sudden gush of fluids erupts from your vagina - your water just broke and the contractions have abruptly started." +
+                        " You smile wide as you feel wriggling and squirming inside your belly, muscle contractions forcing your long-awaited kids downwards." +
+                        " There is no pain to it, your succubus body is made for pleasure and as such pleasure is exactly what you get as your delivery continues." +
+                        " You moan in delight as the contractions intensify, and as you feel the first of your many children pass through your lips you have a small orgasm." +
+                        "\n\nOf course, this is only the beginning, and the contractions resume, pushing you to orgasm again as you pass the second one." +
+                        " It repeats, over and over, nearly a dozen times you birth and orgasm." +
+                        " After an eternity of procreation and pleasure, you sense your ordeal is over and disappointed, take a look at the whelps you gave birth to." +
+                        "\n\nAbout a dozen somewhat disoriented imps look at you, cocks still hard but that's about the only thing useful about them. You could keep these lesser demons as laborers or tell them to scram.");
+                player.knockUpForce(); //Clear Pregnancy
+
+                EngineCore.outputText("\n");
+                addButton(1, "Keep them", handleImpKidsKeepEm);
+                addButton(2, "Get out", handleImpKidsGetOut);
+                addButton(3, "Tome of Imps", handleImpKidsTomeOfImps);
                 displayedUpdate = true;
             }
             //Give birth if it's time (to a cowgirl!)
@@ -3033,6 +3089,30 @@ public class Pregnancy extends NPCAwareContent {
             }
             return displayedUpdate;
         }
+
+    private function handleImpKidsKeepEm():void{
+        EngineCore.outputText("\n\nYou tower above your newborn kids and declare your intentions in a commanding tone.\n\n" +
+                "You could care less what these mangy bunch of misfits have to say." +
+                " They work for you now, and they will learn that you'll spare no hesitations to put them in their place." +
+                " They should be grateful to grovel and serve you at your heel.\n\n" +
+                "The imps are already cowering before your dominating presence, which is good." +
+                " Whenever you need something done, they will be of assistance, and best of all, they'll work for free.\n\n" +
+                " With a wave of the hand you force your newest slave to scatter across the camp and start their duty. Damn being a demon feels good.");
+        // Currently does nothing but may be of use later
+    }
+
+    private function handleImpKidsGetOut():void{
+        EngineCore.outputText("\n\nYou tell your degenerate progeny to scram the fuck out of your place and go fuck something in the wild, you have no use for them here." +
+                " Inferior creatures that they are, they don’t question you and get the hell out before you get the chance to repeat yourself.\n");
+    }
+
+    private function handleImpKidsTomeOfImps():void{
+        EngineCore.outputText("\n\nWhy would you ever want to kick your progeny out? Those imps are practically begging to serve your royal pussy already.\n\n" +
+                "Not waiting for them to question their allegiance you promptly open the tome of imps and suck in your brand new subjects adding them to your ever growing army of imps." +
+                " You can hear the delighted moans of Nalcanthet in your brain as so many imps are shoved down her portal at the same time. Several new names appear onto the pages added up to your rooster." +
+                " If only procreation was always this lucrative but this kind of business is a one woman show only you can have!")
+        player.addPerkValue(PerkLib.ImpNobility, 1, 5);
+    }
 
     // Unusual checks that are separated for some reason
     // I'm sorry if they NEEDED
