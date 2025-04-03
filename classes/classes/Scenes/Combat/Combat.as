@@ -11144,12 +11144,12 @@ public class Combat extends BaseContent {
                 // If pc exp is lower then the cap award exp else do nothing.
                 // This is to avoid lowering exp if player had higher from a tribulation or a treasure allowing player exp
                 // not to be reseted by a fight if its above so to prevent tribulation exp being lost by accident
-                if (player.XP < (player.requiredXP()*5))
+                if (player.XP < (player.requiredXP()*3))
                 {
                     //Award player experience
                     player.XP += monster.XP;
                     //Set player exp to never be banked from a single battle!
-                    if (player.XP > (player.requiredXP()*5)) player.XP = (player.requiredXP()*5);
+                    if (player.XP > (player.requiredXP()*3)) player.XP = (player.requiredXP()*3);
                 }
             }
         }
