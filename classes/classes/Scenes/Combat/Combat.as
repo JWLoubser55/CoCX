@@ -11136,7 +11136,12 @@ public class Combat extends BaseContent {
         if (((player.gems + monster.gems) >= 1000000000 || (player.gems + monster.gems) < 0) && monster.gems > 0) player.gems = 1000000000;
         else player.gems += monster.gems;
         if (monster.XP <= 0) monster.XP = 0;
-        if (!monster.hasPerk(PerkLib.NoExpGained)) player.XP += monster.XP;
+        if (!monster.hasPerk(PerkLib.NoExpGained))
+        {
+            player.XP += monster.XP;
+            //Set player exp to never be banked from a single battle!
+            if (player.XP > player.requiredXP()) player.XP = player.requiredXP();
+        }
         mainView.statsView.showStatUp('xp');
         dynStats("lust", 0, "scale", false); //Forces up arrow.
     }
