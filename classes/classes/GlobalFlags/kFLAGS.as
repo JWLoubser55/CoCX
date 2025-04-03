@@ -2947,7 +2947,7 @@ public static const UNKNOWN_FLAG_NUMBER_02938:int                               
 public static const UNKNOWN_FLAG_NUMBER_02939:int                                   = 2939;
 public static const UNKNOWN_FLAG_NUMBER_02940:int                                   = 2940;
 public static const UNKNOWN_FLAG_NUMBER_02941:int                                   = 2941;
-public static const UNKNOWN_FLAG_NUMBER_02942:int                                   = 2942;
+public static const EXP_BANKING:int                                   				= 2942;
 public static const RACE_UI_SETTING:int                                   			= 2943;
 public static const HUMAN_BLOODLINE:int                                   			= 2944;
 public static const STATBAR_ANIMATIONS:int                                          = 2945; // 0: animate bar, 1: disable

@@ -8120,7 +8120,9 @@ use namespace CoC;
 				outputText("\nBut I've got some evil inside me, me (Metroid Dread)[/font]");
 			}
 			else if (flags[kFLAGS.GAME_DIFFICULTY] == 7) outputText("\n[font-pink]Are you 'Courting Death' since you 'Had eyes but not seen Mt. Tai?' Worry not as there are enough 'Arrogant Young Masters' and Mistresses for everyone to get a piece of Champion. (Xianxia MC)[/font]");
+			else if (flags[kFLAGS.GAME_DIFFICULTY] == 8) outputText("\n[font-pink]Son Wukong would be proud of you. Thats because you're going to need a lot of protagonist plot armor bullshit in order to get through this ordeal! (Xianxia Ascended MC)[/font]");
 			outputText("<i>Each option that increase difficutly rating above when it's not completly turned off: Primary Difficulty, Secondary Stats Modifier, Elite/Champion/Boss Modifier, Hunger/Realistic Mode Modifier, Hardcore Modifier</i>");
+
 		}
 		
 		public function raijuSuperchargedCheck():void{
