@@ -7,6 +7,7 @@ import classes.CockTypesEnum;
 import classes.EngineCore;
 import classes.GlobalFlags.kACHIEVEMENTS;
 import classes.GlobalFlags.kFLAGS;
+import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.*;
 import classes.ItemType;
 import classes.Items.IELib;
@@ -11138,19 +11139,19 @@ public class Combat extends BaseContent {
         if (monster.XP <= 0) monster.XP = 0;
         if (!monster.hasPerk(PerkLib.NoExpGained))
         {
-            //if (!ExpBankingisOn) player.XP += monster.XP;
-            //else {
+            if (kFLAGS.EXP_BANKING == 1) player.XP += monster.XP;
+            else {
                 // If pc exp is lower then the cap award exp else do nothing.
                 // This is to avoid lowering exp if player had higher from a tribulation or a treasure allowing player exp
                 // not to be reseted by a fight if its above so to prevent tribulation exp being lost by accident
-                if (player.XP < player.requiredXP())
+                if (player.XP < (player.requiredXP()*5))
                 {
                     //Award player experience
                     player.XP += monster.XP;
                     //Set player exp to never be banked from a single battle!
-                    if (player.XP > player.requiredXP()) player.XP = player.requiredXP();
+                    if (player.XP > (player.requiredXP()*5)) player.XP = (player.requiredXP()*5);
                 }
-            //}
+            }
         }
         mainView.statsView.showStatUp('xp');
         dynStats("lust", 0, "scale", false); //Forces up arrow.
