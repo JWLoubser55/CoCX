@@ -6386,7 +6386,7 @@ public class Combat extends BaseContent {
         //Unique attack Sea dragon shock
         if (player.antennae.type == Antennae.SEA_DRAGON && player.hasPerk(PerkLib.LightningAffinity)) {
             outputText("You lash out with your whiskers delivering a pair of deadly electrical discharges.");
-            var ThunderDamageMultiplier:Number = Math.round(player.inte/100);
+            var ThunderDamageMultiplier:Number = 2+Math.round(player.inte/1000);
             ExtraNaturalWeaponAttack(ThunderDamageMultiplier, "lightning");
             ExtraNaturalWeaponAttack(ThunderDamageMultiplier, "lightning");
             if (rand(100)>95 && !monster.hasPerk(PerkLib.LightningNature) && !monster.hasPerk(PerkLib.LightningAffinity)){
