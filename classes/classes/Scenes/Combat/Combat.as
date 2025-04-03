@@ -11138,15 +11138,19 @@ public class Combat extends BaseContent {
         if (monster.XP <= 0) monster.XP = 0;
         if (!monster.hasPerk(PerkLib.NoExpGained))
         {
-            //If pc exp is lower then the cap award exp else do nothing
-            // this is to avoid lowering exp if player had higher from a tribulation or a treasure allowing player exp
-            // not to be reseted by a fight if its above so to prevent tribulation exp being lost by accident
-            if (player.XP < player.requiredXP()){
-                //Award player experience
-                player.XP += monster.XP;
-                //Set player exp to never be banked from a single battle!
-                if (player.XP > player.requiredXP()) player.XP = player.requiredXP();
-            }
+            //if (!ExpBankingisOn) player.XP += monster.XP;
+            //else {
+                // If pc exp is lower then the cap award exp else do nothing.
+                // This is to avoid lowering exp if player had higher from a tribulation or a treasure allowing player exp
+                // not to be reseted by a fight if its above so to prevent tribulation exp being lost by accident
+                if (player.XP < player.requiredXP())
+                {
+                    //Award player experience
+                    player.XP += monster.XP;
+                    //Set player exp to never be banked from a single battle!
+                    if (player.XP > player.requiredXP()) player.XP = player.requiredXP();
+                }
+            //}
         }
         mainView.statsView.showStatUp('xp');
         dynStats("lust", 0, "scale", false); //Forces up arrow.
