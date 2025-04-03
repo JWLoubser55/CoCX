@@ -574,6 +574,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 				// Pollen
 				bd = buttons.add("AlraunePollen", AlraunePollen).hint("Release a cloud of your pollen in the air to arouse your foe.");
 				if (player.hasStatusEffect(StatusEffects.AlraunePollen)) bd.disable("<b>You already spread your pollen over battlefield.</b>\n\n");
+				else if (player.hasStatusEffect(StatusEffects.SporeCloud)) bd.disable("<b>There is no point to activate this ability as your current cloud causes a similar effect.</b>\n\n");
+			}
+			if (player.isRaceCached(Races.MYCONID) && !player.hasPerk(PerkLib.ElementalBody)) {
+				// Spore Cloud
+				bd = buttons.add("Spore Cloud", SporeCloud).hint("Release a cloud of your spore into the air to arouse your foe.");
+				if (player.hasStatusEffect(StatusEffects.SporeCloud)) bd.disable("<b>You already spread your spores over battlefield.</b>\n\n");
+				else if (player.hasStatusEffect(StatusEffects.AlraunePollen)) bd.disable("<b>There is no point to activate this ability as your current cloud causes a similar effect.</b>\n\n");
 			}
 			if (player.hasKeyItem("Rocket Boots") >= 0 || player.hasKeyItem("Nitro Boots") >= 0) {
 				if (player.hasKeyItem("Nitro Boots") >= 0) bd = buttons.add("Blazing rocket kick", blazingRocketKick).hint("Deal fire damage using your boots. Also burns.");
@@ -3247,6 +3254,20 @@ public class PhysicalSpecials extends BaseCombatContent {
 		else doDamage(damage, true, true);
 		outputText(" damage for their trouble.\n\n");
 		combat.WrathGenerationPerHit2(5);
+		enemyAI();
+	}
+
+	public function SporeCloud():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		var spores:Number = monster.lustVuln * (combat.calcHerbalismPower() * 0.05) * (2 + rand(4));
+		if (player.headjewelryName == "pair of Golden Naga Hairpins") spores *= 1.1;
+		if (player.hasPerk(PerkLib.RacialParagon)) spores *= combat.RacialParagonAbilityBoost();
+		if (player.hasPerk(PerkLib.NaturalArsenal)) spores *= 2;
+		outputText("You send a cloud of your spores outward into the air, smiling lustfully at your opponent. [Themonster] sneezes slightly as [monster he] inhales your aphrodisiac-ladden spores, [monster he] begins showing clear signs of arousal. Just how long can [monster he] resist coming to fuck with you now? Not for long, you hope. ");
+		monster.teased(spores, false);
+		outputText("\n\n");
+		player.createStatusEffect(StatusEffects.SporeCloud, 0, 0, 0, 0);
 		enemyAI();
 	}
 

@@ -1178,6 +1178,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const Snowstorms:StatusEffectType                = mkCombat("Snowstorms");
 		public static const SparingBelisa:StatusEffectType             = mkCombat("SparingBelisa");
 		public static const SparingTyrantia:StatusEffectType           = mkCombat("SparingTyrantia");
+		public static const SporeCloud:StatusEffectType                = mkCombat("Spore Cloud");
 		public static const StoneLust:StatusEffectType                 = mkCombat("Stone Lust");
 		public static const StoneSkin:StatusEffectType                 = mkCombat("Stone Skin");
 		public static const StoredMomentum:StatusEffectType            = mkCombat("Stored Momentum");

@@ -11796,6 +11796,28 @@ public class Combat extends BaseContent {
 			}
             if (player.hasPerk(PerkLib.EromancyMaster)) teaseXP(1 + bonusExpAfterSuccesfullTease());
         }
+		//Spore Cloud
+		if (player.hasStatusEffect(StatusEffects.SporeCloud) && monster.lustVuln > 0) {
+			if (monster.lust < (monster.maxLust() * 0.5)) outputText("[Themonster] breathes in your spores but does not have any visible effects yet. ");
+            else if (monster.lust < (monster.maxLust() * 0.6)) {
+                if (!monster.plural) outputText("[Themonster] start to squirm a little. Your spores starting to get to them. ");
+                else outputText("[Themonster] starts to squirm a little from your spores. ");
+            } else if (monster.lust < (monster.maxLust() * 0.75)) outputText("Your spores seems to be visibly affecting [themonster], making [monster him] squirm uncomfortably. ");
+            else if (monster.lust < (monster.maxLust() * 0.85)) {
+                if (!monster.plural) outputText("[Themonster]'s skin flushes red, blood in their cheeks as [monster he] inadvertently breathes in your spores. ");
+                else outputText("[Themonster]' skin blushes red as [monster he] inadvertently breathes in your spores. ");
+            } else {
+                if (!monster.plural) outputText("The effects of your spores are quite pronounced on [themonster] as [monster he] begin to shake, occasionally stealing glances at your body. ");
+                else outputText("The effects of your spores are quite pronounced on [themonster] as [monster he] begin to shake, stealing glances at your body. ");
+            }
+            var lustDmgSC:Number = (scalingBonusLibido() * 0.5);
+            lustDmgSC = teases.teaseAuraLustDamageBonus(monster, lustDmgA);
+            if (player.hasPerk(PerkLib.RacialParagon)) lustDmgSC *= RacialParagonAbilityBoost();
+			lustDmgSC *= monster.lustVuln;
+            monster.teased(Math.round(lustDmgSC), false, true, true);
+            outputText("\n\n");
+			if (player.hasPerk(PerkLib.EromancyMaster)) teaseXP(1 + bonusExpAfterSuccesfullTease());
+		}
         //Pheromone Cloud
         if (player.hasPerk(PerkLib.PheromoneCloud) && monster.lustVuln > 0 && !flags[kFLAGS.DISABLE_AURAS]) {
 			outputText("Your pheromone cloud is currently exuding it’s aura on your potential mate. ");
@@ -17413,6 +17435,10 @@ public function sharedKinesisMidpart(crit:Boolean):Number {
 		damage += player.inte * 0.5;
 		damage += scalingBonusIntelligence() * 0.2;
 	}
+	if (player.hasPerk(PerkLib.MindFungus)) {
+		damage += player.inte * 0.5;
+		damage += scalingBonusIntelligence() * 0.5;
+	}
 	if (damage < 10) damage = 10;
 	//soulskill mod effect
 	//damage *= combat.soulskillMagicalMod();
@@ -17424,6 +17450,7 @@ public function sharedKinesisMidpart(crit:Boolean):Number {
 	if (player.hasPerk(PerkLib.QuasiDomainKineses)) damage *= 2;
 	if (player.hasPerk(PerkLib.Heroism) && (monster && (monster.hasPerk(PerkLib.EnemyBossType) || monster.hasPerk(PerkLib.EnemyHugeType)))) damage *= 2;
 	if (crit) damage *= 1.75;
+	damage = Math.round(damage);
 	return damage;
 }
 public function sharedKinesisEnding(damage:Number, crit:Boolean):void {

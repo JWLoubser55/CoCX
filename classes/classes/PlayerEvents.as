@@ -2280,7 +2280,9 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			//VerdantMight
 			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE, Races.MYCONID), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
 			//LustyStrength
-			needNext ||= player.gainOrLosePerk(PerkLib.LustyStrength, player.isRaceCached(Races.MYCONID), "Information Noona know who know what should be here and that perosn is... Liadri.", "Information Noona know who know what should be here and that perosn is... Liadri.");
+			needNext ||= player.gainOrLosePerk(PerkLib.LustyStrength, player.isRaceCached(Races.MYCONID), "Information Noona know who know what should be here and that person is... Liadri.", "Information Noona know who know what should be here and that person is... Liadri.");
+			//MindFungus
+			needNext ||= player.gainOrLosePerk(PerkLib.MindFungus, (player.isRaceCached(Races.MYCONID) && player.horns.count > 8), "Information Noona know who know what should be here and that person is... Liadri.", "Information Noona know who know what should be here and that person is... Liadri.");
 			//Enigma
 			needNext ||= player.gainOrLosePerk(PerkLib.Enigma, player.isRaceCached(Races.SPHINX), "Being a sphinx has granted you insight on many things including various secrets to martial combat, guess this is what they mean about using your smarts before your brawn.", "As you no longer possess the insight of a sphinx you no longer have the ability to fully use your smarts to improve your martial prowess.");
 			//Rampant Might

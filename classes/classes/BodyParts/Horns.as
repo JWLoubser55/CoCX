@@ -360,7 +360,14 @@ public class Horns extends BodyPart {
 		appearanceDescFunc: function(player: *): String {
 			var desc: String = "";
 
-			if (player.horns.count > 0) desc += " On your head grows a very large mushroom reminiscent of a hat. This is where most of your spores are stored.";
+			desc += " On your head grows a very large mushroom reminiscent of a hat. This is where most of your spores are stored. Your cap has ";
+			if (player.horns.count > 14) desc += "royal purple";
+			else if (player.horns.count > 12) desc += "blue";
+			else if (player.horns.count > 10) desc += "green";
+			else if (player.horns.count > 8) desc += "yellow";
+			else if (player.horns.count > 6) desc += "red";
+			else desc += "white";
+			desc += " dots that glow dimly in the dark.";
 
 			return desc;
 		}

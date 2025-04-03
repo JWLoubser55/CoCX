@@ -138,7 +138,8 @@ public class Changelog extends BaseContent
 			outputText("Werefox (M) - lvl 33. Encounterable in Inner Desert at night. Elder Werefox (M) - lvl 61. Encounterable in Inner Desert at night (he temporaly came from deeper desert regions and req. lvl 43+ to encounter). Zombie (M & F) - lvl 36/53. Encounterable in Outer Plains / Inner Plains (lvl 53 zombies temporaly hopped from deeper plains regions) at night as long PC isn't Jiangshi. They have Undead enemy type perk. ");
 			outputText("Mummy (M & F) - lvl 18/36. Encounterable in Outer Desert / Inner Desert at night. They have Undead enemy type and Low-tier Magic Immunity perk. Thief - lvl 5, Thief Captain - lvl 9. Encounterable in Ignam after PC reach lvl 2/6. Feral Succubus/Incubus - lvl 41, Feral Omnibus - lvl 51. Encountered in Blight Ridge. Feral Cow Succubus/Mino Incubus - lvl 65/67. ");
 			outputText("Feral Demon Hellhound - lvl 69. Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Encountered in Tunnels.\n");
-			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig), Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event)\n");
+			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig), Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event), Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
+			outputText("Myconid Pussy, Myconid Cock (from shroomification event)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
 			//outputText("-New HB Mech upgrade options: Armor Plating (+armor), Leather Insulation (+magic resistance), Agility (+base melee atk dmg), Dragon's Breath Flamer (fire dmg special), Scatter Laser (lightning dmg special), Rapid Reload (+base ranged atk dmg), Internal Systems (increase mech SF capacity and lower it consumption during high activity)\n");
 			//outputText(", Camouflage Mode (allow to enter 1 turn long camouflage opening option to use Sneak Attack (melee & range) specials), Invisibility Mode (the same as Camouflage Mode but can last until PC run out of SF to keep it active or deactivate it manualy / upgrade to decrease SF consumption)");
@@ -370,11 +371,11 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Liadri): Energy Spear - dropped by Automaton enemy. Cost 3600 gems, have 45 atk and it dealing plasma damage. High tech weapon and Massive Exotic type weapon.\n");
 			outputText("-New event perk: Lusty Strength. Gained by becoming Mantago. Effects: Add your libido to your toughness score. Your strength score is also added to your libido.\n");
 			outputText("-Changes including Tome of Imps and Imps birth. Tome of Imp and Demonhood is now accounted for when birthing imps. Giving birth to imps adds 5 imps to the tome directly. (Liadri)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New P. Special: Spore Cloud. Req. to be Matango. Effects: Works like arousing aura till end of fight. Can't have both Spore Cloud and Alraune Pollen active.\n");
+			outputText("-Losing to Matango in caves have 75% chance to TF pc into matango. Their race bonuses for Matango / Myconid / Fungal Queen (16/26/36): +240%/+340%/+440% to tou multi, +150%/+200%/+300% to lib multi, -100%/-50%/0% to int multi, +50/+100/+200 to sens, +20 min lust\n"); 
+			outputText("-New event perk: Mind Fungus. Gained by becoming Mantago and reaching yellow cap and frills color. Effects: Half of your intelligence is added as an extra modifier to psionic ability.\n");
+			outputText("-Exp banking from defeating foes is now history. Tribulation and exp gained from other source will still be able to be banked. Added a toggle in start menu for Exp banking Exp banking is now limited to 3 time the amount to the next level up. Exp Banking is On by default. (Liadri)\n");
+			outputText("-Nerfed the thunder dragon electric rods. (Liadri)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

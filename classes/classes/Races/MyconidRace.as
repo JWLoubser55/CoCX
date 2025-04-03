@@ -77,11 +77,15 @@ public class MyconidRace extends Race {
 						function (body:BodyData):Boolean {
 							return body.player.horns.count > 12
 						}, +1)
+				.customRequirement("","shroom headcap size > 7",
+						function (body:BodyData):Boolean {
+							return body.player.horns.count > 14
+						}, +1)
 				.armType(Arms.SHROOM_ARMS, +1)
 				.legType(LowerBody.SHROOM_SKIRT, +2)
 				.rearType(RearBody.BRA_AND_NECK, +1)
 				.noWings(+2)
-				.noTail( +1)
+				.noTail(+1)
 				.tone(LESS_THAN(10), +1)
 				.skinColor1(ANY(MyconidSkinColors), +1)
 				.biggestTitSize(GREATER_THAN(3), +1)
