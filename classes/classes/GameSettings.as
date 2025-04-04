@@ -125,6 +125,11 @@ public class GameSettings extends BaseContent {
 				outputText("Realistic Mode Modifier: <b>[font-red]Enabled[/font]</b> (PC must manage his own hunger lest you want see his death from starvation + your cum production is capped and having oversized parts will weigh you down)");
 			}
 			outputText("\n\n");
+			outputText("Exp Banking: " + (flags[kFLAGS.EXP_BANKING] == 1
+				? "<b>[font-olive]Enabled[/font]</b> (PC can stack experience indefinitily from defeated opponents)"
+				: "<b>[font-red]Disabled[/font]</b>"
+			));
+			outputText("\n\n");
 			if (flags[kFLAGS.HARDCORE_MODE] == 0) {
 				outputText("Hardcore Modifier: <b>[font-olive]Disabled[/font]</b>");
 			}
@@ -194,6 +199,8 @@ public class GameSettings extends BaseContent {
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0) addButton(6, "Hunger (Off)", disableHungerModifierForReal);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0.5) addButton(7, "Hunger (On)", enableHungerModifierForReal);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 1) addButton(8, "Realistic (On)", enableRealisticModifierForReal);
+			addButton(9, "EXP Banking (" + (flags[kFLAGS.EXP_BANKING] == 0 ? "On" : "Off") + ")",
+				flags[kFLAGS.EXP_BANKING] == 0 ? toggleXPBankingOn : toggleXPBankingOff);
 			if (flags[kFLAGS.GAME_DIFFICULTY] <= 0) addButton(10, "Easier Mode", toggleFlag, kFLAGS.EASY_MODE_ENABLE_FLAG, settingsScreenGameSettings).hint("Toggles easier than easy mode. Enemy damage is 10% of normal and bad-ends can be ignored.");
 			else addButtonDisabled(10, "Easier Mode", "Diffulty setting is too high to allow toggle easy mode.");
 			addButton(11, "Fetishes", fetishSubMenu).hint("Toggle some of the weird fetishes such as watersports and worms.");
@@ -855,6 +862,20 @@ public class GameSettings extends BaseContent {
 		clearOutput();
 		outputText("Realistic Mode modifier is now enabled.");
 		flags[kFLAGS.HUNGER_ENABLED] = 1;
+		setTheFuckingDifficultyForFuckingGood();
+		doNext(settingsScreenGameSettings);
+	}
+	public function toggleXPBankingOn():void {
+		clearOutput();
+		outputText("You have chosen to have Exp Banking enabled.");
+		flags[kFLAGS.EXP_BANKING] = 1;
+		setTheFuckingDifficultyForFuckingGood();
+		doNext(settingsScreenGameSettings);
+	}
+	public function toggleXPBankingOff():void {
+		clearOutput();
+		outputText("You have chosen to have Exp Banking disabled.");
+		flags[kFLAGS.EXP_BANKING] = 0;
 		setTheFuckingDifficultyForFuckingGood();
 		doNext(settingsScreenGameSettings);
 	}
