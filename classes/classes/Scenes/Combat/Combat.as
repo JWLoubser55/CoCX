@@ -11194,7 +11194,7 @@ public class Combat extends BaseContent {
         if (monster.XP <= 0) monster.XP = 0;
         if (!monster.hasPerk(PerkLib.NoExpGained))
         {
-            if (kFLAGS.EXP_BANKING == 1) player.XP += monster.XP;
+            if (flags[kFLAGS.EXP_BANKING] == 1) player.XP += monster.XP;
             else {
                 // If pc exp is lower then the cap award exp else do nothing.
                 // This is to avoid lowering exp if player had higher from a tribulation or a treasure allowing player exp
@@ -11203,9 +11203,9 @@ public class Combat extends BaseContent {
                 {
                     //Award player experience
                     player.XP += monster.XP;
-                    //Set player exp to never be banked from a single battle!
-                    if (player.XP > (player.requiredXP()*3)) player.XP = (player.requiredXP()*3);
                 }
+                //Set player exp to never be banked from a single battle!
+                if (player.XP > (player.requiredXP()*3)) player.XP = (player.requiredXP()*3);
             }
         }
         mainView.statsView.showStatUp('xp');
