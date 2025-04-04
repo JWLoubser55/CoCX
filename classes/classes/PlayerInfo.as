@@ -436,18 +436,21 @@ public class PlayerInfo extends BaseContent {
 
 		if (player.hasStatusEffect(StatusEffects.ArigeanInfected))
 			statEffects += "Mysterious Infection: You feel a bit under the weather...you should likely rest until it passes.\n";
-		
+	
 		if (player.buff("SoftIronIgnotPhysicalDefenseBuff").isPresent())
 			statEffects += "Physical Defense Buff (+15%) - " + player.buff('Soft Iron Ignot Physical Defense Buff').getRemainingTicks() + " hours remaining.\n";
-		
+	
 		if (player.buff("LightBronzeBarMagicDefenseAndPoisonResistanceBuff").isPresent())
 			statEffects += "Magic Defense Buff (+15%), Poison Resistance Buff (+40%) - " + player.buff('Light Bronze Bar Magic Defense And Poison Resistance Buff').getRemainingTicks() + " hours remaining.\n";
-		
+	
 		if (player.buff("EbonbloomAlloyIngotPhysicalAndMagicDefenseBuff").isPresent())
 			statEffects += "Physical & Magic Defense Buff (+25%) - " + player.buff('Ebonbloom Alloy Ingot Physical And Magic Defense Buff').getRemainingTicks() + " hours remaining.\n";
 
 		if (player.hasStatusEffect(StatusEffects.FontOfCorruption)) 
 			statEffects += "Font of corruption - Your body overflows with corruption, +10% lust damage - " + player.statusEffectv1(StatusEffects.FontOfCorruption) + " days remaining\n";
+
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv4(PerkLib.AbsorbNutrient) > 0)
+			statEffects += "Metabolic boost Buff (increase esper powers by 20%) - " + player.perkv4(PerkLib.AbsorbNutrient) + " hours remaining.\n";
 
 		if (player.statusEffectv1(StatusEffects.Bammed1) > 0) {
 			if (player.statusEffectv1(StatusEffects.Bammed1) == 3) statEffects += "Bammed <b>(Disables melee attacks permanently)</b>\n";

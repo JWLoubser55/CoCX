@@ -456,7 +456,7 @@ public final class WeaponLib extends ItemConstants
 				WT_EXOTIC, WSZ_MASSIVE)
 				.withTags(W_THROWN)
 				.withEffect(IELib.ScaleAttack_StrXL, 250) as Weapon;
-		public const GGRAVEA:Weapon = new Weapon("GGravea", "GlacialGraveaxe", "Glacial Graveaxe", "a Glacial Graveaxe", "cleave", 160, 160, "The titanic greataxe you found in the tundra, most of the weapon seems to have been carved from bedrock, with the head being made of solid, dense, ice from the heart of a glacier. The ice is light, razor sharp, and appears to never melt. The stone’s slightly discolored, as if carvings had once adorned its surface…However, such decoration seems to have been lost to time.", WT_AXE, WSZ_MASSIVE)
+		public const GGRAVEA:Weapon = new Weapon("GGravea", "GlacialGraveaxe", "Glacial Graveaxe", "a Glacial Graveaxe", "cleave", 160, 160, "The titanic greataxe you found in the tundra, most of the weapon seems to have been carved from bedrock, with the head being made of solid, dense, ice from the heart of a glacier. The ice is light, razor sharp, and appears to never melt. The stone’s slightly discolored, as if carvings had once adorned its surface…However, such decoration seems to have been lost to time. When charged with magic the blade radiates a glacial frost reminiscent of where it was found", WT_AXE, WSZ_MASSIVE)
 				.withTag(W_LGWRATH)
 				.withEffect(IELib.ScaleAttack_StrXL, 800) as Weapon;
 		public const GUANDAO:Weapon = new Weapon(
@@ -796,6 +796,10 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.ArmorPenetration, 100)
 				.withEffect(IELib.ScaleAttack_Str, 100)
 				.withEffect(IELib.AttackBonus_Cor, -1/10) as Weapon;
+		public const SGRAVES:Weapon = new Weapon("SGraves", "StormcallerGravespear", "Stormcaller Gravespear", "a Stormcaller Gravespear", "stab", 160, 160, "The titanic greatspear you found in the cliffs. This weapon seems to have been hewn from stone and an ore or metal that conducts and stores lightning. When charged with magic the blade arcs lightning reminiscent of the shrine where it was found.", WT_SPEAR, WSZ_MASSIVE)
+				.withTags(W_LGWRATH, W_THROWN)
+				.withEffect(IELib.ArmorPenetration, 100)
+				.withEffect(IELib.ScaleAttack_StrXL, 800) as Weapon;
 		public const SIM_SPR:Weapon = new Weapon(
 				"Sim_Spr", "Sim.Spear", "simple spear", "a simple spear", "thrust", 10, 250,
 				"A fairly crude-looking spear.",
@@ -940,6 +944,10 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.Stun, 20)
 				.withEffect(IELib.ScaleAttack_StrXL, 250) as Weapon;
 		public const UGATANA:Weapon = findCommonDynamicWeapon("uchigatana");
+		public const UGRAVES:Weapon = new Weapon("UGraves", "UmbralGravesword", "Umbral Gravesword", "an Umbral Gravesword", "slash", 160, 160, "The titanic greatsword you found deep in the lightless reach. It's almost too big to be called a sword. Massive, thick, heavy, and far too rough. Indeed, it is a heap of raw bedrock. Odd runes are carved along the length of the blade allowing magic to be channeled through the weapon, it seems to prefer those of the darkness element. When charged with magic, darkness coats the blade, reminiscent of where you found the weapon.", WT_SWORD, WSZ_MASSIVE)
+				.withBuff('spellpower', +0.2)
+				.withTags(W_LGWRATH, W_STAFFPART)
+				.withEffect(IELib.ScaleAttack_StrXL, 800) as Weapon;
 		public const URTAHLB:Weapon = new Weapon("UrtaHlb","UrtaHlb","halberd","a halberd","slash",50,2000,"Urta's halberd. How did you manage to get this?",WT_POLEARM, WSZ_LARGE)
 				.withTags(W_WHIRLWIND) as Weapon;
 		public const VBLADE :Weapon = new Weapon(
@@ -947,7 +955,7 @@ public final class WeaponLib extends ItemConstants
 				"A peculiar sword. The letter V is engraved into the blade perhaps its former owner name.",
 				WT_SWORD, WSZ_MEDIUM);
 		public const VENCLAW:Venoclaw = new Venoclaw();
-		public const VGRAVEH:Weapon = new Weapon("VGraveh", "VolcanicGravehammer", "Volcanic Gravehammer", "a Volcanic Gravehammer", "smash", 160, 160, "The titanic greathammer you found in the ashlands. This weapon seems to have been hewn from perpetually molten bedrock from deep within a volcano. How it remains this way is unknown to you, but you wonder if it was enchanted to be as such, or if it's just a natural property of the materials it's been crafted from.", WT_MACE_HAMMER, WSZ_MASSIVE)
+		public const VGRAVEH:Weapon = new Weapon("VGraveh", "VolcanicGravehammer", "Volcanic Gravehammer", "a Volcanic Gravehammer", "smash", 160, 160, "The titanic greathammer you found in the ashlands. This weapon seems to have been hewn from perpetually molten bedrock from deep within a volcano. How it remains this way is unknown to you, but you wonder if it was enchanted to be as such, or if it's just a natural property of the materials it's been crafted from. When charged with magic the head radiates a volcanic heat reminiscent of where it was found.", WT_MACE_HAMMER, WSZ_MASSIVE)
 				.withTag(W_LGWRATH)
 				.withEffect(IELib.ScaleAttack_StrXL, 800) as Weapon;
 		public const W_STAFF:Weapon = new Weapon(

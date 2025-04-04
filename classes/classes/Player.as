@@ -5968,6 +5968,36 @@ use namespace CoC;
 				buffLib += 200;
 				currentSen = Math.round(currentSen*1.3);
 			}
+			if (hasPerk(PerkLib.AbsorbNutrient)) {
+				if (perkv1(PerkLib.AbsorbNutrient) > 6) {
+					buffInt = Math.round(buffInt * 1.5);
+					currentSen = Math.round(currentSen*3);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 5) {
+					buffInt = Math.round(buffInt * 1.4);
+					currentSen = Math.round(currentSen*2.75);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 4) {
+					buffInt = Math.round(buffInt * 1.3);
+					currentSen = Math.round(currentSen*2.5);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 3) {
+					buffInt = Math.round(buffInt * 1.2);
+					currentSen = Math.round(currentSen*2.25);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 2) {
+					currentSen = Math.round(currentSen*2);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 1) {
+					buffInt = Math.round(buffInt * 0.75);
+					currentSen = Math.round(currentSen*1.75);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 0) {
+					buffInt = Math.round(buffInt * 0.5);
+					currentSen = Math.round(currentSen*1.5);
+				}
+				else buffInt = buffInt * 0;
+			}
 			StatUtils.mergeBuffObjects(buffs, {
 				"str.mult": (buffStr+buffAll)/100,
 				"tou.mult": (buffTou+buffAll)/100,
@@ -7439,6 +7469,39 @@ use namespace CoC;
 			refillHunger(Ammount);
 		}
 
+		public function myconidAbsorbNutrient():void {
+			addPerkValue(PerkLib.AbsorbNutrient, 2, 1);
+			EngineCore.HPChange(((100 + (tou*2)) * 1), true, false);
+			EngineCore.ManaChange(((100 + (inte*2)) * 1));
+			EngineCore.SoulforceChange(((100 + (wis*2)) * 1));
+			EngineCore.changeFatigue(-((100 + (spe*2)) * 1));
+			if (perkv2(PerkLib.AbsorbNutrient) > 125) {
+				outputText("You sigh in delight as you fully absorb the nutrient from your most recent meal into your cap yet unable to evolve further your cap instead release this in the form of a metabolic boost as you feel a surge in your esper ability.");
+				setPerkValue(PerkLib.AbsorbNutrient, 4, 24);
+			}
+			else {
+				outputText("You sigh in delight as you fully absorb the nutrient from your most recent meal into your cap.");
+				if (perkv2(PerkLib.AbsorbNutrient) == 15 || perkv2(PerkLib.AbsorbNutrient) == 25) {
+					horns.count += 2;
+					outputText("Your mushroom cap seems to have increased in size and strangely your mind is starting to clear. Though you struggle to form coherent sentences you are no longer as mindlessly driven as before.\n\n");
+					addPerkValue(PerkLib.AbsorbNutrient, 1, 1);
+				}
+				if (perkv2(PerkLib.AbsorbNutrient) == 35 || perkv2(PerkLib.AbsorbNutrient) == 50 || perkv2(PerkLib.AbsorbNutrient) == 75 || perkv2(PerkLib.AbsorbNutrient) == 100 || perkv2(PerkLib.AbsorbNutrient) == 125) {
+					horns.count += 2;
+					outputText("Your mushroom cap seems to have grown in size again and you finally are back to a normal level of thinking though occasional lusty thoughts still cloud your mind.\n\n");
+					outputText("Your cap and frill begin to change color to ");
+					if (perkv2(PerkLib.AbsorbNutrient) == 35) outputText("red");
+					if (perkv2(PerkLib.AbsorbNutrient) == 50) outputText("yellow");
+					if (perkv2(PerkLib.AbsorbNutrient) == 75) outputText("green");
+					if (perkv2(PerkLib.AbsorbNutrient) == 100) outputText("blue");
+					if (perkv2(PerkLib.AbsorbNutrient) == 125) outputText("royal purple");
+					outputText(" as some fluids pumps down from your cap directly into your brain. Your consciousness, albeit still horny feel clearer and far more smarter.\n\n");
+					addPerkValue(PerkLib.AbsorbNutrient, 1, 1);
+				}
+			}
+			outputText("\n\n");
+		}
+
 		public function slimeGrowth():void {
 			if (hasStatusEffect(StatusEffects.SlimeCraving)) {
 				if (perkv1(IMutationsLib.SlimeMetabolismIM) >= 3) {
@@ -7470,6 +7533,7 @@ use namespace CoC;
 		{
 			if (Wasfluidinvolved && fluidtype && fluidtype.toLowerCase() != "no") {
 				slimeFeed();
+				if (hasPerk(PerkLib.AbsorbNutrient)) myconidAbsorbNutrient();
 				if (isGargoyle() && hasPerk(PerkLib.GargoyleCorrupted)) refillGargoyleHunger(30);
 				if ((isRace(Races.JIANGSHI) || isRace(Races.MUMMY)) && hasPerk(PerkLib.EnergyDependent)) EnergyDependentRestore();
 				if (hasPerk(PerkLib.DemonEnergyThirst)) {

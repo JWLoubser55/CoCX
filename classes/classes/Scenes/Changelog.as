@@ -376,6 +376,9 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Mind Fungus. Gained by becoming Mantago and reaching yellow cap and frills color. Effects: Half of your intelligence is added as an extra modifier to psionic ability.\n");
 			outputText("-Exp banking from defeating foes is now history. Tribulation and exp gained from other source will still be able to be banked. Added a toggle in start menu for Exp banking Exp banking is now limited to 3 time the amount to the next level up. Exp Banking is On by default. (Liadri)\n");
 			outputText("-Nerfed the thunder dragon electric rods. (Liadri)\n");
+			outputText("-New tier 5 misc lvl-up perk: Voltaic Edge. Req. Magnetize perk, 90+ wisdom and 90+ intelligence. Effect: Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.\n");
+			outputText("-True Seeing can now pierce invisibility-like enemy abilities that may disable some of the combat options.\n");
+			outputText("-New event perk: Absorb nutrien. Gained by becoming Mantago. Effects: You are fed and healed by bodily fluids. Recover health, mana, soulforce and fatigue from harvesting sexual fluids. As you absorb more nutrients your mushroom cap will also grow granting your increasing abilities.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -394,9 +397,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");

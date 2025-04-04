@@ -73,6 +73,7 @@ import classes.Scenes.Combat.CombatAbility;
 		private var elitechampionbossSetting:Number;
 		private var hardcoreSetting:Number;
 		private var hungerSetting:Number;
+		private var expbankingSetting:Number;
 
 //		private var boxNames:ComboBox;
 
@@ -2044,7 +2045,7 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] > 0) sTFDFFG += 1;
 			if (flags[kFLAGS.HUNGER_ENABLED] > 0) sTFDFFG += 1;
 			if (flags[kFLAGS.HARDCORE_MODE] > 0) sTFDFFG += 1;
-			if (flags[kFLAGS.EXP_BANKING] == 1) sTFDFFG += 1;
+			if (flags[kFLAGS.EXP_BANKING] > 0) sTFDFFG += 1;
 			flags[kFLAGS.GAME_DIFFICULTY] = sTFDFFG;
 		}
 		private function chooseGameModesDesc():void {
@@ -2094,10 +2095,8 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0) addButton(5, "Hunger (Off)", toggleForHungerOff);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0.5) addButton(6, "Hunger (On)", toggleForHungerOn);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 1) addButton(7, "Realistic (On)", toggleForRealisticOn);
-			if (flags[kFLAGS.EXP_BANKING] != 0) addButton(8, "Exp Banking (On)", toggleXPBankingOn);
-			if (flags[kFLAGS.EXP_BANKING] != 1) addButton(9, "Exp Banking (Off)", toggleXPBankingOff);
-			//8+
-			//9-
+			if (flags[kFLAGS.EXP_BANKING] != 1) addButton(8, "Exp Banking (On)", toggleXPBankingOn);
+			if (flags[kFLAGS.EXP_BANKING] != 0) addButton(9, "Exp Banking (Off)", toggleXPBankingOff);
 			//10+
 			//11-
 			addButton(14, "Start", startTheGame);
@@ -2185,6 +2184,7 @@ import classes.Scenes.Combat.CombatAbility;
 			elitechampionbossSetting = flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING];
 			hardcoreSetting = flags[kFLAGS.HARDCORE_MODE];
 			hungerSetting = flags[kFLAGS.HUNGER_ENABLED];
+			expbankingSetting = flags[kFLAGS.EXP_BANKING];
 			startTheGame2();
 		}
 		private function startTheGame2():void {
@@ -2198,6 +2198,7 @@ import classes.Scenes.Combat.CombatAbility;
 			flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] = elitechampionbossSetting;
 			flags[kFLAGS.HARDCORE_MODE] = hardcoreSetting;
 			flags[kFLAGS.HUNGER_ENABLED] = hungerSetting;
+			flags[kFLAGS.EXP_BANKING] = expbankingSetting;
 			if (player.hasPerk(PerkLib.PastLifeCultivator) || player.hasPerk(PerkLib.PastLifeFighter) || player.hasPerk(PerkLib.PastLifeScout) || player.hasPerk(PerkLib.PastLifeScholar) || player.hasPerk(PerkLib.PastLifeSmith) || player.hasPerk(PerkLib.PastLifeTactician) || player.hasPerk(PerkLib.PastLifeWhore)) chooseToPlayHalf();
 			else chooseToPlay();
 		}

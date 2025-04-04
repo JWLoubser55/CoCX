@@ -2650,6 +2650,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.CommandingTone)) dmgAMP += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) dmgAMP += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) dmgAMP += 0.15;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgAMP += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgAMP += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgAMP += 1;
 		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
 			dmgAMP += 0.1;
 			if (player.hasPerk(PerkLib.WispLieutenant)) dmgAMP += 0.2;
@@ -3038,6 +3041,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.CommandingTone)) dmgamp += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) dmgamp += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) dmgamp += 0.15;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgamp += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgamp += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgamp += 1;
 		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
 			dmgamp += 0.1;
 			if (player.hasPerk(PerkLib.WispLieutenant)) dmgamp += 0.2;

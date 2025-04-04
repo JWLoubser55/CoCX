@@ -5,14 +5,10 @@ package classes.Scenes.Combat
 {
 import classes.CoC;
 import classes.EngineCore;
-//import classes.Races;
 import classes.GlobalFlags.kFLAGS;
-//import classes.IMutations.IMutationsLib;
 import classes.Scenes.SceneLib;
-//import classes.Scenes.NPCs.TyrantiaFollower;
 import classes.PerkLib;
 import classes.StatusEffects;
-//import classes.StatusEffects.VampireThirstEffect;
 
 	public class CombatTamedMonstersActions extends BaseCombatContent
 	{
@@ -26,6 +22,9 @@ import classes.StatusEffects;
 			if (player.hasPerk(PerkLib.CommandingTone)) dmgamp += 0.1;
 			if (player.hasPerk(PerkLib.DiaphragmControl)) dmgamp += 0.1;
 			if (player.hasPerk(PerkLib.VocalTactician)) dmgamp += 0.15;
+			if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgamp += 0.5;
+			if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgamp += 0.5;
+			if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgamp += 1;
 			return dmgamp;
 		}
 

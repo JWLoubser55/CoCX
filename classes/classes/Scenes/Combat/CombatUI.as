@@ -144,7 +144,7 @@ public class CombatUI extends BaseCombatContent {
 				else btnMelee.show("Attack", combat.basemeleeattacks, "Attempt to attack the enemy with your " + player.weaponName+".  Damage done is determined by your strength and weapon.").icon("A_Melee");
 			}
 		}
-		if (combat.isEnemyInvisible || monster.hasStatusEffect(StatusEffects.MaddeningTune)){
+		if ((combat.isEnemyInvisible || monster.hasStatusEffect(StatusEffects.MaddeningTune)) && !player.hasPerk(PerkLib.TrueSeeing)){
 			btnMelee.disable("You cannot use attack on opponent you cannot see or target.");
 		}
 		// Ranged

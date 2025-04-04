@@ -970,6 +970,7 @@ public class GameSettings extends BaseContent {
 		if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] > 0) sTFDFFG += 1;
 		if (flags[kFLAGS.HUNGER_ENABLED] > 0) sTFDFFG += 1;
 		if (flags[kFLAGS.HARDCORE_MODE] > 0) sTFDFFG += 1;
+		if (flags[kFLAGS.EXP_BANKING] > 0) sTFDFFG += 1;
 		flags[kFLAGS.GAME_DIFFICULTY] = sTFDFFG;
 	}
 

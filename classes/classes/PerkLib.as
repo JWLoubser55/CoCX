@@ -824,6 +824,9 @@ public class PerkLib
 		public static const UltimateMagicEx:PerkType = mk("Ultimate Magic (Ex)", "Ultimate Magic (Ex)",
 				"You may ignore all constraints to your spell book usage.",
 				"You've chosen the 'Ultimate Magic (Ex)' perk. You may ignore all constraints to your spell book usage.");
+		public static const VoltaicEdge:PerkType = mk("Voltaic Edge", "Voltaic Edge",
+				"Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.",
+				"You've chosen the 'Voltaic Edge' perk. Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -4040,6 +4043,7 @@ public class PerkLib
 				.withBuffs({'wis.mult':0.05});
 
 		// Mutation perks
+		public static const AbsorbNutrient:AbsorbNutrientPerk = new AbsorbNutrientPerk();
 		public static const AcidSpit:PerkType = mk("Acid Spit", "Acid Spit",
 				"Allows access to a cave wyrm acid spit attack.");
 		public static const AcidAffinity:PerkType = mk("Acid Affinity", "Acid Affinity",
@@ -8400,6 +8404,10 @@ public class PerkLib
                     .requireCustomFunction(function (player:Player):Boolean {
                         return player.internalHumanScore() >= 20 && player.racialScore(Races.HUMAN) > 17;
                     }, "Twenty human internal mutations & 18+ human score");
+            VoltaicEdge.requireLevel(30)
+                    .requirePerk(Magnetize)
+                    .requireInt(90)
+					.requireWis(90);
             //na razie jest perk GreyMage, potrzeba jeszcze pare innych perków tak z 3-5 innych jeszcze)
             CycloneStage3.requireLevel(30)
                     .requireStr(90)

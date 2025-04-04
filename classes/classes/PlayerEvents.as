@@ -512,6 +512,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				var over:Number = (player.zombieControlLimit() - player.perkv1(PerkLib.UndeadLord));
 				player.addPerkValue(PerkLib.UndeadLord, 1, -over);
 			}
+			if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv4(PerkLib.AbsorbNutrient) > 0) player.addPerkValue(PerkLib.AbsorbNutrient, 4, -1);
 			if (player.hasStatusEffect(StatusEffects.Feeder)) { //Feeder checks
 				if (player.cor <= (20-player.corruptionTolerance)) { //Go away if pure
 					outputText("\nThe desire to breastfeed fades into the background.  It must have been associated with the corruption inside you.\n\n(<b>You have lost the 'Feeder' perk.</b>)\n");
@@ -2281,6 +2282,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE, Races.MYCONID), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
 			//LustyStrength
 			needNext ||= player.gainOrLosePerk(PerkLib.LustyStrength, player.isRaceCached(Races.MYCONID), "Information Noona know who know what should be here and that person is... Liadri.", "Information Noona know who know what should be here and that person is... Liadri.");
+			//Absorb nutrient
+			needNext ||= player.gainOrLosePerk(PerkLib.AbsorbNutrient, player.isRaceCached(Races.MYCONID), "You begin to crave for the fluids and moisture of others. It looks like, as you became more shroom-like, you gained the ability to absorb nutrients and vitality from sex.", "You no longer crave for the fluids and moisture of others. It looks like, as you became less shroom-like, you lost the ability to absorb nutrients and vitality from sex.");
 			//MindFungus
 			needNext ||= player.gainOrLosePerk(PerkLib.MindFungus, (player.isRaceCached(Races.MYCONID) && player.horns.count > 8), "Information Noona know who know what should be here and that person is... Liadri.", "Information Noona know who know what should be here and that person is... Liadri.");
 			//Enigma

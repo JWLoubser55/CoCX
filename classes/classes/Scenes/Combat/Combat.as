@@ -3741,6 +3741,7 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
         else if (isLightningTypeWeaponMain() && !isPlasmaTypeWeaponMain()) {
+			if (player.weapon == weapons.SGRAVES) damage *= 1.25;
             damage = Math.round(damage * lightningDamageBoostedByDao());
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
             doLightningDamage(damage, true, true);
@@ -3748,6 +3749,7 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
         else if (isDarknessTypeWeaponMain()) {
+			if (player.weapon == weapons.UGRAVES) damage *= 1.25;
             damage = Math.round(damage * darknessDamageBoostedByDao());
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
             doDarknessDamage(damage, true, true);
@@ -3980,6 +3982,8 @@ public class Combat extends BaseContent {
             doPhysicalDamage(damage, true, true);
 			if (player.weapon == weapons.VGRAVEH) doFireDamage(Math.round(damage * fireDamageBoostedByDao() * 0.25), true, true);
 			if (player.weapon == weapons.GGRAVEA) doIceDamage(Math.round(damage * iceDamageBoostedByDao() * 0.25), true, true);
+			if (player.weapon == weapons.SGRAVES) doLightningDamage(Math.round(damage * lightningDamageBoostedByDao() * 0.25), true, true);
+			if (player.weapon == weapons.UGRAVES) doDarknessDamage(Math.round(damage * darknessDamageBoostedByDao() * 0.25), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.weapon == weapons.DAISHO) {
@@ -4039,6 +4043,7 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
         else if (isLightningTypeWeaponOff() && !isPlasmaTypeWeaponOff()) {
+			if (player.weaponOff == weapons.SGRAVES) damage *= 1.25;
             damage = Math.round(damage * lightningDamageBoostedByDao());
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
             doLightningDamage(damage, true, true);
@@ -4046,6 +4051,7 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
         else if (isDarknessTypeWeaponOff()) {
+			if (player.weaponOff == weapons.UGRAVES) damage *= 1.25;
             damage = Math.round(damage * darknessDamageBoostedByDao());
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
             doDarknessDamage(damage, true, true);
@@ -4121,6 +4127,8 @@ public class Combat extends BaseContent {
             doPhysicalDamage(damage, true, true);
 			if (player.weaponOff == weapons.VGRAVEH) doFireDamage(Math.round(damage * fireDamageBoostedByDao() * 0.25), true, true);
 			if (player.weaponOff == weapons.GGRAVEA) doIceDamage(Math.round(damage * iceDamageBoostedByDao() * 0.25), true, true);
+			if (player.weaponOff == weapons.SGRAVES) doLightningDamage(Math.round(damage * lightningDamageBoostedByDao() * 0.25), true, true);
+			if (player.weaponOff == weapons.UGRAVES) doDarknessDamage(Math.round(damage * darknessDamageBoostedByDao() * 0.25), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.weaponOff == weapons.DAISHO) {
@@ -4886,6 +4894,10 @@ public class Combat extends BaseContent {
 					else damage *= 2;
 				}
 				else damage *= 1.5;
+			}
+			if (monster.hasStatusEffect(StatusEffects.Polarize) && player.hasPerk(PerkLib.VoltaicEdge) && player.isEnergyRangeWeapon()) {
+				if (monster.hasPerk(PerkLib.LightningVulnerability) || monster.hasPerk(PerkLib.DarknessNature)) damage *= 4;
+				else damage *= 2;
 			}
             //Determine if critical hit!
 			var crit:Boolean;
@@ -6755,6 +6767,10 @@ public class Combat extends BaseContent {
 			}
 			else damage *= 1.5;
 		}
+		if (monster.hasStatusEffect(StatusEffects.Polarize) && player.hasPerk(PerkLib.VoltaicEdge) && player.isEnergyMeleeWeapon()) {
+			if (monster.hasPerk(PerkLib.LightningVulnerability) || monster.hasPerk(PerkLib.DarknessNature)) damage *= 4;
+			else damage *= 2;
+		}
         // Mastery bonus damage
 		damage *= MasteryBonusDamageMelee(false, true);
 		//Thunderous Strikes
@@ -8533,12 +8549,12 @@ public class Combat extends BaseContent {
                 || player.weapon.hasTag(ItemConstants.W_ICE_TYPE);
     }
     public function isLightningTypeWeaponMain():Boolean {
-        return ((player.weapon == weapons.TCLAYMO || player.weapon == weapons.TTCLAYM || player.weapon == weapons.TODAGGER) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
+        return ((player.weapon == weapons.TCLAYMO || player.weapon == weapons.TTCLAYM || player.weapon == weapons.TODAGGER || player.weapon == weapons.SGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
                 || player.weapon.hasTag(ItemConstants.W_LIGHTNING_TYPE)
                 || player.electrifyWeaponActiveMain();
     }
     public function isDarknessTypeWeaponMain():Boolean {
-        return ((player.weapon == weapons.ACLAYMO || player.weapon == weapons.TACLAYM || player.weapon == weapons.ADAGGER) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
+        return ((player.weapon == weapons.ACLAYMO || player.weapon == weapons.TACLAYM || player.weapon == weapons.ADAGGER || player.weapon == weapons.UGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
     }
     public function isPlasmaTypeWeaponMain():Boolean {
         return ((isFireTypeWeaponMain() && isLightningTypeWeaponMain()) || player.weapon.hasTag(ItemConstants.W_PLASMA_TYPE));
@@ -8556,12 +8572,12 @@ public class Combat extends BaseContent {
                 || player.weaponOff.hasTag(ItemConstants.W_ICE_TYPE);
     }
     public function isLightningTypeWeaponOff():Boolean {
-        return ((player.weaponOff == weapons.TCLAYMO || player.weaponOff == weapons.TTCLAYM || player.weaponOff == weapons.TODAGGER) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
+        return ((player.weaponOff == weapons.TCLAYMO || player.weaponOff == weapons.TTCLAYM || player.weaponOff == weapons.TODAGGER || player.weaponOff == weapons.SGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
                 || player.weaponOff.hasTag(ItemConstants.W_LIGHTNING_TYPE)
                 || player.electrifyWeaponActiveOff();
     }
     public function isDarknessTypeWeaponOff():Boolean {
-        return ((player.weaponOff == weapons.ACLAYMO || player.weaponOff == weapons.TACLAYM || player.weaponOff == weapons.ADAGGER) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
+        return ((player.weaponOff == weapons.ACLAYMO || player.weaponOff == weapons.TACLAYM || player.weaponOff == weapons.ADAGGER || player.weaponOff == weapons.UGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
     }
     public function isPlasmaTypeWeaponOff():Boolean {
         return ((isFireTypeWeaponOff() && isLightningTypeWeaponOff()) || player.weaponOff.hasTag(ItemConstants.W_PLASMA_TYPE));
@@ -8755,6 +8771,9 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.CommandingTone)) elementalamplification += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) elementalamplification += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) elementalamplification += 0.15;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) elementalamplification += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) elementalamplification += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) elementalamplification += 1;
         if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
             elementalamplification += 0.1;
             if (player.hasPerk(PerkLib.WispLieutenant)) elementalamplification += 0.2;
@@ -13706,6 +13725,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		}
 		if (player.hasPerk(PerkLib.TrollRegeneration) && !player.hasStatusEffect(StatusEffects.TrollRegenerationDisabled)) maxPercentRegen += 6;
         if (player.hasPerk(PerkLib.IcyFlesh)) maxPercentRegen += 1;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) {
+			if (player.perkv1(PerkLib.AbsorbNutrient) > 6) maxPercentRegen += 1;
+			else maxPercentRegen += 0.5;
+		}
         if (player.hasPerk(PerkLib.FleshBodyApprenticeStage)) maxPercentRegen += 0.5 * player.humanBodyCultivators();
         if (player.hasPerk(PerkLib.FleshBodyWarriorStage)) maxPercentRegen += 0.5 * player.humanBodyCultivators();
         if (player.hasPerk(PerkLib.FleshBodyElderStage)) maxPercentRegen += 0.5 * player.humanBodyCultivators();
@@ -13785,6 +13808,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             if (player.perkv1(IMutationsLib.HinezumiBurningBloodIM) >= 3) maxRegen += 0.5;
         }
         if (player.hasPerk(PerkLib.IcyFlesh)) maxRegen += 1;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) {
+			if (player.perkv1(PerkLib.AbsorbNutrient) > 6) maxRegen += 1;
+			else maxRegen += 0.5;
+		}
         if (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) maxRegen += 0.5;
         if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor)) maxRegen += 0.5;
         if (player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor)) maxRegen += 0.5;
@@ -17443,6 +17470,8 @@ public function sharedKinesisMidpart(crit:Boolean):Number {
 	//soulskill mod effect
 	//damage *= combat.soulskillMagicalMod();
 	//other bonuses
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) damage *= 1.5;
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv4(PerkLib.AbsorbNutrient) > 0) damage *= 1.2;
 	if (player.hasPerk(PerkLib.WideAreaKineses) && monster.plural) {
 		if (player.hasPerk(PerkLib.QuasiDomainKineses) && monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 25;
 		else damage *= 5;
@@ -18360,6 +18389,9 @@ public function sendSkeletonToFight():void {
 	if (player.hasPerk(PerkLib.CommandingTone)) dmgamp += 0.1;
 	if (player.hasPerk(PerkLib.DiaphragmControl)) dmgamp += 0.1;
 	if (player.hasPerk(PerkLib.VocalTactician)) dmgamp += 0.15;
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgamp += 0.5;
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgamp += 0.5;
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgamp += 1;
     if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
         dmgamp += 0.1;
         if (player.hasPerk(PerkLib.WispLieutenant)) dmgamp += 0.2;
@@ -18422,6 +18454,9 @@ public function skeletonSmash():void {
 	if (player.hasPerk(PerkLib.CommandingTone)) dmgamp += 0.1;
 	if (player.hasPerk(PerkLib.DiaphragmControl)) dmgamp += 0.1;
 	if (player.hasPerk(PerkLib.VocalTactician)) dmgamp += 0.15;
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgamp += 0.5;
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgamp += 0.5;
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgamp += 1;
     if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
         dmgamp += 0.1;
         if (player.hasPerk(PerkLib.WispLieutenant)) dmgamp += 0.2;
