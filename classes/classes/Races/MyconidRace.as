@@ -9,7 +9,7 @@ import classes.StatusEffects;
 import classes.VaginaClass;
 
 public class MyconidRace extends Race {
-    
+
 	public static const MyconidSkinColors:Array = ["ghostly pale", "light", "ghostly white"];
 	public static const MyconidHairColors:Array = ["silver white", "ghostly white"];
 	public static const RaceBody:/*String*/Array = [
@@ -41,7 +41,7 @@ public class MyconidRace extends Race {
 		super("Matango", id, RaceBody);
 		mutationThreshold = 6;
 	}
-	
+
 	public override function setup():void {
 		addScores()
 				.skinPlainOnly(+1)
@@ -93,7 +93,7 @@ public class MyconidRace extends Race {
 				.hasCockOfType(CockTypesEnum.SHROOM, +1)
 				.customRequirement("","clit bigger then 9 inch",
 						function (body:BodyData):Boolean {
-							return body.player.clitLength >= 10;
+							return body.player.hasVagina()? body.player.clitLength >= 10 : false;
 						}, +1)
 				.customRequirement("","glowing nipples",
 						function (body:BodyData):Boolean {
@@ -104,7 +104,7 @@ public class MyconidRace extends Race {
 							return body.player.hasStatusEffect(StatusEffects.GlowingAsshole);
 						}, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
-		
+
 		buildTier(16, "Matango")
                 .requireHornType(Horns.SHROOM_HEADCAP)
 				.buffs({
@@ -114,7 +114,7 @@ public class MyconidRace extends Race {
 					"sens": +50
 				})
 				.end();
-		
+
 		buildTier(26, "Myconid")
                 .requireHornType(Horns.SHROOM_HEADCAP)
 				.buffs({
@@ -124,7 +124,7 @@ public class MyconidRace extends Race {
 					"sens": +100
 				})
 				.end();
-		
+
 		buildTier(36, "Fungal Queen")
                 .requireHornType(Horns.SHROOM_HEADCAP)
 				.buffs({

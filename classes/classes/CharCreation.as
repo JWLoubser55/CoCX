@@ -2094,8 +2094,8 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0) addButton(5, "Hunger (Off)", toggleForHungerOff);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0.5) addButton(6, "Hunger (On)", toggleForHungerOn);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 1) addButton(7, "Realistic (On)", toggleForRealisticOn);
-			if (flags[kFLAGS.EXP_BANKING] != 0) addButton(8, "Exp Banquing (On)", toggleXPBankingOn);
-			if (flags[kFLAGS.EXP_BANKING] != 1) addButton(9, "Exp Banquing (Off)", toggleXPBankingOff);
+			if (flags[kFLAGS.EXP_BANKING] != 0) addButton(8, "Exp Banking (On)", toggleXPBankingOn);
+			if (flags[kFLAGS.EXP_BANKING] != 1) addButton(9, "Exp Banking (Off)", toggleXPBankingOff);
 			//8+
 			//9-
 			//10+
@@ -2876,7 +2876,7 @@ import classes.Scenes.Combat.CombatAbility;
 					+ "Cost: " + tier * pCost);
 			}
 		}
-		
+
 		private function perkHerosBirthrightCheck(tier:int, btn:int):void {
 			var pCost:int = 10;
 			if (tier > 6) {
@@ -2965,7 +2965,7 @@ import classes.Scenes.Combat.CombatAbility;
 			}
 			else if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1 && !player.hasPerk(PerkLib.AscensionTrancendentalGeneticMemoryStageX)) addButtonDisabled(btn, "T.G.M.Ex", "You need to buy Transcendental Genetic Memory perk first.");
 			else addButtonDisabled(btn, "T.G.M.Ex", "You need ascend more times to buy this perk.");
-			btn++ 
+			btn++
 			if (player.ascensionPerkPoints >= 5 && !player.hasPerk(PerkLib.AscensionUnderdog)) addButton(btn, "Underdog", perkUnderdog).hint("Perk allowing you to double base exp gains for fighting enemies above PC level, increasing max lvl diff when bonus is in effect will still increase from 20 to 40 above current PC lvl.\n\nCost: 5 points");// And... to live up to underdog role PC will 'accidentally' find few places to further power-up.
 			else if (player.ascensionPerkPoints < 5 && !player.hasPerk(PerkLib.AscensionUnderdog)) addButtonDisabled(btn, "Underdog", "You do not have enough ascension perk points!");
 			else addButtonDisabled(btn, "Underdog", "You already bought Underdog perk.");
