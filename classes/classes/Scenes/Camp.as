@@ -1955,7 +1955,15 @@ public class Camp extends NPCAwareContent{
 					buttons.add("Joy", joyScene.approachCampJoy).hint("Go find Joy around the edges of your [camp] and meditate with her or have sex with her.");
 				} else if (SceneLib.alvinaFollower.JojoDevilPurification == 1 && !player.hasStatusEffect(StatusEffects.DevilPurificationScar)) {
 					outputText("Jojo is waiting in the forrest, bring him a pure artifact, and he will cleanse you of your taint.");
-				} else {
+				} else if (flags[kFLAGS.JOJO_BIMBO_STATE] == 5) {
+						outputText("Joy's tent is set up in a quiet corner of the [camp], close to a boulder. Inside the tent, you can see a chest holding her belongings, as well as a few clothes and books spread about her bedroll. ");
+						if (flags[kFLAGS.JOJO_LITTERS] > 0 && model.time.hours >= 16 && model.time.hours < 19) outputText("You spot the little mice you had with Joy playing about close to her tent.");
+						else outputText("Joy ");
+						outputText("\n\n");
+						buttons.add("Joy", SceneLib.jojoScene.joJoyCampMenu).hint("Go find Joy around the edges of your [camp] and meditate with her or have sex with her.");
+				}
+
+				else {
 					outputText("There is a small bedroll for Jojo near your own");
 					if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0) outputText(" cabin");
 					if (!(model.time.hours > 4 && model.time.hours < 23)) outputText(" and the mouse is sleeping on it right now.\n\n");
