@@ -865,21 +865,21 @@ public class GameSettings extends BaseContent {
 		setTheFuckingDifficultyForFuckingGood();
 		doNext(settingsScreenGameSettings);
 	}
-	private function toggleXPBankingOn():void {
+	public function toggleXPBankingOn():void {
 		clearOutput();
 		outputText("You have chosen to have Exp Banking enabled.");
 		flags[kFLAGS.EXP_BANKING] = 1;
 		setTheFuckingDifficultyForFuckingGood();
 		doNext(settingsScreenGameSettings);
 	}
-	private function toggleXPBankingOff():void {
+	public function toggleXPBankingOff():void {
 		clearOutput();
 		outputText("You have chosen to have Exp Banking disabled.");
 		flags[kFLAGS.EXP_BANKING] = 0;
 		setTheFuckingDifficultyForFuckingGood();
 		doNext(settingsScreenGameSettings);
 	}
-		public function difficultySelectionMenu1():void {
+	public function difficultySelectionMenu1():void {
 		clearOutput();
 		outputText("You can choose a prime difficulty to set how hard battles will be.\n");
 		if (flags[kFLAGS.PRIMARY_DIFFICULTY] <= 0) outputText("\n No opponent(s) stats modifiers. You can resume from bad-ends with penalties. No penalties for too high wrath. Negative effects from internal mutations will be triggered after accumulating 11 points in your internal mutation score.");
