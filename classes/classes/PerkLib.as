@@ -1142,8 +1142,8 @@ public class PerkLib
 				"Your extra dimensional golem bag can store 6 more temporary (and 1 more permanent when becoming Master Golem Maker) golems.",
 				"You've chosen the 'Bigger Golem Bag VI' perk, increasing your golems bag.");
 		public static const BladeBarrier:PerkType = mk("Blade Barrier", "Blade Barrier",
-				"Chance to parry is further increased by +25% when dual wielding.",
-				"You've chosen the 'Blade Barrier' perk. Chance to parry is further increased by +25% when dual wielding.");
+				"Chance to parry is further increased by 10%/20%/30%/40% when dual wielding. (each small/medium/large/massive adds 5/10/15/20%)",
+				"You've chosen the 'Blade Barrier' perk. Chance to parry is further increased by 10%/20%/30%/40% when dual wielding. (each small/medium/large/massive adds 5/10/15/20%)");
 		public static const Blademaster:PerkType = mk("Blademaster", "Blademaster",
 				"Gain +5% to critical strike chance when wielding a bladed weapon (sword, dueling sword, axe, dagger, scythe) and not using a shield.",
 				"You've chosen the 'Blademaster' perk.  Your chance of a critical hit is increased by 5% as long as you're wielding a weapon with a blade (sword, dueling sword, axe, dagger, scythe) and not using a shield.");
@@ -3121,8 +3121,8 @@ public class PerkLib
 				"Allows you to increase non-bow range weapons attack up to 200% (Intelligence-based). (+5% range physical attacks multiplier)",
 				"You've chosen the 'Sharpshooter' perk, allowing you to slightly increase non-bow range weapons attack. (+5% range physical attacks multiplier)");
 		public static const ShieldCombat:PerkType = mk("Shield Combat", "Shield Combat",
-				"When you block an attack riposte with a shield bash (need to wear shield allowing you to use this move) damaging your opponent. Also minimally improve block chance.",
-				"You've chosen the 'Shield Combat' perk, allowing you to riposte with a shield bash when you block an attack. Also minimally improves block chance.");
+				"When you block an attack riposte with a shield bash (need to wear shield allowing you to use this move) damaging your opponent. Also improve block chance.",
+				"You've chosen the 'Shield Combat' perk, allowing you to riposte with a shield bash when you block an attack. Also improves block chance.");
 		public static const ShieldExpertise:PerkType = mk("Shield Expertise", "Shield Expertise",
 				"When you wearing a shield (one that allow use of shield bash) add quarter of block value to your armor (at least 1).",
 				"You've chosen the 'Shield Expertise' perk, allowing you to increase your armor when using a shield.");

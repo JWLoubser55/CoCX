@@ -2210,7 +2210,7 @@ public class Camp extends NPCAwareContent{
 		clearOutput();
 		outputText("What would you like to do?");
 		addButton(0, "Build", campBuildingSim).hint("Check your [camp] build options.").disableIf((isNightTime && !player.isNightCreature()),"It's too dark for that!");
-		addButton(1, "Minions", campWinionsArmySim).hint("Check your options for making some minions.").disableIf((!player.hasPerk(PerkLib.JobElementalConjurer) && !player.hasPerk(PerkLib.JobGolemancer) && !player.hasPerk(PerkLib.PrestigeJobNecromancer)), "You need to be able to make some minions that fight for you to use this option.");
+		addButton(1, "Minions", campWinionsArmySim).hint("Check your options for making some minions.").disableIf(!doYouHaveMinions(), "You need to be able to make some minions that fight for you to use this option.");
 		addButton(2, "Misc", campMiscActions).hint("Misc options to do things in and around [camp].");
 		addButton(3, "Spend Time", campSpendTimeActions).hint("Check your options to spend time in and around [camp].");
 		addButton(4, "NPC's", SparrableNPCsMenu);
@@ -2226,6 +2226,10 @@ public class Camp extends NPCAwareContent{
 		if (player.hasPerk(PerkLib.Soulless)) addButton(13, "Dark Ascension", promptDarkAscend).hint("Perform an ascension? This will restart your adventures. The game, depending on your choice, could also get harder.").disableIf(flags[kFLAGS.LETHICE_DEFEATED] <= 0, "Don't you have a job to finish first? Like... to defeat someone, maybe Lethice?");
 		else addButton(13, "Ascension", promptAscend).hint("Perform an ascension? This will restart your adventures. The game, depending on your choice, could also get harder. If you have a Sky Poison Pearl, you could carry over some items to your new adventure.").disableIf(flags[kFLAGS.LETHICE_DEFEATED] <= 0, "Don't you have a job to finish first? Like... to defeat someone, maybe Lethice?");
 		addButton(14, "Back", playerMenu);
+	}
+	private function doYouHaveMinions():Boolean {
+		if (!player.hasPerk(PerkLib.JobElementalConjurer) || player.hasPerk(PerkLib.PrestigeJobDruid) || player.hasPerk(PerkLib.JobGolemancer) || player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.JobTamer)) return true;
+		else return false;
 	}
 
 	private function campSpendTimeActions():void {

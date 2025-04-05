@@ -828,7 +828,7 @@ use namespace CoC;
 				toughnessBonus += Math.round(ballSize);
 			}
 			armorDef += toughnessBonus;
-			if (hasPerk(PerkLib.PrestigeJobSentinel) && isInHeavyArmor()) armorDef += armor.def;
+			if (hasPerk(PerkLib.PrestigeJobSentinel) && (isInHeavyArmor() || isInAyoArmor())) armorDef += armor.def;
 			if (hasPerk(PerkLib.ShieldExpertise) && shieldName != "nothing" && isShieldsForShieldBash()) {
 				if (shieldBlock >= 4) armorDef += Math.round(shieldBlock * 0.25);
 				else armorDef += 1;
@@ -1064,7 +1064,7 @@ use namespace CoC;
 				toughnessBonus += Math.round(tou / 20);
 			}
 			armorDef += toughnessBonus;
-			if (hasPerk(PerkLib.PrestigeJobSentinel) && isInHeavyArmor()) armorDef += _armor.def;
+			if (hasPerk(PerkLib.PrestigeJobSentinel) && (isInHeavyArmor() || isInAyoArmor())) armorDef += _armor.def;
 			if (hasPerk(PerkLib.ShieldExpertise) && shieldName != "nothing") {
 				if (shieldBlock >= 4) armorDef += Math.round(shieldBlock);
 				else armorDef += 1;
@@ -1642,7 +1642,7 @@ use namespace CoC;
 				else attack += ((spe - 50) * 0.2);
 			}
 			if (hasPerk(PerkLib.SteelImpact)) {
-				attack += ((tou - 50) * 0.3);
+				attack += (tou * 0.5);
 			}
 			if (isFistOrFistWeapon()) {
 				if (hasPerk(PerkLib.IronFistsI) && str >= 50) {
@@ -2068,14 +2068,14 @@ use namespace CoC;
 			else if (hasAetherTwinsTier1() || hasAetherTwinsTierS2()) block += 2;
 			else if (shield == game.shields.AETHERS && weapon == game.weapons.AETHERD) block += 1;
 			if (hasPerk(PerkLib.PrestigeJobSentinel)) {
-				if (shieldPerk == "Massive") block += 3;
-				else if (shieldPerk == "Large") block += 2;
-				else block += 1;
-			}
-			if (hasPerk(PerkLib.ShieldCombat)) {
-				if (shieldPerk == "Massive") block += 6;
+				if (shieldPerk == "Massive") block += 8;
 				else if (shieldPerk == "Large") block += 4;
 				else block += 2;
+			}
+			if (hasPerk(PerkLib.ShieldCombat)) {
+				if (shieldPerk == "Massive") block += 32;
+				else if (shieldPerk == "Large") block += 16;
+				else block += 8;
 			}
 			block = Math.round(block);
 			return block;

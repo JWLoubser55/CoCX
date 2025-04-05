@@ -166,6 +166,14 @@ use namespace CoC;
 				call: curry(SceneLib.exploration.demonLabProjectEncounters, 1)
 			});
 			_tunnelsEncounter = Encounters.group("tunnels", {
+				name: "discovercliffs",
+				label : "New Area",
+				kind  : 'place',
+				unique: true,
+				when: SceneLib.cliffs.canDiscover,
+				chance: 30,
+				call: discoverCliffs
+			}, {
 				name: "mine",
 				label : "Mine",
 				kind  : 'place',
@@ -343,6 +351,25 @@ use namespace CoC;
 			outputText("What awaits you beyond the exit is the sight of a field of ashes and lava with volcanoes in the backside.\n\n");
 			outputText("<b>You've discovered the Ashlands!</b>");
 			SceneLib.exploration.counters.ashlands = 1;
+			explorer.stopExploring();
+			doNext(camp.returnToCampUseTwoHours);
+		}
+
+		private function discoverLightlessReach():void {
+			clearOutput();
+			outputText("\n\n");
+			outputText("<b>You've discovered the Lightless Reach!</b>");
+			SceneLib.exploration.counters.lightlessReach = 1;
+			explorer.stopExploring();
+			doNext(camp.returnToCampUseTwoHours);
+		}
+
+		private function discoverCliffs():void {
+			clearOutput();
+			outputText("While exploring one of the many narrow tunnels, you spot a bright light from afar. Curious as to where this opens, you walk ahead as gusts of wind barrel at you from the pathway ahead. What awaits beyond the exit is a large, rocky shelf located somewhere in the middle of the cliff. ");
+			outputText("Beyond, yet between floating islands, you see in the distance a set several of massive columns connected to seemingly an endless abyss below as clouds circle above.\n\n");
+			outputText("<b>You've discovered the Cliffs!</b>");
+			SceneLib.exploration.counters.cliffs = 1;
 			explorer.stopExploring();
 			doNext(camp.returnToCampUseTwoHours);
 		}

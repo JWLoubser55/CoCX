@@ -18,7 +18,7 @@ public class GooGirl extends Monster
 		override public function playerBoundStruggle():Boolean{
 			clearOutput();
 			//[Struggle](successful) :
-			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value) {
+			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100)) {
 				outputText("You claw your fingers wildly within the slime and manage to brush against her heart-shaped nucleus. The girl silently gasps and loses cohesion, allowing you to pull yourself free while she attempts to solidify.");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 			}

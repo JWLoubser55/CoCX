@@ -78,7 +78,7 @@ public class ArigeanOmnibusAbomination extends Monster
 		}
 		private function arigeanOmnibusAbominationEnsnare():void {
 			outputText("Multiple tentacles burst out of the writhing mass supporting her, reaching out for limbs and anything they can get ahold of. ");
-			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) outputText("Fortunately, you're much quicker than they are and evade their grasps.");
+			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) outputText("Fortunately, you're much quicker than they are and evade their grasps.");
 			else {
 				outputText("They find their target, swiftly grabbing and entangling you within the mass.");
 				player.createStatusEffect(StatusEffects.PlayerBoundPhysical, 0, 0, 0, 0);
@@ -88,7 +88,7 @@ public class ArigeanOmnibusAbomination extends Monster
 		{
 			clearOutput();
 			outputText("You struggle with all of your might to free yourself from the tentacles before the creature can fulfill whatever unholy desire it has for you.\n");
-			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
+			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
                 outputText("You're able to use your strength to slip out of the slippery tentacles.\n\n");
                 player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
                 createStatusEffect(StatusEffects.TentacleCoolDown, 3, 0, 0, 0);

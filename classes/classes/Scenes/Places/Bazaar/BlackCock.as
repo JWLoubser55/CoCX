@@ -1401,12 +1401,12 @@ import classes.lists.Gender;
 				}
 			}
 			if (player.blockingBodyTransformations()) changeLimit = 0;
-			if (rand(3) == 0 && changes < changeLimit && player.cocks[player.smallestCockIndex()].cockLength < 12) {
+			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.cocks[player.smallestCockIndex()].cockLength < 12) {
 				outputText("\n\nHeat funnels into your cock as the alcohol flushes through you. Reaching down to inspect it, you find it has grown longer.");
 				player.cocks[player.smallestCockIndex()].cockLength += 1;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.cocks[player.smallestCockIndex()].cockThickness < 4) {
+			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.cocks[player.smallestCockIndex()].cockThickness < 4) {
 				outputText("\n\nYou cock feels warm. When you reach down to inspect it, your suspicions are confirmed. it's gotten thicker.");
 				player.cocks[player.smallestCockIndex()].cockThickness += 0.5;
 				changes++;

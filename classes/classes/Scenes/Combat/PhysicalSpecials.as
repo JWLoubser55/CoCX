@@ -6526,7 +6526,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 
 	public function shieldBash():void {
 		clearOutput();
-		EngineCore.WrathChange(-shieldbashcostly());
+		if (!player.hasStatusEffect(StatusEffects.CounterAction)) EngineCore.WrathChange(-shieldbashcostly());
 		outputText("You ready your [shield] and prepare to slam it towards [themonster].  ");
 		if ((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) {
 			if (monster.spe - player.spe >= 20) outputText("[Themonster] deftly avoids your slow attack.");
@@ -6537,7 +6537,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		var damage:int = 10 + (player.str / 1.5) + rand(player.str / 2) + (player.shieldBlock * 2);
 		if (player.hasPerk(PerkLib.ShieldSlam)) damage *= 1.2;
-		if (player.hasPerk(PerkLib.SteelImpact)) damage += ((player.tou - 50) * 0.3);
+		if (player.hasPerk(PerkLib.SteelImpact)) damage += (player.tou * 0.5);
 		damage = combat.statusEffectBonusDamage(damage);
 		if (player.shieldPerk == "Large") damage *= 2;
 		if (player.shieldPerk == "Massive") damage *= 5;
@@ -6547,6 +6547,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("Your [shield] slams against [themonster], dealing <b>[font-damage]" + damage + "[/font]</b> damage! ");
 		if (player.hasPerk(PerkLib.BrutalOpening)) {
 			if (!monster.hasStatusEffect(StatusEffects.TimesBashed)) monster.createStatusEffect(StatusEffects.TimesBashed, 0, 2, 0, 0);
+			else monster.addStatusValue(StatusEffects.TimesBashed, 2, 2);
 			if (player.hasPerk(PerkLib.LingeringOpening)) monster.addStatusValue(StatusEffects.TimesBashed, 2, 2);
 		}
 		if (!monster.hasStatusEffect(StatusEffects.Stunned) && rand(chance) == 0) {
@@ -6573,7 +6574,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("\n\n");
 		combat.heroBaneProc(damage);
 		combat.EruptingRiposte();
-		if (player.statusEffectv1(StatusEffects.CounterAction) == 1) {
+		if (player.hasStatusEffect(StatusEffects.CounterAction)) {
 			player.removeStatusEffect(StatusEffects.CounterAction);
 			doNext(playerMenu);
 		}

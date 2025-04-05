@@ -55,7 +55,7 @@ public class HarpyMob extends Monster
 		public function harpyHordeGangBangStruggle(clearDisp:Boolean = true):void {
 			if(clearDisp) clearOutput();
 			//Success:
-			if(rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
+			if(rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 				outputText("With a mighty roar, you throw off the harpies grabbing you and return to the fight!");
 			}

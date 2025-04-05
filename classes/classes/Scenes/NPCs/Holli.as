@@ -172,7 +172,7 @@ public class Holli extends Monster
 				player.removeStatusEffect(StatusEffects.HolliConstrict);
 			}
 			//else if normal str-based success
-			else if (rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
+			else if (Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
 				outputText("You manage to force the roots open when the distracted Holli begins to stroke her plant-shaft, pulling out of the bindings just as a drop of sap oozes out and falls where you were standing.  You're free!");
 				//sap rose pls go
 				player.removeStatusEffect(StatusEffects.HolliConstrict);

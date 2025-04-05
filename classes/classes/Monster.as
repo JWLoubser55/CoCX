@@ -2075,7 +2075,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (plural) outputText("' attacks ");
 				else outputText("'s attack ");
 				outputText("with your [weapon].\n");
-					if (game.player.hasPerk(PerkLib.TwinRiposte) && (game.player.weapon.isDualMedium() || game.player.weapon.isDualLarge()) && game.player.wrath >= 2) {
+					if (game.player.hasPerk(PerkLib.TwinRiposte) && game.player.weapon.isDualWielded()) {
 					player.createStatusEffect(StatusEffects.CounterAction,1,0,0,0);
 					SceneLib.combat.basemeleeattacks();
 				}
@@ -2099,7 +2099,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			//Block with shield
 			if (combatBlock(true)) {
 				outputText("You block [themonster]'s " + weaponVerb + " with your [shield]! ");
-				if (game.player.hasPerk(PerkLib.ShieldCombat) && game.player.fatigue >= 20) {
+				if (game.player.hasPerk(PerkLib.ShieldCombat)) {
 					player.createStatusEffect(StatusEffects.CounterAction,1,0,0,0);
 					SceneLib.combat.pspecials.shieldBash();
 				}
@@ -2906,7 +2906,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		protected function tentacleBindStruggle():Boolean{
 			clearOutput();
 			outputText("You struggle with all of your might to free yourself from the tentacles before the creature can fulfill whatever unholy desire it has for you.\n");
-			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
+			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
 				outputText("As the creature attempts to adjust your position in its grip, you free one of your [legs] and hit the beast in its beak, causing it to let out an inhuman cry and drop you to the ground smartly.\n\n");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 				createStatusEffect(StatusEffects.TentacleCoolDown, 3, 0, 0, 0);

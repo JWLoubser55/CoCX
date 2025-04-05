@@ -51,9 +51,9 @@ public class Cliffs extends BaseContent
 			chance: 0.5,
 			unique: true,
 			when: function():Boolean {
-				return !player.hasStatusEffect(StatusEffects.TookGlacialGraveaxe) && !player.hasStatusEffect(StatusEffects.GlacialGraveaxeNever);
+				return !player.hasStatusEffect(StatusEffects.TookStormcallerGravespear) && !player.hasStatusEffect(StatusEffects.StormcallerGravespearNever);
 			},
-			call: swordInStone.findGlacialGraveaxe
+			call: swordInStone.findStormcallerGravespear
 		}, /*{
 			// ?? (lvl 65)
 			// wendigoScene.encounterWendigo();

@@ -137,7 +137,7 @@ public class Changelog extends BaseContent
 			outputText("-New enemies: Mid rank Angel of Mist - lvl 58, Mist Bee Huntress - lvl 60, Mist Wasp Huntress - lvl 62, Mist Hornet Huntress - lvl 64, Mist Alraune Maiden - lvl 66, Mist Cinderbloom - lvl 68, Mist Snow Lily - lvl 70. Encounterable on 5th strata of River Dungeon. Proto Golem - lvl 6. Encounterable in general explore from lvl 6+. Kirin (added by NUZ/Shirane) - lvl 50. Encounterable in Plains. ");
 			outputText("Werefox (M) - lvl 33. Encounterable in Inner Desert at night. Elder Werefox (M) - lvl 61. Encounterable in Inner Desert at night (he temporaly came from deeper desert regions and req. lvl 43+ to encounter). Zombie (M & F) - lvl 36/53. Encounterable in Outer Plains / Inner Plains (lvl 53 zombies temporaly hopped from deeper plains regions) at night as long PC isn't Jiangshi. They have Undead enemy type perk. ");
 			outputText("Mummy (M & F) - lvl 18/36. Encounterable in Outer Desert / Inner Desert at night. They have Undead enemy type and Low-tier Magic Immunity perk. Thief - lvl 5, Thief Captain - lvl 9. Encounterable in Ignam after PC reach lvl 2/6. Feral Succubus/Incubus - lvl 41, Feral Omnibus - lvl 51. Encountered in Blight Ridge. Feral Cow Succubus/Mino Incubus - lvl 65/67. ");
-			outputText("Feral Demon Hellhound - lvl 69. Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Encountered in Tunnels.\n");
+			outputText("Feral Demon Hellhound - lvl 69. Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Encountered in Tunnels. True Lightning Golem - lvl 81. Encountered in Cliffs.\n");
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig), Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event), Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
@@ -380,6 +380,9 @@ public class Changelog extends BaseContent
 			outputText("-True Seeing can now pierce invisibility-like enemy abilities that may disable some of the combat options.\n");
 			outputText("-New event perk: Absorb nutrien. Gained by becoming Mantago. Effects: You are fed and healed by bodily fluids. Recover health, mana, soulforce and fatigue from harvesting sexual fluids. As you absorb more nutrients your mushroom cap will also grow granting your increasing abilities.\n");
 			outputText("-Sword Intent aura can now be acitvated/deactivated from Soulskills menu too. Goblin kill text is bit less scary without ear cutting meantion.\n");
+			outputText("-New Area: Cliffs (81-101). Exploring tunnels allows now to find it.\n");
+			outputText("-New melee weapon (by Lord Shadeogorath): Stormcaller Gravespear - pulled from unnamed grave at cliffs. Base atk is 160. It's massive spear type low grade wrath weapon with thrown tag. Normally it deal 80% of physical dmg and 20% lightning dmg. When using charge weapon it will deal 100% lightning damage and have 10% to apply Electrocute DoT after critical hit.\n");
+			outputText("-Satyr TF bug fixes. (Jtecx)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -392,10 +395,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit.
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .

@@ -63,7 +63,8 @@ public class CampMakeWinions extends BaseContent
 			return cGC;
 		}
 		private function playerWisdomCheck():Number {
-			var pWc:Number = player.wis;
+			var pWc:Number = 0;
+			pWc += player.wis;
 			if (player.hasPerk(PerkLib.BeastKnowledge)) pWc += player.wis*1.5;
 			if (retrycount > 0) pWc += rand(player.wis);
 			if (retrycount > 1) pWc += rand(player.wis);
@@ -71,7 +72,8 @@ public class CampMakeWinions extends BaseContent
 			return pWc;
 		}
 		private function monsterWisdomCheck():Number {
-			var mWc:Number = monster.wis;
+			var mWc:Number = 0;
+			mWc += monster.wis;
 			var mWc1:Number = 10;
 			if (monster.hasPerk(PerkLib.EnemyFeralType)) mWc1 *= 0.1;
 			if (!monster.hasPerk(PerkLib.EnemyFeralType) && monster.hasPerk(PerkLib.EnemyTrueDemon)) mWc1 *= 0.5;

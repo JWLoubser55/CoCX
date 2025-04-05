@@ -223,7 +223,7 @@ import coc.view.CoCButton;
 		{
 			clearOutput();
 			var numRounds:int = player.statusEffectv1(StatusEffects.Tentagrappled);
-			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody))
+			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody))
 			{
 				outputText("You scrabble desperately against the tentacles enveloping your body, pulling against the cast-iron grip around your limbs. You tug against them again and again, and with one final mighty heave, you slip free of their grasp!");
 				player.removeStatusEffect(StatusEffects.Tentagrappled);
