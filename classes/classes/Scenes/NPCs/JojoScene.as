@@ -2299,8 +2299,10 @@ public function refuseOfferOfHelp():void
 public function jojoCamp2():void {
 	if (!player.hasStatusEffect(StatusEffects.LunaOff) && !player.hasStatusEffect(StatusEffects.LunaWasWarned)) {
 		if ((flags[kFLAGS.LUNA_JEALOUSY] > 200 && rand(10) < 4) || (flags[kFLAGS.LUNA_JEALOUSY] > 300 && rand(10) < 8)) mishapsLunaJojo();
+		if ((flags[kFLAGS.JOJO_BIMBO_STATE] = 5)) joJoyCampMenu();
 		else jojoCamp();
 	}
+	if ((flags[kFLAGS.JOJO_BIMBO_STATE] = 5)) joJoyCampMenu();
 	else jojoCamp();
 }
 
@@ -2399,10 +2401,10 @@ public function talkMenu():void
 	if (flags[kFLAGS.JOJO_BIMBO_STATE] == 5) {spriteSelect(SpriteDb.s_joy);
 	}
 	menu();
-	addButton(0, "Village", jojoTalkVillage).hint("Ask him about the village" +(flags[kFLAGS.JOJO_BIMBO_STATE] == 4?"Joy":"Jojo") +" was raised in.");
-	addButton(1, "Monks", jojoTalkJoiningTheMonks).hint("Ask him about how and why he became a monk.");
-	addButton(2, "MonksFall", jojoTalkFallOfTheMonks).hint("Ask him about the demise of the monks.");
-	addButton(3, "Forest", jojoTalkForestConvo).hint("Ask him about how he ended up in the forest.");
+	addButton(0, "Village", jojoTalkVillage).hint("Ask him about the village" +(flags[kFLAGS.JOJO_BIMBO_STATE] == 4?"He":"She") +" was raised in.");
+	addButton(1, "Monks", jojoTalkJoiningTheMonks).hint("Ask " +(flags[kFLAGS.JOJO_BIMBO_STATE] == 4?"Him":"Her") +" about how and why " +(flags[kFLAGS.JOJO_BIMBO_STATE] == 4?"Joy":"Jojo") +" became a monk.");
+	addButton(2, "MonksFall", jojoTalkFallOfTheMonks).hint("Ask " +(flags[kFLAGS.JOJO_BIMBO_STATE] == 4?"Joy":"Jojo") +" about the demise of the monks.");
+	addButton(3, "Forest", jojoTalkForestConvo).hint("Ask " +(flags[kFLAGS.JOJO_BIMBO_STATE] == 4?"Him":"Her") +" about how he ended up in the forest.");
 	if (flags[kFLAGS.TIMES_TALKED_WITH_JOJO] >= 4) addButton(4, "You", jojoTalkYourOrigin).hint("Tell him about Ingnam and your history.");
 	if (flags[kFLAGS.FACTORY_SHUTDOWN] > 0) addButton(5, "Factory", jojoTalkFactory).hint("Tell him about how you've shut down the factory.");
 	if (flags[kFLAGS.SAND_WITCHES_COWED] == 1 || flags[kFLAGS.SAND_WITCHES_FRIENDLY] == 1 || flags[kFLAGS.SAND_MOTHER_DEFEATED] == 1) addButton(6, "SandCave", jojoTalkSandCave).hint("Tell him about your encounter in the Sand Cave in the desert.");
@@ -3340,11 +3342,87 @@ public function afterDebimboTalk():void {
 				if (joyScene.joyHasCock() && joyScene.joySexCounter() > 0) outputText("\n\nFrom previous experience you can estimate she has a " + joyScene.joyCockLength() + " inches long and " + joyScene.joyCockGirth() + " inches thick dick. It looks surprisingly human, right underneath that, she has a pair of gonads that are about " + joyScene.joyBallSize() + " " + (joyScene.joyBallSize() == 1 ? "inch" : "inches") + " in diameter each.");
 				outputText("\n\nBetween her legs sits a " + joyScene.joyPussyDescript() + ". Beads of lubricant occasionally form on her pink nether lips.");
 				outputText("\n\nBetween her squeezable jiggly asscheeks she has " + joyScene.joyAssDescript() + ", right where it belongs.");
-				if (RuinedTownRebuilt.Intown) {
+				if (RuinedTownRebuilt.Intown == true) {
 					doNext(SceneLib.ruinedTown.enterVillage);
 				}
 				else { doNext(joJoyCampMenu); }
 			}
+	public function joJoyFuckMenu():void {
+		clearOutput();
+
+		outputText("Joy blinks once, before her tail waggles involuntarily. She turns her head, slightly bashful, but she turns back to you, smile growing on her face. “Sure.” She says simply, striding into your arms. “Let’s find somewhere private, though…”  \n\n");
+		outputText("Jokingly, you ask if you’re talking to Jojo or Joy, and she gently slaps you on the cheek. “Just because I’m sexy doesn’t mean I’m…Open, or easy.” She looks deep into your eyes, breasts smooshing into your chest. “I love you. Not half the forest, not every imp or demon on Mareth…You.”  \n\n");
+		outputText("She takes your hand, leading you into the forest. Occasionally, she reaches back, giving you a smile, or a kiss. Eventually, you come to a deep bramble. Joy looks at it, before stopping, inhaling sharply, turning and glaring into the distance, through the trees. \n" +
+				"You follow her gaze, straining to see if there’s something nearby. You…think you see something…or is it a trick of the light? Suddenly, something silky, white and damp splats across your face. You pull…Joy’s panties off your face, and turn, barely catching a view of Joy’s juicy snatch and legs as she dives into a concealed entrance. \n \n\n");
+		outputText("“Gotcha!” she laughs, and you find yourself almost amused by the trick…Almost. You eagerly follow Joy down through the hidden entrance. As you come up, you barely get a glimpse of Joy’s grinning face before her robe hits you with a faint thump. You hear Joy’s laughter, bright and merry, in your ear, and as she gently guides you down onto a surprisingly soft mattress, she wraps an arm around you, pulling the robe from your face.  \n\n");
+		outputText("“Sorry about the robe. I was feeling a little mischievous”. Joy says warmly. You ask about the panties, and she gives you another laugh. “No, I figured you’d enjoy that, you degenerate, you.” Despite the teasing, Joy’s biting her lip, and her nipples, pressed against you, are rock-hard.  \n\n");
+		outputText(" \n\n");
+		outputText(" \n\n");
+
+		menu();
+		addButton (0, "Pussy", joJoyPussyFuck);
+		addButton (1, "Anal", joJoyAnalFuck);
+	}
+
+	public function joJoyPussyFuck():void {
+		clearOutput();
+		outputText("With the mouse-monk in such close proximity, her scent in your nose, you can’t hold back anymore. You run your hand along Joy’s inner thigh, and her eyes light up. You take her shoulders, playfully pinning your mousey lover to the straw. Joy looks up at you, amusement dancing in her eyes, as you let your lips curl up, rubbing your hip against Joy’s inner thigh. Your [cock] hardens, and Joy’s breath catches as your crown slowly slides up her inner thigh. \n\n");
+		outputText("Joy gives you a grin, bringing a hand to your cheek. Her palms are smooth, but you can feel the muscles underneath that speak to her former life. Her thighs, though soft at first, the muscle is still there. You stop at her entrance, labia quivering. Looking up into your eyes, Joy gives you a reassuring smile. “Come on, love. I thought you wanted me.” She leans up, brushing her lips against yours, and her lower lips against your crown. “So…What are you waiting for?”  \n\n");
+		outputText("You slide your cockhead past Joy’s lips, and as you sink in, Joy lets out a girly squeal. You’re surprised, but as Joy wraps her arms around your chest, her legs around your waist, and pulls you down, your shaft sinking all the way in, she exhales softly, looking at you with an almost hungry look on her face. Joy blushes as you pull back, and as you thrust home, she gasps, biting her lip over a moan. Slowly, you begin to fuck her, each thrust earning you a wriggle or moan, her cheeks getting redder by the second.  \n\n");
+		outputText("“Ah…Oh…F-fuck…” Joy closes one eye, reaching down to flick her clit. “[Name]...Mph…” You silence her with a long, slow kiss, and your curvy mouse lover’s tail wraps around your waist, curling around one of your asscheeks. As you pull back, picking up the pace slightly, Joy’s free hand grabs the mattress behind her head, your mousey lover closing her eyes and sticking her tongue out.  \n\n");
+		outputText("“Ahn…Ah…” You’re on top, thrusting down, and you grab one of her breasts, pulling gently as you bottom out, her slick, tight walls clamping down on your shaft as you prod her womb.  \n\n");
+		outputText("“Oh…Ah…” Joy matches your pace, and you feel her hips shudder, her well-lubricated pussy quivering. Joy’s entire body tightens, and you realize that she’s fighting her urges. She’s trying not to cum. She’s no longer flicking her clit, and as her legs tighten around your waist, Joy bites her lower lip.  \n\n");
+		outputText("“F-f-f…fuck…me!” She moans, opening one eye. Your mouse-lover is on the edge, but clearly doesn’t want to cum yet. You pick up the pace slightly, and in seconds, Joy is reduced to holding onto the straw for dear life, entire face bright red as she revels in the pounding you’re giving her.  \n\n");
+		outputText("Joy suddenly wraps her arms around your shoulders, pulling you down into her, your head smooshing between her pillowy breasts. Bucking your hips, you bare down, getting a wail from Joy as you finally push her over the edge, her pussy-walls clamping down on you.  \n\n");
+		outputText("“C-c-c-CUMMING!” Joy howls, bucking her hips wildly. You’re not far off, and driven by her squeaky howl, you grab her wrists and pin her hands above her head, shoving your [cock] in as hard as you can. Still in the throes of her orgasm, Joy opens only one eye, nearly hyperventilating as you fuck her sensitive cunt.  \n\n");
+		outputText("You finally feel your shaft switching, building up to your release, and you lean in, dropping one hand to Joy’s button, rubbing her little clit while you cover her mouth with your own. Joy, coming down from her own orgasm, lets out a little squeak, eyes wide as you bottom out, cumming deep into her womb.  \n\n");
+		outputText("“MMMM!! Mhm…mmm…” Unable to speak, Joy weakly wraps her arms and legs around you as your orgasm drags on, dumping your hot load into her depths. As you pull your head back, looking down, Joy’s eyes are wide, but slightly glazed over, your lips coming apart with a wet pop.  \n\n");
+		outputText("“Mmhaaa…Haaa…” Joy’s legs are still wrapped around you, and as a small bit of your cum falls from her quim, she finally falls limp. You let yourself roll, flopping down beside her, and as Joy’s prodigious chest heaves, her breathing slowing, you take her hand in yours.  \n\n");
+		outputText("“...That…Was…Fantastic”. Joy manages in between breaths. She looks down at her stomach, then rolls over, putting her head on your shoulder. “You?”  \n\n");
+		outputText("You assure Joy that yes, you clearly enjoyed yourself…and she’s currently got proof of that leaking all over the mattress. Joy looks down, between her legs, blinks twice, and flops back down. “I’ll deal with it later.” You notice that she closes her legs, almost as if she’s fine keeping your baby batter in there. You raise an eyebrow, and Joy gives you an almost pouty look. “What?” You ask if she wants to be a mother, and she shrugs.  \n\n");
+		outputText("“If it happens, it happens. They’d be yours, and…” Joy blushes. “More of you is a good thing…Mareth needs more champions.” She chuckles. “Never thought I’d…Be like this. But it’s freeing.” She puts her panties back on, then her robe, deftly avoiding the wet parts of the mattress…Which is almost the entire thing.  \n\n");
+		outputText("As you step away from Joy’s hiding hole, and begin to head back to camp, Joy stops, putting a hand up. “[Name], did you hear that?”  \n\n");
+
+		outputText("You turn back towards the hiding hole, making your way back…to see several imps in the trees around it, and a few others diving in. Some have a goblin with them, others have toys, and one seems to have found a goo-girl, who’s looking from goblin to goblin with what you can only describe as fearful arousal. They enter Joy’s little hovel two at a time.  \n\n");
+		outputText("Joy’s expression, beside you, turns to one of sheer disgust. Before you can say anything, Joy charges a whitefire and hurls it into the makeshift dwelling. She turns, firing a cleansing palm at the entrance, collapsing the hole, before grabbing your arm. The imps begin to scream, the Whitefire engulfing the haven as they try to escape, and Joy grabs your arm, rougher than you’d expected of her.  \n\n");
+		outputText("“Come on.” Joy’s voice is trembling, and you decide to follow her back to camp. Once you get there, Joy sits on her rock, and you sit beside her. She looks down at the ground, hands shaking slightly.  \n\n");
+		outputText("You take her hands in yours. You ask her if she’s okay, and she shakes her head slightly. You tell her that you can help her find and make another hiding hole, and she scoffs, giving you a wistful half-smile. “I appreciate the offer…But that’s not the problem. I have a lot of those little safe-spots throughout the forest.” She shudders. “It just…irks me…To have those filthy things find them while I’m there. It means they could have found me before.”  \n\n");
+		outputText("You gently remind Joy that when she made those safe-holes, things were a lot different…and it’s not like either of you were really…hiding, either. Playfully, you tell Joy that she makes a lot of noise when she feels safe.  \n\n");
+		outputText("“[Name]!” Joy exclaims, blushing. Her melancholy forgotten, she gives you a slight glare that quickly fades. “...Of course I felt safe. I was with you.” She realizes what she just said, her blush coming back. “You’re right, though. Before, I was more careful. I would sit for a while, make sure the place was empty…and I went to sleep. They were places to hide and recover strength…Not anywhere I would…Enjoy.”  \n\n");
+
+		outputText("To your surprise, as you turn back, you see a few imps dragging a struggling roo-girl towards your shelter, gleefully ripping her shirt to shreds. She’s wearing nothing on her lower half, and by the look in her eyes, she’s not happy about it.  \n\n");
+		outputText("As they see you and Joy, the imps freeze, and the Roo-girl rips her arm free, socking one of the imps in the face. “Eat THAT, ya Punta!”  \n\n");
+		outputText("Joy frowns, and you see her leap forward, a cleansing palm in one hand, her staff in the other. The imps flee, and Joy rushes over to the girl, who ignores her, stealing one of the imps’ loincloths and covering herself.  \n\n");
+		outputText("“No ‘fence, mate, but I dun know ya. Thanks fer the help, but I’m gonna get me cunt back to friendly turf.” She gives you and Joy a nod and a wave, before running off.  \n\n");
+		outputText(" \n\n");
+		menu();
+		addButton (1, "SexTime", joJoySexMenu);
+	}
+
+	public function joJoyAnalFuck():void {
+		clearOutput();
+		outputText("You decide you’ve had quite enough of Joy’s teasing. She giggles as you grab her shoulders, pinning her to the mattress on her back. Freeing your [cock], you slide between your naked mouse-lover’s legs, her thighs now rubbing your hips. Joy watches, her eyes glinting with excitement, as you run your shaft along her lower lips. She bites her lip over a grunt, her tail wrapping around your waist.  \n\n");
+		outputText("“C-come on…” She whispers, pulling at your waist. Despite her urging, you continue to rub her lips with your shaft. Joy’s breathing catches with each shallow thrust, and she watches your [cock] intently.  \n\n");
+		outputText("Until you slowly, torturously pull back…and lift her ass slightly into the air before stabbing down. Joy yelps as your prick, slathered in her pussy juices, sinks an inch or so past her sphincter, down into her asshole.  \n\n");
+		outputText("“H-hey, that’s the w-wrong hole!” She protests, but you grin, bearing down. Her ass is tight, almost painfully so, and Joy squirms, grabbing the mattress with both hands. Slowly, you push in further, and Joy gasps, wriggling, but as she watches your cock slowly vanish into her bubble butt, her jaw goes slack, and she shudders, letting out a surprisingly deep moan.  \n\n");
+		outputText("“O-oh Marae above…” She whispers, eyes wide. “F-fuck!” You look down, somewhat concerned, but Joy’s drooling from both ends. “K-keep going!” She cries, and you oblige, pulling back as her asshole clings to your shaft. This gets an immediate reaction from Joy, her legs quivering as they wrap around your waist.  \n\n");
+		outputText("As you begin fucking Joy’s asshole in earnest, she begins to groan, then moan. Holding her ass off the ground with one hand, you get an idea. You bring your free hand to Joy’s labia, tracing the outline with two fingers.  \n\n");
+		outputText("“O-oh…Fuck. Fuck, fuck, FUCK!” Joy’s legs almost give out as she wails, squirting and covering your face in her femcum. You shake yourself, looking down, and Joy’s eyes are glazed, tongue out…but she’s pumping her hips now, her loosening asshole dripping your pre with each thrust.  \n\n");
+		outputText("You sink two fingers into Joy’s pussy, and she gasps, hips gyrating wildly. You finger her, pounding her ass while she holds on for dear life, her slippery cunt like butter under your fingers.  \n\n");
+		outputText("As you feel your [cock] quivering, building up as you huff, trying to hold it in, Joy lets out a loud, piercing wail, her pussy tightening around your fingers as she cums again. Unable to hold yourself back, you blow your load, your [balls] churning as you sink yourself to the hilt into your mousey lover’s ass.  \n\n");
+		outputText("As soon as your cock starts to soften, you feel Joy’s legs weaken. You let her flop to the mattress, joining her on the ground as she weakly twitches, tongue lolling out. For a few minutes, you lie beside your mousey lover as she slowly pulls herself together. You notice, however, that she doesn’t close her legs, letting your spooge drip from her well-fucked ass.  \n\n");
+		outputText("She notices you admiring your handiwork, and you feel her whiskers next to your face, followed by her face. “Perv.” Her warm tone of voice takes all the sting out of the jibe, and she gives you a smile. You retort that she wasn’t complaining. Hell, she was doing as much as you.  \n\n");
+		outputText("“Never said I wasn’t.” Joy says simply, looking down at herself. “Wow, I am…Wide open.” She considers that. “Heh…” Joy rolls onto her side, her prodigious breasts and smooth thighs pressing against your side as she leans in, placing her muzzle on your shoulder. “I love you, [Name].”  \n\n");
+		outputText("After another few minutes, cuddling in the afterglow, Joy looks down at your groin, and shakes her head. “Hey…We can’t have you walking around dirty…Give me a second before we head out?” To your shock, the formerly chaste monk leans over, wrapping her lips around your shaft. She uses her tongue and lips to clean your shaft, and you can’t suppress a gasp as she sucks, draining the last few drops of your cum.  \n\n");
+		outputText("She pulls off with a slight pop, before reaching over, grabbing the panties she’d thrown at you, and begins to redress. You decide to follow her lead, and as the two of you leave the shelter, you see a few goblins hiding in the bushes, staring at you and Joy with interest. Suddenly, they get a look of terror, running away, and you look back at Joy.  \n\n");
+		outputText("She looks at you innocently, but you know better. You ask Joy what those goblins ever did to her, and she scoffs. “Look…I know that you…Sleep around. But when you’re with me, alone…I…” You stifle a laugh. “Look, I care about you, and the health of the forest, okay? More goblins trying to…claim you as their…Stud…” You let that laugh go, putting a hand on Joy’s shoulder. You tell her not to worry, that if you were looking for seconds, you’d be heading back in with her.  \n\n");
+		outputText("“O-oh…” Now that Joy’s had her fun, she seems almost…shy again. “Well, I guess that’s…good.” The walk back to camp is calm, but halfway through, you notice that Joy’s walking funny. You ask her if she’s a bit stiff, and she gives you a mildly annoyed glance. “Yes.” She swats you lightly on the shoulder. “You…You’re to blame for that, you know.”  \n\n");
+		outputText("You promise to take it easier on her next time, and she raises an eyebrow. “Don’t you dare.” As you return to camp, Joy gives you a kiss on the cheek. “You know where to find me.” She returns to her rock, walking away from you with an entirely unnecessary amount of sway in her hips.  \n\n");
+		outputText(" \n\n");
+		outputText(" \n\n");
+		menu();
+		addButton (1, "SexTime", joJoySexMenu);
+	}
 
 			public function joJoyTraining():void {
 				clearOutput();
@@ -3469,10 +3547,6 @@ public function afterDebimboTalk():void {
 							addButton (2, "SlapAss", joJoySlapDat);
 							addButton (3, "HotDog", joJoyHotDog);
 							addButton (4, "Finger", joJoyFingering);
-							if (RuinedTownRebuilt.Intown) {
-								doNext(SceneLib.ruinedTown.enterVillage);
-							}
-							else { doNext(joJoyCampMenu); }
 					}
 
 				}
@@ -3541,7 +3615,7 @@ public function afterDebimboTalk():void {
 			}
 			public function joJoyFingering():void {
 				clearOutput();
-				outputText("At  her point, it’s obvious that the formerly chaste monk isn’t interested in martial arts right now. As you stealthily approach Joy’s backside, you get a mischievous idea. You lick one of your fingers, and as you close in, you wrap one of your arms around Joy’s waist, flicking her clit before you sink a finger into her sopping wet quim. \n\n");
+				outputText("At this point, it’s obvious that the formerly chaste monk isn’t interested in martial arts right now. As you stealthily approach Joy’s backside, you get a mischievous idea. You lick one of your fingers, and as you close in, you wrap one of your arms around Joy’s waist, flicking her clit before you sink a finger into her sopping wet quim. \n\n");
 				outputText("Joy gasps, leaning back into you, but you cover her mouth gently with your other hand, shushing your mousey lover as you nibble the side of her neck. You add a finger, slowly, gently teasing her with one hand, fingers dipping in and out of her folds. With each movement, you feel Joy gasp, hands grasping at you as her breathing gets heavy. After a few minutes of gentle foreplay, your own lust building, you remove your hand from Joy’s mouth, turning her around and stopping her lips again with your own. \n\n");
 				outputText("Joy, eyes half-lidded, practically purrs as you pull back. \"<i>Mmm…</i>\" She looks down at your groin, your mixed saliva on her snout. \"<i>Now that you’ve got me all warmed up, now what?</i>\"\n\n");
 				menu();
@@ -3551,7 +3625,7 @@ public function afterDebimboTalk():void {
 				clearOutput();
 				outputText("How do you want to sex your mousey companion? \n\n");
 				menu();
-				addButton (1, "Sex", joyScene.joySexMenu);
+				addButton (1, "Sex", joJoyFuckMenu);
 				if (JojoTalkedBimbo) {
 					addButton(2, "BimboRP", joJoyBimboMenu); //only if you've talked with her about Roleplaying
 				}
@@ -3629,7 +3703,7 @@ public function afterDebimboTalk():void {
 	}
 	public function JoJoyGender():void {
 		clearOutput();
-		outputText("You ask " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "Joy": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "Jojo":"") + " what " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "She": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "he":"") + " thinks of their time as a " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "man": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "woman":"") + ". \n\n");
+		outputText("You ask " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=5? "Joy": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "Jojo":"") + " what " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=5? "She": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "he":"") + " thinks of their time as a " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "man": flags[kFLAGS.JOJO_BIMBO_STATE] ==5? "woman":"") + ". \n\n");
 		if (flags[kFLAGS.JOJO_BIMBO_STATE]==4) {
 			outputText("Jojo looks away from you for a second, before exhaling through his nose. \n" +
 					"\"<i>Honestly, I…kind of like looking back on it.</i>\" He blushes, but doesn’t seem too nervous. \"<i>If I could go back without losing myself…I think I’d enjoy it.</i>\" He chuckles. \"<i>Honestly, I was never really that attached to…You know…</i>\" He motions between his legs. \n\n");
@@ -3668,7 +3742,7 @@ public function afterDebimboTalk():void {
 		addButton(6, "Shag", joJoySexMenu);
 		addButton(7, "Screw", joJoySexMenu);
 		addButton(8, "Score", joJoySexMenu);
-		addButton(8, "Get it On", joJoySexMenu);
+		addButton(9, "Get it On", joJoySexMenu);
 	}
 	public function JojoGoodBoi():void {
 		clearOutput();

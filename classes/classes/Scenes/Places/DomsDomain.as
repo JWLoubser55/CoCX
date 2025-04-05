@@ -929,10 +929,7 @@ public class DomsDomain extends BaseContent implements SaveableState, TimeAwareI
         outputText("You open the door to the toilets…and what you find really shouldn’t have surprised you. In addition to a few stalls for actually relieving oneself…Most of the right wall is taken up by the upper halves of various people of all shapes and sizes, a rubber cushion both keeping them comfortable and firmly in place. The height they’re set at varies, but you can see controls on each one to raise or lower them. You can tell they’re not fakes, either. One bouncer you’ve seen around the place is going to town on a cum-drenched succubus, using her horns for leverage as he face-fucks her. \n\n");
         outputText("A lizan with sizable breasts moans as she bucks, eyes wide. Apparently someone at her rear is giving her a pounding, and she’s grabbing the sides of her ‘wall’ for dear life. \n\n");
         outputText("There are a variety of people stuck in the cushioned ‘toilets’. Each one comes with a shower-head, and a few levers. \n\n");
-        outputText("(If you are a wood elf) \n" +
-                "To your surprise, you see one of your sisters in the devices, trussed up. \n\n" +
-                "\n" +
-                "(If you aren’t) One of the blonde bitches from the forest, those wood elves. She’s clearly not here of her own free will. \n\n");
+        outputText("To your surprise, you see one of the blonde bitches from the forest, those wood elves. She’s clearly not here of her own free will. \n\n");
         outputText("Her blue eyes are wild with fear and anger. While she hasn’t really seen you yet, she already has an O-ring in her mouth, and while her bountiful breasts are bound in a ripped green gown, it was already thin. Someone’s poured water on her, and she shivers slightly. \n\n");
         outputText("A Chocolate-skinned elf, much like the ones around the mountains, lies in the machine, stuck.\n\n");
         outputText("She glowers at the demons, somehow intimidating despite her situation. Her D-cup breasts dangle underneath her chest, and she’s been gagged. The sign above her reads “Loudmouth: Only Ungag for BJs”. Unlike the others, she’s bound not just by the machine, but trussed up completely, rope covering most of her body, crisscrossing around her voluptuous breasts. \n\n");
@@ -1327,23 +1324,27 @@ if (whosincharge == 1) {
     private function DDullahanTFMenu():void {
         clearOutput();
         CoC.instance.mainViewManager.updateCharviewIfNeeded();
-        outputText("Meila gives you a sly smile, sliding you a paper menu. “Making use of my services, [Master]? I promise to make this quick and painless.”  \n\n");
-        outputText(" \n\n");
-        menu();
-        addButton (0, "Pig", MeilaTFPigMenu);
-        addButton (1, "Goblin", MeilaTFGoblinMenu);
-        addButton (2, "Mouse", MeilaTFMouseMenu);
-        addButton (3, "Imp", MeilaTFImpMenu);
-        addButton (4, "Fox", MeilaTFFoxMenu);
-        addButton (5, "Minotaur", MeilaTFMinotaurMenu);
-        addButton (6, "A.Shark", MeilaTFAsharkMenu);
-        addButton (7, "Alicorn", MeilaTFAlicornMenu);
-        addButton (10, "Ant", MeilaTFAntMenu);
-        addButton (11, "Anubis", MeilaTFAnubisMenu);
-        addButton (12, "Apophis", MeilaTFApophisMenu);
-        //addButton (13, "Arigean", MeilaTFArigeanMenu);
-        addButton (14, "NextPage", DDullahanTFMenu2);
-
+        if (player.blockingBodyTransformations()) {
+            outputText("Meila gives you a frown and shakes her head. \"Absolutely not, [Master]. Whatever you've done to yourself, it's well beyond my capacity to safely change. Unless you want to end up some deformed cripple, I can't do anything for you.\" \n\n");
+            doNext(MeilaBusiness);
+        } else {
+            outputText("Meila gives you a sly smile, sliding you a paper menu. “Making use of my services, [Master]? I promise to make this quick and painless.”  \n\n");
+            outputText(" \n\n");
+            menu();
+            addButton(0, "Pig", MeilaTFPigMenu);
+            addButton(1, "Goblin", MeilaTFGoblinMenu);
+            addButton(2, "Mouse", MeilaTFMouseMenu);
+            addButton(3, "Imp", MeilaTFImpMenu);
+            addButton(4, "Fox", MeilaTFFoxMenu);
+            addButton(5, "Minotaur", MeilaTFMinotaurMenu);
+            addButton(6, "A.Shark", MeilaTFAsharkMenu);
+            addButton(7, "Alicorn", MeilaTFAlicornMenu);
+            addButton(10, "Ant", MeilaTFAntMenu);
+            addButton(11, "Anubis", MeilaTFAnubisMenu);
+            addButton(12, "Apophis", MeilaTFApophisMenu);
+            //addButton (13, "Arigean", MeilaTFArigeanMenu);
+            addButton(14, "NextPage", DDullahanTFMenu2);
+        }
     }
 
     private function MeilaTFPigMenu():void {
@@ -2783,7 +2784,7 @@ if (whosincharge == 1) {
         addButton(2, "Ears",  function():void {  CoC.instance.transformations.EarsInsect.applyEffect();});
         addButton(3, "Legs",  function():void {  CoC.instance.transformations.LowerBodyMantisBipedal.applyEffect(); });
         addButton(4, "RearBody",  function():void {  player.hairColor = randomChoice(BeeRace.BeeHairColors); });
-        addButton(5, "Hair",  function():void {  player.hairColor = randomChoice(GoblinRace.GoblinHairColors); });;
+        addButton(5, "Hair",  function():void {  player.hairColor = randomChoice(GoblinRace.GoblinHairColors); });
         addButton(6, "Antenna",  function():void {  CoC.instance.transformations.AntennaeMantis.applyEffect(); });
         addButton(7, "S.Wings",  function():void {  CoC.instance.transformations.WingsMantisSmall.applyEffect(); });
         addButton(8, "L.Wings",  function():void {  CoC.instance.transformations.WingsMantisLarge.applyEffect();  });
@@ -3694,7 +3695,10 @@ doNext(StripClub);
 
     private function MeilaSexMenu():void {
         clearOutput();
-        outputText("You tell Meila that you intend on claiming her, for a time. (If Ceraph’s still in charge) As Ceraph’s owner, her harem is yours to command. \n\n");
+        outputText("You tell Meila that you intend on claiming her, for a time. \n\n");
+        if ((whosincharge == 0) || (whosincharge == 4)) {
+            outputText("As Ceraph’s owner, her harem is yours to command. \n\n");
+        }
         if (MeilaTrust < 33) {
             outputText("Meila closes her eyes, sighing. “As you command, [master]” Her shoulders fall, and she slowly shuffles into the back. You follow, and she begins to slowly, reluctantly peel off her crop-top. \n\n");
             outputText("“Please be gentle?” She whispers, almost pleading.\n\n");
@@ -3925,11 +3929,11 @@ doNext(FoodHall);
     private function MeilaForcedBJ():void {
         clearOutput();
         outputText("You gently tell the worried Dullahan that you’re not going to tell Ceraph about how rude she was… but, as Ceraph’s owner, that Meila needs to know where she stands, namely, under you. You tell the worried Dullahan that you’ll do as you please. Holding her head by the braid, you move around the counter and into the back. Ceraph’s people have carved out a small storage area, and you wait until Meila’s body staggers into the back with you before closing the door. \n\n");
-        outputText("In the back room, there’s a folding chair, and you grab Meila’s outstretched hand, pushing her towards it. Her body falls back into the chair, and you tell her to stay put. (If clothed) You pull down your [clothing], revealing your [cock]. With one hand, you dangle Meila’s head in front of your crotch, and she looks at it, nearly crossing her eyes as your length hardens in front of her. \n\n");
+        outputText("In the back room, there’s a folding chair, and you grab Meila’s outstretched hand, pushing her towards it. Her body falls back into the chair, and you tell her to stay put. (If clothed) You pull down your [armor], revealing your [cock]. With one hand, you dangle Meila’s head in front of your crotch, and she looks at it, nearly crossing her eyes as your length hardens in front of her. \n\n");
         outputText("Not wasting any more time, you take her head in both hands and begin feeding your girth into Meila’s mouth. She closes her lips around you, gagging slightly, and to your surprise, as her body grabs the arms of her chair, you can see the vague outline of your [cock] in her throat!\n\n");
         outputText("More than a little turned on by this, you shove yourself to the base into Meila’s mouth, and as she gags, you can see her throat massaging your length. You begin slow, giving the skinny woman time to adjust, before working up to a quicker pace. Her throat starts cool, but quickly warms up, and as you throat-fuck her, Meila’s body twitches on the chair.\n\n");
         outputText("Her hands grip the seat tighter, and each time you bottom out inside her throat, you can see her legs twitch, toes curling ever so slightly. You pick up the pace, strands of Meila’s saliva dripping down your [legs], and you watch her legs curl out, ever so slightly. One of her hands smacks the armrest, and she moans frantically against your [cock]. Looking down, you see that her already pale face is even paler, and she’s trying to breathe. Not wanting to suffocate her, you pull out, the air cool against your exposed shaft as Meila gasps.\n\n");
-        outputText("Turning your attention to her head, you (Pure or moderately corrupt) ask if she’s okay. Meila’s body gives you a thumbs-up, and as her breathing slows, she speaks. (Corrupt) tell the bitch that you’re going to shove it back in now.\n\n");
+        outputText("Turning your attention to her head, you(Pure or moderately corrupt) ask if she’s okay. Meila’s body gives you a thumbs-up, and as her breathing slows, she speaks. (Corrupt) tell the bitch that you’re going to shove it back in now.\n\n");
         outputText("“Yes…Please, use me to your heart’s content, [Master]”. You notice that Meila’s hand is snaking its way under her skirt. As you begin to face-fuck the Dullahan again, Meila spreads her legs, pulling down her panties, and begins to finger herself, spreading her little cunt wide as you slam yourself to the base.\n\n ");
         outputText("Meila moans slightly with each thrust, and you can see her lips twitching as she sinks a finger in, tears dripping onto your shaft as you pick up the pace even further. Her cries get higher, and you feel yourself twitching, aching for release. You try to hold back, to prolong the high, but you can’t hold on anymore. You slam in, dragging your balls across Meila’s chin as you cum deep down her throat. Vaguely, you can see Meila’s throat working as she swallows, mouthful after mouthful of your baby batter heading straight down her throat. \n\n");
         if(player.cumQ() <= 100) {
@@ -4748,7 +4752,7 @@ doNext(FoodHall);
     private function ZetazTalk():void {
         clearOutput();
         if (ZetazState == 0) {
-            outputText("Zetaz hasn’t noticed you yet, and he seems moderately happy for once, swigging a reddish fluid from a wine glass. He’s as muscular as the last time you saw him, and quite a bit bigger. He’s almost 6 feet tall, towering over most other imps. He’s oogling Emerald, and presses a button on his remote. Draining the last of his glass, he looks up, sizing up one of the dancers near Ceraph. His back’s to you. How do you proceed? \n\n");
+            outputText("Zetaz hasn’t noticed you yet, and he seems moderately happy for once, swigging a reddish fluid from a wine glass. He’s as muscular as the last time you saw him, and quite a bit bigger. He’s almost 6 feet tall, towering over all other imps, and even some demons. He’s oogling Emerald, and presses a button on his remote. Draining the last of his glass, he looks up, sizing up one of the dancers near Ceraph. His back’s to you. How do you proceed? \n\n");
             outputText(" \n\n");
             outputText(" \n\n");
             menu();
@@ -4756,6 +4760,29 @@ doNext(FoodHall);
             addButton (1, "Terrorize", ZetazScare);
             addButton (2, "Talk", ZetazLayDownLaw);
         }
+        if (ZetazState == 1) {
+            outputText("“What is it you want, boss? I’m on the clock right now.” He keeps his eyes on Emerald, and the various demons around the bar. “And if you need me for somethin’, then I’ll need to get someone to cover me.”  \n\n");
+            outputText(" \n\n");
+            outputText("Zetaz looks up from a beer, waving at you. “Hey boss! How’s it going?” He seems a little intimidated, but that really shouldn’t surprise you. “What brings you over to the ‘Domain?” He looks over at one of the other demons at the bar, tossing them a few gems. “One for the boss(man/lady)!” \n\n");
+            menu();
+            addButton (1, "Next", StripClub);
+        }
+
+        if (ZetazState == 2) {
+            outputText("As you snap your fingers for your slave, Zetaz shudders, and for a split second, you can see fear in his eyes. He forces a smile onto his face, however, and quickly makes his way over.  \n\n");
+            outputText("“Yes, [master]? What can your slave do for you today?” You notice his legs shaking slightly.  \n\n");
+            outputText("He’s wearing (one of the following) \n\n");
+            outputText("A small, frilly tutu with a crotchless front, and pink slippers that very clearly compress his feet.  \n\n");
+            outputText("A skimpy work uniform, similar to Emerald’s. A toy in his ass buzzes frequently, making him shudder ever so slightly. His chest, unlike hers, is bare, and despite his clear musculature, he’s got bruises and bite marks. You hear a drip from behind him, and he blushes. Apparently the toy’s holding something in.  \n\n");
+            outputText("Nothing but a condom and the server’s toy in his ass, with a ballooning tip half-full of cum hanging off of it. It’s clearly uncomfortable, and the brawny imp winces as a demon passes him, slapping the condom and sending the fluids inside gushing around.  \n\n");
+            outputText("A bra and crotchless panties, the wire of the bra clearly visible…connected to a small battery on a belt. His chest shudders and shakes on its own.  \n\n");
+            outputText("A thin layer of pantyhose, roughly shoved down over his horns, then crudely twisted together to make a strap of material that’s clearly giving him a wedgie, covering nothing and chafing his balls and ass.  \n\n");
+            outputText("Two red cups, dangling from his horns, a lampshade on his head, and an odd set of flashing red and green lights, wrapped around him like a winter festival tree. Someone also attached needles of some sort to his upper body, gluing them on. His eyes are sunken, and despite his plastered on smile, he’s clearly hit the point where he’s numb to it all.  \n\n");
+            menu();
+            addButton (1, "Next", StripClub);
+        }
+
+
         outputText(" \n\n");
         outputText(" \n\n");
         outputText(" \n\n");
@@ -4833,6 +4860,7 @@ doNext(FoodHall);
         outputText(" \n\n");
         outputText(" \n\n");
         ZetazState = 2;
+        doNext(FoodHall);
     }
 
     private function ZetazKill():void {
@@ -4841,6 +4869,7 @@ doNext(FoodHall);
         outputText(" \n\n");
         outputText(" \n\n");
         ZetazState = 3;
+        doNext(FoodHall);
     }
 
     private function ZetazSpare():void {
@@ -4853,6 +4882,7 @@ doNext(FoodHall);
         outputText(" \n\n");
         outputText(" \n\n");
         ZetazState = 1;
+        doNext(FoodHall);
     }
 
 
