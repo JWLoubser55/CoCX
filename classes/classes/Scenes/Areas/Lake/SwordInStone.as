@@ -347,10 +347,89 @@ public class SwordInStone extends AbstractLakeContent
 			player.createStatusEffect(StatusEffects.GlacialGraveaxeNever,0,0,0,0);
 		}
 		
-	//	private function findVolcanicGravehammerLeave():void {
-	//		clearOutput();
-	//		outputText("\n\n");
-	//		endEncounter();
-	//	}
+		public function findStormcallerGravespear():void {
+			clearOutput();
+			outputText("While traversing the mountaintops, clouds, and the odd floating island, you hear thunder crash in the distance, followed by another clap of thunder, then another, with shocking regularity. It's not entirely unheard of given the beings that call this area home, but some gut feeling tells you this isn't the case in this instance.\n\n");
+			outputText("Curious, you make your way towards the source of the noise. Surprisingly, you find an uncommonly large floating island, upon which rests an oddly ornate, circular shrine, which provides shelter from the winds of the region. Carved wing-motifs line the inside of the shrine, with odd greenish-grey veins on the ceiling, but as the lightning strikes, the veins light up, revealing intricately decorated clouds, ");
+			outputText("with the strokes of green acting as lineart. Sparks of lightning jump between the wings, and you can see more of the strange green ore poking out, attracting the bolts and passing them along. As the power fades, however, your gaze is drawn to the centerpiece of this ancient, wondrous building.\n\nStabbed blade-first into the floor of this shrine is a behemoth of spear, made of bedrock, with veins of a metal ore you don't recognize inlaid all along the haft. ");
+			outputText("Your hair stands on end simply being near it. To either side of the spear are two ancient statues of oddly human-like figures, half the spear’s size. The statues seem to be praying or begging, but their facial features have been struck by something a long time ago, shards of their facial features litter the otherwise smooth floor. A plaque, made of the same greenish-grey alloy, sits between them, the lettering long-since wiped from its face.\n\n");
+			outputText("This appears to be a sort of shrine, probably to a fallen warrior. You know enough about Mareth to know that something could be disturbed by any thoughtless actions on your part.\n\n");
+			outputText("On the other hand, that spear looks like it could kill a lot of demons. Surely any noble warrior would rather their weapon be used to save Mareth, right?\n\n");
+			menu();
+			addButton(1, "Leave", findStormcallerGravespearLeave);
+			addButtonIfTrue(2, "Dislodge", findStormcallerGravespearDislodge, "The thought of attempting to lift something of that caliber already exhausts you. (Req. 600+ fatigue, 100+ in core / train str part and 400+ total str)", (player.fatigue <= player.maxOverFatigue() - 600), "Req. 600+ fatigue, 100+ in core / train str part and 400+ total str");
+			addButton(3, "Never", findStormcallerGravespearNever);
+		}
+		private function findStormcallerGravespearLeave():void {
+			clearOutput();
+			outputText("You make a mental note to return when you are more prepared. Taking one last look back at the odd site, you return to your camp.\n\n");
+			endEncounter();
+		}
+		private function findStormcallerGravespearDislodge():void {
+			clearOutput();
+			outputText("Ignoring the foreboding feeling, you approach the behemoth of a spear. Firmly planting yourself and getting a good grip, you pull…\n\n");
+			fatigue(600);
+			if (player.str >= 400 && player.strStat.core.value >= 100 && player.strStat.train.value >= 100) {
+				outputText("The spear rises from the stone about a half-inch. You release it as the lightning falls once more, shocking the weapon, but you’ve proven you can move it! Emboldened, you wait for the energy to fade, then redouble your efforts. With a primal shout and one last heave, the spear is pulled from its stone prison! You take a moment to catch your breath and admire your prize.\n\n");
+				outputText("Lightning strikes the shrine again, this time sending its charge through the spot where the spear had once stood. The stone shakes, and the stone wings around the shrine shudder, sloughing off stone as the lightning arcs towards the most conductive thing in the temple…The spear in your hands! With an undignified yelp, you rush towards the exit, narrowly evading the sparks as the odd shrine begins to shudder. Another bolt strikes it, stonework shuddering, nearly throwing you from your [legs] as you flee.\n\n");
+				outputText("You make haste, trying to get back to the safety of your camp as fast as possible, as if the storm itself was chasing you… for all you know, it very well could. Static electricity crawls up your back, making you shudder. The feeling fades as you leave the stormy cliffs and mountains behind, heading back to camp, and by the time you get there, the feeling’s gone.\n\n");
+				inventory.takeItem(weapons.SGRAVES, explorer.done);
+				player.createStatusEffect(StatusEffects.TookStormcallerGravespear,0,0,0,0);
+			}
+			else {
+				outputText("No matter how hard you try, you can't get it to budge, even a little bit. Exhausted, you decide to come back later when you're more prepared.\n\n");
+				endEncounter();
+			}
+		}
+		private function findStormcallerGravespearNever():void {
+			clearOutput();
+			outputText("This is clearly a gravesite of some kind, and taking this weapon, no matter how tempting it is to try and take the weapon for yourself, you have a feeling it would disturb the rest of whoever or whatever has been entombed here.\n\n");
+			outputText("You take your leave.\n\n");
+			endEncounter();
+			player.createStatusEffect(StatusEffects.StormcallerGravespearNever,0,0,0,0);
+		}
+		
+		public function findUmbralGravesword():void {
+			clearOutput();
+			outputText("While exploring the deep cave system, you find yourself treading deeper than you normally would. As you round a corner you find yourself peering into a large cavern, eerily quiet, and seemingly devoid of life, the whole place just feels… wrong.\n\n");
+			outputText("The feeling gets worse the further you go in, /if has torch/ the light from your torch even seems to light up less of the space the further you tread. /end/ /if has dark affinity or darkvision eyes/ even with your enhanced vision you find it hard to make out what lies ahead. /end/ You come upon a raised platform of some sort, etched with circles of runes that you can't even begin to decipher. In the center, a titanic stone sword is embedded into the floor. The dark seems to cling to it, or perhaps it clings to the dark… If such a thing were even possible.\n\n");
+			outputText("You really feel like you shouldn't be here, you can't shake the feeling that you are being watched, that the shadows are alive. You could just leave, and never ever think about ever returning to this accursed site.\n\n");
+			outputText("On the other hand, you could just be paranoid. You don't come across a blade like this every day… You figure if you were strong enough, you could dislodge the titanic weapon and put it to good use on your quest, after all, slaying demons with a giant slab of bedrock that you can barely call a sword would just feel so right!\n\n");
+			menu();
+			addButton(1, "Leave", findUmbralGraveswordLeave);
+			addButtonIfTrue(2, "Dislodge", findUmbralGraveswordDislodge, "The thought of attempting to lift something of that caliber already exhausts you. (Req. 600+ fatigue, 100+ in core / train str part and 400+ total str)", (player.fatigue <= player.maxOverFatigue() - 600), "Req. 600+ fatigue, 100+ in core / train str part and 400+ total str");
+			addButton(3, "Never", findUmbralGraveswordNever);
+		}
+		private function findUmbralGraveswordLeave():void {
+			clearOutput();
+			outputText("You make a mental note to return when you are more prepared. Taking one last look back at the odd site, you return to your camp.\n\n");
+			endEncounter();
+		}
+		private function findUmbralGraveswordDislodge():void {
+			clearOutput();
+			outputText("Ignoring the foreboding feeling, you approach the behemoth of a sword. Firmly planting yourself and getting a good grip, you pull…\n\n");
+			fatigue(600);
+			if (player.str >= 400 && player.strStat.core.value >= 100 && player.strStat.train.value >= 100) {
+				outputText("The sword shifts a bit, causing the ground below you to crack and deform slightly, shattering any silence the still cave once carried. The onslaught of echoing sound hits you like a wall, stunning you momentarily. Regaining your composure, you return to your task with renewed vigor. You put your whole body into it, and with a primal shout and a mighty heave the sword breaks loose!\n\n");
+				outputText("You take a moment to catch your breath and admire your prize, but your reprieve is short lived, the platform shatters with a thunderous crack, sending chunks of debris in all directions. You manage to block the worst of it with the flat of your newly-claimed sword.\n\n");
+				outputText("The ground shudders and groans, and your blood goes cold. Cursing, you make a break for it in the direction you remember entering from, and manage to make it out of the cavern right before the ceiling starts coming down. Not willing to wait around, you hasten your way back to camp.\n\n");
+				outputText("Every so often on your way back, everything goes eerily quiet, and you get the feeling of predatory eyes on your back. You stop, looking for any signs of a follower, but you see ");
+				outputText("(nothing) (only [follower]");
+				outputText(" behind you. The closer you get to camp the less it happens, eventually, the dread fades completely.\n\n");
+				inventory.takeItem(weapons.UGRAVES, explorer.done);
+				player.createStatusEffect(StatusEffects.TookUmbralGravesword,0,0,0,0);
+			}
+			else {
+				outputText("No matter how hard you try, you can't get it to budge, even a little bit. Exhausted, you decide to come back later when you're more prepared\n\n");
+				endEncounter();
+			}
+		}
+		private function findUmbralGraveswordNever():void {
+			clearOutput();
+			outputText("This is clearly some sort of seal of some kind, and taking this weapon, no matter how tempting it is, would undoubtedly break the seal, releasing whatever, or whoever is entombed here. Knowing how Mareth operates, it would be best to just leave it be, you have more than enough problems to deal with already, after all.\n\n");
+			outputText("You take your leave.\n\n");
+			endEncounter();
+			player.createStatusEffect(StatusEffects.UmbralGraveswordNever,0,0,0,0);
+		}
 	}
 }

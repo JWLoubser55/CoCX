@@ -1539,6 +1539,8 @@ public class Combat extends BaseContent {
 		StatusEffects.AcidDoT,
 		StatusEffects.FrostburnDoT,
 		StatusEffects.FrozenLung,
+		StatusEffects.ElectrocutionDoT,
+		StatusEffects.NecrosisDoT,
 	];
     public function Ginseng():void {
         clearOutput();
@@ -2564,7 +2566,7 @@ public class Combat extends BaseContent {
         var skipMonsterAction:Boolean = monster.playerBoundStruggle(); // If false, enemyAI() will be called. If true, combatRoundOver()
         if (player.hasStatusEffect(StatusEffects.MinotaurEntangled)) {
             clearOutput();
-            if ((player.str / 9 + rand(20) + 1 >= 15) || player.hasPerk(PerkLib.FluidBody)) {
+            if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
                 outputText("Utilizing every ounce of your strength and cunning, you squirm wildly, shrugging through weak spots in the chain's grip to free yourself!  Success!\n\n");
                 player.removeStatusEffect(StatusEffects.MinotaurEntangled);
                 if (flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) outputText("\"<i>No!  You fool!  You let her get away!  Hurry up and finish her up!  I need my serving!</i>\"  The succubus spits out angrily.\n\n");
@@ -2629,7 +2631,7 @@ public class Combat extends BaseContent {
         } else if (player.hasStatusEffect(StatusEffects.ScyllaBind)) {
             clearOutput();
             outputText("You struggle to get free from the [monster name]'s mighty tentacles. ");
-            if (rand(3) == 0 || rand(120) < player.str / 1.5 || player.hasPerk(PerkLib.FluidBody)) {
+            if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
                 if (monster is Charybdis) outputText("You grunt with effort, struggling against the muscular bands of his tentacles. You loosen his grip by just enough, popping out of his embrace with a roar of effort. You slide along the ground for a moment, getting to your feet.");
 				else outputText("As force alone seems ineffective, you bite one of her tentacles and she screams in surprise, releasing you.");
                 player.removeStatusEffect(StatusEffects.ScyllaBind);
@@ -3746,6 +3748,11 @@ public class Combat extends BaseContent {
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
             doLightningDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+			if (player.weapon == weapons.SGRAVES && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
+				if (monster.hasStatusEffect(StatusEffects.ElectrocutionDoT)) monster.addStatusValue(StatusEffects.ElectrocutionDoT,1,1);
+				else monster.createStatusEffect(StatusEffects.ElectrocutionDoT, 4, 0.02, 0, 0);
+				outputText(" [weapon] left lingering Electrocution at [themonster].");
+			}
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
         else if (isDarknessTypeWeaponMain()) {
@@ -3754,6 +3761,11 @@ public class Combat extends BaseContent {
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
             doDarknessDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+			if (player.weapon == weapons.UGRAVES && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
+				if (monster.hasStatusEffect(StatusEffects.NecrosisDoT)) monster.addStatusValue(StatusEffects.NecrosisDoT,1,1);
+				else monster.createStatusEffect(StatusEffects.NecrosisDoT, 4, 0.02, 0, 0);
+				outputText(" [weapon] left lingering Necrosis at [themonster].");
+			}
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
         else if (isPlasmaTypeWeaponMain()) {
@@ -4048,6 +4060,11 @@ public class Combat extends BaseContent {
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
             doLightningDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+			if (player.weaponOff == weapons.SGRAVES && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
+				if (monster.hasStatusEffect(StatusEffects.ElectrocutionDoT)) monster.addStatusValue(StatusEffects.ElectrocutionDoT,1,1);
+				else monster.createStatusEffect(StatusEffects.ElectrocutionDoT, 4, 0.02, 0, 0);
+				outputText(" [weapon] left lingering Electrocution at [themonster].");
+			}
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
         else if (isDarknessTypeWeaponOff()) {
@@ -4056,6 +4073,11 @@ public class Combat extends BaseContent {
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
             doDarknessDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+			if (player.weaponOff == weapons.UGRAVES && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
+				if (monster.hasStatusEffect(StatusEffects.NecrosisDoT)) monster.addStatusValue(StatusEffects.NecrosisDoT,1,1);
+				else monster.createStatusEffect(StatusEffects.NecrosisDoT, 4, 0.02, 0, 0);
+				outputText(" [weapon] left lingering Necrosis at [themonster].");
+			}
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
         else if (isPlasmaTypeWeaponOff()) {
@@ -10658,6 +10680,7 @@ public class Combat extends BaseContent {
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
         if (player.weapon == weapons.A_STAFF) damage *= 1.4;
+		if (player.weapon == weapons.UGRAVES) damage *= 1.8;
         damage = darknessTypeDamageBonus(damage);
 		if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
         if (player.hasPerk(PerkLib.WalpurgisIzaliaRobe)) damage *= 2;
@@ -14608,6 +14631,8 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
                 if (monster.hasStatusEffect(StatusEffects.Fear)) statusTypes.push("Afraid");
                 if (monster.hasStatusEffect(StatusEffects.ConfusionM)) statusTypes.push("Confused");
                 if (monster.hasStatusEffect(StatusEffects.FrostburnDoT)) statusTypes.push("Frostbitten");
+                if (monster.hasStatusEffect(StatusEffects.ElectrocutionDoT)) statusTypes.push("Electrocuted");
+                if (monster.hasStatusEffect(StatusEffects.NecrosisDoT)) statusTypes.push("Necrotic");
                 if (monster.hasStatusEffect(StatusEffects.Flying)) statusTypes.push("Flying");
                 if (player.hasStatusEffect(StatusEffects.MonsterDig)) statusTypes.push("Underground");
                 if (combat.isEnemyInvisibleButNotUnderground) statusTypes.push("Invisible");
@@ -17249,7 +17274,16 @@ public function castPsychicBolt():void {
 	fatigue(10, USEFATG_NORMAL);
 	outputText("You narrow your eyes, focusing your mind.  You point your hand toward [themonster] and shoot a psychic bolt!\n\n");
 	var damage:Number = scalingBonusSensitivity();// * spellMod() * 1.2
+	if (player.hasPerk(PerkLib.MindFungus)) {
+		damage += player.inte * 0.5;
+		damage += scalingBonusIntelligence() * 0.5;
+	}
 	if (damage < 10) damage = 10;
+	//soulskill mod effect
+	//damage *= combat.soulskillMagicalMod();
+	//other bonuses
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) damage *= 1.5;
+	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv4(PerkLib.AbsorbNutrient) > 0) damage *= 1.2;
 	/*//weapon bonus
 	if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isStaffType() || player.weaponOff.isStaffType() || player.weapon.isWandType() || player.weaponOff.isWandType())) {
 		var weaponAtk:Number = player.weaponAttack;

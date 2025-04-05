@@ -66,7 +66,7 @@ import classes.Scenes.SceneLib;
 		public function siegweirdStruggle():void {
 			clearOutput();
 			outputText("You try to struggle and get away from the bear..  ");
-			if (rand(player.str * 2) > str || player.hasPerk(PerkLib.FluidBody)) {
+			if (rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
 				outputText("You manage to break out of Siegweird’s death grip\n\n");
 				player.removeStatusEffect(StatusEffects.SiegweirdGrapple);
 			}

@@ -2194,6 +2194,22 @@ import classes.Scenes.Combat.CombatAbilities;
 			return false;
 		}
 
+		public function monsterIsElectrocuted():Boolean {
+			var effects:Array = [
+				StatusEffects.ElectrocutionDoT
+			]
+			for each (var effect:StatusEffectType in effects) if (hasStatusEffect(effect)) return true;
+			return false;
+		}
+
+		public function monsterIsHavingNecrosis():Boolean {
+			var effects:Array = [
+				StatusEffects.NecrosisDoT
+			]
+			for each (var effect:StatusEffectType in effects) if (hasStatusEffect(effect)) return true;
+			return false;
+		}
+
 		public function monsterIsAcidBurned():Boolean {
 			var effects:Array = [
 				StatusEffects.AcidDoT,
@@ -4402,6 +4418,56 @@ import classes.Scenes.Combat.CombatAbilities;
 						if(plural) outputText("[Themonster] are hurt by the lingering frostburn. ");
 						else outputText("[Themonster] is hurt by the lingering frostburn. ");
 						store12 = SceneLib.combat.doIceDamage(store12, true, true);
+						outputText("\n\n");
+					}
+				}
+			}
+			//Lightning DoT
+			if (hasStatusEffect(StatusEffects.ElectrocutionDoT)) {
+				//Countdown to heal
+				addStatusValue(StatusEffects.ElectrocutionDoT,1,-1);
+				if (statusEffectv4(StatusEffects.ElectrocutionDoT) == 0) {
+					if (statusEffectv1(StatusEffects.ElectrocutionDoT) > 1) addStatusValue(StatusEffects.ElectrocutionDoT, 1, -1);
+					//Heal wounds
+					if (statusEffectv1(StatusEffects.ElectrocutionDoT) <= 0) {
+						outputText("The lingering electrocution on [themonster] finally fades away.\n\n");
+						removeStatusEffect(StatusEffects.ElectrocutionDoT);
+					}
+					//Deal damage if still wounded.
+					else {
+						var store19:Number = (player.str + player.spe + player.tou) * 2.5;
+						if (game.player.hasPerk(PerkLib.KingOfTheJungle)) store19 *= 1.2;
+						store19 = Math.round(store19 * SceneLib.combat.lightningDamageBoostedByDao());
+						store19 += maxHP() * statusEffectv2(StatusEffects.ElectrocutionDoT);
+						store19 = SceneLib.combat.fixPercentDamage(store19);
+						if(plural) outputText("[Themonster] are hurt by the lingering electrocution. ");
+						else outputText("[Themonster] is hurt by the lingering electrocution. ");
+						store19 = SceneLib.combat.doLightningDamage(store19, true, true);
+						outputText("\n\n");
+					}
+				}
+			}
+			//Darkness DoT
+			if (hasStatusEffect(StatusEffects.NecrosisDoT)) {
+				//Countdown to heal
+				addStatusValue(StatusEffects.NecrosisDoT,1,-1);
+				if (statusEffectv4(StatusEffects.NecrosisDoT) == 0) {
+					if (statusEffectv1(StatusEffects.NecrosisDoT) > 1) addStatusValue(StatusEffects.NecrosisDoT, 1, -1);
+					//Heal wounds
+					if (statusEffectv1(StatusEffects.NecrosisDoT) <= 0) {
+						outputText("The lingering necrosis on [themonster] finally fades away.\n\n");
+						removeStatusEffect(StatusEffects.NecrosisDoT);
+					}
+					//Deal damage if still wounded.
+					else {
+						var store20:Number = (player.str + player.spe + player.tou) * 2.5;
+						if (game.player.hasPerk(PerkLib.KingOfTheJungle)) store20 *= 1.2;
+						store20 = Math.round(store20 * SceneLib.combat.darknessDamageBoostedByDao());
+						store20 += maxHP() * statusEffectv2(StatusEffects.NecrosisDoT);
+						store20 = SceneLib.combat.fixPercentDamage(store20);
+						if(plural) outputText("[Themonster] are hurt by the lingering necrosis. ");
+						else outputText("[Themonster] is hurt by the lingering necrosis. ");
+						store20 = SceneLib.combat.doIceDamage(store20, true, true);
 						outputText("\n\n");
 					}
 				}

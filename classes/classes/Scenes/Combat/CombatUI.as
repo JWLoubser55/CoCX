@@ -248,8 +248,8 @@ public class CombatUI extends BaseCombatContent {
 			btnMagic.disable("You are too angry to think straight. Smash your puny opponents first and think later.\n\n").icon("A_Magic")
 		} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic")
 		// Submenu - Soulskills
-		//combat.soulskills.buildMenu(soulforceButtons);
-		buildAbilityMenu(CombatAbilities.ALL_SOULSKILLS, soulforceButtons);
+		//buildAbilityMenu(CombatAbilities.ALL_SOULSKILLS, soulforceButtons);
+		BuildSoulskillMenu(soulforceButtons);
 		if (soulforceButtons.length > 0) btnSoulskills.show("Soulforce", submenuSoulforce, "Soulforce attacks menu.", "Soulforce Specials");
 		// Submenu - Other
 		buildAbilityMenu(CombatAbilities.ALL_ELEMENTAL_ASPECTS, eAspectButtons);
@@ -927,6 +927,20 @@ public class CombatUI extends BaseCombatContent {
 		if ((player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && necroSpellButtons.length > 0) buttons.add("Necro Spells", curry(submenu,necroSpellButtons, submenuSpells, 0, false)).hint("Open your Necromicon");
 		if ((player.hasPerk(PerkLib.HiddenJobBloodDemon) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && bloodSpellButtons.length > 0) buttons.add("Blood Spells", curry(submenu,bloodSpellButtons, submenuSpells, 0, false)).hint("Open your Blood grimoire");
 		if (greenSpellButtons.length > 0) buttons.add("Green Spells", curry(submenu,greenSpellButtons, submenuSpells, 0, false)).hint("Open your Green magic book");
+	}
+	
+	private function BuildSoulskillMenu(buttons:ButtonDataList):void {
+		var bd:ButtonData;
+		if (player.hasPerk(PerkLib.SwordIntentAura)) {
+			if (player.statStore.hasBuff("SwordIntentAura")) {
+				buttons.add("SwordIntentAD", combat.deactivateSwordIntentAura).hint("Disperse sword intent aura.");
+			} else {
+				bd = buttons.add("SwordIntentAA", combat.activateSwordIntentAura, "Coat your weapons with sword intent aura. (It would drain soulforce and fatigue until dispersed)\n");
+				bd.requireSoulforce(10 * soulskillCost() * soulskillcostmulti());
+				bd.requireFatigue(10);
+			}
+		}
+		buildAbilityMenu(CombatAbilities.ALL_SOULSKILLS, soulforceButtons);
 	}
 	
 	private function buildAbilityMenu(abilities:/*CombatAbility*/Array, buttons:ButtonDataList):void {

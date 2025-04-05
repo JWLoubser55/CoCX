@@ -681,6 +681,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const SoulBurn:StatusEffectType                   	= mk("Soul Burn");
 		public static const SAS:StatusEffectType             				= mk("SAS");
 		public static const SphinxAS:StatusEffectType             			= mk("SphinxAS");
+		public static const StormcallerGravespearNever:StatusEffectType     = mk("Stormcaller Gravespear Never");
 		public static const SuccubiFirst:StatusEffectType                   = mk("SuccubiFirst");
 		public static const SuccubiNight:StatusEffectType                   = mk("succubiNight");
 		public static const SummonedElementals:StatusEffectType             = mk("Summoned Elementals");//v1 - normal, v2 - epic, v3 - unique
@@ -756,12 +757,15 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const TookGlacialGraveaxe:StatusEffectType            = mk("Took Glacial Graveaxe");
 		public static const TookImpTome:StatusEffectType                    = mk("Took Imp Tome");
 		public static const TookSagittariusBanefulGreatBow:StatusEffectType = mk("Took Sagittarius Baneful Great Bow");
+		public static const TookStormcallerGravespear:StatusEffectType      = mk("Took Stormcaller Gravespear");
+		public static const TookUmbralGravesword:StatusEffectType           = mk("Took Umbral Gravesword");
 		public static const TookVolcanicGravehammer:StatusEffectType        = mk("Took Volcanic Gravehammer");
 		public static const TrainingNPCsTimersReduction:StatusEffectType    = mk("TrainingNPCsTimersReduction");
 		public static const UshiOnnaVariant:StatusEffectType             	= mk("Ushi Onna Variant");
 		public static const WereraceRegenerationDisabled:StatusEffectType  	= mk("Wererace Regeneration Disabled");
 		public static const WildMalikore:StatusEffectType                   = mk("Wild Malikore");
 		public static const WildManticore:StatusEffectType                  = mk("Wild Manticore");
+		public static const UmbralGraveswordNever:StatusEffectType       	= mk("Umbral Gravesword Never");
 		public static const VampireThirst:StatusEffectType                  = VampireThirstEffect.TYPE;
 		public static const VolcanicGravehammerNever:StatusEffectType       = mk("Volcanic Gravehammer Never");
 		public static const YetiScarf:StatusEffectType                      = mk("Yeti Scarf");
@@ -1038,6 +1042,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const DragonWaterBreath:StatusEffectType         = mkCombat("Dragon Water Breath");
 		public static const EarthStance:StatusEffectType	           = mkCombat("Earth Stance");
 		public static const ElectrifyWeapon:StatusEffectType       	   = mkCombat("ElectrifyWeapon");
+		public static const ElectrocutionDoT:StatusEffectType          = mkCombat("Electrocution DoT");
 		public static const ElvenEye:StatusEffectType	           	   = mkCombat("Elven Eye");
 		public static const EnemyLoweredDamageH:StatusEffectType       = mkCombat("Enemy Lowered Damage (H)");
 		public static const EnergyDrain:StatusEffectType               = mkCombat("Energy Drain");
@@ -1130,6 +1135,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const Nailed:StatusEffectType					   = mkCombat("Nailed");
 		public static const NearWater:StatusEffectType                 = mkCombat("Near Water");
 		public static const NearbyPlants:StatusEffectType              = mkCombat("Nearby Plants");
+		public static const NecrosisDoT:StatusEffectType               = mkCombat("Necrosis DoT");
 		public static const NoPlantsArea:StatusEffectType              = mkCombat("No Plants Area");
 		public static const NoFlee:StatusEffectType                    = mkCombat("NoFlee");
 		public static const OniRampage:StatusEffectType                = mkCombat("Oni Rampage");
@@ -1496,4 +1502,4 @@ import classes.StatusEffects.VampireThirstEffect;
 			return new StatusEffectType(id,CombatStatusEffect,1);
 		}
 	}
-}
+}

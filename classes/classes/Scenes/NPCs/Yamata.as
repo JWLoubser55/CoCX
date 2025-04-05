@@ -164,7 +164,7 @@ public class Yamata extends Monster
 			clearOutput();
 			outputText("You struggle against Yamata’s grip with every ounce of strength you can muster, desperately trying to free yourself.\n\n");
 			var brokeFree:Boolean;
-			if ((rand(player.str) > (this.str / 4)*3) || rand(5)==0 || player.hasPerk(PerkLib.FluidBody)) {
+			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) {
 				brokeFree = true;
 			}
 			if (brokeFree) {

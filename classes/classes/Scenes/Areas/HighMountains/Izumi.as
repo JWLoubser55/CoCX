@@ -291,7 +291,7 @@ public class Izumi extends Monster
 		{
 			clearOutput();
 			var brokeFree:Boolean;
-			if ((rand(player.str) > this.str / 2) || player.hasPerk(PerkLib.FluidBody))
+			if (rand(5) == 0 || rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody))
 			{
 				brokeFree = true;
 			}

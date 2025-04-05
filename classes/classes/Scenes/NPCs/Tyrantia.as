@@ -103,7 +103,7 @@ public class Tyrantia extends Monster
 			player.createStatusEffect(StatusEffects.Pounced, 2, 0, 0, 0);
 		}
 		public function tyrantiaPouncedStruggle():void {
-			if ((rand(player.str) > this.str / 2) || player.hasPerk(PerkLib.FluidBody)) tyrantiaPounceSuccess();
+			if (rand(Math.round(player.strStat.core.value * 0.8)) < player.strStat.core.value || player.hasPerk(PerkLib.FluidBody)) tyrantiaPounceSuccess();
 			else tyrantiaPounceFail();
 			SceneLib.combat.enemyAIImpl();
 		}
