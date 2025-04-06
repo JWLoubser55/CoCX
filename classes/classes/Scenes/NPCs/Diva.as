@@ -13,6 +13,7 @@ import classes.internals.ChainedDrop;
 import classes.Scenes.Combat.SpellsWhite.WhitefireSpell;
 import classes.Scenes.Combat.SpellsWhite.BlindSpell;
 import classes.Scenes.Combat.CombatAbility;
+import classes.Scenes.SceneLib;
 
 public class Diva extends Monster {
     private var _biteCounter:int = 0;
@@ -24,7 +25,7 @@ public class Diva extends Monster {
     }
 
     override public function playerBoundStruggle():Boolean{clearOutput();
-        if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+        if (SceneLib.combat.struggleCentralizedCheck()) {
             outputText("You wriggle and squirm violently, tearing yourself out from within [themonster]'s coils.");
             player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
         } else {

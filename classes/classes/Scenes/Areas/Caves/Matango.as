@@ -16,7 +16,7 @@ use namespace CoC;
 	{
 		override public function playerBoundStruggle():Boolean{
 			clearOutput();
-			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+			if (SceneLib.combat.struggleCentralizedCheck()) {
 				outputText("You barely manage to slide out of her embrace as the mushroom girl closes her eyes and attempts to kiss the space where your lips were a few seconds before. She stares at the empty air for a few seconds, confused that you somehow managed to slide out of her iron vice.\n\n");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 				createStatusEffect(StatusEffects.AbilityCooldown1, 2, 0, 0, 0);

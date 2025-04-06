@@ -11,6 +11,7 @@ import classes.BodyParts.Hips;
 import classes.BodyParts.LowerBody;
 import classes.BodyParts.Skin;
 import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.SceneLib;
 import classes.Scenes.Areas.Desert.NagaScene;
 import classes.Stats.Buff;
 import classes.internals.*;
@@ -89,7 +90,7 @@ public class Gorgon extends Monster
 		}
 
 		override public function playerBoundStruggle():Boolean{clearOutput();
-			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+			if (SceneLib.combat.struggleCentralizedCheck()) {
 				outputText("You wriggle and squirm violently, tearing yourself out from within [themonster]'s coils.");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 			} else {

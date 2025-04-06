@@ -79,7 +79,7 @@ public class ProjectTyrant extends Monster {
     }
 
     public function TackleGrappleStruggle():void {
-        if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) TackleGrappleSuccess();
+        if (SceneLib.combat.struggleCentralizedCheck()) TackleGrappleSuccess();
         else TackleGrapple();
         SceneLib.combat.enemyAIImpl();
     }

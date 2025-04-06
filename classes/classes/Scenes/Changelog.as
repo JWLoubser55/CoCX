@@ -383,7 +383,7 @@ public class Changelog extends BaseContent
 			outputText("-New Area: Cliffs (81-101). Exploring tunnels allows now to find it.\n");
 			outputText("-New melee weapon (by Lord Shadeogorath): Stormcaller Gravespear - pulled from unnamed grave at cliffs. Base atk is 160. It's massive spear type low grade wrath weapon with thrown tag. Normally it deal 80% of physical dmg and 20% lightning dmg. When using charge weapon it will deal 100% lightning damage and have 10% to apply Electrocute DoT after critical hit.\n");
 			outputText("-Satyr TF bug fixes. (Jtecx)\n");
-			outputText("-\n");
+			outputText("-Valkyrie moved from Tundra to Cliffs. (lvl 69 > 97)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

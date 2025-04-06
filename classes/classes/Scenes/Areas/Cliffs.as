@@ -18,6 +18,7 @@ use namespace CoC;
 
 public class Cliffs extends BaseContent
 {
+	public var valkyrieScene:ValkyrieScene = new ValkyrieScene();
 	public var swordInStone:SwordInStone = new SwordInStone();
 
 	public const areaLevel:int = 78;
@@ -54,6 +55,12 @@ public class Cliffs extends BaseContent
 				return !player.hasStatusEffect(StatusEffects.TookStormcallerGravespear) && !player.hasStatusEffect(StatusEffects.StormcallerGravespearNever);
 			},
 			call: swordInStone.findStormcallerGravespear
+		},{
+			name: "valkyrie",
+			label : "Valkyrie",
+			kind : 'monster',
+			night : false,
+			call: valkyrieEncounter
 		}, /*{
 			// ?? (lvl 65)
 			// wendigoScene.encounterWendigo();
@@ -72,12 +79,12 @@ public class Cliffs extends BaseContent
 			day : false,
 			call: SceneLib.werewolfFemaleScene.introWerewolfHuntress,
 			chance: 0.50
-		}, {
+		}, */{
 			name: "lightning golem",
 			label : "Lightning Golem",
 			kind : 'monster',
 			call: golemEncounters
-		}, */{
+		}, {
 			chance: 0.25,
 			name: "nothing",
 			call: nothingEncounter,
@@ -116,13 +123,20 @@ public class Cliffs extends BaseContent
 		}
 		dynStats("tou", .5);
 		endEncounter();
-	}/*
+	}
 
 	public function golemEncounters():void {
 		clearOutput();
 		outputText("As you take a stroll, from nearby cliff emerge huge golem. Looks like you have encountered 'true lightning golem'! You ready your [weapon] for a fight!");
 		startCombat(new GolemTrueLightning());
-	}*/
+	}
+
+	public function valkyrieEncounter():void {
+		clearOutput();
+		outputText("Making your way across the tundra, you’re surprised to see the thick gray clouds part overhead.  You see a beautiful woman descend from on high, her snow-white wings flapping powerfully behind her back.  Armed with a long spear and shield, and clad in a bronze cuirass and a winged helm, she looks every bit the part of a mighty warrior.\n\n");
+		outputText("She touches down gently a few feet before you, her shield and spear raised.  \"<i>You seem a worthy sort to test my skills against, wanderer.  Prepare yourself!</i>\" she shouts, bearing down on you.  She doesn’t look like she’s going to back down -- you ready your [weapon] for a fight!");
+		startCombat(new Valkyrie());
+	}
 
 }
 }

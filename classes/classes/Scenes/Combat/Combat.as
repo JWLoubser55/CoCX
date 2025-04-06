@@ -2566,7 +2566,7 @@ public class Combat extends BaseContent {
         var skipMonsterAction:Boolean = monster.playerBoundStruggle(); // If false, enemyAI() will be called. If true, combatRoundOver()
         if (player.hasStatusEffect(StatusEffects.MinotaurEntangled)) {
             clearOutput();
-            if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+            if (struggleCentralizedCheck()) {
                 outputText("Utilizing every ounce of your strength and cunning, you squirm wildly, shrugging through weak spots in the chain's grip to free yourself!  Success!\n\n");
                 player.removeStatusEffect(StatusEffects.MinotaurEntangled);
                 if (flags[kFLAGS.URTA_QUEST_STATUS] == 0.75) outputText("\"<i>No!  You fool!  You let her get away!  Hurry up and finish her up!  I need my serving!</i>\"  The succubus spits out angrily.\n\n");
@@ -2601,7 +2601,7 @@ public class Combat extends BaseContent {
         } else if (player.hasStatusEffect(StatusEffects.Straddle)) {
             if (monster is ProjectNightwalker)(monster as ProjectNightwalker).struggleFaceSitting();
             else {
-                if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+                if (struggleCentralizedCheck()) {
                     outputText("You grunt in anger, bending your body as quickly as you can. You slam [themonster] into the ground, and you can feel her legs loosen around your neck. With a roar of effort, you get a hold of her ankles, break her grip on your face, and throw [monster him] away from you.\n\n");
                     player.removeStatusEffect(StatusEffects.Straddle);
                 }
@@ -2610,7 +2610,7 @@ public class Combat extends BaseContent {
         } else if (player.hasStatusEffect(StatusEffects.DragonsNom)) {
             if (monster is UltimisFlamespreader)(monster as UltimisFlamespreader).struggleNom(true);
             else {
-                if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+                if (struggleCentralizedCheck()) {
                     outputText("You grunt in anger, managing to slip out of [themonster]'s jaws and roll away.\n\n");
                     player.removeStatusEffect(StatusEffects.DragonsNom);
                 }
@@ -2631,7 +2631,7 @@ public class Combat extends BaseContent {
         } else if (player.hasStatusEffect(StatusEffects.ScyllaBind)) {
             clearOutput();
             outputText("You struggle to get free from the [monster name]'s mighty tentacles. ");
-            if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+            if (struggleCentralizedCheck()) {
                 if (monster is Charybdis) outputText("You grunt with effort, struggling against the muscular bands of his tentacles. You loosen his grip by just enough, popping out of his embrace with a roar of effort. You slide along the ground for a moment, getting to your feet.");
 				else outputText("As force alone seems ineffective, you bite one of her tentacles and she screams in surprise, releasing you.");
                 player.removeStatusEffect(StatusEffects.ScyllaBind);
@@ -2644,7 +2644,7 @@ public class Combat extends BaseContent {
             skipMonsterAction = true;
         } else if (player.hasStatusEffect(StatusEffects.WolfHold)) {
             clearOutput();
-            if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+            if (struggleCentralizedCheck()) {
                 if (monster is WinterWolf) outputText("You slam your forehead in the wolf's sensitive muzzle. It recoils, whining in pain. Its focus shattered, you push the winter wolf off you, allowing you to stand up.");
                 if (monster is Luna || monster is WerewolfFemale || monster is WerewolfHuntress) outputText("You shove [themonster] off of you, standing back up; she growls at you, licking her lips hungrily.");
                 player.removeStatusEffect(StatusEffects.WolfHold);
@@ -2667,7 +2667,7 @@ public class Combat extends BaseContent {
             skipMonsterAction = true;
         } else if (player.hasStatusEffect(StatusEffects.TrollHold)) {
 			clearOutput();
-			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+			if (struggleCentralizedCheck()) {
 				outputText("You squirm violently, trying to shake out of his grasp. You break free, pushing him away. The troll staggers back, disoriented.");
 				player.removeStatusEffect(StatusEffects.TrollHold);
 			}
@@ -2703,13 +2703,16 @@ public class Combat extends BaseContent {
             if (monster as YoungFrostGiant) (monster as YoungFrostGiant).youngGiantGrabStruggle();
             skipMonsterAction = true;
         }
-
         if (skipMonsterAction) {
             combatRoundOver();
         } else {
             enemyAIImpl();
         }
     }
+	public function struggleCentralizedCheck():Boolean {
+		if (rand(4) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 75) > rand(100) || player.hasPerk(PerkLib.FluidBody)) return true;
+		else return false;
+	}
 
     internal function pickUpThrownWeapons():void {
         clearOutput();

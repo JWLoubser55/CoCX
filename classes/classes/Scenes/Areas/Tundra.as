@@ -19,7 +19,6 @@ use namespace CoC;
 
 	public class Tundra extends BaseContent
 	{
-		public var valkyrieScene:ValkyrieScene = new ValkyrieScene();
 		public var alrauneScene:AlrauneScene = new AlrauneScene();
 		public var swordInStone:SwordInStone = new SwordInStone();
 
@@ -58,12 +57,6 @@ use namespace CoC;
 					return !player.hasStatusEffect(StatusEffects.TookGlacialGraveaxe) && !player.hasStatusEffect(StatusEffects.GlacialGraveaxeNever);
 				},
 				call: swordInStone.findGlacialGraveaxe
-			},{
-				name: "valkyrie",
-				label : "Valkyrie",
-				kind : 'monster',
-				night : false,
-				call: valkyrieEncounter
 			}, /*{
 				// ?? (lvl 65)
 				// wendigoScene.encounterWendigo();
@@ -182,13 +175,6 @@ use namespace CoC;
 			clearOutput();
 			outputText("You wander the chilling landscape of the Tundra. As you cross the peak of a rather large, lightly forested hill, you come face to gigantic face with a Young Frost Giant! He belches fiercely at you and you tumble back down the hill. He mostly steps over it as you come to your senses. You quickly draw your [weapon] and withdraw from the hill to prepare for battle.\n\n");
 			startCombat(new YoungFrostGiant());
-		}
-
-		public function valkyrieEncounter():void {
-			clearOutput();
-			outputText("Making your way across the tundra, you’re surprised to see the thick gray clouds part overhead.  You see a beautiful woman descend from on high, her snow-white wings flapping powerfully behind her back.  Armed with a long spear and shield, and clad in a bronze cuirass and a winged helm, she looks every bit the part of a mighty warrior.\n\n");
-			outputText("She touches down gently a few feet before you, her shield and spear raised.  \"<i>You seem a worthy sort to test my skills against, wanderer.  Prepare yourself!</i>\" she shouts, bearing down on you.  She doesn’t look like she’s going to back down -- you ready your [weapon] for a fight!");
-			startCombat(new Valkyrie());
 		}
 
 
