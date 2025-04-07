@@ -538,6 +538,12 @@ public class Tail extends SaveableBodyPart {
 		appearanceDesc: "A narrow tail ending in a spaded tip curls down from your [butt], wrapping around your [leg] sensually at every opportunity. Thick magical silver chains coils around your tail, the proof of your absolute devotion to your dark goddess.",
 		isLong: true
 	});
+	public static const AUTOMATA_TAIL_CABLE: int = 65;
+	EnumValue.add(Types, AUTOMATA_TAIL_CABLE, "AUTOMATA_TAIL_CABLE", {
+		name:"automata tail cable",
+		appearanceDesc: "A long flexible cable with a shiny tip at the end extends from your butt like a tail. It can be used to deliver electric discharges in order to neutralize and pacify a target.",
+		isLong: true
+	});
 
 	override public function set type(value:int):void {
 		var old:int = type;

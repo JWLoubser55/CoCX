@@ -104,6 +104,11 @@ public class Tongue extends BodyPart{
 		name:"arigean",
 		appearanceDesc: "Your tongue is identical to that of a human’s save for its light blue color, most likely caused by your blue blood."
 	});
+	public static const AUTOMATA: int = 18;
+	EnumValue.add(Types, AUTOMATA, "AUTOMATA", {
+		name:"automata",
+		appearanceDesc: "In your mouth sits a neon [eyecolor] tongue. Truthfully it acts mostly as a decoration seeing as an amp in your throat produces all the sounds you need to interact with organics. As for the kins, all messages are silently shared through the network thus rendering verbal communication obsolete. Still your tongue can be used along with your mouth as a toy for the user to play with. After all, you do have a full library of oral technique installed in your data bank."
+	});
 
 	public function Tongue(creature:Creature) {
 		super(creature, null);

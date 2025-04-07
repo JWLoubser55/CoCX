@@ -394,6 +394,13 @@ public class Wings extends SaveableBodyPart {
 		canFly: true,
 		physical: true
 	});
+	public static const JET_THRUSTERS: int = 47;
+	EnumValue.add(Types, JET_THRUSTERS, "JET_THRUSTERS", {
+		name:"jet thrusters",
+		appearanceDesc: "A pair of jet thrusters extend from your back allowing you to fly with perfect maneuverability to survey your environments.",
+		canFly: true,
+		physical: false
+	});
 	public var desc:String = "non-existent";
 	public function Wings(creature:Creature) {
 		super(creature, "wings", []);

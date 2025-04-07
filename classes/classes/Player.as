@@ -1603,8 +1603,14 @@ use namespace CoC;
 			else attack += weapon.attack;
 			var swordsmanBonus:Number = 1.25;
 			if (hasPerk(PerkLib.WeaponMastery) && str >= 100) {
-				if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 0.75;
-				else swordsmanBonus += 0.25;
+				if (hasPerk(PerkLib.MassiveSynergyEx) && (weapon.isMassive() || weaponOff.isMassive())) {
+					if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 1.5;
+					else swordsmanBonus += 0.5;
+				}
+				else {
+					if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 0.75;
+					else swordsmanBonus += 0.25;
+				}
 			}
 			if (hasPerk(PerkLib.JobSwordsman) && (weapon.isSingleLarge() || weaponOff.isSingleLarge() || hasAetherTwinsTier2())) {
 				if (offhand && weaponOff.isSingleLarge()) attack *= swordsmanBonus;
@@ -1615,20 +1621,33 @@ use namespace CoC;
 				else attack *= 2;
 			}
 			if (hasPerk(PerkLib.GigantGripEx) && (weapon.isMassive() || weaponOff.isMassive())) {
+				if (hasPerk(PerkLib.MassiveSynergyEx)) swordsmanBonus *= 1.5;
 				if (offhand && weaponOff.isMassive()) attack *= swordsmanBonus;
 				else attack *= swordsmanBonus;
 			}
 			if (hasPerk(PerkLib.HiddenMomentum) && (weapon.isSingleLarge() || weaponOff.isSingleLarge() || hasAetherTwinsTier2() || (hasPerk(PerkLib.GigantGripEx) && weapon.isSingleMassive()) || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive())) && str >= 75 && spe >= 50) {
-				if (offhand && (weaponOff.isSingleLarge() || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive()))) attack += (((str + spe) - 100) * 0.2);
-				else attack += (((str + spe) - 100) * 0.2);
+				if (hasPerk(PerkLib.MassiveSynergyEx) && hasPerk(PerkLib.GigantGripEx) && (weapon.isSingleMassive() || weaponOff.isSingleMassive())) {
+					if (offhand && (weaponOff.isSingleLarge() || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive()))) attack += (((str + spe) - 100) * 0.4);
+					else attack += (((str + spe) - 100) * 0.4);
+				}
+				else {
+					if (offhand && (weaponOff.isSingleLarge() || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive()))) attack += (((str + spe) - 100) * 0.2);
+					else attack += (((str + spe) - 100) * 0.2);
+				}
 			}//30-70-110
 			if (hasPerk(PerkLib.HiddenDualMomentum) && (weapon.isDualLarge() || weaponOff.isDualLarge()) && str >= 150 && spe >= 100) {
 				if (offhand && weaponOff.isMassive()) attack += (((str + spe) - 200) * 0.2);
 				else attack += (((str + spe) - 200) * 0.2);
 			}
 			if (hasPerk(PerkLib.HiddenDualMomentum) && hasPerk(PerkLib.GigantGripEx) && (weapon.isDualMassive() || weaponOff.isDualMassive()) && str >= 150 && spe >= 100) {
-				if (offhand && weaponOff.isDualMassive()) attack += (((str + spe) - 200) * 0.2);
-				else attack += (((str + spe) - 200) * 0.2);
+				if (hasPerk(PerkLib.MassiveSynergyEx)) {
+					if (offhand && weaponOff.isDualMassive()) attack += (((str + spe) - 200) * 0.4);
+					else attack += (((str + spe) - 200) * 0.4);
+				}
+				else {
+					if (offhand && weaponOff.isDualMassive()) attack += (((str + spe) - 200) * 0.2);
+					else attack += (((str + spe) - 200) * 0.2);
+				}
 			}//20-60-100
 			if (hasPerk(PerkLib.LightningStrikes) && spe >= 60 && ((weapon.isMedium() || weaponOff.isMedium()) && !isFistOrFistWeapon())) {
 				if (offhand && weaponOff.isMedium()) attack += ((spe - 50) * 0.3);

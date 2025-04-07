@@ -860,6 +860,30 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownSideWinder)) bd.disable("<b>You've already used Sidewinder today.</b>\n\n");
 				else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
+			//tinkerer gadgets
+			if (player.hasKeyItem("Flasherbang") >= 0 || player.hasKeyItem("Flasherbang II") >= 0) {
+				bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Goonade") >= 0 || player.hasKeyItem("Caustic Goonade") >= 0) {
+				var goonade1:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "corrosive " : "";
+				var goonade2:String = player.hasKeyItem("Caustic Goonade") >= 0 ? " The acid within the goo also corrodes the opponent's armor." : "";
+				var goonade3:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "Caustic Goonade" : "Goonade";
+				bd = buttons.add(""+goonade3+"", gadgetGoonade).hint("Throw a grenade that splatter "+goonade1+"sticky goo everywhere hindering movement and flight."+goonade2+"");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.Grounded)) bd.disable("<b>You need wait until previous used Goonade effect wear off.</b>\n\n");
+			}
+			if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
+				var fireGrenade:String = player.hasKeyItem("Fire Grenade II") >= 0 ? " Upgrade the fire grenade explosion to also deal fire damage." : "";
+				bd = buttons.add("Fire Grenade", gadgetFireGrenade).hint("Toss a grenade that sets foes on fire inflicting the burn status effect."+fireGrenade+"");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Stun Grenade") >= 0 || player.hasKeyItem("Stun Grenade II") >= 0) {
+				var stunGrenade:String = player.hasKeyItem("Stun Grenade II") >= 0 ? " Upgrade the stun grenade explosion to also deal lightning damage." : "";
+				bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round."+stunGrenade+" (4 round cd)");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
+			}
 		}
 		if (player.isInGoblinMech()) {
 			if (player.hasKeyItem("Dynapunch Glove") >= 0 && player.vehicles != vehicles.GS_MECH) {
@@ -1060,8 +1084,14 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.WeaponMastery) && (player.weapon.isSingleLarge() || player.weaponOff.isSingleLarge()) && player.str >= 100) critChance += 10;
 		if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weapon.isSingleLarge() && player.weaponOff.isSingleLarge() && player.str >= 140) critChance += 10;
 		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isSingleMassive() || player.weaponOff.isSingleMassive())) {
-			if (player.str >= 100) critChance += 10;
-			if (player.str >= 140) critChance += 10;
+			if (player.str >= 100) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
+			if (player.str >= 140) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
 		}
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -1225,8 +1255,14 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.WeaponMastery) && (player.weapon.isSingleLarge() || player.weaponOff.isSingleLarge()) && player.str >= 100) critChance += 10;
 		if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weapon.isSingleLarge() && player.weaponOff.isSingleLarge() && player.str >= 140) critChance += 10;
 		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isSingleMassive() || player.weaponOff.isSingleMassive())) {
-			if (player.str >= 100) critChance += 10;
-			if (player.str >= 140) critChance += 10;
+			if (player.str >= 100) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
+			if (player.str >= 140) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
 		}
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {

@@ -108,6 +108,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const AntennaeMantis: Transformation 		= antennae.AntennaeMantis.registerTf(AS_ANTENNAE, AE_MANTIS);
 	public const AntennaeSeaDragon: Transformation 		= antennae.AntennaeSeaDragon.registerTf(AS_ANTENNAE, AE_SEA_DRAGON);
     public const AntennaeMoth: Transformation           = antennae.AntennaeMoth.registerTf(AS_ANTENNAE, AE_MOTH);
+    public const AntennaeAutomata: Transformation       = antennae.AntennaeAutomata.registerTf(AS_ANTENNAE, AE_AUTOMATA);
 
 //ARMS
 //======================================================================================================================
@@ -1017,6 +1018,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const TailMoth: Transformation                       = tail.TailMoth.registerTf(AS_TAIL, AE_MOTH);
     public const TailTroll: Transformation                      = tail.TailTroll.registerTf(AS_TAIL, AE_TROLL);
     public const TailGlacialTroll: Transformation               = tail.TailGlacialTroll.registerTf(AS_TAIL, AE_GLACIAL_TROLL);
+    public const TailCable: Transformation               		= tail.TailCable.registerTf(AS_TAIL, AE_AUTOMATA);
 
 	/**
 	 * @param tailCount target tail count
@@ -1053,6 +1055,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const TongueMelkie: Transformation 		= tongue.TongueMelkie.registerTf(AS_TONGUE, AE_MELKIE);
 	public const TongueImp: Transformation 			= tongue.TongueImp.registerTf(AS_TONGUE, AE_IMP);
 	public const TongueArigean: Transformation 		= tongue.TongueArigean.registerTf(AS_TONGUE, AE_ARIGEAN);
+	public const TongueAutomata: Transformation 	= tongue.TongueAutomata.registerTf(AS_TONGUE, AE_AUTOMATA);
 
 
 //VAGINA
@@ -1157,6 +1160,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const WingsYggdrasilQuadrupleHuge: Transformation 	= wings.WingsYggdrasilQuadrupleHuge.registerTf(AS_WINGS, AE_YGGDRASIL);
     public const WingsMothSmall: Transformation                 = wings.WingsMothSmall.registerTf(AS_WINGS, AE_MOTH);
     public const WingsMothLarge: Transformation                 = wings.WingsMothLarge.registerTf(AS_WINGS, AE_MOTH);
+    public const WingsJetThrusters: Transformation              = wings.WingsJetThrusters.registerTf(AS_WINGS, AE_AUTOMATA);
 
 
 

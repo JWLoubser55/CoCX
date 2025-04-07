@@ -2298,8 +2298,14 @@ public class Combat extends BaseContent {
         var crit:Boolean = false;
         var critChance:int = 5;
         critChance += combatPhysicalCritical();
-        if (player.hasPerk(PerkLib.WeaponMastery)) critChance += 10;
-        if (player.hasPerk(PerkLib.WeaponGrandMastery)) critChance += 10;
+        if (player.hasPerk(PerkLib.WeaponMastery)) {
+			if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+			else critChance += 10;
+		}
+        if (player.hasPerk(PerkLib.WeaponGrandMastery)) {
+			if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+			else critChance += 10;
+		}
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
         if (rand(100) < critChance) {
             crit = true;
@@ -4919,10 +4925,12 @@ public class Combat extends BaseContent {
 					else damage *= 2;
 				}
 				else damage *= 1.5;
+				if (monster.hasStatusEffect(StatusEffects.DragonWaterBreath)) damage *= 5;
 			}
 			if (monster.hasStatusEffect(StatusEffects.Polarize) && player.hasPerk(PerkLib.VoltaicEdge) && player.isEnergyRangeWeapon()) {
 				if (monster.hasPerk(PerkLib.LightningVulnerability) || monster.hasPerk(PerkLib.DarknessNature)) damage *= 4;
 				else damage *= 2;
+				if (monster.hasStatusEffect(StatusEffects.DragonWaterBreath)) damage *= 5;
 			}
             //Determine if critical hit!
 			var crit:Boolean;
@@ -6791,10 +6799,12 @@ public class Combat extends BaseContent {
 				else damage *= 2;
 			}
 			else damage *= 1.5;
+			if (monster.hasStatusEffect(StatusEffects.DragonWaterBreath)) damage *= 5;
 		}
 		if (monster.hasStatusEffect(StatusEffects.Polarize) && player.hasPerk(PerkLib.VoltaicEdge) && player.isEnergyMeleeWeapon()) {
 			if (monster.hasPerk(PerkLib.LightningVulnerability) || monster.hasPerk(PerkLib.DarknessNature)) damage *= 4;
 			else damage *= 2;
+			if (monster.hasStatusEffect(StatusEffects.DragonWaterBreath)) damage *= 5;
 		}
         // Mastery bonus damage
 		damage *= MasteryBonusDamageMelee(false, true);
@@ -7015,7 +7025,13 @@ public class Combat extends BaseContent {
         if (weaponSize == 0) Mastery_bonus_damage += 0.01 * weaponSizeSmall();
         if (weaponSize == 1) Mastery_bonus_damage += 0.01 * weaponSizeNormal();
         if (weaponSize == 2) Mastery_bonus_damage += 0.01 * weaponSizeLarge();
-        if (weaponSize == 3) Mastery_bonus_damage += 0.01 * weaponSizeMassive();
+        if (weaponSize == 3) {
+			if (player.hasPerk(PerkLib.MassiveSynergy)) {
+				Mastery_bonus_damage += 0.02 * weaponSizeMassive();
+				Mastery_bonus_damage += 0.01 * weaponSizeLarge();
+			}
+			else Mastery_bonus_damage += 0.01 * weaponSizeMassive();
+		}
 		if (player.compatibileSwordImmortalWeaponsMain() && player.hasPerk(PerkLib.HiddenJobSwordImmortal)) Mastery_bonus_damage *= 2;
 		return Mastery_bonus_damage;
 	}
@@ -7042,7 +7058,13 @@ public class Combat extends BaseContent {
         if (weaponSize == 0) Mastery_bonus_damage += 0.01 * weaponSizeSmall();
         if (weaponSize == 1) Mastery_bonus_damage += 0.01 * weaponSizeNormal();
         if (weaponSize == 2) Mastery_bonus_damage += 0.01 * weaponSizeLarge();
-        if (weaponSize == 3) Mastery_bonus_damage += 0.01 * weaponSizeMassive();
+        if (weaponSize == 3) {
+			if (player.hasPerk(PerkLib.MassiveSynergy)) {
+				Mastery_bonus_damage += 0.02 * weaponSizeMassive();
+				Mastery_bonus_damage += 0.01 * weaponSizeLarge();
+			}
+			else Mastery_bonus_damage += 0.01 * weaponSizeMassive();
+		}
 		if (player.compatibileSwordImmortalWeaponsOff() && player.hasPerk(PerkLib.HiddenJobSwordImmortal)) Mastery_bonus_damage *= 2;
 		return Mastery_bonus_damage;
 	}
@@ -7061,8 +7083,14 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.WeaponMastery) && player.weapon.isSingleLarge() && player.str >= 100) critChance += 10;
             if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weapon.isSingleLarge() && player.str >= 140) critChance += 10;
             if (player.hasPerk(PerkLib.GigantGripEx) && player.weapon.isMassive()) {
-                if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) critChance += 10;
-                if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) critChance += 10;
+                if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					else critChance += 10;
+				}
+                if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					else critChance += 10;
+				}
             }
             if (player.weapon == weapons.MASAMUN || (player.weapon == weapons.WG_GAXE && monster.cor > 66) || (player.weapon == weapons.DE_GAXE && monster.cor < 33)) critChance += 10;
 			if (player.weapon == weapons.YAMARG && monster.cor < 33) critChance += 20;
@@ -7080,8 +7108,14 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.WeaponMastery) && player.weaponOff.isSingleLarge() && player.str >= 100) critChance += 10;
             if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weaponOff.isSingleLarge() && player.str >= 140) critChance += 10;
             if (player.hasPerk(PerkLib.GigantGripEx) && player.weaponOff.isMassive()) {
-                if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) critChance += 10;
-                if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) critChance += 10;
+                if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					else critChance += 10;
+				}
+                if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					else critChance += 10;
+				}
             }
             if (player.weaponOff == weapons.MASAMUN || (player.weaponOff == weapons.WG_GAXE && monster.cor > 66) || (player.weaponOff == weapons.DE_GAXE && monster.cor < 33)) critChance += 10;
         }
@@ -18142,8 +18176,14 @@ public function greatDive():void {
         if (player.hasPerk(PerkLib.WeaponMastery) && (player.weapon.isSingleLarge() || player.weaponOff.isSingleLarge()) && player.str >= 100) critChance += 10;
         if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weapon.isDualLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance += 10;
         if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isMassive())) {
-            if (player.str >= 100) critChance += 10;
-            if (player.str >= 140) critChance += 10;
+            if (player.str >= 100) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
+			if (player.str >= 140) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
         }
     }
     if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
@@ -18728,11 +18768,13 @@ public function meleePhysicalForce():Number {
     if (player.hasPerk(PerkLib.GigantGripSu)) mod += .2;
     if (player.hasPerk(PerkLib.EpicBrute)) mod += .2;
     if (player.hasPerk(PerkLib.EpicBrawn)) mod += .2;
+    if (player.hasPerk(PerkLib.MassiveSynergy)) mod += .25;
     if (player.hasPerk(PerkLib.TitanGrip)) mod += .25;
     if (player.hasPerk(PerkLib.LegendaryBrute)) mod += .25;
     if (player.hasPerk(PerkLib.LegendaryBrawn)) mod += .25;
+    if (player.hasPerk(PerkLib.MassiveSynergyEx)) mod += .3;
     if (player.hasPerk(PerkLib.MythicalBrute)) mod += .3;
-    if (player.hasPerk(PerkLib.MythicalBrawn)) mod += .3;//515% up to here
+    if (player.hasPerk(PerkLib.MythicalBrawn)) mod += .3;//570% up to here
     if (player.hasPerk(PerkLib.PrestigeJobBerserker)) {
         mod += .8;
         if (player.hasPerk(PerkLib.FuelForTheFire)) {

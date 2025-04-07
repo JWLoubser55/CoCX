@@ -827,6 +827,12 @@ public class PerkLib
 		public static const VoltaicEdge:PerkType = mk("Voltaic Edge", "Voltaic Edge",
 				"Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.",
 				"You've chosen the 'Voltaic Edge' perk. Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.");
+		public static const MassiveSynergy:PerkType = mk("Massive Synergy", "Massive Synergy",
+				"Damage bonus from massive weapons mastery is 100% better and damage bonus from large weapon mastery is added to massive weapons damage. (+25% melee physical attacks multiplier)",
+				"You've chosen the 'Massive Synergy' perk. Damage bonus from massive weapons mastery is 100% better and damage bonus from large weapon mastery is added to massive weapons damage. (+25% melee physical attacks multiplier)");
+		public static const MassiveSynergyEx:PerkType = mk("Massive Synergy (Ex)", "Massive Synergy (Ex)",
+				"Effects that increase large weapons attack, which are applied to massive weapons have their scaling improved. (+30% melee physical attacks multiplier)",
+				"You've chosen the 'Massive Synergy (Ex)' perk. Effects that increase large weapons attack, which are applied to massive weapons have their scaling improved. (+30% melee physical attacks multiplier)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -838,6 +844,18 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -5469,6 +5487,9 @@ public class PerkLib
                     .requireStr(150)
                     .requireSpe(100)
                     .requireLevel(30);
+            MassiveSynergy.requireLevel(30)
+                    .requireStr(150)
+                    .requirePerk(GigantGripEx);
             UnlockId2ndStage.requirePerk(UnlockId)
                     .requireStr(125)
                     .requireLevel(30);
@@ -5504,6 +5525,11 @@ public class PerkLib
             GreaterBrawn.requireLevel(36)
                     .requireStr(135)
                     .requirePerks(ImprovedBrawn, ImprovedBrute);
+            MassiveSynergyEx.requireAnyPerk(HiddenMomentum, WeaponGrandMastery)
+					.requirePerk(MassiveSynergy)
+                    .requireStr(175)
+                    .requireSpe(120)
+                    .requireLevel(36);
             TitanGrip.requireLevel(36)
                     .requirePerks(GigantGripEx, EpicStrength)
                     .requireStr(200);

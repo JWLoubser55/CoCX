@@ -257,6 +257,22 @@ public class TongueTransformations extends MutationsHelper {
 				return player.tongue.type === Tongue.ARIGEAN;
 			}
 	);
+
+	public const TongueAutomata: Transformation = new SimpleTransformation("Automata Tongue",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.tongue.type = Tongue.AUTOMATA;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.tongue.type === Tongue.AUTOMATA;
+			}
+	);
 	/*
 */
 }

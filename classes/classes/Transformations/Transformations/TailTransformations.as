@@ -1653,6 +1653,28 @@ public class TailTransformations extends MutationsHelper {
 				return player.tailType === Tail.GLACIAL_TROLL;
 			}
 	);
+
+	public const TailCable: Transformation = new SimpleTransformation("Tail cable",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.removeLowerBodyIfIncompatible(player, doOutput);
+
+				desc += "";
+
+				player.tailVenom = 0;
+				player.tailRecharge = 0;
+				player.tailType = Tail.AUTOMATA_TAIL_CABLE;
+				player.tailCount = 1;
+
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.tailType === Tail.AUTOMATA_TAIL_CABLE;
+			}
+	);
 	/*
   */
 }
