@@ -340,14 +340,15 @@ public class Exploration extends BaseContent implements SaveableState
 			return new ButtonData("LightlessReach", SceneLib.lightlessReach.exploreLightlessReach)
 					.hint("Visit the lightless reach. "
 							+ "\n\nTimes explored: " + SceneLib.lightlessReach.timesExplored())
+					.disableIf((!player.hasPerk(PerkLib.DarknessAffinity) && !player.hasPerk(PerkLib.FireShadowAffinity) && !player.hasDarkVision() && player.hasKeyItem("Torch") < 0), "As much as you would like to explore this place it's so dark you can't even see where you are going. You might just stumble and fall into a bottomless pit straith to your death. You will need some light or the ability to see in darkness to get through.")
 					.disableIf(!SceneLib.lightlessReach.isDiscovered(), "Discovered when exploring the Tunnels." +
-							" (Lvl " + SceneLib.lightlessReach.areaLevel + "+)")
-					.disableIf((!player.hasPerk(PerkLib.DarknessAffinity) && !player.hasPerk(PerkLib.FireShadowAffinity) && !player.hasDarkVision() && player.hasKeyItem("Torch") < 0), "As much as you would like to explore this place it's so dark you can't even see where you are going. You might just stumble and fall into a bottomless pit straith to your death. You will need some light or the ability to see in darkness to get through.");
+							" (Lvl " + SceneLib.lightlessReach.areaLevel + "+)");
 		}
 		private function btnExploreCliffs():ButtonData {
 			return new ButtonData("Cliffs", SceneLib.cliffs.exploreCliffs)
 					.hint("Visit the cliffs. "
 							+ "\n\nTimes explored: " + SceneLib.cliffs.timesExplored())
+					.disableIf(flags[kFLAGS.AUTO_FLIGHT] < 1, "You need a way to be able start flying at the start of combat or you would drop down to your demise down below cliffs.")
 					.disableIf(!SceneLib.cliffs.isDiscovered(), "Discovered when exploring the Tunnels." +
 							" (Lvl " + SceneLib.cliffs.areaLevel + "+)");
 		}

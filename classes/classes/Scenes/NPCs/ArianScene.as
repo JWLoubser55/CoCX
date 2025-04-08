@@ -699,10 +699,10 @@ private function arianHomeMenu(back:Boolean = false):void {
 				.disableIf(player.gems < 500, "Ask Arian to remove your cursed item. Costs 500 gems (Can't afford).")
 				.disableIf(player.equippedKnownCursedItems().length == 0, "Arian can remove cursed items, but you're not wearing any.")
 				.disableIf(flags[kFLAGS.ARIAN_S_DIALOGUE] < 3, "???", "???");
-		if(player.weaponRange == weaponsrange.SAGITTB) addButton(7, "Cursed Bow", removeCursedItem2)
-				.hint("Ask Arian to remove your cursed bow. Costs 500 gems. ")
+		if(player.carryUniqueCursedItems()) addButton(7, "U.Cursed Item", removeCursedItem2)
+				.hint("Ask Arian to remove your unique cursed item. Costs 500 gems. ")
 				.disableIf(arianHealth() < 75, "Arian is too weak")
-				.disableIf(player.gems < 500, "Ask Arian to remove your cursed bow. Costs 500 gems (Can't afford).")
+				.disableIf(player.gems < 500, "Ask Arian to remove your unique cursed item. Costs 500 gems (Can't afford).")
 				.disableIf(flags[kFLAGS.ARIAN_S_DIALOGUE] < 3, "???", "???");
 		if(model.time.hours >= 17 && arianFollower()) addButton(8,"Sleep With",sleepWithArian,true);
 		if(flags[kFLAGS.SLEEP_WITH] == "Arian") addButton(8,"NoSleepWith",dontSleepWithArian);
@@ -712,6 +712,12 @@ private function arianHomeMenu(back:Boolean = false):void {
 }
 
 private function removeCursedItem2():void {
+	menu();
+	if (player.weaponRange == weaponsrange.SAGITTB) addButton(0, "Cursed Bow", removeCursedItem2Bow);
+	if (player.necklace == necklaces.SILCNEC) addButton(1, "Cursed Necklace", removeCursedItem2Necklace);
+	addButton(14, "Back", arianHomeMenu);
+}
+private function removeCursedItem2Bow():void {
 	clearOutput();
 	outputText("As Arian proceed with the purification ritual you struggle in pain at first as you feel the cursed weapon in your hand resist the unbinding before release washes over you as your grip opens dropping the malevolent item on the ground. ");
 	outputText("Arian wrap the item in blessed cloth in order to seal its malice before handing you the neutralized cursed item back. Sure you can equip it again anytime but now you know the risks.\n\n");
@@ -722,6 +728,14 @@ private function removeCursedItem2():void {
 	if (player.statStore.hasBuff('Sagittarius Focus')) player.buff("Sagittarius Focus").remove();
 	player.unequipWeaponRange(false,true);
 	inventory.takeItem(weaponsrange.SAGITTB, arianHomeMenu);
+}
+private function removeCursedItem2Necklace():void {
+	clearOutput();
+	outputText("As Arian proceed with the purification ritual you struggle in pain at first as you feel the cursed necklace resist the unbinding before release washes over you. ");
+	outputText("Arian wrap the item in blessed cloth in order to seal its malice before handing you the neutralized cursed item back. Sure you can equip it again anytime but now you know the risks.\n\n");
+	player.gems -= 500;
+	player.unequipNecklace(false,true);
+	inventory.takeItem(necklaces.SILCNEC, arianHomeMenu);
 }
 private function removeCursedItem():void {
 	clearOutput();

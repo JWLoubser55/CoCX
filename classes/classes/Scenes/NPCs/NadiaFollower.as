@@ -759,7 +759,7 @@ public function mainCampMenu():void {
 		addButtonDisabled(7, "C.C.(Mult)", "You don't have any curses to cure. (multiplier)");
 	}
 	addButton(8, "Uncurse", uncurseItemsMenu).disableIf(player.equippedKnownCursedItems().length == 0 && player.carriedKnownCursedItems().length == 0, "You don't have any cursed items");
-	if (player.weaponRange == weaponsrange.SAGITTB) addButton(9, "Uncurse", uncurseItemsMenu2);
+	if (player.carryUniqueCursedItems()) addButton(9, "U.Uncurse", uncurseItemsMenu2);
 	if (BelisaFollower.BelisaQuestOn && !BelisaFollower.BelisaQuestComp) addButton(13, "ToothacheQ", BelisaNadiaTalk);
 	addButton(14, "Back", camp.campLoversMenu);
 }
@@ -770,6 +770,12 @@ public function mockFightDiana():void {
 }
 
 private function uncurseItemsMenu2():void {
+	menu();
+	if (player.weaponRange == weaponsrange.SAGITTB) addButton(0, "Cursed Bow", uncurseItemsMenuBow);
+	if (player.necklace == necklaces.SILCNEC) addButton(1, "Cursed Necklace", uncurseItemsMenuNecklace);
+	addButton(14, "Back", mainCampMenu);
+}
+private function uncurseItemsMenuBow():void {
 	clearOutput();
 	outputText("As Nadia proceed with the purification ritual you struggle in pain at first as you feel the cursed weapon in your hand resist the unbinding before release washes over you as your grip opens dropping the malevolent item on the ground. ");
 	outputText("Nadia wrap the item in blessed cloth in order to seal its malice before handing you the neutralized cursed item back. Sure you can equip it again anytime but now you know the risks.\n\n");
@@ -779,6 +785,14 @@ private function uncurseItemsMenu2():void {
 	if (player.statStore.hasBuff('Sagittarius Focus')) player.buff("Sagittarius Focus").remove();
 	player.unequipWeaponRange(false,true);
 	inventory.takeItem(weaponsrange.SAGITTB, mainCampMenu);
+}
+private function uncurseItemsMenuNecklace():void {
+	clearOutput();
+	outputText("As Nadia proceed with the purification ritual you struggle in pain at first as you feel the cursed necklace resist the unbinding before release washes over you. ");
+	outputText("Nadia wrap the item in blessed cloth in order to seal its malice before handing you the neutralized cursed item back. Sure you can equip it again anytime but now you know the risks.\n\n");
+	player.gems -= 500;
+	player.unequipNecklace(false,true);
+	inventory.takeItem(necklaces.SILCNEC, mainCampMenu);
 }
 public function uncurseCost(item:IDynamicItem, equipped:Boolean):int {
 	var cost:int = 250 * (1 + item.rarity);

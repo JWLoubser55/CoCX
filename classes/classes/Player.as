@@ -1556,6 +1556,9 @@ use namespace CoC;
 			}
 			return result;
 		}
+		public function carryUniqueCursedItems():Boolean {
+			return weaponRange == game.weaponsrange.SAGITTB || necklace == game.necklaces.SILCNEC;
+		}
 
 		//override public function get weapons
 		override public function get weaponName():String {

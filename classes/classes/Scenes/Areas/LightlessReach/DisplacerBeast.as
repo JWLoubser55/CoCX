@@ -17,7 +17,7 @@ use namespace CoC;
 	{
 		public function moveDisplacerBeastPhaseStrike():void {
 			outputText("The displacer beast blinks out and appears right behind you as it begins mauling you with its claws.");
-            for (var i:int = 1; i < 4; ++i) {
+            for (var i:int = 1; i < 2; ++i) {
                 outputText("\n\nThe displacer beast claws you! ");
                 phasestrikeDmg();
             }
@@ -28,8 +28,9 @@ use namespace CoC;
 			damage += this.weaponAttack;
 			damage += rand(str);
 			damage += rand(weaponAttack);
-			damage += 1.2;
+			damage *= 5;
 			damage = Math.round(damage);
+			player.takePhysDamage(damage, true);
 			player.takePhysDamage(damage, true);
 		}
 
@@ -72,15 +73,15 @@ use namespace CoC;
 				this.additionalXP = mod > 20 ? 0 : Math.floor(800 * Math.exp(0.3*mod));
 			}
 			else {
-				initStrTouSpeInte(152, 152, 210, 76);
-				initWisLibSensCor(76, 120, 60, -40);
-				this.weaponAttack = 40;
-				this.armorDef = 40;
-				this.armorMDef = 40;
-				this.bonusHP = 100;
-				this.bonusLust = 240;
-				this.level = 60;
-			    this.gems = rand(20) + 80;
+				initStrTouSpeInte(456, 456, 630, 176);
+				initWisLibSensCor(176, 240, 120, -40);
+				this.weaponAttack = 120;
+				this.armorDef = 400;
+				this.armorMDef = 400;
+				this.bonusHP = 1000;
+				this.bonusLust = 440;
+				this.level = 80;
+			    this.gems = rand(30) + 100;
 			}
 			this.a = "the ";
 			this.short = "displacer beast";

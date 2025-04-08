@@ -32,7 +32,10 @@ public class DarknessShardSwiftcastSpell extends AbstractBlackSpell {
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
 		var baseDamage:Number = 0.75 * damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
-		if (player.weapon == weapons.UGRAVES) baseDamage *= 1.8;
+		if (player.weapon == weapons.UGRAVES) {
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) baseDamage *= 2.6;
+			else baseDamage *= 1.8;
+		}
 		if (player.armorName == "FrancescaCloak") baseDamage *= 2;
 		return adjustSpellDamage(baseDamage, DamageType.DARKNESS, CAT_SPELL_BLACK, monster, true, casting);
 	}

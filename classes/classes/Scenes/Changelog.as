@@ -383,11 +383,12 @@ public class Changelog extends BaseContent
 			outputText("-New Area: Cliffs (81-101). Exploring tunnels allows now to find it.\n");
 			outputText("-New melee weapon (by Lord Shadeogorath): Stormcaller Gravespear - pulled from unnamed grave at cliffs. Base atk is 160. It's massive spear type low grade wrath weapon with thrown tag. Normally it deal 80% of physical dmg and 20% lightning dmg. When using charge weapon it will deal 100% lightning damage and have 10% to apply Electrocute DoT after critical hit.\n");
 			outputText("-Satyr TF bug fixes. (Jtecx)\n");
-			outputText("-Valkyrie moved from Tundra to Cliffs. (lvl 69 > 97) Displacer beast moved from Caves to Lightless Reach.\n");
+			outputText("-Valkyrie moved from Tundra to Cliffs. (lvl 69 > 97) Displacer beast moved from Caves to Lightless Reach. (lvl 60 > 80)\n");
 			outputText("-New tier 5 strength lvl-up perk: Massive Synergy. Req. Gigant's Grip (Ex) perk and 150+ str. Effect: Damage bonus from massive weapons mastery is 100% better and damage bonus from large weapon mastery is added to massive weapons damage. (+25% melee physical attacks multiplier)\n");
 			outputText("-New tier 6 strength lvl-up perk: Massive Synergy (Ex). Req. Massive Synergy and Hidden Momentum / Weapon GrandMastery perk, 175+ str, 120+ spe. Effect: Effects that increase large weapons attack, which are applied to massive weapons have their scaling improved. (+30% melee physical attacks multiplier)\n");
 			outputText("-New Area: Lightless Reach (76-96). Exploring tunnels allows now to find it. Req. to have any way to see in dark be it darkness / fireshadow affinity, eyes with darkvision or having torch from Giacomo.\n");
-			outputText("-New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness spells damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit.\n");
+			outputText("-New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness spells damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. ");
+			outputText("When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit. Also bonus to dakrness spells increase from 80% to 160%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

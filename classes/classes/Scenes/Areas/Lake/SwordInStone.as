@@ -416,7 +416,14 @@ public class SwordInStone extends AbstractLakeContent
 				outputText("You take a moment to catch your breath and admire your prize, but your reprieve is short lived, the platform shatters with a thunderous crack, sending chunks of debris in all directions. You manage to block the worst of it with the flat of your newly-claimed sword.\n\n");
 				outputText("The ground shudders and groans, and your blood goes cold. Cursing, you make a break for it in the direction you remember entering from, and manage to make it out of the cavern right before the ceiling starts coming down. Not willing to wait around, you hasten your way back to camp.\n\n");
 				outputText("Every so often on your way back, everything goes eerily quiet, and you get the feeling of predatory eyes on your back. You stop, looking for any signs of a follower, but you see ");
-				outputText("(nothing) (only [follower]");
+				if (player.companionsInPCParty()) {
+					outputText(" only ");
+					if (flags[kFLAGS.PLAYER_COMPANION_0] != "") outputText(""+flags[kFLAGS.PLAYER_COMPANION_0]+"");
+					else if (flags[kFLAGS.PLAYER_COMPANION_1] != "") outputText(""+flags[kFLAGS.PLAYER_COMPANION_1]+"");
+					else if (flags[kFLAGS.PLAYER_COMPANION_2] != "") outputText(""+flags[kFLAGS.PLAYER_COMPANION_2]+"");
+					else if (flags[kFLAGS.PLAYER_COMPANION_3] != "") outputText(""+flags[kFLAGS.PLAYER_COMPANION_3]+"");
+				}
+				else outputText("nothing");
 				outputText(" behind you. The closer you get to camp the less it happens, eventually, the dread fades completely.\n\n");
 				inventory.takeItem(weapons.UGRAVES, explorer.done);
 				player.createStatusEffect(StatusEffects.TookUmbralGravesword,0,0,0,0);

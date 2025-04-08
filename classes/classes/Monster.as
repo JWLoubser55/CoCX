@@ -4467,7 +4467,7 @@ import classes.Scenes.Combat.CombatAbilities;
 						store20 = SceneLib.combat.fixPercentDamage(store20);
 						if(plural) outputText("[Themonster] are hurt by the lingering necrosis. ");
 						else outputText("[Themonster] is hurt by the lingering necrosis. ");
-						store20 = SceneLib.combat.doIceDamage(store20, true, true);
+						store20 = SceneLib.combat.doDarknessDamage(store20, true, true);
 						outputText("\n\n");
 					}
 				}
