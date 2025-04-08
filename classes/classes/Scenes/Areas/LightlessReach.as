@@ -18,6 +18,7 @@ use namespace CoC;
 
 public class LightlessReach extends BaseContent
 {
+	public var displacerbeastScene:DisplacerBeastScene = new DisplacerBeastScene();
 	public var swordInStone:SwordInStone = new SwordInStone();
 
 	public const areaLevel:int = 73;
@@ -51,9 +52,9 @@ public class LightlessReach extends BaseContent
 			chance: 0.5,
 			unique: true,
 			when: function():Boolean {
-				return !player.hasStatusEffect(StatusEffects.TookGlacialGraveaxe) && !player.hasStatusEffect(StatusEffects.GlacialGraveaxeNever);
+				return !player.hasStatusEffect(StatusEffects.TookUmbralGravesword) && !player.hasStatusEffect(StatusEffects.UmbralGraveswordNever);
 			},
-			call: swordInStone.findGlacialGraveaxe
+			call: swordInStone.findUmbralGravesword
 		}, /*{
 			// ?? (lvl 65)
 			// wendigoScene.encounterWendigo();
@@ -72,12 +73,23 @@ public class LightlessReach extends BaseContent
 			day : false,
 			call: SceneLib.werewolfFemaleScene.introWerewolfHuntress,
 			chance: 0.50
+		}, */{
+			name: "displacerbeast",
+			label : "Displacer Beast",
+			kind : 'monster',
+			call: function ():void {
+				player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+				displacerbeastScene.displacerBeastEncounter();
+			}
 		}, {
 			name: "darkness golem",
 			label : "Darkness Golem",
 			kind : 'monster',
-			call: golemEncounters
-		}, */{
+			call: function ():void {
+				player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+				golemEncounters()
+			}
+		}, {
 			chance: 0.25,
 			name: "nothing",
 			call: nothingEncounter,
@@ -116,13 +128,13 @@ public class LightlessReach extends BaseContent
 		}
 		dynStats("tou", .5);
 		endEncounter();
-	}/*
+	}
 
 	public function golemEncounters():void {
 		clearOutput();
 		outputText("As you take a stroll, from nearby crevice emerge huge golem. Looks like you have encountered 'true darkness golem'! You ready your [weapon] for a fight!");
 		startCombat(new GolemTrueDarkness());
-	}*/
+	}
 
 }
 }

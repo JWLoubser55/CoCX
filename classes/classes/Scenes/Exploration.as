@@ -341,14 +341,15 @@ public class Exploration extends BaseContent implements SaveableState
 					.hint("Visit the lightless reach. "
 							+ "\n\nTimes explored: " + SceneLib.lightlessReach.timesExplored())
 					.disableIf(!SceneLib.lightlessReach.isDiscovered(), "Discovered when exploring the Tunnels." +
-							" (Lvl "+SceneLib.lightlessReach.areaLevel+"+)");
+							" (Lvl " + SceneLib.lightlessReach.areaLevel + "+)")
+					.disableIf((!player.hasPerk(PerkLib.DarknessAffinity) && !player.hasPerk(PerkLib.FireShadowAffinity) && !player.hasDarkVision() && player.hasKeyItem("Torch") < 0), "As much as you would like to explore this place it's so dark you can't even see where you are going. You might just stumble and fall into a bottomless pit straith to your death. You will need some light or the ability to see in darkness to get through.");
 		}
 		private function btnExploreCliffs():ButtonData {
 			return new ButtonData("Cliffs", SceneLib.cliffs.exploreCliffs)
 					.hint("Visit the cliffs. "
 							+ "\n\nTimes explored: " + SceneLib.cliffs.timesExplored())
 					.disableIf(!SceneLib.cliffs.isDiscovered(), "Discovered when exploring the Tunnels." +
-							" (Lvl "+SceneLib.cliffs.areaLevel+"+)");
+							" (Lvl " + SceneLib.cliffs.areaLevel + "+)");
 		}
 		
 		private function canMeetXuviel():Boolean {

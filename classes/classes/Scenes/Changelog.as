@@ -137,7 +137,7 @@ public class Changelog extends BaseContent
 			outputText("-New enemies: Mid rank Angel of Mist - lvl 58, Mist Bee Huntress - lvl 60, Mist Wasp Huntress - lvl 62, Mist Hornet Huntress - lvl 64, Mist Alraune Maiden - lvl 66, Mist Cinderbloom - lvl 68, Mist Snow Lily - lvl 70. Encounterable on 5th strata of River Dungeon. Proto Golem - lvl 6. Encounterable in general explore from lvl 6+. Kirin (added by NUZ/Shirane) - lvl 50. Encounterable in Plains. ");
 			outputText("Werefox (M) - lvl 33. Encounterable in Inner Desert at night. Elder Werefox (M) - lvl 61. Encounterable in Inner Desert at night (he temporaly came from deeper desert regions and req. lvl 43+ to encounter). Zombie (M & F) - lvl 36/53. Encounterable in Outer Plains / Inner Plains (lvl 53 zombies temporaly hopped from deeper plains regions) at night as long PC isn't Jiangshi. They have Undead enemy type perk. ");
 			outputText("Mummy (M & F) - lvl 18/36. Encounterable in Outer Desert / Inner Desert at night. They have Undead enemy type and Low-tier Magic Immunity perk. Thief - lvl 5, Thief Captain - lvl 9. Encounterable in Ignam after PC reach lvl 2/6. Feral Succubus/Incubus - lvl 41, Feral Omnibus - lvl 51. Encountered in Blight Ridge. Feral Cow Succubus/Mino Incubus - lvl 65/67. ");
-			outputText("Feral Demon Hellhound - lvl 69. Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Encountered in Tunnels. True Lightning Golem - lvl 81. Encountered in Cliffs.\n");
+			outputText("Feral Demon Hellhound - lvl 69. Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Encountered in Tunnels. True Lightning Golem - lvl 81. Encountered in Cliffs. True Darkness Golem - lvl 76. Encountered in Lightless Reach.\n");
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig), Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event), Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
@@ -383,9 +383,11 @@ public class Changelog extends BaseContent
 			outputText("-New Area: Cliffs (81-101). Exploring tunnels allows now to find it.\n");
 			outputText("-New melee weapon (by Lord Shadeogorath): Stormcaller Gravespear - pulled from unnamed grave at cliffs. Base atk is 160. It's massive spear type low grade wrath weapon with thrown tag. Normally it deal 80% of physical dmg and 20% lightning dmg. When using charge weapon it will deal 100% lightning damage and have 10% to apply Electrocute DoT after critical hit.\n");
 			outputText("-Satyr TF bug fixes. (Jtecx)\n");
-			outputText("-Valkyrie moved from Tundra to Cliffs. (lvl 69 > 97)\n");
+			outputText("-Valkyrie moved from Tundra to Cliffs. (lvl 69 > 97) Displacer beast moved from Caves to Lightless Reach.\n");
 			outputText("-New tier 5 strength lvl-up perk: Massive Synergy. Req. Gigant's Grip (Ex) perk and 150+ str. Effect: Damage bonus from massive weapons mastery is 100% better and damage bonus from large weapon mastery is added to massive weapons damage. (+25% melee physical attacks multiplier)\n");
 			outputText("-New tier 6 strength lvl-up perk: Massive Synergy (Ex). Req. Massive Synergy and Hidden Momentum / Weapon GrandMastery perk, 175+ str, 120+ spe. Effect: Effects that increase large weapons attack, which are applied to massive weapons have their scaling improved. (+30% melee physical attacks multiplier)\n");
+			outputText("-New Area: Lightless Reach (76-96). Exploring tunnels allows now to find it. Req. to have any way to see in dark be it darkness / fireshadow affinity, eyes with darkvision or having torch from Giacomo.\n");
+			outputText("-New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness spells damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -394,8 +396,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit.
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

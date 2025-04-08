@@ -1604,8 +1604,8 @@ use namespace CoC;
 			var swordsmanBonus:Number = 1.25;
 			if (hasPerk(PerkLib.WeaponMastery) && str >= 100) {
 				if (hasPerk(PerkLib.MassiveSynergyEx) && (weapon.isMassive() || weaponOff.isMassive())) {
-					if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 1.5;
-					else swordsmanBonus += 0.5;
+					if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 2.25;
+					else swordsmanBonus += 0.75;
 				}
 				else {
 					if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 0.75;
@@ -1621,13 +1621,13 @@ use namespace CoC;
 				else attack *= 2;
 			}
 			if (hasPerk(PerkLib.GigantGripEx) && (weapon.isMassive() || weaponOff.isMassive())) {
-				if (hasPerk(PerkLib.MassiveSynergyEx)) swordsmanBonus *= 1.5;
+				if (hasPerk(PerkLib.MassiveSynergyEx)) swordsmanBonus *= 2;
 				if (offhand && weaponOff.isMassive()) attack *= swordsmanBonus;
 				else attack *= swordsmanBonus;
 			}
 			if (hasPerk(PerkLib.HiddenMomentum) && (weapon.isSingleLarge() || weaponOff.isSingleLarge() || hasAetherTwinsTier2() || (hasPerk(PerkLib.GigantGripEx) && weapon.isSingleMassive()) || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive())) && str >= 75 && spe >= 50) {
 				if (hasPerk(PerkLib.MassiveSynergyEx) && hasPerk(PerkLib.GigantGripEx) && (weapon.isSingleMassive() || weaponOff.isSingleMassive())) {
-					if (offhand && (weaponOff.isSingleLarge() || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive()))) attack += (((str + spe) - 100) * 0.4);
+					if (offhand && (weaponOff.isSingleLarge() || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive()))) attack += (((str + spe) - 100) * 0.5);
 					else attack += (((str + spe) - 100) * 0.4);
 				}
 				else {
@@ -1641,7 +1641,7 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.HiddenDualMomentum) && hasPerk(PerkLib.GigantGripEx) && (weapon.isDualMassive() || weaponOff.isDualMassive()) && str >= 150 && spe >= 100) {
 				if (hasPerk(PerkLib.MassiveSynergyEx)) {
-					if (offhand && weaponOff.isDualMassive()) attack += (((str + spe) - 200) * 0.4);
+					if (offhand && weaponOff.isDualMassive()) attack += (((str + spe) - 200) * 0.5);
 					else attack += (((str + spe) - 200) * 0.4);
 				}
 				else {

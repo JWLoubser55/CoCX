@@ -23,12 +23,12 @@ import classes.PerkLib;
 import classes.Races;
 import classes.Races.ElementalRace;
 import classes.Scenes.Areas.Bog.*;
-import classes.Scenes.Areas.Caves.DisplacerBeast;
 import classes.Scenes.Areas.Desert.*;
 import classes.Scenes.Areas.Forest.*;
 import classes.Scenes.Areas.GlacialRift.*;
 import classes.Scenes.Areas.HighMountains.*;
 import classes.Scenes.Areas.Lake.GreenSlime;
+import classes.Scenes.Areas.LightlessReach.*;
 import classes.Scenes.Areas.Mountain.*;
 import classes.Scenes.Areas.Ocean.SeaAnemone;
 import classes.Scenes.Areas.Tundra.YoungFrostGiant;
@@ -2299,11 +2299,11 @@ public class Combat extends BaseContent {
         var critChance:int = 5;
         critChance += combatPhysicalCritical();
         if (player.hasPerk(PerkLib.WeaponMastery)) {
-			if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+			if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 			else critChance += 10;
 		}
         if (player.hasPerk(PerkLib.WeaponGrandMastery)) {
-			if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+			if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 			else critChance += 10;
 		}
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
@@ -7084,11 +7084,11 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weapon.isSingleLarge() && player.str >= 140) critChance += 10;
             if (player.hasPerk(PerkLib.GigantGripEx) && player.weapon.isMassive()) {
                 if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
-					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 					else critChance += 10;
 				}
                 if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
-					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 					else critChance += 10;
 				}
             }
@@ -7109,11 +7109,11 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weaponOff.isSingleLarge() && player.str >= 140) critChance += 10;
             if (player.hasPerk(PerkLib.GigantGripEx) && player.weaponOff.isMassive()) {
                 if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
-					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 					else critChance += 10;
 				}
                 if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
-					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 					else critChance += 10;
 				}
             }
@@ -10726,7 +10726,6 @@ public class Combat extends BaseContent {
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
         if (player.weapon == weapons.A_STAFF) damage *= 1.4;
-		if (player.weapon == weapons.UGRAVES) damage *= 1.8;
         damage = darknessTypeDamageBonus(damage);
 		if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
         if (player.hasPerk(PerkLib.WalpurgisIzaliaRobe)) damage *= 2;
@@ -18177,11 +18176,11 @@ public function greatDive():void {
         if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weapon.isDualLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance += 10;
         if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isMassive())) {
             if (player.str >= 100) {
-				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 				else critChance += 10;
 			}
 			if (player.str >= 140) {
-				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 				else critChance += 10;
 			}
         }

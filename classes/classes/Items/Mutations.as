@@ -14509,12 +14509,12 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         if (player.isRace(Races.YUKIONNA, 1, false)) {
-            if (player.hasPerk(PerkLib.IcyFlesh) && changes < changeLimit && rand(3) == 0) {
+            if (player.hasPerk(PerkLib.IcyFlesh) && changes < changeLimit) {
                 outputText("[pg]The very ice and snow around you feels like an extension of your body. You gesture with a hand and the clouds of snow follow the gesture. You smile and in that moment your smile is cold, whoever will provoke you is not going to like what you have in store. <b>You can now use Hungering cold, Ice Barrage and Frigid Kiss.</b>");
                 if (!player.hasPerk(PerkLib.ColdAffinity)) player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
                 changes++;
             }
-            if (!player.hasPerk(PerkLib.IcyFlesh) && changes < changeLimit && rand(3) == 0) {
+            if (!player.hasPerk(PerkLib.IcyFlesh) && changes < changeLimit) {
                 outputText("[pg]Folding your arms against your chest, you desperately yearn for warmth and also at the same time for some reason fears it. If you are still alive, your body gives little sign of it, as if it had been dead for months and from the look of your pale frozen flesh you might as well be an icy specter. This said, a whole different form of vitality fills you as if on cue, your frozen flesh begins to harden to a diamond like resilience and your wounds magically begins to close. You don't feel hunger anymore either or the need to drink and even the cold is beginning to subside, ");
                 outputText("leaving you with numbed sensations which makes you yearn for the pleasure of touch all the more. Your body seems to keep itself in a form of unnatural suspended animation, your very heart having came to a halt that could as well just be death yet you still can feel the caress of the cold icy wind on your skin albeit the sensation is no longer so unpleasant to begin with, it might even pass for pleasurable.");
                 outputText("[pg](<b>Perks Gained: Dead metabolism and Icy Flesh!</b>)");

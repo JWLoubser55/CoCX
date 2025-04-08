@@ -14,9 +14,9 @@ import classes.Items.Weapons.Tidarion;
 import classes.PerkLib;
 import classes.Races;
 import classes.Scenes.Areas.Bog.LizanRogue;
-import classes.Scenes.Areas.Caves.DisplacerBeast;
 import classes.Scenes.Areas.Forest.Akbal;
 import classes.Scenes.Areas.Lake.GooGirl;
+import classes.Scenes.Areas.LightlessReach.DisplacerBeast;
 import classes.Scenes.Areas.Mountain.WormMass;
 import classes.Scenes.Areas.Ocean.SeaAnemone;
 import classes.Scenes.Dungeons.D3.Lethice;
@@ -7575,4 +7575,4 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function PhysicalSpecials() {
 	}
 }
-}
+}

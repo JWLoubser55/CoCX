@@ -393,8 +393,7 @@ public class SwordInStone extends AbstractLakeContent
 			clearOutput();
 			outputText("While exploring the deep cave system, you find yourself treading deeper than you normally would. As you round a corner you find yourself peering into a large cavern, eerily quiet, and seemingly devoid of life, the whole place just feels… wrong.\n\nThe feeling gets worse the further you go in, ");
 			if (player.hasKeyItem("Torch") >= 0) outputText("the light from your torch even seems to light up less of the space the further you tread");
-			else if (player.hasPerk(PerkLib.DarknessAffinity) || player.hasDarkVision()) outputText("even with your enhanced vision you find it hard to make out what lies ahead");
-			else outputText("");
+			else if (player.hasPerk(PerkLib.DarknessAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasDarkVision()) outputText("even with your enhanced vision you find it hard to make out what lies ahead");
 			outputText(". You come upon a raised platform of some sort, etched with circles of runes that you can't even begin to decipher. In the center, a titanic stone sword is embedded into the floor. The dark seems to cling to it, or perhaps it clings to the dark… If such a thing were even possible.\n\n");
 			outputText("You really feel like you shouldn't be here, you can't shake the feeling that you are being watched, that the shadows are alive. You could just leave, and never ever think about ever returning to this accursed site.\n\n");
 			outputText("On the other hand, you could just be paranoid. You don't come across a blade like this every day… You figure if you were strong enough, you could dislodge the titanic weapon and put it to good use on your quest, after all, slaying demons with a giant slab of bedrock that you can barely call a sword would just feel so right!\n\n");

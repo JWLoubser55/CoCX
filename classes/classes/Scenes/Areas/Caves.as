@@ -24,7 +24,6 @@ use namespace CoC;
 		public var cavewyrmScene:CaveWyrmScene = new CaveWyrmScene();
 		public var matangoScene:MatangoScene = new MatangoScene();
 		public var automatonScene:AutomatonScene = new AutomatonScene();
-		public var displacerbeastScene:DisplacerBeastScene = new DisplacerBeastScene();
 		public var darkslimeScene:DarkSlimeScene = new DarkSlimeScene();
 
 		public function Caves() {
@@ -174,6 +173,14 @@ use namespace CoC;
 				chance: 30,
 				call: discoverCliffs
 			}, {
+				name: "discoverlightlessreach",
+				label : "New Area",
+				kind  : 'place',
+				unique: true,
+				when: SceneLib.lightlessReach.canDiscover,
+				chance: 30,
+				call: discoverLightlessReach
+			}, {
 				name: "mine",
 				label : "Mine",
 				kind  : 'place',
@@ -220,14 +227,6 @@ use namespace CoC;
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					darkslimeScene.cavesDarkSlimeEncounter();
-				}
-			}, {
-				name: "displacerbeast",
-				label : "Displacer Beast",
-				kind : 'monster',
-				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					displacerbeastScene.displacerBeastEncounter();
 				}
 			},*/{
 				name: "adamantinegolem",
@@ -357,7 +356,7 @@ use namespace CoC;
 
 		private function discoverLightlessReach():void {
 			clearOutput();
-			outputText("\n\n");
+			outputText("While exploring the tunnels you find the entrance to a hole that seems to delves deeper into the dark. The depths of the hole are beyond any and all light and the oppressive darkness within is near suffocating. This is no place for the sane no or those who walk into the light.\n\n");
 			outputText("<b>You've discovered the Lightless Reach!</b>");
 			SceneLib.exploration.counters.lightlessReach = 1;
 			explorer.stopExploring();
