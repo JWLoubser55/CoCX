@@ -6,9 +6,6 @@ package classes.Scenes.Camp
 {
 import classes.*;
 import classes.GlobalFlags.kFLAGS;
-import classes.Scenes.Areas.Forest.TentacleBeastRaging;
-import classes.Scenes.Monsters.FeralImps;
-import classes.internals.Utils;
 import classes.Scenes.SceneLib;
 import classes.Scenes.Combat.CombatAbilities;
 import classes.internals.Utils;
@@ -27,9 +24,8 @@ public class CampMakeWinions extends BaseContent
 
 		private var retrycount:Number = 0;
 		private function playerAlreadyHaveAnyTamedMonster():Boolean {
-			if (player.hasStatusEffect(StatusEffects.TamedMonster01) || player.hasStatusEffect(StatusEffects.TamedMonster02) || player.hasStatusEffect(StatusEffects.TamedMonster03) || player.hasStatusEffect(StatusEffects.TamedMonster04)
-			 || player.hasStatusEffect(StatusEffects.TamedMonster05) || player.hasStatusEffect(StatusEffects.TamedMonster06) || player.hasStatusEffect(StatusEffects.TamedMonster07)) return true;
-			else return false;
+			return player.hasStatusEffect(StatusEffects.TamedMonster01) || player.hasStatusEffect(StatusEffects.TamedMonster02) || player.hasStatusEffect(StatusEffects.TamedMonster03) || player.hasStatusEffect(StatusEffects.TamedMonster04)
+					|| player.hasStatusEffect(StatusEffects.TamedMonster05) || player.hasStatusEffect(StatusEffects.TamedMonster06) || player.hasStatusEffect(StatusEffects.TamedMonster07);
 		}
 		private function currentTamedMonstersCount():Number {
 			var cTMC:Number = 0;
@@ -182,7 +178,8 @@ public class CampMakeWinions extends BaseContent
 			}
 			else tamingAttemptYes();
 		}
-		public function tamingAttemptYes():void {
+		public function
+		 tamingAttemptYes():void {
 			outputText("With [themonster] weakened, you deftly approach, attempting to tame it. Avoiding any chance of harm, you put your skills to the test, using every trick and tool at your disposal to subdue [monster him], turning him into a manageable companion. ");
 			if (playerWisdomCheck() > monsterWisdomCheck()) {
 				outputText("Fortunately, after some effort, you manage to successfully claim a new ally—for now, at least.");
@@ -193,8 +190,8 @@ public class CampMakeWinions extends BaseContent
 					player.createStatusEffect(StatusEffects.TamedMonster01, monster.weaponAttack, 0, 0, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster01a, monster.strStat.core.value, monster.touStat.core.value, monster.speStat.core.value, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster01b, monster.intStat.core.value, monster.wisStat.core.value, monster.libStat.core.value, 0);
-					if (monster.magicuser == true) player.addStatusValue(StatusEffects.TamedMonster01, 2, 1);
-					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster01, 3, 1);
+					if (monster.magicuser) player.addStatusValue(StatusEffects.TamedMonster01, 2, 1);
+					if (monster.flyer) player.addStatusValue(StatusEffects.TamedMonster01, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
 				if (!player.hasStatusEffect(StatusEffects.TamedMonster02) && !onlyOneTamingAtTime) {
@@ -202,8 +199,8 @@ public class CampMakeWinions extends BaseContent
 					player.createStatusEffect(StatusEffects.TamedMonster02, monster.weaponAttack, 0, 0, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster02a, monster.strStat.core.value, monster.touStat.core.value, monster.speStat.core.value, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster02b, monster.intStat.core.value, monster.wisStat.core.value, monster.libStat.core.value, 0);
-					if (monster.magicuser == true) player.addStatusValue(StatusEffects.TamedMonster02, 2, 1);
-					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster02, 3, 1);
+					if (monster.magicuser) player.addStatusValue(StatusEffects.TamedMonster02, 2, 1);
+					if (monster.flyer) player.addStatusValue(StatusEffects.TamedMonster02, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
 				if (!player.hasStatusEffect(StatusEffects.TamedMonster03) && !onlyOneTamingAtTime) {
@@ -211,8 +208,8 @@ public class CampMakeWinions extends BaseContent
 					player.createStatusEffect(StatusEffects.TamedMonster03, monster.weaponAttack, 0, 0, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster03a, monster.strStat.core.value, monster.touStat.core.value, monster.speStat.core.value, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster03b, monster.intStat.core.value, monster.wisStat.core.value, monster.libStat.core.value, 0);
-					if (monster.magicuser == true) player.addStatusValue(StatusEffects.TamedMonster03, 2, 1);
-					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster03, 3, 1);
+					if (monster.magicuser) player.addStatusValue(StatusEffects.TamedMonster03, 2, 1);
+					if (monster.flyer) player.addStatusValue(StatusEffects.TamedMonster03, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
 				if (!player.hasStatusEffect(StatusEffects.TamedMonster04) && !onlyOneTamingAtTime) {
@@ -220,8 +217,8 @@ public class CampMakeWinions extends BaseContent
 					player.createStatusEffect(StatusEffects.TamedMonster04, monster.weaponAttack, 0, 0, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster04a, monster.strStat.core.value, monster.touStat.core.value, monster.speStat.core.value, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster04b, monster.intStat.core.value, monster.wisStat.core.value, monster.libStat.core.value, 0);
-					if (monster.magicuser == true) player.addStatusValue(StatusEffects.TamedMonster04, 2, 1);
-					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster04, 3, 1);
+					if (monster.magicuser) player.addStatusValue(StatusEffects.TamedMonster04, 2, 1);
+					if (monster.flyer) player.addStatusValue(StatusEffects.TamedMonster04, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
 				if (!player.hasStatusEffect(StatusEffects.TamedMonster05) && !onlyOneTamingAtTime) {
@@ -229,8 +226,8 @@ public class CampMakeWinions extends BaseContent
 					player.createStatusEffect(StatusEffects.TamedMonster05, monster.weaponAttack, 0, 0, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster05a, monster.strStat.core.value, monster.touStat.core.value, monster.speStat.core.value, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster05b, monster.intStat.core.value, monster.wisStat.core.value, monster.libStat.core.value, 0);
-					if (monster.magicuser == true) player.addStatusValue(StatusEffects.TamedMonster05, 2, 1);
-					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster05, 3, 1);
+					if (monster.magicuser) player.addStatusValue(StatusEffects.TamedMonster05, 2, 1);
+					if (monster.flyer) player.addStatusValue(StatusEffects.TamedMonster05, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
 				if (!player.hasStatusEffect(StatusEffects.TamedMonster06) && !onlyOneTamingAtTime) {
@@ -238,8 +235,8 @@ public class CampMakeWinions extends BaseContent
 					player.createStatusEffect(StatusEffects.TamedMonster06, monster.weaponAttack, 0, 0, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster06a, monster.strStat.core.value, monster.touStat.core.value, monster.speStat.core.value, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster06b, monster.intStat.core.value, monster.wisStat.core.value, monster.libStat.core.value, 0);
-					if (monster.magicuser == true) player.addStatusValue(StatusEffects.TamedMonster06, 2, 1);
-					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster06, 3, 1);
+					if (monster.magicuser) player.addStatusValue(StatusEffects.TamedMonster06, 2, 1);
+					if (monster.flyer) player.addStatusValue(StatusEffects.TamedMonster06, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
 				if (!player.hasStatusEffect(StatusEffects.TamedMonster07) && !onlyOneTamingAtTime) {
@@ -247,16 +244,16 @@ public class CampMakeWinions extends BaseContent
 					player.createStatusEffect(StatusEffects.TamedMonster07, monster.weaponAttack, 0, 0, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster07a, monster.strStat.core.value, monster.touStat.core.value, monster.speStat.core.value, 0);
 					player.createStatusEffect(StatusEffects.TamedMonster07b, monster.intStat.core.value, monster.wisStat.core.value, monster.libStat.core.value, 0);
-					if (monster.magicuser == true) player.addStatusValue(StatusEffects.TamedMonster07, 2, 1);
-					if (monster.flyer == true) player.addStatusValue(StatusEffects.TamedMonster07, 3, 1);
+					if (monster.magicuser) player.addStatusValue(StatusEffects.TamedMonster07, 2, 1);
+					if (monster.flyer) player.addStatusValue(StatusEffects.TamedMonster07, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
 				retrycount = 0;
 			}
 			else {
-				if (player.hasPerk(PerkLib.TheHopelessHandler)) {
-					if (player.hasPerk(PerkLib.TheDesperateDegenerate) && retrycount == 1) {
-						if (player.hasPerk(PerkLib.TheLoveableLoser) && retrycount == 2) {
+				if (player.hasPerk(PerkLib.TheHopelessHandler) && retrycount < 1) {
+					if (player.hasPerk(PerkLib.TheDesperateDegenerate) && retrycount < 2) {
+						if (player.hasPerk(PerkLib.TheLoveableLoser) && retrycount < 3) {
 							retrycount = 3;
 							tamingAttempt();
 						}
@@ -269,7 +266,6 @@ public class CampMakeWinions extends BaseContent
 						retrycount = 1;
 						tamingAttempt();
 					}
-					
 				}
 				else outputText("Yet, despite your efforts, [themonster] refuses to back down and scampers off before you can establish any rapport.");
 			}
@@ -337,7 +333,7 @@ public class CampMakeWinions extends BaseContent
 			if (inCamp) doNext(accessTamedWinionsMainMenu);
 			else doNext(tamingAttemptYes);
 		}
-		
+
 		private function clearingTamedMonsterSlot(tameMon:Number, textOn:Boolean = false):void {
 			if (tameMon == 1) {
 				if (textOn) outputText("" + flags[kFLAGS.TAMED_01_NAME] + "");
@@ -1177,7 +1173,7 @@ public class CampMakeWinions extends BaseContent
 		//  ELEMENTALS
 		//
 		//--------------
-		public function cond1():String { 
+		public function cond1():String {
 			return (player.hasPerk(PerkLib.ElementsOfTheOrtodoxPath) || player.hasPerk(PerkLib.DaoOfTheElements)) ? "" : "You need to study the ortodox elements!";
 		}
 
@@ -1243,7 +1239,7 @@ public class CampMakeWinions extends BaseContent
 			"(Low) Viscount Rank",
 			"(Mid) Viscount Rank", // idx = 31
 			"(Advanced) Viscount Rank",
-			"(Peak) Viscount Rank", 
+			"(Peak) Viscount Rank",
 			"(Low) Earl Rank",// lvl = 186
 			"(Mid) Earl Rank",// lvl = 192
 			"(Advanced) Earl Rank",// lvl = 198

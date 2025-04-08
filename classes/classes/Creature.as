@@ -383,7 +383,7 @@ public class Creature extends Utils
 		public var wisStat:PrimaryStat;
 		public var libStat:PrimaryStat;
 		public var sensStat:BuffableStat;
-		
+
 		// auxiliary stats
 		public var minLustStat: BuffableStat;
 		public var minLustXStat: BuffableStat; // min lust as factor of max lust, 0.5 = 50%
@@ -411,7 +411,7 @@ public class Creature extends Utils
 		public var maxSfPerLevelStat: BuffableStat;
 		public var maxSfPerWisStat: BuffableStat;
 		public var maxSfMultStat: BuffableStat;
-		
+
 		public var defStat: BuffableStat; // raw values (1pt = 1%)
 		public var mdefStat: BuffableStat; // raw values (1pt = 1%)
 		public var rangedAccuracyStat: BuffableStat; // raw values (2pt = 1%)
@@ -465,7 +465,7 @@ public class Creature extends Utils
 			var stat:PrimaryStat = statStore.findStat(statName) as PrimaryStat;
 			return stat.train.value < limit;
 		}
-		
+
 		/**
 		 * Increase stat `statName`'s train component by `amount`, up to `limit`.
 		 * @return true if stat was changed
@@ -650,26 +650,26 @@ public class Creature extends Utils
 		private var _xp:Number = 0
 		public function get XP():Number { return _xp; } //Returns the object
 		public function set XP(value:Number):void { _xp = value; }
-		
+
 		// public var level:Number = 0;
 		private var _level:Number = 0;
 		public function get level():Number { return _level; }
 		public function set level(value:Number):void { _level = value; }
 		// Can't imagine why you would want to do this but it's there to bypass player override
 		public function setLevelDirectly(value:Number):void { _level = value; }
-		
+
 		// TODO: (lvl) Implement stat scaling to negative levels -- and for monsters? Maybe some kind of level drain mechanics?
 		private var _negativeLevel:Number = 0;
 		public function get negativeLevel():Number { return _negativeLevel; }
 		public function set negativeLevel(value:Number):void { _negativeLevel = value; }
-		
+
 		//public var additionalXP:Number = 0;
 		private var _additionalXP:Number = 0;
 		public function get additionalXP():Number { return _additionalXP; }
 		public function set additionalXP(value:Number):void { _additionalXP = value; }
 		public var gems:Number = 0;
-		
-		
+
+
 		public function get str100():Number { return 100*str/strStat.max; }
 		public function get tou100():Number { return 100*tou/touStat.max; }
 		public function get spe100():Number { return 100*spe/speStat.max; }
@@ -691,7 +691,7 @@ public class Creature extends Utils
 		public function restoreHPRatio():void {
 			HP = _savedHPRatio*maxHP();
 		}
-		
+
 		public function minLust():Number {
 			var max:Number = maxLust();
 			return boundFloat(0, minLustStat.value + max*minLustXStat.value, max);
@@ -1301,7 +1301,7 @@ public class Creature extends Utils
 			if (hasPerk(PerkLib.TitanicSize)) multiplier += 4;
 			_tallness = value*multiplier;
 		}
-		
+
 		public var bodyMaterials:/*BodyMaterial*/Array = [];
 		public var hairType:Number                     = Hair.NORMAL;
 		public var hairStyle:Number                    = Hair.NORMAL;
@@ -1633,7 +1633,7 @@ public class Creature extends Utils
 			wisStat = new PrimaryStat(this,'wis');
 			libStat = new PrimaryStat(this,'lib');
 			sensStat = new BuffableStat(this,'sens', {base:15, min:0});
-			
+
 			minLustStat = new BuffableStat(this, 'minlust', {base:0});
 			minLustXStat = new BuffableStat(this, 'minlustx', {base:0});
 			maxHpBaseStat = new BuffableStat(this, 'maxhp_base', {base:0});
@@ -1660,7 +1660,7 @@ public class Creature extends Utils
 			maxSfPerLevelStat = new BuffableStat(this, 'maxsf_perlevel', {base:5});
 			maxSfPerWisStat = new BuffableStat(this, 'maxsf_perwis', {base:0});
 			maxSfMultStat = new BuffableStat(this, 'maxsf_mult', {base:1});
-			
+
 			defStat = new BuffableStat(this, 'def', {base:0});
 			mdefStat = new BuffableStat(this, 'mdef', {base:0});
 			rangedAccuracyStat = new BuffableStat(this, 'rangedaccuracy', {base:0});
@@ -1697,7 +1697,7 @@ public class Creature extends Utils
 				wisStat,
 				libStat,
 				sensStat,
-				
+
 				minLustStat,
 				minLustXStat,
 				maxHpBaseStat,
@@ -1724,7 +1724,7 @@ public class Creature extends Utils
 				maxSfPerLevelStat,
 				maxSfPerWisStat,
 				maxSfMultStat,
-				
+
 				defStat,
 				mdefStat,
 				rangedAccuracyStat,
@@ -1737,7 +1737,7 @@ public class Creature extends Utils
 				soulskillcostStat,
 				teaseDmgStat,
 				evadeStat,
-				
+
 				resPhysicalStat,
 				resMagicStat,
 				resLustStat,
@@ -1753,7 +1753,7 @@ public class Creature extends Utils
 				resPsychicStat,
 				resTrueStat,
 			]);
-			
+
 			for (var i:int = 0; i<BodyMaterial.Types.length; i++) {
 				bodyMaterials[i] = new BodyMaterial(this, i);
 			}
@@ -2418,28 +2418,29 @@ public class Creature extends Utils
         /**
         * Returns the count of the cocks which meet the requirements
         * Assumes that TENTACLE type is the same as STAMEN (because it's the same, isn't it?)
-        * @param    type        Cock type, UNDEFINED = "any"
+        * @param    cockType    Cock type, UNDEFINED = "any"
         * @param    minSize     Minimum size, 0/-1 = no checking
         * @param    maxSize     Maximum size, -1 = no checking
         * @param    compareBy   The measurement to compare by, "area", "length" or "thickness"
         * @return   The count of matching dicks
         */
-        public function countCocksWithType(type:CockTypesEnum, minSize:Number = -1, maxSize:Number = -1, compareBy:String = "area"):int {
-            if (compareBy != "area" && compareBy != "length" && compareBy != "thickness") //sanity check
+        public function countCocksWithType(cockType:CockTypesEnum, minSize:Number = -1, maxSize:Number = -1, compareBy:String = "area"):int {
+            var cockCompareMethod:Array = ["area", "length",  "thickness"]
+			if (cockCompareMethod.indexOf(compareBy) < 0) //sanity check
                 throw new Error("Wrong compareBy value!");
             var cnt:int = 0;
-            var tent:Boolean = (type == CockTypesEnum.STAMEN || type == CockTypesEnum.TENTACLE || type == CockTypesEnum.SCYLLATENTACLE);
+            var tent:Boolean = (cockType == CockTypesEnum.STAMEN || cockType == CockTypesEnum.TENTACLE || cockType == CockTypesEnum.SCYLLATENTACLE);
             for (var i:int = 0; i < cocks.length; ++i) {
                 var isize:Number = compareBy == "length" ? cocks[i].cockLength :
                                 compareBy == "thickness" ? cocks[i].cockThickness :
                                 cockArea(i);
                 if ((isize >= minSize || minSize < 0) && (isize < maxSize || maxSize < 0)
-                && (cocks[i].cockType == type || tent && cockIsTentacle(i) || type == CockTypesEnum.UNDEFINED))
+                && (cocks[i].cockType == cockType || tent && cockIsTentacle(i) || cockType == CockTypesEnum.UNDEFINED))
                     ++cnt;
             }
             return cnt;
         }
-		
+
 		public function countCocks(minSize:Number = -1, maxSize:Number = -1, compareBy:String = "area"):int {
 			return countCocksWithType(CockTypesEnum.UNDEFINED, minSize, maxSize, compareBy);
 		}
@@ -2491,7 +2492,7 @@ public class Creature extends Utils
                 return sorted[sorted.length + biggest];
 			return sorted[0];
         }
-		
+
 		public function findCock(biggest:int = 1, minSize:Number = -1, maxSize:Number = -1, compareBy:String = "area"):int {
 			return findCockWithType(CockTypesEnum.UNDEFINED, biggest, minSize, maxSize, compareBy);
 		}
@@ -3268,7 +3269,7 @@ public class Creature extends Utils
 		{
 			return hasPerk(PerkLib.BlindImmunity) || hasPerk(PerkLib.TrueSeeing);
 		}
-  
+
 		//check for vagoo
 		public function hasVagina():Boolean
 		{
@@ -4555,7 +4556,7 @@ public class Creature extends Utils
 		public function getEvasionReason(considerBlindSpeed:Boolean = true, attackSpeed:int = int.MIN_VALUE, hitModifier:int = 0, dodgeArray:Array = null):String {
 			var evasionReason:String;
 			if (!dodgeArray) dodgeArray = [];
-			
+
 			if (hasStatusEffect(StatusEffects.GreenCovenant)) return null;
 			if (considerBlindSpeed && attackSpeed != int.MIN_VALUE && spe - attackSpeed > 0 && calcSpeedDodge(attackSpeed) > 0) return EVASION_SPEED;
 
@@ -4614,7 +4615,7 @@ public class Creature extends Utils
 			if (currentDodgeSum < 100) dodgeArray.push([(100 - currentDodgeSum), null]);
 
 			evasionReason = Utils.weightedRandom(dodgeArray);
-			
+
 			return evasionReason;
 		}
 
@@ -4694,7 +4695,7 @@ public class Creature extends Utils
 		public function get vagorass():IOrifice {
 			return hasVagina() ? vaginas[0] : ass;
 		}
-		
+
 		/**
 		 * Generate increments for stats
 		 *
