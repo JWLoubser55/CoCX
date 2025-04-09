@@ -852,7 +852,7 @@ public class ValaScene extends BaseContent implements SaveableState
 			if (player.breastRows[0].breastRating < 2) growth++;
 			if (player.breastRows[0].breastRating < 3 && rand(2) == 0) growth++;
 			if (player.breastRows[0].breastRating < 4 && rand(3) == 0) growth++;
-			player.breastRows[0].breastRating += growth;
+			player.growTits(growth, 1, false, 3);
 			player.createPerk(PerkLib.TransformationImmunity2, 4, 0, 0, 0);
 			player.updateRacialParagon(Races.FAIRY);
 			IMutationsLib.FeyArcaneBloodstreamIM.trueMutation = true;

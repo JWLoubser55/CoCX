@@ -704,6 +704,12 @@ public class Face extends SaveableBodyPart {
 		bite: true,
 		humanShaped: true
 	});
+	public static const AUTOMATA: int = 67;
+	EnumValue.add(Types, AUTOMATA, "AUTOMATA", {
+		name: "automata",
+		appearanceDesc: "Your face is human in shape and structure with [skin coat] covered with synthetic skin for flexibility. You do not display your emotions naturally, instead relying on an advanced simulation program called social mode to convincingly replicate the expressions and conversational behavior of living beings.",
+		humanShaped: true
+	});
 
 	public function Face(creature:Creature) {
 		super(creature,"facePart",[]);

@@ -291,8 +291,14 @@ public class Eyes extends BodyPart {
 	public static const LICH: int = 48;
 	EnumValue.add(Types, LICH, "LICH", {
 		name:"lich",
-		appearanceDesc: "Your [eyecolor] eyes looks human enough though your eyelids are dark as if very tired or more likely because in theory you are halfway through death. While you have no biological benefit to take a long period of rest your body does feel at times like if you hadn’t slept for decades."//,
-		//Darkvision: true
+		appearanceDesc: "Your [eyecolor] eyes looks human enough though your eyelids are dark as if very tired or more likely because in theory you are halfway through death. While you have no biological benefit to take a long period of rest your body does feel at times like if you hadn’t slept for decades."/*,
+		Darkvision: true*/
+	});
+	public static const AUTOMATA: int = 49;
+	EnumValue.add(Types, AUTOMATA, "AUTOMATA", {
+		name:"automata",
+		appearanceDesc: "Your [eyecolor] eyes look somewhat human, save for glowing [eyecolor] orbs with pink center where your iris would be located which lets those with the knowledge of your functions know that you are currently online and active. While they appear human, your eyes are in fact mechanical in nature including a zoom and a photography function as well as a peerless sight few organics could imitate."/*,
+		Darkvision: true*/
 	});
 
 	public var count:int;
