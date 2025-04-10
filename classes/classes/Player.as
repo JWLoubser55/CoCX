@@ -1399,11 +1399,11 @@ use namespace CoC;
 		}
 		public function electrifyWeaponActiveMain():Boolean
 		{
-			return ((weapon.isMaceHammerType() || weapon.isDuelingType() || weapon.isSwordType() || weapon.isAxeType() || weapon.isDaggerType() || weapon.isScytheType()) && hasStatusEffect(StatusEffects.ElectrifyWeapon));
+			return ((weapon.isDuelingType() || weapon.isSwordType() || weapon.isSpearType() || weapon.isStaffType()) && hasStatusEffect(StatusEffects.ElectrifyWeapon));
 		}
 		public function electrifyWeaponActiveOff():Boolean
 		{
-			return ((weaponOff.isMaceHammerType() || weaponOff.isDuelingType() || weaponOff.isSwordType() || weaponOff.isAxeType() || weaponOff.isDaggerType() || weaponOff.isScytheType()) && hasStatusEffect(StatusEffects.ElectrifyWeapon));
+			return ((weapon.isDuelingType() || weapon.isSwordType() || weapon.isSpearType() || weapon.isStaffType()) && hasStatusEffect(StatusEffects.ElectrifyWeapon));
 		}
 		public function mummyControlLimit():Number
 		{
