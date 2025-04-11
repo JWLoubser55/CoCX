@@ -5785,7 +5785,10 @@ public class MagicSpecials extends BaseCombatContent {
 		useMana(100, USEFATG_MAGIC_NOBM);
 		combat.darkRitualCheckDamage();
 		var damage:Number = (scalingBonusIntelligence() * spellMod());
-		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+			damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage += Math.round(scalingBonusToughness() * 0.1);
+		}
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;

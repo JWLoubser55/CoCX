@@ -303,9 +303,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-New mutation perk: Myconid Collective Consciousness. Req. having free nerv system mutation slot, Myconid race. Effects: Add 10% of your toughness to your spellcasting and Esper score.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Myconid Collective Consciousness (Primitive). Req. Myconid Collective Consciousness and lvl 30+. Effects: Add 20% of your toughness to your spellcasting and Esper score. Take 25% less damage from mental attacks and Esper ability.\n");
+			outputText("-New mutation perk: Myconid Collective Consciousness (Evolved). Req. Myconid Collective Consciousness (Primitive) and lvl 60+. Effects: Add 30% of your toughness to your spellcasting and Esper score. Take 50% less damage from mental attacks and Esper ability. Gain 1% mana regeneration.\n");
+			outputText("-New mutation perk: Myconid Collective Consciousness (Final Form). Req. Myconid Collective Consciousness (Evolved) and lvl 90+. Effects: Add 50% of your toughness to your spellcasting and Esper score. Take 75% less damage from mental attacks and Esper ability. Gain 2% mana regeneration. Your own Esper abilities are 25% stronger.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -10233,6 +10233,7 @@ public class Combat extends BaseContent {
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		if (monster.hasPerk(PerkLib.HiveMind)) damage *= (1 - monster.perkv1(PerkLib.HiveMind));
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage *= 1.25;
         damage *= doDamageReduction();
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
@@ -14174,6 +14175,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         if (player.perkv1(IMutationsLib.FeyArcaneBloodstreamIM) >= 3) manaregen += 15;
 		if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 2) manaregen += 30;
         if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 3 && player.hasPerk(PerkLib.StarSphereMastery)) manaregen += (player.perkv1(PerkLib.StarSphereMastery) * 3);
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 3) {
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) manaregen += Math.round(player.maxMana() * 0.02);
+			else manaregen += Math.round(player.maxMana() * 0.01);
+		}
 		if (player.perkv1(IMutationsLib.ArigeanAssociationCortexIM) >= 3) {
 			if (player.perkv1(IMutationsLib.ArigeanAssociationCortexIM) >= 4) manaregen += Math.round(player.tou * 0.15);
 			else manaregen += Math.round(player.tou * 0.1);
@@ -17380,7 +17385,10 @@ public function castPsychicBolt():void {
 		damage += player.inte * 0.5;
 		damage += scalingBonusIntelligence() * 0.5;
 	}
-	if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+	if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+		damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage += Math.round(scalingBonusToughness() * 0.1);
+	}
 	if (damage < 10) damage = 10;
 	//soulskill mod effect
 	//damage *= combat.soulskillMagicalMod();
@@ -17603,7 +17611,10 @@ public function sharedKinesisMidpart(crit:Boolean):Number {
 		damage += player.inte * 0.5;
 		damage += scalingBonusIntelligence() * 0.5;
 	}
-	if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+	if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+		damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage += Math.round(scalingBonusToughness() * 0.1);
+	}
 	if (damage < 10) damage = 10;
 	//soulskill mod effect
 	//damage *= combat.soulskillMagicalMod();

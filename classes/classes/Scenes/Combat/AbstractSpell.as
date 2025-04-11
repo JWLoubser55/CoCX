@@ -436,21 +436,30 @@ public class AbstractSpell extends CombatAbility {
 		var dCT1S:Number = 0;
 		dCT1S += 8 * scalingBonusIntelligence(randomize);
 		dCT1S += 2 * scalingBonusWisdom(randomize);
-		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) dCT1S += Math.round(scalingBonusToughness() * 0.8 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+			dCT1S += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) dCT1S += Math.round(scalingBonusToughness() * 0.1);
+		}
 		return dCT1S;
 	}
 	public function damageCalculationTier2Spells(randomize:Boolean=true):Number {
 		var dCT2S:Number = 0;
 		dCT2S += 24 * scalingBonusIntelligence(randomize);
 		dCT2S += 6 * scalingBonusWisdom(randomize);
-		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) dCT2S += Math.round(scalingBonusToughness() * 2.4 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+			dCT2S += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) dCT2S += Math.round(scalingBonusToughness() * 0.1);
+		}
 		return dCT2S;
 	}
 	public function damageCalculationTier3Spells(randomize:Boolean=true):Number {
 		var dCT3S:Number = 0;
 		dCT3S += 64 * scalingBonusIntelligence(randomize);
 		dCT3S += 16 * scalingBonusWisdom(randomize);
-		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) dCT3S += Math.round(scalingBonusToughness() * 6.4 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+			dCT3S += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) dCT3S += Math.round(scalingBonusToughness() * 0.1);
+		}
 		return dCT3S;
 	}
 	

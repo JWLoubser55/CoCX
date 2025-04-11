@@ -104,6 +104,9 @@ public class MyconidRace extends Race {
 							return body.player.hasStatusEffect(StatusEffects.GlowingAsshole);
 						}, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
+		
+		addMutation(IMutationsLib.MyconidSporeIM);
+		addMutation(IMutationsLib.MyconidCollectiveConsciousnessIM);
 
 		buildTier(16, "Matango")
                 .requireHornType(Horns.SHROOM_HEADCAP)

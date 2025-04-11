@@ -4080,6 +4080,9 @@ use namespace CoC;
 		
 		public override function damagePsychicPercent():Number {
 			var mult:Number = 100;//damageMagicalPercent()
+			if (perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 2) {
+				mult -= (25 * (perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) - 1));
+			}
 			//mult -= resEarthStat.value;
 			//Caps damage reduction at 100%
 			if (mult < 0) mult = 0;

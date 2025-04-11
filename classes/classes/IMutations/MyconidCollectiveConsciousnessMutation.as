@@ -17,11 +17,15 @@ import classes.Races;
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+			var perkCent:int = 1;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Add 10% of your toughness to your spellcasting and Esper score";
-            if (pTier >= 2) descS += ", ";
-            if (pTier >= 3) descS += ", ";
-            if (pTier >= 4) descS += ", ";
+			if (pTier >= 2) perkCent += 1;
+			if (pTier >= 3) perkCent += 1;
+			if (pTier >= 4) perkCent += 2;
+            if (pTier >= 1) descS += "Add " + perkCent + "0% of your toughness to your spellcasting and Esper score";
+            if (pTier >= 2) descS += ". Take "+((pTier-1)*25)+"% less damage from mental attacks and Esper ability";
+            if (pTier >= 3) descS += ". Gain "+(pTier-2)+"% mana regeneration";
+            if (pTier >= 4) descS += ". Your own Esper abilities are 25% stronger";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -57,7 +61,7 @@ import classes.Races;
         }
 
         public function MyconidCollectiveConsciousnessMutation() {
-            super(mName + " IM", mName, SLOT_NERVSYS, 1);
+            super(mName + " IM", mName, SLOT_NERVSYS, 4);
         }
 
     }
