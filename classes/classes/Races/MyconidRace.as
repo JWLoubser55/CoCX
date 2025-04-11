@@ -52,7 +52,7 @@ public class MyconidRace extends Race {
 				.eyeType(Eyes.HUMAN, +1)
 				.earType(Ears.HUMAN, +1)
 				.tongueType(Tongue.HUMAN, +1)
-				.hornType(Horns.SHROOM_HEADCAP, +1)
+				.hornType(Horns.SHROOM_HEADCAP, +1, -1000)
 				.customRequirement("","shroom headcap size > 1",
 						function (body:BodyData):Boolean {
 							return body.player.horns.count > 2

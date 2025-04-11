@@ -4569,7 +4569,7 @@ import classes.Scenes.Combat.CombatAbilities;
 						outputText("\n\n");
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg = (tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 						statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 					}
 				}
 			}
@@ -4639,7 +4639,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 				statStore.addBuffObject({str:-statusEffectv1(StatusEffects.NagaVenom), spe:-statusEffectv1(StatusEffects.NagaVenom), tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.NagaVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.NagaVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			//Apophis Venom
         	if (hasStatusEffect(StatusEffects.ApophisVenom)) {
@@ -4653,7 +4653,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				SceneLib.combat.teaseXP(1 + SceneLib.combat.bonusExpAfterSuccesfullTease());
 				statStore.addBuffObject({str:-statusEffectv1(StatusEffects.ApophisVenom)*2, spe:-statusEffectv1(StatusEffects.ApophisVenom)*2, tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.ApophisVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.ApophisVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			//Bee Venom
         	if (hasStatusEffect(StatusEffects.BeeVenom)) {
@@ -4668,7 +4668,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (lustVuln != 0) lustVuln += 0.05;
 				statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.BeeVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.BeeVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			//Jabberwocky Poison Breath
         	if (hasStatusEffect(StatusEffects.JabberwockyVenom)) {
@@ -4683,7 +4683,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (lustVuln != 0) lustVuln += 0.05;
 				statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.JabberwockyVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.JabberwockyVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			//Manticore Venom
        		if (hasStatusEffect(StatusEffects.ManticoreVenom)) {
@@ -4697,7 +4697,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				SceneLib.combat.teaseXP(1 + SceneLib.combat.bonusExpAfterSuccesfullTease());
 				statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.ManticoreVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.ManticoreVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			if (venomLustDmg > 0 && lustVuln != 0) {
 				outputText("[Themonster] is aroused from the poison coursing through them ");

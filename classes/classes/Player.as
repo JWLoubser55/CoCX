@@ -1702,16 +1702,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.PrestigeJobTempest) && (weapon.isDualWielded() || weapon == game.weapons.DAISHO)) {
 				attack += (5 * newGamePlusMod);
 			}
-			if (perkv1(IMutationsLib.LivingWeaponIM) >= 1) {
-				if (perkv1(IMutationsLib.LivingWeaponIM) >= 2) {
-					if (perkv1(IMutationsLib.LivingWeaponIM) >= 3) {
-						if (perkv1(IMutationsLib.LivingWeaponIM) >= 4) attack += armorDef;
-						else attack += Math.round(armorDef * 0.75);
-					}
-					else attack += Math.round(armorDef * 0.5);
-				}
-				else attack += Math.round(armorDef * 0.25);
-			}
+			if (perkv1(IMutationsLib.LivingWeaponIM) >= 1) attack += Math.round(armorDef * 0.25 * perkv1(IMutationsLib.LivingWeaponIM));
 			//Konstantine buff
 			if (hasStatusEffect(StatusEffects.KonstantinWeaponSharpening) && weaponName != "fists") {
 				attack *= 1 + (statusEffectv2(StatusEffects.KonstantinWeaponSharpening) / 100);

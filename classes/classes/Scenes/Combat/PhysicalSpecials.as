@@ -576,7 +576,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.AlraunePollen)) bd.disable("<b>You already spread your pollen over battlefield.</b>\n\n");
 				else if (player.hasStatusEffect(StatusEffects.SporeCloud)) bd.disable("<b>There is no point to activate this ability as your current cloud causes a similar effect.</b>\n\n");
 			}
-			if (player.isRaceCached(Races.MYCONID) && !player.hasPerk(PerkLib.ElementalBody)) {
+			if ((player.isRaceCached(Races.MYCONID) || player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) && !player.hasPerk(PerkLib.ElementalBody)) {
 				// Spore Cloud
 				bd = buttons.add("Spore Cloud", SporeCloud).hint("Release a cloud of your spore into the air to arouse your foe.");
 				if (player.hasStatusEffect(StatusEffects.SporeCloud)) bd.disable("<b>You already spread your spores over battlefield.</b>\n\n");
@@ -1396,6 +1396,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 						damage1B *= damage1Bc;
 						if (player.armor == armors.ELFDRES && player.isElf()) damage1B *= 2;
 						if (player.armor == armors.FMDRESS && player.isWoodElf()) damage1B *= 2;
+						if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage1B *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 						monster.teased(monster.lustVuln * damage1B);
 						if (monster.hasStatusEffect(StatusEffects.NagaVenom))
 						{
@@ -1439,6 +1440,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 						lustdamage *= damage1Bcbc;
 						if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
 						if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+						if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 						monster.teased(monster.lustVuln * lustdamage);
 						monster.statStore.addBuffObject({tou:-(damage1Bcbc*2)}, "Poison",{text:"Poison"});
 						if (monster.hasStatusEffect(StatusEffects.ManticoreVenom))
@@ -1507,6 +1509,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 							if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) lustDmg *= 2;
 							if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 							if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+							if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDmg *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 							lustDmg *= monster.lustVuln;
 							monster.teased(lustDmg);
 							if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
@@ -2126,6 +2129,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 			if (player.armor == armors.ELFDRES && player.isElf()) damage *= 2;
         	if (player.armor == armors.FMDRESS && player.isWoodElf()) damage *= 2;
+			if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 			monster.statStore.addBuffObject({spe:-damage/2}, "Poison",{text:"Poison"});
 			damage = monster.lustVuln * damage;
 			//Clean up down to 1 decimal point
@@ -5167,6 +5171,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					var lustDmg:Number = 35 + rand(player.lib / 10);
 					if (player.hasPerk(PerkLib.RacialParagon)) lustDmg *= combat.RacialParagonAbilityBoost();
 					if (player.hasPerk(PerkLib.NaturalArsenal)) lustDmg *= 2;
+					if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDmg *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 					lustDmg *= d3Bdcc;
 					monster.teased(Math.round(monster.lustVuln * lustDmg), true);
 					combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
@@ -5887,6 +5892,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.armor == armors.ELFDRES && player.isElf()) damage *= 2;
         	if (player.armor == armors.FMDRESS && player.isWoodElf()) damage *= 2;
 			if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1) damage *= 2;
+			if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 			damage *= dBd3c;
 			monster.teased(Math.round(monster.lustVuln * damage));
 			if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM) * 25)) {
@@ -5965,6 +5971,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.RacialParagon)) lustdamage *= combat.RacialParagonAbilityBoost();
 		if (player.hasPerk(PerkLib.NaturalArsenal)) lustdamage *= 2;
 		if (player.perkv1(IMutationsLib.ManticoreMetabolismIM) >= 3) lustdamage *= 2;
+		if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 		//Determine if critical!
 		var crit:Boolean = false;
 		var critChance:Number;
@@ -6855,6 +6862,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				}
 				if (player.armor == armors.ELFDRES && player.isElf()) damage1B *= 2;
 				if (player.armor == armors.FMDRESS && player.isWoodElf()) damage1B *= 2;
+				if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage1B *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 				monster.teased(damage1B*Omnishot);
 				if (monster.hasStatusEffect(StatusEffects.BeeVenom)) {
 					monster.addStatusValue(StatusEffects.BeeVenom, 3, damage1Ba*Omnishot);
@@ -6898,6 +6906,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				}
 				if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
 				if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+				if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 				monster.teased(lustdamage*Omnishot, false);
 				if (player.hasPerk(PerkLib.ToxineMaster)) DBPaa += 2.5;
 				monster.statStore.addBuffObject({tou:-(DBPaa*2*Omnishot)}, "Poison",{text:"Poison"});
@@ -6965,6 +6974,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) lustDmg *= 2;
 					if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 					if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+					if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDmg *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 					monster.teased(lustDmg*Omnishot);
 					if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
 						monster.lustVuln += 0.01;
@@ -7591,4 +7601,4 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function PhysicalSpecials() {
 	}
 }
-}
+}

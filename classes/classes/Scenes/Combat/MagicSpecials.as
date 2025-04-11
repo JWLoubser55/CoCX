@@ -140,8 +140,8 @@ public class MagicSpecials extends BaseCombatContent {
 				bd = buttons.add("Lust storm", Luststorm).hint("Supercharge the air with your lusty electricity to unleash a thunderstorm.");
 				if (player.hasStatusEffect(StatusEffects.lustStorm)) bd.disable("<b>You already unleashed a thunderstorm on the battlefield</b>\n\n");
 			}
-			if (player.isRaceCached(Races.KIRIN) && (player.weapon.isMaceHammerType() || player.weaponOff.isMaceHammerType() || player.weapon.isDuelingType() || player.weaponOff.isDuelingType() || player.weapon.isSwordType() || player.weaponOff.isSwordType() ||
-				player.weapon.isAxeType() || player.weaponOff.isAxeType() || player.weaponOff.isDaggerType() || player.weapon.isDaggerType() || player.weapon.isScytheType() || player.weaponOff.isScytheType())) {
+			if (player.isRaceCached(Races.KIRIN) && (player.weapon.isDuelingType() || player.weapon.isSwordType() || player.weapon.isSpearType() || player.weapon.isStaffType() ||
+				player.weaponOff.isDuelingType() || player.weaponOff.isSwordType() || player.weaponOff.isSpearType() || player.weaponOff.isStaffType())) {
 				//Electrify Weapon
 				bd = buttons.add("Electrify Weapon", ElectrifyWeapon).hint("Coat your weapon with a sheet of lusty electricity.");
 				if (player.hasStatusEffect(StatusEffects.ElectrifyWeapon)) {
@@ -5785,6 +5785,7 @@ public class MagicSpecials extends BaseCombatContent {
 		useMana(100, USEFATG_MAGIC_NOBM);
 		combat.darkRitualCheckDamage();
 		var damage:Number = (scalingBonusIntelligence() * spellMod());
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;

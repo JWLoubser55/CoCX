@@ -7,6 +7,7 @@ package classes.IMutations
 import classes.PerkClass;
 import classes.IMutationPerkType;
 import classes.Creature;
+import classes.Races;
 
     public class MyconidSporeMutation extends IMutationPerkType
     {
@@ -17,15 +18,10 @@ import classes.Creature;
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1){
-                descS += "";
-            }
-            if (pTier >= 2){
-                descS += ", ";
-            }
-            if (pTier >= 3){
-                descS += ", ";
-            }
+            if (pTier >= 1) descS += "Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 25%";
+            if (pTier >= 2) descS += ", ";
+            if (pTier >= 3) descS += ", ";
+            if (pTier >= 4) descS += ", ";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -37,7 +33,8 @@ import classes.Creature;
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireHeartMutationSlot();
+                    this.requireOvariesMutationSlot()
+					.requireRace(Races.MYCONID);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -52,11 +49,15 @@ import classes.Creature;
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
+            if (pTier == 1) pBuffs['lib.mult'] = 0.05;
+            else if (pTier == 2) pBuffs['lib.mult'] = 0.1;
+            else if (pTier == 3) pBuffs['lib.mult'] = 0.15;
+            else if (pTier == 4) pBuffs['lib.mult'] = 0.2;
             return pBuffs;
         }
 
         public function MyconidSporeMutation() {
-            super(mName + " IM", mName, SLOT_NONE, 3);//SLOT_OVARIES
+            super(mName + " IM", mName, SLOT_OVARIES, 1);
         }
 
     }

@@ -3417,6 +3417,7 @@ public class Combat extends BaseContent {
 					if (player.hasStatusEffect(StatusEffects.GreenCovenant)) lustDMG *= 2;
 					if (player.armor == armors.ELFDRES && player.isElf()) lustDMG *= 2;
 					if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDMG *= 2;
+					if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDMG *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 					lustDMG = Math.round(monster.lustVuln * lustDMG);
 					monster.teased(lustDMG, false);
 					combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
@@ -3448,6 +3449,7 @@ public class Combat extends BaseContent {
 					}
                     if (player.armor == armors.ELFDRES && player.isElf()) damage1B *= 2;
                     if (player.armor == armors.FMDRESS && player.isWoodElf()) damage1B *= 2;
+					if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage1B *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                     monster.teased(damage1B);
                     if (monster.hasStatusEffect(StatusEffects.BeeVenom)) {
                         monster.addStatusValue(StatusEffects.BeeVenom, 3, damage1Ba);
@@ -3457,7 +3459,7 @@ public class Combat extends BaseContent {
 					flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 					monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 						monster.teased(damage1B);
 						if (monster.hasStatusEffect(StatusEffects.BeeVenom)) {
@@ -3468,7 +3470,7 @@ public class Combat extends BaseContent {
 						flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 						monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					}
                 }
                 if (player.tailType == Tail.SCORPION || player.hasKeyItem("Sky Poison Pearl") >= 0) {
@@ -3492,7 +3494,7 @@ public class Combat extends BaseContent {
 					flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 					monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 						if (player.hasPerk(PerkLib.ToxineMaster)) monster.statStore.addBuffObject({tou:-(DBP+5), spe:-DBP}, "Poison",{text:"Poison"});
 						else monster.statStore.addBuffObject({tou:-DBP, spe:-DBP}, "Poison",{text:"Poison"});
@@ -3507,7 +3509,7 @@ public class Combat extends BaseContent {
 						flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 						monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					}
                 }
                 if (player.tailType == Tail.MANTICORE_PUSSYTAIL) {
@@ -3525,6 +3527,7 @@ public class Combat extends BaseContent {
 					}
                     if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
                     if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+					if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                     monster.teased(lustdamage, false);
 					if (player.hasPerk(PerkLib.ToxineMaster)) DBPaa += 2.5;
                     monster.statStore.addBuffObject({tou:-(DBPaa*2)}, "Poison",{text:"Poison"});
@@ -3535,7 +3538,7 @@ public class Combat extends BaseContent {
 					flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 					monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 						monster.teased(lustdamage, false);
 						if (player.hasPerk(PerkLib.ToxineMaster)) DBPaa += 2.5;
@@ -3547,7 +3550,7 @@ public class Combat extends BaseContent {
 						flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 						monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					}
                 }
                 if (player.faceType == Face.SNAKE_FANGS) {
@@ -3569,7 +3572,7 @@ public class Combat extends BaseContent {
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 					if (player.hasPerk(PerkLib.ToxineMaster)) monster.statStore.addBuffObject({tou:-(touDmg+5), spe:-DBPaaa}, "Poison",{text:"Poison"});
 					else monster.statStore.addBuffObject({tou:-touDmg, spe:-DBPaaa}, "Poison",{text:"Poison"});
-                    if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+                    if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 						if (monster.hasStatusEffect(venomType)) {
 							monster.addStatusValue(venomType, 2, 0.4);
@@ -3583,7 +3586,7 @@ public class Combat extends BaseContent {
 						flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 						if (player.hasPerk(PerkLib.ToxineMaster)) monster.statStore.addBuffObject({tou:-(touDmg+5), spe:-DBPaaa}, "Poison",{text:"Poison"});
 						else monster.statStore.addBuffObject({tou:-touDmg, spe:-DBPaaa}, "Poison",{text:"Poison"});
-						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					}
                 }
                 if (player.faceType == Face.SPIDER_FANGS) {
@@ -3606,6 +3609,7 @@ public class Combat extends BaseContent {
 						}
                         if (player.armor == armors.ELFDRES && player.isElf()) damage2B *= 2;
                         if (player.armor == armors.FMDRESS && player.isWoodElf()) damage2B *= 2;
+						if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage2B *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                         monster.teased(damage2B);
 						if (player.hasPerk(PerkLib.ToxineMaster)) poisonScaling += 5;
                         monster.statStore.addBuffObject({tou:-poisonScaling}, "Poison",{text:"Poison"});
@@ -3620,7 +3624,7 @@ public class Combat extends BaseContent {
 						flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 						monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 							monster.teased(damage2B);
 							if (player.hasPerk(PerkLib.ToxineMaster)) poisonScaling += 5;
@@ -3636,7 +3640,7 @@ public class Combat extends BaseContent {
 							flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 							monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 						}
                     }
                     else{
@@ -3645,6 +3649,7 @@ public class Combat extends BaseContent {
 						if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) lustDmg *= 2;
                         if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
                         if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+						if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDmg *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                         monster.teased(lustDmg);
                         if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
                             monster.lustVuln += 0.01;
@@ -3655,7 +3660,7 @@ public class Combat extends BaseContent {
 						flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 						monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 							monster.teased(lustDmg);
 							if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
@@ -3667,7 +3672,7 @@ public class Combat extends BaseContent {
 							flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 							monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 						}
                     }
                 }
@@ -3858,13 +3863,15 @@ public class Combat extends BaseContent {
 		}
         else if (player.weapon == weapons.PHALLUS || player.weapon == weapons.PHALUSS) {
             if (player.statusEffectv1(StatusEffects.ThePhalluspear1) == 1) {
-				monster.teased(Math.round(monster.lustVuln * damage * 0.05));
+				if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(Math.round(monster.lustVuln * damage * 0.05 * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25))));
+				else monster.teased(Math.round(monster.lustVuln * damage * 0.05));
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
             else {
                 doPhysicalDamage(Math.round(damage * 0.75), true, true);
-                monster.teased(Math.round(monster.lustVuln * damage * 0.0125));
+                if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(Math.round(monster.lustVuln * damage * 0.0125 * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25))));
+				else monster.teased(Math.round(monster.lustVuln * damage * 0.0125));
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
             }
@@ -4110,13 +4117,15 @@ public class Combat extends BaseContent {
 		}
         else if (player.weaponOff == weapons.PHALLUS || player.weaponOff == weapons.PHALUSS) {
             if (player.statusEffectv1(StatusEffects.ThePhalluspear1) == 1) {
-				monster.teased(Math.round(monster.lustVuln * damage * 0.05));
+				if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(Math.round(monster.lustVuln * damage * 0.05 * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25))));
+				else monster.teased(Math.round(monster.lustVuln * damage * 0.05));
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
             else {
                 doPhysicalDamage(Math.round(damage * 0.75), true, true);
-                monster.teased(Math.round(monster.lustVuln * damage * 0.0125));
+                if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(Math.round(monster.lustVuln * damage * 0.0125 * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25))));
+				else monster.teased(Math.round(monster.lustVuln * damage * 0.0125));
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
             }
@@ -5160,6 +5169,7 @@ public class Combat extends BaseContent {
                             else{
                                 if (rand(2) == 0) outputText("\n[Themonster] shiver" + s + " and get" + s + " turned on from the injected chemicals.");
                                 else outputText("\n[Themonster] shiver" + s + " and moan" + s + " involuntarily from the injected chemicals effects.");
+								if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) rangeweaponLustDmg *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                             }
                         }
                         monster.teased(rangeweaponLustDmg, false);
@@ -5858,6 +5868,7 @@ public class Combat extends BaseContent {
                         if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) sharedVenomMulti *= 2;
                         if (player.armor == armors.ELFDRES && player.isElf()) sharedVenomMulti *= 2;
                         if (player.armor == armors.FMDRESS && player.isWoodElf()) sharedVenomMulti *= 2;
+						if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) sharedVenomMulti *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                         outputText(" and inject your venom into the wound!");
                         if (player.lowerBody == LowerBody.ATLACH_NACHA){
                             outputText("  [monster he] seems to be affected by the poison, showing increasing sign of weakness and arousal.");
@@ -6208,7 +6219,7 @@ public class Combat extends BaseContent {
 					}
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 					monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM) * 25)) {
 						monster.statStore.addBuffObject({str: -numm}, "Sandworm Sting", {text: "Sandworm Sting"});
 						if (!monster.hasStatusEffect(StatusEffects.LustDoT))
@@ -6219,7 +6230,7 @@ public class Combat extends BaseContent {
 						}
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 						monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					}
                     outputText(".\n");
                     break;
@@ -6248,6 +6259,7 @@ public class Combat extends BaseContent {
                                 lustdamage *= lustDmg2;
                                 if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
                                 if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+								if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                                 monster.teased(Math.round(monster.lustVuln * lustdamage), false);
                                 monster.statStore.addBuffObject({tou:-(lustDmg2*2)}, "Poison",{text:"Poison"});
                                 player.tailVenom -= pVenomWebCost;
@@ -6267,7 +6279,7 @@ public class Combat extends BaseContent {
                                 else monster.createStatusEffect(StatusEffects.ManticoreVenom, 0, 0, (dBd1c * 5), 0);
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 								monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-                                if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+                                if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM) * 25)) {
 									monster.teased(Math.round(monster.lustVuln * lustdamage), false);
 									monster.statStore.addBuffObject({tou: -(lustDmg2 * 2)}, "Poison", {text:"Poison"});
@@ -6286,7 +6298,7 @@ public class Combat extends BaseContent {
 									else monster.createStatusEffect(StatusEffects.ManticoreVenom, 0, 0, (dBd1c * 5), 0);
 									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 									monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								}
                             }
                             outputText(".")
@@ -6323,6 +6335,7 @@ public class Combat extends BaseContent {
                             lustdamage2 *= lustDmg3;
                             if (player.armor == armors.ELFDRES && player.isElf()) lustdamage2 *= 2;
                             if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage2 *= 2;
+							if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage2 *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                             monster.teased(Math.round(monster.lustVuln * lustdamage2), false);
                             combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
                             if (monster.hasStatusEffect(StatusEffects.BeeVenom)) monster.addStatusValue(StatusEffects.BeeVenom,3,(dBd2c*5));
@@ -6330,7 +6343,7 @@ public class Combat extends BaseContent {
                             if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
 							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 							monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 							if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 								monster.teased(Math.round(monster.lustVuln * lustdamage2), false);
 								combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
@@ -7582,6 +7595,7 @@ public class Combat extends BaseContent {
 									damageB *= 2;
 									damageBa *= 2;
 								}
+								if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damageB *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                                 damageB *= damageBa;
                                 monster.teased(Math.round(monster.lustVuln * damageB));
                                 if (monster.hasStatusEffect(StatusEffects.NagaVenom)) {
@@ -7595,7 +7609,7 @@ public class Combat extends BaseContent {
                                 flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 								monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 									monster.teased(Math.round(monster.lustVuln * damageB));
 									if (monster.hasStatusEffect(StatusEffects.NagaVenom)) {
@@ -7609,7 +7623,7 @@ public class Combat extends BaseContent {
 									flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 									monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								}
                             }
                             if (player.tailType == Tail.SCORPION || player.hasKeyItem("Sky Poison Pearl") >= 0) {
@@ -7640,6 +7654,7 @@ public class Combat extends BaseContent {
                                 if (player.hasPerk(PerkLib.RacialParagon)) lustdamage *= RacialParagonAbilityBoost();
                                 if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
                                 if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+								if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                                 lustdamage *= 0.14;
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1) {
 									lustdamage *= 2;
@@ -7655,7 +7670,7 @@ public class Combat extends BaseContent {
                                 flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 								monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 									monster.teased(Math.round(monster.lustVuln * lustdamage));
 									monster.statStore.addBuffObject({tou:-(DBPaaa*2)}, "Poison",{text:"Poison"});
@@ -7666,7 +7681,7 @@ public class Combat extends BaseContent {
 									flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 									monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								}
                             }
                             if (player.faceType == Face.SNAKE_FANGS) {
@@ -7725,6 +7740,7 @@ public class Combat extends BaseContent {
                                     if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) lustDmg *= 2;
                                     if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
                                     if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+									if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                                     monster.teased(lustDmg);
                                     if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
                                         monster.lustVuln += 0.01;
@@ -8085,6 +8101,7 @@ public class Combat extends BaseContent {
                                 var damageBa:Number = 1;
                                 if (player.armor == armors.ELFDRES && player.isElf()) damageBa *= 2;
                                 if (player.armor == armors.FMDRESS && player.isWoodElf()) damageBa *= 2;
+								if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damageBa *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                                 if (player.hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) damageB += scalingBonusToughness() * 0.5;
 								if (player.hasPerk(PerkLib.LewdPoisoning)) damageB += combat.teases.teaseBaseLustDamage() * 0.5;
                                 if (player.level < 10) damageB += 20 + (player.level * 3);
@@ -8110,7 +8127,7 @@ public class Combat extends BaseContent {
                                 flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 								monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 									monster.teased(Math.round(monster.lustVuln * damageB));
 									if (monster.hasStatusEffect(StatusEffects.NagaVenom)) {
@@ -8124,7 +8141,7 @@ public class Combat extends BaseContent {
 									flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 									monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								}
                             }
                             if (player.tailType == Tail.SCORPION || player.hasKeyItem("Sky Poison Pearl") >= 0) {
@@ -8155,6 +8172,7 @@ public class Combat extends BaseContent {
                                 if (player.hasPerk(PerkLib.RacialParagon)) lustdamage *= RacialParagonAbilityBoost();
                                 if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
                                 if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+								if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                                 lustdamage *= 0.14;
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1) {
 									lustdamage *= 2;
@@ -8170,7 +8188,7 @@ public class Combat extends BaseContent {
                                 flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 								monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM)*25)) {
 									monster.teased(Math.round(monster.lustVuln * lustdamage));
 									monster.statStore.addBuffObject({tou:-(DBPaaa*2)}, "Poison",{text:"Poison"});
@@ -8181,7 +8199,7 @@ public class Combat extends BaseContent {
 									flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 									monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+									if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 								}
                             }
                             if (player.faceType == Face.SNAKE_FANGS) {
@@ -8210,6 +8228,7 @@ public class Combat extends BaseContent {
                                     var damage4Ba:Number = 1;
                                     if (player.armor == armors.ELFDRES && player.isElf()) damage4Ba *= 2;
                                     if (player.armor == armors.FMDRESS && player.isWoodElf()) damage4Ba *= 2;
+									if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage4Ba *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 									if (player.hasPerk(PerkLib.LewdPoisoning)) damage4B += combat.teases.teaseBaseLustDamage() * 0.5;
                                     if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) damage4B *= 2;
                                     poisonScaling += player.lib/100;
@@ -8240,6 +8259,7 @@ public class Combat extends BaseContent {
                                     if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) lustDmg *= 2;
                                     if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
                                     if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+									if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
                                     monster.teased(lustDmg);
                                     if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
                                         monster.lustVuln += 0.01;
@@ -9404,6 +9424,7 @@ public class Combat extends BaseContent {
 			if (player.hasPerk(PerkLib.LewdPoisoning)) Ldamage += combat.teases.teaseBaseLustDamage() * 0.5;
             if (player.armor == armors.ELFDRES && player.isElf()) Ldamage *= 2;
             if (player.armor == armors.FMDRESS && player.isWoodElf()) Ldamage *= 2;
+			if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) Ldamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
             monster.teased(Math.round(monster.lustVuln * Ldamage));
             monster.statStore.addBuffObject({tou:-1}, "Poison",{text:"Poison"});
             if (monster.hasStatusEffect(StatusEffects.NagaVenom)) {
@@ -9474,6 +9495,7 @@ public class Combat extends BaseContent {
             if (player.armor == armors.ELFDRES && player.isElf()) lust0damage *= 2;
             if (player.armor == armors.FMDRESS && player.isWoodElf()) lust0damage *= 2;
 			if (player.hasStatusEffect(StatusEffects.AlterBindScroll6)) lust0damage *= 2;
+			if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lust0damage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
             monster.teased(Math.round(monster.lustVuln * lust0damage));
 			if (player.hasStatusEffect(StatusEffects.AlterBindScroll7)) touDebuff += monster.tou * 0.01;
 			if (player.hasStatusEffect(StatusEffects.AlterBindScroll8)) {
@@ -15577,6 +15599,7 @@ public function SingArouse(Bee:Boolean = false):void {
     if (player.hasPerk(PerkLib.RacialParagon)) LustDamage *= combat.RacialParagonAbilityBoost();
     if (player.hasPerk(PerkLib.NaturalArsenal)) LustDamage *= 2;
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 1) LustDamage *= (1 + (0.25 * player.perkv1(IMutationsLib.MelkieLungIM)));
+	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) LustDamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 	if (player.weapon == weapons.ELYSIUM) LustDamage *= 2;
     //Apply intensity multiplier
     LustDamage *= player.statusEffectv1(StatusEffects.Sing);
@@ -15915,6 +15938,7 @@ public function randomTeaseManticoreTailSpike(straddleDamage:Number, randomcrit:
     if (player.hasPerk(PerkLib.RacialParagon)) multiplier += RacialParagonAbilityBoost() - 1;
     if (player.hasPerk(PerkLib.NaturalArsenal)) multiplier += 1;
     straddleDamage *= multiplier;
+	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) straddleDamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
     monster.teased(straddleDamage, false);
     if (randomcrit) outputText(" <b>Critical!</b>");
     var dam4Ba:Number = 1;
@@ -15926,7 +15950,7 @@ public function randomTeaseManticoreTailSpike(straddleDamage:Number, randomcrit:
 	touDmg = monster.statusEffectv1(StatusEffects.ManticoreVenom) * 2;
 	if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (monster.tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 	monster.statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-	if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+	if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
     player.tailVenom -= player.VenomWebCost();
     flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 }
@@ -15967,6 +15991,7 @@ public function randomTeaseJabberwocky(straddleDamage:Number, randomcrit:Boolean
         monster.addStatusValue(StatusEffects.JabberwockyVenom, 3, dam4Ba);
     } else monster.createStatusEffect(StatusEffects.JabberwockyVenom, 0, 0, dam4Ba, 0);
     player.tailVenom -= player.VenomWebCost();
+	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) straddleDamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
     straddleDamage += scalingBonusToughness() * 2;
     straddleDamage *= 2;
     monster.teased(straddleDamage, false);
@@ -16053,7 +16078,7 @@ public function randomTeaseAlraune(straddleDamage:Number, randomcrit:Boolean):vo
 
 public function randomTeaseLiliraune(straddleDamage:Number, randomcrit:Boolean):void {
     outputText("With your lovely guest comfortably set in your pitcher its time for you to get to the fun part." +
-            "\n\n\"Oh my! An early treat sister, look at how she/he is well tied up.\"" +
+            "\n\n\"Oh my! An early treat sister, look at how [monster he] is well tied up.\"" +
             "\n\n\"It sure gets my sap pumping.\"\n\n");
     outputText("Now that [themonster] is nicely tied up you giggle and you pull [monster him] into a kiss, " +
             "feeding [monster him] your aphrodisiac nectar as your hand sweetly traces [monster his] cheek. One of your stamens plunges straight towards");
@@ -16110,6 +16135,7 @@ public function randomTeaseAnemone(straddleDamage:Number, randomcrit:Boolean):vo
     
     var multiplier:Number = 1;
     if (player.hasPerk(PerkLib.RacialParagon)) multiplier += RacialParagonAbilityBoost() - 1;
+	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) straddleDamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
     straddleDamage *= multiplier;
     straddleDamage *= 2;
     straddleDamage = Math.round(straddleDamage);
@@ -16798,6 +16824,7 @@ public function spiderBiteAttack():void {
         poisonScaling *= dam4Baa;
         if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
         if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+		if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDmg *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
         monster.teased(Math.round(monster.lustVuln * lustDmg), true);
         monster.statStore.addBuffObject({tou:-poisonScaling}, "Poison",{text:"Poison"});
         if (monster.hasStatusEffect(StatusEffects.NagaVenom)) {
@@ -17353,6 +17380,7 @@ public function castPsychicBolt():void {
 		damage += player.inte * 0.5;
 		damage += scalingBonusIntelligence() * 0.5;
 	}
+	if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
 	if (damage < 10) damage = 10;
 	//soulskill mod effect
 	//damage *= combat.soulskillMagicalMod();
@@ -17575,6 +17603,7 @@ public function sharedKinesisMidpart(crit:Boolean):Number {
 		damage += player.inte * 0.5;
 		damage += scalingBonusIntelligence() * 0.5;
 	}
+	if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
 	if (damage < 10) damage = 10;
 	//soulskill mod effect
 	//damage *= combat.soulskillMagicalMod();
@@ -19016,6 +19045,11 @@ public function debuffsOrDoTDuration(duration:Number):Number {
         Math.round(duration);
     }
     return duration;
+}
+
+public function aPoisonGlandsMyconidSpores():void {
+	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25)), false);
+	else monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
 }
 
 public function ghostStrength():Number {
