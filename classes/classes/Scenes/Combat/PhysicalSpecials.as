@@ -1200,7 +1200,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.str <= 100) chanceMeteorShot += (player.str - 50) / 5;
 			if (player.str > 100) chanceMeteorShot += 10;
 			if (rand(100) < chanceMeteorShot) {
-				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3 || player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
 				else monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 			}
 		}
@@ -1755,7 +1755,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
 		if (player.hasPerk(PerkLib.DevastatingCharge) && !monster.hasPerk(PerkLib.Resolute) && rand(10) > 7) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3 || player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
 			else monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
 		}
 		outputText("\n\n");
@@ -2288,6 +2288,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				var stunDura:Number = 2;
 				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) stunDura += 1;
 				if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 3) stunDura += 1;
+				if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) stunDura += 1;
 				else monster.createStatusEffect(StatusEffects.Stunned, stunDura, 0, 0, 0);
 			}
 			else outputText("back in pain but hold steady despite the impact.");
@@ -3558,7 +3559,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function gadgetStunGrenade():void {
 		clearOutput();
 		outputText("You pull the metal plug and throw the stun grenade ahead watching with satisfaction as it explodes unleashing a discharge of electricity and stunning your opponent. ");
-		if (!monster.hasPerk(PerkLib.Resolute)) monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
+		if (!monster.hasPerk(PerkLib.Resolute)) {
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
+		}
 		player.createStatusEffect(StatusEffects.CooldownStunGrenade,4,0,0,0);
 		if (player.hasKeyItem("Stun Grenade II") >= 0) {
 			var damage:Number;
@@ -3640,7 +3644,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 		doDamage(damage, true, true, ignoreDR);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
-		if (!monster.hasPerk(PerkLib.Resolute)) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+		if (!monster.hasPerk(PerkLib.Resolute)) {
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+		}
 		if (monster.HP <= monster.minHP()) doNext(endHpVictory);
 		else {
 			if (player.hasPerk(PerkLib.SimplifiedInterface) && flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] == 0) {
@@ -3905,7 +3912,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("You punch your adversary with your stone fist, dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (!monster.hasPerk(PerkLib.Resolute)) {
 			outputText(" [Themonster] recoil under the blow!");
-			monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 		}
 		if (crit) {
 			outputText(" <b>*Critical Hit!*</b>");
@@ -3982,7 +3990,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("You slam your mace-like tail on your foe, dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (!monster.hasPerk(PerkLib.Resolute)) {
 			outputText(" The attack is so devastating your target is stunned by the crushing blow!");
-			monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
 		if (crit) {
 			outputText(" <b>*Critical Hit!*</b>");
@@ -4140,7 +4149,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
-		if (!monster.hasPerk(PerkLib.Resolute)) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+		if (!monster.hasPerk(PerkLib.Resolute)) {
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+		}
 		checkAchievementDamage(damage);
 		outputText("\n\n");
 		combat.WrathGenerationPerHit2(5);
@@ -6588,7 +6600,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		if (!monster.hasStatusEffect(StatusEffects.Stunned) && rand(chance) == 0) {
 			outputText("<b>Your impact also manages to stun [themonster]!</b> ");
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3 || player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 			else monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 			var dismishing:Number = 1;
 			if (player.hasPerk(PerkLib.ShieldSlam)) dismishing *= 0.5;
@@ -6620,7 +6632,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		clearOutput();
 		outputText("You skillfully toss your net at [themonster] restraining [monster his] movement.");
 		player.createStatusEffect(StatusEffects.CooldownNet,5,0,0,0);
-		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) {
+		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3 || player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) {
 			monster.createStatusEffect(StatusEffects.Stunned,4,0,0,0);
 			monster.createStatusEffect(StatusEffects.EntangledByNet,4,0,0,0);
 		}
@@ -7208,11 +7220,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 			doLightningDamage(damage, true, true);
 			outputText(" damage!");
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
-			monster.createStatusEffect(StatusEffects.Stunned,4,0,0,0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,5,0,0,0);
+			else monster.createStatusEffect(StatusEffects.Stunned,4,0,0,0);
 		}
 		else {
 			outputText("discharge!");
-			monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 3, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
 		statScreenRefresh();
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
@@ -7353,7 +7367,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		if (monster.isFlying()) {
 			outputText(" There is something very satisfying about hampering your opponent’s ability to fly around by messing with their space.");
-			monster.createStatusEffect(StatusEffects.Stunned, 4, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 5, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 4, 0, 0, 0);
 		}
 		outputText("\n\n");
 		combat.heroBaneProc(damage);
@@ -7555,7 +7570,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText(" <b>([font-damage]" + damage + "[/font])</b> damage");
 		if (!monster.hasPerk(PerkLib.Resolute)) {
 			outputText(" stunning [monster his] for the round");
-			monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,3,0,0,0);
+			else monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
 		}
 		outputText(".");
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
@@ -7575,4 +7591,4 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function PhysicalSpecials() {
 	}
 }
-}
+}

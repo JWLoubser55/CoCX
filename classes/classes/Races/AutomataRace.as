@@ -69,6 +69,7 @@ public class AutomataRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.SoulCoreIM, +3);
+		addMutation(IMutationsLib.LivingWeaponIM, +3);
 		
 		buildTier(23, "Automata")
 				.buffs({
@@ -78,6 +79,18 @@ public class AutomataRace extends Race {
 					"int.mult": +2.50,
 					"wis.mult": -0.65,
 					"lib.mult": +2.50,
+					"sens": +150
+				})
+				.end();
+		
+		buildTier(32, "Automata Ace Unit")
+				.buffs({
+					"str.mult": +3.25,
+					"tou.mult": +3.25,
+					"spe.mult": +3.25,
+					"int.mult": +3.25,
+					"wis.mult": -0.80,
+					"lib.mult": +3.25,
 					"sens": +150
 				})
 				.end();

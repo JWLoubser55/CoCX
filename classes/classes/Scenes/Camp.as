@@ -4904,24 +4904,18 @@ public function wakeFromBadEnd():void {
 	if (player.hasStatusEffect(StatusEffects.ThereCouldBeOnlyOne)) player.removeStatusEffect(StatusEffects.ThereCouldBeOnlyOne);
 	if (player.hasStatusEffect(StatusEffects.LoliBatGolems)) player.removeStatusEffect(StatusEffects.LoliBatGolems);
 	if (flags[kFLAGS.HARDCORE_MODE] == 1) {
-		if (player.strStat.core.value >= 50) player.strStat.core.value = Math.round(player.strStat.core.value * 0.8);
-		else player.strStat.core.value -= 10;
-		if (player.strStat.core.value < 1) player.strStat.core.value = 1;
-		if (player.touStat.core.value >= 50) player.touStat.core.value = Math.round(player.touStat.core.value * 0.8);
-		else player.touStat.core.value -= 10;
-		if (player.touStat.core.value < 1) player.touStat.core.value = 1;
-		if (player.speStat.core.value >= 50) player.speStat.core.value = Math.round(player.speStat.core.value * 0.8);
-		else player.speStat.core.value -= 10;
-		if (player.speStat.core.value < 1) player.speStat.core.value = 1;
-		if (player.intStat.core.value >= 50) player.intStat.core.value = Math.round(player.intStat.core.value * 0.8);
-		else player.intStat.core.value -= 10;
-		if (player.intStat.core.value < 1) player.intStat.core.value = 1;
-		if (player.wisStat.core.value >= 50) player.wisStat.core.value = Math.round(player.wisStat.core.value * 0.8);
-		else player.wisStat.core.value -= 10;
-		if (player.wisStat.core.value < 1) player.wisStat.core.value = 1;
-		if (player.libStat.core.value >= 50) player.libStat.core.value = Math.round(player.libStat.core.value * 0.8);
-		else player.libStat.core.value -= 10;
-		if (player.libStat.core.value < 1) player.libStat.core.value = 1;
+		player.strStat.core.value = 0;
+		player.touStat.core.value = 0;
+		player.speStat.core.value = 0;
+		player.intStat.core.value = 0;
+		player.wisStat.core.value = 0;
+		player.libStat.core.value = 0;
+		player.strStat.train.value = 15;
+		player.touStat.train.value = 15;
+		player.speStat.train.value = 15;
+		player.intStat.train.value = 15;
+		player.wisStat.train.value = 15;
+		player.libStat.train.value = 15;
 	}
     //Restore stats
 	player.HP = player.maxOverHP();

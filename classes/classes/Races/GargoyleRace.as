@@ -64,6 +64,7 @@ public class GargoyleRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.SoulCoreIM, +3);
+		addMutation(IMutationsLib.LivingWeaponIM, +3);
 		
 		buildTier(22,"gargoyle")
 				.customNamingFunction(

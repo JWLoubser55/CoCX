@@ -7866,7 +7866,8 @@ public class Combat extends BaseContent {
                                 var extraHitStunChance:Number = 20;
                                 if (rand(100) < extraHitStunChance){
                                     outputText("The concusion leaves your opponent dazed! ");
-                                    monster.createStatusEffect(StatusEffects.Stunned, 1,0,0,0);
+                                    if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+									else monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
                                 }
                             }
                             outputText("\n\n");
@@ -8457,6 +8458,16 @@ public class Combat extends BaseContent {
         if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 1) unarmed += 10 * (1 + player.newGamePlusMod());
         if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 2) unarmed += 10 * (1 + player.newGamePlusMod());
         if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 3) unarmed += 20 * (1 + player.newGamePlusMod());
+		if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 1) {
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 2) {
+				if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 3) {
+					if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) unarmed += player.armorDef;
+					else unarmed += Math.round(player.armorDef * 0.75);
+				}
+				else unarmed += Math.round(player.armorDef * 0.5);
+			}
+			else unarmed += Math.round(player.armorDef * 0.25);
+		}
         if (player.hasKeyItem("Rocket Boots") >= 0) unarmed += 2;
         if (player.hasKeyItem("Nitro Boots") >= 0) unarmed += 4;
         if (player.hasPerk(PerkLib.Brawn)) unarmedMulti += .05;
@@ -9496,7 +9507,7 @@ public class Combat extends BaseContent {
         if (stun) {
             outputText("\n[Themonster] reels from the brutal blow, stunned.");
             if (!monster.hasStatusEffect(StatusEffects.Stunned)) {
-                if (player.weaponOff == weapons.UDKDEST) monster.createStatusEffect(StatusEffects.Stunned, 3, 0, 0, 0);
+                if (player.weaponOff == weapons.ZWNDER || player.weaponOff == weapons.UDKDEST) monster.createStatusEffect(StatusEffects.Stunned, 3, 0, 0, 0);
                 else monster.createStatusEffect(StatusEffects.Stunned, rand(2), 0, 0, 0);
             }
         }

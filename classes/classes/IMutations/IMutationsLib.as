@@ -48,7 +48,6 @@ public class IMutationsLib
 		public static const DraconicHeartIM:IMutationPerkType = new DraconicHeartMutation();
 		public static const DraconicLungIM:IMutationPerkType = new DraconicLungMutation();
 		public static const LivingWeaponIM:IMutationPerkType = new LivingWeaponMutation();
-		public static const SoulCoreIM:IMutationPerkType = new SoulCoreMutation();
 		public static const MyconidSporeIM:IMutationPerkType = new MyconidSporeMutation();
 		public static const MyconidCollectiveConsciousnessIM:IMutationPerkType = new MyconidCollectiveConsciousnessMutation();
 		public static const PlantChlorophyllIM:IMutationPerkType = new PlantChlorophyllMutation();
@@ -127,6 +126,7 @@ public class IMutationsLib
 		public static const SharkOlfactorySystemIM:IMutationPerkType = new SharkOlfactorySystemMutation();
 		public static const SlimeFluidIM:IMutationPerkType = new SlimeFluidMutation();
 		public static const SlimeMetabolismIM:IMutationPerkType = new SlimeMetabolismMutation();
+		public static const SoulCoreIM:IMutationPerkType = new SoulCoreMutation();
 		public static const StillHeartIM:StillHeartMutation = new StillHeartMutation();
 		public static const TrachealSystemIM:IMutationPerkType = new TrachealSystemMutation();
 		public static const TwinHeartIM:IMutationPerkType = new TwinHeartMutation();

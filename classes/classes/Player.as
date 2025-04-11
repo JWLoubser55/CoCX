@@ -679,7 +679,7 @@ use namespace CoC;
 		//Unhindered related acceptable armor types
 		public function meetUnhinderedReq():Boolean
 		{
-			return armor.hasTag(ItemConstants.A_AGILE);
+			return (armor.hasTag(ItemConstants.A_AGILE) || perkv1(IMutationsLib.LivingWeaponIM) >= 2);
 		}
 		//override public function get armors
 		override public function get armorName():String {
@@ -694,6 +694,10 @@ use namespace CoC;
 			armorDef += armor.def;
 			armorDef += upperGarment.armorDef;
 			armorDef += lowerGarment.armorDef;
+			if (perkv1(IMutationsLib.LivingWeaponIM) >= 3) {
+				if (perkv1(IMutationsLib.LivingWeaponIM) >= 4) armorDef = Math.round(armorDef * 1.5);
+				else armorDef = Math.round(armorDef * 1.25);
+			}
 			if (hasPerk(PerkLib.MiracleMetal) && armor.name != "Arigean Ne-Class Uniform" && armor.name != "Princess Regalia") armorDef = Math.round(armorDef * 0.6);
 			var tier:int;
 			//Blacksmith history!
@@ -1697,6 +1701,16 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.PrestigeJobTempest) && (weapon.isDualWielded() || weapon == game.weapons.DAISHO)) {
 				attack += (5 * newGamePlusMod);
+			}
+			if (perkv1(IMutationsLib.LivingWeaponIM) >= 1) {
+				if (perkv1(IMutationsLib.LivingWeaponIM) >= 2) {
+					if (perkv1(IMutationsLib.LivingWeaponIM) >= 3) {
+						if (perkv1(IMutationsLib.LivingWeaponIM) >= 4) attack += armorDef;
+						else attack += Math.round(armorDef * 0.75);
+					}
+					else attack += Math.round(armorDef * 0.5);
+				}
+				else attack += Math.round(armorDef * 0.25);
 			}
 			//Konstantine buff
 			if (hasStatusEffect(StatusEffects.KonstantinWeaponSharpening) && weaponName != "fists") {
