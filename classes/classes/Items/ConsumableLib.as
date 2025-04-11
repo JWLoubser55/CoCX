@@ -701,8 +701,7 @@ public final class ConsumableLib extends AlchemyLib
 						], concatUnique(
 								GoblinRace.GoblinHairColors,
 								GoblinRace.GoblinEyeColors,
-								GoblinRace.GoblinSkinColors,
-								GoblinRace.GoblinRareSkinColors
+								GoblinRace.GoblinSkinColors
 						)
 				);
 		public const GRE_BER: Consumable = mk("Gre.Beer", "Gre.Beer", "a flagon of potent gremlin beer", 6, "This disgusting brew is made from the combination of goblin ale and incubi draft. It smells of old engine oil and rust, let’s hope it does not taste like that as well.", m.gremlinBeer, ItemConstants.U_TF)

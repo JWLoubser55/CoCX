@@ -674,7 +674,7 @@ use namespace CoC;
 		//Natural Armor (need at least to partialy covering whole body)
 		public function haveNaturalArmor():Boolean
 		{
-			return hasPerk(PerkLib.ThickSkin) || skin.isFurCovered() || skin.isChitinCovered() || skin.isScaleCovered() || skin.hasBark() || skin.isDragonScaleCovered() || skin.hasBaseOnly(Skin.STONE) || lowerBody == LowerBody.SANDWORM;
+			return hasPerk(PerkLib.ThickSkin) || skin.isFurCovered() || skin.isChitinCovered() || skin.isScaleCovered() || skin.hasBark() || skin.isDragonScaleCovered() || skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL) || lowerBody == LowerBody.SANDWORM;
 		}
 		//Unhindered related acceptable armor types
 		public function meetUnhinderedReq():Boolean
@@ -725,7 +725,7 @@ use namespace CoC;
 			if (skin.isChitinCovered()) armorDef += (p?2:4)*newGamePlusMod;
 			if (skin.isScaleCovered()) armorDef += (p?3:6)*newGamePlusMod; //bee-morph (), mantis-morph (), scorpion-morph (wpisane), spider-morph (wpisane)
 			if (skin.hasBark() || skin.isDragonScaleCovered()) armorDef += (p?4:8)*newGamePlusMod;
-			if (skin.hasBaseOnly(Skin.STONE)) armorDef += (10 * newGamePlusMod);
+			if (skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL)) armorDef += (10 * newGamePlusMod);
 			//'Thick' dermis descriptor adds 1!
 			if (skinAdj == "smooth") armorDef += (1 * newGamePlusMod);
 			//Bonus defense
@@ -970,7 +970,7 @@ use namespace CoC;
 			if (skin.isChitinCovered()) armorMDef += (p?2:4)*newGamePlusMod;
 			if (skin.isScaleCovered()) armorMDef += (p?3:6)*newGamePlusMod; //bee-morph (), mantis-morph (), scorpion-morph (wpisane), spider-morph (wpisane)
 			if (skin.hasBark() || skin.isDragonScaleCovered()) armorMDef += (p?4:8)*newGamePlusMod;
-			if (skin.hasBaseOnly(Skin.STONE)) armorMDef += (10 * newGamePlusMod);/*
+			if (skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL)) armorMDef += (10 * newGamePlusMod);/*
 			//'Thick' dermis descriptor adds 1!
 			if (skinAdj == "smooth") armorMDef += (1 * newGamePlusMod);/*
 			*/

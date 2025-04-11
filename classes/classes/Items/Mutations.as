@@ -4565,18 +4565,13 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //skin tone
-        if (!InCollection(player.skinColor, GoblinRace.GoblinSkinColors, GoblinRace.GoblinRareSkinColors) && changes < changeLimit && rand(2) == 0) {
+        if (!InCollection(player.skinColor, GoblinRace.GoblinSkinColors) && changes < changeLimit && rand(2) == 0) {
             player.skinColor = weightedRandom(
                     [17, "dark green"],
                     [6, "emerald"],
                     [7, "green"],
                     [4, "pale yellow"],
-                    [4, "grayish-blue"],
-                    [2, "red"],
-                    [1, "orange"],
-                    [1, "pale purple"],
-                    [1, "royal purple"],
-                    [1, "light purple"]
+                    [4, "grayish-blue"]
             );
             changes++;
             outputText("[pg]Whoah, that was weird.  You just hallucinated that your ");

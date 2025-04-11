@@ -925,6 +925,9 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public function SkinGoo(coverage: int = Skin.COVERAGE_COMPLETE, type: int = 0, options: * = null): Transformation 	{ return skin.SkinGoo(coverage, type, options); }
 	public const SkinGooToFull:Transformation = SkinGoo().registerTfMultiple(AS_SKIN, AE_GOO, AE_DARK_SLIME)
 														 .withAlchemyNames("Goo", "Goo");
+    public function SkinSteel(coverage: int = Skin.COVERAGE_COMPLETE, type: int = 0, options: * = null): Transformation 	{ return skin.SkinSteel(coverage, options); }
+	public const SkinSteelToFull:Transformation = SkinSteel().registerTf(AS_SKIN, AE_AUTOMATA)
+														 .withAlchemyNames("Steel", "Steel");
 
 
 //SKIN PATTERN
@@ -954,6 +957,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const SkinPatternArchImp:Transformation 			    = skin.SkinPatternArchImp.registerTf(AS_SKIN_PATTERN, AE_IMP);
     public const SkinPatternAnubis:Transformation 			    = skin.SkinPatternAnubis.registerTf(AS_SKIN_PATTERN, AE_ANUBIS);
     public const SkinPatternBioluminescence:Transformation 		= skin.SkinPatternBioluminescence.registerTf(AS_SKIN_PATTERN, AE_ABYSSAL_SHARK);//TfMultiple(AS_
+    public const SkinPatternCircuit:Transformation 			    = skin.SkinPatternCircuit.registerTf(AS_SKIN_PATTERN, AE_AUTOMATA);
 
 
 //TAIL

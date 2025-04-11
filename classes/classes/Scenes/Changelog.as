@@ -390,10 +390,10 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness spells damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. ");
 			outputText("When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit. Also bonus to dakrness spells increase from 80% to 160%.\n");
 			outputText("-Fix for Fairy Queen TF not removing balls and fix breast rows. (Stadler)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Soul Core. Req. having free adaptation mutation slot, Gargoyle or Automata race. Effects: Gain 1% mana regeneration.\n");
+			outputText("-New mutation perk: Soul Core (Primitive). Req. Soul Core and lvl 30+. Effects: Gain 2% mana regeneration. While above 50% of your total mana gain a 25% increase to all physical damage.\n");
+			outputText("-New mutation perk: Soul Core (Evolved). Req. Soul Core (Primitive) and lvl 60+. Effects: Gain 3% mana regeneration. While above 50% of your total mana gain a 50% increase to all physical damage. While under 50% of your total fatigue gain a 50% increase to all magical damage. Gain regeneration 2% while mana is above 50%.\n");
+			outputText("-New mutation perk: Soul Core (Final Form). Req. Soul Core (Evolved) and lvl 90+. Effects: Gain 5% mana regeneration. While above 75% of your total mana gain a 100% increase to all physical damage. While under 75% of your total fatigue gain a 100% increase to all magical damage. Gain regeneration 4% while mana is above 50%. Add intelligence to your toughness score for the purpose of calculating hit points.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

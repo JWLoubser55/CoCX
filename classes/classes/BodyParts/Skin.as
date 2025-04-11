@@ -167,6 +167,14 @@ public class Skin extends SaveableBodyPart {
 		base:true,
 		material: BodyMaterial.SKIN
 	});
+	public static const STEEL: int = 23;
+	EnumValue.add(SkinTypes, STEEL, "STEEL", {
+		name:"steel",
+		appearanceDesc: "Your [skin base] is completely made of steel.",
+		plural: false,
+		base:true,
+		material: BodyMaterial.SKIN
+	});
 
 	/**
 	 * Entry properties:
@@ -304,6 +312,12 @@ public class Skin extends SaveableBodyPart {
 	EnumValue.add(PatternTypes, PATTERN_BLOOD_MAGIC_TATTOO, "PATTERN_BLOOD_MAGIC_TATTOO", {
 		name:"blood magic tattoo",
 		appearanceDesc: "Your body is covered with blood magic tattoos.",
+		base:true
+	});
+	public static const PATTERN_CIRCUIT_TATTOO: int = 22;
+	EnumValue.add(PatternTypes, PATTERN_CIRCUIT_TATTOO, "PATTERN_CIRCUIT_TATTOO", {
+		name:"circuit tattoo",
+		appearanceDesc: "Your body is covered with covered with circuit like patterns.",
 		base:true
 	});
 	// Don't forget to add new types in DebugMenu.as lists SKIN_BASE_TYPES or SKIN_COAT_TYPES

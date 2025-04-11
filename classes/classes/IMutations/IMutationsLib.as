@@ -49,6 +49,9 @@ public class IMutationsLib
 		public static const DraconicLungIM:IMutationPerkType = new DraconicLungMutation();
 		public static const LivingWeaponIM:IMutationPerkType = new LivingWeaponMutation();
 		public static const SoulCoreIM:IMutationPerkType = new SoulCoreMutation();
+		public static const MyconidSporeIM:IMutationPerkType = new MyconidSporeMutation();
+		public static const MyconidCollectiveConsciousnessIM:IMutationPerkType = new MyconidCollectiveConsciousnessMutation();
+		public static const PlantChlorophyllIM:IMutationPerkType = new PlantChlorophyllMutation();
 		//Mutations start here.
 		public static const AlphaHowlIM:IMutationPerkType = new AlphaHowlMutation();
 		public static const AnubiHeartIM:IMutationPerkType = new AnubiHeartMutation();

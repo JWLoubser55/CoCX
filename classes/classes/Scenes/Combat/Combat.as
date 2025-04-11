@@ -10358,6 +10358,11 @@ public class Combat extends BaseContent {
             packmultiplier += (packMembers*PerkMultiplier)/100
             damage *= packmultiplier;
         }
+		if ((player.perkv1(IMutationsLib.SoulCoreIM) == 2 || player.perkv1(IMutationsLib.SoulCoreIM) == 3) && player.mana100 >= 50) {
+			if (player.perkv1(IMutationsLib.SoulCoreIM) == 2) damage *= 1.25;
+			else damage *= 1.5;
+		}
+		if (player.perkv1(IMutationsLib.SoulCoreIM) == 4 && player.mana100 >= 75) damage *= 2;
         if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
             if (monster.statusEffectv3(StatusEffects.AcidDoT) > 0) damage *= (1 + (0.3 * monster.statusEffectv3(StatusEffects.AcidDoT)));
             if (monster.statusEffectv4(StatusEffects.AcidDoT) > 0) damage *= (1 + (0.1 * monster.statusEffectv4(StatusEffects.AcidDoT)));
@@ -10441,6 +10446,8 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.perkv1(IMutationsLib.SoulCoreIM) == 3 && player.fatigue100 < 50) damage *= 1.5;
+		if (player.perkv1(IMutationsLib.SoulCoreIM) == 4 && player.mana100 < 75) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -10516,6 +10523,8 @@ public class Combat extends BaseContent {
         if (monster.hasStatusEffect(StatusEffects.AcidDoT)) damage *= (1 + (0.3 * monster.statusEffectv3(StatusEffects.AcidDoT)));
         if (monster.hasStatusEffect(StatusEffects.Provoke)) damage *= monster.statusEffectv2(StatusEffects.Provoke);
         if (monster.hasStatusEffect(StatusEffects.ElementalResist)) damage *= (1 - monster.statusEffectv1(StatusEffects.ElementalResist));
+		if (player.perkv1(IMutationsLib.SoulCoreIM) == 3 && player.fatigue100 < 50) damage *= 1.5;
+		if (player.perkv1(IMutationsLib.SoulCoreIM) == 4 && player.mana100 < 75) damage *= 2;
         return damage;
     }
 
@@ -13781,6 +13790,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 3 && player.statStore.hasBuff("CrinosShape")) hbr *= 2;
 			maxPercentRegen += (hbr * mp);
 		}
+		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 3 && player.mana100 >= 50) {
+			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxPercentRegen += 2;
+			maxPercentRegen += 2;
+		}
 		if (player.hasStatusEffect(StatusEffects.RegenSurge)) {
 			maxPercentRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
@@ -13851,6 +13864,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 2) hbr += ((player.perkv1(IMutationsLib.FerasBirthrightIM) - 1) * 0.5);
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 3 && player.statStore.hasBuff("CrinosShape")) hbr *= 2;
 			maxRegen += (hbr * mp);
+		}
+		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 3 && player.mana100 >= 50) {
+			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxRegen += 2;
+			maxRegen += 2;
 		}
 		if (player.hasStatusEffect(StatusEffects.RegenSurge)) {
 			maxRegen += 20;
@@ -14128,6 +14145,8 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.ArigeanAssociationCortexIM) >= 4) manaregen += Math.round(player.tou * 0.15);
 			else manaregen += Math.round(player.tou * 0.1);
 		}
+		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 1) manaregen += Math.round(player.maxMana() * 0.01 * player.perkv1(IMutationsLib.SoulCoreIM));
+		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) manaregen += Math.round(player.maxMana() * 0.01);
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005);
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005);
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005 * (player.perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));

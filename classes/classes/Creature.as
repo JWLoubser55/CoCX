@@ -792,6 +792,20 @@ public class Creature extends Utils
 				if (hasPerk(PerkLib.Undeath)) max += Math.round(lib*0.5);
 				else max += Math.round(lib*0.25);
 			}
+			if (perkv1(IMutationsLib.SoulCoreIM) >= 4) {
+				max += int(inte * 2 + 50);
+				if (inte >= 21) max += Math.round(inte);
+				if (inte >= 41) max += Math.round(inte);
+				if (inte >= 61) max += Math.round(inte);
+				if (inte >= 81) max += Math.round(inte);
+				if (inte >= 101) max += Math.round(inte) * Math.floor( (inte-100)/50 + 1);
+				if (hasPerk(PerkLib.TankI)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankII)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankIII)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankIV)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankV)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankVI)) max += Math.round(inte*12);
+			}
 			if (hasPerk(PerkLib.ElementalBondFlesh)) {
 				if (hasStatusEffect(StatusEffects.SummonedElementalsAir)) max += maxHP_ElementalBondFleshMulti() * 4 * statusEffectv2(StatusEffects.SummonedElementalsAir);
 				if (hasStatusEffect(StatusEffects.SummonedElementalsEarth)) max += maxHP_ElementalBondFleshMulti() * 4 * statusEffectv2(StatusEffects.SummonedElementalsEarth);
@@ -4954,3 +4968,4 @@ public class Creature extends Utils
 		}
 	}
 }
+
