@@ -287,7 +287,7 @@ public class KitsuneScene extends BaseContent
 			clearOutput();
 			outputText("\"<i>We hope you enjoyed the feast we prepared,</i>\" says the one with jet-black hair, as she and her sisters crowd around you in the water, fully nude.  \"<i>Now, it's </i>our<i> turn.</i>\"\n\n");
 			outputText("\"<i>Just relax,</i>\" the redhead whispers into your ear in a warm tone that seems to demolish any vestige of resistance.  \"<i>We'll take care of everything...</i>\"  Up to your waist in the warm water of the hot springs, you can't help but surrender to their will, your worries flowing out of you.  Enveloped on all sides by their unearthly warm flesh, you lean into their arms and sigh blissfully as every touch and caress sends shivers down your spine.\n\n");
-			if (player.countCocksWithType(CockTypesEnum.TENTACLE, 30, -1, "length") >= 3)
+			if (player.countCocksWithType(CockTypesEnum.TENTACLE, 30, -1, "length") >= 3 || player.countCocksWithType(CockTypesEnum.STAMEN, 30, -1, "length") >= 3)
 				doNext(alrauneVSKitsune);
 			else {
                 sceneHunter.print("Check failed: 3 long tentacle cocks");
@@ -1111,7 +1111,7 @@ public class KitsuneScene extends BaseContent
 			else addButtonDisabled(1, "FuckAss", "Special alternative scene available.");
 			addButtonIfTrue(2, "Tribbing", tribbingWithAKitsune, "Req. a vagina", player.hasVagina());
 			addButtonIfTrue(3, "Tailjob", tailJobKitsuneWin, "Req. a cock", player.hasCock());
-			addButtonIfTrue(4, "Tentacles...", kitsunesGetBonedBy3PlusTentacles, "Req. at least three 30-inch tentacle cocks", player.countCocksWithType(CockTypesEnum.TENTACLE, 30, -1, "length") >= 3);
+			addButtonIfTrue(4, "Tentacles...", kitsunesGetBonedBy3PlusTentacles, "Req. at least three 30-inch tentacle cocks", (player.countCocksWithType(CockTypesEnum.TENTACLE, 30, -1, "length") >= 3) || (player.countCocksWithType(CockTypesEnum.STAMEN, 30, -1, "length")));
 			//unique
 			if (monster.hairColor == "blonde") {
 				addButtonIfTrue(5, "FuckDraft", fuckDraftBlond, "Req. Fuck Draft and a cock", player.hasItem(consumables.F_DRAFT) && player.hasCock(),
