@@ -1403,7 +1403,7 @@ use namespace CoC;
 		}
 		public function electrifyWeaponActiveOff():Boolean
 		{
-			return ((weapon.isDuelingType() || weapon.isSwordType() || weapon.isSpearType() || weapon.isStaffType()) && hasStatusEffect(StatusEffects.ElectrifyWeapon));
+			return ((weaponOff.isDuelingType() || weaponOff.isSwordType() || weaponOff.isSpearType() || weaponOff.isStaffType()) && hasStatusEffect(StatusEffects.ElectrifyWeapon));
 		}
 		public function mummyControlLimit():Number
 		{
