@@ -9,16 +9,16 @@ import classes.IMutationPerkType;
 import classes.Creature;
 import classes.Races;
 
-    public class FungalTramaMutation extends IMutationPerkType
+    public class FungusTramaMutation extends IMutationPerkType
     {
         override public function get mName():String {
-            return "Fungal Trama";
+            return "Fungus Trama";
         }
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += ", ";
+            if (pTier >= 1) descS += "For fungal creatures increase damage reduction by 5%";
             if (pTier >= 2) descS += ", ";
             if (pTier >= 3) descS += ", ";
             if (pTier >= 4) descS += ", ";
@@ -33,8 +33,8 @@ import classes.Races;
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireHeartMutationSlot()/*
-					.requireRace(Races.MYCONID)*/;
+                    this.requireFatTissueMutationSlot()
+					.requireRace(Races.MYCONID);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -49,12 +49,13 @@ import classes.Races;
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
+            if (pTier == 1) pBuffs['lib.mult'] = 0.05;
             return pBuffs;
         }
 
-        public function FungalTramaMutation() 
+        public function FungusTramaMutation() 
 		{
-			super(mName + " IM", mName, SLOT_NONE, 3);//SLOT_FAT
+			super(mName + " IM", mName, SLOT_FAT, 1);
         }
 
     }

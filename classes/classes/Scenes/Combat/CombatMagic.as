@@ -444,7 +444,10 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.OneWiththeForest) && player.perkv2(PerkLib.OneWiththeForest) > 0) mod += (0.05 * player.perkv2(PerkLib.OneWiththeForest));
 		if (player.hasPerk(PerkLib.VegetalAffinity)) mod += 0.5;
 		if (player.hasPerk(PerkLib.GreenMagic)) mod += 1;
-		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) mod += 1;
+		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) mod += 1.2;
+			else mod += 1;
+		}
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;

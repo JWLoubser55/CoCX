@@ -107,6 +107,7 @@ public class MyconidRace extends Race {
 		
 		addMutation(IMutationsLib.MyconidSporeIM);
 		addMutation(IMutationsLib.MyconidCollectiveConsciousnessIM);
+		addMutation(IMutationsLib.FungusTramaIM);
 
 		buildTier(16, "Matango")
                 .requireHornType(Horns.SHROOM_HEADCAP)

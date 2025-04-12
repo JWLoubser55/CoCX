@@ -2803,11 +2803,11 @@ public class MagicSpecials extends BaseCombatContent {
 		if (combat.checkConcentration()) return; //Amily concentration
 		if (monster is LivingStatue)
 		{
-			outputText("The water courses by the stone skin harmlessly. Thou it does leave the surface of the statue with a thin layer of dark glow.");
+			outputText("The poisonous sap courses by the stone skin harmlessly. Thou it does leave the surface of the statue with a thin layer of dark glow.");
 			enemyAI();
 			return;
 		}
-		outputText("Tapping into the power deep within you, you let loose a bellowing roar at your enemy, so forceful that even the environs crumble around [monster him].  [Themonster] does [monster his] best to avoid it, but the wave of force is too fast.<b>Your opponent is now wet with water!</b>");
+		outputText("Tapping into the power deep within you, you let loose a bellowing roar at your enemy, so forceful that even the environs crumble around [monster him].  [Themonster] does [monster his] best to avoid it, but the wave of force is too fast.<b>Your opponent is now wet with poisonous sap!</b>");
 		//Miss:
 		if(((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) && !monster.monsterIsStunned()) {
 			outputText("  Despite the heavy impact caused by your roar, [themonster] manages to take it at an angle and remain on [monster his] feet and focuses on you, ready to keep fighting.");
@@ -2825,6 +2825,7 @@ public class MagicSpecials extends BaseCombatContent {
 				else outputText("are");
 				outputText("too resolute to be stunned by your attack.</b> ");
 			}
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) damage *= 1.2;
 			damage = Math.round(damage * 0.34);
 			doPoisonDamage(damage, true, true);
 			doWaterDamage(damage, true, true);

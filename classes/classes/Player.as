@@ -3348,6 +3348,9 @@ use namespace CoC;
 			if (perkv1(IMutationsLib.YetiFatIM) >= 3) {
 				mult -= 20;
 			}
+			if (perkv1(IMutationsLib.FungusTramaIM) >= 1) {
+				mult -= 5;
+			}
 			if (perkv1(IMutationsLib.AlphaHowlIM) >= 2) {
 				var packMembers:Number = LunaFollower.WerewolfPackMember;
 				if (hasMutation(IMutationsLib.HellhoundFireBallsIM)) packMembers += LunaFollower.HellhoundPackMember;
@@ -3531,6 +3534,9 @@ use namespace CoC;
 			}
 			if (perkv1(IMutationsLib.YetiFatIM) >= 3) {
 				mult -= 20;
+			}
+			if (perkv1(IMutationsLib.FungusTramaIM) >= 1) {
+				mult -= 5;
 			}
 			if (hasPerk(PerkLib.GreySageWisdom)) {
 				mult -= 20;

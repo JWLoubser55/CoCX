@@ -302,18 +302,18 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Myconid Spore (Primitive). Req. Myconid Spore and lvl 30+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 50%. While in your own spore cloud, you become empowered and increase your strength and speed by 15% of their total value, but increase tease damage taken by 50%.\n");
 			outputText("-New mutation perk: Myconid Spore (Evolved). Req. Myconid Spore (Primitive) and lvl 60+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 75%. While in your own spore cloud, you become empowered and increase your strength by 30% of their total value, but increase tease damage taken by 50%. ");
 			outputText("Spore cloud now inflicts a stacking 5% lust vulnerability but only to your opponent.\n");
-			outputText("-New mutation perk: Myconid Spore (Primitive). Req. Myconid Spore (Primitive) and lvl 90+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 100%. While in your own spore cloud, you become empowered and increase your strength and speed by 45% of their total value, but increase tease damage taken by 50%. ");
+			outputText("-New mutation perk: Myconid Spore (Final Form). Req. Myconid Spore (Evolved) and lvl 90+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 100%. While in your own spore cloud, you become empowered and increase your strength and speed by 45% of their total value, but increase tease damage taken by 50%. ");
 			outputText("Spore cloud now inflicts a stacking 10% lust and damage vulnerability but only to your opponent.\n");
 			outputText("-New mutation perk: Myconid Collective Consciousness. Req. having free nerv system mutation slot, Myconid race. Effects: Add 10% of your toughness to your spellcasting and Esper score.\n");
 			outputText("-New mutation perk: Myconid Collective Consciousness (Primitive). Req. Myconid Collective Consciousness and lvl 30+. Effects: Add 20% of your toughness to your spellcasting and Esper score. Take 25% less damage from mental attacks and Esper ability.\n");
 			outputText("-New mutation perk: Myconid Collective Consciousness (Evolved). Req. Myconid Collective Consciousness (Primitive) and lvl 60+. Effects: Add 30% of your toughness to your spellcasting and Esper score. Take 50% less damage from mental attacks and Esper ability. Gain 1% mana regeneration.\n");
 			outputText("-New mutation perk: Myconid Collective Consciousness (Final Form). Req. Myconid Collective Consciousness (Evolved) and lvl 90+. Effects: Add 50% of your toughness to your spellcasting and Esper score. Take 75% less damage from mental attacks and Esper ability. Gain 2% mana regeneration. Your own Esper abilities are 25% stronger.\n");
 			outputText("-New mutation perk: Plant Chlorophyll. Req. having free fat tissue mutation slot, plant races. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 5% while outdoors during daytime.\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Plant Chlorophyll (Primitive). Req. Plant Chlorophyll and lvl 30+. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 10% while outdoors during daytime. Plant abilities are increased by 20%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-New key Item (by Liadri): Grenade Launcher - req. Toolbelt - Let you use your grenade gadgets while siting comfortably in your goblin mech.\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Fungus Trama. Req. having free fat tissue mutation slot, Myconid race. Effects: For fungal creatures increase damage reduction by 5%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -339,10 +339,10 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
-			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
@@ -352,10 +352,10 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
+			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -436,8 +436,26 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -466,6 +484,15 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

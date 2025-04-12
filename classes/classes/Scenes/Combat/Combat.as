@@ -3414,7 +3414,10 @@ public class Combat extends BaseContent {
 					var lustDMG:Number = 35 + rand(player.lib / 10);
 					if (player.hasPerk(PerkLib.VegetalAffinity)) lustDMG *= 1.5;
 					if (player.hasPerk(PerkLib.GreenMagic)) lustDMG *= 2;
-					if (player.hasStatusEffect(StatusEffects.GreenCovenant)) lustDMG *= 2;
+					if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
+						if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) lustDMG *= 2.4;
+						else lustDMG *= 2;
+					}
 					if (player.armor == armors.ELFDRES && player.isElf()) lustDMG *= 2;
 					if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDMG *= 2;
 					if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDMG *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
@@ -6602,6 +6605,10 @@ public class Combat extends BaseContent {
         else if (IsFeralCombat && player.hasPerk(PerkLib.VerdantMight)) {
 			damage += player.tou;
 			damage += scalingBonusToughness() * 0.2;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
+				damage += player.tou * 0.2;
+				damage += scalingBonusToughness() * 0.04;
+			}
 		}
 		else {
 			if (player.isElf() && player.weapon.isSpearType() && player.hasPerk(PerkLib.ELFElvenBattleStyle)) {
@@ -6855,6 +6862,10 @@ public class Combat extends BaseContent {
         else if (player.hasPerk(PerkLib.VerdantMight)){
             damage += player.tou;
             damage += scalingBonusToughness() * 0.25;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
+				damage += player.tou * 0.2;
+				damage += scalingBonusToughness() * 0.05;
+			}
         }
         else{
             damage += player.str;
@@ -8924,6 +8935,10 @@ public class Combat extends BaseContent {
         else if (player.hasPerk(PerkLib.VerdantMight)){
             damage += player.tou;
             damage += scalingBonusToughness() * 0.25;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
+				damage += player.tou * 0.2;
+				damage += scalingBonusToughness() * 0.05;
+			}
         }
         else{
             damage += player.str;
@@ -11817,6 +11832,14 @@ public class Combat extends BaseContent {
         //Psychic Aura
         if (player.hasPerk(PerkLib.JobPsychic) && !flags[kFLAGS.DISABLE_AURAS]) {
             var damagePA:Number = scalingBonusSensitivity();
+			if (player.hasPerk(PerkLib.MindFungus)) {
+				damagePA += player.inte * 0.5;
+				damagePA += scalingBonusIntelligence() * 0.5;
+			}
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+				damagePA += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+				if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damagePA += Math.round(scalingBonusToughness() * 0.1);
+			}
 			//Determine if critical hit!
 			var crit0:Boolean = false;
 			var critChance0:int = 5;
@@ -11920,6 +11943,7 @@ public class Combat extends BaseContent {
 					lustDmgA *= 1.3;
 				}
 			}
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) lustDmgA *= 1.2;
             lustDmgA *= monster.lustVuln;
             monster.teased(Math.round(lustDmgA), false, true, true);
             outputText("\n\n");
@@ -13646,7 +13670,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		var randomCritAV:Boolean = false;
 		if (player.hasPerk(PerkLib.VegetalAffinity)) dmg *= 1.5;
 		if (player.hasPerk(PerkLib.GreenMagic)) dmg *= 2;
-		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) dmg *= 2;
+		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) dmg *= 2.4;
+			else dmg *= 2;
+		}
 		//Determine if critical tease!
 		var critChanceAV:int = 5;
 		critChanceAV += teases.combatTeaseCritical();
@@ -13720,7 +13747,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             }
             if (player.headJewelry == headjewelries.CUNDKIN && player.HP < 1) healingPercent += 1;
             if (CombatAbilities.Overlimit.isActive() || CombatAbilities.FieryRage.isActive()) healingPercent -= 10;
-			if (player.hasStatusEffect(StatusEffects.GreenCovenant)) healingPercent += 25;
+			if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
+				if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) healingPercent += 30;
+				else healingPercent += 25;
+			}
             if (player.hasPerk(PerkLib.Ferocity) && player.HP < 1) negativeHPRegen -= 1;
             if ((player.hasPerk(PerkLib.Diehard) || player.hasPerk(PerkLib.GreaterDiehardEx)) && !player.hasPerk(PerkLib.EpicDiehard) && player.HP < 1) negativeHPRegen -= 1;
             if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 3 && player.HP < 1) negativeHPRegen -= 1;
@@ -13836,7 +13866,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxPercentRegen += 2;
 			maxPercentRegen += 2;
 		}
-		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) maxPercentRegen += 5;
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) maxPercentRegen += (5 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.hasStatusEffect(StatusEffects.RegenSurge)) {
 			maxPercentRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
@@ -13912,7 +13942,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxRegen += 2;
 			maxRegen += 2;
 		}
-		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) maxRegen += 5;
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) maxRegen += (5 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.hasStatusEffect(StatusEffects.RegenSurge)) {
 			maxRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxRegen += 10;
@@ -13988,7 +14018,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 2) fatiguecombatrecovery += 1;
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) fatiguecombatrecovery += 1;
 		if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 3) fatiguecombatrecovery += 5;
-		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.05);
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.05 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 10;
 		if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 2 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 10;
 		if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 3 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 10;
@@ -14093,7 +14123,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 4) wfob += 0.0025;
 			soulforceregen += Math.round(player.maxSoulforce() * wfob * player.tailCount);
 		}
-		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) soulforceregen += Math.round(player.maxSoulforce() * 0.05);
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) soulforceregen += Math.round(player.maxSoulforce() * 0.05 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3 && player.racialScore(Races.HUMAN) > 17) soulforceregen += Math.round(player.maxSoulforce() * 0.01 * (player.perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
@@ -14197,7 +14227,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		}
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 1) manaregen += Math.round(player.maxMana() * 0.01 * player.perkv1(IMutationsLib.SoulCoreIM));
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) manaregen += Math.round(player.maxMana() * 0.01);
-		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) manaregen += Math.round(player.maxMana() * 0.05);
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) manaregen += Math.round(player.maxMana() * 0.05 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005);
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005);
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005 * (player.perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
@@ -14332,7 +14362,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.hasPerk(PerkLib.AsuraToughness)) wrathregen += Math.round(player.maxWrath() * 0.005);
         if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4) wrathregen += Math.round(player.maxWrath() * 0.005);
         if (player.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult += 1;
-		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) wrathregen += Math.round(player.maxWrath() * 0.05);
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) wrathregen += Math.round(player.maxWrath() * 0.05 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) {
 			BonusWrathMult += 1;
 			if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4) BonusWrathMult += 4;

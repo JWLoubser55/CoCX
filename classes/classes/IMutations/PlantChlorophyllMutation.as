@@ -18,8 +18,8 @@ import classes.Races;
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 5% while outdoors during daytime";
-            if (pTier >= 2) descS += ", ";
+            if (pTier >= 1) descS += "For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by "+(pTier * 5)+"% while outdoors during daytime";
+            if (pTier >= 2) descS += ". Plant abilities are increased by 20%";
             if (pTier >= 3) descS += ", ";
             if (pTier >= 4) descS += ", ";
             if (descS != "")descS += ".";
@@ -49,11 +49,13 @@ import classes.Races;
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
+            if (pTier == 1) pBuffs['lib.mult'] = 0.05;
+            else if (pTier == 2) pBuffs['lib.mult'] = 0.1;
             return pBuffs;
         }
 
         public function PlantChlorophyllMutation() {
-            super(mName + " IM", mName, SLOT_FAT, 1);
+            super(mName + " IM", mName, SLOT_FAT, 2);
         }
 
     }

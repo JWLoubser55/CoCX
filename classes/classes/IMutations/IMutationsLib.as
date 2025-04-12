@@ -47,8 +47,7 @@ public class IMutationsLib
 		public static const DraconicBonesIM:IMutationPerkType = new DraconicBonesMutation();
 		public static const DraconicHeartIM:IMutationPerkType = new DraconicHeartMutation();
 		public static const DraconicLungIM:IMutationPerkType = new DraconicLungMutation();
-		public static const PlantChlorophyllIM:IMutationPerkType = new PlantChlorophyllMutation();
-		//public static const FungalTramaIM:IMutationPerkType = new ();
+		public static const FungusTramaIM:IMutationPerkType = new FungusTramaMutation();
 		public static const MalleablePhysiologyIM:IMutationPerkType = new MalleablePhysiologyMutation();
 		//Mutations start here.
 		public static const AlphaHowlIM:IMutationPerkType = new AlphaHowlMutation();
@@ -120,6 +119,7 @@ public class IMutationsLib
 		public static const OniMusculatureIM:IMutationPerkType = new OniMusculatureMutation();
 		public static const OrcAdrenalGlandsIM:IMutationPerkType = new OrcAdrenalGlandsMutation();
 		public static const PigBoarFatIM:IMutationPerkType = new PigBoarFatMutation();
+		public static const PlantChlorophyllIM:IMutationPerkType = new PlantChlorophyllMutation();
 		public static const PoisonGlandIM:IMutationPerkType = new PoisonGlandMutation();
 		public static const RaijuCathodeIM:IMutationPerkType = new RaijuCathodeMutation();
 		public static const RatatoskrSmartsIM:IMutationPerkType = new RatatoskrSmartsMutation();
