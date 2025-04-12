@@ -9,16 +9,16 @@ import classes.IMutationPerkType;
 import classes.Creature;
 import classes.Races;
 
-    public class PlantChlorophyllMutation extends IMutationPerkType
+    public class MalleablePhysiologyMutation extends IMutationPerkType
     {
         override public function get mName():String {
-            return "Plant Chlorophyll";
+            return "Fungal Trama";
         }
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 5% while outdoors during daytime";
+            if (pTier >= 1) descS += ", ";
             if (pTier >= 2) descS += ", ";
             if (pTier >= 3) descS += ", ";
             if (pTier >= 4) descS += ", ";
@@ -33,8 +33,8 @@ import classes.Races;
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireFatTissueMutationSlot()
-					.requireRace(Races.MYCONID);
+                    this.requireHeartMutationSlot()/*
+					.requireRace(Races.MYCONID)*/;
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -52,8 +52,9 @@ import classes.Races;
             return pBuffs;
         }
 
-        public function PlantChlorophyllMutation() {
-            super(mName + " IM", mName, SLOT_FAT, 1);
+        public function MalleablePhysiologyMutation() 
+		{
+			super(mName + " IM", mName, SLOT_NONE, 3);//SLOT_ADAPTATIONS
         }
 
     }

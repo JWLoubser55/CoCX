@@ -699,6 +699,37 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use jetpack again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
+			if (player.hasKeyItem("Goblin Bomber") >= 0) {
+				bd = buttons.add("Goblin Bomber", optionGoblinBomber).hint("Call for an airstrike.");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.GoblinBomber)) bd.disable("<b>You need wait one hour before you can use Goblin Bomber again.</b>\n\n");
+			}
+			if (player.hasKeyItem("Grenade Launcher") >= 0) {
+				//tinkerer gadgets
+				if (player.hasKeyItem("Flasherbang") >= 0 || player.hasKeyItem("Flasherbang II") >= 0) {
+					bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.hasKeyItem("Goonade") >= 0 || player.hasKeyItem("Caustic Goonade") >= 0) {
+					var goonade4:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "corrosive " : "";
+					var goonade5:String = player.hasKeyItem("Caustic Goonade") >= 0 ? " The acid within the goo also corrodes the opponent's armor." : "";
+					var goonade6:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "Caustic Goonade" : "Goonade";
+					bd = buttons.add(""+goonade6+"", gadgetGoonade).hint("Throw a grenade that splatter "+goonade4+"sticky goo everywhere hindering movement and flight."+goonade5+"");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					else if (player.hasStatusEffect(StatusEffects.Grounded)) bd.disable("<b>You need wait until previous used Goonade effect wear off.</b>\n\n");
+				}
+				if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
+					var fireGrenade1:String = player.hasKeyItem("Fire Grenade II") >= 0 ? " Upgrade the fire grenade explosion to also deal fire damage." : "";
+					bd = buttons.add("Fire Grenade", gadgetFireGrenade).hint("Toss a grenade that sets foes on fire inflicting the burn status effect."+fireGrenade1+"");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.hasKeyItem("Stun Grenade") >= 0 || player.hasKeyItem("Stun Grenade II") >= 0) {
+					var stunGrenade1:String = player.hasKeyItem("Stun Grenade II") >= 0 ? " Upgrade the stun grenade explosion to also deal lightning damage." : "";
+					bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round."+stunGrenade1+" (4 round cd)");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
+				}
+			}
 		}
 		if (player.vehicles == vehicles.HB_MECH) {
 			if (player.hasKeyItem("HB Stealth System") >= 0) {
@@ -742,6 +773,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 				bd = buttons.add("Scatter Laser", mechScatterLaser).hint("Shoot with Scatter Laser"+((player.keyItemvX("HB Scatter Laser", 1) > 1)?"s":"")+" at enemy. \n\nWould drain "+LazorC+" SF from mech reserves or your own SF pool.");
 				if (flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] < LazorC && player.soulforce < LazorC) bd.disable("<b>You are too low on SF reserves to use this option.</b>\n\n");
 				else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Goblin Bomber") >= 0) {
+				bd = buttons.add("Goblin Bomber", optionGoblinBomber).hint("Call for an airstrike.");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.GoblinBomber)) bd.disable("<b>You need wait one hour before you can use Goblin Bomber again.</b>\n\n");
 			}
 		}
 	}
@@ -860,6 +896,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownSideWinder)) bd.disable("<b>You've already used Sidewinder today.</b>\n\n");
 				else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
+			if (player.hasKeyItem("Goblin Bomber") >= 0) {
+				bd = buttons.add("Goblin Bomber", optionGoblinBomber).hint("Call for an airstrike.");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.GoblinBomber)) bd.disable("<b>You need wait one hour before you can use Goblin Bomber again.</b>\n\n");
+			}
 			//tinkerer gadgets
 			if (player.hasKeyItem("Flasherbang") >= 0 || player.hasKeyItem("Flasherbang II") >= 0) {
 				bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
@@ -937,6 +978,32 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownStimpackDispenser)) {
 					bd.disable("<b>You need more time before you can use "+(player.hasKeyItem("Medical Dispenser 2.0") >= 0 ? "Medical Dispenser":"Stimpack Dispenser")+" again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Grenade Launcher") >= 0) {
+				//tinkerer gadgets
+				if (player.hasKeyItem("Flasherbang") >= 0 || player.hasKeyItem("Flasherbang II") >= 0) {
+					bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.hasKeyItem("Goonade") >= 0 || player.hasKeyItem("Caustic Goonade") >= 0) {
+					var goonade7:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "corrosive " : "";
+					var goonade8:String = player.hasKeyItem("Caustic Goonade") >= 0 ? " The acid within the goo also corrodes the opponent's armor." : "";
+					var goonade9:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "Caustic Goonade" : "Goonade";
+					bd = buttons.add(""+goonade9+"", gadgetGoonade).hint("Throw a grenade that splatter "+goonade7+"sticky goo everywhere hindering movement and flight."+goonade8+"");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					else if (player.hasStatusEffect(StatusEffects.Grounded)) bd.disable("<b>You need wait until previous used Goonade effect wear off.</b>\n\n");
+				}
+				if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
+					var fireGrenade2:String = player.hasKeyItem("Fire Grenade II") >= 0 ? " Upgrade the fire grenade explosion to also deal fire damage." : "";
+					bd = buttons.add("Fire Grenade", gadgetFireGrenade).hint("Toss a grenade that sets foes on fire inflicting the burn status effect."+fireGrenade2+"");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.hasKeyItem("Stun Grenade") >= 0 || player.hasKeyItem("Stun Grenade II") >= 0) {
+					var stunGrenade2:String = player.hasKeyItem("Stun Grenade II") >= 0 ? " Upgrade the stun grenade explosion to also deal lightning damage." : "";
+					bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round."+stunGrenade2+" (4 round cd)");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
+				}
 			}
 		}
 		if (player.vehicles == vehicles.HB_MECH) {
@@ -3315,6 +3382,15 @@ public class PhysicalSpecials extends BaseCombatContent {
 		monster.teased(spores, false);
 		outputText("\n\n");
 		player.createStatusEffect(StatusEffects.SporeCloud, 0, 0, 0, 0);
+		if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 2) {
+			var tempStr:Number = player.str;
+			var tempSpe:Number = player.spe;
+			var temp:Number = 0.15;
+			temp *= (player.perkv1(IMutationsLib.MyconidSporeIM) - 1);
+			tempStr = Math.round(tempStr*temp);
+			tempSpe = Math.round(tempSpe*temp);
+			player.buff("SporeCloudEmpowerment").addStats({str:tempStr,spe:tempSpe}).withText("SporeCloud Empowerment").combatPermanent();
+		}
 		enemyAI();
 	}
 

@@ -8257,6 +8257,7 @@ use namespace CoC;
 
 		public override function takeLustDamage(lustDmg:Number, display:Boolean = false, applyRes:Boolean = true):Number{
 			var x:Number = super.takeLustDamage(lustDmg, display, applyRes);
+			if (perkv1(IMutationsLib.MyconidSporeIM) >= 2 && hasStatusEffect(StatusEffects.SporeCloud)) lustDmg = Math.round(lustDmg * 1.5);
 			raijuSuperchargedCheck();
 			EngineCore.statScreenRefresh();
 			return x;

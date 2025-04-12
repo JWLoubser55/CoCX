@@ -18,10 +18,12 @@ import classes.Races;
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 25%";
-            if (pTier >= 2) descS += ", ";
-            if (pTier >= 3) descS += ", ";
-            if (pTier >= 4) descS += ", ";
+            if (pTier >= 1) descS += "Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by "+(pTier * 25)+"%";
+            if (pTier >= 2) descS += ". While in your own spore cloud, you become empowered and increase your strength and speed by "+((pTier - 1) * 15)+"% of their total value, but increase tease damage taken by 50%";
+            if (pTier >= 3) descS += ". Spore cloud now inflicts a stacking ";
+            if (pTier == 3) descS += "5% lust ";
+            if (pTier == 4) descS += "10% lust and damage ";
+            if (pTier >= 3) descS += "vulnerability but only to your opponent";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -57,7 +59,7 @@ import classes.Races;
         }
 
         public function MyconidSporeMutation() {
-            super(mName + " IM", mName, SLOT_OVARIES, 1);
+            super(mName + " IM", mName, SLOT_OVARIES, 2);
         }
 
     }

@@ -68,6 +68,7 @@ public class YgddrasilRace extends Race {
 		addMutation(IMutationsLib.DrakeBonesIM);
 		addMutation(IMutationsLib.DrakeHeartIM);
 		addMutation(IMutationsLib.DrakeLungsIM);
+		addMutation(IMutationsLib.PlantChlorophyllIM);
 		
 		buildTier(12, "ygddrasil")
 				.buffs({

@@ -624,31 +624,31 @@ doNext(playerMenu);
 
 public function ElectraPregProgression1():void {
 	spriteSelect(SpriteDb.s_electra);
-		outputText("Electra isn’t showing yet, but you can feel a slight crackle in the air when you get closer to her. She’s eating more, but her fur is all standing up.  \n\n"); 
-		if (ElectraTotalKidsNum != 0) {
-        outputText("You notice her heading into the charging hut and she gives you a wave, blushing slightly. \"<i>Feel free to join me</i>\". She enters, winking. You decide to keep moving for now, as tempting as that offer is. \n\n"); 
+	outputText("Electra isn’t showing yet, but you can feel a slight crackle in the air when you get closer to her. She’s eating more, but her fur is all standing up.\n\n"); 
+	if (ElectraTotalKidsNum != 0) {
+        outputText("You notice her heading into the charging hut and she gives you a wave, blushing slightly. \"<i>Feel free to join me</i>\". She enters, winking. You decide to keep moving for now, as tempting as that offer is.\n\n"); 
 		doNext(playerMenu);
-		}
-		else if (ElectraTotalKidsNum == 0) {
-        //first time
-		outputText("The poor imp has been replaced by another. You see her talking to Ralthazul, who seems to have an idea. As you get closer, you can hear their discussion. \n\n");
-		outputText("\"<i>-been studying how the flow of electricity works, and I may be able to provide you a more…humane way to…release, as it were.</i>\" Electra seems interested, and Ralthazul continues. \"<i>Electricity, in its natural state, flows into the earth. I may be able to make something to allow you to discharge without the need for a…partner.</i>\"  \n\n");
-		outputText("\"<i>Well…I have [name] for that.</i>\" Electra says, smiling slightly. Ralthazul seems unamused at this, but continues.  \n\n");
-		outputText("\"<i>And what about your children?</i>\" Ralthazul asks. \"<i>Who’s going to deal with their ‘needs’? He frowns.  \n\n");
-        outputText("\"<i>...I suppose you’re right.</i>\" Electra says. \"<i>...I’ll go hunting tomorrow, scrounge up some gems. What do you need to…make the device?</i>\" \n\n");
-		outputText("Ralthazul thinks for a moment. \"<i>I need some metal scraps, rubber from those darkwood trees, the copper wiring you have on that imp, and…An imprint of something you need for…release.</i>\"  \n\n");
-		outputText("Electra looks confused at that. \"<i>An…Imprint?</i>\" The old mouse looks slightly annoyed. \"<i>...In order for you to achieve…Results…With the device, you’ll want to have an…erm…Plug…That you know will work for you.</i>\" He looks over and sees you. \"<i>I’m assuming you’d have an easier time with an imprint from [name]</i>\".  \n\n");
-		outputText("Electra blinks, realising what he means by an imprint. \"<i>Oh.</i>\" \n\n");
-        outputText("You decide to make yourself known, and come over, telling Electra that you were just checking up on her. She zaps her imp, getting a low groan, before giving you a fuzzy hug. You ask what she’s doing with Ralthazul, and the old alchemist gives you a slight smile.  \n\n");
-		outputText("\"<i>Oh, just doing a little problem-solving, my friend. With the…New Raijus on the way, the thought of how to deal with their…Emissions…Came up.</i>\" He looks at you. \"<i>I have an idea, but it requires a little…innovation, and input from you.</i>\" He holds out a container, filled with plaster. \"<i>If you would go somewhere private, and…Imprint?</i>\" As you take it and walk away, he turns his head. \"<i>It needs to be erect!</i>\" \n\n");
-		outputText("You nod, and Electra brings you to your ([Cabin]). Electra looks down at your groin wistfully, rubbing her stomach. \"<i>Well…You heard the rat.</i>\" You strip, and she steps in, rubbing your [cock], letting little sparks tingle across your girth. You harden quickly, and Electra sighs in disappointment, girding your member with the liquid plaster. It’s not the most comfortable of feelings, nor the most arousing, and you feel yourself starting to soften. Electra, realising your predicament, steps in, rubbing herself against you. She leans in, kissing you on the lips, running her claws along your back, and moaning in arousal at your touch.  \n\n");
-        outputText("Ten minutes pass in a blur, and Electra drops her hands to your plaster-clad [cock]. Gently, slowly, she carves a groove in the plaster, then slowly peels the mould off.  \n\n");
-		outputText("Electra leaves for a moment, presumably to drop the finished mould off with Ralthzul, before coming back, hips swaying. She has a bowl of water and a cloth, and she smiles, looking down at your [cock]. You realise that some of the plaster is still there, on your [cock], and bits of it have splashed on your [legs]. \n\n");
-		outputText("\"<i>Thank you for this.</i>\" Electra says. \"<i>But…There’s still some left on you.</i>\" She gets on her knees, putting the bowl in front of her. \n\n");
-menu();
-addButton (1, "MouthWash", ElectraCleanBJ);
-addButton (2, "JustAClean", ElectraCleanNoSex);
-addButton (3, "Nah", ElectraCleanYourself);
+	}
+	else if (ElectraTotalKidsNum == 0) {
+		//first time
+		outputText("The poor imp has been replaced by another. You see her talking to Ralthazul, who seems to have an idea. As you get closer, you can hear their discussion.\n\n");
+		outputText("\"<i>-been studying how the flow of electricity works, and I may be able to provide you a more…humane way to…release, as it were.</i>\" Electra seems interested, and Ralthazul continues. \"<i>Electricity, in its natural state, flows into the earth. I may be able to make something to allow you to discharge without the need for a…partner.</i>\"\n\n");
+		outputText("\"<i>Well…I have [name] for that.</i>\" Electra says, smiling slightly. Ralthazul seems unamused at this, but continues.\n\n");
+		outputText("\"<i>And what about your children?</i>\" Ralthazul asks. \"<i>Who’s going to deal with their ‘needs’?</i>\" He frowns.\n\n");
+		outputText("\"<i>...I suppose you’re right.</i>\" Electra says. \"<i>...I’ll go hunting tomorrow, scrounge up some gems. What do you need to…make the device?</i>\"\n\n");
+		outputText("Ralthazul thinks for a moment. \"<i>I need some metal scraps, rubber from those darkwood trees, the copper wiring you have on that imp, and…An imprint of something you need for…release.</i>\"\n\n");
+		outputText("Electra looks confused at that. \"<i>An…Imprint?</i>\" The old mouse looks slightly annoyed. \"<i>...In order for you to achieve…Results…With the device, you’ll want to have an…erm…Plug…That you know will work for you.</i>\" He looks over and sees you. \"<i>I’m assuming you’d have an easier time with an imprint from [name]</i>\".\n\n");
+		outputText("Electra blinks, realising what he means by an imprint. \"<i>Oh.</i>\"\n\n");
+		outputText("You decide to make yourself known, and come over, telling Electra that you were just checking up on her. She zaps her imp, getting a low groan, before giving you a fuzzy hug. You ask what she’s doing with Ralthazul, and the old alchemist gives you a slight smile.\n\n");
+		outputText("\"<i>Oh, just doing a little problem-solving, my friend. With the…New Raijus on the way, the thought of how to deal with their…Emissions…Came up.</i>\" He looks at you. \"<i>I have an idea, but it requires a little…innovation, and input from you.</i>\" He holds out a container, filled with plaster. \"<i>If you would go somewhere private, and…Imprint?</i>\" As you take it and walk away, he turns his head. \"<i>It needs to be erect!</i>\"\n\n");
+		outputText("You nod, and Electra brings you to your ([Cabin]). Electra looks down at your groin wistfully, rubbing her stomach. \"<i>Well…You heard the rat.</i>\" You strip, and she steps in, rubbing your [cock], letting little sparks tingle across your girth. You harden quickly, and Electra sighs in disappointment, girding your member with the liquid plaster. It’s not the most comfortable of feelings, nor the most arousing, and you feel yourself starting to soften. Electra, realising your predicament, steps in, rubbing herself against you. She leans in, kissing you on the lips, running her claws along your back, and moaning in arousal at your touch.\n\n");
+		outputText("Ten minutes pass in a blur, and Electra drops her hands to your plaster-clad [cock]. Gently, slowly, she carves a groove in the plaster, then slowly peels the mould off.\n\n");
+		outputText("Electra leaves for a moment, presumably to drop the finished mould off with Ralthzul, before coming back, hips swaying. She has a bowl of water and a cloth, and she smiles, looking down at your [cock]. You realise that some of the plaster is still there, on your [cock], and bits of it have splashed on your [legs].\n\n");
+		outputText("\"<i>Thank you for this.</i>\" Electra says. \"<i>But…There’s still some left on you.</i>\" She gets on her knees, putting the bowl in front of her.\n\n");
+		menu();
+		addButton (1, "MouthWash", ElectraCleanBJ);
+		addButton (2, "JustAClean", ElectraCleanNoSex);
+		addButton (3, "Nah", ElectraCleanYourself);
 	}
 }
 

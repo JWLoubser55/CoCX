@@ -10397,11 +10397,12 @@ public class Combat extends BaseContent {
 			else damage *= 1.5;
 		}
 		if (player.perkv1(IMutationsLib.SoulCoreIM) == 4 && player.mana100 >= 75) damage *= 2;
+		if (player.perkv1(IMutationsLib.MyconidSporeIM) == 4 && player.hasStatusEffect(StatusEffects.SporeCloud)) damage *= (1 + (0.1 * player.statusEffectv1(StatusEffects.SporeCloud)));
         if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
             if (monster.statusEffectv3(StatusEffects.AcidDoT) > 0) damage *= (1 + (0.3 * monster.statusEffectv3(StatusEffects.AcidDoT)));
             if (monster.statusEffectv4(StatusEffects.AcidDoT) > 0) damage *= (1 + (0.1 * monster.statusEffectv4(StatusEffects.AcidDoT)));
         }
-		if (player.hasPerk(PerkLib.BrutalOpening)) {
+		if (player.hasPerk(PerkLib.BrutalOpening) && monster.hasStatusEffect(StatusEffects.TimesBashed) && monster.statusEffectv2(StatusEffects.TimesBashed) > 0) {
 			if (player.hasPerk(PerkLib.LingeringOpening)) damage *= 4;
 			else damage *= 3;
 		}
@@ -10482,6 +10483,7 @@ public class Combat extends BaseContent {
 		}
 		if (player.perkv1(IMutationsLib.SoulCoreIM) == 3 && player.fatigue100 < 50) damage *= 1.5;
 		if (player.perkv1(IMutationsLib.SoulCoreIM) == 4 && player.mana100 < 75) damage *= 2;
+		if (player.perkv1(IMutationsLib.MyconidSporeIM) == 4 && player.hasStatusEffect(StatusEffects.SporeCloud)) damage *= (1 + (0.1 * player.statusEffectv1(StatusEffects.SporeCloud)));
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -10559,6 +10561,7 @@ public class Combat extends BaseContent {
         if (monster.hasStatusEffect(StatusEffects.ElementalResist)) damage *= (1 - monster.statusEffectv1(StatusEffects.ElementalResist));
 		if (player.perkv1(IMutationsLib.SoulCoreIM) == 3 && player.fatigue100 < 50) damage *= 1.5;
 		if (player.perkv1(IMutationsLib.SoulCoreIM) == 4 && player.mana100 < 75) damage *= 2;
+		if (player.perkv1(IMutationsLib.MyconidSporeIM) == 4 && player.hasStatusEffect(StatusEffects.SporeCloud)) damage *= (1 + (0.1 * player.statusEffectv1(StatusEffects.SporeCloud)));
         return damage;
     }
 
@@ -11946,6 +11949,11 @@ public class Combat extends BaseContent {
 			lustDmgSC *= monster.lustVuln;
             monster.teased(Math.round(lustDmgSC), false, true, true);
             outputText("\n\n");
+			if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 3 && monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
+				monster.lustVuln += (0.05 * (player.perkv1(IMutationsLib.MyconidSporeIM) - 2));
+				if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
+				if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 4) player.addStatusValue(StatusEffects.SporeCloud, 1, 1);
+			}
 			if (player.hasPerk(PerkLib.EromancyMaster)) teaseXP(1 + bonusExpAfterSuccesfullTease());
 		}
         //Pheromone Cloud
@@ -13828,6 +13836,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxPercentRegen += 2;
 			maxPercentRegen += 2;
 		}
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) maxPercentRegen += 5;
 		if (player.hasStatusEffect(StatusEffects.RegenSurge)) {
 			maxPercentRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
@@ -13903,6 +13912,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxRegen += 2;
 			maxRegen += 2;
 		}
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) maxRegen += 5;
 		if (player.hasStatusEffect(StatusEffects.RegenSurge)) {
 			maxRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxRegen += 10;
@@ -13978,6 +13988,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 2) fatiguecombatrecovery += 1;
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) fatiguecombatrecovery += 1;
 		if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 3) fatiguecombatrecovery += 5;
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.05);
 		if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 10;
 		if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 2 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 10;
 		if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 3 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 10;
@@ -14082,6 +14093,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 4) wfob += 0.0025;
 			soulforceregen += Math.round(player.maxSoulforce() * wfob * player.tailCount);
 		}
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) soulforceregen += Math.round(player.maxSoulforce() * 0.05);
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3 && player.racialScore(Races.HUMAN) > 17) soulforceregen += Math.round(player.maxSoulforce() * 0.01 * (player.perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
@@ -14185,6 +14197,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		}
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 1) manaregen += Math.round(player.maxMana() * 0.01 * player.perkv1(IMutationsLib.SoulCoreIM));
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) manaregen += Math.round(player.maxMana() * 0.01);
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) manaregen += Math.round(player.maxMana() * 0.05);
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005);
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005);
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005 * (player.perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
@@ -14319,6 +14332,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.hasPerk(PerkLib.AsuraToughness)) wrathregen += Math.round(player.maxWrath() * 0.005);
         if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4) wrathregen += Math.round(player.maxWrath() * 0.005);
         if (player.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult += 1;
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) wrathregen += Math.round(player.maxWrath() * 0.05);
 		if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) {
 			BonusWrathMult += 1;
 			if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4) BonusWrathMult += 4;
@@ -19361,6 +19375,9 @@ private function touSpeStrScale(stat:int):Number {
         return damage;
     }
 
+	public function isOutsideDuringDaytime():Boolean {
+		return !player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) && !player.hasStatusEffect(StatusEffects.InsideSmallSpace) && !isNightTime;
+	}
     public function isNearPlants():Boolean {
         return player.hasStatusEffect(StatusEffects.NearbyPlants) || explorer.areaTags.plants;
     }
