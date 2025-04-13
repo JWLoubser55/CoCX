@@ -1010,7 +1010,6 @@ public function SexMenuAnal():void {
 		}
 	//}
 	player.sexReward("no", "Dick");
-	NadiaPregChance();
 	endEncounter();
 }
 public function SexMenuTitsfuck():void {

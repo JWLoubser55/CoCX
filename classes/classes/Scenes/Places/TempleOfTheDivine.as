@@ -82,10 +82,22 @@ public class TempleOfTheDivine extends BaseContent {
 			if (flags[kFLAGS.TEMPLE_OF_THE_DIVINE_MARAE] == 1 && flags[kFLAGS.FACTORY_SHUTDOWN] == 1) { //req. PURE Marae
 				if (player.hasItem(consumables.P_PEARL, 1)) addButton(2, "Pearl", puttingPurePearlOnAltar);
 				if (player.statusEffectv3(StatusEffects.TempleOfTheDivineTracker) == 2) addButton(2, "Pearl", takingPurePearlFromAltar);
-				if (havingOrUsingBSwordOrExcalibur()) addButton(3, "Put Sword", puttingBSwordOrExcaliburOnAltar);
+				if (player.hasItem(weapons.B_SWORD, 1) || player.hasItem(weapons.EXCALIB, 1)) addButton(3, "Put Sword", puttingBSwordOrExcaliburOnAltar);
 				if (player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker) == 2 || player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker) == 3) addButton(3, "Take Sword", takingExcaliburFromAltar);
-				if (havingOrUsingBStaffOrParacelsus()) addButton(4, "Put Staff", puttingBStaffOrParacelsusOnAltar);
-				if (player.statusEffectv1(StatusEffects.TempleOfTheDivineTracker2) == 2 || player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker2) == 3) addButton(4, "Take Staff", takingParacelsusFromAltar);
+				if (player.hasItem(weapons.B_STAFF, 1) || player.hasItem(weapons.PARACEL, 1)) addButton(4, "Put Staff", puttingBStaffOrParacelsusOnAltar);
+				if (player.statusEffectv1(StatusEffects.TempleOfTheDivineTracker2) == 2 || player.statusEffectv1(StatusEffects.TempleOfTheDivineTracker2) == 3) addButton(4, "Take Staff", takingParacelsusFromAltar);
+				if (player.hasItem(shields.BSHIELD, 1) || player.hasItem(shields.PRIDWEN, 1)) addButton(5, "Put Shield", puttingBShieldOrPridwenOnAltar);
+				if (player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker2) == 2 || player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker2) == 3) addButton(5, "Take Shield", takingPridwenFromAltar);
+				//6
+				//7
+			}
+			else {
+				addButtonDisabled(2, "Pearl", "Req. PURE Marae");
+				addButtonDisabled(3, "Put Sword", "Req. PURE Marae");
+				addButtonDisabled(4, "Put Staff", "Req. PURE Marae");
+				addButtonDisabled(5, "Put Shield", "Req. PURE Marae");
+				//6
+				//7
 			}
 			addButton(10, "Sapphire", sapphire.sapphiremenu).hint("Have a chat with the gargoyle.");
 			if (flags[kFLAGS.ONYX_PATH] > 0) addButton(11, "[onyx name]", onyx.krystalonyxmenu).hint("Have a sex with [onyx name].");
@@ -426,18 +438,16 @@ public class TempleOfTheDivine extends BaseContent {
 
 		public function puttingBSwordOrExcaliburOnAltar():void {
 			clearOutput();
-			if (player.weapon == weapons.B_SWORD || player.hasItem(weapons.B_SWORD, 1)) {
+			if (player.hasItem(weapons.B_SWORD, 1)) {
 				outputText("You feel a weird resonance engulf you, as the power of the Altar of Marae echos with an item on your person.\n\n");
 				outputText("Pulling out the Beautiful Sword, you notice the weapon is now shining with a dim white light. Curious, you place the weapon on the altar, and watch as the sword surges with power, the light seeming to be absorbed into the blade. The altar feels way more potent with the sword resting upon it. However, it occurs to you, such a weapon likely is a powerful artifact, and that as such, it could be useful in your battles against the demons.");
-				if (player.weapon == weapons.B_SWORD) player.setWeapon(WeaponLib.FISTS);
-				else player.destroyItems(weapons.B_SWORD, 1);
+				player.destroyItems(weapons.B_SWORD, 1);
 				if (player.hasStatusEffect(StatusEffects.TempleOfTheDivineTracker)) player.addStatusValue(StatusEffects.TempleOfTheDivineTracker, 2, 2);
 				else player.createStatusEffect(StatusEffects.TempleOfTheDivineTracker, 0, 2, 0, 0);
 			}
 			else {
 				outputText("The altar radiates with increased potency as the sword is put back on display.");
-				if (player.weapon == weapons.EXCALIB) player.setWeapon(WeaponLib.FISTS);
-				else player.destroyItems(weapons.EXCALIB, 1);
+				player.destroyItems(weapons.EXCALIB, 1);
 				player.addStatusValue(StatusEffects.TempleOfTheDivineTracker, 2, 1);
 			}
 			doNext(templeMainMenu);
@@ -449,24 +459,19 @@ public class TempleOfTheDivine extends BaseContent {
 			else player.addStatusValue(StatusEffects.TempleOfTheDivineTracker, 2, -1);
 			inventory.takeItem(weapons.EXCALIB, templeMainMenu);
 		}
-		private function havingOrUsingBSwordOrExcalibur():Boolean {
-			return player.weapon == weapons.B_SWORD || player.weapon == weapons.EXCALIB || player.hasItem(weapons.B_SWORD, 1) || player.hasItem(weapons.EXCALIB, 1);
-		}
 		
 		public function puttingBStaffOrParacelsusOnAltar():void {
 			clearOutput();
-			if (player.weapon == weapons.B_STAFF || player.hasItem(weapons.B_STAFF, 1)) {
+			if (player.hasItem(weapons.B_STAFF, 1)) {
 				outputText("You feel a weird resonance engulf you, as the power of the Altar of Marae echos with an item on your person.\n\n");
 				outputText("Pulling out the Beautiful Staff, you notice the weapon is now shining with a dim white light. Curious, you place the weapon on the altar, and watch as the staff surges with power, the light seeming to be absorbed into the handle. The altar feels way more potent with the staff resting upon it. However, it occurs to you, such a weapon likely is a powerful artifact, and that as such, it could be useful in your battles against the demons.");
-				if (player.weapon == weapons.B_STAFF) player.setWeapon(WeaponLib.FISTS);
-				else player.destroyItems(weapons.B_STAFF, 1);
+				player.destroyItems(weapons.B_STAFF, 1);
 				if (player.hasStatusEffect(StatusEffects.TempleOfTheDivineTracker2)) player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 1, 2);
 				else player.createStatusEffect(StatusEffects.TempleOfTheDivineTracker2, 2, 0, 0, 0);
 			}
 			else {
 				outputText("The altar radiates with increased potency as the staff is put back on display.");
-				if (player.weapon == weapons.PARACEL) player.setWeapon(WeaponLib.FISTS);
-				else player.destroyItems(weapons.PARACEL, 1);
+				player.destroyItems(weapons.PARACEL, 1);
 				player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 1, 1);
 			}
 			doNext(templeMainMenu);
@@ -478,8 +483,29 @@ public class TempleOfTheDivine extends BaseContent {
 			else player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 1, -1);
 			inventory.takeItem(weapons.PARACEL, templeMainMenu);
 		}
-		private function havingOrUsingBStaffOrParacelsus():Boolean {
-			return player.weapon == weapons.B_STAFF || player.weapon == weapons.PARACEL || player.hasItem(weapons.B_STAFF, 1) || player.hasItem(weapons.PARACEL, 1);
+		
+		public function puttingBShieldOrPridwenOnAltar():void {
+			clearOutput();
+			if (player.hasItem(shields.BSHIELD, 1)) {
+				outputText("You feel a weird resonance engulf you, as the power of the Altar of Marae echos with an item on your person.\n\n");
+				outputText("Pulling out the Beautiful Sword, you notice the weapon is now shining with a dim white light. Curious, you place the weapon on the altar, and watch as the sword surges with power, the light seeming to be absorbed into the blade. The altar feels way more potent with the sword resting upon it. However, it occurs to you, such a weapon likely is a powerful artifact, and that as such, it could be useful in your battles against the demons.");
+				player.destroyItems(shields.BSHIELD, 1);
+				if (player.hasStatusEffect(StatusEffects.TempleOfTheDivineTracker2)) player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 2, 2);
+				else player.createStatusEffect(StatusEffects.TempleOfTheDivineTracker2, 0, 2, 0, 0);
+			}
+			else {
+				outputText("The altar radiates with increased potency as the sword is put back on display.");
+				player.destroyItems(shields.BSHIELD, 1);
+				player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 2, 1);
+			}
+			doNext(templeMainMenu);
+		}
+		public function takingPridwenFromAltar():void {
+			clearOutput();
+			outputText("You feel the power of the altar diminishing, however the shield is stronger than ever and likely ready for its primary use, demon slaying.\n\n");
+			if (player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker2) == 3) player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 2, -2);
+			else player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 2, -1);
+			inventory.takeItem(shields.PRIDWEN, templeMainMenu);
 		}
 		
 		public function puttingPurePearlOnAltar():void {

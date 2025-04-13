@@ -9,11 +9,48 @@ import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
 //import classes.BodyParts.Tail;
 import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.SceneLib;
 
 use namespace CoC;
 	
 	public class WaizAbi extends Monster
 	{
+		private function monkeReactsToLustiness():void {
+			outputText("Bimbo Monkey stops their actions clearly overflowing with lust.");
+			outputText("\n\n\"<i>Emegency Instant Teleportation!!!</i>\"");
+			outputText("\n\nMonkey starts to make gesture needed for activation of her skill and then vanish.");
+			gems = 0;
+			XP = 0;
+			HP = minHP() - 1;
+			SceneLib.combat.cleanupAfterCombatImpl();
+		}
+		
+		private function powerUp():void {
+			clearOutput();
+			flags[kFLAGS.WAIZABI_LVL_UP] = 100;
+			strStat.core.value += 9000;
+			touStat.core.value += 9000;
+			speStat.core.value += 9000;
+			intStat.core.value += 9000;
+			wisStat.core.value += 9000;
+			libStat.core.value += 9000;
+			level += 9000;
+			HP = maxHP();
+			outputText("Staggering back, Bimbo Monkey wastes no time and starts to yelling and yelling and yelling and yelling and yelling (just skip next 5 min of her constantly yelling while her energy steady rising). \"<i>I'm not done yet!!!</i>\" it whispers loud enough for you to hear before launching up to continue the fight.");
+			SceneLib.combat.combatRoundOver();
+		}
+		
+		override public function defeated(hpVictory:Boolean):void
+		{
+			if (flags[kFLAGS.WAIZABI_LVL_UP] < 100) {
+				powerUp();
+				return;
+			}
+			else {
+				if (hpVictory) cleanupAfterCombat();
+				else monkeReactsToLustiness();
+			}
+		}
 		
 		public function WaizAbi()
 		{
@@ -49,6 +86,17 @@ use namespace CoC;
 				this.bonusWrath = 25;
 				this.bonusLust = 430;
 				this.level = 30;
+			}
+			if (flags[kFLAGS.WAIZABI_LVL_UP] == 100) {
+				initStrTouSpeInte(9020, 9020, 9020, 9050);
+				initWisLibSensCor(9050, 9200, 9100, 0);
+				this.weaponAttack = 9005;
+				this.armorDef = 9005;
+				this.armorMDef = 9005;
+				this.bonusHP = 9020;
+				this.bonusWrath = 905;
+				this.bonusLust = 27318;
+				this.level = 9018;
 			}
 			/*this.a = "";
 			this.short = "Waiz'abi";

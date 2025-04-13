@@ -914,7 +914,7 @@ public class CombatMagic extends BaseCombatContent {
 
 	//THIS FEATURE GOVERNS EVERY POST CAST EFFECT YOUR SPELLS MAY CAUSE
 	public function MagicAddonEffect(numberOfProcs:Number = 1):void {
-		if (player.hasStatusEffect(StatusEffects.Venomancy)) {
+		if (player.hasStatusEffect(StatusEffects.Venomancy) && CombatAbility.TAG_DAMAGING) {
 			if (player.tailVenom >= player.VenomWebCost()) {
 				var injections:Number = 0;
 				if (player.hasPerk(PerkLib.ArcaneVenom)) numberOfProcs *= AbstractSpell.stackingArcaneVenom();

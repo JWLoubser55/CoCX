@@ -310,14 +310,21 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Myconid Collective Consciousness (Final Form). Req. Myconid Collective Consciousness (Evolved) and lvl 90+. Effects: Add 50% of your toughness to your spellcasting and Esper score. Take 75% less damage from mental attacks and Esper ability. Gain 2% mana regeneration. Your own Esper abilities are 25% stronger.\n");
 			outputText("-New mutation perk: Plant Chlorophyll. Req. having free fat tissue mutation slot, plant races. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 5% while outdoors during daytime.\n");
 			outputText("-New mutation perk: Plant Chlorophyll (Primitive). Req. Plant Chlorophyll and lvl 30+. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 10% while outdoors during daytime. Plant abilities are increased by 20%.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New mutation perk: Plant Chlorophyll (Evolved). Req. Plant Chlorophyll (Primitive) and lvl 60+. Effects: 
+			outputText("-\n");//New mutation perk: Plant Chlorophyll (Final Form). Req. Plant Chlorophyll (Evolved) and lvl 90+. Effects: 
 			outputText("-New key Item (by Liadri): Grenade Launcher - req. Toolbelt - Let you use your grenade gadgets while siting comfortably in your goblin mech.\n");
 			outputText("-New mutation perk: Fungus Trama. Req. having free fat tissue mutation slot, Myconid race. Effects: For fungal creatures increase damage reduction by 5%.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Fungus Trama (Primitive). Req. Fungus Trama. and lvl 30+. Effects: For fungal creatures increase damage reduction by 10%. While indoor or at night time increases regeneration by 1%.\n");
+			outputText("-New mutation perk: Fungus Trama (Evolved). Req. Fungus Trama. (Primitive) and lvl 60+. Effects: For fungal creatures increase damage reduction by 15%. While indoor or at night time increases regeneration by 2%. Take 10% less damage from magical effects.\n");
+			outputText("-New mutation perk: Fungus Trama (Final Form). Req. Fungus Trama (Evolved) and lvl 90+. Effects: For fungal creatures increase damage reduction by 20%. While indoor or at night time increases regeneration by 3%. Take 20% less damage from magical effects. Spore abilities can be auto cast.\n");
 			outputText("-Added Outdoor marked for dungeons due to some checks for abilites that req. to be outdoor to work. For now only Twilight Groove have this marker.\n");
+			outputText("-New pure legendary shield (by Flamingrubys): Pridwen - obtainable by putting Beautiful Shield on restored Marae Altar and then taking it back. Base block 40, adding current block value to armor/m.res in calculations for Physical/Magical DR from armor and decrease by half corruption gains.\n");
+			outputText("-Beautiful items upgrade at Temple now would req. them been unequipped and in main inventory (not in Pearl, storages at home or other auxiliary storages).\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -336,13 +343,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
@@ -377,8 +377,8 @@ public class Changelog extends BaseContent
 			outputText("not checking if enemy have cock, Mist Phouka enemies dropping tarnished shard of metal, PC mummies behaviour choice menu buttons wrong labeled, pair of black cat gloves not allowing swiftcasting, Wood Elfs appearing for soulless PC's, cow maid and Excellia switching places for Minotaur Challanger fight, drinking from Oni enchanted drinking gourd not triggering Aelfwine effect, ");
 			outputText("Dark Charm not gained by Gremlins, some of Nocello Liqueur TF effects ignoring TF immunity effect, Munchkin@Biolab perk not properly increasing max for stat training caps, Vitality Tincture not restoring Arian health, Iron Man perk not affecting fatigue cost of some physical specials, Taser with an overcharged battery upgrade causing Tazer special to be not accesable, keeping debuff ");
 			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, Grey magic or White/Diving magic not taking into account overmaxLust, Grand Grey Archmage perk effect incorrectly applied, Zombiefied Cursed Tag unlimited fatigue not working in ");
-			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach wthout becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, ");
-			outputText("Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks");
+			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach wthout becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, ");
+			outputText("Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks");
 			outputText("\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");

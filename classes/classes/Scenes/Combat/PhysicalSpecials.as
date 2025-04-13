@@ -3377,6 +3377,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function SporeCloud():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
+		SporeCloud0();
+		enemyAI();
+	}
+	public function SporeCloud0():void {
 		var spores:Number = monster.lustVuln * (combat.calcHerbalismPower() * 0.05) * (2 + rand(4));
 		if (player.headjewelryName == "pair of Golden Naga Hairpins") spores *= 1.1;
 		if (player.hasPerk(PerkLib.RacialParagon)) spores *= combat.RacialParagonAbilityBoost();
@@ -3394,7 +3398,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 			tempSpe = Math.round(tempSpe*temp);
 			player.buff("SporeCloudEmpowerment").addStats({str:tempStr,spe:tempSpe}).withText("SporeCloud Empowerment").combatPermanent();
 		}
-		enemyAI();
 	}
 
 	public function blazingRocketKick():void {

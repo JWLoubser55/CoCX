@@ -4967,4 +4967,4 @@ public class Creature extends Utils
 			//Do nothing
 		}
 	}
-}
+}

@@ -345,7 +345,7 @@ public class Wings extends SaveableBodyPart {
 	EnumValue.add(Types, YGGDRASIL_HUGE_2, "YGGDRASIL_HUGE_2", {
 		name:"two large pairs of majestic yggdrasil",
 		desc:"two large, majestic pairs of plant-like",
-		appearanceDesc: "Twin pairs of Massive wings of wood extend from your shoulders, the leafy plumage shivering with each step you take. The air around you is filled with the rustling, like the wind through a dense forest canopy. Now far too large to hide, you keep your woodland wings unfurled behind you, a grand, capelike display.",
+		appearanceDesc: "Twin pairs of massive wings of wood extend from your shoulders, the leafy plumage shivering with each step you take. The air around you is filled with the rustling, like the wind through a dense forest canopy. Now far too large to hide, you keep your woodland wings unfurled behind you, a grand, capelike display.",
 		wingSlap: true,
 		canFly: true,
 		physical: true

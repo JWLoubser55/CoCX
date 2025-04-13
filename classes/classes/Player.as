@@ -3305,6 +3305,7 @@ use namespace CoC;
 		public function damagePercentArmor():Number {
 			var percent:Number = 1;
 			var armorMod:Number = armorDef;
+			if (shield == game.shields.PRIDWEN) armorMod += shieldBlock;
 			if (armorMod > 50) percent += Math.sqrt(armorMod - 50);
 			return percent;
 		}
@@ -3349,7 +3350,7 @@ use namespace CoC;
 				mult -= 20;
 			}
 			if (perkv1(IMutationsLib.FungusTramaIM) >= 1) {
-				mult -= 5;
+				mult -= (5 * perkv1(IMutationsLib.FungusTramaIM));
 			}
 			if (perkv1(IMutationsLib.AlphaHowlIM) >= 2) {
 				var packMembers:Number = LunaFollower.WerewolfPackMember;
@@ -3489,6 +3490,7 @@ use namespace CoC;
 		public function damagePercentMRes():Number {
 			var percent:Number = 1;
 			var armorMMod:Number = armorMDef;
+			if (shield == game.shields.PRIDWEN) armorMMod += shieldBlock;
 			if (armorMMod > 50) percent += Math.sqrt(armorMMod - 50);
 			return percent;
 		}
@@ -3536,7 +3538,10 @@ use namespace CoC;
 				mult -= 20;
 			}
 			if (perkv1(IMutationsLib.FungusTramaIM) >= 1) {
-				mult -= 5;
+				mult -= (5 * perkv1(IMutationsLib.FungusTramaIM));
+			}
+			if (perkv1(IMutationsLib.FungusTramaIM) >= 3) {
+				mult -= (10 * (perkv1(IMutationsLib.FungusTramaIM) - 2));
 			}
 			if (hasPerk(PerkLib.GreySageWisdom)) {
 				mult -= 20;
@@ -8075,6 +8080,7 @@ use namespace CoC;
 				if (dlust > 0 && scale) dlust *= EngineCore.lustPercent() / 100;
 				if (dlib > 0 && hasPerk(PerkLib.PurityBlessing)) dlib *= 0.75;
 				if (dcor > 0 && hasPerk(PerkLib.PurityBlessing)) dcor *= 0.5;
+				if (dcor > 0 && shield == game.shields.PRIDWEN) dcor *= 0.5;
 				if (dcor > 0 && hasPerk(PerkLib.PureAndLoving)) dcor *= 0.75;
 				if (dcor > 0 && weapon == game.weapons.HNTCANE) dcor *= 0.5;
 				if (hasPerk(PerkLib.AscensionMoralShifter)) dcor *= 1 + (perkv1(PerkLib.AscensionMoralShifter) * 0.2);

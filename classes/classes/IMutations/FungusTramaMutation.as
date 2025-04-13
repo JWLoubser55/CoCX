@@ -18,10 +18,10 @@ import classes.Races;
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "For fungal creatures increase damage reduction by 5%";
-            if (pTier >= 2) descS += ", ";
-            if (pTier >= 3) descS += ", ";
-            if (pTier >= 4) descS += ", ";
+            if (pTier >= 1) descS += "For fungal creatures increase damage reduction by "+(pTier * 5)+"%";
+            if (pTier >= 2) descS += ". While indoor or at night time increases regeneration by "+(pTier - 1)+"%";
+            if (pTier >= 3) descS += ". Take "+(pTier - 2)+"0% less damage from magical effects";
+            if (pTier >= 4) descS += ". Spore abilities can be auto cast";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -50,12 +50,15 @@ import classes.Races;
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
             if (pTier == 1) pBuffs['lib.mult'] = 0.05;
+            else if (pTier == 2) pBuffs['lib.mult'] = 0.1;
+            else if (pTier == 3) pBuffs['lib.mult'] = 0.15;
+            else if (pTier == 4) pBuffs['lib.mult'] = 0.2;
             return pBuffs;
         }
 
         public function FungusTramaMutation() 
 		{
-			super(mName + " IM", mName, SLOT_FAT, 1);
+			super(mName + " IM", mName, SLOT_FAT, 4);
         }
 
     }
