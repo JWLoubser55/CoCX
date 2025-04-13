@@ -146,10 +146,18 @@ import coc.xxc.StoryContext;
 		{
 			return DungeonAbstractContent.inDungeon;
 		}
-
 		protected function set inDungeon(v:Boolean):void
 		{
 			DungeonAbstractContent.inDungeon = v;
+		}
+
+		protected function get inOutdoorDungeon():Boolean
+		{
+			return DungeonAbstractContent.inOutdoorDungeon;
+		}
+		protected function set inOutdoorDungeon(v:Boolean):void
+		{
+			DungeonAbstractContent.inOutdoorDungeon = v;
 		}
 
 		protected function get inRoomedDungeon():Boolean

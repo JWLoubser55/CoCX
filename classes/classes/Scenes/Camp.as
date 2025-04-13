@@ -4893,6 +4893,7 @@ public function wakeFromBadEnd():void {
 	CoC.instance.timeQ = 0;
 	//Set so you're in camp.
 	inDungeon = false;
+	inOutdoorDungeon = false;
 	inRoomedDungeon = false;
 	inRoomedDungeonResume = null;
 	if (CoC.instance.inCombat) {
@@ -4956,6 +4957,7 @@ public function rebirthFromBadEnd():void {
 	else model.time.hours = 6;
 	//Set so you're in camp.
 	inDungeon = false;
+	inOutdoorDungeon = false;
 	inRoomedDungeon = false;
 	inRoomedDungeonResume = null;
     if (CoC.instance.inCombat) {

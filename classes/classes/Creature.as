@@ -3132,7 +3132,7 @@ public class Creature extends Utils
 		//Boolean alternate
 		public function hasCock():Boolean
 		{
-			return cocks.length >= 1;
+			return cocks.length >= 1 || ((vaginas[0].type == VaginaClass.SHROOM) && clitLength >= 10);
 		}
 
 		public function hasSockRoom():Boolean
@@ -4967,4 +4967,4 @@ public class Creature extends Utils
 			//Do nothing
 		}
 	}
-}
+}

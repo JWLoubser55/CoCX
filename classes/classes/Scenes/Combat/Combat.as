@@ -6601,6 +6601,12 @@ public class Combat extends BaseContent {
 			damage += scalingBonusToughness() * 0.2;
             damage += player.str;
 			damage += scalingBonusStrength() * 0.2;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
+				damage += player.tou * 0.2;
+				damage += scalingBonusToughness() * 0.05;
+				damage += player.str * 0.2;
+				damage += scalingBonusStrength() * 0.05;
+			}
         }
         else if (IsFeralCombat && player.hasPerk(PerkLib.VerdantMight)) {
 			damage += player.tou;
@@ -6858,6 +6864,12 @@ public class Combat extends BaseContent {
 			damage += scalingBonusToughness() * 0.25;
             damage += player.str;
 			damage += scalingBonusStrength() * 0.25;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
+				damage += player.tou * 0.2;
+				damage += scalingBonusToughness() * 0.05;
+				damage += player.str * 0.2;
+				damage += scalingBonusStrength() * 0.05;
+			}
         }
         else if (player.hasPerk(PerkLib.VerdantMight)){
             damage += player.tou;
@@ -7363,7 +7375,7 @@ public class Combat extends BaseContent {
         var critDamage:Number = calculateCritDamage();
         var hitCounter:int = 0;
         if (player.weapon is Tidarion) meleeDamageNoLagMain = 0; //recalc damage for current mana.. okay, get it, multi-attackers-fuckers!
-        var boolSwiftCast:Boolean = player.hasPerk(PerkLib.SwiftCasting) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && (player.isOneHandedWeapons() || player.weapon == weapons.ATWINSCY || player.weaponOff == weapons.ATWINSCY || (player.weapon.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weapon.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip))) && player.isHavingFreeOffHand() && !player.isFeralCombat();
+        var boolSwiftCast:Boolean = player.hasPerk(PerkLib.SwiftCasting) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && (player.isOneHandedWeapons() || player.weapon == weapons.ATWINSCY || player.weaponOff == weapons.ATWINSCY || (player.weapon == weapons.HATWINSCY && player.weaponOff == weapons.HATWINSCY) || (player.weapon.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weapon.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip))) && player.isHavingFreeOffHand() && !player.isFeralCombat();
         var boolLifeLeech:Boolean = player.hasPerk(PerkLib.LifeLeech) && player.isFistOrFistWeapon();
         var boolFistingIs300Bucks:Boolean = (player.isFistOrFistWeapon() && (player.shield.isNothing || (player.shield == shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dagger and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dual Daggers")) || player.isFeralCombat());
 		for(var i:int = 1; i <= flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND]; i++){
@@ -8931,6 +8943,12 @@ public class Combat extends BaseContent {
 			damage += scalingBonusToughness() * 0.25;
             damage += player.str;
 			damage += scalingBonusStrength() * 0.25;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
+				damage += player.tou * 0.2;
+				damage += scalingBonusToughness() * 0.05;
+				damage += player.str * 0.2;
+				damage += scalingBonusStrength() * 0.05;
+			}
         }
         else if (player.hasPerk(PerkLib.VerdantMight)){
             damage += player.tou;
@@ -11968,7 +11986,7 @@ public class Combat extends BaseContent {
                 else outputText("The effects of your spores are quite pronounced on [themonster] as [monster he] begin to shake, stealing glances at your body. ");
             }
             var lustDmgSC:Number = (scalingBonusLibido() * 0.5);
-            lustDmgSC = teases.teaseAuraLustDamageBonus(monster, lustDmgA);
+            lustDmgSC = teases.teaseAuraLustDamageBonus(monster, lustDmgSC);
             if (player.hasPerk(PerkLib.RacialParagon)) lustDmgSC *= RacialParagonAbilityBoost();
 			lustDmgSC *= monster.lustVuln;
             monster.teased(Math.round(lustDmgSC), false, true, true);
@@ -19406,7 +19424,7 @@ private function touSpeStrScale(stat:int):Number {
     }
 
 	public function isOutsideDuringDaytime():Boolean {
-		return !player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) && !player.hasStatusEffect(StatusEffects.InsideSmallSpace) && !isNightTime;
+		return !player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) && !player.hasStatusEffect(StatusEffects.InsideSmallSpace) && !isNightTime && (!inDungeon || (inDungeon && inOutdoorDungeon));
 	}
     public function isNearPlants():Boolean {
         return player.hasStatusEffect(StatusEffects.NearbyPlants) || explorer.areaTags.plants;

@@ -47,7 +47,7 @@ import classes.internals.*;
 			this.bonusHP = 500;
 			this.bonusLust = 151;
 			this.lust = 30;
-			this.level = 24;
+			this.level = 83;
 			this.gems = rand(16) + 30;
 			this.drop = new WeightedDrop().
 					add(null,1).

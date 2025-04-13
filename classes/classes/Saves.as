@@ -1604,6 +1604,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 	var spillyFix:Boolean = false;
 	game.isLoadingSave = true;
 	inDungeon = false;
+	inOutdoorDungeon = false;
 	inRoomedDungeon = false;
 	inRoomedDungeonResume = null;
 

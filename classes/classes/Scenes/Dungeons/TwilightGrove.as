@@ -28,6 +28,7 @@ import classes.CoC;
 		
 		public function enterDungeon():void {
 			inDungeon = true;
+			inOutdoorDungeon = true;
 			if ((player.cor >= 51 || player.isRaceCached(Races.ALRAUNE)) && flags[kFLAGS.TWILIGHT_GROVE_PURIFICATION] < 1) room1TGCorrupt();
 			else {
 				if (flags[kFLAGS.TWILIGHT_GROVE_PURIFICATION] > 1) room1TG();
@@ -37,6 +38,7 @@ import classes.CoC;
 		
 		public function exitDungeon():void {
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			clearOutput();
 			outputText("You leave the twilight grove behind and take off back towards the camp.");
 			endEncounter();
@@ -81,6 +83,7 @@ import classes.CoC;
 		}
 		private function room1TGCorruptLeave():void {
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			clearOutput();
 			outputText("This of course, looks interesting, but you have better things to do and simply decide to come back later.");
 			endEncounter();
@@ -176,6 +179,7 @@ import classes.CoC;
 		}
 		private function corruptTGHaveARestFruits():void {
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			clearOutput();
 			outputText("Those fruits look juicy, so you request a plate. You slowly eat black cherries and purple plums as "+(playerIsAlraune()?"you work a green succubus slit over with your stamens":"the vines work you up")+". You never would’ve thought that eating while fucking would feel so good. The fruits also seem to have an effect on your body, granting you a greater clarity of spirit as well as leaving your mind wandering about the numerous sexy things you’ve yet to try out. ");
 			outputText("The simple act of slowly eating these delicious fruits, their juices running over your tongue and their soft flesh yielding to you makes you shudder in pleasure as if your mouth was an actual vagina. This is enough to drive you over the edge as you climax from "+(playerIsAlraune()?"your":"the")+" vines ministration, some of your fluids flowing down into the pond.\n\n");
@@ -194,6 +198,7 @@ import classes.CoC;
 		}
 		private function corruptTGHaveARestSangriaYes():void {
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			clearOutput();
 			outputText("You let yourself drift off in the delicious embrace of the vine-like tentacles which proceed to form a slithering blanket around you. Losing all notion of time, you wake several hours later still getting played with by the vines. ");
 			outputText(""+(playerIsAlraune()?"You idly ponder what would have happened to you had you not already been a plant":"Something in you changed, as if the sap of the alraune began modifying your body, not unlike the demons on the beach. You feel plant-like strength moving through you")+".\n\n");
@@ -287,6 +292,7 @@ import classes.CoC;
 		}
 		private function corruptTGHaveARestSangriaNo():void {
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			clearOutput();
 			outputText("You proceed to dress back up highly satisfied. Done enjoying yourself you head back to camp thanking the Satyr for the quality time.\n\n");
 			player.dynStats("lib", 10, "cor", 5);
@@ -294,6 +300,7 @@ import classes.CoC;
 		}
 		private function corruptTGHaveARestFertilizer():void {
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			clearOutput();
 			outputText("You could use some nice fertilizer and tell the satyr as such. The goat man bows then comes back with a decanter. Living as a plant sure has its advantages. For one, the only food you need is some fresh water and a good amount of sun. Food isn’t an issue for you, but you sure would die for any intake of some good ol’ fashioned fertilizer. You moan in pleasure as the satyr pours the sweet syrupy liquid at your feet, the nutrients making you swoon in delight. ");
 			outputText("You enjoy the taste through your roots as your body metabolizes the nutrients into verdant growth, gaining a few extra inches. This sensation mixed with the non-stop pleasure the vines are offering you is enough to drive you over the edge as you climax from the tentacle ministrations, your fluids flowing down into the pond.\n\n");
@@ -419,6 +426,7 @@ import classes.CoC;
 		}
 		private function room1TGPureLeave():void {
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			clearOutput();
 			outputText("The malice in this area is almost palpable. You should come back when you’re better prepared.");
 			endEncounter();

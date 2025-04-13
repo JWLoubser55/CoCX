@@ -92,6 +92,7 @@ public class EventParser {
         }
         CoC.instance.inCombat = false;
 		DungeonAbstractContent.inDungeon = false;
+		DungeonAbstractContent.inOutdoorDungeon = false;
 		if (CoC.instance.player.hasStatusEffect(StatusEffects.RiverDungeonA)) {
 			if (CoC.instance.flags[kFLAGS.NEISA_FOLLOWER] == 3) CoC.instance.flags[kFLAGS.PLAYER_COMPANION_1] = "";
 			if (CoC.instance.player.hasStatusEffect(StatusEffects.ThereCouldBeOnlyOne)) CoC.instance.player.removeStatusEffect(StatusEffects.ThereCouldBeOnlyOne);

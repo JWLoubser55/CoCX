@@ -142,6 +142,7 @@ import classes.Scenes.Combat.CombatAbility;
 
 			//RESET DUNGEON
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			inRoomedDungeon = false;
 			inRoomedDungeonResume = null;
 			//Reset all standard stats
@@ -356,6 +357,7 @@ import classes.Scenes.Combat.CombatAbility;
 			//Lets get this bitch started
 			CoC.instance.inCombat = false;
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
 				//Clothes clear
 				player.setArmor(armors.C_CLOTH, false, true);
@@ -569,7 +571,7 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_UNLOCKED_HERM] > 0) {
 				outputText("\n\nOr a hermaphrodite? (Hermaphrodite gender unlocked!)");
 				addButton(2, "Herm", isAHerm).hint("Herm without balls");
-				addButton(3, "Herm", isAHerm, false).hint("Herm with balls");
+				addButton(3, "Futa", isAHerm, false).hint("Herm with balls");
 			}
 		}
 

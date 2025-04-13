@@ -2,7 +2,7 @@
  * ...
  * @author Ormael, name idea: Lord Shadeogorath
  */
-package classes.Scenes.Areas.LightlessReach 
+package classes.Scenes.Areas.Cliffs 
 {
 import classes.*;
 import classes.BodyParts.Butt;
@@ -13,15 +13,15 @@ import classes.internals.*;
 
 use namespace CoC;
 
-	public class PrimordialDisplacerBeast extends Monster
+	public class AetherTouchedValkyrie extends Monster
 	{
 		
-		public function PrimordialDisplacerBeast() 
+		public function AetherTouchedValkyrie() 
 		{
-			this.a = "the ";
-			this.short = "primordial displacer beast";
-			this.imageName = "displacer beast";
-			this.level = 84;
+			this.a = "an ";
+			this.short = "aether-touched valkyrie";
+			this.imageName = "valkyrie";
+			this.level = 101;
 		}
 		
 	}
