@@ -1479,9 +1479,6 @@ public class PerkLib
 		public static const DualWield:PerkType = mk("Dual Wield", "Dual Wield",
 				"Allows you to wield two weapons. One in main hand and one in off hand.",
 				"You've chosen the 'Dual Wield' perk, training the skill of using two weapons. One in main hand and one in off hand.");
-		public static const QuadWield:PerkType = mk("Quad Wield", "Quad Wield",
-				"Allows you to wield four weapons.",
-				"You've chosen the 'Dual Wield' perk, training the skill of using four weapons.");
 		public static const DualWieldFirearms:PerkType = mk("Dual Wield (Firearms)", "Dual Wield (Firearms)",
 				"Allows you to wield two firearms (non-2H ones) more effectively. (damage and accuracy penalties decreased by 20% and 10%)",
 				"You've chosen the 'Dual Wield (Firearms)' perk, training the skill of using two firearms (non-2H ones). (damage and accuracy penalties decreased by 20% and 10%)");
@@ -2980,8 +2977,9 @@ public class PerkLib
 		public static const PyrosFriend:PerkType = mk("Pyro's Friend", "Pyro's Friend",
 				"Mmmphmm! (No idea what he? is trying to say... but same rules apply... +10% ranged damage buff)",
 				"You've chosen the 'Pyro's Friend' perk, gaining +10% ranged physical damage.");
-		public static const QueenOfTheFairies:PerkType = mk("Queen of the Fairies", "Queen of the Fairies",
-				"Each destroyed corrupted glade and slain demon in the woodlands area allows your people to further regain control of the forest. As your kingdom grows so does your power. Increase the potency of all spells by 10% per destroyed glade and 1% per destroyed demon.");
+		public static const QuadWield:PerkType = mk("Quad Wield", "Quad Wield",
+				"Allows you to wield four weapons as long you have enough arms to hold them all.",
+				"You've chosen the 'Dual Wield' perk, training the skill of using four weapons as long you have enough arms to hold them all.");
 		public static const QuickStrike:PerkType = mk("Quick Strike", "Quick Strike",
 				"Add speed-based scaling of melee attacks when using small weapon(s). Its effect is added on top of Speed Demon perk boost.",
 				"You've chosen the 'Quick Strike' perk, allowing you to use your speed when attacking with small melee weapons.");
@@ -4370,6 +4368,8 @@ public class PerkLib
 		public static const PurityBlessing:PerkType = mk("Purity Blessing", "Purity Blessing",
 				"Reduces the rate at which your corruption, libido, and lust increase. Reduces minimum libido slightly.")
 				.withBuffs({'minlustx':-0.1});
+		public static const QueenOfTheFairies:PerkType = mk("Queen of the Fairies", "Queen of the Fairies",
+				"Each destroyed corrupted glade and slain demon in the woodlands area allows your people to further regain control of the forest. As your kingdom grows so does your power. Increase the potency of all spells by 10% per destroyed glade and 1% per destroyed demon.");
 		public static const RapierTraining:PerkType = mk("Rapier Training", "Rapier Training",
 				"After finishing of your training, increase attack power of any rapier you're using.");
 		public static const Rigidity:PerkType = mk("Rigidity", "Rigidity",
@@ -7527,7 +7527,7 @@ public class PerkLib
 					.requireLib(300)
 					.requireLevel(54);
             PrestigeJobBindmaster.requirePrestigeJobSlot()
-                    .requirePerks(JobEromancer, JobGuardian)
+                    .requirePerks(JobCourtesan, JobGuardian)
                     .requireLib(300)
                     .requireLevel(54);
             HalfStepToInhumanSelfControl.requireLib(300)
@@ -8081,6 +8081,8 @@ public class PerkLib
                     }, "Four of any race internal mutations");
 			Apex.requireLevel(12)
 					.requirePerk(RacialParagon);
+            QuadWield.requirePerk(DualWield)
+					.requireLevel(12);
             Survivalist2.requireLevel(12)
                     .requireHungerEnabled()
                     .requirePerk(Survivalist);

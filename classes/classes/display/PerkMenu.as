@@ -282,7 +282,8 @@ public class PerkMenu extends BaseContent {
 				NUMBER_WORDS_NORMAL[multiAttackStyleOff + 1] + " times"));
 		outputText(" in combat turn with your off hand weapon."
 			+ "\nYou can change it to a different amount of attacks.");
-		bd.add("MultiAtk", pickMultiattack).hint("Change your amount of attacks.");
+		bd.add("MultiAtk(M)", pickMultiattackMain).hint("Change your amount of main hand attacks.");
+		bd.add("MultiAtk(O)", pickMultiattackOff).hint("Change your amount of off hand attacks.");
 		if (player.hasPerk(PerkLib.SwiftCasting)) {
 			outputText("\n\nIf you know specific spells you can cast them after doing a melee attack. (Working only with one-handed weapons and no shield)");
 			outputText("\n\nSpell casted: <b>" + elementalArr[flags[kFLAGS.ELEMENTAL_MELEE]][1] + "</b>");
@@ -376,35 +377,49 @@ public class PerkMenu extends BaseContent {
 		addButton(14, "Back", back);
 	}
 
-	private function pickMultiattack():void {
+	private function pickMultiattackMain():void {
 		var multiAttackStyleMain:Function = curry(setFlag, meleeOptions, kFLAGS.MULTIATTACK_STYLE_MAIN);
-		var multiAttackStyleOff:Function = curry(setFlag, meleeOptions, kFLAGS.MULTIATTACK_STYLE_OFF);
 		var currentAttacksMain:int = flags[kFLAGS.MULTIATTACK_STYLE_MAIN];
-		var currentAttacksOff:int = flags[kFLAGS.MULTIATTACK_STYLE_OFF];
 		var maxAttacksMain:int = combat.maxCurrentAttacksMain();
-		var maxAttacksOff:int = combat.maxCurrentAttacksOff();
 		clearOutput();
-		if (player.weapon.isStaffType() || player.weaponOff.isStaffType() || player.weapon.isWandType() || player.weaponOff.isWandType()) {
+		if (player.weapon.isStaffType() || player.weapon.isWandType()) {
 			outputText("You can't multi-attack with wands or staves!\n\n");
 			doNext(meleeOptions);
 			return;
 		}
 		outputText("Current number of attacks (MH): " + (currentAttacksMain + 1) + "\n");
-		outputText("Current number of attacks (OH): " + (currentAttacksOff + 1) + "\n");
 		outputText("Maximum number of attacks with your current main hand weapon: " + maxAttacksMain + "\n");
-		outputText("Maximum number of attacks with your current off hand weapon: " + maxAttacksOff + "\n");
 		var nba:int = player.nextBonusAttack();
 		if (nba < 0) outputText("You've reached the maximum number of bonus attacks from mastery!");
 		else outputText("Next bonus attack at mastery level " + nba);
 		outputText("\n\nHow many attacks would you like to deal?");
 		menu();
 		var atkM:int = 0;
-		var atkO:int = 0;
 		while (atkM < maxAttacksMain) {
 			addButton(atkM, NUMBER_WORDS_CAPITAL[atkM + 1], multiAttackStyleMain, atkM)
 				.disableIf(currentAttacksMain == atkM, "Already selected");
 			atkM++;
 		}
+		addButton(14, "Back", meleeOptions);
+	}
+	private function pickMultiattackOff():void {
+		var multiAttackStyleOff:Function = curry(setFlag, meleeOptions, kFLAGS.MULTIATTACK_STYLE_OFF);
+		var currentAttacksOff:int = flags[kFLAGS.MULTIATTACK_STYLE_OFF];
+		var maxAttacksOff:int = combat.maxCurrentAttacksOff();
+		clearOutput();
+		if (player.weaponOff.isStaffType() || player.weaponOff.isWandType()) {
+			outputText("You can't multi-attack with wands or staves!\n\n");
+			doNext(meleeOptions);
+			return;
+		}
+		outputText("Current number of attacks (OH): " + (currentAttacksOff + 1) + "\n");
+		outputText("Maximum number of attacks with your current off hand weapon: " + maxAttacksOff + "\n");
+		var nba:int = player.nextBonusAttack(true, true);
+		if (nba < 0) outputText("You've reached the maximum number of bonus attacks from mastery!");
+		else outputText("Next bonus attack at mastery level " + nba);
+		outputText("\n\nHow many attacks would you like to deal?");
+		menu();
+		var atkO:int = 0;
 		while (atkO < maxAttacksOff) {
 			addButton(atkO, NUMBER_WORDS_CAPITAL[atkO + 1], multiAttackStyleOff, atkO)
 				.disableIf(currentAttacksOff == atkO, "Already selected");

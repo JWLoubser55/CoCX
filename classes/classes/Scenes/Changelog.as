@@ -320,6 +320,8 @@ public class Changelog extends BaseContent
 			outputText("-Added Outdoor marked for dungeons due to some checks for abilites that req. to be outdoor to work. For now only Twilight Groove have this marker.\n");
 			outputText("-New pure legendary shield (by Flamingrubys): Pridwen - obtainable by putting Beautiful Shield on restored Marae Altar and then taking it back. Base block 40, adding current block value to armor/m.res in calculations for Physical/Magical DR from armor and decrease by half corruption gains.\n");
 			outputText("-Beautiful items upgrade at Temple now would req. them been unequipped and in main inventory (not in Pearl, storages at home or other auxiliary storages).\n");
+			outputText("-Req. for Prestige Job: Bindmaster to have Job: Eromancer was chganged to having Job: Courtesan.\n");
+			outputText("-New tier 2 misc lvl-up perk: Quad Wield. Req. Dual Wield perk. Effect: Allows you to wield four weapons as long you have enough arms to hold them all.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -339,8 +341,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");

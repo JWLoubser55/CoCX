@@ -1701,12 +1701,13 @@ public class Combat extends BaseContent {
                     }
                 }
             }
-            if (player.hasStatusEffect(StatusEffects.BladeDance) || dualWeapon) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
+            if (player.hasStatusEffect(StatusEffects.BladeDance)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
             if (flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] > 1 && player.hasPerk(PerkLib.SteelStorm) && !player.hasStatusEffect(StatusEffects.CounterAction) && (dualWeapon || player.weapon == weapons.DAISHO)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
-        /**/}
+        }
         else {
             flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] = 1;
         }
+		if (player.weapon.isDual()) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
         attack1();
 		if (!player.weaponOff.isNothing) {
 			if (flags[kFLAGS.MULTIATTACK_STYLE_OFF] >= 0) {
@@ -1723,12 +1724,13 @@ public class Combat extends BaseContent {
 						}
 					}
 				}
-				if (player.hasStatusEffect(StatusEffects.BladeDance) || dualWeapon) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
-				if (flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] > 1 && player.hasPerk(PerkLib.SteelStorm) && !player.hasStatusEffect(StatusEffects.CounterAction) && (dualWeapon || player.weapon == weapons.DAISHO)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
-			/**/}
+				if (player.hasStatusEffect(StatusEffects.BladeDance)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
+				if (flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] > 1 && player.hasPerk(PerkLib.SteelStorm) && !player.hasStatusEffect(StatusEffects.CounterAction) && (dualWeapon || player.weaponOff == weapons.DAISHO)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
+			}
 			else {
 				flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] = 1;
 			}
+			if (player.weaponOff.isDual()) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
 			attack2();
 		}
     }
@@ -2791,7 +2793,11 @@ public class Combat extends BaseContent {
 		if (player.weapon.isDualWieldedLarge()) accmod += Math.round((dualWLLevel() - 1) / 2);
 		if (player.weapon.isDualWieldedMassive()) accmod += Math.round((dualWMLevel() - 1) / 2);
 		if (player.hasAetherTwinsTierS2()) accmod += Math.round((dualWSLevel() - 1) / 2);
-		if (player.weapon.isDualWielded()) accmod += meleeDualWieldAccuracyPenalty();
+		if (player.weapon.isDualWielded() && player.weapon.isDual()) accmod += meleeDualWieldAccuracyPenalty() + meleeDualAccuracyPenaltyMain();
+		else {
+			if (player.weapon.isDualWielded()) accmod += meleeDualWieldAccuracyPenalty();
+			if (player.weapon.isDual()) accmod += meleeDualAccuracyPenaltyMain();
+		}
         var weaponSize:Number = 1;
         if (player.weapon.isSingleSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
         if (player.weapon.isSingleMedium()) weaponSize = 1;
@@ -2861,7 +2867,11 @@ public class Combat extends BaseContent {
 			if (player.weapon.isDualWieldedMassive()) accmod += Math.round((dualWMLevel() - 1) / 2);
 		}
 		if (player.hasAetherTwinsTierS2()) accmod += Math.round((dualWSLevel() - 1) / 2);
-		if (player.weapon.isDualWielded()) accmod += meleeDualWieldAccuracyPenalty();
+		if (player.weapon.isDualWielded() && player.weaponOff.isDual()) accmod += meleeDualWieldAccuracyPenalty() + meleeDualAccuracyPenaltyOff();
+		else {
+			if (player.weapon.isDualWielded()) accmod += meleeDualWieldAccuracyPenalty();
+			if (player.weaponOff.isDual()) accmod += meleeDualAccuracyPenaltyOff();
+		}
         var weaponSize:Number = 1;
         if (player.weapon.isSingleSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
         if (player.weapon.isSingleMedium()) weaponSize = 1;
@@ -2893,25 +2903,36 @@ public class Combat extends BaseContent {
 		if (player.weapon.isDualWieldedMedium() && player.hasPerk(PerkLib.DualWieldNormal)) accmdwmodpenalty += 10;
 		if (player.weapon.isDualWieldedLarge() && player.hasPerk(PerkLib.DualWieldLarge)) accmdwmodpenalty += 10;
 		if (player.weapon.isDualWieldedMassive() && player.hasPerk(PerkLib.DualWieldMassive)) accmdwmodpenalty += 10;
-        /*if (player.weapon.isQuad()) {
-			accmdwmodpenalty -= 50;
-		}*/
         return accmdwmodpenalty;
+	}
+	public function meleeDualAccuracyPenaltyMain():Number {
+		var accmdwmodpenalty1:Number = -25;
+		//if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 10;
+		return accmdwmodpenalty1;
+	}
+	public function meleeDualAccuracyPenaltyOff():Number {
+		var accmdwmodpenalty2:Number = -25;
+		//if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 10;
+		return accmdwmodpenalty2;
 	}
 
 	public function meleeDualWieldDamagePenalty():Number {
-		var dmgmdwmodpenalty:Number = 1;
-		if (player.weapon.isDualWielded()) {
-			if (player.weapon.isDualWieldedSmall() && player.hasPerk(PerkLib.DualWieldSmall)) dmgmdwmodpenalty -= 0.3;
-			else if (player.weapon.isDualWieldedMedium() && player.hasPerk(PerkLib.DualWieldNormal)) dmgmdwmodpenalty -= 0.3;
-			else if (player.weapon.isDualWieldedLarge() && player.hasPerk(PerkLib.DualWieldLarge)) dmgmdwmodpenalty -= 0.3;
-			else if (player.weapon.isDualWieldedMassive() && player.hasPerk(PerkLib.DualWieldMassive)) dmgmdwmodpenalty -= 0.3;
-			else dmgmdwmodpenalty -= 0.5;
-		}
-		/*if (player.weapon.isQuad()) {
-			dmgmdwmodpenalty -= 0.9;
-		}*/
-        return dmgmdwmodpenalty;
+		var dmgmdwmodpenalty:Number = -0.5;
+		if (player.weapon.isDualWieldedSmall() && player.hasPerk(PerkLib.DualWieldSmall)) dmgmdwmodpenalty += 0.2;
+		else if (player.weapon.isDualWieldedMedium() && player.hasPerk(PerkLib.DualWieldNormal)) dmgmdwmodpenalty += 0.2;
+		else if (player.weapon.isDualWieldedLarge() && player.hasPerk(PerkLib.DualWieldLarge)) dmgmdwmodpenalty += 0.2;
+		else if (player.weapon.isDualWieldedMassive() && player.hasPerk(PerkLib.DualWieldMassive)) dmgmdwmodpenalty += 0.2;
+		return dmgmdwmodpenalty;
+	}
+	public function meleeDualDamagePenaltyMain():Number {
+		var dmgmdwmodpenalty1:Number = -0.4;
+		//if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 0.;
+		return dmgmdwmodpenalty1;
+	}
+	public function meleeDualDamagePenaltyOff():Number {
+		var dmgmdwmodpenalty2:Number = -0.4;
+		//if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 0.;
+		return dmgmdwmodpenalty2;
 	}
 
 	public function baseRangeAccuracy():Number {
@@ -6670,7 +6691,11 @@ public class Combat extends BaseContent {
 		}
 		if (player.gaindHoldWithBothHandBonus()) damage *= 1.5;
 		if (player.hasPerk(PerkLib.DivineArmament) && (player.weapon.isStaffType() || player.weapon.isWandType() || player.isPartiallyStaffTypeWeapon()) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise()) damage *= 3;
-		if (player.weapon.isDualWielded()) damage *= meleeDualWieldDamagePenalty();
+		if (player.weapon.isDualWielded() && player.weapon.isDual()) damage *= (1 + meleeDualWieldDamagePenalty() + meleeDualDamagePenaltyMain());
+		else {
+			if (player.weapon.isDualWielded()) damage *= (1 + meleeDualWieldDamagePenalty());
+			if (player.weapon.isDual()) damage *= (1 + meleeDualDamagePenaltyMain());
+		}
         //Weapon addition!
         damage = weaponAttackModifier(damage);
 		damage *= calculateMeleeDamageMultiplier();
@@ -6795,7 +6820,11 @@ public class Combat extends BaseContent {
 		}
 		if (player.gaindHoldWithBothHandBonus()) damage *= 1.5;
 		if (player.hasPerk(PerkLib.DivineArmament) && (player.weaponOff.isStaffType() || player.weaponOff.isWandType() || player.weaponOff.isStaffPart() || player.weaponOff == weapons.DEMSCYT || player.weaponOff == weapons.LHSCYTH) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise()) damage *= 3;
-		if (player.weaponOff.isDualWielded()) damage *= meleeDualWieldDamagePenalty();
+		if (player.weaponOff.isDualWielded() && player.weaponOff.isDual()) damage *= (1 + meleeDualWieldDamagePenalty() + meleeDualDamagePenaltyMain());
+		else {
+			if (player.weaponOff.isDualWielded()) damage *= (1 + meleeDualWieldDamagePenalty());
+			if (player.weaponOff.isDual()) damage *= (1 + meleeDualDamagePenaltyMain());
+		}
         //Weapon addition!
         damage = weaponAttackModifier(damage);
 		damage *= calculateMeleeDamageMultiplier();

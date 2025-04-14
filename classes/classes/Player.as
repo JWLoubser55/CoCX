@@ -7038,7 +7038,7 @@ use namespace CoC;
 			if (grantsBonusAttacks && levelUp) {// if it grants bonus attacks
 				var maxAttacksNew:int = melee? (offHand?SceneLib.combat.maxCurrentAttacksOff():SceneLib.combat.maxCurrentAttacksMain()): SceneLib.combat.maxCurrentRangeAttacks();
 				// remember the last value
-				var masteryArrays:Array = melee? masteryBonusAttacksMelee: masteryBonusAttacksRanged;
+				var masteryArrays:Array = melee? (offHand?masteryBonusAttacksMeleeOff:masteryBonusAttacksMeleeMain): masteryBonusAttacksRanged;
 				for each (var masteryArr:Array in masteryArrays) {
 					// if matches index, used right now
 					if (masteryArr[0] == index && masteryArr[1]) {
@@ -7058,7 +7058,7 @@ use namespace CoC;
 			}
 		}
 
-		public function get masteryBonusAttacksMelee():Array {
+		public function get masteryBonusAttacksMeleeMain():Array {
 			return [
 				// Mastery, condition, array of attack boosts (from +1)
 				[Combat.MASTERY_FERAL, isFeralCombat(), [10, 20, 30, 40]],
@@ -7067,8 +7067,19 @@ use namespace CoC;
 				[Combat.MASTERY_SMALL, weapon.isSmall(), [10, 20, 30, 40]],
 				[Combat.MASTERY_LARGE, weapon.isLarge(), [15, 30]],
 				[Combat.MASTERY_MASSIVE, weapon.isMassive(), [30]],
-				//[Combat.MASTERY_RANGED, isBowTypeWeapon() || isThrownTypeWeapon(), []],
-				[Combat.MASTERY_NORMAL, true, [10, 25, 40]] //the last one for "everything else"
+				[Combat.MASTERY_NORMAL, weapon.isMedium(), [10, 25, 40]]
+				//[Combat.MASTERY_NORMAL, true, [10, 25, 40]] //the last one for "everything else"
+			];
+		}
+
+		public function get masteryBonusAttacksMeleeOff():Array {
+			return [
+				// Mastery, condition, array of attack boosts (from +1)
+				[Combat.MASTERY_SMALL, weaponOff.isSmall(), [10, 20, 30, 40]],
+				[Combat.MASTERY_LARGE, weaponOff.isLarge(), [15, 30]],
+				[Combat.MASTERY_MASSIVE, weaponOff.isMassive(), [30]],
+				[Combat.MASTERY_NORMAL, weaponOff.isMedium(), [10, 25, 40]]
+				//[Combat.MASTERY_NORMAL, true, [10, 25, 40]] //the last one for "everything else"
 			];
 		}
 
@@ -7083,8 +7094,8 @@ use namespace CoC;
 			];
 		}
 
-		public function nextBonusAttack(meleeOrRanged:Boolean = true):int {
-			var masteryArrays:Array = meleeOrRanged? masteryBonusAttacksMelee: masteryBonusAttacksRanged;
+		public function nextBonusAttack(meleeOrRanged:Boolean = true, offHand:Boolean = false):int {
+			var masteryArrays:Array = meleeOrRanged? (offHand?masteryBonusAttacksMeleeOff:masteryBonusAttacksMeleeMain): masteryBonusAttacksRanged;
 			for each (var masteryArr:Array in masteryArrays) {
 				if (masteryArr[1]) {
 					for (var bonusPos:int = 0; bonusPos < masteryArr[2].length; ++bonusPos) {
@@ -7098,7 +7109,7 @@ use namespace CoC;
 		}
 
 		public function calculateMaxAttacksForClass(meleeOrRanged:Boolean, classIndex:int):int {
-			var masteryArrays:Array = meleeOrRanged? masteryBonusAttacksMelee: masteryBonusAttacksRanged;
+			var masteryArrays:Array = meleeOrRanged? masteryBonusAttacksMeleeMain: masteryBonusAttacksRanged;
 			var masteryArr:Array = masteryArrays[classIndex];
 
 			var rval:int = 1;
@@ -7113,7 +7124,7 @@ use namespace CoC;
 
 		public function calculateMultiAttacks(meleeOrRanged:Boolean = true, offHandCalc:Boolean = false):int {
 			var rval:Number = 1;
-            var masteryArrays:Array = meleeOrRanged? masteryBonusAttacksMelee: masteryBonusAttacksRanged;
+            var masteryArrays:Array = meleeOrRanged? (offHandCalc?masteryBonusAttacksMeleeOff:masteryBonusAttacksMeleeMain): masteryBonusAttacksRanged;
 			for each (var masteryArr:Array in masteryArrays) {
 				if (masteryArr[1]) {
 					for (var bonusPos:int = 0; bonusPos < masteryArr[2].length; ++bonusPos) {
@@ -7137,6 +7148,11 @@ use namespace CoC;
 				// Flurry of Blows gets +2
 				if(isUnarmedCombat() && hasPerk(PerkLib.FlurryOfBlows)){
 					rval += 2;
+				}
+			} else if (offHandCalc) {
+				// Spear gains a few extra due to Spear Dancing Flurry
+				if(weaponOff.isSpearType() && hasPerk(PerkLib.ELFElvenSpearDancingFlurry1to4) && isElf()) {
+					rval += perkv1(PerkLib.ELFElvenSpearDancingFlurry1to4);
 				}
 			} else {
 				//Bow gain +1 from Elf Master Shot
