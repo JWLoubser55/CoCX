@@ -738,7 +738,7 @@ public function mainCampMenu():void {
 	addButton(2, "Spar", nadiaSparsWithPC).hint("Ask Nadia for a mock battle.")
 		.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 2, "You need a good sparring ring for that.");
 	if (sceneHunter.mockFights)
-		addButton(3, "Mock Fight", mockFightDiana)
+		addButton(3, "Mock Fight", mockFightNadia)
 				.hint("Spice things up a little - make her fight for her pussy!")
 				.disableIf(player.isGenderless(), "Not for genderless!");
 	//3 - ??
@@ -764,7 +764,7 @@ public function mainCampMenu():void {
 	addButton(14, "Back", camp.campLoversMenu);
 }
 
-public function mockFightDiana():void {
+public function mockFightNadia():void {
     mocking = true;
     nadiaSparsWithPC();
 }

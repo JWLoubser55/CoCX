@@ -362,12 +362,12 @@ public class EventParser {
         }
 		//Unequip large weapon if your Ayo armor is unpowered
 		if (player.weaponOff.isSingleLarge() && !player.hasPerk(PerkLib.GigantGrip) && player.hasPerk(PerkLib.ExoGiantsGrip) && player.isInAyoArmor() && !player.buff("Ayo Armor").isPresent()) {
-			EngineCore.outputText("Your ayo armor is unpowered and you can't no longer wield large weapon singelahanded. As such, your off hand weapon has been unequipped automatically. ");
+			EngineCore.outputText("Your ayo armor is unpowered and you can't no longer wield large weapon single-handed. As such, your off hand weapon has been unequipped automatically. ");
             SceneLib.inventory.takeItem(player.unequipWeaponOff(), playerMenu);
             return true;
 		}
 		if (player.weapon.isSingleLarge() && !player.hasPerk(PerkLib.GigantGrip) && player.hasPerk(PerkLib.ExoGiantsGrip) && player.isInAyoArmor() && !player.buff("Ayo Armor").isPresent()) {
-			EngineCore.outputText("Your ayo armor is unpowered and you can't no longer wield large weapon singelahanded. As such, your main hand weapon has been unequipped automatically. ");
+			EngineCore.outputText("Your ayo armor is unpowered and you can't no longer wield large weapon single-handed. As such, your main hand weapon has been unequipped automatically. ");
             SceneLib.inventory.takeItem(player.unequipWeapon(), playerMenu);
             return true;
 		}
@@ -378,6 +378,17 @@ public class EventParser {
             SceneLib.inventory.takeItem(player.unequipShield(), playerMenu);
             return true;
         }
+		//Unequip dual weapons if you no longer have 4 arms
+		if (player.weapon.isDual() && !player.hasFourArms()) {
+			EngineCore.outputText("Your current main hand weapons requires the use of two hands. As such, your weapons has been unequipped automatically. ");
+            SceneLib.inventory.takeItem(player.unequipWeapon(), playerMenu);
+            return true;
+		}
+        if (player.weaponOff.isDual() && !player.hasFourArms()) {
+			EngineCore.outputText("Your current off hand weapons requires the use of two hands. As such, your weapons has been unequipped automatically. ");
+            SceneLib.inventory.takeItem(player.unequipWeaponOff(), playerMenu);
+            return true;
+		}
         // update cock type as dog/fox depending on whether the player resembles one more than the other.
         // Previously used to be computed directly in cockNoun, but refactoring prevents access to the Player class when in cockNoun now.
         if (player.cockTotal() != 0) {

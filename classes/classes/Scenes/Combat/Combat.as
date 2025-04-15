@@ -2906,13 +2906,13 @@ public class Combat extends BaseContent {
         return accmdwmodpenalty;
 	}
 	public function meleeDualAccuracyPenaltyMain():Number {
-		var accmdwmodpenalty1:Number = -25;
-		//if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 10;
+		var accmdwmodpenalty1:Number = -50;
+		//if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 20;
 		return accmdwmodpenalty1;
 	}
 	public function meleeDualAccuracyPenaltyOff():Number {
-		var accmdwmodpenalty2:Number = -25;
-		//if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 10;
+		var accmdwmodpenalty2:Number = -50;
+		//if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 20;
 		return accmdwmodpenalty2;
 	}
 
@@ -2925,12 +2925,12 @@ public class Combat extends BaseContent {
 		return dmgmdwmodpenalty;
 	}
 	public function meleeDualDamagePenaltyMain():Number {
-		var dmgmdwmodpenalty1:Number = -0.4;
+		var dmgmdwmodpenalty1:Number = -0.49;
 		//if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 0.;
 		return dmgmdwmodpenalty1;
 	}
 	public function meleeDualDamagePenaltyOff():Number {
-		var dmgmdwmodpenalty2:Number = -0.4;
+		var dmgmdwmodpenalty2:Number = -0.49;
 		//if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 0.;
 		return dmgmdwmodpenalty2;
 	}

@@ -1809,7 +1809,7 @@ import classes.Scenes.Combat.CombatAbility;
 					outputText("You spent much of your time fighting other children, and you had plans to find work as a guard when you grew up.  You do 10% more damage with physical melee attacks.  You will also start out with 50 gems and Job: Warrior perk.  Is this your history?");
 					break;
 				case PerkLib.HistoryFortune:
-					outputText("You always feel lucky when it comes to fortune.  Because of that, you have always managed to save up gems until whatever's needed and made the most out it (+15% gems on victory).  You will also start out with 250 gems and Job: Rogue perk.  Is this your history?");
+					outputText("You always feel lucky when it comes to fortune.  Because of that, you have always managed to save up gems until whatever's needed and made the most out it (+15% gems on victory).  You will also start out with Traveling Merchant Outfit.  Is this your history?");
 					break;
 				case PerkLib.HistoryHealer:
 					outputText("You often spent your free time with the village healer, learning how to tend to wounds.  Healing items and effects are 20% more effective.  Is this your history?");
@@ -1879,9 +1879,6 @@ import classes.Scenes.Combat.CombatAbility;
 			}
 			if (choice == PerkLib.HistoryScholar) {
 				player.gems += 150;
-			}
-			if (choice == PerkLib.HistoryFortune) {
-				player.gems += 250;
 			}
 			if (flags[kFLAGS.HISTORY_PERK_SELECTED] == 0) {
 				flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
@@ -2239,7 +2236,10 @@ import classes.Scenes.Combat.CombatAbility;
 				player.alchemySkillStat.level = 5;
 				player.perkPoints += 1;
 			}
-			if (player.hasPerk(PerkLib.HistoryFortune)) player.perkPoints += 1;
+			if (player.hasPerk(PerkLib.HistoryFortune) || player.hasPerk(PerkLib.PastLifeFortune)) {
+				player.setArmor(armors.TRMOUTF);
+				player.perkPoints += 1;
+			}
 			if (player.hasPerk(PerkLib.HistoryHealer)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.HistoryReligious)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.HistorySlacker)) player.perkPoints += 1;
@@ -2252,7 +2252,6 @@ import classes.Scenes.Combat.CombatAbility;
 			if (player.hasPerk(PerkLib.PastLifeTactician) && player.hasKeyItem("PerksOverJobs") >= 0) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeThief) && player.hasKeyItem("PerksOverJobs") >= 0) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeWhore) && player.hasKeyItem("PerksOverJobs") >= 0) player.perkPoints += 1;
-			if (player.hasPerk(PerkLib.PastLifeFortune)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeHealer)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeReligious)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeSlacker)) player.perkPoints += 1;
@@ -4266,3 +4265,4 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 	} // what the fuck are those weird comments here? ^
 }
+
