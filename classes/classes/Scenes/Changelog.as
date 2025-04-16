@@ -324,7 +324,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 misc lvl-up perk: Quad Wield. Req. Dual Wield perk. Effect: Allows you to wield four weapons as long you have enough arms to hold them all.\n");
 			outputText("-History: Fortune perk would give Traveling Merchant Outfit instead of default Comfortable Clothes. Also won't give any extra gems now.\n");
 			outputText("-New event perk: Fungal Nobility. Gained by becoming Myconid. Effects: You can enslave and order matango around, gaining a small entourage of mushroom girls at your service. You can order around up to your shroom girl score in numbers. Your ESP abilities grow with the number of matango following you (1 percent per matango).\n");
-			outputText("-\n");
+			outputText("-New option in Phylactery Enchantment: Corruption rune Imbuement -> Add your libido to your magic modifier but take lust damage when spellcasting. (As sadist for lust dmg)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

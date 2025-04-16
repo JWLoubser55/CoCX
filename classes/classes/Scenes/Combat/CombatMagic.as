@@ -960,6 +960,7 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) HPChange((player.maxHP() * numberOfProcs * five), false, true);
 			else HPChange((player.maxHP() * numberOfProcs * five), false, false);
 		}
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dynStats("lus", 3);// && CombatAbility.TAG_DAMAGING
 	}
 	
 	public function brutalSpellsEffect(display:Boolean = true):void {

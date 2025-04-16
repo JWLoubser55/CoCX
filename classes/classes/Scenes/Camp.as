@@ -3225,6 +3225,7 @@ public class Camp extends NPCAwareContent{
 			[StatusEffects.PhylacteryEnchantment8, "Mind rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment9, "Soul rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment10, "Body rune Imbuement"],
+			[StatusEffects.PhylacteryEnchantment11, "Corruption rune Imbuement"],
 		];
 		var i:int;
 		clearOutput();
@@ -3254,7 +3255,7 @@ public class Camp extends NPCAwareContent{
 		outputText("Mind rune Imbuement -> <i>Add half your intelligence to your libido score.</i>\n");
 		outputText("Soul rune Imbuement -> <i>Add half your wisdom to your libido score.</i>\n");
 		outputText("Body rune Imbuement -> <i>Add half your libido to your strength and speed score.</i>\n");
-		//11
+		outputText("Corruption rune Imbuement -> <i>Add your libido to your magic modifier but take lust damage when spellcasting. (As sadist for lust dmg)</i>\n");
 		menu();
 		for (i = 0; i < statusNames.length; ++i) {
 			addButton(i, statusNames[i][1], phylacteryEnchantmentToggle, statusNames[i][0]);

@@ -605,6 +605,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const PhylacteryEnchantment8:StatusEffectType         = mk("Phylactery Enchantment 8");
 		public static const PhylacteryEnchantment9:StatusEffectType         = mk("Phylactery Enchantment 9");
 		public static const PhylacteryEnchantment10:StatusEffectType        = mk("Phylactery Enchantment 10");
+		public static const PhylacteryEnchantment11:StatusEffectType        = mk("Phylactery Enchantment 11");
 		public static const PlainOnaholeUsed:StatusEffectType               = mk("plain onahole used");
 		public static const PhoukaWhiskeyAffect:StatusEffectType            = mk("PhoukaWhiskeyAffect");
 		public static const PocketWatch:StatusEffectType                   	= mk("PocketWatch");

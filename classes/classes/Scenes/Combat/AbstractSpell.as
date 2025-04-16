@@ -440,6 +440,7 @@ public class AbstractSpell extends CombatAbility {
 			dCT1S += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
 			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) dCT1S += Math.round(scalingBonusToughness() * 0.1);
 		}
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dCT1S += 5 * scalingBonusLibido(randomize);
 		return dCT1S;
 	}
 	public function damageCalculationTier2Spells(randomize:Boolean=true):Number {
@@ -450,6 +451,7 @@ public class AbstractSpell extends CombatAbility {
 			dCT2S += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
 			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) dCT2S += Math.round(scalingBonusToughness() * 0.1);
 		}
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dCT2S += 15 * scalingBonusLibido(randomize);
 		return dCT2S;
 	}
 	public function damageCalculationTier3Spells(randomize:Boolean=true):Number {
@@ -460,6 +462,7 @@ public class AbstractSpell extends CombatAbility {
 			dCT3S += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
 			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) dCT3S += Math.round(scalingBonusToughness() * 0.1);
 		}
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dCT3S += 40 * scalingBonusLibido(randomize);
 		return dCT3S;
 	}
 	
