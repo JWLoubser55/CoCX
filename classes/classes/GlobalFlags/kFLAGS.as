@@ -1305,7 +1305,7 @@ public static const BEE_GIRL_RESET_COUNTER:int                                  
 public static const SOPHIE_BIMBO_AGAIN:int                                          = 1297;
 public static const FLYING_SWORD:int                                   				= 1298;
 public static const IN_COMBAT_PLAYER_FLYING_SWORD_ATTACKED:int                      = 1332;
-public static const MUMMY_ATTACK:int                                   				= 1299;
+public static const MUMMY_ZOMBIE_ATTACK:int                                   		= 1299;
 public static const KAIBA_SHELFS:int                                   				= 1300;
 public static const MARAE_ISLAND:int                                   				= 1301;
 public static const DISCOVERED_BEE_HIVE_DUNGEON:int                                 = 1302;
@@ -2294,7 +2294,7 @@ public static const DISCOVERED_OUTER_BATTLEFIELD:int   	                        
 public static const DISCOVERED_INNER_BATTLEFIELD:int                   			   	= 2286;	//Not Yet Used Flag
 public static const TAMED_08_NAME:int                                   			= 2287;
 public static const GOLEM_ENEMY_TYPE:int                             				= 2288;
-public static const IN_COMBAT_PLAYER_MUMMY_ATTACKED:int                          	= 2289;
+public static const IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED:int                      = 2289;
 public static const TAMED_09_NAME:int                        						= 2290;
 public static const TAMED_10_NAME:int                           		            = 2291;
 public static const DISCOVERED_DEEP_SEA:int                           		        = 2292; // Not used
@@ -2452,7 +2452,7 @@ public static const FOUND_TEMPLE_OF_THE_DIVINE:int                              
 public static const SAPPHIRE_AFFECTION:int                           		        = 2444;
 public static const SAPPHIRE_TALKS:int                       			            = 2445;
 public static const WEDDINGS_UNLOCKED:int                                   		= 2446; //SAPPHIRE_SEX before, now removed and replaced.
-public static const UNKNOWN_FLAG_NUMBER_02447:int                                   = 2447;	//Not Yet Used Flag
+public static const IN_COMBAT_PLAYER_MATANGO_ATTACKED:int                           = 2447;
 public static const ONYX_PATH:int                                   				= 2448;	//slave or free
 public static const UNKNOWN_FLAG_NUMBER_02449:int                                   = 2449;
 public static const ONYX_GENDER:int                                   				= 2450;
@@ -2698,7 +2698,7 @@ public static const AETHER_SINISTER_EVO:int                                   		
 public static const AETHER_DEXTER_TWIN_AT_CAMP:int                                  = 2689;
 public static const AETHER_SINISTER_TWIN_AT_CAMP:int                                = 2690;
 public static const EBON_LABYRINTH_RECORD:int                                   	= 2691; //Maximum EL room reached
-public static const UNKNOWN_FLAG_NUMBER_02692:int                                   = 2692;	//Not Yet Used Flag
+public static const MATANGO_ATTACK:int                                   			= 2692;
 public static const CHARYBDIS_FOLLOWER:int                                   		= 2693;
 public static const RIVER_DUNGEON_ELEMENTAL_MIXER:int                               = 2694;
 public static const ALVINA_DIARY:int                                   				= 2695;

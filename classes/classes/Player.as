@@ -1417,15 +1417,20 @@ use namespace CoC;
 		}
 		public function mummyControlLimit():Number
 		{
-			var mCL:Number = 5;
-			if (perkv1(IMutationsLib.AlphaHowlIM) >= 1) mCL += (perkv1(IMutationsLib.AlphaHowlIM) * 5);
-			return mCL;
+			var mummyCL:Number = 5;
+			if (perkv1(IMutationsLib.AlphaHowlIM) >= 1) mummyCL += (perkv1(IMutationsLib.AlphaHowlIM) * 5);
+			return mummyCL;
 		}
 		public function zombieControlLimit():Number
 		{
-			var zCL:Number = 5;
-			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) zCL *= 2;
-			return zCL;
+			var zombieCL:Number = 5;
+			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) zombieCL *= 2;
+			return zombieCL;
+		}
+		public function matangoControlLimit():Number
+		{
+			var matangoCL:Number = 5;
+			return matangoCL;
 		}
 		public function zerkSereneMind():Boolean
 		{
@@ -5284,6 +5289,7 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.MummyLord) && perkv1(PerkLib.MummyLord) > 0) minions += perkv1(PerkLib.MummyLord);
 			if (hasPerk(PerkLib.UndeadLord) && perkv1(PerkLib.UndeadLord) > 0) minions += perkv1(PerkLib.UndeadLord);
+			if (hasPerk(PerkLib.FungalNobility) && perkv1(PerkLib.FungalNobility) > 0) minions += perkv1(PerkLib.FungalNobility);
 			if (hasPerk(PerkLib.JobTamer)) minions += SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount();// || have ring of taming
 			return minions;
 		}

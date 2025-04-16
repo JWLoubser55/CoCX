@@ -4227,6 +4227,8 @@ public class PerkLib
 				"Allows access to Yeti freezing breath attack.");
 		public static const FromTheFrozenWaste:PerkType = mk("From the frozen waste", "Lord of the Frozen Wastes",
 				"The icy wastes where winter reigns are your domain. You are resistant to cold but vulnerable to heat.");
+		public static const FungalNobility:PerkType = mk("Fungal Nobility", "Fungal Nobility",
+				"You can enslave and order matango around, gaining a small entourage of mushroom girls at your service. You can order around up to your shroom girl score in numbers. Your ESP abilities grow with the number of matango following you (1 percent per matango).");
 		public static const FutaFaculties:PerkType = mk("Futa Faculties", "Futa Faculties",
 				"It's super hard to think about stuff that like, isn't working out or fucking!").withBuffs({'int.mult':-0.50});
 		public static const FutaForm:PerkType = mk("Futa Form", "Futa Form",

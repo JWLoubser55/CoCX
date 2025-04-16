@@ -108,7 +108,8 @@ use namespace CoC;
 				kind : 'monster',
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					matangoScene.mantangoEncounter();
+					if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) < player.matangoControlLimit()) matangoScene.gainingMatango();
+					else matangoScene.mantangoEncounter();
 				}
 			},/* {
 				name: "darkelf",

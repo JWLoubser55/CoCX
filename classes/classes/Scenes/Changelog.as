@@ -323,7 +323,7 @@ public class Changelog extends BaseContent
 			outputText("-Req. for Prestige Job: Bindmaster to have Job: Eromancer was chganged to having Job: Courtesan.\n");
 			outputText("-New tier 2 misc lvl-up perk: Quad Wield. Req. Dual Wield perk. Effect: Allows you to wield four weapons as long you have enough arms to hold them all.\n");
 			outputText("-History: Fortune perk would give Traveling Merchant Outfit instead of default Comfortable Clothes. Also won't give any extra gems now.\n");
-			outputText("-\n");
+			outputText("-New event perk: Fungal Nobility. Gained by becoming Myconid. Effects: You can enslave and order matango around, gaining a small entourage of mushroom girls at your service. You can order around up to your shroom girl score in numbers. Your ESP abilities grow with the number of matango following you (1 percent per matango).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -364,6 +364,24 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accesable by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -378,7 +396,7 @@ public class Changelog extends BaseContent
 			outputText("Dark Charm not gained by Gremlins, some of Nocello Liqueur TF effects ignoring TF immunity effect, Munchkin@Biolab perk not properly increasing max for stat training caps, Vitality Tincture not restoring Arian health, Iron Man perk not affecting fatigue cost of some physical specials, Taser with an overcharged battery upgrade causing Tazer special to be not accesable, keeping debuff ");
 			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, Grey magic or White/Diving magic not taking into account overmaxLust, Grand Grey Archmage perk effect incorrectly applied, Zombiefied Cursed Tag unlimited fatigue not working in ");
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach wthout becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
-			outputText("some errors in checks for all the minions (or potetnial ones) that may blocked access to minions tab in camp");
+			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp");
 			outputText("\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
@@ -442,20 +460,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -488,12 +494,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

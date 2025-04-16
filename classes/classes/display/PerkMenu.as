@@ -231,7 +231,6 @@ public class PerkMenu extends BaseContent {
 		var bd:ButtonDataList = new ButtonDataList();
 		clearOutput();
 		outputText("You can choose how your pets and minions attack:");
-
 		menu();
 		if (player.statusEffectv1(StatusEffects.SummonedElementals) >= 1) {
 			outputText("\n<b>You can adjust your elemental summons behaviour during combat.</b>");
@@ -251,10 +250,12 @@ public class PerkMenu extends BaseContent {
 		}
 		if ((player.hasPerk(PerkLib.MummyLord) && player.perkv1(PerkLib.MummyLord) > 0) || (player.hasPerk(PerkLib.UndeadLord) && player.perkv1(PerkLib.UndeadLord) > 0)) {
 			outputText("\n<b>You can adjust the behaviour of your mummies/zombies during combat.</b>");
-			bd.add("Mummies/Zombies", mummyBehaviourOptions);
+			bd.add("Mummies/Zombies", mummyzombieBehaviourOptions);
 		}
-
-
+		if (player.hasPerk(PerkLib.FungalNobility)) {
+			outputText("\n<b>You can adjust the behaviour of your matango during combat.</b>");
+			bd.add("Matango", matangoBehaviourOptions);
+		}
 		submenu(bd, CoC.instance.inCombat ? curry(combat.combatMenu, false) : displayPerks, 0, false);
 	}
 
@@ -906,7 +907,6 @@ public class PerkMenu extends BaseContent {
 		if (flags[kFLAGS.WILL_O_THE_WISP] != 0) addButton(10, "Attacking(A)", WOTWAttacking, 0).hint("Would attack without need to confirm attack order.");
 		if (flags[kFLAGS.WILL_O_THE_WISP] != 1) addButton(11, "Attacking(M)", WOTWAttacking, 1).hint("Would attack after confirming attack order.");
 		if (flags[kFLAGS.WILL_O_THE_WISP] != 2) addButton(12, "Commanding", WOTWAttacking, 2);
-
 		addButton(14, "Back", minionOptions);
         function WOTWAttacking(attacking:Number):void {
             flags[kFLAGS.WILL_O_THE_WISP] = attacking;
@@ -936,23 +936,35 @@ public class PerkMenu extends BaseContent {
 			.disableIf(flags[kFLAGS.FLYING_SWORD] == 0);
 		addButton(11, "Enable", toggleFlag, flyingSwordBehaviourOptions, kFLAGS.FLYING_SWORD)
 			.disableIf(flags[kFLAGS.FLYING_SWORD] == 1);
-
 		addButton(14, "Back", CoC.instance.inCombat ? curry(combat.combatMenu, false) : displayPerks);
 	}
 
-	public function mummyBehaviourOptions():void {
+	public function mummyzombieBehaviourOptions():void {
 		clearOutput();
 		menu();
 		outputText("You can choose how your mummies/zombies will behave during each fight.\n\n");
 		outputText("\n<b>Mummy/Zombie behaviour:</b>\n");
-		if (flags[kFLAGS.MUMMY_ATTACK] == 0) outputText("Your mummies/zombies will not attack.");
-		if (flags[kFLAGS.MUMMY_ATTACK] == 1) outputText("Your mummies/zombies will attack at the beginning of each turn.");
-		addButton(10, "Disable", toggleFlag, mummyBehaviourOptions, kFLAGS.MUMMY_ATTACK)
-			.disableIf(flags[kFLAGS.MUMMY_ATTACK] == 0);
-		addButton(11, "Enable", toggleFlag, mummyBehaviourOptions, kFLAGS.MUMMY_ATTACK)
-			.disableIf(flags[kFLAGS.MUMMY_ATTACK] == 1);
+		if (flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 0) outputText("Your mummies/zombies will not attack.");
+		if (flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1) outputText("Your mummies/zombies will attack at the beginning of each turn.");
+		addButton(10, "Disable", toggleFlag, mummyzombieBehaviourOptions, kFLAGS.MUMMY_ZOMBIE_ATTACK)
+			.disableIf(flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 0);
+		addButton(11, "Enable", toggleFlag, mummyzombieBehaviourOptions, kFLAGS.MUMMY_ZOMBIE_ATTACK)
+			.disableIf(flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1);
+		addButton(14, "Back", minionOptions);
+	}
 
-		addButton(14, "Back", minionOptions)
+	public function matangoBehaviourOptions():void {
+		clearOutput();
+		menu();
+		outputText("You can choose how your matango will behave during each fight.\n\n");
+		outputText("\n<b>Matango behaviour:</b>\n");
+		if (flags[kFLAGS.MATANGO_ATTACK] == 0) outputText("Your matango will not attack.");
+		if (flags[kFLAGS.MATANGO_ATTACK] == 1) outputText("Your matango will attack at the beginning of each turn.");
+		addButton(10, "Disable", toggleFlag, matangoBehaviourOptions, kFLAGS.MATANGO_ATTACK)
+			.disableIf(flags[kFLAGS.MATANGO_ATTACK] == 0);
+		addButton(11, "Enable", toggleFlag, matangoBehaviourOptions, kFLAGS.MATANGO_ATTACK)
+			.disableIf(flags[kFLAGS.MATANGO_ATTACK] == 1);
+		addButton(14, "Back", minionOptions);
 	}
 
 	//IMutationsDB!
@@ -1762,3 +1774,4 @@ public class PerkMenu extends BaseContent {
 	 */
 }
 }
+

@@ -846,7 +846,8 @@ public class Combat extends BaseContent {
             flags[kFLAGS.IN_COMBAT_PLAYER_GOLEM_ATTACKED] = 0;
             flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] = 0;
             flags[kFLAGS.IN_COMBAT_PLAYER_EPIC_ELEMENTAL_ATTACKED] = 0;
-			flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ATTACKED] = 0;
+			flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] = 0;
+			flags[kFLAGS.IN_COMBAT_PLAYER_MATANGO_ATTACKED] = 0;
 			flags[kFLAGS.IN_COMBAT_PLAYER_ANUBI_HEART_LEECH] = 0;
             flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] = 0;
             flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] = 0;
@@ -953,13 +954,17 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
 			player.createStatusEffect(StatusEffects.DisableMHActing, 5, 0, 0, 0);
 		}
-		if (flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ATTACKED] != 0 && flags[kFLAGS.MUMMY_ATTACK] == 1) {
+		if (flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] != 0 && flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1) {
 			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
 			player.createStatusEffect(StatusEffects.DisableMHActing, 6, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_WILL_O_THE_WISP_ATTACKED] != 0 && flags[kFLAGS.WILL_O_THE_WISP] < 2) {
 			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
 			player.createStatusEffect(StatusEffects.DisableMHActing, 7, 0, 0, 0);
+		}
+		if (flags[kFLAGS.IN_COMBAT_PLAYER_MATANGO_ATTACKED] != 0 && flags[kFLAGS.MATANGO_ATTACK] == 1) {
+			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
+			player.createStatusEffect(StatusEffects.DisableMHActing, 8, 0, 0, 0);
 		}/* for mech AI?
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_WILL_O_THE_WISP_ATTACKED] != 0 && flags[kFLAGS.WILL_O_THE_WISP] < 2) {
 			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
@@ -11888,6 +11893,7 @@ public class Combat extends BaseContent {
 				damagePA += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
 				if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damagePA += Math.round(scalingBonusToughness() * 0.1);
 			}
+			if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) > 0) damagePA *= (1 + (0.01 * player.perkv1(PerkLib.FungalNobility)));
 			//Determine if critical hit!
 			var crit0:Boolean = false;
 			var critChance0:int = 5;
@@ -17489,6 +17495,7 @@ public function castPsychicBolt():void {
 	//other bonuses
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) damage *= 1.5;
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv4(PerkLib.AbsorbNutrient) > 0) damage *= 1.2;
+	if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) > 0) damage *= (1 + (0.01 * player.perkv1(PerkLib.FungalNobility)));
 	/*//weapon bonus
 	if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isStaffType() || player.weaponOff.isStaffType() || player.weapon.isWandType() || player.weaponOff.isWandType())) {
 		var weaponAtk:Number = player.weaponAttack;
@@ -17715,6 +17722,7 @@ public function sharedKinesisMidpart(crit:Boolean):Number {
 	//other bonuses
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) damage *= 1.5;
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv4(PerkLib.AbsorbNutrient) > 0) damage *= 1.2;
+	if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) > 0) damage *= (1 + (0.01 * player.perkv1(PerkLib.FungalNobility)));
 	if (player.hasPerk(PerkLib.WideAreaKineses) && monster.plural) {
 		if (player.hasPerk(PerkLib.QuasiDomainKineses) && monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 25;
 		else damage *= 5;

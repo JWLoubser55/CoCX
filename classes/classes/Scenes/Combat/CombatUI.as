@@ -280,6 +280,10 @@ public class CombatUI extends BaseCombatContent {
 			doWispTurn();
 		else if (isMummyTurn())
 			doMummyTurn();
+		else if (isZombieTurn())
+			doZombieTurn();
+		else if (isMatangoTurn())
+			doMatangoTurn();
 		else if (isFlyingSwordTurn())
 			doFlyingSwordTurn();
 		else if (isCompanionTurn(0))
@@ -607,13 +611,43 @@ public class CombatUI extends BaseCombatContent {
 	}
 
 	public function isMummyTurn():Boolean {
-		return CombatAbilities.MummyAttack.isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ATTACKED] != 1 && flags[kFLAGS.MUMMY_ATTACK] == 1 && !doWeDisableThisOne(6);
+		return CombatAbilities.MummyAttack.isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] != 1 && flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1 && !doWeDisableThisOne(6);
 	}
 	
 	public function doMummyTurn():void {
 		if (CombatAbilities.MummyAttack.isKnownAndUsable) {
 			CombatAbilities.MummyAttack.perform();
-			flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ATTACKED] = 1;
+			flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] = 1;
+			if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
+				menu();
+				addButton(0, "Next", combatMenu, false);
+			}
+		}
+	}
+
+	public function isZombieTurn():Boolean {
+		return CombatAbilities.ZombieAttack.isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] != 1 && flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1 && !doWeDisableThisOne(6);
+	}
+	
+	public function doZombieTurn():void {
+		if (CombatAbilities.ZombieAttack.isKnownAndUsable) {
+			CombatAbilities.ZombieAttack.perform();
+			flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] = 1;
+			if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
+				menu();
+				addButton(0, "Next", combatMenu, false);
+			}
+		}
+	}
+
+	public function isMatangoTurn():Boolean {
+		return CombatAbilities.MatangoAttack.isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_MATANGO_ATTACKED] != 1 && flags[kFLAGS.MATANGO_ATTACK] == 1 && !doWeDisableThisOne(8);
+	}
+	
+	public function doMatangoTurn():void {
+		if (CombatAbilities.MatangoAttack.isKnownAndUsable) {
+			CombatAbilities.MatangoAttack.perform();
+			flags[kFLAGS.IN_COMBAT_PLAYER_MATANGO_ATTACKED] = 1;
 			if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
 				menu();
 				addButton(0, "Next", combatMenu, false);
@@ -624,7 +658,7 @@ public class CombatUI extends BaseCombatContent {
 	public function isMechAITurn():Boolean {
 		return player.isInGoblinMech() && (player.hasKeyItem("Improved Artificial Intelligence") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK2") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK3") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0)
 				&& (player.hasKeyItem("Auto turret") >= 0 || player.hasKeyItem("Auto turret MK2") >= 0 || player.hasKeyItem("Auto turret MK3") >= 0 || player.hasKeyItem("Auto turret MK4") >= 0 || player.hasKeyItem("Auto turret MK5") >= 0 || player.hasKeyItem("Auto turret MK6") >= 0)
-				&& flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] != 1;// && !doWeDisableThisOne(8)
+				&& flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] != 1;// && !doWeDisableThisOne(9)
 	}
 	
 	public function doMechAITurn():void {
