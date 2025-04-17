@@ -1284,6 +1284,7 @@ public class Appearance extends Utils
 			description += clitDescription(i_creature);
 			description += " " + i_creature.clitLength < 1.5 + " inches";
 			if (i_creature.vaginaType() == 20) description += " glowing fungal clit cock";
+			return description;
 		}
 
 		public static function vaginaDescript(i_creature:Creature, i_vaginaIndex:Number = 0, forceDesc:Boolean=false):String {
