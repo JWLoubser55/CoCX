@@ -455,7 +455,7 @@ public class CeraphFollowerScene extends NPCAwareContent
 			outputText("  Dragging the demon back, you bring her slutty, sodden puss up to your " + cockDescript(x));
 			if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(", ignoring the rope of dangling pre-cum that hangs from her bumpy prick.");
 			else outputText(", feeling the heat washing off her mons and onto your " + player.cockHead(x) + ".");
-			outputText("  Yanking back, you bury all " + num2Text(Math.round(player.cocks[x].cockLength)) + " inches of your " + cockDescript(x) + " into Ceraph's unholy, warm snatch, ");
+			outputText("  Yanking back, you bury all " + player.cockVsClitCockLenght(player, x) + " inches of your " + cockDescript(x) + " into Ceraph's unholy, warm snatch, ");
 			if (player.cockArea(x) > 150) outputText("distorting her body around the sheer bulk of your massive member.\n\n");
 			else outputText("immersing yourself in the decadent wetness.\n\n");
 

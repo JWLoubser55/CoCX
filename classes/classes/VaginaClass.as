@@ -81,7 +81,7 @@ public class VaginaClass implements IOrifice {
 		EnumValue.add(Types, ARIGEAN, "ARIGEAN", {
 			name: "arigean"
 		});
-		
+
 		public static const WETNESS_DRY:int       = 0;
 		public static const WETNESS_NORMAL:int    = 1;
 		public static const WETNESS_WET:int       = 2;

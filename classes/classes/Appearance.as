@@ -2335,10 +2335,13 @@ public class Appearance extends Utils
 
 		public static function multiCockDescriptLight(creature:Creature):String {
 			if (creature.cocks.length < 1) {
-
-				CoC_Settings.error("");
-				return "<B>Error: multiCockDescriptLight() called with no penises present.</B>";
-
+				if (creature.hasCock()){
+					return vaginaCockDescript(creature);
+				}
+				else{
+					CoC_Settings.error("");
+					return "<B>Error: multiCockDescriptLight() called with no penises or cockclit present.</B>";
+				}
 			}
 			//Get cock counts
 			var descript:String = "";
@@ -2463,8 +2466,13 @@ public class Appearance extends Utils
 
 		public static function multiCockDescript(creature:Creature):String {
 			if (creature.cocks.length < 1) {
-				CoC_Settings.error("");
-				return "<B>Error: multiCockDescript() called with no penises present.</B>";
+				if (creature.hasCock()){
+					return vaginaCockDescript(creature);
+				}
+				else{
+					CoC_Settings.error("");
+					return "<B>Error: multiCockDescriptLight() called with no penises or cockclit present.</B>";
+				}
 			}
 			//Get cock counts
 			var descript:String = "";
