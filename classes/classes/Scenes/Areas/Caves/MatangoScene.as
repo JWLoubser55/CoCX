@@ -36,7 +36,7 @@ public function mantangoEncounter():void {
 public function gainingMatango():void {
 	clearOutput();
 	player.addPerkValue(PerkLib.FungalNobility, 1, 1);
-	outputText("As you explore the cave you run into a lone mushroom girl. She seems lost and not all too smart, there's no telling what kind of mishap could happen to her should you simply let her wander alone in the dark. Like the good big sister you are, you firmly tell her to follow you around so you can protect her.\n\n");
+	outputText("As you explore the cave you run into a lone mushroom girl. She seems lost and not all too smart, there's no telling what kind of mishap could happen to her should you simply let her wander alone in the dark. Like the good big "+player.mf("brother","sister")+" you are, you firmly tell her to follow you around so you can protect her.\n\n");
 	outputText("The not so bright little sister obeys you without protest, religiously bowing her cap to you along the way. Damn it feels good to be willingly served by others of your kind. ");
 	if (player.perkv1(PerkLib.FungalNobility) < player.matangoControlLimit()) outputText("You recall you could use a few more like her still");
 	else outputText("However you have started to strain your mind trying to keep all those new matango in an orderly line. Perhaps you should stop taming new matango until you are stronger");

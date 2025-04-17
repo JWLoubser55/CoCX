@@ -1429,7 +1429,11 @@ use namespace CoC;
 		}
 		public function matangoControlLimit():Number
 		{
-			var matangoCL:Number = 5;
+			var matangoCL:Number = 0;
+			if (hasPerk(PerkLib.AbsorbNutrient) && perkv1(PerkLib.AbsorbNutrient) > 2) {
+				if (perkv1(PerkLib.AbsorbNutrient) > 6) matangoCL += 5;
+				matangoCL += (5 * (perkv1(PerkLib.AbsorbNutrient) - 2));
+			}
 			return matangoCL;
 		}
 		public function zerkSereneMind():Boolean

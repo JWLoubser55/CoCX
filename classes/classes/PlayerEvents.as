@@ -2278,14 +2278,41 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
+			//LustyStrength && MindFungus
+			if (player.isRaceCached(Races.MYCONID) && player.horns.type == Horns.SHROOM_HEADCAP && !player.hasPerk(PerkLib.LustyStrength)) {
+				outputText("\nInformation Noona know who know what should be here and that person is... Liadri.\n\n<b>(Gained Lusty Strength perk!)</b>\n");
+				player.createPerk(PerkLib.LustyStrength, 0, 0, 0, 0);
+				needNext = true;
+			}
+			if (player.isRaceCached(Races.MYCONID) && player.horns.type == Horns.SHROOM_HEADCAP && player.horns.count > 8 && !player.hasPerk(PerkLib.MindFungus)) {
+				outputText("\nAs you become a noble fungal lifeform you begin to acquire mind warping powers.\n\n<b>(Gained Mind Fungus perk!)</b>\n");
+				player.createPerk(PerkLib.MindFungus, 0, 0, 0, 0);
+				needNext = true;
+			}
+			if (player.horns.type != Horns.SHROOM_HEADCAP && (player.hasPerk(PerkLib.LustyStrength) || player.hasPerk(PerkLib.MindFungus))) {
+				outputText("\nAs you lose your cap your head clears out entirely of the mushroom-like induced state you were in. Just what were you even doing? Without the main growth regulating your body the other fungal growth are quickly assimilated or lost otherwise reverting to plain human parts.\n\n<b>(Lost the ");
+				if (player.hasPerk(PerkLib.LustyStrength)) outputText("Lusty Strength");
+				if (player.hasPerk(PerkLib.LustyStrength) && player.hasPerk(PerkLib.MindFungus)) outputText(" and ");
+				if (player.hasPerk(PerkLib.MindFungus)) outputText("Mind Fungus");
+				outputText(" perk");
+				if (player.hasPerk(PerkLib.LustyStrength) && player.hasPerk(PerkLib.MindFungus)) outputText("s");
+				outputText("!)</b>\n");
+				if (player.hasPerk(PerkLib.LustyStrength)) player.removePerk(PerkLib.LustyStrength);
+				if (player.hasPerk(PerkLib.MindFungus)) player.removePerk(PerkLib.MindFungus);
+				transformations.ArmsShroom.applyEffect(false);
+				transformations.HornsShroomHeadcap.applyEffect(false);
+				transformations.LowerBodyShroomShirt.applyEffect(false);
+				transformations.RearBodyMyconidBraAndNeck.applyEffect(false);
+				if (player.hasVagina() && player.vaginaType() == VaginaClass.SHROOM) transformations.VaginaShroom().applyEffect(false);
+				if (player.hasCock()) transformations.CockShroom().applyEffect(false);
+				if (player.hasStatusEffect(StatusEffects.GlowingNipples)) transformations.NipplessHumanize.applyEffect(false);
+				if (player.hasStatusEffect(StatusEffects.GlowingAsshole)) transformations.AssholeNormal.applyEffect(false);
+				needNext = true;
+			}
 			//VerdantMight		, Races.barometz
 			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
-			//LustyStrength
-			needNext ||= player.gainOrLosePerk(PerkLib.LustyStrength, player.isRaceCached(Races.MYCONID), "Information Noona know who know what should be here and that person is... Liadri.", "Information Noona know who know what should be here and that person is... Liadri.");
 			//Absorb nutrient
 			needNext ||= player.gainOrLosePerk(PerkLib.AbsorbNutrient, player.isRaceCached(Races.MYCONID), "You begin to crave for the fluids and moisture of others. It looks like, as you became more shroom-like, you gained the ability to absorb nutrients and vitality from sex.", "You no longer crave for the fluids and moisture of others. It looks like, as you became less shroom-like, you lost the ability to absorb nutrients and vitality from sex.");
-			//MindFungus
-			needNext ||= player.gainOrLosePerk(PerkLib.MindFungus, (player.isRaceCached(Races.MYCONID) && player.horns.count > 8), "As you become a noble fungal lifeform you begin to acquire mind warping powers.", "Information Noona know who know what should be here and that person is... Liadri.");
 			//FungalNobility
 			needNext ||= player.gainOrLosePerk(PerkLib.FungalNobility, player.isRaceCached(Races.MYCONID, 2), "Something changed about you as your body became more fungal like. It would seem you acquired the ability to order around lesser shroom girls.", "As your fungal nature is pruned you lose the ability to command the matango.");
 			//Enigma
