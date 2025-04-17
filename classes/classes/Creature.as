@@ -4203,10 +4203,8 @@ public class Creature extends Utils
 		public function cockHead(cockNum:int = 0):String {
 			if (cockNum < 0 || cockNum > cocks.length - 1) {
 				if (hasCock()){
-					if(vaginaType() == 20){
-						if(vaginaType() == 20) return "mushroom-like tip";
-						else return "ERROR this cock clit head lack a description!";
-					}
+					if(vaginaType() == 20) return "mushroom-like tip";
+					else return "ERROR this cock clit head lack a description!";
 				}
 				else{
 					CoC_Settings.error("");
