@@ -86,7 +86,7 @@ use namespace CoC;
 			else outputText("The feral imp falls to the ground panting and growling in anger.  He quickly submits however, the thoroughness of his defeat obvious.  You walk towards the imp who gives one last defiant snarl before slipping into unconsciousness.");
 			menu();
 			addButton(0, "Kill Him", killFeralImp);
-			addButtonIfTrue(1, "Tame Him", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer and not been group enemy", (player.hasPerk(PerkLib.JobTamer) && flags[kFLAGS.FERAL_EXTRAS] != 4));
+			addButtonIfTrue(1, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer and not been group enemy", (player.hasPerk(PerkLib.JobTamer) && flags[kFLAGS.FERAL_EXTRAS] != 4));
 			if (flags[kFLAGS.GALIA_LVL_UP] > 0 && flags[kFLAGS.GALIA_LVL_UP] < 0.5) {
 				if (flags[kFLAGS.GALIA_AFFECTION] > 0) addButtonDisabled(3, "Capture", "You need to turn in already captured imp before you can capture another one.");
 				else addButton(3, "Capture", captureFeralImp);

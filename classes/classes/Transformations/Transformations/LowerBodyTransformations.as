@@ -2407,6 +2407,35 @@ public class LowerBodyTransformations extends MutationsHelper {
 				return player.lowerBody === LowerBody.GLACIAL_TROLL;
 			}
 	);
+
+	public const LowerBodyShroomShirt: Transformation = new SimpleTransformation("Shroom Shirt lower body",
+		// apply effect
+		function (doOutput: Boolean): void {
+			if (doOutput) {
+				// No special text outside the event
+			}
+			player.lowerBody = LowerBody.SHROOM_SKIRT;
+			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.SHROOM_SKIRT));
+		},
+		// is present
+		function (): Boolean {
+			return player.lowerBody === LowerBody.SHROOM_SKIRT;
+		}
+	);
+
+	public const LowerBodyMechanicalDoll: Transformation = new SimpleTransformation("Mechanical Doll lower body",
+		// apply effect
+		function (doOutput: Boolean): void {
+			if (doOutput) {
+				// No special text outside the event
+			}
+			player.lowerBody = LowerBody.MECHANICAL_DOLL_LEGS;
+		},
+		// is present
+		function (): Boolean {
+			return player.lowerBody === LowerBody.MECHANICAL_DOLL_LEGS;
+		}
+	);
 	
 	/*
   */

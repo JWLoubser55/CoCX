@@ -25,7 +25,7 @@ import classes.Scenes.Areas.Tundra.SnowLily;
 import classes.Scenes.Dungeons.RiverDungeon.*;
 import classes.Scenes.Monsters.AngelLR;
 import classes.Scenes.Monsters.FeralImps;
-import classes.Scenes.Monsters.GolemDummyImproved;
+import classes.Scenes.Monsters.GolemDummy;
 import classes.Scenes.NPCs.Electra;
 import classes.Scenes.NPCs.Hel;
 import classes.Scenes.SceneLib;
@@ -1047,7 +1047,8 @@ public class RiverDungeon extends DungeonAbstractContent
 				flags[kFLAGS.AETHER_SINISTER_EVO] = 0.5;
 				if (!player.hasStatusEffect(StatusEffects.ThereCouldBeOnlyOne)) player.createStatusEffect(StatusEffects.ThereCouldBeOnlyOne, 0, 0, 0, 0);
 				outputText("As you peek into the room, a golem shakes, emerging from the shadows. Unlike most, this golem wears a gauntlet on its hand, with fleshy tendrils covering the entire side of its body. You ready your [weapon] for a fight!");
-				startCombat(new GolemDummyImproved(), true);
+				flags[kFLAGS.GOLEM_ENEMY_TYPE] = 2;
+				startCombat(new GolemDummy(), true);
 			}
 			else if (!player.hasStatusEffect(StatusEffects.ThereCouldBeOnlyOne)) encountersRuletteA();
 			if (CoC.instance.inCombat) return;
@@ -1098,7 +1099,8 @@ public class RiverDungeon extends DungeonAbstractContent
 				flags[kFLAGS.AETHER_DEXTER_EVO] = 0.5;
 				if (!player.hasStatusEffect(StatusEffects.ThereCouldBeOnlyOne)) player.createStatusEffect(StatusEffects.ThereCouldBeOnlyOne, 0, 0, 0, 0);
 				outputText("As you peek into a room, a golem shakes, emerging from the shadows. Unlike most, this golem wears a gauntlet on its hand, with fleshy tendrils covering the entire side of its body. You ready your [weapon] for a fight!");
-				startCombat(new GolemDummyImproved(), true);
+				flags[kFLAGS.GOLEM_ENEMY_TYPE] = 2;
+				startCombat(new GolemDummy(), true);
 			}
 			else if (!player.hasStatusEffect(StatusEffects.ThereCouldBeOnlyOne)) encountersRuletteA();
 			if (CoC.instance.inCombat) return;

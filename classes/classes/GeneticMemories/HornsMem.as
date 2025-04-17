@@ -251,6 +251,17 @@ package classes.GeneticMemories {
 		  }
 	  });
 
+	  public static const SHROOM_HEADCAP:int = _partid++;
+	  EnumValue.add(Memories, SHROOM_HEADCAP, "SHROOM_HEADCAP", {
+		  id: "Shroom Headcap",
+		  name: "Shroom Headcap",
+		  cost: 100,
+		  title: "Shroom Headcap",
+		  transformation: function(): Transformation {
+			  return CoC.instance.transformations.HornsOrchid;
+		  }
+	  });
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

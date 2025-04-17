@@ -1,6 +1,7 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
+import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 import classes.Scenes.NPCs.Forgefather;
@@ -61,6 +62,9 @@ public class GargoyleRace extends Race {
 				.hasAnyPerk([PerkLib.GargoylePure, PerkLib.GargoyleCorrupted], +1)
 				.hasPerk(PerkLib.TransformationImmunity, +5)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
+		
+		addMutation(IMutationsLib.SoulCoreIM, +3);
+		addMutation(IMutationsLib.LivingWeaponIM, +3);
 		
 		buildTier(22,"gargoyle")
 				.customNamingFunction(

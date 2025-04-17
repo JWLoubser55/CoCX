@@ -73,7 +73,7 @@ import classes.internals.*;
 		private function kitsuneSealAttack():void
 		{
 			var resist:int = 0;
-			if (player.inte < 30) resist = Math.round(player.inte);
+			if (player.intStat.core.value < 30) resist = Math.round(player.intStat.core.value);
 			else resist = 30;
 			if (player.hasPerk(PerkLib.Whispered)) resist += 20;
 			if ((player.hasPerk(PerkLib.HistoryReligious) || player.hasPerk(PerkLib.PastLifeReligious)) && player.cor < 20) resist += 20 - player.cor;

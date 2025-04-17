@@ -12,7 +12,6 @@ import classes.Transformations.TransformationGroupAny;
  */
 public class GoblinRace extends Race {
 	public static const GoblinSkinColors:/*String*/Array = ["pale yellow", "grayish-blue", "green", "dark green", "emerald"];
-	public static const GoblinRareSkinColors:/*String*/Array = ["red", "orange","pale purple", "royal purple", "light purple"];
 	public static const GoblinEyeColors:/*String*/Array = ["red", "yellow", "purple"];
 	public static const GoblinHairColors:/*String*/Array = ["red", "purple", "green", "blue", "pink", "orange"];
     public static const RaceBody:/*String*/Array = [
@@ -75,7 +74,7 @@ public class GoblinRace extends Race {
 				.hasPerk(PerkLib.GoblinoidBlood, +1)
 				.hasPerk(PerkLib.BouncyBody, +1)
 				.skinPlainOnly(+1)
-				.skinColor1(ANY(GoblinSkinColors, GoblinRareSkinColors), +1, -1000)
+				.skinColor1(ANY(GoblinSkinColors), +1, -1000)
 				.hasVagina(+1);
 		addConditionedScores(
 				function (body:BodyData):Boolean {

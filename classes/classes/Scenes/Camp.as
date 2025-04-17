@@ -1955,7 +1955,15 @@ public class Camp extends NPCAwareContent{
 					buttons.add("Joy", joyScene.approachCampJoy).hint("Go find Joy around the edges of your [camp] and meditate with her or have sex with her.");
 				} else if (SceneLib.alvinaFollower.JojoDevilPurification == 1 && !player.hasStatusEffect(StatusEffects.DevilPurificationScar)) {
 					outputText("Jojo is waiting in the forrest, bring him a pure artifact, and he will cleanse you of your taint.");
-				} else {
+				} else if (flags[kFLAGS.JOJO_BIMBO_STATE] == 5) {
+						outputText("Joy's tent is set up in a quiet corner of the [camp], close to a boulder. Inside the tent, you can see a chest holding her belongings, as well as a few clothes and books spread about her bedroll. ");
+						if (flags[kFLAGS.JOJO_LITTERS] > 0 && model.time.hours >= 16 && model.time.hours < 19) outputText("You spot the little mice you had with Joy playing about close to her tent.");
+						else outputText("Joy ");
+						outputText("\n\n");
+						buttons.add("Joy", SceneLib.jojoScene.joJoyCampMenu).hint("Go find Joy around the edges of your [camp] and meditate with her or have sex with her.");
+				}
+
+				else {
 					outputText("There is a small bedroll for Jojo near your own");
 					if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0) outputText(" cabin");
 					if (!(model.time.hours > 4 && model.time.hours < 23)) outputText(" and the mouse is sleeping on it right now.\n\n");
@@ -2202,7 +2210,7 @@ public class Camp extends NPCAwareContent{
 		clearOutput();
 		outputText("What would you like to do?");
 		addButton(0, "Build", campBuildingSim).hint("Check your [camp] build options.").disableIf((isNightTime && !player.isNightCreature()),"It's too dark for that!");
-		addButton(1, "Minions", campWinionsArmySim).hint("Check your options for making some minions.").disableIf((!player.hasPerk(PerkLib.JobElementalConjurer) && !player.hasPerk(PerkLib.JobGolemancer) && !player.hasPerk(PerkLib.PrestigeJobNecromancer)), "You need to be able to make some minions that fight for you to use this option.");
+		addButton(1, "Minions", campWinionsArmySim).hint("Check your options for making some minions.").disableIf(!doYouHaveMinions(), "You need to be able to make some minions that fight for you to use this option.");
 		addButton(2, "Misc", campMiscActions).hint("Misc options to do things in and around [camp].");
 		addButton(3, "Spend Time", campSpendTimeActions).hint("Check your options to spend time in and around [camp].");
 		addButton(4, "NPC's", SparrableNPCsMenu);
@@ -2218,6 +2226,10 @@ public class Camp extends NPCAwareContent{
 		if (player.hasPerk(PerkLib.Soulless)) addButton(13, "Dark Ascension", promptDarkAscend).hint("Perform an ascension? This will restart your adventures. The game, depending on your choice, could also get harder.").disableIf(flags[kFLAGS.LETHICE_DEFEATED] <= 0, "Don't you have a job to finish first? Like... to defeat someone, maybe Lethice?");
 		else addButton(13, "Ascension", promptAscend).hint("Perform an ascension? This will restart your adventures. The game, depending on your choice, could also get harder. If you have a Sky Poison Pearl, you could carry over some items to your new adventure.").disableIf(flags[kFLAGS.LETHICE_DEFEATED] <= 0, "Don't you have a job to finish first? Like... to defeat someone, maybe Lethice?");
 		addButton(14, "Back", playerMenu);
+	}
+	private function doYouHaveMinions():Boolean {
+		if (player.hasPerk(PerkLib.JobElementalConjurer) || player.hasPerk(PerkLib.PrestigeJobDruid) || player.hasPerk(PerkLib.JobGolemancer) || player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.JobTamer)) return true;
+		else return false;
 	}
 
 	private function campSpendTimeActions():void {
@@ -2521,7 +2533,7 @@ public class Camp extends NPCAwareContent{
 			.disableIf(!player.hasPerk(PerkLib.GreaterDiehard), "Req. Greater Diehard perk")
 			.disableIf(player.hasPerk(PerkLib.GreaterDiehardEx), "You've already merged this perk");
 
-			addButton(0, "Challenging Shout (Mst)", mainPagePocketWatchChallengingShoutMastered)
+			addButton(1, "Challenging Shout (Mst)", mainPagePocketWatchChallengingShoutMastered)
 			.disableIf(!player.hasPerk(PerkLib.ChallengingShoutSu), "Req. Challenging Shout (Su) perk")
 			.disableIf(player.hasPerk(PerkLib.ChallengingShoutMastered), "You've already merged this perk");
 
@@ -2855,8 +2867,8 @@ public class Camp extends NPCAwareContent{
 		menu();
 		if (player.hasPerk(PerkLib.JobGolemancer)) addButton(0, "Make", SceneLib.campMakeWinions.accessMakeWinionsMainMenu).hint("Check your options for making some golems.");
 		else addButtonDisabled(0, "Make", "You need to learn the Golemancer job to use this option.");player.hasPerk(PerkLib.JobElementalConjurer)
-		if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > 0) addButton(1, "Summon", SceneLib.campMakeWinions.accessSummonElementalsMainMenu).hint("Check your options for managing your elemental summons.");
-		else addButtonDisabled(1, "Summon", "You should build an Arcane Circle first. Without some tools from the carpenter's toolbox, it would be near impossible to do this, OR you have not yet learned the Elemental Conjurer job.");
+		if (player.hasPerk(PerkLib.JobElementalConjurer) && flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > 0) addButton(1, "Summon", SceneLib.campMakeWinions.accessSummonElementalsMainMenu).hint("Check your options for managing your elemental summons.");
+		else addButtonDisabled(1, "Summon", "You should build an Arcane Circle and learn Elemental Conjurer job to use this option. Without some tools from the carpenter's toolbox, it would be near impossible to make Arcane Circle.");
 		if (player.hasPerk(PerkLib.JobTamer)) addButton(2, "Tame", SceneLib.campMakeWinions.accessTamedWinionsMainMenu).hint("Check your options for tamed minions.");
 		else addButtonDisabled(2, "Tame", "You need to learn the Tamer job to use this option.");
 		if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(5, "Skeletons", SceneLib.campMakeWinions.accessMakeSkeletonWinionsMainMenu).hint("Check your options for making some skeletons.");
@@ -3213,6 +3225,7 @@ public class Camp extends NPCAwareContent{
 			[StatusEffects.PhylacteryEnchantment8, "Mind rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment9, "Soul rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment10, "Body rune Imbuement"],
+			[StatusEffects.PhylacteryEnchantment11, "Corruption rune Imbuement"],
 		];
 		var i:int;
 		clearOutput();
@@ -3242,7 +3255,7 @@ public class Camp extends NPCAwareContent{
 		outputText("Mind rune Imbuement -> <i>Add half your intelligence to your libido score.</i>\n");
 		outputText("Soul rune Imbuement -> <i>Add half your wisdom to your libido score.</i>\n");
 		outputText("Body rune Imbuement -> <i>Add half your libido to your strength and speed score.</i>\n");
-		//11
+		outputText("Corruption rune Imbuement -> <i>Add your libido to your magic modifier but take lust damage when spellcasting. (As sadist for lust dmg)</i>\n");
 		menu();
 		for (i = 0; i < statusNames.length; ++i) {
 			addButton(i, statusNames[i][1], phylacteryEnchantmentToggle, statusNames[i][0]);
@@ -4609,7 +4622,7 @@ public class Camp extends NPCAwareContent{
 				.hint("Visit Xuviel’s lair.")
 				.disableIf(player.statusEffectv1(StatusEffects.MeetXuviel) < 4, "Only for Xuviel’s 9th Wife.", null, "???");
 		bd.add("Woodcutting", camp.cabinProgress.gatherWoods)
-				.hint("You need to explore the Forest more to unlock this place.")
+				.hint("You can cut some trees here to get wood.")
 				.disableIf(player.statusEffectv1(StatusEffects.ResourceNode1) < 5, "You need to explore the Forest more to unlock this place.", null, "???")
 				.disableIf(!player.hasStatusEffect(StatusEffects.ResourceNode1), "Search the forest.", null, "???");
 		bd.add("Quarry", camp.cabinProgress.quarrySite)
@@ -4881,6 +4894,7 @@ public function wakeFromBadEnd():void {
 	CoC.instance.timeQ = 0;
 	//Set so you're in camp.
 	inDungeon = false;
+	inOutdoorDungeon = false;
 	inRoomedDungeon = false;
 	inRoomedDungeonResume = null;
 	if (CoC.instance.inCombat) {
@@ -4892,24 +4906,18 @@ public function wakeFromBadEnd():void {
 	if (player.hasStatusEffect(StatusEffects.ThereCouldBeOnlyOne)) player.removeStatusEffect(StatusEffects.ThereCouldBeOnlyOne);
 	if (player.hasStatusEffect(StatusEffects.LoliBatGolems)) player.removeStatusEffect(StatusEffects.LoliBatGolems);
 	if (flags[kFLAGS.HARDCORE_MODE] == 1) {
-		if (player.strStat.core.value >= 50) player.strStat.core.value = Math.round(player.strStat.core.value * 0.8);
-		else player.strStat.core.value -= 10;
-		if (player.strStat.core.value < 1) player.strStat.core.value = 1;
-		if (player.touStat.core.value >= 50) player.touStat.core.value = Math.round(player.touStat.core.value * 0.8);
-		else player.touStat.core.value -= 10;
-		if (player.touStat.core.value < 1) player.touStat.core.value = 1;
-		if (player.speStat.core.value >= 50) player.speStat.core.value = Math.round(player.speStat.core.value * 0.8);
-		else player.speStat.core.value -= 10;
-		if (player.speStat.core.value < 1) player.speStat.core.value = 1;
-		if (player.intStat.core.value >= 50) player.intStat.core.value = Math.round(player.intStat.core.value * 0.8);
-		else player.intStat.core.value -= 10;
-		if (player.intStat.core.value < 1) player.intStat.core.value = 1;
-		if (player.wisStat.core.value >= 50) player.wisStat.core.value = Math.round(player.wisStat.core.value * 0.8);
-		else player.wisStat.core.value -= 10;
-		if (player.wisStat.core.value < 1) player.wisStat.core.value = 1;
-		if (player.libStat.core.value >= 50) player.libStat.core.value = Math.round(player.libStat.core.value * 0.8);
-		else player.libStat.core.value -= 10;
-		if (player.libStat.core.value < 1) player.libStat.core.value = 1;
+		player.strStat.core.value = 0;
+		player.touStat.core.value = 0;
+		player.speStat.core.value = 0;
+		player.intStat.core.value = 0;
+		player.wisStat.core.value = 0;
+		player.libStat.core.value = 0;
+		player.strStat.train.value = 15;
+		player.touStat.train.value = 15;
+		player.speStat.train.value = 15;
+		player.intStat.train.value = 15;
+		player.wisStat.train.value = 15;
+		player.libStat.train.value = 15;
 	}
     //Restore stats
 	player.HP = player.maxOverHP();
@@ -4950,6 +4958,7 @@ public function rebirthFromBadEnd():void {
 	else model.time.hours = 6;
 	//Set so you're in camp.
 	inDungeon = false;
+	inOutdoorDungeon = false;
 	inRoomedDungeon = false;
 	inRoomedDungeonResume = null;
     if (CoC.instance.inCombat) {

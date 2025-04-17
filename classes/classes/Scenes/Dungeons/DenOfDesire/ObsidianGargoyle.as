@@ -25,7 +25,7 @@ public class ObsidianGargoyle extends AbstractGargoyle
 					else {
 						removeStatusEffect(StatusEffects.Uber);
 						outputText("The gargoyle cums, black corruption oozing out of her pussy and dick. To your horror these fluids are alive, with a mind of their own and flow toward you, moving up to your skin and disappearing inside of you. You feel extremely aroused as images of depraved sexual fantasies enter your mind.");
-						player.takeLustDamage(player.maxLust() * 0.5, true);
+						player.takeLustDamage(player.maxOverLust() * 0.8, true);
 					}
 				}
 			}
@@ -40,29 +40,29 @@ public class ObsidianGargoyle extends AbstractGargoyle
 				if (!monsterIsStunned()) {
 					outputText("You feel your magical energy being forcefully drawn out of you, coming out as a bluish aura that rushes straight into the Gargoyle waiting mouth. She take it in like a breath of fresh air, looking healthier as she feasts on your magic. The gargoyle licks her lips like she just had an excellent meal.");
 					var devour:Number = 0;
-					if (player.fatigue + 200 > player.maxOverFatigue()) {
+					if (player.fatigue + 400 > player.maxOverFatigue()) {
 						devour += player.maxOverFatigue() - player.fatigue;
 						player.fatigue = player.maxOverFatigue();
 					}
 					else {
-						devour += 200;
-						player.fatigue += 200;
+						devour += 400;
+						player.fatigue += 400;
 					}
-					if (player.mana < 200) {
+					if (player.mana < 400) {
 						devour += player.mana;
 						player.mana = 0;
 					}
 					else {
-						devour += 200;
-						player.mana -= 200;
+						devour += 400;
+						player.mana -= 400;
 					}
-					if (player.soulforce < 200) {
+					if (player.soulforce < 400) {
 						devour += player.soulforce;
 						player.soulforce = 0;
 					}
 					else {
-						devour += 200;
-						player.soulforce -= 200;
+						devour += 400;
+						player.soulforce -= 400;
 					}
 					devour *= 2.5;
 					HP += devour;
@@ -133,20 +133,21 @@ public class ObsidianGargoyle extends AbstractGargoyle
 			this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 120;
-			initStrTouSpeInte(150, 120, 90, 10);
-			initWisLibSensCor(10, 10, 10, 100);
+			initStrTouSpeInte(400, 330, 260, 20);
+			initWisLibSensCor(20, 20, 20, 100);
 			this.drop = new ChainedDrop()
 					.add(useables.ELCRYST, 1);
-			this.level = 28;
-			this.bonusHP = 2500;
+			this.level = 48;
+			this.bonusHP = 5000;
 			this.additionalXP = 500;
 			this.lustVuln = 0.01;
 			this.weaponName = "stone claws";
 			this.weaponVerb = "claw-slash";
-			this.weaponAttack = 75;
+			this.weaponAttack = 225;
 			this.armorName = "stone";
-			this.armorDef = 75;
-			this.armorMDef = 25;
+			this.armorDef = 750;
+			this.armorMDef = 250;
+			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			checkMonster();

@@ -8,7 +8,7 @@ package classes.Scenes.Monsters
 	
 public class AbstractFleshGargoyle extends Monster {
 	
-	public function FleshGargoyleClawAttack():void {
+	protected function FleshGargoyleClawAttack():void {
 		clearOutput();
 		var damage:Number = 0;
 		damage += this.str * 0.8;
@@ -31,7 +31,7 @@ public class AbstractFleshGargoyle extends Monster {
 		if (crit == true) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 	}
-	public function FleshGargoyleTailSlamAttack():void {
+	protected function FleshGargoyleTailSlamAttack():void {
 		clearOutput();
 		createStatusEffect(StatusEffects.AbilityCooldown1, 4, 0, 0, 0);
 		var damage:Number = 0;
@@ -63,7 +63,7 @@ public class AbstractFleshGargoyle extends Monster {
 		if (crit == true) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 	}
-	public function FleshGargoyleTailCleaveAttack():void {
+	protected function FleshGargoyleTailCleaveAttack():void {
 		clearOutput();
 		createStatusEffect(StatusEffects.AbilityCooldown2, 4, 0, 0, 0);
 		var damage:Number = 0;
@@ -94,7 +94,7 @@ public class AbstractFleshGargoyle extends Monster {
 		if (crit == true) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 	}
-	public function FleshGargoyleWingBuffetAttack():void {
+	protected function FleshGargoyleWingBuffetAttack():void {
 		clearOutput();
 		createStatusEffect(StatusEffects.AbilityCooldown3, 3, 0, 0, 0);
 		var damage:Number = 0;

@@ -68,6 +68,12 @@ import classes.Scenes.Combat.CombatAbility;
 
 		private var specialCharacters:CharSpecial = new CharSpecial();
 		private var customPlayerProfile:Function;
+		private var primarySetting:Number;
+		private var secondarySetting:Number;
+		private var elitechampionbossSetting:Number;
+		private var hardcoreSetting:Number;
+		private var hungerSetting:Number;
+		private var expbankingSetting:Number;
 
 //		private var boxNames:ComboBox;
 
@@ -111,8 +117,7 @@ import classes.Scenes.Combat.CombatAbility;
 			mainView.hideMenuButton( MainView.MENU_PERKS );
 			//Hide perk boxes
 			mainView.hideComboBox();
-			mainView.setButtonText(0, "Newgame"); // b1Text.text = "Newgame";
-			//flags[kFLAGS.CUSTOM_PC_ENABLED] = 0;
+			mainView.setButtonText(0, "Newgame");
 
 			var showSpecialNames:Boolean = true; // achievements[kACHIEVEMENTS.STORY_FINALBOSS] > 0;
 
@@ -137,6 +142,7 @@ import classes.Scenes.Combat.CombatAbility;
 
 			//RESET DUNGEON
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			inRoomedDungeon = false;
 			inRoomedDungeonResume = null;
 			//Reset all standard stats
@@ -351,6 +357,7 @@ import classes.Scenes.Combat.CombatAbility;
 			//Lets get this bitch started
 			CoC.instance.inCombat = false;
 			inDungeon = false;
+			inOutdoorDungeon = false;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] == 0) {
 				//Clothes clear
 				player.setArmor(armors.C_CLOTH, false, true);
@@ -564,7 +571,7 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_UNLOCKED_HERM] > 0) {
 				outputText("\n\nOr a hermaphrodite? (Hermaphrodite gender unlocked!)");
 				addButton(2, "Herm", isAHerm).hint("Herm without balls");
-				addButton(3, "Herm", isAHerm, false).hint("Herm with balls");
+				addButton(3, "Futa", isAHerm, false).hint("Herm with balls");
 			}
 		}
 
@@ -1802,7 +1809,7 @@ import classes.Scenes.Combat.CombatAbility;
 					outputText("You spent much of your time fighting other children, and you had plans to find work as a guard when you grew up.  You do 10% more damage with physical melee attacks.  You will also start out with 50 gems and Job: Warrior perk.  Is this your history?");
 					break;
 				case PerkLib.HistoryFortune:
-					outputText("You always feel lucky when it comes to fortune.  Because of that, you have always managed to save up gems until whatever's needed and made the most out it (+15% gems on victory).  You will also start out with 250 gems and Job: Rogue perk.  Is this your history?");
+					outputText("You always feel lucky when it comes to fortune.  Because of that, you have always managed to save up gems until whatever's needed and made the most out it (+15% gems on victory).  You will also start out with Traveling Merchant Outfit.  Is this your history?");
 					break;
 				case PerkLib.HistoryHealer:
 					outputText("You often spent your free time with the village healer, learning how to tend to wounds.  Healing items and effects are 20% more effective.  Is this your history?");
@@ -1872,9 +1879,6 @@ import classes.Scenes.Combat.CombatAbility;
 			}
 			if (choice == PerkLib.HistoryScholar) {
 				player.gems += 150;
-			}
-			if (choice == PerkLib.HistoryFortune) {
-				player.gems += 250;
 			}
 			if (flags[kFLAGS.HISTORY_PERK_SELECTED] == 0) {
 				flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
@@ -2040,15 +2044,35 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] > 0) sTFDFFG += 1;
 			if (flags[kFLAGS.HUNGER_ENABLED] > 0) sTFDFFG += 1;
 			if (flags[kFLAGS.HARDCORE_MODE] > 0) sTFDFFG += 1;
-			if (flags[kFLAGS.EXP_BANKING] == 1) sTFDFFG += 1;
+			if (flags[kFLAGS.EXP_BANKING] > 0) sTFDFFG += 1;
 			flags[kFLAGS.GAME_DIFFICULTY] = sTFDFFG;
 		}
 		private function chooseGameModesDesc():void {
 			outputText("Choose a game modifiers. Depending on picked amount final difficulty would be adjusted.\n\n");
 			outputText("<b>Primary Difficulty Modifier:</b> "+(flags[kFLAGS.PRIMARY_DIFFICULTY] == 0?"Disabled":"Enabled (Opponent(s) take less HP/Lust dmg, deal more damage and gives more EXP)")+"\n");
-			outputText("<b>Secondary Stats Modifier:</b> "+(flags[kFLAGS.SECONDARY_STATS_SCALING] == 0?"Disabled":"Enabled (Opponent(s) would have more HP/Lust/Wrath/Fatigue/Mana/Soulforce)")+"\n");
-			outputText("<b>Elite/Champion/Boss Enemies Modifier:</b> "+(flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 0?"Disabled":"Enabled (Elite/Champion/Boss Enemies would have more Health)")+"\n");
-			outputText("<b>Hardcore Modifier:</b> "+(flags[kFLAGS.HARDCORE_MODE] == 1?"Enabled (No level limits for unlocking new areas)":"Disabled")+"\n");
+			outputText("<b>Secondary Stats Modifier:</b> ");
+			if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 0) outputText("Disabled");
+			else {
+				outputText("Enabled (Opponent(s) would have ");
+				if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 1) outputText("10x (bosses) and 5x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 2) outputText("30x (bosses) and 10x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 3) outputText("100x (bosses) and 25x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 4) outputText("500x (bosses) and 100x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 5) outputText("1500x (bosses) and 500x (rest)");
+				else if (flags[kFLAGS.SECONDARY_STATS_SCALING] >= 6) outputText("21000x (bosses) and 3000x (rest)");
+				outputText(" more HP/Lust/Wrath/Fatigue/Mana/Soulforce)");
+			}
+			outputText("\n<b>Elite/Champion/Boss Enemies Modifier:</b> ");
+			if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 0) outputText("Disabled");
+			else {
+				outputText("Enabled (Elite/Champion/Boss Enemies would have ");
+				if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 1) outputText("1.25x / 2.5x / 5x");
+				else if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 2) outputText("2.5x / 5x / 10x");
+				else if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] == 3) outputText("3.75x / 7.5x / 15x");
+				else if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] >= 4) outputText("5x / 10x / 20x");
+				outputText(" more Health)");
+			}
+			outputText("\n<b>Hardcore Modifier:</b> "+(flags[kFLAGS.HARDCORE_MODE] == 1?"Enabled (No level limits for unlocking new areas)":"Disabled")+"\n");
 			outputText("<b>Hunger Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0?"Enabled (PC must manage his own hunger lest you want see his death from starvation)":"Disabled")+"\n");
 			outputText("<b>Realistic Mode Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0.5?"Enabled (PC must manage his own hunger lest you want see his death from starvation + your cum production is capped and having oversized parts will weigh you down)":"Disabled")+"\n");
 			outputText("<b>Exp Banking:</b> "+(flags[kFLAGS.EXP_BANKING] == 0?"Enabled (PC can stack experience indefinitily from defeated opponents)":"Disabled")+"\n");
@@ -2070,10 +2094,8 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0) addButton(5, "Hunger (Off)", toggleForHungerOff);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0.5) addButton(6, "Hunger (On)", toggleForHungerOn);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 1) addButton(7, "Realistic (On)", toggleForRealisticOn);
-			if (flags[kFLAGS.EXP_BANKING] != 0) addButton(8, "Exp Banquing (On)", toggleXPBankingOn);
-			if (flags[kFLAGS.EXP_BANKING] != 1) addButton(9, "Exp Banquing (Off)", toggleXPBankingOff);
-			//8+
-			//9-
+			if (flags[kFLAGS.EXP_BANKING] != 1) addButton(8, "Exp Banking (On)", toggleXPBankingOn);
+			if (flags[kFLAGS.EXP_BANKING] != 0) addButton(9, "Exp Banking (Off)", toggleXPBankingOff);
 			//10+
 			//11-
 			addButton(14, "Start", startTheGame);
@@ -2156,11 +2178,26 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 
 		private function startTheGame():void {
+			primarySetting = flags[kFLAGS.PRIMARY_DIFFICULTY];
+			secondarySetting = flags[kFLAGS.SECONDARY_STATS_SCALING];
+			elitechampionbossSetting = flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING];
+			hardcoreSetting = flags[kFLAGS.HARDCORE_MODE];
+			hungerSetting = flags[kFLAGS.HUNGER_ENABLED];
+			expbankingSetting = flags[kFLAGS.EXP_BANKING];
+			startTheGame2();
+		}
+		private function startTheGame2():void {
 			player.hunger = 100;
 			player.startingRace = player.race();
 			CoC.instance.saves.loadPermObject();
 			flags[kFLAGS.MOD_SAVE_VERSION] = CoC.instance.modSaveVersion;
 			statScreenRefresh();
+			flags[kFLAGS.PRIMARY_DIFFICULTY] = primarySetting;
+			flags[kFLAGS.SECONDARY_STATS_SCALING] = secondarySetting;
+			flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] = elitechampionbossSetting;
+			flags[kFLAGS.HARDCORE_MODE] = hardcoreSetting;
+			flags[kFLAGS.HUNGER_ENABLED] = hungerSetting;
+			flags[kFLAGS.EXP_BANKING] = expbankingSetting;
 			if (player.hasPerk(PerkLib.PastLifeCultivator) || player.hasPerk(PerkLib.PastLifeFighter) || player.hasPerk(PerkLib.PastLifeScout) || player.hasPerk(PerkLib.PastLifeScholar) || player.hasPerk(PerkLib.PastLifeSmith) || player.hasPerk(PerkLib.PastLifeTactician) || player.hasPerk(PerkLib.PastLifeWhore)) chooseToPlayHalf();
 			else chooseToPlay();
 		}
@@ -2199,7 +2236,10 @@ import classes.Scenes.Combat.CombatAbility;
 				player.alchemySkillStat.level = 5;
 				player.perkPoints += 1;
 			}
-			if (player.hasPerk(PerkLib.HistoryFortune)) player.perkPoints += 1;
+			if (player.hasPerk(PerkLib.HistoryFortune) || player.hasPerk(PerkLib.PastLifeFortune)) {
+				player.setArmor(armors.TRMOUTF);
+				player.perkPoints += 1;
+			}
 			if (player.hasPerk(PerkLib.HistoryHealer)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.HistoryReligious)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.HistorySlacker)) player.perkPoints += 1;
@@ -2212,7 +2252,6 @@ import classes.Scenes.Combat.CombatAbility;
 			if (player.hasPerk(PerkLib.PastLifeTactician) && player.hasKeyItem("PerksOverJobs") >= 0) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeThief) && player.hasKeyItem("PerksOverJobs") >= 0) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeWhore) && player.hasKeyItem("PerksOverJobs") >= 0) player.perkPoints += 1;
-			if (player.hasPerk(PerkLib.PastLifeFortune)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeHealer)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeReligious)) player.perkPoints += 1;
 			if (player.hasPerk(PerkLib.PastLifeSlacker)) player.perkPoints += 1;
@@ -2374,7 +2413,7 @@ import classes.Scenes.Combat.CombatAbility;
 			var limitReached:String = "Limit Reached";
 			addButton(0, "Perk Select(1)", ascensionPerkMenu).hint("Spend Ascension Perk Points on special perks!", "Perk Selection");
 			addButton(1, "Perk Select(2)", ascensionPerkMenu2).hint("Spend Ascension Perk Points on special perks!", "Perk Selection");
-			//2
+			addButton(2, "Rare Perks(1)", rarePerks1).hint("Spend Ascension Points on rare special perks!", "Perk Selection");
 			addButton(3, "Rare Perks(2)", rarePerks2).hint("Spend Ascension Points on rare special perks!", "Perk Selection");
 			addButton(4, "Perm Spells", acensionPermSpellMenu).hint("Spend Ascension Perk Points to make certain spells permanent (10 points)", "Spell Selection");
 			addButton(5, "Perm Perks", ascensionPermeryMenu).hint("Spend Ascension Perk Points to make certain perks permanent (5/10 points).", "Perk Selection");
@@ -2839,7 +2878,7 @@ import classes.Scenes.Combat.CombatAbility;
 					+ "Cost: " + tier * pCost);
 			}
 		}
-		
+
 		private function perkHerosBirthrightCheck(tier:int, btn:int):void {
 			var pCost:int = 10;
 			if (tier > 6) {
@@ -2928,7 +2967,7 @@ import classes.Scenes.Combat.CombatAbility;
 			}
 			else if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1 && !player.hasPerk(PerkLib.AscensionTrancendentalGeneticMemoryStageX)) addButtonDisabled(btn, "T.G.M.Ex", "You need to buy Transcendental Genetic Memory perk first.");
 			else addButtonDisabled(btn, "T.G.M.Ex", "You need ascend more times to buy this perk.");
-			btn++ 
+			btn++
 			if (player.ascensionPerkPoints >= 5 && !player.hasPerk(PerkLib.AscensionUnderdog)) addButton(btn, "Underdog", perkUnderdog).hint("Perk allowing you to double base exp gains for fighting enemies above PC level, increasing max lvl diff when bonus is in effect will still increase from 20 to 40 above current PC lvl.\n\nCost: 5 points");// And... to live up to underdog role PC will 'accidentally' find few places to further power-up.
 			else if (player.ascensionPerkPoints < 5 && !player.hasPerk(PerkLib.AscensionUnderdog)) addButtonDisabled(btn, "Underdog", "You do not have enough ascension perk points!");
 			else addButtonDisabled(btn, "Underdog", "You already bought Underdog perk.");
@@ -4226,3 +4265,4 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 	} // what the fuck are those weird comments here? ^
 }
+

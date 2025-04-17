@@ -69,6 +69,7 @@ public class SatyrRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.MelkieLungIM);
+		addMutation(IMutationsLib.MightyLegsIM);
 		
 		buildTier(12,"satyr")
 				.namesMaleFemale("satyr", "faun")

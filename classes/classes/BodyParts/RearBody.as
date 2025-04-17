@@ -201,7 +201,6 @@ public class RearBody extends BodyPart {
 		name: "moth collar",
 		appearanceDesc: "You have a fluffy collar"
 	});
-
     public static const MINDWARP: int = 34;
     EnumValue.add(Types, MINDWARP, "MINDWARP", {
         name:"mind warping aura",
@@ -210,6 +209,16 @@ public class RearBody extends BodyPart {
             return desc;
         }
     });
+	public static const BRA_AND_NECK: int = 35;
+	EnumValue.add(Types, BRA_AND_NECK, "BRA_AND_NECK", {
+		name: "bra and neck",
+		appearanceDesc: "Your thighs and breast regularly produce a sticky substance which creates the illusion of a small mesh of  clothes over them. You have what appears to be a frilly choker at the level of your neck."
+	});
+	public static const SERIAL_CODE: int = 36;
+	EnumValue.add(Types, SERIAL_CODE, "SERIAL_CODE", {
+		name: "serial code",
+		appearanceDesc: "A serial code with your number and designation is imprinted on your flank."
+	});
 
 	public function RearBody(creature:Creature) {
 		super(creature, null);

@@ -38,7 +38,7 @@ public class Charybdis extends Monster
 		private function daggers():void {
 			var damage:Number = weaponAttack;
 			damage += eBaseStrengthDamage();
-			damage *= 2;
+			damage *= 3;
 			var crit:Boolean = false;
 			var critChance:int = 5;
 			if (this.wis <= 200) critChance += this.wis / 10;
@@ -67,7 +67,7 @@ public class Charybdis extends Monster
 		
 		private function charybdisRejuvenationRhythm():void {
 			outputText("The instruments at his gills sound out, a brassy sound in time with the beleaguered Scylla’s heartbeat. You notice his wounds begin to close. ");
-			var temp:Number = Math.round(maxHP() * 0.15);
+			var temp:Number = Math.round(maxHP() * 0.2);
 			outputText("<b>([font-heal]+" + temp + "[/font])</b>");
 			addHP(temp);
 			var hpChange2:int = inte;
@@ -162,16 +162,16 @@ public class Charybdis extends Monster
 			this.skin.setBaseOnly({color:"slippery"});
 			this.hairColor = "brown";
 			this.hairLength = 5;
-			initStrTouSpeInte(300, 300, 400, 150);
-			initWisLibSensCor(100, 300, 150, 50);
+			initStrTouSpeInte(450, 450, 600, 225);
+			initWisLibSensCor(150, 450, 225, 50);
 			this.weaponName = "large tentacle";
 			this.weaponVerb="slash";
-			this.weaponAttack = 160;
+			this.weaponAttack = 240;
 			this.armorName = "super thick skin";
-			this.armorDef = 190;
-			this.armorMDef = 380;
+			this.armorDef = 380;
+			this.armorMDef = 760;
 			this.bonusHP = 10000;
-			this.bonusLust = 520;
+			this.bonusLust = 745;
 			this.lust = 20;
 			this.lustVuln = .2;
 			this.level = 70;

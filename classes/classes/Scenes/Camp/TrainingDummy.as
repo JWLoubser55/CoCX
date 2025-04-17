@@ -82,6 +82,7 @@ package classes.Scenes.Camp
 			this.createPerk(PerkLib.NoDodges, 0, 0, 0, 0);
 			this.createPerk(PerkLib.NoExpGained, 0, 0, 0, 0);
 			this.createPerk(PerkLib.NoItemsGained, 0, 0, 0, 0);
+			this.createPerk(PerkLib.NoSilverNecklaceGained, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyConstructType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.AlwaysSuccesfullRunaway, 0, 0, 0, 0);
 			if (lvl >= 1) {

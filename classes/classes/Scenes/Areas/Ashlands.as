@@ -71,7 +71,9 @@ public class Ashlands extends BaseContent
 			when: SceneLib.dungeons.checkPhoenixTowerClear,
 			call: phoenixScene.encounterPhoenix
 		}, {/*
-			//	wendigoScene.encounterWendigo();
+			//	some werebeast for hot climate (lvl 62)
+		}, {*//*
+			//	wendigoScene.encounterWendigo(); (lvl 74)
 		}, {*/
 			name: "hellCatSabath",
 			label : "HellCat Sabath",
@@ -123,7 +125,7 @@ public class Ashlands extends BaseContent
 		});
 	}
 
-	public const areaLevel:int = 35;
+	public const areaLevel:int = 55;
 	public function isDiscovered():Boolean {
 		return SceneLib.exploration.counters.ashlands > 0;
 	}

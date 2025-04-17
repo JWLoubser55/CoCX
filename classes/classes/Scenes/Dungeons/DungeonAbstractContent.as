@@ -8,6 +8,7 @@ public class DungeonAbstractContent extends BaseContent
     public function DungeonAbstractContent() {}
     
     public static var inDungeon:Boolean = false;
+    public static var inOutdoorDungeon:Boolean = false;
     public static var dungeonLoc:int = DUNGEON_CABIN;
     public static var inRoomedDungeon:Boolean = false;
     public static var inRoomedDungeonResume:Function = null;

@@ -17,7 +17,7 @@ package classes.Scenes.Monsters
 	{
 		public function corruptedGolemSwordSlash():void {
 			outputText("The corrupted golem's head tilts, shaking slightly. She lunges, teeth chattering as she swings her swords at you.");
-			var damage:Number = int ((str + weaponAttack) - rand(player.tou) - player.armorDef);
+			var damage:Number = int (((str + weaponAttack) * 1.5) - rand(player.tou) - player.armorDef);
 			//Dodge
 			if (damage <= 0 || (player.getEvasionRoll())) outputText(" You slide underneath the surprise slash!");
 			else
@@ -30,7 +30,7 @@ package classes.Scenes.Monsters
 		}
 		public function corruptedGolemLustAttack():void {
 			outputText("She smirks and licks her lips as she gives her cock a squeeze, milking a few beads of clear pre from the tip.  You shake your head and try to ignore your growing need.");
-			player.takeLustDamage(10 + player.lib / 6 + player.cor / 6, true);
+			player.takeLustDamage(20 + player.lib / 4 + player.cor / 4, true);
 		}
 		
 		override protected function performCombatAction():void
@@ -48,6 +48,11 @@ package classes.Scenes.Monsters
 			}
 		}
 		
+		override public function defeated(hpVictory:Boolean):void
+		{
+			SceneLib.fleshGolemScenes.wonWithFleshGolem();
+		}
+		
 		public function CorruptedFleshGolemBasic()
 		{
 			super(false);
@@ -55,6 +60,8 @@ package classes.Scenes.Monsters
 			this.short = "corrupted basic flesh golem";
 			this.imageName = "corrupted basic flesh golem";
 			this.long = "You're currently fighting a corrupted basic flesh golem. She's seven feet tall, her flesh covered sporadically by fragments of what must have once been a decorative set of armour. They seem to have been broken in places, but the shards of armor still provide decent protection. Several large holes in the armour were clearly made intentionally, exposing a throbbing cock and firm breasts. The golem keeps its head aligned with you, large, gaping mouth open constantly. She clutches a pair of swords in her meaty fists.";
+			this.flyer = true;
+			this.magicuser = true;
 			this.createCock(12,2,CockTypesEnum.DEMON);
 			this.balls = 0;
 			this.ballSize = 0;
@@ -65,25 +72,25 @@ package classes.Scenes.Monsters
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_MOIST;
 			this.createStatusEffect(StatusEffects.BonusACapacity, 200, 0, 0, 0);
-			initStrTouSpeInte(120, 140, 110, 10);
-			initWisLibSensCor(10, 100, 50, 100);
+			initStrTouSpeInte(360, 425, 333, 20);
+			initWisLibSensCor(20, 200, 100, 100);
 			this.tallness = 84;
 			this.hips.type = Hips.RATING_AVERAGE + 1;
 			this.butt.type = Butt.RATING_AVERAGE + 1;
 			this.bodyColor = "pink";
 			this.weaponName = "dual swords";
 			this.weaponVerb = "slash";
-			this.weaponAttack = 50;
+			this.weaponAttack = 200;
 			this.armorName = "white armor";
-			this.armorDef = 40;
-			this.armorMDef = 20;
-			this.bonusHP = 350;
+			this.armorDef = 400;
+			this.armorMDef = 200;
+			this.bonusHP = 700;
 			this.lust = 30;
-			this.bonusLust = 185;
+			this.bonusLust = 354;
 			this.lustVuln = .5;
-			this.level = 35;
-			this.additionalXP = 350;
-			this.gems = rand(10)+5;
+			this.level = 54;
+			this.additionalXP = 400;
+			this.gems = rand(10)+10;
 			this.tailType = Tail.DEMONIC;
 			this.drop = new WeightedDrop().
 					add(consumables.BIMBOLQ, 1).

@@ -21,7 +21,7 @@ import classes.Scenes.SceneLib;
 			}
 			outputText("Izma rushes you with impressive speed, striking a few precise locations on your joints with her fingertips before leaping back.  It doesn't hurt, but you feel tired and sore. \"<i>Pressure points...</i>\" she laughs, seeing your confused expression.");
 			//(Fatigue damage)
-			EngineCore.fatigue(50+rand(51));
+			EngineCore.fatigue(75+rand(76));
 		}
 
 		private function IzmaSpecials2():void {
@@ -31,7 +31,7 @@ import classes.Scenes.SceneLib;
 				return;
 			}
 			var damage:Number = 0;
-			damage = Math.round(str - player.armorDef);
+			damage = Math.round((str*1.5) - player.armorDef);
 			if(damage < 0) damage = 0;
 			outputText("Izma ducks and jinks, working to close quarters, and clinches you. Unable to get your weapon into play, you can only ");
 			if(damage == 0) outputText("laugh as her blades scape uselessly at your armor-clad back");
@@ -126,14 +126,14 @@ import classes.Scenes.SceneLib;
 			this.weaponVerb="clawed punches";
 			this.weaponAttack = 45;
 			this.armorName = "bikini and grass skirt";
-			this.armorDef = 60;
-			this.armorMDef = 5;
+			this.armorDef = 80;
+			this.armorMDef = 10;
 			this.bonusHP = 660;
 			this.bonusLust = 225;
 			this.lust = 20;
 			this.lustVuln = .20;
 			this.level = 25;
-			this.gems = rand(15) + 10;
+			this.gems = rand(15) + 20;
 			this.drop = NO_DROP;
 			this.createPerk(PerkLib.EnemyBeastOrAnimalMorphType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.UniqueNPC, 0, 0, 0, 0);

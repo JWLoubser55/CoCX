@@ -576,6 +576,18 @@ public class Arms extends SaveableBodyPart {
     name:"human chained",
     appearanceDesc: "You have a pair of normal human arms and though they dont have any unusual traits thick magical silver chains coils around your arms protecting them from arms. You know those chains to be fully part of your body and can use them to fight if necessary."
   });
+	
+	public static const SHROOM_ARMS:int = 75;
+	EnumValue.add(Types, SHROOM_ARMS, "SHROOM_ARMS", {
+		name:"myconid",
+		appearanceDesc: "Your arms end in frills not unlike those of a fancy dress reaching all the way up to your hands which are concealed inside."
+	});
+	
+	public static const MECHANICAL_DOLL_ARMS:int = 76;
+	EnumValue.add(Types, MECHANICAL_DOLL_ARMS, "MECHANICAL_DOLL_ARMS", {
+		name:"automata",
+		appearanceDesc: "Your segmented arms and hands have machine precision allowing you to perform complex maneuvers to inhumane perfection be it swordsmanship, marksmanship or magic. Your metal arms are reinforced with hydraulic systems which allows you to lift weights and deliver strikes with enough power to shatter stones."
+	});
    
 	public static function canFly(id: int): Boolean {
 		return Types[id].canFly || false;

@@ -79,8 +79,8 @@ public class RedOoze extends Monster
 				initStrTouSpeInte(220, 380, 280, 60);
 				initWisLibSensCor(100, 180, 176, -40);
 				this.weaponAttack = 40;
-				this.armorDef = 30;
-				this.armorMDef = 90;
+				this.armorDef = 90;
+				this.armorMDef = 30;
 				this.bonusHP = 1200;
 				this.bonusLust = 400;
 				this.bonusSoulforce = 2000;
@@ -93,8 +93,8 @@ public class RedOoze extends Monster
 				initStrTouSpeInte(60, 100, 80, 20);
 				initWisLibSensCor(20, 160, 120, -40);
 				this.weaponAttack = 6;
-				this.armorDef = 6;
-				this.armorMDef = 18;
+				this.armorDef = 18;
+				this.armorMDef = 6;
 				this.bonusHP = 200;
 				this.bonusLust = 286;
 				this.bonusSoulforce = 200;

@@ -146,6 +146,8 @@ public class Races {
 	public static const LAQUINE:LaquineRace                = new LaquineRace(121);
 	public static const MUMMY:MummyRace             	   = new MummyRace(122);
 	public static const LICH:LichRace             		   = new LichRace(123);
+	public static const MYCONID:MyconidRace				   = new MyconidRace(124);
+	public static const AUTOMATA:AutomataRace			   = new AutomataRace(125);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [

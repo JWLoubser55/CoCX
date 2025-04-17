@@ -22,14 +22,13 @@ import classes.internals.*;
 			}
 			else {
 				outputText("The thing just possessed you!");
-				player.createStatusEffect(StatusEffects.PossessionWendigo,0,0,0,0); 
+				player.createStatusEffect(StatusEffects.PossessionWendigo,0,0,0,0);
 			}
 		}
 		
 		public function WendigoSpectralScream():void {
 			outputText("The wendigo howl a soul-chilling scream. You try to move but realize to your horror that your body is paralyzed by fear! ");
-			var damage:Number = 0;
-			damage += eBaseIntelligenceDamage();
+			var damage:Number = eBaseIntelligenceDamage() * 2;
 			player.takeMagicDamage(damage, true);
 			player.createStatusEffect(StatusEffects.Fear, 3, 0, 0, 0);
 			player.addCurse("wis.mult", 1,3);
@@ -66,8 +65,7 @@ import classes.internals.*;
 			}
 			else {
 				//var isCursed:Boolean = player.buff("Wendigo curse").isPresent();
-				var damage:Number = 0;
-				damage += eBaseDamage();
+				var damage:Number = eBaseDamage() * 2;
 				player.takePhysDamage(damage, true);
 				//if (!isCursed) player.buff("Wendigo curse").addStats( {"tou.mult": -0.05} ).withText("Wendigo curse!").combatPermanent();
 				//else player.buff("Wendigo curse").addStats( {"tou.mult":-0.05} ).combatPermanent();
@@ -123,21 +121,21 @@ import classes.internals.*;
 			this.skinDesc = "skin";
 			this.hairColor = "silver white";
 			this.hairLength = 15;
-			initStrTouSpeInte(160, 150, 350, 189);
-			initWisLibSensCor(225, 350, 175, -70);
+			initStrTouSpeInte(320, 300, 700, 378);
+			initWisLibSensCor(450, 700, 350, -70);
 			this.weaponName = "claws";
 			this.weaponVerb="slash";
-			this.weaponAttack = 52;
+			this.weaponAttack = 106;
 			this.armorName = "skin";
-			this.armorDef = 100;
-			this.armorMDef = 400;
-			this.bonusHP = 3000;
-			this.bonusLust = 609;
+			this.armorDef = 1000;
+			this.armorMDef = 4000;
+			this.bonusHP = 4000;
+			this.bonusLust = 1140;
 			this.lust = 20;
 			this.lustVuln = .05;
-			this.level = 84;
+			this.level = 90;
 			this.additionalXP = 600;
-			this.gems = 120 + rand(40);
+			this.gems = 150 + rand(40);
 			this.drop = new WeightedDrop().add(consumables.QWHITED, 1)
 					.add(consumables.SNOWW_D, 5)
 					.add(consumables.ICICLE_, 2);

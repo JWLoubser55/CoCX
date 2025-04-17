@@ -12,7 +12,7 @@ public class Farmers extends Monster
 
 		override protected function performCombatAction():void
 		{
-			createStatusEffect(StatusEffects.Attacks,4,0,0,0);
+			createStatusEffect(StatusEffects.Attacks,5,0,0,0);
 			eAttack();
 		}
 
@@ -51,18 +51,18 @@ public class Farmers extends Monster
 			this.bodyColor = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			initStrTouSpeInte(40, 120, 110, 100);
-			initWisLibSensCor(100, 35, 35, -40);
+			initStrTouSpeInte(120, 360, 330, 200);
+			initWisLibSensCor(200, 70, 70, -40);
 			this.weaponName = "pitchforks";
 			this.weaponVerb="stab";
-			this.weaponAttack = 20;
+			this.weaponAttack = 40;
 			this.armorName = "chitin";
-			this.armorDef = 10;
-			this.armorMDef = 1;
-			this.bonusHP = 300;
-			this.bonusLust = 94;
+			this.armorDef = 100;
+			this.armorMDef = 10;
+			this.bonusHP = 400;
+			this.bonusLust = 174;
 			this.lustVuln = 0.01;
-			this.level = 24;
+			this.level = 34;
 			this.gems = rand(50)+100;
 			this.horns.type = Horns.DEMON;
 			this.horns.count = 2;

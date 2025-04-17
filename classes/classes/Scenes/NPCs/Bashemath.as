@@ -31,34 +31,35 @@ use namespace CoC;
 			TailSpike();
 		}
 		public function TailSpike():void {
-			outputText("The malikore's tail curls over and shoots a spike at you. The bony spike ");
+			outputText("The malikore's tails curls over and shoots a spike at you. The bony spikes ");
 			if (rand(100) < (this.spe - player.spe) / 2) {
 				if (CombatAbilities.EAspectAir.isActive()) {
 					outputText("hits wind wall doing no damage to you.");
 					CombatAbilities.EAspectAir.advance(true);
 				}
 				else {
-					var tailspikedmg:Number = Math.round(this.str / 12);
-					var lustdmg:Number = Math.round(this.lib / 5);
+					var tailspikedmg:Number = Math.round(this.str / 10);
+					var lustdmg:Number = Math.round(this.lib / 4);
 					outputText("hits the mark dealing ");
 					player.takePhysDamage(tailspikedmg, true);
 					outputText(" damage and poisoning you. You feel extremely aroused and ");
 					if (rand(2) == 0) {
 						outputText("your movements slow down");
-						player.addCombatBuff('spe', -3, "Malikore Venom", "MalikoreVenom");
+						player.addCombatBuff('spe', -12, "Malikore Venom", "MalikoreVenom");
 					}
 					else {
 						if (rand(2) == 0) {
 							outputText("a bit more tired");
-							if (player.fatigue + 25 > player.maxOverFatigue()) player.fatigue = player.maxOverFatigue();
-							else player.fatigue += 25;
+							if (player.fatigue + 100 > player.maxOverFatigue()) player.fatigue = player.maxOverFatigue();
+							else player.fatigue += 100;
 						}
 						else {
 							outputText("your manna been sapped");
-							if (player.mana < 25) player.mana = 0;
-							else player.mana -= 25;
+							if (player.mana < 100) player.mana = 0;
+							else player.mana -= 100;
 						}
 					}
+					player.takeLustDamage(lustdmg, true);
 					player.takeLustDamage(lustdmg, true);
 				}
 			}
@@ -75,8 +76,8 @@ use namespace CoC;
 
 		public function moveBoobCrash():void {
 			outputText("The flying malikore dives in your direction crashing into you breasts first! For a few seconds you go red in confusion and arousal as your face is lost in her cleavage then she pulls off leaving you dazed and aroused as she readies her next attack!");
-			var boobcrashdmg:Number = Math.round(this.str / 8);
-			var lustdmg:Number = Math.round(this.lib / 3);
+			var boobcrashdmg:Number = Math.round(this.str / 6);
+			var lustdmg:Number = Math.round(this.lib / 2);
 			player.takeLustDamage(lustdmg, true);
 			player.takePhysDamage(boobcrashdmg, true);
 			if (!player.hasPerk(PerkLib.Resolute)) player.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
@@ -84,7 +85,7 @@ use namespace CoC;
 		}
 
 		public function moveBite():void {
-			var bitedmg:Number = Math.round(this.str / 25);
+			var bitedmg:Number = Math.round(this.str / 20);
 			outputText("The malikore bites into your ");
 			if (hasStatusEffect(StatusEffects.Pounce)) outputText("arm");
 			else if (player.lowerBody == 26) outputText("tentacle");
@@ -98,7 +99,7 @@ use namespace CoC;
 		}
 
 		public function moveCleanse():void {
-			outputText("The malikore stabs herself with her tail, cleansing herself from poison!");
+			outputText("The malikore stabs herself with her tails, cleansing herself from poison!");
 			if (hasStatusEffect(StatusEffects.PoisonDoT)) removeStatusEffect(StatusEffects.PoisonDoT);
 			if (hasStatusEffect(StatusEffects.PoisonDoTH)) removeStatusEffect(StatusEffects.PoisonDoTH);
 			if (hasStatusEffect(StatusEffects.LustDoT)) removeStatusEffect(StatusEffects.LustDoT);
@@ -131,7 +132,7 @@ use namespace CoC;
 			var str:String = "";
 			if (hasStatusEffect(StatusEffects.Flying)) str += "The malikore is circling you in the air readying a salvo of spike to throw at you.";
 			else str += "The malikore is currently circling you looking for an opening to strike. She’s actually good on the eye and you would give her more attention if not for the fact she’s trying to beat you down and rape you.";
-			return str;
+			return str;//add goth look?
 		}
 
 		public function Bashemath()
@@ -151,19 +152,19 @@ use namespace CoC;
 			this.bodyColor = "light";
 			this.hairColor = "red";
 			this.hairLength = 13;
-			initStrTouSpeInte(130, 195, 330, 200);
-			initWisLibSensCor(200, 230, 110, 80);
-			this.weaponAttack = 54;
+			initStrTouSpeInte(215, 240, 380, 210);
+			initWisLibSensCor(210, 270, 150, 80);
+			this.weaponAttack = 135;
 			this.weaponName = "claw";
 			this.weaponVerb="claw-slash";
 			this.armorName = "skimpy black bikini";
-			this.armorDef = 16;
-			this.armorMDef = 3;
+			this.armorDef = 48;
+			this.armorMDef = 9;
 			this.bonusHP = 200;
-			this.bonusLust = 379;
+			this.bonusLust = 464;
 			this.lust = 30;
 			this.lustVuln = .8;
-			this.level = 39;
+			this.level = 44;
 			this.gems = 45 + rand(40);
 			this.drop = new ChainedDrop().
 					add(armors.S_SWMWR,1/12).
@@ -175,12 +176,14 @@ use namespace CoC;
 			this.lowerBody = LowerBody.LION;
 			this.tailType = Tail.MANTICORE_PUSSYTAIL;
 			this.tailRecharge = 0;
+			this.tailCount = 2;
 			this.createPerk(PerkLib.JobBrawler, 0, 0, 0, 0);
 			this.createPerk(PerkLib.JobCourtesan, 0, 0, 0, 0);
 			this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyFeralType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyBeastOrAnimalMorphType, 0, 0, 0, 0);
+			this.createPerk(PerkLib.UniqueNPC, 0, 0, 0, 0);
 			checkMonster();
 		}
 

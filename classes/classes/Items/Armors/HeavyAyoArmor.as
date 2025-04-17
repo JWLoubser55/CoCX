@@ -19,7 +19,7 @@ package classes.Items.Armors
 		
 		override public function get def():Number {
 			var baseP:Number = 72;
-			if (game.flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] > 0) baseP += 48;
+			if (game.player.buff("Ayo Armor").isPresent()) baseP += 48;
 			if (game.player.hasPerk(PerkLib.EfficientUsageOfSoulforce)) {
 				if (game.player.touStat.core.value > 300) baseP *= 3;
 				else baseP *= (1 + (game.player.touStat.core.value * 0.01));
@@ -29,7 +29,7 @@ package classes.Items.Armors
 		
 		override public function get mdef():Number {
 			var baseM:Number = 12;
-			if (game.flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] > 0) baseM += 8;
+			if (game.player.buff("Ayo Armor").isPresent()) baseM += 8;
 			if (game.player.hasPerk(PerkLib.EfficientUsageOfSoulforce)) {
 				if (game.player.touStat.core.value > 300) baseM *= 3;
 				else baseM *= (1 + (game.player.touStat.core.value * 0.01));

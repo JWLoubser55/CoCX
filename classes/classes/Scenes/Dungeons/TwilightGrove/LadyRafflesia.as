@@ -139,7 +139,7 @@ public class LadyRafflesia extends Monster
 		{
 			this.a = " ";
 			this.short = "Lady Rafflesia";
-			this.long = "Sadly no description been provided beside name: Lady Rafflesia.";// You are fighting against an Alraune, an intelligent plant with the torso of a woman and the lower body of a giant flower. She seems really keen on raping you.
+			this.long = "You are fighting the owner of the grove, lady Rafflesia. This powerful alraune seems to have been thoroughly soaked in demonic corruption. While Rafflesia is fighting you she is also busily screwing several green skinned demons around her pond, feeding on their pleasure and fluids through her tentacled vines in order to fuel her own growth. Quite depraved, she occasionally moans between attacks as one of her many tendrils erupts into a demon body or achieves orgasm all on its own.";
 			this.bodyColor = "lavender";
 			this.hairColor = "pink";
 			initStrTouSpeInte(330, 390, 28, 170);

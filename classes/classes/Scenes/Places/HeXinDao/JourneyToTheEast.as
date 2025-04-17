@@ -331,7 +331,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 				.hint("Ask horse healer to remove your cursed item. Costs 500 gems. ")
 				.disableIf(player.gems < 500, "Ask horse healer to remove your cursed item. Costs 500 gems (Can't afford).")
 				.disableIf(player.equippedKnownCursedItems().length == 0 && player.carriedKnownCursedItems().length == 0, "You don't have any cursed items");
-			if (player.weaponRange == weaponsrange.SAGITTB) addButton(4, "Uncurse", SceneLib.dianaScene.dianaAtJttECursedItemsRemoval2);
+			if (player.carryUniqueCursedItems()) addButton(4, "U.Uncurse", SceneLib.dianaScene.dianaAtJttECursedItemsRemoval2);
 			addButton(14, "Back", curry(enteringInn,false));
 		}
 		public function dianaAtJttEMainHeal():void {

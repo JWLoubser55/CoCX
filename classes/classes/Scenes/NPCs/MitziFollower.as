@@ -172,9 +172,9 @@ public function mitziHenchmanOption2(slot:Number = 1):void {
 		outputText("Mitzi grins up at you then puts her fingers to mouth, letting out a loud whistle.n\n");
 		outputText("\"<i>Lildea! Furxia! Roxy! It's showtime!</i>\"\n\n");
 		outputText("Three goblin girls come running over to her. They have short purple hair tied back into ponytails and their soft curves are accentuated by a belt lined with assorted needles strapped across their sizable chests and a pair of black gloves and thigh length stockings. Mitzi changes into the same matter of dress, striking a sexy pose with her three daughters.\n\n");
-		var strMitzi:Number = 20;
-		var intMitzi:Number = 40;
-		var libMitzi:Number = 50;
+		var strMitzi:Number = 60;
+		var intMitzi:Number = 120;
+		var libMitzi:Number = 150;
 		strMitzi += 2 * (flags[kFLAGS.MITZI_DAUGHTERS] / 4);
 		intMitzi += 4 * (flags[kFLAGS.MITZI_DAUGHTERS] / 4);
 		libMitzi += 5 * (flags[kFLAGS.MITZI_DAUGHTERS] / 4);

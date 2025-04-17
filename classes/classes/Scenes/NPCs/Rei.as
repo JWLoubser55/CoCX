@@ -9,14 +9,16 @@ import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
 import classes.BodyParts.Tail;
 import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.Monsters.AbstractFleshGargoyle;
 
 use namespace CoC;
 	
-	public class Rei extends Monster
+	public class Rei extends AbstractFleshGargoyle
 	{
 		
 		public function Rei() 
 		{
+			super(false);
 			this.a = "the ";
 			this.short = "corrupted basic flesh golem";
 			this.imageName = "corrupted basic flesh golem";
@@ -28,25 +30,25 @@ use namespace CoC;
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_MOIST;
 			this.createStatusEffect(StatusEffects.BonusACapacity, 200, 0, 0, 0);
-			initStrTouSpeInte(120, 140, 110, 10);
-			initWisLibSensCor(10, 100, 50, 100);
+			initStrTouSpeInte(360, 425, 333, 20);
+			initWisLibSensCor(20, 200, 100, 100);
 			this.tallness = 84;
 			this.hips.type = Hips.RATING_AVERAGE + 1;
 			this.butt.type = Butt.RATING_AVERAGE + 1;
 			this.bodyColor = "pink";
 			this.weaponName = "dual swords";
 			this.weaponVerb = "slash";
-			this.weaponAttack = 50;
+			this.weaponAttack = 200;
 			this.armorName = "white armor";
-			this.armorDef = 40;
-			this.armorMDef = 20;
-			this.bonusHP = 350;
+			this.armorDef = 400;
+			this.armorMDef = 200;
+			this.bonusHP = 700;
 			this.lust = 30;
-			this.bonusLust = 185;
+			this.bonusLust = 354;
 			this.lustVuln = .5;
-			this.level = 35;
-			this.additionalXP = 350;
-			this.gems = rand(10)+5;
+			this.level = 54;
+			this.additionalXP = 400;
+			this.gems = rand(10)+10;
 			this.tailType = Tail.DEMONIC;
 			this.drop = new WeightedDrop().
 					add(consumables.BIMBOLQ, 1).
@@ -56,17 +58,8 @@ use namespace CoC;
 					add(weapons.DSWORD_, 10).
 					add(weapons.DKATANA, 10).
 					add(weapons.D_LANCE, 10);
-			this.createStatusEffect(StatusEffects.LowtierMagicImmunity, 0, 0, 0, 0);
-			this.createPerk(PerkLib.Resolute, 0, 0, 0, 0);
-			this.createPerk(PerkLib.Sentience, 0, 0, 0, 0);//flesh gargoyle perk
-			this.createPerk(PerkLib.EnemyFleshConstructType, 0, 0, 0, 0);
-			this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
-			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
-			this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);//flesh gargoyle perk
-			this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);//flesh gargoyle perk
-			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
-			//this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
-			//this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
+			this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
 			checkMonster();
 		}
 		

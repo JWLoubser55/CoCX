@@ -41,8 +41,8 @@ public class SeaAnemone extends Monster
 					//Kick back to main if no damage occured!
 					// so cute! skip remaining attacks
 					cuteCheck = false;
-
-				} else outputText("Though you lose a bit of steam to the display, the drive for dominance still motivates you to follow through on your swing.");
+				}
+				else outputText("Though you lose a bit of steam to the display, the drive for dominance still motivates you to follow through on your swing.");
 			}
 			return damage;
 		}
@@ -101,19 +101,19 @@ public class SeaAnemone extends Monster
 			this.hairColor = "purplish-black";
 			this.hairLength = 20;
 			this.hairType = Hair.ANEMONE;
-			initStrTouSpeInte(200, 160, 127, 140);
-			initWisLibSensCor(140, 150, 70, 0);
+			initStrTouSpeInte(600, 480, 381, 280);
+			initWisLibSensCor(280, 300, 140, 0);
 			this.weaponName = "tendrils";
 			this.weaponVerb="tentacle";
-			this.weaponAttack = 46;
+			this.weaponAttack = 184;
 			this.armorName = "clammy skin";
-			this.armorDef = 30;
-			this.armorMDef = 3;
-			this.bonusHP = 500;
-			this.bonusLust = 270;
+			this.armorDef = 500;
+			this.armorMDef = 50;
+			this.bonusHP = 1500;
+			this.bonusLust = 506;
 			this.lust = 30;
 			this.lustVuln = .8;
-			this.level = 50;
+			this.level = 66;
 			this.gems = rand(50) + 70;
 			this.drop = new WeightedDrop(consumables.DRYTENT, 1);
 			this.createPerk(PerkLib.WaterNature, 0, 0, 0, 0);

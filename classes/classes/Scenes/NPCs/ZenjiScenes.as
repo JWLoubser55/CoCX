@@ -2627,15 +2627,15 @@ public class ZenjiScenes extends NPCAwareContent implements SaveableState
 					outputText("Zenji readies his spear before flexing his arms, \"<i>¡Vamanos, flaca!</i>\"\n\n");
 					outputText("Zenji is now following you around.\n\n");
 				}
-				var strZenji:Number = 50;
-				var meleeAtkZenji:Number = 145;
-				if (player.level > 25 && player.level < 185) {
-					strZenji += 29 * Math.round((player.level - 20) / 5) * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
-					meleeAtkZenji += 5 * Math.round((player.level - 20) / 5) * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
+				var strZenji:Number = 290;
+				var meleeAtkZenji:Number = 50;
+				if (player.level > 25 && player.level < 233) {
+					strZenji += 44 * Math.round((player.level - 20) / 5) * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
+					meleeAtkZenji += 15 * Math.round((player.level - 20) / 5) * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
 				}
-				else if (player.level >= 185) {
-					strZenji += 957 * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
-					meleeAtkZenji += 165 * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
+				else if (player.level >= 233) {
+					strZenji += 1874.4 * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
+					meleeAtkZenji += 639 * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
 				}
 				strZenji *= (1 + (0.2 * player.newGamePlusMod()));
 				strZenji = Math.round(strZenji);

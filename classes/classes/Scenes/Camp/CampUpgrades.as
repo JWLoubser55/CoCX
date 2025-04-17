@@ -256,6 +256,7 @@ public class CampUpgrades extends BaseContent {
 			if (player.perkv1(PerkLib.MummyLord) > 19) baseFatigue = 0;
 			else baseFatigue = Math.round(baseFatigue*(1/player.perkv1(PerkLib.MummyLord)));
 		}
+		if (player.hasStatusEffect(StatusEffects.AlterBindScroll5)) baseFatigue = 0;
 		return baseFatigue;
 	}
 

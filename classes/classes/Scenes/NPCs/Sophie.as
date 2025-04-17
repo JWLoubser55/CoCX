@@ -221,7 +221,7 @@ import classes.internals.*;
 			initWisLibSensCor(240, 180, 150, 60);
 			this.weaponName = "talons";
 			this.weaponVerb="slashing talons";
-			this.weaponAttack = 120;
+			this.weaponAttack = 240;
 			this.armorName = "feathers";
 			this.armorDef = 350;
 			this.armorMDef = 70;

@@ -135,7 +135,7 @@ public class Bog extends BaseContent
 			});
 		}
 		
-		public const areaLevel:int = 23;
+		public const areaLevel:int = 45;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.bog > 0;
 		}

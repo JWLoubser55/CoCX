@@ -16,7 +16,7 @@ public class Brigid extends Monster
 		private function brigidPoke():void {
 			outputText("Brigid stalks forward with confidence, her shield absorbing your defensive blows until she's right on top of you. She bats your [weapon] aside and thrashes you with her hot poker, scalding your [skin] and sending you reeling. ");
 			//(Effect: Heavy Damage)
-			var damage:Number = Math.round((str + weaponAttack) - rand(player.tou) - player.armorDef);
+			var damage:Number = Math.round(((str + weaponAttack)*3) - rand(player.tou) - player.armorDef);
 			if (damage < 30) damage = 30;
 			damage = Math.round(damage);
 			damage = player.takeFireDamage(damage, true);
@@ -26,7 +26,7 @@ public class Brigid extends Monster
 		private function brigidBop():void {
 			outputText("The harpy feints at you with her poker; you dodge the blow, but you leave yourself vulnerable as she spins around and slams her heavy shield into you, knocking you off balance. ");
 			//(Effect: Stagger/Stun)
-			var damage:Number = 5;
+			var damage:Number = 50;
 			damage = player.takePhysDamage(damage, true);
 			if(player.hasPerk(PerkLib.Resolute)) outputText("  Of course, your resolute posture prevents her from accomplishing much.");
 			else player.createStatusEffect(StatusEffects.Stunned,0,0,0,0);
@@ -35,7 +35,7 @@ public class Brigid extends Monster
 		//Attack Three: Harpy Ass Grind GO!
 		private function BrigidAssGrind():void {
 			outputText("Brigid grins as she approaches you.  She handily deflects a few defensive blows and grabs you by the shoulders.  She forces you onto your knees and before you can blink, has turned around and smashed your face into her ass!  \"<i>Mmm, you like that, don'tcha?</i>\" she growls, grinding her huge, soft ass across your face, giving you an up-close and personal feel of her egg-laying hips.");
-			player.takeLustDamage(30, true);
+			player.takeLustDamage(300, true);
 		}
 		override protected function performCombatAction():void
 		{
@@ -82,19 +82,19 @@ public class Brigid extends Monster
 			this.bodyColor = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			initStrTouSpeInte(140, 110, 140, 50);
-			initWisLibSensCor(50, 70, 45, 0);
+			initStrTouSpeInte(700, 550, 700, 100);
+			initWisLibSensCor(100, 140, 90, 0);
 			this.weaponName = "poker";
 			this.weaponVerb="burning stab";
-			this.weaponAttack = 34;
+			this.weaponAttack = 170;
 			this.armorName = "armor";
-			this.armorDef = 24;
-			this.armorMDef = 2;
-			this.bonusHP = 1000;
-			this.bonusLust = 144;
+			this.armorDef = 340;
+			this.armorMDef = 50;
+			this.bonusHP = 2000;
+			this.bonusLust = 312;
 			this.lust = 20;
 			this.lustVuln = .25;
-			this.level = 29;
+			this.level = 82;
 			this.gems = rand(37)+210;
 			this.additionalXP = 150;
 			this.wings.type = Wings.FEATHERED_LARGE;
@@ -102,6 +102,7 @@ public class Brigid extends Monster
 			this.horns.type = Horns.DEMON;
 			this.horns.count = 2;
 			this.drop = NO_DROP;
+			this.createPerk(PerkLib.EnemyChampionType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.ShieldWielder, 0, 0, 0, 0);
 			checkMonster();
 		}

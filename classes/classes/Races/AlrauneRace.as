@@ -63,6 +63,7 @@ public class AlrauneRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 
 		addMutation(IMutationsLib.FloralOvariesIM);
+		addMutation(IMutationsLib.PlantChlorophyllIM);
 
 		buildTier(13, "alraune")
 				.customNamingFunction(Utils.curry(nameFn,1))

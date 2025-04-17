@@ -18,7 +18,7 @@ public class HeroslayerOmnibus extends Monster
 			outputText("The demoness blinks her eyes closed and knits her eyebrows in concentration.  The red orbs open wide and she smiles, licking her lips.   The air around her grows warmer, and muskier, as if her presence has saturated it with lust.");
 			if (hasStatusEffect(StatusEffects.LustAura)) {
 				outputText("  Your eyes cross with unexpected feelings as the taste of desire in the air worms its way into you.  The intense aura quickly subsides, but it's already done its job.");
-				player.takeLustDamage((8 + int(player.lib / 20 + player.cor / 25)), true);
+				player.takeLustDamage((80 + int(player.lib / 10 + player.cor / 12)), true);
 			}
 			else {
 				createStatusEffect(StatusEffects.LustAura, 0, 0, 0, 0);
@@ -44,7 +44,7 @@ public class HeroslayerOmnibus extends Monster
 			}
 			else {
 				//Determine damage - str modified by enemy toughness!
-				damage = int((eBaseDamage() * 1.5) - Math.random() * (player.tou + player.armorDef));
+				damage = int((eBaseDamage() * 4) - Math.random() * (player.tou + player.armorDef));
 				if (damage > 0) {
 					damage = player.takeFireDamage(damage);
 				}
@@ -104,7 +104,7 @@ public class HeroslayerOmnibus extends Monster
 					//(Direct Hit)
 					else {
 						outputText("She throws her hands out, palms facing you, and a rush of purple flame washes towards you.  Too busy with your own attack to effectively dodge, you're hit full on by the purple fire.  Incredibly, it doesn't burn.  The fire actually seems to flow inside you, disappearing into your skin.  You stumble, confused for a second, but then it hits you.  Every inch of your body is buzzing with pleasure, practically squirming and convulsing with sexual delight.  You collapse, twitching and heaving, feeling the constant sensation of sexual release running from your head to your [feet].");
-						player.takeLustDamage(1000, true);
+						player.takeLustDamage(2000, true);
 						if (player.lust >= player.maxOverLust()) outputText("  Too horny and pleasured to resist, you lie down and tremble, occasionally rubbing yourself to enhance the bliss.");
 					}
 				}
@@ -165,26 +165,26 @@ public class HeroslayerOmnibus extends Monster
 			this.bodyColor = "black";
 			this.hairColor = "red";
 			this.hairLength = 20;
-			initStrTouSpeInte(104, 100, 90, 150);
-			initWisLibSensCor(150, 120, 50, 100);
+			initStrTouSpeInte(342, 310, 290, 390);
+			initWisLibSensCor(390, 240, 100, 100);
 			this.weaponName = "flaming whip";
 			this.weaponVerb="flame-whip";
-			this.weaponAttack = 26;
+			this.weaponAttack = 130;
 			this.armorName = "demon-skin";
-			this.armorDef = 1;
-			this.armorMDef = 75;
-			this.bonusHP = 2500;
-			this.bonusLust = 200;
+			this.armorDef = 10;
+			this.armorMDef = 750;
+			this.bonusHP = 5000;
+			this.bonusLust = 292;
 			this.lust = 30;
 			this.lustVuln = 0.75;
-			this.level = 30;
+			this.level = 52;
 			this.gems = rand(5) + 38;
 			this.drop = NO_DROP;
 			this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);
-			this.createPerk(PerkLib.OverMaxHP, 30, 0, 0, 0);
+			this.createPerk(PerkLib.OverMaxHP, 52, 0, 0, 0);
 			checkMonster();
 		}
 	}

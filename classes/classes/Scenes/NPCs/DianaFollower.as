@@ -81,6 +81,12 @@ public function uncurseEquippedItem(item:ItemType):void {
 	doNext(SceneLib.journeyToTheEast.dianaAtJttEMain);
 }
 public function dianaAtJttECursedItemsRemoval2():void {
+	menu();
+	if (player.weaponRange == weaponsrange.SAGITTB) addButton(0, "Cursed Bow", dianaAtJttECursedItemsRemovalBow);
+	if (player.necklace == necklaces.SILCNEC) addButton(1, "Cursed Necklace", dianaAtJttECursedItemsRemovalNecklace);
+	addButton(14, "Back", SceneLib.journeyToTheEast.dianaAtJttEMain);
+}
+public function dianaAtJttECursedItemsRemovalBow():void {
 	clearOutput();
 	outputText("As horse healer proceed with the purification ritual you struggle in pain at first as you feel the cursed weapon in your hand resist the unbinding before release washes over you as your grip opens dropping the malevolent item on the ground. ");
 	outputText("Horse healer wrap the item in blessed cloth in order to seal its malice before handing you the neutralized cursed item back. Sure you can equip it again anytime but now you know the risks.\n\n");
@@ -91,6 +97,14 @@ public function dianaAtJttECursedItemsRemoval2():void {
 	if (player.statStore.hasBuff('Sagittarius Focus')) player.buff("Sagittarius Focus").remove();
 	player.unequipWeaponRange(false,true);
 	inventory.takeItem(weaponsrange.SAGITTB, SceneLib.journeyToTheEast.dianaAtJttEMain);
+}
+private function dianaAtJttECursedItemsRemovalNecklace():void {
+	clearOutput();
+	outputText("As horse healer proceed with the purification ritual you struggle in pain at first as you feel the cursed necklace resist the unbinding before release washes over you. ");
+	outputText("Horse healer wrap the item in blessed cloth in order to seal its malice before handing you the neutralized cursed item back. Sure you can equip it again anytime but now you know the risks.\n\n");
+	player.gems -= 500;
+	player.unequipNecklace(false,true);
+	inventory.takeItem(necklaces.SILCNEC, SceneLib.journeyToTheEast.dianaAtJttEMain);
 }
 	}
 }

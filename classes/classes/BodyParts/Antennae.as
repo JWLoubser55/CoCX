@@ -61,6 +61,11 @@ public class Antennae extends BodyPart {
 		name: "ant",
 		appearanceDesc: "You have long, stiff-yet-prehensile ant antennae on your head, able to feel things just as your fingers do."
 	});
+	public static const AUTOMATA: int = 10;
+	EnumValue.add(Types, AUTOMATA, "AUTOMATA", {
+		name: "automata",
+		appearanceDesc: "A small metal rod on the side of your headset allows you to obtain information on the network from anywhere in Mareth."
+	});
 
 	public function Antennae(creature:Creature) {
 		super(creature, null);

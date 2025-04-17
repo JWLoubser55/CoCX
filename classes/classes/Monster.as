@@ -30,6 +30,7 @@ import classes.Items.WeaponLib;
 import classes.Items.WeaponRangeLib;
 import classes.Items.Weapons.HuntsmansCane;
 import classes.Races.HumanRace;
+import classes.Scenes.Areas.Caves.Matango;
 import classes.Scenes.Areas.DeepSea.JuvenileAbyssalShark;
 import classes.Scenes.Areas.Forest.Alraune;
 import classes.Scenes.Areas.Ocean.UnderwaterSharkGirl;
@@ -1140,7 +1141,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		}
 		
 		override public function isFlying():Boolean {
-			return hasStatusEffect(StatusEffects.Flying) && !hasStatusEffect(StatusEffects.EntangledByNet) && !hasStatusEffect(StatusEffects.Nailed);
+			return hasStatusEffect(StatusEffects.Flying) && !hasStatusEffect(StatusEffects.EntangledByNet) && !hasStatusEffect(StatusEffects.Nailed) && !hasStatusEffect(StatusEffects.Grounded);
 		}
 
 		public function canMonsterBleed():Boolean
@@ -2074,7 +2075,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (plural) outputText("' attacks ");
 				else outputText("'s attack ");
 				outputText("with your [weapon].\n");
-					if (game.player.hasPerk(PerkLib.TwinRiposte) && (game.player.weapon.isDualMedium() || game.player.weapon.isDualLarge()) && game.player.wrath >= 2) {
+					if (game.player.hasPerk(PerkLib.TwinRiposte) && game.player.weapon.isDualWielded()) {
 					player.createStatusEffect(StatusEffects.CounterAction,1,0,0,0);
 					SceneLib.combat.basemeleeattacks();
 				}
@@ -2098,7 +2099,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			//Block with shield
 			if (combatBlock(true)) {
 				outputText("You block [themonster]'s " + weaponVerb + " with your [shield]! ");
-				if (game.player.hasPerk(PerkLib.ShieldCombat) && game.player.fatigue >= 20) {
+				if (game.player.hasPerk(PerkLib.ShieldCombat)) {
 					player.createStatusEffect(StatusEffects.CounterAction,1,0,0,0);
 					SceneLib.combat.pspecials.shieldBash();
 				}
@@ -2188,6 +2189,22 @@ import classes.Scenes.Combat.CombatAbilities;
 		public function monsterIsFrostbiten():Boolean {
 			var effects:Array = [
 				StatusEffects.FrostburnDoT
+			]
+			for each (var effect:StatusEffectType in effects) if (hasStatusEffect(effect)) return true;
+			return false;
+		}
+
+		public function monsterIsElectrocuted():Boolean {
+			var effects:Array = [
+				StatusEffects.ElectrocutionDoT
+			]
+			for each (var effect:StatusEffectType in effects) if (hasStatusEffect(effect)) return true;
+			return false;
+		}
+
+		public function monsterIsHavingNecrosis():Boolean {
+			var effects:Array = [
+				StatusEffects.NecrosisDoT
 			]
 			for each (var effect:StatusEffectType in effects) if (hasStatusEffect(effect)) return true;
 			return false;
@@ -2889,8 +2906,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		protected function tentacleBindStruggle():Boolean{
 			clearOutput();
 			outputText("You struggle with all of your might to free yourself from the tentacles before the creature can fulfill whatever unholy desire it has for you.\n");
-			//33% chance to break free + up to 50% chance for strength
-			if (rand(3) == 0 || rand(80) < player.str / 2 || player.hasPerk(PerkLib.FluidBody)) {
+			if (SceneLib.combat.struggleCentralizedCheck()) {
 				outputText("As the creature attempts to adjust your position in its grip, you free one of your [legs] and hit the beast in its beak, causing it to let out an inhuman cry and drop you to the ground smartly.\n\n");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 				createStatusEffect(StatusEffects.TentacleCoolDown, 3, 0, 0, 0);
@@ -2939,6 +2955,14 @@ import classes.Scenes.Combat.CombatAbilities;
 			player.takeLustDamage(player.effectiveSensitivity() / 5 + 5, true);
 			player.takePhysDamage(5 + rand(5));
 			return true;
+		}
+
+		public function monsterSlimeMetabolismRecovery():void {
+			var percent:Number = 0.01;
+			percent += (0.01 * perkv1(IMutationsLib.SlimeMetabolismIM));
+			EngineCore.HPChange(Math.round(maxHP() * percent), false, false);
+			EngineCore.ManaChange(Math.round(maxMana() * percent));
+			EngineCore.changeFatigue(-Math.round(maxFatigue() * percent));
 		}
 
 		/**
@@ -3207,7 +3231,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 			game.inCombat = false;
             game.player.clearStatuses(false);
-			if (!player.hasCock() && !player.hasStatusEffect(StatusEffects.MeetXuviel) && player.necklace != necklaces.SILCNEC && !flags[kFLAGS.IN_INGNAM] && !player.hasStatusEffect(StatusEffects.SoulArena) && !inDungeon) {
+			if (!player.hasCock() && !player.hasStatusEffect(StatusEffects.MeetXuviel) && player.necklace != necklaces.SILCNEC && !flags[kFLAGS.IN_INGNAM] && !player.hasStatusEffect(StatusEffects.SoulArena) && !inDungeon && !hasPerk(PerkLib.NoSilverNecklaceGained)) {
 				outputText("\n\nYou'll probably wake up in six hours or so. Strangely, you discover a necklace you don’t recall putting on before around your neck. It is a simple chain with a silver cross.");
 				player.createStatusEffect(StatusEffects.MeetXuviel, 0, 0, 0, 0);
 				SceneLib.explorationEngine.stopExploring();
@@ -3289,32 +3313,43 @@ import classes.Scenes.Combat.CombatAbilities;
 
 		protected function outputDefaultTeaseReaction(lustDelta:Number):void
 		{
-			if (plural) {
-				if (lustDelta == 0) outputText("\n\n[Themonster] seem unimpressed.");
-				if (lustDelta > 0 && lustDelta < 4) outputText("\n[Themonster] look intrigued by what " + pronoun1 + " see.");
-				if (lustDelta >= 4 && lustDelta < 10) outputText("\n[Themonster] definitely seem to be enjoying the show.");
-				if (lustDelta >= 10 && lustDelta < 15) outputText("\n[Themonster] openly stroke " + pronoun2 + "selves as " + pronoun1 + " watch you.");
-				if (lustDelta >= 15 && lustDelta < 20) outputText("\n[Themonster] flush hotly with desire, " + pronoun3 + " eyes filled with longing.");
-				if (lustDelta >= 20) outputText("\n[Themonster] lick " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " bodies.");
+			if (hasPerk(PerkLib.EnemyConstructType) && !hasPerk(PerkLib.Sentience)) {
+				if (lustDelta == 0) outputText("\n\nYour actions do not seem to leave any visible change on [themonster].");
+				if (lustDelta >= 0 && lustDelta < 10) outputText("\n\nYour actions causes visible cracks over [themonster] rigid body. It would seem lust is a form of energy highly incompatible with this magical construct"+(plural ? "s" : "")+" constitution.");
+				if (lustDelta >= 10 && lustDelta < 20) outputText("\n\nYour action causes the already visible crack in [themonster] structure to expend as lust clash with whatever magic is making the golem"+(plural ? "s" : "")+" function ravaging "+(plural ? "their" : "its")+" body from the inside.");
+				if (lustDelta >= 20) {
+					outputText("\n\nYour action causes visible chunks of [themonster] to fall apart as lust ravage its magical structure just a little more and the construct" + (plural ? "s" : "") + " will break down into rubbles! ");
+					outputText("At time the construct" + (plural ? "s" : "") + " movement seems to stop or freeze causing it to eraticaly halt and resume " + (plural ? "their" : "its") + " action at random.  ");
+				}
 			}
 			else {
-				if (lustDelta == 0) outputText("\n[Themonster] seems unimpressed.");
-				if (lustDelta > 0 && lustDelta < 4) {
-					if (plural) outputText("\n[Themonster] looks intrigued by what " + pronoun1 + " see.");
-					else outputText("\n[Themonster] looks intrigued by what " + pronoun1 + " sees.");
+				if (plural) {
+					if (lustDelta == 0) outputText("\n\n[Themonster] seem unimpressed.");
+					if (lustDelta > 0 && lustDelta < 4) outputText("\n[Themonster] look intrigued by what " + pronoun1 + " see.");
+					if (lustDelta >= 4 && lustDelta < 10) outputText("\n[Themonster] definitely seem to be enjoying the show.");
+					if (lustDelta >= 10 && lustDelta < 15) outputText("\n[Themonster] openly stroke " + pronoun2 + "selves as " + pronoun1 + " watch you.");
+					if (lustDelta >= 15 && lustDelta < 20) outputText("\n[Themonster] flush hotly with desire, " + pronoun3 + " eyes filled with longing.");
+					if (lustDelta >= 20) outputText("\n[Themonster] lick " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " bodies.");
 				}
-				if (lustDelta >= 4 && lustDelta < 10) outputText("\n[Themonster] definitely seems to be enjoying the show.");
-				if (lustDelta >= 10 && lustDelta < 15) {
-					if (plural) outputText("\n[Themonster] openly strokes " + pronoun2 + "selves as " + pronoun1 + " watch you.");
-					else outputText("\n[Themonster] openly strokes " + pronoun2 + "self as " + pronoun1 + " watches you.");
-				}
-				if (lustDelta >= 15 && lustDelta < 20) {
-					if (plural) outputText("\n[Themonster] flush hotly with desire, " + pronoun3 + " eyes filling with longing.");
-					else outputText("\n[Themonster] flushes hotly with desire, " + pronoun3 + " eyes filled with longing.");
-				}
-				if (lustDelta >= 20) {
-					if (plural) outputText("\n[Themonster] licks " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " own bodies.");
-					else outputText("\n[Themonster] licks " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " own body.");
+				else {
+					if (lustDelta == 0) outputText("\n[Themonster] seems unimpressed.");
+					if (lustDelta > 0 && lustDelta < 4) {
+						if (plural) outputText("\n[Themonster] looks intrigued by what " + pronoun1 + " see.");
+						else outputText("\n[Themonster] looks intrigued by what " + pronoun1 + " sees.");
+					}
+					if (lustDelta >= 4 && lustDelta < 10) outputText("\n[Themonster] definitely seems to be enjoying the show.");
+					if (lustDelta >= 10 && lustDelta < 15) {
+						if (plural) outputText("\n[Themonster] openly strokes " + pronoun2 + "selves as " + pronoun1 + " watch you.");
+						else outputText("\n[Themonster] openly strokes " + pronoun2 + "self as " + pronoun1 + " watches you.");
+					}
+					if (lustDelta >= 15 && lustDelta < 20) {
+						if (plural) outputText("\n[Themonster] flush hotly with desire, " + pronoun3 + " eyes filling with longing.");
+						else outputText("\n[Themonster] flushes hotly with desire, " + pronoun3 + " eyes filled with longing.");
+					}
+					if (lustDelta >= 20) {
+						if (plural) outputText("\n[Themonster] licks " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " own bodies.");
+						else outputText("\n[Themonster] licks " + pronoun3 + " lips in anticipation, " + pronoun3 + " hands idly stroking " + pronoun3 + " own body.");
+					}
 				}
 			}
 		}
@@ -3491,10 +3526,10 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (this.soulforce > maxOverSoulforce()) this.soulforce = maxOverSoulforce();
 			if (this.mana > maxOverMana()) this.mana = maxMana();
 			//health, soulforce and mana regeneration for monsters
-			if (((hasPerk(PerkLib.Regeneration) || hasPerk(PerkLib.LizanRegeneration) || perkv1(IMutationsLib.LizanMarrowIM) >= 1 || perkv1(IMutationsLib.DrakeHeartIM) >= 3 || perkv1(IMutationsLib.DrakeBloodIM) >= 1 || perkv1(IMutationsLib.FerasBirthrightIM) >= 1 || perkv1(IMutationsLib.HydraBloodIM) >= 1 || hasPerk(PerkLib.EnemyPlantType)
-			|| hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration) || hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline) || hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh)
-			|| hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor) || hasStatusEffect(StatusEffects.MonsterRegen)
-			|| hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP()) || (hasStatusEffect(StatusEffects.MonsterVPT) && (this.HP < maxOverHP()) && (this.HP > minHP()))) {
+			if (((hasPerk(PerkLib.Regeneration) || hasPerk(PerkLib.LizanRegeneration) || hasPerk(PerkLib.LustyRegeneration) || perkv1(IMutationsLib.LizanMarrowIM) >= 1 || perkv1(IMutationsLib.DrakeHeartIM) >= 3 || perkv1(IMutationsLib.DrakeBloodIM) >= 1 || perkv1(IMutationsLib.FerasBirthrightIM) >= 1 || perkv1(IMutationsLib.HydraBloodIM) >= 1
+			|| perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 || hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration) || hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline)
+			|| hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor)
+			|| hasStatusEffect(StatusEffects.PostfluidIntakeRegen) || hasStatusEffect(StatusEffects.MonsterRegen) || hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP()) || (hasStatusEffect(StatusEffects.MonsterVPT) && (this.HP < maxOverHP()) && (this.HP > minHP()))) {
 				var healingPercent:Number = 0;
 				var temp2:Number = 0;
 				var temp3:Number = 0;
@@ -3502,6 +3537,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasPerk(PerkLib.IceQueenGown) && player.isRace(Races.YUKIONNA)) healingPercent += 5;
 				if (hasPerk(PerkLib.VladimirRegalia) && !isNightTime()) healingPercent -= 5;
 				if (hasPerk(PerkLib.VladimirRegalia) && isNightTime()) healingPercent += 5;
+				if (hasPerk(PerkLib.LustyRegeneration)) healingPercent += 0.5;
 				if (hasPerk(PerkLib.LizanRegeneration) && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 1.5;
 				if (perkv1(IMutationsLib.LizanMarrowIM) >= 1 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 0.5 * perkv1(IMutationsLib.LizanMarrowIM);
 				if (perkv1(IMutationsLib.LizanMarrowIM) == 3 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify) && this.HP < (this.maxHP() * 0.25)) healingPercent += 1.5;
@@ -3524,6 +3560,8 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (perkv1(IMutationsLib.FerasBirthrightIM) >= 3) healingPercent += 2;
 					healingPercent += 2;
 				}
+				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1) healingPercent += perkv1(IMutationsLib.HumanThyroidGlandIM);
+				if (hasStatusEffect(StatusEffects.PostfluidIntakeRegen)) healingPercent += 1 * (perkv1(IMutationsLib.SlimeMetabolismIM)-2);
 				if ((hasPerk(PerkLib.HydraRegeneration) || perkv1(IMutationsLib.HydraBloodIM) >= 1) && !hasStatusEffect(StatusEffects.HydraRegenerationDisabled) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) {
 					if (hasPerk(PerkLib.HydraRegeneration)) healingPercent += 1 * perkv1(PerkLib.HydraRegeneration);
 					if (perkv1(IMutationsLib.HydraBloodIM) >= 1) healingPercent += 1 * perkv1(IMutationsLib.HydraBloodIM);
@@ -3632,6 +3670,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 2) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 3) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 4) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
+				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3) soulforceRecovery += Math.round(maxSoulforce() * 0.01 * (perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
 				soulforceRecovery *= soulforceRecoveryMulti;
 				if (hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) soulforceRecovery = 0;
 				addSoulforce(soulforceRecovery);
@@ -3649,6 +3688,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 2) manaRecovery += 5;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) manaRecovery += 5;
 				if (perkv1(IMutationsLib.DrakeBloodIM) >= 1) manaRecovery += Math.round(maxMana() * 0.01 * perkv1(IMutationsLib.DrakeBloodIM));
+				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3) manaRecovery += Math.round(maxMana() * 0.005 * (perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
 				if (hasPerk(PerkLib.GreyMageApprentice)) manaRecoveryMulti += 0.25;
 				if (hasPerk(PerkLib.GreyMage)) manaRecoveryMulti += 0.5;
 				if (hasPerk(PerkLib.GreyArchmage)) manaRecoveryMulti += 0.75;
@@ -4177,7 +4217,40 @@ import classes.Scenes.Combat.CombatAbilities;
 					if(player.lust >= (player.maxLust() * 0.33) && player.lust < (player.maxLust() * 0.66)) outputText("The pollen in the air is getting to you. ");
 					if(player.lust >= (player.maxLust() * 0.66)) outputText("You flush bright red with desire as the lust in the air worms its way inside you. ");
 				}
-				player.takeLustDamage(((eBaseLibidoDamage() / 40) + int(player.lib/20 + player.cor/25)), true);
+				if (this is Matango) {
+					if (!player.isRaceCached(Races.ALRAUNE) && !player.isRaceCached(Races.GARGOYLE)/* || !player.isRaceCached(Races.automaton)*/) {
+						if (statusEffectv1(StatusEffects.ImmolationDoT) < 4) outputText("The spores in the air gradually increase your arousal. ");
+						if (statusEffectv1(StatusEffects.ImmolationDoT) == 4) outputText("The spores in the air are getting to you. ");
+						if (statusEffectv1(StatusEffects.ImmolationDoT) == 5) outputText("The spores in the air are driving you mad with desire, you barely can hold yourself back anymore from jumping into the mushroom girl’s lap. ");
+						if (statusEffectv1(StatusEffects.ImmolationDoT) == 6) outputText("Unable to fully control yourself anymore, you begin walking toward the mushroom girl of your own volition! If this continues, you will give in fully! ");
+						if (statusEffectv1(StatusEffects.ImmolationDoT) == 7) {
+							if (player.isRace(Races.RAIJU, 2) || player.isRace(Races.THUNDERBIRD) || player.isRace(Races.KIRIN)) {
+								outputText("You would lose all semblance of control to leap into the mushroom girl open embrace, but this state of mind is nothing new to you. You entered this battle determined to rape your opponent by any means necessary in order to deliver your electric payload. ");
+								outputText("A lewd, sinister smile breaks on your face as you become more feral and crazier by the second. Realizing this, the mushroom girl backs away in fear. ");
+								if (silly()) outputText("It was at this moment that the mushroom girl realized… she fucked up. ");
+								player.lust = Math.round(player.maxLust()*0.81);
+								var buff:Number = 1;
+								if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2
+								player.statStore.replaceBuffObject({'spe.mult':Math.round(speStat.mult.value)*buff}, 'Supercharged', { text: 'Supercharged!' });
+								CoC.instance.mainView.statsView.refreshStats(CoC.instance);
+								CoC.instance.mainView.statsView.showStatUp('spe');
+								outputText("\n\nYour body suddenly begins to generate a massive amount of electricity and the barely contained lightning uncontrollably starts surging left and right around you in short bursts as what's left of your sanity completely gets washed away by the supercharged state. ");
+							}
+							else {
+								outputText("You lose all semblance of control and leap into the mushroom girl’s open embrace. All you can think of with your desire-overloaded brain is sex! ");
+								player.lust = player.maxOverLust();
+								EngineCore.doNext(SceneLib.combat.endLustLoss);
+								return;
+							}
+						}
+						if (statusEffectv1(StatusEffects.ImmolationDoT) > 7 && player.statStore.hasBuff('Supercharged')) outputText("Well you would normally become crazier right now except you are already in the supercharged state. There's no way you can become more lustcrazed than you already are. ");
+						addStatusValue(StatusEffects.LustAura,1,1);
+					}
+				}
+				if (statusEffectv1(StatusEffects.ImmolationDoT) < 8) {
+					if (this is Matango) player.takeLustDamage(((eBaseLibidoDamage() / 10) + int(player.lib/10 + player.cor/10)), true);
+					else player.takeLustDamage(((eBaseLibidoDamage() / 40) + int(player.lib/20 + player.cor/25)), true);
+				}
 				outputText("\n\n");
 			}
 			//immolation DoT
@@ -4349,6 +4422,56 @@ import classes.Scenes.Combat.CombatAbilities;
 					}
 				}
 			}
+			//Lightning DoT
+			if (hasStatusEffect(StatusEffects.ElectrocutionDoT)) {
+				//Countdown to heal
+				addStatusValue(StatusEffects.ElectrocutionDoT,1,-1);
+				if (statusEffectv4(StatusEffects.ElectrocutionDoT) == 0) {
+					if (statusEffectv1(StatusEffects.ElectrocutionDoT) > 1) addStatusValue(StatusEffects.ElectrocutionDoT, 1, -1);
+					//Heal wounds
+					if (statusEffectv1(StatusEffects.ElectrocutionDoT) <= 0) {
+						outputText("The lingering electrocution on [themonster] finally fades away.\n\n");
+						removeStatusEffect(StatusEffects.ElectrocutionDoT);
+					}
+					//Deal damage if still wounded.
+					else {
+						var store19:Number = (player.str + player.spe + player.tou) * 2.5;
+						if (game.player.hasPerk(PerkLib.KingOfTheJungle)) store19 *= 1.2;
+						store19 = Math.round(store19 * SceneLib.combat.lightningDamageBoostedByDao());
+						store19 += maxHP() * statusEffectv2(StatusEffects.ElectrocutionDoT);
+						store19 = SceneLib.combat.fixPercentDamage(store19);
+						if(plural) outputText("[Themonster] are hurt by the lingering electrocution. ");
+						else outputText("[Themonster] is hurt by the lingering electrocution. ");
+						store19 = SceneLib.combat.doLightningDamage(store19, true, true);
+						outputText("\n\n");
+					}
+				}
+			}
+			//Darkness DoT
+			if (hasStatusEffect(StatusEffects.NecrosisDoT)) {
+				//Countdown to heal
+				addStatusValue(StatusEffects.NecrosisDoT,1,-1);
+				if (statusEffectv4(StatusEffects.NecrosisDoT) == 0) {
+					if (statusEffectv1(StatusEffects.NecrosisDoT) > 1) addStatusValue(StatusEffects.NecrosisDoT, 1, -1);
+					//Heal wounds
+					if (statusEffectv1(StatusEffects.NecrosisDoT) <= 0) {
+						outputText("The lingering necrosis on [themonster] finally fades away.\n\n");
+						removeStatusEffect(StatusEffects.NecrosisDoT);
+					}
+					//Deal damage if still wounded.
+					else {
+						var store20:Number = (player.str + player.spe + player.tou) * 2.5;
+						if (game.player.hasPerk(PerkLib.KingOfTheJungle)) store20 *= 1.2;
+						store20 = Math.round(store20 * SceneLib.combat.darknessDamageBoostedByDao());
+						store20 += maxHP() * statusEffectv2(StatusEffects.NecrosisDoT);
+						store20 = SceneLib.combat.fixPercentDamage(store20);
+						if(plural) outputText("[Themonster] are hurt by the lingering necrosis. ");
+						else outputText("[Themonster] is hurt by the lingering necrosis. ");
+						store20 = SceneLib.combat.doDarknessDamage(store20, true, true);
+						outputText("\n\n");
+					}
+				}
+			}
 			//Acid DoT
 			if (hasStatusEffect(StatusEffects.AcidDoT)) {
 				//Countdown to heal
@@ -4446,7 +4569,7 @@ import classes.Scenes.Combat.CombatAbilities;
 						outputText("\n\n");
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg = (tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 						statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
-						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 					}
 				}
 			}
@@ -4495,6 +4618,19 @@ import classes.Scenes.Combat.CombatAbilities;
 					}
 				}
 			}
+			//Flasherbang
+			if (hasStatusEffect(StatusEffects.Flasherbang)) {
+				var lustDmg4:Number = SceneLib.combat.teases.teaseBaseLustDamage();
+				if (game.player.hasPerk(PerkLib.KingOfTheJungle)) lustDmg4 *= 1.2;
+				lustDmg4 = Math.round(lustDmg4);
+				outputText("The lingering image of the arousing grenade further arouses [themonster]. ");
+				teased(lustDmg4, false);
+				outputText("\n\n");
+				addStatusValue(StatusEffects.Flasherbang, 1, -1);
+				if (lustVuln != 0 && !player.enemiesImmuneToLustResistanceDebuff()) lustVuln += 0.01;
+				if (lustVuln > lustVulnCap()) lustVuln = lustVulnCap();
+				if (statusEffectv1(StatusEffects.Flasherbang) <= 0) removeStatusEffect(StatusEffects.Flasherbang);
+			}
 			//Venom damage calculation
 			var venomLustDmg:Number = 0;
 			var damage1B:Number = 0;
@@ -4503,7 +4639,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 2) touDmg += (tou * 0.01 * (player.perkv1(IMutationsLib.PoisonGlandIM) - 1));
 				statStore.addBuffObject({str:-statusEffectv1(StatusEffects.NagaVenom), spe:-statusEffectv1(StatusEffects.NagaVenom), tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.NagaVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.NagaVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			//Apophis Venom
         	if (hasStatusEffect(StatusEffects.ApophisVenom)) {
@@ -4517,7 +4653,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				SceneLib.combat.teaseXP(1 + SceneLib.combat.bonusExpAfterSuccesfullTease());
 				statStore.addBuffObject({str:-statusEffectv1(StatusEffects.ApophisVenom)*2, spe:-statusEffectv1(StatusEffects.ApophisVenom)*2, tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.ApophisVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.ApophisVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			//Bee Venom
         	if (hasStatusEffect(StatusEffects.BeeVenom)) {
@@ -4532,7 +4668,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (lustVuln != 0) lustVuln += 0.05;
 				statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.BeeVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.BeeVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			//Jabberwocky Poison Breath
         	if (hasStatusEffect(StatusEffects.JabberwockyVenom)) {
@@ -4547,7 +4683,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (lustVuln != 0) lustVuln += 0.05;
 				statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.JabberwockyVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.JabberwockyVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			//Manticore Venom
        		if (hasStatusEffect(StatusEffects.ManticoreVenom)) {
@@ -4561,7 +4697,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				SceneLib.combat.teaseXP(1 + SceneLib.combat.bonusExpAfterSuccesfullTease());
 				statStore.addBuffObject({tou:-touDmg}, "Poison",{text:"Poison"});
 				if (statusEffectv3(StatusEffects.ManticoreVenom) >= 1) venomLustDmg += statusEffectv3(StatusEffects.ManticoreVenom);
-				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) teased(SceneLib.combat.teases.teaseBaseLustDamage() * lustVuln, false);
+				if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) SceneLib.combat.aPoisonGlandsMyconidSpores();
 			}
 			if (venomLustDmg > 0 && lustVuln != 0) {
 				outputText("[Themonster] is aroused from the poison coursing through them ");
@@ -4649,6 +4785,118 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (perkv1(IMutationsLib.MantislikeAgilityIM) >= 1) this.speStat.core.value += (10 * (1 + newGamePlusMod()));
 			if (perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) this.speStat.core.value += (20 * (1 + newGamePlusMod()));
 			if (level > 25) bonusStatsAmp += 0.3*((int)(level-1)/25);
+			if (hasPerk(PerkLib.LimitBreakerFlesh1stStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.1 * spe * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerFlesh2ndStage)) {
+				bonusAscStr += 0.2 * str * newGamePlusMod();
+				bonusAscTou += 0.2 * tou * newGamePlusMod();
+				bonusAscSpe += 0.2 * spe * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerFlesh3rdStage)) {
+				bonusAscStr += 0.3 * str * newGamePlusMod();
+				bonusAscTou += 0.3 * tou * newGamePlusMod();
+				bonusAscSpe += 0.3 * spe * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerPsyche1stStage)) {
+				bonusAscInt += 0.1 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscLib += 0.1 * lib * newGamePlusMod();
+				bonusAscSen += 10 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerPsyche2ndStage)) {
+				bonusAscInt += 0.2 * inte * newGamePlusMod();
+				bonusAscWis += 0.2 * wis * newGamePlusMod();
+				bonusAscLib += 0.2 * lib * newGamePlusMod();
+				bonusAscSen += 20 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.LimitBreakerPsyche3rdStage)) {
+				bonusAscInt += 0.3 * inte * newGamePlusMod();
+				bonusAscWis += 0.3 * wis * newGamePlusMod();
+				bonusAscLib += 0.3 * lib * newGamePlusMod();
+				bonusAscSen += 30 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyInitialStage)) {
+				bonusAscTou += 0.05 * tou * newGamePlusMod();
+				bonusAscLib += 0.05 * lib * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodySemiBasicStage)) {
+				bonusAscStr += 0.05 * str * newGamePlusMod();
+				bonusAscSpe += 0.05 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyBasicStage)) {
+				bonusAscStr += 0.05 * str * newGamePlusMod();
+				bonusAscTou += 0.05 * tou * newGamePlusMod();
+				bonusAscSpe += 0.05 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyImprovedStage)) {
+				bonusAscStr += 0.05 * str * newGamePlusMod();
+				bonusAscTou += 0.05 * tou * newGamePlusMod();
+				bonusAscSpe += 0.05 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.05 * wis * newGamePlusMod();
+				bonusAscLib += 0.1 * lib * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodySemiAdvancedStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.05 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.05 * wis * newGamePlusMod();
+				bonusAscLib += 0.05 * lib * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyAdvancedStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.15 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodySuperiorStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.1 * spe * newGamePlusMod();
+				bonusAscInt += 0.1 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscLib += 0.05 * lib * newGamePlusMod();
+				bonusAscSen += 5 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodySemiPeerlessStage)) {
+				bonusAscStr += 0.15 * str * newGamePlusMod();
+				bonusAscTou += 0.15 * tou * newGamePlusMod();
+				bonusAscSpe += 0.15 * spe * newGamePlusMod();
+				bonusAscInt += 0.05 * inte * newGamePlusMod();
+				bonusAscWis += 0.05 * wis * newGamePlusMod();
+				bonusAscLib += 0.1 * lib * newGamePlusMod();
+				bonusAscSen += 10 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyPeerlessStage)) {
+				bonusAscStr += 0.15 * str * newGamePlusMod();
+				bonusAscTou += 0.15 * tou * newGamePlusMod();
+				bonusAscSpe += 0.15 * spe * newGamePlusMod();
+				bonusAscInt += 0.1 * inte * newGamePlusMod();
+				bonusAscWis += 0.1 * wis * newGamePlusMod();
+				bonusAscLib += 0.05 * lib * newGamePlusMod();
+				bonusAscSen += 10 * newGamePlusMod();
+			}
+			if (hasPerk(PerkLib.ChimericalBodyEpicStage)) {
+				bonusAscStr += 0.1 * str * newGamePlusMod();
+				bonusAscTou += 0.1 * tou * newGamePlusMod();
+				bonusAscSpe += 0.1 * spe * newGamePlusMod();
+				bonusAscInt += 0.2 * inte * newGamePlusMod();
+				bonusAscWis += 0.2 * wis * newGamePlusMod();
+				bonusAscLib += 0.15 * lib * newGamePlusMod();
+				bonusAscSen += 15 * newGamePlusMod();
+			}
 			bonusAscStr += bonusStatsAmp * str * newGamePlusMod();
 			bonusAscTou += bonusStatsAmp * tou * newGamePlusMod();
 			bonusAscSpe += bonusStatsAmp * spe * newGamePlusMod();
@@ -4782,6 +5030,10 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.EpicLibido)) this.libStat.core.value += Math.round(this.libStat.core.value * 0.35);
 			if (hasPerk(PerkLib.LegendaryLibido)) this.libStat.core.value += Math.round(this.libStat.core.value * 0.5);
 			if (hasPerk(PerkLib.MythicalLibido)) this.libStat.core.value += Math.round(this.libStat.core.value * 0.65);
+			if (hasPerk(PerkLib.ArmorMaster)) {
+				armorDef += Math.round(this.speStat.core.value / 50);
+				armorMDef += Math.round(this.speStat.core.value / 50);
+			}
 			if (hasPerk(PerkLib.EnemyHugeType)) {
 				this.strStat.core.value += Math.round(this.strStat.core.value * 0.25);
 				this.touStat.core.value += Math.round(this.touStat.core.value * 0.3);
@@ -4816,4 +5068,4 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 		}
 	}
-}
+}

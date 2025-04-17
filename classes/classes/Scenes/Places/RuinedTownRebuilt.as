@@ -547,10 +547,9 @@ public function amilyBarTalk():void {
 				default:
 					outputText ("Shouldra's house has floating torches outside it, and she's clearly had some fun decorating the place, shadow-puppets and cheesy fake spiderwebs hanging from lines outside. You notice some of your children inside, sitting around a small firepit in the middle of the house. Shouldra, from within the flames, makes shapes, clearly telling some sort of story. ")
 			}
-
 		}
 		menu();
-		addButton (0, "Leave", camp.returnToCampUseOneHour);
+		addButton (0, "Leave", function():void {  MouseTownReturnToCamp(); });
 		addButton (1, "Visit", MouseTownVisit);
 
 		if (TrainingGroundsBuilt) {
@@ -591,8 +590,10 @@ addButton(14, "Suprise", MiceBuiltHouse4U);
 		outputText("NYI");
 		doNext(enterVillage);
 	}
-
-
+	public function MouseTownReturnToCamp():void {
+		Intown = false;
+		camp.returnToCampUseOneHour();
+		}
 	public function MouseWell():void {
 		clearOutput();
 		outputText("You throw the bucket back down into the well, and a few moments later, begin turning the wheel to bring it back up. Pure clean water is in the wooden bucket, and you drink a little, bottling most of it. The water here is pure, and drinking from the well clears your head a little.  \n\n");

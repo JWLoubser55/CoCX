@@ -25,17 +25,21 @@ use namespace CoC;
 		public var etnaScene:EtnaFollower = SceneLib.etnaScene;
 
 		public function moveClawCombo():void {
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 8) createStatusEffect(StatusEffects.Attacks, 4, 0, 0, 0);
-			else if (flags[kFLAGS.ETNA_LVL_UP] >= 4) createStatusEffect(StatusEffects.Attacks, 3, 0, 0, 0);
-			else createStatusEffect(StatusEffects.Attacks, 2, 0, 0, 0);
+			var countitgood:Number = 2;
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 5) countitgood += 2;
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 10) countitgood += 2;
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 15) countitgood += 2;
+			createStatusEffect(StatusEffects.Attacks, countitgood, 0, 0, 0);
 			eAttack();
 		}
 
 		public function moveTailSpike():void {
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 9) TailSpike();
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 6) TailSpike();
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 3) TailSpike();
 			TailSpike();
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 3) TailSpike();
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 6) TailSpike();
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 9) TailSpike();
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 12) TailSpike();
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 15) TailSpike();
 		}
 		public function TailSpike():void {
 			if (game.flags[kFLAGS.ETNA_TALKED_ABOUT_HER] >= 1) outputText("Etna");
@@ -47,9 +51,9 @@ use namespace CoC;
 					CombatAbilities.EAspectAir.advance(true);
 				}
 				else {
-					var tailspikedmg:Number = Math.round(this.str / 16);
-					var lustdmg:Number = Math.round(this.lib / 6);
-					player.addCombatBuff('spe',-2, "Manticore Venom", "ManticoreVenom");
+					var tailspikedmg:Number = Math.round(this.str / 10);
+					var lustdmg:Number = Math.round(this.lib / 4);
+					player.addCombatBuff('spe',-4, "Manticore Venom", "ManticoreVenom");
 					outputText("hits the mark dealing ");
 					player.takePhysDamage(tailspikedmg, true);
 					outputText(" damage and poisoning you. Your movements slow down and you feel extremely aroused. ");
@@ -73,8 +77,8 @@ use namespace CoC;
 			if (game.flags[kFLAGS.ETNA_TALKED_ABOUT_HER] >= 1) outputText("Etna flies down");
 			else outputText("The flying manticore dives");
 			outputText(" in your direction crashing into you breasts first! For a few seconds you go red in confusion and arousal as your face is lost in her cleavage then she pulls off leaving you dazed and aroused as she readies her next attack!");
-			var boobcrashdmg:Number = Math.round(this.str / 8);
-			var lustdmg:Number = Math.round(this.lib / 3);
+			var boobcrashdmg:Number = Math.round(this.str / 6);
+			var lustdmg:Number = Math.round(this.lib / 2);
 			player.takeLustDamage(lustdmg, true);
 			player.takePhysDamage(boobcrashdmg, true);
 			if (!player.hasPerk(PerkLib.Resolute)) player.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
@@ -82,7 +86,7 @@ use namespace CoC;
 		}
 
 		public function moveBite():void {
-			var bitedmg:Number = Math.round(this.str / 25);
+			var bitedmg:Number = Math.round(this.str / 20);
 			if (game.flags[kFLAGS.ETNA_TALKED_ABOUT_HER] >= 1) outputText("Etna");
 			else outputText("The manticore");
 			outputText(" bites into your ");
@@ -156,125 +160,36 @@ use namespace CoC;
 				this.long = "";
 			}
 			if (flags[kFLAGS.ETNA_LVL_UP] < 1) {
-				initStrTouSpeInte(100, 150, 240, 170);
-				initWisLibSensCor(170, 170, 80, 60);
-				this.weaponAttack = 36;
-				this.armorDef = 10;
-				this.armorMDef = 2;
-				this.bonusHP = 100;
-				this.bonusLust = 280;
-				this.level = 30;
-			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 1) {
-				initStrTouSpeInte(110, 165, 270, 180);
-				initWisLibSensCor(180, 190, 90, 60);
-				this.weaponAttack = 42;
-				this.armorDef = 12;
-				this.armorMDef = 3;
-				this.bonusHP = 150;
-				this.bonusLust = 316;
+				initStrTouSpeInte(210, 265, 370, 190);
+				initWisLibSensCor(190, 380, 180, 60);
+				this.weaponAttack = 44;
+				this.armorDef = 24;
+				this.armorMDef = 6;
+				this.bonusHP = 140;
+				this.bonusLust = 596;
 				this.level = 36;
 			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 2) {
-				initStrTouSpeInte(120, 180, 300, 190);
-				initWisLibSensCor(190, 210, 100, 60);
-				this.weaponAttack = 48;
-				this.armorDef = 14;
-				this.armorMDef = 4;
-				this.bonusHP = 150;
-				this.bonusLust = 352;
-				this.level = 42;
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 1 && flags[kFLAGS.ETNA_LVL_UP] < 10) {
+				var etnaLvl:Number = flags[kFLAGS.ETNA_LVL_UP];
+				initStrTouSpeInte(210 + 20*etnaLvl, 265 + 30*etnaLvl, 370 + 60*etnaLvl, 190 + 30*etnaLvl);
+				initWisLibSensCor(180 + 30*etnaLvl, 380 + 50*etnaLvl, 180 + 30*etnaLvl, 60);
+				this.weaponAttack = 44 + 8*etnaLvl;
+				this.armorDef = 24 + 8*etnaLvl;
+				this.armorMDef = 6 + 2*etnaLvl;
+				this.bonusHP = 140 + 60*etnaLvl;
+				this.bonusLust = 596 + 86*etnaLvl;
+				this.level = 36 + 6*etnaLvl;
 			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 3) {
-				initStrTouSpeInte(130, 195, 330, 200);
-				initWisLibSensCor(200, 230, 110, 60);
-				this.weaponAttack = 54;
-				this.armorDef = 16;
-				this.armorMDef = 5;
-				this.bonusHP = 200;
-				this.bonusLust = 388;
-				this.level = 48;
+			if (flags[kFLAGS.ETNA_LVL_UP] == 17) {
+				initStrTouSpeInte(550, 775, 1390, 700);
+				initWisLibSensCor(700, 1230, 690, 60);
+				this.weaponAttack = 180;
+				this.armorDef = 160;
+				this.armorMDef = 40;
+				this.bonusHP = 1160;
+				this.bonusLust = 2058;
+				this.level = 138;
 			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 4) {
-				initStrTouSpeInte(140, 210, 360, 210);
-				initWisLibSensCor(210, 250, 120, 60);
-				this.weaponAttack = 60;
-				this.armorDef = 18;
-				this.armorMDef = 6;
-				this.bonusHP = 200;
-				this.bonusLust = 424;
-				this.level = 54;
-			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 5) {
-				initStrTouSpeInte(150, 225, 390, 220);
-				initWisLibSensCor(220, 270, 130, 60);
-				this.weaponAttack = 66;
-				this.armorDef = 20;
-				this.armorMDef = 7;
-				this.bonusHP = 250;
-				this.bonusLust = 460;
-				this.level = 60;
-			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 6) {
-				initStrTouSpeInte(160, 240, 420, 230);
-				initWisLibSensCor(230, 290, 140, 60);
-				this.weaponAttack = 72;
-				this.armorDef = 22;
-				this.armorMDef = 8;
-				this.bonusHP = 250;
-				this.bonusLust = 496;
-				this.level = 66;
-			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 7) {
-				initStrTouSpeInte(170, 255, 450, 240);
-				initWisLibSensCor(240, 310, 150, 60);
-				this.weaponAttack = 78;
-				this.armorDef = 24;
-				this.armorMDef = 9;
-				this.bonusHP = 300;
-				this.bonusLust = 532;
-				this.level = 72;
-			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 8) {
-				initStrTouSpeInte(180, 270, 480, 250);
-				initWisLibSensCor(250, 330, 160, 60);
-				this.weaponAttack = 84;
-				this.armorDef = 26;
-				this.armorMDef = 10;
-				this.bonusHP = 300;
-				this.bonusLust = 568;
-				this.level = 78;
-			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 9) {
-				initStrTouSpeInte(190, 285, 510, 260);
-				initWisLibSensCor(260, 350, 170, 60);
-				this.weaponAttack = 90;
-				this.armorDef = 28;
-				this.armorMDef = 11;
-				this.bonusHP = 400;
-				this.bonusLust = 604;
-				this.level = 84;
-			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 10) {
-				initStrTouSpeInte(200, 300, 540, 270);
-				initWisLibSensCor(270, 370, 180, 60);
-				this.weaponAttack = 96;
-				this.armorDef = 30;
-				this.armorMDef = 12;
-				this.bonusHP = 400;
-				this.bonusLust = 640;
-				this.level = 90;
-			}
-			if (flags[kFLAGS.ETNA_LVL_UP] == 11) {
-				initStrTouSpeInte(210, 315, 570, 280);
-				initWisLibSensCor(280, 390, 190, 60);
-				this.weaponAttack = 102;
-				this.armorDef = 32;
-				this.armorMDef = 13;
-				this.bonusHP = 500;
-				this.bonusLust = 676;
-				this.level = 96;
-			}//level up giving 2x all growns and so follow next level ups's as long each npc break lvl 100 (also makes npc use new better gear)
 			createVagina(true,VaginaClass.WETNESS_NORMAL,VaginaClass.LOOSENESS_TIGHT);
 			this.createStatusEffect(StatusEffects.BonusVCapacity,60,0,0,0);
 			createBreastRow(Appearance.breastCupInverse("E"));
@@ -303,30 +218,61 @@ use namespace CoC;
 			this.lowerBody = LowerBody.LION;
 			this.tailType = Tail.MANTICORE_PUSSYTAIL;
 			this.tailRecharge = 0;
-			if (flags[kFLAGS.ETNA_FOLLOWER] > 1 || flags[kFLAGS.ETNA_TALKED_ABOUT_HER] > 1) this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyBeastOrAnimalMorphType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.UniqueNPC, 0, 0, 0, 0);
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 11 && flags[kFLAGS.ETNA_LVL_UP] < 18) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.ETNA_LVL_UP] >= 1) this.createPerk(PerkLib.BasicSelfControl, 0, 0, 0, 0);
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 2) this.createPerk(PerkLib.HalfStepToImprovedSelfControl, 0, 0, 0, 0);
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 3) this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 2) {
+				this.createPerk(PerkLib.HalfStepToImprovedSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 3) {
+				this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Diehard, 0, 0, 0, 0);
+			}
 			if (flags[kFLAGS.ETNA_LVL_UP] >= 4) this.createPerk(PerkLib.HalfStepToAdvancedSelfControl, 0, 0, 0, 0);
 			if (flags[kFLAGS.ETNA_LVL_UP] >= 5) {
 				this.createPerk(PerkLib.AdvancedSelfControl, 0, 0, 0, 0);
 				this.createPerk(PerkLib.EpicLibido, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 6) this.createPerk(PerkLib.HalfStepToSuperiorSelfControl, 0, 0, 0, 0);
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 6) {
+				this.createPerk(PerkLib.HalfStepToSuperiorSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ImprovedDiehard, 0, 0, 0, 0);
+			}
 			if (flags[kFLAGS.ETNA_LVL_UP] >= 7) this.createPerk(PerkLib.SuperiorSelfControl, 0, 0, 0, 0);
 			if (flags[kFLAGS.ETNA_LVL_UP] >= 8) {
 				this.createPerk(PerkLib.HalfStepToPeerlessSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.LegendaryLibido, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 9) this.createPerk(PerkLib.PeerlessSelfControl, 0, 0, 0, 0);
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 10) this.createPerk(PerkLib.HalfStepToInhumanSelfControl, 0, 0, 0, 0);
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 9) {
+				this.createPerk(PerkLib.PeerlessSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.GreaterDiehard, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 10) this.createPerk(PerkLib.LimitBreakerHeart1stStage, 0, 0, 0, 0);
 			if (flags[kFLAGS.ETNA_LVL_UP] >= 11) {
-				this.createPerk(PerkLib.InhumanSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.MythicalLibido, 0, 0, 0, 0);
+				this.createPerk(PerkLib.HalfStepToInhumanSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LimitBreakerPsyche1stStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 12) {
+				this.createPerk(PerkLib.LegendaryLibido, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicDiehard, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 13) this.createPerk(PerkLib.InhumanSelfControl, 0, 0, 0, 0);
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 14) {
+				this.createPerk(PerkLib.NakedTruth, 0, 0, 0, 0);
+				this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 15) {
+				this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 16) this.createPerk(PerkLib.LimitBreakerHeart2ndStage, 0, 0, 0, 0);
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 17) {
+				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LimitBreakerPsyche2ndStage, 0, 0, 0, 0);
 			}
 			checkMonster();
 		}

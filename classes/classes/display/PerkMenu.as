@@ -157,6 +157,7 @@ public class PerkMenu extends BaseContent {
 		var toggleFlagMisc:Function = curry(toggleFlag,MiscOption);
 		var autoFlyingType:Function = curry(setflag,kFLAGS.AUTO_FLIGHT);
 		var toggleGallopingType:Function = curry(setflag,kFLAGS.AUTO_GALLOP);
+		var autoSporeCloud:Function = curry(setflag,kFLAGS.AUTO_SPORE_CLOUD);
         if (player.hasPerk(PerkLib.LiftOff)) {
 			outputText("You can choose to start flying or not at the start of each combat.\n");
 			outputText("Start: <b>");
@@ -192,8 +193,13 @@ public class PerkMenu extends BaseContent {
 					flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] == 1 ? "Disabled (0)" : "CHEAT (100)") + "</b>");
 			addButton(7, "CorTolerance", toggleCorruptionTolerance);
 		}
-		if (player.hasPerk(PerkLib.SuddenRun) && player.lowerBody == LowerBody.HOOFED) {
-			outputText("You can choose to start galloping or not at the start of each combat.\n");
+		if (player.perkv1(IMutationsLib.FungusTramaIM) >= 4) {
+			outputText("You can choose to auto use spore could or not at the start of each combat.\n");
+			outputText("\nAuto use: <b>" + (flags[kFLAGS.AUTO_SPORE_CLOUD] == 0 ? "No" : "Yes") + "</b>");
+			addButton(8, "SporeCloud", curry(toggleFlagMisc, kFLAGS.AUTO_SPORE_CLOUD));
+		}
+		if (player.hasPerk(PerkLib.SuddenRun) && (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN)) {
+			outputText("You can choose to start galloping or not at the begining of each combat.\n");
 			outputText("\nStart: <b>" + (flags[kFLAGS.AUTO_GALLOP] == 0 ? "Standing still" : "Galloping") + "</b>");
 			if (autoFlyingFlag == 0) addButton(9, "Gallop", curry(toggleFlagMisc, kFLAGS.AUTO_GALLOP));
 		}
@@ -225,7 +231,6 @@ public class PerkMenu extends BaseContent {
 		var bd:ButtonDataList = new ButtonDataList();
 		clearOutput();
 		outputText("You can choose how your pets and minions attack:");
-
 		menu();
 		if (player.statusEffectv1(StatusEffects.SummonedElementals) >= 1) {
 			outputText("\n<b>You can adjust your elemental summons behaviour during combat.</b>");
@@ -245,10 +250,12 @@ public class PerkMenu extends BaseContent {
 		}
 		if ((player.hasPerk(PerkLib.MummyLord) && player.perkv1(PerkLib.MummyLord) > 0) || (player.hasPerk(PerkLib.UndeadLord) && player.perkv1(PerkLib.UndeadLord) > 0)) {
 			outputText("\n<b>You can adjust the behaviour of your mummies/zombies during combat.</b>");
-			bd.add("Mummies/Zombies", mummyBehaviourOptions);
+			bd.add("Mummies/Zombies", mummyzombieBehaviourOptions);
 		}
-
-
+		if (player.hasPerk(PerkLib.FungalNobility)) {
+			outputText("\n<b>You can adjust the behaviour of your matango during combat.</b>");
+			bd.add("Matango", matangoBehaviourOptions);
+		}
 		submenu(bd, CoC.instance.inCombat ? curry(combat.combatMenu, false) : displayPerks, 0, false);
 	}
 
@@ -276,7 +283,8 @@ public class PerkMenu extends BaseContent {
 				NUMBER_WORDS_NORMAL[multiAttackStyleOff + 1] + " times"));
 		outputText(" in combat turn with your off hand weapon."
 			+ "\nYou can change it to a different amount of attacks.");
-		bd.add("MultiAtk", pickMultiattack).hint("Change your amount of attacks.");
+		bd.add("MultiAtk(M)", pickMultiattackMain).hint("Change your amount of main hand attacks.");
+		bd.add("MultiAtk(O)", pickMultiattackOff).hint("Change your amount of off hand attacks.");
 		if (player.hasPerk(PerkLib.SwiftCasting)) {
 			outputText("\n\nIf you know specific spells you can cast them after doing a melee attack. (Working only with one-handed weapons and no shield)");
 			outputText("\n\nSpell casted: <b>" + elementalArr[flags[kFLAGS.ELEMENTAL_MELEE]][1] + "</b>");
@@ -370,35 +378,49 @@ public class PerkMenu extends BaseContent {
 		addButton(14, "Back", back);
 	}
 
-	private function pickMultiattack():void {
+	private function pickMultiattackMain():void {
 		var multiAttackStyleMain:Function = curry(setFlag, meleeOptions, kFLAGS.MULTIATTACK_STYLE_MAIN);
-		var multiAttackStyleOff:Function = curry(setFlag, meleeOptions, kFLAGS.MULTIATTACK_STYLE_OFF);
 		var currentAttacksMain:int = flags[kFLAGS.MULTIATTACK_STYLE_MAIN];
-		var currentAttacksOff:int = flags[kFLAGS.MULTIATTACK_STYLE_OFF];
 		var maxAttacksMain:int = combat.maxCurrentAttacksMain();
-		var maxAttacksOff:int = combat.maxCurrentAttacksOff();
 		clearOutput();
-		if (player.weapon.isStaffType() || player.weaponOff.isStaffType() || player.weapon.isWandType() || player.weaponOff.isWandType()) {
+		if (player.weapon.isStaffType() || player.weapon.isWandType()) {
 			outputText("You can't multi-attack with wands or staves!\n\n");
 			doNext(meleeOptions);
 			return;
 		}
 		outputText("Current number of attacks (MH): " + (currentAttacksMain + 1) + "\n");
-		outputText("Current number of attacks (OH): " + (currentAttacksOff + 1) + "\n");
 		outputText("Maximum number of attacks with your current main hand weapon: " + maxAttacksMain + "\n");
-		outputText("Maximum number of attacks with your current off hand weapon: " + maxAttacksOff + "\n");
 		var nba:int = player.nextBonusAttack();
 		if (nba < 0) outputText("You've reached the maximum number of bonus attacks from mastery!");
 		else outputText("Next bonus attack at mastery level " + nba);
 		outputText("\n\nHow many attacks would you like to deal?");
 		menu();
 		var atkM:int = 0;
-		var atkO:int = 0;
 		while (atkM < maxAttacksMain) {
 			addButton(atkM, NUMBER_WORDS_CAPITAL[atkM + 1], multiAttackStyleMain, atkM)
 				.disableIf(currentAttacksMain == atkM, "Already selected");
 			atkM++;
 		}
+		addButton(14, "Back", meleeOptions);
+	}
+	private function pickMultiattackOff():void {
+		var multiAttackStyleOff:Function = curry(setFlag, meleeOptions, kFLAGS.MULTIATTACK_STYLE_OFF);
+		var currentAttacksOff:int = flags[kFLAGS.MULTIATTACK_STYLE_OFF];
+		var maxAttacksOff:int = combat.maxCurrentAttacksOff();
+		clearOutput();
+		if (player.weaponOff.isStaffType() || player.weaponOff.isWandType()) {
+			outputText("You can't multi-attack with wands or staves!\n\n");
+			doNext(meleeOptions);
+			return;
+		}
+		outputText("Current number of attacks (OH): " + (currentAttacksOff + 1) + "\n");
+		outputText("Maximum number of attacks with your current off hand weapon: " + maxAttacksOff + "\n");
+		var nba:int = player.nextBonusAttack(true, true);
+		if (nba < 0) outputText("You've reached the maximum number of bonus attacks from mastery!");
+		else outputText("Next bonus attack at mastery level " + nba);
+		outputText("\n\nHow many attacks would you like to deal?");
+		menu();
+		var atkO:int = 0;
 		while (atkO < maxAttacksOff) {
 			addButton(atkO, NUMBER_WORDS_CAPITAL[atkO + 1], multiAttackStyleOff, atkO)
 				.disableIf(currentAttacksOff == atkO, "Already selected");
@@ -885,7 +907,6 @@ public class PerkMenu extends BaseContent {
 		if (flags[kFLAGS.WILL_O_THE_WISP] != 0) addButton(10, "Attacking(A)", WOTWAttacking, 0).hint("Would attack without need to confirm attack order.");
 		if (flags[kFLAGS.WILL_O_THE_WISP] != 1) addButton(11, "Attacking(M)", WOTWAttacking, 1).hint("Would attack after confirming attack order.");
 		if (flags[kFLAGS.WILL_O_THE_WISP] != 2) addButton(12, "Commanding", WOTWAttacking, 2);
-
 		addButton(14, "Back", minionOptions);
         function WOTWAttacking(attacking:Number):void {
             flags[kFLAGS.WILL_O_THE_WISP] = attacking;
@@ -915,23 +936,35 @@ public class PerkMenu extends BaseContent {
 			.disableIf(flags[kFLAGS.FLYING_SWORD] == 0);
 		addButton(11, "Enable", toggleFlag, flyingSwordBehaviourOptions, kFLAGS.FLYING_SWORD)
 			.disableIf(flags[kFLAGS.FLYING_SWORD] == 1);
-
 		addButton(14, "Back", CoC.instance.inCombat ? curry(combat.combatMenu, false) : displayPerks);
 	}
 
-	public function mummyBehaviourOptions():void {
+	public function mummyzombieBehaviourOptions():void {
 		clearOutput();
 		menu();
 		outputText("You can choose how your mummies/zombies will behave during each fight.\n\n");
 		outputText("\n<b>Mummy/Zombie behaviour:</b>\n");
-		if (flags[kFLAGS.MUMMY_ATTACK] == 0) outputText("Your mummies/zombies will not attack.");
-		if (flags[kFLAGS.MUMMY_ATTACK] == 1) outputText("Your mummies/zombies will attack at the beginning of each turn.");
-		addButton(10, "Disable", toggleFlag, mummyBehaviourOptions, kFLAGS.MUMMY_ATTACK)
-			.disableIf(flags[kFLAGS.MUMMY_ATTACK] == 0);
-		addButton(11, "Enable", toggleFlag, mummyBehaviourOptions, kFLAGS.MUMMY_ATTACK)
-			.disableIf(flags[kFLAGS.MUMMY_ATTACK] == 1);
+		if (flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 0) outputText("Your mummies/zombies will not attack.");
+		if (flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1) outputText("Your mummies/zombies will attack at the beginning of each turn.");
+		addButton(10, "Disable", toggleFlag, mummyzombieBehaviourOptions, kFLAGS.MUMMY_ZOMBIE_ATTACK)
+			.disableIf(flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 0);
+		addButton(11, "Enable", toggleFlag, mummyzombieBehaviourOptions, kFLAGS.MUMMY_ZOMBIE_ATTACK)
+			.disableIf(flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1);
+		addButton(14, "Back", minionOptions);
+	}
 
-		addButton(14, "Back", minionOptions)
+	public function matangoBehaviourOptions():void {
+		clearOutput();
+		menu();
+		outputText("You can choose how your matango will behave during each fight.\n\n");
+		outputText("\n<b>Matango behaviour:</b>\n");
+		if (flags[kFLAGS.MATANGO_ATTACK] == 0) outputText("Your matango will not attack.");
+		if (flags[kFLAGS.MATANGO_ATTACK] == 1) outputText("Your matango will attack at the beginning of each turn.");
+		addButton(10, "Disable", toggleFlag, matangoBehaviourOptions, kFLAGS.MATANGO_ATTACK)
+			.disableIf(flags[kFLAGS.MATANGO_ATTACK] == 0);
+		addButton(11, "Enable", toggleFlag, matangoBehaviourOptions, kFLAGS.MATANGO_ATTACK)
+			.disableIf(flags[kFLAGS.MATANGO_ATTACK] == 1);
+		addButton(14, "Back", minionOptions);
 	}
 
 	//IMutationsDB!
@@ -1741,3 +1774,4 @@ public class PerkMenu extends BaseContent {
 	 */
 }
 }
+

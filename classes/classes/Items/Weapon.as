@@ -270,6 +270,26 @@ public class Weapon extends Equipable
 				if (doOutput) outputText(getItemText("dual_fail"));
 				return false;
 			}
+			else if (isSmall() && isDualSmall()) {
+				if (!game.player.hasPerk(PerkLib.QuadWield)) {
+					if (doOutput) outputText(getItemText("dual_4fail"));
+					return false;
+				}
+				else if (!game.player.hasFourArms()) {
+					if (doOutput) outputText(getItemText("dual_4afail"));
+					return false;
+				}
+			}
+			else if (isMedium() && isDualMedium()) {
+				if (!game.player.hasPerk(PerkLib.QuadWield)) {
+					if (doOutput) outputText(getItemText("dual_4fail"));
+					return false;
+				}
+				else if (!game.player.hasFourArms()) {
+					if (doOutput) outputText(getItemText("dual_4afail"));
+					return false;
+				}
+			}
 			else if (isLarge()) {
 				if (slot == SLOT_WEAPON_MELEE_OFF && !game.player.hasPerk(PerkLib.DualWield)) {
 					if (doOutput) outputText(getItemText("dual_fail"));
@@ -287,7 +307,7 @@ public class Weapon extends Equipable
 						} 
 					}
 				}
-				else if (!game.player.hasPerk(PerkLib.GigantGrip)) {
+				else if (!game.player.isAbleToOneHandWieldLargeWeapon()) {
 					if (slot == SLOT_WEAPON_MELEE_OFF) noMainHandAllowed = true;
 					else noShieldOffHandAllowed = true;
 					//if (doOutput) outputText(getItemText("dual_fail"));
@@ -303,7 +323,7 @@ public class Weapon extends Equipable
 					if (!game.player.hasPerk(PerkLib.TitanGrip)) {
 						if (!game.player.hasPerk(PerkLib.TitanGripSu)) {
 							if (!game.player.hasFourArms()) {
-								if (doOutput) outputText(getItemText("dualmasssive_4afail"));
+								if (doOutput) outputText(getItemText("dualmassive_4afail"));
 								return false;
 							}
 						}
@@ -316,7 +336,7 @@ public class Weapon extends Equipable
 				else if (!game.player.hasPerk(PerkLib.TitanGrip)) {
 					if (slot == SLOT_WEAPON_MELEE_OFF) noMainHandAllowed = true;
 					else noShieldOffHandAllowed = true;
-					if (!game.player.hasPerk(PerkLib.GigantGrip)) {
+					if (!game.player.isAbleToOneHandWieldLargeWeapon()) {
 						if (doOutput) outputText(getItemText("massive_fail"));
 						return false;
 					}
@@ -380,19 +400,19 @@ public class Weapon extends Equipable
 		
 		override public function beforeEquip(doOutput:Boolean, slot:int):Equipable {
 			if (!game.player.shield.isNothing) {
-				if (isLarge() && !game.player.hasPerk(PerkLib.GigantGrip)
+				if (isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
 					|| isMassive() && !game.player.hasPerk(PerkLib.TitanGrip)){
 					SceneLib.inventory.unequipShield();
 				}
 			}
 			if (!game.player.weaponOff.isNothing) {
-				if (game.player.weapon.isLarge() && !game.player.hasPerk(PerkLib.GigantGrip)
+				if (game.player.weapon.isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
 					|| game.player.weapon.isMassive() && !game.player.hasPerk(PerkLib.TitanGrip)){
 					SceneLib.inventory.unequipWeaponOff();
 				}
 			}
 			if (!game.player.weapon.isNothing) {
-				if (game.player.weaponOff.isLarge() && !game.player.hasPerk(PerkLib.GigantGrip)
+				if (game.player.weaponOff.isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
 					|| game.player.weaponOff.isMassive() && !game.player.hasPerk(PerkLib.TitanGrip)){
 					SceneLib.inventory.unequipWeapon();
 				}
@@ -404,9 +424,12 @@ public class Weapon extends Equipable
 		/**
 		 * Extra texts for weapons:
 		 * - "dual_fail": cannot equip main hand and off hand weapon at the same time, no perk
+		 * - "dual_4fail": cannot wield four weapons, no perk
 		 * - "dual_4afail": cannot wield four weapons, perk requires 4 arms
-		 * - "dualmasssive_4afail": cannot wield four massive weapons, perk requires 4 arms
-		 * - "dualmasssive_fail": cannot wield dual massive, no perk
+		 * - "duallarge_4afail": cannot wield four large weapons, perk requires 4 arms
+		 * - "duallarge_fail": cannot wield dual large, no perk
+		 * - "dualmassive_4afail": cannot wield four massive weapons, perk requires 4 arms
+		 * - "dualmassive_fail": cannot wield dual massive, no perk
 		 * - "massive_fail": cannot equip massive wepon, no perk
 		 * - "unshield_fail": req. 2 hands but cannot unequip shield
 		 * - "unoffhand_fail": req. 2 hands but cannot unequip off hand
@@ -425,12 +448,18 @@ public class Weapon extends Equipable
 					return "You try to equip the legendary " + weaponType.toLowerCase() + ", but to your disappointment the item simply refuses to stay in your hands. It seems you still lack the right to wear this item.";
 				case "dual_fail":
 					return "You aren't skilled enough to handle a pair of weapons!  ";
-				case "dualmasssive_4afail":
-					return "You lack a second pair of arms and aren't skilled enough to handle both pairs of weapons!  "
+				case "dualmassive_4afail":
+					return "You lack a second pair of arms and aren't skilled enough to handle both pairs of massive weapons!  "
+				case "duallarge_4afail":
+					return "You lack a second pair of arms and aren't skilled enough to handle both pairs of large weapons!  "
+				case "dual_4fail":
+					return "You aren't skilled enough to handle both pairs of small / normal sized weapons!  "
 				case "dual_4afail":
 					return "You lack a second pair of arms!  "
 				case "dualmassive_fail":
-					return "You aren't skilled enough to handle these weapons with only two hands!  Unless you want to hurt yourself instead of your enemies when trying to use them...  "
+					return "You aren't skilled enough to handle these massive weapons with only two hands!  Unless you want to hurt yourself instead of your enemies when trying to use them...  "
+				case "duallarge_fail":
+					return "You aren't skilled enough to handle these dual large weapons!  Unless you want to hurt yourself instead of your enemies when trying to use them...  "
 				case "massive_fail":
 					return "You aren't skilled enough in handling massive weapons, even when using both hands to wield this weapon.  "
 				case "unshield_fail":

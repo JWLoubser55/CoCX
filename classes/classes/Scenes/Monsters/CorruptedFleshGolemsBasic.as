@@ -17,7 +17,7 @@ package classes.Scenes.Monsters
 	{
 		public function corruptedGolemsSwordSlash():void {
 			outputText("The corrupted golems visage twists into a grimace of irritation, and few of them swings their swords at you.");
-			var damage:Number = int (((str + weaponAttack) * 2) - rand(player.tou) - player.armorDef);
+			var damage:Number = int (((str + weaponAttack) * 3) - rand(player.tou) - player.armorDef);
 			//Dodge
 			if (damage <= 0 || (player.getEvasionRoll())) outputText(" You slide underneath the surprise slashes!");
 			else
@@ -33,7 +33,7 @@ package classes.Scenes.Monsters
 		}
 		public function corruptedGolemsLustAttack():void {
 			outputText("Two of them smirks and licks their lips while gives their cocks a squeeze, milking a few beads of clear pre from the tip.  You shake your head and try to ignore your growing need.");
-			player.takeLustDamage(20 + player.lib / 3 + player.cor / 3, true);
+			player.takeLustDamage(40 + player.lib / 2 + player.cor / 2, true);
 		}
 		
 		override protected function performCombatAction():void
@@ -51,6 +51,11 @@ package classes.Scenes.Monsters
 			}
 		}
 		
+		override public function defeated(hpVictory:Boolean):void
+		{
+			SceneLib.fleshGolemScenes.wonWithFleshGolem();
+		}
+		
 		public function CorruptedFleshGolemsBasic()
 		{
 			super(true);
@@ -58,6 +63,8 @@ package classes.Scenes.Monsters
 			this.short = "corrupted basic flesh golems";
 			this.imageName = "corrupted basic flesh golems";
 			this.long = "You're currently fighting corrupted basic flesh golems. They're seven feet tall with flesh covered by white armor fragments, which still leaving genitalia, with pretty sizable cocks, or breasts exposed. Despite not possesing visible eyes on her elongated head, they're using pair of weapons to attack enemies.";
+			this.flyer = true;
+			this.magicuser = true;
 			this.createCock(12,2,CockTypesEnum.DEMON);
 			this.balls = 0;
 			this.ballSize = 0;
@@ -68,25 +75,25 @@ package classes.Scenes.Monsters
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_MOIST;
 			this.createStatusEffect(StatusEffects.BonusACapacity, 200, 0, 0, 0);
-			initStrTouSpeInte(120, 140, 110, 10);
-			initWisLibSensCor(10, 100, 50, 100);
+			initStrTouSpeInte(360, 425, 333, 20);
+			initWisLibSensCor(20, 200, 100, 100);
 			this.tallness = 84;
 			this.hips.type = Hips.RATING_AVERAGE + 1;
 			this.butt.type = Butt.RATING_AVERAGE + 1;
 			this.bodyColor = "pink";
 			this.weaponName = "dual swords";
 			this.weaponVerb = "slash";
-			this.weaponAttack = 50;
+			this.weaponAttack = 200;
 			this.armorName = "white armor";
-			this.armorDef = 40;
-			this.armorMDef = 20;
-			this.bonusHP = 350;
+			this.armorDef = 400;
+			this.armorMDef = 200;
+			this.bonusHP = 700;
 			this.lust = 30;
-			this.bonusLust = 186;
+			this.bonusLust = 356;
 			this.lustVuln = .5;
-			this.level = 36;
-			this.additionalXP = 350;
-			this.gems = rand(10)+5;
+			this.level = 56;
+			this.additionalXP = 400;
+			this.gems = rand(10)+10;
 			this.tailType = Tail.DEMONIC;
 			this.drop = new WeightedDrop().
 					add(consumables.BIMBOLQ, 1).

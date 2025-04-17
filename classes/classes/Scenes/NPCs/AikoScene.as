@@ -1909,8 +1909,7 @@ public function yamataLoses():void {
 	+"<i>\"Don't listen to her, [name]... You should know it by now, kitsunes are masters of trickery... she's trying to manipulate you into let her get away! After all she's done to my village... even if she's my sister, she's a wretched demon.\"</i> Aiko retrieves her star sphere from your hand and carefully hides it in her robes. With her powers now restored, she summons her bow and readies an arrow, aiming at her sister’s throat.\n\n"
 	+(!player.hasPerk(PerkLib.Masochist) ?(flags[kFLAGS.YAMATA_MASOCHIST] >= 100 ?"You realize that from all the torture Yamata has put you through, you have come to enjoy pain quite a lot. <b>You have become a masochist!</b>\n\n":"All that pain Yamata put you through almost drove you to masochism, but you defeated her before she could manage to drive you to such depraved thoughts!"):"")
 	+"You look at the defeated demon, with her eyes she's pleading mercy. You suppose you can let Yamata go, let Aiko finish her sister"+(player.cor > 60?", end her yourself or fuck her before deciding what to do.":"or end her yourself."));
-	if (!player.hasPerk(PerkLib.Masochist) && flags[kFLAGS.YAMATA_MASOCHIST] >= 100)
-		player.createPerk(PerkLib.Masochist, 0, 0, 0, 0);
+	if (!player.hasPerk(PerkLib.Masochist) && flags[kFLAGS.YAMATA_MASOCHIST] >= 100) player.createPerk(PerkLib.Masochist, 0, 0, 0, 0);
 	menu();
 	addButton(0, "Let her go", releaseYamata).hint("Let Yamata go, trusting her to not hurt anyone else.");
 	addButton(1, "Aiko finish", aikoKillSister).hint("It should be up to Aiko what to do with Yamata.");

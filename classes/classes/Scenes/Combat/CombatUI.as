@@ -117,8 +117,8 @@ public class CombatUI extends BaseCombatContent {
 				//No shooting fuckbolts from Tidarion!!!
 				if (!Wings.Types[player.wings.type].canFly && Arms.Types[player.arms.type].canFly && player.isFlying && player.statusEffectv2(StatusEffects.Flying) == 0) btnMelee.disable("No way you could use your melee weapon with those arms while flying.");
 				else {
-					if (player.hasPerk(PerkLib.ElementalBolt)) btnMelee.show("E.Bolt", combat.magic.spellElementalBolt, "Attempt to attack the enemy with elemental bolt from your [weapon].  Damage done is determined by your intelligence and weapon.").icon("A_Melee");
-					else btnMelee.show("M.Bolt", combat.magic.spellMagicBolt, "Attempt to attack the enemy with magic bolt from your [weapon].  Damage done is determined by your intelligence and weapon.").icon("A_Melee");
+					if (player.hasPerk(PerkLib.ElementalBolt)) btnMelee.show("E.Bolt", combat.magic.spellElementalBolt, "Attempt to attack the enemy with elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.").icon("A_Melee");
+					else btnMelee.show("M.Bolt", combat.magic.spellMagicBolt, "Attempt to attack the enemy with magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.").icon("A_Melee");
 				}
 			}
 			else if (player.hasStatusEffect(StatusEffects.Gallop)) btnMelee.disable("No way you could hit enemy with melee attacks while galloping. Unless you stop for a moment or two.");
@@ -144,7 +144,7 @@ public class CombatUI extends BaseCombatContent {
 				else btnMelee.show("Attack", combat.basemeleeattacks, "Attempt to attack the enemy with your " + player.weaponName+".  Damage done is determined by your strength and weapon.").icon("A_Melee");
 			}
 		}
-		if (combat.isEnemyInvisible || monster.hasStatusEffect(StatusEffects.MaddeningTune)){
+		if ((combat.isEnemyInvisible || monster.hasStatusEffect(StatusEffects.MaddeningTune)) && !player.hasPerk(PerkLib.TrueSeeing)){
 			btnMelee.disable("You cannot use attack on opponent you cannot see or target.");
 		}
 		// Ranged
@@ -248,8 +248,8 @@ public class CombatUI extends BaseCombatContent {
 			btnMagic.disable("You are too angry to think straight. Smash your puny opponents first and think later.\n\n").icon("A_Magic")
 		} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic")
 		// Submenu - Soulskills
-		//combat.soulskills.buildMenu(soulforceButtons);
-		buildAbilityMenu(CombatAbilities.ALL_SOULSKILLS, soulforceButtons);
+		//buildAbilityMenu(CombatAbilities.ALL_SOULSKILLS, soulforceButtons);
+		BuildSoulskillMenu(soulforceButtons);
 		if (soulforceButtons.length > 0) btnSoulskills.show("Soulforce", submenuSoulforce, "Soulforce attacks menu.", "Soulforce Specials");
 		// Submenu - Other
 		buildAbilityMenu(CombatAbilities.ALL_ELEMENTAL_ASPECTS, eAspectButtons);
@@ -280,6 +280,10 @@ public class CombatUI extends BaseCombatContent {
 			doWispTurn();
 		else if (isMummyTurn())
 			doMummyTurn();
+		else if (isZombieTurn())
+			doZombieTurn();
+		else if (isMatangoTurn())
+			doMatangoTurn();
 		else if (isFlyingSwordTurn())
 			doFlyingSwordTurn();
 		else if (isCompanionTurn(0))
@@ -607,13 +611,43 @@ public class CombatUI extends BaseCombatContent {
 	}
 
 	public function isMummyTurn():Boolean {
-		return CombatAbilities.MummyAttack.isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ATTACKED] != 1 && flags[kFLAGS.MUMMY_ATTACK] == 1 && !doWeDisableThisOne(6);
+		return CombatAbilities.MummyAttack.isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] != 1 && flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1 && !doWeDisableThisOne(6);
 	}
 	
 	public function doMummyTurn():void {
 		if (CombatAbilities.MummyAttack.isKnownAndUsable) {
 			CombatAbilities.MummyAttack.perform();
-			flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ATTACKED] = 1;
+			flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] = 1;
+			if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
+				menu();
+				addButton(0, "Next", combatMenu, false);
+			}
+		}
+	}
+
+	public function isZombieTurn():Boolean {
+		return CombatAbilities.ZombieAttack.isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] != 1 && flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1 && !doWeDisableThisOne(6);
+	}
+	
+	public function doZombieTurn():void {
+		if (CombatAbilities.ZombieAttack.isKnownAndUsable) {
+			CombatAbilities.ZombieAttack.perform();
+			flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] = 1;
+			if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
+				menu();
+				addButton(0, "Next", combatMenu, false);
+			}
+		}
+	}
+
+	public function isMatangoTurn():Boolean {
+		return CombatAbilities.MatangoAttack.isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_MATANGO_ATTACKED] != 1 && flags[kFLAGS.MATANGO_ATTACK] == 1 && !doWeDisableThisOne(8);
+	}
+	
+	public function doMatangoTurn():void {
+		if (CombatAbilities.MatangoAttack.isKnownAndUsable) {
+			CombatAbilities.MatangoAttack.perform();
+			flags[kFLAGS.IN_COMBAT_PLAYER_MATANGO_ATTACKED] = 1;
 			if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
 				menu();
 				addButton(0, "Next", combatMenu, false);
@@ -624,7 +658,7 @@ public class CombatUI extends BaseCombatContent {
 	public function isMechAITurn():Boolean {
 		return player.isInGoblinMech() && (player.hasKeyItem("Improved Artificial Intelligence") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK2") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK3") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0)
 				&& (player.hasKeyItem("Auto turret") >= 0 || player.hasKeyItem("Auto turret MK2") >= 0 || player.hasKeyItem("Auto turret MK3") >= 0 || player.hasKeyItem("Auto turret MK4") >= 0 || player.hasKeyItem("Auto turret MK5") >= 0 || player.hasKeyItem("Auto turret MK6") >= 0)
-				&& flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] != 1;// && !doWeDisableThisOne(8)
+				&& flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] != 1;// && !doWeDisableThisOne(9)
 	}
 	
 	public function doMechAITurn():void {
@@ -860,9 +894,9 @@ public class CombatUI extends BaseCombatContent {
 		//Most basic spell ever ^^
 		if (player.hasPerk(PerkLib.JobSorcerer)) {
 			bd = buttons.add("M.Bolt", combat.magic.spellMagicBolt);
-			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with magic bolt from your [weapon].  Damage done is determined by your intelligence and weapon.", "Magic Bolt");
-			else bd.hint("Attempt to attack the enemy with magic bolt.  Damage done is determined by your intelligence.", "Magic Bolt");
-			if (player.mana < spellCost(40)) {
+			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Magic Bolt");
+			else bd.hint("Attempt to attack the enemy with magic bolt.  Damage done is determined by your intelligence and wisdom.", "Magic Bolt");
+			if (player.mana < spellCost(30)) {
 				bd.disable("Your mana is too low to cast this spell.");
 			} else if (monster.hasStatusEffect(StatusEffects.Dig)) {
 				bd.disable("You can only use buff magic while underground.");
@@ -871,9 +905,9 @@ public class CombatUI extends BaseCombatContent {
 			}
 			if (player.hasPerk(PerkLib.MagesWrath)) {
 				bd = buttons.add("M.Bolt(Ex)", combat.magic.spellEdgyMagicBolt);
-				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt from your [weapon].  Damage done is determined by your intelligence and weapon.", "Wrath-Empowered Magic Bolt");
-				else bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt.  Damage done is determined by your intelligence.", "Wrath-Empowered Magic Bolt");
-				if (player.mana < spellCost(40)) {
+				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Magic Bolt");
+				else bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt.  Damage done is determined by your intelligence and wisdom.", "Wrath-Empowered Magic Bolt");
+				if (player.mana < spellCost(60)) {
 					bd.disable("Your mana is too low to cast this spell.");
 				} else if (player.wrath < 100) {
 					bd.disable("Your wrath is too low to cast this spell.");
@@ -886,9 +920,9 @@ public class CombatUI extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.ElementalBolt)) {
 			bd = buttons.add("E.Bolt", combat.magic.spellElementalBolt);
-			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with elemental bolt from your [weapon].  Damage done is determined by your intelligence and weapon.", "Elemental Bolt");
-			else bd.hint("Attempt to attack the enemy with elemental bolt.  Damage done is determined by your intelligence.", "Elemental Bolt");
-			if (player.mana < spellCost(80)) {
+			if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Elemental Bolt");
+			else bd.hint("Attempt to attack the enemy with elemental bolt.  Damage done is determined by your intelligence and wisdom.", "Elemental Bolt");
+			if (player.mana < spellCost(30)) {
 				bd.disable("Your mana is too low to cast this spell.");
 			} else if (monster.hasStatusEffect(StatusEffects.Dig)) {
 				bd.disable("You can only use buff magic while underground.");
@@ -897,9 +931,9 @@ public class CombatUI extends BaseCombatContent {
 			}
 			if (player.hasPerk(PerkLib.MagesWrath)) {
 				bd = buttons.add("E.Bolt(Ex)", combat.magic.spellEdgyElementalBolt);
-				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt from your [weapon].  Damage done is determined by your intelligence and weapon.", "Wrath-Empowered Elemental Bolt");
-				else bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt.  Damage done is determined by your intelligence.", "Wrath-Empowered Elemental Bolt");
-				if (player.mana < spellCost(80)) {
+				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Elemental Bolt");
+				else bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt.  Damage done is determined by your intelligence and wisdom.", "Wrath-Empowered Elemental Bolt");
+				if (player.mana < spellCost(60)) {
 					bd.disable("Your mana is too low to cast this spell.");
 				} else if (player.wrath < 100) {
 					bd.disable("Your wrath is too low to cast this spell.");
@@ -927,6 +961,20 @@ public class CombatUI extends BaseCombatContent {
 		if ((player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && necroSpellButtons.length > 0) buttons.add("Necro Spells", curry(submenu,necroSpellButtons, submenuSpells, 0, false)).hint("Open your Necromicon");
 		if ((player.hasPerk(PerkLib.HiddenJobBloodDemon) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && bloodSpellButtons.length > 0) buttons.add("Blood Spells", curry(submenu,bloodSpellButtons, submenuSpells, 0, false)).hint("Open your Blood grimoire");
 		if (greenSpellButtons.length > 0) buttons.add("Green Spells", curry(submenu,greenSpellButtons, submenuSpells, 0, false)).hint("Open your Green magic book");
+	}
+	
+	private function BuildSoulskillMenu(buttons:ButtonDataList):void {
+		var bd:ButtonData;
+		if (player.hasPerk(PerkLib.SwordIntentAura)) {
+			if (player.statStore.hasBuff("SwordIntentAura")) {
+				buttons.add("SwordIntentAD", combat.deactivateSwordIntentAura).hint("Disperse sword intent aura.");
+			} else {
+				bd = buttons.add("SwordIntentAA", combat.activateSwordIntentAura, "Coat your weapons with sword intent aura. (It would drain soulforce and fatigue until dispersed)\n");
+				bd.requireSoulforce(10 * soulskillCost() * soulskillcostmulti());
+				bd.requireFatigue(10);
+			}
+		}
+		buildAbilityMenu(CombatAbilities.ALL_SOULSKILLS, soulforceButtons);
 	}
 	
 	private function buildAbilityMenu(abilities:/*CombatAbility*/Array, buttons:ButtonDataList):void {

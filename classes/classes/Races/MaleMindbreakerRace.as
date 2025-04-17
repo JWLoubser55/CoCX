@@ -87,9 +87,9 @@ public class MaleMindbreakerRace extends Race{
 					"spe.mult": -0.40,
 					"tou.mult": +1.00,
 					"int.mult": +4.50,
-					"lib.mult": +4.00,
+					"lib.mult": +5.00,
 					"wis.mult": -0.30,
-					"sens": +50
+					"sens": +150
 				})
 				.end()
 	}

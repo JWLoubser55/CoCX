@@ -27,7 +27,7 @@ import classes.internals.*;
 			if (player.getEvasionRoll()) outputText("You manage to avoid his tusks.");
 			else {
 				var damage:Number = 0;
-				damage = int(((str + 100 + weaponAttack) * 2) - Math.random()*(player.tou) - player.armorDef);
+				damage = int(((str + 200 + weaponAttack) * 4) - Math.random()*(player.tou) - player.armorDef);
 				outputText("You are caught off guard as he cuts you, dealing ");
 				damage = player.takePhysDamage(damage, true);
 				outputText(" damage.");
@@ -44,7 +44,7 @@ import classes.internals.*;
 			if (player.getEvasionRoll()) outputText("You react quickly, evading his charge as he tumbles onto the snow.");
 			else {
 				var damage:Number = 0;
-				damage = int(((str + 100 + weaponAttack) * 1.5) - Math.random()*(player.tou) - player.armorDef);
+				damage = int(((str + 200 + weaponAttack) * 3) - Math.random()*(player.tou) - player.armorDef);
 				outputText("You don’t have enough time to dodge as he bashes into you. ");
 				damage = player.takePhysDamage(damage, true);
 			}
@@ -59,7 +59,7 @@ import classes.internals.*;
 				player.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
 			}
 			player.removeStatusEffect(StatusEffects.TrollHold);
-			var throwDMG:Number = eBaseDamage() * 2;
+			var throwDMG:Number = eBaseDamage() * 4;
 			player.takePhysDamage(throwDMG, true);
 		}
 		
@@ -99,6 +99,7 @@ import classes.internals.*;
 			this.imageName = "glacialtrollmale";
 			this.long = "You are fighting what appears to be an glacial troll male. He is just over 9 feet tall, covered in white fur and has a large, muscular, yet stout build. He has tusks protruding from his mouth each about 8 inches long curving upwards. Like all ice trolls, his hands and feet end in sharp claws ready to grip and tear through anything. He is wearing fur armor that conceals most of his body.";
 			// this.plural = false;
+			this.magicuser = true;
 			createBreastRow(Appearance.breastCupInverse("flat"));
 			this.createCock(10, 2, CockTypesEnum.HUMAN);
 			this.balls = 2;
@@ -108,11 +109,11 @@ import classes.internals.*;
 			this.tallness = 112 + rand(2);
 			this.hips.type = Hips.RATING_BOYISH;
 			this.butt.type = Butt.RATING_TIGHT;
-			initStrTouSpeInte(414, 392, 378, 344);
-			initWisLibSensCor(362, 286, 100, -70);
-			this.weaponAttack = 120;
-			this.armorDef = 150;
-			this.armorMDef = 600;
+			initStrTouSpeInte(828, 784, 756, 688);
+			initWisLibSensCor(724, 572, 200, -70);
+			this.weaponAttack = 240;
+			this.armorDef = 1000;
+			this.armorMDef = 4000;
 			this.skin.setBaseOnly({color:"green"});
 			this.skinDesc = "skin";
 			this.hairColor = "white";
@@ -120,11 +121,11 @@ import classes.internals.*;
 			this.weaponName = "fist";
 			this.weaponVerb="punch";
 			this.armorName = "white fuzz";
-			this.bonusHP = 2500;
-			this.bonusLust = 480;
+			this.bonusHP = 4500;
+			this.bonusLust = 870;
 			this.lust = 20;
 			this.lustVuln = .7;
-			this.level = 94;
+			this.level = 98;
 			this.additionalXP = 1500;
 			this.gems = 250 + rand(50);
 			this.drop = new WeightedDrop().add(consumables.ICY_FIG, 5)

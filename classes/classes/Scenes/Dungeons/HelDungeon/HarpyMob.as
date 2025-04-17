@@ -13,7 +13,7 @@ public class HarpyMob extends Monster
 		override public function combatStatusesUpdateWhenBound():void{
 			if (flags[kFLAGS.PC_FETISH] >= 2) {
 				outputText("The harpies are holding you down and restraining you, making the struggle all the sweeter!\n\n");
-				player.takeLustDamage(3, true);
+				player.takeLustDamage(30, true);
 			} else outputText("You're restrained by the harpies so that they can beat on you with impunity.  You'll need to struggle to break free!\n\n");
 		}
 
@@ -25,7 +25,7 @@ public class HarpyMob extends Monster
 		override public function playerBoundWait():Boolean{
 			clearOutput();
 			outputText("The brood continues to hammer away at your defenseless self. ");
-			var damage:int = 80 + rand(40);
+			var damage:int = 800 + rand(400);
 			player.takePhysDamage(damage, true);
 			return true;
 		}
@@ -55,14 +55,14 @@ public class HarpyMob extends Monster
 		public function harpyHordeGangBangStruggle(clearDisp:Boolean = true):void {
 			if(clearDisp) clearOutput();
 			//Success:
-			if((rand(10) == 0 && player.str/5 + rand(20) >= 23) || player.hasPerk(PerkLib.FluidBody)) {
+			if(SceneLib.combat.struggleCentralizedCheck()) {
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 				outputText("With a mighty roar, you throw off the harpies grabbing you and return to the fight!");
 			}
 			//Failure:
 			//If fail:
 			else {
-				var damage:Number = 80 + rand(40);
+				var damage:Number = 800 + rand(400);
 				outputText("You struggle in the harpies' grasp, but can't quite get free.  The brood continues to hammer away at your defenseless self. ");
 				damage = player.takePhysDamage(damage, true);
 			}
@@ -74,11 +74,11 @@ public class HarpyMob extends Monster
 			if(player.hasPerk(PerkLib.LuststickAdapted)) outputText("doing relatively little thanks to your adaptation");
 			else {
 				outputText("sending shivers of lust up your spine");
-				player.takeLustDamage(5, true);
-				if(player.hasCock()) player.takeLustDamage(15, true);
+				player.takeLustDamage(50, true);
+				if(player.hasCock()) player.takeLustDamage(150, true);
 			}
 			outputText(".");
-			player.takeLustDamage(10, true);
+			player.takeLustDamage(100, true);
 		}
 
 		override protected function performCombatAction():void
@@ -119,19 +119,19 @@ public class HarpyMob extends Monster
 			this.skinDesc = "feathers";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			initStrTouSpeInte(89, 107, 170, 52);
-			initWisLibSensCor(52, 86, 49, 0);
+			initStrTouSpeInte(445, 535, 850, 104);
+			initWisLibSensCor(104, 172, 98, 0);
 			this.weaponName = "claw";
 			this.weaponVerb="claw";
-			this.weaponAttack = 39;
+			this.weaponAttack = 139;
 			this.armorName = "armor";
-			this.armorDef = 22;
-			this.armorMDef = 3;
-			this.bonusHP = 1000;
-			this.bonusLust = 167;
+			this.armorDef = 320;
+			this.armorMDef = 40;
+			this.bonusHP = 2000;
+			this.bonusLust = 354;
 			this.lust = 20;
 			this.lustVuln = .2;
-			this.level = 32;
+			this.level = 84;
 			this.gems = rand(25)+140;
 			this.additionalXP = 50;
 			this.tailType = Tail.HARPY;
@@ -142,6 +142,7 @@ public class HarpyMob extends Monster
 				{ call: harpyHordeGangBangAttack, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_BODY]},
 				{ call: harpyHordeLustAttack, type: ABILITY_TEASE, range: RANGE_MELEE, tags:[TAG_BODY]}
 			];
+			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyGroupType, 0, 0, 0, 0);
 			this.createStatusEffect(StatusEffects.Flying,50,0,0,0);
 			checkMonster();

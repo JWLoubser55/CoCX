@@ -8,6 +8,9 @@ package classes.Scenes.Monsters
 	
 	public class AbstractSuccubus extends Monster
 	{
+		public function AbstractSuccubus()
+		{}
+
 		protected function whipAttack():void
 		{
 			if (hasStatusEffect(StatusEffects.WhipReady)) {
@@ -125,10 +128,6 @@ package classes.Scenes.Monsters
 				createStatusEffect(StatusEffects.WhipReady, 0, 0, 0, 0);
 				this.strStat.core.value += 20;
 			}
-		}
-
-		public function AbstractSuccubus()
-		{
 		}
 
 		protected function kissAttack():void

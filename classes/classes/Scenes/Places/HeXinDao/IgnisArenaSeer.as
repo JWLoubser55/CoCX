@@ -21,8 +21,8 @@ public class IgnisArenaSeer extends Monster
 			if (defended) outputText("You try and cast makeshift defenses around yourself, with limited success. ");
 			else outputText("You try and huddle down and take shelter from the infernal storm, but the fire is everywhere. Then, as suddenly as the flame came, they are gone.\n\n");
 			this.createStatusEffect(StatusEffects.IgnisCastedNuke, 0, 0, 0, 0);
-			var damage:Number = 5000;
-			damage += 2000 * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
+			var damage:Number = 10000;
+			damage += 4000 * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
 			if (player.hasStatusEffect(StatusEffects.Blizzard)) {
 				player.removeStatusEffect(StatusEffects.Blizzard);
 				damage *= 0.5;
@@ -35,12 +35,12 @@ public class IgnisArenaSeer extends Monster
 		public function IgnisCastsFoxFire():void {
 			outputText("Holding out his palm, Ignis conjures a blaze of blue flames, dancing across his palm. He casts the flame towards you, the flames twisting mid air to foil your attempts to dodge them.  On contact, the azure fires burst like fireworks, covering the area around you with color and light. ");
 			var damage:Number = 0;
-			damage += inteligencescalingbonus() * 0.5;
-			damage += wisdomscalingbonus() * 0.5;
+			damage += inteligencescalingbonus();
+			damage += wisdomscalingbonus();
 			damage = Math.round(damage);
 			player.takeFireDamage(damage, true);
 			outputText(" ");
-			var lustDmg:Number = player.lustVuln * ((this.inte / 10) + rand(player.lib + player.cor) / 5);
+			var lustDmg:Number = player.lustVuln * ((this.inte / 5) + rand(player.lib + player.cor) / 2);
 			lustDmg = Math.round(lustDmg);
 			player.takeLustDamage(lustDmg, true);
 			if (!hasStatusEffect(StatusEffects.IgnisCounter)) createStatusEffect(StatusEffects.IgnisCounter, 1, 0, 0, 0);
@@ -51,7 +51,7 @@ public class IgnisArenaSeer extends Monster
 			outputText("Ignis raises a hand, focusing with intensity.  From above comes a crystalline meteor, which you barely manage to dodge.  The crystal shatters upon contact with the ground, sending a shower of splinters that you cannot avoid. ");
 			if (player.isInHeavyArmor() || player.isInAyoArmor()) outputText("Thankfully, your armor manages to absorb most of the impact. ");
 			var damage:Number = 0;
-			damage += inteligencescalingbonus();
+			damage += inteligencescalingbonus() * 2;
 			if (player.hasPerk(PerkLib.FromTheFrozenWaste) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 3;
 			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 0.3;
 			if (player.armorPerk != "Heavy" && player.armorPerk != "Light Ayo" && player.armorPerk != "Heavy Ayo" && player.armorPerk != "Ultra Heavy Ayo") damage *= 2;
@@ -115,20 +115,20 @@ public class IgnisArenaSeer extends Monster
 			this.bodyColor = "white";
 			this.hairColor = "silver";
 			this.hairLength = 13 + rand(20);
-			initStrTouSpeInte(45, 75, 180, 160);
-			initWisLibSensCor(160, 70, 85, -10);
+			initStrTouSpeInte(90, 150, 360, 320);
+			initWisLibSensCor(320, 140, 170, -10);
 			this.weaponName = "staff";
 			this.weaponVerb="smack";
-			this.weaponAttack = 8;
+			this.weaponAttack = 16;
 			this.armorName = "grey kimono";
-			this.armorDef = 20;
-			this.armorMDef = 50;
-			this.bonusHP = 120;
-			this.bonusLust = 200;
+			this.armorDef = 150;
+			this.armorMDef = 375;
+			this.bonusHP = 200;
+			this.bonusLust = 355;
 			this.lust = 20;
 			this.lustVuln = 0.9;
 			this.level = 45;//mają wtedy tylko 2 ogony ale z czasem jak PC też rośnie w siłe z lvl-em bdą mieć awans to lvl może 18-20 i trzeci ogon plus wzmocnienie statów itp. (At that time, they have only 2 tails, but as the player character (PC) also grows in strength with levels, they will advance to around level 18-20 and gain a third tail along with enhanced stats, etc.)
-			this.gems = rand(20) + 20;
+			this.gems = rand(20) + 50;
 			if (flags[kFLAGS.IGNIS_ARENA_SEER] < 3) {
 			this.drop = new ChainedDrop()
 					.add(headjewelries.SEERPIN, 1);

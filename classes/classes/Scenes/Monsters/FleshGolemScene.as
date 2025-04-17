@@ -58,7 +58,7 @@ package classes.Scenes.Monsters
 		public function introCorruptedBasicFleshGolemS():void {
 			clearOutput();
 			if (rand(2) == 0) {
-        outputText("Your wanderings bring you past an old outpost. Several tents, canvas rotten and wood splintered, sit around a broken flagpole. As you stop, this sight catching your attention, a single mount of dirt erupts. A single golem claws its way out from the ground, odd-colored flesh partly covered by white shards, bits of armour either hanging from, or embedded into the creature's flesh. It looks straight at you, and to your disgust, the creation has genitalia, and functioning ones at that! You ready your [weapon] for a fight, as the creature lumbers towards you.");
+				outputText("Your wanderings bring you past an old outpost. Several tents, canvas rotten and wood splintered, sit around a broken flagpole. As you stop, this sight catching your attention, a single mount of dirt erupts. A single golem claws its way out from the ground, odd-colored flesh partly covered by white shards, bits of armour either hanging from, or embedded into the creature's flesh. It looks straight at you, and to your disgust, the creation has genitalia, and functioning ones at that! You ready your [weapon] for a fight, as the creature lumbers towards you.");
 				startCombat(new CorruptedFleshGolemBasic());
 			}
 			else {
@@ -77,6 +77,8 @@ package classes.Scenes.Monsters
 				startCombat(new CorruptedFleshGolemsImproved());
 			}
 		}
+		public function introCorruptedAdvancedFleshGolemS():void {
+		}
 		
 		public function lostToFleshGolem():void {
 			clearOutput();
@@ -88,8 +90,10 @@ package classes.Scenes.Monsters
 		
 		public function wonWithFleshGolem():void {
 			clearOutput();
-			outputText("You manage to force the dark skinned bitch on her back, so she falls to the ground defeated, yet smirking. Just as you are about to grab her, she throws a smoke bomb on the ground and uses the screen to cover her escape. Blast! She’s fast, there is no way you will catch her now.\n\n");
-			cleanupAfterCombat();
+			menu();
+			outputText("You smile in satisfaction as the " + monster.short + " collapses, unable to continue fighting.");
+			//addButtonIfTrue(12, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer & ", player.hasPerk(PerkLib.));
+			addButton (14, "Leave", cleanupAfterCombat);
 		}
 	}
 }

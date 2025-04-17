@@ -456,6 +456,7 @@ public class PhoukaScene extends BaseContent implements TimeAwareInterface {
 					addButton(14, "Leave", phoukaLeaveOnLustWin);
 					addButton(1, "Anal Ride", phoukaSexFaeriePostCombat); //Works for all
 					if (player.hasCock()) addButton(2, "Fuck Faerie", phoukaSexFaerieFemalePostCombat); //Male or Herm Only
+					addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 					SceneLib.uniqueSexScene.pcUSSPreChecksV2(phoukaPlayerWins2);
 				}
 			}
@@ -465,6 +466,7 @@ public class PhoukaScene extends BaseContent implements TimeAwareInterface {
 			addButton(0, "Leave", phoukaLeaveOnLustWin);
 			addButton(1, "Anal Ride", phoukaSexFaeriePostCombat); //Works for all
 			if (player.hasCock()) addButton(2, "Fuck Faerie", phoukaSexFaerieFemalePostCombat); //Male or Herm Only
+			addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 			SceneLib.uniqueSexScene.pcUSSPreChecksV2(phoukaPlayerWins2);
 		}
 

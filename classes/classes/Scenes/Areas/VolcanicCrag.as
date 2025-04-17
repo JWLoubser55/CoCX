@@ -25,7 +25,7 @@ public class VolcanicCrag extends BaseContent
 			onGameInit(init);
 		}
 		
-		public const areaLevel:int = 65;
+		public const areaLevel:int = 80;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.volcanicCragOuter > 0;
 		}

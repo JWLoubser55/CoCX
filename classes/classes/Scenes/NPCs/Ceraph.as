@@ -71,7 +71,7 @@ public class Ceraph extends Monster
 			else {
 				if (rand(2) == 0) {
 					outputText("Ceraph cuddles up against you, embracing you tenderly.  Her more-than-ample bosom crushes against your flank, and her demonic prick grinds and rubs against your [skin.type], smearing it with her juices.  Her hands slide over your bound form, sneaking underneath your [armor] to caress you more intimately while you're at her mercy.");
-					player.takeLustDamage(18 + player.effectiveSensitivity() / 5, true);
+					player.takeLustDamage(90 + player.effectiveSensitivity() / 3, true);
 				}
 				//[SPECIAL 2 WHILE PC RESTRAINED]
 				else {
@@ -80,7 +80,7 @@ public class Ceraph extends Monster
 					else if (player.lust < .6*player.maxLust()) outputText("It gets inside you and turns you on, stoking the flames of your desire.");
 					else if (player.lust < .8*player.maxLust()) outputText("It makes you very horny, and you begin to wonder if it's worth resisting.");
 					else outputText("It makes you ache and tremble with need, practically begging for another touch.");
-					player.takeLustDamage(5 + player.cor / 10 + player.lib / 20, true);
+					player.takeLustDamage(25 + player.cor / 5 + player.lib / 10, true);
 				}
 			}
 		}
@@ -124,7 +124,7 @@ public class Ceraph extends Monster
 				outputText("  You squirm inside the bindings as you get more and more turned on, hoping that Ceraph will strip away your armor and force you to parade around as her bound, naked pet.");
 				player.takeLustDamage(25, true);
 			}
-			player.takeLustDamage(player.lib / 10 + 10 + rand(10), true);
+			player.takeLustDamage(player.lib / 5 + 10 + rand(10), true);
 			outputText("\n\n");
 			SceneLib.combat.enemyAIImpl();
 		}
@@ -299,8 +299,8 @@ public class Ceraph extends Monster
 			this.weaponVerb="flame-whip";
 			this.weaponAttack = 80;
 			this.armorName = "demon-skin";
-			this.armorDef = 40;
-			this.armorMDef = 40;
+			this.armorDef = 90;
+			this.armorMDef = 90;
 			this.bonusHP = 500;
 			this.bonusLust = 339;
 			this.lust = 30;

@@ -139,7 +139,7 @@ public class Incels extends Monster {
     }
 
     public function RipStruggle():void {
-        if (rand(player.str) > (this.str / 10) * (1 + player.getStatusValue(StatusEffects.Pounced, 1)) || (player.hasStatusEffect(StatusEffects.Pounced) && player.statusEffectv1(StatusEffects.Pounced) < 1) || player.hasPerk(PerkLib.FluidBody)) RipBreakOut();
+        if (rand(Math.round(player.strStat.core.value * 0.8)) < (player.strStat.core.value + player.getStatusValue(StatusEffects.Pounced, 1)) || (player.hasStatusEffect(StatusEffects.Pounced) && player.statusEffectv1(StatusEffects.Pounced) < 1) || player.hasPerk(PerkLib.FluidBody)) RipBreakOut();
         else RipCont();
         SceneLib.combat.enemyAIImpl();
     }

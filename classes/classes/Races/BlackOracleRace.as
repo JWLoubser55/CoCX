@@ -11,7 +11,7 @@ public class BlackOracleRace extends Race {
 	public static const BlackOracleSkinColors:/*String*/Array = ["dark", "light","tan", "olive", "light", "ghostly pale", "light purple"];
 	
 	public function BlackOracleRace(id:int) {
-		super("Fetish Cultist", id, []);
+		super("Fetish Cultist", id, []);//RaceBody);
 		disabled = true;
 	}
 	

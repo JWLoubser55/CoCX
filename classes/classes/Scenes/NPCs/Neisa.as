@@ -21,6 +21,117 @@ import classes.Scenes.SceneLib;
 
 	public class Neisa extends Monster
 	{
+		public function bastardswordStab():void {
+			outputText("Neisa stabs you with her bastard sword.  You let out a cry in pain. ");
+			var damage:int = eBaseStrengthDamage() * 2 + eBaseSpeedDamage();
+			if (weaponAttack < 51) damage *= (1 + (weaponAttack * 0.03));
+			else if (weaponAttack >= 51 && weaponAttack < 101) damage *= (2.5 + ((weaponAttack - 50) * 0.025));
+			else if (weaponAttack >= 101 && weaponAttack < 151) damage *= (3.75 + ((weaponAttack - 100) * 0.02));
+			else if (weaponAttack >= 151 && weaponAttack < 201) damage *= (4.75 + ((weaponAttack - 150) * 0.015));
+			else damage *= (5.5 + ((weaponAttack - 200) * 0.01));
+			if (damage < 50) damage = 50;
+			if (wrath >= 800 && rand(2) == 0) {
+				wrath -= 800;
+				damage *= 10;
+			}
+			else if (wrath >= 700 && rand(2) == 0) {
+				wrath -= 700;
+				damage *= 9;
+			}
+			else if (wrath >= 600 && rand(2) == 0) {
+				wrath -= 600;
+				damage *= 8;
+			}
+			else if (wrath >= 500 && rand(2) == 0) {
+				wrath -= 500;
+				damage *= 7;
+			}
+			else if (wrath >= 400 && rand(2) == 0) {
+				wrath -= 400;
+				damage *= 6;
+			}
+			else if (wrath >= 300 && rand(2) == 0) {
+				wrath -= 300;
+				damage *= 5;
+			}
+			else if (wrath >= 200 && rand(2) == 0) {
+				wrath -= 200;
+				damage *= 4;
+			}
+			else if (wrath >= 100 && rand(2) == 0) {
+				wrath -= 100;
+				damage *= 3;
+			}
+			else {
+				wrath -= 50;
+				damage *= 2;
+			}
+			player.takePhysDamage(damage, true);
+		}
+		public function drinkPotion():void {
+			outputText("She grab health potion, pull the cork off and swiftly chug it down.");
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 20) HP += 8640;
+			else if (flags[kFLAGS.NEISA_LVL_UP] >= 13) HP += 1440;
+			else if (flags[kFLAGS.NEISA_LVL_UP] >= 6) HP += 240;
+			else HP += 40;
+			monsterSlimeMetabolismRecovery();
+		}
+		public function ramingWithShield():void {
+			outputText("Neisa viciously rams you her shield, ");
+			if (!player.hasPerk(PerkLib.Resolute)) {
+				player.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+				outputText("dazing you.\n\n");
+			} else {
+				outputText("but you endured it.\n\n");
+			}
+		}
+		public function bastardswordSlash():void {
+			outputText("Neisa slashes at you with her bastard sword.  ");
+			if (player.getEvasionRoll()) {
+				outputText("You manage to avoid her sword thanks to your reaction!");
+				return;
+			}
+			else {
+				outputText("She manages to swipe you!  You let out a cry in pain. ");
+				var damage:int = eBaseStrengthDamage() * 2 + eBaseSpeedDamage();
+				if (weaponAttack < 51) damage *= (1 + (weaponAttack * 0.03));
+				else if (weaponAttack >= 51 && weaponAttack < 101) damage *= (2.5 + ((weaponAttack - 50) * 0.025));
+				else if (weaponAttack >= 101 && weaponAttack < 151) damage *= (3.75 + ((weaponAttack - 100) * 0.02));
+				else if (weaponAttack >= 151 && weaponAttack < 201) damage *= (4.75 + ((weaponAttack - 150) * 0.015));
+				else damage *= (5.5 + ((weaponAttack - 200) * 0.01));
+				if (damage < 50) damage = 50;
+				player.takePhysDamage(damage, true);
+			}
+		}
+
+		override protected function performCombatAction():void {
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 9) {
+				var choice2:Number = rand(4);
+				if (choice2 == 0) bastardswordSlash();
+				if (choice2 == 1) {
+					if (wrath >= 50) bastardswordStab();
+					else bastardswordSlash();
+				}
+				if (choice2 == 2) {
+					if (player.hasStatusEffect(StatusEffects.Stunned)) {
+						if (wrath >= 50) bastardswordStab();
+						else bastardswordSlash();
+					}
+					else ramingWithShield();
+				}
+				if (choice2 == 3) drinkPotion();
+			}
+			else {
+				var choice1:Number = rand(4);
+				if (choice1 < 2) bastardswordSlash();
+				if (choice1 == 2) {
+					if (player.hasStatusEffect(StatusEffects.Stunned)) bastardswordSlash();
+					else ramingWithShield();
+				}
+				if (choice1 == 3) drinkPotion();
+			}
+		}
+
 		override public function defeated(hpVictory:Boolean):void
 		{
 			SceneLib.neisaFollower.neisaSparWon();
@@ -35,45 +146,35 @@ import classes.Scenes.SceneLib;
 		{//  Her skin is dusky, nearly chocolate except for a few white spots spattered over her body.
 			if (flags[kFLAGS.NEISA_LVL_UP] == 1) {
 				initStrTouSpeInte(50, 80, 50, 44);
-				initWisLibSensCor(44, 52, 25, 0);
-				this.weaponAttack = 12;
-				this.armorDef = 0;
-				this.armorMDef = 0;
+				initWisLibSensCor(44, 52, 40, 0);
+				this.weaponAttack = 32;
+				this.armorDef = 20;
+				this.armorMDef = 20;
 				this.bonusHP = 200;
-				this.bonusLust = 80;
+				this.bonusLust = 95;
 				this.level = 3;
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 2 && flags[kFLAGS.NEISA_LVL_UP] < 9) {
 				var mod:int = (flags[kFLAGS.NEISA_LVL_UP] - 1);
-				initStrTouSpeInte(50 + 15*mod, 80 + 22*mod, 50 + 10*mod, 44 + 8*mod);
-				initWisLibSensCor(44 + 8*mod, 52 + 6*mod, 25 + 5*mod, 0);
-				this.weaponAttack = 12 + 3*mod;
-				this.armorDef = 0 + 8*mod;
-				this.armorMDef = 0 + 2*mod;
+				initStrTouSpeInte(50 + 45*mod, 80 + 52*mod, 50 + 45*mod, 44 + 38*mod);
+				initWisLibSensCor(44 + 38*mod, 52 + 50*mod, 40 + 35*mod, 0);
+				this.weaponAttack = 32 + 24*mod;
+				this.armorDef = 20 + 50*mod;
+				this.armorMDef = 20 + 50*mod;
 				this.bonusHP = 200 + 200*mod;
-				this.bonusLust = 80 + 17*mod;
+				this.bonusLust = 95 + 91*mod;
 				this.level = 3 + 6*mod;
 			}
-			if (flags[kFLAGS.NEISA_LVL_UP] == 9) {
-				initStrTouSpeInte(170, 256, 130, 108);
-				initWisLibSensCor(108, 100, 65, 0);
-				this.weaponAttack = 36;
-				this.armorDef = 64;
-				this.armorMDef = 16;
-				this.bonusHP = 1800;
-				this.bonusLust = 216;
-				this.level = 51;
+			if (flags[kFLAGS.NEISA_LVL_UP] == 24) {
+				initStrTouSpeInte(1085, 1276, 1085, 918);
+				initWisLibSensCor(918, 52, 845, 0);
+				this.weaponAttack = 584;
+				this.armorDef = 1170;
+				this.armorMDef = 1170;
+				this.bonusHP = 4800;
+				this.bonusLust = 2188;
+				this.level = 141;
 			}
-			if (flags[kFLAGS.NEISA_LVL_UP] == 10) {
-				initStrTouSpeInte(185, 278, 140, 116);
-				initWisLibSensCor(116, 106, 70, 0);
-				this.weaponAttack = 39;
-				this.armorDef = 72;
-				this.armorMDef = 18;
-				this.bonusHP = 2000;
-				this.bonusLust = 233;
-				this.level = 57;
-			}//level up giving 2x all growns and so follow next level ups's as long each npc break lvl 100 (also makes npc use new better gear) (also makes npc use new better gear)
 			this.a = "";
 			this.short = "Neisa";
 			this.imageName = "Neisa";
@@ -100,75 +201,144 @@ import classes.Scenes.SceneLib;
 			this.lustVuln = .35;
 			this.gems = rand(10) + 25;
 			this.drop = NO_DROP;
-			IMutationsLib.DrakeLungsIM.acquireMutation(this, "none", 1);
-			IMutationsLib.OniMusculatureIM.acquireMutation(this, "none", 1);
-			IMutationsLib.PigBoarFatIM.acquireMutation(this, "none", 1);
-			IMutationsLib.OrcAdrenalGlandsIM.acquireMutation(this, "none", 1);
-			IMutationsLib.LizanMarrowIM.acquireMutation(this, "none", 1);
 			this.createPerk(PerkLib.JobGuardian, 0, 0, 0, 0);
 			this.createPerk(PerkLib.ShieldWielder, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Ferocity, 0, 0, 0, 0);
 			this.createPerk(PerkLib.LizanRegeneration, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyDragonType, 0, 0, 0, 0);
+			this.createPerk(IMutationsLib.DrakeLungsIM, 1, 0, 0, 0);
+			this.createPerk(IMutationsLib.DrakeBloodIM, 1, 0, 0, 0);
+			this.createPerk(IMutationsLib.DrakeHeartIM, 1, 0, 0, 0);
+			this.createPerk(IMutationsLib.LactaBovinaOvariesIM, 1, 0, 0, 0);
+			this.createPerk(IMutationsLib.HumanSmartsIM, 1, 0, 0, 0);
+			this.createPerk(IMutationsLib.OrcAdrenalGlandsIM, 1, 0, 0, 0);//6-0
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 11 && flags[kFLAGS.NEISA_LVL_UP] < 25) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 2) {
+				this.createPerk(IMutationsLib.HumanThyroidGlandIM, 1, 0, 0, 0);
+				this.createPerk(IMutationsLib.CatLikeNimblenessIM, 1, 0, 0, 0);
 				this.createPerk(PerkLib.Diehard, 0, 0, 0, 0);
-				this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ChimericalBodyInitialStage, 0, 0, 0, 0);//8-2
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 3) {
-				this.createPerk(PerkLib.JobKnight, 0, 0, 0, 0);
-				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
-				this.createPerk(PerkLib.Resolute, 0, 0, 0, 0);
+				this.createPerk(IMutationsLib.LizanMarrowIM, 1, 0, 0, 0);
+				this.createPerk(IMutationsLib.GorgonEyesIM, 1, 0, 0, 0);
+				this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ChimericalBodySemiBasicStage, 0, 0, 0, 0);//10-5
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 4) {
-				this.createPerk(PerkLib.ImprovedDiehard, 0, 0, 0, 0);
-				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
-				this.createPerk(PerkLib.ImmovableObject, 0, 0, 0, 0);
+				this.createPerk(IMutationsLib.OniMusculatureIM, 1, 0, 0, 0);
+				this.createPerk(IMutationsLib.FerasBirthrightIM, 1, 0, 0, 0);
+				this.createPerk(PerkLib.JobKnight, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ChimericalBodyBasicStage, 0, 0, 0, 0);//12-9
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 5) {
-				this.createPerk(PerkLib.JobDefender, 0, 0, 0, 0);
-				this.createPerk(PerkLib.Juggernaut, 0, 0, 0, 0);
-				this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
+				this.createPerk(IMutationsLib.SlimeMetabolismIM, 1, 0, 0, 0);
+				this.createPerk(IMutationsLib.PigBoarFatIM, 1, 0, 0, 0);
+				this.createPerk(PerkLib.Resolute, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 6) {
-				IMutationsLib.CatLikeNimblenessIM.acquireMutation(this, "none", 2);
-				IMutationsLib.GorgonEyesIM.acquireMutation(this, "none", 2);
-				this.createPerk(PerkLib.GreaterDiehard, 0, 0, 0, 0);
+				this.setPerkValue(IMutationsLib.DrakeLungsIM, 1,2);
+				this.setPerkValue(IMutationsLib.DrakeBloodIM, 1,2);
+				this.createPerk(PerkLib.JobDefender, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ChimericalBodyImprovedStage, 0, 0, 0, 0);//16-15
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 7) {
-				IMutationsLib.DrakeLungsIM.acquireMutation(this, "none");
-				IMutationsLib.LizanMarrowIM.acquireMutation(this, "none");
-				this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
+				this.setPerkValue(IMutationsLib.DrakeHeartIM, 1,2);
+				this.setPerkValue(IMutationsLib.LactaBovinaOvariesIM, 1,2);
+				this.createPerk(PerkLib.ImprovedDiehard, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 8) {
-				IMutationsLib.OniMusculatureIM.acquireMutation(this, "none");
-				IMutationsLib.OrcAdrenalGlandsIM.acquireMutation(this, "none");
-				this.createPerk(PerkLib.EpicDiehard, 0, 0, 0, 0);
+				this.setPerkValue(IMutationsLib.HumanSmartsIM, 1,2);
+				this.setPerkValue(IMutationsLib.OrcAdrenalGlandsIM, 1,2);
+				this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 9) {
-				IMutationsLib.LactaBovinaOvariesIM.acquireMutation(this, "none", 2);
-				IMutationsLib.PigBoarFatIM.acquireMutation(this, "none");
+				this.setPerkValue(IMutationsLib.HumanThyroidGlandIM, 1,2);
+				this.setPerkValue(IMutationsLib.CatLikeNimblenessIM, 1,2);
+				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.JobWarrior, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 10) {
-				this.createPerk(PerkLib.EpicToughness, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
+				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,2);
+				this.setPerkValue(IMutationsLib.GorgonEyesIM, 1,2);
+				this.createPerk(PerkLib.ImmovableObject, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ChimericalBodySemiAdvancedStage, 0, 0, 0, 0);//24-22
 			}
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 11) {
-				IMutationsLib.DrakeLungsIM.acquireMutation(this, "none");
-				IMutationsLib.OniMusculatureIM.acquireMutation(this, "none");
-				IMutationsLib.OrcAdrenalGlandsIM.acquireMutation(this, "none");
-				IMutationsLib.PigBoarFatIM.acquireMutation(this, "none");
+				this.setPerkValue(IMutationsLib.OniMusculatureIM, 1,2);
+				this.setPerkValue(IMutationsLib.FerasBirthrightIM, 1,2);
+				this.createPerk(PerkLib.EpicToughness, 0, 0, 0, 0);
 			}
-			/*
-			updateDynamicPerkBuffs(IMutationsLib.DrakeLungIM, DrakeLungMutation, this);
-			updateDynamicPerkBuffs(IMutationsLib.OniMusculatureIM, OniMusculatureMutation, this);
-			updateDynamicPerkBuffs(IMutationsLib.PigBoarFatIM, PigBoarFatMutation, this);
-			updateDynamicPerkBuffs(IMutationsLib.OrcAdrenalGlandsIM, OrcAdrenalGlandsMutation, this);
-			updateDynamicPerkBuffs(IMutationsLib.LizanMarrowIM, LizanMarrowMutation, this);
-			updateDynamicPerkBuffs(IMutationsLib.CatLikeNimblenessIM, CatLikeNimblenessMutation, this);
-			updateDynamicPerkBuffs(IMutationsLib.GorgonEyesIM, GorgonEyesMutation, this);
-			updateDynamicPerkBuffs(IMutationsLib.LactaBovinaOvariesIM, LactaBovinaOvariesMutation, this);
-			*/
-			checkMonster();//make her lvl 3 starting with internal mutation for: cat, dragon, gorgon, lacta bovina, lizard, oni, orc, pig/boar - plus job: guardian perk
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 12) {
+				this.setPerkValue(IMutationsLib.SlimeMetabolismIM, 1,2);
+				this.setPerkValue(IMutationsLib.PigBoarFatIM, 1,2);
+				this.createPerk(PerkLib.GreaterDiehard, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 13) {
+				this.setPerkValue(IMutationsLib.DrakeLungsIM, 1,3);
+				this.setPerkValue(IMutationsLib.DrakeBloodIM, 1,3);
+				this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 14) {
+				this.setPerkValue(IMutationsLib.DrakeHeartIM, 1,3);
+				this.setPerkValue(IMutationsLib.LactaBovinaOvariesIM, 1,3);
+				this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ChimericalBodyAdvancedStage, 0, 0, 0, 0);//32-30
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 15) {
+				this.setPerkValue(IMutationsLib.HumanSmartsIM, 1,3);
+				this.setPerkValue(IMutationsLib.OrcAdrenalGlandsIM, 1,3);
+				this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 16) {
+				this.setPerkValue(IMutationsLib.HumanThyroidGlandIM, 1,3);
+				this.setPerkValue(IMutationsLib.CatLikeNimblenessIM, 1,3);
+				this.createPerk(PerkLib.Juggernaut, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 17) {
+				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,3);
+				this.setPerkValue(IMutationsLib.GorgonEyesIM, 1,3);
+				this.createPerk(PerkLib.EpicDiehard, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 18) {
+				this.setPerkValue(IMutationsLib.OniMusculatureIM, 1,3);
+				this.setPerkValue(IMutationsLib.FerasBirthrightIM, 1,3);
+				this.createPerk(PerkLib.LimitBreakerFlesh1stStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 19) {
+				this.setPerkValue(IMutationsLib.SlimeMetabolismIM, 1,3);
+				this.setPerkValue(IMutationsLib.PigBoarFatIM, 1,3);
+				this.createPerk(PerkLib.LegendaryToughness, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ChimericalBodySuperiorStage, 0, 0, 0, 0);//42-40
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 20) {
+				this.setPerkValue(IMutationsLib.DrakeLungsIM, 1,4);
+				this.setPerkValue(IMutationsLib.DrakeBloodIM, 1,4);
+				this.createPerk(PerkLib.LimitBreakerPsyche1stStage, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 21) {
+				this.setPerkValue(IMutationsLib.DrakeHeartIM, 1,4);
+				this.setPerkValue(IMutationsLib.LactaBovinaOvariesIM, 1,4);
+				this.createPerk(PerkLib.LegendaryStrength, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 22) {
+				this.setPerkValue(IMutationsLib.HumanSmartsIM, 1,4);
+				this.setPerkValue(IMutationsLib.OrcAdrenalGlandsIM, 1,4);
+				this.createPerk(PerkLib.LimitBreakerFlesh2ndStage, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 23) {
+				this.setPerkValue(IMutationsLib.HumanThyroidGlandIM, 1,4);
+				this.setPerkValue(IMutationsLib.CatLikeNimblenessIM, 1,4);
+				this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 24) {
+				this.setPerkValue(IMutationsLib.LizanMarrowIM, 1,4);
+				this.setPerkValue(IMutationsLib.GorgonEyesIM, 1,4);
+				this.createPerk(PerkLib.LimitBreakerPsyche2ndStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ChimericalBodySemiPeerlessStage, 0, 0, 0, 0);//52-51
+			}
+			checkMonster();
 		}
 
 	}

@@ -14,9 +14,9 @@ import classes.Items.Weapons.Tidarion;
 import classes.PerkLib;
 import classes.Races;
 import classes.Scenes.Areas.Bog.LizanRogue;
-import classes.Scenes.Areas.Caves.DisplacerBeast;
 import classes.Scenes.Areas.Forest.Akbal;
 import classes.Scenes.Areas.Lake.GooGirl;
+import classes.Scenes.Areas.LightlessReach.DisplacerBeast;
 import classes.Scenes.Areas.Mountain.WormMass;
 import classes.Scenes.Areas.Ocean.SeaAnemone;
 import classes.Scenes.Dungeons.D3.Lethice;
@@ -91,7 +91,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
 				if (!player.hasPerk(PerkLib.ElementalBody)) {
-					if (player.lowerBody == LowerBody.HOOFED) {
+					if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN) {
 						if (player.hasStatusEffect(StatusEffects.Gallop)) bd = buttons.add("Gallop(Stop)", gallopingStop).hint("Stop galloping.");
 						else {
 							bd = buttons.add("Gallop", gallopingStart).hint("Start galloping. Deals 50% more damage with physical specials but disable melee and range base attacks.");
@@ -458,7 +458,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 					challengingShout += "% of max/overmax wrath on use as a free action.";
 				}
 				if (player.hasPerk(PerkLib.ChallengingShoutMastered)) {
-					
+					var no2:Number = 60;
+					if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout)) no1 -= (player.statusEffectv1(StatusEffects.CooldownWarriorShout) * 4);
+					challengingShout = ""+no2+"";
+					challengingShout += "% of max/overmax wrath on use as a free action.";
 				}
 				bd = buttons.add("Warrior Shout", warriorShout).hint("Embolden yourself with a mighty shout. Generate "+challengingShout+"");
 				if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout) && !player.hasPerk(PerkLib.ChallengingShoutSu) && !player.hasPerk(PerkLib.ChallengingShoutMastered)) {
@@ -571,6 +574,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 				// Pollen
 				bd = buttons.add("AlraunePollen", AlraunePollen).hint("Release a cloud of your pollen in the air to arouse your foe.");
 				if (player.hasStatusEffect(StatusEffects.AlraunePollen)) bd.disable("<b>You already spread your pollen over battlefield.</b>\n\n");
+				else if (player.hasStatusEffect(StatusEffects.SporeCloud)) bd.disable("<b>There is no point to activate this ability as your current cloud causes a similar effect.</b>\n\n");
+			}
+			if ((player.isRaceCached(Races.MYCONID) || player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) && !player.hasPerk(PerkLib.ElementalBody)) {
+				// Spore Cloud
+				bd = buttons.add("Spore Cloud", SporeCloud).hint("Release a cloud of your spore into the air to arouse your foe.");
+				if (player.hasStatusEffect(StatusEffects.SporeCloud)) bd.disable("<b>You already spread your spores over battlefield.</b>\n\n");
+				else if (player.hasStatusEffect(StatusEffects.AlraunePollen)) bd.disable("<b>There is no point to activate this ability as your current cloud causes a similar effect.</b>\n\n");
 			}
 			if (player.hasKeyItem("Rocket Boots") >= 0 || player.hasKeyItem("Nitro Boots") >= 0) {
 				if (player.hasKeyItem("Nitro Boots") >= 0) bd = buttons.add("Blazing rocket kick", blazingRocketKick).hint("Deal fire damage using your boots. Also burns.");
@@ -579,13 +589,28 @@ public class PhysicalSpecials extends BaseCombatContent {
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
 			}
-			if (player.hasKeyItem("Flasherbang") >= 0) {
+			if (player.hasKeyItem("Flasherbang") >= 0 || player.hasKeyItem("Flasherbang II") >= 0) {
 				bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
-				bd = buttons.add("Flasherbang", gadgetFireGrenade).hint("Throw a flasherbang to blind and arouse your opponents.");
+			if (player.hasKeyItem("Goonade") >= 0 || player.hasKeyItem("Caustic Goonade") >= 0) {
+				var goonade1:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "corrosive " : "";
+				var goonade2:String = player.hasKeyItem("Caustic Goonade") >= 0 ? " The acid within the goo also corrodes the opponent's armor." : "";
+				var goonade3:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "Caustic Goonade" : "Goonade";
+				bd = buttons.add(""+goonade3+"", gadgetGoonade).hint("Throw a grenade that splatter "+goonade1+"sticky goo everywhere hindering movement and flight."+goonade2+"");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.Grounded)) bd.disable("<b>You need wait until previous used Goonade effect wear off.</b>\n\n");
+			}
+			if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
+				var fireGrenade:String = player.hasKeyItem("Fire Grenade II") >= 0 ? " Upgrade the fire grenade explosion to also deal fire damage." : "";
+				bd = buttons.add("Fire Grenade", gadgetFireGrenade).hint("Toss a grenade that sets foes on fire inflicting the burn status effect."+fireGrenade+"");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Stun Grenade") >= 0 || player.hasKeyItem("Stun Grenade II") >= 0) {
+				var stunGrenade:String = player.hasKeyItem("Stun Grenade II") >= 0 ? " Upgrade the stun grenade explosion to also deal lightning damage." : "";
+				bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round."+stunGrenade+" (4 round cd)");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
 			}
 			if (player.hasKeyItem("Goblin Bomber") >= 0) {
 				bd = buttons.add("Goblin Bomber", optionGoblinBomber).hint("Call for an airstrike.");
@@ -622,7 +647,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use Dynapunch Glove again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if (player.hasKeyItem("Taser") >= 0 && player.vehicles != vehicles.GS_MECH) {
+			if ((player.hasKeyItem("Taser") >= 0 || player.hasKeyItem("Taser with an overcharged battery") >= 0) && player.vehicles != vehicles.GS_MECH) {
 				if (player.hasKeyItem("Taser with an overcharged battery") >= 0) bd = buttons.add("Tazer", mechTazer).hint("A voltage rod set on the mech as an upgrade can be used to temporarily paralyse the opponent. Deals some lesser lightning damage and stun for 4 rounds. \n\nWould go into cooldown after use for: 8 rounds");
 				else bd = buttons.add("Tazer", mechTazer).hint("A voltage rod set on the mech as an upgrade can be used to temporarily paralyse the opponent. Deals no damage and stun for 2 rounds. \n\nWould go into cooldown after use for: 8 rounds");
 				if (player.hasStatusEffect(StatusEffects.CooldownTazer)) {
@@ -674,6 +699,37 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use jetpack again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
+			if (player.hasKeyItem("Goblin Bomber") >= 0) {
+				bd = buttons.add("Goblin Bomber", optionGoblinBomber).hint("Call for an airstrike.");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.GoblinBomber)) bd.disable("<b>You need wait one hour before you can use Goblin Bomber again.</b>\n\n");
+			}
+			if (player.hasKeyItem("Grenade Launcher") >= 0) {
+				//tinkerer gadgets
+				if (player.hasKeyItem("Flasherbang") >= 0 || player.hasKeyItem("Flasherbang II") >= 0) {
+					bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.hasKeyItem("Goonade") >= 0 || player.hasKeyItem("Caustic Goonade") >= 0) {
+					var goonade4:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "corrosive " : "";
+					var goonade5:String = player.hasKeyItem("Caustic Goonade") >= 0 ? " The acid within the goo also corrodes the opponent's armor." : "";
+					var goonade6:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "Caustic Goonade" : "Goonade";
+					bd = buttons.add(""+goonade6+"", gadgetGoonade).hint("Throw a grenade that splatter "+goonade4+"sticky goo everywhere hindering movement and flight."+goonade5+"");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					else if (player.hasStatusEffect(StatusEffects.Grounded)) bd.disable("<b>You need wait until previous used Goonade effect wear off.</b>\n\n");
+				}
+				if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
+					var fireGrenade1:String = player.hasKeyItem("Fire Grenade II") >= 0 ? " Upgrade the fire grenade explosion to also deal fire damage." : "";
+					bd = buttons.add("Fire Grenade", gadgetFireGrenade).hint("Toss a grenade that sets foes on fire inflicting the burn status effect."+fireGrenade1+"");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.hasKeyItem("Stun Grenade") >= 0 || player.hasKeyItem("Stun Grenade II") >= 0) {
+					var stunGrenade1:String = player.hasKeyItem("Stun Grenade II") >= 0 ? " Upgrade the stun grenade explosion to also deal lightning damage." : "";
+					bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round."+stunGrenade1+" (4 round cd)");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
+				}
+			}
 		}
 		if (player.vehicles == vehicles.HB_MECH) {
 			if (player.hasKeyItem("HB Stealth System") >= 0) {
@@ -717,6 +773,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 				bd = buttons.add("Scatter Laser", mechScatterLaser).hint("Shoot with Scatter Laser"+((player.keyItemvX("HB Scatter Laser", 1) > 1)?"s":"")+" at enemy. \n\nWould drain "+LazorC+" SF from mech reserves or your own SF pool.");
 				if (flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] < LazorC && player.soulforce < LazorC) bd.disable("<b>You are too low on SF reserves to use this option.</b>\n\n");
 				else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Goblin Bomber") >= 0) {
+				bd = buttons.add("Goblin Bomber", optionGoblinBomber).hint("Call for an airstrike.");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.GoblinBomber)) bd.disable("<b>You need wait one hour before you can use Goblin Bomber again.</b>\n\n");
 			}
 		}
 	}
@@ -764,6 +825,25 @@ public class PhysicalSpecials extends BaseCombatContent {
 				else if (player.weaponRangePerk != "Bow" && player.weaponRangePerk != "Crossbow" && player.weaponRangePerk != "Throwing") {
 					bd.disable("<b>You need to use bow, crossbow or throwing weapon before you can use Power Shoot.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasPerk(PerkLib.ChallengingShout) || player.hasPerk(PerkLib.ChallengingShoutMastered)) {
+				var challengingShout:String = "20% of max/overmax wrath on use as a free action.\nWould go into cooldown after use for: 10 rounds";
+				if (player.hasPerk(PerkLib.ChallengingShoutSu)) {
+					var no1:Number = 40;
+					if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout)) no1 -= (player.statusEffectv1(StatusEffects.CooldownWarriorShout) * 4);
+					challengingShout = ""+no1+"";
+					challengingShout += "% of max/overmax wrath on use as a free action.";
+				}
+				if (player.hasPerk(PerkLib.ChallengingShoutMastered)) {
+					var no2:Number = 60;
+					if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout)) no1 -= (player.statusEffectv1(StatusEffects.CooldownWarriorShout) * 4);
+					challengingShout = ""+no2+"";
+					challengingShout += "% of max/overmax wrath on use as a free action.";
+				}
+				bd = buttons.add("Warrior Shout", warriorShout).hint("Embolden yourself with a mighty shout. Generate "+challengingShout+"");
+				if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout) && !player.hasPerk(PerkLib.ChallengingShoutSu) && !player.hasPerk(PerkLib.ChallengingShoutMastered)) {
+					bd.disable("<b>You need more time before you can perform Warrior Shout again.</b>\n\n");
+				}
 			}
 			if (player.hasVagina() && (player.isRaceCached(Races.COW) || player.perkv1(IMutationsLib.LactaBovinaOvariesIM) >= 1 || (player.perkv1(IMutationsLib.HumanOvariesIM) >= 3 && player.racialScore(Races.HUMAN) > 17)) && !player.hasPerk(PerkLib.ElementalBody)) {
 				var blaaaast2:String = player.perkv1(IMutationsLib.LactaBovinaOvariesIM) >= 3 ? " (cooldown of "+(player.hasPerk(PerkLib.NaturalInstincts) ? "3":"4")+" rounds before it can be used again)" : "";
@@ -816,6 +896,35 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownSideWinder)) bd.disable("<b>You've already used Sidewinder today.</b>\n\n");
 				else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
+			if (player.hasKeyItem("Goblin Bomber") >= 0) {
+				bd = buttons.add("Goblin Bomber", optionGoblinBomber).hint("Call for an airstrike.");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.GoblinBomber)) bd.disable("<b>You need wait one hour before you can use Goblin Bomber again.</b>\n\n");
+			}
+			//tinkerer gadgets
+			if (player.hasKeyItem("Flasherbang") >= 0 || player.hasKeyItem("Flasherbang II") >= 0) {
+				bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Goonade") >= 0 || player.hasKeyItem("Caustic Goonade") >= 0) {
+				var goonade1:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "corrosive " : "";
+				var goonade2:String = player.hasKeyItem("Caustic Goonade") >= 0 ? " The acid within the goo also corrodes the opponent's armor." : "";
+				var goonade3:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "Caustic Goonade" : "Goonade";
+				bd = buttons.add(""+goonade3+"", gadgetGoonade).hint("Throw a grenade that splatter "+goonade1+"sticky goo everywhere hindering movement and flight."+goonade2+"");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.Grounded)) bd.disable("<b>You need wait until previous used Goonade effect wear off.</b>\n\n");
+			}
+			if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
+				var fireGrenade:String = player.hasKeyItem("Fire Grenade II") >= 0 ? " Upgrade the fire grenade explosion to also deal fire damage." : "";
+				bd = buttons.add("Fire Grenade", gadgetFireGrenade).hint("Toss a grenade that sets foes on fire inflicting the burn status effect."+fireGrenade+"");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.hasKeyItem("Stun Grenade") >= 0 || player.hasKeyItem("Stun Grenade II") >= 0) {
+				var stunGrenade:String = player.hasKeyItem("Stun Grenade II") >= 0 ? " Upgrade the stun grenade explosion to also deal lightning damage." : "";
+				bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round."+stunGrenade+" (4 round cd)");
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
+			}
 		}
 		if (player.isInGoblinMech()) {
 			if (player.hasKeyItem("Dynapunch Glove") >= 0 && player.vehicles != vehicles.GS_MECH) {
@@ -824,7 +933,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use Dynapunch Glove again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if (player.hasKeyItem("Taser") >= 0 && player.vehicles != vehicles.GS_MECH) {
+			if ((player.hasKeyItem("Taser") >= 0 || player.hasKeyItem("Taser with an overcharged battery") >= 0) && player.vehicles != vehicles.GS_MECH) {
 				if (player.hasKeyItem("Taser with an overcharged battery") >= 0) bd = buttons.add("Tazer", mechTazer).hint("A voltage rod set on the mech as an upgrade can be used to temporarily paralyse the opponent. Deals some lesser lightning damage and stun for 4 rounds. \n\nWould go into cooldown after use for: 8 rounds");
 				else bd = buttons.add("Tazer", mechTazer).hint("A voltage rod set on the mech as an upgrade can be used to temporarily paralyse the opponent. Deals no damage and stun for 2 rounds. \n\nWould go into cooldown after use for: 8 rounds");
 				if (player.hasStatusEffect(StatusEffects.CooldownTazer)) {
@@ -870,6 +979,32 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use "+(player.hasKeyItem("Medical Dispenser 2.0") >= 0 ? "Medical Dispenser":"Stimpack Dispenser")+" again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
+			if (player.hasKeyItem("Grenade Launcher") >= 0) {
+				//tinkerer gadgets
+				if (player.hasKeyItem("Flasherbang") >= 0 || player.hasKeyItem("Flasherbang II") >= 0) {
+					bd = buttons.add("Flasherbang", gadgetFlasherbang).hint("Throw a flasherbang to blind and arouse your opponents.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.hasKeyItem("Goonade") >= 0 || player.hasKeyItem("Caustic Goonade") >= 0) {
+					var goonade7:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "corrosive " : "";
+					var goonade8:String = player.hasKeyItem("Caustic Goonade") >= 0 ? " The acid within the goo also corrodes the opponent's armor." : "";
+					var goonade9:String = player.hasKeyItem("Caustic Goonade") >= 0 ? "Caustic Goonade" : "Goonade";
+					bd = buttons.add(""+goonade9+"", gadgetGoonade).hint("Throw a grenade that splatter "+goonade7+"sticky goo everywhere hindering movement and flight."+goonade8+"");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					else if (player.hasStatusEffect(StatusEffects.Grounded)) bd.disable("<b>You need wait until previous used Goonade effect wear off.</b>\n\n");
+				}
+				if (player.hasKeyItem("Fire Grenade") >= 0 || player.hasKeyItem("Fire Grenade II") >= 0) {
+					var fireGrenade2:String = player.hasKeyItem("Fire Grenade II") >= 0 ? " Upgrade the fire grenade explosion to also deal fire damage." : "";
+					bd = buttons.add("Fire Grenade", gadgetFireGrenade).hint("Toss a grenade that sets foes on fire inflicting the burn status effect."+fireGrenade2+"");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.hasKeyItem("Stun Grenade") >= 0 || player.hasKeyItem("Stun Grenade II") >= 0) {
+					var stunGrenade2:String = player.hasKeyItem("Stun Grenade II") >= 0 ? " Upgrade the stun grenade explosion to also deal lightning damage." : "";
+					bd = buttons.add("Stun Grenade", gadgetStunGrenade).hint("Toss a grenade that sets stun foe for 1 round."+stunGrenade2+" (4 round cd)");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
+				}
+			}
 		}
 		if (player.vehicles == vehicles.HB_MECH) {
 			
@@ -887,7 +1022,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (halfPower) mechDynapunchGlove(true, true);
 			else mechDynapunchGlove(true);
 		}
-		if (player.hasKeyItem("Taser") >= 0 && player.vehicles != vehicles.GS_MECH && !player.hasStatusEffect(StatusEffects.CooldownTazer) && !alreadyUsedWeaponFunction) {
+		if ((player.hasKeyItem("Taser") >= 0 || player.hasKeyItem("Taser with an overcharged battery") >= 0) && player.vehicles != vehicles.GS_MECH && !player.hasStatusEffect(StatusEffects.CooldownTazer) && !alreadyUsedWeaponFunction) {
 			alreadyUsedWeaponFunction = true;
 			if (halfPower) mechTazer(true, true);
 			else mechTazer(true);
@@ -1016,8 +1151,14 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.WeaponMastery) && (player.weapon.isSingleLarge() || player.weaponOff.isSingleLarge()) && player.str >= 100) critChance += 10;
 		if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weapon.isSingleLarge() && player.weaponOff.isSingleLarge() && player.str >= 140) critChance += 10;
 		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isSingleMassive() || player.weaponOff.isSingleMassive())) {
-			if (player.str >= 100) critChance += 10;
-			if (player.str >= 140) critChance += 10;
+			if (player.str >= 100) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
+			if (player.str >= 140) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
 		}
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -1126,7 +1267,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.str <= 100) chanceMeteorShot += (player.str - 50) / 5;
 			if (player.str > 100) chanceMeteorShot += 10;
 			if (rand(100) < chanceMeteorShot) {
-				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3 || player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
 				else monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 			}
 		}
@@ -1181,8 +1322,14 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.WeaponMastery) && (player.weapon.isSingleLarge() || player.weaponOff.isSingleLarge()) && player.str >= 100) critChance += 10;
 		if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weapon.isSingleLarge() && player.weaponOff.isSingleLarge() && player.str >= 140) critChance += 10;
 		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isSingleMassive() || player.weaponOff.isSingleMassive())) {
-			if (player.str >= 100) critChance += 10;
-			if (player.str >= 140) critChance += 10;
+			if (player.str >= 100) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
+			if (player.str >= 140) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+				else critChance += 10;
+			}
 		}
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -1316,6 +1463,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 						damage1B *= damage1Bc;
 						if (player.armor == armors.ELFDRES && player.isElf()) damage1B *= 2;
 						if (player.armor == armors.FMDRESS && player.isWoodElf()) damage1B *= 2;
+						if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage1B *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 						monster.teased(monster.lustVuln * damage1B);
 						if (monster.hasStatusEffect(StatusEffects.NagaVenom))
 						{
@@ -1359,6 +1507,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 						lustdamage *= damage1Bcbc;
 						if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
 						if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+						if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 						monster.teased(monster.lustVuln * lustdamage);
 						monster.statStore.addBuffObject({tou:-(damage1Bcbc*2)}, "Poison",{text:"Poison"});
 						if (monster.hasStatusEffect(StatusEffects.ManticoreVenom))
@@ -1427,6 +1576,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 							if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) lustDmg *= 2;
 							if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 							if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+							if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDmg *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 							lustDmg *= monster.lustVuln;
 							monster.teased(lustDmg);
 							if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
@@ -1675,7 +1825,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
 		if (player.hasPerk(PerkLib.DevastatingCharge) && !monster.hasPerk(PerkLib.Resolute) && rand(10) > 7) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3 || player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
 			else monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
 		}
 		outputText("\n\n");
@@ -1689,11 +1839,14 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function chargingcoooooost():Number {
 		var percent:Number = 40;
 		if (player.perkv1(IMutationsLib.TwinHeartIM) >= 1) percent -= (4 * player.perkv1(IMutationsLib.TwinHeartIM));
-		var chargingcostvalue:Number = Math.round(player.maxFatigue() * 0.01 * percent);
+		var ccv:Number = player.maxFatigue();
+		if (ccv > 10000) ccv = 10000;
+		var chargingcostvalue:Number = Math.round(ccv * 0.01 * percent);
 		if (player.horns.type == Horns.COW_MINOTAUR || player.horns.type == Horns.KIRIN || player.horns.type == Horns.UNICORN || player.horns.type == Horns.BICORN) {
 			if (player.hasPerk(PerkLib.PhantomStrike)) chargingcostvalue += 50;
 			else chargingcostvalue += 25;
 		}
+		if (player.hasPerk(PerkLib.IronMan)) chargingcostvalue = Math.round(chargingcostvalue * 0.5);
 		return chargingcostvalue;
 	}
 	
@@ -2043,6 +2196,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 			if (player.armor == armors.ELFDRES && player.isElf()) damage *= 2;
         	if (player.armor == armors.FMDRESS && player.isWoodElf()) damage *= 2;
+			if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 			monster.statStore.addBuffObject({spe:-damage/2}, "Poison",{text:"Poison"});
 			damage = monster.lustVuln * damage;
 			//Clean up down to 1 decimal point
@@ -2205,6 +2359,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				var stunDura:Number = 2;
 				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) stunDura += 1;
 				if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 3) stunDura += 1;
+				if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) stunDura += 1;
 				else monster.createStatusEffect(StatusEffects.Stunned, stunDura, 0, 0, 0);
 			}
 			else outputText("back in pain but hold steady despite the impact.");
@@ -2367,7 +2522,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function takeFlightGoglinMech():void {
 		clearOutput();
 		outputText("You activate the fly function and get some distance from the ground.\n\n");
-		player.createStatusEffect(StatusEffects.Flying, 5, 0, 0, 0);
+		player.createStatusEffect(StatusEffects.Flying, 5, 10, 0, 0);
 		if (!player.hasPerk(PerkLib.Resolute)) {
 			player.createStatusEffect(StatusEffects.FlyingNoStun, 0, 0, 0, 0);
 			player.createPerk(PerkLib.Resolute, 0, 0, 0, 0);
@@ -2603,6 +2758,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.CommandingTone)) dmgAMP += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) dmgAMP += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) dmgAMP += 0.15;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgAMP += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgAMP += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgAMP += 1;
 		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
 			dmgAMP += 0.1;
 			if (player.hasPerk(PerkLib.WispLieutenant)) dmgAMP += 0.2;
@@ -2991,6 +3149,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.CommandingTone)) dmgamp += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) dmgamp += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) dmgamp += 0.15;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgamp += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgamp += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgamp += 1;
 		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
 			dmgamp += 0.1;
 			if (player.hasPerk(PerkLib.WispLieutenant)) dmgamp += 0.2;
@@ -3159,6 +3320,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.headjewelryName == "pair of Golden Naga Hairpins") pollen *= 1.1;
 		if (player.hasPerk(PerkLib.RacialParagon)) pollen *= combat.RacialParagonAbilityBoost();
 		if (player.hasPerk(PerkLib.NaturalArsenal)) pollen *= 2;
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) pollen *= 1.2;
 		outputText("You send a cloud of your pollen outward into the air, smiling lustfully at your opponent. Sneezing slightly as they inhale the potent pollen, they begin showing clear signs of arousal. Just how long can they resist coming to pollinate you now? Not for long, you hope. ");
 		monster.teased(pollen, false);
 		outputText("\n\n");
@@ -3180,6 +3342,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.AlphaAndOmega)) EntangleNerf += 0.1;
 		if (player.hasPerk(PerkLib.AscensionOneRaceToRuleThemAllX)) EntangleNerf += (0.1 * player.perkv1(PerkLib.AscensionOneRaceToRuleThemAllX));
 		if (player.hasPerk(PerkLib.NaturalArsenal)) EntangleNerf += 0.1;
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) EntangleNerf += 0.1;
 		player.createStatusEffect(StatusEffects.AlrauneEntangle,EntangleNerf,EntangleNerf,0,0);
 		monster.statStore.addBuffObject({"str.mult":-EntangleNerf,"spe.mult":-EntangleNerf}, "EntangleNerf",{text:"EntangleNerf"});
 		enemyAI();
@@ -3198,6 +3361,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) damage *= 1.2;
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		damage = Math.round(damage);
 		outputText("You tighten your vines around your opponent's neck to strangle it. [Themonster] struggles against your natural noose, getting obvious marks on its neck and ");
@@ -3208,6 +3372,32 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText(" damage for their trouble.\n\n");
 		combat.WrathGenerationPerHit2(5);
 		enemyAI();
+	}
+
+	public function SporeCloud():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		SporeCloud0();
+		enemyAI();
+	}
+	public function SporeCloud0():void {
+		var spores:Number = monster.lustVuln * (combat.calcHerbalismPower() * 0.05) * (2 + rand(4));
+		if (player.headjewelryName == "pair of Golden Naga Hairpins") spores *= 1.1;
+		if (player.hasPerk(PerkLib.RacialParagon)) spores *= combat.RacialParagonAbilityBoost();
+		if (player.hasPerk(PerkLib.NaturalArsenal)) spores *= 2;
+		outputText("You send a cloud of your spores outward into the air, smiling lustfully at your opponent. [Themonster] sneezes slightly as [monster he] inhales your aphrodisiac-ladden spores, [monster he] begins showing clear signs of arousal. Just how long can [monster he] resist coming to fuck with you now? Not for long, you hope. ");
+		monster.teased(spores, false);
+		outputText("\n\n");
+		player.createStatusEffect(StatusEffects.SporeCloud, 0, 0, 0, 0);
+		if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 2) {
+			var tempStr:Number = player.str;
+			var tempSpe:Number = player.spe;
+			var temp:Number = 0.15;
+			temp *= (player.perkv1(IMutationsLib.MyconidSporeIM) - 1);
+			tempStr = Math.round(tempStr*temp);
+			tempSpe = Math.round(tempSpe*temp);
+			player.buff("SporeCloudEmpowerment").addStats({str:tempStr,spe:tempSpe}).withText("SporeCloud Empowerment").combatPermanent();
+		}
 	}
 
 	public function blazingRocketKick():void {
@@ -3235,13 +3425,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		checkAchievementDamage(damage);
 		outputText("\n\n");
 		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
 			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.StoredMomentum)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) {
-				if (player.statusEffectv2(StatusEffects.StoredMomentum) < limit) player.addStatusValue(StatusEffects.StoredMomentum, 2, 1);
-				player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			}
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, limit, 0, 0);
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
@@ -3328,19 +3524,60 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
 		}
 		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
 			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.StoredMomentum)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) {
-				if (player.statusEffectv2(StatusEffects.StoredMomentum) < limit) player.addStatusValue(StatusEffects.StoredMomentum, 2, 1);
-				player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			}
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, limit, 0, 0);
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
 		}
 		combat.bonusExpAfterSuccesfullTease();
+		if (player.hasKeyItem("Flasherbang II") >= 0) {
+			if (monster.hasStatusEffect(StatusEffects.Flasherbang)) monster.removeStatusEffect(StatusEffects.Flasherbang);
+			monster.createStatusEffect(StatusEffects.Flasherbang, 6, 0, 0, 0);
+		}
+		if (player.hasPerk(PerkLib.SimplifiedInterface) && flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] == 0) {
+			flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+		}
+		else enemyAI();
+	}
+	
+	public function gadgetGoonade():void {
+		clearOutput();
+		outputText("You pull the metal plug and throw the goonade forward looking away as it explodes with a bang splattering goo everywhere and restraining your opponent movement. ");
+		monster.createStatusEffect(StatusEffects.Grounded, 10, 0, 0, 0);
+		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
+			var limit:Number = 5;
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
+		}
+		if (player.hasPerk(PerkLib.GreasedLightning)) {
+			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
+			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
+		}
 		if (player.hasPerk(PerkLib.SimplifiedInterface) && flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] == 0) {
 			flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] = 1;
 			menu();
@@ -3377,6 +3614,80 @@ public class PhysicalSpecials extends BaseCombatContent {
 			outputText("\n\n");
 			combat.heroBaneProc(damage);
 			statScreenRefresh();
+		}
+		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
+			var limit:Number = 5;
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
+		}
+		if (player.hasPerk(PerkLib.GreasedLightning)) {
+			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
+			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
+		}
+		if (player.hasPerk(PerkLib.SimplifiedInterface) && flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] == 0) {
+			flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+		}
+		else enemyAI();
+	}
+	
+	public function gadgetStunGrenade():void {
+		clearOutput();
+		outputText("You pull the metal plug and throw the stun grenade ahead watching with satisfaction as it explodes unleashing a discharge of electricity and stunning your opponent. ");
+		if (!monster.hasPerk(PerkLib.Resolute)) {
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
+		}
+		player.createStatusEffect(StatusEffects.CooldownStunGrenade,4,0,0,0);
+		if (player.hasKeyItem("Stun Grenade II") >= 0) {
+			var damage:Number;
+			damage = scalingBonusIntelligence() * spellModWhite() * 8;
+			damage = calcVoltageMod(damage, true);
+			damage = combat.tinkerDamageBonus(damage);
+			damage = combat.goblinDamageBonus(damage);
+			//Determine if critical hit!
+			var crit:Boolean = false;
+			var critChance:int = 5;
+			critChance += combatMagicalCritical();
+			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+			if (rand(100) < critChance) {
+				crit = true;
+				damage *= 1.75;
+			}
+			if (monster is GooGirl) damage = Math.round(damage * 1.5);
+			if (monster.short == "tentacle beast") damage = Math.round(damage * 1.2);
+			damage = Math.round(damage);
+			doLightningDamage(damage, true, true);
+			if (crit) outputText(" <b>*Critical Hit!*</b>");
+			outputText("\n\n");
+			combat.heroBaneProc(damage);
+			statScreenRefresh();
+		}
+		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
+			var limit:Number = 5;
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
@@ -3419,7 +3730,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 		doDamage(damage, true, true, ignoreDR);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
-		if (!monster.hasPerk(PerkLib.Resolute)) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+		if (!monster.hasPerk(PerkLib.Resolute)) {
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+		}
 		if (monster.HP <= monster.minHP()) doNext(endHpVictory);
 		else {
 			if (player.hasPerk(PerkLib.SimplifiedInterface) && flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] == 0) {
@@ -3684,7 +3998,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("You punch your adversary with your stone fist, dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (!monster.hasPerk(PerkLib.Resolute)) {
 			outputText(" [Themonster] recoil under the blow!");
-			monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 		}
 		if (crit) {
 			outputText(" <b>*Critical Hit!*</b>");
@@ -3761,7 +4076,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("You slam your mace-like tail on your foe, dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (!monster.hasPerk(PerkLib.Resolute)) {
 			outputText(" The attack is so devastating your target is stunned by the crushing blow!");
-			monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
 		if (crit) {
 			outputText(" <b>*Critical Hit!*</b>");
@@ -3919,7 +4235,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
-		if (!monster.hasPerk(PerkLib.Resolute)) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+		if (!monster.hasPerk(PerkLib.Resolute)) {
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+		}
 		checkAchievementDamage(damage);
 		outputText("\n\n");
 		combat.WrathGenerationPerHit2(5);
@@ -4934,6 +5253,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					var lustDmg:Number = 35 + rand(player.lib / 10);
 					if (player.hasPerk(PerkLib.RacialParagon)) lustDmg *= combat.RacialParagonAbilityBoost();
 					if (player.hasPerk(PerkLib.NaturalArsenal)) lustDmg *= 2;
+					if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDmg *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 					lustDmg *= d3Bdcc;
 					monster.teased(Math.round(monster.lustVuln * lustDmg), true);
 					combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
@@ -5654,6 +5974,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.armor == armors.ELFDRES && player.isElf()) damage *= 2;
         	if (player.armor == armors.FMDRESS && player.isWoodElf()) damage *= 2;
 			if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1) damage *= 2;
+			if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 			damage *= dBd3c;
 			monster.teased(Math.round(monster.lustVuln * damage));
 			if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 1 && rand(100) < (player.perkv1(IMutationsLib.PoisonGlandIM) * 25)) {
@@ -5732,6 +6053,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.RacialParagon)) lustdamage *= combat.RacialParagonAbilityBoost();
 		if (player.hasPerk(PerkLib.NaturalArsenal)) lustdamage *= 2;
 		if (player.perkv1(IMutationsLib.ManticoreMetabolismIM) >= 3) lustdamage *= 2;
+		if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 		//Determine if critical!
 		var crit:Boolean = false;
 		var critChance:Number;
@@ -6341,7 +6663,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 
 	public function shieldBash():void {
 		clearOutput();
-		EngineCore.WrathChange(-shieldbashcostly());
+		if (!player.hasStatusEffect(StatusEffects.CounterAction)) EngineCore.WrathChange(-shieldbashcostly());
 		outputText("You ready your [shield] and prepare to slam it towards [themonster].  ");
 		if ((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) {
 			if (monster.spe - player.spe >= 20) outputText("[Themonster] deftly avoids your slow attack.");
@@ -6352,7 +6674,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		var damage:int = 10 + (player.str / 1.5) + rand(player.str / 2) + (player.shieldBlock * 2);
 		if (player.hasPerk(PerkLib.ShieldSlam)) damage *= 1.2;
-		if (player.hasPerk(PerkLib.SteelImpact)) damage += ((player.tou - 50) * 0.3);
+		if (player.hasPerk(PerkLib.SteelImpact)) damage += (player.tou * 0.5);
 		damage = combat.statusEffectBonusDamage(damage);
 		if (player.shieldPerk == "Large") damage *= 2;
 		if (player.shieldPerk == "Massive") damage *= 5;
@@ -6362,11 +6684,12 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("Your [shield] slams against [themonster], dealing <b>[font-damage]" + damage + "[/font]</b> damage! ");
 		if (player.hasPerk(PerkLib.BrutalOpening)) {
 			if (!monster.hasStatusEffect(StatusEffects.TimesBashed)) monster.createStatusEffect(StatusEffects.TimesBashed, 0, 2, 0, 0);
+			else monster.addStatusValue(StatusEffects.TimesBashed, 2, 2);
 			if (player.hasPerk(PerkLib.LingeringOpening)) monster.addStatusValue(StatusEffects.TimesBashed, 2, 2);
 		}
 		if (!monster.hasStatusEffect(StatusEffects.Stunned) && rand(chance) == 0) {
 			outputText("<b>Your impact also manages to stun [themonster]!</b> ");
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3 || player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 			else monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 			var dismishing:Number = 1;
 			if (player.hasPerk(PerkLib.ShieldSlam)) dismishing *= 0.5;
@@ -6388,7 +6711,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("\n\n");
 		combat.heroBaneProc(damage);
 		combat.EruptingRiposte();
-		if (player.statusEffectv1(StatusEffects.CounterAction) == 1) {
+		if (player.hasStatusEffect(StatusEffects.CounterAction)) {
 			player.removeStatusEffect(StatusEffects.CounterAction);
 			doNext(playerMenu);
 		}
@@ -6398,7 +6721,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		clearOutput();
 		outputText("You skillfully toss your net at [themonster] restraining [monster his] movement.");
 		player.createStatusEffect(StatusEffects.CooldownNet,5,0,0,0);
-		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3) {
+		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 3 || player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) {
 			monster.createStatusEffect(StatusEffects.Stunned,4,0,0,0);
 			monster.createStatusEffect(StatusEffects.EntangledByNet,4,0,0,0);
 		}
@@ -6621,6 +6944,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				}
 				if (player.armor == armors.ELFDRES && player.isElf()) damage1B *= 2;
 				if (player.armor == armors.FMDRESS && player.isWoodElf()) damage1B *= 2;
+				if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) damage1B *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 				monster.teased(damage1B*Omnishot);
 				if (monster.hasStatusEffect(StatusEffects.BeeVenom)) {
 					monster.addStatusValue(StatusEffects.BeeVenom, 3, damage1Ba*Omnishot);
@@ -6664,6 +6988,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				}
 				if (player.armor == armors.ELFDRES && player.isElf()) lustdamage *= 2;
 				if (player.armor == armors.FMDRESS && player.isWoodElf()) lustdamage *= 2;
+				if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustdamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 				monster.teased(lustdamage*Omnishot, false);
 				if (player.hasPerk(PerkLib.ToxineMaster)) DBPaa += 2.5;
 				monster.statStore.addBuffObject({tou:-(DBPaa*2*Omnishot)}, "Poison",{text:"Poison"});
@@ -6731,6 +7056,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) lustDmg *= 2;
 					if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 					if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+					if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) lustDmg *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 					monster.teased(lustDmg*Omnishot);
 					if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
 						monster.lustVuln += 0.01;
@@ -6986,11 +7312,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 			doLightningDamage(damage, true, true);
 			outputText(" damage!");
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
-			monster.createStatusEffect(StatusEffects.Stunned,4,0,0,0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,5,0,0,0);
+			else monster.createStatusEffect(StatusEffects.Stunned,4,0,0,0);
 		}
 		else {
 			outputText("discharge!");
-			monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 3, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
 		statScreenRefresh();
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
@@ -7079,13 +7407,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		player.createStatusEffect(StatusEffects.GoblinMechStimpack, 10, heal, 0, 0);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		if (player.hasPerk(PerkLib.StoredMomentum)) {
+			var storedmomentum1:Number = player.spe;
+			var storedmomentum2:Number = player.str;
 			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.StoredMomentum)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) {
-				if (player.statusEffectv2(StatusEffects.StoredMomentum) < limit) player.addStatusValue(StatusEffects.StoredMomentum, 2, 1);
-				player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			}
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, limit, 0, 0);
+			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
+			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+			var oldHPratio:Number    = player.hp100 / 100;
+			mainView.statsView.showStatUp('spe');
+			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+			player.HP = oldHPratio * player.maxHP();
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
@@ -7125,7 +7459,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		if (monster.isFlying()) {
 			outputText(" There is something very satisfying about hampering your opponent’s ability to fly around by messing with their space.");
-			monster.createStatusEffect(StatusEffects.Stunned, 4, 0, 0, 0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned, 5, 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.Stunned, 4, 0, 0, 0);
 		}
 		outputText("\n\n");
 		combat.heroBaneProc(damage);
@@ -7327,7 +7662,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText(" <b>([font-damage]" + damage + "[/font])</b> damage");
 		if (!monster.hasPerk(PerkLib.Resolute)) {
 			outputText(" stunning [monster his] for the round");
-			monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,3,0,0,0);
+			else monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
 		}
 		outputText(".");
 		if (crit) outputText(" <b>*Critical Hit!*</b>");

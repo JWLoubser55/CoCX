@@ -1,4 +1,5 @@
 package classes.Scenes.Combat.SpellsWhite {
+import classes.PerkLib;
 import classes.Scenes.Combat.AbstractWhiteSpell;
 import classes.StatusEffectType;
 import classes.StatusEffects;
@@ -65,8 +66,16 @@ public class CureSpell extends AbstractWhiteSpell{
 	}
 	
 	override public function calcCooldown():int {
-		var calcC:int = 4;
-		calcC += spellGenericCooldown();
+		var calcC:int = 0;
+		if (!player.hasPerk(PerkLib.JobHealer)) calcC += spellGenericCooldown();
+		if (player.weaponRange == weaponsrange.RW_TOME && player.level < 24) {
+			if (player.level < 6) calcC -= 1;
+			if (player.level < 12) calcC -= 1;
+			if (player.level < 18) calcC -= 1;
+			calcC -= 1;
+		}
+		if (player.weapon == weapons.U_STAFF) calcC -= 2;
+		if (calcC < 0) calcC = 0;
 		return calcC;
 	}
 	

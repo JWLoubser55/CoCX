@@ -85,7 +85,7 @@ public class RyuBiDragon extends Monster
 				this.armorMDef = 50;
 				this.lustVuln = .02;
 				this.bonusHP = 50;
-				this.bonusLust = 10;
+				this.bonusLust = 88;
 				this.level = 3;
 			}
 			if (flags[kFLAGS.RYUBI_LVL_UP] == 2) {
@@ -97,7 +97,7 @@ public class RyuBiDragon extends Monster
 				this.armorMDef = 7;
 				this.lustVuln = .03;
 				this.bonusHP = 100;
-				this.bonusLust = 20;
+				this.bonusLust = 91;
 				this.level = 6;
 			}
 			if (flags[kFLAGS.RYUBI_LVL_UP] == 3) {
@@ -109,7 +109,7 @@ public class RyuBiDragon extends Monster
 				this.armorMDef = 10;
 				this.lustVuln = .04;
 				this.bonusHP = 150;
-				this.bonusLust = 30;
+				this.bonusLust = 94;
 				this.level = 9;
 			}
 			if (flags[kFLAGS.RYUBI_LVL_UP] == 4) {
@@ -121,7 +121,7 @@ public class RyuBiDragon extends Monster
 				this.armorMDef = 15;
 				this.lustVuln = .05;
 				this.bonusHP = 200;
-				this.bonusLust = 40;
+				this.bonusLust = 97;
 				this.level = 12;
 			}
 			if (flags[kFLAGS.RYUBI_LVL_UP] == 5) {
@@ -133,7 +133,7 @@ public class RyuBiDragon extends Monster
 				this.armorMDef = 20;
 				this.lustVuln = .07;
 				this.bonusHP = 250;
-				this.bonusLust = 50;
+				this.bonusLust = 100;
 				this.level = 15;
 			}
 			if (flags[kFLAGS.RYUBI_LVL_UP] == 6) {
@@ -144,51 +144,51 @@ public class RyuBiDragon extends Monster
 				this.armorDef = 25;
 				this.armorMDef = 25;
 				this.bonusHP = 300;
-				this.bonusLust = 60;
+				this.bonusLust = 103;
 				this.level = 18;
 			}
 			if (flags[kFLAGS.RYUBI_LVL_UP] == 7) {
-				initStrTouSpeInte(150, 200, 70, 100);
-				initWisLibSensCor(100, 50, 35, 0);
+				initStrTouSpeInte(160, 220, 80, 120);
+				initWisLibSensCor(120, 50, 35, 0);
 				this.tallness = 48*12;
 				this.weaponAttack = 36;
 				this.armorDef = 54;
 				this.armorMDef = 54;
 				this.bonusHP = 300;
-				this.bonusLust = 60;
+				this.bonusLust = 106;
 				this.level = 24;
 			}
 			if (flags[kFLAGS.RYUBI_LVL_UP] == 8) {
-				initStrTouSpeInte(150, 200, 70, 100);
-				initWisLibSensCor(100, 50, 35, 0);
+				initStrTouSpeInte(170, 240, 90, 140);
+				initWisLibSensCor(140, 50, 35, 0);
 				this.tallness = 50*12;
 				this.weaponAttack = 36;
 				this.armorDef = 54;
 				this.armorMDef = 54;
 				this.bonusHP = 300;
-				this.bonusLust = 60;
+				this.bonusLust = 112;
 				this.level = 30;
 			}
 			if (flags[kFLAGS.RYUBI_LVL_UP] == 8) {
-				initStrTouSpeInte(150, 200, 70, 100);
-				initWisLibSensCor(100, 50, 35, 0);
+				initStrTouSpeInte(180, 260, 100, 160);
+				initWisLibSensCor(160, 50, 35, 0);
 				this.tallness = 52*12;
 				this.weaponAttack = 36;
 				this.armorDef = 54;
 				this.armorMDef = 54;
 				this.bonusHP = 300;
-				this.bonusLust = 60;
+				this.bonusLust = 118;
 				this.level = 36;
 			}
 			if (flags[kFLAGS.RYUBI_LVL_UP] == 8) {
-				initStrTouSpeInte(150, 200, 70, 100);
-				initWisLibSensCor(100, 50, 35, 0);
+				initStrTouSpeInte(190, 280, 110, 180);
+				initWisLibSensCor(180, 50, 35, 0);
 				this.tallness = 54*12;
 				this.weaponAttack = 36;
 				this.armorDef = 54;
 				this.armorMDef = 54;
 				this.bonusHP = 300;
-				this.bonusLust = 60;
+				this.bonusLust = 124;
 				this.level = 42;
 			}
 			this.a = "the ";

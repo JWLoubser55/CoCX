@@ -40,7 +40,7 @@ public class FusionSpecial4thSkill extends AbstractMagicSpecial {
         if (ElementalRace.getElement(player) == ElementalRace.ELEMENT_SYLPH && player.hasStatusEffect(StatusEffects.InsideSmallSpace))
             return "You can't use this inside too small spaces.";
         
-        if (ElementalRace.getElement(player) == ElementalRace.ELEMENT_GNOME && monster.hasStatusEffect(StatusEffects.Flying))
+        if (ElementalRace.getElement(player) == ElementalRace.ELEMENT_GNOME && monster.isFlying())
             return "You can't reach flying targets.";
             
         return "";

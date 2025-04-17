@@ -28,6 +28,8 @@ package classes.Scenes.NPCs
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 4) eAttack();
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 8) eAttack();
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 12) eAttack();
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 16) eAttack();
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 20) eAttack();
 		}
 		
 		public function usingPounce():void {
@@ -35,7 +37,8 @@ package classes.Scenes.NPCs
 			player.createStatusEffect(StatusEffects.WolfHold,0,0,0,0);
 			if (player.hasPerk(PerkLib.Juggernaut) < 0 && armorPerk != "Heavy") {
 				var takeD:Number;
-				if (flags[kFLAGS.LUNA_LVL_UP] >= 15) takeD = 18+rand(35);
+				if (flags[kFLAGS.LUNA_LVL_UP] >= 18) takeD = 20+rand(40);
+				else if (flags[kFLAGS.LUNA_LVL_UP] >= 15) takeD = 18+rand(35);
 				else if (flags[kFLAGS.LUNA_LVL_UP] >= 12) takeD = 16+rand(30);
 				else if (flags[kFLAGS.LUNA_LVL_UP] >= 9) takeD = 14+rand(25);
 				else if (flags[kFLAGS.LUNA_LVL_UP] >= 6) takeD = 12+rand(20);
@@ -47,14 +50,20 @@ package classes.Scenes.NPCs
 		
 		public function usingRavage():void {
 			outputText("Luna rends you with her claws.");
-			var RavageDmg:Number = eBaseStrengthDamage();
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 3) RavageDmg += eBaseStrengthDamage() * 0.2;
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 6) RavageDmg += eBaseStrengthDamage() * 0.3;
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 9) RavageDmg += eBaseStrengthDamage() * 0.4;
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 12) RavageDmg += eBaseStrengthDamage() * 0.5;
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 15) RavageDmg += eBaseStrengthDamage() * 0.6;
+			var RavageDmg:Number = eBaseStrengthDamage() * 1.5;
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 3) RavageDmg += eBaseStrengthDamage() * 0.3;
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 6) RavageDmg += eBaseStrengthDamage() * 0.6;
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 9) RavageDmg += eBaseStrengthDamage() * 0.9;
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 12) RavageDmg += eBaseStrengthDamage() * 1.2;
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 15) RavageDmg += eBaseStrengthDamage() * 1.5;
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 18) RavageDmg += eBaseStrengthDamage() * 1.8;
 			RavageDmg = Math.round(RavageDmg);
 			player.takePhysDamage(RavageDmg, true);
+			player.takePhysDamage(RavageDmg, true);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 16) {
+				player.takePhysDamage(RavageDmg, true);
+				player.takePhysDamage(RavageDmg, true);
+			}
 		}
 		
 		override public function defeated(hpVictory:Boolean):void
@@ -90,25 +99,25 @@ package classes.Scenes.NPCs
 				this.bonusLust = 129;
 				this.level = 9;
 			}
-			else if (flags[kFLAGS.LUNA_LVL_UP] == 15) {
-				initStrTouSpeInte(135, 400, 145, 80);
-				initWisLibSensCor(80, 230, 190, 50);
-				this.weaponAttack = 66;
-				this.armorDef = 350;
-				this.armorMDef = 20;
-				this.bonusHP = 1600;
-				this.bonusLust = 519;
-				this.level = 99;
+			else if (flags[kFLAGS.LUNA_LVL_UP] == 22) {
+				initStrTouSpeInte(866, 1200, 942, 754);
+				initWisLibSensCor(754, 630, 480, 50);
+				this.weaponAttack = 432;
+				this.armorDef = 4600;
+				this.armorMDef = 115;
+				this.bonusHP = 7400;
+				this.bonusLust = 1251;
+				this.level = 141;
 			}
 			else {  //leave min and max levels to easily balance npc combat
 				var lvlMulti:Number = flags[kFLAGS.LUNA_LVL_UP];
-				initStrTouSpeInte(30 + 7*lvlMulti, 100 + 20*lvlMulti, 40 + 7*lvlMulti, 50 + 2*lvlMulti);
-				initWisLibSensCor(50 + 2*lvlMulti, 80 + 10*lvlMulti, 40+10*lvlMulti, 50);
-				this.weaponAttack = 36 + 2*lvlMulti;
-				this.armorDef = 200 + 10*lvlMulti;
-				this.armorMDef = 5 + lvlMulti;
-				this.bonusHP = 800 + 50*lvlMulti;
-				this.bonusLust = 129 + 26*lvlMulti;
+				initStrTouSpeInte(30 + 38*lvlMulti, 100 + 50*lvlMulti, 40 + 41*lvlMulti, 50 + 32*lvlMulti);
+				initWisLibSensCor(50 + 32*lvlMulti, 80 + 25*lvlMulti, 40 + 20*lvlMulti, 50);
+				this.weaponAttack = 36 + 18*lvlMulti;
+				this.armorDef = 200 + 200*lvlMulti;
+				this.armorMDef = 5 + 5*lvlMulti;
+				this.bonusHP = 800 + 300*lvlMulti;
+				this.bonusLust = 129 + 51*lvlMulti;
 				this.level = 9 + 6*lvlMulti;
 			}//level up giving 2x all growns and so follow next level ups's as long each npc break lvl 100 (also makes npc use new better gear)
 			this.a = "";
@@ -134,23 +143,34 @@ package classes.Scenes.NPCs
 			this.lustVuln = 0.01;
 			this.gems = 5 + rand(5);
 			this.drop = NO_DROP;
-			this.createPerk(PerkLib.MonsterRegeneration, 5, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyBeastOrAnimalMorphType, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] < 16) this.createPerk(PerkLib.MonsterRegeneration, 5, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 16 && flags[kFLAGS.LUNA_LVL_UP] < 23) {
+				this.createPerk(PerkLib.MonsterRegeneration, 10, 0, 0, 0);
+				this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
+			}
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 1) this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 2) this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 3) this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 2) this.createPerk(PerkLib.NakedTruth, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 3) this.createPerk(PerkLib.EpicToughness, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 4) this.createPerk(PerkLib.Diehard, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 5) this.createPerk(PerkLib.EpicToughness, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 6) this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 5) this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 6) this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 7) this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 8) this.createPerk(PerkLib.ImprovedDiehard, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 9) this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 10) this.createPerk(PerkLib.LegendaryToughness, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 11) this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 9) this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 10) this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 11) this.createPerk(PerkLib.LimitBreakerBody1stStage, 0, 0, 0, 0);
 			if (flags[kFLAGS.LUNA_LVL_UP] >= 12) this.createPerk(PerkLib.GreaterDiehard, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 13) this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 14) this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
-			if (flags[kFLAGS.LUNA_LVL_UP] >= 15) this.createPerk(PerkLib.MythicalToughness, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 13) this.createPerk(PerkLib.EpicLibido, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 14) this.createPerk(PerkLib.ImmovableObject, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 15) this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 16) this.createPerk(PerkLib.LegendaryToughness, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 17) this.createPerk(PerkLib.LimitBreakerFlesh1stStage, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 18) this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 19) this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 20) this.createPerk(PerkLib.EpicDiehard, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 21) this.createPerk(PerkLib.LimitBreakerBody2ndStage, 0, 0, 0, 0);
+			if (flags[kFLAGS.LUNA_LVL_UP] >= 22) this.createPerk(PerkLib.LegendaryStrength, 0, 0, 0, 0);
 			this.abilities = [
 				{call: usingRavage, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_BODY], weight:2 },
 				{call: usingClawCombo, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_BODY]},

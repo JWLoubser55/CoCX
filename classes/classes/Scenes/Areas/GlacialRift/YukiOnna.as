@@ -16,9 +16,9 @@ public class YukiOnna extends Monster
 		public function IcyKiss():void {
 			outputText("Suddenly the Yuki Onna flies down and forcefully pulls you into a kiss. At first you’re confused but you quickly shove her away in panic as you begin freezing from the inside. She giggles as she takes back to the air, leaving you aroused and colder at the same time. Your lungs feel like they’re freezing, only accelerating your demise! ");
 			player.createStatusEffect(StatusEffects.FrozenLung, SceneLib.combat.debuffsOrDoTDuration(2), 0.03, 0, 0);
-			var kissdmg:Number = this.inte + this.wis + this.lib;
+			var kissdmg:Number = (this.inte + this.wis + this.lib) * 2;
 			player.takeIceDamage(kissdmg, true);
-			var kisslust:Number = (inte / 5) + rand(10);
+			var kisslust:Number = (inte / 2) + rand(50);
 			kisslust = Math.round(kisslust);
 			player.takeLustDamage(kisslust, true);
 		}
@@ -31,17 +31,16 @@ public class YukiOnna extends Monster
 		
 		public function ConeOfCold():void {
 			outputText("The Yuki onna inhales then breathes a cone of ice magic out. The howling blast freezes you solid, encasing you in a thick layer of ice! ");
-			var conedmg:Number = (this.str + this.spe + this.tou) * 5;
+			var conedmg:Number = (this.str + this.spe + this.tou) * 10;
 			player.takeIceDamage(conedmg, true);
 			player.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
 		
 		public function IcySpear():void {
 			outputText("The Yuki Onna runs you through with her icy spear. The tip isn't as deadly as a metal weapon but the cold pierces you outright, leaving you with frostburns. ");
-			var damage:Number = 0;
-			damage += eBaseDamage();
+			var damage:Number = eBaseDamage() * 2;
 			player.takePhysDamage(damage, true);
-			var frostburnPlayer:Number = (this.str + this.spe + this.tou) * 2;
+			var frostburnPlayer:Number = (this.str + this.spe + this.tou) * 4;
 			player.takeIceDamage(frostburnPlayer, true);
 			if (!player.immuneToFrostBurn()) {
 				if (player.hasStatusEffect(StatusEffects.FrostburnDoT)) {
@@ -96,20 +95,20 @@ public class YukiOnna extends Monster
 			this.skin.setBaseOnly({color:"pale blue"});
 			this.hairColor = "silver white";
 			this.hairLength = 25;
-			initStrTouSpeInte(135, 24, 240, 319);
-			initWisLibSensCor(265, 240, 115, -70);
+			initStrTouSpeInte(405, 72, 720, 638);
+			initWisLibSensCor(530, 480, 230, -70);
 			this.weaponName = "Icy spear";
 			this.weaponVerb="pummel";
-			this.weaponAttack = 54;
+			this.weaponAttack = 103;
 			this.armorName = "Snowy Kimono";
-			this.armorDef = 10;
-			this.armorMDef = 10;
-			this.bonusHP = 1500;
-			this.bonusLust = 426;
+			this.armorDef = 100;
+			this.armorMDef = 100;
+			this.bonusHP = 2500;
+			this.bonusLust = 796;
 			this.lust = 25 + rand(15);
 			this.lustVuln = 0.36;
-			this.level = 71;
-			this.gems = 115 + rand(20);
+			this.level = 86;
+			this.gems = 150 + rand(20);
 			this.drop = new WeightedDrop()
 					.add(armors.BLIZZ_K, 1)
 					.add(weapons.BCLAWS, 1)

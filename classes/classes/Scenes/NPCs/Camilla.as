@@ -33,10 +33,10 @@ import classes.Scenes.SceneLib;
 			else {
 				outputText("Seeing an opening, Camilla forces her way through your guard with a quick pair of powerful strikes. ");
 				//Get hit
-				var damage:int = str + weaponAttack + rand(80);
+				var damage:int = (str + weaponAttack + rand(160)) * 2;
 				player.takePhysDamage(damage, true);
 				//Get hit again
-				damage = str + weaponAttack + rand(80);
+				damage = (str + weaponAttack + rand(160)) * 2;
 				player.takePhysDamage(damage, true);
 			}
 		}
@@ -52,7 +52,7 @@ import classes.Scenes.SceneLib;
 				}
 				//MASSIVE DAMAGE!
 				else {
-					var damage:int = str + weaponAttack + 300 + rand(250);
+					var damage:int = (str + weaponAttack + 600 + rand(500)) * 2;
 					outputText("As she zooms over you a great gout of flame erupts from Camilla’s mouth! You dive out of the way, but all too late. The wall of fire rolls over ");
 					if (player.hasStatusEffect(StatusEffects.Blizzard)) {
 						player.addStatusValue(StatusEffects.Blizzard, 1, -1);
@@ -80,7 +80,7 @@ import classes.Scenes.SceneLib;
 				if (player.hasCock() && player.hasVagina()) outputText("whilst your");
 				if (player.hasVagina()) outputText("thighs are suddenly soaked by a torrent of girlcum as your body reacts to the potent chemicals");
 				outputText(".");
-				var lustDmg:Number = (30 + rand(30));
+				var lustDmg:Number = 100 + rand(60);
 				player.takeLustDamage(lustDmg, true);
 			}
 		}
@@ -133,20 +133,20 @@ import classes.Scenes.SceneLib;
 			this.skinColor = "light";
 			this.hairColor = "red";
 			this.hairLength = 16;
-			initStrTouSpeInte(135, 115, 170, 100);
-			initWisLibSensCor(100, 80, 45, 50);
+			initStrTouSpeInte(704, 673, 691, 494);
+			initWisLibSensCor(469, 640, 450, -10);
 			this.weaponName = "scimitar and shield";
 			this.weaponVerb="slash";
-			this.weaponAttack = 42;
+			this.weaponAttack = 840;
 			this.armorName = "chainmail and loincloth";
-			this.armorDef = 38;
-			this.armorMDef = 19;
-			this.bonusHP = 1000;
-			this.bonusLust = 155;
+			this.armorDef = 1100;
+			this.armorMDef = 550;
+			this.bonusHP = 8000;
+			this.bonusLust = 1173;
 			this.lust = 10;
 			this.lustVuln = .7;//harpy queen have only .15;
-			this.level = 30;
-			this.gems = 60 + rand(45);
+			this.level = 83;
+			this.gems = 160 + rand(40)
 			this.additionalXP = 50;
 			this.eyes.type = Eyes.LIZARD;
 			this.hairType = Hair.FEATHER;

@@ -681,6 +681,7 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 				saveFile.data.flags[i] = flags[i];
 			}
 		}
+		saveFile.data.flags[kFLAGS.EXP_BANKING] = flags[kFLAGS.EXP_BANKING];
 		saveFile.data.counters = [];
 
 		//CLOTHING/ARMOR
@@ -1603,6 +1604,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 	var spillyFix:Boolean = false;
 	game.isLoadingSave = true;
 	inDungeon = false;
+	inOutdoorDungeon = false;
 	inRoomedDungeon = false;
 	inRoomedDungeonResume = null;
 
@@ -1642,8 +1644,14 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			trace("Found internal versionID:", game.versionID);
 		}
 		unFuckSaveDataBeforeLoading(saveFile.data);
-		//PIERCINGS
 
+		// default exp banking to true for old saves. Can be toggled off in the game settings later.
+		if (saveFile.data.flags[kFLAGS.EXP_BANKING] == undefined)
+		{
+			flags[kFLAGS.EXP_BANKING] = 1;
+		}
+
+		//PIERCINGS
 		//trace("LOADING PIERCINGS");
 		player.nipplesPierced = saveFile.data.nipplesPierced;
 		player.nipplesPShort = saveFile.data.nipplesPShort;

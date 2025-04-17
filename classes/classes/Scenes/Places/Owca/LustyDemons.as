@@ -15,10 +15,18 @@ import classes.internals.WeightedDrop;
 public class LustyDemons extends Monster
 	{
 
+		override public function teased(lustDelta:Number, isNotSilent:Boolean = true, display:Boolean = true, aura:Boolean = false):void
+		{
+			if(lustDelta > 0 && lustDelta < 5) outputText("  The demons lessen somewhat in the intensity of their attack, and some even eye up your assets as they strike at you. Vapula has trouble giving her orders.");
+			if(lustDelta >= 5 && lustDelta < 10) outputText("  The demons are obviously avoiding damaging anything you might use to fuck and they're starting to leave their hands on you just a little longer after each blow.  Some are copping quick feels and you can smell the demonic lust on the air.  Vapula is starting to get frustrated as her minions are more and more reluctant to attack you, preferring to caress each other instead.");
+			if(lustDelta >= 10) outputText("  The demons are decreasingly willing to hit you and more and more willing to just stroke their hands sensuously over you.  Vapula is uncontrollably aroused herself and shivers even as she tries to maintain some semblance of offense, but most of the demons are visibly uncomfortable and some just lie on the ground, tamed by their own lust.");
+			applyTease(lustDelta, display, aura);
+		}
+
 		override protected function performCombatAction():void
 		{
 			var storeStr:Number = str;
-			this.strStat.core.value = 70;
+			this.strStat.core.value *= 0.2;
 			this.weaponAttack *= 0.2;
 			createStatusEffect(StatusEffects.Attacks, 4, 0, 0, 0);
 			eAttack();
@@ -40,14 +48,6 @@ public class LustyDemons extends Monster
 			} else {
 				SceneLib.owca.loseOrSubmitToVapula();
 			}
-		}
-
-		override public function teased(lustDelta:Number, isNotSilent:Boolean = true, display:Boolean = true, aura:Boolean = false):void
-		{
-			if(lustDelta > 0 && lustDelta < 5) outputText("  The demons lessen somewhat in the intensity of their attack, and some even eye up your assets as they strike at you. Vapula has trouble giving her orders.");
-			if(lustDelta >= 5 && lustDelta < 10) outputText("  The demons are obviously avoiding damaging anything you might use to fuck and they're starting to leave their hands on you just a little longer after each blow.  Some are copping quick feels and you can smell the demonic lust on the air.  Vapula is starting to get frustrated as her minions are more and more reluctant to attack you, preferring to caress each other instead.");
-			if(lustDelta >= 10) outputText("  The demons are decreasingly willing to hit you and more and more willing to just stroke their hands sensuously over you.  Vapula is uncontrollably aroused herself and shivers even as she tries to maintain some semblance of offense, but most of the demons are visibly uncomfortable and some just lie on the ground, tamed by their own lust.");
-			applyTease(lustDelta, display, aura);
 		}
 
 		public function LustyDemons()
@@ -76,20 +76,20 @@ public class LustyDemons extends Monster
 			this.bodyColor = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			initStrTouSpeInte(180, 100, 10, 10);
-			initWisLibSensCor(10, 120, 60, 100);
+			initStrTouSpeInte(540, 300, 30, 20);
+			initWisLibSensCor(20, 240, 120, 100);
 			this.weaponName = "claws";
 			this.weaponVerb="claw";
-			this.weaponAttack = 4;
+			this.weaponAttack = 80;
 			this.armorName = "demonic skin";
-			this.armorDef = 8;
-			this.armorMDef = 1;
-			//6 attacks: 5 from demons (10 damage each), 1 from Vapula (80 damage), 200 gems, 200 xp, 700 hp*/
-			this.bonusHP = 1200;
-			this.bonusLust = 208;
+			this.armorDef = 80;
+			this.armorMDef = 10;
+			//6 attacks: 5 from demons (20 damage each), 1 from Vapula (80 damage), 200 gems, 200 xp, 700 hp*/
+			this.bonusHP = 1400;
+			this.bonusLust = 398;
 			this.lust = 30;
 			this.lustVuln = .3;
-			this.level = 28;
+			this.level = 38;
 			this.gems = 500 + rand(250);
 			this.special1 = SceneLib.combat.packAttack;
 			this.special2 = SceneLib.combat.lustAttack;

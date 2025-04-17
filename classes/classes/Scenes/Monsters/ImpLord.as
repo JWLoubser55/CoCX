@@ -138,23 +138,23 @@ public class ImpLord extends Imp
 			this.butt.type = Butt.RATING_TIGHT;
 			this.lowerBody = LowerBody.HOOFED;
 			this.bodyColor = "red";
-			initStrTouSpeInte(55, 40, 45, 42);
-			initWisLibSensCor(42, 55, 35, 100);
+			initStrTouSpeInte(75, 43, 55, 42);
+			initWisLibSensCor(42, 79, 41, 100);
 			if (player.hasStatusEffect(StatusEffects.SiegweirdImp)) {
-				this.weaponName = "fist";
-				this.weaponVerb="punch";
-				this.weaponAttack = 10;
-			}
-			else {
 				this.weaponName = "huge greatsword";
 				this.weaponVerb="slash";
-				this.weaponAttack = 40;
+				this.weaponAttack = 50;
+			}
+			else {
+				this.weaponName = "fist";
+				this.weaponVerb="punch";
+				this.weaponAttack = 12;
 			}
 			this.armorName = "leathery skin";
 			this.armorDef = 5;
 			this.armorMDef = 1;
 			this.bonusHP = 100;
-			this.bonusLust = 97;
+			this.bonusLust = 127;
 			this.lust = 30;
 			this.lustVuln = .65;
 			this.level = 7;
@@ -179,6 +179,7 @@ public class ImpLord extends Imp
 			];
 			this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);
 			this.createPerk(PerkLib.OverMaxHP, 7, 0, 0, 0);
+			this.createPerk(PerkLib.EnemyForBeginnersType, 0, 0, 0, 0);
 			checkMonster();
 		}
 		

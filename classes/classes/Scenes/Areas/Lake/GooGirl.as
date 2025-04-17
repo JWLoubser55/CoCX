@@ -18,7 +18,7 @@ public class GooGirl extends Monster
 		override public function playerBoundStruggle():Boolean{
 			clearOutput();
 			//[Struggle](successful) :
-			if (rand(3) == 0 || rand(80) < player.str) {
+			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100)) {
 				outputText("You claw your fingers wildly within the slime and manage to brush against her heart-shaped nucleus. The girl silently gasps and loses cohesion, allowing you to pull yourself free while she attempts to solidify.");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 			}
@@ -186,8 +186,8 @@ public class GooGirl extends Monster
 			this.weaponVerb="slap";
 			this.weaponAttack = 7;
 			this.armorName = "gelatinous skin";
-			this.armorDef = 8;
-			this.armorMDef = 24;
+			this.armorDef = 24;
+			this.armorMDef = 8;
 			this.bonusHP = 40;
 			this.bonusLust = 107;
 			this.lust = 45;

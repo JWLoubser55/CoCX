@@ -25,12 +25,21 @@ public class Belisa extends Monster
 	{
 		private function spellCostWhitefire():Number {
 			var cost:Number = 30;
+			if (this.level >= 27) cost += 5;
+			if (this.level >= 54) cost += 5;
+			if (this.level >= 78) cost += 5;
+			if (this.level >= 126) cost += 5;
 			return cost;
 		}
 		private function spellCostHeal():Number {
 			var cost:Number = 30;
 			if (hasPerk(PerkLib.NaturalHealingMinor)) cost -= 3;
 			if (hasPerk(PerkLib.NaturalHealingMajor)) cost -= 4.5;
+			if (hasPerk(PerkLib.NaturalHealingEpic)) cost -= 6;
+			if (this.level >= 126) cost *= 1.5;
+			else if (this.level >= 78) cost *= 1.375;
+			else if (this.level >= 54) cost *= 1.25;
+			else if (this.level >= 27) cost *= 1.125;
 			if (hasPerk(PerkLib.WisenedHealer)) cost *= 2;
 			return cost;
 		}
@@ -40,12 +49,19 @@ public class Belisa extends Monster
 			if (hasPerk(PerkLib.SpellpowerHealing)) mod1 += .2;
 			if (hasPerk(PerkLib.NaturalHealingMinor)) mod1 += .3;
 			if (hasPerk(PerkLib.NaturalHealingMajor)) mod1 += .4;
+			if (hasPerk(PerkLib.NaturalHealingEpic)) mod1 += .5;
 			return mod1;
 		}
 		private function SpellMod():Number {
 			var mod2:Number = 1;
 			if (hasPerk(PerkLib.Spellpower)) mod2 += .1;
+			if (hasPerk(PerkLib.Mage)) mod2 += .1;
 			if (hasPerk(PerkLib.Channeling)) mod2 += .2;
+			if (hasPerk(PerkLib.GrandMage)) mod2 += .3;
+			if (hasPerk(PerkLib.Archmage)) mod2 += .3;
+			if (hasPerk(PerkLib.GrandArchmage)) mod2 += .4;
+			if (hasPerk(PerkLib.GrandArchmage2ndCircle)) mod2 += .5;
+			if (hasPerk(PerkLib.GrandArchmage3rdCircle)) mod2 += .6;
 			if (hasPerk(PerkLib.JobSorcerer)) mod2 += .1;
 			return mod2;
 		}
@@ -56,39 +72,31 @@ public class Belisa extends Monster
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 4) slashes = "ten";
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 6) slashes = "twelve";
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 8) slashes = "fourteen";
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 10) slashes = "sixteen";
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 12) slashes = "eighteen";
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 14) slashes = "twenty";
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 16) slashes = "twenty-two";
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 18) slashes = "twenty-four";
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 20) slashes = "twenty-six";
 			outputText("The nimble drider-girl leaps towards you. You raise your [weapon] to intercept, but she shoots a web above and into the trees with a sharp thwip, nimbly evading your block. She gets inside your guard. \"<i>Hya, Hya! Heeeyah!!</i>\" She slashes "+slashes+" times, cutting cleanly through your [color] [skin.type] before leaping backwards and out of your reach. Blood begins to flow from your injuries.");
 			var bleedP:Number = 0.05;
 			var dmg0:Number = 0;
+			var bBA:Number = 6;
 			dmg0 += this.str;
 			dmg0 += eBaseStrengthDamage();
+			dmg0 += this.spe * 0.5;
+			dmg0 += eBaseSpeedDamage() * 0.5;
 			dmg0 += this.weaponAttack;
-			dmg0 = Math.round(dmg0 * 0.8);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			player.takePhysDamage(dmg0, true);
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 2) {
-				player.takePhysDamage(dmg0, true);
-				player.takePhysDamage(dmg0, true);
+			dmg0 = Math.round(dmg0 * 0.75);
+			if (flags[kFLAGS.BELISA_LVL_UP] == 2) {
+				bBA += 2;
 				bleedP += 0.01;
 			}
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 4) {
-				player.takePhysDamage(dmg0, true);
-				player.takePhysDamage(dmg0, true);
-				bleedP += 0.01;
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 3) {
+				bBA += Math.round(flags[kFLAGS.BELISA_LVL_UP]+1)*2;
+				bleedP += Math.round(flags[kFLAGS.BELISA_LVL_UP]+1)*0.01;
 			}
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 6) {
-				player.takePhysDamage(dmg0, true);
-				player.takePhysDamage(dmg0, true);
-				bleedP += 0.01;
-			}
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 8) {
-				player.takePhysDamage(dmg0, true);
-				player.takePhysDamage(dmg0, true);
-				bleedP += 0.01;
-			}
+			while (bBA-->0) player.takePhysDamage(dmg0, true);
 			if (!player.immuneToBleed()) {
 				if (player.hasStatusEffect(StatusEffects.Hemorrhage)) player.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
 				else player.createStatusEffect(StatusEffects.Hemorrhage, SceneLib.combat.debuffsOrDoTDuration(2 + rand(2)), bleedP, 0, 0);
@@ -105,13 +113,13 @@ public class Belisa extends Monster
 			else {
 				if (player.buff("Web").isPresent()) {
 					outputText("The silky strands hit you, weighing you down and restricting your movement even further.\n");
-					player.buff("Web").addStats( {"spe":-25} ).withText("Web").combatPermanent();
+					player.buff("Web").addStats( {"spe":-50} ).withText("Web").combatPermanent();
 				}
 				else {
 					outputText("The silky strands hit you, webbing around you and making it hard to move with any degree of speed.");
 					if (player.canFly()) outputText("  Your wings struggle uselessly in the bindings, no longer able to flap fast enough to aid you.");
 					outputText("\n");
-					player.buff("Web").addStats( {"spe":-25} ).withText("Web").combatPermanent();
+					player.buff("Web").addStats( {"spe":-50} ).withText("Web").combatPermanent();
 				}
 			}
 		}
@@ -124,7 +132,7 @@ public class Belisa extends Monster
 			}
 			else {
 				outputText("The fire burns your flesh, but you remain standing afterward. The spider-girl in front of you takes a half-step back, bringing one hand to her breast. \"<i>You...You’re still standing?</i>\"");
-				var damage:int = 4 * inteligencescalingbonus() * SpellMod();
+				var damage:int = 6 * inteligencescalingbonus() * SpellMod();
 				if (player.hasStatusEffect(StatusEffects.Blizzard)) {
 					player.addStatusValue(StatusEffects.Blizzard, 1, -1);
 					outputText("Luckly protective ice maelstorm still surrounding you lessening amount of damage.  ");
@@ -152,7 +160,7 @@ public class Belisa extends Monster
 			addHP(temp);
 			mana -= spellCostHeal();
 			createStatusEffect(StatusEffects.AbilityCooldown2, 2, 0, 0, 0);
-			var lustDang:Number = 15 + rand(15);
+			var lustDang:Number = 25 + rand(25);
 			player.takeLustDamage(lustDang, true);
 		}
 		
@@ -197,8 +205,8 @@ public class Belisa extends Monster
 		public function Belisa()
 		{
 			if (flags[kFLAGS.BELISA_LVL_UP] < 1) {
-				initStrTouSpeInte(80, 90, 100, 250);
-				initWisLibSensCor(100, 80, 100, -100);
+				initStrTouSpeInte(80, 90, 180, 250);
+				initWisLibSensCor(200, 80, 150, -100);
 				this.weaponAttack = 60;
 				this.armorDef = 60;
 				this.armorMDef = 200;
@@ -206,26 +214,26 @@ public class Belisa extends Monster
 				this.bonusLust = 200;
 				this.level = 20;
 			}
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 1 && flags[kFLAGS.BELISA_LVL_UP] < 8) {
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 1 && flags[kFLAGS.BELISA_LVL_UP] < 18) {
 				var mod:int = flags[kFLAGS.BELISA_LVL_UP];
-				initStrTouSpeInte(80 + 6*mod, 90 + 8*mod, 100 + 10*mod, 250 + 15*mod);
-				initWisLibSensCor(100 + 10*mod, 80 + 5*mod, 100 + 5*mod, -100);
-				this.weaponAttack = 60 + 3*mod;
+				initStrTouSpeInte(80 + 18*mod, 90 + 24*mod, 180 + 30*mod, 250 + 50*mod);
+				initWisLibSensCor(200 + 45*mod, 80 + 20*mod, 150 + 25*mod, -100);
+				this.weaponAttack = 60 + 10*mod;
 				this.armorDef = 60 + 3*mod;
 				this.armorMDef = 200 + 10*mod;
 				this.bonusHP = 200 + 25*mod;
-				this.bonusLust = 200 + 16*mod;
+				this.bonusLust = 200 + 51*mod;
 				this.level = 20 + 6*mod;
 			}
-			if (flags[kFLAGS.BELISA_LVL_UP] == 8) {
-				initStrTouSpeInte(130, 154, 180, 370);
-				initWisLibSensCor(180, 120, 140, -100);
-				this.weaponAttack = 84;
-				this.armorDef = 84;
-				this.armorMDef = 280;
-				this.bonusHP = 400;
-				this.bonusLust = 328;
-				this.level = 68;
+			if (flags[kFLAGS.BELISA_LVL_UP] == 20) {
+				initStrTouSpeInte(440, 570, 840, 1250);
+				initWisLibSensCor(1100, 480, 650, -100);
+				this.weaponAttack = 260;
+				this.armorDef = 66;
+				this.armorMDef = 220;
+				this.bonusHP = 450;
+				this.bonusLust = 1220;
+				this.level = 140;
 			}
 			this.a = "";
 			this.short = "Belisa";
@@ -258,9 +266,10 @@ public class Belisa extends Monster
 			this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.JobSorcerer, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Spellpower, 0, 0, 0, 0);
-			this.createPerk(PerkLib.Channeling, 0, 0, 0, 0);
+			this.createPerk(PerkLib.Mage, 0, 0, 0, 0);
 			this.createPerk(PerkLib.JobHealer, 0, 0, 0, 0);
 			this.createPerk(PerkLib.BasicSpirituality, 0, 0, 0, 0);
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 14 && flags[kFLAGS.BELISA_LVL_UP] < 21) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 1) {
 				this.createPerk(PerkLib.HalfStepToImprovedSpirituality, 0, 0, 0, 0);
 				this.createPerk(PerkLib.WisenedHealer, 0, 0, 0, 0);
@@ -273,14 +282,48 @@ public class Belisa extends Monster
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 4) this.createPerk(PerkLib.AdvancedSpirituality, 0, 0, 0, 0);
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 5) {
 				this.createPerk(PerkLib.HalfStepToSuperiorSpirituality, 0, 0, 0, 0);
-				this.createPerk(PerkLib.NaturalHealingMinor, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Channeling, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 6) this.createPerk(PerkLib.SuperiorSpirituality, 0, 0, 0, 0);
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 7) {
 				this.createPerk(PerkLib.HalfStepToPeerlessSpirituality, 0, 0, 0, 0);
-				this.createPerk(PerkLib.NaturalHealingMajor, 0, 0, 0, 0);
+				this.createPerk(PerkLib.NaturalHealingMinor, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.BELISA_LVL_UP] >= 8) this.createPerk(PerkLib.PeerlessSpirituality, 0, 0, 0, 0);
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 9) {
+				this.createPerk(PerkLib.HalfStepToInhumanSpirituality, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicIntelligence, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 10) this.createPerk(PerkLib.InhumanSpirituality, 0, 0, 0, 0);
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 11) {
+				this.createPerk(PerkLib.ArcaneRegenerationMinor, 0, 0, 0, 0);
+				this.createPerk(PerkLib.GrandMage, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 12) this.createPerk(PerkLib.HalfStepToEpicSpirituality, 0, 0, 0, 0);
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 13) {
+				this.createPerk(PerkLib.Archmage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicWisdom, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 14) {
+				this.createPerk(PerkLib.EpicSpirituality, 0, 0, 0, 0);
+				this.createPerk(PerkLib.NaturalHealingMajor, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 15) {
+				this.createPerk(PerkLib.ArcaneRegenerationMajor, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LegendaryIntelligence, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 16) this.createPerk(PerkLib.GrandArchmage, 0, 0, 0, 0);
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 17) {
+				this.createPerk(PerkLib.NaturalHealingEpic, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LegendaryWisdom, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 18) this.createPerk(PerkLib.GrandArchmage2ndCircle, 0, 0, 0, 0);
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 19) {
+				this.createPerk(PerkLib.ArcaneRegenerationEpic, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ManaAffinityI, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 20) this.createPerk(PerkLib.GrandArchmage3rdCircle, 0, 0, 0, 0);
 			checkMonster();
 		}
 	}

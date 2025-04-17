@@ -96,18 +96,18 @@ public class DemonPackBlightRidge extends Monster
 			this.bodyColor = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			initStrTouSpeInte(110, 120, 50, 90);
-			initWisLibSensCor(70, 70, 70, 100);
+			initStrTouSpeInte(335, 370, 160, 270);
+			initWisLibSensCor(140, 140, 140, 100);
 			this.weaponName = "claws";
 			this.weaponVerb="claw";
-			this.weaponAttack = 62;
+			this.weaponAttack = 248;
 			this.armorName = "demonic skin";
-			this.armorDef = 30;
-			this.armorMDef = 3;
-			this.bonusHP = 500;
-			this.bonusLust = 170;
+			this.armorDef = 300;
+			this.armorMDef = 30;
+			this.bonusHP = 2000;
+			this.bonusLust = 524;
 			this.lust = 30;
-			this.level = 30;
+			this.level = 44;
 			this.gems = rand(40)+70;
 			this.randomDropChance = 0.1;
 			this.randomDropParams = {
@@ -129,7 +129,7 @@ public class DemonPackBlightRidge extends Monster
 			if (TyrantiaFollower.TyrantiaFollowerStage == 2) this.createPerk(PerkLib.Enemy300Type, 0, 0, 0, 0);
 			else this.createPerk(PerkLib.EnemyLargeGroupType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);
-			this.createPerk(PerkLib.OverMaxHP, 30, 0, 0, 0);
+			this.createPerk(PerkLib.OverMaxHP, 44, 0, 0, 0);
 			checkMonster();
 		}
 		

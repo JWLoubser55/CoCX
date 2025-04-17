@@ -33,6 +33,9 @@ public class WillOfTheWispSkill extends AbstractGeneral {
 		if (player.hasPerk(PerkLib.CommandingTone)) willothewispamplification += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) willothewispamplification += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) willothewispamplification += 0.15;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) willothewispamplification += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) willothewispamplification += 0.5;
+		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) willothewispamplification += 1;
         if (player.hasPerk(PerkLib.WispLieutenant)) willothewispamplification += 1;
         if (player.hasPerk(PerkLib.WispCaptain)) willothewispamplification += 1;
         if (player.hasPerk(PerkLib.WispMajor)) willothewispamplification += 1;

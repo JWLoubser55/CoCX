@@ -180,47 +180,13 @@ public function neisaSparLost():void {
 private function LevelingHerself():void {
 	if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] >= 1) flags[kFLAGS.NEISA_DEFEATS_COUNTER]++;
 	else flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 1;
-	if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] == 1 && flags[kFLAGS.NEISA_LVL_UP] == 1) {
-		if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 4, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction));
-		else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, 0, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction));
-		flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 0;
-		flags[kFLAGS.NEISA_LVL_UP] = 2;
-	}
-	if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] == 2 && flags[kFLAGS.NEISA_LVL_UP] == 2) {
-		if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 2));
-		else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 2));
-		flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 0;
-		flags[kFLAGS.NEISA_LVL_UP] = 3;
-	}
-	if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] == 3 && flags[kFLAGS.NEISA_LVL_UP] == 3) {
-		if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 3));
-		else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 3));
-		flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 0;
-		flags[kFLAGS.NEISA_LVL_UP] = 4;
-	}
-	if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] == 4 && flags[kFLAGS.NEISA_LVL_UP] == 4) {
-		if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 4));
-		else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 4));
-		flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 0;
-		flags[kFLAGS.NEISA_LVL_UP] = 5;
-	}
-	if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] == 5 && flags[kFLAGS.NEISA_LVL_UP] == 5) {
-		if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 5));
-		else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 5));
-		flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 0;
-		flags[kFLAGS.NEISA_LVL_UP] = 6;
-	}
-	if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] == 6 && flags[kFLAGS.NEISA_LVL_UP] == 6) {
-		if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 6));
-		else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 6));
-		flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 0;
-		flags[kFLAGS.NEISA_LVL_UP] = 7;
-	}
-	if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] == 7 && flags[kFLAGS.NEISA_LVL_UP] == 7) {
-		if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 7));
-		else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 7));
-		flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 0;
-		flags[kFLAGS.NEISA_LVL_UP] = 8;
+	if (flags[kFLAGS.NEISA_LVL_UP] < 8) {
+		if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] >= flags[kFLAGS.NEISA_LVL_UP]) {
+			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 4, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.NEISA_LVL_UP]);
+			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, 0, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.NEISA_LVL_UP]);
+			flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 0;
+			flags[kFLAGS.NEISA_LVL_UP]++;
+		}
 	}
 }
 
@@ -257,10 +223,10 @@ public function neisaHenchmanOption2(slot:Number = 1):void {
 		outputText("\"<i>Yeah sure, I will join, just make sure to share the loot.</i>\"\n\n");
 		outputText("Neisa is now following you around.\n\n");
 		var strNeisa:Number = 50;
-		var meleeAtkNeisa:Number = 12;
+		var meleeAtkNeisa:Number = 32;
 		if (flags[kFLAGS.NEISA_LVL_UP] >= 2) {
-			strNeisa += 15 * (flags[kFLAGS.NEISA_LVL_UP] - 1);
-			meleeAtkNeisa += 3 * (flags[kFLAGS.NEISA_LVL_UP] - 1);
+			strNeisa += 45 * (flags[kFLAGS.NEISA_LVL_UP] - 1);
+			meleeAtkNeisa += 24 * (flags[kFLAGS.NEISA_LVL_UP] - 1);
 		}
 		strNeisa *= (1 + (0.2 * player.newGamePlusMod()));
 		strNeisa = Math.round(strNeisa);

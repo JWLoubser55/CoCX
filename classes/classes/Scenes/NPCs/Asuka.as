@@ -77,7 +77,7 @@ public class Asuka extends Monster
 		}
 		private function asukaTripleThrust2():void {
 			var damage:Number = str;
-			damage += eBaseStrengthDamage() * 0.5;
+			damage += eBaseStrengthDamage();
 			if (weaponAttack < 51) damage *= (1 + (weaponAttack * 0.04));
 			else if (weaponAttack >= 51 && weaponAttack < 101) damage *= (3 + ((weaponAttack - 50) * 0.035));
 			else if (weaponAttack >= 101 && weaponAttack < 151) damage *= (4.75 + ((weaponAttack - 100) * 0.03));
@@ -111,7 +111,7 @@ public class Asuka extends Monster
 		private function asukaBerserk():void {
 			wrath -= 50;
 			outputText(capitalA + short + " roars and unleashes her lustful fury in order to destroy you!\n\n");
-			this.weaponAttack += (15 + (15 * (1 + player.newGamePlusMod())));
+			this.weaponAttack += (30 + (30 * (1 + player.newGamePlusMod())));
 			createStatusEffect(StatusEffects.Lustzerking,10,0,0,0);
 		}
 		
@@ -172,13 +172,13 @@ public class Asuka extends Monster
 		public function Asuka()
 		{
 			if (flags[kFLAGS.ASUKA_LVL_UP] < 1) {
-				initStrTouSpeInte(85, 85, 75, 90);
-				initWisLibSensCor(90, 75, 50, 0);
+				initStrTouSpeInte(95, 95, 85, 100);
+				initWisLibSensCor(100, 90, 60, 0);
 				this.weaponAttack = 21;
 				this.armorDef = 25;
 				this.armorMDef = 5;
 				this.bonusHP = 100;
-				this.bonusLust = 140;
+				this.bonusLust = 165;
 				this.level = 15;
 			}/*
 			if (flags[kFLAGS.ASUKA_LVL_UP] == 1) {

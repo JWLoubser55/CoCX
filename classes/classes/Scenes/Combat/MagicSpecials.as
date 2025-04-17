@@ -140,8 +140,8 @@ public class MagicSpecials extends BaseCombatContent {
 				bd = buttons.add("Lust storm", Luststorm).hint("Supercharge the air with your lusty electricity to unleash a thunderstorm.");
 				if (player.hasStatusEffect(StatusEffects.lustStorm)) bd.disable("<b>You already unleashed a thunderstorm on the battlefield</b>\n\n");
 			}
-			if (player.isRaceCached(Races.KIRIN) && (player.weapon.isMaceHammerType() || player.weaponOff.isMaceHammerType() || player.weapon.isDuelingType() || player.weaponOff.isDuelingType() || player.weapon.isSwordType() || player.weaponOff.isSwordType() ||
-				player.weapon.isAxeType() || player.weaponOff.isAxeType() || player.weaponOff.isDaggerType() || player.weapon.isDaggerType() || player.weapon.isScytheType() || player.weaponOff.isScytheType())) {
+			if (player.isRaceCached(Races.KIRIN) && (player.weapon.isDuelingType() || player.weapon.isSwordType() || player.weapon.isSpearType() || player.weapon.isStaffType() ||
+				player.weaponOff.isDuelingType() || player.weaponOff.isSwordType() || player.weaponOff.isSpearType() || player.weaponOff.isStaffType())) {
 				//Electrify Weapon
 				bd = buttons.add("Electrify Weapon", ElectrifyWeapon).hint("Coat your weapon with a sheet of lusty electricity.");
 				if (player.hasStatusEffect(StatusEffects.ElectrifyWeapon)) {
@@ -149,6 +149,67 @@ public class MagicSpecials extends BaseCombatContent {
 				}
 			}
 		}
+		//Esper cool beans (start)
+		if (player.hasPerk(PerkLib.PsychicBarrier)) {
+			if (player.statStore.hasBuff("PsychoBarrier")) {
+				buttons.add("Psycho-Barrier/Off", combat.deactivatePsychoBarrier).hint("Disperse Psycho-Barrier.");
+			} else {
+				bd = buttons.add("Psycho-Barrier/On", combat.activatePsychoBarrier, "Cover yourself with Psycho-Barrier. (It would drain fatigue until dispersed)\n");
+				bd.requireFatigue(20);
+			}
+		}
+		if (player.hasPerk(PerkLib.PsychicBolt)) {
+			bd = buttons.add("Psychic Bolt", combat.castPsychicBolt, "Attempt to attack the enemy with psychic bolt.  Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(10);
+		}
+		if (player.hasPerk(PerkLib.TelekineticGrapple) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
+			bd = buttons.add("Telekinetic Grab", TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 6 rounds");
+			bd.requireMana(spellCost(50));
+			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
+				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+		}
+		if (player.hasPerk(PerkLib.Pyrokinesis)) {
+			bd = buttons.add("Pyrokinesis", combat.usePyrokinesis, "Attempt to attack the enemy with fire ball. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Hydrokinesis)) {
+			bd = buttons.add("Hydrokinesis", combat.useHydrokinesis, "Attempt to attack the enemy with water sphere. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Cryokinesis)) {
+			bd = buttons.add("Cryokinesis", combat.useCryokinesis, "Attempt to attack the enemy with icicle. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Geokinesis)) {
+			bd = buttons.add("Geokinesis", combat.useGeokinesis, "Attempt to attack the enemy with rock. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Electrokinesis)) {
+			bd = buttons.add("Electrokinesis", combat.useElectrokinesis, "Attempt to attack the enemy with bolt of lightning. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Aerokinesis)) {
+			bd = buttons.add("Aerokinesis", combat.useAerokinesis, "Attempt to attack the enemy with wind sphere. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Umbrakinesis)) {
+			bd = buttons.add("Umbrakinesis", combat.useUmbrakinesis, "Attempt to attack the enemy with darkness sphere. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Acidokinesis)) {
+			bd = buttons.add("Acidokinesis", combat.useAcidokinesis, "Attempt to attack the enemy with acid ball. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Ionikinesis)) {
+			bd = buttons.add("Ionikinesis", combat.useIonikinesis, "Attempt to attack the enemy with plasma ball. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		if (player.hasPerk(PerkLib.Cocytokinesis)) {
+			bd = buttons.add("Cocytokinesis", combat.useCocytokinesis, "Attempt to attack the enemy with black icicle. Damage done is determined by your sensitivity.\n");
+			bd.requireFatigue(20);
+		}
+		//Esper cool beans (end)
 		if (!player.hasPerk(PerkLib.ElementalBody)) {
 			if ((player.hasPerk(PerkLib.Incorporeality) || player.isRaceCached(Races.WENDIGO))) {
 				bd = buttons.add("Possess", possess).hint("Attempt to temporarily possess a foe and force them to raise their own lusts.\nWould go into cooldown after use for: " + (player.hasPerk(PerkLib.NaturalInstincts) ? "1 round" : "2 rounds") + "\n");
@@ -2742,11 +2803,11 @@ public class MagicSpecials extends BaseCombatContent {
 		if (combat.checkConcentration()) return; //Amily concentration
 		if (monster is LivingStatue)
 		{
-			outputText("The water courses by the stone skin harmlessly. Thou it does leave the surface of the statue with a thin layer of dark glow.");
+			outputText("The poisonous sap courses by the stone skin harmlessly. Thou it does leave the surface of the statue with a thin layer of dark glow.");
 			enemyAI();
 			return;
 		}
-		outputText("Tapping into the power deep within you, you let loose a bellowing roar at your enemy, so forceful that even the environs crumble around [monster him].  [Themonster] does [monster his] best to avoid it, but the wave of force is too fast.<b>Your opponent is now wet with water!</b>");
+		outputText("Tapping into the power deep within you, you let loose a bellowing roar at your enemy, so forceful that even the environs crumble around [monster him].  [Themonster] does [monster his] best to avoid it, but the wave of force is too fast.<b>Your opponent is now wet with poisonous sap!</b>");
 		//Miss:
 		if(((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) && !monster.monsterIsStunned()) {
 			outputText("  Despite the heavy impact caused by your roar, [themonster] manages to take it at an angle and remain on [monster his] feet and focuses on you, ready to keep fighting.");
@@ -2764,6 +2825,7 @@ public class MagicSpecials extends BaseCombatContent {
 				else outputText("are");
 				outputText("too resolute to be stunned by your attack.</b> ");
 			}
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) damage *= 1.2;
 			damage = Math.round(damage * 0.34);
 			doPoisonDamage(damage, true, true);
 			doWaterDamage(damage, true, true);
@@ -5724,6 +5786,10 @@ public class MagicSpecials extends BaseCombatContent {
 		useMana(100, USEFATG_MAGIC_NOBM);
 		combat.darkRitualCheckDamage();
 		var damage:Number = (scalingBonusIntelligence() * spellMod());
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+			damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage += Math.round(scalingBonusToughness() * 0.1);
+		}
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -5738,7 +5804,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.MindbreakerBrain1toX)) damage*=1+(0.5*(1+player.perkv1(PerkLib.MindbreakerBrain1toX)));
 		damage = Math.round(damage);
 		outputText("Your third eye opens wide and glow a vicious green as you viciously impale [themonster]’s mind with a mental spike.");
-		doTrueDamage(damage, true, true);
+		doPsychicDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText(".\n\n");
 		enemyAI();

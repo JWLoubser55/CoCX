@@ -2,6 +2,7 @@ package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
 import classes.CockTypesEnum;
+import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 import classes.Races;
@@ -65,6 +66,8 @@ public class PlantRace extends Race {
 							return !body.player.isRace(Races.YGGDRASIL);
 						}, 0, -4)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
+				
+		addMutation(IMutationsLib.PlantChlorophyllIM);
 		
 		buildTier(7, "plant-morph")
 				.buffs({

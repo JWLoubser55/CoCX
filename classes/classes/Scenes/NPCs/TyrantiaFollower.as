@@ -855,7 +855,7 @@ private function LevelingHerself():void {
 	if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2) {
 		if (flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER] >= 1) flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER]++;
 		else flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER] = 1;
-		if (flags[kFLAGS.TYRANTIA_LVL_UP] < 4 && flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER] >= flags[kFLAGS.TYRANTIA_LVL_UP] + 9) {
+		if (flags[kFLAGS.TYRANTIA_LVL_UP] < 15 && flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER] >= flags[kFLAGS.TYRANTIA_LVL_UP] + 9) {
 			var addToV1:Number = player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.TYRANTIA_DEFEATS_COUNTER];
 			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers5)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers5, 1, addToV1);
 			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers5, addToV1, 0, 0, 0);
@@ -1358,13 +1358,13 @@ public function TyrantiaHenchmanOption2(slot:Number = 1):void {
 		outputText("You ask Tyrantia if she’d be willing to follow you on your adventures. She looks back at her hutch, then back to you. \"<i>And miss all this?</i>\" She grins, her five eyes sparkling. \"<i>[name]...After all you’ve done for me? I’d…</i>\" She smiles, wrapping you in a big fuzzy hug. \"<i>I’d die for you.</i>\"\n\n");
 		if (!player.isDrider() && !player.isTaur() && !player.isInNonGoblinMech() && !player.isInGoblinMech()) outputText("She kisses you on the cheek, picking you up and putting you on her Drider back. \"<i>Just tell me where to go, my sweet [race], and I’ll make sure we get there safely.</i>\"\n\n");
 		outputText("Tyrantia is now following you around.\n\n");
-		var strTyrantia:Number = 295;
-		var intTyrantia:Number = 150;
+		var strTyrantia:Number = 400;
+		var intTyrantia:Number = 300;
 		var meleeAtkTyrantia:Number = 150;
 		if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2) {
-			strTyrantia += 20 * (flags[kFLAGS.TYRANTIA_LVL_UP] - 1);
-			intTyrantia += 10 * (flags[kFLAGS.TYRANTIA_LVL_UP] - 1);
-			meleeAtkTyrantia += 10 * (flags[kFLAGS.TYRANTIA_LVL_UP] - 1);
+			strTyrantia += 50 * (flags[kFLAGS.TYRANTIA_LVL_UP] - 1);
+			intTyrantia += 30 * (flags[kFLAGS.TYRANTIA_LVL_UP] - 1);
+			meleeAtkTyrantia += 30 * (flags[kFLAGS.TYRANTIA_LVL_UP] - 1);
 		}
 		strTyrantia *= (1 + (0.2 * player.newGamePlusMod()));
 		strTyrantia = Math.round(strTyrantia);

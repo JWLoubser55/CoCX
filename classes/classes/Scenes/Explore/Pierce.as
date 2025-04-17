@@ -25,7 +25,7 @@ use namespace CoC;
 		}
 
 		public function moveCleanse():void {
-			outputText("The malikore stabs himself with his tail, cleansing himself from poison!");
+			outputText("The malikore stabs himself with his tails, cleansing himself from poison!");
 			if (hasStatusEffect(StatusEffects.PoisonDoT)) removeStatusEffect(StatusEffects.PoisonDoT);
 			if (hasStatusEffect(StatusEffects.PoisonDoTH)) removeStatusEffect(StatusEffects.PoisonDoTH);
 			if (hasStatusEffect(StatusEffects.LustDoT)) removeStatusEffect(StatusEffects.LustDoT);
@@ -73,19 +73,19 @@ use namespace CoC;
 			this.bodyColor = "light";
 			this.hairColor = "red";
 			this.hairLength = 13;
-			initStrTouSpeInte(130, 195, 330, 200);
-			initWisLibSensCor(200, 230, 110, 60);
-			this.weaponAttack = 54;
+			initStrTouSpeInte(230, 265, 340, 180);
+			initWisLibSensCor(180, 240, 120, 60);
+			this.weaponAttack = 210;
 			this.weaponName = "claw";
 			this.weaponVerb="claw-slash";
 			this.armorName = "black shorts";
-			this.armorDef = 16;
-			this.armorMDef = 3;
+			this.armorDef = 32;
+			this.armorMDef = 6;
 			this.bonusHP = 200;
-			this.bonusLust = 379;
+			this.bonusLust = 405;
 			this.lust = 30;
 			this.lustVuln = .8;
-			this.level = 39;
+			this.level = 45;
 			this.gems = 45 + rand(40);
 			this.drop = new ChainedDrop().
 					add(armors.S_SWMWR,1/12).//inne coś

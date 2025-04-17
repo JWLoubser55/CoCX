@@ -25,7 +25,7 @@ public class Behemoth extends Monster
 			}
 			else {
 				outputText("You weren't aware of that and his tail hits you!  <b>Your defense has been reduced!</b>  ");
-				var damage:int = (str + level) * 2;
+				var damage:int = (str + level) * 5;
 				player.takePhysDamage(damage, true);
 			}
 			if (hasStatusEffect(StatusEffects.TailWhip)) addStatusValue(StatusEffects.TailWhip, 1, 5);
@@ -34,7 +34,7 @@ public class Behemoth extends Monster
 		
 		public function tease():void {
 			outputText("The behemoth lifts his loincloth to reveal his large prick and waves his cock left and right.  You blush from looking at his cock.");
-			player.takeLustDamage(50 + (player.cor / 5) + (player.lib / 5), true);
+			player.takeLustDamage(100 + player.cor + player.lib, true);
 		}
 		
 		override public function defeated(hpVictory:Boolean):void {
@@ -77,20 +77,20 @@ public class Behemoth extends Monster
 			this.horns.type = Horns.DRACONIC_X2;
 			this.lowerBody = LowerBody.CAT;
 			this.tailType = Tail.BEHEMOTH;
-			initStrTouSpeInte(280, 230, 200, 215);
-			initWisLibSensCor(200, 60, 31, -70);
+			initStrTouSpeInte(810, 750, 650, 430);
+			initWisLibSensCor(400, 120, 62, -70);
 			this.weaponName = "claws";
 			this.weaponVerb="claw";
-			this.weaponAttack = 114;
+			this.weaponAttack = 228;
 			this.armorName = "loincloth";
-			this.armorDef = 120;
-			this.armorMDef = 20;
-			this.bonusHP = 1600;
-			this.bonusLust = 162;
+			this.armorDef = 1200;
+			this.armorMDef = 200;
+			this.bonusHP = 4500;
+			this.bonusLust = 285;
 			this.lust = 15;
 			this.lustVuln = 0.3;
-			this.level = 71;
-			this.gems =160 + rand(50);
+			this.level = 103;
+			this.gems = 200 + rand(50);
 			this.drop = NO_DROP;
 			this.special1 = clawsSlash;
 			this.special2 = tailWhip;

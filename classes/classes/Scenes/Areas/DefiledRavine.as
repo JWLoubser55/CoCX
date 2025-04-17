@@ -23,7 +23,7 @@ use namespace CoC;
 		public var demonScene:DemonScene = new DemonScene();
 		public var demonSoldierScene:DemonSoldierScene = new DemonSoldierScene();
 
-		public const areaLevel:int = 36;
+		public const areaLevel:int = 58;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.defiledRavine > 0;
 		}
@@ -80,10 +80,20 @@ use namespace CoC;
 				kind : 'monster',
 				call: demonScene.CowSuccubusEncounter
 			}, {
+				name: "fcowsuccubus",
+				label : "F.Cowsucubus",
+				kind : 'monster',
+				call: demonScene.FeralCowSuccubusEncounter
+			}, {
 				name: "minoincubus",
 				label : "Minoincubus",
 				kind : 'monster',
 				call: demonScene.MinoIncubusEncounter
+			}, {
+				name: "fminoincubus",
+				label : "F.Minoincubus",
+				kind : 'monster',
+				call: demonScene.FeralMinoIncubusEncounter
 			}, {
 				name: "mine",
 				label : "Mine",
@@ -107,6 +117,11 @@ use namespace CoC;
 				label : "Demon Soldier",
 				kind : 'monster',
 				call: demonSoldierScene.encounterTheSoldierz
+			}, {
+				name: "fdemhellhound",
+				label : "F.Dem Hellhound",
+				kind : 'monster',
+				call: demonScene.FeralDemonHellhoundEncounter
 			}, {
 				name: "nothing",
 				call: findNothing,

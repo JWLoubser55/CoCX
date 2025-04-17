@@ -840,7 +840,7 @@ private function LvLUp():void {
 		if (player.hasStatusEffect(StatusEffects.CampRathazul)) addButton(5, "Just Do It!", JustDoIt).hint("JUST DO IT!");
 		else addButtonDisabled(5, "Just Do It???", "IF you had Rathazul in camp you could JUST DO IT!");
 	}
-	if (flags[kFLAGS.EVANGELINE_LVL_UP] == 5 && EvangelineGemsPurse >= 400) addButton(5, "Just Do It!", JustDoIt).hint("JUST DO IT!");
+	if (flags[kFLAGS.EVANGELINE_LVL_UP] == 5 && EvangelineGemsPurse >= 800) addButton(5, "Just Do It!", JustDoIt).hint("JUST DO IT!");
 	//if (player.level >= 6 && flags[kFLAGS.EVANGELINE_LVL_UP] == 6 && EvangelineGemsPurse >= 1250) addButton(5, "Just Do It!", JustDoIt).hint("JUST DO IT!");
 	//if (player.level >= 7 && flags[kFLAGS.EVANGELINE_LVL_UP] == 7 && EvangelineGemsPurse >= 400) addButton(5, "Just Do It!", JustDoIt).hint("JUST DO IT!");
 	//if (player.level >= 8 && flags[kFLAGS.EVANGELINE_LVL_UP] == 8 && EvangelineGemsPurse >= 150) addButton(5, "Just Do It!", JustDoIt).hint("JUST DO IT!");
@@ -942,7 +942,7 @@ private function JustDoIt():void {
 	if (flags[kFLAGS.EVANGELINE_LVL_UP] == 5) {
 		flags[kFLAGS.EVANGELINE_LVL_UP]++;
 		flags[kFLAGS.EVANGELINE_WENT_OUT_FOR_THE_ITEMS] = 6;
-		EvangelineGemsPurse -= 400;
+		EvangelineGemsPurse -= 800;
 	}
 	if (flags[kFLAGS.EVANGELINE_LVL_UP] == 4) {
 		flags[kFLAGS.EVANGELINE_LVL_UP]++;

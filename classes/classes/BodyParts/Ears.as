@@ -298,6 +298,21 @@ public class Ears extends BodyPart {
 		appearanceDesc: "A pair of glacial troll ears stick out from the sides of your head, each covered in soft, white fur.",
 		fur: true
 	});
+	public static const AUTOMATA_FOX: int = 49;
+	EnumValue.add(Types, AUTOMATA_FOX, "AUTOMATA_FOX", {
+		name: "automata fox",
+		appearanceDesc: "A pair of metal sound receptors sits on top of your head. They look similar to the ears of a fennec fox. They allow you the reception and registering of ambient sound perfectly and even provide senses akin to a sonic vision."
+	});
+	public static const AUTOMATA_CAT: int = 50;
+	EnumValue.add(Types, AUTOMATA_CAT, "AUTOMATA_CAT", {
+		name: "automata cat",
+		appearanceDesc: "A pair of metal sound receptors sits on top of your head. They look similar to the ears of a cat. They allow you the reception and registering of ambient sound perfectly and even provide senses akin to a sonic vision."
+	});
+	public static const AUTOMATA_BUNNY: int = 51;
+	EnumValue.add(Types, AUTOMATA_BUNNY, "AUTOMATA_BUNNY", {
+		name: "automata bunny",
+		appearanceDesc: "A pair of metal sound receptors sits on top of your head. They look similar to the ears of a bunny. They allow you the reception and registering of ambient sound perfectly and even provide senses akin to a sonic vision."
+	});
 	
 	public static const HoleEars:/*String*/Array = [LIZARD, DRAGON, ORCA2, AVIAN, INSECT];
 	

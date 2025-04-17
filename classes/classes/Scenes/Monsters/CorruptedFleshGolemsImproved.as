@@ -26,7 +26,7 @@ package classes.Scenes.Monsters
 			else outputText("The corrupted golems mutters something. Before you have time to react the demonic golems hands are filled with a bright red fire that their hurls at you.  The flames lick at your body leaving a painful burn on you torso, as well as an arousing heat in your groin. ");
 			damage = Math.round(damage);
 			player.takeFireDamage(damage, true);
-			player.takeLustDamage(50 + player.cor / 5, true);
+			player.takeLustDamage(250 + player.cor / 5, true);
 		}
 		
 		override protected function performCombatAction():void
@@ -45,40 +45,47 @@ package classes.Scenes.Monsters
 			}
 		}
 		
+		override public function defeated(hpVictory:Boolean):void
+		{
+			SceneLib.fleshGolemScenes.wonWithFleshGolem();
+		}
+		
 		public function CorruptedFleshGolemsImproved()
 		{
 			this.a = "the ";
 			this.short = "corrupted improved flesh golems";
 			this.imageName = "corrupted improved flesh golems";
 			this.long = "You're currently fighting corrupted improved flesh golems. They're eight feet tall with flesh covered by white armor fragments, which still leaving genitalia, with pretty sizable cocks, or breasts exposed. Despite not possesing visible eyes on her elongated head, they're using pair of weapons to attack enemies.";
+			this.flyer = true;
+			this.magicuser = true;
 			this.createCock(15,2.25,CockTypesEnum.DEMON);
 			this.balls = 0;
 			this.ballSize = 0;
 			this.cumMultiplier = 3;
 			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_GAPING);
-			this.createStatusEffect(StatusEffects.BonusVCapacity, 300, 0, 0, 0);
+			this.createStatusEffect(StatusEffects.BonusVCapacity, 250, 0, 0, 0);
 			createBreastRow(Appearance.breastCupInverse("D"));
 			this.ass.analLooseness = AssClass.LOOSENESS_LOOSE;
 			this.ass.analWetness = AssClass.WETNESS_SLIMY;
-			this.createStatusEffect(StatusEffects.BonusACapacity, 300, 0, 0, 0);
-			initStrTouSpeInte(240, 280, 220, 15);
-			initWisLibSensCor(15, 200, 100, 100);
+			this.createStatusEffect(StatusEffects.BonusACapacity, 250, 0, 0, 0);
+			initStrTouSpeInte(488, 570, 446, 30);
+			initWisLibSensCor(30, 240, 120, 100);
 			this.tallness = 96;
-			this.hips.type = Hips.RATING_CURVY;
-			this.butt.type = Butt.RATING_JIGGLY;
+			this.hips.type = Hips.RATING_AMPLE;
+			this.butt.type = Butt.RATING_AVERAGE + 2;
 			this.bodyColor = "pink";
 			this.weaponName = "dual swords";
 			this.weaponVerb = "slash";
-			this.weaponAttack = 100;
+			this.weaponAttack = 310;
 			this.armorName = "white armor";
-			this.armorDef = 80;
-			this.armorMDef = 40;
-			this.bonusHP = 700;
+			this.armorDef = 600;
+			this.armorMDef = 300;
+			this.bonusHP = 1500;
 			this.lust = 30;
-			this.bonusLust = 361;
+			this.bonusLust = 441;
 			this.lustVuln = .4;
-			this.level = 61;
-			this.additionalXP = 350;
+			this.level = 81;
+			this.additionalXP = 500;
 			this.gems = rand(10)+5;
 			this.wings.type = Wings.BAT_LIKE_TINY;
 			this.tailType = Tail.DEMONIC;

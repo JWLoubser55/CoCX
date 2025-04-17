@@ -848,6 +848,54 @@ public class EarsTransformations extends MutationsHelper {
 				return player.ears.type === Ears.GLACIAL_TROLL;
 			}
 	);
+
+	public const EarsAutomataFennecFox: Transformation = new SimpleTransformation("Automata Fennec Fox Ears",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.ears.type = Ears.AUTOMATA_FOX;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.ears.type === Ears.AUTOMATA_FOX;
+			}
+	);
+
+	public const EarsAutomataCat: Transformation = new SimpleTransformation("Automata Cat Ears",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.ears.type = Ears.AUTOMATA_CAT;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.ears.type === Ears.AUTOMATA_CAT;
+			}
+	);
+
+	public const EarsAutomataBunny: Transformation = new SimpleTransformation("Automata Bunny Ears",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.ears.type = Ears.AUTOMATA_BUNNY;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.ears.type === Ears.AUTOMATA_BUNNY;
+			}
+	);
 	/*
   */
 }

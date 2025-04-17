@@ -218,6 +218,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const MYCONID:int = _partid++;
+		EnumValue.add(Memories, MYCONID, "MYCONID", {
+			id: "Myconid Hair",
+			name: "Fungal Filaments Hair",
+			cost: 100,
+			title: "Myconid",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.HairGlowingMushroom;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

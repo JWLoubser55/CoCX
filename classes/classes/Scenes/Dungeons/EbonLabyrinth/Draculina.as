@@ -27,7 +27,7 @@ use namespace CoC;
 		}
 
 		override public function playerBoundStruggle():Boolean{clearOutput();
-			if (rand(3) == 0 || rand(80) < player.str / 1.5 || player.hasPerk(PerkLib.FluidBody)) {
+			if (SceneLib.combat.struggleCentralizedCheck()) {
 				outputText("You wriggle and squirm violently, tearing yourself out from within [themonster]'s coils.");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
 			} else {

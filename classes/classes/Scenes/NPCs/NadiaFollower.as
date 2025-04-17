@@ -738,7 +738,7 @@ public function mainCampMenu():void {
 	addButton(2, "Spar", nadiaSparsWithPC).hint("Ask Nadia for a mock battle.")
 		.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 2, "You need a good sparring ring for that.");
 	if (sceneHunter.mockFights)
-		addButton(3, "Mock Fight", mockFightDiana)
+		addButton(3, "Mock Fight", mockFightNadia)
 				.hint("Spice things up a little - make her fight for her pussy!")
 				.disableIf(player.isGenderless(), "Not for genderless!");
 	//3 - ??
@@ -759,17 +759,23 @@ public function mainCampMenu():void {
 		addButtonDisabled(7, "C.C.(Mult)", "You don't have any curses to cure. (multiplier)");
 	}
 	addButton(8, "Uncurse", uncurseItemsMenu).disableIf(player.equippedKnownCursedItems().length == 0 && player.carriedKnownCursedItems().length == 0, "You don't have any cursed items");
-	if (player.weaponRange == weaponsrange.SAGITTB) addButton(9, "Uncurse", uncurseItemsMenu2);
+	if (player.carryUniqueCursedItems()) addButton(9, "U.Uncurse", uncurseItemsMenu2);
 	if (BelisaFollower.BelisaQuestOn && !BelisaFollower.BelisaQuestComp) addButton(13, "ToothacheQ", BelisaNadiaTalk);
 	addButton(14, "Back", camp.campLoversMenu);
 }
 
-public function mockFightDiana():void {
+public function mockFightNadia():void {
     mocking = true;
     nadiaSparsWithPC();
 }
 
 private function uncurseItemsMenu2():void {
+	menu();
+	if (player.weaponRange == weaponsrange.SAGITTB) addButton(0, "Cursed Bow", uncurseItemsMenuBow);
+	if (player.necklace == necklaces.SILCNEC) addButton(1, "Cursed Necklace", uncurseItemsMenuNecklace);
+	addButton(14, "Back", mainCampMenu);
+}
+private function uncurseItemsMenuBow():void {
 	clearOutput();
 	outputText("As Nadia proceed with the purification ritual you struggle in pain at first as you feel the cursed weapon in your hand resist the unbinding before release washes over you as your grip opens dropping the malevolent item on the ground. ");
 	outputText("Nadia wrap the item in blessed cloth in order to seal its malice before handing you the neutralized cursed item back. Sure you can equip it again anytime but now you know the risks.\n\n");
@@ -779,6 +785,14 @@ private function uncurseItemsMenu2():void {
 	if (player.statStore.hasBuff('Sagittarius Focus')) player.buff("Sagittarius Focus").remove();
 	player.unequipWeaponRange(false,true);
 	inventory.takeItem(weaponsrange.SAGITTB, mainCampMenu);
+}
+private function uncurseItemsMenuNecklace():void {
+	clearOutput();
+	outputText("As Nadia proceed with the purification ritual you struggle in pain at first as you feel the cursed necklace resist the unbinding before release washes over you. ");
+	outputText("Nadia wrap the item in blessed cloth in order to seal its malice before handing you the neutralized cursed item back. Sure you can equip it again anytime but now you know the risks.\n\n");
+	player.gems -= 500;
+	player.unequipNecklace(false,true);
+	inventory.takeItem(necklaces.SILCNEC, mainCampMenu);
 }
 public function uncurseCost(item:IDynamicItem, equipped:Boolean):int {
 	var cost:int = 250 * (1 + item.rarity);
@@ -996,7 +1010,6 @@ public function SexMenuAnal():void {
 		}
 	//}
 	player.sexReward("no", "Dick");
-	NadiaPregChance();
 	endEncounter();
 }
 public function SexMenuTitsfuck():void {

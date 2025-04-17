@@ -102,6 +102,7 @@ import classes.internals.SaveableState;
 			addButton(1, "Sex", bimboMonkeySex);//(Koshya appearance here)
 			addButton(2, "Fight", bimboMonkeyFight);//(And here)
 			//3 - Drink (but not he.... jk also here appears)
+			if (silly()) addButton(13, "'FIGHT'", bimboMonkeyDrink);
 			addButton(14, "Back", curry(SceneLib.journeyToTheEast.enteringInn, false));
 		}//outputText("\"<i></i>\"\n\n");
 		public function bimboMonkeySex():void {
@@ -125,9 +126,9 @@ import classes.internals.SaveableState;
 			startCombat(new Koshya());
 		}
 		public function bimboMonkeyDrink():void {
-			clearOutput();
-			outputText("\"<i></i>\"\n\n");
-			
+			clearOutput();outputText("\"<i>It's Rumbling Timeeeeee!!!!!!!</i>\"\n\n");
+			//outputText("\"<i></i>\"\n\n");
+			startCombat(new WaizAbi())
 		}
 		
 		public function WaizAbiMainMenu():void {

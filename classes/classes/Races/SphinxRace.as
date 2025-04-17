@@ -67,7 +67,7 @@ public class SphinxRace extends Race {
 				function (body:BodyData):Boolean {
 					return body.isTaur && body.legType == LowerBody.CAT;
 				},"cat-legged taur;")
-				.tailType(Tail.CAT, +1)
+				.tailType(ANY(Tail.CAT, Tail.LION), +1)
 				.skinPlainOnly(+1)
 				.armType(Arms.SPHINX, +1)
 				.earType(Ears.LION, +1)

@@ -51,7 +51,7 @@ public class PolarMidnightSpell extends AbstractBlackSpell {
 	}
 	
 	public function calcDamage(target:Monster, randomize:Boolean = true, casting:Boolean = true):Number {
-		var baseDamage:Number = scalingBonusIntelligence(randomize) * 24;
+		var baseDamage:Number = damageCalculationTier3Spells(randomize);
 		daaamageaddons(baseDamage);
 		return adjustSpellDamage(
 				baseDamage,

@@ -40,25 +40,25 @@ use namespace CoC;
 					CombatAbilities.EAspectAir.advance(true);
 				}
 				else {
-					var tailspikedmg:Number = Math.round(this.str / 12);
-					var lustdmg:Number = Math.round(this.lib / 5);
+					var tailspikedmg:Number = Math.round(this.str / 10);
+					var lustdmg:Number = Math.round(this.lib / 4);
 					outputText("hits the mark dealing ");
 					player.takePhysDamage(tailspikedmg, true);
 					outputText(" damage and poisoning you. You feel extremely aroused and ");
 					if (rand(2) == 0) {
 						outputText("your movements slow down");
-						player.addCombatBuff('spe', -3, "Malikore Venom", "MalikoreVenom");
+						player.addCombatBuff('spe', -6, "Malikore Venom", "MalikoreVenom");
 					}
 					else {
 						if (rand(2) == 0) {
 							outputText("a bit more tired");
-							if (player.fatigue + 25 > player.maxOverFatigue()) player.fatigue = player.maxOverFatigue();
-							else player.fatigue += 25;
+							if (player.fatigue + 50 > player.maxOverFatigue()) player.fatigue = player.maxOverFatigue();
+							else player.fatigue += 50;
 						}
 						else {
 							outputText("your manna been sapped");
-							if (player.mana < 25) player.mana = 0;
-							else player.mana -= 25;
+							if (player.mana < 50) player.mana = 0;
+							else player.mana -= 50;
 						}
 					}
 					outputText(". You took ");
@@ -78,8 +78,8 @@ use namespace CoC;
 
 		public function moveBoobCrash():void {
 			outputText("The flying malikore dives in your direction crashing into you breasts first! For a few seconds you go red in confusion and arousal as your face is lost in her cleavage then she pulls off leaving you dazed and aroused as she readies her next attack!");
-			var boobcrashdmg:Number = Math.round(this.str / 8);
-			var lustdmg:Number = Math.round(this.lib / 3);
+			var boobcrashdmg:Number = Math.round(this.str / 6);
+			var lustdmg:Number = Math.round(this.lib / 2);
 			player.takeLustDamage(lustdmg, true);
 			player.takePhysDamage(boobcrashdmg, true);
 			if (!player.hasPerk(PerkLib.Resolute)) player.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
@@ -87,7 +87,7 @@ use namespace CoC;
 		}
 
 		public function moveBite():void {
-			var bitedmg:Number = Math.round(this.str / 25);
+			var bitedmg:Number = Math.round(this.str / 20);
 			outputText("The malikore bites into your ");
 			if (hasStatusEffect(StatusEffects.Pounce)) outputText("arm");
 			else if (player.lowerBody == 26) outputText("tentacle");
@@ -168,12 +168,12 @@ use namespace CoC;
 			this.hairLength = 13;
 			initStrTouSpeInte(130, 195, 330, 200);
 			initWisLibSensCor(200, 230, 110, 60);
-			this.weaponAttack = 54;
+			this.weaponAttack = 108;
 			this.weaponName = "claw";
 			this.weaponVerb="claw-slash";
 			this.armorName = "skimpy black bikini";
-			this.armorDef = 16;
-			this.armorMDef = 3;
+			this.armorDef = 32;
+			this.armorMDef = 6;
 			this.bonusHP = 200;
 			this.bonusLust = 379;
 			this.lust = 30;

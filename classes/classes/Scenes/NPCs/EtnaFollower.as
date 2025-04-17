@@ -573,65 +573,13 @@ public function etnaRapeIntro2():void
 			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
 			flags[kFLAGS.ETNA_LVL_UP] = 1;
 		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 6 && flags[kFLAGS.ETNA_LVL_UP] == 1) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 6));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 6));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 2;
-		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 7 && flags[kFLAGS.ETNA_LVL_UP] == 2) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 7));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 7));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 3;
-		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 8 && flags[kFLAGS.ETNA_LVL_UP] == 3) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 8));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 8));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 4;
-		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 9 && flags[kFLAGS.ETNA_LVL_UP] == 4) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 9));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 9));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 5;
-		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 10 && flags[kFLAGS.ETNA_LVL_UP] == 5) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 10));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 10));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 6;
-		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 11 && flags[kFLAGS.ETNA_LVL_UP] == 6) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 11));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 11));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 7;
-		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 12 && flags[kFLAGS.ETNA_LVL_UP] == 7) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 12));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 12));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 8;
-		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 13 && flags[kFLAGS.ETNA_LVL_UP] == 8) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 13));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 13));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 9;
-		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 14 && flags[kFLAGS.ETNA_LVL_UP] == 9) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 14));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 14));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 10;
-		}
-		if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] == 15 && flags[kFLAGS.ETNA_LVL_UP] == 10) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 15));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 15));
-			flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.ETNA_LVL_UP] = 11;
+		if (flags[kFLAGS.ETNA_LVL_UP] < 17) {
+			if (flags[kFLAGS.ETNA_DEFEATS_COUNTER] >= 5 + flags[kFLAGS.ETNA_LVL_UP]) {
+				if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 4, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 5) + flags[kFLAGS.ETNA_LVL_UP]);
+				else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers1, 0, 0, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 5) + flags[kFLAGS.ETNA_LVL_UP]);
+				flags[kFLAGS.ETNA_DEFEATS_COUNTER] = 0;
+				flags[kFLAGS.ETNA_LVL_UP]++;
+			}
 		}
 	}
 	menu();
@@ -874,11 +822,11 @@ public function etnaHenchmanOption2(slot:Number = 1):void
 	if (slot < 21) {
 		outputText("\"<i>Nyaaaaa we hunting together [name]? This is going to be enjoyable!</i>\"\n\n");
 		outputText("Etna is now following you around.\n\n");
-		var strEtna:Number = 100;
-		var libEtna:Number = 170;
+		var strEtna:Number = 210;
+		var libEtna:Number = 380;
 		if (flags[kFLAGS.ETNA_LVL_UP] >= 1) {
-			strEtna += 10 * flags[kFLAGS.ETNA_LVL_UP];
-			libEtna += 20 * flags[kFLAGS.ETNA_LVL_UP];
+			strEtna += 20 * flags[kFLAGS.ETNA_LVL_UP];
+			libEtna += 50 * flags[kFLAGS.ETNA_LVL_UP];
 		}
 		strEtna *= (1 + (0.2 * player.newGamePlusMod()));
 		strEtna = Math.round(strEtna);

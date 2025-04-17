@@ -23,21 +23,21 @@ public class Tyrantia extends Monster
 			return (25 + int(player.effectiveLibido() / 5 + player.effectiveSensitivity() / 5 + player.cor / 5));
 		}
 		private function lustzerkerBoost():Number {
-			return (150 + (30 * player.newGamePlusMod()));
+			return (300 + (60 * player.newGamePlusMod()));
 		}
 		
 		private function tyrantiaLustAura():void {
 			outputText("Tyrantia’s eyes close momentarily, and a wave of energy pulses from her, in sickening pink and black waves. Lust and pain intermingled fills your senses for a split second, and she groans. The energy stops, leaving you hornier, and feeling a little dirtier, than before.\n\n");
-			player.dynStats("cor", 1, "lus", (lustFromHits() * 2));
+			player.dynStats("cor", 2, "lus", (lustFromHits() * 2));
 		}
 		
 		private function tyrantiaBasicAttack():void {
 			outputText("The Giantess Drider stabs toward you, her phallus-spear glistening. Your body feels warmer wherever the thing touches you, blood flowing faster than usual. ");
 			var lust0:Number = lustFromHits();
 			var dmg0:Number = 0;
-			dmg0 += this.str * 3;
-			dmg0 += eBaseStrengthDamage() * 2;
-			dmg0 += this.weaponAttack * 3;
+			dmg0 += this.str * 5;
+			dmg0 += eBaseStrengthDamage() * 3;
+			dmg0 += this.weaponAttack * 5;
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2) dmg0 *= (1 + (0.1 * (flags[kFLAGS.TYRANTIA_LVL_UP] - 1)));
 			dmg0 = Math.round(dmg0);
 			lust0 *= 3;
@@ -51,8 +51,8 @@ public class Tyrantia extends Monster
 			if ((rand(player.spe) > this.spe / 2)) outputText("You flatten yourself to the ground as Tyrantia spins. A thin glob of ebony goo flies over your head, hissing as it hits the ground behind you. You turn back, catching a glimpse of the grass and dirt around the point of impact. The plants around the glob die, fading from vibrant green to an odd brown-black. It’s a good thing it missed!");
 			else {
 				outputText("Tyrantia turns, exposing her spinnerets. You brace yourself, expecting webbing, but instead, a viscous goop strikes you in the chest. It burns!");
-				var dmg1:Number = this.inte * 0.2;
-				dmg1 += eBaseIntelligenceDamage() * 0.2;
+				var dmg1:Number = this.inte * 0.3;
+				dmg1 += eBaseIntelligenceDamage() * 0.3;
 				dmg1 = Math.round(dmg1);
 				dmg1 = player.takeAcidDamage(dmg1, true);
 				if (!player.immuneToAcid()) {
@@ -79,9 +79,9 @@ public class Tyrantia extends Monster
 					if (this.inte <= 300) critChance += (this.inte - 150) / 5;
 					if (this.inte > 300) critChance += 30;
 				}
-				dmg2 += this.str * 4;
-				dmg2 += eBaseStrengthDamage() * 3;
-				dmg2 += this.weaponAttack * 4;
+				dmg2 += this.str * 5;
+				dmg2 += eBaseStrengthDamage() * 4;
+				dmg2 += this.weaponAttack * 5;
 				if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2) dmg2 *= (1 + (0.2 * (flags[kFLAGS.TYRANTIA_LVL_UP] - 1)));
 				if (rand(100) < critChance) {
 					crit = true;
@@ -103,7 +103,7 @@ public class Tyrantia extends Monster
 			player.createStatusEffect(StatusEffects.Pounced, 2, 0, 0, 0);
 		}
 		public function tyrantiaPouncedStruggle():void {
-			if ((rand(player.str) > this.str / 2) || player.hasPerk(PerkLib.FluidBody)) tyrantiaPounceSuccess();
+			if (Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) tyrantiaPounceSuccess();
 			else tyrantiaPounceFail();
 			SceneLib.combat.enemyAIImpl();
 		}
@@ -116,7 +116,7 @@ public class Tyrantia extends Monster
 			clearOutput();
 			outputText("You notice a single weak point in her armor, the single metal flap on the front of her spider half. You surge up, jamming your fist as hard as you can into it. The metal and leather slide aside...and your fist enters a surprisingly warm, wet crevasse. The drider on top of you wails in surprise...and something else. Well, if you didn’t know what you’d entered before, you do now. She bucks, your fist exiting with a moist *pop*, and the giantess backs up, her tan cheeks bright red.\n\n");
 			outputText("\"<i>Fighting Dirty like that?!</i>\" She hisses. \"<i>I’ll show you.</i>\"\n");
-			var lustDang:Number = 15 + rand(15);
+			var lustDang:Number = 75 + rand(75);
 			player.takeLustDamage(lustDang, true);
 			if (player.armor == armors.ELFDRES && player.isElf()) lustDang *= 2;
 			if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDang *= 2;
@@ -129,9 +129,9 @@ public class Tyrantia extends Monster
 			clearOutput();
 			outputText("Unable to throw the giant Drider off of you, she sinks two of her bladed limbs into your body, seemingly at random. You buck, the cold steel sending rippling pain through you, to no effect. ");
 			var dmg3:Number = 0;
-			dmg3 += this.str * 4;
-			dmg3 += eBaseStrengthDamage() * 3;
-			dmg3 += this.weaponAttack;
+			dmg3 += this.str * 5;
+			dmg3 += eBaseStrengthDamage() * 4;
+			dmg3 += this.weaponAttack * 2;
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2) dmg3 *= (1 + (0.1 * (flags[kFLAGS.TYRANTIA_LVL_UP] - 1)));
 			dmg3 = Math.round(dmg3);
 			player.takePhysDamage(dmg3, true);
@@ -148,7 +148,7 @@ public class Tyrantia extends Monster
 		private function tyrantiaFangs():void {
 			outputText("The massive Drider charges at you. You sidestep her Dick, but that proved to be a feint. She rams you with her shoulder, then grabs you in her furry arms. You squirm, but her fangs sink into your exposed neck, leaving you both flushed and in pain. Blood squirts from your neck, and as you push, getting out from her grip, you can feel your muscles slackening.\n\n");
 			player.takeLustDamage((lustFromHits() * 4), true);
-			player.buff("Goop Web").addStats( {"spe":-20} ).withText("Goop Web").combatPermanent();
+			player.buff("Goop Web").addStats( {"spe":-30} ).withText("Goop Web").combatPermanent();
 		}
 		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
 			if (player.hasStatusEffect(StatusEffects.Pounced)) {
@@ -223,35 +223,35 @@ public class Tyrantia extends Monster
 		public function Tyrantia()
 		{
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] < 2) {
-				initStrTouSpeInte(295, 310, 190, 150);
-				initWisLibSensCor(100, 280, 100, 100);
+				initStrTouSpeInte(400, 420, 290, 300);
+				initWisLibSensCor(200, 560, 210, 100);
 				this.weaponAttack = 150;
 				this.armorDef = 300;
 				this.armorMDef = 300;
-				this.bonusHP = 2000;
-				this.bonusLust = 438;
+				this.bonusHP = 3000;
+				this.bonusLust = 828;
 				this.level = 58;
 			}
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2 && flags[kFLAGS.TYRANTIA_LVL_UP] < 4) {
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2 && flags[kFLAGS.TYRANTIA_LVL_UP] < 13) {
 				var mod:int = (flags[kFLAGS.TYRANTIA_LVL_UP] - 1);
-				initStrTouSpeInte(295 + 20*mod, 310 + 25*mod, 190 + 15*mod, 150 + 10*mod);
-				initWisLibSensCor(100 + 5*mod, 280 + 20*mod, 100 + 20*mod, 100);
-				this.weaponAttack = 150 + 10*mod;
-				this.armorDef = 300 + 20*mod;
-				this.armorMDef = 300 + 20*mod;
-				this.bonusHP = 2000 + 1000*mod;
-				this.bonusLust = 438 + 46*mod;
+				initStrTouSpeInte(400 + 50*mod, 420 + 60*mod, 290 + 40*mod, 300 + 30*mod);
+				initWisLibSensCor(200 + 15*mod, 560 + 60*mod, 210 + 40*mod, 100);
+				this.weaponAttack = 150 + 30*mod;
+				this.armorDef = 300 + 50*mod;
+				this.armorMDef = 300 + 50*mod;
+				this.bonusHP = 3000 + 1500*mod;
+				this.bonusLust = 828 + 106*mod;
 				this.level = 58 + 6*mod;
 			}
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 4) {
-				initStrTouSpeInte(355, 385, 235, 180);
-				initWisLibSensCor(115, 340, 160, 100);
-				this.weaponAttack = 180;
-				this.armorDef = 360;
-				this.armorMDef = 360;
-				this.bonusHP = 5000;
-				this.bonusLust = 576;
-				this.level = 76;
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 15) {
+				initStrTouSpeInte(1100, 1260, 850, 720);
+				initWisLibSensCor(410, 1400, 730, 100);
+				this.weaponAttack = 570;
+				this.armorDef = 1000;
+				this.armorMDef = 1000;
+				this.bonusHP = 24000;
+				this.bonusLust = 2272;
+				this.level = 142;
 			}
 			this.a = "";
 			this.short = "Tyrantia";
@@ -288,30 +288,63 @@ public class Tyrantia extends Monster
 			this.createPerk(PerkLib.TankI,0,0,0,0);
 			this.createPerk(PerkLib.GoliathI,0,0,0,0);
 			this.createPerk(PerkLib.CheetahI,0,0,0,0);
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 8 && flags[kFLAGS.TYRANTIA_LVL_UP] < 16) this.createPerk(PerkLib.EnemyEliteType,0,0,0,0);
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2) {
 				this.createPerk(PerkLib.EpicStrength,0,0,0,0);
-				this.createPerk(PerkLib.EpicSpeed,0,0,0,0);
 				this.createPerk(PerkLib.Naturaljouster,0,0,0,0);
 			}
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 3) {
-				this.createPerk(PerkLib.EpicToughness,0,0,0,0);
-				this.createPerk(PerkLib.GrandTactician,0,0,0,0);
+				this.createPerk(PerkLib.EpicSpeed,0,0,0,0);
 				this.createPerk(PerkLib.ImmovableObject,0,0,0,0);
 			}
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 4) {
-				this.createPerk(PerkLib.Juggernaut,0,0,0,0);
-				this.createPerk(PerkLib.JobWarrior,0,0,0,0);
-				this.createPerk(PerkLib.InhumanDesireI,0,0,0,0);
+				this.createPerk(PerkLib.EpicToughness,0,0,0,0);
+				this.createPerk(PerkLib.GrandTactician,0,0,0,0);
 			}
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 5) {
+				this.createPerk(PerkLib.Juggernaut,0,0,0,0);
+				this.createPerk(PerkLib.InhumanDesireI,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 6) {
 				this.createPerk(PerkLib.LegendaryStrength,0,0,0,0);
+				this.createPerk(PerkLib.JobWarrior,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 7) {
 				this.createPerk(PerkLib.LegendarySpeed,0,0,0,0);
 				this.createPerk(PerkLib.NaturaljousterMastergrade,0,0,0,0);
 			}
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 6) {
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 8) {
 				this.createPerk(PerkLib.LegendaryToughness,0,0,0,0);
 				this.createPerk(PerkLib.DemonicDesireI,0,0,0,0);
-				//this.createPerk(PerkLib.,0,0,0,0);
+				this.createPerk(PerkLib.Regeneration,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 9) {
+				this.createPerk(PerkLib.LimitBreakerBody1stStage,0,0,0,0);
+				this.createPerk(PerkLib.EpicLibido,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 10) {
+				this.createPerk(PerkLib.MythicalStrength,0,0,0,0);
+				this.createPerk(PerkLib.EpicIntelligence,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 11) {
+				this.createPerk(PerkLib.MythicalSpeed,0,0,0,0);
+				this.createPerk(PerkLib.RefinedBodyI,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 12) {
+				this.createPerk(PerkLib.MythicalToughness,0,0,0,0);
+				this.createPerk(PerkLib.LegendaryLibido,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 13) {
+				this.createPerk(PerkLib.LegendaryIntelligence,0,0,0,0);
+				this.createPerk(PerkLib.Diehard,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 14) {
+				this.createPerk(PerkLib.LimitBreakerBody2ndStage,0,0,0,0);
+				this.createPerk(PerkLib.LimitBreakerHeart1stStage,0,0,0,0);
+			}
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 15) {
+				this.createPerk(PerkLib.LimitBreakerFlesh1stStage,0,0,0,0);
+				this.createPerk(PerkLib.ImprovedDiehard,0,0,0,0);
 			}
 			checkMonster();
 		}

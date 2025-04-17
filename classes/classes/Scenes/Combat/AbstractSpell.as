@@ -432,6 +432,40 @@ public class AbstractSpell extends CombatAbility {
 		return dTIA;
 	}
 	
+	public function damageCalculationTier1Spells(randomize:Boolean=true):Number {
+		var dCT1S:Number = 0;
+		dCT1S += 8 * scalingBonusIntelligence(randomize);
+		dCT1S += 2 * scalingBonusWisdom(randomize);
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+			dCT1S += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) dCT1S += Math.round(scalingBonusToughness() * 0.1);
+		}
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dCT1S += 5 * scalingBonusLibido(randomize);
+		return dCT1S;
+	}
+	public function damageCalculationTier2Spells(randomize:Boolean=true):Number {
+		var dCT2S:Number = 0;
+		dCT2S += 24 * scalingBonusIntelligence(randomize);
+		dCT2S += 6 * scalingBonusWisdom(randomize);
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+			dCT2S += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) dCT2S += Math.round(scalingBonusToughness() * 0.1);
+		}
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dCT2S += 15 * scalingBonusLibido(randomize);
+		return dCT2S;
+	}
+	public function damageCalculationTier3Spells(randomize:Boolean=true):Number {
+		var dCT3S:Number = 0;
+		dCT3S += 64 * scalingBonusIntelligence(randomize);
+		dCT3S += 16 * scalingBonusWisdom(randomize);
+		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
+			dCT3S += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
+			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) dCT3S += Math.round(scalingBonusToughness() * 0.1);
+		}
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dCT3S += 40 * scalingBonusLibido(randomize);
+		return dCT3S;
+	}
+	
 	public function daaamageaddons(dmg:Number):Number {
 		var daaamageaddon:Number = dmg;
 		if (player.hasPerk(PerkLib.Spellsong) && player.lust > player.lust100 * 0.35) daaamageaddon += combat.scalingBonusLibido();
@@ -631,7 +665,9 @@ public class AbstractSpell extends CombatAbility {
 		}
 		//Determine if critical hit!
 		var crit:Boolean = false;
-		var critChance:int = 5 + combatMagicalCritical();
+		var critChance:int = 5;
+		critChance += combatMagicalCritical();
+		critChance += combatSpellsCritical();
         if (player.perkv1(IMutationsLib.ElvishPeripheralNervSysIM) >= 4) critChance += 10;
 		if (player.perkv1(IMutationsLib.GazerEyesIM) >= 3) critChance += 10;
 		if (player.perkv1(IMutationsLib.GazerEyesIM) >= 4) critChance += 25;

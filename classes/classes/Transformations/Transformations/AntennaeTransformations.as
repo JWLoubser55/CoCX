@@ -172,6 +172,20 @@ public class AntennaeTransformations extends MutationsHelper {
 				return player.antennae.type === Antennae.MOTH;
 			}
 	);
+	public const AntennaeAutomata: Transformation = new SimpleTransformation("Automata Antennae",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+				player.antennae.type = Antennae.AUTOMATA;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.antennae.type === Antennae.AUTOMATA;
+			}
+	);
 	/*
   */
 }

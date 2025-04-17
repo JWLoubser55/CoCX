@@ -4,7 +4,9 @@ import classes.AssClass;
 import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
 import classes.CockTypesEnum;
+import classes.Items.DynamicItems;
 import classes.Monster;
+import classes.PerkLib;
 import classes.Scenes.SceneLib;
 import classes.StatusEffects;
 import classes.internals.WeightedDrop;
@@ -13,7 +15,7 @@ import classes.lists.BreastCup;
 /**
  * @author kitteh660.
  * Ported from UEE to CoCX by Svalkash
- * Mimic, one of the classic encounters from Unnamed Text Game, now modified to be up to modern standards, with new fight.
+ * Mimic, one of the classic encounters from Unnamed Text Game, now modified to be up to modern standards, with new fight. And once again modernized to be modern solution to modern problems.
  */
 public class Mimic extends Monster {
 
@@ -32,7 +34,7 @@ public class Mimic extends Monster {
             outputText("Thankfully you're quick enough to avoid its gaping maw!");
         } else {
             outputText("Ow! The mouth rends your arm and it hurts like hell! ");
-            var damage:int = (10 + (str / 2) + rand(str / 3)) * (1 + (player.newGamePlusMod() * 0.3));
+            var damage:int = (100 + str + rand(str)) * (1 + (player.newGamePlusMod() * 0.3));
             player.takePhysDamage(damage, true);
         }
     }
@@ -95,48 +97,54 @@ public class Mimic extends Monster {
         this.weaponName = "mouth";
         this.weaponVerb = "bite";
         if (type == 3) {
-			initStrTouSpeInte(50, 115, 5, 10);
+			initStrTouSpeInte(50, 130, 5, 10);
 			initWisLibSensCor(50, 35, 35, 100);
 			this.weaponAttack = 30 + player.level;
             this.armorName = "wooden surface";
-            this.armorDef = 60;
-			this.armorMDef = 60;
-			this.bonusHP = 100;
+            this.armorDef = 120;
+			this.armorMDef = 120;
+			this.bonusHP = 1000;
 			this.bonusLust = 81;
 			this.level = 11;
         }
         if (type == 2 || type == 1) {
-            initStrTouSpeInte(60, 200, 5, 20);
+            initStrTouSpeInte(60, 230, 5, 20);
 			initWisLibSensCor(100, 95, 95, 100);
 			this.weaponAttack = 40 + player.level;
             this.armorName = "flesh";
-            this.armorDef = 10;
-			this.armorMDef = 10;
-			this.bonusHP = 250;
+            this.armorDef = 20;
+			this.armorMDef = 20;
+			this.bonusHP = 2500;
 			this.bonusLust = 315;
 			this.level = 25;
         } else {
-            initStrTouSpeInte(30, 95, 5, 5);
+            initStrTouSpeInte(30, 110, 5, 5);
 			initWisLibSensCor(45, 45, 45, 100);
 			this.weaponAttack = 20 + player.level;
             this.armorName = "stone surface";
-            this.armorDef = 180;
-			this.armorMDef = 180
-			this.bonusHP = 50;
+            this.armorDef = 360;
+			this.armorMDef = 360
+			this.bonusHP = 500;
 			this.bonusLust = 96;
-			this.level = 6;
+			this.level = 8;
         }
         this.lust = 10;
         this.lustVuln = 0.01;
         this.gems = rand(20) + 21;
-        this.drop = new WeightedDrop()
-            .add(consumables.PPHILTR, 4)
-            .add(consumables.NUMBOIL, 4)
-            .add(consumables.HUMMUS_, 3)
-            .add(consumables.INCUBID, 1)
-            .add(consumables.SUCMILK, 1)
-            .add(consumables.REDUCTO, 1);
+        this.randomDropChance = 0.5;
+		this.randomDropParams = {
+			rarity: DynamicItems.RARITY_CHANCES_MINOR_LOW
+		};
+		this.drop = new WeightedDrop()
+            .add(consumables.B__BOOK, 4)
+            .add(consumables.W__BOOK, 4)
+            .add(consumables.G__BOOK, 3)
+            .add(consumables.RMANUSC, 2)
+            .add(consumables.BROBREW, 1)
+            .add(consumables.BIMBOLQ, 1);
         this.special1 = mimicBite;
+		this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
+		this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
         checkMonster();
     }
 

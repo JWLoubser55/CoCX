@@ -186,7 +186,7 @@ public class DemonSoldier extends Monster {
                 outputText("You duck and side-step every slash of the Demon's sword.");
             } else {
                 outputText("You fail to avoid in time and the bladed weapon strikes you! ");
-                player.takePhysDamage(this.str + this.weaponAttack + 10 + rand(30), true);
+                player.takePhysDamage(((this.str + this.weaponAttack) * 2) + rand(30), true);
             }
         }
         //Flurry, moderate damage to HP
@@ -195,7 +195,7 @@ public class DemonSoldier extends Monster {
             if (player.getEvasionRoll()) {
                 outputText("You manage to evade the Demon's frenzied flurry of blows.");
             } else {
-                this.createStatusEffect(StatusEffects.Attacks, 2, 0, 0, 0);
+                this.createStatusEffect(StatusEffects.Attacks, 4, 0, 0, 0);
                 this.eAttack();
             }
             this.fatigue += 10;
@@ -222,11 +222,15 @@ public class DemonSoldier extends Monster {
         if (teaseChooser == 0 && this.fatigueLeft() < 15 && !this.hasStatusEffect(StatusEffects.TensionReleased)) {
             //Dick tease
             if (this.hasCock() && (rand(2) == 0 || !this.hasVagina())) {
-                outputText("The Demon runs " + this.mf("his", "her") + " hands down " + this.mf("his", "her") + " body as " + this.mf("he", "she") + " sensuously arches " + this.mf("his", "her") + " back. " + this.mf("He", "She") + " simultaneously grasps " + this.mf("his", "her") + " bulging demon-dick with both hands and plunges a length of " + this.mf("his", "her") + " tail into " + this.mf("his", "her") + " puckered anus, pressing down on " + this.mf("his", "her") + " prostate as " + this.mf("he", "she") + " pumps hard at " + this.mf("his", "her") + " infernal shaft. A low, reverberating moan bursts forth from the creature as powerful jets of infernal spunk spurt from " + this.mf("his", "her") + " piss-hole, [if (attack hits) “ splashing you from head to toe, the sickly-sweet smell engendering an all-too-familiar warmth in you. “][if (attack misses) “ missing you by a hair's breadth, splashing harmlessly onto the ground.");
+                outputText("The Demon runs " + this.mf("his", "her") + " hands down " + this.mf("his", "her") + " body as " + this.mf("he", "she") + " sensuously arches " + this.mf("his", "her") + " back. " + this.mf("He", "She") + " simultaneously grasps " + this.mf("his", "her") + " bulging demon-dick with both hands and plunges a length of " + this.mf("his", "her") + " tail into " + this.mf("his", "her") + " puckered anus, pressing down on " + this.mf("his", "her") + " prostate as " + this.mf("he", "she") + " pumps hard at " + this.mf("his", "her") + " infernal shaft. A low, reverberating moan bursts forth from the creature as powerful jets of infernal spunk spurt from " + this.mf("his", "her") + " piss-hole, ");
+				if (rand(20) + 1 + player.spe / 20 > 17) outputText("missing you by a hair's breadth, splashing harmlessly onto the ground.");
+				else outputText("splashing you from head to toe, the sickly-sweet smell engendering an all-too-familiar warmth in you.");
             }
             //Pussy tease
             if (this.hasVagina()) {
-                outputText("The Demon turns " + this.mf("his", "her") + " back on you, bending over to present " + this.mf("his", "her") + " toned butt-cheeks and plump, drooling pussy-lips to you. " + this.mf("He", "She") + " stuffs as much of " + this.mf("his", "her") + " tail as " + this.mf("he", "she") + " can into " + this.mf("his", "her") + " sopping fuck-hole, pumping in and out of {him/her}self while reaching between " + this.mf("his", "her") + " legs and mercilessly molesting " + this.mf("his", "her") + " pierced clit. " + this.mf("He", "She") + " It yanks out " + this.mf("his", "her") + " fem-spunk slicked tail as an inhuman shriek is released simultaneously with a shower of girl-cum squirted in your direction.[if(attack hits) “ You are soaked through, and the air is permeated with a sickly-sweet smell, engendering an all-too-familiar warmth in you. “][if(attack misses) “ " + this.mf("He", "She") + " It misses you by a hair's breadth, splashing harmlessly onto the ground. “]");
+                outputText("The Demon turns " + this.mf("his", "her") + " back on you, bending over to present " + this.mf("his", "her") + " toned butt-cheeks and plump, drooling pussy-lips to you. " + this.mf("He", "She") + " stuffs as much of " + this.mf("his", "her") + " tail as " + this.mf("he", "she") + " can into " + this.mf("his", "her") + " sopping fuck-hole, pumping in and out of {him/her}self while reaching between " + this.mf("his", "her") + " legs and mercilessly molesting " + this.mf("his", "her") + " pierced clit. " + this.mf("He", "She") + " It yanks out " + this.mf("his", "her") + " fem-spunk slicked tail as an inhuman shriek is released simultaneously with a shower of girl-cum squirted in your direction.");
+				if (rand(20) + 1 + player.spe / 20 > 17) outputText(" " + this.mf("He", "She") + " It misses you by a hair's breadth, splashing harmlessly onto the ground.");
+				else outputText(" You are soaked through, and the air is permeated with a sickly-sweet smell, engendering an all-too-familiar warmth in you.");
             }
             this.fatigue += 15;
             this.lust -= 30;
@@ -234,18 +238,32 @@ public class DemonSoldier extends Monster {
         }
         //Lust strike
         else if (teaseChooser == 1 && this.fatigueLeft() >= 10) {
-            outputText("The Demon seems to be chanting under " + this.mf("his", "her") + " breath and closes " + this.mf("his", "her") + " eyes in concentration as " + this.mf("he", "she") + " points " + this.mf("his", "her") + " sword at you. Suddenly, ribbons of what appear to be pink smoke leap from the tip of the blade towards you, [If(attack hits) “ striking you squarely in the chest, causing an irresistible surge in your sexual desire. “][If(attack misses) “ narrowly missing you as you dodge to the side. “]");
+            outputText("The Demon seems to be chanting under " + this.mf("his", "her") + " breath and closes " + this.mf("his", "her") + " eyes in concentration as " + this.mf("he", "she") + " points " + this.mf("his", "her") + " sword at you. Suddenly, ribbons of what appear to be pink smoke leap from the tip of the blade towards you, ");
+			if (rand(20) + 1 + player.spe / 20 > 17) outputText("narrowly missing you as you dodge to the side.");
+			else outputText("striking you squarely in the chest, causing an irresistible surge in your sexual desire.");
             this.fatigue += 10;
         }
         //Tongue tease
         else if (teaseChooser == 2) {
-            outputText("The Demon undulates " + this.mf("his", "her") + " body in a sinuous, seductive motion. As " + this.mf("he", "she") + " does so, " + this.mf("his", "her") + " long, wriggling demonic tongue slips out of " + this.mf("his", "her") + " mouth and begins to writhe across " + this.mf("his", "her") + " body; the squirming rope of flesh explores every exposed inch of the Demon's own skin, finally entwining {him/her}self with the Demon's genitailia, irrisistably drawing your eye to the slimy, pink tip as it probes every fold and drooling hole between the infernal beast's knee and navel. [If(attack hits)The obscene display is highly arousing to you.][if(attack misses) “ [if(corruption < 50) “ This unwholesome display leaves you more disgusted than anything else. “][If(corruption => 50) “ It's a moderately entertaining display, but frankly, you've seen better. “] “]");
+            outputText("The Demon undulates " + this.mf("his", "her") + " body in a sinuous, seductive motion. As " + this.mf("he", "she") + " does so, " + this.mf("his", "her") + " long, wriggling demonic tongue slips out of " + this.mf("his", "her") + " mouth and begins to writhe across " + this.mf("his", "her") + " body; the squirming rope of flesh explores every exposed inch of the Demon's own skin, finally entwining {him/her}self with the Demon's genitailia, irrisistably drawing your eye to the slimy, pink tip as it probes every fold and drooling hole between the infernal beast's knee and navel. ");
+			if (rand(20) + 1 + player.spe / 20 > 17) {
+				if (player.cor >= 50) outputText("It's a moderately entertaining display, but frankly, you've seen better.");
+				else outputText("This unwholesome display leaves you more disgusted than anything else.");
+			}
+			else outputText("The obscene display is highly arousing to you.");
         }
         //Leap tease
         else if (teaseChooser == 3) {
-            outputText("Flicking " + this.mf("his", "her") + " wings out to full extension, the Demon gives them a hard pump as " + this.mf("he", "she") + " leaps toward you, propelling {him/her}self through the air. [If(attack hits)  “ Spreading " + this.mf("his", "her") + " legs mid-air, the creature attempts a kind of reverse leapfrog, rubbing " + this.mf("his", "her") + " groin across your face as " + this.mf("he", "she") + " passes over you, smearing you with " + this.mf("his", "her") + " hellish sex-juices. [If(isTaur = true) “ The Demon very nearly ends up straddling you equine hind-quarters, but nimbly vaults off again, landing behind you and forcing you to wheel around to face your demonic adversary. “][If(isTaur = false) “ The hellish beast lands behind you, forcing you to wheel around to face your adversary. “] The inescapable odour of the demon-slime coating your face causes you to become aroused. “][If(attack misses) “ You manage to duck and dive to the side, dodging the incoming Demon. Rolling back to your feet you wheel around to face your opponent. “]");
+            outputText("Flicking " + this.mf("his", "her") + " wings out to full extension, the Demon gives them a hard pump as " + this.mf("he", "she") + " leaps toward you, propelling h" + this.mf("im", "er") + "self through the air. ");
+			if (rand(20) + 1 + player.spe / 20 > 17) outputText("You manage to duck and dive to the side, dodging the incoming Demon. Rolling back to your feet you wheel around to face your opponent.");
+			else {
+				outputText("Spreading " + this.mf("his", "her") + " legs mid-air, the creature attempts a kind of reverse leapfrog, rubbing " + this.mf("his", "her") + " groin across your face as " + this.mf("he", "she") + " passes over you, smearing you with " + this.mf("his", "her") + " hellish sex-juices. ");
+				if (player.isTaur()) outputText("The Demon very nearly ends up straddling you equine hind-quarters, but nimbly vaults off again, landing behind you and forcing you to wheel around to face your demonic");
+				else outputText("The hellish beast lands behind you, forcing you to wheel around to face your");
+				outputText(" adversary. The inescapable odour of the demon-slime coating your face causes you to become aroused.");
+			}
         }
-        player.takeLustDamage(5 + (player.lib / 10) + (player.cor / 15) + rand(10), true);
+        player.takeLustDamage(10 + (player.lib / 8) + (player.cor / 12) + rand(10), true);
     }
 
     //Demon Lust Spell. 2-part, avoid or take large lust damage!
@@ -262,7 +280,7 @@ public class DemonSoldier extends Monster {
                 outputText("Your preparedness from waiting definitely helped you in this situation. You just about succeed in flinging yourself out of the way of the ball of pure lust-energy, much to the chagrin of the Demon.");
             } else { //Didn't use Wait? Get hit!
                 outputText("The pink energy washes over you, greatly inflaming your lusts.");
-                player.takeLustDamage(10 + (player.lib / 8) + (player.cor / 10) + rand(20), true);
+                player.takeLustDamage(500 + (player.lib / 4) + (player.cor / 5) + rand(20), true);
             }
             this.fatigue += 25;
             this.removeStatusEffect(StatusEffects.Uber);
@@ -306,7 +324,6 @@ public class DemonSoldier extends Monster {
         this.a = "the ";
         this.short = "Demon Soldier";
         this.imageName = "demon";
-
         this.long = "You are fighting " + (this.demonGender == DEMON_GENDER_MALEHERM ? "what, at first appears to be a manly Incubus, but a glimpse of drooling, demonic snatch reveals to be an unusually masculine Omnibus" : this.demonTitle(1)) + ", which appears to be some form of soldier, as " + this.mf("he", "she") + "'s wearing a suit of bronze armour... of a sort: "
         this.long += "a helmet with holes cut for the creature's horns; a sculpted breastplate with a stylised 'L' in the middle of it and jeweled nipples (naturally) and a pair of armoured bracers and shin-guards, etched with scenes of orgiastic debauchery. ";
         if (rand(3) == 0) {
@@ -320,10 +337,11 @@ public class DemonSoldier extends Monster {
             this.long += " fully exposed to view. ";
         }
         this.long += "\n\nThe " + this.demonTitle(0) + " holds " + this.mf("his", "her") + " weapon, a serrated-edged scimitar, with a practiced familiarity which speaks of martial skill, and regards you with an unmistakable, predatory lust.";
-
+		this.flyer = true;
+		this.magicuser = true;
         this.ass.analLooseness = AssClass.LOOSENESS_STRETCHED;
         this.ass.analWetness = AssClass.WETNESS_NORMAL;
-        this.tallness = rand(31) + 54;
+        this.tallness = rand(21) + 64;
         this.hips.type = Hips.RATING_BOYISH;
         this.butt.type = Butt.RATING_TIGHT;
         this.hairColor = "black";
@@ -332,19 +350,18 @@ public class DemonSoldier extends Monster {
         this.tail.type = Tail.DEMONIC;
         this.horns.type = Horns.DEMON;
         this.horns.count = 2;
-        initStrTouSpeInte(160, 160, 180, 140);
-        initWisLibSensCor(120, 160, 90, 100);
+        initStrTouSpeInte(490, 490, 545, 284);
+        initWisLibSensCor(243, 320, 180, 100);
+        this.weaponAttack = 270;
         this.weaponName = "claws";
         this.weaponVerb = "claw-slash";
+        this.armorDef = 600;
+        this.armorMDef = 350;
         this.armorName = "leathery skin";
-        this.lust = 40;
-        this.level = 50;
-        this.bonusHP = this.level * 25;
-        this.weaponAttack = 45;
-        this.armorDef = 60;
-        this.armorMDef = 35;
-        this.createPerk(PerkLib.WeaponNormalDoubleAttack, 0, 0, 0, 0);
-        this.createPerk(PerkLib.Evade, 0, 0, 0, 0);
+		this.bonusHP = 2000;
+		this.bonusLust = 572;
+		this.lust = 40;
+        this.level = 72;
         this.gems = rand(5) + 5;
         this.randomDropChance = 0.1;
         this.randomDropParams = {
@@ -358,7 +375,10 @@ public class DemonSoldier extends Monster {
         this.special1 = demonTeaseAttack;
         this.special2 = demonLustSpell;
         this.special3 = demonPhysicalAttack;
-        checkMonster();
+        this.createPerk(PerkLib.Evade, 0, 0, 0, 0);
+        this.createPerk(PerkLib.EnemyTrueDemon, 0, 0, 0, 0);
+		this.createPerk(PerkLib.OverMaxHP, 72, 0, 0, 0);
+		checkMonster();
     }
 
 }

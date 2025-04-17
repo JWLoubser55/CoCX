@@ -64,8 +64,8 @@ public class GreenSlime extends Monster
 			this.weaponVerb = "slap";
 			this.weaponAttack = 3;
 			this.armorName = "gelatinous skin";
-			this.armorDef = 6;
-			this.armorMDef = 18;
+			this.armorDef = 18;
+			this.armorMDef = 6;
 			this.bonusHP = 50;
 			this.bonusLust = 123;
 			this.lust = 30;

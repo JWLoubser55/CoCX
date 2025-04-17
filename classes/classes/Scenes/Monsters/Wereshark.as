@@ -10,7 +10,6 @@ import classes.BodyParts.Face;
 import classes.BodyParts.Hips;
 import classes.BodyParts.LowerBody;
 //import classes.BodyParts.Skin;
-import classes.Scenes.Areas.Desert.AnubisScene;
 import classes.Scenes.SceneLib;
 import classes.Stats.Buff;
 import classes.internals.*;
@@ -50,19 +49,19 @@ import classes.internals.*;
 			this.bodyColor = "gray";
 			this.hairColor = "silver";
 			this.hairLength = 10;
-			initStrTouSpeInte(295, 210, 210, 111);
-			initWisLibSensCor(111, 104, 35, 70);
+			initStrTouSpeInte(885, 630, 630, 333);
+			initWisLibSensCor(333, 312, 105, 70);
 			this.weaponName = "shark teeth";
 			this.weaponVerb="bite";
-			this.weaponAttack = 37;
+			this.weaponAttack = 222;
 			this.armorName = "tough skin";
-			this.armorDef = 31;
-			this.armorMDef = 10;
-			this.bonusHP = 500;
-			this.bonusLust = 206;
+			this.armorDef = 310;
+			this.armorMDef = 100;
+			this.bonusHP = 7500;
+			this.bonusLust = 504;
 			this.lust = 30;
-			this.level = 67;
-			this.gems = rand(26) + 130;
+			this.level = 87;
+			this.gems = rand(16) + 150;
 			this.drop = new WeightedDrop().
 					add(consumables.L_DRAFT,3).
 					//add(armors.S_SWMWR,1).

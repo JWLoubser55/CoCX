@@ -1,4 +1,4 @@
-package classes.Scenes.Areas.Plains
+package classes.Scenes.Places.Bazaar
 {
 import classes.*;
 import classes.GlobalFlags.kFLAGS;
@@ -44,7 +44,7 @@ import classes.internals.*;
 			else
 			{
 				outputText("but you get hit instead! ");
-				var damage:int = int(str + weaponAttack + 100);
+				var damage:int = int(str + weaponAttack + 200);
 				player.takePhysDamage(damage, true);
 			}
 		}
@@ -62,7 +62,7 @@ import classes.internals.*;
 			}
 			else {
 				outputText("The gatekeeper slashes you brutally! You are in a lot of pain. ");
-				var damage:int = int(str + weaponAttack + 250);
+				var damage:int = int(str + weaponAttack + 500);
 				player.takePhysDamage(damage, true);
 			}
 			removeStatusEffect(StatusEffects.Uber);
@@ -152,23 +152,23 @@ import classes.internals.*;
 			this.bodyColor = "crimson";
 			this.hairColor = "black";
 			this.hairLength = 8;
-			initStrTouSpeInte(124, 150, 104, 70);
-			initWisLibSensCor(70, 15, 10, 75);
+			initStrTouSpeInte(248, 300, 208, 70);
+			initWisLibSensCor(70, 30, 20, 75);
 			this.weaponName = "dual scimitars";
 			this.weaponVerb="slash";
-			this.weaponAttack = 28;
+			this.weaponAttack = 56;
 			this.weaponValue = 25;
 			this.armorName = "tunic and pants";
-			this.armorDef = 14;
-			this.armorMDef = 2;
-			this.bonusHP = 1750;
-			this.bonusLust = 55;
+			this.armorDef = 140;
+			this.armorMDef = 20;
+			this.bonusHP = 3500;
+			this.bonusLust = 83;
 			this.lust = 0;
 			this.lustVuln = .15;
 			this.level = 33;
 			this.additionalXP = 300;
 			this.drop = new WeightedDrop().add(weapons.SCIMITR, 1);
-			this.gems = 300;
+			this.gems = 200 + rand(100);
 			this.special1 = scimitarSpecial;
 			this.createPerk(PerkLib.EnemyHugeType, 0, 0, 0, 0);
 			checkMonster();

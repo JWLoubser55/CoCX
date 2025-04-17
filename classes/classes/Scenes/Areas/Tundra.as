@@ -19,11 +19,10 @@ use namespace CoC;
 
 	public class Tundra extends BaseContent
 	{
-		public var valkyrieScene:ValkyrieScene = new ValkyrieScene();
 		public var alrauneScene:AlrauneScene = new AlrauneScene();
 		public var swordInStone:SwordInStone = new SwordInStone();
 
-		public const areaLevel:int = 35;
+		public const areaLevel:int = 50;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.tundra > 0;
 		}
@@ -58,26 +57,17 @@ use namespace CoC;
 					return !player.hasStatusEffect(StatusEffects.TookGlacialGraveaxe) && !player.hasStatusEffect(StatusEffects.GlacialGraveaxeNever);
 				},
 				call: swordInStone.findGlacialGraveaxe
-			},{
-				// choice[choice.length] = 0; //Valkyrie (lvl 44)
-				name: "valkyrie",
-				label : "Valkyrie",
-				kind : 'monster',
-				night : false,
-				call: valkyrieEncounter
 			}, /*{
-				// ?? (lvl 52)
+				// ?? (lvl 65)
 				// wendigoScene.encounterWendigo();
 				name: "wendigo"
 			}, */{
-				// choice[choice.length] = 2; //Young Frost Giant (lvl 47)
 				name: "frostgiant",
 				label : "Young Frost Giant",
 				kind : 'monster',
 				night : false,
 				call: frostGiantEncounter
 			}, {
-				// choice[choice.length] = 3; //Snow Lily (lvl 40)
 				name: "snow lily",
 				label : "Snow Lily",
 				kind : 'monster',
@@ -89,7 +79,7 @@ use namespace CoC;
 				kind  : 'item',
 				call: findATear,
 				chance: 0.25
-			}, {
+			}, /*{some werebeast for cold climate (lvl 57)
 				// Werewolf huntress
 				name: "werewolf huntress",
 				label : "Werewolf Huntress",
@@ -97,8 +87,7 @@ use namespace CoC;
 				day : false,
 				call: SceneLib.werewolfFemaleScene.introWerewolfHuntress,
 				chance: 0.50
-			}, {
-				// choice[choice.length] = 4; //Ice Golem (lvl 64)
+			}, */{
 				name: "ice golem",
 				label : "Ice Golem",
 				kind : 'monster',
@@ -186,13 +175,6 @@ use namespace CoC;
 			clearOutput();
 			outputText("You wander the chilling landscape of the Tundra. As you cross the peak of a rather large, lightly forested hill, you come face to gigantic face with a Young Frost Giant! He belches fiercely at you and you tumble back down the hill. He mostly steps over it as you come to your senses. You quickly draw your [weapon] and withdraw from the hill to prepare for battle.\n\n");
 			startCombat(new YoungFrostGiant());
-		}
-
-		public function valkyrieEncounter():void {
-			clearOutput();
-			outputText("Making your way across the tundra, you’re surprised to see the thick gray clouds part overhead.  You see a beautiful woman descend from on high, her snow-white wings flapping powerfully behind her back.  Armed with a long spear and shield, and clad in a bronze cuirass and a winged helm, she looks every bit the part of a mighty warrior.\n\n");
-			outputText("She touches down gently a few feet before you, her shield and spear raised.  \"<i>You seem a worthy sort to test my skills against, wanderer.  Prepare yourself!</i>\" she shouts, bearing down on you.  She doesn’t look like she’s going to back down -- you ready your [weapon] for a fight!");
-			startCombat(new Valkyrie());
 		}
 
 

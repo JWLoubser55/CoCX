@@ -4565,18 +4565,13 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //skin tone
-        if (!InCollection(player.skinColor, GoblinRace.GoblinSkinColors, GoblinRace.GoblinRareSkinColors) && changes < changeLimit && rand(2) == 0) {
+        if (!InCollection(player.skinColor, GoblinRace.GoblinSkinColors) && changes < changeLimit && rand(2) == 0) {
             player.skinColor = weightedRandom(
                     [17, "dark green"],
                     [6, "emerald"],
                     [7, "green"],
                     [4, "pale yellow"],
-                    [4, "grayish-blue"],
-                    [2, "red"],
-                    [1, "orange"],
-                    [1, "pale purple"],
-                    [1, "royal purple"],
-                    [1, "light purple"]
+                    [4, "grayish-blue"]
             );
             changes++;
             outputText("[pg]Whoah, that was weird.  You just hallucinated that your ");
@@ -8741,7 +8736,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
             transformations.BreastRowsRemoveToOne.applyEffect();
         }
-                //-Shrink tits if above DDs.
+        //-Shrink tits if above DDs.
         //Cannot happen at same time as row removal
         else if (changes < changeLimit && player.breastRows.length == 1 && rand(3) == 0 && player.breastRows[0].breastRating >= 7 && !flags[kFLAGS.HYPER_HAPPY]) {
             changes++;
@@ -9763,12 +9758,12 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Legs
-        if (player.lowerBody == LowerBody.GHOST && player.lowerBody != LowerBody.GHOST_2 && rand(3) == 0 && changes < changeLimit && type == 1) {
+        if (type == 1 && player.lowerBody == LowerBody.GHOST && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.LowerBodyGhost2.applyEffect();
             changes++;
         }
-        if (player.hairType == 2 && player.lowerBody != LowerBody.GHOST && rand(3) == 0 && changes < changeLimit) {
+        if (player.hairType == Hair.GHOST && !InCollection(player.lowerBody, LowerBody.GHOST, LowerBody.GHOST_2) && rand(3) == 0 && changes < changeLimit) {
             if (player.lowerBody == LowerBody.HUMAN) {
                 outputText("[pg]");
                 transformations.LowerBodyGhost.applyEffect();
@@ -14509,12 +14504,12 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         if (player.isRace(Races.YUKIONNA, 1, false)) {
-            if (player.hasPerk(PerkLib.IcyFlesh) && changes < changeLimit && rand(3) == 0) {
+            if (player.hasPerk(PerkLib.IcyFlesh) && changes < changeLimit) {
                 outputText("[pg]The very ice and snow around you feels like an extension of your body. You gesture with a hand and the clouds of snow follow the gesture. You smile and in that moment your smile is cold, whoever will provoke you is not going to like what you have in store. <b>You can now use Hungering cold, Ice Barrage and Frigid Kiss.</b>");
                 if (!player.hasPerk(PerkLib.ColdAffinity)) player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
                 changes++;
             }
-            if (!player.hasPerk(PerkLib.IcyFlesh) && changes < changeLimit && rand(3) == 0) {
+            if (!player.hasPerk(PerkLib.IcyFlesh) && changes < changeLimit) {
                 outputText("[pg]Folding your arms against your chest, you desperately yearn for warmth and also at the same time for some reason fears it. If you are still alive, your body gives little sign of it, as if it had been dead for months and from the look of your pale frozen flesh you might as well be an icy specter. This said, a whole different form of vitality fills you as if on cue, your frozen flesh begins to harden to a diamond like resilience and your wounds magically begins to close. You don't feel hunger anymore either or the need to drink and even the cold is beginning to subside, ");
                 outputText("leaving you with numbed sensations which makes you yearn for the pleasure of touch all the more. Your body seems to keep itself in a form of unnatural suspended animation, your very heart having came to a halt that could as well just be death yet you still can feel the caress of the cold icy wind on your skin albeit the sensation is no longer so unpleasant to begin with, it might even pass for pleasurable.");
                 outputText("[pg](<b>Perks Gained: Dead metabolism and Icy Flesh!</b>)");

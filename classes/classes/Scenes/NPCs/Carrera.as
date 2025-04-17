@@ -32,13 +32,13 @@ package classes.Scenes.NPCs
 		{
 			createBreastRow(Appearance.breastCupInverse("L"));
 			this.tallness = 8*12+6;
-			initStrTouSpeInte(190, 190, 190, 200);
-			initWisLibSensCor(200, 240, 290, 50);
+			initStrTouSpeInte(380, 380, 380, 400);
+			initWisLibSensCor(400, 480, 580, 50);
 			this.weaponAttack = 5;
 			this.armorDef = 10;
 			this.armorMDef = 10;
             this.bonusHP = 500;
-			this.bonusLust = 582;
+			this.bonusLust = 1112;
 			this.level = 52;
 			this.gems = rand(15) + 10;
 			this.createPerk(PerkLib.OverMaxHP, 52, 0, 0, 0);//v1 = enemy lvl

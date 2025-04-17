@@ -58,7 +58,7 @@ public class LoliBatGolem extends Monster
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,100,0,0,0);
-			initStrTouSpeInte(30, 30, 50, 10);
+			initStrTouSpeInte(48, 48, 80, 10);
 			initWisLibSensCor(10, 10, 10, 0);
 			this.hips.type = Hips.RATING_SLENDER + 1;
 			this.butt.type = Butt.RATING_AVERAGE;
@@ -69,6 +69,7 @@ public class LoliBatGolem extends Monster
 					.add(useables.GOLCORE, 1);
 			this.level = 8;
 			this.bonusHP = 100;
+			this.bonusLust = 28;
 			this.weaponName = "stone claws";
 			this.weaponVerb = "claw";
 			this.weaponAttack = 20;
@@ -78,6 +79,7 @@ public class LoliBatGolem extends Monster
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyConstructType, 0, 0, 0, 0);
+			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			checkMonster();
 		}
 		

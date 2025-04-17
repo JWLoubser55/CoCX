@@ -800,6 +800,8 @@ public class PlayerAppearance extends BaseContent {
 			case CockTypesEnum.OOMUKADE: cockDesc += " It constantly drips with venom."; break;
 			case CockTypesEnum.USHI_ONI: cockDesc += " It's starfish tipped shaft."; break;
 			case CockTypesEnum.MINDBREAKER: cockDesc += " Hidden in a slit along with the rest of your male equipment, it constantly fills with your thick green slimy cum, to the point that your cum constantly leaks out of your genital slit, leaving a sticky trail of green \"slime\" in your wake."; break;
+			case CockTypesEnum.SHROOM: cockDesc += " It is glowing, shroom-like in appearance."; break;
+			case CockTypesEnum.AUTOMATA: cockDesc += " Similar to a tentacle it can extend out of its socket into a long flexible cable which you can use to plug a female. A reservoir in your body allows you to produce and shoot pseudo cum produced by alchemy, a process female automaton particularly enjoy."; break;
 			default: //Nothing here, move along!
 		}
 		// Knot?
@@ -942,6 +944,13 @@ public class PlayerAppearance extends BaseContent {
 				break;
 			case VaginaClass.KIRIN:
 				pussyDesc += " is deep and wide just like that of a horse. Sometime you lament that most of your partners are no longer big enough to satisfy you. It constantly drools plasma, small puffs of electrified matter wafting up from beneath where you're standing. Your equine static chamber hides a ";
+				break;
+			case VaginaClass.SHROOM:
+				pussyDesc += " glowing walls contain a mushroom shaped "+Measurements.shortSuffix(int(player.clitLength * 10) / 10)+" sensitive clit that can get as big and hard as a penis. When ready to spread your spores around, it pleasantly grows out of your fold making you gasp in pleasure.";
+				clitExists++
+				break;
+			case VaginaClass.AUTOMATA:
+				pussyDesc += " made with flexible plastic allowing itself to mold perfectly around any cock like the best onahole. The velvety interiors of your mechapussy glows naturally with a neon blue light offering the user of the appliance a visible and arousing target. A lubricating device is installed to make the act more comfortable for the user. While your own pleasure is irrelevant to the user experience, a recognition program as well as a set of signals set into your electropussy allows you to enjoy sex in your outlet just as well as any organic woman would. Inside you have a ";
 				break;
 			default:
 				pussyDesc += " hides a ";

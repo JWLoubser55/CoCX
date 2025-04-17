@@ -65,6 +65,7 @@ public class Exploration extends BaseContent implements SaveableState
 			highMountains: 0,
 			
 			plains: 0,
+			// plainsInner
 			
 			swamp: 0,
 			bog: 0,
@@ -74,16 +75,22 @@ public class Exploration extends BaseContent implements SaveableState
 			
 			beach: 0,
 			ocean: 0,
+			oceanInner: 0,
 			// deepSea: 0,
 			
 			caves: 0,
-			// deepCaves or cavesDeep: 0,
+			tunnels: 0,
+			bedrock: 0,
 			
 			tundra: 0,
 			glacialRiftOuter: 0,
 			
 			ashlands: 0,
-			volcanicCragOuter: 0
+			volcanicCragOuter: 0,
+			
+			lightlessReach: 0,
+			
+			cliffs: 0
 		};
 		private var emptyCounters:Object = deepCopy(counters);
 		public function resetState():void {
@@ -156,7 +163,7 @@ public class Exploration extends BaseContent implements SaveableState
 		private function btnExploreDeepwoods():ButtonData {
 			return new ButtonData("Deepwoods", SceneLib.forest.exploreDeepwoods)
 					.hint("Visit the dark, bioluminescent deepwoods. "
-							+ (debug ? "\n\nTimes explored: " + SceneLib.forest.timesExploredDeepwoods() : ""))
+							+ "\n\nTimes explored: " + SceneLib.forest.timesExploredDeepwoods())
 					.disableIf(!SceneLib.forest.isDiscoveredDeepwoods(), "Discovered when exploring the Forest (I)." +
 							" (Lvl "+SceneLib.forest.areaLevelDeepwoods+"+)");
 		}
@@ -274,11 +281,18 @@ public class Exploration extends BaseContent implements SaveableState
 							" (Lvl "+SceneLib.beach.areaLevel+"+)");
 		}
 		private function btnExploreOcean():ButtonData {
-			return new ButtonData("Ocean", SceneLib.ocean.exploreOcean)
-					.hint("Explore the ocean surface. But beware of... sharks. "
+			return new ButtonData("Coastal Waters", SceneLib.ocean.exploreOcean)
+					.hint("Explore the coastal waters surface. But beware of... sharks. "
 							+ "\n\nTimes explored: " + SceneLib.ocean.timesExplored())
-					.disableIf(!SceneLib.ocean.isDiscovered(), "You need to first find a way to sail over the water's surface to explore this area.")
-					.disableIf(!SceneLib.beach.isDiscovered(), "You need to discover the Beach first, then find a way to sail on the water.");
+					.disableIf(!SceneLib.ocean.isDiscovered(), "You need to first find a way to sail over the water's surface to explore this area." +
+							" (Lvl "+SceneLib.ocean.areaLevel+"+)");
+		}
+		private function btnExploreInnerOcean():ButtonData {
+			return new ButtonData("Ocean", SceneLib.ocean.exploreInnerOcean)
+					.hint("Explore the ocean surface. But beware of... abyssal sharks. "
+							+ "\n\nTimes explored: " + SceneLib.ocean.timesExploredInnerOcean())
+					.disableIf(!SceneLib.ocean.isDiscoveredInnerOcean(), "Discovered when exploring the Coastal Waters." +
+							" (Lvl "+SceneLib.ocean.areaLevelInnerOcean+"+)");
 		}
 		private function btnExploreCaves():ButtonData {
 			return new ButtonData("Caves", SceneLib.caves.exploreCaves)
@@ -286,6 +300,13 @@ public class Exploration extends BaseContent implements SaveableState
 							+ "\n\nTimes explored: " + SceneLib.caves.timesExplored())
 					.disableIf(!SceneLib.caves.isDiscovered(), "Discovered when using 'Explore' after finding the Beach." +
 							" (Lvl "+SceneLib.caves.areaLevel+"+)");
+		}
+		private function btnExploreTunnels():ButtonData {
+			return new ButtonData("Tunnels", SceneLib.caves.exploreTunnels)
+					.hint("Visit the gloomy tunnels. "
+							+ "\n\nTimes explored: " + SceneLib.caves.timesExploredTunnels())
+					.disableIf(!SceneLib.caves.isDiscoveredTunnels(), "Discovered when exploring the Caves." +
+							" (Lvl "+SceneLib.caves.areaLevelTunnels+"+)");
 		}
 		private function btnExploreTundra():ButtonData {
 			return new ButtonData("Tundra", SceneLib.tundra.exploreTundra)
@@ -314,6 +335,22 @@ public class Exploration extends BaseContent implements SaveableState
 							+ "\n\nTimes explored: " + SceneLib.volcanicCrag.timesExplored())
 					.disableIf(!SceneLib.volcanicCrag.isDiscovered(), "Discovered when exploring the Ashlands." +
 							" (Lvl "+SceneLib.volcanicCrag.areaLevel+"+)");
+		}
+		private function btnExploreLightlessReach():ButtonData {
+			return new ButtonData("LightlessReach", SceneLib.lightlessReach.exploreLightlessReach)
+					.hint("Visit the lightless reach. "
+							+ "\n\nTimes explored: " + SceneLib.lightlessReach.timesExplored())
+					.disableIf((!player.hasPerk(PerkLib.DarknessAffinity) && !player.hasPerk(PerkLib.FireShadowAffinity) && !player.hasDarkVision() && player.hasKeyItem("Torch") < 0), "As much as you would like to explore this place it's so dark you can't even see where you are going. You might just stumble and fall into a bottomless pit straith to your death. You will need some light or the ability to see in darkness to get through.")
+					.disableIf(!SceneLib.lightlessReach.isDiscovered(), "Discovered when exploring the Tunnels." +
+							" (Lvl " + SceneLib.lightlessReach.areaLevel + "+)");
+		}
+		private function btnExploreCliffs():ButtonData {
+			return new ButtonData("Cliffs", SceneLib.cliffs.exploreCliffs)
+					.hint("Visit the cliffs. "
+							+ "\n\nTimes explored: " + SceneLib.cliffs.timesExplored())
+					.disableIf(flags[kFLAGS.AUTO_FLIGHT] < 1, "You need a way to be able start flying at the start of combat or you would drop down to your demise down below cliffs.")
+					.disableIf(!SceneLib.cliffs.isDiscovered(), "Discovered when exploring the Tunnels." +
+							" (Lvl " + SceneLib.cliffs.areaLevel + "+)");
 		}
 		
 		private function canMeetXuviel():Boolean {
@@ -390,40 +427,40 @@ public class Exploration extends BaseContent implements SaveableState
 				// Row 9
 				bd.append(btnExploreBeach());
 				bd.append(btnExploreOcean());
+				bd.append(btnExploreInnerOcean());
 				bd.add(""); // Deep Sea
 				// if (flags[kFLAGS.DISCOVERED_DEEP_SEA] > 0 && player.canSwimUnderwater()) addButton(2, "Deep Sea", SceneLib.deepsea.exploreDeepSea).hint("Visit the 'almost virgin' deep sea. But beware of... krakens. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_DEEP_SEA] : ""));
 				bd.add("");
-				bd.add("");
 				// Row 10
 				bd.append(btnExploreCaves());
-				bd.add("");
+				bd.append(btnExploreTunnels());
 				bd.add("");
 				bd.add("");
 				bd.add("");
 				// Row 11
-				bd.add("");
 				bd.append(btnExploreTundra());
 				bd.append(btnExploreGlacialRiftOuter());
 				bd.add("");
 				bd.add("");
-				// Row 12
 				bd.add("");
+				// Row 12
 				bd.append(btnExploreAshlands());
 				bd.append(btnExploreVolcanicCragOuter());
 				bd.add("");
 				bd.add("");
+				bd.add("");
 				// Row 13
-				//bd.add("");
-				//bd.append(btnExploreAshlands());//underdark entrance
-				//bd.append(btnExploreVolcanicCragOuter());
-				//bd.add("");
-				//bd.add("");
+				bd.append(btnExploreLightlessReach());
+				bd.add("");
+				bd.add("");
+				bd.add("");
+				bd.add("");
 				// Row 14
-				//bd.add("");
-				//bd.append(btnExploreAshlands());//cliffs
-				//bd.append(btnExploreVolcanicCragOuter());
-				//bd.add("");
-				//bd.add("");
+				bd.append(btnExploreCliffs());
+				bd.add("");
+				bd.add("");
+				bd.add("");
+				bd.add("");
 				
 				//if (flags[kFLAGS.DISCOVERED_] > 0) addButton(5, "",	//Wuxia related area - ?latająca wyspa?
 				//if (flags[kFLAGS.DISCOVERED_] > 0) addButton(9, "",	//Wuxia related area - ?latająca wyspa?
@@ -524,12 +561,11 @@ public class Exploration extends BaseContent implements SaveableState
 			
 			btnExploreTundra().applyTo(button(10));
 			btnExploreAshlands().applyTo(button(11));
-			//12 - darkness area
-			//13 - lightning area
+			btnExploreLightlessReach().applyTo(button(12));
+			btnExploreCliffs().applyTo(button(13));
 			
 			addButton(4, "Next", explorePageIII);
 			addButton(9, "Previous", goBackToPageI);
-			if (debug) addButton(13, "Debug", exploreDebug.doExploreDebug);
 			addButton(14, "Back", playerMenu);
 		}
 		
@@ -546,14 +582,14 @@ public class Exploration extends BaseContent implements SaveableState
 			//if (flags[kFLAGS.DISCOVERED_PIT] > 0) addButton(5, "Pit", CoC.instance.abyss.explorePit).hint("Visit the pit. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_PIT] : ""));
 			//if (flags[kFLAGS.DISCOVERED_ABYSS] > 0) addButton(5, "Abyss", CoC.instance.abyss.exploreAbyss).hint("Visit the abyss. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_ABYSS] : ""));
 			btnExploreMountainsMid().applyTo(button(6));
-			btnExploreOcean().applyTo(button(8));
+			btnExploreOcean().applyTo(button(7));
+			btnExploreTunnels().applyTo(button(8));
 			
 			btnExploreGlacialRiftOuter().applyTo(button(10));
 			btnExploreVolcanicCragOuter().applyTo(button(11));
 			
 			addButton(4, "Next", goBackToPageIV);
 			addButton(9, "Previous", goBackToPageII);
-			if (debug) addButton(13, "Debug", exploreDebug.doExploreDebug);
 			addButton(14, "Back", playerMenu);
 		}
 		
@@ -563,11 +599,11 @@ public class Exploration extends BaseContent implements SaveableState
 			menu();
 			
 			btnExploreMountainsHigh().applyTo(button(6));
+			btnExploreInnerOcean().applyTo(button(8));
 			//if (flags[kFLAGS.DISCOVERED_DEEP_SEA] > 0 && player.canSwimUnderwater()) addButton(8, "Deep Sea", SceneLib.deepsea.exploreDeepSea).hint("Visit the 'almost virgin' deep sea. But beware of... krakens. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_DEEP_SEA] : ""));
 			
 			addButton(4, "Next", goBackToPageV);
 			addButton(9, "Previous", goBackToPageIII);
-			if (debug) addButton(13, "Debug", exploreDebug.doExploreDebug);
 			addButton(14, "Back", playerMenu);
 		}
 		
@@ -641,7 +677,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered an improved dummy golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 2;
-			startCombat(new GolemDummyImproved());
+			startCombat(new GolemDummy());
 		}
 		private function golemEncounterImprovedGroup():void {
 			clearOutput();
@@ -653,7 +689,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered an advanced dummy golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 4;
-			startCombat(new GolemDummyAdvanced());
+			startCombat(new GolemDummy());
 		}
 		private function golemEncounterAdvancedGroup():void {
 			clearOutput();
@@ -665,7 +701,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered a superior dummy golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 6;
-			startCombat(new GolemDummySuperior());
+			startCombat(new GolemDummy());
 		}
 		private function golemEncounterSuperiorGroup():void {
 			clearOutput();
@@ -677,7 +713,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered a basic true golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 8;
-			startCombat(new GolemTrueBasic());
+			startCombat(new GolemTrue());
 		}
 		private function golemEncounterTrueBasicGroup():void {
 			clearOutput();
@@ -689,7 +725,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered an improved true golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 10;
-			startCombat(new GolemTrueImproved());
+			startCombat(new GolemTrue());
 		}
 		private function golemEncounterTrueImprovedGroup():void {
 			clearOutput();
@@ -701,7 +737,7 @@ public class Exploration extends BaseContent implements SaveableState
 			clearOutput();
 			outputText("As you take a stroll, a golem emerges from the nearby bushes. Looks like you've encountered an advanced true golem! You ready your [weapon] for a fight!");
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 12;
-			startCombat(new GolemTrueAdvanced());
+			startCombat(new GolemTrue());
 		}
 		private function golemEncounterTrueAdvancedGroup():void {
 			clearOutput();
@@ -755,17 +791,20 @@ public class Exploration extends BaseContent implements SaveableState
 			var demonChooser:int = rand(15);
 			//Succubus
 			if (demonChooser >= 5 && demonChooser < 10) {
-				SceneLib.defiledravine.demonScene.SuccubusEncounter();
+				if (rand(4) == 0) SceneLib.defiledravine.demonScene.FeralSuccubusEncounter();
+				else SceneLib.defiledravine.demonScene.SuccubusEncounter();
 				return;
 			}
 			//Incubus
 			else if (demonChooser >= 10) {
-				SceneLib.defiledravine.demonScene.IncubusEncounter();
+				if (rand(4) == 0) SceneLib.defiledravine.demonScene.FeralIncubusEncounter();
+				else SceneLib.defiledravine.demonScene.IncubusEncounter();
 				return;
 			}
 			//Omnibus
 			else {
-				SceneLib.defiledravine.demonScene.OmnibusEncounter();
+				if (rand(4) == 0) SceneLib.defiledravine.demonScene.FeralOmnibusEncounter();
+				else SceneLib.defiledravine.demonScene.OmnibusEncounter();
 				return;
 			}
 		}
@@ -909,7 +948,7 @@ public class Exploration extends BaseContent implements SaveableState
 						label: "Dummy Golem",
 						shortLabel: "Golem II+",
 						kind: "monster",
-						when:fn.ifLevelMin(6),
+						when:fn.ifLevelMin(15),
 						call: golemEncounterBasicGroup
 					}, {
 						name: "golem3group",

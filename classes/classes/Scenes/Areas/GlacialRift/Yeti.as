@@ -17,7 +17,7 @@ public class Yeti extends Monster
 			else {
 				if (hasStatusEffect(StatusEffects.Blind) && rand(3) > 0) {
 					outputText("The yeti furiously charges at you but blind as he is, he ends up running into the wall face-first instead. ");
-					var yetiDamage:Number = 30 + rand(50);
+					var yetiDamage:Number = 300 + rand(500);
 					HP -= yetiDamage;
 					outputText("The beast takes <b>[font-damage]" + yetiDamage + "[/font]</b> damage. ");
 					if (rand(2) == 0) {
@@ -27,7 +27,7 @@ public class Yeti extends Monster
 					return;
 				}
 				outputText("Like a white blur the yeti charges you, striking at you with his claws and slashing over your [armor] before a fist collides with your side, sending you sliding over the icy floor. ");
-				var damage:Number = ((str + weaponAttack) * 1.25) + 75 + rand(60);
+				var damage:Number = ((str + weaponAttack) * 2.5) + 150 + rand(120);
 				player.takePhysDamage(damage, true);
 			}
 		}
@@ -35,14 +35,14 @@ public class Yeti extends Monster
 			if (player.getEvasionRoll()) {
 				//yeti takes moderate damage
 				outputText("Sensing the beast’s intentions as you hear the cracking of ice under his feet, you dart to the side as the beast launches at you. With wide eyes, the ice yeti collides face first into the wall of the cave with a yelped growl. It rubs its face as it glares at you. ");
-				var yetiDamage:Number = 50 + rand(80);
+				var yetiDamage:Number = 500 + rand(80);
 				HP -= yetiDamage;
 				outputText("The beast takes <b>[font-damage]" + yetiDamage + "[/font]</b> damage.");
 			}
 			else {
 				//take heavy damage
 				outputText("The beast’s hind claws dig into the ice before his giant furred body launches at you and he collides with you in a brutal tackle. The pair of you are sent rolling around on the floor as you trade blows with the furred beast, and then he lifts you up and tosses you aside, your body hitting the ice walls with a groan. You shakily get to your feet. ");
-				var damage:Number = ((str + weaponAttack) * 1.4) + 200 + rand(250);
+				var damage:Number = ((str + weaponAttack) * 2.8) + 400 + rand(500);
 				player.takePhysDamage(damage, true);
 			}
 		}
@@ -56,7 +56,7 @@ public class Yeti extends Monster
 					return;
 				}
 				outputText("The beast takes a step back, mist forming into a ball in his clenched fist. It condenses into a ball before your eyes, and with a growl the beast whips it at you. The ball slams into your [armor] and explodes into frost, you hiss at the sting. The frost is also restricting your movement. ");
-				var damage:Number = ((str + weaponAttack) * 0.8) + rand(30);
+				var damage:Number = ((str + weaponAttack) * 1.6) + rand(60);
 				damage = Math.round(damage);
 				player.takeIceDamage(damage, true);
 				tempSpeedLoss += 15;
@@ -69,7 +69,7 @@ public class Yeti extends Monster
 			//lust increased
 			if (rand(player.lib + player.cor) >= 60 && rand(3) > 0) {
 				outputText("You stare the beast down, though it looks like he’s distracted, with a hand dipping down to fondle his own ballsack. As your eyes follow it, you see a girthy red tip peeking out of his sheath, looking slick and releasing a wisp of steam in the air. Watching something so lewd has brought warmth to your body in this frozen cave, and you begin to wonder if his intentions are to eat or fuck you.");
-				player.dynStats("lust", 30 + rand(15));
+				player.dynStats("lust", 300 + rand(75));
 			}
 			else outputText("The beast before you seems a bit distracted, a hand dipping to fondle his ballsack, but you keep your focus fixed on the monsters face, unwilling to let your guard waver for even a moment.");
 		}
@@ -103,15 +103,15 @@ public class Yeti extends Monster
 				this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			}
 			else {
-				initStrTouSpeInte(305, 360, 185, 90);
-				initWisLibSensCor(80, 50, 30, -10);
-				this.weaponAttack = 160;
-				this.armorDef = 240;
-				this.armorMDef = 80;
-				this.bonusHP = 3000;
-				this.bonusLust = 156;
-				this.level = 76;
-				this.gems = 75 + rand(40);
+				initStrTouSpeInte(610, 720, 370, 180);
+				initWisLibSensCor(160, 100, 60, -10);
+				this.weaponAttack = 480;
+				this.armorDef = 720;
+				this.armorMDef = 240;
+				this.bonusHP = 5000;
+				this.bonusLust = 242;
+				this.level = 82;
+				this.gems = 150 + rand(40);
 				this.createStatusEffect(StatusEffects.GenericRunDisabled, 0, 0, 0, 0);
 				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 				this.createPerk(PerkLib.TankI, 0, 0, 0, 0);

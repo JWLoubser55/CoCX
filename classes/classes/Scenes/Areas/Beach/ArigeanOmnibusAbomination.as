@@ -78,7 +78,7 @@ public class ArigeanOmnibusAbomination extends Monster
 		}
 		private function arigeanOmnibusAbominationEnsnare():void {
 			outputText("Multiple tentacles burst out of the writhing mass supporting her, reaching out for limbs and anything they can get ahold of. ");
-			if (rand(3) == 0 || rand(80) < player.str / 2 || player.hasPerk(PerkLib.FluidBody)) outputText("Fortunately, you're much quicker than they are and evade their grasps.");
+			if (SceneLib.combat.struggleCentralizedCheck()) outputText("Fortunately, you're much quicker than they are and evade their grasps.");
 			else {
 				outputText("They find their target, swiftly grabbing and entangling you within the mass.");
 				player.createStatusEffect(StatusEffects.PlayerBoundPhysical, 0, 0, 0, 0);
@@ -88,8 +88,7 @@ public class ArigeanOmnibusAbomination extends Monster
 		{
 			clearOutput();
 			outputText("You struggle with all of your might to free yourself from the tentacles before the creature can fulfill whatever unholy desire it has for you.\n");
-			//33% chance to break free + up to 50% chance for strength
-            if (rand(3) == 0 || rand(80) < player.str / 2 || player.hasPerk(PerkLib.FluidBody)) {
+			if (SceneLib.combat.struggleCentralizedCheck()) {
                 outputText("You're able to use your strength to slip out of the slippery tentacles.\n\n");
                 player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
                 createStatusEffect(StatusEffects.TentacleCoolDown, 3, 0, 0, 0);
@@ -173,20 +172,20 @@ public class ArigeanOmnibusAbomination extends Monster
 			this.bodyColor = "albino";
 			this.hairColor = "white";
 			this.hairLength = 16;
-			initStrTouSpeInte(253, 191, 224, 342);
-			initWisLibSensCor(321, 306, 125, 90);
+			initStrTouSpeInte(759, 573, 672, 684);
+			initWisLibSensCor(642, 612, 250, 90);
 			this.weaponName = "tentacles";
 			this.weaponVerb="slap";
-			this.weaponAttack = 35;
+			this.weaponAttack = 210;
 			this.armorName = "white one-piece swimsuit";
-			this.armorDef = 30;
-			this.armorMDef = 30;
-			this.bonusHP = 100;
-			this.bonusLust = 511;
+			this.armorDef = 300;
+			this.armorMDef = 300;
+			this.bonusHP = 1000;
+			this.bonusLust = 942;
 			this.lust = 40;
 			this.lustVuln = .2;
 			this.level = 80;
-			this.gems = rand(30) + 25;
+			this.gems = rand(20) + 50;
 			this.drop = new WeightedDrop()
 					.add(consumables.SIINGOT,3)
 					.add(consumables.L_B_BAR,3)

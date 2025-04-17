@@ -191,6 +191,7 @@ public class Forgefather extends NPCAwareContent implements SaveableState	{
 			outputText("You wander the area, finding the remains of an abandoned, played-out mine. Remains of long destroyed golems litter the ground around the entrance. As you move closer, you hear the faintest sound of metal striking metal. Once inside, you hear a deep, sad voice, singing a sorrowful tune. \n\n");
 			outputText("Following the song, you happen across a most unique individual. A squat, muscular being; hunched over an anvil, shaping the head of a warhammer. Powerful arms rhythmically bring the hammer down, pounding the metal further into a shape that seems to flow from the beings mind.\n");
 			outputText("After minutes pass, the being stops and turns slightly to face you.\n\n\"<i>Well </i>" + player.mf("<i>lad</i>","<i>lass</i>") + "<i>, are you going to stand there and gawk all day, or are you going to introduce yourself?</i>\"\n\n");
+			menu();
 			addButton(0, "Introduce Yourself", introduceSelf);
 			addButton(1, "Not Now", notNow);
 		}
@@ -219,6 +220,7 @@ public class Forgefather extends NPCAwareContent implements SaveableState	{
 			outputText("Finding yourself once again approaching the abandoned mine, you decide to check back in on the intriguing smith.\n");
 			outputText("Making your way through the tunnels, you once again find yourself beholding the being.\n\n");
 			outputText("\"<i>Well, you've returned,</i>" + player.mf("<i>lad</i>","<i>lass</i>") + "<i>. You finally going to tell me you're name?</i>\"");
+			menu();
 			addButton(0, "Introduce Yourself", introduceSelf);
 			addButton(1, "Not Now", notNow);
 		}

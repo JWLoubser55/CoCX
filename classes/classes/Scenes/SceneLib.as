@@ -5,11 +5,12 @@ import classes.Scenes.API.ExplorationEngine;
 import classes.Scenes.Areas.*;
 import classes.Scenes.Areas.Battlefield.DilapidatedShrine;
 import classes.Scenes.Areas.Bog.TrollScenes;
-import classes.Scenes.Areas.Caves.DisplacerBeastScene;
+import classes.Scenes.Areas.Caves.*;
 import classes.Scenes.Areas.DeepSea.AbyssalSharkScene;
 import classes.Scenes.Areas.Forest.ErlKingScene;
 import classes.Scenes.Areas.Forest.KitsuneScene;
 import classes.Scenes.Areas.GlacialRift.YuWinterGearShop;
+import classes.Scenes.Areas.LightlessReach.DisplacerBeastScene;
 import classes.Scenes.Areas.Ocean.ScyllaScene;
 import classes.Scenes.Areas.Plains.ZombieMummyScenes;
 import classes.Scenes.Camp.*;
@@ -91,6 +92,10 @@ public class SceneLib {
 
     public static var volcanicCrag:VolcanicCrag = new VolcanicCrag();
 
+    public static var lightlessReach:LightlessReach = new LightlessReach();
+
+    public static var cliffs:Cliffs = new Cliffs();
+
     public static var brigidScene:BrigidScene = new BrigidScene();
 
     public static var d3:D3 = new D3();
@@ -118,6 +123,10 @@ public class SceneLib {
     public static var aethertwins:AetherTwinsFollowers = new AetherTwinsFollowers();
 
     public static var alvinaFollower:AlvinaFollower = new AlvinaFollower();
+
+    public static var matangoScene:MatangoScene = new MatangoScene();
+
+    public static var automatonScene:AutomatonScene = new AutomatonScene();
 
     public static var amilyScene:AmilyScene = new AmilyScene();
 

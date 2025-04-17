@@ -1096,7 +1096,7 @@ public class KitsuneScene extends BaseContent
 			if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2) {
 				if (flags[kFLAGS.KITSUNES_DEFEATS_COUNTER] >= 1) flags[kFLAGS.KITSUNES_DEFEATS_COUNTER]++;
 				else flags[kFLAGS.KITSUNES_DEFEATS_COUNTER] = 1;
-				if (flags[kFLAGS.MET_KITSUNES] < 4 && flags[kFLAGS.KITSUNES_DEFEATS_COUNTER] == flags[kFLAGS.MET_KITSUNES]) {
+				if (flags[kFLAGS.MET_KITSUNES] < 6 && flags[kFLAGS.KITSUNES_DEFEATS_COUNTER] == flags[kFLAGS.MET_KITSUNES]) {
 					flags[kFLAGS.KITSUNES_DEFEATS_COUNTER] = 0;
 					++flags[kFLAGS.MET_KITSUNES];
 				}

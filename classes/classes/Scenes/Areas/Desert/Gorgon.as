@@ -11,6 +11,7 @@ import classes.BodyParts.Hips;
 import classes.BodyParts.LowerBody;
 import classes.BodyParts.Skin;
 import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.SceneLib;
 import classes.Scenes.Areas.Desert.NagaScene;
 import classes.Stats.Buff;
 import classes.internals.*;
@@ -19,71 +20,6 @@ public class Gorgon extends Monster
 	{
 		public var nagaScene:NagaScene = new NagaScene(true);
 
-		override public function combatStatusesUpdateWhenBound():void{
-			nagaBindUpdateWhenBound();
-		}
-
-		override public function playerBoundStruggle():Boolean{clearOutput();
-			if (rand(3) == 0 || rand(80) < player.str / 1.5 || player.hasPerk(PerkLib.FluidBody)) {
-				outputText("You wriggle and squirm violently, tearing yourself out from within [themonster]'s coils.");
-				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
-			} else {
-				outputText("The [monster name]'s grip on you tightens as you struggle to break free from the stimulating pressure.");
-				player.takeLustDamage(player.effectiveSensitivity() / 10 + 2, true);
-				player.takePhysDamage(17 + rand(15));
-			}
-			return true;
-		}
-
-		override public function playerBoundWait():Boolean{
-			return nagaBindWait();
-		}
-
-		override public function defeated(hpVictory:Boolean):void
-		{
-			nagaScene.nagaRapeChoice();
-		}
-
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
-		{
-			if(pcCameWorms){
-				outputText("\n\nThe gorgon's eyes go wide and she turns to leave, no longer interested in you.");
-				player.orgasm();
-				doNext(cleanupAfterCombat);
-			} else {
-				nagaScene.nagaFUCKSJOOOOOO();
-			}
-		}
-		
-		override protected function performCombatAction():void
-		{
-			if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical) || player.hasStatusEffect(StatusEffects.Stunned)) {
-				if (player.hasStatusEffect(StatusEffects.Stunned)) {
-					if (rand(2) == 0) eAttack();
-					else TailWhip();
-				}
-				else {
-					if (hasStatusEffect(StatusEffects.AbilityCooldown1)) gorgonPoisonBiteAttack();
-					else {
-						if (hasStatusEffect(StatusEffects.Blind)) eAttack();
-						else petrify();
-					}
-				}
-			}
-			else {
-				var choice:Number = rand(5);
-				if (choice == 0) eAttack();
-				if (choice == 1) gorgonPoisonBiteAttack();
-				if (choice == 2) gorgonConstrict();
-				if (choice == 3) TailWhip();
-				if (choice == 4) {
-					if (hasStatusEffect(StatusEffects.AbilityCooldown1)) gorgonConstrict();
-					else if (hasStatusEffect(StatusEffects.Blind)) eAttack();
-					else petrify();
-				}
-			}
-		}
-		
 		public function gorgonPoisonBiteAttack():void {
 			//(Deals damage over 4-5 turns, invariably reducing 
 			//your speed. It wears off once combat is over.)
@@ -147,6 +83,71 @@ public class Gorgon extends Monster
 			player.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 			createStatusEffect(StatusEffects.AbilityCooldown1, 3, 0, 0, 0);
 			if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical)) player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
+		}
+		
+		override public function combatStatusesUpdateWhenBound():void{
+			nagaBindUpdateWhenBound();
+		}
+
+		override public function playerBoundStruggle():Boolean{clearOutput();
+			if (SceneLib.combat.struggleCentralizedCheck()) {
+				outputText("You wriggle and squirm violently, tearing yourself out from within [themonster]'s coils.");
+				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
+			} else {
+				outputText("The [monster name]'s grip on you tightens as you struggle to break free from the stimulating pressure.");
+				player.takeLustDamage(player.effectiveSensitivity() / 10 + 2, true);
+				player.takePhysDamage(17 + rand(15));
+			}
+			return true;
+		}
+
+		override public function playerBoundWait():Boolean{
+			return nagaBindWait();
+		}
+
+		override public function defeated(hpVictory:Boolean):void
+		{
+			nagaScene.nagaRapeChoice();
+		}
+
+		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		{
+			if(pcCameWorms){
+				outputText("\n\nThe gorgon's eyes go wide and she turns to leave, no longer interested in you.");
+				player.orgasm();
+				doNext(cleanupAfterCombat);
+			} else {
+				nagaScene.nagaFUCKSJOOOOOO();
+			}
+		}
+		
+		override protected function performCombatAction():void
+		{
+			if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical) || player.hasStatusEffect(StatusEffects.Stunned)) {
+				if (player.hasStatusEffect(StatusEffects.Stunned)) {
+					if (rand(2) == 0) eAttack();
+					else TailWhip();
+				}
+				else {
+					if (hasStatusEffect(StatusEffects.AbilityCooldown1)) gorgonPoisonBiteAttack();
+					else {
+						if (hasStatusEffect(StatusEffects.Blind)) eAttack();
+						else petrify();
+					}
+				}
+			}
+			else {
+				var choice:Number = rand(5);
+				if (choice == 0) eAttack();
+				if (choice == 1) gorgonPoisonBiteAttack();
+				if (choice == 2) gorgonConstrict();
+				if (choice == 3) TailWhip();
+				if (choice == 4) {
+					if (hasStatusEffect(StatusEffects.AbilityCooldown1)) gorgonConstrict();
+					else if (hasStatusEffect(StatusEffects.Blind)) eAttack();
+					else petrify();
+				}
+			}
 		}
 		
 		public function Gorgon() 

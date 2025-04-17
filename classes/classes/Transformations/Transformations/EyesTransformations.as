@@ -818,6 +818,20 @@ public class EyesTransformations extends MutationsHelper {
 				return player.eyes.type === Eyes.GREMLIN;
 			}
 	);
+	public const EyesAutomata: Transformation = new SimpleTransformation("Automata Eyes",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				player.eyes.type = Eyes.AUTOMATA;
+
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.eyes.type === Eyes.AUTOMATA;
+			}
+	);
 
 // EYE COLORS
 

@@ -383,6 +383,14 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
+			//without Ayo Armor but with Ayo Armor buff present
+			if (!player.isInAyoArmor() && player.buff("Ayo Armor").isPresent()) {
+				var oldHPratioA:Number = player.hp100 / 100;
+				player.buff("Ayo Armor").remove();
+				player.HP = oldHPratioA*player.maxHP();
+				EngineCore.statScreenRefresh();
+				needNext = true;
+			}
 			//Konstantin buffs to equipment
 			if (player.hasStatusEffect(StatusEffects.KonstantinArmorPolishing)) {
 				if (player.statusEffectv1(StatusEffects.KonstantinArmorPolishing) <= 0) player.removeStatusEffect(StatusEffects.KonstantinArmorPolishing);
@@ -504,6 +512,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				var over:Number = (player.zombieControlLimit() - player.perkv1(PerkLib.UndeadLord));
 				player.addPerkValue(PerkLib.UndeadLord, 1, -over);
 			}
+			if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv4(PerkLib.AbsorbNutrient) > 0) player.addPerkValue(PerkLib.AbsorbNutrient, 4, -1);
 			if (player.hasStatusEffect(StatusEffects.Feeder)) { //Feeder checks
 				if (player.cor <= (20-player.corruptionTolerance)) { //Go away if pure
 					outputText("\nThe desire to breastfeed fades into the background.  It must have been associated with the corruption inside you.\n\n(<b>You have lost the 'Feeder' perk.</b>)\n");
@@ -970,21 +979,29 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster01) && player.statusEffectv2(StatusEffects.TamedMonster01) > 0) {
-				/*if (player.hasPerk(PerkLib.TheyFightTheyProtect)) player.addStatusValue(StatusEffects.TamedMonster01, 2, -20);
-				else */player.addStatusValue(StatusEffects.TamedMonster01, 2, -10);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster01, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster01, 2, -10);
 				if (player.statusEffectv2(StatusEffects.TamedMonster01) < 0) player.changeStatusValue(StatusEffects.TamedMonster01, 2, 0);
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster02) && player.statusEffectv2(StatusEffects.TamedMonster02) > 0) {
-				player.addStatusValue(StatusEffects.TamedMonster02, 2, -10);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster02, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster02, 2, -10);
 				if (player.statusEffectv2(StatusEffects.TamedMonster02) < 0) player.changeStatusValue(StatusEffects.TamedMonster02, 2, 0);
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster03) && player.statusEffectv2(StatusEffects.TamedMonster03) > 0) {
-				player.addStatusValue(StatusEffects.TamedMonster03, 2, -10);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster03, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster03, 2, -10);
 				if (player.statusEffectv2(StatusEffects.TamedMonster03) < 0) player.changeStatusValue(StatusEffects.TamedMonster03, 2, 0);
 			}
 			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster04) && player.statusEffectv2(StatusEffects.TamedMonster04) > 0) {
-				player.addStatusValue(StatusEffects.TamedMonster04, 2, -10);
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster04, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster04, 2, -10);
 				if (player.statusEffectv2(StatusEffects.TamedMonster04) < 0) player.changeStatusValue(StatusEffects.TamedMonster04, 2, 0);
+			}
+			if (player.hasPerk(PerkLib.TheyFightTheyProtect) && player.hasStatusEffect(StatusEffects.TamedMonster05) && player.statusEffectv2(StatusEffects.TamedMonster05) > 0) {
+				if (player.hasPerk(PerkLib.StrongerTamedMosters)) player.addStatusValue(StatusEffects.TamedMonster05, 2, -20);
+				else player.addStatusValue(StatusEffects.TamedMonster05, 2, -10);
+				if (player.statusEffectv2(StatusEffects.TamedMonster05) < 0) player.changeStatusValue(StatusEffects.TamedMonster05, 2, 0);
 			}
 
 			if (CoC.instance.model.time.hours == 6) {
@@ -2261,8 +2278,16 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
-			//VerdantMight
+			//VerdantMight		, Races.barometz
 			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
+			//LustyStrength
+			needNext ||= player.gainOrLosePerk(PerkLib.LustyStrength, player.isRaceCached(Races.MYCONID), "Information Noona know who know what should be here and that person is... Liadri.", "Information Noona know who know what should be here and that person is... Liadri.");
+			//Absorb nutrient
+			needNext ||= player.gainOrLosePerk(PerkLib.AbsorbNutrient, player.isRaceCached(Races.MYCONID), "You begin to crave for the fluids and moisture of others. It looks like, as you became more shroom-like, you gained the ability to absorb nutrients and vitality from sex.", "You no longer crave for the fluids and moisture of others. It looks like, as you became less shroom-like, you lost the ability to absorb nutrients and vitality from sex.");
+			//MindFungus
+			needNext ||= player.gainOrLosePerk(PerkLib.MindFungus, (player.isRaceCached(Races.MYCONID) && player.horns.count > 8), "As you become a noble fungal lifeform you begin to acquire mind warping powers.", "Information Noona know who know what should be here and that person is... Liadri.");
+			//FungalNobility
+			needNext ||= player.gainOrLosePerk(PerkLib.FungalNobility, player.isRaceCached(Races.MYCONID, 2), "Something changed about you as your body became more fungal like. It would seem you acquired the ability to order around lesser shroom girls.", "As your fungal nature is pruned you lose the ability to command the matango.");
 			//Enigma
 			needNext ||= player.gainOrLosePerk(PerkLib.Enigma, player.isRaceCached(Races.SPHINX), "Being a sphinx has granted you insight on many things including various secrets to martial combat, guess this is what they mean about using your smarts before your brawn.", "As you no longer possess the insight of a sphinx you no longer have the ability to fully use your smarts to improve your martial prowess.");
 			//Rampant Might

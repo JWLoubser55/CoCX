@@ -56,7 +56,7 @@ public class Shield extends Equipable
 				if (doOutput) outputText("Your current range weapon requires two hands. Unequip your current range weapon or switch to one-handed before equipping this shield. ");
 				return false;
 			}
-			else if ((game.player.weapon.isSingleLarge() && !game.player.hasPerk(PerkLib.GigantGrip)) || (game.player.weapon.isSingleMassive() && !game.player.hasPerk(PerkLib.TitanGrip))) {
+			else if ((game.player.weapon.isSingleLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()) || (game.player.weapon.isSingleMassive() && !game.player.hasPerk(PerkLib.TitanGrip))) {
 				if (doOutput) outputText("Your current melee weapon requires two hands. Unequip your current melee weapon or switch to one-handed before equipping this shield. ");
 				return false;
 			}
@@ -72,7 +72,7 @@ public class Shield extends Equipable
 				if (doOutput) outputText("You would very much like to equip this item but your body stiffness prevents you from doing so.");
 				return false;
 			}
-			else if (game.player.shieldPerk == "Massive" && !game.player.hasPerk(PerkLib.GigantGrip)) {
+			else if (game.player.shieldPerk == "Massive" && !game.player.isAbleToOneHandWieldLargeWeapon()) {
 				if (doOutput) outputText("This shield requires the use of both your hands. Unequip your current melee weapon before equipping it. ");
 				return false;
 			}
@@ -81,8 +81,8 @@ public class Shield extends Equipable
 		
 		override public function afterEquip(doOutput:Boolean, slot:int):void {
 			if (!game.isLoadingSave) {
-				if ((perk == "Massive" && game.player.weapon != WeaponLib.FISTS && !game.player.hasPerk(PerkLib.GigantGrip))
-						|| (game.player.weapon.isSingleLarge() && !game.player.hasPerk(PerkLib.GigantGrip))
+				if ((perk == "Massive" && game.player.weapon != WeaponLib.FISTS && !game.player.isAbleToOneHandWieldLargeWeapon())
+						|| (game.player.weapon.isSingleLarge() && !game.player.isAbleToOneHandWieldLargeWeapon())
 						|| (game.player.weapon.isSingleMassive() && !game.player.hasPerk(PerkLib.TitanGrip))
 						|| ((game.player.weapon.isDualWielded() && game.player.weapon != WeaponLib.FISTS) && game.player.weapon.isGauntletType()) || game.player.weaponName == "Daisho") {
 					SceneLib.inventory.unequipWeapon();

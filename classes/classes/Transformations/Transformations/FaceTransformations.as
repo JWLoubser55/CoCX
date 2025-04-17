@@ -1222,5 +1222,21 @@ public class FaceTransformations extends MutationsHelper {
 				return player.faceType === Face.GLACIAL_TROLL;
 			}
 	);
+
+	public const FaceAutomata: Transformation = new SimpleTransformation("Automata Face",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.FaceHuman, doOutput);
+
+				if (doOutput) outputText(desc);
+				player.faceType = Face.AUTOMATA;
+			},
+			// is present
+			function (): Boolean {
+				return player.faceType === Face.AUTOMATA;
+			}
+	);
 }
 }

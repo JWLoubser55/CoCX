@@ -32,7 +32,7 @@ use namespace CoC;
 		public var winterwolfScene:WinterWolfScene = new WinterWolfScene();
 		public var wendigoScene:WendigoScene = new WendigoScene();
 		
-		public const areaLevel:int = 65;
+		public const areaLevel:int = 75;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.glacialRiftOuter > 0;
 		}
@@ -131,7 +131,7 @@ use namespace CoC;
 				unique: true,
 				chance: 0.20,
 				when: function():Boolean {
-					return (player.faceType == Face.WOLF || player.faceType == Face.ANIMAL_TOOTHS) && player.ears.type == Ears.WOLF && player.arms.type == Arms.WOLF && player.lowerBody == LowerBody.WOLF && player.tailType == Tail.WOLF && player.isFurCovered() && player.hairColor == "glacial white" && player.furColor == "glacial white" && player.hasKeyItem("Gleipnir Collar") < 0;
+					return player.racialScore(Races.WOLF) > 9 && player.hasKeyItem("Gleipnir Collar") < 0;
 				},
 				call: FenrirRuinedShrine
 			}, {
@@ -150,39 +150,39 @@ use namespace CoC;
 					}
 				}
 			}, {
-				//Yeti (lvl 76)
+				//Yeti
 				name: "yeti",
 				label : "Yeti",
 				kind : 'monster',
 				call: encounterYeti
 			}, {
-				//Frost Giant (lvl 89)
+				//Frost Giant
 				name: "frostGiant",
 				label : "Frost gigant",
 				kind : 'monster',
 				night : false,
 				call: encounterFrostGiant
 			}, {
-				//Winter Wolf (lvl 99)
+				//Winter Wolf
 				name: "winterWolf",
 				label : "Winter Wolf",
 				kind : 'monster',
 				call: encounterWinterWolf
 			}, {
-				//Ice True Golems (lvl 80)
+				//Ice True Golems
 				name: "iceTrueGolems",
 				label : "True Ice Golems",
 				kind : 'monster',
 				call: encounterGolems
 			}, {
-				//Glacial Troll (M & F variants) (lvl 94)
+				//Glacial Troll
 				name: "troll",
 				label : "Glacial Troll",
 				kind : 'monster',
 				night : false,
 				call: encounterTroll
 			}, {
-				//Wendigo (lvl 84)
+				//Wendigo
 				name: "wendigo",
 				label : "Wendigo",
 				kind : 'monster',
@@ -413,6 +413,7 @@ use namespace CoC;
 
 		private function FenrirRuinedShrine():void {
 			clearOutput();
+			menu();
 			if (flags[kFLAGS.FENRIR_COLLAR] == 2) {
 				outputText("Once more you are drawn into the Temple of Fenrir, and the collar stands before you on Fenrir's petrified form. The god does not speak, but you feel him watching you, silently posing his dreadful question again.\n\n");
 				outputText("Will you take the collar and inherit the dark god's will, or will you refuse, for now?\n\n");

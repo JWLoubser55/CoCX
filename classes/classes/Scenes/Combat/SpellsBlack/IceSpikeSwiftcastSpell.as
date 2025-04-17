@@ -17,7 +17,7 @@ public class IceSpikeSwiftcastSpell extends AbstractBlackSpell {
 			TIMING_INSTANT,
 			[TAG_DAMAGING, TAG_ICE, TAG_TIER1]
 		);
-		baseManaCost = 8;
+		baseManaCost = 30;
 	}
 	
 	override public function get isKnown():Boolean {
@@ -30,7 +30,7 @@ public class IceSpikeSwiftcastSpell extends AbstractBlackSpell {
 	}
 	
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
-		var baseDamage:Number = 0.4 * scalingBonusIntelligence(randomize);
+		var baseDamage:Number = 0.75 * damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
 		if (player.armorName == "FrancescaCloak") baseDamage *= 2;
 		return adjustSpellDamage(baseDamage, DamageType.ICE, CAT_SPELL_BLACK, monster, true, casting);

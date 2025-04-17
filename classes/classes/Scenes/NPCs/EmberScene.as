@@ -1931,7 +1931,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2) {
             if (flags[kFLAGS.EMBER_DEFEATS_COUNTER] >= 1) flags[kFLAGS.EMBER_DEFEATS_COUNTER]++;
             else flags[kFLAGS.EMBER_DEFEATS_COUNTER] = 1;
-            if (flags[kFLAGS.EMBER_LVL_UP] < 13 && flags[kFLAGS.EMBER_DEFEATS_COUNTER] >= flags[kFLAGS.EMBER_LVL_UP] + 4) {
+            if (flags[kFLAGS.EMBER_LVL_UP] < 17 && flags[kFLAGS.EMBER_DEFEATS_COUNTER] >= flags[kFLAGS.EMBER_LVL_UP] + 7) {
                 var addToV1:Number = player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.EMBER_DEFEATS_COUNTER];
                 if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers1))
                     player.addStatusValue(StatusEffects.CampSparingNpcsTimers1, 1, addToV1);

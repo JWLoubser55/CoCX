@@ -11,6 +11,7 @@ import classes.Scenes.API.Encounters;
 import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.Caves.*;
+import classes.Scenes.Monsters.CaveGolems;
 import classes.Scenes.Monsters.DarkElfScene;
 import classes.Scenes.NPCs.Forgefather;
 import classes.Scenes.SceneLib;
@@ -21,16 +22,24 @@ use namespace CoC;
 	{
 		public var darkelfScene:DarkElfScene = new DarkElfScene();
 		public var cavewyrmScene:CaveWyrmScene = new CaveWyrmScene();
-		public var displacerbeastScene:DisplacerBeastScene = new DisplacerBeastScene();
+		public var matangoScene:MatangoScene = new MatangoScene();
+		public var automatonScene:AutomatonScene = new AutomatonScene();
 		public var darkslimeScene:DarkSlimeScene = new DarkSlimeScene();
 
 		public function Caves() {
 			onGameInit(init);
 		}
 
+		//Caves: lvl 48-66
+		//Tunnels: lvl 71-95
+		//Bedrock: lvl 100-135
 		private var _cavesEncounter:GroupEncounter = null;
+		private var _tunnelsEncounter:GroupEncounter = null;
 		public function get cavesEncounter():GroupEncounter {
 			return _cavesEncounter;
+		}
+		public function get tunnelsEncounter():GroupEncounter {
+			return _tunnelsEncounter;
 		}
 
 		private function init():void {
@@ -51,15 +60,13 @@ use namespace CoC;
 				chance: 30,
 				call: discoverTundra
 			}, {
-				name: "discoverebonlab",
-				label : "Ebon Labyrinth",
+				name: "discovertunnels",
+				label : "New Area",
 				kind  : 'place',
 				unique: true,
-				when: function ():Boolean {
-					return flags[kFLAGS.EBON_LABYRINTH] < 1
-				},
+				when: canDiscoverTunnels,
 				chance: 30,
-				call: SceneLib.dungeons.ebonlabyrinth.ebonlabyrinthdiscovery
+				call: discoverTunnels
 			}, {
 				name: "gunparts",
 				label : "Gun Parts",
@@ -79,13 +86,7 @@ use namespace CoC;
 				},
 				chance: cavesChance,
 				call: manticoreEncounterFn
-			}/*, {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					//antworker.();
-					clearOutput();
-					//outputText("You spend one hour exploring the caves but you don't manage to find anything interesting, unless feeling like you are becoming slightly tougher counts.");
-					break;
-			}*/, {
+			}, {
 				name: "mine",
 				label : "Mine",
 				kind  : 'place',
@@ -102,6 +103,15 @@ use namespace CoC;
 					cavewyrmScene.berserkingCaveWyrmEncounter();
 				}
 			}, {
+				name: "matango",
+				label : "Matango",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) < player.matangoControlLimit()) matangoScene.gainingMatango();
+					else matangoScene.mantangoEncounter();
+				}
+			},/* {
 				name: "darkelf",
 				label : "Dark Elf",
 				kind : 'monster',
@@ -109,21 +119,13 @@ use namespace CoC;
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					darkelfScene.introDarkELfRangerCaves();
 				}
-			}, {
-				name: "darkslime",
-				label : "Dark Slime",
+			},*/ {
+				name: "gemgolem",
+				label : "Gem Golem",
 				kind : 'monster',
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					darkslimeScene.cavesDarkSlimeEncounter();
-				}
-			}, {
-				name: "displacerbeast",
-				label : "Displacer Beast",
-				kind : 'monster',
-				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					displacerbeastScene.displacerBeastEncounter();
+					gemGolemEncount()
 				}
 			}, {
 				name: "",
@@ -162,10 +164,96 @@ use namespace CoC;
 					return SceneLib.exploration.demonLabProjectEncountersEnabled();
 				},
 				call: curry(SceneLib.exploration.demonLabProjectEncounters, 1)
-			})
+			});
+			_tunnelsEncounter = Encounters.group("tunnels", {
+				name: "discovercliffs",
+				label : "New Area",
+				kind  : 'place',
+				unique: true,
+				when: SceneLib.cliffs.canDiscover,
+				chance: 30,
+				call: discoverCliffs
+			}, {
+				name: "discoverlightlessreach",
+				label : "New Area",
+				kind  : 'place',
+				unique: true,
+				when: SceneLib.lightlessReach.canDiscover,
+				chance: 30,
+				call: discoverLightlessReach
+			}, {
+				name: "mine",
+				label : "Mine",
+				kind  : 'place',
+				when: function ():Boolean {
+					return player.hasKeyItem("Old Pickaxe") > 0 && Forgefather.materialsExplained
+				},
+				call: cavesMine
+			}, {
+				name: "discoverebonlab",
+				label : "Ebon Labyrinth",
+				kind  : 'place',
+				unique: true,
+				when: function ():Boolean {
+					return flags[kFLAGS.EBON_LABYRINTH] < 1
+				},
+				chance: 30,
+				call: SceneLib.dungeons.ebonlabyrinth.ebonlabyrinthdiscovery
+			}, {
+				name: "automaton",
+				label : "Automaton",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					automatonScene.automatonEncounter();
+				}
+			}, /*{
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					//antworker.();
+					clearOutput();
+					//outputText("You spend one hour exploring the caves but you don't manage to find anything interesting, unless feeling like you are becoming slightly tougher counts.");
+					break;
+			}, {
+				name: "darkelf",
+				label : "Dark Elf",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					darkelfScene.introDarkELfRangerCaves();
+				}
+			}, {
+				name: "darkslime",
+				label : "Dark Slime",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					darkslimeScene.cavesDarkSlimeEncounter();
+				}
+			},*/{
+				name: "adamantinegolem",
+				label : "Adamantine Golem",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					adamantineGolemEncount()
+				}
+			}, {
+				name: "",
+				label : 'Walk',
+				kind : 'walk',
+				when: function ():Boolean {
+					return true
+				},
+				call: findNothing
+			}, {
+				name: "findnothing",
+				label : "Walk",
+				kind  : 'walk',
+				call: findNothing
+			});
 		}
 
-		public const areaLevel:int = 30;
+		public const areaLevel:int = 45;
 		public function isDiscovered():Boolean {
 			return SceneLib.exploration.counters.caves > 0;
 		}
@@ -182,7 +270,42 @@ use namespace CoC;
 			outputText("<b>You've discovered the Caves!</b>");
 			endEncounter(120);
 		}
-
+		
+		public const areaLevelTunnels:int = 68;
+		public function isDiscoveredTunnels():Boolean {
+			return SceneLib.exploration.counters.tunnels > 0;
+		}
+		public function canDiscoverTunnels():Boolean {
+			return !isDiscoveredTunnels() && adjustedPlayerLevel() >= areaLevelTunnels;
+		}
+		public function timesExploredTunnels():int {
+			return SceneLib.exploration.counters.tunnels;
+		}
+		public function discoverTunnels():void {
+			SceneLib.exploration.counters.tunnels = 1;
+			clearOutput();
+			outputText("As you explore the caves you step into a path that does not seem to be naturaly made. Examining it properly reveals this area has been dug through by some collosal beast. Whatever monsters awaits you down there in the darkness of these tunnels is bound to be far more dangerous.\n\n");
+			outputText("<b>You have found the tunnels!</b>");
+			endEncounter(120);
+		}
+		
+		public const areaLevelBedrock:int = 51;
+		public function isDiscoveredBedrock():Boolean {
+			return SceneLib.exploration.counters.bedrock > 0;
+		}
+		public function canDiscoverBedrock():Boolean {
+			return !isDiscoveredBedrock() && adjustedPlayerLevel() >= areaLevelBedrock;
+		}
+		public function timesExploredBedrock():int {
+			return SceneLib.exploration.counters.bedrock;
+		}
+		public function discoverBedrock():void {
+			SceneLib.exploration.counters.bedrock = 1;
+			clearOutput();
+			outputText("\n\n");
+			outputText("<b>You've discovered the Bedrock!</b>");
+			endEncounter(120);
+		}
 
 		public function exploreCaves():void {
 			explorer.prepareArea(cavesEncounter);
@@ -193,6 +316,17 @@ use namespace CoC;
 			}
 			explorer.leave.hint("Leave the gloomy caves");
 			explorer.skillBasedReveal(areaLevel, timesExplored());
+			explorer.doExplore();
+		}
+		public function exploreTunnels():void {
+			explorer.prepareArea(tunnelsEncounter);
+			explorer.setTags("caves", "tunnels");
+			explorer.prompt = "You explore the gloomy tunnels.";
+			explorer.onEncounter = function(e:ExplorationEntry):void {
+				SceneLib.exploration.counters.tunnels++;
+			}
+			explorer.leave.hint("Leave the gloomy tunnels");
+			explorer.skillBasedReveal(areaLevel, timesExploredTunnels());
 			explorer.doExplore();
 		}
 
@@ -217,6 +351,25 @@ use namespace CoC;
 			outputText("What awaits you beyond the exit is the sight of a field of ashes and lava with volcanoes in the backside.\n\n");
 			outputText("<b>You've discovered the Ashlands!</b>");
 			SceneLib.exploration.counters.ashlands = 1;
+			explorer.stopExploring();
+			doNext(camp.returnToCampUseTwoHours);
+		}
+
+		private function discoverLightlessReach():void {
+			clearOutput();
+			outputText("While exploring the tunnels you find the entrance to a hole that seems to delves deeper into the dark. The depths of the hole are beyond any and all light and the oppressive darkness within is near suffocating. This is no place for the sane no or those who walk into the light.\n\n");
+			outputText("<b>You've discovered the Lightless Reach!</b>");
+			SceneLib.exploration.counters.lightlessReach = 1;
+			explorer.stopExploring();
+			doNext(camp.returnToCampUseTwoHours);
+		}
+
+		private function discoverCliffs():void {
+			clearOutput();
+			outputText("While exploring one of the many narrow tunnels, you spot a bright light from afar. Curious as to where this opens, you walk ahead as gusts of wind barrel at you from the pathway ahead. What awaits beyond the exit is a large, rocky shelf located somewhere in the middle of the cliff. ");
+			outputText("Beyond, yet between floating islands, you see in the distance a set several of massive columns connected to seemingly an endless abyss below as clouds circle above.\n\n");
+			outputText("<b>You've discovered the Cliffs!</b>");
+			SceneLib.exploration.counters.cliffs = 1;
 			explorer.stopExploring();
 			doNext(camp.returnToCampUseTwoHours);
 		}
@@ -311,5 +464,19 @@ use namespace CoC;
 			}
 		}
 
+		private function gemGolemEncount():void {
+			clearOutput();
+			outputText("As you take a stroll, a golem emerges from the nearby shadow. Looks like you've encountered a gem golem! You ready your [weapon] for a fight!");
+			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_GOLEMS);
+			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 20;
+			startCombat(new CaveGolems());
+		}
+		private function adamantineGolemEncount():void {
+			clearOutput();
+			outputText("As you take a stroll, a golem emerges from the nearby shadow. Looks like you've encountered an adamantine golem! You ready your [weapon] for a fight!");
+			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_GOLEMS);
+			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 21;
+			startCombat(new CaveGolems());
+		}
 	}
 }

@@ -526,6 +526,20 @@ public class SkinTransformations extends MutationsHelper {
 		)
 	}
 
+	public function SkinSteel(coverage: int = Skin.COVERAGE_COMPLETE, options: * = null): Transformation {
+		return new SimpleTransformation("Steel Skin",
+				function (doOutput: Boolean): void {
+					var desc: String = "";
+				},
+				// is present
+				function (): Boolean {
+					options = skinFormatOptions(options, Skin.STEEL);
+
+					return player.skin.base.type == Skin.STEEL && InCollection(player.skinColor, options.colors) && player.skin.coverage == coverage;
+				}
+		)
+	}
+
 	private function skinFormatOptions(options: *, type:int): * {
 		if (!options) options = {};
 		if (!options.adj) options.adj = "";
@@ -898,6 +912,22 @@ public class SkinTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.skin.base.pattern === Skin.PATTERN_BIOLUMINESCENCE;
+			}
+	);
+
+	public const SkinPatternCircuit: Transformation = new SimpleTransformation("Circuit Skin Pattern",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+				player.skin.base.pattern = Skin.PATTERN_CIRCUIT_TATTOO;
+
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.skin.base.pattern === Skin.PATTERN_CIRCUIT_TATTOO;
 			}
 	);
 	/*

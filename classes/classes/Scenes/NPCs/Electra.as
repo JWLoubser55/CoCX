@@ -29,9 +29,11 @@ use namespace CoC;
 			HitOrMiss();
 			if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) HitOrMiss();
 			else {
-				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 5) HitOrMiss();
-				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 8) HitOrMiss();
-				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 11) HitOrMiss();
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) HitOrMiss();
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) HitOrMiss();
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 10) HitOrMiss();
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 13) HitOrMiss();
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 16) HitOrMiss();
 			}
 		}
 		private function HitOrMiss():void {
@@ -46,23 +48,31 @@ use namespace CoC;
 				var damage:Number = 0;
 				damage += eBaseStrengthDamage();
 				var damageLust:Number = 0;
-				damageLust += Math.round(this.lib / 20);
+				damageLust += Math.round(this.lib / 10);
 				if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) {
-					damage += eBaseStrengthDamage() * 0.4;
-					damageLust += Math.round(this.lib / 50);
+					damage += eBaseStrengthDamage() * 0.8;
+					damageLust += Math.round(this.lib / 25);
 				}
 				else {
 					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) {
-						damage += eBaseStrengthDamage() * 0.5;
-						damageLust += Math.round(this.lib / 40);
+						damage += eBaseStrengthDamage();
+						damageLust += Math.round(this.lib / 20);
 					}
 					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) {
-						damage += eBaseStrengthDamage() * 0.5;
-						damageLust += Math.round(this.lib / 40);
+						damage += eBaseStrengthDamage();
+						damageLust += Math.round(this.lib / 20);
 					}
-					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 11) {
-						damage += eBaseStrengthDamage() * 0.5;
-						damageLust += Math.round(this.lib / 40);
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 10) {
+						damage += eBaseStrengthDamage();
+						damageLust += Math.round(this.lib / 20);
+					}
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 13) {
+						damage += eBaseStrengthDamage();
+						damageLust += Math.round(this.lib / 20);
+					}
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 16) {
+						damage += eBaseStrengthDamage();
+						damageLust += Math.round(this.lib / 20);
 					}
 				}
 				outputText(" You are slashed for ");
@@ -76,18 +86,22 @@ use namespace CoC;
 			if (flags[kFLAGS.ELECTRA_TALKED_ABOUT_HER] >= 1 && !player.hasStatusEffect(StatusEffects.RiverDungeonA)) outputText("Electra");
 			else outputText("The raiju");
 			outputText(" touches you with her claw and you feel some of her electricity rush and course through your body, slowly building your arousal. This is very bad! There is no telling how long you will be able to stand it.");
-			var discharge:Number = 4 + int(player.effectiveSensitivity()) / 8;
-			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) discharge += Math.round(player.effectiveSensitivity() / 16);
-			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) discharge += Math.round(player.effectiveSensitivity() / 16);
-			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 11) discharge += Math.round(player.effectiveSensitivity() / 16);
+			var discharge:Number = 40 + int(player.effectiveSensitivity()) / 5;
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) discharge += Math.round(player.effectiveSensitivity() / 10);
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) discharge += Math.round(player.effectiveSensitivity() / 10);
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 10) discharge += Math.round(player.effectiveSensitivity() / 10);
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 13) discharge += Math.round(player.effectiveSensitivity() / 10);
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 16) discharge += Math.round(player.effectiveSensitivity() / 10);
 			if (player.hasStatusEffect(StatusEffects.RaijuStaticDischarge)) {
 				outputText(" Her repeated touches increase the voltage!!!!");
-				discharge += 4;
-				if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) discharge += 1;
+				discharge += 8;
+				if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) discharge += 2;
 				else {
-					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) discharge += 2;
-					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) discharge += 2;
-					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 11) discharge += 2;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) discharge += 4;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) discharge += 4;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 10) discharge += 4;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 13) discharge += 4;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 16) discharge += 4;
 				}
 				player.takeLustDamage(discharge, true);
 			}
@@ -102,18 +116,20 @@ use namespace CoC;
 			if (flags[kFLAGS.ELECTRA_TALKED_ABOUT_HER] >= 1 && !player.hasStatusEffect(StatusEffects.RiverDungeonA)) outputText("Electra");
 			else outputText("The raiju");
 			var damageLust:Number = 0;
-			damageLust += Math.round(this.lib / 10);
-			if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) damageLust += Math.round(this.lib / 25);
+			damageLust += Math.round(this.lib / 5);
+			if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) damageLust += Math.round(this.lib / 20);
 			else {
-				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) damageLust += Math.round(this.lib / 20);
-				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) damageLust += Math.round(this.lib / 20);
-				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 11) damageLust += Math.round(this.lib / 20);
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) damageLust += Math.round(this.lib / 10);
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) damageLust += Math.round(this.lib / 10);
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 10) damageLust += Math.round(this.lib / 10);
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 13) damageLust += Math.round(this.lib / 10);
+				if (flags[kFLAGS.ELECTRA_LVL_UP] >= 16) damageLust += Math.round(this.lib / 10);
 			}
 			player.takeLustDamage(damageLust, true);
 			outputText(" gleefully fingers herself while looking at you with a half crazed look.\n\n");
 			outputText("\"<i>Do you know... How frustrating it is to be dependant on someone else to achieve release? Ohhhh soon you will find out!</i>\"\n\n");
 			outputText("The display left you aroused but likely she's preparing something. <b>([font-lust]" + damageLust + "[/font])</b> lust damage.\n\n");
-			lust += maxLust() * 0.2;
+			lust += maxLust() * 0.25;
 			createStatusEffect(StatusEffects.RaijuUltReady,0,0,0,0);
 		}
 		public function moveOrgasmicLightningBolt():void {
@@ -125,29 +141,35 @@ use namespace CoC;
 			}
 			else {
 				var damageLust:Number = 0;
-				damageLust += lust * 2;
-				if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) damageLust += lust;
+				damageLust += lust * 4;
+				if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) damageLust += lust * 2;
 				else {
-					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) damageLust += lust;
-					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) damageLust += lust;
-					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 11) damageLust += lust;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) damageLust += lust * 2;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) damageLust += lust * 2;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 10) damageLust += lust * 2;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 13) damageLust += lust * 2;
+					if (flags[kFLAGS.ELECTRA_LVL_UP] >= 16) damageLust += lust * 2;
 				}
 				damageLust = Math.round(damageLust);
 				player.takeLustDamage(damageLust, true);
 				outputText(" You are zapped clean but instead of feeling pain, you feel intense electric pleasure coursing through your body as the Raiju shares some of her unbridled arousal. <b>([font-lust]" + damageLust + "[/font])</b> lust damage.");
 			}
-			lust -= lust * 0.2;
+			lust -= lust * 0.25;
 			if (lust < 0) lust = 0;
 			removeStatusEffect(StatusEffects.RaijuUltReady);
 			createStatusEffect(StatusEffects.AbilityCooldown1,5,0,0,0);
 		}
 		public function moveElectraLightningBolt():void {
 			var damage:Number = 0;
-			damage += eBaseIntelligenceDamage() * 1.2;
-			damage += eBaseWisdomDamage() * 1.2;
-			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 9) {
-				damage += eBaseIntelligenceDamage() * 0.6;
-				damage += eBaseWisdomDamage() * 0.6;
+			damage += eBaseIntelligenceDamage() * 2.4;
+			damage += eBaseWisdomDamage() * 2.4;
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 8) {
+				damage += eBaseIntelligenceDamage() * 1.2;
+				damage += eBaseWisdomDamage() * 1.2;
+			}
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 15) {
+				damage += eBaseIntelligenceDamage() * 1.2;
+				damage += eBaseWisdomDamage() * 1.2;
 			}
 			outputText("Electra charge out energy in her hand and then fire it out in the form of a huge bolt of lightning at you.  ");
 			damage = Math.round(damage);
@@ -222,36 +244,36 @@ use namespace CoC;
 			}
 			else {
 				if (flags[kFLAGS.ELECTRA_LVL_UP] < 2) {
-					initStrTouSpeInte(60, 110, 100, 150);
-					initWisLibSensCor(150, 220, 160, 60);
-					this.weaponAttack = 12;
-					this.armorDef = 12;
-					this.armorMDef = 10;
-					this.bonusHP = 100;
-					this.bonusLust = 410;
-					this.level = 30;
+					initStrTouSpeInte(150, 250, 240, 320);
+					initWisLibSensCor(320, 370, 270, 60);
+					this.weaponAttack = 40;
+					this.armorDef = 20;
+					this.armorMDef = 28;
+					this.bonusHP = 150;
+					this.bonusLust = 676;
+					this.level = 36;
 				}
-				else if (flags[kFLAGS.ELECTRA_LVL_UP] == 12) {
-					initStrTouSpeInte(150, 365, 320, 260);
-					initWisLibSensCor(260, 550, 340, 60);
-					this.weaponAttack = 45;
-					this.armorDef = 78;
-					this.armorMDef = 120;
-					this.bonusHP = 650;
-					this.bonusLust = 986;
+				else if (flags[kFLAGS.ELECTRA_LVL_UP] == 18) {
+					initStrTouSpeInte(490, 760, 750, 1000);
+					initWisLibSensCor(1000, 1390, 780, 60);
+					this.weaponAttack = 190;
+					this.armorDef = 190;
+					this.armorMDef = 266;
+					this.bonusHP = 1425;
+					this.bonusLust = 2308;
 					this.level = 96;
 				}
 				else {	//leave min and max levels to easily balance npc combat
 					var electraLvl:Number = flags[kFLAGS.ELECTRA_LVL_UP]-1;
-					initStrTouSpeInte(60 + 10*electraLvl, 110 + 15*electraLvl, 100 + 20*electraLvl, 150 + 10*electraLvl);
-					initWisLibSensCor(150 + 10*electraLvl, 220 + 30*electraLvl, 160 + 20*electraLvl, 60);
-					this.weaponAttack = 12 + 3*electraLvl;
-					this.armorDef = 12 + 5*electraLvl;
-					this.armorMDef = 10 + 10*electraLvl;
-					this.bonusHP = 100 + 50*electraLvl;
-					this.bonusLust = 410 + 56*electraLvl;
+					initStrTouSpeInte(150 + 20*electraLvl, 250 + 30*electraLvl, 240 + 30*electraLvl, 320 + 40*electraLvl);
+					initWisLibSensCor(320 + 40*electraLvl, 370 + 60*electraLvl, 270 + 30*electraLvl, 60);
+					this.weaponAttack = 40 + 7*electraLvl;
+					this.armorDef = 20 + 10*electraLvl;
+					this.armorMDef = 28 + 14*electraLvl;
+					this.bonusHP = 150 + 75*electraLvl;
+					this.bonusLust = 676 + 96*electraLvl;
 					this.level = 30 + 6*electraLvl;
-				}//level up giving 2x all growns and so follow next level ups's as long each npc break lvl 100 (also makes npc use new better gear)
+				}
 			}
 			createVagina(true,VaginaClass.WETNESS_NORMAL,VaginaClass.LOOSENESS_TIGHT);
 			this.createStatusEffect(StatusEffects.BonusVCapacity,60,0,0,0);
@@ -270,7 +292,7 @@ use namespace CoC;
 			this.armorName = "indecent spider silk robe";
 			this.lust = 30;
 			this.lustVuln = .8;
-			this.gems = 500;
+			this.gems = 400 + rand(150);
 			this.drop = new ChainedDrop().
 					add(armors.INDESSR,1/10).
 					add(consumables.L_DRAFT,1/4).
@@ -285,41 +307,75 @@ use namespace CoC;
 			this.createPerk(PerkLib.LightningNature, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyBeastOrAnimalMorphType, 0, 0, 0, 0);
 			if (!player.hasStatusEffect(StatusEffects.RiverDungeonA)) this.createPerk(PerkLib.UniqueNPC, 0, 0, 0, 0);
-			if (flags[kFLAGS.ELECTRA_LVL_UP] > 1 || flags[kFLAGS.ELECTRA_TALKED_ABOUT_HER] > 1) this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 12 && flags[kFLAGS.ELECTRA_LVL_UP] < 19) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 2) {
 				this.createPerk(PerkLib.BasicSelfControl, 0, 0, 0, 0);
 				this.createPerk(PerkLib.JobSeducer, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 3) {
 				this.createPerk(PerkLib.HalfStepToImprovedSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.JobEromancer, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicLibido, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 4) {
+				this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Diehard, 0, 0, 0, 0);
+			}
 			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 5) {
 				this.createPerk(PerkLib.HalfStepToAdvancedSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EromancyBeginner, 0, 0, 0, 0);
+				this.createPerk(PerkLib.JobEromancer, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 6) {
 				this.createPerk(PerkLib.AdvancedSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EpicLibido, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicIntelligence, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) this.createPerk(PerkLib.HalfStepToSuperiorSelfControl, 0, 0, 0, 0);
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 7) {
+				this.createPerk(PerkLib.HalfStepToSuperiorSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
+			}
 			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 8) {
 				this.createPerk(PerkLib.SuperiorSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EromancyExpert, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EromancyBeginner, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 9) {
 				this.createPerk(PerkLib.HalfStepToPeerlessSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.LegendaryLibido, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicWisdom, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 10) this.createPerk(PerkLib.PeerlessSelfControl, 0, 0, 0, 0);
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 10) {
+				this.createPerk(PerkLib.PeerlessSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.ImprovedDiehard, 0, 0, 0, 0);
+			}
 			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 11) {
-				this.createPerk(PerkLib.HalfStepToInhumanSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EromancyMaster, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EromancyExpert, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LimitBreakerHeart1stStage, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 12) {
+				this.createPerk(PerkLib.LegendaryLibido, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LimitBreakerPsyche1stStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 13) {
+				this.createPerk(PerkLib.HalfStepToInhumanSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 14) {
+				this.createPerk(PerkLib.EromancyMaster, 0, 0, 0, 0);
+				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 15) {
+				this.createPerk(PerkLib.LegendaryIntelligence, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 16) {
 				this.createPerk(PerkLib.InhumanSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.MythicalLibido, 0, 0, 0, 0);
+				this.createPerk(PerkLib.GreaterDiehard, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 17) {
+				this.createPerk(PerkLib.LimitBreakerHeart2ndStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.ELECTRA_LVL_UP] >= 18) {
+				this.createPerk(PerkLib.LegendaryWisdom, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LimitBreakerPsyche2ndStage, 0, 0, 0, 0);
 			}
 			checkMonster();
 		}

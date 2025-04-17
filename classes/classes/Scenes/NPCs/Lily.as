@@ -24,6 +24,11 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (flags[kFLAGS.LILY_LVL_UP] >= 4) lBAR += 1;
 			if (flags[kFLAGS.LILY_LVL_UP] >= 6) lBAR += 1;
 			if (flags[kFLAGS.LILY_LVL_UP] >= 8) lBAR += 1;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 10) lBAR += 1;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 12) lBAR += 1;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 14) lBAR += 1;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 16) lBAR += 1;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 18) lBAR += 1;
 			while (lBAR-->0) lilyBasicAttackRe();
 		}
 		private function lilyBasicAttackRe():void {
@@ -72,13 +77,13 @@ import classes.Scenes.Combat.CombatAbilities;
 			else {
 				if (player.buff("Web").isPresent()) {
 					outputText("The silky strands hit you, weighing you down and restricting your movement even further.\n");
-					player.buff("Web").addStats( {"spe":-25} ).withText("Web").combatPermanent();
+					player.buff("Web").addStats( {"spe":-50} ).withText("Web").combatPermanent();
 				}
 				else {
 					outputText("You’re unable to dodge, and the heavy strands wrap around your arms and legs, weighing you down and restricting your movements.");
 					if (player.canFly()) outputText("  Your wings struggle uselessly in the bindings, no longer able to flap fast enough to aid you.");
 					outputText("\n");
-					player.buff("Web").addStats( {"spe":-25} ).withText("Web").combatPermanent();
+					player.buff("Web").addStats( {"spe":-50} ).withText("Web").combatPermanent();
 				}
 			}
 		}
@@ -91,6 +96,11 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (flags[kFLAGS.LILY_LVL_UP] >= 5) lFB += 3;
 			if (flags[kFLAGS.LILY_LVL_UP] >= 7) lFB += 3;
 			if (flags[kFLAGS.LILY_LVL_UP] >= 9) lFB += 3;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 11) lFB += 3;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 13) lFB += 3;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 15) lFB += 3;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 17) lFB += 3;
+			if (flags[kFLAGS.LILY_LVL_UP] >= 19) lFB += 3;
 			while (lFB-->0) LilyFireBow();
 		}
 		public function LilyFireBow():void {
@@ -100,24 +110,42 @@ import classes.Scenes.Combat.CombatAbilities;
 		
 		private function damageCalc():void {
 			var damage:Number = 0;
-			damage += eBaseSpeedDamage() * 0.2;
-			if (damage < 10) damage = 10;
+			damage += eBaseSpeedDamage() * 0.4;
+			damage += eBaseStrengthDamage() * 0.2;
+			if (hasPerk(PerkLib.ElementalArrows)) damage += eBaseIntelligenceDamage() * 0.1;
+			if (damage < 50) damage = 50;
 			//weapon bonus
 			if (this.weaponRangeAttack < 51) damage *= (1 + (this.weaponRangeAttack * 0.03));
 			else if (this.weaponRangeAttack >= 51 && this.weaponRangeAttack < 101) damage *= (2.5 + ((this.weaponRangeAttack - 50) * 0.025));
 			else if (this.weaponRangeAttack >= 101 && this.weaponRangeAttack < 151) damage *= (3.75 + ((this.weaponRangeAttack - 100) * 0.02));
 			else if (this.weaponRangeAttack >= 151 && this.weaponRangeAttack < 201) damage *= (4.75 + ((this.weaponRangeAttack - 150) * 0.015));
 			else damage *= (5.5 + ((this.weaponRangeAttack - 200) * 0.01));
+			if (hasPerk(PerkLib.Sadomasochism)) {
+				var smB:Number = 1;
+				if (this.HP < this.maxHP() * 0.25) smB += 0.2;
+				if (this.lust > this.maxLust() * 75) smB += 0.2;
+				damage *= smB;
+			}
 			player.takePhysDamage(damage, true);
 			if (flags[kFLAGS.LILY_LVL_UP] >= 3) {
 				var lustArrowDmg:Number = (flags[kFLAGS.LILY_LVL_UP] * 2);
+				if (hasPerk(PerkLib.Cupid) && this.mana >= 1) {
+					mana -= 1;
+					lustArrowDmg += this.inte / 10;
+				}
 				if (flags[kFLAGS.LILY_LVL_UP] >= 9) lustArrowDmg += (this.inte / 5 + rand(player.lib - player.inte * 2 + player.cor) / 5);
+				player.takeLustDamage(lustArrowDmg, true);
+			}
+			if (hasPerk(PerkLib.ArrowStorm) && rand(2) == 0) {
+				outputText(" Her arrow make an U-turn after piercing before hitting you again! ");
+				player.takePhysDamage(damage, true);
 				player.takeLustDamage(lustArrowDmg, true);
 			}
 		}
 		
 		override protected function performCombatAction():void
 		{
+			mana += 20;
 			var choice0:Number = rand(3);
 			switch (choice0) {
 				case 0:
@@ -143,38 +171,38 @@ import classes.Scenes.Combat.CombatAbilities;
 		public function Lily()
 		{
 			if (flags[kFLAGS.LILY_LVL_UP] < 2) {
-				initStrTouSpeInte(70, 75, 110, 100);
-				initWisLibSensCor(100, 80, 50, 80);
-				this.weaponAttack = 3;
-				this.weaponRangeAttack = 30;
-				this.armorDef = 60;
-				this.armorMDef = 6;
-				this.bonusHP = 400;
-				this.bonusLust = 152;
-				this.level = 22;
+				initStrTouSpeInte(164, 186, 340, 290);
+				initWisLibSensCor(220, 310, 220, 80);
+				this.weaponAttack = 5;
+				this.weaponRangeAttack = 60;
+				this.armorDef = 140;
+				this.armorMDef = 70;
+				this.bonusHP = 500;
+				this.bonusLust = 564;
+				this.level = 34;
 			}
-			if (flags[kFLAGS.LILY_LVL_UP] >= 2 && flags[kFLAGS.LILY_LVL_UP] < 9) {
+			if (flags[kFLAGS.LILY_LVL_UP] >= 2 && flags[kFLAGS.LILY_LVL_UP] < 19) {
 				var mod:int = (flags[kFLAGS.LILY_LVL_UP] - 1);
-				initStrTouSpeInte(70 + 4*mod, 75 + 6*mod, 110 + 20*mod, 100 + 5*mod);
-				initWisLibSensCor(100 + 5*mod, 80 + 25*mod, 50 + 20*mod, 80);
-				this.weaponAttack = 3 + 1*mod;
-				this.weaponRangeAttack = 30 + 5*mod;
-				this.armorDef = 60 + 10*mod;
-				this.armorMDef = 6 + 1*mod;
-				this.bonusHP = 400 + 50*mod;
-				this.bonusLust = 152 + 51*mod;
+				initStrTouSpeInte(164 + 12*mod, 186 + 18*mod, 340 + 60*mod, 290 + 45*mod);
+				initWisLibSensCor(220 + 15*mod, 310 + 75*mod, 220 + 60*mod, 80);
+				this.weaponAttack = 5 + 1*mod;
+				this.weaponRangeAttack = 60 + 15*mod;
+				this.armorDef = 140 + 10*mod;
+				this.armorMDef = 70 + 5*mod;
+				this.bonusHP = 500 + 50*mod;
+				this.bonusLust = 564 + 141*mod;
 				this.level = 22 + 6*mod;
 			}
-			if (flags[kFLAGS.LILY_LVL_UP] == 9) {
-				initStrTouSpeInte(102, 123, 270, 140);
-				initWisLibSensCor(140, 280, 210, 80);
-				this.weaponAttack = 11;
-				this.weaponRangeAttack = 70;
-				this.armorDef = 140;
-				this.armorMDef = 14;
-				this.bonusHP = 800;
-				this.bonusLust = 560;
-				this.level = 70;
+			if (flags[kFLAGS.LILY_LVL_UP] == 19) {
+				initStrTouSpeInte(380, 510, 1420, 1100);
+				initWisLibSensCor(490, 1510, 1300, 80);
+				this.weaponAttack = 23;
+				this.weaponRangeAttack = 330;
+				this.armorDef = 320;
+				this.armorMDef = 160;
+				this.bonusHP = 1400;
+				this.bonusLust = 3102;
+				this.level = 142;
 			}
 			this.imageName = "corrupteddrider";
 			if (LilyFollower.LilyTalked > 0) {
@@ -216,29 +244,27 @@ import classes.Scenes.Combat.CombatAbilities;
 					.add(null,4);
 			this.createPerk(PerkLib.EnemyHugeType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.BasicSelfControl, 0, 0, 0, 0);
+			this.createPerk(PerkLib.JobRanger, 0, 0, 0, 0);
+			if (flags[kFLAGS.LILY_LVL_UP] >= 14 && flags[kFLAGS.LILY_LVL_UP] < 20) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.LILY_LVL_UP] >= 2) {
 				this.createPerk(PerkLib.HalfStepToImprovedSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.JobRanger, 0, 0, 0, 0);
 				this.createPerk(PerkLib.Masochist, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 3) {
 				this.createPerk(PerkLib.ImprovedSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.NakedTruth, 0, 0, 0, 0);
 				this.createPerk(PerkLib.JobSeducer, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 4) {
 				this.createPerk(PerkLib.HalfStepToAdvancedSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.JobHunter, 0, 0, 0, 0);
 				this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 5) {
 				this.createPerk(PerkLib.AdvancedSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EpicLibido, 0, 0, 0, 0);
-				this.createPerk(PerkLib.JobCourtesan, 0, 0, 0, 0);
+				this.createPerk(PerkLib.JobHunter, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 6) {
 				this.createPerk(PerkLib.HalfStepToSuperiorSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.NakedTruth, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 7) {
 				this.createPerk(PerkLib.SuperiorSelfControl, 0, 0, 0, 0);
@@ -246,12 +272,57 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 8) {
 				this.createPerk(PerkLib.HalfStepToPeerlessSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.PrestigeJobArcaneArcher, 0, 0, 0, 0);
+				this.createPerk(PerkLib.JobCourtesan, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.LILY_LVL_UP] >= 9) {
 				this.createPerk(PerkLib.PeerlessSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicLibido, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 10) {
+				this.createPerk(PerkLib.HalfStepToInhumanSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.JobEromancer, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 11) {
+				this.createPerk(PerkLib.InhumanSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 12) {
+				this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
+				this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
+				this.createPerk(PerkLib.JobGuardian, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 13) {
+				this.createPerk(PerkLib.HalfStepToEpicSelfControl, 0, 0, 0, 0);
 				this.createPerk(PerkLib.LegendaryLibido, 0, 0, 0, 0);
 			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 14) {
+				this.createPerk(PerkLib.PrestigeJobArcaneArcher, 0, 0, 0, 0);
+				this.createPerk(PerkLib.PrestigeJobBindmaster, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 15) {
+				this.createPerk(PerkLib.EpicSelfControl, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 16) {
+				this.createPerk(PerkLib.ElementalArrows, 0, 0, 0, 0);
+				this.createPerk(PerkLib.JobSorcerer, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 17) {
+				this.createPerk(PerkLib.LegendaryStrength, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Cupid, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 18) {
+				this.createPerk(PerkLib.ArrowStorm, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Sadomasochism, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 19) {
+				this.createPerk(PerkLib.MythicalLibido, 0, 0, 0, 0);
+				this.createPerk(PerkLib.LustyRegeneration, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.LILY_LVL_UP] >= 20) //this.createPerk(PerkLib., 0, 0, 0, 0);
+			if (flags[kFLAGS.LILY_LVL_UP] >= 21) this.createPerk(PerkLib.MythicalSpeed, 0, 0, 0, 0);
+			if (flags[kFLAGS.LILY_LVL_UP] >= 22) //this.createPerk(PerkLib., 0, 0, 0, 0);
+			if (flags[kFLAGS.LILY_LVL_UP] >= 23) this.createPerk(PerkLib.MythicalStrength, 0, 0, 0, 0);
 			checkMonster();
 		}
 	}

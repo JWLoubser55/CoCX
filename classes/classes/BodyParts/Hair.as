@@ -222,6 +222,20 @@ public class Hair extends BodyPart {
 		ignoresStyle: true
 	});
 
+	public static const MYCONID:int = 24;
+	EnumValue.add(Types, MYCONID, "MYCONID", {
+		name:"f.filaments",
+		shortDesc: "glowing mushroom {hair}",
+		appearanceDesc: "Your {hairInfo} looks human at a quick glance but in truth are fungal filaments."
+	});
+
+	public static const SYNTHETIC:int = 25;
+	EnumValue.add(Types, SYNTHETIC, "SYNTHETIC", {
+		name:"synthetic",
+		shortDesc: "glowing synthetic {hair}",
+		appearanceDesc: "Your {hairInfo} with neon [eyecolor] tips looks good on you, accentuating your features well. It is actually made out of glowing synthetic fibers that carry electric signals and light allowing you to color your hairs however you want. You are not sure how you do it but you do somehow have an application in your database that can allow you to shorten and lengthen your synthetic hair as a living person would. For what purpose? Well only your fabricant would know."
+	});
+
 	// Additional modifiers for hair descriptions
 	public static var Styles:/*EnumValue*/Array = [];
 

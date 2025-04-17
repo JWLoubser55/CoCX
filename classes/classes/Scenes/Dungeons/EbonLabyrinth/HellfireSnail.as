@@ -19,7 +19,7 @@ use namespace CoC;
 		override public function playerBoundStruggle():Boolean{
 			clearOutput();
 			//[Struggle](successful) :
-			if (rand(3) == 0 || rand(80) < player.str) {
+			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100)) {
 				outputText("You manage to break out of the snail’s burning embrace and she sighs in frustration as you take some distance.");
 				outputText("\n\n\"<i>Aw come back here! I just want a hug!</i>\"");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);

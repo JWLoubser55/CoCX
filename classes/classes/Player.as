@@ -187,7 +187,7 @@ use namespace CoC;
         /*19*/	{combat: "Normal", 		level:0, experience:0, melee: true, desc:"<b>Weapon Mastery - Normal</b>"},
         /*20*/	{combat: "Large", 		level:0, experience:0, melee: true, desc:"<b>Weapon Mastery - Large</b>"},
         /*21*/	{combat: "Massive", 	level:0, experience:0, melee: true, desc:"<b>Weapon Mastery - Massive</b>"},
-        /*22*/	{combat: "Range", 		level:0, experience:0, melee: false, desc:"<b>Weapon Mastery - Ranged</b>"},
+        /*22*/	{combat: "Range", 		level:0, experience:0, melee: false, desc:"<b>Spell Mastery</b>"},
         /*23*/	{combat: "Unarmed", 	level:0, experience:0, melee: true, desc:"<b>Dao of Fists</b>"},
         /*24*/	{combat: "DualMassive", level:0, experience:0, melee: true, desc:"<b>Dual Wield Mastery - Massive</b>"}
 		];
@@ -674,12 +674,12 @@ use namespace CoC;
 		//Natural Armor (need at least to partialy covering whole body)
 		public function haveNaturalArmor():Boolean
 		{
-			return hasPerk(PerkLib.ThickSkin) || skin.isFurCovered() || skin.isChitinCovered() || skin.isScaleCovered() || skin.hasBark() || skin.isDragonScaleCovered() || skin.hasBaseOnly(Skin.STONE) || lowerBody == LowerBody.SANDWORM;
+			return hasPerk(PerkLib.ThickSkin) || skin.isFurCovered() || skin.isChitinCovered() || skin.isScaleCovered() || skin.hasBark() || skin.isDragonScaleCovered() || skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL) || lowerBody == LowerBody.SANDWORM;
 		}
 		//Unhindered related acceptable armor types
 		public function meetUnhinderedReq():Boolean
 		{
-			return armor.hasTag(ItemConstants.A_AGILE);
+			return (armor.hasTag(ItemConstants.A_AGILE) || perkv1(IMutationsLib.LivingWeaponIM) >= 2);
 		}
 		//override public function get armors
 		override public function get armorName():String {
@@ -694,6 +694,10 @@ use namespace CoC;
 			armorDef += armor.def;
 			armorDef += upperGarment.armorDef;
 			armorDef += lowerGarment.armorDef;
+			if (perkv1(IMutationsLib.LivingWeaponIM) >= 3) {
+				if (perkv1(IMutationsLib.LivingWeaponIM) >= 4) armorDef = Math.round(armorDef * 1.5);
+				else armorDef = Math.round(armorDef * 1.25);
+			}
 			if (hasPerk(PerkLib.MiracleMetal) && armor.name != "Arigean Ne-Class Uniform" && armor.name != "Princess Regalia") armorDef = Math.round(armorDef * 0.6);
 			var tier:int;
 			//Blacksmith history!
@@ -725,7 +729,7 @@ use namespace CoC;
 			if (skin.isChitinCovered()) armorDef += (p?2:4)*newGamePlusMod;
 			if (skin.isScaleCovered()) armorDef += (p?3:6)*newGamePlusMod; //bee-morph (), mantis-morph (), scorpion-morph (wpisane), spider-morph (wpisane)
 			if (skin.hasBark() || skin.isDragonScaleCovered()) armorDef += (p?4:8)*newGamePlusMod;
-			if (skin.hasBaseOnly(Skin.STONE)) armorDef += (10 * newGamePlusMod);
+			if (skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL)) armorDef += (10 * newGamePlusMod);
 			//'Thick' dermis descriptor adds 1!
 			if (skinAdj == "smooth") armorDef += (1 * newGamePlusMod);
 			//Bonus defense
@@ -801,9 +805,12 @@ use namespace CoC;
 					speedBonus += Math.round(spe / 25);
 				}
 			}
-			if (hasPerk(PerkLib.ArmorMaster)) {
-				if (isInHeavyArmor()) speedBonus += Math.round(spe / 50);
+			if (hasPerk(PerkLib.ArmorMaster) && isInHeavyArmor()) speedBonus += Math.round(spe / 50);
+			if (hasPerk(PerkLib.AyoArmorMaster) && isInAyoArmor()) {
+				if (buff("Ayo Armor").isPresent()) speedBonus += Math.round(spe / 50);
+				else speedBonus += Math.round(spe / 100);
 			}
+			if (hasPerk(PerkLib.HyperServosMastery) && (isInGoblinMech() || isInNonGoblinMech())) speedBonus += Math.round(spe / 100);
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment6)) {
 				var PE6:Number = Math.round(inte / 20);
 				if (PE6 > Math.round(level / 2)) PE6 = Math.round(level / 2);
@@ -825,7 +832,7 @@ use namespace CoC;
 				toughnessBonus += Math.round(ballSize);
 			}
 			armorDef += toughnessBonus;
-			if (hasPerk(PerkLib.PrestigeJobSentinel) && isInHeavyArmor()) armorDef += armor.def;
+			if (hasPerk(PerkLib.PrestigeJobSentinel) && (isInHeavyArmor() || isInAyoArmor())) armorDef += armor.def;
 			if (hasPerk(PerkLib.ShieldExpertise) && shieldName != "nothing" && isShieldsForShieldBash()) {
 				if (shieldBlock >= 4) armorDef += Math.round(shieldBlock * 0.25);
 				else armorDef += 1;
@@ -967,7 +974,7 @@ use namespace CoC;
 			if (skin.isChitinCovered()) armorMDef += (p?2:4)*newGamePlusMod;
 			if (skin.isScaleCovered()) armorMDef += (p?3:6)*newGamePlusMod; //bee-morph (), mantis-morph (), scorpion-morph (wpisane), spider-morph (wpisane)
 			if (skin.hasBark() || skin.isDragonScaleCovered()) armorMDef += (p?4:8)*newGamePlusMod;
-			if (skin.hasBaseOnly(Skin.STONE)) armorMDef += (10 * newGamePlusMod);/*
+			if (skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL)) armorMDef += (10 * newGamePlusMod);/*
 			//'Thick' dermis descriptor adds 1!
 			if (skinAdj == "smooth") armorMDef += (1 * newGamePlusMod);/*
 			*/
@@ -1031,7 +1038,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.FFclassHeavenTribulationSurvivor)) armorMDef += 10 * newGamePlusMod;
 			if (hasPerk(PerkLib.EclassHeavenTribulationSurvivor)) armorMDef += 12 * newGamePlusMod;
 			//Agility boosts armor ratings!
-			var speedBonus:int = 0;/*
+			var speedBonus:int = 0;
 			if (hasPerk(PerkLib.Agility)) {
 				if (armor.name == "some taur paladin armor" || armor.name == "some taur blackguard armor") {
 					speedBonus += Math.round(spe / 5);
@@ -1043,9 +1050,12 @@ use namespace CoC;
 					speedBonus += Math.round(spe / 25);
 				}
 			}
-			if (hasPerk(PerkLib.ArmorMaster)) {
-				if (isInHeavyArmor()) speedBonus += Math.round(spe / 50);
-			}*/
+			if (hasPerk(PerkLib.ArmorMaster) && isInHeavyArmor()) speedBonus += Math.round(spe / 50);
+			if (hasPerk(PerkLib.AyoArmorMaster) && isInAyoArmor()) {
+				if (buff("Ayo Armor").isPresent()) speedBonus += Math.round(spe / 50);
+				else speedBonus += Math.round(spe / 100);
+			}
+			if (hasPerk(PerkLib.HyperServosMastery) && (isInGoblinMech() || isInNonGoblinMech())) speedBonus += Math.round(spe / 100);
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment6)) {
 				var PE6:Number = Math.round(inte / 20);
 				if (PE6 > Math.round(level / 2)) PE6 = Math.round(level / 2);
@@ -1058,7 +1068,7 @@ use namespace CoC;
 				toughnessBonus += Math.round(tou / 20);
 			}
 			armorDef += toughnessBonus;
-			if (hasPerk(PerkLib.PrestigeJobSentinel) && isInHeavyArmor()) armorDef += _armor.def;
+			if (hasPerk(PerkLib.PrestigeJobSentinel) && (isInHeavyArmor() || isInAyoArmor())) armorDef += _armor.def;
 			if (hasPerk(PerkLib.ShieldExpertise) && shieldName != "nothing") {
 				if (shieldBlock >= 4) armorDef += Math.round(shieldBlock);
 				else armorDef += 1;
@@ -1194,7 +1204,6 @@ use namespace CoC;
 		public function hasAetherTwinsTierS2():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers"; }
 		public function hasAetherTwinsTierLeftDagger():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers"; }
 		public function hasAetherTwinsTierLeftShield():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield"; }
-		public function hasAetherTwinsFormsNotAllowingDualWield():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield"; }
 		//Some other checks
 		public function isGoblinoid(checkRP:Boolean = true):Boolean { return (isRace(Races.GOBLIN, 1, checkRP) || isRace(Races.GREMLIN, 1, checkRP)); }
 		public function isSlime():Boolean { return (hasPerk(PerkLib.DarkSlimeCore) || hasPerk(PerkLib.SlimeCore)); }
@@ -1205,6 +1214,7 @@ use namespace CoC;
 		public function isHavingEnhancedHearing():Boolean { return (ears.type == Ears.ELVEN); }
 		public function isTechSavvyPC():Boolean { return (isGoblinoid() || (hasPerk(IMutationsLib.HumanSmartsIM) && perkv1(IMutationsLib.HumanSmartsIM) >= 2) || isRace(Races.WEREFOX)); }
 		public function isTechWeapons():Boolean { return (weapon.isTechWeapon()); }
+		public function isAbleToOneHandWieldLargeWeapon():Boolean { return (hasPerk(PerkLib.GigantGrip) || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent())); } 
 		//Weapons for Whirlwind
 		public function isWeaponForWhirlwind():Boolean
 		{
@@ -1407,15 +1417,20 @@ use namespace CoC;
 		}
 		public function mummyControlLimit():Number
 		{
-			var mCL:Number = 5;
-			if (perkv1(IMutationsLib.AlphaHowlIM) >= 1) mCL += (perkv1(IMutationsLib.AlphaHowlIM) * 5);
-			return mCL;
+			var mummyCL:Number = 5;
+			if (perkv1(IMutationsLib.AlphaHowlIM) >= 1) mummyCL += (perkv1(IMutationsLib.AlphaHowlIM) * 5);
+			return mummyCL;
 		}
 		public function zombieControlLimit():Number
 		{
-			var zCL:Number = 5;
-			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) zCL *= 2;
-			return zCL;
+			var zombieCL:Number = 5;
+			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) zombieCL *= 2;
+			return zombieCL;
+		}
+		public function matangoControlLimit():Number
+		{
+			var matangoCL:Number = 5;
+			return matangoCL;
 		}
 		public function zerkSereneMind():Boolean
 		{
@@ -1550,6 +1565,9 @@ use namespace CoC;
 			}
 			return result;
 		}
+		public function carryUniqueCursedItems():Boolean {
+			return weaponRange == game.weaponsrange.SAGITTB || necklace == game.necklaces.SILCNEC;
+		}
 
 		//override public function get weapons
 		override public function get weaponName():String {
@@ -1597,8 +1615,14 @@ use namespace CoC;
 			else attack += weapon.attack;
 			var swordsmanBonus:Number = 1.25;
 			if (hasPerk(PerkLib.WeaponMastery) && str >= 100) {
-				if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 0.75;
-				else swordsmanBonus += 0.25;
+				if (hasPerk(PerkLib.MassiveSynergyEx) && (weapon.isMassive() || weaponOff.isMassive())) {
+					if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 2.25;
+					else swordsmanBonus += 0.75;
+				}
+				else {
+					if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 0.75;
+					else swordsmanBonus += 0.25;
+				}
 			}
 			if (hasPerk(PerkLib.JobSwordsman) && (weapon.isSingleLarge() || weaponOff.isSingleLarge() || hasAetherTwinsTier2())) {
 				if (offhand && weaponOff.isSingleLarge()) attack *= swordsmanBonus;
@@ -1609,20 +1633,33 @@ use namespace CoC;
 				else attack *= 2;
 			}
 			if (hasPerk(PerkLib.GigantGripEx) && (weapon.isMassive() || weaponOff.isMassive())) {
+				if (hasPerk(PerkLib.MassiveSynergyEx)) swordsmanBonus *= 2;
 				if (offhand && weaponOff.isMassive()) attack *= swordsmanBonus;
 				else attack *= swordsmanBonus;
 			}
 			if (hasPerk(PerkLib.HiddenMomentum) && (weapon.isSingleLarge() || weaponOff.isSingleLarge() || hasAetherTwinsTier2() || (hasPerk(PerkLib.GigantGripEx) && weapon.isSingleMassive()) || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive())) && str >= 75 && spe >= 50) {
-				if (offhand && (weaponOff.isSingleLarge() || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive()))) attack += (((str + spe) - 100) * 0.2);
-				else attack += (((str + spe) - 100) * 0.2);
+				if (hasPerk(PerkLib.MassiveSynergyEx) && hasPerk(PerkLib.GigantGripEx) && (weapon.isSingleMassive() || weaponOff.isSingleMassive())) {
+					if (offhand && (weaponOff.isSingleLarge() || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive()))) attack += (((str + spe) - 100) * 0.5);
+					else attack += (((str + spe) - 100) * 0.4);
+				}
+				else {
+					if (offhand && (weaponOff.isSingleLarge() || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive()))) attack += (((str + spe) - 100) * 0.2);
+					else attack += (((str + spe) - 100) * 0.2);
+				}
 			}//30-70-110
 			if (hasPerk(PerkLib.HiddenDualMomentum) && (weapon.isDualLarge() || weaponOff.isDualLarge()) && str >= 150 && spe >= 100) {
 				if (offhand && weaponOff.isMassive()) attack += (((str + spe) - 200) * 0.2);
 				else attack += (((str + spe) - 200) * 0.2);
 			}
 			if (hasPerk(PerkLib.HiddenDualMomentum) && hasPerk(PerkLib.GigantGripEx) && (weapon.isDualMassive() || weaponOff.isDualMassive()) && str >= 150 && spe >= 100) {
-				if (offhand && weaponOff.isDualMassive()) attack += (((str + spe) - 200) * 0.2);
-				else attack += (((str + spe) - 200) * 0.2);
+				if (hasPerk(PerkLib.MassiveSynergyEx)) {
+					if (offhand && weaponOff.isDualMassive()) attack += (((str + spe) - 200) * 0.5);
+					else attack += (((str + spe) - 200) * 0.4);
+				}
+				else {
+					if (offhand && weaponOff.isDualMassive()) attack += (((str + spe) - 200) * 0.2);
+					else attack += (((str + spe) - 200) * 0.2);
+				}
 			}//20-60-100
 			if (hasPerk(PerkLib.LightningStrikes) && spe >= 60 && ((weapon.isMedium() || weaponOff.isMedium()) && !isFistOrFistWeapon())) {
 				if (offhand && weaponOff.isMedium()) attack += ((spe - 50) * 0.3);
@@ -1636,7 +1673,7 @@ use namespace CoC;
 				else attack += ((spe - 50) * 0.2);
 			}
 			if (hasPerk(PerkLib.SteelImpact)) {
-				attack += ((tou - 50) * 0.3);
+				attack += (tou * 0.5);
 			}
 			if (isFistOrFistWeapon()) {
 				if (hasPerk(PerkLib.IronFistsI) && str >= 50) {
@@ -1670,6 +1707,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.PrestigeJobTempest) && (weapon.isDualWielded() || weapon == game.weapons.DAISHO)) {
 				attack += (5 * newGamePlusMod);
 			}
+			if (perkv1(IMutationsLib.LivingWeaponIM) >= 1) attack += Math.round(armorDef * 0.25 * perkv1(IMutationsLib.LivingWeaponIM));
 			//Konstantine buff
 			if (hasStatusEffect(StatusEffects.KonstantinWeaponSharpening) && weaponName != "fists") {
 				attack *= 1 + (statusEffectv2(StatusEffects.KonstantinWeaponSharpening) / 100);
@@ -1736,7 +1774,11 @@ use namespace CoC;
 			return attack;
 		}
 		//Is DualWield
-		public function isDualWieldRanged():Boolean
+	public function isDualWieldMelee():Boolean
+        {
+        	return weapon.isDual()
+	}
+	public function isDualWieldRanged():Boolean
         {
         	return weaponRangePerk == ItemConstants.WT_DUAL_FIREARMS || weaponRangePerk == ItemConstants.WT_DUAL_2H_FIREARMS;
         }
@@ -1791,7 +1833,12 @@ use namespace CoC;
 		//Energy Melee Weapons
 		public function isEnergyMeleeWeapon():Boolean
 		{
-			return weapon == game.weapons.TIDAR;// || weapon == game.weapons.TIDAR
+			return weapon == game.weapons.TIDAR || weapon == game.weapons.ENESWOR || weapon == game.weapons.ENESPEA;
+		}
+		//Energy Range Weapons
+		public function isEnergyRangeWeapon():Boolean
+		{
+			return weaponRange == game.weaponsrange.ENERGYG;// || weaponRange == game.weaponsrange.ENERGYG
 		}
 		//override public function get weapons
 		override public function get weaponRangeName():String {
@@ -2053,14 +2100,14 @@ use namespace CoC;
 			else if (hasAetherTwinsTier1() || hasAetherTwinsTierS2()) block += 2;
 			else if (shield == game.shields.AETHERS && weapon == game.weapons.AETHERD) block += 1;
 			if (hasPerk(PerkLib.PrestigeJobSentinel)) {
-				if (shieldPerk == "Massive") block += 3;
-				else if (shieldPerk == "Large") block += 2;
-				else block += 1;
-			}
-			if (hasPerk(PerkLib.ShieldCombat)) {
-				if (shieldPerk == "Massive") block += 6;
+				if (shieldPerk == "Massive") block += 8;
 				else if (shieldPerk == "Large") block += 4;
 				else block += 2;
+			}
+			if (hasPerk(PerkLib.ShieldCombat)) {
+				if (shieldPerk == "Massive") block += 32;
+				else if (shieldPerk == "Large") block += 16;
+				else block += 8;
 			}
 			block = Math.round(block);
 			return block;
@@ -2964,7 +3011,7 @@ use namespace CoC;
 			var physTeaseDmg:Boolean = false;
 			var remainingHit:Array = [];
 			//all dmg reduction effect(s)
-			if (CoC.instance.monster.hasStatusEffect(StatusEffects.EnergyDrain)) damage *= 0.8;
+			if (CoC.instance.monster.hasStatusEffect(StatusEffects.EnergyDrain)) damage *= 0.75;
 			if (hasStatusEffect(StatusEffects.GreenCovenant)) damage *= 0.25;
 			if (CoC.instance.monster.hasStatusEffect(StatusEffects.BloodShower)) damage *= 0.2;
 			if (CoC.instance.monster.hasStatusEffect(StatusEffects.CorpseExplosion)) damage *= (1 - (0.2 * CoC.instance.monster.statusEffectv1(StatusEffects.CorpseExplosion)));
@@ -3263,6 +3310,7 @@ use namespace CoC;
 		public function damagePercentArmor():Number {
 			var percent:Number = 1;
 			var armorMod:Number = armorDef;
+			if (shield == game.shields.PRIDWEN) armorMod += shieldBlock;
 			if (armorMod > 50) percent += Math.sqrt(armorMod - 50);
 			return percent;
 		}
@@ -3306,6 +3354,9 @@ use namespace CoC;
 			if (perkv1(IMutationsLib.YetiFatIM) >= 3) {
 				mult -= 20;
 			}
+			if (perkv1(IMutationsLib.FungusTramaIM) >= 1) {
+				mult -= (5 * perkv1(IMutationsLib.FungusTramaIM));
+			}
 			if (perkv1(IMutationsLib.AlphaHowlIM) >= 2) {
 				var packMembers:Number = LunaFollower.WerewolfPackMember;
 				if (hasMutation(IMutationsLib.HellhoundFireBallsIM)) packMembers += LunaFollower.HellhoundPackMember;
@@ -3327,7 +3378,7 @@ use namespace CoC;
 				mult -= 10;
 			}
 			if (hasPerk(PerkLib.AyoArmorProficiency) && tou >= 100 && isInAyoArmor()) {
-				if (flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] > 0) mult -= 20;
+				if (buff("Ayo Armor").isPresent()) mult -= 20;
 				else mult -= 10;
 			}
 			if (hasPerk(PerkLib.HeavyArmorProficiency) && tou >= 75 && isInHeavyArmor()) {
@@ -3444,6 +3495,7 @@ use namespace CoC;
 		public function damagePercentMRes():Number {
 			var percent:Number = 1;
 			var armorMMod:Number = armorMDef;
+			if (shield == game.shields.PRIDWEN) armorMMod += shieldBlock;
 			if (armorMMod > 50) percent += Math.sqrt(armorMMod - 50);
 			return percent;
 		}
@@ -3489,6 +3541,12 @@ use namespace CoC;
 			}
 			if (perkv1(IMutationsLib.YetiFatIM) >= 3) {
 				mult -= 20;
+			}
+			if (perkv1(IMutationsLib.FungusTramaIM) >= 1) {
+				mult -= (5 * perkv1(IMutationsLib.FungusTramaIM));
+			}
+			if (perkv1(IMutationsLib.FungusTramaIM) >= 3) {
+				mult -= (10 * (perkv1(IMutationsLib.FungusTramaIM) - 2));
 			}
 			if (hasPerk(PerkLib.GreySageWisdom)) {
 				mult -= 20;
@@ -4038,6 +4096,9 @@ use namespace CoC;
 		
 		public override function damagePsychicPercent():Number {
 			var mult:Number = 100;//damageMagicalPercent()
+			if (perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 2) {
+				mult -= (25 * (perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) - 1));
+			}
 			//mult -= resEarthStat.value;
 			//Caps damage reduction at 100%
 			if (mult < 0) mult = 0;
@@ -5228,7 +5289,8 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.MummyLord) && perkv1(PerkLib.MummyLord) > 0) minions += perkv1(PerkLib.MummyLord);
 			if (hasPerk(PerkLib.UndeadLord) && perkv1(PerkLib.UndeadLord) > 0) minions += perkv1(PerkLib.UndeadLord);
-			if (hasPerk(PerkLib.JobTamer)) minions += SceneLib.campMakeWinions.currentTamedMonstersCount();
+			if (hasPerk(PerkLib.FungalNobility) && perkv1(PerkLib.FungalNobility) > 0) minions += perkv1(PerkLib.FungalNobility);
+			if (hasPerk(PerkLib.JobTamer)) minions += SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount();// || have ring of taming
 			return minions;
 		}
 
@@ -5267,7 +5329,7 @@ use namespace CoC;
 				var percent:Number = 0.01;
 				percent += (0.01 * perkv1(IMutationsLib.SlimeMetabolismIM));
 				EngineCore.HPChange(Math.round(maxHP() * percent), true, false);
-				EngineCore.ManaChange(Math.round(maxHP() * percent));
+				EngineCore.ManaChange(Math.round(maxMana() * percent));
 				EngineCore.changeFatigue(-Math.round(maxFatigue() * percent));
 			}
 			if (perkv1(IMutationsLib.SlimeMetabolismIM) >= 3 && !hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) createStatusEffect(StatusEffects.PostfluidIntakeRegeneration, 0, 0, 0, 0);
@@ -5771,6 +5833,7 @@ use namespace CoC;
 			}*/
 			//Others
 			if (racialScore(Races.GREMLIN) >= 15) min += 30;
+			if (racialScore(Races.MYCONID) >= 16) min += 20;
 			if (this.hasStatusEffect(StatusEffects.TookSagittariusBanefulGreatBow) && this.statusEffectv2(StatusEffects.TookSagittariusBanefulGreatBow) > 0) {
 				min += (minCap * 0.1 * this.statusEffectv1(StatusEffects.TookSagittariusBanefulGreatBow));
 				if (min > Math.round(minCap * 0.99)) min = Math.round(minCap * 0.99);
@@ -5952,6 +6015,36 @@ use namespace CoC;
 				buffLib += 200;
 				currentSen = Math.round(currentSen*1.3);
 			}
+			if (hasPerk(PerkLib.AbsorbNutrient)) {
+				if (perkv1(PerkLib.AbsorbNutrient) > 6) {
+					buffInt = Math.round(buffInt * 1.5);
+					currentSen = Math.round(currentSen*3);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 5) {
+					buffInt = Math.round(buffInt * 1.4);
+					currentSen = Math.round(currentSen*2.75);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 4) {
+					buffInt = Math.round(buffInt * 1.3);
+					currentSen = Math.round(currentSen*2.5);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 3) {
+					buffInt = Math.round(buffInt * 1.2);
+					currentSen = Math.round(currentSen*2.25);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 2) {
+					currentSen = Math.round(currentSen*2);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 1) {
+					buffInt = Math.round(buffInt * 0.75);
+					currentSen = Math.round(currentSen*1.75);
+				}
+				else if (perkv1(PerkLib.AbsorbNutrient) > 0) {
+					buffInt = Math.round(buffInt * 0.5);
+					currentSen = Math.round(currentSen*1.5);
+				}
+				else buffInt = buffInt * 0;
+			}
 			StatUtils.mergeBuffObjects(buffs, {
 				"str.mult": (buffStr+buffAll)/100,
 				"tou.mult": (buffTou+buffAll)/100,
@@ -5974,7 +6067,8 @@ use namespace CoC;
 			if (statStore.hasBuff('Titanic Strength')) statStore.removeBuffs('Titanic Strength');
 			if (statStore.hasBuff('Condensed Power')) statStore.removeBuffs('Condensed Power');
 			if (statStore.hasBuff('Dracoforce')) statStore.removeBuffs('Dracoforce');
-			if (statStore.hasBuff('Stored Momentum')) statStore.removeBuffs('Stored Momentum');
+			if (statStore.hasBuff('Lusty Strength')) statStore.removeBuffs('Lusty Strength');
+			//if (statStore.hasBuff('Stored Momentum')) statStore.removeBuffs('Stored Momentum');
 			var strengthBase:Number = str;
 			if (effectiveTallness >= 108 && hasPerk(PerkLib.TitanicStrength)) {
 				var strTS:Number = Math.round(0.01 * strengthBase * Math.round(effectiveTallness / 6));
@@ -6000,11 +6094,6 @@ use namespace CoC;
 				var touD:Number = Math.round(tou/2);
 				statStore.replaceBuffObject({'str': strD, 'tou': touD}, 'Dracoforce', { text: 'Dracoforce' });
 			}
-			if (hasStatusEffect(StatusEffects.StoredMomentum)) {
-				var strSM:Number = Math.round(strengthBase*(1+statusEffectv1(StatusEffects.StoredMomentum)));
-				var speSM:Number = Math.round(spe*(1+statusEffectv1(StatusEffects.StoredMomentum)));
-				statStore.replaceBuffObject({'str': strSM, 'spe': speSM}, 'Stored Momentum', { text: 'Stored Momentum' });
-			}
 			if (!hasPerk(PerkLib.DeathlyPower) && statStore.hasBuff('Deathly power')) statStore.removeBuffs('Deathly power');
 			if (hasPerk(PerkLib.Enigma)) statStore.replaceBuffObject({'str.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2))),'tou.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2)))}, 'Enigma', { text: 'Enigma' });
 			if (!hasPerk(PerkLib.Enigma) && statStore.hasBuff('Enigma')) statStore.removeBuffs('Enigma');
@@ -6016,6 +6105,7 @@ use namespace CoC;
 			if (!hasPerk(PerkLib.LaquineMight) && statStore.hasBuff('Laquine Might')) statStore.removeBuffs('Laquine Might');
 			if (hasPerk(PerkLib.WisdomoftheAges)) statStore.replaceBuffObject({'str.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2))),'tou.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2)))}, 'Wisdom of the Ages', { text: 'Wisdom of the Ages' });
 			if (!hasPerk(PerkLib.WisdomoftheAges) && statStore.hasBuff('Wisdom of the Ages')) statStore.removeBuffs('Wisdom of the Ages');
+			if (hasPerk(PerkLib.LustyStrength)) statStore.replaceBuffObject({'tou': lib,'lib': strengthBase}, 'Lusty Strength', { text: 'Lusty Strength' });
 			if (hasPerk(PerkLib.DeathPriest)) statStore.replaceBuffObject({'int.mult':Math.round(wisStat.mult.value)}, 'Death Priest', { text: 'Death Priest' });
 			if (!hasPerk(PerkLib.DeathPriest) && statStore.hasBuff('Death Priest')) statStore.removeBuffs('Death Priest');
 			if (hasPerk(PerkLib.LustingWarrior) && (inHeat || inRut)) statStore.replaceBuffObject({'str.mult':Math.round(libStat.mult.value)}, 'Lusting Warrior', { text: 'Lusting Warrior' });
@@ -6062,6 +6152,9 @@ use namespace CoC;
 				statStore.replaceBuffObject({'str.mult':(Math.round(power))}, 'Absolute Strength', { text: 'Absolute Strength' });
 			}
 			if (!hasPerk(PerkLib.AbsoluteStrength) && statStore.hasBuff('Absolute Strength')) statStore.removeBuffs('Absolute Strength');
+			if (hasPerk(PerkLib.SpiritualAlignment)) statStore.replaceBuffObject({'sens': wis}, 'Spiritual Alignment', { text: 'Spiritual Alignment' });
+			if (hasPerk(PerkLib.MentalAttunement)) statStore.replaceBuffObject({'sens': inte}, 'Mental Attunement', { text: 'Mental Attunement' });
+			if (statStore.hasBuff('Sagittarius Focus')) statStore.replaceBuffObject({"wis.mult":(0.01 * Math.round(lib/2)),"int.mult":(0.01 * Math.round(lib/2))}, 'Sagittarius Focus', { text: 'Sagittarius Focus' });
 			if (hasPerk(PerkLib.StrengthenBody)) {
 				var sbp:Number = perkv1(PerkLib.StrengthenBody);
 				statStore.replaceBuffObject({'str.mult':(0.05 * sbp),'spe.mult':(0.05 * sbp),'tou.mult':(0.05 * sbp)}, 'Strengthen body', { text: 'Strengthen body' });
@@ -6070,7 +6163,6 @@ use namespace CoC;
 				var smp:Number = perkv1(PerkLib.StrengthenMagic);
 				statStore.replaceBuffObject({'int.mult':(0.05 * smp),'wis.mult':(0.05 * smp),'lib.mult':(0.05 * smp)}, 'Strengthen magic', { text: 'Strengthen magic' });
 			}
-			if (statStore.hasBuff('Sagittarius Focus')) statStore.replaceBuffObject({"wis.mult":(0.01 * Math.round(lib/2)),"int.mult":(0.01 * Math.round(lib/2))}, 'Sagittarius Focus', { text: 'Sagittarius Focus' });
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment8)) statStore.replaceBuffObject({'lib.mult':Math.round(intStat.mult.value/2)}, 'Mind rune Imbuement', { text: 'Mind rune Imbuement' });
 			if (!hasStatusEffect(StatusEffects.PhylacteryEnchantment8) && statStore.hasBuff('Mind rune Imbuement')) statStore.removeBuffs('Mind rune Imbuement');
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment9)) statStore.replaceBuffObject({'lib.mult':Math.round(wisStat.mult.value/2)}, 'Soul rune Imbuement', { text: 'Soul rune Imbuement' });
@@ -6952,7 +7044,7 @@ use namespace CoC;
 			if (grantsBonusAttacks && levelUp) {// if it grants bonus attacks
 				var maxAttacksNew:int = melee? (offHand?SceneLib.combat.maxCurrentAttacksOff():SceneLib.combat.maxCurrentAttacksMain()): SceneLib.combat.maxCurrentRangeAttacks();
 				// remember the last value
-				var masteryArrays:Array = melee? masteryBonusAttacksMelee: masteryBonusAttacksRanged;
+				var masteryArrays:Array = melee? (offHand?masteryBonusAttacksMeleeOff:masteryBonusAttacksMeleeMain): masteryBonusAttacksRanged;
 				for each (var masteryArr:Array in masteryArrays) {
 					// if matches index, used right now
 					if (masteryArr[0] == index && masteryArr[1]) {
@@ -6972,7 +7064,7 @@ use namespace CoC;
 			}
 		}
 
-		public function get masteryBonusAttacksMelee():Array {
+		public function get masteryBonusAttacksMeleeMain():Array {
 			return [
 				// Mastery, condition, array of attack boosts (from +1)
 				[Combat.MASTERY_FERAL, isFeralCombat(), [10, 20, 30, 40]],
@@ -6981,8 +7073,19 @@ use namespace CoC;
 				[Combat.MASTERY_SMALL, weapon.isSmall(), [10, 20, 30, 40]],
 				[Combat.MASTERY_LARGE, weapon.isLarge(), [15, 30]],
 				[Combat.MASTERY_MASSIVE, weapon.isMassive(), [30]],
-				//[Combat.MASTERY_RANGED, isBowTypeWeapon() || isThrownTypeWeapon(), []],
-				[Combat.MASTERY_NORMAL, true, [10, 25, 40]] //the last one for "everything else"
+				[Combat.MASTERY_NORMAL, weapon.isMedium(), [10, 25, 40]]
+				//[Combat.MASTERY_NORMAL, true, [10, 25, 40]] //the last one for "everything else"
+			];
+		}
+
+		public function get masteryBonusAttacksMeleeOff():Array {
+			return [
+				// Mastery, condition, array of attack boosts (from +1)
+				[Combat.MASTERY_SMALL, weaponOff.isSmall(), [10, 20, 30, 40]],
+				[Combat.MASTERY_LARGE, weaponOff.isLarge(), [15, 30]],
+				[Combat.MASTERY_MASSIVE, weaponOff.isMassive(), [30]],
+				[Combat.MASTERY_NORMAL, weaponOff.isMedium(), [10, 25, 40]]
+				//[Combat.MASTERY_NORMAL, true, [10, 25, 40]] //the last one for "everything else"
 			];
 		}
 
@@ -6997,8 +7100,8 @@ use namespace CoC;
 			];
 		}
 
-		public function nextBonusAttack(meleeOrRanged:Boolean = true):int {
-			var masteryArrays:Array = meleeOrRanged? masteryBonusAttacksMelee: masteryBonusAttacksRanged;
+		public function nextBonusAttack(meleeOrRanged:Boolean = true, offHand:Boolean = false):int {
+			var masteryArrays:Array = meleeOrRanged? (offHand?masteryBonusAttacksMeleeOff:masteryBonusAttacksMeleeMain): masteryBonusAttacksRanged;
 			for each (var masteryArr:Array in masteryArrays) {
 				if (masteryArr[1]) {
 					for (var bonusPos:int = 0; bonusPos < masteryArr[2].length; ++bonusPos) {
@@ -7012,7 +7115,7 @@ use namespace CoC;
 		}
 
 		public function calculateMaxAttacksForClass(meleeOrRanged:Boolean, classIndex:int):int {
-			var masteryArrays:Array = meleeOrRanged? masteryBonusAttacksMelee: masteryBonusAttacksRanged;
+			var masteryArrays:Array = meleeOrRanged? masteryBonusAttacksMeleeMain: masteryBonusAttacksRanged;
 			var masteryArr:Array = masteryArrays[classIndex];
 
 			var rval:int = 1;
@@ -7027,7 +7130,7 @@ use namespace CoC;
 
 		public function calculateMultiAttacks(meleeOrRanged:Boolean = true, offHandCalc:Boolean = false):int {
 			var rval:Number = 1;
-            var masteryArrays:Array = meleeOrRanged? masteryBonusAttacksMelee: masteryBonusAttacksRanged;
+            var masteryArrays:Array = meleeOrRanged? (offHandCalc?masteryBonusAttacksMeleeOff:masteryBonusAttacksMeleeMain): masteryBonusAttacksRanged;
 			for each (var masteryArr:Array in masteryArrays) {
 				if (masteryArr[1]) {
 					for (var bonusPos:int = 0; bonusPos < masteryArr[2].length; ++bonusPos) {
@@ -7051,6 +7154,11 @@ use namespace CoC;
 				// Flurry of Blows gets +2
 				if(isUnarmedCombat() && hasPerk(PerkLib.FlurryOfBlows)){
 					rval += 2;
+				}
+			} else if (offHandCalc) {
+				// Spear gains a few extra due to Spear Dancing Flurry
+				if(weaponOff.isSpearType() && hasPerk(PerkLib.ELFElvenSpearDancingFlurry1to4) && isElf()) {
+					rval += perkv1(PerkLib.ELFElvenSpearDancingFlurry1to4);
 				}
 			} else {
 				//Bow gain +1 from Elf Master Shot
@@ -7424,6 +7532,39 @@ use namespace CoC;
 			refillHunger(Ammount);
 		}
 
+		public function myconidAbsorbNutrient():void {
+			addPerkValue(PerkLib.AbsorbNutrient, 2, 1);
+			EngineCore.HPChange(((100 + (tou*2)) * 1), true, false);
+			EngineCore.ManaChange(((100 + (inte*2)) * 1));
+			EngineCore.SoulforceChange(((100 + (wis*2)) * 1));
+			EngineCore.changeFatigue(-((100 + (spe*2)) * 1));
+			if (perkv2(PerkLib.AbsorbNutrient) > 125) {
+				outputText("You sigh in delight as you fully absorb the nutrient from your most recent meal into your cap yet unable to evolve further your cap instead release this in the form of a metabolic boost as you feel a surge in your esper ability.");
+				setPerkValue(PerkLib.AbsorbNutrient, 4, 24);
+			}
+			else {
+				outputText("You sigh in delight as you fully absorb the nutrient from your most recent meal into your cap.");
+				if (perkv2(PerkLib.AbsorbNutrient) == 15 || perkv2(PerkLib.AbsorbNutrient) == 25) {
+					horns.count += 2;
+					outputText("Your mushroom cap seems to have increased in size and strangely your mind is starting to clear. Though you struggle to form coherent sentences you are no longer as mindlessly driven as before.\n\n");
+					addPerkValue(PerkLib.AbsorbNutrient, 1, 1);
+				}
+				if (perkv2(PerkLib.AbsorbNutrient) == 35 || perkv2(PerkLib.AbsorbNutrient) == 50 || perkv2(PerkLib.AbsorbNutrient) == 75 || perkv2(PerkLib.AbsorbNutrient) == 100 || perkv2(PerkLib.AbsorbNutrient) == 125) {
+					horns.count += 2;
+					outputText("Your mushroom cap seems to have grown in size again and you finally are back to a normal level of thinking though occasional lusty thoughts still cloud your mind.\n\n");
+					outputText("Your cap and frill begin to change color to ");
+					if (perkv2(PerkLib.AbsorbNutrient) == 35) outputText("red");
+					if (perkv2(PerkLib.AbsorbNutrient) == 50) outputText("yellow");
+					if (perkv2(PerkLib.AbsorbNutrient) == 75) outputText("green");
+					if (perkv2(PerkLib.AbsorbNutrient) == 100) outputText("blue");
+					if (perkv2(PerkLib.AbsorbNutrient) == 125) outputText("royal purple");
+					outputText(" as some fluids pumps down from your cap directly into your brain. Your consciousness, albeit still horny feel clearer and far more smarter.\n\n");
+					addPerkValue(PerkLib.AbsorbNutrient, 1, 1);
+				}
+			}
+			outputText("\n\n");
+		}
+
 		public function slimeGrowth():void {
 			if (hasStatusEffect(StatusEffects.SlimeCraving)) {
 				if (perkv1(IMutationsLib.SlimeMetabolismIM) >= 3) {
@@ -7455,6 +7596,7 @@ use namespace CoC;
 		{
 			if (Wasfluidinvolved && fluidtype && fluidtype.toLowerCase() != "no") {
 				slimeFeed();
+				if (hasPerk(PerkLib.AbsorbNutrient)) myconidAbsorbNutrient();
 				if (isGargoyle() && hasPerk(PerkLib.GargoyleCorrupted)) refillGargoyleHunger(30);
 				if ((isRace(Races.JIANGSHI) || isRace(Races.MUMMY)) && hasPerk(PerkLib.EnergyDependent)) EnergyDependentRestore();
 				if (hasPerk(PerkLib.DemonEnergyThirst)) {
@@ -7644,6 +7786,18 @@ use namespace CoC;
 			}
 			//until we get a real harpy knock up
 			else if (isAlraune()) knockUp(PregnancyStore.PREGNANCY_ALRAUNE, PregnancyStore.INCUBATION_ALRAUNE);
+		}
+
+		public function updateBirthedCount():void {
+			if (!hasStatusEffect(StatusEffects.Birthed)) {
+				createStatusEffect(StatusEffects.Birthed,1,0,0,0);
+			} else {
+				addStatusValue(StatusEffects.Birthed,1,1);
+				if(!hasPerk(PerkLib.BroodMother) && statusEffectv1(StatusEffects.Birthed) >= 10) {
+					EngineCore.outputText("\n<b>You have gained the Brood Mother perk</b> (Pregnancies progress twice as fast as a normal woman's).\n");
+					createPerk(PerkLib.BroodMother,0,0,0,0);
+				}
+			}
 		}
 
 		protected override function maxHP_base():Number {
@@ -7889,6 +8043,7 @@ use namespace CoC;
 			if (flags[kFLAGS.AMILY_FOLLOWER] == 1) {
 				flags[kFLAGS.AMILY_FOLLOWER] = 0;
 				flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] = 1;
+				flags[kFLAGS.AMILY_WARNING] = 1;
 				flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 0;
 				if (hasStatusEffect(StatusEffects.CombatFollowerAmily)) removeStatusEffect(StatusEffects.CombatFollowerAmily);
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "Amily") flags[kFLAGS.PLAYER_COMPANION_1] = "";
@@ -7896,8 +8051,8 @@ use namespace CoC;
 				if (flags[kFLAGS.PLAYER_COMPANION_3] == "Amily") flags[kFLAGS.PLAYER_COMPANION_3] = "";
 			}
 			if (flags[kFLAGS.KIHA_FOLLOWER] > 0) {
-				flags[kFLAGS.KIHA_CORRUPTION_BITCH] == 1;
-				if (hasStatusEffect(StatusEffects.CombatFollowerAmily)) removeStatusEffect(StatusEffects.CombatFollowerAmily);
+				flags[kFLAGS.KIHA_CORRUPTION_BITCH] = 1;
+				if (hasStatusEffect(StatusEffects.CombatFollowerKiha)) removeStatusEffect(StatusEffects.CombatFollowerKiha);
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "Kiha") flags[kFLAGS.PLAYER_COMPANION_1] = "";
 				if (flags[kFLAGS.PLAYER_COMPANION_2] == "Kiha") flags[kFLAGS.PLAYER_COMPANION_2] = "";
 				if (flags[kFLAGS.PLAYER_COMPANION_3] == "Kiha") flags[kFLAGS.PLAYER_COMPANION_3] = "";
@@ -7947,6 +8102,7 @@ use namespace CoC;
 				if (dlust > 0 && scale) dlust *= EngineCore.lustPercent() / 100;
 				if (dlib > 0 && hasPerk(PerkLib.PurityBlessing)) dlib *= 0.75;
 				if (dcor > 0 && hasPerk(PerkLib.PurityBlessing)) dcor *= 0.5;
+				if (dcor > 0 && shield == game.shields.PRIDWEN) dcor *= 0.5;
 				if (dcor > 0 && hasPerk(PerkLib.PureAndLoving)) dcor *= 0.75;
 				if (dcor > 0 && weapon == game.weapons.HNTCANE) dcor *= 0.5;
 				if (hasPerk(PerkLib.AscensionMoralShifter)) dcor *= 1 + (perkv1(PerkLib.AscensionMoralShifter) * 0.2);
@@ -8135,6 +8291,7 @@ use namespace CoC;
 
 		public override function takeLustDamage(lustDmg:Number, display:Boolean = false, applyRes:Boolean = true):Number{
 			var x:Number = super.takeLustDamage(lustDmg, display, applyRes);
+			if (perkv1(IMutationsLib.MyconidSporeIM) >= 2 && hasStatusEffect(StatusEffects.SporeCloud)) lustDmg = Math.round(lustDmg * 1.5);
 			raijuSuperchargedCheck();
 			EngineCore.statScreenRefresh();
 			return x;

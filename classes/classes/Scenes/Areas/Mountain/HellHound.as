@@ -45,17 +45,17 @@ public class HellHound extends Monster
 		}
 		protected function hellhoundScent():void {
 			if(player.hasStatusEffect(StatusEffects.NoFlee)) {
-				if(spe == 100) {
+				if(spe > 300) {
 					hellhoundFire();
 					return;
 				}
 				else {
 					outputText("The hellhound sniffs your scent again, seemingly gaining more and more energy as he circles faster around you.");
-					speStat.core.value = 100;	
+					speStat.core.value += 135;	
 				}
 			}
 			else {
-				speStat.core.value += 40;
+				speStat.core.value += 135;
 				outputText("The hellhound keeps his four eyes on you as he sniffs the ground where you were moments ago. He raises his heads back up and gives you a fiery grin - he seems to have acquired your scent!  It'll be hard to get away now...");
 				player.createStatusEffect(StatusEffects.NoFlee,0,0,0,0);
 			}
@@ -147,7 +147,5 @@ public class HellHound extends Monster
 			this.createPerk(PerkLib.EnemyBeastOrAnimalMorphType, 0, 0, 0, 0);
 			checkMonster();
 		}
-
 	}
-
 }

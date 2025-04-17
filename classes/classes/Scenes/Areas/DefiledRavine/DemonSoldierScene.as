@@ -50,10 +50,11 @@ public class DemonSoldierScene extends BaseContent {
             addButtonDisabled(0, "Get Oral", "You're not horny enough to consider doing that.");
         }
         //Eliminate the demon threat.
-        if (hpVictory) addButton(3, "Kill " + monster.mf("Him", "Her"), killTheSoldier);
-        else addButtonDisabled(3, "Kill " + monster.mf("Him", "Her"), "You must have beaten the demon by reducing [monster his] HP to zero.");
-        //Nothing? Fuck off kindly.
-        addButton(4, "Leave", cleanupAfterCombat);
+        if (hpVictory) addButton(5, "Kill " + monster.mf("Him", "Her"), killTheSoldier);
+        else addButtonDisabled(5, "Kill " + monster.mf("Him", "Her"), "You must have beaten the demon by reducing [monster his] HP to zero.");
+        addButtonIfTrue(6, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+		//Nothing? Fuck off kindly.
+        addButton(14, "Leave", cleanupAfterCombat);
     }
 
     private function giveTheDemonGoodFacial():void {

@@ -840,13 +840,19 @@ public class ValaScene extends BaseContent implements SaveableState
 			player.skinType = Skin.PLAIN;
 			player.skinAdj = "flawless";
 			if (player.hasCock()) player.removeCock(0, player.cockTotal());
+			player.balls = 0;
+			player.ballSize = 1;
 			player.skin.coverage = Skin.COVERAGE_NONE;
-			var growth:int = 1 + rand(3);
-			if (player.breastRows.length > 0) {
-				if (player.breastRows[0].breastRating < 2) growth++;
-				if (player.breastRows[0].breastRating < 3 && rand(2) == 0) growth++;
-				if (player.breastRows[0].breastRating < 4 && rand(3) == 0) growth++;
+			while (player.breastRows.length > 1)
+			{
+				player.removeBreastRow(1, 1);
 			}
+			if (player.breastRows.length == 0) player.createBreastRow();
+			var growth:int = 1 + rand(3);
+			if (player.breastRows[0].breastRating < 2) growth++;
+			if (player.breastRows[0].breastRating < 3 && rand(2) == 0) growth++;
+			if (player.breastRows[0].breastRating < 4 && rand(3) == 0) growth++;
+			player.growTits(growth, 1, false, 3);
 			player.createPerk(PerkLib.TransformationImmunity2, 4, 0, 0, 0);
 			player.updateRacialParagon(Races.FAIRY);
 			IMutationsLib.FeyArcaneBloodstreamIM.trueMutation = true;

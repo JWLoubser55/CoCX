@@ -1516,14 +1516,7 @@ public class Pregnancy extends NPCAwareContent {
             if(player.fertility < 15) player.fertility++;
             if(player.fertility < 25) player.fertility++;
             if(player.fertility < 40) player.fertility++;
-            if(!player.hasStatusEffect(StatusEffects.Birthed)) player.createStatusEffect(StatusEffects.Birthed,1,0,0,0);
-            else {
-                player.addStatusValue(StatusEffects.Birthed,1,1);
-                if(!player.hasPerk(PerkLib.BroodMother) && player.statusEffectv1(StatusEffects.Birthed) >= 10) {
-                    EngineCore.outputText("\n<b>You have gained the Brood Mother perk</b> (Pregnancies progress twice as fast as a normal woman's).\n");
-                    player.createPerk(PerkLib.BroodMother,0,0,0,0);
-                }
-            }
+			player.updateBirthedCount();
             if(!player.hasVagina()) {
                 outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold: a vagina");
                 player.createVagina();
@@ -2203,14 +2196,7 @@ public class Pregnancy extends NPCAwareContent {
             if(player.fertility < 15) player.fertility++;
             if(player.fertility < 25) player.fertility++;
             if(player.fertility < 40) player.fertility++;
-            if(!player.hasStatusEffect(StatusEffects.Birthed)) player.createStatusEffect(StatusEffects.Birthed,1,0,0,0);
-            else {
-                player.addStatusValue(StatusEffects.Birthed,1,1);
-                if(!player.hasPerk(PerkLib.BroodMother) && player.statusEffectv1(StatusEffects.Birthed) >= 10) {
-                    EngineCore.outputText("\n<b>You have gained the Brood Mother perk</b> (Pregnancies progress twice as fast as a normal woman's).\n");
-                    player.createPerk(PerkLib.BroodMother,0,0,0,0);
-                }
-            }
+            player.updateBirthedCount();
             if(player.vaginas.length < 2) {
                 outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold: a vagina");
                 player.createVagina();

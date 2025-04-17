@@ -28,7 +28,7 @@ import classes.internals.WeightedDrop;
 		//ATTACK TWO: FIRE BREATH
 		public function phoenixSquadFireBreath():void {
 			//(Effect: One heavy-damage attack)
-			var damage:Number = ((inte + wis) * 1.2) + rand(80);
+			var damage:Number = ((inte + wis) * 3) + rand(400);
 			outputText("Suddenly, the shield wall parts, revealing two particularly muscular members of the platoon with raging erections.  Before you can react, they rear back, light erupting from their throats as they unleash a burst of fire-breath right at you.  You dive, but are still partially caught in the inferno.");
 			if (player.hasStatusEffect(StatusEffects.Blizzard)) {
 				player.addStatusValue(StatusEffects.Blizzard, 1, -1);
@@ -43,7 +43,7 @@ import classes.internals.WeightedDrop;
 		public function phoenixSquadLustbang():void {
 			outputText("\"<i>LUSTBANGS OUT!</i>\" one of the rear-most quasi-phoenixes shouts, causing all the other warriors to duck down behind their shields.  Oh, shit!  Several large glass spheres are thrown out from behind the shield wall, immediately exploding into a great pink cloud.  You cough and wave your arms, but by the time the cloud has dissipated, you feel lightheaded and horny. Despite yourself...Those quasi-Phoenixes aren't bad looking... and their cocks and cunts are tempting.");
 			//(Effect: Large lust increase)
-			player.takeLustDamage(Math.round(75+(player.lib*1.2)), true);
+			player.takeLustDamage(Math.round(375+(player.lib*5)), true);
 		}
 		
 		override protected function performCombatAction():void
@@ -102,19 +102,19 @@ import classes.internals.WeightedDrop;
 			this.bodyColor = "red";
 			this.hairColor = "black";
 			this.hairLength = 15;
-			initStrTouSpeInte(253, 204, 225, 120);
-			initWisLibSensCor(110, 151, 103, 10);
+			initStrTouSpeInte(759, 612, 675, 360);
+			initWisLibSensCor(330, 302, 206, 10);
 			this.weaponName = "spears";
 			this.weaponVerb="stab";
-			this.weaponAttack = 100;
+			this.weaponAttack = 200;
 			this.armorName = "armor";
-			this.armorDef = 104;
-			this.armorMDef = 24;
-			this.bonusHP = 1500;
-			this.bonusLust = 295;
+			this.armorDef = 1040;
+			this.armorMDef = 240;
+			this.bonusHP = 5000;
+			this.bonusLust = 586;
 			this.lust = 20;
 			this.lustVuln = .15;
-			this.level = 41;
+			this.level = 78;
 			this.gems = rand(40)+300;
 			this.additionalXP = 300;
 			this.horns.type = Horns.DRACONIC_X2;
