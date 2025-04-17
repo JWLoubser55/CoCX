@@ -2558,6 +2558,19 @@ public class Creature extends Utils
 			}
 		}
 
+		public function cockVsClitCockLenghtNumber(i_creature:Creature, i_cockIndex:Number =0):Number{
+			if (i_creature.cocks.length >= 1){
+				return i_creature.cocks[i_cockIndex].cockLength;
+			}
+			if (i_creature.vaginas.length >= 0){
+				return i_creature.clitLength;
+			}
+			else{
+				CoC_Settings.error("<B>Error: No vagina or cock availlable</b>");
+				return 1;
+			}
+		}
+
 		public function cockAdjective(index:Number = -1):String {
 			if (index < 0) index = biggestCockIndex();
 			var isPierced:Boolean = (cocks.length == 1) && (cocks[index].isPierced); //Only describe as pierced or sock covered if the creature has just one cock
