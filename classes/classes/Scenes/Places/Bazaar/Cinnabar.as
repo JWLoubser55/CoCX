@@ -350,7 +350,7 @@ private function cinnabarHuger():void {
 	outputText(" to prod at your " + assholeDescript() + ", sliding in to push your prostate.  She hits it hard enough to make you pump cum with enough force to distort her already-ballooned body, and you go into an orgasmic frenzy, dragging your " + cockDescript(x) + " back to her entrance before jamming in all ");
 	outputText(player.cockVsClitCockLenght(player, x) + " inches");
 	outputText(" all over again.");
-	if(player.cockVsClitCockLenght(player, x) >= 60) outputText("  There's no way this should be possible, but it's happening and you couldn't be happier.");
+	if(player.cockVsClitCockLenghtNumber(player, x) >= 60) outputText("  There's no way this should be possible, but it's happening and you couldn't be happier.");
 	outputText("\n\n");
 
 	outputText("Her body is squirming, writhing from the complete and total dick-domination.  You push her hands off your " + cockDescript(x) + ", and jack yourself off while you cum inside her, watching with fascination as each blast bulges her belly before it vanishes inside her with a wet slosh.  Her huge, stretched lips leak like a sieve, splattering girlcum everywhere while your [balls] pack");
