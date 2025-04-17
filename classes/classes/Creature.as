@@ -2521,7 +2521,13 @@ public class Creature extends Utils
 		}
 
 		public function cockDescript(cockIndex:int = 0):String {
-			return Appearance.cockDescript(this, cockIndex);
+			if (!hasCock()){
+				return Appearance.vaginaCockDescript(this);
+			}
+			else
+			{
+				return Appearance.cockDescript(this, cockIndex);
+			}
 		}
 
 		public function cockAdjective(index:Number = -1):String {

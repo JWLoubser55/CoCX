@@ -1258,6 +1258,25 @@ public class Appearance extends Utils
 			return description;
 		}
 
+		public static function vaginaCockDescript(i_creature:Creature, i_vaginaIndex:Number = 0, forceDesc:Boolean=false):String{
+			if (i_vaginaIndex > (i_creature.vaginas.length - 1)) {
+				CoC_Settings.error("<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaCockDescript()</b>");
+				return "<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaCockDescript()</b>";
+			}
+			if (i_vaginaIndex < 0) {
+				CoC_Settings.error("<B>Error: Invalid vaginaNum (" + i_vaginaIndex + ") passed to vaginaCockDescript()</b>");
+				return "<B>Error: Invalid vaginaNum (" + i_vaginaIndex + ") passed to vaginaCockDescript()</b>";
+			}
+			if (i_creature.vaginas.length <= 0) {
+				CoC_Settings.error("ERROR: Called vagina Cock Description with no vaginas");
+				return "ERROR: Called vaginaCockDescript with no vaginas";
+			}
+			var description:String = "";
+			description += clitDescription(i_creature);
+			description += " " + i_creature.clitLength < 1.5 + " inches";
+			if (i_creature.vaginaType() == 20) description += " glowing fungal clit cock";
+		}
+
 		public static function vaginaDescript(i_creature:Creature, i_vaginaIndex:Number = 0, forceDesc:Boolean=false):String {
 			if (i_vaginaIndex > (i_creature.vaginas.length - 1)) {
 				CoC_Settings.error("<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaDescript()</b>");
