@@ -2536,7 +2536,26 @@ public class Creature extends Utils
 		}
 
 		public function cockDescript(cockIndex:int = 0):String {
-			return Appearance.cockDescript(this, cockIndex);
+			if (!hasCock()){
+				return Appearance.vaginaCockDescript(this);
+			}
+			else
+			{
+				return Appearance.cockDescript(this, cockIndex);
+			}
+		}
+
+		public function cockVsClitCockLenght(i_creature:Creature, i_cockIndex:Number =0):String{
+			if (i_creature.cocks.length >= 1){
+				return ""+num2Text(Math.round(i_creature.cocks[i_cockIndex].cockLength))+"";
+			}
+			if (i_creature.vaginas.length >= 0){
+				return ""+i_creature.clitLength+"";
+			}
+			else{
+				CoC_Settings.error("<B>Error: No vagina or cock availlable</b>");
+				return "<B>Error: No vagina or cock availlable for cockVsClitCockLenght</b>";
+			}
 		}
 
 		public function cockAdjective(index:Number = -1):String {
@@ -4198,8 +4217,14 @@ public class Creature extends Utils
 
 		public function cockHead(cockNum:int = 0):String {
 			if (cockNum < 0 || cockNum > cocks.length - 1) {
-				CoC_Settings.error("");
-				return "ERROR";
+				if (hasCock()){
+					if(vaginaType() == 20) return "mushroom-like tip";
+					else return "ERROR this cock clit head lack a description!";
+				}
+				else{
+					CoC_Settings.error("");
+					return "ERROR";
+				}
 			}
 			switch (cocks[cockNum].cockType) {
 				case CockTypesEnum.CAT:
