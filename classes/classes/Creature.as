@@ -4189,8 +4189,16 @@ public class Creature extends Utils
 
 		public function cockHead(cockNum:int = 0):String {
 			if (cockNum < 0 || cockNum > cocks.length - 1) {
-				CoC_Settings.error("");
-				return "ERROR";
+				if (hasCock()){
+					if(vaginaType() == 20){
+						if(vaginaType() == 20) return "mushroom-like tip";
+						else return "ERROR this cock clit head lack a description!";
+					}
+				}
+				else{
+					CoC_Settings.error("");
+					return "ERROR";
+				}
 			}
 			switch (cocks[cockNum].cockType) {
 				case CockTypesEnum.CAT:
