@@ -24,7 +24,7 @@ package classes.Perks
 		public function AbsorbNutrientPerk() 
 		{
 			super("Absorb nutrient", "Absorb nutrient",
-					"NOT RELEVANT TEXT");
+					"You are currently an ordinary matango with a small mushroom cap.");
 		}
 		
 	}

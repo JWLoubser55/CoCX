@@ -310,8 +310,8 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Myconid Collective Consciousness (Final Form). Req. Myconid Collective Consciousness (Evolved) and lvl 90+. Effects: Add 50% of your toughness to your spellcasting and Esper score. Take 75% less damage from mental attacks and Esper ability. Gain 2% mana regeneration. Your own Esper abilities are 25% stronger.\n");
 			outputText("-New mutation perk: Plant Chlorophyll. Req. having free fat tissue mutation slot, plant races. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 5% while outdoors during daytime.\n");
 			outputText("-New mutation perk: Plant Chlorophyll (Primitive). Req. Plant Chlorophyll and lvl 30+. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 10% while outdoors during daytime. Plant abilities are increased by 20%.\n");
-			outputText("-\n");//New mutation perk: Plant Chlorophyll (Evolved). Req. Plant Chlorophyll (Primitive) and lvl 60+. Effects: 
-			outputText("-\n");//New mutation perk: Plant Chlorophyll (Final Form). Req. Plant Chlorophyll (Evolved) and lvl 90+. Effects: 
+			outputText("-New mutation perk: Plant Chlorophyll (Evolved). Req. Plant Chlorophyll (Primitive) and lvl 60+. Effects: For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by 15% while outdoors during daytime. Plant abilities are increased by 30%. Synthesis is 20% stronger.\n");
+			outputText("-New mutation perk: Plant Chlorophyll (Final Form). Req. Plant Chlorophyll (Evolved) and lvl 90+. Effects: For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by 20% while outdoors during daytime. Plant abilities are increased by 50%. Synthesis is 30% stronger and can be auto cast.\n");
 			outputText("-New key Item (by Liadri): Grenade Launcher - req. Toolbelt - Let you use your grenade gadgets while siting comfortably in your goblin mech.\n");
 			outputText("-New mutation perk: Fungus Trama. Req. having free fat tissue mutation slot, Myconid race. Effects: For fungal creatures increase damage reduction by 5%.\n");
 			outputText("-New mutation perk: Fungus Trama (Primitive). Req. Fungus Trama. and lvl 30+. Effects: For fungal creatures increase damage reduction by 10%. While indoor or at night time increases regeneration by 1%.\n");
@@ -325,8 +325,8 @@ public class Changelog extends BaseContent
 			outputText("-History: Fortune perk would give Traveling Merchant Outfit instead of default Comfortable Clothes. Also won't give any extra gems now.\n");
 			outputText("-New event perk: Fungal Nobility. Gained by becoming Myconid. Effects: You can enslave and order matango around, gaining a small entourage of mushroom girls at your service. You can order around up to your shroom girl score in numbers. Your ESP abilities grow with the number of matango following you (1 percent per matango).\n");
 			outputText("-New option in Phylactery Enchantment: Corruption rune Imbuement -> Add your libido to your magic modifier but take lust damage when spellcasting. (As sadist for lust dmg)\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Masochist perk effect changed to reduce dmg by 40% when having 40 or more core lib stat value but the lust amount taken changed to 1% of max lust. Sadist perk giving 200% dmg increase at cost of gaining 3% of max lust. Sadomasochism effect increase by 200% not 20% when req. are meet.\n");
+			outputText("-Telekinetic grab m. special cost changed to 200 fatigue and it cooldown set at 10 turns. When having Telekinetic Grapple perk from Esper job fatigue cost is 50% lower and cooldown 2 turns shorter.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

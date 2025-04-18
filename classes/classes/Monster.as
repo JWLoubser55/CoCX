@@ -1050,12 +1050,12 @@ import classes.Scenes.Combat.CombatAbilities;
 			var multShared:Number = 0;
 			//--PERKS--
 			//Take damage you masochist!
-			if (hasPerk(PerkLib.Masochist) && lib >= 60) {
-				multShared += 20;
-				lust += (2 * (1 + newGamePlusMod()));
+			if (hasPerk(PerkLib.Masochist) && lib >= 40) {
+				multShared += 40;
+				lust += Math.round(maxLust()*0.01);
 				if(armorName == "Scandalous Succubus Clothing") {
-					multShared += 20;
-					lust += (2 * (1 + newGamePlusMod()));
+					multShared += 40;
+					lust += Math.round(maxLust()*0.01);
 				}
 			}
 			if (hasPerk(PerkLib.FenrirSpikedCollar)) {
@@ -4188,7 +4188,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 			if(player.hasStatusEffect(StatusEffects.QueenBind)) {
 				outputText("You're utterly restrained by the Harpy Queen's magical ropes!\n\n");
-				if(flags[kFLAGS.PC_FETISH] >= 2) player.dynStats("lus", 3);
+				if(flags[kFLAGS.PC_FETISH] >= 2) player.dynStats("lus", Math.round(player.maxLust()*0.03));
 			}
 			if(this is SecretarialSuccubus || this is MilkySuccubus) {
 				if(player.lust < (player.maxLust() * 0.45)) outputText("There is something in the air around your opponent that makes you feel warm. ");

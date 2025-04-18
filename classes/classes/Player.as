@@ -3326,13 +3326,13 @@ use namespace CoC;
 			if (mult < 50) mult = 50;
 			//--PERKS--
 			//Take damage you masochist!
-			if (hasPerk(PerkLib.Masochist) && lib >= 60) {
-				mult -= 20;
+			if (hasPerk(PerkLib.Masochist) && libStat.core.value >= 40) {
+				mult -= 40;
 				if(armorName == "Scandalous Succubus Clothing"){
-					mult -= 20;
-					dynStats("lus", (2 * (1 + game.player.newGamePlusMod())));
+					mult -= 40;
+					dynStats("lus", Math.round(maxLust()*0.01));
 				}
-				dynStats("lus", (2 * (1 + game.player.newGamePlusMod())));
+				dynStats("lus", Math.round(maxLust()*0.01));
 			}
 			if (perkv1(IMutationsLib.DrakeBonesIM) >= 2) {
 				mult -= 5;
@@ -7400,6 +7400,12 @@ use namespace CoC;
 			EngineCore.doNext(EventParser.playerMenu);
 		}
 
+		public function plantChlorophyllBoost():Number {
+			var pChB:Number = (0.1 * perkv1(IMutationsLib.PlantChlorophyllIM));
+			if (perkv1(IMutationsLib.PlantChlorophyllIM) >= 4) pChB += 0.1;
+			return pChB;
+		}
+
 		public function maxTeaseLevel():Number {
 			var maxLevel:Number = 16;
 			if (hasPerk(PerkLib.SuperSensual)) {
@@ -7833,8 +7839,8 @@ use namespace CoC;
 
 		public function sadomasochismBoost():Number {
 			var sadomasochismBoost:Number = 1;
-			if (HP < maxHP() * 0.25) sadomasochismBoost += 0.2;
-			if (lust > maxLust() * 75) sadomasochismBoost += 0.2;
+			if (HP < maxHP() * 0.25) sadomasochismBoost += 2;
+			if (lust > maxLust() * 75) sadomasochismBoost += 2;
 			return sadomasochismBoost;
 		}
 

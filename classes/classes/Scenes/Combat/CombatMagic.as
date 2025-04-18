@@ -445,8 +445,8 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.VegetalAffinity)) mod += 0.5;
 		if (player.hasPerk(PerkLib.GreenMagic)) mod += 1;
 		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
-			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) mod += 1.2;
-			else mod += 1;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) mod += player.plantChlorophyllBoost();
+			mod += 1;
 		}
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
@@ -960,7 +960,7 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) HPChange((player.maxHP() * numberOfProcs * five), false, true);
 			else HPChange((player.maxHP() * numberOfProcs * five), false, false);
 		}
-		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dynStats("lus", 3);// && CombatAbility.TAG_DAMAGING
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dynStats("lus", Math.round(player.maxLust()*0.03));
 	}
 	
 	public function brutalSpellsEffect(display:Boolean = true):void {

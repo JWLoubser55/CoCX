@@ -646,8 +646,8 @@ public class PerkLib
 				"Enable the use of Psychic Bolt. (scales off Sensitivity)",
 				"You've chosen the 'Psychic Bolt' perk. Enable the use of Psychic Bolt. (scales off Sensitivity)");
 		public static const TelekineticGrapple:PerkType = mk("Telekinetic Grapple", "Telekinetic Grapple",
-				"Enable the use of Telekinetic Grab (with 2x shorter than normal cooldown).",
-				"You've chosen the 'Telekinetic Grapple' perk. Enable the use of Telekinetic Grab (with 2x shorter than normal cooldown).");
+				"Enable the use of Telekinetic Grab (with 2 turns shorter than normal cooldown and 50% less fatigue needed).",
+				"You've chosen the 'Telekinetic Grapple' perk. Enable the use of Telekinetic Grab (with 2 turns shorter than normal cooldown and 50% less fatigue needed).");
 		public static const Pyrokinesis:PerkType = mk("Pyrokinesis", "Pyrokinesis",
 				"As psychic you have gained ability to manipulate or control fire.",
 				"You've chosen the 'Pyrokinesis' perk. As psychic you have gained ability to manipulate or control fire.");
@@ -2638,8 +2638,8 @@ public class PerkLib
 				"You can now use sneak attack with ranged weapon. (bows and sniper firearms)",
 				"You've chosen the 'Marked for death' perk. You can now use sneak attack with ranged weapon. (bows and sniper firearms)");
 		public static const Masochist:PerkType = mk("Masochist", "Masochist",
-				"Take 20% less physical damage but gain lust when you take damage.",
-				"You've chosen the 'Masochist' perk, reducing the damage you take but raising your lust each time!  This perk only functions while your libido is at or above 60!");
+				"Take 40% less physical damage but gain lust when you take damage.  This perk only functions while your libido core value is at or above 40!",
+				"You've chosen the 'Masochist' perk, reducing the damage you take but raising your lust each time!  This perk only functions while your libido core value is at or above 40!");
 		public static const MasterAllRounderEducation:PerkType = mk("Master All-Rounder Education", "All-Rounder Education ( Master )",
 				"Limit of advanced job you can learn is increased by 3.",
 				"You've chosen the 'All-Rounder Education ( Master )' perk, expanding the amount of advanced jobs you can learn. (+3)");
@@ -3089,10 +3089,10 @@ public class PerkLib
 				"Increases chances of escaping combat.",
 				"You've chosen the 'Runner' perk, increasing your chances to escape from your foes when fleeing!");
 		public static const Sadist:PerkType = mk("Sadist", "Sadist",
-				"Deal 20% more damage, but gain lust at the same time.",
-				"You've chosen the 'Sadist' perk, increasing damage by 20 percent but causing you to gain lust from dealing damage.");
+				"Deal 200% more damage, but gain 3% lust at the same time.",
+				"You've chosen the 'Sadist' perk, increasing damage by 200 percent but causing you to gain 3% lust from dealing damage.");
 		public static const Sadomasochism:PerkType = mk("Sadomasochism", "Sadomasochism",
-				"You are aroused by the helplessness of your opponent just as much as you get aroused in getting hit. This causes your tease to become stronger when you are close to defeat. (PC gains +20% tease damage with low health and +20% tease damage with high arousal to either PC or the target.)",
+				"You are aroused by the helplessness of your opponent just as much as you get aroused in getting hit. This causes your tease to become stronger when you are close to defeat. (PC gains +200% tease damage with low health and +200% tease damage with high arousal to either PC or the target.)",
 				"You've chosen the 'Sadomasochism' perk. You are aroused by the helplessness of your opponent just as much as you get aroused in getting hit. This causes your tease to become stronger when you are close to defeat.");
 		public static const Saint:PerkType = mk("Saint", "Saint",
 				"You go on periodic journeys to spread your faith and help those in need. These constant pilgrimages decrease your minimum libido and boost lust resistance. (-2 min libido/+5% to lust resistance)",

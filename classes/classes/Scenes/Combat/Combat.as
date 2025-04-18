@@ -3442,7 +3442,7 @@ public class Combat extends BaseContent {
 					if (player.hasPerk(PerkLib.VegetalAffinity)) lustDMG *= 1.5;
 					if (player.hasPerk(PerkLib.GreenMagic)) lustDMG *= 2;
 					if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
-						if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) lustDMG *= 2.4;
+						if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) lustDMG *= ((1 + player.plantChlorophyllBoost()) * 2);
 						else lustDMG *= 2;
 					}
 					if (player.armor == armors.ELFDRES && player.isElf()) lustDMG *= 2;
@@ -6629,18 +6629,18 @@ public class Combat extends BaseContent {
             damage += player.str;
 			damage += scalingBonusStrength() * 0.2;
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
-				damage += player.tou * 0.2;
-				damage += scalingBonusToughness() * 0.05;
-				damage += player.str * 0.2;
-				damage += scalingBonusStrength() * 0.05;
+				damage += player.tou * player.plantChlorophyllBoost();
+				damage += scalingBonusToughness() * 0.2 * player.plantChlorophyllBoost();
+				damage += player.str * player.plantChlorophyllBoost();
+				damage += scalingBonusStrength() * 0.2 * player.plantChlorophyllBoost();
 			}
         }
         else if (IsFeralCombat && player.hasPerk(PerkLib.VerdantMight)) {
 			damage += player.tou;
 			damage += scalingBonusToughness() * 0.2;
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
-				damage += player.tou * 0.2;
-				damage += scalingBonusToughness() * 0.04;
+				damage += player.tou * player.plantChlorophyllBoost();
+				damage += scalingBonusToughness() * 0.2 * player.plantChlorophyllBoost();
 			}
 		}
 		else {
@@ -6900,18 +6900,18 @@ public class Combat extends BaseContent {
             damage += player.str;
 			damage += scalingBonusStrength() * 0.25;
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
-				damage += player.tou * 0.2;
-				damage += scalingBonusToughness() * 0.05;
-				damage += player.str * 0.2;
-				damage += scalingBonusStrength() * 0.05;
+				damage += player.tou * player.plantChlorophyllBoost();
+				damage += scalingBonusToughness() * 0.25 * player.plantChlorophyllBoost();
+				damage += player.str * player.plantChlorophyllBoost();
+				damage += scalingBonusStrength() * 0.25 * player.plantChlorophyllBoost();
 			}
         }
         else if (player.hasPerk(PerkLib.VerdantMight)){
             damage += player.tou;
             damage += scalingBonusToughness() * 0.25;
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
-				damage += player.tou * 0.2;
-				damage += scalingBonusToughness() * 0.05;
+				damage += player.tou * player.plantChlorophyllBoost();
+				damage += scalingBonusToughness() * 0.25 * player.plantChlorophyllBoost();
 			}
         }
         else{
@@ -8979,18 +8979,18 @@ public class Combat extends BaseContent {
             damage += player.str;
 			damage += scalingBonusStrength() * 0.25;
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
-				damage += player.tou * 0.2;
-				damage += scalingBonusToughness() * 0.05;
-				damage += player.str * 0.2;
-				damage += scalingBonusStrength() * 0.05;
+				damage += player.tou * player.plantChlorophyllBoost();
+				damage += scalingBonusToughness() * 0.25 * player.plantChlorophyllBoost();
+				damage += player.str * player.plantChlorophyllBoost();
+				damage += scalingBonusStrength() * 0.25 * player.plantChlorophyllBoost();
 			}
         }
         else if (player.hasPerk(PerkLib.VerdantMight)){
             damage += player.tou;
             damage += scalingBonusToughness() * 0.25;
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {
-				damage += player.tou * 0.2;
-				damage += scalingBonusToughness() * 0.05;
+				damage += player.tou * player.plantChlorophyllBoost();
+				damage += scalingBonusToughness() * 0.25 * player.plantChlorophyllBoost();
 			}
         }
         else{
@@ -10203,12 +10203,12 @@ public class Combat extends BaseContent {
         if (monster.hasStatusEffect(StatusEffects.ATranscendentSoulField)) damage *= (1 / monster.statusEffectv1(StatusEffects.ATranscendentSoulField));
         if (monster.hasStatusEffect(StatusEffects.NecroticRot)) damage *= (1 + (0.25 * monster.statusEffectv1(StatusEffects.NecroticRot)));
         if (player.hasPerk(PerkLib.Sadist)) {
-            damage *= 1.2;
+            damage *= 3;
             if (player.armor == armors.SCANSC) {
-                damage *= 1.2;
-                dynStats("lus", 3);
+                damage *= 3;
+                dynStats("lus", Math.round(player.maxLust()*0.03));
             }
-            dynStats("lus", 3);
+            dynStats("lus", Math.round(player.maxLust()*0.03));
         }
 		if (player.hasPerk(PerkLib.EclipticInfusion) && player.perkv3(PerkLib.ElementalBody) > 0) {
 			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.cor);
@@ -10281,12 +10281,12 @@ public class Combat extends BaseContent {
         if (monster.hasStatusEffect(StatusEffects.TranscendentSoulField)) damage *= (1 / monster.statusEffectv1(StatusEffects.TranscendentSoulField));
         if (monster.hasStatusEffect(StatusEffects.ATranscendentSoulField)) damage *= (1 / monster.statusEffectv1(StatusEffects.ATranscendentSoulField));
         if (player.hasPerk(PerkLib.Sadist)) {
-            damage *= 1.2;
+            damage *= 3;
             if (player.armor == armors.SCANSC) {
-                damage *= 1.2;
-                dynStats("lus", 3);
+                damage *= 3;
+                dynStats("lus", Math.round(player.maxLust()*0.03));
             }
-            dynStats("lus", 3);
+            dynStats("lus", Math.round(player.maxLust()*0.03));
         }
 		if (player.hasPerk(PerkLib.EclipticInfusion) && player.perkv3(PerkLib.ElementalBody) > 0) {
 			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.cor);
@@ -10354,12 +10354,12 @@ public class Combat extends BaseContent {
 		if (tinkerDeconstruct()) damage *= 1.5;
         if (player.hasStatusEffect(StatusEffects.Minimise)) damage *= 0.01;
         if (player.hasPerk(PerkLib.Sadist)) {
-            damage *= 1.2;
+            damage *= 3
             if (player.armorName == "Scandalous Succubus Clothing") {
-                damage *= 1.2;
-                dynStats("lus", 3);
+                damage *= 3;
+                dynStats("lus", Math.round(player.maxLust()*0.03));
             }
-            dynStats("lus", 3);
+            dynStats("lus", Math.round(player.maxLust()*0.03));
         }
 		if (player.hasPerk(PerkLib.EclipticInfusion) && player.perkv3(PerkLib.ElementalBody) > 0) {
 			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.cor);
@@ -10516,11 +10516,11 @@ public class Combat extends BaseContent {
 		if (tinkerDeconstruct()) damage *= 1.5;
 		if (damage < 1) damage = 1;
         if (player.hasPerk(PerkLib.Sadist)) {
-            damage *= 1.2;
-            dynStats("lus", 3);
+            damage *= 3;
+            dynStats("lus", Math.round(player.maxLust()*0.03));
             if (player.armor == armors.SCANSC) {
-                damage *= 1.2;
-                dynStats("lus", 3);
+                damage *= 3;
+                dynStats("lus", Math.round(player.maxLust()*0.03));
             }
         }
         if (player.hasPerk(PerkLib.SharedPower) && player.perkv1(PerkLib.SharedPower) > 0) damage *= (1+(0.1*player.perkv1(PerkLib.SharedPower)));
@@ -10601,11 +10601,11 @@ public class Combat extends BaseContent {
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) damage *= 0.5;
 		if (tinkerDeconstruct()) damage *= 1.5;
         if (player.hasPerk(PerkLib.Sadist)) {
-            damage *= 1.2;
-            dynStats("lus", 3);
+            damage *= 3;
+            dynStats("lus", Math.round(player.maxLust()*0.03));
             if (player.armor == armors.SCANSC) {
-                damage *= 1.2;
-                dynStats("lus", 3);
+                damage *= 3;
+                dynStats("lus", Math.round(player.maxLust()*0.03));
             }
         }
         if (player.hasPerk(PerkLib.SharedPower) && player.perkv1(PerkLib.SharedPower) > 0) damage *= (1+(0.1*player.perkv1(PerkLib.SharedPower)));
@@ -11419,7 +11419,7 @@ public class Combat extends BaseContent {
         //This is now automatic - newRound arg defaults to true:	menuLoc = 0;
         hideUpDown();
         if (player.hasStatusEffect(StatusEffects.MinotaurKingMusk)) {
-            dynStats("lus", 3);
+            dynStats("lus", Math.round(player.maxLust()*0.03));
         }
         if (player.hasStatusEffect(StatusEffects.Sealed)) {
             //Countdown and remove as necessary
@@ -11997,7 +11997,7 @@ public class Combat extends BaseContent {
 					lustDmgA *= 1.3;
 				}
 			}
-			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) lustDmgA *= 1.2;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) lustDmgA *= (1 + player.plantChlorophyllBoost());
             lustDmgA *= monster.lustVuln;
             monster.teased(Math.round(lustDmgA), false, true, true);
             outputText("\n\n");
@@ -13725,7 +13725,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.hasPerk(PerkLib.VegetalAffinity)) dmg *= 1.5;
 		if (player.hasPerk(PerkLib.GreenMagic)) dmg *= 2;
 		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
-			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) dmg *= 2.4;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) dmg *= ((1 + player.plantChlorophyllBoost()) * 2);
 			else dmg *= 2;
 		}
 		//Determine if critical tease!
@@ -13802,7 +13802,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             if (player.headJewelry == headjewelries.CUNDKIN && player.HP < 1) healingPercent += 1;
             if (CombatAbilities.Overlimit.isActive() || CombatAbilities.FieryRage.isActive()) healingPercent -= 10;
 			if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
-				if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) healingPercent += 30;
+				if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) healingPercent += ((1 + player.plantChlorophyllBoost()) * 25);
 				else healingPercent += 25;
 			}
             if (player.hasPerk(PerkLib.Ferocity) && player.HP < 1) negativeHPRegen -= 1;
