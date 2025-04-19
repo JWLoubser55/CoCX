@@ -1580,8 +1580,8 @@ public class PerkLib
 		public static const ElementalContractRank36:PerkType = mkECR(36);
 		public static const ElementalContractRank37:PerkType = mkECR(37);
 		public static const ElementalContractRank38:PerkType = mkECR(38);
-		public static const ElementalContractRank39:PerkType = mkECR(39);
-		public static const ElementalContractRank40:PerkType = mkECR(40);
+		//public static const ElementalContractRank39:PerkType = mkECR(39);
+		//public static const ElementalContractRank40:PerkType = mkECR(40);
 		public static const ElementalTouch:PerkType = mk("Elemental touch", "Elemental touch",
 				"Unarmed strikes and elemental skills inflict a status on your victim when infused: respectively Frostbite, Burn, Acid, and Bleed.",
 				"You've chosen the 'Elemental touch' perk. Unarmed strikes and elemental skills inflict a status on your victim when infused: respectively Frostbite, Burn, Acid, and Bleed.");
@@ -5140,7 +5140,7 @@ public class PerkLib
 			ElementalContractRank25, ElementalContractRank26, ElementalContractRank27, ElementalContractRank28,
 			ElementalContractRank29, ElementalContractRank30, ElementalContractRank31, ElementalContractRank32,
 			ElementalContractRank33, ElementalContractRank34, ElementalContractRank35, ElementalContractRank36,
-			ElementalContractRank37, ElementalContractRank38, ElementalContractRank39, ElementalContractRank40
+			ElementalContractRank37, ElementalContractRank38//, ElementalContractRank39, ElementalContractRank40
 		];
 		// Array of arrays of perks
 		public static const PERK_TIER_LISTS:/*PerkType[]*/Array = [

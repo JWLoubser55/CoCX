@@ -3217,6 +3217,7 @@ public class Camp extends NPCAwareContent{
 	private function PhylacteryEnchantment():void {
 		var statusNames:Array = [
 			[StatusEffects.PhylacteryEnchantment1, "Death rune Imbuement"],
+			[StatusEffects.PhylacteryEnchantment2, "Blood rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment3, "Darkness rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment4, "Cold rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment5, "Arcane rune Imbuement"],
@@ -3246,7 +3247,7 @@ public class Camp extends NPCAwareContent{
 		}
 		outputText("\n<u><b>Effects of each enchantment:</b></u>\n");
 		outputText("Death rune Imbuement -> <i>You may control twice as many servants as normal. Your undead servants inflict a bonus amount of Darkness damage equal to their physical damage scaling up of your darkness modifier.</i>\n");
-		//2
+		outputText("Blood rune Imbuement -> <i>Spells now inflict bleed damage based on your spell modifiers. Bleed damage heals you for 2% of your health on each proc or tick. Bleed damage also gains a magic scaling.</i>\n");
 		outputText("Darkness rune Imbuement -> <i>All offensive magic now counts as Dark spells when determining its effect and damage. Effects that already dealt dark damage are 50% stronger.</i>\n");
 		outputText("Cold rune Imbuement -> <i>All offensive magic now counts as Ice spells when determining its effect and damage. Effects that already dealt cold damage are 50% stronger.</i>\n");
 		outputText("Arcane rune Imbuement -> <i>Recover mana 100% faster.</i>\n");

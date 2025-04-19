@@ -73,13 +73,13 @@ public class YgddrasilRace extends Race {
 		buildTier(12, "ygddrasil")
 				.buffs({
 					"maxhp_mult": +0.12,
-					"str.mult": +0.35,
+					"str.mult": +0.30,
 					"tou.mult": +1.40,
 					"spe.mult": -0.60,
-					"int.mult": +0.35,
+					"int.mult": +0.30,
 					"wis.mult": +1.40,
 					"lib.mult": -0.60,
-					"sens": +50,
+					"sens": +40,
 					"def": +7,
 					"mdef": +7
 				})
@@ -103,13 +103,13 @@ public class YgddrasilRace extends Race {
 		buildTier(28, "ancient ygddrasil")
 				.buffs({
 					"maxhp_mult": +0.36,
-					"str.mult": +0.65,
+					"str.mult": +0.70,
 					"tou.mult": +3.60,
 					"spe.mult": -1.40,
-					"int.mult": +0.65,
+					"int.mult": +0.70,
 					"wis.mult": +3.60,
 					"lib.mult": -1.40,
-					"sens": +150,
+					"sens": +160,
 					"def": +21,
 					"mdef": +21
 				})

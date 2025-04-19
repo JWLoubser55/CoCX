@@ -2075,7 +2075,7 @@ import classes.Scenes.Combat.CombatAbility;
 			outputText("\n<b>Hardcore Modifier:</b> "+(flags[kFLAGS.HARDCORE_MODE] == 1?"Enabled (No level limits for unlocking new areas)":"Disabled")+"\n");
 			outputText("<b>Hunger Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0?"Enabled (PC must manage his own hunger lest you want see his death from starvation)":"Disabled")+"\n");
 			outputText("<b>Realistic Mode Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0.5?"Enabled (PC must manage his own hunger lest you want see his death from starvation + your cum production is capped and having oversized parts will weigh you down)":"Disabled")+"\n");
-			outputText("<b>Exp Banking:</b> "+(flags[kFLAGS.EXP_BANKING] == 0?"Enabled (PC can stack experience indefinitily from defeated opponents)":"Disabled")+"\n");
+			outputText("<b>Exp Banking:</b> "+(flags[kFLAGS.EXP_BANKING] > 0?"Enabled":"Disabled (PC can stack experience indefinitily from defeated opponents)")+"\n");
 
 			outputText("\n");
 			player.displayFinalGameDifficulty();

@@ -199,7 +199,7 @@ public class Changelog extends BaseContent
 			outputText("-New option in Phylactery Enchantment: Mind rune Imbuement -> Add half your intelligence to your libido score.\n");
 			outputText("-New option in Phylactery Enchantment: Soul rune Imbuement -> Add half your wisdom to your libido score.\n");
 			outputText("-New option in Phylactery Enchantment: Body rune Imbuement -> Add half your libido to your strength and speed score.\n");
-			//11
+			outputText("-New option in Phylactery Enchantment: Corruption rune Imbuement -> Add your libido to your magic modifier but take lust damage when spellcasting. (As sadist for lust dmg)\n");
 			outputText("-MouseTown Armor and Weapon added. (Canadian Snas)\n");
 			outputText("-Path to open up the Dom's Domain added. (Canadian Snas)\n");
 			outputText("-Cap for Kirin and Minotaur horns length tf effect. (Stadler)\n");
@@ -324,9 +324,9 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 misc lvl-up perk: Quad Wield. Req. Dual Wield perk. Effect: Allows you to wield four weapons as long you have enough arms to hold them all.\n");
 			outputText("-History: Fortune perk would give Traveling Merchant Outfit instead of default Comfortable Clothes. Also won't give any extra gems now.\n");
 			outputText("-New event perk: Fungal Nobility. Gained by becoming Myconid. Effects: You can enslave and order matango around, gaining a small entourage of mushroom girls at your service. You can order around up to your shroom girl score in numbers. Your ESP abilities grow with the number of matango following you (1 percent per matango).\n");
-			outputText("-New option in Phylactery Enchantment: Corruption rune Imbuement -> Add your libido to your magic modifier but take lust damage when spellcasting. (As sadist for lust dmg)\n");
 			outputText("-Masochist perk effect changed to reduce dmg by 40% when having 40 or more core lib stat value but the lust amount taken changed to 1% of max lust. Sadist perk giving 200% dmg increase at cost of gaining 3% of max lust. Sadomasochism effect increase by 200% not 20% when req. are meet.\n");
-			outputText("-Telekinetic grab m. special cost changed to 200 fatigue and it cooldown set at 10 turns. When having Telekinetic Grapple perk from Esper job fatigue cost is 50% lower and cooldown 2 turns shorter.\n");
+			outputText("-Telekinetic grab m. special cost changed to 200 fatigue and it cooldown set to 10 turns. When having Telekinetic Grapple perk from Esper job fatigue cost is 50% lower and cooldown 2 turns shorter.\n");
+			outputText("-New option in Phylactery Enchantment: Blood rune Imbuement -> Spells now inflict bleed damage based on your spell modifiers. Bleed damage heals you for 2% of your health on each proc or tick. Bleed damage also gains a magic scaling.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -339,10 +339,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
@@ -1325,7 +1324,7 @@ public class Changelog extends BaseContent
 			outputText("Facinate Stun lasts 2 turns, count your lust for twice as high when using Lust strike and it’s now benefit from all effects that pertain to the tease action.\n");
 			outputText("-New event perk: Familiar. Gained by becoming pureblood vampire (tier 2 vampire) and talking about vampirism with Diva OR by becoming fiendish vampire (tier 1 dracula/lina). Effects: Your blood is highly infectious feeding it to a willing or unwilling creature can either turn them into a lesser vampire or a ghoul.\n");
 			outputText("-New event perk: Anty Dexterity. Gained by having four ant arms. Effect: Strong ant arms boost your strength and allow wielding dual weapons <i>or</i> large weapons.\n");
-			outputText("-New event perk (by Demojay): Rampant Might. Gained by been yggdrasil. Effect: Add toughness and strength to feral combat modifier.\n");
+			outputText("-New event perk (by Demojay): Rampant Might. Gained by been yggdrasil. Effect: Add toughness and wisdom to feral combat modifier.\n");
 			outputText("-New event perk (by Demojay): Wisdom of the Ages. Gained by been yggdrasil. Effect: Add half of Intelligence and Wisdom as a modifier to Strength and Toughness.\n");
 			outputText("-Created Soul Cultivator Perk (by Demojay): Killing Intent - True Damage attack that increases damage based on cultivator rank and number of monsters killed.\n");
 			outputText("-Created Soul Cultivator Perk (by Demojay): First Attack: Flying Sword - Allows Flying to attack independently when not using it to fly.\n");

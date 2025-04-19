@@ -960,6 +960,10 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) HPChange((player.maxHP() * numberOfProcs * five), false, true);
 			else HPChange((player.maxHP() * numberOfProcs * five), false, false);
 		}
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2) && !monster.isImmuneToBleed() && CombatAbility.TAG_DAMAGING) {
+			if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
+			else monster.createStatusEffect(StatusEffects.Hemorrhage, 2, 0.05, 0, 0);
+		}
 		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment11)) dynStats("lus", Math.round(player.maxLust()*0.03));
 	}
 	

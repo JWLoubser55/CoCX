@@ -11395,7 +11395,7 @@ public class Combat extends BaseContent {
         if (monster.XP <= 0) monster.XP = 0;
         if (!monster.hasPerk(PerkLib.NoExpGained))
         {
-            if (flags[kFLAGS.EXP_BANKING] == 1) player.XP += monster.XP;
+            if (flags[kFLAGS.EXP_BANKING] == 0) player.XP += monster.XP;
             else {
                 // If pc exp is lower then the cap award exp else do nothing.
                 // This is to avoid lowering exp if player had higher from a tribulation or a treasure allowing player exp
@@ -19141,6 +19141,7 @@ public function BleedDamageBoost(isARacialAbility:Boolean = false):Number {
     if (player.hasPerk(PerkLib.ThirstForBlood)) BleedMod += 0.25;
     if (player.hasPerk(PerkLib.KingOfTheJungle)) BleedMod += 0.2;
     if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 1) BleedMod += (0.25 * player.perkv1(IMutationsLib.SharkOlfactorySystemIM));
+	if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) BleedMod += (0.002 * spellMod());
     if (isARacialAbility) BleedMod *= combat.RacialParagonAbilityBoost();
     return BleedMod;
 }

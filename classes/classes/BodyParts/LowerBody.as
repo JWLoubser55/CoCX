@@ -775,7 +775,7 @@ public class LowerBody extends SaveableBodyPart {
 
 	public static const JABBERWOCKY:int = 73;
 	EnumValue.add(Types, JABBERWOCKY, "JABBERWOCKY", {
-		name: "bunny",
+		name: "jabberwocky",
 		legsPrefixes: ["fuzzy bunny-like", "fur-covered", "furry", ""],
 		legPrefixes: ["fuzzy bunny-like", "fur-covered", "furry", ""],
 		feetPrefixes: ["large bunny-like", "rabbit-like", "large", ""],
