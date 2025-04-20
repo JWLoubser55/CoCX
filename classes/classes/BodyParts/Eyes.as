@@ -22,7 +22,7 @@ public class Eyes extends BodyPart {
 	public static const SPIDER: int = 1;
 	EnumValue.add(Types, SPIDER, "SPIDER", {
 		name:"six spider",
-		appearanceDesc: "In addition to your primary two [eyecolor] eyes, you have a second, smaller pair on your forehead.",
+		appearanceDesc: "In addition to your primary two [eyecolor] eyes, you have two smaller pairs on your forehead.",
 		Darkvision: true
 	});
 	public static const BLACK_EYES_SAND_TRAP: int = 2;
@@ -263,7 +263,7 @@ public class Eyes extends BodyPart {
 	public static const WERESPIDER: int = 43;
 	EnumValue.add(Types, WERESPIDER, "WERESPIDER", {
 		name:"werespider",
-		appearanceDesc: "In addition to your primary two [eyecolor] eyes, you have a second, smaller pair on your forehead. In your eyes, sometimes a green light is visibly dancing. Hinting at the beast within. It encompasses your entire pupil when you let it loose.",
+		appearanceDesc: "In addition to your primary two [eyecolor] eyes, you have two smaller pairs on your forehead. In your eyes, sometimes a green light is visibly dancing. Hinting at the beast within. It encompasses your entire pupil when you let it loose.",
 		Darkvision: true
 	});
 	public static const ARIGEAN: int = 44;

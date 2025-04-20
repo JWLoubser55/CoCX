@@ -24,6 +24,7 @@ public class Arms extends SaveableBodyPart {
 	 * - feathers: has feathers material
 	 * - scales: has scales material
 	 * - chitin: has chitin material
+	 * - bark: has bark material
 	 * */
 	public static var Types:/*EnumValue*/Array = [];
 
@@ -457,7 +458,7 @@ public class Arms extends SaveableBodyPart {
 	public static const ANT:int = 58;
 	EnumValue.add(Types, ANT, "ANT", {
 		name:"ant",
-		appearanceDesc: "Where a normal creature would have only two arms, you instead have four, with shining [chitin color] exoskeleton covering them from the biceps down, resembling a pair of long [chitin color] gloves from a distance.",
+		appearanceDesc: "Where a normal creature would have only two arms, you instead have four, with shining [chitin color1] exoskeleton covering them from the biceps down, resembling a pair of long [chitin color1] gloves from a distance.",
 		fourArms: true,
 		claw: true,
 		chitin: true
@@ -571,11 +572,11 @@ public class Arms extends SaveableBodyPart {
 		appearanceDesc: "Your arms are human in shape and appearance but the skin is extremely sensitive to the touch. As such they are covered from the elbows to the tip of your fingers with bandages."
 	});
   
-  public static const HUMANCHAINED:int = 74;
-  EnumValue.add(Types, HUMANCHAINED, "HUMAN", {
-    name:"human chained",
-    appearanceDesc: "You have a pair of normal human arms and though they dont have any unusual traits thick magical silver chains coils around your arms protecting them from arms. You know those chains to be fully part of your body and can use them to fight if necessary."
-  });
+	public static const HUMANCHAINED:int = 74;
+	EnumValue.add(Types, HUMANCHAINED, "HUMAN", {
+		name:"human chained",
+		appearanceDesc: "You have a pair of normal human arms and though they dont have any unusual traits thick magical silver chains coils around your arms protecting them from arms. You know those chains to be fully part of your body and can use them to fight if necessary."
+	});
 	
 	public static const SHROOM_ARMS:int = 75;
 	EnumValue.add(Types, SHROOM_ARMS, "SHROOM_ARMS", {
@@ -587,6 +588,24 @@ public class Arms extends SaveableBodyPart {
 	EnumValue.add(Types, MECHANICAL_DOLL_ARMS, "MECHANICAL_DOLL_ARMS", {
 		name:"automata",
 		appearanceDesc: "Your segmented arms and hands have machine precision allowing you to perform complex maneuvers to inhumane perfection be it swordsmanship, marksmanship or magic. Your metal arms are reinforced with hydraulic systems which allows you to lift weights and deliver strikes with enough power to shatter stones."
+	});
+
+	public static const WERESPIDER:int = 77;
+	EnumValue.add(Types, WERESPIDER, "WERESPIDER", {
+		name:"werespider",
+		appearanceDesc: "Where a normal creature would have only two arms, you instead have four, with shining [chitin color1] exoskeleton covering them, ending in clawed hands.",
+		fourArms: true,
+		claw: true,
+		chitin: true
+	});
+
+	public static const YGGDRASIL:int = 78;
+	EnumValue.add(Types, YGGDRASIL, "YGGDRASIL", {
+		name:"yggdrasil",
+		appearanceDesc: "Where a normal creature would have only two arms, you instead have four, with bark covering them, ending in clawed hands.",
+		fourArms: true,
+		claw: true,
+		bark: true
 	});
    
 	public static function canFly(id: int): Boolean {
@@ -611,6 +630,8 @@ public class Arms extends SaveableBodyPart {
 				return Types[this.type].chitin;
 			case BodyMaterial.FEATHERS:
 				return Types[this.type].feathers;
+			case BodyMaterial.BARK:
+				return Types[this.type].bark;
 			default:
 				return false;
 		}

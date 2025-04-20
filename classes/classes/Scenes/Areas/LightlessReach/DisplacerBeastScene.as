@@ -26,6 +26,13 @@ public class DisplacerBeastScene extends BaseContent {
         outputText("You are fighting a Displacer beast!");
         startCombat(new DisplacerBeast());
     }
+	public function primodialDisplacerBeastEncounter():void {
+		clearOutput();
+		outputText("You turn around the corner and come face to face with a greyish six armed catboy. He would be terrifying already even without the two pair of the tentacles on her back that writhe in excitation. Readying for battle is the best you can do as the beast man charges you with a gleam of anger in his feral eyes.\n\n");
+        camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_DISPLACER_BEAST);
+        outputText("You are fighting a Primodial Displacer beast!");
+        startCombat(new PrimordialDisplacerBeast());
+	}
 
     public function displacerBeastVictory():void {
         clearOutput();

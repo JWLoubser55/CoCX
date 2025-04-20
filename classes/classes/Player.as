@@ -1177,7 +1177,11 @@ use namespace CoC;
 		}
 		public function thirdtierWingsForWingSlap():Boolean
 		{
-			return wings.type == Wings.BAT_LIKE_LARGE_2 || wings.type == Wings.DRACONIC_HUGE;
+			return wings.type == Wings.BAT_LIKE_LARGE_2 || wings.type == Wings.DRACONIC_HUGE || wings.type == Wings.YGGDRASIL_HUGE_2;
+		}
+		public function fourthtierWingsForWingSlap():Boolean
+		{
+			return wings.type == Wings.YGGDRASIL_HUGE_3;
 		}
 		//Natural Claws (arm types and weapons that can substitude them)
 		public function haveNaturalClaws():Boolean { return Arms.Types[arms.type].claw || Arms.Types[arms.type].armSlam || Arms.Types[arms.type].scythe || LowerBody.hasClaws(this);}
@@ -1477,6 +1481,24 @@ use namespace CoC;
 		{
 			return ((isRaceCached(Races.KAMAITACHI) && arms.type == Arms.KAMAITACHI) || (isRaceCached(Races.HELLCAT)) || ((isRaceCached(Races.YUKIONNA) && hasPerk(PerkLib.ColdAffinity)) || perkv1(IMutationsLib.FrozenHeartIM) >= 1) ||
 					(hasPerk(PerkLib.DragonRegalBreath)) || (tailType == Tail.GARGOYLE_2) || (faceType == Face.WOLF) || (Face.Types[faceType].bite) || (isRaceCached(Races.COUATL)) || (hasAGoreAttack()));
+		}
+		public function werebeastRacesPerkHousekeeping(werebeastType:Number):void {
+			if (werebeastType != 1 && hasPerk(PerkLib.Lycanthropy)) {
+				createPerk(PerkLib.LycanthropyDormant,0,0,0,0);
+				removePerk(PerkLib.Lycanthropy);
+			}
+			if (werebeastType != 2 && hasPerk(PerkLib.Vulpesthropy)) {
+				createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
+				removePerk(PerkLib.Vulpesthropy);
+			}
+			if (werebeastType != 3 && hasPerk(PerkLib.Selachimorphanthropy)) {
+				createPerk(PerkLib.SelachimorphanthropyDormant,0,0,0,0);
+				removePerk(PerkLib.Selachimorphanthropy);
+			}
+			if (werebeastType != 4 && hasPerk(PerkLib.Araneathropy)) {
+				createPerk(PerkLib.AraneathropyDormant,0,0,0,0);
+				removePerk(PerkLib.Araneathropy);
+			}
 		}
 
 		public function allEquipment():/*Equipable*/Array {

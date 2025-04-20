@@ -71,7 +71,8 @@ public class WerewolfRace extends Race {
 					"str.mult": +1.00,
 					"tou.mult": +0.60,
 					"spe.mult": +0.40,
-					"int.mult": -0.20
+					"int.mult": -0.20,
+					"maxwrath_mult": +0.5
 				})
 				.end();
 		buildTier(18, "elder werewolf")
@@ -80,7 +81,8 @@ public class WerewolfRace extends Race {
 					"str.mult": +1.45,
 					"tou.mult": +0.90,
 					"spe.mult": +0.55,
-					"int.mult": -0.20
+					"int.mult": -0.20,
+					"maxwrath_mult": +1
 				})
 				.end();
 		buildTier(24, "ancient werewolf")
@@ -89,7 +91,8 @@ public class WerewolfRace extends Race {
 					"str.mult": +1.90,
 					"tou.mult": +1.20,
 					"spe.mult": +0.70,
-					"int.mult": -0.20
+					"int.mult": -0.20,
+					"maxwrath_mult": +1.5
 				})
 				.end();
 	}

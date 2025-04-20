@@ -924,6 +924,13 @@ public class LowerBody extends SaveableBodyPart {
 		appearanceDesc: "Your two mechanical legs are segmented at the junctions and innerly reinforced with hydraulic systems granting you a jump and running power strong enough to outspeed any organics. A pair of heavy metal boots ornate your steel leg reminiscent of body armor except it's all part of your body."
 	});
 
+	public static const WERESPIDER:int = 92;
+	EnumValue.add(Types, WERESPIDER, "WERESPIDER", {
+		name: "werespider",
+		appearanceDesc: "Your {legCount} legs are covered in a reflective [chitin color1], insectile carapace exoskeleton.",
+		chitin: true
+	})
+
 	override public function set type(value:int):void {
 		super.type = value;
 		// Reset leg count
