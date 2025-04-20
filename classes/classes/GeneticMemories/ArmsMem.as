@@ -802,6 +802,17 @@ import classes.CoC;
 			}
 		});
 
+        public static const YGGDRASIL:int = _partid++;
+        EnumValue.add(Memories, YGGDRASIL, "YGGDRASIL", {
+            id: "Yggdrasil Arms",
+            name: "Yggdrasil Four Arms",
+            cost: 100,
+            title: "Yggdrasil",
+            transformation: function(): Transformation {
+                return CoC.instance.transformations.ArmsYggdrasil;
+            }
+        });
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

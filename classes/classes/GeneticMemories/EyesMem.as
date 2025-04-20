@@ -492,6 +492,17 @@ package classes.GeneticMemories {
 				return CoC.instance.transformations.EyesGremlin;
 			}
 		});
+
+		public static const YGGDRASIL:int = _partid++;
+		EnumValue.add(Memories, YGGDRASIL, "YGGDRASIL", {
+			id: "Yggdrasil Eyes",
+			name: "Yggdrasil Eyes",
+			cost: 100,
+			title: "Yggdrasil",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyesYggdrasil;
+			}
+		});
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

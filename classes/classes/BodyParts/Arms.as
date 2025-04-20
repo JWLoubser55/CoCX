@@ -602,7 +602,7 @@ public class Arms extends SaveableBodyPart {
 	public static const YGGDRASIL:int = 78;
 	EnumValue.add(Types, YGGDRASIL, "YGGDRASIL", {
 		name:"yggdrasil",
-		appearanceDesc: "Where a normal creature would have only two arms, you instead have four, with bark covering them, ending in clawed hands.",
+		appearanceDesc: "Where a normal creature would have only two arms, you instead have four, with bark covering them and ending in hands with large claws.",
 		fourArms: true,
 		claw: true,
 		bark: true

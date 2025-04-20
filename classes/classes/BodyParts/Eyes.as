@@ -300,6 +300,12 @@ public class Eyes extends BodyPart {
 		appearanceDesc: "Your [eyecolor] eyes look somewhat human, save for glowing [eyecolor] orbs with pink center where your iris would be located which lets those with the knowledge of your functions know that you are currently online and active. While they appear human, your eyes are in fact mechanical in nature including a zoom and a photography function as well as a peerless sight few organics could imitate."/*,
 		Darkvision: true*/
 	});
+	public static const YGGDRASIL: int = 50;
+	EnumValue.add(Types, YGGDRASIL, "YGGDRASIL", {
+		name:"yggdrasil",
+		appearanceDesc: "In addition to your primary two [eyecolor] eyes, you have second pair on your forehead. Both of them have slitted pupils like that of a dragon.",
+		Darkvision: true
+	});
 
 	public var count:int;
 	public var colour:String = "brown";

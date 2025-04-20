@@ -1437,6 +1437,25 @@ public class ArmsTransformations extends MutationsHelper {
 				return player.arms.type === Arms.MECHANICAL_DOLL_ARMS;
 			}
 	);
+
+	public const ArmsYggdrasil: Transformation = new SimpleTransformation("Yggdrasil Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
+
+				desc += "You can feel your nails elongate and sharpen, before you know it you have bark claws! Then something weird is happening around the level of your ribcage. Painfully large bumps start expanding on the side of your body. You fall on all fours panting heavily from the pain as two new limbs surge under your arms. As you sit, trying to grab these new limbs to check them out, you grab your arms instead. No wait your arm grabbed your arm that grabs another arm?! As you examine yourself you discover a second set of limbs grew under your arms. <b>Guess if your mind actually managed to process the action correctly you could actually use four weapons at once, instead you move around on your three set of limbs not unlike a plant dragon.</b>";
+				player.arms.type = Arms.YGGDRASIL;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.YGGDRASIL));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.YGGDRASIL;
+			}
+	);
 	/*
   */
 }

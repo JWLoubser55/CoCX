@@ -1074,11 +1074,11 @@ public class CampMakeWinions extends BaseContent
 			addButton(10, "Scavenge", golemScavenge4);
 			addButton(14, "Leave", cleanupAfterCombat);
 		}
-		public function postFightGolemOptions5():void {
+		public function postFightGolemOptions5(subtype:Number):void {
 			clearOutput();
 			outputText("What are you gonna do now?\n\n");
 			menu();
-			addButton(10, "Scavenge", golemScavenge5);
+			addButton(10, "Scavenge", golemScavenge5, subtype);
 			addButton(14, "Leave", cleanupAfterCombat);
 		}
 		private function golemScavenge1():void {
@@ -1141,20 +1141,34 @@ public class CampMakeWinions extends BaseContent
 				else doNext(cleanupAfterCombat);
 			}
 		}
-		private function golemScavenge5():void {
+		private function golemScavenge5(subtype:Number):void {
 			clearOutput();
 			outputText("You sit down by the golem and begin extracting the core from the big chunk that remains of its chest. ");
 			if (rand(4) == 0 || player.hasPerk(PerkLib.JobGolemancer) || player.isTechSavvyPC()) {
-				outputText("At first the core resist, but after a few tries you successfully manage to harvest the golem core. Not one to waste spare materials, you gather the remaining gems. (+"+(player.hasPerk(PerkLib.Deconstruct)?"400":"200")+" gems)");
-				if (player.hasPerk(PerkLib.Deconstruct)) player.gems += 400;
-				else player.gems += 200;
-				inventory.takeItem(useables.GOLCORE, cleanupAfterCombat);
+				outputText("At first the core resist, but after a few tries you successfully manage to harvest the golem core. Not one to waste spare materials, you gather the remaining ");
+				if (subtype == 0) {
+					outputText("gems. (+"+(player.hasPerk(PerkLib.Deconstruct)?"400":"200")+" gems)");
+					if (player.hasPerk(PerkLib.Deconstruct)) player.gems += 400;
+					else player.gems += 200;
+					inventory.takeItem(useables.GOLCORE, cleanupAfterCombat);
+				}
+				if (subtype == 1) {
+					outputText("ore.");
+					inventory.takeItem(useables.SKYMETA, takeCore);
+				}
 			}
 			else {
-				outputText("Sadly, despite your best efforts, the core is damaged during the extraction and rendered useless. Not one to waste spare materials, you gather the remaining gems. (+"+(player.hasPerk(PerkLib.Deconstruct)?"600":"300")+" gems)");
-				if (player.hasPerk(PerkLib.Deconstruct)) player.gems += 600;
-				else player.gems += 300;
-				doNext(cleanupAfterCombat);
+				outputText("Sadly, despite your best efforts, the core is damaged during the extraction and rendered useless. Not one to waste spare materials, you gather the remaining ");
+				if (subtype == 0) {
+					outputText("gems. (+"+(player.hasPerk(PerkLib.Deconstruct)?"600":"300")+" gems)");
+					if (player.hasPerk(PerkLib.Deconstruct)) player.gems += 600;
+					else player.gems += 300;
+					doNext(cleanupAfterCombat);
+				}
+				if (subtype == 1) {
+					outputText("ore.");
+					inventory.takeItem(useables.SKYMETA, takeCore);
+				}
 			}
 		}
 		private function takeCore():void {

@@ -2690,7 +2690,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else outputText("Twirling like a top, you slap your opponents with your wings.");
 			var damage:Number = combat.meleeUnarmedDamageNoLagSingle();
 			if (player.thirdtierWingsForWingSlap()) damage += combat.meleeUnarmedDamageNoLagSingle();
-			//if (tu jak byłyby 4th tier wings dodane) damage += combat.meleeUnarmedDamageNoLagSingle();
+			if (player.fourthtierWingsForWingSlap()) damage += combat.meleeUnarmedDamageNoLagSingle();
 			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 			if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;

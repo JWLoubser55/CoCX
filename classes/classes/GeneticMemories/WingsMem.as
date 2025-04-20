@@ -457,6 +457,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const YGGDRASIL_HUGE_X6:int = _partid++;
+		EnumValue.add(Memories, YGGDRASIL_HUGE_X6, "YGGDRASIL_HUGE_X6", {
+			id: "Yggdrasil Huge Sextet Wings",
+			name: "Yggdrasil Huge Sextet Wings",
+			cost: 400,
+			title: "Yggdrasil(H) x6",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.WingsYggdrasilSextupleHuge;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

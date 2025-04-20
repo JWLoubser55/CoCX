@@ -742,6 +742,26 @@ public class WingsTransformations extends MutationsHelper {
 			}
 	);
 
+	public const WingsYggdrasilSextupleHuge: Transformation = new SimpleTransformation("Huge Sextuple Yggdrasil Wings",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.WingsYggdrasilHuge, doOutput);
+
+				desc += "You hear the song of the world tree, extending your massive wings wide. Closing your [eyes], you spread your arms and wings in anticipation. To your surprise, your shoulders grow thicker, a painful nub forming under your [skin]. You kneel, as you had before, and to your surprise, another pair of vines shoot from your back. "+
+						"Years of growth seem to happen in an instant, and when your body stops shaking, a third pair of leafy wings have grown from you, no smaller than your first two pairs. <b>You now have three large, majestic pairs of plant-like wings!</b>";
+				player.wings.type = Wings.YGGDRASIL_HUGE_3;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(WingsMem.getMemory(WingsMem.YGGDRASIL_HUGE_X6));
+			},
+			// is present
+			function (): Boolean {
+				return player.wings.type === Wings.YGGDRASIL_HUGE_3;
+			}
+	);
+
 	public const WingsYggdrasilQuadrupleHuge: Transformation = new SimpleTransformation("Huge Quadruple Yggdrasil Wings",
 			// apply effect
 			function (doOutput: Boolean): void {
@@ -750,7 +770,7 @@ public class WingsTransformations extends MutationsHelper {
 				TransformationUtils.applyTFIfNotPresent(transformations.WingsYggdrasilHuge, doOutput);
 
 				desc += "You hear the song of the world tree, extending your massive wings wide. Closing your [eyes], you spread your arms and wings in anticipation. To your surprise, your shoulders grow thicker, a painful nub forming under your [skin]. You kneel, as you had before, and to your surprise, a second pair of vines shoot from your back. "+
-						"Years of growth seem to happen in an instant, and when your body stops shaking, a second pair of leafy wings have grown from you, only slightly smaller than your first pair. <b>You now have two large, majestic pairs of plant-like wings!</b>";
+						"Years of growth seem to happen in an instant, and when your body stops shaking, a second pair of leafy wings have grown from you, no smaller than your first pair. <b>You now have two large, majestic pairs of plant-like wings!</b>";
 				player.wings.type = Wings.YGGDRASIL_HUGE_2;
 
 				if (doOutput) outputText(desc);

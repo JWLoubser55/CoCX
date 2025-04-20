@@ -110,7 +110,7 @@ public class Changelog extends BaseContent
 			outputText("Mummy (M & F) - lvl 18/36. Encounterable in Outer Desert / Inner Desert at night. They have Undead enemy type and Low-tier Magic Immunity perk. Thief - lvl 5, Thief Captain - lvl 9. Encounterable in Ignam after PC reach lvl 2/6. Feral Succubus/Incubus - lvl 41, Feral Omnibus - lvl 51. Encountered in Blight Ridge. Feral Cow Succubus/Mino Incubus - lvl 65/67. ");
 			outputText("Feral Demon Hellhound - lvl 69. Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Encountered in Tunnels. True Lightning Golem - lvl 81. Encountered in Cliffs. True Darkness Golem - lvl 76, Primordial Displacer Beast - lvl 84. Encountered in Lightless Reach.\n");
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig), Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event), Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
-			outputText("Myconid Pussy, Myconid Cock (from shroomification event)\n");
+			outputText("Myconid Pussy, Myconid Cock (from shroomification event), Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes (from transforming with World Tree help)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
 			//outputText("-New HB Mech upgrade options: Armor Plating (+armor), Leather Insulation (+magic resistance), Agility (+base melee atk dmg), Dragon's Breath Flamer (fire dmg special), Scatter Laser (lightning dmg special), Rapid Reload (+base ranged atk dmg), Internal Systems (increase mech SF capacity and lower it consumption during high activity)\n");
 			//outputText(", Camouflage Mode (allow to enter 1 turn long camouflage opening option to use Sneak Attack (melee & range) specials), Invisibility Mode (the same as Camouflage Mode but can last until PC run out of SF to keep it active or deactivate it manualy / upgrade to decrease SF consumption)");
@@ -190,7 +190,7 @@ public class Changelog extends BaseContent
 			outputText("-Passive ability: Manaforce - req. to be Lich. Effect: Effects that restores mana also restores soulforce.\n");
 			outputText("-New option in camp actions menu: Phylactery Enchantment - req. to be Lich. You can weave a minor enchantment on your phylactery to gain a minor power. You start with two runes. Every 50 level you may add one extra rune to your phylactery.\n");
 			outputText("-New option in Phylactery Enchantment: Death rune Imbuement -> You may control twice as many servants as normal. Your undead servants inflict a bonus amount of Darkness damage equal to their physical damage scaling up of your darkness modifier.\n");
-			//2
+			outputText("-New option in Phylactery Enchantment: Blood rune Imbuement -> Spells now inflict bleed damage based on your spell modifiers. Bleed damage heals you for 2% of your health on each proc or tick. Bleed damage also gains a magic scaling.\n");
 			outputText("-New option in Phylactery Enchantment: Darkness rune Imbuement -> All offensive magic now counts as Dark spells when determining its effect and damage. Effects that already dealt dark damage are 50% stronger.\n");
 			outputText("-New option in Phylactery Enchantment: Cold rune Imbuement -> All offensive magic now counts as Ice spells when determining its effect and damage. Effects that already dealt cold damage are 50% stronger.\n");
 			outputText("-New option in Phylactery Enchantment: Arcane rune Imbuement -> Recover mana 100% faster.\n");
@@ -289,29 +289,29 @@ public class Changelog extends BaseContent
 			outputText("When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit. Also bonus to dakrness spells increase from 80% to 160%.\n");
 			outputText("-Fix for Fairy Queen TF not removing balls and fix breast rows. (Stadler)\n");
 			outputText("-New mutation perk: Living Weapon. Req. having free muscles related mutation slot, Gargoyle or Automata race. Effects: All natural weapon and weapon damage is increased by an amount equal to a quarter of your armor class.\n");
+			outputText("-New mutation perk: Myconid Collective Consciousness. Req. having free nerv system mutation slot, Myconid race. Effects: Add 10% of your toughness to your spellcasting and Esper score.\n");
 			outputText("-New mutation perk: Myconid Spore. Req. having free ovaries mutation slot, Myconid race. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 25%.\n");
+			outputText("-New mutation perk: Plant Chlorophyll. Req. having free fat tissue mutation slot, plant races. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 5% while outdoors during daytime.\n");
 			outputText("-New mutation perk: Soul Core. Req. having free adaptation mutation slot, Gargoyle or Automata race. Effects: Gain 1% mana regeneration.\n");
 			outputText("-New mutation perk: Living Weapon (Primitive). Req. Living Weapon and lvl 30+. Effects: All natural weapon and weapon damage is increased by an amount equal to half of your armor class. Your body is always considered naked and free of constraint no longer hindered by armors if able to wear any.\n");
+			outputText("-New mutation perk: Myconid Collective Consciousness (Primitive). Req. Myconid Collective Consciousness and lvl 30+. Effects: Add 20% of your toughness to your spellcasting and Esper score. Take 25% less damage from mental attacks and Esper ability.\n");
 			outputText("-New mutation perk: Myconid Spore (Primitive). Req. Myconid Spore and lvl 30+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 50%. While in your own spore cloud, you become empowered and increase your strength and speed by 15% of their total value, but increase tease damage taken by 50%.\n");
+			outputText("-New mutation perk: Plant Chlorophyll (Primitive). Req. Plant Chlorophyll and lvl 30+. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 10% while outdoors during daytime. Plant abilities are increased by 20%.\n");
 			outputText("-New mutation perk: Soul Core (Primitive). Req. Soul Core and lvl 30+. Effects: Gain 2% mana regeneration. While above 50% of your total mana gain a 25% increase to all physical damage.\n");
 			outputText("-New mutation perk: Living Weapon (Evolved). Req. Living Weapon (Primitive) and lvl 60+. Effects: All natural weapon and weapon damage is increased by an amount equal to 3/4 of your armor class. Your body is always considered naked and free of constraint no longer hindered by armors if able to wear any. Base Armor value prior to perks is increased by 25%.\n");
+			outputText("-New mutation perk: Myconid Collective Consciousness (Evolved). Req. Myconid Collective Consciousness (Primitive) and lvl 60+. Effects: Add 30% of your toughness to your spellcasting and Esper score. Take 50% less damage from mental attacks and Esper ability. Gain 1% mana regeneration.\n");
 			outputText("-New mutation perk: Myconid Spore (Evolved). Req. Myconid Spore (Primitive) and lvl 60+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 75%. While in your own spore cloud, you become empowered and increase your strength by 30% of their total value, but increase tease damage taken by 50%. ");
 			outputText("Spore cloud now inflicts a stacking 5% lust vulnerability but only to your opponent.\n");
+			outputText("-New mutation perk: Plant Chlorophyll (Evolved). Req. Plant Chlorophyll (Primitive) and lvl 60+. Effects: For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by 15% while outdoors during daytime. Plant abilities are increased by 30%. Synthesis is 20% stronger.\n");
 			outputText("-New mutation perk: Soul Core (Evolved). Req. Soul Core (Primitive) and lvl 60+. Effects: Gain 3% mana regeneration. While above 50% of your total mana gain a 50% increase to all physical damage. While under 50% of your total fatigue gain a 50% increase to all magical damage. Gain regeneration 2% while mana is above 50%.\n");
 			outputText("-New mutation perk: Living Weapon (Final Form). Req. Living Weapon (Evolved) and lvl 90+. Effects: All natural weapon and weapon damage is increased by an amount equal to your armor class. Your body is always considered naked and free of constraint no longer hindered by armors if able to wear any. Base Armor value prior to perks is increased by 50%. Stuns last one more round.\n");
+			outputText("-New mutation perk: Myconid Collective Consciousness (Final Form). Req. Myconid Collective Consciousness (Evolved) and lvl 90+. Effects: Add 50% of your toughness to your spellcasting and Esper score. Take 75% less damage from mental attacks and Esper ability. Gain 2% mana regeneration. Your own Esper abilities are 25% stronger.\n");
 			outputText("-New mutation perk: Myconid Spore (Final Form). Req. Myconid Spore (Evolved) and lvl 90+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 100%. While in your own spore cloud, you become empowered and increase your strength and speed by 45% of their total value, but increase tease damage taken by 50%. ");
 			outputText("Spore cloud now inflicts a stacking 10% lust and damage vulnerability but only to your opponent.\n");
+			outputText("-New mutation perk: Plant Chlorophyll (Final Form). Req. Plant Chlorophyll (Evolved) and lvl 90+. Effects: For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by 20% while outdoors during daytime. Plant abilities are increased by 50%. Synthesis is 30% stronger and can be auto cast.\n");
 			outputText("-New mutation perk: Soul Core (Final Form). Req. Soul Core (Evolved) and lvl 90+. Effects: Gain 5% mana regeneration. While above 75% of your total mana gain a 100% increase to all physical damage. While under 75% of your total fatigue gain a 100% increase to all magical damage. Gain regeneration 4% while mana is above 50%. Add intelligence to your toughness score for the purpose of calculating hit points.\n");
 			outputText("-Fix Electrify weapon to work as originaly designed (Exactly what it says... makes the lightning spear works on... well you guessed it actual thrusting weapon.) (Liadri)\n");
 			outputText("-Alraune and Tentacle cock for kitsune is no longuer confused allowing player to tentacle the kitsune weither pc has tentacle or alraune vines (Liadri)\n");
-			outputText("-New mutation perk: Myconid Collective Consciousness. Req. having free nerv system mutation slot, Myconid race. Effects: Add 10% of your toughness to your spellcasting and Esper score.\n");
-			outputText("-New mutation perk: Myconid Collective Consciousness (Primitive). Req. Myconid Collective Consciousness and lvl 30+. Effects: Add 20% of your toughness to your spellcasting and Esper score. Take 25% less damage from mental attacks and Esper ability.\n");
-			outputText("-New mutation perk: Myconid Collective Consciousness (Evolved). Req. Myconid Collective Consciousness (Primitive) and lvl 60+. Effects: Add 30% of your toughness to your spellcasting and Esper score. Take 50% less damage from mental attacks and Esper ability. Gain 1% mana regeneration.\n");
-			outputText("-New mutation perk: Myconid Collective Consciousness (Final Form). Req. Myconid Collective Consciousness (Evolved) and lvl 90+. Effects: Add 50% of your toughness to your spellcasting and Esper score. Take 75% less damage from mental attacks and Esper ability. Gain 2% mana regeneration. Your own Esper abilities are 25% stronger.\n");
-			outputText("-New mutation perk: Plant Chlorophyll. Req. having free fat tissue mutation slot, plant races. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 5% while outdoors during daytime.\n");
-			outputText("-New mutation perk: Plant Chlorophyll (Primitive). Req. Plant Chlorophyll and lvl 30+. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 10% while outdoors during daytime. Plant abilities are increased by 20%.\n");
-			outputText("-New mutation perk: Plant Chlorophyll (Evolved). Req. Plant Chlorophyll (Primitive) and lvl 60+. Effects: For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by 15% while outdoors during daytime. Plant abilities are increased by 30%. Synthesis is 20% stronger.\n");
-			outputText("-New mutation perk: Plant Chlorophyll (Final Form). Req. Plant Chlorophyll (Evolved) and lvl 90+. Effects: For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by 20% while outdoors during daytime. Plant abilities are increased by 50%. Synthesis is 30% stronger and can be auto cast.\n");
 			outputText("-New key Item (by Liadri): Grenade Launcher - req. Toolbelt - Let you use your grenade gadgets while siting comfortably in your goblin mech.\n");
 			outputText("-New mutation perk: Fungus Trama. Req. having free fat tissue mutation slot, Myconid race. Effects: For fungal creatures increase damage reduction by 5%.\n");
 			outputText("-New mutation perk: Fungus Trama (Primitive). Req. Fungus Trama. and lvl 30+. Effects: For fungal creatures increase damage reduction by 10%. While indoor or at night time increases regeneration by 1%.\n");
@@ -326,9 +326,8 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Fungal Nobility. Gained by becoming Myconid. Effects: You can enslave and order matango around, gaining a small entourage of mushroom girls at your service. You can order around up to your shroom girl score in numbers. Your ESP abilities grow with the number of matango following you (1 percent per matango).\n");
 			outputText("-Masochist perk effect changed to reduce dmg by 40% when having 40 or more core lib stat value but the lust amount taken changed to 1% of max lust. Sadist perk giving 200% dmg increase at cost of gaining 3% of max lust. Sadomasochism effect increase by 200% not 20% when req. are meet.\n");
 			outputText("-Telekinetic grab m. special cost changed to 200 fatigue and it cooldown set to 10 turns. When having Telekinetic Grapple perk from Esper job fatigue cost is 50% lower and cooldown 2 turns shorter.\n");
-			outputText("-New option in Phylactery Enchantment: Blood rune Imbuement -> Spells now inflict bleed damage based on your spell modifiers. Bleed damage heals you for 2% of your health on each proc or tick. Bleed damage also gains a magic scaling.\n");
-			outputText("-Werefox race bonuses that change with moon phase changed form str/tou/spe to tou/spe/wis. Werewolf race got additional racial bonuses +50/100/150% to max wrath multi.\n");
-			outputText("-Description for spider eyes now desc them as main pair and 2 pairs of smaller eyes instead of main + smaller pair of eyes. Yggdrasil 3 tier of wings now count toward bonus dmg form tier 3 wings in wing slap special.\n");
+			outputText("-Werefox race bonuses that change with moon phase changed from str/tou/spe to tou/spe/wis. Werewolf race got additional racial bonuses +50/100/150% to max wrath multi.\n");
+			outputText("-Description for spider eyes now desc them as main pair and 2 pairs of smaller eyes instead of main + smaller pair of eyes. Yggdrasil 3 tier of wings now count toward bonus dmg from tier 3 wings in wing slap special.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -339,9 +338,28 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
@@ -356,28 +374,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
 			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -459,8 +458,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -493,6 +498,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

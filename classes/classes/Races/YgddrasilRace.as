@@ -7,6 +7,7 @@ import classes.Race;
 
 public class YgddrasilRace extends Race {
 	public static const YgddrasilSkinColors:/*String*/Array = ["mahogany", "brown", "black"];
+    public static const YgddrasilEyeColor:/*String*/Array = ["green"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -44,14 +45,18 @@ public class YgddrasilRace extends Race {
 				.faceType(NONE(Face.DRAGON, Face.DRAGON_FANGS, Face.CAT, Face.CAT_CANINES), 0, -10)
 				.hairType(ANY(Hair.ANEMONE,Hair.LEAF,Hair.GRASS), +1)
 				.hairColor1("green", +1)
+				.eyeType(Eyes.YGGDRASIL, +1)
+				.eyeColor("green", +1)
+				.eyeType(NOT(Eyes.CAT), 0, -10)
 				.earType(Ears.LIZARD, +1)
 				.earType(NOT(Ears.ELFIN), 0, -2)
 				.hornType(Horns.OAK, +1)
-				.armType(ANY(Arms.PLANT,Arms.PLANT2), +2)
+				.armType(Arms.YGGDRASIL, +2)
 				.armType(NONE(Arms.DRACONIC, Arms.FEY_DRACONIC, Arms.LION), 0, -10)
 				.wingType(Wings.YGGDRASIL_LARGE, +4)
 				.wingType(Wings.YGGDRASIL_HUGE, +6)
 				.wingType(Wings.YGGDRASIL_HUGE_2, +8)
+				.wingType(Wings.YGGDRASIL_HUGE_3, +10)
 				.customRequirement("skin", "bark skin", function (body:BodyData):Boolean {
 					return body.player.isBarkSkin()
 				}, +2)

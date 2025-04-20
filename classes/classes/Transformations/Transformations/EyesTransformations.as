@@ -832,6 +832,22 @@ public class EyesTransformations extends MutationsHelper {
 				return player.eyes.type === Eyes.AUTOMATA;
 			}
 	);
+	public const EyesYggdrasil: Transformation = new SimpleTransformation("Yggdrasil Eyes",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You suddenly get the strangest case of double vision. Stumbling and blinking around, you clutch at your face, but you draw your hands back when you poke yourself in the eye. Wait, those fingers were on your forehead! You tentatively run your fingertips across your forehead, not quite believing what you felt. <b>There's a pair of eyes on your forehead, positioned just above your normal ones!</b> It takes a moment for you to adapt to the weird sensory changes but once you recover you go to a puddle and notice all your four eyes now have a slitted pupil like that of a dragon.";
+
+				player.eyes.type = Eyes.YGGDRASIL;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.YGGDRASIL));
+			},
+			// is present
+			function (): Boolean {
+				return player.eyes.type === Eyes.YGGDRASIL;
+			}
+	);
 
 // EYE COLORS
 
@@ -1046,6 +1062,17 @@ public class EyesTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return InCollection(player.eyes.colour, ["fiendish pink", "pink", "red", "yellow", "blue", "turquoise", "light green"]);
+			}
+	);
+
+	public const EyesYggdrasilColors: Transformation = new SimpleTransformation("Yggdrasil Eye Colors",
+			// apply effect
+			function (doOutput: Boolean): void {
+				transformations.EyesChangeColor(["green"]).applyEffect(doOutput);
+			},
+			// is present
+			function (): Boolean {
+				return InCollection(player.eyes.colour, ["green"]);
 			}
 	);
 	/*
