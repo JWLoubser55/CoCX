@@ -3165,7 +3165,7 @@ public class Creature extends Utils
 		public function hasCock():Boolean
 		{
 			//Check for both cocks and clitcocks
-			return cocks.length >= 1 || vaginas.length >= 1 ? ((vaginas[0].type == VaginaClass.SHROOM) && clitLength >= 10) : false;
+			return cocks.length >= 1 ? true : vaginas.length >= 1 ? ((vaginas[0].type == VaginaClass.SHROOM) && clitLength >= 5) : false;
 		}
 
 		public function hasCockCockOnly():Boolean
