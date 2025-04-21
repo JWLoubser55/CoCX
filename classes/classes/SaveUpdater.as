@@ -2402,7 +2402,7 @@ public class SaveUpdater extends NPCAwareContent {
 				SceneLib.exploration.counters.battlefieldBoundary = flags[kFLAGS.GOLEM_ENEMY_TYPE];
 				SceneLib.exploration.counters.battlefieldOuter    = flags[kFLAGS.DISCOVERED_OUTER_BATTLEFIELD];
 				// mountainsMid - handled by postLoadSaveObject()
-				SceneLib.exploration.counters.hills               = flags[kFLAGS.DISCOVERED_HILLS];
+				SceneLib.exploration.counters.hills               = flags[kFLAGS.MECH_AI_ATTACK];
 				SceneLib.exploration.counters.mountainsLow        = flags[kFLAGS.DISCOVERED_LOW_MOUNTAIN];
 				SceneLib.exploration.counters.highMountains       = flags[kFLAGS.TAMED_01_NAME];
 				SceneLib.exploration.counters.plains              = flags[kFLAGS.TAMED_02_NAME];

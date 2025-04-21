@@ -36,7 +36,7 @@ public class MothRace extends Race {
         /*Vagina*/		"Vagina",
         /*Perks*/		"Human"];
     public function MothRace(id:int)  {
-        super("Moth", id, []);
+        super("Moth", id, []);//RaceBody);
     }
     public override function setup():void {
         addScores()

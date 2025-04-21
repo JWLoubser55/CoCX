@@ -36,7 +36,6 @@ public class WerespiderRace extends Race {
 
 	public function WerespiderRace(id:int) {
 		super("Werespider", id, []);//RaceBody);
-		disabled = true;
 	}
 	
 	public override function setup():void {

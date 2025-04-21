@@ -41,6 +41,9 @@ public class ArmsTransformations extends MutationsHelper {
 					case Arms.DISPLACER:
 						desc += "You scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your arms' [fur color] fur is flaking away, leaving [skin base.type] behind. Also the claws on your fingers reverts back into ordinary nails.\n\nYou feel highly uncomfortable as your extra set of arms vanishes into your body following the loss of your leonine paw hands. Guess your back with only two arms now.";
 						break;
+					case Arms.MARILITH:
+						desc += "You scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your arms' scales are flaking away. The leathery [skin coat.noadj] [skin coat.isare] soon gone, leaving [skin base.type] behind. Also the claws on your fingers reverts back into ordinary nails.\n\nYou feel highly uncomfortable as your extra set of arms vanishes into your body. Guess your back with only two arms now.";
+						break;
 					case Arms.ELF:
 					case Arms.DEMON:
 					case Arms.KITSUNE:
@@ -91,6 +94,8 @@ public class ArmsTransformations extends MutationsHelper {
 						if (!player.isChitinCovered()) desc += " Because you are shocked over your lower arms going away, you don't even notice the carapace of your primary arms softening into [skin coat]."
 						break;
 					case Arms.MOTH:
+					case Arms.YGGDRASIL:
+					case Arms.WERESPIDER:
 						desc += "You double over, a sudden pain just below your shoulders. Finding you cannot reach your lower arms to feel at each other, you look down and realize that they're shrinking back into your torso."
 						break;
 					default:
@@ -1216,7 +1221,7 @@ public class ArmsTransformations extends MutationsHelper {
 				return player.arms.type === Arms.CANINE;
 			}
 	);
-/*
+
 	public const ArmsWerespider: Transformation = new SimpleTransformation("Werespider Arms",
 			// apply effect
 			function (doOutput: Boolean): void {
@@ -1230,18 +1235,19 @@ public class ArmsTransformations extends MutationsHelper {
 				else {
 					TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
 
-					desc += "You watch, spellbound, while your forearms gradually become shiny. The entire outer structure of your arms tingles while it divides into segments, <b>turning the [skinfurscales] into a shiny  carapace</b>. A second pair has even begun sprouting just underneath, forming these same traits. You touch the exoskeleton and discover to your delight that you can still feel through it as naturally as your own skin.";
+					desc += "You watch, spellbound, while your forearms gradually become shiny. The entire outer structure of your arms tingles while it divides into segments, <b>turning the [skinfurscales] into a shiny carapace</b>. A second pair has even begun sprouting just underneath, forming these same traits. You touch the exoskeleton and discover to your delight that you can still feel through it as naturally as your own skin.";
 				}
 
-				player.arms.type = Arms.ANT;
+				player.chitinColor2 = "black";
+				player.arms.type = Arms.WERESPIDER;
 				if (doOutput) outputText(desc);
-				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.ANT));
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.WERESPIDER));
 			},
 			// is present
 			function (): Boolean {
-				return player.arms.type === Arms.ANT;
+				return player.arms.type === Arms.WERESPIDER;
 			}
-	);*/
+	);
 
 	public const ArmsAbyssalShark: Transformation = new SimpleTransformation("Abyssal Shark Arms",
 			// apply effect
@@ -1454,6 +1460,26 @@ public class ArmsTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.arms.type === Arms.YGGDRASIL;
+			}
+	);
+
+	public const ArmsMarilith: Transformation = new SimpleTransformation("Marilith Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
+				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHydra, doOutput);
+
+				desc += "Something weird is happening around the level of your ribcage. Painfully large bumps start expanding on the side of your body. You fall on the ground panting heavily from the pain as two new limbs surge under your arms. As you sit trying to grab these new limbs to check them out, you grab your arms instead? No wait, your hand grabs your arm whose hand grabs another arm?! As you examine yourself you discover a second set of limbs have grown under your old limbs, the skin flaking off as they grab at each other revealing a covering of serpentine scales up to the elbows. <b>Guess if your mind actually managed to coordinate your actions correctly you could actually use four weapons at once.</b>";
+				player.arms.type = Arms.MARILITH;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.MARILITH));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.MARILITH;
 			}
 	);
 	/*

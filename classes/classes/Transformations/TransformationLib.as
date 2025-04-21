@@ -161,7 +161,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const ArmsPhoenix: Transformation 			= arms.ArmsPhoenix.registerTf(AS_ARMS, AE_PHOENIX);
 	public const ArmsPig: Transformation 				= arms.ArmsPig.registerTf(AS_ARMS, AE_PIG);
 	public const ArmsPlant: Transformation 				= arms.ArmsPlant.registerTf(AS_ARMS, AE_PLANT);
-	public const ArmsPlant2: Transformation 			= arms.ArmsPlant2.registerTf(AS_ARMS, AE_YGGDRASIL);
+	public const ArmsPlant2: Transformation 			= arms.ArmsPlant2.registerTf(AS_ARMS, AE_PLANT);
 	public const ArmsRaccoon: Transformation 			= arms.ArmsRaccoon.registerTf(AS_ARMS, AE_RACCOON);
 	public const ArmsRaiju: Transformation 				= arms.ArmsRaiju.registerTf(AS_ARMS, AE_RAIJU);
 	public const ArmsRaijuPaws: Transformation 			= arms.ArmsRaijuPaws.registerTf(AS_ARMS, AE_RAIJU);
@@ -193,6 +193,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const ArmsShroom: Transformation       		= arms.ArmsShroom.registerTf(AS_ARMS, AE_MYCONID);
     public const ArmsMechanicalDoll: Transformation 	= arms.ArmsMechanicalDoll.registerTf(AS_ARMS, AE_AUTOMATA);
     public const ArmsYggdrasil: Transformation 			= arms.ArmsYggdrasil.registerTf(AS_ARMS, AE_YGGDRASIL);
+    public const ArmsWerespider: Transformation 		= arms.ArmsWerespider.registerTf(AS_ARMS, AE_WERESPIDER);
+    public const ArmsMarilith: Transformation 			= arms.ArmsMarilith.registerTf(AS_ARMS, AE_MARILITH);
 
 
 //ASS

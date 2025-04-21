@@ -607,6 +607,15 @@ public class Arms extends SaveableBodyPart {
 		claw: true,
 		bark: true
 	});
+
+	public static const MARILITH:int = 79;
+	EnumValue.add(Types, MARILITH, "MARILITH", {
+		name:"marilith",
+		appearanceDesc: "Plate-like scales cover your arms from the biceps down, and your fingernails are sharp curved claws perfect for tearing through flesh. From your shoulder extend a second pair of arms covered in scales.",
+		fourArms: true,
+		claw: true,
+		scales: true
+	});
    
 	public static function canFly(id: int): Boolean {
 		return Types[id].canFly || false;
