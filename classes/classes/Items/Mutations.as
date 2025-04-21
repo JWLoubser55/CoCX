@@ -1283,7 +1283,7 @@ public final class Mutations extends MutationsHelper {
                 if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_WET) outputText("sloppy and wet.");
                 if (player.vaginas[0].vaginalWetness == VaginaClass.WETNESS_SLICK) outputText("sopping and juicy.");
                 if (player.vaginas[0].vaginalWetness >= VaginaClass.WETNESS_DROOLING) outputText("dripping wet.");
-            } else if (player.hasCock()) outputText("  You feel a building arousal, but it doesn't affect your cock.");
+            } else if (player.hasCockCockOnly()) outputText("  You feel a building arousal, but it doesn't affect your cock.");
         }
         if (player.cor >= 70) {
             clearOutput();
@@ -1837,7 +1837,7 @@ public final class Mutations extends MutationsHelper {
                 outputText("bounding through the woods, hunting a prey.  Feeling the wind in your fur and the thrill of the hunt coursing through your veins intoxicates you.  You have your nose to the ground, tracking your quarry as you run, until a heavenly scent stops you in your tracks.");
                 dynStats("lus", 5 + player.lib / 20, "scale", false);
                 //break1
-                if (player.cor < 33 || !player.hasCock()) outputText("\nYou shake your head to clear the unwanted fantasy from your mind, repulsed by it.");
+                if (player.cor < 33 || !player.hasCockCockOnly()) outputText("\nYou shake your head to clear the unwanted fantasy from your mind, repulsed by it.");
                 else {
                     outputText("  Heart pounding, your shaft pops free of its sheath on instinct, as you take off after the new scent.  ");
                     outputText("You burst through a bush, spotting a white-furred female.  She drops, exposing her dripping fem-sex to you, the musky scent of her sex channeling straight through your nose and sliding into your canine cock.");
@@ -2390,7 +2390,7 @@ public final class Mutations extends MutationsHelper {
                 outputText("bounding through the woods, hunting with your master.  Feeling the wind in your fur and the thrill of the hunt coursing through your veins intoxicates you.  You have your nose to the ground, tracking your quarry as you run, until a heavenly scent stops you in your tracks.");
                 dynStats("lus", 5 + player.lib / 20, "scale", false);
                 //break1
-                if (player.cor < 33 || !player.hasCock()) outputText("\nYou shake your head to clear the unwanted fantasy from your mind, repulsed by it.");
+                if (player.cor < 33 || !player.hasCockCockOnly()) outputText("\nYou shake your head to clear the unwanted fantasy from your mind, repulsed by it.");
                 else {
                     outputText("  Heart pounding, your shaft pops free of its sheath on instinct, as you take off after the new scent.  Caught firmly in the grip of a female's heat, you ignore your master's cry as you disappear into the wild, " + Appearance.cockNoun(CockTypesEnum.DOG) + " growing harder as you near your quarry.  You burst through a bush, spotting a white-furred female.  She drops, exposing her dripping fem-sex to you, the musky scent of her sex channeling straight through your nose and sliding into your canine cock.");
                     dynStats("lus", 5 + player.lib / 20, "scale", false);
@@ -2815,7 +2815,7 @@ public final class Mutations extends MutationsHelper {
             if (player.isFurCovered()) outputText("[pg]Underneath your fur, your skin ");
             else outputText("[pg]Your [skin.type] ");
             var colors:Array = [];
-            if (player.hasCock() && player.hasVagina()) colors = ImpRace.ImpSkinColors;
+            if (player.hasCockCockOnly() && player.hasVagina()) colors = ImpRace.ImpSkinColors;
             else if (player.hasVagina()) colors = ImpRace.ImpSkinColorsFemale;
             else colors = ImpRace.ImpSkinColorsMale;
             player.skinColor = randomChoice(colors);
@@ -2897,7 +2897,7 @@ public final class Mutations extends MutationsHelper {
         //Red skin!
         if (!InCollection(player.skinColor1, ImpRace.ImpSkinColors)) {
             var colors:Array = [];
-            if (player.hasCock() && player.hasVagina()) colors = ImpRace.ImpSkinColors;
+            if (player.hasCockCockOnly() && player.hasVagina()) colors = ImpRace.ImpSkinColors;
             else if (player.hasVagina()) colors = ImpRace.ImpSkinColorsFemale;
             else colors = ImpRace.ImpSkinColorsMale;
             player.skinColor = randomChoice(colors);
@@ -2990,7 +2990,7 @@ public final class Mutations extends MutationsHelper {
 		var temp2:Number = 0;
 		var temp3:Number = 0;
 		//Chance of horse cock growth if not any yet
-		if (!player.hasCock() && changes < changeLimit && rand(3) == 0) {
+		if (!player.hasCockCockOnly() && changes < changeLimit && rand(3) == 0) {
 			transformations.CockHorse(0, 10 + rand(7), 2 + rand(10) / 10).applyEffect();
 			player.addCurse("sen", 5, 1);
 			player.MutagenBonus("lib", 4);
@@ -4059,7 +4059,7 @@ public final class Mutations extends MutationsHelper {
             var choices:Array = [];
             //effects: heat, rut, anal, vag looseness
             if (player.hasVagina() && !player.isPregnant()) choices.push(1);
-            if (player.hasCock()) choices.push(2);
+            if (player.hasCockCockOnly()) choices.push(2);
             if (player.hasVagina() && player.vaginas[0].vaginalLooseness < VaginaClass.LOOSENESS_LEVEL_CLOWN_CAR) choices.push(3);
             if (player.ass.analLooseness < AssClass.LOOSENESS_GAPING) choices.push(4);
             if (choices.length == 0 || rand(4) < choices.length) choices.push(0); //no effects
@@ -4820,7 +4820,7 @@ public final class Mutations extends MutationsHelper {
                 changes++;
             }
             //WANG GROWTH - TIGGERSHARK ONLY
-            if (type == 1 && (!player.hasCock()) && changes < changeLimit && rand(3) == 0) {
+            if (type == 1 && (!player.hasCockCockOnly()) && changes < changeLimit && rand(3) == 0) {
                 //Genderless:
                 transformations.CockHuman(0, 7, 1.4).applyEffect();
                 if (player.balls == 0) {
@@ -4834,7 +4834,7 @@ public final class Mutations extends MutationsHelper {
                 changes++;
             }
             //(Requires the player having two testicles)
-            if (type == 1 && player.balls <4 && player.hasCock() && changes < changeLimit && rand(3) == 0) {
+            if (type == 1 && player.balls <4 && player.hasCockCockOnly() && changes < changeLimit && rand(3) == 0) {
                 transformations.BallsQuad(2).applyEffect();
                 dynStats("lus", 10, "scale", false);
                 player.addCurse("sen", 3, 1);
@@ -4866,7 +4866,7 @@ public final class Mutations extends MutationsHelper {
 				}
 			}
 			//Change cock back to normal
-			if (type == 2 && player.hasCock() && changes < changeLimit) {
+			if (type == 2 && player.hasCockCockOnly() && changes < changeLimit) {
 				if (rand(3) == 0 && player.cocks[0].cockType != CockTypesEnum.HUMAN) {
 					transformations.CockHuman().applyEffect();
 					changes++;
@@ -5911,14 +5911,14 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Change cock back to normal
-        if (player.hasCock() && changes < changeLimit) {
+        if (player.hasCockCockOnly() && changes < changeLimit) {
             if (rand(3) == 0 && player.cocks[0].cockType != CockTypesEnum.HUMAN) {
                 transformations.CockHuman().applyEffect();
                 changes++;
             }
         }
         //Shrink oversized cocks
-        if (player.hasCock() && player.biggestCockLength() > 12 && rand(3) == 0 && changes < changeLimit) {
+        if (player.hasCockCockOnly() && player.biggestCockLength() > 12 && rand(3) == 0 && changes < changeLimit) {
             var idx:int = player.biggestCockIndex();
             if (player.cocks.length == 1) outputText("[pg]You feel a tingling sensation as your cock shrinks to a smaller size!");
             else outputText("[pg]You feel a tingling sensation as the largest of your cocks shrinks to a smaller size!");
@@ -5983,7 +5983,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Cum Multiplier Decrease:
-        if (player.hasCock() && player.cumMultiplier > 5 && rand(3) == 0 && changes < changeLimit) {
+        if (player.hasCockCockOnly() && player.cumMultiplier > 5 && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]You feel a strange tingling sensation in your ");
             if (player.hasBalls()) outputText("balls");
             else outputText("groin");
@@ -7906,7 +7906,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //WANG GROWTH
-        if (!player.hasCock() && changes < changeLimit && rand(3) == 0) {
+        if (!player.hasCockCockOnly() && changes < changeLimit && rand(3) == 0) {
             transformations.CockHuman(0, 7).applyEffect();
             if (player.balls == 0) {
                 outputText(" and a pair of balls");
@@ -8174,7 +8174,7 @@ public final class Mutations extends MutationsHelper {
             //Lower ones are gender specific for some reason
             if (player.lib < 60) {
                 //(Cunts or assholes!
-                if (!player.hasCock() || (player.gender == 3 && rand(2) == 0)) {
+                if (!player.hasCockCockOnly() || (player.gender == 3 && rand(2) == 0)) {
                     if (player.lib < 30) {
                         outputText("[pg]You squirm a little and find your eyes glancing down to your groin.  Strange thoughts jump to mind, wondering how it would feel to breed until you're swollen and pregnant.  ");
                         if (player.cor < 25) outputText("You're repulsed by such shameful thoughts.");
@@ -8184,7 +8184,7 @@ public final class Mutations extends MutationsHelper {
                     } else outputText("[pg]Your mouth rolls open as you start to pant with desire.  Did it get hotter?  Your hand reaches down to your " + player.assholeOrPussy() + ", and you're struck by just how empty it feels.  The desire to be filled, not by a hand or a finger but by a virile male, rolls through you like a wave, steadily increasing your desire for sex.");
                 }
                 //WANGS!
-                if (player.hasCock()) {
+                if (player.hasCockCockOnly()) {
                     if (player.lib < 30) {
                         outputText("[pg]You squirm a little and find your eyes glancing down to your groin.  Strange thoughts jump to mind, wondering how it would feel to fuck a ");
                         if (rand(2) == 0) outputText("female hare until she's immobilized by all her eggs");
@@ -8323,7 +8323,7 @@ public final class Mutations extends MutationsHelper {
             player.balls -= 2;
         }
         //Make PC an Easter bunny
-        if (!player.hasPerk(PerkLib.EasterBunnyBalls) && type == 0 && player.hasCock() && player.balls <= 4 && rand(3) == 0) {
+        if (!player.hasPerk(PerkLib.EasterBunnyBalls) && type == 0 && player.hasCockCockOnly() && player.balls <= 4 && rand(3) == 0) {
             outputText("[pg]You gasp as ");
             if (player.balls >= 2) outputText("something fundamental change in your balls. ");
             if (player.balls == 0) {
@@ -8437,7 +8437,7 @@ public final class Mutations extends MutationsHelper {
 			}
 		}
         //Boost cum production
-        if ((player.hasBalls() || player.hasCock()) && player.cumQ() < 3000 && rand(3) == 0 && changeLimit > 1) {
+        if ((player.hasBalls() || player.hasCockCockOnly()) && player.cumQ() < 3000 && rand(3) == 0 && changeLimit > 1) {
             changes++;
             player.cumMultiplier += 3 + rand(7);
             if (player.cumQ() >= 250) dynStats("lus", 3, "scale", false);
@@ -8450,25 +8450,25 @@ public final class Mutations extends MutationsHelper {
                 //(medium cum quantity) < 250
                 else if (player.cumQ() < 250) {
                     outputText("[pg]A ripple of discomfort runs through your [balls], but it fades into a pleasant tingling.  You reach down to heft the orbs experimentally but they don't seem any larger.");
-                    if (player.hasCock()) outputText("  In the process, you brush " + sMultiCockDesc() + " and discover a bead of pre leaking at the tip.");
+                    if (player.hasCockCockOnly()) outputText("  In the process, you brush " + sMultiCockDesc() + " and discover a bead of pre leaking at the tip.");
                 }
                 //(large cum quantity) < 750
                 else if (player.cumQ() < 750) {
                     outputText("[pg]A strong contraction passes through your [sack], almost painful in its intensity.  ");
-                    if (player.hasCock()) outputText(SMultiCockDesc() + " leaks and dribbles pre-cum down your [legs] as your body's cum production kicks up even higher.");
+                    if (player.hasCockCockOnly()) outputText(SMultiCockDesc() + " leaks and dribbles pre-cum down your [legs] as your body's cum production kicks up even higher.");
                     else outputText("You wince, feeling pent up and yet unable to release.  You really wish you had a cock right about now.");
                 }
                 //(XL cum quantity) < 2000
                 else if (player.cumQ() < 2000) {
                     outputText("[pg]An orgasmic contraction wracks your [balls], shivering through the potent orbs and passing as quickly as it came.  ");
-                    if (player.hasCock()) outputText("A thick trail of slime leaks from " + sMultiCockDesc() + " down your [leg], pooling below you.");
+                    if (player.hasCockCockOnly()) outputText("A thick trail of slime leaks from " + sMultiCockDesc() + " down your [leg], pooling below you.");
                     else outputText("You grunt, feeling terribly pent-up and needing to release.  Maybe you should get a penis to go with these balls...");
                     outputText("  It's quite obvious that your cum production has gone up again.");
                 }
                 //(XXL cum quantity)
                 else {
                     outputText("[pg]A body-wrenching contraction thrums through your [balls], bringing with it the orgasmic feeling of your body kicking into cum-production overdrive.  ");
-                    if (player.hasCock()) outputText("pre-cum explodes from " + sMultiCockDesc() + ", running down your [leg] and splattering into puddles that would shame the orgasms of lesser " + player.mf("males", "persons") + ".  You rub yourself a few times, nearly starting to masturbate on the spot, but you control yourself and refrain for now.");
+                    if (player.hasCockCockOnly()) outputText("pre-cum explodes from " + sMultiCockDesc() + ", running down your [leg] and splattering into puddles that would shame the orgasms of lesser " + player.mf("males", "persons") + ".  You rub yourself a few times, nearly starting to masturbate on the spot, but you control yourself and refrain for now.");
                     else outputText("You pant and groan but the pleasure just turns to pain.  You're so backed up – if only you had some way to vent all your seed!");
                 }
             }
@@ -8573,7 +8573,7 @@ public final class Mutations extends MutationsHelper {
             //Lower ones are gender specific for some reason
             if (player.lib < 60) {
                 //(Cunts or assholes!
-                if (!player.hasCock() || (player.gender == 3 && rand(2) == 0)) {
+                if (!player.hasCockCockOnly() || (player.gender == 3 && rand(2) == 0)) {
                     if (player.lib < 30) {
                         outputText("[pg]You squirm a little and find your eyes glancing down to your groin.  Strange thoughts jump to mind, wondering how it would feel to breed until you're swollen and pregnant.  ");
                         if (player.cor < 25) outputText("You're repulsed by such shameful thoughts.");
@@ -8583,7 +8583,7 @@ public final class Mutations extends MutationsHelper {
                     } else outputText("[pg]Your mouth rolls open as you start to pant with desire.  Did it get hotter?  Your hand reaches down to your " + player.assholeOrPussy() + ", and you're struck by just how empty it feels.  The desire to be filled, not by a hand or a finger but by a virile male, rolls through you like a wave, steadily increasing your desire for sex.");
                 }
                 //WANGS!
-                if (player.hasCock()) {
+                if (player.hasCockCockOnly()) {
                     if (player.lib < 30) {
                         outputText("[pg]You squirm a little and find your eyes glancing down to your groin.  Strange thoughts jump to mind, wondering how it would feel to fuck a ");
                         if (rand(2) == 0) outputText("female hare until she's immobilized by all her eggs");
@@ -8666,7 +8666,7 @@ public final class Mutations extends MutationsHelper {
             if (player.lib < 40) {
                 outputText("[pg]A passing flush colors your [face] for a second as you daydream about sex. You blink it away, realizing the item seems to have affected your libido.");
                 if (player.hasVagina()) outputText(" The moistness of your [vagina] seems to agree.");
-                else if (player.hasCock()) outputText(" The hardness of " + sMultiCockDesc() + " seems to agree.");
+                else if (player.hasCockCockOnly()) outputText(" The hardness of " + sMultiCockDesc() + " seems to agree.");
                 dynStats("lus", 5, "scale", false);
             }
             //(sub 75 lib)
@@ -8680,7 +8680,7 @@ public final class Mutations extends MutationsHelper {
                 dynStats("lus", (player.lib / 5 + 10), "scale", false);
                 //(herm – either or!)
                 //Cocks!
-                if (player.hasCock() && (player.gender != 3 || rand(2) == 0)) {
+                if (player.hasCockCockOnly() && (player.gender != 3 || rand(2) == 0)) {
                     //(male 1)
                     if (rand(2) == 0) {
                         outputText("In your fantasy you're winging through the sky, " + sMultiCockDesc() + " already hard and drizzling with male moisture while you circle an attractive harpy's nest. Her plumage is as blue as the sky, her eyes the shining teal of the sea, and legs splayed in a way that shows you how ready she is to be bred. You fold your wings and dive, wind whipping through your [hair] as she grows larger and larger. With a hard, body-slapping impact you land on top of her, plunging your hard, ready maleness into her hungry box. ");
@@ -8758,7 +8758,7 @@ public final class Mutations extends MutationsHelper {
             player.breastRows[0].breastRating = 2;
         }
         //Change cock if you have a penis.
-        if (changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.AVIAN) < player.cockTotal() && rand(type == 1 ? 4 : 10) == 0) { //2.5x chance if magic seed.
+        if (changes < changeLimit && player.hasCockCockOnly() && player.countCocksOfType(CockTypesEnum.AVIAN) < player.cockTotal() && rand(type == 1 ? 4 : 10) == 0) { //2.5x chance if magic seed.
             changes++;
             for (var i:int = 0; i < player.cocks.length; i++) {
                 if (player.cocks[i].cockType != CockTypesEnum.AVIAN) {
@@ -9221,7 +9221,7 @@ public final class Mutations extends MutationsHelper {
         //Find biggest dick!
         biggestCock = player.biggestCockIndex();
         //-Shrink dicks down to 8\" max.
-        if (player.hasCock()) {
+        if (player.hasCockCockOnly()) {
             if (player.cocks[biggestCock].cockLength >= 16 && changes < changeLimit && rand(5) == 0) {
                 outputText("[pg]A roiling inferno of heat blazes in your " + cockDescript(biggestCock) + ", doubling you over in the dirt.  You rock back and forth while tears run unchecked down your cheeks.  Once the pain subsides and you're able to move again, you find the poor member has lost nearly half its size.");
                 player.cocks[biggestCock].cockLength /= 2;
@@ -9555,7 +9555,7 @@ public final class Mutations extends MutationsHelper {
             outputText("[pg]");
 
             //female
-            if (!player.hasCock()) {
+            if (!player.hasCockCockOnly()) {
                 outputText("The beverage isn't done yet, however, and it makes it perfectly clear with a building pleasure in your groin.  You can only cry in ecstasy and loosen the bottoms of your [armor] just in time for a little penis to spring forth.  You watch, enthralled, as blood quickly stiffens the shaft to its full length – then keeps on going!  Before long, you have a quivering 10-inch maleness, just ready to stuff into a welcoming box.");
                 transformations.CockHuman(0, 10, 2).applyEffect(false);
                 if (player.balls == 0) {
@@ -9608,7 +9608,7 @@ public final class Mutations extends MutationsHelper {
         outputText("Whoah, you're fucking ripped and strong, not at all like the puny weakling you were before.  Yet, you feel oddly wool-headed.  Your thoughts seem to be coming slower and slower, like they're plodding through a marsh.  You grunt in frustration at the realization.  Sure, you're a muscle-bound hunk now, but what good is it if you're as dumb as a box of rocks?  Your muscles flex in the most beautiful way, so you stop and strike a pose, mesmerized by your own appearance.  Fuck thinking, that shit's for losers![pg]");
 
         //(has dick less than 10 inches)
-        if (player.hasCock()) {
+        if (player.hasCockCockOnly()) {
             if (player.cocks[0].cockLength < 10) {
                 outputText("As if on cue, the familiar tingling gathers in your groin, and you dimly remember you have one muscle left to enlarge.  If only you had the intelligence left to realize that your penis is not a muscle.  In any event, your [cock] swells in size, ");
                 if (player.cocks[0].cockThickness < 2.75) {
@@ -9710,7 +9710,7 @@ public final class Mutations extends MutationsHelper {
         }
         if (player.blockingBodyTransformations()) changeLimit = 0;
         //Effect script a:  (human wang)
-        if (player.hasCock() && changes < changeLimit) {
+        if (player.hasCockCockOnly() && changes < changeLimit) {
             if (rand(3) == 0 && player.cocks[0].cockType != CockTypesEnum.HUMAN) {
                 transformations.CockHuman().applyEffect();
                 changes++;
@@ -11143,7 +11143,7 @@ public final class Mutations extends MutationsHelper {
             }
         }
         //Cum Multiplier Xform
-        if (player.cumQ() < 5000 && rand(3) == 0 && changes < changeLimit && player.hasCock()) {
+        if (player.cumQ() < 5000 && rand(3) == 0 && changes < changeLimit && player.hasCockCockOnly()) {
             var mult:int = 2 + rand(4);
             //Lots of cum raises cum multiplier cap to 3 instead of 1.5
             if (player.hasPerk(PerkLib.MessyOrgasms)) mult += rand(20);
@@ -11348,7 +11348,7 @@ public final class Mutations extends MutationsHelper {
             }
         }
         //Cum Multiplier Xform
-        if (player.cumQ() < 5000 && rand(3) == 0 && changes < changeLimit && player.hasCock()) {
+        if (player.cumQ() < 5000 && rand(3) == 0 && changes < changeLimit && player.hasCockCockOnly()) {
             var mult:int = 2 + rand(4);
             //Lots of cum raises cum multiplier cap to 3 instead of 1.5
             if (player.hasPerk(PerkLib.MessyOrgasms)) mult += rand(20);
@@ -12239,7 +12239,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Sensitivity Increase:
-        if (player.sens < 70 && player.hasCock() && rand(3) == 0 && changes < changeLimit) {
+        if (player.sens < 70 && player.hasCockCockOnly() && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]A light breeze brushes over you and your skin tingles.  You have become more sensitive to physical sensation.");
             player.addCurse("sen", 5, 1);
             changes++;
@@ -12299,7 +12299,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Penis Reduction towards 3.5 Inches:
-        if (player.longestCockLength() >= 3.5 && player.hasCock() && rand(2) == 0 && changes < changeLimit) {
+        if (player.longestCockLength() >= 3.5 && player.hasCockCockOnly() && rand(2) == 0 && changes < changeLimit) {
             outputText("[pg]You flinch and gasp as your [cocks] suddenly become");
             if (player.cockTotal() == 1) outputText("s");
             outputText(" incredibly sensitive and retract into your body.  Anxiously you pull down your underclothes to examine your nether regions.  To your relief ");
@@ -12330,7 +12330,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Testicle Reduction:
-        if (player.hasBalls() && player.hasCock() && (player.ballSize > 1 || !player.hasStatusEffect(StatusEffects.Uniball)) && rand(4) == 0 && changes < changeLimit) {
+        if (player.hasBalls() && player.hasCockCockOnly() && (player.ballSize > 1 || !player.hasStatusEffect(StatusEffects.Uniball)) && rand(4) == 0 && changes < changeLimit) {
             outputText("[pg]You feel a delicate tightening sensation around your [balls].  The sensation upon this most sensitive part of your anatomy isn't painful, but the feeling of your balls getting smaller is intense enough that you stifle anything more than a sharp intake of breath only with difficulty.");
             player.ballSize--;
             if (player.ballSize > 8) player.ballSize--;
@@ -12525,7 +12525,7 @@ public final class Mutations extends MutationsHelper {
 		if (player.blockingBodyTransformations()) changeLimit = 0;
 
         //Sex stuff
-        if (player.hasCock()) {
+        if (player.hasCockCockOnly()) {
             //gain ball size
             if (player.hasBalls() && player.ballSize < 15 && rand(4) == 0 && changes < changeLimit) {
                 outputText("[pg]Your [balls] inflate, stretching the skin of your sack.  Exposing them, you can see that they've grown several inches!  How magical!");
@@ -13017,7 +13017,7 @@ public final class Mutations extends MutationsHelper {
         }
 		if (player.blockingBodyTransformations()) changeLimit = 0;
         //- If male with a hip rating >4 or a female/herm with a hip rating >6:
-        if (((!player.hasCock() && player.hips.type > 6) || (player.hasCock() && player.hips.type > 4)) && rand(3) == 0 && changes < changeLimit) {
+        if (((!player.hasCockCockOnly() && player.hips.type > 6) || (player.hasCockCockOnly() && player.hips.type > 4)) && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]A warm, tingling sensation arises in your [hips].  Immediately, you reach down to them, concerned.  You can feel a small portion of your [hips] dwindling away under your hands.");
             player.hips.type--;
             if (player.hips.type > 10) player.hips.type--;
@@ -13037,10 +13037,10 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //-If male with breasts or female/herm with breasts > B cup:
-        if (!flags[kFLAGS.HYPER_HAPPY] && (player.biggestTitSize() > 2 || (player.hasCock() && player.biggestTitSize() >= 1)) && rand(2) == 0 && changes < changeLimit) {
+        if (!flags[kFLAGS.HYPER_HAPPY] && (player.biggestTitSize() > 2 || (player.hasCockCockOnly() && player.biggestTitSize() >= 1)) && rand(2) == 0 && changes < changeLimit) {
             outputText("[pg]You cup your tits as they begin to tingle strangely.  You can actually feel them getting smaller in your hands!");
             for (x = 0; x < player.bRows(); x++) {
-                if (player.breastRows[x].breastRating > 2 || (player.hasCock() && player.breastRows[x].breastRating >= 1)) {
+                if (player.breastRows[x].breastRating > 2 || (player.hasCockCockOnly() && player.breastRows[x].breastRating >= 1)) {
                     player.breastRows[x].breastRating--;
                 }
             }
@@ -13048,7 +13048,7 @@ public final class Mutations extends MutationsHelper {
             //(this will occur incrementally until they become flat, manly breasts for males, or until they are A or B cups for females/herms)
         }
         //-If penis size is > 6 inches:
-        if (player.hasCock()) {
+        if (player.hasCockCockOnly()) {
             //Find longest cock
             temp = -1;
             for (x = 0; x < player.cockTotal(); x++) {
@@ -13912,7 +13912,7 @@ public final class Mutations extends MutationsHelper {
                 transformations.CockToVagina().applyEffect();
             }
             //if the last of the player's dicks are eliminated this way, they gain a virgin vagina;
-            if (!player.hasCock() && !player.hasVagina()) {
+            if (!player.hasCockCockOnly() && !player.hasVagina()) {
                 transformations.VaginaHuman().applyEffect();
                 changes++;
                 dynStats("lus", 10, "scale", false);
@@ -14222,7 +14222,7 @@ public final class Mutations extends MutationsHelper {
         }
         if (player.blockingBodyTransformations()) changeLimit = 0;
         //Maleness
-        if (player.hasCock() && rand(3) == 0 && player.cocks.length > 0) {
+        if (player.hasCockCockOnly() && rand(3) == 0 && player.cocks.length > 0) {
             if (player.cocks.length == 1) {
                 outputText("[pg]Your [cock] becomes shockingly hard.  It turns a shiny inhuman purple and spasms, dribbling hot demon-like cum as it begins to grow.");
                 if (rand(4) == 0) temp = player.growCock(0, 3);
@@ -15028,13 +15028,13 @@ public final class Mutations extends MutationsHelper {
         //BREEDING TIME
         if (player.isRace(Races.FROSTWYRM, 1, false) && rand(3) == 0 && player.gender > 0) {
             outputText("[pg]A sudden swell of lust races through your ");
-            if (player.hasCock()) {
+            if (player.hasCockCockOnly()) {
                 outputText(cockDescript(0));
                 if (player.hasVagina()) outputText(" and ");
             }
             if (player.hasVagina()) outputText(vaginaDescript());
             outputText(", making you wish you had a big fat dragon cock to go with. All you can think about now is fucking a dragon or something of that size right now ");
-            if (player.hasCock() && flags[kFLAGS.EMBER_GENDER] >= 2) {
+            if (player.hasCockCockOnly() && flags[kFLAGS.EMBER_GENDER] >= 2) {
                 outputText("filling a womb with your seed and fertilizing those eggs");
                 if (player.hasVagina() && flags[kFLAGS.EMBER_GENDER] == 3) outputText(" even while ");
             }
@@ -15042,7 +15042,7 @@ public final class Mutations extends MutationsHelper {
                 outputText("taking that hard, spurting cock inside your own " + vaginaDescript(0));
             }
             outputText("... too late, you realize that the<b> Fafnir tear has sent your draconic body into ");
-            if (player.hasCock() && (rand(2) == 0 || !player.hasVagina())) { //If hermaphrodite, the chance is 50/50.
+            if (player.hasCockCockOnly() && (rand(2) == 0 || !player.hasVagina())) { //If hermaphrodite, the chance is 50/50.
                 outputText("rut");
                 player.goIntoRut(false);
                 changes++;
@@ -15167,7 +15167,7 @@ public final class Mutations extends MutationsHelper {
             player.ass.analLooseness--;
         }
         //(Thickens all cocks to a ratio of 1\" thickness per 5.5\"
-        if (player.hasCock() && changes < changeLimit && rand(4) == 0) {
+        if (player.hasCockCockOnly() && changes < changeLimit && rand(4) == 0) {
             //Use swtch to see if any dicks can be thickened
             swtch = 0;
             counter = 0;
@@ -15487,7 +15487,7 @@ public final class Mutations extends MutationsHelper {
             outputText("[pg]You begin musing on the many people and creatures you've met thus far on Mareth. They are undisciplined and disorganized. It would only make sense for you to simply gather all those rowdy fools under your leadership so to better lead them against the common foe, maybe rule them too? ");
 			if (player.cor < 50) {
 				outputText("Your");
-				if (player.gender > 0) outputText((player.hasCock()?" cock hardens":"")+(player.hasSheath()?" out of its sheath":"")+(player.gender == 3?" while":"")+(player.hasVagina()?" vagina drips":"")+(player.gender == 3?" in sympathy":"")+" as fantasies of an endless harem of slaves and sycophants servicing you overtake your thought. Even your enemies would make fine slaves if you could properly coerce them into working for you.");
+				if (player.gender > 0) outputText((player.hasCockCockOnly()?" cock hardens":"")+(player.hasSheath()?" out of its sheath":"")+(player.gender == 3?" while":"")+(player.hasVagina()?" vagina drips":"")+(player.gender == 3?" in sympathy":"")+" as fantasies of an endless harem of slaves and sycophants servicing you overtake your thought. Even your enemies would make fine slaves if you could properly coerce them into working for you.");
 				else outputText(" cheeks blush with arousal.");
 			}
 			else outputText("Realizing how self centered your thoughts are becoming you shake your head and berate yourself. Just what is this place doing to you?");
@@ -15808,7 +15808,7 @@ public final class Mutations extends MutationsHelper {
             //Get so drunk you end up peeing! Genderless can still urinate.
             if (player.statusEffectv2(StatusEffects.Drunk) >= 3) {
                 outputText("[pg]You feel so drunk; your vision is blurry and you realize something's not feeling right. Gasp! You have to piss like a racehorse! You stumble toward the nearest bush");
-                if (player.hasVagina() && !player.hasCock()) outputText(player.clothedOrNakedLower(", open up your [armor]") + " and release your pressure onto the ground. ");
+                if (player.hasVagina() && !player.hasCockCockOnly()) outputText(player.clothedOrNakedLower(", open up your [armor]") + " and release your pressure onto the ground. ");
                 else outputText(player.clothedOrNakedLower(", open up your [armor]") + " and release your pressure onto the wall. ");
                 outputText("It's like as if the floodgate has opened! ");
                 awardAchievement("Urine Trouble", kACHIEVEMENTS.GENERAL_URINE_TROUBLE, true, true, false);
@@ -16366,7 +16366,7 @@ public final class Mutations extends MutationsHelper {
             }
         }
         if (player.isMaleOrHerm()) {
-            if (player.hasCock() && player.cocks[0].cockType != CockTypesEnum.RED_PANDA && rand(3) == 0 && changes < changeLimit) {
+            if (player.hasCockCockOnly() && player.cocks[0].cockType != CockTypesEnum.RED_PANDA && rand(3) == 0 && changes < changeLimit) {
                 transformations.CockRedPanda(0).applyEffect();
                 changes++;
             }
@@ -17005,7 +17005,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
 		//Boost cum production
-        if (player.hasBalls() && player.hasCock() && rand(4) == 0 && changes < changeLimit) {
+        if (player.hasBalls() && player.hasCockCockOnly() && rand(4) == 0 && changes < changeLimit) {
             player.cumMultiplier += 15;
             outputText("[pg]You feel your balls churn slightly, it’s apparent your <b>cum production has increased.</b>");
             changes++;
@@ -17063,7 +17063,7 @@ public final class Mutations extends MutationsHelper {
 					transformations.SkinFur(Skin.COVERAGE_COMPLETE, {colors: ["green", "gray"]}).applyEffect();
 					changes++;
 				}
-				if (rand(3) == 0 && changes < changeLimit && player.tailType != Tail.TROLL && player.hasCock()) {
+				if (rand(3) == 0 && changes < changeLimit && player.tailType != Tail.TROLL && player.hasCockCockOnly()) {
 					outputText("[pg]");
 					transformations.TailTroll.applyEffect();
 					changes++;
@@ -17109,7 +17109,7 @@ public final class Mutations extends MutationsHelper {
 					transformations.SkinFur(Skin.COVERAGE_COMPLETE, {colors: ["blue", "white"]}).applyEffect();
 					changes++;
 				}
-				if (rand(3) == 0 && changes < changeLimit && player.tailType != Tail.GLACIAL_TROLL && player.hasCock()) {
+				if (rand(3) == 0 && changes < changeLimit && player.tailType != Tail.GLACIAL_TROLL && player.hasCockCockOnly()) {
 					outputText("[pg]");
 					transformations.TailGlacialTroll.applyEffect();
 					changes++;
