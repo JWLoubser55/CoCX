@@ -822,7 +822,7 @@ import classes.CoC;
 			cost: function():Number { return getTailCost(player.tailCount, 1);},
 			title: "Troll",
 			transformation: function(): Transformation {
-				return CoC.instance.transformations.TailAbyssalShark;
+				return CoC.instance.transformations.TailTroll;
 			}
 		});
 
@@ -833,7 +833,18 @@ import classes.CoC;
 			cost: function():Number { return getTailCost(player.tailCount, 1);},
 			title: "G.Troll",
 			transformation: function(): Transformation {
-				return CoC.instance.transformations.TailAbyssalShark;
+				return CoC.instance.transformations.TailGlacialTroll;
+			}
+		});
+
+		public static const MOTH:int = _partid++;
+		EnumValue.add(Memories, MOTH, "MOTH", {
+			id: "Moth Tail",
+			name: "Moth Tail",
+			cost: function():Number { return getTailCost(player.tailCount, 1);},
+			title: "Moth",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TailMoth;
 			}
 		});
 

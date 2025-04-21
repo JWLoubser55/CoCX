@@ -226,13 +226,14 @@ public class MaraFruit extends Consumable{
 			changes++;
 		}
 		//Arms
-		if ((player.lowerBody == LowerBody.PLANT_HIGH_HEELS || player.lowerBody == LowerBody.PLANT_ROOT_CLAWS) && !InCollection(player.arms.type, Arms.GARGOYLE, Arms.PLANT) && changes < changeLimit && rand(3) == 0) {
+		if ((player.lowerBody == LowerBody.PLANT_HIGH_HEELS || player.lowerBody == LowerBody.PLANT_ROOT_CLAWS) && !InCollection(player.arms.type, Arms.GARGOYLE, Arms.PLANT, Arms.PLANT2) && changes < changeLimit && rand(3) == 0) {
 			outputText("\n\n");
-			CoC.instance.transformations.ArmsPlant.applyEffect();
+			if (player.cor >= 50) CoC.instance.transformations.ArmsPlant2.applyEffect();
+			else CoC.instance.transformations.ArmsPlant.applyEffect();
 			changes++;
 		}
 		//Wings slot aka tentacle cockvine wings
-		if (player.arms.type == Arms.PLANT && player.wings.type != Wings.PLANT && player.lowerBody != LowerBody.PLANT_FLOWER && changes < changeLimit && rand(3) == 0) {
+		if ((player.arms.type == Arms.PLANT || player.arms.type == Arms.PLANT2) && player.wings.type != Wings.PLANT && player.lowerBody != LowerBody.PLANT_FLOWER && changes < changeLimit && rand(3) == 0) {
 			CoC.instance.transformations.WingsPlant.applyEffect();
 			changes++;
 		}

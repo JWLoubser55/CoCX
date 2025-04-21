@@ -33,7 +33,8 @@ package classes.Scenes.Monsters
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			SceneLib.campMakeWinions.postFightGolemOptions5();
+			if (flags[kFLAGS.GOLEM_ENEMY_TYPE] == 20) SceneLib.campMakeWinions.postFightGolemOptions5(0);
+			if (flags[kFLAGS.GOLEM_ENEMY_TYPE] == 21) SceneLib.campMakeWinions.postFightGolemOptions5(1);
 		}
 		
 		public function CaveGolems() 

@@ -775,7 +775,7 @@ public class LowerBody extends SaveableBodyPart {
 
 	public static const JABBERWOCKY:int = 73;
 	EnumValue.add(Types, JABBERWOCKY, "JABBERWOCKY", {
-		name: "bunny",
+		name: "jabberwocky",
 		legsPrefixes: ["fuzzy bunny-like", "fur-covered", "furry", ""],
 		legPrefixes: ["fuzzy bunny-like", "fur-covered", "furry", ""],
 		feetPrefixes: ["large bunny-like", "rabbit-like", "large", ""],
@@ -879,7 +879,7 @@ public class LowerBody extends SaveableBodyPart {
 	public static const MOTH:int = 84;
 	EnumValue.add(Types, MOTH, "MOTH", {
 		name: "moth",
-		appearanceDesc: "your legs are covered in a bell bottom like fuzzy mass"
+		appearanceDesc: "Your {legCount} legs are covered in a bell bottom like fuzzy mass."
 	});
 
 	public static const TROLL:int = 85;
@@ -923,6 +923,13 @@ public class LowerBody extends SaveableBodyPart {
 		name: "automata",
 		appearanceDesc: "Your two mechanical legs are segmented at the junctions and innerly reinforced with hydraulic systems granting you a jump and running power strong enough to outspeed any organics. A pair of heavy metal boots ornate your steel leg reminiscent of body armor except it's all part of your body."
 	});
+
+	public static const WERESPIDER:int = 92;
+	EnumValue.add(Types, WERESPIDER, "WERESPIDER", {
+		name: "werespider",
+		appearanceDesc: "Your {legCount} legs are covered in a reflective [chitin color1], insectile carapace exoskeleton.",
+		chitin: true
+	})
 
 	override public function set type(value:int):void {
 		super.type = value;

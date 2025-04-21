@@ -2005,14 +2005,14 @@ import classes.Scenes.Combat.CombatAbility;
 		private function toggleXPBankingOn():void {
 			clearOutput();
 			outputText("You have chosen to have Exp Banking enabled.");
-			flags[kFLAGS.EXP_BANKING] = 1;
+			flags[kFLAGS.EXP_BANKING] = 0;
 			setTheFuckingDifficultyForFuckingGood();
 			doNext(chooseGameModes);
 		}
 		private function toggleXPBankingOff():void {
 			clearOutput();
 			outputText("You have chosen to have Exp Banking disabled.");
-			flags[kFLAGS.EXP_BANKING] = 0;
+			flags[kFLAGS.EXP_BANKING] = 1;
 			setTheFuckingDifficultyForFuckingGood();
 			doNext(chooseGameModes);
 		}
@@ -2075,7 +2075,7 @@ import classes.Scenes.Combat.CombatAbility;
 			outputText("\n<b>Hardcore Modifier:</b> "+(flags[kFLAGS.HARDCORE_MODE] == 1?"Enabled (No level limits for unlocking new areas)":"Disabled")+"\n");
 			outputText("<b>Hunger Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0?"Enabled (PC must manage his own hunger lest you want see his death from starvation)":"Disabled")+"\n");
 			outputText("<b>Realistic Mode Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0.5?"Enabled (PC must manage his own hunger lest you want see his death from starvation + your cum production is capped and having oversized parts will weigh you down)":"Disabled")+"\n");
-			outputText("<b>Exp Banking:</b> "+(flags[kFLAGS.EXP_BANKING] == 0?"Enabled (PC can stack experience indefinitily from defeated opponents)":"Disabled")+"\n");
+			outputText("<b>Exp Banking:</b> "+(flags[kFLAGS.EXP_BANKING] > 0?"Disabled":"Enabled (PC can stack experience indefinitely from defeated opponents)")+"\n");
 
 			outputText("\n");
 			player.displayFinalGameDifficulty();
@@ -2094,8 +2094,8 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0) addButton(5, "Hunger (Off)", toggleForHungerOff);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0.5) addButton(6, "Hunger (On)", toggleForHungerOn);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 1) addButton(7, "Realistic (On)", toggleForRealisticOn);
-			if (flags[kFLAGS.EXP_BANKING] != 1) addButton(8, "Exp Banking (On)", toggleXPBankingOn);
-			if (flags[kFLAGS.EXP_BANKING] != 0) addButton(9, "Exp Banking (Off)", toggleXPBankingOff);
+			if (flags[kFLAGS.EXP_BANKING] != 0) addButton(8, "Exp Banking (On)", toggleXPBankingOn);
+			if (flags[kFLAGS.EXP_BANKING] != 1) addButton(9, "Exp Banking (Off)", toggleXPBankingOff);
 			//10+
 			//11-
 			addButton(14, "Start", startTheGame);

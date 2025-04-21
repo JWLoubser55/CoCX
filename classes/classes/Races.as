@@ -148,13 +148,14 @@ public class Races {
 	public static const LICH:LichRace             		   = new LichRace(123);
 	public static const MYCONID:MyconidRace				   = new MyconidRace(124);
 	public static const AUTOMATA:AutomataRace			   = new AutomataRace(125);
+	public static const MARILITH:MarilithRace			   = new MarilithRace(126);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
 			CAT, NEKOMATA, DISPLACERBEAST, HELLCAT, CHESHIRE, SPHINX, MANTICORE, DRAGONNE
 	];
 	public static const SnakelikeRaces:/*Race*/Array = [
-			NAGA, GORGON, VOUIVRE, COUATL, HYDRA, APOPHIS
+			NAGA, GORGON, VOUIVRE, COUATL, HYDRA, APOPHIS, MARILITH
 	];
 	public static const InsectRaces:/*Race*/Array = [
 			BEE, MANTIS, SCORPION, SPIDER, ANT, OOMUKADE, CANCER, ATLACH_NACHA, SANDWORM, WERESPIDER, MOTH

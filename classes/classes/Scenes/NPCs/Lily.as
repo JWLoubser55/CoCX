@@ -122,8 +122,8 @@ import classes.Scenes.Combat.CombatAbilities;
 			else damage *= (5.5 + ((this.weaponRangeAttack - 200) * 0.01));
 			if (hasPerk(PerkLib.Sadomasochism)) {
 				var smB:Number = 1;
-				if (this.HP < this.maxHP() * 0.25) smB += 0.2;
-				if (this.lust > this.maxLust() * 75) smB += 0.2;
+				if (this.HP < this.maxHP() * 0.25) smB += 2;
+				if (this.lust > this.maxLust() * 75) smB += 2;
 				damage *= smB;
 			}
 			player.takePhysDamage(damage, true);

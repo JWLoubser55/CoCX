@@ -1177,7 +1177,11 @@ use namespace CoC;
 		}
 		public function thirdtierWingsForWingSlap():Boolean
 		{
-			return wings.type == Wings.BAT_LIKE_LARGE_2 || wings.type == Wings.DRACONIC_HUGE;
+			return wings.type == Wings.BAT_LIKE_LARGE_2 || wings.type == Wings.DRACONIC_HUGE || wings.type == Wings.YGGDRASIL_HUGE_2;
+		}
+		public function fourthtierWingsForWingSlap():Boolean
+		{
+			return wings.type == Wings.YGGDRASIL_HUGE_3;
 		}
 		//Natural Claws (arm types and weapons that can substitude them)
 		public function haveNaturalClaws():Boolean { return Arms.Types[arms.type].claw || Arms.Types[arms.type].armSlam || Arms.Types[arms.type].scythe || LowerBody.hasClaws(this);}
@@ -1429,7 +1433,11 @@ use namespace CoC;
 		}
 		public function matangoControlLimit():Number
 		{
-			var matangoCL:Number = 5;
+			var matangoCL:Number = 0;
+			if (hasPerk(PerkLib.AbsorbNutrient) && perkv1(PerkLib.AbsorbNutrient) > 2) {
+				if (perkv1(PerkLib.AbsorbNutrient) > 6) matangoCL += 5;
+				matangoCL += (5 * (perkv1(PerkLib.AbsorbNutrient) - 2));
+			}
 			return matangoCL;
 		}
 		public function zerkSereneMind():Boolean
@@ -1473,6 +1481,24 @@ use namespace CoC;
 		{
 			return ((isRaceCached(Races.KAMAITACHI) && arms.type == Arms.KAMAITACHI) || (isRaceCached(Races.HELLCAT)) || ((isRaceCached(Races.YUKIONNA) && hasPerk(PerkLib.ColdAffinity)) || perkv1(IMutationsLib.FrozenHeartIM) >= 1) ||
 					(hasPerk(PerkLib.DragonRegalBreath)) || (tailType == Tail.GARGOYLE_2) || (faceType == Face.WOLF) || (Face.Types[faceType].bite) || (isRaceCached(Races.COUATL)) || (hasAGoreAttack()));
+		}
+		public function werebeastRacesPerkHousekeeping(werebeastType:Number):void {
+			if (werebeastType != 1 && hasPerk(PerkLib.Lycanthropy)) {
+				createPerk(PerkLib.LycanthropyDormant,0,0,0,0);
+				removePerk(PerkLib.Lycanthropy);
+			}
+			if (werebeastType != 2 && hasPerk(PerkLib.Vulpesthropy)) {
+				createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
+				removePerk(PerkLib.Vulpesthropy);
+			}
+			if (werebeastType != 3 && hasPerk(PerkLib.Selachimorphanthropy)) {
+				createPerk(PerkLib.SelachimorphanthropyDormant,0,0,0,0);
+				removePerk(PerkLib.Selachimorphanthropy);
+			}
+			if (werebeastType != 4 && hasPerk(PerkLib.Araneathropy)) {
+				createPerk(PerkLib.AraneathropyDormant,0,0,0,0);
+				removePerk(PerkLib.Araneathropy);
+			}
 		}
 
 		public function allEquipment():/*Equipable*/Array {
@@ -3322,13 +3348,13 @@ use namespace CoC;
 			if (mult < 50) mult = 50;
 			//--PERKS--
 			//Take damage you masochist!
-			if (hasPerk(PerkLib.Masochist) && lib >= 60) {
-				mult -= 20;
+			if (hasPerk(PerkLib.Masochist) && libStat.core.value >= 40) {
+				mult -= 40;
 				if(armorName == "Scandalous Succubus Clothing"){
-					mult -= 20;
-					dynStats("lus", (2 * (1 + game.player.newGamePlusMod())));
+					mult -= 40;
+					dynStats("lus", Math.round(maxLust()*0.01));
 				}
-				dynStats("lus", (2 * (1 + game.player.newGamePlusMod())));
+				dynStats("lus", Math.round(maxLust()*0.01));
 			}
 			if (perkv1(IMutationsLib.DrakeBonesIM) >= 2) {
 				mult -= 5;
@@ -7396,6 +7422,12 @@ use namespace CoC;
 			EngineCore.doNext(EventParser.playerMenu);
 		}
 
+		public function plantChlorophyllBoost():Number {
+			var pChB:Number = (0.1 * perkv1(IMutationsLib.PlantChlorophyllIM));
+			if (perkv1(IMutationsLib.PlantChlorophyllIM) >= 4) pChB += 0.1;
+			return pChB;
+		}
+
 		public function maxTeaseLevel():Number {
 			var maxLevel:Number = 16;
 			if (hasPerk(PerkLib.SuperSensual)) {
@@ -7829,8 +7861,8 @@ use namespace CoC;
 
 		public function sadomasochismBoost():Number {
 			var sadomasochismBoost:Number = 1;
-			if (HP < maxHP() * 0.25) sadomasochismBoost += 0.2;
-			if (lust > maxLust() * 75) sadomasochismBoost += 0.2;
+			if (HP < maxHP() * 0.25) sadomasochismBoost += 2;
+			if (lust > maxLust() * 75) sadomasochismBoost += 2;
 			return sadomasochismBoost;
 		}
 
