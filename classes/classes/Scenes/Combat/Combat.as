@@ -2912,12 +2912,18 @@ public class Combat extends BaseContent {
 	}
 	public function meleeDualAccuracyPenaltyMain():Number {
 		var accmdwmodpenalty1:Number = -50;
-		//if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 20;
+		if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 20;
+		if (player.weapon.isDualMedium() && player.hasPerk(PerkLib.QuadWieldNormal)) accmdwmodpenalty1 += 20;
+		if (player.weapon.isDualLarge() && player.hasPerk(PerkLib.QuadWieldLarge)) accmdwmodpenalty1 += 20;
+		if (player.weapon.isDualMassive() && player.hasPerk(PerkLib.QuadWieldMassive)) accmdwmodpenalty1 += 20;
 		return accmdwmodpenalty1;
 	}
 	public function meleeDualAccuracyPenaltyOff():Number {
 		var accmdwmodpenalty2:Number = -50;
-		//if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 20;
+		if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 20;
+		if (player.weaponOff.isDualMedium() && player.hasPerk(PerkLib.QuadWieldNormal)) accmdwmodpenalty2 += 20;
+		if (player.weaponOff.isDualLarge() && player.hasPerk(PerkLib.QuadWieldLarge)) accmdwmodpenalty2 += 20;
+		if (player.weaponOff.isDualMassive() && player.hasPerk(PerkLib.QuadWieldMassive)) accmdwmodpenalty2 += 20;
 		return accmdwmodpenalty2;
 	}
 
@@ -2931,12 +2937,18 @@ public class Combat extends BaseContent {
 	}
 	public function meleeDualDamagePenaltyMain():Number {
 		var dmgmdwmodpenalty1:Number = -0.49;
-		//if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 0.;
+		if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) dmgmdwmodpenalty1 += 0.4;
+		if (player.weapon.isDualMedium() && player.hasPerk(PerkLib.QuadWieldNormal)) dmgmdwmodpenalty1 += 0.4;
+		if (player.weapon.isDualLarge() && player.hasPerk(PerkLib.QuadWieldLarge)) dmgmdwmodpenalty1 += 0.4;
+		if (player.weapon.isDualMassive() && player.hasPerk(PerkLib.QuadWieldMassive)) dmgmdwmodpenalty1 += 0.4;
 		return dmgmdwmodpenalty1;
 	}
 	public function meleeDualDamagePenaltyOff():Number {
 		var dmgmdwmodpenalty2:Number = -0.49;
-		//if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 0.;
+		if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) dmgmdwmodpenalty2 += 0.4;
+		if (player.weaponOff.isDualMedium() && player.hasPerk(PerkLib.QuadWieldNormal)) dmgmdwmodpenalty2 += 0.4;
+		if (player.weaponOff.isDualLarge() && player.hasPerk(PerkLib.QuadWieldLarge)) dmgmdwmodpenalty2 += 0.4;
+		if (player.weaponOff.isDualMassive() && player.hasPerk(PerkLib.QuadWieldMassive)) dmgmdwmodpenalty2 += 0.4;
 		return dmgmdwmodpenalty2;
 	}
 

@@ -835,7 +835,7 @@ public class WingsTransformations extends MutationsHelper {
 				desc += "your back hurts as you suddenly feel something burst out your shoulder blades, reaching back you feel 2 small silky things like wings.\n\n <b>You now have small Moth Wings.</b>";
 
 				player.wings.type = Wings.MOTH_SMALL;
-				//Metamorph.unlockMetamorph(WingsMem.getMemory(WingsMem.YGGDRASIL_LARGE));
+				Metamorph.unlockMetamorph(WingsMem.getMemory(WingsMem.MOTH_SMALL));
 				if (doOutput) outputText(desc);
 			},
 			// is present
@@ -856,7 +856,7 @@ public class WingsTransformations extends MutationsHelper {
 				desc += " you suddenly feel a burst of pain in your back before the pain goes away, looking over you see the large white moth wings sticking out your back, with a flex of your muscles you find out that you can flap them. <b>You now have Large Moth Wings.</b>";
 
 				player.wings.type = Wings.MOTH_LARGE;
-				//Metamorph.unlockMetamorph(WingsMem.getMemory(WingsMem.YGGDRASIL_LARGE));
+				Metamorph.unlockMetamorph(WingsMem.getMemory(WingsMem.MOTH_LARGE));
 				if (doOutput) outputText(desc);
 			},
 			// is present

@@ -468,6 +468,28 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const MOTH_SMALL:int = _partid++;
+		EnumValue.add(Memories, MOTH_SMALL, "MOTH_SMALL", {
+			id: "Moth Small Wings",
+			name: "Small Moth Wings",
+			cost: 100,
+			title: "Moth(S)",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.WingsMothSmall;
+			}
+		});
+
+		public static const MOTH_LARGE:int = _partid++;
+		EnumValue.add(Memories, MOTH_LARGE, "MOTH_LARGE", {
+			id: "Moth Large Wings",
+			name: "Large Moth Wings",
+			cost: 200,
+			title: "Moth(L)",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.WingsMothLarge;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

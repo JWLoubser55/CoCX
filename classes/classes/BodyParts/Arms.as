@@ -534,7 +534,8 @@ public class Arms extends SaveableBodyPart {
 	EnumValue.add(Types, MOTH, "MOTH", {
 		name:"moth",
 		appearanceDesc: "Where a normal creature would have only two arms, you instead have four covered in a sleeve like fuzzy mass.",
-		fourArms: true
+		fourArms: true,
+		fur: true
 	});
 
 	public static const SATYR:int = 69;

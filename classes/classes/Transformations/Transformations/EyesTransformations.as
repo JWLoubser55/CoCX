@@ -796,6 +796,7 @@ public class EyesTransformations extends MutationsHelper {
 				player.eyes.type = Eyes.MOTH;
 
 				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.MOTH));
 			},
 			// is present
 			function (): Boolean {
@@ -846,6 +847,31 @@ public class EyesTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.eyes.type === Eyes.YGGDRASIL;
+			}
+	);
+
+	public const EyesMarilith: Transformation = new SimpleTransformation("Marilith Eyes",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+				TransformationUtils.applyTFIfNotPresent(transformations.EyesHuman, doOutput);
+				TransformationUtils.applyTFIfNotPresent(transformations.EyesSnakeFiendish, doOutput);
+
+				desc += "You moan in delight as demonic corruption floods your body";
+				if (player.hasVagina()) desc += " your drenched pussy clenching around an invisible member";
+				if (player.gender > 2) desc += " while";
+				if (player.hasCock() && !player.hasVagina()) desc += " your veiny penis erupting with a stream of black cum";
+				if (player.gender > 2) desc += " your penis erupts with a stream of black cum";
+				desc += ". Humping the air while holding your head with both hands raw ecstasy flushes across your face as a body rapture builds up from within your mind. Coming to the forefront of it as the skin of your head splits open in a slit. Pleasure racing from your head to your groin as your new fiendish eyes gazing at the world in dark trembling desire. <b>Your concentration and senses have improved by two folds thanks to your fiendish third eye.</b>.";
+
+				player.eyes.type = Eyes.MARILITH;
+				player.eyes.colour = "yellow";
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.MARILITH));
+			},
+			// is present
+			function (): Boolean {
+				return player.eyes.type === Eyes.MARILITH;
 			}
 	);
 

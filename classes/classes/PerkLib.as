@@ -2980,6 +2980,18 @@ public class PerkLib
 		public static const QuadWield:PerkType = mk("Quad Wield", "Quad Wield",
 				"Allows you to wield four weapons as long you have enough arms to hold them all.",
 				"You've chosen the 'Dual Wield' perk, training the skill of using four weapons as long you have enough arms to hold them all.");
+		public static const QuadWieldLarge:PerkType = mk("Quad Wield (Large)", "Quad Wield (Large)",
+				"Allows you to wield four large sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Large)' perk, training the skill of using two four melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
+		public static const QuadWieldMassive:PerkType = mk("Quad Wield (Massive)", "Quad Wield (Massive)",
+				"Allows you to wield four massive sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Massive)' perk, training the skill of using four massive melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
+		public static const QuadWieldNormal:PerkType = mk("Quad Wield (Normal)", "Quad Wield (Normal)",
+				"Allows you to wield four normal sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Normal)' perk, training the skill of using four normal-sized melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
+		public static const QuadWieldSmall:PerkType = mk("Quad Wield (Small)", "Quad Wield (Small)",
+				"Allows you to wield four small-sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Small)' perk, training the skill of using four small melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
 		public static const QuickStrike:PerkType = mk("Quick Strike", "Quick Strike",
 				"Add speed-based scaling of melee attacks when using small weapon(s). Its effect is added on top of Speed Demon perk boost.",
 				"You've chosen the 'Quick Strike' perk, allowing you to use your speed when attacking with small melee weapons.");
@@ -5499,6 +5511,9 @@ public class PerkLib
 					.requireAnyPerk(TitanGrip, GigantGripSu)
                     .requireStr(150)
                     .requireLevel(30);
+            QuadWieldLarge.requirePerks(QuadWield, DualWieldLarge)
+                    .requireStr(150)
+                    .requireLevel(30);
             GigantGripSu.requireLevel(30)
                     .requireStr(140)
                     .requireCustomFunction(function (player:Player):Boolean {
@@ -5546,6 +5561,9 @@ public class PerkLib
             EpicBrute.requireLevel(42)
                     .requireStr(150)
                     .requirePerk(GreaterBrute);
+            QuadWieldMassive.requirePerks(QuadWield, DualWieldMassive, TitanGrip)
+                    .requireStr(200)
+                    .requireLevel(42);
             PowerAttackSu.requirePerk(PowerAttackEx)
 					.requireLevel(42);
             //Tier 8 Strength Perks
@@ -6123,9 +6141,13 @@ public class PerkLib
             PracticedShot.requirePerk(JobRanger)
                     .requireSpe(75)
                     .requireLevel(12);
+            QuadWieldSmall.requirePerks(QuadWield, DualWieldSmall)
+                    .requireLevel(12);
             SpeedDemon.requireAnyPerk(JobDervish, JobRogue)
                     .requireSpe(90)
                     .requireLevel(12);
+            QuadWieldNormal.requirePerks(QuadWield, DualWieldNormal)
+					.requireLevel(12);
             DevastatingCharge.requirePerk(Naturaljouster)
                     .requireSpe(90)
                     .requireLevel(12);

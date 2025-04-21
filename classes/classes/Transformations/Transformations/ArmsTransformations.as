@@ -1347,7 +1347,7 @@ public class ArmsTransformations extends MutationsHelper {
 
 				player.arms.type = Arms.MOTH;
 				if (doOutput) outputText(desc);
-				//Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.REINDEER));
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.MOTH));
 			},
 			// is present
 			function (): Boolean {

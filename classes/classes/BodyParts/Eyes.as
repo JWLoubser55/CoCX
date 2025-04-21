@@ -285,7 +285,7 @@ public class Eyes extends BodyPart {
 	public static const MOTH: int = 47;
 	EnumValue.add(Types, MOTH, "MOTH", {
 		name:"moth",
-		appearanceDesc: "Your eyes are like a moth’s eyes.",
+		appearanceDesc: "Your eyes are like a moth’s eyesm, a solid [eyecolor] spheres.",
 		Darkvision: true
 	});
 	public static const LICH: int = 48;
@@ -305,6 +305,11 @@ public class Eyes extends BodyPart {
 		name:"yggdrasil",
 		appearanceDesc: "In addition to your primary two [eyecolor] eyes, you have second pair on your forehead. Both of them have slitted pupils like that of a dragon.",
 		Darkvision: true
+	});
+	public static const MARILITH: int = 51;
+	EnumValue.add(Types, MARILITH, "MARILITH", {
+		name:"marilith",
+		appearanceDesc: "Your [eyecolor] eyes have slitted pupils like that of a snake with black sclera which betray your corrupted nature. A third eye sits eerily on your forehead alluding to your fiendish nature."
 	});
 
 	public var count:int;

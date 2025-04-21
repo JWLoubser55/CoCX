@@ -879,7 +879,7 @@ public class LowerBody extends SaveableBodyPart {
 	public static const MOTH:int = 84;
 	EnumValue.add(Types, MOTH, "MOTH", {
 		name: "moth",
-		appearanceDesc: "your legs are covered in a bell bottom like fuzzy mass"
+		appearanceDesc: "Your {legCount} legs are covered in a bell bottom like fuzzy mass."
 	});
 
 	public static const TROLL:int = 85;
