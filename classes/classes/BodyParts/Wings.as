@@ -385,7 +385,7 @@ public class Wings extends SaveableBodyPart {
 	
 	public static const MOTH_SMALL: int = 45;
 	EnumValue.add(Types, MOTH_SMALL, "MOTH_SMALL", {
-		name:"moth",
+		name:"small moth-like",
 		desc:"fuzzy, small",
 		appearanceDesc: "A pair of small [chitin color1] fuzzy satin covered insectile wings.",
 		canFly: true,
@@ -394,7 +394,7 @@ public class Wings extends SaveableBodyPart {
 	
 	public static const MOTH_LARGE: int = 46;
 	EnumValue.add(Types, MOTH_LARGE, "MOTH_LARGE", {
-		name:"moth",
+		name:"large moth-like",
 		desc:"fuzzy, large",
 		appearanceDesc: "A pair of large [chitin color1] fuzzy satin covered insectile wings.",
 		canFly: true,
