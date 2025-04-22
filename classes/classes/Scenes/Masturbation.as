@@ -33,7 +33,7 @@ public class Masturbation extends BaseContent {
 
 		private function masturGasm(...args):void {
 			if (args.length == 0) {
-				if (player.hasCock()) args.push("Dick");
+				if (player.hasCockCockOnly()) args.push("Dick");
 				if (player.hasVagina()) args.push("Vaginal");
 			}
 			var i:int;
@@ -52,7 +52,7 @@ public class Masturbation extends BaseContent {
 
 		public function masturbateMenu():void {
 			menu();
-			if (player.hasCock() && (player.cocks[0].cockType == CockTypesEnum.BEE)) {
+			if (player.hasCockCockOnly() && (player.cocks[0].cockType == CockTypesEnum.BEE)) {
 				clearOutput();
 				outputText("Although your bee cock aches, you know that there's no way for you to get relief on your own.  When you touch your shaft or think about cumming images of the bee girl and the sound of her hypnotic buzzing fill your mind.");
 				addButton(14, "Back", playerMenu);
@@ -121,7 +121,7 @@ public class Masturbation extends BaseContent {
 				addButton(0, "LayBunnyEggs", EasterBunnyLayEggs)
 					.disableIf(player.ballSize <= 3, "Your balls are too small for this.")
 					.disableIf(player.balls < 2, "You would need at least two balls.")
-					.disableIf(!player.hasCock(), "You also need a cock.")
+					.disableIf(!player.hasCockCockOnly(), "You also need a cock.")
 					.disableIf(!player.hasPerk(PerkLib.EasterBunnyBalls), "Requires to have Easter Bunny balls.");
 				addButton(1, "StamenPussy", stamenSelfFuck)
 					.hint("Fuck your pussy with your stamens!")
@@ -172,7 +172,7 @@ public class Masturbation extends BaseContent {
 			for (b = 0; b < 3; ++b) button(0 + b*5) //for dildos
 				.disableIf(player.isTaur() && player.longestCockLength() < player.tallness * 5/6,
 					"You can't reach your cock with your hands. Either change your lower body or grow a bigger dick.")
-				.disableIf(!player.hasCock(), "Req. a cock!");
+				.disableIf(!player.hasCockCockOnly(), "Req. a cock!");
 			//dildos
 			addKAbutton(1, "Dildo (Vag)", "Dildo", stickADildoInYourVagooSlut)
 				.disableIf(!player.hasVagina(), "Req. a vagina.");
@@ -186,13 +186,13 @@ public class Masturbation extends BaseContent {
 			addKAbutton(2, "Stim-Belt", "Self-Stimulation Belt", stimBeltUse);
 			addKAbutton(7, "AN Stim-Belt", "All-Natural Self-Stimulation Belt", allNaturalStimBeltUse);
 			addKAbutton(12, "Dual Belt", "Dual Belt", dualBeltMasturbation)
-				.disableIf(!player.hasCock(), "Req. a cock too!"); //only for herms
+				.disableIf(!player.hasCockCockOnly(), "Req. a cock too!"); //only for herms
 			for (b = 0; b < 3; ++b) button(2 + b*5) //for belts
 				.disableIf(!player.hasVagina(), "Req. a vagina.")
 				.disableIf(player.isTaur(), "You can't put a belt on your taur-like body!");
 			//taur tools
 			addKAbutton(3, "Fake Mare", "Fake Mare", centaurDudesGetHorseAids)
-				.disableIf(!player.hasCock(), "Req. a cock.");
+				.disableIf(!player.hasCockCockOnly(), "Req. a cock.");
 			addKAbutton(8, "C. Pole", "Centaur Pole", centaurGirlsGetHorseAids)
 				.disableIf(!player.hasVagina(), "Req. a vagina.");
 			for (b = 0; b < 2; ++b) button(3 + b*5) //for belts
@@ -262,7 +262,7 @@ public class Masturbation extends BaseContent {
 						outputText("strip naked, ");
 
 					}
-					if (player.hasCock() || player.hasVagina()) outputText("fondling your naughty bits as you do so and ");
+					if (player.hasCockCockOnly() || player.hasVagina()) outputText("fondling your naughty bits as you do so and ");
 					outputText("casting seductive looks around, hoping someone or something is nearby to fuck you.\n\n");
 				}
 			}
@@ -337,7 +337,7 @@ public class Masturbation extends BaseContent {
 				doNext(playerMenu);
 				return;
 			}
-			if (player.hasCock() && (player.cocks[0].cockType == CockTypesEnum.BEE) && !inDungeon && !(player.hasItem(consumables.BEEHONY) || player.hasItem(consumables.PURHONY) || player.hasItem(consumables.SPHONEY))) {
+			if (player.hasCockCockOnly() && (player.cocks[0].cockType == CockTypesEnum.BEE) && !inDungeon && !(player.hasItem(consumables.BEEHONY) || player.hasItem(consumables.PURHONY) || player.hasItem(consumables.SPHONEY))) {
 				outputText("Although your bee cock aches you know that there's no way for you to get relief on your own.  When you touch your shaft or think about cumming images of the bee girl and the sound of her hypnotic buzzing fill your mind.");
 				doNext(playerMenu);
 				return;
@@ -467,7 +467,7 @@ public class Masturbation extends BaseContent {
 			/*******************************
 			||       MASTURBATION CORE    ||
 			\\*****************************/
-			if (player.hasCock()) sceneHunter.print("For dicks, there WILL be checks for nipplecunts.");
+			if (player.hasCockCockOnly()) sceneHunter.print("For dicks, there WILL be checks for nipplecunts.");
 			sceneHunter.selectGender(player.cockTotal() == 1 ? singleF : player.cockTotal() == 2 ? twoF : moreF, vagF); // not worth singleMulti
 
 			//Cock masturbation!
@@ -1865,7 +1865,7 @@ public class Masturbation extends BaseContent {
 				if (player.hasVagina()) {
 					if (player.vaginas[0].vaginalWetness >= 3) valeriaFluids += player.vaginas[0].vaginalWetness * 3;
 				}
-				if (player.hasCock()) {
+				if (player.hasCockCockOnly()) {
 					if (player.cumQ() < 100) valeriaFluids += (player.cumQ() / 5);
 					else if (player.cumQ() >= 100 && player.cumQ() < 500) valeriaFluids += 20 + (player.cumQ() / 20);
 					else if (player.cumQ() >= 500 && player.cumQ() < 3500) valeriaFluids += 40 + (player.cumQ() / 50);
@@ -2394,7 +2394,7 @@ public class Masturbation extends BaseContent {
 
 		private function centaurMasturbation():Boolean {
 			clearOutput();
-			var canMasturbateHugeCock:Boolean = player.hasCock() && (player.tallness * (5 / 6) < player.cocks[player.longestCock()].cockLength);
+			var canMasturbateHugeCock:Boolean = player.hasCockCockOnly() && (player.tallness * (5 / 6) < player.cocks[player.longestCock()].cockLength);
 			if (player.hasFuckableNipples()) {
 				if (canMasturbateHugeCock && rand(2) == 0) { //50/50 chance of either if you can do both
 					centaurHugeCock();
@@ -2437,7 +2437,7 @@ public class Masturbation extends BaseContent {
 			else outputText("Slick lubricant squishes around your fingers as you finger-fuck your chest-pussies.");
 			outputText("  You moan and lean over, shoving a second finger inside each of them and rubbing your thumbs over the miniature clits as you near orgasm.\n\n");
 
-			if (player.hasVagina() || player.hasCock()) {
+			if (player.hasVagina() || player.hasCockCockOnly()) {
 				var plural:Boolean = false;
 				outputText("Denied a single touch, your ");
 				if (player.hasCock()) {
@@ -2461,7 +2461,7 @@ public class Masturbation extends BaseContent {
 			//(ORGAZMO)
 			outputText("A slow wave of contractions starts deep inside each of your [nipple]s.  It intensifies as it rises towards the surface of your [breasts], reaching a crescendo that brings you to the peak of pleasure.  Your eyes roll back as you slump down in orgasmic bliss, fingers pumping relentlessly at you slippery nipple-holes.  Noisy wet squelches and incessant moaning rouse you from your pleasure-induced coma, eventually waking you back to reality.\n\n");
 			//Optional post orgasm bits for dicks/pussies
-			if (player.hasCock()) {
+			if (player.hasCockCockOnly()) {
 				if (player.cumQ() < 50) outputText("A small puddle of semen has formed under you, ");
 				else if (player.cumQ() < 200) outputText("A decent sized puddle of white seed has formed under you, ");
 				else if (player.cumQ() < 1000) outputText("A large puddle of white seed has formed underneath you and even splattered your underside, ");
@@ -2479,7 +2479,7 @@ public class Masturbation extends BaseContent {
 					outputText("The air is saturated with the heady scent of aroused horse-pussy, and if the wetness between your hind-legs is any indication, your hind-quarters would be a slip 'n slide of pleasure for any daring enough to penetrate you.");
 				else outputText("The air is filled with the thick musk of your bestial horse-pussy.  If the rivulets of moisture dripping down to your hooves are any indication, you might need to get used to the smell.");
 			}
-			if (player.hasCock() || player.hasVagina()) outputText("\n\n");
+			if (player.hasCockCockOnly() || player.hasVagina()) outputText("\n\n");
 			//Real aftermath
 			outputText("Judging by the sky, at least an hour has passed.  You sigh and pry your cramped fingers from your aching [nipple]s, rubbing the sore entrances with your palm before you climb back up onto your [feet].  As you get dressed, you're very conscious of how much better you feel from the wonderful finger-fuck.  ");
 			if (player.cor > 66)
@@ -2651,7 +2651,7 @@ public class Masturbation extends BaseContent {
 		private function centaurCantMasturbate():void {
 			if (flags[kFLAGS.UNABLE_TO_MASTURBATE_BECAUSE_CENTAUR] == 0) {
 				outputText("No matter how you twist and turn, you can't reach anywhere close to your ");
-				if (player.hasCock() || player.hasVagina())
+				if (player.hasCockCockOnly() || player.hasVagina())
 					outputText("genitalia");
 				else outputText("anything remotely sexual");
 				outputText("!  It seems that being a centaur has a rather crippling downside – you can't reach around to get yourself off and sate your lusts!\n\n");
@@ -3568,7 +3568,7 @@ public class Masturbation extends BaseContent {
 			if (silly()) outputText(", the alliteration of the experience further arousing you");
 			outputText(". Your toes curl as you begin to pull in and out, pumping the dildo with smooth motions. Your tongue hangs from your mouth, your breathing becomes heavy, and your moans lewdly express pure lust as you increase your tempo. Before too long, you feel your pucker becoming more sensitive and know an orgasm is quickly approaching.");
 			player.buttChange(8, true, true, false);
-			if (player.hasCock() && player.hasVagina())
+			if (player.hasCockCockOnly() && player.hasVagina())
 				outputText("\n\nYou moan in ecstasy while your [vagina] and [cocks] erupt with sex juices. ");
 			else if (player.hasCock())
 				outputText("\n\nYou moan in ecstasy while cum spurts from your [cocks]. ");
