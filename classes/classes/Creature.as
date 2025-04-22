@@ -3853,14 +3853,19 @@ public class Creature extends Utils
 			return eggs() >= 10 && hasPerk(PerkLib.AntOvipositor) && tail.type == Tail.ANT_ABDOMEN;
 		}
 
+		public function canOvipositMoth():Boolean
+		{
+			return eggs() >= 10 && hasPerk(PerkLib.MothOvipositor) && tail.type == Tail.MOTH_ABDOMEN;
+		}
+
 		public function canOviposit():Boolean
 		{
-			return canOvipositSpider() || canOvipositBee() || canOvipositMantis() || canOvipositAnt();
+			return canOvipositSpider() || canOvipositBee() || canOvipositMantis() || canOvipositAnt() || canOvipositMoth();
 		}
 
 		public function eggs():int
 		{
-			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor))
+			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor))
 				return -1;
 			else if (hasPerk(PerkLib.SpiderOvipositor))
 				return perkv1(PerkLib.SpiderOvipositor);
@@ -3868,6 +3873,8 @@ public class Creature extends Utils
 				return perkv1(PerkLib.BeeOvipositor);
 			else if (hasPerk(PerkLib.MantisOvipositor))
 				return perkv1(PerkLib.MantisOvipositor);
+			else if (hasPerk(PerkLib.MothOvipositor))
+				return perkv1(PerkLib.MothOvipositor);
 			else
 				return perkv1(PerkLib.AntOvipositor);
 			}
@@ -3885,7 +3892,7 @@ public class Creature extends Utils
 		}
 
 		public function dumpEggs():void {
-			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor))
+			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor))
 				return;
 			if (hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) {
 				addPerkValue(PerkLib.BeeOvipositor, 1, -25);
@@ -3898,7 +3905,7 @@ public class Creature extends Utils
 		}
 
 		private function getOviPerk():PerkType {
-			var oviPerks:Array = [PerkLib.SpiderOvipositor, PerkLib.BeeOvipositor, PerkLib.MantisOvipositor, PerkLib.AntOvipositor];
+			var oviPerks:Array = [PerkLib.SpiderOvipositor, PerkLib.BeeOvipositor, PerkLib.MantisOvipositor, PerkLib.AntOvipositor, PerkLib.MothOvipositor];
 			for each (var perk:PerkType in oviPerks)
 				if (hasPerk(perk)) return perk;
 			return null;

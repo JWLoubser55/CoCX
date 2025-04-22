@@ -173,7 +173,7 @@ import classes.Scenes.NPCs.Forgefather;
 			//Chance for eggs fertilization - ovi elixir and imps excluded!
 			if (type != PregnancyStore.PREGNANCY_IMP && type != PregnancyStore.PREGNANCY_OVIELIXIR_EGGS && type != PregnancyStore.PREGNANCY_ANEMONE)
 			{
-				if (hasPerk(PerkLib.SpiderOvipositor) || hasPerk(PerkLib.BeeOvipositor) || hasPerk(PerkLib.MantisOvipositor) || hasPerk(PerkLib.AntOvipositor))
+				if (hasPerk(PerkLib.SpiderOvipositor) || hasPerk(PerkLib.BeeOvipositor) || hasPerk(PerkLib.MantisOvipositor) || hasPerk(PerkLib.AntOvipositor) || hasPerk(PerkLib.MothOvipositor))
 				{
 					if (totalFertility() + bonus > Math.floor(Math.random() * beat))
 					{

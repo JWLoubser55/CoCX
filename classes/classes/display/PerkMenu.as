@@ -1092,6 +1092,7 @@ public class PerkMenu extends BaseContent {
 				IMutationsLib.HumanMusculatureIM,
 				IMutationsLib.HumanOvariesIM,
 				IMutationsLib.HumanParathyroidGlandIM,
+				IMutationsLib.HumanSecondaryHeartIM,
 				IMutationsLib.HumanSmartsIM,
 				IMutationsLib.HumanTesticlesIM,
 				IMutationsLib.HumanThyroidGlandIM,

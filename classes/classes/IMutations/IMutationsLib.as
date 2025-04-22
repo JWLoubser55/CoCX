@@ -95,6 +95,7 @@ public class IMutationsLib
 		public static const HumanMusculatureIM:IMutationPerkType = new HumanMusculatureMutation();
 		public static const HumanOvariesIM:IMutationPerkType = new HumanOvariesMutation();
 		public static const HumanParathyroidGlandIM:IMutationPerkType = new HumanParathyroidGlandMutation();
+		public static const HumanSecondaryHeartIM:IMutationPerkType = new HumanSecondaryHeart();
 		public static const HumanSmartsIM:IMutationPerkType = new HumanSmartsMutation();
 		public static const HumanTesticlesIM:IMutationPerkType = new HumanTesticlesMutation();
 		public static const HumanThyroidGlandIM:IMutationPerkType = new HumanThyroidGlandMutation();

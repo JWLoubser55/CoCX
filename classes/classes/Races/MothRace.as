@@ -46,19 +46,20 @@ public class MothRace extends Race {
 				.faceType(Face.HUMAN, +1)
                 .hairType(Hair.NORMAL, +1)
 				.hairColor1(ANY(MothHairColors), +1)
+				//moth-like tongue
 				.antennaeType(Antennae.MOTH, +1)
                 .earType(Ears.INSECT, +1)
 				.eyeType(Eyes.MOTH, +1)
 				.eyeColor(ANY(MothEyesColors), +1)
-                .armType(Arms.MOTH, +1)
+                .armType(Arms.MOTH, +2)
                 .legType(LowerBody.MOTH, +1)
 				.tailType(Tail.MOTH_ABDOMEN, +1)
 				.rearType(RearBody.MOTH_COLLAR, +1)
                 .wingType(Wings.MOTH_SMALL, +1)
                 .wingType(Wings.MOTH_LARGE, +2)
                 .noHorns(+1)
-				//.chitinColor1(ANY(MothChitinColors), +1)
                 .hasCockOfType(CockTypesEnum.INSECT, +1)
+				.hasPerk(PerkLib.MothOvipositor, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
         addMutation(IMutationsLib.TrachealSystemIM);
@@ -71,17 +72,17 @@ public class MothRace extends Race {
 					"lib.mult": +0.30,
 					"sens": +70
 				})
-				.end();/*
+				.end();
 		
 		buildTier(18, "elder moth-morph")
 				.buffs({
-					"tou.mult": -0.30,
-					"spe.mult": +1.50,
-                    "wis.mult": +0.70,
-					"lib.mult": +0.30,
-					"sens": +70
-				})120
-				.end();*/
+					"tou.mult": -0.40,
+					"spe.mult": +2.20,
+                    "wis.mult": +1.20,
+					"lib.mult": +0.50,
+					"sens": +80
+				})
+				.end();
     }
 }
 }
