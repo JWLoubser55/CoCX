@@ -141,14 +141,7 @@ private function tfIntoWereshark():void {
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 2 || flags[kFLAGS.LUNA_MOON_CYCLE] == 6) bonusStats += 20;
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 1 || flags[kFLAGS.LUNA_MOON_CYCLE] == 7) bonusStats += 30;
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8) bonusStats += 40;
-	if (player.hasPerk(PerkLib.Vulpesthropy)) {
-		player.createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
-		player.removePerk(PerkLib.Vulpesthropy);
-	}
-	if (player.hasPerk(PerkLib.Lycanthropy)) {
-		player.createPerk(PerkLib.LycanthropyDormant,0,0,0,0);
-		player.removePerk(PerkLib.Lycanthropy);
-	}
+	player.werebeastRacesPerkHousekeeping(3);
 	if (!player.hasPerk(PerkLib.Selachimorphanthropy)) player.createPerk(PerkLib.Selachimorphanthropy,bonusStats,0,0,0);
 	if (player.hasPerk(PerkLib.SelachimorphanthropyDormant)) player.removePerk(PerkLib.SelachimorphanthropyDormant);
 	if (player.hasPerk(PerkLib.Selachimorphanthropy)){

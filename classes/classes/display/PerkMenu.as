@@ -104,8 +104,8 @@ public class PerkMenu extends BaseContent {
 			outputText("\n<b>You can adjust your Flying Sword behaviour during combat.</b>");
 			addButton(12, "Flying Sword", flyingSwordBehaviourOptions);
 		}
-		outputText("\n<b>You can choose and adjust how you minions behave in battle.</b>");
-		addButton(13, "Minions", minionOptions);
+		outputText("\n<b>You can choose and adjust how you minions/mech ai behave in battle.</b>");
+		addButton(13, "Minions/MechAI", minionOptions);
 		if (player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
 			outputText("\n\n<b>Simplified Pre-Turn is enabled. The strongest possible golems and elementals are selected to attack. The wisp always attacks.</b>");
 			addButton(14, "S.PTurn(On)", simplifiedPreTurnOff).hint("Click to disable Simplified Pre-Turn.");
@@ -255,6 +255,10 @@ public class PerkMenu extends BaseContent {
 		if (player.hasPerk(PerkLib.FungalNobility)) {
 			outputText("\n<b>You can adjust the behaviour of your matango during combat.</b>");
 			bd.add("Matango", matangoBehaviourOptions);
+		}
+		if (player.hasKeyItem("Improved Artificial Intelligence") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK2") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK3") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0) {
+			outputText("\n<b>You can adjust the behaviour of your mech ai during combat.</b>");
+			bd.add("Mech AI", mechAiBehaviourOptions);
 		}
 		submenu(bd, CoC.instance.inCombat ? curry(combat.combatMenu, false) : displayPerks, 0, false);
 	}
@@ -964,6 +968,20 @@ public class PerkMenu extends BaseContent {
 			.disableIf(flags[kFLAGS.MATANGO_ATTACK] == 0);
 		addButton(11, "Enable", toggleFlag, matangoBehaviourOptions, kFLAGS.MATANGO_ATTACK)
 			.disableIf(flags[kFLAGS.MATANGO_ATTACK] == 1);
+		addButton(14, "Back", minionOptions);
+	}
+	
+	public function mechAiBehaviourOptions():void {
+		clearOutput();
+		menu();
+		outputText("You can choose how your mech ai will behave during each fight.\n\n");
+		outputText("\n<b>Mech AI behaviour:</b>\n");
+		if (flags[kFLAGS.MECH_AI_ATTACK] == 0) outputText("Your mech ai will not attack.");
+		if (flags[kFLAGS.MECH_AI_ATTACK] == 1) outputText("Your mech ai will attack at the beginning of each turn.");
+		addButton(10, "Disable", toggleFlag, mechAiBehaviourOptions, kFLAGS.MECH_AI_ATTACK)
+			.disableIf(flags[kFLAGS.MECH_AI_ATTACK] == 0);
+		addButton(11, "Enable", toggleFlag, mechAiBehaviourOptions, kFLAGS.MECH_AI_ATTACK)
+			.disableIf(flags[kFLAGS.MECH_AI_ATTACK] == 1);
 		addButton(14, "Back", minionOptions);
 	}
 

@@ -57,7 +57,7 @@ import classes.CoC;
         EnumValue.add(Memories, ANT, "ANT", {
             id: "Ant Arms",
             name: "Ant Arms",
-            cost: 100,
+            cost: 200,
             title: "Ant",
             transformation: function(): Transformation {
                 return CoC.instance.transformations.ArmsAnt;
@@ -166,7 +166,7 @@ import classes.CoC;
         EnumValue.add(Memories, DISPLACER, "DISPLACER", {
             id: "Displacer Arms",
             name: "Displacer Four Arms",
-            cost: 100,
+            cost: 200,
             title: "Displacer",
             transformation: function(): Transformation {
                 return CoC.instance.transformations.ArmsDisplacer;
@@ -762,7 +762,7 @@ import classes.CoC;
 		EnumValue.add(Memories, MOTH, "MOTH", {
 			id: "Moth Arms",
 			name: "Moth Arms",
-			cost: 100,
+			cost: 200,
 			title: "Moth",
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.ArmsMoth;
@@ -801,6 +801,39 @@ import classes.CoC;
 				return CoC.instance.transformations.ArmsShroom;
 			}
 		});
+
+        public static const YGGDRASIL:int = _partid++;
+        EnumValue.add(Memories, YGGDRASIL, "YGGDRASIL", {
+            id: "Yggdrasil Arms",
+            name: "Yggdrasil Four Arms",
+            cost: 200,
+            title: "Yggdrasil",
+            transformation: function(): Transformation {
+                return CoC.instance.transformations.ArmsYggdrasil;
+            }
+        });
+
+        public static const WERESPIDER:int = _partid++;
+        EnumValue.add(Memories, WERESPIDER, "WERESPIDER", {
+            id: "Werespider Arms",
+            name: "Werespider Four Arms",
+            cost: 200,
+            title: "Werespider",
+            transformation: function(): Transformation {
+                return CoC.instance.transformations.ArmsWerespider;
+            }
+        });
+
+        public static const MARILITH:int = _partid++;
+        EnumValue.add(Memories, MARILITH, "MARILITH", {
+            id: "Marilith Arms",
+            name: "Marilith Four Arms",
+            cost: 200,
+            title: "Marilith",
+            transformation: function(): Transformation {
+                return CoC.instance.transformations.ArmsMarilith;
+            }
+        });
 
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];

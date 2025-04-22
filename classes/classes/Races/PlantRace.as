@@ -53,7 +53,7 @@ public class PlantRace extends Race {
 				.customRequirement("skin", "bark skin", function (body:BodyData):Boolean {
 					return body.player.isBarkSkin()
 				}, +2)
-				.armType(Arms.PLANT, +1)
+				.armType(ANY(Arms.PLANT,Arms.PLANT2), +1)
 				.legType(ANY(LowerBody.PLANT_HIGH_HEELS,LowerBody.PLANT_ROOT_CLAWS), +1)
 				.hasCockOfType(CockTypesEnum.TENTACLE, +1)
 				.wingType(Wings.PLANT, +1)

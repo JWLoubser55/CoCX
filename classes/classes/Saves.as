@@ -1648,7 +1648,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		// default exp banking to true for old saves. Can be toggled off in the game settings later.
 		if (saveFile.data.flags[kFLAGS.EXP_BANKING] == undefined)
 		{
-			flags[kFLAGS.EXP_BANKING] = 1;
+			flags[kFLAGS.EXP_BANKING] = 0;
 		}
 
 		//PIERCINGS

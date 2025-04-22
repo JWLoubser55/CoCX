@@ -163,8 +163,8 @@ public class MagicSpecials extends BaseCombatContent {
 			bd.requireFatigue(10);
 		}
 		if (player.hasPerk(PerkLib.TelekineticGrapple) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
-			bd = buttons.add("Telekinetic Grab", TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 6 rounds");
-			bd.requireMana(spellCost(50));
+			bd = buttons.add("Telekinetic Grab", TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 8 rounds");
+			bd.requireFatigue(100);
 			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
 				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -1141,9 +1141,9 @@ public class MagicSpecials extends BaseCombatContent {
 			else bd = buttons.add("Sing", SingInitiate).hint("Begin singing. While singing, you may add various powerful effects to your tune.\n.");
 		}
 		//Telekinetic Grab
-		if ((player.racialScore(Races.VAMPIRE) >= 20 || player.racialScore(Races.DRACULA) >= 22 || player.hasPerk(PerkLib.TelekineticGrapple)) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
-			bd = buttons.add("Telekinetic Grab", TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 12 rounds");
-			bd.requireMana(spellCost(50));
+		if ((player.racialScore(Races.VAMPIRE) >= 20 || player.racialScore(Races.DRACULA) >= 22) && !player.hasPerk(PerkLib.TelekineticGrapple) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
+			bd = buttons.add("Telekinetic Grab", TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 10 rounds");
+			bd.requireFatigue(200);
 			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
 				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -2825,7 +2825,7 @@ public class MagicSpecials extends BaseCombatContent {
 				else outputText("are");
 				outputText("too resolute to be stunned by your attack.</b> ");
 			}
-			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) damage *= 1.2;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) damage *= (1 + player.plantChlorophyllBoost());
 			damage = Math.round(damage * 0.34);
 			doPoisonDamage(damage, true, true);
 			doWaterDamage(damage, true, true);
@@ -5267,11 +5267,12 @@ public class MagicSpecials extends BaseCombatContent {
 			addButton(0, "Next", combatMenu, false);
 			return;
 		}
-		useMana(50);
+		if (player.hasPerk(PerkLib.TelekineticGrapple)) fatigue(100, USEFATG_MAGIC_NOBM);
+		else fatigue(200, USEFATG_MAGIC_NOBM);
 		outputText("You weave your hand causing [themonster] body to levitate and fly to you as you use telekinesis to hold your opponent.\n\n");
 		monster.createStatusEffect(StatusEffects.TelekineticGrab, 4 + rand(2), 0, 0, 0);
-		if (player.hasPerk(PerkLib.TelekineticGrapple)) player.createStatusEffect(StatusEffects.CooldownTelekineticGrab, 6, 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.CooldownTelekineticGrab, 12, 0, 0, 0);
+		if (player.hasPerk(PerkLib.TelekineticGrapple)) player.createStatusEffect(StatusEffects.CooldownTelekineticGrab, 8, 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.CooldownTelekineticGrab, 10, 0, 0, 0);
 		enemyAI();
 	}
 

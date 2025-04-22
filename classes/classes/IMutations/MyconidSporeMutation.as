@@ -59,7 +59,7 @@ import classes.Races;
         }
 
         public function MyconidSporeMutation() {
-            super(mName + " IM", mName, SLOT_OVARIES, 2);
+            super(mName + " IM", mName, SLOT_OVARIES, 4);
         }
 
     }

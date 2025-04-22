@@ -1285,13 +1285,14 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				//Full moon
 				flags[kFLAGS.LUNA_MOON_CYCLE]++;
 				if (flags[kFLAGS.LUNA_MOON_CYCLE] > 8) flags[kFLAGS.LUNA_MOON_CYCLE] = 1;
-				if (player.hasPerk(PerkLib.Lycanthropy) || player.hasPerk(PerkLib.Vulpesthropy) || player.hasPerk(PerkLib.Selachimorphanthropy)) {
+				if (player.hasPerk(PerkLib.Lycanthropy) || player.hasPerk(PerkLib.Vulpesthropy) || player.hasPerk(PerkLib.Selachimorphanthropy) || player.hasPerk(PerkLib.Araneathropy)) {
 					var ngMult:Number = (player.newGamePlusMod() + 1);
 					var changeV:Number = 0;
 					var textA:String = "";
 					if (player.hasPerk(PerkLib.Lycanthropy)) textA = "lupine";
 					if (player.hasPerk(PerkLib.Vulpesthropy)) textA = "vulpine";
 					if (player.hasPerk(PerkLib.Selachimorphanthropy)) textA = "selachii";
+					if (player.hasPerk(PerkLib.Araneathropy)) textA = "arachne";
 					switch (flags[kFLAGS.LUNA_MOON_CYCLE]) {
 						case 1:
 							changeV = 30;
@@ -1337,11 +1338,15 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						player.setPerkValue(PerkLib.Lycanthropy,1,changeV);
 					}
 					if (player.hasPerk(PerkLib.Vulpesthropy)) {
-						player.statStore.replaceBuffObject({ 'str.mult': changeV*0.01*ngMult,'tou.mult': changeV*0.1*ngMult,'spe.mult': changeV*0.04*ngMult, 'minlustx': changeV * 0.005}, 'Vulpesthropy', { text: 'Vulpesthropy'});
+						player.statStore.replaceBuffObject({ 'tou.mult': changeV*0.08*ngMult,'spe.mult': changeV*0.04*ngMult,'wis.mult': changeV*0.08*ngMult, 'minlustx': changeV * 0.005}, 'Vulpesthropy', { text: 'Vulpesthropy'});
 						player.setPerkValue(PerkLib.Vulpesthropy,1,changeV);
 					}
 					if (player.hasPerk(PerkLib.Selachimorphanthropy)) {
 						player.statStore.replaceBuffObject({ 'str.mult': changeV*0.1*ngMult,'tou.mult': changeV*0.05*ngMult,'spe.mult': changeV*0.05*ngMult, 'minlustx': changeV * 0.01}, 'Selachimorphanthropy', { text: 'Selachimorphanthropy'});
+						player.setPerkValue(PerkLib.Selachimorphanthropy,1,changeV);
+					}
+					if (player.hasPerk(PerkLib.Araneathropy)) {
+						player.statStore.replaceBuffObject({ 'str.mult': changeV*0.05*ngMult,'tou.mult': changeV*0.075*ngMult,'spe.mult': changeV*0.075*ngMult, 'minlustx': changeV * 0.005}, 'Araneathropy', { text: 'Araneathropy'});
 						player.setPerkValue(PerkLib.Selachimorphanthropy,1,changeV);
 					}
 					needNext = true;
@@ -2278,14 +2283,41 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
+			//LustyStrength && MindFungus
+			if (player.isRaceCached(Races.MYCONID) && player.horns.type == Horns.SHROOM_HEADCAP && !player.hasPerk(PerkLib.LustyStrength)) {
+				outputText("\nInformation Noona know who know what should be here and that person is... Liadri.\n\n<b>(Gained Lusty Strength perk!)</b>\n");
+				player.createPerk(PerkLib.LustyStrength, 0, 0, 0, 0);
+				needNext = true;
+			}
+			if (player.isRaceCached(Races.MYCONID) && player.horns.type == Horns.SHROOM_HEADCAP && player.horns.count > 8 && !player.hasPerk(PerkLib.MindFungus)) {
+				outputText("\nAs you become a noble fungal lifeform you begin to acquire mind warping powers.\n\n<b>(Gained Mind Fungus perk!)</b>\n");
+				player.createPerk(PerkLib.MindFungus, 0, 0, 0, 0);
+				needNext = true;
+			}
+			if (player.horns.type != Horns.SHROOM_HEADCAP && (player.hasPerk(PerkLib.LustyStrength) || player.hasPerk(PerkLib.MindFungus))) {
+				outputText("\nAs you lose your cap your head clears out entirely of the mushroom-like induced state you were in. Just what were you even doing? Without the main growth regulating your body the other fungal growth are quickly assimilated or lost otherwise reverting to plain human parts.\n\n<b>(Lost the ");
+				if (player.hasPerk(PerkLib.LustyStrength)) outputText("Lusty Strength");
+				if (player.hasPerk(PerkLib.LustyStrength) && player.hasPerk(PerkLib.MindFungus)) outputText(" and ");
+				if (player.hasPerk(PerkLib.MindFungus)) outputText("Mind Fungus");
+				outputText(" perk");
+				if (player.hasPerk(PerkLib.LustyStrength) && player.hasPerk(PerkLib.MindFungus)) outputText("s");
+				outputText("!)</b>\n");
+				if (player.hasPerk(PerkLib.LustyStrength)) player.removePerk(PerkLib.LustyStrength);
+				if (player.hasPerk(PerkLib.MindFungus)) player.removePerk(PerkLib.MindFungus);
+				transformations.ArmsShroom.applyEffect(false);
+				transformations.HornsShroomHeadcap.applyEffect(false);
+				transformations.LowerBodyShroomShirt.applyEffect(false);
+				transformations.RearBodyMyconidBraAndNeck.applyEffect(false);
+				if (player.hasVagina() && player.vaginaType() == VaginaClass.SHROOM) transformations.VaginaShroom().applyEffect(false);
+				if (player.hasCock()) transformations.CockShroom().applyEffect(false);
+				if (player.hasStatusEffect(StatusEffects.GlowingNipples)) transformations.NipplessHumanize.applyEffect(false);
+				if (player.hasStatusEffect(StatusEffects.GlowingAsshole)) transformations.AssholeNormal.applyEffect(false);
+				needNext = true;
+			}
 			//VerdantMight		, Races.barometz
 			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
-			//LustyStrength
-			needNext ||= player.gainOrLosePerk(PerkLib.LustyStrength, player.isRaceCached(Races.MYCONID), "Information Noona know who know what should be here and that person is... Liadri.", "Information Noona know who know what should be here and that person is... Liadri.");
 			//Absorb nutrient
 			needNext ||= player.gainOrLosePerk(PerkLib.AbsorbNutrient, player.isRaceCached(Races.MYCONID), "You begin to crave for the fluids and moisture of others. It looks like, as you became more shroom-like, you gained the ability to absorb nutrients and vitality from sex.", "You no longer crave for the fluids and moisture of others. It looks like, as you became less shroom-like, you lost the ability to absorb nutrients and vitality from sex.");
-			//MindFungus
-			needNext ||= player.gainOrLosePerk(PerkLib.MindFungus, (player.isRaceCached(Races.MYCONID) && player.horns.count > 8), "As you become a noble fungal lifeform you begin to acquire mind warping powers.", "Information Noona know who know what should be here and that person is... Liadri.");
 			//FungalNobility
 			needNext ||= player.gainOrLosePerk(PerkLib.FungalNobility, player.isRaceCached(Races.MYCONID, 2), "Something changed about you as your body became more fungal like. It would seem you acquired the ability to order around lesser shroom girls.", "As your fungal nature is pruned you lose the ability to command the matango.");
 			//Enigma
@@ -2854,7 +2886,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (!player.isRaceCached(Races.WEREWOLF) && player.hasPerk(PerkLib.Lycanthropy)) {
-				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werewolf you once were. <b>Gained Dormant lycanthropy.</b>\n");
+				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werewolf you once were. <b>Gained Dormant Lycanthropy.</b>\n");
 				player.createPerk(PerkLib.LycanthropyDormant,0,0,0,0);
 				player.statStore.removeBuffs("Lycanthropy");
 				player.removeStatusEffect(StatusEffects.HumanForm);
@@ -2862,7 +2894,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (!player.isRaceCached(Races.WEREFOX) && player.hasPerk(PerkLib.Vulpesthropy)) {
-				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werefox you once were. <b>Gained Dormant vulpesthropy.</b>\n");
+				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werefox you once were. <b>Gained Dormant Vulpesthropy.</b>\n");
 				player.createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
 				player.statStore.removeBuffs("Vulpesthropy");
 				player.removeStatusEffect(StatusEffects.HumanForm);
@@ -2871,7 +2903,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			}
 			if (player.isRaceCached(Races.WERESHARK) && player.hasPerk(PerkLib.SelachimorphanthropyDormant)) {
 				outputText("\nAs you become shark enough your mind recedes into increasingly animalistic urges. It will only get worse as the moon comes closer to full. <b>Gained Selachimorphanthropy.</b>\n");
-				var ngMWS:Number = (player.newGamePlusMod() + 1);
+				var ngMWSh:Number = (player.newGamePlusMod() + 1);
 				var bonusStats2:Number = 0;
 				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 3 || flags[kFLAGS.LUNA_MOON_CYCLE] == 5) bonusStats2 += 10;
 				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 2 || flags[kFLAGS.LUNA_MOON_CYCLE] == 6) bonusStats2 += 20;
@@ -2879,16 +2911,38 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8) bonusStats2 += 40;
 				player.createPerk(PerkLib.Selachimorphanthropy,bonusStats2,0,0,0);
 				player.createStatusEffect(StatusEffects.HumanForm,1,0,0,0);
-				player.statStore.replaceBuffObject({'str.mult': bonusStats2*0.1*ngMWS,'tou.mult': bonusStats2*0.05*ngMWS,'spe.mult': bonusStats2*0.05*ngMWS,'minlustx': bonusStats2*0.01}, 'Selachimorphanthropy', { text: 'Selachimorphanthropy'});
+				player.statStore.replaceBuffObject({'str.mult': bonusStats2*0.1*ngMWSh,'tou.mult': bonusStats2*0.05*ngMWSh,'spe.mult': bonusStats2*0.05*ngMWSh,'minlustx': bonusStats2*0.01}, 'Selachimorphanthropy', { text: 'Selachimorphanthropy'});
 				player.removePerk(PerkLib.SelachimorphanthropyDormant);
 				needNext = true;
 			}
 			if (!player.isRaceCached(Races.WERESHARK) && player.hasPerk(PerkLib.Selachimorphanthropy)) {
-				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the wereshark you once were. <b>Gained Dormant selachimorphanthropy.</b>\n");
+				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the wereshark you once were. <b>Gained Dormant Selachimorphanthropy.</b>\n");
 				player.createPerk(PerkLib.SelachimorphanthropyDormant,0,0,0,0);
 				player.statStore.removeBuffs("Selachimorphanthropy");
 				player.removeStatusEffect(StatusEffects.HumanForm);
 				player.removePerk(PerkLib.Selachimorphanthropy);
+				needNext = true;
+			}
+			if (player.isRaceCached(Races.WERESPIDER) && player.hasPerk(PerkLib.AraneathropyDormant)) {
+				outputText("\nAs you become shark enough your mind recedes into increasingly animalistic urges. It will only get worse as the moon comes closer to full. <b>Gained Araneathropy.</b>\n");
+				var ngMWSp:Number = (player.newGamePlusMod() + 1);
+				var bonusStats3:Number = 0;
+				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 3 || flags[kFLAGS.LUNA_MOON_CYCLE] == 5) bonusStats3 += 10;
+				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 2 || flags[kFLAGS.LUNA_MOON_CYCLE] == 6) bonusStats3 += 20;
+				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 1 || flags[kFLAGS.LUNA_MOON_CYCLE] == 7) bonusStats3 += 30;
+				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8) bonusStats3 += 40;
+				player.createPerk(PerkLib.Araneathropy,bonusStats3,0,0,0);
+				player.createStatusEffect(StatusEffects.HumanForm,1,0,0,0);
+				player.statStore.replaceBuffObject({'str.mult': bonusStats3*0.05*ngMWSp,'tou.mult': bonusStats3*0.075*ngMWSp,'spe.mult': bonusStats3*0.075*ngMWSp,'minlustx': bonusStats3*0.001}, 'Araneathropy', { text: 'Araneathropy'});
+				player.removePerk(PerkLib.AraneathropyDormant);
+				needNext = true;
+			}
+			if (!player.isRaceCached(Races.WERESPIDER) && player.hasPerk(PerkLib.Araneathropy)) {
+				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werespider you once were. <b>Gained Dormant Araneathropy.</b>\n");
+				player.createPerk(PerkLib.AraneathropyDormant,0,0,0,0);
+				player.statStore.removeBuffs("Araneathropy");
+				player.removeStatusEffect(StatusEffects.HumanForm);
+				player.removePerk(PerkLib.Araneathropy);
 				needNext = true;
 			}
 			if (player.hasPerk(PerkLib.FutaForm)) { //Futa checks

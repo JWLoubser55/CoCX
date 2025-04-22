@@ -1050,12 +1050,12 @@ import classes.Scenes.Combat.CombatAbilities;
 			var multShared:Number = 0;
 			//--PERKS--
 			//Take damage you masochist!
-			if (hasPerk(PerkLib.Masochist) && lib >= 60) {
-				multShared += 20;
-				lust += (2 * (1 + newGamePlusMod()));
+			if (hasPerk(PerkLib.Masochist) && lib >= 40) {
+				multShared += 40;
+				lust += Math.round(maxLust()*0.01);
 				if(armorName == "Scandalous Succubus Clothing") {
-					multShared += 20;
-					lust += (2 * (1 + newGamePlusMod()));
+					multShared += 40;
+					lust += Math.round(maxLust()*0.01);
 				}
 			}
 			if (hasPerk(PerkLib.FenrirSpikedCollar)) {
@@ -3913,7 +3913,12 @@ import classes.Scenes.Combat.CombatAbilities;
 					var store14:Number = (player.inte + player.spe) * 2;
 					var couatlExtraDmg:Number = (player.spe*5)+(player.inte*5);
 					if (statusEffectv2(StatusEffects.CouatlHurricane) > 0) store14 += couatlExtraDmg; //If reapplied, temporarily increase damage
-					store14 += maxHP()*0.02;
+					store14 += maxHP() * 0.02;
+					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
+						store14 += 8 * SceneLib.combat.scalingBonusIntelligence();
+						store14 += 2 * SceneLib.combat.scalingBonusWisdom();
+						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+					}
 					store14 = SceneLib.combat.fixPercentDamage(store14, false);
 					store14 = SceneLib.combat.doDamage(store14);
 					if(plural) outputText("[Themonster] is violently struck by the ever intensifying windstorm. ");
@@ -3948,6 +3953,11 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (statusEffectv2(StatusEffects.IzmaBleed) > 0) procentvalue += statusEffectv2(StatusEffects.IzmaBleed);
 					procentvalue = Math.round(procentvalue);
 					var store:Number = maxHP() * (procentvalue) / 100;
+					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
+						store += 8 * SceneLib.combat.scalingBonusIntelligence();
+						store += 2 * SceneLib.combat.scalingBonusWisdom();
+						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+					}
 					store *= SceneLib.combat.BleedDamageBoost();
 					store = SceneLib.combat.fixPercentDamage(store);
 					store = SceneLib.combat.doDamage(store);
@@ -3968,7 +3978,12 @@ import classes.Scenes.Combat.CombatAbilities;
 				}
 				//Deal damage if still wounded.
 				else {
-					var store3:Number = SceneLib.combat.CalcBaseDamageUnarmed()/2;
+					var store3:Number = SceneLib.combat.CalcBaseDamageUnarmed() / 2;
+					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
+						store3 += 8 * SceneLib.combat.scalingBonusIntelligence();
+						store3 += 2 * SceneLib.combat.scalingBonusWisdom();
+						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+					}
 					store3 *= SceneLib.combat.BleedDamageBoost(true);
 					if (statusEffectv2(StatusEffects.SharkBiteBleed) > 0) store3 *= statusEffectv2(StatusEffects.SharkBiteBleed);
 					store3 = SceneLib.combat.fixPercentDamage(store3, false);
@@ -3982,7 +3997,12 @@ import classes.Scenes.Combat.CombatAbilities;
 			if(hasStatusEffect(StatusEffects.KamaitachiBleed)) {
 				//This wounds never heals unless by magic
 				//Deal damage if still wounded.
-				var store13:Number = SceneLib.combat.CalcBaseDamageUnarmed()/2;
+				var store13:Number = SceneLib.combat.CalcBaseDamageUnarmed() / 2;
+				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
+					store13 += 8 * SceneLib.combat.scalingBonusIntelligence();
+					store13 += 2 * SceneLib.combat.scalingBonusWisdom();
+					EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+				}
 				store13 *= SceneLib.combat.BleedDamageBoost(true);
 				store13 = Math.round(store13);
 				
@@ -4012,7 +4032,12 @@ import classes.Scenes.Combat.CombatAbilities;
 				}
 				//Deal damage if still wounded.
 				else {
-					var store5:Number = SceneLib.combat.CalcBaseDamageUnarmed()/2;
+					var store5:Number = SceneLib.combat.CalcBaseDamageUnarmed() / 2;
+					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
+						store5 += 8 * SceneLib.combat.scalingBonusIntelligence();
+						store5 += 2 * SceneLib.combat.scalingBonusWisdom();
+						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+					}
 					store5 *= SceneLib.combat.BleedDamageBoost();
 					store5 = SceneLib.combat.fixPercentDamage(store5, false);
 					store5 = SceneLib.combat.doDamage(store5);
@@ -4033,7 +4058,12 @@ import classes.Scenes.Combat.CombatAbilities;
 					removeStatusEffect(StatusEffects.Hemorrhage);
 				}
 				else {
-					var hemorrhage1:Number = maxHP() * statusEffectv2(StatusEffects.Hemorrhage)
+					var hemorrhage1:Number = maxHP() * statusEffectv2(StatusEffects.Hemorrhage);
+					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
+						hemorrhage1 += 8 * SceneLib.combat.scalingBonusIntelligence();
+						hemorrhage1 += 2 * SceneLib.combat.scalingBonusWisdom();
+						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+					}
 					hemorrhage1 *= SceneLib.combat.BleedDamageBoost();
 					hemorrhage1 = SceneLib.combat.fixPercentDamage(hemorrhage1);
 					hemorrhage1 = SceneLib.combat.doDamage(hemorrhage1);
@@ -4052,6 +4082,11 @@ import classes.Scenes.Combat.CombatAbilities;
 				}
 				else {
 					var hemorrhage4:Number = maxHP() * statusEffectv2(StatusEffects.Hemorrhage2);
+					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
+						hemorrhage4 += 8 * SceneLib.combat.scalingBonusIntelligence();
+						hemorrhage4 += 2 * SceneLib.combat.scalingBonusWisdom();
+						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+					}
 					hemorrhage4 = SceneLib.combat.fixPercentDamage(hemorrhage4);
 					hemorrhage4 = SceneLib.combat.doDamage(hemorrhage4);
 					if (plural) outputText("[Themonster] bleed profusely from the jagged wounds your companion's attack left behind. ");
@@ -4101,6 +4136,11 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 			if(hasStatusEffect(StatusEffects.Briarthorn)) {
 				var store16:Number = (player.str + player.spe) * 2;
+				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
+					store16 += 8 * SceneLib.combat.scalingBonusIntelligence();
+					store16 += 2 * SceneLib.combat.scalingBonusWisdom();
+					EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+				}
 				store16 *= SceneLib.combat.BleedDamageBoost();
 				store16 += maxHP()*0.05;
 				store16 = SceneLib.combat.fixPercentDamage(store16);
@@ -4188,7 +4228,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 			if(player.hasStatusEffect(StatusEffects.QueenBind)) {
 				outputText("You're utterly restrained by the Harpy Queen's magical ropes!\n\n");
-				if(flags[kFLAGS.PC_FETISH] >= 2) player.dynStats("lus", 3);
+				if(flags[kFLAGS.PC_FETISH] >= 2) player.dynStats("lus", Math.round(player.maxLust()*0.03));
 			}
 			if(this is SecretarialSuccubus || this is MilkySuccubus) {
 				if(player.lust < (player.maxLust() * 0.45)) outputText("There is something in the air around your opponent that makes you feel warm. ");

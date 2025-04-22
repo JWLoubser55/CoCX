@@ -646,8 +646,8 @@ public class PerkLib
 				"Enable the use of Psychic Bolt. (scales off Sensitivity)",
 				"You've chosen the 'Psychic Bolt' perk. Enable the use of Psychic Bolt. (scales off Sensitivity)");
 		public static const TelekineticGrapple:PerkType = mk("Telekinetic Grapple", "Telekinetic Grapple",
-				"Enable the use of Telekinetic Grab (with 2x shorter than normal cooldown).",
-				"You've chosen the 'Telekinetic Grapple' perk. Enable the use of Telekinetic Grab (with 2x shorter than normal cooldown).");
+				"Enable the use of Telekinetic Grab (with 2 turns shorter than normal cooldown and 50% less fatigue needed).",
+				"You've chosen the 'Telekinetic Grapple' perk. Enable the use of Telekinetic Grab (with 2 turns shorter than normal cooldown and 50% less fatigue needed).");
 		public static const Pyrokinesis:PerkType = mk("Pyrokinesis", "Pyrokinesis",
 				"As psychic you have gained ability to manipulate or control fire.",
 				"You've chosen the 'Pyrokinesis' perk. As psychic you have gained ability to manipulate or control fire.");
@@ -1580,8 +1580,8 @@ public class PerkLib
 		public static const ElementalContractRank36:PerkType = mkECR(36);
 		public static const ElementalContractRank37:PerkType = mkECR(37);
 		public static const ElementalContractRank38:PerkType = mkECR(38);
-		public static const ElementalContractRank39:PerkType = mkECR(39);
-		public static const ElementalContractRank40:PerkType = mkECR(40);
+		//public static const ElementalContractRank39:PerkType = mkECR(39);
+		//public static const ElementalContractRank40:PerkType = mkECR(40);
 		public static const ElementalTouch:PerkType = mk("Elemental touch", "Elemental touch",
 				"Unarmed strikes and elemental skills inflict a status on your victim when infused: respectively Frostbite, Burn, Acid, and Bleed.",
 				"You've chosen the 'Elemental touch' perk. Unarmed strikes and elemental skills inflict a status on your victim when infused: respectively Frostbite, Burn, Acid, and Bleed.");
@@ -2638,8 +2638,8 @@ public class PerkLib
 				"You can now use sneak attack with ranged weapon. (bows and sniper firearms)",
 				"You've chosen the 'Marked for death' perk. You can now use sneak attack with ranged weapon. (bows and sniper firearms)");
 		public static const Masochist:PerkType = mk("Masochist", "Masochist",
-				"Take 20% less physical damage but gain lust when you take damage.",
-				"You've chosen the 'Masochist' perk, reducing the damage you take but raising your lust each time!  This perk only functions while your libido is at or above 60!");
+				"Take 40% less physical damage but gain lust when you take damage.  This perk only functions while your libido core value is at or above 40!",
+				"You've chosen the 'Masochist' perk, reducing the damage you take but raising your lust each time!  This perk only functions while your libido core value is at or above 40!");
 		public static const MasterAllRounderEducation:PerkType = mk("Master All-Rounder Education", "All-Rounder Education ( Master )",
 				"Limit of advanced job you can learn is increased by 3.",
 				"You've chosen the 'All-Rounder Education ( Master )' perk, expanding the amount of advanced jobs you can learn. (+3)");
@@ -2980,6 +2980,18 @@ public class PerkLib
 		public static const QuadWield:PerkType = mk("Quad Wield", "Quad Wield",
 				"Allows you to wield four weapons as long you have enough arms to hold them all.",
 				"You've chosen the 'Dual Wield' perk, training the skill of using four weapons as long you have enough arms to hold them all.");
+		public static const QuadWieldLarge:PerkType = mk("Quad Wield (Large)", "Quad Wield (Large)",
+				"Allows you to wield four large sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Large)' perk, training the skill of using two four melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
+		public static const QuadWieldMassive:PerkType = mk("Quad Wield (Massive)", "Quad Wield (Massive)",
+				"Allows you to wield four massive sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Massive)' perk, training the skill of using four massive melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
+		public static const QuadWieldNormal:PerkType = mk("Quad Wield (Normal)", "Quad Wield (Normal)",
+				"Allows you to wield four normal sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Normal)' perk, training the skill of using four normal-sized melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
+		public static const QuadWieldSmall:PerkType = mk("Quad Wield (Small)", "Quad Wield (Small)",
+				"Allows you to wield four small-sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Small)' perk, training the skill of using four small melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
 		public static const QuickStrike:PerkType = mk("Quick Strike", "Quick Strike",
 				"Add speed-based scaling of melee attacks when using small weapon(s). Its effect is added on top of Speed Demon perk boost.",
 				"You've chosen the 'Quick Strike' perk, allowing you to use your speed when attacking with small melee weapons.");
@@ -3089,10 +3101,10 @@ public class PerkLib
 				"Increases chances of escaping combat.",
 				"You've chosen the 'Runner' perk, increasing your chances to escape from your foes when fleeing!");
 		public static const Sadist:PerkType = mk("Sadist", "Sadist",
-				"Deal 20% more damage, but gain lust at the same time.",
-				"You've chosen the 'Sadist' perk, increasing damage by 20 percent but causing you to gain lust from dealing damage.");
+				"Deal 200% more damage, but gain 3% lust at the same time.",
+				"You've chosen the 'Sadist' perk, increasing damage by 200 percent but causing you to gain 3% lust from dealing damage.");
 		public static const Sadomasochism:PerkType = mk("Sadomasochism", "Sadomasochism",
-				"You are aroused by the helplessness of your opponent just as much as you get aroused in getting hit. This causes your tease to become stronger when you are close to defeat. (PC gains +20% tease damage with low health and +20% tease damage with high arousal to either PC or the target.)",
+				"You are aroused by the helplessness of your opponent just as much as you get aroused in getting hit. This causes your tease to become stronger when you are close to defeat. (PC gains +200% tease damage with low health and +200% tease damage with high arousal to either PC or the target.)",
 				"You've chosen the 'Sadomasochism' perk. You are aroused by the helplessness of your opponent just as much as you get aroused in getting hit. This causes your tease to become stronger when you are close to defeat.");
 		public static const Saint:PerkType = mk("Saint", "Saint",
 				"You go on periodic journeys to spread your faith and help those in need. These constant pilgrimages decrease your minimum libido and boost lust resistance. (-2 min libido/+5% to lust resistance)",
@@ -5140,7 +5152,7 @@ public class PerkLib
 			ElementalContractRank25, ElementalContractRank26, ElementalContractRank27, ElementalContractRank28,
 			ElementalContractRank29, ElementalContractRank30, ElementalContractRank31, ElementalContractRank32,
 			ElementalContractRank33, ElementalContractRank34, ElementalContractRank35, ElementalContractRank36,
-			ElementalContractRank37, ElementalContractRank38, ElementalContractRank39, ElementalContractRank40
+			ElementalContractRank37, ElementalContractRank38//, ElementalContractRank39, ElementalContractRank40
 		];
 		// Array of arrays of perks
 		public static const PERK_TIER_LISTS:/*PerkType[]*/Array = [
@@ -5499,6 +5511,9 @@ public class PerkLib
 					.requireAnyPerk(TitanGrip, GigantGripSu)
                     .requireStr(150)
                     .requireLevel(30);
+            QuadWieldLarge.requirePerks(QuadWield, DualWieldLarge)
+                    .requireStr(150)
+                    .requireLevel(30);
             GigantGripSu.requireLevel(30)
                     .requireStr(140)
                     .requireCustomFunction(function (player:Player):Boolean {
@@ -5546,6 +5561,9 @@ public class PerkLib
             EpicBrute.requireLevel(42)
                     .requireStr(150)
                     .requirePerk(GreaterBrute);
+            QuadWieldMassive.requirePerks(QuadWield, DualWieldMassive, TitanGrip)
+                    .requireStr(200)
+                    .requireLevel(42);
             PowerAttackSu.requirePerk(PowerAttackEx)
 					.requireLevel(42);
             //Tier 8 Strength Perks
@@ -6123,9 +6141,13 @@ public class PerkLib
             PracticedShot.requirePerk(JobRanger)
                     .requireSpe(75)
                     .requireLevel(12);
+            QuadWieldSmall.requirePerks(QuadWield, DualWieldSmall)
+                    .requireLevel(12);
             SpeedDemon.requireAnyPerk(JobDervish, JobRogue)
                     .requireSpe(90)
                     .requireLevel(12);
+            QuadWieldNormal.requirePerks(QuadWield, DualWieldNormal)
+					.requireLevel(12);
             DevastatingCharge.requirePerk(Naturaljouster)
                     .requireSpe(90)
                     .requireLevel(12);

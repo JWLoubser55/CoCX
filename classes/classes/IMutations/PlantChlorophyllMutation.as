@@ -18,10 +18,13 @@ import classes.Races;
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by "+(pTier * 5)+"% while outdoors during daytime";
-            if (pTier >= 2) descS += ". Plant abilities are increased by 20%";
-            if (pTier >= 3) descS += ", ";
-            if (pTier >= 4) descS += ", ";
+			var perkCent1:int = pTier;
+			var perkCent2:int = pTier - 1;
+			if (pTier >= 4) perkCent1 += 1;
+            if (pTier >= 1) descS += "For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by "+(pTier * 5)+"% while outdoors during daytime";
+            if (pTier >= 2) descS += ". Plant abilities are increased by "+perkCent1+"0%";
+            if (pTier >= 3) descS += ". Synthesis is "+perkCent1+"0% stronger";
+            if (pTier >= 4) descS += " and can be auto cast";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -51,11 +54,13 @@ import classes.Races;
             var pBuffs:Object = {};
             if (pTier == 1) pBuffs['lib.mult'] = 0.05;
             else if (pTier == 2) pBuffs['lib.mult'] = 0.1;
+            else if (pTier == 3) pBuffs['lib.mult'] = 0.15;
+            else if (pTier == 4) pBuffs['lib.mult'] = 0.2;
             return pBuffs;
         }
 
         public function PlantChlorophyllMutation() {
-            super(mName + " IM", mName, SLOT_FAT, 2);
+            super(mName + " IM", mName, SLOT_FAT, 4);
         }
 
     }

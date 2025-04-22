@@ -2690,7 +2690,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else outputText("Twirling like a top, you slap your opponents with your wings.");
 			var damage:Number = combat.meleeUnarmedDamageNoLagSingle();
 			if (player.thirdtierWingsForWingSlap()) damage += combat.meleeUnarmedDamageNoLagSingle();
-			//if (tu jak byłyby 4th tier wings dodane) damage += combat.meleeUnarmedDamageNoLagSingle();
+			if (player.fourthtierWingsForWingSlap()) damage += combat.meleeUnarmedDamageNoLagSingle();
 			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 			if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
@@ -3320,7 +3320,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.headjewelryName == "pair of Golden Naga Hairpins") pollen *= 1.1;
 		if (player.hasPerk(PerkLib.RacialParagon)) pollen *= combat.RacialParagonAbilityBoost();
 		if (player.hasPerk(PerkLib.NaturalArsenal)) pollen *= 2;
-		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) pollen *= 1.2;
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) pollen *= (1 + player.plantChlorophyllBoost());
 		outputText("You send a cloud of your pollen outward into the air, smiling lustfully at your opponent. Sneezing slightly as they inhale the potent pollen, they begin showing clear signs of arousal. Just how long can they resist coming to pollinate you now? Not for long, you hope. ");
 		monster.teased(pollen, false);
 		outputText("\n\n");
@@ -3342,7 +3342,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.AlphaAndOmega)) EntangleNerf += 0.1;
 		if (player.hasPerk(PerkLib.AscensionOneRaceToRuleThemAllX)) EntangleNerf += (0.1 * player.perkv1(PerkLib.AscensionOneRaceToRuleThemAllX));
 		if (player.hasPerk(PerkLib.NaturalArsenal)) EntangleNerf += 0.1;
-		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) EntangleNerf += 0.1;
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) EntangleNerf += (0.5 * player.plantChlorophyllBoost());
 		player.createStatusEffect(StatusEffects.AlrauneEntangle,EntangleNerf,EntangleNerf,0,0);
 		monster.statStore.addBuffObject({"str.mult":-EntangleNerf,"spe.mult":-EntangleNerf}, "EntangleNerf",{text:"EntangleNerf"});
 		enemyAI();
@@ -3361,7 +3361,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
-		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) damage *= 1.2;
+		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) damage *= (1 + player.plantChlorophyllBoost());
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		damage = Math.round(damage);
 		outputText("You tighten your vines around your opponent's neck to strangle it. [Themonster] struggles against your natural noose, getting obvious marks on its neck and ");

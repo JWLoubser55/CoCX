@@ -66,7 +66,7 @@ public class DragonRace extends Race {
 				.legType(LowerBody.DRAGON, +1)
 				.legType(NONE(LowerBody.FROSTWYRM, LowerBody.FEY_DRAGON, LowerBody.LION), 0, -10)
 				.armType(Arms.DRACONIC, +1)
-				.armType(NONE(Arms.FEY_DRACONIC, Arms.LION), 0, -10)
+				.armType(NONE(Arms.FEY_DRACONIC, Arms.LION, Arms.YGGDRASIL), 0, -10)
 				.skinCoatType(Skin.DRAGON_SCALES, +1)
 				.hornType(Horns.DRACONIC_X2, +1)
 				.hornType(Horns.DRACONIC_X4_12_INCH_LONG, +2)

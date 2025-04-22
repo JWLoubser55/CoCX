@@ -57,13 +57,10 @@ private function tfIntoWereSpider():void {
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 2 || flags[kFLAGS.LUNA_MOON_CYCLE] == 6) bonusStats += 20;
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 1 || flags[kFLAGS.LUNA_MOON_CYCLE] == 7) bonusStats += 30;
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8) bonusStats += 40;
-	if (player.hasPerk(PerkLib.Vulpesthropy)) {
-		player.createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
-		player.removePerk(PerkLib.Vulpesthropy);
-	}
-	if (!player.hasPerk(PerkLib.Lycanthropy)) player.createPerk(PerkLib.Lycanthropy,bonusStats,0,0,0);
-	if (player.hasPerk(PerkLib.LycanthropyDormant)) player.removePerk(PerkLib.LycanthropyDormant);
-	player.statStore.replaceBuffObject({ 'str.mult': bonusStats*0.1*ngM,'tou.mult': bonusStats*0.06*ngM,'spe.mult': bonusStats*0.04*ngM, 'minlustx': bonusStats * 0.01}, 'Lycanthropy', { text: 'Lycanthropy'});
+	player.werebeastRacesPerkHousekeeping(4);
+	if (!player.hasPerk(PerkLib.Araneathropy)) player.createPerk(PerkLib.Araneathropy,bonusStats,0,0,0);
+	if (player.hasPerk(PerkLib.AraneathropyDormant)) player.removePerk(PerkLib.AraneathropyDormant);
+	player.statStore.replaceBuffObject({ 'str.mult': bonusStats*0.1*ngM,'tou.mult': bonusStats*0.06*ngM,'spe.mult': bonusStats*0.04*ngM, 'minlustx': bonusStats * 0.01}, 'Araneathropy', { text: 'Araneathropy'});
 	player.trainStat('str', +5, 100);
 	player.trainStat('tou', +5, 100);
 	player.trainStat('spe', +5, 100);
