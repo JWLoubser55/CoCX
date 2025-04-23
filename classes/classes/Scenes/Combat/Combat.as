@@ -13939,7 +13939,12 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
 		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxPercentRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
-		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxPercentRegen += player.perkv1(IMutationsLib.HumanSecondaryHeartIM);
+		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
+			var hshim1:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 3 && player.racialScore(Races.HUMAN) > 17) hshim1 += 1;
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 4 && player.racialScore(Races.HUMAN) > 17) hshim1 += 4;
+			maxPercentRegen += hshim1;
+		}
 		if (player.hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) maxPercentRegen += 1 * (player.perkv1(IMutationsLib.SlimeMetabolismIM)-2);
         if ((player.hasPerk(PerkLib.HydraRegeneration) || player.perkv1(IMutationsLib.HydraBloodIM) >= 1) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) {
 			if (player.hasPerk(PerkLib.HydraRegeneration)) maxPercentRegen += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
@@ -14017,7 +14022,12 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxRegen += 10;
 		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
-		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxRegen += player.perkv1(IMutationsLib.HumanSecondaryHeartIM);
+		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
+			var hshim2:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim2 += 1;
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim2 += 4;
+			maxRegen += hshim2;
+		}
 		if (player.hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) maxRegen += 1 * (player.perkv1(IMutationsLib.SlimeMetabolismIM)-2);
         if ((player.hasPerk(PerkLib.HydraRegeneration) || player.perkv1(IMutationsLib.HydraBloodIM) >= 1) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) {
 			if (player.hasPerk(PerkLib.HydraRegeneration)) maxRegen += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
@@ -14095,7 +14105,12 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 2 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 5;
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 3 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 5;
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 4 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 5;
-		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.01 * player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
+		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
+			var hshim3:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim3 += 1;
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim3 += 4;
+			fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.01 * hshim3);
+		}
         if (player.hasPerk(PerkLib.HydraRegeneration) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) fatiguecombatrecovery += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
 		if (player.hasPerk(PerkLib.TrollRegeneration) && !player.hasStatusEffect(StatusEffects.TrollRegenerationDisabled)) fatiguecombatrecovery += 6;
         if (player.hasPerk(PerkLib.JobGunslinger)) fatiguecombatrecovery += 1;
@@ -14688,6 +14703,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             player.createStatusEffect(StatusEffects.SoulDrill1, 0, 0, 0, 0);
         }
 		if (player.statStore.hasBuff("Turqouise Holy Band")) player.createStatusEffect(StatusEffects.TurquoiseBandProtection, 0, 0, 0, 0);
+		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 4 && flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] > 0) flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] = 0;
 	}
 
     public function display():void {
@@ -15247,8 +15263,15 @@ public function combatIsOver(goToPlayerMenu:Boolean = true):Boolean {
         return true;
     }
     if (Math.round(player.HP) <= Math.round(player.minHP())) {
-        doNext(endHpLoss);
-        return true;
+        if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 4 && flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] == 0) {
+			flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] = 1;
+			player.HP = 1;
+			return false;
+		}
+		else {
+			doNext(endHpLoss);
+			return true;
+		}
     }
     if (player.lust >= player.maxOverLust() && !player.statStore.hasBuff("Supercharged") && !tyrantiaTrainingExtension()) {
         doNext(endLustLoss);
