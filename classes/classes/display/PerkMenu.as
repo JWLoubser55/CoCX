@@ -1088,6 +1088,7 @@ public class PerkMenu extends BaseContent {
 				IMutationsLib.HumanDigestiveTractIM,
 				IMutationsLib.HumanEyesIM,
 				IMutationsLib.HumanFatIM,
+				IMutationsLib.HumanLungsIM,
 				IMutationsLib.HumanMetabolismIM,
 				IMutationsLib.HumanMusculatureIM,
 				IMutationsLib.HumanOvariesIM,
@@ -1793,4 +1794,4 @@ public class PerkMenu extends BaseContent {
 	 */
 }
 }
-
+

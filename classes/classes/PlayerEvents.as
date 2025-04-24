@@ -239,10 +239,18 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				dynStats("lus", player.libStat.totalCore * 0.02, "scale", false); //Raise lust
 				if (player.hasPerk(PerkLib.Lusty)) dynStats("lus", player.libStat.totalCore * 0.005, "scale", false); //Double lust rise if lusty.
 			}
-			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) dynStats("lus", -(Math.round(player.maxLust() * 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM))));
+			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) {
+				var hmim1:Number = 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 1) hmim1 += 0.01 * (player.perkv1(IMutationsLib.HumanLungsIM) + 1);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 4) hmim1 += 0.01;
+				dynStats("lus", -(Math.round(player.maxLust() * hmim1)));
+			}
 			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 3) {
-				if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 4 && player.fatigue100 >= 50) EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 0.02 * (player.perkv1(IMutationsLib.HumanMetabolismIM) - 2))));
-				else EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 0.01 * (player.perkv1(IMutationsLib.HumanMetabolismIM) - 2))));
+				var hmim3:Number = 0.01 * (player.perkv1(IMutationsLib.HumanMetabolismIM) - 2);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 1) hmim3 += 0.01 * (player.perkv1(IMutationsLib.HumanLungsIM) + 1);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 4) hmim3 += 0.01;
+				if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 4 && player.fatigue100 >= 50) EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 2 * hmim3)));
+				else EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * hmim3)));
 			}
 			if (player.perkv1(IMutationsLib.HumanDigestiveTractIM) >= 3) dynStats("lus", -(Math.round(player.maxLust() * 0.01 * (player.perkv1(IMutationsLib.HumanDigestiveTractIM) - 2))));
 			//Jewelry effect

@@ -113,6 +113,13 @@ public class CharybdisFollower extends NPCAwareContent implements SaveableState
 		return CharyAffectionMeter;
 	}
 	
+	private function bowSkill(diff:Number):Number
+	{
+		player.addStatusValue(StatusEffects.Kelt,1,diff);
+		if(player.statusEffectv1(StatusEffects.Kelt) >= 100) player.changeStatusValue(StatusEffects.Kelt,1,100);
+		return player.statusEffectv1(StatusEffects.Kelt);
+	}
+	
 	public function charyFirstEncounter():void {
 		clearOutput();
 		outputText("As you walk along the beach, you hear a lone male voice, drifting in and out on the breeze. <i>\"Somewhere...Beyond the Sea…\"</i> As you get closer, you can make out some...instruments? You remember back in Ingnam, some people played the lute, or that one guy who played the trumpet. You pad your way along the sand, peeking around a rocky cliff…\n\n");
@@ -232,16 +239,41 @@ public class CharybdisFollower extends NPCAwareContent implements SaveableState
 	
 	public function charyBeachMeetings():void {
 		clearOutput();
-		/*if (flags[kFLAGS.CEANI_FOLLOWER] < 1 && rand(4) > 0) {
+		if (flags[kFLAGS.CEANI_FOLLOWER] < 1 && rand(4) > 0) {
 			outputText("You find yourself wandering to Charybis’s cove. You hear a female voice saying muffled words of encouragement, and the familiar Whizz *thunk* of target practice. You turn the corner to see Charybdis throwing his multiple knives, two or three at a time, while Ceani watches, her mouth full of fish.\n\n");
 			outputText("<i>\"Watch your stance, you’re too far forward\",</i> she says, and then sees you. <i>\"Oh hey, it’s [name]. I’d ask if you want to join us, but that’s Chary’s call.\"</i>\n\n");
 			outputText("<i>\"The more the merrier, I say!\"</i> Charybdis cries, taking a break for a moment. <i>\"Don’t worry, I’ll pay ya extra.\"</i>\n\n");
 			outputText("<i>\"Not needed.\"</i> Ceani replies happily. <i>\"As long as I’m not hungry, I’m good\"</i>.\n\n");
 			menu();
-			//addButton(1, "Stay", charyRangedTraining);
+			addButton(1, "Stay", charyRangedTraining);
 			addButton(3, "Leave", explorer.done);
 		}
-		else */charyBeachMeetings2();
+		else charyBeachMeetings2();
+	}
+	public function charyRangedTraining():void {
+		clearOutput();
+		outputText("You pat your Scylla friend on the back, happily agreeing to a training session. You pick up some of Chary’s knives, and Ceani sets up a second target.\n\n");
+		if (player.statusEffectv1(StatusEffects.Kelt) > 80) {
+			outputText("Keeping up with the music man’s knife throwing isn’t too hard for you, and he’s forced to use his extra limbs to keep ahead. Ceani watches intently as you both throw, a small smile on her face as she reviews your prowess. After a few rounds, she joins in with her own harpoons, prompting a pitched competition between the three of you. For two hours, the three of you toss and retrieve weapons until your arms burn. At the end of it, all three of you are exhausted, but laughing.\n\n");
+			outputText("<i>\"Let’s do this again sometime,\"</i> Ceani says, slipping back into the waves.\n\n");
+			bowSkill(10);
+			if (CharyAffectionMeter > 79) {
+				outputText("Charybdis turns to you as Ceani slips under the waves. <i>\"That was fun, [name]...But I know something we could do that’s more fun.\"</i>\n\n");
+				doNext(charySex);
+			}
+			else {
+				outputText("<i>\"That was fun.\"</i> Charybdis says, stretching. <i>\"But I’m sure you have places to be…And I need to get something to eat.\"</i> He walks to his boat. <i>\"Come back and visit me sometime, will ya?\"</i>\n\n");
+				endEncounter(120);
+			}
+		}
+		else {
+			if (player.statusEffectv1(StatusEffects.Kelt) > 60) outputText("When you throw, the air seems to hiss. Your aim isn’t perfect, but you manage to keep up with Charybdis when he’s only using two hands to throw. He gives you a grin, and the two of you have a small competition with the targets.\n\n");
+			else if (player.statusEffectv1(StatusEffects.Kelt) > 40) outputText("You’re much slower than Charybdis, but your knife throwing skills occasionally gets a cheer from the aquatic people with you.\n\n");
+			else if (player.statusEffectv1(StatusEffects.Kelt) > 20) outputText("Charybdis outdoes you handily, but you manage to not embarrass yourself.\n\n");
+			else outputText("You struggle with the knives, landing only a few in the target. Both Ceani and the music man seem to find your attempts amusing, but are very encouraging.\n\n");
+			bowSkill(10);
+			endEncounter(120);
+		}
 	}
 	public function charyBeachMeetings2():void {
 		if (rand(2) == 0) {
@@ -255,8 +287,8 @@ public class CharybdisFollower extends NPCAwareContent implements SaveableState
 		addButton(1, "Talk", charyTalk);
 		addButton(2, "Hang", charyHang);
 		addButton(3, "Spar", charySpar);
-		/*addButton(4, "Music", charyMusic);
-		addButton(5, "Sex", charySex);*/
+		//addButton(4, "Music", charyMusic);
+		addButtonIfTrue(5, "Sex", charySex, "Req. 80%+ affection", CharyAffectionMeter >= 80);
 		addButton(14, "Leave", explorer.done);
 	}
 	
@@ -511,84 +543,92 @@ public class CharybdisFollower extends NPCAwareContent implements SaveableState
 		charyAffection(-5);
 		endEncounter(60);
 	}
-/*
-public function charySex():void {
+
+	public function charySex():void {
 		clearOutput();
 		outputText("You give Chary a warm look, and step in, wrapping your arms around the stocky octopus. The Scylla’s eyes light up, a warm smile crossing his face as his tendrils wrap gently around you, teasing your (genitals if any) and (Butt description here). <i>\"Well, what’s your pleasure?\"</i>\n\n");
-menu();
-if (player.hasPussy()) {
-addButton(1, "Bondage",CharyBondage );
-}
-addButton(2, "TentFun",CharyTentFun );
-if (player.hasCock()) {
-addButton(3, "Anal",CharyAnal );
-}
-if (player.hasPussy()) && (player.has ) // need to know code for Kraken/Scylla limbs.
-{
-addButton(4, "L.Spaghett",CharyLimbSpaghetti );
-		}
+		menu();
+		if (player.hasVagina()) addButton(1, "Bondage", CharyBondage);
+		addButton(2, "TentFun", CharyTentFun);
+		//if (player.hasCock()) addButton(3, "Anal", CharyAnal);
+		if (player.hasVagina() && (player.isScylla() || player.isKraken())) addButton(4, "L.Spaghett", CharyLimbSpaghetti);
 	}
-	
-public function CharyBondage():void {
+
+	public function CharyBondage():void {
 		clearOutput();
 		outputText("you tell him that he could do whatever he wants, crossing your arms in front of your [breasts]. You remind him that you’re both out in the ocean, on his boat. Chary bares his teeth, a little uneasy. <i>\"I’d never do something you wouldn’t want me to.\"</i> You reassure him that you want this, but...you also don’t.\n\n");
 		outputText("He nods in understanding, before lowering his voice. <i>\"The safeword is ‘Flutist’.\"</i> You nod, barely able to get the gesture out before his octopus limbs shoot out, grabbing your arms and [legs]. Two limbs twine around your forearms, pinning them together. You struggle, but a limb wraps around each of your ankles, robbing you of your leverage.\n\n");
 		outputText("Charybdis walks you over to the bed. You pull at his rubbery tentacles, but a free tentacle snakes up your leg, sliding aside your [armor] and rubbing against your clit. The stimulus robs you of your movement for just a split second, more than enough time for him to get to work on your [armor]. You struggle, arms and legs thrashing, but he grins evilly, his dick clearly tenting the rubbery fabric of his vest-apron as he slowly peels off your [armor].\n\n"); 
-		outputText(<i>"\"My, my, what an adorable little clam we had under this shell.\"</i> he says in a deep basso, teasing your clit more, dragging his suckers across, letting each one stick a little before moving it on. You writhe involuntarily, bringing your [legs] together. He laughs, tossing your [uppergarment] to one side instead. You open your mouth to scream, but another tendril stifles your voice. <i>\"Shh...It’s time to play.\"</i>\n\n");
+		outputText("<i>\"My, my, what an adorable little clam we had under this shell.\"</i> he says in a deep basso, teasing your clit more, dragging his suckers across, letting each one stick a little before moving it on. You writhe involuntarily, bringing your [legs] together. He laughs, tossing your [uppergarment] to one side instead. You open your mouth to scream, but another tendril stifles your voice. <i>\"Shh...It’s time to play.\"</i>\n\n");
 		outputText("His tendrils wrap around your [breasts], kneading the soft flesh as the tips of his tentacles flick your nipples. Resistance drains from your body as the multi-pronged attack targets your most sensitive areas. One tendril tickles your lips, one prods your ass, one holds your arms together, he seems to be everywhere at once...Everywhere, you realize in horror, except for filling your needy cunt.\n\n"); 
 		outputText("He toys with you for the better part of an hour, but it feels like days, kissing your lips while his tentacles caress your body, bringing you to the edge time and time again. His rock-hard, viney tendril rubs up and down your thigh, but he hasn’t put anything deeper than an inch inside you. Every time you speak up, begging him to fill you, he puts a tentacle over your mouth. You buck, trying to bring his tentacle deeper, but he pulls the slippery appendage loose without a problem, dragging it over your nose and making you inhale the scent of your own quim.\n\n"); 
-		outputText(<i>"\"My my, you’re quite the needy little clam, aren’t you?\"</i> He asks, and you nod. You need him, you need something to fill your pussy, to- You’re shaking with need. <i>\"Do you want this?\"</i> His voice is deep, amused, but in your current state, all you can register is the cock pressed against your entrance. You buck again, trying to get it in, but he pulls back. <i>\"No, no. What do we say?\"</i>\n\n");
+		outputText("<i>\"My my, you’re quite the needy little clam, aren’t you?\"</i> He asks, and you nod. You need him, you need something to fill your pussy, to- You’re shaking with need. <i>\"Do you want this?\"</i> His voice is deep, amused, but in your current state, all you can register is the cock pressed against your entrance. You buck again, trying to get it in, but he pulls back. <i>\"No, no. What do we say?\"</i>\n\n");
 		outputText("You inhale a ragged breath before starting to beg. You scream at the top of your lungs, begging for his touch, his wiggling cock inside you. At that, he obliges, slamming it home to the base in one smooth motion.\n\n"); 
-		outputText(<i>"\"CUMMING!\"</i> You howl right away, your femspunk drenching the bed. Now just along for the ride, your legs fall limp as he ravages your cunt. He pistons in and out, and your tongue lolls out as you surrender to the pleasure…\n\n");
+		outputText("<i>\"CUMMING!\"</i> You howl right away, your femspunk drenching the bed. Now just along for the ride, your legs fall limp as he ravages your cunt. He pistons in and out, and your tongue lolls out as you surrender to the pleasure…\n\n");
 		outputText("You come back to your senses a moment later, as your asshole gapes open. He’s stuck a flexible tendril inside, feeling your pussy through your ass. He picks you up, slamming your body back down onto him as he forces you to ride him, bucking and screaming in ecstasy. As you cum again, your eyes close, and you feel your stomach bloating as his orgasm finally comes, burying his cock deep into your womb. Your eyes roll back into your head as you fall back to the covers.\n\n"); 
 		outputText("You wake up, a warm, wet feeling covering your entire body. You come to, and he’s wrapped his tentacles around you protectively. You open your eyes, and he’s staring at your sweat and cum-soaked face with concern. <i>\"Did I overdo it?\"</i> He seems genuinely concerned, and you laugh gently, cupping his face in your hands.\n\n");
 		outputText("You tell him not to worry, that it was what you asked for, after all. He smiles, kissing you on the cheek. <i>\"I wasn’t sure about this\"</i>, he says simply. <i>\"I’ve never done that before...But if it was good for you...I’d be down for it any time you wish.\"</i> You both dunk in the ocean to wash the fluids from you, before he puts his vest back on. He sails you back to shore, leaving you to dress under the deck.\n\n");
 		outputText("You step up into the sun as he lands the ship, but before you leave, you feel a tentacle wrap around your waist. <i>\"I hope to see you again soon.\"</i> he whispers, his voice mixing with the wind coming off the sea.\n\n");
-doNext(camp.returnToCampUseOneHour);
-}
+		player.sexReward("vaginalFluids");
+		endEncounter(60);
+	}
 
-public function CharyTentFun():void {
+	public function CharyTentFun():void {
 		clearOutput();
 		outputText("You rub the closest of his tentacles, saying that you could get into using some of his extra limbs to have some fun.\n\n");
-		outputText(<i>"\"Only if you return the favor\"</i>, he says, wrapping two of his tendrils around your feet. You shiver as his sucker-tipped limbs slither up your legs, then pull down your [armor]’s lower parts.\n\n");
+		outputText("<i>\"Only if you return the favor\"</i>, he says, wrapping two of his tendrils around your feet. You shiver as his sucker-tipped limbs slither up your legs, then pull down your [armor]’s lower parts.\n\n");
 		outputText("As he works, you grin, grabbing a hold on his vest-apron and tugging it over his head. With a grin, you pull it most of the way off, leaving the neck-hole over his eyes. Even blinded, he doesn’t miss a beat, dropping your (Lower Undergarment) with shocking speed.\n\n"); 
-		outputText(<i>"\"So, how do you want this to go?\"</i> you pull off the apron, one finger on your lip as you consider your options.\n\n");
-menu();
-if (player.hasCock()) {
-addButton(1, "Dick",CharyTentDick);
-}
-if (player.hasPussy()) {
-addButton(2, "Pussy",CharyTentPussy);
-}
-}
+		outputText("<i>\"So, how do you want this to go?\"</i> you pull off the apron, one finger on your lip as you consider your options.\n\n");
+		menu();
+		if (player.hasCock()) addButton(1, "Dick", CharyTentDick);
+		if (player.hasVagina()) addButton(2, "Pussy", CharyTentPussy);
+	}
+	public function CharyTentDick():void {
+		clearOutput();
+		outputText("You get your hands down onto his throbbing black tendril"+(player.hasVagina()?", and as you do, he begins to tease your clit, batting at it with the tips of his octopus-like legs":"")+". He gets to the main event quickly, though, wrapping one limb around your [cock], the slippery skin and your own slathered pre making for a comfortable, warm channel for your [cock]. He begins jerking you off with the tendril, and you buck involuntarily, his muscular limb clearly practiced at such ministrations.\n\n");
+		outputText("You cum, and he supports you as your knees fold. You splatter the floor below the boat with your jizz. You stand back up, and he gives you a knowing smile, his own tentacle-shaft wriggling.\n\n");
+		player.sexReward();
+		doNext(CharySexAfterward);
+	}
+	public function CharyTentPussy():void {
+		clearOutput();
+		outputText("The tentacle enters your box, expanding and wiggling around inside you. His sucker-tipped tendrils pull on your insides, an odd but extremely pleasurable sensation. You gasp involuntarily as the tip of his tendril hits a certain spot near the back of your passage. Hearing this, Charybdis smiles. His tendril probes you harder, hitting that spot more frequently. Unable to hold your voice back any more, your groans and gasps begin filling the boat’s little space.\n\n"); 
+		outputText("Your legs give out at some point, but he lays you down on the bed, pistoning his thick viney tendril in and out of you.\n\n");
+		outputText("Not one to sit idly by, you get your [legs] under you and push against the side of the bed. Surprised by the sudden movement, Charybdis falls to the floor of the yacht...and you follow him down, the tip of his slippery limb still inside you. You let out a wail as the force causes him to bottom out inside you, and he looks up, wrapping a tendril around your shoulders and pulling your upper body down to him. Your eyes shoot open as his tongue enters your mouth, and he kisses you passionately. He guides one of your hands to his black shaft, and you begin stroking, jacking your ebony-hued lover off. Wrapped up in his limbs, your pussy and mouth filled, he continues at a moderate pace, making sure to go all the way in every time. His tentacles begin playing with your clit, sucker attaching. You let out a guttural groan as he begins massaging, tweaking and pulling your sensitive button, and it isn’t long before you wail your orgasm, drenching his lower body with femspunk.\n\n");
+		if (player.hasCock()) outputText("Your [cock] twitches and pulses, spraying his chest and your [breasts] with cum.\n\n");
+		outputText("After your orgasm, he grunts, picking up the pace. Your orgasm has left you sensitive, and each thrust begins to tip between pain and pleasure. He kisses you again, groaning into your mouth as he finally cums, his tentacles tightening around you. The one on your clit wrenches up, pulling more at your oversensitive nub. The warmth filling your womb and the sudden pleasure/pain on your clit pushes you over the edge once more. You can’t even feel your legs over the full feeling in your belly, the raw sensitivity of your lips. Your breathing is ragged, and you keel over together, his still wriggling tentacle still inside you.\n\n");
+		player.sexReward("cum", "Vaginal");
+		//pregnancy check		player.knockUp(PregnancyStore.PREGNANCY_ZENJI, PregnancyStore.INCUBATION_ZENJI);
+		doNext(CharySexAfterward);
+	}
+	public function CharySexAfterward():void {
+		clearOutput();
+		outputText("You wake up on the floor of the lower deck, your mixed fluids soaking into the floorboards. Some time has passed, and as you stretch your [legs], you feel a single sucker latch onto your waist.\n\n");
+		outputText("<i>\"Did you enjoy yourself?\"</i> Charybdis asks from the floor, not even bothering to get up. He grins up at you, his signature crooked grin. <i>\"Cuz I did...mmhmm.\"</i> He’s looking up at your groin, apparently enjoying the view. You cover yourself with a hand instinctively, making him laugh. <i>\"Oh, come off it [name], you know I like the look of ya.\"</i> He slithers to an upright position, yawning loudly. <i>\"You gotta go, huh?\"</i> You nod, beginning to explain the portal, and he raises a hand. <i>\"No need to explain. You got purpose and drive. I ain’t gonna stand in your way. Just take some time for yourself now and then, eh?\"</i>\n\n");
+		endEncounter(60);
+	}
 
-public function CharyTentDick():void {
+	public function CharyLimbSpaghetti():void {
 		clearOutput();
-		outputText("You get your hands down onto his throbbing black tendril, and as you do, he begins to (If you have pussy) tease your clit, batting at it with the tips of his octopus-like legs. (split end) He gets to the main event quickly, though, wrapping one limb around your [cock], the slippery skin and your own slathered pre making for a comfortable, warm channel for your [cock]. He begins jerking you off with the tendril, and you buck involuntarily, his muscular limb clearly practiced at such ministrations.\n\n");
-		outputText("You cum, and he supports you as your knees fold. You splatter the floor below the boat with your jizz. You stand back up, and he gives you a knowing smile, his own tentacle-shaft wriggling. \n\n");
-doNext (CharySexAfterward);
-}
-public function CharyTentPussy():void {
-		clearOutput();
-		outputText("The tentacle enters your box, expanding and wiggling around inside you. His sucker-tipped tendrils pull on your insides, an odd but extremely pleasurable sensation. You gasp involuntarily as the tip of his tendril hits a certain spot near the back of your passage. Hearing this, Charybdis smiles. His tendril probes you harder, hitting that spot more frequently. Unable to hold your voice back any more, your groans and gasps begin filling the boat’s little space \n\n"); 
-		outputText("Your legs give out at some point, but he lays you down on the bed, pistoning his thick viney tendril in and out of you. \n\n");
-		outputText("Not one to sit idly by, you get your (legs) under you and push against the side of the bed. Surprised by the sudden movement, Charybdis falls to the floor of the yacht...and you follow him down, the tip of his slippery limb still inside you. You let out a wail as the force causes him to bottom out inside you, and he looks up, wrapping a tendril around your shoulders and pulling your upper body down to him. Your eyes shoot open as his tongue enters your mouth, and he kisses you passionately. He guides one of your hands to his black shaft, and you begin stroking, jacking your ebony-hued lover off. Wrapped up in his limbs, your pussy and mouth filled, he continues at a moderate pace, making sure to go all the way in every time. His tentacles begin playing with your clit, sucker attaching. You let out a guttural groan as he begins massaging, tweaking and pulling your sensitive button, and it isn’t long before you wail your orgasm, drenching his lower body with femspunk. \n\n");
-		if (player.hasCock()) {
-		outputText("Your [cock] twitches and pulses, spraying his chest and your [breasts] with cum.  \n\n");
-		}
-		outputText("After your orgasm, he grunts, picking up the pace. Your orgasm has left you sensitive, and each thrust begins to tip between pain and pleasure. He kisses you again, groaning into your mouth as he finally cums, his tentacles tightening around you. The one on your clit wrenches up, pulling more at your oversensitive nub. The warmth filling your womb and the sudden pleasure/pain on your clit pushes you over the edge once more. You can’t even feel your legs over the full feeling in your belly, the raw sensitivity of your lips. Your breathing is ragged, and you keel over together, his still wriggling tentacle still inside you.  \n\n");
-		outputText(" \n\n");
-doNext (CharySexAfterward);
-}
-public function CharySexAfterward():void {
-		clearOutput();
-		outputText("You wake up on the floor of the lower deck, your mixed fluids soaking into the floorboards. Some time has passed, and as you stretch your [legs], you feel a single sucker latch onto your waist. \n\n");
-		outputText("“Did you enjoy yourself?” Charybdis asks from the floor, not even bothering to get up. He grins up at you, his signature crooked grin. “Cuz I did...mmhmm.” He’s looking up at your groin, apparently enjoying the view. You cover yourself with a hand instinctively, making him laugh. “Oh, come off it [Name], You know I like the look of ya”. He slithers to an upright position, yawning loudly. “You gotta go, huh?” You nod, beginning to explain the portal, and he raises a hand. “No need to explain. You got purpose and drive. I ain’t gonna stand in your way. Just take some time for yourself now and then, eh?” \n\n");
-		outputText("\n\n");
-		outputText("\n\n");
-		outputText("\n\n");
-doNext(camp.returnToCampUseOneHour);
-
+		outputText("You wrap your closest lower limbs around his, your suckers latching onto his supple flesh.\n\n"); 
+		outputText("<i>\"Oh? You like my tentacles?\"</i> He asks slyly, entwining your limbs further. Struck with a playful idea, you push off with the rest of your tentacles, wrapping them quickly around his remaining limbs. Charybdis gasps as you immobilise him and rob him of balance, forcing him down onto the bed. He begins to laugh, but you lever yourself on top of him and kiss his full lips, your [breasts] bouncing off of his burly chest with every lunge of your face. You wrap a tendril around his slick member as it hardens, and he lies back on the bed. One of his tentacles runs along the crack of your ass, but he waits for you to make the first move.\n\n");
+		outputText("You lower yourself onto him, your lips parted ever so slightly by his tip. Struck by a mischievous thought, you lower yourself about an inch down, then back up, so slowly. After the first few times, he tries to rise, bucking his hips, but you see it coming, pulling yourself away.\n\n"); 
+		outputText("<i>\"Ah ah\"</i>, you tease, putting a finger to his lips. <i>\"When I’m ready\".</i> You continue with the slow tease for another five minutes, but at the pleading look on his face, you decide to stop teasing him. You take a dollop of his pre with your tentacle, slathering your entrance. You lower yourself slowly onto him, gasping slightly as he parts your lips. He slides in smoothly, and as you revel in the feeling of being filled, he grins, twining his tentacles around each of yours. The added contact, the rubbing of smooth skin, feels wonderful, and as you open your mouth, he spins you around, gently pressing your back against the wall. He moves, your wet, tight channel clamping down on him.\n\n");
+		outputText("Two of his tentacles wrap around you, one around your waist, one around your heads, cutting off your vision of everywhere except for him, his violet eyes right there, so close to yours as he kisses your cheek. His limbs are suddenly everywhere, one on each of your (breast description), pulling on your nipples, one hotdogging your [ass], two more like warm, squishy bands around you, kneading your back and neck. You’re far less experienced than he is with your many limbs, but you try and return the favor, imitating his posture and pace, kneading the muscles and tracing his barrel-chest.\n\n"); 
+		outputText("As you return the favor, his eyes smoulder, and he kisses you, first on the lips, then slowly, surely, he moves down to your neck. As he runs his lips along the soft front of your throat, you shudder, moaning slightly. It takes a few minutes for you to even realize that he’s stopped moving his cock inside your box, leaving it halfway in. You give him a kiss back, going in reverse, from his barrel-chest back up to his thick lips. As you kiss his lips, he leans in, pinning you against the wall, continuing his slow, sensuous pace, his head scraping every fold of your pussy, every limb in use as it caresses your entire body. Your nipples puff up, the areolae like nubs of iron. Your clit aches with all the tweaks and pressure. After about fifteen minutes of this slow, sensous torture, you can’t take it anymore. You slam your pelvis down as you push with your arms, pinning Charybdis down onto the bed as you pull back again.\n\n"); 
+		outputText("He quickly picks up the pace, and the multi pronged attack on your senses takes its’ toll. You howl, cumming hard onto his squirming cock-tendril. You slump, and he takes over, ravaging your box as fast as he can. You’re sensitive, and you try to communicate that, but all that escapes your mouth are the moans and howls of a bitch in heat, getting the dicking she didn’t even know she wanted. Your tentacles flail, some trapped underneath him as he pounds you from below. His cock twitches inside you, and you can feel the impending orgasm. You wrench, trying to get off this crazy, amazing ride before-\n\n"); 
+		outputText("You feel the warmth flood you, your tentacles instinctively moving to your box, to fill it, to stop the flow, to stop him leaving you...But despite your instincts screaming at you, he doesn’t try to pull out. You collapse on top of Charybdis, both of you panting uncontrollably.\n\n"); 
+		outputText("<i>\"Uh…\"</i> You moan, trying to get words out, and he nods, your limbs entwined.\n\n");
+		outputText("<i>\"Yeah…\"</i> He falls asleep, and for the life of you, you can’t think of anything better to do right now.\n\n");
+		outputText("You wake up in Charybdis’s bed. He stands, butt naked, by the cutting board, and he turns around as you groan. <i>\"Hey, are you okay?\"</i> He asks, taking your hand as you sit up. <i>\"I hope you at least enjoyed yourself.\"</i> You rub your aching mons and grin ruefully, telling him that of course you did, otherwise you wouldn’t have gone off like that.\n\n");
+		outputText("<i>\"Look...If you got pregnant…\"</i> You blink. You hadn’t even thought of that! Before you can open your mouth, he puts a hand on your shoulder. <i>\"I’ll come by your camp in a week or so. If you are, I’ll...Well...I’ll look after ya, okay?\"</i> He hugs you, still naked, and rests his head on your shoulder.\n\n");
+		outputText("<i>\"You’ve got to go now, don’tcha?\"</i> He asks. You nod, and he inhales, closing his eyes. <i>\"Well, we gotta get back to shore, then. I’ll throw on my apron and get us back. Take what time you need to get...clean.\"</i> He kisses you once more, a chaste kiss on the forehead, before doing exactly what he said, throwing on his smocklike garb and clambering back up to the deck.\n\n");
+		outputText("You leave the cove, and you can feel his eyes following you. You turn back around, and he waves goodbye. <i>\"Come back soon, [name]!\"</i> You head back to camp, a smile on your face.\n\n");
+		player.sexReward("cum", "Vaginal");
+		//pregnancy check		player.knockUp(PregnancyStore.PREGNANCY_ZENJI, PregnancyStore.INCUBATION_ZENJI);
+		endEncounter(60);
+	}
+/*
 public function CharyAnal():void {
 		clearOutput();
 		if (CharyAnalEnabled = true) {
@@ -606,7 +646,9 @@ public function CharyAnalPry():void {
 		clearOutput();
 		if (CharyAffectionMeter <=90) {
 		outputText(" <i>\"Look, I don't want to get into it. Just...Drop it, okay?!\"</i>\n\n");
-		
+		outputText("\n\n");
+		outputText("\n\n");
+		outputText("\n\n");
 		}
 		else 
 		outputText(<i>"\"...There’s a reason I hate the demons.\"</i> He looks at your concerned face, lowering his head in shame. <i>\"Look, when I ran away from home, I thought the surface was gonna be nice. A vacation, right?\"</i> He shakes his head. <i>\"A few months in, I’d made a friend. An Orca girl, named Frealla.\"</i> He chuckles darkly. <i>\"Really liked her, y’know?\"</i>\n\n");
@@ -629,26 +671,6 @@ addButton(4, "Music", CharyMusic );
 addButton(5, "Sex", CharySex );
 if (CharySeenSkulls = true) {
 addButton(6, "Skulls", CharyGiveSkulls );
-}
-
-
-public function CharyLimbSpaghetti():void {
-		clearOutput();
-		outputText("You wrap your closest lower limbs around his, your suckers latching onto his supple flesh.\n\n"); 
-		outputText(<i>"\"Oh? You like my tentacles?\"</i> He asks slyly, entwining your limbs further. Struck with a playful idea, you push off with the rest of your tentacles, wrapping them quickly around his remaining limbs. Charybdis gasps as you immobilise him and rob him of balance, forcing him down onto the bed. He begins to laugh, but you lever yourself on top of him and kiss his full lips, your [breasts] bouncing off of his burly chest with every lunge of your face. You wrap a tendril around his slick member as it hardens, and he lies back on the bed. One of his tentacles runs along the crack of your ass, but he waits for you to make the first move.\n\n");
-		outputText("You lower yourself onto him, your lips parted ever so slightly by his tip. Struck by a mischievous thought, you lower yourself about an inch down, then back up, so slowly. After the first few times, he tries to rise, bucking his hips, but you see it coming, pulling yourself away.\n\n"); 
-		outputText("<i>\"Ah ah\"</i>, you tease, putting a finger to his lips. <i>\"When I’m ready\".</i> You continue with the slow tease for another five minutes, but at the pleading look on his face, you decide to stop teasing him. You take a dollop of his pre with your tentacle, slathering your entrance. You lower yourself slowly onto him, gasping slightly as he parts your lips. He slides in smoothly, and as you revel in the feeling of being filled, he grins, twining his tentacles around each of yours. The added contact, the rubbing of smooth skin, feels wonderful, and as you open your mouth, he spins you around, gently pressing your back against the wall. He moves, your wet, tight channel clamping down on him.\n\n");
-		outputText("Two of his tentacles wrap around you, one around your waist, one around your heads, cutting off your vision of everywhere except for him, his violet eyes right there, so close to yours as he kisses your cheek. His limbs are suddenly everywhere, one on each of your (breast description), pulling on your nipples, one hotdogging your [ass], two more like warm, squishy bands around you, kneading your back and neck. You’re far less experienced than he is with your many limbs, but you try and return the favor, imitating his posture and pace, kneading the muscles and tracing his barrel-chest.\n\n"); 
-		outputText("As you return the favor, his eyes smoulder, and he kisses you, first on the lips, then slowly, surely, he moves down to your neck. As he runs his lips along the soft front of your throat, you shudder, moaning slightly. It takes a few minutes for you to even realize that he’s stopped moving his cock inside your box, leaving it halfway in. You give him a kiss back, going in reverse, from his barrel-chest back up to his thick lips. As you kiss his lips, he leans in, pinning you against the wall, continuing his slow, sensuous pace, his head scraping every fold of your pussy, every limb in use as it caresses your entire body. Your nipples puff up, the areolae like nubs of iron. Your clit aches with all the tweaks and pressure. After about fifteen minutes of this slow, sensous torture, you can’t take it anymore. You slam your pelvis down as you push with your arms, pinning Charybdis down onto the bed as you pull back again.\n\n"); 
-		outputText("He quickly picks up the pace, and the multi pronged attack on your senses takes its’ toll. You howl, cumming hard onto his squirming cock-tendril. You slump, and he takes over, ravaging your box as fast as he can. You’re sensitive, and you try to communicate that, but all that escapes your mouth are the moans and howls of a bitch in heat, getting the dicking she didn’t even know she wanted. Your tentacles flail, some trapped underneath him as he pounds you from below. His cock twitches inside you, and you can feel the impending orgasm. You wrench, trying to get off this crazy, amazing ride before-\n\n"); 
-		outputText("You feel the warmth flood you, your tentacles instinctively moving to your box, to fill it, to stop the flow, to stop him leaving you...But despite your instincts screaming at you, he doesn’t try to pull out. You collapse on top of Charybdis, both of you panting uncontrollably.\n\n"); 
-		outputText(<i>"\"Uh…\"</i> You moan, trying to get words out, and he nods, your limbs entwined.\n\n");
-		outputText("<i>\"Yeah…\"</i> He falls asleep, and for the life of you, you can’t think of anything better to do right now.\n\n");
-		outputText("You wake up in Charybdis’s bed. He stands, butt naked, by the cutting board, and he turns around as you groan. <i>\"Hey, are you okay?\"</i> He asks, taking your hand as you sit up. <i>\"I hope you at least enjoyed yourself.\"</i> You rub your aching mons and grin ruefully, telling him that of course you did, otherwise you wouldn’t have gone off like that.\n\n");
-		outputText(<i>"\"Look...If you got pregnant…\"</i> You blink. You hadn’t even thought of that! Before you can open your mouth, he puts a hand on your shoulder. <i>\"I’ll come by your camp in a week or so. If you are, I’ll...Well...I’ll look after ya, okay?\"</i> He hugs you, still naked, and rests his head on your shoulder.\n\n");
-		outputText(<i>"\"You’ve got to go now, don’tcha?\"</i> He asks. You nod, and he inhales, closing his eyes. <i>\"Well, we gotta get back to shore, then. I’ll throw on my apron and get us back. Take what time you need to get...clean.\"</i> He kisses you once more, a chaste kiss on the forehead, before doing exactly what he said, throwing on his smocklike garb and clambering back up to the deck.\n\n");
-		outputText("You leave the cove, and you can feel his eyes following you. You turn back around, and he waves goodbye. <i>\"Come back soon, [name]!\"</i> You head back to camp, a smile on your face.\n\n");
-
 }
 
 public function CharyAnalFuck():void {

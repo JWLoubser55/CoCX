@@ -4741,6 +4741,7 @@ use namespace CoC;
 			if (hasMutation(IMutationsLib.HumanDigestiveTractIM)) internalHumanCounter += perkv1(IMutationsLib.HumanDigestiveTractIM);//4
 			if (hasMutation(IMutationsLib.HumanEyesIM)) internalHumanCounter += perkv1(IMutationsLib.HumanEyesIM);//4
 			if (hasMutation(IMutationsLib.HumanFatIM)) internalHumanCounter += perkv1(IMutationsLib.HumanFatIM);//4
+			if (hasMutation(IMutationsLib.HumanLungsIM)) internalHumanCounter += perkv1(IMutationsLib.HumanLungsIM);//4
 			if (hasMutation(IMutationsLib.HumanMetabolismIM)) internalHumanCounter += perkv1(IMutationsLib.HumanMetabolismIM);//4
 			if (hasMutation(IMutationsLib.HumanMusculatureIM)) internalHumanCounter += perkv1(IMutationsLib.HumanMusculatureIM);//4
 			if (hasMutation(IMutationsLib.HumanOvariesIM)) internalHumanCounter += perkv1(IMutationsLib.HumanOvariesIM);//4
@@ -4751,7 +4752,7 @@ use namespace CoC;
 			if (hasMutation(IMutationsLib.HumanThyroidGlandIM)) internalHumanCounter += perkv1(IMutationsLib.HumanThyroidGlandIM);//4
 			if (hasMutation(IMutationsLib.HumanVersatilityIM)) internalHumanCounter += perkv1(IMutationsLib.HumanVersatilityIM);//4
 			End("Player","racialScore");
-			return internalHumanCounter;//60
+			return internalHumanCounter;//64
 		}
 		public function howManyDifferentHumanIMYouGot():Number {
 			var hMDHIMYG:Number = 0;
@@ -4761,6 +4762,7 @@ use namespace CoC;
 			if (hasMutation(IMutationsLib.HumanDigestiveTractIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanEyesIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanFatIM)) hMDHIMYG += 1;
+			if (hasMutation(IMutationsLib.HumanLungsIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanMetabolismIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanMusculatureIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanOvariesIM)) hMDHIMYG += 1;
