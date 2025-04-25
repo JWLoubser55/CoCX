@@ -3257,7 +3257,7 @@ public class Creature extends Utils
 		{
 			if (gills.type != Gills.NONE || lowerBody == LowerBody.SCYLLA || lowerBody == LowerBody.KRAKEN || lowerBody == LowerBody.MELKIE || tailType == Tail.ARIGEAN_GREEN || tailType == Tail.ARIGEAN_RED || tailType == Tail.ARIGEAN_YELLOW || tailType == Tail.ARIGEAN_PRINCESS ||
 				rearBody.type == RearBody.ORCA_BLOWHOLE || hasStatusEffect(StatusEffects.Airweed) || game.player.necklaceName == "Magic coral and pearl necklace" || game.player.headjewelryName == "Aqua breather" ||
-				(game.player.isInGoblinMech() && game.player.hasKeyItem("Safety bubble") >= 0) || perkv1(IMutationsLib.HumanLungsIM) >= 4 || game.player.hasPerk(PerkLib.AffinityUndine) || game.player.hasPerk(PerkLib.Undeath))
+				(game.player.isInGoblinMech() && game.player.hasKeyItem("Safety bubble") >= 0) || (perkv1(IMutationsLib.HumanLungsIM) >= 4 && game.player.racialScore(Races.HUMAN) > 17) || game.player.hasPerk(PerkLib.AffinityUndine) || game.player.hasPerk(PerkLib.Undeath))
 				return true;	//efekt of itemów dające oddych. pod wodą
 			return false;
 		}
@@ -5018,4 +5018,4 @@ public class Creature extends Utils
 			//Do nothing
 		}
 	}
-}
+}

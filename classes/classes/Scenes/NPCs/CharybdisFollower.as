@@ -393,7 +393,7 @@ public class CharybdisFollower extends NPCAwareContent implements SaveableState
 		menu();
 		addButton(1, "JamSesh", charyJamOut);
 		addButtonIfTrue(2, "Instruments", charyInstruments, "Req. 30%+ affection", CharyAffectionMeter >= 30);
-		addButtonIfTrue(3, "Vocals", charyVocalTraining, "Req. 50%+ affection (and have less then 20 trainings)", CharyAffectionMeter >= 50 && CharyVocalTrained < 20);
+		addButtonIfTrue(3, "Vocals", charyVocalTraining, "Req. 50%+ affection (and have less then 35 trainings)", CharyAffectionMeter >= 50 && CharyVocalTrained < 35);
 		addButtonIfTrue(4, "Sail", charySail, "Req. 60%+ affection", CharyAffectionMeter >= 60);
 		addButton(14, "Back", charyBeachMeetings2);
 	}
@@ -468,7 +468,19 @@ public class CharybdisFollower extends NPCAwareContent implements SaveableState
 			outputText("<b>Gained 'Drill Sergeant' perk: Your voice and bearing now commands respect, even among the surliest of recruits. Your followers will attack an additional time per round, and are guaranteed to attack</b>\n\n");
 			player.createPerk(PerkLib.DrillSergeant,0,0,0,0);
 		}
-		if (CharyVocalTrained < 20) CharyVocalTrained += 1;
+		if (CharyVocalTrained == 24) {
+			outputText("<b>Gained 'Look! A Distraction' perk: Allow to use mental special that can stun enemy and give one time bonus of doubling mlee attacks count once per fight</b>\n\n");
+			player.createPerk(PerkLib.LookADistraction,0,0,0,0);
+		}
+		if (CharyVocalTrained == 29) {
+			outputText("<b>Gained 'Comradery' perk: Your followers are your shield and sword. While you have henchmen in your party, you take 10% less damage for each</b>\n\n");
+			player.createPerk(PerkLib.Comradery,0,0,0,0);
+		}
+		if (CharyVocalTrained == 34) {
+			outputText("<b>Gained 'Operratic Operator' perk: Your stamina recovers an additional 2,5%/round, and 5%/hr. You no longer take damage for the first five rounds of underwater combat</b>\n\n");
+			player.createPerk(PerkLib.OperraticOperator,0,0,0,0);
+		}
+		if (CharyVocalTrained < 35) CharyVocalTrained += 1;
 		endEncounter(60);
 	}
 	

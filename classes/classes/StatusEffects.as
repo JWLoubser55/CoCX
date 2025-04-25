@@ -1106,6 +1106,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const LifestealEnchantment:StatusEffectType      = mkCombat("Lifesteal Enchantment");
 		public static const LifeSiphon:StatusEffectType                = mkCombat("Life siphon");
 		public static const LizanBlowpipe:StatusEffectType             = LizanBlowpipeDebuff.TYPE;
+		public static const LookoutUsed:StatusEffectType               = mkCombat("Lookout Used");
 		public static const LoweredAccuracy:StatusEffectType           = mkCombat("Lowered Accuracy");
 		public static const LustDoT:StatusEffectType                   = mkCombat("Lust DoT");
 		public static const LustDoTH:StatusEffectType                  = mkCombat("Lust DoT (H)");

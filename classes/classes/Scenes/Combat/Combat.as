@@ -1716,6 +1716,7 @@ public class Combat extends BaseContent {
             }
             if (player.hasStatusEffect(StatusEffects.BladeDance)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
             if (flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] > 1 && player.hasPerk(PerkLib.SteelStorm) && !player.hasStatusEffect(StatusEffects.CounterAction) && (dualWeapon || player.weapon == weapons.DAISHO)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
+            if (monster.hasStatusEffect(StatusEffects.LookoutUsed)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
         }
         else {
             flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] = 1;
@@ -1739,6 +1740,7 @@ public class Combat extends BaseContent {
 				}
 				if (player.hasStatusEffect(StatusEffects.BladeDance)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
 				if (flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] > 1 && player.hasPerk(PerkLib.SteelStorm) && !player.hasStatusEffect(StatusEffects.CounterAction) && (dualWeapon || player.weaponOff == weapons.DAISHO)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
+				if (monster.hasStatusEffect(StatusEffects.LookoutUsed)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
 			}
 			else {
 				flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] = 1;
@@ -11755,10 +11757,13 @@ public class Combat extends BaseContent {
 		if (player.hasStatusEffect(StatusEffects.SubZeroConditions) && !player.hasPerk(PerkLib.ColdAffinity)) SceneLib.glacialRift.SubZeroConditionsTick();
         if (monster is Incels) (monster as Incels).DraftSupportCheck();
         if (player.hasStatusEffect(StatusEffects.UnderwaterOutOfAir)) {
-            var deoxigen:Number = 0;
-            deoxigen += (player.maxHP() * 0.05);
-            deoxigen = player.takePhysDamage(deoxigen);
-            outputText("<b>You are running out of oxygen. You need to finish this fight and fast before you lose consciousness. <b>([font-damage]" + deoxigen + "[/font])</b></b>\n\n");
+			if (player.statusEffectv1(StatusEffects.UnderwaterOutOfAir) > 0) player.addStatusValue(StatusEffects.UnderwaterOutOfAir, 1, -1);
+			else {
+				var deoxigen:Number = 0;
+				deoxigen += (player.maxHP() * 0.05);
+				deoxigen = player.takePhysDamage(deoxigen);
+				outputText("<b>You are running out of oxygen. You need to finish this fight and fast before you lose consciousness. <b>([font-damage]" + deoxigen + "[/font])</b></b>\n\n");
+			}
         }
 		if (player.hasStatusEffect(StatusEffects.UnderwaterAndIgnis)) {
 			var ignishurt:Number = 0;
@@ -14123,6 +14128,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim3 += 4;
 			fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.01 * hshim3);
 		}
+		if (player.hasPerk(PerkLib.OperraticOperator)) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.025);
         if (player.hasPerk(PerkLib.HydraRegeneration) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) fatiguecombatrecovery += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
 		if (player.hasPerk(PerkLib.TrollRegeneration) && !player.hasStatusEffect(StatusEffects.TrollRegenerationDisabled)) fatiguecombatrecovery += 6;
         if (player.hasPerk(PerkLib.JobGunslinger)) fatiguecombatrecovery += 1;

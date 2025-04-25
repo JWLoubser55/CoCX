@@ -3843,6 +3843,10 @@ import classes.Scenes.Combat.CombatAbilities;
 				}
 				else outputText("<b>" + capitalA + short + (plural ? " are" : " is") + " currently polarized!</b>\n\n");
 			}
+			if (hasStatusEffect(StatusEffects.LookoutUsed)) {
+				if(statusEffectv1(StatusEffects.LookoutUsed) <= 0) removeStatusEffect(StatusEffects.LookoutUsed);
+				addStatusValue(StatusEffects.LookoutUsed, 1, -1);
+			}
 			if(hasStatusEffect(StatusEffects.Earthshield)) {
 				outputText("<b>[Themonster] is protected by a shield of rocks!</b>\n\n");
 			}

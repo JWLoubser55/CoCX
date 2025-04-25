@@ -4456,6 +4456,12 @@ public class PerkLib
 		// Quest, Event & NPC perks
 		public static const AdvancedLeadership:PerkType = mk("Advanced Leadership", "Advanced Leadership",
 				"Allows to form 4 people party.");
+		public static const OperraticOperator:PerkType = mk("Operratic Operator", "Operratic Operator",
+				"Your stamina recovers an additional 2,5%/round, and 5%/hr. You no longer take damage for the first five rounds of underwater combat.");
+		public static const Comradery:PerkType = mk("Comradery", "Comradery",
+				"Your followers are your shield and sword. While you have henchmen in your party, you take 10% less damage for each.");
+		public static const LookADistraction:PerkType = mk("Look! A Distraction", "Look! A Distraction",
+				"Allow to use mental special that can stun enemy and give one time bonus of doubling mlee attacks count once per fight.");
 		public static const CommandingTone:PerkType = mk("Commanding Tone", "Commanding Tone",
 				"Minion and Follower Damage increased by 10%.");
 		public static const DiaphragmControl:PerkType = mk("Diaphragm control", "Diaphragm control",
@@ -4962,6 +4968,7 @@ public class PerkLib
 		public static const EnemyColossalType:PerkType = mk("Colossal-sized type enemy", "Colossal-sized type enemy", "");//50+ ft. tall
 		public static const EnemyConstructType:PerkType = mk("Construct-type enemy", "Construct-type enemy", "");
 		public static const EnemyDragonType:PerkType = mk("Dragon-type enemy", "Dragon-type enemy", "");
+		public static const EnemyEldritchType:PerkType = mk("Eldritch-type enemy", "Eldritch-type enemy", "");
 		public static const EnemyElementalType:PerkType = mk("Elemental-type enemy", "Elemental-type enemy", "");
 		public static const EnemyEliteType:PerkType = mk("Elite-type enemy", "Elite-type enemy", "");
 		public static const EnemyFeralType:PerkType = mk("Feral-type enemy", "Feral-type enemy", "");

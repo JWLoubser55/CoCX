@@ -70,7 +70,7 @@ public class HumanLungsMutation extends IMutationPerkType
 
         public function HumanLungsMutation()
 		{
-			super(mName + " IM", mName, SLOT_LUNGS, 2);
+			super(mName + " IM", mName, SLOT_LUNGS, 4);
         }
         
     }

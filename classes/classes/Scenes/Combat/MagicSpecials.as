@@ -1148,6 +1148,12 @@ public class MagicSpecials extends BaseCombatContent {
 				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
+		if (player.hasPerk(PerkLib.LookADistraction)) {
+			bd = buttons.add("LOOKOUT!", LookADistraction).hint("Mental special attack. Base 25% success rate, +0.5% for every point of WIS you have over your enemy’s WIS. Stuns and Doubles next melee hit if done next round, only works once per combat.");
+			if (player.hasStatusEffect(StatusEffects.LookoutUsed)) {
+				bd.disable("You already used this special in this fight.\n\n");
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+		}
 		if (player.hasPerk(PerkLib.ElementalBody)) {
 			for each (var fusionAbility:CombatAbility in CombatAbilities.ALL_ELEMENTAL_FUSION_ATTACKS) {
                 if (fusionAbility.isKnown) {
@@ -5273,6 +5279,30 @@ public class MagicSpecials extends BaseCombatContent {
 		monster.createStatusEffect(StatusEffects.TelekineticGrab, 4 + rand(2), 0, 0, 0);
 		if (player.hasPerk(PerkLib.TelekineticGrapple)) player.createStatusEffect(StatusEffects.CooldownTelekineticGrab, 8, 0, 0, 0);
 		else player.createStatusEffect(StatusEffects.CooldownTelekineticGrab, 10, 0, 0, 0);
+		enemyAI();
+	}
+
+	public function LookADistraction():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		var triggerChance:Number = 25;
+		player.createStatusEffect(StatusEffects.LookoutUsed, 0, 0, 0, 0);
+		if (player.wis > monster.wis) {
+			if (player.wis > (monster.wis + 150)) triggerChance += 75;
+			else triggerChance += (0.5 * (player.wis - monster.wis));
+		}
+		outputText("You point behind [themonster], raising your voice to the top of your lungs.\n\n");
+		if (rand(2) == 0) outputText("\"<i>Oh, dear Gods, WHAT IS THAT THING?!</i>\" You scream, putting a look of sheer terror on your face.\n\n");
+		else outputText("\"<i>Look out! Behind you!</i>\" You yell, putting a concerned look on your face.\n\n");
+		if (monster.hasPerk(PerkLib.EnemyConstructType) || monster.hasPerk(PerkLib.EnemyEldritchType) || monster.hasPerk(PerkLib.EnemyPlantType)) outputText("[Themonster] is entirely unmoved by your words. Come to think of it, can they even understand you?\n\n");
+		else {
+			if (rand(100) < triggerChance) {
+				outputText("[Themonster] turns as they whip around to face…nothing. They just fell for the oldest trick in the book.\n\n");
+				monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
+				monster.createStatusEffect(StatusEffects.LookoutUsed, 1, 0, 0, 0);
+			}
+			else outputText("[Themonster] looks at you, sheer contempt on their face. Did you really expect them to fall for that?\n\n");
+		}
 		enemyAI();
 	}
 

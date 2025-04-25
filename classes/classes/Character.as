@@ -68,7 +68,7 @@ import classes.Scenes.NPCs.Forgefather;
 			if (goal == thickness)
 				return "";
 			//Lose weight fatty!
-			if (goal < thickness && goal < 50)
+			if (goal < thickness && goal < Math.round(game.player.maxThicknessCap() * 0.5))
 			{
 				thickness -= strength;
 				//YOUVE GONE TOO FAR! TURN BACK!
@@ -76,7 +76,7 @@ import classes.Scenes.NPCs.Forgefather;
 					thickness = goal;
 			}
 			//Sup tubby!
-			if (goal > thickness && goal > 50)
+			if (goal > thickness && goal > Math.round(game.player.maxThicknessCap() * 0.5))
 			{
 				thickness += strength;
 				//YOUVE GONE TOO FAR! TURN BACK!
@@ -85,10 +85,10 @@ import classes.Scenes.NPCs.Forgefather;
 			}
 			trace("MOD THICKNESS FIRE");
 			//DIsplay 'U GOT FAT'
-			if (goal >= thickness && goal >= 50)
+			if (goal >= thickness && goal >= Math.round(game.player.maxThicknessCap() * 0.5))
 				return "\n\nYour center of balance changes a little bit as your body noticeably widens. (+" + strength + " body thickness)";
 			//GET THIN BITCH
-			else if (goal <= thickness && goal <= 50)
+			else if (goal <= thickness && goal <= Math.round(game.player.maxThicknessCap() * 0.5))
 				return "\n\nEach movement feels a tiny bit easier than the last.  Did you just lose a little weight!? (+" + strength + " thin)";
 			return "";
 		}
@@ -98,7 +98,7 @@ import classes.Scenes.NPCs.Forgefather;
 			if (goal == tone)
 				return "";
 			//Lose muscle visibility!
-			if (goal < tone && goal < 50)
+			if (goal < tone && goal < Math.round(game.player.maxToneCap() * 0.5))
 			{
 				tone -= strength;
 				//YOUVE GONE TOO FAR! TURN BACK!
@@ -109,7 +109,7 @@ import classes.Scenes.NPCs.Forgefather;
 				}
 			}
 			//MOAR hulkness
-			if (goal > tone && goal > 50)
+			if (goal > tone && goal > Math.round(game.player.maxToneCap() * 0.5))
 			{
 				tone += strength;
 				//YOUVE GONE TOO FAR! TURN BACK!
@@ -120,23 +120,22 @@ import classes.Scenes.NPCs.Forgefather;
 				}
 			}
 			//DIsplay BITCH I WORK OUT
-			if (goal >= tone && goal > 50)
+			if (goal >= tone && goal > Math.round(game.player.maxToneCap() * 0.5))
 				return "\n\nYour body feels a little more solid as you move, and your muscles look slightly more visible. (+" + strength + " muscle tone)";
 			//Display DERP I HAVE GIRL MUSCLES
-			else if (goal <= tone && goal < 50)
+			else if (goal <= tone && goal < Math.round(game.player.maxToneCap() * 0.5))
 				return "\n\nMoving brings with it a little more jiggle than you're used to.  You don't seem to have gained weight, but your muscles look less visible. (-" + strength + " muscle tone)";
 			return "";
 		}
 
-
-	public function hasBeard():Boolean{ return facePart.hasBeard(); }
-	public function beard():String{ return facePart.beard(); }
-	public function hasMuzzle():Boolean{ return facePart.hasMuzzle(); }
-	public function hasBeak():Boolean{ return facePart.hasBeak(); }
-	public function face():String { return facePart.describe(); }
-	public function faceDesc():String { return facePart.describeMF(); }
-	public function faceDescArticle():String { return facePart.describeMF(true); }
-	public function hasLongTail():Boolean { return tail.isLong(); }
+		public function hasBeard():Boolean{ return facePart.hasBeard(); }
+		public function beard():String{ return facePart.beard(); }
+		public function hasMuzzle():Boolean{ return facePart.hasMuzzle(); }
+		public function hasBeak():Boolean{ return facePart.hasBeak(); }
+		public function face():String { return facePart.describe(); }
+		public function faceDesc():String { return facePart.describeMF(); }
+		public function faceDescArticle():String { return facePart.describeMF(true); }
+		public function hasLongTail():Boolean { return tail.isLong(); }
 
 		public function isPregnant():Boolean { return _pregnancyType > 0 || _pregnancy2Type > 0; }
 		public function canGetPregnant():Boolean { return (vaginas.length > 0 && _pregnancyType == 0) || (vaginas.length > 1 && _pregnancy2Type == 0); }

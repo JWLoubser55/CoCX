@@ -22,7 +22,10 @@ public function oceanJuvenileAbyssalSharkEncounter():void {
     outputText("Bits of adrenaline begin to fade as you realize he has taken a chunk out of your body, still chewing on the part of you he stole, smiling wide as he clearly is seeking more.\n\n");
 	outputText("The blood from your wound spreads as you spot several other sharks encircle you, and the pack leader approaches you rapidly. As the leader spots your attacker, it drifts, changing course to circle around the two of you. Apparently, even he doesn't feel daring enough to provoke your attacker, waiting to see the situation develop.\n\n");
 	outputText("You are fighting a Juvenile Abyssal Shark!");
-	if (!player.canSwimUnderwater()) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir, 0, 0, 0, 0);
+	if (!player.canSwimUnderwater()) {
+		if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+		else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+	}
 	if (player.hasStatusEffect(StatusEffects.CombatWounds)) player.addStatusValue(StatusEffects.CombatWounds, 1, 0.05);
 	else player.createStatusEffect(StatusEffects.CombatWounds,0.05,0,0,0);
 	monster.createStatusEffect(StatusEffects.Bloodlust,10,0,0,0);
@@ -35,7 +38,10 @@ public function oceanJuvenileAbyssalSharkDefeated():void {
 	outputText("Just as you manage to surmount him, he turns tail and torpedos away. You almost begin to chase after him, yet are swiftly cut off by the nearby swarm of sharks closing the distance upon you, giving him a chance to escape, seemingly as he had anticipated.\n\n");
 	outputText("The hunting pack leader reveals a devious, toothy grin upon commanding the offense. Looks like you're in for more as the pack closes in for a fight!\n\n");
 	outputText("You are under attack by a shark girls pack!");
-    if (!player.canSwimUnderwater()) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir, 0, 0, 0, 0);
+    if (!player.canSwimUnderwater()) {
+		if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+		else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+	}
 	monster.createStatusEffect(StatusEffects.Bloodlust,10,0,0,0);
 	startCombat(new UnderwaterSharkGirlsPack());
 }
