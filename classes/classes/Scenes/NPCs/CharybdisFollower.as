@@ -477,7 +477,7 @@ public class CharybdisFollower extends NPCAwareContent implements SaveableState
 			player.createPerk(PerkLib.Comradery,0,0,0,0);
 		}
 		if (CharyVocalTrained == 34) {
-			outputText("<b>Gained 'Operratic Operator' perk: Your stamina recovers an additional 2,5%/round, and 5%/hr. You no longer take damage for the first five rounds of underwater combat</b>\n\n");
+			outputText("<b>Gained 'Operratic Operator' perk: Your stamina recovers an additional 2,5%/round, and 5%/hr. You no longer take damage for the first five rounds of drowning underwater</b>\n\n");
 			player.createPerk(PerkLib.OperraticOperator,0,0,0,0);
 		}
 		if (CharyVocalTrained < 35) CharyVocalTrained += 1;

@@ -1588,7 +1588,7 @@ public class Exploration extends BaseContent implements SaveableState
 				outputText("\n\n<b>Aaaand....A wild Scylla Appears.</b>");
 				player.underwaterCombatBoost();
 				if (!player.canSwimUnderwater()) {
-					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
 					else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
 				}
 				startCombat(new Scylla());//lvl 70
@@ -1609,7 +1609,7 @@ public class Exploration extends BaseContent implements SaveableState
 				outputText("\n\n<b>Aaaand....A wild Kraken Appears.</b>");
 				player.underwaterCombatBoost();
 				if (!player.canSwimUnderwater()) {
-					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
 					else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
 				}
 				startCombat(new Kraken());//lvl 100 GIANT BOSS
@@ -1621,7 +1621,7 @@ public class Exploration extends BaseContent implements SaveableState
 				player.createStatusEffect(StatusEffects.HeroBane, 10, 0, 0, 0);
 				player.underwaterCombatBoost();
 				if (!player.canSwimUnderwater()) {
-					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
 					else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
 				}
 				startCombat(new SeabedAlrauneBoss());//lvl 135 GIANT PLANT BOSS
@@ -1637,7 +1637,7 @@ public class Exploration extends BaseContent implements SaveableState
 				player.createStatusEffect(StatusEffects.HeroBane, 10, 0, 0, 0);
 				player.underwaterCombatBoost();
 				if (!player.canSwimUnderwater()) {
-					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
 					else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
 				}
 				startCombat(new SeabedAlrauneBoss());//lvl 135 GIANT PLANT BOSS
@@ -1831,4 +1831,4 @@ public class Exploration extends BaseContent implements SaveableState
 		}
 
 	}
-}
+}

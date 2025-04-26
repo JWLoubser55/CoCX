@@ -110,7 +110,7 @@ public class CombatMagic extends BaseCombatContent {
 	internal function spellCostImpl(mod:Number):Number {
 		var costPercent:Number = 100 + costChange_all() + costChange_spell();
 		//Addiditive mods
-		if (spellModImpl() > 1) costPercent += Math.round(spellModImpl() - 1) * 10;
+		if (spellModImplPre() > 1) costPercent += Math.round(spellModImplPre() - 1) * 10;
 		//Limiting it and multiplicative mods
 		if (player.hasPerk(PerkLib.BloodMage) && costPercent < 50) costPercent = 50;
 		mod *= costPercent / 100;
@@ -133,7 +133,7 @@ public class CombatMagic extends BaseCombatContent {
 		//
 		if (player.hasPerk(PerkLib.BloodDemonWisdom)) costPercent -= 5;
 		//
-		if (spellModImpl() > 1) costPercent += Math.round(spellModImpl() - 1) * 10;
+		if (spellModImplPre() > 1) costPercent += Math.round(spellModImplPre() - 1) * 10;
 		if (player.hasPerk(PerkLib.AscensionMysticality)) costPercent -= (player.perkv1(PerkLib.AscensionMysticality) * 2);
 		//Limiting it and multiplicative mods
 		if (costPercent < 5) costPercent = 5;
@@ -330,6 +330,47 @@ public class CombatMagic extends BaseCombatContent {
     }
 
 	internal function spellModImpl():Number {
+		var mod:Number = spellModImplPre();
+		if (player.hasPerk(PerkLib.JobSorcerer)) mod += .1;
+		if (player.hasPerk(PerkLib.Spellpower)) mod += .05;
+		if (player.hasPerk(PerkLib.MagesWrath)) mod += .05;
+		if (player.hasPerk(PerkLib.WarMageNovice)) mod += .05;
+		if (player.hasPerk(PerkLib.GreyMagic)) mod += .05;
+		if (player.hasPerk(PerkLib.SpellpowerGrey)) mod += .05;
+		if (player.hasPerk(PerkLib.Mage)) mod += .1;
+		if (player.hasPerk(PerkLib.Channeling)) mod += .1;
+		if (player.hasPerk(PerkLib.StaffChanneling)) mod += .1;
+		if (player.hasPerk(PerkLib.MagesWrathEx)) mod += .1;
+		if (player.hasPerk(PerkLib.GreyMageApprentice)) mod += .1;
+		if (player.hasPerk(PerkLib.BrutalSpells)) mod += .1;
+		if (player.hasPerk(PerkLib.GrandMage)) mod += .15;
+		if (player.hasPerk(PerkLib.FocusedMind)) mod += .15;
+		//if (player.hasPerk(PerkLib.)) mod += .15;
+		//if (player.hasPerk(PerkLib.)) mod += .15;
+		//if (player.hasPerk(PerkLib.)) mod += .15;
+		if (player.hasPerk(PerkLib.WarMageApprentice)) mod += .15;
+		if (player.hasPerk(PerkLib.Archmage)) mod += .2;
+		if (player.hasPerk(PerkLib.TraditionalMageI)) mod += .2;
+		if (player.hasPerk(PerkLib.TraditionalMageII)) mod += .2;
+		if (player.hasPerk(PerkLib.TraditionalMageIII)) mod += .2;
+		if (player.hasPerk(PerkLib.FortressOfIntellect)) mod += .2;
+		if (player.hasPerk(PerkLib.GreyMage)) mod += .2;
+		if (player.hasPerk(PerkLib.DefensiveStaffChanneling)) mod += .2;
+		if (player.hasPerk(PerkLib.OffensiveStaffChanneling)) mod += .2;
+		if (player.hasPerk(PerkLib.GrandArchmage)) mod += .25;
+		if (player.hasPerk(PerkLib.TraditionalMageIV)) mod += .25;
+		if (player.hasPerk(PerkLib.TraditionalMageV)) mod += .25;
+		if (player.hasPerk(PerkLib.TraditionalMageVI)) mod += .25;
+		if (player.hasPerk(PerkLib.ElementalBolt)) mod += .25;
+		if (player.hasPerk(PerkLib.WarMageAdept)) mod += .25;
+		if (player.hasPerk(PerkLib.Convergence)) mod += .25;
+		//if (player.hasPerk(PerkLib.)) mod += .3;
+		if (player.hasPerk(PerkLib.ArchmageEx)) mod += .65;
+		mod = Math.round(mod * 100) / 100;
+		return mod;
+	}
+	
+	internal function spellModImplPre():Number {
 		var mod:Number = 1 + modChange_all() + modChange_spell_1() + modChange_spell_2();
 		if (player.hasPerk(PerkLib.Obsession)) mod += player.perkv1(PerkLib.Obsession);
 		if (player.headJewelry == headjewelries.DMONSKUL) mod += player.cor * .006;

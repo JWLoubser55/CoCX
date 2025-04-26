@@ -23,7 +23,7 @@ public function oceanJuvenileAbyssalSharkEncounter():void {
 	outputText("The blood from your wound spreads as you spot several other sharks encircle you, and the pack leader approaches you rapidly. As the leader spots your attacker, it drifts, changing course to circle around the two of you. Apparently, even he doesn't feel daring enough to provoke your attacker, waiting to see the situation develop.\n\n");
 	outputText("You are fighting a Juvenile Abyssal Shark!");
 	if (!player.canSwimUnderwater()) {
-		if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+		if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
 		else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
 	}
 	if (player.hasStatusEffect(StatusEffects.CombatWounds)) player.addStatusValue(StatusEffects.CombatWounds, 1, 0.05);
@@ -39,7 +39,7 @@ public function oceanJuvenileAbyssalSharkDefeated():void {
 	outputText("The hunting pack leader reveals a devious, toothy grin upon commanding the offense. Looks like you're in for more as the pack closes in for a fight!\n\n");
 	outputText("You are under attack by a shark girls pack!");
     if (!player.canSwimUnderwater()) {
-		if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+		if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
 		else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
 	}
 	monster.createStatusEffect(StatusEffects.Bloodlust,10,0,0,0);
