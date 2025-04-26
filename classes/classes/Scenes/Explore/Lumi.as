@@ -4,6 +4,7 @@ import classes.GlobalFlags.kACHIEVEMENTS;
 import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
 import classes.Scenes.Camp.CampStatsAndResources;
+import classes.Scenes.NPCs.CharybdisFollower;
 import classes.display.SpriteDb;
 import classes.Scenes.SceneLib;
 
@@ -51,6 +52,7 @@ public class Lumi extends BaseContent {
 		menu();
 		if (lumiEnhance0(true)) addButton(0, "Enhance", lumiEnhance0);
 		if (lumiEnhance1(true)) addButton(1, "Enhance", lumiEnhance1);
+		if (CharybdisFollower.CharyLandShipQuestState == 3 || ((CharybdisFollower.CharyLandShipQuestState == 5 || CharybdisFollower.CharyLandShipQuestState == 6) && player.gems >= 1000)) addButton(5, "Landship Quest", charyLandShipQuest);
 		addButton(10, "Shop", lumiShop);
 		if (player.hasStatusEffect(StatusEffects.LumiWorkshop)) {
 			addButton(11, "Engineering", lumiEngineering);
@@ -185,6 +187,25 @@ public class Lumi extends BaseContent {
         }
         inventory.takeItem(nextItem, lumiEnhance1, lumiLabChoices);
     }
+	
+	private function charyLandShipQuest():void {
+		spriteSelect(SpriteDb.s_lumi);
+        clearOutput();
+		if (CharybdisFollower.CharyLandShipQuestState == 3) {
+			outputText("You ask Lumi about a boat, and how one could make them wheels. Lumi’s eyes brighten, and her fingers begin to twitch.\n\n");
+			outputText("\"<i>A boat, Wike dis wun?</i>\" She shows you a blueprint, and sure enough, it looks very similar to Charybdis’s. You ask her how much it would take to make wheels for it, and she shrugs. \"<i>Measuements. Oi’d need measuements fo’ da boat.</i>\" She thinks, scratching her head. \"<i>Oi’d need a t’ousand gems.</i>\" She hands you a metal roll with an odd measuring device rolled up inside it. \"<i>Measue da length, width hewe an’ hewe, and da height of da boat. Ya get me dis, I make you da wheels an’ da cage.</i>\"\n\n");
+			CharybdisFollower.CharyLandShipQuestState = 4;
+			doNext(lumiLabChoices);
+		}
+		else {
+			outputText("You hand Lumi the gems, and the measurements. She gives you a nod. \"<i>Wun seta Wheels, cummin’ Wight Up!</i>\" The little goblin is a madwoman, and works with incredible speed. In less than a half-hour, she’s gotten a mount made, with straps for Charybdis’s boat and a comfortable yoke to pull with.\n\n");
+			outputText("You take the yoke, pulling the frame down to Charybdis’s cove. At the sight of you, he stops his playing, running over, tentacles waving around wildly.\n\n");
+			outputText("\"<i>Is this what I think it is?</i>\" He whispers gleefully, bringing his hands to his mouth. You nod, and he dances on his tendrils, tapping the sand in excitement.\n\n");
+			CharybdisFollower.CharyLandShipQuestState = 7;
+			player.gems -= 1000;
+			endEncounter(60);
+		}
+	}
 
     public function lumiShop():void {
         spriteSelect(SpriteDb.s_lumi);
@@ -2284,4 +2305,4 @@ public class Lumi extends BaseContent {
 		else doNext(camp.returnToCampUseTwelveHours);
 	}
 }
-}
+}

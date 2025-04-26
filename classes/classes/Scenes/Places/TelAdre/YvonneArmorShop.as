@@ -4,6 +4,7 @@ import classes.CoC;
 import classes.ItemType;
 import classes.Items.Armor;
 import classes.Scenes.SceneLib;
+import classes.Scenes.NPCs.CharybdisFollower;
 import classes.display.SpriteDb;
 
 public class YvonneArmorShop extends Shop {
@@ -33,12 +34,18 @@ public class YvonneArmorShop extends Shop {
         addButton(9,    shields.TOWERSH.shortName,  confirmBuy, shields.TOWERSH);
         addButton(10,   armors.SAMUARM.shortName,   confirmBuy, armors.SAMUARM);
         addButton(11,   headjewelries.KABUMEMP.shortName,   confirmBuy, headjewelries.KABUMEMP);
-        if (player.hasKeyItem("Dragon Eggshell") >= 0 && player.gems >= 200) {
-            addButton(12, "Eggshell", SceneLib.emberScene.getSomeStuff);
-        }
-        addButton(13, "Flirt", yvonneFlirt);
+        addButton(13, "Misc", yvonnaMisc);
         addButton(14, "Leave", telAdre.telAdreMenu);
     }
+	
+	private function yvonnaMisc():void {
+		menu();
+		addButton(0, "Flirt", yvonneFlirt);
+		if (player.hasKeyItem("Dragon Eggshell") >= 0 && player.gems >= 200) addButton(1, "Eggshell", SceneLib.emberScene.getSomeStuff);
+        if (CharybdisFollower.CharyLandShipQuestState == 1) addButton(2, "Landship Quest", charyLandShipQuest);
+        addButton(14, "Back", inside);
+	}
+	
     //[Flirt]
     private function yvonneFlirt():void {
         spriteSelect(SpriteDb.s_yvonne);
@@ -53,14 +60,14 @@ public class YvonneArmorShop extends Shop {
         display("yvonneFlirt/go");
         simpleChoices("Fuck Her", fuckYvonneInZeBlacksmith, "Never mind", backOutOfYvonneFuck, "", null, "", null, "", null);
     }
-
+	
     //[Never mind]
     private function backOutOfYvonneFuck():void {
         clearOutput();
         display("yvonneFlirt/backOut");
         doNext(inside);
     }
-
+	
     //[Fuck]
     private function fuckYvonneInZeBlacksmith():void {
         spriteSelect(SpriteDb.s_yvonne);
@@ -72,5 +79,15 @@ public class YvonneArmorShop extends Shop {
         flags[kFLAGS.YVONNE_FUCK_COUNTER]++;
         doNext(camp.returnToCampUseOneHour);
     }
+	
+	private function charyLandShipQuest():void {
+		spriteSelect(SpriteDb.s_yvonne);
+        clearOutput();
+		outputText("You consider it, and there are a few people who could get the job done. The blacksmiths in Tel’adre would be a good place to start.\n\n");
+		outputText("You ask Yvonne about wheels fit for a boat. She looks at you oddly. \"<i>Not really sure how I’d go about those, sorry hon.</i>\"\n\n");
+		outputText("The dog-man at his stand rolls his eyes at you when you ask about wheels. \"<i>Do I look like a horse-cart smith to you?</i>\" A nearby centaur in a watch uniform folds his arms angrily, and he sighs. \"<i>No, that wasn’t a centaur thing!</i>\" He glares at you. \"<i>Almost got me into trouble. Now buy a blade or piss off.</i>\"\n\n");
+		CharybdisFollower.CharyLandShipQuestState = 2;
+		doNext(inside);
+	}
 }
 }

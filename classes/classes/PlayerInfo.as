@@ -761,7 +761,7 @@ public class PlayerInfo extends BaseContent {
         
 		if (flags[kFLAGS.CHARYBDIS_FOLLOWER] > 0)
 			interpersonStats += "<b>Charybdis Affection:</b> " + CharybdisFollower.CharyAffectionMeter + "%\n";
-			if (CharybdisFollower.CharyVocalTrained >= 1) interpersonStats += "<b>Vocal Training sessions with Charybdis:</b> " + CharybdisFollower.CharyVocalTrained + " / 20\n";
+			if (CharybdisFollower.CharyVocalTrained >= 1) interpersonStats += "<b>Vocal Training sessions with Charybdis:</b> " + CharybdisFollower.CharyVocalTrained + " / 35\n";
 		//	if (flags[kFLAGS.CEANI_FOLLOWER] == 1)
 		//		interpersonStats += getNPCLevel("Ceani", 35, 0, 9, 7, flags[kFLAGS.CEANI_LVL_UP]);
 

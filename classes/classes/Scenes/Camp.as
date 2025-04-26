@@ -1175,6 +1175,7 @@ public class Camp extends NPCAwareContent{
 		if (flags[kFLAGS.DINAH_LVL_UP] >= 1) counter++;
 		if (flags[kFLAGS.MICHIKO_FOLLOWER] >= 1) counter++;
 		if (flags[kFLAGS.NEISA_FOLLOWER] >= 7) counter++;
+		if (flags[kFLAGS.JINX_LVL_UP] >= 1) counter++;
 		if (flags[kFLAGS.AYANE_FOLLOWER] >= 2) counter++;
 		if (flags[kFLAGS.EXCELLIA_RECRUITED] >= 3 && flags[kFLAGS.EXCELLIA_RECRUITED] < 33) counter++;
 		if (flags[kFLAGS.MITZI_RECRUITED] >= 4) counter++;
@@ -1731,6 +1732,11 @@ public class Camp extends NPCAwareContent{
 				outputText("Tyrantia occasionally walks into the dwelling, coming out with a different tool or material. She’s keeping herself busy, if the line of demon skulls around the house is any indication.\n\n");
 				buttons.add("Tyrantia", SceneLib.tyrantia.TyrantiaAtCamp).disableIf(player.statusEffectv1(StatusEffects.CampSparingNpcsTimers5) > 0, "Training.");
 			}
+			//Charybdis
+			if (flags[kFLAGS.CHARYBDIS_FOLLOWER] >= 2) {
+				outputText("\n\n");
+				buttons.add("Charybdis", SceneLib.charybdisScene.charyCampMainMenu).hint("Visit Charybdis the ???.");
+			}
 			//Zenji
 			if (ZenjiScenes.isLover() && TrollVillage.ZenjiVillageStage != 2) {
 				if (model.time.hours >= 7 && model.time.hours <= 18) {
@@ -2004,6 +2010,11 @@ public class Camp extends NPCAwareContent{
 			if (flags[kFLAGS.NEISA_FOLLOWER] >= 7) {
 				outputText("Neisa is hanging by a tree next to the [camp] practicing her swordplay on a makeshift dummy for the next expedition.\n\n");
 				buttons.add("Neisa", SceneLib.neisaFollower.neisaCampMenu).hint("Visit Neisa the shield maiden.");
+			}
+			//Jinx
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) {
+				outputText("\n\n");
+				buttons.add("Minx", SceneLib.jinxFollower.campJinxMenuMain).hint("Visit Minx the ???.");
 			}
 			//Zenji follower
 			if ((flags[kFLAGS.ZENJI_PROGRESS] == 8 || flags[kFLAGS.ZENJI_PROGRESS] == 9) && TrollVillage.ZenjiVillageStage != 2) {

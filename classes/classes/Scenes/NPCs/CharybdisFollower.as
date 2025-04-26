@@ -300,9 +300,9 @@ public class CharybdisFollower extends NPCAwareContent implements SaveableState
 		addButton(1, "Him", charyTalkHim);
 		addButton(2, "Scylla", charyTalkRace);
 		addButton(3, "Demons", charyTalkDemons);
-		//addButton(4, "Towns", charyTalkTowns);
-		//if (CharyAffectionMeter > 79 && CharyLandShipQuestState == 2) addButton(5, "CampJoin", charyJoinCamp);
-		if (CharySeenSkulls) addButton(6, "Skulls", charyGiveSkulls);
+		if (CharySeenSkulls) addButton(5, "Skulls", charyGiveSkulls);
+		if (CharyAffectionMeter > 49 && (CharyLandShipQuestState == 0 || CharyLandShipQuestState == 2 || CharyLandShipQuestState == 4)) addButton(6, "Towns", charyTalkTowns);
+		if (CharyAffectionMeter > 89 && CharyLandShipQuestState == 7) addButtonDisabled(7, "CampJoin", "Soooooo close... Be patient and it will happen... eventualy.");//addButton(7, "CampJoin", charyJoinCamp);
 		addButton(14, "Back", charyBeachMeetings2);
 	}
 	public function charyTalkEyes():void {
@@ -345,20 +345,49 @@ public class CharybdisFollower extends NPCAwareContent implements SaveableState
 	}
 	public function charyTalkTowns():void {
 		clearOutput();
-		outputText("<i>\"Well, not sure if you’d call em ‘towns’, exactly\"</i>. He shrugs. <i>\"More like five or six families livin’ in a cave. Get a bunch of caves near each other, and you get more likelihood for anger, disputes, that kinda thing.\"</i> He shrugs.\n\n");
-		outputText("<i>\"Mostly, density’s related to how many guys you can get. Usually it’s one or two in every group, and the amount of groups we have swimming around depends on how many guys we have. Reason you’ve likely never seen another before, is cuz we tend to be...well...sheltered, to put it mildly\"</i>. He shakes himself, pointing a tendril at you. <i>\"What about you?\"</i>\n\n");
 		if (CharyLandShipQuestState == 0) {
+			outputText("<i>\"Well, not sure if you’d call em ‘towns’, exactly\"</i>. He shrugs. <i>\"More like five or six families livin’ in a cave. Get a bunch of caves near each other, and you get more likelihood for anger, disputes, that kinda thing.\"</i> He shrugs.\n\n");
+			outputText("<i>\"Mostly, density’s related to how many guys you can get. Usually it’s one or two in every group, and the amount of groups we have swimming around depends on how many guys we have. Reason you’ve likely never seen another before, is cuz we tend to be...well...sheltered, to put it mildly\"</i>. He shakes himself, pointing a tendril at you. <i>\"What about you?\"</i>\n\n");
 			outputText("You tell him a bit about Ingnam, but quickly remember Tel’adre, that city in the desert. His face lights up as you describe the shops, the bar, the people you’ve met there...and then you gently let him know where it is.\n\n");
 			outputText("<i>\"Of course, it’d be in the bloody desert,\"</i> he mutters, his tentacles wiggling oddly. <i>\"Can’t bring my boat that way. Not without...hmm…\"</i> He eyes his boat. <i>\"Could you do me a favor, [name]? I want to be able to go to this city. But I can’t leave my boat. You think you could get some wheels made? I can pull her to the city, then.\"</i>\n\n");
 			menu();
-			//addButton(1, "Yes", charyQuestStart);
-			//addButton(2, "NotNow", charyNotNow);
+			addButton(1, "Yes", charyQuestStart);
+			addButton(2, "NotNow", charyNotNow);
+		}
+		else if (CharyLandShipQuestState == 2) {
+			outputText("You tell Charybdis about the smiths in Tel’adre, and he winces. \"<i>Well, maybe someone who knows a bit more about transport?</i>\" He thinks for a moment. \"<i>This boat was originally made by goblin-tech. If you know a goblin who isn’t a sex-crazed monster at this point, maybe they’d be the best option?</i>\"\n\n");
+			CharyLandShipQuestState = 3;
+			endEncounter();
 		}
 		else {
-			
-			charyAffection(5);
-			endEncounter();
-		}	
+			outputText("You bring up the wheels for his boat, and the stocky Scylla’s face lights up.\n\n");
+			outputText("\"<i>What’d ya find, [name]?</i>\" He listens as you explain the cost, and the measurements for the boat. He winces, but nods. \"<i>If it can get me inland, it’s probably worth it.</i>\" He steps onto his boat, coming back out with a large sack full of gems. He holds it out for you. \"<i>This should be enough.</i>\"\n\n");
+			menu();
+			addButton(1, "Refuse", charyQuestRefusePayment);
+			addButton(2, "Take it", charyQuestTakeIt);
+		}
+	}
+	public function charyQuestStart():void {
+		outputText("He grins, laughing as he picks you up, spinning you around. <i>\"Thank you so much, [name]! I won’t forget this, never! Especially if it works.\"</i>\n\n");
+		CharyLandShipQuestState = 1;
+		endEncounter();
+	}
+	public function charyNotNow():void {
+		outputText("Thinking about it, his boat is heavy. It would require a lot of work on your part. You tell him that you can’t help him right now. Charybdis seems a little saddened at that, but changes the subject quickly. You make some small talk with him before heading back to camp, but you get the feeling that your Scylla friend was still thinking about it.\n\n");
+		endEncounter();
+	}
+	public function charyQuestRefusePayment():void {
+		outputText("At your refusal, Charybdis is taken aback, his violet eyes widened. \"<i>Do you mean you’re paying, or…?</i>\" You put a hand on his shoulder, saying that he’s a good friend, and that you don’t want to take gems from him for something so important.\n\n");
+		outputText("\"<i>You mean that, don’tcha?</i>\" He smiles, holding out his arms and tentacles for a hug. You smile, leaning into him, and laugh as you feel his knuckles rub playfully along your scalp, tousling your [hair].\"<i>You’re changing my life, y’know. Least I can do is return the favor.</i>\" His tentacles are muscular, but surprisingly gentle. \"<i>Anything you feel like doing, [name]? Cuz I feel like thanking you properly.</i>\"\n\n");
+		CharyLandShipQuestState = 5;
+		charyAffection(5);
+		doNext(charySex);
+	}
+	public function charyQuestTakeIt():void {
+		outputText("You take the gems, telling him you’ll be back soon, with his wheels in tow. \"<i>When you get back, I’ll have a song ready for ya.</i>\" He winks cheerfully, going back to his boat. As you leave, you look over your shoulder, and see the black-skinned Scylla casting a line into the water, his lips turned into a goofy grin.\n\n");
+		CharyLandShipQuestState = 6;
+		player.gems += 1000;
+		endEncounter();
 	}
 	
 	public function charyGiveSkulls():void {
@@ -716,5 +745,30 @@ addButton(2, "Nah",CharyAnalNah );
 }
 	}
 */
-}
+	public function charyJoinCamp():void {
+		clearOutput();
+		outputText("You ask Charybdis if he gets tired of living alone on the beach. He nods, looking at you curiously, his head tilted. \"<i>Yeah, I guess so. What about it?</i>\" You ask him if he’d like to take his boat and bring it to your camp. He blinks once, then his face lights up. \"<i>Really?!</i>\" He gives you a full-bodied tentacle hug, the muscular limbs quivering with excitement. \"<i>Wait...is there water?</i>\"\n\n");
+		outputText("You laugh and assure him that you have a river running right next to your camp, with plenty of space for his boat. He grins, his tentacles whipping around like dog-tails. \"<i>Well, if you want me around, there’s no reason to wait, is there? Mind helping me with the boat? It can be a bit heavy for one person on a long trip.</i>\"\n\n");
+		outputText("You smile back, and the two of you take turns hauling his boat out of the water and to your camp. Along the way, you find the river that runs to your camp, making the slog much easier than it would’ve been. After a few hours, Charybdis and you stand at the edge of your camp, proudly looking over your handiwork.\n\n");
+		outputText("His boathouse sits on the water, docked right next to your wall.\n\n");
+		if (camp.companionsCount() > 5) outputText(" He looks at the others in your camp, gasping slightly. \"<i>You have other people living with you?</i>\" His eyes sparkle, and he seems to perk back up almost instantly, despite the last few hours of hard work.");
+		outputText("\n\n");
+		outputText("\n\n(<b>Charybdis now available in the lovers menu.</b>)");
+		if (player.hasKeyItem("Radiant shard") >= 0) player.addKeyValue("Radiant shard",1,+1);
+		else player.createKeyItem("Radiant shard", 1,0,0,0);
+		outputText("\n\n<b>Before fully settling in your camp, as if remembering something, Charybdis pulls a shining shard from his inventory and hands it over to you as a gift. You acquired a Radiant shard!</b>");
+		flags[kFLAGS.CHARYBDIS_FOLLOWER] = 2;
+		endEncounter(180);
+	}
+	
+	public function charyCampMainMenu():void {
+		clearOutput();
+		outputText("On the river sits Charybdis’s boat. Occasionally, notes will waft off the water as he strums his instruments. As he sees you, he waves three tentacles and one arm excitedly in your direction.\n\n");
+		menu();
+		addButton(1, "Talk", charyTalk);
+		addButton(2, "Hang", charyHang);
+		addButton(3, "Spar", charySpar);
+		addButton(14, "Back", camp.campLoversMenu);
+	}
+}//outputText("\"<i></i>\"\n\n");
 }

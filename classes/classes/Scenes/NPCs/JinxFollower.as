@@ -7,6 +7,7 @@ package classes.Scenes.NPCs
 import classes.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.Camp.CampStatsAndResources;
+import classes.Scenes.Places.TrollVillage;
 import classes.Scenes.SceneLib;
 	
 	public class JinxFollower extends NPCAwareContent
@@ -175,13 +176,49 @@ import classes.Scenes.SceneLib;
 		}
 		public function bazaarEncountersYouYes():void {
 			clearOutput();
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
+			outputText("\"<i>Great! But let's get the boring stuff outta the way, first.</i>\" She extends her hand, grinning. \"<i>Show me the money.</i>\"\n\n");
+			outputText("Receiving the stones, she tosses it toward the golems. Then, she turns back to you. \"<i>What are you waiting for?</i>\" she asks as you stand there. \"<i>Time is precious, and I can't waste any! Experiments call me, so let's go already!</i>\"\n\n");
+			outputText("She’s leaving just like that?\n\n");
+			outputText("\"<i>Ummmm... yeah? I do not need anything else as the golem will bring it all along.</i>\" Noticing your doubt,s he adds, \"<i>It's a very well made one and will find that [camp] of yours.</i>\"\n\n");
+			outputText("Still with a lingering concern, you walk with the goblin back to your camp.\n\n");
+			if (amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1) {
+				outputText("\"<i>[name]? You brought a goblin to camp? You know they have only one thing in mind, right?</i>\"\n\n");
+				outputText("\"<i>Explosions?</i>\" Replies the goblin as she passes by Amily.\n\n");
+				outputText("Amily scrunches her face briefly, shaking her head in disbelief. It seemed that was not the reply she expected.\n\n");
+			}
+			if (player.hasStatusEffect(StatusEffects.CampMarble) && flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 0 && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] != 4) {
+				outputText("\"<i>Dear. You brought goblin here? What can she do?</i>\"\n\n");
+				outputText("\"<i>Explosions.</i>\" Minx explains, after which Marble distances herself, asking you to be extra careful around the goblin.\n\n");
+			}
+			if (player.hasStatusEffect(StatusEffects.PureCampJojo)) {
+				outputText("\"<i>Oh, what an odd goblin.</i>\" The monk circles Minx and then continues, \"<i>She's not obsessed about pregnancy, but there is something off about her regardless. Promise to be extra careful.</i>\"\n\n");
+				outputText("Minx simply shrugs him off without a care.\n\n");
+			}
+			if (EvangelineFollower.EvangelineFollowerStage >= 1 && flags[kFLAGS.EVANGELINE_WENT_OUT_FOR_THE_ITEMS] <= 0) {
+				outputText("Evangeline steps up to the goblin, \"<i>Did you bring me an experiment subject?</i>\"\n\n");
+				outputText("Minx flinches on this thought and then, looking back at the alchemist girl, asks you, \"<i>Someone to test my explosives on?</i>\"\n\n");
+				outputText("The two of them lock each other in a fierce gaze before Evangeline returns to her alchemical equipment.\n\n");
+			}
+			if (flags[kFLAGS.SIEGWEIRD_FOLLOWER] > 3) outputText("Siegweird glances at the goblin, scratching the back of his head in bemusement, \"<i>Hmmm… I… should I… ask, [name]..? You know what, I’m sure you have you… reasons…</i>\"\n\n");
+			//(Jeniffer) {
+				outputText("\"<i>Ohh, a golem made to look like one of us goblins? Interesting.</i>\" she notes.\n\n");
+				outputText("Minx gives her the stink eye, not even replying. Jenner looks at it more intently, \"<i>Pretty well crafted to fool almost all. I don't believe it's just another goblin. Where did you find it? Not stolen from its owner, I hope?</i>\"\n\n");
+			//}
+			//(Miyeon) {
+				outputText("\"<i>Ohh, an goblin shaped flesh golem. Curious idea, but why so much hassle for simple imitation over just normal golem?</i>\" she asks as her tail(s) freely swings behind her.\n\n");
+				outputText("Minx gives her the stinky eye, not even replying. Miyeon steps closer to the golem, \"<i>Ahh it is so cute, not giving away any clue about its owner. Well, maybe the owner is coming here soon, too? Don't you think so [name]?</i>\"\n\n");
+			//}
+			if ((ZenjiScenes.isLover() || flags[kFLAGS.ZENJI_PROGRESS] == 8 || flags[kFLAGS.ZENJI_PROGRESS] == 9) && TrollVillage.ZenjiVillageStage != 2) outputText("Zenji crosses his arms, staring down at the goblin as he scoffs, \"<i>Gah, [name], even I have standards!</i>\"\n\n");
+			outputText("Minx looks around and finds a spot a bit away from the center of the [camp] section. \"<i>Here looks decent.</i>\"\n\n");
+			outputText("Then, she sits down and... waits? After a few minutes, when you’re about to talk to her, there is minor commotion at [camp] perimeter. Looking in that direction, you see the same golem from the bazaar flanked by two other smaller ones approaching. Each of them pulls a wagon or two full of goblin belongings.\n\n");
+			/*(Miyeon) Words from your resident werefox about the owner of the golem echoes in your mind. (end)*/outputText("\"<i>Right on time!</i>\" Minx rejoices. \"<i>Ummm, [name], would you kindly let me settle in?</i>\" With that, she starts to command them. One digging into the ground, the other two taking stuff off the wagons with the goblin owner overseeing all of it. You leave them to do the all work.\n\n");
+			outputText("\n\n(<b>Minx now available in the followers menu.</b>)");
+			if (player.hasKeyItem("Radiant shard") >= 0) player.addKeyValue("Radiant shard",1,+1);
+			else player.createKeyItem("Radiant shard", 1,0,0,0);
+			outputText("\n\n<b>Before fully settling in your camp, as if remembering something, Minx pulls a shining shard from her inventory and hands it over to you as a gift. You acquired a Radiant shard!</b>");
+			flags[kFLAGS.SPIRIT_STONES] -= 10;
+			flags[kFLAGS.JINX_LVL_UP] = 1;
+			endEncounter();
 		}
 		
 		public function campJinxMenuMain():void {
@@ -195,7 +232,7 @@ import classes.Scenes.SceneLib;
 			addButton(14, "Back", camp.campFollowers);
 		}
 		
-		public function campJinxMenuMainShop():void {
+		private function campJinxMenuMainShop():void {
 			clearOutput();
 			menu();
 			addButton(0, "MetalPiecesx1", buyItemMetalPlates, 1).hint("A metal pieces for something really cool. (x1)");

@@ -2322,8 +2322,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasStatusEffect(StatusEffects.GlowingAsshole)) transformations.AssholeNormal.applyEffect(false);
 				needNext = true;
 			}
-			//VerdantMight		, Races.barometz
-			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
+			//VerdantMight
+			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE, Races.BAROMETZ), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
 			//Absorb nutrient
 			needNext ||= player.gainOrLosePerk(PerkLib.AbsorbNutrient, player.isRaceCached(Races.MYCONID), "You begin to crave for the fluids and moisture of others. It looks like, as you became more shroom-like, you gained the ability to absorb nutrients and vitality from sex.", "You no longer crave for the fluids and moisture of others. It looks like, as you became less shroom-like, you lost the ability to absorb nutrients and vitality from sex.");
 			//FungalNobility

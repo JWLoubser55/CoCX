@@ -39,7 +39,6 @@ public class AbyssalSharkRace extends Race {
 
 	public function AbyssalSharkRace(id:int) {
 		super("Abyssal Shark", id, []);//RaceBody);
-		//disabled = true;
 	}
 	
 	public override function setup():void {

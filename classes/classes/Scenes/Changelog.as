@@ -176,6 +176,7 @@ public class Changelog extends BaseContent
 			//outputText("-New HB Mech upgrade options: Armor Plating (+armor), Leather Insulation (+magic resistance), Agility (+base melee atk dmg), Dragon's Breath Flamer (fire dmg special), Scatter Laser (lightning dmg special), Rapid Reload (+base ranged atk dmg), Internal Systems (increase mech SF capacity and lower it consumption during high activity)\n");
 			//outputText(", Camouflage Mode (allow to enter 1 turn long camouflage opening option to use Sneak Attack (melee & range) specials), Invisibility Mode (the same as Camouflage Mode but can last until PC run out of SF to keep it active or deactivate it manualy / upgrade to decrease SF consumption)");
 			outputText("-After clearing Deep Cave (Zetaz dungeon) can meet at Beach are Charybdis - male scylla. He have various interactions and could even train pc stats (str/spe/tou) up to their limits, train bow skill up to 100 or give vocal trainings to give some perks that would help with commanding minions/henchmen. Can only bring demon skulls to him to get some gems for them.\n");
+			outputText("-When reaching 50%+ affection score Charybdis can give PC Landship quest which after completing would make him appear in Tel'Adre occasionaly and open option to recruti him after affection is high enough.\n");
 			outputText("-New event perk: Drill Sergeant. Gained by having 20 Vocal Training sessions with Charybdis. Effects: Your voice and bearing now commands respect, even among the surliest of recruits. Your followers will attack an additional time per round, and are guaranteed to attack.\n");
 			outputText("-New event perk: Look! A Distraction. Gained by having 25 Vocal Training sessions with Charybdis. Effects: Allow to use mental special that can stun enemy and give one time bonus of doubling mlee attacks count once per fight.\n");
 			outputText("-New event perk: Comradery. Gained by having 30 Vocal Training sessions with Charybdis. Effects: Your followers are your shield and sword. While you have henchmen in your party, you take 10% less damage for each.\n");
@@ -366,8 +367,7 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Human Lungs (Final Form). Req. Human Lungs (Evolved) and lvl 90+. Effects: Your lungs have been enhanced in both size and strength, increasing your endurance greatly (6%), aiding your metabolism in filtering toxins, and gives you the ability to breathe underwater, having been mutated away from humanity just enough to allow it.\n");
 			outputText("-New M. Special: LOOKOUT! Usable by having Look! A Distraction perk. Mental special attack. Base 25% success rate, +0.5% for every point of WIS you have over your enemy’s WIS. Stuns and Doubles next melee hit if done next round, only works once per combat.\n");
 			outputText("-New perk for enemies: Eldritch type enemy. Would be used to check when some pc attacks won't work on that type of enemies.\n");
-			outputText("-Most of mage perks gained additional bonus to spellpower that won't increase spell use costs.\n");
-			outputText("-\n");
+			outputText("-Most of mage perks gained additional bonus to spellpower that won't increase spell use cost.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
