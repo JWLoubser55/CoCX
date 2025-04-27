@@ -368,12 +368,12 @@ public class Changelog extends BaseContent
 			outputText("-New M. Special: LOOKOUT! Usable by having Look! A Distraction perk. Mental special attack. Base 25% success rate, +0.5% for every point of WIS you have over your enemy’s WIS. Stuns and Doubles next melee hit if done next round, only works once per combat.\n");
 			outputText("-New perk for enemies: Eldritch type enemy. Would be used to check when some pc attacks won't work on that type of enemies.\n");
 			outputText("-Most of mage perks gained additional bonus to spellpower that won't increase spell use cost.\n");
+			outputText("-New TF item (by Liadri): Fiendish Oil. Made from naga tf and succubus milk by Evangeline. Using this item will turn PC into marilith. Their race bonuses for Marilith / Marilith Blademaster / Marilith Sword Princess (18/24/40): +100%/+130%/+200% to Str multi, +120%/+150%/+250% to Spe multi, +50%/+80%/+100% to Int multi, +50%/+80%/+150% to Lib multi, +50/+80/+100 to sensitivity.\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			//outputText("-New event perk: Blade Dancer. Gained by becoming Marilith and having quad arms. Effects: Gain 2 additional attacks when using multiple weapons. Gain two more attacks if all hands are equipped.\n");
+			//outputText("-New event perk: . Gained by becoming Marilith and having quad arms. Effects: \n");
+			//outputText("-New event perk: . Gained by becoming Marilith and having quad arms. Effects: \n");
+			//outputText("-New event perk: . Gained by becoming Marilith and having quad arms. Effects: \n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -396,6 +396,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -477,14 +486,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -517,9 +520,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

@@ -47,7 +47,7 @@ public class VenomGlandsMutation extends IMutationPerkType
                     .requireCustomFunction(function (player:Player):Boolean {
                         return player.facePart.isAny(Face.SNAKE_FANGS, Face.SPIDER_FANGS);
                     }, "Spider or Snake fangs")
-                    .requireAnyRace(Races.SPIDER, Races.APOPHIS, Races.NAGA, Races.GORGON, Races.VOUIVRE, Races.COUATL, Races.HYDRA, Races.ATLACH_NACHA);
+                    .requireAnyRace(Races.SPIDER, Races.APOPHIS, Races.NAGA, Races.GORGON, Races.VOUIVRE, Races.COUATL, Races.HYDRA, Races.ATLACH_NACHA, Races.MARILITH);
                 }
                 else{
                     var pLvl:int = pTier * 30;

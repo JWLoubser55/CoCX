@@ -69,7 +69,8 @@ public class HydraRace extends Race {
 									|| GorgonRace.isGorgonLike(body)
 									|| VouivreRace.isVouivreLike(body)
 									|| CouatlRace.isCouatlLike(body)
-									|| ApophisRace.isApophisLike(body));
+									|| ApophisRace.isApophisLike(body)
+									|| MarilithRace.isMarilithLike(body));
 						}, 0, -1000)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		

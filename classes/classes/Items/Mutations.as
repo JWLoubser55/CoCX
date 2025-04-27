@@ -5060,12 +5060,13 @@ public final class Mutations extends MutationsHelper {
         if (rand(2) == 0) changeLimit++;
         changeLimit += player.additionalTransformationChances;
         //b) Description while used
-        if (type == 0) {
-            outputText("Pinching your nose, you quickly uncork the vial and bring it to your mouth, determined to see what effects it might have on your body. Pouring in as much as you can take, you painfully swallow before going for another shot, emptying the bottle.");
+        if (type == 1) {
+            outputText("Pinching your nose, you quickly uncork the vial and bring it to your mouth, determined to see what effects it might have on your body. Pouring in as much as you can take, you painfully swallow before going for another shot, emptying the bottle. The thing taste absolutely horrible.");
             //(if outside combat)
             if (!CoC.instance.inCombat) outputText("  Minutes pass as you start wishing you had water with you, to get rid of the aftertaste.");
-        } else if (type == 1) {
-            outputText("Pinching your nose, you quickly uncork the vial and bring it to your mouth, determined to see what effects it might have on your body. Pouring in as much as you can take, you painfully swallow before going for another shot, emptying the bottle. The thing taste absolutely horrible.");
+        }
+		else {
+            outputText("Pinching your nose, you quickly uncork the vial and bring it to your mouth, determined to see what effects it might have on your body. Pouring in as much as you can take, you painfully swallow before going for another shot, emptying the bottle.");
             //(if outside combat)
             if (!CoC.instance.inCombat) outputText("  Minutes pass as you start wishing you had water with you, to get rid of the aftertaste.");
         }
@@ -5077,7 +5078,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Corruption thoughts
-        if (rand(2) == 0 && type == 1) {
+        if (rand(2) == 0 && type > 0) {
             if (player.cor < 33) outputText("  This stuff is gross, why are you drinking it?");
             //Corruption increase
             if ((player.cor < 100 || rand(2))) {
@@ -5100,7 +5101,7 @@ public final class Mutations extends MutationsHelper {
         }
 
         //Snek Penis and Gina
-        if (player.lizardCocks() == 0 && player.cockTotal() > 0 && changes < changeLimit && rand(4) == 0) {
+        if (player.lizardCocks() == 0 && player.cockTotal() > 0 && changes < changeLimit && rand(3) == 0) {
             //Find the first non-lizzy dick
             for (temp2 = 0; temp2 < player.cocks.length && player.cocks[temp2].cockType == CockTypesEnum.LIZARD; temp2++) { }
             transformations.CockLizard(temp2).applyEffect();
@@ -5110,14 +5111,14 @@ public final class Mutations extends MutationsHelper {
         }
         //(CHANGE OTHER DICK)
         //Requires 1 lizard cock, multiple cocks
-        if (player.lizardCocks() > 0 && player.cockTotal() > player.lizardCocks() && rand(4) == 0 && changes < changeLimit) {
+        if (player.lizardCocks() > 0 && player.cockTotal() > player.lizardCocks() && rand(3) == 0 && changes < changeLimit) {
             transformations.CockLizard(player.findFirstCockNotInType([CockTypesEnum.LIZARD])).applyEffect();
             dynStats("lus", 10, "scale", false);
             MutagenBonus("lib", 3);
             changes++;
         }
         //-Grows second lizard dick if only 1 dick
-        if (player.lizardCocks() == 1 && player.cocks.length == 1 && rand(4) == 0 && changes < changeLimit) {
+        if (player.lizardCocks() == 1 && player.cocks.length == 1 && rand(3) == 0 && changes < changeLimit) {
             transformations.CockLizard(1, player.cocks[0].cockLength, player.cocks[0].cockThickness).applyEffect();
             dynStats("lus", 10, "scale", false);
             MutagenBonus("lib", 3);
@@ -5193,13 +5194,13 @@ public final class Mutations extends MutationsHelper {
         }
         //9c) III The tail ( http://tvtropes.org/pmwiki/pmwiki.php/Main/TransformationIsAFreeAction ) (Shouldn't we try to avert this? -Ace)
         //Should the enemy "kill" you during the transformation, it skips the scene and immediately goes to the rape scene. (Now that I'm thinking about it, we should add some sort of appendix where the player realizes how much he's/she's changed. -Ace)
-        if (transformations.LowerBodySnake.isPossible() && rand(4) == 0 && changes < changeLimit) {
+        if (transformations.LowerBodySnake.isPossible() && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.LowerBodySnake.applyEffect();
             changes++;
         }
         //Partial scales with color changes to red, green, white, blue, or black.  Rarely: purple or silver.
-        if (!player.hasPartialCoat(Skin.SCALES) && player.lowerBody == LowerBody.NAGA && changes < changeLimit && rand(5) == 0) {
+        if (!player.hasPartialCoat(Skin.SCALES) && player.lowerBody == LowerBody.NAGA && changes < changeLimit && rand(3) == 0) {
             //(fur)
             var colors: Array;
             if (rand(10) == 0) {
@@ -5212,50 +5213,84 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Snake eyes
-        if (type == 0 && player.hasPartialCoat(Skin.SCALES) && player.eyes.type != Eyes.SNAKE && rand(4) == 0 && changes < changeLimit) {
+        if (type == 0 && player.hasPartialCoat(Skin.SCALES) && player.eyes.type != Eyes.SNAKE && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.EyesSnake.applyEffect();
             changes++;
         }
         //Fiendish Snake eyes
-        if (type == 1 && player.hasPartialCoat(Skin.SCALES) && player.eyes.type != Eyes.SNAKEFIENDISH && rand(4) == 0 && changes < changeLimit) {
+        if (type == 1 && player.hasPartialCoat(Skin.SCALES) && player.eyes.type != Eyes.SNAKEFIENDISH && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.EyesSnakeFiendish.applyEffect();
             changes++;
         }
+		//Fiendish Snake eyes + Third eye
+		if (type == 2 && player.hasPartialCoat(Skin.SCALES) && player.eyes.type != Eyes.MARILITH && rand(3) == 0 && changes < changeLimit) {
+            outputText("[pg]");
+            transformations.EyesMarilith.applyEffect();
+            changes++;
+        }
         //Ears!
-        if (player.ears.type != Ears.SNAKE && (player.eyes.type == Eyes.SNAKE || player.eyes.type == Eyes.SNAKEFIENDISH) && changes < changeLimit && rand(3) == 0) {
+        if (player.ears.type != Ears.SNAKE && (player.eyes.type == Eyes.SNAKE || player.eyes.type == Eyes.SNAKEFIENDISH || player.eyes.type == Eyes.MARILITH) && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
 			transformations.EarsSnake.applyEffect();
             changes++;
         }
+		
+		//grow horns!
+        if (!InCollection(player.horns.type, Horns.DEMON) && rand(3) == 0 && changes < changeLimit && type == 2) {
+            outputText("[pg]");
+            transformations.HornsDemonic.applyEffect();
+            changes++;
+        }
+		
+        //Marilith Arms
+        if (type == 2 && !InCollection(player.arms.type, Arms.MARILITH) && player.ears.type == Ears.SNAKE && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.ArmsMarilith.applyEffect();
+            changes++;
+        }
+
+        //Human Hair
+        if (type == 2 && transformations.HairHuman.isPossible() && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.HairHuman.applyEffect();
+            changes++;
+        }
+		
         // Remove gills
-        if (rand(4) == 0 && player.hasGills() && changes < changeLimit) {
+        if (rand(3) == 0 && player.hasGills() && changes < changeLimit) {
             outputText("[pg]");
             transformations.GillsNone.applyEffect();
             changes++;
         }
 
-        // Remove wings
-        if (type == 1 && rand(4) == 0 && player.wings.type != Wings.NONE && changes < changeLimit) {
-            outputText("[pg]");
-            transformations.WingsNone.applyEffect();
-            changes++;
-        }
-
         // Scale color
-        if (type == 1 && rand(4) == 0 && !InCollection(player.scaleColor, NagaRace.SnakeScaleColors) && changes < changeLimit) {
+        if (type == 1 && rand(3) == 0 && !InCollection(player.scaleColor, NagaRace.SnakeScaleColors) && changes < changeLimit) {
             outputText("[pg]");
             color = randomChoice(NagaRace.SnakeScaleColors);
             transformations.SkinScales(Skin.COVERAGE_LOW, {color: color}).applyEffect();
             changes++;
         }
+        if (type == 2 && rand(3) == 0 && !InCollection(player.scaleColor, MarilithRace.MarilithScaleColors) && changes < changeLimit) {
+            outputText("[pg]");
+            color = randomChoice(MarilithRace.MarilithScaleColors);
+            transformations.SkinScales(Skin.COVERAGE_LOW, {color: color}).applyEffect();
+            changes++;
+        }
 
         // Hair color
-        if (type == 1 && rand(4) == 0 && !InCollection(player.hairColor, NagaRace.SnakeScaleColors) && changes < changeLimit) {
+        if (type == 1 && rand(3) == 0 && !InCollection(player.hairColor, NagaRace.SnakeScaleColors) && changes < changeLimit) {
             outputText("[pg]");
             color = randomChoice(NagaRace.SnakeScaleColors);
             outputText("[pg]Your hair suddenly tingles as "+color+" strands begins to cover your entire skalp and before long all of them are of same dark color.");
+            player.hairColor = color;
+            changes++;
+        }
+        if (type == 2 && rand(3) == 0 && !InCollection(player.hairColor, MarilithRace.MarilithHairColors) && changes < changeLimit) {
+            outputText("[pg]");
+            color = randomChoice(NagaRace.SnakeScaleColors);
+            outputText("[pg]Your hair suddenly tingles as "+color+" strands begins to cover your entire skalp and before long all of them are of same fiendish color.");
             player.hairColor = color;
             changes++;
         }
@@ -5270,12 +5305,34 @@ public final class Mutations extends MutationsHelper {
             player.skinColor = "light purple";
             outputText("[skin color] colored.</b>");
         }
+        if (type == 2 && player.skinColor != "fiendish blue" && changes < changeLimit && rand(3) == 0) {
+            changes++;
+            outputText("[pg]It takes a while for you to notice, but <b>");
+            if (player.hasCoat()) outputText("the skin under your [fur color] " + player.skinDesc);
+            else outputText("your " + player.skinDesc);
+            outputText(" has changed to become ");
+            player.skinColor = "fiendish blue";
+            outputText("[skin color] colored.</b>");
+        }
 
         //Gain hood
-        if (type == 1 && rand(4) == 0 && player.rearBody.type != RearBody.COBRA_HOOD && changes < changeLimit) {
+        if (type == 1 && rand(3) == 0 && player.rearBody.type != RearBody.COBRA_HOOD && changes < changeLimit) {
             outputText("[pg]");
             transformations.RearBodyCobraHood.applyEffect();
             changes++;
+        }
+		
+		//Demonic Pleasure Rune
+		if (player.skin.coat.pattern != Skin.PATTERN_DEMONIC_PLEASURE_RUNE && player.hasVagina() && changes < changeLimit && rand(3) == 0 && type == 2) {
+			outputText("[pg]");
+			transformations.SkinPatternDemonicPleasureRune.applyEffect();
+			changes++;
+		}
+		
+		//-Femininity to 85
+        if (player.femininity < 85 && changes < changeLimit && rand(3) == 0 && type == 2) {
+            changes++;
+            outputText(player.modFem(85, 3 + rand(5)));
         }
 
         //Default change - blah

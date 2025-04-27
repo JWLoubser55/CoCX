@@ -603,6 +603,15 @@ public final class ConsumableLib extends AlchemyLib
 							[1, AR_LIB]
 						]
 				);
+		public const FIENOIL: Consumable = mk("FienOil", "FiendishOil", "a vial of fiendish oil", 20, "Somehow this altered snake oil smells and probably tastes even worse than normal.", curry(m.snakeOil, 2), ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						MULTIRACE_ESSENCE_DROP_TABLE(AE_MARILITH, AE_SNAKE)
+						[
+							[1, AR_LIB]
+						],
+						MarilithRace.MarilithSkinColors
+				);
 		public const FIERYS_: Consumable = mk("FieryS", "FieryS.", "Fiery saké", 10, "A strong alcoholic beverage best served hot. The Hinezumi drink of this regularly.", curry(m.mouseCocoa, 1), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
@@ -622,14 +631,6 @@ public final class ConsumableLib extends AlchemyLib
 								FoxRace.FoxFurColors
 						)
 				);
-		public const FRRTFRT: Consumable = mk("Frrtfrt", "FerretFrt", "a ferret fruit", 6, "This fruit is curved oddly, just like the tree it came from.  The skin is fuzzy and brown, like the skin of a peach.", m.ferretTF, ItemConstants.U_TF)
-				.refineableInto(
-						DEFAULT_SUBSTANCES_DROP_TABLE,
-						DEFAULT_ESSENCE_DROP_TABLE(AE_FERRET),
-						[
-							[1, AR_SPE]
-						]
-				);
 		public const FOXJEWL: Consumable = mk("FoxJewl", "Fox Jewel", "a fox jewel", 50, "A shining teardrop-shaped jewel.  An eerie blue flame dances beneath the surface.", curry(m.foxJewel, false), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
@@ -644,6 +645,14 @@ public final class ConsumableLib extends AlchemyLib
 								KitsuneRace.BasicKitsuneFurColors,
 								KitsuneRace.BasicKitsuneSkinColors
 						)
+				);
+		public const FRRTFRT: Consumable = mk("Frrtfrt", "FerretFrt", "a ferret fruit", 6, "This fruit is curved oddly, just like the tree it came from.  The skin is fuzzy and brown, like the skin of a peach.", m.ferretTF, ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_FERRET),
+						[
+							[1, AR_SPE]
+						]
 				);
 		public const FSNAILS: Consumable = mk("FSnailS", "FireSnailSaliva", "a Fire snail Saliva", 20, "The saliva of a fire snail. Highly volatile.", m.firesnailsaliva, ItemConstants.U_TF)
 				.refineableInto(

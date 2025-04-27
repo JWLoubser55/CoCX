@@ -418,7 +418,7 @@ private function evangelineAlchemyMenu(page:int = 1):void {
 	menu();
 	if (page == 1) {
 		// [Gorgon  ] [Vouivre ] [Couatl  ] [Nocello ] [Unicorn ]
-		// [RubyCrys] [        ] [        ] [        ] [Alicorn ]
+		// [RubyCrys] [Marilith] [        ] [        ] [Alicorn ]
 		// [GreyInk ] [WhiteInk] [InfernWn] [  -2-   ] [Back    ]
 		addButton(0, "Gorgon Oil", MakingGorgonPotion).hint("Ask her to brew a special potion that could aid in becoming a gorgon. \n\nCost: 10 Gems \nNeeds 1 Snake Oil and 1 Reptilum.");
 		addButton(1, "Vouivre Oil", MakingVouivrePotion).hint("Ask her to brew a special potion that could aid in becoming a vouivre. \n\nCost: 15 Gems \nNeeds 1 Snake Oil and 1 Drake Heart.");
@@ -426,7 +426,7 @@ private function evangelineAlchemyMenu(page:int = 1):void {
 		addButton(3, "Nocello Liq", MakingNocelloLiqueur).hint("Ask her to brew a special potion that could aid in becoming a phoenix. \n\nCost: 10 Gems \nNeeds 1 Golden Seed and 1 Salamander Firewater.");//Hybrid race TF
 		addButton(4, "Unicornum", MakingUnicornumPotion).hint("Ask her to brew a special potion that could aid in becoming a unicorn. \n\nCost: 20 Gems \nNeeds 1 Equinum and 4 Low-grade Soulforce Recovery Pills.");//1st stage Soul evolution race TF
 		addButton(5, "RubyCrystal", MakingRubyCrystal).hint("Ask her to brew a special potion that could aid in becoming a kitsumori. \n\nCost: 10 Gems \nNeeds 1 Fox Jewel and 1 Salamander Firewater.");//Hybrid race TF
-		//6
+		addButton(6, "FiendishOil", MakingMarilithPotion).hint("Ask her to brew a special potion that could aid in becoming a marilith. \n\nCost: 10 Gems \nNeeds 1 Snake Oil and 1 Succubus Milk.");
 		//addButton(7, "", ).hint(".");siren TF//Hybrid race TF
 		//8
 		addButton(9, "Alicornum", MakingAlicornumPotion).hint("Ask her to brew a special potion that could aid in becoming an alicorn. \n\nCost: 50 Gems \nNeeds 1 Unicornum and 20 Low-grade Soulforce Recovery Pills/2 bottles of Low-grade Soulforce Recovery Pills.");//2nd stage Soul evolution race TF
@@ -519,6 +519,27 @@ private function MakingCouatlPotion():void {
 	outputText("You hand over one vial of Snake Oil, one Golden Seed and ten gems to Evangeline, which she gingerly takes them and proceeds to make potion for you.");
 	outputText("\n\nAfter a while, she hands you a vial filled with an oily, red liquid.  ");
 	inventory.takeItem(consumables.COUAOIL, curry(evangelineAlchemyMenu, 1));
+	cheatTime(1/6);
+}
+private function MakingMarilithPotion():void {
+	clearOutput();
+	if (player.gems < 10) {
+		outputText("\"<i>I'm sorry but you don't have the gems for this potion,</i>\" Evangeline says.");
+		doNext(evangelineAlchemyMenu);
+		return;
+	}
+	else if (!(player.hasItem(consumables.SNAKOIL, 1) && player.hasItem(consumables.SUCMILK, 1))) {
+		outputText("\"<i>I'm sorry but you don't have the materials I need. I need vial of Snake Oil and Succubus Milk,</i>\" Evangeline says.");
+		doNext(evangelineAlchemyMenu);
+		return;
+	}
+	player.destroyItems(consumables.SNAKOIL, 1);
+	player.destroyItems(consumables.SUCMILK, 1);
+	player.gems -= 10;
+	statScreenRefresh();
+	outputText("You hand over one vial of Snake Oil, one Succubus Milk and ten gems to Evangeline, which she gingerly takes them and proceeds to make potion for you.");
+	outputText("\n\nAfter a while, she hands you a vial filled with an oily, pink liquid.  ");
+	inventory.takeItem(consumables.FIENOIL, curry(evangelineAlchemyMenu, 1));
 	cheatTime(1/6);
 }
 private function MakingUnicornumPotion():void {

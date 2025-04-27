@@ -5,6 +5,7 @@ import classes.CockTypesEnum;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.Races;
 import classes.VaginaClass;
 
 public class ApophisRace extends Race {
@@ -64,10 +65,12 @@ public class ApophisRace extends Race {
 				.corruption(AT_LEAST(100), +2)
 				.customRequirement("","not another snake-like race",
 						function (body:BodyData):Boolean {
-							return !(GorgonRace.isGorgonLike(body)
+							return !(body.player.racialScore(Races.NAGA) > 10
+									|| GorgonRace.isGorgonLike(body)
 									|| CouatlRace.isCouatlLike(body)
 									|| HydraRace.isHydraLike(body)
-									|| VouivreRace.isVouivreLike(body));
+									|| VouivreRace.isVouivreLike(body)
+									|| MarilithRace.isMarilithLike(body));
 						}, 0, -1000)
 				.hasPerk(PerkLib.Venomancy, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);

@@ -964,6 +964,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const SkinPatternAnubis:Transformation 			    = skin.SkinPatternAnubis.registerTf(AS_SKIN_PATTERN, AE_ANUBIS);
     public const SkinPatternBioluminescence:Transformation 		= skin.SkinPatternBioluminescence.registerTf(AS_SKIN_PATTERN, AE_ABYSSAL_SHARK);//TfMultiple(AS_
     public const SkinPatternCircuit:Transformation 			    = skin.SkinPatternCircuit.registerTf(AS_SKIN_PATTERN, AE_AUTOMATA);
+    public const SkinPatternDemonicPleasureRune:Transformation	= skin.SkinPatternDemonicPleasureRune.registerTfMultiple(AS_SKIN_PATTERN, AE_DEMON, AE_MARILITH);
 
 
 //TAIL
@@ -982,7 +983,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const TailManticore: Transformation 					= tail.TailManticore.registerTf(AS_TAIL, AE_MANTICORE);
 	public const TailBurning: Transformation 					= tail.TailBurning.registerTf(AS_TAIL, AE_HINEZUMI);
 	public const TailTwinkasha: Transformation 					= tail.TailTwinkasha.registerTf(AS_TAIL, AE_HELLCAT);
-	public const TailCat: Transformation 						= tail.TailCat.registerTfMultiple(AS_TAIL, AE_CAT< AE_DRAGONNE);
+	public const TailCat: Transformation 						= tail.TailCat.registerTfMultiple(AS_TAIL, AE_CAT, AE_DRAGONNE);
 	public const TailNekomataOneThirdForked: Transformation 	= tail.TailNekomataOneThirdForked.registerTf(AS_TAIL, AE_NEKOMATA);
 	public const TailNekomataTwoThirdsForked: Transformation 	= tail.TailNekomataTwoThirdsForked.registerTf(AS_TAIL, AE_NEKOMATA);
 	public const TailCat2nd: Transformation 					= tail.TailCat2nd.registerTf(AS_TAIL, AE_NEKOMATA);
