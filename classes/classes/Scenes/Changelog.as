@@ -266,6 +266,12 @@ public class Changelog extends BaseContent
 			outputText("-A bunch of fixes and Tifa's Hive. (DigitalKitsune)\n");
 			outputText("-New melee weapon (by Ormael): Old Lute. Currently dropped by Satyr enemies. Cost 960 gems. Is medium mace/hammer type weapon with atk 6. Effects: +75% spellpower, +75% performance power.\n");
 			outputText("-New melee weapon (by Ormael): Acoustic Guitar. Currently dropped by Satyr enemies. Cost 3360 gems. Is large mace/hammer type weapon with atk 21. Effects: +100% spellpower, +100% performance power.\n");
+			outputText("-New melee weapon (by Liadri): Energy Sword - dropped by Automaton enemy. Cost 2800 gems, have 35 atk and it dealing plasma damage. High tech weapon and Large Exotic type weapon.\n");
+			outputText("-New melee weapon (by Liadri): Energy Spear - dropped by Automaton enemy. Cost 3600 gems, have 45 atk and it dealing plasma damage. High tech weapon and Massive Exotic type weapon.\n");
+			outputText("-New melee weapon (by Lord Shadeogorath): Stormcaller Gravespear - pulled from unnamed grave at cliffs. Base atk is 160. It's massive spear type low grade wrath weapon with thrown tag. Normally it deal 80% of physical dmg and 20% lightning dmg. When using charge weapon it will deal 100% lightning damage and have 10% to apply Electrocute DoT after critical hit.\n");
+			outputText("-New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness spells damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. ");
+			outputText("When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit. Also bonus to dakrness spells increase from 80% to 160%.\n");
+			outputText("-New range weapon (by Liadri): Energy Gun - dropped by Automaton enemy. Cost 1280 gems. Base atk is 25, ammo clip size 1 and it dealing plasma damage. Each perk for mutli attacks per turn increase times it deal dmg by 2.\n");
 			outputText("-PC now could explore in Ignam after dusk but only for 2 additional hours and it will increase massively chance to find hostile enocuter and they may even be much stronger ones enemies then it should be acording to current PC level.\n");
 			outputText("-Starting game all PC's would have 15 more stat points, additional 2 perk points and 1 super perk point.\n");
 			outputText("-Fixed Equipable.afterUnequip to actually call UNequip on item's effects instead of Equip, added spellpowerwhite and spellcostwhite buffable stats. (DigitalKitsune)\n");
@@ -284,13 +290,17 @@ public class Changelog extends BaseContent
 			outputText("-When taming monster capable of spellcasting it would add option in tamed monsters menu to command them to use magic bolt.\n");
 			outputText("-New tier 0 wisdom lvl-up perk: High Stakes Tamer. Req. Job: Tamer perk and 25+ wisdom. Effect: Your mastery over taming extends beyond common beasts, allowing you to tame highly intelligent creatures that would normally resist control. Beings like Glacial Trolls and other sentient monsters now recognize your dominance, making them potential allies rather than just foes. However, the truly corrupted still elude you.\n");
 			outputText("-New tier 2 misc lvl-up perk: Quad Wield. Req. Dual Wield perk. Effect: Allows you to wield four weapons as long you have enough arms to hold them all.\n");
+			outputText("-New tier 2 speed lvl-up perk: Quad Wield (Small). Req. Quad Wield and Dual Wield (Small) perks. Effect: Allows you to wield four small-sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
+			outputText("-New tier 2 speed lvl-up perk: Quad Wield (Normal). Req. Quad Wield and Dual Wield (Normal) perks. Effect: Allows you to wield four normal sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
 			outputText("-New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. Sic ‘Em Six perk and 130+ wisdom. Effect: You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.\n");
 			outputText("-New tier 5 strength lvl-up perk: Massive Synergy. Req. Gigant's Grip (Ex) perk and 150+ str. Effect: Damage bonus from massive weapons mastery is 100% better and damage bonus from large weapon mastery is added to massive weapons damage. (+25% melee physical attacks multiplier)\n");
 			outputText("-New tier 5 misc lvl-up perk: Voltaic Edge. Req. Magnetize perk, 90+ wisdom and 90+ intelligence. Effect: Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.\n");
+			outputText("-New tier 5 strength lvl-up perk: Quad Wield (Large). Req. Quad Wield and Dual Wield (Large) perks, 150+ str. Effect: Allows you to wield four large sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
 			outputText("-New tier 6 wisdom lvl-up perk: Lucky Number Tamer. Req. Sic ‘Em Six perk and 175+ wisdom. Effect: You played your cards right, tames now come in 7.\n");
 			outputText("-New tier 6 strength lvl-up perk: Massive Synergy (Ex). Req. Massive Synergy and Hidden Momentum / Weapon GrandMastery perk, 175+ str, 120+ spe. Effect: Effects that increase large weapons attack, which are applied to massive weapons have their scaling improved. (+30% melee physical attacks multiplier)\n");
 			outputText("-New tier 7 sensitivity lvl-up perk: Spiritual Alignment. Req. Advanced Kineses perk and 175+ sensitivity. Effect: The universe opens to you and you are able to synergize your spiritual understanding with your psychic powers. (Adds current Wisdom score to Sensitivity)\n");
 			outputText("-New tier 7 sensitivity lvl-up perk: Mental Attunement. Req. Advanced Kineses perk and 175+ sensitivity. Effect: You unlock full usage of your brain, increasing your psychic potential. (Adds current Intelligence score to Sensitivity)\n");
+			outputText("-New tier 7 strength lvl-up perk: Quad Wield (Massive). Req. Quad Wield, Dual Wield (Massive) and Titan's Grip perks, 200+ str. Effect: Allows you to wield four massive sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
 			outputText("-New tier 20 intelligence lvl-up perk: Ultimate Magic (Ex). Req. Ultimate Magic perk and 475+ int. Effect: You may ignore all constraints to your spell book usage.\n");
 			outputText("-Ruined Shrine event check in Glacial Rift now would use wolf race score check (10+) instead of lookign for specific bodyparts. Should amke finding shrine bit more forgiving when it come to winter wolf part check.\n");
 			outputText("-Ocean was changed to Coastal Waters and part of encounter from it was moved to the next area.\n");
@@ -312,12 +322,10 @@ public class Changelog extends BaseContent
 			outputText("-Weapon sprite found new home, and offhand weapons now display sprites (Lord Shadeogorath)\n");
 			outputText("-New enemy perk: Physical Damage Resistance. It works similary to Ghost type enemy perk giving monster full immunity to physical damages.\n");
 			outputText("-New enemy perk: Hive Mind. Enemy takes x% less damage from mental and Esper attacks.\n");
-			outputText("-New monster perk: Darkness Vulnerability - decrease lightning dmg done to monster by 50% and increase darkness dmg by 100%.\n");
+			outputText("-New enemy perk: Eldritch type enemy. Would be used to check when some pc attacks won't work on that type of enemies.\n");
+			outputText("-New enemy perk: Darkness Vulnerability - decrease lightning dmg done to monster by 50% and increase darkness dmg by 100%.\n");
 			outputText("-Mindbreaker races got +100% more to libido multi and +100 to sensitivity. Their special - Mind Trust - deal now psionic dmg not true damage.\n");
 			outputText("-New Area: Tunnels (71-95). Exploring caves allows now to find it.\n");
-			outputText("-New range weapon (by Liadri): Energy Gun - dropped by Automaton enemy. Cost 1280 gems. Base atk is 25, ammo clip size 1 and it dealing plasma damage. Each perk for mutli attacks per turn increase times it deal dmg by 2.\n");
-			outputText("-New melee weapon (by Liadri): Energy Sword - dropped by Automaton enemy. Cost 2800 gems, have 35 atk and it dealing plasma damage. High tech weapon and Large Exotic type weapon.\n");
-			outputText("-New melee weapon (by Liadri): Energy Spear - dropped by Automaton enemy. Cost 3600 gems, have 45 atk and it dealing plasma damage. High tech weapon and Massive Exotic type weapon.\n");
 			outputText("-Changes including Tome of Imps and Imps birth. Tome of Imp and Demonhood is now accounted for when birthing imps. Giving birth to imps adds 5 imps to the tome directly. (Liadri)\n");
 			outputText("-New P. Special: Spore Cloud. Req. to be Matango. Effects: Works like arousing aura till end of fight. Can't have both Spore Cloud and Alraune Pollen active.\n");
 			outputText("-Losing to Matango in caves have 75% chance to TF pc into matango. Their race bonuses for Matango / Myconid / Fungal Queen (16/26/36): +240%/+340%/+440% to tou multi, +150%/+200%/+300% to lib multi, -100%/-50%/0% to int multi, +50/+100/+200 to sens, +20 min lust\n"); 
@@ -326,12 +334,9 @@ public class Changelog extends BaseContent
 			outputText("-True Seeing can now pierce invisibility-like enemy abilities that may disable some of the combat options.\n");
 			outputText("-Sword Intent aura can now be acitvated/deactivated from Soulskills menu too. Goblin kill text is bit less scary without ear cutting meantion. Added button to move from older to newer page of ingame changelog (the one you reading now).\n");
 			outputText("-New Area: Cliffs (81-101). Exploring tunnels allows now to find it.\n");
-			outputText("-New melee weapon (by Lord Shadeogorath): Stormcaller Gravespear - pulled from unnamed grave at cliffs. Base atk is 160. It's massive spear type low grade wrath weapon with thrown tag. Normally it deal 80% of physical dmg and 20% lightning dmg. When using charge weapon it will deal 100% lightning damage and have 10% to apply Electrocute DoT after critical hit.\n");
 			outputText("-Satyr TF bug fixes. (Jtecx)\n");
 			outputText("-Valkyrie moved from Tundra to Cliffs. (lvl 69 > 97) Displacer beast moved from Caves to Lightless Reach. (lvl 60 > 80)\n");
 			outputText("-New Area: Lightless Reach (76-96). Exploring tunnels allows now to find it. Req. to have any way to see in dark be it darkness / fireshadow affinity, eyes with darkvision or having torch from Giacomo.\n");
-			outputText("-New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness spells damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. ");
-			outputText("When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit. Also bonus to dakrness spells increase from 80% to 160%.\n");
 			outputText("-Fix Electrify weapon to work as originaly designed (Exactly what it says... makes the lightning spear works on... well you guessed it actual thrusting weapon.) (Liadri)\n");
 			outputText("-Alraune and Tentacle cock for kitsune is no longuer confused allowing player to tentacle the kitsune weither pc has tentacle or alraune vines (Liadri)\n");
 			outputText("-New key Item (by Liadri): Grenade Launcher - req. Toolbelt - Let you use your grenade gadgets while siting comfortably in your goblin mech.\n");
@@ -351,10 +356,6 @@ public class Changelog extends BaseContent
 			outputText("-Description for spider eyes now desc them as main pair and 2 pairs of smaller eyes instead of main + smaller pair of eyes. Yggdrasil 3rd tier of wings now count toward bonus dmg from tier 3 wings in wing slap special.\n");
 			outputText("-2nd (corrupted) variant of plant arms was moved form been specific to yggdrasil race to plant race.\n");
 			outputText("-Added goblin mech ai to list of preturn autoattack actions that may cause lock out at some fights. (you two AGAIN??? *looking at Minotaur King and Excellia*) Option in perks adde menu allowing to toggle between goblin mech ai doing nothying or acting at the turn start.\n");
-			outputText("-New tier 2 speed lvl-up perk: Quad Wield (Small). Req. Quad Wield and Dual Wield (Small) perks. Effect: Allows you to wield four small-sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
-			outputText("-New tier 2 speed lvl-up perk: Quad Wield (Normal). Req. Quad Wield and Dual Wield (Normal) perks. Effect: Allows you to wield four normal sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
-			outputText("-New tier 5 strength lvl-up perk: Quad Wield (Large). Req. Quad Wield and Dual Wield (Large) perks, 150+ str. Effect: Allows you to wield four large sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
-			outputText("-New tier 7 strength lvl-up perk: Quad Wield (Massive). Req. Quad Wield, Dual Wield (Massive) and Titan's Grip perks, 200+ str. Effect: Allows you to wield four massive sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
 			outputText("-New TF item (by Shigure): Moth's Dust. Buyable in Moga Hen shop. Using this item will turn PC into moth. Their race bonuses for Moth-morph / Elder Moth-morph (10/18): -30%/-40% to Tou multi, +150%/+220% to Spe multi, +70%/+120% to Wis multi, +30%/+50% to Lib multi, +70/+80 to sensitivity.\n");//Dropped by Corrupted Troll enemies.
 			outputText("-New mutation perk: Human Secondary Heart. Req. having free heart mutation slot, human race (17+). Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased a bit (2%) as the new heart struggles to find its rhythm alongside your first.\n");
 			outputText("-New mutation perk: Human Secondary Heart (Primitive). Req. Human Secondary Heart and lvl 30+. Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased slightly (3%) as the new heart begins to find its rhythm alongside your first.\n");
@@ -366,27 +367,26 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Human Lungs (Evolved). Req. Human Lungs (Primitive) and lvl 60+. Effects: Your lungs have been enhanced in both size and strength, increasing your endurance (4%), as well as aiding your metabolism in filtering toxins.\n");
 			outputText("-New mutation perk: Human Lungs (Final Form). Req. Human Lungs (Evolved) and lvl 90+. Effects: Your lungs have been enhanced in both size and strength, increasing your endurance greatly (6%), aiding your metabolism in filtering toxins, and gives you the ability to breathe underwater, having been mutated away from humanity just enough to allow it.\n");
 			outputText("-New M. Special: LOOKOUT! Usable by having Look! A Distraction perk. Mental special attack. Base 25% success rate, +0.5% for every point of WIS you have over your enemy’s WIS. Stuns and Doubles next melee hit if done next round, only works once per combat.\n");
-			outputText("-New perk for enemies: Eldritch type enemy. Would be used to check when some pc attacks won't work on that type of enemies.\n");
 			outputText("-Most of mage perks gained additional bonus to spellpower that won't increase spell use cost.\n");
 			outputText("-New TF item (by Liadri): Fiendish Oil. Made from naga tf and succubus milk by Evangeline. Using this item will turn PC into marilith. Their race bonuses for Marilith / Marilith Blademaster / Marilith Sword Princess (18/24/40): +100%/+130%/+200% to Str multi, +120%/+150%/+250% to Spe multi, +50%/+80%/+100% to Int multi, +50%/+80%/+150% to Lib multi, +50/+80/+100 to sensitivity.\n");
-			outputText("-\n");
-			//outputText("-New event perk: Blade Dancer. Gained by becoming Marilith and having quad arms. Effects: Gain 2 additional attacks when using multiple weapons. Gain two more attacks if all hands are equipped.\n");
-			//outputText("-New event perk: . Gained by becoming Marilith and having quad arms. Effects: \n");
-			//outputText("-New event perk: . Gained by becoming Marilith and having quad arms. Effects: \n");
-			//outputText("-New event perk: . Gained by becoming Marilith and having quad arms. Effects: \n");
-			outputText("-\n");
+			outputText("-New event perk: Blade Dancer. Gained by becoming Marilith and having quad arms. Effects: Gain 2 additional attacks when using multiple weapons. Gain two more attacks if all hands are equipped.\n");
+			outputText("-New event perk: Fiendish Concentration. Gained by becoming Marilith and having quad arms. Effects: Passively cast a selected spell every round so long as at least two hands are free. Cast twice if three hands are free.\n");
+			outputText("-New event perk: Artful destruction. Gained by becoming Marilith and having quad arms. Effects: Magic damage increases Physical damage dealt by 5% and Physical Damage increases magic damage by 5% dealt up to 200% each.\n");
+			outputText("-New event perk: Impossible Hand Technique. Gained by becoming Marilith and having quad arms. Effects: Quadruple Tease damage dealt when grappling or straddling.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
-			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
-			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 and 325% and max 6 groups
 			outputText("-\n");
-			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
@@ -397,15 +397,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
+			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
+			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
+			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
@@ -486,8 +486,26 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -520,6 +538,15 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -2039,8 +2066,8 @@ public class Changelog extends BaseContent
 			outputText("-New M. Special for Kitshoo: Foxflame Pelt - req. been Kitshoo with min. 6 cinder tails - activated/deactivated ability that drain SF/Mana for each turn it's active. ");
 			outputText("When it's active basic foxfire use cost nothing to use, tail slap special will deal lust dmage and fire dmg would be increased, weakened foxfire effect (fire + lust dmg) would apply to melee/range/feral attacks as separate from others buffs, speed is increased by 10%(+10% for each tail after 6th reaching 40% at 9th tail).\n");
 			outputText("-New enemy perk: Undead enemy type. It would give enemy similar passive effects top goo type (bleed/critical dmg resistance) but with higher than even goo phys dmg reduction (max up to 95% not 80%).\n");
-			outputText("-New monster perk: No Item(s) Gained - for enemies that really shouldn't drop even super rare (1:200 or 1:1000 chance loot or eggs during eastern). Training Dummy got this (no you not gonna get anymore any liquors of brews out of it)\n");
-			outputText("-New monster perk: No Dodge(s) - for enemies that really shouldn’t evade/dodge PC attacks. Training Dummy got this (now with even chess player reflex you can hit it to train instead to be at recieving end of uno reverse card from dummy)\n");
+			outputText("-New enemy perk: No Item(s) Gained - for enemies that really shouldn't drop even super rare (1:200 or 1:1000 chance loot or eggs during eastern). Training Dummy got this (no you not gonna get anymore liquors or brews out of it)\n");
+			outputText("-New enemy perk: No Dodge(s) - for enemies that really shouldn’t evade/dodge PC attacks. Training Dummy got this (now with even chess player reflex you can hit it to train instead to be at recieving end of uno reverse card from dummy)\n");
 			outputText("-New race: Azazel - gained by following new path for Alvina - it's smth akin to purified devil tf with abilites to be not so corrupted and etc. (written by Liadri and coded by EragonX). Azazelkin/Azazel/True Azazel racial bonuses (11/16/29 race points): ");
 			outputText("+55/75/100% top str multi, -20/25/30% to spe multi, +80/130/250% to int multi, +65/100/150% ot wis multi, +90/170/220 to max lust, +15/40/50 to sens\n");
 			outputText("-Add the Imp Race. Arch imp is a new PermTF once you progress far enough along the Imp race, and allows you to recruit imps to assist you in combat with their lewdness. (EragonX)\n");
@@ -3000,7 +3027,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: F class Heaven Tribulation Survivor. Gained by surviving 5 rounds of F class Heaven tribulation attacks. Effects: +20% to all stats multi/+100 to sens. Allow to use create clone. It can be used as new body for PC Nascent Soul in case main body get destroyed.\n");
 			outputText("-New event perk: Improved venom gland (Ex). Gained by reaching 125 pts on venom use counter. Effects: +200 to max venom, +15 venom recharge, -20% venom costs.\n");
 			outputText("-New event perk: Improved venom gland (Su). Gained by reaching 375 pts on venom use counter. Effects: +400 to max venom, +45 venom recharge, venom specials effects increased by 100% at 50% increased cost.\n");
-			outputText("-New monster perk: No Exp Gained. Atm only training dummy have it. As for effects it name speaks for itself.\n");
+			outputText("-New enemy perk: No Exp Gained. Atm only training dummy have it. As for effects it name speaks for itself.\n");
 			outputText("-New white spell: Aegis. It can be learned by using white book after picking Divine Knowledge perk. Effect: For 6 turns increase block chance by 1 to 10%, tripled if using a staff and no shield. (Based on spell buff and intelligence) Cost 500 mana.\n");
 			outputText("-New white spell: Exorcise. It can be learned by using white book after picking Divine Knowledge perk. Effect: Smite your opponent with your weapon, inflicting damage based on the weapon’s damage and your magical power. Highly effective against the corrupt. Cost 400 mana. (2 turns cooldown)\n");
 			outputText("-New white spell: Divine shield. It can be learned by using white book after picking Divine Knowledge perk. Effect: For 6 turns increase magic resistance by 40%. Cost 600 mana.\n");
@@ -3042,7 +3069,7 @@ public class Changelog extends BaseContent
 			outputText("-New item slots: 2 misc accesory slots and 1 Flying Sword slot.\n");
 			outputText("-New unlockable option in Soulforce menu: Comprehend. Req. H class Heaven Tribulation Survivor perk. Allow to try comprehend one of daos: fire, ice, lightning, darkness, poison, water, earth, wind, blood. Or it can be total dud and all time spent on contemplation session will not give any results at all. ");
 			outputText("Each layer PC reach would increase damage from attacks of this element and occasionally can even increase resistance to said element.\n");
-			outputText("-New monster perk: For Beginners-type enemy. Given to lvl 1 imps, fearl imps, thiefs and lvl 2 goblins. As for effect it makes their max hp/lust decreased to 10% of orginal values and scalings from diff setting, secondary scaling setting or ascension been reduced by large margin. That perk override effect for max hp/lust reduction of monsters below lvl 6.\n");
+			outputText("-New enemy perk: For Beginners-type enemy. Given to lvl 1 imps, fearl imps, thiefs and lvl 2 goblins. As for effect it makes their max hp/lust decreased to 10% of orginal values and scalings from diff setting, secondary scaling setting or ascension been reduced by large margin. That perk override effect for max hp/lust reduction of monsters below lvl 6.\n");
 			outputText("-There is another predator that now decided to prowl the mountains. So maybe if you hear (lvl 15) Moooo you may consider running or something.\n");
 			outputText("-There is new (well kinda) enemies added to Ashlands and Vulcanic Crag: Phoenix Squad/Platoon. They're group enemies of lvl 41 and 74. Platoon additionally have modifiers for large group of enemies.\n");
 			outputText("-Added new cultivators specific events: Heavenly Tribulations (H class, G class, F class). They last only for 3/4/5 turns and req. PC to survive tribulation attacks without dropping to min hp or maxing up lust bar.\n");

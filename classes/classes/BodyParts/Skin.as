@@ -602,6 +602,9 @@ public class Skin extends SaveableBodyPart {
 	public function hasBioluminescence():Boolean {
 		return base.pattern == PATTERN_BIOLUMINESCENCE;
 	}
+	public function hasDemonicPleasureRune():Boolean {
+		return base.pattern == PATTERN_DEMONIC_PLEASURE_RUNE;
+	}
 	override public function restore(keepTone:Boolean = true):void {
 		coverage = COVERAGE_NONE;
 		base.restore(keepTone);

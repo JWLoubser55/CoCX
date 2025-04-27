@@ -2165,9 +2165,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (player.hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) player.removeStatusEffect(StatusEffects.PostfluidIntakeRegeneration);
-			/*
-
-			if (player.thundermantis() >= 10 && player.tailType == Tail.THUNDERBIRD && !player.hasPerk(PerkLib.LightningAffinity)) {
+			/*if (player.thundermantis() >= 10 && player.tailType == Tail.THUNDERBIRD && !player.hasPerk(PerkLib.LightningAffinity)) {
 				outputText("\nYou suddenly feel a rush of electricity run across your skin as your static energy builds up. You realize deep down that the only way for you to be freed from this is to unleash it on someone else.\n\n(<b>Gained the lightning affinity perk and Orgasmic lightning strike ability!</b>)\n");
 				player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
 				needNext = true;
@@ -2196,6 +2194,23 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasStatusEffect(StatusEffects.GazerEyeStalksPlayer)) player.removeStatusEffect(StatusEffects.GazerEyeStalksPlayer);
 				outputText("\nLacking the occulatory prowess of many eyes you also lose the ability to omnicast. \n\n(<b>Lost Perk: Omnicaster</b>)");
 				player.removePerk(PerkLib.Omnicaster);
+				needNext = true;
+			}
+			//Blade Dancer, Fiendish Concentration, Artful destruction, Impossible Hand Technique
+			if (player.isRaceCached(Races.MARILITH) && player.hasFourArms() && !player.hasPerk(PerkLib.BladeDancer)) {
+				outputText("\nAs your fiendish body takes on more of the quality of a marilith blade demon thanks to your improved dexterity you become able to move all four of your arms in perfect synchronization.\n\n<b>(You acquired the Blade Dancer, Fiendish Concentration, Artful destruction and Impossible Hand Technique perks!)</b>\n");
+				player.createPerk(PerkLib.BladeDancer, 0, 0, 0, 0);
+				player.createPerk(PerkLib.FiendishConcentration, 0, 0, 0, 0);
+				player.createPerk(PerkLib.ArtfulDestruction, 0, 0, 0, 0);
+				player.createPerk(PerkLib.ImpossibleHandTechnique, 0, 0, 0, 0);
+				needNext = true;
+			}
+			else if ((!player.isRaceCached(Races.MARILITH) || !player.hasFourArms()) && player.hasPerk(PerkLib.BladeDancer)) {
+				outputText("\nAs your body becomes less of that of a blade demon your ability to use all of your limbs perfectly plummets.\n\n<b>(You lost the Blade Dancer, Fiendish Concentration, Artful destruction and Impossible Hand Technique perks!)</b>\n");
+				player.removePerk(PerkLib.BladeDancer);
+				player.removePerk(PerkLib.FiendishConcentration);
+				player.removePerk(PerkLib.ArtfulDestruction);
+				player.removePerk(PerkLib.ImpossibleHandTechnique);
 				needNext = true;
 			}
 			//Necromancy perk

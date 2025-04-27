@@ -5323,7 +5323,7 @@ public final class Mutations extends MutationsHelper {
         }
 		
 		//Demonic Pleasure Rune
-		if (player.skin.coat.pattern != Skin.PATTERN_DEMONIC_PLEASURE_RUNE && player.hasVagina() && changes < changeLimit && rand(3) == 0 && type == 2) {
+		if (!player.skin.hasDemonicPleasureRune() && player.hasVagina() && changes < changeLimit && rand(3) == 0 && type == 2) {
 			outputText("[pg]");
 			transformations.SkinPatternDemonicPleasureRune.applyEffect();
 			changes++;

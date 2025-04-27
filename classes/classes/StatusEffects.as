@@ -980,6 +980,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const AntAcid:StatusEffectType        	       = mkCombat("Ant Acid");
 		public static const ApophisVenom:StatusEffectType              = mkCombat("Apophis Venom");
 		public static const ArcaneWeb:StatusEffectType                 = mkCombat("Arcane Web");
+		public static const ArtfulDestruction:StatusEffectType         = mkCombat("Artful destruction");
 		public static const ATranscendentSoulField:StatusEffectType    = mkCombat("Absolute TranscendentSoul Field");
 		public static const AttackDisabled:StatusEffectType            = mkCombat("Attack Disabled");
 		public static const BalanceOfLife:StatusEffectType             = mkCombat("Balance of Life");
@@ -1505,4 +1506,4 @@ import classes.StatusEffects.VampireThirstEffect;
 			return new StatusEffectType(id,CombatStatusEffect,1);
 		}
 	}
-}
+}

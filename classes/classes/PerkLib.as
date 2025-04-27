@@ -4454,26 +4454,16 @@ public class PerkLib
 				"Reduces physical special cost by 20%. Increase physical special damage by 50% and spellpower by 30%.");
 
 		// Quest, Event & NPC perks
+		public static const BladeDancer:PerkType = mk("Blade Dancer", "Blade Dancer",
+				"Gain 2 additional attacks when using multiple weapons. Gain two more attacks if all hands are equipped.");
+		public static const FiendishConcentration:PerkType = mk("Fiendish Concentration", "Fiendish Concentration",
+				"Passively cast a selected spell every round so long as at least two hands are free. Cast twice if three hands are free.");
+		public static const ArtfulDestruction:PerkType = mk("Artful destruction", "Artful destruction",
+				"Magic damage increases Physical damage dealt by 5% and Physical Damage increases magic damage by 5% dealt up to 200% each.");
+		public static const ImpossibleHandTechnique:PerkType = mk("Impossible Hand Technique", "Impossible Hand Technique",
+				"Quadruple Tease damage dealt when grappling or straddling.");
 		public static const AdvancedLeadership:PerkType = mk("Advanced Leadership", "Advanced Leadership",
 				"Allows to form 4 people party.");
-		public static const OperraticOperator:PerkType = mk("Operratic Operator", "Operratic Operator",
-				"Your stamina recovers an additional 2,5%/round, and 5%/hr. You no longer take damage for the first five rounds of drowning underwater.");
-		public static const Comradery:PerkType = mk("Comradery", "Comradery",
-				"Your followers are your shield and sword. While you have henchmen in your party, you take 10% less damage for each.");
-		public static const LookADistraction:PerkType = mk("Look! A Distraction", "Look! A Distraction",
-				"Allow to use mental special that can stun enemy and give one time bonus of doubling mlee attacks count once per fight.");
-		public static const CommandingTone:PerkType = mk("Commanding Tone", "Commanding Tone",
-				"Minion and Follower Damage increased by 10%.");
-		public static const DiaphragmControl:PerkType = mk("Diaphragm control", "Diaphragm control",
-				"Minion and Follower Damage increased by an additional 10%, and followers will act more often.");
-		public static const VocalTactician:PerkType = mk("Vocal Tactician", "Vocal Tactician",
-				"Minion and Follower Damage increased by another 15%. Followers will act even more frequently.");
-		public static const DrillSergeant:PerkType = mk("Drill Sergeant", "Drill Sergeant",
-				"Your voice and bearing now commands respect, even among the surliest of recruits. Your followers will attack an additional time per round, and are guaranteed to attack.");
-		public static const MentalBastion:PerkType = mk("Mental Bastion", "Mental Bastion",
-				"The effects of Tyrant State are doubled: While active, you take 30% less damage from magic. You count as either pure or corrupt (whichever is better) for equipment. (Pure for the Beautiful weapons etc, corrupt for corrupt weapons)");
-		public static const GOBXChemical:PerkType = mk("GOBX Chemical", "GOBX Chemical",
-				"Raises your libido, sensitivity and Intelligence but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins)");
 		public static const Aelfwine:PerkType = mk("Aelfwine", "Aelfwine",
 				"When drinking alcohol double libido but halve intelligence while drunk.");
 		public static const AffinityGnome:PerkType = mk("Affinity (Gnome)", "Affinity (Gnome)",
@@ -4523,6 +4513,10 @@ public class PerkLib
 				"As a centaur, your Archery gains a half wisdom modifier to damage.");
 		public static const ChallengingShoutMastered:PerkType = mk("Challenging Shout (Mastered)", "Challenging Shout (Mastered)",
 				"You can now use the ability Warrior Shout! Can be used at any turn but amount of gained wrath would depend how long it was used since last time during combat. (4% per turn up to 60% after 15 turns - first use in combat giving 60%) Also allow to automaticaly use weakened version at the combat round end if wrath is below 750.");
+		public static const CommandingTone:PerkType = mk("Commanding Tone", "Commanding Tone",
+				"Minion and Follower Damage increased by 10%.");
+		public static const Comradery:PerkType = mk("Comradery", "Comradery",
+				"Your followers are your shield and sword. While you have henchmen in your party, you take 10% less damage for each.");
 		public static const ConvictionOfPurpose:PerkType = mk("Conviction of purpose", "Conviction of purpose",
 				"Corruption meter now increase lust resistance based on purity.");
 		public static const Cornucopia:PerkType = mk("Cornucopia", "Cornucopia",
@@ -4538,7 +4532,11 @@ public class PerkLib
 		public static const DemonicLethicite:PerkType = mk("Demonic Lethicite", "Demonic Lethicite",
 				"Improves soulforce and makes you more demonic.");//Effects: maxSoulforce += lib; +1 demonscore; 10 min corruption
 		public static const DemonSlayer:DemonSlayerPerk = new DemonSlayerPerk();
+		public static const DiaphragmControl:PerkType = mk("Diaphragm control", "Diaphragm control",
+				"Minion and Follower Damage increased by an additional 10%, and followers will act more often.");
 		public static const DominantAlpha:PerkType = new DominantAlphaPerk();
+		public static const DrillSergeant:PerkType = mk("Drill Sergeant", "Drill Sergeant",
+				"Your voice and bearing now commands respect, even among the surliest of recruits. Your followers will attack an additional time per round, and are guaranteed to attack.");
 		public static const DualMind:PerkType = mk("Dual Mind", "Dual Mind",
 				"Greatly empower the tease ability.");
 		public static const EclipsingShadowMastered:PerkType = mk("Eclipsing Shadow (Mastered)", "Eclipsing Shadow (Mastered)",
@@ -4584,6 +4582,8 @@ public class PerkLib
 				"Need to gain sustenance from soulforce to stay alive.");
 		public static const GlacialStormMastered:PerkType = mk("Glacial Storm (Mastered)", "Glacial Storm (Mastered)",
 				"Cumulative 120% damage increase for every subsequent ice spell. Each turn without cast ice spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling ice based attack. Maximum 50 stacks. (+140% spellpower bonus)");
+		public static const GOBXChemical:PerkType = mk("GOBX Chemical", "GOBX Chemical",
+				"Raises your libido, sensitivity and Intelligence but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins)");
 		public static const GracefulBeauty:PerkType = mk("Graceful Beauty", "Graceful Beauty",
 				"Add a small measure of your speed to your tease damage.");
 		public static const Hellfire:PerkType = mk("Hellfire", "Hellfire",
@@ -4602,6 +4602,8 @@ public class PerkLib
 				"Your soul has been safely stored into a phylactery allowing you to fully unlock your potential as a demon, since fusing back into your body to sit beside your heart.").withBuffs({'int.mult':0.75});
 		public static const IntermediateLeadership:PerkType = mk("Intermediate Leadership", "Intermediate Leadership",
 				"Allows to form 3 people party.");
+		public static const LookADistraction:PerkType = mk("Look! A Distraction", "Look! A Distraction",
+				"Allow to use mental special that can stun enemy and give one time bonus of doubling mlee attacks count once per fight.");
 		public static const LuststickAdapted:PerkType = mk("Luststick Adapted", "Luststick Adapted",
 				"Grants immunity to the lust-increasing effects of lust-stick and allows its use.")
 				.withBuffs({'minlustx':0.1});
@@ -4619,6 +4621,8 @@ public class PerkLib
 				"Provides resistance to the addictive effects of bottled LaBova milk.");
 		public static const MarblesMilk:PerkType = mk("Marble's Milk", "Marble's Milk",
 				"Requires you to drink LaBova milk frequently or eventually die.  You cannot shake this addiction.");
+		public static const MentalBastion:PerkType = mk("Mental Bastion", "Mental Bastion",
+				"The effects of Tyrant State are doubled: While active, you take 30% less damage from magic. You count as either pure or corrupt (whichever is better) for equipment. (Pure for the Beautiful weapons etc, corrupt for corrupt weapons)");
 		public static const MightyFist:PerkType = mk("Mighty Fist", "Mighty Fist",
 				"Regular fist attacks now have a chance to cause stun and fist damage is increased by 5 (x NG tier).");
 		public static const MiracleMetal:PerkType = mk("Miracle Metal", "Miracle Metal",
@@ -4632,6 +4636,8 @@ public class PerkLib
 				.withBuffs({'maxlust_base':+45,'minlustx':0.35});
 		public static const OneTrackMind:PerkType = mk("One Track Mind", "One Track Mind",
 				"Your constant desire for sex causes your sexual organs to be able to take larger insertions and disgorge greater amounts of fluid.");
+		public static const OperraticOperator:PerkType = mk("Operratic Operator", "Operratic Operator",
+				"Your stamina recovers an additional 2,5%/round, and 5%/hr. You no longer take damage for the first five rounds of drowning underwater.");
 		public static const PanLabyrinth:PerkType = mk("Pan Labyrinth", "Pan Labyrinth",
 				"Allow the use of Sing. Sing and Perform tease effect is 50% more powerful. Sing and Perform inflicts lingering tease damage for 5 rounds that has a chance to cause confusion on each turn causing the target to lose its turn. Sing and Perform gain a toughness scaling.");
 		public static const PheromoneCloud:PerkType = mk("Pheromone cloud", "Pheromone cloud",
@@ -4687,6 +4693,8 @@ public class PerkLib
 				"You are blessed with the power of a unicorn and while below 20 corruption all white magic spells are 20% stronger and lust resistance increased by 10%.");
 		public static const Venomancy:PerkType = mk("Venomancy", "Venomancy",
 				"Grants the Venomancy ability. While active, apply venom effect to spellcasting the venom benefiting from caster perks multipliers but cost a charge each time.")
+		public static const VocalTactician:PerkType = mk("Vocal Tactician", "Vocal Tactician",
+				"Minion and Follower Damage increased by another 15%. Followers will act even more frequently.");
 		public static const VorpalClaw:PerkType = mk("Vorpal Claw", "Vorpal Claw",
 				"A cheshire natural weapon distorts space inflicting particularly vicious critical strikes.");
 		public static const WhatIsReality:PerkType = mk("What Is Reality", "What Is Reality?",

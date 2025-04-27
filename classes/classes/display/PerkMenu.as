@@ -289,7 +289,7 @@ public class PerkMenu extends BaseContent {
 			+ "\nYou can change it to a different amount of attacks.");
 		bd.add("MultiAtk(M)", pickMultiattackMain).hint("Change your amount of main hand attacks.");
 		bd.add("MultiAtk(O)", pickMultiattackOff).hint("Change your amount of off hand attacks.");
-		if (player.hasPerk(PerkLib.SwiftCasting)) {
+		if (player.hasPerk(PerkLib.SwiftCasting) || player.hasPerk(PerkLib.FiendishConcentration)) {
 			outputText("\n\nIf you know specific spells you can cast them after doing a melee attack. (Working only with one-handed weapons and no shield)");
 			outputText("\n\nSpell casted: <b>" + elementalArr[flags[kFLAGS.ELEMENTAL_MELEE]][1] + "</b>");
 			bd.add("SwiftCasting", curry(selectElemental, meleeOptions, kFLAGS.ELEMENTAL_MELEE));
