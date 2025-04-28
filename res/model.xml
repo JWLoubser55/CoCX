@@ -416,7 +416,7 @@
 		<cell rect="951,150,49,59" name="arms_bg_pattern/Bvenom" dx="56" dy="64"/>
 		<cell rect="1301,150,49,59" name="arms_bg_pattern/Bdemonic" dx="56" dy="64"/>
 		<cell rect="1,1364,49,59" name="arms_bg/gazer" dx="65" dy="65"/>
-		<cell rect="1351,150,49,55" name="arms_bg/prayer" dx="78" dy="64"/>
+		<cell rect="1351,150,49,59" name="arms_bg/prayer" dx="78" dy="64"/>
 		<cell rect="1,210,49,59" name="arms/human" dx="104" dy="64"/>
 		<cell rect="51,210,49,59" name="arms/fur" dx="104" dy="64"/>
 		<cell rect="551,210,49,59" name="arms/furracoon" dx="104" dy="64"/>
@@ -1059,7 +1059,7 @@
 		<cell rect="481,150,29,32" name="eyes/mindbreakerMale" dx="90" dy="37"/>
 		<cell rect="511,150,29,32" name="eyes_fg/corruptinfernal" dx="90" dy="37"/>
 		<cell rect="541,150,29,32" name="eyes/closed" dx="90" dy="37"/>
-		<!--<cell rect="571,150,29,32" name="antennae/marilithEye" dx="90" dy="37"/>-->
+		<cell rect="571,150,29,32" name="antennae/marilithEye" dx="90" dy="37"/>
 		<cell rect="1,190,29,32" name="ears_bg/human" dx="90" dy="37"/>
 		<cell rect="31,190,29,32" name="ears/fur" dx="90" dy="37"/>
 		<cell rect="61,190,59,32" name="ears_bg/elfin" dx="75" dy="36"/>
@@ -3277,6 +3277,10 @@
 			<case values="Eyes.MINDBREAKERMALE">
 				<show part="eyes/mindbreakerMale"/>
 			</case>
+			<case values="Eyes.MARILITH">
+				<show part="eyes/devil"/>
+				<show part="antennae/marilithEye"/>
+			</case>
 			<default>
 				<show part="eyes/human"/>
 			</default>
@@ -4471,6 +4475,13 @@
 			<case values="Arms.ARMORED_FOREARMS">
 				<show part="hands/arigean"/>
 				<show part="hands_bg/arigean"/>
+			</case>
+			<case values="Arms.MARILITH">
+				<show part="hands/scales"/>
+				<show part="hands_bg/scales"/>
+				<show part="arms_bg/prayer"/>
+				<show part="arms_front/prayer"/>
+				<show part="arms_fg/marilith"/>
 			</case>
 			<default>
 				<!--see switch[value=skinType]-->
@@ -5671,6 +5682,9 @@
 				<hide part="arms_bg_pattern/*"/>
 			</if>
 		</if>
+
+		<!-- HIDING INVALID LEG PATTERN AREA >-->
+		
 
 		<!-- Succu arm stuff -->
 		<if test="(succuLeftArm or succuRightArm or succuLegs)">
