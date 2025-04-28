@@ -54,7 +54,7 @@ public class MarilithRace extends Race {
 				.earType(Ears.SNAKE, +1)
 				.tongueType(Tongue.SNAKE, +1)
                 .armType(Arms.MARILITH, +2, -1000)
-				.isNaga(+3, -1000)
+				.isNaga(+3)
 				.noWings(+4)
 				.skinBasePattern(Skin.PATTERN_DEMONIC_PLEASURE_RUNE, +1)
 				.femininity(GREATER_THAN(70), +1)
