@@ -6,6 +6,7 @@ import classes.GeneticMemories.RaceMem;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.StatusEffects;
 import classes.internals.race.RaceUtils;
 
 public class WerespiderRace extends Race {
@@ -48,6 +49,7 @@ public class WerespiderRace extends Race {
 				.legType(LowerBody.WERESPIDER, +1)
 				.tailType(Tail.SPIDER_ADBOMEN, +1)
 				.noWings(+4)
+				.hasStatusEffect(StatusEffects.BlackNipples,"black nipples", +1)
 				.hasPerk(PerkLib.AraneathropyDormant, +1)
 				.hasPerk(PerkLib.Araneathropy, +2, -11)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
@@ -67,7 +69,7 @@ public class WerespiderRace extends Race {
 					"maxlust_mult": -0.2,
 					"maxwrath_mult": -0.8
 				})
-				.end();/*
+				.end();
 		buildTier(18, "elder werespider")
 				.requirePreviousTier()
 				.buffs({
@@ -78,7 +80,7 @@ public class WerespiderRace extends Race {
 					"maxlust_mult": -0.2,
 					"maxwrath_mult": -0.8
 				})
-				.end();*/
+				.end();
 	}
 }
 }

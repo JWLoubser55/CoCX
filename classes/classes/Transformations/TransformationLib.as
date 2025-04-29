@@ -477,6 +477,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const EyesAutomata: Transformation       = eyes.EyesAutomata.registerTf(AS_EYES, AE_AUTOMATA);
 	public const EyesYggdrasil: Transformation		= eyes.EyesYggdrasil.registerTf(AS_EYES, AE_YGGDRASIL);
 	public const EyesMarilith: Transformation		= eyes.EyesMarilith.registerTf(AS_EYES, AE_MARILITH);
+	public const EyeWerespider: Transformation		= eyes.EyeWerespider.registerTf(AS_EYES, AE_WERESPIDER);
 //=================================
 //                                =
 //   EYE COLORS                   =
@@ -816,6 +817,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const LowerBodyGlacialTroll:Transformation           = lowerBody.LowerBodyGlacialTroll.registerTf(AS_LEGS, AE_GLACIAL_TROLL);
     public const LowerBodyShroomShirt:Transformation           	= lowerBody.LowerBodyShroomShirt.registerTf(AS_LEGS, AE_MYCONID);
     public const LowerBodyMechanicalDoll:Transformation         = lowerBody.LowerBodyMechanicalDoll.registerTf(AS_LEGS, AE_AUTOMATA);
+    public const LowerBodyWerespider: Transformation 			= lowerBody.LowerBodyWerespider.registerTf(AS_LEGS, AE_WERESPIDER);
 
 
 //OTHER ( SPECIAL )
@@ -1297,4 +1299,4 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 		trace("\n"+dump.join("\n"));
 	}
 }
-}
+}

@@ -2329,8 +2329,8 @@ public class Camp extends NPCAwareContent{
 				.disableIf(!player.hasItem(bottles[i][0], 10) || !player.hasItem(useables.E_P_BOT, 1),
 					"You need an empty pill bottle and ten "+bottles[i][2]+"-grade soulforce recovery pills.");
 		}
-		if (player.racialScore(Races.LICH) >= 28) addButton(9, "Phylactery Enchantment", PhylacteryEnchantment).hint("You can weave a minor enchantment on your phylactery to gain a minor power.").disableIf(isNightTime, "It's too dark to modify your scroll.");
-		else addButtonDisabled(9, "Phylactery Enchantment", "Req. you to be a Lich.");
+		if (player.isRaceCached(Races.LICH)) addButton(9, "Phylactery Enchantment", PhylacteryEnchantment).hint("You can weave a minor enchantment on your phylactery to gain a minor power.").disableIf(isNightTime, "It's too dark to modify your phylactery.");
+		else addButtonDisabled(9, "Phylactery Enchantment", "Req. you to be a Lich with phylactery.");
 		if (player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor)) addButton(10, "Clone", CloneMenu).hint("Check on your clone(s).");
 		else addButtonDisabled(10, "Clone", "Would you kindly go face the F class Heaven Tribulation first?");
 		addButtonIfTrue(11, "Pocket Watch", mainPagePocketWatch, "Req. you to have the Pocket Watch key item.", player.hasKeyItem("Pocket Watch") >= 0);

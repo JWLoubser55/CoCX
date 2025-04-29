@@ -19,7 +19,7 @@ public class VampireThirstEffect extends StatusEffectClass {
 	public function maxThirst():Number {
 		var maxThi:Number = 0;
 		if (game.player.facePart.type == 34) maxThi += 30;
-		if (game.player.perkv1(IMutationsLib.VampiricBloodstreamIM) >= 1 && game.player.isAnyRaceCached(Races.VAMPIRE, Races.DRACULA)) {
+		if (game.player.perkv1(IMutationsLib.VampiricBloodstreamIM) >= 1 && game.player.isAnyRaceCached(Races.VAMPIRE, Races.DRACULA, Races.WERESPIDER)) {
 			maxThi += 15;
 			if (game.player.perkv1(IMutationsLib.VampiricBloodstreamIM) >= 2) maxThi += 30;
 			if (game.player.perkv1(IMutationsLib.VampiricBloodstreamIM) >= 3) maxThi += 75;

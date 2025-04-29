@@ -741,7 +741,8 @@ public class EyesTransformations extends MutationsHelper {
 			function (doOutput: Boolean): void {
 				var desc: String = "";
 
-				desc += "You suddenly stumble holding your head in pain with both hands as a massive headache overtakes you causing you to shortly fall unconscious. In your mind you see something not unlike a terrible beast of fur fang and claws with two green glowing eyes and as you begin to run away it starts chasing you. ";desc += "Catching up to you in no time it pounces on you and you get to watch in terror as it devours you alive! You wake up screaming with vivid memories of the events in your heart and mind. You wash your face in water to try and jare you fully awake when you notice your eyes. Within them a sinister green glow flashes every now and then like that of the now barely contained beast that lurks within your soul fighting to influence you into doing terrible things. <b>You now have the same feral eyes as a wild beast.</b>";
+				desc += "You suddenly stumble holding your head in pain with both hands as a massive headache overtakes you causing you to shortly fall unconscious. In your mind you see something not unlike a terrible beast of fur fang and claws with two green glowing eyes and as you begin to run away it starts chasing you. ";
+				desc += "Catching up to you in no time it pounces on you and you get to watch in terror as it devours you alive! You wake up screaming with vivid memories of the events in your heart and mind. You wash your face in water to try and jare you fully awake when you notice your eyes. Within them a sinister green glow flashes every now and then like that of the now barely contained beast that lurks within your soul fighting to influence you into doing terrible things. <b>You now have the same feral eyes as a wild beast.</b>";
 
 				player.eyes.type = Eyes.FERAL;
 				if (doOutput) outputText(desc);
@@ -872,6 +873,24 @@ public class EyesTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.eyes.type === Eyes.MARILITH;
+			}
+	);
+
+	public const EyeWerespider: Transformation = new SimpleTransformation("Werespider Eyes",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You suddenly stumble holding your head in pain with both hands as a massive headache overtakes you causing you to shortly fall unconscious. In your mind you see something not unlike a terrible beast of chitin many arms and claws with six green glowing eyes and as you begin to run away it starts chasing you. ";
+				desc += "Catching up to you in no time it pounces on you and you get to watch in terror as it devours you alive! You wake up screaming with vivid memories of the events in your heart and mind. You wash your face in water to try and jare you fully awake when you notice your eyes. Within their three pairs a sinister green glow flashes every now and then like that of the now barely contained beast that lurks within your soul fighting to influence you into doing terrible things. <b>You now have the same feral eyes as a wild arachnid.</b>";
+
+				player.eyes.type = Eyes.WERESPIDER;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.WERESPIDER));
+			},
+			// is present
+			function (): Boolean {
+				return player.eyes.type === Eyes.WERESPIDER;
 			}
 	);
 

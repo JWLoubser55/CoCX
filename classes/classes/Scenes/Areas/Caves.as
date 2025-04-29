@@ -13,6 +13,7 @@ import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.Caves.*;
 import classes.Scenes.Monsters.CaveGolems;
 import classes.Scenes.Monsters.DarkElfScene;
+import classes.Scenes.Monsters.WerespiderScene;
 import classes.Scenes.NPCs.Forgefather;
 import classes.Scenes.SceneLib;
 
@@ -24,6 +25,7 @@ use namespace CoC;
 		public var cavewyrmScene:CaveWyrmScene = new CaveWyrmScene();
 		public var matangoScene:MatangoScene = new MatangoScene();
 		public var automatonScene:AutomatonScene = new AutomatonScene();
+		public var werespiderScene:WerespiderScene = new WerespiderScene();
 		public var darkslimeScene:DarkSlimeScene = new DarkSlimeScene();
 
 		public function Caves() {
@@ -206,6 +208,14 @@ use namespace CoC;
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					automatonScene.automatonEncounter();
+				}
+			}, {
+				name: "werespider",
+				label : "Werespider",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					werespiderScene.werespiderEncounter();
 				}
 			}, /*{
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);

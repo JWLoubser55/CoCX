@@ -169,7 +169,7 @@ public class Changelog extends BaseContent
 			outputText("-New enemies: Mid rank Angel of Mist - lvl 58, Mist Bee Huntress - lvl 60, Mist Wasp Huntress - lvl 62, Mist Hornet Huntress - lvl 64, Mist Alraune Maiden - lvl 66, Mist Cinderbloom - lvl 68, Mist Snow Lily - lvl 70. Encounterable on 5th strata of River Dungeon. Proto Golem - lvl 6. Encounterable in general explore from lvl 6+. Kirin (added by NUZ/Shirane) - lvl 50. Encounterable in Plains. ");
 			outputText("Werefox (M) - lvl 33. Encounterable in Inner Desert at night. Elder Werefox (M) - lvl 61. Encounterable in Inner Desert at night (he temporaly came from deeper desert regions and req. lvl 43+ to encounter). Zombie (M & F) - lvl 36/53. Encounterable in Outer Plains / Inner Plains (lvl 53 zombies temporaly hopped from deeper plains regions) at night as long PC isn't Jiangshi. They have Undead enemy type perk. ");
 			outputText("Mummy (M & F) - lvl 18/36. Encounterable in Outer Desert / Inner Desert at night. They have Undead enemy type and Low-tier Magic Immunity perk. Thief - lvl 5, Thief Captain - lvl 9. Encounterable in Ignam after PC reach lvl 2/6. Feral Succubus/Incubus - lvl 41, Feral Omnibus - lvl 51. Encountered in Blight Ridge. Feral Cow Succubus/Mino Incubus - lvl 65/67. ");
-			outputText("Feral Demon Hellhound - lvl 69. Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Encountered in Tunnels. True Lightning Golem - lvl 81. Encountered in Cliffs. True Darkness Golem - lvl 76, Primordial Displacer Beast - lvl 84. Encountered in Lightless Reach.\n");
+			outputText("Feral Demon Hellhound - lvl 69. Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Werespider - lvl 83. Encountered in Tunnels. True Lightning Golem - lvl 81. Encountered in Cliffs. True Darkness Golem - lvl 76, Primordial Displacer Beast - lvl 84. Encountered in Lightless Reach.\n");
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig), Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event), Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event), Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes (from transforming with World Tree help)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
@@ -374,7 +374,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Artful destruction. Gained by becoming Marilith and having quad arms. Effects: Magic damage increases Physical damage dealt by 5% and Physical Damage increases magic damage by 5% dealt up to 200% each.\n");
 			outputText("-New event perk: Impossible Hand Technique. Gained by becoming Marilith and having quad arms. Effects: Quadruple Tease damage dealt when grappling or straddling.\n");
 			outputText("-Marilith sprite implementation. (Lord Shadeogorath)\n");
-			outputText("-\n");
+			outputText("-Losing to Werespider in tunnels would TF pc (without currently pernament tf) into werespider. Their race bonuses for Werespider / Elder Werespider (12/18): +50%/+80% to str multi, +80%/+110% to tou multi, +80%/+110% to spe multi, -30% to lib multi, -20% max lust multi, -80% max wrath multi\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -406,6 +406,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
@@ -465,9 +468,6 @@ public class Changelog extends BaseContent
 			outputText("-New tier ?? misc lvl-up perk: Armor. Req. Weapon perk. Effect: increasing armor proficiency. (+5% phys/mag resistance)\n");
 			outputText("-New tier ?? misc lvl-up perk: Alliance. Req. Fellowship perk. Effect: +10% minions/pets damage.\n");
 			outputText("-New tier ?? misc lvl-up perk: Sex Deity. Req. Sex Champion perk. Effect: +15% tease dmg.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -60,7 +60,7 @@ public class VampiricBloodstreamMutation extends IMutationPerkType
                     .requireCustomFunction(function (player:Player):Boolean {
                         return player.hasStatusEffect(StatusEffects.VampireThirst);
                     }, "Vampire Thirst")
-                    .requireAnyRace(Races.VAMPIRE, Races.DRACULA);//, Races.WERESPIDER
+                    .requireAnyRace(Races.VAMPIRE, Races.DRACULA, Races.WERESPIDER);
                 }
                 else{
                     var pLvl:int = pTier * 30;
