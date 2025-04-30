@@ -49,7 +49,7 @@ public class HollowFangsMutation extends IMutationPerkType
                     this.requireMouthMutationSlot()
                     .requireMutation(IMutationsLib.VampiricBloodstreamIM)
                     .requireCustomFunction(function (player:Player):Boolean {
-                        return player.facePart.isAny(Face.VAMPIRE, Face.SPIDER_FANGS);//player.facePart.type == 34
+                        return player.facePart.isAny(Face.VAMPIRE, Face.WERESPIDER_FANGS);
                     }, "Vampire fangs")
                     .requireAnyRace(Races.VAMPIRE, Races.DRACULA, Races.WERESPIDER);
                 }
