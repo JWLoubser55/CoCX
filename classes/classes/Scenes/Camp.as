@@ -1175,6 +1175,7 @@ public class Camp extends NPCAwareContent{
 		if (flags[kFLAGS.DINAH_LVL_UP] >= 1) counter++;
 		if (flags[kFLAGS.MICHIKO_FOLLOWER] >= 1) counter++;
 		if (flags[kFLAGS.NEISA_FOLLOWER] >= 7) counter++;
+		if (flags[kFLAGS.JINX_LVL_UP] >= 1) counter++;
 		if (flags[kFLAGS.AYANE_FOLLOWER] >= 2) counter++;
 		if (flags[kFLAGS.EXCELLIA_RECRUITED] >= 3 && flags[kFLAGS.EXCELLIA_RECRUITED] < 33) counter++;
 		if (flags[kFLAGS.MITZI_RECRUITED] >= 4) counter++;
@@ -1235,6 +1236,7 @@ public class Camp extends NPCAwareContent{
 		if (BelisaFollower.BelisaInCamp) counter++;
 		if (LilyFollower.LilyFollowerState) counter++;
 		if (TyrantiaFollower.isLover()) counter++;
+		if (flags[kFLAGS.CHARYBDIS_FOLLOWER] >= 2) counter++;
 		if (flags[kFLAGS.CHI_CHI_FOLLOWER] > 2 && flags[kFLAGS.CHI_CHI_FOLLOWER] != 5 && !player.hasStatusEffect(StatusEffects.ChiChiOff)) counter++;
 		if (flags[kFLAGS.CEANI_FOLLOWER] > 0) counter++;
 		if (flags[kFLAGS.NADIA_FOLLOWER] >= 6 && !player.hasStatusEffect(StatusEffects.NadiaOff)) counter++;
@@ -1731,6 +1733,11 @@ public class Camp extends NPCAwareContent{
 				outputText("Tyrantia occasionally walks into the dwelling, coming out with a different tool or material. She’s keeping herself busy, if the line of demon skulls around the house is any indication.\n\n");
 				buttons.add("Tyrantia", SceneLib.tyrantia.TyrantiaAtCamp).disableIf(player.statusEffectv1(StatusEffects.CampSparingNpcsTimers5) > 0, "Training.");
 			}
+			//Charybdis
+			if (flags[kFLAGS.CHARYBDIS_FOLLOWER] >= 2) {
+				outputText("\n\n");
+				buttons.add("Charybdis", SceneLib.charybdisScene.charyCampMainMenu).hint("Visit Charybdis the ???.");
+			}
 			//Zenji
 			if (ZenjiScenes.isLover() && TrollVillage.ZenjiVillageStage != 2) {
 				if (model.time.hours >= 7 && model.time.hours <= 18) {
@@ -2004,6 +2011,11 @@ public class Camp extends NPCAwareContent{
 			if (flags[kFLAGS.NEISA_FOLLOWER] >= 7) {
 				outputText("Neisa is hanging by a tree next to the [camp] practicing her swordplay on a makeshift dummy for the next expedition.\n\n");
 				buttons.add("Neisa", SceneLib.neisaFollower.neisaCampMenu).hint("Visit Neisa the shield maiden.");
+			}
+			//Jinx
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) {
+				outputText("\n\n");
+				buttons.add("Minx", SceneLib.jinxFollower.campJinxMenuMain).hint("Visit Minx the ???.");
 			}
 			//Zenji follower
 			if ((flags[kFLAGS.ZENJI_PROGRESS] == 8 || flags[kFLAGS.ZENJI_PROGRESS] == 9) && TrollVillage.ZenjiVillageStage != 2) {
@@ -2317,8 +2329,8 @@ public class Camp extends NPCAwareContent{
 				.disableIf(!player.hasItem(bottles[i][0], 10) || !player.hasItem(useables.E_P_BOT, 1),
 					"You need an empty pill bottle and ten "+bottles[i][2]+"-grade soulforce recovery pills.");
 		}
-		if (player.racialScore(Races.LICH) >= 28) addButton(9, "Phylactery Enchantment", PhylacteryEnchantment).hint("You can weave a minor enchantment on your phylactery to gain a minor power.").disableIf(isNightTime, "It's too dark to modify your scroll.");
-		else addButtonDisabled(9, "Phylactery Enchantment", "Req. you to be a Lich.");
+		if (player.isRaceCached(Races.LICH)) addButton(9, "Phylactery Enchantment", PhylacteryEnchantment).hint("You can weave a minor enchantment on your phylactery to gain a minor power.").disableIf(isNightTime, "It's too dark to modify your phylactery.");
+		else addButtonDisabled(9, "Phylactery Enchantment", "Req. you to be a Lich with phylactery.");
 		if (player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor)) addButton(10, "Clone", CloneMenu).hint("Check on your clone(s).");
 		else addButtonDisabled(10, "Clone", "Would you kindly go face the F class Heaven Tribulation first?");
 		addButtonIfTrue(11, "Pocket Watch", mainPagePocketWatch, "Req. you to have the Pocket Watch key item.", player.hasKeyItem("Pocket Watch") >= 0);
@@ -3217,6 +3229,7 @@ public class Camp extends NPCAwareContent{
 	private function PhylacteryEnchantment():void {
 		var statusNames:Array = [
 			[StatusEffects.PhylacteryEnchantment1, "Death rune Imbuement"],
+			[StatusEffects.PhylacteryEnchantment2, "Blood rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment3, "Darkness rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment4, "Cold rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment5, "Arcane rune Imbuement"],
@@ -3246,7 +3259,7 @@ public class Camp extends NPCAwareContent{
 		}
 		outputText("\n<u><b>Effects of each enchantment:</b></u>\n");
 		outputText("Death rune Imbuement -> <i>You may control twice as many servants as normal. Your undead servants inflict a bonus amount of Darkness damage equal to their physical damage scaling up of your darkness modifier.</i>\n");
-		//2
+		outputText("Blood rune Imbuement -> <i>Spells now inflict bleed damage based on your spell modifiers. Bleed damage heals you for 2% of your health on each proc or tick. Bleed damage also gains a magic scaling.</i>\n");
 		outputText("Darkness rune Imbuement -> <i>All offensive magic now counts as Dark spells when determining its effect and damage. Effects that already dealt dark damage are 50% stronger.</i>\n");
 		outputText("Cold rune Imbuement -> <i>All offensive magic now counts as Ice spells when determining its effect and damage. Effects that already dealt cold damage are 50% stronger.</i>\n");
 		outputText("Arcane rune Imbuement -> <i>Recover mana 100% faster.</i>\n");
@@ -3976,7 +3989,7 @@ public class Camp extends NPCAwareContent{
 				player.addCurse("int", 0.1, 2);
 			}
 			//Bee cock
-			if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) {
+			if (player.hasCockCockOnly() && player.cocks[0].cockType == CockTypesEnum.BEE) {
 				outputText("\nThe desire to find the bee girl that gave you this cursed [cock] and have her spread honey all over it grows with each passing minute\n");
 			}
 			//Starved goo armor
@@ -4064,7 +4077,7 @@ public class Camp extends NPCAwareContent{
 				fatigue(-fatRecovery * timeQ);
 			}
 			//Bee cock
-			if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) {
+			if (player.hasCockCockOnly() && player.cocks[0].cockType == CockTypesEnum.BEE) {
 				outputText("\nThe desire to find the bee girl that gave you this cursed [cock] and have her spread honey all over it grows with each passing minute\n");
 			}
 			//Starved goo armor
@@ -4135,7 +4148,7 @@ public class Camp extends NPCAwareContent{
 					return;
 				}
 			}
-			if (player.hasCock() && followerShouldra() && !player.hasStatusEffect(StatusEffects.ShouldraOff) && flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == -0.5) {
+			if (player.hasCockCockOnly() && followerShouldra() && !player.hasStatusEffect(StatusEffects.ShouldraOff) && flags[kFLAGS.SHOULDRA_EXGARTUDRAMA] == -0.5) {
 				shouldraFollower.keepShouldraPartIIExgartumonsUndeatH();
 				sleepRecovery(false);
 				return;
@@ -4289,7 +4302,7 @@ public class Camp extends NPCAwareContent{
 					else outputText("You order your subjects to prepare a throne for you by stacking their tiny bodies on top of one another for you to rest on. They are quick to comply and soon the imp throne is readied. Satisfied with the result you sit down on the impromptu throne.[pg]");
 					if (player.perkv1(PerkLib.ImpNobility) >= 5) {
 						if (player.hasVagina()) outputText(" You tap the imp in charge of the back area, then whisper to his ears to harden up and fuck your pussy gently. If for any reason, including him thrusting too fast or roughly, and you have to wake up early, he will suffer punishment. Without the need to be told twice, the lesser imp's cock hardens on the spot and slides seamlessly into your royal snatch, his corrupt pre tingling your passage most comfortably.[pg]");
-						outputText((player.hasCock()? (player.hasVagina()?"With your wet passage taken good care of you":"You"):""));
+						outputText((player.hasCockCockOnly()? (player.hasVagina()?"With your wet passage taken good care of you":"You"):""));
 						if (player.hasCock()) outputText(" then call out to the imp underneath you ordering him to offer his ass to sleeve your hardening cock and move on his own so that you can relax. Soon his cheeks wraps around your [cock], massaging you at a slow and steady rhythm.[pg]");
 					}
 					outputText("Satisfied with the current arrangements you head to sleep.");
@@ -4371,7 +4384,7 @@ public class Camp extends NPCAwareContent{
 			multiplier *= 0.75;
 		}
 		//Bee cock
-		if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) {
+		if (player.hasCockCockOnly() && player.cocks[0].cockType == CockTypesEnum.BEE) {
 			outputText("\nThe desire to find the bee girl that gave you this cursed [cock] and have her spread honey all over it grows with each passing minute\n");
 		}
 		//Starved goo armor

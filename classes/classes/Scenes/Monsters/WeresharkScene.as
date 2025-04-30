@@ -84,8 +84,7 @@ public function lostToWereshark():void {
 			outputText("His erection is pulsating within you as he picks up the tempo eagerly to catch his release. Unable to take it any longer, your thoughts swimming in the lack of air, you clench down fervently."+(player.hasCock()?" With a heavy moan, your erection thrums as it grinds against his abs before you cum, shooting several ropes of your seed into the open water.":"")+" ");
 			outputText("You clench your ass tighter on his member as the height of your orgasm rocks through you. He heaves a low growl as his chest heaves, brushing up against you as he cums, forcing you to take in wave after wave of his warm seed, contrasting the cool ocean.\n\n");
 		}
-		if (!player.blockingBodyTransformations())
-			tfIntoWereshark();
+		if (!player.blockingBodyTransformations()) tfIntoWereshark();
 		outputText("Spent, he slowly loosens his grasp on you, allowing you to float back to the surface. Not without giving you a final, mocking lick across your face, he swims away, leaving you to float back to shore.\n\n");
 	}
 	cleanupAfterCombat();
@@ -141,14 +140,7 @@ private function tfIntoWereshark():void {
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 2 || flags[kFLAGS.LUNA_MOON_CYCLE] == 6) bonusStats += 20;
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 1 || flags[kFLAGS.LUNA_MOON_CYCLE] == 7) bonusStats += 30;
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8) bonusStats += 40;
-	if (player.hasPerk(PerkLib.Vulpesthropy)) {
-		player.createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
-		player.removePerk(PerkLib.Vulpesthropy);
-	}
-	if (player.hasPerk(PerkLib.Lycanthropy)) {
-		player.createPerk(PerkLib.LycanthropyDormant,0,0,0,0);
-		player.removePerk(PerkLib.Lycanthropy);
-	}
+	player.werebeastRacesPerkHousekeeping(3);
 	if (!player.hasPerk(PerkLib.Selachimorphanthropy)) player.createPerk(PerkLib.Selachimorphanthropy,bonusStats,0,0,0);
 	if (player.hasPerk(PerkLib.SelachimorphanthropyDormant)) player.removePerk(PerkLib.SelachimorphanthropyDormant);
 	if (player.hasPerk(PerkLib.Selachimorphanthropy)){
@@ -168,7 +160,7 @@ public function wonWithWereshark():void {
 	outputText("Seeing "+(wsG()?"his":"her")+" impending defeat your opponent smacks your face momentarily dazing you with "+(wsG()?"his":"her")+" tail and suddenly makes a turn to swim away at high speed vanishing into the dark water before you can regain your composure. ");
 	outputText("Guess you won’t be dining on that fish tonight. Somewhat frustrated you grab the loot your opponent left behind in "+(wsG()?"his":"her")+" quick retreat.\n\n");
 	menu();//outputText("\"<i></i>\"\n\n");
-	addButtonIfTrue(3, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+	//addButtonIfTrue(3, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
 	addButton(4, "Leave", cleanupAfterCombat);
 }
 	}

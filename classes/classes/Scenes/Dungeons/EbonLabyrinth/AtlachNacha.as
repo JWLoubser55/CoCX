@@ -149,6 +149,7 @@ use namespace CoC;
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
+			this.createPerk(PerkLib.EnemyEldritchType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
 			this.drop = new WeightedDrop(consumables.M_GOSSR, 1);
 			this.checkMonster();

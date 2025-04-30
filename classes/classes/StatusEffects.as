@@ -597,6 +597,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const PCDaughtersWorkshop:StatusEffectType            = mk("PC Daughters Workshop");
 		public static const PCDaughtersWorkshopSpareParts:StatusEffectType  = mk("PC Daughters Workshop Spare parts");
 		public static const PhylacteryEnchantment1:StatusEffectType         = mk("Phylactery Enchantment 1");
+		public static const PhylacteryEnchantment2:StatusEffectType         = mk("Phylactery Enchantment 2");
 		public static const PhylacteryEnchantment3:StatusEffectType         = mk("Phylactery Enchantment 3");
 		public static const PhylacteryEnchantment4:StatusEffectType         = mk("Phylactery Enchantment 4");
 		public static const PhylacteryEnchantment5:StatusEffectType         = mk("Phylactery Enchantment 5");
@@ -979,6 +980,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const AntAcid:StatusEffectType        	       = mkCombat("Ant Acid");
 		public static const ApophisVenom:StatusEffectType              = mkCombat("Apophis Venom");
 		public static const ArcaneWeb:StatusEffectType                 = mkCombat("Arcane Web");
+		public static const ArtfulDestruction:StatusEffectType         = mkCombat("Artful destruction");
 		public static const ATranscendentSoulField:StatusEffectType    = mkCombat("Absolute TranscendentSoul Field");
 		public static const AttackDisabled:StatusEffectType            = mkCombat("Attack Disabled");
 		public static const BalanceOfLife:StatusEffectType             = mkCombat("Balance of Life");
@@ -1105,6 +1107,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const LifestealEnchantment:StatusEffectType      = mkCombat("Lifesteal Enchantment");
 		public static const LifeSiphon:StatusEffectType                = mkCombat("Life siphon");
 		public static const LizanBlowpipe:StatusEffectType             = LizanBlowpipeDebuff.TYPE;
+		public static const LookoutUsed:StatusEffectType               = mkCombat("Lookout Used");
 		public static const LoweredAccuracy:StatusEffectType           = mkCombat("Lowered Accuracy");
 		public static const LustDoT:StatusEffectType                   = mkCombat("Lust DoT");
 		public static const LustDoTH:StatusEffectType                  = mkCombat("Lust DoT (H)");
@@ -1503,4 +1506,4 @@ import classes.StatusEffects.VampireThirstEffect;
 			return new StatusEffectType(id,CombatStatusEffect,1);
 		}
 	}
-}
+}

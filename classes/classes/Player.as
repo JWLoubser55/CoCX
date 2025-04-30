@@ -1177,7 +1177,11 @@ use namespace CoC;
 		}
 		public function thirdtierWingsForWingSlap():Boolean
 		{
-			return wings.type == Wings.BAT_LIKE_LARGE_2 || wings.type == Wings.DRACONIC_HUGE;
+			return wings.type == Wings.BAT_LIKE_LARGE_2 || wings.type == Wings.DRACONIC_HUGE || wings.type == Wings.YGGDRASIL_HUGE_2;
+		}
+		public function fourthtierWingsForWingSlap():Boolean
+		{
+			return wings.type == Wings.YGGDRASIL_HUGE_3;
 		}
 		//Natural Claws (arm types and weapons that can substitude them)
 		public function haveNaturalClaws():Boolean { return Arms.Types[arms.type].claw || Arms.Types[arms.type].armSlam || Arms.Types[arms.type].scythe || LowerBody.hasClaws(this);}
@@ -1358,10 +1362,19 @@ use namespace CoC;
 			return weaponRangePerk == "Bow" || weaponRangePerk == "Crossbow";
 		}
 		//Is in ... mech (large sized races mech)(have upgrade option to allow smaller than large races pilot it)
-		//Player have any party member with them
+		//Player have any party member with them and how many party members they got currently
 		public function companionsInPCParty():Boolean
 		{
 			return flags[kFLAGS.PLAYER_COMPANION_0] != "" || flags[kFLAGS.PLAYER_COMPANION_1] != "" || flags[kFLAGS.PLAYER_COMPANION_2] != "" || flags[kFLAGS.PLAYER_COMPANION_3] != "";
+		}
+		public function companionsInPcPartyCount():Number
+		{
+			var countThem:Number = 0;
+			if (flags[kFLAGS.PLAYER_COMPANION_0] != "") countThem += 1;
+			if (flags[kFLAGS.PLAYER_COMPANION_1] != "") countThem += 1;
+			if (flags[kFLAGS.PLAYER_COMPANION_2] != "") countThem += 1;
+			if (flags[kFLAGS.PLAYER_COMPANION_3] != "") countThem += 1;
+			return countThem;
 		}
 		//PC can fly without natural wings
 		public function canFlyNoWings():Boolean
@@ -1477,6 +1490,24 @@ use namespace CoC;
 		{
 			return ((isRaceCached(Races.KAMAITACHI) && arms.type == Arms.KAMAITACHI) || (isRaceCached(Races.HELLCAT)) || ((isRaceCached(Races.YUKIONNA) && hasPerk(PerkLib.ColdAffinity)) || perkv1(IMutationsLib.FrozenHeartIM) >= 1) ||
 					(hasPerk(PerkLib.DragonRegalBreath)) || (tailType == Tail.GARGOYLE_2) || (faceType == Face.WOLF) || (Face.Types[faceType].bite) || (isRaceCached(Races.COUATL)) || (hasAGoreAttack()));
+		}
+		public function werebeastRacesPerkHousekeeping(werebeastType:Number):void {
+			if (werebeastType != 1 && hasPerk(PerkLib.Lycanthropy)) {
+				createPerk(PerkLib.LycanthropyDormant,0,0,0,0);
+				removePerk(PerkLib.Lycanthropy);
+			}
+			if (werebeastType != 2 && hasPerk(PerkLib.Vulpesthropy)) {
+				createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
+				removePerk(PerkLib.Vulpesthropy);
+			}
+			if (werebeastType != 3 && hasPerk(PerkLib.Selachimorphanthropy)) {
+				createPerk(PerkLib.SelachimorphanthropyDormant,0,0,0,0);
+				removePerk(PerkLib.Selachimorphanthropy);
+			}
+			if (werebeastType != 4 && hasPerk(PerkLib.Araneathropy)) {
+				createPerk(PerkLib.AraneathropyDormant,0,0,0,0);
+				removePerk(PerkLib.Araneathropy);
+			}
 		}
 
 		public function allEquipment():/*Equipable*/Array {
@@ -3019,6 +3050,7 @@ use namespace CoC;
 			if (hasStatusEffect(StatusEffects.GreenCovenant)) damage *= 0.25;
 			if (CoC.instance.monster.hasStatusEffect(StatusEffects.BloodShower)) damage *= 0.2;
 			if (CoC.instance.monster.hasStatusEffect(StatusEffects.CorpseExplosion)) damage *= (1 - (0.2 * CoC.instance.monster.statusEffectv1(StatusEffects.CorpseExplosion)));
+			if (hasPerk(PerkLib.Comradery) && companionsInPCParty()) damage *= (1 - (0.1 * companionsInPcPartyCount()));
 			if (hasPerk(PerkLib.AlteredAnima) && cor >= 20) damage *= (1 - (0.05 * Math.round((cor - 10) / 20)));
 			//Round
 			damage = Math.round(damage);
@@ -4719,16 +4751,18 @@ use namespace CoC;
 			if (hasMutation(IMutationsLib.HumanDigestiveTractIM)) internalHumanCounter += perkv1(IMutationsLib.HumanDigestiveTractIM);//4
 			if (hasMutation(IMutationsLib.HumanEyesIM)) internalHumanCounter += perkv1(IMutationsLib.HumanEyesIM);//4
 			if (hasMutation(IMutationsLib.HumanFatIM)) internalHumanCounter += perkv1(IMutationsLib.HumanFatIM);//4
+			if (hasMutation(IMutationsLib.HumanLungsIM)) internalHumanCounter += perkv1(IMutationsLib.HumanLungsIM);//4
 			if (hasMutation(IMutationsLib.HumanMetabolismIM)) internalHumanCounter += perkv1(IMutationsLib.HumanMetabolismIM);//4
 			if (hasMutation(IMutationsLib.HumanMusculatureIM)) internalHumanCounter += perkv1(IMutationsLib.HumanMusculatureIM);//4
 			if (hasMutation(IMutationsLib.HumanOvariesIM)) internalHumanCounter += perkv1(IMutationsLib.HumanOvariesIM);//4
 			if (hasMutation(IMutationsLib.HumanParathyroidGlandIM)) internalHumanCounter += perkv1(IMutationsLib.HumanParathyroidGlandIM);//4
+			if (hasMutation(IMutationsLib.HumanSecondaryHeartIM)) internalHumanCounter += perkv1(IMutationsLib.HumanSecondaryHeartIM);//4
 			if (hasMutation(IMutationsLib.HumanSmartsIM)) internalHumanCounter += perkv1(IMutationsLib.HumanSmartsIM);//4
 			if (hasMutation(IMutationsLib.HumanTesticlesIM)) internalHumanCounter += perkv1(IMutationsLib.HumanTesticlesIM);//4
 			if (hasMutation(IMutationsLib.HumanThyroidGlandIM)) internalHumanCounter += perkv1(IMutationsLib.HumanThyroidGlandIM);//4
 			if (hasMutation(IMutationsLib.HumanVersatilityIM)) internalHumanCounter += perkv1(IMutationsLib.HumanVersatilityIM);//4
 			End("Player","racialScore");
-			return internalHumanCounter;//56
+			return internalHumanCounter;//64
 		}
 		public function howManyDifferentHumanIMYouGot():Number {
 			var hMDHIMYG:Number = 0;
@@ -4738,10 +4772,12 @@ use namespace CoC;
 			if (hasMutation(IMutationsLib.HumanDigestiveTractIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanEyesIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanFatIM)) hMDHIMYG += 1;
+			if (hasMutation(IMutationsLib.HumanLungsIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanMetabolismIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanMusculatureIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanOvariesIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanParathyroidGlandIM)) hMDHIMYG += 1;
+			if (hasMutation(IMutationsLib.HumanSecondaryHeartIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanSmartsIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanTesticlesIM)) hMDHIMYG += 1;
 			if (hasMutation(IMutationsLib.HumanThyroidGlandIM)) hMDHIMYG += 1;

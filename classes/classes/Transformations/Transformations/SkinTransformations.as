@@ -930,6 +930,23 @@ public class SkinTransformations extends MutationsHelper {
 				return player.skin.base.pattern === Skin.PATTERN_CIRCUIT_TATTOO;
 			}
 	);
+
+	public const SkinPatternDemonicPleasureRune: Transformation = new SimpleTransformation("Demonic Pleasure Rune Skin Pattern",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You feel something like tickling all over your skin as something like a demonic tattoo etches itself across your body, the relief near your pussy tracing the shape of a heart with tendrils where your ovaries should be. The magical tattoo seems to have an effect on you as you become increasingly hornier. <b>Your skin is now marked with a demonic pleasure rune.</b>";
+				player.skin.base.pattern = Skin.PATTERN_DEMONIC_PLEASURE_RUNE;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SkinPatternMem.getMemory(SkinPatternMem.DEMONIC_PLEASURE_RUNE));
+			},
+			// is present
+			function (): Boolean {
+				return player.skin.base.pattern === Skin.PATTERN_DEMONIC_PLEASURE_RUNE;
+			}
+	);
 	/*
   */
 }

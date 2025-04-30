@@ -2,12 +2,14 @@ package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
 import classes.CoC;
+import classes.CockTypesEnum;
 import classes.GeneticMemories.RaceMem;
-//import classes.IMutations.IMutationsLib;
+import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.VaginaClass;
 
-public class AngelRace extends Race {
+public class BarometzRace extends Race {
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -33,41 +35,56 @@ public class AngelRace extends Race {
         /*Vagina*/		"Human",
         /*Perks*/		"Human"];
 
-	public function AngelRace(id:int) {
-		super("Angel", id, []);//RaceBody);
-		chimeraTier = 0;
-		grandChimeraTier = 0;
-		disabled = true;
+	public function BarometzRace(id:int) {
+		super("Barometz", id, []);//RaceBody);
 	}
 	
 	public override function setup():void {
 		
 		addScores()
-				.corruption(0, +3)
+				//.
+				//.
+				.faceType(Face.HUMAN, +1)
+				//.
+				//.
+				//.
+				.hairType(ANY(Hair.LEAF,Hair.GRASS), +1)
+				//.
+				//.
+				//.
+				.wingType(Wings.PLANT, +1)
+				//.
+				//.
+				.isTaur(+2, -1000)
+				//.
+				//.
+				//.
+				//.
+				//.
+				.vaginaType(VaginaClass.EQUINE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
-		buildTier(15, "angel-kin")
+		addMutation(IMutationsLib.TwinHeartIM, +2);
+		addMutation(IMutationsLib.PlantChlorophyllIM);
+		addMutation(IMutationsLib.EquineMuscleIM);
+		
+		buildTier(20, "barometz")
 				.buffs({
-					"str.mult": +0.25,
-					"tou.mult": +0.50,
-					"wis.mult": +1.50,
-					"maxlust_mult": -0.15,
-					"maxsf_mult": +1,
-					"maxwrath_mult": +0.6,
-					"maxmana_mult": -0.8
+					"tou.mult": +1.30,
+					"spe.mult": +1.30,
+					"int.mult": -0.50,
+					"lib.mult": +1.30,
+					"sens": +50
 				})
 				.end();
 		
-		buildTier(21, "angel")
-				//requirePerk(PerkLib.)-perk causing no mana for them like soulless make no sf for demons
+		buildTier(34, "blooming barometz")
 				.buffs({
-					"str.mult": +0.65,
-					"tou.mult": +0.70,
-					"wis.mult": +2.00,
-					"sens": +20,
-					"maxlust_mult": -0.3,
-					"maxsf_mult": +1.5,
-					"maxwrath_mult": +0.8
+					"tou.mult": +2.00,
+					"spe.mult": +2.00,
+					"int.mult": -0.50,
+					"lib.mult": +2.00,
+					"sens": +50
 				})
 				.end();
 	}

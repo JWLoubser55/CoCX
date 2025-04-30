@@ -1103,6 +1103,7 @@ public function nagaTease():void {
             damage *= 1.75;
         }
 		if (monster.hasStatusEffect(StatusEffects.HypnosisNaga)) damage *= 0.5;
+		if (player.hasPerk(PerkLib.ImpossibleHandTechnique)) damage *= 4;
 		if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 		monster.teased(Math.round(monster.lustVuln * damage));
         if (crit) outputText(" <b>Critical!</b>");

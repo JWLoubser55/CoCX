@@ -6,6 +6,8 @@ import classes.GeneticMemories.RaceMem;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.StatusEffects;
+import classes.internals.race.RaceUtils;
 
 public class WerespiderRace extends Race {
     public static const RaceBody:/*String*/Array = [
@@ -35,7 +37,6 @@ public class WerespiderRace extends Race {
 
 	public function WerespiderRace(id:int) {
 		super("Werespider", id, []);//RaceBody);
-		disabled = true;
 	}
 	
 	public override function setup():void {
@@ -44,10 +45,11 @@ public class WerespiderRace extends Race {
 				.eyeType(Eyes.WERESPIDER, +2)
 				.earType(Ears.INSECT, +1)
 				.faceType(Face.SPIDER_FANGS, +1)
-				.armType(Arms.ANT, +2)
-				.legType(LowerBody.CHITINOUS_SPIDER_LEGS, +1)//smth like taur but not so long lower body but more like two pairs of legs starting next to each other
+				.armType(Arms.WERESPIDER, +2)
+				.legType(LowerBody.WERESPIDER, +1)
 				.tailType(Tail.SPIDER_ADBOMEN, +1)
 				.noWings(+4)
+				.hasStatusEffect(StatusEffects.BlackNipples,"black nipples", +1)
 				.hasPerk(PerkLib.AraneathropyDormant, +1)
 				.hasPerk(PerkLib.Araneathropy, +2, -11)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
@@ -57,26 +59,28 @@ public class WerespiderRace extends Race {
 		addMutation(IMutationsLib.VampiricBloodstreamIM);
 		
 		buildTier(12, "werespider")
+				.require("Araneathropy or Dormant Araneathropy perk", 
+					RaceUtils.hasAnyPerkFn([PerkLib.Araneathropy, PerkLib.AraneathropyDormant]))
 				.buffs({
-					"str.mult": +0.70,
-					"tou.mult": +0.70,
-					"spe.mult": +0.70,
+					"str.mult": +0.50,
+					"tou.mult": +0.80,
+					"spe.mult": +0.80,
 					"lib.mult": -0.30,
 					"maxlust_mult": -0.2,
 					"maxwrath_mult": -0.8
 				})
-				.end();/*
+				.end();
 		buildTier(18, "elder werespider")
 				.requirePreviousTier()
 				.buffs({
-					"str.mult": +1.00,
-					"tou.mult": +1.00,
-					"spe.mult": +1.00,
+					"str.mult": +0.80,
+					"tou.mult": +1.10,
+					"spe.mult": +1.10,
 					"lib.mult": -0.30,
 					"maxlust_mult": -0.2,
 					"maxwrath_mult": -0.8
 				})
-				.end();*/
+				.end();
 	}
 }
 }

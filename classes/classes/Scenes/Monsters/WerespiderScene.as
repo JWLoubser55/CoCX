@@ -5,6 +5,9 @@
 package classes.Scenes.Monsters 
 {
 import classes.*;
+import classes.BodyParts.*;
+import classes.GlobalFlags.kFLAGS;
+import classes.Races.WerespiderRace;
 
 	public class WerespiderScene extends BaseContent
 	{
@@ -14,40 +17,56 @@ import classes.*;
 
 public function werespiderEncounter():void {
 	clearOutput();
-	outputText("\n\n");
-	outputText("\"<i></i>\"\n\n");
-	outputText("\n\n");
+	outputText("As you walk through the tunnels, you spot something passing you on the walls in the corner of your vision... Something small. Then another... and another. Over next minute, both sides of the tunnel is infested with many tiny creatures... probably some sort of multilegged insects.\n\n");
+	outputText("\"<i>Hello there.</i>\" A female voice calls to you, and as you turn around, you see a spider-like monster eyeing you with great interest... or perhaps she's just interested your neck. She seemingly wants something form you, and is willing to use force if needed.\n\n");
 	startCombat(new Werespider());
+}
+public function lostToWerespider():void {
+	clearOutput();
+	//spriteSelect(SpriteDb.s_DarkElf);
+	outputText("As you hit the ground, the werespider approaches you with a vicious smile.\n\n");
+	if (player.isRaceCached(Races.WERESPIDER)) {
+		outputText("\"<i>Another brood member? You should stay within your own territory!</i>\" she laughs before knocking you out without allowing you a chance to gather your thoughts.\n\n");
+	}
+	else {
+		outputText("\"<i>It's your lucky night, snack. I would grant you a great boom as long you're worthy. But it could hurt a bit so...</i>\" she laughs before knocking you out without allowing you a chance to gather your thoughts.\n\n");
+		if (!player.blockingBodyTransformations()) tfIntoWereSpider();
+		else {
+			outputText("Awakening ten minutes later, you feel totally drained... both metaphorically and physically.\n\n");
+			player.fatigue = player.maxOverFatigue();
+			player.HP = player.minHP() + 1;
+		}
+	}
+	cleanupAfterCombat();
 }
 private function tfIntoWereSpider():void {
 	clearOutput();
-	outputText("\n\n");/*
-	player.lowerBody = LowerBody.WOLF;
-	if (player.legCount != 2) player.legCount = 2;
-	player.tailType = Tail.WOLF;
-	if (player.tailCount != 1) player.tailCount = 1;
-	player.rearBody.type = RearBody.WOLF_COLLAR;
-	player.arms.type = Arms.WOLF;
-	CoC.instance.transformations.FaceWolfFangs.applyEffect(false);
-	player.ears.type = Ears.WOLF;
-	player.eyes.type = Eyes.FERAL;
-	player.tongue.type = Tongue.DOG;
-	player.wings.type = Wings.NONE;
-	player.antennae.type = Antennae.NONE;
-	player.horns.type = Horns.NONE;
-	CoC.instance.transformations.SkinFur(Skin.COVERAGE_LOW).applyEffect(false);
-	if (player.hasCock() && player.wolfCocks() < 1) {
+	outputText("You awaken ten minutes later and assess the damage. ");
+	CoC.instance.transformations.TailSpider.applyEffect(false);
+	CoC.instance.transformations.ArmsWerespider.applyEffect(false);
+	CoC.instance.transformations.FaceSpiderFangs.applyEffect(false);
+	CoC.instance.transformations.LowerBodyWerespider.applyEffect(false);
+	CoC.instance.transformations.EarsInsect.applyEffect(false);
+	CoC.instance.transformations.EyeWerespider.applyEffect(false);
+	CoC.instance.transformations.TongueHuman.applyEffect(false);
+	CoC.instance.transformations.GillsNone.applyEffect(false);
+	CoC.instance.transformations.WingsNone.applyEffect(false);
+	CoC.instance.transformations.AntennaeNone.applyEffect(false);
+	CoC.instance.transformations.HornsNone.applyEffect(false);
+	CoC.instance.transformations.NipplesBlack.applyEffect();
+	CoC.instance.transformations.HairHuman.applyEffect(false);
+	if (player.hasCock() && player.normalCocks() < 1) {
 		var selectedCockValue:int = -1;
 		for (var indexI:int = 0; indexI < player.cocks.length; indexI++)
 		{
-			if (player.cocks[indexI].cockType != CockTypesEnum.WOLF)
+			if (player.cocks[indexI].cockType != CockTypesEnum.HUMAN)
 			{
 				selectedCockValue = indexI;
 				break;
 			}
 		}
 		if (selectedCockValue != -1) {
-			transformations.CockWolf(selectedCockValue).applyEffect(false);
+			transformations.CockHuman(selectedCockValue).applyEffect(false);
 			player.thickenCock(selectedCockValue, 2);
 		}
 	}
@@ -57,19 +76,24 @@ private function tfIntoWereSpider():void {
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 2 || flags[kFLAGS.LUNA_MOON_CYCLE] == 6) bonusStats += 20;
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 1 || flags[kFLAGS.LUNA_MOON_CYCLE] == 7) bonusStats += 30;
 	if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8) bonusStats += 40;
-	if (player.hasPerk(PerkLib.Vulpesthropy)) {
-		player.createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
-		player.removePerk(PerkLib.Vulpesthropy);
-	}
-	if (!player.hasPerk(PerkLib.Lycanthropy)) player.createPerk(PerkLib.Lycanthropy,bonusStats,0,0,0);
-	if (player.hasPerk(PerkLib.LycanthropyDormant)) player.removePerk(PerkLib.LycanthropyDormant);
-	player.statStore.replaceBuffObject({ 'str.mult': bonusStats*0.1*ngM,'tou.mult': bonusStats*0.06*ngM,'spe.mult': bonusStats*0.04*ngM, 'minlustx': bonusStats * 0.01}, 'Lycanthropy', { text: 'Lycanthropy'});
+	player.werebeastRacesPerkHousekeeping(4);
+	if (!player.hasPerk(PerkLib.Araneathropy)) player.createPerk(PerkLib.Araneathropy,bonusStats,0,0,0);
+	if (player.hasPerk(PerkLib.AraneathropyDormant)) player.removePerk(PerkLib.AraneathropyDormant);
+	player.statStore.replaceBuffObject({ 'str.mult': bonusStats*0.05*ngM,'tou.mult': bonusStats*0.075*ngM,'spe.mult': bonusStats*0.075*ngM, 'minlustx': bonusStats * 0.005}, 'Araneathropy', { text: 'Araneathropy'});
 	player.trainStat('str', +5, 100);
 	player.trainStat('tou', +5, 100);
 	player.trainStat('spe', +5, 100);
 	player.trainStat('lib', +5, 100);
 	player.dynStats("cor", 20);
-	statScreenRefresh();*/
+	statScreenRefresh();
+}
+public function wonWithWerespider():void {
+	clearOutput();//"+(wsG()?"his":"her")+"			"+(wsG()?"his":"her")+"
+	//spriteSelect(SpriteDb.s_DarkElf);
+	outputText("Seeing her impending defeat, your opponent's body breaks down, shattering into several tiny spiders before they scatter in all directions. Yet, in her retreat, she still dropped some loot for you to take, despite the inconvenience she offered.\n\n");
+	menu();//outputText("\"<i></i>\"\n\n");
+	//addButtonIfTrue(3, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+	addButton(4, "Leave", cleanupAfterCombat);
 }
 
 	}

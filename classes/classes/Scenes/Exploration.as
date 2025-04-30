@@ -1587,7 +1587,10 @@ public class Exploration extends BaseContent implements SaveableState
 				outputText("Traversing Mareth's vast areas, you suddenly find yourself underwater!!!");
 				outputText("\n\n<b>Aaaand....A wild Scylla Appears.</b>");
 				player.underwaterCombatBoost();
-				if (!player.canSwimUnderwater()) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+				if (!player.canSwimUnderwater()) {
+					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
+					else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+				}
 				startCombat(new Scylla());//lvl 70
 				return;
 			}
@@ -1605,7 +1608,10 @@ public class Exploration extends BaseContent implements SaveableState
 				outputText("Traversing Mareth's vast areas, you suddenly find yourself underwater!!!");
 				outputText("\n\n<b>Aaaand....A wild Kraken Appears.</b>");
 				player.underwaterCombatBoost();
-				if (!player.canSwimUnderwater()) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+				if (!player.canSwimUnderwater()) {
+					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
+					else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+				}
 				startCombat(new Kraken());//lvl 100 GIANT BOSS
 				return;/*
 			}
@@ -1614,7 +1620,10 @@ public class Exploration extends BaseContent implements SaveableState
 				outputText("\n\n<b>Aaaand....A wild Seabed Alraune Appears.</b>");
 				player.createStatusEffect(StatusEffects.HeroBane, 10, 0, 0, 0);
 				player.underwaterCombatBoost();
-				if (!player.canSwimUnderwater()) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+				if (!player.canSwimUnderwater()) {
+					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
+					else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+				}
 				startCombat(new SeabedAlrauneBoss());//lvl 135 GIANT PLANT BOSS
 				return;
 			}*/
@@ -1627,7 +1636,10 @@ public class Exploration extends BaseContent implements SaveableState
 				outputText("\n\n<b>Aaaand....A wild Seabed Alraune Appears.</b>");
 				player.createStatusEffect(StatusEffects.HeroBane, 10, 0, 0, 0);
 				player.underwaterCombatBoost();
-				if (!player.canSwimUnderwater()) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+				if (!player.canSwimUnderwater()) {
+					if (player.hasPerk(PerkLib.OperraticOperator)) player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,5,0,0,0);
+					else player.createStatusEffect(StatusEffects.UnderwaterOutOfAir,0,0,0,0);
+				}
 				startCombat(new SeabedAlrauneBoss());//lvl 135 GIANT PLANT BOSS
 				return;
 			//}

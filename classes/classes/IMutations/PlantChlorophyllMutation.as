@@ -37,7 +37,7 @@ import classes.Races;
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireFatTissueMutationSlot()
-					.requireRace(Races.MYCONID);
+					.requireAnyRace(Races.PLANT, Races.ALRAUNE, Races.YGGDRASIL, Races.BAROMETZ);
                 }
                 else{
                     var pLvl:int = pTier * 30;

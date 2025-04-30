@@ -132,6 +132,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const MOTH:int = _partid++;
+		EnumValue.add(Memories, MOTH, "MOTH", {
+			id: "Moth Antennae",
+			name: "Moth Antennae",
+			cost: 100,
+			title: "Moth",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.AntennaeMoth;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

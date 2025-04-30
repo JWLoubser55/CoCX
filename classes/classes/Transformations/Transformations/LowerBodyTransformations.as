@@ -2436,6 +2436,30 @@ public class LowerBodyTransformations extends MutationsHelper {
 			return player.lowerBody === LowerBody.MECHANICAL_DOLL_LEGS;
 		}
 	);
+
+	public const LowerBodyWerespider: Transformation = new SimpleTransformation("Werespider Lower Body",
+		// apply effect
+		function (doOutput: Boolean): void {
+			var desc: String = "";
+			TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyHuman, doOutput);
+
+			if (player.lowerBody == LowerBody.ANT) {
+				desc += "Feeling as though something is crawling down your legs, you glance down and realize the chitin covering your hips drops to only cover up to your thighs. ";
+				if (!player.chitinColor2 == "black") desc += "You also realize that the color changes to black. ";
+				desc += "<b>You now have human-like legs covered in a black, arachnid exoskeleton.</b>"
+			}
+			else desc += "Starting at your [feet], a tingle runs up your [legs], not stopping until it reaches your thighs. From the waist down, your strength completely deserts you, leaving you to fall hard on your [butt] in the dirt. With nothing else to do, you look down, only to be mesmerized by the sight of black exoskeleton creeping up a perfectly human-looking hips. It crests up your knee to envelop the joint in a many-faceted onyx coating. Then, it resumes its slow upward crawl, not stopping until it has girded your thighs in glittery, midnight exoskeleton. From a distance it would look almost like a black, thigh-high boot, but you know the truth. <b>You now have human-like legs covered in a black, arachnid exoskeleton.</b>";
+
+			if (doOutput) outputText(desc);
+			player.chitinColor2 = "black";
+			player.lowerBody = LowerBody.WERESPIDER;
+			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.WERESPIDER));
+		},
+		// is present
+		function (): Boolean {
+			return player.lowerBody === LowerBody.WERESPIDER && player.legCount === 2;
+		}
+	);
 	
 	/*
   */

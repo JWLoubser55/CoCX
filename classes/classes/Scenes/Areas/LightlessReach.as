@@ -74,6 +74,14 @@ public class LightlessReach extends BaseContent
 			call: SceneLib.werewolfFemaleScene.introWerewolfHuntress,
 			chance: 0.50
 		}, */{
+			name: "primodialdisplacerbeast",
+			label : "Primodial D. Beast",
+			kind : 'monster',
+			call: function ():void {
+				player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+				displacerbeastScene.primodialDisplacerBeastEncounter();
+			}
+		}, {
 			name: "displacerbeast",
 			label : "Displacer Beast",
 			kind : 'monster',

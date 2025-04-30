@@ -1,13 +1,14 @@
 package classes.Items.Consumables {
 import classes.BodyParts.*;
 import classes.CoC;
+import classes.EngineCore;
 import classes.Items.Alchemy.AlchemyLib;
 import classes.Items.Consumable;
 import classes.Races.MothRace;
 
 public class MothDust extends Consumable {
     public function MothDust() {
-        super("MothDus", "MothDust", "a handful of luminescent dust", 6, "A handful of luminescent dust.  It glows very softly, and smells sweet. You look at the handful of dust and wonder just how it'll affect you.");
+        super("MothDus", "MothDust", "a handful of luminescent dust", 6, "A strange golden powder that reminds you of dew sparkling in the moonlight.");
         withTag(U_TF);
         refineableInto(
                 AlchemyLib.DEFAULT_SUBSTANCES_DROP_TABLE,
@@ -25,6 +26,8 @@ public class MothDust extends Consumable {
         if (rand(2) == 0) changeLimit++;
         if (changeLimit == 1) changeLimit = 2;
         changeLimit += player.additionalTransformationChances;
+		clearOutput();
+        outputText("Opening up the bag of powder you begin to pour it down your mouth and the dust makes you sneeze.");
         //Statistical changes:
         //-Raises speed to 100.
         if (rand(2) == 0 && changes < changeLimit && player.MutagenBonus("spe", 1)) {
@@ -46,6 +49,35 @@ public class MothDust extends Consumable {
             CoC.instance.transformations.EarsInsect.applyEffect();
             changes++;
         }
+		//Face
+        if (changes < changeLimit && rand(3) == 0 && player.faceType != Face.HUMAN) {
+            outputText("[pg]");
+            CoC.instance.transformations.FaceHuman.applyEffect();
+            changes++;
+        }
+        //Eyes
+        if (changes < changeLimit && rand(3) == 0 && player.eyes.type != Eyes.MOTH) {
+            outputText("\n\n");
+            CoC.instance.transformations.EyesMoth.applyEffect();
+            changes++;
+        }
+		//Eyes Color
+		if (!InCollection(player.eyes.colour, MothRace.MothEyesColors) && rand(3) == 0 && changes < changeLimit) {
+            outputText("[pg]");
+            CoC.instance.transformations.EyesChangeColor(MothRace.MothEyesColors).applyEffect();
+            changes++;
+        }
+		//Hair
+        if (changes < changeLimit && player.hairType != Hair.NORMAL && rand(3) == 0) {
+		    outputText("[pg]");
+		    CoC.instance.transformations.HairHuman.applyEffect();
+            changes++;
+        }
+		//Hair Color
+        if (!InCollection(player.hairColor, MothRace.MothHairColors) && changes < changeLimit && rand(3) == 0) {
+            player.hairColor = randomChoice(MothRace.MothHairColors);
+            outputText("[pg]Your scalp begins to tingle, and you gently grasp a strand of hair, pulling it out to check it.  Your hair has become [haircolor]!");
+        }
         //LowerBody
         if (changes < changeLimit && rand(3) == 0 && player.lowerBody != LowerBody.MOTH) {
             outputText("\n\n");
@@ -58,22 +90,13 @@ public class MothDust extends Consumable {
             CoC.instance.transformations.AntennaeMoth.applyEffect();
             changes++;
         }
-		//Chitin skin
-        if (changes < changeLimit && player.hasPartialCoat(Skin.CHITIN) && player.tailType == Tail.MOTH_ABDOMEN && rand(2) == 0) {
+		//Tongue
+		
+		//Plain skin
+        if (!player.hasPlainSkinOnly() && rand(3) == 0 && changes < changeLimit) {
+            if (player.skinAdj != "") player.skinAdj = "";
             outputText("[pg]");
-            CoC.instance.transformations.SkinChitin(Skin.COVERAGE_COMPLETE, {colors: MothRace.MothChitinColors}).applyEffect();
-            changes++;
-        }
-		//(Fur/Scales fall out replaced by chitin)
-        if (!player.hasCoatOfType(Skin.CHITIN) && InCollection(player.ears.type, Ears.HUMAN, Ears.ELFIN, Ears.INSECT) && rand(3) == 0 && changes < changeLimit) {
-			outputText("[pg]");
-            CoC.instance.transformations.SkinChitin(Skin.COVERAGE_LOW, {colors: MothRace.MothChitinColors}).applyEffect();
-            changes++;
-        }
-        //Eyes
-        if (changes < changeLimit && rand(3) == 0 && player.eyes.type != Eyes.MOTH) {
-            outputText("\n\n");
-            CoC.instance.transformations.EyesMoth.applyEffect();
+            CoC.instance.transformations.SkinPlain.applyEffect();
             changes++;
         }
         //Arms
@@ -93,19 +116,24 @@ public class MothDust extends Consumable {
             }
             changes++;
         }
-        //Horns
-        if (changes < changeLimit && rand(3) == 0 && player.horns.type != Horns.NONE) {
-            outputText("\n\n");
-            CoC.instance.transformations.HornsNone.applyEffect();
-            changes++;
-        }
         //Rearbody
         if (changes < changeLimit && rand(3) == 0 && player.rearBody.type != RearBody.MOTH_COLLAR) {
             outputText("\n\n");
             CoC.instance.transformations.RearBodyMoth.applyEffect();
             changes++;
         }
-
+        //Horns
+        if (changes < changeLimit && rand(3) == 0 && player.horns.type != Horns.NONE) {
+            outputText("\n\n");
+            CoC.instance.transformations.HornsNone.applyEffect();
+            changes++;
+        }
+		//If no changes yay
+        if (changes == 0) {
+            outputText("[pg]Inhuman vitality spreads through your body, invigorating you!\n");
+            EngineCore.HPChange(Math.round(20*player.postConsumptionMlt()), true, false);
+            dynStats("lus", Math.round(3*player.postConsumptionMlt()), "scale", false);
+        }
         return true;
     }
 }

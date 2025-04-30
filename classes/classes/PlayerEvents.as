@@ -239,10 +239,18 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				dynStats("lus", player.libStat.totalCore * 0.02, "scale", false); //Raise lust
 				if (player.hasPerk(PerkLib.Lusty)) dynStats("lus", player.libStat.totalCore * 0.005, "scale", false); //Double lust rise if lusty.
 			}
-			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) dynStats("lus", -(Math.round(player.maxLust() * 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM))));
+			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) {
+				var hmim1:Number = 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 1) hmim1 += 0.01 * (player.perkv1(IMutationsLib.HumanLungsIM) + 1);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 4) hmim1 += 0.01;
+				dynStats("lus", -(Math.round(player.maxLust() * hmim1)));
+			}
 			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 3) {
-				if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 4 && player.fatigue100 >= 50) EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 0.02 * (player.perkv1(IMutationsLib.HumanMetabolismIM) - 2))));
-				else EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 0.01 * (player.perkv1(IMutationsLib.HumanMetabolismIM) - 2))));
+				var hmim3:Number = 0.01 * (player.perkv1(IMutationsLib.HumanMetabolismIM) - 2);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 1) hmim3 += 0.01 * (player.perkv1(IMutationsLib.HumanLungsIM) + 1);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 4) hmim3 += 0.01;
+				if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 4 && player.fatigue100 >= 50) EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 2 * hmim3)));
+				else EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * hmim3)));
 			}
 			if (player.perkv1(IMutationsLib.HumanDigestiveTractIM) >= 3) dynStats("lus", -(Math.round(player.maxLust() * 0.01 * (player.perkv1(IMutationsLib.HumanDigestiveTractIM) - 2))));
 			//Jewelry effect
@@ -1285,13 +1293,14 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				//Full moon
 				flags[kFLAGS.LUNA_MOON_CYCLE]++;
 				if (flags[kFLAGS.LUNA_MOON_CYCLE] > 8) flags[kFLAGS.LUNA_MOON_CYCLE] = 1;
-				if (player.hasPerk(PerkLib.Lycanthropy) || player.hasPerk(PerkLib.Vulpesthropy) || player.hasPerk(PerkLib.Selachimorphanthropy)) {
+				if (player.hasPerk(PerkLib.Lycanthropy) || player.hasPerk(PerkLib.Vulpesthropy) || player.hasPerk(PerkLib.Selachimorphanthropy) || player.hasPerk(PerkLib.Araneathropy)) {
 					var ngMult:Number = (player.newGamePlusMod() + 1);
 					var changeV:Number = 0;
 					var textA:String = "";
 					if (player.hasPerk(PerkLib.Lycanthropy)) textA = "lupine";
 					if (player.hasPerk(PerkLib.Vulpesthropy)) textA = "vulpine";
 					if (player.hasPerk(PerkLib.Selachimorphanthropy)) textA = "selachii";
+					if (player.hasPerk(PerkLib.Araneathropy)) textA = "arachne";
 					switch (flags[kFLAGS.LUNA_MOON_CYCLE]) {
 						case 1:
 							changeV = 30;
@@ -1337,11 +1346,15 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						player.setPerkValue(PerkLib.Lycanthropy,1,changeV);
 					}
 					if (player.hasPerk(PerkLib.Vulpesthropy)) {
-						player.statStore.replaceBuffObject({ 'str.mult': changeV*0.01*ngMult,'tou.mult': changeV*0.1*ngMult,'spe.mult': changeV*0.04*ngMult, 'minlustx': changeV * 0.005}, 'Vulpesthropy', { text: 'Vulpesthropy'});
+						player.statStore.replaceBuffObject({ 'tou.mult': changeV*0.08*ngMult,'spe.mult': changeV*0.04*ngMult,'wis.mult': changeV*0.08*ngMult, 'minlustx': changeV * 0.005}, 'Vulpesthropy', { text: 'Vulpesthropy'});
 						player.setPerkValue(PerkLib.Vulpesthropy,1,changeV);
 					}
 					if (player.hasPerk(PerkLib.Selachimorphanthropy)) {
 						player.statStore.replaceBuffObject({ 'str.mult': changeV*0.1*ngMult,'tou.mult': changeV*0.05*ngMult,'spe.mult': changeV*0.05*ngMult, 'minlustx': changeV * 0.01}, 'Selachimorphanthropy', { text: 'Selachimorphanthropy'});
+						player.setPerkValue(PerkLib.Selachimorphanthropy,1,changeV);
+					}
+					if (player.hasPerk(PerkLib.Araneathropy)) {
+						player.statStore.replaceBuffObject({ 'str.mult': changeV*0.05*ngMult,'tou.mult': changeV*0.075*ngMult,'spe.mult': changeV*0.075*ngMult, 'minlustx': changeV * 0.005}, 'Araneathropy', { text: 'Araneathropy'});
 						player.setPerkValue(PerkLib.Selachimorphanthropy,1,changeV);
 					}
 					needNext = true;
@@ -1768,7 +1781,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.statusEffectv1(StatusEffects.DemonEnergyThirstFeed) <= 0) player.removeStatusEffect(StatusEffects.DemonEnergyThirstFeed);
 			}
 			//DarkCharm
-			needNext ||= player.gainOrLosePerk(PerkLib.DarkCharm, player.isAnyRaceCached(Races.DEMON, Races.IMP, Races.GREMLIN, Races.DRACULA) || player.hasMutation(IMutationsLib.BlackHeartIM), "You feel a strange sensation in your body. With you looking like a demon, you have unlocked the potential to use demonic charm attacks!", "With some of your demon-like traits gone, so does your ability to use charm attacks.", player.perkv4(PerkLib.DarkCharm) == 0);
+			needNext ||= player.gainOrLosePerk(PerkLib.DarkCharm, player.isAnyRaceCached(Races.DEMON, Races.IMP, Races.GREMLIN, Races.DRACULA, Races.MARILITH) || player.hasMutation(IMutationsLib.BlackHeartIM), "You feel a strange sensation in your body. With you looking like a demon, you have unlocked the potential to use demonic charm attacks!", "With some of your demon-like traits gone, so does your ability to use charm attacks.", player.perkv4(PerkLib.DarkCharm) == 0);
 			//Flexibility perk
 			needNext ||= player.gainOrLosePerk(PerkLib.Flexibility, (Tail.hasFelineTail(player) && LowerBody.hasFelineLegs(player) && Arms.hasFelineArms(player)) || player.perkv1(IMutationsLib.CatLikeNimblenessIM) >= 1, "While stretching, you notice that you're much more flexible than you were before.  Perhaps this will make it a bit easier to dodge attacks in battle?", "You notice that you aren't as flexible as you were when you had a more feline body.  It'll probably be harder to avoid your enemies' attacks now.", player.perkv4(PerkLib.Flexibility) == 0);
 			//Ghost-slinger perk
@@ -2152,9 +2165,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (player.hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) player.removeStatusEffect(StatusEffects.PostfluidIntakeRegeneration);
-			/*
-
-			if (player.thundermantis() >= 10 && player.tailType == Tail.THUNDERBIRD && !player.hasPerk(PerkLib.LightningAffinity)) {
+			/*if (player.thundermantis() >= 10 && player.tailType == Tail.THUNDERBIRD && !player.hasPerk(PerkLib.LightningAffinity)) {
 				outputText("\nYou suddenly feel a rush of electricity run across your skin as your static energy builds up. You realize deep down that the only way for you to be freed from this is to unleash it on someone else.\n\n(<b>Gained the lightning affinity perk and Orgasmic lightning strike ability!</b>)\n");
 				player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
 				needNext = true;
@@ -2183,6 +2194,23 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasStatusEffect(StatusEffects.GazerEyeStalksPlayer)) player.removeStatusEffect(StatusEffects.GazerEyeStalksPlayer);
 				outputText("\nLacking the occulatory prowess of many eyes you also lose the ability to omnicast. \n\n(<b>Lost Perk: Omnicaster</b>)");
 				player.removePerk(PerkLib.Omnicaster);
+				needNext = true;
+			}
+			//Blade Dancer, Fiendish Concentration, Artful destruction, Impossible Hand Technique
+			if (player.isRaceCached(Races.MARILITH) && player.hasFourArms() && !player.hasPerk(PerkLib.BladeDancer)) {
+				outputText("\nAs your fiendish body takes on more of the quality of a marilith blade demon thanks to your improved dexterity you become able to move all four of your arms in perfect synchronization.\n\n<b>(You acquired the Blade Dancer, Fiendish Concentration, Artful destruction and Impossible Hand Technique perks!)</b>\n");
+				player.createPerk(PerkLib.BladeDancer, 0, 0, 0, 0);
+				player.createPerk(PerkLib.FiendishConcentration, 0, 0, 0, 0);
+				player.createPerk(PerkLib.ArtfulDestruction, 0, 0, 0, 0);
+				player.createPerk(PerkLib.ImpossibleHandTechnique, 0, 0, 0, 0);
+				needNext = true;
+			}
+			else if ((!player.isRaceCached(Races.MARILITH) || !player.hasFourArms()) && player.hasPerk(PerkLib.BladeDancer)) {
+				outputText("\nAs your body becomes less of that of a blade demon your ability to use all of your limbs perfectly plummets.\n\n<b>(You lost the Blade Dancer, Fiendish Concentration, Artful destruction and Impossible Hand Technique perks!)</b>\n");
+				player.removePerk(PerkLib.BladeDancer);
+				player.removePerk(PerkLib.FiendishConcentration);
+				player.removePerk(PerkLib.ArtfulDestruction);
+				player.removePerk(PerkLib.ImpossibleHandTechnique);
 				needNext = true;
 			}
 			//Necromancy perk
@@ -2309,8 +2337,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasStatusEffect(StatusEffects.GlowingAsshole)) transformations.AssholeNormal.applyEffect(false);
 				needNext = true;
 			}
-			//VerdantMight		, Races.barometz
-			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
+			//VerdantMight
+			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE, Races.BAROMETZ), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
 			//Absorb nutrient
 			needNext ||= player.gainOrLosePerk(PerkLib.AbsorbNutrient, player.isRaceCached(Races.MYCONID), "You begin to crave for the fluids and moisture of others. It looks like, as you became more shroom-like, you gained the ability to absorb nutrients and vitality from sex.", "You no longer crave for the fluids and moisture of others. It looks like, as you became less shroom-like, you lost the ability to absorb nutrients and vitality from sex.");
 			//FungalNobility
@@ -2789,7 +2817,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
-			if (player.hasPerk(PerkLib.SpiderOvipositor) || (player.hasPerk(PerkLib.BeeOvipositor) && !player.hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) || player.hasPerk(PerkLib.MantisOvipositor) || player.hasPerk(PerkLib.AntOvipositor)) { //Spider, Bee and, Mantis and Ant ovipositor updates
+			if (player.hasPerk(PerkLib.SpiderOvipositor) || (player.hasPerk(PerkLib.BeeOvipositor) && !player.hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) || player.hasPerk(PerkLib.MantisOvipositor) || player.hasPerk(PerkLib.AntOvipositor) || player.hasPerk(PerkLib.MothOvipositor)) { //Spider, Bee, Mantis, Ant and Moth ovipositor updates
 				if (transformations.RemoveOvipositor.isPossible()) { //Remove dat shit!
 						transformations.RemoveOvipositor.applyEffect();
 				}
@@ -2836,6 +2864,9 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						else if (player.hasPerk(PerkLib.AntOvipositor)) {
 							outputText("\nYour ant half has become so heavy that it's difficult to move now, the weight of your eggs bearing down on your lust-addled frame.  Your ovipositor pokes from its hiding place, dripping its slick lubrication in anticipation of filling something, anything with its burden.  You're going to have to find someone to help relieve you of your load, and soon...");
 						}
+						else if (player.hasPerk(PerkLib.MothOvipositor)) {
+							outputText("\nYour moth half has become so heavy that it's difficult to move now, the weight of your eggs bearing down on your lust-addled frame.  Your ovipositor pokes from its hiding place, dripping its sweet, slick lubrication in anticipation of filling something, anything with its burden.  You're going to have to find someone to help relieve you of your load, and soon...");
+						}
 						else {
 							outputText("\nYour bee half has become so heavy that it's difficult to move now, the weight of your eggs bearing down on your lust-addled frame.  Your ovipositor pokes from its hiding place, dripping its sweet, slick lubrication in anticipation of filling something, anything with its burden.  You're going to have to find someone to help relieve you of your load, and soon...");
 						}
@@ -2881,7 +2912,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (!player.isRaceCached(Races.WEREWOLF) && player.hasPerk(PerkLib.Lycanthropy)) {
-				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werewolf you once were. <b>Gained Dormant lycanthropy.</b>\n");
+				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werewolf you once were. <b>Gained Dormant Lycanthropy.</b>\n");
 				player.createPerk(PerkLib.LycanthropyDormant,0,0,0,0);
 				player.statStore.removeBuffs("Lycanthropy");
 				player.removeStatusEffect(StatusEffects.HumanForm);
@@ -2889,7 +2920,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (!player.isRaceCached(Races.WEREFOX) && player.hasPerk(PerkLib.Vulpesthropy)) {
-				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werefox you once were. <b>Gained Dormant vulpesthropy.</b>\n");
+				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werefox you once were. <b>Gained Dormant Vulpesthropy.</b>\n");
 				player.createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
 				player.statStore.removeBuffs("Vulpesthropy");
 				player.removeStatusEffect(StatusEffects.HumanForm);
@@ -2898,7 +2929,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			}
 			if (player.isRaceCached(Races.WERESHARK) && player.hasPerk(PerkLib.SelachimorphanthropyDormant)) {
 				outputText("\nAs you become shark enough your mind recedes into increasingly animalistic urges. It will only get worse as the moon comes closer to full. <b>Gained Selachimorphanthropy.</b>\n");
-				var ngMWS:Number = (player.newGamePlusMod() + 1);
+				var ngMWSh:Number = (player.newGamePlusMod() + 1);
 				var bonusStats2:Number = 0;
 				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 3 || flags[kFLAGS.LUNA_MOON_CYCLE] == 5) bonusStats2 += 10;
 				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 2 || flags[kFLAGS.LUNA_MOON_CYCLE] == 6) bonusStats2 += 20;
@@ -2906,16 +2937,38 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8) bonusStats2 += 40;
 				player.createPerk(PerkLib.Selachimorphanthropy,bonusStats2,0,0,0);
 				player.createStatusEffect(StatusEffects.HumanForm,1,0,0,0);
-				player.statStore.replaceBuffObject({'str.mult': bonusStats2*0.1*ngMWS,'tou.mult': bonusStats2*0.05*ngMWS,'spe.mult': bonusStats2*0.05*ngMWS,'minlustx': bonusStats2*0.01}, 'Selachimorphanthropy', { text: 'Selachimorphanthropy'});
+				player.statStore.replaceBuffObject({'str.mult': bonusStats2*0.1*ngMWSh,'tou.mult': bonusStats2*0.05*ngMWSh,'spe.mult': bonusStats2*0.05*ngMWSh,'minlustx': bonusStats2*0.01}, 'Selachimorphanthropy', { text: 'Selachimorphanthropy'});
 				player.removePerk(PerkLib.SelachimorphanthropyDormant);
 				needNext = true;
 			}
 			if (!player.isRaceCached(Races.WERESHARK) && player.hasPerk(PerkLib.Selachimorphanthropy)) {
-				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the wereshark you once were. <b>Gained Dormant selachimorphanthropy.</b>\n");
+				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the wereshark you once were. <b>Gained Dormant Selachimorphanthropy.</b>\n");
 				player.createPerk(PerkLib.SelachimorphanthropyDormant,0,0,0,0);
 				player.statStore.removeBuffs("Selachimorphanthropy");
 				player.removeStatusEffect(StatusEffects.HumanForm);
 				player.removePerk(PerkLib.Selachimorphanthropy);
+				needNext = true;
+			}
+			if (player.isRaceCached(Races.WERESPIDER) && player.hasPerk(PerkLib.AraneathropyDormant)) {
+				outputText("\nAs you become shark enough your mind recedes into increasingly animalistic urges. It will only get worse as the moon comes closer to full. <b>Gained Araneathropy.</b>\n");
+				var ngMWSp:Number = (player.newGamePlusMod() + 1);
+				var bonusStats3:Number = 0;
+				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 3 || flags[kFLAGS.LUNA_MOON_CYCLE] == 5) bonusStats3 += 10;
+				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 2 || flags[kFLAGS.LUNA_MOON_CYCLE] == 6) bonusStats3 += 20;
+				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 1 || flags[kFLAGS.LUNA_MOON_CYCLE] == 7) bonusStats3 += 30;
+				if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8) bonusStats3 += 40;
+				player.createPerk(PerkLib.Araneathropy,bonusStats3,0,0,0);
+				player.createStatusEffect(StatusEffects.HumanForm,1,0,0,0);
+				player.statStore.replaceBuffObject({'str.mult': bonusStats3*0.05*ngMWSp,'tou.mult': bonusStats3*0.075*ngMWSp,'spe.mult': bonusStats3*0.075*ngMWSp,'minlustx': bonusStats3*0.001}, 'Araneathropy', { text: 'Araneathropy'});
+				player.removePerk(PerkLib.AraneathropyDormant);
+				needNext = true;
+			}
+			if (!player.isRaceCached(Races.WERESPIDER) && player.hasPerk(PerkLib.Araneathropy)) {
+				outputText("\nYou feel your animalistic urges go dormant within you as you no longer are the werespider you once were. <b>Gained Dormant Araneathropy.</b>\n");
+				player.createPerk(PerkLib.AraneathropyDormant,0,0,0,0);
+				player.statStore.removeBuffs("Araneathropy");
+				player.removeStatusEffect(StatusEffects.HumanForm);
+				player.removePerk(PerkLib.Araneathropy);
 				needNext = true;
 			}
 			if (player.hasPerk(PerkLib.FutaForm)) { //Futa checks
@@ -3112,6 +3165,20 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
                     EngineCore.doNext(playerMenu);
 					//Hey Fenoxo - maybe the unsexed characters get a few \"cock up the ovipositor\" scenes for fertilization with some characters (probably only willing ones)?
 					//Hey whoever, maybe you write them? -Z
+					return true;
+				}
+				if (player.hasCock() && player.hasPerk(PerkLib.MothOvipositor) && (player.eggs() >= 20 && rand(6) == 0)) { //Moth dreams proc
+					outputText("\nYou sit atop your favorite flower, enjoying the smell of verdure and the sounds of the forest.  The sun is shining brightly and it feels wonderful on your chitin.  Your wings twitch happily in the soft breeze, and it feels good to be alive... the only sour note is your heavy, bloated abdomen, so full of unfertilized eggs that it droops, so full it strains your back and pinches your nerves.  Still, it's too nice a day to let that depress you, and you take up your customary song, humming tunelessly but mellifluously as you wait for passers-by.");
+					outputText("\n\nYour [antennae] bob - was that someone?  Peering between the trees from the corner of your eye, you can see the figure of another person.  The figure steps into your clearing and out of the shadow; clad in [armor], " + player.mf("he","she") + " is yourself!  Confused, you stop humming and stare into your own face, and the other you takes the opportunity to open " + player.mf("his","her") + " garments, exposing " + player.mf("his","her") + " [cock]!");
+					outputText("\n\nStartled, you slip down from your seat and try to run, but the other you has already crossed the clearing and seizes you by the fuzz on your hefty, swollen abdomen; your leg slips, propelling you face-first to the ground.  " + player.mf("He","She") + " pulls you back toward " + player.mf("his","her") + "self and, grabbing one of your fuzzy legs, turns you over.  The other you spreads your fuzzed thighs, revealing your soft, wet pussy.  " + player.mf("His","Her") + " prick hardens intensely, and " + player.mf("he","she") + " pushes it into you without so much as a word of apology, groaning as " + player.mf("he","she") + " begins to rut you mercilessly.  You can feel the sensations of " + player.mf("his","her") + " burning cock as if it were your own, and your legs wrap around your other self instinctively even as your mind recoils in confusion.");
+					outputText("\n\nThe other you grunts and locks up as " + player.mf("his","her") + "... your [cock] begins to spurt inside your drooling cunt, and " + player.mf("he","she") + " falls onto you, bottoming out inside; your vagina likewise clenches and squirts your sweet juices.  As " + player.mf("he","she") + " ejaculates, thrusting weakly, you can feel something shifting in you, filling you with pins and needles... it feels like the warm cum " + player.mf("he","she") + "'s filling you with is permeating your entire groin, working its way back toward your abdomen.  It edges up to your massive buildup of eggs, and your body tightens in a second climax at the thought of having your children fertilized-");
+					outputText("\n\nYou snap awake, sitting bolt upright.  What in the name of... your [cocks] is softening rapidly, and as you shift, you can feel your cum sloshing in your [armor].  For fuck's sake.");
+					if (player.cumQ() >= 1000) outputText("  It's completely soaked your bedroll, too... you won't be sleeping on this again until you wash it out.  Grumbling, you roll the soggy, white-stained fabric up and stow it.");
+					outputText("  The sensation of wetness inside your own clothes torments you as you try to return to sleep, driving up your lust and making you half-hard once again... the rumbling of eggs in your abdomen, as if they're ready to be laid, doesn't help either.");
+					player.fertilizeEggs(); //convert eggs to fertilized based on player cum output, reduce lust by 100 and then add 20 lust
+					player.orgasm();
+					player.dynStats("lus", 20, "scale", false);
+                    EngineCore.doNext(playerMenu);
 					return true;
 				}
 				if (player.hasCock() && player.hasPerk(PerkLib.MantisOvipositor) && (player.eggs() >= 20 && rand(6) == 0)) { //Mantis dreams proc

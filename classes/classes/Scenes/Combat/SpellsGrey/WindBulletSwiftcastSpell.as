@@ -22,7 +22,7 @@ public class WindBulletSwiftcastSpell extends AbstractGreySpell {
 	
 	override public function get isKnown():Boolean {
 		return player.hasStatusEffect(StatusEffects.KnowsWindBullet) &&
-				player.hasPerk(PerkLib.SwiftCasting);
+				(player.hasPerk(PerkLib.SwiftCasting) || player.hasPerk(PerkLib.FiendishConcentration));
 	}
 	
 	override public function calcCooldown():int {

@@ -709,8 +709,8 @@ public class PerkLib
 				"You learned how to more efficient use soulforce powering your Ayo Armor to further fortify your basic physical and magic resitances. (+core tou % up to 300%)",
 				"You've chosen the 'Efficient Usage of Soulforce' perk. You learned how to more efficient use soulforce powering your Ayo Armor to further fortify your basic physical and magic resitances. (+core tou % up to 300%)");
 		public static const VampiricMagic:PerkType = mk("Vampiric Magic", "Vampiric Magic",
-				"Nospheratu cooldown is reduced by 1 round and blood magic spells are 50% stronger.",
-				"You've chosen the 'Vampiric Magic' perk. Nospheratu cooldown is reduced by 1 round and blood magic spells are 50% stronger.");
+				"Nospheratu cooldown is reduced by 1 round and blood magic spells are 50% stronger. (+40% spellpower bonus)",
+				"You've chosen the 'Vampiric Magic' perk. Nospheratu cooldown is reduced by 1 round and blood magic spells are 50% stronger. (+40% spellpower bonus)");
 		public static const AllRounderMentalTraining:PerkType = mk("All-Rounder Mental Training", "All-Rounder Mental Training",
 				"Limit of train caps for int/wis/lib stats is increased by 10.",
 				"You've chosen the 'All-Rounder Mental Training' perk. Limit of train caps for int/wis/lib stats is increased by 10.");
@@ -724,8 +724,8 @@ public class PerkLib
 				"Limit of train caps for stats is increased by 15.",
 				"You've chosen the 'All-Rounder Training ( Epic )' perk. Limit of train caps for stats is increased by 15.");
 		public static const UltimateMagic:PerkType = mk("Ultimate Magic", "Ultimate Magic",
-				"You may ignore all constraints from a dedicated path and may even learn its opposite as a prestige class.",
-				"You've chosen the 'Ultimate Magic' perk. You may ignore all constraints from a dedicated path and may even learn its opposite as a prestige class.");
+				"You may ignore all constraints from a dedicated path and may even learn its opposite as a prestige class. (+80% spellpower bonus)",
+				"You've chosen the 'Ultimate Magic' perk. You may ignore all constraints from a dedicated path and may even learn its opposite as a prestige class. (+80% spellpower bonus)");
 		public static const ChallengingShoutEx:PerkType = mk("Challenging shout (Ex)", "Challenging shout (Ex)",
 				"Allow to automaticaly use weakened Warrior Shout special at the combat round end if wrath is below 500.",
 				"You've chosen the 'Challenging shout (Ex)' perk. Allow to automaticaly use weakened Warrior Shout special at the combat round end if wrath is below 500.");
@@ -822,8 +822,8 @@ public class PerkLib
 				"You unlock full usage of your brain, increasing your psychic potential. (Adds current Intelligence score to Sensitivity)",
 				"You've chosen the 'Mental Attunement' perk. You unlock full usage of your brain, increasing your psychic potential. (Adds current Intelligence score to Sensitivity)");
 		public static const UltimateMagicEx:PerkType = mk("Ultimate Magic (Ex)", "Ultimate Magic (Ex)",
-				"You may ignore all constraints to your spell book usage.",
-				"You've chosen the 'Ultimate Magic (Ex)' perk. You may ignore all constraints to your spell book usage.");
+				"You may ignore all constraints to your spell book usage. (+105% spellpower bonus)",
+				"You've chosen the 'Ultimate Magic (Ex)' perk. You may ignore all constraints to your spell book usage. (+105% spellpower bonus)");
 		public static const VoltaicEdge:PerkType = mk("Voltaic Edge", "Voltaic Edge",
 				"Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.",
 				"You've chosen the 'Voltaic Edge' perk. Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.");
@@ -1054,11 +1054,11 @@ public class PerkLib
 				.withBuffs({'maxfatigue_perspe':+1});
 		public static const Archmage:PerkType = mk("Archmage", "Archmage",
 				"[if (player.inte>=100)" +
-						"Increases base spell strength by 30%, mana pool by 180 and lust bar by 45." +
+						"Increases base spell strength by 30%, mana pool by 180 and lust bar by 45. (+20% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Archmage' perk, increasing base spell strength by 30%, base mana pool by 180 and lust bar by 45.")
+				"You've chosen the 'Archmage' perk, increasing base spell strength by 30%, base mana pool by 180 and lust bar by 45. (+20% spellpower bonus)")
 				.withBuffs({'maxlust_base':+45});
 		public static const ArcaneLash:PerkType = mk("Arcane Lash", "Arcane Lash",
 				"Your whip act as a catalyst for your lust inducing spells as well as for magic weapon.",
@@ -1195,11 +1195,11 @@ public class PerkLib
 				"You've chosen the 'Brutal Blows' perk, which reduces enemy armor with each hit. (+5% melee physical attacks multiplier)");
 		public static const BrutalSpells:PerkType = mk("Brutal Spells", "Brutal Spells",
 				"[if(player.inte>=75)" +
-						"Reduces enemy magic resistance with each spell. (+5% base spell strength)" +
+						"Reduces enemy magic resistance with each spell. (+10% base spell strength)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Brutal Spells' perk, which reduces enemy magic resistance with each spell. (+5% base spell strength)");
+				"You've chosen the 'Brutal Spells' perk, which reduces enemy magic resistance with each spell. (+10% base spell strength)");
 		public static const Brute:PerkType = mk("Brute", "Brute",
 				"You have increased your striking strength. (+20% of max core Str as phantom Str & +5% melee physical attacks multiplier)",
 				"You've chosen the 'Brute' perk, increased your striking strength. (+20% of max core Str as phantom Str & +5% melee physical attacks multiplier)");
@@ -1221,11 +1221,11 @@ public class PerkLib
 				"You've chosen the 'Challenging shout' perk, gaining access to use Warrior Shout special. (gain 20% of max/overmax wrath)");
 		public static const Channeling:PerkType = mk("Channeling", "Channeling",
 				"[if (player.inte>=60)" +
-						"Increases base spell strength by 20% and base mana pool by 90." +
+						"Increases base spell strength by 20% and base mana pool by 90. (+10% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Channeling' perk, boosting the strength of your spellcasting and expanding your mana pool!");
+				"You've chosen the 'Channeling' perk, boosting the strength of your spellcasting and expanding your mana pool! (+10% spellpower bonus)");
 		public static const ChargedCore:PerkType = mk("Charged Core", "Charged Core",
 				"At the cost of using additional mana you can charge each temporary golem core allowing them to deal minor area of effect damages (it have small synergistic effect when more golems attacks at once).",
 				"You've chosen the 'Charged Core' perk, learning how to make golems' attacks be slightly stronger.");
@@ -1337,24 +1337,24 @@ public class PerkLib
 				"Grapple damage and tease damage increase by 50% for each consecutive round you are holding a grapple or straddle. Damage multiplier reset to 1 once grapple ends.",
 				"You've chosen the 'Control freak' perk. Grapple damage and tease damage increase by 50% for each consecutive round you are holding a grapple or straddle. Damage multiplier reset to 1 once grapple ends.");
 		public static const Convergence:PerkType = mk("Convergence", "Convergence",
-				"Grey magic area of effect spells strike two times against single targets. Against groups would deal 50-100% more dmg depending on size (100% for small groups).",
-				"You've chosen the 'Convergence' perk, gaining chance to attack single targets two times with grey AoE spells. Against groups would deal 50-100% more dmg depending on size (100% for small groups).");
+				"Grey magic area of effect spells strike two times against single targets. Against groups would deal 50-100% more dmg depending on size (100% for small groups). (+25% spellpower bonus)",
+				"You've chosen the 'Convergence' perk, gaining chance to attack single targets two times with grey AoE spells. Against groups would deal 50-100% more dmg depending on size (100% for small groups). (+25% spellpower bonus)");
 		public static const CorrosiveMeltdown:PerkType = mk("Corrosive Meltdown", "Corrosive Meltdown",
-				"Cumulative 40% damage increase for every subsequent acid spell. Each turn without cast acid spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.",
-				"You've chosen the 'Corrosive Meltdown' perk. Cumulative 40% damage increase for every subsequent acid spell. Each turn without cast acid spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.");
+				"Cumulative 40% damage increase for every subsequent acid spell. Each turn without cast acid spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)",
+				"You've chosen the 'Corrosive Meltdown' perk. Cumulative 40% damage increase for every subsequent acid spell. Each turn without cast acid spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)");
 		public static const CorrosiveMeltdownEx:PerkType = mk("Corrosive Meltdown (Ex)", "Corrosive Meltdown (Ex)",
-				"Increases cumulative damage by 20%. Penalty for a turn without casting an acid spell decreased by 10%. Maximum 15 stacks.",
-				"You've chosen the 'Corrosive Meltdown (Ex)' perk. Increases cumulative damage by 20%. Penalty for a turn without casting an acid spell decreased by 10%. Maximum 15 stacks.");
+				"Increases cumulative damage by 20%. Penalty for a turn without casting an acid spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)",
+				"You've chosen the 'Corrosive Meltdown (Ex)' perk. Increases cumulative damage by 20%. Penalty for a turn without casting an acid spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)");
 		public static const CorrosiveMeltdownSu:PerkType = mk("Corrosive Meltdown (Su)", "Corrosive Meltdown (Su)",
-				"Prevent decay of cumulative damage increase bonus when channeling acid based attack. Penalty for turn without casted acid spell decreased by another 10%. Maximum 75 stacks.",
-				"You've chosen the 'Corrosive Meltdown (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling acid based attack. Penalty for turn without casted acid spell decreased by another 10%. Maximum 75 stacks.");
+				"Prevent decay of cumulative damage increase bonus when channeling acid based attack. Penalty for turn without casted acid spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)",
+				"You've chosen the 'Corrosive Meltdown (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling acid based attack. Penalty for turn without casted acid spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)");
 		
 		public static const CorruptedLibido:PerkType = mk("Corrupted Libido", "Corrupted Libido",
 				"Reduces lust gain by 10%.",
 				"You've chosen the 'Corrupted Libido' perk.  As a result of your body's corruption, you've become a bit harder to turn on. (Lust gain reduced by 10%!)");
 		public static const CorruptMagic:PerkType = mk("Corrupt magic", "Corrupt magic",
-				"Your spells gain aligned damage, dealing more damage against the pure. Spells that drain health heal for twice as much while Dark Ritual is active.",
-				"You've chosen the 'Corrupt magic' perk. Your spells gain aligned damage, dealing more damage against the pure. Spells that drain health heal for twice as much while Dark Ritual is active.");
+				"Your spells gain aligned damage, dealing more damage against the pure. Spells that drain health heal for twice as much while Dark Ritual is active. (+65% spellpower bonus)",
+				"You've chosen the 'Corrupt magic' perk. Your spells gain aligned damage, dealing more damage against the pure. Spells that drain health heal for twice as much while Dark Ritual is active. (+65% spellpower bonus)");
 		public static const Creationism:PerkType = mk("Creationism", "Creationism",
 				"You have surpassed the pinnacle of alchemy, placing yourself on the level of gods. By creating the perfect transformative, you have guaranteed its potent effects +2% alchemy/mutagen boost.",
 				"You've chosen the 'Creationism' perk, number of possible effects of transformatives +2% alchemy/mutagen boost.");
@@ -1407,8 +1407,8 @@ public class PerkLib
 				"You've chosen the 'Dancer's Vitality VI' perk, granting +1.5 extra maximum fatigue for each point of speed.")
 				.withBuffs({'maxfatigue_perspe':+1.5});
 		public static const DarkRitual:PerkType = mk("Dark Ritual", "Dark Ritual",
-				"Allows you to use the Dark Ritual option which can be Toggled on or off. While Dark Ritual is active spells are 300% stronger but consume 10% health on cast as they are paid in blood.",
-				"You've chosen the 'Dark Ritual' perk, Allowing you to sacrifice health to empower your spells.");
+				"Allows you to use the Dark Ritual option which can be Toggled on or off. While Dark Ritual is active spells are 300% stronger but consume 10% health on cast as they are paid in blood. (+60% spellpower bonus)",
+				"You've chosen the 'Dark Ritual' perk, Allowing you to sacrifice health to empower your spells. (+60% spellpower bonus)");
 		public static const DazzlingDisplay:PerkType = mk("Dazzling display", "Dazzling display",
 				"Teasing can stun enemy for one round or increase lust damage for grapple-type teases.",
 				"You've chosen the 'Dazzling display' perk, allowing you to slightly increase tease damage or even stun your enemy for a short moment.");
@@ -1432,8 +1432,8 @@ public class PerkLib
 				"Defend move now reduce incoming damage a little more and allow for very small improvement of fatigue/mana/soulforce recovery.",
 				"You've chosen the 'Defense Stance' perk, training to master your defense pose.");
 		public static const DefensiveStaffChanneling:PerkType = mk("Defensive Staff Channeling", "Defensive Staff Channeling",
-				"When you would cast defensive spell holding staff or wand its effects would be increased a bit (higher defensive effect or longer duration).",
-				"You've chosen the 'Defensive Staff Channeling' perk. When you would cast defensive spell holding staff or wand its effects would be increased a bit (higher defensive effect or longer duration).");
+				"When you would cast defensive spell holding staff or wand its effects would be increased a bit (higher defensive effect or longer duration). (+20% spellpower bonus)",
+				"You've chosen the 'Defensive Staff Channeling' perk. When you would cast defensive spell holding staff or wand its effects would be increased a bit (higher defensive effect or longer duration). (+20% spellpower bonus)");
 		public static const DemonicDesireI:PerkType = mk("Demonic Desire I", "Demonic Desire I",
 				"Raises max lust by 5% of base value.",
 				"You've chosen the 'Demonic Desire I' perk, giving you an additional 5% of base value to max lust!")
@@ -1468,11 +1468,11 @@ public class PerkLib
 				"You can't lose by HP until your health drops into the negatives any more than 2% of max HP + 600(scalable). When below 0 HP would lose 1% of max HP per turn.",
 				"You've chosen the 'Diehard' perk, allowing you to continue fighting even when below 0 HP.");
 		public static const DivineArmament:PerkType = mk("Divine armament", "Divine armament",
-				"Charge melee weapon/ranged weapon/armor spell power is doubled and works at full power even when using heavy armor. If wearing a robe, PC gains a bonus to armor equal to 1/3 of its level. Staves wielded without a shield can now be used to block (10%) and gain a tripled base damage value on physical attacks.",
-				"You've chosen the 'Divine armament' perk. Charge melee weapon/ranged weapon/armor spell power is doubled and works at full power even when using heavy armor. If wearing a robe, PC gains a bonus to armor equal to 1/3 of its level. Staves wielded without a shield can now be used to block (10%) and gain a tripled base damage value on physical attacks.");
+				"Charge melee weapon/ranged weapon/armor spell power is doubled and works at full power even when using heavy armor. If wearing a robe, PC gains a bonus to armor equal to 1/3 of its level. Staves wielded without a shield can now be used to block (10%) and gain a tripled base damage value on physical attacks. (+60% spellpower bonus)",
+				"You've chosen the 'Divine armament' perk. Charge melee weapon/ranged weapon/armor spell power is doubled and works at full power even when using heavy armor. If wearing a robe, PC gains a bonus to armor equal to 1/3 of its level. Staves wielded without a shield can now be used to block (10%) and gain a tripled base damage value on physical attacks. (+60% spellpower bonus)");
 		public static const DivineKnowledge:PerkType = mk("Divine Knowledge", "Divine Knowledge",
-				"Allows you to cast divine magic spells as long as corruption is 20-, locks access to black spells and deal 20% more dmg when using white or divine magic to attack corrupted enemies.",
-				"You've chosen the 'Divine Knowledge' perk. Allows you to cast divine magic spells as long as corruption is 20-, locks access to black spells and deal 20% more dmg when using white or divine magic to attack corrupted enemies.");
+				"Allows you to cast divine magic spells as long as corruption is 20-, locks access to black spells and deal 20% more dmg when using white or divine magic to attack corrupted enemies. (+55% spellpower bonus)",
+				"You've chosen the 'Divine Knowledge' perk. Allows you to cast divine magic spells as long as corruption is 20-, locks access to black spells and deal 20% more dmg when using white or divine magic to attack corrupted enemies. (+55% spellpower bonus)");
 		public static const Doctor:PerkType = mk("Doctor", "Doctor",
 				"You got promoted to a doctor, allowing you to cure a wider variety of ailments. This knowledge allows you to heal yourself better, increasing health regen.",
 				"You've chosen the 'Doctor' perk, increasing HP gains by 20%.");
@@ -1498,14 +1498,14 @@ public class PerkLib
 				"Increase traditional range weapons (like bows) base attack by another 50%. (+15% range physical attacks multiplier)",
 				"You've chosen the 'Eagle eye' perk, increasing traditional range weapons base attack. (+15% range physical attacks multiplier)");
 		public static const EclipsingShadow:PerkType = mk("Eclipsing Shadow", "Eclipsing Shadow",
-				"Cumulative 40% damage increase for every subsequent darkness spell. Each turn without cast darkness spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.",
-				"You've chosen the 'Eclipsing Shadow' perk. Cumulative 40% damage increase for every subsequent darkness spell. Each turn without cast darkness spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.");
+				"Cumulative 40% damage increase for every subsequent darkness spell. Each turn without cast darkness spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)",
+				"You've chosen the 'Eclipsing Shadow' perk. Cumulative 40% damage increase for every subsequent darkness spell. Each turn without cast darkness spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)");
 		public static const EclipsingShadowEx:PerkType = mk("Eclipsing Shadow (Ex)", "Eclipsing Shadow (Ex)",
-				"Increases cumulative damage by 20%. Penalty for turn without casted darkness spell decreased by 10%. Maximum 15 stacks.",
-				"You've chosen the 'Eclipsing Shadow (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted darkness spell decreased by 10%. Maximum 15 stacks.");
+				"Increases cumulative damage by 20%. Penalty for turn without casted darkness spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)",
+				"You've chosen the 'Eclipsing Shadow (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted darkness spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)");
 		public static const EclipsingShadowSu:PerkType = mk("Eclipsing Shadow (Su)", "Eclipsing Shadow (Su)",
-				"Prevent decay of cumulative damage increase bonus when channeling darkness based attack. Penalty for turn without casted darkness spell decreased by another 10%. Maximum 75 stacks.",
-				"You've chosen the 'Eclipsing Shadow (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling darkness based attack. Penalty for turn without casted darkness spell decreased by another 10%. Maximum 75 stacks.");
+				"Prevent decay of cumulative damage increase bonus when channeling darkness based attack. Penalty for turn without casted darkness spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)",
+				"You've chosen the 'Eclipsing Shadow (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling darkness based attack. Penalty for turn without casted darkness spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)");
 		public static const EclipticInfusion:PerkType = mk("Ecliptic Infusion", "Ecliptic Infusion",
 				"Your Infuse ability allows you to add and combine a corrupted or a purity normal elemental with a water, fire, earth or wind epic elemental. Doing so adds a purity or corruption scaling to your abilities.",
 				"You've chosen the 'Ecliptic Infusion' perk. Your Infuse ability allows you to add and combine a corrupted or a purity normal elemental with a water, fire, earth or wind epic elemental. Doing so adds a purity or corruption scaling to your abilities.");
@@ -1516,8 +1516,8 @@ public class PerkLib
 				"When in an infused state, passively gain Dao Comprehension for the associated element. Increases Dao Comprehension speed when in an infused state for the associated element.",
 				"You've chosen the 'Elemental Bloodline' perk. Enables passive Dao Comprehension and increased Comprehension speed when in an infused state");
 		public static const ElementalBolt:PerkType = mk("Elemental Bolt", "Elemental Bolt",
-				"Enable the use of Elemental bolt. (would prevent decay of buff from building up elemental damage)",
-				"You've chosen the 'Elemental Bolt' perk. Enable the use of Elemental bolt. (would prevent decay of buff from building up elemental damage)");
+				"Enable the use of Elemental bolt. (would prevent decay of buff from building up elemental damage) (+25% spellpower bonus)",
+				"You've chosen the 'Elemental Bolt' perk. Enable the use of Elemental bolt. (would prevent decay of buff from building up elemental damage) (+25% spellpower bonus)");
 		public static const ElementalBondFlesh:PerkType = mk("Elemental Bond: Flesh", "Elemental Bond: Flesh",
 				"You gains bonus to max HP depending on amount of summoned elementals and their ranks.",
 				"You've chosen the 'Elemental Bond: Flesh' perk, allowing you to form a bond with summoned elementals to share received damage.");
@@ -1580,8 +1580,8 @@ public class PerkLib
 		public static const ElementalContractRank36:PerkType = mkECR(36);
 		public static const ElementalContractRank37:PerkType = mkECR(37);
 		public static const ElementalContractRank38:PerkType = mkECR(38);
-		public static const ElementalContractRank39:PerkType = mkECR(39);
-		public static const ElementalContractRank40:PerkType = mkECR(40);
+		//public static const ElementalContractRank39:PerkType = mkECR(39);
+		//public static const ElementalContractRank40:PerkType = mkECR(40);
 		public static const ElementalTouch:PerkType = mk("Elemental touch", "Elemental touch",
 				"Unarmed strikes and elemental skills inflict a status on your victim when infused: respectively Frostbite, Burn, Acid, and Bleed.",
 				"You've chosen the 'Elemental touch' perk. Unarmed strikes and elemental skills inflict a status on your victim when infused: respectively Frostbite, Burn, Acid, and Bleed.");
@@ -1782,11 +1782,11 @@ public class PerkLib
 				"Gain two additional attacks when fighting with fists or fist weapons (not using feral stance). All physical soulskills (used with fists or fist weapons) now also strike thrice!",
 				"You've chosen the 'Flurry of Blows' perk, gaining two additional attacks when fighting with fists or fist weapons (not using feral stance). All physical soulskills (used with fists or fist weapons) now also strike thrice.");
 		public static const FocusedMind:PerkType = mk("Focused Mind", "Focused Mind",
-				"Black Magic is less likely to backfire and White Magic threshold is increased.",
-				"You've chosen the 'Focused Mind' perk. Black Magic is less likely to backfire and White Magic threshold is increased.");
+				"Black Magic is less likely to backfire and White Magic threshold is increased. (+15% spellpower bonus)",
+				"You've chosen the 'Focused Mind' perk. Black Magic is less likely to backfire and White Magic threshold is increased. (+15% spellpower bonus)");
 		public static const FortressOfIntellect:PerkType = mk("Fortress of Intellect", "Fortress of Intellect",
-				"Might increases intelligence instead of strength (toggleable).",
-				"You've chosen the 'Fortress of Intellect' perk. You can now change Might to boost intelligence instead of strength.");
+				"Might increases intelligence instead of strength (toggleable). (+20% spellpower bonus)",
+				"You've chosen the 'Fortress of Intellect' perk. You can now change Might to boost intelligence instead of strength. (+20% spellpower bonus)");
 		public static const FourthRing:PerkType = mk("Fourth Ring", "Fourth Ring",
 				"Your expert understanding of magic pools allows you to equip fourth ring.",
 				"You've chosen the 'Fourth Ring' perk, reaching expert understanding of magic pools to allow you equip fourth ring.");
@@ -1819,14 +1819,14 @@ public class PerkLib
 				"You enhanced your Transference special to transfer 25% of your current arousal to your opponent at 25% lower fatigue cost.",
 				"You've chosen the 'Gift of Lust' perk, enhancing special Transference to transfer 10% more lust to enemy.");
 		public static const GlacialStorm:PerkType = mk("Glacial Storm", "Glacial Storm",
-				"Cumulative 40% damage increase for every subsequent ice spell. Each turn without cast ice spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.",
-				"You've chosen the 'Glacial Storm' perk. Cumulative 40% damage increase for every subsequent ice spell. Each turn without cast ice spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.");
+				"Cumulative 40% damage increase for every subsequent ice spell. Each turn without cast ice spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)",
+				"You've chosen the 'Glacial Storm' perk. Cumulative 40% damage increase for every subsequent ice spell. Each turn without cast ice spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)");
 		public static const GlacialStormEx:PerkType = mk("Glacial Storm (Ex)", "Glacial Storm (Ex)",
-				"Increases cumulative damage by 20%. Penalty for turn without casted ice spell decreased by 10%. Maximum 15 stacks.",
-				"You've chosen the 'Glacial Storm (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted ice spell decreased by 10%. Maximum 15 stacks.");
+				"Increases cumulative damage by 20%. Penalty for turn without casted ice spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)",
+				"You've chosen the 'Glacial Storm (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted ice spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)");
 		public static const GlacialStormSu:PerkType = mk("Glacial Storm (Su)", "Glacial Storm (Su)",
-				"Prevent decay of cumulative damage increase bonus when channeling ice based attack. Penalty for turn without casted ice spell decreased by another 10%. Maximum 75 stacks.",
-				"You've chosen the 'Glacial Storm (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling ice based attack. Penalty for turn without casted ice spell decreased by another 10%. Maximum 75 stacks.");
+				"Prevent decay of cumulative damage increase bonus when channeling ice based attack. Penalty for turn without casted ice spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)",
+				"You've chosen the 'Glacial Storm (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling ice based attack. Penalty for turn without casted ice spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)");
 		public static const GodOfSteel:PerkType = mk("God of Steel", "God of Steel",
 				"You have surpassed your mortal self to become the embodiment of melee damage, further increasing it. (+10% melee phys dmg)",
 				"You've chosen the 'God of Steel' perk, gaining +10% melee phys dmg.");
@@ -1883,54 +1883,54 @@ public class PerkLib
 				"You've chosen the 'Grabbing Style' perk, which adds a chance per unarmed strike hit, based on strength, to chain the attack with a second strike, grabbing and slamming your foe around. Higher strength lets you grab larger foes. This only works when fighting unarmed with no shield equipped.");
 		public static const GrandArchmage:PerkType = mk("Grand Archmage", "Grand Archmage",
 				"[if (player.inte>=125)" +
-						"Increases base spell strength by 40%, mana pool by 225 and lust bar by 60." +
+						"Increases base spell strength by 40%, mana pool by 225 and lust bar by 60. (+25% spellpower bonus" +
 						"|" +
-						"<b>You are too dumb to gain benefit from this perk.</b>" +
+						"<b>You are too dumb to gain benefit from this perk.)</b>" +
 						"]",
-				"You've chosen the 'Grand Archmage' perk, increasing base spell strength by 40%, mana pool by 225 and lust bar by 60.")
+				"You've chosen the 'Grand Archmage' perk, increasing base spell strength by 40%, mana pool by 225 and lust bar by 60. (+25% spellpower bonus)")
 				.withBuffs({'maxlust_base':+60});
 		public static const GrandArchmage2ndCircle:PerkType = mk("Grand Archmage (2nd Circle)", "Grand Archmage (2nd Circle)",
 				"[if (player.inte>=150)" +
-						"Increases base spell strength by 50%, mana pool by 270 and lust bar by 75." +
+						"Increases base spell strength by 50%, mana pool by 270 and lust bar by 75. (+30% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Grand Archmage (2nd Circle)' perk, increasing base spell strength by 50%, mana pool by 270 and lust bar by 75.")
+				"You've chosen the 'Grand Archmage (2nd Circle)' perk, increasing base spell strength by 50%, mana pool by 270 and lust bar by 75. (+30% spellpower bonus)")
 				.withBuffs({'maxlust_base':+75});
 		public static const GrandArchmage3rdCircle:PerkType = mk("Grand Archmage (3rd Circle)", "Grand Archmage (3rd Circle)",
 				"[if (player.inte>=175)" +
-						"Increases base spell strength by 60%, mana pool by 315 and lust bar by 90." +
+						"Increases base spell strength by 60%, mana pool by 315 and lust bar by 90. (+35% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Grand Archmage (3rd Circle)' perk, increasing base spell strength by 60%, mana pool by 315 and lust bar by 390.")
+				"You've chosen the 'Grand Archmage (3rd Circle)' perk, increasing base spell strength by 60%, mana pool by 315 and lust bar by 390. (+35% spellpower bonus)")
 				.withBuffs({'maxlust_base':+90});
 		public static const GrandBlademaster:PerkType = mk("Grand Blademaster", "Grand Blademaster",
 				"Gain +15% to critical strike chance when wielding a bladed weapon (sword, dueling sword, axe, dagger, scythe) and not using a shield.",
 				"You've chosen the 'Grand Blademaster' perk.  Your chance of a critical hit is increased by 15% as long as you're wielding a weapon with a blade (sword, dueling sword, axe, dagger, scythe) and not using a shield.");
 		public static const GrandGreyArchmage:PerkType = mk("Grand Grey Archmage", "Grand Grey Archmage",
 				"[if (player.inte>=225)" +
-						"Increases grey spell strength by 40%, mana pool by 600, lust bar by 160, regain mana 100% faster. Grey spells can be cast without limitation due to current lust." +
+						"Increases grey spell strength by 40%, mana pool by 600, lust bar by 160, regain mana 100% faster. Grey spells can be cast without limitation due to current lust. (+45% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Grand Grey Archmage' perk. Your grey spell power, mana pool, lust bar and mana recovery are greatly increased. Grey spells can be cast without limitation due to current lust.")
+				"You've chosen the 'Grand Grey Archmage' perk. Your grey spell power, mana pool, lust bar and mana recovery are greatly increased. Grey spells can be cast without limitation due to current lust. (+45% spellpower bonus)")
 				.withBuffs({'maxlust_base':+160});
 		public static const GrandGreyArchmage2ndCircle:PerkType = mk("Grand Grey Archmage (2nd Circle)", "Grand Grey Archmage (2nd Circle)",
 				"[if (player.inte>=275)" +
-						"Increases grey spell strength by 50%, mana pool by 900, lust bar by 320, regain mana 150% faster. Grey spells costs lowered by 20%." +
+						"Increases grey spell strength by 50%, mana pool by 900, lust bar by 320, regain mana 150% faster. Grey spells costs lowered by 20%. (+55% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Grand Grey Archmage (2nd Circle)' perk. Your grey spell power, mana pool, lust bar and mana recovery are greatly increased. Lowering a bit grey spells costs.")
+				"You've chosen the 'Grand Grey Archmage (2nd Circle)' perk. Your grey spell power, mana pool, lust bar and mana recovery are greatly increased. Lowering a bit grey spells costs. (+55% spellpower bonus)")
 				.withBuffs({'maxlust_base':+320});
 		public static const GrandMage:PerkType = mk("Grand Mage", "Grand Mage",
 				"[if (player.inte>=75)" +
-						"Increases base spell strength by 30%, base mana pool by 135 and lust bar by 30." +
+						"Increases base spell strength by 30%, base mana pool by 135 and lust bar by 30. (+15% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Grand Mage' perk, increasing base spell strength by 30%, mana pool by 135 and lust bar by 30.")
+				"You've chosen the 'Grand Mage' perk, increasing base spell strength by 30%, mana pool by 135 and lust bar by 30. (+15% spellpower bonus)")
 				.withBuffs({'maxlust_base':+30});
 		public static const GrandMasterAllRounderEducation:PerkType = mk("Grand Master All-Rounder Education", "All-Rounder Education ( Grand Master )",
 				"Limit of advanced job you can learn is increased by 3.",
@@ -1993,31 +1993,31 @@ public class PerkLib
 				"You've chosen the 'Green magic' perk. Your Elven spell effects are twice as strong and last twice as long.");
 		public static const GreyArchmage:PerkType = mk("Grey Archmage", "Grey Archmage",
 				"[if (player.inte>=175)" +
-						"Increases grey spell strength by 30%, mana pool by 450, lust bar by 80 and regain mana 75% faster." +
+						"Increases grey spell strength by 30%, mana pool by 450, lust bar by 80 and regain mana 75% faster. (+35% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Grey Archmage' perk, increasing grey spell power strength by 30%, mana pool by 600, lust bar by 150 and boosting mana recovery by a large margin.")
+				"You've chosen the 'Grey Archmage' perk, increasing grey spell power strength by 30%, mana pool by 600, lust bar by 150 and boosting mana recovery by a large margin. (+35% spellpower bonus)")
 				.withBuffs({'maxlust_base':+80});
 		public static const GreyMage:PerkType = mk("Grey Mage", "Grey Mage",
 				"[if (player.inte>=125)" +
-						"Increases grey spell strength by 20%, mana pool by 300, lust bar by 40, regain it 50% faster, threshold for Black Magic is 30 lust and for White 30 lust below current max." +
+						"Increases grey spell strength by 20%, mana pool by 300, lust bar by 40, regain it 50% faster, threshold for Black Magic is 30 lust and for White 30 lust below current max. (+20% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Grey Mage' perk. Your grey spell power, mana pool, lust bar and mana recovery are greatly increased, threshold for White Magic raised and for Black lowered.")
+				"You've chosen the 'Grey Mage' perk. Your grey spell power, mana pool, lust bar and mana recovery are greatly increased, threshold for White Magic raised and for Black lowered. (+20% spellpower bonus)")
 				.withBuffs({'maxlust_base':+40});
 		public static const GreyMageApprentice:PerkType = mk("Grey Mage Apprentice", "Grey Mage Apprentice",
 				"[if (player.inte>=75)" +
-						"Increases grey spell strength by 10%, mana pool by 150, lust bar by 20, regain it 25% faster." +
+						"Increases grey spell strength by 10%, mana pool by 150, lust bar by 20, regain it 25% faster. (+10% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Grey Mage Apprentice' perk. Your grey spell power, mana pool, lust bar and mana recovery are increased.")
+				"You've chosen the 'Grey Mage Apprentice' perk. Your grey spell power, mana pool, lust bar and mana recovery are increased. (+10% spellpower bonus)")
 				.withBuffs({'maxlust_base':+20});
 		public static const GreyMagic:PerkType = mk("Grey Magic", "Grey Magic",
-				"Access to learn and cast grey magic spells. (+30 to max lust)",
-				"You've chosen the 'Grey Magic' perk, gaining access to grey spells. (+30 to max lust)")
+				"Access to learn and cast grey magic spells. (+30 to max lust / +5% spellpower bonus)",
+				"You've chosen the 'Grey Magic' perk, gaining access to grey spells. (+30 to max lust / +5% spellpower bonus)")
 				.withBuffs({'maxlust_base':+30});
 		public static const HeavyArmorProficiency:PerkType = mk("Heavy Armor Proficiency", "Heavy Armor Proficiency",
 				"Wearing Heavy Armor's grants 10% damage reduction.",
@@ -2163,8 +2163,8 @@ public class PerkLib
 				"Allows you to deal double damage toward boss or giant-sized enemies.",
 				"You've chosen the 'Heroism' perk. Due to your heroic stance, you can now deal more damage toward boss or giant type enemies.");
 		public static const HexKnowledge:PerkType = mk("Hex Knowledge", "Hex Knowledge",
-				"Allows you to cast hex magic spells as long as corruption is 80+, locks access to white spells and deals 20% more damage when using black or hex magic to attack pure enemies.",
-				"You've chosen the 'Hex Knowledge' perk. Allows you to cast hex magic spells as long as corruption is 80+, locks access to white spells and deals 20% more damage when using black or hex magic to attack pure enemies.");
+				"Allows you to cast hex magic spells as long as corruption is 80+, locks access to white spells and deals 20% more damage when using black or hex magic to attack pure enemies. (+55% spellpower bonus)",
+				"You've chosen the 'Hex Knowledge' perk. Allows you to cast hex magic spells as long as corruption is 80+, locks access to white spells and deals 20% more damage when using black or hex magic to attack pure enemies. (+55% spellpower bonus)");
 		public static const HiddenDualMomentum:PerkType = mk("Hidden Dual Momentum", "Hidden Dual Momentum",
 				"You've trained in using your speed to enhance the power of your dual large weapons swings.",
 				"You've chosen the 'Hidden Dual Momentum' perk, allowing you to use your speed to enhance the power of your attacks with dual large weapons.");
@@ -2175,23 +2175,23 @@ public class PerkLib
 				"Increase venom/web recharge speed at cost of faster getting hungry. If reached max venom/web cap it will no longer cause faster hunger bar decay. (will have no effect if max venom/web is at 0)",
 				"You've chosen the 'Higly Venomous Diet' perk. Increase venom/web recharge speed at cost of faster getting hungry. If reached max venom/web cap it will no longer cause faster hunger bar decay. (will have no effect if max venom/web is at 0)");
 		public static const HighVoltage:PerkType = mk("High Voltage", "High Voltage",
-				"Cumulative 40% damage increase for every subsequent lightning spell. Each turn without cast lightning spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.",
-				"You've chosen the 'High Voltage' perk. Cumulative 40% damage increase for every subsequent lightning spell. Each turn without cast lightning spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.");
+				"Cumulative 40% damage increase for every subsequent lightning spell. Each turn without cast lightning spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)",
+				"You've chosen the 'High Voltage' perk. Cumulative 40% damage increase for every subsequent lightning spell. Each turn without cast lightning spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)");
 		public static const HighVoltageEx:PerkType = mk("High Voltage (Ex)", "High Voltage (Ex)",
-				"Increases cumulative damage by 20%. Penalty for turn without casted lightning spell decreased by 10%. Maximum 15 stacks.",
-				"You've chosen the 'High Voltage (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted lightning spell decreased by 10%. Maximum 15 stacks.");
+				"Increases cumulative damage by 20%. Penalty for turn without casted lightning spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)",
+				"You've chosen the 'High Voltage (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted lightning spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)");
 		public static const HighVoltageSu:PerkType = mk("High Voltage (Su)", "High Voltage (Su)",
-				"Prevent decay of cumulative damage increase bonus when channeling lightning based attack. Penalty for turn without casted lightning spell decreased by another 10%. Maximum 75 stacks.",
-				"You've chosen the 'High Voltage (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling lightning based attack. Penalty for turn without casted lightning spell decreased by another 10%. Maximum 75 stacks.");
+				"Prevent decay of cumulative damage increase bonus when channeling lightning based attack. Penalty for turn without casted lightning spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)",
+				"You've chosen the 'High Voltage (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling lightning based attack. Penalty for turn without casted lightning spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)");
 		public static const HighTide:PerkType = mk("High Tide", "High Tide",
-				"Cumulative 40% damage increase for every subsequent water spell. Each turn without cast water spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.",
-				"You've chosen the 'High Tide' perk. Cumulative 40% damage increase for every subsequent water spell. Each turn without cast water spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.");
+				"Cumulative 40% damage increase for every subsequent water spell. Each turn without cast water spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)",
+				"You've chosen the 'High Tide' perk. Cumulative 40% damage increase for every subsequent water spell. Each turn without cast water spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)");
 		public static const HighTideEx:PerkType = mk("High Tide (Ex)", "High Tide (Ex)",
-				"Increases cumulative damage by 20%. Penalty for turn without casted water spell decreased by 10%. Maximum 15 stacks.",
-				"You've chosen the 'High Tide (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted water spell decreased by 10%. Maximum 15 stacks.");
+				"Increases cumulative damage by 20%. Penalty for turn without casted water spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)",
+				"You've chosen the 'High Tide (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted water spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)");
 		public static const HighTideSu:PerkType = mk("High Tide (Su)", "High Tide (Su)",
-				"Prevent decay of cumulative damage increase bonus when channeling water based attack. Penalty for turn without casted water spell decreased by another 10%. Maximum 75 stacks.",
-				"You've chosen the 'High Tide (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling water based attack. Penalty for turn without casted water spell decreased by another 10%. Maximum 75 stacks.");
+				"Prevent decay of cumulative damage increase bonus when channeling water based attack. Penalty for turn without casted water spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)",
+				"You've chosen the 'High Tide (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling water based attack. Penalty for turn without casted water spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)");
 		public static const Hoarder:PerkType = mk("Hoarder", "Hoarder",
 				"That's what you are, a hoarder. I bet you don't even spend the money. Sleep well at night knowing you're ruining the economy... while you take more money after each victory. (15% more gems from victories)",
 				"You've chosen the 'Hoarder' perk, increasing gem gains from victories by 15%.");
@@ -2206,14 +2206,14 @@ public class PerkLib
 				"You're Hot N Cold and can't cross 75% minimum lust threshold.",
 				"You've chosen the 'Hot N Cold' perk, causing your minimum lust never cross 75% threshold.");
 		public static const HowlingGale:PerkType = mk("Howling Gale", "Howling Gale",
-				"Cumulative 40% damage increase for every subsequent wind spell. Each turn without cast wind spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.",
-				"You've chosen the 'Howling Gale' perk. Cumulative 40% damage increase for every subsequent wind spell. Each turn without cast wind spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.");
+				"Cumulative 40% damage increase for every subsequent wind spell. Each turn without cast wind spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)",
+				"You've chosen the 'Howling Gale' perk. Cumulative 40% damage increase for every subsequent wind spell. Each turn without cast wind spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)");
 		public static const HowlingGaleEx:PerkType = mk("Howling Gale (Ex)", "Howling Gale (Ex)",
-				"Increases cumulative damage by 20%. Penalty for turn without casted wind spell decreased by 10%. Maximum 15 stacks.",
-				"You've chosen the 'Howling Gale (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted wind spell decreased by 10%. Maximum 15 stacks.");
+				"Increases cumulative damage by 20%. Penalty for turn without casted wind spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)",
+				"You've chosen the 'Howling Gale (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted wind spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)");
 		public static const HowlingGaleSu:PerkType = mk("Howling Gale (Su)", "Howling Gale (Su)",
-				"Prevent decay of cumulative damage increase bonus when channeling wind based attack. Penalty for turn without casted wind spell decreased by another 10%. Maximum 75 stacks.",
-				"You've chosen the 'Howling Gale (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling wind based attack. Penalty for turn without casted wind spell decreased by another 10%. Maximum 75 stacks.");
+				"Prevent decay of cumulative damage increase bonus when channeling wind based attack. Penalty for turn without casted wind spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)",
+				"You've chosen the 'Howling Gale (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling wind based attack. Penalty for turn without casted wind spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)");
 		public static const ImmovableObject:PerkType = mk("Immovable Object", "Immovable Object",
 				"[if(player.tou>=75)" +
 						"Grants 10% physical damage reduction.</b>" +
@@ -2582,18 +2582,18 @@ public class PerkLib
 				"You've chosen the 'Lying Down' perk, gaining +20% fatigue recovery rate.");
 		public static const Mage:PerkType = mk("Mage", "Mage",
 				"[if (player.inte>=50)" +
-						"Increases base spell strength by 10%, mana pool by 90 and lust bar by 15." +
+						"Increases base spell strength by 10%, mana pool by 90 and lust bar by 15. (+10% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Mage' perk.  You are able to focus your magical abilities even more keenly, boosting your base spell effects by 10%, mana pool by 90 and lust bar by 15.")
+				"You've chosen the 'Mage' perk.  You are able to focus your magical abilities even more keenly, boosting your base spell effects by 10%, mana pool by 90 and lust bar by 15. (+10% spellpower bonus)")
 				.withBuffs({'maxlust_base':+15});
 		public static const MagesWrath:PerkType = mk("Mage's Wrath", "Mage's Wrath",
-				"Magic Bolt (and Elemental Bolt if PC knows it) will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5% and spells crit chance by 10%.",
-				"You've chosen the 'Mage's Wrath' perk. Magic Bolt (and Elemental Bolt if PC knows it) will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5% and spells crit chance by 10%.");
+				"Magic Bolt (and Elemental Bolt if PC knows it) will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5% and spells crit chance by 10%. (+5% spellpower bonus)",
+				"You've chosen the 'Mage's Wrath' perk. Magic Bolt (and Elemental Bolt if PC knows it) will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5% and spells crit chance by 10%. (+5% spellpower bonus)");
 		public static const MagesWrathEx:PerkType = mk("Mage's Wrath (Ex)", "Mage's Wrath (Ex)",
-				"Tier 1 elemental spells will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5%(10%) and spells crit chance by 10%(20%).",
-				"You've chosen the 'Mage's Wrath (Ex)' perk. Tier 1 elemental spells will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5%(10%) and spells crit chance by 10%(20%).");
+				"Tier 1 elemental spells will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5%(10%) and spells crit chance by 10%(20%). (+10% spellpower bonus)",
+				"You've chosen the 'Mage's Wrath (Ex)' perk. Tier 1 elemental spells will be castable in (Ex) version that increase their power 2x while additionally using 100 wrath. Safe limit for spellcasting increased by 5%(10%) and spells crit chance by 10%(20%). (+10% spellpower bonus)");
 		public static const MagicMetabolism:PerkType = mk("Magic Metabolism", "Magic Metabolism",
 				"When your hunger level go down below 50, you start losing mana (5:1 ratio for mana:hunger decay) instead of hunger when it should happen. If your mana is empty, hunger works as usual.",
 				"You've chosen the 'Magic Metabolism' perk. If PC have enough mana can use it as way to keep hunger around 50 pts.");
@@ -2846,8 +2846,8 @@ public class PerkLib
 				"Raises minimum lust by up to 15%.",
 				"You've chosen the 'Nymphomania' perk.  Due to the incredible amount of corruption you've been exposed to, you've begun to live in a state of minor constant arousal.  Your minimum lust will be increased by 15%.").withBuffs({'minlustx':0.15});
 		public static const OffensiveStaffChanneling:PerkType = mk("Offensive Staff Channeling", "Offensive Staff Channeling",
-				"Allows you to cast split offensive spells without increased mana cost when using staff (3 parts at 70% power) or partial staff / wand (2 parts at 80% power) as focus. (If you already can multicast spells, the perk will make your ability slightly stronger when using a staff.)",
-				"You've chosen the 'Offensive Staff Channeling' perk. Allows you to cast split offensive spells without increased mana cost when using staff (3 parts at 70% power) or partial staff / wand (2 parts at 80% power) as focus. (Effect will not activate if you already have ways to multicast spells at reduced power)");
+				"Allows you to cast split offensive spells without increased mana cost when using staff (3 parts at 70% power) or partial staff / wand (2 parts at 80% power) as focus. (If you already can multicast spells, the perk will make your ability slightly stronger when using a staff.) (+20% spellpower bonus)",
+				"You've chosen the 'Offensive Staff Channeling' perk. Allows you to cast split offensive spells without increased mana cost when using staff (3 parts at 70% power) or partial staff / wand (2 parts at 80% power) as focus. (Effect will not activate if you already have ways to multicast spells at reduced power) (+20% spellpower bonus)");
 		public static const OrthodoxDuelist:PerkType = mk("Orthodox duelist", "Orthodox duelist",
 				"Wielding a dueling sword with no off hand, increases critical damage by 20% and the chance to parry blows by 10% based on speed.",
 				"You've chosen the 'Orthodox duelist' perk. Wielding a dueling sword with no off hand, increases critical damage by 20% and the chance to parry blows by 10% based on speed.");
@@ -2972,14 +2972,26 @@ public class PerkLib
 				"It's official, everyone knows to go to you for sex. You're still new to the business, but you learned some new tricks. (+15% tease dmg)",
 				"You've chosen the 'Prostitute' perk, gaining +15% tease dmg.");
 		public static const PureMagic:PerkType = mk("Pure magic", "Pure magic",
-				"Your spells gain aligned damage, dealing more damage against the corrupt. Buff spells now last for the battle duration.",
-				"You've chosen the 'Pure magic' perk. Your spells gain aligned damage, dealing more damage against the corrupt. Buff spells now last for the battle duration.");
+				"Your spells gain aligned damage, dealing more damage against the corrupt. Buff spells now last for the battle duration. (+60% spellpower bonus)",
+				"You've chosen the 'Pure magic' perk. Your spells gain aligned damage, dealing more damage against the corrupt. Buff spells now last for the battle duration. (+60% spellpower bonus)");
 		public static const PyrosFriend:PerkType = mk("Pyro's Friend", "Pyro's Friend",
 				"Mmmphmm! (No idea what he? is trying to say... but same rules apply... +10% ranged damage buff)",
 				"You've chosen the 'Pyro's Friend' perk, gaining +10% ranged physical damage.");
 		public static const QuadWield:PerkType = mk("Quad Wield", "Quad Wield",
 				"Allows you to wield four weapons as long you have enough arms to hold them all.",
 				"You've chosen the 'Dual Wield' perk, training the skill of using four weapons as long you have enough arms to hold them all.");
+		public static const QuadWieldLarge:PerkType = mk("Quad Wield (Large)", "Quad Wield (Large)",
+				"Allows you to wield four large sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Large)' perk, training the skill of using two four melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
+		public static const QuadWieldMassive:PerkType = mk("Quad Wield (Massive)", "Quad Wield (Massive)",
+				"Allows you to wield four massive sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Massive)' perk, training the skill of using four massive melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
+		public static const QuadWieldNormal:PerkType = mk("Quad Wield (Normal)", "Quad Wield (Normal)",
+				"Allows you to wield four normal sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Normal)' perk, training the skill of using four normal-sized melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
+		public static const QuadWieldSmall:PerkType = mk("Quad Wield (Small)", "Quad Wield (Small)",
+				"Allows you to wield four small-sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)",
+				"You've chosen the 'Quad Wield (Small)' perk, training the skill of using four small melee weapons. (damage and accuracy penalties decreased by 40% and 20%)");
 		public static const QuickStrike:PerkType = mk("Quick Strike", "Quick Strike",
 				"Add speed-based scaling of melee attacks when using small weapon(s). Its effect is added on top of Speed Demon perk boost.",
 				"You've chosen the 'Quick Strike' perk, allowing you to use your speed when attacking with small melee weapons.");
@@ -2991,14 +3003,14 @@ public class PerkLib
 				"You've chosen the 'Rage' perk, increasing the critical chance by up to 70% & crit dmg by up to 175% in berserk state until next crit attack. Adds Diehard effect up to 5% of max HP. (+10% melee physical attacks multiplier, 2x for being under berserk type state and another 2x when using large or massive weapon(s))")
 				.withBuffs({'maxwrath_base':+2000});
 		public static const RagingInferno:PerkType = mk("Raging Inferno", "Raging Inferno",
-				"Cumulative 40% damage increase for every subsequent fire spell. Each turn without cast fire spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.",
-				"You've chosen the 'Raging Inferno' perk. Cumulative 40% damage increase for every subsequent fire spell. Each turn without cast fire spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.");
+				"Cumulative 40% damage increase for every subsequent fire spell. Each turn without cast fire spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)",
+				"You've chosen the 'Raging Inferno' perk. Cumulative 40% damage increase for every subsequent fire spell. Each turn without cast fire spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)");
 		public static const RagingInfernoEx:PerkType = mk("Raging Inferno (Ex)", "Raging Inferno (Ex)",
-				"Increases cumulative damage by 20%. Penalty for turn without casted fire spell decreased by 10%. Maximum 15 stacks.",
-				"You've chosen the 'Raging Inferno (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted fire spell decreased by 10%. Maximum 15 stacks.");
+				"Increases cumulative damage by 20%. Penalty for turn without casted fire spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)",
+				"You've chosen the 'Raging Inferno (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted fire spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)");
 		public static const RagingInfernoSu:PerkType = mk("Raging Inferno (Su)", "Raging Inferno (Su)",
-				"Prevent decay of cumulative damage increase bonus when channeling fire based attack. Penalty for turn without casted fire spell decreased by another 10%. Maximum 75 stacks.",
-				"You've chosen the 'Raging Inferno (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling fire based attack. Penalty for turn without casted fire spell decreased by another 10%. Maximum 75 stacks.");
+				"Prevent decay of cumulative damage increase bonus when channeling fire based attack. Penalty for turn without casted fire spell decreased by another 10%. Maximum 75 stacks. (+15% spellpower bonus)",
+				"You've chosen the 'Raging Inferno (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling fire based attack. Penalty for turn without casted fire spell decreased by another 10%. Maximum 75 stacks. (+30% spellpower bonus)");
 		public static const RangeWeaponsAttackMultiplier:PerkType = mk("Range Weapons Attack Multiplier", "Skilled Ranger",
 				"+5% range physical attacks multiplier and then adds 50% on top of final result.",
 				"You've chosen the 'Range Weapons Attack Multiplier' perk. +5% range physical attacks multiplier and then adds 50% on top of final result.");
@@ -3077,14 +3089,14 @@ public class PerkLib
 						"]",
 				"You've chosen the 'Resolute' perk, granting immunity to stuns and some statuses.</b>");
 		public static const RumblingQuake:PerkType = mk("Rumbling Quake", "Rumbling Quake",
-				"Cumulative 40% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.",
-				"You've chosen the 'Rumbling Quake' perk. Cumulative 40% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks.");
+				"Cumulative 40% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)",
+				"You've chosen the 'Rumbling Quake' perk. Cumulative 40% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)");
 		public static const RumblingQuakeEx:PerkType = mk("Rumbling Quake (Ex)", "Rumbling Quake (Ex)",
-				"Increases cumulative damage by 20%. Penalty for turn without casted earth spell decreased by 10%. Maximum 15 stacks.",
-				"You've chosen the 'Rumbling Quake (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted earth spell decreased by 10%. Maximum 15 stacks.");
+				"Increases cumulative damage by 20%. Penalty for turn without casted earth spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)",
+				"You've chosen the 'Rumbling Quake (Ex)' perk. Increases cumulative damage by 20%. Penalty for turn without casted earth spell decreased by 10%. Maximum 15 stacks. (+30% spellpower bonus)");
 		public static const RumblingQuakeSu:PerkType = mk("Rumbling Quake (Su)", "Rumbling Quake (Su)",
-				"Prevent decay of cumulative damage increase bonus when channeling earth based attack. Penalty for turn without casted earth spell decreased by another 10%. Maximum 75 stacks.",
-				"You've chosen the 'Rumbling Quake (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling earth based attack. Penalty for turn without casted earth spell decreased by another 10%. Maximum 75 stacks.");
+				"Prevent decay of cumulative damage increase bonus when channeling earth based attack. Penalty for turn without casted earth spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)",
+				"You've chosen the 'Rumbling Quake (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling earth based attack. Penalty for turn without casted earth spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)");
 		public static const Runner:PerkType = mk("Runner", "Runner",
 				"Increases chances of escaping combat.",
 				"You've chosen the 'Runner' perk, increasing your chances to escape from your foes when fleeing!");
@@ -3235,18 +3247,18 @@ public class PerkLib
 				"You've chosen the 'Spellarmor' perk. You start every battle with Charge Armor effect, as long as your Lust is not preventing you from casting it before battle.");
 		public static const Spellpower:PerkType = mk("Spellpower", "Spellpower",
 				"[if (player.inte>=50)" +
-						"Increases base spell strength by 10% and mana pool by 45." +
+						"Increases base spell strength by 10% and mana pool by 45. (+5% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Spellpower' perk.  Thanks to your sizeable intellect and willpower, you are able to more effectively use magic, boosting base spell effects by 10% and mana pool by 45.");
+				"You've chosen the 'Spellpower' perk.  Thanks to your sizeable intellect and willpower, you are able to more effectively use magic, boosting base spell effects by 10% and mana pool by 45. (+5% spellpower bonus)");
 		public static const SpellpowerGrey:PerkType = mk("Spellpower: Grey", "Spellpower: Grey",
 				"[if (player.inte>=50)" +
-						"Increases grey spell strength by 15% and mana pool by 75." +
+						"Increases grey spell strength by 15% and mana pool by 75. (+5% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Spellpower' perk.  Thanks to your sizeable intellect and willpower, you are able to more effectively use grey magic, boosting it spell effects by 15% and mana pool by 75.");
+				"You've chosen the 'Spellpower' perk.  Thanks to your sizeable intellect and willpower, you are able to more effectively use grey magic, boosting it spell effects by 15% and mana pool by 75. (+5% spellpower bonus)");
 		public static const SpellpowerHealing:PerkType = mk("Spellpower: Healing", "Spellpower: Healing",
 				"[if (player.wis>=50)" +
 						"Increases healing spell strength by 20% and mana pool by 90." +
@@ -3320,8 +3332,8 @@ public class PerkLib
 				"At the cost of using additional mana you can super charge each temporary golem core attaing ever better effects than before. Allows you to deal reduced (50%) damage to enemies that are immune to physical attacks.",
 				"You've chosen the 'Super Charged Core' perk, learning how to make core charging more effective, even to be able to damage enemies highly resistant to physical attacks.");
 		public static const SuperConvergence:PerkType = mk("Super Convergence", "Super Convergence",
-				"Grey magic area of effect spells strike one more time (three times) against single targets. Against groups would deal 50-250% more dmg depending on size (250% for small groups, 100% for large groups).",
-				"You've chosen the 'Super Convergence' perk, gaining chance to attack single targets one more time (three times) with grey AoE spells. Against groups would deal 50-250% more dmg depending on size (250% for small groups, 100% for large groups).");// and third tier white and black
+				"Grey magic area of effect spells strike one more time (three times) against single targets. Against groups would deal 50-250% more dmg depending on size (250% for small groups, 100% for large groups). (+40% spellpower bonus)",
+				"You've chosen the 'Super Convergence' perk, gaining chance to attack single targets one more time (three times) with grey AoE spells. Against groups would deal 50-250% more dmg depending on size (250% for small groups, 100% for large groups). (+40% spellpower bonus)");// and third tier white and black
 		public static const SuperiorEndurance:PerkType = mk("Superior Endurance", "Superior Endurance",
 				"Increases maximum fatigue by 500.",
 				"You've chosen the 'Superior Endurance' perk. Thanks to your superior physical conditioning, your maximum fatigue has been increased by 500!</b>")
@@ -3357,8 +3369,8 @@ public class PerkLib
 				"Slows hunger rate by another 20%.",
 				"You've chosen the 'Survivalist 3' perk.  With this perk, your hunger rate is reduced second time by another 20%.");
 		public static const StaffChanneling:PerkType = mk("Staff Channeling", "Staff Channeling",
-				"Melee attacks with staffs / wands would turn to ranged magic bolts. In addition to hitting enemy next to you they would enable hitting enemies out of your reach (for ex. flying enemies).",
-				"You've chosen the 'Staff Channeling' perk. Melee attacks with staffs / wands would turn to ranged magic bolts. In addition to hitting an enemy next to you, they would enable hitting enemies out of your reach (for ex. flying enemies).");
+				"Melee attacks with staffs / wands would turn to ranged magic bolts. In addition to hitting enemy next to you they would enable hitting enemies out of your reach (for ex. flying enemies). (+10% spellpower bonus)",
+				"You've chosen the 'Staff Channeling' perk. Melee attacks with staffs / wands would turn to ranged magic bolts. In addition to hitting an enemy next to you, they would enable hitting enemies out of your reach (for ex. flying enemies). (+10% spellpower bonus)");
 		public static const StrongBack:PerkType = mk("Strong Back", "Strong Back",
 				"Enables additional item slots. (+50%)",
 				"You've chosen the 'Strong Back' perk, enabling additional item slots. (+50%)");
@@ -3448,23 +3460,23 @@ public class PerkLib
 					"(Envenomed bolt venom effect now is two times as strong on each projectile and gains an extra dot as 5 toughness damage per round. If the PC doesn't have a poison, they can use the Sky Poison Pearl to produce a deadly toxin that adds the base 5 toughness damage to weapon attacks.)",
 				"You've chosen the 'Toxin master' perk. Envenomed bolt venom effect now is two times as strong on each projectile and gains an extra dot as 5 toughness damage per round. If the PC doesn't have a poison, they can use the Sky Poison Pearl to produce a deadly toxin that adds the base 5 toughness damage to weapon attacks.");
 		public static const TraditionalMageI:PerkType = mk("Traditional Mage I", "Traditional Mage I",
-				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.",
-				"You've chosen the 'Traditional Mage I' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.");
+				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+20% spellpower bonus)",
+				"You've chosen the 'Traditional Mage I' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+20% spellpower bonus)");
 		public static const TraditionalMageII:PerkType = mk("Traditional Mage II", "Traditional Mage II",
-				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.",
-				"You've chosen the 'Traditional Mage II' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.");
+				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+20% spellpower bonus)",
+				"You've chosen the 'Traditional Mage II' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+20% spellpower bonus)");
 		public static const TraditionalMageIII:PerkType = mk("Traditional Mage III", "Traditional Mage III",
-				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.",
-				"You've chosen the 'Traditional Mage III' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.");
+				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+20% spellpower bonus)",
+				"You've chosen the 'Traditional Mage III' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+20% spellpower bonus)");
 		public static const TraditionalMageIV:PerkType = mk("Traditional Mage IV", "Traditional Mage IV",
-				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.",
-				"You've chosen the 'Traditional Mage IV' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.");
+				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+25% spellpower bonus)",
+				"You've chosen the 'Traditional Mage IV' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+25% spellpower bonus)");
 		public static const TraditionalMageV:PerkType = mk("Traditional Mage V", "Traditional Mage V",
-				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.",
-				"You've chosen the 'Traditional Mage V' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.");
+				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+25% spellpower bonus)",
+				"You've chosen the 'Traditional Mage V' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+25% spellpower bonus)");
 		public static const TraditionalMageVI:PerkType = mk("Traditional Mage VI", "Traditional Mage VI",
-				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.",
-				"You've chosen the 'Traditional Mage VI' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%.");
+				"You gain 100% spell effect multiplier while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+25% spellpower bonus)",
+				"You've chosen the 'Traditional Mage VI' perk, boosting your base spell effects while using a staff and either a tome or no ranged weapon. In case of use of partial staff weapons bonus is only 50%. (+25% spellpower bonus)");
 		public static const Trance:PerkType = mk("Trance", "Trance",
 				"Unlocked ability to enter a state in which PC assumes a crystalline form, enhancing physical and mental abilities at cost of constant using soulforce.",
 				"You've chosen the 'Trance' perk, which unlock 'Trance' special. It enhancing physical and mental abilities at cost of constant using soulforce.");
@@ -3600,24 +3612,24 @@ public class PerkLib
 				"Increases magical and physical critical chance by up to 25% based on intelligence. (+20% melee physical attacks multiplier)",
 				"You've chosen the 'War caster' perk, increasing your magical and physical critical chance by up to 25% based on intelligence. (+20% melee physical attacks multiplier)");
 		public static const WarMageNovice:PerkType = mk("Novice War Mage", "War Mage ( Novice )",
-				"Decrease mana costs of spells by 10%. Safe limit for spellcasting increased by 5%.",
-				"You've chosen the 'War Mage ( Novice )' perk, increasing maximum wrath by 50, decrease mana costs of spells by 10% and safe the limit for spellcasting increases by 5%.")
+				"Decrease mana costs of spells by 10%. Safe limit for spellcasting increased by 5%. (+5% spellpower bonus)",
+				"You've chosen the 'War Mage ( Novice )' perk, increasing maximum wrath by 50, decrease mana costs of spells by 10% and safe the limit for spellcasting increases by 5%. (+5% spellpower bonus)")
 				.withBuffs({'maxwrath_base':+50});
 		public static const WarMageApprentice:PerkType = mk("Apprentice War Mage", "War Mage ( Apprentice )",
-				"Decrease mana costs of spells by 10%. Mana recovery multiplier increased by 10% of the base. Safe limit for spellcasting increased by 5%.",
-				"You've chosen the 'War Mage ( Apprentice )' perk, increasing maximum wrath by 100, decrease mana costs of spells by 10%, increasing mana recovery multiplier increased by 10% of the base and safe the limit for spellcasting increases by 5%.")
+				"Decrease mana costs of spells by 10%. Mana recovery multiplier increased by 10% of the base. Safe limit for spellcasting increased by 5%. (+15% spellpower bonus)",
+				"You've chosen the 'War Mage ( Apprentice )' perk, increasing maximum wrath by 100, decrease mana costs of spells by 10%, increasing mana recovery multiplier increased by 10% of the base and safe the limit for spellcasting increases by 5%. (+15% spellpower bonus)")
 				.withBuffs({'maxwrath_base':+100});
 		public static const WarMageAdept:PerkType = mk("Adept War Mage", "War Mage ( Adept )",
-				"Decrease mana costs of spells by 10%. Mana recovery increased multiplier increased by 20% of the base. Safe limit for spellcasting increased by 5%.",
-				"You've chosen the 'War Mage ( Adept )' perk, increasing maximum wrath by 150, decrease mana costs of spells by 10%, mana recovery multiplier increased by 20% of the base and safe the limit for spellcasting increases by 5%.")
+				"Decrease mana costs of spells by 10%. Mana recovery increased multiplier increased by 20% of the base. Safe limit for spellcasting increased by 5%. (+25% spellpower bonus)",
+				"You've chosen the 'War Mage ( Adept )' perk, increasing maximum wrath by 150, decrease mana costs of spells by 10%, mana recovery multiplier increased by 20% of the base and safe the limit for spellcasting increases by 5%. (+25% spellpower bonus)")
 				.withBuffs({'maxwrath_base':+150});
 		public static const WarMageExpert:PerkType = mk("Expert War Mage", "War Mage ( Expert )",
-				"Decrease mana costs of spells by 15%. Mana recovery increased by 0.5% of max mana. Safe limit for spellcasting increased by 5%.",
-				"You've chosen the 'War Mage ( Expert )' perk, increasing maximum wrath by 200, decrease mana costs of spells by 15%, mana recovery increased by 0.5% of max mana and safe limit for spellcasting increased by 5%.")
+				"Decrease mana costs of spells by 15%. Mana recovery increased by 0.5% of max mana. Safe limit for spellcasting increased by 5%. (+35% spellpower bonus)",
+				"You've chosen the 'War Mage ( Expert )' perk, increasing maximum wrath by 200, decrease mana costs of spells by 15%, mana recovery increased by 0.5% of max mana and safe limit for spellcasting increased by 5%. (+35% spellpower bonus)")
 				.withBuffs({'maxwrath_base':+200});
 		public static const WarMageMaster:PerkType = mk("Master War Mage", "War Mage ( Master )",
-				"Decrease mana costs of spells by 20%. Mana recovery increased by 1% of max mana. Safe limit for spellcasting increased by 5%.",
-				"You've chosen the 'War Mage ( Master )' perk, increasing maximum wrath by 250, decrease mana costs of spells by 20%, mana recovery increased by 1% of max mana and safe limit for spellcasting increased by 5%.")
+				"Decrease mana costs of spells by 20%. Mana recovery increased by 1% of max mana. Safe limit for spellcasting increased by 5%. (+45% spellpower bonus)",
+				"You've chosen the 'War Mage ( Master )' perk, increasing maximum wrath by 250, decrease mana costs of spells by 20%, mana recovery increased by 1% of max mana and safe limit for spellcasting increased by 5%. (+45% spellpower bonus)")
 				.withBuffs({'maxwrath_base':+250});
 		public static const WayOfTheWarrior:PerkType = mk("Way of the Warrior", "Way of the Warrior",
 				"Enable autocast of Warrior's rage and boost it based on the PC's current stats. (+10% core strength while active)",
@@ -4332,6 +4344,8 @@ public class PerkLib
 		public static const MindbreakerBrain1toX:MindBreakerBrain = new MindBreakerBrain();
 		public static const MindFungus:PerkType = mk("Mind Fungus", "Mind Fungus",
 				"Half of your intelligence is added as an extra modifier to psionic ability.");
+		public static const MothOvipositor:PerkType = mk("Moth Ovipositor", "Moth Ovipositor",
+				"Allows you to lay eggs through a special organ on your insect abdomen, though you need at least 10 eggs to lay.");
 		public static const MummyCurse:PerkType = mk("Mummy Curse", "Mummy Curse",
 				"Defeated humanoids and beastmen with souls can be mummified and enslaved.");
 		public static const MummyLord:PerkType = mk("Mummy Lord", "Mummy Lord",
@@ -4440,20 +4454,16 @@ public class PerkLib
 				"Reduces physical special cost by 20%. Increase physical special damage by 50% and spellpower by 30%.");
 
 		// Quest, Event & NPC perks
+		public static const BladeDancer:PerkType = mk("Blade Dancer", "Blade Dancer",
+				"Gain 2 additional attacks when using multiple weapons. Gain two more attacks if all hands are equipped.");
+		public static const FiendishConcentration:PerkType = mk("Fiendish Concentration", "Fiendish Concentration",
+				"Passively cast a selected spell every round so long as at least two hands are free. Cast twice if three hands are free.");
+		public static const ArtfulDestruction:PerkType = mk("Artful destruction", "Artful destruction",
+				"Magic damage increases Physical damage dealt by 5% and Physical Damage increases magic damage by 5% dealt up to 200% each.");
+		public static const ImpossibleHandTechnique:PerkType = mk("Impossible Hand Technique", "Impossible Hand Technique",
+				"Quadruple Tease damage dealt when grappling or straddling.");
 		public static const AdvancedLeadership:PerkType = mk("Advanced Leadership", "Advanced Leadership",
 				"Allows to form 4 people party.");
-		public static const CommandingTone:PerkType = mk("Commanding Tone", "Commanding Tone",
-				"Minion and Follower Damage increased by 10%.");
-		public static const DiaphragmControl:PerkType = mk("Diaphragm control", "Diaphragm control",
-				"Minion and Follower Damage increased by an additional 10%, and followers will act more often.");
-		public static const VocalTactician:PerkType = mk("Vocal Tactician", "Vocal Tactician",
-				"Minion and Follower Damage increased by another 15%. Followers will act even more frequently.");
-		public static const DrillSergeant:PerkType = mk("Drill Sergeant", "Drill Sergeant",
-				"Your voice and bearing now commands respect, even among the surliest of recruits. Your followers will attack an additional time per round, and are guaranteed to attack.");
-		public static const MentalBastion:PerkType = mk("Mental Bastion", "Mental Bastion",
-				"The effects of Tyrant State are doubled: While active, you take 30% less damage from magic. You count as either pure or corrupt (whichever is better) for equipment. (Pure for the Beautiful weapons etc, corrupt for corrupt weapons)");
-		public static const GOBXChemical:PerkType = mk("GOBX Chemical", "GOBX Chemical",
-				"Raises your libido, sensitivity and Intelligence but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins)");
 		public static const Aelfwine:PerkType = mk("Aelfwine", "Aelfwine",
 				"When drinking alcohol double libido but halve intelligence while drunk.");
 		public static const AffinityGnome:PerkType = mk("Affinity (Gnome)", "Affinity (Gnome)",
@@ -4468,7 +4478,7 @@ public class PerkLib
 				"The process of becoming a Princess has severely contaminated and mutated your soul, making it unable to leave your body, but at what cost?");
 		public static const ArchmageEx:PerkType = mk("Archmage (Ex)", "Archmage (Ex)",
 				"[if (player.inte>=100)" +
-						"Increases base spell strength by 105%, mana pool by 600 and lust bar by 135." +
+						"Increases base spell strength by 105%, mana pool by 600 and lust bar by 135. (+65% spellpower bonus)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]")
@@ -4503,12 +4513,16 @@ public class PerkLib
 				"As a centaur, your Archery gains a half wisdom modifier to damage.");
 		public static const ChallengingShoutMastered:PerkType = mk("Challenging Shout (Mastered)", "Challenging Shout (Mastered)",
 				"You can now use the ability Warrior Shout! Can be used at any turn but amount of gained wrath would depend how long it was used since last time during combat. (4% per turn up to 60% after 15 turns - first use in combat giving 60%) Also allow to automaticaly use weakened version at the combat round end if wrath is below 750.");
+		public static const CommandingTone:PerkType = mk("Commanding Tone", "Commanding Tone",
+				"Minion and Follower Damage increased by 10%.");
+		public static const Comradery:PerkType = mk("Comradery", "Comradery",
+				"Your followers are your shield and sword. While you have henchmen in your party, you take 10% less damage for each.");
 		public static const ConvictionOfPurpose:PerkType = mk("Conviction of purpose", "Conviction of purpose",
 				"Corruption meter now increase lust resistance based on purity.");
 		public static const Cornucopia:PerkType = mk("Cornucopia", "Cornucopia",
 				"Vaginal and Anal capacities increased by 30.");
 		public static const CorrosiveMeltdownMastered:PerkType = mk("Corrosive Meltdown (Mastered)", "Corrosive Meltdown (Mastered)",
-				"Cumulative 120% damage increase for every subsequent acid spell. Each turn without cast acid spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling acid based attack. Maximum 50 stacks.");
+				"Cumulative 120% damage increase for every subsequent acid spell. Each turn without cast acid spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling acid based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const CovenantOfTheSpirits:PerkType = mk("Covenant of the spirits", "Covenant of the spirits",
 				"Your shared soul with the sacred tree halves your soulforce but doubles your mana and fatigue. This connection greatly weakens your ability to control fire but reinforces your mastery over earth, wind and water. Furthermore your natural attunement and improved magical circulation allows you to add half of your intelligence to your speed score.");
 		public static const CraftedArrows:PerkType = mk("Crafted Arrows", "Crafted Arrows",
@@ -4518,11 +4532,15 @@ public class PerkLib
 		public static const DemonicLethicite:PerkType = mk("Demonic Lethicite", "Demonic Lethicite",
 				"Improves soulforce and makes you more demonic.");//Effects: maxSoulforce += lib; +1 demonscore; 10 min corruption
 		public static const DemonSlayer:DemonSlayerPerk = new DemonSlayerPerk();
+		public static const DiaphragmControl:PerkType = mk("Diaphragm control", "Diaphragm control",
+				"Minion and Follower Damage increased by an additional 10%, and followers will act more often.");
 		public static const DominantAlpha:PerkType = new DominantAlphaPerk();
+		public static const DrillSergeant:PerkType = mk("Drill Sergeant", "Drill Sergeant",
+				"Your voice and bearing now commands respect, even among the surliest of recruits. Your followers will attack an additional time per round, and are guaranteed to attack.");
 		public static const DualMind:PerkType = mk("Dual Mind", "Dual Mind",
 				"Greatly empower the tease ability.");
 		public static const EclipsingShadowMastered:PerkType = mk("Eclipsing Shadow (Mastered)", "Eclipsing Shadow (Mastered)",
-				"Cumulative 120% damage increase for every subsequent darkness spell. Each turn without cast darkness spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling darkness based attack. Maximum 50 stacks.");
+				"Cumulative 120% damage increase for every subsequent darkness spell. Each turn without cast darkness spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling darkness based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const ElementalBody:PerkType = mk("Elemental", "Elemental",
 				"You are currently in elemental form.");
 		public static const ELFArcherCovenant:PerkType = mk("Archer Covenant", "Archer Covenant",
@@ -4563,7 +4581,9 @@ public class PerkLib
 		public static const GargoylePure:PerkType = mk("Gargoyle", "Pure Gargoyle",
 				"Need to gain sustenance from soulforce to stay alive.");
 		public static const GlacialStormMastered:PerkType = mk("Glacial Storm (Mastered)", "Glacial Storm (Mastered)",
-				"Cumulative 120% damage increase for every subsequent ice spell. Each turn without cast ice spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling ice based attack. Maximum 50 stacks.");
+				"Cumulative 120% damage increase for every subsequent ice spell. Each turn without cast ice spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling ice based attack. Maximum 50 stacks. (+140% spellpower bonus)");
+		public static const GOBXChemical:PerkType = mk("GOBX Chemical", "GOBX Chemical",
+				"Raises your libido, sensitivity and Intelligence but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins)");
 		public static const GracefulBeauty:PerkType = mk("Graceful Beauty", "Graceful Beauty",
 				"Add a small measure of your speed to your tease damage.");
 		public static const Hellfire:PerkType = mk("Hellfire", "Hellfire",
@@ -4571,17 +4591,19 @@ public class PerkLib
 		public static const HellfireCoat:PerkType = mk("Hellfire Coat", "Hellfire Coat",
 				"Grants a corrupted fire coating to your body, dealing fire damage with all feral attacks.");
 		public static const HighTideMastered:PerkType = mk("High Tide (Mastered)", "High Tide (Mastered)",
-				"Cumulative 120% damage increase for every subsequent water spell. Each turn without cast water spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling water based attack. Maximum 50 stacks.");
+				"Cumulative 120% damage increase for every subsequent water spell. Each turn without cast water spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling water based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const HighVoltageMastered:PerkType = mk("High Voltage (Mastered)", "High Voltage (Mastered)",
-				"Cumulative 120% damage increase for every subsequent lightning spell. Each turn without cast lightning spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling lightning based attack. Maximum 50 stacks.");
+				"Cumulative 120% damage increase for every subsequent lightning spell. Each turn without cast lightning spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling lightning based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const HowlingGaleMastered:PerkType = mk("Howling Gale (Mastered)", "Howling Gale (Mastered)",
-				"Cumulative 120% damage increase for every subsequent wind spell. Each turn without cast wind spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling wind based attack. Maximum 50 stacks.");
+				"Cumulative 120% damage increase for every subsequent wind spell. Each turn without cast wind spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling wind based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const Immortality:PerkType = mk("Immortality", "Immortality",
 				"Cannot lose combat by damage. Damage taken below 0 instead cause player to take serious lust damage.");
 		public static const InnerPhylactery:PerkType = mk("InnerPhylactery", "InnerPhylactery",
 				"Your soul has been safely stored into a phylactery allowing you to fully unlock your potential as a demon, since fusing back into your body to sit beside your heart.").withBuffs({'int.mult':0.75});
 		public static const IntermediateLeadership:PerkType = mk("Intermediate Leadership", "Intermediate Leadership",
 				"Allows to form 3 people party.");
+		public static const LookADistraction:PerkType = mk("Look! A Distraction", "Look! A Distraction",
+				"Allow to use mental special that can stun enemy and give one time bonus of doubling mlee attacks count once per fight.");
 		public static const LuststickAdapted:PerkType = mk("Luststick Adapted", "Luststick Adapted",
 				"Grants immunity to the lust-increasing effects of lust-stick and allows its use.")
 				.withBuffs({'minlustx':0.1});
@@ -4599,6 +4621,8 @@ public class PerkLib
 				"Provides resistance to the addictive effects of bottled LaBova milk.");
 		public static const MarblesMilk:PerkType = mk("Marble's Milk", "Marble's Milk",
 				"Requires you to drink LaBova milk frequently or eventually die.  You cannot shake this addiction.");
+		public static const MentalBastion:PerkType = mk("Mental Bastion", "Mental Bastion",
+				"The effects of Tyrant State are doubled: While active, you take 30% less damage from magic. You count as either pure or corrupt (whichever is better) for equipment. (Pure for the Beautiful weapons etc, corrupt for corrupt weapons)");
 		public static const MightyFist:PerkType = mk("Mighty Fist", "Mighty Fist",
 				"Regular fist attacks now have a chance to cause stun and fist damage is increased by 5 (x NG tier).");
 		public static const MiracleMetal:PerkType = mk("Miracle Metal", "Miracle Metal",
@@ -4612,6 +4636,8 @@ public class PerkLib
 				.withBuffs({'maxlust_base':+45,'minlustx':0.35});
 		public static const OneTrackMind:PerkType = mk("One Track Mind", "One Track Mind",
 				"Your constant desire for sex causes your sexual organs to be able to take larger insertions and disgorge greater amounts of fluid.");
+		public static const OperraticOperator:PerkType = mk("Operratic Operator", "Operratic Operator",
+				"Your stamina recovers an additional 2,5%/round, and 5%/hr. You no longer take damage for the first five rounds of drowning underwater.");
 		public static const PanLabyrinth:PerkType = mk("Pan Labyrinth", "Pan Labyrinth",
 				"Allow the use of Sing. Sing and Perform tease effect is 50% more powerful. Sing and Perform inflicts lingering tease damage for 5 rounds that has a chance to cause confusion on each turn causing the target to lose its turn. Sing and Perform gain a toughness scaling.");
 		public static const PheromoneCloud:PerkType = mk("Pheromone cloud", "Pheromone cloud",
@@ -4627,9 +4653,9 @@ public class PerkLib
 		public static const Purifier:PerkType = mk("Purifier", "Purifier",
 				"When slaying or purifying demons their corrupted power is purified and sent back to you.");
 		public static const RagingInfernoMastered:PerkType = mk("Raging Inferno (Mastered)", "Raging Inferno (Mastered)",
-				"Cumulative 120% damage increase for every subsequent fire spell. Each turn without cast fire spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling fire based attack. Maximum 50 stacks.");
+				"Cumulative 120% damage increase for every subsequent fire spell. Each turn without cast fire spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling fire based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const RumblingQuakeMastered:PerkType = mk("Rumbling Quake (Mastered)", "Rumbling Quake (Mastered)",
-				"Cumulative 120% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling earth based attack. Maximum 50 stacks.");
+				"Cumulative 120% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling earth based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const SageMedicine:PerkType = mk("Sage Medicine", "Sage Medicine",
 				"Sage Medicine used for the Azazel ascension, reduces minimum corruption caused by havinng a soul Phylactery");
 		public static const SealSin:PerkType = mk("Seal Sin", "Seal Sin",
@@ -4667,6 +4693,8 @@ public class PerkLib
 				"You are blessed with the power of a unicorn and while below 20 corruption all white magic spells are 20% stronger and lust resistance increased by 10%.");
 		public static const Venomancy:PerkType = mk("Venomancy", "Venomancy",
 				"Grants the Venomancy ability. While active, apply venom effect to spellcasting the venom benefiting from caster perks multipliers but cost a charge each time.")
+		public static const VocalTactician:PerkType = mk("Vocal Tactician", "Vocal Tactician",
+				"Minion and Follower Damage increased by another 15%. Followers will act even more frequently.");
 		public static const VorpalClaw:PerkType = mk("Vorpal Claw", "Vorpal Claw",
 				"A cheshire natural weapon distorts space inflicting particularly vicious critical strikes.");
 		public static const WhatIsReality:PerkType = mk("What Is Reality", "What Is Reality?",
@@ -4948,6 +4976,7 @@ public class PerkLib
 		public static const EnemyColossalType:PerkType = mk("Colossal-sized type enemy", "Colossal-sized type enemy", "");//50+ ft. tall
 		public static const EnemyConstructType:PerkType = mk("Construct-type enemy", "Construct-type enemy", "");
 		public static const EnemyDragonType:PerkType = mk("Dragon-type enemy", "Dragon-type enemy", "");
+		public static const EnemyEldritchType:PerkType = mk("Eldritch-type enemy", "Eldritch-type enemy", "");
 		public static const EnemyElementalType:PerkType = mk("Elemental-type enemy", "Elemental-type enemy", "");
 		public static const EnemyEliteType:PerkType = mk("Elite-type enemy", "Elite-type enemy", "");
 		public static const EnemyFeralType:PerkType = mk("Feral-type enemy", "Feral-type enemy", "");
@@ -5140,7 +5169,7 @@ public class PerkLib
 			ElementalContractRank25, ElementalContractRank26, ElementalContractRank27, ElementalContractRank28,
 			ElementalContractRank29, ElementalContractRank30, ElementalContractRank31, ElementalContractRank32,
 			ElementalContractRank33, ElementalContractRank34, ElementalContractRank35, ElementalContractRank36,
-			ElementalContractRank37, ElementalContractRank38, ElementalContractRank39, ElementalContractRank40
+			ElementalContractRank37, ElementalContractRank38//, ElementalContractRank39, ElementalContractRank40
 		];
 		// Array of arrays of perks
 		public static const PERK_TIER_LISTS:/*PerkType[]*/Array = [
@@ -5499,6 +5528,9 @@ public class PerkLib
 					.requireAnyPerk(TitanGrip, GigantGripSu)
                     .requireStr(150)
                     .requireLevel(30);
+            QuadWieldLarge.requirePerks(QuadWield, DualWieldLarge)
+                    .requireStr(150)
+                    .requireLevel(30);
             GigantGripSu.requireLevel(30)
                     .requireStr(140)
                     .requireCustomFunction(function (player:Player):Boolean {
@@ -5546,6 +5578,9 @@ public class PerkLib
             EpicBrute.requireLevel(42)
                     .requireStr(150)
                     .requirePerk(GreaterBrute);
+            QuadWieldMassive.requirePerks(QuadWield, DualWieldMassive, TitanGrip)
+                    .requireStr(200)
+                    .requireLevel(42);
             PowerAttackSu.requirePerk(PowerAttackEx)
 					.requireLevel(42);
             //Tier 8 Strength Perks
@@ -6123,9 +6158,13 @@ public class PerkLib
             PracticedShot.requirePerk(JobRanger)
                     .requireSpe(75)
                     .requireLevel(12);
+            QuadWieldSmall.requirePerks(QuadWield, DualWieldSmall)
+                    .requireLevel(12);
             SpeedDemon.requireAnyPerk(JobDervish, JobRogue)
                     .requireSpe(90)
                     .requireLevel(12);
+            QuadWieldNormal.requirePerks(QuadWield, DualWieldNormal)
+					.requireLevel(12);
             DevastatingCharge.requirePerk(Naturaljouster)
                     .requireSpe(90)
                     .requireLevel(12);

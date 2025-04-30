@@ -175,7 +175,7 @@ public class PlayerInfo extends BaseContent {
 		}
 		if (player.vaginas.length > 0)
 			bodyStats += "<b>Vaginal Capacity:</b> " + Math.round(player.vaginalCapacity()) + "\n" + "<b>Vaginal Looseness:</b> " + Math.round(player.looseness()) + "\n";
-		if (player.hasPerk(PerkLib.SpiderOvipositor) || player.hasPerk(PerkLib.BeeOvipositor) || player.hasPerk(PerkLib.AntOvipositor) || player.hasPerk(PerkLib.MantisOvipositor))
+		if (player.hasPerk(PerkLib.SpiderOvipositor) || player.hasPerk(PerkLib.BeeOvipositor) || player.hasPerk(PerkLib.AntOvipositor) || player.hasPerk(PerkLib.MantisOvipositor) || player.hasPerk(PerkLib.MothOvipositor))
 			bodyStats += "<b>Ovipositor Total Egg Count: " + player.eggs() + "\nOvipositor Fertilized Egg Count: " + player.fertilizedEggs() + "</b>\n";
 		if (player.hasStatusEffect(StatusEffects.SlimeCraving)) {
 			var delay:Number = 1;
@@ -761,7 +761,7 @@ public class PlayerInfo extends BaseContent {
         
 		if (flags[kFLAGS.CHARYBDIS_FOLLOWER] > 0)
 			interpersonStats += "<b>Charybdis Affection:</b> " + CharybdisFollower.CharyAffectionMeter + "%\n";
-			if (CharybdisFollower.CharyVocalTrained >= 1) interpersonStats += "<b>Vocal Training sessions with Charybdis:</b> " + CharybdisFollower.CharyVocalTrained + " / 20\n";
+			if (CharybdisFollower.CharyVocalTrained >= 1) interpersonStats += "<b>Vocal Training sessions with Charybdis:</b> " + CharybdisFollower.CharyVocalTrained + " / 35\n";
 		//	if (flags[kFLAGS.CEANI_FOLLOWER] == 1)
 		//		interpersonStats += getNPCLevel("Ceani", 35, 0, 9, 7, flags[kFLAGS.CEANI_LVL_UP]);
 

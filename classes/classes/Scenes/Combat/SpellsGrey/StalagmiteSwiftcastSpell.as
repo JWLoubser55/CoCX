@@ -22,7 +22,7 @@ public class StalagmiteSwiftcastSpell extends AbstractGreySpell {
 	
 	override public function get isKnown():Boolean {
 		return player.hasStatusEffect(StatusEffects.KnowsStalagmite) &&
-				player.hasPerk(PerkLib.SwiftCasting);
+				(player.hasPerk(PerkLib.SwiftCasting) || player.hasPerk(PerkLib.FiendishConcentration));
 	}
 	
 	override protected function usabilityCheck():String {

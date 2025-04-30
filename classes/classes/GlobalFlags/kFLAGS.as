@@ -2676,7 +2676,7 @@ public static const HERM_CAVE_WYRM:int                                   			= 26
 public static const ATTACKS_ACCURACY_OFF:int                                   		= 2667;
 public static const COMBAT_MAGICAL_CHARM:int                                   		= 2668;
 public static const IN_COMBAT_PLAYER_GOBLIN_GADGET_USED:int                         = 2669;
-public static const DISCOVERED_HILLS:int                                   			= 2670; // No longer used
+public static const MECH_AI_ATTACK:int                                   			= 2670;
 public static const DISCOVERED_LOW_MOUNTAIN:int                                   	= 2671; // No longer used
 public static const AURORA_LVL:int                                   				= 2672;
 public static const AURORA_DEFEATS_COUNTER:int                                   	= 2673;
@@ -2779,7 +2779,7 @@ public static const PABLO_FREAKED_OUT_OVER_WORMS:int                            
 public static const WEREWOLF_PACK_PITY_SYSTEM:int                                   = 2770;
 public static const IN_COMBAT_PLAYER_USED_SHARK_BITE:int                            = 2771;
 public static const IN_COMBAT_BETTER_GRAPPLE:int                                    = 2773;
-public static const UNKNOWN_FLAG_NUMBER_02774:int                                   = 2774;
+public static const IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART:int                 = 2774;
 public static const UNKNOWN_FLAG_NUMBER_02775:int                                   = 2775;
 public static const UNKNOWN_FLAG_NUMBER_02776:int                                   = 2776;
 public static const UNKNOWN_FLAG_NUMBER_02777:int                                   = 2777;

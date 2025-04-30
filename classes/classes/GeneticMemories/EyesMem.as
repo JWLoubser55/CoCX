@@ -492,6 +492,50 @@ package classes.GeneticMemories {
 				return CoC.instance.transformations.EyesGremlin;
 			}
 		});
+
+		public static const YGGDRASIL:int = _partid++;
+		EnumValue.add(Memories, YGGDRASIL, "YGGDRASIL", {
+			id: "Yggdrasil Eyes",
+			name: "Yggdrasil Eyes",
+			cost: 100,
+			title: "Yggdrasil",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyesYggdrasil;
+			}
+		});
+
+		public static const MOTH:int = _partid++;
+		EnumValue.add(Memories, MOTH, "MOTH", {
+			id: "Moth Eyes",
+			name: "Moth Eyes",
+			cost: 100,
+			title: "Moth",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyesMoth;
+			}
+		});
+
+		public static const MARILITH:int = _partid++;
+		EnumValue.add(Memories, MARILITH, "MARILITH", {
+			id: "Marilith Eyes",
+			name: "Marilith Eyes",
+			cost: 100,
+			title: "Marilith",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyesMarilith;
+			}
+		});
+
+		public static const WERESPIDER:int = _partid++;
+		EnumValue.add(Memories, WERESPIDER, "WERESPIDER", {
+			id: "Werespider Eyes",
+			name: "Werespider Eyes",
+			cost: 100,
+			title: "Werespider",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyeWerespider;
+			}
+		});
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

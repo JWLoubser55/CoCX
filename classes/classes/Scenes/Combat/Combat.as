@@ -856,10 +856,18 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 4) flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] = 0;
 			if (player.hasPerk(PerkLib.ImprovedGrapple)) flags[kFLAGS.IN_COMBAT_BETTER_GRAPPLE] = 0;
 			if (player.armor == armors.BMARMOR) dynStats("lus", -(Math.round(player.maxLust() * 0.05)));
-			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) dynStats("lus", -(Math.round(player.maxLust() * 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM))));
+			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) {
+				var hmim1:Number = 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 1) hmim1 += 0.01 * (player.perkv1(IMutationsLib.HumanLungsIM) + 1);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 4) hmim1 += 0.01;
+				dynStats("lus", -(Math.round(player.maxLust() * hmim1)));
+			}
 			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 3) {
-				if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 4 && player.fatigue100 >= 50) EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 0.02 * (player.perkv1(IMutationsLib.HumanMetabolismIM) - 2))));
-				else EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 0.01 * (player.perkv1(IMutationsLib.HumanMetabolismIM) - 2))));
+				var hmim3:Number = 0.01 * (player.perkv1(IMutationsLib.HumanMetabolismIM) - 2);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 1) hmim3 += 0.01 * (player.perkv1(IMutationsLib.HumanLungsIM) + 1);
+				if (player.perkv1(IMutationsLib.HumanLungsIM) >= 4) hmim3 += 0.01;
+				if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 4 && player.fatigue100 >= 50) EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 2 * hmim3)));
+				else EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * hmim3)));
 			}
 			if (player.perkv1(IMutationsLib.HumanDigestiveTractIM) >= 3) dynStats("lus", -(Math.round(player.maxLust() * 0.01 * (player.perkv1(IMutationsLib.HumanDigestiveTractIM) - 2))));
 			if (player.hasStatusEffect(StatusEffects.TyrantState)) dynStats("lus", (Math.round(player.maxLust() * 0.05)));
@@ -965,11 +973,11 @@ public class Combat extends BaseContent {
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_MATANGO_ATTACKED] != 0 && flags[kFLAGS.MATANGO_ATTACK] == 1) {
 			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
 			player.createStatusEffect(StatusEffects.DisableMHActing, 8, 0, 0, 0);
-		}/* for mech AI?
-		if (flags[kFLAGS.IN_COMBAT_PLAYER_WILL_O_THE_WISP_ATTACKED] != 0 && flags[kFLAGS.WILL_O_THE_WISP] < 2) {
+		}
+		if (flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] != 0 && flags[kFLAGS.MECH_AI_ATTACK] == 1) {
 			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 8, 0, 0, 0);
-		}*/
+			player.createStatusEffect(StatusEffects.DisableMHActing, 9, 0, 0, 0);
+		}
 	}
 
     internal function buildOtherActions(buttons:ButtonDataList, backFunc:Function, aspectButtons:ButtonDataList = null):void {
@@ -1706,8 +1714,16 @@ public class Combat extends BaseContent {
                     }
                 }
             }
+			if (player.hasPerk(PerkLib.BladeDancer)) {
+				if (!dualWeapon && (player.weapon.isDual() || player.weapon.isHybrid())) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += 2;
+				if (dualWeapon) {
+					if (player.weapon.isDual() || player.weapon.isHybrid()) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += 2;
+					else flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += 1;
+				}
+			}
             if (player.hasStatusEffect(StatusEffects.BladeDance)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
-            if (flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] > 1 && player.hasPerk(PerkLib.SteelStorm) && !player.hasStatusEffect(StatusEffects.CounterAction) && (dualWeapon || player.weapon == weapons.DAISHO)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
+            if (flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] > 1 && player.hasPerk(PerkLib.SteelStorm) && !player.hasStatusEffect(StatusEffects.CounterAction) && (dualWeapon || player.weapon.isHybrid())) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
+            if (monster.hasStatusEffect(StatusEffects.LookoutUsed)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
         }
         else {
             flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] = 1;
@@ -1729,8 +1745,16 @@ public class Combat extends BaseContent {
 						}
 					}
 				}
+				if (player.hasPerk(PerkLib.BladeDancer)) {
+					if (!dualWeapon && (player.weaponOff.isDual() || player.weaponOff.isHybrid())) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] += 2;
+					if (dualWeapon) {
+						if (player.weaponOff.isDual() || player.weaponOff.isHybrid()) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] += 2;
+						else flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] += 1;
+					}
+				}
 				if (player.hasStatusEffect(StatusEffects.BladeDance)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
-				if (flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] > 1 && player.hasPerk(PerkLib.SteelStorm) && !player.hasStatusEffect(StatusEffects.CounterAction) && (dualWeapon || player.weaponOff == weapons.DAISHO)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
+				if (flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] > 1 && player.hasPerk(PerkLib.SteelStorm) && !player.hasStatusEffect(StatusEffects.CounterAction) && (dualWeapon || player.weaponOff.isHybrid())) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
+				if (monster.hasStatusEffect(StatusEffects.LookoutUsed)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
 			}
 			else {
 				flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] = 1;
@@ -2912,12 +2936,18 @@ public class Combat extends BaseContent {
 	}
 	public function meleeDualAccuracyPenaltyMain():Number {
 		var accmdwmodpenalty1:Number = -50;
-		//if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 20;
+		if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 20;
+		if (player.weapon.isDualMedium() && player.hasPerk(PerkLib.QuadWieldNormal)) accmdwmodpenalty1 += 20;
+		if (player.weapon.isDualLarge() && player.hasPerk(PerkLib.QuadWieldLarge)) accmdwmodpenalty1 += 20;
+		if (player.weapon.isDualMassive() && player.hasPerk(PerkLib.QuadWieldMassive)) accmdwmodpenalty1 += 20;
 		return accmdwmodpenalty1;
 	}
 	public function meleeDualAccuracyPenaltyOff():Number {
 		var accmdwmodpenalty2:Number = -50;
-		//if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 20;
+		if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 20;
+		if (player.weaponOff.isDualMedium() && player.hasPerk(PerkLib.QuadWieldNormal)) accmdwmodpenalty2 += 20;
+		if (player.weaponOff.isDualLarge() && player.hasPerk(PerkLib.QuadWieldLarge)) accmdwmodpenalty2 += 20;
+		if (player.weaponOff.isDualMassive() && player.hasPerk(PerkLib.QuadWieldMassive)) accmdwmodpenalty2 += 20;
 		return accmdwmodpenalty2;
 	}
 
@@ -2931,12 +2961,18 @@ public class Combat extends BaseContent {
 	}
 	public function meleeDualDamagePenaltyMain():Number {
 		var dmgmdwmodpenalty1:Number = -0.49;
-		//if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty1 += 0.;
+		if (player.weapon.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) dmgmdwmodpenalty1 += 0.4;
+		if (player.weapon.isDualMedium() && player.hasPerk(PerkLib.QuadWieldNormal)) dmgmdwmodpenalty1 += 0.4;
+		if (player.weapon.isDualLarge() && player.hasPerk(PerkLib.QuadWieldLarge)) dmgmdwmodpenalty1 += 0.4;
+		if (player.weapon.isDualMassive() && player.hasPerk(PerkLib.QuadWieldMassive)) dmgmdwmodpenalty1 += 0.4;
 		return dmgmdwmodpenalty1;
 	}
 	public function meleeDualDamagePenaltyOff():Number {
 		var dmgmdwmodpenalty2:Number = -0.49;
-		//if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) accmdwmodpenalty2 += 0.;
+		if (player.weaponOff.isDualSmall() && player.hasPerk(PerkLib.QuadWieldSmall)) dmgmdwmodpenalty2 += 0.4;
+		if (player.weaponOff.isDualMedium() && player.hasPerk(PerkLib.QuadWieldNormal)) dmgmdwmodpenalty2 += 0.4;
+		if (player.weaponOff.isDualLarge() && player.hasPerk(PerkLib.QuadWieldLarge)) dmgmdwmodpenalty2 += 0.4;
+		if (player.weaponOff.isDualMassive() && player.hasPerk(PerkLib.QuadWieldMassive)) dmgmdwmodpenalty2 += 0.4;
 		return dmgmdwmodpenalty2;
 	}
 
@@ -7410,9 +7446,12 @@ public class Combat extends BaseContent {
         var critDamage:Number = calculateCritDamage();
         var hitCounter:int = 0;
         if (player.weapon is Tidarion) meleeDamageNoLagMain = 0; //recalc damage for current mana.. okay, get it, multi-attackers-fuckers!
-        var boolSwiftCast:Boolean = player.hasPerk(PerkLib.SwiftCasting) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && (player.isOneHandedWeapons() || player.weapon == weapons.ATWINSCY || player.weaponOff == weapons.ATWINSCY || (player.weapon == weapons.HATWINSCY && player.weaponOff == weapons.HATWINSCY) || (player.weapon.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weapon.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip))) && player.isHavingFreeOffHand() && !player.isFeralCombat();
+        var boolSwiftCast:Boolean = player.hasPerk(PerkLib.SwiftCasting) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && (player.isOneHandedWeapons() || player.weapon == weapons.ATWINSCY || player.weaponOff == weapons.ATWINSCY || (player.weapon == weapons.HATWINSCY && player.weaponOff == weapons.HATWINSCY) ||
+									(player.weapon.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weapon.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip))) && player.isHavingFreeOffHand() && !player.isFeralCombat();
         var boolLifeLeech:Boolean = player.hasPerk(PerkLib.LifeLeech) && player.isFistOrFistWeapon();
         var boolFistingIs300Bucks:Boolean = (player.isFistOrFistWeapon() && (player.shield.isNothing || (player.shield == shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dagger and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dual Daggers")) || player.isFeralCombat());
+		var boolFiendishConcentration1a:Boolean = !player.weapon.isNothing && player.weaponOff.isNothing && (player.weapon.isSingleSmall() || player.weapon.isSingleMedium() || (player.weapon.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weapon.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip)));
+		var boolFiendishConcentration1:Boolean = player.hasPerk(PerkLib.FiendishConcentration) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && player.hasFourArms() && ((player.weapon.isDualWielded() && (!player.weapon.isDual() || !player.weaponOff.isDual())) || boolFiendishConcentration1a) && !player.isFeralCombat(); 
 		for(var i:int = 1; i <= flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND]; i++){
             damage = 0;
             if (rand(100) < accMelee) { // Attack hits... do stuff
@@ -7841,30 +7880,38 @@ public class Combat extends BaseContent {
                 WrathWeaponsProc();
                 heroBaneProc(damage);
                 EruptingRiposte();
-                if (boolSwiftCast && !player.statStore.hasBuff("Supercharged")) {
+                if ((boolSwiftCast || boolFiendishConcentration1) && !player.statStore.hasBuff("Supercharged")) {
                     if (flags[kFLAGS.ELEMENTAL_MELEE] == 1 && CombatAbilities.WhitefireSwiftcast.isUsable) {
                         CombatAbilities.WhitefireSwiftcast.perform();
+						if (CombatAbilities.WhitefireSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.WhitefireSwiftcast.perform();
                     }
                     if (flags[kFLAGS.ELEMENTAL_MELEE] == 2 && CombatAbilities.IceSpikeSwiftcast.isUsable) {
                         CombatAbilities.IceSpikeSwiftcast.perform();
+                        if (CombatAbilities.IceSpikeSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.IceSpikeSwiftcast.perform();
                     }
                     if (flags[kFLAGS.ELEMENTAL_MELEE] == 3 && CombatAbilities.LightningBoltSwiftcast.isUsable) {
                         CombatAbilities.LightningBoltSwiftcast.perform();
+                        if (CombatAbilities.LightningBoltSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.LightningBoltSwiftcast.perform();
                     }
                     if (flags[kFLAGS.ELEMENTAL_MELEE] == 4 && CombatAbilities.DarknessShardSwiftcast.isUsable) {
                         CombatAbilities.DarknessShardSwiftcast.perform();
+                        if (CombatAbilities.DarknessShardSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.DarknessShardSwiftcast.perform();
                     }
                     if (flags[kFLAGS.ELEMENTAL_MELEE] == 5 && CombatAbilities.WaterBallSwiftcast.isUsable) {
                         CombatAbilities.WaterBallSwiftcast.perform();
+                        if (CombatAbilities.WaterBallSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.WaterBallSwiftcast.perform();
                     }
                     if (flags[kFLAGS.ELEMENTAL_MELEE] == 6 && CombatAbilities.WindBulletSwiftcast.isUsable) {
                         CombatAbilities.WindBulletSwiftcast.perform();
+                        if (CombatAbilities.WindBulletSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.WindBulletSwiftcast.perform();
                     }
                     if (flags[kFLAGS.ELEMENTAL_MELEE] == 7 && CombatAbilities.StalagmiteSwiftcast.isUsable) {
                         CombatAbilities.StalagmiteSwiftcast.perform();
+                        if (CombatAbilities.StalagmiteSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.StalagmiteSwiftcast.perform();
                     }
                     if (flags[kFLAGS.ELEMENTAL_MELEE] == 8 && CombatAbilities.AcidSpraySwiftcast.isUsable) {
                         CombatAbilities.AcidSpraySwiftcast.perform();
+                        if (CombatAbilities.AcidSpraySwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.AcidSpraySwiftcast.perform();
                     }
                 }
                 if (boolLifeLeech) {
@@ -8001,7 +8048,9 @@ public class Combat extends BaseContent {
         var critDamage:Number = calculateCritDamageOff();
         var hitCounter:int = 0;
         if (player.weaponOff is Tidarion) meleeDamageNoLagOff = 0; //recalc damage for current mana.. okay, get it, multi-attackers-fuckers!
-        for(var i:int = 1; i <= flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND]; i++){
+        var boolFiendishConcentration2a:Boolean = player.weapon.isNothing && !player.weaponOff.isNothing && (player.weaponOff.isSingleSmall() || player.weaponOff.isSingleMedium() || (player.weaponOff.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weaponOff.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip)));
+		var boolFiendishConcentration2:Boolean = player.hasPerk(PerkLib.FiendishConcentration) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && player.hasFourArms() && boolFiendishConcentration2a && !player.isFeralCombat(); 
+		for(var i:int = 1; i <= flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND]; i++){
             damage = 0;
             if (rand(100) < accMelee) { // Attack hits... do stuff
                 //  get the raw damage value here
@@ -8360,6 +8409,40 @@ public class Combat extends BaseContent {
                 WrathWeaponsProc();
                 heroBaneProc(damage);
                 EruptingRiposte();
+                if (boolFiendishConcentration2 && !player.statStore.hasBuff("Supercharged")) {
+                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 1 && CombatAbilities.WhitefireSwiftcast.isUsable) {
+                        CombatAbilities.WhitefireSwiftcast.perform();
+						if (CombatAbilities.WhitefireSwiftcast.isUsable && boolFiendishConcentration2a) CombatAbilities.WhitefireSwiftcast.perform();
+                    }
+                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 2 && CombatAbilities.IceSpikeSwiftcast.isUsable) {
+                        CombatAbilities.IceSpikeSwiftcast.perform();
+                        if (CombatAbilities.IceSpikeSwiftcast.isUsable && boolFiendishConcentration2a) CombatAbilities.IceSpikeSwiftcast.perform();
+                    }
+                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 3 && CombatAbilities.LightningBoltSwiftcast.isUsable) {
+                        CombatAbilities.LightningBoltSwiftcast.perform();
+                        if (CombatAbilities.LightningBoltSwiftcast.isUsable && boolFiendishConcentration2a) CombatAbilities.LightningBoltSwiftcast.perform();
+                    }
+                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 4 && CombatAbilities.DarknessShardSwiftcast.isUsable) {
+                        CombatAbilities.DarknessShardSwiftcast.perform();
+                        if (CombatAbilities.DarknessShardSwiftcast.isUsable && boolFiendishConcentration2a) CombatAbilities.DarknessShardSwiftcast.perform();
+                    }
+                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 5 && CombatAbilities.WaterBallSwiftcast.isUsable) {
+                        CombatAbilities.WaterBallSwiftcast.perform();
+                        if (CombatAbilities.WaterBallSwiftcast.isUsable && boolFiendishConcentration2a) CombatAbilities.WaterBallSwiftcast.perform();
+                    }
+                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 6 && CombatAbilities.WindBulletSwiftcast.isUsable) {
+                        CombatAbilities.WindBulletSwiftcast.perform();
+                        if (CombatAbilities.WindBulletSwiftcast.isUsable && boolFiendishConcentration2a) CombatAbilities.WindBulletSwiftcast.perform();
+                    }
+                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 7 && CombatAbilities.StalagmiteSwiftcast.isUsable) {
+                        CombatAbilities.StalagmiteSwiftcast.perform();
+                        if (CombatAbilities.StalagmiteSwiftcast.isUsable && boolFiendishConcentration2a) CombatAbilities.StalagmiteSwiftcast.perform();
+                    }
+                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 8 && CombatAbilities.AcidSpraySwiftcast.isUsable) {
+                        CombatAbilities.AcidSpraySwiftcast.perform();
+                        if (CombatAbilities.AcidSpraySwiftcast.isUsable && boolFiendishConcentration2a) CombatAbilities.AcidSpraySwiftcast.perform();
+                    }
+                }
                 //Damage Unarmed Strike chaining combos. GRABBING STYLE AND JABBING STYLE
                 var extraHitChance:Number;
                 var extraHitDamage:Number;
@@ -10384,6 +10467,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.SharedPower) && player.perkv1(PerkLib.SharedPower) > 0) damage *= (1+(0.1*player.perkv1(PerkLib.SharedPower)));
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv1(StatusEffects.ArtfulDestruction)));
 		if ((monster.hasPerk(PerkLib.EnemyGhostType) || monster.hasPerk(PerkLib.PhysicalDamageResistance)) && !canLayerSwordIntentAuraMH()) damage = 0;
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -10414,6 +10498,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+			if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,2,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,0,1,0,0);
+			}
             monster.HP -= damage;
 			var WrathGains:Number = 0;
             var BonusWrathMult:Number = 1;
@@ -10544,6 +10632,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
@@ -10576,6 +10665,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+			if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -10647,7 +10740,8 @@ public class Combat extends BaseContent {
         if (player.shieldName == "Nekonomicon") damage *= 2;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
-        if (player.hasMutation(IMutationsLib.HellhoundFireBallsIM) && player.perkv1(IMutationsLib.HellhoundFireBallsIM) >= 2) {
+        if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
+		if (player.hasMutation(IMutationsLib.HellhoundFireBallsIM) && player.perkv1(IMutationsLib.HellhoundFireBallsIM) >= 2) {
             var cumQM:Number = 0.01 * player.lust100;
 			if (player.perkv1(IMutationsLib.HellhoundFireBallsIM) >= 3) cumQM *= 2;
 			damage *= (1 + cumQM);
@@ -10685,6 +10779,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+			if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -10723,6 +10821,7 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.WalpurgisIzaliaRobe)) damage = damage / 100;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
@@ -10752,6 +10851,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+            if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -10787,6 +10890,7 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.WalpurgisIzaliaRobe)) damage = damage / 100;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
@@ -10816,6 +10920,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+            if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -10848,6 +10956,7 @@ public class Combat extends BaseContent {
         if (player.shieldName == "Nekonomicon") damage *= 2;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
@@ -10877,6 +10986,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+            if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -10900,6 +11013,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
@@ -10929,6 +11043,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+            if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -10952,6 +11070,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
@@ -10981,6 +11100,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+            if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -11004,6 +11127,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
@@ -11033,6 +11157,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+            if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -11056,6 +11184,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
@@ -11085,6 +11214,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+            if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -11108,6 +11241,7 @@ public class Combat extends BaseContent {
 		if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
@@ -11137,6 +11271,10 @@ public class Combat extends BaseContent {
             if(damage<=0){
                 return 0;
             }
+            if (player.hasPerk(PerkLib.ArtfulDestruction)) {
+				if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) < 40) player.addStatusValue(StatusEffects.ArtfulDestruction,1,1);
+				else player.createStatusEffect(StatusEffects.ArtfulDestruction,1,0,0,0);
+			}
             monster.HP -= damage;
             var BonusWrathMult:Number = 1;
             if (monster.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult = 1.20;
@@ -11395,7 +11533,7 @@ public class Combat extends BaseContent {
         if (monster.XP <= 0) monster.XP = 0;
         if (!monster.hasPerk(PerkLib.NoExpGained))
         {
-            if (flags[kFLAGS.EXP_BANKING] == 1) player.XP += monster.XP;
+            if (flags[kFLAGS.EXP_BANKING] == 0) player.XP += monster.XP;
             else {
                 // If pc exp is lower then the cap award exp else do nothing.
                 // This is to avoid lowering exp if player had higher from a tribulation or a treasure allowing player exp
@@ -11735,10 +11873,13 @@ public class Combat extends BaseContent {
 		if (player.hasStatusEffect(StatusEffects.SubZeroConditions) && !player.hasPerk(PerkLib.ColdAffinity)) SceneLib.glacialRift.SubZeroConditionsTick();
         if (monster is Incels) (monster as Incels).DraftSupportCheck();
         if (player.hasStatusEffect(StatusEffects.UnderwaterOutOfAir)) {
-            var deoxigen:Number = 0;
-            deoxigen += (player.maxHP() * 0.05);
-            deoxigen = player.takePhysDamage(deoxigen);
-            outputText("<b>You are running out of oxygen. You need to finish this fight and fast before you lose consciousness. <b>([font-damage]" + deoxigen + "[/font])</b></b>\n\n");
+			if (player.statusEffectv1(StatusEffects.UnderwaterOutOfAir) > 0) player.addStatusValue(StatusEffects.UnderwaterOutOfAir, 1, -1);
+			else {
+				var deoxigen:Number = 0;
+				deoxigen += (player.maxHP() * 0.05);
+				deoxigen = player.takePhysDamage(deoxigen);
+				outputText("<b>You are running out of oxygen. You need to finish this fight and fast before you lose consciousness. <b>([font-damage]" + deoxigen + "[/font])</b></b>\n\n");
+			}
         }
 		if (player.hasStatusEffect(StatusEffects.UnderwaterAndIgnis)) {
 			var ignishurt:Number = 0;
@@ -13715,7 +13856,11 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		var purgeSuccess:Number = 100;
 		if (player.hasPerk(PerkLib.Medicine)) purgeSuccess -= 15;
 		if (player.hasPerk(PerkLib.KingOfTheJungle)) purgeSuccess -= 100;
-		if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) purgeSuccess -= (10 * player.perkv1(IMutationsLib.HumanMetabolismIM));
+		if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) {
+			purgeSuccess -= (10 * player.perkv1(IMutationsLib.HumanMetabolismIM));
+			if (player.perkv1(IMutationsLib.HumanLungsIM) >= 1) purgeSuccess -= (1 * (player.perkv1(IMutationsLib.HumanMetabolismIM) + 1));
+			if (player.perkv1(IMutationsLib.HumanLungsIM) >= 1) purgeSuccess -= 1;
+		}
 		if (purgeSuccess < 0) purgeSuccess = 0;
 		return purgeSuccess;
 	}
@@ -13927,6 +14072,12 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
 		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxPercentRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
+		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
+			var hshim1:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 3 && player.racialScore(Races.HUMAN) > 17) hshim1 += 1;
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 4 && player.racialScore(Races.HUMAN) > 17) hshim1 += 4;
+			maxPercentRegen += hshim1;
+		}
 		if (player.hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) maxPercentRegen += 1 * (player.perkv1(IMutationsLib.SlimeMetabolismIM)-2);
         if ((player.hasPerk(PerkLib.HydraRegeneration) || player.perkv1(IMutationsLib.HydraBloodIM) >= 1) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) {
 			if (player.hasPerk(PerkLib.HydraRegeneration)) maxPercentRegen += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
@@ -14004,6 +14155,12 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxRegen += 10;
 		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
+		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
+			var hshim2:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim2 += 1;
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim2 += 4;
+			maxRegen += hshim2;
+		}
 		if (player.hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) maxRegen += 1 * (player.perkv1(IMutationsLib.SlimeMetabolismIM)-2);
         if ((player.hasPerk(PerkLib.HydraRegeneration) || player.perkv1(IMutationsLib.HydraBloodIM) >= 1) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) {
 			if (player.hasPerk(PerkLib.HydraRegeneration)) maxRegen += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
@@ -14081,6 +14238,13 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 2 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 5;
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 3 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 5;
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 4 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 5;
+		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
+			var hshim3:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim3 += 1;
+			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim3 += 4;
+			fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.01 * hshim3);
+		}
+		if (player.hasPerk(PerkLib.OperraticOperator)) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.025);
         if (player.hasPerk(PerkLib.HydraRegeneration) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) fatiguecombatrecovery += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
 		if (player.hasPerk(PerkLib.TrollRegeneration) && !player.hasStatusEffect(StatusEffects.TrollRegenerationDisabled)) fatiguecombatrecovery += 6;
         if (player.hasPerk(PerkLib.JobGunslinger)) fatiguecombatrecovery += 1;
@@ -14673,6 +14837,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             player.createStatusEffect(StatusEffects.SoulDrill1, 0, 0, 0, 0);
         }
 		if (player.statStore.hasBuff("Turqouise Holy Band")) player.createStatusEffect(StatusEffects.TurquoiseBandProtection, 0, 0, 0, 0);
+		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 4 && flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] > 0) flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] = 0;
 	}
 
     public function display():void {
@@ -15232,8 +15397,15 @@ public function combatIsOver(goToPlayerMenu:Boolean = true):Boolean {
         return true;
     }
     if (Math.round(player.HP) <= Math.round(player.minHP())) {
-        doNext(endHpLoss);
-        return true;
+        if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 4 && flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] == 0) {
+			flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] = 1;
+			player.HP = 1;
+			return false;
+		}
+		else {
+			doNext(endHpLoss);
+			return true;
+		}
     }
     if (player.lust >= player.maxOverLust() && !player.statStore.hasBuff("Supercharged") && !tyrantiaTrainingExtension()) {
         doNext(endLustLoss);
@@ -15867,6 +16039,7 @@ private function StraddleTeaseRe():void {
 		if (player.hasPerk(PerkLib.GreaterGrapple)) straddleDamage *= 1.4;
 		else straddleDamage *= 1.2;
 	}
+	if (player.hasPerk(PerkLib.ImpossibleHandTechnique)) straddleDamage *= 4;
     straddleDamage = combat.teases.fueledByDesireDamageBonus(straddleDamage);
     //Determine if critical tease!
     var randomcrit:Boolean = false;
@@ -16476,6 +16649,7 @@ public function ScyllaTease():void {
             if (player.hasPerk(PerkLib.UnbreakableBind)) damagemultiplier += 1;
             if (player.hasStatusEffect(StatusEffects.ControlFreak)) damagemultiplier += (2 - player.statusEffectv1(StatusEffects.ControlFreak));
             if (player.hasPerk(PerkLib.Sadomasochism)) damage *= player.sadomasochismBoost();
+			if (player.hasPerk(PerkLib.ImpossibleHandTechnique)) damage *= 4;
             damage *= damagemultiplier;
             damage = combat.teases.fueledByDesireDamageBonus(damage);
             //Determine if critical tease!
@@ -19141,6 +19315,7 @@ public function BleedDamageBoost(isARacialAbility:Boolean = false):Number {
     if (player.hasPerk(PerkLib.ThirstForBlood)) BleedMod += 0.25;
     if (player.hasPerk(PerkLib.KingOfTheJungle)) BleedMod += 0.2;
     if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 1) BleedMod += (0.25 * player.perkv1(IMutationsLib.SharkOlfactorySystemIM));
+	if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) BleedMod += (0.002 * spellMod());
     if (isARacialAbility) BleedMod *= combat.RacialParagonAbilityBoost();
     return BleedMod;
 }

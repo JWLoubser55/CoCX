@@ -161,7 +161,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const ArmsPhoenix: Transformation 			= arms.ArmsPhoenix.registerTf(AS_ARMS, AE_PHOENIX);
 	public const ArmsPig: Transformation 				= arms.ArmsPig.registerTf(AS_ARMS, AE_PIG);
 	public const ArmsPlant: Transformation 				= arms.ArmsPlant.registerTf(AS_ARMS, AE_PLANT);
-	public const ArmsPlant2: Transformation 			= arms.ArmsPlant2.registerTf(AS_ARMS, AE_YGGDRASIL);
+	public const ArmsPlant2: Transformation 			= arms.ArmsPlant2.registerTf(AS_ARMS, AE_PLANT);
 	public const ArmsRaccoon: Transformation 			= arms.ArmsRaccoon.registerTf(AS_ARMS, AE_RACCOON);
 	public const ArmsRaiju: Transformation 				= arms.ArmsRaiju.registerTf(AS_ARMS, AE_RAIJU);
 	public const ArmsRaijuPaws: Transformation 			= arms.ArmsRaijuPaws.registerTf(AS_ARMS, AE_RAIJU);
@@ -192,6 +192,9 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const ArmsGlacialTroll: Transformation       = arms.ArmsGlacialTroll.registerTf(AS_ARMS, AE_GLACIAL_TROLL);
     public const ArmsShroom: Transformation       		= arms.ArmsShroom.registerTf(AS_ARMS, AE_MYCONID);
     public const ArmsMechanicalDoll: Transformation 	= arms.ArmsMechanicalDoll.registerTf(AS_ARMS, AE_AUTOMATA);
+    public const ArmsYggdrasil: Transformation 			= arms.ArmsYggdrasil.registerTf(AS_ARMS, AE_YGGDRASIL);
+    public const ArmsWerespider: Transformation 		= arms.ArmsWerespider.registerTf(AS_ARMS, AE_WERESPIDER);
+    public const ArmsMarilith: Transformation 			= arms.ArmsMarilith.registerTf(AS_ARMS, AE_MARILITH);
 
 
 //ASS
@@ -472,6 +475,9 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const EyesMoth: Transformation           = eyes.EyesMoth.registerTf(AS_EYES, AE_MOTH);
     public const EyesGremlin: Transformation        = eyes.EyesGremlin.registerTf(AS_EYES, AE_GREMLIN);
     public const EyesAutomata: Transformation       = eyes.EyesAutomata.registerTf(AS_EYES, AE_AUTOMATA);
+	public const EyesYggdrasil: Transformation		= eyes.EyesYggdrasil.registerTf(AS_EYES, AE_YGGDRASIL);
+	public const EyesMarilith: Transformation		= eyes.EyesMarilith.registerTf(AS_EYES, AE_MARILITH);
+	public const EyeWerespider: Transformation		= eyes.EyeWerespider.registerTf(AS_EYES, AE_WERESPIDER);
 //=================================
 //                                =
 //   EYE COLORS                   =
@@ -496,6 +502,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const EyesFireSnailColors: Transformation 		= eyes.EyesFireSnailColors;
 	public const EyesFenrirColor: Transformation 			= eyes.EyesFenrirColor;
 	public const EyesDemonColors: Transformation 			= eyes.EyesDemonColors;
+	public const EyesYggdrasilColors: Transformation 		= eyes.EyesYggdrasilColors;
 	public const EyesSpiderAndMutagenInt: Transformation 	= eyes.EyesSpiderAndMutagenInt;
 
 
@@ -810,6 +817,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const LowerBodyGlacialTroll:Transformation           = lowerBody.LowerBodyGlacialTroll.registerTf(AS_LEGS, AE_GLACIAL_TROLL);
     public const LowerBodyShroomShirt:Transformation           	= lowerBody.LowerBodyShroomShirt.registerTf(AS_LEGS, AE_MYCONID);
     public const LowerBodyMechanicalDoll:Transformation         = lowerBody.LowerBodyMechanicalDoll.registerTf(AS_LEGS, AE_AUTOMATA);
+    public const LowerBodyWerespider: Transformation 			= lowerBody.LowerBodyWerespider.registerTf(AS_LEGS, AE_WERESPIDER);
 
 
 //OTHER ( SPECIAL )
@@ -958,6 +966,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const SkinPatternAnubis:Transformation 			    = skin.SkinPatternAnubis.registerTf(AS_SKIN_PATTERN, AE_ANUBIS);
     public const SkinPatternBioluminescence:Transformation 		= skin.SkinPatternBioluminescence.registerTf(AS_SKIN_PATTERN, AE_ABYSSAL_SHARK);//TfMultiple(AS_
     public const SkinPatternCircuit:Transformation 			    = skin.SkinPatternCircuit.registerTf(AS_SKIN_PATTERN, AE_AUTOMATA);
+    public const SkinPatternDemonicPleasureRune:Transformation	= skin.SkinPatternDemonicPleasureRune.registerTfMultiple(AS_SKIN_PATTERN, AE_DEMON, AE_MARILITH);
 
 
 //TAIL
@@ -976,7 +985,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const TailManticore: Transformation 					= tail.TailManticore.registerTf(AS_TAIL, AE_MANTICORE);
 	public const TailBurning: Transformation 					= tail.TailBurning.registerTf(AS_TAIL, AE_HINEZUMI);
 	public const TailTwinkasha: Transformation 					= tail.TailTwinkasha.registerTf(AS_TAIL, AE_HELLCAT);
-	public const TailCat: Transformation 						= tail.TailCat.registerTfMultiple(AS_TAIL, AE_CAT< AE_DRAGONNE);
+	public const TailCat: Transformation 						= tail.TailCat.registerTfMultiple(AS_TAIL, AE_CAT, AE_DRAGONNE);
 	public const TailNekomataOneThirdForked: Transformation 	= tail.TailNekomataOneThirdForked.registerTf(AS_TAIL, AE_NEKOMATA);
 	public const TailNekomataTwoThirdsForked: Transformation 	= tail.TailNekomataTwoThirdsForked.registerTf(AS_TAIL, AE_NEKOMATA);
 	public const TailCat2nd: Transformation 					= tail.TailCat2nd.registerTf(AS_TAIL, AE_NEKOMATA);
@@ -1166,6 +1175,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const WingsPlant: Transformation 					= wings.WingsPlant.registerTf(AS_WINGS, AE_PLANT);
 	public const WingsYggdrasilLarge: Transformation 			= wings.WingsYggdrasilLarge.registerTf(AS_WINGS, AE_YGGDRASIL);
 	public const WingsYggdrasilHuge: Transformation 			= wings.WingsYggdrasilHuge.registerTf(AS_WINGS, AE_YGGDRASIL);
+	public const WingsYggdrasilSextupleHuge: Transformation 	= wings.WingsYggdrasilSextupleHuge.registerTf(AS_WINGS, AE_YGGDRASIL);
 	public const WingsYggdrasilQuadrupleHuge: Transformation 	= wings.WingsYggdrasilQuadrupleHuge.registerTf(AS_WINGS, AE_YGGDRASIL);
     public const WingsMothSmall: Transformation                 = wings.WingsMothSmall.registerTf(AS_WINGS, AE_MOTH);
     public const WingsMothLarge: Transformation                 = wings.WingsMothLarge.registerTf(AS_WINGS, AE_MOTH);
@@ -1289,4 +1299,4 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 		trace("\n"+dump.join("\n"));
 	}
 }
-}
+}

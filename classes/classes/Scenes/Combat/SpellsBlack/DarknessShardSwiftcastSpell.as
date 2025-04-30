@@ -22,7 +22,7 @@ public class DarknessShardSwiftcastSpell extends AbstractBlackSpell {
 	
 	override public function get isKnown():Boolean {
 		return player.hasStatusEffect(StatusEffects.KnowsDarknessShard) &&
-				player.hasPerk(PerkLib.SwiftCasting);
+				(player.hasPerk(PerkLib.SwiftCasting) || player.hasPerk(PerkLib.FiendishConcentration));
 	}
 	
 	override public function calcCooldown():int {

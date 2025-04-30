@@ -3167,6 +3167,12 @@ public class Creature extends Utils
 			return cocks.length >= 1 ? true : vaginas.length >= 1 ? ((vaginas[0].type == VaginaClass.SHROOM) && clitLength >= 5) : false;
 		}
 
+		public function hasCockCockOnly():Boolean
+		{
+			//Only checks for cocks do not check for clitcock
+			return cocks.length >= 1;
+		}
+
 		public function hasSockRoom():Boolean
 		{
 			var index:int = cocks.length;
@@ -3251,7 +3257,7 @@ public class Creature extends Utils
 		{
 			if (gills.type != Gills.NONE || lowerBody == LowerBody.SCYLLA || lowerBody == LowerBody.KRAKEN || lowerBody == LowerBody.MELKIE || tailType == Tail.ARIGEAN_GREEN || tailType == Tail.ARIGEAN_RED || tailType == Tail.ARIGEAN_YELLOW || tailType == Tail.ARIGEAN_PRINCESS ||
 				rearBody.type == RearBody.ORCA_BLOWHOLE || hasStatusEffect(StatusEffects.Airweed) || game.player.necklaceName == "Magic coral and pearl necklace" || game.player.headjewelryName == "Aqua breather" ||
-				(game.player.isInGoblinMech() && game.player.hasKeyItem("Safety bubble") >= 0) || game.player.hasPerk(PerkLib.AffinityUndine) || game.player.hasPerk(PerkLib.Undeath))
+				(game.player.isInGoblinMech() && game.player.hasKeyItem("Safety bubble") >= 0) || (perkv1(IMutationsLib.HumanLungsIM) >= 4 && game.player.racialScore(Races.HUMAN) > 17) || game.player.hasPerk(PerkLib.AffinityUndine) || game.player.hasPerk(PerkLib.Undeath))
 				return true;	//efekt of itemów dające oddych. pod wodą
 			return false;
 		}
@@ -3847,14 +3853,19 @@ public class Creature extends Utils
 			return eggs() >= 10 && hasPerk(PerkLib.AntOvipositor) && tail.type == Tail.ANT_ABDOMEN;
 		}
 
+		public function canOvipositMoth():Boolean
+		{
+			return eggs() >= 10 && hasPerk(PerkLib.MothOvipositor) && tail.type == Tail.MOTH_ABDOMEN;
+		}
+
 		public function canOviposit():Boolean
 		{
-			return canOvipositSpider() || canOvipositBee() || canOvipositMantis() || canOvipositAnt();
+			return canOvipositSpider() || canOvipositBee() || canOvipositMantis() || canOvipositAnt() || canOvipositMoth();
 		}
 
 		public function eggs():int
 		{
-			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor))
+			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor))
 				return -1;
 			else if (hasPerk(PerkLib.SpiderOvipositor))
 				return perkv1(PerkLib.SpiderOvipositor);
@@ -3862,6 +3873,8 @@ public class Creature extends Utils
 				return perkv1(PerkLib.BeeOvipositor);
 			else if (hasPerk(PerkLib.MantisOvipositor))
 				return perkv1(PerkLib.MantisOvipositor);
+			else if (hasPerk(PerkLib.MothOvipositor))
+				return perkv1(PerkLib.MothOvipositor);
 			else
 				return perkv1(PerkLib.AntOvipositor);
 			}
@@ -3879,7 +3892,7 @@ public class Creature extends Utils
 		}
 
 		public function dumpEggs():void {
-			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor))
+			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor))
 				return;
 			if (hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) {
 				addPerkValue(PerkLib.BeeOvipositor, 1, -25);
@@ -3892,7 +3905,7 @@ public class Creature extends Utils
 		}
 
 		private function getOviPerk():PerkType {
-			var oviPerks:Array = [PerkLib.SpiderOvipositor, PerkLib.BeeOvipositor, PerkLib.MantisOvipositor, PerkLib.AntOvipositor];
+			var oviPerks:Array = [PerkLib.SpiderOvipositor, PerkLib.BeeOvipositor, PerkLib.MantisOvipositor, PerkLib.AntOvipositor, PerkLib.MothOvipositor];
 			for each (var perk:PerkType in oviPerks)
 				if (hasPerk(perk)) return perk;
 			return null;

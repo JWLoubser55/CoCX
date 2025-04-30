@@ -323,6 +323,7 @@ public class Wings extends SaveableBodyPart {
 		canFly: true,
 		physical: true
 	});
+	
 	public static const YGGDRASIL_LARGE: int = 39;
 	EnumValue.add(Types, YGGDRASIL_LARGE, "YGGDRASIL_LARGE", {
 		name:"large yggdrasil",
@@ -332,6 +333,7 @@ public class Wings extends SaveableBodyPart {
 		canFly: true,
 		physical: true
 	});
+	
 	public static const YGGDRASIL_HUGE: int = 40;
 	EnumValue.add(Types, YGGDRASIL_HUGE, "YGGDRASIL_HUGE", {
 		name:"large majestic yggdrasil",
@@ -341,6 +343,7 @@ public class Wings extends SaveableBodyPart {
 		canFly: true,
 		physical: true
 	});
+	
 	public static const YGGDRASIL_HUGE_2: int = 41;
 	EnumValue.add(Types, YGGDRASIL_HUGE_2, "YGGDRASIL_HUGE_2", {
 		name:"two large pairs of majestic yggdrasil",
@@ -370,6 +373,7 @@ public class Wings extends SaveableBodyPart {
 		feathers: true,
 		physical: true
 	});
+	
 	public static const PUREDEVILFEATHER: int = 44;
 	EnumValue.add(Types, PUREDEVILFEATHER, "PUREDEVILFEATHER", {
 		name:"puredevil",
@@ -378,22 +382,25 @@ public class Wings extends SaveableBodyPart {
 		canFly: true,
 		physical: true
 	});
+	
 	public static const MOTH_SMALL: int = 45;
 	EnumValue.add(Types, MOTH_SMALL, "MOTH_SMALL", {
-		name:"moth",
+		name:"small moth-like",
 		desc:"fuzzy, small",
 		appearanceDesc: "A pair of small [chitin color1] fuzzy satin covered insectile wings.",
 		canFly: true,
 		physical: true
 	});
+	
 	public static const MOTH_LARGE: int = 46;
 	EnumValue.add(Types, MOTH_LARGE, "MOTH_LARGE", {
-		name:"moth",
+		name:"large moth-like",
 		desc:"fuzzy, large",
 		appearanceDesc: "A pair of large [chitin color1] fuzzy satin covered insectile wings.",
 		canFly: true,
 		physical: true
 	});
+	
 	public static const JET_THRUSTERS: int = 47;
 	EnumValue.add(Types, JET_THRUSTERS, "JET_THRUSTERS", {
 		name:"jet thrusters",
@@ -401,6 +408,17 @@ public class Wings extends SaveableBodyPart {
 		canFly: true,
 		physical: false
 	});
+	
+	public static const YGGDRASIL_HUGE_3: int = 48;
+	EnumValue.add(Types, YGGDRASIL_HUGE_3, "YGGDRASIL_HUGE_3", {
+		name:"three large pairs of majestic yggdrasil",
+		desc:"three large, majestic pairs of plant-like",
+		appearanceDesc: "Three pairs of massive wings of wood extend from your shoulders, the leafy plumage shivering with each step you take. The air around you is filled with the rustling, like the wind through a dense forest canopy. Now far too large to hide, you keep your woodland wings unfurled behind you, a grand, capelike display.",
+		wingSlap: true,
+		canFly: true,
+		physical: true
+	});
+	
 	public var desc:String = "non-existent";
 	public function Wings(creature:Creature) {
 		super(creature, "wings", []);

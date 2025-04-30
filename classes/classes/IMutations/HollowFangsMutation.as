@@ -5,6 +5,7 @@
 package classes.IMutations
 {
 import classes.PerkClass;
+import classes.BodyParts.Face;
 import classes.IMutationPerkType;
 import classes.Creature;
 import classes.Player;
@@ -48,9 +49,9 @@ public class HollowFangsMutation extends IMutationPerkType
                     this.requireMouthMutationSlot()
                     .requireMutation(IMutationsLib.VampiricBloodstreamIM)
                     .requireCustomFunction(function (player:Player):Boolean {
-                        return player.facePart.type == 34;//player.facePart.isAny(Face.VAMPIRE, Face.)
+                        return player.facePart.isAny(Face.VAMPIRE, Face.SPIDER_FANGS);//player.facePart.type == 34
                     }, "Vampire fangs")
-                    .requireAnyRace(Races.VAMPIRE, Races.DRACULA);//, Races.WERESPIDER
+                    .requireAnyRace(Races.VAMPIRE, Races.DRACULA, Races.WERESPIDER);
                 }
                 else{
                     var pLvl:int = pTier * 30;

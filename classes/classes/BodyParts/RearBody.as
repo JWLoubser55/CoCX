@@ -199,7 +199,7 @@ public class RearBody extends BodyPart {
 	public static const MOTH_COLLAR: int = 33;
 	EnumValue.add(Types, MOTH_COLLAR, "MOTH_COLLAR", {
 		name: "moth collar",
-		appearanceDesc: "You have a fluffy collar"
+		appearanceDesc: "Around your neck is a thick fluffy collar of fur reminiscent of a moth's."
 	});
     public static const MINDWARP: int = 34;
     EnumValue.add(Types, MINDWARP, "MINDWARP", {

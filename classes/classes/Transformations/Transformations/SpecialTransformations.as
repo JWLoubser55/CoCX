@@ -45,19 +45,24 @@ public class SpecialTransformations extends MutationsHelper {
 				desc += "<b>Your ovipositor (and eggs) vanish since your body has become less ant-like.</b>";
 				player.removePerk(PerkLib.AntOvipositor);
 			}
+			else if (player.hasPerk(PerkLib.MothOvipositor)) { //Remove dat shit!
+				desc += "<b>Your ovipositor (and eggs) vanish since your body has become less moth-like.</b>";
+				player.removePerk(PerkLib.MothOvipositor);
+			}
 
 			if (doOutput) outputText(desc);
 		},
 		// is present
 		function ():Boolean {
-			return !player.hasPerk(PerkLib.BeeOvipositor) && !player.hasPerk(PerkLib.SpiderOvipositor) && !player.hasPerk(PerkLib.MantisOvipositor) && !player.hasPerk(PerkLib.AntOvipositor);
+			return !player.hasPerk(PerkLib.BeeOvipositor) && !player.hasPerk(PerkLib.SpiderOvipositor) && !player.hasPerk(PerkLib.MantisOvipositor) && !player.hasPerk(PerkLib.AntOvipositor) && !player.hasPerk(PerkLib.MothOvipositor);
 		},
 		// is possible
 		function ():Boolean {
 			return ((player.hasPerk(PerkLib.SpiderOvipositor) && (!player.isDrider() || player.tailType != Tail.SPIDER_ADBOMEN)) ||
 					(player.hasPerk(PerkLib.BeeOvipositor) && player.tailType != Tail.BEE_ABDOMEN) ||
 					(player.hasPerk(PerkLib.MantisOvipositor) && player.tailType != Tail.MANTIS_ABDOMEN) ||
-					(player.hasPerk(PerkLib.AntOvipositor) && player.tailType != Tail.ANT_ABDOMEN));
+					(player.hasPerk(PerkLib.AntOvipositor) && player.tailType != Tail.ANT_ABDOMEN) ||
+					(player.hasPerk(PerkLib.MothOvipositor) && player.tailType != Tail.MOTH_ABDOMEN));
 		}
 	);
 
@@ -76,7 +81,7 @@ public class SpecialTransformations extends MutationsHelper {
 			// is present
 			function ():Boolean {
 				return !InCollection(player.tailType, Tail.BEE_ABDOMEN, Tail.SPIDER_ADBOMEN, Tail.MANTIS_ABDOMEN, Tail.ANT_ABDOMEN) ||
-						player.hasPerk(PerkLib.SpiderOvipositor) || player.hasPerk(PerkLib.BeeOvipositor) || player.hasPerk(PerkLib.MantisOvipositor) || player.hasPerk(PerkLib.AntOvipositor);
+						player.hasPerk(PerkLib.SpiderOvipositor) || player.hasPerk(PerkLib.BeeOvipositor) || player.hasPerk(PerkLib.MantisOvipositor) || player.hasPerk(PerkLib.AntOvipositor) || player.hasPerk(PerkLib.MothOvipositor);
 			}
 	);
 
@@ -181,6 +186,31 @@ public class SpecialTransformations extends MutationsHelper {
 			// is possible
 			function ():Boolean {
 				return !player.hasPerk(PerkLib.AntOvipositor) && player.tailType == Tail.ANT_ABDOMEN;
+			}
+	);
+
+	public const OvipositorMoth:Transformation = new SimpleTransformation("Moth Oviposition",
+			// apply
+			function (doOutput:Boolean):void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.RemoveOvipositor, doOutput);
+				TransformationUtils.applyTFIfNotPresent(transformations.TailMoth, doOutput);
+
+				desc +="[pg]An odd swelling starts in your insectile abdomen, somewhere along the underside.  Curling around, you reach back to your extended, bulbous moth part and run your fingers along the underside.  You gasp when you feel a tender, yielding slit near the end.  As you probe this new orifice, a shock of pleasure runs through you, and a tubular, green, semi-hard appendage drops out, pulsating as heavily as any sexual organ.  <b>The new organ is clearly an ovipositor!</b>  A few gentle prods confirm that it's just as sensitive; you can already feel your internals changing, adjusting to begin the production of unfertilized eggs.  You idly wonder what laying them with your new moth ovipositor will feel like..."+
+						"[pg](<b>Perk Gained:  Moth Ovipositor - Allows you to lay eggs in your foes!</b>)";
+				player.createPerk(PerkLib.MothOvipositor, 0, 0, 0, 0);
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SpecialsMem.getMemory(SpecialsMem.OVIPOSITOR));
+			},
+			// is present
+			function ():Boolean {
+				return player.hasPerk(PerkLib.MothOvipositor);
+			},
+			// is possible
+			function ():Boolean {
+				return !player.hasPerk(PerkLib.MothOvipositor) && player.tailType == Tail.MOTH_ABDOMEN;
 			}
 	);
 

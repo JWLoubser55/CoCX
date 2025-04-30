@@ -392,10 +392,7 @@ public class LunaFollower extends NPCAwareContent implements SaveableState, Time
 			if (flags[kFLAGS.LUNA_MOON_CYCLE] == 2 || flags[kFLAGS.LUNA_MOON_CYCLE] == 6) bonusStats += 20;
 			if (flags[kFLAGS.LUNA_MOON_CYCLE] == 1 || flags[kFLAGS.LUNA_MOON_CYCLE] == 7) bonusStats += 30;
 			if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8) bonusStats += 40;
-			if (player.hasPerk(PerkLib.Vulpesthropy)) {
-				player.createPerk(PerkLib.VulpesthropyDormant,0,0,0,0);
-				player.removePerk(PerkLib.Vulpesthropy);
-			}
+			player.werebeastRacesPerkHousekeeping(1);
 			if (!player.hasPerk(PerkLib.Lycanthropy)) player.createPerk(PerkLib.Lycanthropy,bonusStats,0,0,0);
 			if (player.hasPerk(PerkLib.LycanthropyDormant)) player.removePerk(PerkLib.LycanthropyDormant);
 			player.statStore.replaceBuffObject({ 'str.mult': bonusStats*0.1*ngM,'tou.mult': bonusStats*0.06*ngM,'spe.mult': bonusStats*0.04*ngM, 'minlustx': bonusStats * 0.01}, 'Lycanthropy', { text: 'Lycanthropy'});

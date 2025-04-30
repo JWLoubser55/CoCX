@@ -517,7 +517,7 @@ public class Tail extends SaveableBodyPart {
 	public static const MOTH_ABDOMEN: int = 61;
 	EnumValue.add(Types, MOTH_ABDOMEN, "MOTH_ABDOMEN", {
 		name:"moth abdomen",
-		appearanceDesc: "You have a moth abdomen"
+		appearanceDesc: "A small, spherical moth abdomen has grown out from your backside, covered in shiny [fur color] fur."
 	});
 	public static const TROLL: int = 62;
 	EnumValue.add(Types, TROLL, "TROLL", {

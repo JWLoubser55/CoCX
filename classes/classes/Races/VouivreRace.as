@@ -66,7 +66,8 @@ public class VouivreRace extends Race {
 									|| GorgonRace.isGorgonLike(body)
 									|| CouatlRace.isCouatlLike(body)
 									|| HydraRace.isHydraLike(body)
-									|| ApophisRace.isApophisLike(body));
+									|| ApophisRace.isApophisLike(body)
+									|| MarilithRace.isMarilithLike(body));
 						}, 0, -1000)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		addScoresAfter(11)

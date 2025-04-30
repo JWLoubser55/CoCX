@@ -22,7 +22,7 @@ public class LightningBoltSwiftcastSpell extends AbstractWhiteSpell {
 	
 	override public function get isKnown():Boolean {
 		return player.hasStatusEffect(StatusEffects.KnowsLightningBolt) &&
-				player.hasPerk(PerkLib.SwiftCasting);
+				(player.hasPerk(PerkLib.SwiftCasting) || player.hasPerk(PerkLib.FiendishConcentration));
 	}
 	
 	override public function calcCooldown():int {
