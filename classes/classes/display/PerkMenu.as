@@ -350,6 +350,7 @@ public class PerkMenu extends BaseContent {
 			|| player.tailType == Tail.MANTICORE_PUSSYTAIL
 			|| player.faceType == Face.SNAKE_FANGS
 			|| player.faceType == Face.SPIDER_FANGS
+			|| player.faceType == Face.WERESPIDER_FANGS
 			|| player.hasKeyItem("Sky Poison Pearl") >= 0;
 	}
 

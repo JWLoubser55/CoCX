@@ -44,7 +44,7 @@ private function tfIntoWereSpider():void {
 	outputText("You awaken ten minutes later and assess the damage. ");
 	CoC.instance.transformations.TailSpider.applyEffect(false);
 	CoC.instance.transformations.ArmsWerespider.applyEffect(false);
-	CoC.instance.transformations.FaceSpiderFangs.applyEffect(false);
+	CoC.instance.transformations.FaceWerespiderFangs.applyEffect(false);
 	CoC.instance.transformations.LowerBodyWerespider.applyEffect(false);
 	CoC.instance.transformations.EarsInsect.applyEffect(false);
 	CoC.instance.transformations.EyeWerespider.applyEffect(false);

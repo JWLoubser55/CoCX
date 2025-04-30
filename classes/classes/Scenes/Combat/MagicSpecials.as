@@ -555,17 +555,22 @@ public class MagicSpecials extends BaseCombatContent {
 				bd.disable("<b>You need more time before you can use Infernal claw again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
-		if (player.statusEffectv1(StatusEffects.VampireThirst) >= 1) {
-			//Eclipsing shadow
-			bd = buttons.add("Eclipsing shadow", EclipsingShadow, "Plunge the area in complete darkness denying vision to your opponent. \n");
-			if (player.hasStatusEffect(StatusEffects.CooldownEclipsingShadow)) {
-				bd.disable("<b>You need more time before you can use Eclipsing shadow again.</b>\n\n");
-			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
-			//Sonic scream
-			bd = buttons.add("Sonic scream", SonicScream, "Draw on your tainted blood power to unleash a powerful sonic shockwave. \n");
-			if (player.hasStatusEffect(StatusEffects.CooldownSonicScream)) {
-				bd.disable("<b>You need more time before you can use Sonic scream again.</b>\n\n");
-			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+		if (player.statusEffectv1(StatusEffects.VampireThirst) >= 1) {/*
+			if (player.hasPerk(PerkLib.Araneathropy)) {
+				
+			}
+			else {*/
+				//Eclipsing shadow
+				bd = buttons.add("Eclipsing shadow", EclipsingShadow, "Plunge the area in complete darkness denying vision to your opponent. \n");
+				if (player.hasStatusEffect(StatusEffects.CooldownEclipsingShadow)) {
+					bd.disable("<b>You need more time before you can use Eclipsing shadow again.</b>\n\n");
+				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				//Sonic scream
+				bd = buttons.add("Sonic scream", SonicScream, "Draw on your tainted blood power to unleash a powerful sonic shockwave. \n");
+				if (player.hasStatusEffect(StatusEffects.CooldownSonicScream)) {
+					bd.disable("<b>You need more time before you can use Sonic scream again.</b>\n\n");
+				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			//}	
 			//Vampire Thirst Stacks To Health/Mana
 			bd = buttons.add("Health Tap (1)", curry(VampireThirstStacksToHealth, 1), "Draw on your tainted blood power to heal yourself. \n");
 			if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv1(StatusEffects.VampThirstStacksHPMana) > 0) {
@@ -583,6 +588,12 @@ public class MagicSpecials extends BaseCombatContent {
 				bd = buttons.add("Mana Tap (5)", curry(VampireThirstStacksToMana, 5), "Draw on your tainted blood power to recover some of your magic energies. \n");
 				if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv2(StatusEffects.VampThirstStacksHPMana) > 0) {
 					bd.disable("<b>You can't use Mana Tap more than once a turn.</b>\n\n");
+				}
+			}
+			if (player.hasPerk(PerkLib.Araneathropy) && player.statusEffectv1(StatusEffects.VampireThirst) >= 10) {
+				bd = buttons.add("Health Tap (10)", curry(VampireThirstStacksToHealth, 10), "Draw on your tainted blood power to heal yourself. \n");
+				if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv1(StatusEffects.VampThirstStacksHPMana) > 0) {
+					bd.disable("<b>You can't use Health Tap more than once a turn.</b>\n\n");
 				}
 			}
 		}
@@ -6066,6 +6077,9 @@ public class MagicSpecials extends BaseCombatContent {
 		if (monster.HP <= monster.minHP()) doNext(endHpVictory);
 		else enemyAI();
 	}
+//Thousand Hands			stacks > combat long +1 melee attack
+
+//Hydraulic Strength		stacks > combat lon +x str v str.mult
 	
 //Vampire Thirst Stacks To Health/Mana
 	public function VampireThirstStacksToHealth(stack:Number = 1):void {

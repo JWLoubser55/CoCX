@@ -704,6 +704,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const WERESPIDER:int =_partid++;
+		EnumValue.add(Memories, WERESPIDER, "WERESPIDER", {
+			id: "Werespider Fangs Face",
+			name: "Werespider Fangs",
+			cost: 100,
+			title: "Werespider Fangs",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceWerespiderFangs;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

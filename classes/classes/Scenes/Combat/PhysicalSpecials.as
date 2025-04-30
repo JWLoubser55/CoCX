@@ -135,7 +135,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 							} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 						}
 					}
-					if ((player.faceType == Face.SPIDER_FANGS || player.faceType == Face.USHI_ONI || player.perkv1(IMutationsLib.VenomGlandsIM) >= 1)) {
+					if ((player.faceType == Face.SPIDER_FANGS || player.faceType == Face.WERESPIDER_FANGS || player.faceType == Face.USHI_ONI || player.perkv1(IMutationsLib.VenomGlandsIM) >= 1)) {
 						bd = buttons.add("SpiderBite", spiderBiteAttack).hint("Attempt to bite your opponent and inject venom. (deal lust dmg and lower gradualy enemy lust resistance)  \n\nVenom: " + player.tailVenom + "/" + player.maxVenom());
 						if (player.tailVenom < player.VenomWebCost() * 5) {
 							bd.disable("You do not have enough venom to use spider bite right now!");
@@ -1538,7 +1538,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 						player.tailVenom -= player.VenomWebCost();
 						flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 					}
-					if (player.faceType == Face.SPIDER_FANGS) {
+					if (player.faceType == Face.SPIDER_FANGS || player.faceType == Face.WERESPIDER_FANGS) {
 						if (player.lowerBody == LowerBody.ATLACH_NACHA){
 							outputText("  [monster he] seems to be affected by the poison, showing increasing sign of weakness and arousal.");
 							var damage2B:Number = 35 + rand(player.lib / 10);
@@ -7017,7 +7017,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				player.tailVenom -= player.VenomWebCost();
 				flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
 			}
-			if (player.faceType == Face.SPIDER_FANGS) {
+			if (player.faceType == Face.SPIDER_FANGS || player.faceType == Face.WERESPIDER_FANGS) {
 				if (player.lowerBody == LowerBody.ATLACH_NACHA){
 					outputText("  [monster he] seems to be affected by the poison, showing increasing sign of weakness and arousal.");
 					var damage2B:Number = 35 + rand(player.lib / 10);

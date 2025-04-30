@@ -3655,7 +3655,7 @@ public class Combat extends BaseContent {
 						if (player.perkv1(IMutationsLib.PoisonGlandIM) >= 4) aPoisonGlandsMyconidSpores();
 					}
                 }
-                if (player.faceType == Face.SPIDER_FANGS) {
+                if (player.faceType == Face.SPIDER_FANGS || player.faceType == Face.WERESPIDER_FANGS) {
                     if (player.lowerBody == LowerBody.ATLACH_NACHA){
                         if (!MSGControll) outputText("  [monster he] seems to be affected by the poison, showing increasing sign of weakness and arousal.");
                         var damage2B:Number = 35 + rand(player.lib / 10);
@@ -5976,6 +5976,33 @@ public class Combat extends BaseContent {
                         flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
                     }
                     break;
+                case Face.WERESPIDER_FANGS:
+                    if (player.tailVenom >= player.VenomWebCost()){
+                        var sharedVenomMulti1:Number = 1;
+                        if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) sharedVenomMulti1 *= 2;
+                        if (player.armor == armors.ELFDRES && player.isElf()) sharedVenomMulti1 *= 2;
+                        if (player.armor == armors.FMDRESS && player.isWoodElf()) sharedVenomMulti1 *= 2;
+						if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) sharedVenomMulti1 *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
+                        outputText(" and inject your venom into the wound!");
+						var lustDmg1:int = 6 * monster.lustVuln;
+						lustDmg1 *= sharedVenomMulti1;
+						monster.teased(lustDmg1);
+						if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
+							monster.lustVuln += 0.01;
+							if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
+						}
+                        player.tailVenom -= player.VenomWebCost();
+                        flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
+                    }
+					if (!monster.isImmuneToBleed()){
+                        outputText(" And drawing blood out.");
+                        if (!monster.hasStatusEffect(StatusEffects.SharkBiteBleed)) monster.createStatusEffect(StatusEffects.SharkBiteBleed,15,0,0,0);
+                        else {
+                            monster.removeStatusEffect(StatusEffects.SharkBiteBleed);
+                            monster.createStatusEffect(StatusEffects.SharkBiteBleed,15,0,0,0);
+                        }
+                    }
+                    break;
                 case Face.CERBERUS:
                     //Unique attack Cerberus fire breath
                     if (player.hasPerk(PerkLib.Hellfire)) {
@@ -7799,7 +7826,7 @@ public class Combat extends BaseContent {
                                 player.tailVenom -= player.VenomWebCost();
                                 flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
                             }
-                            if (player.faceType == Face.SPIDER_FANGS) {
+                            if (player.faceType == Face.SPIDER_FANGS || player.faceType == Face.WERESPIDER_FANGS) {
                                 if (player.lowerBody == LowerBody.ATLACH_NACHA){
                                     outputText("  [monster he] seems to be affected by the poison, showing increasing sign of weakness and arousal.");
                                     var damage4B:Number = 35 + rand(player.lib / 10);
@@ -7880,40 +7907,68 @@ public class Combat extends BaseContent {
                 WrathWeaponsProc();
                 heroBaneProc(damage);
                 EruptingRiposte();
-                if ((boolSwiftCast || boolFiendishConcentration1) && !player.statStore.hasBuff("Supercharged")) {
-                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 1 && CombatAbilities.WhitefireSwiftcast.isUsable) {
-                        CombatAbilities.WhitefireSwiftcast.perform();
-						if (CombatAbilities.WhitefireSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.WhitefireSwiftcast.perform();
-                    }
-                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 2 && CombatAbilities.IceSpikeSwiftcast.isUsable) {
-                        CombatAbilities.IceSpikeSwiftcast.perform();
-                        if (CombatAbilities.IceSpikeSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.IceSpikeSwiftcast.perform();
-                    }
-                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 3 && CombatAbilities.LightningBoltSwiftcast.isUsable) {
-                        CombatAbilities.LightningBoltSwiftcast.perform();
-                        if (CombatAbilities.LightningBoltSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.LightningBoltSwiftcast.perform();
-                    }
-                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 4 && CombatAbilities.DarknessShardSwiftcast.isUsable) {
-                        CombatAbilities.DarknessShardSwiftcast.perform();
-                        if (CombatAbilities.DarknessShardSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.DarknessShardSwiftcast.perform();
-                    }
-                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 5 && CombatAbilities.WaterBallSwiftcast.isUsable) {
-                        CombatAbilities.WaterBallSwiftcast.perform();
-                        if (CombatAbilities.WaterBallSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.WaterBallSwiftcast.perform();
-                    }
-                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 6 && CombatAbilities.WindBulletSwiftcast.isUsable) {
-                        CombatAbilities.WindBulletSwiftcast.perform();
-                        if (CombatAbilities.WindBulletSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.WindBulletSwiftcast.perform();
-                    }
-                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 7 && CombatAbilities.StalagmiteSwiftcast.isUsable) {
-                        CombatAbilities.StalagmiteSwiftcast.perform();
-                        if (CombatAbilities.StalagmiteSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.StalagmiteSwiftcast.perform();
-                    }
-                    if (flags[kFLAGS.ELEMENTAL_MELEE] == 8 && CombatAbilities.AcidSpraySwiftcast.isUsable) {
-                        CombatAbilities.AcidSpraySwiftcast.perform();
-                        if (CombatAbilities.AcidSpraySwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.AcidSpraySwiftcast.perform();
-                    }
-                }
+				if ((boolSwiftCast || boolFiendishConcentration1) && !player.statStore.hasBuff("Supercharged")) {
+					if (boolSwiftCast) {
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 1 && CombatAbilities.WhitefireSwiftcast.isUsable) {
+							CombatAbilities.WhitefireSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 2 && CombatAbilities.IceSpikeSwiftcast.isUsable) {
+							CombatAbilities.IceSpikeSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 3 && CombatAbilities.LightningBoltSwiftcast.isUsable) {
+							CombatAbilities.LightningBoltSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 4 && CombatAbilities.DarknessShardSwiftcast.isUsable) {
+							CombatAbilities.DarknessShardSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 5 && CombatAbilities.WaterBallSwiftcast.isUsable) {
+							CombatAbilities.WaterBallSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 6 && CombatAbilities.WindBulletSwiftcast.isUsable) {
+							CombatAbilities.WindBulletSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 7 && CombatAbilities.StalagmiteSwiftcast.isUsable) {
+							CombatAbilities.StalagmiteSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 8 && CombatAbilities.AcidSpraySwiftcast.isUsable) {
+							CombatAbilities.AcidSpraySwiftcast.perform();
+						}
+					}
+					if (boolFiendishConcentration1) {
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 1 && CombatAbilities.WhitefireSwiftcast.isUsable) {
+							CombatAbilities.WhitefireSwiftcast.perform();
+							if (CombatAbilities.WhitefireSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.WhitefireSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 2 && CombatAbilities.IceSpikeSwiftcast.isUsable) {
+							CombatAbilities.IceSpikeSwiftcast.perform();
+							if (CombatAbilities.IceSpikeSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.IceSpikeSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 3 && CombatAbilities.LightningBoltSwiftcast.isUsable) {
+							CombatAbilities.LightningBoltSwiftcast.perform();
+							if (CombatAbilities.LightningBoltSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.LightningBoltSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 4 && CombatAbilities.DarknessShardSwiftcast.isUsable) {
+							CombatAbilities.DarknessShardSwiftcast.perform();
+							if (CombatAbilities.DarknessShardSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.DarknessShardSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 5 && CombatAbilities.WaterBallSwiftcast.isUsable) {
+							CombatAbilities.WaterBallSwiftcast.perform();
+							if (CombatAbilities.WaterBallSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.WaterBallSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 6 && CombatAbilities.WindBulletSwiftcast.isUsable) {
+							CombatAbilities.WindBulletSwiftcast.perform();
+							if (CombatAbilities.WindBulletSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.WindBulletSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 7 && CombatAbilities.StalagmiteSwiftcast.isUsable) {
+							CombatAbilities.StalagmiteSwiftcast.perform();
+							if (CombatAbilities.StalagmiteSwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.StalagmiteSwiftcast.perform();
+						}
+						if (flags[kFLAGS.ELEMENTAL_MELEE] == 8 && CombatAbilities.AcidSpraySwiftcast.isUsable) {
+							CombatAbilities.AcidSpraySwiftcast.perform();
+							if (CombatAbilities.AcidSpraySwiftcast.isUsable && boolFiendishConcentration1a) CombatAbilities.AcidSpraySwiftcast.perform();
+						}
+					}
+				}
                 if (boolLifeLeech) {
                     var sippedA:Number = 0.01;
 					if (player.perkv1(IMutationsLib.StillHeartIM) >= 1) sippedA += (0.0025 * player.perkv1(IMutationsLib.StillHeartIM));
@@ -8327,7 +8382,7 @@ public class Combat extends BaseContent {
                                 player.tailVenom -= player.VenomWebCost();
                                 flags[kFLAGS.VENOM_TIMES_USED] += 0.2;
                             }
-                            if (player.faceType == Face.SPIDER_FANGS) {
+                            if (player.faceType == Face.SPIDER_FANGS || player.faceType == Face.WERESPIDER_FANGS) {
                                 if (player.lowerBody == LowerBody.ATLACH_NACHA){
                                     outputText("  [monster he] seems to be affected by the poison, showing increasing sign of weakness and arousal.");
                                     var damage4B:Number = 35 + rand(player.lib / 10);
@@ -14658,7 +14713,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 				else venomCRecharge += 2.5;
 			}
 			if (player.faceType == Face.SNAKE_FANGS) venomCRecharge += 2;
-			if (player.faceType == Face.SPIDER_FANGS) venomCRecharge += 2;
+			if (player.faceType == Face.SPIDER_FANGS || player.faceType == Face.WERESPIDER_FANGS) venomCRecharge += 2;
 			if (player.tailType == Tail.BEE_ABDOMEN) venomCRecharge += 3;
 			if (player.tailType == Tail.SPIDER_ADBOMEN) venomCRecharge += 3;
 			if (player.tailType == Tail.SCORPION) venomCRecharge += 3;

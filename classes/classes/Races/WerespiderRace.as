@@ -44,7 +44,7 @@ public class WerespiderRace extends Race {
 		addScores()
 				.eyeType(Eyes.WERESPIDER, +2)
 				.earType(Ears.INSECT, +1)
-				.faceType(Face.SPIDER_FANGS, +1)
+				.faceType(Face.WERESPIDER_FANGS, +1)
 				.armType(Arms.WERESPIDER, +2)
 				.legType(LowerBody.WERESPIDER, +1)
 				.tailType(Tail.SPIDER_ADBOMEN, +1)

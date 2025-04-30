@@ -710,6 +710,13 @@ public class Face extends SaveableBodyPart {
 		appearanceDesc: "Your face is human in shape and structure with [skin coat] covered with synthetic skin for flexibility. You do not display your emotions naturally, instead relying on an advanced simulation program called social mode to convincingly replicate the expressions and conversational behavior of living beings.",
 		humanShaped: true
 	});
+	public static const WERESPIDER_FANGS: int = 68;
+	EnumValue.add(Types, WERESPIDER_FANGS, "WERESPIDER_FANGS", {
+		name: "werespider",
+		appearanceDesc: "A set of retractable, long and pointy vampire canines sit in place of your canines and are ready to dispense their venom or to pierce into victims and reach their blood.",
+		bite: true,
+		humanShaped: true
+	});
 
 	public function Face(creature:Creature) {
 		super(creature,"facePart",[]);
