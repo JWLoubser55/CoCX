@@ -417,8 +417,8 @@ public class EbonLabyrinth extends DungeonAbstractContent {
         //adjusting rewards to enemy level. Sounds fair to me
 		var exp:Number = Number(2000 * Math.exp(0.2*enemyLevelMod));
 		var gems:Number = Number(500 * Math.exp(0.2*enemyLevelMod));
-        player.XP += (exp < 0 ? Number.MAX_VALUE - player.XP : exp);
-        player.gems += (gems < 0 ? Number.MAX_VALUE - player.gems : gems);
+        player.XP += (exp < 0 || player.XP + exp < 0 ? Number.MAX_VALUE - player.XP : exp);
+        player.gems += (gems < 0 || player.gems + gems < 0 ? Number.MAX_VALUE - player.gems : gems);
         outputText("As you explore the labyrinth you stumble upon what appears to be a room filled with gems and a pillar upon which sits a single jewel. Grabbing the jewel, you see green mist swirl out of the stone then around you before entering your body. Memories not your own flash through your mind. ");
         outputText("Battles of the present and the past. You know you've learned from these battles and as you gather the gems and leave the room you do so with new enriching experiences. (+" + exp + " EXP, +" + gems + " gems)\n\n");
         doNext(roomStatic); //easier to implement.
