@@ -790,6 +790,9 @@ public class Konstantin extends NPCAwareContent
 			addButton(1, "Sword", KonstantinCraftingYggdrasilItems2, 2, null, null, weapons.WDBLADE.description);
 			addButton(2, "Bow", KonstantinCraftingYggdrasilItems2, 3, null, null, weaponsrange.WARDBOW.description);
 			addButton(3, "Staff", KonstantinCraftingYggdrasilItems2, 4, null, null, weapons.WDSTAFF.description);
+			//4 spear / dagger / claws(gauntlet) / massive sized sword / shield (nullify next non phys/psionic/ture dmg attack) / axe
+			//5
+			//6
 			addButton(14, "Back", KonstantinMainCampMenu);
 		}
 		private function KonstantinCraftingYggdrasilItems2(yggdrasilType:int):void {

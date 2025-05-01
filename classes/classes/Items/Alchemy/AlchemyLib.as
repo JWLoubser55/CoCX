@@ -701,11 +701,11 @@ public class AlchemyLib extends BaseContent {
 		short: "Drgne",
 		name : "Dragonne"
 	});
-	public static const AE_ARIGEAN:int        = EnumValue.add(Essences, 214, "ARIGEAN", {
+	public static const AE_ARIGEAN:int         = EnumValue.add(Essences, 214, "ARIGEAN", {
 		short: "Arig",
 		name : "Arigean"
 	});
-	public static const AE_REINDEER:int            = EnumValue.add(Essences, 215, "REINDEER", {
+	public static const AE_REINDEER:int        = EnumValue.add(Essences, 215, "REINDEER", {
 		short: "RDeer",
 		name : "Reindeer"
 	});
@@ -713,23 +713,23 @@ public class AlchemyLib extends BaseContent {
 		short: "Peafowl",
 		name : "Peafowl"
 	});
-	public static const AE_MOTH:int         = EnumValue.add(Essences, 217, "MOTH", {
+	public static const AE_MOTH:int            = EnumValue.add(Essences, 217, "MOTH", {
 		short: "Moth",
 		name : "Moth"
 	});
-	public static const AE_GLACIAL_TROLL:int           = EnumValue.add(Essences, 218, "GLACIAL_TROLL", {
+	public static const AE_GLACIAL_TROLL:int   = EnumValue.add(Essences, 218, "GLACIAL_TROLL", {
 		short: "GTroll",
 		name : "Glacial Troll"
 	});
-	public static const AE_MUMMY:int        = EnumValue.add(Essences, 219, "MUMMY", {
+	public static const AE_MUMMY:int           = EnumValue.add(Essences, 219, "MUMMY", {
 		short: "Mummy",
 		name : "Mummy"
 	});
-	public static const AE_LICH:int        = EnumValue.add(Essences, 220, "LICH", {
+	public static const AE_LICH:int            = EnumValue.add(Essences, 220, "LICH", {
 		short: "Lich",
 		name : "Lich"
 	});
-	public static const AE_MYCONID:int        = EnumValue.add(Essences, 221, "MYCONID", {
+	public static const AE_MYCONID:int         = EnumValue.add(Essences, 221, "MYCONID", {
 		short: "Myconid",
 		name : "Myconid"
 	});
@@ -737,13 +737,29 @@ public class AlchemyLib extends BaseContent {
 		short: "Automata",
 		name : "Automata"
 	});
-	public static const AE_WERESPIDER:int         = EnumValue.add(Essences, 223, "WERESPIDER", {
+	public static const AE_WERESPIDER:int      = EnumValue.add(Essences, 223, "WERESPIDER", {
 		short: "WSpider",
 		name : "Werespider"
 	});
 	public static const AE_MARILITH:int        = EnumValue.add(Essences, 224, "MARILITH", {
 		short: "Marilith",
 		name : "Marilith"
+	});
+	public static const AE_WEREBAT:int         = EnumValue.add(Essences, 225, "WEREBAT", {
+		short: "WBat",
+		name : "Werebat"
+	});
+	public static const AE_WERECAT:int         = EnumValue.add(Essences, 226, "WERECAT", {
+		short: "WCat",
+		name : "Werecat"
+	});
+	public static const AE_WERERAVEN:int       = EnumValue.add(Essences, 227, "WERERAVEN", {
+		short: "WRaven",
+		name : "Wereraven"
+	});
+	public static const AE_WEREBEAR:int        = EnumValue.add(Essences, 228, "WEREBEAR", {
+		short: "WBear",
+		name : "Werebear"
 	});
 	public static function DEFAULT_ESSENCE_DROP_TABLE(mainEssencee:int, withHuman:Boolean = false):Array {
 		var result:Array = [

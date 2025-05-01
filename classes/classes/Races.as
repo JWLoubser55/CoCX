@@ -150,6 +150,10 @@ public class Races {
 	public static const AUTOMATA:AutomataRace			   = new AutomataRace(125);
 	public static const MARILITH:MarilithRace			   = new MarilithRace(126);
 	public static const BAROMETZ:BarometzRace			   = new BarometzRace(127);
+	//public static const WEREBAT:WerespiderRace          = new WerespiderRace(128);
+	//public static const WERECAT:WeresharkRace            = new WeresharkRace(129);
+	//public static const WERERAVEN:WerespiderRace          = new WerespiderRace(130);
+	//public static const WEREBEAR:WerespiderRace          = new WerespiderRace(131);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
@@ -175,6 +179,9 @@ public class Races {
 	];
 	public static const PlantRaces:/*Race*/Array = [
 			PLANT, ALRAUNE, YGGDRASIL, BAROMETZ
+	];
+	public static const WerebeastRaces:/*Race*/Array = [
+			WEREWOLF, WEREFOX, WERESPIDER, WERESHARK
 	];
 	public static const RacesForRandomEnchantments:/*Race*/Array = [
 			// populated in load() as AllVisibleRaces - RacesExcludedFromRandomEnchantments

@@ -1029,7 +1029,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const TailHydra: Transformation 						= tail.TailHydra.registerTf(AS_TAIL, AE_HYDRA);
 	public const TailSpinneretAtlach: Transformation 			= tail.TailSpinneretAtlach.registerTf(AS_TAIL, AE_ATLACH_NACHA);
 	public const TailDeer: Transformation 						= tail.TailDeer.registerTf(AS_TAIL, AE_DEER);
-	public const TailYgddrasil: Transformation 					= tail.TailYgddrasil.registerTf(AS_TAIL, AE_YGGDRASIL);
+	public const TailAnt: Transformation 						= tail.TailAnt.registerTf(AS_TAIL, AE_ANT);
 	public const TailAbyssalShark: Transformation 				= tail.TailAbyssalShark.registerTf(AS_TAIL, AE_ABYSSAL_SHARK);
 	public const TailArigeanGreen: Transformation 				= tail.TailArigeanGreen.registerTf(AS_TAIL, AE_ARIGEAN);
 	public const TailArigeanRed: Transformation 				= tail.TailArigeanRed.registerTf(AS_TAIL, AE_ARIGEAN);
@@ -1046,7 +1046,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	 */
 	public function TailFox(tailCount:int = 1, magnitude:int = 9, canRemove:Boolean = true):Transformation { return tail.TailFox(tailCount, magnitude, canRemove); }
 	public function TailKitshoo(tailCount: int = 1): Transformation { return tail.TailKitshoo(tailCount); }
-	public const TailAnt: Transformation 						= tail.TailAnt;
+	public function TailYgddrasil(tailCount: int = 1): Transformation { return tail.TailYgddrasil(tailCount); }
 
 
 //TONGUE

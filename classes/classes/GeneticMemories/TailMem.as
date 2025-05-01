@@ -800,7 +800,43 @@ import classes.CoC;
 			cost: function():Number { return getTailCost(player.tailCount, 1);},
 			title: "Ygddrasil",
 			transformation: function(): Transformation {
-				return CoC.instance.transformations.TailYgddrasil;
+				return CoC.instance.transformations.TailYgddrasil(1);
+			}
+		});
+
+		public static const YGGDRASIL_2:int = _partid++;
+		EnumValue.add(Memories, YGGDRASIL_2, "YGGDRASIL_2", {
+			id: "Ygddrasil 2nd Tail",
+			name: "Ygddrasil Fox Tail",
+			cost: function():Number { return getTailCost(player.tailCount, 2);},
+			title: "Ygddrasil 2nd",
+			permReq: "Ygddrasil Tail",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TailYgddrasil(2);
+			}
+		});
+
+		public static const YGGDRASIL_3:int = _partid++;
+		EnumValue.add(Memories, YGGDRASIL_3, "YGGDRASIL_3", {
+			id: "Ygddrasil 3rd Tail",
+			name: "Ygddrasil Fox Tail",
+			cost: function():Number { return getTailCost(player.tailCount, 3);},
+			title: "Ygddrasil 3rd",
+			permReq: "Ygddrasil 2nd Tail",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TailYgddrasil(3);
+			}
+		});
+
+		public static const YGGDRASIL_4:int = _partid++;
+		EnumValue.add(Memories, YGGDRASIL_4, "YGGDRASIL_4", {
+			id: "Ygddrasil 4th Tail",
+			name: "Ygddrasil Fox Tail",
+			cost: function():Number { return getTailCost(player.tailCount, 4);},
+			title: "Ygddrasil 4th",
+			permReq: "Ygddrasil 3rd Tail",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TailYgddrasil(4);
 			}
 		});
 

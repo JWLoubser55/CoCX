@@ -3,7 +3,7 @@ import classes.BodyData;
 import classes.BodyParts.*;
 import classes.CoC;
 import classes.GeneticMemories.RaceMem;
-//import classes.IMutations.IMutationsLib;
+import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 
@@ -35,15 +35,16 @@ public class AngelRace extends Race {
 
 	public function AngelRace(id:int) {
 		super("Angel", id, []);//RaceBody);
-		chimeraTier = 0;
-		grandChimeraTier = 0;
-		disabled = true;
 	}
 	
 	public override function setup():void {
 		
 		addScores()
-				.corruption(0, +3)
+				.hornType(NOT(Horns.DEMON), 0, -10)
+				.corruption(AT_MOST(50), +1)
+				.corruption(AT_MOST(25), +1)
+				.corruption(AT_MOST(0), +1)
+				//.hasPerk(PerkLib.Soulless, +4)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		buildTier(15, "angel-kin")
@@ -56,7 +57,7 @@ public class AngelRace extends Race {
 					"maxwrath_mult": +0.6,
 					"maxmana_mult": -0.8
 				})
-				.end();
+				.end();/*
 		
 		buildTier(21, "angel")
 				//requirePerk(PerkLib.)-perk causing no mana for them like soulless make no sf for demons
@@ -69,7 +70,7 @@ public class AngelRace extends Race {
 					"maxsf_mult": +1.5,
 					"maxwrath_mult": +0.8
 				})
-				.end();
+				.end();*/
 	}
 }
 }

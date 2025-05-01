@@ -332,6 +332,22 @@ public final class WeaponLib extends ItemConstants
 				"Ancient looking rapier forged in dragon fire. Tales saying that some of the dragon fire could still linger inside of it.  The blade is still a piece of extraordinary quality and perfect for stabbing.",
 				WT_DUELING, WSZ_MEDIUM)
 				.withTags(W_RAPIER) as Weapon;
+		public const DARKSD :Weapon = new Weapon(
+				"DarkSD","DarksteelDaggers","Darksteel Daggers","a set of Darksteel Daggers","stab",5,1600,
+				"A pair of small blades forged from soultempered darksteel.",
+				WT_DAGGER, WSZ_SMALL, true)
+				.withBuffs({
+					'psoulskillpower': +0.2
+				})
+				.withEffect(IELib.Bleed, 10) as Weapon;
+		public const DARKSD1:Weapon = new Weapon(
+				"DarkSD1","DarksteelDagger","Darksteel Dagger","a Darksteel Dagger","stab",5,800,
+				"A small blade forged from soultempered darksteel.",
+				WT_DAGGER, WSZ_SMALL)
+				.withBuffs({
+					'psoulskillpower': +0.2
+				})
+				.withEffect(IELib.Bleed, 10) as Weapon;
 		public const DWARWA :Weapon = new Weapon(
 				"DwarWA","DwarvenWaraxe","dwarven waraxe","a dwarven waraxe","cleave",53,2120,
 				"A dwarven waraxe has a large, ornate head mounted to a thick handle, making it too large to use in one hand without special training.",
@@ -1086,7 +1102,8 @@ public final class WeaponLib extends ItemConstants
 			[L_WHIP, DL_WHIP],
 			[B_SWORD, DBSWORD],
 			[EXCALIB, DEXCALI],
-			[HATWINSCY, ATWINSCY]
+			[HATWINSCY, ATWINSCY],
+			[DARKSD1, DARKSD]
 		]
 	}
 }

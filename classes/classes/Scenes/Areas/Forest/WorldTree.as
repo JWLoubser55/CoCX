@@ -287,12 +287,28 @@ public class WorldTree extends BaseContent
 				CoC.instance.transformations.FacePlantDragon.applyEffect();
 				changes++;
 			}
+			//Extra plant dragon tails
+			var nYgddrasilTails:int = player.tailType == Tail.YGGDRASIL ? player.tailCount : 0;
+			if (nYgddrasilTails == 3 && player.level >= 18 && player.inte >= 45 && player.wis >= 90 && changes < changeLimit) {
+				outputText("[pg]");
+				transformations.TailYgddrasil(4).applyEffect();
+			}
+			if (nYgddrasilTails == 2 && player.level >= 12 && player.inte >= 30 && player.wis >= 60 && changes < changeLimit) {
+				outputText("[pg]");
+				transformations.TailYgddrasil(3).applyEffect();
+			}
+			if (nYgddrasilTails == 1 && player.level >= 6 && player.inte >= 15 && player.wis >= 30 && changes < changeLimit) {
+				outputText("[pg]");
+				transformations.TailYgddrasil(2).applyEffect();
+			}
 			//Plant dragon tail
 			if (player.faceType == Face.PLANT_DRAGON && player.tailType != Tail.YGGDRASIL && changes < changeLimit) {
 				outputText("\n\n");
-				CoC.instance.transformations.TailYgddrasil.applyEffect();
+				CoC.instance.transformations.TailYgddrasil(1).applyEffect();
 				changes++;
 			}
+			//Rear body
+			
 			//Moss (fur)/else Bark skin
 			if (!player.isBarkSkin() && !player.isGargoyle() && changes < changeLimit && player.faceType == Face.PLANT_DRAGON) {
 				outputText("\n\n");
