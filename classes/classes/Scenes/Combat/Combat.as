@@ -8826,21 +8826,21 @@ public class Combat extends BaseContent {
     }
 
     public function isFireTypeWeaponMain():Boolean {
-        return ((player.weapon == weapons.RCLAYMO || player.weapon == weapons.TRCLAYM || player.weapon == weapons.RDAGGER || player.weapon == weapons.VGRAVEH) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "ruby"))
+        return ((player.weapon == weapons.RCLAYMO || player.weapon == weapons.TRCLAYM || player.weapon == weapons.RDAGGER || player.weapon == weapons.DRDAGGER || player.weapon == weapons.VGRAVEH) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "ruby"))
                 || player.weapon.hasTag(ItemConstants.W_FIRE_TYPE)
                 || player.flameBladeActiveMain();
     }
     public function isIceTypeWeaponMain():Boolean {
-        return ((player.weapon == weapons.SCLAYMO || player.weapon == weapons.TSCLAYM || player.weapon == weapons.SDAGGER || player.weapon == weapons.GGRAVEA) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "sapphire"))
+        return ((player.weapon == weapons.SCLAYMO || player.weapon == weapons.TSCLAYM || player.weapon == weapons.SDAGGER || player.weapon == weapons.DSDAGGER || player.weapon == weapons.GGRAVEA) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "sapphire"))
                 || player.weapon.hasTag(ItemConstants.W_ICE_TYPE);
     }
     public function isLightningTypeWeaponMain():Boolean {
-        return ((player.weapon == weapons.TCLAYMO || player.weapon == weapons.TTCLAYM || player.weapon == weapons.TODAGGER || player.weapon == weapons.SGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
+        return ((player.weapon == weapons.TCLAYMO || player.weapon == weapons.TTCLAYM || player.weapon == weapons.TODAGGER || player.weapon == weapons.DTODAGGER || player.weapon == weapons.SGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
                 || player.weapon.hasTag(ItemConstants.W_LIGHTNING_TYPE)
                 || player.electrifyWeaponActiveMain();
     }
     public function isDarknessTypeWeaponMain():Boolean {
-        return ((player.weapon == weapons.ACLAYMO || player.weapon == weapons.TACLAYM || player.weapon == weapons.ADAGGER || player.weapon == weapons.UGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
+        return ((player.weapon == weapons.ACLAYMO || player.weapon == weapons.TACLAYM || player.weapon == weapons.ADAGGER || player.weapon == weapons.DADAGGER || player.weapon == weapons.UGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
     }
     public function isPlasmaTypeWeaponMain():Boolean {
         return ((isFireTypeWeaponMain() && isLightningTypeWeaponMain()) || player.weapon.hasTag(ItemConstants.W_PLASMA_TYPE));
@@ -8849,21 +8849,21 @@ public class Combat extends BaseContent {
         return (isIceTypeWeaponMain() && isDarknessTypeWeaponMain());
     }
 	public function isFireTypeWeaponOff():Boolean {
-        return ((player.weaponOff == weapons.RCLAYMO || player.weaponOff == weapons.TRCLAYM || player.weaponOff == weapons.RDAGGER || player.weaponOff == weapons.VGRAVEH) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "ruby"))
+        return ((player.weaponOff == weapons.RCLAYMO || player.weaponOff == weapons.TRCLAYM || player.weaponOff == weapons.RDAGGER || player.weaponOff == weapons.DRDAGGER || player.weaponOff == weapons.VGRAVEH) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "ruby"))
                 || player.weaponOff.hasTag(ItemConstants.W_FIRE_TYPE)
                 || player.flameBladeActiveOff();
     }
     public function isIceTypeWeaponOff():Boolean {
-        return ((player.weaponOff == weapons.SCLAYMO || player.weaponOff == weapons.TSCLAYM || player.weaponOff == weapons.SDAGGER || player.weaponOff == weapons.GGRAVEA) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "sapphire"))
+        return ((player.weaponOff == weapons.SCLAYMO || player.weaponOff == weapons.TSCLAYM || player.weaponOff == weapons.SDAGGER || player.weaponOff == weapons.DSDAGGER || player.weaponOff == weapons.GGRAVEA) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "sapphire"))
                 || player.weaponOff.hasTag(ItemConstants.W_ICE_TYPE);
     }
     public function isLightningTypeWeaponOff():Boolean {
-        return ((player.weaponOff == weapons.TCLAYMO || player.weaponOff == weapons.TTCLAYM || player.weaponOff == weapons.TODAGGER || player.weaponOff == weapons.SGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
+        return ((player.weaponOff == weapons.TCLAYMO || player.weaponOff == weapons.TTCLAYM || player.weaponOff == weapons.TODAGGER || player.weaponOff == weapons.DTODAGGER || player.weaponOff == weapons.SGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
                 || player.weaponOff.hasTag(ItemConstants.W_LIGHTNING_TYPE)
                 || player.electrifyWeaponActiveOff();
     }
     public function isDarknessTypeWeaponOff():Boolean {
-        return ((player.weaponOff == weapons.ACLAYMO || player.weaponOff == weapons.TACLAYM || player.weaponOff == weapons.ADAGGER || player.weaponOff == weapons.UGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
+        return ((player.weaponOff == weapons.ACLAYMO || player.weaponOff == weapons.TACLAYM || player.weaponOff == weapons.ADAGGER || player.weaponOff == weapons.DADAGGER || player.weaponOff == weapons.UGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "amethyst"));
     }
     public function isPlasmaTypeWeaponOff():Boolean {
         return ((isFireTypeWeaponOff() && isLightningTypeWeaponOff()) || player.weaponOff.hasTag(ItemConstants.W_PLASMA_TYPE));

@@ -38,7 +38,7 @@ public class WerebatRace extends Race {
     
     public override function setup():void {
         addScores()
-                .//start ctrl-spacing here
+                //.start ctrl-spacing here
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
         buildTier(12, "werebat")

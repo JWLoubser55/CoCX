@@ -235,7 +235,11 @@ public final class WeaponLib extends ItemConstants
 				"A pair of kama. Preferred weapon for the ninja fans.",
 				WT_SCYTHE, WSZ_SMALL, true)
 				.withEffect(IELib.Bleed, 10) as Weapon;
-		public const D_RAPIER:Weapon = findCommonDynamicWeapon("dartrapier")
+		public const D_RAPIER:Weapon = findCommonDynamicWeapon("dartrapier");
+		public const DADAGGER:Weapon = new Weapon(
+				"DADagger","D.A.Dagger","dual amethyst daggers","a dual amethyst daggers","stab",3,480,
+				"Those daggers are made of obsidian and grotesquely decorated with amethysts and lead engravings. The magic within those murky blades will bleed unnatural darkness when charged with magic.",
+				WT_DAGGER, WSZ_SMALL, true);
 		public const DAGGER :DynamicWeapon = findCommonDynamicWeapon("dagger");
 		public const DAGWHIP:Weapon = new Weapon(
 				"DagWhip","DaggerWhip","dagger whip","a dagger whip","whip-like slash",5,200,
@@ -249,6 +253,78 @@ public final class WeaponLib extends ItemConstants
 				WT_DUELING, WSZ_MEDIUM)
 				.withTag(W_HYBRID)
 				.withEffect(IELib.ArmorReduction, 10) as Weapon;
+		public const DARKSA:Weapon = new Weapon(
+				"DarkSA","DarksteelAxes","Darksteel Axes","a set of Darksteel Axes","cleave",40,6400,
+				"A pair of large axes made from soultempered darksteel.",
+				WT_AXE, WSZ_LARGE, true)
+				.withBuffs({
+					'psoulskillpower': +0.4
+				})
+				.withEffect(IELib.Bleed, 10)
+				.withEffect(IELib.ScaleAttack_Str, 60) as Weapon;
+		public const DARKSD :Weapon = new Weapon(
+				"DarkSD","DarksteelDaggers","Darksteel Daggers","a set of Darksteel Daggers","stab",5,1600,
+				"A pair of small blades forged from soultempered darksteel.",
+				WT_DAGGER, WSZ_SMALL, true)
+				.withBuffs({
+					'psoulskillpower': +0.4
+				})
+				.withEffect(IELib.Bleed, 10) as Weapon;
+		public const DARKSA1:Weapon = new Weapon(
+				"DarkSA1","DarksteelAxe","Darksteel Axe","a Darksteel Axe","cleave",40,3200,
+				"A large axe made from soultempered darksteel.",
+				WT_AXE, WSZ_LARGE)
+				.withBuffs({
+					'psoulskillpower': +0.2
+				})
+				.withEffect(IELib.Bleed, 10)
+				.withEffect(IELib.ScaleAttack_Str, 60) as Weapon;
+		public const DARKSD1:Weapon = new Weapon(
+				"DarkSD1","DarksteelDagger","Darksteel Dagger","a Darksteel Dagger","stab",5,800,
+				"A small blade forged from soultempered darksteel.",
+				WT_DAGGER, WSZ_SMALL)
+				.withBuffs({
+					'psoulskillpower': +0.2
+				})
+				.withEffect(IELib.Bleed, 10) as Weapon;
+		public const DARKSHA:Weapon = new Weapon(
+				"DarkSHa","DarksteelHalberd","Darksteel Halberd","a Darksteel Halberd","slash",40,3200,
+				"A large halberd made from soultempered darksteel.",
+				WT_POLEARM, WSZ_LARGE)
+				.withBuffs({
+					'psoulskillpower': +0.2
+				})
+				.withEffect(IELib.ArmorPenetration, 40)
+				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
+		public const DARKSS:Weapon = new Weapon(
+				"DarkSS","DarksteelScythes","Darksteel Scythes","a set of Darksteel Scythes","slash",40,6400,
+				"A pair of large scythes made from soultempered darksteel.",
+				WT_SCYTHE, WSZ_LARGE, true)
+				.withBuffs({
+					'psoulskillpower': +0.4
+				})
+				.withEffect(IELib.Bleed, 10)
+				.withEffect(IELib.ScaleAttack_Str, 60)
+				.withTags(W_WHIRLWIND)  as Weapon;
+		public const DARKSSP:Weapon = new Weapon(
+				"DarkSSp","DarksteelSpear","Darksteel Spear","a Darksteel Spear","stab",40,3200,
+				"A large spear made from soultempered darksteel.",
+				WT_SPEAR, WSZ_LARGE)
+				.withBuffs({
+					'psoulskillpower': +0.2
+				})
+				.withEffect(IELib.ArmorPenetration, 100)
+				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
+		public const DARKSS1:Weapon = new Weapon(
+				"DarkSS1","DarksteelScythe","Darksteel Scythe","a Darksteel Scythe","slash",40,3200,
+				"A large scythe made from soultempered darksteel.",
+				WT_SCYTHE, WSZ_LARGE)
+				.withBuffs({
+					'psoulskillpower': +0.2
+				})
+				.withEffect(IELib.Bleed, 10)
+				.withEffect(IELib.ScaleAttack_Str, 60)
+				.withTags(W_WHIRLWIND)  as Weapon;
 		public const DBFSWO :Weapon = new Weapon(
 				"DBFSwo", "D.B.F.Sword", "dual big fucking swords", "a pair of big fucking swords", "slash", 50, 4000,
 				"Big Fucking Swords - the best solution for a tiny e-pen complex at this side of the Mareth!  This pair of 2H 2,5 meters long swords requires 150 strength to fully unleash their power.",
@@ -332,22 +408,18 @@ public final class WeaponLib extends ItemConstants
 				"Ancient looking rapier forged in dragon fire. Tales saying that some of the dragon fire could still linger inside of it.  The blade is still a piece of extraordinary quality and perfect for stabbing.",
 				WT_DUELING, WSZ_MEDIUM)
 				.withTags(W_RAPIER) as Weapon;
-		public const DARKSD :Weapon = new Weapon(
-				"DarkSD","DarksteelDaggers","Darksteel Daggers","a set of Darksteel Daggers","stab",5,1600,
-				"A pair of small blades forged from soultempered darksteel.",
-				WT_DAGGER, WSZ_SMALL, true)
-				.withBuffs({
-					'psoulskillpower': +0.2
-				})
-				.withEffect(IELib.Bleed, 10) as Weapon;
-		public const DARKSD1:Weapon = new Weapon(
-				"DarkSD1","DarksteelDagger","Darksteel Dagger","a Darksteel Dagger","stab",5,800,
-				"A small blade forged from soultempered darksteel.",
-				WT_DAGGER, WSZ_SMALL)
-				.withBuffs({
-					'psoulskillpower': +0.2
-				})
-				.withEffect(IELib.Bleed, 10) as Weapon;
+		public const DRDAGGER:Weapon = new Weapon(
+				"DRDagger","D.R.Dagger","dual ruby daggers","a dual ruby daggers","stab",3,480,
+				"Those daggers are made of crimson metal and richly decorated with rubies and gold engravings. The magic within those crimson blades will flare up with magical flames when charged with magic.",
+				WT_DAGGER, WSZ_SMALL, true);
+		public const DSDAGGER:Weapon = new Weapon(
+				"DSDagger","D.S.Dagger","dual sapphire daggers","a dual sapphire daggers","stab",3,480,
+				"Those daggers are made of azure metal and richly decorated with sapphires and silver engravings. The magic within those azure blades will radiate magical frost when charged with magic.",
+				WT_DAGGER, WSZ_SMALL, true);
+		public const DTODAGGER:Weapon = new Weapon(
+				"DToDagger","D.T.Dagger","dual topaz daggers","a dual topaz daggers","stab",3,480,
+				"Those daggers are made of eversteel and richly decorated with yellow topazes and copper engravings. The magic within those shining blades will oversaturate the metal with electricity when charged with magic.",
+				WT_DAGGER, WSZ_SMALL, true);
 		public const DWARWA :Weapon = new Weapon(
 				"DwarWA","DwarvenWaraxe","dwarven waraxe","a dwarven waraxe","cleave",53,2120,
 				"A dwarven waraxe has a large, ornate head mounted to a thick handle, making it too large to use in one hand without special training.",
@@ -1103,7 +1175,13 @@ public final class WeaponLib extends ItemConstants
 			[B_SWORD, DBSWORD],
 			[EXCALIB, DEXCALI],
 			[HATWINSCY, ATWINSCY],
-			[DARKSD1, DARKSD]
+			[DARKSD1, DARKSD],
+			[ADAGGER, DADAGGER],
+			[RDAGGER, DRDAGGER],
+			[SDAGGER, DSDAGGER],
+			[TODAGGER, DTODAGGER],
+			[DARKSA1, DARKSA],
+			[DARKSS1, DARKSS]
 		]
 	}
 }

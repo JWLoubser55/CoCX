@@ -107,7 +107,7 @@ public class ZzzRace extends Race {
     
     public override function setup():void {
         addScores()
-                .//start ctrl-spacing here
+                //.start ctrl-spacing here
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
         buildTier(1000, "tierName")

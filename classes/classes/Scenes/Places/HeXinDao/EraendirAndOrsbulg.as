@@ -20,6 +20,8 @@ public class EraendirAndOrsbulg extends HeXinDaoAbstractContent
 			menu();
 			addButton(0, "Buy (1)", EraendirBuyMenu1);
 			addButton(1, "Buy (2)", EraendirBuyMenu2);
+			//10 - talk
+			//11 or 12 or 13 - special order
 			addButton(14, "Leave", heXinDao.riverislandVillageStuff);
 		}
 		public function EraendirBuyMenu1():void {
@@ -69,6 +71,8 @@ public class EraendirAndOrsbulg extends HeXinDaoAbstractContent
 			menu();
 			addButton(0, "Buy (1)", OrsbulgBuyMenu1);
 			addButton(0, "Buy (2)", OrsbulgBuyMenu2);
+			//10 - talk
+			//11 or 12 or 13 - special order
 			addButton(14, "Leave", heXinDao.riverislandVillageStuff);
 		}
 		public function OrsbulgBuyMenu1():void {
@@ -97,7 +101,18 @@ public class EraendirAndOrsbulg extends HeXinDaoAbstractContent
 			outputText("\"<i>Only the biggest deadliest weapon right here!</i>\"");
 			addButton(0, weaponsrange.B_F_BOW.shortName, itemBuy, weaponsrange.B_F_BOW, OrsbulgMainMenu, "Orsbulg");
 			addButton(1, weaponsrange.BFXBOW_.shortName, itemBuy, weaponsrange.BFXBOW_, OrsbulgMainMenu, "Orsbulg");
-			addButton(10, weapons.BFGAUNT.shortName, itemBuy, weapons.BFGAUNT, OrsbulgMainMenu, "Orsbulg");
+			addButton(2, weapons.BFGAUNT.shortName, itemBuy, weapons.BFGAUNT, OrsbulgMainMenu, "Orsbulg");
+			//3
+			//4
+			addButton(5, weapons.DARKSA1.shortName, itemBuy, weapons.DARKSA1, OrsbulgMainMenu, "Orsbulg");
+			addButton(6, weapons.DARKSSP.shortName, itemBuy, weapons.DARKSSP, OrsbulgMainMenu, "Orsbulg");
+			addButton(7, weapons.DARKSHA.shortName, itemBuy, weapons.DARKSHA, OrsbulgMainMenu, "Orsbulg");
+			addButton(8, weapons.DARKSS1.shortName, itemBuy, weapons.DARKSS1, OrsbulgMainMenu, "Orsbulg");
+			//9
+			//10
+			//11
+			//12
+			//13
 			addButton(14, "Back", OrsbulgMainMenu);
 		}
 

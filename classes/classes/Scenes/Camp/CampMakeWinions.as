@@ -1254,14 +1254,14 @@ public class CampMakeWinions extends BaseContent
 			"(Mid) Viscount Rank", // idx = 31
 			"(Advanced) Viscount Rank",
 			"(Peak) Viscount Rank",
-			"(Low) Earl Rank",// lvl = 186
-			"(Mid) Earl Rank",// lvl = 192
-			"(Advanced) Earl Rank",// lvl = 198
-			"(Peak) Earl Rank",// lvl = 204
-			"(Low) Marquess Rank",// lvl = 210
-			"(Mid) Marquess Rank",// lvl = 216
-			"(Advanced) Marquess Rank",// lvl = 222
-			"(Peak) Marquess Rank",// lvl = 228
+			"(Low) Earl Rank",
+			"(Mid) Earl Rank",
+			"(Advanced) Earl Rank",
+			"(Peak) Earl Rank",
+			"(Low) Marquess Rank",
+			"(Mid) Marquess Rank",
+			"(Advanced) Marquess Rank",
+			"(Peak) Marquess Rank", // idx = 41
 			"(Low) Duke Rank",// lvl = 234
 			"(Mid) Duke Rank",// lvl = 240
 			"(Advanced) Duke Rank",// lvl = 246

@@ -5105,6 +5105,8 @@ import classes.Scenes.Combat.CombatAbilities;
 				armorDef += Math.round(armorDef * 2.5);
 				armorMDef += Math.round(armorMDef * 2.5);
 			}
+			if (hasPerk(PerkLib.EnemyTrueDemon) && !hasPerk(PerkLib.EnemyTrueAngel)) this.cor += (1 + (rand(50)));
+			if (!hasPerk(PerkLib.EnemyTrueDemon) && hasPerk(PerkLib.EnemyTrueAngel)) this.cor -= (1 + (rand(50)));
 			if (level < 9) {
 				if (hasPerk(PerkLib.EnemyForBeginnersType)) this.lust *= 0.1;
 				else this.lust *= 0.6;

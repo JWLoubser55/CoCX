@@ -5,7 +5,7 @@ import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 
-public class WerecatRace extends Race {
+public class WereravenRace extends Race {
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -31,8 +31,8 @@ public class WerecatRace extends Race {
         /*Vagina*/		"Human",
         /*Perks*/		"Human"];
         
-    public function WerecatRace(id:int) {
-        super("Werecat", id, []);//RaceBody);
+    public function WereravenRace(id:int) {
+        super("Wereraven", id, []);//RaceBody);
 		disabled = true;
     }
     
@@ -41,7 +41,7 @@ public class WerecatRace extends Race {
                 //.start ctrl-spacing here
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
-        buildTier(12, "werecat")
+        buildTier(12, "wereraven")
                 .buffs({
                         "str.mult": +0.00,
                         "tou.mult": +0.00,
