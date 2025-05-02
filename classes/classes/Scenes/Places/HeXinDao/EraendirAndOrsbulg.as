@@ -2,17 +2,17 @@
  * ...
  * @author Liadri
  */
-package classes.Scenes.Places.HeXinDao 
+package classes.Scenes.Places.HeXinDao
 {
 import classes.*;
 import classes.Scenes.API.MultiBuy;
 
 public class EraendirAndOrsbulg extends HeXinDaoAbstractContent
 	{
-		
-		public function EraendirAndOrsbulg() 
+
+		public function EraendirAndOrsbulg()
 		{}
-		
+
 		public function EraendirMainMenu():void {
 			clearOutput();
 			outputText("A sleek graceful elven man stare at you from the shop counter.\n\n");
@@ -64,13 +64,13 @@ public class EraendirAndOrsbulg extends HeXinDaoAbstractContent
 			//13
 			addButton(14, "Back", EraendirMainMenu);
 		}
-		
+
 		public function OrsbulgMainMenu():void {
 			clearOutput();
-			outputText("A tall muscular orc woman stare at you from the shop \"<i>Welcome to Eraendir and Orsbulg. I’m Orsbulg and I sell THE weapons. BIG weapons for REAL heroes. So what will it be " + player.mf("boy", "lass") + "?</i>\"");
+			outputText("A tall muscular orc woman stares at you from the shop. \n\n\"<i>Welcome to Eraendir and Orsbulg. I’m Orsbulg and I sell THE weapons. BIG weapons for REAL heroes. \nSo, what will it be " + player.mf("boy", "lass") + "?</i>\"");
 			menu();
 			addButton(0, "Buy (1)", OrsbulgBuyMenu1);
-			addButton(0, "Buy (2)", OrsbulgBuyMenu2);
+			addButton(1, "Buy (2)", OrsbulgBuyMenu2);
 			//10 - talk
 			//11 or 12 or 13 - special order
 			addButton(14, "Leave", heXinDao.riverislandVillageStuff);
@@ -118,7 +118,7 @@ public class EraendirAndOrsbulg extends HeXinDaoAbstractContent
 
 		private function itemBuy(itype:ItemType, returnFunc:Function, merchant:String):void {
 			var descString:String = "\"<i>Interested?</i>\"";
-			
+
 			MultiBuy.confirmBuyMulti(returnFunc, merchant, 1, itype, descString, "\n");
 		}
 	}
