@@ -261,6 +261,7 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Ormael): Darksteel Spear - buyable at Orsbulg shop. Cost 3,200 gems. Base atk is 40. It's large spear type weapon, 100% armor penetration, increase physical soulskills power by 20%.\n");
 			outputText("-New melee weapon (by Ormael): Darksteel Scythe - buyable at Orsbulg shop. Cost 3,200 gems. Base atk is 40. It's large scythe type weapon, 10% bleed chance, increase physical soulskills power by 20%.\n");
 			outputText("-New melee weapon (by Ormael): Darksteel Scythes - can be gained by combining 2x Darksteel Scythe weapon. Cost 6,400 gems. Base atk is 40. It's dual large weapon belonging to scythe type, 10% bleed chance, increase physical soulskills power by 40%.\n");
+			outputText("-New Blood Soulskill: Crimson Overflow - learned from Crimson Jade. Selfbuff that boost max OverHP by 10% for duration of the combat. Way of the Blood super perk change effect to be castable when off cooldown and granting 5% for an hour. Recasting would make it stack until 6x current progress of blood demon job. Blood Demon Intelligence super perk would increase stack limit to 12x and each cast adding 2 hours.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -284,6 +285,24 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
 			outputText("-\n");
 			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
@@ -301,25 +320,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accesable by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");

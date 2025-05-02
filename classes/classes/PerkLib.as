@@ -4474,6 +4474,8 @@ public class PerkLib
 				"When outdoors you are considered to be permanently flying, allowing you to use great dive and flying skills at will. Useless underwater.");
 		public static const AffinityUndine:PerkType = mk("Affinity (Undine)", "Affinity (Undine)",
 				"Can breath underwater and gain +50 to speed and spell power while underwater. Weak to electricity (-100% resistance).");
+		public static const AlphaProtocol:PerkType = mk("Alpha Protocol", "Alpha Protocol",
+				"You are immune to corruption and transformation in all forms though considering you are now a sentient machine this may or may not be all that great.");
 		public static const AlteredAnima:PerkType = mk("Altered Anima", "Altered Anima",
 				"The process of becoming a Princess has severely contaminated and mutated your soul, making it unable to leave your body, but at what cost?");
 		public static const ArchmageEx:PerkType = mk("Archmage (Ex)", "Archmage (Ex)",
@@ -8935,4 +8937,4 @@ public class PerkLib
         }
 	}
 }
-}
+}

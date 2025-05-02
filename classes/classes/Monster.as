@@ -408,6 +408,8 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) maxOver2 += 0.1;
 			if (perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxOver2 += 0.2;
+			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
+			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
 			maxOver *= maxOver2;//~290%
 			if (hasStatusEffect(StatusEffects.CorpseExplosion)) maxOver *= (1 - (0.2 * statusEffectv1(StatusEffects.CorpseExplosion)));
 			if (hasStatusEffect(StatusEffects.CombatWounds)) maxOver *= (1 - (0.01 * statusEffectv1(StatusEffects.CombatWounds)));

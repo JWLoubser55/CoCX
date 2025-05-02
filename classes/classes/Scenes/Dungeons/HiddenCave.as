@@ -356,7 +356,7 @@ public class HiddenCave extends DungeonAbstractContent
 				doNext(playerMenu);
 				return;
 			}
-			outputText("The chamber you have entered is large.. At the center is an imposing throne with several shield like green scales littered around it. ");
+			outputText("The chamber you have entered is large. At the center is an imposing throne with several shield like green scales littered around it. ");
 			if (player.hasPerk(PerkLib.SoulSense)) {
 				outputText("There is a small suspicious lever on the right next to a bed. ");
 				if (flags[kFLAGS.HIDDEN_CAVE_2ND_FLOOR] > 0) outputText("And you already pulled it. ");
@@ -365,6 +365,10 @@ public class HiddenCave extends DungeonAbstractContent
 			dungeons.setDungeonButtons(roomTunnel02, null, null, null);
 			if (player.hasPerk(PerkLib.SoulSense) && flags[kFLAGS.HIDDEN_CAVE_2ND_FLOOR] == 0) {
 				addButton(0, "Pull Lever", pullTheLever).hint("Pull the lever. You suspect that it might open some secret door.");
+			}
+			if (flags[kFLAGS.AURORA_LVL] >= 1) {//sekretna skrytka z bronią lub broniami lub akcesoriami?
+				//addButton(2, "Drawer", bedroomDrawer);
+				//addButton(5, "Desk", readTheDiary);
 			}
 		}
 		public function roomSmallCaveW():void {
@@ -580,6 +584,14 @@ public class HiddenCave extends DungeonAbstractContent
 			outputText("\n\nInside box you find solid looking furnance. Probably even better then the one you currently have. Shame to leave it here gathering dust, right?");
 			Crafting.furnaceLevel = Crafting.FURNACE_LEVEL_GOOD;
 			doNext(roomLStorageW);
+		}
+		private function readTheDiary():void {
+			clearOutput();
+			outputText("Going through dragon boi’s desk, you find quite a few papers…and notice a diary. Curious, you open it and begin reading.\n\n");
+			outputText("<i>-A</i>");
+			outputText("<i>-A</i>");
+			outputText("<i>-Unnamed Priest of Tia'rr</i>");
+			doNext(playerMenu);
 		}
 	}
 }

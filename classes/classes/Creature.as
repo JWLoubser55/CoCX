@@ -958,6 +958,8 @@ public class Creature extends Utils
 			if (perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxOver2 += 0.2;
 			if (perkv1(IMutationsLib.HumanBonesIM) >= 4) maxOver2 += 0.1;
 			if (hasPerk(PerkLib.Soulless)) maxOver2 += (0.01 * level);
+			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
+			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
 			maxOver *= maxOver2;//~270%
 			maxOver = Math.round(maxOver);
 			return Math.min(54999999,maxOver);
@@ -3786,7 +3788,8 @@ public class Creature extends Utils
 		public function isGooSkin():Boolean { return skin.isGooSkin(); }
 		public function isGhostSkin():Boolean { return skin.isGhostSkin(); }
 		public function isBarkSkin():Boolean { return skin.hasBark(); }
-		public function isGargoyle():Boolean { return skin.hasBaseOnly(Skin.STONE); }
+		public function isGargoyle():Boolean { return hasPerk(PerkLib.GargoyleCorrupted) || hasPerk(PerkLib.GargoylePure); }
+		public function isAutomata():Boolean { return hasPerk(PerkLib.AlphaProtocol); }
 		public function skinDescript():String { return skin.describe('base'); }
 		public function skinFurScales():String { return skin.describe('coat'); }
 

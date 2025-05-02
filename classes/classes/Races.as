@@ -152,8 +152,9 @@ public class Races {
 	public static const BAROMETZ:BarometzRace			   = new BarometzRace(127);
 	public static const WEREBAT:WerebatRace				   = new WerebatRace(128);
 	public static const WERECAT:WerecatRace				   = new WerecatRace(129);
-	//public static const WERERAVEN:WerespiderRace          = new WerespiderRace(130);
-	//public static const WEREBEAR:WerespiderRace          = new WerespiderRace(131);
+	public static const WERERAVEN:WereravenRace			   = new WereravenRace(130);
+	public static const WEREBEAR:WerebearRace			   = new WerebearRace(131);
+	public static const RAT:RatRace						   = new RatRace(132);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
@@ -181,7 +182,7 @@ public class Races {
 			PLANT, ALRAUNE, YGGDRASIL, BAROMETZ
 	];
 	public static const WerebeastRaces:/*Race*/Array = [
-			WEREWOLF, WEREFOX, WERESPIDER, WERESHARK, WEREBAT, WERECAT
+			WEREWOLF, WEREFOX, WERESPIDER, WERESHARK, WEREBAT, WERECAT, WERERAVEN, WEREBEAR
 	];
 	public static const RacesForRandomEnchantments:/*Race*/Array = [
 			// populated in load() as AllVisibleRaces - RacesExcludedFromRandomEnchantments

@@ -305,6 +305,7 @@ public class CombatAbilities {
 	public static const BloodRequiem:BloodReqiuemSkill								= new BloodReqiuemSkill();
 	public static const BloodRequiemSF:BloodReqiuemSkill							= new BloodReqiuemSkill(true);
 	public static const ScarletSpiritCharge:ScarletSpiritChargeSkill				= new ScarletSpiritChargeSkill();
+	public static const CrimsonOverflow:CrimsonOverflowSkill						= new CrimsonOverflowSkill();
 	public static const KillingIntent:KillingIntentSkill							= new KillingIntentSkill();
 
 
@@ -357,6 +358,7 @@ public class CombatAbilities {
 		BloodRequiem,
 		BloodRequiemSF,
 		ScarletSpiritCharge,
+		CrimsonOverflow,
 		KillingIntent
 	]
 
