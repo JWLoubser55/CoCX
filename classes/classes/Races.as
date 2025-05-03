@@ -155,6 +155,8 @@ public class Races {
 	public static const WERERAVEN:WereravenRace			   = new WereravenRace(130);
 	public static const WEREBEAR:WerebearRace			   = new WerebearRace(131);
 	public static const RAT:RatRace						   = new RatRace(132);
+	//public static const ABYSSAL_ELF:     = new AbyssalSharkRace(133);
+	//public static const SHEEP:     = new AbyssalSharkRace(133);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [

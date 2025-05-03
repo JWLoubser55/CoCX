@@ -769,6 +769,10 @@ public class AlchemyLib extends BaseContent {
 		short: "Barometz",
 		name : "Barometz"
 	});
+	public static const AE_ABYSSAL_ELF:int     = EnumValue.add(Essences, 231, "ABYSSAL_ELF", {
+		short: "AElf",
+		name : "Abyssal Elf"
+	});
 	public static function DEFAULT_ESSENCE_DROP_TABLE(mainEssencee:int, withHuman:Boolean = false):Array {
 		var result:Array = [
 			[10, mainEssencee],

@@ -544,6 +544,12 @@ public class Tail extends SaveableBodyPart {
 		appearanceDesc: "A long flexible cable with a shiny tip at the end extends from your butt like a tail. It can be used to deliver electric discharges in order to neutralize and pacify a target.",
 		isLong: true
 	});
+	public static const BAROMETZ: int = 66;
+	EnumValue.add(Types, BAROMETZ, "BAROMETZ", {
+		name:"barometz",
+		appearanceDesc: "The long trail of vine and leafs that compose your verdant tail hangs from your [butt].",
+		isLong: true
+	});
 
 	override public function set type(value:int):void {
 		var old:int = type;

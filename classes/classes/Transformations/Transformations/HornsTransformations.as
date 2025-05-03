@@ -635,6 +635,44 @@ public class HornsTransformations extends MutationsHelper {
 				return player.horns.type === Horns.HEADSET;
 			}
 	);
+
+	public const HornsRam: Transformation = new SimpleTransformation("Ram Horns",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.HornsNone, doOutput);
+
+				desc += "You writhe in pain as two bony lumps begin to push out of the side of your head. The transformation gives you a hell of a headache, but as soon as it is over, you feel for the two large spiraling horns on your head similar to those of a ram, and unsurprisingly, they are as sensitive as they are sturdy. Woe to whoever is going to be at the end of your charging attacks now that you sport those. <b>You now have heavy ram horns!</b>";
+
+				player.horns.count = 2;
+				player.horns.type = Horns.RAM;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(HornsMem.getMemory(HornsMem.RAM));
+			},
+			// is present
+			function (): Boolean {
+				return player.horns.type === Horns.RAM;
+			}
+	);
+
+	public const HornsVerdantRam: Transformation = new SimpleTransformation("Verdant Ram Horns",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You feel a tingling sensation on your scalp as something grows from your head and crawls along your horns and you touch them tentatively discovering vines have grown along their length. <b>You now have verdant rams horns!</b>";
+
+				player.horns.count = 2;
+				player.horns.type = Horns.VERDANT_RAM;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(HornsMem.getMemory(HornsMem.VERDANT_RAM));
+			},
+			// is present
+			function (): Boolean {
+				return player.horns.type === Horns.VERDANT_RAM;
+			}
+	);
 	/*
   */
 

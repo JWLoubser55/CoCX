@@ -1734,6 +1734,33 @@ public class TailTransformations extends MutationsHelper {
 				return player.tailType === Tail.AUTOMATA_TAIL_CABLE;
 			}
 	);
+
+	public const TailBarometz: Transformation = new SimpleTransformation("Barometz Tail",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.TailNone, doOutput);
+
+				if (player.tailType == Tail.SPIDER_ADBOMEN || player.tailType == Tail.BEE_ABDOMEN || player.tailType == Tail.SCORPION || player.tailType == Tail.MANTIS_ABDOMEN || player.tailType == Tail.ANT_ABDOMEN || player.tailType == Tail.MOTH_ABDOMEN) {
+					desc += "Your insect-like abdomen bunches up as it begins shrinking, exoskeleton flaking off like a snake sheds its skin. It bunches up until it is as small as a tennis ball, then blooms outwards, growing into an animalistic tail shape made of multiple green foliage. Moments later, the greenery grows to full size your foliage imitating something akin to a horsetail.";
+				} else {
+					TransformationUtils.applyTFIfNotPresent(transformations.TailNone, doOutput);
+					desc += "There is a sudden tickling on your ass, and you notice you have sprouted a long leafy trail not unlike a vegetal tail.";
+				}
+
+				desc += " <b>You now have a leafy barometz tail.</b>";
+				player.tailType = Tail.BAROMETZ;
+				player.tailCount = 1;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.BAROMETZ));
+			},
+			// is present
+			function (): Boolean {
+				return player.tailType === Tail.BAROMETZ;
+			}
+	);
 	/*
   */
 }

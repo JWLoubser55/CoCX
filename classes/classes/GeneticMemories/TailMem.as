@@ -884,6 +884,17 @@ import classes.CoC;
 			}
 		});
 
+		public static const BAROMETZ:int = _partid++;
+		EnumValue.add(Memories, BAROMETZ, "BAROMETZ", {
+			id: "Barometz Tail",
+			name: "Barometz Tail",
+			cost: function():Number { return getTailCost(player.tailCount, 1);},
+			title: "Barometz",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TailBarometz;
+			}
+		});
+
 		public static function getTailCost(startTails:int, endTails:int):int {
 			return Math.abs(startTails - endTails)*100 || 100;
 		}

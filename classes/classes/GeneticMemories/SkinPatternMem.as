@@ -220,6 +220,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const RUNIC:int = _partid++;
+		EnumValue.add(Memories, RUNIC, "RUNIC", {
+			id: "Anubis Glyph Pattern",
+			name: "Glyph Tattoos",
+			cost: 100,
+			title: "Anubis",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.SkinPatternRunic
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

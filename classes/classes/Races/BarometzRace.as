@@ -12,6 +12,7 @@ import classes.VaginaClass;
 public class BarometzRace extends Race {
     public static const BarometzFurHairColor:/*String*/Array = ["green", "leaf green", "light green"];
     public static const BarometzEyeColor:/*String*/Array = ["light green", "lime"];
+    public static const BarometzSkinColor:/*String*/Array = ["tan", "brown", "caramel", "white"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -44,24 +45,25 @@ public class BarometzRace extends Race {
 	public override function setup():void {
 		
 		addScores()
-				//.hornType(Horns., +1)
-				//.hornType(Horns., +2)
+				.hornType(Horns.RAM, +1)
+				.hornType(Horns.VERDANT_RAM, +2)
 				.faceType(Face.HUMAN, +1)
-				//.eyeType(Eyes., +1)
+				.eyeType(Eyes.GOAT, +1)
 				.eyeColor(ANY(BarometzEyeColor), +1)
 				.earType(Ears.BAROMETZ, +1)
 				.hairType(ANY(Hair.LEAF,Hair.GRASS), +1)
 				.hairColor1(ANY(BarometzFurHairColor), +1)
-				//.
-				//.furColor01(ANY(BarometzFurHairColor), +1)
+				.furColor01(ANY(BarometzFurHairColor), +1)
 				.wingType(Wings.PLANT, +1)
 				.armType(ANY(Arms.PLANT,Arms.PLANT2), +1)
 				.legType(LowerBody.BAROMETZ, +1, -1000)
 				.isTaur(+2)
-				//.skinBasePattern(Skin.PATTERN_, +1)
-				//.
-				//.skinColor1(ANY(SkinColors), +1)
-				//.tailType(Tail., +1)
+				.skinBasePattern(Skin.PATTERN_RUNIC, +1)
+				.customRequirement("skin", "bark skin", function (body:BodyData):Boolean {
+					return body.player.isBarkSkin()
+				}, +2)
+				.skinColor1(ANY(BarometzSkinColor), +1)
+				.tailType(Tail.BAROMETZ, +1)
 				//.
 				.vaginaType(VaginaClass.EQUINE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);

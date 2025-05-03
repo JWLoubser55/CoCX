@@ -683,6 +683,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const HornsArchImp: Transformation 				= horns.HornsArchImp.registerTf(AS_HORNS, AE_IMP);
     public const HornsShroomHeadcap: Transformation 		= horns.HornsShroomHeadcap.registerTf(AS_HORNS, AE_MYCONID);
     public const HornsAutomataHeadset: Transformation 		= horns.HornsAutomataHeadset.registerTf(AS_HORNS, AE_AUTOMATA);
+    public const HornsRam: Transformation 					= horns.HornsRam.registerTf(AS_HORNS, AE_BAROMETZ);
+    public const HornsVerdantRam: Transformation 			= horns.HornsVerdantRam.registerTf(AS_HORNS, AE_BAROMETZ);
 
 
 //LOWER BODY ( LEGS )
@@ -973,6 +975,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const SkinPatternBioluminescence:Transformation 		= skin.SkinPatternBioluminescence.registerTf(AS_SKIN_PATTERN, AE_ABYSSAL_SHARK);//TfMultiple(AS_
     public const SkinPatternCircuit:Transformation 			    = skin.SkinPatternCircuit.registerTf(AS_SKIN_PATTERN, AE_AUTOMATA);
     public const SkinPatternDemonicPleasureRune:Transformation	= skin.SkinPatternDemonicPleasureRune.registerTfMultiple(AS_SKIN_PATTERN, AE_DEMON, AE_MARILITH);
+    public const SkinPatternRunic:Transformation				= skin.SkinPatternRunic.registerTf(AS_SKIN_PATTERN, AE_BAROMETZ);
 
 
 //TAIL
@@ -1043,6 +1046,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const TailTroll: Transformation                      = tail.TailTroll.registerTf(AS_TAIL, AE_TROLL);
     public const TailGlacialTroll: Transformation               = tail.TailGlacialTroll.registerTf(AS_TAIL, AE_GLACIAL_TROLL);
     public const TailCable: Transformation               		= tail.TailCable.registerTf(AS_TAIL, AE_AUTOMATA);
+    public const TailBarometz: Transformation               	= tail.TailBarometz.registerTf(AS_TAIL, AE_BAROMETZ);
 
 	/**
 	 * @param tailCount target tail count

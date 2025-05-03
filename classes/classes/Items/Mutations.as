@@ -17607,6 +17607,11 @@ public final class Mutations extends MutationsHelper {
 				outputText("\n\nAnother violent sneeze escapes you.  It hurt!  You feel your nose and discover your face has changed back into a more normal look. <b>You have a human looking face again!</b>");
 			}
 			//Eyes / Eye color
+			if (rand(3) == 0 && changes < changeLimit && player.eyes.type != Eyes.GOAT) {
+				outputText("[pg]");
+				transformations.EyesGoat.applyEffect();
+				changes++;
+			}
 			if (transformations.EyesBarometzColors.isPossible() && changes < changeLimit && rand(2) == 0) {
 				transformations.EyesBarometzColors.applyEffect(false);
 				outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your [feet] from under you.  As you steady yourself and open your eyes, you realize something seems different, as if the nerves have been optimized.  Your vision has been changed somehow absorbing more light then normal. When you go look into a water puddle you notice your the changes in full. <b>Your eyes color has changed to [eyecolor].</b>");
@@ -17631,6 +17636,17 @@ public final class Mutations extends MutationsHelper {
                 outputText("[pg]Your head tingles as something in your hair change, the strands flashing for an instant before they turn " + player.hairColor + " just like those of a Barometz.\n<");
                 changes++;
             }
+			//Horns
+			if (rand(3) == 0 && changes < changeLimit && player.horns.type == Horns.RAM) {
+				outputText("[pg]");
+				transformations.HornsVerdantRam.applyEffect();
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit && player.horns.type != Horns.RAM && player.horns.type != Horns.VERDANT_RAM) {
+				outputText("[pg]");
+				transformations.HornsRam.applyEffect();
+				changes++;
+			}
 			//Legs
 			if (player.lowerBody == LowerBody.BAROMETZ && !player.isTaur() && changes < changeLimit && rand(3) == 0) {
 				outputText("\n\n");
@@ -17653,6 +17669,33 @@ public final class Mutations extends MutationsHelper {
 			//Wings slot aka tentacle cockvine wings
 			if ((player.arms.type == Arms.PLANT || player.arms.type == Arms.PLANT2) && player.wings.type != Wings.PLANT && changes < changeLimit && rand(3) == 0) {
 				transformations.WingsPlant.applyEffect();
+				changes++;
+			}
+			//Tail
+			if (player.tailType != Tail.BAROMETZ && rand(3) == 0 && changes < changeLimit) {
+				outputText("[pg]");
+				transformations.TailBarometz.applyEffect();
+				changes++;
+			}
+			//skin tone
+			if (!InCollection(player.skinColor, BarometzRace.BarometzSkinColor) && changes < changeLimit && rand(2) == 0) {
+				player.skinColor = randomChoice(BarometzRace.BarometzSkinColor);
+				outputText("[pg]Whoah, that was weird.  You just hallucinated that your ");
+				if (player.isFurCovered()) outputText("skin");
+				else outputText(player.skinDesc);
+				outputText(" turned " + player.skinColor + ".  No way!  It's staying, it really changed color!");
+				changes++;
+			}
+			//Runic pattern
+			if (!player.skin.hasRunicTattoo() && changes < changeLimit && rand(3) == 0) {
+				outputText("[pg]");
+				transformations.SkinPatternRunic.applyEffect();
+				changes++;
+			}
+			//Bark
+			if (!player.isBarkSkin() && !player.isGargoyle() && changes < changeLimit && rand(3) == 0) {
+				outputText("\n\n");
+				transformations.SkinBark(Skin.COVERAGE_COMPLETE, {colors: randomChoice(BarometzRace.BarometzFurHairColor)}).applyEffect();
 				changes++;
 			}
             if (changes == 0) {

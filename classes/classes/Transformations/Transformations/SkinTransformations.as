@@ -947,6 +947,23 @@ public class SkinTransformations extends MutationsHelper {
 				return player.skin.base.pattern === Skin.PATTERN_DEMONIC_PLEASURE_RUNE;
 			}
 	);
+
+	public const SkinPatternRunic: Transformation = new SimpleTransformation("Runic Skin Pattern",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Your skin itches as a glowing green tattoo etches themselves across your arm and belly. The scribblings seem to assist with your mana flow and are definitely magical in nature. <b>Your skin is now marked with a raunic patterns.</b>";
+				player.skin.base.pattern = Skin.PATTERN_RUNIC;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SkinPatternMem.getMemory(SkinPatternMem.RUNIC));
+			},
+			// is present
+			function (): Boolean {
+				return player.skin.base.pattern === Skin.PATTERN_RUNIC;
+			}
+	);
 	/*
   */
 }

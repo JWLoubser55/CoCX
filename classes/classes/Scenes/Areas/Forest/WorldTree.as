@@ -312,7 +312,7 @@ public class WorldTree extends BaseContent
 			//Moss (fur)/else Bark skin
 			if (!player.isBarkSkin() && !player.isGargoyle() && changes < changeLimit && player.faceType == Face.PLANT_DRAGON) {
 				outputText("\n\n");
-				CoC.instance.transformations.SkinBark(Skin.COVERAGE_COMPLETE, {colors: YgddrasilRace.YgddrasilSkinColors}).applyEffect();
+				CoC.instance.transformations.SkinBark(Skin.COVERAGE_COMPLETE, {colors: randomChoice(YgddrasilRace.YgddrasilSkinColors)}).applyEffect();
 				changes++;
 			}
 			if (player.ears.type != Ears.LIZARD && player.tailType == Tail.YGGDRASIL && player.lowerBody == LowerBody.YGG_ROOT_CLAWS && changes < changeLimit) {
