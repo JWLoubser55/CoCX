@@ -10,6 +10,8 @@ import classes.Race;
 import classes.VaginaClass;
 
 public class BarometzRace extends Race {
+    public static const BarometzFurHairColor:/*String*/Array = ["green", "leaf green", "light green"];
+    public static const BarometzEyeColor:/*String*/Array = ["light green", "lime"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -42,24 +44,24 @@ public class BarometzRace extends Race {
 	public override function setup():void {
 		
 		addScores()
-				//.
-				//.
+				//.hornType(Horns., +1)
+				//.hornType(Horns., +2)
 				.faceType(Face.HUMAN, +1)
-				//.
-				//.
-				//.
+				//.eyeType(Eyes., +1)
+				.eyeColor(ANY(BarometzEyeColor), +1)
+				.earType(Ears.BAROMETZ, +1)
 				.hairType(ANY(Hair.LEAF,Hair.GRASS), +1)
+				.hairColor1(ANY(BarometzFurHairColor), +1)
 				//.
-				//.
-				//.
+				//.furColor01(ANY(BarometzFurHairColor), +1)
 				.wingType(Wings.PLANT, +1)
+				.armType(ANY(Arms.PLANT,Arms.PLANT2), +1)
+				.legType(LowerBody.BAROMETZ, +1, -1000)
+				.isTaur(+2)
+				//.skinBasePattern(Skin.PATTERN_, +1)
 				//.
-				//.
-				.isTaur(+2, -1000)
-				//.
-				//.
-				//.
-				//.
+				//.skinColor1(ANY(SkinColors), +1)
+				//.tailType(Tail., +1)
 				//.
 				.vaginaType(VaginaClass.EQUINE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
@@ -72,9 +74,10 @@ public class BarometzRace extends Race {
 				.buffs({
 					"tou.mult": +1.30,
 					"spe.mult": +1.30,
-					"int.mult": -0.50,
-					"lib.mult": +1.30,
-					"sens": +50
+					"int.mult": -0.40,
+					"wis.mult": +0.80,
+					"lib.mult": +1.00,
+					"sens": +100
 				})
 				.end();
 		
@@ -82,9 +85,10 @@ public class BarometzRace extends Race {
 				.buffs({
 					"tou.mult": +2.00,
 					"spe.mult": +2.00,
-					"int.mult": -0.50,
-					"lib.mult": +2.00,
-					"sens": +50
+					"int.mult": -0.40,
+					"wis.mult": +2.00,
+					"lib.mult": +1.50,
+					"sens": +200
 				})
 				.end();
 	}

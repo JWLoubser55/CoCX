@@ -1793,7 +1793,7 @@ public class TestMenu extends BaseContent
 			addButton(1, "CDI", AddCurrentDebugItem).hint("Add 1 Gun.");
 			addButton(2, "TrollFig", AddTrollFig).hint("Add 1 Troll Fig.");
 			addButton(3, "CyclopTF", AddEyedrop).hint("Add 1 cyclop TF.");
-			//addButton(4, "", ).hint("Add 1  .");
+			addButton(4, "BarometzTF", AddHornedFruit).hint("Add 1 Barometz TF.");
 			addButton(5, "ALICORN", AddAlicornium).hint("Add 1 Alicornium.");
 			addButton(6, "D.Fruit", AddDisplacerFruit).hint("Add 1 Displacer Fruit.");
 			addButton(7, "AbyssalSTooth", AddAbyssalSharkTooth).hint("Add 1 Abyssal Shark Tooth.");
@@ -2062,6 +2062,10 @@ public class TestMenu extends BaseContent
 	public function AddEyedrop():void {
 		outputText("\n\n<b>(Gained 1 Cyclop TF)</b>\n\n");
 		inventory.takeItem(consumables.EYEDROP, curry(NonEquipmentMenu, 1));
+	}
+	public function AddHornedFruit():void {
+		outputText("\n\n<b>(Gained 1 Barometz TF)</b>\n\n");
+		inventory.takeItem(consumables.HORNFRU, curry(NonEquipmentMenu, 1));
 	}
 	public function AddDesertBerry():void {
 		outputText("\n\n<b>(Gained 1 Werefox TF)</b>\n\n");

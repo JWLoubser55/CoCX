@@ -1066,6 +1066,17 @@ public class EyesTransformations extends MutationsHelper {
 			}
 	);
 
+	public const EyesBarometzColors: Transformation = new SimpleTransformation("Barometz Eye Colors",
+			// apply effect
+			function (doOutput: Boolean): void {
+				transformations.EyesChangeColor(["light green", "lime"]).applyEffect(doOutput);
+			},
+			// is present
+			function (): Boolean {
+				return InCollection(player.eyes.colour, ["light green", "lime"]);
+			}
+	);
+
 	public const EyesAlicornColors: Transformation = new SimpleTransformation("Alicorn Eye Colors",
 			// apply effect
 			function (doOutput: Boolean): void {

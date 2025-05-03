@@ -896,6 +896,23 @@ public class EarsTransformations extends MutationsHelper {
 				return player.ears.type === Ears.AUTOMATA_BUNNY;
 			}
 	);
+
+	public const EarsBarometz: Transformation = new SimpleTransformation("Barometz Ears",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Your ears elongate and flatten on your head. You flap them a little and discover they have turned into something similar to the ears of a sheep. The fur on them however is strange, it feels like fur to the touch but really it's actually a coverage of moss. <b>You now have barometz ears!</b>";
+
+				player.ears.type = Ears.BAROMETZ;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EarsMem.getMemory(EarsMem.BAROMETZ));
+			},
+			// is present
+			function (): Boolean {
+				return player.ears.type === Ears.BAROMETZ;
+			}
+	);
 	/*
   */
 }

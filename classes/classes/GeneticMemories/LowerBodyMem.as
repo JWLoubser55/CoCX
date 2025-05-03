@@ -591,6 +591,13 @@ package classes.GeneticMemories {
           title: "Werespider Legs",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyWerespider}});
 
+      public static const BAROMETZ: int = _partid++;
+      EnumValue.add(Memories, BAROMETZ, "BAROMETZ", {
+          id: "Barometz Lower Body",name: "Barometz Legs",
+          cost: 200,
+          title: "Barometz",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyBarometzToggle(true)}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

@@ -727,6 +727,17 @@ public final class ConsumableLib extends AlchemyLib
 						)
 				);
 		public const HDEWCAK:HoneydewCake     = new HoneydewCake();
+		public const HORNFRU: Consumable = mk("HornFru", "HornedFruit", "a horned fruit", 6, "A delicious fruit of which the twisting stem reminds of the curving horn of a ram. Supposedly it naturally grows on the vines covered, mossy pelt of barometz when the season is right.", m.hornedFruit, ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_BAROMETZ),
+						[
+							[1, AR_TOU],
+							[1, AR_SPE],
+							[1, AR_WIS],
+							[1, AR_LIB]
+						]
+				);
 		public const HUMMUS_: Consumable = mk("Hummus ", "Hummus", "a blob of cheesy-looking hummus", 100, "This pile of hummus doesn't look that clean.  It looks bland.  So bland that you feel blander just by looking at it.", m.regularHummus, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,

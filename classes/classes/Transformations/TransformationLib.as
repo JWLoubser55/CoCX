@@ -418,6 +418,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const EarsAutomataFennecFox: Transformation 	= ears.EarsAutomataFennecFox.registerTf(AS_EARS, AE_AUTOMATA);
 	public const EarsAutomataCat: Transformation 		= ears.EarsAutomataCat.registerTf(AS_EARS, AE_AUTOMATA);
 	public const EarsAutomataBunny: Transformation 		= ears.EarsAutomataBunny.registerTf(AS_EARS, AE_AUTOMATA);
+	public const EarsBarometz: Transformation 			= ears.EarsBarometz.registerTf(AS_EARS, AE_BAROMETZ);
 
 
 //EYES
@@ -490,6 +491,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const EyesAtlachColors: Transformation 			= eyes.EyesAtlachColors;
 	public const EyesOniColors: Transformation	 			= eyes.EyesOniColors;
 	public const EyesPlantColors: Transformation 			= eyes.EyesPlantColors;
+	public const EyesBarometzColors: Transformation 		= eyes.EyesBarometzColors;
 	public const EyesGoblinColors: Transformation 			= eyes.EyesGoblinColors;
 	public const EyesGremlinColors: Transformation 			= eyes.EyesGremlinColors;
 	public const EyesRaijuColors: Transformation 			= eyes.EyesRaijuColors;
@@ -759,6 +761,9 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public function LowerBodyGryphon(legCount: int = undefined): Transformation 				{ return lowerBody.LowerBodyGryphon(legCount); }
 	public const LowerBodyGryphonBipedal:Transformation = LowerBodyGryphon(2).registerTf(AS_LEGS, AE_GRYPHON);
     public function LowerBodyGryphonToggle(toggleTaur:Boolean = false): Transformation 			{ return lowerBody.LowerBodyGryphon(player.legCount, toggleTaur); }
+	public function LowerBodyBarometz(legCount: int = undefined): Transformation 				{ return lowerBody.LowerBodyBarometz(legCount); }
+	public const LowerBodyBarometzBipedal:Transformation = LowerBodyBarometz(2).registerTf(AS_LEGS, AE_BAROMETZ);
+    public function LowerBodyBarometzToggle(toggleTaur:Boolean = false): Transformation 		{ return lowerBody.LowerBodyBarometz(player.legCount, toggleTaur); }
     public const LowerBodyAnt: Transformation 					= lowerBody.LowerBodyAnt.registerTf(AS_LEGS, AE_ANT);
     public const LowerBodyAtlach: Transformation 				= lowerBody.LowerBodyAtlach.registerTf(AS_LEGS, AE_ATLACH_NACHA);
     public const LowerBodyAtlachNacha: Transformation 			= lowerBody.LowerBodyAtlachNacha.registerTf(AS_LEGS, AE_ATLACH_NACHA);

@@ -559,6 +559,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const BAROMETZ:int = _partid++;
+		EnumValue.add(Memories, BAROMETZ, "BAROMETZ", {
+			id: "Barometz Ears",
+			name: "Barometz Ears",
+			cost: 100,
+			title: "Barometz",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EarsBarometz;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

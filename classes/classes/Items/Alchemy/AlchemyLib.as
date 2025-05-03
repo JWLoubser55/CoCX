@@ -761,6 +761,14 @@ public class AlchemyLib extends BaseContent {
 		short: "WBear",
 		name : "Werebear"
 	});
+	public static const AE_RAT:int             = EnumValue.add(Essences, 229, "RAT", {
+		short: "Rat",
+		name : "Rat"
+	});
+	public static const AE_BAROMETZ:int        = EnumValue.add(Essences, 230, "BAROMETZ", {
+		short: "Barometz",
+		name : "Barometz"
+	});
 	public static function DEFAULT_ESSENCE_DROP_TABLE(mainEssencee:int, withHuman:Boolean = false):Array {
 		var result:Array = [
 			[10, mainEssencee],

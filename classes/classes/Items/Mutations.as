@@ -17556,6 +17556,111 @@ public final class Mutations extends MutationsHelper {
         }
     }
 
+    public function hornedFruit(player:Player):void {
+        player.slimeFeed();
+        //init variables
+        var changes:Number = 0;
+        var changeLimit:Number = 2;
+        //Temporary storage
+        var temp2:Number = 0;
+        //Randomly choose affects limit
+        if (rand(2) == 0) changeLimit++;
+        if (rand(2) == 0) changeLimit++;
+        if (rand(2) == 0) changeLimit++;
+        changeLimit += player.additionalTransformationChances;
+        clearOutput();
+        outputText("You peel the skin of the fruit and savor the juicy insides. You suddenly feel full of energy as your body is overcome by a hitching sensation.");
+        //tou change
+        if (rand(3) == 0 && changes < changeLimit) {
+            outputText("[pg]You feel sturdier, but it might just be your imagination.");
+            dynStats("tou", 1);
+            changes++;
+        }
+		//spe change
+        if (rand(3) == 0 && changes < changeLimit && MutagenBonus("spe", 2)) {
+            outputText("[pg]You feel like a coiled spring, ready to swim or run a marathon!");
+            changes++;
+        }
+        //wis change
+        if (rand(3) == 0 && changes < changeLimit && MutagenBonus("wis", 1)) {
+			outputText("[pg]You feel a tremendous rush of mental celerity, as if your mind were clear of all doubt.");
+			changes++;
+		}
+		//lib change
+        if (rand(3) == 0 && changes < changeLimit && MutagenBonus("lib", 1)) {
+            outputText("[pg]Gah it's so cold out there, you could use some warmth… the warmth of a strong, caring man. ");
+            if (player.lib < 30) outputText("Whoa wait, what are you daydreaming about exactly? This place is clearly getting to you!");
+            else outputText("Mmmmm, if you could get him tight and snuggly against your body to share his heat perhaps he wouldn’t even mind gently inserting himself in and filling you full of his warm man meat. As you start drooling in desire the sudden chill of the wind against your skin jar you awake from your daydream making you shiver.");
+            changes++;
+        }
+        //sens change
+		if (rand(3) == 0 && changes < changeLimit) {
+			outputText("[pg]Whoa… It's chilly out there. You feel the passage of cold wind on your skin as your sensitivity increases.");
+			dynStats("sen", 1);
+		}
+        if (!player.blockingBodyTransformations()) {
+			//Face
+			if (player.faceType != Face.HUMAN && changes < changeLimit && rand(3) == 0) {
+				changes++;
+				outputText("\n\n");
+				transformations.FaceHuman.applyEffect(false);
+				outputText("\n\nAnother violent sneeze escapes you.  It hurt!  You feel your nose and discover your face has changed back into a more normal look. <b>You have a human looking face again!</b>");
+			}
+			//Eyes / Eye color
+			if (transformations.EyesBarometzColors.isPossible() && changes < changeLimit && rand(2) == 0) {
+				transformations.EyesBarometzColors.applyEffect(false);
+				outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your [feet] from under you.  As you steady yourself and open your eyes, you realize something seems different, as if the nerves have been optimized.  Your vision has been changed somehow absorbing more light then normal. When you go look into a water puddle you notice your the changes in full. <b>Your eyes color has changed to [eyecolor].</b>");
+				changes++;
+			}
+			//Ears
+			if (player.ears.type != Ears.BAROMETZ && changes < changeLimit && rand(3) == 0) {
+				outputText("\n\n");
+				transformations.EarsBarometz.applyEffect();
+				changes++;
+			}
+			//Leaf Hair
+			if (player.hairColor == "green" && (player.hairType != Hair.LEAF && player.hairType != Hair.GRASS) && rand(3) == 0 && changes < changeLimit)
+			{
+				outputText("\n\n");
+				if (rand(2) == 0) transformations.HairGrass.applyEffect(false);
+				else transformations.HairLeaf.applyEffect(false);
+				changes++;
+			}
+			if (!InCollection(player.hairColor, BarometzRace.BarometzFurHairColor)) {
+                player.hairColor = randomChoice(BarometzRace.BarometzFurHairColor);
+                outputText("[pg]Your head tingles as something in your hair change, the strands flashing for an instant before they turn " + player.hairColor + " just like those of a Barometz.\n<");
+                changes++;
+            }
+			//Legs
+			if (player.lowerBody == LowerBody.BAROMETZ && !player.isTaur() && changes < changeLimit && rand(3) == 0) {
+				outputText("\n\n");
+				transformations.LowerBodyTaur().applyEffect();
+				player.MutagenBonus("spe", 3);
+				changes++;
+			}
+			if (player.lowerBody != LowerBody.BAROMETZ && changes < changeLimit && rand(3) == 0) {
+				outputText("\n\n");
+				transformations.LowerBodyBarometzBipedal.applyEffect();
+				changes++;
+			}
+			//Arms
+			if (player.lowerBody == LowerBody.BAROMETZ && !InCollection(player.arms.type, Arms.GARGOYLE, Arms.PLANT, Arms.PLANT2) && changes < changeLimit && rand(3) == 0) {
+				outputText("\n\n");
+				if (player.cor >= 50) transformations.ArmsPlant2.applyEffect();
+				else transformations.ArmsPlant.applyEffect();
+				changes++;
+			}
+			//Wings slot aka tentacle cockvine wings
+			if ((player.arms.type == Arms.PLANT || player.arms.type == Arms.PLANT2) && player.wings.type != Wings.PLANT && changes < changeLimit && rand(3) == 0) {
+				transformations.WingsPlant.applyEffect();
+				changes++;
+			}
+            if (changes == 0) {
+                outputText("[pg]Nothing happened.  Weird.");
+            }
+        }
+    }
+
     public function hardBiscuits(player:Player):void {
         clearOutput();
         outputText("You eat the flavorless biscuits. It satisfies your hunger a bit, but not much else.");

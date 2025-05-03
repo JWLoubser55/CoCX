@@ -2460,6 +2460,48 @@ public class LowerBodyTransformations extends MutationsHelper {
 			return player.lowerBody === LowerBody.WERESPIDER && player.legCount === 2;
 		}
 	);
+
+	public function LowerBodyBarometz(legCount: int = undefined, toggleTaur:Boolean = false): Transformation {
+		return new SimpleTransformation("Barometz Lower Body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (!legCount) legCount = player.legCount;
+				var desc: String = "";
+				if(player.lowerBody == LowerBody.BAROMETZ ){
+					if (toggleTaur && legCount === 2) legCount = 4;
+					else if (toggleTaur && legCount >= 4) legCount = 2;
+					else if (legCount === 1) legCount = 2;
+				}
+				
+				// Case 1: Morph Taur legs without changing leg count
+				if (player.isTaur() && legCount >= 4) {
+					desc += "Your legs begin to change as a coat of moss grows all the way to your knee. Just as the fuzzy moss stops growing, you scream in agony as the bones in your legs break and rearrange. Once the pain subsides, you inspect your legs, finding that they are still alright, mostly. Your toes have united into a pair of dark cloven hooves of which the nail is revealed to be hard bark. <b>You now have cloven bark hooves just like a barometz.</b>";
+				}
+				// Case 2: Bipedal TF
+				else if (legCount === 2) {
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyBipedal, doOutput);
+
+					// Display TF text if the player is obtaining this part instead of only changing leg count
+					if (player.lowerBody !== LowerBody.BAROMETZ) {
+						desc += "Your legs begin to change as a coat of moss grows all the way to your knee. Just as the fuzzy moss stops growing, you scream in agony as the bones in your legs break and rearrange. Once the pain subsides, you inspect your legs, finding that they are still alright, mostly. Your toes have united into a pair of dark cloven hooves of which the nail is revealed to be hard bark. <b>You now have cloven bark hooves just like a barometz.</b>";
+					}
+				}
+				// Case 3: Taur TF
+				else if (!player.isTaur() && legCount >= 4) {
+					transformations.LowerBodyTaur(LowerBody.BAROMETZ).applyEffect(doOutput);
+				}
+
+				if (doOutput) outputText(desc);
+				player.lowerBody = LowerBody.BAROMETZ;
+				player.legCount = legCount;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.BAROMETZ));
+			},
+			// is present
+			function (): Boolean {
+				return !Metamorph.checkTaurUnlock() && player.lowerBody === LowerBody.BAROMETZ;
+			}
+		)
+	}
 	
 	/*
   */
