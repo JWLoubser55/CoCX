@@ -3082,8 +3082,12 @@ public class Creature extends Utils
 			return countCocksOfType(CockTypesEnum.HUMAN);
 		}
 
-		public function tentacleCocks():int { //How many tentaclecocks?
+		public function tentacleCocks():int { //How many all tentaclecocks?
 			return countCocksOfType(CockTypesEnum.TENTACLE) + countCocksOfType(CockTypesEnum.STAMEN) + countCocksOfType(CockTypesEnum.SCYLLATENTACLE);
+		}
+
+		public function tentacleOnlyCocks():int { //How many tentaclecocks?
+			return countCocksOfType(CockTypesEnum.TENTACLE);
 		}
 
 		public function stamenCocks():int { //How many stamencocks?
@@ -3104,6 +3108,10 @@ public class Creature extends Utils
 
 		public function insectCocks():int { //How many insectcocks?
 			return countCocksOfType(CockTypesEnum.INSECT);
+		}
+
+		public function barometzCocks():int { //How many insectcocks?
+			return countCocksOfType(CockTypesEnum.BAROMETZ);
 		}
 
 

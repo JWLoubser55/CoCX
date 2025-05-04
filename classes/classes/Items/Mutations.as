@@ -1179,7 +1179,6 @@ public final class Mutations extends MutationsHelper {
             cheatTime(1); // hour :P
             if (!tainted) outputText("In a few minutes, your cocks return to a more humanoid coloration.  ");
         }
-
         player.orgasm('Dick');
     }
 
@@ -8402,7 +8401,7 @@ public final class Mutations extends MutationsHelper {
 			//If cocks that aren't horsified!
 			if ((player.horseCocks() + player.demonCocks()) < player.cockTotal()) {
 				temp = player.findFirstCockNotInType([CockTypesEnum.HORSE,CockTypesEnum.DEMON]);
-				CoC.instance.transformations.CockHorse(temp).applyEffect();
+				transformations.CockHorse(temp).applyEffect();
 				temp2 = player.growCock(temp, rand(4) + 4);
 
 				dynStats("lus", 35, "scale", false);
@@ -17599,6 +17598,39 @@ public final class Mutations extends MutationsHelper {
 			dynStats("sen", 1);
 		}
         if (!player.blockingBodyTransformations()) {
+			//Barometz cock
+			if (!player.hasCock() && changes < changeLimit && rand(3) == 0) {
+                transformations.CockHuman().applyEffect();
+                changes++;
+            }
+			if (player.hasCock()) {
+				if (player.barometzCocks() > 0) {
+					if (player.cockTotal() < 10) {
+						outputText("[pg]");
+                        player.createCock();
+						transformations.UnlockCocks();
+						player.cocks[player.cocks.length - 1].cockLength = rand(2) + 10;
+						player.cocks[player.cocks.length - 1].cockThickness = 1.5;
+						player.cocks[player.cocks.length - 1].cockType = CockTypesEnum.TENTACLE;
+						Metamorph.unlockMetamorphEx(CockMem.getMemory(CockMem.TENTACLE));
+						dynStats("lus", 10, "scale", false);
+						player.addCurse("sens", 5, 1);
+						MutagenBonus("lib", 3);
+						outputText("[pg]You moan in pleasure as, from within the confines of your sheath, a new tentacle tipped with a dripping purple tip joins your penile flora, assisting your engorged tendrils into pulling your central dick out of its sheath and jerking it to life. Overwhelmed, your eyes roll in their socket and you whiny up as your green horsecock explodes into a deluge of splooge.  ");
+						player.orgasm('Dick');
+						changes++;
+					}
+				}
+				else {
+					player.killCocks(-1);
+					transformations.CockBarometz().applyEffect();
+					changes++;
+				}
+			}
+			//Mare-gina
+			if (player.hasVagina() && player.vaginaType() != VaginaClass.EQUINE && changes < changeLimit && rand(3) == 0) {
+				transformations.VaginaHorse().applyEffect();
+			}
 			//Face
 			if (player.faceType != Face.HUMAN && changes < changeLimit && rand(3) == 0) {
 				changes++;

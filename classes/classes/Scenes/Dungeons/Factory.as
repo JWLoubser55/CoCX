@@ -6,6 +6,7 @@ import classes.BodyParts.*;
 import classes.GeneticMemories.BallsMem;
 import classes.GlobalFlags.kFLAGS;
 import classes.Items.Armors.LustyMaidensArmor;
+import classes.Items.Vehicles;
 import classes.Races.DemonRace;
 import classes.Scenes.Dungeons.Factory.*;
 import classes.Scenes.Metamorph;
@@ -194,6 +195,30 @@ use namespace CoC;
 			player.createKeyItem("Breast Milker",0,0,0,0);
 			flags[kFLAGS.FACTORY_MILKER_BUILT] = 1;
 			doNext(roomRepairCloset);
+		}
+
+		private function factoryBasement():void {
+			clearOutput();
+//			outputText("You puzzle out how to build a fully functional breast-milker from the spare parts here and assemble it.\n\nYou gained a <b>Breast Milker</b>!");
+//			menu();
+//			if (flags[kFLAGS.D3_GOBLIN_MECH_PRIME] == 0) addButton(0, "Mech", takeMech);
+//			if (Ecihtel) addButton(1, "Cocoon", );
+//		}
+		
+//		private function takeMech():void {
+//			clearOutput();
+			outputText("As you explore the factory basement storage area you come up on what appears to be the wreckages of several gigantic metal objects or so at first you think, A thorough inspection reveal one of them to be of mechanical origin and thanks to your goblin knowledge you quickly identify this as a goblin mech model, Its highly damaged but with some material from the basement and a little work you could put it back into working shape!");
+			if (player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop)) {
+				var item:Vehicles;
+				item = vehicles.GOBMPRI;
+				outputText("You grab a walkie talkie and call your Eldest to let her know you need backup. Soon all of your kids are there with machinery and retrieval equipment assisting in moving the big mech back to the workshop. You can't wait to get started on this project!");
+				flags[kFLAGS.D3_GOBLIN_MECH_PRIME] = 1;
+				inventory.takeItem(item, playerMenu);
+			}
+			else {
+				outputText("Sadly theres no way you could bring this back to camp all on your own without dismantling it, thus you leave it there and vow to recover it later.");
+				doNext(roomRepairCloset);
+			}
 		}
 
 		private function WTFYOUCHEATER():void{
@@ -1781,6 +1806,7 @@ use namespace CoC;
 				outputText("You see a box in the bottom of the cupboard you didn't notice before and go to open it up. Inside you find a strange device that looks like it may be part of a Cock Milker.\n\nDo you take the Cock Milker: Anal Attachment?\n\n");
 				addButton(1, "Anal Attachment", takeAnalAttachment);
 			}
+			if (flags[kFLAGS.D3_GOBLIN_MECH_PRIME] == 0) addButton(2, "Basement", factoryBasement).hint("A stairway down into the factory basement storage area");//Ecihtel check || 
 			outputText("The only exit is back to the south.");
 		}
 

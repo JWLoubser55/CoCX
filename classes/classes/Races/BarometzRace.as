@@ -64,7 +64,14 @@ public class BarometzRace extends Race {
 				}, +2)
 				.skinColor1(ANY(BarometzSkinColor), +1)
 				.tailType(Tail.BAROMETZ, +1)
-				//.
+				.hasCockOfType(CockTypesEnum.BAROMETZ, +1)
+				.customScoreRequirement("cock", "multiple tentacle cocks, +1 per cock",
+						function (body:BodyData):Boolean {
+							return body.player.tentacleOnlyCocks() > 0;
+						},
+						function (body:BodyData):int { 
+							return body.player.tentacleOnlyCocks();
+						})
 				.vaginaType(VaginaClass.EQUINE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		

@@ -6026,6 +6026,10 @@ use namespace CoC;
 				buffTou += 15;
 				buffLib += 15;
 			}
+			if (skin.hasRunicTattoo()) {
+				buffTou += 10;
+				buffLib += 10;
+			}
 			score = internalChimeraScore();
 			if (score >= 1 && !hasPerk(PerkLib.RacialParagon)) {
 				buffAll += 5 * score;

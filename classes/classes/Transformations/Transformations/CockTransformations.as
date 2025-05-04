@@ -1362,6 +1362,32 @@ public class CockTransformations extends MutationsHelper {
 		);
 	}
 
+	public function CockBarometz(index:int = 0, length:Number = 5.5, thickness:Number = 1): Transformation {
+		return new SimpleTransformation("Barometz Cock",
+				// apply effect
+				function (doOutput:Boolean):void {
+					var desc:String = "[pg]";
+
+					if (player.cockTotal() > 1) desc += "You moan loudly as your many peckers suddenly orgasm, emptying of their seeds as they shrink and vanish into your body, leaving you with one single remaining penis.";
+					else desc += "You double over, panting with desire as your [cock] is suddenly overcome with changes.";
+					if (!player.hasSheath()) desc += "The skin at the base of your shaft begins to accumulate and tighten, pulling your member into its brand new warm sheath.";
+					desc += " You instinctively thrust forward and moan as your shaft bursts out of its containment, growing longer and dwarfing its previous size as the now flared head leaks a steady stream of musky cum. Just as your brand new and improved tool settles down, pleasure overwhelms you and you unleash a thick rope of warm seed, painting the ground beneath. The flesh of your penis begins to fill up with plant-like vitality as the";
+					desc += " color changes from [skin color] to a verdant dark green. Accompanying this change, your eyes roll as tiny bursts of pleasure erupting within the confines of your sheath while four girthy green tentacles tipped with dripping tips join your brand new tool, wrapping instinctively around it to jerk you off. Overwhelmed, you whiny up as your green horsecock explodes into a deluge of splooge. <b>You now have a brand new Barometz set of cocks.</b>";
+					player.createCock(12, 1.6, CockTypesEnum.BAROMETZ);
+					player.createCock(11, 1.5, CockTypesEnum.TENTACLE);
+					player.createCock(11, 1.5, CockTypesEnum.TENTACLE);
+					player.createCock(11, 1.5, CockTypesEnum.TENTACLE);
+					player.createCock(11, 1.5, CockTypesEnum.TENTACLE);
+
+					transformations.UnlockCocks();
+				},
+				// is present
+				function ():Boolean {
+					return isPresentCock(index, CockTypesEnum.BAROMETZ)
+				}
+		);
+	}
+
 	public function GrowKnot(cock:int = 0, crit:Number = 1, mod:Number = 1, div:Number = 20): Transformation { return new SimpleTransformation( "Grow knot of cock",
 			// apply effect
 			function (doOutput:Boolean): void {
@@ -1518,4 +1544,4 @@ public class CockTransformations extends MutationsHelper {
 	/*
 */
 }
-}
+}
