@@ -1286,8 +1286,8 @@ public class CampMakeWinions extends BaseContent
 			"(Lord Rank)",
 			"(Baron Rank)",
 			"(Viscount Rank)",
-			"(Earl Rank)",// lvl = 204
-			"(Marquess Rank)",// lvl = 228
+			"(Earl Rank)",
+			"(Marquess Rank)",
 			"(Duke Rank)",// lvl = 252
 			"(Prince Rank)",// lvl = 276
 			"(King Rank)"// lvl = 300
@@ -1449,7 +1449,7 @@ public class CampMakeWinions extends BaseContent
 		}
 		private function elementaLvlUpEpic():void {
 			menu();
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsAirE) && player.statusEffectv2(StatusEffects.SummonedElementalsAirE) < 8) {
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsAirE) && player.statusEffectv2(StatusEffects.SummonedElementalsAirE) < 10) {
 				if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) >= (player.statusEffectv2(StatusEffects.SummonedElementalsAirE) * rankUpElementalElementalEnergyCost())) {
 					if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > player.statusEffectv2(StatusEffects.SummonedElementalsAirE)) addButton(0, "Air", rankUpElementalAirEpic);
 					else addButtonDisabled(0, "Air", "Your Arcane Circle can't handle the epic elemental level up safely!");
@@ -1457,7 +1457,7 @@ public class CampMakeWinions extends BaseContent
 				else addButtonDisabled(0, "Air", "Your stored elemental energy is too low. Missing: "+((player.statusEffectv2(StatusEffects.SummonedElementalsAirE) * rankUpElementalElementalEnergyCost())-player.statusEffectv1(StatusEffects.ElementalEnergyConduits))+"");
 			}
 			else addButtonDisabled(0, "Air", "You don't have this epic elemental yet!");
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEarthE) && player.statusEffectv2(StatusEffects.SummonedElementalsEarthE) < 8) {
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEarthE) && player.statusEffectv2(StatusEffects.SummonedElementalsEarthE) < 10) {
 				if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) >= (player.statusEffectv2(StatusEffects.SummonedElementalsEarthE) * rankUpElementalElementalEnergyCost())) {
 					if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > player.statusEffectv2(StatusEffects.SummonedElementalsEarthE)) addButton(1, "Earth", rankUpElementalEarthEpic);
 					else addButtonDisabled(1, "Earth", "Your Arcane Circle can't handle the epic elemental level up safely!");
@@ -1465,7 +1465,7 @@ public class CampMakeWinions extends BaseContent
 				else addButtonDisabled(1, "Earth", "Your stored elemental energy is too low. Missing: "+((player.statusEffectv2(StatusEffects.SummonedElementalsEarthE) * rankUpElementalElementalEnergyCost())-player.statusEffectv1(StatusEffects.ElementalEnergyConduits))+"");
 			}
 			else addButtonDisabled(1, "Earth", "You don't have this epic elemental yet!");
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsFireE) && player.statusEffectv2(StatusEffects.SummonedElementalsFireE) < 8) {
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsFireE) && player.statusEffectv2(StatusEffects.SummonedElementalsFireE) < 10) {
 				if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) >= (player.statusEffectv2(StatusEffects.SummonedElementalsFireE) * rankUpElementalElementalEnergyCost())) {
 					if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > player.statusEffectv2(StatusEffects.SummonedElementalsFireE)) addButton(2, "Fire", rankUpElementalFireEpic);
 					else addButtonDisabled(2, "Fire", "Your Arcane Circle can't handle the epic elemental level up safely!");
@@ -1473,7 +1473,7 @@ public class CampMakeWinions extends BaseContent
 				else addButtonDisabled(2, "Fire", "Your stored elemental energy is too low. Missing: "+((player.statusEffectv2(StatusEffects.SummonedElementalsFireE) * rankUpElementalElementalEnergyCost())-player.statusEffectv1(StatusEffects.ElementalEnergyConduits))+"");
 			}
 			else addButtonDisabled(2, "Fire", "You don't have this epic elemental yet!");
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWaterE) && player.statusEffectv2(StatusEffects.SummonedElementalsWaterE) < 8) {
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWaterE) && player.statusEffectv2(StatusEffects.SummonedElementalsWaterE) < 10) {
 				if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) >= (player.statusEffectv2(StatusEffects.SummonedElementalsWaterE) * rankUpElementalElementalEnergyCost())) {
 					if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > player.statusEffectv2(StatusEffects.SummonedElementalsWaterE)) addButton(3, "Water", rankUpElementalWaterEpic);
 					else addButtonDisabled(3, "Water", "Your Arcane Circle can't handle the epic elemental level up safely!");

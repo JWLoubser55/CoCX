@@ -315,6 +315,15 @@ public final class WeaponLib extends ItemConstants
 				})
 				.withEffect(IELib.ArmorPenetration, 100)
 				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
+		public const DARKSS2:Weapon = new Weapon(
+				"DarkSS2","DarksteelSpears","Darksteel Spears","a set of Darksteel Spears","stab",40,6400,
+				"A pair of large spears made from soultempered darksteel.",
+				WT_SPEAR, WSZ_LARGE, true)
+				.withBuffs({
+					'psoulskillpower': +0.4
+				})
+				.withEffect(IELib.ArmorPenetration, 100)
+				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
 		public const DARKSS1:Weapon = new Weapon(
 				"DarkSS1","DarksteelScythe","Darksteel Scythe","a Darksteel Scythe","slash",40,3200,
 				"A large scythe made from soultempered darksteel.",
@@ -1181,7 +1190,8 @@ public final class WeaponLib extends ItemConstants
 			[SDAGGER, DSDAGGER],
 			[TODAGGER, DTODAGGER],
 			[DARKSA1, DARKSA],
-			[DARKSS1, DARKSS]
+			[DARKSS1, DARKSS],
+			[DARKSSP, DARKSS2]
 		]
 	}
 }

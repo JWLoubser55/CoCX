@@ -743,7 +743,7 @@ public class CombatUI extends BaseCombatContent {
 	}
 
 	public function isEpicElementalTurn():Boolean {
-		return player.hasPerk(PerkLib.FirstAttackElementalsSu) && player.statusEffectv2(StatusEffects.SummonedElementals) > 0 && (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 3 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) && flags[kFLAGS.IN_COMBAT_PLAYER_EPIC_ELEMENTAL_ATTACKED] != 1 && !doWeDisableThisOne(1);
+		return player.hasPerk(PerkLib.FirstAttackElementalsSu) && player.statusEffectv2(StatusEffects.SummonedElementals) > 0 && (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 3 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) && flags[kFLAGS.ATTACKING_ELEMENTAL_TYPE] != 0 && flags[kFLAGS.IN_COMBAT_PLAYER_EPIC_ELEMENTAL_ATTACKED] != 1 && !doWeDisableThisOne(1);
 	}
 
 	public function doEpicElementalTurn():void {
@@ -771,7 +771,7 @@ public class CombatUI extends BaseCombatContent {
 	}
 
 	public function isElementalTurn():Boolean {
-		return player.hasPerk(PerkLib.FirstAttackElementals) && player.statusEffectv1(StatusEffects.SummonedElementals) > 0 && (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 3 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) && flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] != 1 && !doWeDisableThisOne(2);
+		return player.hasPerk(PerkLib.FirstAttackElementals) && player.statusEffectv1(StatusEffects.SummonedElementals) > 0 && (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 3 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) && flags[kFLAGS.ATTACKING_EPIC_ELEMENTAL_TYPE] != 30 && flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] != 1 && !doWeDisableThisOne(2);
 	}
 
 	public function doElementalTurn():void {

@@ -1697,15 +1697,15 @@ public class Combat extends BaseContent {
 			flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] = 1;
         }
         var dualWeapon:Boolean = false;
-        if (player.weapon.isDualWielded()) {
+        if (player.weapon.isDualWielded() || player.hasAetherTwinsTierS2()) {
             dualWeapon = true;
         }
         if (flags[kFLAGS.MULTIATTACK_STYLE_MAIN] >= 0) {
 			flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] = Math.min(maxCurrentAttacksMain(), (flags[kFLAGS.MULTIATTACK_STYLE_MAIN] || 0) + 1);
             if (player.statusEffectv1(StatusEffects.CounterAction) > 0)
                 flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += player.statusEffectv1(StatusEffects.CounterAction);
-            if (player.weapon.isLarge() || player.weapon.isMassive()) {
-                if( player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking) ){
+            if (player.weapon.isLarge() || player.weapon.isMassive() || player.hasAetherTwinsTier2()) {
+                if (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking)) {
                     if (player.hasPerk(PerkLib.FuelForTheFire)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += 1;
                     if (player.hasPerk(PerkLib.Anger) && (player.statusEffectv2(StatusEffects.Berzerking) >= 1 || player.statusEffectv2(StatusEffects.Lustzerking) >= 1)) {
                         if (player.statusEffectv2(StatusEffects.Berzerking) >= 3 || player.statusEffectv2(StatusEffects.Lustzerking) >= 3) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += 3;
@@ -1736,7 +1736,7 @@ public class Combat extends BaseContent {
 				if (player.statusEffectv1(StatusEffects.CounterAction) > 0)
 					flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] += player.statusEffectv1(StatusEffects.CounterAction);
 				if (player.weaponOff.isLarge() || player.weaponOff.isMassive()) {
-					if( player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking) ){
+					if (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking)) {
 						if (player.hasPerk(PerkLib.FuelForTheFire)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] += 1;
 						if (player.hasPerk(PerkLib.Anger) && (player.statusEffectv2(StatusEffects.Berzerking) >= 1 || player.statusEffectv2(StatusEffects.Lustzerking) >= 1)) {
 							if (player.statusEffectv2(StatusEffects.Berzerking) >= 3 || player.statusEffectv2(StatusEffects.Lustzerking) >= 3) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] += 3;
@@ -4835,9 +4835,7 @@ public class Combat extends BaseContent {
 				else if (player.weaponRange == weaponsrange.M1CERBE) player.takePhysDamage(150);
 				else player.takePhysDamage(25);
 			}
-			else {
-				if (player.miscJewelry1 != miscjewelries.BAMOBAG && player.miscJewelry2 != miscjewelries.BAMOBAG) player.ammo--;
-			}
+			else player.ammo--;
 		}
         var ammoWord:String = weaponRangeAmmo;
         if (rand(100) < accRange) {
@@ -5261,17 +5259,23 @@ public class Combat extends BaseContent {
                 flags[kFLAGS.ARROWS_ACCURACY] += firearmsAccuracyPenalty();
                 shootWeapon();
             } else {
-                if (player.weaponRange == weaponsrange.LBLASTR) outputText("<b>Your milk tank is empty.</b>\n\n");
-				else if (player.weaponRange == weaponsrange.MBOMBER) outputText("<b>Your cum tank is empty.</b>\n\n");
-                else outputText("<b>Your firearm clip is empty.</b>\n\n");
-                reloadWeapon2();
+				if (player.miscJewelry1 == miscjewelries.BAMOBAG && player.miscJewelry2 == miscjewelries.BAMOBAG) reloadWeapon3();
+				else {
+					if (player.weaponRange == weaponsrange.LBLASTR) outputText("<b>Your milk tank is empty.</b>\n\n");
+					else if (player.weaponRange == weaponsrange.MBOMBER) outputText("<b>Your cum tank is empty.</b>\n\n");
+					else outputText("<b>Your firearm clip is empty.</b>\n\n");
+					reloadWeapon2();
+				}
             }
         } else {
             if (player.ammo <= 0) {
-                if (player.weaponRange == weaponsrange.LBLASTR) outputText("<b>Your milk tank is empty.</b>\n\n");
-				else if (player.weaponRange == weaponsrange.MBOMBER) outputText("<b>Your cum tank is empty.</b>\n\n");
-                else outputText("<b>Your firearm clip is empty.</b>\n\n");
-                reloadWeapon2();
+				if (player.miscJewelry1 == miscjewelries.BAMOBAG && player.miscJewelry2 == miscjewelries.BAMOBAG) reloadWeapon3();
+				else {
+					if (player.weaponRange == weaponsrange.LBLASTR) outputText("<b>Your milk tank is empty.</b>\n\n");
+					else if (player.weaponRange == weaponsrange.MBOMBER) outputText("<b>Your cum tank is empty.</b>\n\n");
+					else outputText("<b>Your firearm clip is empty.</b>\n\n");
+					reloadWeapon2();
+				}
             } else enemyAIImpl();
         }
     }
@@ -5508,6 +5512,18 @@ public class Combat extends BaseContent {
             }
         }
     }
+	
+	public function reloadWeapon3():void {
+		reloadWeapon();
+		if (player.fatigue + (oneBulletReloadCost() * player.ammo) > player.maxOverFatigue()) player.fatigue = player.maxOverFatigue();
+		else fatigue(oneBulletReloadCost() * player.ammo);
+		if (flags[kFLAGS.MULTIPLE_ARROWS_STYLE] > 1) {
+			flags[kFLAGS.MULTIPLE_ARROWS_STYLE] -= 1;
+            flags[kFLAGS.ARROWS_ACCURACY] += firearmsAccuracyPenalty();
+            shootWeapon();
+		}
+		else enemyAIImpl();
+	}
 
     private function debugCheatStats():void {
         function cheatProperty(object:*, propName:*, newValue:*):void {

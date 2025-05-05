@@ -265,9 +265,9 @@ public class Changelog extends BaseContent
 			outputText("-New Blood Soulskill: Crimson Overflow - learned from Crimson Jade. Selfbuff that boost max OverHP by 10% for duration of the combat. Way of the Blood super perk change effect to be castable when off cooldown and granting 5% for an hour. Recasting would make it stack until 6x current progress of blood demon job. Blood Demon Intelligence super perk would increase stack limit to 12x and each cast adding 2 hours.\n");
 			outputText("-New TF item (by Liadri): Horned fruit. Using this item will turn PC into barometz. Their race bonuses for Barometz / Blooming Barometz (20/34): +130%/+200% to Tou multi, +130%/+200% to Spe multi, -40% to Int multi, +80%/+200% to Wis multi, +100%/+150% to Lib multi, +100/+200 to sensitivity.\n");//Dropped by Barometz enemies.
 			outputText("-Unnamed Goblin Commando taking great risk moved Goblin Prime Mech form egg pil in Lethice Stronghold to newly renovated basement in Factory.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Boundless Ammo Bag effect of reloding would now give silent reload option (as long pc gor fatigue for it) that will not interrupt shooting or ending turn for doing reload. It may cause PC to have max fatigue as side effect of reloading while not having enough fatigue left to use.\n");
+			outputText("-New melee weapon (by Ormael): Darksteel Spears - can be gained by combining 2x Darksteel Spear weapon. Cost 6,400 gems. Base atk is 40. It's dual large spear type weapon, 100% armor penetration, increase physical soulskills power by 40%.\n");
+			outputText("-Aether Twins Sky-tier Gauntlets and Human-tier Dual Daggers forms fixes regarding extra attacks checks.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

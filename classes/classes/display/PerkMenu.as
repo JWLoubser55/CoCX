@@ -579,13 +579,14 @@ public class PerkMenu extends BaseContent {
 			if (player.hasPerk(PerkLib.FirstAttackElementalsSu) && player.statusEffectv2(StatusEffects.SummonedElementals) > 0) addButton(1, "Epic", summonsbehaviourOptions, 4);
 		}
 		if (page == 2) {
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsAir) && attackingElementalTypeFlag != 1) addButton(0, "Air", attackingElementalType,1);
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEarth) && attackingElementalTypeFlag != 2) addButton(1, "Earth", attackingElementalType,2);
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsFire) && attackingElementalTypeFlag != 3) addButton(2, "Fire", attackingElementalType,3);
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWater) && attackingElementalTypeFlag != 4) addButton(3, "Water", attackingElementalType,4);
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEther) && attackingElementalTypeFlag != 10) addButton(4, "Ether", attackingElementalType,10);
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWood) && attackingElementalTypeFlag != 8) addButton(5, "Wood", attackingElementalType,8);
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsMetal) && attackingElementalTypeFlag != 9) addButton(6, "Metal", attackingElementalType, 9);
+			if (attackingElementalTypeFlag != 0) addButton(0, "None", attackingElementalType,0);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsAir) && attackingElementalTypeFlag != 1) addButton(1, "Air", attackingElementalType,1);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEarth) && attackingElementalTypeFlag != 2) addButton(2, "Earth", attackingElementalType,2);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsFire) && attackingElementalTypeFlag != 3) addButton(3, "Fire", attackingElementalType,3);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWater) && attackingElementalTypeFlag != 4) addButton(4, "Water", attackingElementalType,4);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEther) && attackingElementalTypeFlag != 10) addButton(5, "Ether", attackingElementalType,10);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWood) && attackingElementalTypeFlag != 8) addButton(6, "Wood", attackingElementalType,8);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsMetal) && attackingElementalTypeFlag != 9) addButton(7, "Metal", attackingElementalType, 9);
 			addButton(9, "2nd", summonsbehaviourOptions, page + 1);
 		}
 		if (page == 3)  {
@@ -598,10 +599,11 @@ public class PerkMenu extends BaseContent {
 			addButton(9, "1st", summonsbehaviourOptions, page - 1);
 		}
 		if (page == 4) {
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsAirE) && attackingEpicElementalTypeFlag != 31) addButton(0, "Air", attackingEpicElementalType,31);
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEarthE) && attackingEpicElementalTypeFlag != 32) addButton(1, "Earth", attackingEpicElementalType,32);
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsFireE) && attackingEpicElementalTypeFlag != 33) addButton(2, "Fire", attackingEpicElementalType,33);
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWaterE) && attackingEpicElementalTypeFlag != 34) addButton(3, "Water", attackingEpicElementalType,34);
+			if (attackingEpicElementalTypeFlag != 30) addButton(0, "None", attackingEpicElementalType,30);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsAirE) && attackingEpicElementalTypeFlag != 31) addButton(1, "Air", attackingEpicElementalType,31);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEarthE) && attackingEpicElementalTypeFlag != 32) addButton(2, "Earth", attackingEpicElementalType,32);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsFireE) && attackingEpicElementalTypeFlag != 33) addButton(3, "Fire", attackingEpicElementalType,33);
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWaterE) && attackingEpicElementalTypeFlag != 34) addButton(4, "Water", attackingEpicElementalType,34);
 		}
 		if (elementalConjuerSummons > 1) addButton(10, "NotHelping", setflag, kFLAGS.ELEMENTAL_CONJUER_SUMMONS, 1);
 		if (player.hasStatusEffect(StatusEffects.SummonedElementals)) {
