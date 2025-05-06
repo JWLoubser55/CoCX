@@ -613,17 +613,33 @@ public class DebugMenu extends BaseContent
 			//------------
 			// Materials
 			//------------
-			//Page 1, which is the only page for material so far. :(
+			//Page 1
 			materialArray.push(useables.GREENGL);
 			materialArray.push(useables.B_CHITN);
 			materialArray.push(useables.T_SSILK);
 			materialArray.push(useables.D_SCALE);
+			materialArray.push(useables.RED_GEL);
+			materialArray.push(useables.EBONBLO);
+			materialArray.push(useables.RPLASMA);
 			materialArray.push(useables.IMPSKLL);
+			materialArray.push(useables.DEMSKLL);
+			materialArray.push(useables.FIMPSKL);
+			materialArray.push(useables.FDEMSKL);
 			materialArray.push(useables.E_ICHOR);
 			materialArray.push(useables.D_E_ICHOR);
-			materialArray.push(null);
-			materialArray.push(null);
-			materialArray.push(null);
+			materialArray.push(useables.BTSOLUTION);
+			materialArray.push(useables.SRESIDUE);
+			materialArray.push(useables.TIN_ORE);
+			materialArray.push(useables.COP_ORE);
+			materialArray.push(useables.IRONORE);
+			materialArray.push(useables.BRONZEB);
+			materialArray.push(useables.SKYMETA);
+			materialArray.push(useables.MOONSTO);
+			materialArray.push(useables.AMEGEM);
+			materialArray.push(useables.EMDGEM);
+			materialArray.push(useables.RBYGEM);
+			materialArray.push(useables.SAPPGEM);
+			materialArray.push(useables.TPAZGEM);
 			materialArray.push(useables.CONDOM);
 			//------------
 			// Rare Items

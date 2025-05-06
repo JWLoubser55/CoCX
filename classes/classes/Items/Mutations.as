@@ -315,27 +315,6 @@ public final class Mutations extends MutationsHelper {
         statScreenRefresh();
     }
 
-    public function bagofcosmosA1(player:Player):void {
-        clearOutput();
-        var SSA:Number = 2 + rand(2);
-        outputText("You open bag to find " + SSA + " spirit stones inside.");
-        flags[kFLAGS.SPIRIT_STONES] += SSA;
-		statScreenRefresh();
-    }
-    public function bagofcosmosA2(player:Player):void {
-        clearOutput();
-        var SSA:Number = 3 + rand(3);
-        outputText("You open bag to find " + SSA + " spirit stones inside.");
-        flags[kFLAGS.SPIRIT_STONES] += SSA;
-		statScreenRefresh();
-    }
-    public function bagofcosmosA3(player:Player):void {
-        clearOutput();
-        var SSA:Number = 4 + rand(4);
-        outputText("You open bag to find " + SSA + " spirit stones inside.");
-        flags[kFLAGS.SPIRIT_STONES] += SSA;
-		statScreenRefresh();
-    }
     public function bagofcosmosA4(player:Player):void {
         clearOutput();
         var SSA:Number = 5 + rand(5);
