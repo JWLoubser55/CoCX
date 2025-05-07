@@ -3890,6 +3890,22 @@ public class Combat extends BaseContent {
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
 		}
+		else if (isUnarmedCombatButDealLightningDamage()) {
+			damage = Math.round(damage * lightningDamageBoostedByDao());
+            doLightningDamage(damage, true, true);
+			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
+            doLightningDamage(damage, true, true);
+			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
+			if (player.hasFourArms()) {
+				doLightningDamage(damage, true, true);
+				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+				doLightningDamage(damage, true, true);
+				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+			}
+			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+		}
 		else if (isUnarmedCombatButDealDarknessDamage()) {
 			damage = Math.round(damage * darknessDamageBoostedByDao());
             doDarknessDamage(damage, true, true);
@@ -3899,9 +3915,9 @@ public class Combat extends BaseContent {
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 			if (player.hasFourArms()) {
-				doIceDamage(damage, true, true);
+				doDarknessDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
-				doIceDamage(damage, true, true);
+				doDarknessDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
@@ -8889,13 +8905,16 @@ public class Combat extends BaseContent {
     }
 	
 	public function isUnarmedCombatButDealFireDamage():Boolean {
-		return (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) || (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat));
+		return (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) || (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) || Forgefather.channelInlay == "ruby";
 	}
 	public function isUnarmedCombatButDealIceDamage():Boolean {
-		return (flags[kFLAGS.FERAL_COMBAT_MODE] == 1 && (player.haveNaturalClaws() || player.haveNaturalClawsTypeWeapon()) && player.hasStatusEffect(StatusEffects.WinterClaw));
+		return (flags[kFLAGS.FERAL_COMBAT_MODE] == 1 && (player.haveNaturalClaws() || player.haveNaturalClawsTypeWeapon()) && player.hasStatusEffect(StatusEffects.WinterClaw)) || Forgefather.channelInlay == "sapphire";
+	}
+	public function isUnarmedCombatButDealLightningDamage():Boolean {
+		return Forgefather.channelInlay == "topaz";
 	}
 	public function isUnarmedCombatButDealDarknessDamage():Boolean {
-		return (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.AlterBindScroll9));
+		return (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.AlterBindScroll9)) || Forgefather.channelInlay == "amethyst";
 	}
 
     public function monsterPureDamageBonus(damage:Number):Number {
@@ -9296,7 +9315,11 @@ public class Combat extends BaseContent {
             if (monster is Doppleganger) {
                 if (!monster.monsterIsStunned()) {
                     if (damage > 0) {
-                        doPhysicalDamage(damage, false);
+						if (Forgefather.channelInlay == "ruby") doFireDamage(damage, false);
+						else if (Forgefather.channelInlay == "sapphire") doIceDamage(damage, false);
+						else if (Forgefather.channelInlay == "topaz") doLightningDamage(damage, false);
+						else if (Forgefather.channelInlay == "amethyst") doDarknessDamage(damage, false);
+                        else doPhysicalDamage(damage, false);
                         (monster as Doppleganger).mirrorAttack(damage);
                     }
                     return;
@@ -9349,7 +9372,11 @@ public class Combat extends BaseContent {
                         doAcidDamage(damage, true, true);
                         break;
                     default:
-                        doPhysicalDamage(damage, true, true);
+                        if (Forgefather.channelInlay == "ruby") doFireDamage(damage, true, true);
+						else if (Forgefather.channelInlay == "sapphire") doIceDamage(damage, true, true);
+						else if (Forgefather.channelInlay == "topaz") doLightningDamage(damage, true, true);
+						else if (Forgefather.channelInlay == "amethyst") doDarknessDamage(damage, true, true);
+                        else doPhysicalDamage(damage, true, true);
                 }
 				// Below down here are just for lust damage dont be confused by The Enemy I mean the damage variable
                 if (player.hasPerk(PerkLib.LightningClaw)) {
@@ -19719,4 +19746,4 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
-}
+}

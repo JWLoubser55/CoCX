@@ -50,7 +50,6 @@ public class HumanRace extends Race {
 				.faceType(Face.HUMAN, +1)
 				.eyeType(Eyes.HUMAN, +1)
 				.earType(Ears.HUMAN, +1)
-				.earType(NOT(Ears.ELVEN), 0, -7)
 				.tongueType(Tongue.HUMAN, +1)
 				.noGills(+1)
 				.noAntennae(+1)
