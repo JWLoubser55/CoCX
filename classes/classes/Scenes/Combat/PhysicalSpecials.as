@@ -103,8 +103,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 					}
 					//Bitez
-					if (player.faceType == Face.SHARK_TEETH || player.faceType == Face.ABYSSAL_SHARK) {
-						bd = buttons.add("SharkBite", bite).hint("Attempt to bite your opponent with your shark-teeth.");
+					if (player.faceType == Face.SHARK_TEETH) {
+						bd = buttons.add("SharkBite", bite).hint("Attempt to bite your opponent with your shark-teeth causing bleed.");
 						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 					}
 					if (player.faceType == Face.ORCA) {
@@ -118,6 +118,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 					}
 					if (player.faceType == Face.CERBERUS) {
 						bd = buttons.add("TripleBite", bite).hint("Viciously bite your opponent with your sharp teeths causing bleed.");
+						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					}
+					if (player.faceType == Face.ABYSSAL_SHARK) {
+						bd = buttons.add("ASharkBite", abyssalSharkbite).hint("Attempt to bite your opponent with your large shark-teeth ripping off piece of enemy body and causing bleed.");
 						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 					}
 					//hydra bite - variant of snake bite
@@ -5347,6 +5351,112 @@ public class PhysicalSpecials extends BaseCombatContent {
 		combat.WrathGenerationPerHit2(5);
 		if (!combatIsOver()) enemyAI();
 	}
+	public function abyssalSharkbite():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
+		clearOutput();
+		//FATIIIIGUE
+		if((player.fatigue + physicalSpecialsCost(100) > player.maxOverFatigue()) && player.perkv1(IMutationsLib.SharkOlfactorySystemIM) < 2) {
+			clearOutput();
+			outputText("You just don't have the energy to bite something right now...");
+//Pass false to combatMenu instead:		menuLoc = 1;
+//		doNext(combatMenu);
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		//Worms are special
+		if (monster is WormMass) {
+			clearOutput();
+			outputText("There is no way those are going anywhere near your mouth!\n\n");
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) < 2) fatigue(physicalSpecialsCost(100), USEFATG_PHYSICAL);
+		if (combat.checkConcentration()) return; //Amily concentration
+		outputText("You open your mouth wide, your shark teeth extending out. Snarling with hunger, you lunge at your opponent, set to bite right into them!  ");
+		if (player.playerIsBlinded()) outputText("In hindsight, trying to bite someone while blind was probably a bad idea... ");
+		var damage:Number = 0;
+		//Determine if dodged!
+		if((player.playerIsBlinded() && rand(3) != 0) || (monster.getEvasionRoll(false, player.spe))) {
+			if(monster.spe - player.spe < 8) outputText("[Themonster] narrowly avoids your attack!");
+			if(monster.spe - player.spe >= 8 && monster.spe-player.spe < 20) outputText("[Themonster] dodges your attack with superior quickness!");
+			if(monster.spe - player.spe >= 20) outputText("[Themonster] deftly avoids your slow attack.");
+			outputText("\n\n");
+			enemyAI();
+			return;
+		}
+		damage += combat.meleeUnarmedDamageNoLagSingle(2) * 15;
+		damage = Math.round(damage);
+		if (!monster.isImmuneToBleed()) {
+			if (!monster.hasStatusEffect(StatusEffects.SharkBiteBleed)) monster.createStatusEffect(StatusEffects.SharkBiteBleed,15,2,0,0);
+			else {
+				monster.removeStatusEffect(StatusEffects.SharkBiteBleed);
+				monster.createStatusEffect(StatusEffects.SharkBiteBleed,15,2,0,0);
+			}
+		}
+		//Deal damage and update based on perks
+		if(damage > 0) {
+			if (player.hasPerk(PerkLib.ZenjisInfluence3)) damage *= 1.5;
+			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
+			if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
+			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+			if (player.hasStatusEffect(StatusEffects.Gallop)) {
+				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
+				else damage *= 1.5;
+			}
+			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
+			if (player.perkv1(IMutationsLib.HydraBloodIM) >= 4) damage *= 1.5;
+			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
+			damage = Math.round(damage);
+			var totalDamage:Number;
+			if (player.hasPerk(PerkLib.HellfireCoat)) totalDamage = doFireDamage(damage);
+			else totalDamage = doDamage(damage);
+		}
+		if(totalDamage <= 0) {
+			totalDamage = 0;
+			outputText("Your bite is deflected or blocked by [themonster]. ");
+		}
+		else if (totalDamage < 10) {
+			outputText("You bite doesn't do much damage to [themonster]! ");
+		}
+		else if (totalDamage < 20) {
+			outputText("You seriously wound [themonster] with your bite! ");
+		}
+		else if (totalDamage < 30) {
+			outputText("Your bite staggers [themonster] with its force. ");
+		}
+		else {
+			outputText("Your powerful bite <b>mutilates</b> [themonster]! ");
+		}
+		if (totalDamage > 0) {
+			if (player.hasPerk(PerkLib.HellfireCoat)) combat.CommasForDigits(totalDamage, false, "", "fire");
+			else combat.CommasForDigits(totalDamage);
+			if (monster.hasStatusEffect(StatusEffects.CombatWounds)) {
+				monster.addStatusValue(StatusEffects.CombatWounds, 1, 5);
+				if (monster.statusEffectv1(StatusEffects.CombatWounds) > 80) monster.changeStatusValue(StatusEffects.CombatWounds, 1, 80);
+			}
+			else monster.createStatusEffect(StatusEffects.CombatWounds, 5, 0, 0, 0);
+		}
+		else outputText("<b>([font-miss]" + 0 + "[/font])</b>");
+		if (monster.hasStatusEffect(StatusEffects.SharkBiteBleed)) outputText(" [Themonster] bleeds profusely from the many bloody bite marks you leave behind.");
+		outputText("\n\n");
+		combat.WrathGenerationPerHit2(5);
+		checkAchievementDamage(damage);
+		combat.heroBaneProc(damage);
+		combat.EruptingRiposte();
+		//Kick back to main if no damage occured!
+		if(monster.HP > 0 && monster.lust < monster.maxOverLust()) {
+			if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 4 && flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] == 0) {
+				flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] = 1;
+				combat.combatMenu(false);
+			}
+			else enemyAI();
+		}
+		else {
+			combat.monsterDefeatCheck();
+		}
+	}
 	public function fenrirFrostbite():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 		clearOutput();
@@ -5362,12 +5472,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		fatigue(physicalSpecialsCost(100), USEFATG_PHYSICAL);
 		if (combat.checkConcentration()) return; //Amily concentration
-		if (monster is LivingStatue)
-		{
-			outputText("Your fangs can't even penetrate the giant's flesh.");
-			enemyAI();
-			return;
-		}
 		//Frostbite for Fenrir
 		if(rand(player.spe/2 + 40) + 20 > monster.spe/1.5 || monster.hasStatusEffect(StatusEffects.Constricted)) {
 			//(if monster = demons)
@@ -5375,9 +5479,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//(Otherwise)
 			else outputText("You lunge at the foe headfirst, maw open for a bite. You manage to catch the [themonster] off guard, biting it viciously. The merciless cold of your bite transfer to your foe weakening it as you retreat before [monster he] manages to react.");
 			//The following is how the enemy reacts over time to poison. It is displayed after the description paragraph,instead of lust
-			monster.statStore.addBuffObject({str:-50,spe:-50}, "Poison",{text:"Poison"});
-			if (monster.hasStatusEffect(StatusEffects.Frostbite)) monster.addStatusValue(StatusEffects.Frostbite,1,1);
-			else monster.createStatusEffect(StatusEffects.Frostbite, 1, 0, 0, 0);
+			monster.statStore.addBuffObject({str:-50,spe:-50}, "Frostbite",{text:"Frostbite"});
+			if (monster.hasStatusEffect(StatusEffects.FrostburnDoT)) monster.addStatusValue(StatusEffects.FrostburnDoT,1,1);
+			else monster.createStatusEffect(StatusEffects.FrostburnDoT, 1, 0, 0, 0);
 			var damage:Number = 0;
 			//Determine damage - str modified by enemy toughness!
 			damage = 0;
@@ -6266,9 +6370,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 // (Similar to the bow attack, high damage but it raises your fatigue).
 	public function bite():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
-		if ((player.fatigue + physicalSpecialsCost(50) > player.maxOverFatigue()) && player.perkv1(IMutationsLib.SharkOlfactorySystemIM) < 2 && player.faceType != Face.SHARK_TEETH && player.faceType != Face.ABYSSAL_SHARK) {
+		if ((player.fatigue + physicalSpecialsCost(50) > player.maxOverFatigue()) && player.perkv1(IMutationsLib.SharkOlfactorySystemIM) < 2 && player.faceType != Face.SHARK_TEETH) {
 			clearOutput();
-			if (player.faceType == Face.SHARK_TEETH || player.faceType == Face.ABYSSAL_SHARK) outputText("You're too fatigued to use your shark-like jaws!");
+			if (player.faceType == Face.SHARK_TEETH) outputText("You're too fatigued to use your shark-like jaws!");
 			if (player.faceType == Face.ORCA) outputText("You're too fatigued to use your orca-like jaws!");
 			if (player.faceType == Face.WOLF) outputText("You're too fatigued to use your wolf jaws!");
 			if (player.faceType == Face.CERBERUS) outputText("You're too fatigued to use your canine jaws!");
@@ -6284,14 +6388,14 @@ public class PhysicalSpecials extends BaseCombatContent {
 			addButton(0, "Next", combatMenu, false);
 			return;
 		}
-		if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) < 2 && player.faceType != Face.SHARK_TEETH && player.faceType != Face.ABYSSAL_SHARK) fatigue(physicalSpecialsCost(50), USEFATG_PHYSICAL);
+		if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) < 2 && player.faceType != Face.SHARK_TEETH) fatigue(physicalSpecialsCost(50), USEFATG_PHYSICAL);
 		if (combat.checkConcentration()) return; //Amily concentration
+		clearOutput();
 		outputText("You open your mouth wide, your ");
-		if (player.faceType == Face.SHARK_TEETH || player.faceType == Face.ABYSSAL_SHARK) outputText("shark teeth extending out");
+		if (player.faceType == Face.SHARK_TEETH) outputText("shark teeth extending out");
 		if (player.faceType == Face.ORCA) outputText("sharp orca teeth shining briefly");
 		if (player.faceType == Face.WOLF) outputText("sharp wolf teeth shining briefly");
 		if (player.faceType == Face.CERBERUS) outputText("sharp canine teeth shining briefly while your companion heads follow suit");
-		clearOutput();
 		outputText(". Snarling with hunger, you lunge at your opponent, set to bite right into them!  ");
 		if (player.playerIsBlinded()) outputText("In hindsight, trying to bite someone while blind was probably a bad idea... ");
 		var damage:Number = 0;
@@ -6305,7 +6409,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 			return;
 		}
 		damage += combat.meleeUnarmedDamageNoLagSingle(2) * 3;
-		if (player.faceType == Face.ABYSSAL_SHARK) damage *= 2;
 		damage = Math.round(damage);
 		if (!monster.isImmuneToBleed()) {
 			if (!monster.hasStatusEffect(StatusEffects.SharkBiteBleed)) monster.createStatusEffect(StatusEffects.SharkBiteBleed,15,0,0,0);
@@ -6313,7 +6416,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 				monster.removeStatusEffect(StatusEffects.SharkBiteBleed);
 				monster.createStatusEffect(StatusEffects.SharkBiteBleed,15,0,0,0);
 			}
-			if (player.faceType == Face.ABYSSAL_SHARK) monster.addStatusValue(StatusEffects.SharkBiteBleed,2,2);
 		}
 		//Deal damage and update based on perks
 		if(damage > 0) {
@@ -6374,7 +6476,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		combat.EruptingRiposte();
 		//Kick back to main if no damage occured!
 		if(monster.HP > 0 && monster.lust < monster.maxOverLust()) {
-			if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 4 && (player.faceType == Face.SHARK_TEETH || player.faceType == Face.ABYSSAL_SHARK) && flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] == 0) {
+			if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 4 && player.faceType == Face.SHARK_TEETH && flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] == 0) {
 				flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] = 1;
 				combat.combatMenu(false);
 			}

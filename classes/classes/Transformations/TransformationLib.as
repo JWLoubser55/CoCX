@@ -1310,4 +1310,4 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 		trace("\n"+dump.join("\n"));
 	}
 }
-}
+}

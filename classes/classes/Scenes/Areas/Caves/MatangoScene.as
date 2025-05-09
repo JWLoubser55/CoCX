@@ -59,57 +59,52 @@ public function winningOverMantangoLeave():void {
 
 public function losingToMantango():void {
 	clearOutput();
-	if (rand(4) == 0) {
+	if (rand(4) == 0 || player.blockingBodyTransformations()) {
 		outputText("You fall on the ground, defeated, but just as you are about to get thoroughly violated, a cave wyrm rampages through the area.\n\n");
 		outputText("\"<i>GIVE ME YOUR COCK SHROOM BITCH, I NEED IT FOR MY EGGS!!</i>\"\n\n");
 		outputText("Under your confused stare, the horny lizard steals away the mushroom infested woman and runs off into the dark. Damn, that was close, better not lose again. There’s no chance such luck will happen twice.\n\n");
 		cleanupAfterCombat();
 	}
 	else {
-		if (player.blockingBodyTransformations()) {
-			outputText("Information Noona informs you that director Liadri now have script for this case, which is been uinable to be TF'd.\n\n");
-		}
-		else {
-			var randon:Number = 0;
-			if (player.gender > 2 && rand(2) == 0) randon += 1;
-			outputText("As you fall, defeated, the heavily corrupted girl makes a dopey smile as she saunters toward you. You desperately try to repel her, but to no avail. She pushes you to the ground, using her small, but deceivingly strong arm to lock you down and, before you know it, your face is right in front of her drooling vagina.\n\n");
-			outputText("You want to emit a protest, but the sound dies in your throat as her lips part ways on their own, something like a giant mushroom pushing them apart to set squarely in front of you before it unleashes a cloud of spores into your nose.\n\nWeary and too surprised by this sudden attack, you breathe it all in as a reflex. ");
-			outputText("Suddenly very horny, all you can think about is this slimy mushroom in front of you, which you proceed to lick and put into your mouth. Shroom… Shroom, everything in your head is mush now. The mushroom girl moans as you proceed to eat out her shroomy clit with wild abandon, rewarding you by shooting spores right into your welcoming throat as she lustfully ");
-			if ((player.hasCock() && !player.hasVagina()) || randon < 1) outputText("sucks your cock");
-			if ((player.hasVagina() && !player.hasCock()) || randon > 0) outputText("eats your pussy out\n\n");
-			if (!player.hasCock() && !player.hasVagina()) outputText("caresses your body to make up for the lack of your sexual endowments");
-			outputText(".\n\nThinking becomes increasingly harder the more you breathe in the spores as your brain is reduced to complete mush, both addled by sex and by the fungal spore spreading in your body. Breed… fuck… spread… this is all your mind needs to think about right now, everything else is inconsequential. Distracted as you are, ");
-			outputText("you fail to notice the small shroom cap growing up your head as your hair strands turn white like those of your partner.\n\nMany parts of your body changes starting with your back which grows a beautiful, long, organic skirt, not unlike a shroom frill to match the color of the small growing mushroom on your head as your arms grow frilled sleeves similar to those on ankles. ");
-			outputText("Completing this setup, a frilly necklace and bra grows on your body as well. By the sixth ejaculation, you look just like the shroom girl. Well not exactly like her yet, the cap on your head is way smaller and there's still a last part of you that has to change first.\n\nYou cum hard into the mushroom girl’s mouth as ");
-			if (player.hasVagina()) outputText("your clit suddenly engorges, growing longer and fatter into a mushroom-like shape you recognise is the same as the mushroom girl in front of you. It seems your clit grew into a mushroom-like penis that slides right out of your vagina");
-			if (player.gender > 2) outputText(". Meanwhile ");
-			if (player.hasCock()) outputText("your cock suddenly throbs as it undergoes changes, the crown and shape changing to match that of your fungal captor");
-			outputText(".\n\nSensing that you have finally been fully infected, the mushroom girl relents and pulls off from you, walking away to seek out new victims to spread her spores to. You would do the same, but perhaps by virtue of your strong willpower, you manage to control yourself from fully giving into your parasitic instincts. ");
-			outputText("Defeated and tired, you go back to camp with a new perspective and mindset all the same. You can’t help but think how good it would be to slide your mushroom down someone's throat.\n\n");
-			transformations.HairGlowingMushroom.applyEffect(false);
-			player.hairColor = randomChoice(MyconidRace.MyconidHairColors);
-			transformations.ArmsShroom.applyEffect(false);
-			transformations.HornsShroomHeadcap.applyEffect(false);
-			transformations.LowerBodyShroomShirt.applyEffect(false);
-			transformations.RearBodyMyconidBraAndNeck.applyEffect(false);
-			transformations.EyesHuman.applyEffect(false);
-			transformations.WingsNone.applyEffect(false);
-			transformations.TailNone.applyEffect(false);
-			transformations.EarsHuman.applyEffect(false);
-			transformations.TongueHuman.applyEffect(false);
-			transformations.FaceHuman.applyEffect(false);
-			transformations.SkinPlain.applyEffect(false);
-			if (player.breastRows.length == 0) transformations.CreateBreastRow(4).applyEffect(false);
-			else player.growTits(4, 1, false, 3);
-			player.skinColor = randomChoice(MyconidRace.MyconidSkinColors);
-			if (player.hasVagina() && player.vaginaType() != VaginaClass.SHROOM) transformations.VaginaShroom().applyEffect(false);
-			if (player.clitLength < 10) player.clitLength = 10;
-			if (player.hasCock()) transformations.CockShroom().applyEffect(false);
-			if (!player.hasStatusEffect(StatusEffects.GlowingNipples)) transformations.NipplesGlowing.applyEffect(false);
-			if (!player.hasStatusEffect(StatusEffects.GlowingAsshole)) transformations.AssholeGlowing.applyEffect(false);
-			if (!player.hasPerk(PerkLib.Androgyny)) player.createPerk(PerkLib.Androgyny, 0, 0, 0, 0);
-			if (player.tone > 9) player.tone = 9;
-		}
+		var randon:Number = 0;
+		if (player.gender > 2 && rand(2) == 0) randon += 1;
+		outputText("As you fall, defeated, the heavily corrupted girl makes a dopey smile as she saunters toward you. You desperately try to repel her, but to no avail. She pushes you to the ground, using her small, but deceivingly strong arm to lock you down and, before you know it, your face is right in front of her drooling vagina.\n\n");
+		outputText("You want to emit a protest, but the sound dies in your throat as her lips part ways on their own, something like a giant mushroom pushing them apart to set squarely in front of you before it unleashes a cloud of spores into your nose.\n\nWeary and too surprised by this sudden attack, you breathe it all in as a reflex. ");
+		outputText("Suddenly very horny, all you can think about is this slimy mushroom in front of you, which you proceed to lick and put into your mouth. Shroom… Shroom, everything in your head is mush now. The mushroom girl moans as you proceed to eat out her shroomy clit with wild abandon, rewarding you by shooting spores right into your welcoming throat as she lustfully ");
+		if ((player.hasCock() && !player.hasVagina()) || randon < 1) outputText("sucks your cock");
+		if ((player.hasVagina() && !player.hasCock()) || randon > 0) outputText("eats your pussy out\n\n");
+		if (!player.hasCock() && !player.hasVagina()) outputText("caresses your body to make up for the lack of your sexual endowments");
+		outputText(".\n\nThinking becomes increasingly harder the more you breathe in the spores as your brain is reduced to complete mush, both addled by sex and by the fungal spore spreading in your body. Breed… fuck… spread… this is all your mind needs to think about right now, everything else is inconsequential. Distracted as you are, ");
+		outputText("you fail to notice the small shroom cap growing up your head as your hair strands turn white like those of your partner.\n\nMany parts of your body changes starting with your back which grows a beautiful, long, organic skirt, not unlike a shroom frill to match the color of the small growing mushroom on your head as your arms grow frilled sleeves similar to those on ankles. ");
+		outputText("Completing this setup, a frilly necklace and bra grows on your body as well. By the sixth ejaculation, you look just like the shroom girl. Well not exactly like her yet, the cap on your head is way smaller and there's still a last part of you that has to change first.\n\nYou cum hard into the mushroom girl’s mouth as ");
+		if (player.hasVagina()) outputText("your clit suddenly engorges, growing longer and fatter into a mushroom-like shape you recognise is the same as the mushroom girl in front of you. It seems your clit grew into a mushroom-like penis that slides right out of your vagina");
+		if (player.gender > 2) outputText(". Meanwhile ");
+		if (player.hasCock()) outputText("your cock suddenly throbs as it undergoes changes, the crown and shape changing to match that of your fungal captor");
+		outputText(".\n\nSensing that you have finally been fully infected, the mushroom girl relents and pulls off from you, walking away to seek out new victims to spread her spores to. You would do the same, but perhaps by virtue of your strong willpower, you manage to control yourself from fully giving into your parasitic instincts. ");
+		outputText("Defeated and tired, you go back to camp with a new perspective and mindset all the same. You can’t help but think how good it would be to slide your mushroom down someone's throat.\n\n");
+		transformations.HairGlowingMushroom.applyEffect(false);
+		player.hairColor = randomChoice(MyconidRace.MyconidHairColors);
+		transformations.ArmsShroom.applyEffect(false);
+		transformations.HornsShroomHeadcap.applyEffect(false);
+		transformations.LowerBodyShroomShirt.applyEffect(false);
+		transformations.RearBodyMyconidBraAndNeck.applyEffect(false);
+		transformations.EyesHuman.applyEffect(false);
+		transformations.WingsNone.applyEffect(false);
+		transformations.TailNone.applyEffect(false);
+		transformations.EarsHuman.applyEffect(false);
+		transformations.TongueHuman.applyEffect(false);
+		transformations.FaceHuman.applyEffect(false);
+		transformations.SkinPlain.applyEffect(false);
+		if (player.breastRows.length == 0) transformations.CreateBreastRow(4).applyEffect(false);
+		else player.growTits(4, 1, false, 3);
+		player.skinColor = randomChoice(MyconidRace.MyconidSkinColors);
+		if (player.hasVagina() && player.vaginaType() != VaginaClass.SHROOM) transformations.VaginaShroom().applyEffect(false);
+		if (player.clitLength < 10) player.clitLength = 10;
+		if (player.hasCock()) transformations.CockShroom().applyEffect(false);
+		if (!player.hasStatusEffect(StatusEffects.GlowingNipples)) transformations.NipplesGlowing.applyEffect(false);
+		if (!player.hasStatusEffect(StatusEffects.GlowingAsshole)) transformations.AssholeGlowing.applyEffect(false);
+		if (!player.hasPerk(PerkLib.Androgyny)) player.createPerk(PerkLib.Androgyny, 0, 0, 0, 0);
+		if (player.tone > 9) player.tone = 9;
 		cleanupAfterCombat();
 	}
 }

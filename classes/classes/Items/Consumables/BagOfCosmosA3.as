@@ -42,8 +42,8 @@ public class BagOfCosmosA3 extends Consumable {
 				return true;
 
 				case 4:
-				outputText("branch from World Tree inside.");
-				SceneLib.inventory.takeItem(game.useables.WT_BRAN, SceneLib.inventory.inventoryMenu);
+				outputText("Darksteel ingot inside.");
+				SceneLib.inventory.takeItem(game.useables.DARKSTI, SceneLib.inventory.inventoryMenu);
 				return(true);
 
 				case 5:

@@ -1544,4 +1544,4 @@ public class CockTransformations extends MutationsHelper {
 	/*
 */
 }
-}
+}

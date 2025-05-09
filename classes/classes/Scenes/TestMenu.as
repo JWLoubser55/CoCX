@@ -74,6 +74,7 @@ public class TestMenu extends BaseContent
 		bd.add("All4HiddenPrestige", hiddenPJ, "A11 th4t H1dd3n Prestige is Y0urs to T4ke!!!");
 		bd.add("PerkGalore1", PerkGalore1, "");
 		bd.add("PerkGalore2", PerkGalore2, "");
+		bd.add("UnPerkGal2Part", unPerkGalore2Part, "");
 		bd.add("RemoveRP", cheatRemoveRP, "Remove Racial Paragon perk");
 		bd.add("Fix Shards", cheatFixShards, "Check the player's quests and give the deserved shards.");
 		bd.add("Add Shard", cheatAddShard, "Add 1 radiant shard");
@@ -1040,14 +1041,6 @@ public class TestMenu extends BaseContent
 		doNext(SoulforceCheats);
 	}
 	public function PerkGalore2():void {
-		if (!player.hasPerk(PerkLib.PrestigeJobSeer)) {
-			player.createPerk(PerkLib.PrestigeJobSeer, 0, 0, 0, 0);
-			outputText("\n\n<b>(Gained Perk: Prestige Job: Seer!)</b>");
-		}
-		if (!player.hasPerk(PerkLib.PrestigeJobSoulArcher)) {
-			player.createPerk(PerkLib.PrestigeJobSoulArcher, 0, 0, 0, 0);
-			outputText("\n\n<b>(Gained Perk: Prestige Job: Soul Archer!)</b>");
-		}
 		if (!player.hasPerk(PerkLib.PiercedCrimstone)) {
 			player.createPerk(PerkLib.PiercedCrimstone, 5, 0, 0, 0);
 			outputText("\n\n<b>(Gained Perk: Pierced: Crimstone!)</b>");
@@ -1227,6 +1220,17 @@ public class TestMenu extends BaseContent
 		if (!player.hasPerk(PerkLib.HistoryFeral) && !player.hasPerk(PerkLib.PastLifeFeral)) {
 			player.createPerk(PerkLib.HistoryFeral, 0, 0, 0, 0);
 			outputText("\n\n<b>(Gained Perk: History: Feral!)</b>");
+		}
+		doNext(SoulforceCheats);
+	}
+	public function unPerkGalore2Part():void {
+		if (player.hasPerk(PerkLib.PrestigeJobSeer)) {
+			player.removePerk(PerkLib.PrestigeJobSeer);
+			outputText("\n\n<b>(Lost Perk: Prestige Job: Seer!)</b>");
+		}
+		if (player.hasPerk(PerkLib.PrestigeJobSoulArcher)) {
+			player.removePerk(PerkLib.PrestigeJobSoulArcher);
+			outputText("\n\n<b>(Lost Perk: Prestige Job: Soul Archer!)</b>");
 		}
 		doNext(SoulforceCheats);
 	}

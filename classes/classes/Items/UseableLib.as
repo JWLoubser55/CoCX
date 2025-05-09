@@ -110,6 +110,9 @@ use namespace CoC;
 		public const SRESIDUE:SimpleUseable = new SimpleUseable("SoulResidue", "Soul Residue", "a Soul Residue", 1,
 			"A Soul Residue.",
 			"You look at the soul residue. It looks to be incredibly fine powder and may have some uses. If you find anyone that could work with this.");
+		public const DARKSTI:SimpleUseable = new SimpleUseable("DarkStI", "Darksteel ingot", "a Darksteel ingot", 120,
+			"A Darksteel ingot.",
+			"You look over the Darksteel ingot. Likely useful for making some equipment.");
 		public const SKYMETA:SimpleUseable = new SimpleUseable("Skymetal", "Skymetal" , "a Skymetal", 900,
 			"A Skymetal ore.",
 			"You gaze at the skymetal ore. Likely useful for making some weapons.");

@@ -2305,4 +2305,4 @@ public class Lumi extends BaseContent {
 		else doNext(camp.returnToCampUseTwelveHours);
 	}
 }
-}
+}

@@ -269,9 +269,9 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Ormael): Darksteel Spears - can be gained by combining 2x Darksteel Spear weapon. Cost 6,400 gems. Base atk is 40. It's dual large spear type weapon, 100% armor penetration, increase physical soulskills power by 40%.\n");
 			outputText("-Aether Twins Sky-tier Gauntlets and Human-tier Dual Daggers forms fixes regarding extra attacks checks.\n");
 			outputText("-Expanded possible to get stuff from Bag of Cosmos items to give more then few spirit stones. Now can get some consumables or even usable items.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New P. Special: Abyssal Shark Bite. Req. to be have Abyssal Shark face. Effects: Allowing to take a bit of enemy causing bleed and rip off piece of enemy body (lowering enemy max HP up to 80%).\n");
+			outputText("-Living Statue would no longer getting out of jail card against Frostbite (fenrir) or Abyssal Shark Bite specials.\n");
+			outputText("-New usable item: Darksteel ingot. Costing 120 gems and can be found in cultivators bags of cosmos.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -338,6 +338,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accesable by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
@@ -425,10 +428,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -468,7 +469,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
