@@ -215,7 +215,7 @@ public final class ConsumableLib extends AlchemyLib
 		public const BAGOCA1: Consumable = new BagOfCosmosA1();
 		public const BAGOCA2: Consumable = new BagOfCosmosA2();
 		public const BAGOCA3: Consumable = new BagOfCosmosA3();
-		public const BAGOCA4: Consumable = mk("BagOCA4", "BagOfCosmosA4", "a Bag of Cosmos (A4)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA4);
+		public const BAGOCA4: Consumable = new BagOfCosmosA4();
 		public const BAGOCA5: Consumable = mk("BagOCA5", "BagOfCosmosA5", "a Bag of Cosmos (A5)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA5);
 		public const BAGOCA6: Consumable = mk("BagOCA6", "BagOfCosmosA6", "a Bag of Cosmos (A6)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA6);
 

@@ -459,7 +459,7 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.ScaleAttack_Spe, 100) as Weapon;
 		public const DL_AXE_:Weapon = new Weapon(
 				"D.L.Axe", "D.L.Axe", "dual large axes", "a pair of axes large enough for a minotaur", "cleaves", 18, 1440,
-				"This pair of massive axes once belonged to a minotaur.  It'd be hard for anyone smaller than a giant to wield effectively.  These axes are double-bladed and deadly-looking.  Requires height of 6'6\".",
+				"This pair of massive axes once belonged to a minotaur.  It'd be hard for anyone smaller than a giant to wield effectively.  These axes are double-bladed and deadly-looking.",
 				WT_AXE, WSZ_LARGE, true)
 				.withEffect(IELib.ScaleAttack_Str, 120) as Weapon;
 		public const DL_WHIP:Weapon = new Weapon(

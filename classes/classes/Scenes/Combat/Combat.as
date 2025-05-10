@@ -1773,6 +1773,8 @@ public class Combat extends BaseContent {
         }
         if (ui.isMummyTurn())
             ui.doMummyTurn();
+        if (ui.isZombieTurn())
+            ui.doZombieTurn();
         if (ui.isFlyingSwordTurn())
             ui.doFlyingSwordTurn();
         if (ui.isMechAITurn())
