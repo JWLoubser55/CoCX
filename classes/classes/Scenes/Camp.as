@@ -1963,11 +1963,11 @@ public class Camp extends NPCAwareContent{
 				} else if (SceneLib.alvinaFollower.JojoDevilPurification == 1 && !player.hasStatusEffect(StatusEffects.DevilPurificationScar)) {
 					outputText("Jojo is waiting in the forrest, bring him a pure artifact, and he will cleanse you of your taint.");
 				} else if (flags[kFLAGS.JOJO_BIMBO_STATE] == 5) {
-						outputText("Joy's tent is set up in a quiet corner of the [camp], close to a boulder. Inside the tent, you can see a chest holding her belongings, as well as a few clothes and books spread about her bedroll. ");
-						if (flags[kFLAGS.JOJO_LITTERS] > 0 && model.time.hours >= 16 && model.time.hours < 19) outputText("You spot the little mice you had with Joy playing about close to her tent.");
-						else outputText("Joy ");
-						outputText("\n\n");
-						buttons.add("Joy", SceneLib.jojoScene.joJoyCampMenu).hint("Go find Joy around the edges of your [camp] and meditate with her or have sex with her.");
+					outputText("Joy's tent is set up in a quiet corner of the [camp], close to a boulder. Inside the tent, you can see a chest holding her belongings, as well as a few clothes and books spread about her bedroll. ");
+					if (flags[kFLAGS.JOJO_LITTERS] > 0 && model.time.hours >= 16 && model.time.hours < 19) outputText("You spot the little mice you had with Joy playing about close to her tent.");
+					else outputText("Joy ");
+					outputText("\n\n");
+					buttons.add("Joy", SceneLib.jojoScene.joJoyCampMenu).hint("Go find Joy around the edges of your [camp] and meditate with her or have sex with her.");
 				}
 
 				else {
@@ -1978,7 +1978,8 @@ public class Camp extends NPCAwareContent{
 					buttons.add("Jojo", jojoScene.jojoCamp2).hint("Go find Jojo around the edges of your [camp] and meditate with him or talk about watch duty.").disableIf(player.statusEffectv2(StatusEffects.CampLunaMishaps1) > 0, "Annoyed.");//wpisać blokowanie mishapów jak opcja wyłączenia jej jest aktywna
 				}
 			}
-			//Celess
+
+				//Celess
 			//Evangeline
 			if (EvangelineFollower.EvangelineFollowerStage >= 1 && flags[kFLAGS.EVANGELINE_WENT_OUT_FOR_THE_ITEMS] <= 0) {
 				outputText("There is a small bedroll for Evangeline near the [camp] edge");

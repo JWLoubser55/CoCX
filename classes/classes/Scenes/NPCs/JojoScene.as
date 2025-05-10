@@ -2299,10 +2299,10 @@ public function refuseOfferOfHelp():void
 public function jojoCamp2():void {
 	if (!player.hasStatusEffect(StatusEffects.LunaOff) && !player.hasStatusEffect(StatusEffects.LunaWasWarned)) {
 		if ((flags[kFLAGS.LUNA_JEALOUSY] > 200 && rand(10) < 4) || (flags[kFLAGS.LUNA_JEALOUSY] > 300 && rand(10) < 8)) mishapsLunaJojo();
-		if ((flags[kFLAGS.JOJO_BIMBO_STATE] = 5)) joJoyCampMenu();
+		if ((flags[kFLAGS.JOJO_BIMBO_STATE] == 5)) joJoyCampMenu();
 		else jojoCamp();
 	}
-	if ((flags[kFLAGS.JOJO_BIMBO_STATE] = 5)) joJoyCampMenu();
+	if ((flags[kFLAGS.JOJO_BIMBO_STATE] == 5)) joJoyCampMenu();
 	else jojoCamp();
 }
 
