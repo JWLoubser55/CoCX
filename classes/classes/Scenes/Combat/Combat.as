@@ -6732,7 +6732,7 @@ public class Combat extends BaseContent {
 				damage += scalingBonusStrength() * 0.2 * player.plantChlorophyllBoost();
 			}
         }
-        else if (IsFeralCombat && player.hasPerk(PerkLib.VerdantMight)) {
+        else if ((IsFeralCombat || (player.staffOrWoodenMeleeWeapon() && player.hasPerk(PerkLib.DruidicFocus))) && player.hasPerk(PerkLib.VerdantMight)) {
 			damage += player.tou;
 			damage += scalingBonusToughness() * 0.2;
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) {

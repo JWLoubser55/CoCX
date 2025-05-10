@@ -54,6 +54,7 @@ public class LifeSiphonSpell extends AbstractHexSpell {
 		var lifesiphon:Number = 0;
 		lifesiphon += player.inte;
 		if (player.hasPerk(PerkLib.WisenedHealer)) lifesiphon += player.wis;
+		if (player.hasPerk(PerkLib.DruidicFocus)) lifesiphon += player.tou;
 		if (monster != null) {
 			if (player.hasPerk(PerkLib.HexKnowledge) && monster.cor < 34) lifesiphon = Math.round(lifesiphon * 1.2);
 			lifesiphon *= corruptMagicPerkFactor(monster);

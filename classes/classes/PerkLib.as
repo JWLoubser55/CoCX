@@ -4183,6 +4183,8 @@ public class PerkLib
 				"Allows access to a dragonne regal breath attack.");
 		public static const DragonWaterBreath:PerkType = mk("Dragon water breath", "Dragon water breath",
 				"Allows access to a sea dragon water breath attack. Mixing water with electricity may yield surprising results.");
+		public static const DruidicFocus:PerkType = mk("Druidic Focus", "Druidic Focus",
+				"Add your toughness to poison, earth and water element soulcasting and to spellcasting when using healing and green magic spells. Verdant might is applied to stave and wooden weapon melee damage.");
 		public static const EarthAffinity:PerkType = mk("Earth Affinity", "Earth Affinity",
 				"You have high resistance to earth effects, and mastery over earth abilities and magic.");
 		public static const EasterBunnyBalls:PerkType = mk("Easter bunny balls", "Easter bunny balls",

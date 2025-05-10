@@ -39,6 +39,7 @@ public class RegenerateSpell extends AbstractBlackSpell {
 	public function calcHeal():Number {
 		var hpChange2:Number = player.inte;
 		if (player.hasPerk(PerkLib.WisenedHealer)) hpChange2 += player.wis;
+		if (player.hasPerk(PerkLib.DruidicFocus)) hpChange2 += player.tou;
 		hpChange2 *= healModBlack();
 		if (player.isRace(Races.UNICORN, 2)) hpChange2 *= 3;
 		if (player.isRace(Races.ALICORN)) hpChange2 *= 4;
