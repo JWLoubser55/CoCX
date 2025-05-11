@@ -274,9 +274,9 @@ public class Changelog extends BaseContent
 			outputText("-New usable item: Darksteel ingot. Costing 120 gems and can be found in cultivators bags of cosmos.\n");
 			outputText("-Since Vanilla check to drop axes from minotaurs or Marble large hammer are gone. With all cooler options it should no longer hold dreams of smol PC's to swing large axe for a minotaur if their dream is this.\n");
 			outputText("-New passive for Barometz race: Druidic Focus - Add your toughness to poison, earth and water element soulcasting and to spellcasting when using healing and green magic spells. Verdant might is applied to stave and wooden weapon melee damage.\n");
+			outputText("-New option in Phylactery Enchantment: Vessel rune Imbuement -> When training soulforce may increase demonic energy capacity by up to 2230%.\n");
+			outputText("-New passive for Barometz/Yggdrasil/Alraune/Plant (tier 2) races: Photosynthesis - While outdoors during daytime, gain regeneration 5% and fatigue recovery 2% from absorbing sunlight. Double Toughness score when active.\n");
 			outputText("-\n");
-			outputText("-\n");//New passive for Barometz race: Photosynthesis - While outdoors during daytime, gain regeneration 5% and fatigue recovery 2% from absorbing sunlight. Double Toughness score when active.
-			outputText("-\n");//
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

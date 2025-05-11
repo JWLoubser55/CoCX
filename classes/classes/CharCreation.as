@@ -4156,7 +4156,7 @@ import classes.Scenes.Combat.CombatAbility;
 			if (player.humanScore() >= 20 && player.howManyDifferentHumanIMYouGot() >= 8 && flags[kFLAGS.HUMAN_BLOODLINE] == 1) flags[kFLAGS.HUMAN_BLOODLINE] = 2;
 			if (player.humanScore() >= 40 && player.howManyDifferentHumanIMYouGot() >= 12 && flags[kFLAGS.HUMAN_BLOODLINE] == 2) flags[kFLAGS.HUMAN_BLOODLINE] = 3;
 			if (player.humanScore() >= 60 && player.howManyDifferentHumanIMYouGot() >= 14 && flags[kFLAGS.HUMAN_BLOODLINE] == 3) flags[kFLAGS.HUMAN_BLOODLINE] = 4;//>= 77 - >= 14
-			if (player.isRaceCached(Races.LICH)) {
+			if (player.hasPerk(PerkLib.Phylactery) && !player.hasPerk(PerkLib.Soulless)) {
 				if (player.hasPerk(PerkLib.StrengthenBody)) player.removePerk(PerkLib.StrengthenBody);
 				if (player.hasPerk(PerkLib.StrengthenMagic)) player.removePerk(PerkLib.StrengthenMagic);
 			}

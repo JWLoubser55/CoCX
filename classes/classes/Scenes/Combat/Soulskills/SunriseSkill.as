@@ -38,7 +38,7 @@ public class SunriseSkill extends AbstractSoulSkill {
 	}
 
 	override public function describeEffectVs(target:Monster):String {
-		return "~" + numberFormat(calcDamage(target)) + " magical damage"
+		return "~" + numberFormat(calcDamage(target)) + " plasma damage"
 	}
 
 	override public function calcCooldown():int {

@@ -4375,6 +4375,8 @@ public class PerkLib
 				"Thanks to your ghostly form, throwing weapons and firearms now drains some of your ectoplasm with each use instead of using ammunition. (+5% dmg)");
 		public static const PhoenixFireBreath:PerkType = mk("Phoenix fire breath", "Phoenix fire breath",
 				"Allows access to a phoenix fire breath attack.");
+		public static const Photosynthesis:PerkType = mk("Photosynthesis", "Photosynthesis",
+				"While outdoors during daytime, gain regeneration 5% and fatigue recovery 2% from absorbing sunlight. Double Toughness score when active.");
 		public static const PlantKnowledge:PerkType = mk("Plant knowledge", "Plant knowledge",
 				"Your nature as a plant gives you an instinctual knowledge of herbalism. Add some of your libido to your herbalism skill scaling and gain herbalism experience faster.");
 		public static const PoisonNails:PerkType = mk("Poison nails", "Poison nails",

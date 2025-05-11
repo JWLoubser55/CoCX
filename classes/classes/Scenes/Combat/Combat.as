@@ -14047,13 +14047,13 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             if (player.headJewelry == headjewelries.CUNDKIN && player.HP < 1) healingPercent += 1;
             if (CombatAbilities.Overlimit.isActive() || CombatAbilities.FieryRage.isActive()) healingPercent -= 10;
 			if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
-				if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) healingPercent += ((1 + player.plantChlorophyllBoost()) * 25);
+				if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.BAROMETZ))) healingPercent += ((1 + player.plantChlorophyllBoost()) * 25);
 				else healingPercent += 25;
 			}
-            if (player.hasPerk(PerkLib.Ferocity) && player.HP < 1) negativeHPRegen -= 1;
-            if ((player.hasPerk(PerkLib.Diehard) || player.hasPerk(PerkLib.GreaterDiehardEx)) && !player.hasPerk(PerkLib.EpicDiehard) && player.HP < 1) negativeHPRegen -= 1;
-            if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 3 && player.HP < 1) negativeHPRegen -= 1;
-			if (negativeHPRegen < 0 && !player.hasPerk(PerkLib.BloodDemonToughness)) healingPercent += negativeHPRegen;
+            if (player.hasPerk(PerkLib.Ferocity) && player.HP < 1) negativeHPRegen += 1;
+            if ((player.hasPerk(PerkLib.Diehard) || player.hasPerk(PerkLib.GreaterDiehardEx)) && !player.hasPerk(PerkLib.EpicDiehard) && player.HP < 1) negativeHPRegen += 1;
+            if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 3 && player.HP < 1) negativeHPRegen += 1;
+			if (negativeHPRegen > 0 && !player.hasPerk(PerkLib.BloodDemonToughness)) healingPercent -= negativeHPRegen;
 			if (player.hasStatusEffect(StatusEffects.CombatWounds) && player.hasMutation(IMutationsLib.LizanMarrowIM) && player.perkv1(IMutationsLib.LizanMarrowIM) > 3) {
 				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.005) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.005);
 				else player.removeStatusEffect(StatusEffects.CombatWounds);
@@ -14167,6 +14167,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		}
 		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) maxPercentRegen += (5 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.perkv1(IMutationsLib.FungusTramaIM) >= 2 && !isOutsideDuringDaytime()) maxPercentRegen += (player.perkv1(IMutationsLib.FungusTramaIM) - 1);
+		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && isOutsideDuringDaytime()) maxPercentRegen += 5;
 		if (player.hasStatusEffect(StatusEffects.RegenSurge)) {
 			maxPercentRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
@@ -14345,6 +14346,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.01 * hshim3);
 		}
 		if (player.hasPerk(PerkLib.OperraticOperator)) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.025);
+		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && isOutsideDuringDaytime()) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.02);
         if (player.hasPerk(PerkLib.HydraRegeneration) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) fatiguecombatrecovery += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
 		if (player.hasPerk(PerkLib.TrollRegeneration) && !player.hasStatusEffect(StatusEffects.TrollRegenerationDisabled)) fatiguecombatrecovery += 6;
         if (player.hasPerk(PerkLib.JobGunslinger)) fatiguecombatrecovery += 1;
@@ -14775,6 +14777,16 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		}
 		return venomCRecharge;
 	}
+	public function checkPhotosynthesis():void {
+		if (!player.hasStatusEffect(StatusEffects.Photosynthesis) && isOutsideDuringDaytime()) {
+			outputText("\nYou feel a surge of energy as the radiant sun shines its rays on your leaves, your body converting the light into strength!\n");
+			player.createStatusEffect(StatusEffects.Photosynthesis,0,0,0,0);
+		}
+		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && !isOutsideDuringDaytime()) {
+			outputText("\nYou feel lethargic from the absence of sunlight fighting in these conditions is going to be far harder for you.\n");
+			player.removeStatusEffect(StatusEffects.Photosynthesis);
+		}
+    }
 
     internal var combatRound:int = 1;
 
