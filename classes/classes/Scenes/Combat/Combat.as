@@ -3480,7 +3480,7 @@ public class Combat extends BaseContent {
 					if (player.hasPerk(PerkLib.VegetalAffinity)) lustDMG *= 1.5;
 					if (player.hasPerk(PerkLib.GreenMagic)) lustDMG *= 2;
 					if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
-						if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) lustDMG *= ((1 + player.plantChlorophyllBoost()) * 2);
+						if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.BAROMETZ))) lustDMG *= ((1 + player.plantChlorophyllBoost()) * 2);
 						else lustDMG *= 2;
 					}
 					if (player.armor == armors.ELFDRES && player.isElf()) lustDMG *= 2;
@@ -13970,7 +13970,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.hasPerk(PerkLib.VegetalAffinity)) dmg *= 1.5;
 		if (player.hasPerk(PerkLib.GreenMagic)) dmg *= 2;
 		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
-			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) dmg *= ((1 + player.plantChlorophyllBoost()) * 2);
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.BAROMETZ))) dmg *= ((1 + player.plantChlorophyllBoost()) * 2);
 			else dmg *= 2;
 		}
 		//Determine if critical tease!
@@ -14167,7 +14167,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		}
 		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) maxPercentRegen += (5 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.perkv1(IMutationsLib.FungusTramaIM) >= 2 && !isOutsideDuringDaytime()) maxPercentRegen += (player.perkv1(IMutationsLib.FungusTramaIM) - 1);
-		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && isOutsideDuringDaytime()) maxPercentRegen += 5;
+		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && isOutsideDuringDaytime()) {
+			maxPercentRegen += 5;
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 3) maxPercentRegen += (1.25 * (player.perkv1(IMutationsLib.PlantChlorophyllIM) - 2));
+		}
 		if (player.hasStatusEffect(StatusEffects.RegenSurge)) {
 			maxPercentRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
@@ -14346,7 +14349,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.01 * hshim3);
 		}
 		if (player.hasPerk(PerkLib.OperraticOperator)) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.025);
-		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && isOutsideDuringDaytime()) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.02);
+		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && isOutsideDuringDaytime()) {
+			fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.02);
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 3) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.005 * (player.perkv1(IMutationsLib.PlantChlorophyllIM) - 2));
+		}
         if (player.hasPerk(PerkLib.HydraRegeneration) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) fatiguecombatrecovery += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
 		if (player.hasPerk(PerkLib.TrollRegeneration) && !player.hasStatusEffect(StatusEffects.TrollRegenerationDisabled)) fatiguecombatrecovery += 6;
         if (player.hasPerk(PerkLib.JobGunslinger)) fatiguecombatrecovery += 1;
@@ -14785,6 +14791,16 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && !isOutsideDuringDaytime()) {
 			outputText("\nYou feel lethargic from the absence of sunlight fighting in these conditions is going to be far harder for you.\n");
 			player.removeStatusEffect(StatusEffects.Photosynthesis);
+		}
+		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 4 && (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained"))) {
+			for each (var stat:String in ["str","spe","tou","int","wis","lib","sens"]) {
+				player.removeCurse(stat, 4,1);
+				player.removeCurse(stat, 2,2);
+				if (stat != "sens") {
+					player.removeCurse(stat+".mult", 0.04,1);
+					player.removeCurse(stat+".mult", 0.02,2);
+				}
+			}
 		}
     }
 

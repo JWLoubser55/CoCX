@@ -3107,6 +3107,16 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					else player.addStatusValue(StatusEffects.SlowTFingItems2, 1, -1);
 				}
 			}
+			if (player.hasStatusEffect(StatusEffects.Photosynthesis) && player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 4 && (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained"))) {
+				for each (var stat:String in ["str","spe","tou","int","wis","lib","sens"]) {
+					player.removeCurse(stat, 8,1);
+					player.removeCurse(stat, 4,2);
+					if (stat != "sens") {
+						player.removeCurse(stat+".mult", 0.08,1);
+						player.removeCurse(stat+".mult", 0.04,2);
+					}
+				}
+			}
 			if (flags[kFLAGS.ERLKING_CANE_ATTACK_COUNTER] > 0) flags[kFLAGS.ERLKING_CANE_ATTACK_COUNTER] -= 1;
 			//Wrap it up
 			return needNext;

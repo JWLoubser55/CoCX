@@ -2352,7 +2352,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 				if (doOutput) {
 					var desc: String = "";
 
-					desc += "Your legs begin to itch as you scratch at them, eventually you look over and discover your legs are now covered in a bell bottom like fuzzy mass. <b>You now have Moth Legs</b>";
+					desc += "Your legs begin to itch as you scratch at them, eventually you look over and discover your legs are now covered in a bell bottom like fuzzy mass. <b>You now have Moth Legs.</b>";
 
 					if (doOutput) outputText(desc);
 					player.legCount = 2;

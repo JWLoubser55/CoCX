@@ -533,7 +533,7 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.VegetalAffinity)) mod += 0.5;
 		if (player.hasPerk(PerkLib.GreenMagic)) mod += 1;
 		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
-			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) mod += player.plantChlorophyllBoost();
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.BAROMETZ))) mod += player.plantChlorophyllBoost();
 			mod += 1;
 		}
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;

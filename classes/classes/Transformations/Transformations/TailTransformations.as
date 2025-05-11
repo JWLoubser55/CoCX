@@ -1660,7 +1660,7 @@ public class TailTransformations extends MutationsHelper {
 				TransformationUtils.removeLowerBodyIfIncompatible(player, doOutput);
 
 
-				desc += "you suddenly feel like your tailbone is in pain, like something is bursting out of it, suddenly the pain subsides and you feel something resting atop your ass, eventually you stop noticing it. <b>You now have a moth abdomen</b>";
+				desc += "you suddenly feel like your tailbone is in pain, like something is bursting out of it, suddenly the pain subsides and you feel something resting atop your ass, eventually you stop noticing it. <b>You now have a moth abdomen.</b>";
 				player.tailType = Tail.MOTH_ABDOMEN;
 				player.tailCount = 1;
 

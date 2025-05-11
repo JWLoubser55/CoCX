@@ -793,7 +793,7 @@ public class EyesTransformations extends MutationsHelper {
 			function (doOutput: Boolean): void {
 				var desc: String = "";
 
-				desc += "your eyes suddenly feel strange as the world gets blurry on you, eventually your vision returns but the world seems more vivid, you rush over to the lake and you are shocked to see your eyes look like they belong on some sort of bug. <b>Your eyes are now like a moth’s eyes</b>";
+				desc += "your eyes suddenly feel strange as the world gets blurry on you, eventually your vision returns but the world seems more vivid, you rush over to the lake and you are shocked to see your eyes look like they belong on some sort of bug. <b>Your eyes are now like a moth’s eyes.</b>";
 				player.eyes.type = Eyes.MOTH;
 
 				if (doOutput) outputText(desc);

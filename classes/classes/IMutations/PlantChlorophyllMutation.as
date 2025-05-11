@@ -23,8 +23,8 @@ import classes.Races;
 			if (pTier >= 4) perkCent1 += 1;
             if (pTier >= 1) descS += "For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by "+(pTier * 5)+"% while outdoors during daytime";
             if (pTier >= 2) descS += ". Plant abilities are increased by "+perkCent1+"0%";
-            if (pTier >= 3) descS += ". Synthesis is "+perkCent1+"0% stronger";
-            if (pTier >= 4) descS += " and can be auto cast";
+            if (pTier >= 3) descS += ". Photosynthesis is "+((perkCent1-2)*25)+"% stronger";
+            if (pTier >= 4) descS += " and allows stat damage recovery each turn/hour";
             if (descS != "")descS += ".";
             return descS;
         }

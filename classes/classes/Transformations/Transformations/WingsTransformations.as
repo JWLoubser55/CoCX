@@ -832,7 +832,7 @@ public class WingsTransformations extends MutationsHelper {
 				if ((player.wings.type != Wings.NONE)) {
 					desc += "Your wings feel…warm, lethargic, almost. They begin to sag, ignoring your commands. They wither, turning to a dark, putrid brown before falling off your body. ";
 				}
-				desc += "your back hurts as you suddenly feel something burst out your shoulder blades, reaching back you feel 2 small silky things like wings.\n\n <b>You now have small Moth Wings.</b>";
+				desc += "your back hurts as you suddenly feel something burst out your shoulder blades, reaching back you feel 2 small silky things like wings. <b>You now have small Moth Wings.</b>";
 
 				player.wings.type = Wings.MOTH_SMALL;
 				Metamorph.unlockMetamorph(WingsMem.getMemory(WingsMem.MOTH_SMALL));

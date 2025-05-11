@@ -1343,7 +1343,7 @@ public class ArmsTransformations extends MutationsHelper {
 
 				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
 
-				desc += "Your arms begin to itch so you scratch at them, eventually you look over and discover your arms are now covered in a sleeve like fuzzy mass. A second pair has even begun sprouting just underneath, forming these same traits. <b>You now have Moth arms</b>";
+				desc += "Your arms begin to itch so you scratch at them, eventually you look over and discover your arms are now covered in a sleeve like fuzzy mass. A second pair has even begun sprouting just underneath, forming these same traits. <b>You now have moth arms!</b>";
 
 				player.arms.type = Arms.MOTH;
 				if (doOutput) outputText(desc);

@@ -42,7 +42,21 @@ public class RatRace extends Race {
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
         buildTier(8, "rat-morph")
-                .buffs({
+                .namesMaleFemaleMorphTaur("rat-boy","rat-girl","rat-morph","rat-taur")
+				.buffs({
+                        "str.mult": +0.00,
+                        "tou.mult": +0.00,
+                        "spe.mult": +0.00,
+                        "int.mult": +0.00,
+                        "wis.mult": +0.00,
+                        "lib.mult": +0.00,
+                        "sens": +0
+                    })
+                .end();
+
+        buildTier(12, "poison rat")
+                .namesTauric("poison rat","poison rat-taur")
+				.buffs({
                         "str.mult": +0.00,
                         "tou.mult": +0.00,
                         "spe.mult": +0.00,

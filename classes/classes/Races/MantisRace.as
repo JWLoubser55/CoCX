@@ -67,7 +67,17 @@ public class MantisRace extends Race {
 					"spe.mult": +1.40,
 					"int.mult": +0.20
 				})
-				.end();
+				.end();/*
+		
+		buildTier(12, "thunder mantis")
+				.namesTauric("thunder mantis","thunder mantis-taur")
+				.buffs({
+					"str.mult": -0.40,
+					"tou.mult": +0.60,
+					"spe.mult": +1.40,
+					"int.mult": +0.20
+				})
+				.end();*/
 	}
 }
 }

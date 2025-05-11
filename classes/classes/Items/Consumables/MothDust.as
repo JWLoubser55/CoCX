@@ -31,12 +31,11 @@ public class MothDust extends Consumable {
         //Statistical changes:
         //-Raises speed to 100.
         if (rand(2) == 0 && changes < changeLimit && player.MutagenBonus("spe", 1)) {
-            outputText("[pg]Hearing a sudden sound you suddenly move by reflex to the side with such speed you nearly trip.  Seems your reaction speed has increased as well as your mobile execution.");
+            outputText("\n\nHearing a sudden sound you suddenly move by reflex to the side with such speed you nearly trip.  Seems your reaction speed has increased as well as your mobile execution.");
             changes++;
         }
         //disable changes if blocking
         if (player.blockingBodyTransformations()) changeLimit = 0;
-        clearOutput();
         //tail
         if (changes < changeLimit && rand(3) == 0 && player.tailType != Tail.MOTH_ABDOMEN) {
             outputText("\n\n");
@@ -51,7 +50,7 @@ public class MothDust extends Consumable {
         }
 		//Face
         if (changes < changeLimit && rand(3) == 0 && player.faceType != Face.HUMAN) {
-            outputText("[pg]");
+            outputText("\n\n");
             CoC.instance.transformations.FaceHuman.applyEffect();
             changes++;
         }
@@ -63,20 +62,20 @@ public class MothDust extends Consumable {
         }
 		//Eyes Color
 		if (!InCollection(player.eyes.colour, MothRace.MothEyesColors) && rand(3) == 0 && changes < changeLimit) {
-            outputText("[pg]");
+            outputText("\n\n");
             CoC.instance.transformations.EyesChangeColor(MothRace.MothEyesColors).applyEffect();
             changes++;
         }
 		//Hair
         if (changes < changeLimit && player.hairType != Hair.NORMAL && rand(3) == 0) {
-		    outputText("[pg]");
+		    outputText("\n\n");
 		    CoC.instance.transformations.HairHuman.applyEffect();
             changes++;
         }
 		//Hair Color
         if (!InCollection(player.hairColor, MothRace.MothHairColors) && changes < changeLimit && rand(3) == 0) {
             player.hairColor = randomChoice(MothRace.MothHairColors);
-            outputText("[pg]Your scalp begins to tingle, and you gently grasp a strand of hair, pulling it out to check it.  Your hair has become [haircolor]!");
+            outputText("\n\nYour scalp begins to tingle, and you gently grasp a strand of hair, pulling it out to check it.  Your hair has become [haircolor]!");
         }
         //LowerBody
         if (changes < changeLimit && rand(3) == 0 && player.lowerBody != LowerBody.MOTH) {
@@ -85,7 +84,7 @@ public class MothDust extends Consumable {
             changes++;
         }
         //Antenna
-        if (changes < changeLimit && rand(3) == 0 && !player.antennae.type != Antennae.MOTH) {
+        if (changes < changeLimit && rand(3) == 0 && player.antennae.type != Antennae.MOTH) {
             outputText("\n\n");
             CoC.instance.transformations.AntennaeMoth.applyEffect();
             changes++;
@@ -95,7 +94,7 @@ public class MothDust extends Consumable {
 		//Plain skin
         if (!player.hasPlainSkinOnly() && rand(3) == 0 && changes < changeLimit) {
             if (player.skinAdj != "") player.skinAdj = "";
-            outputText("[pg]");
+            outputText("\n\n");
             CoC.instance.transformations.SkinPlain.applyEffect();
             changes++;
         }
@@ -106,14 +105,14 @@ public class MothDust extends Consumable {
             changes++;
         }
         //Wings
-        if (changes < changeLimit && rand(3) == 0 && ((player.wings.type != Wings.MOTH_SMALL)|| (player.wings.type != Wings.MOTH_LARGE))) {
+        if (changes < changeLimit && rand(3) == 0 && player.wings.type == Wings.MOTH_SMALL) {
             outputText("\n\n");
-            //for now make it random
-            if(rand(2) == 0) {
-                CoC.instance.transformations.WingsMothSmall.applyEffect();
-            } else {
-                CoC.instance.transformations.WingsMothLarge.applyEffect();
-            }
+            CoC.instance.transformations.WingsMothLarge.applyEffect();
+            changes++;
+        }
+		if (changes < changeLimit && rand(3) == 0 && player.wings.type != Wings.MOTH_SMALL && player.wings.type != Wings.MOTH_LARGE) {
+            outputText("\n\n");
+            CoC.instance.transformations.WingsMothSmall.applyEffect();
             changes++;
         }
         //Rearbody
@@ -130,11 +129,11 @@ public class MothDust extends Consumable {
         }
 		//If no changes yay
         if (changes == 0) {
-            outputText("[pg]Inhuman vitality spreads through your body, invigorating you!\n");
+            outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");
             EngineCore.HPChange(Math.round(20*player.postConsumptionMlt()), true, false);
             dynStats("lus", Math.round(3*player.postConsumptionMlt()), "scale", false);
         }
-        return true;
+        return false;
     }
 }
 }
