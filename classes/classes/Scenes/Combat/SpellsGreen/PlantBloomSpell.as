@@ -40,6 +40,7 @@ public class PlantBloomSpell extends AbstractGreenSpell {
 	
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
 		var baseDamage:Number = ((scalingBonusIntelligence() + scalingBonusLibido()));
+		if (player.hasPerk(PerkLib.DruidicFocus)) baseDamage += scalingBonusToughness();
 		return adjustLustDamage(baseDamage, monster, CAT_SPELL_GREEN, randomize);
 	}
 	

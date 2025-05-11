@@ -7850,6 +7850,10 @@ use namespace CoC;
 			}
 		}
 
+		public function staffOrWoodenMeleeWeapon():Boolean {
+			return weapon.isStaffType() || weaponOff.isStaffType() || weapon.isWoodenMelee() || weaponOff.isWoodenMelee();
+		}
+
 		protected override function maxHP_base():Number {
 			var max:Number = super.maxHP_base();
 			if (isGargoyle() && Forgefather.material == "granite")
@@ -8022,12 +8026,12 @@ use namespace CoC;
 		{
 			var ElfSistersBonus:Number = (WoodElves.ConvertedSisters + WoodElves.ConvertedHerms) * 0.01;
 			while (buff("Elf Sisters").getValueOfStatBuff("int.mult") < ElfSistersBonus) {
-				buff("Elf Sisters").addStat("str.mult",0.01);
-				buff("Elf Sisters").addStat("tou.mult",0.01);
-				buff("Elf Sisters").addStat("spe.mult",0.01);
-				buff("Elf Sisters").addStat("int.mult",0.01);
-				buff("Elf Sisters").addStat("wis.mult",0.01);
-				buff("Elf Sisters").addStat("lib.mult",0.01);
+				buff("Elf Sisters").addStat("str.mult",0.05);
+				buff("Elf Sisters").addStat("tou.mult",0.05);
+				buff("Elf Sisters").addStat("spe.mult",0.05);
+				buff("Elf Sisters").addStat("int.mult",0.05);
+				buff("Elf Sisters").addStat("wis.mult",0.05);
+				buff("Elf Sisters").addStat("lib.mult",0.05);
 				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
 				CoC.instance.mainView.statsView.showStatUp("str");
 				CoC.instance.mainView.statsView.showStatUp("tou");

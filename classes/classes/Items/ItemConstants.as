@@ -275,6 +275,7 @@ public class ItemConstants extends Utils {
 	public static const W_LIGHTNING_TYPE:String = "Lightning-type Weapon";
 	public static const W_DARKNESS_TYPE:String  = "Darkness-type Weapon";
 	public static const W_PLASMA_TYPE:String    = "Plasma-type Weapon";
+	public static const W_WOODEN_MEELE:String   = "Wooden Melee weapon";
 	
 	public static const W_ENVENOM_POSSIBLE:String  = "Can be envenomed";
 	///////////////////

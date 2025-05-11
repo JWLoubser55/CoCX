@@ -273,10 +273,10 @@ public class Changelog extends BaseContent
 			outputText("-Living Statue would no longer getting out of jail card against Frostbite (fenrir) or Abyssal Shark Bite specials.\n");
 			outputText("-New usable item: Darksteel ingot. Costing 120 gems and can be found in cultivators bags of cosmos.\n");
 			outputText("-Since Vanilla check to drop axes from minotaurs or Marble large hammer are gone. With all cooler options it should no longer hold dreams of smol PC's to swing large axe for a minotaur if their dream is this.\n");
+			outputText("-New passive for Barometz race: Druidic Focus - Add your toughness to poison, earth and water element soulcasting and to spellcasting when using healing and green magic spells. Verdant might is applied to stave and wooden weapon melee damage.\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New passive for Barometz race: Druidic Focus - 
+			outputText("-\n");//New passive for Barometz race: Photosynthesis - While outdoors during daytime, gain regeneration 5% and fatigue recovery 2% from absorbing sunlight. Double Toughness score when active.
+			outputText("-\n");//
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -356,8 +356,8 @@ public class Changelog extends BaseContent
 			outputText("Dark Charm not gained by Gremlins, some of Nocello Liqueur TF effects ignoring TF immunity effect, Munchkin@Biolab perk not properly increasing max for stat training caps, Vitality Tincture not restoring Arian health, Iron Man perk not affecting fatigue cost of some physical specials, Taser with an overcharged battery upgrade causing Tazer special to be not accesable, keeping debuff ");
 			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, Grey magic or White/Diving magic not taking into account overmaxLust, Grand Grey Archmage perk effect incorrectly applied, Zombiefied Cursed Tag unlimited fatigue not working in ");
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach wthout becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
-			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick pernamently (now they only trigger temporal change), Protein Shake not longer confused ");
-			outputText("if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form\n\n");
+			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick pernamently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, ");
+			outputText("Aether Sin Twin not triggering bleed when used in correct form during shield bash\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");

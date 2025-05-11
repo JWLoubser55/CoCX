@@ -60,6 +60,7 @@ public class EAspectWoodSkill extends AbstractMagicSpecial {
         var amountToHeal:Number = elementalAspectBaseDamage(StatusEffects.SummonedElementalsWood, 0, true);
 
         if (player.hasPerk(PerkLib.WisenedHealer)) amountToHeal += (scalingBonusWisdom() / 2);
+		if (player.hasPerk(PerkLib.DruidicFocus)) amountToHeal += (scalingBonusToughness() / 2);
         if (player.armor == armors.NURSECL) amountToHeal *= 1.2;
 		if (player.weapon == weapons.U_STAFF) amountToHeal *= 1.5;
 		if (player.weapon == weapons.ECLIPSE) amountToHeal *= 0.5;

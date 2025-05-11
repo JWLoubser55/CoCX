@@ -83,6 +83,7 @@ public class CreateElementSkill extends AbstractSoulSkill {
 
 	public function calcDamage(monster:Monster):Number {
 		var damage:Number = scalingBonusWisdom() * 2;
+		if (player.hasPerk(PerkLib.DruidicFocus) && (element == "Earth" || element == "Poison" || element == "Water")) damage += scalingBonusToughness();
 		if (damage < 10) damage = 10;
 		//soulskill mod effect
 		damage *= combat.soulskillMagicalMod();
