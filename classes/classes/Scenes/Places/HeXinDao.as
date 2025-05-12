@@ -947,7 +947,10 @@ public class HeXinDao extends BaseContent
 
 public function soularena():void {
 	clearOutput();//arena do walk z przeciwnikami na exp tylko - zadnych sex scenes tylko walk do wygranej niewazne czy przez hp czy lust - przeciwnicy: ?weak deviant golem?, niskopoziomowi przeciwnicy uzywajacy soul skills (moze po prostu wesje zwyklych przeciwnikow ale z dodanymi soul attakami?)
-	if (flags[kFLAGS.CHI_CHI_AFFECTION] >= 10 && flags[kFLAGS.CHI_CHI_AFFECTION] < 15 && !player.hasStatusEffect(StatusEffects.ChiChiOff) && !SceneLib.chichiScene.ChiChiKickedOut) SceneLib.chichiScene.EnterOfTheChiChi();
+	if (flags[kFLAGS.CHI_CHI_AFFECTION] >= 10 && flags[kFLAGS.CHI_CHI_AFFECTION] < 15 && !player.hasStatusEffect(StatusEffects.ChiChiOff) && !SceneLib.chichiScene.ChiChiKickedOut) {
+		if (SceneLib.chichiScene.ArenaDecline > 0) SceneLib.chichiScene.EnterOfTheChiChi2();
+		else SceneLib.chichiScene.EnterOfTheChiChi();
+	}
 	else {
 		outputText("Coming closer to the arena you see two muscular tigersharks standing on each side of the entrance, they only briefly glance at you the moment you pass by. Moments after you enter, a tall, slightly muscular cat-morph approaches you. Most of his body is covered by armor, yet two long tails wave behind him.");//osoba zarządzająca areną bedzie male nekomanta npc
 		outputText("\n\n\"<i>Welcome to the Soul Arena. Don't start fights outside of the proper place or you will be thrown out. We have training facilities, and fights you can enter. Fights cost spirit stones. Make sure you have enough of them. We aren't a charity.</i>\"");
@@ -1830,8 +1833,49 @@ public function soularena():void {
         menu();
         addButton(0, "Dumpling", orderFood,0,5,0).hint("Effects: +Spe, +Tou", "Dumpling");
         addButton(1, "Soup", orderFood,0,0,5).hint("Effects: +Int, +Tou", "Soup");
-        addButton(2, "Ramen", orderFood,5,0,0).hint("Effects: +Str, +Tou", "Ramen");
+        addButton(2, "Ramen", orderFood, 5, 0, 0).hint("Effects: +Str, +Tou", "Ramen");
+		if (flags[kFLAGS.CHI_CHI_FOLLOWER] < 2 && !player.hasStatusEffect(StatusEffects.ChiChiOff) && !SceneLib.chichiScene.ChiChiKickedOut && SceneLib.chichiScene.RestaurantMeals > 0) addButton(7, "Talks", chichiTalks);
     }
+	private function chichiTalks():void {
+		clearOutput();
+		if (flags[kFLAGS.CHI_CHI_AFFECTION] >= 5 && SceneLib.chichiScene.RestaurantMeals > 9) {
+			outputText("This time before you can wave Chi Chi herself comes to you.\n\n");
+			outputText("\"<i>You really need to stop using that champion title everywhere. What if the demons catch wind of it and trap you? A while ago I was watching the fight at the arena and the announcer boldly called you the Champion of Ingnam. Doing something like that is bound to get you hurt eventually. Besides, you have been a good patron to this shop, It would really suck if you turned up enslaved by demons.</i>\"\n\n");
+			outputText("You are the champion though, this is your title and your duty is to defeat the demons so that people like her can finally be freed from their malignant shadow.\n\n");
+			outputText("\"<i>Boldness and stupidity are often confused. While you’ve been lucky so far, everyone’s luck runs out.. Hundreds of brave souls before you have said the same words and failed…And failure like that comes with lethal consequences.</i>\" Chi Chi seems genuinely concerned for your safety, putting a gentle hand on your shoulder. \"<i>I’m telling you for your own good, you should drop the quest, hole up somewhere and take a job. Maybe marry someone and have children. Mareth is a messed up place but life finds a way. It's not too late for you to live an ordinary existence away from foolish heroics and mostly near impossible quests. Realistic goals just anyone can achieve.</i>\"\n\n");
+			outputText("If no one becomes a hero then who will save Mareth?\n\n");
+			outputText("\"<i>If a hero had shown up I’m sure we would all know by now. I used to think I was a hero too before everything I cared about was taken away from me.</i>\"\n\n");
+			outputText("Her, a hero?\n\n");
+			outputText("\"<i>Every adventurer probably dreamed of saving the world once or twice. I’ve long gone past this point now I’m just Chi Chi the waitress. Speaking of that, would you like to order a meal?</i>\"\n\n");
+			if (SceneLib.chichiScene.ChiChiRestaurantTalks < 3) SceneLib.chichiScene.ChiChiRestaurantTalks = 3;
+		}
+		else if (SceneLib.chichiScene.RestaurantMeals > 4) {
+			outputText("You wave at the waitress and Chi Chi smiles back coming to attend to you.\n\n");
+			outputText("\"<i>Oh " + player.mf("mister", "miss") + " champion it's you again. have you come to get some of that spicy speciality I prepared this morning?</i>\"\n\n");
+			outputText("She’s a chef too? You thought she only worked as a waitress.\n\n");
+			outputText("\"<i>Actually I occasionally cook food as well. Cooking is a pastime of mine though I’m no house maid or master chef. Like most fire species, I’m quite fond of hot food. Most of my people are, as it resonates well with our bodies.</i>\"\n\n");
+			outputText("A fire species? You thought she was a mouse morph.\n\n");
+			outputText("\"<i>I am an Hinezumi, while you aren’t far off,  the mouse morphs are like distant cousins. To me the difference is a rather big one. Unlike the mouse morphs you may have seen by the lake, I am immune to fire and can produce flame at will. Haven’t you ever heard of the so-called hinezumi coat or the tale of the bamboo cutter? It's a story from my homeland far to the west. While the story is mostly a tale for children there's some truth to it, my people are a living embodiment of what people call determination or battle spirit.</i>\"\n\n");
+			outputText("So she embodies courage and the will never to give up?\n\n");
+			outputText("\"<i>Or being straight up more stubborn than a mule to the end. This can be a bad or good thing depending on the situation, but determination is a common trait among my people.</i>\"\n\n");
+			outputText("So her people, where are they now?\n\n");
+			outputText("\"<i>They're gone… most of them are. The demons destroyed the country and all that used to exist beyond the horizon in the great demon war. There’s perhaps four or five like me left in Mareth.</i>\"\n\n");
+			outputText("From her pained expression this seems to be a rather difficult topic for her so you drop it.\n\n");
+			if (SceneLib.chichiScene.ChiChiRestaurantTalks < 2) SceneLib.chichiScene.ChiChiRestaurantTalks = 2;
+		}
+		else {
+			outputText("Instead of ordering another meal, you decide to engage in conversation with Chi Chi the waitress. What is life like here in the river village?\n\n");
+			outputText("\"<i>Well I’ve only really been here for a few years. I used to be a teacher, then a wandering adventurer for a while, but that's all in the past now. I retired and work here in this restaurant to make ends meet, although I still do the former once in a while if they truly need my help.</i>\" Chi Chi pulls out a chair, sitting down in front of you. Her whiskers twitch, and she seems to be sizing you up. \"<i>You seem to be new around here, and yet you’re making something of a name for yourself. On that note, claiming to be a champion of Ingnam-That's a rather bold statement. It’s not a title to take lightly.</i>\"\n\n");
+			outputText("Your village gave you that title and duty so you bear it proudly. To do otherwise would be to let down ");
+			if (SceneLib.dungeons.checkFactoryClear()) outputText("all your predecessors who you want to avenge. ");
+			else outputText("the people back home who are depending on you to keep them safe. ");
+			outputText("You tell the waitress you come to Mareth to defeat the demons once and for all, to the best of your power. This makes Chi Chi give a wry smile, a hint of amusement creeping on her cute face.\n\n");
+			outputText("\"<i>That's a very noble goal, [name], but, on a serious note, you should try for something more realistic. Joke enough about defeating the demons with such a determined face and people might actually end up believing you are serious. Many folk have passed through this restaurant, making the same boast, and then they vanish. It might take a day, a week, some determined souls lasting for a month or two - but soon, they all stop coming.</i>\" Chi Chi sighs slightly, barely more than an exhale, and she stands, offering you a menu. The look she gives you is no longer curious…But slightly sad. \"<i>Still an adventure should begin with a good meal, so what can I serve up for you today?</i>\"\n\n");
+			if (SceneLib.chichiScene.ChiChiRestaurantTalks < 1) SceneLib.chichiScene.ChiChiRestaurantTalks = 1;
+		}
+		doNext(riverislandVillageStuff);
+		cheatTime(1/12);
+	}
     private function orderFood(str:int,spe:int,inte:int,tou:int=5):void{
         outputText("\n\nShe notes your order on a piece of paper.");
         outputText("\n\n\"<i>How spicy would you like it to be?</i>\"");
@@ -1869,6 +1913,7 @@ public function soularena():void {
 				break;
         }
         outputText("\n\nRegardless, the food is excellent and you leave in high spirits. You hadn't expected to find something so delicious in this realm.");
+		SceneLib.chichiScene.RestaurantMeals += 1;
         flags[kFLAGS.SPIRIT_STONES]--;
 		player.refillHunger(100);
         statScreenRefresh();

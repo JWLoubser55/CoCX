@@ -20,6 +20,7 @@ public class DarkElfScene extends BaseContent
 			spriteSelect(SpriteDb.s_DarkElf);
 			outputText("As you explore, an arrow passes by your elbow, and misses you by an inch. You look for your aggressor and spot a dark-skinned woman with pointed ears, purple eyes, and a bow. Having realised her quarry spotted her, she jumps down from her hiding spot toward you and draws a few arrows, smiling malevolently.\n\n");
 			outputText("\"<i>Come quietly. Uninjured slaves sell better.</i>\"\n\n");
+			flags[kFLAGS.DARK_OR_LIGHT_ELF_SUBTYPE] = 0;
 			startCombat(new DarkElfs);
 		}
 		public function introDarkELfSlaver():void {
@@ -27,6 +28,7 @@ public class DarkElfScene extends BaseContent
 			spriteSelect(SpriteDb.s_DarkElf);
 			outputText("As you explore the area an arrow passes by your elbow, and misses you by an inch. You look for your aggressor and spot a dark-skinned woman with pointed ears, purple eyes, and a bow. Having realised her quarry spotted her, she jumps down from her hiding spot toward you and draws a few arrows, smiling malevolently. A coiled rope sways, dangling from her ass.\n\n");
 			outputText("\"<i>Not bad. This one at least has some reflexes.</i>\" Her gaze rakes up and down your body. \"<i>I might just keep this one...</i>\"\n\n");
+			flags[kFLAGS.DARK_OR_LIGHT_ELF_SUBTYPE] = 1;
 			startCombat(new DarkElfs);
 		}
 		public function introDarkELfRanger():void {

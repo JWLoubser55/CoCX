@@ -30,6 +30,9 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 	public var bimboPatchInteractionHappened:Boolean;
 	public var amilyInteractionHappened:Boolean;
 	public var heliaInteractionHappened:Boolean;
+	public var RestaurantMeals:int;
+	public var ChiChiRestaurantTalks:int;
+	public var ArenaDecline:int;
 
 	public function stateObjectName():String {
 		return "ChiChiFollower";
@@ -49,6 +52,9 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 		bimboPatchInteractionHappened = false;
 		amilyInteractionHappened = false;
 		heliaInteractionHappened = false;
+		RestaurantMeals = 0;
+		ChiChiRestaurantTalks = 0;
+		ArenaDecline = 0;
 	}
 
 	public function saveToObject():Object {
@@ -65,7 +71,10 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 			"lunaInteractionHappened": lunaInteractionHappened,
 			"bimboPatchInteractionHappened": bimboPatchInteractionHappened,
 			"amilyInteractionHappened": amilyInteractionHappened,
-			"heliaInteractionHappened": heliaInteractionHappened
+			"heliaInteractionHappened": heliaInteractionHappened,
+			"RestaurantMeals": RestaurantMeals,
+			"ChiChiRestaurantTalks": ChiChiRestaurantTalks,
+			"ArenaDecline": ArenaDecline
 		};
 	}
 
@@ -84,6 +93,9 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 			bimboPatchInteractionHappened = o["bimboPatchInteractionHappened"];
 			amilyInteractionHappened = o["amilyInteractionHappened"];
 			heliaInteractionHappened = o["heliaInteractionHappened"];
+			RestaurantMeals = valueOr(o["RestaurantMeals"], 0);
+			ChiChiRestaurantTalks = valueOr(o["ChiChiRestaurantTalks"], 0);
+			ArenaDecline = valueOr(o["ArenaDecline"], 0);
 		} else resetState();
 	}
 
@@ -117,13 +129,45 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 public function EnterOfTheChiChi():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
-	outputText("You step into the arena once more, but this time your opponent is slightly different. While of small stature like other mice you’ve met in He’Xin’Dao, this mouse morph has pinkish red hair and oriental clothes. She wears a pair of spiked gloves, her fists are clenched slightly at her sides, and she clearly sports a pair of C cup breasts under her clothes. The announcer screams out the participant's names as usual, their enthusiastic introductions is something you’ve grown used to.\n\n");
-	outputText("\"<i>In the left corner, coming from another world, [name], Champion of Ingnam! And in the right corner, from a land far away to the east, the martial arts master, Chi Chi of the four winds!</i>\"\n\n");
+	outputText("As you approach the gate, ready to step into the arena, a female figure walks toward you. "+(flags[kFLAGS.CHI_CHI_FOLLOWER] > 0?"It’s Chi Chi, the mouse morph waitress from the local restaurant.":"She appears to be a mouse morph.")+"\n\n");
+	outputText("\"<i>Here to challenge the arena again? Sorry, but for all the praise they sing about your matches, you’re far from that impressive, honestly."+(ChiChiRestaurantTalks == 3?" Seeing as you won’t drop the whole champion act on your own I’ve come to try and tell you to stop using the title of great heroes like its "+(silly()?"free real estate":"a flag to boost your ego")+".":"")+"</i>\"\n\n");
+	outputText("What does the outlook of your matches have anything to do with her?\n\n");
+	outputText("\"<i>Put bluntly, you annoy me. That damn announcer keeps selling you out as some kind of hero in the making, and you have that self appropriated champion title you boast of. A champion title implies that you are the best. If you TRULY are a champion and not a fraud, then fight me in a one on one battle to prove it. I will show you what a true fight is.</i>\"\n\n");
+	outputText("This is an annoying situation but you got the choice to take her on or not at the time, will you chicken out of the fight?\n\n");
+	menu();
+	addButton(1, "Decline", EnterOfTheChiChiDecline);
+	addButton(3, "Accept", EnterOfTheChiChiAccept);
+}
+public function EnterOfTheChiChi2():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("As you approach the gate, ready to step into the arena, a female figure walks toward you. "+(flags[kFLAGS.CHI_CHI_FOLLOWER] > 0?"As you expected It’s Chi Chi, the mouse morph waitress from the local restaurant and she came to try and dissuade you again":"As you expected it's that mouse morph from before")+".\n\n");
+	outputText("\"<i>You know how it goes, " + player.mf("mister", "miss") + " champion. I ain’t letting you use the arena for anything until you’ve had a fight with me. If you want to head in, you have to accept my duel first.</i>\"\n\n");
+	outputText("This is an annoying situation but you still got the choice to take her on or not do you chicken out again?\n\n");
+	menu();
+	addButton(1, "Decline", EnterOfTheChiChiDecline);
+	addButton(3, "Accept", EnterOfTheChiChiAccept);
+}
+private function EnterOfTheChiChiDecline():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("Yea no you ain’t planning to fight her it would just feel wrong.\n\n");
+	outputText("\"<i>If you ain’t planning to fight for your conviction then you should give up on the champion title and since you’re at it the arena matches as well. I happen to have history with the arena master and I can decide whether you go in or not. Until you are ready to prove yourself I will keep tabs on you and prevent you from requesting more matches. Don’t hate me for this, I'm doing it for your own good.</i>\"\n\n");
+	outputText("On this you head back to camp. This is a rather annoying situation as you won’t be able to use the arena for a while now, well at least until you take on "+(flags[kFLAGS.CHI_CHI_FOLLOWER] > 0?"Chi Chi":"the mouse girl")+" request. This said there is no rush, you can spend some time to prepare and come back later ready to win.\n\n");
+	if (ArenaDecline < 1) ArenaDecline = 1;
+	doNext(camp.returnToCampUseOneHour);
+}
+private function EnterOfTheChiChiAccept():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("With this kind of provocation and your title of champion put into question, there’s no way you can walk off from this! You accept the challenge on the spot!\n\n");
+	outputText("As you both walk into the arena you begin to study your challenger. While of a small stature, like other mice you’ve met in He’Xin’Dao or Tel Adre, she has pinkish red hair and oriental clothes. "+(ChiChiRestaurantTalks > 1?"Maybe these fiery colors are what sets her aside as an Hinezumi? ":"")+"She wears a pair of gloves with spikes along the wrists, her fists are clenched slightly at her sides, and she clearly sports a pair of C cup breasts under her clothes. That aside, no weapon or armor in sight, just how does she plan to fight you? While you ponder this nagging question the announcer screams out the participant’s names, as usual, their enthusiastic introductions are something you’ve grown used to.\n\n");
+	outputText("\"<i>In the left corner, coming from another world, [name], Champion of Ingnam! And in the right corner, from a land far away to the east, the martial arts master, Chi Chi, of the school of the four winds!</i>\"\n\n");
 	if (flags[kFLAGS.CHI_CHI_FOLLOWER] > 0) {
-		outputText("You recognize her from the exotic restaraunt here in town. Chi Chi adopts a battle stance as she catches fire, turning into a living inferno.\n\n");
-		outputText("\"<i>Today's dishes will be EXTRA spicy. I hope you're used to the heat [name], because I’m about to leave you with fifth-degree burns!!!</i>\"");
+		outputText("Chi Chi adopts a battle stance as she catches fire, turning into a living inferno. Well damn that’s a new trick!"+(ChiChiRestaurantTalks > 2?" You expected her to throw fireballs around like some kind of mage not set her body parts ablaze!":"")+"\n\n");
+		outputText("\"<i>Get ready for this dish, it will be EXTRA spicy! Do you prefer Inferno or Hell? Because I’m about to leave you with fifth-degree burns!</i>\"\n\n");
 	}
-	else outputText("Chi Chi, as it’s obviously her name, adopts a battle stance. Her fists, tail and legs suddenly light aflame. You blink in surprise as the heat washes over you. Something tells you this is going to hurt.");
+	else outputText("Chi Chi adopts a battle stance as her fists, tail and legs suddenly combust into a roaring flame. With more tricks than you expected, it seems that you must be ready for anything with her.\n\n");
 	flags[kFLAGS.CHI_CHI_AFFECTION] = 0;
 	flags[kFLAGS.CHI_CHI_LVL_UP] = 1;
 	startCombat(new ChiChi());
@@ -131,7 +175,7 @@ public function EnterOfTheChiChi():void {
 
 public function WonFirstFight():void {
 	spriteSelect(SpriteDb.s_chichi);
-	clearOutput();
+	clearOutput();//outputText("\"<i></i>\"\n\n");
 	outputText("The mouse looks at you in complete disbelief, her shaking voice slowly breaking down as she falls to her knees and coughs blood on the ground.\n\n");
 	outputText("\"<i>Is this... my blood... it is... beautiful. I never thought I would see the day when I would finally find...</i>\"\n\n");
 	outputText("She smiles as she stands a final time, trying to run toward you to deliver one last punch. But midway, she falls to the ground, still smiling, with an obvious trail of blood on the corner of her mouth. Muttering two last words as her eyes lose their light.\n\n");

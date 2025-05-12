@@ -113,15 +113,15 @@ use namespace CoC;
 					if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) < player.matangoControlLimit()) matangoScene.gainingMatango();
 					else matangoScene.mantangoEncounter();
 				}
-			},/* {
+			}, {
 				name: "darkelf",
 				label : "Dark Elf",
 				kind : 'monster',
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					darkelfScene.introDarkELfRangerCaves();
+					darkelfScene.introDarkELfScout();
 				}
-			},*/ {
+			}, {
 				name: "gemgolem",
 				label : "Gem Golem",
 				kind : 'monster',
@@ -223,15 +223,15 @@ use namespace CoC;
 					clearOutput();
 					//outputText("You spend one hour exploring the caves but you don't manage to find anything interesting, unless feeling like you are becoming slightly tougher counts.");
 					break;
-			}, {
+			}, */{
 				name: "darkelf",
 				label : "Dark Elf",
 				kind : 'monster',
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					darkelfScene.introDarkELfRangerCaves();
+					darkelfScene.introDarkELfSlaver();
 				}
-			}, {
+			}, /*{
 				name: "darkslime",
 				label : "Dark Slime",
 				kind : 'monster',
