@@ -1186,6 +1186,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const WingsPlant: Transformation 					= wings.WingsPlant.registerTf(AS_WINGS, AE_PLANT);
 	public const WingsYggdrasilLarge: Transformation 			= wings.WingsYggdrasilLarge.registerTf(AS_WINGS, AE_YGGDRASIL);
 	public const WingsYggdrasilHuge: Transformation 			= wings.WingsYggdrasilHuge.registerTf(AS_WINGS, AE_YGGDRASIL);
+	public const WingsYggdrasilOctupleHuge: Transformation 		= wings.WingsYggdrasilOctupleHuge.registerTf(AS_WINGS, AE_YGGDRASIL);
 	public const WingsYggdrasilSextupleHuge: Transformation 	= wings.WingsYggdrasilSextupleHuge.registerTf(AS_WINGS, AE_YGGDRASIL);
 	public const WingsYggdrasilQuadrupleHuge: Transformation 	= wings.WingsYggdrasilQuadrupleHuge.registerTf(AS_WINGS, AE_YGGDRASIL);
     public const WingsMothSmall: Transformation                 = wings.WingsMothSmall.registerTf(AS_WINGS, AE_MOTH);

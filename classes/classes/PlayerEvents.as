@@ -2157,6 +2157,14 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			if (!player.isRaceCached(Races.KIRIN) && (player.hasStatusEffect(StatusEffects.IsRaiju) || player.hasStatusEffect(StatusEffects.IsThunderbird)) && player.hasStatusEffect(StatusEffects.IsKirin)) {
 				player.removeStatusEffect(StatusEffects.IsKirin);
 			}
+			if (!player.isRaceCached(Races.ALRAUNE) && (player.hasPerk(PerkLib.Cinderbloom) || player.hasPerk(PerkLib.SnowLily) || player.hasPerk(PerkLib.Nightshade))) {
+				if (player.hasPerk(PerkLib.Cinderbloom)) player.removePerk(PerkLib.Cinderbloom);
+				if (player.hasPerk(PerkLib.FireAffinity) && player.perkv3(PerkLib.FireAffinity) == 1) player.removePerk(PerkLib.FireAffinity);
+				if (player.hasPerk(PerkLib.SnowLily)) player.removePerk(PerkLib.SnowLily);
+				if (player.hasPerk(PerkLib.ColdAffinity) && player.perkv3(PerkLib.ColdAffinity) == 1) player.removePerk(PerkLib.ColdAffinity);
+				if (player.hasPerk(PerkLib.Nightshade)) player.removePerk(PerkLib.Nightshade);
+				if (player.hasPerk(PerkLib.DarknessAffinity) && player.perkv3(PerkLib.DarknessAffinity) == 1) player.removePerk(PerkLib.DarknessAffinity);
+			}
 			if (player.racialScore(Races.SATYR) >= 15 && !player.hasPerk(PerkLib.PanLabyrinth)) {
 				outputText("\nAs you become more satyr like your ability for music seems to have improved further. Whistling out to yourself you notice the ambient animals behaving strangely. It would seem your song acquired the ability to confuse and daze foes. <b>You gained the Pan Labyrinth ability!</b>\n");
 				player.createPerk(PerkLib.PanLabyrinth, 0, 0, 0, 0);

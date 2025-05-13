@@ -198,10 +198,15 @@ public class PerkMenu extends BaseContent {
 			outputText("\nAuto use: <b>" + (flags[kFLAGS.AUTO_SPORE_CLOUD] == 0 ? "No" : "Yes") + "</b>");
 			addButton(8, "SporeCloud", curry(toggleFlagMisc, kFLAGS.AUTO_SPORE_CLOUD));
 		}
-		if (player.hasPerk(PerkLib.SuddenRun) && (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN)) {
+		if (player.hasPerk(PerkLib.SuddenRun)) {
 			outputText("You can choose to start galloping or not at the begining of each combat.\n");
 			outputText("\nStart: <b>" + (flags[kFLAGS.AUTO_GALLOP] == 0 ? "Standing still" : "Galloping") + "</b>");
-			if (autoFlyingFlag == 0) addButton(9, "Gallop", curry(toggleFlagMisc, kFLAGS.AUTO_GALLOP));
+			if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN) {
+				if (autoFlyingFlag == 0) addButton(9, "Gallop", curry(toggleFlagMisc, kFLAGS.AUTO_GALLOP));
+			}
+			else {
+				if (flags[kFLAGS.AUTO_GALLOP] > 0) flags[kFLAGS.AUTO_GALLOP] = 0;
+			}
 		}
 		// your pain, my power wrath generation
 		if (player.hasPerk(PerkLib.YourPainMyPower)) {

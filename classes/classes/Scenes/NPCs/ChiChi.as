@@ -137,11 +137,34 @@ use namespace CoC;
 			else chichiScene.WonFirstFight();
 		}
 
+		private function retry():void {
+			clearOutput();
+			if (hasStatusEffect(StatusEffects.CombatWounds)) {
+				addStatusValue(StatusEffects.CombatWounds, 1, 10);
+				if (statusEffectv1(StatusEffects.CombatWounds) > 90) chichiScene.LostFirstFight();
+			}
+			else createStatusEffect(StatusEffects.CombatWounds, 10, 0, 0, 0);
+			HP = maxHP();
+			outputText("As lust begins to overwhelm Chi Chi she suddenly adopts a new stance.\n\n");
+			outputText("\"<i>You think you can win just by making me horny? Watch and learn.</i>\"\n\n");
+			outputText("Chi Chi suddenly begins to kick at the air at tremendous speed unleashing a flurry of fireballs at you. To your absolute dismay, with each kick, the lusty haze in her eyes dissipates until it's completely gone. Meanwhile, you end up getting immolated by her barrage of fiery projectiles!\n\n");
+			outputText("As the barrage ends, Chi Chi taunts you.\n\n");
+			outputText("\"<i>I’m literally just starting to get fired up. I hope you can handle the heat!</i>\"\n\n");
+			outputText("She speaks big but you can tell this barrage of strikes left her weaker than before. It seems that this technique forces her to exhaust herself more than normal. The problem is just how much of a beating can you take before she overwhelms you with it.\n\n");
+			SceneLib.combat.combatRoundOver();
+		}
+
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
 			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 3) chichiScene.LostSparringFight();
 			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 2) chichiScene.LostSecondFight();
-			else chichiScene.LostFirstFight();
+			else {
+				if (hpVictory) chichiScene.LostFirstFight();
+				else {
+					retry();
+					return;
+				}
+			}
 		}
 
 		override public function get long():String {

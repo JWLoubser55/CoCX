@@ -57,6 +57,7 @@ public class YgddrasilRace extends Race {
 				.wingType(Wings.YGGDRASIL_HUGE, +6)
 				.wingType(Wings.YGGDRASIL_HUGE_2, +8)
 				.wingType(Wings.YGGDRASIL_HUGE_3, +10)
+				.wingType(Wings.YGGDRASIL_HUGE_4, +12)
 				.customRequirement("skin", "bark skin", function (body:BodyData):Boolean {
 					return body.player.isBarkSkin()
 				}, +2)

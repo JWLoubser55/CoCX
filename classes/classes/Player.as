@@ -1183,6 +1183,10 @@ use namespace CoC;
 		{
 			return wings.type == Wings.YGGDRASIL_HUGE_3;
 		}
+		public function fifthtierWingsForWingSlap():Boolean
+		{
+			return wings.type == Wings.YGGDRASIL_HUGE_4;
+		}
 		//Natural Claws (arm types and weapons that can substitude them)
 		public function haveNaturalClaws():Boolean { return Arms.Types[arms.type].claw || Arms.Types[arms.type].armSlam || Arms.Types[arms.type].scythe || LowerBody.hasClaws(this);}
 		public function haveNaturalClawsTypeWeapon():Boolean {return weaponName == "gauntlet with claws" || weaponName == "gauntlet with an aphrodisiac-coated claws" || weaponName == "Venoclaw" || weaponName == "hooked gauntlets" || hasAetherTwinsTier1() || hasAetherTwinsTier2() || weaponName == "moonlight claws" || weaponName == "blizzard claws";}

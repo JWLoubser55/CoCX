@@ -255,6 +255,11 @@ public class WorldTree extends BaseContent
 				changes++;
 			}
 			//Plant-like wings
+			if (player.wings.type == Wings.YGGDRASIL_HUGE_3 && changes < changeLimit) {
+				outputText("\n\n");
+				CoC.instance.transformations.WingsYggdrasilOctupleHuge.applyEffect();
+				changes++;
+			}
 			if (player.wings.type == Wings.YGGDRASIL_HUGE_2 && changes < changeLimit) {
 				outputText("\n\n");
 				CoC.instance.transformations.WingsYggdrasilSextupleHuge.applyEffect();
@@ -270,7 +275,7 @@ public class WorldTree extends BaseContent
 				CoC.instance.transformations.WingsYggdrasilHuge.applyEffect();
 				changes++;
 			}
-			if (player.arms.type == Arms.YGGDRASIL && player.wings.type != Wings.YGGDRASIL_LARGE && player.wings.type != Wings.YGGDRASIL_HUGE && player.wings.type != Wings.YGGDRASIL_HUGE_2 && player.wings.type != Wings.YGGDRASIL_HUGE_3 && player.lowerBody != LowerBody.PLANT_FLOWER && changes < changeLimit) {
+			if (player.arms.type == Arms.YGGDRASIL && player.wings.type != Wings.YGGDRASIL_LARGE && player.wings.type != Wings.YGGDRASIL_HUGE && player.wings.type != Wings.YGGDRASIL_HUGE_2 && player.wings.type != Wings.YGGDRASIL_HUGE_3 && player.wings.type != Wings.YGGDRASIL_HUGE_4 && player.lowerBody != LowerBody.PLANT_FLOWER && changes < changeLimit) {
 				outputText("\n\n");
 				CoC.instance.transformations.WingsYggdrasilLarge.applyEffect();
 				changes++;

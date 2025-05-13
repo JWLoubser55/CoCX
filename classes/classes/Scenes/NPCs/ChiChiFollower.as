@@ -8,6 +8,7 @@ import classes.*;
 import classes.BodyParts.Hair;
 import classes.BodyParts.Tail;
 import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.Camp.Garden;
 import classes.Scenes.Monsters.OniIncubus;
 import classes.Scenes.SceneLib;
 import classes.display.SpriteDb;
@@ -175,35 +176,92 @@ private function EnterOfTheChiChiAccept():void {
 
 public function WonFirstFight():void {
 	spriteSelect(SpriteDb.s_chichi);
-	clearOutput();//outputText("\"<i></i>\"\n\n");
-	outputText("The mouse looks at you in complete disbelief, her shaking voice slowly breaking down as she falls to her knees and coughs blood on the ground.\n\n");
-	outputText("\"<i>Is this... my blood... it is... beautiful. I never thought I would see the day when I would finally find...</i>\"\n\n");
-	outputText("She smiles as she stands a final time, trying to run toward you to deliver one last punch. But midway, she falls to the ground, still smiling, with an obvious trail of blood on the corner of her mouth. Muttering two last words as her eyes lose their light.\n\n");
+	clearOutput();
+	if (ChiChiRestaurantTalks > 2) {
+		outputText("The hinezumi looks at you in complete disbelief, her shaking voice slowly breaking down as she falls to her knees and coughs blood on the ground. Strangely enough, you doubt you struck her with enough force to cause such injuries. Chi Chi herself looks confused at the blood stain on the ground as if disbelieving it.\n\n");
+		outputText("\"<i>Is this… my blood? No… it’s too soon… I can’t lose yet… I haven’t found it! I have to fight on and win!</i>\"\n\n");
+		outputText("Chi Chi attempts to keep going, her aura flaring yet again, but whatever skill she is using is causing her apparent wounds to worsen. You want to scream at the referee to end the fight but rules state the combatants can keep going until they yield to one another or when the combatant is no longer in a state to properly yield. Each kick and punch she throws at you becomes easier to avoid to the point at the end you even catch her fist into your palm. Wasn’t this damn arena supposed to be non lethal combat why is she bleeding?!\n\n");
+		outputText("\"<i>Hey… champion… I gave all I could to win this battle but lost anyway. My time is short and I’m afraid I won’t be able to serve you any more delicious meals at that restaurant anymore. Would you care to…</i>\"\n\n");
+		outputText("You figure what’s going on right away. Blood loss… slow movement and speech. Whatever technique she used during the fight has a heavy backlash and it will probably kill her within seconds if you don’t do anything. What recklessness, did she fight from the start with the intent to win or die? You could attempt and try to save her; it might not be too late just yet.\n\n");
+		menu();
+		addButtonIfTrue(1, "Save her", WonFirstFightSaveHer, "Despite your attempts, nothing is working, her condition worsens.", (poulticeCheck() || player.hasStatusEffect(StatusEffects.KnowsHeal) || player.hasStatusEffect(StatusEffects.KnowsRestore)), "You can’t let her fall yet, not now.");
+		addButton(3, "Let her die", WonFirstFightLetHerDie).hint("Time claims us all");
+	}
+	else {
+		outputText("The mouse looks at you in complete disbelief, her shaking voice slowly breaking down as she falls to her knees and coughs blood on the ground. Strangely enough, you doubt you struck her with enough force to cause such injuries. Chi Chi herself looks confused at the blood stain on the ground as if disbelieving it.\n\n");
+		outputText("\"<i>Is this… my blood? No… it’s too soon I can’t lose yet… I haven’t found it! I have to fight on and win!</i>\"\n\n");
+		outputText("Chi Chi attempts to keep going, her aura flaring yet again, but whatever skill she is using is causing her apparent wounds to worsen. You want to scream at the referee to end the fight but rules state the combatants can keep going until they yield to one another or when the combatant is no longer in a state to properly yield. Each kick and punch she throws at you becomes easier to avoid to the point at the end you even catch her fist into your palm. Wasn’t this damn arena supposed to be non lethal combat why is she bleeding?!\n\n");
+		outputText("\"<i>Hey… champion… I gave all I could to win this battle but lost anyway. Care to do something for me… Please, I beg of you, kill the demon queen. If you can do that it'll be enough.</i>\"\n\n");
+		outputText("You barely know her making a promise to a stranger would normally not be something you'd do but your goal was to defeat the demon all along, thus this shouldn’t be too much of a problem. That’s why you’re the champion of Ingnam, after all. Whatever the title is worth.\n\n");
+		outputText("She smiles as she rises to her feet one last time, trying to run toward you to deliver a final punch. But midway, she falls to the ground, still smiling, with an obvious trail of blood on the corner of her mouth. Muttering two last words as her eyes lose their light.\n\n");
+		outputText("\"<i>Thank you...</i>\"\n\n");
+		outputText("The entire crowd falls silent as the martial artist hits the sandy arena ground, a small kid starts to cry in the background. The medics run to her in a hurry, but scream something about her having died from fatal self-inflicted injuries. You pick up her gloves on the ground as a prize for your victory but it feels hollow and wrong. Was this really the only way it could've gone? Should you simply have let her win? The air feels eerily still, shouldn’t you have a louder audience here? Not even the announcer breaks through the suffocating silence. (I sincerely advise that you reload your game without saving unless you are fine with losing access to a lot of important key content.)\n\n");
+		flags[kFLAGS.CHI_CHI_FOLLOWER] = 2;
+		inventory.takeItem(weapons.MASTGLO, cleanupAfterCombat);
+	}
+}
+private function WonFirstFightSaveHer():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("Ain’t no way you’re just letting her die on you like that. You might know her only from those meetings at the restaurant but letting people die right in front of you is against your principles as a champion. Before her body breaks down you grab her and force in your best healing "+(poulticeCheck()?"salve":"spell")+" repairing the damage caused by the ability just before its too late. Chi Chi stare at you in absolute confusion as instead of losing strength further she undergoes nothing short of a miraculous recovery. Puzzled, she look back at your still outstretched hand.\n\n");
+	outputText("\"<i>Why did you… save me?</i>\"\n\n");
+	outputText("Does one need a reason to act in a state of emergency clearly those medics would never had made it in time.\n\n");
+	outputText("\"<i>I chose to fight to my last breath and die in valiant combat but you went and denied me that. What do you know about me in the first place? How I live and end my life is my own business!</i>\"\n\n");
+	outputText("Enough that the both of you are no stranger and that you won’t allow her to simply commit suicide. You don’t know what reason she has for seeking death but you’re not going to just stand by and watch her die for something as silly as an arena fight. What of that determination she spoke of, where has hers gone to?\n\n");
+	outputText("Chi Chi stares at you confused for a few seconds before declaring.\n\n");
+	outputText("\"<i>Fine, you won in every possible way and I lost. Congratulations my pride is in shambles now and I feel like dying but you won’t let that happen will you? So what could you possibly want from me.</i>\"\n\n");
+	outputText("You want her to teach you her techniques whatever she knows you definitely could use it.\n\n");
+	outputText("\"<i>You believe someone as strong as you could have any use for my martial techniques? Seriously? Well, have it your way then, I will teach you what I know. Seek me out in the river village by the beach later I'll pass on to you all that I know. Damn idiot…</i>\"\n\n");
+	outputText("Looking thoroughly pissed, the fire mouse leaves the arena as the commentator begins to explain the rather strange end of the battle.\n\n");
+	flags[kFLAGS.CHI_CHI_AFFECTION] = 20;
+	cleanupAfterCombat();
+}
+private function WonFirstFightLetHerDie():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("Your goal was to defeat the demon all along, so this shouldn’t be too much of a problem. That’s why you’re the champion of Ingnam, after all. Whatever the title is worth.\n\n");
+	outputText("She smiles as she rises to her feet one last time, trying to move toward you to deliver a final punch. But midway, she falls to the ground, still smiling, with an obvious trail of blood on the corner of her mouth. Muttering two last words as her eyes lose their light.\n\n");
 	outputText("\"<i>Thank you...</i>\"\n\n");
-	outputText("The entire crowd falls silent as the mouse morph hits the sandy arena ground, a small kid starts to cry in background. The medics run to her in a hurry, but scream something about her having died from fatal self-inflicted injuries. You don’t really care however and just pick up her gloves on the ground as a prize for your victory. Surprisingly no-one cheers for you this time, not even the announcer who is normally so talkative. (I sincerely advise that you reload your game without saving unless you are fine with losing access to a lot of important key content.)\n\n");
+	outputText("The entire crowd falls silent as the martial artist hits the sandy arena ground, a small kid starts to cry in the background. The medics run to her in a hurry, but scream something about her having died from fatal self-inflicted injuries. You pick up her gloves on the ground as a prize for your victory but it feels hollow and wrong. Was this really the only way it could've gone? Should you simply have let her win? The air feels eerily still, shouldn’t you have a louder audience here? Not even the announcer breaks through the suffocating silence. (I sincerely advise that you reload your game without saving unless you are fine with losing access to a lot of important key content.)\n\n");
 	flags[kFLAGS.CHI_CHI_FOLLOWER] = 2;
 	inventory.takeItem(weapons.MASTGLO, cleanupAfterCombat);
+}
+private function poulticeCheck():Boolean {
+	return (Garden.PotionsBagSlot01Potion == "Poultice" && Garden.PotionsBagSlot01 > 0) ||
+		   (Garden.PotionsBagSlot02Potion == "Poultice" && Garden.PotionsBagSlot02 > 0) ||
+		   (Garden.PotionsBagSlot03Potion == "Poultice" && Garden.PotionsBagSlot03 > 0) ||
+		   (Garden.PotionsBagSlot04Potion == "Poultice" && Garden.PotionsBagSlot04 > 0) ||
+		   (Garden.PotionsBagSlot05Potion == "Poultice" && Garden.PotionsBagSlot05 > 0) ||
+		   (Garden.PotionsBagSlot06Potion == "Poultice" && Garden.PotionsBagSlot06 > 0);// ||
+		   //(Garden.PotionsBagSlot07Potion == "Poultice" && Garden.PotionsBagSlot07 > 0) ||
+		   //(Garden.PotionsBagSlot08Potion == "Poultice" && Garden.PotionsBagSlot08 > 0) ||
+		   //(Garden.PotionsBagSlot09Potion == "Poultice" && Garden.PotionsBagSlot09 > 0) ||
+		   //(Garden.PotionsBagSlot10Potion == "Poultice" && Garden.PotionsBagSlot10 > 0)
 }
 
 public function LostFirstFight():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
 	if (player.HP < 1) {
-		outputText("\"<i>Is that all you’ve got? How dare you even call yourself a champion? You barely know how to fight! You tried but that was <i>not</i> enough. If you intend to call yourself a true warrior, you should seek me out in town. I could teach you...  if you already know the basics. I don’t have time for complete novices.</i>\"\n\n");
-		outputText("The mouse girl leaves you half conscious on the arena sand as the medics come to your rescue.\n\n");
+		outputText("With a final exploding kick connecting to your jaw, you are sent flying toward the arena wall behind you, which fissures into a crater upon impact. You want to stand back up and fight, but your body doesn't respond. Any attempts to move are futile as you notice you're utterly paralyzed. You grimace at the sight of your shattered body and broken limbs, in critical need of aid. The smoke and dust clear up before you as you notice a pair of legs illuminated by flame filling your vision. Your opponent lowers to her knees, meeting your eyes.\n\n");
+		outputText("\"<i>Still alive and kicking, I see? Sorry, I don’t go easy on warriors, no matter how green they are. All battles are a matter of life and death for me. You got a decent foundation, I can tell that, but your technique is self-taught and rough around the edges. Too many openings here to exploit, and while it might get you by against imps and goblins...</i>\" ");
+		outputText("She takes a sharp breath, eyeing your form once more with a hint of concern, \"<i>Experienced fighters will defeat you in a heartbeat. You have potential, more than most, but it won’t mean anything if you continue training in that fashion. All the might of the world without technique will only allow you to move you so far.</i>\"\n\n");
 	}
 	else {
-		outputText("Declared the winner, the burning mouse approaches you. She looks angry and it's likely because you forfeited.\n\n");
-		outputText("\"<i>I’m disappointed. You pretend to be a champion, yet you seem to consider battles a kid’s game. Do you have any idea what would have happened in a real fight? No demon would back off like this. You seem to have some potential at least, so perhaps someday you should seek me out. I could teach you...  if you already know the basics. I don’t have time for complete novices</i>\"\n\n");
-		outputText("The fiery mouse girl leaves you there as she heads out of the ring.\n\n");
+		outputText("Overwhelmed by carnal desires, you kneel down and forfeit. There's something hell of damn alluring about the rodent martial artist.\n\n");
+		outputText("Chi Chi raises an eyebrow then she stares back looking rather disgusted.\n\n");
+		outputText("\"<i>You can’t be serious?! The whole time we were fighting… you were just getting off to it? You really need someone to beat that sickness out of your head. Thats a damn shame because if you weren’t twice as horny as you are good in a battle you might have been good for something other than fucking. You got a decent foundation, something you could build on but there’s many issues. The real issue is that your technique is self-taught and rough around the edges. Too many openings here to exploit, and while it might get you by against imps and goblins...</i>\" ");
+		outputText("She takes a sharp breath, eyeing your form once more with a hint of concern, \"<i>Experienced fighters will defeat you in a heartbeat. You have potential, more than most, but it won’t mean anything if you keep training in that fashion. All the might of the world without technique will only allow you to move you so far.</i>\"\n\n");
 	}
+	outputText("You groan in annoyance, but can't find a means to discredit your opponent. You call out loud that some of those attacks felt like they came right out of nowhere.\n\n");
+	outputText("She stands boldly, straightening her back, \"<i>That is what people here refer to as martial arts. I could teach you a few moves, mostly unarmed combat. I only require that you dedicate yourself to those lessons seriously. With a proper training regiment and a few technique scrolls you could easily pass from decent to extraordinary. Should you ever want to polish your martial skill, seek me out by the training dummy area in town.</i>\"\n\n");
 	flags[kFLAGS.CHI_CHI_AFFECTION] = 20;
 	cleanupAfterCombat();
 }
 
 public function WonSecondFight():void {
 	spriteSelect(SpriteDb.s_chichi);
-	clearOutput();
+	clearOutput();//outputText("\"<i></i>\"\n\n");
 	outputText("Chi Chi looks at you in disbelief, as your last hit propels her brutally into the arena wall, the sheer power of your strike imprinting the mouse's form in the rock.\n\n");
 	outputText("Chi Chi falls limp to the ground, barely able to stand as her fire dies out with a puff of smoke. She looks so weak and vulnerable now.\n\n");
 	outputText("\"<i>I f..forfeit. You win. P...perhaps I had misjudged you after all. You truly are... hero material.</i>\" She gives a faint fading smile, then falls unconscious to the ground before you, a small scroll falling to her side.\n\n");

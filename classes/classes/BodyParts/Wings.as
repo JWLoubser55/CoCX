@@ -419,6 +419,16 @@ public class Wings extends SaveableBodyPart {
 		physical: true
 	});
 	
+	public static const YGGDRASIL_HUGE_4: int = 49;
+	EnumValue.add(Types, YGGDRASIL_HUGE_4, "YGGDRASIL_HUGE_4", {
+		name:"four large pairs of majestic yggdrasil",
+		desc:"four large, majestic pairs of plant-like",
+		appearanceDesc: "Four pairs of massive wings of wood extend from your shoulders, the leafy plumage shivering with each step you take. The air around you is filled with the rustling, like the wind through a dense forest canopy. Now far too large to hide, you keep your woodland wings unfurled behind you, a grand, capelike display.",
+		wingSlap: true,
+		canFly: true,
+		physical: true
+	});
+	
 	public var desc:String = "non-existent";
 	public function Wings(creature:Creature) {
 		super(creature, "wings", []);
