@@ -65,9 +65,8 @@ public class Soulforce extends BaseContent
 		menu();
 		if (player.hasPerk(PerkLib.EnergyDependent)) addButtonDisabled(0, "Meditations", "You're unable to recover soulforce by meditating.");
 		else addButton(0, "Meditations", SoulforceRegeneration).hint("Spend some time on restoring some of your used soulforce.");
-		if (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) addButton(1, "Contemplate", DaoContemplations).hint("Dao Contemplations");
-		else addButtonDisabled(1, "???", "Req.  successfully surviving your 1st Tribulation.");
-		//button 2 - ?
+		addButtonIfTrue(1, "Contemplate/Train", DaoContemplations, "Req. successfully surviving your 1st Tribulation OR have Martial Training unlocked.", (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || player.hasStatusEffect(StatusEffects.MartialTraining)), "Dao Contemplations / Practice and refine your martial arts. Training can only be done once per day.");
+		//2
 		if (flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT] < dailySoulforceUsesLimit) {
 			addButton(3, "Self-sustain", SelfSustain).hint("Spend some soulforce on suppressing hunger for a while."); //zamiana soulforce na satiety w stosunku 1:5
 			addButton(4, "Repres. Lust", RepresLust).hint("Spend some soulforce on calming your sexual urges."); //używanie soulforce do zmniejszania lust w stosunku 1:2
@@ -395,16 +394,22 @@ public class Soulforce extends BaseContent
 
 	public function DaoContemplations():void {
 		clearOutput();
-		outputText("Which Dao do you try to comprehend?\n\n");
-		for (var i:int = 0; i < daos.length; ++i) {
-			var dao:Array = daos[i];
-			if (player.hasStatusEffect(dao[1]))
-				outputText(dao[0] + ": Level - " + player.statusEffectv2(dao[1]) + ", Progress - " + player.statusEffectv1(dao[1]) + "\n");
-			addButton(i, dao[0], daoContemplationsEffect, dao[1], dao[0])
-				.disableIf(player.statusEffectv2(dao[1]) == highestLayerOfDaoComprehension(),
-					"You have reached your current limit of comprehension for this Dao."
-					+ (player.hasPerk(PerkLib.SoulEmperor) ? "Try to improve your soulforce skills to get further."
-						: "\n<b>MAXIMUM LEVEL REACHED</b>"));
+		outputText("Which Dao do you try to comprehend? Or maybe train?\n\n");
+		menu();
+		if (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) {
+			for (var i:int = 0; i < daos.length; ++i) {
+				var dao:Array = daos[i];
+				if (player.hasStatusEffect(dao[1]))
+					outputText(dao[0] + ": Level - " + player.statusEffectv2(dao[1]) + ", Progress - " + player.statusEffectv1(dao[1]) + "\n");
+				addButton(i, dao[0], daoContemplationsEffect, dao[1], dao[0])
+					.disableIf(player.statusEffectv2(dao[1]) == highestLayerOfDaoComprehension(),
+						"You have reached your current limit of comprehension for this Dao."
+						+ (player.hasPerk(PerkLib.SoulEmperor) ? "Try to improve your soulforce skills to get further."
+							: "\n<b>MAXIMUM LEVEL REACHED</b>"));
+			}
+		}
+		if (player.hasStatusEffect(StatusEffects.MartialTraining)) {
+			addButtonIfTrue(13, "Train", MartialTraining, "You have reached your current limit of martial training.", player.statusEffectv2(StatusEffects.MartialTraining) == highestLayerOfMartialTraining(), "Practice and refine your martial arts.");
 		}
 		addButton(14, "Back", accessSoulforceMenu);
 	}
@@ -488,6 +493,31 @@ public class Soulforce extends BaseContent
 		var hLrODC:Number = 3;
 		hLrODC += (player.perkv2(PerkLib.JobSoulCultivator) - 3);
 		return hLrODC;
+	}
+	
+	public function MartialTraining(display:Boolean = true):void {
+		if (display) clearOutput();
+		var martial:int;
+		martial = 1 + rand(6);
+		if (display) outputText("You contemplate on the dao on martial arts attempting to improve your mastery of combat.\n\n");
+		if (player.hasStatusEffect(StatusEffects.MartialTraining)) {
+			player.addStatusValue(StatusEffects.MartialTraining, 1, martial);
+			var thres:Array = [20, 40, 60, 100, 140, 180, 220, 260, 300, 400, 500, 600];
+			var curLevel:int = player.statusEffectv2(StatusEffects.MartialTraining);
+			if (curLevel < thres.length) {
+				if (player.statusEffectv1(StatusEffects.MartialTraining) >= thres[curLevel]) {
+					player.addStatusValue(StatusEffects.MartialTraining, 1, -thres[curLevel]);
+					player.addStatusValue(StatusEffects.MartialTraining, 2, 1);
+				}
+			}
+		} else player.createStatusEffect(StatusEffects.MartialTraining, martial, 0, 0, 0);
+		if (display) doNext(camp.returnToCampUseEightHours);
+	}
+
+	public function highestLayerOfMartialTraining():Number {
+		var hLrOMT:Number = 3;
+		//hLrOMT += (player.perkv2(PerkLib.JobSoulCultivator) - 3);
+		return hLrOMT;
 	}
 
 	public function sfRegenRacialMult():Number {

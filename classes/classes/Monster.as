@@ -3629,7 +3629,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasStatusEffect(StatusEffects.MonsterVPT)) temp2 += statusEffectv1(StatusEffects.MonsterVPT);
 				if (temp2 > 0) {
 					temp2 = Math.round(temp2);
-					if (this is ChiChi && (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 2 || hasStatusEffect(StatusEffects.MonsterRegen))) {
+					if (this is ChiChi && (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 12 || hasStatusEffect(StatusEffects.MonsterRegen))) {
 						outputText("To your surprise, Chi Chi’s wounds start closing! <b>([font-heal]+" + temp2 + "[/font])</b>.\n\n");
 					}
 					else {
@@ -5116,4 +5116,4 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 		}
 	}
-}
+}

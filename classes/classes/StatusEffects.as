@@ -569,6 +569,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const MarblesMilk:StatusEffectType                    = mk("Marbles Milk");
 		public static const MarbleSpecials:StatusEffectType                 = mk("MarbleSpecials");
 		public static const MarbleWithdrawl:StatusEffectType                = mk("MarbleWithdrawl");
+		public static const MartialTraining:StatusEffectType                = mk("Martial Training");
 		public static const MeanToNaga:StatusEffectType                     = mk("MeanToNaga");
 		public static const Meditated:StatusEffectType                      = mk("Meditated"); // DEPRECATED
 		public static const MeetWanderer:StatusEffectType                   = mk("meet wanderer");

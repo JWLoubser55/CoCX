@@ -214,6 +214,7 @@ private function WonFirstFightSaveHer():void {
 	outputText("\"<i>You believe someone as strong as you could have any use for my martial techniques? Seriously? Well, have it your way then, I will teach you what I know. Seek me out in the river village by the beach later I'll pass on to you all that I know. Damn idiot…</i>\"\n\n");
 	outputText("Looking thoroughly pissed, the fire mouse leaves the arena as the commentator begins to explain the rather strange end of the battle.\n\n");
 	flags[kFLAGS.CHI_CHI_AFFECTION] = 20;
+	ArenaDecline = 2;
 	cleanupAfterCombat();
 }
 private function WonFirstFightLetHerDie():void {
@@ -256,6 +257,7 @@ public function LostFirstFight():void {
 	outputText("You groan in annoyance, but can't find a means to discredit your opponent. You call out loud that some of those attacks felt like they came right out of nowhere.\n\n");
 	outputText("She stands boldly, straightening her back, \"<i>That is what people here refer to as martial arts. I could teach you a few moves, mostly unarmed combat. I only require that you dedicate yourself to those lessons seriously. With a proper training regiment and a few technique scrolls you could easily pass from decent to extraordinary. Should you ever want to polish your martial skill, seek me out by the training dummy area in town.</i>\"\n\n");
 	flags[kFLAGS.CHI_CHI_AFFECTION] = 20;
+	ArenaDecline = 3;
 	cleanupAfterCombat();
 }
 
@@ -316,7 +318,7 @@ public function WonSecondFightYes():void {
 	if (player.hasKeyItem("Radiant shard") >= 0) player.addKeyValue("Radiant shard",1,+1);
 	else player.createKeyItem("Radiant shard", 1,0,0,0);
 	outputText("\n\n<b>Before fully settling in your camp, as if remembering something, Chi Chi pulls a shining shard from her inventory and hands it over to you as a gift. You acquired a Radiant shard!</b>");
-	flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 3;
+	flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 13;
 	flags[kFLAGS.CHI_CHI_FOLLOWER] = 3;
 	flags[kFLAGS.CHI_CHI_LVL_UP] = 1;
 	if (player.hasCock()) player.sexReward("vaginalFluids","Dick");
@@ -382,20 +384,22 @@ public function LostSparringFight():void {
 public function MeetingChiChiInHeXinDao():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
-	outputText("You spot Chi Chi meditating by the river. There are various scorched wooden dummies next to her and it’s obvious the monk was practicing her techniques. You barely take two steps towards her before the mouse stands up and looks you straight in the eye.\n\n");
-	if (flags[kFLAGS.CHI_CHI_AFFECTION] > 20) {
-		outputText("\"<i>I take it you're here to continue our training. Are you ready?</i>\"\n\n");
+	outputText("You spot Chi Chi meditating in the park. There are various scorched wooden dummies next to her, obviously the monk was practicing her techniques. You barely take two steps towards her before the mouse stands up and looks you straight in the eye.\n\n");
+	if (ArenaDecline > 4) {
+		outputText("\"<i>Glad to see you again [name] we still have plenty of training to do. Get ready to smash some dummies today because I’ll keep working you up until you’ve mastered everything I have to teach you.</i>\"\n\n");
 	}
 	else {
-		outputText("\"<i>I knew you would be coming. You're here to learn martial arts and it's my duty as a sensei to teach a prospective student.</i>\"\n\n");
-		outputText("She sizes you up for a moment.\n\n");
+		if (ArenaDecline == 3) outputText("\"<i>I see you decided to hear my advice. I was worried you would walk away and go get yourself enslaved by demon’s to prove me wrong. You have no idea of the number of young adventurers that vanish in these lands yearly only to turn up dead, sporting a pair of horns or collared like a pet. I would like to try to reduce these numbers and, if possible, maybe train a strong enough apprentice to put an end to the demon threat once and for all.</i>\"\n\n");
+		else outputText("\"<i>Well you did show up after all I was worried you would forget about requesting those martial lessons. Well as you may have figured out by now the only reason I’ve kept going thus far is to pass on my technique or find someone strong enough to defeat Lethice.(end of cut between victory and defeat) Should such a warrior finally appear, I could truly rest. Regardless, you're here to learn martial arts, and it's my duty as a teacher to teach a prospective student. Let's begin by evaluating your body.</i>\"\n\n");
+		outputText("She sizes you up for a moment. Checking your arms and legs then staring at you as if peering for something else.\n\n");
 		if (flags[kFLAGS.TIMES_TRAINED_WITH_JOJO] < 16 && !player.hasPerk(PerkLib.Enlightened) && !player.hasPerk(PerkLib.JobMonk) && !(sceneHunter.other && campCorruptJojo())) {
-			outputText("\"<i>Sadly, you barely have an understanding of the discipline to begin with. You will need to train with a less experienced master first. I heard a mouse fancying himself a monk wanders the woods, I suggest you seek him out and learn what you can from him first. Once you are done, come back to me.</i>\"\n\n");
+			outputText("\"<i>Sadly while you do have a decent foundation, you barely have an understanding of the discipline I’m about to teach to begin with. Everyone in this here town has knowledge of the basics of martial arts, or has been practicing meditation for years. You will need to train with a less experienced master first in order to properly learn this. I heard a mouse fancying himself as a monk wanders the woods trying to cleanse corruption left and right. It's probably a fool's errand but if the monk is worth anything he can teach you the basics of breathing techniques. I suggest you seek him out and learn what you can from him. Once you are done, come back to me.</i>\"\n\n");
 			doNext(camp.returnToCampUseOneHour);
             return;
 		}
 		else {
-			outputText("\"<i>I see you’ve had some novice training in the art of the lotus. Not bad but the lotus were pacifists to begin with, what I’m about to teach you is an entirely new discipline, forged in the fire of the demon war. Are you ready?</i>\"\n\n");
+			outputText("\"<i>I see you’ve had some novice training in the art of the lotus. Not bad, you can use basic techniques such as breathing and meditation. However the lotus gentle fist users were pacifists to begin with and have never been so fond of fighting techniques, something that led to their eventual ruin as you probably learned from your teacher. For all I know the order of the lotus is more or less extinct now with most of its knowledge and technique lost hence why you could only learn this much. What I’m about to teach you is an entirely new discipline, forged and tempered in the fires of the demon war. Are you ready?</i>\"\n\n");
+			ArenaDecline = 4;
 			flags[kFLAGS.CHI_CHI_AFFECTION] += 10;
 		}
 	}
@@ -422,13 +426,13 @@ public function NotReadyForTheTraining():void {
 	outputText("You tell her you will come back when you are.\n\n");
 	outputText("\"<i>Take your time, there is no shortcut through this.</i>\"\n\n");
 	doNext(camp.returnToCampUseOneHour);
-}
+}//outputText("\"<i></i>\"\n\n");
 
 public function TrainingSoulArtsWithChiChi():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
 	if (flags[kFLAGS.CHI_CHI_DAILY_TRAINING] < 1) {
-		if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 2) {
+		if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) {
 			outputText("Chi Chi almost seems to be expecting you today, as she simply stands in the middle of the training grounds, arm crossed. You ask her what is the next step of your training.\n\n");
 			outputText("\"<i>You have successfully finished all possible tests but the final one. Today, we will see if your training will bear fruit. Your final challenge is to defeat me, your sensei, and prove that you have finally mastered the martial arts. Are you ready?</i>\"\n\n");
 			outputText("There is no turning back once you engage her and you know this well. This is a fight you can’t afford to lose, so the question stands. Are you truly ready for it?\n\n");
@@ -436,33 +440,34 @@ public function TrainingSoulArtsWithChiChi():void {
 			addButton(0, "No", NotReadyForTheFinalTraining);
 			addButton(1, "Yes", VeryReadyForTheFinalTraining);
 		}
-		else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 1) {
-			outputText("As you head to practice on the dummy, Chi Chi holds you back.\n\n");
-			if (flags[kFLAGS.CHI_CHI_AFFECTION] > 60) {
+		else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 6 && flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 12) {
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 7) {
 				outputText("You go to see Chi Chi, still a little hesitant to continue this particular lesson.\n\n");
-				outputText("\"<i>Good to see you’re back, it’s about time we resume your training.</i>\"\n\n");
+				outputText("\"<i>Good to see you’re back, it’s about time we resume your training where we left it. Hit that dummy until your fist bleeds or the dummy break whichever comes first. Don’t you worry I got plenty of medicines and spare dummies.</i>\"\n\n");
+				outputText("\"<i></i>\"\n\n");
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] += 1;
 			}
 			else {
-				outputText("\"<i>Not today. You have already mastered the basics. Now, we will delve deeper into the darkest recesses of martial arts. If you want to win a battle, you have to be ready to bleed and suffer for it. The point of this lesson is that while caution is important to avoid unnecessary injuries, it is sometimes better to take an injury than to lose a battle entirely. ");
-				outputText("Your opponent uses lust to break your mind and steal your soul, the direct counteragent to lust is pain and rage, pure and simple. If, and only if, you're ready to accept them entirely, can you achieve greater heights of power.</i>\"\n\n");
-				outputText("The mouse suddenly strikes at a nearby dummy like lightning. A bloody red aura runs along her body's length as she deals blows that would likely shatter stone and bend the hardest steel. However, as she finishes the target, propelling it toward the ground with such violence that it explodes on impact, you quickly notice the steep price she had to pay to achieve such power. ");
-				outputText("Her body is covered with wounds and her arms are limp. She uses what looks like a different ability to heal her wounds, but she clearly looks exhausted.\n\n");
-				outputText("\"<i>It’s your turn now... I want you to attack this dummy so hard you will feel your bones crack. Do not stop until the pain is so strong you can no longer fight!</i>\"\n\n");
+				outputText("As you head to practice on the dummy, Chi Chi holds you back.\n\n");
+				outputText("\"<i>You’ve done enough of that, there's no point continuing that part of the training as you have already mastered the basics. I could teach you more of this, but It would take years of practice even for a genius student in order to assimilate everything. Thus, this is something you will have to refine and discover on your own using the tricks I lent you. For now, we will delve deeper into the darkest recesses of martial arts. If you want to win a battle, you have to be ready to bleed and suffer for it. ");
+				outputText("The point of this next lesson is that while caution is important to avoid unnecessary injuries, it is sometimes better to take an injury than to lose a battle entirely. Your opponent uses lust to break your mind and steal your soul, the direct counteragent to lust is pain and rage, pure and simple. If, and only if, you're ready to accept them entirely, can you achieve greater heights of power. Yet anger is self destructive, and a lapse in judgment can cost you dearly. Learning how to catalyze this anger and go beyond what should be your body's own limiters is going to be the focus of this lesson.</i>\"\n\n");
+				outputText("The mouse suddenly strikes at a nearby dummy like lightning. A bloody red aura runs along her body's length as she deals blows that would likely shatter stone and bend the hardest steel. However, as she finishes the target, propelling it toward the ground with such violence that it explodes on impact, you quickly notice the steep price she had to pay to achieve such power. Her body is covered with wounds and her arms are limp. She uses what looks like a different ability to heal her wounds, but she clearly took some form of recoil damage.\n\n");
+				outputText("\"<i>It’s your turn now… I want you to attack this dummy so hard that you will feel your bones crack. Do not stop until the pain is so strong you can no longer fight!</i>\"\n\n");
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 7;
 			}
 			outputText("You spend several hours punching the dummy so hard it actually hurts. You feel blood on your fists and legs by the end, however you also feel sturdier as a result, the pain being lighter than the last time.");
-			player.HP -= player.maxHP() * 0.5;
-			player.trainStat("str", +2, player.trainStatCap("str",75));
-			player.trainStat("str", +1, player.trainStatCap("str",100));
-			player.trainStat("spe", +2, player.trainStatCap("spe",75));
-			player.trainStat("spe", +1, player.trainStatCap("spe",100));
-			if (player.str >= 100 && player.spe >= 100) {
+			player.HP -= Math.round(player.maxHP() * 0.5);
+			if (player.hasPerk(PerkLib.IcyFlesh)) player.trainStat("int", +5, player.trainStatCap("int",100));
+			else if (player.hasPerk(PerkLib.HaltedVitals)) player.trainStat("lib", +5, player.trainStatCap("lib",100));
+			else player.trainStat("tou", +5, player.trainStatCap("tou",100));
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 11) {
 				if (!player.hasStatusEffect(StatusEffects.KnowsOverlimit)) {
-					outputText(" Chi Chi, noticing that you’re training hard, hands you a scroll.\n\n");
-					outputText("\"<i>This is a scroll containing the technique Overlimit. Use it with caution, because if abused, this technique can and WILL kill you.</i>\"\n\n");
-					outputText("<b>You learned the martial power Overlimit.</b>\n\n");
+					outputText(" Chi Chi, noticing that you’re training hard Chi Chi calls it off then hands you a scroll.\n\n");
+					outputText("\"<i>This is a scroll containing the technique Overlimit. Do know the only reason I’m handling you this is because you’ve trained hard enough that I’m no longer concerned you might misuse it and cripple yourself for life. Use it with caution, because if abused, this technique can and WILL kill you.</i>\"\n\n");
+					outputText("<b>You learned the martial power Overlimit.</b>");
 					player.createStatusEffect(StatusEffects.KnowsOverlimit, 0, 0, 0, 0);
 				}
-				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 2;
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 12;
 				flags[kFLAGS.CHI_CHI_AFFECTION] += 30;
 			}
 			outputText("\n\n");
@@ -471,28 +476,25 @@ public function TrainingSoulArtsWithChiChi():void {
 		}
 		else {
 			outputText("You're ready to begin your training and tell her as such.\n\n");
-			outputText("Chi Chi nods, then proceeds to show you a whole new form of combat, this one much more aggressive than that of the Lotus. Soon you manage to learn a few additional stances, as well as how to control the energy flow in your body to increase the power of an impact. She has you training on the dummies for several hours to increase your stamina. ");
-			outputText("As the flow of your movements and energy starts to become automatic, you discover your kicks and punches have become way stronger.");
-			if (player.hasPerk(PerkLib.IcyFlesh)) {
-				player.trainStat("int", +2, player.trainStatCap("int",75));
-				player.trainStat("int", +1, player.trainStatCap("int",100));
+			outputText("Chi Chi nods, then proceeds to show you a whole new style of combat.\n\n");
+			outputText("\"<i>First off, I’ll teach you how to punch to deal as much harm as possible. There’s no point in landing a blow if the damage is only superficial. You want to defeat your opponent, not just inflict pain on it. Heck why stop to fist only? Whether you got a weapon or not, start using those legs too. Here’s a few techniques to improve your hits.</i>\"\n\n");
+			outputText("This new training is much more aggressive than that of the Lotus. Soon, you manage to learn a few additional moves, as well as how to control the energy flowing through your body to increase the power of an impact. She has you training on the dummies for several hours to increase your stamina. As the flow of your movements and energy starts to become automatic, you discover your kicks and punches have become far deadlier.\n\n");
+			outputText("\"<i>That's good, you’re already shaping up to become a deadly combatant, even if you don’t end up using your fist like me, this training is going to improve your overall fitness. Ask again tomorrow and we can continue improving your skill. In the meantime, you can continue training on the dummy or go beat some enemies. Just try and avoid getting yourself enslaved by demon’s or worse. It would really suck if I lost such a promising student before your potential was properly realized, not that you’re the first nor the last. I had many like you before, some far more talented than you are.</i>\"\n\n");
+			if (!player.hasStatusEffect(StatusEffects.MartialTraining)) {
+				outputText("Learning martial arts for the first time you begin to refine your combat knowledge into something new. Through diligent practice and cultivation you may unlock new ways to use your techniques and improve your overall fighting knowledge. <b>Unlocked the martial training stat.</b>\n\n");
+				SceneLib.soulforce.MartialTraining(false);
 			}
-			else if (player.hasPerk(PerkLib.HaltedVitals)) {
-				player.trainStat("lib", +2, player.trainStatCap("lib",75));
-				player.trainStat("lib", +1, player.trainStatCap("lib",100));
-			}
-			else {
-				player.trainStat("tou", +2, player.trainStatCap("tou",75));
-				player.trainStat("tou", +1, player.trainStatCap("tou",100));
-			}
-			if (player.tou >= 100 || (player.hasPerk(PerkLib.IcyFlesh) && player.inte >= 100) || (player.hasPerk(PerkLib.HaltedVitals) && player.lib >= 100)) {
+			player.trainStat("str", +5, player.trainStatCap("str",100));
+			player.trainStat("spe", +5, player.trainStatCap("spe",100));
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 5) {
 				if (!player.hasPerk(PerkLib.MightyFist)) {
 					player.createPerk(PerkLib.MightyFist, 0, 0, 0, 0);
 					outputText(" <b>You've gained the Mighty Fist perk.</b>");
 				}
-				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 1;
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 6;
 				flags[kFLAGS.CHI_CHI_AFFECTION] += 30;
 			}
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 5) flags[kFLAGS.CHI_CHI_SAM_TRAINING] += 1;
 			outputText("\n\n");
 			flags[kFLAGS.CHI_CHI_DAILY_TRAINING] = 1;
 			doNext(camp.returnToCampUseFourHours);

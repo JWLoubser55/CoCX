@@ -1686,6 +1686,23 @@ public class PlayerInfo extends BaseContent {
 				else masteryStats += "None";
 				masteryStats += "\n";
 			}
+			if (player.hasStatusEffect(StatusEffects.MartialTraining)) {
+				masteryStats += "<b>Martial Training:</b>  ";
+				if (player.statusEffectv2(StatusEffects.MartialTraining) == 12) masteryStats += "12th layer (+300% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 11) masteryStats += "11th layer (+250% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 10) masteryStats += "10th layer (+200% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 9) masteryStats += "9th layer (+150% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 8) masteryStats += "8th layer (+130% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 7) masteryStats += "7th layer (+110% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 6) masteryStats += "6th layer (+90% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 5) masteryStats += "5th layer (+70% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 4) masteryStats += "4th layer (+50% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 3) masteryStats += "3rd layer (+30% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 2) masteryStats += "2nd layer (+20% dmg)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 1) masteryStats += "1st layer (+10% dmg)";
+				else masteryStats += "None";
+				masteryStats += "\n";
+			}
 			masteryStats += "\n";
 		}
 		if (player.teaseLevel < player.maxTeaseLevel())

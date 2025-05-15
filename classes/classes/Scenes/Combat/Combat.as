@@ -7042,6 +7042,7 @@ public class Combat extends BaseContent {
             if (player.hasKeyItem("M.G.S. bracer") >= 0) damage *= 1.2;
         }
         if ((player.hasPerk(PerkLib.SuperStrength) || player.hasPerk(PerkLib.BigHandAndFeet))) damage *= 2;
+		if (player.hasStatusEffect(StatusEffects.MartialTraining)) damage *= (1 + daoModifier(player.statusEffectv2(StatusEffects.DaoOfFire)));
 		if (!IsFeralCombat) damage *= (1 + (0.01 * masteryUnarmedCombatLevel()));
         else damage *= (1 + (0.01 * masteryFeralCombatLevel()));
 		damage *= meleePhysicalForce();
@@ -19776,4 +19777,4 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
-}
+}
