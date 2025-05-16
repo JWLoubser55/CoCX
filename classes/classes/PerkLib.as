@@ -825,8 +825,8 @@ public class PerkLib
 				"You may ignore all constraints to your spell book usage. (+105% spellpower bonus)",
 				"You've chosen the 'Ultimate Magic (Ex)' perk. You may ignore all constraints to your spell book usage. (+105% spellpower bonus)");
 		public static const VoltaicEdge:PerkType = mk("Voltaic Edge", "Voltaic Edge",
-				"Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.",
-				"You've chosen the 'Voltaic Edge' perk. Lightning attacks magnetize your foes making physical attacks dealt by energy melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.");
+				"Lightning attacks magnetize your foes making attacks dealt by energy or plasma melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.",
+				"You've chosen the 'Voltaic Edge' perk. Lightning attacks magnetize your foes making attacks dealt by energy or plasma melee or range weapon deal 100% increased damage for two rounds. Enemies weak to electricity take twice as much damage.");
 		public static const MassiveSynergy:PerkType = mk("Massive Synergy", "Massive Synergy",
 				"Damage bonus from massive weapons mastery is 100% better and damage bonus from large weapon mastery is added to massive weapons damage. (+25% melee physical attacks multiplier)",
 				"You've chosen the 'Massive Synergy' perk. Damage bonus from massive weapons mastery is 100% better and damage bonus from large weapon mastery is added to massive weapons damage. (+25% melee physical attacks multiplier)");
@@ -8941,4 +8941,4 @@ public class PerkLib
         }
 	}
 }
-}
+}

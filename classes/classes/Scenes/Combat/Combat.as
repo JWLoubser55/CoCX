@@ -4768,10 +4768,10 @@ public class Combat extends BaseContent {
                 }
             }
             //Weapon addition!
-            if (player.weaponRange == weaponsrange.KSLHARP || player.weaponRange == weaponsrange.GOODSAM || Forgefather.purePearlEaten) {
+            if (player.weaponRange == weaponsrange.KSLHARP || Forgefather.purePearlEaten) {
                 damage = monsterPureDamageBonus(damage);
             }
-            if (player.weaponRange == weaponsrange.LEVHARP || player.weaponRange == weaponsrange.BADOMEN || Forgefather.lethiciteEaten) {
+            if (player.weaponRange == weaponsrange.LEVHARP || Forgefather.lethiciteEaten) {
                 damage = monsterCorruptDamageBonus(damage);
             }
 			if (player.hasPerk(PerkLib.PrestigeJobStalker)) damage *= 1.2;
@@ -5277,7 +5277,7 @@ public class Combat extends BaseContent {
                 flags[kFLAGS.ARROWS_ACCURACY] += firearmsAccuracyPenalty();
                 shootWeapon();
             } else {
-				if (player.miscJewelry1 == miscjewelries.BAMOBAG && player.miscJewelry2 == miscjewelries.BAMOBAG) reloadWeapon3();
+				if (player.miscJewelry1 == miscjewelries.BAMOBAG || player.miscJewelry2 == miscjewelries.BAMOBAG) reloadWeapon3();
 				else {
 					if (player.weaponRange == weaponsrange.LBLASTR) outputText("<b>Your milk tank is empty.</b>\n\n");
 					else if (player.weaponRange == weaponsrange.MBOMBER) outputText("<b>Your cum tank is empty.</b>\n\n");
@@ -5287,7 +5287,7 @@ public class Combat extends BaseContent {
             }
         } else {
             if (player.ammo <= 0) {
-				if (player.miscJewelry1 == miscjewelries.BAMOBAG && player.miscJewelry2 == miscjewelries.BAMOBAG) reloadWeapon3();
+				if (player.miscJewelry1 == miscjewelries.BAMOBAG || player.miscJewelry2 == miscjewelries.BAMOBAG) reloadWeapon3();
 				else {
 					if (player.weaponRange == weaponsrange.LBLASTR) outputText("<b>Your milk tank is empty.</b>\n\n");
 					else if (player.weaponRange == weaponsrange.MBOMBER) outputText("<b>Your cum tank is empty.</b>\n\n");
