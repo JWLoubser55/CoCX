@@ -409,7 +409,7 @@ public class Soulforce extends BaseContent
 			}
 		}
 		if (player.hasStatusEffect(StatusEffects.MartialTraining)) {
-			addButtonIfTrue(13, "Train", MartialTraining, "You have reached your current limit of martial training.", player.statusEffectv2(StatusEffects.MartialTraining) == highestLayerOfMartialTraining(), "Practice and refine your martial arts.");
+			addButtonIfTrue(13, "Train", MartialTraining, "You have reached your current limit of martial training.", player.statusEffectv2(StatusEffects.MartialTraining) < highestLayerOfMartialTraining(), "Practice and refine your martial arts.");
 		}
 		addButton(14, "Back", accessSoulforceMenu);
 	}

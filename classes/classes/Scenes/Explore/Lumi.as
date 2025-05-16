@@ -452,7 +452,7 @@ public class Lumi extends BaseContent {
 		if (player.hasKeyItem("Stun Grenade") < 0 && player.hasKeyItem("Stun Grenade II") < 0 && player.hasKeyItem("Blueprint - Stun Grenade") < 0) addButton(9, "Stun Grenade", lumiEngineeringBuyBlueprintStunGrenade).hint("Stun Grenade BP - 500 gems");
 		if (player.hasKeyItem("Goblin Bomber") < 0 && player.hasKeyItem("Blueprint - Goblin Bomber") < 0) addButton(10, "Goblin Bomber", lumiEngineeringBuyBlueprintGoblinBomber).hint("Goblin Bomber BP - 1500 gems");
 		if (player.hasKeyItem("GOBX Chemical Improved formula") < 0 && player.hasKeyItem("Blueprint - GOBX Chemical Improved formula") < 0) addButton(11, "GOBX Chemical IF", lumiEngineeringBuyBlueprintGOBXChemicalImprovedFormula).hint("GOBX Chemical Improved formula BP - 1000 gems");
-		if (player.hasKeyItem("GOBX Chemical") < 0 && player.hasKeyItem("Blueprint - GOBX Chemical") < 0 && player.hasKeyItem("Blueprint - GOBX Chemical Improved formula") < 0) addButton(11, "GOBX Chemical", lumiEngineeringBuyBlueprintGOBXChemical).hint("GOBX Chemical BP - 1000 gems");
+		if (player.hasKeyItem("GOBX Chemical") < 0 && player.hasKeyItem("GOBX Chemical Improved formula") < 0 && player.hasKeyItem("Blueprint - GOBX Chemical") < 0) addButton(11, "GOBX Chemical", lumiEngineeringBuyBlueprintGOBXChemical).hint("GOBX Chemical BP - 1000 gems");
 		addButton(14, "Back", lumiEngineering);
 	}
 	public function lumiEngineeringMechUpgrades():void {
@@ -1831,13 +1831,21 @@ public class Lumi extends BaseContent {
 		CampStatsAndResources.NailsResc -= 30;
 		player.destroyItems(consumables.L_DRAFT, 5);
 		player.destroyItems(consumables.GOB_ALE, 5);
-		outputText("");
+		textMidPart();
 		player.createKeyItem("GOBX Chemical Improved formula", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - GOBX Chemical Improved formula");
 		player.removeKeyItem("GOBX Chemical");
 		statScreenRefresh();
 		if (player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop)) doNext(camp.returnToCampUseEightHours);
 		else doNext(camp.returnToCampUseTwelveHours);
+	}
+	private function textMidPart():void {
+		outputText("You get to work spending the necessary time to craft your newest toy. After " + (player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve") + " your brand new GOBX Chemical injection is ready.\n\n");
+		outputText("You grab the injection and consider if you should REALLY force that into your system a second however is about how long it takes for your horny mind to quickly dismiss any doubt you had about doing this as you shove the needle into your arm.\n\n");
+		outputText("The effect is immediate and you begin to drool and blush as your already aphrodisiac laden body and mind becomes further addled by the chemical. Fuck you could use a fucking right here right now. "+(player.hasKeyItem("Deluxe Dildo")<0?"Unable to resist any further you begin fiercely masturbating yourself to orgasm as you imagine a huge horse cock, with a pair of heavy sloshing balls swinging beneath, unloading rope after rope of cum into your stretchy goblin pussy and knocking you up with a dozen childre":"You quickly grab Tamani’s special dildo and shove it down your snatch sighing in relief as the toy slides i")+"n. You grope your greenish breast and squeeze hard, ");
+		outputText("moaning in arousal as the chemicals work you up. As you reach orgasm your brain suddenly unclog it's as if cuming and post nut clarity finally freed you of all those mental blocks that's been plaguing your brain. Come to think of it what the fuck have you been wasting your time doing the last few days you should get on it and craft a few new improved sex toys and mechanism to fuck yourself properly, this isn’t how a genius should live");
+		if (player.hasKeyItem("Self-Stimulation Belt") >= 0 || player.hasKeyItem("All-Natural Self-Stimulation Belt") >= 0 || player.hasKeyItem("All-Natural Onahole") >= 0 || player.hasKeyItem("Dual Belt") >= 0 || player.keyItemvX("Centaur Pole", 1) == 0) outputText(" heck masturbation is so yesterday you should already have designed tool to do that without assisted help");
+		outputText("!\n\nYou are now a goblin through and through. You feel way smarter already, your brain imagining a thousand new ways to improve your lifestyles… that is new efficient ways to milk cum from dicks, get beautifully pregnant and give birth to thousands of childrens. What else is a goblin to live for but this?\n\n");
 	}
 	public function lumiWorkshopGOBXChemical():void {
 		clearOutput();
@@ -1852,12 +1860,7 @@ public class Lumi extends BaseContent {
 		CampStatsAndResources.NailsResc -= 30;
 		player.destroyItems(consumables.L_DRAFT, 5);
 		player.destroyItems(consumables.GOB_ALE, 5);
-		outputText("You get to work spending the necessary time to craft your newest toy. After " + (player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve") + " your brand new GOBX Chemical injection is ready.\n\n");
-		outputText("You grab the injection and consider if you should REALLY force that into your system a second however is about how long it takes for your horny mind to quickly dismiss any doubt you had about doing this as you shove the needle into your arm.\n\n");
-		outputText("The effect is immediate and you begin to drool and blush as your already aphrodisiac laden body and mind becomes further addled by the chemical. Fuck you could use a fucking right here right now. "+(player.hasKeyItem("Deluxe Dildo")<0?"Unable to resist any further you begin fiercely masturbating yourself to orgasm as you imagine a huge horse cock, with a pair of heavy sloshing balls swinging beneath, unloading rope after rope of cum into your stretchy goblin pussy and knocking you up with a dozen childre":"You quickly grab Tamani’s special dildo and shove it down your snatch sighing in relief as the toy slides i")+"n. You grope your greenish breast and squeeze hard, ");
-		outputText("moaning in arousal as the chemicals work you up. As you reach orgasm your brain suddenly unclog it's as if cuming and post nut clarity finally freed you of all those mental blocks that's been plaguing your brain. Come to think of it what the fuck have you been wasting your time doing the last few days you should get on it and craft a few new improved sex toys and mechanism to fuck yourself properly, this isn’t how a genius should live");
-		if (player.hasKeyItem("Self-Stimulation Belt") >= 0 || player.hasKeyItem("All-Natural Self-Stimulation Belt") >= 0 || player.hasKeyItem("All-Natural Onahole") >= 0 || player.hasKeyItem("Dual Belt") >= 0 || player.keyItemvX("Centaur Pole", 1) == 0) outputText(" heck masturbation is so yesterday you should already have designed tool to do that without assisted help");
-		outputText("!\n\nYou are now a goblin through and through. You feel way smarter already, your brain imagining a thousand new ways to improve your lifestyles… that is new efficient ways to milk cum from dicks, get beautifully pregnant and give birth to thousands of childrens. What else is a goblin to live for but this?\n\n");
+		textMidPart();
 		player.createKeyItem("GOBX Chemical", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - GOBX Chemical");
 		player.createPerk(PerkLib.GOBXChemical, 0, 0, 0, 0);

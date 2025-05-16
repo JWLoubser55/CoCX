@@ -3924,13 +3924,6 @@ public class Combat extends BaseContent {
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
 		}
-        else if (player.hasStatusEffect(StatusEffects.ChargeWeapon) && !player.isUnarmedCombat()) {
-			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-			doPhysicalDamage(damage, true, true);
-            doMagicDamage(Math.round(damage * 0.2), true, true);
-			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
-			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-		}
         else if (player.weapon == weapons.MGSWORD) {
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
 			doMagicDamage(damage, true, true);
@@ -3954,6 +3947,7 @@ public class Combat extends BaseContent {
 			}
             else {
                 doPhysicalDamage(Math.round(damage * 0.75), true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.15), true, true);
                 if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(Math.round(monster.lustVuln * damage * 0.0125 * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25))));
 				else monster.teased(Math.round(monster.lustVuln * damage * 0.0125));
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
@@ -3963,23 +3957,27 @@ public class Combat extends BaseContent {
 		else if (player.weapon == weapons.PRURUMI) {
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
 			doPhysicalDamage(damage, true, true);
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 			if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.spe >= 150) {
 				doPhysicalDamage(damage, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
 			if (player.spe >= 225) {
 				doPhysicalDamage(damage, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
 			if (player.spe >= 300) {
 				doPhysicalDamage(damage, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -4092,6 +4090,7 @@ public class Combat extends BaseContent {
 				damage *= bonus;
 			}
             doPhysicalDamage(damage, true, true);
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 			if (player.weapon == weapons.VGRAVEH) doFireDamage(Math.round(damage * fireDamageBoostedByDao() * 0.25), true, true);
 			if (player.weapon == weapons.GGRAVEA) doIceDamage(Math.round(damage * iceDamageBoostedByDao() * 0.25), true, true);
 			if (player.weapon == weapons.SGRAVES) doLightningDamage(Math.round(damage * lightningDamageBoostedByDao() * 0.25), true, true);
@@ -4100,6 +4099,7 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.weapon == weapons.DAISHO) {
 				doPhysicalDamage(Math.round(damage * 0.5), true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.1), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage * 0.5);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage * 0.5);
 			}
@@ -4186,13 +4186,6 @@ public class Combat extends BaseContent {
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
-        else if (player.hasStatusEffect(StatusEffects.ChargeWeapon) && !player.isUnarmedCombat()) {
-			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
-			doPhysicalDamage(damage, true, true);
-            doMagicDamage(Math.round(damage * 0.2), true, true);
-			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
-			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-		}
         else if (player.weaponOff == weapons.MGSWORD) {
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
 			doMagicDamage(damage, true, true);
@@ -4208,6 +4201,7 @@ public class Combat extends BaseContent {
 			}
             else {
                 doPhysicalDamage(Math.round(damage * 0.75), true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.15), true, true);
                 if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(Math.round(monster.lustVuln * damage * 0.0125 * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25))));
 				else monster.teased(Math.round(monster.lustVuln * damage * 0.0125));
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
@@ -4217,23 +4211,27 @@ public class Combat extends BaseContent {
 		else if (player.weaponOff == weapons.PRURUMI) {
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
 			doPhysicalDamage(damage, true, true);
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 			if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.spe >= 150) {
 				doPhysicalDamage(damage, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
 			if (player.spe >= 225) {
 				doPhysicalDamage(damage, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
 			if (player.spe >= 300) {
 				doPhysicalDamage(damage, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -4249,6 +4247,7 @@ public class Combat extends BaseContent {
 				damage *= bonus;
 			}
             doPhysicalDamage(damage, true, true);
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 			if (player.weaponOff == weapons.VGRAVEH) doFireDamage(Math.round(damage * fireDamageBoostedByDao() * 0.25), true, true);
 			if (player.weaponOff == weapons.GGRAVEA) doIceDamage(Math.round(damage * iceDamageBoostedByDao() * 0.25), true, true);
 			if (player.weaponOff == weapons.SGRAVES) doLightningDamage(Math.round(damage * lightningDamageBoostedByDao() * 0.25), true, true);
@@ -4257,6 +4256,7 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.weaponOff == weapons.DAISHO) {
 				doPhysicalDamage(Math.round(damage * 0.5), true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.1), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage * 0.5);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage * 0.5);
 			}
@@ -19777,4 +19777,4 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
-}
+}
