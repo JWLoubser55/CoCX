@@ -164,16 +164,13 @@ public class PerkMenu extends BaseContent {
 			switch(autoFlyingFlag) {
 				case 0: outputText("on the ground"); break;
 				case 1: outputText("flying (by wings)"); break;
-				case 2: outputText("flying (on flying sword)"); break;
-				case 3: outputText("flying (using soulforce)"); break;
-				case 3: outputText("flying (using foxflame pelt)"); break;
+				case 2: outputText("flying (using goblin mech jetpack)"); break;
+				case 5: outputText("flying (on flying sword)"); break;
+				case 6: outputText("flying (using soulforce)"); break;
+				case 7: outputText("flying (using foxflame pelt)"); break;
 			}
 			outputText("</b>");
-			if (autoFlyingFlag != 0) addButton(0, "On Ground", autoFlyingType,0);
-			if (player.canFly() && autoFlyingFlag != 1 && autoGallopingFlag == 0) addButton(1, "By Wings", autoFlyingType,1);
-			if (player.hasPerk(PerkLib.FlyingSwordPath) && autoFlyingFlag != 2 && autoGallopingFlag == 0) addButton(2, "By FlyingSw", autoFlyingType,2);
-			if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor) && autoFlyingFlag != 3 && autoGallopingFlag == 0) addButton(3, "By SF", autoFlyingType,3);
-			if (player.statStore.hasBuff("FoxflamePelt") && player.tailCount >= 9 && autoFlyingFlag != 4 && autoGallopingFlag == 0) addButton(4, "By FFP", autoFlyingType,4);
+			addButton(0, "Lift Off", autoFlyFlagSetup);
 		}
 		if (player.hasCombatAura()) {
 			outputText("\n\nYou can suppress your auras. This way, they won't damage/arouse enemies.");
@@ -231,6 +228,38 @@ public class PerkMenu extends BaseContent {
 		}
 		addButton(14, "Back", displayPerks);
 	}
+	private function autoFlyFlagSetup():void {
+		clearOutput();
+		outputText("You can choose to start flying or not at the start of each combat.\n");
+		outputText("Start: <b>");
+		switch(autoFlyingFlag) {
+			case 0: outputText("on the ground"); break;
+			case 1: outputText("flying (by wings)"); break;
+			case 2: outputText("flying (using goblin mech jetpack)"); break;
+			case 5: outputText("flying (on flying sword)"); break;
+			case 6: outputText("flying (using soulforce)"); break;
+			case 7: outputText("flying (using foxflame pelt)"); break;
+		}
+		outputText("</b>");
+		menu();
+		var autoFlyingFlag:int = flags[kFLAGS.AUTO_FLIGHT];
+		var autoGallopingFlag:int = flags[kFLAGS.AUTO_GALLOP];
+        var setflag:Function = curry(setFlag,autoFlyFlagSetup);
+		var autoFlyingType:Function = curry(setflag,kFLAGS.AUTO_FLIGHT);
+		if (autoFlyingFlag != 0) addButton(0, "On Ground", autoFlyingType,0);
+		if (player.canFly() && autoFlyingFlag != 1 && autoGallopingFlag == 0) addButton(1, "By Wings", autoFlyingType,1);
+		if (player.isInGoblinMech() && (player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0) && autoFlyingFlag != 2 && autoGallopingFlag == 0) addButton(2, "By Jetpack", autoFlyingType,2);
+		if (player.hasPerk(PerkLib.FlyingSwordPath) && autoFlyingFlag != 5 && autoGallopingFlag == 0) addButton(5, "By FlyingSw", autoFlyingType,2);
+		if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor) && autoFlyingFlag != 6 && autoGallopingFlag == 0) addButton(6, "By SF", autoFlyingType,3);
+		if (player.statStore.hasBuff("FoxflamePelt") && player.tailCount >= 9 && autoFlyingFlag != 7 && autoGallopingFlag == 0) addButton(7, "By FFP", autoFlyingType,4);
+		addButton(14, "Back", MiscOption);
+	}
+	private function toggleCorruptionTolerance():void {
+		++flags[kFLAGS.CORRUPTION_TOLERANCE_MODE];
+		if (flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] > (CoC.instance.lockCheats ? 1 : 2))
+			flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] = 0;
+		MiscOption();
+	}
 
 	public function minionOptions():void {
 		var bd:ButtonDataList = new ButtonDataList();
@@ -266,13 +295,6 @@ public class PerkMenu extends BaseContent {
 			bd.add("Mech AI", mechAiBehaviourOptions);
 		}
 		submenu(bd, CoC.instance.inCombat ? curry(combat.combatMenu, false) : displayPerks, 0, false);
-	}
-
-	private function toggleCorruptionTolerance():void {
-		++flags[kFLAGS.CORRUPTION_TOLERANCE_MODE];
-		if (flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] > (CoC.instance.lockCheats ? 1 : 2))
-			flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] = 0;
-		MiscOption();
 	}
 
 	public function meleeOptions():void {
@@ -1801,4 +1823,4 @@ public class PerkMenu extends BaseContent {
 	 }
 	 */
 }
-}
+}

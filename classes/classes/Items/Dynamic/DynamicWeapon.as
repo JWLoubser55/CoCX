@@ -388,6 +388,7 @@ public class DynamicWeapon extends Weapon implements IDynamicItem {
 			effects:   [
 				[IELib.ArmorReduction, 10]
 			],
+			tags:      [W_MONKWEAPON],
 			type:      WT_DUELING,
 			attack:    17,
 			qattack:   0.25,
@@ -484,7 +485,7 @@ public class DynamicWeapon extends Weapon implements IDynamicItem {
 			shortName: "Uchigatana",
 			verb:      "keen cut",
 			desc:      "A one-handed curved bladed weapon that cuts through flesh with the greatest of ease. Can also be wielded with both hands.",
-			tags:      [W_HYBRID],
+			tags:      [W_HYBRID, W_MONKWEAPON],
 			type:      WT_DUELING,
 			size:      WSZ_MEDIUM,
 			attack:    15,

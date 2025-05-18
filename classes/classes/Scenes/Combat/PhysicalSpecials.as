@@ -698,7 +698,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
 			if (player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0) {
-				bd = buttons.add("Jetpack", takeFlightGoglinMech).hint("Make use of your mech jetpack to take flight into the air for up to 5 turns. \n\nWould go into cooldown after use for: 3 rounds");
+				bd = buttons.add("Jetpack", takeFlightGoblinMechJetpack).hint("Make use of your mech jetpack to take flight into the air for up to 5 turns. \n\nWould go into cooldown after use for: 3 rounds");
 				if (player.hasStatusEffect(StatusEffects.CooldownJetpack)) {
 					bd.disable("<b>You need more time before you can use jetpack again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -2523,7 +2523,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 
-	public function takeFlightGoglinMech():void {
+	public function takeFlightGoblinMechJetpack():void {
 		clearOutput();
 		outputText("You activate the fly function and get some distance from the ground.\n\n");
 		player.createStatusEffect(StatusEffects.Flying, 5, 10, 0, 0);

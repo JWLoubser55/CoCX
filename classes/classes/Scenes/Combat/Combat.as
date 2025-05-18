@@ -295,7 +295,7 @@ public class Combat extends BaseContent {
 
     internal function applyAutocast0():void {
         outputText("\n\n");
-        if (flags[kFLAGS.AUTO_FLIGHT] > 0 && !player.hasStatusEffect(StatusEffects.FlyingDisabled)) {
+        if (flags[kFLAGS.AUTO_FLIGHT] > 0) {
             if (flags[kFLAGS.AUTO_FLIGHT] == 1 && player.canFly() && player.fatigueLeft() >= flyingWithWingsCost()) {
                 if (player.wings.type == Wings.WINDY_AURA && player.arms.type == Arms.KAMAITACHI) outputText("You create a small cyclone to ride upon and lift yourself up in the air.");
                 else if (player.wings.type == Wings.THUNDEROUS_AURA) outputText("You take flight, letting the raging storm carry you into the air.");
@@ -304,15 +304,19 @@ public class Combat extends BaseContent {
                 else outputText("You open your wings and take flight.");
                 player.createStatusEffect(StatusEffects.Flying, flightDurationNatural(), 0, 0, 0);
             }
-            else if (flags[kFLAGS.AUTO_FLIGHT] == 2 && player.soulforce >= flyingSwordUseCost() && player.weaponFlyingSwordsName != "nothing") {
+			else if (flags[kFLAGS.AUTO_FLIGHT] == 2) {
+				outputText("You activate the fly function and get some distance from the ground.\n\n");
+				player.createStatusEffect(StatusEffects.Flying, 5, 10, 0, 0);
+			}
+            else if (flags[kFLAGS.AUTO_FLIGHT] == 5 && player.soulforce >= flyingSwordUseCost() && player.weaponFlyingSwordsName != "nothing") {
                 outputText("You jump on your "+player.weaponFlyingSwordsName+", taking flight.");
                 player.createStatusEffect(StatusEffects.Flying, 1, 1, 0, 0);
             }
-            else if (flags[kFLAGS.AUTO_FLIGHT] == 3 && player.soulforce >= flyingWithSoulforceCost()) {
+            else if (flags[kFLAGS.AUTO_FLIGHT] == 6 && player.soulforce >= flyingWithSoulforceCost()) {
                 outputText("You surround your body with soulforce, taking to the sky with a brilliant aura"+(player.weaponFlyingSwordsName != "nothing"?" as "+player.weaponFlyingSwordsName+" hovers near you. Your flying weapon is ready to be used at any time":"")+".");
                 player.createStatusEffect(StatusEffects.Flying, 1, 2, 0, 0);
             }
-            else if (flags[kFLAGS.AUTO_FLIGHT] == 4 && player.soulforce >= Math.round(25 * soulskillCost() * soulskillcostmulti()) && player.mana >= spellCost(50 * combat.mspecials.kitsuneskill2Cost())) {
+            else if (flags[kFLAGS.AUTO_FLIGHT] == 7 && player.soulforce >= Math.round(25 * soulskillCost() * soulskillcostmulti()) && player.mana >= spellCost(50 * combat.mspecials.kitsuneskill2Cost())) {
                 outputText("You surround your body with fox flame, taking to the sky leaving behind a trail of fire"+(player.weaponFlyingSwordsName != "nothing"?" as "+player.weaponFlyingSwordsName+" hovers near you. Your flying weapon is ready to be used at any time":"")+".");
                 player.createStatusEffect(StatusEffects.Flying, 1, 4, 0, 0);
             }
@@ -1022,6 +1026,10 @@ public class Combat extends BaseContent {
             if (player.canFly()) buttons.add("Take Flight", takeFlightWings)
                 .hint("Make use of your wings or other options avilable to take flight into the air for up to 7 turns. \n\nFatigue cost per turn: "+flyingWithWingsCost()+"  \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
                 .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
+			if (player.isInGoblinMech() && (player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0)) buttons.add("Jetpack", takeFlightGoblinMech)
+				.hint("Make use of your mech jetpack to take flight into the air for up to 5 turns. \n\nWould go into cooldown after use for: 3 rounds")
+				.disableIf(player.hasStatusEffect(StatusEffects.CooldownJetpack), "You need more time before you can use jetpack again.")
+				.disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
 			if (player.weaponFlyingSwordsName != "nothing" && player.canFlyOnFlyingSwords()) buttons.add("Take Flight", takeFlightByFlyingSword)
                 .hint("Make use of your flying sword to take flight into the air. \n\nSoulforce cost per turn: "+flyingSwordUseCost()+" \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
                 .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
@@ -3796,6 +3804,7 @@ public class Combat extends BaseContent {
     }
 
 	public function checkForElementalEnchantmentAndDoDamageMain(damage:Number, canUseFist:Boolean = true, canUseWhip:Boolean = true, crit:Boolean = false, IsFeralCombat:Boolean = false, INeedOnlyOneFistOrKick:Number = 0):void{
+		if (((player.weapon.isSwordType() && (player.weapon.isMedium() || player.weapon.isDualMedium())) || player.weapon.isStaffType() || player.weapon.isMonkWeapon() || player.weapon.isGauntletType()) && player.hasStatusEffect(StatusEffects.MartialTraining) && !IsFeralCombat) damage *= (1 + daoModifier(player.statusEffectv2(StatusEffects.MartialTraining)));
 		if (isFireTypeWeaponMain() && !isPlasmaTypeWeaponMain()) {
 			if (player.flameBladeActiveMain()) damage += scalingBonusLibido() * 0.2;
 			if (player.weapon == weapons.VGRAVEH) damage *= 1.25;
@@ -4126,6 +4135,7 @@ public class Combat extends BaseContent {
         JabbingStyleIncrement();
 	}
 	public function checkForElementalEnchantmentAndDoDamageOff(damage:Number, canUseFist:Boolean = true, canUseWhip:Boolean = true, crit:Boolean = false):void{
+		if (((player.weaponOff.isSwordType() && (player.weaponOff.isMedium() || player.weaponOff.isDualMedium())) || player.weaponOff.isStaffType() || player.weaponOff.isMonkWeapon()) && player.hasStatusEffect(StatusEffects.MartialTraining)) damage *= (1 + daoModifier(player.statusEffectv2(StatusEffects.MartialTraining)));
 		if (isFireTypeWeaponOff() && !isPlasmaTypeWeaponOff()) {
 			if (player.flameBladeActiveOff()) damage += scalingBonusLibido() * 0.2;
 			if (player.weaponOff == weapons.VGRAVEH) damage *= 1.25;
@@ -7042,8 +7052,10 @@ public class Combat extends BaseContent {
             if (player.hasKeyItem("M.G.S. bracer") >= 0) damage *= 1.2;
         }
         if ((player.hasPerk(PerkLib.SuperStrength) || player.hasPerk(PerkLib.BigHandAndFeet))) damage *= 2;
-		if (player.hasStatusEffect(StatusEffects.MartialTraining)) damage *= (1 + daoModifier(player.statusEffectv2(StatusEffects.DaoOfFire)));
-		if (!IsFeralCombat) damage *= (1 + (0.01 * masteryUnarmedCombatLevel()));
+		if (!IsFeralCombat) {
+			damage *= (1 + (0.01 * masteryUnarmedCombatLevel()));
+			if (player.hasStatusEffect(StatusEffects.MartialTraining)) damage *= (1 + daoModifier(player.statusEffectv2(StatusEffects.MartialTraining)));
+		}
         else damage *= (1 + (0.01 * masteryFeralCombatLevel()));
 		damage *= meleePhysicalForce();
 		return damage;
@@ -18537,8 +18549,14 @@ public function takeFlightFoxflamePelt():void {
     player.createStatusEffect(StatusEffects.Flying, 1, 3, 0, 0);
     takeFlight();
 }
+public function takeFlightGoblinMech():void {
+	clearOutput();
+	outputText("You activate the fly function and get some distance from the ground.\n\n");
+	player.createStatusEffect(StatusEffects.Flying, 5, 10, 0, 0);
+	takeFlight();
+}
 public function takeFlight():void {
-    if (player.hasPerk(PerkLib.Resolute) < 0) {
+    if (!player.hasPerk(PerkLib.Resolute)) {
         player.createStatusEffect(StatusEffects.FlyingNoStun, 0, 0, 0, 0);
         player.createPerk(PerkLib.Resolute, 0, 0, 0, 0);
     }

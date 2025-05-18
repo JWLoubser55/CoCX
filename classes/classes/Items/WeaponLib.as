@@ -197,7 +197,7 @@ public final class WeaponLib extends ItemConstants
 		public const BLETTER:Weapon = new Weapon(
 				"BLDLetter","Blood Letter","bloodletter katana","a bloodletter katana","slash",132,10560,
 				"This dark blade is as beautiful as it is deadly, made in black metal and decorated with crimson ruby gemstones. Lending its power to a corrupt warrior, it will strike with an unholy force, albeit, draining some blood from its wielder on the process.", WT_DUELING, WSZ_LARGE)
-				.withTags(I_LEGENDARY, W_CORRUPT_TYPE)
+				.withTags(W_MONKWEAPON, I_LEGENDARY, W_CORRUPT_TYPE)
 				.withEffect(IELib.AttackBonus_Cor, 3/5)
 				.withEffect(IELib.ScaleAttack_Spe, 100) as Weapon;
 		public const CATGLOV:BlackCatGlove = new BlackCatGlove();
@@ -399,6 +399,7 @@ public final class WeaponLib extends ItemConstants
 				"D.Katana","D.Katana","dual katana","a dual katana","keen cut",15,1360,
 				"A pair of curved bladed weapons that cuts through flesh with the greatest of ease.",
 				WT_DUELING, WSZ_LARGE, true)
+				.withTag(W_MONKWEAPON)
 				.withEffect(IELib.ArmorReduction, 10) as Weapon;
 		public const DNODACHI:Weapon = new Weapon(
 				"DNodachi","DualNodachi","dual nodachi","a dual nodachi","keen cut",65,5200,
@@ -700,7 +701,7 @@ public final class WeaponLib extends ItemConstants
 				"masamune","Masamune","masamune katana","a masamune katana","slash",112,8960,
 				"This blessed katana is made in shining steel and heavily decorated with silver and blue sapphires. When used by a pure-hearted knight, the divine will within guides each strike, making it much deadlier.",
 				WT_DUELING, WSZ_LARGE)
-				.withTags(I_LEGENDARY, W_PURE_TYPE)
+				.withTags(W_MONKWEAPON, I_LEGENDARY, W_PURE_TYPE)
 				.withEffect(IELib.ScaleAttack_Spe, 100)
 				.withEffect(IELib.AttackBonus_Cor, -2/5) as Weapon;
 		public const MASTGLO:MasterGloves = new MasterGloves();
@@ -714,7 +715,7 @@ public final class WeaponLib extends ItemConstants
 				"Moonlit Snow","Moonlit Snow","Moonlit Snow","a Moonlit Snow","slash",115,9200,
 				"This blessed katana is made in shining steel and heavily decorated with silver and blue sapphires. When used by a pure-hearted knight, the divine will within guides each strike, making it much deadlier.",
 				WT_DUELING, WSZ_MEDIUM)
-				.withTags(W_HYBRID, I_LEGENDARY, W_PURE_TYPE)
+				.withTags(W_HYBRID, W_MONKWEAPON, I_LEGENDARY, W_PURE_TYPE)
 				.withEffect(IELib.AttackBonus_Cor, -2/5)
 				.withEffect(IELib.ScaleAttack_Spe, 100) as Weapon;
 		public const N_STAFF:Weapon = new NocturnusStaff();
