@@ -4670,6 +4670,8 @@ public class PerkLib
 				"Allow you to determine how corrupted or pure the enemy is.");
 		public static const SenseWrath:PerkType = mk("Sense Wrath", "Sense Wrath",
 				"Allow you to determine how much wrath the enemy has.");
+		public static const SpinningKick:PerkType = mk("Spinning kick", "Spinning kick",
+				"When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)");
 		public static const SensualLover:PerkType = mk("Sensual Lover", "Sensual Lover",
 				"Your sensual attitude towards love and romance makes your tease ability slightly more effective.");
 		public static const SoulDrinker:SoulDrinkerPerk = new SoulDrinkerPerk();

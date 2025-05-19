@@ -4328,7 +4328,7 @@ use namespace CoC;
 
 		public function evadeRetaliate():void {
 			if (necklace == game.necklaces.CATBELL && isAnyRaceCached(Races.CatlikeRaces)){
-				CombatAbilities.Tease.perform(true,true, false,true);
+				CombatAbilities.Tease.perform(true,true,false,true);
 			}
 		}
 

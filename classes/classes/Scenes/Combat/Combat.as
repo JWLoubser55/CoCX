@@ -4133,6 +4133,8 @@ public class Combat extends BaseContent {
 			}
 		}
         JabbingStyleIncrement();
+		if (player.isUnarmedCombat()) MartialArtsTriggers(4);
+		else MartialArtsTriggers(1);
 	}
 	public function checkForElementalEnchantmentAndDoDamageOff(damage:Number, canUseFist:Boolean = true, canUseWhip:Boolean = true, crit:Boolean = false):void{
 		if (((player.weaponOff.isSwordType() && (player.weaponOff.isMedium() || player.weaponOff.isDualMedium())) || player.weaponOff.isStaffType() || player.weaponOff.isMonkWeapon()) && player.hasStatusEffect(StatusEffects.MartialTraining)) damage *= (1 + daoModifier(player.statusEffectv2(StatusEffects.MartialTraining)));
@@ -4291,6 +4293,7 @@ public class Combat extends BaseContent {
 			}
 		}
         JabbingStyleIncrement();
+		MartialArtsTriggers(1);
 	}
 
     public function archerySkillDamageMod(damage:Number):Number {
@@ -8620,7 +8623,7 @@ public class Combat extends BaseContent {
 		player.removeStatusEffect(StatusEffects.GreasedLightning);
 	}
 
-    public function JabbingStyleIncrement():void{
+    public function JabbingStyleIncrement():void {
         if (player.hasPerk(PerkLib.JabbingStyle)){
             var JabbingValue:Number = 0.02;
             if (player.hasPerk(PerkLib.JabbingMaster)) JabbingValue = 0.04;
@@ -8628,6 +8631,16 @@ public class Combat extends BaseContent {
             else player.addStatusValue(StatusEffects.JabbingStyle,1,JabbingValue);
         }
     }
+	public function MartialArtsTriggers(chance:Number):void {
+		var basecost:Number = Math.round(Math.sqrt(player.maxSoulforce() * 0.02));
+		if (player.hasPerk(PerkLib.SpinningKick) && player.legCount > 1) {
+			if (rand(4) < chance && player.soulforce >= basecost) {
+				outputText("Using the momentum of your previous attack, you spin on yourself, chaining with a mighty kick to your opponent.\n\n");
+				EngineCore.SoulforceChange(basecost);
+				CombatAbilities.PunishingKick.perform(true,true);
+			}
+		}
+	}
 
     public function unarmedAttack():Number {
         var unarmed:Number = 0;

@@ -511,12 +511,29 @@ public class Soulforce extends BaseContent
 				}
 			}
 		} else player.createStatusEffect(StatusEffects.MartialTraining, martial, 0, 0, 0);
+		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 3 && player.hasStatusEffect(StatusEffects.KnowsPunishingKick) && !player.hasPerk(PerkLib.SpinningKick)) {
+			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Spinning kick!\n\n");
+			player.createPerk(PerkLib.SpinningKick, 0, 0, 0, 0);
+		}/*
+		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 6 && !player.hasPerk(PerkLib.)) {
+			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
+			player.createPerk(PerkLib., 0, 0, 0, 0);
+		}
+		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 9 && !player.hasPerk(PerkLib.)) {
+			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
+			player.createPerk(PerkLib., 0, 0, 0, 0);
+		}
+		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 12 && !player.hasPerk(PerkLib.)) {
+			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
+			player.createPerk(PerkLib., 0, 0, 0, 0);
+		}*/
 		if (display) doNext(camp.returnToCampUseEightHours);
 	}
 
 	public function highestLayerOfMartialTraining():Number {
 		var hLrOMT:Number = 3;
-		//hLrOMT += (player.perkv2(PerkLib.JobSoulCultivator) - 3);
+		hLrOMT += (player.perkv2(PerkLib.JobSoulCultivator) - 3);
+		if (hLrOMT > 6) hLrOMT = 6;
 		return hLrOMT;
 	}
 

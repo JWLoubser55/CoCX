@@ -278,7 +278,7 @@ public class Changelog extends BaseContent
 			outputText("-New passive for Barometz/Yggdrasil/Alraune/Plant (tier 2) races: Photosynthesis - While outdoors during daytime, gain regeneration 5% and fatigue recovery 2% from absorbing sunlight. Double Toughness score when active.\n");
 			outputText("-Chi Chi have 3 new talk scenes that happen when she's at HXD restaurant. Last one req. bying 10 meals and fighting 3+ times at Soul Arena. Also her appearance at Arena is changed from unavoidable one to choosing between accepting or declining her challange. Decline would still lock PC from doing any other fight at Arena but at least it will be not a suprise fire mouse fight anymore. ");
 			outputText("First fight have changed mechanics on winning with her by lust and when winning by HP there is an option to save her as long PC meet one of three conditions.\n");
-			outputText("-\n");
+			outputText("-New event perk: Spinning kick. Gained when training after reaching 3rd layer of Martial Training and knowing Punishing kick soulskill. Effects: When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -5407,6 +5407,7 @@ public function rebirthFromBadEnd():void {
 		if (player.hasStatusEffect(StatusEffects.DaoOfWater)) pTGAPDoE += player.statusEffectv2(StatusEffects.DaoOfWater);
 		if (player.hasStatusEffect(StatusEffects.DaoOfEarth)) pTGAPDoE += player.statusEffectv2(StatusEffects.DaoOfEarth);
         if (player.hasStatusEffect(StatusEffects.DaoOfAcid)) pTGAPDoE += player.statusEffectv2(StatusEffects.DaoOfAcid);
+        if (player.hasStatusEffect(StatusEffects.MartialTraining)) pTGAPDoE += player.statusEffectv2(StatusEffects.MartialTraining);
 		return pTGAPDoE;
 	}
 	public function possibleToGainAscensionPointsMasteries():Number {
