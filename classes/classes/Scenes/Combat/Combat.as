@@ -79,6 +79,8 @@ public class Combat extends BaseContent {
     public var MSGControll:Boolean = false; // need to correctly display damage MSG
     public var MSGControllForEvasion:Boolean = false; // need to correctly display damage MSG. This way as i use it game will show just first damage msg.
 	public var touDmg:Number = 0;
+	public var martialTrain:Number = 0;
+	public var mTSpinningKick:Boolean = false;
 
     // Following is reused variables throughout the multiple feral attack function calls
     // E.N.W.A, kinda sounds like something out of Tolkein/Lord of the Ring
@@ -152,7 +154,6 @@ public class Combat extends BaseContent {
      */
     public function monsterDefeatCheck():Boolean{
         var combatEnd:Boolean = false;
-
         if (monster.isHPDefeatable() && monster.HP <= monster.minHP()) {
             doNext(endHpVictory);
             combatEnd = true;
@@ -160,7 +161,6 @@ public class Combat extends BaseContent {
             doNext(endLustVictory);
             combatEnd = true;
         }
-
         return combatEnd;
     }
 
@@ -859,6 +859,8 @@ public class Combat extends BaseContent {
 			if (player.hasPerk(PerkLib.MyBloodForBloodPuppies)) flags[kFLAGS.IN_COMBAT_PLAYER_BLOOD_PUPPIES_ATTACKED] = 0;
 			if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 4) flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] = 0;
 			if (player.hasPerk(PerkLib.ImprovedGrapple)) flags[kFLAGS.IN_COMBAT_BETTER_GRAPPLE] = 0;
+			martialTrain = 0;
+			mTSpinningKick = false;
 			if (player.armor == armors.BMARMOR) dynStats("lus", -(Math.round(player.maxLust() * 0.05)));
 			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) {
 				var hmim1:Number = 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM);
@@ -4133,8 +4135,8 @@ public class Combat extends BaseContent {
 			}
 		}
         JabbingStyleIncrement();
-		if (player.isUnarmedCombat()) MartialArtsTriggers(4);
-		else MartialArtsTriggers(1);
+		if (player.isUnarmedCombat()) martialTrain = 4;
+		else martialTrain = 1;
 	}
 	public function checkForElementalEnchantmentAndDoDamageOff(damage:Number, canUseFist:Boolean = true, canUseWhip:Boolean = true, crit:Boolean = false):void{
 		if (((player.weaponOff.isSwordType() && (player.weaponOff.isMedium() || player.weaponOff.isDualMedium())) || player.weaponOff.isStaffType() || player.weaponOff.isMonkWeapon()) && player.hasStatusEffect(StatusEffects.MartialTraining)) damage *= (1 + daoModifier(player.statusEffectv2(StatusEffects.MartialTraining)));
@@ -4293,7 +4295,7 @@ public class Combat extends BaseContent {
 			}
 		}
         JabbingStyleIncrement();
-		MartialArtsTriggers(1);
+		martialTrain = 1;
 	}
 
     public function archerySkillDamageMod(damage:Number):Number {
@@ -5801,6 +5803,7 @@ public class Combat extends BaseContent {
 								if (player.hasPerk(PerkLib.LightningClaw)){
                                     outputText(" The residual electricity leaves your foe's skin tingling with pleasure.");
                                 }
+								MartialArtsTriggers();
                             }
                             // YOOOOU SHALL NOOOOOT PAAAAAAAAAASSSSSS!!!!!
                         }
@@ -5886,6 +5889,7 @@ public class Combat extends BaseContent {
 								if (player.hasPerk(PerkLib.LightningClaw)){
                                     outputText(" The residual electricity leaves your foe's skin tingling with pleasure.");
                                 }
+								MartialArtsTriggers();
                             }
                             // YOOOOU SHALL NOOOOOT PAAAAAAAAAASSSSSS!!!!!
                         }
@@ -8631,10 +8635,11 @@ public class Combat extends BaseContent {
             else player.addStatusValue(StatusEffects.JabbingStyle,1,JabbingValue);
         }
     }
-	public function MartialArtsTriggers(chance:Number):void {
+	public function MartialArtsTriggers():void {
 		var basecost:Number = Math.round(Math.sqrt(player.maxSoulforce() * 0.02));
 		if (player.hasPerk(PerkLib.SpinningKick) && player.legCount > 1) {
-			if (rand(4) < chance && player.soulforce >= basecost) {
+			if (rand(4) < martialTrain && player.soulforce >= basecost && !mTSpinningKick) {
+				mTSpinningKick = true;
 				outputText("Using the momentum of your previous attack, you spin on yourself, chaining with a mighty kick to your opponent.\n\n");
 				EngineCore.SoulforceChange(basecost);
 				CombatAbilities.PunishingKick.perform(true,true);

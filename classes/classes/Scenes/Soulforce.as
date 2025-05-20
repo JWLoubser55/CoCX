@@ -533,7 +533,7 @@ public class Soulforce extends BaseContent
 	public function highestLayerOfMartialTraining():Number {
 		var hLrOMT:Number = 3;
 		hLrOMT += (player.perkv2(PerkLib.JobSoulCultivator) - 3);
-		if (hLrOMT > 6) hLrOMT = 6;
+		if (hLrOMT > 5) hLrOMT = 5;
 		return hLrOMT;
 	}
 
