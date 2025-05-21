@@ -279,10 +279,10 @@ public class Changelog extends BaseContent
 			outputText("-Chi Chi have 3 new talk scenes that happen when she's at HXD restaurant. Last one req. bying 10 meals and fighting 3+ times at Soul Arena. Also her appearance at Arena is changed from unavoidable one to choosing between accepting or declining her challange. Decline would still lock PC from doing any other fight at Arena but at least it will be not a suprise fire mouse fight anymore. ");
 			outputText("First fight have changed mechanics on winning with her by lust and when winning by HP there is an option to save her as long PC meet one of three conditions.\n");
 			outputText("-New event perk: Spinning kick. Gained when training after reaching 3rd layer of Martial Training and knowing Punishing kick soulskill. Effects: When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Way of the silent storm. Gained when training after reaching 6th layer of Martial Training and knowing Triple Thrust soulskill. Effects: If at least one hand is free there is a 10% chance to unleash a triple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round.\n");
+			outputText("-New M. Special: Blood Web. Usable by having Araneathropy perk. By using 1 stack of vampire thirst use web attack made of razor sharp webs to ensnare enemy and apply hemmorage. As long enemy is entagled PC would absorb some of the blood from enemy and slowly gain stacks of vampire thirst each turn.\n");
+			outputText("-New M. Special: Sanguine Strength. Usable by having Araneathropy perk. By using 3 stacks of vampire thirst increase str by 80% until end of the combat.\n");
+			outputText("-New M. Special: Sanguine Haste. Usable by been any race with access to Vampiric Thirst. By using 3 stack of vampire thirst increase melee/range attacks per turn by 1 until end of the combat.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

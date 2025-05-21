@@ -4670,8 +4670,6 @@ public class PerkLib
 				"Allow you to determine how corrupted or pure the enemy is.");
 		public static const SenseWrath:PerkType = mk("Sense Wrath", "Sense Wrath",
 				"Allow you to determine how much wrath the enemy has.");
-		public static const SpinningKick:PerkType = mk("Spinning kick", "Spinning kick",
-				"When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)");
 		public static const SensualLover:PerkType = mk("Sensual Lover", "Sensual Lover",
 				"Your sensual attitude towards love and romance makes your tease ability slightly more effective.");
 		public static const SoulDrinker:SoulDrinkerPerk = new SoulDrinkerPerk();
@@ -4679,6 +4677,8 @@ public class PerkLib
 				"The absence of a soul allows you to completely go astray of the morality compass, increasing your libido and corruption beyond normal.").withBuffs({'lib.mult':0.75});
 		public static const SpearAffinity:PerkType = mk("Spear Affinity", "Spear Affinity",
 				"Spears deal increased damage equal to 15% of your Strength, speed, wisdom and now have 100% armor penetration.");
+		public static const SpinningKick:PerkType = mk("Spinning kick", "Spinning kick",
+				"When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)");
 		public static const StrengthenBody:StrengthenBodyPerk = new StrengthenBodyPerk();
 		public static const StrengthenMagic:StrengthenMagicPerk = new StrengthenMagicPerk();
 		public static const SweepDefenses:PerkType = mk("Sweep Defenses", "Sweep Defenses",
@@ -4705,6 +4705,8 @@ public class PerkLib
 				"Minion and Follower Damage increased by another 15%. Followers will act even more frequently.");
 		public static const VorpalClaw:PerkType = mk("Vorpal Claw", "Vorpal Claw",
 				"A cheshire natural weapon distorts space inflicting particularly vicious critical strikes.");
+		public static const WayOfTheSilentStorm:PerkType = mk("Way of the silent storm", "Way of the silent storm",
+				"If at least one hand is free there is a 10% chance to unleash a triple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round.");
 		public static const WhatIsReality:PerkType = mk("What Is Reality", "What Is Reality?",
 				"When you would take fatal damage, laugh at death and deny it ever happened. Mocking death causes the increase of the arousal of the user which can still cause it to simply give up so to get to lewder games.");
 		public static const Whispered:PerkType = mk("Whispered", "Whispered",

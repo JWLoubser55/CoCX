@@ -841,6 +841,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const Attacks:StatusEffectType            	= mk("attacks");
 		public static const AuraOfMadness:StatusEffectType          = mk("Aura of madness");
 		public static const BimboBrawl:StatusEffectType         	= mk("bimboBrawl");
+		public static const BloodWeb:StatusEffectType  				= mk("BloodWeb");
 		public static const BowCooldown:StatusEffectType        	= mk("Bow Cooldown");
 		public static const BowDisabled:StatusEffectType        	= mk("Bow Disabled");
 		public static const CancerGrab:StatusEffectType         	= mk("Cancer Pincer grapple");
@@ -1177,6 +1178,8 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const RootOfTheIssue:StatusEffectType            = mkCombat("Root of the issue");
 		public static const Sandstorm:StatusEffectType                 = mkCombat("sandstorm");
 		public static const SandWormAcid:StatusEffectType              = mkCombat("Sand Worm Acid");
+		public static const SanguineHaste:StatusEffectType             = mkCombat("Sanguine Haste");
+		public static const SanguineStrength:StatusEffectType          = mkCombat("Sanguine Strength");
 		public static const ScarletSpiritCharge:StatusEffectType       = mkCombat("Scarlet Spirit Charge");
 		public static const ScyllaBind:StatusEffectType                = mkCombat("Scylla Bind");
 		public static const Sealed:StatusEffectType                    = mkCombat("Sealed");
@@ -1483,7 +1486,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const WhipSilence:StatusEffectType           = mkCombat("Whip Silence");
 		public static const PigbysHands:StatusEffectType           = mkCombat("Pigbys Hands");
 		public static const SoulArena:StatusEffectType             = mkCombat("Soul Arena");
-		public static const SoulArenaGauntlet:StatusEffectType      = mkCombat("Soul Arena Gauntlet");
+		public static const SoulArenaGauntlet:StatusEffectType     = mkCombat("Soul Arena Gauntlet");
 		public static const Blacken:StatusEffectType               = mkCombat("Blacken");
 		public static const MutantIncubusVenom:StatusEffectType    = mkCombat("Mutant Incubus Venom");
 		public static const AikoLightningArrow:StatusEffectType    = mkCombat("Aiko Lightning Arrow");
@@ -1493,6 +1496,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const CHCompellingAria:StatusEffectType      = mkCombat("Corrupted Handmaidens Compelling Aria");
 		public static const LockingCurse:StatusEffectType          = mkCombat("Locking Curse");
 		public static const Terrorize:StatusEffectType             = mkCombat("Terrorize");
+		public static const WerespiderAbilities:StatusEffectType   = mkCombat("WerespiderAbilities");
 		
 		// enchanted item stuff
 		

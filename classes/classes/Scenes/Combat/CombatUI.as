@@ -462,7 +462,7 @@ public class CombatUI extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.OniRampage) || player.wrath > player.maxSafeWrathSpellcasting()) {
 				btnMagic.disable("You are too angry to think straight. Smash your puny opponents first and think later.\n\n").icon("A_Magic")
 			} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic")
-		} else if (monster.hasStatusEffect(StatusEffects.MysticWeb)) {
+		} else if (monster.hasStatusEffect(StatusEffects.MysticWeb) || monster.hasStatusEffect(StatusEffects.BloodWeb)) {
 			menu();
 			addButton(0, "Tease", combat.WebTease).hint("Toy with your opponent");
 			addButton(1, "Bite", combat.spiderBiteAttack).hint("Inject your venom.");

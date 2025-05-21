@@ -18,8 +18,17 @@ import coc.view.CoCButton;
 	{
 		private var _biteCounter:int = 0;
 		
-		//VampThirstThousandHands
-		//VampThirstHydraulicStr
+		public function werespiderThousandHands():void {
+			outputText("[Themonster] suddenly crouch as if readying to pounce, its body starting to release red mist.");
+			addStatusValue(StatusEffects.WerespiderAbilities,1,1);
+			addHP(-(maxHP() * .05));
+		}
+		public function werespiderHydraulicStr():void {
+			outputText("[Themonster] suddenly enlarge and growl as its body begins to release red mist.");
+			createStatusEffect(StatusEffects.WerespiderAbilities,0,0,0,0);
+			addHP(-(maxHP() * .05));
+			strStat.core.value *= 2;
+		}
 		
 		public function werespiderBite():void {
 			if (player.isGargoyle()) {
@@ -47,7 +56,7 @@ import coc.view.CoCButton;
 				if (!player.hasStatusEffect(StatusEffects.AlterBindScroll3)) {
 					var drain:Number = Math.round(player.touStat.max * 0.05);
 					player.saveHPRatio();
-					player.buff("Bat bites").addStats({"tou":-drain}).withText("Bat bites!").combatPermanent();
+					player.buff("Werespider bites").addStats({"tou":-drain}).withText("Werespider bites!").combatPermanent();
 					player.restoreHPRatio();
 					showStatDown( 'tou' );
 					if (player.tou <= 1) {
@@ -60,6 +69,12 @@ import coc.view.CoCButton;
 		
 		override protected function performCombatAction():void
 		{
+			if (hasStatusEffect(StatusEffects.WerespiderAbilities) && statusEffectv1(StatusEffects.WerespiderAbilities) < 1 && HPRatio() > .1 && rand(4) > 0) werespiderThousandHands();
+			if (!hasStatusEffect(StatusEffects.WerespiderAbilities) && HPRatio() > .1 && rand(4) > 0) werespiderHydraulicStr();
+			if (player.buff("Web").isPresent()) {
+				EngineCore.HPChange(Math.round(player.maxHP() * 0.05), true, false);
+				addHP(maxHP() * .05);
+			}
 			var choice:Number = rand(3);
 			if (choice == 0) {
 				if (player.buff("Web").isPresent()) werespiderBite();
@@ -67,7 +82,8 @@ import coc.view.CoCButton;
 			}
 			if (choice == 1) {
 				if (player.hasStatusEffect(StatusEffects.WebSilence)) {
-					createStatusEffect(StatusEffects.Attacks, 4, 0, 0, 0);
+					if (hasStatusEffect(StatusEffects.WerespiderAbilities) && statusEffectv1(StatusEffects.WerespiderAbilities) > 0) createStatusEffect(StatusEffects.Attacks, 8, 0, 0, 0);
+					else createStatusEffect(StatusEffects.Attacks, 4, 0, 0, 0);
 					eAttack();
 				}
 				else spiderSilence();

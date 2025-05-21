@@ -555,11 +555,24 @@ public class MagicSpecials extends BaseCombatContent {
 				bd.disable("<b>You need more time before you can use Infernal claw again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
-		if (player.statusEffectv1(StatusEffects.VampireThirst) >= 1) {/*
+		if (player.statusEffectv1(StatusEffects.VampireThirst) >= 1) {
 			if (player.hasPerk(PerkLib.Araneathropy)) {
-				
+				//Blood Web
+				if (player.lowerBody == LowerBody.WERESPIDER && player.tailType == Tail.SPIDER_ADBOMEN) {
+					bd = buttons.add("Blood Web", BloodWeb, "Spin a thread of web using your own blood to tie up your victim in place. Also reduce opponent speed after each use. \n");
+					if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
+						bd.disable("You cannot focus to use this ability while you're having so much difficult breathing.");
+					} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.statusEffectv1(StatusEffects.VampireThirst) >= 3) {
+					//Sanguine Strength
+					bd = buttons.add("Sanguine Strength", SanguineStrength, "Increase your strength at the price of burning some of your blood. \n");
+					if (player.hasStatusEffect(StatusEffects.SanguineStrength)) {
+						bd.disable("<b>You already under Sanguine Strength effect.</b>\n\n");
+					}
+				}
 			}
-			else {*/
+			else {
 				//Eclipsing shadow
 				bd = buttons.add("Eclipsing shadow", EclipsingShadow, "Plunge the area in complete darkness denying vision to your opponent. \n");
 				if (player.hasStatusEffect(StatusEffects.CooldownEclipsingShadow)) {
@@ -570,7 +583,14 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownSonicScream)) {
 					bd.disable("<b>You need more time before you can use Sonic scream again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
-			//}	
+			}
+			if (player.statusEffectv1(StatusEffects.VampireThirst) >= 3) {
+				//Sanguine Haste
+				bd = buttons.add("Sanguine Haste", SanguineHaste, "Increase your speed attack (+1 atk per turn) at the price of burning some of your blood. \n");
+				if (player.hasStatusEffect(StatusEffects.SanguineHaste)) {
+					bd.disable("<b>You already under Sanguine Haste effect.</b>\n\n");
+				}
+			}
 			//Vampire Thirst Stacks To Health/Mana
 			bd = buttons.add("Health Tap (1)", curry(VampireThirstStacksToHealth, 1), "Draw on your tainted blood power to heal yourself. \n");
 			if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv1(StatusEffects.VampThirstStacksHPMana) > 0) {
@@ -6077,9 +6097,63 @@ public class MagicSpecials extends BaseCombatContent {
 		if (monster.HP <= monster.minHP()) doNext(endHpVictory);
 		else enemyAI();
 	}
-//Thousand Hands			stacks > combat long +1 melee attack
 
-//Hydraulic Strength		stacks > combat lon +x str v str.mult
+//Sanguine Strength
+	public function SanguineStrength():void {
+		clearOutput();
+		var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
+		thirst.modSatiety(-3);
+		player.createStatusEffect(StatusEffects.SanguineStrength,0,0,0,0);
+		outputText("Your blood boil as your muscle expend dramaticaly, you feel like you could grind rocks to dust with your finguers. Red mist is released from your pore.\n\n");
+		enemyAI();
+	}
+
+//Blood Web
+	public function BloodWeb():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		if (monster is EncapsulationPod) {
+			clearOutput();
+			outputText("You can't web something you're trapped inside of!");
+			//Gone		menuLoc = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
+		thirst.modSatiety(-1);
+		if (monster.hasStatusEffect(StatusEffects.BloodWeb)) {
+			outputText("[Themonster] is completely covered in webbing, but you hose " + monster.mf("him", "her") + " down again anyway doubling the number of sharp wire and adding to its bloody injuries. ");
+			monster.addStatusValue(StatusEffects.BloodWeb, 1, 2);
+			monster.addStatusValue(StatusEffects.Hemorrhage, 1, 2);
+			monster.addStatusValue(StatusEffects.Hemorrhage, 2, 0.02);
+		}
+		else {
+			outputText("Turning and clenching muscles that no human should have, you expel a spray of sticky webs at [themonster]! Pulling on a singular string you cause the web blade sharp strings to contracts inflicting deep blood weeping wounds on your victim. ");
+			var dura:Number = 4 + rand(2);
+			monster.createStatusEffect(StatusEffects.BloodWeb,dura,0,0,0);
+			var Multiplier:Number = 1;
+			if(player.perkv1(IMutationsLib.ArachnidBookLungIM) >= 2) Multiplier += 0.5;
+			if(player.perkv1(IMutationsLib.ArachnidBookLungIM) >= 3) Multiplier += 0.5;
+			if(player.hasPerk(PerkLib.RacialParagon)) Multiplier += (combat.RacialParagonAbilityBoost() - 1);
+			monster.statStore.addBuffObject({spe:-50*Multiplier}, "Blood Web",{text:"Blood Web"});
+			if (player.perkv1(IMutationsLib.ArachnidBookLungIM) >= 3 && rand(100) > 50) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			monster.createStatusEffect(StatusEffects.Hemorrhage, dura, 0.02, 0, 0);
+			awardAchievement("How Do I Shot Web?", kACHIEVEMENTS.COMBAT_SHOT_WEB);
+		}
+		outputText("\n\n");
+		enemyAI();
+	}
+
+//Sanguine Haste
+	public function SanguineHaste():void {
+		clearOutput();
+		var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
+		thirst.modSatiety(-3);
+		player.createStatusEffect(StatusEffects.SanguineHaste,0,0,0,0);
+		outputText("Your blood boil as you body fills with seemingly infinite energy and latent power, your movement speeds up greatly. Red mist is released from your pore.\n\n");
+		enemyAI();
+	}
 	
 //Vampire Thirst Stacks To Health/Mana
 	public function VampireThirstStacksToHealth(stack:Number = 1):void {

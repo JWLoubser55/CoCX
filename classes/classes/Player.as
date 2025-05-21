@@ -6116,6 +6116,7 @@ use namespace CoC;
 			if (statStore.hasBuff('Condensed Power')) statStore.removeBuffs('Condensed Power');
 			if (statStore.hasBuff('Dracoforce')) statStore.removeBuffs('Dracoforce');
 			if (statStore.hasBuff('Lusty Strength')) statStore.removeBuffs('Lusty Strength');
+			if (statStore.hasBuff('Sanguine Strength')) statStore.removeBuffs('Sanguine Strength');
 			if (statStore.hasBuff('Photosynthesis')) statStore.removeBuffs('Photosynthesis');
 			var strengthBase:Number = str;
 			var toughnessBase:Number = tou;
@@ -6218,6 +6219,10 @@ use namespace CoC;
 			if (!hasStatusEffect(StatusEffects.PhylacteryEnchantment9) && statStore.hasBuff('Soul rune Imbuement')) statStore.removeBuffs('Soul rune Imbuement');
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment10)) statStore.replaceBuffObject({'str.mult':Math.round(libStat.mult.value/2),'spe.mult':Math.round(libStat.mult.value/2)}, 'Body rune Imbuement', { text: 'Body rune Imbuement' });
 			if (!hasStatusEffect(StatusEffects.PhylacteryEnchantment10) && statStore.hasBuff('Body rune Imbuement')) statStore.removeBuffs('Body rune Imbuement');
+			if (hasStatusEffect(StatusEffects.SanguineStrength)) {
+				var strSS:Number = Math.round(strengthBase*0.8);
+				statStore.replaceBuffObject({'str': strSS}, 'Sanguine Strength', { text: 'Sanguine Strength' });
+			}
 			if (hasStatusEffect(StatusEffects.Photosynthesis)) {
 				var touP:Number = tou;
 				statStore.replaceBuffObject({'tou': touP}, 'Photosynthesis', { text: 'Photosynthesis' });

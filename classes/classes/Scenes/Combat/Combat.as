@@ -81,6 +81,8 @@ public class Combat extends BaseContent {
 	public var touDmg:Number = 0;
 	public var martialTrain:Number = 0;
 	public var mTSpinningKick:Boolean = false;
+	public var mTWayOfTheSilentStorm:Boolean = false;
+	public var mTWayOfTheSilentStormChance:Number = 0;
 
     // Following is reused variables throughout the multiple feral attack function calls
     // E.N.W.A, kinda sounds like something out of Tolkein/Lord of the Ring
@@ -861,6 +863,8 @@ public class Combat extends BaseContent {
 			if (player.hasPerk(PerkLib.ImprovedGrapple)) flags[kFLAGS.IN_COMBAT_BETTER_GRAPPLE] = 0;
 			martialTrain = 0;
 			mTSpinningKick = false;
+			mTWayOfTheSilentStorm = false;
+			mTWayOfTheSilentStormChance = 0;
 			if (player.armor == armors.BMARMOR) dynStats("lus", -(Math.round(player.maxLust() * 0.05)));
 			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) {
 				var hmim1:Number = 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM);
@@ -1738,6 +1742,7 @@ public class Combat extends BaseContent {
         else {
             flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] = 1;
         }
+		if (player.hasStatusEffect(StatusEffects.SanguineHaste)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += 1;
 		if (player.weapon.isDual()) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
         attack1();
 		if (!player.weaponOff.isNothing) {
@@ -1769,6 +1774,7 @@ public class Combat extends BaseContent {
 			else {
 				flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] = 1;
 			}
+			if (player.hasStatusEffect(StatusEffects.SanguineHaste)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] += 1;
 			if (player.weaponOff.isDual()) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
 			attack2();
 		}
@@ -3884,6 +3890,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			mTWayOfTheSilentStormChance += 1;
         }
 		else if (isUnarmedCombatButDealIceDamage()) {
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
@@ -3902,6 +3909,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (isUnarmedCombatButDealLightningDamage()) {
 			damage = Math.round(damage * lightningDamageBoostedByDao());
@@ -3918,6 +3926,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (isUnarmedCombatButDealDarknessDamage()) {
 			damage = Math.round(damage * darknessDamageBoostedByDao());
@@ -3934,6 +3943,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			mTWayOfTheSilentStormChance += 1;
 		}
         else if (player.weapon == weapons.MGSWORD) {
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
@@ -4014,6 +4024,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 1) {
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
@@ -4032,6 +4043,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				damage *= 3;
 			}
+			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 2) {
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
@@ -4050,6 +4062,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				damage *= 3;
 			}
+			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 3) {
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
@@ -4071,6 +4084,7 @@ public class Combat extends BaseContent {
 				damage *= 3;
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 4) {
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
@@ -4090,6 +4104,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				damage *= 3;
 			}
+			mTWayOfTheSilentStormChance += 1;
 		}
         else {
 			if (player.weapon == weapons.ARI_SPR) {
@@ -8643,6 +8658,13 @@ public class Combat extends BaseContent {
 				outputText("Using the momentum of your previous attack, you spin on yourself, chaining with a mighty kick to your opponent.\n\n");
 				EngineCore.SoulforceChange(basecost);
 				CombatAbilities.PunishingKick.perform(true,true);
+			}
+		}
+		if (player.hasPerk(PerkLib.WayOfTheSilentStorm)) {
+			if (rand(20) > (1 + mTWayOfTheSilentStormChance) && !mTWayOfTheSilentStorm) {
+				mTWayOfTheSilentStorm = true;
+				outputText("As your opponent recoils from your strikes, you enter the stance of the silent storm.\n\n");
+				CombatAbilities.TripleThrust.perform(true,true);
 			}
 		}
 	}

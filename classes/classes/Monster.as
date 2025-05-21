@@ -49,6 +49,7 @@ import classes.Scenes.NPCs.ChiChi;
 import classes.Scenes.Places.Boat.Marae;
 import classes.Scenes.Quests.UrtaQuest.MilkySuccubus;
 import classes.Scenes.SceneLib;
+import classes.StatusEffects.VampireThirstEffect;
 import classes.internals.ChainedDrop;
 import classes.internals.RandomDrop;
 import classes.internals.Utils;
@@ -2140,6 +2141,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				StatusEffects.GrabBear,
 				StatusEffects.CancerGrab,
 				StatusEffects.MysticWeb,
+				StatusEffects.BloodWeb,
 				StatusEffects.TelekineticGrab,
 				StatusEffects.Entangled,
 				StatusEffects.Swallowed,
@@ -2362,6 +2364,17 @@ import classes.Scenes.Combat.CombatAbilities;
 					removeStatusEffect(StatusEffects.MysticWeb);
 				}
 				addStatusValue(StatusEffects.MysticWeb, 1, -1);
+				if (player.hasPerk(PerkLib.ControlFreak)) ControlFreakStacking();
+				return false;
+			}
+			if (hasStatusEffect(StatusEffects.BloodWeb)) {
+				EngineCore.outputText("[Themonster] struggle to get free from your web!");
+				if (statusEffectv1(StatusEffects.BloodWeb) <= 0) {
+					EngineCore.outputText("[Themonster] struggle to get free and manage to shove you break off your webbing.");
+					if (player.hasStatusEffect(StatusEffects.ControlFreak)) removeStatusEffect(StatusEffects.ControlFreak);
+					removeStatusEffect(StatusEffects.BloodWeb);
+				}
+				addStatusValue(StatusEffects.BloodWeb, 1, -1);
 				if (player.hasPerk(PerkLib.ControlFreak)) ControlFreakStacking();
 				return false;
 			}
@@ -4069,6 +4082,16 @@ import classes.Scenes.Combat.CombatAbilities;
 						hemorrhage1 += 8 * SceneLib.combat.scalingBonusIntelligence();
 						hemorrhage1 += 2 * SceneLib.combat.scalingBonusWisdom();
 						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+					}
+					if (hasStatusEffect(StatusEffects.BloodWeb)) {
+						EngineCore.HPChange(Math.round(player.maxHP() * 0.01), false, false);
+						var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
+						var drinked:Number = 1;
+						if (player.perkv1(IMutationsLib.HollowFangsIM) >= 3) drinked += 1;
+						if (player.perkv1(IMutationsLib.HollowFangsIM) >= 4) drinked += 3;
+						if (player.perkv1(IMutationsLib.VampiricBloodstreamIM) >= 4) drinked *= 2;
+						if (player.hasPerk(PerkLib.BloodMastery)) drinked *= 2;
+						thirst.drink(drinked);
 					}
 					hemorrhage1 *= SceneLib.combat.BleedDamageBoost();
 					hemorrhage1 = SceneLib.combat.fixPercentDamage(hemorrhage1);
