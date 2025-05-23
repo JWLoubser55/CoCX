@@ -586,7 +586,7 @@ public class CombatUI extends BaseCombatContent {
 			clearOutput();
 			outputText("Would you like your wisp to attack?");
 			outputText("\n<b>The wisp can be toggled to attack automatically (Page 3).</b>");
-			outputText("\n<b>You can also enable \"Simplified Pre-PC Turn\" in Perk menu to set all your allies' behaviour to automatic and avoid pressing the 'Next' button every time.</b>\n\n");
+			outputText("\n<b>You can also enable \"Simplified Pre-PC Turn\" in Perk menu to set all your allies' behavior to automatic and avoid pressing the 'Next' button every time.</b>\n\n");
 			menu();
 			addButton(0, "Skip", combat.willothewispskip).hint("You forfeit this attack of the wisp. Would skip to next minion attack/your main turn.");
 			addButton(1, "Attack", doWillOfTheWispAttack).hint("The wisp attacks your enemy.");

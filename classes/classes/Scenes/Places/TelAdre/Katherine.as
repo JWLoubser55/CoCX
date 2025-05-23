@@ -725,7 +725,7 @@ private function urtaPlusKathCuddle():void {
 			outputText(flags[kFLAGS.URTA_FIRSTBORN_GENDER] == 1 ? "your son" : "your daughter");
 		else outputText("one of your kids");
 		outputText(",</i>\" while gently stroking Urta's ears.\n\n");
-		outputText("Urta lets out a big sigh and returns the favour, garnering a constant deep purr from Kath as she relaxes again.\n\nKath mumbles, ");
+		outputText("Urta lets out a big sigh and returns the favor, garnering a constant deep purr from Kath as she relaxes again.\n\nKath mumbles, ");
 	}
 	else {
 		outputText("\n\nYou creep over to the bed and stroke Kath's tail.  She and Urta both start giggling and Urta pats your hand, saying, \"<i>Hey baby, nice try, but you're not as quiet as you think you are.  Care to join us?</i>\"\n\n");

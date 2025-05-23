@@ -28,7 +28,7 @@ public class FusionSpecialAdamantineShellSkill extends AbstractMagicSpecial {
     }
 
     override public function describeEffectVs(target:Monster):String {
-		return "Receive damage armour for " + calcDuration() + "rounds.";
+		return "Receive damage armor for " + calcDuration() + "rounds.";
     }
 
     override public function sfCost():int {

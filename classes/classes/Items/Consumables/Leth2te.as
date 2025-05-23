@@ -11,7 +11,7 @@ public class Leth2te extends Consumable {
 
     public function Leth2te() {
         var descr:String;
-        descr = "A chunk of greater lethicite. It's rare as lethicite is only produced when a mortal becomes a demon and cums their souls out. A demon's favourite treat."
+        descr = "A chunk of greater lethicite. It's rare as lethicite is only produced when a mortal becomes a demon and cums their souls out. A demon's favorite treat."
         super("Leth2te", "Greater Lethicite", "a chunk of greater lethicite", 5000, descr );
     }
 

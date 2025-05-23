@@ -320,7 +320,7 @@ public class BasiliskScene extends BaseContent
 				//First time:
 				if(flags[kFLAGS.BENOIT_EGGS] + flags[kFLAGS.BENOIT_GENERIC_EGGS] == 0) {
 					//[Have not laid generic basilisk eggs before, have not laid Benoit's eggs:
-					outputText("\n\nThe seconds drag byб and the eggs remain still - the vague hope you harbor that they will immediately hatch, mature and get out of your life slowly vanishes.  What are you going to do with them? The only thing you can think of is to take them to Benoit.  Although you feel a slight tingle of shame for approaching him like this, you can't think of anyone else who would know what to do with these odd, unborn children of yours.");
+					outputText("\n\nThe seconds drag by and the eggs remain still - the vague hope you harbor that they will immediately hatch, mature and get out of your life slowly vanishes.  What are you going to do with them? The only thing you can think of is to take them to Benoit.  Although you feel a slight tingle of shame for approaching him like this, you can't think of anyone else who would know what to do with these odd, unborn children of yours.");
 				}
 				//[Have laid Benoit's eggs:
 				else {

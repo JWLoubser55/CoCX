@@ -234,7 +234,7 @@ player.setFurColor([
 	["gray", "white"], 
 ]);
 ```
-If the randomizer chooses one of the first five options, only the main furColor aka `player.furColor` is being set (old behaviour still works),
+If the randomizer chooses one of the first five options, only the main furColor aka `player.furColor` is being set (old behavior still works),
 but for the last four options, the array specifies the main furColor and the furColor on the underBody.
 
 So, if the choice is `["orange", "white"]` for example, it would be the same as:

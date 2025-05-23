@@ -669,8 +669,8 @@ public class PlayerInfo extends BaseContent {
 		combatStats += "<b>Soulforce Regeneration:</b> " + Math.round(combat.soulforceregeneration2() * combat.soulforceRecoveryMultiplier()) + " / turn, " + Math.round(combat.soulforceregeneration2() * combat.soulforceRecoveryMultiplier() * 0.1) + " / 5 minutes\n";
 		combatStats += "\n";
 		combatStats += "<b>Minimum HP (reaching it means HP based defeat):</b> " + player.minHP() + "\n";
-		combatStats += "<b>Maximum Safe Wrath I (threshold after which spells are unaccesable):</b> " + player.maxSafeWrathSpellcasting() + "\n";
-		combatStats += "<b>Maximum Safe Wrath II (threshold after which magic soulskills are unaccesable):</b> " + player.maxSafeWrathMagicalAbilities() + "\n";
+		combatStats += "<b>Maximum Safe Wrath I (threshold after which spells are inaccessible):</b> " + player.maxSafeWrathSpellcasting() + "\n";
+		combatStats += "<b>Maximum Safe Wrath II (threshold after which magic soulskills are inaccessible):</b> " + player.maxSafeWrathMagicalAbilities() + "\n";
 		combatStats += "<b>Over HP (HP amount that can be reached beyond the default 100% of Health bar):</b> " + (player.maxOverHP() - player.maxHP()) + "\n";
 		combatStats += "<b>Over Lust (Lust amount that can be reached beyond the default 100% of Lust bar):</b> " + (player.maxOverLust() - player.maxLust()) + "\n";
 		combatStats += "<b>Over Fatigue (Fatigue amount that can be reached beyond the default 100% of Fatigue bar):</b> " + (player.maxOverFatigue() - player.maxFatigue()) + "\n";
@@ -2643,14 +2643,14 @@ public class PlayerInfo extends BaseContent {
 	}
 	private function superPerkConvertMenu():void {
 		clearOutput();
-		outputText("You sacrifice three perk points and recieve one super perk point.");
+		outputText("You sacrifice three perk points and receive one super perk point.");
 		player.perkPoints -= 3;
 		player.superPerkPoints++;
 		doNext(superPerkBuyMenu);
 	}
 	private function superPerkReverseConvertMenu():void {
 		clearOutput();
-		outputText("You sacrifice one super perk point and recieve three perk points.");
+		outputText("You sacrifice one super perk point and receive three perk points.");
 		player.perkPoints += 3;
 		player.superPerkPoints--;
 		doNext(superPerkBuyMenu);

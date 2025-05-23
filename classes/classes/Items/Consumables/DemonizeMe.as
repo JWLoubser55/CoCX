@@ -37,9 +37,9 @@ public class DemonizeMe extends Consumable {
 			}
 			else {
 				if (player.cor <= 50) {
-					outputText("Relucantly you raise the bottle to your lips. As soon as you take the first sip, the rest of the oily fluid moves on its own. You cannot move your limbs, nor cough, not even blink.\n");
-					outputText("The liquid grows hotter and hotter as it slowly fills your stomach. Or is it you thats getting hotter? Hard to distinguish.\n\n");
-					outputText("A wave of dread takes you under once you realise you are not sweating, you are bleeding!\n");
+					outputText("Reluctantly you raise the bottle to your lips. As soon as you take the first sip, the rest of the oily fluid moves on its own. You cannot move your limbs, nor cough, not even blink.\n");
+					outputText("The liquid grows hotter and hotter as it slowly fills your stomach. Or is it you that's getting hotter? Hard to distinguish.\n\n");
+					outputText("A wave of dread takes you under once you realize you are not sweating, you are bleeding!\n");
 					outputText("Every single orifice, from tiniest of pores to largest of cavities is vomiting out blood.\n\n");
 					outputText("It feels like needles stabbing your skin from underneath all over your body.\n");
 					outputText("The deafening sounds of your screams, soon muffled behind a small pool of boiling blood.\n");
@@ -47,14 +47,14 @@ public class DemonizeMe extends Consumable {
 					outputText("At last, it starts pouring out of your eyes, cutting off your last remaining connection to outside world.\n");
 					outputText("Excruciating pain clouds your perception of time.\n\n");
 					outputText("Boiling blood is on constant move right above your skin, yet not a single drop has smeared the ground.\n");
-					outputText("Its colour changes from red to "+player.skinColor1+" before your body slowly starts to drain it back.\n\n");
+					outputText("Its color changes from red to "+player.skinColor1+" before your body slowly starts to drain it back.\n\n");
 					outputText("There are now extra weights on your back and head, disrupting your attempts at standing on your feet. You collapse on to the ground.\n\n");
 					outputText("You rise a different person, a different champion. Not of Ingam, but someone worthy of Mareth. You can see the world as it saw you all this time.\n\n");
 					outputText("Ripe for the taking.\n\n");
 				}
 				else {
 					outputText("Excitement takes over you as you raise the bottle to your lips. The first gulp welcomes the next, oily fluid moves on its own. You cannot move your limbs, any sign of resistance instantly fades away.\n");
-					outputText("The liquid grows hotter and hotter as it slowly fills your stomach. Or is it you thats getting hotter? Hard to distinguish.\n\n");
+					outputText("The liquid grows hotter and hotter as it slowly fills your stomach. Or is it you that's getting hotter? Hard to distinguish.\n\n");
 					outputText("Your thoughts are interrupted with increasing volume of blood covering your skin. YOUR BLOOD.\n");
 					outputText("Every single orifice, from tiniest of pores to largest of cavities is vomiting out blood.\n\n");
 					outputText("It feels like needles stabbing your skin from underneath all over your body.\n\n");
@@ -63,7 +63,7 @@ public class DemonizeMe extends Consumable {
 					outputText("At last, it starts pouring out of your eyes, cutting off your last remaining connection to outside world.\n");
 					outputText("Excruciating pain clouds your perception of time.\n\n");
 					outputText("Boiling blood is on constant move right above your skin, yet not a single drop has smeared the ground.\n");
-					outputText("Its colour changes from red to "+player.skinColor1+" before your body slowly starts to drain it back.\n\n");
+					outputText("Its color changes from red to "+player.skinColor1+" before your body slowly starts to drain it back.\n\n");
 					outputText("New additions on your back and head momentarily disorients you.\n\n");
 					outputText("You rise from the ashes of the so-called Champion. You are no longer the \"<i>Lamb of Ingam</i>\". You are someone strong, someone to be feared!.. And desired.\n\n");
 					outputText("As you are observing your new wings, tail and extra demonic additions, the small note written at the bottom of the label catches your eye.\n");

@@ -427,8 +427,8 @@ use namespace CoC;
 			flags[kFLAGS.MET_VALERIA] = 1;
 			flags[kFLAGS.TOOK_GOO_ARMOR] = 1;
 			cleanupAfterCombat();
-			if (player.racialScore(Races.JIANGSHI) >= 15 && player.hasPerk(PerkLib.Rigidity)) { //Needs a better explanation, cause why can't jiangshi wear armour again?
-				outputText("\nYou try and put the armour on, but as you are a Jiangshi, you are unable to. Instead you tell her the directions to your camp, and ask her to meet you there instead.");
+			if (player.racialScore(Races.JIANGSHI) >= 15 && player.hasPerk(PerkLib.Rigidity)) { //Needs a better explanation, cause why can't jiangshi wear armor again?
+				outputText("\nYou try and put the armor on, but as you are a Jiangshi, you are unable to. Instead you tell her the directions to your camp, and ask her to meet you there instead.");
 				flags[kFLAGS.VALERIA_AT_CAMP] = 1;
 				doNext(camp.returnToCampUseOneHour);
 			}

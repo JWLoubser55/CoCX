@@ -467,7 +467,7 @@ public class Arms extends SaveableBodyPart {
 	public static const FEY_DRACONIC:int = 59;
 	EnumValue.add(Types, FEY_DRACONIC, "FEY_DRACONIC", {
 		name:"fae dragon",
-		appearanceDesc: "Leathery scales cover your arms from the biceps down. While soft to the touch, the scales are rigid, acting as sturdy natural armour. Your fingernails are short, and as you flex your fingers, they extend out into thin curved claws.",
+		appearanceDesc: "Leathery scales cover your arms from the biceps down. While soft to the touch, the scales are rigid, acting as sturdy natural armor. Your fingernails are short, and as you flex your fingers, they extend out into thin curved claws.",
 		claw: true,
 		scales: true
 	});
@@ -560,7 +560,7 @@ public class Arms extends SaveableBodyPart {
 		claw: true,
 		fur: true
 	});
-	
+
 	public static const LICH:int = 72;
 	EnumValue.add(Types, LICH, "LICH", {
 		name:"lich",
@@ -572,19 +572,19 @@ public class Arms extends SaveableBodyPart {
 		name:"mummy",
 		appearanceDesc: "Your arms are human in shape and appearance but the skin is extremely sensitive to the touch. As such they are covered from the elbows to the tip of your fingers with bandages."
 	});
-  
+
 	public static const HUMANCHAINED:int = 74;
 	EnumValue.add(Types, HUMANCHAINED, "HUMAN", {
 		name:"human chained",
 		appearanceDesc: "You have a pair of normal human arms and though they dont have any unusual traits thick magical silver chains coils around your arms protecting them from arms. You know those chains to be fully part of your body and can use them to fight if necessary."
 	});
-	
+
 	public static const SHROOM_ARMS:int = 75;
 	EnumValue.add(Types, SHROOM_ARMS, "SHROOM_ARMS", {
 		name:"myconid",
 		appearanceDesc: "Your arms end in frills not unlike those of a fancy dress reaching all the way up to your hands which are concealed inside."
 	});
-	
+
 	public static const MECHANICAL_DOLL_ARMS:int = 76;
 	EnumValue.add(Types, MECHANICAL_DOLL_ARMS, "MECHANICAL_DOLL_ARMS", {
 		name:"automata",
@@ -617,7 +617,7 @@ public class Arms extends SaveableBodyPart {
 		claw: true,
 		scales: true
 	});
-   
+
 	public static function canFly(id: int): Boolean {
 		return Types[id].canFly || false;
 	}

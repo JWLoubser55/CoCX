@@ -108,7 +108,7 @@ use namespace CoC;
 			this.a = "the ";
 			this.short = "bimbo monkey";
 			this.imageName = "waizabi";
-			this.long = "You are fighting a Bimbo Monkey. Don't let her curves decieve you ;)";
+			this.long = "You are fighting a Bimbo Monkey. Don't let her curves deceive you ;)";
 			createVagina(true,VaginaClass.WETNESS_NORMAL,VaginaClass.LOOSENESS_TIGHT);
 			this.createStatusEffect(StatusEffects.BonusVCapacity,75,0,0,0);
 			createBreastRow(Appearance.breastCupInverse("G"));

@@ -1372,7 +1372,7 @@ public class LunaFollower extends NPCAwareContent implements SaveableState, Time
 
 		public function LunaPregWait():void {
 			clearOutput();
-			outputText("You sit patiently as Luna cleans your plate, rinses your cup, watching her work. The work seems to comfort her slightly, but you can tell she’s slower than usual…almost as if she’s stalling, or savouring the moment. \n\n");
+			outputText("You sit patiently as Luna cleans your plate, rinses your cup, watching her work. The work seems to comfort her slightly, but you can tell she’s slower than usual…almost as if she’s stalling, or savoring the moment. \n\n");
 			outputText("Eventually, she sits down across from you. Her breathing is uneven, but you give her a comforting smile. You ask her, gently, what’s going on. She’s not usually this proactive…and clearly there’s something bothering her.  \n\n");
 			outputText("\"<i>C-Can’t I do something…Nice for you, [Master]?</i>\"  \n\n");
 			outputText("You gently tell Luna that it wasn’t the meal or tea that clued you in, but her body language. In all the time Luna’s served you, she’s never been this nervous. The last time you saw her like this, was before you hired her.  \n\n");

@@ -20,7 +20,7 @@ To start the combat with that monster in the scene, just call `startCombat(new M
 monster to a variable and modify it.
 
 You also should add the monster to `Scenes/Explore/ExploreDebug.allMonsters` array, so it will be combated in that debug
-scene. You can put it in the beginning of the array to quicky test it in debug mode. In that test also check the
+scene. You can put it in the beginning of the array to quickly test it in debug mode. In that test also check the
 inspection and compare it with description.
 
 ### Special attacks
@@ -44,11 +44,11 @@ You might want to write a special Scene class for the monster, which will contai
 
 ### Overriding AI
 
-To better understand which function to override for monster behaviour customization, here combat call flow is shown:
+To better understand which function to override for monster behavior customization, here combat call flow is shown:
 
 1. Player selects some combat action (`event 5000`).
 2. `enemyAI()` is called, which just contains call to...
-    1. `monster.doAI()`, and this method could be overriden. By default:
+    1. `monster.doAI()`, and this method could be overridden. By default:
     2. If monster is stunned, frightened, constricted or otherwise has chance to skip its turn, `monster.handleStun()`,
          `handleFear()`, `handleConstricted()` methods are called. If they `return true`, said effect is ignored.
          1. Their default implementations just
@@ -59,7 +59,7 @@ To better understand which function to override for monster behaviour customizat
     4. From this point monster should decide its action and `Monster.performCombatAction()` (overrideable) is called.
          By default:
     5. A (evenly distributed) random action is chosen from `Monster.eAttack()` and all non-null non-zero `special`1..3.
-    6. Description of `special`s was given before, supppose, `Monster.eAttack()` was called from `performCombatAction()`.
+    6. Description of `special`s was given before, suppose, `Monster.eAttack()` was called from `performCombatAction()`.
          By default:
     7. In case the monster represents a mob, `statusEffectv1(StatusEffects.attacks)` is checked for number of attacks to perform.
          For each attack:
@@ -115,10 +115,10 @@ Generally 99% of monsters should subclass classes.Monster directly. However ther
 
 ## Monster event hooks
 
-If you want to You can set up event hooks that replace default behaviour by setting properties in monster instance.
+If you want to You can set up event hooks that replace default behavior by setting properties in monster instance.
 These hooks are:
 * `monster.onWon = Function(hpVictory:Boolean,pcCameWorms:Boolean)` to replace monster-won code. If the field is not null,
- default behaviour is canceled, and you have to finish the combat manually.
+ default behavior is canceled, and you have to finish the combat manually.
 * `monster.onDefeated = Function(hpVictory:Boolean)` to replace monster-defeated code. Same as with `onWon`.
 * `monster.onPcRunAttempt = Function()` to replace various checks and possible combat end when player hits "Run".
 
@@ -127,7 +127,7 @@ See property docs for more details.
 ### Note
 
 Event hooks should be used in scenes to modify default monsters, and not in monster classes themselves. Monster classes
-should override the functions `won`, `defeated` to change behaviour from default.
+should override the functions `won`, `defeated` to change behavior from default.
 
 # Item classes
 

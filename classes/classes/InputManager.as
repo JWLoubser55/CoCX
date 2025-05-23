@@ -82,7 +82,7 @@ import flash.text.TextField;
 		}
 		
 		/**
-		 * Mode toggle - keyboard events recieved by the input manager will be used to associated the incoming keycode
+		 * Mode toggle - keyboard events received by the input manager will be used to associated the incoming keycode
 		 * with a new bound control method, removing the keycode from *other* bindings and updating data as appropriate.
 		 * Displays a message indicating the player should do the needful.
 		 * @param	funcName	BoundControlMethod name that they key is going to be associated with. Set by a button

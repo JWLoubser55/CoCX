@@ -11477,7 +11477,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         if (player.ears.type == Ears.FENNEC_FOX && player.faceType == Face.FOX_FANGS && player.eyes.type == Eyes.FERAL && !player.hasPerk(PerkLib.Vulpesthropy) && changes < changeLimit) {
-            outputText("[pg]Scarcely audible sounds of slumber shuffle distantly around you before being followed by mischevious laughter. At the corner of your eye, you spot some subtle movement before you notice a figure clad in white adornments with a face paler than snow. Her smiling face beckons you forth as she points above herself. ");
+            outputText("[pg]Scarcely audible sounds of slumber shuffle distantly around you before being followed by mischievous laughter. At the corner of your eye, you spot some subtle movement before you notice a figure clad in white adornments with a face paler than snow. Her smiling face beckons you forth as she points above herself. ");
             outputText("You watch as glowing orbs she gestured toward shift as they gradually sharpen into a clearer figure, resembling the eyes of a large beast before a second pair of eyes open.");
             outputText("[pg]\"<i>Open your eyes, newborn, and gaze upon the world. Do not look with your eyes, but open your mind so that it may marvel at the beauty of the world you're already living in. Feel it pulsate, constantly changing and grab it... Grab it to make it yours. Weave it into any form you want. One day, the White-Faced One and The One That Sleeps Below shall lay waste to this world, and until then: Learn, adapt, survive until our return.</i>\"");
 			outputText("[pg]With her last words, your vision starts to blur before you awaken from your intruded slumber. Your world seems to quake and tremor as you fall back into yourself, landing flat onto the earth below you. As the tremors fade, you feel... strange... different. Something has changed within you.");
@@ -12898,7 +12898,7 @@ public final class Mutations extends MutationsHelper {
         }
         //Nipples Turn Back:
         if (player.hasStatusEffect(StatusEffects.BlackNipples) && changes < changeLimit && rand(2) == 0) {
-            outputText("[pg]Something invisible brushes against your " + nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh colour.");
+            outputText("[pg]Something invisible brushes against your " + nippleDescript(0) + ", making you twitch.  Undoing your clothes, you take a look at your chest and find that your nipples have turned back to their natural flesh color.");
             player.removeStatusEffect(StatusEffects.BlackNipples);
             changes++;
         }
@@ -14882,7 +14882,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
 
-        //-drop inteligence
+        //-drop intelligence
         if (player.inte > 15 && rand(2) == 0 && changes < changeLimit) {
             outputText("[pg]Your train of thought begins to slow down as if your head been dipped into cold water for a few minutes.");
             if (player.inte < 30) outputText("  You're starting to have trouble speaking normally, using pronouns like I less and less and [name] more often than not when describing yourself. Ugh that's fine, doesn't matter if you're not the smartest person on Mareth so long as you got a body that can do the talking for you or fuck some nice mate into doing it in your stead.");
@@ -16307,7 +16307,7 @@ public final class Mutations extends MutationsHelper {
         if (rand(2) == 0) changeLimit++;
         changeLimit += player.additionalTransformationChances;
         clearOutput();
-        outputText("Having bought that odd-looking root on the bakery, you give it a try, only to face the mildly spicy taste of the transformative. Still, it has a rich flavour and texture, but soon that becomes secondary, as you realize that the foreign rhizome is changing your body!");
+        outputText("Having bought that odd-looking root on the bakery, you give it a try, only to face the mildly spicy taste of the transformative. Still, it has a rich flavor and texture, but soon that becomes secondary, as you realize that the foreign rhizome is changing your body!");
 
         //spe change
         if (changes < changeLimit && rand(3) == 0 && MutagenBonus("spe", 2)) {

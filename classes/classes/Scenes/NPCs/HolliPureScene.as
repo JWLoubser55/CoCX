@@ -2,18 +2,18 @@
  * ...
  * @author Ormael
  */
-package classes.Scenes.NPCs 
+package classes.Scenes.NPCs
 {
 	import classes.*;
 import classes.GlobalFlags.kFLAGS;
 	import classes.Scenes.SceneLib;
-	
+
 	public class HolliPureScene extends NPCAwareContent
 	{
-	
-		
-	public function HolliPureScene() 
-	{	
+
+
+	public function HolliPureScene()
+	{
 	}
 
 //VARS
@@ -66,11 +66,11 @@ public function treeMenu():void {
 		if(rand(2) == 0) outputText("Did you come for a drink?  I've built up lots of nectar for you.  Surely, a sip would be refreshing for you...");
 		else outputText("How may I help you?  Tell me your wish so that I can try fulfill it.");
 		outputText("</i>\"");
-		//Extra line on description:  
+		//Extra line on description:
 		if(flags[kFLAGS.HOLLI_FRUIT] > 0) {
 			if(flags[kFLAGS.HOLLI_FRUIT] == 1) outputText("\n\nA large, purple fruit hangs from Holli's branches, twisting softly in the breeze.  It looks succulent and ripe.");
 			else outputText("\n\n" + Num2Text(flags[kFLAGS.HOLLI_FRUIT]) + " large, purple fruits hang from Holli's branches, twisting softly in the breeze.  They look succulent and ripe.");
-			//Optional Addition: 
+			//Optional Addition:
 			if(flags[kFLAGS.HOLLI_FRUIT_EXPLAINED] > 0) outputText("  A very small, strange part of you actually feels proud to have made something like that with the tree-woman.");
 		}
 		menu();
@@ -276,7 +276,7 @@ private function holliGetsDickDommed():void {
 	else outputText("body feel strung tight like an over-tuned guitar");
 	outputText(".  Holli pulls back, inciting a snarl of displeasure to vibrate from you, but as soon as she's withdrawn, her hands clasp onto the slick shaft and begin to pump it with vigorous strokes.  Her mouth settles back into place around your [cockHead biggest], circling it with her tongue while she bobs up and down on it, snaring your most sensitive place with overwhelming sensations.");
 	outputText("\n\nYou grab hold of the hungry cock-sucker by her neck and push her back, up into her tree, releasing your [cock biggest] before it can blow.  It's a close thing - you're rigid and bobbing, muscles clenching involuntary right on the edge.  Holli makes a choking protestation as she's forced into place but doesn't struggle, fearful of your wrath.  You let the hungry slut go, unharmed but chastised by the rough treatment.  Your cum is destined for her twat, not to be wasted in her slutty noise-hole.");
-	
+
 	outputText("\n\nStepping up, you ram your rigid phallus deep into the slick flower at Holli's waist.");
 	if(player.biggestCockArea() > 80) outputText("  It bends slightly as the immense girth is forced inside her, aiming down, deep inside the trunk.");
 	outputText("  Holli flops into your [chest], twitching weakly and breathing heavily.  \"<i>Fffuck, so good!</i>\" she pants, nuzzling her cheek into your collarbone while her hands play across your shoulders.  You ruthlessly mount her flowery mound with fast motions.  Juices squirt out around your member at the apex of every stroke, raining down over the surrounding ground.  You grab Holli's deep green hair and pull her back.  Her face is wrecked by bliss, her mouth and eyes moving in uncoordinated twitches.");
