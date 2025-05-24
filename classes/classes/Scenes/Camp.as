@@ -2847,7 +2847,7 @@ public class Camp extends NPCAwareContent{
 		player.removePerk(PerkLib.EarthAndSky);
 		player.createPerk(PerkLib.EarthAndSkyEx, 0, 0, 0, 0);
 		player.addStatusValue(StatusEffects.MergedPerksCount, 1, 2);
-		player.perkPoints++;
+		player.perkPoints += 2;
 		doNext(mainPagePocketWatch, 1);
 	}
 	private function mainPagePocketWatchChallengingShoutMastered():void {
