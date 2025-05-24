@@ -8155,7 +8155,7 @@ public class PerkLib
             NaturalInstincts.requireLevel(12)
                     .requirePerk(JobBeastlord);
 			EarthAndSky.requireLevel(12)
-                    .requirePerk(SuddenRun)
+                    .requireAnyPerk(SuddenRun, LiftOff)
 					.requireTou(50)
 					.requireSpe(50);
             ArcanePoolIV.requireLevel(12)

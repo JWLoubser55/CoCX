@@ -1823,4 +1823,4 @@ public class PerkMenu extends BaseContent {
 	 }
 	 */
 }
-}
+}

@@ -2285,7 +2285,7 @@ public class Combat extends BaseContent {
 		var weapon:String = "";
         if (player.isInGoblinMech()) {
             weapon = "saw blade";
-            //Only Mech friendly twin weapons count whenusing an goblin mech
+            //Only Mech friendly twin weapons count when using an goblin mech
             if ((player.weapon == weapons.RIPPER1 || player.weapon == weapons.RIPPER2 || player.weapon == weapons.MACGRSW) && (player.weaponOff == weapons.RIPPER1 || player.weaponOff == weapons.RIPPER2 || player.weaponOff == weapons.MACGRSW)) {
                 weapon = "saw blades";
             }
@@ -3253,6 +3253,7 @@ public class Combat extends BaseContent {
 				else if (player.hasKeyItem("Improved Ammo Chemistry") >= 0) flags[kFLAGS.MULTIPLE_ARROWS_STYLE] += 1;
 			}
         }
+		if (player.hasStatusEffect(StatusEffects.SanguineHaste)) flags[kFLAGS.MULTIPLE_ARROWS_STYLE] += 1;
         if (flags[kFLAGS.ARROWS_ACCURACY] > 0) flags[kFLAGS.ARROWS_ACCURACY] = 0;
         var ammoWord:String = weaponRangeAmmo;
         //Keep logic sane if this attack brings victory

@@ -827,6 +827,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 				else outputText("\nIt downed unto you that you have an item storage issue. Just how the heck could a demon as powerful as you ever have such a thing as a storage issue! To remedy that you worked a minor enchantment you now call the Dimensional Pocket. This will serve as your method of storage now. Better yet whatever item you put inside are safe from the passage of time!");
 				player.createKeyItem("Dimensional Pocket", 0, 0, 0, 0);
+				flags[kFLAGS.SKY_POISON_PEARL] = 0;
 				needNext = true;
 			}
 			if (player.hasStatusEffect(StatusEffects.LustStickApplied)) { //Lust stick!
