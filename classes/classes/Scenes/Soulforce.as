@@ -65,7 +65,7 @@ public class Soulforce extends BaseContent
 		menu();
 		if (player.hasPerk(PerkLib.EnergyDependent)) addButtonDisabled(0, "Meditations", "You're unable to recover soulforce by meditating.");
 		else addButton(0, "Meditations", SoulforceRegeneration).hint("Spend some time on restoring some of your used soulforce.");
-		addButtonIfTrue(1, "Contemplate/Train", DaoContemplations, "Req. successfully surviving your 1st Tribulation OR have Martial Training unlocked.", (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || player.hasStatusEffect(StatusEffects.MartialTraining)), "Dao Contemplations / Practice and refine your martial arts. Training can only be done once per day.");
+		addButtonIfTrue(1, "Contemplate/Train", DaoContemplations, "Req. to successfully surviving your 1st Tribulation OR have Martial Training unlocked.", (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || player.hasStatusEffect(StatusEffects.MartialTraining)), "Dao Contemplations / Practice and refine your martial arts. Training can only be done once per day.");
 		//2
 		if (flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT] < dailySoulforceUsesLimit) {
 			addButton(3, "Self-sustain", SelfSustain).hint("Spend some soulforce on suppressing hunger for a while."); //zamiana soulforce na satiety w stosunku 1:5
@@ -495,11 +495,14 @@ public class Soulforce extends BaseContent
 		return hLrODC;
 	}
 	
-	public function MartialTraining(display:Boolean = true):void {
-		if (display) clearOutput();
+	public function MartialTraining(display:Boolean = true, clone:Boolean = false):void {
+		if (!clone && display) {
+			clearOutput();
+			outputText("You contemplate on the dao on martial arts attempting to improve your mastery of combat.\n\n");
+		}
 		var martial:int;
-		martial = 1 + rand(6);
-		if (display) outputText("You contemplate on the dao on martial arts attempting to improve your mastery of combat.\n\n");
+		if (clone) martial = 1;
+		else martial = 1 + rand(6);
 		if (player.hasStatusEffect(StatusEffects.MartialTraining)) {
 			player.addStatusValue(StatusEffects.MartialTraining, 1, martial);
 			var thres:Array = [20, 40, 60, 100, 140, 180, 220, 260, 300, 400, 500, 600];
@@ -510,7 +513,8 @@ public class Soulforce extends BaseContent
 					player.addStatusValue(StatusEffects.MartialTraining, 2, 1);
 				}
 			}
-		} else player.createStatusEffect(StatusEffects.MartialTraining, martial, 0, 0, 0);
+		}
+		else player.createStatusEffect(StatusEffects.MartialTraining, martial, 0, 0, 0);
 		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 3 && player.hasStatusEffect(StatusEffects.KnowsPunishingKick) && !player.hasPerk(PerkLib.SpinningKick)) {
 			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Spinning kick!\n\n");
 			player.createPerk(PerkLib.SpinningKick, 0, 0, 0, 0);
@@ -527,7 +531,7 @@ public class Soulforce extends BaseContent
 			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
 			player.createPerk(PerkLib., 0, 0, 0, 0);
 		}*/
-		if (display) doNext(camp.returnToCampUseEightHours);
+		if (!clone && display) doNext(camp.returnToCampUseEightHours);
 	}
 
 	public function highestLayerOfMartialTraining():Number {

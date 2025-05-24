@@ -1634,6 +1634,12 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 							}
 						}
 					}
+					if (cloneDao == 9) {
+						if (player.statusEffectv2(StatusEffects.MartialTraining) < SceneLib.soulforce.highestLayerOfMartialTraining()) {
+							SceneLib.soulforce.MartialTraining(false, true);
+							needNext = true;
+						}
+					}
 				}
 			}
 			if (player.hasPerk(PerkLib.ElementalBloodline) && player.hasPerk(PerkLib.ElementalBody)) {

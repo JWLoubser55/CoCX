@@ -10716,7 +10716,10 @@ public class Combat extends BaseContent {
 			if (player.hasPerk(PerkLib.LingeringOpening)) damage *= 4;
 			else damage *= 3;
 		}
-		if (player.hasPerk(PerkLib.EarthAndSky) && (player.hasStatusEffect(StatusEffects.Gallop) || player.hasStatusEffect(StatusEffects.Flying))) damage *= 2;
+		if ((player.hasPerk(PerkLib.EarthAndSky) || player.hasPerk(PerkLib.EarthAndSkyEx)) && (player.hasStatusEffect(StatusEffects.Gallop) || player.hasStatusEffect(StatusEffects.Flying))) {
+			if (player.hasPerk(PerkLib.EarthAndSkyEx)) damage *= 3;
+			else damage *= 2;
+		}
 		return doDamage(damage, apply, display, ignoreDR);
     }
 

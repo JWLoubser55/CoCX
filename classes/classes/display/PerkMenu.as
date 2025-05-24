@@ -158,7 +158,7 @@ public class PerkMenu extends BaseContent {
 		var autoFlyingType:Function = curry(setflag,kFLAGS.AUTO_FLIGHT);
 		var toggleGallopingType:Function = curry(setflag,kFLAGS.AUTO_GALLOP);
 		var autoSporeCloud:Function = curry(setflag,kFLAGS.AUTO_SPORE_CLOUD);
-        if (player.hasPerk(PerkLib.LiftOff)) {
+        if (player.hasPerk(PerkLib.LiftOff) || player.hasPerk(PerkLib.EarthAndSkyEx)) {
 			outputText("You can choose to start flying or not at the start of each combat.\n");
 			outputText("Start: <b>");
 			switch(autoFlyingFlag) {
@@ -195,7 +195,7 @@ public class PerkMenu extends BaseContent {
 			outputText("\nAuto use: <b>" + (flags[kFLAGS.AUTO_SPORE_CLOUD] == 0 ? "No" : "Yes") + "</b>");
 			addButton(8, "SporeCloud", curry(toggleFlagMisc, kFLAGS.AUTO_SPORE_CLOUD));
 		}
-		if (player.hasPerk(PerkLib.SuddenRun)) {
+		if (player.hasPerk(PerkLib.SuddenRun) || player.hasPerk(PerkLib.EarthAndSkyEx)) {
 			outputText("You can choose to start galloping or not at the begining of each combat.\n");
 			outputText("\nStart: <b>" + (flags[kFLAGS.AUTO_GALLOP] == 0 ? "Standing still" : "Galloping") + "</b>");
 			if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN) {

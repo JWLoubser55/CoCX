@@ -2409,7 +2409,7 @@ public class Camp extends NPCAwareContent{
 			addButton(1, "EC: M&B", mainPagePocketWatch, 3).hint("View Merged Perks related to Elemental Conjurer: Mind and Body perk line", "Elemental Conjurer: Mind and Body");
 			addButton(2, "Chimera", mainPagePocketWatch, 4).hint("View Merged Perks related to Chimerical Body perk line", "Chimerical Body");
 			addButton(3, "Mage", mainPagePocketWatch, 5).hint("View Merged Perks related to the Mage perk line", "Mage");
-			addButton(4, "Diehard/Ch.S.", mainPagePocketWatch, 6).hint("View Merged Perks related to the Diehard / Challenging Shout perk line", "Diehard, Challenging Shout");
+			addButton(4, "Misc", mainPagePocketWatch, 6).hint("View Merged Perks related to the Diehard / Earth and Sky / Challenging Shout perk line", "Diehard, Earth and Sky, Challenging Shout");
 		}
 
 		if (page == 2) {
@@ -2546,7 +2546,11 @@ public class Camp extends NPCAwareContent{
 			.disableIf(!player.hasPerk(PerkLib.GreaterDiehard), "Req. Greater Diehard perk")
 			.disableIf(player.hasPerk(PerkLib.GreaterDiehardEx), "You've already merged this perk");
 
-			addButton(1, "Challenging Shout (Mst)", mainPagePocketWatchChallengingShoutMastered)
+			addButton(1, "Earth and Sky (Ex)", mainPagePocketWatchEarthAndSkyEx)
+			.disableIf((!player.hasPerk(PerkLib.EarthAndSky) && !player.hasPerk(PerkLib.SuddenRun) && !player.hasPerk(PerkLib.LiftOff)), "Req. Earth and Sky, Sudden Run and Lift Off perks")
+			.disableIf(player.hasPerk(PerkLib.EarthAndSkyEx), "You've already merged this perk");
+
+			addButton(2, "Challenging Shout (Mst)", mainPagePocketWatchChallengingShoutMastered)
 			.disableIf(!player.hasPerk(PerkLib.ChallengingShoutSu), "Req. Challenging Shout (Su) perk")
 			.disableIf(player.hasPerk(PerkLib.ChallengingShoutMastered), "You've already merged this perk");
 
@@ -2835,6 +2839,17 @@ public class Camp extends NPCAwareContent{
 		player.perkPoints += 2;
 		doNext(mainPagePocketWatch, 6);
 	}
+	private function mainPagePocketWatchEarthAndSkyEx():void {
+		clearOutput();
+		outputText("Perks combined: 'Earth and Sky (Ex)' perk attained.");
+		player.removePerk(PerkLib.LiftOff);
+		player.removePerk(PerkLib.SuddenRun);
+		player.removePerk(PerkLib.EarthAndSky);
+		player.createPerk(PerkLib.EarthAndSkyEx, 0, 0, 0, 0);
+		player.addStatusValue(StatusEffects.MergedPerksCount, 1, 2);
+		player.perkPoints++;
+		doNext(mainPagePocketWatch, 1);
+	}
 	private function mainPagePocketWatchChallengingShoutMastered():void {
 		clearOutput();
 		outputText("Perks combined: 'Challenging Shout (Mastered' perk attained.");
@@ -2850,7 +2865,7 @@ public class Camp extends NPCAwareContent{
 		clearOutput();
 		outputText("Perks combined: '' perk attained.");
 		player.removePerk(PerkLib.);
-		player.createPerk(PerkLib.);
+		player.createPerk(PerkLib., 0, 0, 0, 0);
 		player.addStatusValue(StatusEffects.MergedPerksCount, 1, );
 		player.perkPoints++;
 		doNext(mainPagePocketWatch, 1);
@@ -2859,7 +2874,7 @@ public class Camp extends NPCAwareContent{
 		clearOutput();
 		outputText("Perks combined: '' perk attained.");
 		player.removePerk(PerkLib.);
-		player.createPerk(PerkLib.);
+		player.createPerk(PerkLib., 0, 0, 0, 0);
 		player.addStatusValue(StatusEffects.MergedPerksCount, 1, );
 		player.perkPoints++;
 		doNext(mainPagePocketWatch, 1);
@@ -2868,7 +2883,25 @@ public class Camp extends NPCAwareContent{
 		clearOutput();
 		outputText("Perks combined: '' perk attained.");
 		player.removePerk(PerkLib.);
-		player.createPerk(PerkLib.);
+		player.createPerk(PerkLib., 0, 0, 0, 0);
+		player.addStatusValue(StatusEffects.MergedPerksCount, 1, );
+		player.perkPoints++;
+		doNext(mainPagePocketWatch, 1);
+	}
+	private function mainPagePocketWatch():void {
+		clearOutput();
+		outputText("Perks combined: '' perk attained.");
+		player.removePerk(PerkLib.);
+		player.createPerk(PerkLib., 0, 0, 0, 0);
+		player.addStatusValue(StatusEffects.MergedPerksCount, 1, );
+		player.perkPoints++;
+		doNext(mainPagePocketWatch, 1);
+	}
+	private function mainPagePocketWatch():void {
+		clearOutput();
+		outputText("Perks combined: '' perk attained.");
+		player.removePerk(PerkLib.);
+		player.createPerk(PerkLib., 0, 0, 0, 0);
 		player.addStatusValue(StatusEffects.MergedPerksCount, 1, );
 		player.perkPoints++;
 		doNext(mainPagePocketWatch, 1);
@@ -3347,7 +3380,8 @@ public class Camp extends NPCAwareContent{
 			if (clone > 12) continue; // short circuit for too many, maybe add pagination if clone cap gets upped for some reason
 			addButton(clone, "Contempl. (" + (clone + 1) + ")", cloneContemplateDao, clone)
 				.hint("Task your clone (" + (clone + 1) + ") with contemplating one of the Daos you know.")
-				.disableIf(!player.hasStatusEffect(Soulforce.clones[clone]), "Req. fully formed clone (" + (clone + 1) + ").");
+				.disableIf(!player.hasStatusEffect(Soulforce.clones[clone]), "Req. fully formed clone (" + (clone + 1) + ").")
+				.disableIf((!player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || !player.hasStatusEffect(StatusEffects.MartialTraining)), "Req. to successfully surviving your 1st Tribulation OR have Martial Training unlocked.");
 		}
 		addButton(14, "Back", campMiscActions);
 	}
@@ -3453,6 +3487,8 @@ public class Camp extends NPCAwareContent{
 			addButton(btn++, Soulforce.daos[d][0], cloneContemplateDaoSet, clone, Soulforce.daos[d][2])
 				.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == Soulforce.daos[d][2], "Your clone ("+clone+") is currently contemplating this Dao.");
 		}
+		addButton(12, "Martial", cloneContemplateDaoSet, clone, 9)
+			.disableIf(!player.hasStatusEffect(StatusEffects.MartialTraining), "Req. to have Martial Training unlocked.");
 		addButton(13, "None", cloneContemplateDaoSet, clone, 10)
 			.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == 10, "Your clone ("+clone+") is currently not contemplating any Dao.");
 		addButton(14, "Back", CloneMenu);
