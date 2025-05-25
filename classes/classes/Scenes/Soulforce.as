@@ -382,6 +382,9 @@ public class Soulforce extends BaseContent
 		["Earth", StatusEffects.DaoOfEarth, 19],
 		["Acid", StatusEffects.DaoOfAcid, 20],
 	];
+	public static var daosnot:/*Array*/Array = [
+		["Martial Training", StatusEffects.MartialTraining, 9],
+	];
 
 	public static var clones:/*StatusEffectType*/Array = [
 		StatusEffects.PCClone1st,
@@ -409,7 +412,16 @@ public class Soulforce extends BaseContent
 			}
 		}
 		if (player.hasStatusEffect(StatusEffects.MartialTraining)) {
-			addButtonIfTrue(13, "Train", MartialTraining, "You have reached your current limit of martial training.", player.statusEffectv2(StatusEffects.MartialTraining) < highestLayerOfMartialTraining(), "Practice and refine your martial arts.");
+			for (var j:int = 0; j < daosnot.length; ++j) {
+				var daon:Array = daosnot[j];
+				if (player.hasStatusEffect(daon[1]))
+					outputText(daon[0] + ": Level - " + player.statusEffectv2(daon[1]) + ", Progress - " + player.statusEffectv1(daon[1]) + "\n");
+				addButton(j, "Train", daoContemplationsEffect, daon[1], daon[0]).hint("Practice and refine your martial arts.")
+					.disableIf(player.statusEffectv2(daon[1]) == highestLayerOfMartialTraining(),
+						"You have reached your current limit of martial training."
+						+ (player.hasPerk(PerkLib.SoulExalt) ? "Try to improve your soulforce skills to get further."
+							: "\n<b>MAXIMUM LEVEL REACHED</b>"));
+			}
 		}
 		addButton(14, "Back", accessSoulforceMenu);
 	}

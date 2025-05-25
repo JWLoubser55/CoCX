@@ -3362,6 +3362,12 @@ public class Camp extends NPCAwareContent{
 						if (player.statusEffectv1(Soulforce.clones[clone]) == Soulforce.daos[d][2])
 							outputText(Soulforce.daos[d][0]);
 					}
+				} else if (player.statusEffectv1(Soulforce.clones[clone]) < 10) {
+					outputText("Contemplating ");
+					for (var dn:int = 0; dn < Soulforce.daosnot.length; ++dn) {
+						if (player.statusEffectv1(Soulforce.clones[clone]) == Soulforce.daosnot[dn][2])
+							outputText(Soulforce.daosnot[dn][0]);
+					}
 				} else outputText("Nothing");
 				outputText("\n\n");
 			}
@@ -3488,7 +3494,8 @@ public class Camp extends NPCAwareContent{
 				.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == Soulforce.daos[d][2], "Your clone ("+clone+") is currently contemplating this Dao.");
 		}
 		addButton(12, "Martial", cloneContemplateDaoSet, clone, 9)
-			.disableIf(!player.hasStatusEffect(StatusEffects.MartialTraining), "Req. to have Martial Training unlocked.");
+			.disableIf(!player.hasStatusEffect(StatusEffects.MartialTraining), "Req. to have Martial Training unlocked.")
+			.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == Soulforce.daosnot[d][2], "Your clone ("+clone+") is currently contemplating this.");
 		addButton(13, "None", cloneContemplateDaoSet, clone, 10)
 			.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == 10, "Your clone ("+clone+") is currently not contemplating any Dao.");
 		addButton(14, "Back", CloneMenu);
