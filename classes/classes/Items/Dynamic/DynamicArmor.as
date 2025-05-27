@@ -209,7 +209,7 @@ public class DynamicArmor extends Armor implements IDynamicItem {
 	 * - (optional) quality: force quality
 	 * - def: Base defense
 	 * - mdef: Base magic defense
-	 * - qdef: Defense-per-quality (0.25 = +25% per +1 qualiity)
+	 * - qdef: Defense-per-quality (0.25 = +25% per +1 quality)
 	 * - value: Base cost in gems
 	 * - bulge: Can be modded by Exgartuan (ugh). Default false
 	 * - undergarment: Can be worn with undergarment. Default true
@@ -219,7 +219,7 @@ public class DynamicArmor extends Armor implements IDynamicItem {
 			chance: 0,
 			name: "queen's guard armor",
 			shortName: "QGuardA",
-			desc: "A suit of chitinous plate armour, hardened with amber. It grants incredible protection against attacks while weighting next to nothing, allowing for maximum mobility. The amber is just translucent enough to reveal the user's curves and arouse the senses. The insides, being coated in honey, provides a comfortable, if not sticky, experience to the wielder. For a bee, this will help in recovering from wounds. When worn by a bee, increase tease damage and grant regeneration.",
+			desc: "A suit of chitinous plate armor, hardened with amber. It grants incredible protection against attacks while weighting next to nothing, allowing for maximum mobility. The amber is just translucent enough to reveal the user's curves and arouse the senses. The insides, being coated in honey, provides a comfortable, if not sticky, experience to the wielder. For a bee, this will help in recovering from wounds. When worn by a bee, increase tease damage and grant regeneration.",
 			type: AP_LIGHT,
 			tags: [
 				ItemConstants.A_AGILE,

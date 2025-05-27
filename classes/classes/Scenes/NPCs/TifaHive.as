@@ -201,9 +201,9 @@ public function amberforgeMain():void {
 	outputText("As you enter the armory, you begin to hear the distinct buzz of the forge bee. Warmth in the forge is produced by the extremely rapid flapping of those bee wings generating a source of heat strong enough to melt and alter the materials used in the creation of bee girl weaponry. The material used for the process is harvested from particularly magically resonant trees and refined by the bee girls into what is known as magical amber, a material tougher than steel.\n\n");
 	outputText("A well built bee with a muscular shape approaches you from the side of the amber forge and welcomes you.\n\n");
 	if(ForgeVisited){
-		outputText("<i>\"Good day, sizzzter. Rather strange of a handmaiden to enter the amberforge. Izzzn’t your job to go out there and lay eggs? What use could a cutie like you have for weapon and armour?\"</i>\n\n");
+		outputText("<i>\"Good day, sizzzter. Rather strange of a handmaiden to enter the amberforge. Izzzn’t your job to go out there and lay eggs? What use could a cutie like you have for weapon and armor?\"</i>\n\n");
 		outputText("Well, sure, you are not a soldier bee, but since you have been awarded extra privilege from the queen, you are free to go adventuring amidst your duty.\n\n");
-		outputText("<i>\"Well, not for me to judge sizzzter if the queen vouch for you, I will craft you weapons and armour regardless of your duty. Normally, soldier bees are taller, so the equipment matches thizzz, but that doesn't mean I can’t make gear for a smaller bee, provided you bring in the materials, get me some chitin, alraune nectar and gems to pay for the refined amber and I’ll make you itemzzz.\"</i>\n\n");
+		outputText("<i>\"Well, not for me to judge sizzzter if the queen vouch for you, I will craft you weapons and armor regardless of your duty. Normally, soldier bees are taller, so the equipment matches thizzz, but that doesn't mean I can’t make gear for a smaller bee, provided you bring in the materials, get me some chitin, alraune nectar and gems to pay for the refined amber and I’ll make you itemzzz.\"</i>\n\n");
 	} else {
 		outputText("<i>\"Hey sizzzter it’s you again! Here to craft something?\"</i>")
 	}
@@ -232,7 +232,7 @@ protected function rgf(s:String, b:Boolean):String{
 public function amberforgeCraft():void {
 	clearOutput();
 	outputText("You review a list of potential items with the ambersmith. This list includes multiple piercing weapons as well as armors and even magic staves.\n\n");
-	outputText("<i>\"So, sizzzter, what weapon or armour would you like me to make for you?\"</i>")
+	outputText("<i>\"So, sizzzter, what weapon or armor would you like me to make for you?\"</i>")
 	var buttons:ButtonDataList = new ButtonDataList();
 	for each(var i:Array in BEE_FORGE_ITEMS){
 		var a:Boolean = player.hasItem(useables.B_CHITN,i[1]);

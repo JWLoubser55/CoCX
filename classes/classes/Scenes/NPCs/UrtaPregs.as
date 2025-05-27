@@ -2201,7 +2201,7 @@ private function takeTheKidsForWalk():void {
 	
 	outputText("\n\nHe's a tall, lanky wolf-morph, fur a dusty white and eyes of a clear light blue and he's wearing a robe with various snowflakes embroidered on it.  \"<i>I'd recognize that fur anywhere! This must be Urta's lot?</i>\"  He asks you and you reply in the affirmative.  \"<i>Well now consider this on the house, it's the least I can do after all the good Captain has done for us!</i>\"  What a spot of luck!  You and your child");
 	if(urtaKids() > 1) outputText("ren");
-	outputText(" pick out flavours while the shopkeeper scoops them up onto wafer cones.  Once he's done, you thank the wolf and leave the shop followed by your ");
+	outputText(" pick out flavors while the shopkeeper scoops them up onto wafer cones.  Once he's done, you thank the wolf and leave the shop followed by your ");
 	if(urtaKids() > 10) outputText("army of ");
 	outputText("child");
 	if(urtaKids() > 1) outputText("ren");
@@ -2209,7 +2209,7 @@ private function takeTheKidsForWalk():void {
 	
 	outputText("\n\nYour child");
 	if(urtaKids() > 1) outputText("ren");
-	outputText(" don't bother waiting or savouring their ice cream and neither do you, it's damned hot walking around this desert.  There's less cause for mischief too, " + urtaKidsText("his","her","their") + " face");
+	outputText(" don't bother waiting or savoring their ice cream and neither do you, it's damned hot walking around this desert.  There's less cause for mischief too, " + urtaKidsText("his","her","their") + " face");
 	if(urtaKids() == 1) outputText("buried in cone");
 	else outputText("s buried in their cones");
 	outputText(" along with your own, greedily licking up melting droplets.  ");

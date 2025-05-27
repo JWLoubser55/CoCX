@@ -6,8 +6,8 @@ package classes
 	import flash.utils.Proxy;
 	import flash.utils.flash_proxy;
 
-	// This is a special class that immitates a array/dictionary, and 
-	// yet has some special behaviour to make it look & act like any arbitrary aray value 
+	// This is a special class that imitates a array/dictionary, and 
+	// yet has some special behavior to make it look & act like any arbitrary array value 
 	// is pre-initialized to 0. 
 	public dynamic class DefaultDict extends Proxy 
 	{
@@ -102,7 +102,7 @@ package classes
 
 
 		// you have to implement object management bits yourself, since unfortunately the proxy
-		// object doesn't have default stuff you can just override where you want special behaviour
+		// object doesn't have default stuff you can just override where you want special behavior
 		// As such, the following functions just make defaultDict iterable, and manage removing 
 		// things, etc...
 

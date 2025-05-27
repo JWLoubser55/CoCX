@@ -1083,7 +1083,7 @@ public function soularena():void {
 	public function intermediateleadershipfight1():void {
 		clearOutput();
 		outputText("As you enter the arena the announcer voice booms in and the crowd cheers you up. They get to see the hero who defeated the previous trial make a come back and thats clearly not an everyday spectacle.\n\n");
-		outputText("\"<i>Greeting people of the river town, welcome to the arena. Today our favourite champion faces off against team battles, you know what this means!</i>\"\n\n");
+		outputText("\"<i>Greeting people of the river town, welcome to the arena. Today our favorite champion faces off against team battles, you know what this means!</i>\"\n\n");
 		outputText("The crowd suddenly starts calling out as a pair of large figures easily 8 feet tall steps out from the opposite archway. It's a minotaur and its lacta bovine wife. ");
 		outputText("A single minotaur is normally much trouble but partnered up with a lacta bovine there's no telling what shenanigan could happen! The bull walks toward you confident in his might he won't let you simply trample his pride before his wife.\n\n");
 		player.createStatusEffect(StatusEffects.SoulArena, 0, 0, 0, 0);
@@ -1095,8 +1095,8 @@ public function soularena():void {
 		clearOutput();
 		soularenafightsbetween();
 		outputText("\n\nAs the minotaur couple falls down utterly defeated the announcer claims. \"<i>Well seeing as the challenger defeated the cows we have a special surprise for you today. Angels do not typically associate with us folks as they are too busy waging a bloody war against the demon and scouring corruption from the land ");
-		outputText("but through many deals and persuasion we managed to secure the collaboration of these two. I present to you Gabriel and Uriel the angel twins! Do not be deceived by their beauty noor their innocent look they are definitely out for blood!</i>\"\n\n");
-		outputText("The two angels calmly hover into the battlefield flanked by two pairs of toothed winged orbs. Their demeanour is almost void of expression as they fixate you and emotionlessly declare at the same time.\n\n");
+		outputText("but through many deals and persuasion we managed to secure the collaboration of these two. I present to you Gabriel and Uriel the angel twins! Do not be deceived by their beauty nor their innocent look they are definitely out for blood!</i>\"\n\n");
+		outputText("The two angels calmly hover into the battlefield flanked by two pairs of toothed winged orbs. Their demeanor is almost void of expression as they fixate you and emotionlessly declare at the same time.\n\n");
         outputText("\"<i>Do not make this complicated for us mortal… simply fall.</i>\"\n\n");
 		startCombat(new AngelLR());
         monster.createStatusEffect(StatusEffects.NoLoot, 0, 0, 0, 0);

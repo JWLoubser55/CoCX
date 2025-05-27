@@ -324,13 +324,13 @@ public class DemonSoldier extends Monster {
         this.a = "the ";
         this.short = "Demon Soldier";
         this.imageName = "demon";
-        this.long = "You are fighting " + (this.demonGender == DEMON_GENDER_MALEHERM ? "what, at first appears to be a manly Incubus, but a glimpse of drooling, demonic snatch reveals to be an unusually masculine Omnibus" : this.demonTitle(1)) + ", which appears to be some form of soldier, as " + this.mf("he", "she") + "'s wearing a suit of bronze armour... of a sort: "
-        this.long += "a helmet with holes cut for the creature's horns; a sculpted breastplate with a stylised 'L' in the middle of it and jeweled nipples (naturally) and a pair of armoured bracers and shin-guards, etched with scenes of orgiastic debauchery. ";
+        this.long = "You are fighting " + (this.demonGender == DEMON_GENDER_MALEHERM ? "what, at first appears to be a manly Incubus, but a glimpse of drooling, demonic snatch reveals to be an unusually masculine Omnibus" : this.demonTitle(1)) + ", which appears to be some form of soldier, as " + this.mf("he", "she") + "'s wearing a suit of bronze armor... of a sort: "
+        this.long += "a helmet with holes cut for the creature's horns; a sculpted breastplate with a stylized 'L' in the middle of it and jeweled nipples (naturally) and a pair of armored bracers and shin-guards, etched with scenes of orgiastic debauchery. ";
         if (rand(3) == 0) {
             this.long += "A ragged, off-white and stained loincloth covers the demon's crotch in spite of " + this.mf("his", "her") + " corrupted nature. Judging from the looks, it looks like it's barely doing its job and already features a damp spot.";
         } else {
-            this.long += "Apart from various piercings and items of jewelry the Demon is completely naked under " + this.mf("his", "her") + " armour, leaving ";
-            if (this.hasCock() && this.hasVagina()) this.long += "both " + this.mf("his", "her") + " sets of infernal genitailia";
+            this.long += "Apart from various piercings and items of jewelry the Demon is completely naked under " + this.mf("his", "her") + " armor, leaving ";
+            if (this.hasCock() && this.hasVagina()) this.long += "both " + this.mf("his", "her") + " sets of infernal genitalia";
             else if (this.hasCock()) this.long += this.mf("his", "her") + " pulsating cock";
             else if (this.hasVagina()) this.long += this.mf("his", "her") + "slavering pussy";
             else this.long += this.mf("his", "her") + "oddly blank crotch"; //Failsafe

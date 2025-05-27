@@ -363,8 +363,8 @@ public function alvinaThirdEncounterYesNeverLost():void
 	if (AlvinaFightingToCorruptYou) {
 		outputText("You wake up with Alvina towering over you.[pg]");
 		outputText("\"<i>You are really hopeless aren't you… it's fine I'll fix your mess for you this one time, but don't do that ever again or I will end you.</i>\"");
-		outputText("Forcefully taking your phylactery into her clawed grasp, she pours a torrent of corruption into you straight through your soul. The effect is instantanious, stripping you of your defiance, with the added effect of healing the scar left by the artifact in the purification ritual.[pg]");
-		outputText("\"<i>You don't need purity, moral conduct or a sense of justice concieved by others, all you need is me, [name].</i>\"[pg]");
+		outputText("Forcefully taking your phylactery into her clawed grasp, she pours a torrent of corruption into you straight through your soul. The effect is instantaneous, stripping you of your defiance, with the added effect of healing the scar left by the artifact in the purification ritual.[pg]");
+		outputText("\"<i>You don't need purity, moral conduct or a sense of justice conceived by others, all you need is me, [name].</i>\"[pg]");
 		outputText("And you guess she's right, and she always was. As such you take the decision not to disappoint her again.");
 		player.removeStatusEffect(StatusEffects.DevilPurificationScar);
 		player.dynStats("cor", 100);
@@ -1882,7 +1882,7 @@ public function postMarriageSleep():void {
 		} else {
 			outputText("She produces a scroll, handing it to you \"This here is Polar Midnight, one of my signature spells. It wasn't made to be handled by common mages and could very well kill you if misused, but seeing as you defeated me in combat, I believe you can handle it just fine. I had another spell scroll called Meteor Storm but a thief stole it from me while I wasn't home. I could make a new scroll seeing as I know the spell but it would take a lot of time to transcribe.</i>\"[pg]");
 			if (player.hasStatusEffect(StatusEffects.KnowsPolarMidnight)) {
-				outputText("You tell her that you already know this spell... \"<i>Oh, ahh I see, yes thats right I gave it to you sometime before our fight... How could I forget?</i>\"[pg]")
+				outputText("You tell her that you already know this spell... \"<i>Oh, ahh I see, yes that's right I gave it to you sometime before our fight... How could I forget?</i>\"[pg]")
 				doNext(camp.campFollowers);
 			} else {
 				outputText("<b>You gained a scroll of Polar Midnight.</b>\n\n");
@@ -1898,7 +1898,7 @@ public function postMarriageSleep():void {
 		clearOutput();
 		outputText("Feeling Antsy you decide to ask Alvina out. She blush wildly but adjust her glasses.\n\n");
 		outputText("\"<i>I mean [name] we are in the middle of the camp in front of everyone it's not that I don't want to but…</i>\"\n\n");
-		outputText("She ponders before making a mischevious smile.\n\n");
+		outputText("She ponders before making a mischievous smile.\n\n");
 		outputText("\"<i>Actually I just remembered something, give me a second.</i>\"\n\n");
 		outputText("She prepares a spell and a white door appears.\n\n");
 		outputText("\"<i>After you [name].</i>\"\n\n");
@@ -1918,7 +1918,7 @@ public function postMarriageSleep():void {
 		else remarkAverageCock();
 
 		outputText("Blushing in excitement, she gently guides you into her lap, spreading her hooved legs apart to offer you access to her innermost precious place, her hands open to catch and hold yours. Somehow this passionate, innocent pose of hers arouses you more than all the trice-damned demons of Mareth have; whereas their seduction is perverted and crude, Alvina's pure, genuine, and nurtured love for you makes her every gesture radiate with a cute and heartwarming factor unique to her. "+
-				"This isn't just about raw sex, this is about a conversation between you and her and sensual carresses and kisses are the word of love you two exchange. You place your hands into the palm of her open paws and align your "+player.cockDescript(x)+" with the entryway to Alvina sacred garden trusting past the gate for a taste of her heaven. You are not disappointed, since Alvina was formerly a succubus; her vagina is capable of amazing feats of motion control; she uses it to massage your cock slowly, letting you savor the pleasure for as long as possible. " +
+				"This isn't just about raw sex, this is about a conversation between you and her and sensual caresses and kisses are the word of love you two exchange. You place your hands into the palm of her open paws and align your "+player.cockDescript(x)+" with the entryway to Alvina sacred garden trusting past the gate for a taste of her heaven. You are not disappointed, since Alvina was formerly a succubus; her vagina is capable of amazing feats of motion control; she uses it to massage your cock slowly, letting you savor the pleasure for as long as possible. " +
 				"All the while you two seek each other's mouth moving together to reach new pleasurable heights. As a demon Alvina only knew to take and never give in return her transformation actually led her to rediscover the pleasure of giving and receiving freely and through each pleasant ministration she dots your penis she gets to feel some of the pleasure back. You mean in genuine untarnished happiness as you passionately slide your penis down her canal seeking out all her sweet spots. You can't help but think your penis feels at home into her hole " +
 				"and feel a little apologetic about all the other hole you've tried out before hers.\n\n");//cant check for penile virginity
 		outputText("Alvina, unable to hold further, wraps her legs around you, pushing you deeper and triggering your climax. Pleasure overwhelm your penis as you shoot rope after rope into her warm welcoming folds. She smiles in happiness, eyes closed in bliss as you finish.\n\n");

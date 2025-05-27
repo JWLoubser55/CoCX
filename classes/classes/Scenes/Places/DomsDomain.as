@@ -40,7 +40,7 @@ public class DomsDomain extends BaseContent implements SaveableState, TimeAwareI
     public static var CeraphState:int; // 0 for unseen, 1 for seen, 2 for cowed, 3 for enslaved by Meila, 4 enslaved by Nolan/Jabba
     public static var MeilaState:int; //0 for unseen, 1 for seen, 2 for in charge
     public static var MeilaTrust:int; //0-100
-    public static var Playerdominance:int; //0-100. Player's percieved dominance in the domain. Increases or decreases the likelihood of certain events happening
+    public static var Playerdominance:int; //0-100. Player's perceived dominance in the domain. Increases or decreases the likelihood of certain events happening
     public static var NolanState:int; // 0 for unseen, 1 for Succubus Scene, 2 for second scene, 3 for normal, 4 if he's willing to take over, 5 for in charge
     public static var ZetazState:int; // 0 for unseen, 1 for worker, 2 for slave, 3 for dead
     public static var JabbaState:int; // 0 for unseen, 1 for normal

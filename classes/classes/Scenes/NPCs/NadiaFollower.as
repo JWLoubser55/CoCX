@@ -206,13 +206,13 @@ public function wonOverNadiaSex():void {
 public function wonOverNadiaOralF():void {
 	clearOutput();
 	if (player.isBiped()) {
-		outputText("You look over the defeated equine, as she lies panting on the ground. Getting an idea you remove your armour, and walk over her until your [pussy] is over the equine’s head. She looks up at you");
+		outputText("You look over the defeated equine, as she lies panting on the ground. Getting an idea you remove your armor, and walk over her until your [pussy] is over the equine’s head. She looks up at you");
 		if (flags[kFLAGS.NADIA_FOLLOWER] >= 2) outputText(", hungrily licking her lips");
 		else outputText(" nervously");
 		outputText(". Smirking you drop to you knees, making sure to pin her arms under your legs, before moving your pussy directly in front of her face.\n\n");
 	}
 	if (player.isTaur()) {
-		outputText("You look over the defeated equine, as she lies panting on the ground. Getting an idea you remove your armour, and trotting over her body, moving the back of your centaur body over her head, so she can see your [pussy]");
+		outputText("You look over the defeated equine, as she lies panting on the ground. Getting an idea you remove your armor, and trotting over her body, moving the back of your centaur body over her head, so she can see your [pussy]");
 		if (player.tailCount > 0) outputText(" behind your [tail]");
 		outputText(". She looks up at you");
 		if (flags[kFLAGS.NADIA_FOLLOWER] >= 2) outputText(", hungrily licking her lips");
@@ -220,7 +220,7 @@ public function wonOverNadiaOralF():void {
 		outputText(". Smirking, you sit down on her face, trapping her between your [pussy] and the ground.\n\n");
 	}
 	if (player.isNaga() || player.isScylla()) {
-		outputText("You look over the defeated equine, as she lies panting on the ground. Getting an idea you remove your armour, and pick up her limp body with your ");
+		outputText("You look over the defeated equine, as she lies panting on the ground. Getting an idea you remove your armor, and pick up her limp body with your ");
 		if (player.isNaga()) outputText("naga tail");
 		else outputText("scylla tentacles");
 		outputText(", holding her in the air, before wrapping ");
@@ -277,7 +277,7 @@ public function wonOverNadiaOralM(mockForce:int = 0):void {
 	var x:int = player.biggestCockIndex();
 	var likesIt:Boolean = mocking ? mockForce == 1 : flags[kFLAGS.NADIA_FOLLOWER] >= 2;
 	if (player.isBiped()) {
-		outputText("You walk towards your defeated equine foe who lies panting on the ground, trying to regain her breath. As you stand over her the sight of her panting lips gives you an idea of how to blow off some steam. You part your groin armour, pulling out your [cocks].");
+		outputText("You walk towards your defeated equine foe who lies panting on the ground, trying to regain her breath. As you stand over her the sight of her panting lips gives you an idea of how to blow off some steam. You part your groin armor, pulling out your [cocks].");
 		if (player.hasVagina() && flags[kFLAGS.NADIA_FOLLOWER] == 0) outputText(" Shocking the equine to find out you're actually a hermaphrodite.");
 		if (likesIt) outputText(" The equine licks her lips eagerly at the sight of your [cockplural].");
 		outputText("\n\nYou step over her, standing above her torso while she watches you with ");

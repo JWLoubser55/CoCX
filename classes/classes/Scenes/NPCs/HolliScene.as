@@ -137,7 +137,7 @@ public function holliCampMenu(output:Boolean = true):void {
 public function alrauneExtraSceneWithHollicyntiaTentacleDuel():void {
 	clearOutput();
 	if (!player.isLiliraune()) sceneHunter.print("Check failed: Liliraune!");
-	outputText("As you ponder how you will deal with Hollicyntia’s behaviour today, you catch a glimpse of her checking out your vines. Holli seems to be comparing her vines with yours, evaluating size and length thoroughly like a boy in a shower room. As if that upstart could rival your floral perfection!\n\n");
+	outputText("As you ponder how you will deal with Hollicyntia’s behavior today, you catch a glimpse of her checking out your vines. Holli seems to be comparing her vines with yours, evaluating size and length thoroughly like a boy in a shower room. As if that upstart could rival your floral perfection!\n\n");
 	outputText("\"<i>These are big and healthy, but mine are better!</i>\" she taunts, evidently trying to rile you up.\n\n");
 	if (player.isLiliraune()) outputText("Your twin responds right away clearly upset \"<i>As if! Twice the girl, twice the pleasure! You’re just jealous that I get to literally enjoy having an orgy partner all day long! If both of us worked you up you would not even last a minute before melting in your tree little sis!</i>\"\n\n");
 	else outputText("Surely not! You bet you could fuck your sister’s brains out before she actually managed to get you off. With confidence you issue her a challenge, your vines raised around you. Here’s the deal, both of you will try to fuck each other silly, and whoever orgasms first loses!\n\n");

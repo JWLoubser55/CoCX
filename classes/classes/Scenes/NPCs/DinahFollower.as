@@ -559,7 +559,7 @@ public class DinahFollower extends NPCAwareContent// implements TimeAwareInterfa
 						case 5:
 						case 6:
 						case 7:
-							outputText("Your mech’s armour is visibly thicker, and you can tell that it’ll be harder to damage than before. The metal shines. \"<i>Yeah, apparently they designed their armour to survive deep pressure in the mines, but this stuff works just as well as armour plate.</i>\"\n\n");
+							outputText("Your mech’s armor is visibly thicker, and you can tell that it’ll be harder to damage than before. The metal shines. \"<i>Yeah, apparently they designed their armor to survive deep pressure in the mines, but this stuff works just as well as armor plate.</i>\"\n\n");
 							break;
 						case 8:
 						case 9:
@@ -572,7 +572,7 @@ public class DinahFollower extends NPCAwareContent// implements TimeAwareInterfa
 							break;
 						case 15:
 						case 16:
-							outputText("Your mech’s limbs are slightly smaller, and Dinah follows your gaze. \"<i>Yep, improved alloy and optimised limb hydraulics. Smaller, but every bit as deadly as before. This mech is now a leaner, meaner killing machine. Have fun!</i>\"\n\n");
+							outputText("Your mech’s limbs are slightly smaller, and Dinah follows your gaze. \"<i>Yep, improved alloy and optimized limb hydraulics. Smaller, but every bit as deadly as before. This mech is now a leaner, meaner killing machine. Have fun!</i>\"\n\n");
 							break;
 						case 17:
 						case 18:

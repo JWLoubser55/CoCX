@@ -188,7 +188,7 @@ public class Achievements extends BaseContent
 			//addAchievement("Jessica Nigri apprentice", kACHIEVEMENTS.FASHION_COSPLAYER_5, "Wear 300 different clothings/armors.");
 			//addAchievement("Yaya Han apprentice", kACHIEVEMENTS.FASHION_COSPLAYER_6, "Wear 600 different clothings/armors.");
 			addAchievement("Dominatrix", kACHIEVEMENTS.FASHION_DOMINATRIX, "Wear any form of kinky clothing and wield any form of whip.");
-			addAchievement("Going Commando", kACHIEVEMENTS.FASHION_GOING_COMMANDO, "Wear no undergarments while wearing any clothes or armours.");
+			addAchievement("Going Commando", kACHIEVEMENTS.FASHION_GOING_COMMANDO, "Wear no undergarments while wearing any clothes or armors.");
 			addAchievement("Subject Delta", kACHIEVEMENTS.FASHION_SUBJECT_DELTA, "Equip Soul Drill and Diving Suit while not having equipped any shield. Also having Spellknight job.", "", true);
 			addAchievement("Bushido - the way of the warrior", kACHIEVEMENTS.FASHION_BUSHIDO_THE_WAY_OF_THE_WARRIOR, "Equip Samurai Armor, Kabuto & Mempo and Daisho.", "", true);
 			addAchievement("Bling Bling", kACHIEVEMENTS.FASHION_BLING_BLING, "Wear ring that is valued at least 1,000 gems.");

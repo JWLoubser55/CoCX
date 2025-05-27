@@ -142,7 +142,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 		//drink list (to be expanded) some generic nonTF beers
 		private function notThirsty():void {
 			clearOutput();
-			outputText("In the end you realise you are not thirsty after all and wave a goodbye before leaving.\n\n");
+			outputText("In the end you realize you are not thirsty after all and wave a goodbye before leaving.\n\n");
 			doNext(enteringInn,false);
 		}
 
@@ -150,7 +150,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			clearOutput();//Felix - male beffy bro nekomata twin herald npc
 			if (second) {
 				outputText("You approach the table seeing very peculiar looking being. It almost looks like someone took a cat and dog morph, then stuck them together.\n\n They have two heads, two pairs of arms and even two tails. ");
-				outputText("Left side of body looking clearly canine with dog shaped head. It swivels around, constantly scanning the bar for threats. The right head seems feline, but unlike most cat races you've seen, this person has noticable musculature. Seeing your approach, the cat head turns toward you. Its pupils dialate slightly, and it stares at you with feline interest.\n\n");
+				outputText("Left side of body looking clearly canine with dog shaped head. It swivels around, constantly scanning the bar for threats. The right head seems feline, but unlike most cat races you've seen, this person has noticable musculature. Seeing your approach, the cat head turns toward you. Its pupils dilate slightly, and it stares at you with feline interest.\n\n");
 			}
 			outputText("\"<i>Welcome to 'Felix's Corner' traveler. Do you wanna buy something?</i>\" asks the cat head ending it with a short purr. \"<i>We have wares if you have the spirit stones.</i>\"\n\n");
 			outputText("After that the other head stops looking around, baring its teeth at you. \"<i>If you not interested in buying anything, then get lost... we don't have all day.</i>\"\n\n");
@@ -212,10 +212,10 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			clearOutput();
 			if (AhriTavernTalks) outputText("\"<i>You came back? What do you seek from this Madam?</i>\" You can swear to see her eyes glow for a moment under the hood as she looks at you. \"<i>Another session to exchange your grown potential to increased ability to develop mystical abilities?</i>\"\n\n");
 			else {
-				outputText("You see a person covered wholy by the loose robe. For a moment it looks like it not noticed your presence next to it.\n\n");
+				outputText("You see a person covered wholly by the loose robe. For a moment it looks like it not noticed your presence next to it.\n\n");
 				outputText("\"<i>Greeting potential customer. You can call me Madam,</i>\" clearly female voice with undeniable subtle charm interrupts the silence. \"<i>You came to our table seeking my services? I am not able to provide much... aside from something i call... 'conversion'.</i>\"\n\n");
 				outputText("Conversion? Seeing your puzzle expression she continues, \"<i>I would take a bit of your grown potential to exchange it for increased ability to develop mystical abilities. But...</i>\" she make a gesture with one of her hands showing briefly her hand with five outstretched fingers \"<i>...I shall only do this ten times. No more and no less than ten.</i>\"\n\n");
-				outputText("Just like that? Without any string attatched?\n\n");
+				outputText("Just like that? Without any string attached?\n\n");
 				outputText("\"<i>Of course there would be additional price. Ten spirit stones.</i>\" She pause before asking \"<i>So, dear customer, would you like me to perform this conversion on you?</i>\"\n\n");
 				AhriTavernTalks = true;
 			}
@@ -234,11 +234,11 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 				doNext(visitMadam);
 			}
 			else if (AhriStatsToPerksConvertCounter > 9 && AhriTavernTalks > 0) {
-				outputText("\"<i>It's unfotunate but I can't help you anymore,</i>\" Madam rise her hand to show five fingers, \"<i>My service can be repeated maximum ten times and you, dear customer, have reached this limit.</i>\"\n\n");
+				outputText("\"<i>It's unfortunate but I can't help you anymore,</i>\" Madam rise her hand to show five fingers, \"<i>My service can be repeated maximum ten times and you, dear customer, have reached this limit.</i>\"\n\n");
 				doNext(visitMadam);
 			}
 			else {
-				outputText("After recieving payment Madam reaches down to her belt, depositing them into a small pouch. \"<i>Come we can't do 'it' here</i>\". She leads you into a short corridor at the back of the inn, with several rooms just off it. Opening one of the side room doors, she motions for you to come inside.\n\n");
+				outputText("After receiving payment Madam reaches down to her belt, depositing them into a small pouch. \"<i>Come we can't do 'it' here</i>\". She leads you into a short corridor at the back of the inn, with several rooms just off it. Opening one of the side room doors, she motions for you to come inside.\n\n");
 				outputText("\"<i>Please sit down. This process is strenuous, and will take some time.</i>\" She points toward a sofa in the middle of the room. You sit, and she walks behinds you. \"<i>Dear customer, please close your eyes.</i>\" Her voice is low, humming...almost buzzing. It's somehow both calming and enticing at once.\n\n");
 				outputText("You close your eyes as a strange energy fills your body. Nervousness washed away by her voice, you begin to nod off as the energy spreads. Starting from the sides of you head, down to your jaw... It feels extremely comfortable. Unwilling to move a muscle, you relax, drifting off. \n\n");
 				outputText("When you wake up, you groan, stretching your limbs. You're filled with a vaguely empty feeling in your muscles, but your brain feels...expanded, somehow. You snap awake, realizing that you're still in the inn. Looking around, there is nobody else in the room, with the door left wide open, almost like madam wanted to say 'return on your own'. Slightly unsatisfied, you return to the drinking hall.\n\n");
@@ -289,7 +289,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 				doNext(visitTemptress);
 			}
 			else {
-				outputText("After recieving payment Temptress takes them, bringing them to a pouch at her waist. \"<i>Let's move to a more... private place.</i>\" she leads you into a short corridor at the back of the inn, with several rooms just off it. Opening one of the side room doors, she motions for you to come inside..\n\n");
+				outputText("After receiving payment Temptress takes them, bringing them to a pouch at her waist. \"<i>Let's move to a more... private place.</i>\" she leads you into a short corridor at the back of the inn, with several rooms just off it. Opening one of the side room doors, she motions for you to come inside..\n\n");
 				outputText("\"<i>Lay down comfortable and close your eyes.</i>\" She points towards a luxurious bed. You lie down, and she sits beside you, taking your head in her hands. \"<i>All it takes is a simple touch.</i>\". She rests your head on the pillows, then taps your chest with one hand. t\n\n");
 				outputText("While the closeness is nice, as she touches your chest, it begins to tingle, warmth spreading through your chest and stomach. The warmth seems to dissolve your muscles, soft warmth leaving you barely willing to move a finger. Surprisingly, you're not alarmed, you're comforted. You sigh, closing your eyes and drifting off, the bone-deep warmth spreading further.\n\n");
 				outputText("When you wake up, your head feels tighter, and yet at the same time your body feels looser, ready to improve. Looking around there is nobody beside you in the room, the door wide open. Looks like after doing her part, Temptress already left. Slightly unsatisfied you return to the drinking hall.\n\n");

@@ -760,7 +760,7 @@ private function ElectraPregBJCleanup():void {
 		outputText("You and Electra shakily head down to the river, getting some side-eye from your companions, but you don’t really care. Electra and you reek of sex, and as you enter the river, Electra is a surprisingly attentive bathing companion, helping you with your [hair], back and of course, paying attention to your [cock]. She brings some clean-smelling soap that she happily shares, and before long, you’re completely clean.  \n\n"); 
         if(player.cumQ() >= 100) {
 		outputText("\"<i>Would you mind helping me out a bit?</i>\" Electra asks, motioning to her cum-soaked hair. You nod, and take a position just behind her. You run your hands through Electra’s hair, applying the soap, then move down to her breasts, kneading her soft skin…and as you do, you can feel your [cock] rising again, rubbing her inner thigh.  \n\n");
-		outputText("You return the favour, taking the soap and running your hands along Electra’s back. You step in, pressing yourself against her, and Electra shivers slightly as you knead her breasts, rubbing her areolae. \n\n");
+		outputText("You return the favor, taking the soap and running your hands along Electra’s back. You step in, pressing yourself against her, and Electra shivers slightly as you knead her breasts, rubbing her areolae. \n\n");
 		}
         //split end
 		outputText("\"<i>As much as I would enjoy another round…I want to stay clean for at least an hour or so.</i>\" Electra says, turning around to face you. Her suds-covered breasts press softly into your [chest], and she smiles. \"<i>Thanks for this. I wouldn’t mind doing that again sometime.</i>\"  \n\n");

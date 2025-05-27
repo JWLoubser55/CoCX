@@ -424,7 +424,7 @@ public class LowerBody extends SaveableBodyPart {
 		name: "plant flower",
 		legCount: 12,
 		legs: "vine-like tentacle stamens",
-		appearanceDesc: "Around your waist, the petals of a large [flowercolor] orchid expand, big enough to engulf you entirely on their own, coupled with a pitcher-like structure in the centre, which is filled with syrupy nectar straight from your loins. When you wish to rest, these petals draw up around you, encapsulating you in a beautiful bud.  While you don't technically have legs anymore, you can still move around on your {legCount} vine-like stamens.",
+		appearanceDesc: "Around your waist, the petals of a large [flowercolor] orchid expand, big enough to engulf you entirely on their own, coupled with a pitcher-like structure in the center, which is filled with syrupy nectar straight from your loins. When you wish to rest, these petals draw up around you, encapsulating you in a beautiful bud.  While you don't technically have legs anymore, you can still move around on your {legCount} vine-like stamens.",
 		tentacle: true,
 		isAlraune: true
 	});

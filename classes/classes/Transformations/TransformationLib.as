@@ -10,7 +10,7 @@ public function TransformationLib() {
 //	printAlchemyTable();
 }
 
-// VARIABLE NAMING: <body part> + <what to do> + <flavour>
+// VARIABLE NAMING: <body part> + <what to do> + <flavor>
 // e.g. "grow 9th fox tail" -> TailFox9
 // Complex TF should have prefix "Complex" or "Tiered" and can have any naming
 

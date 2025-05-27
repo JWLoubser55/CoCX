@@ -149,8 +149,8 @@ public final class ArmorLib extends ItemConstants
 		public const G_CHANG:Armor = new Armor("G.Chang","GreenChangshan","Green Lunar new year dress (m)","a Green Lunar new year dress (m)",0,0,100,"A simple yet elegant green changshan with dragon motif. This clothing is said to bring in good luck increasing evasiveness and critical chance.","Light");
 		public const G_DIVES:Armor = new Armor("G.DiveS","GreenDivingSuit","Green Diving Suit","a Green Diving Suit",25,5,1800,"A green diving suit. Good for diving, stomping splicers or slaying demons.","Heavy");
 		public const G_QIPAO:Armor = new Armor("G.Qipao","GreenQipao","Green Lunar new year dress (f)","a Green Lunar new year dress (f)",0,0,100,"A simple yet elegant green qipao with floral motif. This dress is said to bring in good luck increasing evasiveness and critical chance.","Light");
-		public const GELARMR:Armor = new Armor("GelArmr","GelArmr","glistening gel-armor plates","a suit of gel armor",10,0,600,"This suit of interlocking plates is made from a strange green material.  It feels spongy to the touch but is amazingly resiliant.","Heavy");
-		public const GELCARM:Armor = new Armor("GelCArm","GelCArm","glistening crimson gel-armor plates","a suit of crimson gel armor",10,0,1200,"This suit of interlocking plates is made from a strange red material.  It feels spongy to the touch but is amazingly resiliant and very reactive to soulforce.","Heavy")
+		public const GELARMR:Armor = new Armor("GelArmr","GelArmr","glistening gel-armor plates","a suit of gel armor",10,0,600,"This suit of interlocking plates is made from a strange green material.  It feels spongy to the touch but is amazingly resilient.","Heavy");
+		public const GELCARM:Armor = new Armor("GelCArm","GelCArm","glistening crimson gel-armor plates","a suit of crimson gel armor",10,0,1200,"This suit of interlocking plates is made from a strange red material.  It feels spongy to the touch but is amazingly resilient and very reactive to soulforce.","Heavy")
 				.withBuffs({
 					'soulskillcost': -0.20
 				}) as Armor;
@@ -163,7 +163,7 @@ public final class ArmorLib extends ItemConstants
 				}) as Armor;
 		public const HBARMOR:HBArmor = new HBArmor();
 		public const HAYOARM:HeavyAyoArmor = new HeavyAyoArmor();
-		public const HLEATHR:Armor = new Armor("HLeathr", "Hvy Lthr", "Heavy Leather", "a heavy leather armour", 10,0,375, "Layers of cured animal hide to offer greater protection from damage.\n", "Heavy");
+		public const HLEATHR:Armor = new Armor("HLeathr", "Hvy Lthr", "Heavy Leather", "a heavy leather armor", 10,0,375, "Layers of cured animal hide to offer greater protection from damage.\n", "Heavy");
 		public const I_CORST:InquisitorsCorset = new InquisitorsCorset();
 		public const I_ROBES:InquisitorsRobes = new InquisitorsRobes();
 		public const IBKIMO:Armor = new InariBlessedKimono();

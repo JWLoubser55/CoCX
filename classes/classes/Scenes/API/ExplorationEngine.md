@@ -138,7 +138,7 @@ explorer.onMenu = function():void {
 // +1 for 100 forest explorations
 explorer.revealMultiple(1+player.wis/10+player.exploredForest/100);
 
-// Change the behaviour of [End] button that appears on the end of the exploration
+// Change the behavior of [End] button that appears on the end of the exploration
 explorer.onEnd = new ButtonData("Repeat", exploreEndlessForest);
 
 // true (default) - encounters can be fully revealed, displaying their name.
