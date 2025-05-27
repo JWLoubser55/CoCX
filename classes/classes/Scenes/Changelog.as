@@ -285,7 +285,7 @@ public class Changelog extends BaseContent
 			outputText("-New M. Special: Sanguine Haste. Usable by been any race with access to Vampiric Thirst. By using 3 stack of vampire thirst increase melee/range attacks per turn by 1 until end of the combat.\n");
 			outputText("-New event perk: Earth and Sky (Ex). Gained by use of the Pocket Watch when req. are meet. Effects: Damage is increased (x3) while in motion gallop or flight. You may start combat galloping or start combat already flying. (as long PC have any options to fly)\n");
 			outputText("-Training with Chi Chi after first fight enable to train Marital training stat. Clones can train it as same speed as any elemental dao.\n");
-			outputText("-\n");
+			outputText("-Spelling Fixes and Tweaks. (klorpa)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -9802,7 +9802,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Arms
-        if (!InCollection(player.arms.type, Arms.GHOST) && player.lowerBody == LowerBody.GHOST && changes < changeLimit && rand(3) == 0) {
+        if (!InCollection(player.arms.type, Arms.GHOST) && InCollection(player.lowerBody, LowerBody.GHOST, LowerBody.GHOST_2) && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
             transformations.ArmsGhost.applyEffect();
             changes++;

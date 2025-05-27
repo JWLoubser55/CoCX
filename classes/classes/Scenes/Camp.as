@@ -3493,9 +3493,11 @@ public class Camp extends NPCAwareContent{
 			addButton(btn++, Soulforce.daos[d][0], cloneContemplateDaoSet, clone, Soulforce.daos[d][2])
 				.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == Soulforce.daos[d][2], "Your clone ("+clone+") is currently contemplating this Dao.");
 		}
-		addButton(12, "Martial", cloneContemplateDaoSet, clone, 9)
-			.disableIf(!player.hasStatusEffect(StatusEffects.MartialTraining), "Req. to have Martial Training unlocked.")
-			.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == Soulforce.daosnot[d][2], "Your clone ("+clone+") is currently contemplating this.");
+		for (var e:int = 0; e < Soulforce.daosnot.length; ++e) {
+			addButton(btn++, Soulforce.daosnot[e][0], cloneContemplateDaoSet, clone, Soulforce.daosnot[e][2])
+				.disableIf(!player.hasStatusEffect(StatusEffects.MartialTraining), "Req. to have Martial Training unlocked.")
+				.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == Soulforce.daosnot[e][2], "Your clone ("+clone+") is currently contemplating this.");
+		}
 		addButton(13, "None", cloneContemplateDaoSet, clone, 10)
 			.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == 10, "Your clone ("+clone+") is currently not contemplating any Dao.");
 		addButton(14, "Back", CloneMenu);
