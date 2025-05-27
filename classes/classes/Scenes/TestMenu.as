@@ -96,6 +96,7 @@ public class TestMenu extends BaseContent
 		bd.add("X-Uni 2", MightyOrNot, "Adding status effect needed for gifts and yuri scene unlock in demon lair.");
 		bd.add("RuinedTown", SceneLib.ruinedTown.enterVillage, "Test the Mousetown");
 		bd.add("LichTest", MightyOrNot2, "Lich Testing");
+		bd.add("Re:Pearl", MightyOrNot3, "Restore chance to find Pearl after regaining soul").disableIf(flags[kFLAGS.SKY_POISON_PEARL] > 0);
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -131,6 +132,11 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot3():void {
+		flags[kFLAGS.SKY_POISON_PEARL] = 0;
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot2():void {

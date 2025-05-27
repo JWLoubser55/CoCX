@@ -4458,14 +4458,6 @@ public class PerkLib
 				"Reduces physical special cost by 20%. Increase physical special damage by 50% and spellpower by 30%.");
 
 		// Quest, Event & NPC perks
-		public static const BladeDancer:PerkType = mk("Blade Dancer", "Blade Dancer",
-				"Gain 2 additional attacks when using multiple weapons. Gain two more attacks if all hands are equipped.");
-		public static const FiendishConcentration:PerkType = mk("Fiendish Concentration", "Fiendish Concentration",
-				"Passively cast a selected spell every round so long as at least two hands are free. Cast twice if three hands are free.");
-		public static const ArtfulDestruction:PerkType = mk("Artful destruction", "Artful destruction",
-				"Magic damage increases Physical damage dealt by 5% and Physical Damage increases magic damage by 5% dealt up to 200% each.");
-		public static const ImpossibleHandTechnique:PerkType = mk("Impossible Hand Technique", "Impossible Hand Technique",
-				"Quadruple Tease damage dealt when grappling or straddling.");
 		public static const AdvancedLeadership:PerkType = mk("Advanced Leadership", "Advanced Leadership",
 				"Allows to form 4 people party.");
 		public static const Aelfwine:PerkType = mk("Aelfwine", "Aelfwine",
@@ -4491,6 +4483,8 @@ public class PerkLib
 				.withBuffs({'maxlust_base':+135});
 		public static const ArigeanKnowledge:PerkType = mk("Arigean Knowledge", "Arigean Knowledge",
 				"The knowledge of your Arigean ancestors rests in your mind. Gain immunity to mental debuffs and intelligence min is increased to 90.");
+		public static const ArtfulDestruction:PerkType = mk("Artful destruction", "Artful destruction",
+				"Magic damage increases Physical damage dealt by 5% and Physical Damage increases magic damage by 5% dealt up to 200% each.");
 		public static const AscensionMenuChoiceMaybe:PerkType = mk("AscensionMenuChoiceMaybe", "AscensionMenuChoiceMaybe",
 				"You shouldn't be here to see that description so *puts on black sunglasses and prepare erase device* please look at the red light.");
 		public static const AuraOfCorruption:PerkType = mk("Aura of Corruption", "Aura of Corruption",
@@ -4501,6 +4495,8 @@ public class PerkLib
 				"Allows to form 2 people party.");
 		public static const BasiliskResistance:PerkType = mk("Basilisk Resistance", "Basilisk Resistance",
 				"Grants immunity to Basilisk's paralyzing gaze. Disables Basilisk Bad End.");
+		public static const BladeDancer:PerkType = mk("Blade Dancer", "Blade Dancer",
+				"Gain 2 additional attacks when using multiple weapons. Gain two more attacks if all hands are equipped.");
 		public static const BlessingOfTheAncestorTree:PerkType = mk("Blessing of the ancestor tree", "Blessing of the ancestor tree",
 				"You have been 'blessed' by an elven ancestor tree and made into a true elf, binding your soul to the forest, however you no longer have the ability to transform again. +50% Speed, +30% intelligence, +40% Libido +50 permanent corruption.").withBuffs({'spe.mult':0.5,'int.mult':0.3,'lib.mult':0.4});
 		public static const BloodMastery:PerkType = mk("Blood Mastery", "Blood Mastery",
@@ -4519,6 +4515,8 @@ public class PerkLib
 				"As a centaur, your Archery gains a half wisdom modifier to damage.");
 		public static const ChallengingShoutMastered:PerkType = mk("Challenging Shout (Mastered)", "Challenging Shout (Mastered)",
 				"You can now use the ability Warrior Shout! Can be used at any turn but amount of gained wrath would depend how long it was used since last time during combat. (4% per turn up to 60% after 15 turns - first use in combat giving 60%) Also allow to automaticaly use weakened version at the combat round end if wrath is below 750.");
+		public static const Circuit:PerkType = mk("Circuit", "Circuit",
+				"Your body is immune to all status effects, but is weak to Electricity and Acid.");
 		public static const CommandingTone:PerkType = mk("Commanding Tone", "Commanding Tone",
 				"Minion and Follower Damage increased by 10%.");
 		public static const Comradery:PerkType = mk("Comradery", "Comradery",
@@ -4545,8 +4543,12 @@ public class PerkLib
 				"Your voice and bearing now commands respect, even among the surliest of recruits. Your followers will attack an additional time per round, and are guaranteed to attack.");
 		public static const DualMind:PerkType = mk("Dual Mind", "Dual Mind",
 				"Greatly empower the tease ability.");
+		public static const EarthAndSkyEx:PerkType = mk("Earth and Sky (Ex)", "Earth and Sky (Ex)",
+				"Damage is increased (x3) while in motion gallop or flight. You may start combat galloping or start combat already flying. (as long PC have any options to fly)");
 		public static const EclipsingShadowMastered:PerkType = mk("Eclipsing Shadow (Mastered)", "Eclipsing Shadow (Mastered)",
 				"Cumulative 120% damage increase for every subsequent darkness spell. Each turn without cast darkness spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling darkness based attack. Maximum 50 stacks. (+140% spellpower bonus)");
+		public static const FiendishConcentration:PerkType = mk("Fiendish Concentration", "Fiendish Concentration",
+				"Passively cast a selected spell every round so long as at least two hands are free. Cast twice if three hands are free.");
 		public static const ElementalBody:PerkType = mk("Elemental", "Elemental",
 				"You are currently in elemental form.");
 		public static const ELFArcherCovenant:PerkType = mk("Archer Covenant", "Archer Covenant",
@@ -4604,6 +4606,8 @@ public class PerkLib
 				"Cumulative 120% damage increase for every subsequent wind spell. Each turn without cast wind spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling wind based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const Immortality:PerkType = mk("Immortality", "Immortality",
 				"Cannot lose combat by damage. Damage taken below 0 instead cause player to take serious lust damage.");
+		public static const ImpossibleHandTechnique:PerkType = mk("Impossible Hand Technique", "Impossible Hand Technique",
+				"Quadruple Tease damage dealt when grappling or straddling.");
 		public static const InnerPhylactery:PerkType = mk("InnerPhylactery", "InnerPhylactery",
 				"Your soul has been safely stored into a phylactery allowing you to fully unlock your potential as a demon, since fusing back into your body to sit beside your heart.").withBuffs({'int.mult':0.75});
 		public static const IntermediateLeadership:PerkType = mk("Intermediate Leadership", "Intermediate Leadership",
@@ -4666,6 +4670,9 @@ public class PerkLib
 				"Sage Medicine used for the Azazel ascension, reduces minimum corruption caused by havinng a soul Phylactery");
 		public static const SealSin:PerkType = mk("Seal Sin", "Seal Sin",
 				"Silence black magic and shut down tease type ability.");
+		public static const SelfImprovement:PerkType = mk("Self Improvement", "Self Improvement",
+				"You have the ability to ever improve and adapt your artificial body increasing a random stat by 5% for every victim converted. You may also learn and use some mechanical upgrades normally reserved to mechs on yourself. " +
+							"Gadgets are 5 time as powerful when used by an Automata. (goblin mech upgrade are applied to pc own stat and do not require pc to own a garage noor be a goblin to access blueprints)");
 		public static const SenseCorruption:PerkType = mk("Sense Corruption", "Sense Corruption",
 				"Allow you to determine how corrupted or pure the enemy is.");
 		public static const SenseWrath:PerkType = mk("Sense Wrath", "Sense Wrath",
@@ -4683,6 +4690,8 @@ public class PerkLib
 		public static const StrengthenMagic:StrengthenMagicPerk = new StrengthenMagicPerk();
 		public static const SweepDefenses:PerkType = mk("Sweep Defenses", "Sweep Defenses",
 				"Critical tease also weakens your opponent's resistance to lust by 5%.");
+		public static const Technical:PerkType = mk("Technical", "Technical",
+				"Firearms and other ancient lost technology are twice as strong in your hands.");
 		public static const TransformationImmunity:PerkType = mk("Construct Transformation immunity", "Construct Transformation Immunity",
 				"As a magical construct you are immune to all effects that change the body of living beings, including most transformatives on Mareth (work as the regular transformative resistance except it reduce the odds of getting a body part tfed to 0 although stats increasing effects still could be triggered).");
 		public static const TransformationImmunity2:PerkType = mk("Transformation immunity", "Transformation Immunity",
@@ -8045,6 +8054,7 @@ public class PerkLib
             Atavism.requireLevel(6)
                     .requirePerks(JobBeastlord);
 			SuddenRun.requireLevel(6)
+					.requireNotThosePerks(EarthAndSkyEx)
                     .requirePerk(JobBeastlord)
 					.requireTou(25)
 					.requireSpe(25);
@@ -8155,7 +8165,7 @@ public class PerkLib
             NaturalInstincts.requireLevel(12)
                     .requirePerk(JobBeastlord);
 			EarthAndSky.requireLevel(12)
-                    .requirePerk(SuddenRun)
+                    .requireAnyPerk(SuddenRun, LiftOff)
 					.requireTou(50)
 					.requireSpe(50);
             ArcanePoolIV.requireLevel(12)
@@ -8329,6 +8339,7 @@ public class PerkLib
                     .requireHungerEnabled()
                     .requirePerk(Survivalist2);
 			LiftOff.requireLevel(18)
+					.requireNotThosePerks(EarthAndSkyEx)
 					.requirePerk(Aerobatics)
 					.requireStr(40)
 					.requireSpe(45);
