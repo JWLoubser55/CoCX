@@ -912,6 +912,7 @@ public class Combat extends BaseContent {
 				else player.addStatusValue(StatusEffects.TamedMonster05, 2, -5);
 				if (player.statusEffectv2(StatusEffects.TamedMonster05) < 0) player.changeStatusValue(StatusEffects.TamedMonster05, 2, 0);
 			}
+			if (player.hasStatusEffect(StatusEffects.ManaShield) && player.mana < 1) player.removeStatusEffect(StatusEffects.ManaShield);
         }
         mainView.hideMenuButton(MainView.MENU_DATA);
         mainView.hideMenuButton(MainView.MENU_APPEARANCE);

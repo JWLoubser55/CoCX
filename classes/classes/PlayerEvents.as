@@ -2346,14 +2346,6 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				outputText("!)</b>\n");
 				if (player.hasPerk(PerkLib.LustyStrength)) player.removePerk(PerkLib.LustyStrength);
 				if (player.hasPerk(PerkLib.MindFungus)) player.removePerk(PerkLib.MindFungus);
-				transformations.ArmsShroom.applyEffect(false);
-				transformations.HornsShroomHeadcap.applyEffect(false);
-				transformations.LowerBodyShroomShirt.applyEffect(false);
-				transformations.RearBodyMyconidBraAndNeck.applyEffect(false);
-				if (player.hasVagina() && player.vaginaType() == VaginaClass.SHROOM) transformations.VaginaShroom().applyEffect(false);
-				if (player.hasCock()) transformations.CockShroom().applyEffect(false);
-				if (player.hasStatusEffect(StatusEffects.GlowingNipples)) transformations.NipplessHumanize.applyEffect(false);
-				if (player.hasStatusEffect(StatusEffects.GlowingAsshole)) transformations.AssholeNormal.applyEffect(false);
 				needNext = true;
 			}
 			//VerdantMight

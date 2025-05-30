@@ -3387,7 +3387,7 @@ public class Camp extends NPCAwareContent{
 			addButton(clone, "Contempl. (" + (clone + 1) + ")", cloneContemplateDao, clone)
 				.hint("Task your clone (" + (clone + 1) + ") with contemplating one of the Daos you know.")
 				.disableIf(!player.hasStatusEffect(Soulforce.clones[clone]), "Req. fully formed clone (" + (clone + 1) + ").")
-				.disableIf((!player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || !player.hasStatusEffect(StatusEffects.MartialTraining)), "Req. to successfully surviving your 1st Tribulation OR have Martial Training unlocked.");
+				.disableIf((!player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor) && !player.hasStatusEffect(StatusEffects.MartialTraining)), "Req. to successfully surviving your 1st Tribulation OR have Martial Training unlocked.");
 		}
 		addButton(14, "Back", campMiscActions);
 	}
