@@ -3491,6 +3491,7 @@ public class Camp extends NPCAwareContent{
 		var btn:int = 0;
 		for (var d:int = 0; d < Soulforce.daos.length; ++d) {
 			addButton(btn++, Soulforce.daos[d][0], cloneContemplateDaoSet, clone, Soulforce.daos[d][2])
+				.disableIf(!player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor), "Req. to survive H class Heaven Tribulation.")
 				.disableIf(player.statusEffectv1(Soulforce.clones[clone]) == Soulforce.daos[d][2], "Your clone ("+clone+") is currently contemplating this Dao.");
 		}
 		for (var e:int = 0; e < Soulforce.daosnot.length; ++e) {
