@@ -643,7 +643,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const HairDripping: Transformation 			= hair.HairDripping.registerTf(AS_HAIR, AE_SAND_WORM);
     public const HairPeafowlFeather: Transformation		= hair.HairPeafowlFeather.registerTf(AS_HAIR, AE_PEAFOWL);
     public const HairGlowingMushroom: Transformation	= hair.HairGlowingMushroom.registerTf(AS_HAIR, AE_MYCONID);
-    public const HairGlowingSynthetic: Transformation	= hair.HairPeafowlFeather.registerTf(AS_HAIR, AE_AUTOMATA);
+    public const HairGlowingSynthetic: Transformation	= hair.HairGlowingSynthetic.registerTf(AS_HAIR, AE_AUTOMATA);
     public function HairChangeColor(colors: /*String*/ Array): Transformation { return hair.HairChangeColor(colors); }
 
 

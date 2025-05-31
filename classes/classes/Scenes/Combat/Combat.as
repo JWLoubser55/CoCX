@@ -83,6 +83,7 @@ public class Combat extends BaseContent {
 	public var mTSpinningKick:Boolean = false;
 	public var mTWayOfTheSilentStorm:Boolean = false;
 	public var mTWayOfTheSilentStormChance:Number = 0;
+	public var mTSuddenPunch:Boolean = false;
 
     // Following is reused variables throughout the multiple feral attack function calls
     // E.N.W.A, kinda sounds like something out of Tolkein/Lord of the Ring
@@ -865,6 +866,7 @@ public class Combat extends BaseContent {
 			mTSpinningKick = false;
 			mTWayOfTheSilentStorm = false;
 			mTWayOfTheSilentStormChance = 0;
+			mTSuddenPunch = false;
 			if (player.armor == armors.BMARMOR) dynStats("lus", -(Math.round(player.maxLust() * 0.05)));
 			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) {
 				var hmim1:Number = 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM);
@@ -8657,13 +8659,37 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.SpinningKick) && player.legCount > 1) {
 			if (rand(4) < martialTrain && player.soulforce >= basecost && !mTSpinningKick) {
 				mTSpinningKick = true;
+				mTWayOfTheSilentStormChance += 1;
 				outputText("Using the momentum of your previous attack, you spin on yourself, chaining with a mighty kick to your opponent.\n\n");
 				EngineCore.SoulforceChange(basecost);
 				CombatAbilities.PunishingKick.perform(true,true);
 			}
 		}
+		if (player.hasPerk(PerkLib.SuddenPunch)) {
+			if (rand(4) < martialTrain && player.soulforce >= basecost && !mTSuddenPunch) {
+				mTSuddenPunch = true;
+				mTWayOfTheSilentStormChance += 1;
+				var temp:Number = meleeDamageNoLagSingle();
+				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
+					temp += player.inte;
+					temp += scalingBonusIntelligence() * 0.2;
+				}
+				EngineCore.SoulforceChange(basecost);
+				if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) temp += Math.round(temp * 0.1);
+				if (player.armor == armors.SFLAREQ) temp *= 1.2;
+				doPhysicalDamage(temp, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp * 0.2), true, true);
+				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp);
+				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);/*
+				doPhysicalDamage(temp, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp * 0.2), true, true);
+				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp);
+				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);*/
+				if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			}
+		}
 		if (player.hasPerk(PerkLib.WayOfTheSilentStorm)) {
-			if (rand(20) > (1 + mTWayOfTheSilentStormChance) && !mTWayOfTheSilentStorm) {
+			if (rand(20) > mTWayOfTheSilentStormChance && !mTWayOfTheSilentStorm) {
 				mTWayOfTheSilentStorm = true;
 				outputText("As your opponent recoils from your strikes, you enter the stance of the silent storm.\n\n");
 				CombatAbilities.TripleThrust.perform(true,true);

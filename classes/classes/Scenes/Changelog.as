@@ -279,15 +279,16 @@ public class Changelog extends BaseContent
 			outputText("-Chi Chi have 3 new talk scenes that happen when she's at HXD restaurant. Last one req. bying 10 meals and fighting 3+ times at Soul Arena. Also her appearance at Arena is changed from unavoidable one to choosing between accepting or declining her challange. Decline would still lock PC from doing any other fight at Arena but at least it will be not a suprise fire mouse fight anymore. ");
 			outputText("First fight have changed mechanics on winning with her by lust and when winning by HP there is an option to save her as long PC meet one of three conditions.\n");
 			outputText("-New event perk: Spinning kick. Gained when training after reaching 3rd layer of Martial Training and knowing Punishing kick soulskill. Effects: When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)\n");
-			outputText("-New event perk: Way of the silent storm. Gained when training after reaching 6th layer of Martial Training and knowing Triple Thrust soulskill. Effects: If at least one hand is free there is a 10% chance to unleash a triple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round.\n");
+			outputText("-New event perk: Way of the silent storm. Gained when training after reaching 6th layer of Martial Training and knowing Triple Thrust soulskill. Effects: If at least one hand is free there is a 5% chance to unleash a triple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round.\n");
 			outputText("-New M. Special: Blood Web. Usable by having Araneathropy perk. By using 1 stack of vampire thirst use web attack made of razor sharp webs to ensnare enemy and apply hemorrhage. As long enemy is entagled PC would absorb some of the blood from enemy and slowly gain stacks of vampire thirst each turn.\n");
 			outputText("-New M. Special: Sanguine Strength. Usable by having Araneathropy perk. By using 3 stacks of vampire thirst increase str by 80% until end of the combat.\n");
 			outputText("-New M. Special: Sanguine Haste. Usable by been any race with access to Vampiric Thirst. By using 3 stack of vampire thirst increase melee/range attacks per turn by 1 until end of the combat.\n");
 			outputText("-New event perk: Earth and Sky (Ex). Gained by use of the Pocket Watch when req. are meet. Effects: Damage is increased (x3) while in motion gallop or flight. You may start combat galloping or start combat already flying. (as long PC have any options to fly)\n");
 			outputText("-Training with Chi Chi after first fight enable to train Marital training stat. Clones can train it as same speed as any elemental dao.\n");
 			outputText("-Spelling Fixes and Tweaks. (klorpa)\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Alpha Protocol. Gained by becoming Automata. Effects: You are immune to corruption and transformation in all forms though considering you are now a sentient machine this may or may not be all that great.\n");
+			outputText("-New event perk: Sudden punch. Gained when training after reaching 9th layer of Martial Training. Effects: If at least one of your hands is free there is a 25% chance once per round to add a punch to your attacks dealing unarmed strike damage. If using unarmed combat this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)\n");
+			outputText("-After loosing 5+ times in a row to Automata enemy in cave PC would be turned into Automata race member. Their race bonuses for Automata / Automata Ace Unit (23/32): +250%/+325% to str/tou/spe/int/lib multi, -65%/-80% to wis multi, +150 to sens\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -306,7 +307,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			//outputText("-New event perk: Circuit. Gained by becoming Automata. Effects: Your body is immune to all status effects, but is weak to Electricity and Acid.\n");
-			//outputText("-New event perk: Alpha Protocol. Gained by becoming Automata. Effects: You are immune to corruption and transformation in all forms though considering you are now a sentient machine this may or may not be all that great.\n");
 			//outputText("-New event perk: Self Improvement. Gained by becoming Automata. Effects: You have the ability to ever improve and adapt your artificial body increasing a random stat by 5% for every victim converted. You may also learn and use some mechanical upgrades normally reserved to mechs on yourself. ");
 			//outputText("Gadgets are 5 time as powerful when used by an Automata. (goblin mech upgrade are applied to pc own stat and do not require pc to own a garage noor be a goblin to access blueprints)\n");
 			//outputText("-New event perk: Technical. Gained by becoming Automata. Effects: Firearms and other ancient lost technology are twice as strong in your hands.\n");
