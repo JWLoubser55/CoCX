@@ -75,7 +75,7 @@ public function losingToAutomaton():void {
 	else {
 		outputText("You fall over on your knees, defeated. The automaton approaches you with her electrified metallic tail poised to strike. You try to back off but she delivers a finishing discharge sending you unconscious.\n\n");
 		if (player.hasStatusEffect(StatusEffects.PostAutomatonBeatdown)) {
-			if (player.statusEffectv1(StatusEffects.PostAutomatonBeatdown) > 4) {
+			if (player.statusEffectv1(StatusEffects.PostAutomatonBeatdown) > 3) {
 				if (player.blockingBodyTransformations()) {
 					outputText("You wake up"+(silly()?" next to a dying bonfire,":"")+" still bruised and battered from your recent fight. Guess it's back off to camp with you.\n\n");
 					cleanupAfterCombat();

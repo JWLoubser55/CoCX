@@ -628,6 +628,7 @@ public class HornsTransformations extends MutationsHelper {
 
 				player.horns.count = 2;
 
+				player.horns.type = Horns.HEADSET;
 				if (doOutput) outputText(desc);
 			},
 			// is present

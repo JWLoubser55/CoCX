@@ -1120,7 +1120,6 @@ public class Creature extends Utils
 				lust:lust-prevLust,
 				cor:cor-prevCor
 			};
-			if (hasPerk(PerkLib.AlphaProtocol)) cor = perkv1(PerkLib.AlphaProtocol);
 		}
 		public function modStats(dstr:Number, dtou:Number, dspe:Number, dint:Number, dwis:Number, dlib:Number, dsens:Number, dlust:Number, dcor:Number, scale:Boolean):void {
 			var mins:Object = getAllMinStats();

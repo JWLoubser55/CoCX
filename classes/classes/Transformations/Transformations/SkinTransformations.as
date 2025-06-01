@@ -530,6 +530,8 @@ public class SkinTransformations extends MutationsHelper {
 		return new SimpleTransformation("Steel Skin",
 				function (doOutput: Boolean): void {
 					var desc: String = "";
+					player.skin.setBaseOnly({type: Skin.STEEL, adj: "steel-like"});
+					if (doOutput) outputText(desc);
 				},
 				// is present
 				function (): Boolean {
