@@ -4685,11 +4685,11 @@ public class PerkLib
 		public static const SpearAffinity:PerkType = mk("Spear Affinity", "Spear Affinity",
 				"Spears deal increased damage equal to 15% of your Strength, speed, wisdom and now have 100% armor penetration.");
 		public static const SpinningKick:PerkType = mk("Spinning kick", "Spinning kick",
-				"When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)");
+				"When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat or a monk weapon this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)");
 		public static const StrengthenBody:StrengthenBodyPerk = new StrengthenBodyPerk();
 		public static const StrengthenMagic:StrengthenMagicPerk = new StrengthenMagicPerk();
 		public static const SuddenPunch:PerkType = mk("Sudden punch", "Sudden punch",
-				"If at least one of your hands is free there is a 25% chance once per round to add a punch to your attacks dealing unarmed strike damage. If using unarmed combat this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)");
+				"If at least one of your hands is free there is a 25% chance once per round to add a punch to your attacks dealing unarmed strike damage. If using unarmed combat or a monk weapon this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)");
 		public static const SweepDefenses:PerkType = mk("Sweep Defenses", "Sweep Defenses",
 				"Critical tease also weakens your opponent's resistance to lust by 5%.");
 		public static const Technical:PerkType = mk("Technical", "Technical",
@@ -4718,6 +4718,8 @@ public class PerkLib
 				"A cheshire natural weapon distorts space inflicting particularly vicious critical strikes.");
 		public static const WayOfTheSilentStorm:PerkType = mk("Way of the silent storm", "Way of the silent storm",
 				"If at least one hand is free there is a 5% chance to unleash a triple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round.");
+		public static const WayOfTheEightTrigrams:PerkType = mk("Way of the eight trigrams", "Way of the eight trigrams",
+				"If both hands are free there is a 5% chance to unleash a sextuple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round. This ability replace Way of the silent storm.");
 		public static const WhatIsReality:PerkType = mk("What Is Reality", "What Is Reality?",
 				"When you would take fatal damage, laugh at death and deny it ever happened. Mocking death causes the increase of the arousal of the user which can still cause it to simply give up so to get to lewder games.");
 		public static const Whispered:PerkType = mk("Whispered", "Whispered",

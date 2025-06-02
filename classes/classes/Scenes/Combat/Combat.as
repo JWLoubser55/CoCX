@@ -4154,7 +4154,7 @@ public class Combat extends BaseContent {
 			}
 		}
         JabbingStyleIncrement();
-		if (player.isUnarmedCombat()) martialTrain = 4;
+		if (player.isUnarmedCombat() || player.weapon.isMonkWeapon()) martialTrain = 4;
 		else martialTrain = 1;
 	}
 	public function checkForElementalEnchantmentAndDoDamageOff(damage:Number, canUseFist:Boolean = true, canUseWhip:Boolean = true, crit:Boolean = false):void{
@@ -4314,7 +4314,8 @@ public class Combat extends BaseContent {
 			}
 		}
         JabbingStyleIncrement();
-		martialTrain = 1;
+		if (player.weaponOff.isMonkWeapon()) martialTrain = 4;
+		else martialTrain = 1;
 	}
 
     public function archerySkillDamageMod(damage:Number):Number {
@@ -8689,10 +8690,19 @@ public class Combat extends BaseContent {
 			}
 		}
 		if (player.hasPerk(PerkLib.WayOfTheSilentStorm)) {
-			if (rand(20) > mTWayOfTheSilentStormChance && !mTWayOfTheSilentStorm) {
-				mTWayOfTheSilentStorm = true;
-				outputText("As your opponent recoils from your strikes, you enter the stance of the silent storm.\n\n");
-				CombatAbilities.TripleThrust.perform(true,true);
+			if (player.hasPerk(PerkLib.WayOfTheEightTrigrams)) {
+				if (rand(20) > mTWayOfTheSilentStormChance && !mTWayOfTheSilentStorm) {
+					mTWayOfTheSilentStorm = true;
+					outputText("As your opponent recoils from your strikes, you enter the stance of the eight trigrams.\n\n");
+					CombatAbilities.SextupleThrust.perform(true,true);
+				}
+			}
+			{
+				if (rand(20) > mTWayOfTheSilentStormChance && !mTWayOfTheSilentStorm) {
+					mTWayOfTheSilentStorm = true;
+					outputText("As your opponent recoils from your strikes, you enter the stance of the silent storm.\n\n");
+					CombatAbilities.TripleThrust.perform(true,true);
+				}
 			}
 		}
 	}

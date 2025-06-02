@@ -419,7 +419,7 @@ public class Soulforce extends BaseContent
 				.disableIf(!player.hasStatusEffect(StatusEffects.MartialTraining), "Req. to have Martial Training unlocked.")
 				.disableIf(player.statusEffectv2(daon[1]) == highestLayerOfMartialTraining(),
 					"You have reached your current limit of martial training."
-					+ (player.hasPerk(PerkLib.SoulTyrant) ? "Try to improve your soulforce skills to get further."
+					+ (player.hasPerk(PerkLib.SoulKing) ? "Try to improve your soulforce skills to get further."
 						: "\n<b>MAXIMUM LEVEL REACHED</b>"));
 		}
 		addButton(14, "Back", accessSoulforceMenu);
@@ -433,7 +433,7 @@ public class Soulforce extends BaseContent
 		var dao:int;
 		if (clone) dao = 1;
 		else {
-			dao = rand(6);
+			dao = 1 + rand(6);
 			switch(daoname){
 				case "Fire":
 					if (player.hasAnyPerk(PerkLib.FireAffinity, PerkLib.FireShadowAffinity, PerkLib.AffinityIgnis) && !player.hasPerk(PerkLib.CovenantOfTheSpirits)) dao += 1 + rand(3);
@@ -537,11 +537,11 @@ public class Soulforce extends BaseContent
 		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 9 && !player.hasPerk(PerkLib.SuddenPunch)) {
 			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Sudden punch!\n\n");
 			player.createPerk(PerkLib.SuddenPunch, 0, 0, 0, 0);
-		}/*
-		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 12 && !player.hasPerk(PerkLib.)) {
-			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
-			player.createPerk(PerkLib., 0, 0, 0, 0);
 		}
+		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 12 && player.hasStatusEffect(StatusEffects.KnowsSextupleThrust) && !player.hasPerk(PerkLib.WayOfTheEightTrigrams)) {
+			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Way of the eight trigrams!\n\n");
+			player.createPerk(PerkLib.WayOfTheEightTrigrams, 0, 0, 0, 0);
+		}/*
 		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 15 && !player.hasPerk(PerkLib.)) {
 			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
 			player.createPerk(PerkLib., 0, 0, 0, 0);
@@ -556,7 +556,7 @@ public class Soulforce extends BaseContent
 	public function highestLayerOfMartialTraining():Number {
 		var hLrOMT:Number = 3;
 		hLrOMT += (player.perkv2(PerkLib.JobSoulCultivator) - 3);
-		if (hLrOMT > 10) hLrOMT = 10;
+		if (hLrOMT > 11) hLrOMT = 11;
 		return hLrOMT;
 	}
 

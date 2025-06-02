@@ -87,7 +87,7 @@ public class EraendirAndOrsbulg extends HeXinDaoAbstractContent
 			addButton(5, weapons.SKYPIER.shortName, itemBuy, weapons.SKYPIER, OrsbulgMainMenu, "Orsbulg");
 			addButton(6, weapons.GUANDAO.shortName, itemBuy, weapons.GUANDAO, OrsbulgMainMenu, "Orsbulg");
 			addButton(7, weapons.TB_SCYT.shortName, itemBuy, weapons.TB_SCYT, OrsbulgMainMenu, "Orsbulg");
-			//8
+			addButton(8, weapons.TRSABER.shortName, itemBuy, weapons.TRSABER, OrsbulgMainMenu, "Orsbulg");
 			//9
 			//10
 			//11
