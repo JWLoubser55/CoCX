@@ -291,6 +291,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Sudden punch. Gained when training after reaching 9th layer of Martial Training. Effects: If at least one of your hands is free there is a 25% chance once per round to add a punch to your attacks dealing unarmed strike damage. If using unarmed combat or a monk weapon this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)\n");
 			outputText("-After loosing 5+ times in a row to Automata enemy in cave PC would be turned into Automata race member. Their race bonuses for Automata / Automata Ace Unit (23/32): +250%/+325% to str/tou/spe/int/lib multi, -65%/-80% to wis multi, +150 to sens\n");
 			outputText("-New melee weapon (by Ormael): Twelve-ringed Saber - buyable at Orsbulg shop. Cost 5,600 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon type with 20% chance to trigger bleed effect.\n");
+			outputText("-New event perk: Way of the eight trigrams. Gained when training after reaching 12th layer of Martial Training and knowing Sextuple Thrust soulskill. Effects: If at least one hand is free there is a 5% chance to unleash a sextuple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round. This ability replace Way of the silent storm.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -306,7 +307,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			//outputText("-New event perk: Way of the eight trigrams. Gained when training after reaching 12th layer of Martial Training and knowing Sextuple Thrust soulskill. Effects: \n");
 			//outputText("-New event perk: Circuit. Gained by becoming Automata. Effects: Your body is immune to all status effects, but is weak to Electricity and Acid.\n");
 			//outputText("-New event perk: Self Improvement. Gained by becoming Automata. Effects: You have the ability to ever improve and adapt your artificial body increasing a random stat by 5% for every victim converted. You may also learn and use some mechanical upgrades normally reserved to mechs on yourself. ");
 			//outputText("Gadgets are 5 time as powerful when used by an Automata. (goblin mech upgrade are applied to pc own stat and do not require pc to own a garage noor be a goblin to access blueprints)\n");

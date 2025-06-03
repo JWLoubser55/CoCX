@@ -449,6 +449,7 @@ public class Soulforce extends BaseContent
 					break;
 				case "Poison":
 					if (player.hasPerk(PerkLib.PoisonAffinity)) dao += 1 + rand(3);
+					//heaven tresure found by use of underdog perk
 					break;
 				case "Wind":
 					if (player.hasAnyPerk(PerkLib.WindAffinity, PerkLib.AffinitySylph)) {
@@ -458,6 +459,7 @@ public class Soulforce extends BaseContent
 					break;
 				case "Blood":
 					if (player.hasAnyPerk(PerkLib.BloodAffinity, PerkLib.BloodMastery, PerkLib.WayOfTheBlood)) dao += 1 + rand(3);
+					//heaven tresure found by use of underdog perk
 					break;
 				case "Water":
 					if (player.hasAnyPerk(PerkLib.WaterAffinity, PerkLib.AffinityUndine)) {
@@ -473,6 +475,7 @@ public class Soulforce extends BaseContent
 					break;
 				case "Acid":
 					if (player.hasPerk(PerkLib.AcidAffinity)) dao += 1 + rand(3);
+					//heaven tresure found by use of underdog perk
 					break;
 				
 			}
@@ -556,7 +559,6 @@ public class Soulforce extends BaseContent
 	public function highestLayerOfMartialTraining():Number {
 		var hLrOMT:Number = 3;
 		hLrOMT += (player.perkv2(PerkLib.JobSoulCultivator) - 3);
-		if (hLrOMT > 11) hLrOMT = 11;
 		return hLrOMT;
 	}
 

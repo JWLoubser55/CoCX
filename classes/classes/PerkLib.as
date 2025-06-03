@@ -4719,7 +4719,7 @@ public class PerkLib
 		public static const WayOfTheSilentStorm:PerkType = mk("Way of the silent storm", "Way of the silent storm",
 				"If at least one hand is free there is a 5% chance to unleash a triple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round.");
 		public static const WayOfTheEightTrigrams:PerkType = mk("Way of the eight trigrams", "Way of the eight trigrams",
-				"If both hands are free there is a 5% chance to unleash a sextuple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round. This ability replace Way of the silent storm.");
+				"If at least one hand is free there is a 5% chance to unleash a sextuple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round. This ability replace Way of the silent storm.");
 		public static const WhatIsReality:PerkType = mk("What Is Reality", "What Is Reality?",
 				"When you would take fatal damage, laugh at death and deny it ever happened. Mocking death causes the increase of the arousal of the user which can still cause it to simply give up so to get to lewder games.");
 		public static const Whispered:PerkType = mk("Whispered", "Whispered",
