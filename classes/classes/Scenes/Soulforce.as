@@ -525,34 +525,38 @@ public class Soulforce extends BaseContent
 				if (player.statusEffectv1(StatusEffects.MartialTraining) >= thres[curLevel]) {
 					player.addStatusValue(StatusEffects.MartialTraining, 1, -thres[curLevel]);
 					player.addStatusValue(StatusEffects.MartialTraining, 2, 1);
+					outputText("\n\n<b>")
+					if (clone) outputText("Due to your clone contemplations your");
+					else outputText("Your");
+					outputText(" comprehension your Martial Training has reached the " + NUMBER_WORDS_POSITIONAL[curLevel+1] + " layer.</b>\n\n");
+					if (player.statusEffectv2(StatusEffects.MartialTraining) >= 3 && player.hasStatusEffect(StatusEffects.KnowsPunishingKick) && !player.hasPerk(PerkLib.SpinningKick)) {
+						outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Spinning kick!\n\n");
+						player.createPerk(PerkLib.SpinningKick, 0, 0, 0, 0);
+					}
+					if (player.statusEffectv2(StatusEffects.MartialTraining) >= 6 && player.hasStatusEffect(StatusEffects.KnowsTripleThrust) && !player.hasPerk(PerkLib.WayOfTheSilentStorm)) {
+						outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Way of the silent storm!\n\n");
+						player.createPerk(PerkLib.WayOfTheSilentStorm, 0, 0, 0, 0);
+					}
+					if (player.statusEffectv2(StatusEffects.MartialTraining) >= 9 && !player.hasPerk(PerkLib.SuddenPunch)) {
+						outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Sudden punch!\n\n");
+						player.createPerk(PerkLib.SuddenPunch, 0, 0, 0, 0);
+					}
+					if (player.statusEffectv2(StatusEffects.MartialTraining) >= 12 && player.hasStatusEffect(StatusEffects.KnowsSextupleThrust) && !player.hasPerk(PerkLib.WayOfTheEightTrigrams)) {
+						outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Way of the eight trigrams!\n\n");
+						player.createPerk(PerkLib.WayOfTheEightTrigrams, 0, 0, 0, 0);
+					}/*
+					if (player.statusEffectv2(StatusEffects.MartialTraining) >= 15 && !player.hasPerk(PerkLib.)) {
+						outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
+						player.createPerk(PerkLib., 0, 0, 0, 0);
+					}
+					if (player.statusEffectv2(StatusEffects.MartialTraining) >= 18 && !player.hasPerk(PerkLib.)) {
+						outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
+						player.createPerk(PerkLib., 0, 0, 0, 0);
+					}*/
 				}
 			}
 		}
 		else player.createStatusEffect(StatusEffects.MartialTraining, martial, 0, 0, 0);
-		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 3 && player.hasStatusEffect(StatusEffects.KnowsPunishingKick) && !player.hasPerk(PerkLib.SpinningKick)) {
-			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Spinning kick!\n\n");
-			player.createPerk(PerkLib.SpinningKick, 0, 0, 0, 0);
-		}
-		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 6 && player.hasStatusEffect(StatusEffects.KnowsTripleThrust) && !player.hasPerk(PerkLib.WayOfTheSilentStorm)) {
-			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Way of the silent storm!\n\n");
-			player.createPerk(PerkLib.WayOfTheSilentStorm, 0, 0, 0, 0);
-		}
-		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 9 && !player.hasPerk(PerkLib.SuddenPunch)) {
-			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Sudden punch!\n\n");
-			player.createPerk(PerkLib.SuddenPunch, 0, 0, 0, 0);
-		}
-		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 12 && player.hasStatusEffect(StatusEffects.KnowsSextupleThrust) && !player.hasPerk(PerkLib.WayOfTheEightTrigrams)) {
-			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind Way of the eight trigrams!\n\n");
-			player.createPerk(PerkLib.WayOfTheEightTrigrams, 0, 0, 0, 0);
-		}/*
-		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 15 && !player.hasPerk(PerkLib.)) {
-			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
-			player.createPerk(PerkLib., 0, 0, 0, 0);
-		}
-		if (player.statusEffectv2(StatusEffects.MartialTraining) >= 18 && !player.hasPerk(PerkLib.)) {
-			outputText("You have reached a new stage in your martial cultivation unlocking the secrets behind <move name>!\n\n");
-			player.createPerk(PerkLib., 0, 0, 0, 0);
-		}*/
 		if (!clone && display) doNext(camp.returnToCampUseEightHours);
 	}
 
