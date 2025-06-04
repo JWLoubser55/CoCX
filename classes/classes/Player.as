@@ -1383,7 +1383,7 @@ use namespace CoC;
 		//PC can fly without natural wings
 		public function canFlyNoWings():Boolean
 		{
-			return canFlyOnFlyingSwords() || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || (statStore.hasBuff("FoxflamePelt") && tailCount >= 9) || jetpackChecks();
+			return canFlyOnFlyingSwords() || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || (tailType == Tail.KITSHOO && tailCount >= 9) || jetpackChecks();
 		}
 		//Flying swords related checks
 		public function canFlyOnFlyingSwords():Boolean

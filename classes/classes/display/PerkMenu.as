@@ -251,7 +251,7 @@ public class PerkMenu extends BaseContent {
 		if (player.isInGoblinMech() && player.jetpackChecks() && autoFlyingFlag != 2 && autoGallopingFlag == 0) addButton(2, "By Jetpack", autoFlyingType,2);
 		if (player.canFlyOnFlyingSwords() && autoFlyingFlag != 5 && autoGallopingFlag == 0) addButton(5, "By FlyingSw", autoFlyingType,5);
 		if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor) && autoFlyingFlag != 6 && autoGallopingFlag == 0) addButton(6, "By SF", autoFlyingType,6);
-		if (player.statStore.hasBuff("FoxflamePelt") && player.tailCount >= 9 && autoFlyingFlag != 7 && autoGallopingFlag == 0) addButton(7, "By FFP", autoFlyingType,7);
+		if (player.tailType == Tail.KITSHOO && player.tailCount >= 9 && autoFlyingFlag != 7 && autoGallopingFlag == 0) addButton(7, "By FFP", autoFlyingType,7);
 		addButton(14, "Back", MiscOption);
 	}
 	private function toggleCorruptionTolerance():void {
