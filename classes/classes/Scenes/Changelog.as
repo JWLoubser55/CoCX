@@ -292,7 +292,7 @@ public class Changelog extends BaseContent
 			outputText("-After loosing 5+ times in a row to Automata enemy in cave PC would be turned into Automata race member. Their race bonuses for Automata / Automata Ace Unit (23/32): +250%/+325% to str/tou/spe/int/lib multi, -65%/-80% to wis multi, +150 to sens\n");
 			outputText("-New melee weapon (by Ormael): Twelve-ringed Saber - buyable at Orsbulg shop. Cost 5,600 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon type with 20% chance to trigger bleed effect.\n");
 			outputText("-New event perk: Way of the eight trigrams. Gained when training after reaching 12th layer of Martial Training and knowing Sextuple Thrust soulskill. Effects: If at least one hand is free there is a 5% chance to unleash a sextuple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round. This ability replace Way of the silent storm.\n");
-			outputText("-\n");
+			outputText("-Bee race treshold to add potins for bloodline and internal mutaiton increased to 4 + slight reducing overlap with human race checks keeping gainable race points the same.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

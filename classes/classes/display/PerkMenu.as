@@ -248,8 +248,8 @@ public class PerkMenu extends BaseContent {
 		var autoFlyingType:Function = curry(setflag,kFLAGS.AUTO_FLIGHT);
 		if (autoFlyingFlag != 0) addButton(0, "On Ground", autoFlyingType,0);
 		if (player.canFly() && autoFlyingFlag != 1 && autoGallopingFlag == 0) addButton(1, "By Wings", autoFlyingType,1);
-		if (player.isInGoblinMech() && (player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0) && autoFlyingFlag != 2 && autoGallopingFlag == 0) addButton(2, "By Jetpack", autoFlyingType,2);
-		if (player.hasPerk(PerkLib.FlyingSwordPath) && autoFlyingFlag != 5 && autoGallopingFlag == 0) addButton(5, "By FlyingSw", autoFlyingType,5);
+		if (player.isInGoblinMech() && player.jetpackChecks() && autoFlyingFlag != 2 && autoGallopingFlag == 0) addButton(2, "By Jetpack", autoFlyingType,2);
+		if (player.canFlyOnFlyingSwords() && autoFlyingFlag != 5 && autoGallopingFlag == 0) addButton(5, "By FlyingSw", autoFlyingType,5);
 		if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor) && autoFlyingFlag != 6 && autoGallopingFlag == 0) addButton(6, "By SF", autoFlyingType,6);
 		if (player.statStore.hasBuff("FoxflamePelt") && player.tailCount >= 9 && autoFlyingFlag != 7 && autoGallopingFlag == 0) addButton(7, "By FFP", autoFlyingType,7);
 		addButton(14, "Back", MiscOption);

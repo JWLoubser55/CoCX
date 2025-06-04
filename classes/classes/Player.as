@@ -1383,7 +1383,7 @@ use namespace CoC;
 		//PC can fly without natural wings
 		public function canFlyNoWings():Boolean
 		{
-			return weaponFlyingSwordsName != "nothing" || hasPerk(PerkLib.GclassHeavenTribulationSurvivor);
+			return canFlyOnFlyingSwords() || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || (statStore.hasBuff("FoxflamePelt") && tailCount >= 9) || jetpackChecks();
 		}
 		//Flying swords related checks
 		public function canFlyOnFlyingSwords():Boolean
@@ -1393,6 +1393,11 @@ use namespace CoC;
 		public function usingSingleFlyingSword():Boolean
 		{
 			return weaponFlyingSwords.count == 1;
+		}
+		//Jetpack......s
+		public function jetpackChecks():Boolean
+		{
+			return hasKeyItem("Jetpack") >= 0 || hasKeyItem("MK2 Jetpack") >= 0;
 		}
 		//Hold with Both Hands checks
 		public function gaindHoldWithBothHandBonus():Boolean
