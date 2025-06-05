@@ -383,7 +383,7 @@ public class Soulforce extends BaseContent
 		["Acid", StatusEffects.DaoOfAcid, 20],
 	];
 	public static var daosnot:/*Array*/Array = [
-		["Martial Training", StatusEffects.MartialTraining, 9],
+		["Martial Arts", StatusEffects.MartialTraining, 9],
 	];
 
 	public static var clones:/*StatusEffectType*/Array = [
@@ -415,11 +415,11 @@ public class Soulforce extends BaseContent
 			var daon:Array = daosnot[j];
 			if (player.hasStatusEffect(daon[1]))
 				outputText(daon[0] + ": Level - " + player.statusEffectv2(daon[1]) + ", Progress - " + player.statusEffectv1(daon[1]) + "\n");
-			addButton(btn++, "Train", daoContemplationsEffect, daon[1], daon[0]).hint("Practice and refine your martial arts.")
+			addButton(btn++, "Train", martialTrainingEffect, daon[1], daon[0]).hint("Practice and refine your martial arts.")
 				.disableIf(!player.hasStatusEffect(StatusEffects.MartialTraining), "Req. to have Martial Training unlocked.")
 				.disableIf(player.statusEffectv2(daon[1]) == highestLayerOfMartialTraining(),
 					"You have reached your current limit of martial training."
-					+ (player.hasPerk(PerkLib.SoulKing) ? "Try to improve your soulforce skills to get further."
+					+ (player.hasPerk(PerkLib.SoulEmperor) ? "Try to improve your soulforce skills to get further."
 						: "\n<b>MAXIMUM LEVEL REACHED</b>"));
 		}
 		addButton(14, "Back", accessSoulforceMenu);
@@ -433,7 +433,7 @@ public class Soulforce extends BaseContent
 		var dao:int;
 		if (clone) dao = 1;
 		else {
-			dao = 1 + rand(6);
+			dao = 2 + rand(5);
 			switch(daoname){
 				case "Fire":
 					if (player.hasAnyPerk(PerkLib.FireAffinity, PerkLib.FireShadowAffinity, PerkLib.AffinityIgnis) && !player.hasPerk(PerkLib.CovenantOfTheSpirits)) dao += 1 + rand(3);
@@ -481,25 +481,23 @@ public class Soulforce extends BaseContent
 			}
 		}
 		//uzycie w kontemplacji niebianskich skarbow zwiazanych z danym zywiolem daje bonusowe punkty
-		if (dao > 0) {
-			if (!clone && !elementalBody) outputText("After the session ends you managed to progress your Dao of "+daoname+".");
-			if (player.hasStatusEffect(statusEffect)) {
-				player.addStatusValue(statusEffect, 1, dao);
-				var thres:Array = [20, 40, 60, 100, 140, 180, 220, 260, 300, 400, 500, 600];
-				var curLevel:int = player.statusEffectv2(statusEffect);
-				if (curLevel < thres.length) {
-					if (player.statusEffectv1(statusEffect) >= thres[curLevel]) {
-						player.addStatusValue(statusEffect, 1, -thres[curLevel]);
-						player.addStatusValue(statusEffect, 2, 1);
-						outputText("\n\n<b>")
-						if (clone) outputText("Due to your clone contemplations your");
-						else outputText("Your");
-						outputText(" comprehension your Dao of "+daoname+" has reached the " + NUMBER_WORDS_POSITIONAL[curLevel+1] + " layer.</b>\n\n");
-					}
+		if (!clone && !elementalBody) outputText("After the session ends you managed to progress your Dao of "+daoname+".");
+		if (player.hasStatusEffect(statusEffect)) {
+			player.addStatusValue(statusEffect, 1, dao);
+			var thres:Array = [20, 40, 60, 100, 140, 180, 220, 260, 300, 400, 500, 600];
+			var curLevel:int = player.statusEffectv2(statusEffect);
+			if (curLevel < thres.length) {
+				if (player.statusEffectv1(statusEffect) >= thres[curLevel]) {
+					player.addStatusValue(statusEffect, 1, -thres[curLevel]);
+					player.addStatusValue(statusEffect, 2, 1);
+					outputText("\n\n<b>")
+					if (clone) outputText("Due to your clone contemplations your");
+					else outputText("Your");
+					outputText(" comprehension your Dao of "+daoname+" has reached the " + NUMBER_WORDS_POSITIONAL[curLevel+1] + " layer.</b>\n\n");
 				}
-			} else player.createStatusEffect(statusEffect, dao, 0, 0, 0);
+			}
 		}
-		else outputText("After the session ends, you did not manage to progress in your comprehension.\n\n");
+		else player.createStatusEffect(statusEffect, dao, 0, 0, 0);
 		if (!clone && !elementalBody) doNext(camp.returnToCampUseEightHours);
 	}
 
@@ -509,14 +507,14 @@ public class Soulforce extends BaseContent
 		return hLrODC;
 	}
 	
-	public function MartialTraining(display:Boolean = true, clone:Boolean = false):void {
+	public function martialTrainingEffect(display:Boolean = true, clone:Boolean = false):void {
 		if (!clone && display) {
 			clearOutput();
 			outputText("You contemplate on the dao on martial arts attempting to improve your mastery of combat.\n\n");
 		}
 		var martial:int;
 		if (clone) martial = 1;
-		else martial = 1 + rand(6);
+		else martial = 2 + rand(5);
 		if (player.hasStatusEffect(StatusEffects.MartialTraining)) {
 			player.addStatusValue(StatusEffects.MartialTraining, 1, martial);
 			var thres:Array = [20, 40, 60, 100, 140, 180, 220, 260, 300, 400, 500, 600];

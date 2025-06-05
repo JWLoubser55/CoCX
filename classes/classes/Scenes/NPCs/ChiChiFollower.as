@@ -482,7 +482,7 @@ public function TrainingSoulArtsWithChiChi():void {
 			outputText("\"<i>That's good, you’re already shaping up to become a deadly combatant, even if you don’t end up using your fist like me, this training is going to improve your overall fitness. Ask again tomorrow and we can continue improving your skill. In the meantime, you can continue training on the dummy or go beat some enemies. Just try and avoid getting yourself enslaved by demon’s or worse. It would really suck if I lost such a promising student before your potential was properly realized, not that you’re the first nor the last. I had many like you before, some far more talented than you are.</i>\"\n\n");
 			if (!player.hasStatusEffect(StatusEffects.MartialTraining)) {
 				outputText("Learning martial arts for the first time you begin to refine your combat knowledge into something new. Through diligent practice and cultivation you may unlock new ways to use your techniques and improve your overall fighting knowledge. <b>Unlocked the martial training stat.</b>\n\n");
-				SceneLib.soulforce.MartialTraining(false);
+				SceneLib.soulforce.martialTrainingEffect(false);
 			}
 			player.trainStat("str", +5, player.trainStatCap("str",100));
 			player.trainStat("spe", +5, player.trainStatCap("spe",100));

@@ -971,6 +971,11 @@ public final class WeaponLib extends ItemConstants
 				WT_EXOTIC, WSZ_LARGE, true)
 				.withEffect(IELib.Bleed, 100)
 				.withTags(W_HTECHWEAPON)  as Weapon;
+		public const TNRSABER:Weapon = new Weapon(
+				"TNRSaber","TwinNineRingedSabers","Twin Nine-ringed Sabers","a twin nine-ringed sabers","slash",14,2240,
+				"This twin sabers, with added nine rings are capable of delivering deep, jagged wounds.",
+				WT_SWORD, WSZ_MEDIUM, true)
+				.withEffect(IELib.Bleed, 10) as Weapon;
 		public const TODAGGER:Weapon = new Weapon(
 				"ToDagger","T.Dagger","topaz dagger","a topaz dagger","stab",3,240,
 				"This dagger is made of eversteel and richly decorated with yellow topazes and copper engravings. The magic within this shining blade will oversaturate the metal with electricity when charged with magic.",
@@ -1197,7 +1202,8 @@ public final class WeaponLib extends ItemConstants
 			[TODAGGER, DTODAGGER],
 			[DARKSA1, DARKSA],
 			[DARKSS1, DARKSS],
-			[DARKSSP, DARKSS2]
+			[DARKSSP, DARKSS2],
+			[NRSABER, TNRSABER]
 		]
 	}
 }

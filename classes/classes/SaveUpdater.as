@@ -2759,10 +2759,10 @@ public class SaveUpdater extends NPCAwareContent {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.591;
 				outputText("\n\nChi Chi was bit too... violent so she now a lil more mellow ^^");
 				if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 1) flags[kFLAGS.CHI_CHI_SAM_TRAINING] += 5;
-				if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 2) flags[kFLAGS.CHI_CHI_SAM_TRAINING] += 10;
+				if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 2) flags[kFLAGS.CHI_CHI_SAM_TRAINING] += 10;
 				if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 1 && !player.hasStatusEffect(StatusEffects.MartialTraining)) {
 					outputText("Learning martial arts for the first time you begin to refine your combat knowledge into something new. Through diligent practice and cultivation you may unlock new ways to use your techniques and improve your overall fighting knowledge. <b>Unlocked the martial training stat.</b>\n\n");
-					SceneLib.soulforce.MartialTraining(false);
+					SceneLib.soulforce.martialTrainingEffect(false);
 				}
 			}/*
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.60) {
