@@ -426,19 +426,31 @@ public function NotReadyForTheTraining():void {
 	outputText("You tell her you will come back when you are.\n\n");
 	outputText("\"<i>Take your time, there is no shortcut through this.</i>\"\n\n");
 	doNext(camp.returnToCampUseOneHour);
-}//outputText("\"<i></i>\"\n\n");
+}
 
 public function TrainingSoulArtsWithChiChi():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
 	if (flags[kFLAGS.CHI_CHI_DAILY_TRAINING] < 1) {
 		if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) {
-			outputText("Chi Chi almost seems to be expecting you today, as she simply stands in the middle of the training grounds, arm crossed. You ask her what is the next step of your training.\n\n");
-			outputText("\"<i>You have successfully finished all possible tests but the final one. Today, we will see if your training will bear fruit. Your final challenge is to defeat me, your sensei, and prove that you have finally mastered the martial arts. Are you ready?</i>\"\n\n");
-			outputText("There is no turning back once you engage her and you know this well. This is a fight you can’t afford to lose, so the question stands. Are you truly ready for it?\n\n");
-			menu();
-			addButton(0, "No", NotReadyForTheFinalTraining);
-			addButton(1, "Yes", VeryReadyForTheFinalTraining);
+			if (ArenaDecline == 2) {
+				outputText("Chi Chi seems to be looking rather tired today, as she simply sit in the middle of the training grounds, legs crossed. You ask her what is the next step of your training.\n\n");
+				outputText("\"<i>I’m afraid that's the end of it. I have nothing else to teach you. You’ve surpassed all that which I expected in a student. From now on, you must learn on your own. Congratulations I guess as much as I hate to grant you the point, you bear the title of champion quite well now. Which finally leads me to this…</i>\"\n\n");
+				outputText("She hands you over a single scroll.\n\n");
+				outputText("\"<i>That's Soul Blast, my ultimate martial technique. It is both magic and martial art, a rather unique ability in the discipline. Use it well.</i>\"\n\n");
+				outputText("The vacant stare in the hinezumi eyes tells you something is off so you ask her a bit worried what she plans to do next.\n\n");
+				outputText("\"<i>Well that's rather simple. I will walk to the demon battlefield, rush headlong into a fight and kill as many demon’s as I can, burning brightly like a candle for the last time before snuffing out. This is how my story began and this is how it should end. I held my promise and trained a proper successor to my art. Now I’m ready to join those that await me on the other side of the river.</i>\"\n\n");
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 13;
+				inventory.takeItem(consumables.SOBLMAN, FinalTraining);
+			}
+			else {
+				outputText("Chi Chi almost seems to be expecting you today, as she simply stands in the middle of the training grounds, arms crossed. You ask her what is the next step of your training.\n\n");
+				outputText("\"<i>You have successfully finished all possible tests but the final one. Today, we will see if your training will bear fruit. Either you will officially become the strongest student I ever trained or just another lucky adventurer who happened to chance by my teachings. Your final challenge is to defeat me, your teacher, and prove that you have finally mastered the martial arts. Are you ready?</i>\"\n\n");
+				outputText("There is no turning back once you engage her and you know this well. This is a fight you can’t afford to lose, so the question stands. Are you truly ready for it?\n\n");
+				menu();
+				addButton(1, "No", NotReadyForTheFinalTraining);
+				addButton(3, "Yes", VeryReadyForTheFinalTraining);
+			}
 		}
 		else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 6 && flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 12) {
 			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 7) {
@@ -516,6 +528,60 @@ public function VeryReadyForTheFinalTraining():void {
 	outputText("She slams the ground with her closed fist creating a crater the size of a small arena. People go to the border of the makeshift ring, eager to see the pair of you duel. Chi Chi adopts her deadly elemental stance right away.\n\n");
 	outputText("\"<i>Prepare yourself!...</i>\"\n\n");
 	startCombat(new ChiChi());
+}
+public function FinalTraining():void {
+	menu();
+	addButton(1, "Let go", FinalTrainingLetGo);
+	addButton(3, "Hug her", FinalTrainingHugHer);
+}
+public function FinalTrainingLetGo():void {
+	outputText("Something tells you Chi Chi has been broken for quite a long time. She postponed the alluring call of death only long enough to pass on what she knew to the next hero and now that it's done she wants to end it all. Unable to find anything to say to console the crestfallen martial artist, you watch her walk away from town waving her hand off for a final goodbye. A gust of wind lifts a veil of dust and now she’s no longer there. On the ground where she used to sit remains a pair of spiked gloves. She won't need them anymore, not where she is going.\n\n");
+	flags[kFLAGS.CHI_CHI_FOLLOWER] = 2;
+	inventory.takeItem(weapons.MASTGLO, camp.returnToCampUseOneHour);
+}
+public function FinalTrainingHugHer():void {
+	outputText("You tightly hug Chi Chi from behind you can see the telltale sign of your master’s suicidal tendancies coming back on the surface now. You tell her she can’t go, not anymore. She has someone now who needs her, she has you and you would feel heartbroken if she left you behind to join those she lost.\n\n");
+	outputText("Regardless of how harsh she was with you, Chi Chi is looking weak right now. Nowhere close to the strong stubborn woman she looked to be before she now bared down all her defences revealing herself to be a fragile girl possibly haunted by a tragic past. Why is it that she became a broken mess ready to throw her life away in the first place. Right now she needs emotional support.\n\n");
+	outputText("You prolong hugging the emotional hinezumi so she can cry or whatever on your shoulder. Now certain that she won’t run away and off herself somewhere where you can’t see her, you proceed to carry her back to camp, laying her down in your bed. Chi Chi has been crying on your back the whole time calling out names and apologizing for her many failures until exhausted she finally fell asleep. A little later Chi Chi wakes up and seeks you out.\n\n");
+	outputText("\"<i>I guess since you are so determined to keep me alive I should give this a chance. Got to admit I’ve been growing fond of you thanks to all the time we spent together from the moment we first met in the restorant to now. I first doubted that whole ‘hero in shining armor out to save everyone’ part of you but I guess fairy tales can occasionally have true live exemple out of books too.</i>\"\n\n");
+	if (ChiChiCorruption > 90) outputText("Well you ain’t much of a true hero anymore but factly being a hero has nothing to do with helping out a girl you like. You don’t need a hero tag to help or save someone when you feel like it. She should believe in real people also known as the real you over romanced characters that only exist in books. Let your actions speak for you, not some over the top hero stereotype.\n\n");
+	else outputText("You reply that being a hero is not impossible so long as you stay the path and keep going without giving up. You were given the title of champion but you are more than just a title, you are an adventurer who firmly believes "+player.mf("he", "she")+" can save Mareth.\n\n");
+	outputText("\"<i>A fair answer… However, I’m tired of fighting… I’ve fought all my life and it’s about time I retire as a warrior and perhaps live down the rest of my year at home practicing occasionally just so I don’t get completely rusty. The lotus monks had a philosophy against the weaponization of martial arts and perhaps they were right. You should know that I lost my school and pupils to the demons and swore vengeance upon them, ");
+	outputText("but vengeance breeds hatred and hatred breeds suffering. I can’t change the past but what I can do is change the future. In the end, I knew I wouldn’t be able to defeat the demon’s without my emotional baggage. They would just use my trauma against me. It's clear to me now that someone else had to deliver justice. Someone like you, [name].</i>\"\n\n");
+	outputText("Chi Chi’s face is but a few inches away from yours and for several seconds you look each other in the eye, until she finally takes the initiative, surprising you with a kiss.\n\n");
+	outputText("\"<i>My people have a saying… live of battles until the flame dies out and once you find peace and clarity of mind, live from love. You bested me on the battlefield and went on to heal my mind thus I have no more need or desire for fighting. However, a new flame is born from our meeting… so...could we…?</i>\"\n\n");
+	outputText("You need no more words as you slowly proceed to strip the mouse of her qipao. She gasps at your touch, but doesn’t try to stop you. Her C cup breasts are now displayed to you and you can feel something wet near your leg where her vagina should be. Chi Chi simply waits for you to remove your own clothes eagerly anticipating what will come next.\n\n");
+	if (player.hasCock()) {
+		outputText("You ");
+		if (!player.isNaked()) outputText(" slowly remove your [armor] to");
+		outputText("expose your [cock]. Chi Chi smiles tenderly as she slowly begins to stroke your shaft.\n\n");
+		outputText("\"<i>I didn’t get to appreciate it during your training, I hope you will allow me to see what I was missing out on.</i>\"\n\n");
+		outputText("You return the feeling by slowly fingering her pussy, her wetness soon coats your fingers. Once the both of you are suitably aroused, you begin to align your cock with her mouse pussy. Still remembering that she is a monk and may or may not have taken a vow of chastity, you ask her if this is really what she wants.\n\n");
+		outputText("\"<i>I’m a monk only by name and trade, not by philosophy. It’s a part of me I’m willing to give up to you… if you would accept to take responsibility.</i>\"\n\n");
+		outputText("Of course you would. You had made up your mind the moment you hugged her and won’t go back on your choice. Chi Chi sighs in relief as you slowly insert your -cockdescript- into her waiting pussy. She hugs you tight as you gently start to piston in and out of her. Chi Chi seems to enjoy herself and makes it obvious as she kisses you and draws her tongue in. The sex is calm and soothing unlike most of what you have experienced so far with Mareth denizens, who tend to prefer different trends or wilder kinks, making this slow and vanilla experience something you cherish. Chi Chi only breaks the kiss in order to whisper a sweet nothing to you.\n\n");
+		outputText("\"<i>When I’m close to you, I feel safe and warm… like a relaxing bath in the hot springs of my homeland. I hope we can stay like this for a while.</i>\"\n\n");
+		outputText("You slowly keep working her hole, the mouse moaning every now and then, panting as her body prepares for climax. You are not so far from yours either as you feel your cock twitching and soon you cum in Chi Chi’s pussy, the mouse reaching her peak at about the same time with a delighted squeak. The two of you bask in the afterglow for a moment and you stay locked with Chi Chi kissing and whispering sweet nothings to you for several minutes. Eventually, time runs out and you prepare to leave, but Chi Chi holds your arm.\n\n");
+	}
+	else {
+		outputText("You give her a good view of your [breasts] and [pussy] as you lie down next to her. The mouse moves her arms to hug you, pushing her breast against yours as she begins to kiss you and seek your tongue. You play with hers for a few minutes, savoring the cinnamony taste of her lips before slowly moving your hand to her breast in order to massage her. Chi Chi gasps in pleasure at your touch, encouraging you to continue.\n\n");
+		outputText("\"<i>I hope they are not too small for your taste… I know there's plenty of girls with larger assets than mine.</i>\"\n\n");
+		outputText("You tell her that she is fine and should feel more confident of her charms. Rather it's everyone else that is weird. There were plenty of women back home that would’ve felt like her had they compared to the people around Mareth. You thus resume the slow massaging of her breasts, making her moan in delight as you feel her tail entwining with your leg. She weakly moves her hand towards your pussy, eliciting a moan from you as she begins to slowly finger you. You go for hers with your other hand and massage her inner folds, the both of you pleasuring each other for a while. It is a relaxing experience ");
+		outputText("which allows you to truly connect with her for the first time, as you gently bring each other toward the edge. The sex is calm and soothing, unlike most of what you have experienced so far with the denizens of Mareth, who tend to prefer different trends or wilder kinks, making this slow and vanilla experience something you cherish, as the both of you eventually cum next to each other, Chi Chi tensing then relaxing against you. Despite her concealed strength you handle the hinezumi as you would a small skitty rabbit, with love and care and she rewards you with affection of her own.\n\n");
+		outputText("Eventually you build up confidence and change position, scissoring her and rubbing your pussy lips against hers, the mouse moaning every now and then, panting as her body prepares for climax. You are not so far from yours either and shortly you both exchange juices, the mouse reaching her peak at about the same time with a delighted squeak. The two of you bask in the afterglow for a moment and you stay locked with Chi Chi kissing and whispering sweet nothings to you for several minutes. Eventually, time runs out and you prepare to leave, but Chi Chi holds your arm.\n\n");
+	}
+	outputText("\"<i>Thank you for staying by my side. It might be a little late to say this but, if you would let me stay with you, I want you to know I love…</i>\"\n\n");
+	outputText("You cut her short… These feelings are shared. If she would have you, then you see no reason to refuse her staying in your camp.\n\n");
+	outputText("\"<i>Please take care of my fragile heart, [name]. I’m not as tough inside as I look on the outside. I would like you to have my gloves. I will no longer need them now that my long quest is finally over.</i>\"\n\n");
+	outputText("She is offering you her gloves, the weapon she has used to defeat so many foes. You carefully remove them from her so not to hurt her as Chi Chi rests her head on your shoulder. You think she is smiling in happiness but it would be difficult for you to see without removing the pair of arms hugging you.\n\n");
+	outputText("(<b>Chi Chi has been added to the Lovers menu!</b>)\n\n");
+	if (player.hasKeyItem("Radiant shard") >= 0) player.addKeyValue("Radiant shard",1,+1);
+	else player.createKeyItem("Radiant shard", 1,0,0,0);
+	outputText("\n\n<b>Before fully settling in your camp, as if remembering something, Chi Chi pulls a shining shard from her inventory and hands it over to you as a gift. You acquired a Radiant shard!</b>");
+	flags[kFLAGS.CHI_CHI_FOLLOWER] = 3;
+	flags[kFLAGS.CHI_CHI_LVL_UP] = 1;
+	if (player.hasCock()) player.sexReward("vaginalFluids","Dick");
+	player.sexReward("vaginalFluids");
+	inventory.takeItem(weapons.MASTGLO, camp.returnToCampUseOneHour);
 }
 
 public function SoulskilsManualsShop():void {

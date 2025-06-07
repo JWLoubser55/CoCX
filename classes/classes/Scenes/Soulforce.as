@@ -408,8 +408,7 @@ public class Soulforce extends BaseContent
 				.disableIf(!player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor), "Req. to survive H class Heaven Tribulation.")
 				.disableIf(player.statusEffectv2(dao[1]) == highestLayerOfDaoComprehension(),
 					"You have reached your current limit of comprehension for this Dao."
-					+ (player.hasPerk(PerkLib.SoulEmperor) ? "Try to improve your soulforce skills to get further."
-						: "\n<b>MAXIMUM LEVEL REACHED</b>"));
+					+ (player.hasPerk(PerkLib.SoulEmperor) ? "\n<b>MAXIMUM LEVEL REACHED</b>" : "Improve your soul cultivation to get further."));
 		}
 		for (var j:int = 0; j < daosnot.length; ++j) {
 			var daon:Array = daosnot[j];
@@ -418,9 +417,8 @@ public class Soulforce extends BaseContent
 			addButton(btn++, "Train", martialTrainingEffect, daon[1], daon[0]).hint("Practice and refine your martial arts.")
 				.disableIf(!player.hasStatusEffect(StatusEffects.MartialTraining), "Req. to have Martial Training unlocked.")
 				.disableIf(player.statusEffectv2(daon[1]) == highestLayerOfMartialTraining(),
-					"You have reached your current limit of martial training."
-					+ (player.hasPerk(PerkLib.SoulEmperor) ? "Try to improve your soulforce skills to get further."
-						: "\n<b>MAXIMUM LEVEL REACHED</b>"));
+					"You have reached your current limit of martial arts training."
+					+ (player.hasPerk(PerkLib.SoulEmperor) ? "\n<b>MAXIMUM LEVEL REACHED</b>" : "Improve your soul cultivation to get further."));
 		}
 		addButton(14, "Back", accessSoulforceMenu);
 	}
@@ -555,7 +553,7 @@ public class Soulforce extends BaseContent
 			}
 		}
 		else player.createStatusEffect(StatusEffects.MartialTraining, martial, 0, 0, 0);
-		if (!clone && display) doNext(camp.returnToCampUseEightHours);
+		if (!clone) doNext(camp.returnToCampUseEightHours);
 	}
 
 	public function highestLayerOfMartialTraining():Number {

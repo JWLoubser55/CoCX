@@ -97,7 +97,7 @@ public class TestMenu extends BaseContent
 		bd.add("RuinedTown", SceneLib.ruinedTown.enterVillage, "Test the Mousetown");
 		bd.add("LichTest", MightyOrNot2, "Lich Testing");
 		bd.add("Re:Pearl", MightyOrNot3, "Restore chance to find Pearl after regaining soul").disableIf(flags[kFLAGS.SKY_POISON_PEARL] > 0);
-		bd.add("Chi-a-Chi-Fix", MightyOrNot4).disableIf(flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 14);
+		bd.add("Chi-a-Chi-Fix", MightyOrNot4).disableIf((flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 3 || flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 3));
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -136,7 +136,7 @@ public class TestMenu extends BaseContent
 	}
 	
 	public function MightyOrNot4():void {
-		flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 12;
+		flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 3;
 		doNext(SoulforceCheats);
 	}
 	
