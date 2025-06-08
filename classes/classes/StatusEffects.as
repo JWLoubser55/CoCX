@@ -531,6 +531,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const KnowsShatterstone:StatusEffectType              = mk("Knows Shatterstone");
 		public static const KnowsSidewinder:StatusEffectType                = mk("Knows Sidewinder");
 		public static const KnowsSoulBlast:StatusEffectType                 = mk("Knows Soul Blast");
+		public static const KnowsSoulFist:StatusEffectType                  = mk("Knows Soul Fist");
 		public static const KnowsStalagmite:StatusEffectType                = mk("Knows Stalagmite");
 		public static const KnowsStormOfSisterhood:StatusEffectType         = mk("Knows Storm of Sisterhood");
 		public static const KnowsSunrise:StatusEffectType                   = mk("Knows Sunrise");
@@ -684,6 +685,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const SlowTFingItems2:StatusEffectType        		= mk("Slow TFing Items 2");
 		public static const SoulArenaGauntlets1:StatusEffectType          	= mk("Soul Arena Gauntlets 1");
 		public static const SoulDrill1:StatusEffectType                   	= mk("Soul Drill 1");
+		public static const SoulFist:StatusEffectType            = mk("Soul Fist");
 		public static const SoulGemCrafting:StatusEffectType                = mk("SoulGemCrafting");
 		public static const SoulBurn:StatusEffectType                   	= mk("Soul Burn");
 		public static const SAS:StatusEffectType             				= mk("SAS");
@@ -1518,4 +1520,4 @@ import classes.StatusEffects.VampireThirstEffect;
 			return new StatusEffectType(id,CombatStatusEffect,1);
 		}
 	}
-}
+}

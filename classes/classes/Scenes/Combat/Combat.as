@@ -3878,6 +3878,7 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
         else if (isUnarmedCombatButDealFireDamage()) {
+			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
             if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			damage = Math.round(damage * fireDamageBoostedByDao());
@@ -3897,6 +3898,7 @@ public class Combat extends BaseContent {
 			mTWayOfTheSilentStormChance += 1;
         }
 		else if (isUnarmedCombatButDealIceDamage()) {
+			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			damage = Math.round(damage * iceDamageBoostedByDao());
@@ -3916,6 +3918,7 @@ public class Combat extends BaseContent {
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (isUnarmedCombatButDealLightningDamage()) {
+			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			damage = Math.round(damage * lightningDamageBoostedByDao());
             doLightningDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
@@ -3933,6 +3936,7 @@ public class Combat extends BaseContent {
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (isUnarmedCombatButDealDarknessDamage()) {
+			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			damage = Math.round(damage * darknessDamageBoostedByDao());
             doDarknessDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
@@ -4009,6 +4013,7 @@ public class Combat extends BaseContent {
 			}
 		}
 		else if (player.isUnarmedCombat() || IsFeralCombat || player.hasAetherTwinsTier1() || player.hasAetherTwinsTier2()) {
+			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			doPhysicalDamage(damage, true, true);
@@ -4031,6 +4036,7 @@ public class Combat extends BaseContent {
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 1) {
+			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			doPhysicalDamage(damage, true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
@@ -4050,6 +4056,7 @@ public class Combat extends BaseContent {
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 2) {
+			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			doMagicDamage(damage, true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
@@ -4069,6 +4076,7 @@ public class Combat extends BaseContent {
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 3) {
+			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
 			damage = Math.round(damage * fireDamageBoostedByDao());
@@ -4091,6 +4099,7 @@ public class Combat extends BaseContent {
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 4) {
+			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			damage = Math.round(damage * iceDamageBoostedByDao());
             doIceDamage(damage, true, true);
@@ -8656,26 +8665,28 @@ public class Combat extends BaseContent {
         }
     }
 	public function MartialArtsTriggers():void {
-		var basecost:Number = Math.round(Math.sqrt(player.maxSoulforce() * 0.02));
+		var basecost1:Number = Math.round(Math.sqrt(player.maxSoulforce() * 0.01));
+		var basecost2:Number = Math.round(Math.sqrt(player.maxSoulforce() * 0.02));
 		if (player.hasPerk(PerkLib.SpinningKick) && player.legCount > 1) {
-			if (rand(4) < martialTrain && player.soulforce >= basecost && !mTSpinningKick) {
+			if (rand(4) < martialTrain && player.soulforce >= basecost2 && !mTSpinningKick) {
 				mTSpinningKick = true;
 				mTWayOfTheSilentStormChance += 1;
 				outputText("Using the momentum of your previous attack, you spin on yourself, chaining with a mighty kick to your opponent.\n\n");
-				EngineCore.SoulforceChange(basecost);
+				EngineCore.SoulforceChange(basecost2);
 				CombatAbilities.PunishingKick.perform(true,true);
 			}
 		}
 		if (player.hasPerk(PerkLib.SuddenPunch)) {
-			if (rand(4) < martialTrain && player.soulforce >= basecost && !mTSuddenPunch) {
+			if (rand(4) < martialTrain && player.soulforce >= basecost2 && !mTSuddenPunch) {
 				mTSuddenPunch = true;
 				mTWayOfTheSilentStormChance += 1;
 				var temp:Number = meleeDamageNoLagSingle();
+				if (player.hasStatusEffect(StatusEffects.SoulFist)) temp += scalingBonusWisdom();
 				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
 					temp += player.inte;
 					temp += scalingBonusIntelligence() * 0.2;
 				}
-				EngineCore.SoulforceChange(basecost);
+				EngineCore.SoulforceChange(basecost2);
 				if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) temp += Math.round(temp * 0.1);
 				if (player.armor == armors.SFLAREQ) temp *= 1.2;
 				doPhysicalDamage(temp, true, true);
@@ -8705,6 +8716,7 @@ public class Combat extends BaseContent {
 				}
 			}
 		}
+		
 	}
 
     public function unarmedAttack():Number {
@@ -11633,6 +11645,7 @@ public class Combat extends BaseContent {
 			player.soulforce -= soulforcecost2;
 			fatigue(physicalCost(10));
 		}
+		if (player.hasStatusEffect(StatusEffects.SoulFist)) EngineCore.SoulforceChange(-Math.round(Math.sqrt(player.maxSoulforce() * 0.01)));
         combatRoundOver();
     }
 
@@ -13276,6 +13289,16 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             //		outputText("<b>As your soulforce is drained you can feel the Violet Pupil Transformation's regenerative power spreading in your body.</b>\n\n");
             //	}
         }
+		//Soul Fist
+		if (player.hasStatusEffect(StatusEffects.SoulFist)) {
+			if (player.soulforce <= Math.round(Math.sqrt(player.maxSoulforce() * 0.01))) {
+                player.removeStatusEffect(StatusEffects.SoulFist);
+                outputText("<b>You are no longer consuming soulforce to empower your unarmed strikes.</b>\n\n");
+            }
+            //	else {
+            //		outputText("<b>As your soulforce is drained you can feel the Violet Pupil Transformation's regenerative power spreading in your body.</b>\n\n");
+            //	}
+		}
         //Sword Intent Aura
         if (player.statStore.hasBuff("SwordIntentAura")) {
             if ((player.soulforce < 10 * soulskillCost() * soulskillcostmulti()) || (player.fatigue + physicalCost(10) > player.maxOverFatigue())) {
@@ -19876,4 +19899,4 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
-}
+}

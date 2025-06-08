@@ -89,6 +89,7 @@ public class MultiThrustSkill extends AbstractSoulSkill {
 			multiTrustDNLag += multiThrustDSingle(monster);
 			damage += multiThrustDSingle(monster);
 		}
+		if (player.hasStatusEffect(StatusEffects.SoulFist) && player.isUnarmedCombat()) damage += scalingBonusWisdom();
 		var d2:Number = 0.9;
 		d2 += (rand(21) * 0.01);
 		damage *= d2;

@@ -52,6 +52,10 @@ public class PunishingKickSkill extends AbstractSoulSkill {
 		damage += combat.meleeUnarmedDamageNoLagSingle();
 		damage += player.wis;
 		damage += scalingBonusWisdom() * 6;
+		if (player.hasStatusEffect(StatusEffects.SoulFist)) {
+			damage += player.wis;
+			damage += scalingBonusWisdom() * 6;
+		}
 		if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) {
 			if (player.isRaceCached(Races.MOUSE, 2) && player.countRings(jewelries.INMORNG)) damage *= 2.2;
 			else damage *= 2;

@@ -1636,7 +1636,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					}
 					if (cloneDao == 9) {
 						if (player.statusEffectv2(StatusEffects.MartialTraining) < SceneLib.soulforce.highestLayerOfMartialTraining()) {
-							SceneLib.soulforce.martialTrainingEffect(false, true);
+							SceneLib.soulforce.martialTrainingEffect(true);
 							needNext = true;
 						}
 					}
@@ -3324,4 +3324,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}

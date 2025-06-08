@@ -172,6 +172,10 @@ public class PerkMenu extends BaseContent {
 			outputText("</b>");
 			addButton(0, "Lift Off", autoFlyFlagSetup);
 		}
+		if (player.hasStatusEffect(StatusEffects.KnowsSoulFist)) {
+			outputText("Soul Fist: <b>" + (player.hasStatusEffect(StatusEffects.SoulFist) ? "On" : "Off") + "</b>");
+			addButton(4, "Soul Fist", toggleSoulFist);
+		}
 		if (player.hasCombatAura()) {
 			outputText("\n\nYou can suppress your auras. This way, they won't damage/arouse enemies.");
 			outputText("\nAuras: <b>" + (flags[kFLAGS.DISABLE_AURAS] ? "Suppressed" : "Active") + "</b>");
@@ -227,6 +231,12 @@ public class PerkMenu extends BaseContent {
 			addButton(12, "Magical Charm", curry(toggleFlagMisc, kFLAGS.COMBAT_MAGICAL_CHARM));
 		}
 		addButton(14, "Back", displayPerks);
+
+		function toggleSoulFist():void {
+			if (!player.hasStatusEffect(StatusEffects.SoulFist)) player.createStatusEffect(StatusEffects.SoulFist, 0, 0, 0, 0);
+			else player.removeStatusEffect(StatusEffects.SoulFist);
+			MiscOption();
+		}
 	}
 	private function autoFlyFlagSetup():void {
 		clearOutput();

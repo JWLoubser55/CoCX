@@ -307,7 +307,7 @@ public class CombatAbilities {
 	public static const ScarletSpiritCharge:ScarletSpiritChargeSkill				= new ScarletSpiritChargeSkill();
 	public static const CrimsonOverflow:CrimsonOverflowSkill						= new CrimsonOverflowSkill();
 	public static const KillingIntent:KillingIntentSkill							= new KillingIntentSkill();
-
+	public static const SoulFist:SoulFistSkill										= new SoulFistSkill();
 
 
 	public static const ALL_SOULSKILLS:/*CombatAbility*/Array = [
@@ -359,7 +359,8 @@ public class CombatAbilities {
 		BloodRequiemSF,
 		ScarletSpiritCharge,
 		CrimsonOverflow,
-		KillingIntent
+		KillingIntent,
+		SoulFist
 	]
 
 	public static const BPBloodSwipe:BloodSwipePuppiesSkill = new BloodSwipePuppiesSkill();

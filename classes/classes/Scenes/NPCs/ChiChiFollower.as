@@ -494,7 +494,7 @@ public function TrainingSoulArtsWithChiChi():void {
 			outputText("\"<i>That's good, you’re already shaping up to become a deadly combatant, even if you don’t end up using your fist like me, this training is going to improve your overall fitness. Ask again tomorrow and we can continue improving your skill. In the meantime, you can continue training on the dummy or go beat some enemies. Just try and avoid getting yourself enslaved by demon’s or worse. It would really suck if I lost such a promising student before your potential was properly realized, not that you’re the first nor the last. I had many like you before, some far more talented than you are.</i>\"\n\n");
 			if (!player.hasStatusEffect(StatusEffects.MartialTraining)) {
 				outputText("Learning martial arts for the first time you begin to refine your combat knowledge into something new. Through diligent practice and cultivation you may unlock new ways to use your techniques and improve your overall fighting knowledge. <b>Unlocked the martial training stat.</b>\n\n");
-				SceneLib.soulforce.martialTrainingEffect(false);
+				player.createStatusEffect(StatusEffects.MartialTraining, 6, 0, 0, 0);
 			}
 			player.trainStat("str", +5, player.trainStatCap("str",100));
 			player.trainStat("spe", +5, player.trainStatCap("spe",100));
@@ -593,9 +593,10 @@ public function SoulskilsManualsShop():void {
 	menu();
 	addButton(0, "Ice Fist", SoulskilsManualsShopIceFist);
 	addButton(1, "Fire Punch", SoulskilsManualsShopFirePunch);
-	addButton(2, "Hurricane Dance", SoulskilsManualsShopHurricaneDance);
-	addButton(3, "Earth Stance", SoulskilsManualsShopEarthStance);
-	addButton(4, "Punishing Kick", SoulskilsManualsShopPunishingKick);
+	addButton(2, "Soul Fist", SoulskilsManualsShopSoulFist);
+	addButton(3, "Hurricane Dance", SoulskilsManualsShopHurricaneDance);
+	addButton(4, "Earth Stance", SoulskilsManualsShopEarthStance);
+	addButton(5, "Punishing Kick", SoulskilsManualsShopPunishingKick);
 	if (flags[kFLAGS.CHI_CHI_FOLLOWER] < 2) addButton(14, "Back", MeetingChiChiInHeXinDao2);
 	else addButton(14, "Back", ChiChiCampMainMenu);
 }
@@ -642,6 +643,29 @@ public function SoulskilsManualsShopFirePunch2():void {
 	outputText("Chi Chi nods and begins to give you a full lecture of the technique. Once done, you practice on dummies for a few hours until you finally master it.\n\n");
 	outputText("<b>You learned how to use Fire Punch!</b>\n\n");
 	if (!player.hasStatusEffect(StatusEffects.KnowsFirePunch)) player.createStatusEffect(StatusEffects.KnowsFirePunch, 0, 0, 0, 0);
+	flags[kFLAGS.SPIRIT_STONES] -= 5;
+	doNext(camp.returnToCampUseFourHours);
+}
+
+public function SoulskilsManualsShopSoulFist():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("\"<i>This one? Are you sure about that?</i>\"\n\n");
+	menu();
+	if (player.hasStatusEffect(StatusEffects.KnowsSoulFist)) addButtonDisabled(0, "Yes", "You already learned how to use Soul Fist");
+	else addButton(0, "Yes", SoulskilsManualsShopSoulFist2);
+	addButton(1, "No", SoulskilsManualsShop);
+}
+public function SoulskilsManualsShopSoulFist2():void {
+	if (flags[kFLAGS.SPIRIT_STONES] < 5 && flags[kFLAGS.CHI_CHI_FOLLOWER] < 4) {
+		outputText("\"<i>Sorry [name], but I don’t teach these for free. Get me spirit stones and then I will show you what you want.</i>\"\n\n");
+		doNext(SoulskilsManualsShop);
+		return;
+	}
+	if (flags[kFLAGS.CHI_CHI_FOLLOWER] >= 6) outputText("\"<i>Well since we are together I will gladly teach you this technique for free... let me explain so you don’t mock it up and hurt yourself.</i>\"\n\n");
+	outputText("Chi Chi nods and begins to give you a full lecture of the technique. Once done, you practice on dummies for a few hours until you finally master it.\n\n");
+	outputText("<b>You learned how to use Soul Fist!</b>\n\n");
+	if (!player.hasStatusEffect(StatusEffects.KnowsSoulFist)) player.createStatusEffect(StatusEffects.KnowsSoulFist, 0, 0, 0, 0);
 	flags[kFLAGS.SPIRIT_STONES] -= 5;
 	doNext(camp.returnToCampUseFourHours);
 }
