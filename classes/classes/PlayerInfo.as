@@ -965,7 +965,7 @@ public class PlayerInfo extends BaseContent {
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 10) interpersonStats += "<b>Tyrantia lvl:</b> 112\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 9) interpersonStats += "<b>Tyrantia lvl:</b> 106\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] < 2) interpersonStats += "<b>Tyrantia lvl:</b> 58\n";
-			else interpersonStats += getNPCLevel("Tyrantia", 64, 2, 15, 6, flags[kFLAGS.GALIA_LVL_UP]);
+			else interpersonStats += getNPCLevel("Tyrantia", 64, 2, 15, 6, flags[kFLAGS.TYRANTIA_LVL_UP]);
 		}
 
 		if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] != 0) {
@@ -1687,16 +1687,16 @@ public class PlayerInfo extends BaseContent {
 				masteryStats += "\n";
 			}
 			if (player.hasStatusEffect(StatusEffects.MartialTraining)) {
-				masteryStats += "<b>Martial Training:</b>  ";
-				if (player.statusEffectv2(StatusEffects.MartialTraining) == 12) masteryStats += "12th layer (+300% dmg)";
-				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 11) masteryStats += "11th layer (+250% dmg)";
-				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 10) masteryStats += "10th layer (+200% dmg)";
-				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 9) masteryStats += "9th layer (+150% dmg)";
-				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 8) masteryStats += "8th layer (+130% dmg)";
-				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 7) masteryStats += "7th layer (+110% dmg)";
-				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 6) masteryStats += "6th layer (+90% dmg)";
-				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 5) masteryStats += "5th layer (+70% dmg)";
-				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 4) masteryStats += "4th layer (+50% dmg)";
+				masteryStats += "<b>Major Dao of Martial Arts:</b>  ";
+				if (player.statusEffectv2(StatusEffects.MartialTraining) == 12) masteryStats += "12th layer (+300% dmg, +90% physical soulskill power)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 11) masteryStats += "11th layer (+250% dmg, +80% physical soulskill power)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 10) masteryStats += "10th layer (+200% dmg, +70% physical soulskill power)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 9) masteryStats += "9th layer (+150% dmg, +60% physical soulskill power)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 8) masteryStats += "8th layer (+130% dmg, +50% physical soulskill power)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 7) masteryStats += "7th layer (+110% dmg, +40% physical soulskill power)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 6) masteryStats += "6th layer (+90% dmg, +30% physical soulskill power)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 5) masteryStats += "5th layer (+70% dmg, +20% physical soulskill power)";
+				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 4) masteryStats += "4th layer (+50% dmg, +10% physical soulskill power)";
 				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 3) masteryStats += "3rd layer (+30% dmg)";
 				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 2) masteryStats += "2nd layer (+20% dmg)";
 				else if (player.statusEffectv2(StatusEffects.MartialTraining) == 1) masteryStats += "1st layer (+10% dmg)";

@@ -295,8 +295,8 @@ public class Changelog extends BaseContent
 			outputText("-Bee race treshold to add potins for bloodline and internal mutaiton increased to 4 + slight reducing overlap with human race checks keeping gainable race points the same.\n");
 			outputText("-New melee weapon (by Ormael): Twin Nine-ringed Sabers - can be gained by combining 2x Nine-ringed Saber weapon. Cost 2240 gems. Base atk is 14. It's normal sized weapon belonging to sword & dual type with 10% chance to trigger bleed effect.\n");
 			outputText("-New physical soulskill: Soul Fist. Req. buying manual from Chi Chi for 5 spirit stones. Use soulforce to empower your unarmed strikes. Attack will deal greater damage but consume soulforce per hit. (square root of 1% max SF)\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Mouse race tier 3 (Hinezumi) have now additional bonus: +100% to max Soulforce.\n");
+			//outputText("-Martial Training form layer 4 have additional effect +x% to physical soulskill power. Starting from 10% it increase by 10% each new layer attained.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -69,7 +69,7 @@ public class MantisRace extends Race {
 				})
 				.end();/*
 		
-		buildTier(12, "thunder mantis")
+		buildTier(16, "thunder mantis")
 				.namesTauric("thunder mantis","thunder mantis-taur")
 				.buffs({
 					"str.mult": -0.40,
