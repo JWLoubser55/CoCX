@@ -14585,6 +14585,12 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.headJewelry == headjewelries.DEATHPR && player.soulforce >= Math.round(player.maxSoulforce() * 0.5)) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
 		if (player.armor == armors.DEATHPO && player.soulforce >= Math.round(player.maxSoulforce() * 0.5)) soulforceregen += Math.round(player.maxSoulforce() * 0.02);
 		if (player.armor == armors.DEATHPGA && player.soulforce >= Math.round(player.maxSoulforce() * 0.5)) soulforceregen += Math.round(player.maxSoulforce() * 0.05);
+		if (player.hasPerk(PerkLib.SPMysticalTrainingX)) {
+			var limit:Number = player.perkv1(PerkLib.SPMysticalTrainingX) * 10;
+			var bonus:Number = Math.round((player.level - 1) / 3);
+			if (bonus > limit) bonus = limit;
+			soulforceregen += Math.round(player.maxSoulforce() * 0.001 * bonus);
+		}
 		if (player.hasPerk(PerkLib.AlteredAnima)) soulforceregen = Math.round(soulforceregen * 0.3);
         if (player.hasPerk(PerkLib.EnergyDependent)) soulforceregen = 0;
         return soulforceregen;
@@ -14682,6 +14688,12 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.hasPerk(PerkLib.WellOfMana)) manaregen += Math.round(player.maxMana() * player.intStat.core.value * 0.001);
 		if (player.hasPerk(PerkLib.GreySageWisdom)) manaregen += Math.round(player.maxMana() * 0.005);
         if (player.countMiscJewelry(miscjewelries.DMAGETO) > 0) manaregen += Math.round(player.maxMana() * 0.02);
+		if (player.hasPerk(PerkLib.SPMagicalTrainingX)) {
+			var limit:Number = player.perkv1(PerkLib.SPMagicalTrainingX) * 10;
+			var bonus:Number = Math.round((player.level - 1) / 3);
+			if (bonus > limit) bonus = limit;
+			manaregen += Math.round(player.maxMana() * 0.001 * bonus);
+		}
 		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment5)) manaregen *= 2;
         return manaregen;
     }

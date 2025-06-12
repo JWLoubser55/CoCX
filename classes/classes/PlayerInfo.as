@@ -2318,6 +2318,26 @@ public class PlayerInfo extends BaseContent {
 					}
 				}
 				else addButtonDisabled(5, "SP:ST(R6)", "You need to reach level 150 first.");
+				if (player.hasPerk(PerkLib.SPMysticalTrainingX)) addButtonDisabled(6, "SP:MyT(R1)", "You already have this super perk.");
+				else addButton(6, "SP:MyT(R1)", perkMysticalTrainingRank1).hint("Choose the 'Mystical Training (Rank: 1)' super perk. You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +10%)");
+				if (player.level >= 30) {
+					if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 2) addButtonDisabled(7, "SP:MyT(R2)", "You already have this super perk.");
+					else {
+						if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 1) addButton(7, "SP:MyT(R2)", perkMysticalTrainingRank2).hint("Choose the 'Mystical Training (Rank: 2)' super perk. You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +20%)");
+						else addButtonDisabled(7, "SP:MyT(R2)", "You need to first have 'Mystical Training (Rank: 1)' super perk.");
+					}
+				}
+				else addButtonDisabled(7, "SP:MyT(R2)", "You need to reach level 30 first.");
+				if (player.hasPerk(PerkLib.SPMagicalTrainingX)) addButtonDisabled(8, "SP:MaT(R1)", "You already have this super perk.");
+				else addButton(8, "SP:MaT(R1)", perkMagicalTrainingRank1).hint("Choose the 'Magical Training (Rank: 1)' super perk. You have trained to better handle magical energies. (+1% to MaxOver Mana, MaxOver Wrath and +0.1% of Mana recovery each 3 lvl's up to +10%)");
+				if (player.level >= 30) {
+					if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 2) addButtonDisabled(9, "SP:MaT(R2)", "You already have this super perk.");
+					else {
+						if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 1) addButton(9, "SP:MaT(R2)", perkMagicalTrainingRank2).hint("Choose the 'Magical Training (Rank: 2)' super perk. You have trained to better handle magical energies. (+1% to MaxOver Mana, MaxOver Wrath and +0.1% of Mana recovery each 3 lvl's up to +20%)");
+						else addButtonDisabled(9, "SP:MaT(R2)", "You need to first have 'Magical Training (Rank: 1)' super perk.");
+					}
+				}
+				else addButtonDisabled(9, "SP:MaT(R2)", "You need to reach level 30 first.");
 			}
 			else {
 				if (player.hasPerk(PerkLib.SPSurvivalTrainingX)) addButtonDisabled(0, "SP:ST(R1)", "You already have this perk.");
@@ -2332,6 +2352,14 @@ public class PlayerInfo extends BaseContent {
 				else addButtonDisabled(4, "SP:ST(R5)", "You do not have enough super perk points to obtain this perk.");
 				if (player.hasPerk(PerkLib.SPSurvivalTrainingX) && player.perkv1(PerkLib.SPSurvivalTrainingX) >= 6) addButtonDisabled(5, "SP:ST(R6)", "You already have this perk.");
 				else addButtonDisabled(5, "SP:ST(R6)", "You do not have enough super perk points to obtain this perk.");
+				if (player.hasPerk(PerkLib.SPMysticalTrainingX)) addButtonDisabled(6, "SP:MyT(R1)", "You already have this perk.");
+				else addButtonDisabled(6, "SP:MyT(R1)", "You do not have enough super perk points to obtain this perk.");
+				if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 2) addButtonDisabled(7, "SP:MyT(R2)", "You already have this perk.");
+				else addButtonDisabled(7, "SP:MyT(R2)", "You do not have enough super perk points to obtain this perk.");
+				if (player.hasPerk(PerkLib.SPMagicalTrainingX)) addButtonDisabled(8, "SP:MaT(R1)", "You already have this perk.");
+				else addButtonDisabled(8, "SP:MaT(R1)", "You do not have enough super perk points to obtain this perk.");
+				if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 2) addButtonDisabled(9, "SP:MaT(R2)", "You already have this perk.");
+				else addButtonDisabled(9, "SP:MaT(R2)", "You do not have enough super perk points to obtain this perk.");
 			}
 			if (player.superPerkPoints > 0) addButton(10, "Re: Convert", superPerkReverseConvertMenu);
 			else addButtonDisabled(10, "Re: Convert", "You need at least 1 super perk point to convert it.");
@@ -2695,6 +2723,34 @@ public class PlayerInfo extends BaseContent {
 		player.addPerkValue(PerkLib.SPSurvivalTrainingX,1,1);
 		clearOutput();
 		outputText("Your 'Survival Training (Rank: 5)' super perk has become 'Survival Training (Rank: 6)'.");
+		doNext(superPerkBuyMenu, 1);
+	}
+	private function perkMysticalTrainingRank1():void {
+		player.superPerkPoints--;
+		player.createPerk(PerkLib.SPMysticalTrainingX,1,0,0,0);
+		clearOutput();
+		outputText("You gained the 'Mystical Training (Rank: 1)' super perk.");
+		doNext(superPerkBuyMenu, 1);
+	}
+	private function perkMysticalTrainingRank2():void {
+		player.superPerkPoints--;
+		player.addPerkValue(PerkLib.SPMysticalTrainingX,1,1);
+		clearOutput();
+		outputText("Your 'Mystical Training (Rank: 1)' super perk has become 'Mystical Training (Rank: 2)'.");
+		doNext(superPerkBuyMenu, 1);
+	}
+	private function perkMagicalTrainingRank1():void {
+		player.superPerkPoints--;
+		player.createPerk(PerkLib.SPMagicalTrainingX,1,0,0,0);
+		clearOutput();
+		outputText("You gained the 'Magical Training (Rank: 1)' super perk.");
+		doNext(superPerkBuyMenu, 1);
+	}
+	private function perkMagicalTrainingRank2():void {
+		player.superPerkPoints--;
+		player.addPerkValue(PerkLib.SPMagicalTrainingX,1,1);
+		clearOutput();
+		outputText("Your 'Magical Training (Rank: 1)' super perk has become 'Magical Training (Rank: 2)'.");
 		doNext(superPerkBuyMenu, 1);
 	}
 	private function perkHiddenJobBloodDemon():void {

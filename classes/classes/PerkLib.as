@@ -3968,6 +3968,8 @@ public class PerkLib
 
 
 		// Other super perks
+		public static const SPMagicalTrainingX:MagicalTrainingXPerk = new MagicalTrainingXPerk();
+		public static const SPMysticalTrainingX:MysticalTrainingXPerk = new MysticalTrainingXPerk();
 		public static const SPSurvivalTrainingX:SurvivalTrainingXPerk = new SurvivalTrainingXPerk();
 		//public static const IcyHotX:SurvivalTrainingXPerk = new SurvivalTrainingXPerk();
 		public static const SuperPerk3:PerkType = mk("Super Perk 3", "Super Perk 3",
@@ -8960,4 +8962,4 @@ public class PerkLib
         }
 	}
 }
-}
+}

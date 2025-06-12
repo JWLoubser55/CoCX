@@ -596,11 +596,17 @@ import classes.Scenes.NPCs.Forgefather;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
+			if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
 			if (perkv1(IMutationsLib.HumanBloodstreamIM) >= 4) max2 += 0.05;
 			if (perkv1(IMutationsLib.HumanFatIM) >= 4) max2 += 0.1;
 			if (perkv1(IMutationsLib.HumanMetabolismIM) >= 4) max2 += 0.2;
 			if (perkv1(IMutationsLib.HumanMusculatureIM) >= 4) max2 += 0.1;
-			max1 *= max2;//~140%
+			max1 *= max2;//~200%
 			max1 = Math.round(max1);
 			if (max1 > 2199999) max1 = 2199999;
 			return max1;
@@ -719,9 +725,15 @@ import classes.Scenes.NPCs.Forgefather;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
+			if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
 			if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 4) max2 += 0.2;
 			if (perkv1(IMutationsLib.HumanSmartsIM) >= 4) max2 += 0.05;
-			max1 *= max2;//~130%
+			max1 *= max2;//~190%
 			max1 = Math.round(max1);
 			if (max1 > 1999999) max1 = 1999999;
 			return max1;
@@ -787,8 +799,14 @@ import classes.Scenes.NPCs.Forgefather;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
+			if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
 			if (perkv1(IMutationsLib.HumanBloodstreamIM) >= 4) max2 += 0.05;
-			max1 *= max2;//~195%
+			max1 *= max2;//~255%
 			max1 = Math.round(max1);//~905 188,025
 			if (max1 > 955999) max1 = 955999;
 			return max1;
@@ -901,8 +919,14 @@ import classes.Scenes.NPCs.Forgefather;
 			if (hasPerk(PerkLib.GreySageIntelligence)) max2 += 0.1;
 			if (hasPerk(PerkLib.HyperCasting)) max2 += 0.1;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
+			if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
 			if (perkv1(IMutationsLib.HumanSmartsIM) >= 4) max2 += 0.05;
-			max1 *= max2;//~130%
+			max1 *= max2;//~190%
 			max1 = Math.round(max1);
 			if (max1 > 3299999) max1 = 3299999;
 			return max1;

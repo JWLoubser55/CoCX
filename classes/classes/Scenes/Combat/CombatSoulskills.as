@@ -128,7 +128,7 @@ public class CombatSoulskills extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.SoulEmperor)) modssp += 2;
 			//if (player.hasPerk(PerkLib.SoulAncestor)) modssp += 2;
 		}
-		// (player.hasStatusEffect(StatusEffects.MartialTraining) && player.statusEffectv2(StatusEffects.MartialTraining) > 3) modssp += (0.1 * (player.statusEffectv2(StatusEffects.MartialTraining) - 3));
+		if (player.hasStatusEffect(StatusEffects.MartialTraining) && player.statusEffectv2(StatusEffects.MartialTraining) > 3) modssp += (0.1 * (player.statusEffectv2(StatusEffects.MartialTraining) - 3));
 		if (player.perkv1(IMutationsLib.HumanBonesIM) >= 4 && player.racialScore(Races.HUMAN) > 17) modssp += 1;
 		if (modsspb > 1) modssp *= modsspb;
 		modssp = Math.round(modssp * 100) / 100;

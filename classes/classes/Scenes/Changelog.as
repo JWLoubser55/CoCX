@@ -296,9 +296,9 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Ormael): Twin Nine-ringed Sabers - can be gained by combining 2x Nine-ringed Saber weapon. Cost 2240 gems. Base atk is 14. It's normal sized weapon belonging to sword & dual type with 10% chance to trigger bleed effect.\n");
 			outputText("-New physical soulskill: Soul Fist. Req. buying manual from Chi Chi for 5 spirit stones. Use soulforce to empower your unarmed strikes. Attack will deal greater damage but consume soulforce per hit. (square root of 1% max SF)\n");
 			outputText("-Mouse race tier 3 (Hinezumi) have now additional bonus: +100% to max Soulforce.\n");
-			//outputText("-Martial Training form layer 4 have additional effect +x% to physical soulskill power. Starting from 10% it increase by 10% each new layer attained.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Martial Training from layer 4 have additional effect of bonus to physical soulskill power. Starting at 10% it increase by 10% each new layer attained.\n");
+			outputText("-New super perk: Mystical Training (Rank: 1-2). Gained by spending 1 super perk point. Effects: You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +(10 * rank)%)\n");
+			outputText("-New super perk: Magical Training (Rank: 1-2). Gained by spending 1 super perk point. Effects: You have trained to better handle magical energies. (+1% to MaxOver Mana, MaxOver Wrath and +0.1% of Mana recovery each 3 lvl's up to +(10 * rank)%)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

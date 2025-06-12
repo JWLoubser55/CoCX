@@ -652,7 +652,13 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
-			max1 *= max2;//~125%
+			if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
+			max1 *= max2;//~185%
 			max1 = Math.round(max1);
 			return max1;
 		}
@@ -744,7 +750,13 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
-			max1 *= max2;//~125%
+			if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
+			max1 *= max2;//~185%
 			max1 = Math.round(max1);
 			return max1;
 		}
@@ -845,6 +857,12 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.SwordIntentAura)) temp2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) temp2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) temp2 += 0.1;
+			if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				temp2 += (0.01 * bonus);
+			}
 			temp1 *= temp2;
 			temp1 = Math.round(temp1);
 			return temp1;
@@ -924,7 +942,13 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.HyperCasting)) max2 += 0.1;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
 			if (hasPerk(PerkLib.WellOfMana)) max2 += 0.1;
-			max1 *= max2;//~130%
+			if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
+			max1 *= max2;//~190%
 			max1 = Math.round(max1);
 			return max1;
 		}
@@ -3686,6 +3710,12 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 3) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 4) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
 				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3) soulforceRecovery += Math.round(maxSoulforce() * 0.01 * (perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
+				if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+					var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+					var bonus:Number = Math.round((level - 1) / 3);
+					if (bonus > limit) bonus = limit;
+					soulforceRecovery += Math.round(maxSoulforce() * 0.001 * bonus);
+				}
 				soulforceRecovery *= soulforceRecoveryMulti;
 				if (hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) soulforceRecovery = 0;
 				addSoulforce(soulforceRecovery);
@@ -3719,6 +3749,12 @@ import classes.Scenes.Combat.CombatAbilities;
 					else manaRecovery += Math.round(maxMana() * this.inte * 0.001);
 				}
 				if (hasPerk(PerkLib.GreySageWisdom)) manaRecovery += Math.round(maxMana() * 0.005);
+				if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+					var limit1:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+					var bonus1:Number = Math.round((level - 1) / 3);
+					if (bonus1 > limit1) bonus1 = limit1;
+					manaRecovery += Math.round(maxMana() * 0.001 * bonus);
+				}
 				if (hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) manaRecovery = 0;
 				addMana(manaRecovery);
 			}
