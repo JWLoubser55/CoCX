@@ -173,6 +173,7 @@ public class PerkMenu extends BaseContent {
 			addButton(0, "Lift Off", autoFlyFlagSetup);
 		}
 		if (player.hasStatusEffect(StatusEffects.KnowsSoulFist)) {
+			outputText("\n\nUse soulforce to empower your unarmed strikes (adding wisdom scaling). Attack will deal greater damage but consume soulforce per hit. (square root of 1% max SF)\n");
 			outputText("Soul Fist: <b>" + (player.hasStatusEffect(StatusEffects.SoulFist) ? "On" : "Off") + "</b>");
 			addButton(4, "Soul Fist", toggleSoulFist);
 		}
@@ -195,12 +196,12 @@ public class PerkMenu extends BaseContent {
 			addButton(7, "CorTolerance", toggleCorruptionTolerance);
 		}
 		if (player.perkv1(IMutationsLib.FungusTramaIM) >= 4) {
-			outputText("You can choose to auto use spore could or not at the start of each combat.\n");
+			outputText("\n\nYou can choose to auto use spore could or not at the start of each combat.\n");
 			outputText("\nAuto use: <b>" + (flags[kFLAGS.AUTO_SPORE_CLOUD] == 0 ? "No" : "Yes") + "</b>");
 			addButton(8, "SporeCloud", curry(toggleFlagMisc, kFLAGS.AUTO_SPORE_CLOUD));
 		}
 		if (player.hasPerk(PerkLib.SuddenRun) || player.hasPerk(PerkLib.EarthAndSkyEx)) {
-			outputText("You can choose to start galloping or not at the beginning of each combat.\n");
+			outputText("\n\nYou can choose to start galloping or not at the beginning of each combat.\n");
 			outputText("\nStart: <b>" + (flags[kFLAGS.AUTO_GALLOP] == 0 ? "Standing still" : "Galloping") + "</b>");
 			if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN) {
 				if (autoFlyingFlag == 0) addButton(9, "Gallop", curry(toggleFlagMisc, kFLAGS.AUTO_GALLOP));
