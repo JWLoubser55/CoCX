@@ -2667,6 +2667,14 @@ public class PlayerInfo extends BaseContent {
 			}
 		}
 		else addButtonDisabled(2, "SP:MyT(R3)", "You need to reach level 60 first.");
+		if (player.level >= 90) {
+			if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 4) addButtonDisabled(3, "SP:MyT(R4)", "You already have this super perk.");
+			else {
+				if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 3) addButton(3, "SP:MyT(R4)", perkMysticalTrainingRank, 4).hint("Choose the 'Mystical Training (Rank: 4)' super perk. You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +40%)");
+				else addButtonDisabled(3, "SP:MyT(R4)", "You need to first have 'Mystical Training (Rank: 3)' super perk.");
+			}
+		}
+		else addButtonDisabled(3, "SP:MyT(R4)", "You need to reach level 90 first.");
 		addButton(14, "Back", superPerkBuyMenu, 1);
 	}
 	private function perkMagicalTraining():void {
@@ -2690,13 +2698,37 @@ public class PlayerInfo extends BaseContent {
 		}
 		else addButtonDisabled(2, "SP:MaT(R3)", "You need to reach level 60 first.");
 		if (player.level >= 90) {
-			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 2) addButtonDisabled(3, "SP:MaT(R4)", "You already have this super perk.");
+			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 4) addButtonDisabled(3, "SP:MaT(R4)", "You already have this super perk.");
 			else {
 				if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 3) addButton(3, "SP:MaT(R4)", perkMagicalTrainingRank, 4).hint("Choose the 'Magical Training (Rank: 4)' super perk. You have trained to better handle magical energies. (+1% to MaxOver Mana, MaxOver Wrath and +0.1% of Mana recovery each 3 lvl's up to +40%)");
 				else addButtonDisabled(3, "SP:MaT(R4)", "You need to first have 'Magical Training (Rank: 3)' super perk.");
 			}
 		}
 		else addButtonDisabled(3, "SP:MaT(R4)", "You need to reach level 90 first.");
+		if (player.level >= 120) {
+			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 5) addButtonDisabled(4, "SP:MaT(R5)", "You already have this super perk.");
+			else {
+				if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 4) addButton(4, "SP:MaT(R5)", perkMagicalTrainingRank, 5).hint("Choose the 'Magical Training (Rank: 5)' super perk. You have trained to better handle magical energies. (+1% to MaxOver Mana, MaxOver Wrath and +0.1% of Mana recovery each 3 lvl's up to +50%)");
+				else addButtonDisabled(4, "SP:MaT(R5)", "You need to first have 'Magical Training (Rank: 4)' super perk.");
+			}
+		}
+		else addButtonDisabled(4, "SP:MaT(R5)", "You need to reach level 120 first.");
+		if (player.level >= 150) {
+			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 6) addButtonDisabled(5, "SP:MaT(R6)", "You already have this super perk.");
+			else {
+				if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 5) addButton(5, "SP:MaT(R6)", perkMagicalTrainingRank, 6).hint("Choose the 'Magical Training (Rank: 6)' super perk. You have trained to better handle magical energies. (+1% to MaxOver Mana, MaxOver Wrath and +0.1% of Mana recovery each 3 lvl's up to +60%)");
+				else addButtonDisabled(5, "SP:MaT(R6)", "You need to first have 'Magical Training (Rank: 5)' super perk.");
+			}
+		}
+		else addButtonDisabled(5, "SP:MaT(R6)", "You need to reach level 150 first.");
+		if (player.level >= 180) {
+			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 7) addButtonDisabled(6, "SP:MaT(R7)", "You already have this super perk.");
+			else {
+				if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 6) addButton(6, "SP:MaT(R7)", perkMagicalTrainingRank, 4).hint("Choose the 'Magical Training (Rank: 7)' super perk. You have trained to better handle magical energies. (+1% to MaxOver Mana, MaxOver Wrath and +0.1% of Mana recovery each 3 lvl's up to +70%)");
+				else addButtonDisabled(6, "SP:MaT(R7)", "You need to first have 'Magical Training (Rank: 6)' super perk.");
+			}
+		}
+		else addButtonDisabled(6, "SP:MaT(R7)", "You need to reach level 180 first.");
 		addButton(14, "Back", superPerkBuyMenu, 1);
 	}
 	private function superPerkConvertMenu():void {
