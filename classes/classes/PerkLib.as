@@ -4518,7 +4518,7 @@ public class PerkLib
 		public static const ChallengingShoutMastered:PerkType = mk("Challenging Shout (Mastered)", "Challenging Shout (Mastered)",
 				"You can now use the ability Warrior Shout! Can be used at any turn but amount of gained wrath would depend how long it was used since last time during combat. (4% per turn up to 60% after 15 turns - first use in combat giving 60%) Also allow to automaticaly use weakened version at the combat round end if wrath is below 750.");
 		public static const Circuit:PerkType = mk("Circuit", "Circuit",
-				"Your body is immune to all status effects, but is weak to Electricity and Acid.");
+				"Your body is immune to all damaging status effects, but is weak to Electricity and Acid.");
 		public static const CommandingTone:PerkType = mk("Commanding Tone", "Commanding Tone",
 				"Minion and Follower Damage increased by 10%.");
 		public static const Comradery:PerkType = mk("Comradery", "Comradery",

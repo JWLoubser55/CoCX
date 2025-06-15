@@ -3416,6 +3416,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else damage *= 1.5;
 		}
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		damage = Math.round(damage);
 		outputText(" ");
 		doDamage(damage, true, true);
@@ -3428,21 +3429,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		checkAchievementDamage(damage);
 		outputText("\n\n");
-		if (player.hasPerk(PerkLib.StoredMomentum)) {
-			var storedmomentum1:Number = player.spe;
-			var storedmomentum2:Number = player.str;
-			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
-			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
-			var oldHPratio:Number    = player.hp100 / 100;
-			mainView.statsView.showStatUp('spe');
-			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
-			player.HP = oldHPratio * player.maxHP();
-		}
+		if (player.hasPerk(PerkLib.StoredMomentum)) storedMomentumShared();
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
@@ -3503,6 +3490,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.lust100 * 0.01 >= 0.9) lustDmgF += (lustBoostToLustDmg * 140);
 		else if (player.lust100 * 0.01 < 0.2) lustDmgF += (lustBoostToLustDmg * 140);
 		else lustDmgF += (lustBoostToLustDmg * 2 * (20 - (player.lust100 * 0.01)));
+		if (player.hasPerk(PerkLib.Technical)) lustDmgF *= 2;
 		//Determine if critical tease!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -3527,21 +3515,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			monster.lustVuln += 0.05;
 			if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
 		}
-		if (player.hasPerk(PerkLib.StoredMomentum)) {
-			var storedmomentum1:Number = player.spe;
-			var storedmomentum2:Number = player.str;
-			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
-			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
-			var oldHPratio:Number    = player.hp100 / 100;
-			mainView.statsView.showStatUp('spe');
-			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
-			player.HP = oldHPratio * player.maxHP();
-		}
+		if (player.hasPerk(PerkLib.StoredMomentum)) storedMomentumShared();
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
@@ -3563,21 +3537,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		clearOutput();
 		outputText("You pull the metal plug and throw the goonade forward looking away as it explodes with a bang splattering goo everywhere and restraining your opponent movement. ");
 		monster.createStatusEffect(StatusEffects.Grounded, 10, 0, 0, 0);
-		if (player.hasPerk(PerkLib.StoredMomentum)) {
-			var storedmomentum1:Number = player.spe;
-			var storedmomentum2:Number = player.str;
-			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
-			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
-			var oldHPratio:Number    = player.hp100 / 100;
-			mainView.statsView.showStatUp('spe');
-			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
-			player.HP = oldHPratio * player.maxHP();
-		}
+		if (player.hasPerk(PerkLib.StoredMomentum)) storedMomentumShared();
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
@@ -3619,21 +3579,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			combat.heroBaneProc(damage);
 			statScreenRefresh();
 		}
-		if (player.hasPerk(PerkLib.StoredMomentum)) {
-			var storedmomentum1:Number = player.spe;
-			var storedmomentum2:Number = player.str;
-			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
-			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
-			var oldHPratio:Number    = player.hp100 / 100;
-			mainView.statsView.showStatUp('spe');
-			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
-			player.HP = oldHPratio * player.maxHP();
-		}
+		if (player.hasPerk(PerkLib.StoredMomentum)) storedMomentumShared();
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
@@ -3660,6 +3606,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage = calcVoltageMod(damage, true);
 			damage = combat.tinkerDamageBonus(damage);
 			damage = combat.goblinDamageBonus(damage);
+			if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
@@ -3679,19 +3626,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			statScreenRefresh();
 		}
 		if (player.hasPerk(PerkLib.StoredMomentum)) {
-			var storedmomentum1:Number = player.spe;
-			var storedmomentum2:Number = player.str;
-			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
-			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
-			var oldHPratio:Number    = player.hp100 / 100;
-			mainView.statsView.showStatUp('spe');
-			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
-			player.HP = oldHPratio * player.maxHP();
+			
 		}
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
@@ -3714,6 +3649,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var ignoreDR:Boolean = player.hasPerk(PerkLib.Penetrator);
 		damage = combat.tinkerDamageBonus(damage);
 		damage = combat.goblinDamageBonus(damage);
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 25;
@@ -7314,6 +7250,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 8;
 		damage = combat.tinkerDamageBonus(damage);
 		damage = combat.goblinDamageBonus(damage);
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -7362,6 +7299,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 8;
 		damage = combat.tinkerDamageBonus(damage);
 		damage = combat.goblinDamageBonus(damage);
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -7402,6 +7340,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				crit = true;
 				damage *= 1.75;
 			}
+			if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 			//High damage to goes.
 			damage = calcVoltageMod(damage, true);
 			if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + (player.lust100 * 0.01));
@@ -7453,6 +7392,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage = combat.tinkerDamageBonus(damage);
 		damage = combat.goblinDamageBonus(damage);
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -7495,6 +7435,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.CheatDeath) && player.HP < (player.maxHP() * 0.1)) heal *= 2.5;
 			else heal *= 1.5;
 		}
+		if (player.hasPerk(PerkLib.Technical)) heal *= 2;
 		//Determine if critical heal!
 		var crit:Boolean = false;
 		var critHeal:int = 5;
@@ -7508,21 +7449,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		heal = Math.round(heal);
 		player.createStatusEffect(StatusEffects.GoblinMechStimpack, 10, heal, 0, 0);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
-		if (player.hasPerk(PerkLib.StoredMomentum)) {
-			var storedmomentum1:Number = player.spe;
-			var storedmomentum2:Number = player.str;
-			var limit:Number = 5;
-			if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
-			if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
-			else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
-			storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum));
-			if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
-			var oldHPratio:Number    = player.hp100 / 100;
-			mainView.statsView.showStatUp('spe');
-			player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
-			player.HP = oldHPratio * player.maxHP();
-		}
+		if (player.hasPerk(PerkLib.StoredMomentum)) storedMomentumShared();
 		if (player.hasPerk(PerkLib.GreasedLightning)) {
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
 			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
@@ -7556,6 +7483,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage *= 1.75;
 		}
 		if (half) damage *= 0.5;
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		damage = Math.round(damage);
 		doDarknessDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
@@ -7599,6 +7527,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage *= 1.75;
 		}
 		if (half) damage *= 0.5;
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		damage = Math.round(damage);
 		doLightningDamage(damage, true, true);
 		outputText(" damage! ");
@@ -7606,6 +7535,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var lustDmg:Number = (player.inte / 5 * spellModBlack() + rand(monster.lib - monster.inte * 2 + monster.cor) / 5);
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+		if (player.hasPerk(PerkLib.Technical)) lustDmg *= 2;
 		//Determine if critical tease!
 		var crit1:Boolean = false;
 		var critChance1:int = 5;
@@ -7652,6 +7582,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		if (combat.wearingWinterScarf()) damage *= 1.2;
 		if (half) damage *= 0.5;
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		damage = Math.round(damage);
 		doIceDamage(damage, true, true);
 		outputText(" damage!");
@@ -7703,6 +7634,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (monster.plural) damage *= 6;
 		}
 		if (half) damage *= 0.5;
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		damage = Math.round(damage);
 		doFireDamage(damage, true, true);
 		if (player.keyItemvX("HB Dragon's Breath Flamer", 1) > 1) doFireDamage(damage, true, true);
@@ -7741,6 +7673,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage = combat.tinkerDamageBonus(damage);
 		damage = combat.goblinDamageBonus(damage);
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 15;
@@ -7780,6 +7713,24 @@ public class PhysicalSpecials extends BaseCombatContent {
 		else {
 			if (monster.HP <= monster.minHP()) doNext(endHpVictory);
 		}
+	}
+	
+	private function storedMomentumShared():void {
+		var storedmomentum1:Number = player.spe;
+		var storedmomentum2:Number = player.str;
+		var limit:Number = 5;
+		var limit1:Number = 1;
+		if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
+		if (player.hasPerk(PerkLib.Technical)) limit1 *= 2;
+		if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
+		else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
+		storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum) * limit1);
+		storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum) * limit1);
+		if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
+		var oldHPratio:Number    = player.hp100 / 100;
+		mainView.statsView.showStatUp('spe');
+		player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
+		player.HP = oldHPratio * player.maxHP();
 	}
 
 	public function PhysicalSpecials() {

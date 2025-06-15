@@ -2347,6 +2347,7 @@ public class Combat extends BaseContent {
 			if (player.hasKeyItem("Powboy") >= 0) damage *= 1.15;
 			if (player.hasKeyItem("M.G.S. bracer") >= 0) damage *= 1.2;
 		}
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
         //Determine if critical hit!
         var crit:Boolean = false;
         var critChance:int = 5;
@@ -5053,6 +5054,7 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.Ghostslinger)) damage *= 1.15;
             if (player.hasPerk(PerkLib.PhantomShooting)) damage *= 1.05;
 			if (player.hasPerk(PerkLib.SilverForMonsters) && monster.hasPerk(PerkLib.EnemyTrueDemon)) damage *= 1.2;
+			if (player.hasPerk(PerkLib.Technical)) damage *= 2;
             if (monster.hasStatusEffect(StatusEffects.WoundPoison)) damage *= 1 + (monster.statusEffectv1(StatusEffects.WoundPoison) / 100);
 			if (monster.hasStatusEffect(StatusEffects.Polarize) && !player.isEnergyRangeWeapon()) {
 				if (player.hasPerk(PerkLib.Magnetize)) {
@@ -11995,9 +11997,9 @@ public class Combat extends BaseContent {
         }
         if (player.hasStatusEffect(StatusEffects.IzmaBleed)) {
             player.addStatusValue(StatusEffects.IzmaBleed, 1, -1);
-            if (player.statusEffectv1(StatusEffects.IzmaBleed) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle)) {
+            if (player.statusEffectv1(StatusEffects.IzmaBleed) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) {
                 player.removeStatusEffect(StatusEffects.IzmaBleed);
-                outputText("<b>You sigh with relief; your bleeding has slowed considerably.</b>\n\n");
+                if (!player.hasPerk(PerkLib.Circuit)) outputText("<b>You sigh with relief; your bleeding has slowed considerably.</b>\n\n");
             }
             //Bleed effect:
             else {
@@ -12013,9 +12015,9 @@ public class Combat extends BaseContent {
         }
         if (player.hasStatusEffect(StatusEffects.Hemorrhage)) {
             player.addStatusValue(StatusEffects.Hemorrhage, 1, -1);
-            if (player.statusEffectv1(StatusEffects.Hemorrhage) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle)) {
+            if (player.statusEffectv1(StatusEffects.Hemorrhage) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) {
                 player.removeStatusEffect(StatusEffects.Hemorrhage);
-                outputText("<b>You sigh with relief; your hemorrhage has slowed considerably.</b>\n\n");
+                if (!player.hasPerk(PerkLib.Circuit)) outputText("<b>You sigh with relief; your hemorrhage has slowed considerably.</b>\n\n");
             }
             //Hemorrhage effect:
             else {
@@ -12036,9 +12038,9 @@ public class Combat extends BaseContent {
         if (player.hasStatusEffect(StatusEffects.BurnDoT)) {
             if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 2) player.addStatusValue(StatusEffects.BurnDoT, 1, -2);
             else player.addStatusValue(StatusEffects.BurnDoT, 1, -1);
-            if (player.statusEffectv1(StatusEffects.BurnDoT) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle)) {
+            if (player.statusEffectv1(StatusEffects.BurnDoT) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) {
                 player.removeStatusEffect(StatusEffects.BurnDoT);
-                outputText("<b>You sigh with relief; fire has stopped searing your wounds.</b>\n\n");
+                if (!player.hasPerk(PerkLib.Circuit)) outputText("<b>You sigh with relief; fire has stopped searing your wounds.</b>\n\n");
             }
             //Deal damage if still wounded.
             else {
@@ -12102,7 +12104,7 @@ public class Combat extends BaseContent {
             }
         }
         if (player.hasStatusEffect(StatusEffects.AcidSlap)) {
-			if (player.hasPerk(PerkLib.KingOfTheJungle)) player.removeStatusEffect(StatusEffects.AcidSlap);
+			if (player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) player.removeStatusEffect(StatusEffects.AcidSlap);
 			else {
 				var slap:Number = 3 + (player.maxHP() * 0.02);
 				if (player.statStore.hasBuff("Crossed Holy Band")) slap *= 0.5;
@@ -12803,9 +12805,9 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             }
         }
         if (player.hasStatusEffect(StatusEffects.AikoLightningArrow)) {
-            if (player.statusEffectv1(StatusEffects.AikoLightningArrow) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle)) {
+            if (player.statusEffectv1(StatusEffects.AikoLightningArrow) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) {
                 player.removeStatusEffect(StatusEffects.AikoLightningArrow);
-                outputText("<b>You feel stronger as Aiko's lightning finally fades, though the arrow is still lodged in your side.</b>\n\n");
+                if (!player.hasPerk(PerkLib.Circuit)) outputText("<b>You feel stronger as Aiko's lightning finally fades, though the arrow is still lodged in your side.</b>\n\n");
                 player.buff("LightningArrowStr").remove();
 				player.buff("LightningArrowSpe").remove();
             }
@@ -12916,7 +12918,9 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         if (player.hasStatusEffect(StatusEffects.TemporaryHeat)) {
             //Chance to cleanse!
 			if (rand(100) >= purgeFromBody()) {
-                if ((player.hasPerk(PerkLib.Medicine) || player.hasPerk(PerkLib.KingOfTheJungle))) outputText("With your knowledge of medicine, you manage to cleanse the heat and rut drug from your system.\n\n");
+                if ((player.hasPerk(PerkLib.Medicine) || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit))) {
+					if (!player.hasPerk(PerkLib.Circuit)) outputText("With your knowledge of medicine, you manage to cleanse the heat and rut drug from your system.\n\n");
+				}
 				else outputText("Your body itself managed to cleanse the heat and rut drug from your system.\n\n");
                 player.removeStatusEffect(StatusEffects.TemporaryHeat);
             } else {
@@ -12984,8 +12988,8 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 2) player.addStatusValue(StatusEffects.AcidDoT, 1, -2);
             else player.addStatusValue(StatusEffects.AcidDoT, 1, -1);
             //Heal wounds
-            if (player.statusEffectv1(StatusEffects.AcidDoT) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle)) {
-                outputText("Acid wounds left by [themonster] finally close ups.\n\n");
+            if (player.statusEffectv1(StatusEffects.AcidDoT) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) {
+                if (!player.hasPerk(PerkLib.Circuit)) outputText("Acid wounds left by [themonster] finally close ups.\n\n");
                 player.removeStatusEffect(StatusEffects.AcidDoT);
             }
         }
@@ -12994,8 +12998,8 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 2) player.addStatusValue(StatusEffects.FrostburnDoT, 1, -2);
             else player.addStatusValue(StatusEffects.FrostburnDoT, 1, -1);
             //Heal wounds
-            if (player.statusEffectv1(StatusEffects.FrostburnDoT) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle)) {
-                outputText("Frostburn wounds left by [themonster] finally close ups.\n\n");
+            if (player.statusEffectv1(StatusEffects.FrostburnDoT) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) {
+                if (!player.hasPerk(PerkLib.Circuit)) outputText("Frostburn wounds left by [themonster] finally close ups.\n\n");
                 player.removeStatusEffect(StatusEffects.FrostburnDoT);
             } else {
                 var frostburnPlayer:Number = (monster.str + monster.spe + monster.tou) * 2.5;
@@ -13010,8 +13014,8 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         if (player.hasStatusEffect(StatusEffects.FrozenLung)) {
             player.addStatusValue(StatusEffects.FrozenLung, 1, -1);
             //Heal wounds
-            if (player.statusEffectv1(StatusEffects.FrozenLung) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle)) {
-                outputText("Frozen Lung left by [themonster] finally ends.\n\n");
+            if (player.statusEffectv1(StatusEffects.FrozenLung) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) {
+                if (!player.hasPerk(PerkLib.Circuit)) outputText("Frozen Lung left by [themonster] finally ends.\n\n");
                 player.removeStatusEffect(StatusEffects.FrozenLung);
             } else {
                 var frozenlung:Number = player.maxHP() * player.statusEffectv2(StatusEffects.FrozenLung);
@@ -13379,7 +13383,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
                 player.takePhysDamage(500);
             } else */if (EvangelineFollower.EvangelineAffectionMeter >= 2) {
                 outputText("<b>You feel your lifeforce slipping away, leaving you weaker, slower, your mind reeling.  You better finish this fight fast, or find a way to cure this ailment...You know you can't keep this up forever.</b>\n\n");
-                if (player.maxHP() < 1000) player.takePhysDamage(player.maxHP() * 0.1);//maybe make them true damage?
+                if (player.maxHP() < 1000) player.takeTrueDamage(player.maxHP() * 0.1);
                 else player.takePhysDamage(100);
 			}
         }
