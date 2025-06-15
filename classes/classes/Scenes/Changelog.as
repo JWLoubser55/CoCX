@@ -17,6 +17,13 @@ public class Changelog extends BaseContent
 			Changelog58();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, key item, item, consumable, usable, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene
 		}
 		//zrobić do 2022 na świeta event z reniferami i nie odblokowywać go do ok. 20-24 grudnia 2021 xD
+		private function Changelog61():void {
+			clearOutput();
+			menu();
+			addButton(0, "Next", Changelog60);
+			//addButton(1, "Previous", Changelog62);
+			addButton(2, "Back", CoC.instance.mainMenu.mainMenu);
+		}
 		private function Changelog60():void {
 			clearOutput();
 			menu();
@@ -26,6 +33,7 @@ public class Changelog extends BaseContent
 		}
 		private function Changelog59():void {
 			clearOutput();
+			outputText("(Part 7/7) <b>Version 0.9a:</b>\n\n");
 			menu();
 			addButton(0, "Next", Changelog58);
 			//addButton(1, "Previous", Changelog60);
@@ -293,7 +301,7 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Ormael): Twelve-ringed Saber - buyable at Orsbulg shop. Cost 5,600 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon type with 20% chance to trigger bleed effect.\n");
 			outputText("-New event perk: Way of the eight trigrams. Gained when training after reaching 12th layer of Martial Training and knowing Sextuple Thrust soulskill. Effects: If at least one hand is free there is a 5% chance to unleash a sextuple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round. This ability replace Way of the silent storm.\n");
 			outputText("-Bee race treshold to add potins for bloodline and internal mutaiton increased to 4 + slight reducing overlap with human race checks keeping gainable race points the same.\n");
-			outputText("-New melee weapon (by Ormael): Twin Nine-ringed Sabers - can be gained by combining 2x Nine-ringed Saber weapon. Cost 2240 gems. Base atk is 14. It's normal sized weapon belonging to sword & dual type with 10% chance to trigger bleed effect.\n");
+			outputText("-New melee weapon (by Ormael): Twin Nine-ringed Sabers - can be gained by combining 2x Nine-ringed Saber weapon. Cost 2,240 gems. Base atk is 14. It's normal sized weapon belonging to sword & dual type with 10% chance to trigger bleed effect.\n");
 			outputText("-New physical soulskill: Soul Fist. Req. buying manual from Chi Chi for 5 spirit stones. Use soulforce to empower your unarmed strikes. Attack will deal greater damage but consume soulforce per hit. (square root of 1% max SF)\n");
 			outputText("-Mouse race tier 3 (Hinezumi) have now additional bonus: +100% to max Soulforce.\n");
 			outputText("-Martial Training from layer 4 have additional effect of bonus to physical soulskill power. Starting at 10% it increase by 10% each new layer attained.\n");
@@ -302,14 +310,14 @@ public class Changelog extends BaseContent
 			outputText("-Survival Training super perk can be ranked up one more time (up to rank 7).\n");
 			outputText("-New event perk: Circuit. Gained by becoming Automata. Effects: Your body is immune to all damaging status effects, but is weak to Electricity and Acid.\n");
 			outputText("-New event perk: Technical. Gained by becoming Automata. Effects: Firearms and other ancient lost technology are twice as strong in your hands.\n");
+			outputText("-New melee weapon (by Ormael): Twin Twelve-ringed Sabers - can be gained by combining 2x Twelve-ringed Saber weapon. Cost 11,200 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon / dual type with 20% chance to trigger bleed effect.\n");
+			outputText("-New event perk: Self Improvement. Gained by becoming Automata. Effects: You have the ability to ever improve and adapt your artificial body increasing a random stat by 5% for every victim converted. You may also learn and use some mechanical upgrades normally reserved to mechs on yourself. ");
+			outputText("Gadgets are 5 time as powerful when used by an Automata. (goblin mech upgrade are applied to pc own stat and do not require pc to own a garage nor be a goblin to access blueprints)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			//outputText("-New event perk: Self Improvement. Gained by becoming Automata. Effects: You have the ability to ever improve and adapt your artificial body increasing a random stat by 5% for every victim converted. You may also learn and use some mechanical upgrades normally reserved to mechs on yourself. ");
-			//outputText("Gadgets are 5 time as powerful when used by an Automata. (goblin mech upgrade are applied to pc own stat and do not require pc to own a garage nor be a goblin to access blueprints)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .

@@ -947,6 +947,11 @@ public final class WeaponLib extends ItemConstants
 				"This staff is made of very old wood and seems to tingle to the touch.  The top has topaz embedded in it, and the wood is worn smooth from lots of use.  It probably belonged to a wizard at some point and would aid magic use.",
 				WT_STAFF, WSZ_LARGE)
 				.withBuff('spellpower', +0.2) as Weapon;
+		public const TACLAYM:Weapon = new Weapon(
+				"TAClaym", "T.A.Claymore", "twin amethyst claymores", "a twin amethyst claymores", "cleaving sword-slash", 15, 2400,
+				"Those twin two-handed swords are made of obsidian and grotesquely decorated with amethysts and lead engravings. The magic within those murky blades will bleed unnatural darkness when charged with magic.",
+				WT_SWORD, WSZ_LARGE, true)
+				.withEffect(IELib.ScaleAttack_Str, 40) as Weapon;
 		public const TB_SCYT:Weapon = new Weapon(
 				"TBScyt", "T.B.Scythe", "two bladed scythe", "a two bladed scythe", "slash", 30, 2400,
 				"The Two Bladed Scythe resembles a scythe with a long thin blue grip, and two blades at the tip.",
@@ -1016,11 +1021,6 @@ public final class WeaponLib extends ItemConstants
 				"TrStSwo","TruestrikeSword", "Truestrike sword", "a Truestrike sword", "slash", 5, 400,
 				"Lia will write desc of it...soon.",
 				WT_SWORD, WSZ_MEDIUM);
-		public const TACLAYM:Weapon = new Weapon(
-				"TAClaym", "T.A.Claymore", "twin amethyst claymores", "a twin amethyst claymores", "cleaving sword-slash", 15, 2400,
-				"Those twin two-handed swords are made of obsidian and grotesquely decorated with amethysts and lead engravings. The magic within those murky blades will bleed unnatural darkness when charged with magic.",
-				WT_SWORD, WSZ_LARGE, true)
-				.withEffect(IELib.ScaleAttack_Str, 40) as Weapon;
 		public const TRCLAYM:Weapon = new Weapon(
 				"TRClaym", "T.R.Claymore", "twin ruby claymores", "a twin ruby claymores", "cleaving sword-slash", 15, 2400,
 				"Those twin two-handed swords are made of crimson metal and richly decorated with rubies and gold engravings. The magic within those crimson blades will flare up with magical flames when charged with magic.",
@@ -1043,6 +1043,12 @@ public final class WeaponLib extends ItemConstants
 				"Those twin two-handed swords are made of eversteel and richly decorated with yellow topazes and copper engravings. The magic within those shining blades will oversaturate the metal with electricity when charged with magic.",
 				WT_SWORD, WSZ_LARGE, true)
 				.withEffect(IELib.ScaleAttack_Str, 40) as Weapon;
+		public const TTRSABER:Weapon = new Weapon(
+				"TTRSaber","TwinTwelveRingedSabers","Twin Twelve-ringed Sabers","a twin twelve-ringed sabers","slash",70,11200,
+				"This large twin sabers, with added twelve rings are capable of delivering deep, jagged wounds.",
+				WT_SWORD, WSZ_LARGE, true)
+				.withTags(W_MONKWEAPON, W_LGWRATH)
+				.withEffect(IELib.Bleed, 20) as Weapon;
 		public const U_STAFF:Weapon = new UnicornStaff();
 		public const UDKDEST:Weapon = new Weapon(
 				"UDKDest", "UDKDestroyer", "Undefeated King's Destroyer", "an Undefeated King's Destroyer", "smash", 75, 9000,
@@ -1203,7 +1209,8 @@ public final class WeaponLib extends ItemConstants
 			[DARKSA1, DARKSA],
 			[DARKSS1, DARKSS],
 			[DARKSSP, DARKSS2],
-			[NRSABER, TNRSABER]
+			[NRSABER, TNRSABER],
+			[TRSABER, TTRSABER]
 		]
 	}
 }

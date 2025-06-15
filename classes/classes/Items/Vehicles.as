@@ -43,8 +43,11 @@ package classes.Items
 		}
 		
 		override public function canEquip(doOutput:Boolean, slot:int):Boolean {
-			if (game.player.hasPerk(PerkLib.Rigidity)) {
-				if (doOutput) outputText("You would very much like to enter " + longName + " cockpit, but your body stiffness prevents you from doing so.");
+			if (game.player.hasPerk(PerkLib.Rigidity) || game.player.isAutomata() || game.player.isGargoyle()) {
+				if (doOutput) {
+					if (game.player.hasPerk(PerkLib.Rigidity)) outputText("You would very much like to enter " + longName + " cockpit, but your body stiffness prevents you from doing so.");
+					else outputText("Due to your metalic body the mech fails to recognise the signature of a living creature within its cockpit and refuse to activate.");
+				}
 				return false;
 			}
 			return super.canEquip(doOutput, slot);

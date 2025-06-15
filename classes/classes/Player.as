@@ -849,7 +849,7 @@ use namespace CoC;
 				armorDef += (15 * newGamePlusMod);
 				if (perkv1(IMutationsLib.HumanFatIM) >= 4) armorDef += (25 * newGamePlusMod);
 			}
-			if (hasPerk(PerkLib.GoblinoidBlood)) {
+			if (hasPerk(PerkLib.GoblinoidBlood) || hasPerk(PerkLib.SelfImprovement)) {
 				var goblinbracerBonus:int = 0;
 				if (hasKeyItem("Powboy") >= 0) {
 					goblinbracerBonus += Math.round(inte / 10);
@@ -866,7 +866,7 @@ use namespace CoC;
 				if (armorName == "samurai armor") armorDef += 4;
 			}
 			if (headjewelryName == "HB helmet") armorDef += 5;
-			if (vehiclesName == "Goblin Mech Alpha") {
+			if (vehiclesName == "Goblin Mech Alpha" || hasPerk(PerkLib.SelfImprovement)) {
 				armorDef += 10;
 				if (hasKeyItem("Upgraded Armor plating 1.0") >= 0) armorDef += 5;
 				if (hasKeyItem("Upgraded Armor plating 2.0") >= 0) armorDef += 10;
@@ -1089,7 +1089,7 @@ use namespace CoC;
 				armorMDef += (15 * newGamePlusMod);
 				if (perkv1(IMutationsLib.HumanFatIM) >= 4) armorMDef += (25 * newGamePlusMod);
 			}
-			if (hasPerk(PerkLib.GoblinoidBlood)) {
+			if (hasPerk(PerkLib.GoblinoidBlood) || hasPerk(PerkLib.SelfImprovement)) {
 				var goblinbracerBonus:int = 0;
 				if (hasKeyItem("Powboy") >= 0) {
 					goblinbracerBonus += Math.round(inte / 10);
@@ -1102,7 +1102,7 @@ use namespace CoC;
 				armorMDef += goblinbracerBonus;
 			}
 			if (headjewelryName == "HB helmet") armorMDef += 4;
-			if (vehiclesName == "Goblin Mech Alpha") {
+			if (vehiclesName == "Goblin Mech Alpha" || hasPerk(PerkLib.SelfImprovement)) {
 				armorMDef += 10;
 				if (hasKeyItem("Upgraded Armor plating 1.0") >= 0) armorMDef += 5;
 				if (hasKeyItem("Upgraded Armor plating 2.0") >= 0) armorMDef += 10;

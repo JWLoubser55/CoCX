@@ -644,7 +644,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (monster is Kiha) bd.disable("You cannot call Kiha to fight... herself.");
 			}
 		}
-		if (player.isInGoblinMech()) {
+		if (player.isInGoblinMech() || player.hasPerk(PerkLib.SelfImprovement)) {
 			if (player.hasKeyItem("Dynapunch Glove") >= 0 && player.vehicles != vehicles.GS_MECH) {
 				bd = buttons.add("Dynapunch G.", mechDynapunchGlove).hint("Shoot a springed gloved fist at the opponent with a rocket punch stunning for one round and dealing damage. \n\nWould go into cooldown after use for: 8 rounds");
 				if (player.hasStatusEffect(StatusEffects.CooldownDynapunchGlove)) {
@@ -697,7 +697,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use "+(player.hasKeyItem("Medical Dispenser 2.0") >= 0 ? "Medical Dispenser":"Stimpack Dispenser")+" again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if (player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0) {
+			if ((player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0) && !player.hasPerk(PerkLib.SelfImprovement)) {
 				bd = buttons.add("Jetpack", takeFlightGoblinMechJetpack).hint("Make use of your mech jetpack to take flight into the air for up to 5 turns. \n\nWould go into cooldown after use for: 3 rounds");
 				if (player.hasStatusEffect(StatusEffects.CooldownJetpack)) {
 					bd.disable("<b>You need more time before you can use jetpack again.</b>\n\n");
@@ -3417,6 +3417,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 		damage = Math.round(damage);
 		outputText(" ");
 		doDamage(damage, true, true);
@@ -3491,6 +3492,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		else if (player.lust100 * 0.01 < 0.2) lustDmgF += (lustBoostToLustDmg * 140);
 		else lustDmgF += (lustBoostToLustDmg * 2 * (20 - (player.lust100 * 0.01)));
 		if (player.hasPerk(PerkLib.Technical)) lustDmgF *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) lustDmgF *= 5;
 		//Determine if critical tease!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -3561,6 +3563,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage = calcInfernoMod(damage, true);
 			damage = combat.tinkerDamageBonus(damage);
 			damage = combat.goblinDamageBonus(damage);
+			if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+			if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
@@ -3607,6 +3611,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage = combat.tinkerDamageBonus(damage);
 			damage = combat.goblinDamageBonus(damage);
 			if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+			if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
@@ -3650,6 +3655,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage = combat.tinkerDamageBonus(damage);
 		damage = combat.goblinDamageBonus(damage);
 		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 25;
@@ -7341,6 +7347,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				damage *= 1.75;
 			}
 			if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+			if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 			//High damage to goes.
 			damage = calcVoltageMod(damage, true);
 			if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + (player.lust100 * 0.01));
@@ -7393,6 +7400,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage = combat.tinkerDamageBonus(damage);
 		damage = combat.goblinDamageBonus(damage);
 		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -7436,6 +7444,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else heal *= 1.5;
 		}
 		if (player.hasPerk(PerkLib.Technical)) heal *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) heal *= 5;
 		//Determine if critical heal!
 		var crit:Boolean = false;
 		var critHeal:int = 5;
@@ -7484,6 +7493,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		if (half) damage *= 0.5;
 		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 		damage = Math.round(damage);
 		doDarknessDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
@@ -7528,6 +7538,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		if (half) damage *= 0.5;
 		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 		damage = Math.round(damage);
 		doLightningDamage(damage, true, true);
 		outputText(" damage! ");
@@ -7536,6 +7547,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
 		if (player.hasPerk(PerkLib.Technical)) lustDmg *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) lustDmg *= 5;
 		//Determine if critical tease!
 		var crit1:Boolean = false;
 		var critChance1:int = 5;
@@ -7583,6 +7595,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (combat.wearingWinterScarf()) damage *= 1.2;
 		if (half) damage *= 0.5;
 		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 		damage = Math.round(damage);
 		doIceDamage(damage, true, true);
 		outputText(" damage!");
@@ -7635,6 +7648,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		if (half) damage *= 0.5;
 		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 		damage = Math.round(damage);
 		doFireDamage(damage, true, true);
 		if (player.keyItemvX("HB Dragon's Breath Flamer", 1) > 1) doFireDamage(damage, true, true);
@@ -7674,6 +7688,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage = combat.tinkerDamageBonus(damage);
 		damage = combat.goblinDamageBonus(damage);
 		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 15;
@@ -7722,6 +7737,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var limit1:Number = 1;
 		if (player.hasPerk(PerkLib.LawOfPerpetualMotion)) limit += 5;
 		if (player.hasPerk(PerkLib.Technical)) limit1 *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) limit1 *= 5;
 		if (player.hasStatusEffect(StatusEffects.StoredMomentum)) player.addStatusValue(StatusEffects.StoredMomentum, 1, 0.25);
 		else player.createStatusEffect(StatusEffects.StoredMomentum, 0.25, 0, 0, 0);
 		storedmomentum1 = Math.round(storedmomentum1 * player.statusEffectv1(StatusEffects.StoredMomentum) * limit1);
