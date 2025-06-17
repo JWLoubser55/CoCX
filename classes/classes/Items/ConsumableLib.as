@@ -610,7 +610,11 @@ public final class ConsumableLib extends AlchemyLib
 						[
 							[1, AR_LIB]
 						],
-						MarilithRace.MarilithSkinColors
+						concatUnique(
+								MarilithRace.MarilithSkinColors,
+								MarilithRace.MarilithHairColors,
+								MarilithRace.MarilithScaleColors
+						)
 				);
 		public const FIERYS_: Consumable = mk("FieryS", "FieryS.", "Fiery saké", 10, "A strong alcoholic beverage best served hot. The Hinezumi drink of this regularly.", curry(m.mouseCocoa, 1), ItemConstants.U_TF)
 				.refineableInto(

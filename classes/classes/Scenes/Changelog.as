@@ -43,6 +43,33 @@ public class Changelog extends BaseContent
 			clearOutput();
 			outputText("(Part 6/6) <b>Version 0.9a:</b>\n\n");
 			//0 of 11 pages
+			outputText("-Fairy score req. to have fairy eyes to get bonuses for above half-fairy race bonuses.\n");
+			outputText("-Golden statue that can be stolen from Kitsune Shine can be now returned (or stolen again) even when PC already unlocked Kitsune Shrine.\n");
+			outputText("-Twin Heart IM's now have additional effect of lowering Gallop fatigue cost by 5% per tier.\n");
+			outputText("-Utility Skills: Apprentice perk req. for non combat skill lowered from 5+ to 4+ and tier decreased from 4 to 3. Utility Skills: Skilled req. for non combat skill lowered from 10+ to 7+ and tier decreased from 8 to 6.\n");
+			outputText("-Because people found it weird golems and angels would not longer drops some items (Bro Brew, Bimbo Liquer, Eggs during Easter and other super rare drops that can proc after PC reach lvl 7).\n");
+			outputText("-Restrained Black/White/Grey Tome initial spellpower is 400% and initial cooldown is -4 turns. It mean also that their effect would be present until lvl 24 not 18.\n");
+			outputText("-In character creation if Herm option is unlocked can choose now between: Man, Woman, Herm (without balls), Herm (with balls)\n");
+			outputText("-PC now could explore in Ignam after dusk but only for 2 additional hours and it will increase massively chance to find hostile enocuter and they may even be much stronger ones enemies then it should be according to current PC level.\n");
+			outputText("-Starting game all PC's would have 15 more stat points, additional 2 perk points and 1 super perk point.\n");
+			outputText("-Added few basic range weapons to Trading Post in Ignam with respective History/Past Life perks giving 20% discount. Plus some TF items to Black Market with 'minor' price reduction for items cost there.\n");
+			outputText("-Arcane circle can be upgraded 8th and 9th time enabling 2 more steps in making elementals stronger per added circle.\n");
+			outputText("-For Yuki Onna encounters it will now only req. to find Yu shop.\n");
+			outputText("-Non goblonoid PC's can now buy and craft few simpler gadgets at Tripxi gunshop: Flasherbang, Goonade, Fire Grenade, Fire Grenade II, Stun Grenade\n");
+			outputText("-Training Dummy now got bit more sponge on it and each upgrade increase it lvl by 60.\n");
+			outputText("-Job: Sorcerer perk have now one additional effect (for making beginner mages life easier) of lowering all tier 1 white/black/grey spells cd down to 0.\n");
+			outputText("-Offensive spells tier 1,2,3 have their base scaling on intelligence improved (4x higher) and added scaling based on wisdom (as high as previously intelligence scaling was).\n");
+			outputText("-Nosferatu spell cooldown decreased from 7 to 6 turns and reduction of cd is the same as for any tier 2 black spells.\n");
+			outputText("-Heal, Cure, Regenerate and Restore, Balance of Life spells cooldowns was unified to be the same as tier 2 spells (Restore, Balance of Life) or tier 1 spell. Additionaly having Job: Healer would reduce all of those spells cooldowns by 3 turns. Regenerate and HoT part of Restore was changed to last only 3 turns and heal 2,5x more HP each turn. Balance of Life base duration increased by 1 turn.\n");
+			outputText("-Nosferatu, Heal, Cure cooldown are now affected by effects of Restrined Black/White Tome.\n");
+			outputText("-Energy Drain spell cooldown is shortened to 6 turns and effect increased to changed to -25% dmg for 6 turns.\n");
+			outputText("-Spells critical chance can be now affected by weapon PC use: wands/partstaff main or offhand weapon would add 10% crit chance and staff weapon adds 20%.\n");
+			outputText("-Swiftcasted spells costs and dmg was adjusted to be 75% of their non swiftcast counterparts.\n");
+			outputText("-Mage's Wrath and Mage's Wrath (Ex) perks now would additionaly increase spells crit chance by 10%.\n");
+			outputText("-Magic / Elemental Bolt spells get their dmg adjusted to be 75% of scaling for tier 1 spells and lowered costs by 25% but also would no longer work on enemies with low tier magic immunity.\n");
+			outputText("-Mimic enemies got bit of more HP given with slight armor increases and their special Bite attack hurt more. Their loot table was tossed out replaced with bit more usefull loot and they even could drop (?) items too. All Slime / Goo / Ooze enemies got their armor and mres switched.\n");
+			outputText("-Some of the stat checks for enemies changed from checking total stat values to core stat values: Frost Gigant str check, kitsune enemies Seal/Illusion special int checks\n");
+			outputText("-Yamata combat desc would desc how much PC is close to become her masochostic pet (not large change of text but carefull observer would notice smlight changes in her last part of descrtiption that was sitting hidden in code before). Still no news on more stuff for her or getting her weapon...yet.\n");
 			outputText("-Mindbreaker races got +100% more to libido multi and +100 to sensitivity. Their special - Mind Trust - deal now psionic dmg not true damage.\n");
 			
 			outputText("-More weapons can get random enchantments: claymore, halberd, kama, nodachi, ribbon, scimitar, warhammer, whip, zweihander. (aimozg)\n");
@@ -158,9 +185,7 @@ public class Changelog extends BaseContent
 			outputText("-Added 1 additional rank to Ascension: Additional Organ Mutation and 2 additional ranks to Ascension: Transcendental Genetic Memory perks.\n");
 			outputText("-New Ascension perk: Ascension: Transcendental Genetic Memory (Ex). Your body capacity to retain metamorphic adaptations increased by (1+perk rank) times. Max Rank: 4.\n");
 			outputText("-New Special names: Arikahs (cow/minotaur). Each of them will start with matching bloodline perk to match their ancestor race.\n");//, Veseshe (elf)
-			outputText("-New P. Special: Mummy Bandage - usable by mummy PC. You can initiate a grapple using your bandages.\n");
 			outputText("-New option for Liches - Soul burn: You may use your soulforce as fuel to empower your arcane magic. While active consume soulforce (5% per turn) on all cast as if using soul skills but double magic damage.\n");
-			outputText("-New M. special: Paralyzing touch - You can paralyze a living foe with a single touch by temporarily sucking the soul force out of their limbs. This ability does not work against undead and foes who lack soulforce to begin with. Usable by Lich. Deal darkness damage and stun for 2 rounds.\n");// Cost 100 fatigue.
 			outputText("-When PC have Phylactery perk can access and use Demonic Energy menu. But to not be too... unfair during ascension any perk gained with use of DE would be lost unlike during Dark Ascension of Soulless PC. Also not been fully soulless would decrease max DE possible to store by 50% and they only gain 50% of DE from eating Lethicite.\n");
 			outputText("-Wendigo Lose Scene Check Fix. (NUZ/Shirane)\n");
 			outputText("-Fixing some of PC's rejected on Marae 1st visit still not getting scene to progress main storyline. (DallagenXYZ)\n");
@@ -226,7 +251,6 @@ public class Changelog extends BaseContent
 			outputText("-New perk for enemies: Eldritch type enemy. Would be used to check when some pc attacks won't work on that type of enemies.\n");
 			outputText("-New perk for enemies: Darkness Vulnerability - decrease lightning dmg done to monster by 50% and increase darkness dmg by 100%.\n");
 			outputText("-Changes including Tome of Imps and Imps birth. Tome of Imp and Demonhood is now accounted for when birthing imps. Giving birth to imps adds 5 imps to the tome directly. (Liadri)\n");
-			outputText("-New P. Special: Spore Cloud. Req. to be Matango. Effects: Works like arousing aura till end of fight. Can't have both Spore Cloud and Alraune Pollen active.\n");
 			outputText("-Exp banking from defeating foes is now history. Tribulation and exp gained from other source will still be able to be banked. Added a toggle in start menu for Exp banking Exp banking is now limited to 3 time the amount to the next level up. Exp Banking is On by default. (Liadri)\n");
 			outputText("-Nerfed the thunder dragon electric rods. (Liadri)\n");
 			outputText("-True Seeing can now pierce invisibility-like enemy abilities that may disable some of the combat options.\n");
@@ -246,7 +270,6 @@ public class Changelog extends BaseContent
 			outputText("-Description for spider eyes now desc them as main pair and 2 pairs of smaller eyes instead of main + smaller pair of eyes. Yggdrasil 3rd tier of wings now count toward bonus dmg from tier 3 wings in wing slap special.\n");
 			outputText("-2nd (corrupted) variant of plant arms was moved form been specific to yggdrasil race to plant race.\n");
 			outputText("-Added goblin mech ai to list of preturn autoattack actions that may cause lock out at some fights. (you two AGAIN??? *looking at Minotaur King and Excellia*) Option in perks adde menu allowing to toggle between goblin mech ai doing nothying or acting at the turn start.\n");
-			outputText("-New TF item (by Shigure): Moth's Dust. Buyable in Moga Hen shop. Using this item will turn PC into moth. Their race bonuses for Moth-morph / Elder Moth-morph (10/18): -30%/-40% to Tou multi, +150%/+220% to Spe multi, +70%/+120% to Wis multi, +30%/+50% to Lib multi, +70/+80 to sensitivity.\n");//Dropped by Corrupted Troll enemies.
 			outputText("-New mutation perk: Human Secondary Heart. Req. having free heart mutation slot, human race (17+). Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased a bit (2%) as the new heart struggles to find its rhythm alongside your first.\n");
 			outputText("-New mutation perk: Human Secondary Heart (Primitive). Req. Human Secondary Heart and lvl 30+. Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased slightly (3%) as the new heart begins to find its rhythm alongside your first.\n");
 			outputText("-New mutation perk: Human Secondary Heart (Evolved). Req. Human Secondary Heart (Primitive) and lvl 60+. Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased (5%) as the new heart has adapted to the rhythm of the original.\n");
@@ -256,13 +279,7 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Human Lungs (Primitive). Req. Human Lungs and lvl 30+. Effects: Your lungs have been enhanced in both size and strength, increasing your endurance somewhat (3%), as well as aiding your metabolism in filtering toxins.\n");
 			outputText("-New mutation perk: Human Lungs (Evolved). Req. Human Lungs (Primitive) and lvl 60+. Effects: Your lungs have been enhanced in both size and strength, increasing your endurance (4%), as well as aiding your metabolism in filtering toxins.\n");
 			outputText("-New mutation perk: Human Lungs (Final Form). Req. Human Lungs (Evolved) and lvl 90+. Effects: Your lungs have been enhanced in both size and strength, increasing your endurance greatly (6%), aiding your metabolism in filtering toxins, and gives you the ability to breathe underwater, having been mutated away from humanity just enough to allow it.\n");
-			outputText("-New M. Special: LOOKOUT! Usable by having Look! A Distraction perk. Mental special attack. Base 25% success rate, +0.5% for every point of WIS you have over your enemy’s WIS. Stuns and Doubles next melee hit if done next round, only works once per combat.\n");
 			outputText("-Most of mage perks gained additional bonus to spellpower that won't increase spell use cost.\n");
-			outputText("-New TF item (by Liadri): Fiendish Oil. Made from naga tf and succubus milk by Evangeline. Using this item will turn PC into marilith. Their race bonuses for Marilith / Marilith Blademaster / Marilith Sword Princess (18/24/40): +100%/+130%/+200% to Str multi, +120%/+150%/+250% to Spe multi, +50%/+80%/+100% to Int multi, +50%/+80%/+150% to Lib multi, +50/+80/+100 to sensitivity.\n");
-			outputText("-New event perk: Blade Dancer. Gained by becoming Marilith and having quad arms. Effects: Gain 2 additional attacks when using multiple weapons. Gain two more attacks if all hands are equipped.\n");
-			outputText("-New event perk: Fiendish Concentration. Gained by becoming Marilith and having quad arms. Effects: Passively cast a selected spell every round so long as at least two hands are free. Cast twice if three hands are free.\n");
-			outputText("-New event perk: Artful destruction. Gained by becoming Marilith and having quad arms. Effects: Magic damage increases Physical damage dealt by 5% and Physical Damage increases magic damage by 5% dealt up to 200% each.\n");
-			outputText("-New event perk: Impossible Hand Technique. Gained by becoming Marilith and having quad arms. Effects: Quadruple Tease damage dealt when grappling or straddling.\n");
 			outputText("-Marilith sprite implementation. (Lord Shadeogorath)\n");
 			outputText("-Losing to Werespider in tunnels would TF pc (without currently pernament tf) into werespider. Their race bonuses for Werespider / Elder Werespider (12/18): +50%/+80% to str multi, +80%/+110% to tou multi, +80%/+110% to spe multi, -30% to lib multi, -20% max lust multi, -80% max wrath multi\n");
 			outputText("-Value Overflow error fix Ebon Labyrinth. (Jtecx)\n");
@@ -271,8 +288,7 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Ormael): Darksteel Scythe - buyable at Orsbulg shop. Cost 3,200 gems. Base atk is 40. It's large scythe type weapon, 10% bleed chance, increase physical soulskills power by 20%.\n");
 			outputText("-New melee weapon (by Ormael): Darksteel Scythes - can be gained by combining 2x Darksteel Scythe weapon. Cost 6,400 gems. Base atk is 40. It's dual large weapon belonging to scythe type, 10% bleed chance, increase physical soulskills power by 40%.\n");
 			outputText("-New Blood Soulskill: Crimson Overflow - learned from Crimson Jade. Selfbuff that boost max OverHP by 10% for duration of the combat. Way of the Blood super perk change effect to be castable when off cooldown and granting 5% for an hour. Recasting would make it stack until 6x current progress of blood demon job. Blood Demon Intelligence super perk would increase stack limit to 12x and each cast adding 2 hours.\n");
-			outputText("-New TF item (by Liadri): Horned fruit. Using this item will turn PC into barometz. Their race bonuses for Barometz / Blooming Barometz (20/34): +130%/+200% to Tou multi, +130%/+200% to Spe multi, -40% to Int multi, +80%/+200% to Wis multi, +100%/+150% to Lib multi, +100/+200 to sensitivity.\n");//Dropped by Barometz enemies.
-			outputText("-Unnamed Goblin Commando taking great risk moved Goblin Prime Mech form egg pile in Lethice Stronghold to newly renovated basement in Factory.\n");
+			outputText("-Unnamed Goblin Commando taking great risk moved Goblin Prime Mech from egg pile in Lethice Stronghold to newly renovated basement in Factory.\n");
 			outputText("-Boundless Ammo Bag effect of reloding would now give silent reload option (as long pc gor fatigue for it) that will not interrupt shooting or ending turn for doing reload. It may cause PC to have max fatigue as side effect of reloading while not having enough fatigue left to use.\n");
 			outputText("-New melee weapon (by Ormael): Darksteel Spears - can be gained by combining 2x Darksteel Spear weapon. Cost 6,400 gems. Base atk is 40. It's dual large spear type weapon, 100% armor penetration, increase physical soulskills power by 40%.\n");
 			outputText("-Aether Twins Sky-tier Gauntlets and Human-tier Dual Daggers forms fixes regarding extra attacks checks.\n");
@@ -286,20 +302,13 @@ public class Changelog extends BaseContent
 			outputText("-New passive for Barometz/Yggdrasil/Alraune/Plant (tier 2) races: Photosynthesis - While outdoors during daytime, gain regeneration 5% and fatigue recovery 2% from absorbing sunlight. Double Toughness score when active.\n");
 			outputText("-Chi Chi have 3 new talk scenes that happen when she's at HXD restaurant. Last one req. bying 10 meals and fighting 3+ times at Soul Arena. Also her appearance at Arena is changed from unavoidable one to choosing between accepting or declining her challange. Decline would still lock PC from doing any other fight at Arena but at least it will be not a suprise fire mouse fight anymore. ");
 			outputText("First fight have changed mechanics on winning with her by lust and when winning by HP there is an option to save her as long PC meet one of three conditions. Second fight/Re-match also can have now different scene depending if PC beaten her in first fight, can even get option to skip fight altogether.\n");
-			outputText("-New event perk: Spinning kick. Gained when training after reaching 3rd layer of Martial Training and knowing Punishing kick soulskill. Effects: When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat or a monk weapon this chance becomes 100%. ");
-			outputText("This ability consumes soulforce each time it is triggered. (square root of 2% max SF)\n");
-			outputText("-New event perk: Way of the silent storm. Gained when training after reaching 6th layer of Martial Training and knowing Triple Thrust soulskill. Effects: If at least one hand is free there is a 5% chance to unleash a triple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round.\n");
 			outputText("-New M. Special: Blood Web. Usable by having Araneathropy perk. By using 1 stack of vampire thirst use web attack made of razor sharp webs to ensnare enemy and apply hemorrhage. As long enemy is entagled PC would absorb some of the blood from enemy and slowly gain stacks of vampire thirst each turn.\n");
 			outputText("-New M. Special: Sanguine Strength. Usable by having Araneathropy perk. By using 3 stacks of vampire thirst increase str by 80% until end of the combat.\n");
 			outputText("-New M. Special: Sanguine Haste. Usable by been any race with access to Vampiric Thirst. By using 3 stack of vampire thirst increase melee/range attacks per turn by 1 until end of the combat.\n");
-			outputText("-New event perk: Earth and Sky (Ex). Gained by use of the Pocket Watch when req. are meet. Effects: Damage is increased (x3) while in motion gallop or flight. You may start combat galloping or start combat already flying. (as long PC have any options to fly)\n");
 			outputText("-Training with Chi Chi after first fight enable to train mastety/dao of Martial Arts. Clones can train it as same speed as any elemental dao.\n");
 			outputText("-Spelling Fixes and Tweaks. (klorpa)\n");
-			outputText("-New event perk: Alpha Protocol. Gained by becoming Automata. Effects: You are immune to corruption and transformation in all forms though considering you are now a sentient machine this may or may not be all that great.\n");
-			outputText("-New event perk: Sudden punch. Gained when training after reaching 9th layer of Martial Training. Effects: If at least one of your hands is free there is a 25% chance once per round to add a punch to your attacks dealing unarmed strike damage. If using unarmed combat or a monk weapon this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)\n");
 			outputText("-After loosing 5+ times in a row to Automata enemy in cave PC would be turned into Automata race member. Their race bonuses for Automata / Automata Ace Unit (23/32): +250%/+325% to str/tou/spe/int/lib multi, -65%/-80% to wis multi, +150 to sens\n");
 			outputText("-New melee weapon (by Ormael): Twelve-ringed Saber - buyable at Orsbulg shop. Cost 5,600 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon type with 20% chance to trigger bleed effect.\n");
-			outputText("-New event perk: Way of the eight trigrams. Gained when training after reaching 12th layer of Martial Training and knowing Sextuple Thrust soulskill. Effects: If at least one hand is free there is a 5% chance to unleash a sextuple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round. This ability replace Way of the silent storm.\n");
 			outputText("-Bee race treshold to add potins for bloodline and internal mutaiton increased to 4 + slight reducing overlap with human race checks keeping gainable race points the same.\n");
 			outputText("-New melee weapon (by Ormael): Twin Nine-ringed Sabers - can be gained by combining 2x Nine-ringed Saber weapon. Cost 2,240 gems. Base atk is 14. It's normal sized weapon belonging to sword & dual type with 10% chance to trigger bleed effect.\n");
 			outputText("-New physical soulskill: Soul Fist. Req. buying manual from Chi Chi for 5 spirit stones. Use soulforce to empower your unarmed strikes. Attack will deal greater damage but consume soulforce per hit. (square root of 1% max SF)\n");
@@ -308,11 +317,10 @@ public class Changelog extends BaseContent
 			outputText("-New super perk: Mystical Training (Rank: 1-5). Gained by spending 1 super perk point. Effects: You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +(10 * rank)%)\n");
 			outputText("-New super perk: Magical Training (Rank: 1-7). Gained by spending 1 super perk point. Effects: You have trained to better handle magical energies. (+1% to MaxOver Mana, MaxOver Wrath and +0.1% of Mana recovery each 3 lvl's up to +(10 * rank)%)\n");
 			outputText("-Survival Training super perk can be ranked up one more time (up to rank 7).\n");
-			outputText("-New event perk: Circuit. Gained by becoming Automata. Effects: Your body is immune to all damaging status effects, but is weak to Electricity and Acid.\n");
-			outputText("-New event perk: Technical. Gained by becoming Automata. Effects: Firearms and other ancient lost technology are twice as strong in your hands.\n");
 			outputText("-New melee weapon (by Ormael): Twin Twelve-ringed Sabers - can be gained by combining 2x Twelve-ringed Saber weapon. Cost 11,200 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon / dual type with 20% chance to trigger bleed effect.\n");
 			outputText("-New event perk: Self Improvement. Gained by becoming Automata. Effects: You have the ability to ever improve and adapt your artificial body increasing a random stat by 5% for every victim converted. You may also learn and use some mechanical upgrades normally reserved to mechs on yourself. ");
 			outputText("Gadgets are 5 time as powerful when used by an Automata. (goblin mech upgrade are applied to pc own stat and do not require pc to own a garage nor be a goblin to access blueprints)\n");
+			outputText("-Due to not having life signatures Automata and Gargoyle PC's can't pilot Vehicles (Mechs).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -320,7 +328,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -351,6 +358,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
 			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
+			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
@@ -436,14 +452,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -507,9 +517,6 @@ public class Changelog extends BaseContent
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");*/
 			outputText("\n\n\n");
 			outputText("Plans for future builds (I know some of them are HUGE ones but without dreams to chase how can one change?):\n");
@@ -529,6 +536,28 @@ public class Changelog extends BaseContent
 		private function Changelog57():void {
 			clearOutput();
 			outputText("(Part 5/6) <b>Version 0.9a:</b>\n\n");
+			outputText("-New tier for Frostwyrm race score bonuses - Jormungandr (32+ pts): +230 str multi, +180 tou multi, +90 spe multi, -110 int multi, +90 lib multi, +150% max hp multi, +4 armor/m.res\n");
+			outputText("-Bunny race get new racial bonuses tier - Greater Bunny (13+): -10% to tou multi, +100% to spe multi, +105% to lib multi\n");
+			outputText("-Eastern Bunny get new racial bonuses tier - Greater Easter Bunny (20+): -20% to str multi, -10% to tou multi, +130% to spe multi, +200% to lib multi\n");
+			outputText("-Gremlin race score calculations slight update and bonuses changes to all tiers. First one renamed to gremlin-kin, 2nd into gremlin and added 3rd arch gremlin. 2nd (24+) and 3rd (36+) tier req. now soulless perk and their bonuses are as follow: -50% to str multi, +100%/+160% to spe multi, +180%/+250% to int multi, +150%/+200% to lib multi, +30 min lust, +20 Sens\n");
+			outputText("-Phantom racial bonuses been increased (all the changes are added to previous values): Phantom/Poltergeist/Eldritch Poltergeist - +5%/+10%/+10% to Spe multi, +25%/+70%/+160% to Int multi, +10%/+45%/+110% to Wis multi, +40/+125/+280 to Sens.\n");
+			outputText("-Yggdrasil racial bonuses been reworked and min tresholds for each tier increased: Ygddrasil (16) / Elder Ygddrasil (24) / Ancient Ygddrasil (32): +30%/+50%/+70% to str/int multi, +170%/280%/390% to tou/wis multi, -60%/-100%/-140% to spe/lib multi, +40/+100/+160 to sens, +15%/+30%/+45% to max hp multi, +10/+20/+30 to m.res/armor.\n");
+			outputText("-After loosing to anubis enemy there is 25% chance she would mummify PC. After this PC race change to Mummy - bonuses at 20 pts in racial score (scalable): +250% to Str multi, -90% to Spe multi, -90% to Int multi, +130% to Wis multi, +300% to Lib multi, +200 to sensitivity, +50 armor. Evangeline can cure mummified PC.\n");
+			outputText("-When PC is ready to take Alvina ritual to become Devil if PC was before at least once Jiangshi there would be additional option called 'Try a custom ritual' that would turn PC into Lich. It's permanent TF with bonuses (scalable) at 28 / 34 / 40 pts (Lich / Greater Lich / Arch-Lich): ");
+			outputText("+150% / +200% / +250% to Str multi, -90% to Spe multi, +600% / +730% / +850% to Int multi, +200% / +210% / +240% to Wis multi, +600% / +730% / +850% to Lib multi, +200 / +250 / +300 to sensitivity.\n");
+			outputText("-Losing to Matango in caves have 75% chance to TF pc into matango. Their race bonuses for Matango / Myconid / Fungal Queen (16/26/36): +240%/+340%/+440% to tou multi, +150%/+200%/+300% to lib multi, -100%/-50%/0% to int multi, +50/+100/+200 to sens, +20 min lust\n"); 
+			outputText("-Natural Instincts & Tough Hide perks req. of Job: Beast Warrior changed to req. perk Job: Feral Champion. Natural arsenal effect increased from +50% to +100%. Feral Armor req. for tou stat lowered from 60 to 50.\n");
+			outputText("-Venomous Adipose Tissue & Venomous Diet perks have additional req. of having perk Job: Feral Champion.\n");
+			outputText("-Tamani daughters & Minotaur Sons can now level-up (their lvl depends on how many of them are and separate lvl up counter so the max level isn't clearly defines but would be at least around 100/105 lvl). Like Tamani daughters now Minotaur sons would slowly die out when there is too many of them + added their count on children page right below Tamani daughters.\n");
+			outputText("-Tamani could level up (up to lvl 98). After first level up she would gain Elite type which would be upgraded to Champion type and then to Boss type.\n");
+			outputText("-Off hand Equipment slot added. It's mutal exclusive with shield slot and can't have item in both offhand and shield slots. Dual Wield perk desc changed to account for adding this slot.\n");
+			//new npc's lines: chary, minx 2/2 - 6/9
+			outputText("-Tyrantia training cap now is increased (30 > 40).\n");
+			outputText("-Constant Buildup - If you are in Rut or Heat, halve the lust DoT you take from it, and deal an additional 20% physical damage while under the effects. (35 training sessions)\n");
+			outputText("-Ascension: Transcendental Genetic Memory perk can attain 2 more ranks for even more slots to perm metamorph options.\n");
+			outputText("-Hardcore difficulty setting will no longer force delete save on bad end. Instead will be reset core and trained stats to state they been on character creation (0 core and 15 trained) and take away all XP gathered. Also would remove limitations on level to find new areas or finding enemies in areas if they had their own level checks (and Lake will be no longer a safe area until lvl 3 after first 7 ingame days).\n");
+			outputText("-Autosave option will no longer require PC to go to sleep (insert your favorite joke about: sleep is for the ...) and having at least saved once manually. Instead will still need to save once manually but then will always trigger with all other once a day events (which all happens between 11pm and 12 pm).\n");
+			outputText("-Due to general evaluation of difficulty changed it been reseted to Easy setting and to return to what it was before it require to adjust all the toggles in Settings > Gameplay (1) menu.\n");
 			outputText("-Damage of all types when lvl diff between enemy and pc is 50+ changed from dropping right away from 2% at 49 lvl diff to 1 dmg at 50 lvl diff. Now it would drop to 1 point of dmg at 55+ lvl diff. For diff of 50-54 it would reduce dmg to 1%-0,0001%.\n");
 			outputText("-Added 2 more options for boss/champion/elite enemies hp bonus and secondary monster stats.\n");
 			outputText("-Ported from Revamp / UEE mod option to kill Tamani. Req. to beat her enough times she would level up once (this req. to have training option for npc's turned on). There was a few minot tweaks on what her satchel have inside or increased exp reward for killing/banishing her for good.\n");
@@ -635,33 +664,6 @@ public class Changelog extends BaseContent
 			outputText("-Swiftcasting not possible when PC turned on feral combat.\n");
 			outputText("-Removed form bodypart req. Hinezumi Tail to reach 2nd tier of race bonuses for mouse/hinezumi race score calculation.\n");
 			outputText("-Battlefield Zombies lost Low-tier Magic Immunity perk. Zombies / Zombie / Mummy special Draining Kiss heal them for less but would additional apply toughness curse on target.\n");
-			outputText("-Fairy score req. to have fairy eyes to get bonuses for above half-fairy race bonuses.\n");
-			outputText("-Golden statue that can be stolen from Kitsune Shine can be now returned (or stolen again) even when PC already unlocked Kitsune Shrine.\n");
-			outputText("-Twin Heart IM's now have additional effect of lowering Gallop fatigue cost by 5% per tier.\n");
-			outputText("-Utility Skills: Apprentice perk req. for non combat skill lowered from 5+ to 4+ and tier decreased from 4 to 3. Utility Skills: Skilled req. for non combat skill lowered from 10+ to 7+ and tier decreased from 8 to 6.\n");
-			outputText("-Because people found it weird golems and angels would not longer drops some items (Bro Brew, Bimbo Liquer, Eggs during Easter and other super rare drops that can proc after PC reach lvl 7).\n");
-			outputText("-Restrained Black/White/Grey Tome initial spellpower is 400% and initial cooldown is -4 turns. It mean also that their effect would be present until lvl 24 not 18.\n");
-			outputText("-In character creation if Herm option is unlocked can choose now between: Man, Woman, Herm (without balls), Herm (with balls)\n");
-			outputText("-PC now could explore in Ignam after dusk but only for 2 additional hours and it will increase massively chance to find hostile enocuter and they may even be much stronger ones enemies then it should be according to current PC level.\n");
-			outputText("-Starting game all PC's would have 15 more stat points, additional 2 perk points and 1 super perk point.\n");
-			outputText("-Added few basic range weapons to Trading Post in Ignam with respective History/Past Life perks giving 20% discount. Plus some TF items to Black Market with 'minor' price reduction for items cost there.\n");
-			outputText("-Arcane circle can be upgraded 8th and 9th time enabling 2 more steps in making elementals stronger per added circle.\n");
-			outputText("-For Yuki Onna encounters it will now only req. to find Yu shop.\n");
-			outputText("-Non goblonoid PC's can now buy and craft few simpler gadgets at Tripxi gunshop: Flasherbang, Goonade, Fire Grenade, Fire Grenade II, Stun Grenade\n");
-			outputText("-Training Dummy now got bit more sponge on it and each upgrade increase it lvl by 60.\n");
-			outputText("-Job: Sorcerer perk have now one additional effect (for making beginner mages life easier) of lowering all tier 1 white/black/grey spells cd down to 0.\n");
-			outputText("-Offensive spells tier 1,2,3 have their base scaling on intelligence improved (4x higher) and added scaling based on wisdom (as high as previously intelligence scaling was).\n");
-			outputText("-Nosferatu spell cooldown decreased from 7 to 6 turns and reduction of cd is the same as for any tier 2 black spells.\n");
-			outputText("-Heal, Cure, Regenerate and Restore, Balance of Life spells cooldowns was unified to be the same as tier 2 spells (Restore, Balance of Life) or tier 1 spell. Additionaly having Job: Healer would reduce all of those spells cooldowns by 3 turns. Regenerate and HoT part of Restore was changed to last only 3 turns and heal 2,5x more HP each turn. Balance of Life base duration increased by 1 turn.\n");
-			outputText("-Nosferatu, Heal, Cure cooldown are now affected by effects of Restrined Black/White Tome.\n");
-			outputText("-Energy Drain spell cooldown is shortened to 6 turns and effect increased to changed to -25% dmg for 6 turns.\n");
-			outputText("-Spells critical chance can be now affected by weapon PC use: wands/partstaff main or offhand weapon would add 10% crit chance and staff weapon adds 20%.\n");
-			outputText("-Swiftcasted spells costs and dmg was adjusted to be 75% of their non swiftcast counterparts.\n");
-			outputText("-Mage's Wrath and Mage's Wrath (Ex) perks now would additionaly increase spells crit chance by 10%.\n");
-			outputText("-Magic / Elemental Bolt spells get their dmg adjusted to be 75% of scaling for tier 1 spells and lowered costs by 25% but also would no longer work on enemies with low tier magic immunity.\n");
-			outputText("-Mimic enemies got bit of more HP given with slight armor increases and their special Bite attack hurt more. Their loot table was tossed out replaced with bit more usefull loot and they even could drop (?) items too. All Slime / Goo / Ooze enemies got their armor and mres switched.\n");
-			outputText("-Some of the stat checks for enemies changed from checking total stat values to core stat values: Frost Gigant str check, kitsune enemies Seal/Illusion special int checks\n");
-			outputText("-Yamata combat desc would desc how much PC is close to become her masochostic pet (not large change of text but carefull observer would notice smlight changes in her last part of descrtiption that was sitting hidden in code before). Still no news on more stuff for her or getting her weapon...yet.\n");
 			menu();
 			addButton(0, "Next", Changelog56);
 			addButton(1, "Previous", Changelog58);
@@ -670,6 +672,21 @@ public class Changelog extends BaseContent
 		private function Changelog56():void {
 			clearOutput();
 			outputText("(Part 4/6) <b>Version 0.9a:</b>\n\n");
+			outputText("-New key Item (by Liadri): Auto turret MK3 - req. Auto turret MK2 - Add three passive ranged attacks per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Auto turret MK4 - req. Auto turret MK3 - Add four passive ranged attacks per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Auto turret MK5 - req. Auto turret MK4 - Add five passive ranged attacks per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Auto turret MK6 - req. Auto turret MK5 - Add six passive ranged attacks per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Hydraulics - req. Toolbelt - Mechs gain 25% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus.\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK2 - req. Hydraulics - Mechs gain 50% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus.\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK3 - req. Hydraulics MK2 - Mechs gain 75% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK4 - req. Hydraulics MK3 - Mechs gain 100% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK5 - req. Hydraulics MK4 - Mechs gain 125% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK6 - req. Hydraulics MK5 - Mechs gain 150% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry - req. Toolbelt - Add one extra attack to the mech ranged weapon.\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK2 - req. Improved Ammo Chemistry - Add two extra attacks to the mech ranged weapon.\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK3 - req. Improved Ammo Chemistry MK2 - Add three extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire.\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK4 - req. Improved Ammo Chemistry MK3 - Add four extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire.\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK5 - req. Improved Ammo Chemistry MK4 - Add five extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire. Ammo now has a caustic property dealing tripled damage as acid.\n");
 			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK6 - req. Improved Ammo Chemistry MK5 - Add six extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire. Ammo now has a caustic property dealing tripled damage as acid.\n");
 			outputText("-New key Item (by Liadri): Flasherbang - req. Toolbelt - Toss a grenade that overloads the brain with lewd images and light rendering one blind, aroused and increasingly susceptible to lust chemicals.\n");
 			outputText("-New key Item (by Liadri): Flasherbang II - req. Flasherbang - The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds\n");
@@ -721,6 +738,9 @@ public class Changelog extends BaseContent
 			outputText("-New TF item (by Pyromania): Troll Fig. Dropped by Corrupted Troll enemies. Using this item will turn PC into troll. Troll bonuses at 10 pts in racial score (scalable): +30% to Str multi, +30% to Tou multi, +20% to Spr multi, +20% to Int multi, +60% to Wis multi, +20 to max tone cap, +50 to max satiety.\n");
 			outputText("-New TF item (by Pyromania): Icy Fig. Dropped by Glacial Troll enemies. Using this item will turn PC into glacial troll. Glacial Troll bonuses at 10 pts in racial score (scalable): +30% to Str multi, +40% to Tou multi, +10% to Spe multi, +20% to Int multi, +60% to Wis multi, +20 to max tone cap, +75 to max satiety.\n");
 			outputText("-New TF item (by Liadri): Flared Carrot. Buyable in Tel'Adre Bakery. Using this item will turn PC into laquine. Laquine / Elder Laquine racial bonuses (12+/20+): +80/150% to str multi, -10/20% to tou multi, +80/120% to spe multi, -20/50% to wis multi, +100/200% to lib multi, +50/100 sens\n");
+			outputText("-New TF item (by Shigure): Moth's Dust. Buyable in Moga Hen shop. Using this item will turn PC into moth. Their race bonuses for Moth-morph / Elder Moth-morph (10/18): -30%/-40% to Tou multi, +150%/+220% to Spe multi, +70%/+120% to Wis multi, +30%/+50% to Lib multi, +70/+80 to sensitivity.\n");//Dropped by Corrupted Troll enemies.
+			outputText("-New TF item (by Liadri): Fiendish Oil. Made from naga tf and succubus milk by Evangeline. Using this item will turn PC into marilith. Their race bonuses for Marilith / Marilith Blademaster / Marilith Sword Princess (18/24/40): +100%/+130%/+200% to Str multi, +120%/+150%/+250% to Spe multi, +50%/+80%/+100% to Int multi, +50%/+80%/+150% to Lib multi, +50/+80/+100 to sensitivity.\n");
+			outputText("-New TF item (by Liadri): Horned fruit. Using this item will turn PC into barometz. Their race bonuses for Barometz / Blooming Barometz (20/34): +130%/+200% to Tou multi, +130%/+200% to Spe multi, -40% to Int multi, +80%/+200% to Wis multi, +100%/+150% to Lib multi, +100/+200 to sensitivity.\n");//Dropped by Barometz enemies.
 			outputText("-New consumable (by Liadri): Black Lily. Obtained from Rafflesia. Effects: When used by alraune/lilaraune would grant Nightshade perk and Darkness Affinity.\n");
 			outputText("-New consumable (by Liadri): Snow Flower. Obtained from Snow Lily or founded in tundra/glacial rift. Effects: When used by alraune/lilaraune would grant Snow Lily perk and Cold Affinity.\n");
 			outputText("-New consumable (by Liadri): Ember Flower. Obtained from Cinderbloom or founded in ashlands/vulcanic crag. Effects: When used by alraune/lilaraune would grant Cinderbloom perk and Fife Affinity.\n");
@@ -737,8 +757,12 @@ public class Changelog extends BaseContent
 			outputText("-New P. Special: Feint Bash. Usable by Troll/Glacial Troll with Troll/Glacial Troll face. Cost 25 fatigue and can stun for 3 turns. Have 5 turns cooldown after use.\n");
 			outputText("-New P. Special: Savage Claws. Usable by Glacial Troll with Glacial Troll arms. Cost 100 fatigue.\n");
 			outputText("-New P. Special: Gallop. Can be only used when having legs ending in hooves (not cloven hooves) or have kirin legs. Effects: Run at high speed across the battlefield evading melee combat but not ranged attack, does not disable P.Special but prevents the use of the regular melee attack action. While galloping all P.Special abilities are 50% stronger due to momentum. Galloping costs fatigue every round.\n");
+			outputText("-New P. Special: Mummy Bandage - usable by mummy PC. You can initiate a grapple using your bandages.\n");
+			outputText("-New P. Special: Spore Cloud. Req. to be Matango. Effects: Works like arousing aura till end of fight. Can't have both Spore Cloud and Alraune Pollen active.\n");
 			outputText("-New M. Special: Tech Overdrive. Usable by having Tech Overdrive perk. Cost 40 mana. Increase by 20(+20per ng tier) atk of melee or range tech wepaons, add 20% to mech onboard weapons dmg, lower physical def by 50%. It would last for 10 turns.\n");
 			outputText("-New M. Special: Malfunction. Usable by been gremlin-kin. Cost 40 mana and can stun for 6 turns. Have 10 turns cooldown after use. Overload a magitech or construction, causing damage and immobilizing it for a while. Does not work on living things or sentient constructs.\n");
+			outputText("-New M. special: Paralyzing touch - You can paralyze a living foe with a single touch by temporarily sucking the soul force out of their limbs. This ability does not work against undead and foes who lack soulforce to begin with. Usable by Lich. Deal darkness damage and stun for 2 rounds.\n");// Cost 100 fatigue.
+			outputText("-New M. Special: LOOKOUT! Usable by having Look! A Distraction perk. Mental special attack. Base 25% success rate, +0.5% for every point of WIS you have over your enemy’s WIS. Stuns and Doubles next melee hit if done next round, only works once per combat.\n");
 			outputText("-New magical soulskill: Sunrise. Req. buying manual from Qi shop for 100 spirit stones. Create miniature sun and throw it at enemy. Base cost: 400 soulforce.\n");
 			//new bodyparts line
 			//new enemies line
@@ -757,28 +781,6 @@ public class Changelog extends BaseContent
 			outputText("-Centaur race score calculations was slight changed and can have now additionaly 3rd / 4th tier of race bonuses - Elder Centaur / True Centaur: +100 / +140 Strength +80 / +100 Toughness +175 / +185 Speed +80 / +100 Libido +75 Sens +350 / +500 Hp\n");
 			outputText("-New tier for Goblin race bonuses - Goblin Broodmother (20+ pts): -60% to str multi, +120% spe multi, +200% int multi, +80% lib multi, +40 sens).\n");
 			outputText("-New tiers for Demon race score bonuses - Elder Succubus/Incubus & Arch Succubus/Incubus (29+ pts / 38+ pts): +100/+200 spe multi, +110/+250 int multi, +275/+320 lib multi, +50/+200 sens, +150%/+180% max mana multi, -50%/-55% max wrath multi, +150%/+180% max lust multi\n");
-			outputText("-New tier for Frostwyrm race score bonuses - Jormungandr (32+ pts): +230 str multi, +180 tou multi, +90 spe multi, -110 int multi, +90 lib multi, +150% max hp multi, +4 armor/m.res\n");
-			outputText("-Bunny race get new racial bonuses tier - Greater Bunny (13+): -10% to tou multi, +100% to spe multi, +105% to lib multi\n");
-			outputText("-Eastern Bunny get new racial bonuses tier - Greater Easter Bunny (20+): -20% to str multi, -10% to tou multi, +130% to spe multi, +200% to lib multi\n");
-			outputText("-Gremlin race score calculations slight update and bonuses changes to all tiers. First one renamed to gremlin-kin, 2nd into gremlin and added 3rd arch gremlin. 2nd (24+) and 3rd (36+) tier req. now soulless perk and their bonuses are as follow: -50% to str multi, +100%/+160% to spe multi, +180%/+250% to int multi, +150%/+200% to lib multi, +30 min lust, +20 Sens\n");
-			outputText("-Phantom racial bonuses been increased (all the changes are added to previous values): Phantom/Poltergeist/Eldritch Poltergeist - +5%/+10%/+10% to Spe multi, +25%/+70%/+160% to Int multi, +10%/+45%/+110% to Wis multi, +40/+125/+280 to Sens.\n");
-			outputText("-Yggdrasil racial bonuses been reworked and min tresholds for each tier increased: Ygddrasil (16) / Elder Ygddrasil (24) / Ancient Ygddrasil (32): +30%/+50%/+70% to str/int multi, +170%/280%/390% to tou/wis multi, -60%/-100%/-140% to spe/lib multi, +40/+100/+160 to sens, +15%/+30%/+45% to max hp multi, +10/+20/+30 to m.res/armor.\n");
-			outputText("-After loosing to anubis enemy there is 25% chance she would mummify PC. After this PC race change to Mummy - bonuses at 20 pts in racial score (scalable): +250% to Str multi, -90% to Spe multi, -90% to Int multi, +130% to Wis multi, +300% to Lib multi, +200 to sensitivity, +50 armor. Evangeline can cure mummified PC.\n");
-			outputText("-When PC is ready to take Alvina ritual to become Devil if PC was before at least once Jiangshi there would be additional option called 'Try a custom ritual' that would turn PC into Lich. It's permanent TF with bonuses (scalable) at 28 / 34 / 40 pts (Lich / Greater Lich / Arch-Lich): ");
-			outputText("+150% / +200% / +250% to Str multi, -90% to Spe multi, +600% / +730% / +850% to Int multi, +200% / +210% / +240% to Wis multi, +600% / +730% / +850% to Lib multi, +200 / +250 / +300 to sensitivity.\n");
-			outputText("-Losing to Matango in caves have 75% chance to TF pc into matango. Their race bonuses for Matango / Myconid / Fungal Queen (16/26/36): +240%/+340%/+440% to tou multi, +150%/+200%/+300% to lib multi, -100%/-50%/0% to int multi, +50/+100/+200 to sens, +20 min lust\n"); 
-			outputText("-Natural Instincts & Tough Hide perks req. of Job: Beast Warrior changed to req. perk Job: Feral Champion. Natural arsenal effect increased from +50% to +100%. Feral Armor req. for tou stat lowered from 60 to 50.\n");
-			outputText("-Venomous Adipose Tissue & Venomous Diet perks have additional req. of having perk Job: Feral Champion.\n");
-			outputText("-Tamani daughters & Minotaur Sons can now level-up (their lvl depends on how many of them are and separate lvl up counter so the max level isn't clearly defines but would be at least around 100/105 lvl). Like Tamani daughters now Minotaur sons would slowly die out when there is too many of them + added their count on children page right below Tamani daughters.\n");
-			outputText("-Tamani could level up (up to lvl 98). After first level up she would gain Elite type which would be upgraded to Champion type and then to Boss type.\n");
-			outputText("-Off hand Equipment slot added. It's mutal exclusive with shield slot and can't have item in both offhand and shield slots. Dual Wield perk desc changed to account for adding this slot.\n");
-			//new npc's lines: chary, minx 2/2 - 6/9
-			outputText("-Tyrantia training cap now is increased (30 > 40).\n");
-			outputText("-Constant Buildup - If you are in Rut or Heat, halve the lust DoT you take from it, and deal an additional 20% physical damage while under the effects. (35 training sessions)\n");
-			outputText("-Ascension: Transcendental Genetic Memory perk can attain 2 more ranks for even more slots to perm metamorph options.\n");
-			outputText("-Hardcore difficulty setting will no longer force delete save on bad end. Instead will be reset core and trained stats to state they been on character creation (0 core and 15 trained) and take away all XP gathered. Also would remove limitations on level to find new areas or finding enemies in areas if they had their own level checks (and Lake will be no longer a safe area until lvl 3 after first 7 ingame days).\n");
-			outputText("-Autosave option will no longer require PC to go to sleep (insert your favorite joke about: sleep is for the ...) and having at least saved once manually. Instead will still need to save once manually but then will always trigger with all other once a day events (which all happens between 11pm and 12 pm).\n");
-			outputText("-Due to general evaluation of difficulty changed it been reseted to Easy setting and to return to what it was before it require to adjust all the toggles in Settings > Gameplay (1) menu.\n");
 			menu();
 			addButton(0, "Next", Changelog55);
 			addButton(1, "Previous", Changelog57);
@@ -787,6 +789,18 @@ public class Changelog extends BaseContent
 		private function Changelog55():void {
 			clearOutput();
 			outputText("(Part 3/6) <b>Version 0.9a:</b>\n\n");
+			outputText("-New mutation perk: Mighty Legs (Primitive). Req. Mighty Legs and lvl 30+. Effects: Make Kick permanent no matter your leg type, Increase unarmed strike damage by 10 and grapple effect by 40%. Kick is 50% stronger.\n");
+			outputText("-New mutation perk: Mighty Lower Half (Primitive). Req. Mighty Lower Half and lvl 30+. Effects: Tentacle and tail attack deals 50% more damage. Increase unarmed strike damage by 10 and grapple effect by 40%. Grapple damage gains 50% more bonus from your strength.\n");
+			outputText("-New mutation perk: Myconid Collective Consciousness (Primitive). Req. Myconid Collective Consciousness and lvl 30+. Effects: Add 20% of your toughness to your spellcasting and Esper score. Take 25% less damage from mental attacks and Esper ability.\n");
+			outputText("-New mutation perk: Myconid Spore (Primitive). Req. Myconid Spore and lvl 30+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 50%. While in your own spore cloud, you become empowered and increase your strength and speed by 15% of their total value, but increase tease damage taken by 50%.\n");
+			outputText("-New mutation perk: Plant Chlorophyll (Primitive). Req. Plant Chlorophyll and lvl 30+. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 10% while outdoors during daytime. Plant abilities are increased by 20%.\n");
+			outputText("-New mutation perk: Poison Gland (Primitive). Req. Poison Gland and lvl 30+. Effects: Double the efficiency of poison damage, applied poisons now has a 50% chance of dealing its effect twice per turn. All poison becomes deadlier inflicting 1% toughness damage per round.\n");
+			outputText("-New mutation perk: Soul Core (Primitive). Req. Soul Core and lvl 30+. Effects: Gain 2% mana regeneration. While above 50% of your total mana gain a 25% increase to all physical damage.\n");
+			outputText("-New mutation perk: Still Heart (Primitive). Req. Still Heart and lvl 30+. Effects: Energy draining effect and spells and ability that drain health are 50% stronger. When stealing health beyond your total hp you may add up to 15% of your total health as temporary hit point stacking over your maximum health.\n");
+			outputText("-New mutation perk: Black Blood (Evolved). Req. Black Blood (Primitive) and lvl 60+. Effects: Your undead blood gives you a 30% resistance to cold. When hunger is sated above 60% you gain doubled health generation from all sources. You gain regeneration 1%.\n");
+			outputText("-New mutation perk: Blazing Heart (Evolved). Req. Blazing Heart (Primitive) and lvl 60+. Effects: Gain permanent weakness to cold and fire resistance. Increase fire damage by 100%. Heat and Rut also grants you a bonus equal to 20% of the libido bonus to strength. Setting an enemy on fire emboldens and arouses you, increasing damage dealt to burn enemies by 100% but also making you take lust damage as a recoil.\n");
+			outputText("-New mutation perk: Equine Muscle (Evolved). Req. Equine Muscle (Primitive) and lvl 60+. Effects: +75% to all Physical Ability damage. Gallop cost 30% less fatigue. Physical ability consumes 10% less fatigues. Physical ability that stuns do so for one extra round.\n");
+			outputText("-New mutation perk: Drake Blood (Evolved). Req. Drake Blood (Primitive) and lvl 60+. Effects: Dragon strong vitality grants mana soulforce and health regeneration 3%. You take 10% less damage from magical attack. Magic Effect from you are 25% more powerful.\n");
 			outputText("-New mutation perk: Fiendish Balls (Evolved). Req. Fiendish Balls (Primitive) and lvl 60+. Effects: Increase Virility by 80%, Increase cum production by 75%, gain a bonus to tease against females based on your cum production up to 25%.\n");
 			outputText("-New mutation perk: Fiendish Metabolism (Evolved). Req. Fiendish Metabolism (Primitive) and lvl 60+. Effects: You may no longer gain nourishment from anything short of cum, milk and girl juice. If you have the demonic hunger perk, gain a stacking bonus of 10% to tease damage up to 150%. You may gain Fiendish metabolism bonus even without demonic hunger but gain half of the bonus. ");
 			outputText("Gain immunity to all fluid negative effects and allow you to feed from sexual fluids. Satisfying your crave for sex also raises your spell power for an amount equivalent to the tease damage bonus granted by this mutation.\n");
@@ -860,21 +874,6 @@ public class Changelog extends BaseContent
 			outputText("-New key Item (by Liadri): Improved Artificial Intelligence MK4 - req. Improved Artificial Intelligence MK3 - The mech will randomly activate two of its weapon functions every round on its own.\n");
 			outputText("-New key Item (by Liadri): Auto turret - req. Improved Artificial Intelligence - Add passive ranged attack per round to your AI routine no matter your action choice.\n");
 			outputText("-New key Item (by Liadri): Auto turret MK2 - req. Auto turret - Add two passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Auto turret MK3 - req. Auto turret MK2 - Add three passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Auto turret MK4 - req. Auto turret MK3 - Add four passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Auto turret MK5 - req. Auto turret MK4 - Add five passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Auto turret MK6 - req. Auto turret MK5 - Add six passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Hydraulics - req. Toolbelt - Mechs gain 25% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus.\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK2 - req. Hydraulics - Mechs gain 50% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus.\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK3 - req. Hydraulics MK2 - Mechs gain 75% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK4 - req. Hydraulics MK3 - Mechs gain 100% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK5 - req. Hydraulics MK4 - Mechs gain 125% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK6 - req. Hydraulics MK5 - Mechs gain 150% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry - req. Toolbelt - Add one extra attack to the mech ranged weapon.\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK2 - req. Improved Ammo Chemistry - Add two extra attacks to the mech ranged weapon.\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK3 - req. Improved Ammo Chemistry MK2 - Add three extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire.\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK4 - req. Improved Ammo Chemistry MK3 - Add four extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire.\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK5 - req. Improved Ammo Chemistry MK4 - Add five extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire. Ammo now has a caustic property dealing tripled damage as acid.\n");
 			menu();
 			addButton(0, "Next", Changelog54);
 			addButton(1, "Previous", Changelog56);
@@ -929,6 +928,19 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Mind Fungus. Gained by becoming Mantago and reaching yellow cap and frills color. Effects: Half of your intelligence is added as an extra modifier to psionic ability.\n");
 			outputText("-New event perk: Absorb nutrien. Gained by becoming Mantago. Effects: You are fed and healed by bodily fluids. Recover health, mana, soulforce and fatigue from harvesting sexual fluids. As you absorb more nutrients your mushroom cap will also grow granting your increasing abilities. (from red shroom cap color it also increase limti of controlling matango minions - starting at 5 and ending at 30)\n");
 			outputText("-New event perk: Fungal Nobility. Gained by becoming Myconid. Effects: You can enslave and order matango around, gaining a small entourage of mushroom girls at your service. You can order around up to your shroom girl score in numbers. Your ESP abilities grow with the number of matango following you (1 percent per matango).\n");
+			outputText("-New event perk: Blade Dancer. Gained by becoming Marilith and having quad arms. Effects: Gain 2 additional attacks when using multiple weapons. Gain two more attacks if all hands are equipped.\n");
+			outputText("-New event perk: Fiendish Concentration. Gained by becoming Marilith and having quad arms. Effects: Passively cast a selected spell every round so long as at least two hands are free. Cast twice if three hands are free.\n");
+			outputText("-New event perk: Artful destruction. Gained by becoming Marilith and having quad arms. Effects: Magic damage increases Physical damage dealt by 5% and Physical Damage increases magic damage by 5% dealt up to 200% each.\n");
+			outputText("-New event perk: Impossible Hand Technique. Gained by becoming Marilith and having quad arms. Effects: Quadruple Tease damage dealt when grappling or straddling.\n");
+			outputText("-New event perk: Spinning kick. Gained when training after reaching 3rd layer of Martial Training and knowing Punishing kick soulskill. Effects: When fighting in melee there's 25% a chance once per round to add a punishing kick to your attacks dealing unarmed strike damage. If using unarmed combat or a monk weapon this chance becomes 100%. ");
+			outputText("This ability consumes soulforce each time it is triggered. (square root of 2% max SF)\n");
+			outputText("-New event perk: Way of the silent storm. Gained when training after reaching 6th layer of Martial Training and knowing Triple Thrust soulskill. Effects: If at least one hand is free there is a 5% chance to unleash a triple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round.\n");
+			outputText("-New event perk: Earth and Sky (Ex). Gained by use of the Pocket Watch when req. are meet. Effects: Damage is increased (x3) while in motion gallop or flight. You may start combat galloping or start combat already flying. (as long PC have any options to fly)\n");
+			outputText("-New event perk: Alpha Protocol. Gained by becoming Automata. Effects: You are immune to corruption and transformation in all forms though considering you are now a sentient machine this may or may not be all that great.\n");
+			outputText("-New event perk: Sudden punch. Gained when training after reaching 9th layer of Martial Training. Effects: If at least one of your hands is free there is a 25% chance once per round to add a punch to your attacks dealing unarmed strike damage. If using unarmed combat or a monk weapon this chance becomes 100%. This ability consumes soulforce each time it is triggered. (square root of 2% max SF)\n");
+			outputText("-New event perk: Way of the eight trigrams. Gained when training after reaching 12th layer of Martial Training and knowing Sextuple Thrust soulskill. Effects: If at least one hand is free there is a 5% chance to unleash a sextuple strike at the end of a full attack. This chance increases by +5% per unarmed strikes successfully delivered this round. This ability replace Way of the silent storm.\n");
+			outputText("-New event perk: Circuit. Gained by becoming Automata. Effects: Your body is immune to all damaging status effects, but is weak to Electricity and Acid.\n");
+			outputText("-New event perk: Technical. Gained by becoming Automata. Effects: Firearms and other ancient lost technology are twice as strong in your hands.\n");
 			outputText("-New perk for enemies: Champion type enemy. Bonuses for are: Diehard effect of 5% of max HP + 1,500 HP * NG tier, OverMax HP / Lust effect of 10% magnitude.\n");
 			outputText("-New perk for enemies: Dragon type enemy. Would be used when some pc attacks could be more or less effective when used on dragon type enemies.\n");
 			outputText("-New perk for enemies: Physical Damage Resistance. It works similary to Ghost type enemy perk giving monster full immunity to physical damages.\n");
@@ -969,18 +981,6 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Human Metabolism (Primitive). Req. Human Metabolism and lvl 30+. Effects: Your metabolism changes allowing to slowly detoxification of poisons (20% chance to instantly remove some of toxic substance from body, -2% of lust per turn, 2x shorter elemental dot effects duration)\n");
 			outputText("-New mutation perk: Hydra Blood (Primitive). Req. Hydra Blood and lvl 30+. Effects: Improve existing Regeneration by 2% negated by fire damage and increase acid and poison effects by 50%.\n");
 			outputText("-New mutation perk: Living Weapon (Primitive). Req. Living Weapon and lvl 30+. Effects: All natural weapon and weapon damage is increased by an amount equal to half of your armor class. Your body is always considered naked and free of constraint no longer hindered by armors if able to wear any.\n");
-			outputText("-New mutation perk: Mighty Legs (Primitive). Req. Mighty Legs and lvl 30+. Effects: Make Kick permanent no matter your leg type, Increase unarmed strike damage by 10 and grapple effect by 40%. Kick is 50% stronger.\n");
-			outputText("-New mutation perk: Mighty Lower Half (Primitive). Req. Mighty Lower Half and lvl 30+. Effects: Tentacle and tail attack deals 50% more damage. Increase unarmed strike damage by 10 and grapple effect by 40%. Grapple damage gains 50% more bonus from your strength.\n");
-			outputText("-New mutation perk: Myconid Collective Consciousness (Primitive). Req. Myconid Collective Consciousness and lvl 30+. Effects: Add 20% of your toughness to your spellcasting and Esper score. Take 25% less damage from mental attacks and Esper ability.\n");
-			outputText("-New mutation perk: Myconid Spore (Primitive). Req. Myconid Spore and lvl 30+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 50%. While in your own spore cloud, you become empowered and increase your strength and speed by 15% of their total value, but increase tease damage taken by 50%.\n");
-			outputText("-New mutation perk: Plant Chlorophyll (Primitive). Req. Plant Chlorophyll and lvl 30+. Effects: For plants increase all recovery effects (mana, hp, sf, wrath, fatigue) by 10% while outdoors during daytime. Plant abilities are increased by 20%.\n");
-			outputText("-New mutation perk: Poison Gland (Primitive). Req. Poison Gland and lvl 30+. Effects: Double the efficiency of poison damage, applied poisons now has a 50% chance of dealing its effect twice per turn. All poison becomes deadlier inflicting 1% toughness damage per round.\n");
-			outputText("-New mutation perk: Soul Core (Primitive). Req. Soul Core and lvl 30+. Effects: Gain 2% mana regeneration. While above 50% of your total mana gain a 25% increase to all physical damage.\n");
-			outputText("-New mutation perk: Still Heart (Primitive). Req. Still Heart and lvl 30+. Effects: Energy draining effect and spells and ability that drain health are 50% stronger. When stealing health beyond your total hp you may add up to 15% of your total health as temporary hit point stacking over your maximum health.\n");
-			outputText("-New mutation perk: Black Blood (Evolved). Req. Black Blood (Primitive) and lvl 60+. Effects: Your undead blood gives you a 30% resistance to cold. When hunger is sated above 60% you gain doubled health generation from all sources. You gain regeneration 1%.\n");
-			outputText("-New mutation perk: Blazing Heart (Evolved). Req. Blazing Heart (Primitive) and lvl 60+. Effects: Gain permanent weakness to cold and fire resistance. Increase fire damage by 100%. Heat and Rut also grants you a bonus equal to 20% of the libido bonus to strength. Setting an enemy on fire emboldens and arouses you, increasing damage dealt to burn enemies by 100% but also making you take lust damage as a recoil.\n");
-			outputText("-New mutation perk: Equine Muscle (Evolved). Req. Equine Muscle (Primitive) and lvl 60+. Effects: +75% to all Physical Ability damage. Gallop cost 30% less fatigue. Physical ability consumes 10% less fatigues. Physical ability that stuns do so for one extra round.\n");
-			outputText("-New mutation perk: Drake Blood (Evolved). Req. Drake Blood (Primitive) and lvl 60+. Effects: Dragon strong vitality grants mana soulforce and health regeneration 3%. You take 10% less damage from magical attack. Magic Effect from you are 25% more powerful.\n");
 			menu();
 			addButton(0, "Next", Changelog53);
 			addButton(1, "Previous", Changelog55);

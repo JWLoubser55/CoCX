@@ -516,7 +516,8 @@ public class CelessScene extends XXCNPC implements TimeAwareInterface {
 					menu();
 					addButton(0, "Okay", celessUnicornIntro1, (player.isMale() || player.isGenderless()) ? 2 : 3)
 						.disableIf(player.isMale() && player.blockingBodyTransformations(), "Due to your unusual body, you have a feeling this won't work at you.")
-						.disableIf(player.isGargoyle(), "You are a gargoyle... you can't carry <b>anyone's</b> essence.");
+						.disableIf(player.isGargoyle(), "You are a gargoyle... you can't carry <b>anyone's</b> essence.")
+						.disableIf(player.isAutomata(), "You are an automata... you can't carry <b>anyone's</b> essence.");
 					var warningStr:String = "You have a strange feeling that you can miss something very important by doing this.\n\n"
 						+ "<b>You can still get Celess this way by enabling 'Other' in SceneHunter settings.</b>";
 					var noteStr:String = "<b>SH: Now this works as alternative way to Celess.</b>";
