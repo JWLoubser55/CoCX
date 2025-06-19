@@ -295,6 +295,15 @@ public final class WeaponLib extends ItemConstants
 				})
 				.withEffect(IELib.ArmorPenetration, 40)
 				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
+		public const DARKSH2:Weapon = new Weapon(
+				"DarkSH2","DarksteelHalberds","Darksteel Halberds","a set of Darksteel Halberds","slash",40,6400,
+				"A pair of large halberds made from soultempered darksteel.",
+				WT_POLEARM, WSZ_LARGE, true)
+				.withBuffs({
+					'psoulskillpower': +0.4
+				})
+				.withEffect(IELib.ArmorPenetration, 40)
+				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
 		public const DARKSS:Weapon = new Weapon(
 				"DarkSS","DarksteelScythes","Darksteel Scythes","a set of Darksteel Scythes","slash",40,6400,
 				"A pair of large scythes made from soultempered darksteel.",
@@ -314,15 +323,6 @@ public final class WeaponLib extends ItemConstants
 				})
 				.withEffect(IELib.ArmorPenetration, 100)
 				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
-		public const DARKSS2:Weapon = new Weapon(
-				"DarkSS2","DarksteelSpears","Darksteel Spears","a set of Darksteel Spears","stab",40,6400,
-				"A pair of large spears made from soultempered darksteel.",
-				WT_SPEAR, WSZ_LARGE, true)
-				.withBuffs({
-					'psoulskillpower': +0.4
-				})
-				.withEffect(IELib.ArmorPenetration, 100)
-				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
 		public const DARKSS1:Weapon = new Weapon(
 				"DarkSS1","DarksteelScythe","Darksteel Scythe","a Darksteel Scythe","slash",40,3200,
 				"A large scythe made from soultempered darksteel.",
@@ -333,6 +333,15 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.Bleed, 10)
 				.withEffect(IELib.ScaleAttack_Str, 60)
 				.withTags(W_WHIRLWIND)  as Weapon;
+		public const DARKSS2:Weapon = new Weapon(
+				"DarkSS2","DarksteelSpears","Darksteel Spears","a set of Darksteel Spears","stab",40,6400,
+				"A pair of large spears made from soultempered darksteel.",
+				WT_SPEAR, WSZ_LARGE, true)
+				.withBuffs({
+					'psoulskillpower': +0.4
+				})
+				.withEffect(IELib.ArmorPenetration, 100)
+				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
 		public const DBFSWO :Weapon = new Weapon(
 				"DBFSwo", "D.B.F.Sword", "dual big fucking swords", "a pair of big fucking swords", "slash", 50, 4000,
 				"Big Fucking Swords - the best solution for a tiny e-pen complex at this side of the Mareth!  This pair of 2H 2,5 meters long swords requires 150 strength to fully unleash their power.",
@@ -1209,6 +1218,7 @@ public final class WeaponLib extends ItemConstants
 			[DARKSA1, DARKSA],
 			[DARKSS1, DARKSS],
 			[DARKSSP, DARKSS2],
+			[DARKSHA, DARKSH2],
 			[NRSABER, TNRSABER],
 			[TRSABER, TTRSABER]
 		]

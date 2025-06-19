@@ -305,7 +305,7 @@ public class Changelog extends BaseContent
 			outputText("-New M. Special: Blood Web. Usable by having Araneathropy perk. By using 1 stack of vampire thirst use web attack made of razor sharp webs to ensnare enemy and apply hemorrhage. As long enemy is entagled PC would absorb some of the blood from enemy and slowly gain stacks of vampire thirst each turn.\n");
 			outputText("-New M. Special: Sanguine Strength. Usable by having Araneathropy perk. By using 3 stacks of vampire thirst increase str by 80% until end of the combat.\n");
 			outputText("-New M. Special: Sanguine Haste. Usable by been any race with access to Vampiric Thirst. By using 3 stack of vampire thirst increase melee/range attacks per turn by 1 until end of the combat.\n");
-			outputText("-Training with Chi Chi after first fight enable to train mastety/dao of Martial Arts. Clones can train it as same speed as any elemental dao.\n");
+			outputText("-Training with Chi Chi after first fight enable to train mastery/dao of Martial Arts. Clones can train it as same speed as any elemental dao.\n");
 			outputText("-Spelling Fixes and Tweaks. (klorpa)\n");
 			outputText("-After loosing 5+ times in a row to Automata enemy in cave PC would be turned into Automata race member. Their race bonuses for Automata / Automata Ace Unit (23/32): +250%/+325% to str/tou/spe/int/lib multi, -65%/-80% to wis multi, +150 to sens\n");
 			outputText("-New melee weapon (by Ormael): Twelve-ringed Saber - buyable at Orsbulg shop. Cost 5,600 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon type with 20% chance to trigger bleed effect.\n");
@@ -321,6 +321,8 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Self Improvement. Gained by becoming Automata. Effects: You have the ability to ever improve and adapt your artificial body increasing a random stat by 5% for every victim converted. You may also learn and use some mechanical upgrades normally reserved to mechs on yourself. ");
 			outputText("Gadgets are 5 time as powerful when used by an Automata. (goblin mech upgrade are applied to pc own stat and do not require pc to own a garage nor be a goblin to access blueprints)\n");
 			outputText("-Due to not having life signatures Automata and Gargoyle PC's can't pilot Vehicles (Mechs).\n");
+			outputText("-New melee weapon (by Ormael): Darksteel Halberds - can be gained by combining 2x Darksteel Halberd weapon. Cost 6,400 gems. Base atk is 40. It's dual large polearm type weapon, 40% armor penetration, increase physical soulskills power by 40%.\n");
+			outputText("-Brain Melt buff for Mindbreaker PC increased to 5% from 1% per each melt(ed brain i suppose). Not working retroactively thou so gotta melt more brains for that sweet brain juice for your PC brain ;)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -342,9 +344,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
@@ -361,9 +361,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
