@@ -995,7 +995,7 @@ public final class WeaponLib extends ItemConstants
 				"This dagger is made of eversteel and richly decorated with yellow topazes and copper engravings. The magic within this shining blade will oversaturate the metal with electricity when charged with magic.",
 				WT_DAGGER, WSZ_SMALL);
 		public const TRASAXE:Weapon = new Weapon(
-				"TraSAxe","Train.S.Axe", "soul training axe", "a soul training axe", "cleave", 1, 80,
+				"TraSAxe","Train.S.Axe", "soul training axe", "a soul training axe", "cleave", 4, 300,
 				"This axe was specialy forged and enhanted to help novice soul cultivatiors to train their soulforce.  Still if situation calls for it it could be used as a normal weapon.",
 				WT_AXE, WSZ_MEDIUM);
 		public const TRIDAG :Weapon = new Weapon(

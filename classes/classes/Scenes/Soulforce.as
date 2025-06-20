@@ -123,6 +123,7 @@ public class Soulforce extends BaseContent
 	private function sfTrainingItems():int {
 		var itemConds:/*Boolean*/Array = [
 			player.weaponName == "soul training axe",
+			player.weaponOffhandName == "soul training axe",
 			player.weaponRangeName == "soul training crossbow",
 			player.shieldName == "soul training buckler",
 			player.armorName == "soul training armor",
