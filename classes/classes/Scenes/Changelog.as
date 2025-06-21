@@ -323,7 +323,7 @@ public class Changelog extends BaseContent
 			outputText("-Due to not having life signatures Automata and Gargoyle PC's can't pilot Vehicles (Mechs).\n");
 			outputText("-New melee weapon (by Ormael): Darksteel Halberds - can be gained by combining 2x Darksteel Halberd weapon. Cost 6,400 gems. Base atk is 40. It's dual large polearm type weapon, 40% armor penetration, increase physical soulskills power by 40%.\n");
 			outputText("-Brain Melt buff for Mindbreaker PC increased to 5% from 1% per each melt(ed brain i suppose). Not working retroactively thou so gotta melt more brains for that sweet brain juice for your PC brain ;)\n");
-			outputText("-Automata PC have 'Remodel' option added to camp actions where it can change some of it bodyparts to other types or remove/addButton some of bodyparts/genitalia. Using those options would also replace any missing bodyparts and heal any stat damage (weakened, drained, damaged).\n");
+			outputText("-Automata PC have 'Remodel' option added to camp actions where it can change some of it bodyparts to other types or remove/add some of the bodyparts/genitalia. Using those options would also replace any missing bodyparts and heal any stat damage (weakened, drained, damaged).\n");
 			outputText("-Soul Training Axe base atk (1 > 4) and cost (80 > 300) increased. For increasing maximum soulfroce bonus from training items like the axe would now account for equipped weapon in offhand slot too.\n");
 			outputText("-\n");
 			outputText("-\n");

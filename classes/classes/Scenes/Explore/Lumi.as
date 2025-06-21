@@ -59,7 +59,7 @@ public class Lumi extends BaseContent {
 			addButton(12, "Workshop", lumiWorkshop);
 			if (player.statusEffectv2(StatusEffects.LumiWorkshop) < 1) addButton(13, "GoblinMech", lumiGarageRetry);
 		}
-		else addButton(12, "Garage", lumiGarage).hint("Click only if you're goblin (10+ in goblin score) with 500+ gems ;)");
+		else addButton(12, "Garage", lumiGarage).hint("Click only if you're goblin (10+ in goblin score) / goblin graduate / automata with 500+ gems ;)");
 		addButton(14, "Leave", explorer.done);
     }
 	
@@ -345,14 +345,14 @@ public class Lumi extends BaseContent {
 	public function lumiGarage():void {
 		spriteSelect(SpriteDb.s_lumi);
         clearOutput();
-        player.createStatusEffect(StatusEffects.LumiWorkshop,0,0,0,0);
-		outputText("In the corner of Lumi’s weird shop, there is a large door to a room filled with similarly weird items, you ask Lumi about them.\n\n");
+        outputText("In the corner of Lumi’s weird shop, there is a large door to a room filled with similarly weird items, you ask Lumi about them.\n\n");
 		outputText("\"<i>Oh ya lookin fer goblin tech? It's not fer sale but I sell pieces and tools fer engineers. Perhaps ya would be interested into a Cock axial resonator or a vibrafronics spinning battery?</i>\"\n\n");
 		outputText("You didn’t understand half of what she said and admit as much.\n\n");
 		outputText("\"<i>Ah, go fegures. True genius is dyin thase days. Sure, I make sex toys and poetions but I think the true arft still is in a functional goblin mech!</i>\"\n\n");
 		outputText("A goblin mech?\n\n");
 		outputText("\"<i>I often forget fome people especially non goblin don’t exactly know what a mech is…basically it’s a sort ov combat confraption a goblin can drive. I have an alpha version jast right dere");
 		if (player.isGoblinoid(false) || player.hasPerk(PerkLib.GoblinatusGraduate) || player.hasPerk(PerkLib.SelfImprovement)) {
+			player.createStatusEffect(StatusEffects.LumiWorkshop,0,0,0,0);
 			if (player.hasPerk(PerkLib.GoblinatusGraduate) || player.hasPerk(PerkLib.SelfImprovement)) outputText(". Normaly id refuse to let ya try yeeself at this tech seeing as its designed fer goblin brains but seeing as you are a"+(player.hasPerk(PerkLib.GoblinatusGraduate)?" goblinato graduate":"n automata")+" id have to at least respect that you do can handle tech. This said even if you do can werk on a proper mech you would never be able to to fit in one unless ye were more or less da size of a goblin.</i>\"\n\n");
 			else outputText("if you have da gems fer it.</i>\"\n\n");
 			outputText("She points at what looks like a goblin sized seat mounted on a weird six legged contraption.\n\n");
@@ -363,6 +363,7 @@ public class Lumi extends BaseContent {
 		}
 		else {
 			outputText("but there's no way I'd sell that ta a non goblin, who knows, ya common folks could hurt yeerself badly just tryin ta drive it.</i>\"\n\n");
+			endEncounter();
 		}
 		//outputText("\n\n");
 		//outputText("\"<i>Stho, what can Lumi the Aochomist Extwaordinaire do fo you today?</i>\"\n\n");
@@ -389,7 +390,7 @@ public class Lumi extends BaseContent {
 		outputText("You inquire on the goblin mech.\n\n");
 		outputText("\"<i>Oh ya came back on your decision? Sure I still have it in the backroom. 500 gems as before.</i>\"\n\n");
 		menu();
-		if (player.isGoblinoid()) addButton(1, "Yes", lumiGarageYes);
+		if (player.isGoblinoid(false) || player.hasPerk(PerkLib.GoblinatusGraduate) || player.hasPerk(PerkLib.SelfImprovement)) addButton(1, "Yes", lumiGarageYes);
 		else addButtonDisabled(1, "Yes", "You still not enough goblin to get this beauty. Money can't buy everything, ok?");
 		addButton(3, "No", lumiGarageNo);
 	}
@@ -397,7 +398,7 @@ public class Lumi extends BaseContent {
 	public function lumiEngineering():void {
 		spriteSelect(SpriteDb.s_lumi);
         clearOutput();
-        outputText("\"<i>Since you are a "+(player.isGoblinoid()?"goblin":"graduate")+" feel free to use my workshop lets just say this a favor I'm giving a future rising star amonst genius I have a feel you gonna go prety damn far.</i>\"\n\n");
+        outputText("\"<i>Since you are a"+(player.isGoblinoid()?" goblin":""+(player.isAutomata()?"n automata":" graduate")+"")+" feel free to use my workshop lets just say this a favor I'm giving a future rising star amonst genius I have a feel you gonna go prety damn far.</i>\"\n\n");
 		menu();
 		addButton(0, "Metal pieces", lumiEngineeringBuyMetalPieces);
 		if (player.hasKeyItem("Blueprint - Energy Core") < 0) addButton(1, "EnergyCore BP", curry(lumiEngineeringBuyBlueprintSharedPart, 50, "Energy Core")).hint("Energy Core BP - 50 gems");
@@ -1210,7 +1211,7 @@ public class Lumi extends BaseContent {
 	}
 	
 	public function lumiWorkshop():void {
-		if (player.isGoblinoid(false)) {
+		if (player.isGoblinoid(false) || player.hasPerk(PerkLib.GoblinatusGraduate) || player.hasPerk(PerkLib.SelfImprovement)) {
 			clearOutput();
 			if (player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop)) {
 				outputText("You reply that you're here to perform some tinkering of your own.\n\n");
