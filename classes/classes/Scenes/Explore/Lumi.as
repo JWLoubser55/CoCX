@@ -345,6 +345,7 @@ public class Lumi extends BaseContent {
 	public function lumiGarage():void {
 		spriteSelect(SpriteDb.s_lumi);
         clearOutput();
+		player.createStatusEffect(StatusEffects.LumiWorkshop,0,0,0,0);
         outputText("In the corner of Lumi’s weird shop, there is a large door to a room filled with similarly weird items, you ask Lumi about them.\n\n");
 		outputText("\"<i>Oh ya lookin fer goblin tech? It's not fer sale but I sell pieces and tools fer engineers. Perhaps ya would be interested into a Cock axial resonator or a vibrafronics spinning battery?</i>\"\n\n");
 		outputText("You didn’t understand half of what she said and admit as much.\n\n");
@@ -352,7 +353,6 @@ public class Lumi extends BaseContent {
 		outputText("A goblin mech?\n\n");
 		outputText("\"<i>I often forget fome people especially non goblin don’t exactly know what a mech is…basically it’s a sort ov combat confraption a goblin can drive. I have an alpha version jast right dere");
 		if (player.isGoblinoid(false) || player.hasPerk(PerkLib.GoblinatusGraduate) || player.hasPerk(PerkLib.SelfImprovement)) {
-			player.createStatusEffect(StatusEffects.LumiWorkshop,0,0,0,0);
 			if (player.hasPerk(PerkLib.GoblinatusGraduate) || player.hasPerk(PerkLib.SelfImprovement)) outputText(". Normaly id refuse to let ya try yeeself at this tech seeing as its designed fer goblin brains but seeing as you are a"+(player.hasPerk(PerkLib.GoblinatusGraduate)?" goblinato graduate":"n automata")+" id have to at least respect that you do can handle tech. This said even if you do can werk on a proper mech you would never be able to to fit in one unless ye were more or less da size of a goblin.</i>\"\n\n");
 			else outputText("if you have da gems fer it.</i>\"\n\n");
 			outputText("She points at what looks like a goblin sized seat mounted on a weird six legged contraption.\n\n");
@@ -2309,4 +2309,4 @@ public class Lumi extends BaseContent {
 		else doNext(camp.returnToCampUseTwelveHours);
 	}
 }
-}
+}
