@@ -16,18 +16,38 @@ public class BagOfCosmosB1 extends Consumable {
 		override public function useItem():Boolean {
 			clearOutput();
 			outputText("You open bag to find ");
-			switch (Utils.rand(2)) {
+			switch (Utils.rand(6)) {
 				case 0:
-				var SS1:int = 2 + Utils.rand(2);
+				var SS1:int = 20 + Utils.rand(20);
 				outputText("" + Utils.num2Text(SS1) + " spirit stones inside.");
 				flags[kFLAGS.SPIRIT_STONES] += SS1;
 				EngineCore.statScreenRefresh();
-				break;
 
 				case 1:
-				outputText("low-grade Soulforce Recovery Pill inside.");
-				SceneLib.inventory.takeItem(game.consumables.LG_SFRP, SceneLib.inventory.inventoryMenu);
+				outputText("mid-grade Soulforce Recovery Pill inside.");
+				SceneLib.inventory.takeItem(game.consumables.MG_SFRP, SceneLib.inventory.inventoryMenu);
 				return true;
+				break;
+
+				case 2:
+				outputText("clump of red gel inside.");
+				SceneLib.inventory.takeItem(game.useables.RED_GEL, SceneLib.inventory.inventoryMenu);
+				return(true);
+
+				case 3:
+				outputText("Darksteel ingot inside.");
+				SceneLib.inventory.takeItem(game.useables.DARKSTI, SceneLib.inventory.inventoryMenu);
+				return(true);
+
+				case 4:
+				outputText("World Tree Branch inside.");
+				SceneLib.inventory.takeItem(game.useables.WT_BRAN, SceneLib.inventory.inventoryMenu);
+				return(true);
+
+				case 5:
+				outputText("Soulmetal bar inside.");
+				SceneLib.inventory.takeItem(game.useables.SOULMETB, SceneLib.inventory.inventoryMenu);
+				return(true);
 
 				default: trace("Bag of Cosmos roll spirit stones...");
 			}

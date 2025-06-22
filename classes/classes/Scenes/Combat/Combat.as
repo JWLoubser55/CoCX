@@ -84,6 +84,8 @@ public class Combat extends BaseContent {
 	public var mTWayOfTheSilentStorm:Boolean = false;
 	public var mTWayOfTheSilentStormChance:Number = 0;
 	public var mTSuddenPunch:Boolean = false;
+	public var fChBeastlyKick:Boolean = false;
+	public var fChWarTail:Boolean = false;
 
     // Following is reused variables throughout the multiple feral attack function calls
     // E.N.W.A, kinda sounds like something out of Tolkein/Lord of the Ring
@@ -867,6 +869,8 @@ public class Combat extends BaseContent {
 			mTWayOfTheSilentStorm = false;
 			mTWayOfTheSilentStormChance = 0;
 			mTSuddenPunch = false;
+			fChBeastlyKick = false;
+			fChWarTail = false;
 			if (player.armor == armors.BMARMOR) dynStats("lus", -(Math.round(player.maxLust() * 0.05)));
 			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1) {
 				var hmim1:Number = 0.01 * player.perkv1(IMutationsLib.HumanMetabolismIM);
@@ -5834,7 +5838,7 @@ public class Combat extends BaseContent {
 								if (player.hasPerk(PerkLib.LightningClaw)){
                                     outputText(" The residual electricity leaves your foe's skin tingling with pleasure.");
                                 }
-								MartialArtsTriggers();
+								MartialArtsFeralChampionTriggers();
                             }
                             // YOOOOU SHALL NOOOOOT PAAAAAAAAAASSSSSS!!!!!
                         }
@@ -5920,7 +5924,7 @@ public class Combat extends BaseContent {
 								if (player.hasPerk(PerkLib.LightningClaw)){
                                     outputText(" The residual electricity leaves your foe's skin tingling with pleasure.");
                                 }
-								MartialArtsTriggers();
+								MartialArtsFeralChampionTriggers();
                             }
                             // YOOOOU SHALL NOOOOOT PAAAAAAAAAASSSSSS!!!!!
                         }
@@ -8666,9 +8670,10 @@ public class Combat extends BaseContent {
             else player.addStatusValue(StatusEffects.JabbingStyle,1,JabbingValue);
         }
     }
-	public function MartialArtsTriggers():void {
+	public function MartialArtsFeralChampionTriggers():void {
 		var basecost1:Number = Math.round(Math.sqrt(player.maxSoulforce() * 0.01));
 		var basecost2:Number = Math.round(Math.sqrt(player.maxSoulforce() * 0.02));
+		var basecost3:Number = Math.round(Math.sqrt(player.maxWrath() * 0.01));
 		if (player.hasPerk(PerkLib.SpinningKick) && player.legCount > 1) {
 			if (rand(4) < martialTrain && player.soulforce >= basecost2 && !mTSpinningKick) {
 				mTSpinningKick = true;
@@ -8682,22 +8687,22 @@ public class Combat extends BaseContent {
 			if (rand(4) < martialTrain && player.soulforce >= basecost2 && !mTSuddenPunch) {
 				mTSuddenPunch = true;
 				mTWayOfTheSilentStormChance += 1;
-				var temp:Number = meleeDamageNoLagSingle();
-				if (player.hasStatusEffect(StatusEffects.SoulFist)) temp += scalingBonusWisdom();
-				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
-					temp += player.inte;
-					temp += scalingBonusIntelligence() * 0.2;
-				}
 				EngineCore.SoulforceChange(basecost2);
-				if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) temp += Math.round(temp * 0.1);
-				if (player.armor == armors.SFLAREQ) temp *= 1.2;
-				doPhysicalDamage(temp, true, true);
-				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp * 0.2), true, true);
-				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp);
+				var temp1:Number = meleeUnarmedDamageNoLagSingle();
+				if (player.hasStatusEffect(StatusEffects.SoulFist)) temp1 += scalingBonusWisdom();
+				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
+					temp1 += player.inte;
+					temp1 += scalingBonusIntelligence() * 0.2;
+				}
+				if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) temp1 += Math.round(temp1 * 0.1);
+				if (player.armor == armors.SFLAREQ) temp1 *= 1.2;
+				doPhysicalDamage(temp1, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp1 * 0.2), true, true);
+				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp1);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);/*
-				doPhysicalDamage(temp, true, true);
-				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp * 0.2), true, true);
-				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp);
+				doPhysicalDamage(temp1, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp1 * 0.2), true, true);
+				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp1);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);*/
 				if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
 			}
@@ -8718,7 +8723,42 @@ public class Combat extends BaseContent {
 				}
 			}
 		}
-		
+		if (player.hasPerk(PerkLib.BeastlyKick) && player.legCount > 1 && player.lowerBody != LowerBody.HUMAN) {
+			if (player.wrath >= basecost3 && !fChBeastlyKick) {
+				fChBeastlyKick = true;
+				EngineCore.WrathChange(-basecost3);
+				var temp2:Number = meleeUnarmedDamageNoLagSingle();
+				if (player.hasStatusEffect(StatusEffects.SoulFist)) temp2 += scalingBonusWisdom();
+				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
+					temp2 += player.inte;
+					temp2 += scalingBonusIntelligence() * 0.2;
+				}
+				outputText("You finish it off with a vicious kick sending your opponent stumbling back. ");
+				doPhysicalDamage(temp2, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp2 * 0.2), true, true);
+				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp2);
+				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
+				outputText("\n\n");
+			}
+		}
+		if (player.hasPerk(PerkLib.WarTail) && player.tailType > Tail.NONE) {
+			if (player.wrath >= basecost3 && !fChWarTail) {
+				fChWarTail = true;
+				EngineCore.WrathChange(-basecost3);
+				var temp3:Number = meleeUnarmedDamageNoLagSingle();
+				if (player.hasStatusEffect(StatusEffects.SoulFist)) temp3 += scalingBonusWisdom();
+				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
+					temp3 += player.inte;
+					temp3 += scalingBonusIntelligence() * 0.2;
+				}
+				outputText("You finish it off by slapping your foe with your [tail] sending your opponent stumbling back. ");
+				doPhysicalDamage(temp3, true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp3 * 0.2), true, true);
+				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp3);
+				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
+				outputText("\n\n");
+			}
+		}
 	}
 
     public function unarmedAttack():Number {

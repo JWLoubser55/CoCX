@@ -833,6 +833,12 @@ public class PerkLib
 		public static const MassiveSynergyEx:PerkType = mk("Massive Synergy (Ex)", "Massive Synergy (Ex)",
 				"Effects that increase large weapons attack, which are applied to massive weapons have their scaling improved. (+30% melee physical attacks multiplier)",
 				"You've chosen the 'Massive Synergy (Ex)' perk. Effects that increase large weapons attack, which are applied to massive weapons have their scaling improved. (+30% melee physical attacks multiplier)");
+		public static const BeastlyKick:PerkType = mk("Beastly Kick", "Beastly Kick",
+				"Add an extra kick attack at the end of a melee attack combo so long as your legs aren’t human. This ability consumes some wrath upon use. (square root of 1% max wrath)",
+				"You've chosen the 'Beastly Kick' perk. Add an extra kick attack at the end of a melee attack combo so long as your legs aren’t human. This ability consumes some wrath upon use. (square root of 1% max wrath)");
+		public static const WarTail:PerkType = mk("War Tail", "War Tail",
+				"Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)",
+				"You've chosen the 'War Tail' perk. Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -844,12 +850,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8064,11 +8064,11 @@ public class PerkLib
                     .requirePerk(JobBeastlord)
 					.requireTou(25)
 					.requireSpe(25);
-//            WeaponClawsClawTraining.requirePerk(JobBeastWarrior)
-//					.requireLevel(6)
-//					.requireCustomFunction(function (player:Player):Boolean {
-//					return player.hasNaturalWeapons() || player.haveNaturalClawsTypeWeapon();
-//					}, "Any natural weapon");
+            BeastlyKick.requirePerk(JobBeastlord)
+					.requireLevel(6)
+					.requireStr(30)
+                    .requireTou(30)
+                    .requireSpe(30);
             JobHealer.requireAdvancedJobSlot()
 					.requireAnyPerk(JobSorcerer, JobSoulCultivator)
 					.requireLevel(6)
@@ -8174,6 +8174,11 @@ public class PerkLib
                     .requireAnyPerk(SuddenRun, LiftOff)
 					.requireTou(50)
 					.requireSpe(50);
+            WarTail.requirePerk(BeastlyKick)
+					.requireLevel(12)
+					.requireStr(45)
+                    .requireTou(45)
+                    .requireSpe(45);
             ArcanePoolIV.requireLevel(12)
                     .requireInt(60)
                     .requireWis(60)
@@ -8222,11 +8227,6 @@ public class PerkLib
                     .requireCustomFunction(function (player:Player):Boolean {
                         return player.pcHaveBleedAbility();
                     }, "At least one bleeding ability");
-//            WeaponClawsExtraClawAttack.requireLevel(12)
-//                    .requirePerk(WeaponClawsClawTraining)
-//					.requireCustomFunction(function (player:Player):Boolean {
-//					return player.hasNaturalWeapons() || player.haveNaturalClawsTypeWeapon();
-//					}, "Any natural weapon");
             NaturalHealingMinor.requireLevel(12)
                     .requirePerk(WisenedHealer)
                     .requireInt(15)
