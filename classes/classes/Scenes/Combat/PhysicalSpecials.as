@@ -435,6 +435,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 					else if (player.hasStatusEffect(StatusEffects.CooldownPlay)) bd.disable("<b>You need more time before you can use Play again.</b>\n\n");
 					else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
+				if (player.tail.type == Tail.AUTOMATA_TAIL_CABLE) {
+					bd = buttons.add("Tazer", automataTazer).hint("Deliver a paralyzing jolt with a melee attack.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
 			}
 			if (player.hasPerk(PerkLib.PowerShot)) {
 				bd = buttons.add("Power Shoot", powerShoot).hint("Do a single way more powerful wrath-enhanced range strike.");
@@ -7215,6 +7219,46 @@ public class PhysicalSpecials extends BaseCombatContent {
 		dmgBarrage *= 6;
 		if (flags[kFLAGS.ELEMENTAL_ARROWS] > 0) dmgBarrage = combat.elementalArrowDamageMod(dmgBarrage);
 		return dmgBarrage;
+	}
+	
+	public function automataTazer():void {
+		clearOutput();
+		outputText("You curve your cable tail at [themonster] and deliver a paralyzing discharge. ");
+		flags[kFLAGS.LAST_ATTACK_TYPE] = Combat.LAST_ATTACK_SPELL;
+		var damage:Number = scalingBonusIntelligence() * spellModWhite();
+		//Determine if critical hit!
+		var crit:Boolean = false;
+		var critChance:int = 5;
+		critChance += combatMagicalCritical();
+		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+		if (rand(100) < critChance) {
+			crit = true;
+			damage *= 1.75;
+		}
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
+		//High damage to goes.
+		damage = calcVoltageMod(damage, true);
+		if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + (player.lust100 * 0.01));
+		damage = combat.tinkerDamageBonus(damage);
+		damage = combat.goblinDamageBonus(damage);
+		damage *= 0.1;
+		damage = Math.round(damage);
+		outputText("potent discharge ");
+		doLightningDamage(damage, true, true);
+		outputText(" damage!");
+		if (crit) outputText(" <b>*Critical Hit!*</b>");
+		if (!monster.monsterIsStunned()) {
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+			else monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
+		}
+		statScreenRefresh();
+		if (player.hasPerk(PerkLib.GreasedLightning)) {
+			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
+			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
+		}
+		if (monster.HP <= monster.minHP()) doNext(endHpVictory);
+		else enemyAI();
 	}
 	
 	public function StealthModeActivate():void {

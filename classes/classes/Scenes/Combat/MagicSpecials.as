@@ -1015,7 +1015,11 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.TechOverdrive)) {
 				bd.disable("You're already pretty activated Tech Overdrive!");
 			}
-		}
+		}/*
+		if (player.isRaceCached(Races.AUTOMATA)) {
+			bd = buttons.add("Tech Overdrive", techOverdrive).hint("Empower your technological equipment, causing it to deal increased damage but weaken your defenses as a result.");
+			
+		}*/
 		if (player.racialScore(Races.GREMLIN) >= 15) {
 			bd = buttons.add("Malfunction", malfunction).hint("Overload a magitech or construction, causing damage and immobilizing it for a while. Does not work on living things or sentient constructs.");
 			bd.requireMana(spellCost(40));

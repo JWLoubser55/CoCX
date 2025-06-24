@@ -6301,7 +6301,7 @@ public class Combat extends BaseContent {
             outputText("\n");
         }
         //TALON
-        if (player.isFlying()){
+        if (player.isFlying()) {
             if (player.hasTalonsAttack()){
                 outputText("You rend at your opponent with your talons twice.");
                 if (pLibHellFireCoat) {
@@ -6315,8 +6315,7 @@ public class Combat extends BaseContent {
             }
         }
         //DEALING WING ATTACKS
-        if (player.hasAWingAttack())
-        {
+        if (player.hasAWingAttack()) {
             switch(player.wings.type){
                 case Wings.THUNDEROUS_AURA:
                     outputText("You zap your opponent with your aura, delivering a barrage of arousing discharge");
@@ -6616,6 +6615,42 @@ public class Combat extends BaseContent {
                     }
             }
         }
+		if (player.tail.type == Tail.AUTOMATA_TAIL_CABLE) {
+			outputText("You curve your cable tail at [themonster] and deliver a paralyzing discharge. ");
+			var damage:Number = scalingBonusIntelligence() * spellModWhite();
+			//Determine if critical hit!
+			var crit:Boolean = false;
+			var critChance:int = 5;
+			critChance += combatMagicalCritical();
+			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+			if (rand(100) < critChance) {
+				crit = true;
+				damage *= 1.75;
+			}
+			if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+			if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
+			//High damage to goes.
+			damage = combat.magic.calcVoltageModImpl(damage, true);
+			if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + (player.lust100 * 0.01));
+			damage = combat.tinkerDamageBonus(damage);
+			damage = combat.goblinDamageBonus(damage);
+			damage *= 0.1;
+			damage = Math.round(damage);
+			outputText("potent discharge ");
+			doLightningDamage(damage, true, true);
+			outputText(" damage!");
+			if (crit) outputText(" <b>*Critical Hit!*</b>");
+			if (!monster.monsterIsStunned()) {
+				if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+				else monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
+			}
+			statScreenRefresh();
+			if (player.hasPerk(PerkLib.GreasedLightning)) {
+				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
+				else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
+			}
+			outputText("\n");
+		}
         //Unique attack Mantis Prayer
         if (player.isRaceCached(Races.MANTIS) && player.arms.type == Arms.MANTIS){
             if(player.hasStatusEffect(StatusEffects.InvisibleOrStealth)){

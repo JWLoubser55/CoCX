@@ -2683,6 +2683,14 @@ public class PlayerInfo extends BaseContent {
 			}
 		}
 		else addButtonDisabled(4, "SP:MyT(R5)", "You need to reach level 120 first.");
+		if (player.level >= 150) {
+			if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 6) addButtonDisabled(5, "SP:MyT(R6)", "You already have this super perk.");
+			else {
+				if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 5) addButton(5, "SP:MyT(R6)", perkMysticalTrainingRank, 6).hint("Choose the 'Mystical Training (Rank: 6)' super perk. You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +60%)");
+				else addButtonDisabled(5, "SP:MyT(R6)", "You need to first have 'Mystical Training (Rank: 5)' super perk.");
+			}
+		}
+		else addButtonDisabled(5, "SP:MyT(R6)", "You need to reach level 150 first.");
 		addButton(14, "Back", superPerkBuyMenu, 1);
 	}
 	private function perkMagicalTraining():void {
