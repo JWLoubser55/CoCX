@@ -7876,12 +7876,21 @@ use namespace CoC;
 
 		protected override function maxHP_base():Number {
 			var max:Number = super.maxHP_base();
-			if (isGargoyle() && Forgefather.material == "granite")
-			{
+			if (isGargoyle() && Forgefather.material == "granite") {
 				if (Forgefather.refinement == 0) max *= (1.15);
 				if (Forgefather.refinement == 1) max *= (1.25);
 				if (Forgefather.refinement == 2 || Forgefather.refinement == 3) max *= (1.35);
 				if (Forgefather.refinement >= 4) max *= (1.5);
+			}
+			if (hasPerk(PerkLib.SelfImprovement)) {
+				var maxHP_mult1:Number = 1;
+				if (hasKeyItem("Upgraded Armor plating 1.0") >= 0) maxHP_mult1 += 0.2;
+				if (hasKeyItem("Upgraded Armor plating 2.0") >= 0) maxHP_mult1 += 0.4;
+				if (hasKeyItem("Upgraded Armor plating 3.0") >= 0) maxHP_mult1 += 0.6;
+				if (hasKeyItem("Upgraded Armor plating 4.0") >= 0) maxHP_mult1 += 0.8;
+				if (hasKeyItem("Upgraded Armor plating 5.0") >= 0) maxHP_mult1 += 1;
+				if (hasKeyItem("Upgraded Armor plating 6.0") >= 0) maxHP_mult1 += 1.2;
+				max *= maxHP_mult1;
 			}
 			if (hasPerk(PerkLib.ElementalBondFlesh) && statusEffectv1(StatusEffects.SummonedElementals) >= 2) max += maxHP_ElementalBondFleshMulti() * statusEffectv1(StatusEffects.SummonedElementals);
 			if (hasPerk(PerkLib.Soulless)) max = Math.round(max*0.5);

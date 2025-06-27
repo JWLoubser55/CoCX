@@ -1874,7 +1874,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 30;
 		CampStatsAndResources.NailsResc -= 700;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new Upgraded Armor plating 6.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new Upgraded Armor plating 6.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 6.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 6.0");
 		player.removeKeyItem("Upgraded Armor plating 5.0");
@@ -1886,7 +1886,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 25;
 		CampStatsAndResources.NailsResc -= 600;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new Upgraded Armor plating 5.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new Upgraded Armor plating 5.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 5.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 5.0");
 		player.removeKeyItem("Upgraded Armor plating 4.0");
@@ -1898,7 +1898,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 20;
 		CampStatsAndResources.NailsResc -= 500;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new Upgraded Armor plating 4.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new Upgraded Armor plating 4.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 4.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 4.0");
 		player.removeKeyItem("Upgraded Armor plating 3.0");
@@ -1910,7 +1910,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 15;
 		CampStatsAndResources.NailsResc -= 400;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new Upgraded Armor plating 3.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new Upgraded Armor plating 3.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 3.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 3.0");
 		player.removeKeyItem("Upgraded Armor plating 2.0");
@@ -1922,7 +1922,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 10;
 		CampStatsAndResources.NailsResc -= 300;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new Upgraded Armor plating 2.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new Upgraded Armor plating 2.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 2.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 2.0");
 		player.removeKeyItem("Upgraded Armor plating 1.0");
@@ -1934,7 +1934,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 5;
 		CampStatsAndResources.NailsResc -= 200;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new Upgraded Armor plating 1.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new Upgraded Armor plating 1.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 1.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 1.0");
 		statScreenRefresh();
@@ -2285,7 +2285,7 @@ public class Lumi extends BaseContent {
 		lumiWorkshopSharedPart4Hours("Grenade Launcher");
 	}
 	public function lumiWorkshopSharedPart4Hours(itemName:String):void {
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new "+itemName+" is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new "+itemName+" is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem(""+itemName+"", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - "+itemName+"");
 		statScreenRefresh();
@@ -2293,7 +2293,7 @@ public class Lumi extends BaseContent {
 		else doNext(camp.returnToCampUseFourHours);
 	}
 	public function lumiWorkshopSharedPart8Hours(itemName:String):void {
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new "+itemName+" is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new "+itemName+" is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem(""+itemName+"", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - "+itemName+"");
 		statScreenRefresh();
@@ -2301,7 +2301,7 @@ public class Lumi extends BaseContent {
 		else doNext(camp.returnToCampUseEightHours);
 	}
 	public function lumiWorkshopSharedPart12Hours(itemName:String):void {
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new "+itemName+" is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new "+itemName+" is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem(""+itemName+"", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - "+itemName+"");
 		statScreenRefresh();
@@ -2309,4 +2309,4 @@ public class Lumi extends BaseContent {
 		else doNext(camp.returnToCampUseTwelveHours);
 	}
 }
-}
+}
