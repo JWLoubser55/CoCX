@@ -5751,7 +5751,8 @@ public class Combat extends BaseContent {
         clearOutput();
         outputText("You stop fighting, letting [themonster] beat you to the brink of death.\n");
         player.HP = player.minHP();
-        doNext(endHpLoss);
+		if (monster is TrainingDummy) EngineCore.awardAchievement("My name is Bruce—Bruce Wood!", kACHIEVEMENTS.COMBAT_MY_NAME_IS_BRUCE_BRUCE_WOOD);
+		monster.won_(true, false);
     }
     public function surrenderByLust():void {
         var remainingLust:Number = (player.maxLust() - player.lust);
@@ -5759,7 +5760,7 @@ public class Combat extends BaseContent {
         clearOutput();
         outputText("You fill your mind with perverted thoughts about [themonster], picturing [monster him] in all kinds of perverse situations with you.\n");
         dynStats("lus", remainingLust, "scale", false);
-        doNext(endLustLoss);
+		monster.won_(false, false);
     }
 
     /**

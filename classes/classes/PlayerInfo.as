@@ -2755,20 +2755,6 @@ public class PlayerInfo extends BaseContent {
 		else addButtonDisabled(6, "SP:MaT(R7)", "You need to reach level 180 first.");
 		addButton(14, "Back", superPerkBuyMenu, 1);
 	}
-	private function superPerkConvertMenu():void {
-		clearOutput();
-		outputText("You sacrifice three perk points and receive one super perk point.");
-		player.perkPoints -= 3;
-		player.superPerkPoints++;
-		doNext(superPerkBuyMenu);
-	}
-	private function superPerkReverseConvertMenu():void {
-		clearOutput();
-		outputText("You sacrifice one super perk point and receive three perk points.");
-		player.perkPoints += 3;
-		player.superPerkPoints--;
-		doNext(superPerkBuyMenu);
-	}
 	private function perkSurvivalTrainingRank1():void {
 		player.superPerkPoints--;
 		player.createPerk(PerkLib.SPSurvivalTrainingX,1,0,0,0);
@@ -2810,6 +2796,20 @@ public class PlayerInfo extends BaseContent {
 		clearOutput();
 		outputText("Your 'Magical Training (Rank: "+(rank-1)+")' super perk has become 'Magical Training (Rank: "+rank+")'.");
 		doNext(perkMagicalTraining);
+	}
+	private function superPerkReverseConvertMenu():void {
+		clearOutput();
+		outputText("You sacrifice one super perk point and receive three perk points.");
+		player.perkPoints += 3;
+		player.superPerkPoints--;
+		doNext(superPerkBuyMenu, 1);
+	}
+	private function superPerkConvertMenu():void {
+		clearOutput();
+		outputText("You sacrifice three perk points and receive one super perk point.");
+		player.perkPoints -= 3;
+		player.superPerkPoints++;
+		doNext(superPerkBuyMenu, 1);
 	}
 	private function perkHiddenJobBloodDemon():void {
 		player.superPerkPoints--;
