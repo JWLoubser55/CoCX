@@ -936,6 +936,7 @@ use namespace CoC;
 				}
 			}
 			if (hasStatusEffect(StatusEffects.TechOverdrive)) armorDef *= 0.5;
+			if (hasStatusEffect(StatusEffects.AutomataOverdrive)) armorDef *= 0.8;
 			armorDef = Math.round(armorDef);
 			return armorDef;
 		}
@@ -3808,6 +3809,7 @@ use namespace CoC;
 			if (necklaceEffectId == NecklaceLib.MODIFIER_LIGH_R) mult -= necklaceEffectMagnitude;
 			if (jewelry1.hasBuff('res_lightning') && jewelry2.hasBuff('res_lightning') && jewelry3.hasBuff('res_lightning') && jewelry4.hasBuff('res_lightning') && headjewelryEffectId == HeadJewelryLib.MODIFIER_LIGH_R && necklaceEffectId == NecklaceLib.MODIFIER_LIGH_R) mult -= 15;
 			if (hasStatusEffect(StatusEffects.DaoOfLightning) && (statusEffectv2(StatusEffects.DaoOfLightning) > 3)) mult -= (10 * (statusEffectv2(StatusEffects.DaoOfLightning) - 3));
+			if (hasStatusEffect(StatusEffects.AutomataOverdrive)) mult += 100;
 			if (CoC.instance.monster.statusEffectv1(StatusEffects.EnemyLoweredDamageH) > 0) {
 				mult -= CoC.instance.monster.statusEffectv2(StatusEffects.EnemyLoweredDamageH);
 			}
@@ -6347,6 +6349,9 @@ use namespace CoC;
 			}
 			if (hasStatusEffect(StatusEffects.TechOverdrive)) {
 				removeStatusEffect(StatusEffects.TechOverdrive);
+			}
+			if (hasStatusEffect(StatusEffects.AutomataOverdrive)) {
+				removeStatusEffect(StatusEffects.AutomataOverdrive);
 			}
 			if(hasStatusEffect(StatusEffects.TooAngryTooDie)) {
 				removeStatusEffect(StatusEffects.TooAngryTooDie);

@@ -1013,13 +1013,16 @@ public class MagicSpecials extends BaseCombatContent {
 			bd = buttons.add("Tech Overdrive", techOverdrive).hint("Empower your technological equipment, causing it to deal increased damage but weaken your defenses as a result.");
 			bd.requireMana(spellCost(40));
 			if (player.hasStatusEffect(StatusEffects.TechOverdrive)) {
-				bd.disable("You're already pretty activated Tech Overdrive!");
+				bd.disable("You're already activated Tech Overdrive!");
 			}
-		}/*
+		}
 		if (player.isRaceCached(Races.AUTOMATA)) {
-			bd = buttons.add("Tech Overdrive", techOverdrive).hint("Empower your technological equipment, causing it to deal increased damage but weaken your defenses as a result.");
-			
-		}*/
+			bd = buttons.add("Overdrive", automataOverdrive).hint("Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).");
+			bd.requireMana(spellCost(40));
+			if (player.hasStatusEffect(StatusEffects.AutomataOverdrive)) {
+				bd.disable("You're already activated Overdrive!");
+			}
+		}
 		if (player.racialScore(Races.GREMLIN) >= 15) {
 			bd = buttons.add("Malfunction", malfunction).hint("Overload a magitech or construction, causing damage and immobilizing it for a while. Does not work on living things or sentient constructs.");
 			bd.requireMana(spellCost(40));
@@ -3471,6 +3474,14 @@ public class MagicSpecials extends BaseCombatContent {
 		useMana(40);
 		outputText("You enter overdrive mode, your defenses weakening as you redirect the power to your weaponry.");
 		player.createStatusEffect(StatusEffects.TechOverdrive,10,0,0,0);
+		enemyAI();
+	}
+
+	public function automataOverdrive():void {
+		clearOutput();
+		useMana(40);
+		outputText("You override your safety protocols, causing your circuits to spark as they double their power output. This hostile has proven dangerous enough for you to truly go all out.");
+		player.createStatusEffect(StatusEffects.AutomataOverdrive,10,0,0,0);
 		enemyAI();
 	}
 

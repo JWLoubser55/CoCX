@@ -695,7 +695,7 @@ public class Combat extends BaseContent {
 				outputText(replacetext);
 			}
 			if (!sceneimpl) enemyAI();
-			if (sceneimpl) SceneLib.combat.enemyAIImpl();
+			if (sceneimpl) enemyAIImpl();
 			return true;
 		}
 		return false;
@@ -999,8 +999,8 @@ public class Combat extends BaseContent {
 
     internal function buildOtherActions(buttons:ButtonDataList, backFunc:Function, aspectButtons:ButtonDataList = null):void {
         var bd:ButtonData;
-		buttons.add("Surrender(H)", combat.surrenderByHP, "Stop defending yourself. You'll take a hell of a beating. Why would you do this?");
-        buttons.add("Surrender(L)", combat.surrenderByLust, "Fantasize about your opponent in a sexual way so much it would fill up your lust. You'll end up getting raped...But is it rape if you get what you want?");
+		buttons.add("Surrender(H)", surrenderByHP, "Stop defending yourself. You'll take a hell of a beating. Why would you do this?");
+        buttons.add("Surrender(L)", surrenderByLust, "Fantasize about your opponent in a sexual way so much it would fill up your lust. You'll end up getting raped...But is it rape if you get what you want?");
         buttons.add("Minions", CoC.instance.perkMenu.minionOptions, "You can adjust the behavior of your minions during combat.");
         buttons.add("F.S. Opt", CoC.instance.perkMenu.flyingSwordBehaviourOptions, "You can adjust the behavior of your flying sword during combat.");
         if ((player.calculateMultiAttacks() > 1) || (player.hasPerk(PerkLib.JobBeastWarrior) && (player.hasNaturalWeapons() || player.haveNaturalClawsTypeWeapon())) ||
@@ -1011,11 +1011,11 @@ public class Combat extends BaseContent {
             buttons.add("Range Opt", CoC.instance.perkMenu.rangedOptions, "You can adjust your range strike settings.");
         }
         if (CoC_Settings.debugBuild && !debug) {
-            buttons.add("Inspect", combat.debugInspect).hint("Use your debug powers to inspect your enemy.");
+            buttons.add("Inspect", debugInspect).hint("Use your debug powers to inspect your enemy.");
         }
         if (debug) {
-            buttons.add("CheatAbility", combat.debugCheatAbility).hint("Use any ability");
-            buttons.add("CheatStats", combat.debugCheatStats).hint("Adjust your or enemy stats. May break things!");
+            buttons.add("CheatAbility", debugCheatAbility).hint("Use any ability");
+            buttons.add("CheatStats", debugCheatStats).hint("Adjust your or enemy stats. May break things!");
         }
         if (player.hasPerk(PerkLib.AbsoluteBash) && monster.hasStatusEffect(StatusEffects.TimesBashed) && monster.statusEffectv1(StatusEffects.TimesBashed) > 0 && (player.fatigue + Math.round(player.maxFatigue() * 0.1) < player.maxOverFatigue())) {
             buttons.add("Refresh Bash", refreshbash).hint("By spending 10% of your fatigue you may reset Shield bash to full efficiency.");
@@ -10717,8 +10717,9 @@ public class Combat extends BaseContent {
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) damage *= 0.5;
 		if (tinkerDeconstruct()) damage *= 1.5;
         if (player.hasStatusEffect(StatusEffects.Minimise)) damage *= 0.01;
+		if (player.hasStatusEffect(StatusEffects.AutomataOverdrive)) damage *= 2;
         if (player.hasPerk(PerkLib.Sadist)) {
-            damage *= 3
+            damage *= 3;
             if (player.armorName == "Scandalous Succubus Clothing") {
                 damage *= 3;
                 dynStats("lus", Math.round(player.maxLust()*0.03));
@@ -10886,6 +10887,7 @@ public class Combat extends BaseContent {
         if (monster.hasStatusEffect(StatusEffects.NecroticRot)) damage *= (1 + (0.25 * monster.statusEffectv1(StatusEffects.NecroticRot)));
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) damage *= 0.5;
 		if (tinkerDeconstruct()) damage *= 1.5;
+		if (player.hasStatusEffect(StatusEffects.AutomataOverdrive)) damage *= 2;
 		if (damage < 1) damage = 1;
         if (player.hasPerk(PerkLib.Sadist)) {
             damage *= 3;
@@ -10977,6 +10979,7 @@ public class Combat extends BaseContent {
         if (monster.hasStatusEffect(StatusEffects.NecroticRot)) damage *= (1 + (0.25 * monster.statusEffectv1(StatusEffects.NecroticRot)));
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) damage *= 0.5;
 		if (tinkerDeconstruct()) damage *= 1.5;
+		if (player.hasStatusEffect(StatusEffects.AutomataOverdrive)) damage *= 2;
         if (player.hasPerk(PerkLib.Sadist)) {
             damage *= 3;
             dynStats("lus", Math.round(player.maxLust()*0.03));
@@ -13188,6 +13191,12 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
                 player.removeStatusEffect(StatusEffects.TechOverdrive);
                 outputText("<b>Tech Overdrive effect wore off!</b>\n\n");
             } else player.addStatusValue(StatusEffects.TechOverdrive, 1, -1);
+        }
+        if (player.hasStatusEffect(StatusEffects.AutomataOverdrive)) {
+            if (player.statusEffectv1(StatusEffects.AutomataOverdrive) <= 0) {
+                player.removeStatusEffect(StatusEffects.AutomataOverdrive);
+                outputText("<b>Overdrive effect wore off!</b>\n\n");
+            } else player.addStatusValue(StatusEffects.AutomataOverdrive, 1, -1);
         }
         if (player.hasStatusEffect(StatusEffects.OniRampage)) {
             if (player.statusEffectv1(StatusEffects.OniRampage) <= 0) {
@@ -16048,18 +16057,18 @@ public function CancerGrab():void {
     if (monster.plural) {
 		if (player.rearBody.type == RearBody.ARIGEAN_PINCER_LIMBS) {
 			outputText("You launch yourself at [themonster], but with multiple enemies, grabbing one up would leave you completely open to attack.\n\n");
-            SceneLib.combat.enemyAIImpl();
+            enemyAIImpl();
             return;
 		}
         else if (monster.hasStatusEffect(StatusEffects.Dig))
         {
             outputText("You begin to dig up toward [themonster], but with multiple enemies, grabbing one up would leave you completely open to attack.  You halt your progression and dig back down before you expose yourself to danger.\n\n");
-            SceneLib.combat.enemyAIImpl();
+            enemyAIImpl();
             return;
         }
         else {
             outputText("You launch yourself at [themonster], but with multiple enemies, grabbing one up would leave you completely open to attack.  You hastily dig backwards before you expose yourself to danger.\n\n");
-            SceneLib.combat.enemyAIImpl();
+            enemyAIImpl();
             return;
         }
     }
@@ -17032,24 +17041,24 @@ public function SwallowWhole():void {
         outputText("You just don't have the energy to swallow someone right now...");
         //Gone		menuLoc = 1;
         menu();
-        addButton(0, "Next", SceneLib.combat.combatMenu, false);
+        addButton(0, "Next", combatMenu, false);
         return;
     }
     //Cannot be used on plural enemies
     if(monster.plural) {
         outputText("You begin to dig up toward [themonster], but with multiple enemies, swallowing one up would leave you completely open to attack.  You halt your progression and dig back down before you expose yourself to danger.[pg]");
-        SceneLib.combat.enemyAIImpl();
+        enemyAIImpl();
         return;
     }
     if(monster.short == "pod") {
         outputText("You can't swallow something you're trapped inside of!");
         //Gone		menuLoc = 1;
         menu();
-        addButton(0, "Next", SceneLib.combat.combatMenu, false);
+        addButton(0, "Next", combatMenu, false);
         return;
     }
     fatigue(10, USEFATG_PHYSICAL);
-    if (combat.checkConcentration("", true)) return; //Amily concentration... why(true) SceneLib.combat.enemyAIImpl(); and not enemyAI();? no idea
+    if (combat.checkConcentration("", true)) return; //Amily concentration... why(true) enemyAIImpl(); and not enemyAI();? no idea
 
     outputText("You dig closer to [themonster] before surging out of the ground, flying briefly through the air as you open your enormous maw to draw [monster him] in!\n");
     if (rand(player.spe + 40) > monster.spe) {
@@ -17064,12 +17073,12 @@ public function SwallowWhole():void {
     }
 
     if (Math.round(player.HP) <= Math.round(player.minHP())) {
-        doNext(SceneLib.combat.endHpLoss);
+        doNext(endHpLoss);
         if (monster.hasStatusEffect(StatusEffects.Dig)) monster.removeStatusEffect(StatusEffects.Dig);
         return;
     }
     outputText("\n\n");
-    SceneLib.combat.enemyAIImpl();
+    enemyAIImpl();
 }
 
 public function SwallowTease():void {
@@ -17180,14 +17189,14 @@ public function SwallowLeggoMyEggo():void {
     outputText("\n\n");
     monster.removeStatusEffect(StatusEffects.Swallowed);
     monster.removeStatusEffect(StatusEffects.Dig)
-    SceneLib.combat.enemyAIImpl();
+    enemyAIImpl();
 }
 
 public function WhipStrangulate():void {
 	clearOutput();
 	if (player.fatigue + combat.physicalCost(20) > player.maxOverFatigue()) {
 		outputText("You are too tired to strangulate [themonster].");
-		addButton(0, "Next", SceneLib.combat.combatMenu, false);
+		addButton(0, "Next", combatMenu, false);
 		return;
 	}
 	fatigue(20, USEFATG_PHYSICAL);
@@ -17768,7 +17777,7 @@ public function displacerCombatFeed():void {
     fatigue(50, USEFATG_PHYSICAL);
     outputText("You lick your lips in anticipation as you hold your victim's arms to the ground and plug your two tentacle suckers to [monster him]'s breasts. [monster he] struggles, flushing red as you flood [monster his] nipples with your lactation inducing venom and begin to force the delicious milk out of [monster his] chest.\n\n");
     monster.createStatusEffect(StatusEffects.DisplacerPlug, 1 + rand(3), 0, 0, 0);
-    addButton(0, "Next", SceneLib.combat.combatMenu, false);
+    addButton(0, "Next", combatMenu, false);
 }
 
 public function PussyLeggoMyEggo():void {

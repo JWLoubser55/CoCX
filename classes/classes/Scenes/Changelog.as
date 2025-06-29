@@ -314,7 +314,7 @@ public class Changelog extends BaseContent
 			outputText("-New physical soulskill: Soul Fist. Req. buying manual from Chi Chi for 5 spirit stones. Use soulforce to empower your unarmed strikes. Attack will deal greater damage but consume soulforce per hit. (square root of 1% max SF)\n");
 			outputText("-Mouse race tier 3 (Hinezumi) have now additional bonus: +100% to max Soulforce.\n");
 			outputText("-Martial Training from layer 4 have additional effect of bonus to physical soulskill power. Starting at 10% it increase by 10% each new layer attained.\n");
-			outputText("-New super perk: Mystical Training (Rank: 1-6). Gained by spending 1 super perk point. Effects: You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +(10 * rank)%)\n");
+			outputText("-New super perk: Mystical Training (Rank: 1-7). Gained by spending 1 super perk point. Effects: You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +(10 * rank)%)\n");
 			outputText("-New super perk: Magical Training (Rank: 1-7). Gained by spending 1 super perk point. Effects: You have trained to better handle magical energies. (+1% to MaxOver Mana, MaxOver Wrath and +0.1% of Mana recovery each 3 lvl's up to +(10 * rank)%)\n");
 			outputText("-Survival Training super perk can be ranked up one more time (up to rank 7).\n");
 			outputText("-New melee weapon (by Ormael): Twin Twelve-ringed Sabers - can be gained by combining 2x Twelve-ringed Saber weapon. Cost 11,200 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon / dual type with 20% chance to trigger bleed effect.\n");
@@ -331,7 +331,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 1 misc lvl-up perk: Beastly Kick. Req. Job: Feral Champion perk and 30+ str/tou/spe. Effect: Add an extra kick attack at the end of a melee attack combo so long as your legs aren’t human. This ability consumes some wrath upon use. (square root of 1% max wrath)\n");
 			outputText("-New tier 2 misc lvl-up perk: War Tail. Req. Beastly Kick perk and 45+ str/tou/spe. Effect: Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)\n");
 			outputText("-New P. Special: Taser. Usable by Automata with Automata Tail Cable. Effect: Deliver a paralyzing jolt with a melee attack. (can also be used as part of feral combat)\n");
-			outputText("-\n");
+			outputText("-New M. SPecial: Overdrive. Usable by Automata. Effect: Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
