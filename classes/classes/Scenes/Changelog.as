@@ -331,10 +331,10 @@ public class Changelog extends BaseContent
 			outputText("-New tier 1 misc lvl-up perk: Beastly Kick. Req. Job: Feral Champion perk and 30+ str/tou/spe. Effect: Add an extra kick attack at the end of a melee attack combo so long as your legs aren’t human. This ability consumes some wrath upon use. (square root of 1% max wrath)\n");
 			outputText("-New tier 2 misc lvl-up perk: War Tail. Req. Beastly Kick perk and 45+ str/tou/spe. Effect: Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)\n");
 			outputText("-New P. Special: Taser. Usable by Automata with Automata Tail Cable. Effect: Deliver a paralyzing jolt with a melee attack. (can also be used as part of feral combat)\n");
-			outputText("-New M. SPecial: Overdrive. Usable by Automata. Effect: Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New M. Special: Overdrive. Usable by Automata. Effect: Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).\n");
+			outputText("-Green Magic / Verdant Leech / Arcane Venom perks tier decreased (3 > 2 / 6 > 4 / 9 > 6) with lowered stat req.\n");
+			outputText("-New tier 8 misc lvl-up perk: Shillelagh. Req. Arcane Venom perk, Intelligence 180+, Libido 180+, Corruption 50+. Effect: Increase staves base attack value by 30. Staves count as the same size class spears when used as melee weapons.\n");
+			outputText("-New tier 10 misc lvl-up perk: Natural Oath. Req. Shillelagh perk, Intelligence 220+, Libido 220+, Corruption 50+. Effect: Green magic is 50% more powerful so long as you wear no armor, shields or weapons made mostly of metal.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -364,6 +364,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -449,14 +458,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -490,9 +493,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -740,7 +740,7 @@ public class Changelog extends BaseContent
 			outputText("-New TF item (by Liadri): Flared Carrot. Buyable in Tel'Adre Bakery. Using this item will turn PC into laquine. Laquine / Elder Laquine racial bonuses (12+/20+): +80/150% to str multi, -10/20% to tou multi, +80/120% to spe multi, -20/50% to wis multi, +100/200% to lib multi, +50/100 sens\n");
 			outputText("-New TF item (by Shigure): Moth's Dust. Buyable in Moga Hen shop. Using this item will turn PC into moth. Their race bonuses for Moth-morph / Elder Moth-morph (10/18): -30%/-40% to Tou multi, +150%/+220% to Spe multi, +70%/+120% to Wis multi, +30%/+50% to Lib multi, +70/+80 to sensitivity.\n");//Dropped by Corrupted Troll enemies.
 			outputText("-New TF item (by Liadri): Fiendish Oil. Made from naga tf and succubus milk by Evangeline. Using this item will turn PC into marilith. Their race bonuses for Marilith / Marilith Blademaster / Marilith Sword Princess (18/24/40): +100%/+130%/+200% to Str multi, +120%/+150%/+250% to Spe multi, +50%/+80%/+100% to Int multi, +50%/+80%/+150% to Lib multi, +50/+80/+100 to sensitivity.\n");
-			outputText("-New TF item (by Liadri): Horned fruit. Using this item will turn PC into barometz. Their race bonuses for Barometz / Blooming Barometz (20/34): +130%/+200% to Tou multi, +130%/+200% to Spe multi, -40% to Int multi, +80%/+200% to Wis multi, +100%/+150% to Lib multi, +100/+200 to sensitivity.\n");//Dropped by Barometz enemies.
+			outputText("-New TF item (by Liadri): Horned fruit. Dropped by Barometz enemies of founded in deepwoods area. Using this item will turn PC into barometz. Their race bonuses for Barometz / Blooming Barometz (20/34): +130%/+200% to Tou multi, +130%/+200% to Spe multi, -40% to Int multi, +80%/+200% to Wis multi, +100%/+150% to Lib multi, +100/+200 to sensitivity.\n");
 			outputText("-New consumable (by Liadri): Black Lily. Obtained from Rafflesia. Effects: When used by alraune/lilaraune would grant Nightshade perk and Darkness Affinity.\n");
 			outputText("-New consumable (by Liadri): Snow Flower. Obtained from Snow Lily or founded in tundra/glacial rift. Effects: When used by alraune/lilaraune would grant Snow Lily perk and Cold Affinity.\n");
 			outputText("-New consumable (by Liadri): Ember Flower. Obtained from Cinderbloom or founded in ashlands/vulcanic crag. Effects: When used by alraune/lilaraune would grant Cinderbloom perk and Fife Affinity.\n");

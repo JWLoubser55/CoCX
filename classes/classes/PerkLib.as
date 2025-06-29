@@ -839,6 +839,12 @@ public class PerkLib
 		public static const WarTail:PerkType = mk("War Tail", "War Tail",
 				"Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)",
 				"You've chosen the 'War Tail' perk. Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)");
+		public static const Shillelagh:PerkType = mk("Shillelagh", "Shillelagh",
+				"Increase staves base attack value by 30. Staves count as the same size class spears when used as melee weapons.",
+				"You've chosen the 'Shillelagh' perk. Increase staves base attack value by 30. Staves count as the same size class spears when used as melee weapons.");
+		public static const NaturalOath:PerkType = mk("Natural Oath", "Natural Oath",
+				"Green magic is 50% more powerful so long as you wear no armor, shields or weapons made mostly of metal.",
+				"You've chosen the 'Natural Oath' perk. Green magic is 50% more powerful so long as you wear no armor, shields or weapons made mostly of metal.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -850,12 +856,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8245,6 +8245,11 @@ public class PerkLib
 					.requireSpe(40);
 			HighlyVenomousDiet.requirePerk(VenomousDiet);
 			AxillaryVenomGlands.requirePerk(VenomousAdiposeTissue);
+			GreenMagic.requireLevel(12)
+					.requirePerk(NaturalSpellcasting)
+					.requireInt(55)
+					.requireLib(55)
+					.requireCor(50);
 			ImprovedCursedTag.requireRace(Races.JIANGSHI)
 					.requirePerk(CursedTag)
 					.requireLevel(12);
@@ -8349,11 +8354,6 @@ public class PerkLib
 					.requirePerk(Aerobatics)
 					.requireStr(40)
 					.requireSpe(45);
-			GreenMagic.requireLevel(18)
-					.requirePerk(NaturalSpellcasting)
-					.requireInt(80)
-					.requireLib(80)
-					.requireCor(50);
 			GreaterCursedTag.requireRace(Races.JIANGSHI)
 					.requirePerk(ImprovedCursedTag)
 					.requireLevel(18);
@@ -8452,6 +8452,11 @@ public class PerkLib
 					.requireSpe(50);
 			IronStomachSu.requireLevel(24)
                     .requirePerk(IronStomachEx);
+			VerdantLeech.requireLevel(24)
+					.requirePerk(GreenMagic)
+					.requireInt(100)
+					.requireLib(100)
+					.requireCor(50);
 			Fusion.requireLevel(24)
 					.requirePerk(Enhancement);
 			PathOfEnlightenment.requireLevel(24)
@@ -8564,8 +8569,8 @@ public class PerkLib
                     .requirePerk(IntermediateAllRounderEducation);
             IntermediateAllRounderTraining.requireLevel(36)
                     .requirePerk(BasicAllRounderTraining);
-			VerdantLeech.requireLevel(36)
-					.requirePerk(GreenMagic)
+			ArcaneVenom.requireLevel(36)
+					.requirePerk(VerdantLeech)
 					.requireInt(140)
 					.requireLib(140)
 					.requireCor(50);
@@ -8646,6 +8651,11 @@ public class PerkLib
                     .requirePerks(GrandMasterGolemMaker, AdvancedGolemancyTheory);
 			LimitBreakerHeart1stStage.requireLevel(48)
 					.requirePerk(LimitBreakerBody1stStage);
+			Shillelagh.requireLevel(48)
+					.requirePerk(NaturalOath)
+					.requireInt(180)
+					.requireLib(180)
+					.requireCor(50);
             MasterAllRounderEducation.requireLevel(48)
                     .requirePerk(ExpertAllRounderEducation);
             AdvancedAllRounderTraining.requireLevel(48)
@@ -8678,11 +8688,6 @@ public class PerkLib
 					}, "10+ pets/minions/tamed monsters");
 			LimitBreakerFlesh1stStage.requireLevel(54)
 					.requirePerk(LimitBreakerHeart1stStage);
-			ArcaneVenom.requireLevel(54)
-					.requirePerk(VerdantLeech)
-					.requireInt(200)
-					.requireLib(200)
-					.requireCor(50);
 			ElementalBloodline.requireLevel(54)
 					.requirePerks(HclassHeavenTribulationSurvivor, PrestigeJobDruid);
             FirstAttackSkeletons.requireLevel(54)
@@ -8711,6 +8716,11 @@ public class PerkLib
                     .requirePerk(EpicGolemMaker);
 			LimitBreakerPsyche1stStage.requireLevel(60)
 					.requirePerk(LimitBreakerFlesh1stStage);
+			NaturalOath.requireLevel(60)
+					.requirePerk(ArcaneVenom)
+					.requireInt(220)
+					.requireLib(220)
+					.requireCor(50);
             ExpertAllRounderTraining.requireLevel(60)
                     .requirePerk(AdvancedAllRounderTraining);
 			ThirdRing.requireLevel(60)

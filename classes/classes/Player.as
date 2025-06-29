@@ -1288,7 +1288,7 @@ use namespace CoC;
 		}
 		//Spear-type
 		public function isSpearTypeWeapon():Boolean {
-			return (weapon.isSpearType());
+			return (weapon.isSpearType() || (isStaffTypeWeapon() && hasPerk(PerkLib.Shillelagh)));
 		}
 		//Dagger-type weapons
 		public function isDaggerTypeWeapon():Boolean {
@@ -1658,6 +1658,7 @@ use namespace CoC;
 			var attack:Number = 0;
 			if (offhand) attack += weaponOff.attack;
 			else attack += weapon.attack;
+			if (weapon.type == ItemConstants.WT_STAFF && hasPerk(PerkLib.Shillelagh)) attack += 30;
 			var swordsmanBonus:Number = 1.25;
 			if (hasPerk(PerkLib.WeaponMastery) && str >= 100) {
 				if (hasPerk(PerkLib.MassiveSynergyEx) && (weapon.isMassive() || weaponOff.isMassive())) {

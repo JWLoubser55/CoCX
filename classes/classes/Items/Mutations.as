@@ -17566,7 +17566,7 @@ public final class Mutations extends MutationsHelper {
         }
         //sens change
 		if (rand(3) == 0 && changes < changeLimit) {
-			outputText("[pg]Whoa… It's chilly out there. You feel the passage of cold wind on your skin as your sensitivity increases.");
+			outputText("[pg]Whoa… You feel the passage of wind on your skin as your sensitivity increases.");
 			dynStats("sen", 1);
 		}
         if (!player.blockingBodyTransformations()) {
