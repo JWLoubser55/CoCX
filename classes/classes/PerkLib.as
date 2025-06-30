@@ -840,11 +840,11 @@ public class PerkLib
 				"Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)",
 				"You've chosen the 'War Tail' perk. Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)");
 		public static const Shillelagh:PerkType = mk("Shillelagh", "Shillelagh",
-				"Increase staves base attack value by 30. Staves count as the same size class spears when used as melee weapons.",
-				"You've chosen the 'Shillelagh' perk. Increase staves base attack value by 30. Staves count as the same size class spears when used as melee weapons.");
+				"Increase staves base attack value by 30. Staves count as the same size class spears with 40% armorpen when used as melee weapons.",
+				"You've chosen the 'Shillelagh' perk. Increase staves base attack value by 30. Staves count as the same size class spears with 40% armorpen when used as melee weapons.");
 		public static const NaturalOath:PerkType = mk("Natural Oath", "Natural Oath",
-				"Green magic is 50% more powerful so long as you wear no armor, shields or weapons made mostly of metal.",
-				"You've chosen the 'Natural Oath' perk. Green magic is 50% more powerful so long as you wear no armor, shields or weapons made mostly of metal.");
+				"Green magic is twice as more powerful so long as you wear no armor, shields or weapons made mostly of metal.",
+				"You've chosen the 'Natural Oath' perk. Green magic is twice as more powerful so long as you wear no armor, shields or weapons made mostly of metal.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -8652,7 +8652,7 @@ public class PerkLib
 			LimitBreakerHeart1stStage.requireLevel(48)
 					.requirePerk(LimitBreakerBody1stStage);
 			Shillelagh.requireLevel(48)
-					.requirePerk(NaturalOath)
+					.requirePerk(ArcaneVenom)
 					.requireInt(180)
 					.requireLib(180)
 					.requireCor(50);
@@ -8717,7 +8717,7 @@ public class PerkLib
 			LimitBreakerPsyche1stStage.requireLevel(60)
 					.requirePerk(LimitBreakerFlesh1stStage);
 			NaturalOath.requireLevel(60)
-					.requirePerk(ArcaneVenom)
+					.requirePerk(Shillelagh)
 					.requireInt(220)
 					.requireLib(220)
 					.requireCor(50);

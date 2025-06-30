@@ -333,8 +333,8 @@ public class Changelog extends BaseContent
 			outputText("-New P. Special: Taser. Usable by Automata with Automata Tail Cable. Effect: Deliver a paralyzing jolt with a melee attack. (can also be used as part of feral combat)\n");
 			outputText("-New M. Special: Overdrive. Usable by Automata. Effect: Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).\n");
 			outputText("-Green Magic / Verdant Leech / Arcane Venom perks tier decreased (3 > 2 / 6 > 4 / 9 > 6) with lowered stat req.\n");
-			outputText("-New tier 8 misc lvl-up perk: Shillelagh. Req. Arcane Venom perk, Intelligence 180+, Libido 180+, Corruption 50+. Effect: Increase staves base attack value by 30. Staves count as the same size class spears when used as melee weapons.\n");
-			outputText("-New tier 10 misc lvl-up perk: Natural Oath. Req. Shillelagh perk, Intelligence 220+, Libido 220+, Corruption 50+. Effect: Green magic is 50% more powerful so long as you wear no armor, shields or weapons made mostly of metal.\n");
+			outputText("-New tier 8 misc lvl-up perk: Shillelagh. Req. Arcane Venom perk, Intelligence 180+, Libido 180+, Corruption 50+. Effect: Increase staves base attack value by 30. Staves count as the same size class spears with 40% armorpen when used as melee weapons.\n");
+			outputText("-New tier 10 misc lvl-up perk: Natural Oath. Req. Shillelagh perk, Intelligence 220+, Libido 220+, Corruption 50+. Effect: Green magic is twice as more powerful so long as you wear no armor, shields or weapons made mostly of metal.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -346,11 +346,11 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
-			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
-			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
@@ -365,11 +365,11 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
+			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
+			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
