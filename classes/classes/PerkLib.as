@@ -1989,8 +1989,8 @@ public class PerkLib
 				"Double the effect of Shared power.",
 				"You've chosen the 'Greater shared power' perk. ");
 		public static const GreenMagic:PerkType = mk("Green magic", "Green magic",
-				"Your Elven spell effects are twice as strong and last twice as long.",
-				"You've chosen the 'Green magic' perk. Your Elven spell effects are twice as strong and last twice as long.");
+				"Your green magic spell effects are twice as strong and last twice as long.",
+				"You've chosen the 'Green magic' perk. Your green magic spell effects are twice as strong and last twice as long.");
 		public static const GreyArchmage:PerkType = mk("Grey Archmage", "Grey Archmage",
 				"[if (player.inte>=175)" +
 						"Increases grey spell strength by 30%, mana pool by 450, lust bar by 80 and regain mana 75% faster. (+35% spellpower bonus)" +
@@ -3600,8 +3600,8 @@ public class PerkLib
 				"Increase venom/web recharge speed based on current hunger level. (will have no effect if max venom/web is at 0)",
 				"You've chosen the 'Venomous Diet' perk. Increase venom/web recharge speed based on current hunger level. (will have no effect if max venom/web is at 0)");
 		public static const VerdantLeech:PerkType = mk("Verdant Leech", "Verdant Leech",
-				"Your Elven spells and black magic raises your opponent's weakness to lust and heals you for 5% of your health each time they inflict poison.",
-				"You've chosen the 'Verdant Leech' perk. Your Elven spells and black magic raises your opponent's weakness to lust and heals you for 5% of your health each time they inflict poison.");
+				"Your green magic spells and black magic raises your opponent's weakness to lust and heals you for 5% of your health each time they inflict poison.",
+				"You've chosen the 'Verdant Leech' perk. Your green magic spells and black magic raises your opponent's weakness to lust and heals you for 5% of your health each time they inflict poison.");
 		public static const VexedNocking:PerkType = mk("Vexed nocking", "Vexed nocking",
 				"Increase Power Attack/Shoot damage multiplier ratio from 1:2/5/10 to 1:4/10/20. Additional increase initial bonus to damage from 50 to 100%.",
 				"You've chosen the 'Vexed nocking' perk. Increase Power Attack/Shoot damage multiplier ratio from 1:2/5/10 to 1:4/10/20. Additional increase initial bonus to damage from 50 to 100%.");
@@ -8246,7 +8246,6 @@ public class PerkLib
 			HighlyVenomousDiet.requirePerk(VenomousDiet);
 			AxillaryVenomGlands.requirePerk(VenomousAdiposeTissue);
 			GreenMagic.requireLevel(12)
-					.requirePerk(NaturalSpellcasting)
 					.requireInt(55)
 					.requireLib(55)
 					.requireCor(50);

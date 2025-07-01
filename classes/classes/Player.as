@@ -7879,6 +7879,9 @@ use namespace CoC;
 		public function staffOrWoodenMeleeWeapon():Boolean {
 			return weapon.isStaffType() || weaponOff.isStaffType() || weapon.isWoodenMelee() || weaponOff.isWoodenMelee();
 		}
+		public function checkNaturalOath():Boolean {
+			return hasPerk(PerkLib.NaturalOath) && armorName == "nothing" && shieldName == "nothing" && staffOrWoodenMeleeWeapon();
+		}
 
 		protected override function maxHP_base():Number {
 			var max:Number = super.maxHP_base();

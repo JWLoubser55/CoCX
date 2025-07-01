@@ -3502,8 +3502,10 @@ public class Combat extends BaseContent {
                 if (flags[kFLAGS.ELVEN_THORNSHOT_ENABLED] == 1 && player.isWoodElf() && player.mana >= 10) {
                     player.mana -= 10;
 					var lustDMG:Number = 35 + rand(player.lib / 10);
+					lustDMG *= 0.25;
 					if (player.hasPerk(PerkLib.VegetalAffinity)) lustDMG *= 1.5;
 					if (player.hasPerk(PerkLib.GreenMagic)) lustDMG *= 2;
+					if (player.checkNaturalOath()) lustDMG *= 2;
 					if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
 						if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.BAROMETZ))) lustDMG *= ((1 + player.plantChlorophyllBoost()) * 2);
 						else lustDMG *= 2;
@@ -12825,17 +12827,21 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		//Briarthorn
 		if (monster.hasStatusEffect(StatusEffects.Briarthorn) && monster.lustVuln > 0) {
 			outputText("The poison inflicted by the thorns gnaws at your opponent countenance.");
-			var damageB:Number = scalingBonusIntelligence() * 0.15 * spellModWhite();
+			var damageB:Number = scalingBonusIntelligence() * 0.0375 * spellModGreen();
+			if (player.hasPerk(PerkLib.GreenMagic)) damageB *= 2;
+			if (player.checkNaturalOath()) damageB *= 2;
 			repeatArcaneVenom(damageB, 0, 0);
 			outputText("\n\n");
 		}
 		//Death Blossom
 		if (monster.hasStatusEffect(StatusEffects.DeathBlossom)) {
 			outputText("The airborne poisons and aphrodisiacs spread by the blossoming flowers thickens.\n");
-			var damageDBH:Number = scalingBonusIntelligence() * 0.2 * spellModWhite() * monster.statusEffectv2(StatusEffects.DeathBlossom);
+			var damageDBH:Number = scalingBonusIntelligence() * 0.05 * spellModGreen() * monster.statusEffectv2(StatusEffects.DeathBlossom);
+			if (player.hasPerk(PerkLib.GreenMagic)) damageDBH *= 2;
+			if (player.checkNaturalOath()) damageDBH *= 2;
 			damageDBH = Math.round(damageDBH * poisonDamageBoostedByDao());
 			var damageDBL:Number = 0;
-			if (monster.lustVuln > 0) damageDBL += scalingBonusIntelligence() * 0.03 * spellModWhite() * monster.statusEffectv2(StatusEffects.DeathBlossom);
+			if (monster.lustVuln > 0) damageDBL += scalingBonusIntelligence() * 0.03 * spellModGreen() * monster.statusEffectv2(StatusEffects.DeathBlossom);
 			repeatArcaneVenom(damageDBL, 0, damageDBH);
 			outputText("\n\n");
 		}
@@ -14173,8 +14179,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 	
 	private function repeatArcaneVenom(dmg:Number, subtype:Number, poisonele:Number):void {
 		var randomCritAV:Boolean = false;
+		dmg *= 0.25;
 		if (player.hasPerk(PerkLib.VegetalAffinity)) dmg *= 1.5;
 		if (player.hasPerk(PerkLib.GreenMagic)) dmg *= 2;
+		if (player.checkNaturalOath()) dmg *= 2;
 		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.BAROMETZ))) dmg *= ((1 + player.plantChlorophyllBoost()) * 2);
 			else dmg *= 2;

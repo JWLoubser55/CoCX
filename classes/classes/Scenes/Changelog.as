@@ -335,7 +335,7 @@ public class Changelog extends BaseContent
 			outputText("-Green Magic / Verdant Leech / Arcane Venom perks tier decreased (3 > 2 / 6 > 4 / 9 > 6) with lowered stat req.\n");
 			outputText("-New tier 8 misc lvl-up perk: Shillelagh. Req. Arcane Venom perk, Intelligence 180+, Libido 180+, Corruption 50+. Effect: Increase staves base attack value by 30. Staves count as the same size class spears with 40% armorpen when used as melee weapons.\n");
 			outputText("-New tier 10 misc lvl-up perk: Natural Oath. Req. Shillelagh perk, Intelligence 220+, Libido 220+, Corruption 50+. Effect: Green magic is twice as more powerful so long as you wear no armor, shields or weapons made mostly of metal.\n");
-			outputText("-\n");
+			outputText("-By the Liadri decree green magic spells base damage was nerfed by 4x and base effects duration by 2x. Verdant Leech and Green Magic desc updated to reflect recent changed for green magic. Natural Spellcasting perk is no longer required to pick Green magic perk.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

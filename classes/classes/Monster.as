@@ -4201,12 +4201,14 @@ import classes.Scenes.Combat.CombatAbilities;
 				addStatusValue(StatusEffects.Timer,1,-1);
 			}
 			if(hasStatusEffect(StatusEffects.Briarthorn)) {
-				var store16:Number = (player.str + player.spe) * 2;
+				var store16:Number = (player.str + player.spe) * 0.5;
 				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 					store16 += 8 * SceneLib.combat.scalingBonusIntelligence();
 					store16 += 2 * SceneLib.combat.scalingBonusWisdom();
 					EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 				}
+				if (player.hasPerk(PerkLib.GreenMagic)) store16 *= 2;
+				if (player.checkNaturalOath()) store16 *= 2;
 				store16 *= SceneLib.combat.BleedDamageBoost();
 				store16 += maxHP()*0.05;
 				store16 = SceneLib.combat.fixPercentDamage(store16);
@@ -4221,7 +4223,9 @@ import classes.Scenes.Combat.CombatAbilities;
 					removeStatusEffect(StatusEffects.Rosethorn);
 					outputText("<b>Bleeding cause by deep wounds your rose thorns left behind stopped!</b>[pg]");
 				} else {
-					var store17:Number = (player.str + player.spe);
+					var store17:Number = (player.str + player.spe) * 0.25;
+					if (player.hasPerk(PerkLib.GreenMagic)) store17 *= 2;
+					if (player.checkNaturalOath()) store17 *= 2;
 					store17 *= SceneLib.combat.BleedDamageBoost();
 					store17 *= statusEffectv1(StatusEffects.Rosethorn) * 0.1;
 					store17 += maxHP()*0.01;
