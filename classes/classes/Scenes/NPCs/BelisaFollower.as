@@ -290,7 +290,7 @@ public class BelisaFollower extends NPCAwareContent implements SaveableState
 		addButton(2, "Hang", BelisaHang);
 		if (BelisaShopOpen) addButton(3, "Shop", BelisaShop);
 		addButton(4, "Sex", BelisaSex);
-		if (BelisaHolyBands()) addButton(5, "Holy Bands", BelisaHolyBandsManagment).hint("Putting on ot taking of any of the Holy Bands you own. With little Belisa help ;)");
+		if (BelisaHolyBands()) addButton(5, "Holy Bands", BelisaHolyBandsManagment).hint("Putting on or taking off any of the Holy Bands you own. With little Belisa help ;)");
 	}
 
 	public function Encounterback():void {
@@ -302,7 +302,7 @@ public class BelisaFollower extends NPCAwareContent implements SaveableState
 		addButton(2, "Hang", BelisaHang);
 		if (BelisaShopOpen) addButton(3, "Shop", BelisaShop);
 		addButton(4, "Sex", BelisaSex);
-		if (BelisaHolyBands()) addButton(5, "Holy Bands", BelisaHolyBandsManagment).hint("Putting on ot taking of any of the Holy Bands you own. With little Belisa help ;)");
+		if (BelisaHolyBands()) addButton(5, "Holy Bands", BelisaHolyBandsManagment).hint("Putting on or taking off any of the Holy Bands you own. With little Belisa help ;)");
 	}
 
 	public function BelisaTalk():void {

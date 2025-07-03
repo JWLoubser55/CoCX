@@ -29,9 +29,9 @@ public class DeathBlossomSpell extends AbstractGreenSpell {
 	}
 
 	override public function calcDuration():int {
-		var dura:Number = 2;
+		var dura:Number = 3;
+		if (player.hasPerk(PerkLib.PersistentSpell)) dura += 2;
 		if (player.hasPerk(PerkLib.GreenMagic)) dura *= 2;
-		if (player.hasPerk(PerkLib.PersistentSpell)) dura *= 2;
 		return dura;
 	}
 	

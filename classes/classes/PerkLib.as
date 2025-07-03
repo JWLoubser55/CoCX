@@ -8245,7 +8245,7 @@ public class PerkLib
 					.requireSpe(40);
 			HighlyVenomousDiet.requirePerk(VenomousDiet);
 			AxillaryVenomGlands.requirePerk(VenomousAdiposeTissue);
-			GreenMagic.requireLevel(12)
+			PersistentSpell.requireLevel(12)
 					.requireInt(55)
 					.requireLib(55)
 					.requireCor(50);
@@ -8452,7 +8452,7 @@ public class PerkLib
 			IronStomachSu.requireLevel(24)
                     .requirePerk(IronStomachEx);
 			VerdantLeech.requireLevel(24)
-					.requirePerk(GreenMagic)
+					.requirePerk(PersistentSpell)
 					.requireInt(100)
 					.requireLib(100)
 					.requireCor(50);
@@ -8777,7 +8777,7 @@ public class PerkLib
 					.requirePerk(StrengthInNumbers);
 			BrothelOwner.requireLevel(72)
 					.requirePerk(Escort);
-			PersistentSpell.requireLevel(72)
+			GreenMagic.requireLevel(72)
 					.requirePerk(NaturalOath)
 					.requireInt(260)
 					.requireLib(260)

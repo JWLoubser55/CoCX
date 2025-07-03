@@ -42,9 +42,9 @@ public class EntangleSpell extends AbstractGreenSpell {
 	}
 	
 	override public function calcDuration():int {
-		var dura:Number = 3;
+		var dura:Number = 4;
+		if (player.hasPerk(PerkLib.PersistentSpell)) dura += 2;
 		if (player.hasPerk(PerkLib.GreenMagic)) dura *= 2;
-		if (player.hasPerk(PerkLib.PersistentSpell)) dura *= 2;
 		return dura;
 	}
 	

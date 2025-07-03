@@ -332,12 +332,12 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 misc lvl-up perk: War Tail. Req. Beastly Kick perk and 45+ str/tou/spe. Effect: Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)\n");
 			outputText("-New P. Special: Taser. Usable by Automata with Automata Tail Cable. Effect: Deliver a paralyzing jolt with a melee attack. (can also be used as part of feral combat)\n");
 			outputText("-New M. Special: Overdrive. Usable by Automata. Effect: Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).\n");
-			outputText("-Green Magic / Verdant Leech / Arcane Venom perks tier decreased (3 > 2 / 6 > 4 / 9 > 6) with lowered stat req.\n");
+			outputText("-Green Magic / Verdant Leech / Arcane Venom perks tier changed (3 > 12 / 6 > 4 / 9 > 6) with adjusted stat req.\n");
 			outputText("-New tier 8 misc lvl-up perk: Shillelagh. Req. Arcane Venom perk, Intelligence 180+, Libido 180+, Corruption 50+. Effect: Increase staves base attack value by 30. Staves count as the same size class spears with 40% armorpen when used as melee weapons.\n");
 			outputText("-New tier 10 misc lvl-up perk: Natural Oath. Req. Shillelagh perk, Intelligence 220+, Libido 220+, Corruption 50+. Effect: Green magic is twice as more powerful so long as you wear no armor, shields or weapons made mostly of metal.\n");
 			outputText("-By the Liadri decree green magic spells base damage was nerfed by 4x and base effects duration by 2x. Verdant Leech and Green Magic desc updated to reflect recent changed for green magic. Natural Spellcasting perk is no longer required to pick Green magic perk.\n");
 			outputText("-New Natural attack: Cockvine back. Req. cockvine wings. Add 4 Extra natural attacks in the form of slams. Damage ratio 1x per attack.\n");
-			outputText("-New tier 12 misc lvl-up perk: Persistent Spell. Req. Natural Oath perk, Intelligence 260+, Libido 260+, Corruption 50+. Effect: Green magic spell and effect duration are 2 turns longer.\n");
+			outputText("-New tier 2 misc lvl-up perk: Persistent Spell. Req. Intelligence 55+, Libido 55+, Corruption 50+. Effect: Green magic spell and effect duration are 2 turns longer.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

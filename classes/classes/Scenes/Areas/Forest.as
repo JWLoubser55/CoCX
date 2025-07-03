@@ -39,6 +39,7 @@ use namespace CoC;
 		public var lightelfScene:LightElfScene = new LightElfScene();
 		public var aikoScene:AikoScene = new AikoScene();
 		public var nightmareScene:NightmareScene = new NightmareScene();
+		public var barometzScene:BarometzScene = new BarometzScene();
 		// public var dullahanScene:DullahanScene = new DullahanScene(); // [INTERMOD:8chan]
 
 		public function Forest() {
@@ -782,7 +783,13 @@ use namespace CoC;
 				when: function():Boolean {
 					return player.isAlraune();
 				}
-			}, {
+			}, {/*
+				name: "barometz",
+				label : "Barometz",
+				kind  : 'monster',
+				night : false,
+				call: barometzScene.barometzDeepwoods
+			}, {*/
 				name  : "light_elf_scout",
 				label : "Light Elf Scout",
 				kind  : 'monster',
