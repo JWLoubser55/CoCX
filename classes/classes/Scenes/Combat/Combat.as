@@ -6618,6 +6618,24 @@ public class Combat extends BaseContent {
                     }
             }
         }
+		//Unique attack Mantis Prayer
+        if (player.isRaceCached(Races.MANTIS) && player.arms.type == Arms.MANTIS){
+            if(player.hasStatusEffect(StatusEffects.InvisibleOrStealth)){
+                outputText("Taking advantage of your opponent's obliviousness you strike four more times with your scythes.");
+                ExtraNaturalWeaponAttack();
+                ExtraNaturalWeaponAttack();
+                ExtraNaturalWeaponAttack();
+                ExtraNaturalWeaponAttack();
+                outputText("\n");
+            }
+            else{
+                outputText("You lunge for two additional slashes, your scythes glinting.");
+                ExtraNaturalWeaponAttack();
+                ExtraNaturalWeaponAttack();
+                outputText("\n");
+            }
+        }
+        //Unique Automata Attack 
 		if (player.tail.type == Tail.AUTOMATA_TAIL_CABLE) {
 			outputText("You curve your cable tail at [themonster] and deliver a paralyzing discharge. ");
 			var damage:Number = scalingBonusIntelligence() * spellModWhite();
@@ -6654,23 +6672,15 @@ public class Combat extends BaseContent {
 			}
 			outputText("\n");
 		}
-        //Unique attack Mantis Prayer
-        if (player.isRaceCached(Races.MANTIS) && player.arms.type == Arms.MANTIS){
-            if(player.hasStatusEffect(StatusEffects.InvisibleOrStealth)){
-                outputText("Taking advantage of your opponent's obliviousness you strike four more times with your scythes.");
-                ExtraNaturalWeaponAttack();
-                ExtraNaturalWeaponAttack();
-                ExtraNaturalWeaponAttack();
-                ExtraNaturalWeaponAttack();
-                outputText("\n");
-            }
-            else{
-                outputText("You lunge for two additional slashes, your scythes glinting.");
-                ExtraNaturalWeaponAttack();
-                ExtraNaturalWeaponAttack();
-                outputText("\n");
-            }
-        }
+        //Unique wing tentacles strikes
+		if (player.wings.type == Wings.PLANT) {
+			outputText("Your cock vines explode from your back sweeping around and viciously wiping your opponent.");
+			ExtraNaturalWeaponAttack();
+			ExtraNaturalWeaponAttack();
+			ExtraNaturalWeaponAttack();
+			ExtraNaturalWeaponAttack();
+			outputText("\n");
+		}
         //Unique attack Kamaitachi Three way Cut
         if (player.isRaceCached(Races.KAMAITACHI) && player.arms.type == Arms.KAMAITACHI){
             outputText("You strike at blinding speed, seeming to divide yourself into multiple copies, and slash with your scythes again. You cut once, twice, then finish it with a double scythe strike for a three-hit combo. \n");
@@ -6739,7 +6749,7 @@ public class Combat extends BaseContent {
             }
             outputText("\n");
         }
-        //Unique attack werewolf
+		//Unique attack werewolf
         // I really really really want to congregate these isRaceCached attacks together
         if ((player.isRaceCached(Races.WEREWOLF) || player.isRaceCached(Races.CERBERUS)) && player.hasMutation(IMutationsLib.AlphaHowlIM)) {
             var WerewolfPackDamageMultiplier:Number = 0.5;
@@ -20008,4 +20018,4 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
-}
+}

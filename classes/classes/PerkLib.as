@@ -845,6 +845,9 @@ public class PerkLib
 		public static const NaturalOath:PerkType = mk("Natural Oath", "Natural Oath",
 				"Green magic is twice as more powerful so long as you wear no armor, shields or weapons made mostly of metal.",
 				"You've chosen the 'Natural Oath' perk. Green magic is twice as more powerful so long as you wear no armor, shields or weapons made mostly of metal.");
+		public static const PersistentSpell:PerkType = mk("Persistent Spell", "Persistent Spell",
+				"Green magic spell and effect duration are 2 turns longer.",
+				"You've chosen the 'Persistent Spell' perk. Green magic spell and effect duration are 2 turns longer.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -856,9 +859,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8777,6 +8777,11 @@ public class PerkLib
 					.requirePerk(StrengthInNumbers);
 			BrothelOwner.requireLevel(72)
 					.requirePerk(Escort);
+			PersistentSpell.requireLevel(72)
+					.requirePerk(NaturalOath)
+					.requireInt(260)
+					.requireLib(260)
+					.requireCor(50);
 			LimitBreakerBody2ndStage.requireLevel(72)
 					.requirePerk(LimitBreakerSoul1stStage);
             UtilitySkillsArtisan.requireLevel(72)
