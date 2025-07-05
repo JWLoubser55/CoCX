@@ -456,11 +456,11 @@ public class Combat extends BaseContent {
     }
 
     public function maxCurrentAttacksMain():int {
-        if (player.weapon.isStaffType() || player.weapon.isWandType()) return 1;
+        if ((player.weapon.isStaffType() && !player.hasPerk(PerkLib.Shillelagh)) || player.weapon.isWandType()) return 1;
         else return player.calculateMultiAttacks();
     }
     public function maxCurrentAttacksOff():int {
-        if (player.weaponOff.isStaffType() || player.weaponOff.isWandType()) return 1;
+        if ((player.weaponOff.isStaffType() && !player.hasPerk(PerkLib.Shillelagh)) || player.weaponOff.isWandType()) return 1;
         else return player.calculateMultiAttacks(true, true);
     }
 
@@ -7614,8 +7614,9 @@ public class Combat extends BaseContent {
 									(player.weapon.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weapon.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip))) && player.isHavingFreeOffHand() && !player.isFeralCombat();
         var boolLifeLeech:Boolean = player.hasPerk(PerkLib.LifeLeech) && player.isFistOrFistWeapon();
         var boolFistingIs300Bucks:Boolean = (player.isFistOrFistWeapon() && (player.shield.isNothing || (player.shield == shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dagger and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dual Daggers")) || player.isFeralCombat());
+		var boolFiendishConcentration1b:Boolean = !player.weapon.isDual() && !player.weaponOff.isDual() && !player.isOneHandedWeapons();
 		var boolFiendishConcentration1a:Boolean = !player.weapon.isNothing && player.weaponOff.isNothing && (player.weapon.isSingleSmall() || player.weapon.isSingleMedium() || (player.weapon.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weapon.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip)));
-		var boolFiendishConcentration1:Boolean = player.hasPerk(PerkLib.FiendishConcentration) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && player.hasFourArms() && ((player.weapon.isDualWielded() && (!player.weapon.isDual() || !player.weaponOff.isDual())) || boolFiendishConcentration1a) && !player.isFeralCombat(); 
+		var boolFiendishConcentration1:Boolean = player.hasPerk(PerkLib.FiendishConcentration) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && player.hasFourArms() && ((player.weapon.isDualWielded() && (!player.weapon.isDual() || !player.weaponOff.isDual())) || boolFiendishConcentration1a || boolFiendishConcentration1b) && !player.isFeralCombat(); 
 		for(var i:int = 1; i <= flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND]; i++){
             damage = 0;
             if (rand(100) < accMelee) { // Attack hits... do stuff
@@ -8240,8 +8241,9 @@ public class Combat extends BaseContent {
         var critDamage:Number = calculateCritDamageOff();
         var hitCounter:int = 0;
         if (player.weaponOff is Tidarion) meleeDamageNoLagOff = 0; //recalc damage for current mana.. okay, get it, multi-attackers-fuckers!
-        var boolFiendishConcentration2a:Boolean = player.weapon.isNothing && !player.weaponOff.isNothing && (player.weaponOff.isSingleSmall() || player.weaponOff.isSingleMedium() || (player.weaponOff.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weaponOff.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip)));
-		var boolFiendishConcentration2:Boolean = player.hasPerk(PerkLib.FiendishConcentration) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && player.hasFourArms() && boolFiendishConcentration2a && !player.isFeralCombat(); 
+        var boolFiendishConcentration2b:Boolean = !player.weapon.isDual() && !player.weaponOff.isDual() && !player.isOneHandedWeapons();
+		var boolFiendishConcentration2a:Boolean = player.weapon.isNothing && !player.weaponOff.isNothing && (player.weaponOff.isSingleSmall() || player.weaponOff.isSingleMedium() || (player.weaponOff.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weaponOff.isSingleMassive() && player.hasPerk(PerkLib.TitanGrip)));
+		var boolFiendishConcentration2:Boolean = player.hasPerk(PerkLib.FiendishConcentration) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && player.hasFourArms() && (boolFiendishConcentration2a || boolFiendishConcentration2b) && !player.isFeralCombat(); 
 		for(var i:int = 1; i <= flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND]; i++){
             damage = 0;
             if (rand(100) < accMelee) { // Attack hits... do stuff

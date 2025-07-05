@@ -1237,7 +1237,7 @@ use namespace CoC;
 		//1H Weapons
 		public function isOneHandedWeapons():Boolean
 		{
-			return !weapon.isDualWielded() && weapon.size < ItemConstants.WSZ_LARGE  && weapon != game.weapons.DAISHO && !weapon.isStaffType();
+			return !weapon.isDualWielded() && weapon.size < ItemConstants.WSZ_LARGE && weapon != game.weapons.DAISHO && !weapon.isStaffType();
 		}
 		//Wrath Weapons
 		public function isLowGradeWrathWeapon():Boolean
@@ -7214,7 +7214,7 @@ use namespace CoC;
 			//Melee additional attacks
 			if (meleeOrRanged) {
 				// Spear gains a few extra due to Spear Dancing Flurry
-				if(isSpearTypeWeapon() && isNotHavingShieldCuzPerksNotWorkingOtherwise() && hasPerk(PerkLib.ELFElvenSpearDancingFlurry1to4) && isElf()) {
+				if((isSpearTypeWeapon() || (weapon.isStaffType() && hasPerk(PerkLib.Shillelagh))) && isNotHavingShieldCuzPerksNotWorkingOtherwise() && hasPerk(PerkLib.ELFElvenSpearDancingFlurry1to4) && isElf()) {
 					rval += perkv1(PerkLib.ELFElvenSpearDancingFlurry1to4);
 				}
 				// Feral starts off with +1 with history perk
@@ -7227,7 +7227,7 @@ use namespace CoC;
 				}
 			} else if (offHandCalc) {
 				// Spear gains a few extra due to Spear Dancing Flurry
-				if(weaponOff.isSpearType() && hasPerk(PerkLib.ELFElvenSpearDancingFlurry1to4) && isElf()) {
+				if((weaponOff.isSpearType() || (weaponOff.isStaffType() && hasPerk(PerkLib.Shillelagh))) && hasPerk(PerkLib.ELFElvenSpearDancingFlurry1to4) && isElf()) {
 					rval += perkv1(PerkLib.ELFElvenSpearDancingFlurry1to4);
 				}
 			} else {

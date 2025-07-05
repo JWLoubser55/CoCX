@@ -376,7 +376,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz)
+			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
@@ -1563,7 +1563,7 @@ public class Changelog extends BaseContent
 			outputText("-When PC can make party with 2 henchman and can use option to ask one to disable some enemy in tag fights could now choose which one henchman would do this and it would only disable this one helper actions not other one.\n");
 			outputText("-Set eggs hatching to properly have text spacing. (Liadri)\n");
 			outputText("-Kitsune metamorph sequence break fix. (Jtecx)\n");
-			outputText("-Implemented sprites for (Lord Shadeogorath): nurse outfit, samurai outfit, moonlight greatsword, samurai helmet (by Mister GRaM); phalluspear, chainmail armor (by Canadian Snas); scale mail (by Desro); green adventurer outfit (by Lia);\n");
+			outputText("-Implemented sprites for (Lord Shadeogorath): nurse outfit, samurai outfit, moonlight greatsword, samurai helmet (by MaRG); phalluspear, chainmail armor (by Canadian Snas); scale mail (by Desro); green adventurer outfit (by Lia);\n");
 			outputText("-Various tweaks and bugfixes: dual katana and daisho should now show sprites when equipped, offhand firebuff sprites should now show for weapons that have them, some pure/corrupt weapons that were not showing the appropriate sprite should now do so, dual massive weapons should now properly show an offhand sprite if applicable (Lord Shadeogorath)\n");
 			outputText("-Fixed bugs: Izma C.Manual spe multi bonus not gained properly from reading with her or from bought copy, Kiha wedding possible to keep repeating, Anubis Glyph Pattern metamorph giving Oni pattern, Mummy Curse tooltip when greyed out, needless option for out of Soul Arena low ranker angeloids, Uma Handjob & Get Blown options not accessible for cockwielders, ");
 			outputText("Tamains Daughters scene sending back to camp, clone creating not causing unremovable negative levels, faerie dragon tf not giving pinkish purple scales color, Izma bad end not triggering after PC lost to her many times, Juvenile Abyssal Sharks runnign away without leaving behind any loot\n\n");
@@ -1887,7 +1887,7 @@ public class Changelog extends BaseContent
 			outputText("-Options for self-sustain and lowering lust will be now from 10% to 100% with corresponding amount of SF needed to use each of them. SF to Mana/Mana to SF options would be now with more step up increases and two last options for each will be giving 25%/100% of max Mana/SF.\n");
 			outputText("-Souless PC (not devil/azazel PC) can't use/access Bag of Cosmos/Sky Poison Pearl unless they regain soul somehow.\n");
 			outputText("-All inventory types slots capacity increased by 5. (Pearl 15 > 20, rest 5 > 10)\n");
-			outputText("-Adding nodachi sprites (drawn by Mister GRaM) to the game. (Liadri)\n");
+			outputText("-Adding nodachi sprites (drawn by MaRG) to the game. (Liadri)\n");
 			outputText("-Minor fixes to taur and stuff (Liadri)\n");
 			outputText("-Added imp female sprite (drawn by Lord Anonymous) to the game. (Liadri)\n");
 			outputText("-CasterTome recognition for imp tome. Goblins and Elfin ears updates. Ranged Tome are now also sprited as well as shielder tome. (Liadri)\n");
