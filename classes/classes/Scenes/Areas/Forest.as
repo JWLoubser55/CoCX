@@ -783,13 +783,13 @@ use namespace CoC;
 				when: function():Boolean {
 					return player.isAlraune();
 				}
-			}, {/*
+			}, {
 				name: "barometz",
 				label : "Barometz",
 				kind  : 'monster',
 				night : false,
 				call: barometzScene.barometzDeepwoods
-			}, {*/
+			}, {
 				name  : "light_elf_scout",
 				label : "Light Elf Scout",
 				kind  : 'monster',
