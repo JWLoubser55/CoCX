@@ -228,6 +228,9 @@ use namespace CoC;
 		public const BANDAGE:SimpleUseable = new SimpleUseable("Bandage", "Bandages", "a Bandages", 25,
 			"A Bandages.",
 			"A roll of bandages. What are you gonna do with this anyway?");
+		public const DUCATS_:SimpleUseable = new SimpleUseable("Ducats", "Ducats", "a Ducats", 500,
+			"Weird coins from another world worthless in this universe but still made of gold, can be sold at the pawn shop for gems.",
+			"You look at Ducats.  Weird coins from another world worthless in this universe but still made of gold, can be sold at the pawn shop for gems.");
 		// Alchemical catalysts:
 		// Substance/Essence/Residue/Pigment
 		// Minor/Common/Major
