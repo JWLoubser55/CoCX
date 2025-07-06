@@ -16,15 +16,41 @@ import coc.view.CoCButton;
 public class Barometz extends Monster
 	{
 		public function barometzEntangle():void {
-			//
+			outputText("The barometz raises its staff causing the plants to suddenly grow taller as the whole area becomes an entanglement.");
+			player.createStatusEffect(StatusEffects.Tentagrappled, 0, 0, 0, 0);
+		}
+		public function baroGrappleStruggle():void {
+			clearOutput();
+			outputText("You struggle to break from from the entanglement ");
+			if (SceneLib.combat.struggleCentralizedCheck()) {
+				outputText("and succeed!");
+				player.removeStatusEffect(StatusEffects.Tentagrappled);
+			}
+			else outputText("in vain.");
+			SceneLib.combat.enemyAIImpl();
+		}
+		public function baroGrappleWait():void {
+			clearOutput();
+			outputText("Why bother resisting? Theres no way you can escape this anyway.\n\n");
+			SceneLib.combat.enemyAIImpl();
 		}
 		
 		public function barometzBriarthorn():void {
-			//
+			outputText("The barometz raises its staff causing the plants to grow sharp poisonous thorns that tear at your flesh! You begin to bleed badly!");
+			if (!player.immuneToBleed()) {
+				if (player.hasStatusEffect(StatusEffects.IzmaBleed)) player.addStatusValue(StatusEffects.IzmaBleed, 1, 1);
+				else player.createStatusEffect(StatusEffects.IzmaBleed, 4, 0, 0, 0);
+			}
+			if (player.hasStatusEffect(StatusEffects.Briarthorn)) player.addStatusValue(StatusEffects.Briarthorn, 1, 1);
+			else player.createStatusEffect(StatusEffects.Briarthorn, 4, 0, 0, 0);
 		}
 		
-		public function barometz3():void {
-			//
+		public function barometzDeathBlossom():void {
+			outputText("The barometz raises its staff causing the plants to bloom into flowers that release a large cloud of pollen. You begin to gag almost immediately fuck this shit is poisonous. To your horror your skin also flush with arousal as the insidious aphrodisiacs flood your system!");
+			var damage:Number = (3 * inteligencescalingbonus()) + (3 * wisdomscalingbonus());
+			player.takeLustDamage(damage, true);
+			if (player.hasStatusEffect(StatusEffects.DeathBlossom)) player.addStatusValue(StatusEffects.DeathBlossom, 1, 1);
+			else player.createStatusEffect(StatusEffects.DeathBlossom, 4, 1, 0, 0);
 		}
 		
 		public function barometzHeal():void {
@@ -51,19 +77,29 @@ public class Barometz extends Monster
 			outputText("\n");
 		}
 		
+		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+			if (player.hasStatusEffect(StatusEffects.Tentagrappled)) {
+				btnStruggle.call(baroGrappleStruggle);
+				btnBoundWait.call(baroGrappleWait);
+			}
+		}
+
 		override protected function performCombatAction():void
 		{
 			if (HPRatio() < .6 && (mana >= 30) && !hasStatusEffect(StatusEffects.AbilityCooldown1)) barometzHeal();
+			else if (!player.hasStatusEffect(StatusEffects.Tentagrappled) && rand(3) > 0) barometzEntangle();
 			else {
+				if (player.hasStatusEffect(StatusEffects.Tentagrappled)) {
+					player.addStatusValue(StatusEffects.Tentagrappled, 1, 1);
+					if (player.statusEffectv1(StatusEffects.Tentagrappled) > 7) player.removeStatusEffect(StatusEffects.Tentagrappled);
+				}
 				var choice:Number = rand(4);
 				switch (choice) {
 					case 0:
-						barometzKick();
+						barometzBriarthorn();
 						break;
 					case 1:
-						/*if (HPRatio() < .5 && rand(3) == 0 && (mana >= spellCostHeal())) castHealDinah();
-						else if (mana >= spellCostArouse()) castArouseDinah();
-						else*/ barometzKick();
+						barometzDeathBlossom();
 						break;
 					case 2:
 						barometzKick();
@@ -100,7 +136,7 @@ public class Barometz extends Monster
 			this.bonusLust = 500;
 			this.level = 50;
 			this.drop = new WeightedDrop().
-			add(consumables.RAUNENECT,7).
+			add(consumables.HORNFRU,7).
 			addMany(1,consumables.HORNFRU,
 					consumables.HEALHERB,
 					consumables.HEALHERB,

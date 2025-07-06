@@ -777,7 +777,10 @@ public class Combat extends BaseContent {
         ];
         if (player.hasStatusEffect(StatusEffects.MinotaurEntangled)) outputText("\n<b>You're bound up in the minotaur lord's chains!  All you can do is try to struggle free!</b>");
         if (player.hasStatusEffect(StatusEffects.GiantGrabbed)) outputText("\n<b>You're trapped in the giant's hand!  All you can do is try to struggle free!</b>");
-        if (player.hasStatusEffect(StatusEffects.Tentagrappled)) outputText("\n<b>The demoness's tentacles are constricting your limbs!</b>");
+        if (player.hasStatusEffect(StatusEffects.Tentagrappled)) {
+			if (monster is Barometz) outputText("\n<b>The plant wraps tightly around you, denying your movement and immobilizing you!</b>");
+			else outputText("\n<b>The demoness's tentacles are constricting your limbs!</b>");
+		}
         if (player.hasStatusEffect(StatusEffects.Straddle) && monster is ProjectNightwalker) (monster as ProjectNightwalker).faceSittingDescript();
         if (player.hasStatusEffect(StatusEffects.DragonsNom)) outputText("\n<b>The Dragon has you firmly clamped between its jaws!</b>");
         var foundStatus:Boolean = playerStatuses.some(function (status:StatusEffectType, index:int, array:Array):Boolean {
@@ -1039,7 +1042,7 @@ public class Combat extends BaseContent {
             if (player.canFly()) buttons.add("Take Flight", takeFlightWings)
                 .hint("Make use of your wings or other options avilable to take flight into the air for up to 7 turns. \n\nFatigue cost per turn: "+flyingWithWingsCost()+"  \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
                 .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
-			if (player.isInGoblinMech() && (player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0)) buttons.add("Jetpack", takeFlightGoblinMech)
+			if (player.isInGoblinMech() && player.jetpackChecks()) buttons.add("Jetpack", takeFlightGoblinMech)
 				.hint("Make use of your mech jetpack to take flight into the air for up to 5 turns. \n\nWould go into cooldown after use for: 3 rounds")
 				.disableIf(player.hasStatusEffect(StatusEffects.CooldownJetpack), "You need more time before you can use jetpack again.")
 				.disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
@@ -12171,6 +12174,24 @@ public class Combat extends BaseContent {
 				flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID] = 0;
             }
         }
+		if (player.hasStatusEffect(StatusEffects.Briarthorn)) {
+			player.addStatusValue(StatusEffects.Briarthorn, 1, -1);
+			outputText("The poison inflicted by the thorns gnaws at your countenance.");
+			var damageBp:Number = monster.inteligencescalingbonus() * 0.075;
+			player.takeLustDamage(damageBp, true);
+			outputText("\n\n");
+			if (player.statusEffectv1(StatusEffects.Briarthorn) <= 0) player.removeStatusEffect(StatusEffects.Briarthorn);
+		}
+		if (player.hasStatusEffect(StatusEffects.DeathBlossom)) {
+			player.addStatusValue(StatusEffects.DeathBlossom, 1, -1);
+			outputText("The airborne poisons and aphrodisiacs spread by the blossoming flowers thickens.");
+			var damageDBHp:Number = monster.inteligencescalingbonus() * 0.1 * player.statusEffectv2(StatusEffects.DeathBlossom);
+			var damageDBLp:Number = monster.inteligencescalingbonus() * 0.06 * player.statusEffectv2(StatusEffects.DeathBlossom);
+			player.takePoisonDamage(damageDBHp, true);
+			player.takeLustDamage(damageDBLp, true);
+			outputText("\n\n");
+			if (player.statusEffectv1(StatusEffects.DeathBlossom) <= 0) player.removeStatusEffect(StatusEffects.DeathBlossom);
+		}
 		if (player.hasStatusEffect(StatusEffects.ConstantHeatConditions) && !player.hasPerk(PerkLib.FireAffinity) && !player.hasPerk(PerkLib.FireShadowAffinity) && !player.hasPerk(PerkLib.AffinityIgnis)) SceneLib.volcanicCrag.ConstantHeatConditionsTick();
 		if (player.hasStatusEffect(StatusEffects.SubZeroConditions) && !player.hasPerk(PerkLib.ColdAffinity)) SceneLib.glacialRift.SubZeroConditionsTick();
         if (monster is Incels) (monster as Incels).DraftSupportCheck();
@@ -18368,6 +18389,12 @@ public function runAway(callHook:Boolean = true):void {
             return;
         }
     }
+    if (player.hasStatusEffect(StatusEffects.Tentagrappled) && monster is Barometz) {
+        outputText("You are currently entangled in vines and can't run away!");
+        menu();
+        addButton(0, "Next", combatMenu, false);
+        return;
+    }
     if (player.lowerBody == LowerBody.FIRE_SNAIL) {
         outputText("You're too slow to escape from this fight!");
         //Pass false to combatMenu instead:		menuLoc = 3;
@@ -20020,4 +20047,4 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
-}
+}

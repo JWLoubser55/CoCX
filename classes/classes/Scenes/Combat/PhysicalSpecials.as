@@ -15,6 +15,7 @@ import classes.PerkLib;
 import classes.Races;
 import classes.Scenes.Areas.Bog.LizanRogue;
 import classes.Scenes.Areas.Forest.Akbal;
+import classes.Scenes.Areas.Forest.Barometz;
 import classes.Scenes.Areas.Lake.GooGirl;
 import classes.Scenes.Areas.LightlessReach.DisplacerBeast;
 import classes.Scenes.Areas.Mountain.WormMass;
@@ -562,11 +563,14 @@ public class PhysicalSpecials extends BaseCombatContent {
 				bd = buttons.add("Terr. Howl", terrifyingHowl).hint("Release a powerful howl, dazing your opponent for 1 round.\n4 round cooldown.", "Terrifying Howl");
 				bd.requireFatigue(physicalSpecialsCost(40));
 				if(player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
-					bd.disable("You cannot fhowl while you're having so much difficult breathing.");
+					bd.disable("You cannot howl while you're having so much difficult breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
 			if (player.canFly() && !player.hasPerk(PerkLib.ElementalBody)) {
 				bd = buttons.add("Take Flight", takeFlight).hint("Make use of your wings to take flight into the air for up to " + combat.flightDurationNatural() + " turns. \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.");
+				if (player.hasStatusEffect(StatusEffects.Tentagrappled) && monster is Barometz) {
+					bd.disable("ou are currently entangled in vines and can't fly!");
+				}
 			}
 			if (player.shieldName == "Battle Net") {
 				bd = buttons.add("Entangle", netEntangle).hint("Toss your net at the enemy to entangle it. (cooldown of 5 rounds before it can be used again)");
@@ -701,7 +705,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use "+(player.hasKeyItem("Medical Dispenser 2.0") >= 0 ? "Medical Dispenser":"Stimpack Dispenser")+" again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if ((player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0) && !player.hasPerk(PerkLib.SelfImprovement)) {
+			if (player.jetpackChecks() && !player.hasPerk(PerkLib.SelfImprovement)) {
 				bd = buttons.add("Jetpack", takeFlightGoblinMechJetpack).hint("Make use of your mech jetpack to take flight into the air for up to 5 turns. \n\nWould go into cooldown after use for: 3 rounds");
 				if (player.hasStatusEffect(StatusEffects.CooldownJetpack)) {
 					bd.disable("<b>You need more time before you can use jetpack again.</b>\n\n");
