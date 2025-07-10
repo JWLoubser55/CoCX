@@ -577,6 +577,11 @@ public final class WeaponLib extends ItemConstants
 		public const GGRAVEA:Weapon = new Weapon("GGravea", "GlacialGraveaxe", "Glacial Graveaxe", "a Glacial Graveaxe", "cleave", 160, 160, "The titanic greataxe you found in the tundra, most of the weapon seems to have been carved from bedrock, with the head being made of solid, dense, ice from the heart of a glacier. The ice is light, razor sharp, and appears to never melt. The stone’s slightly discolored, as if carvings had once adorned its surface…However, such decoration seems to have been lost to time. When charged with magic the blade radiates a glacial frost reminiscent of where it was found", WT_AXE, WSZ_MASSIVE)
 				.withTag(W_LGWRATH)
 				.withEffect(IELib.ScaleAttack_StrXL, 800) as Weapon;
+		public const GNARLEDS:Weapon = new Weapon(
+				"GnarledS", "Gnarled Staff", "Gnarled Staff", "a Gnarled Staff", "smack", 120, 14400,
+				"A staff favored by green mages. It is made of spiraling gnarled wood and greatly enhances the potency of green magic. Quite heavy it can also serve as a club. (+150% non-green spellpower / +300% green spellpower)",
+				WT_STAFF, WSZ_MASSIVE)
+				.withBuff('spellpower',+1.5) as Weapon;
 		public const GUANDAO:Weapon = new Weapon(
 				"GuanDao", "GuanDao", "Guan Dao", "a Guan Dao", "slash", 75, 3000,
 				"Made of a 7 foot long wooden pole, attached on top is an imposing sword blade measuring about 21 inches long, gleaming with a sharp light. You figure this weapon should be effective versus groups of foes.  Req. 300 strength to unleash full attack power.",

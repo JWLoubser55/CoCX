@@ -340,7 +340,7 @@ public class Changelog extends BaseContent
 			outputText("-New Natural attack: Cockvine back. Req. cockvine wings. Add 4 Extra natural attacks in the form of slams. Damage ratio 1x per attack.\n");
 			outputText("-New tier 2 misc lvl-up perk: Persistent Spell. Req. Intelligence 55+, Libido 55+, Corruption 50+. Effect: Green magic spell and effect duration are 2 turns longer.\n");
 			outputText("-New usable item: Ducats. Costing 500 gems and can be dropped by Barometz enemy when using Silly Mode.\n");
-			outputText("-\n");
+			outputText("-New melee weapon (by Liadri): Gnarled Staff - dropped by Barometz enemy. Cost 14,400 gems. Base atk is 120. It's massive sized low grade weapon belonging to staff type weapon. It increase non-green spellpower by 150% and green spellpower by 300%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

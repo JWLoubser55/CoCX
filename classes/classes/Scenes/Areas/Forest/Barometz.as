@@ -131,7 +131,8 @@ public class Barometz extends Monster
 				this.a = "a ";
 				this.short = "barometz";
 				this.drop = new WeightedDrop().
-				add(consumables.HORNFRU,7).
+				add(weapons.GNARLEDS,10).
+				add(consumables.HORNFRU,5).
 				addMany(1,consumables.HORNFRU,
 						consumables.HEALHERB,
 						consumables.HEALHERB,
@@ -145,8 +146,9 @@ public class Barometz extends Monster
 				this.a = " ";
 				this.short = "Baro Kiteer";
 				this.drop = new WeightedDrop().
-				add(consumables.HORNFRU, 4).
-				add(useables.DUCATS_, 4);
+				add(weapons.GNARLEDS, 10).
+				add(consumables.HORNFRU, 3).
+				add(useables.DUCATS_, 3);
 			}
 			this.long = "You are fighting "+(silly()?"Baro Kiteer":"a barometz")+". This centauress is half plant, half goat and half human. While she pretend to be guarding the area you trespassed in, the excited look in her eyes and the writhing set of green tentacle cocks at her crotch tells you she was really just looking for a good excuse to fuck you. She wields a gnarled wooden staff for a weapon and appears to excel in nature magic.";
 			initStrTouSpeInte(32, 430, 32, 181);
