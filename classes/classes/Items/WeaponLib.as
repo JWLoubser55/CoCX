@@ -60,7 +60,8 @@ public final class WeaponLib extends ItemConstants
 				DOCDEST,
 				CHAOSEA,
 				ECLIPSE,
-				HELLCAL
+				HELLCAL,
+				QULIPOTH
 			];
 		}
 		
@@ -581,7 +582,10 @@ public final class WeaponLib extends ItemConstants
 				"GnarledS", "Gnarled Staff", "Gnarled Staff", "a Gnarled Staff", "smack", 120, 14400,
 				"A staff favored by green mages. It is made of spiraling gnarled wood and greatly enhances the potency of green magic. Quite heavy it can also serve as a club. (+150% spellpower / 2x green final spellpower)",
 				WT_STAFF, WSZ_MASSIVE)
-				.withBuff('spellpower',+1.5) as Weapon;
+				.withBuff('spellpower', +1.5)
+				.withTags(W_LGWRATH) as Weapon;
+		public const QULIPOTH:Qulipoth = new Qulipoth();
+		// = new Ancient Oath();
 		public const GUANDAO:Weapon = new Weapon(
 				"GuanDao", "GuanDao", "Guan Dao", "a Guan Dao", "slash", 75, 3000,
 				"Made of a 7 foot long wooden pole, attached on top is an imposing sword blade measuring about 21 inches long, gleaming with a sharp light. You figure this weapon should be effective versus groups of foes.  Req. 300 strength to unleash full attack power.",
