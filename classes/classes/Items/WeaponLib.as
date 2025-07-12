@@ -42,7 +42,8 @@ public final class WeaponLib extends ItemConstants
 				DEXCALI,
 				PARACEL,
 				ASTERIUS,
-				ELYSIUM
+				ELYSIUM,
+				ANCIENTO
 			];
 		}
 		public function LegendaryCorrupt():Array {
@@ -125,10 +126,11 @@ public final class WeaponLib extends ItemConstants
 				WT_DAGGER, WSZ_SMALL)
 				.withEffect(IELib.ScaleAttack_Spe, 300)
 				.withEffect(IELib.ScaleAttack_Str, 60) as Weapon;
-		public const AMBERSTAFF:Weapon = findCommonDynamicWeapon("amberstaff")
-		public const AMBERWAND:Weapon = findCommonDynamicWeapon("amberwand")
-		public const AMBERSPEAR:Weapon = findCommonDynamicWeapon("amberspear")
-		public const AMBERGSPEAR:Weapon = findCommonDynamicWeapon("ambergspear")
+		public const AMBERSTAFF:Weapon = findCommonDynamicWeapon("amberstaff");
+		public const AMBERWAND:Weapon = findCommonDynamicWeapon("amberwand");
+		public const AMBERSPEAR:Weapon = findCommonDynamicWeapon("amberspear");
+		public const AMBERGSPEAR:Weapon = findCommonDynamicWeapon("ambergspear");
+		public const ANCIENTO:AncientOath = new AncientOath();
 		public const ARI_SPR:Weapon = new Weapon(
 				"Ari_Spr", "ArigeanSpear", "Arigean Spear", "an Arigean Spear", "thrust", 13, 1040,
 				"A black spear with white wrappings around the length of it, the metal shines a beautiful silver when even a small glimmer of light touches it. It supposedly becomes more dangerous the lower your mana is, and also should have no problem piercing armor.",
@@ -584,8 +586,6 @@ public final class WeaponLib extends ItemConstants
 				WT_STAFF, WSZ_MASSIVE)
 				.withBuff('spellpower', +1.5)
 				.withTags(W_LGWRATH) as Weapon;
-		public const QULIPOTH:Qulipoth = new Qulipoth();
-		// = new Ancient Oath();
 		public const GUANDAO:Weapon = new Weapon(
 				"GuanDao", "GuanDao", "Guan Dao", "a Guan Dao", "slash", 75, 3000,
 				"Made of a 7 foot long wooden pole, attached on top is an imposing sword blade measuring about 21 inches long, gleaming with a sharp light. You figure this weapon should be effective versus groups of foes.  Req. 300 strength to unleash full attack power.",
@@ -823,6 +823,7 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.ScaleAttack_Spe, 100)
 				.withEffect(IELib.AttackBonus_Cor, -1/10)
 				.withEffect(IELib.AttackBonus_Fem, 1/10) as Weapon;
+		public const QULIPOTH:Qulipoth = new Qulipoth();
 		public const R_STAFF:Weapon = new Weapon(
 				"R.Staff", "R. Staff", "ruby staff", "a ruby staff", "smack", 2, 240,
 				"This staff is made of very old wood and seems to tingle to the touch.  The top has ruby embedded in it, and the wood is worn smooth from lots of use.  It probably belonged to a wizard at some point and would aid magic use.",

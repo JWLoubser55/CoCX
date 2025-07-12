@@ -23,11 +23,11 @@ import classes.TimeAwareInterface;
         //Normal weapon stuff
 		public function Qulipoth() 
 		{
-			super("Qulipot", "Qulipoth", "Qulipoth", "a Qulipoth", "bonk", 160, 19200,
+			super("Qulipot", "Qulipoth", "Qulipoth", "a Qulipoth", "bonk", 180, 21600,
 					"A massive staff made from a bought of the first tentacle tree. It channels green magic. Increase in potency with corruption. (+250% spell cost, spellpower bonus scales with corruption)",
 					WT_STAFF, WSZ_MASSIVE);
 			withBuff('spellpower', +1.5);
-			withTags(W_MGWRATH, I_LEGENDARY, W_PURE_TYPE);
+			withTags(W_MGWRATH, I_LEGENDARY, W_CORRUPT_TYPE);
 			withEffect(IELib.AttackBonus_Cor,1/10);
 			withEffect(IELib.ScaleAttack_Str,60);
 			EventParser.timeAwareClassAdd(this);
