@@ -57,6 +57,7 @@ public class NosferatuSpell extends AbstractBlackSpell {
 		if (player.hasPerk(PerkLib.DruidicFocus)) amountToHeal += scalingBonusToughness();
 		if (player.perkv1(IMutationsLib.StillHeartIM) >= 1) amountToHeal *= (1 + (0.25 * player.perkv1(IMutationsLib.StillHeartIM)));
 		if (player.perkv1(IMutationsLib.StillHeartIM) >= 3) amountToHeal += Math.round(player.maxHP() * 0.01 * (player.perkv1(IMutationsLib.StillHeartIM) - 2));
+		if (player.weapon == weapons.ANCIENTO) amountToHeal *= 1.25;
 		return amountToHeal * healModBlack();
 	}
 	

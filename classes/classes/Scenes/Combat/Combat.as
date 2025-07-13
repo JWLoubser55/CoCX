@@ -9138,18 +9138,18 @@ public class Combat extends BaseContent {
     }
 
     public function fireTypeDamageBonus(damage:Number):Number {
-        if (monster.hasPerk(PerkLib.IceNature)) damage *= 1.5;
-        if (monster.hasPerk(PerkLib.FireVulnerability)) damage *= 1.2;
-        if (monster.hasPerk(PerkLib.IceVulnerability)) damage *= 0.8;
+        if (monster.hasPerk(PerkLib.IceNature) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 2)) damage *= 1.5;
+        if (monster.hasPerk(PerkLib.FireVulnerability) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 0)) damage *= 1.2;
+        if (monster.hasPerk(PerkLib.IceVulnerability) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 1)) damage *= 0.8;
         if (monster.hasPerk(PerkLib.FireNature)) damage *= 0.5;
         if (player.hasAnyPerk(PerkLib.FireAffinity, PerkLib.FireShadowAffinity, PerkLib.AffinityIgnis)) damage *= 2;
         return damage;
     }
 
     public function fireTypeDamageBonusLarge(damage:Number):Number {
-        if (monster.hasPerk(PerkLib.IceNature)) damage *= 10;
-        if (monster.hasPerk(PerkLib.FireVulnerability)) damage *= 4;
-        if (monster.hasPerk(PerkLib.IceVulnerability)) damage *= 0.25;
+        if (monster.hasPerk(PerkLib.IceNature) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 2)) damage *= 10;
+        if (monster.hasPerk(PerkLib.FireVulnerability) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 0)) damage *= 4;
+        if (monster.hasPerk(PerkLib.IceVulnerability) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 1)) damage *= 0.25;
         if (monster.hasPerk(PerkLib.FireNature)) damage *= 0.1;
         if (player.hasAnyPerk(PerkLib.FireAffinity, PerkLib.FireShadowAffinity, PerkLib.AffinityIgnis)) damage *= 2;
         return damage;
@@ -9157,9 +9157,10 @@ public class Combat extends BaseContent {
 
     public function iceTypeDamageBonus(damage:Number):Number {
         if (monster.hasPerk(PerkLib.FireNature)) damage *= 1.5;
-        if (monster.hasPerk(PerkLib.IceVulnerability)) damage *= 1.2;
+        if (monster.hasPerk(PerkLib.IceVulnerability) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 1)) damage *= 1.2;
+		if (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 0) damage *= 1.1;
         if (monster.hasPerk(PerkLib.FireVulnerability)) damage *= 0.8;
-        if (monster.hasPerk(PerkLib.IceNature)) damage *= 0.5;
+        if (monster.hasPerk(PerkLib.IceNature) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 2)) damage *= 0.5;
         if (player.hasPerk(PerkLib.ColdAffinity)) damage *= 2;
         if (player.hasPerk(PerkLib.ColdMastery)) damage *= 2;
         return damage;
@@ -9167,9 +9168,10 @@ public class Combat extends BaseContent {
 
     public function iceTypeDamageBonusLarge(damage:Number):Number {
         if (monster.hasPerk(PerkLib.FireNature)) damage *= 10;
-        if (monster.hasPerk(PerkLib.IceVulnerability)) damage *= 4;
+        if (monster.hasPerk(PerkLib.IceVulnerability) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 1)) damage *= 4;
+		if (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 0) damage *= 2;
         if (monster.hasPerk(PerkLib.FireVulnerability)) damage *= 0.25;
-        if (monster.hasPerk(PerkLib.IceNature)) damage *= 0.4;
+        if (monster.hasPerk(PerkLib.IceNature) || (monster.hasPerk(PerkLib.EnemyPlantType) && monster.perkv1(PerkLib.EnemyPlantType) == 2)) damage *= 0.4;
         if (player.hasPerk(PerkLib.ColdAffinity)) damage *= 2;
         if (player.hasPerk(PerkLib.ColdMastery)) damage *= 2;
         return damage;

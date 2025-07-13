@@ -340,10 +340,10 @@ public class Changelog extends BaseContent
 			outputText("-New Natural attack: Cockvine back. Req. cockvine wings. Add 4 Extra natural attacks in the form of slams. Damage ratio 1x per attack.\n");
 			outputText("-New tier 2 misc lvl-up perk: Persistent Spell. Req. Intelligence 55+, Libido 55+, Corruption 50+. Effect: Green magic spell and effect duration are 2 turns longer.\n");
 			outputText("-New usable item: Ducats. Costing 500 gems and can be dropped by Barometz enemy when using Silly Mode.\n");
-			outputText("-New melee weapon (by Liadri): Gnarled Staff - dropped by Barometz enemy. Cost 14,400 gems. Base atk is 120. It's massive sized low grade weapon belonging to staff type weapon. It increase spellpower by 150% and green final spellpower is increased 2x.\n");
-			outputText("-New melee weapon (by Liadri): Qulipoth - obtainable by giving Gnarled Staff to Corrupted Celess / Tyrantia to corrupt. Cost 21,600 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 250% and green final spellpower is increased 2x.\n");
-			outputText("-New melee weapon (by Liadri): Ancient Oath - obtainable by giving Gnarled Staff to Pure Celess to corrupt. Cost 21,600 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 250% and green final spellpower is increased 2x.\n");
-			outputText("-\n");
+			outputText("-New melee weapon (by Liadri): Gnarled Staff - dropped by Barometz enemy. Cost 14,400 gems. Base atk is 120. It's massive sized low grade weapon belonging to staff type weapon. It increase non-green spellpower by 75% and green spellpower by +150%.\n");
+			outputText("-New melee weapon (by Liadri): Qulipoth - obtainable by giving Gnarled Staff to Corrupted Celess / Tyrantia to corrupt. Cost 86,400 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 600% and green final spellpower is increased 2x. Increase Tease damage from spells by 50%. Increase the duration of Death Blossom by 2 rounds.\n");
+			outputText("-New melee weapon (by Liadri): Ancient Oath - obtainable by giving Gnarled Staff to Pure Celess to corrupt. Cost 86,400 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 500%, green final spellpower increase by 2x, increase life healed from spells and damage by 25%.\n");
+			outputText("-Plant type enemies gained additional weakness: ice damage (taking extra damage that is equal to 50% of bonus damage they receive from fire attacks). Player with Vegetal Affinity perk also taking now extra ice damage as plant type enemies.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -89,7 +89,6 @@ public class AlrauneMaiden extends Alraune
 			this.gems = rand(35) + 25;
 			this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
-			this.createPerk(PerkLib.FireVulnerability, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyPlantType, 0, 0, 0, 0);
 			checkMonster();
 		}

@@ -582,9 +582,9 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.ScaleAttack_StrXL, 800) as Weapon;
 		public const GNARLEDS:Weapon = new Weapon(
 				"GnarledS", "Gnarled Staff", "Gnarled Staff", "a Gnarled Staff", "smack", 120, 14400,
-				"A staff favored by green mages. It is made of spiraling gnarled wood and greatly enhances the potency of green magic. Quite heavy it can also serve as a club. (+150% spellpower / 2x green final spellpower)",
+				"A staff favored by green mages. It is made of spiraling gnarled wood and greatly enhances the potency of green magic. Quite heavy it can also serve as a club. (+75% non-green spellpower / +150% green spellpower)",
 				WT_STAFF, WSZ_MASSIVE)
-				.withBuff('spellpower', +1.5)
+				.withBuff('spellpower', +0.75)
 				.withTags(W_LGWRATH) as Weapon;
 		public const GUANDAO:Weapon = new Weapon(
 				"GuanDao", "GuanDao", "Guan Dao", "a Guan Dao", "slash", 75, 3000,

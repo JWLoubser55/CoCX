@@ -205,7 +205,6 @@ public class Alraune extends Monster
 			this.lust = 20 + rand(40);
 			this.lustVuln = 0.2;
 			this.gems = rand(20) + 5;
-			this.createPerk(PerkLib.FireVulnerability, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyPlantType, 0, 0, 0, 0);
 			this.createStatusEffect(StatusEffects.AlrauneRunDisabled, 0, 0, 0, 0);
 			createStatusEffect(StatusEffects.Level,6,0,0,0);

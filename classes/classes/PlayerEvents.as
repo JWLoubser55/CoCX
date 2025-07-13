@@ -2352,11 +2352,11 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasPerk(PerkLib.MindFungus)) player.removePerk(PerkLib.MindFungus);
 				needNext = true;
 			}
-			//VerdantMight
+			//Verdant Might
 			needNext ||= player.gainOrLosePerk(PerkLib.VerdantMight, player.isAnyRaceCached(Races.PLANT, Races.ALRAUNE, Races.BAROMETZ), "Raw green power flows through your veins. While being a plant hasn't done much to improve your muscle, your general sturdiness more than makes up for it. You can now use your toughness instead of your strength when delivering blows.", "Being less of a plant, you lose the ability to add your own sturdiness to your attacks.");
 			//Absorb nutrient
 			needNext ||= player.gainOrLosePerk(PerkLib.AbsorbNutrient, player.isRaceCached(Races.MYCONID), "You begin to crave for the fluids and moisture of others. It looks like, as you became more shroom-like, you gained the ability to absorb nutrients and vitality from sex.", "You no longer crave for the fluids and moisture of others. It looks like, as you became less shroom-like, you lost the ability to absorb nutrients and vitality from sex.");
-			//FungalNobility
+			//Fungal Nobility
 			needNext ||= player.gainOrLosePerk(PerkLib.FungalNobility, player.isRaceCached(Races.MYCONID, 2), "Something changed about you as your body became more fungal like. It would seem you acquired the ability to order around lesser shroom girls.", "As your fungal nature is pruned you lose the ability to command the matango.");
 			//Enigma
 			needNext ||= player.gainOrLosePerk(PerkLib.Enigma, player.isRaceCached(Races.SPHINX), "Being a sphinx has granted you insight on many things including various secrets to martial combat, guess this is what they mean about using your smarts before your brawn.", "As you no longer possess the insight of a sphinx you no longer have the ability to fully use your smarts to improve your martial prowess.");

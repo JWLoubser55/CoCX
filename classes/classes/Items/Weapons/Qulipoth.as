@@ -23,10 +23,10 @@ import classes.TimeAwareInterface;
         //Normal weapon stuff
 		public function Qulipoth() 
 		{
-			super("Qulipot", "Qulipoth", "Qulipoth", "a Qulipoth", "bonk", 180, 21600,
-					"A massive staff made from a bought of the first tentacle tree. It channels green magic. Increase in potency with corruption. (+250% spell cost, spellpower bonus scales with corruption)",
+			super("Qulipot", "Qulipoth", "Qulipoth", "a Qulipoth", "bonk", 180, 86400,
+					"A massive staff made from a bought of the first tentacle tree. It channels green magic. Increase in potency with corruption. (+600% spell cost, spellpower bonus scales with corruption, increase Tease damage from spells by 50%, increase Tease damage from spells by 50%, increase the duration of Death Blossom by 2 rounds)",
 					WT_STAFF, WSZ_MASSIVE);
-			withBuff('spellpower', +1.5);
+			withBuff('spellpower', +3.0);
 			withTags(W_MGWRATH, I_LEGENDARY, W_CORRUPT_TYPE);
 			withEffect(IELib.AttackBonus_Cor,1/10);
 			withEffect(IELib.ScaleAttack_Str,60);
@@ -34,8 +34,8 @@ import classes.TimeAwareInterface;
 		}
 		
 		public function calcWizardsMult():Number {
-			var multadd:Number = 1.5;
-            if (game && game.player) multadd += game.player.cor * 0.01;
+			var multadd:Number = 3.0;
+            if (game && game.player) multadd += game.player.cor * 0.03;
 			return multadd;
 		}
 
