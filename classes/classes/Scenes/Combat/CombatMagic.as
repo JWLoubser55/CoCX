@@ -536,8 +536,8 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.BAROMETZ))) mod += player.plantChlorophyllBoost();
 			mod += 1;
 		}
+		if (player.weapon == weapons.GNARLEDS) mod += 0.75;
 		if (player.checkNaturalOath()) mod *= 2;
-		if (player.weapon == weapons.GNARLEDS) mod *= 2;
 		if (player.weapon == weapons.QULIPOTH) mod *= 2;
 		if (player.weapon == weapons.ANCIENTO) mod *= 2;
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;

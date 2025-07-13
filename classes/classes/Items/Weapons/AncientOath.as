@@ -23,10 +23,10 @@ import classes.TimeAwareInterface;
         //Normal weapon stuff
 		public function AncientOath() 
 		{
-			super("AncientOath", "AncientOath", "AncientOath", "an AncientOath", "bonk", 180, 21600,
-					"A massive staff made from a bough of the goddess Marae tree. It channels green magic. Increase in potency with purity. (+250% spell cost, spellpower bonus scales with purity)",
+			super("AncientOath", "AncientOath", "AncientOath", "an AncientOath", "bonk", 180, 86400,
+					"A massive staff made from a bough of the goddess Marae tree. It channels green magic. Increase in potency with purity. (+500% spell cost, spellpower bonus scales with purity, increase life healed from spells and damage by 25%)",
 					WT_STAFF, WSZ_MASSIVE);
-			withBuff('spellpower', +1.5);
+			withBuff('spellpower', +2.5);
 			withTags(W_MGWRATH, I_LEGENDARY, W_PURE_TYPE);
 			withEffect(IELib.AttackBonus_Cor,1/10);
 			withEffect(IELib.ScaleAttack_Str,60);
@@ -34,8 +34,8 @@ import classes.TimeAwareInterface;
 		}
 
 		public function calcWizardsMult():Number {
-			var multadd:Number = 1.5;
-            if (game && game.player) multadd += (100 - game.player.cor) * 0.01;
+			var multadd:Number = 2.5;
+            if (game && game.player) multadd += (100 - game.player.cor) * 0.025;
 			return multadd;
 		}
 

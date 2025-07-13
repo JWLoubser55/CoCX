@@ -45,6 +45,7 @@ public class RegenerateSpell extends AbstractBlackSpell {
 		if (player.isRace(Races.ALICORN)) hpChange2 *= 4;
 		if (player.armor == armors.NURSECL) hpChange2 *= 1.2;
 		if (player.weapon == weapons.U_STAFF) hpChange2 *= 1.5;
+		if (player.weapon == weapons.ANCIENTO) hpChange2 *= 1.25;
 		if (player.hasPerk(PerkLib.CloseToDeath) && player.HP < (player.maxHP() * 0.25)) {
 			if (player.hasPerk(PerkLib.CheatDeath) && player.HP < (player.maxHP() * 0.1)) hpChange2 *= 2.5;
 			else hpChange2 *= 1.5;

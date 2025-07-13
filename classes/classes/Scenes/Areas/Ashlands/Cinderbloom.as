@@ -77,9 +77,7 @@ public class Cinderbloom extends Alraune
 			}
 			this.imageName = "cinderbloom alraune";
 			this.gems = rand(25) + 15;
-			this.removePerk(PerkLib.FireVulnerability);
-			this.createPerk(PerkLib.IceVulnerability, 0, 0, 0, 0);
-			this.createPerk(PerkLib.EnemyPlantType, 0, 0, 0, 0);
+			this.createPerk(PerkLib.EnemyPlantType, 1, 0, 0, 0);
 			checkMonster();
 		}
 		
