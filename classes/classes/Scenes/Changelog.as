@@ -344,7 +344,7 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Liadri): Qulipoth - obtainable by giving Gnarled Staff to Corrupted Celess / Tyrantia to corrupt. Cost 86,400 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 600% and green final spellpower is increased 2x. Increase Tease damage from spells by 50%. Increase the duration of Death Blossom by 2 rounds.\n");
 			outputText("-New melee weapon (by Liadri): Ancient Oath - obtainable by giving Gnarled Staff to Pure Celess to corrupt. Cost 86,400 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 500%, green final spellpower increase by 2x, increase life healed from spells and damage by 25%.\n");
 			outputText("-Plant type enemies gained additional weakness: ice damage (taking extra damage that is equal to 50% of bonus damage they receive from fire attacks). Player with Vegetal Affinity perk also taking now extra ice damage as plant type enemies.\n");
-			outputText("-\n");
+			outputText("-Matango sprite implementation. (pt1) (Lord Shadeogorath)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
