@@ -341,8 +341,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 misc lvl-up perk: Persistent Spell. Req. Intelligence 55+, Libido 55+, Corruption 50+. Effect: Green magic spell and effect duration are 2 turns longer.\n");
 			outputText("-New usable item: Ducats. Costing 500 gems and can be dropped by Barometz enemy when using Silly Mode.\n");
 			outputText("-New melee weapon (by Liadri): Gnarled Staff - dropped by Barometz enemy. Cost 14,400 gems. Base atk is 120. It's massive sized low grade weapon belonging to staff type weapon. It increase spellpower by 150% and green final spellpower is increased 2x.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New melee weapon (by Liadri): Qulipoth - obtainable by giving Gnarled Staff to Corrupted Celess / Tyrantia to corrupt. Cost 21,600 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 250% and green final spellpower is increased 2x.\n");
+			outputText("-New melee weapon (by Liadri): Ancient Oath - obtainable by giving Gnarled Staff to Pure Celess to corrupt. Cost 21,600 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 250% and green final spellpower is increased 2x.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -421,7 +421,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier   lvl-up perk: . Req. . Effect: .\n");
 			outputText("-New event perk: . Gained by . Effects: \n");
 			outputText("-New range weapon (by Liadri):  - obtainable by giving  to Pure Celess to purify. (item properties desc).\n");
-			outputText("-New range weapon (by Liadri):  - obtainable by giving  to Corrupted Celess to corrupt. (item properties desc).\n");
+			outputText("-New range weapon (by Liadri):  - obtainable by giving  to Corrupted Celess / Tyrantia to corrupt. (item properties desc).\n");
 			outputText("-New tier 12 misc lvl-up perk: Chimerical Body: ... Stage. Req. Chimerical Body: Epic Stage perk and xx+ points in Internal Chimerical Disposition score. Effect: delay by another xx points appearing effect of negative HP regeneration and +5 to max Lib/Sens (scalable), +10 to max Str/Tou/Spe/Int/Wis (scalable).\n");
 			outputText("-New tier ?? misc lvl-up perk: Creationism. Req. Perfection perk. Effect: number of possible effects of transformatives +1.\n");
 			outputText("-New tier ?? misc lvl-up perk: All-Seeing. Req. Soul Powered perk. Effect: +10% max soulforce.\n");
