@@ -20040,7 +20040,10 @@ private function touSpeStrScale(stat:int):Number {
     }
 
 	public function isOutsideDuringDaytime():Boolean {
-		return !player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) && !player.hasStatusEffect(StatusEffects.InsideSmallSpace) && !isNightTime && (!inDungeon || (inDungeon && inOutdoorDungeon));
+		return isOutside() && !isNightTime;
+	}
+	public function isOutside():Boolean {
+		return !player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) && !player.hasStatusEffect(StatusEffects.InsideSmallSpace) && (!inDungeon || (inDungeon && inOutdoorDungeon));
 	}
     public function isNearPlants():Boolean {
         return player.hasStatusEffect(StatusEffects.NearbyPlants) || explorer.areaTags.plants;

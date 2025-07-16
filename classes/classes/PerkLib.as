@@ -848,6 +848,9 @@ public class PerkLib
 		public static const PersistentSpell:PerkType = mk("Persistent Spell", "Persistent Spell",
 				"Green magic spell and effect duration are 2 turns longer.",
 				"You've chosen the 'Persistent Spell' perk. Green magic spell and effect duration are 2 turns longer.");
+		public static const NatureMage:PerkType = mk("Nature Mage", "Nature Mage",
+				"When outdoor increase spellcasting potency by 25%.",
+				"You've chosen the 'Nature Mage' perk. When outdoor increase spellcasting potency by 25%.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -859,9 +862,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8245,7 +8245,8 @@ public class PerkLib
 					.requireSpe(40);
 			HighlyVenomousDiet.requirePerk(VenomousDiet);
 			AxillaryVenomGlands.requirePerk(VenomousAdiposeTissue);
-			PersistentSpell.requireLevel(12)
+			NatureMage.requireLevel(12)
+					.requirePerk(Mage)
 					.requireInt(55)
 					.requireLib(55)
 					.requireCor(50);
@@ -8451,8 +8452,8 @@ public class PerkLib
 					.requireSpe(50);
 			IronStomachSu.requireLevel(24)
                     .requirePerk(IronStomachEx);
-			VerdantLeech.requireLevel(24)
-					.requirePerk(PersistentSpell)
+			PersistentSpell.requireLevel(24)
+					.requirePerk(NatureMage)
 					.requireInt(100)
 					.requireLib(100)
 					.requireCor(50);
@@ -8568,8 +8569,8 @@ public class PerkLib
                     .requirePerk(IntermediateAllRounderEducation);
             IntermediateAllRounderTraining.requireLevel(36)
                     .requirePerk(BasicAllRounderTraining);
-			ArcaneVenom.requireLevel(36)
-					.requirePerk(VerdantLeech)
+			VerdantLeech.requireLevel(36)
+					.requirePerk(PersistentSpell)
 					.requireInt(140)
 					.requireLib(140)
 					.requireCor(50);
@@ -8650,8 +8651,13 @@ public class PerkLib
                     .requirePerks(GrandMasterGolemMaker, AdvancedGolemancyTheory);
 			LimitBreakerHeart1stStage.requireLevel(48)
 					.requirePerk(LimitBreakerBody1stStage);
+			ArcaneVenom.requireLevel(48)
+					.requirePerk(VerdantLeech)
+					.requireInt(180)
+					.requireLib(180)
+					.requireCor(50);
 			Shillelagh.requireLevel(48)
-					.requirePerk(ArcaneVenom)
+					.requirePerk(NatureMage)
 					.requireInt(180)
 					.requireLib(180)
 					.requireCor(50);
@@ -8716,7 +8722,7 @@ public class PerkLib
 			LimitBreakerPsyche1stStage.requireLevel(60)
 					.requirePerk(LimitBreakerFlesh1stStage);
 			NaturalOath.requireLevel(60)
-					.requirePerk(Shillelagh)
+					.requirePerk(ArcaneVenom)
 					.requireInt(220)
 					.requireLib(220)
 					.requireCor(50);

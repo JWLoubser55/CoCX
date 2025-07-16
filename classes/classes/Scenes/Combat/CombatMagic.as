@@ -356,6 +356,7 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.RumblingQuake)) mod += .15;
 		if (player.hasPerk(PerkLib.CorrosiveMeltdown)) mod += .15;
 		if (player.hasPerk(PerkLib.WarMageApprentice)) mod += .15;
+		if (player.hasPerk(PerkLib.NatureMage) && combat.isOutside()) mod += .15;
 		if (player.hasPerk(PerkLib.Archmage)) mod += .2;
 		if (player.hasPerk(PerkLib.TraditionalMageI)) mod += .2;
 		if (player.hasPerk(PerkLib.TraditionalMageII)) mod += .2;
