@@ -203,7 +203,7 @@ public class PerkMenu extends BaseContent {
 		if (player.hasPerk(PerkLib.SuddenRun) || player.hasPerk(PerkLib.EarthAndSkyEx)) {
 			outputText("\n\nYou can choose to start galloping or not at the beginning of each combat.\n");
 			outputText("\nStart: <b>" + (flags[kFLAGS.AUTO_GALLOP] == 0 ? "Standing still" : "Galloping") + "</b>");
-			if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN) {
+			if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BAROMETZ) {
 				if (autoFlyingFlag == 0) addButton(9, "Gallop", curry(toggleFlagMisc, kFLAGS.AUTO_GALLOP));
 			}
 			else {

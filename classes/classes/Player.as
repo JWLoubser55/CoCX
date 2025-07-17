@@ -1693,7 +1693,7 @@ use namespace CoC;
 					else attack += (((str + spe) - 100) * 0.2);
 				}
 			}//30-70-110
-			if (hasPerk(PerkLib.HiddenDualMomentum) && (weapon.isDualLarge() || weaponOff.isDualLarge()) && str >= 150 && spe >= 100) {
+			if (hasPerk(PerkLib.HiddenDualMomentum) && (weapon.isDualLarge() || weaponOff.isDualLarge() || hasAetherTwinsTier2()) && str >= 150 && spe >= 100) {
 				if (offhand && weaponOff.isMassive()) attack += (((str + spe) - 200) * 0.2);
 				else attack += (((str + spe) - 200) * 0.2);
 			}
@@ -8431,4 +8431,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}
