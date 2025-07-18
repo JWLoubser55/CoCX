@@ -1659,28 +1659,14 @@ use namespace CoC;
 			if (offhand) attack += weaponOff.attack;
 			else attack += weapon.attack;
 			if (weapon.type == ItemConstants.WT_STAFF && hasPerk(PerkLib.Shillelagh)) attack += 30;
-			var swordsmanBonus:Number = 1.25;
+			var swordsmanBonus:Number = 0;
 			if (hasPerk(PerkLib.WeaponMastery) && str >= 100) {
-				if (hasPerk(PerkLib.MassiveSynergyEx) && (weapon.isMassive() || weaponOff.isMassive())) {
-					if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 2.25;
-					else swordsmanBonus += 0.75;
-				}
-				else {
-					if (hasPerk(PerkLib.WeaponGrandMastery) && str >= 140) swordsmanBonus += 0.75;
-					else swordsmanBonus += 0.25;
-				}
-			}
-			if (hasPerk(PerkLib.JobSwordsman) && (weapon.isSingleLarge() || weaponOff.isSingleLarge() || hasAetherTwinsTier2())) {
-				if (offhand && weaponOff.isSingleLarge()) attack *= swordsmanBonus;
-				else attack *= swordsmanBonus;
-			}
-			if (hasPerk(PerkLib.WeaponGrandMastery) && (weapon.isDualLarge() || weaponOff.isDualLarge()) && str >= 140) {
-				if (offhand && weaponOff.isDualLarge()) attack *= 2;
-				else attack *= 2;
-			}
-			if (hasPerk(PerkLib.GigantGripEx) && (weapon.isMassive() || weaponOff.isMassive())) {
-				if (hasPerk(PerkLib.MassiveSynergyEx)) swordsmanBonus *= 2;
-				if (offhand && weaponOff.isMassive()) attack *= swordsmanBonus;
+				if (weapon.isSingleLarge() || weaponOff.isSingleLarge() || hasAetherTwinsTier2()) swordsmanBonus += 0.5;
+				if (hasPerk(PerkLib.WeaponGrandMastery) && (weapon.isLarge() || weapon.isDualLarge() || weaponOff.isLarge() || weaponOff.isDualLarge() || hasAetherTwinsTier2()) && str >= 140) swordsmanBonus += 0.5;
+				if (hasPerk(PerkLib.GigantGripEx) && hasPerk(PerkLib.MassiveSynergyEx) && (weapon.isMassive() || weapon.isDualMassive() || weaponOff.isMassive() || weaponOff.isDualMassive())) swordsmanBonus *= 2;
+				swordsmanBonus += 1;
+				if (offhand && (weaponOff.isSingleLarge() || weaponOff.isLarge() || weaponOff.isDualLarge() || (hasPerk(PerkLib.GigantGripEx) && (weaponOff.isMassive() || weaponOff.isDualMassive())))) attack *= swordsmanBonus;
+				else if (hasPerk(PerkLib.GigantGripEx) && (weapon.isMassive() || weapon.isDualMassive())) attack *= swordsmanBonus;
 				else attack *= swordsmanBonus;
 			}
 			if (hasPerk(PerkLib.HiddenMomentum) && (weapon.isSingleLarge() || weaponOff.isSingleLarge() || hasAetherTwinsTier2() || (hasPerk(PerkLib.GigantGripEx) && weapon.isSingleMassive()) || (hasPerk(PerkLib.GigantGripEx) && weaponOff.isSingleMassive())) && str >= 75 && spe >= 50) {
@@ -8431,4 +8417,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}

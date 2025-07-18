@@ -5856,8 +5856,8 @@ public class Combat extends BaseContent {
                 }
             }
         }
-        // This should be the end ideally probably
-        enemyAI();
+        // This should be the end ideally probably (unless offhand attack follow up)
+        if (player.weaponOff.isNothing) enemyAI();
         //Determine if dodged!
         //BLOCKED ATTACK:
     }

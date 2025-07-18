@@ -269,8 +269,8 @@ public function aethertwinsFollowers():void {
 	outputText("You walk over to the Aether Twins' resting place.  Seeing you approach, the sentient weapon"+(AetherTwinsCount > 1 ? "s turn the golem they":" turns the golem it")+" used as a temporal host in your direction.\n\n");
 	outputText("\"<i>Hey there, [name]! Need anything while we're safe at camp?</i>\"\n\n");
 	menu();
-	//if (AetherTwinsCount > 0) addButton(0, "Appearance", aethertwinsFollowersAppearance).hint("Examine Aether Twins appearance.");
-	//else addButtonDisabled(0, "Appearance", "You can't examine them if none of them are currently using golem as temporal host.");
+	if (flags[kFLAGS.AETHER_DEXTER_TWIN_AT_CAMP] == 1 || flags[kFLAGS.AETHER_SINISTER_TWIN_AT_CAMP] == 1) addButton(0, "Appearance", aethertwinsFollowersAppearance).hint("Examine Aether Twins appearance.");
+	else addButtonDisabled(0, "Appearance", "You can't examine them if none of them are currently using golem as temporal host.");
 	addButton(1, "Talk", aethertwinsFollowersTalk).hint("Discuss with the Aether Twins.");
 	if (AetherTwinsFoodMenu) addButton(2, "Feed", aethertwinsFollowersFeed).hint("Give Aether Twins some equipment or materials to eat.");
 	else addButtonDisabled(2, "???", "Maybe you should talk with them to unlock this option?");
@@ -292,24 +292,36 @@ public function aethertwinsFollowers():void {
 
 private function aethertwinsFollowersAppearance():void {
 	clearOutput();
-	outputText("The Aether Twin"+(AetherTwinsCount > 1 ? "s are":" is")+" using a golem around six feet tall without any sexual characteristics, its stone body covered in cracks.");
-	if (flags[kFLAGS.AETHER_DEXTER_TWIN_AT_CAMP] >= 1 || flags[kFLAGS.AETHER_SINISTER_TWIN_AT_CAMP] >= 1) {
-		outputText("On its "+(flags[kFLAGS.AETHER_DEXTER_TWIN_AT_CAMP] >= 1 ? "right":"left")+" arm is a gauntlet covering the hand and reaching "+(AetherTwinsTalkMenu > 0 ? "up":"near")+" to the elbow. Further up the arm and on the "+(flags[kFLAGS.AETHER_DEXTER_TWIN_AT_CAMP] >= 1 ? "right":"left")+" side of the ");
-		if (AetherTwinsFoodMenu1) outputText("golem's body");
-		else outputText("chest area");
-		if (AetherTwinsFoodMenu2) outputText(" is covered with a thin film made of");
-		else outputText(" cracks are filled with");
-		outputText(" goo-like substance. It emits a faint " + (flags[kFLAGS.AETHER_DEXTER_TWIN_AT_CAMP] >= 1 ? "redd":"blue") + "ish glow.");
+	/*if () {
+		outputText(".");
 	}
-	else {
-		outputText("On both arms are gauntlets covering the hands and reaching "+(AetherTwinsTalkMenu > 0 ? "up":"near")+" to the elbow. Further up the arms and on the ");
-		if (AetherTwinsFoodMenu1) outputText("golem's body");
-		else outputText("chest area");
-		if (AetherTwinsFoodMenu2) outputText(" is covered with a thin film made of");
-		else outputText(" cracks are filled with");
-		outputText(" goo-like substance. They emit a faint reddish glow on the right side and bluish glow on the left side.");
-	}
-	//outputText(".");
+	else {*/
+	outputText("The Aether Twin"+(flags[kFLAGS.AETHER_DEXTER_TWIN_AT_CAMP] == 1 && flags[kFLAGS.AETHER_SINISTER_TWIN_AT_CAMP] == 1 ? "s are":" is")+" using a golem around six feet tall without any sexual characteristics, its stone body covered in cracks.\n\n");
+		if (flags[kFLAGS.AETHER_DEXTER_TWIN_AT_CAMP] == 1 && flags[kFLAGS.AETHER_SINISTER_TWIN_AT_CAMP] == 1) {
+			outputText("On both arms are gauntlets covering the hands and reaching "+(AetherTwinsTalkMenu > 0 ? "up":"near")+" to the elbow. Further up the arms and on the ");
+			if (AetherTwinsFoodMenu1) outputText("golem's body");
+			else outputText("chest area");
+			if (AetherTwinsFoodMenu2) outputText(" is covered with a thin film made of");
+			else outputText(" cracks are filled with");
+			outputText(" goo-like substance. They emit a faint reddish glow on the right side and bluish glow on the left side.");
+		}
+		else if (flags[kFLAGS.AETHER_DEXTER_TWIN_AT_CAMP] == 1 && flags[kFLAGS.AETHER_SINISTER_TWIN_AT_CAMP] != 1) {
+			outputText("On its right arm is a gauntlet covering the hand and reaching "+(AetherTwinsTalkMenu > 0 ? "up":"near")+" to the elbow. Further up the arm and on the right side of the ");
+			if (AetherTwinsFoodMenu1) outputText("golem's body");
+			else outputText("chest area");
+			if (AetherTwinsFoodMenu2) outputText(" is covered with a thin film made of");
+			else outputText(" cracks are filled with");
+			outputText(" goo-like substance. It emits a faint reddish glow.");
+		}
+		else {
+			outputText("On its left arm is a gauntlet covering the hand and reaching "+(AetherTwinsTalkMenu > 0 ? "up":"near")+" to the elbow. Further up the arm and on the left side of the ");
+			if (AetherTwinsFoodMenu1) outputText("golem's body");
+			else outputText("chest area");
+			if (AetherTwinsFoodMenu2) outputText(" is covered with a thin film made of");
+			else outputText(" cracks are filled with");
+			outputText(" goo-like substance. It emits a faint blueish glow.");
+		}
+	//}
 	doNext(aethertwinsFollowers);
 }
 public function aethertwinsFollowersTalk():void {
@@ -405,193 +417,268 @@ public function aethertwinsFollowersFeed():void {
 	if (AetherTwinsFoodMenuWardensBlade) outputText("\n-Warden's Blade");
 	if (AetherTwinsFoodMenuKatana) outputText("\n-Katana");
 	menu();
-	var btn:int = 0;
+	addButton(0, "Materials", aethertwinsFollowersFeedMaterials);
+	addButton(2, "Equipments", aethertwinsFollowersFeedEquipments);
+	addButton(4, "Back", aethertwinsFollowers);
+}
+public function aethertwinsFollowersFeedMaterials():void {
+	menu();
 	if (player.hasItem(useables.S_INGOT, 1)) {
 		if (AetherTwinsTalkMenu > 0) {
-			if (AetherTwinsFoodMenuSilver < AetherTwinsFoodMenuSilverCap) addButton(btn, useables.S_INGOT.shortName, aethertwinsFollowersFeedMaterial, useables.S_INGOT);
-			else addButtonDisabled(btn, useables.S_INGOT.shortName, "They can't eat more of this type of metal without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuSilver < AetherTwinsFoodMenuSilverCap) addButton(0, useables.S_INGOT.shortName, aethertwinsFollowersFeedMaterial, useables.S_INGOT);
+			else addButtonDisabled(0, useables.S_INGOT.shortName, "They can't eat more of this type of metal without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.S_INGOT.shortName, "They can't eat this type of metal before the first evolution.");
-		btn++;
+		else addButtonDisabled(0, useables.S_INGOT.shortName, "They can't eat this type of metal before the first evolution.");
 	}
+	else addButtonDisabled(0, useables.S_INGOT.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.G_INGOT, 1)) {
 		if (AetherTwinsTalkMenu > 0) {
-			if (AetherTwinsFoodMenuGold < AetherTwinsFoodMenuGoldCap) addButton(btn, useables.G_INGOT.shortName, aethertwinsFollowersFeedMaterial, useables.G_INGOT);
-			else addButtonDisabled(btn, useables.G_INGOT.shortName, "They can't eat more of this type of metal without undergoing next next evolution.");
+			if (AetherTwinsFoodMenuGold < AetherTwinsFoodMenuGoldCap) addButton(1, useables.G_INGOT.shortName, aethertwinsFollowersFeedMaterial, useables.G_INGOT);
+			else addButtonDisabled(1, useables.G_INGOT.shortName, "They can't eat more of this type of metal without undergoing next next evolution.");
 		}
-		else addButtonDisabled(btn, useables.G_INGOT.shortName, "They can't eat this type of metal before the first evolution.");
-		btn++;
+		else addButtonDisabled(1, useables.G_INGOT.shortName, "They can't eat this type of metal before the first evolution.");
 	}
+	else addButtonDisabled(1, useables.G_INGOT.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.TIN_ORE, 1) || SceneLib.crafting.hasMaterial(useables.TIN_ORE) > 0) {
 		if (AetherTwinsTalkMenu > 0) {
-			if (AetherTwinsFoodMenuTin < AetherTwinsFoodMenuTinCap) addButton(btn, useables.TIN_ORE.shortName, aethertwinsFollowersFeedMaterial, useables.TIN_ORE);
-			else addButtonDisabled(btn, useables.TIN_ORE.shortName, "They can't eat more of this type of metal without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuTin < AetherTwinsFoodMenuTinCap) addButton(2, useables.TIN_ORE.shortName, aethertwinsFollowersFeedMaterial, useables.TIN_ORE);
+			else addButtonDisabled(2, useables.TIN_ORE.shortName, "They can't eat more of this type of metal without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.TIN_ORE.shortName, "They can't eat this type of metal before the first evolution.");
-		btn++;
+		else addButtonDisabled(2, useables.TIN_ORE.shortName, "They can't eat this type of metal before the first evolution.");
 	}
+	else addButtonDisabled(2, useables.TIN_ORE.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.COP_ORE, 1) || SceneLib.crafting.hasMaterial(useables.COP_ORE) > 0) {
 		if (AetherTwinsTalkMenu > 0) {
-			if (AetherTwinsFoodMenuCopper < AetherTwinsFoodMenuCopperCap) addButton(btn, useables.COP_ORE.shortName, aethertwinsFollowersFeedMaterial, useables.COP_ORE);
-			else addButtonDisabled(btn, useables.COP_ORE.shortName, "They can't eat more of this type of metal without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuCopper < AetherTwinsFoodMenuCopperCap) addButton(3, useables.COP_ORE.shortName, aethertwinsFollowersFeedMaterial, useables.COP_ORE);
+			else addButtonDisabled(3, useables.COP_ORE.shortName, "They can't eat more of this type of metal without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.COP_ORE.shortName, "They can't eat this type of metal before the first evolution.");
-		btn++;
+		else addButtonDisabled(3, useables.COP_ORE.shortName, "They can't eat this type of metal before the first evolution.");
 	}
+	else addButtonDisabled(3, useables.COP_ORE.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.IRONORE, 1) || SceneLib.crafting.hasMaterial(useables.IRONORE) > 0) {
 		if (AetherTwinsTalkMenu > 0) {
-			if (AetherTwinsFoodMenuIron < AetherTwinsFoodMenuIronCap) addButton(btn, useables.IRONORE.shortName, aethertwinsFollowersFeedMaterial, useables.IRONORE);
-			else addButtonDisabled(btn, useables.IRONORE.shortName, "They can't eat more of this type of metal without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuIron < AetherTwinsFoodMenuIronCap) addButton(5, useables.IRONORE.shortName, aethertwinsFollowersFeedMaterial, useables.IRONORE);
+			else addButtonDisabled(5, useables.IRONORE.shortName, "They can't eat more of this type of metal without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.IRONORE.shortName, "They can't eat this type of metal before the first evolution.");
-		btn++;
+		else addButtonDisabled(5, useables.IRONORE.shortName, "They can't eat this type of metal before the first evolution.");
 	}
+	else addButtonDisabled(5, useables.IRONORE.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.AMETIST, 1)) {
 		if (AetherTwinsFoodMenu1) {
-			if (AetherTwinsFoodMenuAmethyst < AetherTwinsFoodMenuAmethystCap) addButton(btn, useables.AMETIST.shortName, aethertwinsFollowersFeedMaterial, useables.AMETIST);
-			else addButtonDisabled(btn, useables.AMETIST.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuAmethyst < AetherTwinsFoodMenuAmethystCap) addButton(6, useables.AMETIST.shortName, aethertwinsFollowersFeedMaterial, useables.AMETIST);
+			else addButtonDisabled(6, useables.AMETIST.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.AMETIST.shortName, "They can't eat this type of mineral before the second evolution.");
-		btn++;
+		else addButtonDisabled(6, useables.AMETIST.shortName, "They can't eat this type of mineral before the second evolution.");
 	}
+	else addButtonDisabled(6, useables.AMETIST.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.DIAMOND, 1)) {
 		if (AetherTwinsFoodMenu1) {
-			if (AetherTwinsFoodMenuDiamond < AetherTwinsFoodMenuDiamondCap) addButton(btn, useables.DIAMOND.shortName, aethertwinsFollowersFeedMaterial, useables.DIAMOND);
-			else addButtonDisabled(btn, useables.DIAMOND.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuDiamond < AetherTwinsFoodMenuDiamondCap) addButton(7, useables.DIAMOND.shortName, aethertwinsFollowersFeedMaterial, useables.DIAMOND);
+			else addButtonDisabled(7, useables.DIAMOND.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.DIAMOND.shortName, "They can't eat this type of mineral before the second evolution.");
-		btn++;
+		else addButtonDisabled(7, useables.DIAMOND.shortName, "They can't eat this type of mineral before the second evolution.");
 	}
+	else addButtonDisabled(7, useables.DIAMOND.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.WT_BRAN, 1)) {
 		if (AetherTwinsFoodMenu2) {
-			if (AetherTwinsFoodMenuWorldTreeBranch < AetherTwinsFoodMenuWorldTreeBranchCap) addButton(btn, useables.WT_BRAN.shortName, aethertwinsFollowersFeedMaterial, useables.WT_BRAN);
-			else addButtonDisabled(btn, useables.WT_BRAN.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuWorldTreeBranch < AetherTwinsFoodMenuWorldTreeBranchCap) addButton(8, useables.WT_BRAN.shortName, aethertwinsFollowersFeedMaterial, useables.WT_BRAN);
+			else addButtonDisabled(8, useables.WT_BRAN.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.WT_BRAN.shortName, "They can't eat this type of mineral before the third evolution.");
-		btn++;
+		else addButtonDisabled(8, useables.WT_BRAN.shortName, "They can't eat this type of mineral before the third evolution.");
 	}
+	else addButtonDisabled(8, useables.WT_BRAN.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.BRONZEB, 1) || SceneLib.crafting.hasMaterial(useables.BRONZEB) > 0) {
 		if (AetherTwinsFoodMenu2) {
-			if (AetherTwinsFoodMenuBronze < AetherTwinsFoodMenuBronzeCap) addButton(btn, useables.BRONZEB.shortName, aethertwinsFollowersFeedMaterial, useables.BRONZEB);
-			else addButtonDisabled(btn, useables.BRONZEB.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuBronze < AetherTwinsFoodMenuBronzeCap) addButton(10, useables.BRONZEB.shortName, aethertwinsFollowersFeedMaterial, useables.BRONZEB);
+			else addButtonDisabled(10, useables.BRONZEB.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.BRONZEB.shortName, "They can't eat this type of mineral before the third evolution.");
-		btn++;
+		else addButtonDisabled(10, useables.BRONZEB.shortName, "They can't eat this type of mineral before the third evolution.");
 	}
+	else addButtonDisabled(10, useables.BRONZEB.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.MOONSTO, 1) || SceneLib.crafting.hasMaterial(useables.MOONSTO) > 0) {
 		if (AetherTwinsFoodMenu2) {
-			if (AetherTwinsFoodMenuMoonstone < AetherTwinsFoodMenuMoonstoneCap) addButton(btn, useables.MOONSTO.shortName, aethertwinsFollowersFeedMaterial, useables.MOONSTO);
-			else addButtonDisabled(btn, useables.MOONSTO.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuMoonstone < AetherTwinsFoodMenuMoonstoneCap) addButton(11, useables.MOONSTO.shortName, aethertwinsFollowersFeedMaterial, useables.MOONSTO);
+			else addButtonDisabled(11, useables.MOONSTO.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.MOONSTO.shortName, "They can't eat this type of mineral before the third evolution.");
-		btn++;
+		else addButtonDisabled(11, useables.MOONSTO.shortName, "They can't eat this type of mineral before the third evolution.");
 	}
+	else addButtonDisabled(11, useables.MOONSTO.shortName, "You not have this material at hand.");
 	if (player.hasItem(useables.EBONING, 1) || SceneLib.crafting.hasMaterial(useables.EBONING) > 0) {
 		if (AetherTwinsFoodMenu2) {
-			if (AetherTwinsFoodMenuEbonIngot < AetherTwinsFoodMenuEbonIngotCap) addButton(btn, useables.EBONING.shortName, aethertwinsFollowersFeedMaterial, useables.EBONING);
-			else addButtonDisabled(btn, useables.EBONING.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
+			if (AetherTwinsFoodMenuEbonIngot < AetherTwinsFoodMenuEbonIngotCap) addButton(12, useables.EBONING.shortName, aethertwinsFollowersFeedMaterial, useables.EBONING);
+			else addButtonDisabled(12, useables.EBONING.shortName, "They can't eat more of this type of mineral without undergoing the next evolution.");
 		}
-		else addButtonDisabled(btn, useables.EBONING.shortName, "They can't eat this type of mineral before the third evolution.");
-		btn++;
+		else addButtonDisabled(12, useables.EBONING.shortName, "They can't eat this type of mineral before the third evolution.");
 	}
-	if (player.hasItem(shields.BUCKLER, 1) && !AetherTwinsFoodMenuBuckler) {
-		addButton(btn, shields.BUCKLER.shortName, aethertwinsFollowersFeedEquipment, shields.BUCKLER);
-		btn++;
+	else addButtonDisabled(12, useables.EBONING.shortName, "You not have this material at hand.");
+	addButton(14, "Back", aethertwinsFollowersFeed);
+}
+public function aethertwinsFollowersFeedEquipments(page:int = 1):void {
+	menu();
+	if (page == 1) {
+		if (player.hasItem(shields.BUCKLER, 1) && !AetherTwinsFoodMenuBuckler) addButton(0, shields.BUCKLER.shortName, aethertwinsFollowersFeedEquipment, shields.BUCKLER, 1);
+		else {
+			if (AetherTwinsFoodMenuBuckler) addButtonDisabled(0, shields.BUCKLER.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(0, shields.BUCKLER.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.S_GAUNT, 1) && !AetherTwinsFoodMenuSGauntlet) addButton(1, weapons.S_GAUNT.shortName, aethertwinsFollowersFeedEquipment, weapons.S_GAUNT, 1);
+		else {
+			if (AetherTwinsFoodMenuSGauntlet) addButtonDisabled(1, weapons.S_GAUNT.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(1, weapons.S_GAUNT.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.CLAWS, 1) && !AetherTwinsFoodMenuClaws) addButton(2, weapons.CLAWS.shortName, aethertwinsFollowersFeedEquipment, weapons.CLAWS, 1);
+		else {
+			if (AetherTwinsFoodMenuClaws) addButtonDisabled(2, weapons.CLAWS.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(2, weapons.CLAWS.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(shields.SPIL_SH, 1) && !AetherTwinsFoodMenuSpikeLShield) {
+			if (AetherTwinsTalkMenu > 0) addButton(3, shields.SPIL_SH.shortName, aethertwinsFollowersFeedEquipment, shields.SPIL_SH, 1);
+			else addButtonDisabled(3, shields.SPIL_SH.shortName, "They can't eat this shield before the first evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuSpikeLShield) addButtonDisabled(3, shields.SPIL_SH.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(3, shields.SPIL_SH.shortName, "You not have this equipment at hand.");
+		}
+		addButton(4, "Next", aethertwinsFollowersFeedEquipments, page + 1);
+		if (player.hasItem(weapons.H_GAUNT, 1) && !AetherTwinsFoodMenuHGaunt) {
+			if (AetherTwinsTalkMenu > 0) addButton(5, weapons.H_GAUNT.shortName, aethertwinsFollowersFeedEquipment, weapons.H_GAUNT, 1);
+			else addButtonDisabled(5, weapons.H_GAUNT.shortName, "They can't eat this weapon before the first evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuHGaunt) addButtonDisabled(56, weapons.H_GAUNT.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(5, weapons.H_GAUNT.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.BFGAUNT, 1) && !AetherTwinsFoodMenuBFGauntlets) {
+			if (AetherTwinsTalkMenu > 0) addButton(6, weapons.BFGAUNT.shortName, aethertwinsFollowersFeedEquipment, weapons.BFGAUNT, 1);
+			else addButtonDisabled(6, weapons.BFGAUNT.shortName, "They can't eat this weapon before the first evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuBFGauntlets) addButtonDisabled(6, weapons.BFGAUNT.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(6, weapons.BFGAUNT.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.L_CLAWS, 1) && !AetherTwinsFoodMenuLustyClaws) {
+			if (AetherTwinsTalkMenu > 0) addButton(7, weapons.L_CLAWS.shortName, aethertwinsFollowersFeedEquipment, weapons.L_CLAWS, 1);
+			else addButtonDisabled(7, weapons.L_CLAWS.shortName, "They can't eat this weapon before the first evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuLustyClaws) addButtonDisabled(7, weapons.L_CLAWS.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(7, weapons.L_CLAWS.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(shields.MABRACE, 1) && !AetherTwinsFoodMenuManaBracer) {
+			if (AetherTwinsFoodMenu1) addButton(8, shields.MABRACE.shortName, aethertwinsFollowersFeedEquipment, shields.MABRACE, 1);
+			else addButtonDisabled(8, shields.MABRACE.shortName, "They can't eat this weapon before the second evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuManaBracer) addButtonDisabled(8, shields.MABRACE.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(8, shields.MABRACE.shortName, "You not have this equipment at hand.");
+		}
+		addButton(9, "Previous", aethertwinsFollowersFeedEquipments, page + 1);
+		if (player.hasItem(weapons.DDAGGER, 1) && !AetherTwinsFoodMenuDualDaggers) {
+			if (AetherTwinsFoodMenu1) addButton(10, weapons.DDAGGER.shortName, aethertwinsFollowersFeedEquipment, weapons.DDAGGER, 1);
+			else addButtonDisabled(10, weapons.DDAGGER.shortName, "They can't eat this weapon before the second evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuDualDaggers) addButtonDisabled(10, weapons.DDAGGER.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(10, weapons.DDAGGER.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.TDAGGER, 1) && !AetherTwinsFoodMenuThrowingDagger) {
+			if (AetherTwinsFoodMenu1) addButton(11, weapons.TDAGGER.shortName, aethertwinsFollowersFeedEquipment, weapons.TDAGGER, 1);
+			else addButtonDisabled(11, weapons.TDAGGER.shortName, "They can't eat this weapon before the second evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuThrowingDagger) addButtonDisabled(11, weapons.TDAGGER.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(11, weapons.TDAGGER.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.TRIDAG, 1) && !AetherTwinsFoodMenuTriDagger) {
+			if (AetherTwinsFoodMenu1) addButton(12, weapons.TRIDAG.shortName, aethertwinsFollowersFeedEquipment, weapons.TRIDAG, 1);
+			else addButtonDisabled(12, weapons.TRIDAG.shortName, "They can't eat this weapon before the second evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuTriDagger) addButtonDisabled(12, weapons.TRIDAG.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(12, weapons.TRIDAG.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.L_DAGGR, 1) && !AetherTwinsFoodMenuLustyDagger) {
+			if (AetherTwinsFoodMenu1) addButton(13, weapons.L_DAGGR.shortName, aethertwinsFollowersFeedEquipment, weapons.L_DAGGR, 1);
+			else addButtonDisabled(13, weapons.L_DAGGR.shortName, "They can't eat this weapon before the second evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuLustyDagger) addButtonDisabled(13, weapons.L_DAGGR.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(13, weapons.L_DAGGR.shortName, "You not have this equipment at hand.");
+		}
 	}
-	if (player.hasItem(weapons.S_GAUNT, 1) && !AetherTwinsFoodMenuSGauntlet) {
-		addButton(btn, weapons.S_GAUNT.shortName, aethertwinsFollowersFeedEquipment, weapons.S_GAUNT);
-		btn++;
+	if (page == 2) {
+		if (player.hasItem(weapons.WDAGGER, 1) && !AetherTwinsFoodMenuWitchDagger) {
+			if (AetherTwinsFoodMenu1) addButton(0, weapons.WDAGGER.shortName, aethertwinsFollowersFeedEquipment, weapons.WDAGGER, 2);
+			else addButtonDisabled(0, weapons.WDAGGER.shortName, "They can't eat this weapon before the second evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuWitchDagger) addButtonDisabled(0, weapons.WDAGGER.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(0, weapons.WDAGGER.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.ANGSTD1, 1) && !AetherTwinsFoodMenuAngstDagger) {
+			if (AetherTwinsFoodMenu1) addButton(1, weapons.ANGSTD1.shortName, aethertwinsFollowersFeedEquipment, weapons.ANGSTD1, 2);
+			else addButtonDisabled(1, weapons.ANGSTD1.shortName, "They can't eat this weapon before the second evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuAngstDagger) addButtonDisabled(1, weapons.ANGSTD1.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(1, weapons.ANGSTD1.shortName, "You not have this equipment at hand.");
+		}/*
+		if (player.hasItem(shields.KITE_SH, 1) && !AetherTwinsFoodMenuKiteShield) {
+			if (AetherTwinsFoodMenu2) addButton(, shields.KITE_SH.shortName, aethertwinsFollowersFeedEquipment, shields.KITE_SH, 2);
+			else addButtonDisabled(, shields.KITE_SH.shortName, "They can't eat this weapon before the third evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuKiteShield) addButtonDisabled(, shields.KITE_SH.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(, shields.KITE_SH.shortName, "You not have this equipment at hand.");
+		}*/
+		if (player.hasItem(weapons.MACE, 1) && !AetherTwinsFoodMenuMace) {
+			if (AetherTwinsFoodMenu2) addButton(3, weapons.MACE.shortName, aethertwinsFollowersFeedEquipment, weapons.MACE, 2);
+			else addButtonDisabled(3, weapons.MACE.shortName, "They can't eat this weapon before the third evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuMace) addButtonDisabled(3, weapons.MACE.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(3, weapons.MACE.shortName, "You not have this equipment at hand.");
+		}
+		addButton(4, "Next", aethertwinsFollowersFeedEquipments, page - 1);
+		if (player.hasItem(weapons.SPEAR, 1) && !AetherTwinsFoodMenuSpear) {
+			if (AetherTwinsFoodMenu2) addButton(5, weapons.SPEAR.shortName, aethertwinsFollowersFeedEquipment, weapons.SPEAR, 2);
+			else addButtonDisabled(5, weapons.SPEAR.shortName, "They can't eat this weapon before the third evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuSpear) addButtonDisabled(5, weapons.SPEAR.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(5, weapons.SPEAR.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.WHIP, 1) && !AetherTwinsFoodMenuWhip) {
+			if (AetherTwinsFoodMenu2) addButton(6, weapons.WHIP.shortName, aethertwinsFollowersFeedEquipment, weapons.WHIP, 2);
+			else addButtonDisabled(6, weapons.WHIP.shortName, "They can't eat this weapon before the third evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuWhip) addButtonDisabled(6, weapons.WHIP.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(6, weapons.WHIP.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.WDBLADE, 1) && !AetherTwinsFoodMenuWardensBlade) {
+			if (AetherTwinsFoodMenu2) addButton(7, weapons.WDBLADE.shortName, aethertwinsFollowersFeedEquipment, weapons.WDBLADE, 2);
+			else addButtonDisabled(7, weapons.WDBLADE.shortName, "They can't eat this weapon before the third evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuWardensBlade) addButtonDisabled(7, weapons.WDBLADE.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(7, weapons.WDBLADE.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.KATANA, 1) && !AetherTwinsFoodMenuKatana) {
+			if (AetherTwinsFoodMenu3) addButton(8, weapons.KATANA.shortName, aethertwinsFollowersFeedEquipment, weapons.KATANA, 2);
+			else addButtonDisabled(8, weapons.KATANA.shortName, "They can't eat this weapon before the fourth evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuKatana) addButtonDisabled(8, weapons.KATANA.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(8, weapons.KATANA.shortName, "You not have this equipment at hand.");
+		}
+		addButton(9, "Previous", aethertwinsFollowersFeedEquipments, page - 1);
+		//10
+		//11
+		//12
+		//13
 	}
-	if (player.hasItem(weapons.CLAWS, 1) && !AetherTwinsFoodMenuClaws) {
-		addButton(btn, weapons.CLAWS.shortName, aethertwinsFollowersFeedEquipment, weapons.CLAWS);
-		btn++;
-	}
-	if (player.hasItem(shields.SPIL_SH, 1) && !AetherTwinsFoodMenuSpikeLShield) {
-		if (AetherTwinsTalkMenu > 0) addButton(btn, shields.SPIL_SH.shortName, aethertwinsFollowersFeedEquipment, shields.SPIL_SH);
-		else addButtonDisabled(btn, shields.SPIL_SH.shortName, "They can't eat this shield before the first evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.H_GAUNT, 1) && !AetherTwinsFoodMenuHGaunt) {
-		if (AetherTwinsTalkMenu > 0) addButton(btn, weapons.H_GAUNT.shortName, aethertwinsFollowersFeedEquipment, weapons.H_GAUNT);
-		else addButtonDisabled(btn, weapons.H_GAUNT.shortName, "They can't eat this weapon before the first evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.BFGAUNT, 1) && !AetherTwinsFoodMenuBFGauntlets) {
-		if (AetherTwinsTalkMenu > 0) addButton(btn, weapons.BFGAUNT.shortName, aethertwinsFollowersFeedEquipment, weapons.BFGAUNT);
-		else addButtonDisabled(btn, weapons.BFGAUNT.shortName, "They can't eat this weapon before the first evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.L_CLAWS, 1) && !AetherTwinsFoodMenuLustyClaws) {
-		if (AetherTwinsTalkMenu > 0) addButton(btn, weapons.L_CLAWS.shortName, aethertwinsFollowersFeedEquipment, weapons.L_CLAWS);
-		else addButtonDisabled(btn, weapons.L_CLAWS.shortName, "They can't eat this weapon before the first evolution.");
-		btn++;
-	}
-	if (player.hasItem(shields.MABRACE, 1) && !AetherTwinsFoodMenuManaBracer) {
-		if (AetherTwinsFoodMenu1) addButton(btn, shields.MABRACE.shortName, aethertwinsFollowersFeedEquipment, shields.MABRACE);
-		else addButtonDisabled(btn, shields.MABRACE.shortName, "They can't eat this weapon before the second evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.DDAGGER, 1) && !AetherTwinsFoodMenuDualDaggers) {
-		if (AetherTwinsFoodMenu1) addButton(btn, weapons.DDAGGER.shortName, aethertwinsFollowersFeedEquipment, weapons.DDAGGER);
-		else addButtonDisabled(btn, weapons.DDAGGER.shortName, "They can't eat this weapon before the second evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.TDAGGER, 1) && !AetherTwinsFoodMenuThrowingDagger) {
-		if (AetherTwinsFoodMenu1) addButton(btn, weapons.TDAGGER.shortName, aethertwinsFollowersFeedEquipment, weapons.TDAGGER);
-		else addButtonDisabled(btn, weapons.TDAGGER.shortName, "They can't eat this weapon before the second evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.TRIDAG, 1) && !AetherTwinsFoodMenuTriDagger) {
-		if (AetherTwinsFoodMenu1) addButton(btn, weapons.TRIDAG.shortName, aethertwinsFollowersFeedEquipment, weapons.TRIDAG);
-		else addButtonDisabled(btn, weapons.TRIDAG.shortName, "They can't eat this weapon before the second evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.L_DAGGR, 1) && !AetherTwinsFoodMenuLustyDagger) {
-		if (AetherTwinsFoodMenu1) addButton(btn, weapons.L_DAGGR.shortName, aethertwinsFollowersFeedEquipment, weapons.L_DAGGR);
-		else addButtonDisabled(btn, weapons.L_DAGGR.shortName, "They can't eat this weapon before the second evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.WDAGGER, 1) && !AetherTwinsFoodMenuWitchDagger) {
-		if (AetherTwinsFoodMenu1) addButton(btn, weapons.WDAGGER.shortName, aethertwinsFollowersFeedEquipment, weapons.WDAGGER);
-		else addButtonDisabled(btn, weapons.WDAGGER.shortName, "They can't eat this weapon before the second evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.ANGSTD1, 1) && !AetherTwinsFoodMenuAngstDagger) {
-		if (AetherTwinsFoodMenu1) addButton(btn, weapons.ANGSTD1.shortName, aethertwinsFollowersFeedEquipment, weapons.ANGSTD1);
-		else addButtonDisabled(btn, weapons.ANGSTD1.shortName, "They can't eat this weapon before the second evolution.");
-		btn++;
-	}/*
-	if (player.hasItem(shields.KITE_SH, 1) && !AetherTwinsFoodMenuKiteShield) {
-		if (AetherTwinsFoodMenu2) addButton(btn, shields.KITE_SH.shortName, aethertwinsFollowersFeedEquipment, shields.KITE_SH);
-		else addButtonDisabled(btn, shields.KITE_SH.shortName, "They can't eat this weapon before the third evolution.");
-		btn++;
-	}*/
-	if (player.hasItem(weapons.MACE, 1) && !AetherTwinsFoodMenuMace) {
-		if (AetherTwinsFoodMenu2) addButton(btn, weapons.MACE.shortName, aethertwinsFollowersFeedEquipment, weapons.MACE);
-		else addButtonDisabled(btn, weapons.MACE.shortName, "They can't eat this weapon before the third evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.SPEAR, 1) && !AetherTwinsFoodMenuSpear) {
-		if (AetherTwinsFoodMenu2) addButton(btn, weapons.SPEAR.shortName, aethertwinsFollowersFeedEquipment, weapons.SPEAR);
-		else addButtonDisabled(btn, weapons.SPEAR.shortName, "They can't eat this weapon before the third evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.WHIP, 1) && !AetherTwinsFoodMenuWhip) {
-		if (AetherTwinsFoodMenu2) addButton(btn, weapons.WHIP.shortName, aethertwinsFollowersFeedEquipment, weapons.WHIP);
-		else addButtonDisabled(btn, weapons.WHIP.shortName, "They can't eat this weapon before the third evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.WDBLADE, 1) && !AetherTwinsFoodMenuWardensBlade) {
-		if (AetherTwinsFoodMenu2) addButton(btn, weapons.WDBLADE.shortName, aethertwinsFollowersFeedEquipment, weapons.WDBLADE);
-		else addButtonDisabled(btn, weapons.WDBLADE.shortName, "They can't eat this weapon before the third evolution.");
-		btn++;
-	}
-	if (player.hasItem(weapons.KATANA, 1) && !AetherTwinsFoodMenuKatana) {
-		if (AetherTwinsFoodMenu3) addButton(btn, weapons.KATANA.shortName, aethertwinsFollowersFeedEquipment, weapons.KATANA);
-		else addButtonDisabled(btn, weapons.KATANA.shortName, "They can't eat this weapon before the fourth evolution.");
-		btn++;
-	}
-	addButton(14, "Back", aethertwinsFollowers);
+	addButton(14, "Back", aethertwinsFollowersFeed);
 }
 public function aethertwinsFollowersFeedMaterial(itype:ItemType):void {
 	clearOutput();
@@ -615,10 +702,10 @@ public function aethertwinsFollowersFeedMaterial(itype:ItemType):void {
 	//else SceneLib.crafting.feedAetherTwinsMaterialFromOreBag(itype);
 	if (SceneLib.crafting.hasMaterial(itype) > 0) SceneLib.crafting.feedAetherTwinsMaterialFromOreBag(itype);
 	else player.destroyItems(itype, 1);
-	doNext(aethertwinsFollowersFeed);
+	doNext(aethertwinsFollowersFeedMaterials);
 	cheatTime(1/4);
 }
-public function aethertwinsFollowersFeedEquipment(itype:ItemType):void {
+public function aethertwinsFollowersFeedEquipment(itype:ItemType, page:Number):void {
 	clearOutput();
 	outputText("You deposit the item on the ground and approach the aether twins. As expected, the item begins to melt, turning into sludge as the twins zap it with some unknown magic. They grow something resembling magical teeth and start munching on the material. Before long, the item is fully assimilated into the twins, who seem to absorb some of its powers.\n\n");
 	outputText("\"<i>Thank you for the meal.</i>\" they grin.\n\n");
@@ -645,7 +732,7 @@ public function aethertwinsFollowersFeedEquipment(itype:ItemType):void {
 		case weapons.KATANA:	AetherTwinsFoodMenuKatana = true;			break;
 	}
 	player.destroyItems(itype, 1);
-	doNext(aethertwinsFollowersFeed);
+	doNext(aethertwinsFollowersFeedEquipments, page);
 	cheatTime(1/4);
 }
 

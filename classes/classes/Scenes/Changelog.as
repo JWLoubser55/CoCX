@@ -346,7 +346,7 @@ public class Changelog extends BaseContent
 			outputText("-Plant type enemies gained additional weakness: ice damage (taking extra damage that is equal to 50% of bonus damage they receive from fire attacks). Player with Vegetal Affinity perk also taking now extra ice damage as plant type enemies.\n");
 			outputText("-Matango sprite implementation. (pt1) (Lord Shadeogorath)\n");
 			outputText("-New tier 2 misc lvl-up perk: Nature Mage. Req. Mage perk, Intelligence 55+, Libido 55+, Corruption 50+. Effect: When outdoor increase spellcasting potency by 25%.\n");
-			outputText("-\n");
+			outputText("-Aether Twins feeding menu slight change with seperate submenu for mateirals and equipment. Each submenu would have greyed out buttons if PC not have specific item. Keep in mind that even having it could mean they yet not evovled enough to eat particular item and greyed out button serve more as hint what item or material to find for them.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
