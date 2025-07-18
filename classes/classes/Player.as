@@ -1282,6 +1282,9 @@ use namespace CoC;
 		public function isGauntletWeapon():Boolean {
 			return (weapon.isGauntletType()) || (hasAetherTwinsTier1() || hasAetherTwinsTier2()) || (weapon == game.weapons.CATGLOV && flags[kFLAGS.FERAL_COMBAT_MODE] != 1);
 		}
+		public function isLargeGauntletWeapon():Boolean {
+			return hasAetherTwinsTier2() || weapon == game.weapons.BFGAUNT;
+		}
 		//Polearm-type
 		public function isPolearmTypeWeapon():Boolean {
 			return (weapon.isPolearmType());

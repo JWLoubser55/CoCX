@@ -373,8 +373,7 @@ public function aethertwinsFollowersTalkPast():void {
 	cheatTime(1/4);
 }
 
-public function aethertwinsFollowersFeed():void {
-	clearOutput();
+public function aethertwinsFollowersFeedSharedPart():void {
 	outputText("\"<i>You brought something tasty for "+(AetherTwinsCount > 1 ? "us":"me")+" to eat?</i>\" "+(AetherTwinsCount > 1 ? "They":"She")+" ask"+(AetherTwinsCount > 1 ? "s":"")+".");
 	outputText("\n\n-------");
 	if (AetherTwinsTalkMenu > 0) {
@@ -416,12 +415,18 @@ public function aethertwinsFollowersFeed():void {
 	if (AetherTwinsFoodMenuWhip) outputText("\n-Whip");
 	if (AetherTwinsFoodMenuWardensBlade) outputText("\n-Warden's Blade");
 	if (AetherTwinsFoodMenuKatana) outputText("\n-Katana");
+}
+public function aethertwinsFollowersFeed():void {
+	clearOutput();
+	aethertwinsFollowersFeedSharedPart();
 	menu();
 	addButton(0, "Materials", aethertwinsFollowersFeedMaterials);
 	addButton(2, "Equipments", aethertwinsFollowersFeedEquipments);
 	addButton(4, "Back", aethertwinsFollowers);
 }
 public function aethertwinsFollowersFeedMaterials():void {
+	clearOutput();
+	aethertwinsFollowersFeedSharedPart();
 	menu();
 	if (player.hasItem(useables.S_INGOT, 1)) {
 		if (AetherTwinsTalkMenu > 0) {
@@ -514,6 +519,8 @@ public function aethertwinsFollowersFeedMaterials():void {
 	addButton(14, "Back", aethertwinsFollowersFeed);
 }
 public function aethertwinsFollowersFeedEquipments(page:int = 1):void {
+	clearOutput();
+	aethertwinsFollowersFeedSharedPart();
 	menu();
 	if (page == 1) {
 		if (player.hasItem(shields.BUCKLER, 1) && !AetherTwinsFoodMenuBuckler) addButton(0, shields.BUCKLER.shortName, aethertwinsFollowersFeedEquipment, shields.BUCKLER, 1);
@@ -545,7 +552,7 @@ public function aethertwinsFollowersFeedEquipments(page:int = 1):void {
 			else addButtonDisabled(5, weapons.H_GAUNT.shortName, "They can't eat this weapon before the first evolution.");
 		}
 		else {
-			if (AetherTwinsFoodMenuHGaunt) addButtonDisabled(56, weapons.H_GAUNT.shortName, "You already feed them this equipment.");
+			if (AetherTwinsFoodMenuHGaunt) addButtonDisabled(5, weapons.H_GAUNT.shortName, "You already feed them this equipment.");
 			else addButtonDisabled(5, weapons.H_GAUNT.shortName, "You not have this equipment at hand.");
 		}
 		if (player.hasItem(weapons.BFGAUNT, 1) && !AetherTwinsFoodMenuBFGauntlets) {
@@ -664,16 +671,16 @@ public function aethertwinsFollowersFeedEquipments(page:int = 1):void {
 			if (AetherTwinsFoodMenuWardensBlade) addButtonDisabled(7, weapons.WDBLADE.shortName, "You already feed them this equipment.");
 			else addButtonDisabled(7, weapons.WDBLADE.shortName, "You not have this equipment at hand.");
 		}
+		//LRAPIER - lusty rapier
+		addButton(9, "Previous", aethertwinsFollowersFeedEquipments, page - 1);
 		if (player.hasItem(weapons.KATANA, 1) && !AetherTwinsFoodMenuKatana) {
-			if (AetherTwinsFoodMenu3) addButton(8, weapons.KATANA.shortName, aethertwinsFollowersFeedEquipment, weapons.KATANA, 2);
-			else addButtonDisabled(8, weapons.KATANA.shortName, "They can't eat this weapon before the fourth evolution.");
+			if (AetherTwinsFoodMenu3) addButton(10, weapons.KATANA.shortName, aethertwinsFollowersFeedEquipment, weapons.KATANA, 2);
+			else addButtonDisabled(10, weapons.KATANA.shortName, "They can't eat this weapon before the fourth evolution.");
 		}
 		else {
 			if (AetherTwinsFoodMenuKatana) addButtonDisabled(8, weapons.KATANA.shortName, "You already feed them this equipment.");
-			else addButtonDisabled(8, weapons.KATANA.shortName, "You not have this equipment at hand.");
+			else addButtonDisabled(10, weapons.KATANA.shortName, "You not have this equipment at hand.");
 		}
-		addButton(9, "Previous", aethertwinsFollowersFeedEquipments, page - 1);
-		//10
 		//11
 		//12
 		//13

@@ -309,8 +309,11 @@ public class SidonieFollower extends NPCAwareContent
 				if (player.hasStatusEffect(StatusEffects.ResourceNode1) && player.statusEffectv1(StatusEffects.ResourceNode1) < 4) player.addStatusValue(StatusEffects.ResourceNode1, 1, 1);
 				else player.createStatusEffect(StatusEffects.ResourceNode1, 0, 0, 0, 0);
 				flags[kFLAGS.SIDONIE_RECOLLECTION] = 46;
-				if ((CampStatsAndResources.WoodResc + 300) < SceneLib.campUpgrades.checkMaterialsCapWood()) CampStatsAndResources.WoodResc += 300;
-				else CampStatsAndResources.WoodResc = SceneLib.campUpgrades.checkMaterialsCapWood();
+				var cTT:Number = (10 + ((player.strStat.core.value + player.strStat.train.value) * 4));
+				if (player.weapon == weapons.DL_AXE_) cTT = Math.round(cTT*1.5);
+				flags[kFLAGS.ACHIEVEMENT_PROGRESS_DEFORESTER] += cTT;
+				cTT += 400 + rand(100);
+				camp.cabinProgress.incrementWoodSupply(cTT);
 				explorer.stopExploring();
 				doNext(camp.returnToCampUseFourHours);
 			}

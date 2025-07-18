@@ -1728,7 +1728,7 @@ public class Combat extends BaseContent {
 			flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] = Math.min(maxCurrentAttacksMain(), (flags[kFLAGS.MULTIATTACK_STYLE_MAIN] || 0) + 1);
             if (player.statusEffectv1(StatusEffects.CounterAction) > 0)
                 flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += player.statusEffectv1(StatusEffects.CounterAction);
-            if (player.weapon.isLarge() || player.weapon.isMassive() || player.hasAetherTwinsTier2()) {
+            if (player.weapon.isLarge() || player.weapon.isMassive() || player.isLargeGauntletWeapon()) {
                 if (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking)) {
                     if (player.hasPerk(PerkLib.FuelForTheFire)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += 1;
                     if (player.hasPerk(PerkLib.Anger) && (player.statusEffectv2(StatusEffects.Berzerking) >= 1 || player.statusEffectv2(StatusEffects.Lustzerking) >= 1)) {
@@ -2857,10 +2857,10 @@ public class Combat extends BaseContent {
 			if (player.weapon.isDual()) accmod += meleeDualAccuracyPenaltyMain();
 		}
         var weaponSize:Number = 1;
-        if (player.weapon.isSingleSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
-        if (player.weapon.isSingleMedium()) weaponSize = 1;
-        if (player.weapon.isSingleLarge()) weaponSize = 2;
-        if (player.weapon.isSingleMassive()) weaponSize = 3;
+        if (player.weapon.isSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
+        if (player.weapon.isMedium()) weaponSize = 1;
+        if (player.weapon.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
+        if (player.weapon.isMassive()) weaponSize = 3;
         if (weaponSize == 0 || player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2()) accmod += Math.round((weaponSizeSmall() - 1) / 2);
         if (weaponSize == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
         if (weaponSize == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
@@ -2931,10 +2931,10 @@ public class Combat extends BaseContent {
 			if (player.weaponOff.isDual()) accmod += meleeDualAccuracyPenaltyOff();
 		}
         var weaponSize:Number = 1;
-        if (player.weapon.isSingleSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
-        if (player.weapon.isSingleMedium()) weaponSize = 1;
-        if (player.weapon.isSingleLarge()) weaponSize = 2;
-        if (player.weapon.isSingleMassive()) weaponSize = 3;
+        if (player.weaponOff.isSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
+        if (player.weaponOff.isMedium()) weaponSize = 1;
+        if (player.weaponOff.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
+        if (player.weaponOff.isMassive()) weaponSize = 3;
         if (weaponSize == 0 || player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2()) accmod += Math.round((weaponSizeSmall() - 1) / 2);
         if (weaponSize == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
         if (weaponSize == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
@@ -6933,7 +6933,7 @@ public class Combat extends BaseContent {
             damage += scalingBonusLibido() * 0.20;
             damage = fireTypeDamageBonus(damage);
         }
-		if (player.weapon == weapons.BFGAUNT || player.hasAetherTwinsTier2()) damage *= 2;
+		if (player.isLargeGauntletWeapon()) damage *= 2;
 		if (player.weapon == weapons.FRTAXE && monster.isFlying()) damage *= 1.5;
 		if (player.weapon == weapons.VENCLAW && flags[kFLAGS.FERAL_COMBAT_MODE] == 1) damage *= 1.2;
 		if (player.weapon == weapons.ARMAGED) damage *= 1.5;
@@ -7294,7 +7294,7 @@ public class Combat extends BaseContent {
         var weaponSize:Number = 1;
         if (player.weapon.isSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
         if (player.weapon.isMedium()) weaponSize = 1;
-        if (player.weapon.isLarge()) weaponSize = 2;
+        if (player.weapon.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
         if (player.weapon.isMassive()) weaponSize = 3;
         if (weaponSize == 0) Mastery_bonus_damage += 0.01 * weaponSizeSmall();
         if (weaponSize == 1) Mastery_bonus_damage += 0.01 * weaponSizeNormal();
@@ -7355,8 +7355,8 @@ public class Combat extends BaseContent {
             if (player.weapon.isDuelingType()) critChance += 20;
             if (player.hasPerk(PerkLib.JobDervish) && (!player.weapon.isLarge() || !player.weapon.isStaffType())) critChance += 10;
             if (player.hasPerk(PerkLib.WeaponMastery) && player.weapon.isSingleLarge() && player.str >= 100) critChance += 10;
-            if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weapon.isSingleLarge() && player.str >= 140) critChance += 10;
-            if (player.hasPerk(PerkLib.GigantGripEx) && player.weapon.isMassive()) {
+            if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weapon.isSingleLarge() || player.weapon.isDualLarge()) && player.str >= 140) critChance += 10;
+            if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isMassive() || player.weapon.isDualMassive())) {
                 if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
 					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 					else critChance += 10;
@@ -7380,8 +7380,8 @@ public class Combat extends BaseContent {
             if (player.weaponOff.isDuelingType()) critChance += 20;
             if (player.hasPerk(PerkLib.JobDervish) && (!player.weaponOff.isLarge() || !player.weaponOff.isStaffType())) critChance += 10;
             if (player.hasPerk(PerkLib.WeaponMastery) && player.weaponOff.isSingleLarge() && player.str >= 100) critChance += 10;
-            if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weaponOff.isSingleLarge() && player.str >= 140) critChance += 10;
-            if (player.hasPerk(PerkLib.GigantGripEx) && player.weaponOff.isMassive()) {
+            if (player.hasPerk(PerkLib.WeaponGrandMastery) (player.weaponOff.isSingleLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance += 10;
+            if (player.hasPerk(PerkLib.GigantGripEx) && (player.weaponOff.isMassive() || player.weaponOff.isDualMassive())) {
                 if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
 					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 					else critChance += 10;
@@ -7536,7 +7536,7 @@ public class Combat extends BaseContent {
         if (player.isFeralCombat()) feralCombatXP(meleeMasteryEXPgains);
         else if (flags[kFLAGS.FERAL_COMBAT_MODE] != 1 && player.weaponName == "fists") unarmedCombatXP(meleeMasteryEXPgains);
         else if ((player.weapon.isSmall() || player.hasAetherTwinsTierWeapon() || player.hasAetherTwinsTierWeapon2()) && !player.isFeralCombat() && (flags[kFLAGS.FERAL_COMBAT_MODE] != 1 && player.weaponName != "fists")) weaponSmallMastery(meleeMasteryEXPgains);
-        else if (player.weapon.isLarge()) weaponLargeMastery(meleeMasteryEXPgains);
+        else if (player.weapon.isLarge() || player.isLargeGauntletWeapon()) weaponLargeMastery(meleeMasteryEXPgains);
         else if (player.weapon.isMassive()) weaponMassiveMastery(meleeMasteryEXPgains);
         else weaponNormalMastery(meleeMasteryEXPgains);
     }
