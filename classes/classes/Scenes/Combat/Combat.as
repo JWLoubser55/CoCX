@@ -14442,6 +14442,11 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(PerkLib.AbsorbNutrient) > 6) maxPercentRegen += 1;
 			else maxPercentRegen += 0.5;
 		}
+        if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) maxPercentRegen += 1 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyVoLWarriorStage)) maxPercentRegen += 1 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyVoLElderStage)) maxPercentRegen += 1 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyVoLOverlordStage)) maxPercentRegen += 1 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyVoLTyrantStage)) maxPercentRegen += 1 * player.humanBodyCultivators();
         if (player.hasPerk(PerkLib.FleshBodyApprenticeStage)) maxPercentRegen += 0.5 * player.humanBodyCultivators();
         if (player.hasPerk(PerkLib.FleshBodyWarriorStage)) maxPercentRegen += 0.5 * player.humanBodyCultivators();
         if (player.hasPerk(PerkLib.FleshBodyElderStage)) maxPercentRegen += 0.5 * player.humanBodyCultivators();

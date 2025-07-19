@@ -48,7 +48,7 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 		public static var AetherTwinsFoodMenuBuckler:Boolean;
 		public static var AetherTwinsFoodMenuSpikeLShield:Boolean;
 		public static var AetherTwinsFoodMenuManaBracer:Boolean;
-		//public static var AetherTwinsFoodMenuKiteShield:Boolean;
+		public static var AetherTwinsFoodMenuDragonShellShield:Boolean;
 		public static var AetherTwinsFoodMenuSGauntlet:Boolean;
 		public static var AetherTwinsFoodMenuClaws:Boolean;
 		public static var AetherTwinsFoodMenuHGaunt:Boolean;
@@ -64,6 +64,8 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 		public static var AetherTwinsFoodMenuSpear:Boolean;
 		public static var AetherTwinsFoodMenuWhip:Boolean;
 		public static var AetherTwinsFoodMenuWardensBlade:Boolean;
+		public static var AetherTwinsFoodMenuLustyRapier:Boolean;
+		public static var AetherTwinsFoodMenuSoulTrainingAxe:Boolean;
 		public static var AetherTwinsFoodMenuKatana:Boolean;
 		public static var AetherTwinsFoodMenu1:Boolean;
 		public static var AetherTwinsFoodMenu2:Boolean;
@@ -112,7 +114,7 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 			AetherTwinsFoodMenuBuckler = false;
 			AetherTwinsFoodMenuSpikeLShield = false;
 			AetherTwinsFoodMenuManaBracer = false;
-			//AetherTwinsFoodMenuKiteShield = false;
+			AetherTwinsFoodMenuDragonShellShield = false;
 			AetherTwinsFoodMenuSGauntlet = false;
 			AetherTwinsFoodMenuClaws = false;
 			AetherTwinsFoodMenuHGaunt = false;
@@ -128,6 +130,8 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 			AetherTwinsFoodMenuSpear = false;
 			AetherTwinsFoodMenuWhip = false;
 			AetherTwinsFoodMenuWardensBlade = false;
+			AetherTwinsFoodMenuLustyRapier = false;
+			AetherTwinsFoodMenuSoulTrainingAxe = false;
 			AetherTwinsFoodMenuKatana = false;
 			AetherTwinsFoodMenu1 = false;
 			AetherTwinsFoodMenu2 = false;
@@ -171,7 +175,7 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 				"AetherTwinsFoodMenuBuckler": AetherTwinsFoodMenuBuckler,
 				"AetherTwinsFoodMenuSpikeLShield": AetherTwinsFoodMenuSpikeLShield,
 				"AetherTwinsFoodMenuManaBracer": AetherTwinsFoodMenuManaBracer,
-				//"AetherTwinsFoodMenuKiteShield": AetherTwinsFoodMenuKiteShield,
+				"AetherTwinsFoodMenuDragonShellShield": AetherTwinsFoodMenuDragonShellShield,
 				"AetherTwinsFoodMenuSGauntlet": AetherTwinsFoodMenuSGauntlet,
 				"AetherTwinsFoodMenuClaws": AetherTwinsFoodMenuClaws,
 				"AetherTwinsFoodMenuHGaunt": AetherTwinsFoodMenuHGaunt,
@@ -187,6 +191,8 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 				"AetherTwinsFoodMenuSpear": AetherTwinsFoodMenuSpear,
 				"AetherTwinsFoodMenuWhip": AetherTwinsFoodMenuWhip,
 				"AetherTwinsFoodMenuWardensBlade": AetherTwinsFoodMenuWardensBlade,
+				"AetherTwinsFoodMenuLustyRapier": AetherTwinsFoodMenuLustyRapier,
+				"AetherTwinsFoodMenuSoulTrainingAxe": AetherTwinsFoodMenuSoulTrainingAxe,
 				"AetherTwinsFoodMenuKatana": AetherTwinsFoodMenuKatana,
 				"AetherTwinsFoodMenu1": AetherTwinsFoodMenu1,
 				"AetherTwinsFoodMenu2": AetherTwinsFoodMenu2,
@@ -231,7 +237,7 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 				AetherTwinsFoodMenuBuckler = o["AetherTwinsFoodMenuBuckler"];
 				AetherTwinsFoodMenuSpikeLShield = o["AetherTwinsFoodMenuSpikeLShield"];
 				AetherTwinsFoodMenuManaBracer = valueOr(o["AetherTwinsFoodMenuManaBracer"], false);
-				//AetherTwinsFoodMenuKiteShield = valueOr(o["AetherTwinsFoodMenuKiteShield"], false);
+				AetherTwinsFoodMenuDragonShellShield = valueOr(o["AetherTwinsFoodMenuDragonShellShield"], false);
 				AetherTwinsFoodMenuSGauntlet = o["AetherTwinsFoodMenuSGauntlet"];
 				AetherTwinsFoodMenuClaws = o["AetherTwinsFoodMenuClaws"];
 				AetherTwinsFoodMenuHGaunt = o["AetherTwinsFoodMenuHGaunt"];
@@ -247,6 +253,8 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 				AetherTwinsFoodMenuSpear = valueOr(o["AetherTwinsFoodMenuSpear"], false);
 				AetherTwinsFoodMenuWhip = valueOr(o["AetherTwinsFoodMenuWhip"], false);
 				AetherTwinsFoodMenuWardensBlade = valueOr(o["AetherTwinsFoodMenuWardensBlade"], false);
+				AetherTwinsFoodMenuLustyRapier = valueOr(o["AetherTwinsFoodMenuLustyRapier"], false);
+				AetherTwinsFoodMenuSoulTrainingAxe = valueOr(o["AetherTwinsFoodMenuSoulTrainingAxe"], false);
 				AetherTwinsFoodMenuKatana = valueOr(o["AetherTwinsFoodMenuKatana"], false);
 				AetherTwinsFoodMenu1 = o["AetherTwinsFoodMenu1"];
 				AetherTwinsFoodMenu2 = o["AetherTwinsFoodMenu2"];
@@ -398,7 +406,7 @@ public function aethertwinsFollowersFeedSharedPart():void {
 	if (AetherTwinsFoodMenuBuckler) outputText("\n-Buckler");
 	if (AetherTwinsFoodMenuSpikeLShield) outputText("\n-Spiked Light Shield");
 	if (AetherTwinsFoodMenuManaBracer) outputText("\n-Mana Bracer");
-	//if (AetherTwinsFoodMenuKiteShield) outputText("\n-");
+	if (AetherTwinsFoodMenuDragonShellShield) outputText("\n-Dragon-shell Shield");
 	if (AetherTwinsFoodMenuSGauntlet) outputText("\n-Spiked Gauntlet");
 	if (AetherTwinsFoodMenuClaws) outputText("\n-Claws");
 	if (AetherTwinsFoodMenuHGaunt) outputText("\n-Hooked Gauntlets");
@@ -414,6 +422,8 @@ public function aethertwinsFollowersFeedSharedPart():void {
 	if (AetherTwinsFoodMenuSpear) outputText("\n-Spear");
 	if (AetherTwinsFoodMenuWhip) outputText("\n-Whip");
 	if (AetherTwinsFoodMenuWardensBlade) outputText("\n-Warden's Blade");
+	if (AetherTwinsFoodMenuLustyRapier) outputText("\n-Lusty Rapier");
+	if (AetherTwinsFoodMenuSoulTrainingAxe) outputText("\n-Soul Training Axe");
 	if (AetherTwinsFoodMenuKatana) outputText("\n-Katana");
 }
 public function aethertwinsFollowersFeed():void {
@@ -629,15 +639,15 @@ public function aethertwinsFollowersFeedEquipments(page:int = 1):void {
 		else {
 			if (AetherTwinsFoodMenuAngstDagger) addButtonDisabled(1, weapons.ANGSTD1.shortName, "You already feed them this equipment.");
 			else addButtonDisabled(1, weapons.ANGSTD1.shortName, "You not have this equipment at hand.");
-		}/*
-		if (player.hasItem(shields.KITE_SH, 1) && !AetherTwinsFoodMenuKiteShield) {
-			if (AetherTwinsFoodMenu2) addButton(, shields.KITE_SH.shortName, aethertwinsFollowersFeedEquipment, shields.KITE_SH, 2);
-			else addButtonDisabled(, shields.KITE_SH.shortName, "They can't eat this weapon before the third evolution.");
+		}
+		if (player.hasItem(shields.DRGNSHL, 1) && !AetherTwinsFoodMenuDragonShellShield) {
+			if (AetherTwinsFoodMenu2) addButton(2, shields.DRGNSHL.shortName, aethertwinsFollowersFeedEquipment, shields.DRGNSHL, 2);
+			else addButtonDisabled(2, shields.DRGNSHL.shortName, "They can't eat this weapon before the third evolution.");
 		}
 		else {
-			if (AetherTwinsFoodMenuKiteShield) addButtonDisabled(, shields.KITE_SH.shortName, "You already feed them this equipment.");
-			else addButtonDisabled(, shields.KITE_SH.shortName, "You not have this equipment at hand.");
-		}*/
+			if (AetherTwinsFoodMenuDragonShellShield) addButtonDisabled(2, shields.DRGNSHL.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(2, shields.DRGNSHL.shortName, "You not have this equipment at hand.");
+		}
 		if (player.hasItem(weapons.MACE, 1) && !AetherTwinsFoodMenuMace) {
 			if (AetherTwinsFoodMenu2) addButton(3, weapons.MACE.shortName, aethertwinsFollowersFeedEquipment, weapons.MACE, 2);
 			else addButtonDisabled(3, weapons.MACE.shortName, "They can't eat this weapon before the third evolution.");
@@ -671,17 +681,31 @@ public function aethertwinsFollowersFeedEquipments(page:int = 1):void {
 			if (AetherTwinsFoodMenuWardensBlade) addButtonDisabled(7, weapons.WDBLADE.shortName, "You already feed them this equipment.");
 			else addButtonDisabled(7, weapons.WDBLADE.shortName, "You not have this equipment at hand.");
 		}
-		//LRAPIER - lusty rapier
-		addButton(9, "Previous", aethertwinsFollowersFeedEquipments, page - 1);
-		if (player.hasItem(weapons.KATANA, 1) && !AetherTwinsFoodMenuKatana) {
-			if (AetherTwinsFoodMenu3) addButton(10, weapons.KATANA.shortName, aethertwinsFollowersFeedEquipment, weapons.KATANA, 2);
-			else addButtonDisabled(10, weapons.KATANA.shortName, "They can't eat this weapon before the fourth evolution.");
+		if (player.hasItem(weapons.LRAPIER, 1) && !AetherTwinsFoodMenuLustyRapier) {
+			if (AetherTwinsFoodMenu2) addButton(8, weapons.LRAPIER.shortName, aethertwinsFollowersFeedEquipment, weapons.LRAPIER, 2);
+			else addButtonDisabled(8, weapons.LRAPIER.shortName, "They can't eat this weapon before the third evolution.");
 		}
 		else {
-			if (AetherTwinsFoodMenuKatana) addButtonDisabled(8, weapons.KATANA.shortName, "You already feed them this equipment.");
-			else addButtonDisabled(10, weapons.KATANA.shortName, "You not have this equipment at hand.");
+			if (AetherTwinsFoodMenuLustyRapier) addButtonDisabled(8, weapons.LRAPIER.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(8, weapons.LRAPIER.shortName, "You not have this equipment at hand.");
 		}
-		//11
+		addButton(9, "Previous", aethertwinsFollowersFeedEquipments, page - 1);
+		if (player.hasItem(weapons.TRASAXE, 1) && !AetherTwinsFoodMenuSoulTrainingAxe) {
+			if (AetherTwinsFoodMenu3) addButton(10, weapons.TRASAXE.shortName, aethertwinsFollowersFeedEquipment, weapons.TRASAXE, 2);
+			else addButtonDisabled(10, weapons.TRASAXE.shortName, "They can't eat this weapon before the fourth evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuKatana) addButtonDisabled(10, weapons.TRASAXE.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(10, weapons.TRASAXE.shortName, "You not have this equipment at hand.");
+		}
+		if (player.hasItem(weapons.KATANA, 1) && !AetherTwinsFoodMenuKatana) {
+			if (AetherTwinsFoodMenu3) addButton(11, weapons.KATANA.shortName, aethertwinsFollowersFeedEquipment, weapons.KATANA, 2);
+			else addButtonDisabled(11, weapons.KATANA.shortName, "They can't eat this weapon before the fourth evolution.");
+		}
+		else {
+			if (AetherTwinsFoodMenuKatana) addButtonDisabled(11, weapons.KATANA.shortName, "You already feed them this equipment.");
+			else addButtonDisabled(11, weapons.KATANA.shortName, "You not have this equipment at hand.");
+		}
 		//12
 		//13
 	}
@@ -717,26 +741,28 @@ public function aethertwinsFollowersFeedEquipment(itype:ItemType, page:Number):v
 	outputText("You deposit the item on the ground and approach the aether twins. As expected, the item begins to melt, turning into sludge as the twins zap it with some unknown magic. They grow something resembling magical teeth and start munching on the material. Before long, the item is fully assimilated into the twins, who seem to absorb some of its powers.\n\n");
 	outputText("\"<i>Thank you for the meal.</i>\" they grin.\n\n");
 	switch (itype) {
-		case shields.BUCKLER:	AetherTwinsFoodMenuBuckler = true;			break;
-		case shields.SPIL_SH:	AetherTwinsFoodMenuSpikeLShield = true;		break;
-		case shields.MABRACE:	AetherTwinsFoodMenuManaBracer = true;		break;
-		//case shields.KITE_SH:	AetherTwinsFoodMenuKiteShield = true;		break;
-		case weapons.S_GAUNT:	AetherTwinsFoodMenuSGauntlet = true;		break;
-		case weapons.CLAWS:		AetherTwinsFoodMenuClaws = true;			break;
-		case weapons.H_GAUNT:	AetherTwinsFoodMenuHGaunt = true;			break;
-		case weapons.BFGAUNT:	AetherTwinsFoodMenuBFGauntlets = true;		break;
-		case weapons.L_CLAWS:	AetherTwinsFoodMenuLustyClaws = true;		break;
-		case weapons.DDAGGER:	AetherTwinsFoodMenuDualDaggers = true;		break;
-		case weapons.TDAGGER:	AetherTwinsFoodMenuThrowingDagger = true;	break;
-		case weapons.TRIDAG:	AetherTwinsFoodMenuTriDagger = true;		break;
-		case weapons.L_DAGGR:	AetherTwinsFoodMenuLustyDagger = true;		break;
-		case weapons.WDAGGER:	AetherTwinsFoodMenuWitchDagger = true;		break;
-		case weapons.ANGSTD1:	AetherTwinsFoodMenuAngstDagger = true;		break;
-		case weapons.MACE:		AetherTwinsFoodMenuMace = true;				break;
-		case weapons.SPEAR:		AetherTwinsFoodMenuSpear = true;			break;
-		case weapons.WHIP:		AetherTwinsFoodMenuWhip = true;				break;
-		case weapons.WDBLADE:	AetherTwinsFoodMenuWardensBlade = true;		break;
-		case weapons.KATANA:	AetherTwinsFoodMenuKatana = true;			break;
+		case shields.BUCKLER:	AetherTwinsFoodMenuBuckler = true;				break;
+		case shields.SPIL_SH:	AetherTwinsFoodMenuSpikeLShield = true;			break;
+		case shields.MABRACE:	AetherTwinsFoodMenuManaBracer = true;			break;
+		case shields.DRGNSHL:	AetherTwinsFoodMenuDragonShellShield = true;	break;
+		case weapons.S_GAUNT:	AetherTwinsFoodMenuSGauntlet = true;			break;
+		case weapons.CLAWS:		AetherTwinsFoodMenuClaws = true;				break;
+		case weapons.H_GAUNT:	AetherTwinsFoodMenuHGaunt = true;				break;
+		case weapons.BFGAUNT:	AetherTwinsFoodMenuBFGauntlets = true;			break;
+		case weapons.L_CLAWS:	AetherTwinsFoodMenuLustyClaws = true;			break;
+		case weapons.DDAGGER:	AetherTwinsFoodMenuDualDaggers = true;			break;
+		case weapons.TDAGGER:	AetherTwinsFoodMenuThrowingDagger = true;		break;
+		case weapons.TRIDAG:	AetherTwinsFoodMenuTriDagger = true;			break;
+		case weapons.L_DAGGR:	AetherTwinsFoodMenuLustyDagger = true;			break;
+		case weapons.WDAGGER:	AetherTwinsFoodMenuWitchDagger = true;			break;
+		case weapons.ANGSTD1:	AetherTwinsFoodMenuAngstDagger = true;			break;
+		case weapons.MACE:		AetherTwinsFoodMenuMace = true;					break;
+		case weapons.SPEAR:		AetherTwinsFoodMenuSpear = true;				break;
+		case weapons.WHIP:		AetherTwinsFoodMenuWhip = true;					break;
+		case weapons.WDBLADE:	AetherTwinsFoodMenuWardensBlade = true;			break;
+		case weapons.WDBLADE:	AetherTwinsFoodMenuLustyRapier = true;			break;
+		case weapons.WDBLADE:	AetherTwinsFoodMenuSoulTrainingAxe = true;		break;
+		case weapons.KATANA:	AetherTwinsFoodMenuKatana = true;				break;
 	}
 	player.destroyItems(itype, 1);
 	doNext(aethertwinsFollowersFeedEquipments, page);

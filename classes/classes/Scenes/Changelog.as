@@ -346,12 +346,12 @@ public class Changelog extends BaseContent
 			outputText("-Plant type enemies gained additional weakness: ice damage (taking extra damage that is equal to 50% of bonus damage they receive from fire attacks). Player with Vegetal Affinity perk also taking now extra ice damage as plant type enemies.\n");
 			outputText("-Matango sprite implementation. (pt1) (Lord Shadeogorath)\n");
 			outputText("-New tier 2 misc lvl-up perk: Nature Mage. Req. Mage perk, Intelligence 55+, Libido 55+, Corruption 50+. Effect: When outdoor increase spellcasting potency by 25%.\n");
-			outputText("-Aether Twins feeding menu slight change with seperate submenu for mateirals and equipment. Each submenu would have greyed out buttons if PC not have specific item. Keep in mind that even having it could mean they yet not evovled enough to eat particular item and greyed out button serve more as hint what item or material to find for them.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Aether Twins feeding menu slight change with seperate submenu for materials and equipment. Each submenu would have greyed out buttons if PC not have specific item. Keep in mind that even having it could mean they yet not evovled enough to eat particular item and greyed out button serve more as hint what item or material to find for them.\n");
+			outputText("-New event perk: Flesh Body (VoL): Apprentice Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +1000 max HP, +1% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Apprentice, Soul Personage, Soul Warrior); +1% HP regen\n");
+			outputText("-New event perk: Flesh Body (VoL): Warrior Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +2000 max HP, +2% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +1% HP regen\n");
+			outputText("-New event perk: Flesh Body (VoL): Elder Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +3000 max HP, +3% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +1% HP regen\n");
+			outputText("-New event perk: Flesh Body (VoL): Overlord Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +4000 max HP, +4% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +1% HP regen\n");
+			outputText("-Prestige Job: Soul Art Master req. for Flesh Body: Apprentice Stage was changed to Flesh Body (VoL): Apprentice Stage.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
