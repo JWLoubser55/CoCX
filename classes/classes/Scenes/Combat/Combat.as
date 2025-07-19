@@ -7380,7 +7380,7 @@ public class Combat extends BaseContent {
             if (player.weaponOff.isDuelingType()) critChance += 20;
             if (player.hasPerk(PerkLib.JobDervish) && (!player.weaponOff.isLarge() || !player.weaponOff.isStaffType())) critChance += 10;
             if (player.hasPerk(PerkLib.WeaponMastery) && player.weaponOff.isSingleLarge() && player.str >= 100) critChance += 10;
-            if (player.hasPerk(PerkLib.WeaponGrandMastery) (player.weaponOff.isSingleLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance += 10;
+            if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weaponOff.isSingleLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance += 10;
             if (player.hasPerk(PerkLib.GigantGripEx) && (player.weaponOff.isMassive() || player.weaponOff.isDualMassive())) {
                 if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
 					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
