@@ -30,6 +30,8 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			desc += "\n\nType: Weapon (";
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers") desc += "Dagger";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") desc += "Small Shield";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords") desc += "Sword";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield") desc += "Medium Shield";
 			else desc += "Gauntlet";
 			desc += ")";
 			//Block Rating

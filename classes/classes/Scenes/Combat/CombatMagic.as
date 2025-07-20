@@ -229,7 +229,7 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.necklaceEffectId == NecklaceLib.MODIFIER_SPELL_POWER) mod += (player.necklaceEffectMagnitude / 100);
 		if (player.armor == armors.DWARMOR) mod += 0.3;
 		if (player.necklace == necklaces.SILCNEC && player.hasPerk(PerkLib.Soulless)) mod += 0.5;
-		if (player.hasAetherTwinsTierWeapon()) mod += 0.2;
+		if (player.hasAetherTwinsTierWeapon() || player.hasAetherTwinsTierWeapon3()) mod += 0.2;
 		if (player.hasAetherTwinsTierShield()) mod += 0.5;
 		if (player.perkv1(IMutationsLib.FiendishMetabolismIM) >= 3 && player.hasPerk(PerkLib.DemonEnergyThirst) && player.perkv1(PerkLib.DemonEnergyThirst) > 0) {
 			var mTPCur:Number = player.perkv1(PerkLib.DemonEnergyThirst);

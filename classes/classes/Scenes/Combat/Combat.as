@@ -2862,7 +2862,7 @@ public class Combat extends BaseContent {
         if (player.weapon.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
         if (player.weapon.isMassive()) weaponSize = 3;
         if (weaponSize == 0 || player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2()) accmod += Math.round((weaponSizeSmall() - 1) / 2);
-        if (weaponSize == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
+        if (weaponSize == 1 || player.hasAetherTwinsTierMS1() || player.hasAetherTwinsTierMS2()) accmod += Math.round((weaponSizeNormal() - 1) / 2);
         if (weaponSize == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
         if (weaponSize == 3) accmod += Math.round((weaponSizeMassive() - 1) / 2);
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) accmod = Math.round(accmod * 0.5);
@@ -2936,7 +2936,7 @@ public class Combat extends BaseContent {
         if (player.weaponOff.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
         if (player.weaponOff.isMassive()) weaponSize = 3;
         if (weaponSize == 0 || player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2()) accmod += Math.round((weaponSizeSmall() - 1) / 2);
-        if (weaponSize == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
+        if (weaponSize == 1 || player.hasAetherTwinsTierMS1() || player.hasAetherTwinsTierMS2()) accmod += Math.round((weaponSizeNormal() - 1) / 2);
         if (weaponSize == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
         if (weaponSize == 3) accmod += Math.round((weaponSizeMassive() - 1) / 2);
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) accmod = Math.round(accmod * 0.5);
@@ -7530,7 +7530,7 @@ public class Combat extends BaseContent {
 		if (player.weapon.isWhipType()) whipXP(meleeMasteryEXPgains, false);
 		if (player.weapon.isExoticType() || player.weapon.isRibbonType() || player.weapon.isScytheType()) exoticXP(meleeMasteryEXPgains, false);
 		if (player.weapon.isDualWieldedSmall() || player.hasAetherTwinsTierS2()) dualWieldSmallXP(meleeMasteryEXPgains);
-        if (player.weapon.isDualWieldedMedium()) dualWieldNormalXP(meleeMasteryEXPgains);
+        if (player.weapon.isDualWieldedMedium() || player.hasAetherTwinsTierMS2()) dualWieldNormalXP(meleeMasteryEXPgains);
         if (player.weapon.isDualWieldedLarge()) dualWieldLargeXP(meleeMasteryEXPgains);
         if (player.weapon.isDualWieldedMassive()) dualWieldMassiveXP(meleeMasteryEXPgains);
         if (player.isFeralCombat()) feralCombatXP(meleeMasteryEXPgains);
@@ -9812,7 +9812,7 @@ public class Combat extends BaseContent {
         //10% Bleed chance
         if (player.hasAetherTwinsTier1()) bleedChance += 10;
         //25% Bleed chance
-        if (player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2()) bleedChance += 25;
+        if (player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2() || player.hasAetherTwinsTierMS1() || player.hasAetherTwinsTierMS2()) bleedChance += 25;
 		//45% Bleed chance
         if (player.hasAetherTwinsTier2()) bleedChance += 45;
         if (monster.hasPerk(PerkLib.EnemyConstructType) || monster.hasPerk(PerkLib.EnemyPlantType) || monster.hasPerk(PerkLib.EnemyGooType) || monster.hasPerk(PerkLib.EnemyUndeadType)) bleedChance = 0;

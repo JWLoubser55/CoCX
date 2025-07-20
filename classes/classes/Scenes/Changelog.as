@@ -352,7 +352,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Flesh Body (VoL): Elder Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +3000 max HP, +3% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +1% HP regen\n");
 			outputText("-New event perk: Flesh Body (VoL): Overlord Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +4000 max HP, +4% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +1% HP regen\n");
 			outputText("-Prestige Job: Soul Art Master req. for Flesh Body: Apprentice Stage was changed to Flesh Body (VoL): Apprentice Stage.\n");
-			outputText("-\n");
+			outputText("-Aether Twins can now after 3rd evolution eat new materials: World Tree Branch & Bronze bar. Also they can eat 1 new shield and 6 new medium sized melee weapons. After eating those and then all materials the can it would enable them evolving to medium sized weapon 1st form. They could also assume one additional form in case PC learned Dual Wield. Both new forms are added to their morph menu.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
