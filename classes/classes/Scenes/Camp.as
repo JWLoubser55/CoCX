@@ -4238,6 +4238,12 @@ public class Camp extends NPCAwareContent{
 	}
 
 	public function doSleep(clrScreen:Boolean = true):void {
+		//Autosave stuff
+		if (player.slotName != "VOID" && player.autoSave && mainView.getButtonText(0) != "Game Over") {
+			trace("Autosaving to slot: " + player.slotName);
+			CoC.instance.saves.saveGameToSharedObject(player.slotName);
+		}
+
 		IsSleeping = true;
 		campQ = true;
 		if (CoC.instance.timeQ == 0) {
@@ -4451,6 +4457,8 @@ public class Camp extends NPCAwareContent{
 			clearOutput();
 			if (timeQ != 1) outputText("You lie down to resume sleeping for the remaining " + num2Text(timeQ) + " hours.\n");
 			else outputText("You lie down to resume sleeping for the remaining hour.\n");
+
+			sleepRecovery(true);
 		}
 		player.updateRacialAndPerkBuffs();
 		goNext(true);
