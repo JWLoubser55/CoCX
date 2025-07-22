@@ -1772,24 +1772,24 @@
 		<cell rect="tail_bg/fox8" name="tail_bg/fox8_taur" dx="60" dy="47"/>
 		<cell rect="1,701,173,156" name="tail_bg/fox9" dx="21" dy="37"/>
 		<cell rect="tail_bg/fox9" name="tail_bg/fox9_taur" dx="60" dy="47"/>
-		<cell rect="1,1486,173,156" name="tail_bg_overlay/firefox1" dx="4" dy="31"/>
-		<cell rect="tail_bg_overlay/firefox1" name="tail_bg_overlay/firefox1_taur" dx="60" dy="47"/>
-		<cell rect="523,1329,173,156" name="tail_bg_overlay/firefox2" dx="16" dy="36"/>
-		<cell rect="tail_bg_overlay/firefox2" name="tail_bg_overlay/firefox2_taur" dx="63" dy="43"/>
-		<cell rect="349,1329,173,156" name="tail_bg_overlay/firefox3" dx="17" dy="35"/>
-		<cell rect="tail_bg_overlay/firefox3" name="tail_bg_overlay/firefox3_taur" dx="67" dy="47"/>
-		<cell rect="175,1329,173,156" name="tail_bg_overlay/firefox4" dx="20" dy="36"/>
-		<cell rect="tail_bg_overlay/firefox4" name="tail_bg_overlay/firefox4_taur" dx="65" dy="47"/>
-		<cell rect="1,1329,173,156" name="tail_bg_overlay/firefox5" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox5" name="tail_bg_overlay/firefox5_taur" dx="61" dy="47"/>
-		<cell rect="523,1172,173,156" name="tail_bg_overlay/firefox6" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox6" name="tail_bg_overlay/firefox6_taur" dx="60" dy="47"/>
-		<cell rect="349,1172,173,156" name="tail_bg_overlay/firefox7" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox7" name="tail_bg_overlay/firefox7_taur" dx="60" dy="47"/>
-		<cell rect="175,1172,173,156" name="tail_bg_overlay/firefox8" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox8" name="tail_bg_overlay/firefox8_taur" dx="60" dy="47"/>
-		<cell rect="1,1172,173,156" name="tail_bg_overlay/firefox9" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox9" name="tail_bg_overlay/firefox9_taur" dx="60" dy="47"/>
+		<cell rect="1,1486,173,156" name="tail_bg/firefox1" dx="4" dy="31"/>
+		<cell rect="tail_bg/firefox1" name="tail_bg/firefox1_taur" dx="60" dy="47"/>
+		<cell rect="523,1329,173,156" name="tail_bg/firefox2" dx="16" dy="36"/>
+		<cell rect="tail_bg/firefox2" name="tail_bg/firefox2_taur" dx="63" dy="43"/>
+		<cell rect="349,1329,173,156" name="tail_bg/firefox3" dx="17" dy="35"/>
+		<cell rect="tail_bg/firefox3" name="tail_bg/firefox3_taur" dx="67" dy="47"/>
+		<cell rect="175,1329,173,156" name="tail_bg/firefox4" dx="20" dy="36"/>
+		<cell rect="tail_bg/firefox4" name="tail_bg/firefox4_taur" dx="65" dy="47"/>
+		<cell rect="1,1329,173,156" name="tail_bg/firefox5" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox5" name="tail_bg/firefox5_taur" dx="61" dy="47"/>
+		<cell rect="523,1172,173,156" name="tail_bg/firefox6" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox6" name="tail_bg/firefox6_taur" dx="60" dy="47"/>
+		<cell rect="349,1172,173,156" name="tail_bg/firefox7" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox7" name="tail_bg/firefox7_taur" dx="60" dy="47"/>
+		<cell rect="175,1172,173,156" name="tail_bg/firefox8" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox8" name="tail_bg/firefox8_taur" dx="60" dy="47"/>
+		<cell rect="1,1172,173,156" name="tail_bg/firefox9" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox9" name="tail_bg/firefox9_taur" dx="60" dy="47"/>
 	</spritemap>
 	<spritemap file="weapons.png">
 		<cell rect="1094,652,89,105" name="weapon/staffGeneric" dx="38" dy="55"/>
@@ -2681,7 +2681,7 @@
 			</switch>
 			
 			<set var="fireBuffOhType"></set>
-			<switch value="MeleeWeaponOffSprite">
+			<switch value="meleeWeaponOffSprite">
 				<!-- Values from CharViewContext.meleeWeaponOffSprite -->
 
 				<!-- Wand OH -->
@@ -5255,7 +5255,7 @@
 				<show part="wings_bg/jabberwockRight"/>
 			</case>
 			<case values="Wings.VAMPIRE">
-				<show part="overclothe/vampire"/>
+				<show part="wings_overclothe/vampire"/>
 				<show part="wings_bg/vampire_bg"/>
 			</case>
 			<default>
@@ -5325,8 +5325,7 @@
 				<show part="tail_bg/fox$tailCount$taur"/>
 			</case>
 			<case values="Tail.KITSHOO">
-				<show part="tail_bg/fox$tailCount$taur"/>
-				<show part="tail_bg_overlay/firefox$tailCount$taur"/>
+				<show part="tail_bg/firefox$tailCount$taur"/>
 			</case>
 			<case values="Tail.KANGAROO"><!--TODO -->
 				<show part="tail/cat$taur"/>
