@@ -572,7 +572,7 @@ public class MagicSpecials extends BaseCombatContent {
 					}
 				}
 			}
-			else {
+			if (player.isRaceCached(Races.DRACULA) || player.isRaceCached(Races.VAMPIRE)) {
 				//Eclipsing shadow
 				bd = buttons.add("Eclipsing shadow", EclipsingShadow, "Plunge the area in complete darkness denying vision to your opponent. \n");
 				if (player.hasStatusEffect(StatusEffects.CooldownEclipsingShadow)) {

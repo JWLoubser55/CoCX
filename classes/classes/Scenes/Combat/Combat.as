@@ -1721,7 +1721,7 @@ public class Combat extends BaseContent {
 			flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] = 1;
         }
         var dualWeapon:Boolean = false;
-        if (player.weapon.isDualWielded() || player.hasAetherTwinsTierS2()) {
+        if (player.weapon.isDualWielded() || player.hasAetherTwinsTierS2() || player.hasAetherTwinsTierMS2()) {
             dualWeapon = true;
         }
         if (flags[kFLAGS.MULTIATTACK_STYLE_MAIN] >= 0) {
