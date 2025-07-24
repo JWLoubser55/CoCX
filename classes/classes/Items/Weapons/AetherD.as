@@ -33,6 +33,7 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			desc += "\n\nType: Weapon (";
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") desc += "Dagger";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield") desc += "Sword";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") desc += "Axe";
 			else desc += "Gauntlet";
 			desc += ")";
 			//Attack
@@ -45,6 +46,7 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 		override public function get verb():String {
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") return "stab";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield") return "slash";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") return "cleave";
 			else return "punch";
 		}
 		
@@ -57,6 +59,7 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 		override public function get type():String {
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") return WT_DAGGER;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield") return WT_SWORD;
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") return WT_AXE;
 			else return WT_GAUNTLET;
 		}
 		

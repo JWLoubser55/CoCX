@@ -31,6 +31,8 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers") desc += "Dagger";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") desc += "Small Shield";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords") desc += "Sword";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes") desc += "Axe";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers") desc += "Rapier";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield"
 			|| AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") desc += "Medium Shield";
 			else desc += "Gauntlet";

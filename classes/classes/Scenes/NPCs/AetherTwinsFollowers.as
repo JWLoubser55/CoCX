@@ -816,12 +816,21 @@ public function aethertwinsFollowersMorphMain():void {
 			if (player.hasPerk(PerkLib.DualWield)) addButton(5, "HtDualSwords", aethertwinsFollowersMorphMainHumanTierDualMediumSwordWeapons);
 			else addButtonDisabled(5, "HtDualSwords", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 		}
+		if (AetherTwinsShape == "Human-tier Axe and Shield") addButtonDisabled(6, "HtAxe&Shield", "They are currently in Human-tier Axe and Shield form.");
+		else addButton(6, "HtAxe&Shield", aethertwinsFollowersMorphMainHumanTierMediumAxeWeapons);
+		if (AetherTwinsShape == "Human-tier Dual Axe") addButtonDisabled(7, "HtDualAxes", "They are currently in Human-tier Dual Axes form.");
+		else {
+			if (player.hasPerk(PerkLib.DualWield)) addButton(7, "HtDualAxes", aethertwinsFollowersMorphMainHumanTierDualMediumAxeWeapons);
+			else addButtonDisabled(7, "HtAxeSwords", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+		}
 	}
 	else {
 		addButtonDisabled(2, "???", "After the twins' third evolution.");
 		addButtonDisabled(3, "???", "After the twins' third evolution.");
 		addButtonDisabled(4, "???", "After the twins' fourth evolution.");
 		addButtonDisabled(5, "???", "After the twins' fourth evolution.");
+		addButtonDisabled(6, "???", "After the twins' fourth evolution.");
+		addButtonDisabled(7, "???", "After the twins' fourth evolution.");
 	}
 	addButton(14, "Back", aethertwinsFollowers);
 }
@@ -874,6 +883,24 @@ public function aethertwinsFollowersMorphMainHumanTierDualMediumSwordWeapons():v
 	clearOutput();
 	outputText("\"<i>So, you liked our Human-tier dual swords form? It may not be as much fun as other forms, but we can assume this one,</i>\" they reply. After a moment, both of their shapes become less defined and more fluid. Slowly, they reform into a pair of medium-sized swords.\n\n");
 	AetherTwinsShape = "Human-tier Dual Swords";
+	if (player.statusEffectv1(StatusEffects.AetherTwins1) != 45) player.changeStatusValue(StatusEffects.AetherTwins1, 1, 45);
+	if (player.statusEffectv2(StatusEffects.AetherTwins1) != 24) player.changeStatusValue(StatusEffects.AetherTwins1, 2, 24);
+	doNext(aethertwinsFollowersMorphMain);
+	cheatTime(1/6);
+}
+public function aethertwinsFollowersMorphMainHumanTierMediumAxeWeapons():void {
+	clearOutput();
+	outputText("\"<i>So, you liked our Human-tier axe and shield form? It may not be as much fun as other forms, but we can assume this one,</i>\" they reply. After a moment, both of their shapes become less defined and more fluid. Slowly, they reform into a medium-sized axe and medium shield.\n\n");
+	AetherTwinsShape = "Human-tier Axe and Shield";
+	if (player.statusEffectv1(StatusEffects.AetherTwins1) != 45) player.changeStatusValue(StatusEffects.AetherTwins1, 1, 45);
+	if (player.statusEffectv2(StatusEffects.AetherTwins1) != 34) player.changeStatusValue(StatusEffects.AetherTwins1, 2, 34);
+	doNext(aethertwinsFollowersMorphMain);
+	cheatTime(1/6);
+}
+public function aethertwinsFollowersMorphMainHumanTierDualMediumAxeWeapons():void {
+	clearOutput();
+	outputText("\"<i>So, you liked our Human-tier dual axes form? It may not be as much fun as other forms, but we can assume this one,</i>\" they reply. After a moment, both of their shapes become less defined and more fluid. Slowly, they reform into a pair of medium-sized axes.\n\n");
+	AetherTwinsShape = "Human-tier Dual Axes";
 	if (player.statusEffectv1(StatusEffects.AetherTwins1) != 45) player.changeStatusValue(StatusEffects.AetherTwins1, 1, 45);
 	if (player.statusEffectv2(StatusEffects.AetherTwins1) != 24) player.changeStatusValue(StatusEffects.AetherTwins1, 2, 24);
 	doNext(aethertwinsFollowersMorphMain);
