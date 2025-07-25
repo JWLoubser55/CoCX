@@ -2857,12 +2857,12 @@ public class Combat extends BaseContent {
 			if (player.weapon.isDual()) accmod += meleeDualAccuracyPenaltyMain();
 		}
         var weaponSize:Number = 1;
-        if (player.weapon.isSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
-        if (player.weapon.isMedium()) weaponSize = 1;
+        if ((player.weapon.isSmall() && !player.isFistOrFistWeapon()) || player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2()) weaponSize = 0;
+        if (player.weapon.isMedium() || player.hasAetherTwinsTierMedium1() || player.hasAetherTwinsTierMedium2()) weaponSize = 1;
         if (player.weapon.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
         if (player.weapon.isMassive()) weaponSize = 3;
-        if (weaponSize == 0 || player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2()) accmod += Math.round((weaponSizeSmall() - 1) / 2);
-        if (weaponSize == 1 || player.hasAetherTwinsTierMS1() || player.hasAetherTwinsTierMS2()) accmod += Math.round((weaponSizeNormal() - 1) / 2);
+        if (weaponSize == 0) accmod += Math.round((weaponSizeSmall() - 1) / 2);
+        if (weaponSize == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
         if (weaponSize == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
         if (weaponSize == 3) accmod += Math.round((weaponSizeMassive() - 1) / 2);
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) accmod = Math.round(accmod * 0.5);
@@ -2935,8 +2935,8 @@ public class Combat extends BaseContent {
         if (player.weaponOff.isMedium()) weaponSize = 1;
         if (player.weaponOff.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
         if (player.weaponOff.isMassive()) weaponSize = 3;
-        if (weaponSize == 0 || player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2()) accmod += Math.round((weaponSizeSmall() - 1) / 2);
-        if (weaponSize == 1 || player.hasAetherTwinsTierMS1() || player.hasAetherTwinsTierMS2()) accmod += Math.round((weaponSizeNormal() - 1) / 2);
+        if (weaponSize == 0) accmod += Math.round((weaponSizeSmall() - 1) / 2);
+        if (weaponSize == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
         if (weaponSize == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
         if (weaponSize == 3) accmod += Math.round((weaponSizeMassive() - 1) / 2);
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) accmod = Math.round(accmod * 0.5);
@@ -9812,7 +9812,7 @@ public class Combat extends BaseContent {
         //10% Bleed chance
         if (player.hasAetherTwinsTier1()) bleedChance += 10;
         //25% Bleed chance
-        if (player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2() || player.hasAetherTwinsTierMS1() || player.hasAetherTwinsTierMS2()) bleedChance += 25;
+        if (player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2() || player.hasAetherTwinsTierMedium1() || player.hasAetherTwinsTierMedium2()) bleedChance += 25;
 		//45% Bleed chance
         if (player.hasAetherTwinsTier2()) bleedChance += 45;
         if (monster.hasPerk(PerkLib.EnemyConstructType) || monster.hasPerk(PerkLib.EnemyPlantType) || monster.hasPerk(PerkLib.EnemyGooType) || monster.hasPerk(PerkLib.EnemyUndeadType)) bleedChance = 0;
