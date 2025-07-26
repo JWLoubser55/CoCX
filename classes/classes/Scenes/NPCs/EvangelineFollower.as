@@ -1747,7 +1747,7 @@ private function IMutationsSelector(page:int = 0):void {
 			var mutagenBypass:Boolean = (GoM == 2 && ((!mutations.available(target))? player.hasItem(useables.E_ICHOR, 2) : true) && (!player.blockingBodyTransformations()) && (target.hasMutation(mutations)? true:player.maxCurrentMutationsInSlot(mutations.slot)));
 			if ((flags[kFLAGS.EVA_MUTATIONS_BYPASS] || mutations.available(target) || mutagenBypass) && mutations.maxLvl > target.perkv1(mutations)) {	//last bit retains the blocking max mutation level.
 				//trace("Requirements met, adding in.");
-				bdFunc = curry(mutations.acquireMutation, player, curry(costTaker, mutagenBypass))
+				bdFunc = curry(mutations.acquireMutation, player, curry(costTaker, mutagenBypass, mutations))
 				bdDesc = mutations.desc();
 			} else if(mutations.maxLvl == target.perkv1(mutations)) {
 				//trace("MaxTier acquired");
@@ -1773,14 +1773,21 @@ private function IMutationsSelector(page:int = 0):void {
 		submenu(bd,curry(IMutationsSelector, menuButton), 0, false)
 	}
 
-	function costTaker(mutagenBypassDoubledCost:Boolean):void{
+	function costTaker(mutagenBypassDoubledCost:Boolean, mutations:IMutationPerkType):void{
 		if (GoM == 1) player.gems -= 500
 		else player.destroyItems(useables.E_ICHOR, (mutagenBypassDoubledCost)? 2 : 1);
 		menu();
 		clearOutput();
-		outputText("Evangeline gets to brewing the mutagen. An half hour later, the injection is ready. She has you laid down into a makeshift seat.\n\n");
-		outputText("\"<i>This might sting a little… bear it with me [name].</i>\"\n\n");
-		outputText("You don't have the time to gasp before she pushes the injection in. The transformative in the wound burns at first but then spreads to your organ as it slowly changes to acquire new inhuman property. The transformation was successful.");
+
+		switch (mutations.name()) {
+			default:
+				outputText("Evangeline gets to brewing the mutagen. An half hour later, the injection is ready. She has you laid down into a makeshift seat.\n\n");
+				outputText("\"<i>This might sting a little… bear it with me [name].</i>\"\n\n");
+				outputText("You don't have the time to gasp before she pushes the injection in. The transformative in the wound burns at first but then spreads to your organ as it slowly changes to acquire new inhuman property. The transformation was successful.");
+
+				// outputText("Mutation Level?: " + player.perkv1(mutations))
+		}
+
 		advanceMinutes(15);
 		doNext(InternalMutations);
 	}
