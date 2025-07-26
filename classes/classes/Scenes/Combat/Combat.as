@@ -2856,15 +2856,10 @@ public class Combat extends BaseContent {
 			if (player.weapon.isDualWielded()) accmod += meleeDualWieldAccuracyPenalty();
 			if (player.weapon.isDual()) accmod += meleeDualAccuracyPenaltyMain();
 		}
-        var weaponSize:Number = 1;
-        if ((player.weapon.isSmall() && !player.isFistOrFistWeapon()) || player.hasAetherTwinsTierS1() || player.hasAetherTwinsTierS2()) weaponSize = 0;
-        if (player.weapon.isMedium() || player.hasAetherTwinsTierMedium1() || player.hasAetherTwinsTierMedium2()) weaponSize = 1;
-        if (player.weapon.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
-        if (player.weapon.isMassive()) weaponSize = 3;
-        if (weaponSize == 0) accmod += Math.round((weaponSizeSmall() - 1) / 2);
-        if (weaponSize == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
-        if (weaponSize == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
-        if (weaponSize == 3) accmod += Math.round((weaponSizeMassive() - 1) / 2);
+        if (player.meleeMainWeaponSize() == 0) accmod += Math.round((weaponSizeSmall() - 1) / 2);
+        if (player.meleeMainWeaponSize() == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
+        if (player.meleeMainWeaponSize() == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
+        if (player.meleeMainWeaponSize() == 3) accmod += Math.round((weaponSizeMassive() - 1) / 2);
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) accmod = Math.round(accmod * 0.5);
         return accmod;
     }
@@ -2930,15 +2925,10 @@ public class Combat extends BaseContent {
 			if (player.weapon.isDualWielded()) accmod += meleeDualWieldAccuracyPenalty();
 			if (player.weaponOff.isDual()) accmod += meleeDualAccuracyPenaltyOff();
 		}
-        var weaponSize:Number = 1;
-        if (player.weaponOff.isSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
-        if (player.weaponOff.isMedium()) weaponSize = 1;
-        if (player.weaponOff.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
-        if (player.weaponOff.isMassive()) weaponSize = 3;
-        if (weaponSize == 0) accmod += Math.round((weaponSizeSmall() - 1) / 2);
-        if (weaponSize == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
-        if (weaponSize == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
-        if (weaponSize == 3) accmod += Math.round((weaponSizeMassive() - 1) / 2);
+        if (player.meleeOffWeaponSize() == 0) accmod += Math.round((weaponSizeSmall() - 1) / 2);
+        if (player.meleeOffWeaponSize() == 1) accmod += Math.round((weaponSizeNormal() - 1) / 2);
+        if (player.meleeOffWeaponSize() == 2) accmod += Math.round((weaponSizeLarge() - 1) / 2);
+        if (player.meleeOffWeaponSize() == 3) accmod += Math.round((weaponSizeMassive() - 1) / 2);
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) accmod = Math.round(accmod * 0.5);
         return accmod;
     }
@@ -7291,15 +7281,10 @@ public class Combat extends BaseContent {
 		if (player.weapon.isDualWieldedMedium()) Mastery_bonus_damage += 0.01 * dualWNLevel();
 		if (player.weapon.isDualWieldedLarge()) Mastery_bonus_damage += 0.01 * dualWLLevel();
 		if (player.weapon.isDualWieldedMassive()) Mastery_bonus_damage += 0.01 * dualWMLevel();
-        var weaponSize:Number = 1;
-        if (player.weapon.isSmall() && !player.isFistOrFistWeapon()) weaponSize = 0;
-        if (player.weapon.isMedium()) weaponSize = 1;
-        if (player.weapon.isLarge() || player.isLargeGauntletWeapon()) weaponSize = 2;
-        if (player.weapon.isMassive()) weaponSize = 3;
-        if (weaponSize == 0) Mastery_bonus_damage += 0.01 * weaponSizeSmall();
-        if (weaponSize == 1) Mastery_bonus_damage += 0.01 * weaponSizeNormal();
-        if (weaponSize == 2) Mastery_bonus_damage += 0.01 * weaponSizeLarge();
-        if (weaponSize == 3) {
+        if (player.meleeMainWeaponSize() == 0) Mastery_bonus_damage += 0.01 * weaponSizeSmall();
+        if (player.meleeMainWeaponSize() == 1) Mastery_bonus_damage += 0.01 * weaponSizeNormal();
+        if (player.meleeMainWeaponSize() == 2) Mastery_bonus_damage += 0.01 * weaponSizeLarge();
+        if (player.meleeMainWeaponSize() == 3) {
 			if (player.hasPerk(PerkLib.MassiveSynergy)) {
 				Mastery_bonus_damage += 0.02 * weaponSizeMassive();
 				Mastery_bonus_damage += 0.01 * weaponSizeLarge();
@@ -7324,15 +7309,10 @@ public class Combat extends BaseContent {
 		if (player.weaponOff.isDualWieldedMedium()) Mastery_bonus_damage += 0.01 * dualWNLevel();
 		if (player.weaponOff.isDualWieldedLarge()) Mastery_bonus_damage += 0.01 * dualWLLevel();
 		if (player.weaponOff.isDualWieldedMassive()) Mastery_bonus_damage += 0.01 * dualWMLevel();
-        var weaponSize:Number = 1;
-        if (player.weaponOff.isSmall()) weaponSize = 0;
-        if (player.weaponOff.isMedium()) weaponSize = 1;
-        if (player.weaponOff.isLarge()) weaponSize = 2;
-        if (player.weaponOff.isMassive()) weaponSize = 3;
-        if (weaponSize == 0) Mastery_bonus_damage += 0.01 * weaponSizeSmall();
-        if (weaponSize == 1) Mastery_bonus_damage += 0.01 * weaponSizeNormal();
-        if (weaponSize == 2) Mastery_bonus_damage += 0.01 * weaponSizeLarge();
-        if (weaponSize == 3) {
+        if (player.meleeOffWeaponSize() == 0) Mastery_bonus_damage += 0.01 * weaponSizeSmall();
+        if (player.meleeOffWeaponSize() == 1) Mastery_bonus_damage += 0.01 * weaponSizeNormal();
+        if (player.meleeOffWeaponSize() == 2) Mastery_bonus_damage += 0.01 * weaponSizeLarge();
+        if (player.meleeOffWeaponSize() == 3) {
 			if (player.hasPerk(PerkLib.MassiveSynergy)) {
 				Mastery_bonus_damage += 0.02 * weaponSizeMassive();
 				Mastery_bonus_damage += 0.01 * weaponSizeLarge();
