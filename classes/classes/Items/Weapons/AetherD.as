@@ -34,6 +34,7 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") desc += "Dagger";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield") desc += "Sword";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") desc += "Axe";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") desc += "Rapier";
 			else desc += "Gauntlet";
 			desc += ")";
 			//Attack
@@ -45,7 +46,8 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 		
 		override public function get verb():String {
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") return "stab";
-			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield") return "slash";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" ||
+					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") return "slash";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") return "cleave";
 			else return "punch";
 		}
@@ -60,6 +62,7 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") return WT_DAGGER;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield") return WT_SWORD;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") return WT_AXE;
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") return WT_DUELING;
 			else return WT_GAUNTLET;
 		}
 		
@@ -92,13 +95,18 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			return WeaponLib.FISTS;
 		}
 
-		private const lustDmg1:ItemEffect = new ItemEffect(IELib.LustDamage, 10, 1/8)
-		private const lustDmg2:ItemEffect = new ItemEffect(IELib.LustDamage, 5, 1/10)
+		private const lustDmg1:ItemEffect = new ItemEffect(IELib.LustDamage, 10, 1/8);
+		private const lustDmg2:ItemEffect = new ItemEffect(IELib.LustDamage, 5, 1/10);
+		private const lustDmg3:ItemEffect = new ItemEffect(IELib.LustDamage, 15, 1/8);
 		override public function findEffect(type:ItemEffectType):ItemEffect {
 			if (type == IELib.LustDamage) {
-				return (AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets") ? lustDmg1 : lustDmg2;
+				if (AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets") return lustDmg1;
+				else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") return lustDmg2;
+				else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" ||
+						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield" ||
+						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") return lustDmg3;
 			}
-			return super.findEffect(type)
+			return super.findEffect(type);
 		}
 	}
 }
