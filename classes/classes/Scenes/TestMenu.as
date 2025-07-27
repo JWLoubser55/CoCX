@@ -20,6 +20,7 @@ import classes.Scenes.Dungeons.DesertCave.SandMother;
 import classes.Scenes.Dungeons.EbonLabyrinth.*;
 import classes.Scenes.Explore.Pierce;
 import classes.Scenes.Monsters.Malikore;
+import classes.Scenes.NPCs.AetherTwinsFollowers;
 import classes.Scenes.NPCs.Alvina;
 import classes.Scenes.NPCs.Aria;
 import classes.Scenes.NPCs.Belisa;
@@ -2807,4 +2808,4 @@ public class TestMenu extends BaseContent
 		SceneLib.lily.lilyEncounter();
 	}
 	}
-}
+}

@@ -1290,7 +1290,8 @@ use namespace CoC;
 		}
 		public function isNotHavingShieldCuzPerksNotWorkingOtherwise():Boolean
 		{
-			return shield.isNothing || (shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dagger and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Sword and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Axe and Shield");
+			return shield.isNothing || (shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dagger and Shield" &&
+			 AetherTwinsFollowers.AetherTwinsShape != "Human-tier Sword and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Axe and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Rapier and Shield");
 		}
 
 		//weaponType check. Make sure weapon has the type filled in. Currently, Type is the last parameter in Weapon().
@@ -2159,7 +2160,7 @@ use namespace CoC;
 		{
 			return shield == game.shields.BSHIELD || shield == game.shields.BUCKLER || shield == game.shields.DRGNSHL || shield == game.shields.KITE_SH || shield == game.shields.TRASBUC || shield == game.shields.SPIL_SH || shield == game.shields.SANCTYN || shield == game.shields.SANCTYL || shield == game.shields.SANCTYD
 			 || shieldPerk == "Large" || shieldPerk == "Massive" || (shield == game.shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Gauntlets" || AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield"
-			 || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield"));
+			 || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield"));
 		}
 		//Dragon Sield or Aether Twin with same effect
 		public function isFluidAbsorbingShield():Boolean

@@ -212,7 +212,7 @@ public class Changelog extends BaseContent
 			outputText("-Moved autosave timing to just before sleep (saving at passes 23:00 ended up saving at a hour after each instance, repeating saving until 30:00 will softlock you from sleeping), revert ||= change in playerevent hourly racial perk check so they all properly trigger at once rather than one by one. (NUZ/Shirane)\n");
 			outputText("-Kitsumori tail sprite rework. (Lord Shadeogorath)\n");
 			outputText("-Charge Weapon spell bonus to atk is now additionaly increased by weapon size if it's larger then small (which would have 1x multiplier) up to x4 for massive weapons.\n");
-			outputText("-\n");
+			outputText("-Attempt to restore Quad+Fuckable nipple compatibility (Look for Quad+Fuckable test in BreastsTransformations.as), Luna First Stage Pregnancy Text Fix, some mutation text prepwork, Kirin Electra scene now disabled for supercharged race, Add a check for camp trap text whiteline. (NUZ/Shirane)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
