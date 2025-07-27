@@ -835,6 +835,13 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 				if (player.hasPerk(PerkLib.DualWield)) addButton(11, "HtDualRapiers", aethertwinsFollowersMorphMainHumanTierDualMediumWeapons, "Rapier", 1);
 				else addButtonDisabled(11, "HtDualRapiers", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}
+			if (AetherTwinsShape == "Human-tier Spear and Shield") addButtonDisabled(12, "HtSpear&Shield", "They are currently in Human-tier Spear and Shield form.");
+			else addButton(12, "HtSpear&Shield", aethertwinsFollowersMorphMainHumanTierMediumWeaponAndShield, "Spear", 1);
+			if (AetherTwinsShape == "Human-tier Dual Spears") addButtonDisabled(13, "HtDualSpears", "They are currently in Human-tier Dual Spears form.");
+			else {
+				if (player.hasPerk(PerkLib.DualWield)) addButton(13, "HtDualSpears", aethertwinsFollowersMorphMainHumanTierDualMediumWeapons, "Spear", 1);
+				else addButtonDisabled(13, "HtDualSpears", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}
 		}
 		else {
 			addButtonDisabled(5, "???", "After the twins' fourth evolution.");
@@ -843,6 +850,8 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			addButtonDisabled(8, "???", "After the twins' fourth evolution.");
 			addButtonDisabled(10, "???", "After the twins' fourth evolution.");
 			addButtonDisabled(11, "???", "After the twins' fourth evolution.");
+			addButtonDisabled(12, "???", "After the twins' fourth evolution.");
+			addButtonDisabled(13, "???", "After the twins' fourth evolution.");
 		}
 	}
 	if (page == 2) {
@@ -967,7 +976,7 @@ private function aethertwinsFollowersEvolutionsToSkyTierGauntlets():void {
 	AetherTwinsFoodMenuAmethystCap = 2;
 	AetherTwinsFoodMenuDiamond = 0;
 	AetherTwinsFoodMenuDiamondCap = 2;
-	doNext(aethertwinsFollowersMorphMain);
+	doNext(aethertwinsFollowersMorphMain, 1);
 	cheatTime(1/6);
 }
 private function aethertwinsFollowersEvolutionsToHumanTierSmallWeapons():void {
@@ -999,7 +1008,7 @@ private function aethertwinsFollowersEvolutionsToHumanTierSmallWeapons():void {
 	AetherTwinsFoodMenuMoonstoneCap = 4;
 	AetherTwinsFoodMenuEbonIngot = 0;
 	AetherTwinsFoodMenuEbonIngotCap = 4;
-	doNext(aethertwinsFollowersMorphMain);
+	doNext(aethertwinsFollowersMorphMain, 1);
 	cheatTime(1/6);
 }
 private function aethertwinsFollowersEvolutionsToHumanTierMediumWeapons():void {
@@ -1035,21 +1044,21 @@ private function aethertwinsFollowersEvolutionsToHumanTierMediumWeapons():void {
 	AetherTwinsFoodMenuDarksteelIngotCap = 4;
 	AetherTwinsFoodMenuSoulResidue = 0;
 	AetherTwinsFoodMenuSoulResidueCap = 4;
-	doNext(aethertwinsFollowersMorphMain);
+	doNext(aethertwinsFollowersMorphMain, 1);
 	cheatTime(1/6);
 }/*
 private function aethertwinsFollowersEvolutionsToSkyTierGauntlets():void {
 	clearOutput();
 	outputText("\"<i>Woohoo it's happening feeling again... We're evolving once more...</i>\" they exclaim. \"<i>We're going Faster Harder Better Stronger Sharper Bigger Curvier!!!</i>\"\n\n");
 	evo to large sized weapon(s) form(s)
-	doNext(aethertwinsFollowersMorphMain);
+	doNext(aethertwinsFollowersMorphMain, 1);
 	cheatTime(1/6);
 }
 private function aethertwinsFollowersEvolutionsToSkyTierGauntlets():void {
 	clearOutput();
 	outputText("\"<i>Woohoo it's happening feeling again... We're evolving once more...</i>\" they exclaim. \"<i>We're going Faster Harder Better Stronger Sharper Bigger Curvier Sexier!!!</i>\"\n\n");
 	evo to massive sized weapon(s) form(s)
-	doNext(aethertwinsFollowersMorphMain);
+	doNext(aethertwinsFollowersMorphMain, 1);
 	cheatTime(1/6);
 }*/
 

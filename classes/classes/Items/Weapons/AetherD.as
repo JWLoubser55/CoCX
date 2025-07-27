@@ -98,13 +98,18 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 		private const lustDmg1:ItemEffect = new ItemEffect(IELib.LustDamage, 10, 1/8);
 		private const lustDmg2:ItemEffect = new ItemEffect(IELib.LustDamage, 5, 1/10);
 		private const lustDmg3:ItemEffect = new ItemEffect(IELib.LustDamage, 15, 1/8);
+		private const penetration1:ItemEffect = new ItemEffect(IELib.ArmorPenetration, 40);
 		override public function findEffect(type:ItemEffectType):ItemEffect {
 			if (type == IELib.LustDamage) {
 				if (AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets") return lustDmg1;
-				else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") return lustDmg2;
-				else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" ||
+				else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield" ||
+						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" ||
 						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield" ||
-						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") return lustDmg3;
+						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield") return lustDmg2;
+				else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") return lustDmg3;
+			}
+			if (type == IELib.ArmorPenetration) {
+				if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield") return penetration1;
 			}
 			return super.findEffect(type);
 		}

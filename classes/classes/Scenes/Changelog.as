@@ -208,13 +208,14 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Flesh Body (VoL): Elder Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +3000 max HP, +3% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +1% HP regen\n");
 			outputText("-New event perk: Flesh Body (VoL): Overlord Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +4000 max HP, +4% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +1% HP regen\n");
 			outputText("-Prestige Job: Soul Art Master req. for Flesh Body: Apprentice Stage was changed to Flesh Body (VoL): Apprentice Stage.\n");
-			outputText("-Aether Twins can now after 3rd evolution eat new materials: World Tree Branch & Bronze bar. Also they can eat 1 new shield and 6 new medium sized melee weapons. After eating those and then all materials the can it would enable them evolving to medium sized weapon 1st form. They could also assume one additional form in case PC learned Dual Wield. Both new forms are added to their morph menu.\n");
+			outputText("-Aether Twins can now after 3rd evolution eat new materials: World Tree Branch & Bronze bar. Also they can eat 1 new shield and 6 new medium sized melee weapons. After eating those and then all materials the can it would enable them evolving to medium sized weapon sword + shield form. From here they can change to different medium sized weapon (axe, rapier, spear) + shield forms. ");
+			outputText("They could assume additional forms in case PC learned Dual Wield. All forms are added to their morph menu.\n");
 			outputText("-Moved autosave timing to just before sleep (saving at passes 23:00 ended up saving at a hour after each instance, repeating saving until 30:00 will softlock you from sleeping), revert ||= change in playerevent hourly racial perk check so they all properly trigger at once rather than one by one. (NUZ/Shirane)\n");
 			outputText("-Kitsumori tail sprite rework. (Lord Shadeogorath)\n");
 			outputText("-Charge Weapon spell bonus to atk is now additionaly increased by weapon size if it's larger then small (which would have 1x multiplier) up to x4 for massive weapons.\n");
-			outputText("-Attempt to restore Quad+Fuckable nipple compatibility (Look for Quad+Fuckable test in BreastsTransformations.as), Luna First Stage Pregnancy Text Fix, some mutation text prepwork, Kirin Electra scene now disabled for supercharged race, Add a check for camp trap text whiteline. (NUZ/Shirane)\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Attempt to restore Quad+Fuckable nipple compatibility, Luna First Stage Pregnancy Text Fix, some mutation text prepwork, Kirin Electra scene now disabled for supercharged race, Add a check for camp trap text whiteline. (NUZ/Shirane)\n");
+			outputText("-Monsters have now damage reduction based on their toughness score. Each 1000 pts it increase by +1 starting from 1/2 when monster tou is above 1000.\n");
+			outputText("-Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -643,7 +644,7 @@ public class Changelog extends BaseContent
 			outputText("-Hardcore difficulty setting will no longer force delete save on bad end. Instead will be reset core and trained stats to state they been on character creation (0 core and 15 trained) and take away all XP gathered. Also would remove limitations on level to find new areas or finding enemies in areas if they had their own level checks (and Lake will be no longer a safe area until lvl 3 after first 7 ingame days).\n");
 			outputText("-Autosave option will no longer require PC to go to sleep (insert your favorite joke about: sleep is for the ...) and having at least saved once manually. Instead will still need to save once manually but then will always trigger with all other once a day events (which all happens between 11pm and 12 pm).\n");
 			outputText("-Due to general evaluation of difficulty changed it been reseted to Easy setting and to return to what it was before it require to adjust all the toggles in Settings > Gameplay (1) menu.\n");
-			outputText("-Damage of all types when lvl diff between enemy and pc is 50+ changed from dropping right away from 2% at 49 lvl diff to 1 dmg at 50 lvl diff. Now it would drop to 1 point of dmg at 55+ lvl diff. For diff of 50-54 it would reduce dmg to 1%-0,0001%.\n");
+			outputText("-Damage of all types when lvl diff between enemy and pc is 50+ changed from dropping right away from 2% at 49 lvl diff to 1 dmg at 50 lvl diff. Now it would drop to 1 point of dmg at 60+ lvl diff. For diff of 50-59 it would reduce dmg to 1%-0,000000001%.\n");
 			outputText("-Added 2 more options for boss/champion/elite enemies hp bonus and secondary monster stats.\n");
 			outputText("-Ported from Revamp / UEE mod option to kill Tamani. Req. to beat her enough times she would level up once (this req. to have training option for npc's turned on). There was a few minot tweaks on what her satchel have inside or increased exp reward for killing/banishing her for good.\n");
 			outputText("-Enabled camp building at night for night races. But would limit possible helpers to those that could be still active at night. Herbalism and Dummy camp options can also be used at night by night races.\n");

@@ -10470,6 +10470,11 @@ public class Combat extends BaseContent {
 			else if ((monLvl - plaLvl) < 53) damagereduction = 0.0001;
 			else if ((monLvl - plaLvl) < 54) damagereduction = 0.00001;
 			else if ((monLvl - plaLvl) < 55) damagereduction = 0.000001;
+			else if ((monLvl - plaLvl) < 56) damagereduction = 0.0000001;
+			else if ((monLvl - plaLvl) < 57) damagereduction = 0.00000001;
+			else if ((monLvl - plaLvl) < 58) damagereduction = 0.000000001;
+			else if ((monLvl - plaLvl) < 59) damagereduction = 0.0000000001;
+			else if ((monLvl - plaLvl) < 60) damagereduction = 0.00000000001;
             else damagereduction = 0;
         }
         return damagereduction;
@@ -10598,6 +10603,7 @@ public class Combat extends BaseContent {
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -10666,6 +10672,7 @@ public class Combat extends BaseContent {
 		damage *= EyesOfTheHunterDamageBonus();
 		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage *= 1.25;
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -10763,6 +10770,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -10934,6 +10942,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -11049,6 +11058,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -11121,6 +11131,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
         if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -11190,6 +11201,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
         if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -11256,6 +11268,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
         if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -11313,6 +11326,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
         if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -11370,6 +11384,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
         if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -11427,6 +11442,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
         if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -11484,6 +11500,7 @@ public class Combat extends BaseContent {
             }
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
         if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
@@ -11545,6 +11562,7 @@ public class Combat extends BaseContent {
             doNext(endHpVictory);
         }
         damage *= doDamageReduction();
+		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
         if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
 			outputText("Your attack sweeps the area clear of the nasty swarm, leaving the nightmare angel clear to attack! ");
 			monster.removeStatusEffect(StatusEffects.Swarmbringer);
