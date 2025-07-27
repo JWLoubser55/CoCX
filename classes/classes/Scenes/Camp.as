@@ -916,32 +916,38 @@ public class Camp extends NPCAwareContent{
 			outputText("\n\n");
 		}
 		//Traps
+		// Try to use string concat more often so reduce repeated function call
+		var string:String = "";
+
 		if (player.hasStatusEffect(StatusEffects.DefenseCanopy)) {
-			outputText("A thorny tree has sprouted near the center of the [camp], growing a protective canopy of spiky vines around the portal and your [camp].  ");
+			string += "A thorny tree has sprouted near the center of the [camp], growing a protective canopy of spiky vines around the portal and your [camp].  ";
 		}
         //Wall
 		if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 10 && flags[kFLAGS.CAMP_WALL_PROGRESS] < 100) {
-			if (flags[kFLAGS.CAMP_WALL_PROGRESS] / 10 == 1) outputText("A thick wooden wall has been erected. Incomplete as it is, it provides only a small amount of defense.  ");
-			else outputText("Thick wooden walls have been erected around your camp.  ");
+			if (flags[kFLAGS.CAMP_WALL_PROGRESS] / 10 == 1) string += "A thick wooden wall has been erected. Incomplete as it is, it provides only a small amount of defense.  ";
+			else string += "Thick wooden walls have been erected around your camp.  ";
 		} else if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100) {
-			outputText("Thick wooden walls have been erected; they surround half of your [camp] perimeter and provide sound defense, leaving the open half for access to the stream.  ");
-			if (flags[kFLAGS.CAMP_WALL_GATE] > 0) outputText("A gate has been constructed in the middle of the walls; it gets closed at night to keep any invaders out.  ");
+			string += "Thick wooden walls have been erected; they surround half of your [camp] perimeter and provide sound defense, leaving the open half for access to the stream.  ";
+			if (flags[kFLAGS.CAMP_WALL_GATE] > 0) string += "A gate has been constructed in the middle of the walls; it gets closed at night to keep any invaders out.  ";
 		}
         //Imp Skulls
         if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 10 && flags[kFLAGS.CAMP_WALL_SKULLS] > 0) {
             if (flags[kFLAGS.CAMP_WALL_SKULLS] == 1)
-                outputText("A single imp skull has been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments"));
+				string += "A single imp skull has been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments");
             else if (flags[kFLAGS.CAMP_WALL_SKULLS] >= 2 && flags[kFLAGS.CAMP_WALL_SKULLS] < 5)
-                outputText("Few imp skulls have been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments"));
+				string += "Few imp skulls have been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments");
             else if (flags[kFLAGS.CAMP_WALL_SKULLS] >= 5 && flags[kFLAGS.CAMP_WALL_SKULLS] < 15)
-                outputText("Several imp skulls have been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments"));
+				string += "Several imp skulls have been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments");
             else
-                outputText("Innumerable imp skulls decorate the " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "gateway and " : "") + "wall, some are even impaled on wooden spikes");
-            outputText(" to serve as a deterrence.  ");
-            if (flags[kFLAGS.CAMP_WALL_SKULLS] == 1) outputText("There is currently one skull.  ");
-            else outputText("There are currently " + num2Text(flags[kFLAGS.CAMP_WALL_SKULLS]) + " skulls.  ");
+				string += "Innumerable imp skulls decorate the " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "gateway and " : "") + "wall, some are even impaled on wooden spikes";
+			string += " to serve as a deterrence.  ";
+            if (flags[kFLAGS.CAMP_WALL_SKULLS] == 1) string += "There is currently one skull.  ";
+            else string += "There are currently " + num2Text(flags[kFLAGS.CAMP_WALL_SKULLS]) + " skulls.  ";
         }
+
+		if (string != "")
 			outputText("\n\n");
+
 		//Magic Ward
 		if (flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] >= 2) {
 			if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100) outputText("Just within the wall are the");

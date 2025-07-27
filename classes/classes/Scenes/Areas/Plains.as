@@ -105,7 +105,7 @@ use namespace CoC;
 				kind : 'monster',
 				chance: 0.05,
 				when: function():Boolean {
-					return flags[kFLAGS.ELECTRA_FOLLOWER] < 2 && flags[kFLAGS.ELECTRA_AFFECTION] < 100 && !player.hasStatusEffect(StatusEffects.ElectraOff);
+					return flags[kFLAGS.ELECTRA_FOLLOWER] < 2 && flags[kFLAGS.ELECTRA_AFFECTION] < 100 && !player.hasPerk(PerkLib.Supercharged);
 				},
 				call: SceneLib.plains.kirinScene.kirinElectraEncounter
 			}, {

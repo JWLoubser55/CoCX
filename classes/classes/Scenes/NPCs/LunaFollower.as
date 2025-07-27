@@ -1348,6 +1348,8 @@ public class LunaFollower extends NPCAwareContent implements SaveableState, Time
 				outputText("As you near your camp, you see your werewolf-maid, Luna, standing by your [cabin], a serene smile on her face. She has one hand on her stomach, and a cup of tea waiting for you. As you approach, you already know what she’s about to say.  \n\n");
 				outputText("“We’re going to have more children, my lovely [master]!” Luna gives you a big hug, before returning to her usual innocent smile and demeanour. “If you need anything else, you know where I’ll be.”  \n\n");
 				outputText(" \n\n");
+				// for some reason relying on timechange true just clear everything
+				doNext(playerMenu);
 			}
 
 		}

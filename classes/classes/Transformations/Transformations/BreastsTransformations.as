@@ -313,7 +313,8 @@ public class BreastsTransformations extends MutationsHelper {
 			// apply effect
 			function (doOutput:Boolean):void {
 				var desc: String = "";
-				TransformationUtils.applyTFIfNotPresent(transformations.NipplesUnfuck, doOutput);
+				// Quad+Fuckable Test
+				// TransformationUtils.applyTFIfNotPresent(transformations.NipplesUnfuck, doOutput);
 
 				desc += "[pg]Your " + nippleDescript(0) + "s tingle and itch.  You pull back your [armor] and watch in shock as they split into four distinct nipples!  <b>You now have four nipples on each side of your chest!</b>";
 				if (player.breastRows.length >= 2 && player.breastRows[1].nipplesPerBreast == 1)
@@ -340,7 +341,8 @@ public class BreastsTransformations extends MutationsHelper {
 			// apply effect
 			function (doOutput:Boolean):void {
 				var desc: String = "";
-				TransformationUtils.applyTFIfNotPresent(transformations.NipplesPerBreastOne, doOutput);
+				// Quad+Fuckable Test
+				// TransformationUtils.applyTFIfNotPresent(transformations.NipplesPerBreastOne, doOutput);
 
 				if (player.nippleLength < 2) {
 					desc += "[pg]Your nipples engorge, prodding hard against the inside of your [armor].  Abruptly you realize they've grown rapidly to 2 inches."
@@ -360,7 +362,8 @@ public class BreastsTransformations extends MutationsHelper {
 			// apply effect
 			function (doOutput:Boolean):void {
 				var desc: String = "";
-				TransformationUtils.applyTFIfNotPresent(transformations.NipplesPerBreastOne, doOutput);
+				// Quad+Fuckable Test
+				// TransformationUtils.applyTFIfNotPresent(transformations.NipplesPerBreastOne, doOutput);
 
 				var nowFuckable:Boolean;
 				//Set nipplecunts on every row.
@@ -380,7 +383,9 @@ public class BreastsTransformations extends MutationsHelper {
 			},
 			// is possible
 			function ():Boolean {
-				return !player.hasFuckableNipples() && player.bRows() > 0 && player.averageNipplesPerBreast() == 1 && player.nippleLength >= 2
+				// Quad+Fuckable Test
+				// Removed  && player.averageNipplesPerBreast() == 1 condition
+				return !player.hasFuckableNipples() && player.bRows() > 0 && player.nippleLength >= 2
 			}
 	);
 
