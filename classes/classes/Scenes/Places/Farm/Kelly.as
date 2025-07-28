@@ -818,7 +818,7 @@ private function kellySexMenu():void {
 			addButtonDisabled(1, "TOO BIG!", "<b>You're too big to fuck her vagina.</b>");
 			addButtonDisabled(2, "TOO BIG!", "<b>You're too big to fuck her vagina.</b>");
 		}
-		addButtonIfTrue(3, "TentaFuck", tentaFuckKelly, "Req. at least 2 tentacle cocks.", player.countCocksWithType(CockTypesEnum.TENTACLE) >= 2);
+		addButtonIfTrue(5, "TentaFuck", tentaFuckKelly, "Req. at least 2 tentacle cocks.", player.countCocksWithType(CockTypesEnum.TENTACLE) >= 2);
 		addButtonIfTrue(2, "Titfuck", kellyTitJob, player.isTaur() ? "<b>You can't be a taur for this one.</b>" :
 			"<b>You're too big to fuck her tits.  Maybe if you gave her something to make her grow more...</b>",
 			!player.isTaur() && (flags[kFLAGS.KELLY_BONUS_BOOB_ROWS] == 0 || player.cockThatFits(18,"length") >= 0));
