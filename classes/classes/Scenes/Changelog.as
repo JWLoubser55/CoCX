@@ -216,7 +216,7 @@ public class Changelog extends BaseContent
 			outputText("-Attempt to restore Quad+Fuckable nipple compatibility, Luna First Stage Pregnancy Text Fix, some mutation text prepwork, Kirin Electra scene now disabled for supercharged race, Add a check for camp trap text whiteline. (NUZ/Shirane)\n");
 			outputText("-Monsters have now damage reduction based on their toughness score. Each 1000 pts it increase by +1 starting from 1/2 when monster tou is above 1000.\n");
 			outputText("-Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.\n");
-			outputText("-\n");
+			outputText("-Update Kelly (Svalkash) (enabling not asseable tentacle fuck sex scene)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
