@@ -34,8 +34,10 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes") desc += "Axe";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers") desc += "Rapier";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears") desc += "Spear";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces") desc += "Mace";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield"
-			|| AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield"|| AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield") desc += "Medium Shield";
+			|| AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield"
+			|| AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield") desc += "Medium Shield";
 			else desc += "Gauntlet";
 			desc += ")";
 			//Block Rating

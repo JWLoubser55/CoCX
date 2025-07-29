@@ -853,9 +853,23 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			addButtonDisabled(12, "???", "After the twins' fourth evolution.");
 			addButtonDisabled(13, "???", "After the twins' fourth evolution.");
 		}
+		addButton(4, "Next", aethertwinsFollowersMorphMain, page + 1);
+		addButton(9, "Previous", aethertwinsFollowersMorphMain, page + 1);
 	}
 	if (page == 2) {
-		if (AetherTwinsFoodMenu3) {}
+		if (AetherTwinsFoodMenu3) {
+			if (AetherTwinsShape == "Human-tier Mace and Shield") addButtonDisabled(0, "HtMace&Shield", "They are currently in Human-tier Mace and Shield form.");
+			else addButton(0, "HtMace&Shield", aethertwinsFollowersMorphMainHumanTierMediumWeaponAndShield, "Mace", 2);
+			if (AetherTwinsShape == "Human-tier Dual Maces") addButtonDisabled(1, "HtDualMaces", "They are currently in Human-tier Dual Maces form.");
+			else {
+				if (player.hasPerk(PerkLib.DualWield)) addButton(1, "HtDualMaces", aethertwinsFollowersMorphMainHumanTierDualMediumWeapons, "Mace", 2);
+				else addButtonDisabled(1, "HtDualMaces", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}
+		}
+		else {
+			addButtonDisabled(0, "???", "After the twins' fourth evolution.");
+			addButtonDisabled(1, "???", "After the twins' fourth evolution.");
+		}
 		addButton(4, "Next", aethertwinsFollowersMorphMain, page - 1);
 		addButton(9, "Previous", aethertwinsFollowersMorphMain, page - 1);
 	}
