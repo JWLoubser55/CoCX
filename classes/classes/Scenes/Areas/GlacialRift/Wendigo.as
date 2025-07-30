@@ -70,7 +70,10 @@ import classes.internals.*;
 				//if (!isCursed) player.buff("Wendigo curse").addStats( {"tou.mult": -0.05} ).withText("Wendigo curse!").combatPermanent();
 				//else player.buff("Wendigo curse").addStats( {"tou.mult":-0.05} ).combatPermanent();
 				player.addCurse("tou.mult", 1,3);
-				if (!player.hasStatusEffect(StatusEffects.WendigoPsychosis) && !player.hasPerk(PerkLib.EndlessHunger)) player.createStatusEffect(StatusEffects.WendigoPsychosis,168,0,0,0);
+				if (!player.hasStatusEffect(StatusEffects.WendigoPsychosis) && !player.hasPerk(PerkLib.EndlessHunger)) {
+					player.createStatusEffect(StatusEffects.WendigoPsychosis, 168, 0, 0, 0);
+					outputText("<b>You're now affected by Wendigo Psychosis!!!</b>");
+				}
 			}
 		}
 		

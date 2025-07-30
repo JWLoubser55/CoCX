@@ -208,7 +208,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Flesh Body (VoL): Elder Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +3000 max HP, +3% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +1% HP regen\n");
 			outputText("-New event perk: Flesh Body (VoL): Overlord Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +4000 max HP, +4% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +1% HP regen\n");
 			outputText("-Prestige Job: Soul Art Master req. for Flesh Body: Apprentice Stage was changed to Flesh Body (VoL): Apprentice Stage.\n");
-			outputText("-Aether Twins can now after 3rd evolution eat new materials: World Tree Branch & Bronze bar. Also they can eat 1 new shield and 6 new medium sized melee weapons. After eating those and then all materials the can it would enable them evolving to medium sized weapon sword + shield form. From here they can change to different medium sized weapon (axe, rapier, spear) + shield forms. ");
+			outputText("-Aether Twins can now after 3rd evolution eat new materials: World Tree Branch & Bronze bar. Also they can eat 1 new shield and 6 new medium sized melee weapons. After eating those and then all materials the can it would enable them evolving to medium sized weapon sword + shield form. From here they can change to different medium sized weapon (axe, rapier, spear, mace, whip) + shield forms. ");
 			outputText("They could assume additional forms in case PC learned Dual Wield. All forms are added to their morph menu.\n");
 			outputText("-Moved autosave timing to just before sleep (saving at passes 23:00 ended up saving at a hour after each instance, repeating saving until 30:00 will softlock you from sleeping), revert ||= change in playerevent hourly racial perk check so they all properly trigger at once rather than one by one. (NUZ/Shirane)\n");
 			outputText("-Kitsumori tail sprite rework. (Lord Shadeogorath)\n");
@@ -217,8 +217,8 @@ public class Changelog extends BaseContent
 			outputText("-Monsters have now damage reduction based on their toughness score. Each 1000 pts it increase by +1 starting from 1/2 when monster tou is above 1000.\n");
 			outputText("-Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.\n");
 			outputText("-Update Kelly (Svalkash) (enabling not accesable tentacle fuck sex scene)\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-3rd tier of Human race score bonuses was renamed to Firstborn Human. Added also 4th tier that use (old tier 3) name of Primaris Super Human req. 63+ pts to reach it.\n");
+			outputText("-When Wendigo would apply Wendigo Psychosis status effect to PC during fight (not in post fight scene) it will now be notification ingame for this.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

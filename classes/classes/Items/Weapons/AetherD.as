@@ -36,6 +36,7 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") desc += "Axe";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") desc += "Rapier";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield") desc += "Mace";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield") desc += "Whip";
 			else desc += "Gauntlet";
 			desc += ")";
 			//Attack
@@ -51,6 +52,7 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") return "slash";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") return "cleave";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield") return "smash";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield") return "whip-crack";
 			else return "punch";
 		}
 		
@@ -66,6 +68,7 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") return WT_AXE;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") return WT_DUELING;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield") return WT_MACE_HAMMER;
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield") return WT_WHIP;
 			else return WT_GAUNTLET;
 		}
 		
@@ -97,14 +100,15 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			super.beforeUnequip(doOutput, slot);
 			return WeaponLib.FISTS;
 		}
-
+		
 		private const lustDmg1:ItemEffect = new ItemEffect(IELib.LustDamage, 10, 1/8);
 		private const lustDmg2:ItemEffect = new ItemEffect(IELib.LustDamage, 5, 1/10);
 		private const lustDmg3:ItemEffect = new ItemEffect(IELib.LustDamage, 15, 1/8);
 		private const penetration1:ItemEffect = new ItemEffect(IELib.ArmorPenetration, 40);
+		private const teasedmg1:ItemEffect = new ItemEffect(IELib.Buff, 35, 'teasedmg');
 		override public function findEffect(type:ItemEffectType):ItemEffect {
 			if (type == IELib.LustDamage) {
-				if (AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets") return lustDmg1;
+				if (AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield") return lustDmg1;
 				else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield" ||
 						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" ||
 						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield" ||
@@ -114,6 +118,9 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			}
 			if (type == IELib.ArmorPenetration) {
 				if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield") return penetration1;
+			}
+			if (type == IELib.Buff) {
+				if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield") return teasedmg1;
 			}
 			return super.findEffect(type);
 		}

@@ -865,10 +865,19 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 				if (player.hasPerk(PerkLib.DualWield)) addButton(1, "HtDualMaces", aethertwinsFollowersMorphMainHumanTierDualMediumWeapons, "Mace", 2);
 				else addButtonDisabled(1, "HtDualMaces", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}
+			if (AetherTwinsShape == "Human-tier Whip and Shield") addButtonDisabled(2, "HtWhip&Shield", "They are currently in Human-tier Whip and Shield form.");
+			else addButton(2, "HtWhip&Shield", aethertwinsFollowersMorphMainHumanTierMediumWeaponAndShield, "Whip", 2);
+			if (AetherTwinsShape == "Human-tier Dual Whips") addButtonDisabled(3, "HtDualWhips", "They are currently in Human-tier Dual Whips form.");
+			else {
+				if (player.hasPerk(PerkLib.DualWield)) addButton(3, "HtDualWhips", aethertwinsFollowersMorphMainHumanTierDualMediumWeapons, "Whip", 2);
+				else addButtonDisabled(3, "HtDualWhips", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}
 		}
 		else {
 			addButtonDisabled(0, "???", "After the twins' fourth evolution.");
 			addButtonDisabled(1, "???", "After the twins' fourth evolution.");
+			addButtonDisabled(2, "???", "After the twins' fourth evolution.");
+			addButtonDisabled(3, "???", "After the twins' fourth evolution.");
 		}
 		addButton(4, "Next", aethertwinsFollowersMorphMain, page - 1);
 		addButton(9, "Previous", aethertwinsFollowersMorphMain, page - 1);
