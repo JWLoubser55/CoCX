@@ -1247,6 +1247,7 @@ use namespace CoC;
 		public function hasAetherTwinsTierLeftWhip():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips"; }
 		public function hasAetherTwinsTierLeftMediumShield():Boolean { return shield == game.shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield" ||
 			AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield"); }
+		public function hasAetherTwinsLargerThenMediumSizedDexTwin():Boolean { return weapon == game.weapons.AETHERD && (AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets"); }//all dex twin forms with Large/Massive size tag
 		//Some other checks
 		public function isGoblinoid(checkRP:Boolean = true):Boolean { return (isRace(Races.GOBLIN, 1, checkRP) || isRace(Races.GREMLIN, 1, checkRP)); }
 		public function isSlime():Boolean { return (hasPerk(PerkLib.DarkSlimeCore) || hasPerk(PerkLib.SlimeCore)); }
@@ -1257,7 +1258,7 @@ use namespace CoC;
 		public function isHavingEnhancedHearing():Boolean { return (ears.type == Ears.ELVEN); }
 		public function isTechSavvyPC():Boolean { return (isGoblinoid() || (hasPerk(IMutationsLib.HumanSmartsIM) && perkv1(IMutationsLib.HumanSmartsIM) >= 2) || isRace(Races.WEREFOX)); }
 		public function isTechWeapons():Boolean { return (weapon.isTechWeapon()); }
-		public function isAbleToOneHandWieldLargeWeapon():Boolean { return (hasPerk(PerkLib.GigantGrip) || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent())); } 
+		public function isAbleToOneHandWieldLargeWeapon():Boolean { return (hasPerk(PerkLib.GigantGrip) || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent()) || hasAetherTwinsLargerThenMediumSizedDexTwin()); } 
 		//Weapons for Whirlwind
 		public function isWeaponForWhirlwind():Boolean
 		{
