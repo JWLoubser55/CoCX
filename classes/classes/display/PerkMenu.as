@@ -426,7 +426,7 @@ public class PerkMenu extends BaseContent {
 		var currentAttacksMain:int = flags[kFLAGS.MULTIATTACK_STYLE_MAIN];
 		var maxAttacksMain:int = combat.maxCurrentAttacksMain();
 		clearOutput();
-		if (player.weapon.isStaffType() || player.weapon.isWandType()) {
+		if ((player.weapon.isStaffType() && !player.hasPerk(PerkLib.Shillelagh)) || player.weapon.isWandType()) {
 			outputText("You can't multi-attack with wands or staves!\n\n");
 			doNext(meleeOptions);
 			return;
@@ -451,7 +451,7 @@ public class PerkMenu extends BaseContent {
 		var currentAttacksOff:int = flags[kFLAGS.MULTIATTACK_STYLE_OFF];
 		var maxAttacksOff:int = combat.maxCurrentAttacksOff();
 		clearOutput();
-		if (player.weaponOff.isStaffType() || player.weaponOff.isWandType()) {
+		if ((player.weaponOff.isStaffType() && !player.hasPerk(PerkLib.Shillelagh)) || player.weaponOff.isWandType()) {
 			outputText("You can't multi-attack with wands or staves!\n\n");
 			doNext(meleeOptions);
 			return;

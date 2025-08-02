@@ -1455,7 +1455,7 @@ use namespace CoC;
 		}
 		public function haveWeaponForJouster():Boolean
 		{
-			return (isSpearTypeWeapon() || isPolearmTypeWeapon());
+			return (isSpearTypeWeapon() || isPolearmTypeWeapon() || (isStaffTypeWeapon() && hasPerk(PerkLib.Shillelagh)));
 		}
 		public function playerIsBlinded():Boolean
 		{

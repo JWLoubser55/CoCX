@@ -17594,7 +17594,7 @@ public final class Mutations extends MutationsHelper {
 					}
 				}
 				else {
-					player.killCocks(-1);
+					player.killCocks(-1, false);
 					transformations.CockBarometz().applyEffect();
 					changes++;
 				}

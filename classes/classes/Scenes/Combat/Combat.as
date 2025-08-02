@@ -6834,7 +6834,7 @@ public class Combat extends BaseContent {
 			}
 		}
 		else {
-			if (player.isElf() && player.weapon.isSpearType() && player.hasPerk(PerkLib.ELFElvenBattleStyle)) {
+			if (player.isElf() && (player.weapon.isSpearType() || (player.weapon.isStaffType() && player.hasPerk(PerkLib.Shillelagh))) && player.hasPerk(PerkLib.ELFElvenBattleStyle)) {
 				damage += player.inte;
 				damage += scalingBonusIntelligence() * 0.2;
 				if (player.hasPerk(PerkLib.ELFElvenSpearDancingFlurry1to4)) damage*=1+(0.2*player.perkv1(PerkLib.ELFElvenSpearDancingFlurry1to4));
@@ -6964,7 +6964,7 @@ public class Combat extends BaseContent {
 		return damage;
 	}
 	public function meleeDamageNoLagSingleOffhand(damage:Number = 0):Number {
-		if (player.isElf() && player.weaponOff.isSpearType() && player.hasPerk(PerkLib.ELFElvenBattleStyle)) {
+		if (player.isElf() && (player.weaponOff.isSpearType() || (player.weaponOff.isStaffType() && player.hasPerk(PerkLib.Shillelagh))) && player.hasPerk(PerkLib.ELFElvenBattleStyle)) {
 			damage += player.inte;
 			damage += scalingBonusIntelligence() * 0.2;
 			if (player.hasPerk(PerkLib.ELFElvenSpearDancingFlurry1to4)) damage*=1+(0.2*player.perkv1(PerkLib.ELFElvenSpearDancingFlurry1to4));
@@ -20055,4 +20055,4 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
-}
+}
