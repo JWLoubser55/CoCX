@@ -1284,19 +1284,19 @@ use namespace CoC;
 		//Wrath Weapons
 		public function isLowGradeWrathWeapon():Boolean
 		{
-			return weapon.isLGWrath() || weapon == game.weapons.ANGSTD1 || weaponRange == game.weaponsrange.B_F_BOW || weaponRange == game.weaponsrange.SAGITTB || hasAetherTwinsTier2();
+			return weapon.isLGWrath() || weapon == game.weapons.ANGSTD1 || weaponRange == game.weaponsrange.B_F_BOW || weaponRange == game.weaponsrange.SAGITTB || hasAetherTwinsTier2() || hasAetherTwinsTierS1();
 		}
 		public function isDualLowGradeWrathWeapon():Boolean
 		{
-			return weapon == game.weapons.DBFSWO || weapon == game.weapons.ANGSTD || weapon == game.weapons.DBFWHIP;
+			return weapon == game.weapons.DBFSWO || weapon == game.weapons.ANGSTD || weapon == game.weapons.DBFWHIP || hasAetherTwinsTierS2();
 		}
 		public function isMidGradeWrathWeapon():Boolean
 		{
-			return weapon.isMGWrath() || weapon == game.weapons.NTWHIP || hasAetherTwinsTierS1();
+			return weapon.isMGWrath() || weapon == game.weapons.NTWHIP || hasAetherTwinsTierS1() || hasAetherTwinsTierMedium1() || hasAetherTwinsTierLarge1();
 		}
 		public function isDualMidGradeWrathWeapon():Boolean
 		{
-			return weapon == game.weapons.ASTERIUS || hasAetherTwinsTierS2();
+			return weapon == game.weapons.ASTERIUS || hasAetherTwinsTierMedium2() || hasAetherTwinsTierLarge2();
 		}/*
 		public function isHighGradeWrathWeapon():Boolean
 		{

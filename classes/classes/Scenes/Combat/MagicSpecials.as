@@ -997,9 +997,9 @@ public class MagicSpecials extends BaseCombatContent {
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 35 && (player.inHeat || player.inRut)) boost += 20;
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 40) boost *= 2;
 			if (player.hasStatusEffect(StatusEffects.TyrantState)) {
-				bd = buttons.add("TyrantState(Off)", deactivaterTyrantState).hint("Deactivate Tyrant State.");
+				bd = buttons.add("TyrantState(Off)", deactivateTyrantState).hint("Deactivate Tyrant State.");
 			} else {
-				bd = buttons.add("TyrantState(On)", activaterTyrantState).hint("Strain your body to its limit to increase melee damage dealt by "+boost+"% at the cost of getting horny. This also decrease physical resistance.");
+				bd = buttons.add("TyrantState(On)", activateTyrantState).hint("Strain your body to its limit to increase melee damage dealt by "+boost+"% at the cost of getting horny. This also decrease physical resistance."+(TyrantiaFollower.TyrantiaTrainingSessions >= 30 ? " Would delay lust defeat by two turns. (Timer reset each time lust drop below max overlust value)":"")+"");
 			}
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 15) {
 				bd = buttons.add("False Weapon", activaterFalseWeapon).hint("Create False weapon based on currently wielded melee weapon to attack each time you attack with it. Deals 20% dmg (Phalluspear False Weapon deals 100%).");
@@ -3765,13 +3765,13 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 
-	public function activaterTyrantState():void {
+	public function activateTyrantState():void {
 		clearOutput();
 		outputText("You stare at your foe, letting your Lust build and bubble within you. Sweet release is in front of you…But first… You feel the heat building in your loins, and you let out a roar, the heat spreading through your body. You face your opponent with an unsettling grin. Let’s Dance!\n\n");
 		player.createStatusEffect(StatusEffects.TyrantState, 0, 0, 0, 0);
 		enemyAI();
 	}
-	public function deactivaterTyrantState():void {
+	public function deactivateTyrantState():void {
 		clearOutput();
 		outputText("Breathing heavily, you focus your mind. The heat through your body isn’t going away yet, but at the very least, you aren’t generating more. With a lot of mental effort, you reign in your lusty thoughts.\n\n");
 		player.removeStatusEffect(StatusEffects.TyrantState);

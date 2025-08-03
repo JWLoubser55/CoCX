@@ -16265,7 +16265,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Eyes
-        if (transformations.FaceFireSnail.isPossible() && transformations.EyesFireSnail.isPossible() && changes < changeLimit && rand(3) == 0) {
+        if (player.faceType == Face.FIRE_SNAIL && player.eyes.type != Eyes.FIRE_SNAIL && changes < changeLimit && rand(3) == 0) {
             if (player.eyes.type == Eyes.HUMAN) {
                 outputText("[pg]");
                 transformations.EyesFireSnail.applyEffect();
