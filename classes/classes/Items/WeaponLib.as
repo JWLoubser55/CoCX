@@ -193,7 +193,7 @@ public final class WeaponLib extends ItemConstants
 		public const BFSWORD:Weapon = new Weapon("BFSword", "B.F.Sword", "big fucking sword", "a big fucking sword", "slash", 50, 2000, "Big Fucking Sword - the best solution for a tiny e-pen complex at this side of the Mareth!  This 2H 2,5 meters long sword requires 150 strength to fully unleash it power.", WT_SWORD, WSZ_LARGE)
 				.withTag(W_LGWRATH)
 				.withEffect(IELib.ScaleAttack_Str, 150) as Weapon;
-		public const BFWHIP :Weapon = new Weapon("BFWhip", "B.F.Whip", "big fucking whip", "a big fucking whip", "whipping", 36, 1440, "Big Fucking Whip - the best solution for master tiny e-pen complex at this side of the Mareth!  This 2H 5 meters long whip requires 225 (strength+speed) to fully unleash it power.", WT_WHIP,WSZ_LARGE)
+		public const BFWHIP :Weapon = new Weapon("BFWhip", "B.F.Whip", "big fucking whip", "a big fucking whip", "whipping", 36, 1440, "Big Fucking Whip - the best solution for master tiny e-pen complex at this side of the Mareth!  This 2H 5 meters long whip requires 225 (strength+speed) to fully unleash it power.", WT_WHIP, WSZ_LARGE)
 				.withBuffs({'teasedmg': 50})
 				.withEffect(IELib.ScaleAttack_StrSpe, 225)
 				.withTags(W_WHIPPING,W_LGWRATH) as Weapon;

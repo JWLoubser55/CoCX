@@ -14,7 +14,7 @@ public class Changelog extends BaseContent
 		{}
 		
 		public function accessChangelogMenu():void {
-			Changelog59();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, key item, item, consumable, usable, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene
+			Changelog59();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, key item, item, consumable, usable, material, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene
 		}
 		//zrobić do 2022 na świeta event z reniferami i nie odblokowywać go do ok. 20-24 grudnia 2021 xD
 		private function Changelog61():void {
@@ -167,7 +167,7 @@ public class Changelog extends BaseContent
 			outputText("-Aether Twins Sky-tier Gauntlets and Human-tier Dual Daggers forms fixes regarding extra attacks checks.\n");
 			outputText("-Expanded possible to get stuff from Bag of Cosmos items to give more then few spirit stones. Now can get some consumables or even usable items.\n");
 			outputText("-Living Statue would no longer getting out of jail card against Frostbite (fenrir) or Abyssal Shark Bite specials.\n");
-			outputText("-New usable item: Darksteel ingot. Costing 120 gems and can be found in cultivators bags of cosmos.\n");
+			outputText("-New material: Darksteel ingot. Costing 120 gems and can be found in cultivators bags of cosmos.\n");
 			outputText("-Since Vanilla check to drop axes from minotaurs or Marble large hammer are gone. With all cooler options it should no longer hold dreams of smol PC's to swing large axe for a minotaur if their dream is this.\n");
 			outputText("-New passive for Barometz race: Druidic Focus - Add your toughness to poison, earth and water element soulcasting and to spellcasting when using healing and green magic spells. Verdant might is applied to stave and wooden weapon melee damage.\n");
 			outputText("-New option in Phylactery Enchantment: Vessel rune Imbuement -> When training soulforce may increase demonic energy capacity by up to 2230%.\n");
@@ -191,7 +191,7 @@ public class Changelog extends BaseContent
 			outputText("-Soul Training Axe base atk (1 > 4) and cost (80 > 300) increased. For increasing maximum soulforce bonus from training items like the axe would now account for equipped weapon in offhand slot too.\n");
 			outputText("-New consumable items: Bag of Cosmos (B1) - founded at Soul Cultivators dead bodies. Contain random stuff inside like: spirit stones, cultivation consumables, cultivation resources.\n");//, Bag of Cosmos (A2), Bag of Cosmos (A3)
 			outputText("-When exploring Battlefield areas it's possible to find dead bodies of true demons or soul cultivators. And they are even lootable giving chance to get some potentialy usefull items.\n");
-			outputText("-New usable item: Soulmetal bar. Costing 240 gems and can be found in cultivators bags of cosmos.\n");
+			outputText("-New material: Soulmetal bar. Costing 240 gems and can be found in cultivators bags of cosmos.\n");
 			outputText("-Green Magic / Arcane Venom perks tier changed (3 > 12 / 9 > 8) with adjusted stat req.\n");
 			outputText("-By the Liadri decree green magic spells base damage was nerfed by 4x and base effects duration by 2x. Verdant Leech and Green Magic desc updated to reflect recent changed for green magic. Natural Spellcasting perk is no longer required to pick Green magic perk.\n");
 			outputText("-New Natural attack: Cockvine back. Req. cockvine wings. Add 4 Extra natural attacks in the form of slams. Damage ratio 1x per attack.\n");
@@ -219,7 +219,8 @@ public class Changelog extends BaseContent
 			outputText("-Update Kelly (Svalkash) (enabling not accesable tentacle fuck sex scene)\n");
 			outputText("-3rd tier of Human race score bonuses was renamed to Firstborn Human. Added also 4th tier that use (old tier 3) name of Primaris Super Human req. 63+ pts to reach it.\n");
 			outputText("-When Wendigo would apply Wendigo Psychosis status effect to PC during fight (not in post fight scene) it will now be notification ingame for this.\n");
-			outputText("-\n");
+			outputText("-Aether Twins can now after 4th evolution eat new materials: Darksteel ingot & Soul Residue. Also they can eat 1 new shield and 8 new large sized melee weapons. After eating those and then all materials the can it would enable them evolving to large sized weapon sword + large shield form. They could assume additional forms in case PC learned Dual Wield. ");
+			outputText("All forms are added to their morph menu.\n");// From here they can change to different large sized weapon (axe, rapier, spear, mace, whip) + shield forms.
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -584,7 +585,7 @@ public class Changelog extends BaseContent
 			outputText("-New consumable (by Ormael / all text written by Reverse Time Traveler): Demonize Me. Obtained from hidden compartment in Factory. Effects: Forcefully turn person using into true demon. (giving Soulless perk and Lethicite consumable)\n");
 			outputText("-New usable item: Purple Crystal. Costing 5 gems and it's obtainable from uncrafting 6 purple crystal shards. Can be used to disturb time flow or given to npc's that could use it for something to benefit pc.\n");
 			outputText("-New usable item: Feral Demon Skull. Costing 50 gems and it's obtainable from killing feral demon enemies.\n");
-			outputText("-New usable item: Skymetal (Adamantine) ore. It can gained as drop from Adamantine Golem.\n");
+			outputText("-New material: Skymetal (Adamantine) ore. It can gained as drop from Adamantine Golem.\n");
 			outputText("-New type of minions: tamed monsters. Req. Tamer Job and they can be at any time released to be replaced by different one monster. To succeed player must defeat them in combat and then have higher wisdom to successfully tame them (non feral/true demon tamable enemies are treated as if they had 10x higher wis). Some perks/items can increase their damage. They would also benefit from effectivness bonus that is applied to any henchman.\n");
 			outputText("-New damage type: Psychic - some of PC abilities or perks will not affect them (like dmg increase from missing HP during berserk state or debuffs affectiong enemy body (necrotic root, adic dot)). Enemies like mindbreaker also had some of their attacks type changed to psychic.\n");
 			outputText("-New damage type: Black Ice - it's mix of ice and darkness dmg and would be displayed as dealing two types of dmg.\n");

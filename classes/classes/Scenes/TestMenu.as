@@ -99,6 +99,7 @@ public class TestMenu extends BaseContent
 		bd.add("LichTest", MightyOrNot2, "Lich Testing");
 		bd.add("Re:Pearl", MightyOrNot3, "Restore chance to find Pearl after regaining soul").disableIf(flags[kFLAGS.SKY_POISON_PEARL] > 0);
 		bd.add("Chi-a-Chi-Fix", MightyOrNot4).disableIf((flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 3 || flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 3));
+		bd.add("Test5", MightyOrNot5, "Testing NaN");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -134,6 +135,12 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot5():void {
+		outputText("\n\n<b>Setting HP to 100 unless your save is potentialy bugged without help.</b>\n\n");
+		player.HP = 100;
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot4():void {

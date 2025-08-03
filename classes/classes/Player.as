@@ -1206,9 +1206,10 @@ use namespace CoC;
 		public function hasTentacleAttacks():Boolean{return LowerBody.hasTentacles(this) || hasPerk(PerkLib.MorphicWeaponry);}
 		public function hasAetherTwinsTier1():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Gauntlets"; }
 		public function hasAetherTwinsTier2():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets"; }
+		public function hasAetherTwinsTier3():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Greatsword and Large Shield"; }
 		public function hasAetherTwinsTierWeapon():Boolean { return weapon == game.weapons.AETHERD && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers"); }
 		public function hasAetherTwinsTierWeapon2():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers"; }
-		public function hasAetherTwinsTierWeapon3():Boolean { return hasAetherTwinsTierWeaponMSword() || hasAetherTwinsTierWeaponMAxe() || hasAetherTwinsTierWeaponMRapier() || hasAetherTwinsTierWeaponMSpear(); }
+		public function hasAetherTwinsTierWeapon3():Boolean { return hasAetherTwinsTierWeaponMSword() || hasAetherTwinsTierWeaponMAxe() || hasAetherTwinsTierWeaponMRapier() || hasAetherTwinsTierWeaponMSpear(); }// || hasAetherTwinsTierWeaponMMace() || hasAetherTwinsTierWeaponMWhip()
 		public function hasAetherTwinsTierWeaponMSword():Boolean { return weapon == game.weapons.AETHERD && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords"); }
 		public function hasAetherTwinsTierWeaponMAxe():Boolean { return weapon == game.weapons.AETHERD && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes"); }
 		public function hasAetherTwinsTierWeaponMRapier():Boolean { return weapon == game.weapons.AETHERD && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers"); }
@@ -1219,7 +1220,7 @@ use namespace CoC;
 			return shield == game.shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords"
 			 || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers"
 			 || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces"
-			 || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips");
+			 || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Greatsword and Large Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords");
 		}
 		public function hasAetherTwinsTierS1():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield"; }
 		public function hasAetherTwinsTierS2():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers"; }
@@ -1237,17 +1238,23 @@ use namespace CoC;
 		public function hasAetherTwinsTierMM2():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces"; }
 		public function hasAetherTwinsTierMW1():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield"; }
 		public function hasAetherTwinsTierMW2():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips"; }
+		public function hasAetherTwinsTierLarge1():Boolean { return hasAetherTwinsTierLS1(); }
+		public function hasAetherTwinsTierLarge2():Boolean { return hasAetherTwinsTierLS2(); }
+		public function hasAetherTwinsTierLS1():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Greatsword and Large Shield"; }
+		public function hasAetherTwinsTierLS2():Boolean { return shield == game.shields.AETHERS && weapon == game.weapons.AETHERD && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords"; }
+		
 		public function hasAetherTwinsTierLeftDagger():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers"; }
-		public function hasAetherTwinsTierLeftShield():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield"; }
-		public function hasAetherTwinsTierLeftSword():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords"; }
+		public function hasAetherTwinsTierLeftSword():Boolean { return shield == game.shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords"); }
 		public function hasAetherTwinsTierLeftAxe():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes"; }
 		public function hasAetherTwinsTierLeftRapier():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers"; }
 		public function hasAetherTwinsTierLeftSpear():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears"; }
 		public function hasAetherTwinsTierLeftMace():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces"; }
 		public function hasAetherTwinsTierLeftWhip():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips"; }
+		public function hasAetherTwinsTierLeftShield():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield"; }
 		public function hasAetherTwinsTierLeftMediumShield():Boolean { return shield == game.shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield" ||
 			AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield"); }
-		public function hasAetherTwinsLargerThenMediumSizedDexTwin():Boolean { return weapon == game.weapons.AETHERD && (AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets"); }//all dex twin forms with Large/Massive size tag
+		public function hasAetherTwinsTierLeftLargeShield():Boolean { return shield == game.shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape == "Human-tier Greatsword and Large Shield"; }
+		public function hasAetherTwinsLargerThenMediumSizedDexTwin():Boolean { return weapon == game.weapons.AETHERD && (AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets" || hasAetherTwinsTierLarge1() || hasAetherTwinsTierLarge2()); }//all dex twin forms with Large/Massive size tag
 		//Some other checks
 		public function isGoblinoid(checkRP:Boolean = true):Boolean { return (isRace(Races.GOBLIN, 1, checkRP) || isRace(Races.GREMLIN, 1, checkRP)); }
 		public function isSlime():Boolean { return (hasPerk(PerkLib.DarkSlimeCore) || hasPerk(PerkLib.SlimeCore)); }
@@ -1307,7 +1314,8 @@ use namespace CoC;
 		public function isNotHavingShieldCuzPerksNotWorkingOtherwise():Boolean
 		{
 			return shield.isNothing || (shield == game.shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" ||
-			 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips"));
+			 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips" ||
+			 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords"));
 		}
 
 		//weaponType check. Make sure weapon has the type filled in. Currently, Type is the last parameter in Weapon().
@@ -1920,7 +1928,7 @@ use namespace CoC;
 			var weaponMainSize:Number;
 			if ((weapon.isSmall() && !isFistOrFistWeapon()) || hasAetherTwinsTierS1() || hasAetherTwinsTierS2()) weaponMainSize = 0;
 			if (weapon.isMedium() || hasAetherTwinsTierMedium1() || hasAetherTwinsTierMedium2()) weaponMainSize = 1;
-			if (weapon.isLarge() || isLargeGauntletWeapon()) weaponMainSize = 2;
+			if (weapon.isLarge() || isLargeGauntletWeapon() || hasAetherTwinsTierLarge1() || hasAetherTwinsTierLarge2()) weaponMainSize = 2;
 			if (weapon.isMassive()) weaponMainSize = 3;
 			return weaponMainSize;
 		}
@@ -2176,7 +2184,7 @@ use namespace CoC;
 		{
 			return shield == game.shields.BSHIELD || shield == game.shields.BUCKLER || shield == game.shields.DRGNSHL || shield == game.shields.KITE_SH || shield == game.shields.TRASBUC || shield == game.shields.SPIL_SH || shield == game.shields.SANCTYN || shield == game.shields.SANCTYL || shield == game.shields.SANCTYD
 			 || shieldPerk == "Large" || shieldPerk == "Massive" || (shield == game.shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Gauntlets" || AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield")
-			 || hasAetherTwinsTierLeftMediumShield());
+			 || hasAetherTwinsTierLeftMediumShield() || hasAetherTwinsTierLeftLargeShield());
 		}
 		//Dragon Sield or Aether Twin with same effect
 		public function isFluidAbsorbingShield():Boolean
@@ -2191,11 +2199,11 @@ use namespace CoC;
 			var block:Number = shield.block;
 			if (hasPerk(PerkLib.JobKnight)) {
 				if (shieldPerk == "Massive") block += 3;
-				else if (shieldPerk == "Large" || hasAetherTwinsTierLeftMediumShield()) block += 2;
+				else if (shieldPerk == "Large" || hasAetherTwinsTierLeftLargeShield()) block += 2;
 				else block += 1;
 			}
-			if (hasAetherTwinsTier2() || hasAetherTwinsTierS1() || hasAetherTwinsTierMedium1()) block += 4;
-			else if (hasAetherTwinsTier1() || hasAetherTwinsTierS2() || hasAetherTwinsTierMedium2()) block += 2;
+			if (hasAetherTwinsTier2() || hasAetherTwinsTierS1() || hasAetherTwinsTierMedium1() || hasAetherTwinsTierLarge1()) block += 4;
+			else if (hasAetherTwinsTier1() || hasAetherTwinsTierS2() || hasAetherTwinsTierMedium2() || hasAetherTwinsTierLarge2()) block += 2;
 			else if (shield == game.shields.AETHERS && weapon == game.weapons.AETHERD) block += 1;
 			if (hasPerk(PerkLib.PrestigeJobSentinel)) {
 				if (shieldPerk == "Massive") block += 8;

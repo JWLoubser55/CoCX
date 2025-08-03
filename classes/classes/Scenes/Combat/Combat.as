@@ -10108,7 +10108,7 @@ public class Combat extends BaseContent {
 		var bleed:Boolean = false;
         var bleedChance:int = 0;
 		//50% bleed chance
-        if (player.shield == shields.SPIL_SH || player.shield == shields.SPIH_SH || player.shield == shields.SPIM_SH || (player.hasAetherTwinsTier2())) bleedChance += 50;
+        if (player.shield == shields.SPIL_SH || player.shield == shields.SPIH_SH || player.shield == shields.SPIM_SH || player.hasAetherTwinsTier2() || player.hasAetherTwinsTier3()) bleedChance += 50;
 		if (monster.hasPerk(PerkLib.EnemyConstructType) || monster.hasPerk(PerkLib.EnemyPlantType) || monster.hasPerk(PerkLib.EnemyGooType) || monster.hasPerk(PerkLib.EnemyUndeadType)) bleedChance = 0;
         if (rand(100) < bleedChance) bleed = true;
 		if (bleed) {
