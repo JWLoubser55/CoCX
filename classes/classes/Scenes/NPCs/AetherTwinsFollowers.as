@@ -1125,17 +1125,26 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			addButtonDisabled(3, "???", "After the twins' fourth evolution.");
 		}
 		if (AetherTwinsFoodMenu4) {
-			if (AetherTwinsShape == "Human-tier Greatsword and Large Shield") addButtonDisabled(5, "HtGSword&LShield", "They are currently in Human-tier Sword and Shield form.");
+			if (AetherTwinsShape == "Human-tier Greatsword and Large Shield") addButtonDisabled(5, "HtGSword&LShield", "They are currently in Human-tier Greatsword and Large Shield form.");
 			else addButton(5, "HtGSword&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Greatsword", 2);
-			if (AetherTwinsShape == "Human-tier Dual Greatswords") addButtonDisabled(6, "HtDualGSwords", "They are currently in Human-tier Dual Swords form.");
+			if (AetherTwinsShape == "Human-tier Dual Greatswords") addButtonDisabled(6, "HtDualGSwords", "They are currently in Human-tier Dual Greatswords form.");
 			else {
-				if (player.hasPerk(PerkLib.DualWield)) addButton(65, "HtDualGSwords", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Greatsword", 2);
+				if (player.hasPerk(PerkLib.DualWield)) addButton(6, "HtDualGSwords", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Greatsword", 2);
 				else addButtonDisabled(6, "HtDualGSwords", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}
+			if (AetherTwinsShape == "Human-tier Large Axe and Large Shield") addButtonDisabled(7, "HtLAxe&LShield", "They are currently in Human-tier Large Axe and Large Shield form.");
+			else addButton(7, "HtLAxe&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Axe", 2);
+			if (AetherTwinsShape == "Human-tier Dual Large Axes") addButtonDisabled(8, "HtDualLAxes", "They are currently in Human-tier Dual Large Axes form.");
+			else {
+				if (player.hasPerk(PerkLib.DualWield)) addButton(8, "HtDualLAxes", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Axe", 2);
+				else addButtonDisabled(8, "HtDualLAxes", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}
 		}
 		else {
 			addButtonDisabled(5, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(6, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(7, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(8, "???", "After the twins' fifth evolution.");
 		}
 		addButton(4, "Next", aethertwinsFollowersMorphMain, page - 1);
 		addButton(9, "Previous", aethertwinsFollowersMorphMain, page - 1);
