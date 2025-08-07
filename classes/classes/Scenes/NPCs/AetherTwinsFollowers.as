@@ -1139,12 +1139,19 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 				if (player.hasPerk(PerkLib.DualWield)) addButton(8, "HtDualLAxes", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Axe", 2);
 				else addButtonDisabled(8, "HtDualLAxes", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}
-			if (AetherTwinsShape == "Human-tier Katana and Large Shield") addButtonDisabled(0, "HtKatana&LShield", "They are currently in Human-tier Katana and Large Shield form.");
+			if (AetherTwinsShape == "Human-tier Katana and Large Shield") addButtonDisabled(10, "HtKatana&LShield", "They are currently in Human-tier Katana and Large Shield form.");
 			else addButton(10, "HtKatana&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Katana", 2);
 			if (AetherTwinsShape == "Human-tier Dual Katanas") addButtonDisabled(11, "HtDualKatanas", "They are currently in Human-tier Dual Katanas form.");
 			else {
 				if (player.hasPerk(PerkLib.DualWield)) addButton(11, "HtDualKatanas", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Katana", 2);
 				else addButtonDisabled(11, "HtDualKatanas", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}
+			if (AetherTwinsShape == "Human-tier Large Spear and Large Shield") addButtonDisabled(12, "HtLSpear&LShield", "They are currently in Human-tier Large Spear and Large Shield form.");
+			else addButton(12, "HtLSpear&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Spear", 2);
+			if (AetherTwinsShape == "Human-tier Dual Large Spears") addButtonDisabled(13, "HtDualLSpears", "They are currently in Human-tier Dual Large Spears form.");
+			else {
+				if (player.hasPerk(PerkLib.DualWield)) addButton(11, "HtDualLSpears", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Spear", 2);
+				else addButtonDisabled(13, "HtDualLSpears", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}
 		}
 		else {
@@ -1154,6 +1161,8 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			addButtonDisabled(8, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(10, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(11, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(12, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(13, "???", "After the twins' fifth evolution.");
 		}
 		addButton(4, "Next", aethertwinsFollowersMorphMain, page - 1);
 		addButton(9, "Previous", aethertwinsFollowersMorphMain, page - 1);
@@ -1442,4 +1451,4 @@ private function takeAetherS():void {
 	inventory.takeItem(item, aethertwinsFollowers);
 }
 	}
-}
+}

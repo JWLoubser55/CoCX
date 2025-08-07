@@ -35,11 +35,13 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield") desc += "Sword";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield") desc += "Axe";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") desc += "Rapier";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield") desc += "Spear";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield") desc += "Mace";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield") desc += "Whip";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Greatsword and Large Shield") desc += "Greatsword";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Axe and Large Shield") desc += "GreatAxe";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Katanas" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Katana and Large Shield") desc += "Katana";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Spear and Large Shield") desc += "Large Spear";
 			else desc += "Gauntlet";
 			desc += ")";
 			//Attack
@@ -50,7 +52,9 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 		}
 		
 		override public function get verb():String {
-			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") return "stab";
+			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield" ||
+				AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield" ||
+				AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Spear and Large Shield") return "stab";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" ||
 					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield" ||
 					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Greatsword and Large Shield" ||
@@ -76,6 +80,8 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Axe and Large Shield") return WT_AXE;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield" ||
 					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Katanas" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Katana and Large Shield") return WT_DUELING;
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield" ||
+					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Spear and Large Shield") return WT_SPEAR;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield") return WT_MACE_HAMMER;
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Whip and Shield") return WT_WHIP;
 			else return WT_GAUNTLET;
@@ -83,7 +89,8 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 		
 		override public function get size():int {
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") return WSZ_SMALL;
-			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Katanas" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Katana and Large Shield" ||
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Spear and Large Shield" ||
+					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Katanas" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Katana and Large Shield" ||
 					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Axe and Large Shield" ||
 					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Greatsword and Large Shield" ||
 					 AetherTwinsFollowers.AetherTwinsShape == "Sky-tier Gauntlets") return WSZ_LARGE;
@@ -128,7 +135,8 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield" ||
 						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield" ||
 						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Greatsword and Large Shield" ||
-						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Axe and Large Shield") return lustDmg2;
+						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Axes" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Axe and Large Shield" ||
+						 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Spear and Large Shield") return lustDmg2;
 				else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield") return lustDmg3;
 			}
 			if (type == IELib.ArmorPenetration) {

@@ -220,11 +220,11 @@ public class Changelog extends BaseContent
 			outputText("-3rd tier of Human race score bonuses was renamed to Firstborn Human. Added also 4th tier that use (old tier 3) name of Primaris Super Human req. 63+ pts to reach it.\n");
 			outputText("-When Wendigo would apply Wendigo Psychosis status effect to PC during fight (not in post fight scene) it will now be notification ingame for this.\n");
 			outputText("-Aether Twins can now after 4th evolution eat new materials: Darksteel ingot & Soul Residue. Also they can eat 1 new shield and 8 new large sized melee weapons. After eating those and then all materials the can it would enable them evolving to greatsword + large shield form. From here they can change to different large sized weapon ");
-			outputText("(large axe (throwable), katana) + large shield forms. They could assume additional forms in case PC learned Dual Wield. All those forms are added to their morph menu.\n");
-			outputText("-\n");//, rapier, spear, mace, whip
+			outputText("(large axe (throwable), katana, large spear) + large shield forms. They could assume additional forms in case PC learned Dual Wield. All those forms are added to their morph menu.\n");
+			outputText("-Perks from Job: Guardian tree would now add 1-3 points in calculation of damage reduction based on player core and trained tou values as long those are above 0.\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//, rapier, mace, whip
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

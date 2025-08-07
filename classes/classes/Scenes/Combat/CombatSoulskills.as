@@ -10,6 +10,7 @@ import classes.PerkLib;
 import classes.Races;
 import classes.Scenes.API.FnHelpers;
 import classes.Scenes.Dungeons.D3.LivingStatue;
+import classes.Scenes.NPCs.AetherTwinsFollowers;
 import classes.Scenes.NPCs.Jojo;
 import classes.Scenes.NPCs.JojoScene;
 import classes.StatusEffects;
@@ -130,7 +131,8 @@ public class CombatSoulskills extends BaseCombatContent {
 		}
 		if (player.hasStatusEffect(StatusEffects.MartialTraining) && player.statusEffectv2(StatusEffects.MartialTraining) > 3) modssp += (0.1 * (player.statusEffectv2(StatusEffects.MartialTraining) - 3));
 		if (player.perkv1(IMutationsLib.HumanBonesIM) >= 4 && player.racialScore(Races.HUMAN) > 17) modssp += 1;
-		if (player.hasAetherTwinsTierWeapon3() || player.hasAetherTwinsTierWeapon4()) modssp += 0.4;
+		if (player.hasAetherTwinsTierWeaponMSword() || player.hasAetherTwinsTierWeaponLSword() || player.hasAetherTwinsTierWeaponLSpear()) modssp += 0.4;
+		if (player.hasAetherTwinsTierLeftSword() || player.hasAetherTwinsTierLeftSpear()) modssp += 0.4;
 		if (modsspb > 1) modssp *= modsspb;
 		modssp = Math.round(modssp * 100) / 100;
 		return modssp;
@@ -173,7 +175,7 @@ public class CombatSoulskills extends BaseCombatContent {
 		if (player.shieldName == "spirit focus") modssm += .25;
 		if (player.armor == armors.DEATHPO) modssm += .5;
 		if (player.armor == armors.DEATHPGA) modssm += 2;
-		if (player.hasAetherTwinsTierWeapon4()) modssm += 0.4;
+		if (player.hasAetherTwinsTierWeaponMSword() || (player.shield == shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears"))) modssm += 0.4;
 		if (modssmb > 1) modssm *= modssmb;
 		modssm = Math.round(modssm * 100) / 100;
 		return modssm;
