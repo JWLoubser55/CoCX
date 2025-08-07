@@ -8256,7 +8256,7 @@ public class PerkLib
 			HighlyVenomousDiet.requirePerk(VenomousDiet);
 			AxillaryVenomGlands.requirePerk(VenomousAdiposeTissue);
 			NatureMage.requireLevel(12)
-					.requirePerk(Mage)
+					.requireAnyPerk(Mage, ArchmageEx)
 					.requireInt(55)
 					.requireLib(55)
 					.requireCor(50);

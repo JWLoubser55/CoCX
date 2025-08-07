@@ -2743,7 +2743,7 @@ import classes.Scenes.Combat.CombatAbility;
 			}
 			btn++
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 3 && player.hasPerk(PerkLib.AscensionHerosLegacy)) {
-				if (player.ascensionPerkPoints >= 75 && !player.hasPerk(PerkLib.AscensionBloodlineHeritage)) addButton(btn, "BloodHeritage", perkBloodlineHeritage).hint("Perk giving you an additional 1 perk point, 1 super perk point and 5 stat points at the start of the game (scaling with current NG tier, for super perk points amount is reduced by 3). Also would increase any bloodline perk bonus by 1.\n\nCost: 75 points");
+				if (player.ascensionPerkPoints >= 75 && !player.hasPerk(PerkLib.AscensionBloodlineHeritage)) addButton(btn, "BloodHeritage", perkBloodlineHeritage).hint("Perk giving you an additional 1 perk point, 1 super perk point and 5 stat points at the start of the game (scaling with current NG tier, for super perk points amount is reduced by 3). Also would increase any bloodline perk bonus by 2.\n\nCost: 75 points");
 				else if (player.ascensionPerkPoints < 75) button(btn).disable("You do not have enough ascension perk points!");
 				else addButtonDisabled(btn, "BloodHeritage", "You already bought Bloodline Heritage perk.");
 			}
