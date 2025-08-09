@@ -3034,23 +3034,23 @@ public class PerkLib
 				"Gain +100% boost to health and fatigue recovery during sleep.",
 				"You've chosen the 'Recuperation Sleep' perk, boosting your health and fatigue recovery rate while sleeping!");
 		public static const RefinedBodyI:PerkType = mk("Refined Body I", "Refined Body I",
-				"Raises max HP by 5% of base value.",
-				"You've chosen the 'Refined Body I' perk, giving you an additional 5% to base HP!");
+				"Raises max HP by 5% of base value. (+2 to tou based DR)",
+				"You've chosen the 'Refined Body I' perk, giving you an additional 5% to base HP! (+2 to tou based DR)");
 		public static const RefinedBodyII:PerkType = mk("Refined Body II", "Refined Body II",
-				"Raises max HP by 5% of base value.",
-				"You've chosen the 'Refined Body II' perk, giving you an additional 5% to base HP!");
+				"Raises max HP by 5% of base value. (+2 to tou based DR)",
+				"You've chosen the 'Refined Body II' perk, giving you an additional 5% to base HP! (+2 to tou based DR)");
 		public static const RefinedBodyIII:PerkType = mk("Refined Body III", "Refined Body III",
-				"Raises max HP by 5% of base value.",
-				"You've chosen the 'Refined Body III' perk, giving you an additional 5% to base HP!");
+				"Raises max HP by 5% of base value. (+2 to tou based DR)",
+				"You've chosen the 'Refined Body III' perk, giving you an additional 5% to base HP! (+2 to tou based DR)");
 		public static const RefinedBodyIV:PerkType = mk("Refined Body IV", "Refined Body IV",
-				"Raises max HP by 5% of base value.",
-				"You've chosen the 'Refined Body IV' perk, giving you an additional 5% to base HP!");
+				"Raises max HP by 5% of base value. (+3 to tou based DR)",
+				"You've chosen the 'Refined Body IV' perk, giving you an additional 5% to base HP! (+3 to tou based DR)");
 		public static const RefinedBodyV:PerkType = mk("Refined Body V", "Refined Body V",
-				"Raises max HP by 5% of base value.",
-				"You've chosen the 'Refined Body V' perk, giving you an additional 5% to base HP!");
+				"Raises max HP by 5% of base value. (+3 to tou based DR)",
+				"You've chosen the 'Refined Body V' perk, giving you an additional 5% to base HP! (+3 to tou based DR)");
 		public static const RefinedBodyVI:PerkType = mk("Refined Body VI", "Refined Body VI",
-				"Raises max HP by 5% of base value.",
-				"You've chosen the 'Refined Body VI' perk, giving you an additional 5% to base HP!");
+				"Raises max HP by 5% of base value. (+3 to tou based DR)",
+				"You've chosen the 'Refined Body VI' perk, giving you an additional 5% to base HP! (+3 to tou based DR)");
 		public static const Refinement:PerkType = mk("Refinement", "Refinement",
 				"Using your acquired knowledge, you refine each item to increase its effects on your body, further increasing the changes +2% alchemy/mutagen boost.",
 				"You've chosen the 'Refinement' perk, number of possible effects of transformatives +2% alchemy/mutagen boost.");
@@ -3397,23 +3397,23 @@ public class PerkLib
 				"Sample Text Here/+20% fatigue recovery rate",
 				"You've chosen the 'Taking a Break' perk, gaining +20% fatigue recovery rate.");
 		public static const TankI:PerkType = mk("Tank I", "Tank I",
-				"+12 extra HP per point of toughness.",
-				"You've chosen the 'Tank I' perk, granting +12 extra maximum HP for each point of toughness.");
+				"+12 extra HP per point of toughness. (+1 to tou based DR)",
+				"You've chosen the 'Tank I' perk, granting +12 extra maximum HP for each point of toughness. (+1 to tou based DR)");
 		public static const TankII:PerkType = mk("Tank II", "Tank II",
-				"+12 extra HP per point of toughness.",
-				"You've chosen the 'Tank II' perk, granting +12 extra maximum HP for each point of toughness.");
+				"+12 extra HP per point of toughness. (+1 to tou based DR)",
+				"You've chosen the 'Tank II' perk, granting +12 extra maximum HP for each point of toughness. (+1 to tou based DR)");
 		public static const TankIII:PerkType = mk("Tank III", "Tank III",
-				"+12 extra HP per point of toughness.",
-				"You've chosen the 'Tank III' perk, granting +12 extra maximum HP for each point of toughness.");
+				"+12 extra HP per point of toughness. (+1 to tou based DR)",
+				"You've chosen the 'Tank III' perk, granting +12 extra maximum HP for each point of toughness. (+1 to tou based DR)");
 		public static const TankIV:PerkType = mk("Tank IV", "Tank IV",
-				"+12 extra HP per point of toughness.",
-				"You've chosen the 'Tank IV' perk, granting +12 extra maximum HP for each point of toughness.");
+				"+12 extra HP per point of toughness. (+2 to tou based DR)",
+				"You've chosen the 'Tank IV' perk, granting +12 extra maximum HP for each point of toughness. (+2 to tou based DR)");
 		public static const TankV:PerkType = mk("Tank V", "Tank V",
-				"+12 extra HP per point of toughness.",
-				"You've chosen the 'Tank V' perk, granting +12 extra maximum HP for each point of toughness.");
+				"+12 extra HP per point of toughness. (+2 to tou based DR)",
+				"You've chosen the 'Tank V' perk, granting +12 extra maximum HP for each point of toughness. (+2 to tou based DR)");
 		public static const TankVI:PerkType = mk("Tank VI", "Tank VI",
-				"+12 extra HP per point of toughness.",
-				"You've chosen the 'Tank VI' perk, granting +12 extra maximum HP for each point of toughness.");
+				"+12 extra HP per point of toughness. (+2 to tou based DR)",
+				"You've chosen the 'Tank VI' perk, granting +12 extra maximum HP for each point of toughness. (+2 to tou based DR)");
 		public static const Teacher:PerkType = mk("Teacher", "Teacher",
 				"Instead of being taught, now you teach others. Your skill allows you to increase max mana by 10%.",
 				"You've chosen the 'Teacher' perk, gaining +10% max Mana.")
@@ -8992,4 +8992,4 @@ public class PerkLib
         }
 	}
 }
-}
+}

@@ -3103,6 +3103,32 @@ use namespace CoC;
 			}
 			else CoC.instance.monster.createStatusEffect(StatusEffects.NagaVenom,d1Bdcc,2,0,0);
 		}
+		public function toughnessDamageMultiplier():Number {
+			var dmmc:Number = 0;
+			var dmmt:Number = 0;
+			var dmmm:Number = 0;
+			var dmm:Number = 0;
+			if (touStat.core.value > 0) dmmc += touStat.core.value;
+			if (touStat.train.value > 0) dmmt += touStat.train.value;
+			if (hasPerk(PerkLib.JobGuardian)) dmmm += 1;
+			if (hasPerk(PerkLib.TankI)) dmmm += 1;
+			if (hasPerk(PerkLib.TankII)) dmmm += 1;
+			if (hasPerk(PerkLib.TankIII)) dmmm += 1;
+			if (hasPerk(PerkLib.TankIV)) dmmm += 2;
+			if (hasPerk(PerkLib.TankV)) dmmm += 2;
+			if (hasPerk(PerkLib.TankVI)) dmmm += 2;
+			if (hasPerk(PerkLib.RefinedBodyI)) dmmm += 2;
+			if (hasPerk(PerkLib.RefinedBodyII)) dmmm += 2;
+			if (hasPerk(PerkLib.RefinedBodyIII)) dmmm += 2;
+			if (hasPerk(PerkLib.RefinedBodyIV)) dmmm += 3;
+			if (hasPerk(PerkLib.RefinedBodyV)) dmmm += 3;
+			if (hasPerk(PerkLib.RefinedBodyVI)) dmmm += 3;
+			dmm += dmmc;
+			dmm += dmmt;
+			dmm += dmmm;
+			if (dmm < 1) dmm = 1;
+			return dmm;
+		}
 		public function difficultyDamageMultiplier(damage:Number):Number {
 			var damageMultiplier:Number = 1;
 			//EZ MOAD 1/10th damage
@@ -3116,35 +3142,6 @@ use namespace CoC;
 			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] >= 6) damageMultiplier *= 3.5;
 			return damage * damageMultiplier;
 		}
-		public function toughnessDamageMultiplier(damage:Number):Number {
-			var damageMultiplier:Number = 0;
-			var dMMP:Number = 0;
-			var dMM:Number = 0;
-			if (hasPerk(PerkLib.JobGuardian)) dMMP += 1;
-			if (hasPerk(PerkLib.TankI)) dMMP += 1;
-			if (hasPerk(PerkLib.TankII)) dMMP += 1;
-			if (hasPerk(PerkLib.TankIII)) dMMP += 1;
-			if (hasPerk(PerkLib.TankIV)) dMMP += 2;
-			if (hasPerk(PerkLib.TankV)) dMMP += 2;
-			if (hasPerk(PerkLib.TankVI)) dMMP += 2;
-			if (hasPerk(PerkLib.RefinedBodyI)) dMMP += 2;
-			if (hasPerk(PerkLib.RefinedBodyII)) dMMP += 2;
-			if (hasPerk(PerkLib.RefinedBodyIII)) dMMP += 2;
-			if (hasPerk(PerkLib.RefinedBodyIV)) dMMP += 3;
-			if (hasPerk(PerkLib.RefinedBodyV)) dMMP += 3;
-			if (hasPerk(PerkLib.RefinedBodyVI)) dMMP += 3;
-			if (touStat.core.value > 0) {
-				dMM += touStat.core.value;
-				if (dMMP > 0) dMM += dMMP;
-			}
-			if (touStat.train.value > 0) {
-				dMM += touStat.train.value;
-				if (dMMP > 0) dMM += dMMP;
-			}
-			damageMultiplier += dMM;
-			if (damageMultiplier < 1) damageMultiplier = 1;
-			return damage * damageMultiplier;
-		}
 		public function takeDamage(damage:Number, damagetype:Number = 0, display:Boolean = false, hit:Number = 1):Number{
 			// Damage types:
 			// 0: phys, 1: null, 2: null, 3: null
@@ -3154,7 +3151,7 @@ use namespace CoC;
 			// 13: acid, 14: psychic, 15: true
 			// 16: sound?
 			damage = difficultyDamageMultiplier(damage);
-			damage = toughnessDamageMultiplier(damage);
+			damage *= 1/toughnessDamageMultiplier();
 			var physTeaseDmg:Boolean = false;
 			var remainingHit:Array = [];
 			//all dmg reduction effect(s)
@@ -6281,7 +6278,7 @@ use namespace CoC;
 			if (!hasPerk(PerkLib.StrengthOfStone) && statStore.hasBuff('Strength of stone')) statStore.removeBuffs('Strength of stone');
 			if (hasPerk(PerkLib.CovenantOfTheSpirits)) statStore.replaceBuffObject({'spe.mult':(0.01 * Math.round(inte/2))}, 'Covenant of the spirits', { text: 'Covenant of the spirits' });
 			if (!hasPerk(PerkLib.CovenantOfTheSpirits) && statStore.hasBuff('Covenant of the spirits')) statStore.removeBuffs('Covenant of the spirits');
-			if (hasPerk(PerkLib.PsionicEmpowerment)) statStore.replaceBuffObject({'int.mult':(0.01 * Mindbreaker.MindBreakerFullConvert)}, 'Psionic Empowerment', { text: 'Psionic Empowerment' });
+			if (hasPerk(PerkLib.PsionicEmpowerment)) statStore.replaceBuffObject({'int.mult':(0.05 * Mindbreaker.MindBreakerFullConvert)}, 'Psionic Empowerment', { text: 'Psionic Empowerment' });
 			if (isGoblinoid() && hasMutation(IMutationsLib.GoblinOvariesIM) && perkv1(IMutationsLib.GoblinOvariesIM) >= 4) statStore.replaceBuffObject({'lib.mult':(totalFertility()*0.01)}, 'Goblin Ovaries bonus', { text: 'Goblin Ovaries bonus' });
 			if (isGoblinoid() && hasMutation(IMutationsLib.GoblinOvariesIM) && perkv1(IMutationsLib.GoblinOvariesIM) >= 4 && statStore.hasBuff("Goblin Ovaries bonus")) statStore.removeBuffs('Goblin Ovaries bonus');
 			var power:Number = 0;
