@@ -1277,6 +1277,8 @@ use namespace CoC;
 		public function isTechSavvyPC():Boolean { return (isGoblinoid() || (hasPerk(IMutationsLib.HumanSmartsIM) && perkv1(IMutationsLib.HumanSmartsIM) >= 2) || isRace(Races.WEREFOX)); }
 		public function isTechWeapons():Boolean { return (weapon.isTechWeapon()); }
 		public function isAbleToOneHandWieldLargeWeapon():Boolean { return (hasPerk(PerkLib.GigantGrip) || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent()) || hasAetherTwinsLargerThenMediumSizedDexTwin()); } 
+		public function isAbleToOneHandWieldMassiveWeapon():Boolean { return hasPerk(PerkLib.TitanGrip); } //( || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent()) || hasAetherTwinsLargerThenMediumSizedDexTwin())
+		public function isAbleToTwoHandWieldMassiveWeapon():Boolean { return (hasPerk(PerkLib.GigantGripSu) && hasFourArms()); } // || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent()) || hasAetherTwinsLargerThenMediumSizedDexTwin()
 		//Weapons for Whirlwind
 		public function isWeaponForWhirlwind():Boolean
 		{
@@ -1408,7 +1410,7 @@ use namespace CoC;
 		public function isUsingGoblinMechFriendlyFirearms():Boolean
 		{
 			return weaponRange == game.weaponsrange.ADBSCAT || weaponRange == game.weaponsrange.ADBSHOT || weaponRange == game.weaponsrange.BLUNDER || weaponRange == game.weaponsrange.DESEAGL || weaponRange == game.weaponsrange.TDEEAGL || weaponRange == game.weaponsrange.DUEL_P_ || weaponRange == game.weaponsrange.FLINTLK || weaponRange == game.weaponsrange.HARPGUN
-			 || weaponRange == game.weaponsrange.IVIARG_ || weaponRange == game.weaponsrange.M1CERBE || weaponRange == game.weaponsrange.TM1CERB || weaponRange == game.weaponsrange.TOUHOM3 || weaponRange == game.weaponsrange.TWINGRA || weaponRange == game.weaponsrange.TDPISTO || weaponRange == game.weaponsrange.DPISTOL;
+			 || weaponRange == game.weaponsrange.IVIARG_ || weaponRange == game.weaponsrange.M1CERBE || weaponRange == game.weaponsrange.TM1CERB || weaponRange == game.weaponsrange.TOUHOM3 || weaponRange == game.weaponsrange.TWINGRA || weaponRange == game.weaponsrange.TDPISTO || weaponRange == game.weaponsrange.DPISTOL || weaponRange == game.weaponsrange.ENERGYG;
 		}
 		public function isUsingMechMeleeWeapons():Boolean
 		{

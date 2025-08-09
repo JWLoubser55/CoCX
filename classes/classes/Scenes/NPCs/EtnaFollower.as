@@ -289,8 +289,8 @@ public function etnaRapeYesM():void
 	else outputText("the manticore");
 	outputText(" likes milk, as that would fit with the whole cat aspect. She cuts your thoughts short as she slides your [cock] between her large breasts, carefully squishing them together with her paws. You moan at the cat girl’s ministration as she proceeds to pump your [cock] up and down with her breasts, still licking your tip. Her titfuck feels wonderful and the way she licks your tip is clearly that of an expert whore, ");
 	if (flags[kFLAGS.ETNA_TALKED_ABOUT_HER] >= 1 && !player.hasStatusEffect(StatusEffects.WildManticore)) outputText("Etna");
-	else outputText(" the manticore");
-	outputText("seems to go into a frenzy as a drop of precum drools down your [cock] right on to her tongue. She starts to pump faster in an effort to force the cum out.\n\n");
+	else outputText("the manticore");
+	outputText(" seems to go into a frenzy as a drop of precum drools down your [cock] right on to her tongue. She starts to pump faster in an effort to force the cum out.\n\n");
 	outputText("\"<i>Nyaaaaa yes, that’s it! Give it all to me.</i>\"\n\n");
 	outputText("Accidentally, in her excitement, her tail slap against your flank injecting your side with a dash of her lewd venom but this only get your penis to swell even more. Whatever is coming out is gonna be one hell of a mess. Soon you can’t hold it any longer and paint her entire face with your man milk, to which she answers by methodically licking the cum clean like a cat drinking milk. Her expression and the way she grooms her paws licking them clean of your cum with a sensual \"<i>Nyaaaaaa</i>\" is so cute you idly ponder if she’s more cat than human.\n\n");
 	outputText("Having taken your tribute you dismiss her and proceed to head back to camp.");
