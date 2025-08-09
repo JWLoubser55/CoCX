@@ -679,14 +679,14 @@ public class PerkLib
 				"As psychic you have gained ability to manipulate or control black ice.",
 				"You've chosen the 'Cocytokinesis' perk. As psychic you have gained ability to manipulate or control black ice.");
 		public static const AbsoluteBash:PerkType = mk("Absolute Bash", "Absolute Bash",
-				"Shield bash diminishing returns are reduced by 20%. By spending 10% of your fatigue you may reset Shield bash to full efficiency.",
-				"You've chosen the 'Absolute Bash' perk. Shield bash diminishing returns are reduced by 20%. By spending 10% of your fatigue you may reset Shield bash to full efficiency.");
+				"Shield bash diminishing returns are reduced by 20%. By spending 10% of your fatigue you may reset Shield bash to full efficiency. (+10 to tou based DR)",
+				"You've chosen the 'Absolute Bash' perk. Shield bash diminishing returns are reduced by 20%. By spending 10% of your fatigue you may reset Shield bash to full efficiency. (+10 to tou based DR)");
 		public static const BrutalOpening:PerkType = mk("Brutal Opening", "Brutal Opening",
-				"Triple all physical damage dealt for 1 turn following a shield bash.",
-				"You've chosen the 'Brutal Opening' perk. Triple all physical damage dealt for 1 turn following a shield bash.");
+				"Triple all physical damage dealt for 1 turn following a shield bash. (+14 to tou based DR)",
+				"You've chosen the 'Brutal Opening' perk. Triple all physical damage dealt for 1 turn following a shield bash. (+14 to tou based DR)");
 		public static const LingeringOpening:PerkType = mk("Lingering Opening", "Lingering Opening",
-				"Brutal Opening last for an additional 2 rounds and quadruple physical damage instead of tripling.",
-				"You've chosen the 'Lingering Opening' perk. Brutal Opening last for an additional 2 rounds and quadruple physical damage instead of tripling.");
+				"Brutal Opening last for an additional 2 rounds and quadruple physical damage instead of tripling. (+15 to tou based DR)",
+				"You've chosen the 'Lingering Opening' perk. Brutal Opening last for an additional 2 rounds and quadruple physical damage instead of tripling. (+15 to tou based DR)");
 		public static const ImprovedKineses:PerkType = mk("Improved Kineses", "Improved Kineses",
 				"All of your kinesis type specials damage have added minor intelligence/wisdom scaling.",
 				"You've chosen the 'Improved Kineses' perk. All of your kinesis type specials damage have added minor intelligence/wisdom scaling.");
@@ -1070,8 +1070,8 @@ public class PerkLib
 				"You finally forged your best piece of work! With all of your accumulated knowledge and tools, you can make good armor better, and forge great armor, further increasing your proficiency all things armor! (+5% phys/mag resistance)",
 				"You've chosen the 'Armor' perk, increasing armor proficiency. (+5% phys/mag resistance)");
 		public static const ArmorMaster:PerkType = mk("Armor Master", "Armor Master",
-				"Boosts armor and magical resistance by a portion of your speed on heavy armors. (1:50 ratio)",
-				"You've chosen the 'Armor Master' perk, increasing the effectiveness of heavy armor by a portion of your speed. (1:50 ratio)");
+				"Boosts armor and magical resistance by a portion of your speed on heavy armors. (1:50 ratio) (+2 to tou based DR)",
+				"You've chosen the 'Armor Master' perk, increasing the effectiveness of heavy armor by a portion of your speed. (1:50 ratio) (+2 to tou based DR)");
 		public static const ArouseTheAudience:PerkType = mk("Arouse the audience", "Arouse the audience",
 				"Increase the damage of non periodic tease against groups by 50% and periodic by 20%.",
 				"You've chosen the 'Arouse the audience' perk, increasing the damage of tease against groups.");
@@ -1233,23 +1233,23 @@ public class PerkLib
 				"Increasing healing spells effect by another 100% when below 10% max HP (cumulative with Close to death perk effect for total boost of 150%).",
 				"You've chosen the 'Cheat Death' perk, increasing healing spells effect when below 10% max HP.");
 		public static const CheetahI:PerkType = mk("Cheetah I", "Cheetah I",
-				"+4 extra HP per point of speed.",
-				"You've chosen the 'Cheetah I' perk, granting +4 extra maximum HP for each point of speed.");
+				"+4 extra HP per point of speed. (+7 to tou based DR)",
+				"You've chosen the 'Cheetah I' perk, granting +4 extra maximum HP for each point of speed. (+7 to tou based DR)");
 		public static const CheetahII:PerkType = mk("Cheetah II", "Cheetah II",
-				"+4 extra HP per point of speed.",
-				"You've chosen the 'Cheetah II' perk, granting +4 extra maximum HP for each point of speed.");
+				"+4 extra HP per point of speed. (+7 to tou based DR)",
+				"You've chosen the 'Cheetah II' perk, granting +4 extra maximum HP for each point of speed. (+7 to tou based DR)");
 		public static const CheetahIII:PerkType = mk("Cheetah III", "Cheetah III",
-				"+4 extra HP per point of speed.",
-				"You've chosen the 'Cheetah III' perk, granting +4 extra maximum HP for each point of speed.");
+				"+4 extra HP per point of speed. (+7 to tou based DR)",
+				"You've chosen the 'Cheetah III' perk, granting +4 extra maximum HP for each point of speed. (+7 to tou based DR)");
 		public static const CheetahIV:PerkType = mk("Cheetah IV", "Cheetah IV",
-				"+4extra HP per point of speed.",
-				"You've chosen the 'Cheetah IV' perk, granting +4 extra maximum HP for each point of speed.");
+				"+4extra HP per point of speed. (+8 to tou based DR)",
+				"You've chosen the 'Cheetah IV' perk, granting +4 extra maximum HP for each point of speed. (+8 to tou based DR)");
 		public static const CheetahV:PerkType = mk("Cheetah V", "Cheetah V",
-				"+4 extra HP per point of speed.",
-				"You've chosen the 'Cheetah V' perk, granting +4 extra maximum HP for each point of speed.");
+				"+4 extra HP per point of speed. (+8 to tou based DR)",
+				"You've chosen the 'Cheetah V' perk, granting +4 extra maximum HP for each point of speed. (+8 to tou based DR)");
 		public static const CheetahVI:PerkType = mk("Cheetah VI", "Cheetah VI",
-				"+4 extra HP per point of speed.",
-				"You've chosen the 'Cheetah VI' perk, granting +4 extra maximum HP for each point of speed.");
+				"+4 extra HP per point of speed. (+8 to tou based DR)",
+				"You've chosen the 'Cheetah VI' perk, granting +4 extra maximum HP for each point of speed. (+8 to tou based DR)");
 		public static const ChimericalBodyAdvancedStage:PerkType = mk("Chimerical Body: Advanced Stage", "Chimerical Body: Advanced Stage",
 				"Your chimerical body attained Advanced Stage. (negate up to 8 racial perk points' negative effects)",
 				"You've chosen the 'Chimerical Body: Advanced Stage' perk. Your chimerical body attained Advanced Stage. (negate up to 8 racial perk points' negative effects)").withBuffs({'str.mult':0.10,'tou.mult':0.10,'spe.mult':0.15,'int.mult':0.05,'wis.mult':0.10,'sens':5});
@@ -1429,8 +1429,8 @@ public class PerkLib
 				"When using Great Dive you may add your weapon damage as part of the attack damage as if using power attack at its current maximum value consuming no wrath in the process.",
 				"You've chosen the 'Death plunge' perk. When using Great Dive you may add your weapon damage as part of the attack damage as if using power attack at its current maximum value consuming no wrath in the process.");
 		public static const DefenceStance:PerkType = mk("Defence Stance", "Defense Stance",
-				"Defend move now reduce incoming damage a little more and allow for very small improvement of fatigue/mana/soulforce recovery.",
-				"You've chosen the 'Defense Stance' perk, training to master your defense pose.");
+				"Defend move now reduce incoming damage a little more and allow for very small improvement of fatigue/mana/soulforce recovery. (+4 to tou based DR)",
+				"You've chosen the 'Defense Stance' perk, training to master your defense pose. (+4 to tou based DR)");
 		public static const DefensiveStaffChanneling:PerkType = mk("Defensive Staff Channeling", "Defensive Staff Channeling",
 				"When you would cast defensive spell holding staff or wand its effects would be increased a bit (higher defensive effect or longer duration). (+20% spellpower bonus)",
 				"You've chosen the 'Defensive Staff Channeling' perk. When you would cast defensive spell holding staff or wand its effects would be increased a bit (higher defensive effect or longer duration). (+20% spellpower bonus)");
@@ -1652,8 +1652,8 @@ public class PerkLib
 				"",
 				"You've chosen the 'Epic Libido' perk.").withBuffs({'lib.mult':0.35});
 		public static const EpicLifeline:PerkType = mk("Epic Lifeline", "Epic Lifeline",
-				"Increases health recovery by (16 * level) out of combat and by (8 * level) in combat (using defend option will double it).",
-				"You've chosen the 'Epic Lifeline' perk, increasing your health recovery to epic level.");
+				"Increases health recovery by (16 * level) out of combat and by (8 * level) in combat (using defend option will double it). (+9 to tou based DR)",
+				"You've chosen the 'Epic Lifeline' perk, increasing your health recovery to epic level. (+9 to tou based DR)");
 		public static const EpicSelfControl:PerkType = mk("Epic Self-Control", "Epic Self-Control",
 				"Increases maximum lust by 6750.",
 				"You've chosen the 'Epic Self-Control' perk. Thanks to your epic mental conditioning, your maximum lust has been increased by 6750!")
@@ -1855,23 +1855,23 @@ public class PerkLib
 				"",
 				"You've chosen the 'Golem Army Major General' perk, allowing you to store additional permanent (improved/normal) steel golem and (improved stone +1/stone +8) and temporary (+16) stone golems in your golem bag.");
 		public static const GoliathI:PerkType = mk("Goliath I", "Goliath I",
-				"+8 extra HP per point of strength.",
-				"You've chosen the 'Goliath I' perk, granting +8 extra maximum HP for each point of strength.");
+				"+8 extra HP per point of strength. (+5 to tou based DR)",
+				"You've chosen the 'Goliath I' perk, granting +8 extra maximum HP for each point of strength. (+5 to tou based DR)");
 		public static const GoliathII:PerkType = mk("Goliath II", "Goliath II",
-				"+8 extra HP per point of strength.",
-				"You've chosen the 'Goliath II' perk, granting +8 extra maximum HP for each point of strength.");
+				"+8 extra HP per point of strength. (+5 to tou based DR)",
+				"You've chosen the 'Goliath II' perk, granting +8 extra maximum HP for each point of strength. (+5 to tou based DR)");
 		public static const GoliathIII:PerkType = mk("Goliath III", "Goliath III",
-				"+8 extra HP per point of strength.",
-				"You've chosen the 'Goliath III' perk, granting +8 extra maximum HP for each point of strength.");
+				"+8 extra HP per point of strength. (+5 to tou based DR)",
+				"You've chosen the 'Goliath III' perk, granting +8 extra maximum HP for each point of strength. (+5 to tou based DR)");
 		public static const GoliathIV:PerkType = mk("Goliath IV", "Goliath IV",
-				"+8 extra HP per point of strength.",
-				"You've chosen the 'Goliath IV' perk, granting +8 extra maximum HP for each point of strength.");
+				"+8 extra HP per point of strength. (+6 to tou based DR)",
+				"You've chosen the 'Goliath IV' perk, granting +8 extra maximum HP for each point of strength. (+6 to tou based DR)");
 		public static const GoliathV:PerkType = mk("Goliath V", "Goliath V",
-				"+8 extra HP per point of strength.",
-				"You've chosen the 'Goliath V' perk, granting +8 extra maximum HP for each point of strength.");
+				"+8 extra HP per point of strength. (+6 to tou based DR)",
+				"You've chosen the 'Goliath V' perk, granting +8 extra maximum HP for each point of strength. (+6 to tou based DR)");
 		public static const GoliathVI:PerkType = mk("Goliath VI", "Goliath VI",
-				"+8 extra HP per point of strength.",
-				"You've chosen the 'Goliath VI' perk, granting +8 extra maximum HP for each point of strength.");
+				"+8 extra HP per point of strength. (+6 to tou based DR)",
+				"You've chosen the 'Goliath VI' perk, granting +8 extra maximum HP for each point of strength. (+6 to tou based DR)");
 		public static const GrabbingGrandmaster:PerkType = mk("Grabbing Grandmaster", "Grabbing Grandmaster",
 				"The toss to the floor from Grabbing Styles comes with such power that the foe is left out of breath. Scaling with strength, up to a 20% chance of stunning the opponent for 1 round after the toss. This only works when fighting unarmed with no shield equipped.",
 				"You've chosen the 'Grabbing Grandmaster' perk, which makes the toss to the floor from Grabbing Styles increase in power, to the point that the foe is left out of breath. Scaling with strength, up to a 20% chance of stunning the opponent for 1 round after the toss. This only works when fighting unarmed with no shield equipped.");
@@ -1983,8 +1983,8 @@ public class PerkLib
 				"A demon is now considered to carry 5 to 20 bones and you may now have up to 6 skeletons of each type.",
 				"You've chosen the 'Greater harvest' perk. A demon is now considered to carry 5 to 20 bones and you may now have up to 6 skeletons of each type.");
 		public static const GreaterLifeline:PerkType = mk("Greater Lifeline", "Greater Lifeline",
-				"Increases health recovery by (12 * level) out of combat and by (6 * level) in combat (using defend option will double it).",
-				"You've chosen the 'Greater Lifeline' perk, greatly increasing your health recovery.");
+				"Increases health recovery by (12 * level) out of combat and by (6 * level) in combat (using defend option will double it). (+7 to tou based DR)",
+				"You've chosen the 'Greater Lifeline' perk, greatly increasing your health recovery. (+7 to tou based DR)");
 		public static const GreaterSharedPower:PerkType = mk("Greater shared power", "Greater shared power",
 				"Double the effect of Shared power.",
 				"You've chosen the 'Greater shared power' perk. ");
@@ -2020,8 +2020,8 @@ public class PerkLib
 				"You've chosen the 'Grey Magic' perk, gaining access to grey spells. (+30 to max lust / +5% spellpower bonus)")
 				.withBuffs({'maxlust_base':+30});
 		public static const HeavyArmorProficiency:PerkType = mk("Heavy Armor Proficiency", "Heavy Armor Proficiency",
-				"Wearing Heavy Armor's grants 10% damage reduction.",
-				"You've chosen the 'Heavy Armor Proficiency' perk.  Due to your specialization in wearing heavy armor, you gain a little bit of damage reduction.");
+				"Wearing Heavy Armor's grants 10% damage reduction. (+3 to tou based DR)",
+				"You've chosen the 'Heavy Armor Proficiency' perk.  Due to your specialization in wearing heavy armor, you gain a little bit of damage reduction. (+3 to tou based DR)");
 		public static const HalfStepToAdvancedEndurance:PerkType = mk("Half-step-to Advanced Endurance", "Half-step-to Advanced Endurance",
 				"Increases maximum fatigue by 120.",
 				"You've chosen the 'Half-step-to Advanced Endurance' perk. Thanks to your advanced physical conditioning, your maximum fatigue has been increased by 120!")
@@ -2216,11 +2216,11 @@ public class PerkLib
 				"You've chosen the 'Howling Gale (Su)' perk. Prevent decay of cumulative damage increase bonus when channeling wind based attack. Penalty for turn without casted wind spell decreased by another 10%. Maximum 75 stacks. (+50% spellpower bonus)");
 		public static const ImmovableObject:PerkType = mk("Immovable Object", "Immovable Object",
 				"[if(player.tou>=75)" +
-						"Grants 10% physical damage reduction.</b>" +
+						"Grants 10% physical damage reduction. (+3 to tou based DR)" +
 						"|" +
 						"<b>You aren't tough enough to benefit from this anymore.</b>" +
 						"]",
-				"You've chosen the 'Immovable Object' perk, granting 10% physical damage reduction.</b>");
+				"You've chosen the 'Immovable Object' perk, granting 10% physical damage reduction. (+3 to tou based DR)");
 		public static const ImpactThrow:PerkType = mk("Impact Throw", "Impact Throw",
 				"Thrown weapon impacts are so powerful that they can stop your opponents right in their tracks gaining a 10% chance of stunning them. (+15% range physical attacks multiplier)",
 				"You've chosen the 'Impact Throw' perk. Thrown weapon impacts are so powerful that they can stop your opponents right in their tracks gaining a 10% chance of stunning them. (+15% range physical attacks multiplier)");
@@ -2254,8 +2254,8 @@ public class PerkLib
 				"Increases chances of evading enemy attacks. (+10% to evasion)",
 				"You've chosen the 'Improved Evade' perk, allowing you to avoid enemy attacks more often! (+10% to evasion)");
 		public static const ImprovedLifeline:PerkType = mk("Improved Lifeline", "Improved Lifeline",
-				"Increases health recovery by (8 * level) out of combat and by (4 * level) in combat (using defend option will double it).",
-				"You've chosen the 'Improved Lifeline' perk, improving your health recovery.");
+				"Increases health recovery by (8 * level) out of combat and by (4 * level) in combat (using defend option will double it). (+5 to tou based DR)",
+				"You've chosen the 'Improved Lifeline' perk, improving your health recovery. (+5 to tou based DR)");
 		public static const ImprovedManaShield:PerkType = mk("Improved Mana Shield", "Improved Mana Shield",
 				"Increasing fourfold amount of damage Mana Shield spell can withstand before deactivating. (1:4 ratio for physical attacks and 1:20 ratio for magical attacks)",
 				"You've chosen the 'Improved Mana Shield' perk, increasing fourfold amount of damage Mana Shield spell can withstand before deactivating. (1:4 ratio for physical attacks and 1:20 ratio for magical attacks)");
@@ -2397,8 +2397,8 @@ public class PerkLib
 				"Make each unarmed successive blow deadlier by striking the same area multiple times. Damage of each successful attack when full attacking increases exponentially by a percentage based on your speed (up to 25%). This only works when fighting unarmed with no shield equipped.",
 				"You've chosen the 'Jabbing Style' perk, which makes each unarmed successive blow deadlier by striking the same area multiple times. Damage of each successful attack when full attacking increases exponentially by a percentage based on your speed (up to 10%). This only works when fighting unarmed with no shield equipped.");
 		public static const Juggernaut:PerkType = mk("Juggernaut", "Juggernaut",
-				"When wearing heavy armor, you have extra 10% damage resistance and are immune to damage from being constricted/squeezed (req. 100+ tou).",
-				"You've chosen the 'Juggernaut' perk, granting extra 10% damage resistance when wearing heavy armor and immunity to damage from been constricted/squeezed.");
+				"When wearing heavy armor, you have extra 10% damage resistance and are immune to damage from being constricted/squeezed (req. 100+ tou). (+4 to tou based DR)",
+				"You've chosen the 'Juggernaut' perk, granting extra 10% damage resistance when wearing heavy armor and immunity to damage from been constricted/squeezed. (+4 to tou based DR)");
 		public static const KingOfTheJungle:PerkType = mk("King of the jungle", "King of the jungle",
 				"One with the natural world, you gained almost complete immunity (their duration shortened to 1 round) to status effects like frozen solid, poison, burn and bleeding! Furthermore all the damage caused with the damaging condition above is increased by 20%.",
 				"You've chosen the 'King of the jungle' perk. One with the natural world, you gained almost complete immunity (their duration shortened to 1 round) to status effects like frozen solid, poison, burn and bleeding! Furthermore all the damage caused with the damaging condition above is increased by 20%.");
@@ -2476,8 +2476,8 @@ public class PerkLib
 				"",
 				"You've chosen the 'Legendary Wisdom' perk.").withBuffs({'wis.mult':0.50});
 		public static const Lifeline:PerkType = mk("Lifeline", "Lifeline",
-				"Increases health recovery by (6 * level) out of combat and by (3 * level) in combat (using defend option will double it).",
-				"You've chosen the 'Lifeline' perk, increasing your health recovery.");
+				"Increases health recovery by (6 * level) out of combat and by (3 * level) in combat (using defend option will double it). (+4 to tou based DR)",
+				"You've chosen the 'Lifeline' perk, increasing your health recovery. (+4 to tou based DR)");
 		public static const LiftOff:PerkType = mk("Lift Off", "Lift Off",
 				"Allows you to start combat already flying. (as long PC have any options to fly)",
 				"You've chosen the 'Lift Off' perk, allowing you to start combat already flying. (as long PC have any options to fly)");
@@ -2651,8 +2651,8 @@ public class PerkLib
 				"You've chosen the 'Master Crinos Shape' perk, once again increasing the boost gained in Crinos Shape (+160%).")
 				.withBuffs({'maxwrath_base':+800});
 		public static const MasteredDefenceStance:PerkType = mk("Mastered Defence Stance", "Mastered Defence Stance",
-				"Defend move now further reduce incoming damage and allow for small improvement of fatigue/mana/soulforce recovery.",
-				"You've chosen the 'Mastered Defence Stance' perk, finally attaining mastery with your defence pose.");
+				"Defend move now further reduce incoming damage and allow for small improvement of fatigue/mana/soulforce recovery. (+5 to tou based DR)",
+				"You've chosen the 'Mastered Defence Stance' perk, finally attaining mastery with your defence pose. (+5 to tou based DR)");
 		public static const MasterGolemMaker:PerkType = mk("Master Golem Maker", "Master Golem Maker",
 				"Your proficiency in making golems allows to make permanent golems that will not longer shatter after one attack. Allows to store one such golem in golem bag. Storing more temporal golems/golem cores and increase their dmg scaling up on current int/wis.",
 				"You've chosen the 'Master Golem Maker' perk, increasing your proficiency in making golems.");
@@ -2888,8 +2888,8 @@ public class PerkLib
 				"Thrown weapons have such penetrating power they now have a chance to run through multiple enemies. When attacking groups the projectiles have a 75% (losing 10% after each successful piercing strike) chance to deal their damage more than once. (+20% range physical attacks multiplier)",
 				"You've chosen the 'Penetrating throw' perk. Thrown weapons have such penetrating power they now have a chance to run through multiple enemies. When attacking groups the projectiles have a 75% (losing 10% after each successful piercing strike) chance to deal their damage more than once. (+20% range physical attacks multiplier)");
 		public static const PerfectDefenceStance:PerkType = mk("Perfect Defence Stance", "Perfect Defence Stance",
-				"Defend move now massively reduce incoming damage and allow for minor improvement of fatigue/mana/soulforce recovery.",
-				"You've chosen the 'Perfect Defence Stance' perk, perfecting your defence pose beyond mastery level.");
+				"Defend move now massively reduce incoming damage and allow for minor improvement of fatigue/mana/soulforce recovery. (+6 to tou based DR)",
+				"You've chosen the 'Perfect Defence Stance' perk, perfecting your defence pose beyond mastery level. (+6 to tou based DR)");
 		public static const Perfection:PerkType = mk("Perfection", "Perfection",
 				"The ultimate stage of alchemy, you have perfected the art of making transformatives more effective. This is a level very few have reached +2% alchemy/mutagen boost.",
 				"You've chosen the 'Perfection' perk, number of possible effects of transformatives +2% alchemy/mutagen boost.");
@@ -3083,11 +3083,11 @@ public class PerkLib
 				"You've chosen the 'Resistance VI' perk, reducing the rate at which your lust increases by 5%.");
 		public static const Resolute:PerkType = mk("Resolute", "Resolute",
 				"[if(player.tou>=75)" +
-						"Grants immunity to stuns and some statuses.</b>" +
+						"Grants immunity to stuns and some statuses. (+3 to tou based DR)" +
 						"|" +
 						"<b>You aren't tough enough to benefit from this anymore.</b>" +
 						"]",
-				"You've chosen the 'Resolute' perk, granting immunity to stuns and some statuses.</b>");
+				"You've chosen the 'Resolute' perk, granting immunity to stuns and some statuses. (+3 to tou based DR)");
 		public static const RumblingQuake:PerkType = mk("Rumbling Quake", "Rumbling Quake",
 				"Cumulative 40% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)",
 				"You've chosen the 'Rumbling Quake' perk. Cumulative 40% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Maximum 5 stacks. (+15% spellpower bonus)");
@@ -3119,8 +3119,8 @@ public class PerkLib
 				"Your basic understanding of magic pools allows you to equip a second ring.",
 				"You've chosen the 'Second Ring' perk, reaching a basic understanding of magic pools to allow you equip second ring.");
 		public static const SecondWind:PerkType = mk("Second Wind", "Second Wind",
-				"Using half remaining fatigue increase by 5% regeneration in combat for 10 turns.",
-				"You've chosen the 'Second Wind' perk, allowing you to once per fight increase natural regeneration for a few turns at the cost of some fatigue.");
+				"Using half remaining fatigue increase by 5% regeneration in combat for 10 turns. (+13 to tou based DR)",
+				"You've chosen the 'Second Wind' perk, allowing you to once per fight increase natural regeneration for a few turns at the cost of some fatigue. (+13 to tou based DR)");
 		public static const Seduction:PerkType = mk("Seduction", "Seduction",
 				"Upgrades your tease attack, making it more effective.",
 				"You've chosen the 'Seduction' perk, upgrading the 'tease' attack with more powerful damage and a higher chance of success.");
@@ -3149,38 +3149,38 @@ public class PerkLib
 				"Allows you to increase non-bow range weapons attack up to 200% (Intelligence-based). (+5% range physical attacks multiplier)",
 				"You've chosen the 'Sharpshooter' perk, allowing you to slightly increase non-bow range weapons attack. (+5% range physical attacks multiplier)");
 		public static const ShieldCombat:PerkType = mk("Shield Combat", "Shield Combat",
-				"When you block an attack riposte with a shield bash (need to wear shield allowing you to use this move) damaging your opponent. Also improve block chance.",
-				"You've chosen the 'Shield Combat' perk, allowing you to riposte with a shield bash when you block an attack. Also improves block chance.");
+				"When you block an attack riposte with a shield bash (need to wear shield allowing you to use this move) damaging your opponent. Also improve block chance. (+12 to tou based DR)",
+				"You've chosen the 'Shield Combat' perk, allowing you to riposte with a shield bash when you block an attack. Also improves block chance. (+12 to tou based DR)");
 		public static const ShieldExpertise:PerkType = mk("Shield Expertise", "Shield Expertise",
-				"When you wearing a shield (one that allow use of shield bash) add quarter of block value to your armor (at least 1).",
-				"You've chosen the 'Shield Expertise' perk, allowing you to increase your armor when using a shield.");
+				"When you wearing a shield (one that allow use of shield bash) add quarter of block value to your armor (at least 1). (+3 to tou based DR)",
+				"You've chosen the 'Shield Expertise' perk, allowing you to increase your armor when using a shield. (+3 to tou based DR)");
 		public static const ShieldGrandmastery:PerkType = mk("Shield Grandmastery", "Shield Grandmastery",
 				"[if(player.tou>=100)" +
-						"Increases block chance by up to 10% while using a shield (one that allow use of shield bash / Toughness-based) and lowering by 50% wrath cost." +
+						"Increases block chance by up to 10% while using a shield (one that allow use of shield bash / Toughness-based) and lowering by 50% wrath cost. (+5 to tou based DR)" +
 						"|" +
 						"<b>You are not durable enough to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Shield Grandmastery' perk, lowering wrath cost and increasing block chance as long as you're wielding a shield (Toughness-based).");
+				"You've chosen the 'Shield Grandmastery' perk, lowering wrath cost and increasing block chance as long as you're wielding a shield (Toughness-based). (+5 to tou based DR)");
 		public static const ShieldHarmony:PerkType = mk("Shield Harmony", "Shield Harmony",
 				"[if(player.tou>=100)" +
-						"When you using shield (one that allow use of shield bash) and isn't stunned, you gain 10% phys damage reduction." +
+						"When you using shield (one that allow use of shield bash) and isn't stunned, you gain 10% phys damage reduction. (+4 to tou based DR)" +
 						"|" +
 						"<b>You are not durable enough to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Shield Harmony' perk, allowing you to reduce received phys damage when using a shield.");
+				"You've chosen the 'Shield Harmony' perk, allowing you to reduce received phys damage when using a shield. (+4 to tou based DR)");
 		public static const ShieldMastery:PerkType = mk("Shield Mastery", "Shield Mastery",
 				"[if(player.tou>=50)" +
-						"Increases block chance by up to 10% while using a shield (one that allow use of shield bash /Toughness-based)." +
+						"Increases block chance by up to 10% while using a shield (one that allow use of shield bash /Toughness-based). (+2 to tou based DR)" +
 						"|" +
 						"<b>You are not durable enough to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Shield Mastery' perk, increasing block chance by up to 10% as long as you're wielding a shield (Toughness-based).");
+				"You've chosen the 'Shield Mastery' perk, increasing block chance by up to 10% as long as you're wielding a shield (Toughness-based). (+2 to tou based DR)");
 		public static const ShieldSlam:PerkType = mk("Shield Slam", "Shield Slam",
 				"Reduces shield bash diminishing returns by 50% and increases bash damage by 20%.",
 				"You've chosen the 'Shield Slam' perk.  Stun diminishing returns is reduced by 50% and shield bash damage is increased by 20%.");
 		public static const ShieldWard:PerkType = mk("Shield Ward", "Shield Ward",
-				"When you wearing a shield (one that allow use of shield bash) lower chance to be knocked back or disarmed by enemy attacks.",
-				"You've chosen the 'Shield Ward' perk, allowing for a lower chance to be knocked back or disarmed when using a shield.");
+				"When you wearing a shield (one that allow use of shield bash) lower chance to be knocked back or disarmed by enemy attacks. (+6 to tou based DR)",
+				"You've chosen the 'Shield Ward' perk, allowing for a lower chance to be knocked back or disarmed when using a shield. (+6 to tou based DR)");
 		public static const ShitYouTouchedSasha:PerkType = mk("SHIT YOU TOUCHED SASHA!!!", "SHIT YOU TOUCHED SASHA!!!",
 				"DIE!!! (You're fucked... not even this final +10% ranged damage buff will save your sorry ass...)",
 				"You've chosen the 'SHIT YOU TOUCHED SASHA!!!' perk, gaining +10% ranged physical damage.");
@@ -3286,8 +3286,8 @@ public class PerkLib
 						"]",
 				"You've chosen the 'Starlight Strikes' perk, increasing the attack damage for small weapons.</b>");
 		public static const SteelImpact:PerkType = mk("Steel Impact", "Steel Impact",
-				"Add a part of your toughness to your weapon and shield damage.",
-				"You've chosen the 'Steel Impact' perk. Increasing damage of your weapon and shield.");
+				"Add a part of your toughness to your weapon and shield damage. (+11 to tou based DR)",
+				"You've chosen the 'Steel Impact' perk. Increasing damage of your weapon and shield. (+11 to tou based DR)");
 		public static const SteelStorm:PerkType = mk("Steel Storm", "Steel Storm",
 				"Gain extra melee attacks equal to current used mutliattack option when dual wielding.",
 				"You've chosen the 'Steel Storm' perk. Gain extra melee attacks equal to current used mutliattack option when dual wielding.");

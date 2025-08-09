@@ -1099,7 +1099,7 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			addButtonDisabled(13, "???", "After the twins' fourth evolution.");
 		}
 		addButton(4, "Next", aethertwinsFollowersMorphMain, page + 1);
-		addButton(9, "Previous", aethertwinsFollowersMorphMain, page + 1);
+		addButton(9, "Previous", aethertwinsFollowersMorphMain, page + 2);
 	}
 	if (page == 2) {
 		if (AetherTwinsFoodMenu3) {
@@ -1164,7 +1164,33 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			addButtonDisabled(12, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(13, "???", "After the twins' fifth evolution.");
 		}
-		addButton(4, "Next", aethertwinsFollowersMorphMain, page - 1);
+		addButton(4, "Next", aethertwinsFollowersMorphMain, page + 1);
+		addButton(9, "Previous", aethertwinsFollowersMorphMain, page - 1);
+	}
+	if (page == 3) {
+		if (AetherTwinsFoodMenu4) {
+			if (AetherTwinsShape == "Human-tier Huge Warhammer and Large Shield") addButtonDisabled(0, "HtHWHam&LShield", "They are currently in Human-tier Huge Warhammer and Large Shield form.");
+			else addButton(0, "HtHWHam&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Huge Warhammer", 2);
+			if (AetherTwinsShape == "Human-tier Dual Huge Warhammers") addButtonDisabled(1, "HtDualHWHams", "They are currently in Human-tier Dual Huge Warhammers form.");
+			else {
+				if (player.hasPerk(PerkLib.DualWield)) addButton(1, "HtDualHWHams", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Huge Warhammer", 2);
+				else addButtonDisabled(11, "HtDualHWHams", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}/*
+			if (AetherTwinsShape == "Human-tier Large Spear and Large Shield") addButtonDisabled(12, "HtLSpear&LShield", "They are currently in Human-tier Large Spear and Large Shield form.");
+			else addButton(12, "HtLSpear&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Spear", 2);
+			if (AetherTwinsShape == "Human-tier Dual Large Spears") addButtonDisabled(13, "HtDualLSpears", "They are currently in Human-tier Dual Large Spears form.");
+			else {
+				if (player.hasPerk(PerkLib.DualWield)) addButton(11, "HtDualLSpears", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Spear", 2);
+				else addButtonDisabled(13, "HtDualLSpears", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}*/
+		}
+		else {
+			addButtonDisabled(0, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(1, "???", "After the twins' fifth evolution.");
+			//addButtonDisabled(2, "???", "After the twins' fifth evolution.");
+			//addButtonDisabled(3, "???", "After the twins' fifth evolution.");
+		}
+		addButton(4, "Next", aethertwinsFollowersMorphMain, page - 2);
 		addButton(9, "Previous", aethertwinsFollowersMorphMain, page - 1);
 	}
 	addButton(14, "Back", aethertwinsFollowers);
