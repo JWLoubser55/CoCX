@@ -5112,29 +5112,6 @@ public class Combat extends BaseContent {
                 if (player.hasPerk(PerkLib.LockAndLoad)) maxFirearmAttacks += 1;
                 if (player.isInGoblinMech() && (player.hasKeyItem("Repeater Gun") >= 0 || player.hasKeyItem("Machine Gun MK1") >= 0 || player.hasKeyItem("Machine Gun MK2") >= 0 || player.hasKeyItem("Machine Gun MK3") >= 0 || player.hasKeyItem("Machine Gun MK4") >= 0 || player.hasKeyItem("Machine Gun MK5") >= 0 || player.hasKeyItem("Machine Gun MK6") >= 0)) {
                     outputText(".  It's clearly very painful. ");
-                    if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
-						doPhysicalDamage(damage, true, true, ignoreDR);
-						doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
-						if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
-						if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
-							doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
-							doAcidDamage(Math.round(damage * 1.2), true, true, ignoreDR);
-						}
-						if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-					}
-					else {
-						doPhysicalDamage(damage, true, true, ignoreDR);
-						if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(damage, true, true, ignoreDR);
-						if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
-							doFireDamage(damage, true, true, ignoreDR);
-							doAcidDamage(damage, true, true, ignoreDR);
-						}
-						if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-					}
-					firearmsXP(rangeMasteryEXPgained(crit));
-					if (player.weaponRangePerk == "Dual Firearms" || player.weaponRangePerk == "Dual 2H Firearms") {
-						dualWieldFirearmsXP(rangeMasteryEXPgained(crit));
-					}
 					if (player.weaponRange == weaponsrange.M1CERBE || player.weaponRange == weaponsrange.TM1CERB) {
                         for (var attack:int = 0; attack < maxFirearmAttacks; attack++) {
                             if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
@@ -5158,6 +5135,53 @@ public class Combat extends BaseContent {
 							}
                         }
                         if (crit) outputText(" <b>*Critical Hit!*</b>");
+					}
+					else if (player.weaponRange == weaponsrange.ENERGYG) {
+						if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
+							doPlasmaDamage(damage, true, true, ignoreDR);
+							doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
+								doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+								doAcidDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+							}
+							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+						}
+						else {
+							doPlasmaDamage(damage, true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(damage, true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
+								doFireDamage(damage, true, true, ignoreDR);
+								doAcidDamage(damage, true, true, ignoreDR);
+							}
+							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+						}
+						if (crit) outputText(" <b>*Critical Hit!*</b>");
+					}
+					else {
+						if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
+							doPhysicalDamage(damage, true, true, ignoreDR);
+							doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
+								doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+								doAcidDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+							}
+							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+						}
+						else {
+							doPhysicalDamage(damage, true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(damage, true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
+								doFireDamage(damage, true, true, ignoreDR);
+								doAcidDamage(damage, true, true, ignoreDR);
+							}
+							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+						}
+					}
+					firearmsXP(rangeMasteryEXPgained(crit));
+					if (player.weaponRangePerk == "Dual Firearms" || player.weaponRangePerk == "Dual 2H Firearms") {
+						dualWieldFirearmsXP(rangeMasteryEXPgained(crit));
 					}
                 } else {
                     if (!MSGControll) {
@@ -5200,21 +5224,6 @@ public class Combat extends BaseContent {
 							}
 						}
 						else {
-                            if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
-								doPhysicalDamage(damage, true, true, ignoreDR);
-								doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
-								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-							}
-							else if (player.statStore.hasBuff("FoxflamePelt")) {
-								doFireDamage((damage * 2), true, true, ignoreDR);
-								if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
-								monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
-								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-							}
-							else {
-								doPhysicalDamage(damage, true, true, ignoreDR);
-								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-							}
 							if (player.weaponRange == weaponsrange.M1CERBE || player.weaponRange == weaponsrange.TM1CERB) {
                                 for (var cerbAttack:int = 0; cerbAttack < maxFirearmAttacks; cerbAttack++) {
                                     if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
@@ -5233,6 +5242,23 @@ public class Combat extends BaseContent {
 										if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 									}
                                 }
+							}
+							else {
+								if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
+									doPhysicalDamage(damage, true, true, ignoreDR);
+									doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
+									if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+								}
+								else if (player.statStore.hasBuff("FoxflamePelt")) {
+									doFireDamage((damage * 2), true, true, ignoreDR);
+									if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
+									monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+									if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+								}
+								else {
+									doPhysicalDamage(damage, true, true, ignoreDR);
+									if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+								}
 							}
 						}
 						firearmsXP(rangeMasteryEXPgained(crit));
@@ -5264,16 +5290,6 @@ public class Combat extends BaseContent {
                         doPlasmaDamage(damage, true, true, ignoreDR);
 						if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 						if (crit) outputText(" <b>*Critical Hit!*</b>");
-                        for (var enegAttack:int = 0; enegAttack < maxFirearmAttacks; enegAttack++) {
-                            outputText(" ");
-                            doPlasmaDamage(damage, true, true, ignoreDR);
-							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-							if (crit) outputText(" <b>*Critical Hit!*</b>");
-							outputText(" ");
-                            doPlasmaDamage(damage, true, true, ignoreDR);
-							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-							if (crit) outputText(" <b>*Critical Hit!*</b>");
-                        }
 					}
                 }
                 //Lust raising weapon bonuses
