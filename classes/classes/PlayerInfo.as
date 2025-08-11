@@ -523,6 +523,7 @@ public class PlayerInfo extends BaseContent {
 		combatStats += "\n";
 		combatStats += "<b>Physical DR from armor:</b> 1 / " + round(player.damagePercentArmor(), 2) + "\n";
 		combatStats += "<b>Magical DR from armor:</b> 1 / " + round(player.damagePercentMRes(), 2) + "\n";
+		combatStats += "<b>DR from toughness:</b> 1 / " + player.toughnessDamageMultiplier() + "\n";
 		combatStats += "\n";
 		combatStats += "<b>Spells Effect Multiplier:</b> " + Math.round(100 * combat.spellMod()) + "%\n";
 		combatStats += "<b>Spells Cost:</b> " + combat.spellCost(100) + "%\n";
@@ -2277,8 +2278,8 @@ public class PlayerInfo extends BaseContent {
 		if (page == 1) {
 			if (player.superPerkPoints > 0) {
 				addButton(0, "SP:ST", perkSurvivalTraining).hint("Survival Training (Rank: 1-7)");
-				addButton(1, "SP:MyT", perkMysticalTraining).hint("Mystical Training (Rank: 1-3)");
-				addButton(2, "SP:MaT", perkMagicalTraining).hint("Magical Training (Rank: 1-4)");
+				addButton(1, "SP:MyT", perkMysticalTraining).hint("Mystical Training (Rank: 1-6)");
+				addButton(2, "SP:MaT", perkMagicalTraining).hint("Magical Training (Rank: 1-7)");
 			}
 			else {
 				addButtonDisabled(0, "SP:ST", "You do not have enough super perk points to obtain those perks.");
@@ -2683,6 +2684,22 @@ public class PlayerInfo extends BaseContent {
 			}
 		}
 		else addButtonDisabled(4, "SP:MyT(R5)", "You need to reach level 120 first.");
+		if (player.level >= 150) {
+			if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 6) addButtonDisabled(5, "SP:MyT(R6)", "You already have this super perk.");
+			else {
+				if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 5) addButton(5, "SP:MyT(R6)", perkMysticalTrainingRank, 6).hint("Choose the 'Mystical Training (Rank: 6)' super perk. You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +60%)");
+				else addButtonDisabled(5, "SP:MyT(R6)", "You need to first have 'Mystical Training (Rank: 5)' super perk.");
+			}
+		}
+		else addButtonDisabled(5, "SP:MyT(R6)", "You need to reach level 150 first.");
+		if (player.level >= 180) {
+			if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 7) addButtonDisabled(6, "SP:MyT(R7)", "You already have this super perk.");
+			else {
+				if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 6) addButton(6, "SP:MyT(R7)", perkMysticalTrainingRank, 7).hint("Choose the 'Mystical Training (Rank: 7)' super perk. You have trained to better handle mystical energies. (+1% to MaxOver Soulforce, MaxOver Fatigue and +0.1% of Soulforce recovery each 3 lvl's up to +70%)");
+				else addButtonDisabled(6, "SP:MyT(R7)", "You need to first have 'Mystical Training (Rank: 6)' super perk.");
+			}
+		}
+		else addButtonDisabled(6, "SP:MyT(R7)", "You need to reach level 180 first.");
 		addButton(14, "Back", superPerkBuyMenu, 1);
 	}
 	private function perkMagicalTraining():void {
@@ -2739,20 +2756,6 @@ public class PlayerInfo extends BaseContent {
 		else addButtonDisabled(6, "SP:MaT(R7)", "You need to reach level 180 first.");
 		addButton(14, "Back", superPerkBuyMenu, 1);
 	}
-	private function superPerkConvertMenu():void {
-		clearOutput();
-		outputText("You sacrifice three perk points and receive one super perk point.");
-		player.perkPoints -= 3;
-		player.superPerkPoints++;
-		doNext(superPerkBuyMenu);
-	}
-	private function superPerkReverseConvertMenu():void {
-		clearOutput();
-		outputText("You sacrifice one super perk point and receive three perk points.");
-		player.perkPoints += 3;
-		player.superPerkPoints--;
-		doNext(superPerkBuyMenu);
-	}
 	private function perkSurvivalTrainingRank1():void {
 		player.superPerkPoints--;
 		player.createPerk(PerkLib.SPSurvivalTrainingX,1,0,0,0);
@@ -2794,6 +2797,20 @@ public class PlayerInfo extends BaseContent {
 		clearOutput();
 		outputText("Your 'Magical Training (Rank: "+(rank-1)+")' super perk has become 'Magical Training (Rank: "+rank+")'.");
 		doNext(perkMagicalTraining);
+	}
+	private function superPerkReverseConvertMenu():void {
+		clearOutput();
+		outputText("You sacrifice one super perk point and receive three perk points.");
+		player.perkPoints += 3;
+		player.superPerkPoints--;
+		doNext(superPerkBuyMenu, 1);
+	}
+	private function superPerkConvertMenu():void {
+		clearOutput();
+		outputText("You sacrifice three perk points and receive one super perk point.");
+		player.perkPoints -= 3;
+		player.superPerkPoints++;
+		doNext(superPerkBuyMenu, 1);
 	}
 	private function perkHiddenJobBloodDemon():void {
 		player.superPerkPoints--;

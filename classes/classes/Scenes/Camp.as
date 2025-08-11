@@ -1,5 +1,6 @@
 package classes.Scenes {
 import classes.*;
+import classes.BodyParts.Ears;
 import classes.BodyParts.LowerBody;
 import classes.BodyParts.Tail;
 import classes.GlobalFlags.kACHIEVEMENTS;
@@ -915,32 +916,38 @@ public class Camp extends NPCAwareContent{
 			outputText("\n\n");
 		}
 		//Traps
+		// Try to use string concat more often so reduce repeated function call
+		var string:String = "";
+
 		if (player.hasStatusEffect(StatusEffects.DefenseCanopy)) {
-			outputText("A thorny tree has sprouted near the center of the [camp], growing a protective canopy of spiky vines around the portal and your [camp].  ");
+			string += "A thorny tree has sprouted near the center of the [camp], growing a protective canopy of spiky vines around the portal and your [camp].  ";
 		}
         //Wall
 		if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 10 && flags[kFLAGS.CAMP_WALL_PROGRESS] < 100) {
-			if (flags[kFLAGS.CAMP_WALL_PROGRESS] / 10 == 1) outputText("A thick wooden wall has been erected. Incomplete as it is, it provides only a small amount of defense.  ");
-			else outputText("Thick wooden walls have been erected around your camp.  ");
+			if (flags[kFLAGS.CAMP_WALL_PROGRESS] / 10 == 1) string += "A thick wooden wall has been erected. Incomplete as it is, it provides only a small amount of defense.  ";
+			else string += "Thick wooden walls have been erected around your camp.  ";
 		} else if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100) {
-			outputText("Thick wooden walls have been erected; they surround half of your [camp] perimeter and provide sound defense, leaving the open half for access to the stream.  ");
-			if (flags[kFLAGS.CAMP_WALL_GATE] > 0) outputText("A gate has been constructed in the middle of the walls; it gets closed at night to keep any invaders out.  ");
+			string += "Thick wooden walls have been erected; they surround half of your [camp] perimeter and provide sound defense, leaving the open half for access to the stream.  ";
+			if (flags[kFLAGS.CAMP_WALL_GATE] > 0) string += "A gate has been constructed in the middle of the walls; it gets closed at night to keep any invaders out.  ";
 		}
         //Imp Skulls
         if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 10 && flags[kFLAGS.CAMP_WALL_SKULLS] > 0) {
             if (flags[kFLAGS.CAMP_WALL_SKULLS] == 1)
-                outputText("A single imp skull has been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments"));
+				string += "A single imp skull has been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments");
             else if (flags[kFLAGS.CAMP_WALL_SKULLS] >= 2 && flags[kFLAGS.CAMP_WALL_SKULLS] < 5)
-                outputText("Few imp skulls have been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments"));
+				string += "Few imp skulls have been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments");
             else if (flags[kFLAGS.CAMP_WALL_SKULLS] >= 5 && flags[kFLAGS.CAMP_WALL_SKULLS] < 15)
-                outputText("Several imp skulls have been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments"));
+				string += "Several imp skulls have been mounted " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "near the gateway" : "on the wall segments");
             else
-                outputText("Innumerable imp skulls decorate the " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "gateway and " : "") + "wall, some are even impaled on wooden spikes");
-            outputText(" to serve as a deterrence.  ");
-            if (flags[kFLAGS.CAMP_WALL_SKULLS] == 1) outputText("There is currently one skull.  ");
-            else outputText("There are currently " + num2Text(flags[kFLAGS.CAMP_WALL_SKULLS]) + " skulls.  ");
+				string += "Innumerable imp skulls decorate the " + (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100 ? "gateway and " : "") + "wall, some are even impaled on wooden spikes";
+			string += " to serve as a deterrence.  ";
+            if (flags[kFLAGS.CAMP_WALL_SKULLS] == 1) string += "There is currently one skull.  ";
+            else string += "There are currently " + num2Text(flags[kFLAGS.CAMP_WALL_SKULLS]) + " skulls.  ";
         }
+
+		if (string != "")
 			outputText("\n\n");
+
 		//Magic Ward
 		if (flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] >= 2) {
 			if (flags[kFLAGS.CAMP_WALL_PROGRESS] >= 100) outputText("Just within the wall are the");
@@ -2317,8 +2324,7 @@ public class Camp extends NPCAwareContent{
 		else addButtonDisabled(2, "Kitsune Shrine", "Would you kindly build it first?");
 		if (flags[kFLAGS.CAMP_UPGRADES_HOT_SPRINGS] >= 4) addButton(3, "Hot Spring", campScenes.HotSpring).hint("Visit the Hot Spring.").disableIf(isNightTime,"It's not safe to take a dip in the hotsprings at night.");
 		else addButtonDisabled(3, "Hot Spring", "Would you kindly build it first?");
-		if (player.hasPerk(PerkLib.CursedTag)) addButton(4, "Alter Binding Scroll", AlterBindScroll).hint("Alter Binding Scroll - DIY, aka, modify your cursed tag").disableIf(isNightTime, "It's too dark to modify your scroll.");
-		else addButtonDisabled(4, "Alter Bind Scroll", "Req. you to be a Jiangshi and having the Cursed Tag perk.");
+		addButton(4, "Semi/Perm", campMiscActions2).hint("Semi-Perm or Perm races specific actions.");
 		var bottles:Array = [
 			[consumables.LG_SFRP, consumables.LGSFRPB, "low"],
 			[consumables.MG_SFRP, consumables.MGSFRPB, "mid"],
@@ -2331,8 +2337,6 @@ public class Camp extends NPCAwareContent{
 				.disableIf(!player.hasItem(bottles[i][0], 10) || !player.hasItem(useables.E_P_BOT, 1),
 					"You need an empty pill bottle and ten "+bottles[i][2]+"-grade soulforce recovery pills.");
 		}
-		if (player.isRaceCached(Races.LICH)) addButton(9, "Phylactery Enchantment", PhylacteryEnchantment).hint("You can weave a minor enchantment on your phylactery to gain a minor power.").disableIf(isNightTime, "It's too dark to modify your phylactery.");
-		else addButtonDisabled(9, "Phylactery Enchantment", "Req. you to be a Lich with phylactery.");
 		if (player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor)) addButton(10, "Clone", CloneMenu).hint("Check on your clone(s).");
 		else addButtonDisabled(10, "Clone", "Would you kindly go face the F class Heaven Tribulation first?");
 		addButtonIfTrue(11, "Pocket Watch", mainPagePocketWatch, "Req. you to have the Pocket Watch key item.", player.hasKeyItem("Pocket Watch") >= 0);
@@ -2354,6 +2358,18 @@ public class Camp extends NPCAwareContent{
 		player.destroyItems(useables.MECHANI, 1);
 		CampStatsAndResources.MechanismResc += 1;
 		doNext(campMiscActions);
+	}
+	private function campMiscActions2():void {
+		clearOutput();
+		outputText("What would you like to do?");
+		menu();
+		if (player.hasPerk(PerkLib.CursedTag)) addButton(0, "Alter Binding Scroll", AlterBindScroll).hint("Alter Binding Scroll - DIY, aka, modify your cursed tag").disableIf(isNightTime, "It's too dark to modify your scroll.");
+		else addButtonDisabled(0, "Alter Bind Scroll", "Req. you to be a Jiangshi and having the Cursed Tag perk.");
+		if (player.isRaceCached(Races.LICH)) addButton(1, "Phylactery Enchantment", PhylacteryEnchantment).hint("You can weave a minor enchantment on your phylactery to gain a minor power.").disableIf(isNightTime, "It's too dark to modify your phylactery.");
+		else addButtonDisabled(1, "Phylactery Enchantment", "Req. you to be a Lich with phylactery.");
+		if (player.isAutomata()) addButton(2, "Remodel", CampRemodel).disableIf(isNightTime, "It's too dark to remodel your body.");
+		else addButtonDisabled(2, "Remodel", "Req. you to be an Automata.");
+		addButton(14, "Back", campMiscActions);
 	}
 
 	public function menuForCombiningAndSeperating():void {
@@ -3252,7 +3268,7 @@ public class Camp extends NPCAwareContent{
 				else button(i).disable("You already have the maximum amount of powers active as you can maintain without breaking yourself.");
 			}
 		}
-		addButton(14, "Back", campMiscActions);
+		addButton(14, "Back", campMiscActions2);
 	}
 
 	private function alterBindScrollToggle(status:StatusEffectType):void {
@@ -3316,13 +3332,86 @@ public class Camp extends NPCAwareContent{
 				else button(i).disable("You already have the maximum amount of runes active as you can maintain without breaking your phylactery.");
 			}
 		}
-		addButton(14, "Back", campMiscActions);
+		addButton(14, "Back", campMiscActions2);
 	}
 
 	private function phylacteryEnchantmentToggle(status:StatusEffectType):void {
 		if (player.hasStatusEffect(status)) player.removeStatusEffect(status);
 		else player.createStatusEffect(status,0,0,0,0);
 		PhylacteryEnchantment();
+	}
+	
+	private function CampRemodel():void {
+		clearOutput();
+		outputText("You feel like your body could use a few changes if only to keep your data fresh, thus you head down to the factory to alter some of your components.\n\n");
+		menu();
+		addButton(0, "Penis", CampRemodel2, 0).hint("Add a plug to your genitals so that you can properly fuck female organics.").disableIf(player.hasCock(), "You already added it.");
+		addButton(1, "Remove Penis", CampRemodel2, 1).hint("Remove a plug from your genitals.").disableIf(!player.hasCock(), "You already removed it.");
+		addButton(2, "Pussy", CampRemodel2, 2).hint("Add an outlet to your genitals so that you can properly get fucked by male organics.").disableIf(player.hasVagina(), "You already added it.");
+		addButton(3, "Remove Pussy", CampRemodel2, 3).hint("Remove an outlet from your genitals.").disableIf(!player.hasVagina(), "You already removed it.");
+		addButton(4, "Breast", CampRemodel2, 4).hint("Add two lumb of artificial breast on your chassis so that organics can fondle them. This option, while completely useless and existing solely as a cosmetic, was quite appreciated from most male operators, though no operator has been found in years.").disableIf(player.hasBreasts(), "You already added them.");
+		addButton(5, "No Breast", CampRemodel2, 5).hint("Remove the two lump of artificial breast on your chassi.").disableIf(!player.hasBreasts(), "You already removed them.");
+		addButton(6, "Bunny", CampRemodel2, 6).hint("Swap your hair decoration to bunny ear style.").disableIf(player.ears.type == Ears.AUTOMATA_BUNNY, "Your hair decoration is already bunny ear style.");
+		addButton(7, "Cat", CampRemodel2, 7).hint("Swap your hair decoration to cat ear style.").disableIf(player.ears.type == Ears.AUTOMATA_CAT, "Your hair decoration is already cat ear style.");
+		addButton(8, "Fox", CampRemodel2, 8).hint("Swap your hair decoration to fox ear style.").disableIf(player.ears.type == Ears.AUTOMATA_FOX, "Your hair decoration is already fox ear style.");
+		addButton(9, "Long hair", CampRemodel2, 9).hint("Make your synthetic hair longer.");
+		addButton(10, "Short hair", CampRemodel2, 10).hint("Make your synthetic hair shorter.").disableIf(player.hairLength < 6, "Your hair can't be shortened any more.");
+		addButton(14, "Back", campMiscActions2);
+	}
+	private function CampRemodel2(type:Number):void {
+		clearOutput();
+		outputText("You input your changes onto the console and step into the assembly compartment. Damn you really love the assembly compartment.\n\n");
+		outputText("Love? A machine shouldn’t be able to feel. Well, technically, your soul is still somewhere in that metal body, so perhaps you haven’t fully lost your ability to feel. Or perhaps this whole thing is just a very advanced AI simulation ran by your programs.\n\n");
+		outputText("Regardless, you patiently wait as your head is unwound from its socket and your legs and arms fastener are undone allowing your pieces to be safely removed. Now fully disassembled, yet still wirelessly linked somehow, your robotic eyes can watch from the other side of the assembly room as the machinery operates on your lower parts. A voice rings into the room as process number 2 is initiated.\n\n");
+		outputText("<b>“INITIATING CLEANSING OF THE COMPONENTS”</b>\n\n");
+		if (player.hasCock()) {
+			outputText("A robotic arm pulls your metal cock out of its hole, washing the length of your cable before plugging your tip into a tube for thorough cleansing. Pleasurable suctions are transmitted to your receptors as your pseudo-cum reservoirs are emptied into the tube until nothing remains. The suction stops in the plug, replaced by a flow of churning water ");
+			outputText("as the machinery proceeds to thoroughly cleanse your canal. With this process done, the fluid is again sucked from your metal cock making your cervo glitch in pleasure as you cum the water out of your system. Finally a stream of oil is shot down your canals in order to lubricate the segments allowing you to cum for a third time.\n\n");
+		}
+		else outputText("Your glowing, synthetic pussy folds are parted away as a tube is inserted into your plug. You gasp in delight as water washes down your artificial fuck hole, hitting on your receptors and transmiting pleasure. Once your vagina is properly washed, the tube begins to suck the water back making you cum at once.\n\n");
+		outputText("With this pleasurable process done begins the next step.\n\n");
+		outputText("<b>“INITIATING COMPONENT SWAPS”</b>\n\n");
+		outputText("Your connection fades with the lost components as your old parts are moved out of the room to be recycled and a set of brand new parts is pulled in. Within a few seconds, you are fully connected again. Finally you step out of the compartment with brand new parts.\n\n");
+		switch (type) {
+			case 0:
+				transformations.CockAutomata().applyEffect(false);
+				break;
+			case 1:
+				transformations.CockNone().applyEffect(false);
+				break;
+			case 2:
+				transformations.VaginaAutomata().applyEffect(false);
+				break;
+			case 3:
+				transformations.VaginaNone().applyEffect(false);
+				break;
+			case 4:
+				transformations.BreastsGrowUpToDD.applyEffect(false);
+				break;
+			case 5:
+				transformations.BreastsShrinkToNothing.applyEffect(false);
+				break;
+			case 6:
+				transformations.EarsAutomataBunny.applyEffect(false);
+				break;
+			case 7:
+				transformations.EarsAutomataCat.applyEffect(false);
+				break;
+			case 8:
+				transformations.EarsAutomataFennecFox.applyEffect(false);
+				break;
+			case 9:
+				player.hairLength += 5;
+				break;
+			case 10:
+				player.hairLength -= 5;
+				break;
+		}
+		if (player.statStore.hasBuff("Weakened")) player.statStore.removeBuffs("Weakened");
+		if (player.statStore.hasBuff("Drained")) player.statStore.removeBuffs("Drained");
+		if (player.statStore.hasBuff("Damaged")) player.statStore.removeBuffs("Damaged");
+		if (player.hasStatusEffect(StatusEffects.CombatWounds)) player.removeStatusEffect(StatusEffects.CombatWounds);
+		doNext(camp.returnToCampUseOneHour);
 	}
 
 	private function fillUpPillBottle(pills:ItemType, result:ItemType, grade:String):void {
@@ -4155,6 +4244,12 @@ public class Camp extends NPCAwareContent{
 	}
 
 	public function doSleep(clrScreen:Boolean = true):void {
+		//Autosave stuff
+		if (player.slotName != "VOID" && player.autoSave && mainView.getButtonText(0) != "Game Over") {
+			trace("Autosaving to slot: " + player.slotName);
+			CoC.instance.saves.saveGameToSharedObject(player.slotName);
+		}
+
 		IsSleeping = true;
 		campQ = true;
 		if (CoC.instance.timeQ == 0) {
@@ -4368,6 +4463,8 @@ public class Camp extends NPCAwareContent{
 			clearOutput();
 			if (timeQ != 1) outputText("You lie down to resume sleeping for the remaining " + num2Text(timeQ) + " hours.\n");
 			else outputText("You lie down to resume sleeping for the remaining hour.\n");
+
+			sleepRecovery(true);
 		}
 		player.updateRacialAndPerkBuffs();
 		goNext(true);

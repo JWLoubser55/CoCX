@@ -167,7 +167,7 @@ public class HeXinDao extends BaseContent
         addButton(2, "SoulEquip", serenamerchant);
         addButton(3, "SoulArrow", ermaswiftarrowmerchant);
 		addButton(4, "FSAAWY", qimerchant).hint("Flying Swords are always with you!");
-		//addButton(5, "", ); siedziba lokalnej grupy zrzeszającej soul cultivators - PC aby potem pojsc dalej bedzie musial dolaczyc tutaj (pomyslec nad wiarygodnym sposobem zmuszenia go do tego - moze jakies ciekawe itemy/inne rzeczy dla czlonkow beda a miejsce sie zwolni jak wywala tak goblinke tworzynie golemow, ktora potem oczywiscie wcisnie sie do obozu PC aby w spokoju rozwijac sie w tworzeniu golemow itp.)
+		addButtonDisabled(5, "State of Azoh", "State of Azoh");
         addButton(6, "JourTTEast", SceneLib.journeyToTheEast.enteringInn);
         addButton(7, "Arena", soularena);
         addButton(8, "Restaurant", restaurantShiraOfTheEast);
@@ -1606,7 +1606,9 @@ public function soularena():void {
 		outputText("\"<i>Five Spirit Stones per manual.</i>\" From the look in her young eyes, you can tell that trying to haggle would be a poor decision.\n\n");
 		menu();
 		addButtonIfTrue(0, "Daoist", missAkemiManualsShopDaoist, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") < 0);
-		addButtonIfTrue(1, "BodyCult", missAkemiManualsShopBodyCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") < 0);
+		addButtonIfTrue(1, "BodyCult", missAkemiManualsShopBodyCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Vigor of Lizan") < 0, "Buy Cultivation Manual: Vigor of Lizan");
+		//addButtonIfTrue(1, "BodyCult", missAkemiManualsShopBodyCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") < 0);
+		//outputText("\"<i>So you're into Coke Demons.... er... Fiends?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
 		//addButtonIfTrue(2, "HeartCult", missAkemiManualsShopHeartforceCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") < 0);
 		addButton(4, "Back", mrsShigureLectures);
 	}
@@ -1629,9 +1631,9 @@ public function soularena():void {
 			return;
 		}
 		flags[kFLAGS.SPIRIT_STONES] -= 5;
-		outputText("\"<i>So you're into Coke Demons.... er... Fiends?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
-		outputText("<b>Gained Key Item: Cultivation Manual: Body like a Coke Fiend</b>");
-		player.createKeyItem("Cultivation Manual: Body like a Coke Fiend", 0, 0, 0, 0);
+		outputText("\"<i>So you're into Lizan Vigor or... Lizans themself?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Vigor of Lizan</b>");
+		player.createKeyItem("Cultivation Manual: Vigor of Lizan", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 	public function missAkemiManualsShopHeartforceCultivator():void {
@@ -1920,4 +1922,4 @@ public function soularena():void {
         doNext(camp.returnToCampUseOneHour);
     }
 }
-}
+}

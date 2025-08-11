@@ -242,7 +242,6 @@ import classes.internals.*;
 			this.special2 = special2;
 			this.special3 = special3;
 			this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
-			this.createPerk(PerkLib.FireVulnerability, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyPlantType, 0, 0, 0, 0);
 			checkMonster();
 		}

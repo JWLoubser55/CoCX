@@ -222,6 +222,7 @@ public class AbstractSpell extends CombatAbility {
 		}
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+		if (player.weapon == weapons.QULIPOTH) lustDmg *= 1.5;
 
 		if (applyOmnicaster && (category != CAT_SPELL_GREEN || !player.hasPerk(PerkLib.ArcaneVenom))) {
 			lustDmg *= omnicasterDamageFactor();
@@ -406,6 +407,9 @@ public class AbstractSpell extends CombatAbility {
 		}
 		if (applyOmnicaster) {
 			damage *= omnicasterDamageFactor();
+		}
+		if (player.weapon == weapons.ANCIENTO) {
+			damage *= 1.25;
 		}
 		
 		return Math.round(damage);

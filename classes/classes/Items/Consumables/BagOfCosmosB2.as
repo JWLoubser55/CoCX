@@ -18,7 +18,7 @@ public class BagOfCosmosB2 extends Consumable {
 			outputText("You open bag to find ");
 			switch (Utils.rand(2)) {
 				case 0:
-				var SS1:int = 2 + Utils.rand(2);
+				var SS1:int = 30 + Utils.rand(30);
 				outputText("" + Utils.num2Text(SS1) + " spirit stones inside.");
 				flags[kFLAGS.SPIRIT_STONES] += SS1;
 				EngineCore.statScreenRefresh();

@@ -77,9 +77,7 @@ public class SnowLily extends Alraune
 			}
 			this.imageName = "snow lily alraune";
 			this.gems = rand(25) + 15;
-			this.removePerk(PerkLib.FireVulnerability);
-			this.createPerk(PerkLib.IceNature, 0, 0, 0, 0);
-			this.createPerk(PerkLib.EnemyPlantType, 0, 0, 0, 0);
+			this.createPerk(PerkLib.EnemyPlantType, 2, 0, 0, 0);
 			checkMonster();
 		}
 		

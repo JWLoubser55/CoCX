@@ -991,6 +991,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const ArtfulDestruction:StatusEffectType         = mkCombat("Artful destruction");
 		public static const ATranscendentSoulField:StatusEffectType    = mkCombat("Absolute TranscendentSoul Field");
 		public static const AttackDisabled:StatusEffectType            = mkCombat("Attack Disabled");
+		public static const AutomataOverdrive:StatusEffectType         = mkCombat("Automata Overdrive");
 		public static const BalanceOfLife:StatusEffectType             = mkCombat("Balance of Life");
 		public static const Bammed1:StatusEffectType                   = mkCombat("Bammed1");//v1 - melee attack	v2 - range attack
 		public static const Bammed2:StatusEffectType                   = mkCombat("Bammed2");//v1 - p. specials		v2 - m. specials

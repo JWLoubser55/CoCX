@@ -15,6 +15,7 @@ import classes.PerkLib;
 import classes.Races;
 import classes.Scenes.Areas.Bog.LizanRogue;
 import classes.Scenes.Areas.Forest.Akbal;
+import classes.Scenes.Areas.Forest.Barometz;
 import classes.Scenes.Areas.Lake.GooGirl;
 import classes.Scenes.Areas.LightlessReach.DisplacerBeast;
 import classes.Scenes.Areas.Mountain.WormMass;
@@ -77,7 +78,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd = buttons.add("SneakAttack (M)", sneakAttack).hint("Strike the vitals of a stunned, blinded or distracted opponent for heavy damage. (Melee variant)");
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
-				if (!player.weapon.isStaffType() && !player.weaponOff.isStaffType()) {
+				if (!(player.weapon.isStaffType() && !player.hasPerk(PerkLib.Shillelagh)) && !(player.weaponOff.isStaffType() && !player.hasPerk(PerkLib.Shillelagh))) {
 					bd = buttons.add("Charge", charging).hint("Charge at your opponent for massive damage. Deals more damage if using a spear or lance. Gains extra damage from the usage of a horn or a pair of horns.");
 					if (player.statStore.hasBuff("ScarletSpiritCharge")) {
 						if (player.HP <= (player.minHP() + (chargingcoooooost() * 2))) bd.disable("Your hp is too low to perform Charge.");
@@ -220,7 +221,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 					}
 					//Kick
-					if (player.isTaur() || player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BUNNY || player.lowerBody == LowerBody.KANGAROO || player.perkv1(IMutationsLib.MightyLegsIM) >= 1) {
+					if (player.isTaur() || player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BAROMETZ || player.lowerBody == LowerBody.BUNNY || player.lowerBody == LowerBody.KANGAROO || player.perkv1(IMutationsLib.MightyLegsIM) >= 1) {
 						bd = buttons.add("Kick", kick).hint("Attempt to kick an enemy using your powerful lower body.");
 						if (player.hasStatusEffect(StatusEffects.CooldownKick)) {
 							bd.disable("<b>You need more time before you can perform Kick again.</b>\n\n");
@@ -435,6 +436,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 					else if (player.hasStatusEffect(StatusEffects.CooldownPlay)) bd.disable("<b>You need more time before you can use Play again.</b>\n\n");
 					else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
+				if (player.tail.type == Tail.AUTOMATA_TAIL_CABLE) {
+					bd = buttons.add("Tazer", automataTazer).hint("Deliver a paralyzing jolt with a melee attack.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
 			}
 			if (player.hasPerk(PerkLib.PowerShot)) {
 				bd = buttons.add("Power Shoot", powerShoot).hint("Do a single way more powerful wrath-enhanced range strike.");
@@ -558,11 +563,14 @@ public class PhysicalSpecials extends BaseCombatContent {
 				bd = buttons.add("Terr. Howl", terrifyingHowl).hint("Release a powerful howl, dazing your opponent for 1 round.\n4 round cooldown.", "Terrifying Howl");
 				bd.requireFatigue(physicalSpecialsCost(40));
 				if(player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
-					bd.disable("You cannot fhowl while you're having so much difficult breathing.");
+					bd.disable("You cannot howl while you're having so much difficult breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
 			if (player.canFly() && !player.hasPerk(PerkLib.ElementalBody)) {
 				bd = buttons.add("Take Flight", takeFlight).hint("Make use of your wings to take flight into the air for up to " + combat.flightDurationNatural() + " turns. \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.");
+				if (player.hasStatusEffect(StatusEffects.Tentagrappled) && monster is Barometz) {
+					bd.disable("ou are currently entangled in vines and can't fly!");
+				}
 			}
 			if (player.shieldName == "Battle Net") {
 				bd = buttons.add("Entangle", netEntangle).hint("Toss your net at the enemy to entangle it. (cooldown of 5 rounds before it can be used again)");
@@ -697,7 +705,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd.disable("<b>You need more time before you can use "+(player.hasKeyItem("Medical Dispenser 2.0") >= 0 ? "Medical Dispenser":"Stimpack Dispenser")+" again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}
-			if ((player.hasKeyItem("Jetpack") >= 0 || player.hasKeyItem("MK2 Jetpack") >= 0) && !player.hasPerk(PerkLib.SelfImprovement)) {
+			if (player.jetpackChecks() && !player.hasPerk(PerkLib.SelfImprovement)) {
 				bd = buttons.add("Jetpack", takeFlightGoblinMechJetpack).hint("Make use of your mech jetpack to take flight into the air for up to 5 turns. \n\nWould go into cooldown after use for: 3 rounds");
 				if (player.hasStatusEffect(StatusEffects.CooldownJetpack)) {
 					bd.disable("<b>You need more time before you can use jetpack again.</b>\n\n");
@@ -7215,6 +7223,46 @@ public class PhysicalSpecials extends BaseCombatContent {
 		dmgBarrage *= 6;
 		if (flags[kFLAGS.ELEMENTAL_ARROWS] > 0) dmgBarrage = combat.elementalArrowDamageMod(dmgBarrage);
 		return dmgBarrage;
+	}
+	
+	public function automataTazer():void {
+		clearOutput();
+		outputText("You curve your cable tail at [themonster] and deliver a paralyzing discharge. ");
+		flags[kFLAGS.LAST_ATTACK_TYPE] = Combat.LAST_ATTACK_SPELL;
+		var damage:Number = scalingBonusIntelligence() * spellModWhite();
+		//Determine if critical hit!
+		var crit:Boolean = false;
+		var critChance:int = 5;
+		critChance += combatMagicalCritical();
+		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+		if (rand(100) < critChance) {
+			crit = true;
+			damage *= 1.75;
+		}
+		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
+		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
+		//High damage to goes.
+		damage = calcVoltageMod(damage, true);
+		if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + (player.lust100 * 0.01));
+		damage = combat.tinkerDamageBonus(damage);
+		damage = combat.goblinDamageBonus(damage);
+		damage *= 0.1;
+		damage = Math.round(damage);
+		outputText("potent discharge ");
+		doLightningDamage(damage, true, true);
+		outputText(" damage!");
+		if (crit) outputText(" <b>*Critical Hit!*</b>");
+		if (!monster.monsterIsStunned()) {
+			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+			else monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
+		}
+		statScreenRefresh();
+		if (player.hasPerk(PerkLib.GreasedLightning)) {
+			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) player.addStatusValue(StatusEffects.GreasedLightning, 1, 1);
+			else player.createStatusEffect(StatusEffects.GreasedLightning, 1, 1, 0, 0);
+		}
+		if (monster.HP <= monster.minHP()) doNext(endHpVictory);
+		else enemyAI();
 	}
 	
 	public function StealthModeActivate():void {

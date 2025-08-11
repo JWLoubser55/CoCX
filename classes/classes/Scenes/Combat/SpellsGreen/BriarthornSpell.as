@@ -27,7 +27,8 @@ public class BriarthornSpell extends AbstractGreenSpell {
 	}
 
 	override public function calcDuration():int {
-		var dura:Number = 6;
+		var dura:Number = 4;
+		if (player.hasPerk(PerkLib.PersistentSpell)) dura += 2;
 		if (player.hasPerk(PerkLib.GreenMagic)) dura *= 2;
 		return dura;
 	}
@@ -61,6 +62,9 @@ public class BriarthornSpell extends AbstractGreenSpell {
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
 		var baseDamage:Number = ((scalingBonusIntelligence() + scalingBonusLibido()));
 		if (player.hasPerk(PerkLib.DruidicFocus)) baseDamage += scalingBonusToughness();
+		baseDamage *= 0.25;
+		if (player.hasPerk(PerkLib.GreenMagic)) baseDamage *= 2;
+		if (player.checkNaturalOath()) baseDamage *= 2;
 		return adjustLustDamage(baseDamage, monster, CAT_SPELL_GREEN, randomize);
 	}
 	

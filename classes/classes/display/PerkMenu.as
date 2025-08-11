@@ -203,7 +203,7 @@ public class PerkMenu extends BaseContent {
 		if (player.hasPerk(PerkLib.SuddenRun) || player.hasPerk(PerkLib.EarthAndSkyEx)) {
 			outputText("\n\nYou can choose to start galloping or not at the beginning of each combat.\n");
 			outputText("\nStart: <b>" + (flags[kFLAGS.AUTO_GALLOP] == 0 ? "Standing still" : "Galloping") + "</b>");
-			if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN) {
+			if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BAROMETZ) {
 				if (autoFlyingFlag == 0) addButton(9, "Gallop", curry(toggleFlagMisc, kFLAGS.AUTO_GALLOP));
 			}
 			else {
@@ -426,7 +426,7 @@ public class PerkMenu extends BaseContent {
 		var currentAttacksMain:int = flags[kFLAGS.MULTIATTACK_STYLE_MAIN];
 		var maxAttacksMain:int = combat.maxCurrentAttacksMain();
 		clearOutput();
-		if (player.weapon.isStaffType() || player.weapon.isWandType()) {
+		if ((player.weapon.isStaffType() && !player.hasPerk(PerkLib.Shillelagh)) || player.weapon.isWandType()) {
 			outputText("You can't multi-attack with wands or staves!\n\n");
 			doNext(meleeOptions);
 			return;
@@ -451,7 +451,7 @@ public class PerkMenu extends BaseContent {
 		var currentAttacksOff:int = flags[kFLAGS.MULTIATTACK_STYLE_OFF];
 		var maxAttacksOff:int = combat.maxCurrentAttacksOff();
 		clearOutput();
-		if (player.weaponOff.isStaffType() || player.weaponOff.isWandType()) {
+		if ((player.weaponOff.isStaffType() && !player.hasPerk(PerkLib.Shillelagh)) || player.weaponOff.isWandType()) {
 			outputText("You can't multi-attack with wands or staves!\n\n");
 			doNext(meleeOptions);
 			return;

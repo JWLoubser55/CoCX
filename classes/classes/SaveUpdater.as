@@ -2764,6 +2764,34 @@ public class SaveUpdater extends NPCAwareContent {
 					outputText("Learning martial arts for the first time you begin to refine your combat knowledge into something new. Through diligent practice and cultivation you may unlock new ways to use your techniques and improve your overall fighting knowledge. <b>Unlocked the martial training stat.</b>\n\n");
 					player.createStatusEffect(StatusEffects.MartialTraining, 6, 0, 0, 0);
 				}
+			}
+			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.592) {
+				flags[kFLAGS.MOD_SAVE_VERSION] = 36.592;
+				outputText("\n\nToo much Coke is bad for Fiend with Body like you... here have a bit of Lizan Vigor instead.");
+				if (player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0) {
+					player.removeKeyItem("Cultivation Manual: Body like a Coke Fiend");
+					player.createKeyItem("Cultivation Manual: Vigor of Lizan", 0, 0, 0, 0);
+					if (player.hasPerk(PerkLib.FleshBodyApprenticeStage)) {
+						player.removePerk(PerkLib.FleshBodyApprenticeStage);
+						player.createPerk(PerkLib.FleshBodyVoLApprenticeStage, 0, 0, 0, 0);
+					}
+					if (player.hasPerk(PerkLib.FleshBodyWarriorStage)) {
+						player.removePerk(PerkLib.FleshBodyWarriorStage);
+						player.createPerk(PerkLib.FleshBodyVoLWarriorStage, 0, 0, 0, 0);
+					}
+					if (player.hasPerk(PerkLib.FleshBodyElderStage)) {
+						player.removePerk(PerkLib.FleshBodyElderStage);
+						player.createPerk(PerkLib.FleshBodyVoLElderStage, 0, 0, 0, 0);
+					}
+					if (player.hasPerk(PerkLib.FleshBodyOverlordStage)) {
+						player.removePerk(PerkLib.FleshBodyOverlordStage);
+						player.createPerk(PerkLib.FleshBodyVoLOverlordStage, 0, 0, 0, 0);
+					}
+					if (player.hasPerk(PerkLib.FleshBodyTyrantStage)) {
+						player.removePerk(PerkLib.FleshBodyTyrantStage);
+						player.createPerk(PerkLib.FleshBodyVoLTyrantStage, 0, 0, 0, 0);
+					}
+				}
 			}/*
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.60) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.60;

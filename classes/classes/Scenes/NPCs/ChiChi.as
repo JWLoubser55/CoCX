@@ -134,7 +134,13 @@ use namespace CoC;
 		{
 			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 13) chichiScene.WonSparringFight();
 			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) chichiScene.WonSecondFight();
-			else chichiScene.WonFirstFight();
+			else {
+				if (hpVictory) chichiScene.WonFirstFight();
+				else {
+					retry();
+					return;
+				}
+			}
 		}
 
 		private function retry():void {
@@ -145,6 +151,7 @@ use namespace CoC;
 			}
 			else createStatusEffect(StatusEffects.CombatWounds, 10, 0, 0, 0);
 			HP = maxHP();
+			lust = 0;
 			outputText("As lust begins to overwhelm Chi Chi she suddenly adopts a new stance.\n\n");
 			outputText("\"<i>You think you can win just by making me horny? Watch and learn.</i>\"\n\n");
 			outputText("Chi Chi suddenly begins to kick at the air at tremendous speed unleashing a flurry of fireballs at you. To your absolute dismay, with each kick, the lusty haze in her eyes dissipates until it's completely gone. Meanwhile, you end up getting immolated by her barrage of fiery projectiles!\n\n");
@@ -158,13 +165,7 @@ use namespace CoC;
 		{
 			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 13) chichiScene.LostSparringFight();
 			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) chichiScene.LostSecondFight();
-			else {
-				if (hpVictory) chichiScene.LostFirstFight();
-				else {
-					retry();
-					return;
-				}
-			}
+			else chichiScene.LostFirstFight();
 		}
 
 		override public function get long():String {

@@ -30,6 +30,23 @@ import classes.Scenes.NPCs.AetherTwinsFollowers;
 			desc += "\n\nType: Weapon (";
 			if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Daggers") desc += "Dagger";
 			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dagger and Shield") desc += "Small Shield";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Swords") desc += "Sword";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Axes") desc += "Axe";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Rapiers") desc += "Rapier";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Spears") desc += "Spear";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Maces") desc += "Mace";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Whips") desc += "Whip";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords") desc += "Greatsword";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Axes") desc += "Large Axe";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Katanas") desc += "Katana";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears") desc += "Large Spear";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Huge Warhammers") desc += "Huge Warhammer";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Sword and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Axe and Shield" ||
+					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Rapier and Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Spear and Shield" ||
+					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Mace and Shield") desc += "Medium Shield";
+			else if (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Greatsword and Large Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Axe and Large Shield" ||
+					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Katana and Large Shield" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Large Spear and Large Shield" ||
+					 AetherTwinsFollowers.AetherTwinsShape == "Human-tier Huge Warhammer and Large Shield") desc += "Large Shield";
 			else desc += "Gauntlet";
 			desc += ")";
 			//Block Rating

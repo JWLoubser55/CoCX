@@ -113,6 +113,9 @@ use namespace CoC;
 		public const DARKSTI:SimpleUseable = new SimpleUseable("DarkStI", "Darksteel ingot", "a Darksteel ingot", 120,
 			"A Darksteel ingot.",
 			"You look over the Darksteel ingot. Likely useful for making some equipment.");
+		public const SOULMETB:SimpleUseable = new SimpleUseable("SoulmetB", "Soulmetal bar", "a Soulmetal bar", 240,
+			"A Soulmetal bar.",
+			"You look over the Soulmetal bar. Likely useful for making cultivators equipment, still it's only of averange purity.");
 		public const SKYMETA:SimpleUseable = new SimpleUseable("Skymetal", "Skymetal" , "a Skymetal", 900,
 			"A Skymetal ore.",
 			"You gaze at the skymetal ore. Likely useful for making some weapons.");
@@ -225,6 +228,9 @@ use namespace CoC;
 		public const BANDAGE:SimpleUseable = new SimpleUseable("Bandage", "Bandages", "a Bandages", 25,
 			"A Bandages.",
 			"A roll of bandages. What are you gonna do with this anyway?");
+		public const DUCATS_:SimpleUseable = new SimpleUseable("Ducats", "Ducats", "a Ducats", 500,
+			"Weird coins from another world worthless in this universe but still made of gold, can be sold at the pawn shop for gems.",
+			"You look at Ducats.  Weird coins from another world worthless in this universe but still made of gold, can be sold at the pawn shop for gems.");
 		// Alchemical catalysts:
 		// Substance/Essence/Residue/Pigment
 		// Minor/Common/Major

@@ -59,7 +59,7 @@ public class Lumi extends BaseContent {
 			addButton(12, "Workshop", lumiWorkshop);
 			if (player.statusEffectv2(StatusEffects.LumiWorkshop) < 1) addButton(13, "GoblinMech", lumiGarageRetry);
 		}
-		else addButton(12, "Garage", lumiGarage).hint("Click only if you're goblin (10+ in goblin score) with 500+ gems ;)");
+		else addButton(12, "Garage", lumiGarage).hint("Click only if you're goblin (10+ in goblin score) / goblin graduate / automata with 500+ gems ;)");
 		addButton(14, "Leave", explorer.done);
     }
 	
@@ -345,8 +345,8 @@ public class Lumi extends BaseContent {
 	public function lumiGarage():void {
 		spriteSelect(SpriteDb.s_lumi);
         clearOutput();
-        player.createStatusEffect(StatusEffects.LumiWorkshop,0,0,0,0);
-		outputText("In the corner of Lumi’s weird shop, there is a large door to a room filled with similarly weird items, you ask Lumi about them.\n\n");
+		player.createStatusEffect(StatusEffects.LumiWorkshop,0,0,0,0);
+        outputText("In the corner of Lumi’s weird shop, there is a large door to a room filled with similarly weird items, you ask Lumi about them.\n\n");
 		outputText("\"<i>Oh ya lookin fer goblin tech? It's not fer sale but I sell pieces and tools fer engineers. Perhaps ya would be interested into a Cock axial resonator or a vibrafronics spinning battery?</i>\"\n\n");
 		outputText("You didn’t understand half of what she said and admit as much.\n\n");
 		outputText("\"<i>Ah, go fegures. True genius is dyin thase days. Sure, I make sex toys and poetions but I think the true arft still is in a functional goblin mech!</i>\"\n\n");
@@ -363,6 +363,7 @@ public class Lumi extends BaseContent {
 		}
 		else {
 			outputText("but there's no way I'd sell that ta a non goblin, who knows, ya common folks could hurt yeerself badly just tryin ta drive it.</i>\"\n\n");
+			endEncounter();
 		}
 		//outputText("\n\n");
 		//outputText("\"<i>Stho, what can Lumi the Aochomist Extwaordinaire do fo you today?</i>\"\n\n");
@@ -389,7 +390,7 @@ public class Lumi extends BaseContent {
 		outputText("You inquire on the goblin mech.\n\n");
 		outputText("\"<i>Oh ya came back on your decision? Sure I still have it in the backroom. 500 gems as before.</i>\"\n\n");
 		menu();
-		if (player.isGoblinoid()) addButton(1, "Yes", lumiGarageYes);
+		if (player.isGoblinoid(false) || player.hasPerk(PerkLib.GoblinatusGraduate) || player.hasPerk(PerkLib.SelfImprovement)) addButton(1, "Yes", lumiGarageYes);
 		else addButtonDisabled(1, "Yes", "You still not enough goblin to get this beauty. Money can't buy everything, ok?");
 		addButton(3, "No", lumiGarageNo);
 	}
@@ -397,7 +398,7 @@ public class Lumi extends BaseContent {
 	public function lumiEngineering():void {
 		spriteSelect(SpriteDb.s_lumi);
         clearOutput();
-        outputText("\"<i>Since you are a "+(player.isGoblinoid()?"goblin":"graduate")+" feel free to use my workshop lets just say this a favor I'm giving a future rising star amonst genius I have a feel you gonna go prety damn far.</i>\"\n\n");
+        outputText("\"<i>Since you are a"+(player.isGoblinoid()?" goblin":""+(player.isAutomata()?"n automata":" graduate")+"")+" feel free to use my workshop lets just say this a favor I'm giving a future rising star amonst genius I have a feel you gonna go prety damn far.</i>\"\n\n");
 		menu();
 		addButton(0, "Metal pieces", lumiEngineeringBuyMetalPieces);
 		if (player.hasKeyItem("Blueprint - Energy Core") < 0) addButton(1, "EnergyCore BP", curry(lumiEngineeringBuyBlueprintSharedPart, 50, "Energy Core")).hint("Energy Core BP - 50 gems");
@@ -1210,7 +1211,7 @@ public class Lumi extends BaseContent {
 	}
 	
 	public function lumiWorkshop():void {
-		if (player.isGoblinoid(false)) {
+		if (player.isGoblinoid(false) || player.hasPerk(PerkLib.GoblinatusGraduate) || player.hasPerk(PerkLib.SelfImprovement)) {
 			clearOutput();
 			if (player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop)) {
 				outputText("You reply that you're here to perform some tinkering of your own.\n\n");
@@ -1275,8 +1276,8 @@ public class Lumi extends BaseContent {
 			if (player.hasKeyItem("Blueprint - Powboy") >= 0 && player.inte >= 75 && player.hasKeyItem("Power bracer") >= 0 && CampStatsAndResources.MetalPieces >= 5 && CampStatsAndResources.NailsResc >= 200 && CampStatsAndResources.EnergyCoreResc >= 1) addButton(9, "Powboy", lumiWorkshopPowboy).hint("Powboy - This bracer increases your physical strength by injecting drugs which reacts in your goblin blood. Furthermore it is equipped with an energy shield that works as long as you are not using any armor. And lastly, it actually tells the hour of the day. Like all drugs, also increases sensitivity - 75+ int, Power bracer, 5 metal pieces, 200 nails, 1 energy core, 8 hours of work");
 			if (player.hasKeyItem("Blueprint - Power bracer") >= 0 && (player.hasKeyItem("Drug injectors") >= 0 || player.hasKeyItem("Improved Drug injectors") >= 0 || player.hasKeyItem("Potent Drug injectors") >= 0) && player.inte >= 50 && CampStatsAndResources.MetalPieces >= 3 && CampStatsAndResources.NailsResc >= 100 && CampStatsAndResources.EnergyCoreResc >= 1) addButton(9, "Power bracer", lumiWorkshopPowerBracer).hint("Power bracer - This bracer increase your physical strength by injecting drugs which reacts with your blood. A physical strength version of the drug injector to cope with your natural handicaps. Like all drugs also increase sensitivity - 50+ int, any Drug injector, 3 metal pieces, 100 nails, 1 energy core, 4 hours of work");
 			addButton(12, "Weapons/Gadgets", lumiWorkshopWeaponsAndGadgets);
-			if (player.vehiclesName == "Goblin Mech Alpha" || player.vehiclesName == "Goblin Mech Prime" || player.vehiclesName == "Giant Slayer Mech") addButton(13, "Mech UPGR", lumiWorkshopMechUpgrades);
-			else addButtonDisabled(13, "Mech UPGR", "You need to have goblin mech currently used to craft upgrades for it.");
+			if (player.isInGoblinMech() || player.hasPerk(PerkLib.SelfImprovement)) addButton(13, "Mech UPGR", lumiWorkshopMechUpgrades);
+			else addButtonDisabled(13, "Mech UPGR", "You need to have goblin mech currently equipped OR have Self Improvement perk to craft mech specific upgrades.");
 			if (player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop)) addButton(14, "Back", playerMenu);
 			else addButton(14, "Back", lumiLabChoices);
 		}
@@ -1873,7 +1874,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 30;
 		CampStatsAndResources.NailsResc -= 700;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new Upgraded Armor plating 6.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new Upgraded Armor plating 6.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 6.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 6.0");
 		player.removeKeyItem("Upgraded Armor plating 5.0");
@@ -1885,7 +1886,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 25;
 		CampStatsAndResources.NailsResc -= 600;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new Upgraded Armor plating 5.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new Upgraded Armor plating 5.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 5.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 5.0");
 		player.removeKeyItem("Upgraded Armor plating 4.0");
@@ -1897,7 +1898,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 20;
 		CampStatsAndResources.NailsResc -= 500;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new Upgraded Armor plating 4.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new Upgraded Armor plating 4.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 4.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 4.0");
 		player.removeKeyItem("Upgraded Armor plating 3.0");
@@ -1909,7 +1910,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 15;
 		CampStatsAndResources.NailsResc -= 400;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new Upgraded Armor plating 3.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new Upgraded Armor plating 3.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 3.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 3.0");
 		player.removeKeyItem("Upgraded Armor plating 2.0");
@@ -1921,7 +1922,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 10;
 		CampStatsAndResources.NailsResc -= 300;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new Upgraded Armor plating 2.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new Upgraded Armor plating 2.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 2.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 2.0");
 		player.removeKeyItem("Upgraded Armor plating 1.0");
@@ -1933,7 +1934,7 @@ public class Lumi extends BaseContent {
 		clearOutput();
 		CampStatsAndResources.MetalPieces -= 5;
 		CampStatsAndResources.NailsResc -= 200;
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new Upgraded Armor plating 1.0 is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new Upgraded Armor plating 1.0 is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem("Upgraded Armor plating 1.0", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - Upgraded Armor plating 1.0");
 		statScreenRefresh();
@@ -2284,7 +2285,7 @@ public class Lumi extends BaseContent {
 		lumiWorkshopSharedPart4Hours("Grenade Launcher");
 	}
 	public function lumiWorkshopSharedPart4Hours(itemName:String):void {
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new "+itemName+" is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "an hour":"four hours")+" your brand new "+itemName+" is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem(""+itemName+"", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - "+itemName+"");
 		statScreenRefresh();
@@ -2292,7 +2293,7 @@ public class Lumi extends BaseContent {
 		else doNext(camp.returnToCampUseFourHours);
 	}
 	public function lumiWorkshopSharedPart8Hours(itemName:String):void {
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new "+itemName+" is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "four":"eight")+" hours your brand new "+itemName+" is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem(""+itemName+"", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - "+itemName+"");
 		statScreenRefresh();
@@ -2300,7 +2301,7 @@ public class Lumi extends BaseContent {
 		else doNext(camp.returnToCampUseEightHours);
 	}
 	public function lumiWorkshopSharedPart12Hours(itemName:String):void {
-		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new "+itemName+" is ready and installed up your " + player.vehiclesName + ".\n\n");
+		outputText("You get to work spending the necessary time to craft your newest toy. After "+(player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop) ? "eight":"twelve")+" hours your brand new "+itemName+" is ready and installed up your "+(player.hasPerk(PerkLib.SelfImprovement)?"body":"" + player.vehiclesName + "")+".\n\n");
 		player.createKeyItem(""+itemName+"", 0, 0, 0, 0);
 		player.removeKeyItem("Blueprint - "+itemName+"");
 		statScreenRefresh();

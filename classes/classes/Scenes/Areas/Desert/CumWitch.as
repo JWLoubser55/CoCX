@@ -55,7 +55,7 @@ public class CumWitch extends Monster
 					else outputText("\nSome of the Cum Witch's cum nearly hits you, but you manage to step aside.");
 				}
 				//Dragon-shell shield
-				else if (player.shield == game.shields.DRGNSHL && rand(2) == 0) outputText("\nYou ready your dragon-shell shield, letting the futa-cum hit your shield. Within a short span of time, the cum is absorbed into your shield.");
+				else if (player.isFluidAbsorbingShield() && rand(2) == 0) outputText("\nYou ready your [shield], letting the futa-cum hit your shield. Within a short span of time, the cum is absorbed into your shield.");
 				else {
 					var temp:Number = rand(5);
 					//Hit1

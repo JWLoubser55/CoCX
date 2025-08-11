@@ -4,6 +4,7 @@
 	 */
 	package classes.Scenes.Dungeons.AnzuPalace
 {
+import classes.BodyParts.Tail;
 import classes.BodyParts.Tongue;
 import classes.CoC;
 import classes.GlobalFlags.*;
@@ -531,7 +532,7 @@ use namespace CoC;
 				if (flags[kFLAGS.ANZU_SUCKED_OFF_COUNTER] > 0) outputText(", and blowjob");
 				outputText(", nothing compares to a tight and nice hole to slide in his package. And, in a world like this, it’s matter of time before you lose your tightness, and what could be better to lose it with your " + (anzuRelationshipLevel() >= 4 ? "lover" : "friend") + " than with a random monster on the wilderness? For make yourself sure that he won’t object anymore, you slip a hand on his underwear and start caressing his balls. The massive nuts almost groan on their desire for release, prompting a shudder on him, who blushes at your fondling of his intimate parts.");
 				outputText("\n\n\"<i>O-okay, if you insist, friend….</i>\" a flustered Anzu answers</i>\" We should get started, then.</i>\"");
-				outputText("\n\nStill a little unsure, he starts removing your [armor] while you lean over the bed. After leaving your clothes on the side, he takes off his clothes, dropping them on the floor, leaving him only with his underwear. You display your naked form on the bed, and shake your butt in the air [if (player.tail.type != 0)wagging your [tail]] to entice him. Despite his initial doubts, his arousal becomes obvious, judging by the way his cock starts tenting his underwear. He finally removes it, letting his partially erect cock hang free.");
+				outputText("\n\nStill a little unsure, he starts removing your [armor] while you lean over the bed. After leaving your clothes on the side, he takes off his clothes, dropping them on the floor, leaving him only with his underwear. You display your naked form on the bed, and shake your butt in the air "+(player.tailType > Tail.NONE ? "wagging your [tail]" : "")+" to entice him. Despite his initial doubts, his arousal becomes obvious, judging by the way his cock starts tenting his underwear. He finally removes it, letting his partially erect cock hang free.");
 				outputText("\n\n\"<i>Um…, I think that now we should…</i>\" A nervous Anzu tries to explain \"<i>You know, get something to lube my dick, because, else...</i>\"");
 				outputText("\n\nHmm, seems like you have a throbbing and flopping source of lube just in front of you. With that on mind, you motion him to climb next to you. When both of you are on the bed, you grab his cock, whispering on his ear that you know how get all the lube that you could need, prompting an ‘oh’, from the avian. The lustful feeling that invade your bodies, and the increasingly erect cock in your hand tell you exactly what to do next.");
 			}

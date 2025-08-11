@@ -38,6 +38,7 @@ public class Soulforce extends BaseContent
 		var dailySoulforceUsesLimit:Number = 0;
 		if (player.hasPerk(PerkLib.JobSoulCultivator)) dailySoulforceUsesLimit += 6;
 		if (player.hasPerk(PerkLib.DaoistApprenticeStage)) dailySoulforceUsesLimit++;
+		if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) dailySoulforceUsesLimit++;
 		if (player.hasPerk(PerkLib.FleshBodyApprenticeStage)) dailySoulforceUsesLimit++;
 		//if (player.hasPerk(PerkLib.)) dailySoulforceUsesLimit++;//heart cultivator path
 		//if (player.hasPerk(PerkLib.)) dailySoulforceUsesLimit++;//dodawać kolejne co 3 level-e
@@ -91,9 +92,9 @@ public class Soulforce extends BaseContent
 		else addButtonDisabled(10, "???", "Req. Metamorph.");
 		if (player.hasPerk(PerkLib.Phylactery)) addButton(11, "Demonic Energy", accessDemonicEnergyMenu).hint("You can use harvested souls and lethicite to improve your magic and body.");
 		else addButtonDisabled(11, "???", "Only for characters with Phylactery.");
-		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0 || player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0 || player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(12, "Sub-paths", SubPaths).hint("Contemplate the mysteries of your chosen sub-path(s).");
+		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0 || player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0 || player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(12, "Sub-paths", SubPaths).hint("Contemplate the mysteries of your chosen sub-path(s).");
 		addButton(13, "Cultivation", Contemplations).hint("Contemplate the mysteries of the world in an attempt to progress your cultivation path.");
-		addButton(14, "Back", playerMenu);
+		addButton(14, "Back", playerMenu);// || player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0
 	}
 
 	public function SoulCultivationLvL():void {
@@ -123,6 +124,7 @@ public class Soulforce extends BaseContent
 	private function sfTrainingItems():int {
 		var itemConds:/*Boolean*/Array = [
 			player.weaponName == "soul training axe",
+			player.weaponOffhandName == "soul training axe",
 			player.weaponRangeName == "soul training crossbow",
 			player.shieldName == "soul training buckler",
 			player.armorName == "soul training armor",
@@ -257,7 +259,8 @@ public class Soulforce extends BaseContent
 	public function SubPaths():void {
 		menu();
 		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0) addButton(0, "Daoist", daoistSubPath).hint("Contemplate the mysteries from the 'My Dao Sticks are better than Yours' cultivation manual.");
-		if (player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0) addButton(5, "BodyCult", bodycultivationSubPath).hint("Contemplate the mysteries from the 'Body like a Coke Fiend' body cultivation manual.");
+		if (player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0) addButton(5, "BodyCult", bodycultivationSubPath).hint("Contemplate the mysteries from the 'Vigor of Lizan' body cultivation manual.");
+		//if (player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0) addButton(5, "BodyCult", bodycultivationSubPath).hint("Contemplate the mysteries from the 'Body like a Coke Fiend' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(10, "HeartCult", );
 		addButton(14, "Back", accessSoulforceMenu);
 	}
@@ -289,10 +292,10 @@ public class Soulforce extends BaseContent
 /*
 	public function bodycultivationSubPath():void {
 		var stages:Array = [
-			["Apprentice", PerkLib.FleshBodyApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
-			["Warrior", PerkLib.FleshBodyWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
-			["Elder", PerkLib.FleshBodyElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
-			["Overlord", PerkLib.FleshBodyOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
+			["Apprentice", PerkLib.FleshBodyVoLApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
+			["Warrior", PerkLib.FleshBodyVoLWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
+			["Elder", PerkLib.FleshBodyVoLElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
+			["Overlord", PerkLib.FleshBodyVoLOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
 		];
 		menu();
 		var i:int;
@@ -316,10 +319,10 @@ public class Soulforce extends BaseContent
 */
 	public function bodycultivationSubPath():void {
 		var stages:Array = [
-			["Apprentice", PerkLib.FleshBodyApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
-			["Warrior", PerkLib.FleshBodyWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
-			["Elder", PerkLib.FleshBodyElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
-			["Overlord", PerkLib.FleshBodyOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
+			["Apprentice", PerkLib.FleshBodyVoLApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
+			["Warrior", PerkLib.FleshBodyVoLWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
+			["Elder", PerkLib.FleshBodyVoLElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
+			["Overlord", PerkLib.FleshBodyVoLOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
 		];
 		menu();
 		var i:int;

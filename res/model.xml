@@ -499,6 +499,12 @@
 		<cell rect="751,270,49,59" name="hands_bg/wendigo" dx="56" dy="64"/>
 		<cell rect="901,270,49,59" name="hands_bg/mindbreaker" dx="61" dy="74"/>
 		<cell rect="1101,270,49,59" name="hands_bg/arigean" dx="56" dy="64"/>
+		<cell rect="1151,270,49,59" name="hands_bg/myconidWhite" dx="57" dy="64"/>
+		<cell rect="1201,270,49,59" name="hands_bg/myconidRed" dx="57" dy="64"/>
+		<cell rect="1251,270,49,59" name="hands_bg/myconidYellow" dx="57" dy="64"/>
+		<cell rect="1301,270,49,59" name="hands_bg/myconidGreen" dx="57" dy="64"/>
+		<cell rect="1351,270,49,59" name="hands_bg/myconidBlue" dx="57" dy="64"/>
+		<cell rect="1401,270,49,59" name="hands_bg/myconidPurple" dx="57" dy="64"/>
 		<cell rect="hands_bg/fire" name="overhands_bg/fire" dx="56" dy="64"/>
 		<cell rect="301,853,49,59" name="overhands_bg/arigeanRedAura" dx="56" dy="64"/>
 		<cell rect="351,853,49,59" name="overhands_bg/arigeanYellowAura" dx="56" dy="64"/>
@@ -530,6 +536,12 @@
 		<cell rect="1051,210,49,59" name="hands/gnomeRight" dx="60" dy="46"/>
 		<cell rect="901,330,49,59" name="hands/mindbreaker" dx="97" dy="74"/>
 		<cell rect="1101,330,49,59" name="hands/arigean" dx="104" dy="64"/>
+		<cell rect="1151,330,49,59" name="hands/myconidWhite" dx="101" dy="62"/>
+		<cell rect="1201,330,49,59" name="hands/myconidRed" dx="101" dy="62"/>
+		<cell rect="1251,330,49,59" name="hands/myconidYellow" dx="101" dy="62"/>
+		<cell rect="1301,330,49,59" name="hands/myconidGreen" dx="101" dy="62"/>
+		<cell rect="1351,330,49,59" name="hands/myconidBlue" dx="101" dy="62"/>
+		<cell rect="1401,330,49,59" name="hands/myconidPurple" dx="101" dy="62"/>
 		<cell rect="951,210,49,59" name="hands_fg/wraithrightlewd" dx="105" dy="48"/>
 		<cell rect="351,330,49,59" name="overhands/fire" dx="104" dy="64"/>
 		<cell rect="851,270,49,59" name="overhands/ratatoskrLeft" dx="56" dy="64"/>
@@ -601,6 +613,12 @@
 		<cell rect="751,450,49,59" name="feet/ratatoskr" dx="79" dy="115"/>
 		<cell rect="801,450,49,59" name="feet/raiju" dx="79" dy="115"/>
 		<cell rect="901,390,49,59" name="feet/arigean" dx="79" dy="115"/>
+		<cell rect="1184,520,90,90" name="feet/myconidWhite" dx="60" dy="95"/>
+		<cell rect="1275,520,90,90" name="feet/myconidRed" dx="60" dy="95"/>
+		<cell rect="1366,520,90,90" name="feet/myconidYellow" dx="60" dy="95"/>
+		<cell rect="1457,520,90,90" name="feet/myconidGreen" dx="60" dy="95"/>
+		<cell rect="1548,520,90,90" name="feet/myconidBlue" dx="60" dy="95"/>
+		<cell rect="1639,520,90,90" name="feet/myconidPurple" dx="60" dy="95"/>		
 		<cell rect="1002,611,90,90" name="legs_bg/gnome" dx="58" dy="93"/>
 		<cell rect="151,450,49,59" name="overfeet/fire" dx="79" dy="115"/>
 		<cell rect="301,793,49,59" name="overfeet/arigeanRedAura" dx="79" dy="115"/>
@@ -683,6 +701,12 @@
 		<cell rect="217,59,54,31" name="neck/weasel" dx="77" dy="50"/>
 		<cell rect="162,27,54,31" name="neck/centipede" dx="77" dy="49"/>
 		<cell rect="217,91,15,9" name="neck/mindbreaker" dx="97" dy="63"/>
+		<cell rect="201,274,17,10" name="neck/myconidWhite" dx="96" dy="63"/>
+		<cell rect="219,274,17,10" name="neck/myconidRed" dx="96" dy="63"/>
+		<cell rect="237,274,17,10" name="neck/myconidYellow" dx="96" dy="63"/>
+		<cell rect="201,285,17,10" name="neck/myconidGreen" dx="96" dy="63"/>
+		<cell rect="219,285,17,10" name="neck/myconidBlue" dx="96" dy="63"/>
+		<cell rect="237,285,17,10" name="neck/myconidPurple" dx="96" dy="63"/>
 		<cell rect="217,27,54,31" name="rearbody/shark" dx="84" dy="72"/>
 		<cell rect="61,689,100,100" name="rearbody/snail" dx="87" dy="82"/>
 		<cell rect="1340,1114,173,156" name="tail/arigean" dx="14" dy="16"/>
@@ -1059,7 +1083,7 @@
 		<cell rect="481,150,29,32" name="eyes/mindbreakerMale" dx="90" dy="37"/>
 		<cell rect="511,150,29,32" name="eyes_fg/corruptinfernal" dx="90" dy="37"/>
 		<cell rect="541,150,29,32" name="eyes/closed" dx="90" dy="37"/>
-		<cell rect="571,150,29,32" name="antennae/marilithEye" dx="90" dy="37"/>
+		<cell rect="571,150,29,32" name="antennae/marilithEye" dx="91" dy="37"/>
 		<cell rect="1,190,29,32" name="ears_bg/human" dx="90" dy="37"/>
 		<cell rect="31,190,29,32" name="ears/fur" dx="90" dy="37"/>
 		<cell rect="61,190,59,32" name="ears_bg/elfin" dx="75" dy="36"/>
@@ -1120,6 +1144,12 @@
 		<cell rect="211,396,29,30" name="horns/frostWyrm" dx="105" dy="23"/>
 		<cell rect="211,429,29,30" name="horns/frostWyrmLeft" dx="73" dy="23"/>
 		<cell rect="631,396,58,32" name="horns/blackOracle" dx="74" dy="28"/>
+		<cell rect="105,536,103,45" name="horns/myconidCapWhite" dx="55" dy="23"/>
+		<cell rect="209,536,103,45" name="horns/myconidCapRed" dx="55" dy="23"/>
+		<cell rect="313,536,103,45" name="horns/myconidCapYellow" dx="55" dy="23"/>
+		<cell rect="417,536,103,45" name="horns/myconidCapGreen" dx="55" dy="23"/>
+		<cell rect="521,536,103,45" name="horns/myconidCapBlue" dx="55" dy="23"/>
+		<cell rect="625,536,103,45" name="horns/myconidCapPurple" dx="55" dy="23"/>
 		<cell rect="1,330,59,65" name="horns_bg/orchid" dx="73" dy="4"/>
 		<cell rect="61,330,59,65" name="horns_bg/devil" dx="76" dy="5"/>
 		<cell rect="121,330,59,65" name="horns_bg/cow" dx="75" dy="4"/>
@@ -1134,6 +1164,7 @@
 		<cell rect="721,330,59,65" name="horns_bg/jabberwockycrown" dx="75" dy="20"/>
 		<cell rect="241,396,59,65" name="horns_fg/balrog" dx="73" dy="25"/>
 		<cell rect="481,396,59,65" name="back_bg/cobraHood" dx="77" dy="32"/>
+		<cell rect="1,536,103,45" name="back_bg/myconidCap_bg" dx="57" dy="35"/>		
 		<cell rect="301,396,59,65" name="horns_overclothe/deer" dx="74" dy="-5"/>
 		<cell rect="1,470,59,65" name="antennae/bee" dx="75" dy="4"/>
 		<cell rect="61,470,88,65" name="neck/seaDragonWhisker" dx="63" dy="57"/>
@@ -1320,6 +1351,12 @@
 		<cell rect="penis/arigean" name="penis_taur/arigean_taur" dx="116" dy="138"/>
 		<cell rect="1061,230,49,59" name="penis/arigeanbig" dx="74" dy="99"/>
 		<cell rect="penis/arigeanbig" name="penis_taur/arigeanbig_taur" dx="115" dy="130"/>
+		<cell rect="1111,200,49,29" name="penis/myconidWhite" dx="75" dy="104"/>
+		<cell rect="1111,230,49,29" name="penis/myconidRed" dx="75" dy="104"/>
+		<cell rect="1111,260,49,29" name="penis/myconidYellow" dx="75" dy="104"/>
+		<cell rect="1161,200,49,29" name="penis/myconidGreen" dx="75" dy="104"/>
+		<cell rect="1161,230,49,29" name="penis/myconidBlue" dx="75" dy="104"/>
+		<cell rect="1161,260,49,29" name="penis/myconidPurple" dx="75" dy="104"/>
 		<cell rect="11,290,49,29" name="balls/Bhumansmall" dx="79" dy="104"/>
 		<cell rect="balls/Bhumansmall" name="balls_taur/Bhumansmall_taur" dx="121" dy="128"/>
 		<cell rect="11,320,49,29" name="balls/Bhumanlarge" dx="79" dy="104"/>
@@ -1735,24 +1772,24 @@
 		<cell rect="tail_bg/fox8" name="tail_bg/fox8_taur" dx="60" dy="47"/>
 		<cell rect="1,701,173,156" name="tail_bg/fox9" dx="21" dy="37"/>
 		<cell rect="tail_bg/fox9" name="tail_bg/fox9_taur" dx="60" dy="47"/>
-		<cell rect="1,1486,173,156" name="tail_bg_overlay/firefox1" dx="4" dy="31"/>
-		<cell rect="tail_bg_overlay/firefox1" name="tail_bg_overlay/firefox1_taur" dx="60" dy="47"/>
-		<cell rect="523,1329,173,156" name="tail_bg_overlay/firefox2" dx="16" dy="36"/>
-		<cell rect="tail_bg_overlay/firefox2" name="tail_bg_overlay/firefox2_taur" dx="63" dy="43"/>
-		<cell rect="349,1329,173,156" name="tail_bg_overlay/firefox3" dx="17" dy="35"/>
-		<cell rect="tail_bg_overlay/firefox3" name="tail_bg_overlay/firefox3_taur" dx="67" dy="47"/>
-		<cell rect="175,1329,173,156" name="tail_bg_overlay/firefox4" dx="20" dy="36"/>
-		<cell rect="tail_bg_overlay/firefox4" name="tail_bg_overlay/firefox4_taur" dx="65" dy="47"/>
-		<cell rect="1,1329,173,156" name="tail_bg_overlay/firefox5" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox5" name="tail_bg_overlay/firefox5_taur" dx="61" dy="47"/>
-		<cell rect="523,1172,173,156" name="tail_bg_overlay/firefox6" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox6" name="tail_bg_overlay/firefox6_taur" dx="60" dy="47"/>
-		<cell rect="349,1172,173,156" name="tail_bg_overlay/firefox7" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox7" name="tail_bg_overlay/firefox7_taur" dx="60" dy="47"/>
-		<cell rect="175,1172,173,156" name="tail_bg_overlay/firefox8" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox8" name="tail_bg_overlay/firefox8_taur" dx="60" dy="47"/>
-		<cell rect="1,1172,173,156" name="tail_bg_overlay/firefox9" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox9" name="tail_bg_overlay/firefox9_taur" dx="60" dy="47"/>
+		<cell rect="1,1486,173,156" name="tail_bg/firefox1" dx="4" dy="31"/>
+		<cell rect="tail_bg/firefox1" name="tail_bg/firefox1_taur" dx="60" dy="47"/>
+		<cell rect="523,1329,173,156" name="tail_bg/firefox2" dx="16" dy="36"/>
+		<cell rect="tail_bg/firefox2" name="tail_bg/firefox2_taur" dx="63" dy="43"/>
+		<cell rect="349,1329,173,156" name="tail_bg/firefox3" dx="17" dy="35"/>
+		<cell rect="tail_bg/firefox3" name="tail_bg/firefox3_taur" dx="67" dy="47"/>
+		<cell rect="175,1329,173,156" name="tail_bg/firefox4" dx="20" dy="36"/>
+		<cell rect="tail_bg/firefox4" name="tail_bg/firefox4_taur" dx="65" dy="47"/>
+		<cell rect="1,1329,173,156" name="tail_bg/firefox5" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox5" name="tail_bg/firefox5_taur" dx="61" dy="47"/>
+		<cell rect="523,1172,173,156" name="tail_bg/firefox6" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox6" name="tail_bg/firefox6_taur" dx="60" dy="47"/>
+		<cell rect="349,1172,173,156" name="tail_bg/firefox7" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox7" name="tail_bg/firefox7_taur" dx="60" dy="47"/>
+		<cell rect="175,1172,173,156" name="tail_bg/firefox8" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox8" name="tail_bg/firefox8_taur" dx="60" dy="47"/>
+		<cell rect="1,1172,173,156" name="tail_bg/firefox9" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox9" name="tail_bg/firefox9_taur" dx="60" dy="47"/>
 	</spritemap>
 	<spritemap file="weapons.png">
 		<cell rect="1094,652,89,105" name="weapon/staffGeneric" dx="38" dy="55"/>
@@ -1949,7 +1986,7 @@
 		<cell rect="508,350,168,139" name="wings/ghost" dx="21" dy="27"/>
 		<cell rect="170,350,168,139" name="rearbody/displacertentacle" dx="24" dy="20"/>
 		<cell rect="1,630,248,139" name="wings_bg/vampire_bg" dx="-3" dy="30"/>
-		<cell rect="254,630,168,139" name="overclothe/vampire" dx="20" dy="28"/>
+		<cell rect="254,630,168,139" name="wings_overclothe/vampire" dx="20" dy="28"/>
 		<cell rect="677,350,83,139" name="backtentacles_bg/atlach" dx="17" dy="-3"/>
 		<cell rect="747,350,83,139" name="backtentacles/atlach" dx="87" dy="-3"/>
 		<cell rect="423,630,135,139" name="wings_bg/seaDragonLeft" dx="-25" dy="18"/>
@@ -1963,6 +2000,7 @@
 
 	<!-- LAYER AREA -->
 	<layers>
+		<layer name="wings_overclothe"/>
 		<layer name="glove_fg"/>
 		<layer name="hands_fg"/>
 		<layer name="arms_fg"/>
@@ -2643,7 +2681,7 @@
 			</switch>
 			
 			<set var="fireBuffOhType"></set>
-			<switch value="MeleeWeaponOffSprite">
+			<switch value="meleeWeaponOffSprite">
 				<!-- Values from CharViewContext.meleeWeaponOffSprite -->
 
 				<!-- Wand OH -->
@@ -3105,6 +3143,10 @@
 			<case values="Horns.SEA_DRAGON">
 				<show part="horns_bg/seaDragon"/>
 			</case>
+			<case values="Horns.SHROOM_HEADCAP">
+				<show part="back_bg/myconidCap_bg"/>
+				<show part="horns/myconidCapWhite"/>
+			</case>
 			<default><!--TODO DRACONIC_X2, , ANTLERS, RHINO, OAK-->
 				<show part="horns/2large"/>
 			</default>
@@ -3399,6 +3441,9 @@
 			</case>
 			<case values="RearBody.COBRA_HOOD">
 				<show part="back_bg/cobraHood"/>
+			</case>
+			<case values="RearBody.BRA_AND_NECK">
+				<show part="neck/myconidWhite"/>
 			</case>
 			<default>
 			</default>
@@ -4483,6 +4528,10 @@
 				<show part="arms_front/prayer"/>
 				<show part="arms_fg/marilith"/>
 			</case>
+			<case values="Arms.SHROOM_ARMS">
+				<show part="hands/myconidWhite"/>
+				<show part="hands_bg/myconidWhite"/>
+			</case>	
 			<default>
 				<!--see switch[value=skinType]-->
 			</default>
@@ -4799,6 +4848,9 @@
 			</case>
 			<case values="LowerBody.ARMORED_LEGS">
 				<show part="feet/arigean"/>
+			</case>
+			<case values="LowerBody.SHROOM_SKIRT">
+				<show part="feet/myconidWhite"/>
 			</case>
 			<!--<case values="LowerBody.GARGOYLE">TODO </case>-->
 			<!--<case values="LowerBody.PLANT_HIGH_HEELS">TODO </case>-->
@@ -5203,7 +5255,7 @@
 				<show part="wings_bg/jabberwockRight"/>
 			</case>
 			<case values="Wings.VAMPIRE">
-				<show part="overclothe/vampire"/>
+				<show part="wings_overclothe/vampire"/>
 				<show part="wings_bg/vampire_bg"/>
 			</case>
 			<default>
@@ -5273,8 +5325,7 @@
 				<show part="tail_bg/fox$tailCount$taur"/>
 			</case>
 			<case values="Tail.KITSHOO">
-				<show part="tail_bg/fox$tailCount$taur"/>
-				<show part="tail_bg_overlay/firefox$tailCount$taur"/>
+				<show part="tail_bg/firefox$tailCount$taur"/>
 			</case>
 			<case values="Tail.KANGAROO"><!--TODO -->
 				<show part="tail/cat$taur"/>
@@ -5470,6 +5521,10 @@
 
 				<case values="CockTypesEnum.ARIGEAN">
 					<show part="penis$big/arigean$big$taur"/>
+				</case>
+				
+				<case values="CockTypesEnum.SHROOM">
+					<show part="penis/myconidWhite"/>
 				</case>
 
 				<!-- <case values="CockTypesEnum.HUMAN"></case> use default -->
@@ -5762,6 +5817,9 @@
 			<hide part="legs_pattern/*"/>
 		</if>
 		<if test="lowerBody == LowerBody.NAGA">
+			<hide part="legs_pattern/*"/>
+		</if>
+		<if test="lowerBody == LowerBody.FROSTWYRM">
 			<hide part="legs_pattern/*"/>
 		</if>
 		<if test="lowerBody == LowerBody.HYDRA">

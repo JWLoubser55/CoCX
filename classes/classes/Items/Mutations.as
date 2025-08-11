@@ -16265,7 +16265,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Eyes
-        if (transformations.FaceFireSnail.isPossible() && transformations.EyesFireSnail.isPossible() && changes < changeLimit && rand(3) == 0) {
+        if (player.faceType == Face.FIRE_SNAIL && player.eyes.type != Eyes.FIRE_SNAIL && changes < changeLimit && rand(3) == 0) {
             if (player.eyes.type == Eyes.HUMAN) {
                 outputText("[pg]");
                 transformations.EyesFireSnail.applyEffect();
@@ -17566,7 +17566,7 @@ public final class Mutations extends MutationsHelper {
         }
         //sens change
 		if (rand(3) == 0 && changes < changeLimit) {
-			outputText("[pg]Whoa… It's chilly out there. You feel the passage of cold wind on your skin as your sensitivity increases.");
+			outputText("[pg]Whoa… You feel the passage of wind on your skin as your sensitivity increases.");
 			dynStats("sen", 1);
 		}
         if (!player.blockingBodyTransformations()) {
@@ -17594,7 +17594,7 @@ public final class Mutations extends MutationsHelper {
 					}
 				}
 				else {
-					player.killCocks(-1);
+					player.killCocks(-1, false);
 					transformations.CockBarometz().applyEffect();
 					changes++;
 				}

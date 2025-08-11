@@ -42,7 +42,8 @@ public final class WeaponLib extends ItemConstants
 				DEXCALI,
 				PARACEL,
 				ASTERIUS,
-				ELYSIUM
+				ELYSIUM,
+				ANCIENTO
 			];
 		}
 		public function LegendaryCorrupt():Array {
@@ -60,7 +61,8 @@ public final class WeaponLib extends ItemConstants
 				DOCDEST,
 				CHAOSEA,
 				ECLIPSE,
-				HELLCAL
+				HELLCAL,
+				QULIPOTH
 			];
 		}
 		
@@ -124,10 +126,11 @@ public final class WeaponLib extends ItemConstants
 				WT_DAGGER, WSZ_SMALL)
 				.withEffect(IELib.ScaleAttack_Spe, 300)
 				.withEffect(IELib.ScaleAttack_Str, 60) as Weapon;
-		public const AMBERSTAFF:Weapon = findCommonDynamicWeapon("amberstaff")
-		public const AMBERWAND:Weapon = findCommonDynamicWeapon("amberwand")
-		public const AMBERSPEAR:Weapon = findCommonDynamicWeapon("amberspear")
-		public const AMBERGSPEAR:Weapon = findCommonDynamicWeapon("ambergspear")
+		public const AMBERSTAFF:Weapon = findCommonDynamicWeapon("amberstaff");
+		public const AMBERWAND:Weapon = findCommonDynamicWeapon("amberwand");
+		public const AMBERSPEAR:Weapon = findCommonDynamicWeapon("amberspear");
+		public const AMBERGSPEAR:Weapon = findCommonDynamicWeapon("ambergspear");
+		public const ANCIENTO:AncientOath = new AncientOath();
 		public const ARI_SPR:Weapon = new Weapon(
 				"Ari_Spr", "ArigeanSpear", "Arigean Spear", "an Arigean Spear", "thrust", 13, 1040,
 				"A black spear with white wrappings around the length of it, the metal shines a beautiful silver when even a small glimmer of light touches it. It supposedly becomes more dangerous the lower your mana is, and also should have no problem piercing armor.",
@@ -190,7 +193,7 @@ public final class WeaponLib extends ItemConstants
 		public const BFSWORD:Weapon = new Weapon("BFSword", "B.F.Sword", "big fucking sword", "a big fucking sword", "slash", 50, 2000, "Big Fucking Sword - the best solution for a tiny e-pen complex at this side of the Mareth!  This 2H 2,5 meters long sword requires 150 strength to fully unleash it power.", WT_SWORD, WSZ_LARGE)
 				.withTag(W_LGWRATH)
 				.withEffect(IELib.ScaleAttack_Str, 150) as Weapon;
-		public const BFWHIP :Weapon = new Weapon("BFWhip", "B.F.Whip", "big fucking whip", "a big fucking whip", "whipping", 36, 1440, "Big Fucking Whip - the best solution for master tiny e-pen complex at this side of the Mareth!  This 2H 5 meters long whip requires 225 (strength+speed) to fully unleash it power.", WT_WHIP,WSZ_LARGE)
+		public const BFWHIP :Weapon = new Weapon("BFWhip", "B.F.Whip", "big fucking whip", "a big fucking whip", "whipping", 36, 1440, "Big Fucking Whip - the best solution for master tiny e-pen complex at this side of the Mareth!  This 2H 5 meters long whip requires 225 (strength+speed) to fully unleash it power.", WT_WHIP, WSZ_LARGE)
 				.withBuffs({'teasedmg': 50})
 				.withEffect(IELib.ScaleAttack_StrSpe, 225)
 				.withTags(W_WHIPPING,W_LGWRATH) as Weapon;
@@ -295,6 +298,15 @@ public final class WeaponLib extends ItemConstants
 				})
 				.withEffect(IELib.ArmorPenetration, 40)
 				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
+		public const DARKSH2:Weapon = new Weapon(
+				"DarkSH2","DarksteelHalberds","Darksteel Halberds","a set of Darksteel Halberds","slash",40,6400,
+				"A pair of large halberds made from soultempered darksteel.",
+				WT_POLEARM, WSZ_LARGE, true)
+				.withBuffs({
+					'psoulskillpower': +0.4
+				})
+				.withEffect(IELib.ArmorPenetration, 40)
+				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
 		public const DARKSS:Weapon = new Weapon(
 				"DarkSS","DarksteelScythes","Darksteel Scythes","a set of Darksteel Scythes","slash",40,6400,
 				"A pair of large scythes made from soultempered darksteel.",
@@ -314,15 +326,6 @@ public final class WeaponLib extends ItemConstants
 				})
 				.withEffect(IELib.ArmorPenetration, 100)
 				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
-		public const DARKSS2:Weapon = new Weapon(
-				"DarkSS2","DarksteelSpears","Darksteel Spears","a set of Darksteel Spears","stab",40,6400,
-				"A pair of large spears made from soultempered darksteel.",
-				WT_SPEAR, WSZ_LARGE, true)
-				.withBuffs({
-					'psoulskillpower': +0.4
-				})
-				.withEffect(IELib.ArmorPenetration, 100)
-				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
 		public const DARKSS1:Weapon = new Weapon(
 				"DarkSS1","DarksteelScythe","Darksteel Scythe","a Darksteel Scythe","slash",40,3200,
 				"A large scythe made from soultempered darksteel.",
@@ -333,6 +336,15 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.Bleed, 10)
 				.withEffect(IELib.ScaleAttack_Str, 60)
 				.withTags(W_WHIRLWIND)  as Weapon;
+		public const DARKSS2:Weapon = new Weapon(
+				"DarkSS2","DarksteelSpears","Darksteel Spears","a set of Darksteel Spears","stab",40,6400,
+				"A pair of large spears made from soultempered darksteel.",
+				WT_SPEAR, WSZ_LARGE, true)
+				.withBuffs({
+					'psoulskillpower': +0.4
+				})
+				.withEffect(IELib.ArmorPenetration, 100)
+				.withEffect(IELib.ScaleAttack_Spe, 75) as Weapon;
 		public const DBFSWO :Weapon = new Weapon(
 				"DBFSwo", "D.B.F.Sword", "dual big fucking swords", "a pair of big fucking swords", "slash", 50, 4000,
 				"Big Fucking Swords - the best solution for a tiny e-pen complex at this side of the Mareth!  This pair of 2H 2,5 meters long swords requires 150 strength to fully unleash their power.",
@@ -568,6 +580,12 @@ public final class WeaponLib extends ItemConstants
 		public const GGRAVEA:Weapon = new Weapon("GGravea", "GlacialGraveaxe", "Glacial Graveaxe", "a Glacial Graveaxe", "cleave", 160, 160, "The titanic greataxe you found in the tundra, most of the weapon seems to have been carved from bedrock, with the head being made of solid, dense, ice from the heart of a glacier. The ice is light, razor sharp, and appears to never melt. The stone’s slightly discolored, as if carvings had once adorned its surface…However, such decoration seems to have been lost to time. When charged with magic the blade radiates a glacial frost reminiscent of where it was found", WT_AXE, WSZ_MASSIVE)
 				.withTag(W_LGWRATH)
 				.withEffect(IELib.ScaleAttack_StrXL, 800) as Weapon;
+		public const GNARLEDS:Weapon = new Weapon(
+				"GnarledS", "Gnarled Staff", "Gnarled Staff", "a Gnarled Staff", "smack", 120, 14400,
+				"A staff favored by green mages. It is made of spiraling gnarled wood and greatly enhances the potency of green magic. Quite heavy it can also serve as a club. (+75% non-green spellpower / +150% green spellpower)",
+				WT_STAFF, WSZ_MASSIVE)
+				.withBuff('spellpower', +0.75)
+				.withTags(W_LGWRATH) as Weapon;
 		public const GUANDAO:Weapon = new Weapon(
 				"GuanDao", "GuanDao", "Guan Dao", "a Guan Dao", "slash", 75, 3000,
 				"Made of a 7 foot long wooden pole, attached on top is an imposing sword blade measuring about 21 inches long, gleaming with a sharp light. You figure this weapon should be effective versus groups of foes.  Req. 300 strength to unleash full attack power.",
@@ -805,6 +823,7 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.ScaleAttack_Spe, 100)
 				.withEffect(IELib.AttackBonus_Cor, -1/10)
 				.withEffect(IELib.AttackBonus_Fem, 1/10) as Weapon;
+		public const QULIPOTH:Qulipoth = new Qulipoth();
 		public const R_STAFF:Weapon = new Weapon(
 				"R.Staff", "R. Staff", "ruby staff", "a ruby staff", "smack", 2, 240,
 				"This staff is made of very old wood and seems to tingle to the touch.  The top has ruby embedded in it, and the wood is worn smooth from lots of use.  It probably belonged to a wizard at some point and would aid magic use.",
@@ -986,7 +1005,7 @@ public final class WeaponLib extends ItemConstants
 				"This dagger is made of eversteel and richly decorated with yellow topazes and copper engravings. The magic within this shining blade will oversaturate the metal with electricity when charged with magic.",
 				WT_DAGGER, WSZ_SMALL);
 		public const TRASAXE:Weapon = new Weapon(
-				"TraSAxe","Train.S.Axe", "soul training axe", "a soul training axe", "cleave", 1, 80,
+				"TraSAxe","Train.S.Axe", "soul training axe", "a soul training axe", "cleave", 4, 300,
 				"This axe was specialy forged and enhanted to help novice soul cultivatiors to train their soulforce.  Still if situation calls for it it could be used as a normal weapon.",
 				WT_AXE, WSZ_MEDIUM);
 		public const TRIDAG :Weapon = new Weapon(
@@ -1209,6 +1228,7 @@ public final class WeaponLib extends ItemConstants
 			[DARKSA1, DARKSA],
 			[DARKSS1, DARKSS],
 			[DARKSSP, DARKSS2],
+			[DARKSHA, DARKSH2],
 			[NRSABER, TNRSABER],
 			[TRSABER, TTRSABER]
 		]

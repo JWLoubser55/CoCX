@@ -102,8 +102,7 @@ public class CancerAttack extends Monster
 		//(Wait)
 		public function cancerGrabWait():void {
 			clearOutput();
-			outputText("Why bother resisting?  Theres no way you can escape this iron grip anyway.");
-			outputText("\n\n");
+			outputText("Why bother resisting?  Theres no way you can escape this iron grip anyway.\n\n");
 			SceneLib.combat.enemyAIImpl();
 		}
 

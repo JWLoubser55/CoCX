@@ -356,6 +356,7 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.RumblingQuake)) mod += .15;
 		if (player.hasPerk(PerkLib.CorrosiveMeltdown)) mod += .15;
 		if (player.hasPerk(PerkLib.WarMageApprentice)) mod += .15;
+		if (player.hasPerk(PerkLib.NatureMage) && combat.isOutside()) mod += .15;
 		if (player.hasPerk(PerkLib.Archmage)) mod += .2;
 		if (player.hasPerk(PerkLib.TraditionalMageI)) mod += .2;
 		if (player.hasPerk(PerkLib.TraditionalMageII)) mod += .2;
@@ -536,6 +537,10 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.BAROMETZ))) mod += player.plantChlorophyllBoost();
 			mod += 1;
 		}
+		if (player.weapon == weapons.GNARLEDS) mod += 0.75;
+		if (player.checkNaturalOath()) mod *= 2;
+		if (player.weapon == weapons.QULIPOTH) mod *= 2;
+		if (player.weapon == weapons.ANCIENTO) mod *= 2;
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;

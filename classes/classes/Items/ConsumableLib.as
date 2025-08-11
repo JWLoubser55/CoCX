@@ -218,6 +218,8 @@ public final class ConsumableLib extends AlchemyLib
 		public const BAGOCA4: Consumable = new BagOfCosmosA4();
 		public const BAGOCA5: Consumable = mk("BagOCA5", "BagOfCosmosA5", "a Bag of Cosmos (A5)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA5);
 		public const BAGOCA6: Consumable = mk("BagOCA6", "BagOfCosmosA6", "a Bag of Cosmos (A6)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA6);
+		public const BAGOCB1: Consumable = new BagOfCosmosB1();
+		public const BAGOCB2: Consumable = new BagOfCosmosB2();
 
 		//PILLS
 		public const LG_SFRP: Consumable = mk("LGSFRP", "LGSFRPill", "a low-grade Soulforce Recovery Pill", 10, "This low-grade recovery pill could help you recover some of the spent soulforce.  Naturally, it won't be much, but in a tight situation, it could mean the difference between winning or losing.", m.lowgradesoulforcerecoverypill);
@@ -606,7 +608,7 @@ public final class ConsumableLib extends AlchemyLib
 		public const FIENOIL: Consumable = mk("FienOil", "FiendishOil", "a vial of fiendish oil", 20, "Somehow this altered snake oil smells and probably tastes even worse than normal.", curry(m.snakeOil, 2), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
-						MULTIRACE_ESSENCE_DROP_TABLE(AE_MARILITH, AE_SNAKE)
+						MULTIRACE_ESSENCE_DROP_TABLE(AE_MARILITH, AE_SNAKE),
 						[
 							[1, AR_LIB]
 						],
@@ -666,7 +668,10 @@ public final class ConsumableLib extends AlchemyLib
 		public const G_FRUIT: Consumable = mk("G.Fruit", "G.Fruit", "a Ghastly fruit", 10, "A ghastly whisker fruit from some underground place. Legends even says they may have grown in the netherworld. Highly favored by nekomata.", m.ghastlyFruit, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
-						MULTIRACE_ESSENCE_DROP_TABLE(AE_NEKOMATA, AE_CAT)
+						MULTIRACE_ESSENCE_DROP_TABLE(AE_NEKOMATA, AE_CAT),
+						[
+							[1, AR_SPE]
+						]
 				);
 		public const GLDRIND:GoldenRind       = new GoldenRind();
 		public const GORGOIL: Consumable = mk("GorgOil", "GorgonOil", "a vial of gorgon oil", 20, "A vial the size of your fist made of dark green glass. It contains what appears to be oily, greenish liquid. The odor is foul.", curry(m.evolvedNagaOil, 0), ItemConstants.U_TF)

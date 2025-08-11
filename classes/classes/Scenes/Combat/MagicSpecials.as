@@ -572,7 +572,7 @@ public class MagicSpecials extends BaseCombatContent {
 					}
 				}
 			}
-			else {
+			if (player.isRaceCached(Races.DRACULA) || player.isRaceCached(Races.VAMPIRE)) {
 				//Eclipsing shadow
 				bd = buttons.add("Eclipsing shadow", EclipsingShadow, "Plunge the area in complete darkness denying vision to your opponent. \n");
 				if (player.hasStatusEffect(StatusEffects.CooldownEclipsingShadow)) {
@@ -997,9 +997,9 @@ public class MagicSpecials extends BaseCombatContent {
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 35 && (player.inHeat || player.inRut)) boost += 20;
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 40) boost *= 2;
 			if (player.hasStatusEffect(StatusEffects.TyrantState)) {
-				bd = buttons.add("TyrantState(Off)", deactivaterTyrantState).hint("Deactivate Tyrant State.");
+				bd = buttons.add("TyrantState(Off)", deactivateTyrantState).hint("Deactivate Tyrant State.");
 			} else {
-				bd = buttons.add("TyrantState(On)", activaterTyrantState).hint("Strain your body to its limit to increase melee damage dealt by "+boost+"% at the cost of getting horny. This also decrease physical resistance.");
+				bd = buttons.add("TyrantState(On)", activateTyrantState).hint("Strain your body to its limit to increase melee damage dealt by "+boost+"% at the cost of getting horny. This also decrease physical resistance."+(TyrantiaFollower.TyrantiaTrainingSessions >= 30 ? " Would delay lust defeat by two turns. (Timer reset each time lust drop below max overlust value)":"")+"");
 			}
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 15) {
 				bd = buttons.add("False Weapon", activaterFalseWeapon).hint("Create False weapon based on currently wielded melee weapon to attack each time you attack with it. Deals 20% dmg (Phalluspear False Weapon deals 100%).");
@@ -1013,7 +1013,14 @@ public class MagicSpecials extends BaseCombatContent {
 			bd = buttons.add("Tech Overdrive", techOverdrive).hint("Empower your technological equipment, causing it to deal increased damage but weaken your defenses as a result.");
 			bd.requireMana(spellCost(40));
 			if (player.hasStatusEffect(StatusEffects.TechOverdrive)) {
-				bd.disable("You're already pretty activated Tech Overdrive!");
+				bd.disable("You're already activated Tech Overdrive!");
+			}
+		}
+		if (player.isRaceCached(Races.AUTOMATA)) {
+			bd = buttons.add("Overdrive", automataOverdrive).hint("Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).");
+			bd.requireMana(spellCost(40));
+			if (player.hasStatusEffect(StatusEffects.AutomataOverdrive)) {
+				bd.disable("You're already activated Overdrive!");
 			}
 		}
 		if (player.racialScore(Races.GREMLIN) >= 15) {
@@ -3470,6 +3477,14 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 
+	public function automataOverdrive():void {
+		clearOutput();
+		useMana(40);
+		outputText("You override your safety protocols, causing your circuits to spark as they double their power output. This hostile has proven dangerous enough for you to truly go all out.");
+		player.createStatusEffect(StatusEffects.AutomataOverdrive,10,0,0,0);
+		enemyAI();
+	}
+
 	public function malfunction():void {
 		clearOutput();
 		useMana(40);
@@ -3750,13 +3765,13 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 
-	public function activaterTyrantState():void {
+	public function activateTyrantState():void {
 		clearOutput();
 		outputText("You stare at your foe, letting your Lust build and bubble within you. Sweet release is in front of you…But first… You feel the heat building in your loins, and you let out a roar, the heat spreading through your body. You face your opponent with an unsettling grin. Let’s Dance!\n\n");
 		player.createStatusEffect(StatusEffects.TyrantState, 0, 0, 0, 0);
 		enemyAI();
 	}
-	public function deactivaterTyrantState():void {
+	public function deactivateTyrantState():void {
 		clearOutput();
 		outputText("Breathing heavily, you focus your mind. The heat through your body isn’t going away yet, but at the very least, you aren’t generating more. With a lot of mental effort, you reign in your lusty thoughts.\n\n");
 		player.removeStatusEffect(StatusEffects.TyrantState);

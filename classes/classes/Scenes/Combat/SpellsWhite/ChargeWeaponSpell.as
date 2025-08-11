@@ -54,7 +54,7 @@ public class ChargeWeaponSpell extends AbstractWhiteSpell {
 		return "";
 	}
 	
-	private function weaponSizeBoost():Number {
+	private function weaponBoost():Number {
 		var ab12:Number = 2;
 		if (player.weapon == weapons.MGSWORD) ab12 *= 2;
 		return ab12;
@@ -103,7 +103,7 @@ public class ChargeWeaponSpell extends AbstractWhiteSpell {
 		ChargeWeaponBoost *= spellModWhite();
 		//ChargeWeaponBoost = FnHelpers.FN.logScale(ChargeWeaponBoost,ChargeWeaponABC,10);
 		if (ChargeWeaponBoost > ChargeWeaponBoostCap) ChargeWeaponBoost = ChargeWeaponBoostCap;
-		ChargeWeaponBoost *= weaponSizeBoost();
+		ChargeWeaponBoost *= weaponBoost();
 		ChargeWeaponBoost = Math.round(ChargeWeaponBoost);
 		var ChargeWeaponDuration:Number = 5;
 		ChargeWeaponDuration += combat.magic.perkRelatedDurationBoosting();
