@@ -8363,6 +8363,7 @@ use namespace CoC;
 			super.modStats(dstr,dtou,dspe,dinte,dwis,dlib,dsens,dlust,dcor,false);
 			if (dlust != 0){
 				raijuSuperchargedCheck();
+				checkFinalCandle();
 			}
 			if (!isRace(Races.RAIJU, 2) && !isRace(Races.THUNDERBIRD) && !isRace(Races.KIRIN) && statStore.hasBuff('Supercharged')) statStore.removeBuffs('Supercharged');
 			EngineCore.showUpDown();
@@ -8487,8 +8488,8 @@ use namespace CoC;
 
 		}
 		
-		public function raijuSuperchargedCheck():void{
-			if ((isRace(Races.RAIJU, 2) || isRace(Races.THUNDERBIRD) || isRace(Races.KIRIN)) && lust100>=75){
+		public function raijuSuperchargedCheck():void {
+			if ((isRace(Races.RAIJU, 2) || isRace(Races.THUNDERBIRD) || isRace(Races.KIRIN)) && lust100 >= 75) {
 				if (!statStore.hasBuff("Supercharged")){
 					var buff:Number = 1;
 					if (perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2
@@ -8502,6 +8503,16 @@ use namespace CoC;
 				if ((lust100 >= 100) && !hasPerk(PerkLib.WhatIsReality)){
 					lust = maxLust() * 99 / 100;
 				}
+			}
+		}
+		public function checkFinalCandle():void {
+			if (!hasStatusEffect(StatusEffects.FinalCandle) && (isRaceCached(Races.SALAMANDER,2) || isRaceCached(Races.MOUSE,3) /*|| isRaceCached(Races.phoenix,2) */|| isRaceCached(Races.HELLCAT,2) || isRaceCached(Races.FIRESNAILS)) && lust100 >= 75) {
+				outputText("As your lust spikes out of control so does your body temperature as you begin to burn out, literally. You’re now so hot people could grill meat on your skin if they wanted and you need sex right here and now! <b>You’ve entered the Final Candle state!</b>\n\n");
+				createStatusEffect(StatusEffects.FinalCandle,0,0,0,0);
+			}
+			if (hasStatusEffect(StatusEffects.FinalCandle) && !isRaceCached(Races.SALAMANDER,2) && !isRaceCached(Races.MOUSE,3) /*&& !isRaceCached(Races.phoenix,2) */&& !isRaceCached(Races.HELLCAT,2) && !isRaceCached(Races.FIRESNAILS) && lust100 < 75) {
+				outputText("Sexually sated, your burning body finally calms down returning to a more tolerable yet still melting temperature. <b>You are no longer in the Final Candle state!</b>\n\n");
+				removeStatusEffect(StatusEffects.FinalCandle);
 			}
 		}
 
@@ -8527,6 +8538,7 @@ use namespace CoC;
 			var x:Number = super.takeLustDamage(lustDmg, display, applyRes);
 			if (perkv1(IMutationsLib.MyconidSporeIM) >= 2 && hasStatusEffect(StatusEffects.SporeCloud)) lustDmg = Math.round(lustDmg * 1.5);
 			raijuSuperchargedCheck();
+			checkFinalCandle();
 			EngineCore.statScreenRefresh();
 			return x;
 		}

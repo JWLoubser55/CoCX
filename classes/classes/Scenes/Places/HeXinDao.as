@@ -965,7 +965,10 @@ public function soularena():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 3) addButtonDisabled(2, "Challange", "To go to the section of soul arena for challenges you need to give 3 spirit stones.");
 		else addButton(2, "Challenge", soularenaChallenge).hint("Go to the section of soul arena for challenges. (Who knows what rewards you may get after winning any of the challenges there...)");
 		if (flags[kFLAGS.IGNIS_ARENA_SEER] >= 1) addButton(10, "Ignis", ignisarenaseer.mainIgnisMenu);
-		addButton(11, "M.S.L.", mrsShigureLectures).hint("Mrs. Shigure Lectures about soul cultivation.");
+		if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8 && time.hours >= 12) addButton(11, "M.S.L.", mrsShigureLectures).hint("Mrs. Shigure Lectures about soul cultivation.");
+		else addButtonDisabled(11, "???", "There is no lecture today. (come back at 8th day of moon cycle in the afternoon)");
+		if (player.hasPerk(PerkLib.Dantain)) addButton(13, "MissAkemi", missAkemiManualsShop);
+		else addButtonDisabled(13, "???", "You must attend the 2nd grade of Lectures first.");
 		addButton(14, "Back", riverislandVillageStuff);
 		statScreenRefresh();
 	}
@@ -1482,8 +1485,6 @@ public function soularena():void {
 			else addButtonDisabled(4, "5th", "You don't have enough spirit stones (20) or not surtvived your first tribulation to listen to today's lecture.");
 		}
 		else if (player.hasKeyItem("A summary of Marethian Sects") >= 0) addButtonDisabled(4, "5th", "You already taken the fourth step of soul cultivation.");
-		if (player.hasPerk(PerkLib.Dantain)) addButton(13, "MissAkemi", missAkemiManualsShop);
-		else addButtonDisabled(13, "???", "You must attend the 2nd grade of Lectures first.");
 		addButton(14, "Back", soularena);
 	}
 	public function mrsShigureLecturesBasics():void {

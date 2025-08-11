@@ -14,7 +14,7 @@ public class Changelog extends BaseContent
 		{}
 		
 		public function accessChangelogMenu():void {
-			Changelog59();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, key item, item, consumable, usable, material, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene
+			Changelog59();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, status effect, key item, item, consumable, usable, material, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene
 		}
 		//zrobić do 2022 na świeta event z reniferami i nie odblokowywać go do ok. 20-24 grudnia 2021 xD
 		private function Changelog61():void {
@@ -222,8 +222,8 @@ public class Changelog extends BaseContent
 			outputText("-Aether Twins can now after 4th evolution eat new materials: Darksteel ingot & Soul Residue. Also they can eat 1 new shield and 8 new large sized melee weapons. After eating those and then all materials the can it would enable them evolving to greatsword + large shield form. From here they can change to different large sized weapon ");
 			outputText("(large axe (throwable), katana, large spear, huge warhammer) + large shield forms. They could assume additional forms in case PC learned Dual Wield. All those forms are added to their morph menu.\n");
 			outputText("-Perks from Advanced Job: Guardian / Advanced Job: Knight / Advanced Job: Defender / Prestige Job: Sentinel tree would now add 1-3 / 2-6 / 3-9 / 10-15 points in calculation of damage reduction based on player core and trained tou.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Milf kitsune grand elder from Obssesive Love sect no longer would wait for any needy rogue cultivators to spread dao. Now she would have lectures only once a week at the afternoon of 8th moon cycle day.\n");
+			outputText("-New status effect: Final Candle. Accesable by: Salamander / Hinezumi / Suzaku / Hellcat / Fire Snail final race tier. Effect: When lust reaches 75% you become so horny your lust begins to consume your body and enter the final candle state. While in the final candle state you triple all fire damage dealt but take a 5% degeneration to health per round.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

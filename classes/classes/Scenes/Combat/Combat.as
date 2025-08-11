@@ -11043,6 +11043,7 @@ public class Combat extends BaseContent {
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
         if (player.weapon === weapons.R_STAFF) damage *= 1.4;
 		if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.925;
+		if (player.hasStatusEffect(StatusEffects.FinalCandle)) damage *= 3;
         damage = fireTypeDamageBonus(damage);
         if (player.hasStatusEffect(StatusEffects.YukiOnnaKimono)) damage *= 0.2;
         if (player.hasPerk(PerkLib.WalpurgisIzaliaRobe)) damage *= 2;
@@ -14451,6 +14452,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			if (player.perkv1(IMutationsLib.HydraBloodIM) >= 1) maxPercentRegen += 1 * player.perkv1(IMutationsLib.HydraBloodIM);
 		}
 		if (player.hasPerk(PerkLib.TrollRegeneration) && !player.hasStatusEffect(StatusEffects.TrollRegenerationDisabled)) maxPercentRegen += 6;
+		if (player.hasStatusEffect(StatusEffects.FinalCandle)) maxPercentRegen -= 5;
         if (player.hasPerk(PerkLib.IcyFlesh)) maxPercentRegen += 1;
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) {
 			if (player.perkv1(PerkLib.AbsorbNutrient) > 6) maxPercentRegen += 1;
