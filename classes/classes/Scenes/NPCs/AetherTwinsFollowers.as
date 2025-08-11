@@ -1063,7 +1063,7 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			else addButton(5, "HtSword&Shield", aethertwinsFollowersMorphMainHumanTierMediumWeaponAndShield, "Sword", 1);
 			if (AetherTwinsShape == "Human-tier Dual Swords") addButtonDisabled(6, "HtDualSwords", "They are currently in Human-tier Dual Swords form.");
 			else {
-				if (player.hasPerk(PerkLib.DualWield)) addButton(65, "HtDualSwords", aethertwinsFollowersMorphMainHumanTierDualMediumWeapons, "Sword", 1);
+				if (player.hasPerk(PerkLib.DualWield)) addButton(6, "HtDualSwords", aethertwinsFollowersMorphMainHumanTierDualMediumWeapons, "Sword", 1);
 				else addButtonDisabled(6, "HtDualSwords", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}
 			if (AetherTwinsShape == "Human-tier Axe and Shield") addButtonDisabled(7, "HtAxe&Shield", "They are currently in Human-tier Axe and Shield form.");
@@ -1150,7 +1150,7 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			else addButton(12, "HtLSpear&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Spear", 2);
 			if (AetherTwinsShape == "Human-tier Dual Large Spears") addButtonDisabled(13, "HtDualLSpears", "They are currently in Human-tier Dual Large Spears form.");
 			else {
-				if (player.hasPerk(PerkLib.DualWield)) addButton(11, "HtDualLSpears", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Spear", 2);
+				if (player.hasPerk(PerkLib.DualWield)) addButton(13, "HtDualLSpears", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Spear", 2);
 				else addButtonDisabled(13, "HtDualLSpears", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}
 		}
@@ -1174,14 +1174,14 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			if (AetherTwinsShape == "Human-tier Dual Huge Warhammers") addButtonDisabled(1, "HtDualHWHams", "They are currently in Human-tier Dual Huge Warhammers form.");
 			else {
 				if (player.hasPerk(PerkLib.DualWield)) addButton(1, "HtDualHWHams", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Huge Warhammer", 2);
-				else addButtonDisabled(11, "HtDualHWHams", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+				else addButtonDisabled(1, "HtDualHWHams", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}/*
-			if (AetherTwinsShape == "Human-tier Large Spear and Large Shield") addButtonDisabled(12, "HtLSpear&LShield", "They are currently in Human-tier Large Spear and Large Shield form.");
-			else addButton(12, "HtLSpear&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Spear", 2);
-			if (AetherTwinsShape == "Human-tier Dual Large Spears") addButtonDisabled(13, "HtDualLSpears", "They are currently in Human-tier Dual Large Spears form.");
+			if (AetherTwinsShape == "Human-tier Large Spear and Large Shield") addButtonDisabled(2, "HtLSpear&LShield", "They are currently in Human-tier Large Spear and Large Shield form.");
+			else addButton(2, "HtLSpear&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Spear", 2);
+			if (AetherTwinsShape == "Human-tier Dual Large Spears") addButtonDisabled(3, "HtDualLSpears", "They are currently in Human-tier Dual Large Spears form.");
 			else {
-				if (player.hasPerk(PerkLib.DualWield)) addButton(11, "HtDualLSpears", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Spear", 2);
-				else addButtonDisabled(13, "HtDualLSpears", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+				if (player.hasPerk(PerkLib.DualWield)) addButton(3, "HtDualLSpears", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Spear", 2);
+				else addButtonDisabled(3, "HtDualLSpears", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}*/
 		}
 		else {
@@ -1477,4 +1477,4 @@ private function takeAetherS():void {
 	inventory.takeItem(item, aethertwinsFollowers);
 }
 	}
-}
+}

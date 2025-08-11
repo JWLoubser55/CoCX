@@ -8064,7 +8064,7 @@ use namespace CoC;
 		public function sadomasochismBoost():Number {
 			var sadomasochismBoost:Number = 1;
 			if (HP < maxHP() * 0.25) sadomasochismBoost += 2;
-			if (lust > maxLust() * 75) sadomasochismBoost += 2;
+			if (lust > maxLust() * 0.75) sadomasochismBoost += 2;
 			return sadomasochismBoost;
 		}
 
@@ -8366,6 +8366,10 @@ use namespace CoC;
 				checkFinalCandle();
 			}
 			if (!isRace(Races.RAIJU, 2) && !isRace(Races.THUNDERBIRD) && !isRace(Races.KIRIN) && statStore.hasBuff('Supercharged')) statStore.removeBuffs('Supercharged');
+			if (hasStatusEffect(StatusEffects.FinalCandle) && !isRaceCached(Races.SALAMANDER,2) && !isRaceCached(Races.MOUSE,3) /*&& !isRaceCached(Races.phoenix,2) */&& !isRaceCached(Races.HELLCAT,2) && !isRaceCached(Races.FIRESNAILS) && lust100 < 75) {
+				outputText("Sexually sated, your burning body finally calms down returning to a more tolerable yet still melting temperature. <b>You are no longer in the Final Candle state!</b>\n\n");
+				removeStatusEffect(StatusEffects.FinalCandle);
+			}
 			EngineCore.showUpDown();
 			EngineCore.statScreenRefresh();
 		}
@@ -8510,10 +8514,6 @@ use namespace CoC;
 				outputText("As your lust spikes out of control so does your body temperature as you begin to burn out, literally. You’re now so hot people could grill meat on your skin if they wanted and you need sex right here and now! <b>You’ve entered the Final Candle state!</b>\n\n");
 				createStatusEffect(StatusEffects.FinalCandle,0,0,0,0);
 			}
-			if (hasStatusEffect(StatusEffects.FinalCandle) && !isRaceCached(Races.SALAMANDER,2) && !isRaceCached(Races.MOUSE,3) /*&& !isRaceCached(Races.phoenix,2) */&& !isRaceCached(Races.HELLCAT,2) && !isRaceCached(Races.FIRESNAILS) && lust100 < 75) {
-				outputText("Sexually sated, your burning body finally calms down returning to a more tolerable yet still melting temperature. <b>You are no longer in the Final Candle state!</b>\n\n");
-				removeStatusEffect(StatusEffects.FinalCandle);
-			}
 		}
 
 		/**
@@ -8584,4 +8584,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}
