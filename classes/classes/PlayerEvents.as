@@ -2083,6 +2083,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					outputText("\nHaving lost fluids, you no longer have enough body mass to produce extra tendril attacks.\n(<b>Lost Perk: Morphic Weaponry.</b>\n>\n");
 				}
 			}
+			if (player.hasStatusEffect(StatusEffects.FinalCandle) && player.lust < player.maxLust() * 0.75) {
+				outputText("Sexually sated, your burning body finally calms down returning to a more tolerable yet still melting temperature. <b>You are no longer in the Final Candle state!</b>\n\n");
+				player.removeStatusEffect(StatusEffects.FinalCandle);
+			}
 			//Fire Shadow Affinity		player.isAnyRaceCached(Races.NEKOMATA, Races.HELLCAT, Races.FIRESNAILS, Races.KITSHOO, Races.CERBERUS)
 			needNext = player.gainOrLosePerk(PerkLib.FireShadowAffinity, player.isRaceCached(Races.NEKOMATA), "A sinister fire grows within you and your body begins casting terrifying shadows from it. You realize you can innately control both those shadows and the flame like they are part of your own body which after a few minute of contemplation you realize they are.", "As your inner flames dims so does the supernatural shadows you cast.") || needNext;
 			//Fire Affinity
