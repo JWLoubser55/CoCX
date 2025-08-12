@@ -5837,8 +5837,8 @@ public class MagicSpecials extends BaseCombatContent {
 		
 		if(monster.lust < (monster.maxLust() * 0.3)) outputText("\n[themonster] squirms as the magic affects [monster him].  ");
 		if(monster.lust >= (monster.maxLust() * 0.3) && monster.lust < (monster.maxLust() * 0.6)) {
-			if(monster.plural) outputText("\n[themonster] stagger, suddenly weak and having trouble focusing on staying upright.  ");
-			else outputText("\n[themonster] staggers, suddenly weak and having trouble focusing on staying upright.  ");
+			if(monster.plural) outputText("\n[Themonster] stagger, suddenly weak and having trouble focusing on staying upright.  ");
+			else outputText("\n[Themonster] staggers, suddenly weak and having trouble focusing on staying upright.  ");
 		}
 		if(monster.lust >= (monster.maxLust() * 0.6)) {
 			outputText("\n[Themonster]'");
@@ -7463,3 +7463,4 @@ public class MagicSpecials extends BaseCombatContent {
 }
 
 }
+
