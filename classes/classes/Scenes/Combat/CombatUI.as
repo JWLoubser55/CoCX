@@ -391,6 +391,7 @@ public class CombatUI extends BaseCombatContent {
 		} else if (monster.hasStatusEffect(StatusEffects.SlimeInsert)) {
 			menu();
 			addButton(0, "Rape", combat.SlimeRapeFeed).hint("Violate your opponent from the inside!");
+			addButton(4, "Release", combat.SlimeRapeStop).hint("Release your opponent.");
 		} else if (monster.hasStatusEffect(StatusEffects.Swallowed)) {
 			menu();
 			addButton(0, "Tease", combat.SwallowTease).hint("Use a powerful teasing attack").icon("A_Tease");
@@ -1136,3 +1137,4 @@ public class CombatUI extends BaseCombatContent {
 	}
 }
 }
+
