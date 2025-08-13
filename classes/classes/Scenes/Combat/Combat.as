@@ -17661,7 +17661,10 @@ public function SlimeRapeFeed():void {
         var damagemultiplier:Number = 1;
         if (player.hasPerk(PerkLib.RacialParagon)) damagemultiplier *= RacialParagonAbilityBoost();
         damage *= damagemultiplier;
-
+		if (player.hasPerk(PerkLib.ImprovedGrapple)) {
+		if (player.hasPerk(PerkLib.GreaterGrapple)) damage *= 1.4;
+		else damage *= 1.2;
+		}
         //Determine if critical tease!
         var crit:Boolean = false;
         var critChance:int = 5;
@@ -17695,7 +17698,14 @@ public function SlimeRapeFeed():void {
     monsterDefeatCheck();
     enemyAI();
 }
-
+public function SlimeRapeStop():void {
+    clearOutput();
+    outputText("You sllide out of [Themonster], preferring to continue the fight normally.");
+	monster.removeStatusEffect(StatusEffects.SlimeInsert);
+    outputText("[monster He] catches [monster his] breath before [monster he] stands back up, apparently prepared to fight some more. \n");
+    outputText("\n\n");
+    enemyAIImpl();
+}
 //Vampiric bite
 public function VampiricBite():void {
     fatigue(20, USEFATG_PHYSICAL);
@@ -20073,4 +20083,5 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
+
 }
