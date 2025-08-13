@@ -224,7 +224,7 @@ public class Changelog extends BaseContent
 			outputText("-Perks from Advanced Job: Guardian / Advanced Job: Knight / Advanced Job: Defender / Prestige Job: Sentinel tree would now add 1-3 / 2-6 / 3-9 / 10-15 points in calculation of damage reduction based on player core and trained tou.\n");
 			outputText("-Milf kitsune grand elder from Obssesive Love sect no longer would wait for any needy rogue cultivators to spread dao. Now she would have lectures only once a week at the afternoon of 8th moon cycle day.\n");
 			outputText("-New status effect: Final Candle. Accesable by: Salamander / Hinezumi / Suzaku / Hellcat / Fire Snail final race tier. Effect: When lust reaches 75% you become so horny your lust begins to consume your body and enter the final candle state. While in the final candle state you triple all fire damage dealt but take a 5% degeneration to health per round.\n");
-			outputText("-\n");
+			outputText("-When exploring Ashlands or Vulcanic Crag can meet Salamander Ore Merchants. They provide for only small extra fee all possible to mine normaly ores in quarry/mines across the Mareth. Something right for filthy rich and miningphobic PC's ;) (part of coding them was done by Jtecx))\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//, rapier, mace, whip
@@ -763,7 +763,7 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Liadri): Energy Sword - dropped by Automaton enemy. Cost 2800 gems, have 35 atk and it dealing plasma damage. High tech weapon and Large Exotic type weapon.\n");
 			outputText("-New melee weapon (by Liadri): Energy Spear - dropped by Automaton enemy. Cost 3600 gems, have 45 atk and it dealing plasma damage. High tech weapon and Massive Exotic type weapon.\n");
 			outputText("-New melee weapon (by Lord Shadeogorath): Stormcaller Gravespear - pulled from unnamed grave at cliffs. Base atk is 160. It's massive spear type low grade wrath weapon with thrown tag. Normally it deal 80% of physical dmg and 20% lightning dmg. When using charge weapon it will deal 100% lightning damage and have 10% to apply Electrocute DoT after critical hit.\n");
-			outputText("-New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness spells damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. ");
+			outputText("-New melee weapon (by Lord Shadeogorath): Umbral Gravesword - pulled from unnamed grave at lightless reach. Base atk is 160. It's massive sword type low grade wrath weapon with part staff tag. It increase spellpower by 20% and darkness spells (or racial spell-like specials) damage by 80%. Normally it deal 80% of physical dmg and 20% darkness dmg. ");
 			outputText("When using charge weapon it will deal 100% darkness damage and have 10% to apply Necrosis DoT after critical hit. Also bonus to dakrness spells increase from 80% to 160%.\n");
 			outputText("-New melee weapon (by Ormael): Darksteel Dagger - buyable at Eraendir shop. Cost 800 gems. Base atk is 5. It's small dagger type weapon, 10% bleed chance, increase physical soulskills power by 20%.\n");
 			outputText("-New melee weapon (by Ormael): Darksteel Daggers - can be gained by combining 2x Darksteel Dagger weapon. Cost 1,600 gems. Base atk is 5. It's dual small weapon belonging to dagger type, 10% bleed chance, increase physical soulskills power by 40%.\n");

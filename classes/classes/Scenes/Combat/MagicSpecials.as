@@ -4684,6 +4684,11 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		fireDamage = calcInfernoMod(Math.round(damage * combat.fireDamageBoostedByDao()), true);
 		darknessDamage = calcEclypseMod(Math.round(damage * combat.darknessDamageBoostedByDao()), true);
+		if (player.weapon == weapons.UGRAVES) {
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) darknessDamage *= 2.6;
+			else darknessDamage *= 1.8;
+			darknessDamage = Math.round(darknessDamage);
+		}
 		if (monster.lustVuln == 0) {
 			outputText("  It has no effect!  Your foe clearly does not experience lust in the same way as you.");
 		}
@@ -7447,4 +7452,4 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 }
-}
+}

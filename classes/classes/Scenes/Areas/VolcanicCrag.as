@@ -21,7 +21,7 @@ public class VolcanicCrag extends BaseContent
 		public var behemothScene:BehemothScene = new BehemothScene();
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
 		//public var lavaHotsprings:LavaHotspring = new LavaHotspring();
-		//public var oreMerchants:SalamanderOreMerchants = new SalamanderOreMerchants();
+		public var oreMerchants:SalamanderOreMerchants = new SalamanderOreMerchants();
 		
 		public function VolcanicCrag() {
 			onGameInit(init);
@@ -190,14 +190,14 @@ public class VolcanicCrag extends BaseContent
 //					VolcanicCragConditions();
 //					lavaHotsprings.discoverLavaHotsprings()
 //				}
-//			}, {
-//				name: "SalamanderOreMerchants",
-//				label : "OreMerchants",
-//				kind  : 'npc',
-//				call: function ():void {
-//					VolcanicCragConditions();
-//					oreMerchants.introOreMerchant()
-//				}
+			}, {
+				name: "SalamanderOreMerchants",
+				label : "OreMerchants",
+				kind  : 'npc',
+				call: function ():void {
+					VolcanicCragConditions();
+					oreMerchants.introOreMerchant()
+				}
 			});
 		}
 		
