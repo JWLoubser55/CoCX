@@ -20,6 +20,8 @@ public class VolcanicCrag extends BaseContent
 	{
 		public var behemothScene:BehemothScene = new BehemothScene();
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
+		//public var lavaHotsprings:LavaHotspring = new LavaHotspring();
+		public var oreMerchants:SalamanderOreMerchants = new SalamanderOreMerchants();
 		
 		public function VolcanicCrag() {
 			onGameInit(init);
@@ -176,6 +178,25 @@ public class VolcanicCrag extends BaseContent
 				call: function ():void {
 					VolcanicCragConditions();
 					SceneLib.exploration.demonLabProjectEncounters()
+				}
+//			}, {
+//				name: "LavaHotspring",
+//				label : "LavaHotspring",
+//				kind  : 'place',
+//				when: function ():Boolean {
+//					return ((player.hasCock() || player.hasVagina()))
+//				},
+//				call: function ():void {
+//					VolcanicCragConditions();
+//					lavaHotsprings.discoverLavaHotsprings()
+//				}
+			}, {
+				name: "SalamanderOreMerchants",
+				label : "OreMerchants",
+				kind  : 'npc',
+				call: function ():void {
+					VolcanicCragConditions();
+					oreMerchants.introOreMerchant()
 				}
 			});
 		}

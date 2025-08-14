@@ -14,6 +14,7 @@ import classes.Scenes.Areas.Ashlands.*;
 import classes.Scenes.Areas.Lake.SwordInStone;
 import classes.Scenes.Areas.Forest.AlrauneScene;
 import classes.Scenes.Areas.HighMountains.PhoenixScene;
+import classes.Scenes.Areas.VolcanicCrag.SalamanderOreMerchants;
 import classes.Scenes.NPCs.Forgefather;
 import classes.Scenes.SceneLib;
 
@@ -25,6 +26,7 @@ public class Ashlands extends BaseContent
 	public var alrauneScene:AlrauneScene = new AlrauneScene();
 	public var hellcatScene:HellCatScene = new HellCatScene();
 	public var swordInStone:SwordInStone = new SwordInStone();
+	public var oreMerchants:SalamanderOreMerchants = new SalamanderOreMerchants();
 
 	public function Ashlands() {
 		onGameInit(init);
@@ -122,6 +124,11 @@ public class Ashlands extends BaseContent
 				return SceneLib.exploration.demonLabProjectEncountersEnabled();
 			},
 			call: SceneLib.exploration.demonLabProjectEncounters
+		}, {
+			name: "SalamanderOreMerchants",
+			label : "OreMerchants",
+			kind  : 'npc',
+			call: oreMerchants.introOreMerchant
 		});
 	}
 
