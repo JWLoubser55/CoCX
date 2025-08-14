@@ -2214,6 +2214,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				StatusEffects.Entangled,
 				StatusEffects.Swallowed,
 				StatusEffects.Straddle,
+				StatusEffects.SlimeInsert,
 			]
 			for each (var effect:StatusEffectType in effects) if (hasStatusEffect(effect)) return true;
 			return false;
@@ -5228,4 +5229,5 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 		}
 	}
+
 }
