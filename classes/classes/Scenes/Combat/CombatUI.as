@@ -82,7 +82,7 @@ public class CombatUI extends BaseCombatContent {
 
 		//Standard menu before modifications.
 		if (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 2 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) {
-			btnMelee.show("E.Attack", combat.baseelementalattacks, "Command your elemental to attack the enemy.  Damage it will deal is affected by your wisdom and intelligence.").icon("A_Melee");
+			btnMelee.show("E.Attack", combat.basicElementalAttack, "Command your elemental to attack the enemy.  Damage it will deal is affected by your wisdom and intelligence.").icon("A_Melee");
 			if (combat.isEnemyInvisible) btnMelee.disable("You cannot use command your elemental to attack an opponent you cannot see or target.");
 		}
 		else {/*
@@ -1137,4 +1137,5 @@ public class CombatUI extends BaseCombatContent {
 	}
 }
 }
+
 
