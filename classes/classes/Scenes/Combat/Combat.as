@@ -1918,7 +1918,8 @@ public class Combat extends BaseContent {
             combatMenu(false);
     }
 
-    public function baseelementalattacks(elementType:int = -1, showNext:Boolean = false):void {
+    public function basicElementalAttack():void {baseelementalattacks(-1,true,1)}
+    public function baseelementalattacks(elementType:int = -1, showNext:Boolean = false, multiCap:int=-1):void {
         if (elementType == -1) {
             clearOutput();
             elementType = flags[kFLAGS.ATTACKING_ELEMENTAL_TYPE];
@@ -2024,7 +2025,7 @@ public class Combat extends BaseContent {
 				flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] = 1;
 				doNext(combatMenu, false);
 			} else {
-				if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) outputText("\n\n");
+				//if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) outputText("\n\n");
 				switch (elementType) {
 					case AIR_E      :
 						outputText("Sylph");
@@ -2054,13 +2055,14 @@ public class Combat extends BaseContent {
 					if (player.hasPerk(PerkLib.FirstAttackElementalsSu)) summonedElementalsMulti += 1;
 				}
 				outputText(" hit" + (summonedElementalsMulti > 1 ? "s":"") + " [themonster]! ");
+				if (summonedElementalsMulti > multiCap && multiCap >-1)summonedElementalsMulti=multiCap;
 				var repeats:Number = summonedElementalsMulti;
-				while (repeats-->0) elementalattacks(elementType, summonedElementals, summonedEpicElemental, showNext);
+				while (repeats-->0) elementalattacks(elementType, summonedElementals, summonedEpicElemental, showNext, repeats);
 			}
 		}
     }
 
-    public function elementalattacks(elementType:int, summonedElementals:int, summonedEpicElemental:Boolean, showNext:Boolean = false):void {
+    public function elementalattacks(elementType:int, summonedElementals:int, summonedEpicElemental:Boolean, showNext:Boolean = false, repeatTimes:Number = 0):void {
         var elementalDamage:Number = 0;
         var baseDamage:Number = summonedElementals * intwisscaling() * 0.1;
         if (summonedElementals >= 1) elementalDamage += baseDamage;
@@ -2148,18 +2150,21 @@ public class Combat extends BaseContent {
         if (crit) outputText(" <b>Critical!</b>");
         //checkMinionsAchievementDamage(elementalDamage);
 		outputText(" ");
+
         if (monster.HP > monster.minHP() && monster.lust < monster.maxOverLust()) {
 			outputText("\n\n");
 			if (flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] != 1 || flags[kFLAGS.IN_COMBAT_PLAYER_EPIC_ELEMENTAL_ATTACKED] != 1
 				&& (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 3 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4)) {
-				if (summonedEpicElemental) flags[kFLAGS.IN_COMBAT_PLAYER_EPIC_ELEMENTAL_ATTACKED] = 1;
-				else flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] = 1;
+				if (summonedEpicElemental) flags[kFLAGS.IN_COMBAT_PLAYER_EPIC_ELEMENTAL_ATTACKED] = 1+repeatTimes;
+				else flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] = 1+repeatTimes;
 				if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn) || showNext) {
 					menu();
 					addButton(0, "Next", combatMenu, false);
 				}
 			}
-			else enemyAIImpl();
+			else {
+				enemyAIImpl();
+			}
         } else {
             //If monster is dead, prevent further elemental attack calls
             flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] = 1;
@@ -20085,3 +20090,4 @@ private function touSpeStrScale(stat:int):Number {
 }
 
 }
+
