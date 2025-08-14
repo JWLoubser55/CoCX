@@ -512,7 +512,7 @@ public class MagicSpecials extends BaseCombatContent {
 			var word1:String = player.perkv1(IMutationsLib.BlackHeartIM) >= 1? ", intelligence" : "";
 			var word2:String = player.perkv1(IMutationsLib.BlackHeartIM) >= 2? ", wisdom" : "";
 			var word3:String = player.perkv1(IMutationsLib.BlackHeartIM) >= 3? ", sensitivity" : "";
-			bd.hint("Use arcane gestures to flare up enemy lust. The higher your libido" + word3 + word2 + word1 + " and horny you're at the moment the higher enemy lust will rise. \n");
+			bd.hint("Use arcane gestures to flare up enemy lust. \nThe higher your libido" + word3 + word2 + word1 + " and \nthe hornier you are, the more the enemy will be aroused. \n");
 			bd.requireFatigue(50, true);
 			if(player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 				bd.disable("You cannot focus on drawing symbols while you're having so much difficult breathing.");
@@ -5826,28 +5826,32 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		outputText("You start drawing symbols in the air toward [themonster].");
-		var lustRatio:Number = 10;
-		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 4) lustRatio -= 5;
-		var lustDmg:Number = player.lust / lustRatio + player.lib / 10;
-		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 1) lustDmg += player.inte / 10;
-		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 2) lustDmg += player.wis / 10;
-		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 3) lustDmg += player.sens / 10;
+		var lustRatio:Number = 4;
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 2) lustRatio = 2;
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 4) lustRatio = 1;
+		var lustDmg:Number = player.lust / lustRatio + player.lib / 4; // these values were 10
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 1) lustDmg += player.inte / 4;
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 2) lustDmg += player.wis / 4;
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 3) lustDmg += player.sens / 4;
 		if (player.hasPerk(PerkLib.EromancyExpert)) lustDmg *= 1.5;
 		if(monster.lustVuln == 0) {
-			outputText("It has no effect!  Your foe clearly does not experience lust in the same way as you.\n\n");
+			outputText("\nIt has no effect!  Your foe clearly does not experience lust in the same way as you.\n\n");
 			enemyAI();
 			return;
 		}
-		if(monster.lust < (monster.maxLust() * 0.3)) outputText("[Themonster] squirms as the magic affects [monster him].  ");
+		
+		if(monster.lust < (monster.maxLust() * 0.3)) outputText("\n[themonster] squirms as the magic affects [monster him].  ");
 		if(monster.lust >= (monster.maxLust() * 0.3) && monster.lust < (monster.maxLust() * 0.6)) {
-			if(monster.plural) outputText("[Themonster] stagger, suddenly weak and having trouble focusing on staying upright.  ");
-			else outputText("[Themonster] staggers, suddenly weak and having trouble focusing on staying upright.  ");
+			if(monster.plural) outputText("\n[Themonster] stagger, suddenly weak and having trouble focusing on staying upright.  ");
+			else outputText("\n[Themonster] staggers, suddenly weak and having trouble focusing on staying upright.  ");
 		}
 		if(monster.lust >= (monster.maxLust() * 0.6)) {
-			outputText("[Themonster]'");
+			outputText("\n[Themonster]'");
 			if(!monster.plural) outputText("s");
 			outputText(" eyes glaze over with desire for a moment.  ");
 		}
+		
+		
 		mosterTeaseText();
 		lustDmg *= magicAbilitiesGoBrrr();
 		if(player.armorName == "Scandalous Succubus Clothing") lustDmg *= 1.25;
@@ -5855,6 +5859,16 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
 		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 4) lustDmg += combat.teases.teaseBaseLustDamage();
 		monster.teased(Math.round(monster.lustVuln * lustDmg));
+		
+		var LSVulnLimit:int = 0;
+		if (player.hasPerk(PerkLib.CorruptTheBody)) LSVulnLimit = -1;
+		if (player.hasPerk(PerkLib.CorruptTheHeart)) LSVulnLimit = -2;
+		if (player.hasPerk(PerkLib.CorruptTheMind)) LSVulnLimit = -3;
+		if (player.hasPerk(PerkLib.CorruptTheSoul) || monster.lustVuln > LSVulnLimit){
+			monster.lustVuln += (0.1+ (player.perkv1(IMutationsLib.BlackHeartIM)/20));
+			outputText("\n\nA bit of the magic seems to remain within [themonster].\nIt seems to be making [monster him] more lustful.");
+		}
+		
 		outputText("\n\n");
 		if (player.hasPerk(PerkLib.EromancyMaster)) combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
 		doNext(playerMenu);
