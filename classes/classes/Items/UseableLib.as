@@ -150,6 +150,9 @@ use namespace CoC;
 		public const E_P_BOT:SimpleUseable = new SimpleUseable("E P Bot.", "empty pill bottle", "an empty pill bottle", 10,
 			"An empty pill bottle used to keep various pills.",
 			"You look at the empty pill bottle. It can help hold your sourforce pills more organized compared to keeping them loose.");
+		public const SFIBBOT:SimpleUseable = new SimpleUseable("SfIBBot", "bottle of sf-infused blood", "a bottle of sf-infused blood", 10,
+			"A bottle of sf-infused blood.",
+			"You look at the bottle of sf-infused blood. It can be used to sustain sf sensitive beings or to transformation items.");
 		public const ENECORE:SimpleUseable = new SimpleUseable("EneCore", "Energy Core", "an Energy Core", 1015,
 			"A power source for devices.",
 			"You look at Energy Core.  It's component used to make goblin tech.");

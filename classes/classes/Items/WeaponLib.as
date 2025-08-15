@@ -441,6 +441,11 @@ public final class WeaponLib extends ItemConstants
 				"DToDagger","D.T.Dagger","dual topaz daggers","a dual topaz daggers","stab",3,480,
 				"Those daggers are made of eversteel and richly decorated with yellow topazes and copper engravings. The magic within those shining blades will oversaturate the metal with electricity when charged with magic.",
 				WT_DAGGER, WSZ_SMALL, true);
+		public const DTRIDAG:Weapon = new Weapon(
+				"DTriDag","DualTriDagger","dual tri-daggers","a dual tri-daggers","stab",4,640,
+				"A pair of daggers whose blades are shaped like a perfect equilateral triangle.  They have chance to leave bleeding wounds.",
+				WT_DAGGER, WSZ_SMALL, true)
+				.withEffect(IELib.Bleed, 25) as Weapon;
 		public const DWARWA :Weapon = new Weapon(
 				"DwarWA","DwarvenWaraxe","dwarven waraxe","a dwarven waraxe","cleave",53,2120,
 				"A dwarven waraxe has a large, ornate head mounted to a thick handle, making it too large to use in one hand without special training.",
@@ -763,6 +768,10 @@ public final class WeaponLib extends ItemConstants
 				.withTags(W_TETSUBO, W_WHIRLWIND, W_LGWRATH)
 				.withEffect(IELib.Stun, 10)
 				.withEffect(IELib.ScaleAttack_Str, 180) as Weapon;
+		public const P_PIPE :Weapon = new Weapon(
+				"P.Pipe ","PairPipe","pair of pipes","a pair of pipes","smash",2,160,
+				"This is a simple pair of rusted pipe of unknown origins.  They're hefty and could probably be used as an effective bludgeoning tool.",
+				WT_MACE_HAMMER, WSZ_MEDIUM, true);
 		public const PARACEL:Weapon = new Paracelsus();
 		public const PHALLUS:Weapon = new ThePhalluspear();
 		public const PHALUSS:Weapon = new ThePhalluspears();
@@ -1230,7 +1239,9 @@ public final class WeaponLib extends ItemConstants
 			[DARKSSP, DARKSS2],
 			[DARKSHA, DARKSH2],
 			[NRSABER, TNRSABER],
-			[TRSABER, TTRSABER]
+			[TRSABER, TTRSABER],
+			[PIPE, P_PIPE],
+			[TRIDAG, DTRIDAG]
 		]
 	}
 }

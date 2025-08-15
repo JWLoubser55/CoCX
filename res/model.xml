@@ -2377,7 +2377,7 @@
 		</if>
 		<if test="not showWeapon">
 			<set var="MeleeWeaponSprite" value="''"/>
-			<set var="meleeWeaponOffSprite" value="''"/>
+			<set var="MeleeWeaponOffSprite" value="''"/>
 			<set var="RangedWeaponSprite" value="''"/>
 			<set var="PlayerHasADaggerTwin" value="false"/>
 			<set var="PlayerHasAShieldTwin" value="false"/>
@@ -2681,7 +2681,7 @@
 			</switch>
 			
 			<set var="fireBuffOhType"></set>
-			<switch value="meleeWeaponOffSprite">
+			<switch value="MeleeWeaponOffSprite">
 				<!-- Values from CharViewContext.meleeWeaponOffSprite -->
 
 				<!-- Wand OH -->

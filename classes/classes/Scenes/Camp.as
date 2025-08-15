@@ -2316,12 +2316,9 @@ public class Camp extends NPCAwareContent{
 		clearOutput();
 		outputText("What would you like to do?");
 		menu();
-		if (flags[kFLAGS.CAMP_UPGRADES_FISHERY] >= 1) addButton(0, "Fishery", VisitFishery).hint("Visit the Fishery.");
-		else addButtonDisabled(0, "Fishery", "Would you kindly build it first?");
-		if (flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] >= 2) addButton(1, "Ward", MagicWardMenu).hint("Activate or Deactivate Magic Wards around [camp].");
-		else addButtonDisabled(1, "Ward", "Would you kindly install it first?");
-		if (flags[kFLAGS.CAMP_UPGRADES_KITSUNE_SHRINE] >= 4) addButton(2, "Kitsune Shrine", campScenes.KitsuneShrine).hint("Meditate at the [camp] Kitsune Shrine.");
-		else addButtonDisabled(2, "Kitsune Shrine", "Would you kindly build it first?");
+		addButtonIfTrue(0, "Fishery", VisitFishery, "Would you kindly build it first?", flags[kFLAGS.CAMP_UPGRADES_FISHERY] < 1, "Visit the Fishery.");
+		addButtonIfTrue(1, "Ward", MagicWardMenu, "Would you kindly install it first?", flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] < 2, "Activate or Deactivate Magic Wards around [camp].");
+		addButtonIfTrue(2, "Kitsune Shrine", campScenes.KitsuneShrine, "Would you kindly build it first?", flags[kFLAGS.CAMP_UPGRADES_KITSUNE_SHRINE] < 4, "Meditate at the [camp] Kitsune Shrine.");
 		if (flags[kFLAGS.CAMP_UPGRADES_HOT_SPRINGS] >= 4) addButton(3, "Hot Spring", campScenes.HotSpring).hint("Visit the Hot Spring.").disableIf(isNightTime,"It's not safe to take a dip in the hotsprings at night.");
 		else addButtonDisabled(3, "Hot Spring", "Would you kindly build it first?");
 		addButton(4, "Semi/Perm", campMiscActions2).hint("Semi-Perm or Perm races specific actions.");
@@ -2337,8 +2334,8 @@ public class Camp extends NPCAwareContent{
 				.disableIf(!player.hasItem(bottles[i][0], 10) || !player.hasItem(useables.E_P_BOT, 1),
 					"You need an empty pill bottle and ten "+bottles[i][2]+"-grade soulforce recovery pills.");
 		}
-		if (player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor)) addButton(10, "Clone", CloneMenu).hint("Check on your clone(s).");
-		else addButtonDisabled(10, "Clone", "Would you kindly go face the F class Heaven Tribulation first?");
+		addButtonIfTrue(9, "FillBottle(SfIB)", fillUpSfIBBottle, "You need empty pill bottle, 150+ HP and 50+ SF", (!player.hasItem(useables.E_P_BOT, 1) && player.HP <= 150 && player.soulforce < 50), "Fill up one of your pill bottles with soulforce infused blood.");
+		addButtonIfTrue(10, "Clone", CloneMenu, "Would you kindly go face the F class Heaven Tribulation first?", !player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor), "Check on your clone(s).");
 		addButtonIfTrue(11, "Pocket Watch", mainPagePocketWatch, "Req. you to have the Pocket Watch key item.", player.hasKeyItem("Pocket Watch") >= 0);
 		if (player.hasItem(useables.ENECORE, 1) && CampStatsAndResources.EnergyCoreResc < 200) addButton(12, "E.Core", convertingEnergyCoreIntoFlagValue).hint("Convert Energy Core item into flag value.");
 		if (player.hasItem(useables.MECHANI, 1) && CampStatsAndResources.MechanismResc < 200) addButton(12, "C.Mechan", convertingMechanismIntoFlagValue).hint("Convert Mechanism item into flag value.");
@@ -3420,6 +3417,14 @@ public class Camp extends NPCAwareContent{
 		player.destroyItems(useables.E_P_BOT, 1);
 		player.destroyItems(pills, 10);
 		inventory.takeItem(result, campMiscActions);
+	}
+	private function fillUpSfIBBottle():void {
+		clearOutput();
+		outputText("Mentally steeling yourself to do what you need, you focus on infusing a tiny bit of your soulforce into your blood. With a cut to your hand, you feed small drips of your blood in the pill bottle, bit by bit. You seal it once it's filled.");
+		player.destroyItems(useables.E_P_BOT, 1);
+		player.HP -= 150;
+		player.soulforce -= 50;
+		inventory.takeItem(useables.SFIBBOT, campMiscActions);
 	}
 	
 	/**

@@ -40,8 +40,9 @@ public function treeMenu():void {
 		menu();
 		addButton(6, "Destroy It", destroyDatFuckingPlantAtP2);
 		addButton(7, "Water It", waterIt).disableIf(player.fatigue + 50 > player.maxOverFatigue(), "You're too tired!");
-		addButton(8, "Use SFIB", useSouforceInfusedBlood).disableIf(player.HP <= 150 && player.soulforce < 50 && !player.hasPerk(PerkLib.SoulApprentice), "You may lack one or all of those req.: Soul Apprentite perk, 150+ HP, 50+ SF!");
-		addButton(9, "Back", inventory.inventoryMenu);
+		addButton(8, "Use SFIBL", useSouforceInfusedBlood).disableIf(player.HP <= 150 && player.soulforce < 50 && !player.hasPerk(PerkLib.SoulApprentice), "You may lack one or all of those req.: Soul Apprentite perk, 150+ HP, 50+ SF!");
+		addButton(9, "Use SFIBO", useSouforceInfusedBlood, true).disableIf(!player.hasItem(useables.SFIBBOT, 1), "You lack bottle with sf-infused blood!");
+		addButton(10, "Back", inventory.inventoryMenu);
 	}
 	else if (flags[kFLAGS.FLOWER_LEVEL] == 3) {
 		outputText("The familiar plant has blossomed into a nicely sized tree, though you doubt it has finished growing just yet.  It sports an outstretched canopy with nice, green leaves.  The vaginal flower is still there and is in full bloom, now several feet across and practically dripping with moisture.  Just up the trunk, there's a pair of small, roughly b-cup breasts bulging out of the bark.  They're exquisitely smooth and soft, and they ooze sweet-smelling sap that your tongue would love to taste.  In the canopy above, tentacle vines idly writhe about, though they show no signs of aggression.");
@@ -52,8 +53,9 @@ public function treeMenu():void {
 		addButton(5, "Drink Sap", drinkThePlantGirlsSap);
 		addButton(6, "Torch It", torchP3Tree);
 		addButton(7, "Water It", waterIt).disableIf(player.fatigue + 50 > player.maxOverFatigue(), "You're too tired!");
-		addButton(8, "Use SFIB", useSouforceInfusedBlood).disableIf(player.HP <= 150 && player.soulforce < 50 && !player.hasPerk(PerkLib.SoulApprentice), "You may lack one or all of those req.: Soul Apprentite perk, 150+ HP, 50+ SF!");
-		addButton(9, "Back", inventory.inventoryMenu);
+		addButton(8, "Use SFIBL", useSouforceInfusedBlood).disableIf(player.HP <= 150 && player.soulforce < 50 && !player.hasPerk(PerkLib.SoulApprentice), "You may lack one or all of those req.: Soul Apprentite perk, 150+ HP, 50+ SF!");
+		addButton(9, "Use SFIBO", useSouforceInfusedBlood, true).disableIf(!player.hasItem(useables.SFIBBOT, 1), "You lack bottle with sf-infused blood!");
+		addButton(10, "Back", inventory.inventoryMenu);
 	}
 	else if (flags[kFLAGS.FLOWER_LEVEL] == 4) {
 		if (ZenjiScenes.isLover() && rand(4) == 0) {
@@ -155,7 +157,7 @@ private function waterIt():void {
 	flags[kFLAGS.TIMES_RIDDEN_FLOWER]++;
 	doNext(camp.returnToCampUseOneHour);
 }
-private function useSouforceInfusedBlood():void {
+private function useSouforceInfusedBlood(bottle:Boolean = false):void {
 	clearOutput();
 	outputText("For a moment you think what to do with this ");
 	if (flags[kFLAGS.FLOWER_LEVEL] == 3) outputText("tree");
@@ -163,12 +165,18 @@ private function useSouforceInfusedBlood():void {
 	outputText(". Bringing water is fine but it seems the plant is growing too slowly. What else could make it grow faster? While thinking you casually remember about something you started to develop: Soulforce. After visiting the river village you’ve seen that it can even enhance natural healing. So maybe if you could use it now it could provide better nourishment for this ");
 	if (flags[kFLAGS.FLOWER_LEVEL] == 3) outputText("tree");
 	else outputText("plant");
-	outputText(" than mere water. For a moment you ponder if it is actually a good idea to spray it with your own blood. Probably that it would also give it some of your Soulforce. Preparing mentally to do that as you focus on infusing a tiny bit of your soulforce into your blood, you cut your hand and drip a little bit of your blood at the ");
+	outputText(" than mere water. For a moment you ponder if it is actually a good idea to spray it with your own blood or use liquid already infused with soulforce. Probably that it would also give it some of your Soulforce. ");
+	if (bottle) outputText("Taking out the bottle of soulforce infused blood, uncork it as you begin to pour the contents upon");
+	else outputText("Preparing mentally to do that as you focus on infusing a tiny bit of your soulforce into your blood, you cut your hand and drip a little bit of your blood at");
+	outputText(" the ");
 	if (flags[kFLAGS.FLOWER_LEVEL] == 3) outputText("tree");
 	else outputText("plant");
 	outputText(". It seems to greedily absorb the liquid for a moment, turning slightly crimson in the place where blood made contact with it, while you go to patch your hand. Better hope the blood scent doesn’t attract something to the camp.");
-	player.HP -= 150;
-	player.soulforce -= 50;
+	if (bottle) player.destroyItems(useables.SFIBBOT, 1);
+	else {
+		player.HP -= 150;
+		player.soulforce -= 50;
+	}
 	if(flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] < 1000) flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] += 4;
 	flags[kFLAGS.TIMES_FUCKED_FLOWER]++;
 	doNext(camp.returnToCampUseOneHour);
