@@ -48,10 +48,12 @@ public class WerespiderRace extends Race {
 				.armType(Arms.WERESPIDER, +2)
 				.legType(LowerBody.WERESPIDER, +1)
 				.tailType(Tail.SPIDER_ADBOMEN, +1)
+				//.rearType(RearBody.w.spider, +2)
+				//.skinCoatType(Skin.chitin, +1)
 				.noWings(+4)
 				.hasStatusEffect(StatusEffects.BlackNipples,"black nipples", +1)
 				.hasPerk(PerkLib.AraneathropyDormant, +1)
-				.hasPerk(PerkLib.Araneathropy, +2, -11)
+				.hasPerk(PerkLib.Araneathropy, +2, -8)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		//addMutation(IMutationsLib.AnanasaBirthrightIM);

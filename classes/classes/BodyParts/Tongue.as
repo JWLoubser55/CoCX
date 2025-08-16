@@ -56,7 +56,7 @@ public class Tongue extends BodyPart{
 	});
 	public static const CAVE_WYRM: int = 8;
 	EnumValue.add(Types, CAVE_WYRM, "CAVE_WYRM", {
-		name:"draconic",
+		name:"cave wyrm",
 		appearanceDesc: "A slowly undulating neon blue tongue that glow in the dark occasionally slips from between your lips. It hangs nearly two feet long when you let the whole thing slide out, though you can retract it to appear normal."
 	});
 	public static const GHOST: int = 9;
