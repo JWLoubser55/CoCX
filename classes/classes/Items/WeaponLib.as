@@ -160,7 +160,7 @@ public final class WeaponLib extends ItemConstants
 				"This beautiful sword shines brilliantly in the light, showing the flawless craftsmanship of its blade.  The pommel and guard are heavily decorated in gold and brass.  Some craftsman clearly poured his heart and soul into this blade.",
 				WT_SWORD, WSZ_MEDIUM)
 				.withEffect(IELib.Require_CorBelow, 33)
-				.withEffect(IELib.AttackBonus_Cor, -1/3) as Weapon;
+				.withEffect(IELib.AttackBonus_Purity, 1/3) as Weapon;
 		public const B_WHIP :Weapon = new Weapon(
 				"B.Whip", "B.Whip", "beautiful whip", "a beautiful shining whip", "whipping", 14, 400,
 				"This beautiful whip shines brilliantly in the light, showing the flawless craftsmanship.  The handle and transition knot are heavily decorated in gold and brass.  Some craftsman clearly poured his heart and soul into this whip.",
@@ -168,7 +168,7 @@ public final class WeaponLib extends ItemConstants
 				.withBuffs({'teasedmg': 35})
 				.withTag(W_WHIPPING)
 				.withEffect(IELib.Require_CorBelow, 33)
-				.withEffect(IELib.AttackBonus_Cor, -1/3)
+				.withEffect(IELib.AttackBonus_Purity, 1/3)
 				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon as Weapon;
 		public const B_FLYWHISK :Weapon = new BeautifulFlyWhisk();
 		public const B_SCARB:Weapon = new Weapon(
@@ -368,7 +368,7 @@ public final class WeaponLib extends ItemConstants
 				"Those beautiful swords shines brilliantly in the light, showing the flawless craftsmanship of their blades.  The pommel and guard are heavily decorated in gold and brass.  Some craftsman clearly poured his heart and soul into those blade.",
 				WT_SWORD,WSZ_MEDIUM,true)
 				.withEffect(IELib.Require_CorBelow, 33)
-				.withEffect(IELib.AttackBonus_Cor, -1/3) as Weapon;
+				.withEffect(IELib.AttackBonus_Purity, 1/3) as Weapon;
 		public const DDAGGER:Weapon = new Weapon(
 				"DDagger","D.Daggers","dual daggers","a dual daggers","stab",3,240,
 				"A pair of small blades.  Preferred weapons for the rogues.",
@@ -397,7 +397,7 @@ public final class WeaponLib extends ItemConstants
 				"A legendary dual swords said to have been made by Marae for her champion. Those weapon radiates divine power, purifying its wielder and protecting them from impurity.",
 				WT_SWORD, WSZ_MEDIUM, true)
 				.withEffect(IELib.Require_CorBelow, 33)
-				.withEffect(IELib.AttackBonus_Cor, -1/3)
+				.withEffect(IELib.AttackBonus_Purity, 1/3)
 				.withTag(I_LEGENDARY) as Weapon;
 		public const DE_GAXE:Weapon = new Weapon(
 				"D.GAXE", "Demon G.Axe", "demonic greataxe", "a demonic greataxe", "cleave", 80, 8000,
@@ -545,7 +545,7 @@ public final class WeaponLib extends ItemConstants
 				WT_SWORD, WSZ_MEDIUM)
 				.withTag(I_LEGENDARY)
 				.withEffect(IELib.Require_CorBelow, 33)
-				.withEffect(IELib.AttackBonus_Cor, -1/3) as Weapon;
+				.withEffect(IELib.AttackBonus_Purity, 1/3) as Weapon;
 		public const FLAIL  :Weapon = findCommonDynamicWeapon("flail");
 		public const FLYINGC:Weapon = new Weapon(
 				"FlyingC", "FlyingClaw", "Flying Claw", "a flying claw", "rend", 4, 640, "A metal claws that is tied to the wrist by an 8 ft. cloth.  Could be used to attack few enemies at once.", WT_EXOTIC, WSZ_SMALL)
@@ -699,7 +699,7 @@ public final class WeaponLib extends ItemConstants
 				.withBuff('spellpower', +1.0)
 				.withTags(W_STAFFPART, W_WHIRLWIND, I_LEGENDARY)
 				.withEffect(IELib.ScaleAttack_Str, 100)
-				.withEffect(IELib.AttackBonus_Cor, -1/10) as Weapon;
+				.withEffect(IELib.AttackBonus_Purity, 1/10) as Weapon;
 		public const LRAPIER:Weapon = new Weapon(
 				"LRapier", "LRapier", "lust rapier", "lust-coated rapier", "slash", 8, 640,
 				"A rapier with an edge that seems to have been enchanted to always be covered in a light aphrodisiac to arouse anything cut with it.",
@@ -725,7 +725,7 @@ public final class WeaponLib extends ItemConstants
 				WT_DUELING, WSZ_LARGE)
 				.withTags(W_MONKWEAPON, I_LEGENDARY, W_PURE_TYPE)
 				.withEffect(IELib.ScaleAttack_Spe, 100)
-				.withEffect(IELib.AttackBonus_Cor, -2/5) as Weapon;
+				.withEffect(IELib.AttackBonus_Purity, 2/5) as Weapon;
 		public const MASTGLO:MasterGloves = new MasterGloves();
 		public const MCLAWS:MoonlightClaws = new MoonlightClaws();
 		public const MGSWORD:Weapon = new Weapon(
@@ -738,7 +738,7 @@ public final class WeaponLib extends ItemConstants
 				"This blessed katana is made in shining steel and heavily decorated with silver and blue sapphires. When used by a pure-hearted knight, the divine will within guides each strike, making it much deadlier.",
 				WT_DUELING, WSZ_MEDIUM)
 				.withTags(W_HYBRID, W_MONKWEAPON, I_LEGENDARY, W_PURE_TYPE)
-				.withEffect(IELib.AttackBonus_Cor, -2/5)
+				.withEffect(IELib.AttackBonus_Purity, 2/5)
 				.withEffect(IELib.ScaleAttack_Spe, 100) as Weapon;
 		public const N_STAFF:Weapon = new NocturnusStaff();
 		public const NRSABER:Weapon = new Weapon(
@@ -762,7 +762,7 @@ public final class WeaponLib extends ItemConstants
 				"A long lost sword, made in a shining metal, that once belonged to the demigod Nephilim. This masterfully crafted blade seeks and destroys corruption wherever it might find it, and will periodically cleanse their user body and soul.",
 				WT_SWORD, WSZ_LARGE)
 				.withTags(I_LEGENDARY, W_LGWRATH, W_PURE_TYPE)
-				.withEffect(IELib.AttackBonus_Cor, -1 / 5)
+				.withEffect(IELib.AttackBonus_Purity, 1 / 5)
 				.withEffect(IELib.ScaleAttack_Str, 250) as Weapon;
 		public const OTETSU :Weapon = new Weapon("O.Tetsu", "OniTetsubo", "Oni Tetsubo", "an Oni Tetsubo", "smash", 45, 3600, "This unrealistically large two handed mace was clearly made for Oni warriors to wield. You likely will need some ridiculous strength just to lift it.", WT_MACE_HAMMER, WSZ_LARGE)
 				.withTags(W_TETSUBO, W_WHIRLWIND, W_LGWRATH)
@@ -790,7 +790,7 @@ public final class WeaponLib extends ItemConstants
 				"This unrealistically large two handed mace was clearly made for some legendary oni chieftain to wield. Even bigger than the standard oni tetsubo, this thing could topple buildings. You likely will need some absurd strength just to lift it.",
 				WT_MACE_HAMMER, WSZ_LARGE)
 				.withEffect(IELib.Stun, 15)
-				.withEffect(IELib.AttackBonus_Cor, -1/2)
+				.withEffect(IELib.AttackBonus_Purity, 1/2)
 				.withEffect(IELib.ScaleAttack_Str, 270)
 				.withTags(W_TETSUBO, W_WHIRLWIND, W_LGWRATH, ItemConstants.I_LEGENDARY) as Weapon;
 		public const PRURUMI:Weapon = new Weapon(
@@ -830,8 +830,8 @@ public final class WeaponLib extends ItemConstants
 				.withTags(I_LEGENDARY, W_RAPIER)
 				.withEffect(IELib.ArmorPenetration, 100)
 				.withEffect(IELib.ScaleAttack_Spe, 100)
-				.withEffect(IELib.AttackBonus_Cor, -1/10)
-				.withEffect(IELib.AttackBonus_Fem, 1/10) as Weapon;
+				.withEffect(IELib.AttackBonus_Purity, 1/10)
+				.withEffect(IELib.AttackBonus_Masc, 1/10) as Weapon;
 		public const QULIPOTH:Qulipoth = new Qulipoth();
 		public const R_STAFF:Weapon = new Weapon(
 				"R.Staff", "R. Staff", "ruby staff", "a ruby staff", "smack", 2, 240,
@@ -920,7 +920,7 @@ public final class WeaponLib extends ItemConstants
 				.withTags(I_LEGENDARY, W_PURE_TYPE)
 				.withEffect(IELib.ArmorPenetration, 100)
 				.withEffect(IELib.ScaleAttack_Str, 100)
-				.withEffect(IELib.AttackBonus_Cor, -1/10) as Weapon;
+				.withEffect(IELib.AttackBonus_Purity, 1/10) as Weapon;
 		public const SGRAVES:Weapon = new Weapon("SGraves", "StormcallerGravespear", "Stormcaller Gravespear", "a Stormcaller Gravespear", "stab", 160, 160, "The titanic greatspear you found in the cliffs. This weapon seems to have been hewn from stone and an ore or metal that conducts and stores lightning. When charged with magic the blade arcs lightning reminiscent of the shrine where it was found.", WT_SPEAR, WSZ_MASSIVE)
 				.withTags(W_LGWRATH, W_THROWN)
 				.withEffect(IELib.ArmorPenetration, 100)
@@ -969,7 +969,7 @@ public final class WeaponLib extends ItemConstants
 				"This pair of oversized swords is said to have once belonged to a legendary giant. The owner wounds seems to recover when those pure blades are used.", WT_SWORD, WSZ_LARGE, true)
 				.withTags(W_LGWRATH, I_LEGENDARY)
 				.withEffect(IELib.ScaleAttack_Str, 250)
-				.withEffect(IELib.AttackBonus_Cor, -1/5) as Weapon;
+				.withEffect(IELib.AttackBonus_Purity, 1/5) as Weapon;
 		public const T_STAFF:Weapon = new Weapon(
 				"T.Staff", "T. Staff", "topaz staff", "a topaz staff", "smack", 2, 240,
 				"This staff is made of very old wood and seems to tingle to the touch.  The top has topaz embedded in it, and the wood is worn smooth from lots of use.  It probably belonged to a wizard at some point and would aid magic use.",
@@ -1113,7 +1113,7 @@ public final class WeaponLib extends ItemConstants
 				WT_AXE, WSZ_LARGE)
 				.withTags(I_LEGENDARY, W_PURE_TYPE)
 				.withEffect(IELib.ScaleAttack_Str, 100)
-				.withEffect(IELib.AttackBonus_Cor, -1/20) as Weapon;
+				.withEffect(IELib.AttackBonus_Purity, 1/20) as Weapon;
 		public const WDBLADE:Weapon = new Weapon(
 				"WDBlade", "WardensBlade", "Warden’s blade", "a Warden’s blade", "slash", 15, 1200,
 				"Wrought from alchemy, not the forge, this sword is made from sacred wood and resonates with Yggdrasil’s song.",

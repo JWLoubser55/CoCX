@@ -28,7 +28,7 @@ import classes.TimeAwareInterface;
 			withTag(I_LEGENDARY);
 			withEffect(IELib.ScaleAttack_Str, 50)
 			withEffect(IELib.Require_CorBelow, 33)
-			withEffect(IELib.AttackBonus_Cor, -1 / 10)
+			withEffect(IELib.AttackBonus_Purity, 1 / 10)
             EventParser.timeAwareClassAdd(this);
 		}
 		

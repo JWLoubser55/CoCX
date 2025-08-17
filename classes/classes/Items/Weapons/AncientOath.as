@@ -28,7 +28,7 @@ import classes.TimeAwareInterface;
 					WT_STAFF, WSZ_MASSIVE);
 			withBuff('spellpower', +2.5);
 			withTags(W_MGWRATH, I_LEGENDARY, W_PURE_TYPE);
-			withEffect(IELib.AttackBonus_Cor,1/10);
+			withEffect(IELib.AttackBonus_Purity,1/10);
 			withEffect(IELib.ScaleAttack_Str,60);
 			EventParser.timeAwareClassAdd(this);
 		}
