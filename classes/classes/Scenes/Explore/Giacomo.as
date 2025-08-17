@@ -212,6 +212,7 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
 			menu();
+			addButton(5, "MiningProdigyBag", pitchMiningProdigyBag);
 			if (Garden.IngrediantBagSlot01Cap == 0) addButton(6, "Herb Bag (LLowG)", pitchLLHerbsBag).hint("Herbs Bag (Lowest Grade)");
 			if (Garden.IngrediantBagSlot07Cap == 0) {
 				if (player.farmingLevel >= 5) addButton(7, "Herb Bag (LowG)", pitchLHerbsBag).hint("Herbs Bag (Low Grade)");
@@ -583,6 +584,27 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				doNext(bookMenu);
 				player.gems -= 100;
 				player.createKeyItem("Tel'Adre Magazine Issue 10", 0, 0, 0, 0);
+			}
+		}
+		
+		private function pitchMiningProdigyBag():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			outputText("Giacomo holds up a bag.  \"<i>While you may not find value in this as a simple bag,</i>\", Giacomo opens, \"<i>you would find use of items that mining prodigy that owned this before you gatherted!  Maybe even gain profficency in mining faster or never failt to find ores!  I will offer the super-cheap price of 800 gems!</i>\"");
+			doYesNo(buyMiningProdigyBag, bookMenu);
+		}
+		
+		private function buyMiningProdigyBag():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			if (player.gems < 800) {
+				outputText("Giacomo sighs, indicating you need 800 gems to purchase this item.");
+				doNext(bookMenu);
+			}
+			else {
+				outputText("The crazy merchant nods satisfied when you hand him over an eight hundred gems and in exchange gives you a mining prodigy bag.");
+				player.gems -= 800;
+				inventory.takeItem(miscjewelries.MINPBAG, bookMenu);
 			}
 		}
 		
@@ -1369,4 +1391,4 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			}
 		}
 	}
-}
+}

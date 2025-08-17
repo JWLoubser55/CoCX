@@ -44,12 +44,12 @@ public class BagOfCosmosA4 extends Consumable {
 				case 4:
 				outputText("World Tree Branch inside.");
 				SceneLib.inventory.takeItem(game.useables.WT_BRAN, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				case 5:
 				outputText("Darksteel ingot inside.");
 				SceneLib.inventory.takeItem(game.useables.DARKSTI, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				default: trace("Bag of Cosmos roll spirit stones...");
 			}

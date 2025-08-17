@@ -44,12 +44,12 @@ public class BagOfCosmosA3 extends Consumable {
 				case 4:
 				outputText("Darksteel ingot inside.");
 				SceneLib.inventory.takeItem(game.useables.DARKSTI, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				case 5:
 				outputText("Body Tempering Solution vial inside.");
 				SceneLib.inventory.takeItem(game.useables.BTSOLUTION, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				default: trace("Bag of Cosmos roll spirit stones...");
 			}

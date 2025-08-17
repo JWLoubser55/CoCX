@@ -32,22 +32,22 @@ public class BagOfCosmosB1 extends Consumable {
 				case 2:
 				outputText("clump of red gel inside.");
 				SceneLib.inventory.takeItem(game.useables.RED_GEL, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				case 3:
 				outputText("Darksteel ingot inside.");
 				SceneLib.inventory.takeItem(game.useables.DARKSTI, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				case 4:
 				outputText("World Tree Branch inside.");
 				SceneLib.inventory.takeItem(game.useables.WT_BRAN, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				case 5:
 				outputText("Soulmetal bar inside.");
 				SceneLib.inventory.takeItem(game.useables.SOULMETB, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				default: trace("Bag of Cosmos roll spirit stones...");
 			}

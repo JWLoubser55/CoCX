@@ -1175,20 +1175,20 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			else {
 				if (player.hasPerk(PerkLib.DualWield)) addButton(1, "HtDualHWHams", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Huge Warhammer", 2);
 				else addButtonDisabled(1, "HtDualHWHams", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
-			}/*
-			if (AetherTwinsShape == "Human-tier Large Spear and Large Shield") addButtonDisabled(2, "HtLSpear&LShield", "They are currently in Human-tier Large Spear and Large Shield form.");
-			else addButton(2, "HtLSpear&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Spear", 2);
-			if (AetherTwinsShape == "Human-tier Dual Large Spears") addButtonDisabled(3, "HtDualLSpears", "They are currently in Human-tier Dual Large Spears form.");
+			}
+			if (AetherTwinsShape == "Human-tier Large Whip and Large Shield") addButtonDisabled(2, "HtLWhip&LShield", "They are currently in Human-tier Large Whip and Large Shield form.");
+			else addButton(2, "HtLWhip&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Whip", 2);
+			if (AetherTwinsShape == "Human-tier Dual Large Whips") addButtonDisabled(3, "HtDualLWhips", "They are currently in Human-tier Dual Large Whips form.");
 			else {
-				if (player.hasPerk(PerkLib.DualWield)) addButton(3, "HtDualLSpears", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Spear", 2);
-				else addButtonDisabled(3, "HtDualLSpears", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
-			}*/
+				if (player.hasPerk(PerkLib.DualWield)) addButton(3, "HtDualLWhips", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Whip", 2);
+				else addButtonDisabled(3, "HtDualLWhips", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}
 		}
 		else {
 			addButtonDisabled(0, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(1, "???", "After the twins' fifth evolution.");
-			//addButtonDisabled(2, "???", "After the twins' fifth evolution.");
-			//addButtonDisabled(3, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(2, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(3, "???", "After the twins' fifth evolution.");
 		}
 		addButton(4, "Next", aethertwinsFollowersMorphMain, page - 2);
 		addButton(9, "Previous", aethertwinsFollowersMorphMain, page - 1);

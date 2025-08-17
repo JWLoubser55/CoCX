@@ -44,12 +44,12 @@ public class BagOfCosmosA1 extends Consumable {
 				case 4:
 				outputText("empty pill bottle inside.");
 				SceneLib.inventory.takeItem(game.useables.E_P_BOT, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				case 5:
 				outputText("Large Elemental Shard inside.");
 				SceneLib.inventory.takeItem(game.useables.LELSHARD, SceneLib.inventory.inventoryMenu);
-				return(true);
+				return true;
 
 				default: trace("Bag of Cosmos roll spirit stones...");
 			}

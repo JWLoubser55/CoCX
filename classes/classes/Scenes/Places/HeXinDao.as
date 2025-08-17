@@ -965,8 +965,8 @@ public function soularena():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 3) addButtonDisabled(2, "Challange", "To go to the section of soul arena for challenges you need to give 3 spirit stones.");
 		else addButton(2, "Challenge", soularenaChallenge).hint("Go to the section of soul arena for challenges. (Who knows what rewards you may get after winning any of the challenges there...)");
 		if (flags[kFLAGS.IGNIS_ARENA_SEER] >= 1) addButton(10, "Ignis", ignisarenaseer.mainIgnisMenu);
-		if (flags[kFLAGS.LUNA_MOON_CYCLE] == 8 && time.hours >= 12) addButton(11, "M.S.L.", mrsShigureLectures).hint("Mrs. Shigure Lectures about soul cultivation.");
-		else addButtonDisabled(11, "???", "There is no lecture today. (come back at 8th day of moon cycle in the afternoon)");
+		if (time.hours >= 12 && time.hours < 17) addButton(11, "M.S.L.", mrsShigureLectures).hint("Mrs. Shigure Lectures about soul cultivation.");//flags[kFLAGS.LUNA_MOON_CYCLE] == 8 && 
+		else addButtonDisabled(11, "???", "There is no lecture today. (come back in the afternoon)");//at 8th day of moon cycle 
 		if (player.hasPerk(PerkLib.Dantain)) addButton(13, "MissAkemi", missAkemiManualsShop);
 		else addButtonDisabled(13, "???", "You must attend the 2nd grade of Lectures first.");
 		addButton(14, "Back", riverislandVillageStuff);

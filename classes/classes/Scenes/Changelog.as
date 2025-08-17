@@ -220,7 +220,7 @@ public class Changelog extends BaseContent
 			outputText("-3rd tier of Human race score bonuses was renamed to Firstborn Human. Added also 4th tier that use (old tier 3) name of Primaris Super Human req. 63+ pts to reach it.\n");
 			outputText("-When Wendigo would apply Wendigo Psychosis status effect to PC during fight (not in post fight scene) it will now be notification ingame for this.\n");
 			outputText("-Aether Twins can now after 4th evolution eat new materials: Darksteel ingot & Soul Residue. Also they can eat 1 new shield and 8 new large sized melee weapons. After eating those and then all materials the can it would enable them evolving to greatsword + large shield form. From here they can change to different large sized weapon ");
-			outputText("(large axe (throwable), katana, large spear, huge warhammer) + large shield forms. They could assume additional forms in case PC learned Dual Wield. All those forms are added to their morph menu.\n");
+			outputText("(large axe (throwable), katana, large spear, huge warhammer, large whip) + large shield forms. They could assume additional forms in case PC learned Dual Wield. All those forms are added to their morph menu.\n");
 			outputText("-Perks from Advanced Job: Guardian / Advanced Job: Knight / Advanced Job: Defender / Prestige Job: Sentinel tree would now add 1-3 / 2-6 / 3-9 / 10-15 points in calculation of damage reduction based on player core and trained tou.\n");
 			outputText("-Milf kitsune grand elder from Obssesive Love sect no longer would wait for any needy rogue cultivators to spread dao. Now she would have lectures only once a week at the afternoon of 8th moon cycle day.\n");
 			outputText("-New status effect: Final Candle. Accesable by: Salamander / Hinezumi / Suzaku / Hellcat / Fire Snail final race tier. Effect: When lust reaches 75% you become so horny your lust begins to consume your body and enter the final candle state. While in the final candle state you triple all fire damage dealt but take a 5% degeneration to health per round.\n");
@@ -236,6 +236,8 @@ public class Changelog extends BaseContent
 			outputText("-New usable item: bottle of sf-infused blood. Costing 10 gems and can be gained by filling empty pill bottle with PC own sf infused blood while in camp. Used to water Holli or to make consumable/tf item.\n");
 			outputText("-New melee weapon (by Moon of Nightmares): Pair of Pipes - can be gained by combining 2x Pipe weapon. Cost 160 gems. Base atk is 2. It's dual medium mace/hammer type weapon.\n");
 			outputText("-New melee weapon (by Ormael): Dual Tri-Daggers - can be gained by combining 2x Tri-Dagger weapon. Cost 640 gems. Base atk is 4. It's dual small dagger type weapon that have 25% chance to leave bleeding wound.\n");
+			outputText("-New misc accesory (by Ormael): Mining Prodigy Bag - buyable at Giacomo shop. Cost 800 gems. Increase mining exp gains multi by 300% and increase chance to find ore to 100%.\n");
+			outputText("-Req. mining level to find tin / copper ores (1 > 0), iron (2> 5) and moonstones (3 > 10) was adjusted. Iron and Moonstone are Liadri certified changes of level not mines.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -249,18 +251,16 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");//, rapier, mace
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//, rapier, mace, whip
 			outputText("-\n");
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
@@ -272,14 +272,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
@@ -356,8 +356,20 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -385,6 +397,12 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -603,7 +621,7 @@ public class Changelog extends BaseContent
 			outputText("-New consumable (by Ormael / all text written by Reverse Time Traveler): Demonize Me. Obtained from hidden compartment in Factory. Effects: Forcefully turn person using into true demon. (giving Soulless perk and Lethicite consumable)\n");
 			outputText("-New usable item: Purple Crystal. Costing 5 gems and it's obtainable from uncrafting 6 purple crystal shards. Can be used to disturb time flow or given to npc's that could use it for something to benefit pc.\n");
 			outputText("-New usable item: Feral Demon Skull. Costing 50 gems and it's obtainable from killing feral demon enemies.\n");
-			outputText("-New material: Skymetal (Adamantine) ore. It can gained as drop from Adamantine Golem.\n");
+			outputText("-New material: Skymetal ore. It can gained as drop from Adamantine Golem.\n");
 			outputText("-New type of minions: tamed monsters. Req. Tamer Job and they can be at any time released to be replaced by different one monster. To succeed player must defeat them in combat and then have higher wisdom to successfully tame them (non feral/true demon tamable enemies are treated as if they had 10x higher wis). Some perks/items can increase their damage. They would also benefit from effectivness bonus that is applied to any henchman.\n");
 			outputText("-New damage type: Psychic - some of PC abilities or perks will not affect them (like dmg increase from missing HP during berserk state or debuffs affectiong enemy body (necrotic root, adic dot)). Enemies like mindbreaker also had some of their attacks type changed to psychic.\n");
 			outputText("-New damage type: Black Ice - it's mix of ice and darkness dmg and would be displayed as dealing two types of dmg.\n");
