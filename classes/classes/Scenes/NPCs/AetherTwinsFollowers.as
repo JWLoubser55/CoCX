@@ -34,12 +34,14 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 		public static var AetherTwinsFoodMenuAmethystCap:Number;
 		public static var AetherTwinsFoodMenuMoonstone:Number;
 		public static var AetherTwinsFoodMenuMoonstoneCap:Number;
-		public static var AetherTwinsFoodMenuSkymetal:Number;
-		public static var AetherTwinsFoodMenuSkymetalCap:Number;
-		public static var AetherTwinsFoodMenuAdamantine:Number;
-		public static var AetherTwinsFoodMenuAdamantineCap:Number;
+		//Mithral
+		//Mithral
 		public static var AetherTwinsFoodMenuOrichalcum:Number;
 		public static var AetherTwinsFoodMenuOrichalcumCap:Number;
+		public static var AetherTwinsFoodMenuAdamantine:Number;
+		public static var AetherTwinsFoodMenuAdamantineCap:Number;
+		public static var AetherTwinsFoodMenuSkymetal:Number;
+		public static var AetherTwinsFoodMenuSkymetalCap:Number;
 		public static var AetherTwinsFoodMenuBronze:Number;
 		public static var AetherTwinsFoodMenuBronzeCap:Number;
 		public static var AetherTwinsFoodMenuEbonIngot:Number;
@@ -124,12 +126,12 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 			AetherTwinsFoodMenuAmethystCap = 0;
 			AetherTwinsFoodMenuMoonstone = 0;
 			AetherTwinsFoodMenuMoonstoneCap = 0;
-			AetherTwinsFoodMenuSkymetal = 0;
-			AetherTwinsFoodMenuSkymetalCap = 0;
-			AetherTwinsFoodMenuAdamantine = 0;
-			AetherTwinsFoodMenuAdamantineCap = 0;
 			AetherTwinsFoodMenuOrichalcum = 0;
 			AetherTwinsFoodMenuOrichalcumCap = 0;
+			AetherTwinsFoodMenuAdamantine = 0;
+			AetherTwinsFoodMenuAdamantineCap = 0;
+			AetherTwinsFoodMenuSkymetal = 0;
+			AetherTwinsFoodMenuSkymetalCap = 0;
 			AetherTwinsFoodMenuBronze = 0;
 			AetherTwinsFoodMenuBronzeCap = 0;
 			AetherTwinsFoodMenuEbonIngot = 0;
@@ -209,12 +211,12 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 				"AetherTwinsFoodMenuAmethystCap": AetherTwinsFoodMenuAmethystCap,
 				"AetherTwinsFoodMenuMoonstone": AetherTwinsFoodMenuMoonstone,
 				"AetherTwinsFoodMenuMoonstoneCap": AetherTwinsFoodMenuMoonstoneCap,
-				"AetherTwinsFoodMenuSkymetal": AetherTwinsFoodMenuSkymetal,
-				"AetherTwinsFoodMenuSkymetalCap": AetherTwinsFoodMenuSkymetalCap,
-				"AetherTwinsFoodMenuAdamantine": AetherTwinsFoodMenuAdamantine,
-				"AetherTwinsFoodMenuAdamantineCap": AetherTwinsFoodMenuAdamantineCap,
 				"AetherTwinsFoodMenuOrichalcum": AetherTwinsFoodMenuOrichalcum,
 				"AetherTwinsFoodMenuOrichalcumCap": AetherTwinsFoodMenuOrichalcumCap,
+				"AetherTwinsFoodMenuAdamantine": AetherTwinsFoodMenuAdamantine,
+				"AetherTwinsFoodMenuAdamantineCap": AetherTwinsFoodMenuAdamantineCap,
+				"AetherTwinsFoodMenuSkymetal": AetherTwinsFoodMenuSkymetal,
+				"AetherTwinsFoodMenuSkymetalCap": AetherTwinsFoodMenuSkymetalCap,
 				"AetherTwinsFoodMenuBronze": AetherTwinsFoodMenuBronze,
 				"AetherTwinsFoodMenuBronzeCap": AetherTwinsFoodMenuBronzeCap,
 				"AetherTwinsFoodMenuEbonIngot": AetherTwinsFoodMenuEbonIngot,
@@ -295,12 +297,12 @@ public class AetherTwinsFollowers extends NPCAwareContent implements SaveableSta
 				AetherTwinsFoodMenuAmethystCap = o["AetherTwinsFoodMenuAmethystCap"];
 				AetherTwinsFoodMenuMoonstone = o["AetherTwinsFoodMenuMoonstone"];
 				AetherTwinsFoodMenuMoonstoneCap = o["AetherTwinsFoodMenuMoonstoneCap"];
-				AetherTwinsFoodMenuSkymetal = o["AetherTwinsFoodMenuSkymetal"];
-				AetherTwinsFoodMenuSkymetalCap = o["AetherTwinsFoodMenuSkymetalCap"];
-				AetherTwinsFoodMenuAdamantine = o["AetherTwinsFoodMenuAdamantine"];
-				AetherTwinsFoodMenuAdamantineCap = o["AetherTwinsFoodMenuAdamantineCap"];
 				AetherTwinsFoodMenuOrichalcum = o["AetherTwinsFoodMenuOrichalcum"];
 				AetherTwinsFoodMenuOrichalcumCap = o["AetherTwinsFoodMenuOrichalcumCap"];
+				AetherTwinsFoodMenuAdamantine = o["AetherTwinsFoodMenuAdamantine"];
+				AetherTwinsFoodMenuAdamantineCap = o["AetherTwinsFoodMenuAdamantineCap"];
+				AetherTwinsFoodMenuSkymetal = o["AetherTwinsFoodMenuSkymetal"];
+				AetherTwinsFoodMenuSkymetalCap = o["AetherTwinsFoodMenuSkymetalCap"];
 				AetherTwinsFoodMenuBronze = valueOr(o["AetherTwinsFoodMenuBronze"], 0);
 				AetherTwinsFoodMenuBronzeCap = valueOr(o["AetherTwinsFoodMenuBronzeCap"], 0);
 				AetherTwinsFoodMenuEbonIngot = valueOr(o["AetherTwinsFoodMenuEbonIngot"], 0);

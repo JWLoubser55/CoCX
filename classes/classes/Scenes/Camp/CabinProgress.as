@@ -278,9 +278,17 @@ import classes.Scenes.SceneLib;
 			}
 			if (rand(4) == 0 || player.miscJewelry1 == miscjewelries.MINPBAG || player.miscJewelry2 == miscjewelries.MINPBAG) {
 				var itype:ItemType;
-				var ore:Number = 2; //0 = copper, 1 = tin, 2 = iron, 3 = moonstone
-				if (player.miningLevel > 4) ore += 1;
-				if (player.miningLevel > 9 && nightExploration) ore += 1;
+				var ore:Number = 2; //0 = copper, 1 = tin, 2 = iron, 3 = moonstone, 4 = mithral, 5 = adamantine
+				var mining:Number = player.miningLevel;
+				if (player.hasKeyItem("Moonstone Pickaxe") >= 0) mining += 7;
+				if (player.hasKeyItem("Mithril Pickaxe") >= 0) mining += 2;
+				if (player.hasKeyItem("Orichalcum Pickaxe") >= 0) mining += 3;
+				if (player.hasKeyItem("Adamantine Pickaxe") >= 0) mining += 3;
+				if (player.hasKeyItem("Skymetal Pickaxe") >= 0) mining += 5;
+				if (mining > 4) ore += 1;
+				if (mining > 9) ore += 1;
+				if (mining > 14) ore += 1;
+				if (mining > 24) ore += 1;
 				var choice:Number = rand(ore);
 				switch(choice) {
 					case 0:
@@ -293,7 +301,14 @@ import classes.Scenes.SceneLib;
 						itype = useables.IRONORE;
 						break;
 					case 3:
-						itype = useables.MOONSTO;
+						if (nightExploration || player.hasKeyItem("Moonstone Pickaxe") >= 0) itype = useables.MOONSTO;
+						else itype = useables.IRONORE;
+						break;
+					case 4:
+						itype = useables.MITHRAL;
+						break;
+					case 5:
+						itype = useables.ADAMANT;
 						break;
 					default:
 						outputText("Something's bugged! Please report this bug to Ormael/Aimozg.");

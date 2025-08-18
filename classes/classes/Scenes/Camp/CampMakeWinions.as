@@ -1154,7 +1154,7 @@ public class CampMakeWinions extends BaseContent
 				}
 				if (subtype == 1) {
 					outputText("ore.");
-					inventory.takeItem(useables.SKYMETA, takeCore);
+					inventory.takeItem(useables.ADAMANT, takeCore);
 				}
 			}
 			else {
@@ -1167,7 +1167,7 @@ public class CampMakeWinions extends BaseContent
 				}
 				if (subtype == 1) {
 					outputText("ore.");
-					inventory.takeItem(useables.SKYMETA, takeCore);
+					inventory.takeItem(useables.ADAMANT, takeCore);
 				}
 			}
 		}

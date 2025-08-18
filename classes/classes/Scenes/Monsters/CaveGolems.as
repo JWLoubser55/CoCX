@@ -83,7 +83,7 @@ package classes.Scenes.Monsters
 				this.armorMDef = 100;
 				this.gems = rand(50) + 100;
 				this.drop = new WeightedDrop()
-					.add(useables.SKYMETA, 1)
+					.add(useables.ADAMANT, 1)
 					.add(null, 5);
 				this.createPerk(PerkLib.PhysicalDamageResistance, 0, 0, 0, 0);
 			}

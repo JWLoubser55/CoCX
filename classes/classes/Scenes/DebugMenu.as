@@ -640,6 +640,9 @@ public class DebugMenu extends BaseContent
 			materialArray.push(useables.BRONZEB);
 			materialArray.push(useables.SKYMETA);
 			materialArray.push(useables.MOONSTO);
+			materialArray.push(useables.MITHRAL);
+			materialArray.push(useables.ADAMANT);
+			materialArray.push(useables.ORICHAL);
 			materialArray.push(useables.S_INGOT);
 			materialArray.push(useables.G_INGOT);
 			materialArray.push(useables.AMEGEM);

@@ -1901,9 +1901,9 @@ public class TestMenu extends BaseContent
 		if (page == 2) {
 			addButton(0, "Skymetal", AddSkymetalOre).hint("Add 1 Skymetal Ore.");
 			addButton(1, "Moonstone", AddMoonstone).hint("Add 1 Moonstone.");
-			//addButton(2, "", ).hint("Add 1 .");
-			//addButton(3, "", ).hint("Add 1 .");
-			//addButton(4, "", ).hint("Add 1 .");
+			addButton(2, "Orichalcum", AddOrichalcumOre).hint("Add 1 Orichalcum.");
+			addButton(3, "Mithral", AddMithralOre).hint("Add 1 Mithral.");
+			addButton(4, "Adamantine", AddAdamantineOre).hint("Add 1 Adamantine.");
 			addButton(5, "E.Shard", AddElementalShard).hint("Add 1 E.Shard.");//addButton(5, "", ).hint("Add 1 .");
 			addButton(6, "UnicornHair", AddUnicornHair).hint("Add 1 Unicorn Hair.");
 			addButton(7, "GolemCore", AddGolemCore).hint("Add 1 Golem Core.");
@@ -2222,6 +2222,18 @@ public class TestMenu extends BaseContent
 	public function AddSkymetalOre():void {
 		outputText("\n\n<b>(Gained 1 Skymetal Ore!)</b>\n\n");
 		inventory.takeItem(useables.SKYMETA, curry(MaterialMenu, 2));
+	}
+	public function AddOrichalcumOre():void {
+		outputText("\n\n<b>(Gained 1 Orichalcum Ore!)</b>\n\n");
+		inventory.takeItem(useables.ORICHAL, curry(MaterialMenu, 2));
+	}
+	public function AddMithralOre():void {
+		outputText("\n\n<b>(Gained 1 Mithral Ore!)</b>\n\n");
+		inventory.takeItem(useables.MITHRAL, curry(MaterialMenu, 2));
+	}
+	public function AddAdamantineOre():void {
+		outputText("\n\n<b>(Gained 1 Adamantine Ore!)</b>\n\n");
+		inventory.takeItem(useables.ADAMANT, curry(MaterialMenu, 2));
 	}
 	public function AddMoonstone():void {
 		outputText("\n\n<b>(Gained 1 Moonstone!)</b>\n\n");

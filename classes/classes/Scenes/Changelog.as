@@ -224,7 +224,7 @@ public class Changelog extends BaseContent
 			outputText("-Perks from Advanced Job: Guardian / Advanced Job: Knight / Advanced Job: Defender / Prestige Job: Sentinel tree would now add 1-3 / 2-6 / 3-9 / 10-15 points in calculation of damage reduction based on player core and trained tou.\n");
 			outputText("-Milf kitsune grand elder from Obssesive Love sect no longer would wait for any needy rogue cultivators to spread dao. Now she would have lectures only once a week at the afternoon of 8th moon cycle day.\n");
 			outputText("-New status effect: Final Candle. Accesable by: Salamander / Hinezumi / Suzaku / Hellcat / Fire Snail final race tier. Effect: When lust reaches 75% you become so horny your lust begins to consume your body and enter the final candle state. While in the final candle state you triple all fire damage dealt but take a 5% degeneration to health per round.\n");
-			outputText("-When exploring Ashlands or Vulcanic Crag can meet Salamander Ore Merchants. They provide for only small extra fee all possible to mine normaly ores in quarry/mines across the Mareth. Something right for filthy rich and miningphobic PC's ;) (part of coding them was done by Jtecx))\n");
+			outputText("-When exploring Ashlands or Vulcanic Crag can meet Salamander Ore Merchants. They provide for only small extra fee all possible to mine normaly ores in quarry/mines across the Mareth. Something right for filthy rich and miningphobic PC's ;) They also can sell various pickaxes to increase effective mining level and/or mine more rare ores. (part of coding them was done by Jtecx))\n");
 			outputText("-Made Lust Strike's combat hint easier to read, and added new lines to it's combat text. (Edward Darksong)\n");
 			outputText("-Buffed Lust Strike's scaling from 10% libido, lust, intelligence, wisdom and sensitivity, to 25% libido, intelligence, wisdom, sensitivity and 25-100% lust (based on Black Heart tier). (Edward Darksong)\n");
 			outputText("-Added a side effect to Lust Strike: Lowers enemy's lust resist(if not immune) by 10-30%(based on Black Heart tier), applies the lust vulnerability limits of perks Corrupt The Body, Corrupt The Heart, Corrupt The Mind and Corrupt The Soul. (Edward Darksong)\n");
@@ -238,6 +238,15 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Ormael): Dual Tri-Daggers - can be gained by combining 2x Tri-Dagger weapon. Cost 640 gems. Base atk is 4. It's dual small dagger type weapon that have 25% chance to leave bleeding wound.\n");
 			outputText("-New misc accesory (by Ormael): Mining Prodigy Bag - buyable at Giacomo shop. Cost 800 gems. Increase mining exp gains multi by 300% and increase chance to find ore to 100%.\n");
 			outputText("-Req. mining level to find tin / copper ores (1 > 0), iron (2> 5) and moonstones (3 > 10) was adjusted. Iron and Moonstone are Liadri certified changes of level not mines.\n");
+			outputText("-Skymetal price changes: 900 > 2,000 (by Liadri)\n");
+			outputText("-New material: Mithral ore. Can be gained from mining (mining level 15+).\n");
+			outputText("-New material: Orichalcum ore.\n");// Can be gained from mining at the beach (mining level 20+).
+			outputText("-New material: Adamantine ore. Can be gained from mining (mining level 25+) or from Adamantine Golem.\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -252,15 +261,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//, rapier, mace
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
@@ -298,7 +298,7 @@ public class Changelog extends BaseContent
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach without becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
 			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, ");
 			outputText("Sidone help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, ");
-			outputText("cave wyrm tongue desc been draconic not cave wyrm, some of purity scaling weapons scaling on corruption and two feminity/masculinity sclaing wepaons scaling on wrong values\n\n");
+			outputText("cave wyrm tongue desc been draconic not cave wyrm, some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling wepaons scaling on wrong values\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");
@@ -363,8 +363,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -398,6 +404,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -622,7 +631,7 @@ public class Changelog extends BaseContent
 			outputText("-New consumable (by Ormael / all text written by Reverse Time Traveler): Demonize Me. Obtained from hidden compartment in Factory. Effects: Forcefully turn person using into true demon. (giving Soulless perk and Lethicite consumable)\n");
 			outputText("-New usable item: Purple Crystal. Costing 5 gems and it's obtainable from uncrafting 6 purple crystal shards. Can be used to disturb time flow or given to npc's that could use it for something to benefit pc.\n");
 			outputText("-New usable item: Feral Demon Skull. Costing 50 gems and it's obtainable from killing feral demon enemies.\n");
-			outputText("-New material: Skymetal ore. It can gained as drop from Adamantine Golem.\n");
+			outputText("-New material: Skymetal ore. It can gained from mining meteorite that would appear as a random 1% event when exploring.\n");
 			outputText("-New type of minions: tamed monsters. Req. Tamer Job and they can be at any time released to be replaced by different one monster. To succeed player must defeat them in combat and then have higher wisdom to successfully tame them (non feral/true demon tamable enemies are treated as if they had 10x higher wis). Some perks/items can increase their damage. They would also benefit from effectivness bonus that is applied to any henchman.\n");
 			outputText("-New damage type: Psychic - some of PC abilities or perks will not affect them (like dmg increase from missing HP during berserk state or debuffs affectiong enemy body (necrotic root, adic dot)). Enemies like mindbreaker also had some of their attacks type changed to psychic.\n");
 			outputText("-New damage type: Black Ice - it's mix of ice and darkness dmg and would be displayed as dealing two types of dmg.\n");

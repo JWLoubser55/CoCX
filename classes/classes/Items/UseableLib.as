@@ -116,12 +116,21 @@ use namespace CoC;
 		public const SOULMETB:SimpleUseable = new SimpleUseable("SoulmetB", "Soulmetal bar", "a Soulmetal bar", 240,
 			"A Soulmetal bar.",
 			"You look over the Soulmetal bar. Likely useful for making cultivators equipment, still it's only of averange purity.");
-		public const SKYMETA:SimpleUseable = new SimpleUseable("Skymetal", "Skymetal" , "a Skymetal", 900,
+		public const SKYMETA:SimpleUseable = new SimpleUseable("Skymetal", "Skymetal" , "a Skymetal", 2000,
 			"A Skymetal ore.",
-			"You gaze at the skymetal ore. Likely useful for making some weapons.");
+			"You gaze at the skymetal ore. A deep blue ore rumored to be the metal of genesis used by the gods to make the world. Skymetal can only be mined from meteorites and is so rare as to be considered a myth by most craftsmen. It both conducts magic and acts as a nigh indestructible material. Many divine artefacts are rumored to be made out of Skymetal.");
 		public const MOONSTO:SimpleUseable = new SimpleUseable("Moonsto", "Moonstone" , "a Moonstone", 900,
 			"A Moonstone.",
 			"You gaze at the Moonstone. Likely useful for making some weapons.");
+		public const MITHRAL:SimpleUseable = new SimpleUseable("Mithral", "Mithral" , "a Mithral", 1000,
+			"A Mithral.",
+			"You gaze at the Mithral. A beautiful ore the color of silver, rumored to never rust. Light and Sturdy.");
+		public const ORICHAL:SimpleUseable = new SimpleUseable("Orichal", "Orichalcum" , "an Orichalcum", 1200,
+			"An Orichalcum.",
+			"You gaze at the Orichalcum. A ore the same color as gold that can only be found and mined underwater. It has powerful magical properties that makes it a prized material in the crafting of casting weapons.");
+		public const ADAMANT:SimpleUseable = new SimpleUseable("Adamant", "Adamantine" , "an Adamantine", 1500,
+			"An Adamantine.",
+			"You gaze at the Adamantine. A dark green colored ore rumored to be indestructible. Adamantine can be melted but once hardened never breaks or bends.");
 		public const UNICORNH:SimpleUseable = new SimpleUseable("UnicornH", "UnicornHair" , "an Unicorn Hair", 900,
 			"An Unicorn Hair.",
 			"You gaze at the Unicorn Hair. Likely useful for making some weapons stronger.");
