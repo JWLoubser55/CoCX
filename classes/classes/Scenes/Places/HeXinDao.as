@@ -1920,7 +1920,8 @@ public function soularena():void {
         flags[kFLAGS.SPIRIT_STONES]--;
 		player.refillHunger(100);
         statScreenRefresh();
-        doNext(camp.returnToCampUseOneHour);
+		advanceMinutes(60);
+        doNext(riverislandVillageStuff);
     }
 }
 }

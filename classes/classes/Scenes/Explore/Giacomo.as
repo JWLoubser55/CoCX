@@ -591,7 +591,7 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
 			outputText("Giacomo holds up a bag.  \"<i>While you may not find value in this as a simple bag,</i>\", Giacomo opens, \"<i>you would find use of items that mining prodigy that owned this before you gatherted!  Maybe even gain profficency in mining faster or never failt to find ores!  I will offer the super-cheap price of 800 gems!</i>\"");
-			doYesNo(buyMiningProdigyBag, bookMenu);
+			doYesNo(buyMiningProdigyBag, miscMenu);
 		}
 		
 		private function buyMiningProdigyBag():void {
@@ -599,12 +599,12 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			clearOutput();
 			if (player.gems < 800) {
 				outputText("Giacomo sighs, indicating you need 800 gems to purchase this item.");
-				doNext(bookMenu);
+				doNext(miscMenu);
 			}
 			else {
 				outputText("The crazy merchant nods satisfied when you hand him over an eight hundred gems and in exchange gives you a mining prodigy bag.");
 				player.gems -= 800;
-				inventory.takeItem(miscjewelries.MINPBAG, bookMenu);
+				inventory.takeItem(miscjewelries.MINPBAG, miscMenu);
 			}
 		}
 		

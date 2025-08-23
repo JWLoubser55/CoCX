@@ -242,7 +242,7 @@ public class Changelog extends BaseContent
 			outputText("-New material: Mithral ore. Can be gained from mining (mining level 15+).\n");
 			outputText("-New material: Orichalcum ore.\n");// Can be gained from mining at the beach (mining level 20+).
 			outputText("-New material: Adamantine ore. Can be gained from mining (mining level 25+) or from Adamantine Golem.\n");
-			outputText("-\n");
+			outputText("-Shira of the east will now not sending PC back to Narnia errr.... camp after each meal.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -72,7 +72,7 @@ public class SalamanderOreMerchants extends BaseContent implements SaveableState
 		addButton(6, useables.ORICHAL.shortName, sellItem, useables.ORICHAL);
 		addButton(7, useables.ADAMANT.shortName, sellItem, useables.ADAMANT);
 		addButton(7, useables.SKYMETA.shortName, sellItem, useables.SKYMETA);
-		addButtonIfTrue(13, "Pickaxes", pickaxes, "Req. to have Old Pickaxe.", player.hasKeyItem("Old Pickaxe") < 0, "Better Pickaxes then Old Pickaxe.");
+		addButtonIfTrue(13, "Pickaxes", pickaxes, "Req. to have Old Pickaxe.", player.hasKeyItem("Old Pickaxe") >= 0, "Better Pickaxes then Old Pickaxe.");
         addButton(14, "Finished!", unShop, true);
     }
 	private function sellItem(item:Useable,cost:int = -1,buy:Boolean=false):void {
@@ -132,7 +132,7 @@ public class SalamanderOreMerchants extends BaseContent implements SaveableState
 		clearOutput();
 		switch(type){
 			case 1:
-				outputText("The salamander picks up your gem and hands you a steel pickaxe.\n\n\"<i>Finaly decided to get on the mining job seriously too? Sure heres a quality pickaxe it'll at least be better then that piece of rusted metal you’ve been using until now.</i>\"");
+				outputText("The salamander picks up your gems and hands you a steel pickaxe.\n\n\"<i>Finaly decided to get on the mining job seriously too? Sure heres a quality pickaxe it'll at least be better then that piece of rusted metal you’ve been using until now.</i>\"");
 				player.createKeyItem("Steel Pickaxe", 0, 0, 0, 0);
 				player.gems -= 500;
 				break;
@@ -142,17 +142,17 @@ public class SalamanderOreMerchants extends BaseContent implements SaveableState
 				player.gems -= 2000;
 				break;
 			case 3:
-				outputText("The salamander picks up your gem and hands you a mithril pickaxe.\n\n\"<i>Now that's one hell of a good pickaxe you bought there, I wish you happy mining.</i>\"");
+				outputText("The salamander picks up your gems and hands you a mithril pickaxe.\n\n\"<i>Now that's one hell of a good pickaxe you bought there, I wish you happy mining.</i>\"");
 				player.createKeyItem("Mithril Pickaxe", 0, 0, 0, 0);
 				player.gems -= 10000;
 				break;
 			case 4:
-				outputText("The salamander picks up your gem and hands you an orichalcum pickaxe.\n\n\"<i>Not many of those around these days better take care of it. If I hear you got eaten by a sea monster don’t blame me for pillaging your remains to retrieve it back.</i>\"");
+				outputText("The salamander picks up your gems and hands you an orichalcum pickaxe.\n\n\"<i>Not many of those around these days better take care of it. If I hear you got eaten by a sea monster don’t blame me for pillaging your remains to retrieve it back.</i>\"");
 				player.createKeyItem("Orichalcum Pickaxe", 0, 0, 0, 0);
 				player.gems -= 15000;
 				break;
 			case 5:
-				outputText("The salamander picks up your gem and hands you an adamantine pickaxe.\n\n\"<i>Careful with that friend, this tool is precious enough for thieves to waylay you to get it. Honestly only ever known six people who could properly make use of this four of them travels with me and the sixth one is you.</i>\"");
+				outputText("The salamander picks up your gems and hands you an adamantine pickaxe.\n\n\"<i>Careful with that friend, this tool is precious enough for thieves to waylay you to get it. Honestly only ever known six people who could properly make use of this four of them travels with me and the sixth one is you.</i>\"");
 				player.createKeyItem("Adamantine Pickaxe", 0, 0, 0, 0);
 				player.gems -= 25000;
 				break;
