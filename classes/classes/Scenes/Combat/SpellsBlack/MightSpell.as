@@ -18,7 +18,7 @@ public class MightSpell extends AbstractBlackSpell {
 	}
 	
 	override public function manaCost():Number {
-		return super.manaCost() * costMultiplier();
+		return baseManaCost * costMultiplier();
 	}
 	
 	private function costMultiplier():Number {
@@ -30,7 +30,7 @@ public class MightSpell extends AbstractBlackSpell {
 	}
 	
 	override public function get isKnown():Boolean {
-		return player.hasStatusEffect(StatusEffects.KnowsMight)
+		return player.hasStatusEffect(StatusEffects.KnowsMight);
 	}
 	
 	override public function isActive():Boolean {
@@ -59,9 +59,9 @@ public class MightSpell extends AbstractBlackSpell {
 	public function calcBoost():Number {
 		var MightBoostCap:Number = 1.5;
 		if (player.hasPerk(PerkLib.SelfbuffsProficiency)) {
-			var capB:Number = 1.3;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 0.7;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 5;
+			var capB:Number = 1.5;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 1;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 7.5;
 			MightBoostCap *= capB;
 		}
 		MightBoostCap *= player.intStat.core.max;

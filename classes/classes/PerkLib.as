@@ -2972,8 +2972,8 @@ public class PerkLib
 				"It's official, everyone knows to go to you for sex. You're still new to the business, but you learned some new tricks. (+15% tease dmg)",
 				"You've chosen the 'Prostitute' perk, gaining +15% tease dmg.");
 		public static const PureMagic:PerkType = mk("Pure magic", "Pure magic",
-				"Your spells gain aligned damage, dealing more damage against the corrupt. Buff spells now last for the battle duration. (+60% spellpower bonus)",
-				"You've chosen the 'Pure magic' perk. Your spells gain aligned damage, dealing more damage against the corrupt. Buff spells now last for the battle duration. (+60% spellpower bonus)");
+				"Your spells gain aligned damage, dealing more damage against the corrupt. White and Divine Magic Deals 25% Increased damage to soulless creatures. (+65% spellpower bonus)",
+				"You've chosen the 'Pure magic' perk. Your spells gain aligned damage, dealing more damage against the corrupt. White and Divine Magic Deals 25% Increased damage to soulless creatures. (+65% spellpower bonus)");
 		public static const PyrosFriend:PerkType = mk("Pyro's Friend", "Pyro's Friend",
 				"Mmmphmm! (No idea what he? is trying to say... but same rules apply... +10% ranged damage buff)",
 				"You've chosen the 'Pyro's Friend' perk, gaining +10% ranged physical damage.");
@@ -3125,14 +3125,14 @@ public class PerkLib
 				"Upgrades your tease attack, making it more effective.",
 				"You've chosen the 'Seduction' perk, upgrading the 'tease' attack with more powerful damage and a higher chance of success.");
 		public static const SelfbuffsProficiency:PerkType = mk("Selfbuffs Proficiency", "Selfbuffs Proficiency",
-				"Increases maximum self-buff cap by 30%.",
-				"You've chosen the 'Selfbuffs Proficiency' perk. Increases maximum self-buff cap by 30%.");
+				"Increases maximum self-buff cap by 50%.",
+				"You've chosen the 'Selfbuffs Proficiency' perk. Increases maximum self-buff cap by 50%.");
 		public static const SelfbuffsProficiencyEx:PerkType = mk("Selfbuffs Proficiency (Ex)", "Selfbuffs Proficiency (Ex)",
-				"Increases maximum self-buff cap by 70%(100%). Enable recasting all active buffs when they're about to expire.",
-				"You've chosen the 'Selfbuffs Proficiency (Ex)' perk. Increases maximum self-buff cap by 70%(100%). Enable recasting all active buffs when they're about to expire.");
+				"Increases maximum self-buff cap by 100%(250%). Enable recasting all active buffs when they're about to expire.",
+				"You've chosen the 'Selfbuffs Proficiency (Ex)' perk. Increases maximum self-buff cap by 100%(250%). Enable recasting all active buffs when they're about to expire.");
 		public static const SelfbuffsProficiencySu:PerkType = mk("Selfbuffs Proficiency (Su)", "Selfbuffs Proficiency (Su)",
-				"Increase max selfbuff max cap five times at the cost of using twice more mana to cast.",
-				"You've chosen the 'Selfbuffs Proficiency (Su)' perk. Increase max selfbuff max cap five times at the cost of using twice more mana to cast.");
+				"Increase max selfbuff max cap six times at the cost of using twice more mana to cast.",
+				"You've chosen the 'Selfbuffs Proficiency (Su)' perk. Increase max selfbuff max cap six times at the cost of using twice more mana to cast.");
 		public static const Sensual:PerkType = mk("Sensual", "Sensual",
 				"Lowering by ~40% the needed exp to level-up tease and +1 more tease exp after succes.",
 				"You've chosen the 'Sensual' perk, lowering by ~40% the needed exp to level-up tease and +1 more tease exp after succes.");

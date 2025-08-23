@@ -32,6 +32,7 @@ public class LightningBoltSwiftcastSpell extends AbstractWhiteSpell {
 		var baseDamage:Number = 0.75 * damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
 		if (player.armorName == "FrancescaCloak") baseDamage *= 2;
+		if (player.hasPerk(PerkLib.PureMagic) && monster.hasPerk(PerkLib.EnemyTrueDemon)) baseDamage *= 1.25;
 		return adjustSpellDamage(baseDamage, DamageType.LIGHTNING, CAT_SPELL_WHITE, monster, true, casting);
 	}
 	

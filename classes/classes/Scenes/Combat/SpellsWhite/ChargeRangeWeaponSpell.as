@@ -29,7 +29,7 @@ public class ChargeRangeWeaponSpell extends AbstractWhiteSpell {
 	}
 	
 	override public function manaCost():Number {
-		return super.manaCost() * costMultiplier();
+		return baseManaCost * costMultiplier();
 	}
 	
 	override public function advance(display:Boolean):void {
@@ -37,9 +37,8 @@ public class ChargeRangeWeaponSpell extends AbstractWhiteSpell {
 			player.removeStatusEffect(StatusEffects.ChargeRWeapon);
 			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx) && player.mana >= CombatAbilities.ChargeRWeapon.manaCost()) CombatAbilities.ChargeRWeapon.autocast();
 			else if (display) outputText("<b>Charged Range Weapon effect wore off!</b>\n\n");
-		} else {
-			if (!player.hasPerk(PerkLib.PureMagic)) player.addStatusValue(StatusEffects.ChargeRWeapon, 2, -1);
 		}
+		else player.addStatusValue(StatusEffects.ChargeRWeapon, 2, -1);
 	}
 	
 	override protected function usabilityCheck():String {
@@ -85,9 +84,9 @@ public class ChargeRangeWeaponSpell extends AbstractWhiteSpell {
 		var ChargeRangeWeaponBoostCap:Number = 4;
 		var ChargeRangeWeaponBoost:Number = 5;
 		if (player.hasPerk(PerkLib.SelfbuffsProficiency)) {
-			var capB:Number = 1.2;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 0.8;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 5;
+			var capB:Number = 1.5;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 1;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 7.5;
 			ChargeRangeWeaponBoostCap *= capB;
 		}
 		ChargeRangeWeaponBoostCap *= ChargeRangeWeaponBoost;

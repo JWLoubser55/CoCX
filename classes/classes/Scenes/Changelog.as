@@ -189,7 +189,7 @@ public class Changelog extends BaseContent
 			outputText("-Brain Melt buff for Mindbreaker PC increased to 5% from 1% per each melt(ed brain i suppose). Not working retroactively thou so gotta melt more brains for that sweet brain juice for your PC brain ;) Psionic Empowerment also getting 5 more times bang for all new mindbreaker sisters and brothers you made along the way.\n");
 			outputText("-Automata PC have 'Remodel' option added to camp actions where it can change some of it bodyparts to other types or remove/add some of the bodyparts/genitalia. Using those options would also replace any missing bodyparts and heal any stat damage (weakened, drained, damaged).\n");
 			outputText("-Soul Training Axe base atk (1 > 4) and cost (80 > 300) increased. For increasing maximum soulforce bonus from training items like the axe would now account for equipped weapon in offhand slot too.\n");
-			outputText("-New consumable items: Bag of Cosmos (B1) - founded at Soul Cultivators dead bodies. Contain random stuff inside like: spirit stones, cultivation consumables, cultivation resources.\n");//, Bag of Cosmos (A2), Bag of Cosmos (A3)
+			outputText("-New consumable items: Bag of Cosmos (B1), Bag of Cosmos (B2) - founded at Soul Cultivators dead bodies. Contain random stuff inside like: spirit stones, cultivation consumables, cultivation resources.\n");//, Bag of Cosmos (B3)
 			outputText("-When exploring Battlefield areas it's possible to find dead bodies of true demons or soul cultivators. And they are even lootable giving chance to get some potentialy usefull items.\n");
 			outputText("-New material: Soulmetal bar. Costing 240 gems and can be found in cultivators bags of cosmos.\n");
 			outputText("-Green Magic / Arcane Venom perks tier changed (3 > 12 / 9 > 8) with adjusted stat req.\n");
@@ -243,9 +243,9 @@ public class Changelog extends BaseContent
 			outputText("-New material: Orichalcum ore.\n");// Can be gained from mining at the beach (mining level 20+).
 			outputText("-New material: Adamantine ore. Can be gained from mining (mining level 25+) or from Adamantine Golem.\n");
 			outputText("-Shira of the east will now not sending PC back to Narnia errr.... camp after each meal.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-White and Black magic self buffing spells mana cost would be now only affected by theri base mana cost and each spell own cost multiplier. (No more more mana for no extra punch from spell)\n");
+			outputText("-Selfbuffs Proficiency, Selfbuffs Proficiency (Ex) and Selfbuffs Proficiency (Su) perks boosting part increased: (30% > 50%), (70% > 100%), (5x > 7,5x)\n");
+			outputText("-Pure Magic perk effect 'Buff spells now last for the battle duration' replaced with 'White and Divine Magic Deals 25% Increased damage to soulless creatures'.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

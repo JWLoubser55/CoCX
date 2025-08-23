@@ -30,7 +30,7 @@ public class ChargeArmorSpell extends AbstractWhiteSpell {
 	}
 	
 	override public function manaCost():Number {
-		return super.manaCost() * costMultiplier();
+		return baseManaCost * costMultiplier();
 	}
 	
 	override public function advance(display:Boolean):void {
@@ -39,9 +39,8 @@ public class ChargeArmorSpell extends AbstractWhiteSpell {
 				player.removeStatusEffect(StatusEffects.ChargeArmor);
 				if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx) && player.mana >= CombatAbilities.ChargeArmor.manaCost()) CombatAbilities.ChargeArmor.autocast();
 				else if (display) outputText("<b>Charged Armor effect wore off!</b>\n\n");
-			} else {
-				if (!player.hasPerk(PerkLib.PureMagic)) player.addStatusValue(StatusEffects.ChargeArmor, 2, -1);
 			}
+			else player.addStatusValue(StatusEffects.ChargeArmor, 2, -1);
 		}
 	}
 	
@@ -80,9 +79,9 @@ public class ChargeArmorSpell extends AbstractWhiteSpell {
 		var ChargeArmorBoostCap:Number = 4;
 		var ChargeArmorBoost:Number = 5;
 		if (player.hasPerk(PerkLib.SelfbuffsProficiency)) {
-			var capB:Number = 1.2;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 0.8;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 5;
+			var capB:Number = 1.5;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 1;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 7.5;
 			ChargeArmorBoostCap *= capB;
 		}
 		ChargeArmorBoostCap *= ChargeArmorBoost;

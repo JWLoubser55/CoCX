@@ -220,7 +220,7 @@ use namespace CoC;
 			"A vial of reagent.",
 			"You look at the reagent vial.  It's used with dyes to dye scales, chitins and other similar types of natural armor covering your body.");
 		public const S_SHARD:SimpleUseable = new SimpleUseable("S_SHARD", "S.Shard", "a tarnished shard of metal wich may have been part of a golden weapon", 200,
-			"These appear to be the shards of a shattered weapon.",
+			"A shards of a shattered weapon.",
 			"These appear to be the shards of a shattered weapon though which one you do not know. You are no smith and thus have no idea how to reforge this item. From what Vala told you it might have been part of the scepter of the fairy queen. You recall that you will need 15 shards in total to start...");
 		public const IARROWHEAD:SimpleUseable = new SimpleUseable("IArrowHead", "IArrowHeads", "an iron arrowheads", 1,
 			"Hundred iron arrowheads.",
@@ -235,8 +235,8 @@ use namespace CoC;
 			"Hundred ebonbloom arrowheads.",
 			"You look at a hundred ebonbloom arrowheads.  They could be used to craft special arrows.");
 		public const TEDDY:SimpleUseable = new SimpleUseable("TeddyBear", "TeddyBear", "a Teddy bear", 200,
-				"An old Teddy bear with A small piece of paper with the name Mister Paw tied to it.",
-				"You look at an old Teddy bear and see there is A small piece of paper with the name Mister Paw tied to it.");
+			"An old Teddy bear with A small piece of paper with the name Mister Paw tied to it.",
+			"You look at an old Teddy bear and see there is A small piece of paper with the name Mister Paw tied to it.");
 		public const BANDAGE:SimpleUseable = new SimpleUseable("Bandage", "Bandages", "a Bandages", 25,
 			"A Bandages.",
 			"A roll of bandages. What are you gonna do with this anyway?");

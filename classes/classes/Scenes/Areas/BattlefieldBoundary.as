@@ -256,7 +256,7 @@ use namespace CoC;
 			if (rand(3) == 0) item = consumables.BAGOCA1;
 			else {
 				if (rand(2) == 0) item = consumables.BAGOCB1;
-				else item = consumables.BAGOCA2;
+				else item = consumables.BAGOCB2;
 			}
 			outputText("While exploring the battlefield you walk across the long decayed bones of ancient cultivators. While the law of nature in Mareth makes death by battle unlikely, most cultivators would rather blow up their core over having their precious soul harvested by the demons.\n\n");
 			outputText("To them death is preferable to losing everything that made them cultivators in the first place. ");

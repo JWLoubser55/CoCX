@@ -393,13 +393,13 @@ public class AbstractSpell extends CombatAbility {
 		if (monster != null) {
 			if (hasTag(TAG_AOE) && (monster.plural || monster.hasPerk(PerkLib.EnemyGigantType) || monster.hasPerk(PerkLib.EnemyColossalType))) damage *= 5;
 			if (category == CAT_SPELL_WHITE || category == CAT_SPELL_DIVINE) {
-				if (player.hasPerk(PerkLib.DivineKnowledge) && monster.cor > 65) {
+				if (player.hasPerk(PerkLib.DivineKnowledge) && monster.cor > 35) {
 					damage *= 1.2;
 				}
 				damage *= pureMagicPerkFactor(monster);
 			}
 			if (category == CAT_SPELL_BLACK || category == CAT_SPELL_HEX) {
-				if (player.hasPerk(PerkLib.HexKnowledge) && monster.cor < 34) {
+				if (player.hasPerk(PerkLib.HexKnowledge) && monster.cor < -35) {
 					damage *= 1.2;
 				}
 				damage *= corruptMagicPerkFactor(monster);
