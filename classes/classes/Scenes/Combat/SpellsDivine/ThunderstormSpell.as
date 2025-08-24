@@ -54,7 +54,7 @@ public class ThunderstormSpell extends AbstractDivineSpell {
 	public function calcDamage(monster:Monster, randomize:Boolean=true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
 		var baseDamage:Number = damageCalculationTier3Spells(randomize);
 		daaamageaddons(baseDamage);
-		if (player.hasPerk(PerkLib.PureMagic) && monster.hasPerk(PerkLib.EnemyTrueDemon)) baseDamage *= 1.25;
+		if (player.hasPerk(PerkLib.PureMagic) && (monster && monster.hasPerk(PerkLib.EnemyTrueDemon))) baseDamage *= 1.25;
 		return adjustSpellDamage(baseDamage, DamageType.LIGHTNING, CAT_SPELL_DIVINE, monster, true, casting);
 	}
 	
@@ -63,7 +63,6 @@ public class ThunderstormSpell extends AbstractDivineSpell {
 			outputText("You call upon the anger of the gods to smite your foe and they gladly answer with thunder. Lightning begins to strike down upon your opponent"+(monster.plural ? "s":"")+" with perfect precision.");
 		}
 		var damage:Number = calcDamage(monster, true, true);
-		
 		player.createStatusEffect(StatusEffects.Thunderstorm, damage, calcDuration(), 0, 0);
 		damage = critAndRepeatDamage(display, damage, DamageType.LIGHTNING);
 		checkAchievementDamage(damage);

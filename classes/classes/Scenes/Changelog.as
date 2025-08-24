@@ -247,7 +247,8 @@ public class Changelog extends BaseContent
 			outputText("-Selfbuffs Proficiency, Selfbuffs Proficiency (Ex) and Selfbuffs Proficiency (Su) perks boosting part increased: (30% > 50%), (70% > 100%), (5x > 7,5x)\n");
 			outputText("-Pure Magic perk effect 'Buff spells now last for the battle duration' replaced with 'White and Divine Magic Deals 25% Increased damage to soulless creatures'.\n");
 			outputText("-Summoned by ??? merchant cat-morph would be now affected by 'For Beginners-type Enemy' perk. I guess no longer 40 min lond fight with beginner/early game 'superboss'.\n");
-			outputText("-\n");
+			outputText("-Brutal Blows / Brutal Spells perk renamed to Brutal Physical Blows / Brutal Elemental Blows. In perks req. added Flesh Body (VoL): Apprentice Stage or Daoist: Apprentice Stage perk as alternative to having Job: Warrior or Job: Sorcerer. ");
+			outputText("Each of perks lower physicial or magical resistance from any attack that deal physical or elemental (magical) damage and increase phys. Additional each increase by 5% physical or by 10% magical soulskill power multiplier.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -280,6 +281,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
@@ -363,14 +373,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -404,9 +408,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

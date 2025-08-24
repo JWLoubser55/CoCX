@@ -98,6 +98,12 @@ public class IceFistSkill extends AbstractSoulSkill {
 		combat.heroBaneProc(damage);
 		combat.EruptingRiposte();
 		if (display) outputText("\n\n");
+		if (player.hasPerk(PerkLib.BrutalBlows) && player.str > 75 && damage > 0) {
+            if (monster.armorDef > 0) outputText("Your hits are so brutal that you damage [themonster]'s defenses!\n\n");
+            var bbc:Number = (Math.round(monster.armorDef * 0.1) + 5);
+			if (monster.armorDef - bbc > 0) monster.armorDef -= bbc;
+            else monster.armorDef = 0;
+        }
     }
 }
 }

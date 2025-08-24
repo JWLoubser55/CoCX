@@ -99,6 +99,12 @@ public class AbstractSoulSkill extends CombatAbility {
 		checkAchievementDamage(damage);
 		if (display) outputText("\n\n");
 		combat.WrathGenerationPerHit2(5);
+		if (player.hasPerk(PerkLib.BrutalBlows) && player.str > 75 && damage > 0) {
+            if (monster.armorDef > 0) outputText("\nYour hits are so brutal that you damage [themonster]'s defenses!");
+            var bbc:Number = (Math.round(monster.armorDef * 0.1) + 5);
+			if (monster.armorDef - bbc > 0) monster.armorDef -= bbc;
+            else monster.armorDef = 0;
+        }
 		if (!player.hasStatusEffect(StatusEffects.BloodCultivator) && flags[kFLAGS.IN_COMBAT_PLAYER_ANUBI_HEART_LEECH] == 0) anubiHeartLeeching(damage);
 		combat.heroBaneProc(damage);
 		combat.EruptingRiposte();
@@ -115,6 +121,12 @@ public class AbstractSoulSkill extends CombatAbility {
         if (endOfTurn) {
             checkAchievementDamage(damage);
             combat.WrathGenerationPerHit2(15);
+			if (player.hasPerk(PerkLib.BrutalBlows) && player.str > 75 && damage > 0) {
+				if (monster.armorDef > 0) outputText("Your hits are so brutal that you damage [themonster]'s defenses!\n\n");
+				var bbc:Number = (Math.round(monster.armorDef * 0.1) + 5);
+				if (monster.armorDef - bbc > 0) monster.armorDef -= bbc;
+				else monster.armorDef = 0;
+			}
             combat.heroBaneProc(damage);
         }
 	}    

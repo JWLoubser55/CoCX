@@ -33,7 +33,7 @@ public class FireStormSpell extends AbstractWhiteSpell{
 	public function calcDamage(monster:Monster, randomize:Boolean=true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
 		var baseDamage:Number = damageCalculationTier2Spells(randomize);
 		daaamageaddons(baseDamage);
-		if (player.hasPerk(PerkLib.PureMagic) && monster.hasPerk(PerkLib.EnemyTrueDemon)) baseDamage *= 1.25;
+		if (player.hasPerk(PerkLib.PureMagic) && (monster && monster.hasPerk(PerkLib.EnemyTrueDemon))) baseDamage *= 1.25;
 		return adjustSpellDamage(baseDamage, DamageType.FIRE, CAT_SPELL_WHITE, monster, true, casting);
 	}
 	

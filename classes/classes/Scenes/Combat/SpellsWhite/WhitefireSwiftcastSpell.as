@@ -34,8 +34,8 @@ public class WhitefireSwiftcastSpell extends AbstractWhiteSpell {
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number {
 		var baseDamage:Number = 0.75 * damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
+		if (player.hasPerk(PerkLib.PureMagic) && (monster && monster.hasPerk(PerkLib.EnemyTrueDemon))) baseDamage *= 1.25;
 		if (player.armorName == "FrancescaCloak") baseDamage *= 2;
-		if (player.hasPerk(PerkLib.PureMagic) && monster.hasPerk(PerkLib.EnemyTrueDemon)) baseDamage *= 1.25;
 		return adjustSpellDamage(baseDamage, DamageType.FIRE, CAT_SPELL_WHITE, monster, true, casting);
 	}
 	

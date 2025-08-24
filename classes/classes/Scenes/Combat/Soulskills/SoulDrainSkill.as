@@ -108,6 +108,12 @@ public class SoulDrainSkill extends AbstractSoulSkill {
 		else HPChange(calcHealAmount(), display, false);
 		monster.addSoulforce(-calcSoulforceDrain(monster)); 
 		if (display) outputText("\n\n");
+		if (player.hasPerk(PerkLib.BrutalSpells) && monster.armorMDef > 0) {
+			outputText("Your soulskills are so brutal that you damage [themonster]'s magical resistance!\n\n");
+			var bbc:Number = (Math.round(monster.armorMDef * 0.1) + 5);
+			if (monster.armorMDef - bbc > 0) monster.armorMDef -= bbc;
+			else monster.armorMDef = 0;
+		}
 		anubiHeartLeeching(damage);
 		combat.heroBaneProc(damage);	
     }

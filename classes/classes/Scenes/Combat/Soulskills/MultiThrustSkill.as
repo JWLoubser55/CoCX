@@ -144,6 +144,12 @@ public class MultiThrustSkill extends AbstractSoulSkill {
 		}
 
 		if (display) outputText("\n\n");
+		if (player.hasPerk(PerkLib.BrutalBlows) && player.str > 75) {
+            if (monster.armorDef > 0) outputText("Your hits are so brutal that you damage [themonster]'s defenses!\n\n");
+            var bbc:Number = (Math.round(monster.armorDef * 0.1) + 5);
+			if (monster.armorDef - bbc > 0) monster.armorDef -= bbc;
+            else monster.armorDef = 0;
+        }
 		if (!player.hasStatusEffect(StatusEffects.BloodCultivator) && flags[kFLAGS.IN_COMBAT_PLAYER_ANUBI_HEART_LEECH] == 0) anubiHeartLeeching(flags[kFLAGS.HERO_BANE_DAMAGE_BANK]);
 		combat.heroBaneProc2();
 		combat.EruptingRiposte2();

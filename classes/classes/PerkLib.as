@@ -1186,20 +1186,20 @@ public class PerkLib
 		public static const BrothelOwner:PerkType = mk("Brothel Owner", "Brothel Owner",
 				"You are now above having sex by yourself, having created an industry and now teach new women and men to have sex. These allow you to refine your tricks, increasing your tease damage by 15%.",
 				"You've chosen the 'Brothel Owner' perk, gaining +15% tease dmg.");
-		public static const BrutalBlows:PerkType = mk("Brutal Blows", "Brutal Blows",
+		public static const BrutalBlows:PerkType = mk("Brutal Physical Blows", "Brutal Physical Blows",
 				"[if(player.str>=75)" +
-						"Reduces enemy armor with each hit. Each strike strips 10% + 5 of the enemy's current armor. (+5% melee physical attacks multiplier)" +
+						"Reduces enemy physical resistance with each hit. Each strike strips 10% + 5 of the enemy's current armor. (+5% melee physical attacks / soulskills multiplier)" +
 						"|" +
 						"<b>You aren't strong enough to benefit from this anymore.</b>" +
 						"]",
-				"You've chosen the 'Brutal Blows' perk, which reduces enemy armor with each hit. (+5% melee physical attacks multiplier)");
-		public static const BrutalSpells:PerkType = mk("Brutal Spells", "Brutal Spells",
+				"You've chosen the 'Brutal Blows' perk, which reduces enemy physical resistance with each hit. (+5% melee physical attacks / soulskills multiplier)");
+		public static const BrutalSpells:PerkType = mk("Brutal Elemental Blows", "Brutal Elemental Blows",
 				"[if(player.inte>=75)" +
-						"Reduces enemy magic resistance with each spell. (+10% base spell strength)" +
+						"Reduces enemy magical resistance with each spell. (+10% base spell / magical soulskills strength)" +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
-				"You've chosen the 'Brutal Spells' perk, which reduces enemy magic resistance with each spell. (+10% base spell strength)");
+				"You've chosen the 'Brutal Spells' perk, which reduces enemy magical resistance with each spell. (+10% base spell / magical soulskills strength)");
 		public static const Brute:PerkType = mk("Brute", "Brute",
 				"You have increased your striking strength. (+20% of max core Str as phantom Str & +5% melee physical attacks multiplier)",
 				"You've chosen the 'Brute' perk, increased your striking strength. (+20% of max core Str as phantom Str & +5% melee physical attacks multiplier)");
@@ -5405,7 +5405,7 @@ public class PerkLib
                     .requirePerk(JobWarrior);
             BrutalBlows.requireLevel(6)
                     .requireStr(75)
-                    .requirePerk(JobWarrior);
+                    .requireAnyPerk(JobWarrior, FleshBodyVoLApprenticeStage);
             FuriousStrikes.requireLevel(6)
                     .requireStr(30)
                     .requirePerk(JobWarrior);
@@ -6441,7 +6441,7 @@ public class PerkLib
                     .requireLevel(6);
             BrutalSpells.requireLevel(6)
                     .requireInt(75)
-                    .requirePerk(JobSorcerer);
+                    .requireAnyPerk(JobSorcerer, DaoistApprenticeStage);
             //Tier 2 Intelligence perks
             GrandMage.requirePerk(Mage)
                     .requireInt(75)
@@ -8992,4 +8992,4 @@ public class PerkLib
         }
 	}
 }
-}
+}

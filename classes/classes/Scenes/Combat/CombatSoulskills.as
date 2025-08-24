@@ -130,6 +130,7 @@ public class CombatSoulskills extends BaseCombatContent {
 			//if (player.hasPerk(PerkLib.SoulAncestor)) modssp += 2;
 		}
 		if (player.hasStatusEffect(StatusEffects.MartialTraining) && player.statusEffectv2(StatusEffects.MartialTraining) > 3) modssp += (0.1 * (player.statusEffectv2(StatusEffects.MartialTraining) - 3));
+		if (player.hasPerk(PerkLib.BrutalBlows)) modssp += 0.05;
 		if (player.perkv1(IMutationsLib.HumanBonesIM) >= 4 && player.racialScore(Races.HUMAN) > 17) modssp += 1;
 		if (player.hasAetherTwinsTierWeaponMSword() || player.hasAetherTwinsTierWeaponLSword() || player.hasAetherTwinsTierWeaponLSpear()) modssp += 0.4;
 		if (player.hasAetherTwinsTierLeftSword() || player.hasAetherTwinsTierLeftSpear()) modssp += 0.4;
@@ -171,6 +172,7 @@ public class CombatSoulskills extends BaseCombatContent {
 			modssm += wfb;
 		}
 		if (player.hasPerk(PerkLib.DaoOfTraning)) modssm += (flags[kFLAGS.SOULFORCE_GAINED_FROM_CULTIVATING]) * 0.01;
+		if (player.hasPerk(PerkLib.BrutalSpells)) modssm += 0.1;
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) modssm += 1;
 		if (player.shieldName == "spirit focus") modssm += .25;
 		if (player.armor == armors.DEATHPO) modssm += .5;

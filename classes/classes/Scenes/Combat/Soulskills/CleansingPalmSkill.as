@@ -122,13 +122,18 @@ public class CleansingPalmSkill extends AbstractSoulSkill {
 					outputText(" <b>*Critical Hit!*</b>");
 				outputText("damage \n\n");
 			}
-			
+			if (player.hasPerk(PerkLib.BrutalSpells) && monster.armorMDef > 0) {
+				outputText("Your soulskills are so brutal that you damage [themonster]'s magical resistance!\n\n");
+				var bbc:Number = (Math.round(monster.armorMDef * 0.1) + 5);
+				if (monster.armorMDef - bbc > 0) monster.armorMDef -= bbc;
+				else monster.armorMDef = 0;
+			}
 		}
 		else {
 			if (display) {
 				outputText("You thrust your palm forward, causing a blast of pure energy to slam against [themonster], which they ignore. It is probably best you don’t use this technique against the pure.\n\n");
 			}
-		} 
+		}
 		combat.WrathGenerationPerHit2(5);
 		if (!player.hasStatusEffect(StatusEffects.BloodCultivator) && flags[kFLAGS.IN_COMBAT_PLAYER_ANUBI_HEART_LEECH] == 0) this.anubiHeartLeeching(damage);
 		combat.heroBaneProc(damage);
