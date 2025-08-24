@@ -373,7 +373,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.EnemyLargeGroupType)) temp *= 10;
 			if (hasPerk(PerkLib.Enemy300Type)) temp *= 15;
 			if ((hasPerk(PerkLib.EnemyEliteType) || hasPerk(PerkLib.EnemyChampionType) || hasPerk(PerkLib.EnemyBossType)) && flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] > 0) {
-				if (hasPerk(PerkLib.EnemyEliteType)) temp *= (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING]* 1.25);
+				if (hasPerk(PerkLib.EnemyEliteType)) temp *= (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING]*1.25);
 				if (hasPerk(PerkLib.EnemyChampionType)) temp *= (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING]*2.5);
 				if (hasPerk(PerkLib.EnemyBossType)) temp *= (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING]*5);
 			}
@@ -2405,6 +2405,17 @@ import classes.Scenes.Combat.CombatAbilities;
 					createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 					return;
 				}
+			}
+			if (hasStatusEffect(StatusEffects.Swarmbringer)) {
+				var dFAAA:Number = 0;
+				dFAAA += this.str;
+				dFAAA += eBaseStrengthDamage();
+				dFAAA += this.weaponAttack;
+				dFAAA = Math.round(dFAAA);
+				outputText("\n\nThe swarm continues their relentless assault, practically blinding you with their sheer numbers. You need to do something about this swarm, and quickly!");
+				player.takePhysDamage(dFAAA, true);
+				outputText("\n\n");
+				player.buff("Swarmbringer").addStats({"str": -20, "spe": -20}).withText("Swarmbringer!").combatPermanent();
 			}
 
 			//Only start temp resolute decay once monster is no longer incapacitated

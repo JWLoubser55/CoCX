@@ -39,6 +39,7 @@ import classes.Scenes.Dungeons.DeepCave.*;
 import classes.Scenes.Dungeons.DemonLab.*;
 import classes.Scenes.Dungeons.EbonLabyrinth.*;
 import classes.Scenes.Dungeons.HelDungeon.*;
+import classes.Scenes.Dungeons.RiverDungeon.Demetrial;
 import classes.Scenes.Dungeons.RiverDungeon.TwinBosses;
 import classes.Scenes.Monsters.Magnar;
 import classes.Scenes.Monsters.WerewolfFemale;
@@ -922,6 +923,30 @@ public class Combat extends BaseContent {
 				if (player.statusEffectv2(StatusEffects.TamedMonster05) < 0) player.changeStatusValue(StatusEffects.TamedMonster05, 2, 0);
 			}
 			if (player.hasStatusEffect(StatusEffects.ManaShield) && player.mana < 1) player.removeStatusEffect(StatusEffects.ManaShield);
+			if (monster is Demetrial) {
+				var dFAAAA:Number = monster.maxHP();
+				dFAAAA = Math.round(dFAAAA*monster.damageReductionBasedOnDifficulty()*0.1);
+				if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && !monster.hasStatusEffect(StatusEffects.RootOfTheIssue)) {
+					outputText("The farmer beside you plants his feet, and as the roots come from the ground, he steps away, slashing them with the thin metal prongs. ");
+					doPhysicalDamage(Math.round(dFAAAA*0.4), true, true, true);
+					monster.createStatusEffect(StatusEffects.AbilityCooldown2, 1, 0, 0, 0);
+					outputText("\n\n");
+				}
+				else {
+					if (rand(2) == 0) {
+						outputText("The farmer rushes towards the angel, his rake intercepting the locusts that get in his way. His eyes glow silver, and he leaps into the air, clumsily bringing his rake down across the angel’s main eye. The being roars, and the farmer is thrown back by a wave of force, landing next to you. He rolls to his feet, but he’s battered by the attack. ");
+						doPhysicalDamage((dFAAAA*4), true, true, true);
+						outputText("\n\n");
+					}
+					else {
+						outputText("You hear an exhaled breath, through the cacophony of bugs and roots. The farmer beside you runs toward the angel, dodging several attacks. His body trails a silver aura, and as he nears the angel, he thrusts three times with his rake. ");
+						doPhysicalDamage((dFAAAA*4), true, true, true);
+						doPhysicalDamage((dFAAAA*4), true, true, true);
+						doPhysicalDamage((dFAAAA*4), true, true, true);
+						outputText("\n\n");
+					}
+				}
+			}
         }
         mainView.hideMenuButton(MainView.MENU_DATA);
         mainView.hideMenuButton(MainView.MENU_APPEARANCE);

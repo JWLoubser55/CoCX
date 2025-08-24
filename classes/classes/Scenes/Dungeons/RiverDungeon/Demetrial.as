@@ -76,41 +76,11 @@ use namespace CoC;
 					else removeStatusEffect(StatusEffects.ATranscendentSoulField);
 				}
 			}
-			RandomiseAction();
-			if (hasStatusEffect(StatusEffects.Swarmbringer)) {
-				outputText("The swarm continues their relentless assault, practically blinding you with their sheer numbers. You need to do something about this swarm, and quickly!");
-				player.takePhysDamage(dmgForAlmostAll(), true);
-				outputText("\n\n");
-				player.buff("Swarmbringer").addStats({"str": -20, "spe": -20}).withText("Swarmbringer!").combatPermanent();
-			}
 			if (!hasStatusEffect(StatusEffects.AbilityCooldown1) && !hasStatusEffect(StatusEffects.Swarmbringer)) moveSwarmbringer();
 			else {
 				if (!hasStatusEffect(StatusEffects.RootOfTheIssue)) moveRootOfTheIssue();
 				else moveDivineJudgemen();
 			}
-		}
-		
-		protected function RandomiseAction():void {
-			if (hasStatusEffect(StatusEffects.Swarmbringer) && !hasStatusEffect(StatusEffects.RootOfTheIssue)) secondFarmerAction();
-			else {
-				if (rand(2) == 0) firstFarmerAction();
-				else thirdFarmerAction();
-			}
-		}
-		private function firstFarmerAction():void {
-			outputText("The farmer rushes towards the angel, his rake intercepting the locusts that get in his way. His eyes glow silver, and he leaps into the air, clumsily bringing his rake down across the angel’s main eye. The being roars, and the farmer is thrown back by a wave of force, landing next to you. He rolls to his feet, but he’s battered by the attack. ");
-			SceneLib.combat.doPhysicalDamage(dmgForAlmostAll(), true, true, true);
-		}
-		private function secondFarmerAction():void {
-			outputText("The farmer beside you plants his feet, and as the roots come from the ground, he steps away, slashing them with the thin metal prongs.");
-			SceneLib.combat.doPhysicalDamage(Math.round(dmgForAlmostAll()*0.1), true, true, true);
-			createStatusEffect(StatusEffects.AbilityCooldown2, 1, 0, 0, 0);
-		}
-		private function thirdFarmerAction():void {
-			outputText("You hear an exhaled breath, through the cacophony of bugs and roots. The farmer beside you runs toward the angel, dodging several attacks. His body trails a silver aura, and as he nears the angel, he thrusts three times with his rake. ");
-			SceneLib.combat.doPhysicalDamage(dmgForAlmostAll(), true, true, true);
-			SceneLib.combat.doPhysicalDamage(dmgForAlmostAll(), true, true, true);
-			SceneLib.combat.doPhysicalDamage(dmgForAlmostAll(), true, true, true);
 		}
 		
 		override public function defeated(hpVictory:Boolean):void
@@ -128,7 +98,7 @@ use namespace CoC;
 			str += "You're standing in front of a figure straight out of a nightmare. A single, multifaceted eye, like a dragonfly's, floats. You feel that no matter where you are, it can always see you.\n\n";
 			str += "Around the eye, giant rings of wood spin, tendrils of root spiraling off the wooden frames. Inside, more insect eyes stare out, occasionally focusing on you. The root-tentacles writhe as they spin.\n\n";
 			str += "Attached to the eye by mere threads of light, giant translucent wings, not unlike a locust's, flap regularly, seemingly keeping this unearthly thing aloft.";
-			if (hasStatusEffect(StatusEffects.TranscendentSoulField)) str += "\n\n<i>From time to time you can notice faint glimmers of puple protective field surrounding it.</i>";
+			if (hasStatusEffect(StatusEffects.TranscendentSoulField)) str += "\n\n<i>From time to time you can notice faint glimmers of purple protective field surrounding it.</i>";
 			return str;
 		}
 

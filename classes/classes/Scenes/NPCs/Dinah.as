@@ -383,6 +383,7 @@ import classes.internals.*;
 				this.lustVuln = .9;
 				this.level = 2;
 				this.drop = NO_DROP;
+				this.createPerk(PerkLib.EnemyForBeginnersType, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.DINAH_LVL_UP] >= 1) {
 				this.a = "";
