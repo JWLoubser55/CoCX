@@ -2161,19 +2161,32 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 			var value3:Number = saveFile.data.perks[i].value3;
 			var value4:Number = saveFile.data.perks[i].value4;
 
-			// Fix saves where the Whore perk might have been malformed.
-			if (id == "History: Whote") id = "History: Whore";
+			// Fixing renamed and malformed perks
+			switch (id)
+			{
+				// Fix saves where the Whore perk might have been malformed.
+				case "History: Whote":
+					id = "History: Whore";
+					break;
 
-			// Fix saves where the Lusty Regeneration perk might have been malformed.
-			if (id == "Lusty Regeneration")
-			{
-				hasLustyRegenPerk = true;
+				// Fix saves where the Lusty Regeneration perk might have been malformed.
+				case "Lusty Regeneration":
+				case "LustyRegeneration":
+					id = "Lusty Regeneration";
+					hasLustyRegenPerk = true;
+					break;
+
+				// 'Brutal Blows' have been renamed to 'Brutal Physical Blows'
+				case "Brutal Blows":
+					id = "Brutal Physical Blows";
+					break;
+
+				// 'Brutal Spells' have been renamed to 'Brutal Elemental Blows'
+				case "Brutal Spells":
+					id = "Brutal Elemental Blows";
+					break;
 			}
-			else if (id == "LustyRegeneration")
-			{
-				id = "Lusty Regeneration";
-				hasLustyRegenPerk = true;
-			}
+
 			// Some shit checking to track if the incoming data has an available History perk
 			if (id.indexOf("History:") != -1) {
 				hasHistoryPerk = true;
