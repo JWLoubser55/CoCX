@@ -46,7 +46,7 @@ public class ExorciseSpell extends AbstractDivineSpell {
 		else if (player.weaponAttack >= 101 && player.weaponAttack < 151) damage *= (3.75 + ((player.weaponAttack - 100) * 0.02));
 		else if (player.weaponAttack >= 151 && player.weaponAttack < 201) damage *= (4.75 + ((player.weaponAttack - 150) * 0.015));
 		else damage *= (5.5 + ((player.weaponAttack - 200) * 0.01));
-		if (player.hasPerk(PerkLib.PureMagic) && monster.hasPerk(PerkLib.EnemyTrueDemon)) damage *= 1.25;
+		if (player.hasPerk(PerkLib.PureMagic) && (monster && monster.hasPerk(PerkLib.EnemyTrueDemon))) damage *= 1.25;
 		return adjustSpellDamage(damage, DamageType.MAGICAL, CAT_SPELL_DIVINE, monster, false, casting);
 	}
 	
