@@ -249,7 +249,7 @@ public class Changelog extends BaseContent
 			outputText("-Summoned by ??? merchant cat-morph would be now affected by 'For Beginners-type Enemy' perk. I guess no longer 40 min lond fight with beginner/early game 'superboss'.\n");
 			outputText("-Brutal Blows / Brutal Spells perk renamed to Brutal Physical Blows / Brutal Elemental Blows. In perks req. added Flesh Body (VoL): Apprentice Stage or Daoist: Apprentice Stage perk as alternative to having Job: Warrior or Job: Sorcerer. ");
 			outputText("Each of perks lower physicial or magical resistance from any attack that deal physical or elemental (magical) damage and increase phys. Additional each increase by 5% physical or by 10% magical soulskill power multiplier.\n");
-			outputText("-\n");
+			outputText("-Fixes for renamed perks. (Stadler)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
