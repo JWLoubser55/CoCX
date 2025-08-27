@@ -14524,6 +14524,11 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         if (player.hasPerk(PerkLib.ImprovedLifeline)) maxNonPercentRegen += 4 * player.level * (1 + player.newGamePlusMod());
         if (player.hasPerk(PerkLib.GreaterLifeline)) maxNonPercentRegen += 6 * player.level * (1 + player.newGamePlusMod());
         if (player.hasPerk(PerkLib.EpicLifeline)) maxNonPercentRegen += 8 * player.level * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodySoDApprenticeStage)) maxNonPercentRegen += 100 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodySoDWarriorStage)) maxNonPercentRegen += 200 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodySoDElderStage)) maxNonPercentRegen += 300 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());;
+		if (player.hasPerk(PerkLib.FleshBodySoDOverlordStage)) maxNonPercentRegen += 400 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodySoDTyrantStage)) maxNonPercentRegen += 500 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
 		if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1) maxNonPercentRegen *= 2;
         return maxNonPercentRegen;
     }

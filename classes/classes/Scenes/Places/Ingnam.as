@@ -85,6 +85,14 @@ public class Ingnam extends BaseContent
                 addButton(9, "Sleep", SceneLib.camp.doSleep);
             }
 			if (player.hasPerk(PerkLib.JobSoulCultivator)) addButton(10, "Soulforce", soulforce.accessSoulforceMenu).hint("Spend some time on the cultivation or spend some of the soulforce.");
+			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] > 0 && model.time.hours >= 21 && model.time.days < -1) addButton(11, "Skip", skipDay);
+		}
+
+		public function skipDay():void {
+			clearOutput();
+			outputText("You slept twenty four hours for no reason at all.");
+			model.time.days += 1;
+			doNext(menuIngnam);
 		}
 
 		//The end of prologue, starts the game.

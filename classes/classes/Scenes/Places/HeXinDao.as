@@ -875,6 +875,9 @@ public class HeXinDao extends BaseContent
 		menu();
 		if (player.hasPerk(PerkLib.SoulSense) && flags[kFLAGS.SPIRIT_STONES] >= 50) addButtonIfTrue(0, "Basic training", qimerchantTraningMainFlyingSwordPath1, "You already learned basic control of flying swords.", !player.hasPerk(PerkLib.FlyingSwordPath));
 		else addButtonDisabled(0, "Basic training", "Req. Soul Sense perk & 50 spirit stones.");
+		addButtonDisabled(1, "Intermediate training", "Commming soon.");
+		//(2, "Advanced training", "Commming soon.");
+		//(3, "Expert training", "Commming soon.");
 		addButtonIfTrue(10, "Soaring Blades", qimerchantTraningMainSoaringBladesManual, "You need to learn how to control flying swords first (Req. Flying Sword Path perk).", player.hasPerk(PerkLib.FlyingSwordPath));
 		addButtonIfTrue(11, "1stAtk: F.Sword", qimerchantTraningMainFirstAttackFlyingSwordManual, "You need to learn how to control flying swords first (Req. Flying Sword Path perk).", player.hasPerk(PerkLib.FlyingSwordPath));
 		addButton(14, "Back", qimerchant);
@@ -902,6 +905,16 @@ public class HeXinDao extends BaseContent
 	private function qimerchantTraningMainFlyingSwordPath2():void {
 		clearOutput();
 		outputText("\"<i></i>\"\n\n");
+		player.addPerkValue(PerkLib.FlyingSwordPath, 1, 1);
+		flags[kFLAGS.SPIRIT_STONES] -= 50;
+		advanceMinutes(150);
+		doNext(qimerchantTraningMain);
+	}
+	private function qimerchantTraningMainFlyingSwordPath3():void {
+		clearOutput();
+		outputText("\"<i></i>\"\n\n");
+		player.addPerkValue(PerkLib.FlyingSwordPath, 1, 1);
+		flags[kFLAGS.SPIRIT_STONES] -= 50;
 		advanceMinutes(150);
 		doNext(qimerchantTraningMain);
 	}
@@ -1607,11 +1620,12 @@ public function soularena():void {
 		outputText("\"<i>Five Spirit Stones per manual.</i>\" From the look in her young eyes, you can tell that trying to haggle would be a poor decision.\n\n");
 		menu();
 		addButtonIfTrue(0, "Daoist", missAkemiManualsShopDaoist, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") < 0);
-		addButtonIfTrue(1, "BodyCult", missAkemiManualsShopBodyCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Vigor of Lizan") < 0, "Buy Cultivation Manual: Vigor of Lizan");
+		addButtonIfTrue(5, "BodyCult(1)", missAkemiManualsShopBodyCultivatorVigorofLizan, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Vigor of Lizan") < 0, "Buy Cultivation Manual: Vigor of Lizan");
+		addButtonIfTrue(6, "BodyCult(2)", missAkemiManualsShopBodyCultivatorScaleofDragon, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Scale of Dragon") < 0, "Buy Cultivation Manual: Scale of Dragon");
 		//addButtonIfTrue(1, "BodyCult", missAkemiManualsShopBodyCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") < 0);
 		//outputText("\"<i>So you're into Coke Demons.... er... Fiends?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
 		//addButtonIfTrue(2, "HeartCult", missAkemiManualsShopHeartforceCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") < 0);
-		addButton(4, "Back", mrsShigureLectures);
+		addButton(14, "Back", mrsShigureLectures);
 	}
 	public function missAkemiManualsShopDaoist():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
@@ -1625,7 +1639,7 @@ public function soularena():void {
 		player.createKeyItem("Cultivation Manual: My Dao Sticks are better than Yours", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
-	public function missAkemiManualsShopBodyCultivator():void {
+	public function missAkemiManualsShopBodyCultivatorVigorofLizan():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
 			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
 			doNext(missAkemiManualsShop);
@@ -1635,6 +1649,18 @@ public function soularena():void {
 		outputText("\"<i>So you're into Lizan Vigor or... Lizans themself?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
 		outputText("<b>Gained Key Item: Cultivation Manual: Vigor of Lizan</b>");
 		player.createKeyItem("Cultivation Manual: Vigor of Lizan", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopBodyCultivatorScaleofDragon():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>So you're into checking if Dragons have Reverse Scale?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Scale of Dragon</b>");
+		player.createKeyItem("Cultivation Manual: Scale of Dragon", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 	public function missAkemiManualsShopHeartforceCultivator():void {
@@ -1924,4 +1950,4 @@ public function soularena():void {
         doNext(riverislandVillageStuff);
     }
 }
-}
+}

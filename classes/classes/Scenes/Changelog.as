@@ -98,7 +98,6 @@ public class Changelog extends BaseContent
 			outputText("-Path to open up the Dom's Domain added. (Canadian Snas)\n");
 			outputText("-Fixed cockdescript in Herm Centaur 'Stud' Loss scene. (DigitalKitsune)\n");
 			outputText("-New key Item (by Liadri): GOBX Chemical Improved formula - req. GOBX Chemical - Raises your libido by 200%, sensitivity by 30% and Intelligence by 200% while increasing the potency of firearms and technological weapons by 50% but locks your race permanently to goblinoid. (set all other races to 0 and triple racial bonus for goblins or gremlins).\n");
-			outputText("-New key Item (by Liadri): Grenade Launcher - req. Toolbelt - Let you use your grenade gadgets while siting comfortably in your goblin mech.\n");
 			outputText("-A bunch of fixes and Tifa's Hive. (DigitalKitsune)\n");
 			outputText("-Fixed Equipable.afterUnequip to actually call UNequip on item's effects instead of Equip, added spellpowerwhite and spellcostwhite buffable stats. (DigitalKitsune)\n");
 			outputText("-I heard you all like prime numbers level cap so here is another new prime number lvl cap: 233 (worry no new prime number cap until 2026 at least)\n");
@@ -115,6 +114,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 speed lvl-up perk: Quad Wield (Small). Req. Quad Wield and Dual Wield (Small) perks. Effect: Allows you to wield four small-sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
 			outputText("-New tier 2 speed lvl-up perk: Quad Wield (Normal). Req. Quad Wield and Dual Wield (Normal) perks. Effect: Allows you to wield four normal sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
 			outputText("-New tier 2 misc lvl-up perk: War Tail. Req. Beastly Kick perk and 45+ str/tou/spe. Effect: Add an extra tail slam attack at the end of a melee attack combo. This ability consumes some wrath upon use. Require a tail to use. (square root of 1% max wrath)\n");
+			outputText("-New tier 2 misc lvl-up perk: Nature Mage. Req. Mage perk, Intelligence 55+, Libido 55+, Corruption 50+. Effect: When outdoor increase spellcasting potency by 25%.\n");
 			outputText("-New tier 4 misc lvl-up perk: Persistent Spell. Req. Intelligence 100, Libido 100+, Corruption 50+. Effect: Green magic spell and effect duration are 2 turns longer.\n");
 			outputText("-New tier 5 wisdom lvl-up perk: Apes Together Strong. Req. Sic ‘Em Six perk and 130+ wisdom. Effect: You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.\n");
 			outputText("-New tier 5 strength lvl-up perk: Massive Synergy. Req. Gigant's Grip (Ex) perk and 150+ str. Effect: Damage bonus from massive weapons mastery is 100% better and damage bonus from large weapon mastery is added to massive weapons damage. (+25% melee physical attacks multiplier)\n");
@@ -127,7 +127,6 @@ public class Changelog extends BaseContent
 			outputText("-New tier 7 strength lvl-up perk: Quad Wield (Massive). Req. Quad Wield, Dual Wield (Massive) and Titan's Grip perks, 200+ str. Effect: Allows you to wield four massive sized melee weapons more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
 			outputText("-New tier 8 misc lvl-up perk: Shillelagh. Req. Nature Mage perk, Intelligence 180+, Libido 180+, Corruption 50+. Effect: Increase staves base attack value by 30. Staves count as the same size class spears with 40% armorpen when used as melee weapons.\n");
 			outputText("-New tier 10 misc lvl-up perk: Natural Oath. Req. Arcane Venom perk, Intelligence 220+, Libido 220+, Corruption 50+. Effect: Green magic is twice as more powerful so long as you wear no armor, shields or weapons made mostly of metal.\n");
-			outputText("-New tier 20 intelligence lvl-up perk: Ultimate Magic (Ex). Req. Ultimate Magic perk and 475+ int. Effect: You may ignore all constraints to your spell book usage.\n");
 			outputText("-Ruined Shrine event check in Glacial Rift now would use wolf race score check (10+) instead of lookign for specific bodyparts. Should make finding shrine bit more forgiving when it come to winter wolf part check.\n");
 			outputText("-Ocean was changed to Coastal Waters and part of encounter from it was moved to the next area.\n");
 			outputText("-New Area: Ocean (92-111). Exploring coastal waters allows now to find it. For all that want know what is down there in depth whenever it's Deep One nest, Arigean settlements, Abyssal Cities or just marvels of Gopture, we're one step closer to find out.\n");
@@ -148,22 +147,20 @@ public class Changelog extends BaseContent
 			outputText("-Added Outdoor marked for dungeons due to some checks for abilites that req. to be outdoor to work. For now only Twilight Groove have this marker.\n");
 			outputText("-New pure legendary shield (by Flamingrubys): Pridwen - obtainable by putting Beautiful Shield on restored Marae Altar and then taking it back. Base block 40, adding current block value to armor/m.res in calculations for Physical/Magical DR from armor and decrease by half corruption gains.\n");
 			outputText("-Beautiful items upgrade at Temple now would req. them been unequipped and in main inventory (not in Pearl, storages at home or other auxiliary storages).\n");
-			outputText("-Req. for Prestige Job: Bindmaster to have Job: Eromancer was chganged to having Job: Courtesan.\n");
+			outputText("-Req. for Prestige Job: Bindmaster to have Job: Eromancer was changed to having Job: Courtesan.\n");
 			outputText("-History: Fortune perk would give Traveling Merchant Outfit instead of default Comfortable Clothes. Also won't give any extra gems now.\n");
 			outputText("-Masochist perk effect changed to reduce dmg by 40% when having 40 or more core lib stat value but the lust amount taken changed to 1% of max lust. Sadist perk giving 200% dmg increase at cost of gaining 3% of max lust. Sadomasochism effect increase by 200% not 20% when req. are meet.\n");
 			outputText("-Telekinetic grab m. special cost changed to 200 fatigue and it cooldown set to 10 turns. When having Telekinetic Grapple perk from Esper job fatigue cost is 50% lower and cooldown 2 turns shorter.\n");
 			outputText("-Werefox race bonuses that change with moon phase changed from str/tou/spe to tou/spe/wis. Werewolf race got additional racial bonuses +50/100/150% to max wrath multi.\n");
 			outputText("-Description for spider eyes now desc them as main pair and 2 pairs of smaller eyes instead of main + smaller pair of eyes. Yggdrasil 3rd tier of wings now count toward bonus dmg from tier 3 wings in wing slap special.\n");
 			outputText("-2nd (corrupted) variant of plant arms was moved form been specific to yggdrasil race to plant race.\n");
-			outputText("-Added goblin mech ai to list of preturn autoattack actions that may cause lock out at some fights. (you two AGAIN??? *looking at Minotaur King and Excellia*) Option in perks adde menu allowing to toggle between goblin mech ai doing nothying or acting at the turn start.\n");
+			outputText("-Added goblin mech ai to list of preturn autoattack actions that may cause lock out at some fights. (you two AGAIN??? *looking at Minotaur King and Excellia*) Option in perks added menu allowing to toggle between goblin mech ai doing nothying or acting at the turn start.\n");
 			outputText("-Most of mage perks gained additional bonus to spellpower that won't increase spell use cost.\n");
 			outputText("-Marilith sprite implementation. (Lord Shadeogorath)\n");
-			outputText("-Losing to Werespider in tunnels would TF pc (without currently pernament tf) into werespider. Their race bonuses for Werespider / Elder Werespider (12/18): +50%/+80% to str multi, +80%/+110% to tou multi, +80%/+110% to spe multi, -30% to lib multi, -20% max lust multi, -80% max wrath multi\n");
+			outputText("-Losing to Werespider in tunnels would TF PC (without currently pernament tf) into werespider. Their race bonuses for Werespider / Elder Werespider (12/18): +50%/+80% to str multi, +80%/+110% to tou multi, +80%/+110% to spe multi, -30% to lib multi, -20% max lust multi, -80% max wrath multi\n");
 			outputText("-Value Overflow error fix Ebon Labyrinth. (Jtecx)\n");
-			outputText("-New Blood Soulskill: Crimson Overflow - learned from Crimson Jade. Selfbuff that boost max OverHP by 10% for duration of the combat. Way of the Blood super perk change effect to be castable when off cooldown and granting 5% for an hour. Recasting would make it stack until 6x current progress of blood demon job. Blood Demon Intelligence super perk would increase stack limit to 12x and each cast adding 2 hours.\n");
 			outputText("-Unnamed Goblin Commando taking great risk moved Goblin Prime Mech from egg pile in Lethice Stronghold to newly renovated basement in Factory.\n");
-			outputText("-Boundless Ammo Bag effect of reloding would now give silent reload option (as long pc gor fatigue for it) that will not interrupt shooting or ending turn for doing reload. It may cause PC to have max fatigue as side effect of reloading while not having enough fatigue left to use.\n");
-			outputText("-New melee weapon (by Ormael): Darksteel Spears - can be gained by combining 2x Darksteel Spear weapon. Cost 6,400 gems. Base atk is 40. It's dual large spear type weapon, 100% armor penetration, increase physical soulskills power by 40%.\n");
+			outputText("-Boundless Ammo Bag effect of reloading would now give silent reload option (as long pc got fatigue for it) that will not interrupt shooting or ending turn for doing reload. It may cause PC to have max fatigue as side effect of reloading while not having enough fatigue left to use.\n");
 			outputText("-Aether Twins Sky-tier Gauntlets and Human-tier Dual Daggers forms fixes regarding extra attacks checks.\n");
 			outputText("-Expanded possible to get stuff from Bag of Cosmos items to give more then few spirit stones. Now can get some consumables or even usable items.\n");
 			outputText("-Living Statue would no longer getting out of jail card against Frostbite (fenrir) or Abyssal Shark Bite specials.\n");
@@ -196,12 +193,8 @@ public class Changelog extends BaseContent
 			outputText("-By the Liadri decree green magic spells base damage was nerfed by 4x and base effects duration by 2x. Verdant Leech and Green Magic desc updated to reflect recent changed for green magic. Natural Spellcasting perk is no longer required to pick Green magic perk.\n");
 			outputText("-New Natural attack: Cockvine back. Req. cockvine wings. Add 4 Extra natural attacks in the form of slams. Damage ratio 1x per attack.\n");
 			outputText("-New usable item: Ducats. Costing 500 gems and can be dropped by Barometz enemy when using Silly Mode.\n");
-			outputText("-New melee weapon (by Liadri): Gnarled Staff - dropped by Barometz enemy. Cost 14,400 gems. Base atk is 120. It's massive sized low grade weapon belonging to staff type weapon. It increase non-green spellpower by 75% and green spellpower by +150%.\n");
-			outputText("-New melee weapon (by Liadri): Qulipoth - obtainable by giving Gnarled Staff to Corrupted Celess / Tyrantia to corrupt. Cost 86,400 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 600% and green final spellpower is increased 2x. Increase Tease damage from spells by 50%. Increase the duration of Death Blossom by 2 rounds.\n");
-			outputText("-New melee weapon (by Liadri): Ancient Oath - obtainable by giving Gnarled Staff to Pure Celess to corrupt. Cost 86,400 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 500%, green final spellpower increase by 2x, increase life healed from spells and damage by 25%.\n");
 			outputText("-Plant type enemies gained additional weakness: ice damage (taking extra damage that is equal to 50% of bonus damage they receive from fire attacks). Player with Vegetal Affinity perk also taking now extra ice damage as plant type enemies.\n");
 			outputText("-Matango sprite implementation. (pt1) (Lord Shadeogorath)\n");
-			outputText("-New tier 2 misc lvl-up perk: Nature Mage. Req. Mage perk, Intelligence 55+, Libido 55+, Corruption 50+. Effect: When outdoor increase spellcasting potency by 25%.\n");
 			outputText("-Aether Twins feeding menu slight change with seperate submenu for materials and equipment. Each submenu would have greyed out buttons if PC not have specific item. Keep in mind that even having it could mean they yet not evovled enough to eat particular item and greyed out button serve more as hint what item or material to find for them.\n");
 			outputText("-New event perk: Flesh Body (VoL): Apprentice Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +1000 max HP, +1% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Apprentice, Soul Personage, Soul Warrior); +1% HP regen\n");
 			outputText("-New event perk: Flesh Body (VoL): Warrior Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +2000 max HP, +2% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +1% HP regen\n");
@@ -250,11 +243,11 @@ public class Changelog extends BaseContent
 			outputText("-Brutal Blows / Brutal Spells perk renamed to Brutal Physical Blows / Brutal Elemental Blows. In perks req. added Flesh Body (VoL): Apprentice Stage or Daoist: Apprentice Stage perk as alternative to having Job: Warrior or Job: Sorcerer. ");
 			outputText("Each of perks lower physicial or magical resistance from any attack that deal physical or elemental (magical) damage and increase phys. Additional each increase by 5% physical or by 10% magical soulskill power multiplier.\n");
 			outputText("-Fixes for renamed perks. (Stadler)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Flesh Body (VoL): Apprentice Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +10 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Apprentice, Soul Personage, Soul Warrior); +(10 * player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (VoL): Warrior Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +15 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +(20 * player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (VoL): Elder Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +20 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +(30 * player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (VoL): Overlord Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +25 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +(40 * player level) HP regen\n");
+			outputText("-In NG1+ games can skip 24 hours in Ignam. Not sure how usefull that would be but i'm certain there are people out there that want to skip some time in prologue.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -262,6 +255,25 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//, rapier, mace
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz) (MaRG)(formely know as Mister GRaM)
+			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");
+			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
@@ -273,25 +285,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz) (MaRG)(formely know as Mister GRaM)
-			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");
-			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -653,6 +646,7 @@ public class Changelog extends BaseContent
 			outputText("-New M. Special: Overdrive. Usable by Automata. Effect: Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).\n");
 			outputText("-New physical soulskill: Soul Fist. Req. buying manual from Chi Chi for 5 spirit stones. Use soulforce to empower your unarmed strikes. Attack will deal greater damage but consume soulforce per hit. (square root of 1% max SF)\n");
 			outputText("-New magical soulskill: Sunrise. Req. buying manual from Qi shop for 100 spirit stones. Create miniature sun and throw it at enemy. Base cost: 400 soulforce.\n");
+			outputText("-New Blood Soulskill: Crimson Overflow - learned from Crimson Jade. Selfbuff that boost max OverHP by 10% for duration of the combat. Way of the Blood super perk change effect to be castable when off cooldown and granting 5% for an hour. Recasting would make it stack until 6x current progress of blood demon job. Blood Demon Intelligence super perk would increase stack limit to 12x and each cast adding 2 hours.\n");
 			//new bodyparts line
 			//new enemies line
 			//descendant/bloodline perks line
@@ -782,6 +776,7 @@ public class Changelog extends BaseContent
 			outputText("-New key Item (by Liadri): Stun Grenade II - req. Flasherbang - Upgrade the stun grenade explosion to also deal lightning damage\n");
 			outputText("-New key Item (by Liadri): Goonade - req. Toolbelt - Toss a grenade that splatter sticky goo everywhere hindering movement and flight for 10 turns. Enemies hit by this lose the flight status effect and can be targeted as if on the ground\n");
 			outputText("-New key Item (by Liadri): Caustic Goonade - req. Goonade - Toss a grenade that splatter acidic sticky goo everywhere hindering movement and flight. Enemies hit by this lose the flight status effect and can be targeted as if on the ground. Drop opponent armor class by 100%\n");
+			outputText("-New key Item (by Liadri): Grenade Launcher - req. Toolbelt - Let you use your grenade gadgets while siting comfortably in your goblin mech.\n");
 			outputText("-New option in Alteration of Cursed Tag: Greater drain -> Lust damage inflicted on your opponent through physical contact is twice as effective (Effects straddle and melee attack)\n");
 			outputText("-New option in Alteration of Cursed Tag: Cursed Touch -> Unarmed strikes inflict 1% toughness damage.\n");
 			outputText("-New option in Alteration of Cursed Tag: Paralyzing fear -> Unarmed strikes inflict 1% strength damage.\n");
@@ -828,6 +823,10 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Ormael): Twelve-ringed Saber - buyable at Orsbulg shop. Cost 5,600 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon type with 20% chance to trigger bleed effect.\n");
 			outputText("-New melee weapon (by Ormael): Twin Nine-ringed Sabers - can be gained by combining 2x Nine-ringed Saber weapon. Cost 2,240 gems. Base atk is 14. It's normal sized weapon belonging to sword & dual type with 10% chance to trigger bleed effect.\n");
 			outputText("-New melee weapon (by Ormael): Twin Twelve-ringed Sabers - can be gained by combining 2x Twelve-ringed Saber weapon. Cost 11,200 gems. Base atk is 70. It's large sized low grade wrath weapon belonging to sword / monk weapon / dual type with 20% chance to trigger bleed effect.\n");
+			outputText("-New melee weapon (by Ormael): Darksteel Spears - can be gained by combining 2x Darksteel Spear weapon. Cost 6,400 gems. Base atk is 40. It's dual large spear type weapon, 100% armor penetration, increase physical soulskills power by 40%.\n");
+			outputText("-New melee weapon (by Liadri): Gnarled Staff - dropped by Barometz enemy. Cost 14,400 gems. Base atk is 120. It's massive sized low grade weapon belonging to staff type weapon. It increase non-green spellpower by 75% and green spellpower by +150%.\n");
+			outputText("-New melee weapon (by Liadri): Qulipoth - obtainable by giving Gnarled Staff to Corrupted Celess / Tyrantia to corrupt. Cost 86,400 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 600% and green final spellpower is increased 2x. Increase Tease damage from spells by 50%. Increase the duration of Death Blossom by 2 rounds.\n");
+			outputText("-New melee weapon (by Liadri): Ancient Oath - obtainable by giving Gnarled Staff to Pure Celess to corrupt. Cost 86,400 gems. Base atk is 180. It's massive sized mid grade weapon belonging to staff type weapon. It increase spellpower by 500%, green final spellpower increase by 2x, increase life healed from spells and damage by 25%.\n");
 			outputText("-New range weapon (by Liadri): Sagittarius Baneful Great Bow - obtained by finding it at Plains. 260 atk, costing 13000 gems, no accuracy penalty, is low-grade wrath weapon, can't be unequiped normal way and would require visting NPC that can help uncurse items. Similary to Tome of Imps would gradualy change PC into male/herm centuar.\n");
 			outputText("-New range weapon (by Ormael): MinoBomber - buyable at Minx shop. Cost 250 spirit stones. Base atk is 1 and ammo clip size 20.\n");
 			outputText("-New range weapon (by Ormael): Nail Gun - buyable at Minx shop. Cost 150 spirit stones. Base atk is 15 and ammo clip size 10. It use Nails so without any of them can't be used. It have 25% chance to cause bleeding. Attacking flying enemies have 33% chance to force them to land for 3-4 turns, following up attacks have 33% chance to extend this duration by 2-3 turns.\n");
@@ -1149,6 +1148,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 17 misc lvl-up perk: Limit Breaker: Body (3rd stage). Req. Limit Breaker: Soul (2nd stage) perk. Effect: +15% max HP and Wrath.\n");
 			outputText("-New tier 18 misc lvl-up perk: Limit Breaker: Heart (3rd stage). Req. Limit Breaker: Body (3rd stage) perk. Effect: +15% max Lust and Fatigue.\n");
 			outputText("-New tier 19 misc lvl-up perk: All-Rounder Training ( Semi-Epic ). Req. All-Rounder Training ( Grand Master ) perk and 10+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
+			outputText("-New tier 20 intelligence lvl-up perk: Ultimate Magic (Ex). Req. Ultimate Magic perk and 475+ int. Effect: You may ignore all constraints to your spell book usage.\n");
 			outputText("-New tier 22 misc lvl-up perk: All-Rounder Training ( Epic ). Req. All-Rounder Training ( Semi-Epic ) perk and 13+ advanced jobs. Effect: Limit of train caps for stats is increased by 15.\n");
 			outputText("-New tier 31 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 32. Req. perk Elemental Contract Rank 31 and 800+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (low) viscount rank\n");
 			outputText("-New tier 32 wisdom lvl-up perk (by DigitalKitsune): Elemental Contract Rank 33. Req. perk Elemental Contract Rank 32 and 825+ wis. Effect: Increase limit of summoned elementals by 1 and unlock rank-up for elementals to (mid) viscount rank\n");

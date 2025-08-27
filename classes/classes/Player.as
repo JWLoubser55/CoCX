@@ -787,6 +787,29 @@ use namespace CoC;
 			if (hasPerk(PerkLib.FleshBodyTyrantStage)) {
 				if (hasPerk(PerkLib.SoulAncestor)) armorDef += 12 * newGamePlusMod;
 			}
+			if (hasPerk(PerkLib.FleshBodySoDApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) armorDef += 10 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulPersonage)) armorDef += 10 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulWarrior)) armorDef += 10 * newGamePlusMod * humanBodyCultivators();
+			}
+			if (hasPerk(PerkLib.FleshBodySoDWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) armorDef += 15 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulScholar)) armorDef += 15 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulGrandmaster)) armorDef += 15 * newGamePlusMod * humanBodyCultivators();
+			}
+			if (hasPerk(PerkLib.FleshBodySoDElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) armorDef += 20 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulExalt)) armorDef += 20 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulOverlord)) armorDef += 20 * newGamePlusMod * humanBodyCultivators();
+			}
+			if (hasPerk(PerkLib.FleshBodySoDOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) armorDef += 25 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulKing)) armorDef += 25 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulEmperor)) armorDef += 0 * newGamePlusMod * humanBodyCultivators();
+			}
+			if (hasPerk(PerkLib.FleshBodySoDTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) armorDef += 30 * newGamePlusMod;
+			}
 			if (hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) armorDef += 6 * newGamePlusMod;
 			if (hasPerk(PerkLib.GclassHeavenTribulationSurvivor)) armorDef += 9 * newGamePlusMod;
 			if (hasPerk(PerkLib.FclassHeavenTribulationSurvivor)) armorDef += 12 * newGamePlusMod;
@@ -1032,6 +1055,29 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.FleshBodyTyrantStage)) {
 				if (hasPerk(PerkLib.SoulAncestor)) armorMDef += 12 * newGamePlusMod * humanBodyCultivators();
+			}
+			if (hasPerk(PerkLib.FleshBodySoDApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) armorMDef += 10 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulPersonage)) armorMDef += 10 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulWarrior)) armorMDef += 10 * newGamePlusMod * humanBodyCultivators();
+			}
+			if (hasPerk(PerkLib.FleshBodySoDWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) armorMDef += 15 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulScholar)) armorMDef += 15 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulGrandmaster)) armorMDef += 15 * newGamePlusMod * humanBodyCultivators();
+			}
+			if (hasPerk(PerkLib.FleshBodySoDElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) armorMDef += 20 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulExalt)) armorMDef += 20 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulOverlord)) armorMDef += 20 * newGamePlusMod * humanBodyCultivators();
+			}
+			if (hasPerk(PerkLib.FleshBodySoDOverlordStage)) {
+				if (hasPerk(PerkLib.SoulKing)) armorMDef += 25 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulTyrant)) armorMDef += 25 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulEmperor)) armorMDef += 25 * newGamePlusMod * humanBodyCultivators();
+			}
+			if (hasPerk(PerkLib.FleshBodySoDTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) armorMDef += 30 * newGamePlusMod * humanBodyCultivators();
 			}
 			if (hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) armorMDef += 4 * newGamePlusMod;
 			if (hasPerk(PerkLib.GclassHeavenTribulationSurvivor)) armorMDef += 6 * newGamePlusMod;
