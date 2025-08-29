@@ -1350,7 +1350,7 @@ public static const NADIA_PREGNANCY_TYPE:int     	                              
 public static const NADIA_INCUBATION:int		                                    = 1342;
 public static const DIVA_PREGNANCY_TYPE:int                                		    = 1343;
 public static const DIVA_INCUBATION:int                                  			= 1344;
-public static const UNKNOWN_FLAG_NUMBER_01345:int                                   = 1345;
+public static const ENCOUNTERED_DARKSLIME_EMPRESS:int                               = 1345;
 public static const UNKNOWN_FLAG_NUMBER_01346:int                                   = 1346;
 public static const UNKNOWN_FLAG_NUMBER_01347:int                                   = 1347;
 public static const UNKNOWN_FLAG_NUMBER_01348:int                                   = 1348;
@@ -3019,4 +3019,5 @@ public static const GLOBAL_FLAGS_ARRAY:Array = [
 	USSDISPLAY_STYLE, IMDB_DETAILS, BUTTON_ICONS_DISABLED, STATBAR_ANIMATIONS
 ];
 	}
+
 }
