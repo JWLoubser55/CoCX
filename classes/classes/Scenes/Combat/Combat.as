@@ -11834,6 +11834,12 @@ public class Combat extends BaseContent {
     }
 
     public function awardPlayer(nextFunc:Function = null):void {
+		if (monster.hasStatusEffect(StatusEffects.SlimeSurround)&&(monster.getStatusValue(StatusEffects.SlimeSurround,1)>0 || monster.getStatusValue(StatusEffects.SlimeSurround,2)>0)){
+			var slimeCount:int = monster.getStatusValue(StatusEffects.SlimeSurround, 1) + (monster.getStatusValue(StatusEffects.SlimeSurround, 2)/(player.hasPerk(PerkLib.DarkSlimeEmpressCore) ? 4:2));
+			player.HP += Math.round((player.maxHP()*0.08) * slimeCount);
+			//if (player.HP > player.maxHP()) player.HP = player.MaxHP;
+			outputText("\nYou absorb the remaining slime. <b>([font-heal]"+Math.round((player.maxHP()*0.08)*slimeCount)+"[/font])</b>\n");
+		}
         if (nextFunc == null) nextFunc = explorer.done;
         if (player.countCockSocks("gilded") > 0) {
             //trace( "awardPlayer found MidasCock. Gems bumped from: " + monster.gems );
@@ -20118,4 +20124,5 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
+
 }
