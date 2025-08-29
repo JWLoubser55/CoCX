@@ -4169,6 +4169,8 @@ public class PerkLib
 				"Increase all damage dealt with darkness spells by 100% and reduce darkness damage taken by 50%.");
 		public static const DarkSlimeCore:PerkType = mk("Dark Slime Core", "Dark Slime Core",
 				"Grants more control over your slimy body, allowing you to go twice as long without fluids.");
+		public static const DarkSlimeEmpressCore:PerkType = mk("Sovereign's Dark Slime Core", "Sovereign's Dark Slime Core",
+				"Grants more control over slime itself, allowing you to utilize external mass better.");
 		public static const DeadMetabolism:PerkType = mk("Dead metabolism", "Dead metabolism",
 				"Kills off hunger. (hunger meter wouldn't decay with time)");
 		public static const DeathlyPower:PerkType = mk("Deathly power", "Deathly power",
@@ -9002,4 +9004,5 @@ public class PerkLib
         }
 	}
 }
+
 }
