@@ -111,6 +111,12 @@ public class Ashlands extends BaseContent
 				},
 			call: findGranite
 		}, {
+			name: "SalamanderOreMerchants",
+			label : "OreMerchants",
+			kind  : 'npc',
+			chance: 0.5,
+			call: oreMerchants.introOreMerchant
+		}, {
 			name: "nothing",
 			call: findNothing,
 			label:'Walk',
@@ -124,11 +130,6 @@ public class Ashlands extends BaseContent
 				return SceneLib.exploration.demonLabProjectEncountersEnabled();
 			},
 			call: SceneLib.exploration.demonLabProjectEncounters
-		}, {
-			name: "SalamanderOreMerchants",
-			label : "OreMerchants",
-			kind  : 'npc',
-			call: oreMerchants.introOreMerchant
 		});
 	}
 

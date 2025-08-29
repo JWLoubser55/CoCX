@@ -243,10 +243,10 @@ public class Changelog extends BaseContent
 			outputText("-Brutal Blows / Brutal Spells perk renamed to Brutal Physical Blows / Brutal Elemental Blows. In perks req. added Flesh Body (VoL): Apprentice Stage or Daoist: Apprentice Stage perk as alternative to having Job: Warrior or Job: Sorcerer. ");
 			outputText("Each of perks lower physicial or magical resistance from any attack that deal physical or elemental (magical) damage and increase phys. Additional each increase by 5% physical or by 10% magical soulskill power multiplier.\n");
 			outputText("-Fixes for renamed perks. (Stadler)\n");
-			outputText("-New event perk: Flesh Body (VoL): Apprentice Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +10 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Apprentice, Soul Personage, Soul Warrior); +(10 * player level) HP regen\n");
-			outputText("-New event perk: Flesh Body (VoL): Warrior Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +15 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +(20 * player level) HP regen\n");
-			outputText("-New event perk: Flesh Body (VoL): Elder Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +20 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +(30 * player level) HP regen\n");
-			outputText("-New event perk: Flesh Body (VoL): Overlord Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +25 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +(40 * player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (SoD): Apprentice Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +10 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Apprentice, Soul Personage, Soul Warrior); +(10 * player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (SoD): Warrior Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +15 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +(20 * player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (SoD): Elder Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +20 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +(30 * player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (SoD): Overlord Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +25 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +(40 * player level) HP regen\n");
 			outputText("-In NG1+ games can skip 24 hours in Ignam. Not sure how usefull that would be but i'm certain there are people out there that want to skip some time in prologue.\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -285,6 +285,24 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -300,8 +318,8 @@ public class Changelog extends BaseContent
 			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, Grey magic or White/Diving magic not taking into account overmaxLust, Grand Grey Archmage perk effect incorrectly applied, Zombiefied Cursed Tag unlimited fatigue not working in ");
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach without becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
 			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, ");
-			outputText("Sidone help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, ");
-			outputText("cave wyrm tongue desc been draconic not cave wyrm, some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling wepaons scaling on wrong values\n\n");
+			outputText("Sidone help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, cave wyrm tongue desc been draconic not cave wyrm, ");
+			outputText("some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling wepaons scaling on wrong values, Blade Grass missing tf effects for face or ears\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");
@@ -360,20 +378,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -401,12 +407,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
