@@ -15031,8 +15031,7 @@ public final class Mutations extends MutationsHelper {
             if (!InCollection(player.scaleColor1, wyrmCoatColor)) player.scaleColor1 = randomChoice(wyrmCoatColor);
             changes++;
         }
-
-
+		
         //Fix non human arms
         if (changes < changeLimit && rand(3) == 0 && player.arms.type != Arms.FROSTWYRM && player.arms.type != Arms.HUMAN) {
             outputText("[pg]");
@@ -15104,7 +15103,7 @@ public final class Mutations extends MutationsHelper {
 
         //Statistical changes:
         //-Raises speed to 100.
-        if (rand(2) == 0 && changes < changeLimit && MutagenBonus("spe", 1)) {
+        if (rand(3) == 0 && changes < changeLimit && MutagenBonus("spe", 1)) {
             outputText("[pg]Hearing a sudden sound you suddenly move by reflex to the side with such speed you nearly trip.  Seems your reaction speed has increased as well as your mobile execution.");
             changes++;
         }
@@ -15132,7 +15131,7 @@ public final class Mutations extends MutationsHelper {
             transformations.BreastRowsRemoveToOne.applyEffect();
         }
         //Shrink boobages till they are normal
-        else if (rand(2) == 0 && changes < changeLimit && player.breastRows.length > 0) {
+        else if (rand(3) == 0 && changes < changeLimit && player.breastRows.length > 0) {
             //Single row
             if (player.breastRows.length == 1) {
                 //Shrink if bigger than B cups
@@ -15195,7 +15194,7 @@ public final class Mutations extends MutationsHelper {
             player.ass.analLooseness--;
         }
         //(Thickens all cocks to a ratio of 1\" thickness per 5.5\"
-        if (player.hasCockCockOnly() && changes < changeLimit && rand(4) == 0) {
+        if (player.hasCockCockOnly() && changes < changeLimit && rand(3) == 0) {
             //Use swtch to see if any dicks can be thickened
             swtch = 0;
             counter = 0;
@@ -15221,14 +15220,14 @@ public final class Mutations extends MutationsHelper {
         }
 
         //Physical Changes:
-        //PartialCoatChitin skin
-        if (changes < changeLimit && !player.hasPartialCoat(Skin.CHITIN) && rand(2) == 0) {
+        //Chitin skin
+        if (changes < changeLimit && !player.hasPartialCoat(Skin.CHITIN) && rand(3) == 0) {
             outputText("[pg]");
             transformations.SkinChitin(Skin.COVERAGE_LOW, {colors: MantisRace.MantisChitinColors}).applyEffect();
             changes++;
         }
 
-        //Antennae (nie wymaga innych body parts)
+        //Antennae
         if (changes < changeLimit && player.hasCoatOfType(Skin.CHITIN) && player.antennae.type != Antennae.MANTIS && rand(3) == 0) {
             outputText("[pg]");
             transformations.AntennaeMantis.applyEffect();
@@ -15242,7 +15241,7 @@ public final class Mutations extends MutationsHelper {
         }
 
         //oviposition (prawdopodobnie podobne do wersji dla bee niż dridera)
-        if (changes < changeLimit && transformations.OvipositorMantis.isPossible() && rand(2) == 0) {
+        if (changes < changeLimit && transformations.OvipositorMantis.isPossible() && rand(3) == 0) {
             transformations.OvipositorMantis.applyEffect();
             changes++;
         }
@@ -15269,7 +15268,7 @@ public final class Mutations extends MutationsHelper {
         }
 
         //Wings
-        if (!InCollection(player.wings.type, Wings.MANTIS_LARGE) && changes < changeLimit && rand(4) == 0) {
+        if (!InCollection(player.wings.type, Wings.MANTIS_LARGE) && changes < changeLimit && rand(3) == 0) {
             //Grow bigger mantis wings!
             if (player.wings.type == Wings.MANTIS_SMALL) {
                 outputText("[pg]");
@@ -15289,14 +15288,28 @@ public final class Mutations extends MutationsHelper {
         }
 
         //Chitin skin
-        if (changes < changeLimit && player.hasPartialCoat(Skin.CHITIN) && player.tailType == Tail.MANTIS_ABDOMEN && rand(2) == 0) {
+        if (changes < changeLimit && player.hasPartialCoat(Skin.CHITIN) && player.tailType == Tail.MANTIS_ABDOMEN && rand(3) == 0) {
             outputText("[pg]");
             transformations.SkinChitin(Skin.COVERAGE_COMPLETE, {colors: MantisRace.MantisChitinColors}).applyEffect();
             changes++;
         }
 
+		//Human face
+		if (player.faceType != Face.HUMAN && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.FaceHuman.applyEffect();
+            changes++;
+        }
+
+		//Insect ears
+		if (player.ears.type != Ears.INSECT && changes < changeLimit && rand(3) == 0) {
+			outputText("[pg]");
+            transformations.EarsInsect.applyEffect();
+			changes++;
+		}
+
         // Remove gills
-        if (rand(4) == 0 && player.hasGills() && changes < changeLimit) {
+        if (rand(3) == 0 && player.hasGills() && changes < changeLimit) {
             outputText("[pg]");
             transformations.GillsNone.applyEffect();
             changes++;

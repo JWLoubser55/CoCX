@@ -950,6 +950,182 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				else if (player.hasStatusEffect(StatusEffects.CooldownStunGrenade)) bd.disable("<b>You need wait more before you can use Stun Grenade again.</b>\n\n");
 			}
+			if (player.hasPerk(PerkLib.AerialCombat)) {
+				if (player.hasPerk(PerkLib.PowerAttack)) {
+					bd = buttons.add("PowerAttack", powerAttack).hint("Do a single way more powerful wrath-enhanced melee strike.");
+					if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
+					else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.statStore.hasBuff("AsuraForm")) {
+					bd = buttons.add("Asura's Howl", combat.asurasHowl).hint("Unleash a howl before giving enemy good punching. \n\nWrath Cost: 50");
+					if (player.wrath < 50) {
+						bd.disable("Your wrath is too low to unleash howl!");
+					}
+					if (player.hasPerk(PerkLib.AbsoluteStrength)) {
+						if (player.hasPerk(PerkLib.ItsZerkingTime)) bd = buttons.add("TwFoD", combat.asuras12FingersOfDestruction).hint("Twelve Fingers of Destruction - Poke your enemies Asura Style. \n\nWrath Cost: 50% of max Wrath");
+						else if (player.hasPerk(PerkLib.LikeAnAsuraBoss)) bd = buttons.add("TFoD", combat.asuras10FingersOfDestruction).hint("Ten Fingers of Destruction - Poke your enemies Asura Style. \n\nWrath Cost: 50% of max Wrath");
+						else if (player.hasPerk(PerkLib.AsuraStrength)) bd = buttons.add("EFoD", combat.asuras8FingersOfDestruction).hint("Eight Fingers of Destruction - Poke your enemies Asura Style. \n\nWrath Cost: 50% of max Wrath");
+						else bd = buttons.add("SFoD", combat.asuras6FingersOfDestruction).hint("Six Fingers of Destruction - Poke your enemies Asura Style. \n\nWrath Cost: 50% of max Wrath");
+						if (player.wrath < (player.maxWrath() * 0.5)) {
+							bd.disable("Your wrath is too low to poke your enemies Asura Style!");
+						}
+					}
+					if (player.hasPerk(PerkLib.LikeAnAsuraBoss)) {
+
+					}
+				}
+				if (player.haveWeaponForCleave() && player.hasStatusEffect(StatusEffects.KnowsCleave)) {
+					bd = buttons.add("Cleave", pcCleave).hint("Deal extra damage to multiple foes. Cause area effect bleed damage.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if ((player.hasPerk(PerkLib.SneakyAttack) && player.haveWeaponForSneakAttack() && (monster.monsterIsStunned()
+					|| monster.hasStatusEffect(StatusEffects.Blind) || monster.hasStatusEffect(StatusEffects.InkBlind) || monster.hasStatusEffect(StatusEffects.Distracted)))||
+						((player.hasStatusEffect(StatusEffects.EverywhereAndNowhere) || player.hasStatusEffect(StatusEffects.ShadowTeleport)) && player.haveWeaponForSneakAttack())) {
+					bd = buttons.add("SneakAttack (M)", sneakAttack).hint("Strike the vitals of a stunned, blinded or distracted opponent for heavy damage. (Melee variant)");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Bitez
+				if (player.faceType == Face.SHARK_TEETH) {
+					bd = buttons.add("SharkBite", bite).hint("Attempt to bite your opponent with your shark-teeth causing bleed.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.faceType == Face.ORCA) {
+					bd = buttons.add("OrcaBite", bite).hint("Bite your opponent with your sharp teeths causing bleed.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.faceType == Face.WOLF) {
+					bd = buttons.add("ViciousBite", bite).hint("Viciously bite your opponent with your sharp teeths causing bleed.");
+					if (player.hasPerk(PerkLib.FreezingBreath)) buttons.add("Frostbite", fenrirFrostbite).hint("You bite in your foe slowly infecting it with cold chill weakening its strength and resolve.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.faceType == Face.CERBERUS) {
+					bd = buttons.add("TripleBite", bite).hint("Viciously bite your opponent with your sharp teeths causing bleed.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.faceType == Face.ABYSSAL_SHARK) {
+					bd = buttons.add("ASharkBite", abyssalSharkbite).hint("Attempt to bite your opponent with your large shark-teeth ripping off piece of enemy body and causing bleed.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//hydra bite - variant of snake bite
+				if ((player.faceType == Face.SNAKE_FANGS || player.perkv1(IMutationsLib.VenomGlandsIM) >= 1)) {
+					if (player.lowerBody == LowerBody.HYDRA) {
+						bd = buttons.add("HydraBite", hydraBiteAttack).hint("Deal as many attacks as pc got heads. Also delivers naga poison for as many time as pc got heads. (lower enemy str and spe)  \n\nVenom: " + player.tailVenom + "/" + player.maxVenom());
+						if (player.tailVenom < player.VenomWebCost() * 5) {
+							bd.disable("You do not have enough venom to use hydra bite right now! (Req. " + player.VenomWebCost() * 5 + "+)");
+						} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+						bd.requireFatigue(physicalSpecialsCost(10 * player.statusEffectv1(StatusEffects.HydraTailsPlayer)));
+					} else {
+						bd = buttons.add("SnakeBite", nagaBiteAttack).hint("Attempt to bite your opponent and inject venom. (lower enemy str and spe)  \n\nVenom: " + player.tailVenom + "/" + player.maxVenom());
+						if (player.tailVenom < player.VenomWebCost() * 5) {
+							bd.disable("You do not have enough venom to use snake bite right now! (Req. " + player.VenomWebCost() * 5 + "+)");
+						} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					}
+				}
+				if ((player.faceType == Face.SPIDER_FANGS || player.faceType == Face.WERESPIDER_FANGS || player.faceType == Face.USHI_ONI || player.perkv1(IMutationsLib.VenomGlandsIM) >= 1)) {
+					bd = buttons.add("SpiderBite", spiderBiteAttack).hint("Attempt to bite your opponent and inject venom. (deal lust dmg and lower gradualy enemy lust resistance)  \n\nVenom: " + player.tailVenom + "/" + player.maxVenom());
+					if (player.tailVenom < player.VenomWebCost() * 5) {
+						bd.disable("You do not have enough venom to use spider bite right now!");
+					} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Ant Bite
+				if ((player.faceType == Face.ANT || player.perkv1(IMutationsLib.VenomGlandsIM) >= 1)) {
+					bd = buttons.add("Ant Bite", antBiteAttack).hint("Attempt to bite your opponent and inject formic acid. (deal acid dmg and lower toughness)  \n\nVenom: " + player.tailVenom + "/" + player.maxVenom());
+					if (player.tailVenom < player.VenomWebCost() * 5) {
+						bd.disable("You do not have enough venom to use ant bite right now!");
+					} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.isSandWorm()) {
+					bd = buttons.add("Devastating Bite", devastatingBiteAttack).hint("Attempt to bite your opponent with your giant sandworm maw. (deal acid dmg)");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Troll specials
+				if ((player.faceType == Face.TROLL || player.faceType == Face.GLACIAL_TROLL) && player.isAnyRaceCached([Races.TROLL, Races.GLACIAL_TROLL])) {
+					bd = buttons.add("Feint Bash", feintBash).hint("Go in for a strike against your opponent, but instead bash them with your tusks in an attempt to stun them.");
+					if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(50));
+					else bd.requireFatigue(physicalSpecialsCost(25));
+					if (player.hasStatusEffect(StatusEffects.CooldownFeintBash)) {
+						bd.disable("<b>You need more time before you can perform Thunder Gore again.</b>\n\n");
+						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					}
+				}
+				if (player.arms.type == Arms.GLACIAL_TROLL && player.isRaceCached(Races.GLACIAL_TROLL)) {
+					bd = buttons.add("Savage Claws", savageClaws).hint("Your claws are sharp like other glacial trolls, they can easily rip and grip into things as well as tear through objects.");
+					if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(200));
+					else bd.requireFatigue(physicalSpecialsCost(100));
+				}
+				//Constrict
+				if (player.isNaga()) {
+					bd = buttons.add("Constrict", SceneLib.desert.nagaScene.nagaPlayerConstrict).hint("Attempt to bind an enemy in your long snake-tail.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Cancer Grab
+				if (player.lowerBody == LowerBody.CANCER || player.rearBody.type == RearBody.ARIGEAN_PINCER_LIMBS) {
+					bd = buttons.add("Grab", combat.CancerGrab).hint("Grab your opponents with your pincers, then proceed to crush them.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Engulf
+				if (player.lowerBody == LowerBody.GOO) {
+					bd = buttons.add("Engulf", gooEngulf).hint("Attempt to engulf a foe with your body.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Embrace
+				if ((player.arms.type == Arms.BAT || player.wings.type == Wings.VAMPIRE) && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType)) {
+					bd = buttons.add("Embrace", vampireEmbrace).hint("Embrace an opponent in your wings.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Gore if mino horns or unicorn/alicorn/bicorn/nightmare horns
+				if ((player.horns.type == Horns.COW_MINOTAUR || player.horns.type == Horns.FROSTWYRM) && player.horns.count >= 6) {
+					bd = buttons.add("Gore", goreAttack).hint("Lower your head and charge your opponent, attempting to gore them on your horns. This attack is stronger and easier to land with large horns.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if ((player.horns.type == Horns.UNICORN || player.horns.type == Horns.BICORN || player.horns.type == Horns.GOAT || player.horns.type == Horns.GOATQUAD) && player.horns.count >= 6) {
+					bd = buttons.add("Gore", goreAttack).hint("Lower your head and charge your opponent, attempting to gore them on your horn" + (player.horns.type == Horns.BICORN ? "s" : "") + ".  This attack is stronger and easier to land with large horn" + (player.horns.type == Horns.BICORN ? "s" : "") + ".");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if ((player.horns.type == Horns.KIRIN) && player.horns.count >= 6) {
+					bd = buttons.add("Thunder Gore", thunderGoreAttack).hint("Lower your head and charge your opponent, attempting to gore them on your horn.  This attack is stronger and easier to land with large horn. Scales with electricity damage and stun but has a long cooldown.");
+					if (player.hasStatusEffect(StatusEffects.CooldownThunderGore)) {
+						bd.disable("<b>You need more time before you can perform Thunder Gore again.</b>\n\n");
+						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					}
+				}
+				//Upheaval - requires rhino horns
+				if (player.horns.type == Horns.RHINO && player.horns.count >= 2 && player.faceType == Face.RHINO) {
+					bd = buttons.add("Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n");
+					if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(30));
+					else bd.requireFatigue(physicalSpecialsCost(15));
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Grapple
+				if ((player.lowerBody == LowerBody.SCYLLA || player.lowerBody == LowerBody.KRAKEN || player.isRaceCached(Races.MMINDBREAKER) || player.isRaceCached(Races.FMINDBREAKER))) {
+					bd = buttons.add("Grapple", scyllaGrapple).hint("Attempt to grapple a foe with your tentacles.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Kick
+				if (player.isTaur() || player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BAROMETZ || player.lowerBody == LowerBody.BUNNY || player.lowerBody == LowerBody.KANGAROO || player.perkv1(IMutationsLib.MightyLegsIM) >= 1) {
+					bd = buttons.add("Kick", kick).hint("Attempt to kick an enemy using your powerful lower body.");
+					if (player.hasStatusEffect(StatusEffects.CooldownKick)) {
+						bd.disable("<b>You need more time before you can perform Kick again.</b>\n\n");
+					} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Pounce
+				if (player.canPounce() && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType)) {
+					bd = buttons.add("Pounce", catPounce).hint("Pounce and rend your enemy using your claws, this initiate a grapple combo.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Crunch
+				if (player.racialScore(Races.ARIGEAN) >= 16) {
+					bd = buttons.add("Crunch", arigeanCrunch).hint("Deals Physical Damage based on Strength, also lowers opponent's physical defense by 30% for 3 turns.");
+					bd.requireFatigue(physicalSpecialsCost(100));
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Ram
+				if (player.tailType == Tail.ARIGEAN_PRINCESS) {
+					bd = buttons.add("Ram", arigeanRam).hint("A physical attack that scales off of speed, does recoil damage to the user (10% of max HP).");
+					bd.requireFatigue(physicalCost(100));
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+			}
 		}
 		if (player.isInGoblinMech()) {
 			if (player.hasKeyItem("Dynapunch Glove") >= 0 && player.vehicles != vehicles.GS_MECH) {
@@ -4820,6 +4996,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 				else monster.createStatusEffect(StatusEffects.Pounce, 5 + rand(2),0,0,0);
 			}
 			else monster.createStatusEffect(StatusEffects.Pounce, 4 + rand(2),0,0,0);
+			if (player.hasStatusEffect(StatusEffects.Flying)) player.removeStatusEffect(StatusEffects.Flying);
+			if (player.hasStatusEffect(StatusEffects.FlyingNoStun)) {
+				player.removeStatusEffect(StatusEffects.FlyingNoStun);
+				player.removePerk(PerkLib.Resolute);
+			}
 		}
 		//Failure
 		else {
@@ -8000,4 +8181,5 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function PhysicalSpecials() {
 	}
 }
+
 }

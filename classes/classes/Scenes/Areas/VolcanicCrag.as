@@ -168,16 +168,13 @@ public class VolcanicCrag extends BaseContent
 					SceneLib.etnaScene.repeatYandereEnc();
 				}
 			}, {
-				name: "demonProjects",
-				label : "DemLab Subject",
-				kind  : 'monster',
-				chance: 0.2,
-				when: function ():Boolean {
-					return SceneLib.exploration.demonLabProjectEncountersEnabled();
-				},
+				name: "SalamanderOreMerchants",
+				label : "OreMerchants",
+				kind  : 'npc',
+				chance: 0.5,
 				call: function ():void {
 					VolcanicCragConditions();
-					SceneLib.exploration.demonLabProjectEncounters()
+					oreMerchants.introOreMerchant()
 				}
 //			}, {
 //				name: "LavaHotspring",
@@ -191,12 +188,16 @@ public class VolcanicCrag extends BaseContent
 //					lavaHotsprings.discoverLavaHotsprings()
 //				}
 			}, {
-				name: "SalamanderOreMerchants",
-				label : "OreMerchants",
-				kind  : 'npc',
+				name: "demonProjects",
+				label : "DemLab Subject",
+				kind  : 'monster',
+				chance: 0.2,
+				when: function ():Boolean {
+					return SceneLib.exploration.demonLabProjectEncountersEnabled();
+				},
 				call: function ():void {
 					VolcanicCragConditions();
-					oreMerchants.introOreMerchant()
+					SceneLib.exploration.demonLabProjectEncounters()
 				}
 			});
 		}

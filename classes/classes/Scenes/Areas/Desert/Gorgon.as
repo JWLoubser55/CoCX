@@ -184,9 +184,8 @@ public class Gorgon extends Monster
 			this.level = 44;
 			this.gems = rand(26) + 40;
 			this.drop = new WeightedDrop().
-					add(null,1).
 					add(consumables.REPTLUM,2).
-					add(consumables.GORGOIL,5);
+					add(consumables.GORGOIL,8);
 			this.faceType = Face.SNAKE_FANGS;
 			checkMonster();
 		}
