@@ -7,6 +7,7 @@ import classes.StatusEffects;
 import classes.GlobalFlags.kFLAGS;
 import classes.Races;
 import classes.PerkLib;
+import classes.CoC;
 
 public class DarkSlimeEmpressScene extends BaseContent {
     public function DarkSlimeEmpressScene() {}
@@ -22,9 +23,9 @@ public class DarkSlimeEmpressScene extends BaseContent {
         outputText("\"<i>I hope you are in the mood, because soon you and I are going to become very.. intimate.</i>\"\n\n");
         outputText("<b>It's too late to escape now, it's a fight!</b>");
 		}
-		if (flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS]==1){
+		if (flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS]==1 || flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS]==2){
 			
-			if (player.hasKeyItem("Slimy Crown") == -1) {
+			if (flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS]==1) {
 				outputText("As you enter the next room, you're greeted by a familiar sight. Before you are hundreds of slimy shapes, making out and fucking each other in the most obsene display you've ever seen.");
 				outputText("And at the back of the room, sitting on a makeshift throne, a familiar figure. A dark purple, slimy woman with a goopy crown resting atop her head.");
 				
@@ -42,7 +43,7 @@ public class DarkSlimeEmpressScene extends BaseContent {
 				outputText(" She says as slimes slowly form from the purple goo covering the floor.");
 			}
 		}
-		if (flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS] == 2){
+		if (flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS] == 3){
 			outputText("As you enter the next room, you're greeted to a odd, yet familiar sight." +
 			"\nThe floor is covered in purple goo, and a empty makeshift throne sits empty; reminding you of the fallen sovereign who's life you clamed as your own." +
 			"\nYou grab up some of the goo covering the floor and leave.\n\n");
@@ -104,14 +105,33 @@ public class DarkSlimeEmpressScene extends BaseContent {
 		"\nEnticed by the pleasure it brought, you try to push the cores together." +
 		"\n\nYou feel your mind breaking, your senses are overloaded, you can feel only intense pleasure. You can't even tell if your eyes are open or not." +
 		"\nOnce the feeling subsides, you no longer feel two cores inside your body. " +
-		"\nYou look down at yourself, and you see only one core, noticeably larger than before. " +
+		"\nYou look down at yourself, and you see only one core, noticeably larger than before. Not only that, but some other things have changed, you now look more like the empress." +
 		"\nAfter examining your body, you deside to leave. \n\n" );
 		outputText("You exit the room and return to the corridor you were previously in.\n\n");
+		player.slimeFeed();
 		
+        CoC.instance.transformations.HairGoo.applyEffect(false);
+        CoC.instance.transformations.ArmsGoo.applyEffect(false);
+        CoC.instance.transformations.LowerBodyGoo.applyEffect(false);
+        CoC.instance.transformations.RearBodyMetamorphicGoo.applyEffect(false);
+        CoC.instance.transformations.EyesFiendish.applyEffect(false);
+        CoC.instance.transformations.EyesChangeColor(["red"]).applyEffect(false);
+        CoC.instance.transformations.EarsElfin.applyEffect(false);
+        CoC.instance.transformations.FaceHuman.applyEffect(false);
+        CoC.instance.transformations.TongueHuman.applyEffect(false);
+        CoC.instance.transformations.VaginaHuman().applyEffect(false);
+        CoC.instance.transformations.AntennaeNone.applyEffect(false);
+        CoC.instance.transformations.HornsNone.applyEffect(false);
+        CoC.instance.transformations.WingsNone.applyEffect(false);
+		player.createPerk(PerkLib.TransformationImmunity2, 11, 0, 0, 0);
 		player.createPerk(PerkLib.DarkSlimeEmpressCore, 0, 0, 0, 0);
-		outputText("(<b>Gained New Perk: Sovereign's Dark Slime Core - Increased control over external slime.</b>)\n\n");
+		CoC.instance.mainViewManager.updateCharviewIfNeeded();
+		player.updateRacialParagon(Races.DARKSLIME);
 		
-		flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS] = 2;
+		outputText("\n\n<b>Gained New Perk: Sovereign's Dark Slime Core - Increased control over external slime.</b>");
+		outputText("\n\n<b>Gained Perk: Transformation Immunity!</b> "+PerkLib.TransformationImmunity2.longDesc+"\n");
+		flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS] = 3;
+		outputText("\n\n");
 		
 		beforeLeave();
 	}
@@ -133,6 +153,7 @@ public class DarkSlimeEmpressScene extends BaseContent {
 			outputText("\n\n(Key Item Gained: Slimy Crown)");
 			player.createKeyItem("Slimy Crown", 0, 0, 0, 0);
 			if (player.isRaceCached(Races.DARKSLIME) && !player.hasPerk(PerkLib.DarkSlimeCore)) player.gainPerk(PerkLib.DarkSlimeCore, true);
+			flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS] = 2;
 		}
 		beforeLeave();
 	}
