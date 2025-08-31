@@ -1351,8 +1351,8 @@ public static const NADIA_INCUBATION:int		                                    = 
 public static const DIVA_PREGNANCY_TYPE:int                                		    = 1343;
 public static const DIVA_INCUBATION:int                                  			= 1344;
 public static const ENCOUNTERED_DARKSLIME_EMPRESS:int                               = 1345;
-public static const UNKNOWN_FLAG_NUMBER_01346:int                                   = 1346;
-public static const UNKNOWN_FLAG_NUMBER_01347:int                                   = 1347;
+public static const PLAYER_SLIMES_COUNT:int                                         = 1346;
+public static const IN_COMBAT_PLAYER_SLIMES_ATTACKED:int                            = 1347;
 public static const UNKNOWN_FLAG_NUMBER_01348:int                                   = 1348;
 public static const UNKNOWN_FLAG_NUMBER_01349:int                                   = 1349;
 public static const UNKNOWN_FLAG_NUMBER_01350:int                                   = 1350;
@@ -3019,5 +3019,4 @@ public static const GLOBAL_FLAGS_ARRAY:Array = [
 	USSDISPLAY_STYLE, IMDB_DETAILS, BUTTON_ICONS_DISABLED, STATBAR_ANIMATIONS
 ];
 	}
-
 }
