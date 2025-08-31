@@ -864,6 +864,7 @@ public class Combat extends BaseContent {
 			flags[kFLAGS.IN_COMBAT_PLAYER_ANUBI_HEART_LEECH] = 0;
             flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] = 0;
             flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] = 0;
+			flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] = 0;
 			if (player.hasPerk(PerkLib.FirstAttackSkeletons)) flags[kFLAGS.IN_COMBAT_PLAYER_SKELETONS_ATTACKED] = 0;
 			if (player.hasPerk(PerkLib.MyBloodForBloodPuppies)) flags[kFLAGS.IN_COMBAT_PLAYER_BLOOD_PUPPIES_ATTACKED] = 0;
 			if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 4) flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] = 0;
@@ -1830,6 +1831,8 @@ public class Combat extends BaseContent {
             ui.doFlyingSwordTurn();
         if (ui.isMechAITurn())
             ui.doMechAITurn();
+		if (ui.isSlimeTurn())
+            ui.doSlimeTurn();
         for (var ci:int = 0; ci <= 3; ++ci)
             if (ui.isCompanionTurn(ci))
                 ui.doCompanionTurn(ci, false);
@@ -20126,3 +20129,4 @@ private function touSpeStrScale(stat:int):Number {
 }
 
 }
+
