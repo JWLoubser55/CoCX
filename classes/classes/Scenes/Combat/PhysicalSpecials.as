@@ -2971,9 +2971,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if(canActMore && rand(15)==1)slimeArmySingleAttack(ogDmg,dmgType,false)
 	}
 	
-	public function slimeArmyAttack():void {
+	public function slimeArmyAttack(autoAttack:Boolean=false):void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
-		clearOutput();
+		if (autoAttack==false) clearOutput();
 		
 		var slimes:Number = monster.getStatusValue(StatusEffects.SlimeSurround, 2);
 		var sAtks:Array = [0,0,0,0];
@@ -2985,13 +2985,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (r >75)sAtks[3]+=1
 		}
 		
-		var sDam0:Number = (combat.scalingBonusStrength()*2.5)+combat.scalingBonusToughness()*1.2;;//melee
-		var sDam1:Number = combat.scalingBonusToughness();+combat.scalingBonusStrength()+combat.scalingBonusSpeed();//ranged
-		var sDam2:Number = combat.scalingBonusLibido()*0.25;//lust
-		var sDam3:Number = combat.scalingBonusToughness()*2.5;//dark/sacrifice
+		var sDam0:Number = (combat.scalingBonusIntelligence())+combat.scalingBonusToughness()*1.2;;//melee
+		var sDam1:Number = combat.scalingBonusToughness();//ranged
+		var sDam2:Number = combat.scalingBonusLibido()*0.025;//lust
+		var sDam3:Number = combat.scalingBonusIntelligence()*2.5;//dark/sacrifice
 		
 		
-		
+		outputText("\n")
 		if (sAtks[0] > 0){
 			outputText(num2Text(sAtks[0], 100) + " of your slimes slash and stab [Themonster] with goopy spears. ");
 			while(sAtks[0]-->0){
@@ -3022,7 +3022,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		
 		
 		outputText("\n\n");
-		enemyAI();
+		combat.monsterDefeatCheck();
+		if (autoAttack==false) enemyAI();
 	}
 	
 	public function terrifyingHowl():void {
