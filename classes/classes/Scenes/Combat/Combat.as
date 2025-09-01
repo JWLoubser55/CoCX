@@ -19701,7 +19701,7 @@ public function flyingSwordAttackCost():Number {
     if (player.weaponFlyingSwordsPerk == "Massive") fsac *= 6;
     if (player.weaponFlyingSwordsCount > 1) fsac *= player.weaponFlyingSwordsCount;
 	if (player.weaponFlyingSwords == weaponsflyingswords.ASAUCHI) fsac *= 0.6;
-	if (player.weaponFlyingSwords == weaponsflyingswords.C_NEW_M) fsac *= 1.1;
+	if (player.weaponFlyingSwords == weaponsflyingswords.C_NEW_M || player.weaponFlyingSwords == weaponsflyingswords.S_FULLM) fsac *= 1.1;
     return fsac;
 }
 
@@ -19714,7 +19714,8 @@ public function flyingSwordUseCost():Number {
         if (player.perkv1(PerkLib.Dantain) > 2) fsuc -= 20;
     }
     if (player.weaponFlyingSwordsPerk == "Massive") fsuc *= 1.5;
-    if (player.weaponFlyingSwords == weaponsflyingswords.ASAUCHI) fsuc *= 0.8;
+    if (player.weaponFlyingSwords == weaponsflyingswords.ASAUCHI) fsuc *= 0.6;
+	if (player.weaponFlyingSwords == weaponsflyingswords.C_NEW_M || player.weaponFlyingSwords == weaponsflyingswords.S_FULLM) fsuc *= 1.1;
     return fsuc;
 }
 

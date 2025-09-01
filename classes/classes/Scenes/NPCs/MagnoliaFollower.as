@@ -20,28 +20,28 @@ public function treeMenu():void {
 		outputText("You find a spacious place in camp before digging a big enough hole in the barren ground. You fish out the seed you bought from Giacomo then drop it in the hole, covering it with dirt. You fetch a bucket of water to give it a healthy drink. Now that it's planted, all there's left to do is wait and see what will sprout from the seed.");
 		player.removeKeyItem("Mysterious Seed");
 		flags[kFLAGS.CHRISTMAS_TREE_LEVEL] = 2;
-		doNext(inventory.inventoryMenu);
+		doNext(camp.campActions);
 	}
 	else if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 3) {
 		outputText("At the corner of camp where you planted a seed, sapling has grown. It has dozens of branches and bright green leaves.\n\n");
 		menu();
 		if (player.fatigue + 50 < player.maxOverFatigue()) addButton(1, "Water It", waterIt);
 		if (player.HP > 150 && player.soulforce>= 50 && player.hasPerk(PerkLib.SoulApprentice)) addButton(2, "Use SFIB", useSouforceInfusedBlood);
-		addButton(14, "Back", inventory.inventoryMenu);
+		addButton(14, "Back", camp.campActions);
 	}
 	else if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 4) {
 		outputText("At the corner of camp, the tree like sapling has grown bigger having grown more branches and leaves.\n\n");
 		menu();
 		if (player.fatigue + 50 < player.maxOverFatigue()) addButton(1, "Water It", waterIt);
 		if (player.HP > 150 && player.soulforce>= 50 && player.hasPerk(PerkLib.SoulApprentice)) addButton(2, "Use SFIB", useSouforceInfusedBlood);
-		addButton(14, "Back", inventory.inventoryMenu);
+		addButton(14, "Back", camp.campActions);
 	}
 	else if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 5) {
 		outputText("At the corner of camp, a small tree has grown. The bright green leaves gently sway with the blowing wind.\n\n");
 		menu();
 		if (player.fatigue + 50 < player.maxOverFatigue()) addButton(1, "Water It", waterIt);
 		if (player.HP > 150 && player.soulforce>= 50 && player.hasPerk(PerkLib.SoulApprentice)) addButton(2, "Use SFIB", useSouforceInfusedBlood);
-		addButton(14, "Back", inventory.inventoryMenu);
+		addButton(14, "Back", camp.campActions);
 	}
 	else if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] >= 6 && flags[kFLAGS.CHRISTMAS_TREE_LEVEL] < 9) {
 		if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 7 && player.hasKeyItem("Decorations") >= 0) {
@@ -67,7 +67,7 @@ public function treeMenu():void {
 		else {
 			outputText("At the corner of camp sits a rather large tree. It's leafy canopy sways with the wind and the thick trunk is covered in sturdy bark."+(flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 7 ? " The tree is covered in colorful ornaments and lights for the season.":"")+"\n\n");
 			menu();
-			addButton(14, "Back", inventory.inventoryMenu);
+			addButton(14, "Back", camp.campActions);
 		}
 	}
 	else if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 9) {

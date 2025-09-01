@@ -476,7 +476,6 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         }
         eggDescribe();
         eggMenu();
-
     }
 
     private function eggDescribe():void {
@@ -539,7 +538,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
     private function leaveWithoutUsingAnEmberItem():void {
         clearOutput();
         outputText("You shake your head; it would probably be best not to tamper with it. Returning the items to your pockets, you leave the egg alone.  As you put them away, the egg's glow slows down dramatically, almost as if it were feeling... disappointment?");
-        doNext(inventory.inventoryMenu);
+        doNext(camp.campActions);
     }
 
     //Incubus Draft/Purified Incubus Draft (Z)

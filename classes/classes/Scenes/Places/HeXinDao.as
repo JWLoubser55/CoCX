@@ -861,8 +861,9 @@ public class HeXinDao extends BaseContent
 		addButton(5, weaponsflyingswords.S_TWINS.shortName, flyingSwordBuy, weaponsflyingswords.S_TWINS, qimerchant);
 		addButton(6, weaponsflyingswords.A_HALFM.shortName, flyingSwordBuy, weaponsflyingswords.A_HALFM, qimerchant);
 		addButton(7, weaponsflyingswords.O_HALFM.shortName, flyingSwordBuy, weaponsflyingswords.O_HALFM, qimerchant);
-		addButton(10, weaponsflyingswords.ASAUCHI.shortName, flyingSwordBuy, weaponsflyingswords.ASAUCHI, qimerchant);
-        addButton(11, weaponsflyingswords.C_NEW_M.shortName, flyingSwordBuy, weaponsflyingswords.C_NEW_M, qimerchant);
+		addButton(9, weaponsflyingswords.ASAUCHI.shortName, flyingSwordBuy, weaponsflyingswords.ASAUCHI, qimerchant);
+        addButton(10, weaponsflyingswords.C_NEW_M.shortName, flyingSwordBuy, weaponsflyingswords.C_NEW_M, qimerchant);
+        addButton(11, weaponsflyingswords.S_FULLM.shortName, flyingSwordBuy, weaponsflyingswords.S_FULLM, qimerchant);
         addButton(12, consumables.SUNRMAN.shortName, flyingSwordBuy, consumables.SUNRMAN, qimerchant)
 		addButton(13, "Qi", qimerchantTraningMain).hint("Flying Sword training and others related matters.");
         addButton(14, "Back", riverislandVillageStuff);

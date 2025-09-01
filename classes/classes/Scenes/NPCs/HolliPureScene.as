@@ -33,7 +33,7 @@ public function treeMenu():void {
 		menu();
 		addButton(6, "Burn It", destroyDatTree);
 		addButton(7, "Water It", waterIt).disableIf(player.fatigue + 50 > player.maxOverFatigue(), "You're too tired!");
-		addButton(8, "Back", inventory.inventoryMenu);
+		addButton(8, "Back", camp.campActions);
 	}
 	else if (flags[kFLAGS.FLOWER_LEVEL] == 2) {
 		outputText("Before you is a large, waist-high plant of questionable origin.  A huge, violet bloom sits atop a strong, central stalk, and the obscene flower looks positively female in every sense, right down to a clit-shaped bump and moist, gently parted lips.  Inside that central passage, you can see a bevy of wiggling staman surrounding a larger, flared stalk.  The scent that wafts out of that opening is sweet and floral, but undoubtedly sexual.  It looks like an organic sex toy and it may be corrupted.  It wouldn't be hard to get rid of right now, assuming you don't let it grow larger.");
@@ -42,7 +42,7 @@ public function treeMenu():void {
 		addButton(7, "Water It", waterIt).disableIf(player.fatigue + 50 > player.maxOverFatigue(), "You're too tired!");
 		addButton(8, "Use SFIBL", useSouforceInfusedBlood).disableIf(player.HP <= 150 && player.soulforce < 50 && !player.hasPerk(PerkLib.SoulApprentice), "You may lack one or all of those req.: Soul Apprentite perk, 150+ HP, 50+ SF!");
 		addButton(9, "Use SFIBO", useSouforceInfusedBlood, true).disableIf(!player.hasItem(useables.SFIBBOT, 1), "You lack bottle with sf-infused blood!");
-		addButton(10, "Back", inventory.inventoryMenu);
+		addButton(10, "Back", camp.campActions);
 	}
 	else if (flags[kFLAGS.FLOWER_LEVEL] == 3) {
 		outputText("The familiar plant has blossomed into a nicely sized tree, though you doubt it has finished growing just yet.  It sports an outstretched canopy with nice, green leaves.  The vaginal flower is still there and is in full bloom, now several feet across and practically dripping with moisture.  Just up the trunk, there's a pair of small, roughly b-cup breasts bulging out of the bark.  They're exquisitely smooth and soft, and they ooze sweet-smelling sap that your tongue would love to taste.  In the canopy above, tentacle vines idly writhe about, though they show no signs of aggression.");
@@ -55,7 +55,7 @@ public function treeMenu():void {
 		addButton(7, "Water It", waterIt).disableIf(player.fatigue + 50 > player.maxOverFatigue(), "You're too tired!");
 		addButton(8, "Use SFIBL", useSouforceInfusedBlood).disableIf(player.HP <= 150 && player.soulforce < 50 && !player.hasPerk(PerkLib.SoulApprentice), "You may lack one or all of those req.: Soul Apprentite perk, 150+ HP, 50+ SF!");
 		addButton(9, "Use SFIBO", useSouforceInfusedBlood, true).disableIf(!player.hasItem(useables.SFIBBOT, 1), "You lack bottle with sf-infused blood!");
-		addButton(10, "Back", inventory.inventoryMenu);
+		addButton(10, "Back", camp.campActions);
 	}
 	else if (flags[kFLAGS.FLOWER_LEVEL] == 4) {
 		if (ZenjiScenes.isLover() && rand(4) == 0) {

@@ -174,7 +174,7 @@ public class KidAScene extends BaseContent implements TimeAwareInterface
 					.disableIf(kidAXP() < 40, "Kid A isn't self-confident enough to have sex with right now...  Perhaps if you could tutor her with a weapon she seems to agree with?")
 					.disableIf(!flags[kFLAGS.HAD_KID_A_DREAM] || flags[kFLAGS.ANEMONE_KID] < 2, "", "???");
 			}
-			addButton(14, "Back", inventory.stash);
+			addButton(14, "Back", camp.campActions);
 		}
 
 //[Item](only appears if hourssinceKiditem flag >= 16)
@@ -284,7 +284,7 @@ public class KidAScene extends BaseContent implements TimeAwareInterface
 				addButton(12, "Prev", giveAnemoneWeapon, page - 1);
 			}
 			if (!foundItem) outputText("\n<b>You have no appropriate items to have your offspring hold.</b>");
-			addButton(14, "Back", inventory.stash);
+			addButton(14, "Back", camp.campActions);
 		}
 
 		private function placeInAnemone(slot:int):void {

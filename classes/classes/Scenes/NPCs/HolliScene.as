@@ -16,7 +16,7 @@ public function treeMenu(output:Boolean = true):void {
 		menu();
 		addButton(1,"Fight",fightHolli);
 		if(player.hasKeyItem("Jojo's Talisman") >= 0) addButton(2,"Call Jojo",callDatJojo);
-		addButton(3, "Back", inventory.inventoryMenu);
+		addButton(3, "Back", camp.campActions);
 	}
 	else if(flags[kFLAGS.FUCK_FLOWER_LEVEL] == 1) flowerStage1Menu(output);
 	else if(flags[kFLAGS.FUCK_FLOWER_LEVEL] == 2) flowerStage2Menu(output);
@@ -53,7 +53,7 @@ public function flowerStage2Menu(output:Boolean = true):void {
 		.disableIf(player.lust < 33, "Not aroused enough!")
 		.disableIf(!player.hasVagina(), "Req. a vagina.");
 	if (!recalling) addButton(3, "Destroy It", destroyDatFuckingPlantAtP2);
-	addButton(8, "Back", recalling ? recallWakeUp : inventory.inventoryMenu);
+	addButton(8, "Back", recalling ? recallWakeUp : camp.campActions);
 }
 
 public function flowerStage3Menu(output:Boolean = true):void {
@@ -71,7 +71,7 @@ public function flowerStage3Menu(output:Boolean = true):void {
 		if(output) outputText("\n\nIt could be burned down with your supernatural fire, but it would definitely tire you.");
 		addButton(8, "Torch It", torchP3Tree);
 	}
-	addButton(9, "Back", recalling ? recallWakeUp : inventory.inventoryMenu);
+	addButton(9, "Back", recalling ? recallWakeUp : camp.campActions);
 }
 
 public function holliCampMenu(output:Boolean = true):void {

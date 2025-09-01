@@ -25,7 +25,7 @@ public function manageyourgarden():void
 	menu();
 	if (flags[kFLAGS.ALRAUNE_GROWING] > 14) addButton(0, "Play", playwithyourplantdaughters);
 	if (flags[kFLAGS.ALRAUNE_DAILY_WATERING] < 1) addButton(9, "Water", wateryourgarden);
-	addButton(14, "Back", inventory.stash);
+	addButton(14, "Back", camp.campActions);
 }
 
 public function wateryourgarden():void
