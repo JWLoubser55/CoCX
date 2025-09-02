@@ -1876,6 +1876,15 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
+			if (player.hasKeyItem("Slimy Crown") >= 0 && player.isSlime() && !player.hasPerk(PerkLib.RoyalSlimeJelly)) { //Gain crown perk
+				if (player.hasStatusEffect(StatusEffects.SlimeCraving) && player.isGoo() && player.rearBody.type == RearBody.METAMORPHIC_GOO && player.arms.type == Arms.GOO) {
+					outputText("\nYou feel something change, a crown forms on top of your gooey head.\n");
+					outputText("(<b>Gained New Perk: Royal Jelly - "+PerkLib.RoyalSlimeJelly.longDesc+"</b>)\n");
+					player.createPerk(PerkLib.RoyalSlimeJelly, 0, 0, 0, 0);
+					needNext = true;
+				}
+			}
+			
 			if (player.hasPerk(PerkLib.DarkSlimeCore)) { //Lose DARK slime core perk
 				if (player.rearBody.type != RearBody.METAMORPHIC_GOO || player.arms.type != Arms.GOO || !LowerBody.isGoo(player)) {
 					outputText("\nYour form ripples, as if uncertain at the changes your body is undergoing.  The goo of your flesh cools, its sensitive, responsive membrane thickening into [skin] while bones and muscles knit themselves into a cohesive torso, chest and hips gaining definition.  Translucent ooze clouds and the gushing puddle at your feet melts together, splitting into solid trunks as you regain your legs.  Before long, you can no longer see through your own body and, with an unsteady shiver, you pat yourself down, readjusting to solidity.  A lurching heat in your chest suddenly reminds you of the slime core that used to float inside you.  Gingerly touching your " + CoC.instance.player.chestDesc() + ", you can feel a small, second heartbeat under your ribs that gradually seems to be sinking, past your belly. A lurching wave of warmth sparks through you, knocking you off your fresh legs and onto your " + Appearance.buttDescription(player) + ".  A delicious pressure pulses in your abdomen and you loosen your [armor] as sweat beads down your neck.  You clench your eyes, tongue lolling in your mouth, and the pressure builds and builds until, in ecstatic release, your body arches in an orgasmic release.\n\n");
@@ -1885,6 +1894,13 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
+			if (player.hasPerk(PerkLib.RoyalSlimeJelly) && !player.isSlime()) { //Lose crown perk
+				outputText("\nYou feel.. less royal.");
+				outputText("\n(<b>Lost Perk: Royal Jelly</b>)")
+				player.removePerk(PerkLib.RoyalSlimeJelly);
+				needNext = true;
+			}
+			
 			if (player.hasKeyItem("Ruby Orb") >= 0) { //Regain DARK slime core
 				if (player.hasStatusEffect(StatusEffects.SlimeCraving) && !player.hasPerk(PerkLib.DarkSlimeCore) && player.isGoo() && player.rearBody.type == RearBody.METAMORPHIC_GOO && player.arms.type == Arms.GOO && LowerBody.isGoo(player)) {
 					outputText("\nAs you adjust to your new, goo-like body, you remember the ruby heart you expelled so long ago.  As you reach to pick it up, it quivers and pulses with a warm, cheerful light.  Your fingers close on it and the nucleus slides through your palm, into your body!\n\n");
