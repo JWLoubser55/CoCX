@@ -187,16 +187,17 @@ public class PhysicalSpecials extends BaseCombatContent {
 						bd = buttons.add("Engulf", gooEngulf).hint("Attempt to engulf a foe with your body.");
 						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 					}
-					//Slime Skills
+					//Slime-Based Skills
 					if (player.lowerBody == LowerBody.GOO && (player.isSlime() || player.hasPerk(PerkLib.DarkSlimeEmpressCore))) {
 						bd = buttons.add("Spread", spreadSlime).hint("Spread some of your slime around, covering some of the ground.\n HP cost: "+10+"% ("+Math.round(player.maxHP()/10)+")\n\nFree action");
 						if (player.isFlying()) bd.disable("You cannot spread slime while flying.");
 					}
-					if (player.lowerBody == LowerBody.GOO && player.racialTierCached(Races.DARKSLIME)>2) {
+					//DarkSlime Skills
+					if (player.lowerBody == LowerBody.GOO && player.isRaceCached(Races.DARKSLIME) && (player.hasPerk(PerkLib.RoyalSlimeJelly) || player.hasPerk(PerkLib.DarkSlimeEmpressCore)) ) {
 						bd = buttons.add("Form Slimes", formSlimeArmy).hint("Create <b>"+monster.getStatusValue(StatusEffects.SlimeSurround,1)*(player.hasPerk(PerkLib.DarkSlimeEmpressCore) ? 4:2)+"</b> Slimes from slime you've spread on the ground");
 						if (!monster.hasStatusEffect(StatusEffects.SlimeSurround) || monster.getStatusValue(StatusEffects.SlimeSurround,1)<1) bd.disable("You cannot create Slimes without slime on the ground.");
 					}
-					if (player.lowerBody == LowerBody.GOO && player.racialTierCached(Races.DARKSLIME)>2) {
+					if (player.lowerBody == LowerBody.GOO && player.isRaceCached(Races.DARKSLIME) && (player.hasPerk(PerkLib.RoyalSlimeJelly) || player.hasPerk(PerkLib.DarkSlimeEmpressCore))) {
 						bd = buttons.add("Slimes Attack", slimeArmyAttack).hint("Command your <b>"+monster.getStatusValue(StatusEffects.SlimeSurround,2)+"</b> slimes to attack with their various weapons");
 						if (!monster.hasStatusEffect(StatusEffects.SlimeSurround) || monster.getStatusValue(StatusEffects.SlimeSurround,2)<1) bd.disable("You have not formed any slimes.");
 					}
@@ -2927,8 +2928,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 	
-	public function slimeArmySingleAttack(damage:Number,dmgType:int=1,canActMore:Boolean=true):void{
+	public function slimeArmySingleAttack(damage:Number,dmgType:int=1,canActMore:Boolean=true,isAuto:Boolean=false):void{
 		//dmgType 1=phy, 2=lust, 3=merge
+		if (isAuto) damage /= 2;
 		var ogDmg:Number = damage;
 		var dmgAmp:int = 1;
 		var isDark:Boolean = (dmgType==1 && (rand(100) < (player.hasPerk(PerkLib.DarkSlimeEmpressCore) ? 66:33))) ? true:false;
@@ -2946,7 +2948,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.WispMajor)) dmgAmp += 0.4;
 			if (player.hasPerk(PerkLib.WispColonel)) dmgAmp += 0.5;
 		}
-		if (player.hasPerk(PerkLib.DarkSlimeEmpressCore) && dmgType != 2) damage *= 0.4;
+		if (player.hasPerk(PerkLib.RoyalSlimeJelly)) damage *= 0.2;
+		if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)) dmgAmp += 0.2;
+		if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)&& isAuto==false) dmgAmp += 0.2;
 		
 		damage *= dmgAmp;
 		
@@ -2978,7 +2982,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var slimes:Number = monster.getStatusValue(StatusEffects.SlimeSurround, 2);
 		var sAtks:Array = [0,0,0,0];
 		while(slimes-->0){
-			var r:Number = rand(76+( player.hasPerk(PerkLib.DarkSlimeEmpressCore) ? 25:0 ))
+			var r:Number = rand(76+( (player.hasPerk(PerkLib.DarkSlimeEmpressCore)&& player.hasPerk(PerkLib.RoyalSlimeJelly)) ? 25:0 ))
 			if (r <= 25) sAtks[0] += 1
 			if (r>25 && r <= 50) sAtks[1] += 1
 			if (r>50 && r <= 75) sAtks[2] += 1
@@ -2986,37 +2990,38 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		
 		var sDam0:Number = (combat.scalingBonusIntelligence())+combat.scalingBonusToughness()*1.2;;//melee
-		var sDam1:Number = combat.scalingBonusToughness();//ranged
-		var sDam2:Number = combat.scalingBonusLibido()*0.025;//lust
-		var sDam3:Number = combat.scalingBonusIntelligence()*2.5;//dark/sacrifice
+		var sDam1:Number = combat.scalingBonusToughness()*2;//ranged
+		var sDam2:Number = combat.scalingBonusLibido()*0.05;//lust
+		var sDam3:Number = combat.scalingBonusIntelligence()*4;//dark/sacrifice
+		
 		
 		
 		outputText("\n")
 		if (sAtks[0] > 0){
 			outputText(num2Text(sAtks[0], 100) + " of your slimes slash and stab [Themonster] with goopy spears. ");
 			while(sAtks[0]-->0){
-				slimeArmySingleAttack(sDam0);
+				slimeArmySingleAttack(sDam0,1,true,autoAttack);
 			}
 		}
 		
 		if (sAtks[1] > 0){
 			outputText("\n\n" + num2Text(sAtks[1], 100) + " of your slimes lob goopy arrows at [Themonster]. ");
 			while(sAtks[1]-->0){
-				slimeArmySingleAttack(sDam1);
+				slimeArmySingleAttack(sDam1,1,true,autoAttack);
 			}
 		}
 		
 		if (sAtks[2] > 0){
 			outputText("\n\n" + num2Text(sAtks[2], 100) + " of your slimes cover [Themonster] with gooey aphrodisiacs. ");
 			while(sAtks[2]-->0){
-				slimeArmySingleAttack(sDam2, 2);
+				slimeArmySingleAttack(sDam2, 2,true,autoAttack);
 			}
 		}
 		
 		if (sAtks[3] > 0){
 			outputText("\n\n" + num2Text(sAtks[3], 100) + " of your slimes jump onto [Themonster] in a attempt to merge with it. ");
 			while(sAtks[3]-->0){
-				slimeArmySingleAttack(sDam3, 3,false);
+				slimeArmySingleAttack(sDam3, 3,false,autoAttack);
 			}
 		}
 		
