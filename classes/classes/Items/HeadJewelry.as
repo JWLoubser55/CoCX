@@ -113,6 +113,11 @@ package classes.Items
 				outputText("You would very much like to equip this item, but your body stiffness prevents you from doing so.");
 				return false;
 			}
+			if (game.player.hasKeyItem("Slimy Crown") && game.player.isSlime() && game.player.hasHairMaterial()){
+				outputText("You would like to equip this item, but you're already wearing a gooey crown atop your head.");
+				return false;
+			}
+			
 			return super.canEquip(doOutput, slot);
 		}
 		
