@@ -144,11 +144,11 @@ public class DarkSlimeEmpressScene extends BaseContent {
 	private function crownLeave():void {
 		outputText("The empress’s purple legion falter, the slimes blocking the exit fall off. \n");
 		outputText("You take this chance to grab the slimy crown above her head. \n");
-		if (player.isRaceCached(Races.SLIME) || player.isRaceCached(Races.MAGMASLIME) || player.isRaceCached(Races.DARKSLIME)) outputText("<b>It melts into you.</b> \n");
+		if (player.isGooSkin()) outputText("<b>It melts into you.</b> \n");
 		else outputText("It melts in your hand, falling into a puddle on the ground. \n\n");
-		if (player.isRaceCached(Races.DARKSLIME) && !player.hasPerk(PerkLib.DarkSlimeCore)) outputText("As it melts into you, a crystal like gem seems to form within you.\n");
+		if (player.isGooSkin()) outputText("As it melts into you, a crystal like gem seems to form within you.\n");
 		outputText("You don't wait long enough for the sovereign to recover her composure. You rush for the exit, the empress screaming orders as you leave. Thankfully slimes are not overly fast and you manage to make it back to the corridor junction you came from.\n\n");
-        if (player.hasKeyItem("Slimy Crown")==-1 &&(player.isRaceCached(Races.SLIME) || player.isRaceCached(Races.MAGMASLIME) || player.isRaceCached(Races.DARKSLIME))){
+        if (player.hasKeyItem("Slimy Crown")==-1 &&(player.isGooSkin())){
 			
 			outputText("\n\n(Key Item Gained: Slimy Crown)");
 			player.createKeyItem("Slimy Crown", 0, 0, 0, 0);
