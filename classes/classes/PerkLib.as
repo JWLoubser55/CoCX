@@ -4976,6 +4976,8 @@ public class PerkLib
 				"+10% to OverMax HP / Lust / Wrath / Mana / Soulforce / Fatigue, +2 prestige job slots, +1 hidden job slot.");
 		public static const MunchkinAtBioLab:PerkType = mk("Munchkin @Biolab", "Munchkin @Biolab",
 				"Increase core/train caps for stats by 10. +1 to internal mutations slots capacity (+2 for adaptation slots)");
+		public static const MunchkinAtClosedDoorsCultivation:PerkType = mk("Munchkin @Closed Doors Cultivation", "Munchkin @Closed Doors Cultivation",
+				"+1 to internal mutations slots capacity (+2 for adaptation slots)");
 		public static const BloodDemonWisdom:PerkType = mk("Blood Demon Wisdom", "Blood Demon Wisdom",
 				"X th Blood demon super perk. (+10% to OverMax HP, -5% blood spells/soulskills cost, +30% blood spells/soulskills power, +10% Base WIS Cap)");
 		public static const AsuraSpeed:PerkType = mk("Asura Speed", "Asura Speed",

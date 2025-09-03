@@ -250,6 +250,7 @@ public class Changelog extends BaseContent
 			outputText("-In NG1+ games can skip time in Ignam to the morning of the departure day. Not sure how usefull that would be but i'm certain there are people out there that want to skip time in prologue.\n");
 			outputText("-Moved Misc menu + Ayo Armor maintance menu from Inventory menu to Camp Actions menu. In Intentory button would now lead to Unequip menu only.\n");
 			outputText("-New flying sword: Selenite Full Moon - buyable at 'Flying Swords are always with you!' shop in He'Xin'Dao. Cost 375 spirit stones. Base atk is 40. It's classified as Massive flying sword. Deal black ice damage instead of physical damage. Soulforce cost of using it to fly or attack are increased by 10%.\n");
+			outputText("-Cultivation subpaths been changed to be max 3 different manual possible to practice without fixing them to any of major subtypes like body refinement.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -277,11 +278,10 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
-			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
-			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");
-			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");//New super perk: Munchkin@Closed Doors Cultivation. Gained by having merely 1 super perk, having 'Munchkin@Biolab' super munchkin perk, lvl 150+. Effect: 
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
@@ -298,10 +298,10 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
+			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
+			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
+			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
@@ -378,8 +378,20 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -407,6 +419,12 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
