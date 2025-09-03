@@ -2935,24 +2935,43 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var dmgAmp:int = 1;
 		var isDark:Boolean = (dmgType==1 && (rand(100) < (player.hasPerk(PerkLib.DarkSlimeEmpressCore) ? 66:33))) ? true:false;
 		if (dmgType == 3) isDark = true;
-		if (isDark) damage+= combat.scalingBonusLibido()*1.2;
-		if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) damage *= combat.historyTacticianBonus();
-		if (player.hasPerk(PerkLib.CommandingTone)) damage *= 0.1;
-		if (player.hasPerk(PerkLib.DiaphragmControl)) damage *= 0.1;
-		if (player.hasPerk(PerkLib.VocalTactician)) damage *= 0.15;
-		
-		if (flags[kFLAGS.WILL_O_THE_WISP] == 2 && dmgType!=2) {
-			dmgAmp += 0.1;
-			if (player.hasPerk(PerkLib.WispLieutenant)) dmgAmp += 0.2;
-			if (player.hasPerk(PerkLib.WispCaptain)) dmgAmp += 0.3;
-			if (player.hasPerk(PerkLib.WispMajor)) dmgAmp += 0.4;
-			if (player.hasPerk(PerkLib.WispColonel)) dmgAmp += 0.5;
+		if (isDark) damage+= combat.scalingBonusLibido() * 1.2;
+		if (dmgType == 2){
+			if (player.hasPerk(PerkLib.FlawlessBody)) damage += 10;
+			if (player.hasPerk(PerkLib.JobSeducer)) damage += player.teaseLevel * 2;
+			else damage += player.teaseLevel * 1;
 		}
-		if (player.hasPerk(PerkLib.RoyalSlimeJelly)) damage *= 0.2;
-		if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)) dmgAmp += 0.2;
-		if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)&& isAuto==false) dmgAmp += 0.2;
 		
-		damage *= dmgAmp;
+		if (dmgType!=2 || player.hasPerk(PerkLib.EromancyExpert)) {
+			if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) damage *= combat.historyTacticianBonus();
+			if (player.hasPerk(PerkLib.CommandingTone)) damage *= 0.1;
+			if (player.hasPerk(PerkLib.DiaphragmControl)) damage *= 0.1;
+			if (player.hasPerk(PerkLib.VocalTactician)) damage *= 0.15;
+			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
+			//if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2; // Should this count for Arsenal?
+			if (player.hasPerk(PerkLib.RoyalSlimeJelly)) damage *= 0.2;
+			if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)) dmgAmp += 0.2;
+			if (player.hasPerk(PerkLib.DarkSlimeEmpressCore) && isAuto==false) dmgAmp += 0.2;
+		
+			if (flags[kFLAGS.WILL_O_THE_WISP] == 2 && dmgType!=2) {
+				dmgAmp += 0.1;
+				if (player.hasPerk(PerkLib.WispLieutenant)) dmgAmp += 0.2;
+				if (player.hasPerk(PerkLib.WispCaptain)) dmgAmp += 0.3;
+				if (player.hasPerk(PerkLib.WispMajor)) dmgAmp += 0.4;
+				if (player.hasPerk(PerkLib.WispColonel)) dmgAmp += 0.5;
+			}
+			
+			if (dmgType == 2){
+				if (player.hasPerk(PerkLib.EromancyExpert)) damage *= 1.5;
+				if (player.hasPerk(PerkLib.JobCourtesan) && monster.hasPerk(PerkLib.EnemyBossType)) damage *= 1.2;
+				if (player.hasPerk(PerkLib.SluttySimplicity) && player.armor.hasTag(ItemConstants.A_REVEALING)) damage *= (1 + ((10 + rand(11)) / 100));
+				if (player.hasPerk(PerkLib.HistoryWhore) || player.hasPerk(PerkLib.PastLifeWhore)) damage *= (1 + combat.historyWhoreBonus());
+			}
+			
+			
+			damage *= dmgAmp;
+		}
+		
 		
 		outputText("\n")
 		if (dmgType == 3) {
@@ -2989,10 +3008,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (r >75)sAtks[3]+=1
 		}
 		
-		var sDam0:Number = (combat.scalingBonusIntelligence())+combat.scalingBonusToughness()*1.2;;//melee
-		var sDam1:Number = combat.scalingBonusToughness()*2;//ranged
-		var sDam2:Number = combat.scalingBonusLibido()*0.05;//lust
-		var sDam3:Number = combat.scalingBonusIntelligence()*4;//dark/sacrifice
+		var sDam0:Number = (combat.scalingBonusIntelligence()+combat.scalingBonusToughness())*1.8;//melee
+		var sDam1:Number = combat.scalingBonusToughness()*2.6;//ranged
+		var sDam2:Number = combat.scalingBonusLibido()*0.08;//lust
+		var sDam3:Number = combat.scalingBonusIntelligence()*5;//dark/sacrifice
 		
 		
 		
