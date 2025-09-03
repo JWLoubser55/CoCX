@@ -52,6 +52,7 @@ public class DarkSlimeRace extends Race {
 				.hasStatusEffect(StatusEffects.SlimeCraving, "Slime Craving", +1)
 				.hasPerk(PerkLib.DarkSlimeCore, +1)
 				.hasPerk(PerkLib.DarkSlimeEmpressCore, +5)
+				.hasPerk(PerkLib.RoyalSlimeJelly, +2)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addConditionedScores(function (body:BodyData):Boolean {
@@ -97,11 +98,11 @@ public class DarkSlimeRace extends Race {
 					"tou.mult": +1.95,
 					"spe.mult": -0.75,
 					"int.mult": +1.85,
-					"lib.mult": +1.5
+					"lib.mult": +1.7
 				})
 				.end();
 		
-		buildTier(32, "Dark Slime Empress")
+		buildTier(34, "Dark Slime Empress")
 				.namesMaleFemale("Dark Slime Emperor", "Dark Slime Empress")
 				.requirePerk(PerkLib.DarkSlimeEmpressCore)
 				.requirePerk(PerkLib.TransformationImmunity2)
@@ -109,9 +110,10 @@ public class DarkSlimeRace extends Race {
 					"tou.mult": +2.75,
 					"spe.mult": -0.95,
 					"int.mult": +3.4,
-					"lib.mult": +1.85
+					"lib.mult": +2.05
 				})
 				.end();
 	}
 }
 }
+`҃
