@@ -80,7 +80,7 @@ public class DarkSlimeEmpressScene extends BaseContent {
 		outputText("The purple empress falls to the floor, defeated.");
 		menu();
 		addButton(14, "Leave", runLeave);
-		if (player.hasKeyItem("Slimy Crown")==-1) addButton(14, "Take Crown", crownLeave);
+		if (player.hasKeyItem("Slimy Crown")==-1) addButton(13, "Take Crown", crownLeave);
 		
 		addButtonIfTrue(12, "Merge", DSEMerge, "Req. Dark Slime Core and Slimy Crown", player.hasKeyItem("Slimy Crown")>-1 && player.hasPerk(PerkLib.DarkSlimeCore), "Try to absorb her into yourself.");
     }
