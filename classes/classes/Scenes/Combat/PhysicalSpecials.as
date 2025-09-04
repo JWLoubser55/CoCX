@@ -4937,7 +4937,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//Failure (-10 HPs) -
 			if (monster.hasStatusEffect(StatusEffects.SlimeSurround) && monster.getStatusValue(StatusEffects.SlimeSurround, 1) > (monster.plural ? 2:0)){
 				monster.addStatusValue(StatusEffects.SlimeSurround, 1, (monster.plural ? 3:1));
-				outputText("You use a "+(monster.plural ? "large":"small")+" amount of slime on the ground to encase [The monster]"+(monster.plural ? "s":"")+".");
+				outputText("You use a "+(monster.plural ? "large":"small")+" amount of slime on the ground to encase [themonster]"+(monster.plural ? "s":"")+".");
 				monster.createStatusEffect(StatusEffects.GooEngulf, 3 + rand(3),0,0,0);
 				outputText("\n\n");
 				enemyAI();
