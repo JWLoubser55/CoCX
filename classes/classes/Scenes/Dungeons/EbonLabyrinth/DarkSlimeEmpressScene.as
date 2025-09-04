@@ -53,7 +53,7 @@ public class DarkSlimeEmpressScene extends BaseContent {
 		
 		
 		if(flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS]==0) flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS] = 1;
-		if (flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS]<2) startCombat(new DarkSlimeEmpress(), true);
+		if (flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS]<3) startCombat(new DarkSlimeEmpress(), true);
     }
     
     public function defeatedBy():void {
