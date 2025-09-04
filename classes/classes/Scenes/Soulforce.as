@@ -257,12 +257,13 @@ public class Soulforce extends BaseContent
 	}
 
 	public function SubPaths():void {
-		menu();
+		clearOutput();
 		var daoistpathsccount0:Number = 0;
 		var bodypathsccount0:Number = 0;
 		var bodypathsccount1:Number = 0;
 		var bodypathsccount2:Number = 0;
 		var bodypathsccount3:Number = 0;
+		var paths:Number = 0;
 		var pathscap:Number = 3;
 		if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) pathscap += 3;
 		if (player.hasPerk(PerkLib.DaoistApprenticeStage)) {
@@ -270,25 +271,39 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
 			daoistpathsccount0 += 1;
 			bodypathsccount0 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.FleshBodySoDApprenticeStage)) {
 			daoistpathsccount0 += 1;
 			bodypathsccount0 += 1;
 			bodypathsccount1 += 1;
 			bodypathsccount3 += 1;
+			paths += 1;
 		}
-		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0 && daoistpathsccount0 < pathscap) addButton(0, "Daoist", daoistSubPath).hint("Contemplate the mysteries from the 'My Dao Sticks are better than Yours' cultivation manual.");
-		else addButtonDisabled(0, "Daoist", "You can't use this 'My Dao Sticks are better than Yours' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
-		if (player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0 && bodypathsccount1 < pathscap) addButton(5, "BodyCult(1)", bodycultivationSubPath1).hint("Contemplate the mysteries from the 'Vigor of Lizan' body cultivation manual.");
-		else addButtonDisabled(5, "BodyCult(1)", "You can't use this 'Vigor of Lizan' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
-		if (player.hasKeyItem("Cultivation Manual: Scale of Dragon") >= 0 && bodypathsccount2 < pathscap) addButton(6, "BodyCult(2)", bodycultivationSubPath2).hint("Contemplate the mysteries from the 'Scale of Dragon' body cultivation manual.");
-		else addButtonDisabled(6, "BodyCult(2)", "You can't use this 'Scale of Dragon' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
+		outputText("<b>Current / Maximum subpath that can cultivated:</b> " + paths + " / " + pathscap + "\n");
+		menu();
+		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0) {
+			if (daoistpathsccount0 < pathscap) addButton(0, "Daoist", daoistSubPath).hint("Contemplate the mysteries from the 'My Dao Sticks are better than Yours' cultivation manual.");
+			else addButtonDisabled(0, "Daoist", "You can't use this 'My Dao Sticks are better than Yours' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
+		}
+		else addButtonDisabled(0, "Daoist", "Req. 'My Dao Sticks are better than Yours' daoist cultivation manual.");
+		if (player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0) {
+			if (bodypathsccount1 < pathscap) addButton(5, "BodyCult(1)", bodycultivationSubPath1).hint("Contemplate the mysteries from the 'Vigor of Lizan' body cultivation manual.");
+			else addButtonDisabled(5, "BodyCult(1)", "You can't use this 'Vigor of Lizan' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
+		}
+		else addButtonDisabled(5, "BodyCult(1)", "Req. 'Vigor of Lizan' body cultivation manual.");
+		if (player.hasKeyItem("Cultivation Manual: Scale of Dragon") >= 0) {
+			if (bodypathsccount2 < pathscap) addButton(6, "BodyCult(2)", bodycultivationSubPath2).hint("Contemplate the mysteries from the 'Scale of Dragon' body cultivation manual.");
+			else addButtonDisabled(6, "BodyCult(2)", "You can't use this 'Scale of Dragon' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
+		}
+		else addButtonDisabled(6, "BodyCult(2)", "Req. 'Scale of Dragon' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0) addButton(5, "BodyCult", bodycultivationSubPath).hint("Contemplate the mysteries from the 'Body like a Coke Fiend' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(10, "HeartCult", );
 		addButton(14, "Back", accessSoulforceMenu);

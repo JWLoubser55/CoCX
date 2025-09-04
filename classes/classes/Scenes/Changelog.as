@@ -251,7 +251,7 @@ public class Changelog extends BaseContent
 			outputText("-Moved Misc menu + Ayo Armor maintance menu from Inventory menu to Camp Actions menu. In Intentory button would now lead to Unequip menu only.\n");
 			outputText("-New flying sword: Selenite Full Moon - buyable at 'Flying Swords are always with you!' shop in He'Xin'Dao. Cost 375 spirit stones. Base atk is 40. It's classified as Massive flying sword. Deal black ice damage instead of physical damage. Soulforce cost of using it to fly or attack are increased by 10%.\n");
 			outputText("-Cultivation subpaths been changed to be max 3 different manual possible to practice without fixing them to any of major subtypes like body refinement.\n");
-			outputText("-\n");
+			outputText("-Changed stat bar number display to show 'k', 'm', 'b', 't' and 'q' as shorthand, replacing larger numbers. (Example: 100,952,521 would be displayed as 100.9m) (Edward Darksong)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -319,7 +319,8 @@ public class Changelog extends BaseContent
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach without becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
 			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, ");
 			outputText("Sidone help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, cave wyrm tongue desc been draconic not cave wyrm, ");
-			outputText("some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling wepaons scaling on wrong values, Blade Grass missing tf effects for face or ears\n\n");
+			outputText("some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling wepaons scaling on wrong values, Blade Grass missing tf effects for face or ears, ");
+			outputText("kirin horns tf effect super hard to trigger from kirin tf item\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");
