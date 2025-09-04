@@ -426,7 +426,6 @@ public class EbonLabyrinth extends DungeonAbstractContent {
 
     //Selects the boss. Tier (1,2) selects the boss pool. 0 - includes ALL tiers
     private function bossSelector(tier:int = 0):void {
-        if (player.isGooSkin() && flags[kFLAGS.ENCOUNTERED_DARKSLIME_EMPRESS] < 1 && rand(10)==0){ darkSlimeEmpressScene.encounter(); return; }
 		//Make the pool of encounters
         var choices:Array = [];
         var boss:int;
@@ -555,3 +554,4 @@ public class EbonLabyrinth extends DungeonAbstractContent {
     }
 }
 }
+
