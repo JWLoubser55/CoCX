@@ -1023,7 +1023,11 @@ public class Combat extends BaseContent {
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] != 0 && flags[kFLAGS.MECH_AI_ATTACK] == 1) {
 			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
 			player.createStatusEffect(StatusEffects.DisableMHActing, 9, 0, 0, 0);
-		}
+		}/*
+		if (flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] != 0 && flags[kFLAGS.MECH_AI_ATTACK] == 1) {
+			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
+			player.createStatusEffect(StatusEffects.DisableMHActing, 10, 0, 0, 0);
+		}*/
 	}
 
     internal function buildOtherActions(buttons:ButtonDataList, backFunc:Function, aspectButtons:ButtonDataList = null):void {
@@ -1831,8 +1835,8 @@ public class Combat extends BaseContent {
             ui.doFlyingSwordTurn();
         if (ui.isMechAITurn())
             ui.doMechAITurn();
-		if (ui.isSlimeTurn())
-            ui.doSlimeTurn();
+	//	if (ui.isSlimeTurn())
+    //        ui.doSlimeTurn();
         for (var ci:int = 0; ci <= 3; ++ci)
             if (ui.isCompanionTurn(ci))
                 ui.doCompanionTurn(ci, false);

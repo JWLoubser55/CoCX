@@ -296,6 +296,8 @@ public class CombatUI extends BaseCombatContent {
 			doCompanionTurn(3);
 		else if (isMechAITurn())
 			doMechAITurn();
+	//	else if (isSlimeTurn())
+	//		doSlimeTurn();
 		//PC: is busy with something
 		else if (isPlayerBound()) {
 			mainMenuWhenBound();
@@ -666,13 +668,25 @@ public class CombatUI extends BaseCombatContent {
 		combat.shootMechWeaponByAI();
 		if (player.hasKeyItem("Improved Artificial Intelligence MK2") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK3") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0) combat.pspecials.goblinMechAIUseRadomlyItWeaponFunctions();
 		if (player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0) combat.pspecials.goblinMechAIUseRadomlyItWeaponFunctions();
-		//set flag that mech ai shooted
 		flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] = 1;
 		if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
 			menu();
 			addButton(0, "Next", combatMenu, false);
 		}
 	}
+	
+	/*public function isSlimeTurn():Boolean {
+		return CombatAbilities..isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] != 1 && flags[kFLAGS.] == 1 && !doWeDisableThisOne(10);
+	}
+	
+	public function doSlimeTurn():void {
+		combat.shootMechWeaponByAI();
+		flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] = 1;
+		if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
+			menu();
+			addButton(0, "Next", combatMenu, false);
+		}
+	}*/
 
 	public function isGolemTurn():Boolean {
 		return player.hasPerk(PerkLib.FirstAttackGolems) && flags[kFLAGS.GOLEMANCER_PERM_GOLEMS] == 1 && flags[kFLAGS.IN_COMBAT_PLAYER_GOLEM_ATTACKED] != 1 && player.mana >= combat.pspecials.permanentgolemsendcost() && !doWeDisableThisOne(4);
