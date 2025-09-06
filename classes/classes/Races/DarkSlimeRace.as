@@ -107,10 +107,10 @@ public class DarkSlimeRace extends Race {
 				.requirePerk(PerkLib.DarkSlimeEmpressCore)
 				.requirePerk(PerkLib.TransformationImmunity2)
 				.buffs({
-					"tou.mult": +3.1,
+					"tou.mult": +7.0,
 					"spe.mult": -0.95,
-					"int.mult": +3.4,
-					"lib.mult": +2.5
+					"int.mult": +5.5,
+					"lib.mult": +3.75
 				})
 				.end();
 	}
