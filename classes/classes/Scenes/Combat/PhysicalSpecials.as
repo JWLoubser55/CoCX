@@ -187,6 +187,20 @@ public class PhysicalSpecials extends BaseCombatContent {
 						bd = buttons.add("Engulf", gooEngulf).hint("Attempt to engulf a foe with your body.");
 						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 					}
+					//Slime-Based Skills
+					if (player.lowerBody == LowerBody.GOO && (player.isSlime() || player.hasPerk(PerkLib.DarkSlimeEmpressCore))) {
+						bd = buttons.add("Spread", spreadSlime).hint("Spread some of your slime around, covering some of the ground.\n HP cost: "+10+"% ("+Math.round(player.maxHP()/10)+")\n\nFree action");
+						if (player.isFlying()) bd.disable("You cannot spread slime while flying.");
+					}
+					//DarkSlime Skills
+					if (player.lowerBody == LowerBody.GOO && player.isRaceCached(Races.DARKSLIME) && (player.hasPerk(PerkLib.RoyalSlimeJelly) || player.hasPerk(PerkLib.DarkSlimeEmpressCore)) ) {
+						bd = buttons.add("Form Slimes", formSlimeArmy).hint("Create <b>"+monster.getStatusValue(StatusEffects.SlimeSurround,1)*(player.hasPerk(PerkLib.DarkSlimeEmpressCore) ? 4:2)+"</b> Slimes from slime you've spread on the ground");
+						if (!monster.hasStatusEffect(StatusEffects.SlimeSurround) || monster.getStatusValue(StatusEffects.SlimeSurround,1)<1) bd.disable("You cannot create Slimes without slime on the ground.");
+					}
+					if (player.lowerBody == LowerBody.GOO && player.isRaceCached(Races.DARKSLIME) && (player.hasPerk(PerkLib.RoyalSlimeJelly) || player.hasPerk(PerkLib.DarkSlimeEmpressCore))) {
+						bd = buttons.add("Slimes Attack", slimeArmyAttack).hint("Command your <b>"+monster.getStatusValue(StatusEffects.SlimeSurround,2)+"</b> slimes to attack with their various weapons");
+						if (!monster.hasStatusEffect(StatusEffects.SlimeSurround) || monster.getStatusValue(StatusEffects.SlimeSurround,2)<1) bd.disable("You have not formed any slimes.");
+					}
 					//Embrace
 					if ((player.arms.type == Arms.BAT || player.wings.type == Wings.VAMPIRE) && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType)) {
 						bd = buttons.add("Embrace", vampireEmbrace).hint("Embrace an opponent in your wings.");
@@ -2837,6 +2851,205 @@ public class PhysicalSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 
+	public function spreadSlime():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
+		clearOutput();
+		var cost:Number = 0.1;
+		var maxhp:Number = player.maxHP();
+		if(player.HP - (maxhp*cost)  < (player.minHP()+((maxhp*cost)/2))) {
+			clearOutput();
+			outputText("You just don't have the energy to spread your slime around right now...");
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if(player.hasStatusEffect(StatusEffects.Flying)){
+			clearOutput();
+			outputText("You can't spread your slime while flying.");
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		
+		if(monster is EncapsulationPod) {
+			clearOutput();
+			outputText("You can't spread your slime while you're trapped inside something.");
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		outputText("<b>([font-damage]" + Math.round(maxhp * cost) + "[/font])</b> ");
+		
+		outputText(" You cover some of the ground with part of your slimy body.");
+		player.HP-=(maxhp*cost);
+		monster.createOrAddStatusEffect(StatusEffects.SlimeSurround, 1, 1);
+		outputText("You spread some slime from your gooey body around.\n");
+		
+		var locText:String = "the ground.";
+		
+		if (player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost)){
+			locText = "the surrounding waters.";
+		}
+		
+		switch(monster.getStatusValue(StatusEffects.SlimeSurround,1)){
+			case 1:
+				outputText("Your slime now covers a small part of "+locText);
+				break;
+			case 2:
+				outputText("Your slime now covers part of "+locText);
+				break;
+			case 3:
+				outputText("Your slime now covers a large part of "+locText);
+				break;
+			case 4:
+				outputText("Your slime now covers a massive part of "+locText);
+				break;
+			default:
+				outputText("Your slime covers "+locText);
+		}
+		outputText("(<b>"+monster.getStatusValue(StatusEffects.SlimeSurround,1)+"</b>)");
+		outputText("\n\n");
+		menu();
+		addButton(0, "Next", combatMenu, false);
+	}
+	
+	public function formSlimeArmy():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
+		clearOutput();
+		
+		var slimeNum:Number = monster.getStatusValue(StatusEffects.SlimeSurround, 1);
+		var slimePerNum:Number = player.hasPerk(PerkLib.DarkSlimeEmpressCore) ? 4:2;
+		
+		monster.addStatusValue(StatusEffects.SlimeSurround, 2, slimeNum*slimePerNum);
+		monster.addStatusValue(StatusEffects.SlimeSurround, 1, -slimeNum);
+		outputText("You form the slime spread on the ground into <b>"+slimeNum*slimePerNum+"</b> slimes; holding various weapons.");
+		
+		outputText("\n\n");
+		enemyAI();
+	}
+	
+	public function slimeArmySingleAttack(damage:Number,dmgType:int=1,canActMore:Boolean=true,isAuto:Boolean=false):void{
+		//dmgType 1=phy, 2=lust, 3=merge
+		if (isAuto) damage /= 2;
+		var ogDmg:Number = damage;
+		var dmgAmp:int = 1;
+		var isDark:Boolean = (dmgType==1 && (rand(100) < (player.hasPerk(PerkLib.DarkSlimeEmpressCore) ? 66:33))) ? true:false;
+		if (dmgType == 3) isDark = true;
+		if (isDark) damage+= combat.scalingBonusLibido() * 1.2;
+		if (dmgType == 2){
+			if (player.hasPerk(PerkLib.FlawlessBody)) damage += 10;
+			if (player.hasPerk(PerkLib.JobSeducer)) damage += player.teaseLevel * 2;
+			else damage += player.teaseLevel * 1;
+		}
+		
+		if (dmgType!=2 || player.hasPerk(PerkLib.EromancyExpert)) {
+			if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) damage *= combat.historyTacticianBonus();
+			if (player.hasPerk(PerkLib.CommandingTone)) damage *= 0.1;
+			if (player.hasPerk(PerkLib.DiaphragmControl)) damage *= 0.1;
+			if (player.hasPerk(PerkLib.VocalTactician)) damage *= 0.15;
+			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
+			//if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2; // Should this count for Arsenal?
+			if (player.hasPerk(PerkLib.RoyalSlimeJelly)) damage *= 0.2;
+			if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)) dmgAmp += 0.2;
+			if (player.hasPerk(PerkLib.DarkSlimeEmpressCore) && isAuto==false) dmgAmp += 0.2;
+		
+			if (flags[kFLAGS.WILL_O_THE_WISP] == 2 && dmgType!=2) {
+				dmgAmp += 0.1;
+				if (player.hasPerk(PerkLib.WispLieutenant)) dmgAmp += 0.2;
+				if (player.hasPerk(PerkLib.WispCaptain)) dmgAmp += 0.3;
+				if (player.hasPerk(PerkLib.WispMajor)) dmgAmp += 0.4;
+				if (player.hasPerk(PerkLib.WispColonel)) dmgAmp += 0.5;
+			}
+			
+			if (dmgType == 2){
+				if (player.hasPerk(PerkLib.EromancyExpert)) damage *= 1.5;
+				if (player.hasPerk(PerkLib.JobCourtesan) && monster.hasPerk(PerkLib.EnemyBossType)) damage *= 1.2;
+				if (player.hasPerk(PerkLib.SluttySimplicity) && player.armor.hasTag(ItemConstants.A_REVEALING)) damage *= (1 + ((10 + rand(11)) / 100));
+				if (player.hasPerk(PerkLib.HistoryWhore) || player.hasPerk(PerkLib.PastLifeWhore)) damage *= (1 + combat.historyWhoreBonus());
+			}
+			
+			
+			damage *= dmgAmp;
+		}
+		
+		
+		outputText("\n")
+		if (dmgType == 3) {
+			if ((rand(11) + 1) / 10 * player.tou > monster.tou){
+				var pastHPp:Number = monster.HP / monster.maxHP();
+				var pastHP:Number = monster.HP;
+				monster.statStore.addBuffObject({tou: -(player.tou + monster.tou) * 0.08}, "Merged Slime", {text:"Slime"});
+				monster.HP = monster.maxHP()*pastHPp;
+				outputText("A slime merged with [Themonster], weakening [monster him]. ")
+				combat.CommasForDigits(Math.round((monster.maxHP()*0.15)+pastHP-monster.HP))
+				monster.HP-=Math.round(monster.maxHP()*0.15)
+				monster.addStatusValue(StatusEffects.SlimeSurround, 2, -1);
+				isDark = false;
+			}
+			else outputText("A slime tried and failed to merge with [Themonster].");
+		}
+		if (isDark) combat.doDarknessDamage(damage, true, true);
+		if(!isDark && dmgType==1) combat.doPhysicalDamage(damage,true,true);
+		if(dmgType==2)	monster.teased(Math.round(monster.lustVuln * damage),false);
+		if(canActMore && rand(15)==1)slimeArmySingleAttack(ogDmg,dmgType,false)
+	}
+	
+	public function slimeArmyAttack(autoAttack:Boolean=false):void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
+		if (autoAttack==false) clearOutput();
+		
+		var slimes:Number = monster.getStatusValue(StatusEffects.SlimeSurround, 2);
+		var sAtks:Array = [0,0,0,0];
+		while(slimes-->0){
+			var r:Number = rand(76+( (player.hasPerk(PerkLib.DarkSlimeEmpressCore)&& player.hasPerk(PerkLib.RoyalSlimeJelly)) ? 25:0 ))
+			if (r <= 25) sAtks[0] += 1
+			if (r>25 && r <= 50) sAtks[1] += 1
+			if (r>50 && r <= 75) sAtks[2] += 1
+			if (r >75)sAtks[3]+=1
+		}
+		
+		var sDam0:Number = (combat.scalingBonusIntelligence()+combat.scalingBonusToughness())*1.8;//melee
+		var sDam1:Number = combat.scalingBonusToughness()*2.6;//ranged
+		var sDam2:Number = combat.scalingBonusLibido()*0.08;//lust
+		var sDam3:Number = combat.scalingBonusIntelligence()*5;//dark/sacrifice
+		
+		
+		
+		outputText("\n")
+		if (sAtks[0] > 0){
+			outputText(num2Text(sAtks[0], 100) + " of your slimes slash and stab [Themonster] with goopy spears. ");
+			while(sAtks[0]-->0){
+				slimeArmySingleAttack(sDam0,1,true,autoAttack);
+			}
+		}
+		
+		if (sAtks[1] > 0){
+			outputText("\n\n" + num2Text(sAtks[1], 100) + " of your slimes lob goopy arrows at [Themonster]. ");
+			while(sAtks[1]-->0){
+				slimeArmySingleAttack(sDam1,1,true,autoAttack);
+			}
+		}
+		
+		if (sAtks[2] > 0){
+			outputText("\n\n" + num2Text(sAtks[2], 100) + " of your slimes cover [Themonster] with gooey aphrodisiacs. ");
+			while(sAtks[2]-->0){
+				slimeArmySingleAttack(sDam2, 2,true,autoAttack);
+			}
+		}
+		
+		if (sAtks[3] > 0){
+			outputText("\n\n" + num2Text(sAtks[3], 100) + " of your slimes jump onto [Themonster] in a attempt to merge with it. ");
+			while(sAtks[3]-->0){
+				slimeArmySingleAttack(sDam3, 3,false,autoAttack);
+			}
+		}
+		
+		
+		outputText("\n\n");
+		combat.monsterDefeatCheck();
+		if (autoAttack==false) enemyAI();
+	}
+	
 	public function terrifyingHowl():void {
 		clearOutput();
 		if(monster is EncapsulationPod || monster.inte == 0 || monster is LivingStatue) {
@@ -4714,14 +4927,24 @@ public class PhysicalSpecials extends BaseCombatContent {
 		fatigue(physicalSpecialsCost(10), USEFATG_PHYSICAL);
 		if (combat.checkConcentration()) return; //Amily concentration
 		outputText("You plunge on [themonster] and let your liquid body engulf it. ");
-		//WRAP IT UPPP
-		if(40 + rand(player.spe) > monster.spe) {
+		//WRAP IT UPPP    plural
+		if((40 + rand(player.spe) > monster.spe)) {
 			outputText("[Themonster] ends up encased in your fluid form kicking and screaming to get out.");
 			monster.createStatusEffect(StatusEffects.GooEngulf, 3 + rand(3),0,0,0);
 		}
 		//Failure
 		else {
 			//Failure (-10 HPs) -
+			if (monster.hasStatusEffect(StatusEffects.SlimeSurround) && monster.getStatusValue(StatusEffects.SlimeSurround, 1) > (monster.plural ? 2:0)){
+				monster.addStatusValue(StatusEffects.SlimeSurround, 1, (monster.plural ? 3:1));
+				outputText("You use a "+(monster.plural ? "large":"small")+" amount of slime on the ground to encase [themonster]"+(monster.plural ? "s":"")+".");
+				monster.createStatusEffect(StatusEffects.GooEngulf, 3 + rand(3),0,0,0);
+				outputText("\n\n");
+				enemyAI();
+				return;
+			}
+			
+			
 			outputText("[Themonster] dodge at the last second stepping out of your slimy embrace and using the opening to strike you.");
 			player.takePhysDamage(5, true);
 			if(Math.round(player.HP) <= Math.round(player.minHP())) {
@@ -4732,6 +4955,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("\n\n");
 		enemyAI();
 	}
+	
+	
 
 	public function vampireEmbrace():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
@@ -7981,4 +8206,5 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function PhysicalSpecials() {
 	}
 }
-}
+
+}

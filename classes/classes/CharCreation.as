@@ -3678,6 +3678,10 @@ import classes.Scenes.Combat.CombatAbility;
 				if (player.hasPerk(PerkLib.TechOverdrive) && player.perkv4(PerkLib.TechOverdrive) < 1) addButton(2, "TechOverdrive", permanentizePerk4, PerkLib.TechOverdrive);
 				else if (player.hasPerk(PerkLib.TechOverdrive) && player.perkv4(PerkLib.TechOverdrive) > 0) addButtonDisabled(2, "TechOverdrive", "Tech Overdrive perk is already made permanent and will carry over in all subsequent ascensions.");
 				else addButtonDisabled(2, "TechOverdrive", "Tech Overdrive");
+				if (player.hasPerk(PerkLib.DarkSlimeEmpressCore) && player.perkv4(PerkLib.DarkSlimeEmpressCore) < 1) addButton(3, "E.D.Essence", permanentizePerk4, PerkLib.DarkSlimeEmpressCore);
+				else if (player.hasPerk(PerkLib.DarkSlimeEmpressCore) && player.perkv4(PerkLib.DarkSlimeEmpressCore) > 0) addButtonDisabled(3, "E.D.Essence", "Empress's Dark Essence perk is already made permanent and will carry over in all subsequent ascensions.");
+				else addButtonDisabled(3, "E.D.Essence", "Empress's Dark Essence");
+				
 				//3
 				//addButton(4, "Next", ascensionPermeryMenu, page + 1);
 				//5
@@ -4265,3 +4269,5 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 	} // what the fuck are those weird comments here? ^
 }
+
+

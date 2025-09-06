@@ -1501,6 +1501,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const LockingCurse:StatusEffectType          = mkCombat("Locking Curse");
 		public static const Terrorize:StatusEffectType             = mkCombat("Terrorize");
 		public static const WerespiderAbilities:StatusEffectType   = mkCombat("WerespiderAbilities");
+		public static const SlimeSurround:StatusEffectType   = mkCombat("Surrounded by Slime");
 		
 		// enchanted item stuff
 		
@@ -1522,4 +1523,5 @@ import classes.StatusEffects.VampireThirstEffect;
 			return new StatusEffectType(id,CombatStatusEffect,1);
 		}
 	}
+
 }

@@ -864,6 +864,7 @@ public class Combat extends BaseContent {
 			flags[kFLAGS.IN_COMBAT_PLAYER_ANUBI_HEART_LEECH] = 0;
             flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] = 0;
             flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_GADGET_USED] = 0;
+			flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] = 0;
 			if (player.hasPerk(PerkLib.FirstAttackSkeletons)) flags[kFLAGS.IN_COMBAT_PLAYER_SKELETONS_ATTACKED] = 0;
 			if (player.hasPerk(PerkLib.MyBloodForBloodPuppies)) flags[kFLAGS.IN_COMBAT_PLAYER_BLOOD_PUPPIES_ATTACKED] = 0;
 			if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 4) flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] = 0;
@@ -1830,6 +1831,8 @@ public class Combat extends BaseContent {
             ui.doFlyingSwordTurn();
         if (ui.isMechAITurn())
             ui.doMechAITurn();
+		if (ui.isSlimeTurn())
+            ui.doSlimeTurn();
         for (var ci:int = 0; ci <= 3; ++ci)
             if (ui.isCompanionTurn(ci))
                 ui.doCompanionTurn(ci, false);
@@ -11834,6 +11837,12 @@ public class Combat extends BaseContent {
     }
 
     public function awardPlayer(nextFunc:Function = null):void {
+		if (monster.hasStatusEffect(StatusEffects.SlimeSurround)&&(monster.getStatusValue(StatusEffects.SlimeSurround,1)>0 || monster.getStatusValue(StatusEffects.SlimeSurround,2)>0)){
+			var slimeCount:int = monster.getStatusValue(StatusEffects.SlimeSurround, 1) + (monster.getStatusValue(StatusEffects.SlimeSurround, 2)/(player.hasPerk(PerkLib.DarkSlimeEmpressCore) ? 4:2));
+			player.HP += Math.round((player.maxHP()*0.08) * slimeCount);
+			//if (player.HP > player.maxHP()) player.HP = player.MaxHP;
+			outputText("\nYou absorb the remaining slime. <b>([font-heal]"+Math.round((player.maxHP()*0.08)*slimeCount)+"[/font])</b>\n");
+		}
         if (nextFunc == null) nextFunc = explorer.done;
         if (player.countCockSocks("gilded") > 0) {
             //trace( "awardPlayer found MidasCock. Gems bumped from: " + monster.gems );
@@ -20119,4 +20128,6 @@ private function touSpeStrScale(stat:int):Number {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
 }
+
 }
+

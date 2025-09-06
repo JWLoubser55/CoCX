@@ -426,7 +426,7 @@ public class EbonLabyrinth extends DungeonAbstractContent {
 
     //Selects the boss. Tier (1,2) selects the boss pool. 0 - includes ALL tiers
     private function bossSelector(tier:int = 0):void {
-        //Make the pool of encounters
+		//Make the pool of encounters
         var choices:Array = [];
         var boss:int;
         for (boss = 0; boss < bossPool[tier].length; ++boss) //[bit_num, function]
@@ -554,3 +554,4 @@ public class EbonLabyrinth extends DungeonAbstractContent {
     }
 }
 }
+
