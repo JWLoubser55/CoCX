@@ -105,7 +105,8 @@ public class DarkSlimeEmpressScene extends BaseContent {
 		"\nEnticed by the pleasure it brought, you try to push the cores together." +
 		"\n\nYou feel your mind breaking, your senses are overloaded, you can feel only intense pleasure. You can't even tell if your eyes are open or not." +
 		"\nOnce the feeling subsides, you no longer feel two cores inside your body. " +
-		"\nYou look down at yourself, and you see only one core, noticeably larger than before. Not only that, but some other things have changed, you now look more like the empress." +
+		"\nYou look down at yourself, seeing nothing different, but feeling that something is amiss; you look at the reflection in a nearby puddle of goo." +
+		"\nSomething changed, you now look like the empress you previously absorbed." +
 		"\nAfter examining your body, you deside to leave. \n\n" );
 		outputText("You exit the room and return to the corridor you were previously in.\n\n");
 		player.slimeFeed();
