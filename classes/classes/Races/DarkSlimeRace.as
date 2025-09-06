@@ -85,7 +85,7 @@ public class DarkSlimeRace extends Race {
 				.buffs({
 					"tou.mult": +1.05,
 					"spe.mult": -0.50,
-					"int.mult": +0.90,
+					"int.mult": +0.85,
 					"lib.mult": +1.00
 				})
 				.end();
@@ -97,7 +97,7 @@ public class DarkSlimeRace extends Race {
 				.buffs({
 					"tou.mult": +1.45,
 					"spe.mult": -0.75,
-					"int.mult": +1.75,
+					"int.mult": +1.65,
 					"lib.mult": +1.25
 				})
 				.end();
