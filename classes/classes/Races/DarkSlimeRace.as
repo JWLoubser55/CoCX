@@ -101,6 +101,17 @@ public class DarkSlimeRace extends Race {
 					"lib.mult": +1.25
 				})
 				.end();
+		buildTier(26, "Dark Slime Sovereign")
+				.require("Slimy Crown or Sovereign's Dark Slime Core perk", function(body:BodyData):Boolean {
+				return body.player.hasKeyItem("Slimy Crown")!=-1 || body.player.hasPerk(PerkLib.DarkSlimeEmpressCore)})
+				.requirePerk(PerkLib.TransformationImmunity2)
+				.buffs({
+					"tou.mult": +5.9,
+					"spe.mult": -0.85,
+					"int.mult": +4.0,
+					"lib.mult": +2.65
+				})
+				.end();
 		
 		buildTier(34, "Dark Slime Empress")
 				.namesMaleFemale("Dark Slime Emperor", "Dark Slime Empress")
