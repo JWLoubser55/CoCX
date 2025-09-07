@@ -14387,6 +14387,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             if (player.hasPerk(PerkLib.Regeneration5)) maxPercentRegen += 0.5;
             if (player.hasPerk(PerkLib.Regeneration6)) maxPercentRegen += 0.5;
         }
+		if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)) maxPercentRegen += 2.0;
 		if (flags[kFLAGS.HUNGER_ENABLED] <= 0 && !player.hasPerk(PerkLib.EndlessHunger) && player.hasPerk(PerkLib.AxillaryVenomGlands) && player.tailVenom < player.maxVenom()) maxPercentRegen -= 1;
 		//if (player.hasStatusEffect(StatusEffects.GnomeHomeBuff) && player.statusEffectv1(StatusEffects.GnomeHomeBuff) == 1) maxPercentRegen += 15;
         if (player.armor == armors.NURSECL) maxPercentRegen += 0.5;
@@ -14548,6 +14549,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 
     public function maximumRegeneration():Number {
         var maxRegen:Number = 2;
+		if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)) maxRegen += 1;
 		if (player.hasPerk(PerkLib.LizanRegeneration)) maxRegen += 1.5;
         if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 1) maxRegen += 0.5 * player.perkv1(IMutationsLib.LizanMarrowIM);
         if (player.perkv1(IMutationsLib.LizanMarrowIM) == 3 && player.HP < (player.maxHP() * 0.25)) maxRegen += 1.5;
@@ -20134,4 +20136,5 @@ private function touSpeStrScale(stat:int):Number {
 }
 
 }
+
 
