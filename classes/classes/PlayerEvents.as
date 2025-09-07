@@ -1912,6 +1912,17 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
+			
+			if (player.hasKeyItem("Slimy Crown") >= 0 && !player.hasPerk(PerkLib.DarkSlimeCore)) { //Gain DARK slime core from crown
+				if (player.hasStatusEffect(StatusEffects.SlimeCraving) && player.isGoo() && player.rearBody.type == RearBody.METAMORPHIC_GOO && player.arms.type == Arms.GOO && LowerBody.isGoo(player)) {
+					outputText("\nYou feel something grow within your gooey mass. \nA crystal like gem seems to have formed within you.\n\n");
+					//(Reduces Fluid Addiction to a 24 hour intake requirement).
+					outputText("(<b>Gained New Perk: Dark Slime Core - Moisture craving builds at a greatly reduced rate.</b>\n)");
+					player.createPerk(PerkLib.DarkSlimeCore, 0, 0, 0, 0);
+					needNext = true;
+				}
+			}
+			
 			if (player.hasStatusEffect(StatusEffects.SlimeCraving)) { //Slime craving stuff
 				if (player.rearBody.type != RearBody.METAMORPHIC_GOO || player.arms.type != Arms.GOO || !LowerBody.isGoo(player)) {
 					outputText("\n<b>You no longer feel the need to stockpile fluids in your body. Geeze just how much of a slut did this make you?</b>\n");
