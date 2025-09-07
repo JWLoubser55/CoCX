@@ -296,8 +296,8 @@ public class CombatUI extends BaseCombatContent {
 			doCompanionTurn(3);
 		else if (isMechAITurn())
 			doMechAITurn();
-	//	else if (isSlimeTurn())
-	//		doSlimeTurn();
+		else if (isSlimeTurn())
+			doSlimeTurn();
 		//PC: is busy with something
 		else if (isPlayerBound()) {
 			mainMenuWhenBound();
@@ -675,18 +675,20 @@ public class CombatUI extends BaseCombatContent {
 		}
 	}
 	
-	/*public function isSlimeTurn():Boolean {
-		return CombatAbilities..isKnownAndUsable && flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] != 1 && flags[kFLAGS.] == 1 && !doWeDisableThisOne(10);
-	}
-	
-	public function doSlimeTurn():void {
-		combat.shootMechWeaponByAI();
-		flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] = 1;
-		if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
-			menu();
-			addButton(0, "Next", combatMenu, false);
-		}
-	}*/
+	public function isSlimeTurn():Boolean {
+        return flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] != 1 && monster.getStatusValue(StatusEffects.SlimeSurround,2) > 0 && !doWeDisableThisOne(10);
+    }
+
+    public function doSlimeTurn():void {
+        if (monster.hasStatusEffect(StatusEffects.SlimeSurround) && monster.getStatusValue(StatusEffects.SlimeSurround,2) > 0) {
+            combat.pspecials.slimeArmyAttack(true);
+            flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] = 1;
+            if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
+                menu();
+                addButton(0, "Next", combatMenu, false);
+            }
+        }
+    }
 
 	public function isGolemTurn():Boolean {
 		return player.hasPerk(PerkLib.FirstAttackGolems) && flags[kFLAGS.GOLEMANCER_PERM_GOLEMS] == 1 && flags[kFLAGS.IN_COMBAT_PLAYER_GOLEM_ATTACKED] != 1 && player.mana >= combat.pspecials.permanentgolemsendcost() && !doWeDisableThisOne(4);
