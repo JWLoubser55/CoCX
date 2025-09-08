@@ -260,7 +260,7 @@ public class Changelog extends BaseContent
 			outputText("-Lowered Exp reward from the Dark Slime Empress (Edward Darksong)\n");
 			outputText("-Added another way to get 'Dark Slime Core' perk (Edward Darksong)\n");
 			outputText("-Added 'Empress's Dark Essence' to the permanent perk menu (Edward Darksong)\n");
-			outputText("-\n");
+			outputText("-Barometz sprite implementation (Lord Shadeogorath)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -287,7 +287,7 @@ public class Soulforce extends BaseContent
 			bodypathsccount3 += 1;
 			paths += 1;
 		}
-		outputText("<b>Current subpaths that are cultivated / Maximum subpaths that can cultivated:</b> " + paths + " / " + pathscap + "\n");
+		outputText("<b>Current subpaths that are cultivated / Maximum subpaths that can be cultivated:</b> " + paths + " / " + pathscap + "\n");
 		menu();
 		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0) {
 			if (daoistpathsccount0 < pathscap) addButton(0, "Daoist", daoistSubPath).hint("Contemplate the mysteries from the 'My Dao Sticks are better than Yours' cultivation manual.");
