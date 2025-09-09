@@ -3164,7 +3164,26 @@
 			</case>
 			<case values="Horns.SHROOM_HEADCAP">
 				<show part="back_bg/myconidCap_bg"/>
-				<show part="horns/myconidCapWhite"/>
+				<switch>
+					<case test="horns.count gt 14">
+						<show part="horns/myconidCapPurple"/>
+					</case>
+					<case test="horns.count gt 12">
+						<show part="horns/myconidCapBlue"/>
+					</case>
+					<case test="horns.count gt 10">
+						<show part="horns/myconidCapGreen"/>
+					</case>
+					<case test="horns.count gt 8">
+						<show part="horns/myconidCapYellow"/>
+					</case>
+					<case test="horns.count gt 6">
+						<show part="horns/myconidCapRed"/>
+					</case>
+					<default>
+						<show part="horns/myconidCapWhite"/>
+					</default>
+				</switch>	
 			</case>
 			<case values="Horns.RAM">
 				<show part="horns/ram"/>
@@ -3468,7 +3487,30 @@
 				<show part="back_bg/cobraHood"/>
 			</case>
 			<case values="RearBody.BRA_AND_NECK">
-				<show part="neck/myconidWhite"/>
+				<if test="horns.type == Horns.SHROOM_HEADCAP">
+					<switch>
+						<case test="horns.count gt 14">
+							<show part="neck/myconidPurple"/>
+						</case>
+						<case test="horns.count gt 12">
+							<show part="neck/myconidBlue"/>
+						</case>
+						<case test="horns.count gt 10">
+							<show part="neck/myconidGreen"/>
+						</case>
+						<case test="horns.count gt 8">
+							<show part="neck/myconidYellow"/>
+						</case>
+						<case test="horns.count gt 6">
+							<show part="neck/myconidRed"/>
+						</case>
+						<default>
+							<show part="neck/myconidWhite"/>
+						</default>
+					</switch>
+				<else/>
+					<show part="neck/myconidWhite"/>
+				</if>	
 			</case>
 			<default>
 			</default>
@@ -4554,8 +4596,37 @@
 				<show part="arms_fg/marilith"/>
 			</case>
 			<case values="Arms.SHROOM_ARMS">
-				<show part="hands/myconidWhite"/>
-				<show part="hands_bg/myconidWhite"/>
+				<if test="horns.type == Horns.SHROOM_HEADCAP">
+					<switch>
+						<case test="horns.count gt 14">
+							<show part="hands/myconidPurple"/>
+							<show part="hands_bg/myconidPurple"/>
+						</case>
+						<case test="horns.count gt 12">
+							<show part="hands/myconidBlue"/>
+							<show part="hands_bg/myconidBlue"/>
+						</case>
+						<case test="horns.count gt 10">
+							<show part="hands/myconidGreen"/>
+							<show part="hands_bg/myconidGreen"/>
+						</case>
+						<case test="horns.count gt 8">
+							<show part="hands/myconidYellow"/>
+							<show part="hands_bg/myconidYellow"/>
+						</case>
+						<case test="horns.count gt 6">
+							<show part="hands/myconidRed"/>
+							<show part="hands_bg/myconidRed"/>
+						</case>
+						<default>
+							<show part="hands/myconidWhite"/>
+							<show part="hands_bg/myconidWhite"/>
+						</default>
+					</switch>
+				<else/>					
+					<show part="hands/myconidWhite"/>
+					<show part="hands_bg/myconidWhite"/>
+				</if>
 			</case>	
 			<default>
 				<!--see switch[value=skinType]-->
@@ -4903,7 +4974,30 @@
 				<show part="feet/arigean"/>
 			</case>
 			<case values="LowerBody.SHROOM_SKIRT">
-				<show part="feet/myconidWhite"/>
+				<if test="horns.type == Horns.SHROOM_HEADCAP">
+					<switch>
+						<case test="horns.count gt 14">
+							<show part="feet/myconidPurple"/>
+						</case>
+						<case test="horns.count gt 12">
+							<show part="feet/myconidBlue"/>
+						</case>
+						<case test="horns.count gt 10">
+							<show part="feet/myconidGreen"/>
+						</case>
+						<case test="horns.count gt 8">
+							<show part="feet/myconidYellow"/>
+						</case>
+						<case test="horns.count gt 6">
+							<show part="feet/myconidRed"/>
+						</case>
+						<default>
+							<show part="feet/myconidWhite"/>
+						</default>
+					</switch>
+				<else/>				
+					<show part="feet/myconidWhite"/>
+				</if>
 			</case>
 			<!--<case values="LowerBody.GARGOYLE">TODO </case>-->
 			<!--<case values="LowerBody.PLANT_HIGH_HEELS">TODO </case>-->
@@ -5580,7 +5674,30 @@
 				</case>
 				
 				<case values="CockTypesEnum.SHROOM">
-					<show part="penis/myconidWhite"/>
+					<if test="horns.type == Horns.SHROOM_HEADCAP">
+						<switch>
+							<case test="horns.count gt 14">
+								<show part="penis/myconidPurple"/>
+							</case>
+							<case test="horns.count gt 12">
+								<show part="penis/myconidBlue"/>
+							</case>
+							<case test="horns.count gt 10">
+								<show part="penis/myconidGreen"/>
+							</case>
+							<case test="horns.count gt 8">
+								<show part="penis/myconidYellow"/>
+							</case>
+							<case test="horns.count gt 6">
+								<show part="penis/myconidRed"/>
+							</case>
+							<default>
+								<show part="penis/myconidWhite"/>
+							</default>
+						</switch>
+					<else/>					
+						<show part="penis/myconidWhite"/>
+					</if>
 				</case>
 				<case values="CockTypesEnum.BAROMETZ">
 					<show part="penis$taur/barometz$big$taur"/>
