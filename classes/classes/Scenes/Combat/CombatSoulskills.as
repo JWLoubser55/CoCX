@@ -100,6 +100,7 @@ public class CombatSoulskills extends BaseCombatContent {
 			}
 		}
 		if (player.perkv1(IMutationsLib.AnubiHeartIM) >= 2 && player.soulforce >= Math.round(player.maxSoulforce() * sfT())) modss *= 2;
+		if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) modss *= 2;
 		modss = Math.round(modss * 100) / 100;
 		return modss;
 	}
@@ -195,7 +196,10 @@ public class CombatSoulskills extends BaseCombatContent {
 
 	internal function soulskillCostImpl():Number {
 		var modssc:Number = player.soulskillcostStat.value;
-		if (soulskillMod() > 1) modssc += (soulskillMod() - 1) * 0.1;
+		if (soulskillMod() > 1) {
+			if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) modssc += (soulskillMod() - 1) * 0.05;
+			else modssc += (soulskillMod() - 1) * 0.1;
+		}
 		if (player.hasPerk(PerkLib.DaoistApprenticeStage)) modssc -= .1;
 		if (player.hasPerk(PerkLib.DaoistWarriorStage)) modssc -= .1;
 		if (player.hasPerk(PerkLib.DaoistElderStage)) modssc -= .1;

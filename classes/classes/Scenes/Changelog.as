@@ -194,7 +194,7 @@ public class Changelog extends BaseContent
 			outputText("-New Natural attack: Cockvine back. Req. cockvine wings. Add 4 Extra natural attacks in the form of slams. Damage ratio 1x per attack.\n");
 			outputText("-New usable item: Ducats. Costing 500 gems and can be dropped by Barometz enemy when using Silly Mode.\n");
 			outputText("-Plant type enemies gained additional weakness: ice damage (taking extra damage that is equal to 50% of bonus damage they receive from fire attacks). Player with Vegetal Affinity perk also taking now extra ice damage as plant type enemies.\n");
-			outputText("-Matango sprite implementation. (pt1) (Lord Shadeogorath)\n");
+			outputText("-Matango sprite implementation. (Lord Shadeogorath)\n");
 			outputText("-Aether Twins feeding menu slight change with seperate submenu for materials and equipment. Each submenu would have greyed out buttons if PC not have specific item. Keep in mind that even having it could mean they yet not evovled enough to eat particular item and greyed out button serve more as hint what item or material to find for them.\n");
 			outputText("-New event perk: Flesh Body (VoL): Apprentice Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +1000 max HP, +1% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Apprentice, Soul Personage, Soul Warrior); +1% HP regen\n");
 			outputText("-New event perk: Flesh Body (VoL): Warrior Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +2000 max HP, +2% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +1% HP regen\n");
@@ -261,6 +261,10 @@ public class Changelog extends BaseContent
 			outputText("-Added another way to get 'Dark Slime Core' perk (Edward Darksong)\n");
 			outputText("-Added 'Empress's Dark Essence' to the permanent perk menu (Edward Darksong)\n");
 			outputText("-Barometz sprite implementation (Lord Shadeogorath)\n");
+			//outputText("-New super perk: Munchkin@Closed Doors Cultivation. Gained by having merely 1 super perk, having 'Deity Job: Munchkin' super munchkin perk, lvl 90+. Effect: Increase by 3 maximum subpaths that can be cultivated, double final soulskill power (without additional cost increase), double gains from comtemplations and meditations.\n");
+			//outputText("-Deity Job: Munchkin level req. decreased from 90 to 75. Munchkin @Gym perk req. of Deity Job: Munchkin is replaced by Munchkin@Closed Doors Cultivation.\n");
+			//outputText("-New tier 1 misc lvl-up perk: Lethicite Connoisseur. Req. Soulless perk. Effect: You have learned to consume Lethicite in a less wasteful way. Grant twice as much demonic energy as normal when consuming lethicite.\n");
+			//outputText("-New tier 6 corruption lvl-up perk: Corrupted Flesh. Req. Masochist perk and 80+ corruption. Effect: While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -278,10 +282,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New super perk: Munchkin@Closed Doors Cultivation. Gained by having merely 1 super perk, having 'Munchkin@Biolab' super munchkin perk, lvl 150+. Effect: 
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

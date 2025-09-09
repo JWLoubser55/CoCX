@@ -1835,8 +1835,8 @@ public class Combat extends BaseContent {
             ui.doFlyingSwordTurn();
         if (ui.isMechAITurn())
             ui.doMechAITurn();
-	//	if (ui.isSlimeTurn())
-    //        ui.doSlimeTurn();
+		if (ui.isSlimeTurn())
+            ui.doSlimeTurn();
         for (var ci:int = 0; ci <= 3; ++ci)
             if (ui.isCompanionTurn(ci))
                 ui.doCompanionTurn(ci, false);

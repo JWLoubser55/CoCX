@@ -851,6 +851,12 @@ public class PerkLib
 		public static const NatureMage:PerkType = mk("Nature Mage", "Nature Mage",
 				"When outdoor increase spellcasting potency by 25%.",
 				"You've chosen the 'Nature Mage' perk. When outdoor increase spellcasting potency by 25%.");
+		public static const LethiciteConnoisseur:PerkType = mk("Lethicite Connoisseur", "Lethicite Connoisseur",
+				"You have learned to consume Lethicite in a less wasteful way. Grant twice as much demonic energy as normal when consuming lethicite.",
+				"You've chosen the 'Lethicite Connoisseur' perk. You have learned to consume Lethicite in a less wasteful way. Grant twice as much demonic energy as normal when consuming lethicite.");
+		public static const CorruptedFlesh:PerkType = mk("Corrupted Flesh", "Corrupted Flesh",
+				"While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless.",
+				"You've chosen the 'Corrupted Flesh' perk. While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -862,12 +868,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -4974,14 +4974,14 @@ public class PerkLib
 					'maxsf_mult':+0.1,
 					'maxfatigue_mult':+0.1
 				});
+		public static const MunchkinAtClosedDoorsCultivation:PerkType = mk("Munchkin @Closed Doors Cultivation", "Munchkin @Closed Doors Cultivation",
+				"Increase by 3 maximum subpaths that can be cultivated, double final soulskill power (without additional cost increase), double gains from comtemplations and meditations.");
 		public static const MunchkinAtGym:PerkType = mk("Munchkin @Gym", "Munchkin @Gym",
 				"Increase by 5% caps for mutagen, alchemic, knowledge multi.").withBuffs({'str.mult':0.25,'tou.mult':0.25,'spe.mult':0.25,"int.mult":0.25,'wis.mult':0.25,'lib.mult':0.25,'sens':100}, false);
 		public static const MunchkinAtWork:PerkType = mk("Munchkin @Work", "Munchkin @Work",
 				"+10% to OverMax HP / Lust / Wrath / Mana / Soulforce / Fatigue, +2 prestige job slots, +1 hidden job slot.");
 		public static const MunchkinAtBioLab:PerkType = mk("Munchkin @Biolab", "Munchkin @Biolab",
 				"Increase core/train caps for stats by 10. +1 to internal mutations slots capacity (+2 for adaptation slots)");
-		public static const MunchkinAtClosedDoorsCultivation:PerkType = mk("Munchkin @Closed Doors Cultivation", "Munchkin @Closed Doors Cultivation",
-				"+3 to maximum subpaths that can be cultivated, 2x more gains form comtemplations / meditations, 2x final soulskill power (without additional cost increase?");
 		public static const BloodDemonWisdom:PerkType = mk("Blood Demon Wisdom", "Blood Demon Wisdom",
 				"X th Blood demon super perk. (+10% to OverMax HP, -5% blood spells/soulskills cost, +30% blood spells/soulskills power, +10% Base WIS Cap)");
 		public static const AsuraSpeed:PerkType = mk("Asura Speed", "Asura Speed",
@@ -7861,6 +7861,10 @@ public class PerkLib
             DamnationAura.requireCor(60)
                     .requirePerk(DevouringAura)
                     .requireLevel(24);
+            //Tier 6
+        //    CorruptedFlesh.requireCor(80)
+        //            .requirePerk(Masochist)
+        //            .requireLevel(36);
             //------------
             // SOULFORCE
             //------------

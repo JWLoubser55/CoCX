@@ -545,6 +545,7 @@ public class Soulforce extends BaseContent
 				
 			}
 		}
+		if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) dao *= 2;
 		//uzycie w kontemplacji niebianskich skarbow zwiazanych z danym zywiolem daje bonusowe punkty
 		if (!clone && !elementalBody) outputText("After the session ends you managed to progress your Dao of "+daoname+".");
 		if (player.hasStatusEffect(statusEffect)) {
@@ -678,8 +679,10 @@ public class Soulforce extends BaseContent
 
 	//Predict the soulforce change after the meditation
 	public function meditationPredict(hours:int):int {
+		var eXtra:Number = 2;
+		if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) eXtra *= 2;
 		var maxChange:int = sfRegen(hours) //regen from meditation itself
-			+ Math.round(SceneLib.combat.soulforceregeneration2() * 2 * SceneLib.combat.soulforceRecoveryMultiplier() * hours); //from time spent
+			+ Math.round(SceneLib.combat.soulforceregeneration2() * eXtra * SceneLib.combat.soulforceRecoveryMultiplier() * hours); //from time spent
 		return Math.min(maxChange, player.maxOverSoulforce() - player.soulforce);
 	}
 
@@ -1095,6 +1098,10 @@ public class Soulforce extends BaseContent
 	public function accessDemonicEnergyMenuReSoulYes():void {
 		player.demonicenergy -= 2100;
 		player.removePerk(PerkLib.Soulless);
+		if (player.hasPerk(PerkLib.LethiciteConnoisseur)) {
+			player.removePerk(PerkLib.LethiciteConnoisseur);
+			player.perkPoints += 1;
+		}
 		if (player.hasKeyItem("Dimensional Pocket") >= 0) player.removeKeyItem("Dimensional Pocket");
 		doNext(playerMenu);
 	}
