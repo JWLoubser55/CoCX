@@ -66,6 +66,11 @@ public class CombatTeases extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.DemonEnergyThirst)) inotcareanymore *= 2;
 			damagemultiplier += (inotcareanymore * player.statusEffectv1(StatusEffects.DemonEnergyThirstFeed));
 		}
+		if (player.hasStatusEffect(StatusEffects.CorruptedFlesh)) {
+			var maybeidocare:Number = 5;
+			if (player.hasPerk(PerkLib.Soulless)) maybeidocare *= 2;
+			damagemultiplier += (maybeidocare * player.statusEffectv1(StatusEffects.CorruptedFlesh));
+		}
 		if (player.perkv1(IMutationsLib.FiendishOvariesIM) >= 3 && (player.pregnancyType == PregnancyStore.PREGNANCY_IMP || player.pregnancy2Type == PregnancyStore.PREGNANCY_IMP)) {
 			if (player.perkv1(IMutationsLib.FiendishOvariesIM) >= 4) damagemultiplier += 0.5;
 			else damagemultiplier += 0.25;

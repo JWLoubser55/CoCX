@@ -855,8 +855,8 @@ public class PerkLib
 				"You have learned to consume Lethicite in a less wasteful way. Grant twice as much demonic energy as normal when consuming lethicite.",
 				"You've chosen the 'Lethicite Connoisseur' perk. You have learned to consume Lethicite in a less wasteful way. Grant twice as much demonic energy as normal when consuming lethicite.");
 		public static const CorruptedFlesh:PerkType = mk("Corrupted Flesh", "Corrupted Flesh",
-				"While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless.",
-				"You've chosen the 'Corrupted Flesh' perk. While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless.");
+				"While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged, gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless and reset after combat.",
+				"You've chosen the 'Corrupted Flesh' perk. While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged, gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless and reset after combat.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -7862,9 +7862,9 @@ public class PerkLib
                     .requirePerk(DevouringAura)
                     .requireLevel(24);
             //Tier 6
-        //    CorruptedFlesh.requireCor(80)
-        //            .requirePerk(Masochist)
-        //            .requireLevel(36);
+            CorruptedFlesh.requireCor(80)
+                    .requirePerk(Masochist)
+                    .requireLevel(36);
             //------------
             // SOULFORCE
             //------------
@@ -8144,6 +8144,8 @@ public class PerkLib
                     .requirePerk(StoredMomentum)
                     .requireInt(30)
 					.requireWis(30);
+            LethiciteConnoisseur.requirePerk(Soulless)
+					.requireLevel(6);
 			Enhancement.requireLevel(6)
 					.requireAnyPerk(HistoryAlchemist, PastLifeAlchemist);
 			Wizened.requireLevel(6)

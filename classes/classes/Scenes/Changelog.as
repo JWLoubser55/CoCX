@@ -261,10 +261,10 @@ public class Changelog extends BaseContent
 			outputText("-Added another way to get 'Dark Slime Core' perk (Edward Darksong)\n");
 			outputText("-Added 'Empress's Dark Essence' to the permanent perk menu (Edward Darksong)\n");
 			outputText("-Barometz sprite implementation (Lord Shadeogorath)\n");
-			//outputText("-New super perk: Munchkin@Closed Doors Cultivation. Gained by having merely 1 super perk, having 'Deity Job: Munchkin' super munchkin perk, lvl 90+. Effect: Increase by 3 maximum subpaths that can be cultivated, double final soulskill power (without additional cost increase), double gains from comtemplations and meditations.\n");
-			//outputText("-Deity Job: Munchkin level req. decreased from 90 to 75. Munchkin @Gym perk req. of Deity Job: Munchkin is replaced by Munchkin@Closed Doors Cultivation.\n");
-			//outputText("-New tier 1 misc lvl-up perk: Lethicite Connoisseur. Req. Soulless perk. Effect: You have learned to consume Lethicite in a less wasteful way. Grant twice as much demonic energy as normal when consuming lethicite.\n");
-			//outputText("-New tier 6 corruption lvl-up perk: Corrupted Flesh. Req. Masochist perk and 80+ corruption. Effect: While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless.\n");
+			outputText("-New super perk: Munchkin@Closed Doors Cultivation. Gained by having merely 1 super perk, having 'Deity Job: Munchkin' super munchkin perk, lvl 90+. Effect: Increase by 3 maximum subpaths that can be cultivated, double final soulskill power (without additional cost increase), double gains from comtemplations and meditations.\n");
+			outputText("-Deity Job: Munchkin level req. decreased from 90 to 75. Munchkin @Gym perk req. of Deity Job: Munchkin is replaced by Munchkin@Closed Doors Cultivation.\n");
+			outputText("-New tier 1 misc lvl-up perk: Lethicite Connoisseur. Req. Soulless perk. Effect: You have learned to consume Lethicite in a less wasteful way. Grant twice as much demonic energy as normal when consuming lethicite.\n");
+			outputText("-New tier 6 corruption lvl-up perk: Corrupted Flesh. Req. Masochist perk and 80+ corruption. Effect: While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged, gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless and reset after combat.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

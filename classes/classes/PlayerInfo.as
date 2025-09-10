@@ -2537,7 +2537,7 @@ public class PlayerInfo extends BaseContent {
 		}*/
 		if (page == 6) {
 			if (player.superPerkPoints > 0) {
-				if (player.level >= 90) {
+				if (player.level >= 75) {
 					if (player.hasPerk(PerkLib.DeityJobMunchkin)) addButtonDisabled(0, "DJ:M", "You already have this perk.");
 					else {
 						if (player.str >= 150 && player.tou >= 150 && player.spe >= 150 && player.inte >= 150 && player.wis >= 150 && player.lib >= 150 && player.sens >= 100 && player.currentBasicJobs() >= 11 && player.currentAdvancedJobs() >= 6 && player.currentPrestigeJobs() >= 2 && player.currentHiddenJobs() >= 1) {
@@ -2546,20 +2546,20 @@ public class PlayerInfo extends BaseContent {
 						else addButtonDisabled(0, "DJ:M", "You do not meet the requirements: 150+ in str/tou/spe/inte/wis/lib, 100+ in sensitivity, 11 basic jobs, 6 advanced jobs, 2 prestige jobs, and 1 hidden job.");
 					}
 				}
-				else addButtonDisabled(0, "DJ:M", "You need to reach level 75 first.");/*
+				else addButtonDisabled(0, "DJ:M", "You need to reach level 75 first.");
 				if (player.level >= 90) {
 					if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) addButtonDisabled(1, "M(at)CDC", "You already have this perk.");
 					else {
-						if (player.hasPerk(PerkLib.DeityJobMunchkin)) addButton(1, "M(at)CDC", perkMunchkinAtGym).hint("Choose the 'Munchkin @Closed Doors Cultivation' super munchkin perk. (Increase by 3 maximum subpaths that can be cultivated, double final soulskill power (without additional cost increase), double gains from comtemplations and meditations)");
+						if (player.hasPerk(PerkLib.DeityJobMunchkin)) addButton(1, "M(at)CDC", perkMunchkinAtClosedDoorsCultivation).hint("Choose the 'Munchkin @Closed Doors Cultivation' super munchkin perk. (Increase by 3 maximum subpaths that can be cultivated, double final soulskill power (without additional cost increase), double gains from comtemplations and meditations)");
 						else addButtonDisabled(1, "M(at)CDC", "You do not yet have the 'Deity Job: Munchkin' super munchkin perk.");
 					}
 				}
-				else addButtonDisabled(1, "M(at)CDC", "You need to reach level 90 first.");*/
+				else addButtonDisabled(1, "M(at)CDC", "You need to reach level 90 first.");
 				if (player.level >= 105) {
 					if (player.hasPerk(PerkLib.MunchkinAtGym)) addButtonDisabled(2, "M(at)G", "You already have this perk.");
 					else {
-						if (player.hasPerk(PerkLib.DeityJobMunchkin)) addButton(2, "M(at)G", perkMunchkinAtGym).hint("Choose the 'Munchkin @Gym' super munchkin perk. (+25% to Str/Tou/Spe/Inte/Wis/Lib multi, +100 to sensitivity, increase the caps for mutagen, alchemic, and knowledge multipliers by 5%)");
-						else addButtonDisabled(2, "M(at)G", "You do not yet have the 'Deity Job: Munchkin' super munchkin perk.");//Munchkin @Closed Doors Cultivation
+						if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) addButton(2, "M(at)G", perkMunchkinAtGym).hint("Choose the 'Munchkin @Gym' super munchkin perk. (+25% to Str/Tou/Spe/Inte/Wis/Lib multi, +100 to sensitivity, increase the caps for mutagen, alchemic, and knowledge multipliers by 5%)");
+						else addButtonDisabled(2, "M(at)G", "You do not yet have the 'Munchkin @Closed Doors Cultivation' super munchkin perk.");
 					}
 				}
 				else addButtonDisabled(2, "M(at)G", "You need to reach level 105 first.");
@@ -2583,6 +2583,8 @@ public class PlayerInfo extends BaseContent {
 			else {
 				if (player.hasPerk(PerkLib.DeityJobMunchkin)) addButtonDisabled(0, "DJ:M", "You already have this perk.");
 				else addButtonDisabled(0, "DJ:M", "You do not have enough super perk points to obtain this perk.");
+				if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) addButtonDisabled(1, "M(at)CDC", "You already have this perk.");
+				else addButtonDisabled(1, "M(at)CDC", "You do not have enough super perk points to obtain this perk.");
 				if (player.hasPerk(PerkLib.MunchkinAtGym)) addButtonDisabled(2, "M(at)G", "You already have this perk.");
 				else addButtonDisabled(2, "M(at)G", "You do not have enough super perk points to obtain this perk.");
 				if (player.hasPerk(PerkLib.MunchkinAtWork)) addButtonDisabled(3, "M(at)W", "You already have this perk.");
@@ -3023,6 +3025,13 @@ public class PlayerInfo extends BaseContent {
 		player.createPerk(PerkLib.DeityJobMunchkin,0,0,0,0);
 		clearOutput();
 		outputText("You gained the 'Deity Job: Munchkin' super munchkin perk. (Because it's too cool to merely be a super perk, right?)");
+		doNext(superPerkBuyMenu, 6);
+	}
+	private function perkMunchkinAtClosedDoorsCultivation():void {
+		player.superPerkPoints--;
+		player.createPerk(PerkLib.MunchkinAtClosedDoorsCultivation,0,0,0,0);
+		clearOutput();
+		outputText("You gained the 'Munchkin @Closed Doors Cultivation' super munchkin perk. (Because it's too cool to merely be a super perk, right?)");
 		doNext(superPerkBuyMenu, 6);
 	}
 	private function perkMunchkinAtGym():void {

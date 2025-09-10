@@ -1034,6 +1034,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const ConsumingDarkness:StatusEffectType         = mkCombat("Consuming darkness");
 		public static const ControlFreak:StatusEffectType			   = mkCombat("Control Freak");
 		public static const CorpseExplosion:StatusEffectType           = mkCombat("Corpse Explosion");
+		public static const CorruptedFlesh:StatusEffectType            = mkCombat("Corrupted Flesh");
 		public static const CouatlHurricane:StatusEffectType           = mkCombat("Coualt Hurricane");
 		public static const CounterAction:StatusEffectType             = mkCombat("Counter Action");
         public static const CurseOfDesire:StatusEffectType             = mkCombat("Curse of Desire");

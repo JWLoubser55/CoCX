@@ -3533,6 +3533,13 @@ use namespace CoC;
 				if (damagetype == 0 && flags[kFLAGS.YAMATA_MASOCHIST] > 1 && flags[kFLAGS.AIKO_BOSS_COMPLETE] < 1) {
 					dynStats("lus", int(damage / 8), "scale", false);
 				}
+				if (hasPerk(PerkLib.CorruptedFlesh) && cor >= 80) {
+					var add:Number = 0;
+					add += statusEffectv1(StatusEffects.CorruptedFlesh);
+					if (add < level) add += 1;
+					if (hasStatusEffect(StatusEffects.CorruptedFlesh)) changeStatusValue(StatusEffects.CorruptedFlesh,1,add);
+					else createStatusEffect(StatusEffects.CorruptedFlesh,add,0,0,0);
+				}
 				//Prevent negatives
 				if (HP < minHP()){
 					if (hasPerk(PerkLib.Immortality)) takeLustDamage(minHP() - HP);
@@ -8633,4 +8640,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}

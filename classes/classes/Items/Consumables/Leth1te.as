@@ -32,6 +32,7 @@ public class Leth1te extends Consumable {
         outputText("You grab the crystal and gulp it down, smiling contently as you feel it dissolve into your core and suffuse your body with raw power.");
 		var gains:Number = 100;
 		if (player.hasPerk(PerkLib.Phylactery)) gains *= 0.5;
+		if (player.hasPerk(PerkLib.LethiciteConnoisseur)) gains *= 2;
 		if (player.demonicenergy + gains > player.maxDemonicEnergy()) gains = player.maxDemonicEnergy() - player.demonicenergy;
 		player.demonicenergy += gains;
 		outputText(" (+"+gains+" DE)");
