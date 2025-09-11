@@ -12,6 +12,8 @@ import classes.BodyParts.LowerBody;
 import classes.GlobalFlags.kACHIEVEMENTS;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.Dungeons.RiverDungeon;
+import classes.Scenes.NPCs.DianaFollower;
+import classes.Scenes.NPCs.WaizAbiFollower;
 import classes.Scenes.SceneLib;
 import classes.internals.SaveableState;
 import classes.Scenes.API.MultiBuy;
@@ -92,7 +94,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			addButton(0, "Drink", drinkAlcohol);
 			addButton(2, "Felix", shadyPerson).hint("A strange two-headed chimera with two tails is sitting near the bar.");
 			addButton(4, "Adv.Guild", SceneLib.adventureGuild.BoardkeeperYangMain);
-			addButton(5, "Monkey", SceneLib.waizabi.bimboMonkey).hint("You see a massive-breasted woman sitting at a table on your right. At first, she seems human, but as you look, her monkey tail flicks up, grabbing her drink and bringing it to her lips. Her body is heavily muscled, almost amazonian.");//monkey bimbo go go - Waiz'abi
+			if (WaizAbiFollower.WaizAbiState < 2) addButton(5, "Monkey", SceneLib.waizabi.bimboMonkey).hint("You see a massive-breasted woman sitting at a table on your right. At first, she seems human, but as you look, her monkey tail flicks up, grabbing her drink and bringing it to her lips. Her body is heavily muscled, almost amazonian.");
 			if (workHoursMadam() || workHoursTemptress()) addButton(6, "5/0/0", tableNo5);
 			else addButtonDisabled(6, "5/0/0", "Table No. 5 is curently empty.");
 			if (flags[kFLAGS.MICHIKO_FOLLOWER] < 1) addButton(8, "???", SceneLib.michikoFollower.firstMeetingMichiko).hint("You see a suspicious looking squirrel in one corner, nursing a drink and small bowl of peanuts.");
@@ -105,8 +107,10 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			if (flags[kFLAGS.NEISA_FOLLOWER] == 3) addButton(10, "Neisa", NeisabutPCgotKOd);
 			if (flags[kFLAGS.NEISA_FOLLOWER] == 4 || flags[kFLAGS.NEISA_FOLLOWER] == 5) addButton(10, "Neisa", meetingNeisaPostDungeonExploration).hint("Neisa is sitting at a table enjoying one of the local drinks.");
 			if (flags[kFLAGS.NEISA_FOLLOWER] == 6) addButton(10, "Neisa", meetingNeisaPostDungeonExploration2).hint("Neisa is sitting at a table enjoying one of the local drinks.");
-			if (DianaTavernTalks1) addButton(11, "Healer", dianaAtJttEMain).hint("You see a horse woman healer sitting at a table on your left.");
-			else addButton(11, "???", dianaAtJttEMain).hint("You see a horse woman sitting at a table on your left.");
+			if (DianaFollower.DianaState < 3) {
+				if (DianaTavernTalks1) addButton(11, "Healer", dianaAtJttEMain).hint("You see a horse woman healer sitting at a table on your left.");
+				else addButton(11, "???", dianaAtJttEMain).hint("You see a horse woman sitting at a table on your left.");
+			}
 			addButton(14, "Leave", heXinDao.riverislandVillageStuff);
 		}
 
@@ -313,26 +317,41 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 				DianaTavernTalks1 = true;
 			}
 			menu();
-			if (player.HP < player.maxOverHP()) addButtonIfTrue(0, "Healing", dianaAtJttEMainHeal, "You need to have 50 gems.", player.gems >= 50);
-			else addButtonDisabled(0, "Healing", "You're fully healed already.");
+			addButton(1, "Talk", dianaAtJttEMainTalk);
+			if (player.HP < player.maxOverHP()) addButtonIfTrue(5, "Healing", dianaAtJttEMainHeal, "You need to have 50 gems.", player.gems >= 50);
+			else addButtonDisabled(5, "Healing", "You're fully healed already.");
 			if ((player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || player.statStore.hasBuff("Damaged")) && flags[kFLAGS.DIANA_CURE_COOLDOWN] <= 0) {
-				addButtonIfTrue(1, "C.C.(Base)", dianaAtJttEMainCurses1, "You need to have 150 gems.", player.gems >= 150, "Cure curses that affect stats non-multiplier bonuses.");
-				addButtonIfTrue(2, "C.C.(Mult)", dianaAtJttEMainCurses2, "You need to have 150 gems.", player.gems >= 150, "Cure curses that affect stats multiplier bonsues.");
+				addButtonIfTrue(6, "C.C.(Base)", dianaAtJttEMainCurses1, "You need to have 150 gems.", player.gems >= 150, "Cure curses that affect stats non-multiplier bonuses.");
+				addButtonIfTrue(7, "C.C.(Mult)", dianaAtJttEMainCurses2, "You need to have 150 gems.", player.gems >= 150, "Cure curses that affect stats multiplier bonsues.");
 			}
 			else if (flags[kFLAGS.DIANA_CURE_COOLDOWN] > 0) {
-				addButtonDisabled(1, "C.C.(Base)", "Healer is not yet ready to cure your curses again.");
-				addButtonDisabled(2, "C.C.(Mult)", "Healer is not yet ready to cure your curses again.");
+				addButtonDisabled(6, "C.C.(Base)", "Healer is not yet ready to cure your curses again.");
+				addButtonDisabled(7, "C.C.(Mult)", "Healer is not yet ready to cure your curses again.");
 			}
 			else {
-				addButtonDisabled(1, "C.C.(Base)", "You don't have any curses to cure. (non-multiplier)");
-				addButtonDisabled(2, "C.C.(Mult)", "You don't have any curses to cure. (multiplier)");
+				addButtonDisabled(6, "C.C.(Base)", "You don't have any curses to cure. (non-multiplier)");
+				addButtonDisabled(7, "C.C.(Mult)", "You don't have any curses to cure. (multiplier)");
 			}
-			addButton(3, "Uncurse", SceneLib.dianaScene.dianaAtJttECursedItemsRemoval1)
+			addButton(8, "Uncurse", SceneLib.dianaScene.dianaAtJttECursedItemsRemoval1)
 				.hint("Ask horse healer to remove your cursed item. Costs 500 gems. ")
 				.disableIf(player.gems < 500, "Ask horse healer to remove your cursed item. Costs 500 gems (Can't afford).")
 				.disableIf(player.equippedKnownCursedItems().length == 0 && player.carriedKnownCursedItems().length == 0, "You don't have any cursed items");
-			if (player.carryUniqueCursedItems()) addButton(4, "U.Uncurse", SceneLib.dianaScene.dianaAtJttECursedItemsRemoval2);
+			if (player.carryUniqueCursedItems()) addButton(9, "U.Uncurse", SceneLib.dianaScene.dianaAtJttECursedItemsRemoval2);
 			addButton(14, "Back", curry(enteringInn,false));
+		}
+		public function dianaAtJttEMainTalk():void {
+			clearOutput();
+			if (DianaTavernTalks2) outputText("\"<i>Still not needing any treatment?</i>\" She looks a bit disappointed. \"<i>As per last time if no one comes, I can talk for a few minutes. But patients in need take precedence!</i>\"");
+			else {
+				outputText("\"<i>Not in need of medical treatment?</i>\" She hesitates for a moment. \"<i>Well, maybe if no patient in need comes, I can spare a few minutes.</i>\"");
+				DianaTavernTalks2 = true;
+			}
+			menu();
+			addButton(0, "Name?", SceneLib.dianaScene.dianaTalkName);
+			addButton(1, "Yourself", SceneLib.dianaScene.dianaTalkYourself);
+			addButton(2, "Job", SceneLib.dianaScene.dianaTalkJob);
+			if (DianaFollower.DianaState > 0 && DianaFollower.DianaState != 2) addButton(4, "Invite2Camp", SceneLib.dianaScene.dianaTalkInvite2Camp);
+			addButton(14, "Back", dianaAtJttEMain);
 		}
 		public function dianaAtJttEMainHeal():void {
 			clearOutput();

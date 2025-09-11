@@ -8,40 +8,125 @@ import classes.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.SceneLib;
 import classes.Items.*;
+import classes.internals.SaveableState;
 
 import coc.view.ButtonDataList;
 
-public class DianaFollower extends NPCAwareContent
+public class DianaFollower extends NPCAwareContent implements SaveableState
 	{
 
-/*
-public function aaa():void {
+		public static var DianaState:Number;
+		//public static var AhriTavernTalks:Boolean;
+		//public static var DianaTavernTalks3:Number;
+
+		public function stateObjectName():String {
+			return "DianaFollower";
+		}
+
+		public function resetState():void {
+			DianaState = 0;
+			//AhriTavernTalks = false;
+			//DianaTavernTalks3 = 0;
+		}
+
+		public function saveToObject():Object {
+			return {
+				"DianaState": DianaState//,
+				//"AhriTavernTalks": AhriTavernTalks,
+				//"DianaTavernTalks3": DianaTavernTalks3
+			};
+		}
+
+		public function loadFromObject(o:Object, ignoreErrors:Boolean):void {
+			if (o) {
+				DianaState = o["DianaState"];
+				//AhriTavernTalks = valueOr(o["AhriTavernTalks"], false);
+				//DianaTavernTalks3 = valueOr(o["DianaTavernTalks3"], 0);
+			} else {
+				// loading from old save
+				resetState();
+			}
+		}
+		
+		public function DianaFollower() {
+			Saves.registerSaveableState(this);
+		}
+
+public function dianaTalkName():void {
+	clearOutput();
+	outputText("\"<i>I'm sorry but this is nothing i'm willing to talk about.</i>\" She shakes her head, \"<i>That's also a very personal matter.</i>\" As she gently dismissed you, a visibly wounded patient hobbled to the table. \"<i>Since you do not need any treatment, I have to attend to the other patients.</i>\"");
+	doNext(SceneLib.journeyToTheEast.dianaAtJttEMainTalk);
+	advanceMinutes(5);
+}
+public function dianaTalkYourself():void {
+	clearOutput();
+	outputText("\"<i>Oh, I'm nobody. Just another healer, assisting anyone in the village that needs my aid… Like many others in the village…</i>\"");
+	doNext(SceneLib.journeyToTheEast.dianaAtJttEMainTalk);
+	advanceMinutes(5);
+}
+public function dianaTalkJob():void {
+	clearOutput();
+	outputText("\"<i>What kind of job?</i>\"n\n");
+	outputText("You intended one that would require leaving the village.\n\n");
+	outputText("\"<i>Leaving He'Xin'Dao?</i>\" She hesitates. \"<i>I do not feel the need to move anywhere. Perhaps to somewhere that is lacking a healer. Maybe...</i>\"\n\n");
+	if (DianaState < 1) DianaState = 1;
+	doNext(SceneLib.journeyToTheEast.dianaAtJttEMainTalk);
+	advanceMinutes(10);
+}
+public function dianaTalkInvite2Camp():void {
+	if (DianaState > 2) dianaTalkInvite2CampRepeat();
+	else dianaTalkInvite2CampFirst();
+}
+public function dianaTalkInvite2CampFirst():void {
+	clearOutput();
+	outputText("After thinking it over, you feel that your [camp] would need a dedicated healer, one that could help with any injuries or negative ailments.\n\n");
+	outputText("She ponders the thought for only a fleeting moment, \"<i>I would need to check if there will be anyone that could replace me. Please come tomorrow.</i>\"\n\n");
+	DianaState = 2;
+	doNext(SceneLib.journeyToTheEast.dianaAtJttEMainTalk);
+	advanceMinutes(10);
+}
+public function dianaTalkInvite2CampRepeat():void {
+	clearOutput();
+	outputText("Seeing the healer again, you ask if she checked the matter you discussed with her.\n\n");
+	outputText("\"<i>Um. I do.</i>\" She sounds a bit... disappointed or perhaps resigned. \"<i>Apparently, there is a surplus of healers in this village, and the leading council of elders aren't particularly interested in stopping one or two of healers from moving to a different settlement.</i>\"\n\n");
+	outputText("Does it mean if she wants, she could just move out?\n\n");
+	outputText("After a short sigh, she answers. \"<i>Yes. I just need to notify the elders about it and then would be free to leave. So, you still need a healer in your [camp]?</i>\"\n\n");
+	menu();
+	addButton(1, "No", dianaTalkInvite2CampRepeatNo);
+	addButtonDisabled(3, "Yes", "Owen. Yes that right. You left owen turn on at the camp so you must come be back asap.");
+}
+public function dianaTalkInvite2CampRepeatNo():void {
+	clearOutput();
+	outputText("You need to prepare a few things at home first before she can join you.\n\n");
+	outputText("\"<i>Well, okay. Just let me know.</i>\" She replies in low spirits, but it does not last long as a patient appears, thus she excuses herself before you.\n\n");
+	doNext(SceneLib.journeyToTheEast.dianaAtJttEMainTalk);
+	advanceMinutes(15);
+}
+public function dianaTalkInvite2CampRepeatYes():void {
+	clearOutput();
+	outputText("\"<i></i>\"");
+	doNext(SceneLib.journeyToTheEast.dianaAtJttEMainTalk);
+	advanceMinutes(45);
+}
+
+public function dianaMenuMain():void {
+	
+	outputText("\"<i></i>\"");
 	
 }
 
-public function aaa():void {
+public function dianaAppearance():void {
+	
+	outputText("\"<i></i>\"");
 	
 }
 
-public function aaa():void {
+public function dianaTalkMenuMain():void {
+	
+	outputText("\"<i></i>\"");
 	
 }
 
-public function aaa():void {
-	
-}
-
-public function aaa():void {
-	
-}
-
-public function aaa():void {
-	
-}
-
-public function aaa():void {
-	
-}*/
 public function uncurseCost(item:IDynamicItem, equipped:Boolean):int {
 	var cost:int = 250 * (1 + item.rarity);
 	if (equipped) cost *= 2;

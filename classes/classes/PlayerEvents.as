@@ -28,6 +28,7 @@ import classes.Scenes.Dreams;
 import classes.Scenes.Dungeons.DeepCave.ValaScene;
 import classes.Scenes.Holidays;
 import classes.Scenes.NPCs.BelisaFollower;
+import classes.Scenes.NPCs.DianaFollower;
 import classes.Scenes.NPCs.DivaScene;
 import classes.Scenes.NPCs.DriderTown;
 import classes.Scenes.NPCs.LilyFollower;
@@ -1480,6 +1481,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 				//Reset clone creation tracker
 				if (camp.gcc(true) && camp.gcc() == 0) player.removeStatusEffect(StatusEffects.PCClone);
+				//Misc
+				if (DianaFollower.DianaState == 2) DianaFollower.DianaState = 3;
 				//Equipment daily events
 				//Scandalous succubus armor and other corruption updates
 				if ((player.armor == armors.SCANSC || player.countMiscJewelry(miscjewelries.DMAGETO) > 0) && player.cor < 100) {
@@ -1500,7 +1503,6 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					}
 					else player.buff("Sagittarius Focus").remove();
 				}
-
 				if (player.armor == armors.CNUNOUT)
 				{
 					var stage:int = 0;
@@ -1595,7 +1597,6 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						}
 					}
 				}
-
 
 				if (player.hasStatusEffect(StatusEffects.MeetXuviel) && player.statusEffectv2(StatusEffects.MeetXuviel) > 0) player.addStatusValue(StatusEffects.MeetXuviel, 2, -1);
 				if (player.hasStatusEffect(StatusEffects.MeetXuviel2) && player.statusEffectv1(StatusEffects.MeetXuviel2) > 0) player.addStatusValue(StatusEffects.MeetXuviel2, 1, -1);
