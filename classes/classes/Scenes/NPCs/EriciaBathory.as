@@ -16,7 +16,7 @@ import classes.internals.*;
 		
 		public function EriciaBathory() 
 		{
-			
+			//winter werewolf?
 		}
 		
 	}

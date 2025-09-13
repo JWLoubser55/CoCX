@@ -231,6 +231,16 @@ public class Mountain extends BaseContent
 				call:ceraphFn,
 				mods:[fn.ifLevelMin(2)]
 			}, {
+				name: "coccoon",
+				label : "Coccoon",
+				kind  : 'event',
+				unique: true,
+				when: function():Boolean {
+					return flags[kFLAGS.ECIHTEL_FOLLOWER] < 1;
+				},
+				chance: mountainChance,
+				call: SceneLib.ecihtelScene.coccoonFounded
+			}, {
 				name: "lactoblasters",
 				label : "Gun Parts",
 				kind  : 'item',
@@ -411,7 +421,7 @@ public class Mountain extends BaseContent
 				},
 				chance: mountainChance,
 				call: DivaScene.instance.encounter
-			},{
+			}, {
 				name: "quarry",
 				label : "Quarry",
 				kind  : 'place',
@@ -420,12 +430,12 @@ public class Mountain extends BaseContent
 				},
 				chance: 4,
 				call: camp.cabinProgress.quarrySite
-			},{
+			}, {
 				name: "lightelf",
 				label : "Light Elf",
 				kind : 'monster',
 				call: lightelfScene.introLightELfScout
-			},{
+			}, {
 				name: "derpnade launcher",
 				label : "Gun Parts",
 				kind  : 'item',

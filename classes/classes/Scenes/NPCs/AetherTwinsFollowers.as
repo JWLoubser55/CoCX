@@ -1185,12 +1185,21 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 				if (player.hasPerk(PerkLib.DualWield)) addButton(3, "HtDualLWhips", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Whip", 2);
 				else addButtonDisabled(3, "HtDualLWhips", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}
+			if (AetherTwinsShape == "Human-tier Large Scythe and Large Shield") addButtonDisabled(5, "HtLScythe&LShield", "They are currently in Human-tier Large Scythe and Large Shield form.");
+			else addButton(5, "HtLScythe&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Scythe", 2);
+			if (AetherTwinsShape == "Human-tier Dual Large Scythes") addButtonDisabled(6, "HtDualLScythes", "They are currently in Human-tier Dual Large Scythes form.");
+			else {
+				if (player.hasPerk(PerkLib.DualWield)) addButton(6, "HtDualLWhips", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Scythe", 2);
+				else addButtonDisabled(6, "HtDualLScythes", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}
 		}
 		else {
 			addButtonDisabled(0, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(1, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(2, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(3, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(5, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(6, "???", "After the twins' fifth evolution.");
 		}
 		addButton(4, "Next", aethertwinsFollowersMorphMain, page - 2);
 		addButton(9, "Previous", aethertwinsFollowersMorphMain, page - 1);

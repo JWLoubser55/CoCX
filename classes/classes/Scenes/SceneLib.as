@@ -158,9 +158,9 @@ public class SceneLib {
 
     public static var dinahScene:DinahFollower = new DinahFollower();
 
-    public static var electraScene:ElectraFollower = new ElectraFollower();
+    public static var ecihtelScene:EcihtelFollower = new EcihtelFollower();
 
-    //public static var NadiaFollower:NadiaFollower = new NadiaFollower();
+    public static var electraScene:ElectraFollower = new ElectraFollower();
 
     public static var emberScene:EmberScene = new EmberScene();
 	

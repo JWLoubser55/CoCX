@@ -363,6 +363,7 @@ public class CharViewContext extends ExecContext {
 					PlayerHasAnOffhandMaceTwin: player.hasAetherTwinsTierLeftMace(),
 					PlayerHasAnOffhandHammerTwin: player.hasAetherTwinsTierLeftHammer(),
 					PlayerHasAnOffhandWhipTwin: player.hasAetherTwinsTierLeftWhip(),
+					PlayerHasAnOffhandScytheTwin: player.hasAetherTwinsTierLeftScythe(),
 					PlayerHasADualWeapon: player.isDualWield(),
 					PlayerHasADualMeleeWeapon: player.isDualWieldMelee(),
 					PlayerHasADualRangedWeapon: player.isDualWieldRanged(),
