@@ -979,7 +979,7 @@ package classes.Scenes {
 			outputText(title);
 
 			const cocksDesc: String = CoC.instance.playerAppearance.describeCocks();
-			outputText(player.hasCock() ?  cocksDesc : "You have no cock.");
+			outputText(player.hasCockCockOnly() ?  cocksDesc : "You have no cock.");
 			outputText("[pg]Perhaps you'd like to change this?");
 
 			var totCock: int = player.cockTotal();
