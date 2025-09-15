@@ -21,7 +21,7 @@ public function coccoonFounded():void {
 	outputText("Now closer, it appears to be some sort of cocoon with a partially translucent surface that shows something-- or someone inside. Seemingly left out to the wild for some time, it bears signs of various natural weapons like claw or bite marks, yet despite the attempts at it, the surface hasn't been pierced anywhere.\n\n");
 	menu();
 	addButton(1, "Leave", coccoonFoundedLeave);
-	addButtonDisabled(3, "Crack", "Maybe you shouldn't crack this nut open... yet?");
+	addButton(3, "Crack", coccoonFoundedCrack);
 }
 public function coccoonFoundedLeave():void {
 	clearOutput();
