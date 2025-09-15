@@ -1278,7 +1278,7 @@ public class Exploration extends BaseContent implements SaveableState
 						unique: true,
 						night : true,
 						when  : function ():Boolean {
-							return (player.racialScore(Races.VAMPIRE) >= 20 || player.racialScore(Races.DRACULA) >= 22) && player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv3(StatusEffects.Familiar) == 0;
+							return (player.isRace(Races.VAMPIRE, 2) || player.isRace(Races.DRACULA)) && player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv3(StatusEffects.Familiar) == 0;
 						},
 						call  : creatingTheServant
 					}, {
@@ -1831,4 +1831,4 @@ public class Exploration extends BaseContent implements SaveableState
 		}
 
 	}
-}
+}

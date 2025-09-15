@@ -159,7 +159,7 @@ public class Syth extends Monster
 		{
 			this.a = "the ";
 			this.short = "salamander";//Syth(ril)
-			this.imageName = "syth";//make him bro-looking/but would he have bro mind or not...up to decide
+			this.imageName = "sythril";//make him bro-looking/but would he have bro mind or not...up to decide
 			this.long = "";
 			this.createCock(12,2,CockTypesEnum.DEMON);
 			this.createCock(12,2,CockTypesEnum.DEMON);

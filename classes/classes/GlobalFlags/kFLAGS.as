@@ -1913,10 +1913,10 @@ public static const UNKNOWN_FLAG_NUMBER_01904:int                               
 public static const UNKNOWN_FLAG_NUMBER_01905:int                                   = 1905;
 public static const UNKNOWN_FLAG_NUMBER_01906:int                                   = 1906;
 public static const UNKNOWN_FLAG_NUMBER_01907:int                                   = 1907;
-public static const UNKNOWN_FLAG_NUMBER_01908:int                                   = 1908;
-public static const UNKNOWN_FLAG_NUMBER_01909:int                                   = 1909;
-public static const UNKNOWN_FLAG_NUMBER_01910:int                                   = 1910;
-public static const UNKNOWN_FLAG_NUMBER_01911:int                                   = 1911;
+public static const ELISE_FOLLOWER:int                                   			= 1908;
+public static const SYTHRIL_FOLLOWER:int                                   			= 1909;
+public static const IVAN_FOLLOWER:int                                   			= 1910;
+public static const STELLA_FOLLOWER:int                                   			= 1911;
 public static const ECIHTEL_DEFEATS_COUNTER:int                                   	= 1912;
 public static const ECIHTEL_LVL_UP:int                                   			= 1913;
 public static const ECIHTEL_FOLLOWER:int                                   			= 1914;

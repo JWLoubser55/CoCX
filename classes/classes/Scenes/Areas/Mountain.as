@@ -236,7 +236,7 @@ public class Mountain extends BaseContent
 				kind  : 'event',
 				unique: true,
 				when: function():Boolean {
-					return flags[kFLAGS.ECIHTEL_FOLLOWER] < 1;
+					return flags[kFLAGS.ECIHTEL_FOLLOWER] < 2;
 				},
 				chance: mountainChance,
 				call: SceneLib.ecihtelScene.coccoonFounded

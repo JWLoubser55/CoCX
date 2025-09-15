@@ -19,11 +19,12 @@ public function trapDoor():void {
 	}
 	else {
 		outputText("<b>THIS IS A PLACEHOLDER INTRODUCTION. The first real intro will be added once it’s completely written… and Orm have times to code all the bloated shit in. Apology for the inconvenience.</b>\n\n");
-		outputText("You enter the trap door.\n\n");
-		outputText("You drop into the slaver’s cave, this time landing on your feet. You make your way down the dark tunnel until you reach a familiar scene. You find a snake-morph, in particular clothing, an eastern garment fashion in black and red color. He’s setting a new game on a stone slap, from the looks of it, you believe it’s Mahjong. \"<i>Ah, new guestsss</i>\" He quickly finishes setting the game before getting up to greet you.\n\n");
-		outputText("\"<i>My name is Sssshaytan, for I welcome to our little humble shop.</i>\" He said as his tongue continues rolls out from this words.\n\n");
-		outputText("You asked, what does he sells here. The snakeman simply said \"<i>Why, Ssslav- I mean, people of course. People who are…. Unfortunate enough to be locked behind cagessss and chains.  Mostly foolsss who didn’t have enough coinssss, runaway fugitivesss and many more, ssss~</i>\"\n\n");
-		outputText("\"<i>I assssume you are here to check my waresss, perhapsss find a diamond in the rough?</i>\" He bows and gestures you to follow, leading through the tunnel of torches. You find yourself in the room, filled wall to wall with cages of various slaves. He turns to look at you, gesturing at the many slaves he holds, \"<i>Feel free to browssse. If any of them catch your eye, then let me know.</i>\" You thank Shaytan, and turn to face the cages.\n\n");
+		outputText("You enter the trap door, finding it leading into what looks to be a cave. Seeing no resistance, you decide to jump in.\n\n");
+		outputText("Dropping into the cave, you land on your feet. You make your way down the dark tunnel before you until you reach an odd scene. You find a snake-morph in peculiar clothing, the garment seemingly eastern in fashion sense, colored with black and red. He’s setting a game on a stone slap table. From the looks of it, you believe it’s Mahjong. \"<i>Ah, new guessstsss.</i>\" He finishes setting the game quickly before getting up to greet you.\n\n");
+		outputText("\"<i>My name isss Shaytan, and I welcome you to our little humble shop.</i>\" He says, his tongue rolling out with every S in his words.\n\n");
+		outputText("Curious, you ask what he sells here. The snake chuckles, a sinister grin on his face, \"<i>Why, Sssla- I mean, people of courssse. People who are... Unfortunate enough to be locked behind cagesss and bound by chainsss.  Many are foolsss who didn’t have enough capital, runaway fugitivesss, and so much more.</i>\"\n\n");
+		outputText("\"<i>I assssume you are here to check my waresss, perhapsss find a diamond in the rough?</i>\" He leans down and gestures for you to follow, leading you towards a tunnel lined with torches. At the end, you find yourself in the room filled wall to wall with locked cages. \"<i>Before you can shop, all shoppersss get a cussstomary pendant.</i>\" Reaching into a desk, he gives you a small glass pendant. \"<i>It letsss me know you are a cussstomer, and not sssome ssself righteousss fool.</i>\"\n\n");
+		outputText("He turns to you, gesturing at the many slaves he holds captive, \"<i>Feel free to browssse. If any of them catch your eye, I will be there to assssissst you.</i>\" You sheepishly thank Shaytan, and turn to face the cages.\n\n");
 		flags[kFLAGS.BAAZAR_SLAVE_DEN] = 1;
 	}
 	menu();
@@ -34,7 +35,7 @@ public function trapDoor():void {
 }
 private function trapDoorLeave():void {
 	clearOutput();
-	outputText("You tell Shaytan you did all you wanted today, and that you’ll be leaving now. You could see the serpent’s eye twitch, seeing as you bought nothing and only wastes his time. \"<i>I sssee,</i>\" he holds back his annoyance, and remains courteous, \"<i>very well. May you find something worth buying on your next visit.</i>\" He gives you a short bow, and you turn and walk away.\n\n");
+	outputText("You tell Shaytan you did all you wanted today, and that you’ll be leaving now. You could see the serpent’s eye twitch, seeing as you bought nothing and only wastes his time. \"<i>I sssee,</i>\" he holds back his annoyance, and remains courteous, \"<i>very well. May you find sssomething worth buying on your nexsst visssit.</i>\" He gives you a short bow, and you turn and walk away.\n\n");
 	outputText("Exiting the trapdoor, you spot something from the corner of your eye, two familiar figures who quickly retreat as you exit. It seems Shaytan’s guards were on high alert, but that doesn't matter to you right now. You ignore them and return to the Bazzar.\n\n");
 	doNext(SceneLib.bazaar.enterTheBazaar);
 }
@@ -42,64 +43,57 @@ private function browseSlaves():void {
 	clearOutput();
 	outputText("Wandering around the room, you find various beings that seem like they’d be appealing to own. You’re not sure what you would buy them for yet, but you could always use more hands at your camp, there should be no harm in a purchase or two. A few come to mind, which do you want?\n\n");
 	menu();
-	addButton(0, "Slave 1", browseSlaves1);
-	addButton(1, "Slave 2", browseSlaves2);
-	if (player.isRace(Races.VAMPIRE, 2) || player.isRace(Races.DRACULA)) addButton(2, "Slave 3", browseSlaves3);
-	addButton(14, "Back", trapDoor);//min price is 100 spirit stones or 1,000 gems - 1:10 prices exchange ratio (spirit stones for cultivator slaves and gems for rest)
+	if (flags[kFLAGS.STELLA_FOLLOWER] >= 1) addButtonDisabled(0, "Slave 1", "SOLD");
+	else {
+		addButton(0, "Slave 1", browseSlavesStella);
+	}
+	if (flags[kFLAGS.IVAN_FOLLOWER] >= 1) addButtonDisabled(1, "Slave 21", "SOLD");
+	else {
+		addButton(1, "Slave 2", browseSlavesIvan);
+	}
+	if (flags[kFLAGS.SYTHRIL_FOLLOWER] >= 1) addButtonDisabled(2, "Slave 3", "SOLD");
+	else {
+		addButton(2, "Slave 3", browseSlavesSythril);
+	}
+	if (flags[kFLAGS.ELISE_FOLLOWER] >= 1) addButtonDisabled(3, "Slave 4", "SOLD");
+	else {
+		if (player.isRace(Races.VAMPIRE, 2) || player.isRace(Races.DRACULA)) addButton(3, "Slave 4", browseSlavesElise);
+	}
+	addButton(14, "Back", trapDoor);//min price is 1,000 spirit stones or 10,000 gems - 1:10 prices exchange ratio (spirit stones for cultivator slaves and gems for rest)
 }
-private function browseSlavesNo():void {
+private function browseSlavesStella():void {
 	clearOutput();
-	outputText("\"<i>I underssstand, no one perssson desssiresss every available tool.</i>\" He backs away, returning to his counter where he watches you, \"<i>If you find sssomething elssse interesssting, I will be there.</i>\"\n\n");
-	outputText("You back away from the cage, continuing your aimless wandering through the cave of slaves. Perhaps something else here can be of use to you.\n\n");
-	doNext(browseSlaves);
-}
-private function browseSlaves1():void {
-	clearOutput();
-	outputText("You approach one of the cages, seeing (goblin - nothing more here as desc is pending Pyro qc-ing)\n\n");//small goblin with three pairs of demonic horns, tail and two pairs of small bat wings. Her body is covered with various demonic pleasure runes. Plaque next to her warns about her body have draining effect on anyone getting in direct contact with her.
-	outputText("Having caught your interest, you look to the price tage tied to the cage. It reads 1,000 gems. A bit pricy, but that’s what you expected from this place. Shaytan approaches from behind, \"<i>Ah, I sssee you are interesssted in Sssstella, are you looking to buy thisss one?</i>\"\n\n");
+	outputText("As you approach one of the cages, you see a small goblin with three pairs of demonic horns, a tail and two pairs of small bat wings. Her body is covered with various demonic pleasure runes. The plaque next to her warns about her body having a draining effect on anyone getting in direct contact with her.\n\n");
+	outputText("Having caught your interest, you look to the price tage tied to the cage. It reads 10,000 gems. A bit pricy, but that’s what you expected from this place. Shaytan approaches from behind, \"<i>Ah, I sssee you are interesssted in Sssstella, are you looking to buy thisss one?</i>\"\n\n");
 	menu();
-	addButtonDisabled(6, "Yes", "Soon (tm)");
+	addButtonIfTrue(6, "Yes", curry(browseSlavesYes, 1, 10000, "goblin", "Stella"), "You don't have 10,000 gems.", player.gems >= 10000);
 	addButton(8, "No", browseSlavesNo);
 }
-private function browseSlaves1Yes():void {
+private function browseSlavesIvan():void {
 	clearOutput();
-	outputText("\"<i></i>\"\n\n");
-}
-private function browseSlaves2():void {
-	clearOutput();
-	outputText("You approach one of the cages, seeing (minotaur - nothing more here as desc is pending Pyro qc-ing)\n\n");//
-	outputText("Having caught your interest, you look to the price tage tied to the cage. It reads 1,000 gems. A bit pricy, but that’s what you expected from this place. Shaytan approaches from behind, \"<i>Ah, I sssee you are interesssted in Ivan, are you looking to buy thisss one?</i>\"\n\n");
+	outputText("You approach one of the cages, seeing a tall minotaur, gaunt and hobbled over, his ribs visible due to lack of enough food. His hands have calluses as if it was working with tools all in his life. The plaque next to him mentions him as a blacksmith that could even work the toughest to processed materials.\n\n");
+	outputText("Having caught your interest, you look to the price tage tied to the cage. It reads 10,000 gems. A bit pricy, but that’s what you expected from this place. Shaytan approaches from behind, \"<i>Ah, I sssee you are interesssted in Ivan, are you looking to buy thisss one?</i>\"\n\n");
 	menu();
-	addButtonDisabled(6, "Yes", "Soon (tm)");
+	addButtonIfTrue(6, "Yes", curry(browseSlavesYes, 2, 10000, "minotaur", "Ivan"), "You don't have 10,000 gems.", player.gems >= 10000);
 	addButton(8, "No", browseSlavesNo);
 }
-private function browseSlaves2Yes():void {
+private function browseSlavesSythril():void {
 	clearOutput();
-	outputText("\"<i></i>\"\n\n");
-}
-private function browseSlaves3():void {
-	clearOutput();
-	outputText("You approach one of the cages, seeing (werewolf - nothing more here as desc is pending Pyro qc-ing)\n\n");//
-	outputText("Having caught your interest, you look to the price tage tied to the cage. It reads 1,000 gems. A bit pricy, but that’s what you expected from this place. Shaytan approaches from behind, \"<i>Ah, I sssee you are interesssted in Elissssse, are you looking to buy thisss one?</i>\"\n\n");
+	outputText("You approach one of the cages, stopping before the well over eight feet worth of salamander towering over you. From behind his cage, you can see some faint scars that pulse with a faint purple glow, evidently he’s been subject to some corruption already.\n\n");
+	outputText("He grins as you take a moment to eye him. His body is herculean, sculpted biceps that are easily larger than your head supported with broad shoulders and a thick neck that tightens as his grin betrays more teeth. His expansive pecs press against the bars of the cage, each nipple poking out toward you as he seems to flex at you tauntingly, almost as if trying to entice you with his body. Every inch of him is a testament to his strength, but perhaps the only thing preventing him from breaking out of the cage and ravaging you on the sight is the obedience entrained upon him.\n\n");
+	outputText("Below his pillar-like waist are his mountainous legs with visible contours of muscle down his scarred, scaled thighs to the massive calves that support nearly a literal ton of pure muscle. His twin demonic dicks ooze volatile, purple precum that splatters over the floor before him. The plaque next to her mentions his frame is due to ingesting bro brew.\n\n");
+	outputText("Having caught your interest, you look to the price tage tied to the cage. It reads 10,000 gems. A bit pricy, but that’s what you expected from this place. Shaytan approaches from behind, \"<i>Ah, I sssee you are interesssted in Sssssythril, are you looking to buy thisss one?</i>\"\n\n");
 	menu();
-	addButtonDisabled(6, "Yes", "Soon (tm)");
+	addButtonIfTrue(6, "Yes", curry(browseSlavesYes, 3, 10000, "salamander", "Sythril"), "You don't have 10,000 gems.", player.gems >= 10000);
 	addButton(8, "No", browseSlavesNo);
 }
-private function browseSlaves3Yes():void {
+private function browseSlavesElise():void {
 	clearOutput();
-	outputText("\"<i></i>\"\n\n");
-}
-private function browseSlaves4():void {
-	clearOutput();
-	outputText("You approach one of the cages, seeing {insert slave description}\n\n");
-	outputText("Having caught your interest, you look to the price tage tied to the cage. It reads {slave price}. A bit pricy, but that’s what you expected from this place. Shaytan approaches from behind, \"<i>Ah, I sssee you are interesssted in {slave’s name {add S’s as needed}}, are you looking to buy thisss one?</i>\"\n\n");
+	outputText("You approach one of the cages, seeing a woman a little on the tall side. Her face is dappled in many piercings from brow to ear and lips. Looking down, you can see that her navel is also sporting decently sized piercing. The plaque next to her mentions she's a werewolf with faint traces of vampire blood in her body.\n\n");
+	outputText("Having caught your interest, you look to the price tage tied to the cage. It reads 10,000 gems. A bit pricy, but that’s what you expected from this place. Shaytan approaches from behind, \"<i>Ah, I sssee you are interesssted in Elissssse, are you looking to buy thisss one?</i>\"\n\n");
 	menu();
-	addButtonDisabled(6, "Yes", "Soon (tm)");
+	addButtonIfTrue(6, "Yes", curry(browseSlavesYes, 4, 10000, "werewolf", "Elise"), "You don't have 10,000 gems.", player.gems >= 10000);
 	addButton(8, "No", browseSlavesNo);
-}
-private function browseSlaves4Yes():void {
-	clearOutput();
-	outputText("\"<i></i>\"\n\n");
 }
 private function browseSlaves5():void {
 	clearOutput();
@@ -109,9 +103,52 @@ private function browseSlaves5():void {
 	addButtonDisabled(6, "Yes", "Soon (tm)");
 	addButton(8, "No", browseSlavesNo);
 }
+private function browseSlavesYes(slaveNumber:Number, slavePrice:Number, slaveRace:String, slaveName:String):void {
+	clearOutput();
+	player.gems -= slavePrice;
+	outputText("You nod, telling Shaytan that this slave is exactly what you were looking for. His grin grows wide, showing his fangs, \"<i>Very good, I shall get the ownership transssfer ready.</i>\" He unlocks the cage, and drags the "+slaveRace+"’s by their chains, leading them to the main counter.\n\n");
+	outputText("You pay your due, dropping "+slavePrice+" gems into Shaytan’s hands, he instantly gots to work. A quick ownership transfer was done, which involved pricking your finger, and allowing your blood to drop onto "+slaveName+"’s enslavement tattoo. Just like that, the transfer was complete.\n\n");
+	outputText("\"<i>May they ssserve you well, dear cussstomer, I look forward to your next visssit.</i>\" You thank the slaver for his service, and proceed to take "+slaveName+" out of the den and back to camp. This is going to be interesting.\n\n");
+	if (slaveNumber == 1) {
+		outputText("(<b>Stella has been added to the Slaves menu!</b>)\n\n");
+		flags[kFLAGS.STELLA_FOLLOWER] = 1;
+	}
+	if (slaveNumber == 2) {
+		outputText("(<b>Ivan has been added to the Slaves menu!</b>)\n\n");
+		flags[kFLAGS.IVAN_FOLLOWER] = 1;
+	}
+	if (slaveNumber == 3) {
+		outputText("(<b>Sythril has been added to the Slaves menu!</b>)\n\n");
+		flags[kFLAGS.SYTHRIL_FOLLOWER] = 1;
+	}
+	if (slaveNumber == 4) {
+		outputText("(<b>Elise has been added to the Slaves menu!</b>)\n\n");
+		flags[kFLAGS.ELISE_FOLLOWER] = 1;
+	}
+	statScreenRefresh();
+	doNext(camp.returnToCampUseOneHour);
+}
+private function browseSlaves2Yes():void {
+	clearOutput();
+	outputText("\"<i></i>\"\n\n");
+}
+private function browseSlaves3Yes():void {
+	clearOutput();
+	outputText("\"<i></i>\"\n\n");
+}
+private function browseSlaves4Yes():void {
+	clearOutput();
+	outputText("\"<i></i>\"\n\n");
+}
 private function browseSlaves5Yes():void {
 	clearOutput();
 	outputText("\"<i></i>\"\n\n");
+}
+private function browseSlavesNo():void {
+	clearOutput();
+	outputText("After some consideration, you decide against it. You have no need for a slave like this. Shaytan simply nods, \"<i>I underssstand, no one perssson desssiresss every available tool.</i>\" He backs away, returning to his counter where he watches you, \"<i>If you find sssomething elssse interesssting, I will be there.</i>\"\n\n");
+	outputText("You back away from the cage, continuing your aimless wandering through the cave of slaves. Perhaps something else here can be of use to you.\n\n");
+	doNext(browseSlaves);
 }
 
 private function moreOptionsBackdoor():void {

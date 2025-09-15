@@ -6,10 +6,11 @@ package classes.Scenes.NPCs
 {
 import classes.*;
 import classes.GlobalFlags.kFLAGS;
+import classes.Items.WeaponLib;
 import classes.Scenes.SceneLib;
 import classes.internals.SaveableState;
 	
-	public class WaizAbiFollower extends NPCAwareContent implements SaveableState
+	public class WaizAbiFollower extends NPCAwareContent implements SaveableState, TimeAwareInterface
 	{
 		public static var WaizAbiState:Number;//state or status (friend, lover, etc.)
 		public static var WaizAbiAffection:Number;
@@ -92,6 +93,21 @@ import classes.internals.SaveableState;
 		{
 			Saves.registerSaveableState(this);
 		}
+		
+		//Implementation of TimeAwareInterface
+		public function timeChange():Boolean
+		{
+			return false;
+		}
+	
+		public function timeChangeLarge():Boolean {
+			if (WaizAbiState == 2 && model.time.hours == 2 && !flags[kFLAGS.IN_INGNAM]) {
+				WaizAbiAndKoshyaArriveAtTheCamp();
+				return true;
+			}
+			return false;
+		}
+		//End of Interface Implementation
 		//WaizAbiStory: 1 - x, 2 - x, 3 - x
 		public function bimboMonkey():void {
 			clearOutput();
@@ -170,14 +186,51 @@ import classes.internals.SaveableState;
 		
 		public function WaizAbiAndKoshyaArriveAtTheCamp():void {
 			clearOutput();
-			outputText("\"<i></i>\"\n\n");
+			outputText("You wake up in the middle of the night, feeling that something or maybe someone is calling to you. Looking around, you don’t find anyone, but the feeling tugs you toward the camp perimeter.\n\n");
+			outputText(((!player.isNaked2() && player.weapon != WeaponLib.FISTS)?"Reflexively, you don [armor] and arm yourself with your [weapon]. ":"")+"You slowly move toward the direction you feel that eerie calling. The camp is silent, and the only sounds that interrupt the stillness are your own footsteps. Eventually, you reach the Edge and stop as the feeling starts to weaken until it completely vanishes.\n\n");
+			outputText("\"<i>I told you that I would find you later on.</i>\" From the darkness outside the [camp], you hear a familiar voice as a pair of robbed figures approach you, stopping just shy of crossing the settlement border.\n\n");
+			outputText("You brace yourself for a fight, thinking about calling other camp members to help you.\n\n");
+			outputText("\"<i>A fight? Me? Well, if it was something else, like you spiking milady’s drink, I would. But...</i>\" she pauses. \"<i>It helped her think more clearly. No longer letting that womb of her guide her intuition.</i>\"\n\n");
+			outputText("You roll your eyes, on which your second guest clears her throat.\n\n");
+			outputText("\"<i>Yes, i was getting to the point.</i>\" The angel glances to the side. \"<i>Milady decided she no longer wanted to stay in that village. Despite being safe, there are still many lecherous cultivators there… Especially those from the Obsessive Love sect. Thus, she decided this place,</i>\" she points behind you, \"<i>Is as good as any other place we can find. We’ll stay here unless we decide to move on.</i>\"\n\n");
+			outputText("Is she not going to bother with your opinion?\n\n");
+			outputText("\"<i>She might… but let’s just say it’s in your best interest….</i>\"\n\n");
+			outputText("The other person spoke up. \"<i>I hope you can fulfill our shameless request to settle here on the edge of this place?</i>\"\n\n");
+			outputText("You stay silent for a few moments, reconsidering the pros and cons of inviting that angel and monkey pair.\n\n");
+			menu();
+			addButton(1, "No", WaizAbiAndKoshyaArriveAtTheCampNo);
+			addButton(3, "Yes", WaizAbiAndKoshyaArriveAtTheCampYes);
+		}
+		public function WaizAbiAndKoshyaArriveAtTheCampNo():void {
+			clearOutput();
+			outputText("You shock your head and reply that you can let them settle here.\n\n");
+			outputText("\"<i>That’s... okay.</i>\" the monkey replies before turning around. She starts to walk away with her angel companion as they both vanish into the dark of the night. You, on the other hand, return to your interrupted sleep.\n\n");
+			WaizAbiState = 3;
+			doNext(playerMenu);
+		}
+		public function WaizAbiAndKoshyaArriveAtTheCampYes():void {
+			clearOutput();
+			outputText("Despite the risks you agree.\n\n");
+			outputText("\"<i>That’s wonderful,</i>\" the monkey exclaims as she rushes at you, giving you a fervent hug, squeezing her chest against you. \"<i>Ohhh,</i>\" realizing how she accosted you, she takes a few steps back.\n\n");
+			outputText("\"<i>Sorry. I still act too impulsively sometimes.</i>\" she pouts. \"<i>Anyway, my name is Waiz'abi, and that strong angel there is Koshya.</i>\" The blue skinned companion only nods a bit. \"<i>So, now that we introduced ourselves, can we enter your [camp]?</i>\"\n\n");
+			outputText("After you give them permission, they both cross the border, walking deeper into the camp, looking for a place to settle. Maybe no one is keen on interrupting or they are all sleeping as no one stops by to see the newly arrived camp tenants.\n\n");
+			outputText("\"<i>Oh I would almost forget!</i>\" She looks toward Koshya, who pulls two shards from her robe pocket, handing them to you as Waiz'abi explains. \"<i>Those shards may be very useful for you… Or they're just pretty stones to you.</i>\"\n\n");
+			outputText("(<b>Waiz'abi and Koshya has been added to the Followers menu!</b>)\n\n");
+			if (player.hasKeyItem("Radiant shard") >= 0) player.addKeyValue("Radiant shard",1,+2);
+			else player.createKeyItem("Radiant shard", 2,0,0,0);
+			WaizAbiState = 4;
+			doNext(playerMenu);
 		}
 		public function WaizAbiMainMenu():void {
-			
+			clearOutput();
+			outputText("Approaching their bedrolls, you wait a moment until they notice you and stop sparring. \"<i>Something I can help you with [name]?</i>\" Waiz'abi asks.\n\n");
+			menu();
+			addButton(14, "Back", camp.campFollowers);
 		}
 		
 		/*public function c():void {
 			clearOutput();
+			outputText("\"<i></i>\"\n\n");
 			outputText("\"<i></i>\"\n\n");
 		}
 		

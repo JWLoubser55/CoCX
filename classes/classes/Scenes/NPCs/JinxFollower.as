@@ -165,14 +165,14 @@ import classes.Scenes.SceneLib;
 			flags[kFLAGS.JINX_LVL_UP] = 0.8;
 			menu();
 			addButton(1, "No", bazaarEncounters);
-			addButtonDisabled(3, "Yes", "Inviting someone who would gladly blow up a warehouse to prove her usefulness seems like a horrendous idea... Right?");
+			addButtonIfTrue(3, "Yes", bazaarEncountersYouYes, "You need to have 10 spirit stones", flags[kFLAGS.SPIRIT_STONES] >= 10);
 		}
 		public function bazaarEncountersYouRepeat():void {
 			clearOutput();
 			outputText("\"<i>No changes to my fee since the last time you asked. Ten spirit stones and a corner of space to myself. Do we have a deal or not?</i>\"\n\n");
 			menu();
 			addButton(1, "No", bazaarEncounters);
-			addButtonDisabled(3, "Yes", "Inviting someone who would gladly blow up a warehouse to prove her usefulness seems like a horrendous idea... Right?");
+			addButtonIfTrue(3, "Yes", bazaarEncountersYouYes, "You need to have 10 spirit stones", flags[kFLAGS.SPIRIT_STONES] >= 10);
 		}
 		public function bazaarEncountersYouYes():void {
 			clearOutput();
@@ -201,12 +201,12 @@ import classes.Scenes.SceneLib;
 			}
 			if (flags[kFLAGS.SIEGWEIRD_FOLLOWER] > 3) outputText("Siegweird glances at the goblin, scratching the back of his head in bemusement, \"<i>Hmmm… I… should I… ask, [name]..? You know what, I’m sure you have you… reasons…</i>\"\n\n");
 			//(Jeniffer) {
-				outputText("\"<i>Ohh, a golem made to look like one of us goblins? Interesting.</i>\" she notes.\n\n");
-				outputText("Minx gives her the stink eye, not even replying. Jenner looks at it more intently, \"<i>Pretty well crafted to fool almost all. I don't believe it's just another goblin. Where did you find it? Not stolen from its owner, I hope?</i>\"\n\n");
+			//	outputText("\"<i>Ohh, a golem made to look like one of us goblins? Interesting.</i>\" she notes.\n\n");
+			//	outputText("Minx gives her the stink eye, not even replying. Jenner looks at it more intently, \"<i>Pretty well crafted to fool almost all. I don't believe it's just another goblin. Where did you find it? Not stolen from its owner, I hope?</i>\"\n\n");
 			//}
 			//(Miyeon) {
-				outputText("\"<i>Ohh, an goblin shaped flesh golem. Curious idea, but why so much hassle for simple imitation over just normal golem?</i>\" she asks as her tail(s) freely swings behind her.\n\n");
-				outputText("Minx gives her the stinky eye, not even replying. Miyeon steps closer to the golem, \"<i>Ahh it is so cute, not giving away any clue about its owner. Well, maybe the owner is coming here soon, too? Don't you think so [name]?</i>\"\n\n");
+			//	outputText("\"<i>Ohh, an goblin shaped flesh golem. Curious idea, but why so much hassle for simple imitation over just normal golem?</i>\" she asks as her tail(s) freely swings behind her.\n\n");
+			//	outputText("Minx gives her the stinky eye, not even replying. Miyeon steps closer to the golem, \"<i>Ahh it is so cute, not giving away any clue about its owner. Well, maybe the owner is coming here soon, too? Don't you think so [name]?</i>\"\n\n");
 			//}
 			if ((ZenjiScenes.isLover() || flags[kFLAGS.ZENJI_PROGRESS] == 8 || flags[kFLAGS.ZENJI_PROGRESS] == 9) && TrollVillage.ZenjiVillageStage != 2) outputText("Zenji crosses his arms, staring down at the goblin as he scoffs, \"<i>Gah, [name], even I have standards!</i>\"\n\n");
 			outputText("Minx looks around and finds a spot a bit away from the center of the [camp] section. \"<i>Here looks decent.</i>\"\n\n");

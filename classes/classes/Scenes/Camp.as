@@ -1188,6 +1188,8 @@ public class Camp extends NPCAwareContent{
 		if (flags[kFLAGS.MICHIKO_FOLLOWER] >= 1) counter++;
 		if (flags[kFLAGS.NEISA_FOLLOWER] >= 7) counter++;
 		if (flags[kFLAGS.JINX_LVL_UP] >= 1) counter++;
+		if (flags[kFLAGS.ECIHTEL_FOLLOWER] >= 1) counter++;
+		if (WaizAbiFollower.WaizAbiState > 3) counter += 2;
 		if (flags[kFLAGS.AYANE_FOLLOWER] >= 2) counter++;
 		if (flags[kFLAGS.EXCELLIA_RECRUITED] >= 3 && flags[kFLAGS.EXCELLIA_RECRUITED] < 33) counter++;
 		if (flags[kFLAGS.MITZI_RECRUITED] >= 4) counter++;
@@ -1221,6 +1223,10 @@ public class Camp extends NPCAwareContent{
 		if (amilyScene.amilyFollower() && amilyScene.amilyCorrupt() && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0) counter++;
 		if (bimboSophie() && flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && !player.hasStatusEffect(StatusEffects.SophieOff)) counter++;//Bimbo sophie
 		if (flags[kFLAGS.GALIA_LVL_UP] >= 1) counter++;
+		if (flags[kFLAGS.STELLA_FOLLOWER] >= 1) counter++;
+		if (flags[kFLAGS.IVAN_FOLLOWER] >= 1) counter++;
+		if (flags[kFLAGS.SYTHRIL_FOLLOWER] >= 1) counter++;
+		if (flags[kFLAGS.ELISE_FOLLOWER] >= 1) counter++;
 		if (flags[kFLAGS.PATCHOULI_FOLLOWER] >= 5) counter++;
 		if (ceraphIsFollower() && !player.hasStatusEffect(StatusEffects.CeraphOff)) counter++;
 		if (milkSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_BATH_GIRL] == 0) counter++;
@@ -1747,8 +1753,8 @@ public class Camp extends NPCAwareContent{
 			}
 			//Charybdis
 			if (flags[kFLAGS.CHARYBDIS_FOLLOWER] >= 2) {
-				outputText("\n\n");
-				buttons.add("Charybdis", SceneLib.charybdisScene.charyCampMainMenu).hint("Visit Charybdis the ???.");
+				//outputText("\n\n");
+				buttons.add("Charybdis", SceneLib.charybdisScene.charyCampMainMenu).hint("Visit Charybdis.");
 			}
 			//Zenji
 			if (ZenjiScenes.isLover() && TrollVillage.ZenjiVillageStage != 2) {
@@ -1866,6 +1872,36 @@ public class Camp extends NPCAwareContent{
 					outputText("Near the [camp] edge, nearly next to Evangeline's bedroll sits a large wooden cage for keeping Galia. Despite being one of those more feral, she spends most of the time sitting motionlessly and gazing into the horizon.\n\n");
 					buttons.add("Galia", SceneLib.galiaFollower.GaliaCampMainMenuSlave).hint("Visit Galia.");
 				}
+			}
+			//Stella Slave
+			if (flags[kFLAGS.STELLA_FOLLOWER] >= 1) {
+				outputText("Close to [camp] Edge, there is bedroll for Stella, the cursed and bit horny goblin succubus. Or is she succugoblin? She seems to be occupied with channeling her excess lust into small pinkish flames that dance over her palm.\n\n");
+				buttons.add("Stella", SceneLib.stellaScene.StellaMainMenu).hint("Visit Stella.");
+			}
+			//Ivan Slave
+			if (flags[kFLAGS.IVAN_FOLLOWER] >= 1) {
+				outputText("Near Konstantin’s tent lay a bedroll for Ivan. Most of the time, he wanders idly around, occasionally visiting the bear smith to do some minor auxiliary jobs.\n\n");
+				buttons.add("Ivan", SceneLib.ivanScene.IvanMainMenu).hint("Visit Ivan.");
+			}
+			//Sythril Slave
+			if (flags[kFLAGS.SYTHRIL_FOLLOWER] >= 1) {
+				outputText("Next to his bedroll lay various weights and other heavy objects he regularly uses to work out. Occasionally, he also spars with other camp members or even just a dummy. Not the sharpest knife in the drawer but at least he's much stronger than the typical salamander.\n\n");
+				buttons.add("Sythril", SceneLib.sythScene.SythrilMainMenu).hint("Visit Sythril.");
+			}
+			//Elise Slave
+			if (flags[kFLAGS.ELISE_FOLLOWER] >= 1) {
+				if (!isNightTime)
+				{
+					outputText("Elise wanders around the [camp], occasionally spooking or interrupting daily activities of other [camp] members.");
+				}
+				else if (isNightTime && flags[kFLAGS.LUNA_MOON_CYCLE] == 8) {
+					outputText("Elise is sitting on a nearby rock, watching the full moon.");
+				}
+				else {
+					outputText("Elise is sitting on a nearby rock, watching the moon.");
+				}
+				outputText("\n\n");
+				buttons.add("Elise", SceneLib.eliseScene.EliseMainMenu).hint("Visit Elise.");//.disableIf(player.statusEffectv1(StatusEffects.CampSparingNpcsTimers3) > 0, "Training.")
 			}
 			//Excellia Slave
 			if (flags[kFLAGS.EXCELLIA_RECRUITED] == 2) {
@@ -2027,8 +2063,18 @@ public class Camp extends NPCAwareContent{
 			}
 			//Jinx
 			if (flags[kFLAGS.JINX_LVL_UP] >= 1) {
-				outputText("\n\n");
-				buttons.add("Minx", SceneLib.jinxFollower.campJinxMenuMain).hint("Visit Minx the ???.");
+				//outputText("\n\n");
+				buttons.add("Minx", SceneLib.jinxFollower.campJinxMenuMain).hint("Visit Minx.");
+			}
+			//Ecihtel
+			if (flags[kFLAGS.ECIHTEL_FOLLOWER] >= 1) {
+				outputText("The holy succubus’ bedroll is placed near the sparring area. Now and then, you notice her return with an imp she promptly slays, adding his skull to an evergrowing pile of trophies next to her bedroll.\n\n");
+				buttons.add("Ecihtel", SceneLib.ecihtelScene.EcihtelMainMenu).hint("Visit Ecihtel.");
+			}
+			//Waiz'abi and Koshya
+			if (WaizAbiFollower.WaizAbiState > 3) {
+				outputText("Near the place where you could spar, there are two bedrolls belonging to the monkey and her angel servant. They appear to be spending most of the day sparring with each other.\n\n");
+				buttons.add("W & K", SceneLib.waizabi.WaizAbiMainMenu).hint("Visit Waiz'abi and Koshya.");
 			}
 			//Zenji follower
 			if ((flags[kFLAGS.ZENJI_PROGRESS] == 8 || flags[kFLAGS.ZENJI_PROGRESS] == 9) && TrollVillage.ZenjiVillageStage != 2) {
