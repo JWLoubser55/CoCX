@@ -21,7 +21,7 @@ public final class GroPlus extends Consumable {
         clearOutput();
         EngineCore.menu();
         outputText("You ponder the needle in your hand knowing it will enlarge the injection site.  What part of your body will you use it on?");
-        if (player.hasCock()) EngineCore.addButton(0, "Cock", growPlusCock);
+        if (player.hasCockCockOnly()) EngineCore.addButton(0, "Cock", growPlusCock);
         if (player.hasBalls()) EngineCore.addButton(1, "Balls", pickDoses, growPlusBalls);
         EngineCore.addButton(2, "Breasts", growPlusBreasts);
         EngineCore.addButton(3, "Nipples", pickDoses, growPlusNipples);
