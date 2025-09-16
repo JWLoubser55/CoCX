@@ -338,7 +338,7 @@ public class AbstractEquinum extends Consumable {
 			}
 		}
 		//Unicorn grows cocks
-		if ((type == 1 || type == 2) && (!player.hasCock()) && player.isTaur() && changes < changeLimit && rand(3) == 0) {
+		if ((type == 1 || type == 2) && (!player.hasCockCockOnly()) && player.isTaur() && changes < changeLimit && rand(3) == 0) {
 			CoC.instance.transformations.CockHuman(7).applyEffect();
 			player.cocks[0].cockThickness = 1.4;
 			dynStats("lus", 20, "scale", false);

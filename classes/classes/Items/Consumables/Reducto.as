@@ -25,7 +25,7 @@ public final class Reducto extends Consumable {
         clearOutput();
         EngineCore.menu();
         outputText("You ponder the paste in your hand and wonder what part of your body you would like to shrink.  What will you use it on?");
-        if (player.hasCock()) EngineCore.addButton(0, "Cock", reductoCock)
+        if (player.hasCockCockOnly()) EngineCore.addButton(0, "Cock", reductoCock)
             .disableIf(player.longestCockLength() <= 2 && player.thickestCockThickness() <= 0.5, "It can't shrink any further!");
         if (player.hasBalls()) EngineCore.addButton(1, "Balls", pickDoses, reductoBalls)
             .disableIf(player.ballSize == 1, "They can't get any smaller!");
