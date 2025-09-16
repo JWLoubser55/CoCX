@@ -100,7 +100,7 @@ public function losingToMantango():void {
 		player.skinColor = randomChoice(MyconidRace.MyconidSkinColors);
 		if (player.hasVagina() && player.vaginaType() != VaginaClass.SHROOM) transformations.VaginaShroom().applyEffect(false);
 		if (player.clitLength < 10) player.clitLength = 10;
-		if (player.hasCock()) transformations.CockShroom().applyEffect(false);
+		if (player.hasCockCockOnly()) transformations.CockShroom().applyEffect(false);
 		if (!player.hasStatusEffect(StatusEffects.GlowingNipples)) transformations.NipplesGlowing.applyEffect(false);
 		if (!player.hasStatusEffect(StatusEffects.GlowingAsshole)) transformations.AssholeGlowing.applyEffect(false);
 		if (!player.hasPerk(PerkLib.Androgyny)) player.createPerk(PerkLib.Androgyny, 0, 0, 0, 0);
