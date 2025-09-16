@@ -2820,7 +2820,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.removePerk(PerkLib.AuraOfCorruption);
 				needNext = true;
 			}
-			if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE) { //All the hourly bee cock checks except the 'seek out the bee girl' check. That's in timeChangeLarge
+			if (player.hasCockCockOnly() && player.cocks[0].cockType == CockTypesEnum.BEE) { //All the hourly bee cock checks except the 'seek out the bee girl' check. That's in timeChangeLarge
 				if (player.cocks.length > 1) {
 					outputText("\nYou feel a stickiness and some stinging from your cocks.  It seems your bee cock has absorbed your new addition, leaving no trace of it.\n");
 					while (player.cocks.length > 1) player.removeCock(1, 1);
@@ -3343,7 +3343,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				return true;
 			}
 			//Bee cocks
-			if (player.hasCock() && player.cocks[0].cockType == CockTypesEnum.BEE && player.lust >= player.maxOverLust()) {
+			if (player.hasCockCockOnly() && player.cocks[0].cockType == CockTypesEnum.BEE && player.lust >= player.maxOverLust()) {
 				if (player.hasItem(consumables.BEEHONY) || player.hasItem(consumables.PURHONY) || player.hasItem(consumables.SPHONEY)) {
 					outputText("\nYou can't help it anymore. Thankfully, you have the honey in your pouch so you pull out a vial of honey. You're definitely going to masturbate with honey covering your bee-cock.");
                     doNext(SceneLib.masturbation.masturbateGo);
