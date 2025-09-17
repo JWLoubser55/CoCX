@@ -10593,7 +10593,7 @@ public final class Mutations extends MutationsHelper {
             transformations.SkinPlain.applyEffect();
         }
 		if (type == 1) {
-			if (player.rearBody.type != RearBody.TENTACLE_EYESTALKS || (player.rearBody.type == RearBody.TENTACLE_EYESTALKS && player.statusEffectv1(StatusEffects.GazerEyeStalksPlayer) < 10) && changes < changeLimit && rand(3) == 0) {
+			if ((player.rearBody.type != RearBody.TENTACLE_EYESTALKS || (player.rearBody.type == RearBody.TENTACLE_EYESTALKS && player.statusEffectv1(StatusEffects.GazerEyeStalksPlayer) < 10)) && changes < changeLimit && rand(3) == 0) {
 				outputText("[pg]");
                 transformations.RearBodyTentacleEyestalks.applyEffect();
 				changes++;
@@ -17910,4 +17910,5 @@ public final class Mutations extends MutationsHelper {
 		player.herbXP(HE);
     }
 }
+
 }
