@@ -4016,27 +4016,37 @@ public class PerkLib
 		public static const FleshBodyElderStage:PerkType = mk("Flesh Body: Elder Stage", "Flesh Body: Elder Stage",
 				"You've reached the third stage of body cultivating. (+150% p.soulskill power, +7 to unarmed attack, +8 to armor / magic resistance, +1200 max HP at S.Elder, S.Exalt, S.Overlord stages; +0.5% HP regen)");
 		public static const FleshBodyOverlordStage:PerkType = mk("Flesh Body: Overlord Stage", "Flesh Body: Overlord Stage",
-				"You've reached the fourth stage of body cultivating. (+200% p.soulskill power, +9 to unarmed attack, +10 to armor / magic resistance, +1600 max HP S.Tyrant, S.King, S.Emperor stages; +0.5% HP regen)");
+				"You've reached the fourth stage of body cultivating. (+200% p.soulskill power, +9 to unarmed attack, +10 to armor / magic resistance, +1600 max HP at S.Tyrant, S.King, S.Emperor stages; +0.5% HP regen)");
 		public static const FleshBodyTyrantStage:PerkType = mk("Flesh Body: Tyrant Stage", "Flesh Body: Tyrant Stage",
 				"You've reached the fifth stage of body cultivating. (+250% p.soulskill power, +11 to unarmed attack, +12 to armor / magic resistance, +2000 max HP at S.Ancestor, S.Sage stages; +0.5% HP regen)");
 		public static const FleshBodyWarriorStage:PerkType = mk("Flesh Body: Warrior Stage", "Flesh Body: Warrior Stage",
 				"You've reached the second stage of body cultivating. (+100% p.soulskill power, +5 to unarmed attack, +6 to armor / magic resistance, +800 max HP at S.Sprite, S.Scholar, S.Grandmaster stages; +0.5% HP regen)");
+		public static const FleshBodyFoMApprenticeStage:PerkType = mk("Flesh Body (FoM): Apprentice Stage", "Flesh Body (FoM): Apprentice Stage",
+				"You've reached the first stage of body cultivating. (+125% p.soulskill power, +11 to unarmed attack at S.Apprentice, S.Personage, S.Warrior stages; +250 HP regen)");
+		public static const FleshBodyFoMElderStage:PerkType = mk("Flesh Body (FoM): Elder Stage", "Flesh Body (FoM): Elder Stage",
+				"You've reached the third stage of body cultivating. (+375% p.soulskill power, +23 to unarmed attack at S.Elder, S.Exalt, S.Overlord stages; +750 HP regen)");
+		public static const FleshBodyFoMOverlordStage:PerkType = mk("Flesh Body (FoM): Overlord Stage", "Flesh Body (FoM): Overlord Stage",
+				"You've reached the fourth stage of body cultivating. (+500% p.soulskill power, +29 to unarmed attack at S.Tyrant, S.King, S.Emperor stages; +1000 HP regen)");
+		public static const FleshBodyFoMTyrantStage:PerkType = mk("Flesh Body (FoM): Tyrant Stage", "Flesh Body (FoM): Tyrant Stage",
+				"You've reached the fifth stage of body cultivating. (+625% p.soulskill power, +35 to unarmed attack at S.Ancestor, S.Sage stages; +1250 HP regen)");
+		public static const FleshBodyFoMWarriorStage:PerkType = mk("Flesh Body (FoM): Warrior Stage", "Flesh Body (FoM): Warrior Stage",
+				"You've reached the second stage of body cultivating. (+250% p.soulskill power, +17 to unarmed attack at S.Sprite, S.Scholar, S.Grandmaster stages; +500 HP regen)");
 		public static const FleshBodySoDApprenticeStage:PerkType = mk("Flesh Body (SoD): Apprentice Stage", "Flesh Body (SoD): Apprentice Stage",
-				"You've reached the first stage of body cultivating Scale of Dragon. (+4 to armor / magic resistance at S.Apprentice, S.Personage, S.Warrior stages; +(10 * player level) HP regen)");
+				"You've reached the first stage of body cultivating Scale of Dragon. (+10 to armor / magic resistance at S.Apprentice, S.Personage, S.Warrior stages; +(player level) HP regen)");
 		public static const FleshBodySoDElderStage:PerkType = mk("Flesh Body (SoD): Elder Stage", "Flesh Body (SoD): Elder Stage",
-				"You've reached the third stage of body cultivating Scale of Dragon. (+8 to armor / magic resistance at S.Elder, S.Exalt, S.Overlord stages; +(30 * player level) HP regen)");
+				"You've reached the third stage of body cultivating Scale of Dragon. (+20 to armor / magic resistance at S.Elder, S.Exalt, S.Overlord stages; +(3 * player level) HP regen)");
 		public static const FleshBodySoDOverlordStage:PerkType = mk("Flesh Body (SoD): Overlord Stage", "Flesh Body (SoD): Overlord Stage",
-				"You've reached the fourth stage of body cultivating Scale of Dragon. (+10 to armor / magic resistance S.Tyrant, S.King, S.Emperor stages; +(40 * player level) HP regen)");
+				"You've reached the fourth stage of body cultivating Scale of Dragon. (+25 to armor / magic resistance at S.Tyrant, S.King, S.Emperor stages; +(4 * player level) HP regen)");
 		public static const FleshBodySoDTyrantStage:PerkType = mk("Flesh Body (SoD): Tyrant Stage", "Flesh Body (SoD): Tyrant Stage",
-				"You've reached the fifth stage of body cultivating Scale of Dragon. (+12 to armor / magic resistance at S.Ancestor, S.Sage stages; +(50 * player level) HP regen)");
+				"You've reached the fifth stage of body cultivating Scale of Dragon. (+30 to armor / magic resistance at S.Ancestor, S.Sage stages; +(5 * player level) HP regen)");
 		public static const FleshBodySoDWarriorStage:PerkType = mk("Flesh Body (SoD): Warrior Stage", "Flesh Body (SoD): Warrior Stage",
-				"You've reached the second stage of body cultivating Scale of Dragon. (+6 to armor / magic resistance at S.Sprite, S.Scholar, S.Grandmaster stages; +(20 * player level) HP regen)");
+				"You've reached the second stage of body cultivating Scale of Dragon. (+15 to armor / magic resistance at S.Sprite, S.Scholar, S.Grandmaster stages; +(2 * player level) HP regen)");
 		public static const FleshBodyVoLApprenticeStage:PerkType = mk("Flesh Body (VoL): Apprentice Stage", "Flesh Body (VoL): Apprentice Stage",
 				"You've reached the first stage of body cultivating Vigor of Lizan. (+1000 max HP and +1% OverMax HP at S.Apprentice, S.Personage, S.Warrior stages; +1% HP regen)");
 		public static const FleshBodyVoLElderStage:PerkType = mk("Flesh Body (VoL): Elder Stage", "Flesh Body (VoL): Elder Stage",
 				"You've reached the third stage of body cultivating Vigor of Lizan. (+3000 max HP and +3% OverMax HP at S.Elder, S.Exalt, S.Overlord stages; +1% HP regen)");
 		public static const FleshBodyVoLOverlordStage:PerkType = mk("Flesh Body (VoL): Overlord Stage", "Flesh Body (VoL): Overlord Stage",
-				"You've reached the fourth stage of body cultivating Vigor of Lizan. (+4000 max HP and +4% OverMax HP S.Tyrant, S.King, S.Emperor stages; +1% HP regen)");
+				"You've reached the fourth stage of body cultivating Vigor of Lizan. (+4000 max HP and +4% OverMax HP at S.Tyrant, S.King, S.Emperor stages; +1% HP regen)");
 		public static const FleshBodyVoLTyrantStage:PerkType = mk("Flesh Body (VoL): Tyrant Stage", "Flesh Body (VoL): Tyrant Stage",
 				"You've reached the fifth stage of body cultivating Vigor of Lizan. (+5000 max HP and +5% OverMax HP at S.Ancestor, S.Sage stages; +1% HP regen)");
 		public static const FleshBodyVoLWarriorStage:PerkType = mk("Flesh Body (VoL): Warrior Stage", "Flesh Body (VoL): Warrior Stage",

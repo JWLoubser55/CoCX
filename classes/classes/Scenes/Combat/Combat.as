@@ -8875,6 +8875,29 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.FleshBodyTyrantStage)) {
             if (player.hasPerk(PerkLib.SoulAncestor)) unarmed += 11 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
         }
+        if (player.hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) {
+            if (player.hasPerk(PerkLib.SoulApprentice)) unarmed += 11 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+            if (player.hasPerk(PerkLib.SoulPersonage)) unarmed += 11 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+            if (player.hasPerk(PerkLib.SoulWarrior)) unarmed += 11 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+        }
+        if (player.hasPerk(PerkLib.FleshBodyFoMWarriorStage)) {
+            if (player.hasPerk(PerkLib.SoulSprite)) unarmed += 17 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+            if (player.hasPerk(PerkLib.SoulScholar)) unarmed += 17 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+            if (player.hasPerk(PerkLib.SoulGrandmaster)) unarmed += 17 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+        }
+        if (player.hasPerk(PerkLib.FleshBodyFoMElderStage)) {
+            if (player.hasPerk(PerkLib.SoulElder)) unarmed += 23 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+            if (player.hasPerk(PerkLib.SoulExalt)) unarmed += 23 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+            if (player.hasPerk(PerkLib.SoulOverlord)) unarmed += 23 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+        }
+        if (player.hasPerk(PerkLib.FleshBodyFoMOverlordStage)) {
+            if (player.hasPerk(PerkLib.SoulTyrant)) unarmed += 29 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+            if (player.hasPerk(PerkLib.SoulKing)) unarmed += 29 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+            if (player.hasPerk(PerkLib.SoulEmperor)) unarmed += 29 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+        }
+        if (player.hasPerk(PerkLib.FleshBodyFoMTyrantStage)) {
+            if (player.hasPerk(PerkLib.SoulAncestor)) unarmed += 35 * (1 + player.newGamePlusMod()) * player.humanBodyCultivators();
+        }
         if (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) unarmed += 12 * (1 + player.newGamePlusMod());
         if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor)) unarmed += 18 * (1 + player.newGamePlusMod());
         if (player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor)) unarmed += 24 * (1 + player.newGamePlusMod());
@@ -14538,11 +14561,16 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
         if (player.hasPerk(PerkLib.ImprovedLifeline)) maxNonPercentRegen += 4 * player.level * (1 + player.newGamePlusMod());
         if (player.hasPerk(PerkLib.GreaterLifeline)) maxNonPercentRegen += 6 * player.level * (1 + player.newGamePlusMod());
         if (player.hasPerk(PerkLib.EpicLifeline)) maxNonPercentRegen += 8 * player.level * (1 + player.newGamePlusMod());
-		if (player.hasPerk(PerkLib.FleshBodySoDApprenticeStage)) maxNonPercentRegen += 100 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
-		if (player.hasPerk(PerkLib.FleshBodySoDWarriorStage)) maxNonPercentRegen += 200 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
-		if (player.hasPerk(PerkLib.FleshBodySoDElderStage)) maxNonPercentRegen += 300 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());;
-		if (player.hasPerk(PerkLib.FleshBodySoDOverlordStage)) maxNonPercentRegen += 400 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
-		if (player.hasPerk(PerkLib.FleshBodySoDTyrantStage)) maxNonPercentRegen += 500 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) maxNonPercentRegen += 250 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodyFoMWarriorStage)) maxNonPercentRegen += 500 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodyFoMElderStage)) maxNonPercentRegen += 750 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());;
+		if (player.hasPerk(PerkLib.FleshBodyFoMOverlordStage)) maxNonPercentRegen += 1000 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodyFoMTyrantStage)) maxNonPercentRegen += 1250 * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodySoDApprenticeStage)) maxNonPercentRegen += player.level * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodySoDWarriorStage)) maxNonPercentRegen += 2 * player.level * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodySoDElderStage)) maxNonPercentRegen += 3 * player.level * player.humanBodyCultivators() * (1 + player.newGamePlusMod());;
+		if (player.hasPerk(PerkLib.FleshBodySoDOverlordStage)) maxNonPercentRegen += 4 * player.level * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.hasPerk(PerkLib.FleshBodySoDTyrantStage)) maxNonPercentRegen += 5 * player.level * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
 		if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1) maxNonPercentRegen *= 2;
         return maxNonPercentRegen;
     }

@@ -1621,8 +1621,9 @@ public function soularena():void {
 		outputText("\"<i>Five Spirit Stones per manual.</i>\" From the look in her young eyes, you can tell that trying to haggle would be a poor decision.\n\n");
 		menu();
 		addButtonIfTrue(0, "Daoist", missAkemiManualsShopDaoist, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") < 0);
-		addButtonIfTrue(5, "BodyCult(1)", missAkemiManualsShopBodyCultivatorVigorofLizan, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Vigor of Lizan") < 0, "Buy Cultivation Manual: Vigor of Lizan");
+		addButtonIfTrue(5, "BodyCult(1)", missAkemiManualsShopBodyCultivatorFistofMetal, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Fist of Metal") < 0, "Buy Cultivation Manual: Fist of Metal");
 		addButtonIfTrue(6, "BodyCult(2)", missAkemiManualsShopBodyCultivatorScaleofDragon, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Scale of Dragon") < 0, "Buy Cultivation Manual: Scale of Dragon");
+		addButtonIfTrue(7, "BodyCult(3)", missAkemiManualsShopBodyCultivatorVigorofLizan, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Vigor of Lizan") < 0, "Buy Cultivation Manual: Vigor of Lizan");
 		//addButtonIfTrue(1, "BodyCult", missAkemiManualsShopBodyCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") < 0);
 		//outputText("\"<i>So you're into Coke Demons.... er... Fiends?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
 		//addButtonIfTrue(2, "HeartCult", missAkemiManualsShopHeartforceCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") < 0);
@@ -1640,16 +1641,16 @@ public function soularena():void {
 		player.createKeyItem("Cultivation Manual: My Dao Sticks are better than Yours", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
-	public function missAkemiManualsShopBodyCultivatorVigorofLizan():void {
+	public function missAkemiManualsShopBodyCultivatorFistofMetal():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
 			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
 			doNext(missAkemiManualsShop);
 			return;
 		}
 		flags[kFLAGS.SPIRIT_STONES] -= 5;
-		outputText("\"<i>So you're into Lizan Vigor or... Lizans themself?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
-		outputText("<b>Gained Key Item: Cultivation Manual: Vigor of Lizan</b>");
-		player.createKeyItem("Cultivation Manual: Vigor of Lizan", 0, 0, 0, 0);
+		outputText("\"<i>So you're into Fist...ing with Metal Fists?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Fist of Metal</b>");
+		player.createKeyItem("Cultivation Manual: Fist of Metal", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 	public function missAkemiManualsShopBodyCultivatorScaleofDragon():void {
@@ -1662,6 +1663,18 @@ public function soularena():void {
 		outputText("\"<i>So you're into checking if Dragons have Reverse Scale?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
 		outputText("<b>Gained Key Item: Cultivation Manual: Scale of Dragon</b>");
 		player.createKeyItem("Cultivation Manual: Scale of Dragon", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopBodyCultivatorVigorofLizan():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>So you're into Lizan Vigor or... Lizans themself?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Vigor of Lizan</b>");
+		player.createKeyItem("Cultivation Manual: Vigor of Lizan", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 	public function missAkemiManualsShopHeartforceCultivator():void {

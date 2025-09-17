@@ -782,7 +782,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.FleshBodyOverlordStage)) {
 				if (hasPerk(PerkLib.SoulTyrant)) armorDef += 10 * newGamePlusMod * humanBodyCultivators();
 				if (hasPerk(PerkLib.SoulKing)) armorDef += 10 * newGamePlusMod * humanBodyCultivators();
-				if (hasPerk(PerkLib.SoulEmperor)) armorDef += 0 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulEmperor)) armorDef += 10 * newGamePlusMod * humanBodyCultivators();
 			}
 			if (hasPerk(PerkLib.FleshBodyTyrantStage)) {
 				if (hasPerk(PerkLib.SoulAncestor)) armorDef += 12 * newGamePlusMod;
@@ -805,7 +805,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.FleshBodySoDOverlordStage)) {
 				if (hasPerk(PerkLib.SoulTyrant)) armorDef += 25 * newGamePlusMod * humanBodyCultivators();
 				if (hasPerk(PerkLib.SoulKing)) armorDef += 25 * newGamePlusMod * humanBodyCultivators();
-				if (hasPerk(PerkLib.SoulEmperor)) armorDef += 0 * newGamePlusMod * humanBodyCultivators();
+				if (hasPerk(PerkLib.SoulEmperor)) armorDef += 25 * newGamePlusMod * humanBodyCultivators();
 			}
 			if (hasPerk(PerkLib.FleshBodySoDTyrantStage)) {
 				if (hasPerk(PerkLib.SoulAncestor)) armorDef += 30 * newGamePlusMod;

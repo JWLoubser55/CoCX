@@ -128,7 +128,32 @@ public class CombatSoulskills extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.SoulTyrant)) modssp += 2;
 			if (player.hasPerk(PerkLib.SoulKing)) modssp += 2;
 			if (player.hasPerk(PerkLib.SoulEmperor)) modssp += 2;
-			//if (player.hasPerk(PerkLib.SoulAncestor)) modssp += 2;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyTyrantStage)) {
+			if (player.hasPerk(PerkLib.SoulAncestor)) modssp += 2.5;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) {
+			if (player.hasPerk(PerkLib.SoulApprentice)) modssp += 1.25;
+			if (player.hasPerk(PerkLib.SoulPersonage)) modssp += 1.25;
+			if (player.hasPerk(PerkLib.SoulWarrior)) modssp += 1.25;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMWarriorStage)) {
+			if (player.hasPerk(PerkLib.SoulSprite)) modssp += 2.5;
+			if (player.hasPerk(PerkLib.SoulScholar)) modssp += 2.5;
+			if (player.hasPerk(PerkLib.SoulGrandmaster)) modssp += 2.5;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMElderStage)) {
+			if (player.hasPerk(PerkLib.SoulElder)) modssp += 3.75;
+			if (player.hasPerk(PerkLib.SoulExalt)) modssp += 3.75;
+			if (player.hasPerk(PerkLib.SoulOverlord)) modssp += 3.75;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMOverlordStage)) {
+			if (player.hasPerk(PerkLib.SoulTyrant)) modssp += 5;
+			if (player.hasPerk(PerkLib.SoulKing)) modssp += 5;
+			if (player.hasPerk(PerkLib.SoulEmperor)) modssp += 5;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMTyrantStage)) {
+			if (player.hasPerk(PerkLib.SoulAncestor)) modssp += 6.25;
 		}
 		if (player.hasStatusEffect(StatusEffects.MartialTraining) && player.statusEffectv2(StatusEffects.MartialTraining) > 3) modssp += (0.1 * (player.statusEffectv2(StatusEffects.MartialTraining) - 3));
 		if (player.hasPerk(PerkLib.BrutalBlows)) modssp += 0.05;
@@ -163,7 +188,9 @@ public class CombatSoulskills extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.SoulTyrant)) modssm += 2;
 			if (player.hasPerk(PerkLib.SoulKing)) modssm += 2;
 			if (player.hasPerk(PerkLib.SoulEmperor)) modssm += 2;
-			//if (player.hasPerk(PerkLib.SoulAncestor)) modssm += 2;
+		}
+		if (player.hasPerk(PerkLib.DaoistTyrantStage)) {
+			if (player.hasPerk(PerkLib.SoulAncestor)) modssm += 2.5;
 		}
 		if (player.perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 2) {
 			var wfb:Number = 0.5;

@@ -38,6 +38,8 @@ public class Soulforce extends BaseContent
 		var dailySoulforceUsesLimit:Number = 0;
 		if (player.hasPerk(PerkLib.JobSoulCultivator)) dailySoulforceUsesLimit += 6;
 		if (player.hasPerk(PerkLib.DaoistApprenticeStage)) dailySoulforceUsesLimit++;
+		if (player.hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) dailySoulforceUsesLimit++;
+		if (player.hasPerk(PerkLib.FleshBodySoDApprenticeStage)) dailySoulforceUsesLimit++;
 		if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) dailySoulforceUsesLimit++;
 		if (player.hasPerk(PerkLib.FleshBodyApprenticeStage)) dailySoulforceUsesLimit++;
 		//if (player.hasPerk(PerkLib.)) dailySoulforceUsesLimit++;//heart cultivator path
@@ -273,7 +275,7 @@ public class Soulforce extends BaseContent
 			bodypathsccount3 += 1;
 			paths += 1;
 		}
-		if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
+		if (player.hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) {
 			daoistpathsccount0 += 1;
 			bodypathsccount0 += 1;
 			bodypathsccount2 += 1;
@@ -287,6 +289,13 @@ public class Soulforce extends BaseContent
 			bodypathsccount3 += 1;
 			paths += 1;
 		}
+		if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
+			daoistpathsccount0 += 1;
+			bodypathsccount0 += 1;
+			bodypathsccount1 += 1;
+			bodypathsccount2 += 1;
+			paths += 1;
+		}
 		outputText("<b>Current subpaths that are cultivated / Maximum subpaths that can be cultivated:</b> " + paths + " / " + pathscap + "\n");
 		menu();
 		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0) {
@@ -294,16 +303,21 @@ public class Soulforce extends BaseContent
 			else addButtonDisabled(0, "Daoist", "You can't use this 'My Dao Sticks are better than Yours' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
 		}
 		else addButtonDisabled(0, "Daoist", "Req. 'My Dao Sticks are better than Yours' daoist cultivation manual.");
-		if (player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0) {
-			if (bodypathsccount1 < pathscap) addButton(5, "BodyCult(1)", bodycultivationSubPath1).hint("Contemplate the mysteries from the 'Vigor of Lizan' body cultivation manual.");
-			else addButtonDisabled(5, "BodyCult(1)", "You can't use this 'Vigor of Lizan' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
+		if (player.hasKeyItem("Cultivation Manual: Fist of Metal") >= 0) {
+			if (bodypathsccount2 < pathscap) addButton(5, "BodyCult(1)", bodycultivationSubPath1).hint("Contemplate the mysteries from the 'Fist of Metal' body cultivation manual.");
+			else addButtonDisabled(5, "BodyCult(1)", "You can't use this 'Fist of Metal' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
 		}
-		else addButtonDisabled(5, "BodyCult(1)", "Req. 'Vigor of Lizan' body cultivation manual.");
+		else addButtonDisabled(5, "BodyCult(1)", "Req. 'Fist of Metal' body cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Scale of Dragon") >= 0) {
 			if (bodypathsccount2 < pathscap) addButton(6, "BodyCult(2)", bodycultivationSubPath2).hint("Contemplate the mysteries from the 'Scale of Dragon' body cultivation manual.");
 			else addButtonDisabled(6, "BodyCult(2)", "You can't use this 'Scale of Dragon' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
 		}
 		else addButtonDisabled(6, "BodyCult(2)", "Req. 'Scale of Dragon' body cultivation manual.");
+		if (player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0) {
+			if (bodypathsccount1 < pathscap) addButton(7, "BodyCult(3)", bodycultivationSubPath3).hint("Contemplate the mysteries from the 'Vigor of Lizan' body cultivation manual.");
+			else addButtonDisabled(7, "BodyCult(3)", "You can't use this 'Vigor of Lizan' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
+		}
+		else addButtonDisabled(7, "BodyCult(3)", "Req. 'Vigor of Lizan' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0) addButton(5, "BodyCult", bodycultivationSubPath).hint("Contemplate the mysteries from the 'Body like a Coke Fiend' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(10, "HeartCult", );
 		addButton(14, "Back", accessSoulforceMenu);
@@ -363,10 +377,10 @@ public class Soulforce extends BaseContent
 */
 	public function bodycultivationSubPath1():void {
 		var stages:Array = [
-			["Apprentice(1)", PerkLib.FleshBodyVoLApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
-			["Warrior(1)", PerkLib.FleshBodyVoLWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
-			["Elder(1)", PerkLib.FleshBodyVoLElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
-			["Overlord(1)", PerkLib.FleshBodyVoLOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
+			["Apprentice(1)", PerkLib.FleshBodyFoMApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
+			["Warrior(1)", PerkLib.FleshBodyFoMWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
+			["Elder(1)", PerkLib.FleshBodyFoMElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
+			["Overlord(1)", PerkLib.FleshBodyFoMOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
 		];
 		menu();
 		var i:int;
@@ -387,6 +401,26 @@ public class Soulforce extends BaseContent
 			["Warrior(2)", PerkLib.FleshBodySoDWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
 			["Elder(2)", PerkLib.FleshBodySoDElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
 			["Overlord(2)", PerkLib.FleshBodySoDOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
+		];
+		menu();
+		var i:int;
+		for (i = 0; i < stages.length; ++i)
+			addButton(i, stages[i][0], bodycultivationSubPathChosen, stages[i][1], stages[i][2])
+				.disableIf(!player.hasItem(stages[i][2], 1) || !player.hasItem(useables.BTSOLUTION, 1),
+					"Requires 1 bottle of " + (stages[i][2] as ItemType).longName
+					+ " and 1 vial of " + useables.BTSOLUTION.longName)
+				.disableIf(!player.hasPerk(stages[i][3]), "Requires perk: " + (stages[i][3] as PerkType).name())
+				.disableIf(i != 0 && !player.hasPerk(stages[i - 1][1]), "You need to have achieved the previous stage first.")
+				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
+		addButton(14, "Back", SubPaths);
+	}
+	
+	public function bodycultivationSubPath3():void {
+		var stages:Array = [
+			["Apprentice(3)", PerkLib.FleshBodyVoLApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
+			["Warrior(3)", PerkLib.FleshBodyVoLWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
+			["Elder(3)", PerkLib.FleshBodyVoLElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
+			["Overlord(3)", PerkLib.FleshBodyVoLOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
 		];
 		menu();
 		var i:int;

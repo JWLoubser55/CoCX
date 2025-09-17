@@ -3622,9 +3622,9 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (this.mana > maxOverMana()) this.mana = maxMana();
 			//health, soulforce and mana regeneration for monsters
 			if (((hasPerk(PerkLib.Regeneration) || hasPerk(PerkLib.LizanRegeneration) || hasPerk(PerkLib.LustyRegeneration) || perkv1(IMutationsLib.LizanMarrowIM) >= 1 || perkv1(IMutationsLib.DrakeHeartIM) >= 3 || perkv1(IMutationsLib.DrakeBloodIM) >= 1 || perkv1(IMutationsLib.FerasBirthrightIM) >= 1 || perkv1(IMutationsLib.HydraBloodIM) >= 1
-			|| perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 || hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodySoDApprenticeStage) || hasPerk(PerkLib.FleshBodyVoLApprenticeStage) || hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration) || hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline)
-			|| hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline) || hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FFclassHeavenTribulationSurvivor)
-			|| hasPerk(PerkLib.EclassHeavenTribulationSurvivor) || hasStatusEffect(StatusEffects.PostfluidIntakeRegen) || hasStatusEffect(StatusEffects.MonsterRegen) || hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP())
+			|| perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 || hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodyFoMApprenticeStage) || hasPerk(PerkLib.FleshBodySoDApprenticeStage) || hasPerk(PerkLib.FleshBodyVoLApprenticeStage) || hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration)
+			|| hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline) || hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor)
+			|| hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor) || hasStatusEffect(StatusEffects.PostfluidIntakeRegen) || hasStatusEffect(StatusEffects.MonsterRegen) || hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP())
 			|| (hasStatusEffect(StatusEffects.MonsterVPT) && (this.HP < maxOverHP()) && (this.HP > minHP()))) {
 				var healingPercent:Number = 0;
 				var temp2:Number = 0;
@@ -3724,11 +3724,16 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasPerk(PerkLib.ImprovedLifeline)) temp2 += (8 * level * (1 + newGamePlusMod()));
 				if (hasPerk(PerkLib.GreaterLifeline)) temp2 += (12 * level * (1 + newGamePlusMod()));
 				if (hasPerk(PerkLib.EpicLifeline)) temp2 += (16 * level * (1 + newGamePlusMod()));
-				if (hasPerk(PerkLib.FleshBodySoDApprenticeStage)) temp2 += (10 * level * (1 + newGamePlusMod()));
-				if (hasPerk(PerkLib.FleshBodySoDWarriorStage)) temp2 += (20 * level * (1 + newGamePlusMod()));
-				if (hasPerk(PerkLib.FleshBodySoDElderStage)) temp2 += (30 * level * (1 + newGamePlusMod()));
-				if (hasPerk(PerkLib.FleshBodySoDOverlordStage)) temp2 += (40 * level * (1 + newGamePlusMod()));
-				if (hasPerk(PerkLib.FleshBodySoDTyrantStage)) temp2 += (50 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) temp2 += (250 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMWarriorStage)) temp2 += (500 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMElderStage)) temp2 += (750 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMOverlordStage)) temp2 += (1000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMTyrantStage)) temp2 += (1250 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDApprenticeStage)) temp2 += (level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDWarriorStage)) temp2 += (2 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDElderStage)) temp2 += (3 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDOverlordStage)) temp2 += (4 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDTyrantStage)) temp2 += (5 * level * (1 + newGamePlusMod()));
 				if (hasStatusEffect(StatusEffects.MonsterRegen2)) temp2 += statusEffectv2(StatusEffects.MonsterRegen2);
 				if (hasStatusEffect(StatusEffects.MonsterVPT)) temp2 += statusEffectv1(StatusEffects.MonsterVPT);
 				if (temp2 > 0) {
@@ -5187,16 +5192,16 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 			if (hasPerk(PerkLib.FleshBodySoDApprenticeStage)) {
 				if (hasPerk(PerkLib.SoulApprentice)) {
-					armorDef += (25 * (1 + newGamePlusMod()));
-					armorMDef += (25 * (1 + newGamePlusMod()));
+					armorDef += (10 * (1 + newGamePlusMod()));
+					armorMDef += (10* (1 + newGamePlusMod()));
 				}
 				if (hasPerk(PerkLib.SoulPersonage)) {
-					armorDef += (25 * (1 + newGamePlusMod()));
-					armorMDef += (25 * (1 + newGamePlusMod()));
+					armorDef += (10* (1 + newGamePlusMod()));
+					armorMDef += (10 * (1 + newGamePlusMod()));
 				}
 				if (hasPerk(PerkLib.SoulWarrior)) {
-					armorDef += (25 * (1 + newGamePlusMod()));
-					armorMDef += (25 * (1 + newGamePlusMod()));
+					armorDef += (10 * (1 + newGamePlusMod()));
+					armorMDef += (10 * (1 + newGamePlusMod()));
 				}
 			}
 			if (hasPerk(PerkLib.FleshBodySoDWarriorStage)) {
@@ -5229,16 +5234,16 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 			if (hasPerk(PerkLib.FleshBodySoDOverlordStage)) {
 				if (hasPerk(PerkLib.SoulTyrant)) {
-					armorDef += (10 * (1 + newGamePlusMod()));
-					armorMDef += (10 * (1 + newGamePlusMod()));
+					armorDef += (25 * (1 + newGamePlusMod()));
+					armorMDef += (25 * (1 + newGamePlusMod()));
 				}
 				if (hasPerk(PerkLib.SoulKing)) {
-					armorDef += (10 * (1 + newGamePlusMod()));
-					armorMDef += (10 * (1 + newGamePlusMod()));
+					armorDef += (25 * (1 + newGamePlusMod()));
+					armorMDef += (25 * (1 + newGamePlusMod()));
 				}
 				if (hasPerk(PerkLib.SoulEmperor)) {
-					armorDef += (10 * (1 + newGamePlusMod()));
-					armorMDef += (10 * (1 + newGamePlusMod()));
+					armorDef += (25 * (1 + newGamePlusMod()));
+					armorMDef += (25 * (1 + newGamePlusMod()));
 				}
 			}
 			if (hasPerk(PerkLib.FleshBodySoDTyrantStage)) {
