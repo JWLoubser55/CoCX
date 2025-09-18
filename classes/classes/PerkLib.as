@@ -7313,7 +7313,8 @@ public class PerkLib
                     .requireLevel(48);
             //Tier 9 Wisdom perks
             PrestigeJobSoulArtMaster.requirePrestigeJobSlot()
-                    .requirePerks(FleshBodyVoLApprenticeStage, JobMonk)
+                    .requireAnyPerk(FleshBodyVoLApprenticeStage, FleshBodySoDApprenticeStage, FleshBodyFoMApprenticeStage)
+                    .requirePerk(JobMonk)
                     .requireWis(200)
                     .requireLevel(54);
 			PrestigeJobNecromancer.requirePrestigeJobSlot()

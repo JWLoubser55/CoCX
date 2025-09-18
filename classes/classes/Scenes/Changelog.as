@@ -200,7 +200,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Flesh Body (VoL): Warrior Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +2000 max HP, +2% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +1% HP regen\n");
 			outputText("-New event perk: Flesh Body (VoL): Elder Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +3000 max HP, +3% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +1% HP regen\n");
 			outputText("-New event perk: Flesh Body (VoL): Overlord Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +4000 max HP, +4% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +1% HP regen\n");
-			outputText("-Prestige Job: Soul Art Master req. for Flesh Body: Apprentice Stage was changed to Flesh Body (VoL): Apprentice Stage.\n");
+			outputText("-Prestige Job: Soul Art Master req. for Flesh Body: Apprentice Stage was changed to any of accesable body cultivations paths apprentice stage perk.\n");
 			outputText("-Aether Twins can now after 3rd evolution eat new materials: World Tree Branch & Bronze bar. Also they can eat 1 new shield and 6 new medium sized melee weapons. After eating those and then all materials the can it would enable them evolving to sword + shield form. From here they can change to different medium sized weapon (axe, rapier, spear, mace, whip) + shield forms. ");
 			outputText("They could assume additional forms in case PC learned Dual Wield. All those forms are added to their morph menu.\n");
 			outputText("-Moved autosave timing to just before sleep (saving at passes 23:00 ended up saving at a hour after each instance, repeating saving until 30:00 will softlock you from sleeping), revert ||= change in playerevent hourly racial perk check so they all properly trigger at once rather than one by one. (NUZ/Shirane)\n");
@@ -271,7 +271,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Flesh Body (FoM): Warrior Stage. Gained by cultivating 'Fist of Metal' cultivation manual. Effects: +250% p.soulskill power, +17 to unarmed attack at S.Sprite, S.Scholar, S.Grandmaster stages; +500 HP regen\n");
 			outputText("-New event perk: Flesh Body (FoM): Elder Stage. Gained by cultivating 'Fist of Metal' cultivation manual. Effects: +375% p.soulskill power, +23 to unarmed attack at S.Elder, S.Exalt, S.Overlord stages; +750 HP regen\n");
 			outputText("-New event perk: Flesh Body (FoM): Overlord Stage. Gained by cultivating 'Fist of Metal' cultivation manual. Effects: +500% p.soulskill power, +29 to unarmed attack at S.Tyrant, S.King, S.Emperor stages; +1000 HP regen\n");
-			outputText("-\n");
+			outputText("-Fixed 'RearBodyTentacleEyestalks' being gained when transformations should be blocked. (Edward Darksong)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -320,7 +320,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Imperfect Spell) (PhillipDaisySeventh) (Edward Darksong) (Cangsz) (MaRG)(formely know as Mister GRaM)
+			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");

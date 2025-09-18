@@ -1934,13 +1934,8 @@ private function goJogging():void {
 }
 
 public function stopGoingBackEveryHourGymCheck():void{
-	if (CoC.instance.model.time.hours + 1 < 21){
-		cheatTime(1);
-		gymDesc();
-	}
-	else{
-		camp.returnToCampUseOneHour();
-	}
+	cheatTime(1);
+	gymDesc();
 }
 
 private var justRejectedLuna:Boolean = false;

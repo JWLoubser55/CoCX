@@ -1175,6 +1175,7 @@ public class Soulforce extends BaseContent
 		player.demonicenergy -= deCost((25 + (player.perkv1(PerkLib.StrengthenBody) * 5)));
 		if (player.hasPerk(PerkLib.StrengthenBody)) player.addPerkValue(PerkLib.StrengthenBody, 1, 1);
 		else player.createPerk(PerkLib.StrengthenBody, 1, 0, 0, 0);
+		statScreenRefresh();
 		doNext(accessDemonicEnergyMenu);
 	}
 	public function demonicEnergyStrengthenMagic():void {
@@ -1183,6 +1184,7 @@ public class Soulforce extends BaseContent
 		player.demonicenergy -= deCost((25 + (player.perkv1(PerkLib.StrengthenMagic) * 5)));
 		if (player.hasPerk(PerkLib.StrengthenMagic)) player.addPerkValue(PerkLib.StrengthenMagic, 1, 1);
 		else player.createPerk(PerkLib.StrengthenMagic, 1, 0, 0, 0);
+		statScreenRefresh();
 		doNext(accessDemonicEnergyMenu);
 	}
 	public function demonicEnergyCorruptElementImprove(daoType:String = ""):void {
