@@ -4419,8 +4419,8 @@ public class Combat extends BaseContent {
     }
 
     public function elementalArrowDamageMod(damage:Number):Number {
-        damage += Math.round(player.inte * 0.1);
-        if (player.inte >= 50) damage += Math.round(player.inte * ((player.inte / 50) * 0.05));
+        damage += player.inte;
+        if (player.inte >= 50) damage += Math.round(player.inte * ((player.inte / 50) * 0.5));
         if (player.weaponRange is Artemis) damage *= 1.5;
         if (player.armorName == "FrancescaCloak") damage *= 2;
         switch (flags[kFLAGS.ELEMENTAL_ARROWS]) {

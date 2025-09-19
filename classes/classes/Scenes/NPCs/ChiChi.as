@@ -130,19 +130,6 @@ use namespace CoC;
 			}
 		}
 		
-		override public function defeated(hpVictory:Boolean):void
-		{
-			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 13) chichiScene.WonSparringFight();
-			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) chichiScene.WonSecondFight();
-			else {
-				if (hpVictory) chichiScene.WonFirstFight();
-				else {
-					retry();
-					return;
-				}
-			}
-		}
-
 		private function retry():void {
 			clearOutput();
 			if (hasStatusEffect(StatusEffects.CombatWounds)) {
@@ -161,9 +148,22 @@ use namespace CoC;
 			SceneLib.combat.combatRoundOver();
 		}
 
+		override public function defeated(hpVictory:Boolean):void
+		{
+			if (flags[kFLAGS.CHI_CHI_FOLLOWER] > 2 && flags[kFLAGS.CHI_CHI_FOLLOWER] != 5) chichiScene.WonSparringFight();
+			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) chichiScene.WonSecondFight();
+			else {
+				if (hpVictory) chichiScene.WonFirstFight();
+				else {
+					retry();
+					return;
+				}
+			}
+		}
+
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 13) chichiScene.LostSparringFight();
+			if (flags[kFLAGS.CHI_CHI_FOLLOWER] > 2 && flags[kFLAGS.CHI_CHI_FOLLOWER] != 5) chichiScene.LostSparringFight();
 			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) chichiScene.LostSecondFight();
 			else chichiScene.LostFirstFight();
 		}

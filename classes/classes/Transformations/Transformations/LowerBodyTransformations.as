@@ -2317,6 +2317,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 			if (doOutput) {
 				// No special text outside the event
 			}
+			player.legCount = 2;
 			player.lowerBody = LowerBody.ARMORED_LEGS;
 			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.ARIGEAN));
 		},
@@ -2414,6 +2415,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 			if (doOutput) {
 				// No special text outside the event
 			}
+			player.legCount = 2;
 			player.lowerBody = LowerBody.SHROOM_SKIRT;
 			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.SHROOM_SKIRT));
 		},
@@ -2429,6 +2431,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 			if (doOutput) {
 				// No special text outside the event
 			}
+			player.legCount = 2;
 			player.lowerBody = LowerBody.MECHANICAL_DOLL_LEGS;
 		},
 		// is present

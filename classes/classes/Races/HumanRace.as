@@ -72,26 +72,38 @@ public class HumanRace extends Race {
 				.hasPerk(PerkLib.HumanSupremacyImproved, +3)
 				.hasPerk(PerkLib.HumanSupremacySuperior, +4)
 				.hasPerk(PerkLib.HumanSupremacyPeerless, +4)
-				.customRequirement("", "Bloodline: Common human OR Common human's descendant",
+				.customScoreRequirement("", "Bloodline: Common human OR Common human's descendant",
 						function (body:BodyData):Boolean {
 							return (body.player.hasPerk(PerkLib.CommonHumanBloodline)
 									|| body.player.hasPerk(PerkLib.CommonHumansDescendant))
-						}, +2)
-				.customRequirement("", "Bloodline: Noble human OR Noble human's descendant",
+						},
+						function (body:BodyData):int {
+							return body.player.increaseFromBloodlinePerks();
+						})
+				.customScoreRequirement("", "Bloodline: Noble human OR Noble human's descendant",
 						function (body:BodyData):Boolean {
 							return (body.player.hasPerk(PerkLib.NobleHumanBloodline)
 									|| body.player.hasPerk(PerkLib.NobleHumansDescendant))
-						}, +4)
-				.customRequirement("", "Bloodline: Royal human OR Royal human's descendant",
+						},
+						function (body:BodyData):int {
+							return (body.player.increaseFromBloodlinePerks() + 2);
+						})
+				.customScoreRequirement("", "Bloodline: Royal human OR Royal human's descendant",
 						function (body:BodyData):Boolean {
 							return (body.player.hasPerk(PerkLib.RoyalHumanBloodline)
 									|| body.player.hasPerk(PerkLib.RoyalHumansDescendant))
-						}, +6)
-				.customRequirement("", "Bloodline: Primarch OR Primarch's descendant",
+						},
+						function (body:BodyData):int {
+							return (body.player.increaseFromBloodlinePerks() + 4);
+						})
+				.customScoreRequirement("", "Bloodline: Primarch OR Primarch's descendant",
 						function (body:BodyData):Boolean {
 							return (body.player.hasPerk(PerkLib.PrimarchBloodline)
 									|| body.player.hasPerk(PerkLib.PrimarchsDescendant))
-						}, +10)
+						},
+						function (body:BodyData):int {
+							return (body.player.increaseFromBloodlinePerks() + 8);
+						})
 				.hasPerk(PerkLib.AlteredAnima, -10)
 				.hasPerk(PerkLib.Soulless, -20)
 				.hasPerk(PerkLib.GOBXChemical, -1000);

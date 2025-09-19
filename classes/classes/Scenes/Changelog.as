@@ -200,6 +200,10 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Flesh Body (VoL): Warrior Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +2000 max HP, +2% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +1% HP regen\n");
 			outputText("-New event perk: Flesh Body (VoL): Elder Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +3000 max HP, +3% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +1% HP regen\n");
 			outputText("-New event perk: Flesh Body (VoL): Overlord Stage. Gained by cultivating 'Vigor of Lizan' cultivation manual. Effects: +4000 max HP, +4% OverMax HP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +1% HP regen\n");
+			outputText("-New event perk: Flesh Body (SoD): Apprentice Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +10 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Apprentice, Soul Personage, Soul Warrior); +(player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (SoD): Warrior Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +15 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +(2 * player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (SoD): Elder Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +20 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +(3 * player level) HP regen\n");
+			outputText("-New event perk: Flesh Body (SoD): Overlord Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +25 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +(4 * player level) HP regen\n");
 			outputText("-Prestige Job: Soul Art Master req. for Flesh Body: Apprentice Stage was changed to any of accesable body cultivations paths apprentice stage perk.\n");
 			outputText("-Aether Twins can now after 3rd evolution eat new materials: World Tree Branch & Bronze bar. Also they can eat 1 new shield and 6 new medium sized melee weapons. After eating those and then all materials the can it would enable them evolving to sword + shield form. From here they can change to different medium sized weapon (axe, rapier, spear, mace, whip) + shield forms. ");
 			outputText("They could assume additional forms in case PC learned Dual Wield. All those forms are added to their morph menu.\n");
@@ -243,10 +247,6 @@ public class Changelog extends BaseContent
 			outputText("-Brutal Blows / Brutal Spells perk renamed to Brutal Physical Blows / Brutal Elemental Blows. In perks req. added Flesh Body (VoL): Apprentice Stage or Daoist: Apprentice Stage perk as alternative to having Job: Warrior or Job: Sorcerer. ");
 			outputText("Each of perks lower physicial or magical resistance from any attack that deal physical or elemental (magical) damage and increase phys. Additional each increase by 5% physical or by 10% magical soulskill power multiplier.\n");
 			outputText("-Fixes for renamed perks. (Stadler)\n");
-			outputText("-New event perk: Flesh Body (SoD): Apprentice Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +10 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Apprentice, Soul Personage, Soul Warrior); +(player level) HP regen\n");
-			outputText("-New event perk: Flesh Body (SoD): Warrior Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +15 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Sprite, Soul Scholar, Soul Grandmaster); +(2 * player level) HP regen\n");
-			outputText("-New event perk: Flesh Body (SoD): Elder Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +20 to armor / magic resistance (all scalable and gained each time PC gets one of these perks: Soul Elder, Soul Exalt, Soul Overlord); +(3 * player level) HP regen\n");
-			outputText("-New event perk: Flesh Body (SoD): Overlord Stage. Gained by cultivating 'Scale of Dragon' cultivation manual. Effects: +25 to armor / magic resistanceP (all scalable and gained each time PC gets one of these perks: Soul Tyrant, Soul King, Soul Emperor); +(4 * player level) HP regen\n");
 			outputText("-In NG1+ games can skip time in Ignam to the morning of the departure day. Not sure how usefull that would be but i'm certain there are people out there that want to skip time in prologue.\n");
 			outputText("-Moved Misc menu + Ayo Armor maintance menu from Inventory menu to Camp Actions menu. In Intentory button would now lead to Unequip menu only.\n");
 			outputText("-New flying sword: Selenite Full Moon - buyable at 'Flying Swords are always with you!' shop in He'Xin'Dao. Cost 375 spirit stones. Base atk is 40. It's classified as Massive flying sword. Deal black ice damage instead of physical damage. Soulforce cost of using it to fly or attack are increased by 10%.\n");
@@ -288,25 +288,25 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");//, mace
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
