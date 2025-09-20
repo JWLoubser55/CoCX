@@ -16,57 +16,37 @@ import classes.internals.*;
 
 	public class Iridesian extends Monster
 	{
-		public function soulskillCostHailofBlades():Number {
-			var cost:Number = 50;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) cost -= 5;
-			if (hasPerk(PerkLib.DaoistWarriorStage)) cost -= 5;
-			return cost;
-		}
-		public function soulskillCostGrandioseHailofBlades():Number {
-			var cost:Number = 200;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) cost -= 20;
-			if (hasPerk(PerkLib.DaoistWarriorStage)) cost -= 20;
-			return cost;
-		}
-		public function soulskillCostGrandioseHailofMoonBlades():Number {
-			var cost:Number = 800;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) cost -= 80;
-			if (hasPerk(PerkLib.DaoistWarriorStage)) cost -= 80;
-			return cost;
-		}
 		public function soulskillCostEnergyProjection():Number {
 			var cost:Number = 20;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) cost -= 2;
-			if (hasPerk(PerkLib.DaoistWarriorStage)) cost -= 2;
 			if (hasStatusEffect(StatusEffects.TrueFormAngel)) cost *= 2;
 			return cost;
 		}
 		
 		public function SoulskillMod():Number {
 			var mod1:Number = 1;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) {
-				if (hasPerk(PerkLib.SoulApprentice)) mod1 += .3;
-				if (hasPerk(PerkLib.SoulPersonage)) mod1 += .3;
-				if (hasPerk(PerkLib.SoulWarrior)) mod1 += .3;
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mod1 += 1.25;
+				if (hasPerk(PerkLib.SoulPersonage)) mod1 += 1.25;
+				if (hasPerk(PerkLib.SoulWarrior)) mod1 += 1.25;
 			}
-			if (hasPerk(PerkLib.DaoistWarriorStage)) {
-				if (hasPerk(PerkLib.SoulSprite)) mod1 += .6;
-				if (hasPerk(PerkLib.SoulScholar)) mod1 += .6;
-				if (hasPerk(PerkLib.SoulGrandmaster)) mod1 += .6;
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mod1 += 2.5;
+				if (hasPerk(PerkLib.SoulScholar)) mod1 += 2.5;
+				if (hasPerk(PerkLib.SoulElder)) mod1 += 2.5;
 			}
 			return mod1;
 		}
 		
 		public function castHailOfBladesSoulskillIridesian():void {
 			outputText("Letting soulforce leak out around him, oculicorn form six ethereal two meter long weapons. Then he thrust his hand outwards and in the blink of an eye, weapons shoot forwards you. Weapons hits you, dealing ");
-			soulforce -= soulskillCostHailofBlades();
+			soulforce -= 50;
 			var hobI:Number = 6;
 			while (hobI-->0) bladesD();
 			outputText(" damage!");
 		}
 		public function castGrandioseHailOfBladesSoulskillIridesian():void {
 			outputText("Letting soulforce leak out around him, oculicorn form eighteen ethereal two meter long weapons in two rows. Then he thrust his hand outwards and in the blink of an eye, weapons shoot forwards you. Weapons hits you, dealing ");
-			soulforce -= soulskillCostGrandioseHailofBlades();
+			soulforce -= 200;
 			createStatusEffect(StatusEffects.AbilityCooldown2, 3, 0, 0, 0);
 			var ghobI:Number = 9;
 			while (ghobI-->0) bladesD(2);
@@ -74,7 +54,7 @@ import classes.internals.*;
 		}
 		public function castGrandioseHailOfMoonBladesSoulskillIridesian():void {
 			outputText("Letting soulforce leak out around him, oculicorn form fifty six ethereal two meter long weapons in four rows. Then he thrust his hand outwards and in the blink of an eye, weapons shoot forwards you. Weapons hits you, dealing ");
-			soulforce -= soulskillCostGrandioseHailofMoonBlades();
+			soulforce -= 800;
 			createStatusEffect(StatusEffects.AbilityCooldown3, 9, 0, 0, 0);
 			var ghombI:Number = 19;
 			while (ghombI-->0) bladesD(4);
@@ -199,15 +179,15 @@ import classes.internals.*;
 				var choice:Number = rand(5);
 				if (choice == 0) IridesianOmnicast();
 				if (choice == 1) {
-					if (soulforce >= soulskillCostHailofBlades()) castHailOfBladesSoulskillIridesian();
+					if (soulforce >= 50) castHailOfBladesSoulskillIridesian();
 					else IridesianOmnicast();
 				}
 				if (choice == 2) {
-					if (soulforce >= soulskillCostGrandioseHailofBlades() && !hasStatusEffect(StatusEffects.AbilityCooldown2)) castGrandioseHailOfBladesSoulskillIridesian();
+					if (soulforce >= 200 && !hasStatusEffect(StatusEffects.AbilityCooldown2)) castGrandioseHailOfBladesSoulskillIridesian();
 					else IridesianOmnicast();
 				}
 				if (choice == 3) {
-					if (soulforce >= soulskillCostGrandioseHailofMoonBlades() && !hasStatusEffect(StatusEffects.AbilityCooldown3)) castGrandioseHailOfMoonBladesSoulskillIridesian();
+					if (soulforce >= 800 && !hasStatusEffect(StatusEffects.AbilityCooldown3)) castGrandioseHailOfMoonBladesSoulskillIridesian();
 					else IridesianOmnicast();
 				}
 				if (choice == 4) {
@@ -321,7 +301,7 @@ import classes.internals.*;
 			this.createPerk(PerkLib.DieHardHP, 30, 0, 0, 0);
 			this.createPerk(PerkLib.MonsterRegeneration, 2, 0, 0, 0);
 			this.createPerk(PerkLib.JobSoulCultivator, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DaoistApprenticeStage, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DaoistMDHiFApprenticeStage, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulApprentice, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulPersonage, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulWarrior, 0, 0, 0, 0);

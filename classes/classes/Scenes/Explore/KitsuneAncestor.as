@@ -32,10 +32,10 @@ import classes.internals.*;
 		
 		public function kitsunesoulskillMod():Number {
 			var kmodss:Number = 1;//bonusy 3x
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) kmodss += .9;
-			if (hasPerk(PerkLib.DaoistWarriorStage)) kmodss += 1.8;
-			if (hasPerk(PerkLib.DaoistElderStage)) kmodss += 3;
-			if (hasPerk(PerkLib.DaoistOverlordStage)) kmodss += 4.2;
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) kmodss += 3.75;
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) kmodss += 7.5;
+			if (hasPerk(PerkLib.DaoistMDHiFElderStage)) kmodss += 11.25;
+			if (hasPerk(PerkLib.DaoistMDHiFOverlordStage)) kmodss += 15;
 			return kmodss;
 		}
 		
@@ -221,10 +221,10 @@ import classes.internals.*;
 			this.createPerk(PerkLib.SoulTyrant, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulKing, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulEmperor, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DaoistApprenticeStage, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DaoistWarriorStage, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DaoistElderStage, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DaoistOverlordStage, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DaoistMDHiFApprenticeStage, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DaoistMDHiFWarriorStage, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DaoistMDHiFElderStage, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DaoistMDHiFOverlordStage, 0, 0, 0, 0);
 			this.createPerk(PerkLib.JobSorcerer, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Spellpower, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Mage, 0, 0, 0, 0);

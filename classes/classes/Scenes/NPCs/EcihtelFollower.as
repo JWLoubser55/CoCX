@@ -96,7 +96,18 @@ public function EcihtelMainMenu():void {
 	clearOutput();
 	outputText("When you approach, Ecihtel stops what she’s doing and turns to you. \"<i>Something you want my help with? I’m ready for slaying more demons, always.</i>\"\n\n");
 	menu();
+	addButton(0, "Appearance", EcihtelMainMenuAppearance);
 	addButton(14, "Back", camp.campFollowers);
+}
+
+public function EcihtelMainMenuAppearance():void {
+	clearOutput();
+	outputText("Ecihtel is a 9 foot succubus, yet paradoxically wielding a holy aura. She carries herself confidently with an average build and pink skin.  She has a fairly human face with pair of goat-like horns.  Her black-rimmed eyes have golden slit pupils and framed with purple hair grows luxuriously around her head, with black roses woven into them.\n\n");
+	outputText("A set of large dragon wings are folded against her back when she's in rest.  Two normal, well-formed legs grow down from her hips as the base of her spine extends into a spade-tipped tail swaying behind her. She is wearing rags that cover fraction of her body.\n\n");
+	outputText("She has a pair of slim, C-cup breasts, each one adorned with a single nipple.\n\n");
+	outputText("She has a pink, wet pussy and a tight asshole, placed right between her plush buttcheeks where it belongs.\n\n");
+	menu();
+	addButton(14, "Back", EcihtelMainMenu);
 }
 /*
 public function aaa():void {

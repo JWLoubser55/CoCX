@@ -4023,9 +4023,19 @@ public class PerkLib
 		public static const DaoistOverlordStage:PerkType = mk("Daoist: Overlord Stage", "Daoist: Overlord Stage",
 				"You've reached the fourth stage of Daoist path. (+200% m.soulskill power, -10% soulskills cost, +300 max SF S.King, S.Emperor, S.Ancestor stages; +0.5% Soulforce regen)");
 		public static const DaoistTyrantStage:PerkType = mk("Daoist: Tyrant Stage", "Daoist: Tyrant Stage",
-				"You've reached the fifth stage of Daoist path. (+250% m.soulskill power, +70 max SF at )");
+				"You've reached the fifth stage of Daoist path. (+250% m.soulskill power, +70 max SF at S.Ancestor, S.Sage stages; +0.5% Soulforce regen)");
 		public static const DaoistWarriorStage:PerkType = mk("Daoist: Warrior Stage", "Daoist: Warrior Stage",
-				"You've reached the second stage of Daoist path. (+100% m.soulskill power, -10% soulskills cost, +100 max SF at S.Sprite, S.Scholar, S.Elder stages; +0.5% Soulforce regen)");
+				"You've reached the second stage of Daoist path. (+100% m.soulskill power, +100 max SF at S.Sprite, S.Scholar, S.Elder stages; +0.5% Soulforce regen)");
+		public static const DaoistMDHiFApprenticeStage:PerkType = mk("Daoist (MDHiF): Apprentice Stage", "Daoist (MDHiF): Apprentice Stage",
+				"You've reached the first stage of Daoist path. (+125% m.soulskill power, +125 max SF at S.Apprentice, S.Personage, S.Warrior stages; +1% Soulforce regen)");
+		public static const DaoistMDHiFElderStage:PerkType = mk("Daoist (MDHiF): Elder Stage", "Daoist (MDHiF): Elder Stage",
+				"You've reached the third stage of Daoist path. (+375% m.soulskill power, +375 max SF at S.Exalt, S.Overlord, S.Tyrant stages; +1% Soulforce regen)");
+		public static const DaoistMDHiFOverlordStage:PerkType = mk("Daoist (MDHiF): Overlord Stage", "Daoist (MDHiF): Overlord Stage",
+				"You've reached the fourth stage of Daoist path. (+500% m.soulskill power, +500 max SF S.King, S.Emperor, S.Ancestor stages; +1% Soulforce regen)");
+		public static const DaoistMDHiFTyrantStage:PerkType = mk("Daoist (MDHiF): Tyrant Stage", "Daoist (MDHiF): Tyrant Stage",
+				"You've reached the fifth stage of Daoist path. (+625% m.soulskill power, +625 max SF at S.Ancestor, S.Sage stages; +1% Soulforce regen)");
+		public static const DaoistMDHiFWarriorStage:PerkType = mk("Daoist (MDHiF): Warrior Stage", "Daoist (MDHiF): Warrior Stage",
+				"You've reached the second stage of Daoist path. (+250% m.soulskill power, +250 max SF at S.Sprite, S.Scholar, S.Elder stages; +1% Soulforce regen)");
 		public static const EclassHeavenTribulationSurvivor:PerkType = mk("E class Heaven Tribulation Survivor", "E class Heaven Tribulation Survivor",
 				"You have survived the fifth trial on cultivation path: E class Heaven Tribulation. +30% to all stats multi.").withBuffs({'str.mult':0.30,'tou.mult':0.30,'spe.mult':0.30,'int.mult':0.30,'wis.mult':0.30,'lib.mult':0.30,'sens':150}, false);
 		public static const FclassHeavenTribulationSurvivor:PerkType = mk("F class Heaven Tribulation Survivor", "F class Heaven Tribulation Survivor",
@@ -6488,7 +6498,7 @@ public class PerkLib
                     .requireLevel(6);
             BrutalSpells.requireLevel(6)
                     .requireInt(75)
-                    .requireAnyPerk(JobSorcerer, DaoistApprenticeStage);
+                    .requireAnyPerk(JobSorcerer, DaoistMDHiFApprenticeStage);
             //Tier 2 Intelligence perks
             GrandMage.requirePerk(Mage)
                     .requireInt(75)
@@ -7344,7 +7354,7 @@ public class PerkLib
 					.requireWis(175)
                     .requireLevel(54)
 					.requireCustomFunction(function (player:Player):Boolean {
-                        return (player.hasPerk(PerkLib.DaoistApprenticeStage) || (player.hasPerk(PerkLib.JobSorcerer) && player.hasPerk(PerkLib.Soulless)));
+                        return (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage) || (player.hasPerk(PerkLib.JobSorcerer) && player.hasPerk(PerkLib.Soulless)));
                     }, "Having Daoist: Apprentice Stage perk OR Job: Sorcerer and Soulless perks");
 			PrestigeJobDruid.requirePrestigeJobSlot()
                     .requireAnyPerk(Archmage, ArchmageEx)

@@ -37,6 +37,7 @@ public class Soulforce extends BaseContent
 		SoulCultivationLvL();
 		var dailySoulforceUsesLimit:Number = 0;
 		if (player.hasPerk(PerkLib.JobSoulCultivator)) dailySoulforceUsesLimit += 6;
+		if (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) dailySoulforceUsesLimit++;
 		if (player.hasPerk(PerkLib.DaoistApprenticeStage)) dailySoulforceUsesLimit++;
 		if (player.hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) dailySoulforceUsesLimit++;
 		if (player.hasPerk(PerkLib.FleshBodySoDApprenticeStage)) dailySoulforceUsesLimit++;
@@ -268,7 +269,7 @@ public class Soulforce extends BaseContent
 		var paths:Number = 0;
 		var pathscap:Number = 3;
 		if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) pathscap += 3;
-		if (player.hasPerk(PerkLib.DaoistApprenticeStage)) {
+		if (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
 			bodypathsccount0 += 1;
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
@@ -299,8 +300,8 @@ public class Soulforce extends BaseContent
 		outputText("<b>Current subpaths that are cultivated / Maximum subpaths that can be cultivated:</b> " + paths + " / " + pathscap + "\n");
 		menu();
 		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0) {
-			if (daoistpathsccount0 < pathscap) addButton(0, "Daoist", daoistSubPath).hint("Contemplate the mysteries from the 'My Dao Sticks are better than Yours' cultivation manual.");
-			else addButtonDisabled(0, "Daoist", "You can't use this 'My Dao Sticks are better than Yours' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
+			if (daoistpathsccount0 < pathscap) addButton(0, "Daoist(1)", daoistSubPath1).hint("Contemplate the mysteries from the 'My Dao Heart is Firm' cultivation manual.");
+			else addButtonDisabled(0, "Daoist", "You can't use this 'My Dao Heart is Firm' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
 		}
 		else addButtonDisabled(0, "Daoist", "Req. 'My Dao Sticks are better than Yours' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Fist of Metal") >= 0) {
@@ -323,6 +324,31 @@ public class Soulforce extends BaseContent
 		addButton(14, "Back", accessSoulforceMenu);
 	}
 
+	public function daoistSubPath1():void {
+		var stages:Array = [
+			["Apprentice", PerkLib.DaoistMDHiFApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
+			["Warrior", PerkLib.DaoistMDHiFWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
+			["Elder", PerkLib.DaoistMDHiFElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
+			["Overlord", PerkLib.DaoistMDHiFOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
+		];
+		menu();
+		var i:int;
+		for (i = 0; i < stages.length; ++i)
+			addButton(i, stages[i][0], daoistSubPathChosen, stages[i][1], stages[i][2])
+				.disableIf(!player.hasItem(stages[i][2]), "Requires " + (stages[i][2] as ItemType).longName)
+				.disableIf(!player.hasPerk(stages[i][3]), "Requires perk: " + (stages[i][3] as PerkType).name())
+				.disableIf(i != 0 && !player.hasPerk(stages[i - 1][1]), "You need to have achieved the previous stage first.")
+				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
+		addButton(14, "Back", SubPaths);
+	}
+	
+	private function daoistSubPathChosen(perk:PerkType, bottle:ItemType):void {
+		player.destroyItems(bottle, 1);
+		player.createPerk(perk, 0, 0, 0, 0);
+		outputText("\n\n<b>Gained perk - " + perk.name() + "</b>");
+		doNext(camp.returnToCampUseFourHours);
+	}
+	/*
 	public function daoistSubPath():void {
 		var stages:Array = [
 			["Apprentice", PerkLib.DaoistApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
@@ -347,7 +373,7 @@ public class Soulforce extends BaseContent
 		outputText("\n\n<b>Gained perk - " + perk.name() + "</b>");
 		doNext(camp.returnToCampUseFourHours);
 	}
-/*
+
 	public function bodycultivationSubPath():void {
 		var stages:Array = [
 			["Apprentice", PerkLib.FleshBodyVoLApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
@@ -694,11 +720,11 @@ public class Soulforce extends BaseContent
 			PerkLib.SoulAncestor,
 		];
 		var daoistPerks:/*PerkType*/Array = [
-			PerkLib.DaoistApprenticeStage,
-			PerkLib.DaoistWarriorStage,
-			PerkLib.DaoistElderStage,
-			PerkLib.DaoistOverlordStage,
-			PerkLib.DaoistTyrantStage,
+			PerkLib.DaoistMDHiFApprenticeStage,
+			PerkLib.DaoistMDHiFWarriorStage,
+			PerkLib.DaoistMDHiFElderStage,
+			PerkLib.DaoistMDHiFOverlordStage,
+			PerkLib.DaoistMDHiFTyrantStage,
 		];
 		for each(var soulPerk:PerkType in soulPerks)
 			if (player.hasPerk(soulPerk))

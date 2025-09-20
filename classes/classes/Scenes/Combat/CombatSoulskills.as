@@ -192,6 +192,29 @@ public class CombatSoulskills extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.DaoistTyrantStage)) {
 			if (player.hasPerk(PerkLib.SoulAncestor)) modssm += 2.5;
 		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+			if (player.hasPerk(PerkLib.SoulApprentice)) modssm += 1.25;
+			if (player.hasPerk(PerkLib.SoulPersonage)) modssm += 1.25;
+			if (player.hasPerk(PerkLib.SoulWarrior)) modssm += 1.25;
+		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+			if (player.hasPerk(PerkLib.SoulSprite)) modssm += 2.5;
+			if (player.hasPerk(PerkLib.SoulScholar)) modssm += 2.5;
+			if (player.hasPerk(PerkLib.SoulGrandmaster)) modssm += 2.5;
+		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFElderStage)) {
+			if (player.hasPerk(PerkLib.SoulElder)) modssm += 3.75;
+			if (player.hasPerk(PerkLib.SoulExalt)) modssm += 3.75;
+			if (player.hasPerk(PerkLib.SoulOverlord)) modssm += 3.75;
+		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFOverlordStage)) {
+			if (player.hasPerk(PerkLib.SoulTyrant)) modssm += 5;
+			if (player.hasPerk(PerkLib.SoulKing)) modssm += 5;
+			if (player.hasPerk(PerkLib.SoulEmperor)) modssm += 5;
+		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFTyrantStage)) {
+			if (player.hasPerk(PerkLib.SoulAncestor)) modssm += 6.25;
+		}
 		if (player.perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 2) {
 			var wfb:Number = 0.5;
 			if (player.perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 3) wfb += 0.25;

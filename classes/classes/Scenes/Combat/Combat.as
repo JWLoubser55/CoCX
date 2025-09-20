@@ -14826,6 +14826,10 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 		if (player.hasPerk(PerkLib.DaoistWarriorStage)) soulforceregen += Math.round(player.maxSoulforce() * 0.005);
 		if (player.hasPerk(PerkLib.DaoistElderStage)) soulforceregen += Math.round(player.maxSoulforce() * 0.005);
 		if (player.hasPerk(PerkLib.DaoistOverlordStage)) soulforceregen += Math.round(player.maxSoulforce() * 0.005);
+		if (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
+		if (player.hasPerk(PerkLib.DaoistMDHiFWarriorStage)) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
+		if (player.hasPerk(PerkLib.DaoistMDHiFElderStage)) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
+		if (player.hasPerk(PerkLib.DaoistMDHiFOverlordStage)) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
 		if (player.hasPerk(PerkLib.SoulNexus)) soulforceregen += Math.round(player.maxSoulforce() * 0.05);
 		if (player.hasPerk(PerkLib.Vulpesthropy)) soulforceregen += Math.round(player.maxSoulforce() * 0.01);
 		if (player.hasKeyItem("Cultivation Manual: Duality") >= 0) soulforceregen += Math.round(player.maxSoulforce() * 0.01);

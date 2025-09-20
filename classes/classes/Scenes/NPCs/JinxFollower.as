@@ -226,11 +226,22 @@ import classes.Scenes.SceneLib;
 			outputText("Approaching the usual place where Minx resides, it would almost seem that there was some technological revolution happening here with all the sophisticated items put in seemingly specific ways… Or maybe they are all just thrown around randomly.\n\n");
 			outputText("After a moment, from the midst of all the trinkets, emerges a blue haired goblin. \"<i>Ahh [name]. Be quick, I’ve got a lot of work to return to. So, what’s it gonna be?</i>\"\n\n");
 			menu();
-			//addButton(0, "Appearance", campJinxMenuMainShop);
+			addButton(0, "Appearance", campJinxMenuMainAppearance);
 			//x - Talk
 			addButton(2, "Shop", campJinxMenuMainShop);
 			//x - fletcher table for guns
 			addButton(14, "Back", camp.campFollowers);
+		}
+		
+		public function campJinxMenuMainAppearance():void {
+			clearOutput();
+			outputText("Minx is a 4ft tall green-skinned goblin. She has long blue hair, parted by a pair of pointed ears, styled into long double braids. Her face humanoid in appearance with plump pink lips and sharp teeth. Her eyes are gleaming pink in color.\n\n");
+			outputText("She has human shaped arms and legs with her nails painted pink or blue in color. Her waspish hips sway side to side in a graceful stride, drawing attention to her plush, jiggly bottom. She wears a two pieces bikini as typical attire, ");
+			outputText("with plenty of belts at her hips that she uses to carry around weapons, ammo or other tools she may need. Along her arms and legs she are a set of warmers that reaching reaches to the knees and elbows. At her hands she, wears thin, fingerless gloves. Covering her feet are a pair of cuffed, brown leather boot that reach past her ankles with laces tied along it.\n\n");
+			outputText("She has small A cup breasts. Her nipples are pink in color.\n\n");
+			outputText("She has a pink, wet pussy and a tight anus between her cheeks right where it should be.\n\n");
+			menu();
+			addButton(14, "Back", campJinxMenuMain);
 		}
 		
 		private function campJinxMenuMainShop():void {

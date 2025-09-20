@@ -665,7 +665,38 @@ import classes.Scenes.NPCs.Forgefather;
 				if (hasPerk(PerkLib.SoulTyrant)) max += 300;
 				if (hasPerk(PerkLib.SoulKing)) max += 300;
 				if (hasPerk(PerkLib.SoulEmperor)) max += 300;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistTyrantStage)) {
 				//if (hasPerk(PerkLib.SoulAncestor)) max += 300;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) max += 125;
+				if (hasPerk(PerkLib.SoulPersonage)) max += 125;
+				if (hasPerk(PerkLib.SoulWarrior)) max += 125;
+				multimax += 0.05;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) max += 250;
+				if (hasPerk(PerkLib.SoulScholar)) max += 250;
+				if (hasPerk(PerkLib.SoulGrandmaster)) max += 250;
+				multimax += 0.05;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) max += 375;
+				if (hasPerk(PerkLib.SoulExalt)) max += 375;
+				if (hasPerk(PerkLib.SoulOverlord)) max += 375;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) max += 500;
+				if (hasPerk(PerkLib.SoulKing)) max += 500;
+				if (hasPerk(PerkLib.SoulEmperor)) max += 500;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) max += 625;
 				multimax += 0.1;
 			}
 			if (hasPerk(PerkLib.AscensionSoulPurity)) max += perkv1(PerkLib.AscensionSoulPurity) * 50;

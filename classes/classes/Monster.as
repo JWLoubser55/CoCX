@@ -773,7 +773,38 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasPerk(PerkLib.SoulTyrant)) temp += 300;
 				if (hasPerk(PerkLib.SoulKing)) temp += 300;
 				if (hasPerk(PerkLib.SoulEmperor)) temp += 300;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistTyrantStage)) {
 				//if (hasPerk(PerkLib.SoulAncestor)) temp += 300;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) temp += 125;
+				if (hasPerk(PerkLib.SoulPersonage)) temp += 125;
+				if (hasPerk(PerkLib.SoulWarrior)) temp += 125;
+				multimax += 0.05;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) temp += 250;
+				if (hasPerk(PerkLib.SoulScholar)) temp += 250;
+				if (hasPerk(PerkLib.SoulGrandmaster)) temp += 250;
+				multimax += 0.05;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) temp += 375;
+				if (hasPerk(PerkLib.SoulExalt)) temp += 375;
+				if (hasPerk(PerkLib.SoulOverlord)) temp += 375;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) temp += 500;
+				if (hasPerk(PerkLib.SoulKing)) temp += 500;
+				if (hasPerk(PerkLib.SoulEmperor)) temp += 500;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) temp += 625;
 				multimax += 0.1;
 			}
 			if (hasPerk(PerkLib.DeityJobMunchkin)) multimax += 0.1;
@@ -3773,6 +3804,12 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasPerk(PerkLib.DaoistWarriorStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.005);
 				if (hasPerk(PerkLib.DaoistElderStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.005);
 				if (hasPerk(PerkLib.DaoistOverlordStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.005);
+				if (hasPerk(PerkLib.DaoistTyrantStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.005);
+				if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
+				if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
+				if (hasPerk(PerkLib.DaoistMDHiFElderStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
+				if (hasPerk(PerkLib.DaoistMDHiFOverlordStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
+				if (hasPerk(PerkLib.DaoistMDHiFTyrantStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 1) soulforceRecovery += 4;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 2) soulforceRecovery += 4;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) soulforceRecovery += 4;

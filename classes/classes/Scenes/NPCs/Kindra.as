@@ -25,20 +25,20 @@ use namespace CoC;
 		}
 		public function soulskillMulti():Number {
 			var multi:Number = 1;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) {
-				if (hasPerk(PerkLib.SoulApprentice)) multi += .3;
-				if (hasPerk(PerkLib.SoulPersonage)) multi += .3;
-				if (hasPerk(PerkLib.SoulWarrior)) multi += .3;
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) multi += 1.25;
+				if (hasPerk(PerkLib.SoulPersonage)) multi += 1.25;
+				if (hasPerk(PerkLib.SoulWarrior)) multi += 1.25;
 			}
-			if (hasPerk(PerkLib.DaoistWarriorStage)) {
-				if (hasPerk(PerkLib.SoulSprite)) multi += .6;
-				if (hasPerk(PerkLib.SoulScholar)) multi += .6;
-				if (hasPerk(PerkLib.SoulElder)) multi += .6;
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) multi += 2.5;
+				if (hasPerk(PerkLib.SoulScholar)) multi += 2.5;
+				if (hasPerk(PerkLib.SoulElder)) multi += 2.5;
 			}
-			if (hasPerk(PerkLib.DaoistElderStage)) {
-				if (hasPerk(PerkLib.SoulExalt)) multi += 1;
-				if (hasPerk(PerkLib.SoulOverlord)) multi += 1;
-				if (hasPerk(PerkLib.SoulTyrant)) multi += 1;
+			if (hasPerk(PerkLib.DaoistMDHiFElderStage)) {
+				if (hasPerk(PerkLib.SoulExalt)) multi += 5;
+				if (hasPerk(PerkLib.SoulOverlord)) multi += 5;
+				if (hasPerk(PerkLib.SoulTyrant)) multi += 5;
 			}
 			return multi;
 		}
@@ -570,7 +570,7 @@ use namespace CoC;
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] >= 11) {
 				this.createPerk(PerkLib.AdvancedSelfControl, 0, 0, 0, 0);
-				this.createPerk(PerkLib.DaoistApprenticeStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.DaoistMDHiFApprenticeStage, 0, 0, 0, 0);
 				this.createPerk(PerkLib.SoulOverlord, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] >= 12) {

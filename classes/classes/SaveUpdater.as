@@ -2792,7 +2792,38 @@ public class SaveUpdater extends NPCAwareContent {
 						player.createPerk(PerkLib.FleshBodyVoLTyrantStage, 0, 0, 0, 0);
 					}
 				}
+			}
+			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.593) {
+				flags[kFLAGS.MOD_SAVE_VERSION] = 36.593;
+				outputText("\n\nYou had too much fun with those Dao Sticks so we taking them away... here make your Dao Heart firm instead. But not use it if you're a looser dragon-morph type ;)");
+				if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0) {
+					player.removeKeyItem("Cultivation Manual: My Dao Sticks are better than Yours");
+					player.createKeyItem("Cultivation Manual: My Dao Heart is Firm", 0, 0, 0, 0);
+					if (player.hasPerk(PerkLib.DaoistApprenticeStage)) {
+						player.removePerk(PerkLib.DaoistApprenticeStage);
+						player.createPerk(PerkLib.DaoistMDHiFApprenticeStage, 0, 0, 0, 0);
+					}
+					if (player.hasPerk(PerkLib.DaoistWarriorStage)) {
+						player.removePerk(PerkLib.DaoistWarriorStage);
+						player.createPerk(PerkLib.DaoistMDHiFWarriorStage, 0, 0, 0, 0);
+					}
+					if (player.hasPerk(PerkLib.DaoistElderStage)) {
+						player.removePerk(PerkLib.DaoistElderStage);
+						player.createPerk(PerkLib.DaoistMDHiFElderStage, 0, 0, 0, 0);
+					}
+					if (player.hasPerk(PerkLib.DaoistOverlordStage)) {
+						player.removePerk(PerkLib.DaoistOverlordStage);
+						player.createPerk(PerkLib.DaoistMDHiFOverlordStage, 0, 0, 0, 0);
+					}
+					if (player.hasPerk(PerkLib.DaoistTyrantStage)) {
+						player.removePerk(PerkLib.DaoistTyrantStage);
+						player.createPerk(PerkLib.DaoistMDHiFTyrantStage, 0, 0, 0, 0);
+					}
+				}
 			}/*
+			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.594) {
+				flags[kFLAGS.MOD_SAVE_VERSION] = 36.594;
+			}
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.60) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.60;
 			}

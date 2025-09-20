@@ -20,15 +20,15 @@ import classes.internals.*;
 	{
 		public function SoulskillMod():Number {
 			var mod1:Number = 1;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) {
-				if (hasPerk(PerkLib.SoulApprentice)) mod1 += .3;
-				if (hasPerk(PerkLib.SoulPersonage)) mod1 += .3;
-				if (hasPerk(PerkLib.SoulWarrior)) mod1 += .3;
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mod1 += 1.25;
+				if (hasPerk(PerkLib.SoulPersonage)) mod1 += 1.25;
+				if (hasPerk(PerkLib.SoulWarrior)) mod1 += 1.25;
 			}
-			if (hasPerk(PerkLib.DaoistWarriorStage)) {
-				if (hasPerk(PerkLib.SoulSprite)) mod1 += .6;
-				if (hasPerk(PerkLib.SoulScholar)) mod1 += .6;
-				if (hasPerk(PerkLib.SoulGrandmaster)) mod1 += .6;
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mod1 += 2.5;
+				if (hasPerk(PerkLib.SoulScholar)) mod1 += 2.5;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mod1 += 2.5;
 			}
 			if (flags[kFLAGS.WEREFOX_EXTRAS] >= 3) mod1 += 1;
 			return mod1;
@@ -192,7 +192,7 @@ import classes.internals.*;
 			this.createPerk(PerkLib.JobSoulCultivator, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulApprentice, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulPersonage, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DaoistApprenticeStage, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DaoistMDHiFApprenticeStage, 0, 0, 0, 0);
 			if (flags[kFLAGS.WEREFOX_EXTRAS] >= 3) {
 				this.createPerk(PerkLib.ImprovedSpirituality, 0, 0, 0, 0);
 				this.createPerk(PerkLib.HalfStepToAdvancedSpirituality, 0, 0, 0, 0);

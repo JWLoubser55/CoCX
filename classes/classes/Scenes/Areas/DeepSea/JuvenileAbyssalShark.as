@@ -25,7 +25,7 @@ public class JuvenileAbyssalShark extends Monster
 			bd += this.wis * 0.5;
 			bd += wisdomscalingbonus() * 0.5;
 			if (bd < 10) bd = 10;
-			bd *= 1.9;
+			bd *= 3.75;//from daoist MDHiS perk
 			var crit:Boolean = false;
 			var critChance:int = 5;
 			if (this.wis <= 200) critChance += this.wis / 10;
@@ -149,7 +149,7 @@ public class JuvenileAbyssalShark extends Monster
 			this.createPerk(PerkLib.SoulApprentice, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulPersonage, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulWarrior, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DaoistApprenticeStage, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DaoistMDHiFApprenticeStage, 0, 0, 0, 0);
 			this.createPerk(PerkLib.WaterNature, 0, 0, 0, 0);
 			checkMonster();
 		}
