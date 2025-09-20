@@ -1629,7 +1629,7 @@ public function soularena():void {
 		//outputText("\"<i>So you're into Coke Demons.... er... Fiends?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
 		//addButtonIfTrue(2, "HeartCult", missAkemiManualsShopHeartforceCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") < 0);
 		//player.createKeyItem("Cultivation Manual: Meditation on the Soul", 0, 0, 0, 0); - manual for clone creation xD
-		addButton(14, "Back", mrsShigureLectures);
+		addButton(14, "Back", soularena);
 	}
 		//outputText("\"<i>You like sticks, do you?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");			not delete those 6 lines as they would be needed for future manuals
 		//outputText("<b>Gained Key Item: Cultivation Manual: My Dao Sticks are better than Yours</b>");
@@ -1644,7 +1644,7 @@ public function soularena():void {
 			return;
 		}
 		flags[kFLAGS.SPIRIT_STONES] -= 5;
-		outputText("\"<i>You not dragon-morph, right? Some of them can't withstand this manual power and their minds shatters</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("\"<i>You not dragon-morph, right? Some of them can't withstand this manual power and their minds shatters,</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
 		outputText("<b>Gained Key Item: Cultivation Manual: My Dao Heart is Firm</b>");
 		player.createKeyItem("Cultivation Manual: My Dao Heart is Firm", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
@@ -1972,4 +1972,4 @@ public function soularena():void {
         doNext(riverislandVillageStuff);
     }
 }
-}
+}

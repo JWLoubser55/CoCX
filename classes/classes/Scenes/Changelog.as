@@ -331,7 +331,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Daoist (MDHiF): Warrior Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +250% m.soulskill power, +250 max SF at S.Sprite, S.Scholar, S.Elder stages; +1% Soulforce regen\n");
 			outputText("-New event perk: Daoist (MDHiF): Elder Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +375% m.soulskill power, +375 max SF at S.Exalt, S.Overlord, S.Tyrant stages; +1% Soulforce regen\n");
 			outputText("-New event perk: Daoist (MDHiF): Overlord Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +500% m.soulskill power, +500 max SF S.King, S.Emperor, S.Ancestor stages; +1% Soulforce regen\n");
-			outputText("-\n");
+			outputText("-Perks that require Daoist: Apprentice Stage now req. any daoist cultivation sub-path.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

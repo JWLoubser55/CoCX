@@ -95,7 +95,9 @@ public class Soulforce extends BaseContent
 		else addButtonDisabled(10, "???", "Req. Metamorph.");
 		if (player.hasPerk(PerkLib.Phylactery)) addButton(11, "Demonic Energy", accessDemonicEnergyMenu).hint("You can use harvested souls and lethicite to improve your magic and body.");
 		else addButtonDisabled(11, "???", "Only for characters with Phylactery.");
-		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0 || player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0 || player.hasKeyItem("Cultivation Manual: Scale of Dragon") >= 0 || player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(12, "Sub-paths", SubPaths).hint("Contemplate the mysteries of your chosen sub-path(s).");
+		if (player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") >= 0 ||
+			player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0 || player.hasKeyItem("Cultivation Manual: Scale of Dragon") >= 0 || player.hasKeyItem("Cultivation Manual: Fist of Metal") >= 0 ||
+			player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(12, "Sub-paths", SubPaths).hint("Contemplate the mysteries of your chosen sub-path(s).");
 		addButton(13, "Cultivation", Contemplations).hint("Contemplate the mysteries of the world in an attempt to progress your cultivation path.");
 		addButton(14, "Back", playerMenu);// || player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0
 	}
@@ -299,7 +301,7 @@ public class Soulforce extends BaseContent
 		}
 		outputText("<b>Current subpaths that are cultivated / Maximum subpaths that can be cultivated:</b> " + paths + " / " + pathscap + "\n");
 		menu();
-		if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0) {
+		if (player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") >= 0) {
 			if (daoistpathsccount0 < pathscap) addButton(0, "Daoist(1)", daoistSubPath1).hint("Contemplate the mysteries from the 'My Dao Heart is Firm' cultivation manual.");
 			else addButtonDisabled(0, "Daoist", "You can't use this 'My Dao Heart is Firm' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
 		}
@@ -319,6 +321,7 @@ public class Soulforce extends BaseContent
 			else addButtonDisabled(7, "BodyCult(3)", "You can't use this 'Vigor of Lizan' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
 		}
 		else addButtonDisabled(7, "BodyCult(3)", "Req. 'Vigor of Lizan' body cultivation manual.");
+		//if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0) addButton(0, "Daoist", daoistSubPath).hint("Contemplate the mysteries from the 'My Dao Sticks are better than Yours' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0) addButton(5, "BodyCult", bodycultivationSubPath).hint("Contemplate the mysteries from the 'Body like a Coke Fiend' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(10, "HeartCult", );
 		addButton(14, "Back", accessSoulforceMenu);
