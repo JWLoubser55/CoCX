@@ -1470,7 +1470,7 @@ public class Camp extends NPCAwareContent{
 				buttons.add("Belisa", SceneLib.belisa.BelisaMainCampMenu).disableIf(player.statusEffectv3(StatusEffects.CampSparingNpcsTimers5) > 0, "Training.");
 			}
 			//Cai'Lin
-//	buttons.add("???").disable("Look into my eyes and answer me: Am I beautiful?");
+			//buttons.add("???").disable("Look into my eyes and answer me: Am I beautiful?");
 			//Ceani
 			if (flags[kFLAGS.CEANI_FOLLOWER] > 0) {
 				outputText("Ceani is lazily sunbathing at the other side of the [camp].\n\n");

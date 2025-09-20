@@ -217,7 +217,7 @@ public class Changelog extends BaseContent
 			outputText("-3rd tier of Human race score bonuses was renamed to Firstborn Human. Added also 4th tier that use (old tier 3) name of Primaris Super Human req. 63+ pts to reach it.\n");
 			outputText("-When Wendigo would apply Wendigo Psychosis status effect to PC during fight (not in post fight scene) it will now be notification ingame for this.\n");
 			outputText("-Aether Twins can now after 4th evolution eat new materials: Darksteel ingot & Soul Residue. Also they can eat 1 new shield and 8 new large sized melee weapons. After eating those and then all materials the can it would enable them evolving to greatsword + large shield form. From here they can change to different large sized weapon ");
-			outputText("(large axe (throwable), katana, large spear, huge warhammer, large whip, large scythe) + large shield forms. They could assume additional forms in case PC learned Dual Wield. All those forms are added to their morph menu.\n");
+			outputText("(large axe (throwable), katana, large spear, huge warhammer, large whip, large scythe, large staff) + large shield forms. They could assume additional forms in case PC learned Dual Wield. All those forms are added to their morph menu.\n");
 			outputText("-Perks from Advanced Job: Guardian / Advanced Job: Knight / Advanced Job: Defender / Prestige Job: Sentinel tree would now add 1-3 / 2-6 / 3-9 / 10-15 points in calculation of damage reduction based on player core and trained tou.\n");
 			outputText("-Milf kitsune grand elder from Obssesive Love sect no longer would wait for any needy rogue cultivators to spread dao. Now she would have lectures only once a week at the afternoon of 8th moon cycle day.\n");
 			outputText("-New status effect: Final Candle. Accesable by: Salamander / Hinezumi / Suzaku / Hellcat / Fire Snail final race tier. Effect: When lust reaches 75% you become so horny your lust begins to consume your body and enter the final candle state. While in the final candle state you triple all fire damage dealt but take a 5% degeneration to health per round.\n");
@@ -272,6 +272,8 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Flesh Body (FoM): Elder Stage. Gained by cultivating 'Fist of Metal' cultivation manual. Effects: +375% p.soulskill power, +23 to unarmed attack at S.Elder, S.Exalt, S.Overlord stages; +750 HP regen\n");
 			outputText("-New event perk: Flesh Body (FoM): Overlord Stage. Gained by cultivating 'Fist of Metal' cultivation manual. Effects: +500% p.soulskill power, +29 to unarmed attack at S.Tyrant, S.King, S.Emperor stages; +1000 HP regen\n");
 			outputText("-Fixed 'RearBodyTentacleEyestalks' being gained when transformations should be blocked. (Edward Darksong)\n");
+			outputText("-New tier 3 corruption lvl-up perk: Defiler. Req. Sadist perk and 50+ corruption. Effect: While your corruption is above 50 your whip, unarmed and natural attacks inflict tease damage vulnerability 1%.\n");
+			outputText("-New tier 4 corruption lvl-up perk: Demonic whip technique. Req. Defiler perk and 60+ corruption. Effect: Whips inflict 2% more point of tease damage vulnerability per hit.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -301,8 +303,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//, mace
 			outputText("-\n");
 			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .

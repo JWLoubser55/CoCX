@@ -857,6 +857,12 @@ public class PerkLib
 		public static const CorruptedFlesh:PerkType = mk("Corrupted Flesh", "Corrupted Flesh",
 				"While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged, gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless and reset after combat.",
 				"You've chosen the 'Corrupted Flesh' perk. While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged, gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless and reset after combat.");
+		public static const Defiler:PerkType = mk("Defiler", "Defiler",
+				"While your corruption is above 80 your whip, unarmed and natural attacks inflict tease damage vulnerability 1%.",
+				"You've chosen the 'Defiler' perk. While your corruption is above 80 your whip, unarmed and natural attacks inflict tease damage vulnerability 1%.");
+		public static const DemonicWhipTechnique:PerkType = mk("Demonic whip technique", "Demonic whip technique",
+				"Whips inflict 2% more point of tease damage vulnerability per hit.",
+				"You've chosen the 'Demonic whip technique' perk. Whips inflict 2% more point of tease damage vulnerability per hit.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -868,6 +874,21 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -7868,9 +7889,15 @@ public class PerkLib
             DevouringAura.requireCor(50)
                     .requirePerk(ImprovedArousingAura)
                     .requireLevel(18);
+            Defiler.requireCor(50)
+                    .requirePerk(Sadist)
+                    .requireLevel(18);
             //Tier 4
             DamnationAura.requireCor(60)
                     .requirePerk(DevouringAura)
+                    .requireLevel(24);
+            DemonicWhipTechnique.requireCor(60)
+                    .requirePerk(Defiler)
                     .requireLevel(24);
             //Tier 6
             CorruptedFlesh.requireCor(80)

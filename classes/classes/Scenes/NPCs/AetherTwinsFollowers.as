@@ -1189,8 +1189,15 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			else addButton(5, "HtLScythe&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Scythe", 2);
 			if (AetherTwinsShape == "Human-tier Dual Large Scythes") addButtonDisabled(6, "HtDualLScythes", "They are currently in Human-tier Dual Large Scythes form.");
 			else {
-				if (player.hasPerk(PerkLib.DualWield)) addButton(6, "HtDualLWhips", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Scythe", 2);
+				if (player.hasPerk(PerkLib.DualWield)) addButton(6, "HtDualLScythes", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Scythe", 2);
 				else addButtonDisabled(6, "HtDualLScythes", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
+			}
+			if (AetherTwinsShape == "Human-tier Large Staff and Large Shield") addButtonDisabled(7, "HtLStaff&LShield", "They are currently in Human-tier Large Staff and Large Shield form.");
+			else addButton(7, "HtLStaff&LShield", aethertwinsFollowersMorphMainHumanTierLargeWeaponAndShield, "Large Staff", 2);
+			if (AetherTwinsShape == "Human-tier Dual Large Staffs") addButtonDisabled(8, "HtDualLStaffs", "They are currently in Human-tier Dual Large Staffs form.");
+			else {
+				if (player.hasPerk(PerkLib.DualWield)) addButton(8, "HtDualLStaffs", aethertwinsFollowersMorphMainHumanTierDualLargeWeapons, "Large Staff", 2);
+				else addButtonDisabled(8, "HtDualLStaffs", "Without knowing how to Dual Wield weapons, you wouldn't be able to use this form of theirs.");
 			}
 		}
 		else {
@@ -1200,6 +1207,8 @@ public function aethertwinsFollowersMorphMain(page:Number):void {
 			addButtonDisabled(3, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(5, "???", "After the twins' fifth evolution.");
 			addButtonDisabled(6, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(7, "???", "After the twins' fifth evolution.");
+			addButtonDisabled(8, "???", "After the twins' fifth evolution.");
 		}
 		addButton(4, "Next", aethertwinsFollowersMorphMain, page - 2);
 		addButton(9, "Previous", aethertwinsFollowersMorphMain, page - 1);

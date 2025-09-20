@@ -205,7 +205,8 @@ public class CombatSoulskills extends BaseCombatContent {
 		if (player.shieldName == "spirit focus") modssm += .25;
 		if (player.armor == armors.DEATHPO) modssm += .5;
 		if (player.armor == armors.DEATHPGA) modssm += 2;
-		if (player.hasAetherTwinsTierWeaponMSword() || (player.shield == shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears"))) modssm += 0.4;
+		if (player.hasAetherTwinsTierWeaponLSword() || player.hasAetherTwinsTierWeaponLStaff()) modssm += 0.4;
+		if (player.hasAetherTwinsTierLeftStaff() || (player.shield == shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears"))) modssm += 0.4;
 		if (modssmb > 1) modssm *= modssmb;
 		modssm = Math.round(modssm * 100) / 100;
 		return modssm;

@@ -7821,7 +7821,6 @@ public class Combat extends BaseContent {
                         if ((lustEff = player.weapon.findEffect(IELib.LustDamage)) != null) {
                             effLustDmg = lustEff.power + player.cor*lustEff.value1;
                             if (player.weapon.isWhipType()) {
-
                                 var hasArcaneLash:Boolean = player.hasPerk(PerkLib.ArcaneLash);
                                 if (player.weapon == weapons.B_WHIP || player.weapon == weapons.WHIP || player.weapon == weapons.PWHIP || player.weapon == weapons.NTWHIP) {
                                     effLustDmg *= hasArcaneLash ? 1.4 : 1; // 5-13.3 (7-18.7 w/perk)
@@ -7830,10 +7829,8 @@ public class Combat extends BaseContent {
                                 } else if (player.weapon == weapons.L_WHIP || player.weapon == weapons.DL_WHIP) {
                                     effLustDmg *= hasArcaneLash ? 2.0 : 1; // 10-30 (20-60 w/perk)
                                 }
-
                                 if (player.armor == armors.ELFDRES && player.isElf()) effLustDmg *= 2;
                                 if (player.armor == armors.FMDRESS && player.isWoodElf()) effLustDmg *= 2;
-
                                 var s:String = monster.plural ? "" : "s";
                                 if (rand(2) == 0) {
                                     outputText("\n[Themonster] shiver" + s + " and get" + s + " turned on from the whipping.");
@@ -7857,6 +7854,14 @@ public class Combat extends BaseContent {
                     if ((corrEff = player.weapon.findEffect(IELib.SelfCorr)) != null && player.cor < 90) {
                         dynStats("cor", corrEff.power);
                     }
+					//Defiler effect
+					if (player.hasPerk(PerkLib.Defiler) && (player.weapon.isWhipType() || player.isUnarmedCombat())) {
+						if (monster.lustVuln != 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
+							if (player.hasPerk(PerkLib.DemonicWhipTechnique) && player.weapon.isWhipType()) monster.lustVuln += 0.03;
+							else monster.lustVuln += 0.01;
+						}
+						if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
+					}
                     //Selfpurifying and Lust lowering weapons
                     if ((player.weapon == weapons.LHSCYTH || player.weapon == weapons.NPHBLDE) && player.cor > 10) dynStats("cor", -1);
                     if (player.weapon == weapons.EXCALIB || player.weapon == weapons.DEXCALI || player.weapon == weapons.PARACEL) {
@@ -8414,6 +8419,14 @@ public class Combat extends BaseContent {
                     if ((corrEff = player.weaponOff.findEffect(IELib.SelfCorr)) != null && player.cor < 90) {
                         dynStats("cor", corrEff.power);
                     }
+					//Defiler effect
+					if (player.hasPerk(PerkLib.Defiler) && player.weaponOff.isWhipType()) {
+						if (monster.lustVuln != 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
+							if (player.hasPerk(PerkLib.DemonicWhipTechnique)) monster.lustVuln += 0.03;
+							else monster.lustVuln += 0.01;
+						}
+						if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
+					}
                     //Selfpurifying and Lust lowering weapons
                     if ((player.weaponOff == weapons.LHSCYTH || player.weaponOff == weapons.NPHBLDE) && player.cor > 10) dynStats("cor", -1);
                     if (player.weaponOff == weapons.EXCALIB || player.weaponOff == weapons.DEXCALI || player.weaponOff == weapons.PARACEL) {
@@ -9693,6 +9706,10 @@ public class Combat extends BaseContent {
 				else monster.createStatusEffect(StatusEffects.IzmaBleed,3,0,0,0);
 			}
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+			if (player.hasPerk(PerkLib.Defiler)) {
+				if (monster.lustVuln != 0 && !player.enemiesImmuneToLustResistanceDebuff()) monster.lustVuln += 0.01;
+				if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
+			}
         }
     }
 

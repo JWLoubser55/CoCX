@@ -226,8 +226,9 @@ import classes.Scenes.SceneLib;
 			outputText("Approaching the usual place where Minx resides, it would almost seem that there was some technological revolution happening here with all the sophisticated items put in seemingly specific ways… Or maybe they are all just thrown around randomly.\n\n");
 			outputText("After a moment, from the midst of all the trinkets, emerges a blue haired goblin. \"<i>Ahh [name]. Be quick, I’ve got a lot of work to return to. So, what’s it gonna be?</i>\"\n\n");
 			menu();
-			addButton(0, "Shop", campJinxMenuMainShop);
+			//addButton(0, "Appearance", campJinxMenuMainShop);
 			//x - Talk
+			addButton(2, "Shop", campJinxMenuMainShop);
 			//x - fletcher table for guns
 			addButton(14, "Back", camp.campFollowers);
 		}

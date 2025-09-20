@@ -231,6 +231,8 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.necklace == necklaces.SILCNEC && player.hasPerk(PerkLib.Soulless)) mod += 0.5;
 		if (player.hasAetherTwinsTierWeapon()) mod += 0.2;
 		if (player.hasAetherTwinsTierShield()) mod += 0.5;
+		if (player.hasAetherTwinsTierWeaponLStaff()) mod += 0.6;
+		if (player.hasAetherTwinsTierLeftStaff()) mod += 0.6;
 		if (player.perkv1(IMutationsLib.FiendishMetabolismIM) >= 3 && player.hasPerk(PerkLib.DemonEnergyThirst) && player.perkv1(PerkLib.DemonEnergyThirst) > 0) {
 			var mTPCur:Number = player.perkv1(PerkLib.DemonEnergyThirst);
 			var mTPCap:Number = 5 * player.perkv1(IMutationsLib.FiendishMetabolismIM);
