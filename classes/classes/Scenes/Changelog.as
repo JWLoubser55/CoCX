@@ -332,10 +332,10 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Daoist (MDHiF): Elder Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +375% m.soulskill power, +375 max SF at S.Exalt, S.Overlord, S.Tyrant stages; +1% Soulforce regen\n");
 			outputText("-New event perk: Daoist (MDHiF): Overlord Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +500% m.soulskill power, +500 max SF S.King, S.Emperor, S.Ancestor stages; +1% Soulforce regen\n");
 			outputText("-Perks that require Daoist: Apprentice Stage now req. any daoist cultivation sub-path.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Daoist (DotS): Apprentice Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +5% poison resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (caps at 25%)\n");
+			outputText("-New event perk: Daoist (DotS): Warrior Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +10% poison resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (caps at 100%)\n");
+			outputText("-New event perk: Daoist (DotS): Elder Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +15% poison resistance at S.Elder, S.Exalt, S.Overlord stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks\n");
+			outputText("-New event perk: Daoist (DotS): Overlord Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +20% poison resistance at S.Tyrant, S.King, S.Emperor stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (doubled bonus from excess resistance)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

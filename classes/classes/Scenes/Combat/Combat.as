@@ -19496,8 +19496,18 @@ public function darknessDamageBoostedByDao():Number {
 }
 public function poisonDamageBoostedByDao():Number {
     var boostP:Number = 1;
-    if (player.hasStatusEffect(StatusEffects.DaoOfPoison))
-        boostP += daoModifier(player.statusEffectv2(StatusEffects.DaoOfPoison));
+    if (player.hasStatusEffect(StatusEffects.DaoOfPoison)) {
+		boostP += daoModifier(player.statusEffectv2(StatusEffects.DaoOfPoison));
+		if (player.statusEffectv3(StatusEffects.DaoOfPoison) > 0) {
+			var boostP1:Number = 0;
+			boostP1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfPoison));
+			if (!player.hasPerk(PerkLib.DaoistDotSElderStage) && boostP1 > 100) {
+				if (!player.hasPerk(PerkLib.DaoistDotSWarriorStage) && boostP1 > 25) boostP1 = 25;
+				else boostP1 = 100;
+			}
+			boostP += boostP1;
+		}
+	}
     return boostP;
 }
 public function windDamageBoostedByDao():Number {

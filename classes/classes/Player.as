@@ -4098,6 +4098,29 @@ use namespace CoC;
 		public override function damagePoisonPercent():Number {
 			var mult:Number = damageMagicalPercent();
 			if (hasPerk(PerkLib.PoisonAffinity)) mult -= 50;
+			if (hasPerk(PerkLib.DaoistDotSApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mult -= 5;
+				if (hasPerk(PerkLib.SoulPersonage)) mult -= 5;
+				if (hasPerk(PerkLib.SoulWarrior)) mult -= 5;
+			}
+			if (hasPerk(PerkLib.DaoistDotSWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mult -= 10;
+				if (hasPerk(PerkLib.SoulScholar)) mult -= 10;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mult -= 10;
+			}
+			if (hasPerk(PerkLib.DaoistDotSElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) mult -= 15;
+				if (hasPerk(PerkLib.SoulExalt)) mult -= 15;
+				if (hasPerk(PerkLib.SoulOverlord)) mult -= 15;
+			}
+			if (hasPerk(PerkLib.DaoistDotSOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) mult -= 20;
+				if (hasPerk(PerkLib.SoulKing)) mult -= 20;
+				if (hasPerk(PerkLib.SoulEmperor)) mult -= 20;
+			}
+			if (hasPerk(PerkLib.DaoistDotSTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
+			}
 			if (perkv1(IMutationsLib.VenomGlandsIM) >= 2) mult -= 5;
 			if (perkv1(IMutationsLib.VenomGlandsIM) >= 3) mult -= 10;
 			if (perkv1(IMutationsLib.VenomGlandsIM) >= 4) mult -= 15;
@@ -4114,7 +4137,13 @@ use namespace CoC;
 			if (hasStatusEffect(StatusEffects.AlterBindScroll3)) mult = 0;
 			mult -= resPoisonStat.value;
 			//Caps damage reduction at 100%
-			if (mult < 0) mult = 0;
+			if (mult < 0) {
+				if (hasPerk(PerkLib.DaoistDotSApprenticeStage)) {
+					if (hasStatusEffect(StatusEffects.DaoOfPoison)) changeStatusValue(StatusEffects.DaoOfPoison, 3, -mult);
+					else createStatusEffect(StatusEffects.DaoOfPoison, 0, 0, -mult, 0);
+				}
+				mult = 0;
+			}
 			return mult;
 		}
 		public override function takePoisonDamage(damage:Number, display:Boolean = false):Number {
@@ -8646,4 +8675,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}

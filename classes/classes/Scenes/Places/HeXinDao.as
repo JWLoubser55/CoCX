@@ -1621,6 +1621,7 @@ public function soularena():void {
 		outputText("\"<i>Five Spirit Stones per manual.</i>\" From the look in her young eyes, you can tell that trying to haggle would be a poor decision.\n\n");
 		menu();
 		addButtonIfTrue(0, "Daoist(1)", missAkemiManualsShopDaoistMyDaoHeartIsFirm, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") < 0, "Buy Cultivation Manual: My Dao Heart is Firm");
+		addButtonIfTrue(1, "Daoist(2)", missAkemiManualsShopDaoistDoctorOfTheSerpent, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Doctor of the Serpent") < 0, "Buy Cultivation Manual: Doctor of the Serpent");
 		//addButtonIfTrue(0, "Daoist", missAkemiManualsShopDaoist, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") < 0);
 		addButtonIfTrue(5, "BodyCult(1)", missAkemiManualsShopBodyCultivatorFistofMetal, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Fist of Metal") < 0, "Buy Cultivation Manual: Fist of Metal");
 		addButtonIfTrue(6, "BodyCult(2)", missAkemiManualsShopBodyCultivatorScaleofDragon, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Scale of Dragon") < 0, "Buy Cultivation Manual: Scale of Dragon");
@@ -1647,6 +1648,18 @@ public function soularena():void {
 		outputText("\"<i>You not dragon-morph, right? Some of them can't withstand this manual power and their minds shatters,</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
 		outputText("<b>Gained Key Item: Cultivation Manual: My Dao Heart is Firm</b>");
 		player.createKeyItem("Cultivation Manual: My Dao Heart is Firm", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistDoctorOfTheSerpent():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>Do ytou need a doctor, doctor to bring you back to life?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Doctor of the Serpent</b>");
+		player.createKeyItem("Cultivation Manual: Doctor of the Serpent", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 	public function missAkemiManualsShopBodyCultivatorFistofMetal():void {
