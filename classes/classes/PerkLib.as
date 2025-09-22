@@ -4036,8 +4036,16 @@ public class PerkLib
 				"You've reached the fifth stage of Daoist path. (+25% poison resistance at S.Ancestor, S.Sage stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (tripled bonus from excess resistance))");
 		public static const DaoistDotSWarriorStage:PerkType = mk("Daoist (DotS): Warrior Stage", "Daoist (DotS): Warrior Stage",
 				"You've reached the second stage of Daoist path. (+10% poison resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (caps at 100%))");
-		//public static const Daoist2ApprenticeStage:PerkType = mk("Daoist: Apprentice Stage", "Daoist: Apprentice Stage",
-		//		"You've reached the first stage of Daoist path. (+50% m.soulskill power, -10% soulskills cost, +50 max SF at S.Apprentice, S.Personage, S.Warrior stages; +0.5% Soulforce regen)");
+		public static const DaoistPotLApprenticeStage:PerkType = mk("Daoist (PotL): Apprentice Stage", "Daoist (PotL): Apprentice Stage",
+				"You've reached the first stage of Daoist path. (+5% water resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (caps at 25%))");
+		public static const DaoistPotLElderStage:PerkType = mk("Daoist (PotL): Elder Stage", "Daoist (PotL): Elder Stage",
+				"You've reached the third stage of Daoist path. (+15% water resistance at S.Elder, S.Exalt, S.Overlord stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks)");
+		public static const DaoistPotLOverlordStage:PerkType = mk("Daoist (PotL): Overlord Stage", "Daoist (PotL): Overlord Stage",
+				"You've reached the fourth stage of Daoist path. (+20% water resistance at S.Tyrant, S.King, S.Emperor stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (doubled bonus from excess resistance))");
+		public static const DaoistPotLTyrantStage:PerkType = mk("Daoist (PotL): Tyrant Stage", "Daoist (PotL): Tyrant Stage",
+				"You've reached the fifth stage of Daoist path. (+25% water resistance at S.Ancestor, S.Sage stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (tripled bonus from excess resistance))");
+		public static const DaoistPotLWarriorStage:PerkType = mk("Daoist (PotL): Warrior Stage", "Daoist (PotL): Warrior Stage",
+				"You've reached the second stage of Daoist path. (+10% water resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (caps at 100%))");
 		//public static const Daoist3ApprenticeStage:PerkType = mk("Daoist: Apprentice Stage", "Daoist: Apprentice Stage",
 		//		"You've reached the first stage of Daoist path. (+50% m.soulskill power, -10% soulskills cost, +50 max SF at S.Apprentice, S.Personage, S.Warrior stages; +0.5% Soulforce regen)");
 		public static const DaoistMDHiFApprenticeStage:PerkType = mk("Daoist (MDHiF): Apprentice Stage", "Daoist (MDHiF): Apprentice Stage",
@@ -6512,7 +6520,7 @@ public class PerkLib
                     .requireLevel(6);
             BrutalSpells.requireLevel(6)
                     .requireInt(75)
-                    .requireAnyPerk(JobSorcerer, DaoistMDHiFApprenticeStage, DaoistDotSApprenticeStage);
+                    .requireAnyPerk(JobSorcerer, DaoistMDHiFApprenticeStage, DaoistDotSApprenticeStage, DaoistPotLApprenticeStage);
             //Tier 2 Intelligence perks
             GrandMage.requirePerk(Mage)
                     .requireInt(75)
@@ -7368,7 +7376,7 @@ public class PerkLib
 					.requireWis(175)
                     .requireLevel(54)
 					.requireCustomFunction(function (player:Player):Boolean {
-                        return (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage) || player.hasPerk(PerkLib.DaoistDotSApprenticeStage) || (player.hasPerk(PerkLib.JobSorcerer) && player.hasPerk(PerkLib.Soulless)));
+                        return (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage) || player.hasPerk(PerkLib.DaoistDotSApprenticeStage) || player.hasPerk(PerkLib.DaoistPotLApprenticeStage) || (player.hasPerk(PerkLib.JobSorcerer) && player.hasPerk(PerkLib.Soulless)));
                     }, "Having Daoist: Apprentice Stage perk OR Job: Sorcerer and Soulless perks");
 			PrestigeJobDruid.requirePrestigeJobSlot()
                     .requireAnyPerk(Archmage, ArchmageEx)

@@ -336,10 +336,10 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Daoist (DotS): Warrior Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +10% poison resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (caps at 100%)\n");
 			outputText("-New event perk: Daoist (DotS): Elder Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +15% poison resistance at S.Elder, S.Exalt, S.Overlord stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks\n");
 			outputText("-New event perk: Daoist (DotS): Overlord Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +20% poison resistance at S.Tyrant, S.King, S.Emperor stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (doubled bonus from excess resistance)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Daoist (PotL): Apprentice Stage. Gained by cultivating 'Priest of the Leviathan' cultivation manual. Effects: +5% water resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (caps at 25%)\n");
+			outputText("-New event perk: Daoist (PotL): Warrior Stage. Gained by cultivating 'Priest of the Leviathan' cultivation manual. Effects: +10% water resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (caps at 100%)\n");
+			outputText("-New event perk: Daoist (PotL): Elder Stage. Gained by cultivating 'Priest of the Leviathan' cultivation manual. Effects: +15% water resistance at S.Elder, S.Exalt, S.Overlord stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks\n");
+			outputText("-New event perk: Daoist (PotL): Overlord Stage. Gained by cultivating 'Priest of the Leviathan' cultivation manual. Effects: +20% water resistance at S.Tyrant, S.King, S.Emperor stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (doubled bonus from excess resistance)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -19524,8 +19524,18 @@ public function bloodDamageBoostedByDao():Number {
 }
 public function waterDamageBoostedByDao():Number {
     var boostWa:Number = 1;
-    if (player.hasStatusEffect(StatusEffects.DaoOfWater))
-        boostWa += daoModifier(player.statusEffectv2(StatusEffects.DaoOfWater));
+    if (player.hasStatusEffect(StatusEffects.DaoOfWater)) {
+		boostWa += daoModifier(player.statusEffectv2(StatusEffects.DaoOfWater));
+		if (player.statusEffectv3(StatusEffects.DaoOfWater) > 0) {
+			var boostWa1:Number = 0;
+			boostWa1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfWater));
+			if (!player.hasPerk(PerkLib.DaoistPotLElderStage) && boostWa1 > 100) {
+				if (!player.hasPerk(PerkLib.DaoistPotLWarriorStage) && boostWa1 > 25) boostWa1 = 25;
+				else boostWa1 = 100;
+			}
+			boostWa += boostWa1;
+		}
+	} 
     return boostWa;
 }
 public function earthDamageBoostedByDao():Number {

@@ -4139,8 +4139,11 @@ use namespace CoC;
 			//Caps damage reduction at 100%
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistDotSApprenticeStage)) {
-					if (hasStatusEffect(StatusEffects.DaoOfPoison)) changeStatusValue(StatusEffects.DaoOfPoison, 3, -mult);
-					else createStatusEffect(StatusEffects.DaoOfPoison, 0, 0, -mult, 0);
+					var boost:Number = (mult * -1);
+					if (hasPerk(PerkLib.DaoistDotSOverlordStage)) boost *= 2;
+					if (hasPerk(PerkLib.DaoistDotSTyrantStage)) boost *= 1.5;
+					if (hasStatusEffect(StatusEffects.DaoOfPoison)) changeStatusValue(StatusEffects.DaoOfPoison, 3, boost);
+					else createStatusEffect(StatusEffects.DaoOfPoison, 0, 0, boost, 0);
 				}
 				mult = 0;
 			}
@@ -4223,7 +4226,30 @@ use namespace CoC;
 
 		public override function damageWaterPercent():Number {
 			var mult:Number = damageMagicalPercent();
-			if (hasAnyPerk(PerkLib.WaterAffinity, PerkLib.AffinityUndine)) mult -= 50;/*
+			if (hasAnyPerk(PerkLib.WaterAffinity, PerkLib.AffinityUndine)) mult -= 50;
+			if (hasPerk(PerkLib.DaoistPotLApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mult -= 5;
+				if (hasPerk(PerkLib.SoulPersonage)) mult -= 5;
+				if (hasPerk(PerkLib.SoulWarrior)) mult -= 5;
+			}
+			if (hasPerk(PerkLib.DaoistPotLWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mult -= 10;
+				if (hasPerk(PerkLib.SoulScholar)) mult -= 10;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mult -= 10;
+			}
+			if (hasPerk(PerkLib.DaoistPotLElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) mult -= 15;
+				if (hasPerk(PerkLib.SoulExalt)) mult -= 15;
+				if (hasPerk(PerkLib.SoulOverlord)) mult -= 15;
+			}
+			if (hasPerk(PerkLib.DaoistPotLOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) mult -= 20;
+				if (hasPerk(PerkLib.SoulKing)) mult -= 20;
+				if (hasPerk(PerkLib.SoulEmperor)) mult -= 20;
+			}
+			if (hasPerk(PerkLib.DaoistPotLTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
+			}/*
 			if (jewelryEffectId == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude;
 			if (jewelryEffectId2 == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude2;
 			if (jewelryEffectId3 == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude3;
@@ -4240,7 +4266,16 @@ use namespace CoC;
 			}
 			mult -= resWaterStat.value;
 			//Caps damage reduction at 100%
-			if (mult < 0) mult = 0;
+			if (mult < 0) {
+				if (hasPerk(PerkLib.DaoistPotLApprenticeStage)) {
+					var boost:Number = (mult * -1);
+					if (hasPerk(PerkLib.DaoistPotLOverlordStage)) boost *= 2;
+					if (hasPerk(PerkLib.DaoistPotLTyrantStage)) boost *= 1.5;
+					if (hasStatusEffect(StatusEffects.DaoOfWater)) changeStatusValue(StatusEffects.DaoOfWater, 3, boost);
+					else createStatusEffect(StatusEffects.DaoOfWater, 0, 0, boost, 0);
+				}
+				mult = 0;
+			}
 			return mult;
 		}
 		public override function takeWaterDamage(damage:Number, display:Boolean = false):Number {
