@@ -19490,8 +19490,18 @@ public function lightningDamageBoostedByDao():Number {
 }
 public function darknessDamageBoostedByDao():Number {
     var boostD:Number = 1;
-    if (player.hasStatusEffect(StatusEffects.DaoOfDarkness))
+    if (player.hasStatusEffect(StatusEffects.DaoOfDarkness)) {
         boostD += daoModifier(player.statusEffectv2(StatusEffects.DaoOfDarkness));
+		if (player.statusEffectv3(StatusEffects.DaoOfDarkness) > 0) {
+			var boostD1:Number = 0;
+			boostD1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfDarkness));
+			if (!player.hasPerk(PerkLib.DaoistJoPElderStage) && boostD1 > 1) {
+				if (!player.hasPerk(PerkLib.DaoistJoPWarriorStage) && boostD1 > 0.25) boostD1 = 0.25;
+				else boostD1 = 1;
+			}
+			boostD += boostD1;
+		}
+	}
     return boostD;
 }
 public function poisonDamageBoostedByDao():Number {
@@ -19501,9 +19511,9 @@ public function poisonDamageBoostedByDao():Number {
 		if (player.statusEffectv3(StatusEffects.DaoOfPoison) > 0) {
 			var boostP1:Number = 0;
 			boostP1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfPoison));
-			if (!player.hasPerk(PerkLib.DaoistDotSElderStage) && boostP1 > 100) {
-				if (!player.hasPerk(PerkLib.DaoistDotSWarriorStage) && boostP1 > 25) boostP1 = 25;
-				else boostP1 = 100;
+			if (!player.hasPerk(PerkLib.DaoistDotSElderStage) && boostP1 > 1) {
+				if (!player.hasPerk(PerkLib.DaoistDotSWarriorStage) && boostP1 > 0.25) boostP1 = 0.25;
+				else boostP1 = 1;
 			}
 			boostP += boostP1;
 		}
@@ -19529,9 +19539,9 @@ public function waterDamageBoostedByDao():Number {
 		if (player.statusEffectv3(StatusEffects.DaoOfWater) > 0) {
 			var boostWa1:Number = 0;
 			boostWa1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfWater));
-			if (!player.hasPerk(PerkLib.DaoistPotLElderStage) && boostWa1 > 100) {
-				if (!player.hasPerk(PerkLib.DaoistPotLWarriorStage) && boostWa1 > 25) boostWa1 = 25;
-				else boostWa1 = 100;
+			if (!player.hasPerk(PerkLib.DaoistPotLElderStage) && boostWa1 > 1) {
+				if (!player.hasPerk(PerkLib.DaoistPotLWarriorStage) && boostWa1 > 0.25) boostWa1 = 0.25;
+				else boostWa1 = 1;
 			}
 			boostWa += boostWa1;
 		}
@@ -19546,8 +19556,18 @@ public function earthDamageBoostedByDao():Number {
 }
 public function acidDamageBoostedByDao():Number {
     var boostAc:Number = 1;
-    if (player.hasStatusEffect(StatusEffects.DaoOfAcid))
-        boostAc += daoModifier(player.statusEffectv2(StatusEffects.DaoOfAcid));
+    if (player.hasStatusEffect(StatusEffects.DaoOfAcid)) {
+		boostAc += daoModifier(player.statusEffectv2(StatusEffects.DaoOfAcid));
+		if (player.statusEffectv3(StatusEffects.DaoOfAcid) > 0) {
+			var boostAc1:Number = 0;
+			boostAc1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfAcid));
+			if (!player.hasPerk(PerkLib.DaoistGoHElderStage) && boostAc1 > 1) {
+				if (!player.hasPerk(PerkLib.DaoistGoHWarriorStage) && boostAc1 > 0.25) boostAc1 = 0.25;
+				else boostAc1 = 1;
+			}
+			boostAc += boostAc1;
+		}
+	}
     return boostAc;
 }
 public function daoModifier(daoLevel:Number):Number {

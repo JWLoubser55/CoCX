@@ -4026,6 +4026,16 @@ public class PerkLib
 				"You've reached the fifth stage of Daoist path. (+250% m.soulskill power, +70 max SF at S.Ancestor, S.Sage stages; +0.5% Soulforce regen)");
 		public static const DaoistWarriorStage:PerkType = mk("Daoist: Warrior Stage", "Daoist: Warrior Stage",
 				"You've reached the second stage of Daoist path. (+100% m.soulskill power, +100 max SF at S.Sprite, S.Scholar, S.Grandmaster stages; +0.5% Soulforce regen)");
+		public static const DaoistJoPApprenticeStage:PerkType = mk("Daoist (JoP): Apprentice Stage", "Daoist (JoP): Apprentice Stage",
+				"You've reached the first stage of Daoist path. (+5% darkness resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks (caps at 25%))");
+		public static const DaoistJoPElderStage:PerkType = mk("Daoist (JoP): Elder Stage", "Daoist (JoP): Elder Stage",
+				"You've reached the third stage of Daoist path. (+15% darkness resistance at S.Elder, S.Exalt, S.Overlord stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks)");
+		public static const DaoistJoPOverlordStage:PerkType = mk("Daoist (JoP): Overlord Stage", "Daoist (JoP): Overlord Stage",
+				"You've reached the fourth stage of Daoist path. (+20% darkness resistance at S.Tyrant, S.King, S.Emperor stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks (doubled bonus from excess resistance))");
+		public static const DaoistJoPTyrantStage:PerkType = mk("Daoist (JoP): Tyrant Stage", "Daoist (JoP): Tyrant Stage",
+				"You've reached the fifth stage of Daoist path. (+25% darkness resistance at S.Ancestor, S.Sage stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks (tripled bonus from excess resistance))");
+		public static const DaoistJoPWarriorStage:PerkType = mk("Daoist (JoP): Warrior Stage", "Daoist (JoP): Warrior Stage",
+				"You've reached the second stage of Daoist path. (+10% darkness resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks (caps at 100%))");
 		public static const DaoistDotSApprenticeStage:PerkType = mk("Daoist (DotS): Apprentice Stage", "Daoist (DotS): Apprentice Stage",
 				"You've reached the first stage of Daoist path. (+5% poison resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (caps at 25%))");
 		public static const DaoistDotSElderStage:PerkType = mk("Daoist (DotS): Elder Stage", "Daoist (DotS): Elder Stage",
@@ -4046,8 +4056,16 @@ public class PerkLib
 				"You've reached the fifth stage of Daoist path. (+25% water resistance at S.Ancestor, S.Sage stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (tripled bonus from excess resistance))");
 		public static const DaoistPotLWarriorStage:PerkType = mk("Daoist (PotL): Warrior Stage", "Daoist (PotL): Warrior Stage",
 				"You've reached the second stage of Daoist path. (+10% water resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (caps at 100%))");
-		//public static const Daoist3ApprenticeStage:PerkType = mk("Daoist: Apprentice Stage", "Daoist: Apprentice Stage",
-		//		"You've reached the first stage of Daoist path. (+50% m.soulskill power, -10% soulskills cost, +50 max SF at S.Apprentice, S.Personage, S.Warrior stages; +0.5% Soulforce regen)");
+		public static const DaoistGoHApprenticeStage:PerkType = mk("Daoist (GoH): Apprentice Stage", "Daoist (GoH): Apprentice Stage",
+				"You've reached the first stage of Daoist path. (+5% acid resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess acid resistance above 100% would be turned into bonus % dmg to acid attacks (caps at 25%))");
+		public static const DaoistGoHElderStage:PerkType = mk("Daoist (GoH): Elder Stage", "Daoist (GoH): Elder Stage",
+				"You've reached the third stage of Daoist path. (+15% acid resistance at S.Elder, S.Exalt, S.Overlord stages; any excess acid resistance above 100% would be turned into bonus % dmg to acid attacks)");
+		public static const DaoistGoHOverlordStage:PerkType = mk("Daoist (GoH): Overlord Stage", "Daoist (GoH): Overlord Stage",
+				"You've reached the fourth stage of Daoist path. (+20% acid resistance at S.Tyrant, S.King, S.Emperor stages; any excess acid resistance above 100% would be turned into bonus % dmg to acid attacks (doubled bonus from excess resistance))");
+		public static const DaoistGoHTyrantStage:PerkType = mk("Daoist (GoH): Tyrant Stage", "Daoist (GoH): Tyrant Stage",
+				"You've reached the fifth stage of Daoist path. (+25% acid resistance at S.Ancestor, S.Sage stages; any excess acid resistance above 100% would be turned into bonus % dmg to acid attacks (tripled bonus from excess resistance))");
+		public static const DaoistGoHWarriorStage:PerkType = mk("Daoist (GoH): Warrior Stage", "Daoist (GoH): Warrior Stage",
+				"You've reached the second stage of Daoist path. (+10% acid resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess acid resistance above 100% would be turned into bonus % dmg to acid attacks (caps at 100%))");
 		public static const DaoistMDHiFApprenticeStage:PerkType = mk("Daoist (MDHiF): Apprentice Stage", "Daoist (MDHiF): Apprentice Stage",
 				"You've reached the first stage of Daoist path. (+125% m.soulskill power, +125 max SF at S.Apprentice, S.Personage, S.Warrior stages; +1% Soulforce regen)");
 		public static const DaoistMDHiFElderStage:PerkType = mk("Daoist (MDHiF): Elder Stage", "Daoist (MDHiF): Elder Stage",
@@ -6520,7 +6538,7 @@ public class PerkLib
                     .requireLevel(6);
             BrutalSpells.requireLevel(6)
                     .requireInt(75)
-                    .requireAnyPerk(JobSorcerer, DaoistMDHiFApprenticeStage, DaoistDotSApprenticeStage, DaoistPotLApprenticeStage);
+                    .requireAnyPerk(JobSorcerer, DaoistMDHiFApprenticeStage, DaoistJoPApprenticeStage, DaoistDotSApprenticeStage, DaoistPotLApprenticeStage, DaoistGoHApprenticeStage);
             //Tier 2 Intelligence perks
             GrandMage.requirePerk(Mage)
                     .requireInt(75)
@@ -7376,8 +7394,8 @@ public class PerkLib
 					.requireWis(175)
                     .requireLevel(54)
 					.requireCustomFunction(function (player:Player):Boolean {
-                        return (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage) || player.hasPerk(PerkLib.DaoistDotSApprenticeStage) || player.hasPerk(PerkLib.DaoistPotLApprenticeStage) || (player.hasPerk(PerkLib.JobSorcerer) && player.hasPerk(PerkLib.Soulless)));
-                    }, "Having Daoist: Apprentice Stage perk OR Job: Sorcerer and Soulless perks");
+                        return (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage) || player.hasPerk(PerkLib.DaoistJoPApprenticeStage) || player.hasPerk(PerkLib.DaoistDotSApprenticeStage) || player.hasPerk(PerkLib.DaoistPotLApprenticeStage) || player.hasPerk(PerkLib.DaoistGoHApprenticeStage) || (player.hasPerk(PerkLib.JobSorcerer) && player.hasPerk(PerkLib.Soulless)));
+                    }, "Having any of Daoist: Apprentice Stage perks OR Job: Sorcerer and Soulless perks");
 			PrestigeJobDruid.requirePrestigeJobSlot()
                     .requireAnyPerk(Archmage, ArchmageEx)
                     .requireWis(200)

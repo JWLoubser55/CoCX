@@ -265,8 +265,10 @@ public class Soulforce extends BaseContent
 		clearOutput();
 		var daoistpathsccount0:Number = 0;
 		var daoistpathsccount1:Number = 0;
+		var daoistpathsccount4:Number = 0;
 		var daoistpathsccount5:Number = 0;
 		var daoistpathsccount6:Number = 0;
+		var daoistpathsccount9:Number = 0;
 		var bodypathsccount0:Number = 0;
 		var bodypathsccount1:Number = 0;
 		var bodypathsccount2:Number = 0;
@@ -276,8 +278,22 @@ public class Soulforce extends BaseContent
 		if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) pathscap += 3;
 		if (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
 			daoistpathsccount0 += 1;
+			daoistpathsccount4 += 1;
 			daoistpathsccount5 += 1;
 			daoistpathsccount6 += 1;
+			daoistpathsccount9 += 1;
+			bodypathsccount0 += 1;
+			bodypathsccount1 += 1;
+			bodypathsccount2 += 1;
+			bodypathsccount3 += 1;
+			paths += 1;
+		}
+		if (player.hasPerk(PerkLib.DaoistJoPApprenticeStage)) {
+			daoistpathsccount0 += 1;
+			daoistpathsccount1 += 1;
+			daoistpathsccount5 += 1;
+			daoistpathsccount6 += 1;
+			daoistpathsccount9 += 1;
 			bodypathsccount0 += 1;
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
@@ -287,7 +303,9 @@ public class Soulforce extends BaseContent
 		if (player.hasPerk(PerkLib.DaoistDotSApprenticeStage)) {
 			daoistpathsccount0 += 1;
 			daoistpathsccount1 += 1;
+			daoistpathsccount4 += 1;
 			daoistpathsccount6 += 1;
+			daoistpathsccount9 += 1;
 			bodypathsccount0 += 1;
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
@@ -297,7 +315,21 @@ public class Soulforce extends BaseContent
 		if (player.hasPerk(PerkLib.DaoistPotLApprenticeStage)) {
 			daoistpathsccount0 += 1;
 			daoistpathsccount1 += 1;
+			daoistpathsccount4 += 1;
 			daoistpathsccount5 += 1;
+			daoistpathsccount9 += 1;
+			bodypathsccount0 += 1;
+			bodypathsccount1 += 1;
+			bodypathsccount2 += 1;
+			bodypathsccount3 += 1;
+			paths += 1;
+		}
+		if (player.hasPerk(PerkLib.DaoistGoHApprenticeStage)) {
+			daoistpathsccount0 += 1;
+			daoistpathsccount1 += 1;
+			daoistpathsccount4 += 1;
+			daoistpathsccount5 += 1;
+			daoistpathsccount6 += 1;
 			bodypathsccount0 += 1;
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
@@ -307,8 +339,10 @@ public class Soulforce extends BaseContent
 		if (player.hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) {
 			daoistpathsccount0 += 1;
 			daoistpathsccount1 += 1;
+			daoistpathsccount4 += 1;
 			daoistpathsccount5 += 1;
 			daoistpathsccount6 += 1;
+			daoistpathsccount9 += 1;
 			bodypathsccount0 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
@@ -317,8 +351,10 @@ public class Soulforce extends BaseContent
 		if (player.hasPerk(PerkLib.FleshBodySoDApprenticeStage)) {
 			daoistpathsccount0 += 1;
 			daoistpathsccount1 += 1;
+			daoistpathsccount4 += 1;
 			daoistpathsccount5 += 1;
 			daoistpathsccount6 += 1;
+			daoistpathsccount9 += 1;
 			bodypathsccount0 += 1;
 			bodypathsccount1 += 1;
 			bodypathsccount3 += 1;
@@ -327,8 +363,10 @@ public class Soulforce extends BaseContent
 		if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
 			daoistpathsccount0 += 1;
 			daoistpathsccount1 += 1;
+			daoistpathsccount4 += 1;
 			daoistpathsccount5 += 1;
 			daoistpathsccount6 += 1;
+			daoistpathsccount9 += 1;
 			bodypathsccount0 += 1;
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
@@ -341,6 +379,11 @@ public class Soulforce extends BaseContent
 			else addButtonDisabled(0, "Daoist(1)", "You can't use this 'My Dao Heart is Firm' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
 		}
 		else addButtonDisabled(0, "Daoist(1)", "Req. 'My Dao Sticks are better than Yours' daoist cultivation manual.");
+		if (player.hasKeyItem("Cultivation Manual: Judge of Phantom") >= 0) {
+			if (daoistpathsccount4 < pathscap) addButton(4, "Daoist(5)", daoistSubPath4).hint("Contemplate the mysteries from the 'Judge of Phantom' cultivation manual.");
+			else addButtonDisabled(4, "Daoist(5)", "You can't use this 'Judge of Phantom' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
+		}
+		else addButtonDisabled(4, "Daoist(5)", "Req. 'Judge of Phantom' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Doctor of the Serpent") >= 0) {
 			if (daoistpathsccount5 < pathscap) addButton(5, "Daoist(6)", daoistSubPath5).hint("Contemplate the mysteries from the 'Doctor of the Serpent' cultivation manual.");
 			else addButtonDisabled(5, "Daoist(6)", "You can't use this 'Doctor of the Serpent' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
@@ -351,6 +394,11 @@ public class Soulforce extends BaseContent
 			else addButtonDisabled(6, "Daoist(7)", "You can't use this 'Priest of the Leviathan' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
 		}
 		else addButtonDisabled(6, "Daoist(7)", "Req. 'Priest of the Leviathan' daoist cultivation manual.");
+		if (player.hasKeyItem("Cultivation Manual: General of Hydra") >= 0) {
+			if (daoistpathsccount9 < pathscap) addButton(9, "Daoist(10)", daoistSubPath9).hint("Contemplate the mysteries from the 'General of Hydra' cultivation manual.");
+			else addButtonDisabled(9, "Daoist(10)", "You can't use this 'General of Hydra' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
+		}
+		else addButtonDisabled(9, "Daoist(10)", "Req. 'General of Hydra' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Fist of Metal") >= 0) {
 			if (bodypathsccount1 < pathscap) addButton(10, "BodyCult(1)", bodycultivationSubPath1).hint("Contemplate the mysteries from the 'Fist of Metal' body cultivation manual.");
 			else addButtonDisabled(10, "BodyCult(1)", "You can't use this 'Fist of Metal' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
@@ -389,7 +437,6 @@ public class Soulforce extends BaseContent
 				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
 		addButton(14, "Back", SubPaths);
 	}
-	
 	private function daoistSubPathChosen1(perk:PerkType, bottle:ItemType):void {
 		player.destroyItems(bottle, 1);
 		player.createPerk(perk, 0, 0, 0, 0);
@@ -397,6 +444,23 @@ public class Soulforce extends BaseContent
 		doNext(camp.returnToCampUseFourHours);
 	}
 	
+	public function daoistSubPath4():void {
+		var stages:Array = [
+			["Apprentice(4)", PerkLib.DaoistJoPApprenticeStage, useables.ELSHARD, PerkLib.SoulApprentice],
+			["Warrior(4)", PerkLib.DaoistJoPWarriorStage, useables.LELSHARD, PerkLib.SoulSprite],
+			["Elder(4)", PerkLib.DaoistJoPElderStage, useables.ELCRYST, PerkLib.SoulExalt],
+			["Overlord(4)", PerkLib.DaoistJoPOverlordStage, useables.EL_CORE, PerkLib.SoulKing],
+		];
+		menu();
+		var i:int;
+		for (i = 0; i < stages.length; ++i)
+			addButton(i, stages[i][0], daoistSubPathChosen2, stages[i][1], stages[i][2])
+				.disableIf(!player.hasItem(stages[i][2], 3), "Requires 3 of " + (stages[i][2] as ItemType).shortName + "s")
+				.disableIf(!player.hasPerk(stages[i][3]), "Requires perk: " + (stages[i][3] as PerkType).name())
+				.disableIf(i != 0 && !player.hasPerk(stages[i - 1][1]), "You need to have achieved the previous stage first.")
+				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
+		addButton(14, "Back", SubPaths);
+	}
 	public function daoistSubPath5():void {
 		var stages:Array = [
 			["Apprentice(5)", PerkLib.DaoistDotSApprenticeStage, useables.ELSHARD, PerkLib.SoulApprentice],
@@ -408,13 +472,12 @@ public class Soulforce extends BaseContent
 		var i:int;
 		for (i = 0; i < stages.length; ++i)
 			addButton(i, stages[i][0], daoistSubPathChosen2, stages[i][1], stages[i][2])
-				.disableIf(!player.hasItem(stages[i][2], 2), "Requires 2 of " + (stages[i][2] as ItemType).shortName + "s")
+				.disableIf(!player.hasItem(stages[i][2], 3), "Requires 3 of " + (stages[i][2] as ItemType).shortName + "s")
 				.disableIf(!player.hasPerk(stages[i][3]), "Requires perk: " + (stages[i][3] as PerkType).name())
 				.disableIf(i != 0 && !player.hasPerk(stages[i - 1][1]), "You need to have achieved the previous stage first.")
 				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
 		addButton(14, "Back", SubPaths);
 	}
-	
 	public function daoistSubPath6():void {
 		var stages:Array = [
 			["Apprentice(6)", PerkLib.DaoistPotLApprenticeStage, useables.ELSHARD, PerkLib.SoulApprentice],
@@ -426,15 +489,31 @@ public class Soulforce extends BaseContent
 		var i:int;
 		for (i = 0; i < stages.length; ++i)
 			addButton(i, stages[i][0], daoistSubPathChosen2, stages[i][1], stages[i][2])
-				.disableIf(!player.hasItem(stages[i][2], 2), "Requires 2 of " + (stages[i][2] as ItemType).shortName + "s")
+				.disableIf(!player.hasItem(stages[i][2], 3), "Requires 3 of " + (stages[i][2] as ItemType).shortName + "s")
 				.disableIf(!player.hasPerk(stages[i][3]), "Requires perk: " + (stages[i][3] as PerkType).name())
 				.disableIf(i != 0 && !player.hasPerk(stages[i - 1][1]), "You need to have achieved the previous stage first.")
 				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
 		addButton(14, "Back", SubPaths);
 	}
-	
+	public function daoistSubPath9():void {
+		var stages:Array = [
+			["Apprentice(9)", PerkLib.DaoistGoHApprenticeStage, useables.ELSHARD, PerkLib.SoulApprentice],
+			["Warrior(9)", PerkLib.DaoistGoHWarriorStage, useables.LELSHARD, PerkLib.SoulSprite],
+			["Elder(9)", PerkLib.DaoistGoHElderStage, useables.ELCRYST, PerkLib.SoulExalt],
+			["Overlord(9)", PerkLib.DaoistGoHOverlordStage, useables.EL_CORE, PerkLib.SoulKing],
+		];
+		menu();
+		var i:int;
+		for (i = 0; i < stages.length; ++i)
+			addButton(i, stages[i][0], daoistSubPathChosen2, stages[i][1], stages[i][2])
+				.disableIf(!player.hasItem(stages[i][2], 3), "Requires 3 of " + (stages[i][2] as ItemType).shortName + "s")
+				.disableIf(!player.hasPerk(stages[i][3]), "Requires perk: " + (stages[i][3] as PerkType).name())
+				.disableIf(i != 0 && !player.hasPerk(stages[i - 1][1]), "You need to have achieved the previous stage first.")
+				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
+		addButton(14, "Back", SubPaths);
+	}
 	private function daoistSubPathChosen2(perk:PerkType, bottle:ItemType):void {
-		player.destroyItems(bottle, 2);
+		player.destroyItems(bottle, 3);
 		player.createPerk(perk, 0, 0, 0, 0);
 		outputText("\n\n<b>Gained perk - " + perk.name() + "</b>");
 		doNext(camp.returnToCampUseFourHours);
@@ -511,7 +590,6 @@ public class Soulforce extends BaseContent
 				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
 		addButton(14, "Back", SubPaths);
 	}
-	
 	public function bodycultivationSubPath2():void {
 		var stages:Array = [
 			["Apprentice(2)", PerkLib.FleshBodySoDApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
@@ -531,7 +609,6 @@ public class Soulforce extends BaseContent
 				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
 		addButton(14, "Back", SubPaths);
 	}
-	
 	public function bodycultivationSubPath3():void {
 		var stages:Array = [
 			["Apprentice(3)", PerkLib.FleshBodyVoLApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
@@ -551,7 +628,6 @@ public class Soulforce extends BaseContent
 				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
 		addButton(14, "Back", SubPaths);
 	}
-	
 	private function bodycultivationSubPathChosen(perk:PerkType, bottle:ItemType):void {
 		player.destroyItems(bottle, 1);
 		player.destroyItems(useables.BTSOLUTION, 1);

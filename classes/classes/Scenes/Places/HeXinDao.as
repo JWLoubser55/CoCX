@@ -1624,12 +1624,12 @@ public function soularena():void {
 		//1	Emperor of Dragon
 		//2	Embodiment of Teiling
 		//3	Lord of Kirin
-		//4	Judge of Phantom
+		addButtonIfTrue(4, "Daoist(5)", missAkemiManualsShopDaoistJudgeOfPhantom, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Judge of Phantom") < 0, "Buy Cultivation Manual: Judge of Phantom");
 		addButtonIfTrue(5, "Daoist(6)", missAkemiManualsShopDaoistDoctorOfTheSerpent, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Doctor of the Serpent") < 0, "Buy Cultivation Manual: Doctor of the Serpent");
 		addButtonIfTrue(6, "Daoist(7)", missAkemiManualsShopDaoistPriestOfTheLeviathan, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Priest of the Leviathan") < 0, "Buy Cultivation Manual: Priest of the Leviathan");
 		//7	King of Garuda
 		//8	Monarch of Tortoise
-		//9	General of Hydra
+		addButtonIfTrue(9, "Daoist(10)", missAkemiManualsShopDaoistGeneralOfHydra, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: General of Hydra") < 0, "Buy Cultivation Manual: General of Hydra");
 		//addButtonIfTrue(0, "Daoist", missAkemiManualsShopDaoist, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") < 0);
 		addButtonIfTrue(10, "BodyCult(1)", missAkemiManualsShopBodyCultivatorFistofMetal, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Fist of Metal") < 0, "Buy Cultivation Manual: Fist of Metal");
 		addButtonIfTrue(11, "BodyCult(2)", missAkemiManualsShopBodyCultivatorScaleofDragon, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Scale of Dragon") < 0, "Buy Cultivation Manual: Scale of Dragon");
@@ -1658,6 +1658,18 @@ public function soularena():void {
 		player.createKeyItem("Cultivation Manual: My Dao Heart is Firm", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
+	public function missAkemiManualsShopDaoistJudgeOfPhantom():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>Are you judge, jury and police at the same time?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Judge of Phantom</b>");
+		player.createKeyItem("Cultivation Manual: Judge of Phantom", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
 	public function missAkemiManualsShopDaoistDoctorOfTheSerpent():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
 			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
@@ -1680,6 +1692,18 @@ public function soularena():void {
 		outputText("\"<i>You want to worship that calamar head or what?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
 		outputText("<b>Gained Key Item: Cultivation Manual: Priest of the Leviathan</b>");
 		player.createKeyItem("Cultivation Manual: Priest of the Leviathan", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistGeneralOfHydra():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>You up for having multiple heads up and down, and even using them ALL?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: General of Hydra</b>");
+		player.createKeyItem("Cultivation Manual: General of Hydra", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 	public function missAkemiManualsShopBodyCultivatorFistofMetal():void {

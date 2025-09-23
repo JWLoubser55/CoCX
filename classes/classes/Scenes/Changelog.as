@@ -340,14 +340,14 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Daoist (PotL): Warrior Stage. Gained by cultivating 'Priest of the Leviathan' cultivation manual. Effects: +10% water resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (caps at 100%)\n");
 			outputText("-New event perk: Daoist (PotL): Elder Stage. Gained by cultivating 'Priest of the Leviathan' cultivation manual. Effects: +15% water resistance at S.Elder, S.Exalt, S.Overlord stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks\n");
 			outputText("-New event perk: Daoist (PotL): Overlord Stage. Gained by cultivating 'Priest of the Leviathan' cultivation manual. Effects: +20% water resistance at S.Tyrant, S.King, S.Emperor stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (doubled bonus from excess resistance)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Daoist (GoH): Apprentice Stage. Gained by cultivating 'General of Hydra' cultivation manual. Effects: +5% acid resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess acid resistance above 100% would be turned into bonus % dmg to acid attacks (caps at 25%)\n");
+			outputText("-New event perk: Daoist (GoH): Warrior Stage. Gained by cultivating 'General of Hydra' cultivation manual. Effects: +10% acid resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any acid water resistance above 100% would be turned into bonus % dmg to acid attacks (caps at 100%)\n");
+			outputText("-New event perk: Daoist (GoH): Elder Stage. Gained by cultivating 'General of Hydra' cultivation manual. Effects: +15% acid resistance at S.Elder, S.Exalt, S.Overlord stages; any excess acid resistance above 100% would be turned into bonus % dmg to acid attacks\n");
+			outputText("-New event perk: Daoist (GoH): Overlord Stage. Gained by cultivating 'General of Hydra' cultivation manual. Effects: +20% acid resistance at S.Tyrant, S.King, S.Emperor stages; any excess acid resistance above 100% would be turned into bonus % dmg to acid attacks (doubled bonus from excess resistance)\n");
+			outputText("-New event perk: Daoist (JoP): Apprentice Stage. Gained by cultivating 'Judge of Phantom' cultivation manual. Effects: +5% darkness resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks (caps at 25%)\n");
+			outputText("-New event perk: Daoist (JoP): Warrior Stage. Gained by cultivating 'Judge of Phantom' cultivation manual. Effects: +10% darkness resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks (caps at 100%)\n");
+			outputText("-New event perk: Daoist (JoP): Elder Stage. Gained by cultivating 'Judge of Phantom' cultivation manual. Effects: +15% darkness resistance at S.Elder, S.Exalt, S.Overlord stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks\n");
+			outputText("-New event perk: Daoist (JoP): Overlord Stage. Gained by cultivating 'Judge of Phantom' cultivation manual. Effects: +20% darkness resistance at S.Tyrant, S.King, S.Emperor stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks (doubled bonus from excess resistance)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -374,6 +374,24 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
 			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -447,20 +465,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -485,12 +491,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
