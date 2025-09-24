@@ -837,6 +837,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const AbilityCooldown2:StatusEffectType   	= mk("Ability Cooldown 2");
 		public static const AbilityCooldown3:StatusEffectType   	= mk("Ability Cooldown 3");
 		public static const AbilityCooldown4:StatusEffectType   	= mk("Ability Cooldown 4");
+		public static const AbilityCooldownGrapple:StatusEffectType	= mk("Ability Cooldown Grapple");
 		public static const AikoLustPrank:StatusEffectType 			= mk("Aiko sex prank");
 		public static const AikoHyper:StatusEffectType 				= mk("Aiko hyper attacks");
 		public static const AikoArcaneArcher:StatusEffectType 		= mk("Aiko archer attacks");
@@ -1526,3 +1527,4 @@ import classes.StatusEffects.VampireThirstEffect;
 	}
 
 }
+

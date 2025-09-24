@@ -4961,6 +4961,10 @@ import classes.Scenes.Combat.CombatAbilities;
 				else addStatusValue(StatusEffects.DefPDebuff,1,-1);
 			}
 			if (hasStatusEffect(StatusEffects.TimesBashed) && statusEffectv2(StatusEffects.TimesBashed) > 0) addStatusValue(StatusEffects.TimesBashed, 2, -1);
+			if (hasStatusEffect(StatusEffects.AbilityCooldownGrapple)) {
+				if (statusEffectv1(StatusEffects.AbilityCooldownGrapple) > 0) addStatusValue(StatusEffects.AbilityCooldownGrapple, 1, -1);
+				else removeStatusEffect(StatusEffects.AbilityCooldownGrapple);
+			}
 		}
 
 		public function handleAwardItemText(itype:ItemType):ItemType

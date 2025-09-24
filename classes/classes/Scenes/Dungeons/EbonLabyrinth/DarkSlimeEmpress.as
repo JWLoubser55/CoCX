@@ -22,6 +22,7 @@ use namespace CoC;
 			if (rand(5) == 0 || Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100)) {
 				outputText("You barely manage to break out of the slimes clingy bodies standing up to resume the battle.");
 				player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
+				createStatusEffect(StatusEffects.AbilityCooldownGrapple, 3, 0, 0, 0);
 			}
 			//Failed struggle
 			else {
@@ -151,7 +152,7 @@ use namespace CoC;
 			this.createPerk(PerkLib.EnemyLargeGroupType, 0, 0, 0, 0);
 			this.abilities = [
 				{ call: gooHaremStrike, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_FLUID,]},
-				{ call: gooGroupGrapple, type: ABILITY_TEASE, range: RANGE_MELEE, tags:[TAG_FLUID]},
+				{ call: gooGroupGrapple, type: ABILITY_TEASE, range: RANGE_MELEE, tags:[TAG_FLUID], condition: function():Boolean { return !hasStatusEffect(StatusEffects.AbilityCooldownGrapple) }},
 				{ call: gooHaremStrike, type: ABILITY_TEASE, range: RANGE_MELEE, tags:[TAG_FLUID], condition: function():Boolean { return player.hasStatusEffect(StatusEffects.PlayerBoundPhysical) }, weight:Infinity},
 				{ call: gooSlimeBarrage, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_FLUID]}
 			];

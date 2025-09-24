@@ -2642,7 +2642,10 @@ public class Combat extends BaseContent {
             clearOutput();
             outputText("You decide not to take any action this round.\n\n");
             (monster as Doppleganger).handlePlayerWait();
-        } else if(isPlayerBound()){
+        } else if (player.hasStatusEffect(StatusEffects.LadyRafflesiaGrab)) {
+			if (player.statusEffectv1(StatusEffects.LadyRafflesiaGrab) <= 0) player.removeStatusEffect(StatusEffects.LadyRafflesiaGrab);
+			else player.addStatusValue(StatusEffects.LadyRafflesiaGrab, 1, -1);
+		} else if(isPlayerBound()){
             skipMonsterAction = monster.playerBoundWait();
         } else {
             clearOutput();
@@ -2806,7 +2809,10 @@ public class Combat extends BaseContent {
             if (monster as FrostGiant) (monster as FrostGiant).giantGrabStruggle();
             if (monster as YoungFrostGiant) (monster as YoungFrostGiant).youngGiantGrabStruggle();
             skipMonsterAction = true;
-        }
+        } else if (player.hasStatusEffect(StatusEffects.LadyRafflesiaGrab)) {
+			if (struggleCentralizedCheck()) player.removeStatusEffect(StatusEffects.LadyRafflesiaGrab);
+			else player.addStatusValue(StatusEffects.LadyRafflesiaGrab, 1, -1);
+		}
         if (skipMonsterAction) {
             combatRoundOver();
         } else {

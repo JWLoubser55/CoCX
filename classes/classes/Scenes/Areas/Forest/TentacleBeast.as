@@ -206,8 +206,8 @@ public class TentacleBeast extends Monster
 					consumables.IRONWEED,
 					consumables.BLADEFERN);
 			this.abilities = [
-				{ call: tentaclePhysicalAttack, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[], condition: function():Boolean { return hasStatusEffect(StatusEffects.TentacleCoolDown) }},
-				{ call: tentacleEntwine, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[]},
+				{ call: tentaclePhysicalAttack, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[]},
+				{ call: tentacleEntwine, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[], condition: function():Boolean { return !hasStatusEffect(StatusEffects.TentacleCoolDown) }},
 			];
 			this.tailType = Tail.DEMONIC;
 			checkMonster();

@@ -25,6 +25,7 @@ public class Barometz extends Monster
 			if (SceneLib.combat.struggleCentralizedCheck()) {
 				outputText("and succeed!");
 				player.removeStatusEffect(StatusEffects.Tentagrappled);
+				createStatusEffect(StatusEffects.AbilityCooldownGrapple,2,0,0,0);
 			}
 			else outputText("in vain.");
 			SceneLib.combat.enemyAIImpl();
@@ -89,11 +90,14 @@ public class Barometz extends Monster
 		override protected function performCombatAction():void
 		{
 			if (HPRatio() < .6 && (mana >= 30) && !hasStatusEffect(StatusEffects.AbilityCooldown1)) barometzHeal();
-			else if (!player.hasStatusEffect(StatusEffects.Tentagrappled)) barometzEntangle();
+			else if (!player.hasStatusEffect(StatusEffects.Tentagrappled) && !hasStatusEffect(StatusEffects.AbilityCooldownGrapple)) barometzEntangle();
 			else {
 				if (player.hasStatusEffect(StatusEffects.Tentagrappled)) {
 					player.addStatusValue(StatusEffects.Tentagrappled, 1, 1);
-					if (player.statusEffectv1(StatusEffects.Tentagrappled) > 7) player.removeStatusEffect(StatusEffects.Tentagrappled);
+					if (player.statusEffectv1(StatusEffects.Tentagrappled) > 7) {
+						player.removeStatusEffect(StatusEffects.Tentagrappled);
+						createStatusEffect(StatusEffects.AbilityCooldownGrapple,3,0,0,0);
+					}
 				}
 				var choice:Number = rand(4);
 				switch (choice) {
