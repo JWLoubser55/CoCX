@@ -95,7 +95,8 @@ public class Soulforce extends BaseContent
 		else addButtonDisabled(10, "???", "Req. Metamorph.");
 		if (player.hasPerk(PerkLib.Phylactery)) addButton(11, "Demonic Energy", accessDemonicEnergyMenu).hint("You can use harvested souls and lethicite to improve your magic and body.");
 		else addButtonDisabled(11, "???", "Only for characters with Phylactery.");
-		if (player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") >= 0 ||
+		if (player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") >= 0 || player.hasKeyItem("Cultivation Manual: Judge of Phantom") >= 0 || player.hasKeyItem("Cultivation Manual: Doctor of the Serpent") >= 0 ||
+			player.hasKeyItem("Cultivation Manual: Priest of the Leviathan") >= 0 || player.hasKeyItem("Cultivation Manual: General of Hydra") >= 0 ||
 			player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0 || player.hasKeyItem("Cultivation Manual: Scale of Dragon") >= 0 || player.hasKeyItem("Cultivation Manual: Fist of Metal") >= 0 ||
 			player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(12, "Sub-paths", SubPaths).hint("Contemplate the mysteries of your chosen sub-path(s).");
 		addButton(13, "Cultivation", Contemplations).hint("Contemplate the mysteries of the world in an attempt to progress your cultivation path.");
@@ -378,7 +379,7 @@ public class Soulforce extends BaseContent
 			if (daoistpathsccount1 < pathscap) addButton(0, "Daoist(1)", daoistSubPath1).hint("Contemplate the mysteries from the 'My Dao Heart is Firm' cultivation manual.");
 			else addButtonDisabled(0, "Daoist(1)", "You can't use this 'My Dao Heart is Firm' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
 		}
-		else addButtonDisabled(0, "Daoist(1)", "Req. 'My Dao Sticks are better than Yours' daoist cultivation manual.");
+		else addButtonDisabled(0, "Daoist(1)", "Req. 'My Dao Heart is Firm' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Judge of Phantom") >= 0) {
 			if (daoistpathsccount4 < pathscap) addButton(4, "Daoist(5)", daoistSubPath4).hint("Contemplate the mysteries from the 'Judge of Phantom' cultivation manual.");
 			else addButtonDisabled(4, "Daoist(5)", "You can't use this 'Judge of Phantom' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS. PERHAPS IT'S TIME TO CONTEMPLATE ON THIS?");
