@@ -253,7 +253,7 @@ public class Changelog extends BaseContent
 			outputText("-Brain Melt buff for Mindbreaker PC increased to 5% from 1% per each melt(ed brain i suppose). Not working retroactively thou so gotta melt more brains for that sweet brain juice for your PC brain ;) Psionic Empowerment also getting 5 more times bang for all new mindbreaker sisters and brothers you made along the way.\n");
 			outputText("-Automata PC have 'Remodel' option added to camp actions where it can change some of it bodyparts to other types or remove/add some of the bodyparts/genitalia. Using those options would also replace any missing bodyparts and heal any stat damage (weakened, drained, damaged).\n");
 			outputText("-Soul Training Axe base atk (1 > 4) and cost (80 > 300) increased. For increasing maximum soulforce bonus from training items like the axe would now account for equipped weapon in offhand slot too.\n");
-			outputText("-New consumable items: Bag of Cosmos (B1), Bag of Cosmos (B2) - founded at Soul Cultivators dead bodies. Contain random stuff inside like: spirit stones, cultivation consumables, cultivation resources, rare ores, equipment.\n");//, Bag of Cosmos (B3)
+			outputText("-New consumable items: Bag of Cosmos (B1), Bag of Cosmos (B2), Bag of Cosmos (B3) - founded at Soul Cultivators dead bodies. Contain random stuff inside like: spirit stones, cultivation consumables, cultivation resources, rare ores, equipment.\n");
 			outputText("-When exploring Battlefield areas it's possible to find dead bodies of true demons or soul cultivators. And they are even lootable giving chance to get some potentialy usefull items.\n");
 			outputText("-New material: Soulmetal bar. Costing 240 gems and can be found in cultivators bags of cosmos.\n");
 			outputText("-Green Magic / Arcane Venom perks tier changed (3 > 12 / 9 > 8) with adjusted stat req.\n");
@@ -321,16 +321,16 @@ public class Changelog extends BaseContent
 			outputText("-New super perk: Munchkin@Closed Doors Cultivation. Gained by having merely 1 super perk, having 'Deity Job: Munchkin' super munchkin perk, lvl 90+. Effect: Increase by 3 maximum subpaths that can be cultivated, double final soulskill power (without additional cost increase), double gains from comtemplations and meditations.\n");
 			outputText("-Deity Job: Munchkin level req. decreased from 90 to 75. Munchkin @Gym perk req. of Deity Job: Munchkin is replaced by Munchkin@Closed Doors Cultivation.\n");
 			outputText("-New tier 1 misc lvl-up perk: Lethicite Connoisseur. Req. Soulless perk. Effect: You have learned to consume Lethicite in a less wasteful way. Grant twice as much demonic energy as normal when consuming lethicite.\n");
-			outputText("-New tier 6 corruption lvl-up perk: Corrupted Flesh. Req. Masochist perk and 80+ corruption. Effect: While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged, gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless and reset after combat.\n");
-			outputText("-Exploring hills PC can found suspicious coccoon with even more suspicious thing inside. Would our junior PC dare to crack it? Time only would say.\n");
-			outputText("-Visting Black Cock food tent in Bazaar PC can find... sus trapdoors. And inside some goods to be bought if PC got skooma... errr gems or spirit stones.\n");
-			outputText("-Fixed 'RearBodyTentacleEyestalks' being gained when transformations should be blocked. (Edward Darksong)\n");
 			outputText("-New tier 3 corruption lvl-up perk: Defiler. Req. Sadist perk and 50+ corruption. Effect: While your corruption is above 50 your whip, unarmed and natural attacks inflict tease damage vulnerability 1%.\n");
 			outputText("-New tier 4 corruption lvl-up perk: Demonic whip technique. Req. Defiler perk and 60+ corruption. Effect: Whips inflict 2% more point of tease damage vulnerability per hit.\n");
+			outputText("-New tier 6 corruption lvl-up perk: Corrupted Flesh. Req. Masochist perk and 80+ corruption. Effect: While your corruption is above 80 wounds and bruises draw powers from your innate kinkyness. When damaged, gain a 5% stacking bonus to tease damage up to your level time 5. This effect is doubled if you are Soulless and reset after combat.\n");
 			outputText("-New event perk: Daoist (MDHiF): Apprentice Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +125% m.soulskill power, +125 max SF at S.Apprentice, S.Personage, S.Warrior stages; +1% Soulforce regen\n");
 			outputText("-New event perk: Daoist (MDHiF): Warrior Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +250% m.soulskill power, +250 max SF at S.Sprite, S.Scholar, S.Elder stages; +1% Soulforce regen\n");
 			outputText("-New event perk: Daoist (MDHiF): Elder Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +375% m.soulskill power, +375 max SF at S.Exalt, S.Overlord, S.Tyrant stages; +1% Soulforce regen\n");
 			outputText("-New event perk: Daoist (MDHiF): Overlord Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +500% m.soulskill power, +500 max SF S.King, S.Emperor, S.Ancestor stages; +1% Soulforce regen\n");
+			outputText("-Exploring hills PC can found suspicious coccoon with even more suspicious thing inside. Would our junior PC dare to crack it? Time only would say.\n");
+			outputText("-Visting Black Cock food tent in Bazaar PC can find... sus trapdoors. And inside some goods to be bought if PC got skooma... errr gems or spirit stones.\n");
+			outputText("-Fixed 'RearBodyTentacleEyestalks' being gained when transformations should be blocked. (Edward Darksong)\n");
 			outputText("-Perks that require Daoist: Apprentice Stage now req. any daoist cultivation sub-path.\n");
 			outputText("-New event perk: Daoist (DotS): Apprentice Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +5% poison resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (caps at 25%)\n");
 			outputText("-New event perk: Daoist (DotS): Warrior Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +10% poison resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (caps at 100%)\n");
@@ -348,6 +348,24 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Daoist (JoP): Warrior Stage. Gained by cultivating 'Judge of Phantom' cultivation manual. Effects: +10% darkness resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks (caps at 100%)\n");
 			outputText("-New event perk: Daoist (JoP): Elder Stage. Gained by cultivating 'Judge of Phantom' cultivation manual. Effects: +15% darkness resistance at S.Elder, S.Exalt, S.Overlord stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks\n");
 			outputText("-New event perk: Daoist (JoP): Overlord Stage. Gained by cultivating 'Judge of Phantom' cultivation manual. Effects: +20% darkness resistance at S.Tyrant, S.King, S.Emperor stages; any excess darkness resistance above 100% would be turned into bonus % dmg to darkness attacks (doubled bonus from excess resistance)\n");
+			outputText("-New event perk: Daoist (EoT): Apprentice Stage. Gained by cultivating 'Embodiment of Teiling' cultivation manual. Effects: +5% ice resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess ice resistance above 100% would be turned into bonus % dmg to ice attacks (caps at 25%)\n");
+			outputText("-New event perk: Daoist (EoT): Warrior Stage. Gained by cultivating 'Embodiment of Teiling' cultivation manual. Effects: +10% ice resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess ice resistance above 100% would be turned into bonus % dmg to ice attacks (caps at 100%)\n");
+			outputText("-New event perk: Daoist (EoT): Elder Stage. Gained by cultivating 'Embodiment of Teiling' cultivation manual. Effects: +15% ice resistance at S.Elder, S.Exalt, S.Overlord stages; any excess ice resistance above 100% would be turned into bonus % dmg to ice attacks\n");
+			outputText("-New event perk: Daoist (EoT): Overlord Stage. Gained by cultivating 'Embodiment of Teiling' cultivation manual. Effects: +20% ice resistance at S.Tyrant, S.King, S.Emperor stages; any excess ice resistance above 100% would be turned into bonus % dmg to ice attacks (doubled bonus from excess resistance)\n");
+			outputText("-\n");//
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -392,24 +410,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -483,8 +483,20 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -509,6 +521,12 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

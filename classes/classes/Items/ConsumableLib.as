@@ -221,6 +221,7 @@ public final class ConsumableLib extends AlchemyLib
 		public const BAGOCB1: Consumable = new BagOfCosmosB1();
 		public const BAGOCB2: Consumable = new BagOfCosmosB2();
 		public const BAGOCB3: Consumable = new BagOfCosmosB3();
+		public const BAGOCB4: Consumable = new BagOfCosmosB4();
 
 		//PILLS
 		public const LG_SFRP: Consumable = mk("LGSFRP", "LGSFRPill", "a low-grade Soulforce Recovery Pill", 10, "This low-grade recovery pill could help you recover some of the spent soulforce.  Naturally, it won't be much, but in a tight situation, it could mean the difference between winning or losing.", m.lowgradesoulforcerecoverypill);

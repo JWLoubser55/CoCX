@@ -253,7 +253,7 @@ use namespace CoC;
 		private function deadCultivatorsBattlefieldBoundary():void {
 			clearOutput();
 			var item:ItemType;
-			if (rand(3) == 0) item = consumables.BAGOCA1;
+			if (rand(3) == 0) item = consumables.BAGOCB3;
 			else {
 				if (rand(2) == 0) item = consumables.BAGOCB1;
 				else item = consumables.BAGOCB2;

@@ -19484,8 +19484,18 @@ public function fireDamageBoostedByDao():Number {
 }
 public function iceDamageBoostedByDao():Number {
     var boostI:Number = 1;
-    if (player.hasStatusEffect(StatusEffects.DaoOfIce))
-        boostI += daoModifier(player.statusEffectv2(StatusEffects.DaoOfIce));
+    if (player.hasStatusEffect(StatusEffects.DaoOfIce)) {
+		boostI += daoModifier(player.statusEffectv2(StatusEffects.DaoOfIce));
+		if (player.statusEffectv3(StatusEffects.DaoOfIce) > 0) {
+			var boostI1:Number = 0;
+			boostI1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfIce));
+			if (!player.hasPerk(PerkLib.DaoistEoTElderStage) && boostI1 > 1) {
+				if (!player.hasPerk(PerkLib.DaoistEoTWarriorStage) && boostI1 > 0.25) boostI1 = 0.25;
+				else boostI1 = 1;
+			}
+			boostI += boostI1;
+		}
+	}
     return boostI;
 }
 public function lightningDamageBoostedByDao():Number {

@@ -16,7 +16,7 @@ public class BagOfCosmosB3 extends Consumable {
 		override public function useItem():Boolean {
 			clearOutput();
 			outputText("You open bag to find ");
-			switch (Utils.rand(2)) {
+			switch (Utils.rand(6)) {
 				case 0:
 				var SS1:int = 40 + Utils.rand(40);
 				outputText("" + Utils.num2Text(SS1) + " spirit stones inside.");
@@ -27,6 +27,26 @@ public class BagOfCosmosB3 extends Consumable {
 				case 1:
 				outputText("mid-grade Soulforce Recovery Pill inside.");
 				SceneLib.inventory.takeItem(game.consumables.MG_SFRP, SceneLib.inventory.inventoryMenu);
+				return true;
+
+				case 2:
+				outputText("elemental shard inside.");
+				SceneLib.inventory.takeItem(game.useables.ELSHARD, SceneLib.inventory.inventoryMenu);
+				return true;
+
+				case 3:
+				outputText("large elemental shard inside.");
+				SceneLib.inventory.takeItem(game.useables.LELSHARD, SceneLib.inventory.inventoryMenu);
+				return true;
+
+				case 4:
+				outputText("elemental crystal inside.");
+				SceneLib.inventory.takeItem(game.useables.ELCRYST, SceneLib.inventory.inventoryMenu);
+				return true;
+
+				case 5:
+				outputText("elemental core inside.");
+				SceneLib.inventory.takeItem(game.useables.EL_CORE, SceneLib.inventory.inventoryMenu);
 				return true;
 
 				default: trace("Bag of Cosmos roll spirit stones...");

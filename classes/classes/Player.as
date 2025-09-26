@@ -3940,6 +3940,29 @@ use namespace CoC;
 			if (hasPerk(PerkLib.IcyFlesh)) mult -= 40;
 			if (hasAnyPerk(PerkLib.FireAffinity, PerkLib.FireShadowAffinity, PerkLib.AffinityIgnis)) mult += 100;
 			if (hasPerk(PerkLib.VegetalAffinity)) mult += 25;
+			if (hasPerk(PerkLib.DaoistEoTApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mult -= 5;
+				if (hasPerk(PerkLib.SoulPersonage)) mult -= 5;
+				if (hasPerk(PerkLib.SoulWarrior)) mult -= 5;
+			}
+			if (hasPerk(PerkLib.DaoistEoTWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mult -= 10;
+				if (hasPerk(PerkLib.SoulScholar)) mult -= 10;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mult -= 10;
+			}
+			if (hasPerk(PerkLib.DaoistEoTElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) mult -= 15;
+				if (hasPerk(PerkLib.SoulExalt)) mult -= 15;
+				if (hasPerk(PerkLib.SoulOverlord)) mult -= 15;
+			}
+			if (hasPerk(PerkLib.DaoistEoTOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) mult -= 20;
+				if (hasPerk(PerkLib.SoulKing)) mult -= 20;
+				if (hasPerk(PerkLib.SoulEmperor)) mult -= 20;
+			}
+			if (hasPerk(PerkLib.DaoistEoTTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
+			}
 			if (headjewelryEffectId == HeadJewelryLib.MODIFIER_ICE_R) mult -= headjewelryEffectMagnitude;
 			if (necklaceEffectId == NecklaceLib.MODIFIER_ICE_R) mult -= necklaceEffectMagnitude;
 			if (jewelry1.hasBuff('res_ice') && jewelry2.hasBuff('res_ice') && jewelry3.hasBuff('res_ice') && jewelry4.hasBuff('res_ice') && headjewelryEffectId == HeadJewelryLib.MODIFIER_ICE_R && necklaceEffectId == NecklaceLib.MODIFIER_ICE_R) mult -= 15;
@@ -3965,7 +3988,16 @@ use namespace CoC;
 			if (hasStatusEffect(StatusEffects.AlterBindScroll3) || isRace(Races.MUMMY)) mult = 0;
 			mult -= resIceStat.value;
 			//Caps damage reduction at 100%
-			if (mult < 0) mult = 0;
+			if (mult < 0) {
+				if (hasPerk(PerkLib.DaoistEoTApprenticeStage)) {
+					var boost:Number = (mult * -1);
+					if (hasPerk(PerkLib.DaoistEoTOverlordStage)) boost *= 2;
+					if (hasPerk(PerkLib.DaoistEoTTyrantStage)) boost *= 1.5;
+					if (hasStatusEffect(StatusEffects.DaoOfIce)) changeStatusValue(StatusEffects.DaoOfIce, 3, boost);
+					else createStatusEffect(StatusEffects.DaoOfIce, 0, 0, boost, 0);
+				}
+				mult = 0;
+			}
 			return mult;
 		}
 		public override function takeIceDamage(damage:Number, display:Boolean = false):Number {
