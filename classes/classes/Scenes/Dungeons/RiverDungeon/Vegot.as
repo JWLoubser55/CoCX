@@ -203,7 +203,7 @@ use namespace CoC;
 			this.drop = new WeightedDrop().
 					add(consumables.VOLTTOP,3).
 					add(consumables.ALCTHUN,2).
-					add(useables.EL_CORE,1);
+					add(useables.LELCRYST,1);
 			this.wings.type = Wings.THUNDEROUS_AURA;
 			this.rearBody.type = RearBody.RAIJU_MANE;
 			this.arms.type = Arms.RAIJU;

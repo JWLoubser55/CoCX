@@ -45,8 +45,8 @@ public class BagOfCosmosB3 extends Consumable {
 				return true;
 
 				case 5:
-				outputText("elemental core inside.");
-				SceneLib.inventory.takeItem(game.useables.EL_CORE, SceneLib.inventory.inventoryMenu);
+				outputText("large elemental crystal inside.");
+				SceneLib.inventory.takeItem(game.useables.LELCRYST, SceneLib.inventory.inventoryMenu);
 				return true;
 
 				default: trace("Bag of Cosmos roll spirit stones...");

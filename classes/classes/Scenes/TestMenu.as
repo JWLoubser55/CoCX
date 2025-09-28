@@ -100,6 +100,7 @@ public class TestMenu extends BaseContent
 		bd.add("Re:Pearl", MightyOrNot3, "Restore chance to find Pearl after regaining soul").disableIf(flags[kFLAGS.SKY_POISON_PEARL] > 0);
 		bd.add("Chi-a-Chi-Fix", MightyOrNot4).disableIf((flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 3 || flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 3));
 		bd.add("Test5", MightyOrNot5, "Testing NaN");
+		bd.add("Test6", MightyOrNot6, "It's Tengliu not Teiling.")
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -135,6 +136,14 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot6():void {
+		if (player.hasKeyItem("Cultivation Manual: Embodiment of Teiling") >= 0) {
+			player.removeKeyItem("Cultivation Manual: Embodiment of Teiling");
+			player.createKeyItem("Cultivation Manual: Embodiment of Tengliu", 0, 0, 0, 0);
+		}
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot5():void {

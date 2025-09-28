@@ -95,7 +95,10 @@ use namespace CoC;
 		public const ELCRYST:SimpleUseable = new SimpleUseable("ELCryst", "Elemental Crystal", "an Elemental Crystal", 10,
 			"An Elemental Crystal.",
 			"You look at the elemental crystal. It occasionally glows gently in your hand.  It's a precious material that may be useful for making your summoned elementals stronger.");
-		public const EL_CORE:SimpleUseable = new SimpleUseable("ELCore", "Elemental Core", "an Elemental Core", 20,
+		public const LELCRYST:SimpleUseable = new SimpleUseable("LELCryst", "Large Elemental Crystal", "a Large Elemental Crystal", 20,
+			"A Large Elemental Crystal.",
+			"You look at the large elemental crystal. It occasionally glows gently in your hand.  It's a precious material that may be useful for making your summoned elementals stronger.");
+		public const EL_CORE:SimpleUseable = new SimpleUseable("ELCore", "Elemental Core", "an Elemental Core", 50,
 			"An Elemental Core.",
 			"You look at the elemental core. It occasionally glows gently in your hand.  Rare treasure that have wide range of uses for elementalists.");
 		public const E_ICHOR:SimpleUseable = new SimpleUseable("E.Ichor", "E-Ichor vial", "a vial of E-Ichor", 1,

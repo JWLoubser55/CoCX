@@ -9,6 +9,7 @@ import classes.Scenes.API.Encounters;
 import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.Lake.*;
+import classes.Scenes.Dungeons.RiverDungeon.WaterElemental;
 import classes.Scenes.NPCs.BelisaFollower;
 import classes.Scenes.NPCs.EtnaFollower;
 import classes.Scenes.Places.Boat.*;
@@ -111,6 +112,11 @@ public class Boat extends AbstractLakeContent
 					anemoneScene.mortalAnemoneeeeee();
 				}
 			}, {
+				name: "water ele",
+				label : "Water Elemental",
+				kind  : 'monster',
+				call: boatWaterElemental
+			}, {
 				name: 'zealot',
 				label: "Fetish Zealot",
 				kind: 'monster',
@@ -155,6 +161,13 @@ public class Boat extends AbstractLakeContent
 			explorer.leave.hint("Return to the shore");
 			explorer.skillBasedReveal(areaLevel, timesExplored());
 			explorer.doExplore();
+		}
+		
+		private function boatWaterElemental():void {
+			clearOutput();
+			outputText("While exploring the lake (later part will be added when Liadri write it and now just beat water out of this water elemental)\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 3;
+			startCombat(new WaterElemental());
 		}
 
 		private function fishing():void {

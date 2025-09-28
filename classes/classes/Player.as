@@ -4372,7 +4372,30 @@ use namespace CoC;
 
 		public override function damageEarthPercent():Number {
 			var mult:Number = damageMagicalPercent();
-			if (hasAnyPerk(PerkLib.EarthAffinity, PerkLib.AffinityGnome)) mult -= 50;/*
+			if (hasAnyPerk(PerkLib.EarthAffinity, PerkLib.AffinityGnome)) mult -= 50;
+			if (hasPerk(PerkLib.DaoistMoTApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mult -= 5;
+				if (hasPerk(PerkLib.SoulPersonage)) mult -= 5;
+				if (hasPerk(PerkLib.SoulWarrior)) mult -= 5;
+			}
+			if (hasPerk(PerkLib.DaoistMoTWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mult -= 10;
+				if (hasPerk(PerkLib.SoulScholar)) mult -= 10;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mult -= 10;
+			}
+			if (hasPerk(PerkLib.DaoistMoTElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) mult -= 15;
+				if (hasPerk(PerkLib.SoulExalt)) mult -= 15;
+				if (hasPerk(PerkLib.SoulOverlord)) mult -= 15;
+			}
+			if (hasPerk(PerkLib.DaoistMoTOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) mult -= 20;
+				if (hasPerk(PerkLib.SoulKing)) mult -= 20;
+				if (hasPerk(PerkLib.SoulEmperor)) mult -= 20;
+			}
+			if (hasPerk(PerkLib.DaoistMoTTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
+			}/*
 			if (jewelryEffectId == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude;
 			if (jewelryEffectId2 == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude2;
 			if (jewelryEffectId3 == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude3;
@@ -4386,7 +4409,16 @@ use namespace CoC;
 			}
 			mult -= resEarthStat.value;
 			//Caps damage reduction at 100%
-			if (mult < 0) mult = 0;
+			if (mult < 0) {
+				if (hasPerk(PerkLib.DaoistMoTApprenticeStage)) {
+					var boost:Number = (mult * -1);
+					if (hasPerk(PerkLib.DaoistMoTOverlordStage)) boost *= 2;
+					if (hasPerk(PerkLib.DaoistMoTTyrantStage)) boost *= 1.5;
+					if (hasStatusEffect(StatusEffects.DaoOfEarth)) changeStatusValue(StatusEffects.DaoOfEarth, 3, boost);
+					else createStatusEffect(StatusEffects.DaoOfEarth, 0, 0, boost, 0);
+				}
+				mult = 0;
+			}
 			return mult;
 		}
 		public override function takeEarthDamage(damage:Number, display:Boolean = false):Number {

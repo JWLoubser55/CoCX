@@ -653,6 +653,7 @@ public class DebugMenu extends BaseContent
 			materialArray.push(useables.ELSHARD);
 			materialArray.push(useables.LELSHARD);
 			materialArray.push(useables.ELCRYST);
+			materialArray.push(useables.LELCRYST);
 			materialArray.push(useables.EL_CORE);
 			materialArray.push(useables.CONDOM);
 			//------------

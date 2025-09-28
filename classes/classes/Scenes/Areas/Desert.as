@@ -13,6 +13,7 @@ import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.API.SimpleEncounter;
 import classes.Scenes.Areas.Desert.*;
 import classes.Scenes.Camp.CampStatsAndResources;
+import classes.Scenes.Dungeons.RiverDungeon.EarthElemental;
 import classes.Scenes.SceneLib;
 
 use namespace CoC;
@@ -131,6 +132,11 @@ use namespace CoC;
 					day   : false,
 					chance: 0.7,
 					call: SceneLib.zombiesmummies.encounterMummyOuterDesert
+				}, {
+					name: "earth ele",
+					label : "Earth Elemental",
+					kind  : 'monster',
+					call: desertEarthElemental
 				}, {
 					name  : "wanderer",
 					label : "Wanderer",
@@ -472,6 +478,13 @@ use namespace CoC;
 			outputText("<b>It would seem you found the inner desert area!</b>");
 			SceneLib.exploration.counters.desertInner++;
 			endEncounter(120);
+		}
+		
+		private function desertEarthElemental():void {
+			clearOutput();
+			outputText("While exploring the desert (later part will be added when Liadri write it and now just beat dirt out of this earth elemental)\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 2;
+			startCombat(new EarthElemental());
 		}
 
 		public function sandWitchPregnancyEvent():void {

@@ -1494,27 +1494,40 @@ public class CampMakeWinions extends BaseContent
 			else addButtonDisabled(1, "Yes", "You don't have any Large Elemental Shards to convert currently.");
 			if (player.hasItem(useables.ELCRYST, 1)) addButton(2, "Yes", elementalShardsConversionGo, 2).hint("Use 1 Elemental Crystal");
 			else addButtonDisabled(2, "Yes", "You don't have any Elemental Crystals to convert currently.");
-			if (player.hasItem(useables.EL_CORE, 1)) addButton(3, "Yes", elementalShardsConversionGo, 3).hint("Use 1 Elemental Core");
+			if (player.hasItem(useables.LELCRYST, 1)) addButton(3, "Yes", elementalShardsConversionGo, 3).hint("Use 1 Large Elemental Crystal");
 			else addButtonDisabled(3, "Yes", "You don't have any Elemental Cores to convert currently.");
+			if (player.hasItem(useables.EL_CORE, 1)) addButton(4, "Yes", elementalShardsConversionGo, 4).hint("Use 1 Elemental Core");
+			else addButtonDisabled(4, "Yes", "You don't have any Elemental Cores to convert currently.");
 			if (player.hasItem(useables.ELSHARD, 5)) addButton(5, "Yes", elementalShardsConversionGo, 10).hint("Use 5 Elemental Shards");
 			else addButtonDisabled(5, "Yes", "You don't have enough Elemental Shards to convert currently.");
 			if (player.hasItem(useables.LELSHARD, 5)) addButton(6, "Yes", elementalShardsConversionGo, 11).hint("Use 5 Large Elemental Shards");
 			else addButtonDisabled(6, "Yes", "You don't have enough Large Elemental Shards to convert currently.");
 			if (player.hasItem(useables.ELCRYST, 5)) addButton(7, "Yes", elementalShardsConversionGo, 12).hint("Use 5 Elemental Crystals");
 			else addButtonDisabled(7, "Yes", "You don't have enough Elemental Crystals to convert currently.");
-			if (player.hasItem(useables.EL_CORE, 5)) addButton(8, "Yes", elementalShardsConversionGo, 13).hint("Use 5 Elemental Cores");
+			if (player.hasItem(useables.LELCRYST, 5)) addButton(8, "Yes", elementalShardsConversionGo, 13).hint("Use 5 Large Elemental Crystals");
 			else addButtonDisabled(8, "Yes", "You don't have enough Elemental Cores to convert currently.");
-			if (player.hasPerk(PerkLib.ElementalConjurerKnowledgeSu)) {
-				if (player.soulforce >= 10000) addButton(10, "1K", soulforceConversionGo, 1000).hint("Convert 10,000 SF into 1,000 EE");
-				else addButtonDisabled(10, "1K", "You not have enough (10,000) SF for conversion.");
-				if (player.soulforce >= 20000) addButton(11, "2K", soulforceConversionGo, 2000).hint("Convert 20,000 SF into 2,000 EE");
-				else addButtonDisabled(11, "2K", "You not have enough (20,000) SF for conversion.");
-				if (player.soulforce >= 50000) addButton(12, "5K", soulforceConversionGo, 5000).hint("Convert 50,000 SF into 5,000 EE");
-				else addButtonDisabled(12, "5K", "You not have enough (50,000) SF for conversion.");
-				if (player.soulforce >= 100000) addButton(13, "10K", soulforceConversionGo, 10000).hint("Convert 100,000 SF into 10,000 EE");
-				else addButtonDisabled(13, "10K", "You not have enough (100,000) SF for conversion.");
-			}
+			if (player.hasItem(useables.EL_CORE, 5)) addButton(9, "Yes", elementalShardsConversionGo, 14).hint("Use 5 Elemental Cores");
+			else addButtonDisabled(9, "Yes", "You don't have enough Elemental Cores to convert currently.");
+			if (player.hasPerk(PerkLib.ElementalConjurerKnowledgeSu)) addButton(13, "SF to EE", elementalShardsConversion2);
 			addButton(14, "Back", accessSummonElementalsMainMenu);
+		}
+		private function elementalShardsConversion2():void {
+			menu();
+			if (player.soulforce >= 5000) addButton(0, "500", soulforceConversionGo, 500).hint("Convert 5,000 SF into 500 EE");
+			else addButtonDisabled(0, "500", "You not have enough (5,000) SF for conversion.");
+			if (player.soulforce >= 10000) addButton(1, "1K", soulforceConversionGo, 1000).hint("Convert 10,000 SF into 1,000 EE");
+			else addButtonDisabled(1, "1K", "You not have enough (10,000) SF for conversion.");
+			if (player.soulforce >= 20000) addButton(2, "2K", soulforceConversionGo, 2000).hint("Convert 20,000 SF into 2,000 EE");
+			else addButtonDisabled(2, "2K", "You not have enough (20,000) SF for conversion.");
+			if (player.soulforce >= 50000) addButton(3, "5K", soulforceConversionGo, 5000).hint("Convert 50,000 SF into 5,000 EE");
+			else addButtonDisabled(3, "5K", "You not have enough (50,000) SF for conversion.");
+			if (player.soulforce >= 100000) addButton(4, "10K", soulforceConversionGo, 10000).hint("Convert 100,000 SF into 10,000 EE");
+			else addButtonDisabled(4, "10K", "You not have enough (100,000) SF for conversion.");
+			if (player.soulforce >= 200000) addButton(5, "20K", soulforceConversionGo, 20000).hint("Convert 200,000 SF into 20,000 EE");
+			else addButtonDisabled(5, "20K", "You not have enough (200,000) SF for conversion.");
+			if (player.soulforce >= 500000) addButton(6, "50K", soulforceConversionGo, 50000).hint("Convert 500,000 SF into 50,000 EE");
+			else addButtonDisabled(6, "50K", "You not have enough (500,000) SF for conversion.");
+			addButton(14, "Back", elementalShardsConversion);
 		}
 		private function elementalShardsConversionGo(shardtype:Number):void {
 			clearOutput();
@@ -1534,8 +1547,12 @@ public class CampMakeWinions extends BaseContent
 				shardEnergy += 4000;
 			}
 			if (shardtype == 3) {
-				player.destroyItems(useables.EL_CORE, 1);
+				player.destroyItems(useables.LELCRYST, 1);
 				shardEnergy += 8000;
+			}
+			if (shardtype == 4) {
+				player.destroyItems(useables.EL_CORE, 1);
+				shardEnergy += 20000;
 			}
 			if (shardtype == 10) {
 				player.destroyItems(useables.ELSHARD, 5);
@@ -1550,8 +1567,12 @@ public class CampMakeWinions extends BaseContent
 				shardEnergy += 20000;
 			}
 			if (shardtype == 13) {
-				player.destroyItems(useables.EL_CORE, 5);
+				player.destroyItems(useables.LELCRYST, 5);
 				shardEnergy += 40000;
+			}
+			if (shardtype == 14) {
+				player.destroyItems(useables.EL_CORE, 5);
+				shardEnergy += 100000;
 			}
 			if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) + shardEnergy > player.statusEffectv2(StatusEffects.ElementalEnergyConduits)) convertedShard += (player.statusEffectv2(StatusEffects.ElementalEnergyConduits) - player.statusEffectv1(StatusEffects.ElementalEnergyConduits));
 			else convertedShard += shardEnergy;

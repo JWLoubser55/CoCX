@@ -261,7 +261,7 @@ use namespace CoC;
 			this.drop = new WeightedDrop().
 					add(consumables.FOXJEWL,3).
 					add(consumables.ONISAKE,2).
-					add(useables.EL_CORE,1);
+					add(useables.LELCRYST,1);
 			this.arms.type = Arms.ONI;
 			this.lowerBody = LowerBody.ONI;
 			this.tailType = Tail.FOX;

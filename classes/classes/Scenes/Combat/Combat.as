@@ -19566,8 +19566,18 @@ public function waterDamageBoostedByDao():Number {
 }
 public function earthDamageBoostedByDao():Number {
     var boostEa:Number = 1;
-    if (player.hasStatusEffect(StatusEffects.DaoOfEarth))
+    if (player.hasStatusEffect(StatusEffects.DaoOfEarth)) {
         boostEa += daoModifier(player.statusEffectv2(StatusEffects.DaoOfEarth));
+		if (player.statusEffectv3(StatusEffects.DaoOfEarth) > 0) {
+			var boostEa1:Number = 0;
+			boostEa1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfEarth));
+			if (!player.hasPerk(PerkLib.DaoistMoTElderStage) && boostEa1 > 1) {
+				if (!player.hasPerk(PerkLib.DaoistMoTWarriorStage) && boostEa1 > 0.25) boostEa1 = 0.25;
+				else boostEa1 = 1;
+			}
+			boostEa += boostEa1;
+		}
+	}
     return boostEa;
 }
 public function acidDamageBoostedByDao():Number {

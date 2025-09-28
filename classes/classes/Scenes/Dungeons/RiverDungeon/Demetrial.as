@@ -138,7 +138,7 @@ use namespace CoC;
 					add(consumables.BEEHONY,3).
 					add(useables.PCRYSTA,2).
 					add(useables.SRESIDUE,1).
-					add(useables.EL_CORE,1);
+					add(useables.LELCRYST,1);
 			this.createStatusEffect(StatusEffects.ATranscendentSoulField, 100, 100, 0, 0);//X times less dmg, +X lvl diff bonus
 			this.createPerk(PerkLib.EnemyPlantType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.DieHardHP, 100, 0, 0, 0);
