@@ -117,14 +117,20 @@ public class AirElemental extends Monster
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatAirElementalSubBoss();
+			if (inDungeon) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatAirElementalSubBoss();
+				else cleanupAfterCombat();
+			}
 			else cleanupAfterCombat();
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByAirElementalSubBoss();
-			else SceneLib.dungeons.riverdungeon.defeatedByAirElemental();
+			if (inDungeon) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByAirElementalSubBoss();
+				else SceneLib.dungeons.riverdungeon.defeatedByAirElemental();
+			}
+			else cleanupAfterCombat();
 		}
 		
 		public function AirElemental() 
@@ -199,6 +205,48 @@ public class AirElemental extends Monster
 				this.bonusHP = 1750;
 				this.additionalXP = 190;
 			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+				this.short = "air elemental";
+				this.imageName = "air elemental";
+				this.long = "You're currently fighting an air elemental. It's a four and a half foot tall creature. Its body is wrapped in an air current, almost completely concealing its form as it uses its bare fists to fight.";
+				this.tallness = 54;
+				initStrTouSpeInte(48, 68, 148, 220);
+				initWisLibSensCor(220, 20, 110, 0);
+				this.weaponAttack = 26;
+				this.armorDef = 26;
+				this.armorMDef = 130;
+				this.level = 26;
+				this.bonusHP = 1500;
+				this.additionalXP = 225;
+			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 6) {
+				this.short = "air elemental";
+				this.imageName = "air elemental";
+				this.long = "You're currently fighting an air elemental. It's a four foot, nine inch tall creature. Its body is wrapped in an air current, almost completely concealing its form as it uses its bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(90, 120, 240, 420);
+				initWisLibSensCor(420, 20, 100, 0);
+				this.weaponAttack = 150;
+				this.armorDef = 150;
+				this.armorMDef = 800;
+				this.level = 56;
+				this.bonusHP = 1800;
+				this.additionalXP = 300;
+			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 7) {
+				this.short = "air elemental";
+				this.imageName = "air elemental";
+				this.long = "You're currently fighting an air elemental. It's a four foot, nine inch tall creature. Its body is wrapped in an air current, almost completely concealing its form as it uses its bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(126, 156, 276, 600);
+				initWisLibSensCor(600, 20, 140, 0);
+				this.weaponAttack = 210;
+				this.armorDef = 210;
+				this.armorMDef = 1100;
+				this.level = 86;
+				this.bonusHP = 2400;
+				this.additionalXP = 450;
+			}
 			this.a = "the ";
 			this.plural = false;
 			this.lustVuln = 0.01;
@@ -209,18 +257,37 @@ public class AirElemental extends Monster
 			this.armorName = "air currents armor";
 			this.createPerk(PerkLib.EnemyElementalType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.WindNature, 0, 0, 0, 0);
-			if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) {
-				this.createPerk(PerkLib.EnemyHugeType, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EnemyChampionType, 0, 0, 0, 0);
-				this.drop = new WeightedDrop()
-					.add(useables.LELSHARD, 3)
-					.add(useables.ELCRYST, 1);
+			if (inDungeon) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) {
+					this.createPerk(PerkLib.EnemyHugeType, 0, 0, 0, 0);
+					this.createPerk(PerkLib.EnemyChampionType, 0, 0, 0, 0);
+					this.drop = new WeightedDrop()
+						.add(useables.LELSHARD, 3)
+						.add(useables.ELCRYST, 1);
+				}
+				else {
+					this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
+					this.drop = new WeightedDrop()
+						.add(useables.ELSHARD, 3)
+						.add(useables.LELSHARD, 1);
+				}
 			}
 			else {
-				this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
-				this.drop = new WeightedDrop()
-					.add(useables.ELSHARD, 3)
-					.add(useables.LELSHARD, 1);
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 7) {
+					this.drop = new WeightedDrop()
+						.add(useables.ELCRYST, 3)
+						.add(useables.LELCRYST, 1);
+				}
+				else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 6) {
+					this.drop = new WeightedDrop()
+						.add(useables.LELSHARD, 3)
+						.add(useables.ELCRYST, 1);
+				}
+				else {
+					this.drop = new WeightedDrop()
+						.add(useables.ELSHARD, 3)
+						.add(useables.LELSHARD, 1);
+				}
 			}
 			checkMonster();
 		}

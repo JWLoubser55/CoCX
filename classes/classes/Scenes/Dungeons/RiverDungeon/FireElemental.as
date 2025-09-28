@@ -113,14 +113,20 @@ public class FireElemental extends Monster
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatFireElementalSubBoss();
+			if (inDungeon) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatFireElementalSubBoss();
+				else cleanupAfterCombat();
+			}
 			else cleanupAfterCombat();
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByFireElementalSubBoss();
-			else SceneLib.dungeons.riverdungeon.defeatedByFireElemental();
+			if (inDungeon) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByFireElementalSubBoss();
+				else SceneLib.dungeons.riverdungeon.defeatedByFireElemental();
+			}
+			else cleanupAfterCombat();
 		}
 		
 		public function FireElemental() 
@@ -205,18 +211,32 @@ public class FireElemental extends Monster
 			this.armorName = "fire skin";
 			this.createPerk(PerkLib.EnemyElementalType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.FireNature, 0, 0, 0, 0);
-			if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) {
-				this.createPerk(PerkLib.EnemyHugeType, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EnemyChampionType, 0, 0, 0, 0);
-				this.drop = new WeightedDrop()
-					.add(useables.LELSHARD, 3)
-					.add(useables.ELCRYST, 1);
+			if (inDungeon) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) {
+					this.createPerk(PerkLib.EnemyHugeType, 0, 0, 0, 0);
+					this.createPerk(PerkLib.EnemyChampionType, 0, 0, 0, 0);
+					this.drop = new WeightedDrop()
+						.add(useables.LELSHARD, 3)
+						.add(useables.ELCRYST, 1);
+				}
+				else {
+					this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
+					this.drop = new WeightedDrop()
+						.add(useables.ELSHARD, 3)
+						.add(useables.LELSHARD, 1);
+				}
 			}
 			else {
-				this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
-				this.drop = new WeightedDrop()
-					.add(useables.ELSHARD, 3)
-					.add(useables.LELSHARD, 1);
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+					this.drop = new WeightedDrop()
+						.add(useables.ELSHARD, 3)
+						.add(useables.LELSHARD, 1);
+				}
+				else {
+					this.drop = new WeightedDrop()
+						.add(useables.ELSHARD, 3)
+						.add(useables.LELSHARD, 1);
+				}
 			}
 			checkMonster();
 		}

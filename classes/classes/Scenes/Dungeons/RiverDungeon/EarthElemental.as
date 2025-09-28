@@ -185,6 +185,34 @@ public class EarthElemental extends Monster
 				this.bonusHP = 2400;
 				this.additionalXP = 190;
 			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+				this.short = "earth elemental";
+				this.imageName = "earth elemental";
+				this.long = "You're currently fighting earth elemental. It's a four and a half foot tall creature of made of rocks, currently using its bare fists to fight.";
+				this.tallness = 54;
+				initStrTouSpeInte(48, 108, 108, 220);
+				initWisLibSensCor(220, 20, 110, 0);
+				this.weaponAttack = 18;
+				this.armorDef = 90;
+				this.armorMDef = 130;
+				this.level = 26;
+				this.bonusHP = 2400;
+				this.additionalXP = 225;
+			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 6) {
+				this.short = "earth elemental";
+				this.imageName = "earth elemental";
+				this.long = "You're currently fighting earth elemental. It's a four foot, nine inch tall creature of made of rocks, currently using its bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(228, 288, 288, 1120);
+				initWisLibSensCor(1120, 20, 560, 0);
+				this.weaponAttack = 657;
+				this.armorDef = 1620;
+				this.armorMDef = 1740;
+				this.level = 106;
+				this.bonusHP = 11400;
+				this.additionalXP = 1350;
+			}
 			this.a = "the ";
 			this.plural = false;
 			this.lustVuln = 0.01;
@@ -211,10 +239,10 @@ public class EarthElemental extends Monster
 				}
 			}
 			else {
-				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 6) {
 					this.drop = new WeightedDrop()
-						.add(useables.ELSHARD, 3)
-						.add(useables.LELSHARD, 1);
+						.add(useables.ELCRYST, 3)
+						.add(useables.LELCRYST, 1);
 				}
 				else {
 					this.drop = new WeightedDrop()

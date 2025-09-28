@@ -13,6 +13,7 @@ import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.API.SimpleEncounter;
 import classes.Scenes.Areas.Desert.*;
 import classes.Scenes.Camp.CampStatsAndResources;
+import classes.Scenes.Dungeons.RiverDungeon.AirElemental;
 import classes.Scenes.Dungeons.RiverDungeon.EarthElemental;
 import classes.Scenes.SceneLib;
 
@@ -136,7 +137,12 @@ use namespace CoC;
 					name: "earth ele",
 					label : "Earth Elemental",
 					kind  : 'monster',
-					call: desertEarthElemental
+					call: desertEarthElemental1
+				}, {
+					name: "wind ele",
+					label : "Wind Elemental",
+					kind  : 'monster',
+					call: desertWindElemental1
 				}, {
 					name  : "wanderer",
 					label : "Wanderer",
@@ -322,6 +328,16 @@ use namespace CoC;
 					night: false,
 					call: anubisScene.anubisEncounter
 				}, {
+					name: "earth ele",
+					label : "Earth Elemental",
+					kind  : 'monster',
+					call: desertEarthElemental2
+				}, {
+					name: "wind ele",
+					label : "Wind Elemental",
+					kind  : 'monster',
+					call: desertWindElemental2
+				}, {
 					name  : "werefoxEFemale",
 					label : "E.Werefox (F)",
 					kind : 'monster',
@@ -480,11 +496,31 @@ use namespace CoC;
 			endEncounter(120);
 		}
 		
-		private function desertEarthElemental():void {
+		private function desertEarthElemental1():void {
 			clearOutput();
-			outputText("While exploring the desert (later part will be added when Liadri write it and now just beat dirt out of this earth elemental)\n");
+			outputText("While wandering outer desert you accidentally trip on a rock. A sudden rumbling similar to a low yawn alerts you to the fact you may have run into trouble again as the rock begins to vibrate the ground shaking as it digs itself out.\n\n");
+			outputText("A small sized woman with dirt colored skin is now looking at you with a very frustrated yet sleepy glare, this young earth elemental was sleeping quietly when you rudely kicked her in the head with your foot and is now about to take her very slow to come to but devastating anger on you. Once an earth elemental is angry it's very hard to calm it down and thus your only option is to fight!");
 			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 2;
 			startCombat(new EarthElemental());
+		}
+		private function desertWindElemental1():void {
+			clearOutput();
+			outputText("While wandering the outer desert there is a sudden whistling rush of wind going right by your left ear causing you to crouch on reflex. Looking around you quickly spot a child sized greenish figure giggling just above you. This young wind elemental decided that you looked like a good target to prank and is probably going to make the remainder of your trip a living nightmare if you leave her be. You ready your weapon in annoyance to fight off the mischievous wind spirit.\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 2;
+			startCombat(new AirElemental());
+		}
+		private function desertEarthElemental2():void {
+			clearOutput();
+			outputText("While wandering inner desert you accidentally trip on a rock. A sudden rumbling similar to a low yawn alerts you to the fact you may have run into trouble again as the rock begins to vibrate the ground shaking as it digs itself out.\n\n");
+			outputText("A small sized woman with dirt colored skin is now looking at you with a very frustrated yet sleepy glare, this young earth elemental was sleeping quietly when you rudely kicked her in the head with your foot and is now about to take her very slow to come to but devastating anger on you. Once an earth elemental is angry it's very hard to calm it down and thus your only option is to fight!");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
+			startCombat(new EarthElemental());
+		}
+		private function desertWindElemental2():void {
+			clearOutput();
+			outputText("While wandering the inner desert there is a sudden whistling rush of wind going right by your left ear causing you to crouch on reflex. Looking around you quickly spot a child sized greenish figure giggling just above you. This young wind elemental decided that you looked like a good target to prank and is probably going to make the remainder of your trip a living nightmare if you leave her be. You ready your weapon in annoyance to fight off the mischievous wind spirit.\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
+			startCombat(new AirElemental());
 		}
 
 		public function sandWitchPregnancyEvent():void {

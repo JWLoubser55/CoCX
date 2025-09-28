@@ -19478,8 +19478,18 @@ public function StealthModeMechCost():Number {
 
 public function fireDamageBoostedByDao():Number {
     var boostF:Number = 1;
-    if (player.hasStatusEffect(StatusEffects.DaoOfFire))
+    if (player.hasStatusEffect(StatusEffects.DaoOfFire)) {
         boostF += daoModifier(player.statusEffectv2(StatusEffects.DaoOfFire));
+		if (player.statusEffectv3(StatusEffects.DaoOfFire) > 0) {
+			var boostF1:Number = 0;
+			boostF1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfFire));
+			if (!player.hasPerk(PerkLib.DaoistEoDElderStage) && boostF1 > 1) {
+				if (!player.hasPerk(PerkLib.DaoistEoDWarriorStage) && boostF1 > 0.25) boostF1 = 0.25;
+				else boostF1 = 1;
+			}
+			boostF += boostF1;
+		}
+	}
     return boostF;
 }
 public function iceDamageBoostedByDao():Number {
@@ -19500,8 +19510,18 @@ public function iceDamageBoostedByDao():Number {
 }
 public function lightningDamageBoostedByDao():Number {
     var boostL:Number = 1;
-    if (player.hasStatusEffect(StatusEffects.DaoOfLightning))
+    if (player.hasStatusEffect(StatusEffects.DaoOfLightning)) {
         boostL += daoModifier(player.statusEffectv2(StatusEffects.DaoOfLightning));
+		if (player.statusEffectv3(StatusEffects.DaoOfLightning) > 0) {
+			var boostL1:Number = 0;
+			boostL1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfLightning));
+			if (!player.hasPerk(PerkLib.DaoistLoKElderStage) && boostL1 > 1) {
+				if (!player.hasPerk(PerkLib.DaoistLoKWarriorStage) && boostL1 > 0.25) boostL1 = 0.25;
+				else boostL1 = 1;
+			}
+			boostL += boostL1;
+		}
+	}
     return boostL;
 }
 public function darknessDamageBoostedByDao():Number {
@@ -19538,8 +19558,18 @@ public function poisonDamageBoostedByDao():Number {
 }
 public function windDamageBoostedByDao():Number {
     var boostWi:Number = 1;
-    if (player.hasStatusEffect(StatusEffects.DaoOfWind))
+    if (player.hasStatusEffect(StatusEffects.DaoOfWind)) {
         boostWi += daoModifier(player.statusEffectv2(StatusEffects.DaoOfWind));
+		if (player.statusEffectv3(StatusEffects.DaoOfWind) > 0) {
+			var boostWi1:Number = 0;
+			boostWi1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfWind));
+			if (!player.hasPerk(PerkLib.DaoistKoGElderStage) && boostWi1 > 1) {
+				if (!player.hasPerk(PerkLib.DaoistKoGWarriorStage) && boostWi1 > 0.25) boostWi1 = 0.25;
+				else boostWi1 = 1;
+			}
+			boostWi += boostWi1;
+		}
+	}
     return boostWi;
 }
 public function bloodDamageBoostedByDao():Number {

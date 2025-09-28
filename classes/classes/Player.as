@@ -3883,6 +3883,29 @@ use namespace CoC;
 			if (hasAnyPerk(PerkLib.FireAffinity, PerkLib.FireShadowAffinity, PerkLib.AffinityIgnis)) mult -= 50;
 			if (hasPerk(PerkLib.VegetalAffinity)) mult += 50;
 			if (hasPerk(PerkLib.TrollResistance)) mult += 7.5;
+			if (hasPerk(PerkLib.DaoistEoDApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mult -= 5;
+				if (hasPerk(PerkLib.SoulPersonage)) mult -= 5;
+				if (hasPerk(PerkLib.SoulWarrior)) mult -= 5;
+			}
+			if (hasPerk(PerkLib.DaoistEoDWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mult -= 10;
+				if (hasPerk(PerkLib.SoulScholar)) mult -= 10;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mult -= 10;
+			}
+			if (hasPerk(PerkLib.DaoistEoDElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) mult -= 15;
+				if (hasPerk(PerkLib.SoulExalt)) mult -= 15;
+				if (hasPerk(PerkLib.SoulOverlord)) mult -= 15;
+			}
+			if (hasPerk(PerkLib.DaoistEoDOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) mult -= 20;
+				if (hasPerk(PerkLib.SoulKing)) mult -= 20;
+				if (hasPerk(PerkLib.SoulEmperor)) mult -= 20;
+			}
+			if (hasPerk(PerkLib.DaoistEoDTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
+			}
 			if (hasStatusEffect(StatusEffects.ShiraOfTheEastFoodBuff1) && (statusEffectv2(StatusEffects.ShiraOfTheEastFoodBuff1) > 0)) mult -= statusEffectv2(StatusEffects.ShiraOfTheEastFoodBuff1);
 			if (hasStatusEffect(StatusEffects.DaoOfFire) && (statusEffectv2(StatusEffects.DaoOfFire) > 3)) mult -= (10 * (statusEffectv2(StatusEffects.DaoOfFire) - 3));
 			if (headjewelryEffectId == HeadJewelryLib.MODIFIER_FIRE_R) mult -= headjewelryEffectMagnitude;
@@ -3898,7 +3921,16 @@ use namespace CoC;
 			if (isRace(Races.MUMMY)) mult += 100;
 			mult -= resFireStat.value;
 			//Caps damage reduction at 100%
-			if (mult < 0) mult = 0;
+			if (mult < 0) {
+				if (hasPerk(PerkLib.DaoistEoDApprenticeStage)) {
+					var boost:Number = (mult * -1);
+					if (hasPerk(PerkLib.DaoistEoDOverlordStage)) boost *= 2;
+					if (hasPerk(PerkLib.DaoistEoDTyrantStage)) boost *= 1.5;
+					if (hasStatusEffect(StatusEffects.DaoOfFire)) changeStatusValue(StatusEffects.DaoOfFire, 3, boost);
+					else createStatusEffect(StatusEffects.DaoOfFire, 0, 0, boost, 0);
+				}
+				mult = 0;
+			}
 			return mult;
 		}
 		public override function takeFireDamage(damage:Number, display:Boolean = false):Number {
@@ -4036,6 +4068,29 @@ use namespace CoC;
 			if (upperGarmentName == "HB shirt") mult -= 10;
 			if (lowerGarmentName == "HB shorts") mult -= 10;
 			if (hasPerk(PerkLib.LightningAffinity)) mult -= 50;
+			if (hasPerk(PerkLib.DaoistLoKApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mult -= 5;
+				if (hasPerk(PerkLib.SoulPersonage)) mult -= 5;
+				if (hasPerk(PerkLib.SoulWarrior)) mult -= 5;
+			}
+			if (hasPerk(PerkLib.DaoistLoKWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mult -= 10;
+				if (hasPerk(PerkLib.SoulScholar)) mult -= 10;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mult -= 10;
+			}
+			if (hasPerk(PerkLib.DaoistLoKElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) mult -= 15;
+				if (hasPerk(PerkLib.SoulExalt)) mult -= 15;
+				if (hasPerk(PerkLib.SoulOverlord)) mult -= 15;
+			}
+			if (hasPerk(PerkLib.DaoistLoKOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) mult -= 20;
+				if (hasPerk(PerkLib.SoulKing)) mult -= 20;
+				if (hasPerk(PerkLib.SoulEmperor)) mult -= 20;
+			}
+			if (hasPerk(PerkLib.DaoistJoPTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
+			}
 			if (perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) mult -= 10;
 			if (perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) mult -= 30;
 			if (hasPerk(PerkLib.AquaticAffinity) || hasPerk(PerkLib.AffinityUndine)) mult += 100;
@@ -4050,7 +4105,16 @@ use namespace CoC;
 			}
 			mult -= resLightningStat.value;
 			//Caps damage reduction at 100%
-			if (mult < 0) mult = 0;
+			if (mult < 0) {
+				if (hasPerk(PerkLib.DaoistLoKApprenticeStage)) {
+					var boost:Number = (mult * -1);
+					if (hasPerk(PerkLib.DaoistLoKOverlordStage)) boost *= 2;
+					if (hasPerk(PerkLib.DaoistLoKTyrantStage)) boost *= 1.5;
+					if (hasStatusEffect(StatusEffects.DaoOfLightning)) changeStatusValue(StatusEffects.DaoOfLightning, 3, boost);
+					else createStatusEffect(StatusEffects.DaoOfLightning, 0, 0, boost, 0);
+				}
+				mult = 0;
+			}
 			return mult;
 		}
 		public override function takeLightningDamage(damage:Number, display:Boolean = false):Number {
@@ -4243,7 +4307,30 @@ use namespace CoC;
 
 		public override function damageWindPercent():Number {
 			var mult:Number = damageMagicalPercent();
-			if (hasAnyPerk(PerkLib.WindAffinity, PerkLib.AffinitySylph)) mult -= 50;/*
+			if (hasAnyPerk(PerkLib.WindAffinity, PerkLib.AffinitySylph)) mult -= 50;
+			if (hasPerk(PerkLib.DaoistKoGApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mult -= 5;
+				if (hasPerk(PerkLib.SoulPersonage)) mult -= 5;
+				if (hasPerk(PerkLib.SoulWarrior)) mult -= 5;
+			}
+			if (hasPerk(PerkLib.DaoistKoGWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mult -= 10;
+				if (hasPerk(PerkLib.SoulScholar)) mult -= 10;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mult -= 10;
+			}
+			if (hasPerk(PerkLib.DaoistKoGElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) mult -= 15;
+				if (hasPerk(PerkLib.SoulExalt)) mult -= 15;
+				if (hasPerk(PerkLib.SoulOverlord)) mult -= 15;
+			}
+			if (hasPerk(PerkLib.DaoistKoGOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) mult -= 20;
+				if (hasPerk(PerkLib.SoulKing)) mult -= 20;
+				if (hasPerk(PerkLib.SoulEmperor)) mult -= 20;
+			}
+			if (hasPerk(PerkLib.DaoistKoGTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
+			}/*
 			if (jewelryEffectId == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude;
 			if (jewelryEffectId2 == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude2;
 			if (jewelryEffectId3 == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude3;
@@ -4257,7 +4344,16 @@ use namespace CoC;
 			}
 			mult -= resWindStat.value;
 			//Caps damage reduction at 100%
-			if (mult < 0) mult = 0;
+			if (mult < 0) {
+				if (hasPerk(PerkLib.DaoistKoGApprenticeStage)) {
+					var boost:Number = (mult * -1);
+					if (hasPerk(PerkLib.DaoistKoGOverlordStage)) boost *= 2;
+					if (hasPerk(PerkLib.DaoistKoGTyrantStage)) boost *= 1.5;
+					if (hasStatusEffect(StatusEffects.DaoOfWind)) changeStatusValue(StatusEffects.DaoOfWind, 3, boost);
+					else createStatusEffect(StatusEffects.DaoOfWind, 0, 0, boost, 0);
+				}
+				mult = 0;
+			}
 			return mult;
 		}
 		public override function takeWindDamage(damage:Number, display:Boolean = false):Number {

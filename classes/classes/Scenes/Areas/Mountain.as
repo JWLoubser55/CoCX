@@ -16,6 +16,7 @@ import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.API.SimpleEncounter;
 import classes.Scenes.Areas.HighMountains.*;
 import classes.Scenes.Areas.Mountain.*;
+import classes.Scenes.Dungeons.RiverDungeon.AirElemental;
 import classes.Scenes.Monsters.LightElfScene;
 import classes.Scenes.NPCs.DivaScene;
 import classes.Scenes.NPCs.EtnaFollower;
@@ -618,6 +619,11 @@ public class Mountain extends BaseContent
 				kind : 'monster',
 				call: basiliskScene.basiliskGreeting
 			}, {
+				name: "wind ele",
+				label : "Wind Elemental",
+				kind  : 'monster',
+				call: mountainWindElemental
+			}, {
 				name: "sophie",
 				label : "Sophie",
 				kind  : 'npc',
@@ -888,6 +894,12 @@ public class Mountain extends BaseContent
 				dynStats("tou", .2, "spe", .4, "lib", .2, "lus", player.lib / 12);
 			}
 			endEncounter();
+		}
+		private function mountainWindElemental():void {
+			clearOutput();
+			outputText("While exploring the mountain a sudden gust of wind sends you sprawling to the ground. Lifting your head up you see what appears to be a green skinned woman of which the ethereal frame moves and swirls like a small cyclone as various debris are carried in her wake. This is a fully manifested Sylpheed and the capricious elemental has definitively decided to pick on you to stave her boredom. Knowing full well you can’t reason with this aerial prankster you prepare to fight.\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 6;
+			startCombat(new AirElemental());
 		}
 		//\"<i>Chicken Harpy</i>\" by Jay Gatsby and not Savin he didn't do ANYTHING
 		//Initial Intro

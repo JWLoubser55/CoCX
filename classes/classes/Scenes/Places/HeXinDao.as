@@ -1621,13 +1621,13 @@ public function soularena():void {
 		outputText("\"<i>Five Spirit Stones per manual.</i>\" From the look in her young eyes, you can tell that trying to haggle would be a poor decision.\n\n");
 		menu();
 		addButtonIfTrue(0, "Daoist(1)", missAkemiManualsShopDaoistMyDaoHeartIsFirm, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") < 0, "Buy Cultivation Manual: My Dao Heart is Firm");
-		//1	Emperor of Dragon
+		//addButtonIfTrue(1, "Daoist(2)", , "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Emperor of Dragon") < 0, "Buy Cultivation Manual: Emperor of Dragon");
 		addButtonIfTrue(2, "Daoist(3)", missAkemiManualsShopDaoistEmbodimentOfTengliu, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Embodiment of Tengliu") < 0, "Buy Cultivation Manual: Embodiment of Tengliu");
-		//3	Lord of Kirin
+		addButtonIfTrue(3, "Daoist(4)", missAkemiManualsShopDaoistLordOfKirin, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Lord of Kirin") < 0, "Buy Cultivation Manual: Lord of Kirin");
 		addButtonIfTrue(4, "Daoist(5)", missAkemiManualsShopDaoistJudgeOfPhantom, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Judge of Phantom") < 0, "Buy Cultivation Manual: Judge of Phantom");
 		addButtonIfTrue(5, "Daoist(6)", missAkemiManualsShopDaoistDoctorOfTheSerpent, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Doctor of the Serpent") < 0, "Buy Cultivation Manual: Doctor of the Serpent");
 		addButtonIfTrue(6, "Daoist(7)", missAkemiManualsShopDaoistPriestOfTheLeviathan, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Priest of the Leviathan") < 0, "Buy Cultivation Manual: Priest of the Leviathan");
-		//7	King of Garuda
+		addButtonIfTrue(7, "Daoist(8)", missAkemiManualsShopDaoistKingOfGaruda, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: King of Garuda") < 0, "Buy Cultivation Manual: King of Garuda");
 		addButtonIfTrue(8, "Daoist(9)", missAkemiManualsShopDaoistMonarchOfTortoise, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Monarch of Tortoise") < 0, "Buy Cultivation Manual: Monarch of Tortoise");
 		addButtonIfTrue(9, "Daoist(10)", missAkemiManualsShopDaoistGeneralOfHydra, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: General of Hydra") < 0, "Buy Cultivation Manual: General of Hydra");
 		//addButtonIfTrue(0, "Daoist", missAkemiManualsShopDaoist, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") < 0);
@@ -1658,6 +1658,18 @@ public function soularena():void {
 		player.createKeyItem("Cultivation Manual: My Dao Heart is Firm", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
+	public function missAkemiManualsShopDaoistEmperorOfDragon():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>Emperor... wait why not Empress? Oh well for you that doesn't make the difference does it?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Emperor of Dragon</b>");
+		player.createKeyItem("Cultivation Manual: Emperor of Dragon", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
 	public function missAkemiManualsShopDaoistEmbodimentOfTengliu():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
 			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
@@ -1668,6 +1680,18 @@ public function soularena():void {
 		outputText("\"<i>You not secretly want to shag some Yuki Onna do you?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
 		outputText("<b>Gained Key Item: Cultivation Manual: Embodiment of Tengliu</b>");
 		player.createKeyItem("Cultivation Manual: Embodiment of Tengliu", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistLordOfKirin():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>Did you by chance been between horny Raiju and Kirin in Plains? Are you sure you wasn't?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Lord of Kirin</b>");
+		player.createKeyItem("Cultivation Manual: Lord of Kirin", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 	public function missAkemiManualsShopDaoistJudgeOfPhantom():void {
@@ -1704,6 +1728,18 @@ public function soularena():void {
 		outputText("\"<i>You want to worship that calamar head or what?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
 		outputText("<b>Gained Key Item: Cultivation Manual: Priest of the Leviathan</b>");
 		player.createKeyItem("Cultivation Manual: Priest of the Leviathan", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistKingOfGaruda():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>A big bird with a tiny 'bird', right?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: King of Garuda</b>");
+		player.createKeyItem("Cultivation Manual: King of Garuda", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 	public function missAkemiManualsShopDaoistMonarchOfTortoise():void {
