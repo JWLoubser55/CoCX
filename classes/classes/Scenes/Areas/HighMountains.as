@@ -197,7 +197,7 @@ public class HighMountains extends BaseContent {
 	
 	private function highmountainsWindElemental():void {
 		clearOutput();
-		outputText("While exploring the hight mountains a sudden gust of wind sends you sprawling to the ground. Lifting your head up you see what appears to be a green skinned woman of which the ethereal frame moves and swirls like a small cyclone as various debris are carried in her wake. This is a fully manifested Sylpheed and the capricious elemental has definitively decided to pick on you to stave her boredom. Knowing full well you can’t reason with this aerial prankster you prepare to fight.\n");
+		outputText("While exploring the high mountains a sudden gust of wind sends you sprawling to the ground. Lifting your head up you see what appears to be a green skinned woman of which the ethereal frame moves and swirls like a small cyclone as various debris are carried in her wake. This is a fully manifested Sylpheed and the capricious elemental has definitively decided to pick on you to stave her boredom. Knowing full well you can’t reason with this aerial prankster you prepare to fight.\n");
 		flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 7;
 		startCombat(new AirElemental());
 	}

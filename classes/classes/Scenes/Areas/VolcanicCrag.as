@@ -13,6 +13,7 @@ import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.HighMountains.PhoenixScene;
 import classes.Scenes.Areas.VolcanicCrag.*;
+import classes.Scenes.Dungeons.RiverDungeon.FireElemental;
 import classes.Scenes.NPCs.EtnaFollower;
 import classes.Scenes.SceneLib;
 
@@ -139,6 +140,11 @@ public class VolcanicCrag extends BaseContent
 				kind : 'monster',
 				call: behemothScene.behemothIntro
 			}, {
+				name: "fire ele",
+				label : "Fire Elemental",
+				kind  : 'monster',
+				call: outerVulcanicCragFireElemental
+			}, {
 				//Helia monogamy fucks
 				name  : "helcommon",
 				label : "Helia",
@@ -219,6 +225,13 @@ public class VolcanicCrag extends BaseContent
 			var temp:Number = 0.5;
 			temp *= player.npcChanceToEncounter();
 			return temp;
+		}
+	
+		private function outerVulcanicCragFireElemental():void {
+			clearOutput();
+			outputText("(In day or two there will be pretty text form Lia for this part and now fight that greater fire elemental)\n\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 6;
+			startCombat(new FireElemental());
 		}
 
 		private function findNothing():void {

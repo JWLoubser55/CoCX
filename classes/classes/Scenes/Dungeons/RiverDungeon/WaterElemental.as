@@ -191,6 +191,34 @@ public class WaterElemental extends Monster
 				this.bonusHP = 1560;
 				this.additionalXP = 190;
 			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+				this.short = "water elemental";
+				this.imageName = "water elemental";
+				this.long = "You're currently fighting water elemental. It's four foot, nine inch tall body of water shaped into a humanoid form. It's using bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(147, 192, 252, 830);
+				initWisLibSensCor(830, 20, 410, 0);
+				this.weaponAttack = 252;
+				this.armorDef = 420;
+				this.armorMDef = 4000;
+				this.level = 86;
+				this.bonusHP = 3760;
+				this.additionalXP = 975;
+			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 6) {
+				this.short = "water elemental";
+				this.imageName = "water elemental";
+				this.long = "You're currently fighting water elemental. It's four foot, nine inch tall body of water shaped into a humanoid form. It's using bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(177, 222, 282, 1030);
+				initWisLibSensCor(1030, 20, 510, 0);
+				this.weaponAttack = 312;
+				this.armorDef = 520;
+				this.armorMDef = 5000;
+				this.level = 106;
+				this.bonusHP = 4560;
+				this.additionalXP = 1225;
+			}
 			this.a = "the ";
 			this.plural = false;
 			this.lustVuln = 0.01;
@@ -218,10 +246,10 @@ public class WaterElemental extends Monster
 				}
 			}
 			else {
-				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5 || flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 6) {
 					this.drop = new WeightedDrop()
-						.add(useables.ELSHARD, 3)
-						.add(useables.LELSHARD, 1);
+						.add(useables.ELCRYST, 3)
+						.add(useables.LELCRYST, 1);
 				}
 				else {
 					this.drop = new WeightedDrop()

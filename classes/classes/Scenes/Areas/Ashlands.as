@@ -15,6 +15,7 @@ import classes.Scenes.Areas.Lake.SwordInStone;
 import classes.Scenes.Areas.Forest.AlrauneScene;
 import classes.Scenes.Areas.HighMountains.PhoenixScene;
 import classes.Scenes.Areas.VolcanicCrag.SalamanderOreMerchants;
+import classes.Scenes.Dungeons.RiverDungeon.FireElemental;
 import classes.Scenes.NPCs.Forgefather;
 import classes.Scenes.SceneLib;
 
@@ -103,6 +104,11 @@ public class Ashlands extends BaseContent
 			kind : 'monster',
 			call: fireGolemEncounterFn
 		}, {
+			name: "fire ele",
+			label : "Fire Elemental",
+			kind  : 'monster',
+			call: ashlandsFireElemental
+		}, {
 			name: "granite",
 			label : "Mine",
 			kind  : 'place',
@@ -162,6 +168,13 @@ public class Ashlands extends BaseContent
 		outputText("You walk for some time, roaming the ashlands. As you progress, you can feel the air getting warm. It gets hotter as you progress until you finally stumble across a blackened landscape. You reward yourself with a sight of the endless series of a volcanic landscape. Crags dot the landscape.\n\n");
 		outputText("<b>You've discovered the Volcanic Crag!</b>");
 		endEncounter(120);
+	}
+	
+	private function ashlandsFireElemental():void {
+		clearOutput();
+		outputText("(In day or two there will be pretty text form Lia for this part and now fight that greater fire elemental)\n\n");
+		flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
+		startCombat(new FireElemental());
 	}
 
 	private function findNothing():void {

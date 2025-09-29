@@ -201,6 +201,34 @@ public class FireElemental extends Monster
 				this.bonusHP = 1750;
 				this.additionalXP = 190;
 			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+				this.short = "fire elemental";
+				this.imageName = "fire elemental";
+				this.long = "You're currently fighting fire elemental. It's a four foot, nine inch tall body of flame, currently using its bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(222, 252, 312, 740);
+				initWisLibSensCor(740, 20, 540, 0);
+				this.weaponAttack = 222;
+				this.armorDef = 370;
+				this.armorMDef = 1900;
+				this.level = 76;
+				this.bonusHP = 4000;
+				this.additionalXP = 850;
+			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 6) {
+				this.short = "fire elemental";
+				this.imageName = "fire elemental";
+				this.long = "You're currently fighting fire elemental. It's a four foot, nine inch tall body of flame, currently using its bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(312, 342, 402, 1040);
+				initWisLibSensCor(1040, 20, 765, 0);
+				this.weaponAttack = 312;
+				this.armorDef = 520;
+				this.armorMDef = 2650;
+				this.level = 106;
+				this.bonusHP = 5500;
+				this.additionalXP = 1225;
+			}
 			this.a = "the ";
 			this.plural = false;
 			this.lustVuln = 0.01;
@@ -227,16 +255,9 @@ public class FireElemental extends Monster
 				}
 			}
 			else {
-				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
-					this.drop = new WeightedDrop()
-						.add(useables.ELSHARD, 3)
-						.add(useables.LELSHARD, 1);
-				}
-				else {
-					this.drop = new WeightedDrop()
-						.add(useables.ELSHARD, 3)
-						.add(useables.LELSHARD, 1);
-				}
+				this.drop = new WeightedDrop()
+					.add(useables.ELCRYST, 3)
+					.add(useables.LELCRYST, 1);
 			}
 			checkMonster();
 		}

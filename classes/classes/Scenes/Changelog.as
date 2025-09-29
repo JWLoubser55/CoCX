@@ -43,7 +43,6 @@ public class Changelog extends BaseContent
 		private function Changelog59():void {
 			clearOutput();
 			outputText("(Part 7/7) <b>Version 0.9a:</b>\n\n");
-			//0 of 11 pages
 			outputText("-Heal, Cure, Regenerate and Restore, Balance of Life spells cooldowns was unified to be the same as tier 2 spells (Restore, Balance of Life) or tier 1 spell. Additionaly having Job: Healer would reduce all of those spells cooldowns by 3 turns. Regenerate and HoT part of Restore was changed to last only 3 turns and heal 2,5x more HP each turn. Balance of Life base duration increased by 1 turn.\n");
 			outputText("-Nosferatu, Heal, Cure cooldown are now affected by effects of Restrined Black/White Tome.\n");
 			outputText("-Energy Drain spell cooldown is shortened to 6 turns and effect increased to changed to -25% dmg for 6 turns.\n");
@@ -123,6 +122,7 @@ public class Changelog extends BaseContent
 			outputText("-Fix for active true mutations not being saved. (Stadler)\n");
 			outputText("-Due to typos in the parser code the text 'your cock hardening and your snatch drooling' (variant for herms) in the arch imp TF wasn't showing up properly. (Stadler)\n");
 			outputText("-Typos in the model.xml (old charviewer) caused smol dragon balls and dragon pussy not to show up. (Stadler)\n");
+			//5 of 11 pages
 			outputText("-Fixes for displaying balls correctly for dragons and other scalies. (Stadler)\n");
 			outputText("-More fixes for displaying balls correctly on charview (mostly for shark-taur). (Stadler)\n");
 			outputText("-Tigershark TF didn't check properly, if the tiger shark stripes skin TF is already present, so it repeated, wasting tigershark tooths. (Stadler)\n");
@@ -144,8 +144,8 @@ public class Changelog extends BaseContent
 			outputText("Werefox (M) - lvl 33. Encounterable in Inner Desert at night. Elder Werefox (M) - lvl 61. Encounterable in Inner Desert at night (he temporaly came from deeper desert regions and req. lvl 43+ to encounter). Zombie (M & F) - lvl 36/53. Encounterable in Outer Plains / Inner Plains (lvl 53 zombies temporaly hopped from deeper plains regions) at night as long PC isn't Jiangshi. They have Undead enemy type perk. ");
 			outputText("Mummy (M & F) - lvl 18/36. Encounterable in Outer Desert / Inner Desert at night. They have Undead enemy type and Low-tier Magic Immunity perk. Thief - lvl 5, Thief Captain - lvl 9. Encounterable in Ignam after PC reach lvl 2/6. Feral Succubus/Incubus - lvl 41, Feral Omnibus - lvl 51. Encountered in Blight Ridge. Feral Cow Succubus/Mino Incubus - lvl 65/67. Feral Demon Hellhound - lvl 69. ");
 			outputText("Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Dark Elf Scout - lvl 60. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Werespider - lvl 83. Dark Elf Slaver - lvl 80. Encountered in Tunnels. True Lightning Golem - lvl 81. Encountered in Cliffs. True Darkness Golem - lvl 76, Primordial Displacer Beast - lvl 84. Encountered in Lightless Reach. ");
-			outputText("Barometz - lvl 50. Encountered in Deepwoods. ");
-			outputText("Earth Elemental - lvl 16/26/106. Encountered in Outer Desert / Inner Desert / Tunnels (it temporaly traveled from bedrock region and req. lvl 88+ to encounter). Water Elemental - lvl 18. Encountered when using Lake Boat. Wind Elemental - lvl 16/26/56/86. Encounteres in Outer Desert / Inner Desert / Mountains / High Mountains.\n");//Fire Elemental - lvl xx/xx. Encounteres in Ashlands / Outer Vulcanic Crag
+			outputText("Barometz - lvl 50. Encountered in Deepwoods. Earth Elemental - lvl 16/26/106. Encountered in Outer Desert / Inner Desert / Tunnels (it temporaly traveled from bedrock region and req. lvl 88+ to encounter). ");
+			outputText("Water Elemental - lvl 18/86/106. Encountered when using Lake Boat/Sea Boat. Wind Elemental - lvl 16/26/56/86. Encounteres in Outer Desert / Inner Desert / Mountains / High Mountains. Fire Elemental - lvl 76/106. Encounteres in Ashlands / Outer Vulcanic Crag.\n");
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig); Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event); Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event); Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes, Huge Octuple Yggdrasil Wings (from transforming with World Tree help); Werespider eyes, Werespider arms, Werespider Legs, Werepspider fangs (from transforming after been bitten by werespider); Barometz Legs, Barometz Ears, Barometz Tail, Ram Horns, Verdant Ram Horns, Runic Patterns, ");
 			outputText("Barometz Cock (from Horned fruit), Automata Tail Cable (from automata event)\n");
@@ -199,7 +199,7 @@ public class Changelog extends BaseContent
 			outputText("-Ocean was changed to Coastal Waters and part of encounter from it was moved to the next area.\n");
 			outputText("-New Area: Ocean (92-111). Exploring coastal waters allows now to find it. For all that want know what is down there in depth whenever it's Deep One nest, Arigean settlements, Abyssal Cities or just marvels of Gopture, we're one step closer to find out.\n");
 			outputText("-New Area: Tunnels (71-95). Exploring caves allows now to find it.\n");
-			outputText("-New Area: Cliffs (81-101). Exploring tunnels allows now to find it.\n");
+			outputText("-New Area: Cliffs (81-101). Exploring tunnels allows now to find it. Req. to be able to fly to explore this area.\n");
 			outputText("-New Area: Lightless Reach (76-96). Exploring tunnels allows now to find it. Req. to have any way to see in dark be it darkness / fireshadow affinity, eyes with darkvision or having torch from Giacomo.\n");
 			outputText("-New sprite: Tripxi.\n");
 			outputText("-Weapon sprite found new home, and offhand weapons now display sprites (Lord Shadeogorath)\n");
@@ -329,10 +329,6 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Daoist (MDHiF): Warrior Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +250% m.soulskill power, +250 max SF at S.Sprite, S.Scholar, S.Elder stages; +1% Soulforce regen\n");
 			outputText("-New event perk: Daoist (MDHiF): Elder Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +375% m.soulskill power, +375 max SF at S.Exalt, S.Overlord, S.Tyrant stages; +1% Soulforce regen\n");
 			outputText("-New event perk: Daoist (MDHiF): Overlord Stage. Gained by cultivating 'My Dao Heart is Firm' cultivation manual. Effects: +500% m.soulskill power, +500 max SF S.King, S.Emperor, S.Ancestor stages; +1% Soulforce regen\n");
-			outputText("-Exploring hills PC can found suspicious coccoon with even more suspicious thing inside. Would our junior PC dare to crack it? Time only would say.\n");
-			outputText("-Visting Black Cock food tent in Bazaar PC can find... sus trapdoors. And inside some goods to be bought if PC got skooma... errr gems or spirit stones.\n");
-			outputText("-Fixed 'RearBodyTentacleEyestalks' being gained when transformations should be blocked. (Edward Darksong)\n");
-			outputText("-Perks that require Daoist: Apprentice Stage now req. any daoist cultivation sub-path.\n");
 			outputText("-New event perk: Daoist (DotS): Apprentice Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +5% poison resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (caps at 25%)\n");
 			outputText("-New event perk: Daoist (DotS): Warrior Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +10% poison resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks (caps at 100%)\n");
 			outputText("-New event perk: Daoist (DotS): Elder Stage. Gained by cultivating 'Doctor of the Serpent' cultivation manual. Effects: +15% poison resistance at S.Elder, S.Exalt, S.Overlord stages; any excess poison resistance above 100% would be turned into bonus % dmg to poison attacks\n");
@@ -357,6 +353,10 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Daoist (MoT): Warrior Stage. Gained by cultivating 'Monarch of Tortoise' cultivation manual. Effects: +10% earth resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess earth resistance above 100% would be turned into bonus % dmg to earth attacks (caps at 100%)\n");
 			outputText("-New event perk: Daoist (MoT): Elder Stage. Gained by cultivating 'Monarch of Tortoise' cultivation manual. Effects: +15% earth resistance at S.Elder, S.Exalt, S.Overlord stages; any excess earth resistance above 100% would be turned into bonus % dmg to earth attacks\n");
 			outputText("-New event perk: Daoist (MoT): Overlord Stage. Gained by cultivating 'Monarch of Tortoise' cultivation manual. Effects: +20% earth resistance at S.Tyrant, S.King, S.Emperor stages; any excess earth resistance above 100% would be turned into bonus % dmg to earth attacks (doubled bonus from excess resistance)\n");
+			outputText("-Exploring hills PC can found suspicious coccoon with even more suspicious thing inside. Would our junior PC dare to crack it? Time only would say.\n");
+			outputText("-Visting Black Cock food tent in Bazaar PC can find... sus trapdoors. And inside some goods to be bought if PC got skooma... errr gems or spirit stones.\n");
+			outputText("-Fixed 'RearBodyTentacleEyestalks' being gained when transformations should be blocked. (Edward Darksong)\n");
+			outputText("-Perks that require Daoist: Apprentice Stage now req. any daoist cultivation sub-path.\n");
 			outputText("-New material: Large Elemental Crystal. Cost 20 gems. Could drop from defeated elementals of higher rank ((sub)bosses, named ones). It can be used to rank up summoned elemental. (Store 10 times more elemental energy than normal Elemental Crystal)\n");
 			outputText("-Elemental Crystal changed a bit: cost increased (20 > 50) and stored energy (2x of elemental crystal > 5x elemental crystal). Some of enemies that was dropping Elemental Core would drop now Large Elemental Crystal.\n");
 			outputText("-Elemental infused items and Soulforce conversion to Elemental Energy in elementalist job submenu was slight expanded with a few more options.\n");
@@ -490,8 +490,26 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -522,6 +540,15 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

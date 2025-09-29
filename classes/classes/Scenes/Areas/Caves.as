@@ -432,7 +432,9 @@ use namespace CoC;
 	
 		private function bedrockEarthElemental():void {
 			clearOutput();
-			outputText("While exploring the hight mountains a sudden gust of wind sends you sprawling to the ground. Lifting your head up you see what appears to be a green skinned woman of which the ethereal frame moves and swirls like a small cyclone as various debris are carried in her wake. This is a fully manifested Sylpheed and the capricious elemental has definitively decided to pick on you to stave her boredom. Knowing full well you can’t reason with this aerial prankster you prepare to fight.\n");
+			outputText("While wandering bedrock you spot a nice large rock to climb on and get a good vantage of the area from. You begin climbing onto the rocky formation when the ground around begins to shake. You drop from the rock as soon as it begins to rise from the ground, a massive woman made out of solid stone stretching out of the ground to stare at you. ");
+			outputText("This fully manifested Gnome was just minding her own business sleeping when you accidentally woke her up and now that her nap and sweet happy dreams are ruined she is going to take her anger on you. Mother nature is having a rough day and she isn’t taking your excuse nicely anymore. Nah today she’s determined to answer by crushing you until you turn into fertilizers!\n\n");
+			outputText("You ready for combat as the gnome lifts her rocky hands up and begins throwing a tantrum.");
 			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 6;
 			startCombat(new EarthElemental());
 		}

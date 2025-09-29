@@ -366,7 +366,7 @@ public class Tail extends SaveableBodyPart {
 	public static const BURNING: int = 39;
 	EnumValue.add(Types, BURNING, "BURNING", {
 		name:"burning",
-		appearanceDesc: "A blazing cat tail pokes out from your [butt]. It has a tendency to light things on fire if you are not careful, but at least it assists with your balance.",
+		appearanceDesc: "A blazing cat tail pokes out from above your [butt]. It has a tendency to light things on fire if you are not careful but at least It assists with your balance.",
 		isLong: true,
 		feline: true,
 		fur: true

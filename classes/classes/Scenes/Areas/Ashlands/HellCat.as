@@ -132,6 +132,7 @@ import classes.internals.*;
 					null)
 					.add(shields.NEKONOM, 1);
 			this.createPerk(PerkLib.FireNature, 0, 0, 0, 0);
+			this.createPerk(PerkLib.Flexibility, 0, 0, 0, 0);
 			checkMonster();
 		}
 	}
