@@ -5,9 +5,11 @@
 package classes.Scenes.Areas.Ashlands
 {
 import classes.*;
+import classes.BodyParts.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Items.Armors.LustyMaidensArmor;
 import classes.Items.MutationsHelper;
+import classes.Races.CatRace;
 import classes.Scenes.Areas.VolcanicCrag.HellcatKasha;
 import classes.Scenes.SceneLib;
 import classes.display.SpriteDb;
@@ -25,7 +27,7 @@ public class HellCatScene extends BaseContent
 public function HellCatIntro():void {
 	spriteSelect(SpriteDb.s_Hellcat_16bit);
 	clearOutput();
-	outputText("As you explore the crag you run into a strange sight. You spot a hooded figure with a cape walking silently toward you. Only when it's finally up close does it throw its cape open revealing the ashen naked skin of a human woman inside or what could have been a human if not for the swishing tail of fire, black furry cat legs and pawed hands with sharp claws. The hood now pulled back reveals a somewhat human face with eyes and hair ");
+	outputText("As you explore the ashlands you run into a strange sight. You spot a hooded figure with a cape walking silently toward you. Only when it's finally up close does it throw its cape open revealing the ashen naked skin of a human woman inside or what could have been a human if not for the swishing tail of fire, black furry cat legs and pawed hands with sharp claws. The hood now pulled back reveals a somewhat human face with eyes and hair ");
 	outputText("of literal fire and feline ears to top it off. Well, guess you have seen everything now, including pyrocatgirls. Speaking of pyro, the intent of the cat girl manifests as a large fireball which she proceeds to throw at you. Barely dodging this surprise assault you steady yourself just in time to see her grin wide as a 10 inch spiked cat cock slides out of the sheath just above her dripping pussy. You ready your [weapon] for a fight!");
 	camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_HELLCATS);
 	if (flags[kFLAGS.WITCHES_SABBATH] < 1) flags[kFLAGS.WITCHES_SABBATH] = 1;
@@ -44,7 +46,7 @@ public function DefeatedHellCat():void {
 	SceneLib.uniqueSexScene.pcUSSPreChecksV2(DefeatedHellCat);
 }
 
-public function DefeatedHellCatPussycat():void {
+private function DefeatedHellCatPussycat():void {
 	if (player.gender == 3) outputText("You ain’t gonna get any close to that feline penis of hers. " + (flags[kFLAGS.CODEX_ENTRY_HELLHOUNDS] > 0 ? "If your hunch is good it’s likely even worse than that of the hellhounds. " : "") + "");
 	outputText("However her pussy is, for lack of any better word, a hell of a lot more tempting.\n\n");
 	outputText("You firmly shove the catgirl down taking hold of her generous breasts for handles as your own cock hardens" + (player.hasSheath() ? " out of its sheath" : "") + " to readiness in anticipation of her. The hellcat doesn’t even struggle, instead taking on the most inviting position she can muster, her wet snatch drooling in anticipation. Unable to wait any further you proceed to slowly insert your rod between her open folds, her pussy attempting ");
@@ -54,7 +56,7 @@ public function DefeatedHellCatPussycat():void {
 	player.sexReward("Default","Default",true,false);
 	cleanupAfterCombat();
 }
-public function DefeatedHellCatCatcock():void {
+private function DefeatedHellCatCatcock():void {
 	if (silly()) outputText("Oh my gawsh, a true catcock for once! You’ve seen horse, dog, demon, lizard, dragon, and even plant dongs so why is it you could never find a cat one to bone yourself with in the entirety of this porn adventure" + (flags[kFLAGS.AKBAL_SUBMISSION_STATE] != 0 ? " save for Akbal" : "") + "?! ");
 	outputText("You gleefully walk out to your prize and shove her on her back to take a look at the 10 inch joystick between her legs. The hellcat looks at you confused.\n\n");
 	outputText("\"<i>Nya?? Are you seriously doing this? Next time why not just skip defending yourself and get to it right away?</i>\"\n\n");
@@ -108,16 +110,114 @@ public function DefeatedByHellCat():void {
 //Kasha enocunter
 //----------------
 public function HellCatKashaIntro():void {
-	spriteSelect(SpriteDb.s_Hellcat_16bit);
+	//spriteSelect(SpriteDb.s_Hellcat_16bit);
 	clearOutput();
-	outputText("As you explore the crag you run into a strange sight. You spot a hooded figure with a cape walking silently toward you. Only when it’s finally up close does it throw its cape open revealing the ashen naked skin of a human woman inside—or what what might have been a human, if not for the swishing tail of fire, black furry cat legs and pawed hands with sharp claws. The hood now pulled back reveals a somewhat human face with eyes and hair ");
-	outputText("of literal fire and feline ears to top it off. Well, guess you have seen everything now, including pyrocatgirls. Speaking of pyro, the intent of the cat girl manifests as a large fireball which she proceeds to throw at you. Barely dodging this surprise assault you steady yourself just in time to see her grin wide as a 10-inch spiked cat cock slides out of the sheath just above her drooling pussy. You ready your [weapon] for a fight!");
-	camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_HELLCATS);
-	if (flags[kFLAGS.WITCHES_SABBATH] < 1) flags[kFLAGS.WITCHES_SABBATH] = 1;
+	outputText("As you explore the crag you begin to hear the sound of wheels in the distance. Before you know it something like a chariot with wheels on fire rushes past you barely missing you as you jump to the side. The chariot goes its way a little farther before making a U turn to head back toward you. You now have a good view of the rider, it looks like a hellcat at first, naked from foot to breast a large hooded black cape floating behind her as she moves at high speed toward you riding the mountless chariot, ");
+	outputText("however it becomes clear the fiend is something more as you see not one but two fiery tails swinging about wildly as it rides down to you. Her grin widen as she close in stopping her chariot a few meters from you but close enough that you can see her 12 inch unholy spiked cat cock slides out of the sheath just above her dripping pussy.\n\n");
+	outputText("\"<i>You and I are going up for a ride and I won't take no for an answer "+player.mf("boy","lass")+".</i>\"\n\n");
+	outputText("<b>You are under attack by a Hellcat Kasha!</b>");
 	startCombat(new HellcatKasha());
 }
+public function DefeatedHellCatKasha():void {
+	clearOutput();
+	outputText("The kasha falls off from her chariot which keeps rolling away and vanishes in the landscape. Clearly defeated the twintail firecat looks at you with a mix of fear and arousal her still catcock errect. You could fuck her or get the hell out of here what do you do?");
+	menu();
+	addButton(0, "Back", cleanupAfterCombat);
+	if (player.hasCock()) addButton(1, "Pussycat", DefeatedHellCatPussycat);
+	if (player.hasVagina()) addButton(2, "Catcock", DefeatedHellCatCatcock);
+    LustyMaidensArmor.addTitfuckButton(3);
+	SceneLib.uniqueSexScene.pcUSSPreChecksV2(DefeatedHellCatKasha);
+}
 
-
+public function DefeatedByHellCatKasha():void {
+	clearOutput();
+	if (player.hasStatusEffect(StatusEffects.KashaCapture)) outputText("The kasha whips begin to move around you wrapping you tighter before wrapping around your wrists and legs binding you fully. A few seconds later the fire vanishes revealing a pair of black steel manacles around your limbs. Having you fully bound the victorious kasha pulls you by the torso into its chariot and wisks you away.\n\n");
+	if (player.isRaceCached(Races.CAT)) {
+		if (!player.hasStatusEffect(StatusEffects.KashaCapture)) {
+			outputText("The Kasha smirks wide as you fall to the ground defeated"+(player.lust >= player.maxOverLust()?" by your uncontrollable lust":"")+".\n\n");
+			outputText("\"<i>You are perfect little kitty.. just what we ned for the ceremony. Come on now right into my cart, people are waiting for you.</i>\"\n\n");
+			outputText("Before you know it her whips wind up around your legs and wrist as she hauls you into her cart.\n\n");
+		}
+		outputText("The Kasha carries you all the way to a cave before handling you to a group of hellcats one of which uses this opportunity to bash on your head with a club and knock you out.\n\n");
+		outputText("You wake up, your mind feeling foggy and slow. You have high difficulties assembling your thoughts which considering you just took a hit to the head isn’t that surprising. You have vague feelings in your body right now. Just enough to know you are shackled down to some cold surface. People are speaking around you but in your current state of mind you barely take notice. Eventually your mind finally gets to move back into motion and you fully understand your predicament.\n\n");
+		cleanupAfterCombat(WitchesSabbathThirdVisitYesPartTwo);
+	}
+	else {
+		if (!player.hasStatusEffect(StatusEffects.KashaCapture)) {
+			outputText("The Kasha smirks wide as you fall to the ground defeated"+(player.lust >= player.maxOverLust()?" by your uncontrollable lust":"")+". Before you know it her whips wind up around your legs and wrist as she hauls you into her cart.\n\n");
+		}
+		outputText("The Kasha carries you all the way to a cave then dump you to the side still tied up as she head to a crate full of what appears to be wisker fruits. She advance on you, smirking manicaly, with a fruit in each hands.\n\n");
+		outputText("\"<i>See the big problem outsider is that my master only loves cute cat girls and boys as sacrifices. Since you are neither I'm going to fix you steps by steps until you become worthy of his graces.</i>\"\n\n");
+		outputText("Before you can issue a protest she kick you in the stomach causing you to open your mouth by reflex an opportunity she uses to forcefully shove the food down your throat.\n\n");
+		if (player.blockingBodyTransformations()) {
+			outputText("Thankfully your current condition protects you against transformatives.\n\n");
+			outputText("Dismayed the Kasha go grabs more fruits determined to get some results.\n\n");
+		}
+		else {
+			catTFEffectsCall();
+			outputText("The Kasha nods at the result but she's far from done.\n\n");
+		}
+		outputText("\"<i>I'm just getting started here comes two more so open wide.</i>\"\n\n");
+		outputText("Unable to resist you are prety much forcefully fed more fruits again. You wait for the changes with apprehentions.\n\n");
+		if (player.blockingBodyTransformations()) outputText("However like the first time this has no effect.\n\n");
+		else catTFEffectsCall();
+		outputText("The Kasha is about to feed you more fruits but a voice deeper in the cave calls to her, likely the rest of her crazy cult need her help with something. Frustrated, she leave you be on the ground promising to come back for you later. Using the nearby rocks, you make use of this golden opportunity to unbind yourself before the hellcat come back to finish the job escaping the cave while you still can"+(player.blockingBodyTransformations()?"":" albeith a little more cat-like then before")+".\n\n");
+		cleanupAfterCombat();
+	}
+}
+private function catTFEffectsCall():void {
+	var changes:Number = 0;
+	var changeLimit:Number = 2;
+	if (player.ears.type != Ears.CAT && rand(3) == 0 && changes < changeLimit) {
+		CoC.instance.transformations.EarsCat.applyEffect(false);
+		changes++;
+	}
+	if (!InCollection(player.tailType, Tail.CAT, Tail.BURNING, Tail.TWINKASHA) && (player.ears.type == Ears.CAT || player.ears.type == Ears.DISPLACER) && rand(3) == 0 && changes < changeLimit) {
+		CoC.instance.transformations.TailCat.applyEffect(false);
+		changes++;
+	}
+	if (InCollection(player.tailType, Tail.CAT, Tail.NEKOMATA_FORKED_1_3, Tail.NEKOMATA_FORKED_2_3) && rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.CAT) {
+		CoC.instance.transformations.LowerBodyCat(2).applyEffect(false);
+		changes++;
+	}
+	if (player.lowerBody == LowerBody.CAT && rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.CAT) {
+		CoC.instance.transformations.ArmsCat.applyEffect(false);
+		changes++;
+	}
+	var startedWithCatFace: Boolean = player.faceType == Face.CAT;
+	if (rand(3) == 0 && changes < changeLimit && player.faceType != Face.CAT_CANINES) {
+		CoC.instance.transformations.FaceCatCanines.applyEffect(false);
+		changes++;
+	}
+	if (rand(3) == 0 && changes < changeLimit && player.faceType != Face.CAT && !startedWithCatFace) {
+		CoC.instance.transformations.FaceCat.applyEffect(false);
+		changes++;
+	}
+	if (transformations.TongueCat.isPossible() && rand(3) == 0 && changes < changeLimit) {
+		CoC.instance.transformations.TongueCat.applyEffect(false);
+		changes++;
+	}
+	if (rand(3) == 0 && changes < changeLimit && player.tongue.type == Tongue.CAT && player.eyes.type != Eyes.CAT && player.eyes.type != Eyes.INFERNAL) {
+		CoC.instance.transformations.EyesCat.applyEffect(false);
+		changes++;
+	}
+	if (player.isFurCovered() && rand(3) == 0 && changes < changeLimit) {
+        if (player.skin.coverage == Skin.COVERAGE_COMPLETE || player.skin.coverage == Skin.COVERAGE_HIGH) {
+            player.skin.coverage = Skin.COVERAGE_LOW;
+			changes++;
+		} else {
+			player.skin.coverage = Skin.COVERAGE_COMPLETE;
+			changes++;
+		}
+	}
+	if ((player.eyes.type == Eyes.CAT || player.eyes.type == Eyes.DISPLACER) && rand(3) == 0 && changes < changeLimit && !player.hasCoatOfType(Skin.FUR)) {
+		if (!player.hasCoatOfType(Skin.FUR)) {
+			CoC.instance.transformations.SkinPlain.applyEffect(false);
+		}
+		CoC.instance.transformations.SkinFur(Skin.COVERAGE_COMPLETE, {colors: CatRace.catFurColors }).applyEffect(false);
+		changes++;
+	}
+}
 //----------------
 //Hellcat Sabbath
 //----------------
@@ -126,7 +226,7 @@ public function WitchesSabbath():void {
 	clearOutput();
 	if (flags[kFLAGS.WITCHES_SABBATH] > 3) {
 		if (player.gender == 3) {
-			outputText("As you explore the crag you stumble upon a small volcanic cave. Inside, you eavesdrop on the hellcats chanting some dark ritual again, seems they're up for another conversion. As you step toward the ritual for a better look, another hellcat invites you in.\n\n");
+			outputText("As you explore the ashlands you stumble upon a small volcanic cave. Inside, you eavesdrop on the hellcats chanting some dark ritual again, seems they're up for another conversion. As you step toward the ritual for a better look, another hellcat invites you in.\n\n");
 			outputText("\"<i>Welcome sister, you came over just in time for the sabbath. We would be overjoyed if you joined us for the initiation ritual.</i>\"\n\n");
 			outputText("Of course you will participate; you have been antsy all day and this would likely be a chance to blow some steam. You walk toward the eldritch circle and join with the other hellcats for the spell just in time for the mistress of ceremony to begin.\n\n");
 			outputText("\"<i>I welcome you all today for this celebration of the black sabbath. Praise be sisters for today we raise a new woman into the coven.</i>\"\n\n");
@@ -148,7 +248,7 @@ public function WitchesSabbath():void {
 			endEncounter();
 		}
 		else {
-			outputText("As you explore the crag you run into a hooded figure with a cape walking silently toward you, looks to be another hellcat witch. You stride toward her to say hello. She greets you as you get in range.\n\n");
+			outputText("As you explore the ashlands you run into a hooded figure with a cape walking silently toward you, looks to be another hellcat witch. You stride toward her to say hello. She greets you as you get in range.\n\n");
 			outputText("\"<i>Great day sister how well are you weathering the warmth?</i>\"\n\n");
 			outputText("She then stops as if she smelled something, then looks at your body in confusion.\n\n");
 			outputText("\"<i>Hey what happened there?! Ah no worry sister, I’m going to fix this dreadful curse for you.</i>\"\n\n");
@@ -159,13 +259,13 @@ public function WitchesSabbath():void {
 		}
 	}
 	else if (flags[kFLAGS.WITCHES_SABBATH] == 3) {
-		outputText("As you explore the crag you spot a procession of hellcats heading to the so called ritual cave. It would be unwise not to follow them again, yet you are curious as to what will happen, perhaps you could even stop them? Do you dare fellow them?");
+		outputText("As you explore the ashlands you spot a procession of hellcats heading to the so called ritual cave. It would be unwise not to follow them again, yet you are curious as to what will happen, perhaps you could even stop them? Do you dare fellow them?");
 		menu();
 		addButton(0, "No", WitchesSabbathThirdVisitNo).hint("After last time? No way you're hanging out with these chicks!");
 		addButton(1, "Yes", WitchesSabbathThirdVisitYes).hint("You couldn't figure out enough of how it worked last time.\n\nPerhaps this time you can get a better understanding?");
 	}
 	else if (flags[kFLAGS.WITCHES_SABBATH] == 2) {
-		outputText("As you explore the crag, you stumble upon a small volcanic cave. Inside, you eavesdrop on the circle of hellcats chanting some dark ritual again, except this time you are way closer than before. You manage to see a desecrated altar with a shackled cat morph on it. Whatever they are doing they are clearly up to no good. ");
+		outputText("As you explore the ashlands, you stumble upon a small volcanic cave. Inside, you eavesdrop on the circle of hellcats chanting some dark ritual again, except this time you are way closer than before. You manage to see a desecrated altar with a shackled cat morph on it. Whatever they are doing they are clearly up to no good. ");
 		outputText("Entranced by this unholy spectacle, you outright forget to hide and one of the chanters spots you right away. At first you consider running away, but instead the catgirl motion you to step forward.\n\n");
 		outputText("\"<i>Welcome " + player.mf("broth","sist") + "er, you came over just in time for the sabbath. We would be overjoyed if you joined us for the ritual.</i>\"\n\n");
 		outputText("You seem to have two options: either you join in this unholy ritual or you get the hell out of there before the entire coven is on you.");
@@ -174,7 +274,7 @@ public function WitchesSabbath():void {
 		addButton(1, "Join", WitchesSabbathSecondVisitJoin).hint("Can't judge a group of mages without knowing what they're doing");
 	}
 	else {
-		outputText("As you explore the crag you stumble upon a small volcanic cave. Inside, you eavesdrop on a circle of hellcats chanting some dark ritual. Seeing as the last time you met one of those girls you got yourself set on fire, you keep a fairly good distance to not get spotted. The fiery catgirls recite some form of incantation, but past some point you fail to understand what is truly going on amidst the sounds of orgasm from the assembly. ");
+		outputText("As you explore the ashlands you stumble upon a small volcanic cave. Inside, you eavesdrop on a circle of hellcats chanting some dark ritual. Seeing as the last time you met one of those girls you got yourself set on fire, you keep a fairly good distance to not get spotted. The fiery catgirls recite some form of incantation, but past some point you fail to understand what is truly going on amidst the sounds of orgasm from the assembly. ");
 		outputText("Eventually the ritual ends and they leave the cave heading toward your direction. Wise enough not to take on a whole bunch of them, you run for it before they spot you. Whatever is going here, you plan to find out eventually.");
 		flags[kFLAGS.WITCHES_SABBATH]++;
 		endEncounter();
@@ -207,6 +307,9 @@ public function WitchesSabbathThirdVisitYes():void {
 	outputText("You close in and follow them all the way to the cave. Something's not right though. The last time you came there was someone tied up on the altar.\n\n");
 	outputText("\"<i>Why hello there little kitty.</i>\"\n\n");
 	outputText("You curse and turn to be greeted by a familiar sight. It’s the girl who was used in the previous ritual, except this time around she has burning hairs, ashen skin, a vicious smile and fiery eyes that pierce through your soul like spears, leaving you stunned with fear. For a split second you’re too surprised to do anything, which she uses to slam a blackjack up your head knocking you unconscious.\n\n");
+	WitchesSabbathThirdVisitYesPartTwo();
+}
+public function WitchesSabbathThirdVisitYesPartTwo():void {
 	outputText("You wake up, your mind feeling foggy and slow. You have high difficulties assembling your thoughts, which considering you just took a hit to the head isn’t that surprising. You have vague feelings in your body right now. Just enough to know you are shackled down to some cold surface. People are speaking around you, but in your current state of mind you barely take notice. ");
 	outputText("Eventually your mind finally gets to move back into motion and you're fully understand your predicament.\n\n\"<i>I welcome you all today for this celebration of the black sabbath. Praise be sisters for today we raise a new woman into the coven.</i>\"\n\n");
 	outputText("What the hell, this was not part of the plan! You pull on your shackles, desperate to get free; however, you are tied well, the Hellcats saw to it. Noticing your sudden combativity, the witches deal with it by forcefully having you chug a bottle of what may well be a powerful sedative. You quickly lose your ability to even lift an arm in an attempt to fight back. As the ritual goes on, the witches takes turn to each give your ");
@@ -269,7 +372,6 @@ public function WitchesSabbathThirdVisitYes():void {
 	player.hairColor = "midnight black";
 	player.furColor = "midnight black";
 	outputText(" Speaking of fire, you're having some hellishly hot thoughts right now. You really wish you could stick that cock of yours in some cunt or get yourself filled good, and hell, with a body like yours, going into heat likely is going to be a recurring two sided joke. <b>You were altered and transformed into a Hellcat!</b>");
-
 	CoC.instance.transformations.TailBurning.applyEffect(false);
 	CoC.instance.transformations.HairBurning.applyEffect(false);
 	CoC.instance.transformations.EyesInfernal.applyEffect(false);

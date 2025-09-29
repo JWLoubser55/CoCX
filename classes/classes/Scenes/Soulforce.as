@@ -523,7 +523,7 @@ public class Soulforce extends BaseContent
 			if (daoistpathsccount2 < pathscap) addButton(1, "Daoist(2)", daoistSubPath2).hint("Contemplate the mysteries from the 'Emperor of Dragon' cultivation manual.");
 			else addButtonDisabled(1, "Daoist(2)", "You can't use this 'Emperor of Dragon' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
-		//else addButtonDisabled(1, "Daoist(2)", "Req. 'Emperor of Dragon' daoist cultivation manual.");
+		else addButtonDisabled(1, "Daoist(2)", "Req. 'Emperor of Dragon' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Embodiment of Tengliu") >= 0) {
 			if (daoistpathsccount3 < pathscap) addButton(2, "Daoist(3)", daoistSubPath3).hint("Contemplate the mysteries from the 'Embodiment of Tengliu' cultivation manual.");
 			else addButtonDisabled(2, "Daoist(3)", "You can't use this 'Embodiment of Tengliu' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");

@@ -1621,7 +1621,7 @@ public function soularena():void {
 		outputText("\"<i>Five Spirit Stones per manual.</i>\" From the look in her young eyes, you can tell that trying to haggle would be a poor decision.\n\n");
 		menu();
 		addButtonIfTrue(0, "Daoist(1)", missAkemiManualsShopDaoistMyDaoHeartIsFirm, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") < 0, "Buy Cultivation Manual: My Dao Heart is Firm");
-		//addButtonIfTrue(1, "Daoist(2)", , "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Emperor of Dragon") < 0, "Buy Cultivation Manual: Emperor of Dragon");
+		addButtonIfTrue(1, "Daoist(2)", missAkemiManualsShopDaoistEmperorOfDragon, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Emperor of Dragon") < 0, "Buy Cultivation Manual: Emperor of Dragon");
 		addButtonIfTrue(2, "Daoist(3)", missAkemiManualsShopDaoistEmbodimentOfTengliu, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Embodiment of Tengliu") < 0, "Buy Cultivation Manual: Embodiment of Tengliu");
 		addButtonIfTrue(3, "Daoist(4)", missAkemiManualsShopDaoistLordOfKirin, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Lord of Kirin") < 0, "Buy Cultivation Manual: Lord of Kirin");
 		addButtonIfTrue(4, "Daoist(5)", missAkemiManualsShopDaoistJudgeOfPhantom, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Judge of Phantom") < 0, "Buy Cultivation Manual: Judge of Phantom");

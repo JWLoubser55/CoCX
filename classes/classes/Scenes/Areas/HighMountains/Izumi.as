@@ -428,7 +428,7 @@ public class Izumi extends Monster
 		{
 			if (combatDebug) trace("Titsmother Struggle");
 			var brokeFree:Boolean;
-			if ((rand(player.str) > this.str / 4) || player.hasPerk(PerkLib.FluidBody))
+			if (SceneLib.combat.struggleCentralizedCheck())
 			{
 				brokeFree = true;
 			}

@@ -128,8 +128,7 @@ import classes.internals.*;
 			this.gems = rand(55) + 140;
 			this.drop = new WeightedDrop().addMany(5,
 					consumables.W_FRUIT,
-					weapons.H_WAND,
-					null)
+					weapons.H_WAND)
 					.add(shields.NEKONOM, 1);
 			this.createPerk(PerkLib.FireNature, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Flexibility, 0, 0, 0, 0);

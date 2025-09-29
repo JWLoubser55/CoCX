@@ -14,6 +14,7 @@ import classes.IMutations.IMutationsLib;
 import classes.Items.Weapons.Tidarion;
 import classes.PerkLib;
 import classes.Races;
+import classes.Scenes.Areas.VolcanicCrag.HellcatKasha;
 import classes.Scenes.Dungeons.D3.*;
 import classes.Scenes.SceneLib;
 import classes.StatusEffectClass;
@@ -147,6 +148,7 @@ public class CombatUI extends BaseCombatContent {
 		if ((combat.isEnemyInvisible || monster.hasStatusEffect(StatusEffects.MaddeningTune)) && !player.hasPerk(PerkLib.TrueSeeing)){
 			btnMelee.disable("You cannot use attack on opponent you cannot see or target.");
 		}
+		if (monster is HellcatKasha) btnMelee.disable("The kasha is moving around too fast and too far for you to hit her. She is always keeping just enough distance to strike with her whip.");
 		// Ranged
 		switch (player.weaponRangePerk) {
 			case "Bow":
@@ -232,7 +234,7 @@ public class CombatUI extends BaseCombatContent {
 			if (player.isInGoblinMech() || player.isInNonGoblinMech()) btnPSpecials.show("Mech", submenuPhySpecials, "Mech special attacks menu.", "Mech Specials");
 			else btnPSpecials.show("P. Specials", submenuPhySpecials, "Physical special attack menu.", "Physical Specials");
 		}
-		if (monster.hasStatusEffect(StatusEffects.MaddeningTune)) {
+		if (monster.hasStatusEffect(StatusEffects.MaddeningTune) || monster is HellcatKasha) {
 			btnPSpecials.disable();
 		}
 		// Submenu - Magical Specials

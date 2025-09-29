@@ -6012,6 +6012,7 @@ public class MagicSpecials extends BaseCombatContent {
 	}
 	public function possess2():void {
 		if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical)) player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
+		if (player.hasStatusEffect(StatusEffects.KashaCapture)) player.removeStatusEffect(StatusEffects.KashaCapture);
 		if (player.hasStatusEffect(StatusEffects.ScyllaBind)) player.removeStatusEffect(StatusEffects.ScyllaBind);
 		if (player.hasStatusEffect(StatusEffects.WolfHold)) player.removeStatusEffect(StatusEffects.WolfHold);
 		if (player.hasStatusEffect(StatusEffects.TrollHold)) player.removeStatusEffect(StatusEffects.TrollHold);

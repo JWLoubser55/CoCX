@@ -84,7 +84,7 @@ public class Ashlands extends BaseContent
 			unique: true,
 			when: function ():Boolean {
 				return (flags[kFLAGS.WITCHES_SABBATH] > 3 && player.isRace(Races.HELLCAT, 1, false) && player.gender == 3) ||
-						(flags[kFLAGS.WITCHES_SABBATH] > 0 && player.isRace(Races.CAT) && player.inte >= 40 && player.hasStatusEffect(StatusEffects.KnowsWhitefire))
+						(flags[kFLAGS.WITCHES_SABBATH] > 0 && player.isRaceCached(Races.CAT) && player.inte >= 40 && player.hasStatusEffect(StatusEffects.KnowsWhitefire))
 			},
 			call: SceneLib.ashlands.hellcatScene.WitchesSabbath
 		}, {

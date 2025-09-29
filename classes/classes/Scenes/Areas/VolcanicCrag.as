@@ -145,6 +145,14 @@ public class VolcanicCrag extends BaseContent
 				kind  : 'monster',
 				call: outerVulcanicCragFireElemental
 			}, {
+				name: "hellcatK",
+				label : "Hellcat Kasha",
+				kind : 'monster',
+				when: function ():Boolean {
+					return flags[kFLAGS.WITCHES_SABBATH] >= 1;
+				},
+				call: SceneLib.ashlands.hellcatScene.HellCatKashaIntro
+			}, {
 				//Helia monogamy fucks
 				name  : "helcommon",
 				label : "Helia",

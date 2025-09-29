@@ -32,6 +32,7 @@ import classes.Scenes.Areas.LightlessReach.*;
 import classes.Scenes.Areas.Mountain.*;
 import classes.Scenes.Areas.Ocean.SeaAnemone;
 import classes.Scenes.Areas.Tundra.YoungFrostGiant;
+import classes.Scenes.Areas.VolcanicCrag.HellcatKasha;
 import classes.Scenes.Camp.CampStatsAndResources;
 import classes.Scenes.Camp.TrainingDummy;
 import classes.Scenes.Dungeons.D3.*;
@@ -2531,6 +2532,9 @@ public class Combat extends BaseContent {
         if (player.hasStatusEffect(StatusEffects.KitsuneTailTangle)) {
             (monster as Kitsune).kitsuneWait();
             skipMonsterAction = true;
+        } else if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical)) {
+            (monster as HellcatKasha).hellcatKashaFlameWhipWait();
+            skipMonsterAction = true;
         } else if (player.hasStatusEffect(StatusEffects.MinotaurEntangled)) {
             clearOutput();
             outputText("You sigh and relax in the chains, eying the well-endowed minotaur as you await whatever rough treatment he desires to give.  His musky, utterly male scent wafts your way on the wind, and you feel droplets of your lust dripping down your thighs.  You lick your lips as you watch the pre-cum drip from his balls, eager to get down there and worship them.  Why did you ever try to struggle against this fate?\n\n");
@@ -2685,6 +2689,9 @@ public class Combat extends BaseContent {
             }
         } else if (player.hasStatusEffect(StatusEffects.KitsuneTailTangle)) {
             (monster as Kitsune).kitsuneStruggle();
+            skipMonsterAction = true;
+        } else if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical)) {
+            (monster as HellcatKasha).hellcatKashaFlameWhipStruggle();
             skipMonsterAction = true;
         } else if (player.hasStatusEffect(StatusEffects.HolliConstrict)) {
             (monster as Holli).struggleOutOfHolli();
@@ -15911,6 +15918,10 @@ public function combatIsOver(goToPlayerMenu:Boolean = true):Boolean {
         doNext(endHpLoss);
         return true;
     }
+	if (player.statusEffectv1(StatusEffects.PlayerBoundPhysical) >= 2 && player.hasStatusEffect(StatusEffects.KashaCapture)) {
+		player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
+		SceneLib.ashlands.hellcatScene.DefeatedByHellCatKasha();
+	}
     if (Math.round(player.HP) <= Math.round(player.minHP())) {
         if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 4 && flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] == 0) {
 			flags[kFLAGS.IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART] = 1;
