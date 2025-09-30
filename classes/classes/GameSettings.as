@@ -188,6 +188,12 @@ public class GameSettings extends BaseContent {
 			else
 				outputText("Watersports: [font-dred]<b>Disabled</b>[/font]\n Watersports scenes are disabled.");
 			outputText("\n\n");
+			if (Mindbreaker.MindBreakerQuest == Mindbreaker.QUEST_STAGE_MBOFF) {
+				outputText("Mindbreaker: [font-dred]<b>OFF</b>[/font]");
+			}
+			else 
+				outputText("Mindbreaker: [font-green]<b>ON</b>[/font]");
+			outputText("\n\n");
 		}
 		menu();
 		if (player) {
@@ -781,6 +787,19 @@ public class GameSettings extends BaseContent {
 	}
 
 	public function fetishSubMenu():void {
+		clearOutput();
+		if (flags[kFLAGS.WATERSPORTS_ENABLED] >= 1) {
+			outputText("Watersports: [font-green]<b>Enabled</b>[/font]\n Watersports scenes are enabled. (You kinky person)");
+		}
+		else
+			outputText("Watersports: [font-dred]<b>Disabled</b>[/font]\n Watersports scenes are disabled.");
+		outputText("\n\n");
+		if (Mindbreaker.MindBreakerQuest == Mindbreaker.QUEST_STAGE_MBOFF) {
+			outputText("Mindbreaker: [font-dred]<b>OFF</b>[/font]");
+		}
+		else 
+			outputText("Mindbreaker: [font-green]<b>ON</b>[/font]");
+		outputText("\n\n");
 		menu();
 		addButton(0, "Watersports", toggleFlag, kFLAGS.WATERSPORTS_ENABLED, fetishSubMenu).hint("Toggles watersports scenes. (Scenes related to urine fetish)","Watersports "+(flags[kFLAGS.WATERSPORTS_ENABLED] < 1? "OFF" : "ON")); //Enables watersports.
 		if (player.hasStatusEffect(StatusEffects.WormsOn) || player.hasStatusEffect(StatusEffects.WormsOff)) addButton(1, "Worms", toggleWormsMenu).hint("Enable or disable worms. This will NOT cure infestation, if you have any.");

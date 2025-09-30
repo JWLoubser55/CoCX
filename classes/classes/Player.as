@@ -1995,7 +1995,7 @@ use namespace CoC;
 		public function meleeMainWeaponSize():Number
 		{
 			var weaponMainSize:Number;
-			if ((weapon.isSmall() && !isFistOrFistWeapon()) || hasAetherTwinsTierS1() || hasAetherTwinsTierS2()) weaponMainSize = 0;
+			if (weapon.isSmall() || (isFistOrFistWeapon() && !isLargeGauntletWeapon()) || hasAetherTwinsTierS1() || hasAetherTwinsTierS2()) weaponMainSize = 0;
 			if (weapon.isMedium() || hasAetherTwinsTierMedium1() || hasAetherTwinsTierMedium2()) weaponMainSize = 1;
 			if (weapon.isLarge() || isLargeGauntletWeapon() || hasAetherTwinsTierLarge1() || hasAetherTwinsTierLarge2()) weaponMainSize = 2;
 			if (weapon.isMassive()) weaponMainSize = 3;

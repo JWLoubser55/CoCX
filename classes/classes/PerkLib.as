@@ -4087,15 +4087,15 @@ public class PerkLib
 		public static const DaoistPotLWarriorStage:PerkType = mk("Daoist (PotL): Warrior Stage", "Daoist (PotL): Warrior Stage",
 				"You've reached the second stage of Daoist path. (+10% water resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess water resistance above 100% would be turned into bonus % dmg to water attacks (caps at 100%))");
 		public static const DaoistKoGApprenticeStage:PerkType = mk("Daoist (KoG): Apprentice Stage", "Daoist (KoG): Apprentice Stage",
-				"You've reached the first stage of Daoist path. (+5% earth resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks (caps at 25%))");
+				"You've reached the first stage of Daoist path. (+5% wind resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks (caps at 25%))");
 		public static const DaoistKoGElderStage:PerkType = mk("Daoist (KoG): Elder Stage", "Daoist (KoG): Elder Stage",
-				"You've reached the third stage of Daoist path. (+15% earth resistance at S.Elder, S.Exalt, S.Overlord stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks)");
+				"You've reached the third stage of Daoist path. (+15% wind resistance at S.Elder, S.Exalt, S.Overlord stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks)");
 		public static const DaoistKoGOverlordStage:PerkType = mk("Daoist (KoG): Overlord Stage", "Daoist (KoG): Overlord Stage",
-				"You've reached the fourth stage of Daoist path. (+20% earth resistance at S.Tyrant, S.King, S.Emperor stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks (doubled bonus from excess resistance))");
+				"You've reached the fourth stage of Daoist path. (+20% wind resistance at S.Tyrant, S.King, S.Emperor stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks (doubled bonus from excess resistance))");
 		public static const DaoistKoGTyrantStage:PerkType = mk("Daoist (KoG): Tyrant Stage", "Daoist (KoG): Tyrant Stage",
-				"You've reached the fifth stage of Daoist path. (+25% earth resistance at S.Ancestor, S.Sage stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks (tripled bonus from excess resistance))");
+				"You've reached the fifth stage of Daoist path. (+25% wind resistance at S.Ancestor, S.Sage stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks (tripled bonus from excess resistance))");
 		public static const DaoistKoGWarriorStage:PerkType = mk("Daoist (KoG): Warrior Stage", "Daoist (KoG): Warrior Stage",
-				"You've reached the second stage of Daoist path. (+10% earth resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks (caps at 100%))");
+				"You've reached the second stage of Daoist path. (+10% wind resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess wind resistance above 100% would be turned into bonus % dmg to wind attacks (caps at 100%))");
 		public static const DaoistMoTApprenticeStage:PerkType = mk("Daoist (MoT): Apprentice Stage", "Daoist (MoT): Apprentice Stage",
 				"You've reached the first stage of Daoist path. (+5% earth resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess earth resistance above 100% would be turned into bonus % dmg to earth attacks (caps at 25%))");
 		public static const DaoistMoTElderStage:PerkType = mk("Daoist (MoT): Elder Stage", "Daoist (MoT): Elder Stage",
