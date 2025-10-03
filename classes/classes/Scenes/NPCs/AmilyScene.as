@@ -109,12 +109,12 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 					return true;
 				}
 				//Pure amily flips her shit and moves out!
-				if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && player.cor >= 66 + player.corruptionTolerance && flags[kFLAGS.AMILY_WARNING] > 0) {
+				if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && player.cor >= 66 + player.corruptionTolerance && !player.hasPerk(PerkLib.FalseLight) && flags[kFLAGS.AMILY_WARNING] > 0) {
 					amilyScene.farewellNote();
 					return true;
 				}
 				//Amily moves back in once uncorrupt.
-				if (flags[kFLAGS.AMILY_TREE_FLIPOUT] == 0 && flags[kFLAGS.AMILY_WARNING] > 0 && player.cor <= 25 + player.corruptionTolerance && flags[kFLAGS.AMILY_FOLLOWER] == 0) {
+				if (flags[kFLAGS.AMILY_TREE_FLIPOUT] == 0 && flags[kFLAGS.AMILY_WARNING] > 0 && (player.cor <= 25 + player.corruptionTolerance || player.hasPerk(PerkLib.FalseLight)) && flags[kFLAGS.AMILY_FOLLOWER] == 0) {
 					amilyScene.amilyReturns();
 					return true;
 				}
@@ -280,7 +280,7 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 				if (!player.hasStatusEffect(StatusEffects.Infested)) flags[kFLAGS.AMILY_GROSSED_OUT_BY_WORMS] = 0;
 			}
 			//Corrupt blow up! - requires you've met Amily
-			if (flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] == 0 && flags[kFLAGS.AMILY_MET] > 0 && player.cor > 25 + player.corruptionTolerance) {
+			if (flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] == 0 && flags[kFLAGS.AMILY_MET] > 0 && player.cor > 25 + player.corruptionTolerance && !player.hasPerk(PerkLib.FalseLight)) {
 				meetAmilyAsACorruptAsshat();
 				return;
 			}
@@ -2454,12 +2454,12 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 			}
 			amilySprite();
 			//Amily freakout
-			if(player.cor >= 50 + player.corruptionTolerance && flags[kFLAGS.AMILY_WARNING] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1) {
+			if(player.cor >= 50 + player.corruptionTolerance && !player.hasPerk(PerkLib.FalseLight) && flags[kFLAGS.AMILY_WARNING] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1) {
 				amilyTaintWarning();
 				return;
 			}
 			//Clear warning if PC is good!
-			if(player.cor < 50 + player.corruptionTolerance && flags[kFLAGS.AMILY_WARNING] > 0) flags[kFLAGS.AMILY_WARNING] = 0;
+			if((player.cor < 50 + player.corruptionTolerance || player.hasPerk(PerkLib.FalseLight)) && flags[kFLAGS.AMILY_WARNING] > 0) flags[kFLAGS.AMILY_WARNING] = 0;
 			//Preggo birthing!
 			if (pregnancy.isPregnant && pregnancy.incubation == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
 				clearOutput();

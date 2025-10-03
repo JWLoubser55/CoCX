@@ -21,6 +21,9 @@ public function SythrilMainMenu():void {
 	outputText("\"<i>"+player.mf("Master","Mistress")+"?</i>\"\n\n");
 	menu();
 	addButton(0, "Appearance", SythrilMainMenuAppearance);
+	//addButton(4, "Spar", sythrilSparsWithPC).hint("Ask Sythril for a mock battle.")
+	//	.disableIf((flags[kFLAGS.PLAYER_COMPANION_1] == "Sythril" || flags[kFLAGS.PLAYER_COMPANION_2] == "Sythril"), "You can't fight against him as long he's in your team.")
+	//	.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 2, "You need a good sparring ring for that.");
 	addButton(14, "Back", camp.campSlavesMenu);
 }
 
@@ -36,22 +39,59 @@ public function SythrilMainMenuAppearance():void {
 	menu();
 	addButton(14, "Back", SythrilMainMenu);
 }
+
+public function sythrilSparsWithPC():void {
+	clearOutput();
+	outputText("\"<i></i>\"\n\n");
+	startCombat(new Syth());
+}
+
+public function SythrilWonSparring():void {
+	clearOutput();
+	outputText("\"<i></i>\"\n\n");
+	cleanupAfterCombat();
+}
+
+public function SythrilLostSparring():void {
+	clearOutput();
+	outputText("\"<i></i>\"\n\n");/*
+	if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2) {
+		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] >= 1) flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER]++;
+		else flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 1;
+		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 1 && flags[kFLAGS.SYTHRIL_LVL_UP] == 1) {
+			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction));
+			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction), 0, 0);
+			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
+			flags[kFLAGS.SYTHRIL_LVL_UP] = 2;
+		}
+		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 2 && flags[kFLAGS.SYTHRIL_LVL_UP] == 2) {
+			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 2));
+			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 2), 0, 0);
+			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
+			flags[kFLAGS.SYTHRIL_LVL_UP] = 3;
+		}
+		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 3 && flags[kFLAGS.SYTHRIL_LVL_UP] == 3) {
+			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 3));
+			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 3), 0, 0);
+			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
+			flags[kFLAGS.SYTHRIL_LVL_UP] = 4;
+		}
+		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 4 && flags[kFLAGS.SYTHRIL_LVL_UP] == 4) {
+			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 4));
+			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 4), 0, 0);
+			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
+			flags[kFLAGS.SYTHRIL_LVL_UP] = 5;
+		}
+		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 5 && flags[kFLAGS.SYTHRIL_LVL_UP] == 5) {
+			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 5));
+			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 5), 0, 0);
+			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
+			flags[kFLAGS.SYTHRIL_LVL_UP] = 6;
+		}
+	}*/
+	cleanupAfterCombat();
+}
 /*
-public function aaa():void {
-	clearOutput();
-	outputText("\"<i></i>\"\n\n");
-}
-
-public function aaa():void {
-	clearOutput();
-	outputText("\"<i></i>\"\n\n");
-}
-
-public function aaa():void {
-	clearOutput();
-	outputText("\"<i></i>\"\n\n");
-}
-
 public function aaa():void {
 	clearOutput();
 	outputText("\"<i></i>\"\n\n");

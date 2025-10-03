@@ -10,13 +10,15 @@ import classes.BodyParts.Hips;
 import classes.BodyParts.LowerBody;
 import classes.BodyParts.Tail;
 import classes.BodyParts.Wings;
+import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.SceneLib;
 import classes.internals.*;
 
 public class Syth extends Monster
 	{
 		private function sythBerserk():void {
 			wrath -= 50;
-			outputText("Salamander roar and unleash his lustful fury in order to destroy you!\n\n");
+			outputText("Sythril roar and unleash his lustful fury in order to destroy you!\n\n");
 			this.weaponAttack += (30 + (30 * (1 + player.newGamePlusMod())));
 			createStatusEffect(StatusEffects.Lustzerking,10,0,0,0);
 		}
@@ -38,7 +40,7 @@ public class Syth extends Monster
 			var damage:Number = this.weaponAttack;
 			damage += eBaseStrengthDamage();
 			damage *= 4;
-			outputText(capitalA + short + " lift it weapons with all his strength and smash them on your head. ");
+			outputText("Sythril lift it weapons with all his strength and smash them on your head. ");
 			if(damage > 0) damage = player.takePhysDamage(damage, true);
 			outputText("\n");
 		}
@@ -49,7 +51,7 @@ public class Syth extends Monster
 			doNext(EventParser.playerMenu);
 			//Determine if dodged!
 			if(player.getEvasionRoll()) {
-				outputText("The salamander rushes at you, knocking aside your defensive feint and trying to close the distance between you.  He lashes out at your feet with his tail, and you're only just able to dodge the surprise attack.");
+				outputText("Sythril rushes at you, knocking aside your defensive feint and trying to close the distance between you.  He lashes out at your feet with his tail, and you're only just able to dodge the surprise attack.");
 				return;
 			}
 			//Determine damage - str modified by enemy toughness!
@@ -63,7 +65,7 @@ public class Syth extends Monster
 				else outputText("The salamander's tail-swipe hits you but fails to move or damage you.");
 			}
 			//Take Damage
-			else outputText("The salamander rushes at you, knocking aside your defensive feint and sliding in past your guard.  He lashes out at your feet with his tail, and you can feel the heated wake of the fiery appendage on your ensuing fall toward the now-smouldering grass. ");
+			else outputText("Sythril rushes at you, knocking aside your defensive feint and sliding in past your guard.  He lashes out at your feet with his tail, and you can feel the heated wake of the fiery appendage on your ensuing fall toward the now-smouldering grass. ");
 			if(damage > 0) {
 				if(lustVuln > 0 && player.armorName == "barely-decent bondage straps") {
 					outputText("\n" + capitalA + short + " brushes against your exposed skin and jerks back in surprise, coloring slightly from seeing so much of you revealed.");
@@ -75,7 +77,7 @@ public class Syth extends Monster
 		}
 		
 		private function sythAttack3():void {
-			outputText("Salamander start drawing symbols in the air toward you.");
+			outputText("Sythril start drawing symbols in the air toward you.");
 			var lustDmg:Number = this.lust / 5 + this.lib / 5 + this.inte / 5 + this.wis / 5 + this.sens / 5;
 			lustDmg = Math.round(lustDmg);
 			player.takeLustDamage(lustDmg, true);
@@ -144,10 +146,19 @@ public class Syth extends Monster
 			if (choice1 >= 3) sythBaseAttack();
 		}
 		
+		override public function defeated(hpVictory:Boolean):void
+		{
+			SceneLib.sythScene.SythrilLostSparring();
+		}
+		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
+		{
+			SceneLib.sythScene.SythrilWonSparring();
+		}
+		
 		override public function get long():String
 		{
 			var str:String = "";
-			str += "You are fighting an eight foot tall corrupted salamander with crimson scales covering his legs, back, and forearms, with a tail swishing menacingly behind him, ablaze with a red-hot fire.  His white hair accents his amber eyes, while his body covers leather armor and pair of large bat-like demon-wings fold behind his shoulders.  His dual BF Swords are raised to his side, looking for any hole in your guard.";
+			str += "You are fighting Sythril. An eight foot tall corrupted salamander with crimson scales covering his legs, back, and forearms, with a tail swishing menacingly behind him, ablaze with a red-hot fire.  His white hair accents his amber eyes, while his body covers leather armor and pair of large bat-like demon-wings fold behind his shoulders.  His dual BF Swords are raised to his side, looking for any hole in your guard.";
 			if (hasStatusEffect(StatusEffects.Lustzerking))
 			{
 				str += "\n\n<b>Looking at his posture and gaze indicates that he's currently under effect of some sort of berserking state.</b>";
@@ -157,9 +168,28 @@ public class Syth extends Monster
 		
 		public function Syth() 
 		{
+			if (flags[kFLAGS.SYTHRIL_LVL_UP] == 1) {
+				initStrTouSpeInte(320, 240, 140, 120);
+				initWisLibSensCor(120, 240, 50, 70);
+				this.weaponAttack = 112;
+				this.armorDef = 270;
+				this.armorMDef = 90;
+				this.bonusHP = 300;
+				this.additionalXP = 300;
+				this.bonusLust = 175;
+				this.level = 30;
+			}
+			if (flags[kFLAGS.SYTHRIL_LVL_UP] == 2) {
+				
+				this.level = 36;
+			}
+			if (flags[kFLAGS.SYTHRIL_LVL_UP] == 3) {
+				
+				this.level = 42;
+			}
 			this.a = "the ";
-			this.short = "salamander";//Syth(ril)
-			this.imageName = "sythril";//make him bro-looking/but would he have bro mind or not...up to decide
+			this.short = "Sythril";
+			this.imageName = "sythril";
 			this.long = "";
 			this.createCock(12,2,CockTypesEnum.DEMON);
 			this.createCock(12,2,CockTypesEnum.DEMON);
@@ -176,26 +206,17 @@ public class Syth extends Monster
 			this.lowerBody = LowerBody.SALAMANDER;
 			this.hairColor = "white";
 			this.hairLength = 1;
-			initStrTouSpeInte(320, 240, 140, 120);
-			initWisLibSensCor(120, 240, 50, 70);
 			this.weaponName = "pair of big fucking swords";//later make him wield 'pair of big fucking two handed swords' 
 			this.weaponVerb= "slash";
-			this.weaponAttack = 112;
 			this.armorName = "scales";
-			this.armorDef = 270;
-			this.armorMDef = 90;
-			this.bonusHP = 300;
-			this.additionalXP = 300;
-			this.bonusLust = 175;
 			this.lust = 30;
 			this.lustVuln = .2;
-			this.level = 30;
 			this.gems = 40 + rand(12);
 			this.drop = new ChainedDrop().
 					add(weapons.DBFSWO,1/50).
 					add(armors.LEATHRA,1/20).
 					add(consumables.SALAMFW,0.7);
-			this.wings.type = Wings.BAT_LIKE_LARGE_2;
+			this.wings.type = Wings.BAT_LIKE_LARGE;
 			this.tailType = Tail.SALAMANDER;
 			this.tailRecharge = 0;
 			this.createPerk(PerkLib.IceVulnerability, 0, 0, 0, 0);
@@ -206,6 +227,8 @@ public class Syth extends Monster
 			this.createPerk(PerkLib.Berzerker, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Lustzerker, 0, 0, 0, 0);
 			this.createPerk(PerkLib.UniqueNPC, 0, 0, 0, 0);
+			//if (flags[kFLAGS.SYTHRIL_LVL_UP] >= 2) this.createPerk(PerkLib., 0, 0, 0, 0);
+			//if (flags[kFLAGS.SYTHRIL_LVL_UP] >= 3) this.createPerk(PerkLib., 0, 0, 0, 0);
 			checkMonster();
 		}
 		

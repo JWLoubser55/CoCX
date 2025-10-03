@@ -116,6 +116,8 @@ private function browseSlavesYes(slaveNumber:Number, slavePrice:Number, slaveRac
 	if (slaveNumber == 1) {
 		outputText("(<b>Stella has been added to the Slaves menu!</b>)\n\n");
 		flags[kFLAGS.STELLA_FOLLOWER] = 1;
+		flags[kFLAGS.STELLA_LVL_UP] = 1;
+		flags[kFLAGS.STELLA_DEFEATS_COUNTER] = 0;
 	}
 	if (slaveNumber == 2) {
 		outputText("(<b>Ivan has been added to the Slaves menu!</b>)\n\n");
@@ -124,10 +126,14 @@ private function browseSlavesYes(slaveNumber:Number, slavePrice:Number, slaveRac
 	if (slaveNumber == 3) {
 		outputText("(<b>Sythril has been added to the Slaves menu!</b>)\n\n");
 		flags[kFLAGS.SYTHRIL_FOLLOWER] = 1;
+		flags[kFLAGS.SYTHRIL_LVL_UP] = 1;
+		flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
 	}
 	if (slaveNumber == 4) {
 		outputText("(<b>Elise has been added to the Slaves menu!</b>)\n\n");
 		flags[kFLAGS.ELISE_FOLLOWER] = 1;
+		flags[kFLAGS.ELISE_LVL_UP] = 1;
+		flags[kFLAGS.ELISE_DEFEATS_COUNTER] = 0;
 	}
 	statScreenRefresh();
 	doNext(camp.returnToCampUseOneHour);

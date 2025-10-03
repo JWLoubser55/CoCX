@@ -403,7 +403,7 @@ public class KihaFollower extends NPCAwareContent implements TimeAwareInterface,
             warmLoverKihaIntro(output);
             return;
         }
-        if (output && flags[kFLAGS.KIHA_TALK_STAGE] == 6 && (player.cor <= 30 + player.corruptionTolerance || sceneHunter.other && player.cor < 66 + player.corruptionTolerance)) {
+        if (output && flags[kFLAGS.KIHA_TALK_STAGE] == 6 && (player.cor <= 30 + player.corruptionTolerance || sceneHunter.other && player.cor < 66 + player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight)) {
             //Talk to Friendly Kiha - Fourth Time (requires <=30 corruption on account of making the PC act like a bitch) (Z)
             //(SPECIAL: Play next time the PC encounters Kiha after Talk 3 if he meets reqs, skipping the main menu)
             outputText("As you wander through the swamp, you eventually come to the familiar territory of your friend, Kiha.  Remembering her hasty departure the last time you talked, a pang of worry takes hold in your chest.  She mentioned taking the fight to the demons… . Surely she didn't, did she? Grimacing at the thought, you pick up the pace and make your way to her little islet.");

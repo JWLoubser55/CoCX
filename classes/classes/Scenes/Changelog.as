@@ -373,7 +373,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Daoist (EoD): Warrior Stage. Gained by cultivating 'Emperor of Dragon' cultivation manual. Effects: +10% fire resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess fire resistance above 100% would be turned into bonus % dmg to fire attacks (caps at 100%)\n");
 			outputText("-New event perk: Daoist (EoD): Elder Stage. Gained by cultivating 'Emperor of Dragon' cultivation manual. Effects: +15% fire resistance at S.Elder, S.Exalt, S.Overlord stages; any excess fire resistance above 100% would be turned into bonus % dmg to fire attacks\n");
 			outputText("-New event perk: Daoist (EoD): Overlord Stage. Gained by cultivating 'Emperor of Dragon' cultivation manual. Effects: +20% fire resistance at S.Tyrant, S.King, S.Emperor stages; any excess fire resistance above 100% would be turned into bonus % dmg to fire attacks (doubled bonus from excess resistance)\n");
-			outputText("-\n");
+			outputText("-New tier 8 corruption lvl-up perk: False Light. Req. 100+ corruption. Effect: You are so good at lies and manipulation you can not only conceal your corruption but also convince others that you are righteous and pure by warping their perception of you. Furthermore for each follower, lover or slave you own gain a +10% increase to tease damage.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

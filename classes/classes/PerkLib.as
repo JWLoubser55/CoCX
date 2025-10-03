@@ -863,6 +863,9 @@ public class PerkLib
 		public static const DemonicWhipTechnique:PerkType = mk("Demonic whip technique", "Demonic whip technique",
 				"Whips inflict 2% more point of tease damage vulnerability per hit.",
 				"You've chosen the 'Demonic whip technique' perk. Whips inflict 2% more point of tease damage vulnerability per hit.");
+		public static const FalseLight:PerkType = mk("False Light", "False Light",
+				"You are so good at lies and manipulation you can not only conceal your corruption but also convince others that you are righteous and pure by warping their perception of you. Furthermore for each follower, lover or slave you own gain a +10% increase to tease damage.",
+				"You've chosen the 'False Light' perk. You are so good at lies and manipulation you can not only conceal your corruption but also convince others that you are righteous and pure by warping their perception of you. Furthermore for each follower, lover or slave you own gain a +10% increase to tease damage.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -874,6 +877,24 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8004,6 +8025,9 @@ public class PerkLib
             CorruptedFlesh.requireCor(80)
                     .requirePerk(Masochist)
                     .requireLevel(36);
+			//Tier 8
+            FalseLight.requireCor(100)
+                    .requireLevel(48);
             //------------
             // SOULFORCE
             //------------

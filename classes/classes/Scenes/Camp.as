@@ -1875,7 +1875,7 @@ public class Camp extends NPCAwareContent{
 			}
 			//Stella Slave
 			if (flags[kFLAGS.STELLA_FOLLOWER] >= 1) {
-				outputText("Close to [camp] Edge, there is bedroll for Stella, the cursed and bit horny goblin succubus. Or is she succugoblin? She seems to be occupied with channeling her excess lust into small pinkish flames that dance over her palm.\n\n");
+				outputText("Close to [camp] edge, there is bedroll for Stella, the cursed and bit horny goblin succubus. Or is she succugoblin? She seems to be occupied with channeling her excess lust into small pinkish flames that dance over her palm.\n\n");
 				buttons.add("Stella", SceneLib.stellaScene.StellaMainMenu).hint("Visit Stella.");
 			}
 			//Ivan Slave
@@ -2063,7 +2063,7 @@ public class Camp extends NPCAwareContent{
 			}
 			//Jinx
 			if (flags[kFLAGS.JINX_LVL_UP] >= 1) {
-				//outputText("\n\n");
+				outputText("To the side of the [camp], you see many tools and other items sprawled across the ground randomly. Among the items, you see Minx as she working on another invention… or maybe she just making more exploding stuff?\n\n");
 				buttons.add("Minx", SceneLib.jinxFollower.campJinxMenuMain).hint("Visit Minx.");
 			}
 			//Ecihtel
@@ -5907,4 +5907,4 @@ public function rebirthFromBadEnd():void {
 	}
 
 }
-}
+}

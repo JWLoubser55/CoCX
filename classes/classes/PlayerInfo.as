@@ -794,7 +794,11 @@ public class PlayerInfo extends BaseContent {
 			else if (flags[kFLAGS.DINAH_LVL_UP] == 1) interpersonStats += "<b>Dinah lvl:</b> 8\n";
 			else interpersonStats += getNPCLevel("Dinah", 8, 1, 9, 6, flags[kFLAGS.DINAH_LVL_UP]);
 		}
-
+/*
+		if (flags[kFLAGS.ECIHTEL_FOLLOWER] >= 1)  {
+			if (flags[kFLAGS.ECIHTEL_LVL_UP] == 1) interpersonStats += "<b>Ecihtel lvl:</b> ?? (current max lvl)\n";
+		}
+*/
 		if (flags[kFLAGS.ETNA_AFFECTION] > 0) {
 			interpersonStats += "<b>Etna Affection:</b> " + Math.round(flags[kFLAGS.ETNA_AFFECTION]) + "%\n";
 			interpersonStats += getNPCLevel("Etna", 36, 0, 17, 6, flags[kFLAGS.ETNA_LVL_UP]);
@@ -806,7 +810,11 @@ public class PlayerInfo extends BaseContent {
 			else if (flags[kFLAGS.ELECTRA_LVL_UP] < 2) interpersonStats += "<b>Electra lvl:</b> 30\n";
 			else interpersonStats += getNPCLevel("Electra", 36, 1, 18, 6, flags[kFLAGS.ELECTRA_LVL_UP]);
 		}
-
+/*
+		if (flags[kFLAGS.ELISE_FOLLOWER] >= 1)  {
+			if (flags[kFLAGS.ELISE_LVL_UP] == 1) interpersonStats += "<b>Elise lvl:</b> ?? (current max lvl)\n";
+		}
+*/
 		if (SceneLib.emberScene.emberAffection() > 0) {
             interpersonStats += "<b>Ember Affection:</b> " + Math.round(SceneLib.emberScene.emberAffection()) + "%\n";
             interpersonStats += getNPCLevel("Ember", 38, 0, 17, 6, flags[kFLAGS.EMBER_LVL_UP]);
@@ -926,7 +934,6 @@ public class PlayerInfo extends BaseContent {
 		if (SceneLib.telAdre.pablo.pabloAffection() > 0)
 			interpersonStats += "<b>Pablo's Affection:</b> " + flags[kFLAGS.PABLO_AFFECTION] + "%\n";
 
-
 		if (SceneLib.telAdre.rubi.rubiAffection() > 0)
             interpersonStats += "<b>Rubi's Affection:</b> " + Math.round(SceneLib.telAdre.rubi.rubiAffection()) + "%\n" + "<b>Rubi's Orifice Capacity:</b> " + Math.round(SceneLib.telAdre.rubi.rubiCapacity()) + "%\n";
 
@@ -941,6 +948,20 @@ public class PlayerInfo extends BaseContent {
             if (SceneLib.sheilaScene.sheilaCorruption() > 100)
                 interpersonStats += " (Yes, it can go above 100)";
 			interpersonStats += "\n";
+		}
+/*
+		if (flags[kFLAGS.STELLA_FOLLOWER] >= 1)  {
+			if (flags[kFLAGS.STELLA_LVL_UP] == 1) interpersonStats += "<b>Stella lvl:</b> ?? (current max lvl)\n";
+		}
+*/
+		if (flags[kFLAGS.SYTHRIL_FOLLOWER] >= 1)  {
+			if (flags[kFLAGS.SYTHRIL_LVL_UP] == 6) interpersonStats += "<b>Sythril lvl:</b> 60\n";
+			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 5) interpersonStats += "<b>Sythril lvl:</b> 54\n";
+			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 4) interpersonStats += "<b>Sythril lvl:</b> 48\n";
+			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 3) interpersonStats += "<b>Sythril lvl:</b> 42\n";
+			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 2) interpersonStats += "<b>Sythril lvl:</b> 36\n";
+			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 1) interpersonStats += "<b>Sythril lvl:</b> 30 (current max lvl)\n";
+			else interpersonStats += getNPCLevel("Sythril", 30, 1, 6, 6, flags[kFLAGS.SYTHRIL_LVL_UP]);
 		}
 
 		if (flags[kFLAGS.TED_WRATH] > 5) {
@@ -3056,4 +3077,4 @@ public class PlayerInfo extends BaseContent {
 		doNext(superPerkBuyMenu, 6);
 	}
 }
-}
+}

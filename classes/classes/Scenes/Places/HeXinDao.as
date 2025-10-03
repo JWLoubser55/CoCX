@@ -1065,7 +1065,6 @@ public function soularena():void {
 			//addButton(0, "Kitty", arenaSelection1, Veronika);
 			//addButton(1, "Golemancer", arenaSelection1,Jeniffer).hint("Golemancer goblin.");
 			//addButton(2, "AyotechManiac", arenaSelection1,Jinx).hint("Crazy gremlin girl wearing lots of belts... err Ayotech weapons.");
-			//addButton(5, "Macho Mander", arenaSelection1,Syth).hint("He's Macho & Mander.");
 			//if () addButton(6, "Miss Mander", arenaSelection1,Asuka).hint("Salamander woman.");
 			//else addButton(6, "Miss Mander", arenaSelection1,Asuka).hint("Young salamander girl.");
 			//addButton(7, "Miss Oni", arenaSelection1,Rangiku);
@@ -1074,6 +1073,7 @@ public function soularena():void {
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "") addButtonDisabled(10, "IntermedLeader", "Req. to have any henchman with you to start this fight.");
 				else addButton(10, "IntermedLeader", intermediateleadershipfight1).hint("Intermediate Leadership fight");
 			}
+			//11 - next step of leadership fights here
 			addButton(14, "Back", soularenaChallengeBack);
 		}
 	}

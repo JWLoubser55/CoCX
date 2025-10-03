@@ -100,7 +100,8 @@ public class TestMenu extends BaseContent
 		bd.add("Re:Pearl", MightyOrNot3, "Restore chance to find Pearl after regaining soul").disableIf(flags[kFLAGS.SKY_POISON_PEARL] > 0);
 		bd.add("Chi-a-Chi-Fix", MightyOrNot4).disableIf((flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 3 || flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 3));
 		bd.add("Test5", MightyOrNot5, "Testing NaN");
-		bd.add("Test6", MightyOrNot6, "It's Tengliu not Teiling.")
+		bd.add("Test6", MightyOrNot6, "It's Tengliu not Teiling.");
+		bd.add("Test7", MightyOrNot7, "Combat Slaves Operational.");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -136,6 +137,22 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot7():void {
+		if (flags[kFLAGS.STELLA_FOLLOWER] == 1) {
+			flags[kFLAGS.STELLA_LVL_UP] = 1;
+			flags[kFLAGS.STELLA_DEFEATS_COUNTER] = 0;
+		}
+		if (flags[kFLAGS.SYTHRIL_FOLLOWER] == 1) {
+			flags[kFLAGS.SYTHRIL_LVL_UP] = 1;
+			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
+		}
+		if (flags[kFLAGS.ELISE_FOLLOWER] == 1) {
+			flags[kFLAGS.ELISE_LVL_UP] = 1;
+			flags[kFLAGS.ELISE_DEFEATS_COUNTER] = 0;
+		}
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot6():void {
