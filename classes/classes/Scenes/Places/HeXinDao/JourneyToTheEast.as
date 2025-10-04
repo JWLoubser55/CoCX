@@ -107,9 +107,12 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			if (flags[kFLAGS.NEISA_FOLLOWER] == 3) addButton(10, "Neisa", NeisabutPCgotKOd);
 			if (flags[kFLAGS.NEISA_FOLLOWER] == 4 || flags[kFLAGS.NEISA_FOLLOWER] == 5) addButton(10, "Neisa", meetingNeisaPostDungeonExploration).hint("Neisa is sitting at a table enjoying one of the local drinks.");
 			if (flags[kFLAGS.NEISA_FOLLOWER] == 6) addButton(10, "Neisa", meetingNeisaPostDungeonExploration2).hint("Neisa is sitting at a table enjoying one of the local drinks.");
-			if (DianaFollower.DianaState < 3) {
-				if (DianaTavernTalks1) addButton(11, "Healer", dianaAtJttEMain).hint("You see a horse woman healer sitting at a table on your left.");
-				else addButton(11, "???", dianaAtJttEMain).hint("You see a horse woman sitting at a table on your left.");
+			if (DianaFollower.DianaState < 4) {
+				if (DianaFollower.DianaState == 2) addButtonDisabled(11, "Healer", "She went to visit village elders. Please come tomorrow.");
+				else {
+					if (DianaTavernTalks1) addButton(11, "Healer", dianaAtJttEMain).hint("You see a horse woman healer sitting at a table on your left.");
+					else addButton(11, "???", dianaAtJttEMain).hint("You see a horse woman sitting at a table on your left.");
+				}
 			}
 			addButton(14, "Leave", heXinDao.riverislandVillageStuff);
 		}
@@ -350,7 +353,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			addButton(0, "Name?", SceneLib.dianaScene.dianaTalkName);
 			addButton(1, "Yourself", SceneLib.dianaScene.dianaTalkYourself);
 			addButton(2, "Job", SceneLib.dianaScene.dianaTalkJob);
-			if (DianaFollower.DianaState > 0 && DianaFollower.DianaState != 2) addButton(4, "Invite2Camp", SceneLib.dianaScene.dianaTalkInvite2Camp);
+			if (DianaFollower.DianaState > 0) addButton(4, "Invite2Camp", SceneLib.dianaScene.dianaTalkInvite2Camp);
 			addButton(14, "Back", dianaAtJttEMain);
 		}
 		public function dianaAtJttEMainHeal():void {

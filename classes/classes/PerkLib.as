@@ -783,8 +783,8 @@ public class PerkLib
 				"You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.",
 				"You've chosen the 'Goblinatus Graduate' perk. You can now use all goblin made technology even if it is not non goblin friendly. If you are a goblinoid all technology effects and damage dealt by firearm is increased by 100%.");
 		public static const ExoGiantsGrip:PerkType = mk("Exo-Giant’s Grip", "Exo-Giant’s Grip",
-				"Gain an ability to wield large (melee or range) weapons and massive shields in one hand as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)",
-				"You've chosen the 'Exo-Giant’s Grip' perk, gaining an ability to wield large (melee or range) weapons and massive shields in one hand as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)").withBuffs({'str.mult':0.5});
+				"Gain an ability to wield large (melee or range) weapons and massive shields in one hand OR wield massive weapon using both hands as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)",
+				"You've chosen the 'Exo-Giant’s Grip' perk, gaining an ability to wield large (melee or range) weapons and massive shields in one hand OR wield massive weapon using both hands as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)").withBuffs({'str.mult':0.5});
 		public static const HyperServosMastery:PerkType = mk("Hyper-Servos Mastery", "Hyper-Servos Mastery",
 				"Boosts armor points by a portion of your speed on vehicle armors. (1:100 ratio)",
 				"You've chosen the 'Hyper-Servos Mastery' perk. Boosts armor points by a portion of your speed on vehicle armors. (1:100 ratio)");
@@ -1846,8 +1846,8 @@ public class PerkLib
 				"Using your knowledge of alchemy and enhancement, you found a way to fuse two of the same item together, further enhacing transformative effects +2% alchemy/mutagen boost.",
 				"You've chosen the 'Fusion' perk, number of possible effects of transformatives +2% alchemy/mutagen boost.");
 		public static const GigantGrip:PerkType = mk("Gigant's Grip", "Gigant's Grip",
-				"Gain an ability to wield large (melee or range) weapons and massive shields in one hand. (+10% melee physical attacks multiplier)",
-				"You've chosen the 'Gigant's Grip' perk, gaining an ability to wield large (melee or range) weapons and massive shields in one hand. (+10% melee physical attacks multiplier)").withBuffs({'str.mult':0.5});
+				"Gain an ability to wield large (melee or range) weapons and massive shields in one hand OR wield massive weapon using both hands. (+10% melee physical attacks multiplier)",
+				"You've chosen the 'Gigant's Grip' perk, gaining an ability to wield large (melee or range) weapons and massive shields in one hand OR wield massive weapon using both hands. (+10% melee physical attacks multiplier)").withBuffs({'str.mult':0.5});
 		public static const GigantGripEx:PerkType = mk("Gigant's Grip (Ex)", "Gigant's Grip (Ex)",
 				"Allows you to apply all perks boosting Large melee weapon performance (increased atk and etc.) to Massive weapons. (+15% melee physical attacks multiplier)",
 				"You've chosen the 'Gigant's Grip (Ex)' perk, allowing you to apply all perks boosting Large melee weapon performance (increased atk and etc.) to Massive weapons. (+15% melee physical attacks multiplier)").withBuffs({'str.mult':0.5,'tou.mult':0.5});
@@ -9178,4 +9178,4 @@ public class PerkLib
 	}
 }
 
-}
+}

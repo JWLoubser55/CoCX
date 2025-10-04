@@ -335,10 +335,10 @@ public class Weapon extends Equipable
 						}
 					}
 				}
-				else if (!game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon()) {
+				else if (!game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()) {
 					if (slot == SLOT_WEAPON_MELEE_OFF) noMainHandAllowed = true;
 					else noShieldOffHandAllowed = true;
-					if (!game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon()) {
+					if (!game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()) {
 						if (doOutput) outputText(getItemText("massive_fail"));
 						return false;
 					}
@@ -403,19 +403,19 @@ public class Weapon extends Equipable
 		override public function beforeEquip(doOutput:Boolean, slot:int):Equipable {
 			if (!game.player.shield.isNothing) {
 				if (isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
-					|| isMassive() && !game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon()){
+					|| isMassive() && !game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()){
 					SceneLib.inventory.unequipShield();
 				}
 			}
 			if (!game.player.weaponOff.isNothing) {
 				if (game.player.weapon.isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
-					|| game.player.weapon.isMassive() && !game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon()){
+					|| game.player.weapon.isMassive() && !game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()){
 					SceneLib.inventory.unequipWeaponOff();
 				}
 			}
 			if (!game.player.weapon.isNothing) {
 				if (game.player.weaponOff.isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
-					|| game.player.weaponOff.isMassive() && !game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon()){
+					|| game.player.weaponOff.isMassive() && !game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()){
 					SceneLib.inventory.unequipWeapon();
 				}
 			}

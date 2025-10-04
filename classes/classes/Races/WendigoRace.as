@@ -40,7 +40,10 @@ public class WendigoRace extends Race {
 		
 		addScores()
 				.hairColor1("silver-white", +1)
-				.furColor1("snow white", +1)
+				.customRequirement("","snow white fur",
+						function (body:BodyData):Boolean {
+							return body.player.furColor == "snow white"
+						}, +1)
 				.eyeType(Eyes.DEAD, +1)
 				.eyeColor("spectral blue", +1)
 				.tongueType(Tongue.RAVENOUS_TONGUE, +1)

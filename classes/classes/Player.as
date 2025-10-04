@@ -1333,8 +1333,9 @@ use namespace CoC;
 		public function isTechSavvyPC():Boolean { return (isGoblinoid() || (hasPerk(IMutationsLib.HumanSmartsIM) && perkv1(IMutationsLib.HumanSmartsIM) >= 2) || isRace(Races.WEREFOX)); }
 		public function isTechWeapons():Boolean { return (weapon.isTechWeapon()); }
 		public function isAbleToOneHandWieldLargeWeapon():Boolean { return (hasPerk(PerkLib.GigantGrip) || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent()) || hasAetherTwinsLargerThenMediumSizedDexTwin()); } 
-		public function isAbleToOneHandWieldMassiveWeapon():Boolean { return hasPerk(PerkLib.TitanGrip); } //( || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent()) || hasAetherTwinsLargerThenMediumSizedDexTwin())
-		public function isAbleToTwoHandWieldMassiveWeapon():Boolean { return (hasPerk(PerkLib.GigantGripSu) && hasFourArms()); } // || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent()) || hasAetherTwinsLargerThenMediumSizedDexTwin()
+		public function isAbleToOneHandWieldMassiveWeapon():Boolean { return hasPerk(PerkLib.TitanGrip); } //( || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent()))
+		public function isAbleToTwoHandWieldMassiveWeapon():Boolean { return (hasPerk(PerkLib.GigantGrip) || (hasPerk(PerkLib.ExoGiantsGrip) && isInAyoArmor() && buff("Ayo Armor").isPresent())); }
+		public function isAbleToTwoHandWieldMassiveWeaponWithFourArms():Boolean { return (hasPerk(PerkLib.GigantGripSu) && hasFourArms()); } //( || hasAetherTwinsLargerThenMediumSizedDexTwin()))
 		//Weapons for Whirlwind
 		public function isWeaponForWhirlwind():Boolean
 		{
@@ -6447,6 +6448,7 @@ use namespace CoC;
 			if (perkv1(IMutationsLib.HumanFatIM) >= 2 && racialScore(Races.HUMAN) > 17) maxThicknessCap += 10;
 			if (perkv1(IMutationsLib.HumanFatIM) >= 3 && racialScore(Races.HUMAN) > 17) maxThicknessCap += 15;
 			if (perkv1(IMutationsLib.HumanFatIM) >= 4 && racialScore(Races.HUMAN) > 17) maxThicknessCap += 20;
+			if (hasPerk(PerkLib.EndlessHunger)) maxThicknessCap = 40;
 			return maxThicknessCap;
 		}
 
@@ -8934,4 +8936,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}
