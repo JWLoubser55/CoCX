@@ -21,9 +21,9 @@ public function SythrilMainMenu():void {
 	outputText("\"<i>"+player.mf("Master","Mistress")+"?</i>\"\n\n");
 	menu();
 	addButton(0, "Appearance", SythrilMainMenuAppearance);
-	//addButton(4, "Spar", sythrilSparsWithPC).hint("Ask Sythril for a mock battle.")
-	//	.disableIf((flags[kFLAGS.PLAYER_COMPANION_1] == "Sythril" || flags[kFLAGS.PLAYER_COMPANION_2] == "Sythril"), "You can't fight against him as long he's in your team.")
-	//	.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 2, "You need a good sparring ring for that.");
+	addButton(4, "Spar", sythrilSparsWithPC).hint("Ask Sythril for a mock battle.")
+		.disableIf((flags[kFLAGS.PLAYER_COMPANION_1] == "Sythril" || flags[kFLAGS.PLAYER_COMPANION_2] == "Sythril"), "You can't fight against him as long he's in your team.")
+		.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 2, "You need a good sparring ring for that.");
 	addButton(14, "Back", camp.campSlavesMenu);
 }
 
@@ -42,19 +42,22 @@ public function SythrilMainMenuAppearance():void {
 
 public function sythrilSparsWithPC():void {
 	clearOutput();
-	outputText("\"<i></i>\"\n\n");
+	outputText("You ask Sythril for a mock battle.\n\n");
+	outputText("\"<i>Just a mock battle?</i>\", he presses.\n\n");
+	outputText("Just a mock battle, yes.\n\n");
+	outputText("He sighs with a glint of disappointment in his glance, \"<i>As you command "+player.mf("Master","Mistress")+".</i>\"\n\n");
 	startCombat(new Syth());
 }
 
 public function SythrilWonSparring():void {
 	clearOutput();
-	outputText("\"<i></i>\"\n\n");
+	outputText("\"<i>Such a shame it was ONLY a MOCK battle. We could have some more 'fun' afterward,</i>\" he sneers under his breath.\n\n");
 	cleanupAfterCombat();
 }
 
 public function SythrilLostSparring():void {
 	clearOutput();
-	outputText("\"<i></i>\"\n\n");/*
+	outputText("\"<i>I need get stronger to be of better use to you, "+player.mf("Master","Mistress")+",</i>\" he grumbles under his breath.\n\n");/*
 	if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2) {
 		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] >= 1) flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER]++;
 		else flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 1;
