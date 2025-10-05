@@ -169,7 +169,7 @@ use namespace CoC;
 				this.bonusLust = 596;
 				this.level = 36;
 			}
-			if (flags[kFLAGS.ETNA_LVL_UP] >= 1 && flags[kFLAGS.ETNA_LVL_UP] < 10) {
+			if (flags[kFLAGS.ETNA_LVL_UP] >= 1 && flags[kFLAGS.ETNA_LVL_UP] < 17) {
 				var etnaLvl:Number = flags[kFLAGS.ETNA_LVL_UP];
 				initStrTouSpeInte(210 + 20*etnaLvl, 265 + 30*etnaLvl, 370 + 60*etnaLvl, 190 + 30*etnaLvl);
 				initWisLibSensCor(180 + 30*etnaLvl, 380 + 50*etnaLvl, 180 + 30*etnaLvl, 60);

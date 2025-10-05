@@ -191,7 +191,7 @@ public class Isabella extends Monster
 				this.bonusLust = 210;
 				this.level = 32;
 			}
-			else if (flags[kFLAGS.ISABELLA_LVL_UP] <= 15) {	//leave min and max levels to easily balance npc combat
+			else if (flags[kFLAGS.ISABELLA_LVL_UP] <= 17) {	//leave min and max levels to easily balance npc combat
 				initStrTouSpeInte(210 + 40*lvlMulti, 265 + 50*lvlMulti, 180 + 30*lvlMulti, 128 + 18*lvlMulti);
 				initWisLibSensCor(128 + 18*lvlMulti, 128 + 10*lvlMulti, 50 + 5*lvlMulti, -20);
 				this.weaponAttack = 90 + 15*lvlMulti;

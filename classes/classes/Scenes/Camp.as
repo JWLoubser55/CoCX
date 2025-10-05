@@ -1877,7 +1877,7 @@ public class Camp extends NPCAwareContent{
 			//Stella Slave
 			if (flags[kFLAGS.STELLA_FOLLOWER] >= 1) {
 				outputText("Close to [camp] edge, there is bedroll for Stella, the cursed and bit horny goblin succubus. Or is she succugoblin? She seems to be occupied with channeling her excess lust into small pinkish flames that dance over her palm.\n\n");
-				buttons.add("Stella", SceneLib.stellaScene.StellaMainMenu).hint("Visit Stella.");
+				buttons.add("Stella", SceneLib.stellaScene.StellaMainMenu).hint("Visit Stella.");//.disableIf(player.statusEffectv3(StatusEffects.CampSparingNpcsTimers6) > 0, "Training.")
 			}
 			//Ivan Slave
 			if (flags[kFLAGS.IVAN_FOLLOWER] >= 1) {
@@ -1887,7 +1887,7 @@ public class Camp extends NPCAwareContent{
 			//Sythril Slave
 			if (flags[kFLAGS.SYTHRIL_FOLLOWER] >= 1) {
 				outputText("Next to his bedroll lay various weights and other heavy objects he regularly uses to work out. Occasionally, he also spars with other camp members or even just a dummy. Not the sharpest knife in the drawer but at least he's much stronger than the typical salamander.\n\n");
-				buttons.add("Sythril", SceneLib.sythScene.SythrilMainMenu).hint("Visit Sythril.");
+				buttons.add("Sythril", SceneLib.sythScene.SythrilMainMenu).hint("Visit Sythril.").disableIf(player.statusEffectv1(StatusEffects.CampSparingNpcsTimers6) > 0, "Training.");
 			}
 			//Elise Slave
 			if (flags[kFLAGS.ELISE_FOLLOWER] >= 1) {
@@ -1902,7 +1902,7 @@ public class Camp extends NPCAwareContent{
 					outputText("Elise is sitting on a nearby rock, watching the moon.");
 				}
 				outputText("\n\n");
-				buttons.add("Elise", SceneLib.eliseScene.EliseMainMenu).hint("Visit Elise.");//.disableIf(player.statusEffectv1(StatusEffects.CampSparingNpcsTimers3) > 0, "Training.")
+				buttons.add("Elise", SceneLib.eliseScene.EliseMainMenu).hint("Visit Elise.");//.disableIf(player.statusEffectv4(StatusEffects.CampSparingNpcsTimers6) > 0, "Training.")
 			}
 			//Excellia Slave
 			if (flags[kFLAGS.EXCELLIA_RECRUITED] == 2) {
@@ -2060,7 +2060,7 @@ public class Camp extends NPCAwareContent{
 			//Neisa
 			if (flags[kFLAGS.NEISA_FOLLOWER] >= 7) {
 				outputText("Neisa is hanging by a tree next to the [camp] practicing her swordplay on a makeshift dummy for the next expedition.\n\n");
-				buttons.add("Neisa", SceneLib.neisaFollower.neisaCampMenu).hint("Visit Neisa the shield maiden.");
+				buttons.add("Neisa", SceneLib.neisaFollower.neisaCampMenu).hint("Visit Neisa the shield maiden.").disableIf(player.statusEffectv4(StatusEffects.CampSparingNpcsTimers4) > 0, "Training.");
 			}
 			//Jinx
 			if (flags[kFLAGS.JINX_LVL_UP] >= 1) {

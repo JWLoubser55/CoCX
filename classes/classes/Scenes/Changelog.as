@@ -429,7 +429,7 @@ public class Changelog extends BaseContent
 			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, ");
 			outputText("Sidone help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, cave wyrm tongue desc been draconic not cave wyrm, ");
 			outputText("some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling wepaons scaling on wrong values, Blade Grass missing tf effects for face or ears, ");
-			outputText("kirin horns tf effect super hard to trigger from kirin tf item\n\n");
+			outputText("kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, Neisa interactable when she's training\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");

@@ -232,7 +232,7 @@ public class Tyrantia extends Monster
 				this.bonusLust = 828;
 				this.level = 58;
 			}
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2 && flags[kFLAGS.TYRANTIA_LVL_UP] < 13) {
+			if (flags[kFLAGS.TYRANTIA_LVL_UP] >= 2 && flags[kFLAGS.TYRANTIA_LVL_UP] < 15) {
 				var mod:int = (flags[kFLAGS.TYRANTIA_LVL_UP] - 1);
 				initStrTouSpeInte(400 + 50*mod, 420 + 60*mod, 290 + 40*mod, 300 + 30*mod);
 				initWisLibSensCor(200 + 15*mod, 560 + 60*mod, 210 + 40*mod, 100);

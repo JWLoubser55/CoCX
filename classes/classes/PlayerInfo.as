@@ -778,7 +778,7 @@ public class PlayerInfo extends BaseContent {
 				if (flags[kFLAGS.CHI_CHI_LVL_UP] == 18) interpersonStats += "<b>Chi Chi lvl:</b> 136 (current max lvl)\n";
 				else if (flags[kFLAGS.CHI_CHI_LVL_UP] < 2) interpersonStats += "<b>Chi Chi lvl:</b> 22\n";
 				else if (flags[kFLAGS.CHI_CHI_LVL_UP] == 2) interpersonStats += "<b>Chi Chi lvl:</b> 31\n";
-				else interpersonStats += getNPCLevel("Chi Chi", 31, 2, 18, 6, flags[kFLAGS.CHI_CHI_LVL_UP]);
+				else interpersonStats += getNPCLevel("Chi Chi", 31, 3, 18, 6, flags[kFLAGS.CHI_CHI_LVL_UP]);
 			}
 		}
 
@@ -806,9 +806,9 @@ public class PlayerInfo extends BaseContent {
 
 		if (flags[kFLAGS.ELECTRA_AFFECTION] > 0) {
 			interpersonStats += "<b>Electra Affection:</b> " + Math.round(flags[kFLAGS.ELECTRA_AFFECTION]) + "%\n";
-			if (flags[kFLAGS.ELECTRA_LVL_UP] == 12) interpersonStats += "<b>Electra lvl:</b> 96 (current max lvl)\n";
+			if (flags[kFLAGS.ELECTRA_LVL_UP] == 18) interpersonStats += "<b>Electra lvl:</b> 138 (current max lvl)\n";
 			else if (flags[kFLAGS.ELECTRA_LVL_UP] < 2) interpersonStats += "<b>Electra lvl:</b> 30\n";
-			else interpersonStats += getNPCLevel("Electra", 36, 1, 18, 6, flags[kFLAGS.ELECTRA_LVL_UP]);
+			else interpersonStats += getNPCLevel("Electra", 36, 2, 18, 6, flags[kFLAGS.ELECTRA_LVL_UP]);
 		}
 /*
 		if (flags[kFLAGS.ELISE_FOLLOWER] >= 1)  {
@@ -886,7 +886,7 @@ public class PlayerInfo extends BaseContent {
 			interpersonStats += "<b>Lily Submissiveness:</b> " + LilyFollower.LilySubmissivenessMeter + "%\n";
 			if (flags[kFLAGS.LILY_LVL_UP] == 19) interpersonStats += "<b>Lily lvl:</b> 130 (current max lvl)\n";
 			else if (flags[kFLAGS.LILY_LVL_UP] < 2) interpersonStats += "<b>Lily lvl:</b> 22\n";
-			else interpersonStats += getNPCLevel("Lily", 34, 1, 19, 6, flags[kFLAGS.LILY_LVL_UP]);
+			else interpersonStats += getNPCLevel("Lily", 28, 2, 19, 6, flags[kFLAGS.LILY_LVL_UP]);
 		}
 
 		//Lottie stuff
@@ -949,19 +949,16 @@ public class PlayerInfo extends BaseContent {
                 interpersonStats += " (Yes, it can go above 100)";
 			interpersonStats += "\n";
 		}
-/*
+
 		if (flags[kFLAGS.STELLA_FOLLOWER] >= 1)  {
 			if (flags[kFLAGS.STELLA_LVL_UP] == 1) interpersonStats += "<b>Stella lvl:</b> ?? (current max lvl)\n";
 		}
-*/
+
 		if (flags[kFLAGS.SYTHRIL_FOLLOWER] >= 1)  {
-			if (flags[kFLAGS.SYTHRIL_LVL_UP] == 6) interpersonStats += "<b>Sythril lvl:</b> 60\n";
-			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 5) interpersonStats += "<b>Sythril lvl:</b> 54\n";
-			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 4) interpersonStats += "<b>Sythril lvl:</b> 48\n";
-			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 3) interpersonStats += "<b>Sythril lvl:</b> 42\n";
-			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 2) interpersonStats += "<b>Sythril lvl:</b> 36\n";
-			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 1) interpersonStats += "<b>Sythril lvl:</b> 30 (current max lvl)\n";
-			else interpersonStats += getNPCLevel("Sythril", 30, 1, 6, 6, flags[kFLAGS.SYTHRIL_LVL_UP]);
+			if (flags[kFLAGS.SYTHRIL_LVL_UP] == 8) interpersonStats += "<b>Sythril lvl:</b> 72\n";
+			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 7) interpersonStats += "<b>Sythril lvl:</b> 66 (current max lvl)\n";
+			else if (flags[kFLAGS.SYTHRIL_LVL_UP] == 1) interpersonStats += "<b>Sythril lvl:</b> 30\n";
+			else interpersonStats += getNPCLevel("Sythril", 30, 1, 8, 6, flags[kFLAGS.SYTHRIL_LVL_UP]);
 		}
 
 		if (flags[kFLAGS.TED_WRATH] > 5) {
@@ -982,10 +979,6 @@ public class PlayerInfo extends BaseContent {
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 15) interpersonStats += "<b>Tyrantia lvl:</b> 142 (current max lvl)\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 14) interpersonStats += "<b>Tyrantia lvl:</b> 136\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 13) interpersonStats += "<b>Tyrantia lvl:</b> 130\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 12) interpersonStats += "<b>Tyrantia lvl:</b> 124\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 11) interpersonStats += "<b>Tyrantia lvl:</b> 118\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 10) interpersonStats += "<b>Tyrantia lvl:</b> 112\n";
-			if (flags[kFLAGS.TYRANTIA_LVL_UP] == 9) interpersonStats += "<b>Tyrantia lvl:</b> 106\n";
 			if (flags[kFLAGS.TYRANTIA_LVL_UP] < 2) interpersonStats += "<b>Tyrantia lvl:</b> 58\n";
 			else interpersonStats += getNPCLevel("Tyrantia", 64, 2, 15, 6, flags[kFLAGS.TYRANTIA_LVL_UP]);
 		}

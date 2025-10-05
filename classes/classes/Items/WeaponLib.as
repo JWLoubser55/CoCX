@@ -517,7 +517,7 @@ public final class WeaponLib extends ItemConstants
 				"EBNYBlade","Ebony Destroyer","ebony destroyer","an ebony destroyer","slash",160,7200,
 				"This massive weapon, made of the darkest metal seems to seethe with unseen malice. Its desire to destroy and hurt the pure is so strong that it’s wielder must be wary, lest the blade take control of their body to fulfill its gruesome desires.",
 				WT_SWORD, WSZ_LARGE)
-				.withTags(I_LEGENDARY, W_CORRUPT_TYPE)
+				.withTags(I_LEGENDARY, W_LGWRATH, W_CORRUPT_TYPE)
 				.withEffect(IELib.AttackBonus_Cor, 1/5)
 				.withEffect(IELib.SelfCorr, 1)
 				.withEffect(IELib.ScaleAttack_Str, 250) as Weapon;

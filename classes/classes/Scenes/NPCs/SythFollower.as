@@ -57,41 +57,19 @@ public function SythrilWonSparring():void {
 
 public function SythrilLostSparring():void {
 	clearOutput();
-	outputText("\"<i>I need get stronger to be of better use to you, "+player.mf("Master","Mistress")+",</i>\" he grumbles under his breath.\n\n");/*
+	outputText("\"<i>I need get stronger to be of better use to you, "+player.mf("Master","Mistress")+",</i>\" he grumbles under his breath.\n\n");
 	if (flags[kFLAGS.SPARRABLE_NPCS_TRAINING] == 2) {
 		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] >= 1) flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER]++;
 		else flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 1;
-		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 1 && flags[kFLAGS.SYTHRIL_LVL_UP] == 1) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction), 0, 0);
-			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.SYTHRIL_LVL_UP] = 2;
+		if (flags[kFLAGS.SYTHRIL_LVL_UP] < 7) {
+			if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] >= (flags[kFLAGS.SYTHRIL_LVL_UP] + 4)) {
+				if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers6)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers6, 1, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * (flags[kFLAGS.SYTHRIL_LVL_UP] + 4)));
+				else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers6, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * (flags[kFLAGS.SYTHRIL_LVL_UP] + 4)), 0, 0, 0);
+				flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
+				flags[kFLAGS.SYTHRIL_LVL_UP]++;
+			}
 		}
-		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 2 && flags[kFLAGS.SYTHRIL_LVL_UP] == 2) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 2));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 2), 0, 0);
-			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.SYTHRIL_LVL_UP] = 3;
-		}
-		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 3 && flags[kFLAGS.SYTHRIL_LVL_UP] == 3) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 3));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 3), 0, 0);
-			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.SYTHRIL_LVL_UP] = 4;
-		}
-		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 4 && flags[kFLAGS.SYTHRIL_LVL_UP] == 4) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 4));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 4), 0, 0);
-			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.SYTHRIL_LVL_UP] = 5;
-		}
-		if (flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] == 5 && flags[kFLAGS.SYTHRIL_LVL_UP] == 5) {
-			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 2, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 5));
-			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 5), 0, 0);
-			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
-			flags[kFLAGS.SYTHRIL_LVL_UP] = 6;
-		}
-	}*/
+	}
 	cleanupAfterCombat();
 }
 /*

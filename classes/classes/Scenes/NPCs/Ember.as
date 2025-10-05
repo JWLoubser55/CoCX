@@ -221,7 +221,7 @@ public class Ember extends Monster
 				this.bonusLust = 378 + (game.flags[kFLAGS.EMBER_AFFECTION] / 5);
 				this.level = 38;
 			}
-			if (flags[kFLAGS.EMBER_LVL_UP] >= 1 && flags[kFLAGS.EMBER_LVL_UP] < 13) {
+			if (flags[kFLAGS.EMBER_LVL_UP] >= 1 && flags[kFLAGS.EMBER_LVL_UP] < 17) {
 				var mod:int = flags[kFLAGS.EMBER_LVL_UP];
 				initStrTouSpeInte(520+90*mod, 360+60*mod, 400+45*mod, 360+45*mod);
 				initWisLibSensCor(360+45*mod, 200+30*mod, 140+15*mod, game.flags[kFLAGS.EMBER_COR]);
