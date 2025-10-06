@@ -411,7 +411,7 @@ public class AbstractSpell extends CombatAbility {
 		if (player.weapon == weapons.ANCIENTO) {
 			damage *= 1.25;
 		}
-		
+		damage *= (1 + (0.01 * combat.masteryMagicCombat()));
 		return Math.round(damage);
 	}
 	private function damageTypeDarknessAdd():Number {
@@ -728,6 +728,7 @@ public class AbstractSpell extends CombatAbility {
 			outputText(" damage.");
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 		}
+		combat.spellcastingMasteryXP(combat.spellcastingMasteryEXPgained(crit));
 		return damage*repeats;
 	}
 	

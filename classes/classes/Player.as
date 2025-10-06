@@ -187,9 +187,11 @@ use namespace CoC;
         /*19*/	{combat: "Normal", 		level:0, experience:0, melee: true, desc:"<b>Weapon Mastery - Normal</b>"},
         /*20*/	{combat: "Large", 		level:0, experience:0, melee: true, desc:"<b>Weapon Mastery - Large</b>"},
         /*21*/	{combat: "Massive", 	level:0, experience:0, melee: true, desc:"<b>Weapon Mastery - Massive</b>"},
-        /*22*/	{combat: "Range", 		level:0, experience:0, melee: false, desc:"<b>Spell Mastery</b>"},
+        /*22*/	{combat: "Spell", 		level:0, experience:0, melee: false, desc:"<b>Spell Mastery</b>"},
         /*23*/	{combat: "Unarmed", 	level:0, experience:0, melee: true, desc:"<b>Dao of Fists</b>"},
-        /*24*/	{combat: "DualMassive", level:0, experience:0, melee: true, desc:"<b>Dual Wield Mastery - Massive</b>"}
+        /*24*/	{combat: "DualMassive", level:0, experience:0, melee: true, desc:"<b>Dual Wield Mastery - Massive</b>"}//,
+        /*25*/	//{combat: "PSoulskill", 	level:0, experience:0, melee: true, desc:"<b>Physical Soulskill Mastery</b>"},
+        /*26*/	//{combat: "MSoulskill", 	level:0, experience:0, melee: false, desc:"<b>Magical Soulskill Mastery</b>"}
 		];
 
         public function initCombatMastery():void{
@@ -7657,8 +7659,8 @@ use namespace CoC;
 				[Combat.MASTERY_ARCHERY, isBowTypeWeapon(), [10, 20, 30, 40, 50]],
 				[Combat.MASTERY_ARCHERY, isCrossbowTypeWeapon(), [15, 30]],
 				[Combat.MASTERY_THROWING, isThrownTypeWeapon(), [15, 30]],
-				[Combat.MASTERY_FIREARMS, isFirearmTypeWeapon(), [10, 25, 40]],
-				[Combat.MASTERY_RANGED, true, [10, 25, 40]] //the last one for "everything else"
+				[Combat.MASTERY_FIREARMS, isFirearmTypeWeapon(), [10, 25, 40]]
+				//[Combat.MASTERY_RANGED, true, [10, 25, 40]] //the last one for "everything else"
 			];
 		}
 

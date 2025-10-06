@@ -1779,6 +1779,20 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
             if (saveFile.data.dualWLLevel != undefined) player.combatMastery[16].level = saveFile.data.dualWLLevel;
             if (saveFile.data.dualWFXP != undefined) player.combatMastery[17].experience = saveFile.data.dualWFXP;
             if (saveFile.data.dualWFLevel != undefined) player.combatMastery[17].level = saveFile.data.dualWFLevel;
+            if (saveFile.data.weaponSizeSmallXP != undefined) player.combatMastery[18].experience = saveFile.data.weaponSizeSmallXP;
+            if (saveFile.data.weaponSizeSmall != undefined) player.combatMastery[18].level = saveFile.data.weaponSizeSmall;
+            if (saveFile.data.weaponSizeNormalXP != undefined) player.combatMastery[19].experience = saveFile.data.weaponSizeNormalXP;
+            if (saveFile.data.weaponSizeNormal != undefined) player.combatMastery[19].level = saveFile.data.weaponSizeNormal;
+            if (saveFile.data.weaponSizeLargeXP != undefined) player.combatMastery[20].experience = saveFile.data.weaponSizeLargeXP;
+            if (saveFile.data.weaponSizeLarge != undefined) player.combatMastery[20].level = saveFile.data.weaponSizeLarge;
+            if (saveFile.data.weaponSizeMassiveXP != undefined) player.combatMastery[21].experience = saveFile.data.weaponSizeMassiveXP;
+            if (saveFile.data.weaponSizeMassive != undefined) player.combatMastery[21].level = saveFile.data.weaponSizeMassive;
+			if (saveFile.data.masteryMagicCombatXP != undefined) player.combatMastery[22].experience = saveFile.data.masteryMagicCombatXP;
+            if (saveFile.data.masteryMagicCombat != undefined) player.combatMastery[22].level = saveFile.data.masteryMagicCombat;
+			if (saveFile.data.masteryUnarmedCombatXP != undefined) player.combatMastery[23].experience = saveFile.data.masteryUnarmedlCombatXP;
+            if (saveFile.data.masteryUnarmedCombatLevel != undefined) player.combatMastery[23].level = saveFile.data.masteryUnarmedCombatLevel;
+			if (saveFile.data.dualWMXP != undefined) player.combatMastery[24].experience = saveFile.data.dualWMXP;
+            if (saveFile.data.dualWMLevel != undefined) player.combatMastery[24].level = saveFile.data.dualWMLevel;
         }
 
 		//Mining

@@ -193,7 +193,7 @@ public class Combat extends BaseContent {
     public function weaponSizeNormal():Number {return player.combatMastery[19].level;}
     public function weaponSizeLarge():Number {return player.combatMastery[20].level;}
     public function weaponSizeMassive():Number {return player.combatMastery[21].level;}
-    //public function weaponSizeRange():Number {return player.combatMastery[22].level;}
+    public function masteryMagicCombat():Number {return player.combatMastery[22].level;}
     public function masteryUnarmedCombatLevel():Number {return player.combatMastery[23].level;}
     public function dualWMLevel():Number {return player.combatMastery[24].level;}
 
@@ -15814,7 +15814,7 @@ public static const MASTERY_SMALL:int = 18;
 public static const MASTERY_NORMAL:int = 19;
 public static const MASTERY_LARGE:int = 20;
 public static const MASTERY_MASSIVE:int = 21;
-public static const MASTERY_RANGED:int = 22;
+public static const MASTERY_SPELLS:int = 22;
 public static const MASTERY_UNARMED:int = 23;
 public static const MASTERY_DUAL_MASSIVE:int = 24;
 
@@ -15825,7 +15825,6 @@ public static const bonusAttackMasteries:Array = [
     MASTERY_SMALL,
     MASTERY_LARGE,
     MASTERY_MASSIVE,
-    MASTERY_RANGED,
     MASTERY_NORMAL,
     MASTERY_ARCHERY,
     MASTERY_THROWING,
@@ -15855,7 +15854,7 @@ public function weaponSmallMastery(XP:Number):void				{player.gainCombatXP(MASTE
 public function weaponNormalMastery(XP:Number):void				{player.gainCombatXP(MASTERY_NORMAL, XP * weaponmasteryXPMulti());}
 public function weaponLargeMastery(XP:Number):void				{player.gainCombatXP(MASTERY_LARGE, XP * weaponmasteryXPMulti());}
 public function weaponMassiveMastery(XP:Number = 0):void		{player.gainCombatXP(MASTERY_MASSIVE, XP * weaponmasteryXPMulti());}
-//public function weaponRangeMastery(XP:Number = 0):void		{player.gainCombatXP(MASTERY_RANGED, XP * weaponmasteryXPMulti());}
+public function spellcastingMasteryXP(XP:Number = 0):void		{player.gainCombatXP(MASTERY_SPELLS, XP * weaponmasteryXPMulti());}
 public function unarmedCombatXP(XP:Number):void					{player.gainCombatXP(MASTERY_UNARMED, XP * weaponmasteryXPMulti());}
 
 //VICTORY OR DEATH?
@@ -19928,6 +19927,29 @@ public function rangeMasteryEXPgained(crit:Boolean = false):Number {
 	if (player.hasMutation(IMutationsLib.HumanVersatilityIM) && player.perkv1(IMutationsLib.HumanVersatilityIM) == 3 && rand(5) == 0) rangeMasteryEXPgains *= 3;
 	if (player.hasMutation(IMutationsLib.HumanVersatilityIM) && player.perkv1(IMutationsLib.HumanVersatilityIM) == 4 && rand(5) < 2) rangeMasteryEXPgains *= 4;
     return rangeMasteryEXPgains;
+}
+
+public function spellcastingMasteryEXPgained(crit:Boolean = false):Number {
+	var spellsMasteryEXPgains:Number = 1;
+	//if (player.hasPerk(PerkLib.RangeWeaponsMastery)) rangeMasteryEXPgains += 2;
+	//if (player.weaponRange == weaponsrange.BEA_BOW) rangeMasteryEXPgains *= 2;
+	if (monster is TrainingDummy && flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 1) {
+		spellsMasteryEXPgains *= 2;
+		var bMXPMulti:Number = 1;
+		if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 2) bMXPMulti += 1.5;
+		if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 3) bMXPMulti += 2;
+		if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 4) bMXPMulti += 2.5;
+		if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 5) bMXPMulti += 3;
+		if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 6) bMXPMulti += 5;
+		spellsMasteryEXPgains *= bMXPMulti;
+	}
+	if (crit) {
+		spellsMasteryEXPgains *= 2;
+		//if (player.hasPerk(PerkLib.RangeWeaponsMasteryEx)) spellsMasteryEXPgains *= 2;
+	}
+	if (player.hasMutation(IMutationsLib.HumanVersatilityIM) && player.perkv1(IMutationsLib.HumanVersatilityIM) == 3 && rand(5) == 0) spellsMasteryEXPgains *= 3;
+	if (player.hasMutation(IMutationsLib.HumanVersatilityIM) && player.perkv1(IMutationsLib.HumanVersatilityIM) == 4 && rand(5) < 2) spellsMasteryEXPgains *= 4;
+	return spellsMasteryEXPgains;
 }
 
 public function bonusCriticalDamageFromMissingHP():Number {
