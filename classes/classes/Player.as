@@ -3927,10 +3927,14 @@ use namespace CoC;
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistEoDApprenticeStage)) {
 					var boost:Number = (mult * -1);
+					var boost1:Number = boost;
 					if (hasPerk(PerkLib.DaoistEoDOverlordStage)) boost *= 2;
 					if (hasPerk(PerkLib.DaoistEoDTyrantStage)) boost *= 1.5;
-					if (hasStatusEffect(StatusEffects.DaoOfFire)) changeStatusValue(StatusEffects.DaoOfFire, 3, boost);
-					else createStatusEffect(StatusEffects.DaoOfFire, 0, 0, boost, 0);
+					if (hasStatusEffect(StatusEffects.DaoOfFire)) {
+						changeStatusValue(StatusEffects.DaoOfFire, 3, boost);
+						changeStatusValue(StatusEffects.DaoOfFire, 4, boost1);
+					}
+					else createStatusEffect(StatusEffects.DaoOfFire, 0, 0, boost, boost1);
 				}
 				mult = 0;
 			}
@@ -4026,10 +4030,14 @@ use namespace CoC;
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistEoTApprenticeStage)) {
 					var boost:Number = (mult * -1);
+					var boost1:Number = boost;
 					if (hasPerk(PerkLib.DaoistEoTOverlordStage)) boost *= 2;
 					if (hasPerk(PerkLib.DaoistEoTTyrantStage)) boost *= 1.5;
-					if (hasStatusEffect(StatusEffects.DaoOfIce)) changeStatusValue(StatusEffects.DaoOfIce, 3, boost);
-					else createStatusEffect(StatusEffects.DaoOfIce, 0, 0, boost, 0);
+					if (hasStatusEffect(StatusEffects.DaoOfIce)) {
+						changeStatusValue(StatusEffects.DaoOfIce, 3, boost);
+						changeStatusValue(StatusEffects.DaoOfIce, 4, boost1);
+					}
+					else createStatusEffect(StatusEffects.DaoOfIce, 0, 0, boost, boost1);
 				}
 				mult = 0;
 			}
@@ -4111,10 +4119,14 @@ use namespace CoC;
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistLoKApprenticeStage)) {
 					var boost:Number = (mult * -1);
+					var boost1:Number = boost;
 					if (hasPerk(PerkLib.DaoistLoKOverlordStage)) boost *= 2;
 					if (hasPerk(PerkLib.DaoistLoKTyrantStage)) boost *= 1.5;
-					if (hasStatusEffect(StatusEffects.DaoOfLightning)) changeStatusValue(StatusEffects.DaoOfLightning, 3, boost);
-					else createStatusEffect(StatusEffects.DaoOfLightning, 0, 0, boost, 0);
+					if (hasStatusEffect(StatusEffects.DaoOfLightning)) {
+						changeStatusValue(StatusEffects.DaoOfLightning, 3, boost);
+						changeStatusValue(StatusEffects.DaoOfLightning, 4, boost1);
+					}
+					else createStatusEffect(StatusEffects.DaoOfLightning, 0, 0, boost, boost1);
 				}
 				mult = 0;
 			}
@@ -4189,10 +4201,14 @@ use namespace CoC;
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistJoPApprenticeStage)) {
 					var boost:Number = (mult * -1);
+					var boost1:Number = boost;
 					if (hasPerk(PerkLib.DaoistJoPOverlordStage)) boost *= 2;
 					if (hasPerk(PerkLib.DaoistJoPTyrantStage)) boost *= 1.5;
-					if (hasStatusEffect(StatusEffects.DaoOfDarkness)) changeStatusValue(StatusEffects.DaoOfDarkness, 3, boost);
-					else createStatusEffect(StatusEffects.DaoOfDarkness, 0, 0, boost, 0);
+					if (hasStatusEffect(StatusEffects.DaoOfDarkness)) {
+						changeStatusValue(StatusEffects.DaoOfDarkness, 3, boost);
+						changeStatusValue(StatusEffects.DaoOfDarkness, 4, boost1);
+					}
+					else createStatusEffect(StatusEffects.DaoOfDarkness, 0, 0, boost, boost1);
 				}
 				mult = 0;
 			}
@@ -4271,10 +4287,14 @@ use namespace CoC;
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistDotSApprenticeStage)) {
 					var boost:Number = (mult * -1);
+					var boost1:Number = boost;
 					if (hasPerk(PerkLib.DaoistDotSOverlordStage)) boost *= 2;
 					if (hasPerk(PerkLib.DaoistDotSTyrantStage)) boost *= 1.5;
-					if (hasStatusEffect(StatusEffects.DaoOfPoison)) changeStatusValue(StatusEffects.DaoOfPoison, 3, boost);
-					else createStatusEffect(StatusEffects.DaoOfPoison, 0, 0, boost, 0);
+					if (hasStatusEffect(StatusEffects.DaoOfPoison)) {
+						changeStatusValue(StatusEffects.DaoOfPoison, 3, boost);
+						changeStatusValue(StatusEffects.DaoOfPoison, 4, boost1);
+					}
+					else createStatusEffect(StatusEffects.DaoOfPoison, 0, 0, boost, boost1);
 				}
 				mult = 0;
 			}
@@ -4350,10 +4370,14 @@ use namespace CoC;
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistKoGApprenticeStage)) {
 					var boost:Number = (mult * -1);
+					var boost1:Number = boost;
 					if (hasPerk(PerkLib.DaoistKoGOverlordStage)) boost *= 2;
 					if (hasPerk(PerkLib.DaoistKoGTyrantStage)) boost *= 1.5;
-					if (hasStatusEffect(StatusEffects.DaoOfWind)) changeStatusValue(StatusEffects.DaoOfWind, 3, boost);
-					else createStatusEffect(StatusEffects.DaoOfWind, 0, 0, boost, 0);
+					if (hasStatusEffect(StatusEffects.DaoOfWind)) {
+						changeStatusValue(StatusEffects.DaoOfWind, 3, boost);
+						changeStatusValue(StatusEffects.DaoOfWind, 4, boost1);
+					}
+					else createStatusEffect(StatusEffects.DaoOfWind, 0, 0, boost, boost1);
 				}
 				mult = 0;
 			}
@@ -4432,10 +4456,14 @@ use namespace CoC;
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistPotLApprenticeStage)) {
 					var boost:Number = (mult * -1);
+					var boost1:Number = boost;
 					if (hasPerk(PerkLib.DaoistPotLOverlordStage)) boost *= 2;
 					if (hasPerk(PerkLib.DaoistPotLTyrantStage)) boost *= 1.5;
-					if (hasStatusEffect(StatusEffects.DaoOfWater)) changeStatusValue(StatusEffects.DaoOfWater, 3, boost);
-					else createStatusEffect(StatusEffects.DaoOfWater, 0, 0, boost, 0);
+					if (hasStatusEffect(StatusEffects.DaoOfWater)) {
+						changeStatusValue(StatusEffects.DaoOfWater, 3, boost);
+						changeStatusValue(StatusEffects.DaoOfWater, 4, boost1);
+					}
+					else createStatusEffect(StatusEffects.DaoOfWater, 0, 0, boost, boost1);
 				}
 				mult = 0;
 			}
@@ -4511,10 +4539,14 @@ use namespace CoC;
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistMoTApprenticeStage)) {
 					var boost:Number = (mult * -1);
+					var boost1:Number = boost;
 					if (hasPerk(PerkLib.DaoistMoTOverlordStage)) boost *= 2;
 					if (hasPerk(PerkLib.DaoistMoTTyrantStage)) boost *= 1.5;
-					if (hasStatusEffect(StatusEffects.DaoOfEarth)) changeStatusValue(StatusEffects.DaoOfEarth, 3, boost);
-					else createStatusEffect(StatusEffects.DaoOfEarth, 0, 0, boost, 0);
+					if (hasStatusEffect(StatusEffects.DaoOfEarth)) {
+						changeStatusValue(StatusEffects.DaoOfEarth, 3, boost);
+						changeStatusValue(StatusEffects.DaoOfEarth, 4, boost1);
+					}
+					else createStatusEffect(StatusEffects.DaoOfEarth, 0, 0, boost, boost1);
 				}
 				mult = 0;
 			}
@@ -4596,10 +4628,14 @@ use namespace CoC;
 			if (mult < 0) {
 				if (hasPerk(PerkLib.DaoistGoHApprenticeStage)) {
 					var boost:Number = (mult * -1);
+					var boost1:Number = boost;
 					if (hasPerk(PerkLib.DaoistGoHOverlordStage)) boost *= 2;
 					if (hasPerk(PerkLib.DaoistGoHTyrantStage)) boost *= 1.5;
-					if (hasStatusEffect(StatusEffects.DaoOfAcid)) changeStatusValue(StatusEffects.DaoOfAcid, 3, boost);
-					else createStatusEffect(StatusEffects.DaoOfAcid, 0, 0, boost, 0);
+					if (hasStatusEffect(StatusEffects.DaoOfAcid)) {
+						changeStatusValue(StatusEffects.DaoOfAcid, 3, boost);
+						changeStatusValue(StatusEffects.DaoOfAcid, 4, boost1);
+					}
+					else createStatusEffect(StatusEffects.DaoOfAcid, 0, 0, boost, boost1);
 				}
 				mult = 0;
 			}

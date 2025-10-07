@@ -267,8 +267,8 @@ public class Changelog extends BaseContent
 			outputText("-Elemental Crystal changed a bit: cost increased (20 > 50) and stored energy (2x of elemental crystal > 5x elemental crystal). Some of enemies that was dropping Elemental Core would drop now Large Elemental Crystal.\n");
 			outputText("-Elemental infused items and Soulforce conversion to Elemental Energy in elementalist job submenu was slight expanded with a few more options.\n");
 			outputText("-New tier 8 corruption lvl-up perk: False Light. Req. 100+ corruption. Effect: You are so good at lies and manipulation you can not only conceal your corruption but also convince others that you are righteous and pure by warping their perception of you. Furthermore for each follower, lover or slave you own gain a +10% increase to tease damage.\n");
-			outputText("-New mastery: Spell Mastery - rised by casting... spells (yes it weas such obvious so what did you expected?)\n");
-			outputText("-\n");
+			outputText("-New mastery: Spell Mastery - rised by casting... spells. (I bet you didn't see it comming?) It's increasing spells damage and accuracy.\n");
+			outputText("-Elemental resistances with value above 100% would show actual total value in () after 100% number. Also Psionic resistance would not lie it's always 0% (yes it can be higher then 0% now) so we asked it stop lie to about it value and it reluctantly agreed to this.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
