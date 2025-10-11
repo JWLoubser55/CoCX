@@ -6,6 +6,7 @@
 package classes.Scenes.Areas
 {
 import classes.*;
+import classes.GlobalFlags.kFLAGS;
 import classes.BodyParts.Arms;
 import classes.BodyParts.Ears;
 import classes.BodyParts.Face;
@@ -17,6 +18,7 @@ import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.GlacialRift.*;
 import classes.Scenes.Camp.CampStatsAndResources;
+import classes.Scenes.Dungeons.RiverDungeon.IceElemental;
 import classes.Scenes.NPCs.EtnaFollower;
 import classes.Scenes.NPCs.Valeria;
 import classes.Scenes.SceneLib;
@@ -189,6 +191,11 @@ use namespace CoC;
 				day : false,
 				call: wendigoScene.encounterWendigo
 			}, {
+				name: "ice ele",
+				label : "Ice Elemental",
+				kind  : 'monster',
+				call: outerGlacialRiftIceElemental
+			}, {
 				//Valeria
 				name: "valeria",
 				label : "Valeria",
@@ -256,6 +263,14 @@ use namespace CoC;
 			var temp:Number = 0.5;
 			temp *= player.npcChanceToEncounter();
 			return temp;
+		}
+	
+		private function outerGlacialRiftIceElemental():void {
+			clearOutput();
+			outputText("We awaits for... ");
+			outputText("Lia writing nice intro here.\n\n");//lvl 100
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 6;
+			startCombat(new IceElemental());
 		}
 		
 		public function encounterNothing():void {

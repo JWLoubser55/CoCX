@@ -103,14 +103,20 @@ public class DarknessElemental extends Monster
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatDarknessElementalSubBoss();
+			if (inDungeon) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatDarknessElementalSubBoss();
+				else cleanupAfterCombat();
+			}
 			else cleanupAfterCombat();
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByDarknessElementalSubBoss();
-			else SceneLib.dungeons.riverdungeon.defeatedByDarknessElemental();
+			if (inDungeon) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByDarknessElementalSubBoss();
+				else SceneLib.dungeons.riverdungeon.defeatedByDarknessElemental();
+			}
+			else cleanupAfterCombat();
 		}
 		
 		public function DarknessElemental() 
@@ -185,6 +191,20 @@ public class DarknessElemental extends Monster
 				this.bonusHP = 3150;
 				this.additionalXP = 600;
 			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+				this.short = "darkness elemental";
+				this.imageName = "darkness elemental";
+				this.long = "You're currently fighting darkness elemental. It's a four foot, nine inch tall body of darkness shaped into a humanoid form. It's using bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(236, 256, 296, 1180);
+				initWisLibSensCor(1180, 20, 750, 0);
+				this.weaponAttack = 252;
+				this.armorDef = 304;
+				this.armorMDef = 1540;
+				this.level = 90;
+				this.bonusHP = 7900;
+				this.additionalXP = 1145;
+			}
 			this.a = "the ";
 			this.plural = false;
 			this.lustVuln = 0.01;
@@ -195,18 +215,25 @@ public class DarknessElemental extends Monster
 			this.armorName = "skin of the darkness";
 			this.createPerk(PerkLib.EnemyElementalType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.DarknessNature, 0, 0, 0, 0);
-			if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) {
-				this.createPerk(PerkLib.EnemyHugeType, 0, 0, 0, 0);
-				this.createPerk(PerkLib.EnemyChampionType, 0, 0, 0, 0);
-				this.drop = new WeightedDrop()
-					.add(useables.ELCRYST, 3)
-					.add(useables.LELSHARD, 1);
+			if (inDungeon) {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) {
+					this.createPerk(PerkLib.EnemyHugeType, 0, 0, 0, 0);
+					this.createPerk(PerkLib.EnemyChampionType, 0, 0, 0, 0);
+					this.drop = new WeightedDrop()
+						.add(useables.ELCRYST, 3)
+						.add(useables.LELSHARD, 1);
+				}
+				else {
+					this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
+					this.drop = new WeightedDrop()
+						.add(useables.ELSHARD, 3)
+						.add(useables.LELSHARD, 1);
+				}
 			}
 			else {
-				this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 				this.drop = new WeightedDrop()
-					.add(useables.ELSHARD, 3)
-					.add(useables.LELSHARD, 1);
+					.add(useables.ELCRYST, 3)
+					.add(useables.LELCRYST, 1);
 			}
 			checkMonster();
 		}
