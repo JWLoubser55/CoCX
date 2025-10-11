@@ -172,7 +172,8 @@ public class Ashlands extends BaseContent
 	
 	private function ashlandsFireElemental():void {
 		clearOutput();
-		outputText("(In day or two there will be pretty text form Lia for this part and now fight that greater fire elemental)\n\n");
+		outputText("As you wander ashlands you stumble into a somewhat horrifying scene. A blazing woman is laughing maniacally as she sets a bunch of charred screaming humanoid creatures on fire. Whatever these were they are so burned out now that you can’t even identify their races anymore. ");
+		outputText("As the last victim screams its dying breath the fully grown Ignis suddenly realise you are here. She turns to face you, flames amassing in her palm as she prepares to add one more victim to her fiery rampage. You ready yourself for a fight as there is definitively no way you can resolve that issue peacefully.\n\n");
 		flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
 		startCombat(new FireElemental());
 	}

@@ -1235,7 +1235,7 @@ doNext(camp.returnToCampUseOneHour);
 }
 public function MaybeNot():void {
 clearOutput();
-outputText("<i>“Well, most of us are kinda busy keeping the village running</i>”. She laughs awkwardly. <i>“So...Dinner’s your best bet for that, unless you wanna join us in target practice\". \n\n");
+outputText("<i>“Well, most of us are kinda busy keeping the village running.</i>” She laughs awkwardly. <i>“So...Dinner’s your best bet for that, unless you wanna join us in target practice.</i>”\n\n");
 doNext (enterVillage);
 }
 
