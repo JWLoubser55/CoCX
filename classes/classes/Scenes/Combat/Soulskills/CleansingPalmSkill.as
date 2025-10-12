@@ -45,11 +45,8 @@ public class CleansingPalmSkill extends AbstractSoulSkill {
 	}
 
 	private function calcCorruptionMulti(monster:Monster):Number {
-		var corruptionMulti:Number = (monster.cor - 20) / 25;
-		if (corruptionMulti > 1.5) {
-			corruptionMulti = 1.5;
-			corruptionMulti += ((monster.cor - 57.5) / 100); //The increase to multiplier is diminished.
-		}
+		var corruptionMulti:Number = (monster.cor / 25);
+		if (corruptionMulti < 0) corruptionMulti = 0;
 		return corruptionMulti;
 	}
 
@@ -102,7 +99,7 @@ public class CleansingPalmSkill extends AbstractSoulSkill {
 					outputText((monster as Monster).mfn(" him", " her", " it"));
 				}
 				outputText(" back a few feet.\n\n");
-				if (silly() && calcCorruptionMulti(monster) >= 1.75) outputText("It's super effective!  ");
+				if (silly() && monster.cor >= 66) outputText("It's super effective!  ");
 			}
 			//Determine if critical hit!
 			var crit:Boolean = false;

@@ -1421,7 +1421,7 @@ public class Camp extends NPCAwareContent{
 				buttons.add("Alvina", SceneLib.alvinaFollower.alvinaPureMainCampMenu).hint("Check up on Alvina.");
 			}
 			else if (flags[kFLAGS.ALVINA_FOLLOWER] > 19) {
-				outputText("Alvina isn’t so far from here, having made her [camp] in a corrupted plant groove she created so to have easy access to reagents.\n\n");
+				outputText("Alvina isn’t so far from here, having made her [camp] in a corrupted plant grove she created so to have easy access to reagents.\n\n");
 				buttons.add("Alvina", SceneLib.alvinaFollower.alvinaMainCampMenu).hint("Check up on Alvina.");
 			}
 			//AMILY
@@ -4901,7 +4901,7 @@ public class Camp extends NPCAwareContent{
 				.disableIf(flags[kFLAGS.BAZAAR_ENTERED] <= 0, "Explore the realm.", null, "???");
 		bd.add("Owca", SceneLib.owca.gangbangVillageStuff)
 				.hint("Visit the sheep village of Owca, known for its pit where a person is hung on the pole weekly to be gang-raped by the demons.")
-				.disableIf(flags[kFLAGS.OWCA_UNLOCKED] != 1, "Search the plains (at late afternoon to ealry evening hours).", null, "???");
+				.disableIf(flags[kFLAGS.OWCA_UNLOCKED] != 1, "Search the plains (at late afternoon to early evening hours).", null, "???");
 		bd.add("Troll Village", SceneLib.trollVillage.EnterTheVillage)
 				.hint("Visit the Troll Village.")
 				.disableIf(TrollVillage.ZenjiVillageStage <= 0, "You have not visited this place yet.", null, "???");

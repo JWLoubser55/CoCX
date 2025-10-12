@@ -362,7 +362,7 @@ public class KatherineEmployment extends TelAdreAbstractContent {
 			}
 			if (katherine.knotSize < 4) takeAnal = katherine.getPenetrated;
 			choices("Fuck Her", penKath, "Give Anal", penAnal, "Give Both", penBoth, "Bath", katherine.bathTime, "", null,
-				"Nount Her", takeVag, "Take Anal", takeAnal, "Take Both", takeVagAndAss, "", null, "", null);
+				"Mount Her", takeVag, "Take Anal", takeAnal, "Take Both", takeVagAndAss, "", null, "", null);
 		}
 
 		public function katherineTrainingStage3():void
