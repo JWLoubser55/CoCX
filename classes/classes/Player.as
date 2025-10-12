@@ -162,36 +162,37 @@ use namespace CoC;
 		 * @property {Number} level - The level of mastery in combat.
 		 * @property {Number} experience - The experience gained in combat.
 		 * @property {Boolean} melee - Whether the combat is melee or not.
+		 * @property {Number} subtype - Melee / Ranged / Spell.
 		 * @property {String} desc - A description of the combat mastery.
 		 */
 		public var combatMastery:Array =[
-        /*00*/	{combat: "Feral", 		level:0, experience:0, melee: true, desc:"<b>Dao of Feral Beast</b>"},
-        /*01*/	{combat: "Gauntlet", 	level:0, experience:0, melee: true, desc:"<b>Dao of Gauntlets</b>"},
-        /*02*/	{combat: "Dagger", 		level:0, experience:0, melee: true, desc:"<b>Dao of Dagger</b>"},
-        /*03*/	{combat: "Sword", 		level:0, experience:0, melee: true, desc:"<b>Dao of Sword</b>"},
-        /*04*/	{combat: "Axe", 		level:0, experience:0, melee: true, desc:"<b>Dao of Axe</b>"},
-        /*05*/	{combat: "Bludgeon", 	level:0, experience:0, melee: true, desc:"<b>Dao of Bludgeon</b>"},
-        /*06*/	{combat: "Dueling", 	level:0, experience:0, melee: true, desc:"<b>Dao of Dueling</b>"},
-        /*07*/	{combat: "Polearm", 	level:0, experience:0, melee: true, desc:"<b>Dao of Polearm</b>"},
-        /*08*/	{combat: "Spear", 		level:0, experience:0, melee: true, desc:"<b>Dao of Spear</b>"},
-        /*09*/	{combat: "Whip", 		level:0, experience:0, melee: true, desc:"<b>Dao of Whip</b>"},
-        /*10*/	{combat: "Exotic", 		level:0, experience:0, melee: true, desc:"<b>Dao of Exotic</b>"},
-        /*11*/	{combat: "Archery", 	level:0, experience:0, melee: false, desc:"\n<b>Dao of Archery</b>"},
-        /*12*/	{combat: "Throwing", 	level:0, experience:0, melee: false, desc:"<b>Dao of Throwing Weapons</b>"},
-        /*13*/	{combat: "Firearms", 	level:0, experience:0, melee: false, desc:"<b>Dao of Firearms</b>"},
-        /*14*/	{combat: "DualSmall", 	level:0, experience:0, melee: true, desc:"\n<b>Dual Wield Mastery - Small</b>"},
-        /*15*/	{combat: "DualNormal", 	level:0, experience:0, melee: true, desc:"<b>Dual Wield Mastery - Normal</b>"},
-        /*16*/	{combat: "DualLarge", 	level:0, experience:0, melee: true, desc:"<b>Dual Wield Mastery - Large</b>"},
-        /*17*/	{combat: "DualFirearm", level:0, experience:0, melee: false, desc:"<b>Dual Wield Mastery - Firearms</b>"},
-        /*18*/	{combat: "Small", 		level:0, experience:0, melee: true, desc:"\n<b>Weapon Mastery - Small</b>"},
-        /*19*/	{combat: "Normal", 		level:0, experience:0, melee: true, desc:"<b>Weapon Mastery - Normal</b>"},
-        /*20*/	{combat: "Large", 		level:0, experience:0, melee: true, desc:"<b>Weapon Mastery - Large</b>"},
-        /*21*/	{combat: "Massive", 	level:0, experience:0, melee: true, desc:"<b>Weapon Mastery - Massive</b>"},
-        /*22*/	{combat: "Spell", 		level:0, experience:0, melee: false, desc:"<b>Spell Mastery</b>"},
-        /*23*/	{combat: "Unarmed", 	level:0, experience:0, melee: true, desc:"<b>Dao of Fists</b>"},
-        /*24*/	{combat: "DualMassive", level:0, experience:0, melee: true, desc:"<b>Dual Wield Mastery - Massive</b>"}//,
-        /*25*/	//{combat: "PSoulskill", 	level:0, experience:0, melee: true, desc:"<b>Physical Soulskill Mastery</b>"},
-        /*26*/	//{combat: "MSoulskill", 	level:0, experience:0, melee: false, desc:"<b>Magical Soulskill Mastery</b>"}
+        /*00*/	{combat: "Feral", 		level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Feral Beast</b>"},
+        /*01*/	{combat: "Gauntlet", 	level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Gauntlets</b>"},
+        /*02*/	{combat: "Dagger", 		level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Dagger</b>"},
+        /*03*/	{combat: "Sword", 		level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Sword</b>"},
+        /*04*/	{combat: "Axe", 		level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Axe</b>"},
+        /*05*/	{combat: "Bludgeon", 	level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Bludgeon</b>"},
+        /*06*/	{combat: "Dueling", 	level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Dueling</b>"},
+        /*07*/	{combat: "Polearm", 	level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Polearm</b>"},
+        /*08*/	{combat: "Spear", 		level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Spear</b>"},
+        /*09*/	{combat: "Whip", 		level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Whip</b>"},
+        /*10*/	{combat: "Exotic", 		level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Exotic</b>"},
+        /*11*/	{combat: "Archery", 	level:0, experience:0, melee: false, subtype: 2, desc:"\n<b>Dao of Archery</b>"},
+        /*12*/	{combat: "Throwing", 	level:0, experience:0, melee: false, subtype: 2, desc:"<b>Dao of Throwing Weapons</b>"},
+        /*13*/	{combat: "Firearms", 	level:0, experience:0, melee: false, subtype: 2, desc:"<b>Dao of Firearms</b>"},
+        /*14*/	{combat: "DualSmall", 	level:0, experience:0, melee: true, subtype: 1, desc:"\n<b>Dual Wield Mastery - Small</b>"},
+        /*15*/	{combat: "DualNormal", 	level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dual Wield Mastery - Normal</b>"},
+        /*16*/	{combat: "DualLarge", 	level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dual Wield Mastery - Large</b>"},
+        /*17*/	{combat: "DualFirearm", level:0, experience:0, melee: false, subtype: 2, desc:"<b>Dual Wield Mastery - Firearms</b>"},
+        /*18*/	{combat: "Small", 		level:0, experience:0, melee: true, subtype: 1, desc:"\n<b>Weapon Mastery - Small</b>"},
+        /*19*/	{combat: "Normal", 		level:0, experience:0, melee: true, subtype: 1, desc:"<b>Weapon Mastery - Normal</b>"},
+        /*20*/	{combat: "Large", 		level:0, experience:0, melee: true, subtype: 1, desc:"<b>Weapon Mastery - Large</b>"},
+        /*21*/	{combat: "Massive", 	level:0, experience:0, melee: true, subtype: 1, desc:"<b>Weapon Mastery - Massive</b>"},
+        /*22*/	{combat: "Spell", 		level:0, experience:0, melee: false, subtype: 3, desc:"<b>Spell Mastery</b>"},
+        /*23*/	{combat: "Unarmed", 	level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dao of Fists</b>"},
+        /*24*/	{combat: "DualMassive", level:0, experience:0, melee: true, subtype: 1, desc:"<b>Dual Wield Mastery - Massive</b>"}//,
+        /*25*/	//{combat: "PSoulskill", 	level:0, experience:0, melee: true, subtype: 4, desc:"<b>Physical Soulskill Mastery</b>"},
+        /*26*/	//{combat: "MSoulskill", 	level:0, experience:0, melee: false, subtype: 5, desc:"<b>Magical Soulskill Mastery</b>"}
 		];
 
         public function initCombatMastery():void{
@@ -7572,24 +7573,25 @@ use namespace CoC;
 			return true;
 		}
 
-		public function maxCombatLevel(melee:Boolean = true):Number{
+		public function maxCombatLevel(subtype:Number):Number{
             var maxLevel:Number = 10;
             if (level < 90) maxLevel += level;
             else maxLevel += 90;
-            if (melee && hasPerk(PerkLib.MeleeWeaponsMasterySu)) maxLevel += 50;
-            if (!melee && hasPerk(PerkLib.RangeWeaponsMasterySu)) maxLevel += 50;
+            if (subtype == 1 && hasPerk(PerkLib.MeleeWeaponsMasterySu)) maxLevel += 50;
+            if (subtype == 2 && hasPerk(PerkLib.RangeWeaponsMasterySu)) maxLevel += 50;
+            if (subtype == 3 && hasPerk(PerkLib.SpellcastingMasterySu)) maxLevel += 50;
             return maxLevel;
 		}
-		public function CombatExpToLevelUp(masteryLevel:Number, melee:Boolean):Number{
+		public function CombatExpToLevelUp(masteryLevel:Number, subtype:Number):Number{
 			var baseXPtoLevel:Number = 10;
 			var WeaponMasteryModifier:Number = 5;
-            if ((hasPerk(PerkLib.RangeWeaponsMastery) && !melee) || (hasPerk(PerkLib.MeleeWeaponsMastery) && melee)) WeaponMasteryModifier -= 1;
+            if ((hasPerk(PerkLib.SpellcastingMastery) && subtype == 3) || (hasPerk(PerkLib.RangeWeaponsMastery) && subtype == 2) || (hasPerk(PerkLib.MeleeWeaponsMastery) && subtype == 1)) WeaponMasteryModifier -= 1;
 			if (hasMutation(IMutationsLib.HumanVersatilityIM) && perkv1(IMutationsLib.HumanVersatilityIM) >= 2 && racialScore(Races.HUMAN) > 17) WeaponMasteryModifier -= 1;
 			if (hasMutation(IMutationsLib.HumanVersatilityIM) && perkv1(IMutationsLib.HumanVersatilityIM) >= 3 && racialScore(Races.HUMAN) > 17) WeaponMasteryModifier -= 2;
 			var WeaponMasteryEXModifier:Number = masteryLevel + 1;
-            if ((hasPerk(PerkLib.RangeWeaponsMasteryEx) && !melee) || (hasPerk(PerkLib.MeleeWeaponsMasteryEx) && melee)) WeaponMasteryEXModifier = Math.round(1 + (masteryLevel *.5));
+            if ((hasPerk(PerkLib.SpellcastingMasteryEx) && subtype == 3) || (hasPerk(PerkLib.RangeWeaponsMasteryEx) && subtype == 2) || (hasPerk(PerkLib.MeleeWeaponsMasteryEx) && subtype == 1)) WeaponMasteryEXModifier = Math.round(1 + (masteryLevel *.5));
 			var WeaponMasterySUModifier:Number = masteryLevel + 1;
-            if ((hasPerk(PerkLib.RangeWeaponsMasterySu) && !melee) || (hasPerk(PerkLib.MeleeWeaponsMasterySu) && melee)) WeaponMasterySUModifier = Math.round(1 + (masteryLevel *.5));
+            if ((hasPerk(PerkLib.SpellcastingMasterySu) && subtype == 3) || (hasPerk(PerkLib.RangeWeaponsMasterySu) && subtype == 2) || (hasPerk(PerkLib.MeleeWeaponsMasterySu) && subtype == 1)) WeaponMasterySUModifier = Math.round(1 + (masteryLevel *.5));
 			return (baseXPtoLevel + (WeaponMasteryModifier * WeaponMasteryEXModifier * WeaponMasterySUModifier));
 		}
 		public function gainCombatXP(index:int, exp:Number, offHand:Boolean = false):void{
@@ -7598,9 +7600,10 @@ use namespace CoC;
 			var levelUp:Boolean        = false;
 			var experience:Number      = masteryObj.experience;
 			var melee:Boolean          = masteryObj.melee;
+			var subtype:Number         = masteryObj.subtype;
 			var desc:String            = masteryObj.desc;
 
-			var xpToLevel:Number = CombatExpToLevelUp(level, melee);
+			var xpToLevel:Number = CombatExpToLevelUp(level, subtype);
 			var xpLoop:Number = exp;
 			var oldProgress:Number = experience/xpToLevel;
 			// for tracking bonus attack masteries
@@ -7612,7 +7615,7 @@ use namespace CoC;
 				xpLoop = 0;				// clear that out.
 
 				// Did we level up?
-				if (level < maxCombatLevel(melee) && experience >= xpToLevel) {
+				if (level < maxCombatLevel(subtype) && experience >= xpToLevel) {
 					levelUp = true;
 					if (hasMutation(IMutationsLib.HumanVersatilityIM) && perkv1(IMutationsLib.HumanVersatilityIM) == 4 && rand(2) == 0) level += 2;
 					else level += 1;
@@ -7625,13 +7628,13 @@ use namespace CoC;
 					xpLoop = experience - xpToLevel;
 					experience = 0;
 					// recalculate xp to next level ( dont want to gain 50 levels unexpectedly
-					xpToLevel = CombatExpToLevelUp(level, melee);
+					xpToLevel = CombatExpToLevelUp(level, subtype);
 				}
 			}
             masteryObj.level = level;
             masteryObj.experience = experience;
 			var newProgress:Number = experience/xpToLevel;
-			if (!levelUp && level < maxCombatLevel(melee)) {
+			if (!levelUp && level < maxCombatLevel(subtype)) {
 				game.mainView.notificationView.popupProgressBar2(
 						"CombatMastery"+masteryObj.combat,
 						"CombatMastery"+masteryObj.combat,

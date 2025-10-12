@@ -19931,7 +19931,7 @@ public function rangeMasteryEXPgained(crit:Boolean = false):Number {
 
 public function spellcastingMasteryEXPgained(crit:Boolean = false):Number {
 	var spellsMasteryEXPgains:Number = 1;
-	//if (player.hasPerk(PerkLib.RangeWeaponsMastery)) rangeMasteryEXPgains += 2;
+	if (player.hasPerk(PerkLib.SpellcastingMastery)) spellsMasteryEXPgains += 2;
 	//if (player.weaponRange == weaponsrange.BEA_BOW) rangeMasteryEXPgains *= 2;
 	if (monster is TrainingDummy && flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 1) {
 		spellsMasteryEXPgains *= 2;
@@ -19945,7 +19945,7 @@ public function spellcastingMasteryEXPgained(crit:Boolean = false):Number {
 	}
 	if (crit) {
 		spellsMasteryEXPgains *= 2;
-		//if (player.hasPerk(PerkLib.RangeWeaponsMasteryEx)) spellsMasteryEXPgains *= 2;
+		if (player.hasPerk(PerkLib.SpellcastingMasteryEx)) spellsMasteryEXPgains *= 2;
 	}
 	if (player.hasMutation(IMutationsLib.HumanVersatilityIM) && player.perkv1(IMutationsLib.HumanVersatilityIM) == 3 && rand(5) == 0) spellsMasteryEXPgains *= 3;
 	if (player.hasMutation(IMutationsLib.HumanVersatilityIM) && player.perkv1(IMutationsLib.HumanVersatilityIM) == 4 && rand(5) < 2) spellsMasteryEXPgains *= 4;

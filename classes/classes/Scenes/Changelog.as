@@ -269,9 +269,9 @@ public class Changelog extends BaseContent
 			outputText("-New tier 8 corruption lvl-up perk: False Light. Req. 100+ corruption. Effect: You are so good at lies and manipulation you can not only conceal your corruption but also convince others that you are righteous and pure by warping their perception of you. Furthermore for each follower, lover or slave you own gain a +10% increase to tease damage.\n");
 			outputText("-New mastery: Spell Mastery - rised by casting... spells. (I bet you didn't see it comming?) It's increasing spells damage and accuracy.\n");
 			outputText("-Elemental resistances with value above 100% would show actual total value in () after 100% number. Also Psionic resistance would not lie it's always 0% (yes it can be higher then 0% now) so we asked it stop lie to about it value and it reluctantly agreed to this.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 0 misc lvl-up perk: Spellcasting Mastery. Req. 10+ int/wis. Effect: Reduces the required experience to level up spellcasting mastery by approximately 20%, and increases base mastery experience gains by 200%.\n");
+			outputText("-New tier 0 misc lvl-up perk: Spellcasting Mastery (Ex). Req. Spellcasting Mastery perk, lvl 2+ and 20+ int/wis. Effect: Reduces the required experience to level up spellcasting mastery by approximately 45%, and doubles mastery gains on critical hits (2x to 4x).\n");
+			outputText("-New tier 0 misc lvl-up perk: Spellcasting Mastery (Su). Req. Spellcasting Mastery (Ex) perk, lvl 4+ and 30+ int/wis. Effect: Reduces the required experience to level up spellcasting mastery by approximately 45%, and increases the cap for spellcasting mastery by 50.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -305,6 +305,33 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -384,26 +411,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -434,15 +443,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

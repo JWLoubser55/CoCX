@@ -1508,13 +1508,15 @@ public class PlayerInfo extends BaseContent {
 	public function printStatMastery(index:String):String{
 		var rval:String 	= "";
 		var desc:String 	= player.combatMastery[index].desc;
-		var melee:Boolean 	= player.combatMastery[index].melee;
+		var subtype:Number 	= player.combatMastery[index].subtype;
 		var exp:Number 		= player.combatMastery[index].experience;
 		var level:Number 	= player.combatMastery[index].level;
-		var maxLevel:Number = player.maxCombatLevel(melee);
+		var maxLevel:Number = player.maxCombatLevel(subtype);
         rval += desc + ":  " + level + "/" + maxLevel;
-        rval += " (Exp: " + (( level < maxLevel )? exp + " / " + player.CombatExpToLevelUp(level, melee) + ")\n" : "MAX)\n");
-        rval += "\t<i>(Effects: +" + level + "% damage, +" + (0.5 * Math.round((level - 1) / 2)) + "% accuracy)</i>\n";
+        rval += " (Exp: " + (( level < maxLevel )? exp + " / " + player.CombatExpToLevelUp(level, subtype) + ")\n" : "MAX)\n");
+        rval += "\t<i>(Effects: +" + level + "% damage";
+		if (subtype == 1 || subtype == 2) rval += ", +" + (0.5 * Math.round((level - 1) / 2)) + "% accuracy";
+		rval += ")</i>\n";
 		return rval;
     }
 

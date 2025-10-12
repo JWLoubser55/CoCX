@@ -3287,6 +3287,15 @@ public class PerkLib
 		public static const Spellarmor:PerkType = mk("Spellarmor", "Spellarmor",
 				"Start every battle with Charge Armor enabled, if you meet White Magic requirements before it starts.",
 				"You've chosen the 'Spellarmor' perk. You start every battle with Charge Armor effect, as long as your Lust is not preventing you from casting it before battle.");
+		public static const SpellcastingMastery:PerkType = mk("Spellcasting Mastery", "Spellcasting Mastery",
+				"Reduces the required experience to level up spellcasting mastery by approximately 20%, and increases base mastery experience gains by 200%.",
+				"You've chosen the 'Spellcasting Mastery' perk. Reduces the required experience to level up spellcasting mastery by approximately 20%, and increases base mastery experience gains by 200%.");
+		public static const SpellcastingMasteryEx:PerkType = mk("Spellcasting Mastery (Ex)", "Spellcasting Mastery (Ex)",
+				"Reduces the required experience to level up spellcasting mastery by approximately 45%, and doubles mastery gains on critical hits (2x to 4x).",
+				"You've chosen the 'Spellcasting Mastery (Ex)' perk. Reduces the required experience to level up spellcasting mastery by approximately 45%, and doubles mastery gains on critical hits (2x to 4x).");
+		public static const SpellcastingMasterySu:PerkType = mk("Spellcasting Mastery (Su)", "Spellcasting Mastery (Su)",
+				"Reduces the required experience to level up spellcasting mastery by approximately 45%, and increases the cap for spellcasting mastery by 50.",
+				"You've chosen the 'Spellcasting Mastery (Su)' perk. Reduces the required experience to level up spellcasting mastery by approximately 45%, and increases the cap for spellcasting mastery by 50.");
 		public static const Spellpower:PerkType = mk("Spellpower", "Spellpower",
 				"[if (player.inte>=50)" +
 						"Increases base spell strength by 10% and mana pool by 45. (+5% spellpower bonus)" +
@@ -5452,6 +5461,7 @@ public class PerkLib
 			[ResistanceI, ResistanceII, ResistanceIII, ResistanceIV, ResistanceV, ResistanceVI],
 			[SecondRing, ThirdRing, FourthRing],
 			[SoldiersFriend, PyrosFriend, HeavysFriend, EngineersFriend, SnipersFriend, SpysEnemy],
+			[SpellcastingMastery, SpellcastingMasteryEx, SpellcastingMasterySu],
 			[StrongBack, StrongBack2, StrongBack3],
 			[StrongElementalBond, StrongElementalBondEx, StrongElementalBondSu,
 				StrongerElementalBond, StrongerElementalBondEx, StrongerElementalBondSu,
@@ -8127,6 +8137,8 @@ public class PerkLib
 			RangeWeaponsMastery.requireStr(10)
 					.requireTou(10)
 					.requireSpe(10);
+			SpellcastingMastery.requireInt(10)
+					.requireWis(10);
 			MeleeWeaponsMasteryEx.requirePerk(MeleeWeaponsMastery)
 					.requireLevel(2)
 					.requireStr(20)
@@ -8137,6 +8149,10 @@ public class PerkLib
 					.requireStr(20)
 					.requireTou(20)
 					.requireSpe(20);
+			SpellcastingMasteryEx.requirePerk(SpellcastingMastery)
+					.requireLevel(2)
+					.requireInt(20)
+					.requireWis(20);
 			MeleeWeaponsAttackMultiplier.requirePerk(MeleeWeaponsMastery)
 					.requireLevel(3)
 					.requireStr(25)
@@ -8157,6 +8173,10 @@ public class PerkLib
 					.requireStr(30)
 					.requireTou(30)
 					.requireSpe(30);
+			SpellcastingMasterySu.requirePerk(SpellcastingMasteryEx)
+					.requireLevel(4)
+					.requireInt(30)
+					.requireWis(30);
             UtilitySkillsBeginner.requireCustomFunction(function (player:Player):Boolean {
 						return (Crafting.alembicLevel >= 1 || player.herbalismLevel >= 1 || player.farmingLevel >= 1 || player.miningLevel >= 1);
 					}, "Any non combat skill at lvl 1");
