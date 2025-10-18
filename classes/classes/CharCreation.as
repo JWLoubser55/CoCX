@@ -512,6 +512,7 @@ import classes.Scenes.Combat.CombatAbility;
 			var aSPPMX:Number = 1;
 			if (player.hasPerk(PerkLib.AscensionSkyPoisonPearlMasteryStageX)) aSPPMX += player.perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX);
 			if (flags[kFLAGS.SPIRIT_STONES] > (100 * (1 + player.newGamePlusMod()) * aSPPMX)) flags[kFLAGS.SPIRIT_STONES] = (100 * (1 + player.newGamePlusMod()) * aSPPMX);
+			if (player.negativeLevel > 0) player.negativeLevel = 0;
 			//Time reset
 			model.time.days = 0;
 			model.time.hours = 0;

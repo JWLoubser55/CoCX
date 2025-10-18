@@ -6950,7 +6950,7 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.YetiFatIM) >= 2) damage *= 1.5;
 			if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) damage *= 1.5;
 		}
-		if (player.gaindHoldWithBothHandBonus()) damage *= 1.5;
+		if (player.gaindHoldWithBothHandBonus()) damage *= 2.5;
 		if (player.hasPerk(PerkLib.DivineArmament) && (player.weapon.isStaffType() || player.weapon.isWandType() || player.isPartiallyStaffTypeWeapon()) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise()) damage *= 3;
 		if (player.weapon.isDualWielded() && player.weapon.isDual()) damage *= (1 + meleeDualWieldDamagePenalty() + meleeDualDamagePenaltyMain());
 		else {
@@ -7079,7 +7079,7 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.YetiFatIM) >= 2) damage *= 1.5;
 			if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) damage *= 1.5;
 		}
-		if (player.gaindHoldWithBothHandBonus()) damage *= 1.5;
+		if (player.gaindHoldWithBothHandBonus()) damage *= 2.5;
 		if (player.hasPerk(PerkLib.DivineArmament) && (player.weaponOff.isStaffType() || player.weaponOff.isWandType() || player.weaponOff.isStaffPart() || player.weaponOff == weapons.DEMSCYT || player.weaponOff == weapons.LHSCYTH) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise()) damage *= 3;
 		if (player.weaponOff.isDualWielded() && player.weaponOff.isDual()) damage *= (1 + meleeDualWieldDamagePenalty() + meleeDualDamagePenaltyMain());
 		else {

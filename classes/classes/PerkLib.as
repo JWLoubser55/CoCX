@@ -2238,8 +2238,8 @@ public class PerkLib
 				"That's what you are, a hoarder. I bet you don't even spend the money. Sleep well at night knowing you're ruining the economy... while you take more money after each victory. (15% more gems from victories)",
 				"You've chosen the 'Hoarder' perk, increasing gem gains from victories by 15%.");
 		public static const HoldWithBothHands:PerkType = mk("Hold With Both Hands", "Hold With Both Hands",
-				"Gain +50% base damage modifier with melee weapons when using both hands. For dual wield it can only apply if the PC wields both weapons using two hands per weapon ;)",
-				"You've chosen the 'Hold With Both Hands' perk.  As long as you're wielding a melee weapon using both hands, you gain a 50% base modifier to damage. For dual wield it can only apply if the PC wields both weapons using two hands per weapon.");
+				"Gain +150% base damage modifier with melee weapons when using both hands. For dual wield it can only apply if the PC wields both weapons using two hands per weapon ;)",
+				"You've chosen the 'Hold With Both Hands' perk.  As long as you're wielding a melee weapon using both hands, you gain a 150% base modifier to damage. For dual wield it can only apply if the PC wields both weapons using two hands per weapon.");
 		public static const HotBlooded:PerkType = mk("Hot Blooded", "Hot Blooded",
 				"Raises minimum lust by 20%.",
 				"You've chosen the 'Hot Blooded' perk.  As a result of your enhanced libido, your lust no longer drops below 20%!")
@@ -5653,7 +5653,7 @@ public class PerkLib
                     .requireStr(75);
             HoldWithBothHands.requireLevel(12)
                     .requireStr(80)
-                    .requirePerk(JobWarrior);
+                    .requirePerk(JobSwordsman);
             ShieldSlam.requireLevel(12)
                     .requireStr(80)
                     .requireTou(60);
