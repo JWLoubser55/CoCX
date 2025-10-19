@@ -110,6 +110,9 @@ use namespace CoC;
 		public const BTSOLUTION:SimpleUseable = new SimpleUseable("BTSolution", "Body Tempering Solution vial", "a vial of Body Tempering solution", 100,
 			"A vial of Body Tempering solution.",
 			"You look at the vial of substance called Body Tempering solution. It's only useful for Body Cultivators and probably harmful for anyone else.");
+		public const HFSOLUTION:SimpleUseable = new SimpleUseable("HFSolution", "Heartforce Tempering Solution vial", "a vial of Heartforce Tempering solution", 500,
+			"A vial of Heartforce Tempering solution.",
+			"You look at the vial of substance called Heartforce Tempering solution. It's only useful for Heartforce Cultivators and probably harmful for anyone else.");
 		public const SRESIDUE:SimpleUseable = new SimpleUseable("SoulResidue", "Soul Residue", "a Soul Residue", 1,
 			"A Soul Residue.",
 			"You look at the soul residue. It looks to be incredibly fine powder and may have some uses. If you find anyone that could work with this.");

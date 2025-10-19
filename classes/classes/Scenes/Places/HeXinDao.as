@@ -234,8 +234,9 @@ public class HeXinDao extends BaseContent
             buyItem1 = curry(MultiBuy.confirmBuyMulti,TierI,"Golem",1);
             buyItem2 = curry(MultiBuy.confirmBuyMulti,TierI,"Golem",5);
 			menu();
-            addButton(2, "Bag of Cosmos", curry(buyItem2,consumables.BAGOCOS), sayLine2(consumables.BAGOCOS,"A quintessential item for all soul cultivators, this little bag is dimensionally transcendental, that is, it's bigger on the inside. "),"\n", true).hint("Bag of Cosmos.");
-			addButton(3, "BT.Solution", curry(buyItem2,useables.BTSOLUTION), sayLine2(useables.BTSOLUTION,"This vial contain solution commonly used by body cultivators. In case of anyone else trying to ingest this fluid it raged from sever ingestion to death."),"\n", true).hint("Vial of Body Tempering Solution.");
+            addButton(1, "Bag of Cosmos", curry(buyItem2,consumables.BAGOCOS), sayLine2(consumables.BAGOCOS,"A quintessential item for all soul cultivators, this little bag is dimensionally transcendental, that is, it's bigger on the inside. "),"\n", true).hint("Bag of Cosmos.");
+			addButton(2, "BT.Solution", curry(buyItem2,useables.BTSOLUTION), sayLine2(useables.BTSOLUTION,"This vial contain solution commonly used by body cultivators. In case of anyone else trying to ingest this fluid it raged from sever ingestion to death."),"\n", true).hint("Vial of Body Tempering Solution.");
+			addButton(3, "HF.Solution", curry(buyItem2,useables.HFSOLUTION), sayLine2(useables.HFSOLUTION,"This vial contain solution commonly used by heartforce cultivators. In case of anyone else trying to ingest this fluid it raged from sever hallucinations to brain death."),"\n", true).hint("Vial of Heartforce Tempering Solution.");
 			addButton(4, "Fasting Pill", curry(buyItem2,consumables.FATPILL), sayLine2(consumables.FATPILL,"It's a rather useful item for soul cultivators, this little pill can help you stave off hunger for a few days."),"\n", true).hint("Fasting Pill.").disableIf(flags[kFLAGS.HUNGER_ENABLED] == 0);
             addButton(5, "Triple Thrust", curry(buyItem2,consumables.TRITMAN), sayLine2(consumables.TRITMAN,"It's a manual for Triple Thrust. This very simple technique allows you to unleash three thrusts that will become stronger and stronger as you train your body and soul."), "\n\nWhether you are going to try to go deeper into all that 'soulforce' stuff or not, at least you now have something to begin with.  It seems like even the name of the manual could have been influenced by this realm's nature... either that or it's just a coincidence.",true).hint("Triple Thrust Manual.").disableIf(!hasSoulCultivator);
             addButton(6, "Draco Sweep", curry(buyItem2,consumables.DRASMAN), sayLine2(consumables.DRASMAN,"It's a manual for Draco Sweep. This simple technique allows you to unleash an attack that would strike in wide arc before you, perfect for when you are fighting a group of enemies. It also becomes more powerful as long you train your body and soul."), "\n\nWhether you are going to try to go deeper into all that 'soulforce' stuff or not, at least you now have something to use when fighting a group of enemies.  You don't often meet more than one enemy at a time, but you're sure that deeper in this forsaken realm you will face groups or maybe even hordes of demons at once and would need something to deal with them.  ", true).hint("Draco Sweep Manual.").disableIf(!hasSoulCultivator);
@@ -1638,6 +1639,7 @@ public function soularena():void {
 		//outputText("\"<i>So you're into Coke Demons.... er... Fiends?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
 		//addButtonIfTrue(2, "HeartCult", missAkemiManualsShopHeartforceCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") < 0);
 		//player.createKeyItem("Cultivation Manual: Meditation on the Soul", 0, 0, 0, 0); - manual for clone creation xD
+		addButtonIfTrue(13, "HeartCult(1)", missAkemiManualsShopHeartforceCultivatorHeartsEye, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Heart's Eye") < 0, "Buy Cultivation Manual: Heart's Eye");
 		addButton(14, "Back", soularena);
 	}
 		//outputText("\"<i>You like sticks, do you?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");			not delete those 6 lines as they would be needed for future manuals
@@ -1812,6 +1814,18 @@ public function soularena():void {
 		outputText("\"<i>Watch out for their eyes... the upper ones at least,</i>\" she says somberly, handing over the manual.\n\n");
 		outputText("<b>Gained Key Item: Cultivation Manual: Heart-shaped Eyed She-Devil</b>");
 		player.createKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopHeartforceCultivatorHeartsEye():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i><i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"</i>\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>Growing eye in your heart... okayyyy,</i>\" she says somberly, handing over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Heart's Eye</b>");
+		player.createKeyItem("Cultivation Manual: Heart's Eye", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 

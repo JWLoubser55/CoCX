@@ -4678,9 +4678,45 @@ use namespace CoC;
 			if (perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 2) {
 				mult -= (25 * (perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) - 1));
 			}
+			if (hasPerk(PerkLib.HeartforceHEApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mult -= 5;
+				if (hasPerk(PerkLib.SoulPersonage)) mult -= 5;
+				if (hasPerk(PerkLib.SoulWarrior)) mult -= 5;
+			}
+			if (hasPerk(PerkLib.HeartforceHEWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mult -= 10;
+				if (hasPerk(PerkLib.SoulScholar)) mult -= 10;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mult -= 10;
+			}
+			if (hasPerk(PerkLib.HeartforceHEElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) mult -= 15;
+				if (hasPerk(PerkLib.SoulExalt)) mult -= 15;
+				if (hasPerk(PerkLib.SoulOverlord)) mult -= 15;
+			}
+			if (hasPerk(PerkLib.HeartforceHEOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) mult -= 20;
+				if (hasPerk(PerkLib.SoulKing)) mult -= 20;
+				if (hasPerk(PerkLib.SoulEmperor)) mult -= 20;
+			}
+			if (hasPerk(PerkLib.HeartforceHETyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
+			}
 			//mult -= resEarthStat.value;
 			//Caps damage reduction at 100%
-			if (mult < 0) mult = 0;
+			if (mult < 0) {
+				var boost:Number = (mult * -1);
+				var boost1:Number = boost;
+				if (!hasStatusEffect(StatusEffects.DaoOfIllusions)) createStatusEffect(StatusEffects.DaoOfIllusions, 0, 0, 0, boost1);
+				else {
+					changeStatusValue(StatusEffects.DaoOfIllusions, 4, boost1);
+					if (hasPerk(PerkLib.HeartforceHEApprenticeStage)) {
+						if (hasPerk(PerkLib.HeartforceHEOverlordStage)) boost *= 2;
+						if (hasPerk(PerkLib.HeartforceHETyrantStage)) boost *= 1.5;
+						changeStatusValue(StatusEffects.DaoOfIllusions, 3, boost);
+					}
+				}
+				mult = 0;
+			}
 			return mult;
 		}
 		public override function takePsychicDamage(damage:Number, display:Boolean = false):Number {

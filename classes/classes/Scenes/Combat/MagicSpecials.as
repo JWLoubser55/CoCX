@@ -5886,6 +5886,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
 			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage += Math.round(scalingBonusToughness() * 0.1);
 		}
+		damage *= combat.psychicDamageBoostedByDao();
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;

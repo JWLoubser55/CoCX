@@ -519,7 +519,7 @@ public class PlayerInfo extends BaseContent {
 		combatStats += "<i>Resistance (Earth):</i> " + (100 - Math.round(player.damageEarthPercent())) + "%" + (((player.hasStatusEffect(StatusEffects.DaoOfEarth)) && player.statusEffectv4(StatusEffects.DaoOfEarth) > 0) ? " (" + player.statusEffectv4(StatusEffects.DaoOfEarth) + "%)" : "") + "\n";
 		combatStats += "<i>Resistance (Acid):</i> " + (100 - Math.round(player.damageAcidPercent())) + "%" + (((player.hasStatusEffect(StatusEffects.DaoOfAcid)) && player.statusEffectv4(StatusEffects.DaoOfAcid) > 0) ? " (" + player.statusEffectv4(StatusEffects.DaoOfAcid) + "%)" : "") + "\n";
 		combatStats += "<b>Resistance (Lust):</b> " + (100 - Math.round(CoC.instance.player.lustPercent())) + "%\n";
-		combatStats += "<i>Resistance (Psychic):</i> " + (100 - Math.round(player.damagePsychicPercent())) + "%\n";
+		combatStats += "<i>Resistance (Psychic):</i> " + (100 - Math.round(player.damagePsychicPercent())) + "%" + (((player.hasStatusEffect(StatusEffects.DaoOfIllusions)) && player.statusEffectv4(StatusEffects.DaoOfIllusions) > 0) ? " (" + player.statusEffectv4(StatusEffects.DaoOfIllusions) + "%)" : "") + "\n";
 		combatStats += "\n";
 		combatStats += "<b>Physical DR from armor:</b> 1 / " + round(player.damagePercentArmor(), 2) + "\n";
 		combatStats += "<b>Magical DR from armor:</b> 1 / " + round(player.damagePercentMRes(), 2) + "\n";

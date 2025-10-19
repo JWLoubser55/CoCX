@@ -53,6 +53,7 @@ public class Soulforce extends BaseContent
 		if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) dailySoulforceUsesLimit++;
 		if (player.hasPerk(PerkLib.FleshBodyApprenticeStage)) dailySoulforceUsesLimit++;
 		//if (player.hasPerk(PerkLib.)) dailySoulforceUsesLimit++;//heart cultivator path
+		if (player.hasPerk(PerkLib.HeartforceHEApprenticeStage)) dailySoulforceUsesLimit++;
 		//if (player.hasPerk(PerkLib.)) dailySoulforceUsesLimit++;//dodawać kolejne co 3 level-e
 		outputText("<b>Cultivation level:</b> " + flags[kFLAGS.SOUL_CULTIVATION] + "\n");
 		outputText("<b>Additional Soulforce from training:</b> " + flags[kFLAGS.SOULFORCE_GAINED_FROM_CULTIVATING] + " % / "+Soulforce.cultivationBonusMaxSF_maxPossible+" % (Equip Soul Training equipment and meditate with it to increase this %)\n");
@@ -288,7 +289,11 @@ public class Soulforce extends BaseContent
 		var bodypathsccount1:Number = 0;
 		var bodypathsccount2:Number = 0;
 		var bodypathsccount3:Number = 0;
+		var heartforcepathsccount1:Number = 0;
 		var paths:Number = 0;
+		var pathsb:Number = 0;
+		var pathsd:Number = 0;
+		var pathsh:Number = 0;
 		var pathscap:Number = 3;
 		if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) pathscap += 3;
 		if (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
@@ -306,6 +311,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.DaoistEoDApprenticeStage)) {
@@ -323,6 +330,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.DaoistEoTApprenticeStage)) {
@@ -340,6 +349,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.DaoistLoKApprenticeStage)) {
@@ -357,6 +368,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.DaoistJoPApprenticeStage)) {
@@ -374,6 +387,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.DaoistDotSApprenticeStage)) {
@@ -391,6 +406,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.DaoistPotLApprenticeStage)) {
@@ -408,6 +425,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.DaoistKoGApprenticeStage)) {
@@ -425,6 +444,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.DaoistMoTApprenticeStage)) {
@@ -442,6 +463,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.DaoistGoHApprenticeStage)) {
@@ -459,6 +482,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsd += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) {
@@ -476,6 +501,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount0 += 1;
 			bodypathsccount2 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsb += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.FleshBodySoDApprenticeStage)) {
@@ -493,6 +520,8 @@ public class Soulforce extends BaseContent
 			bodypathsccount0 += 1;
 			bodypathsccount1 += 1;
 			bodypathsccount3 += 1;
+			heartforcepathsccount1 += 1;
+			pathsb += 1;
 			paths += 1;
 		}
 		if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
@@ -510,57 +539,81 @@ public class Soulforce extends BaseContent
 			bodypathsccount0 += 1;
 			bodypathsccount1 += 1;
 			bodypathsccount2 += 1;
+			heartforcepathsccount1 += 1;
+			pathsb += 1;
 			paths += 1;
 		}
-		outputText("<b>Current subpaths that are cultivated / Maximum subpaths that can be cultivated:</b> " + paths + " / " + pathscap + "\n");
+		if (player.hasPerk(PerkLib.HeartforceHEApprenticeStage)) {
+			daoistpathsccount0 += 1;
+			daoistpathsccount1 += 1;
+			daoistpathsccount2 += 1;
+			daoistpathsccount3 += 1;
+			daoistpathsccount4 += 1;
+			daoistpathsccount5 += 1;
+			daoistpathsccount6 += 1;
+			daoistpathsccount7 += 1;
+			daoistpathsccount8 += 1;
+			daoistpathsccount9 += 1;
+			daoistpathsccount10 += 1;
+			bodypathsccount0 += 1;
+			bodypathsccount1 += 1;
+			bodypathsccount2 += 1;
+			bodypathsccount3 += 1;
+			pathsh += 1;
+			paths += 1;
+		}
+		outputText("<b>Current subpaths that are cultivated / Maximum subpaths that can be cultivated:</b> " + paths + " / " + pathscap + "\n\n");
+		outputText("<i>Current body refining subpaths that are cultivated:</i> " + pathsd + " of " + pathscap + " (3)\n");
+		outputText("<i>Current daoist subpaths that are cultivated:</i> " + pathsb + " of " + pathscap + " (10)\n");
+		outputText("<i>Current heartforce subpaths that are cultivated:</i> " + pathsh + " of " + pathscap + " (1)\n");
 		menu();
 		if (player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") >= 0) {
-			if (daoistpathsccount1 < pathscap) addButton(0, "Daoist(1)", daoistSubPath1).hint("Contemplate the mysteries from the 'My Dao Heart is Firm' cultivation manual.");
+			if (daoistpathsccount1 < pathscap) addButton(0, "Daoist(1)", daoistSubPath1).hint("Contemplate the mysteries from the 'My Dao Heart is Firm' daoist cultivation manual.");
 			else addButtonDisabled(0, "Daoist(1)", "You can't use this 'My Dao Heart is Firm' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(0, "Daoist(1)", "Req. 'My Dao Heart is Firm' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Emperor of Dragon") >= 0) {
-			if (daoistpathsccount2 < pathscap) addButton(1, "Daoist(2)", daoistSubPath2).hint("Contemplate the mysteries from the 'Emperor of Dragon' cultivation manual.");
+			if (daoistpathsccount2 < pathscap) addButton(1, "Daoist(2)", daoistSubPath2).hint("Contemplate the mysteries from the 'Emperor of Dragon' daoist cultivation manual.");
 			else addButtonDisabled(1, "Daoist(2)", "You can't use this 'Emperor of Dragon' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(1, "Daoist(2)", "Req. 'Emperor of Dragon' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Embodiment of Tengliu") >= 0) {
-			if (daoistpathsccount3 < pathscap) addButton(2, "Daoist(3)", daoistSubPath3).hint("Contemplate the mysteries from the 'Embodiment of Tengliu' cultivation manual.");
+			if (daoistpathsccount3 < pathscap) addButton(2, "Daoist(3)", daoistSubPath3).hint("Contemplate the mysteries from the 'Embodiment of Tengliu' daoist cultivation manual.");
 			else addButtonDisabled(2, "Daoist(3)", "You can't use this 'Embodiment of Tengliu' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(2, "Daoist(3)", "Req. 'Embodiment of Tengliu' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Lord of Kirin") >= 0) {
-			if (daoistpathsccount4 < pathscap) addButton(3, "Daoist(4)", daoistSubPath4).hint("Contemplate the mysteries from the 'Lord of Kirin' cultivation manual.");
+			if (daoistpathsccount4 < pathscap) addButton(3, "Daoist(4)", daoistSubPath4).hint("Contemplate the mysteries from the 'Lord of Kirin' daoist cultivation manual.");
 			else addButtonDisabled(3, "Daoist(4)", "You can't use this 'Lord of Kirin' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(3, "Daoist(4)", "Req. 'Lord of Kirin' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Judge of Phantom") >= 0) {
-			if (daoistpathsccount5 < pathscap) addButton(4, "Daoist(5)", daoistSubPath5).hint("Contemplate the mysteries from the 'Judge of Phantom' cultivation manual.");
+			if (daoistpathsccount5 < pathscap) addButton(4, "Daoist(5)", daoistSubPath5).hint("Contemplate the mysteries from the 'Judge of Phantom' daoist cultivation manual.");
 			else addButtonDisabled(4, "Daoist(5)", "You can't use this 'Judge of Phantom' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(4, "Daoist(5)", "Req. 'Judge of Phantom' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Doctor of the Serpent") >= 0) {
-			if (daoistpathsccount6 < pathscap) addButton(5, "Daoist(6)", daoistSubPath6).hint("Contemplate the mysteries from the 'Doctor of the Serpent' cultivation manual.");
+			if (daoistpathsccount6 < pathscap) addButton(5, "Daoist(6)", daoistSubPath6).hint("Contemplate the mysteries from the 'Doctor of the Serpent' daoist cultivation manual.");
 			else addButtonDisabled(5, "Daoist(6)", "You can't use this 'Doctor of the Serpent' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(5, "Daoist(6)", "Req. 'Doctor of the Serpent' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Priest of the Leviathan") >= 0) {
-			if (daoistpathsccount7 < pathscap) addButton(6, "Daoist(7)", daoistSubPath7).hint("Contemplate the mysteries from the 'Priest of the Leviathan' cultivation manual.");
+			if (daoistpathsccount7 < pathscap) addButton(6, "Daoist(7)", daoistSubPath7).hint("Contemplate the mysteries from the 'Priest of the Leviathan' daoist cultivation manual.");
 			else addButtonDisabled(6, "Daoist(7)", "You can't use this 'Priest of the Leviathan' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(6, "Daoist(7)", "Req. 'Priest of the Leviathan' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: King of Garuda") >= 0) {
-			if (daoistpathsccount8 < pathscap) addButton(7, "Daoist(8)", daoistSubPath8).hint("Contemplate the mysteries from the 'King of Garuda' cultivation manual.");
+			if (daoistpathsccount8 < pathscap) addButton(7, "Daoist(8)", daoistSubPath8).hint("Contemplate the mysteries from the 'King of Garuda' daoist cultivation manual.");
 			else addButtonDisabled(7, "Daoist(8)", "You can't use this 'King of Garuda' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(7, "Daoist(8)", "Req. 'King of Garuda' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: Monarch of Tortoise") >= 0) {
-			if (daoistpathsccount9 < pathscap) addButton(8, "Daoist(9)", daoistSubPath9).hint("Contemplate the mysteries from the 'Monarch of Tortoise' cultivation manual.");
+			if (daoistpathsccount9 < pathscap) addButton(8, "Daoist(9)", daoistSubPath9).hint("Contemplate the mysteries from the 'Monarch of Tortoise' daoist cultivation manual.");
 			else addButtonDisabled(8, "Daoist(9)", "You can't use this 'Monarch of Tortoise' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(8, "Daoist(9)", "Req. 'Monarch of Tortoise' daoist cultivation manual.");
 		if (player.hasKeyItem("Cultivation Manual: General of Hydra") >= 0) {
-			if (daoistpathsccount10 < pathscap) addButton(9, "Daoist(10)", daoistSubPath10).hint("Contemplate the mysteries from the 'General of Hydra' cultivation manual.");
+			if (daoistpathsccount10 < pathscap) addButton(9, "Daoist(10)", daoistSubPath10).hint("Contemplate the mysteries from the 'General of Hydra' daoist cultivation manual.");
 			else addButtonDisabled(9, "Daoist(10)", "You can't use this 'General of Hydra' daoist cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(9, "Daoist(10)", "Req. 'General of Hydra' daoist cultivation manual.");
@@ -579,6 +632,11 @@ public class Soulforce extends BaseContent
 			else addButtonDisabled(12, "BodyCult(3)", "You can't use this 'Vigor of Lizan' body cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
 		}
 		else addButtonDisabled(12, "BodyCult(3)", "Req. 'Vigor of Lizan' body cultivation manual.");
+		if (player.hasKeyItem("Cultivation Manual: Heart's Eye") >= 0) {
+			if (heartforcepathsccount1 < pathscap) addButton(13, "HeartCult(1)", heartforceSubPath1).hint("Contemplate the mysteries from the 'Heart's Eye' heartforce cultivation manual.");
+			else addButtonDisabled(13, "HeartCult(1)", "You can't use this 'Heart's Eye' heartforce cultivation manual. YOUR BODY SEEMS LIKE AS IT'S NOW IS AT IT'S LIMITS.");
+		}
+		else addButtonDisabled(13, "HeartCult(1)", "Req. 'Heart's Eye' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") >= 0) addButton(0, "Daoist", daoistSubPath).hint("Contemplate the mysteries from the 'My Dao Sticks are better than Yours' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0) addButton(5, "BodyCult", bodycultivationSubPath).hint("Contemplate the mysteries from the 'Body like a Coke Fiend' body cultivation manual.");
 		//if (player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(10, "HeartCult", );
@@ -879,6 +937,33 @@ public class Soulforce extends BaseContent
 		addButton(14, "Back", SubPaths);
 	}
 	private function bodycultivationSubPathChosen(perk:PerkType, bottle:ItemType):void {
+		player.destroyItems(bottle, 1);
+		player.destroyItems(useables.BTSOLUTION, 1);
+		player.createPerk(perk, 0, 0, 0, 0);
+		outputText("\n\n<b>Gained perk - " + perk.name() + "</b>");
+		doNext(camp.returnToCampUseFourHours);
+	}
+	
+	public function heartforceSubPath1():void {
+		var stages:Array = [
+			["Apprentice(1)", PerkLib.HeartforceHEApprenticeStage, consumables.LGSFRPB, PerkLib.SoulApprentice],
+			["Warrior(1)", PerkLib.HeartforceHEWarriorStage, consumables.MGSFRPB, PerkLib.SoulSprite],
+			["Elder(1)", PerkLib.HeartforceHEElderStage, consumables.HGSFRPB, PerkLib.SoulExalt],
+			["Overlord(1)", PerkLib.HeartforceHEOverlordStage, consumables.SGSFRPB, PerkLib.SoulKing],
+		];
+		menu();
+		var i:int;
+		for (i = 0; i < stages.length; ++i)
+			addButton(i, stages[i][0], heartforceSubPathChosen2, stages[i][1], stages[i][2])
+				.disableIf(!player.hasItem(stages[i][2], 1) || !player.hasItem(useables.BTSOLUTION, 1),
+					"Requires 1 bottle of " + (stages[i][2] as ItemType).longName
+					+ " and 1 vial of " + useables.BTSOLUTION.longName)
+				.disableIf(!player.hasPerk(stages[i][3]), "Requires perk: " + (stages[i][3] as PerkType).name())
+				.disableIf(i != 0 && !player.hasPerk(stages[i - 1][1]), "You need to have achieved the previous stage first.")
+				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
+		addButton(14, "Back", SubPaths);
+	}
+	private function heartforceSubPathChosen2(perk:PerkType, bottle:ItemType):void {
 		player.destroyItems(bottle, 1);
 		player.destroyItems(useables.BTSOLUTION, 1);
 		player.createPerk(perk, 0, 0, 0, 0);

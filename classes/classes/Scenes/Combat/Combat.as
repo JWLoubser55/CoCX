@@ -12471,6 +12471,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damagePA += Math.round(scalingBonusToughness() * 0.1);
 			}
 			if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) > 0) damagePA *= (1 + (0.01 * player.perkv1(PerkLib.FungalNobility)));
+			damage = Math.round(damage * psychicDamageBoostedByDao());
 			//Determine if critical hit!
 			var crit0:Boolean = false;
 			var critChance0:int = 5;
@@ -18217,6 +18218,7 @@ public function castPsychicBolt():void {
 	}
 	if (player.hasPerk(PerkLib.ElementalBolt)) damage *= 1.25;
 	if (player.armorName == "FrancescaCloak") damage *= 2;*/
+	damage = Math.round(damage * psychicDamageBoostedByDao());
 	//Determine if critical hit!
 	var crit:Boolean = false;
 	var critChance:int = 5;
@@ -19635,6 +19637,22 @@ public function acidDamageBoostedByDao():Number {
 		}
 	}
     return boostAc;
+}
+public function psychicDamageBoostedByDao():Number {
+    var boostPs:Number = 1;
+    if (player.hasStatusEffect(StatusEffects.DaoOfIllusions)) {
+		boostPs += daoModifier(player.statusEffectv2(StatusEffects.DaoOfIllusions));
+		if (player.statusEffectv3(StatusEffects.DaoOfIllusions) > 0) {
+			var boostPs1:Number = 0;
+			boostPs1 += (0.01 * player.statusEffectv3(StatusEffects.DaoOfIllusions));
+			if (!player.hasPerk(PerkLib.HeartforceHEElderStage) && boostPs1 > 1) {
+				if (!player.hasPerk(PerkLib.HeartforceHEWarriorStage) && boostPs1 > 0.25) boostPs1 = 0.25;
+				else boostPs1 = 1;
+			}
+			boostPs += boostPs1;
+		}
+	}
+    return boostPs;
 }
 public function daoModifier(daoLevel:Number):Number {
     if (daoLevel == 12) return 3.0;

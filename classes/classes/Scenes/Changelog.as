@@ -273,11 +273,11 @@ public class Changelog extends BaseContent
 			outputText("-New tier 0 misc lvl-up perk: Spellcasting Mastery (Ex). Req. Spellcasting Mastery perk, lvl 2+ and 20+ int/wis. Effect: Reduces the required experience to level up spellcasting mastery by approximately 45%, and doubles mastery gains on critical hits (2x to 4x).\n");
 			outputText("-New tier 0 misc lvl-up perk: Spellcasting Mastery (Su). Req. Spellcasting Mastery (Ex) perk, lvl 4+ and 30+ int/wis. Effect: Reduces the required experience to level up spellcasting mastery by approximately 45%, and increases the cap for spellcasting mastery by 50.\n");
 			outputText("-Hold with Both Hands perk instead of Job: Warrior perk would require Job: Swordsman perk. Bonus to base damage increased from 50% to 150%.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Heartforce (HE): Apprentice Stage. Gained by cultivating 'Heart's Eye' cultivation manual. Effects: +5% psychic resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks (caps at 25%)\n");
+			outputText("-New event perk: Heartforce (HE): Warrior Stage. Gained by cultivating 'Heart's Eye' cultivation manual. Effects: +10% psychic resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks (caps at 100%)\n");
+			outputText("-New event perk: Heartforce (HE): Elder Stage. Gained by cultivating 'Heart's Eye' cultivation manual. Effects: +15% psychic resistance at S.Elder, S.Exalt, S.Overlord stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks\n");
+			outputText("-New event perk: Heartforce (HE): Overlord Stage. Gained by cultivating 'Heart's Eye' cultivation manual. Effects: +20% psychic resistance at S.Tyrant, S.King, S.Emperor stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks (doubled bonus from excess resistance)\n");
+			outputText("-New material: a vial of Heartforce Tempering Solution. Cost 500 gems. Could be bought in 'Soul Items' shop. Usefull only for heartforce cultivators subpath.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -323,7 +323,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");
+			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
