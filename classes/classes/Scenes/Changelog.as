@@ -315,14 +315,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
-			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-\n");
-			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
@@ -333,14 +333,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
+			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
+			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (Stadler) (jfmherokiller) (NUZ/Shirane) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -355,10 +355,10 @@ public class Changelog extends BaseContent
 			outputText("Dark Charm not gained by Gremlins, some of Nocello Liqueur TF effects ignoring TF immunity effect, Munchkin@Biolab perk not properly increasing max for stat training caps, Vitality Tincture not restoring Arian health, Iron Man perk not affecting fatigue cost of some physical specials, Taser with an overcharged battery upgrade causing Tazer special to be not accessible, keeping debuff ");
 			outputText("for unpowered Ayo Armor after it been unequipped, Ruined Shrine and Forgefather menu not removing exploration buttons, one of Dominika scenes unsure what to choose if PC is herm instead of pure male/female, Grey magic or White/Diving magic not taking into account overmaxLust, Grand Grey Archmage perk effect incorrectly applied, Zombiefied Cursed Tag unlimited fatigue not working in ");
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach without becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
-			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, ");
-			outputText("Sidone help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, cave wyrm tongue desc been draconic not cave wyrm, some of purity ");
-			outputText("scaling weapons scaling on corruption and two feminity/masculinity scaling weapons scaling on wrong values, Blade Grass missing tf effects for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, ");
-			outputText("Ebony Destroyer missing wrath weapon tag, Neisa interactable when she's training\n\n");
+			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, Sidone ");
+			outputText("help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, cave wyrm tongue desc been draconic not cave wyrm, some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling weapons scaling on wrong values, ");
+			outputText("Blade Grass missing tf effects for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, ");
+			outputText("Neisa interactable when she's training, Cold Affinity lost while been Wendigo\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");
@@ -417,8 +417,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -446,6 +452,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

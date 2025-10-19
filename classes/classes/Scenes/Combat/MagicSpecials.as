@@ -6044,6 +6044,12 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = Math.round(damage);
 		doMagicDamage(damage, true, true);
+		var intDebuff:Number = 0;
+		var wisDebuff:Number = 0;
+		intDebuff += Math.round(0.1 * monster.inte);
+		wisDebuff += Math.round(0.1 * monster.wis);
+		monster.intStat.core.value -= intDebuff;
+		monster.wisStat.core.value -= wisDebuff;
 		monster.createStatusEffect(StatusEffects.Fear,1+rand(3),0,0,0);
 		enemyAI();
 	}

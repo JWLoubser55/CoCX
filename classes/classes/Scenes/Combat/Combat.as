@@ -6241,8 +6241,12 @@ public class Combat extends BaseContent {
                     ExtraNaturalWeaponAttack(ClawDamageMultiplier, "KamaitachiScythe", true);
                     break;
                 case Arms.WENDIGO:
-                    ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
-                    ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
+					ExtraNaturalWeaponAttack(ClawDamageMultiplier, "", true);
+                    ExtraNaturalWeaponAttack(ClawDamageMultiplier, "", true);
+					if (player.isRaceCached(Races.WENDIGO)) {
+						ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
+						ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
+					}
                     break;
                 case Arms.GARGOYLE:
                     feralNotGargoyle = false;
@@ -6318,9 +6322,12 @@ public class Combat extends BaseContent {
                     outputText("\n");
                     break;
                 case Arms.WENDIGO:
-                    outputText("Your maddening hunger gives you strength allowing you to attack two more times, your strike delivering cursed wounds.");
-                    ExtraNaturalWeaponAttack(1, "WendigoClaw", true);
-                    ExtraNaturalWeaponAttack(1, "WendigoClaw", true);
+					ExtraNaturalWeaponAttack(1, "", true);
+					ExtraNaturalWeaponAttack(1, "", true);
+					if (player.isRaceCached(Races.WENDIGO)) {
+						ExtraNaturalWeaponAttack(1, "WendigoClaw", true);
+						ExtraNaturalWeaponAttack(1, "WendigoClaw", true);
+					}
                     outputText("\n");
                     break;
                 default:
@@ -9590,6 +9597,7 @@ public class Combat extends BaseContent {
                     }
                     break;
                 case "WendigoClaw":
+					outputText("Your maddening hunger gives you strength allowing you to attack two more times, your strike delivering cursed wounds.");
                     monster.addCurse("tou.mult",0.05,2);
                     monster.addCurse("str.mult",0.05,2);
                     break;

@@ -70,7 +70,7 @@ public class TestMenu extends BaseContent
 		bd.add("BodyPartEditor", curry(SceneLib.debugMenu.bodyPartEditorRoot, SoulforceCheats), "");
 		bd.add("Insta-house", instaHouse, "Instant-house + bed. No Mutant here.");
 		bd.add("Learn Hexes", learnHexes, "Learn Prestige Job - Warlock and different hex spells");
-		bd.add("WendigoTrigger", wendigoTrigger, "Trigger Wendigo transformation. (Without active Wendigo Psychosis will do nothing ;) )");
+		bd.add("WendigoTrigger", wendigoTrigger, "Trigger Wendigo transformation.");
 		bd.add("ChimeraBodyUlt", ChimeraBodyUltimateStage, "Ultimate Stage of Chimera Body for tests and lulz. Now with on/off switch for more lulz.");
 		bd.add("All4HiddenPrestige", hiddenPJ, "A11 th4t H1dd3n Prestige is Y0urs to T4ke!!!");
 		bd.add("PerkGalore1", PerkGalore1, "");
@@ -805,8 +805,8 @@ public class TestMenu extends BaseContent
 	public function wendigoTrigger():void {
 		if (player.hasStatusEffect(StatusEffects.WendigoPsychosis)) SceneLib.glacialRift.wendigoScene.becomeWendigo();
 		else {
-			outputText("Get a Life... i mean Wendigo Psychosis...");
-			doNext(SoulforceCheats);
+			player.createStatusEffect(StatusEffects.WendigoPsychosis, 3, 0, 0, 0);
+			SceneLib.glacialRift.wendigoScene.becomeWendigo();
 		}
 	}
 	public function AddMaxBackpack5():void {
@@ -2853,4 +2853,4 @@ public class TestMenu extends BaseContent
 		SceneLib.lily.lilyEncounter();
 	}
 	}
-}
+}
