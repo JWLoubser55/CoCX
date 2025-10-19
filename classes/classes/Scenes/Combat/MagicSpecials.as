@@ -5965,8 +5965,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (monster.hasPerk(PerkLib.EnemyGhostType)) {
 			outputText("With a smile and a wink, your form becomes completely intangible, and you waste no time in throwing yourself toward the opponent's frame.  Sadly, it was doomed to fail, as you bounce right off your foe's ghostly form.");
 		}
-		else if (monster is LivingStatue)
-		{
+		else if (monster is LivingStatue) {
 			outputText("There is nothing to possess inside the golem.");
 		}
 		else if ((!monster.hasCock() && !monster.hasVagina()) || monster.lustVuln == 0 || monster.inte == 0 || monster.inte > maxIntCapForFail) {
@@ -5994,7 +5993,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 			if (player.hasPerk(PerkLib.EromancyExpert)) damage *= 1.5;
 			if (player.armor == armors.ELFDRES && player.isElf()) damage *= 2;
-        if (player.armor == armors.FMDRESS && player.isWoodElf()) damage *= 2;
+			if (player.armor == armors.FMDRESS && player.isWoodElf()) damage *= 2;
 			if (player.isRaceCached(Races.POLTERGEIST,3)) {
 				damage += Math.round(player.lust * 0.1);
 				player.lust -= Math.round(player.lust * 0.1);

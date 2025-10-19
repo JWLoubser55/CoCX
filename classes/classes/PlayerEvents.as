@@ -1483,6 +1483,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (camp.gcc(true) && camp.gcc() == 0) player.removeStatusEffect(StatusEffects.PCClone);
 				//Misc
 				if (DianaFollower.DianaState == 2) DianaFollower.DianaState = 3;
+				if (player.hasPerk(PerkLib.EndlessHunger)) player.addPerkValue(PerkLib.EndlessHunger, 1, 1);
 				//Equipment daily events
 				//Scandalous succubus armor and other corruption updates
 				if ((player.armor == armors.SCANSC || player.countMiscJewelry(miscjewelries.DMAGETO) > 0) && player.cor < 100) {
@@ -2654,7 +2655,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			}
 			//Wendigo stuff
 			if (!player.blockingBodyTransformations() && player.hasStatusEffect(StatusEffects.WendigoPsychosis) && !player.hasPerk(PerkLib.EndlessHunger) && ((flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger <= 0) || (flags[kFLAGS.HUNGER_ENABLED] <= 0 && player.lust >= player.maxOverLust()))) SceneLib.glacialRift.wendigoScene.becomeWendigo();
-			if (!player.isRaceCached(Races.WENDIGO, 1) && player.hasPerk(PerkLib.EndlessHunger)) {
+			if (!player.isRaceCached(Races.WENDIGO, 1) && player.hasPerk(PerkLib.EndlessHunger) && !player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) {
 				outputText("\nYou sigh in relief as the gnawing hunger finally fades away completely. <b>Lost perk Endless hunger!</b>");
 				player.removePerk(PerkLib.EndlessHunger);
 				needNext = true;

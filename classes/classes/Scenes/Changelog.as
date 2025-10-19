@@ -278,8 +278,8 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Heartforce (HE): Elder Stage. Gained by cultivating 'Heart's Eye' cultivation manual. Effects: +15% psychic resistance at S.Elder, S.Exalt, S.Overlord stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks\n");
 			outputText("-New event perk: Heartforce (HE): Overlord Stage. Gained by cultivating 'Heart's Eye' cultivation manual. Effects: +20% psychic resistance at S.Tyrant, S.King, S.Emperor stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks (doubled bonus from excess resistance)\n");
 			outputText("-New material: a vial of Heartforce Tempering Solution. Cost 500 gems. Could be bought in 'Soul Items' shop. Usefull only for heartforce cultivators subpath.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Wendigo metabolism. Req. having free metabolism mutation slot, wendigo race. Effects: Gain High regeneration but make Endless hunger permanent. Feeding now increases toughness and strength up to 50% more and the increment increased to 2% per stack.\n");
+			outputText("-Endless Hunger perk now will have additional effects: increase min lust to 30%, each day without feeding increase min lust by 10%, when sexualy fed PC Toughness and Strength multi increase by 1% each up to 100%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -332,6 +332,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -408,14 +417,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -443,9 +446,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

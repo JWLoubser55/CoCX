@@ -14537,6 +14537,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			maxPercentRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
 		}
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) maxPercentRegen += player.perkv1(IMutationsLib.WendigoMetabolismIM);
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxPercentRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
 			var hshim1:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
@@ -14637,6 +14638,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			maxRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxRegen += 10;
 		}
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) maxRegen += player.perkv1(IMutationsLib.WendigoMetabolismIM);
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
 			var hshim2:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
@@ -17661,10 +17663,8 @@ public function ManticoreFeed():void {
         //Determine basic damage.
         //==============================
         damage = combat.teases.teaseBaseLustDamage();
-        
-        outputText("You use your tail-cunt vaginal walls to forcefully milk your victim for his delicious cum, biting your own lips at the pleasure of [monster his] twitching member in your tail.");
-       
-        var damagemultiplier:Number = 1;
+		outputText("You use your tail-cunt vaginal walls to forcefully milk your victim for his delicious cum, biting your own lips at the pleasure of [monster his] twitching member in your tail.");
+		var damagemultiplier:Number = 1;
         if (player.hasPerk(PerkLib.RacialParagon)) damagemultiplier *= RacialParagonAbilityBoost();
         if (player.perkv1(IMutationsLib.ManticoreMetabolismIM) >= 3) damagemultiplier *= 2;
         damage *= damagemultiplier;

@@ -6461,6 +6461,10 @@ use namespace CoC;
 				/*if (hasPerk(PerkLib.IcyHotX) && min > Math.round(minCap * (0.75-(0.05*perkv1(PerkLib.IcyHotX))))) min = Math.round(minCap * (0.75-(0.05*perkv1(PerkLib.IcyHotX))));
 				else */min = Math.round(minCap * 0.75);
 			}
+			if (hasPerk(PerkLib.EndlessHunger)) {
+				min += 30;
+				if (perkv1(PerkLib.EndlessHunger) > 0) min += (10 * perkv1(PerkLib.EndlessHunger));
+			}
 			//Constrain values
 			return boundFloat(0, min, minCap);
 		}
@@ -8179,6 +8183,31 @@ use namespace CoC;
 			refillHunger(Ammount);
 		}
 
+        public function wendigoFeed():void {
+			var duration:Number = 10;
+			var boostValue:Number = 1;
+			var boostCap:Number = 100;
+			if (hasPerk(PerkLib.Metabolization)) duration += 10;
+			if (hasPerk(PerkLib.ImprovedMetabolization)) duration += 10;
+			if (hasPerk(PerkLib.GreaterMetabolization)) duration += 10;
+			if (perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) {
+				boostValue += perkv1(IMutationsLib.WendigoMetabolismIM);
+				boostCap += (50 * perkv1(IMutationsLib.WendigoMetabolismIM));
+			}
+			if (statStore.hasBuff('Wendigo Feeding')) {
+				statStore.replaceBuffObject({"str.mult": (0.01 * perkv2(PerkLib.EndlessHunger)), "tou.mult": (0.01 * perkv2(PerkLib.EndlessHunger))}, 'Wendigo Feeding', { text: 'Wendigo Feeding' });
+				buff("Wendigo Feeding").addDuration(boostValue);
+				addPerkValue(PerkLib.EndlessHunger, 2, boostValue);
+				if (perkv2(PerkLib.EndlessHunger) > boostCap) setPerkValue(PerkLib.EndlessHunger, 2, boostCap);
+			}
+			else {
+				buff("Wendigo Feeding").addStats({"str.mult": 0.01, "tou.mult": 0.01}).withText("Wendigo Feeding").forHours(duration);
+				setPerkValue(PerkLib.EndlessHunger, 2, 1);
+			} 
+			if (hasPerk(PerkLib.EndlessHunger) && perkv1(PerkLib.EndlessHunger) > 0) setPerkValue(PerkLib.EndlessHunger, 1, 0);
+			refillHunger(30, false);
+		}
+
 		public function myconidAbsorbNutrient():void {
 			addPerkValue(PerkLib.AbsorbNutrient, 2, 1);
 			EngineCore.HPChange(((100 + (tou*2)) * 1), true, false);
@@ -8234,7 +8263,7 @@ use namespace CoC;
 			refillHunger(Ammount);
 		}
 
-        /**
+		/**
 		 * fluidtype: "cum", "vaginalFluids", "saliva", "milk", "Default".
          *
 		 * type: 'n', 'Vaginal', 'Anal', 'Dick', 'Lips', 'Tits', 'Nipples', 'Ovi', 'VaginalAnal', 'DickAnal', 'Default', 'Generic'
@@ -8272,14 +8301,14 @@ use namespace CoC;
 							if (statusEffectv3(StatusEffects.Overheat) != 1) addStatusValue(StatusEffects.Overheat, 3, 1);
 						}
 						if (hasPerk(PerkLib.ManticoreCumAddict)) manticoreFeed();
-						if (hasPerk(PerkLib.EndlessHunger)) refillHunger(30, false);
+						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
 						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'vaginalFluids':
 						if (hasStatusEffect(StatusEffects.Overheat) && inRut) {
 							if (statusEffectv3(StatusEffects.Overheat) != 1) addStatusValue(StatusEffects.Overheat, 3, 1);
 						}
-						if (hasPerk(PerkLib.EndlessHunger)) refillHunger(30, false);
+						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
 						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'saliva':

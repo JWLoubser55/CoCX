@@ -1,6 +1,7 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
+import classes.IMutations.IMutationsLib;
 import classes.CockTypesEnum;
 import classes.PerkLib;
 import classes.Race;
@@ -64,8 +65,14 @@ public class WendigoRace extends Race {
 						function (body:BodyData):Boolean {
 							return body.hasVagina && body.biggestTitSize >= 8 || !body.hasVagina && body.biggestTitSize == 0
 						}, +1)
+				.customRequirement("","thickness less then 41",
+						function (body:BodyData):Boolean {
+							return body.player.thickness < 41
+						}, +1)
 				.hasPerk(PerkLib.EndlessHunger, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
+				
+		addMutation(IMutationsLib.WendigoMetabolismIM);
 		
 		buildTier(10, "wendigo")
 				.buffs({
