@@ -157,6 +157,7 @@ public class Races {
 	public static const RAT:RatRace						   = new RatRace(132);
 	public static const ABYSSAL_ELF:AbyssalElfRace		   = new AbyssalElfRace(133);
 	public static const SHEEP:SheepRace					   = new SheepRace(134);
+	public static const HOLLOW:HollowRace				   = new HollowRace(135);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
@@ -185,6 +186,9 @@ public class Races {
 	];
 	public static const WerebeastRaces:/*Race*/Array = [
 			WEREWOLF, WEREFOX, WERESPIDER, WERESHARK, WEREBAT, WERECAT, WERERAVEN, WEREBEAR
+	];
+	public static const GhostlikeRaces:/*Race*/Array = [
+			POLTERGEIST, BANSHEE, WENDIGO, HOLLOW
 	];
 	public static const RacesForRandomEnchantments:/*Race*/Array = [
 			// populated in load() as AllVisibleRaces - RacesExcludedFromRandomEnchantments

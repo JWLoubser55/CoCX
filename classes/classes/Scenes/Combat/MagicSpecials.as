@@ -5988,6 +5988,10 @@ public class MagicSpecials extends BaseCombatContent {
 				outputText("Recorporealizing, you notice your enemy's blush, and know your efforts were somewhat successful.");
 			}
 			var damage:Number = Math.round(player.inte / 5) + rand(player.level) + player.level;
+			if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 3) {
+				damage += scalingBonusStrength();
+				damage += scalingBonusToughness();
+			}
 			damage *= Math.round(1 + (0.1 * player.racialScore(Races.POLTERGEIST)));
 			damage *= magicAbilitiesGoBrrr();
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
@@ -6001,8 +6005,12 @@ public class MagicSpecials extends BaseCombatContent {
 			monster.teased(Math.round(monster.lustVuln * damage));
 			outputText("\n\n");
 			if (player.hasPerk(PerkLib.EromancyMaster)) combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
-			if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownPossess,1,0,0,0);
-			else player.createStatusEffect(StatusEffects.CooldownPossess,2,0,0,0);
+			var pc:Number = 2;
+			if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
+			if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 3) pc -= 1;
+			if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 4) pc -= 1;
+			if (pc < 0) pc = 0;
+			player.createStatusEffect(StatusEffects.CooldownPossess,pc,0,0,0);
 		}
 		//Fail
 		else {
@@ -6035,11 +6043,18 @@ public class MagicSpecials extends BaseCombatContent {
 //Spectral Scream
 	public function SpectralScream():void {
 		clearOutput();
-		if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownSpectralScream,5,0,0,0);
-		else player.createStatusEffect(StatusEffects.CooldownSpectralScream,6,0,0,0);
+		var ssc:Number = 6;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) ssc -= 1;
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 3) ssc -= 1;
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 4) ssc -= 1;
+		player.createStatusEffect(StatusEffects.CooldownSpectralScream,ssc,0,0,0);
 		outputText("You let out a soul-chilling scream freezing your opponent" + (monster.plural ? "s":"") + " in [monster his] tracks from sheer terror. This also seems to have damaged [monster his] sanity. ");
 		var damage:Number = 0;
 		damage += scalingBonusIntelligence() * spellMod();
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 3) {
+			damage += scalingBonusStrength();
+			damage += scalingBonusToughness();
+		}
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = Math.round(damage);
@@ -6050,7 +6065,8 @@ public class MagicSpecials extends BaseCombatContent {
 		wisDebuff += Math.round(0.1 * monster.wis);
 		monster.intStat.core.value -= intDebuff;
 		monster.wisStat.core.value -= wisDebuff;
-		monster.createStatusEffect(StatusEffects.Fear,1+rand(3),0,0,0);
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 2) monster.createStatusEffect(StatusEffects.Fear,3,0,0,0);
+		else monster.createStatusEffect(StatusEffects.Fear,1,0,0,0);
 		enemyAI();
 	}
 

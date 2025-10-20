@@ -6247,6 +6247,14 @@ public class Combat extends BaseContent {
 						ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
 						ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
 					}
+					if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 4 && player.hunger >= Math.round(player.maxHunger() * 0.9)) {
+						ExtraNaturalWeaponAttack(ClawDamageMultiplier, "", true);
+						ExtraNaturalWeaponAttack(ClawDamageMultiplier, "", true);
+						if (player.isRaceCached(Races.WENDIGO)) {
+							ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
+							ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
+						}
+					}
                     break;
                 case Arms.GARGOYLE:
                     feralNotGargoyle = false;
@@ -6327,6 +6335,14 @@ public class Combat extends BaseContent {
 					if (player.isRaceCached(Races.WENDIGO)) {
 						ExtraNaturalWeaponAttack(1, "WendigoClaw", true);
 						ExtraNaturalWeaponAttack(1, "WendigoClaw", true);
+					}
+					if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 4 && player.hunger >= Math.round(player.maxHunger() * 0.9)) {
+						ExtraNaturalWeaponAttack(ClawDamageMultiplier, "", true);
+						ExtraNaturalWeaponAttack(ClawDamageMultiplier, "", true);
+						if (player.isRaceCached(Races.WENDIGO)) {
+							ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
+							ExtraNaturalWeaponAttack(ClawDamageMultiplier, "WendigoClaw", true);
+						}
 					}
                     outputText("\n");
                     break;
@@ -14545,7 +14561,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			maxPercentRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
 		}
-		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) maxPercentRegen += player.perkv1(IMutationsLib.WendigoMetabolismIM);
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) maxPercentRegen += (1 + player.perkv1(IMutationsLib.WendigoMetabolismIM));
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxPercentRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
 			var hshim1:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
@@ -14646,7 +14662,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
 			maxRegen += 20;
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxRegen += 10;
 		}
-		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) maxRegen += player.perkv1(IMutationsLib.WendigoMetabolismIM);
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) maxRegen += (1 + player.perkv1(IMutationsLib.WendigoMetabolismIM));
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
 			var hshim2:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));

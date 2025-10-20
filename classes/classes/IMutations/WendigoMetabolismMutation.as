@@ -19,13 +19,28 @@ public class WendigoMetabolismMutation extends IMutationPerkType
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
-                descS += "Gain High regeneration but make Endless hunger permanent. Feeding now increases toughness and strength up to " + 5 * pTier + "0% more and the increment increased to " + (pTier + 1) + "% per stack";
+                descS += "Gain High regeneration (2%) but make Endless hunger permanent";
             }
             if (pTier >= 2){
-                descS += ", further increases speed by 100% per NG+ for 5 hours longer, venom recharge when using Manticore feed is twice as effective and increases max hunger by 50";
+                descS += ". Regeneration is further increased (" + pTier + "%) but so is the hunger (" + (15 * (pTier - 1)) + "%)";
+            }
+            if (pTier >= 1){
+                descS += ". Feeding now increases toughness and strength up to " + (5 * pTier) + "0% more and the increment increased to " + (pTier + 1) + "% per stack";
+            }
+            if (pTier >= 2){
+                descS += ". Increase the duration of spectral scream to 3 rounds";
             }
             if (pTier >= 3){
-                descS += ", spikes deal twice as much damage and lust, speed is increased by another 100%, and if you have manticore tail, straddle damage is greatly increased and direct tail feeding is twice as difficult to remove.";
+                descS += ". Spectral Scream and Possess gains an increased modifier based on your combined strength and toughness and have their cooldowns reduced by ";
+            }
+            if (pTier == 3){
+                descS += "one round";
+            }
+            if (pTier == 4){
+                descS += "two rounds";
+            }
+            if (pTier >= 4){
+                descS += ". Do four more claw attacks when hunger is mostly sated (90%+)";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -57,7 +72,7 @@ public class WendigoMetabolismMutation extends IMutationPerkType
         }
 
         public function WendigoMetabolismMutation() {
-            super(mName + " IM", mName, SLOT_METABOLISM, 1);
+            super(mName + " IM", mName, SLOT_METABOLISM, 4);
         }
 
     }

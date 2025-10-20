@@ -110,6 +110,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					else if (player.maxHunger() > 100) multiplier += 0.25;
 					else multiplier += 0.25;
 				}
+				if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 2) multiplier += (0.15 * (player.perkv1(IMutationsLib.WendigoMetabolismIM) - 1));
 				if (player.hasPerk(PerkLib.ManticoreCumAddict)) multiplier *= 2;
 				if (player.hasPerk(PerkLib.HydraRegeneration)) multiplier *= 2;
 				if (player.hasPerk(PerkLib.AxillaryVenomGlands) && player.tailVenom < player.maxVenom()) multiplier *= 2;

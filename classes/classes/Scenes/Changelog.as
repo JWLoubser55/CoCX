@@ -278,11 +278,13 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Heartforce (HE): Elder Stage. Gained by cultivating 'Heart's Eye' cultivation manual. Effects: +15% psychic resistance at S.Elder, S.Exalt, S.Overlord stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks\n");
 			outputText("-New event perk: Heartforce (HE): Overlord Stage. Gained by cultivating 'Heart's Eye' cultivation manual. Effects: +20% psychic resistance at S.Tyrant, S.King, S.Emperor stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks (doubled bonus from excess resistance)\n");
 			outputText("-New material: a vial of Heartforce Tempering Solution. Cost 500 gems. Could be bought in 'Soul Items' shop. Usefull only for heartforce cultivators subpath.\n");
-			outputText("-New mutation perk: Wendigo metabolism. Req. having free metabolism mutation slot, wendigo race. Effects: Gain High regeneration but make Endless hunger permanent. Feeding now increases toughness and strength up to 50% more and the increment increased to 2% per stack.\n");
+			outputText("-New mutation perk: Wendigo metabolism. Req. having free metabolism mutation slot, wendigo race. Effects: Gain High regeneration (2%) but make Endless hunger permanent. Feeding now increases toughness and strength up to 50% more and the increment increased to 2% per stack.\n");
 			outputText("-Endless Hunger perk now will have additional effects: increase min lust to 30%, each day without feeding increase min lust by 10%, when sexualy fed PC Toughness and Strength multi increase by 1% each up to 100%.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Wendigo metabolism (Primitive). Req. Wendigo metabolism and lvl 30+. Effects: Gain High regeneration (2%) but make Endless hunger permanent. Regeneration is further increased (1%) but so is the hunger (15%). Feeding now increases toughness and strength up to 100% more and the increment increased to 3% per stack. Increase the duration of spectral scream to 3 rounds.\n");
+			outputText("-New mutation perk: Wendigo metabolism (Evolved). Req. Wendigo metabolism (Primitive) and lvl 60+. Effects: Gain High regeneration (2%) but make Endless hunger permanent. Regeneration is further increased (2%) but so is the hunger (30%). Feeding now increases toughness and strength up to 150% more and the increment increased to 4% per stack. ");
+			outputText("Increase the duration of spectral scream to 3 rounds. Spectral Scream and Possess gains an increased modifier based on your combined strength and toughness and have their cooldowns reduced by one round.\n");
+			outputText("-New mutation perk: Wendigo metabolism (Final Form). Req. Wendigo metabolism (Evolved) and lvl 90+. Effects: Gain High regeneration (2%) but make Endless hunger permanent. Regeneration is further increased (3%) but so is the hunger (45%). Feeding now increases toughness and strength up to 200% more and the increment increased to 5% per stack. ");
+			outputText("Increase the duration of spectral scream to 3 rounds. Spectral Scream and Possess gains an increased modifier based on your combined strength and toughness and have their cooldowns reduced by two rounds. Do four more claw attacks when hunger is mostly sated (90%+).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -357,8 +359,8 @@ public class Changelog extends BaseContent
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach without becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
 			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, Sidone ");
 			outputText("help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, cave wyrm tongue desc been draconic not cave wyrm, some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling weapons scaling on wrong values, ");
-			outputText("Blade Grass missing tf effects for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, ");
-			outputText("Neisa interactable when she's training, Cold Affinity lost while been Wendigo\n\n");
+			outputText("Blade Grass missing tf effects for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, Neisa interactable when she's training, ");
+			outputText("Cold Affinity lost while been Wendigo, missing 2 more feral combat claws attacks for Wendigo\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9a:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");
