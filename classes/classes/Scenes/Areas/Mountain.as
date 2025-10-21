@@ -16,6 +16,7 @@ import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.API.SimpleEncounter;
 import classes.Scenes.Areas.HighMountains.*;
 import classes.Scenes.Areas.Mountain.*;
+import classes.Scenes.Dungeons.RiverDungeon.AirElemental;
 import classes.Scenes.Monsters.LightElfScene;
 import classes.Scenes.NPCs.DivaScene;
 import classes.Scenes.NPCs.EtnaFollower;
@@ -231,6 +232,16 @@ public class Mountain extends BaseContent
 				call:ceraphFn,
 				mods:[fn.ifLevelMin(2)]
 			}, {
+				name: "coccoon",
+				label : "Coccoon",
+				kind  : 'event',
+				unique: true,
+				when: function():Boolean {
+					return flags[kFLAGS.ECIHTEL_FOLLOWER] < 2;
+				},
+				chance: mountainChance,
+				call: SceneLib.ecihtelScene.coccoonFounded
+			}, {
 				name: "lactoblasters",
 				label : "Gun Parts",
 				kind  : 'item',
@@ -411,7 +422,7 @@ public class Mountain extends BaseContent
 				},
 				chance: mountainChance,
 				call: DivaScene.instance.encounter
-			},{
+			}, {
 				name: "quarry",
 				label : "Quarry",
 				kind  : 'place',
@@ -420,12 +431,12 @@ public class Mountain extends BaseContent
 				},
 				chance: 4,
 				call: camp.cabinProgress.quarrySite
-			},{
+			}, {
 				name: "lightelf",
 				label : "Light Elf",
 				kind : 'monster',
 				call: lightelfScene.introLightELfScout
-			},{
+			}, {
 				name: "derpnade launcher",
 				label : "Gun Parts",
 				kind  : 'item',
@@ -607,6 +618,11 @@ public class Mountain extends BaseContent
 				label : "Basilisk",
 				kind : 'monster',
 				call: basiliskScene.basiliskGreeting
+			}, {
+				name: "wind ele",
+				label : "Wind Elemental",
+				kind  : 'monster',
+				call: mountainWindElemental
 			}, {
 				name: "sophie",
 				label : "Sophie",
@@ -878,6 +894,12 @@ public class Mountain extends BaseContent
 				dynStats("tou", .2, "spe", .4, "lib", .2, "lus", player.lib / 12);
 			}
 			endEncounter();
+		}
+		private function mountainWindElemental():void {
+			clearOutput();
+			outputText("While exploring the mountain a sudden gust of wind sends you sprawling to the ground. Lifting your head up you see what appears to be a green skinned woman of which the ethereal frame moves and swirls like a small cyclone as various debris are carried in her wake. This is a fully manifested Sylpheed and the capricious elemental has definitively decided to pick on you to stave her boredom. Knowing full well you can’t reason with this aerial prankster you prepare to fight.\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 6;
+			startCombat(new AirElemental());
 		}
 		//\"<i>Chicken Harpy</i>\" by Jay Gatsby and not Savin he didn't do ANYTHING
 		//Initial Intro

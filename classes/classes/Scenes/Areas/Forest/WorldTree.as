@@ -255,6 +255,11 @@ public class WorldTree extends BaseContent
 				changes++;
 			}
 			//Plant-like wings
+			if (player.wings.type == Wings.YGGDRASIL_HUGE_3 && changes < changeLimit) {
+				outputText("\n\n");
+				CoC.instance.transformations.WingsYggdrasilOctupleHuge.applyEffect();
+				changes++;
+			}
 			if (player.wings.type == Wings.YGGDRASIL_HUGE_2 && changes < changeLimit) {
 				outputText("\n\n");
 				CoC.instance.transformations.WingsYggdrasilSextupleHuge.applyEffect();
@@ -270,7 +275,7 @@ public class WorldTree extends BaseContent
 				CoC.instance.transformations.WingsYggdrasilHuge.applyEffect();
 				changes++;
 			}
-			if (player.arms.type == Arms.YGGDRASIL && player.wings.type != Wings.YGGDRASIL_LARGE && player.wings.type != Wings.YGGDRASIL_HUGE && player.wings.type != Wings.YGGDRASIL_HUGE_2 && player.wings.type != Wings.YGGDRASIL_HUGE_3 && player.lowerBody != LowerBody.PLANT_FLOWER && changes < changeLimit) {
+			if (player.arms.type == Arms.YGGDRASIL && player.wings.type != Wings.YGGDRASIL_LARGE && player.wings.type != Wings.YGGDRASIL_HUGE && player.wings.type != Wings.YGGDRASIL_HUGE_2 && player.wings.type != Wings.YGGDRASIL_HUGE_3 && player.wings.type != Wings.YGGDRASIL_HUGE_4 && player.lowerBody != LowerBody.PLANT_FLOWER && changes < changeLimit) {
 				outputText("\n\n");
 				CoC.instance.transformations.WingsYggdrasilLarge.applyEffect();
 				changes++;
@@ -287,16 +292,32 @@ public class WorldTree extends BaseContent
 				CoC.instance.transformations.FacePlantDragon.applyEffect();
 				changes++;
 			}
+			//Extra plant dragon tails
+			var nYgddrasilTails:int = player.tailType == Tail.YGGDRASIL ? player.tailCount : 0;
+			if (nYgddrasilTails == 3 && player.level >= 18 && player.inte >= 45 && player.wis >= 90 && changes < changeLimit) {
+				outputText("[pg]");
+				transformations.TailYgddrasil(4).applyEffect();
+			}
+			if (nYgddrasilTails == 2 && player.level >= 12 && player.inte >= 30 && player.wis >= 60 && changes < changeLimit) {
+				outputText("[pg]");
+				transformations.TailYgddrasil(3).applyEffect();
+			}
+			if (nYgddrasilTails == 1 && player.level >= 6 && player.inte >= 15 && player.wis >= 30 && changes < changeLimit) {
+				outputText("[pg]");
+				transformations.TailYgddrasil(2).applyEffect();
+			}
 			//Plant dragon tail
 			if (player.faceType == Face.PLANT_DRAGON && player.tailType != Tail.YGGDRASIL && changes < changeLimit) {
 				outputText("\n\n");
-				CoC.instance.transformations.TailYgddrasil.applyEffect();
+				CoC.instance.transformations.TailYgddrasil(1).applyEffect();
 				changes++;
 			}
+			//Rear body
+			
 			//Moss (fur)/else Bark skin
 			if (!player.isBarkSkin() && !player.isGargoyle() && changes < changeLimit && player.faceType == Face.PLANT_DRAGON) {
 				outputText("\n\n");
-				CoC.instance.transformations.SkinBark(Skin.COVERAGE_COMPLETE, {colors: YgddrasilRace.YgddrasilSkinColors}).applyEffect();
+				CoC.instance.transformations.SkinBark(Skin.COVERAGE_COMPLETE, {colors: randomChoice(YgddrasilRace.YgddrasilSkinColors)}).applyEffect();
 				changes++;
 			}
 			if (player.ears.type != Ears.LIZARD && player.tailType == Tail.YGGDRASIL && player.lowerBody == LowerBody.YGG_ROOT_CLAWS && changes < changeLimit) {

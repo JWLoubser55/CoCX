@@ -158,9 +158,11 @@ public class SceneLib {
 
     public static var dinahScene:DinahFollower = new DinahFollower();
 
+    public static var ecihtelScene:EcihtelFollower = new EcihtelFollower();
+
     public static var electraScene:ElectraFollower = new ElectraFollower();
 
-    //public static var NadiaFollower:NadiaFollower = new NadiaFollower();
+    public static var eliseScene:EliseFollower = new EliseFollower();
 
     public static var emberScene:EmberScene = new EmberScene();
 	
@@ -195,6 +197,8 @@ public class SceneLib {
     public static var isabellaScene:IsabellaScene = new IsabellaScene();
 
     public static var isabellaFollowerScene:IsabellaFollowerScene = new IsabellaFollowerScene();
+
+    public static var ivanScene:IvanFollower = new IvanFollower();
 
     public static var izmaScene:IzmaScene = new IzmaScene();
 
@@ -255,6 +259,10 @@ public class SceneLib {
     public static var sophieFollowerScene:SophieFollowerScene = new SophieFollowerScene();
 
     public static var sophieScene:SophieScene = new SophieScene();
+
+    public static var stellaScene:StellaFollower = new StellaFollower();
+
+    public static var sythScene:SythFollower = new SythFollower();
 
     public static var tedScene:TedScenes = new TedScenes();
 

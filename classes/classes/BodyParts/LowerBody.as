@@ -424,7 +424,7 @@ public class LowerBody extends SaveableBodyPart {
 		name: "plant flower",
 		legCount: 12,
 		legs: "vine-like tentacle stamens",
-		appearanceDesc: "Around your waist, the petals of a large [flowercolor] orchid expand, big enough to engulf you entirely on their own, coupled with a pitcher-like structure in the centre, which is filled with syrupy nectar straight from your loins. When you wish to rest, these petals draw up around you, encapsulating you in a beautiful bud.  While you don't technically have legs anymore, you can still move around on your {legCount} vine-like stamens.",
+		appearanceDesc: "Around your waist, the petals of a large [flowercolor] orchid expand, big enough to engulf you entirely on their own, coupled with a pitcher-like structure in the center, which is filled with syrupy nectar straight from your loins. When you wish to rest, these petals draw up around you, encapsulating you in a beautiful bud.  While you don't technically have legs anymore, you can still move around on your {legCount} vine-like stamens.",
 		tentacle: true,
 		isAlraune: true
 	});
@@ -929,7 +929,27 @@ public class LowerBody extends SaveableBodyPart {
 		name: "werespider",
 		appearanceDesc: "Your {legCount} legs are covered in a reflective [chitin color1], insectile carapace exoskeleton.",
 		chitin: true
-	})
+	});
+
+	public static const BAROMETZ:int = 93;
+	EnumValue.add(Types, BAROMETZ, "BAROMETZ", {
+		name: "barometz",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = ""
+
+			if (player.isBiped()) {
+				desc += "Your two digitigrade legs covered in verdant moss, form below your [hips], ending in cloven hooves.";
+			}
+
+			if (player.isTaur()) {
+				desc += "From the waist down, you have the body of a verdant centaur, with four muscled legs which are jointed oddly, covered in [fur color] fur, and end in a bestial cloven hooves. Your thick, muscular ass surges with muscle whenever you trot about. Thick green plant vines grow from your lower half, blurring the line between beasts and plants."
+			}
+
+			return desc;
+		},
+		canTaur: true,
+		fur: true
+	});
 
 	override public function set type(value:int):void {
 		super.type = value;

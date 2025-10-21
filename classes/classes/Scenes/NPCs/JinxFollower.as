@@ -7,6 +7,7 @@ package classes.Scenes.NPCs
 import classes.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.Camp.CampStatsAndResources;
+import classes.Scenes.Places.TrollVillage;
 import classes.Scenes.SceneLib;
 	
 	public class JinxFollower extends NPCAwareContent
@@ -164,24 +165,60 @@ import classes.Scenes.SceneLib;
 			flags[kFLAGS.JINX_LVL_UP] = 0.8;
 			menu();
 			addButton(1, "No", bazaarEncounters);
-			addButtonDisabled(3, "Yes", "Inviting someone who would gladly blow up a warehouse to prove her usefulness seems like a horrendous idea... Right?");
+			addButtonIfTrue(3, "Yes", bazaarEncountersYouYes, "You need to have 10 spirit stones", flags[kFLAGS.SPIRIT_STONES] >= 10);
 		}
 		public function bazaarEncountersYouRepeat():void {
 			clearOutput();
 			outputText("\"<i>No changes to my fee since the last time you asked. Ten spirit stones and a corner of space to myself. Do we have a deal or not?</i>\"\n\n");
 			menu();
 			addButton(1, "No", bazaarEncounters);
-			addButtonDisabled(3, "Yes", "Inviting someone who would gladly blow up a warehouse to prove her usefulness seems like a horrendous idea... Right?");
+			addButtonIfTrue(3, "Yes", bazaarEncountersYouYes, "You need to have 10 spirit stones", flags[kFLAGS.SPIRIT_STONES] >= 10);
 		}
 		public function bazaarEncountersYouYes():void {
 			clearOutput();
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
-			outputText("\"<i></i>\"\n\n");
+			outputText("\"<i>Great! But let's get the boring stuff outta the way, first.</i>\" She extends her hand, grinning. \"<i>Show me the money.</i>\"\n\n");
+			outputText("Receiving the stones, she tosses it toward the golems. Then, she turns back to you. \"<i>What are you waiting for?</i>\" she asks as you stand there. \"<i>Time is precious, and I can't waste any! Experiments call me, so let's go already!</i>\"\n\n");
+			outputText("She’s leaving just like that?\n\n");
+			outputText("\"<i>Ummmm... yeah? I do not need anything else as the golem will bring it all along.</i>\" Noticing your doubt,s he adds, \"<i>It's a very well made one and will find that [camp] of yours.</i>\"\n\n");
+			outputText("Still with a lingering concern, you walk with the goblin back to your camp.\n\n");
+			if (amilyScene.amilyFollower() && flags[kFLAGS.AMILY_FOLLOWER] == 1) {
+				outputText("\"<i>[name]? You brought a goblin to camp? You know they have only one thing in mind, right?</i>\"\n\n");
+				outputText("\"<i>Explosions?</i>\" Replies the goblin as she passes by Amily.\n\n");
+				outputText("Amily scrunches her face briefly, shaking her head in disbelief. It seemed that was not the reply she expected.\n\n");
+			}
+			if (player.hasStatusEffect(StatusEffects.CampMarble) && flags[kFLAGS.FOLLOWER_AT_FARM_MARBLE] == 0 && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] != 4) {
+				outputText("\"<i>Dear. You brought goblin here? What can she do?</i>\"\n\n");
+				outputText("\"<i>Explosions.</i>\" Minx explains, after which Marble distances herself, asking you to be extra careful around the goblin.\n\n");
+			}
+			if (player.hasStatusEffect(StatusEffects.PureCampJojo)) {
+				outputText("\"<i>Oh, what an odd goblin.</i>\" The monk circles Minx and then continues, \"<i>She's not obsessed about pregnancy, but there is something off about her regardless. Promise to be extra careful.</i>\"\n\n");
+				outputText("Minx simply shrugs him off without a care.\n\n");
+			}
+			if (EvangelineFollower.EvangelineFollowerStage >= 1 && flags[kFLAGS.EVANGELINE_WENT_OUT_FOR_THE_ITEMS] <= 0) {
+				outputText("Evangeline steps up to the goblin, \"<i>Did you bring me an experiment subject?</i>\"\n\n");
+				outputText("Minx flinches on this thought and then, looking back at the alchemist girl, asks you, \"<i>Someone to test my explosives on?</i>\"\n\n");
+				outputText("The two of them lock each other in a fierce gaze before Evangeline returns to her alchemical equipment.\n\n");
+			}
+			if (flags[kFLAGS.SIEGWEIRD_FOLLOWER] > 3) outputText("Siegweird glances at the goblin, scratching the back of his head in bemusement, \"<i>Hmmm… I… should I… ask, [name]..? You know what, I’m sure you have you… reasons…</i>\"\n\n");
+			//(Jeniffer) {
+			//	outputText("\"<i>Ohh, a golem made to look like one of us goblins? Interesting.</i>\" she notes.\n\n");
+			//	outputText("Minx gives her the stink eye, not even replying. Jenner looks at it more intently, \"<i>Pretty well crafted to fool almost all. I don't believe it's just another goblin. Where did you find it? Not stolen from its owner, I hope?</i>\"\n\n");
+			//}
+			//(Miyeon) {
+			//	outputText("\"<i>Ohh, an goblin shaped flesh golem. Curious idea, but why so much hassle for simple imitation over just normal golem?</i>\" she asks as her tail(s) freely swings behind her.\n\n");
+			//	outputText("Minx gives her the stinky eye, not even replying. Miyeon steps closer to the golem, \"<i>Ahh it is so cute, not giving away any clue about its owner. Well, maybe the owner is coming here soon, too? Don't you think so [name]?</i>\"\n\n");
+			//}
+			if ((ZenjiScenes.isLover() || flags[kFLAGS.ZENJI_PROGRESS] == 8 || flags[kFLAGS.ZENJI_PROGRESS] == 9) && TrollVillage.ZenjiVillageStage != 2) outputText("Zenji crosses his arms, staring down at the goblin as he scoffs, \"<i>Gah, [name], even I have standards!</i>\"\n\n");
+			outputText("Minx looks around and finds a spot a bit away from the center of the [camp] section. \"<i>Here looks decent.</i>\"\n\n");
+			outputText("Then, she sits down and... waits? After a few minutes, when you’re about to talk to her, there is minor commotion at [camp] perimeter. Looking in that direction, you see the same golem from the bazaar flanked by two other smaller ones approaching. Each of them pulls a wagon or two full of goblin belongings.\n\n");
+			/*(Miyeon) Words from your resident werefox about the owner of the golem echoes in your mind. (end)*/outputText("\"<i>Right on time!</i>\" Minx rejoices. \"<i>Ummm, [name], would you kindly let me settle in?</i>\" With that, she starts to command them. One digging into the ground, the other two taking stuff off the wagons with the goblin owner overseeing all of it. You leave them to do the all work.\n\n");
+			outputText("\n\n(<b>Minx now available in the followers menu.</b>)");
+			if (player.hasKeyItem("Radiant shard") >= 0) player.addKeyValue("Radiant shard",1,+1);
+			else player.createKeyItem("Radiant shard", 1,0,0,0);
+			outputText("\n\n<b>Before fully settling in your camp, as if remembering something, Minx pulls a shining shard from her inventory and hands it over to you as a gift. You acquired a Radiant shard!</b>");
+			flags[kFLAGS.SPIRIT_STONES] -= 10;
+			flags[kFLAGS.JINX_LVL_UP] = 1;
+			endEncounter();
 		}
 		
 		public function campJinxMenuMain():void {
@@ -189,13 +226,25 @@ import classes.Scenes.SceneLib;
 			outputText("Approaching the usual place where Minx resides, it would almost seem that there was some technological revolution happening here with all the sophisticated items put in seemingly specific ways… Or maybe they are all just thrown around randomly.\n\n");
 			outputText("After a moment, from the midst of all the trinkets, emerges a blue haired goblin. \"<i>Ahh [name]. Be quick, I’ve got a lot of work to return to. So, what’s it gonna be?</i>\"\n\n");
 			menu();
-			addButton(0, "Shop", campJinxMenuMainShop);
+			addButton(0, "Appearance", campJinxMenuMainAppearance);
 			//x - Talk
+			addButton(2, "Shop", campJinxMenuMainShop);
 			//x - fletcher table for guns
 			addButton(14, "Back", camp.campFollowers);
 		}
 		
-		public function campJinxMenuMainShop():void {
+		public function campJinxMenuMainAppearance():void {
+			clearOutput();
+			outputText("Minx is a 4ft tall green-skinned goblin. She has long blue hair, parted by a pair of pointed ears, styled into long double braids. Her face humanoid in appearance with plump pink lips and sharp teeth. Her eyes are gleaming pink in color.\n\n");
+			outputText("She has human shaped arms and legs with her nails painted pink or blue in color. Her waspish hips sway side to side in a graceful stride, drawing attention to her plush, jiggly bottom. She wears a two pieces bikini as typical attire, ");
+			outputText("with plenty of belts at her hips that she uses to carry around weapons, ammo or other tools she may need. Along her arms and legs she are a set of warmers that reaching reaches to the knees and elbows. At her hands she, wears thin, fingerless gloves. Covering her feet are a pair of cuffed, brown leather boot that reach past her ankles with laces tied along it.\n\n");
+			outputText("She has small A cup breasts. Her nipples are pink in color.\n\n");
+			outputText("She has a pink, wet pussy and a tight anus between her cheeks right where it should be.\n\n");
+			menu();
+			addButton(14, "Back", campJinxMenuMain);
+		}
+		
+		private function campJinxMenuMainShop():void {
 			clearOutput();
 			menu();
 			addButton(0, "MetalPiecesx1", buyItemMetalPlates, 1).hint("A metal pieces for something really cool. (x1)");

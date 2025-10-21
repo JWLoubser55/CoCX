@@ -18,7 +18,7 @@ public class BlinkSpell extends AbstractBlackSpell {
 	}
 	
 	override public function manaCost():Number {
-		return super.manaCost() * costMultiplier();
+		return baseManaCost * costMultiplier();
 	}
 	
 	private function costMultiplier():Number {
@@ -30,7 +30,7 @@ public class BlinkSpell extends AbstractBlackSpell {
 	}
 	
 	override public function get isKnown():Boolean {
-		return player.hasStatusEffect(StatusEffects.KnowsBlink)
+		return player.hasStatusEffect(StatusEffects.KnowsBlink);
 	}
 	
 	override public function isActive():Boolean {
@@ -54,9 +54,9 @@ public class BlinkSpell extends AbstractBlackSpell {
 	public function calcBoost():Number {
 		var BlinkBoostCap:Number = 2;
 		if (player.hasPerk(PerkLib.SelfbuffsProficiency)) {
-			var capB:Number = 1.3;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 0.7;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 5;
+			var capB:Number = 1.5;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 1;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 7.5;
 			BlinkBoostCap *= capB;
 		}
 		BlinkBoostCap *= player.intStat.core.max;

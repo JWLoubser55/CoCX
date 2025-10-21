@@ -14,6 +14,7 @@ import classes.IMutations.IMutationsLib;
 import classes.Items.Weapons.Tidarion;
 import classes.PerkLib;
 import classes.Races;
+import classes.Scenes.Areas.VolcanicCrag.HellcatKasha;
 import classes.Scenes.Dungeons.D3.*;
 import classes.Scenes.SceneLib;
 import classes.StatusEffectClass;
@@ -82,7 +83,7 @@ public class CombatUI extends BaseCombatContent {
 
 		//Standard menu before modifications.
 		if (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 2 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) {
-			btnMelee.show("E.Attack", combat.baseelementalattacks, "Command your elemental to attack the enemy.  Damage it will deal is affected by your wisdom and intelligence.").icon("A_Melee");
+			btnMelee.show("E.Attack", combat.basicElementalAttack, "Command your elemental to attack the enemy.  Damage it will deal is affected by your wisdom and intelligence.").icon("A_Melee");
 			if (combat.isEnemyInvisible) btnMelee.disable("You cannot use command your elemental to attack an opponent you cannot see or target.");
 		}
 		else {/*
@@ -147,6 +148,7 @@ public class CombatUI extends BaseCombatContent {
 		if ((combat.isEnemyInvisible || monster.hasStatusEffect(StatusEffects.MaddeningTune)) && !player.hasPerk(PerkLib.TrueSeeing)){
 			btnMelee.disable("You cannot use attack on opponent you cannot see or target.");
 		}
+		if (monster is HellcatKasha) btnMelee.disable("The kasha is moving around too fast and too far for you to hit her. She is always keeping just enough distance to strike with her whip.");
 		// Ranged
 		switch (player.weaponRangePerk) {
 			case "Bow":
@@ -232,7 +234,7 @@ public class CombatUI extends BaseCombatContent {
 			if (player.isInGoblinMech() || player.isInNonGoblinMech()) btnPSpecials.show("Mech", submenuPhySpecials, "Mech special attacks menu.", "Mech Specials");
 			else btnPSpecials.show("P. Specials", submenuPhySpecials, "Physical special attack menu.", "Physical Specials");
 		}
-		if (monster.hasStatusEffect(StatusEffects.MaddeningTune)) {
+		if (monster.hasStatusEffect(StatusEffects.MaddeningTune) || monster is HellcatKasha) {
 			btnPSpecials.disable();
 		}
 		// Submenu - Magical Specials
@@ -296,6 +298,8 @@ public class CombatUI extends BaseCombatContent {
 			doCompanionTurn(3);
 		else if (isMechAITurn())
 			doMechAITurn();
+		else if (isSlimeTurn())
+			doSlimeTurn();
 		//PC: is busy with something
 		else if (isPlayerBound()) {
 			mainMenuWhenBound();
@@ -391,6 +395,7 @@ public class CombatUI extends BaseCombatContent {
 		} else if (monster.hasStatusEffect(StatusEffects.SlimeInsert)) {
 			menu();
 			addButton(0, "Rape", combat.SlimeRapeFeed).hint("Violate your opponent from the inside!");
+			addButton(4, "Release", combat.SlimeRapeStop).hint("Release your opponent.");
 		} else if (monster.hasStatusEffect(StatusEffects.Swallowed)) {
 			menu();
 			addButton(0, "Tease", combat.SwallowTease).hint("Use a powerful teasing attack").icon("A_Tease");
@@ -462,7 +467,7 @@ public class CombatUI extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.OniRampage) || player.wrath > player.maxSafeWrathSpellcasting()) {
 				btnMagic.disable("You are too angry to think straight. Smash your puny opponents first and think later.\n\n").icon("A_Magic")
 			} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic")
-		} else if (monster.hasStatusEffect(StatusEffects.MysticWeb)) {
+		} else if (monster.hasStatusEffect(StatusEffects.MysticWeb) || monster.hasStatusEffect(StatusEffects.BloodWeb)) {
 			menu();
 			addButton(0, "Tease", combat.WebTease).hint("Toy with your opponent");
 			addButton(1, "Bite", combat.spiderBiteAttack).hint("Inject your venom.");
@@ -586,7 +591,7 @@ public class CombatUI extends BaseCombatContent {
 			clearOutput();
 			outputText("Would you like your wisp to attack?");
 			outputText("\n<b>The wisp can be toggled to attack automatically (Page 3).</b>");
-			outputText("\n<b>You can also enable \"Simplified Pre-PC Turn\" in Perk menu to set all your allies' behaviour to automatic and avoid pressing the 'Next' button every time.</b>\n\n");
+			outputText("\n<b>You can also enable \"Simplified Pre-PC Turn\" in Perk menu to set all your allies' behavior to automatic and avoid pressing the 'Next' button every time.</b>\n\n");
 			menu();
 			addButton(0, "Skip", combat.willothewispskip).hint("You forfeit this attack of the wisp. Would skip to next minion attack/your main turn.");
 			addButton(1, "Attack", doWillOfTheWispAttack).hint("The wisp attacks your enemy.");
@@ -656,7 +661,7 @@ public class CombatUI extends BaseCombatContent {
 	}
 	
 	public function isMechAITurn():Boolean {
-		return player.isInGoblinMech() && (player.hasKeyItem("Improved Artificial Intelligence") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK2") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK3") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0)
+		return (player.isInGoblinMech() || player.hasPerk(PerkLib.SelfImprovement)) && (player.hasKeyItem("Improved Artificial Intelligence") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK2") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK3") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0)
 				&& (player.hasKeyItem("Auto turret") >= 0 || player.hasKeyItem("Auto turret MK2") >= 0 || player.hasKeyItem("Auto turret MK3") >= 0 || player.hasKeyItem("Auto turret MK4") >= 0 || player.hasKeyItem("Auto turret MK5") >= 0 || player.hasKeyItem("Auto turret MK6") >= 0)
 				&& flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] != 1 && flags[kFLAGS.MECH_AI_ATTACK] == 1 && !doWeDisableThisOne(9);
 	}
@@ -665,13 +670,27 @@ public class CombatUI extends BaseCombatContent {
 		combat.shootMechWeaponByAI();
 		if (player.hasKeyItem("Improved Artificial Intelligence MK2") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK3") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0) combat.pspecials.goblinMechAIUseRadomlyItWeaponFunctions();
 		if (player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0) combat.pspecials.goblinMechAIUseRadomlyItWeaponFunctions();
-		//set flag that mech ai shooted
 		flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] = 1;
 		if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
 			menu();
 			addButton(0, "Next", combatMenu, false);
 		}
 	}
+	
+	public function isSlimeTurn():Boolean {
+        return flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] != 1 && monster.getStatusValue(StatusEffects.SlimeSurround,2) > 0 && !doWeDisableThisOne(10);
+    }
+
+    public function doSlimeTurn():void {
+        if (monster.hasStatusEffect(StatusEffects.SlimeSurround) && monster.getStatusValue(StatusEffects.SlimeSurround,2) > 0) {
+            combat.pspecials.slimeArmyAttack(true);
+            flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] = 1;
+            if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
+                menu();
+                addButton(0, "Next", combatMenu, false);
+            }
+        }
+    }
 
 	public function isGolemTurn():Boolean {
 		return player.hasPerk(PerkLib.FirstAttackGolems) && flags[kFLAGS.GOLEMANCER_PERM_GOLEMS] == 1 && flags[kFLAGS.IN_COMBAT_PLAYER_GOLEM_ATTACKED] != 1 && player.mana >= combat.pspecials.permanentgolemsendcost() && !doWeDisableThisOne(4);
@@ -743,7 +762,7 @@ public class CombatUI extends BaseCombatContent {
 	}
 
 	public function isEpicElementalTurn():Boolean {
-		return player.hasPerk(PerkLib.FirstAttackElementalsSu) && player.statusEffectv2(StatusEffects.SummonedElementals) > 0 && (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 3 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) && flags[kFLAGS.IN_COMBAT_PLAYER_EPIC_ELEMENTAL_ATTACKED] != 1 && !doWeDisableThisOne(1);
+		return player.hasPerk(PerkLib.FirstAttackElementalsSu) && player.statusEffectv2(StatusEffects.SummonedElementals) > 0 && (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 3 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) && flags[kFLAGS.ATTACKING_ELEMENTAL_TYPE] != 0 && flags[kFLAGS.IN_COMBAT_PLAYER_EPIC_ELEMENTAL_ATTACKED] != 1 && !doWeDisableThisOne(1);
 	}
 
 	public function doEpicElementalTurn():void {
@@ -771,7 +790,7 @@ public class CombatUI extends BaseCombatContent {
 	}
 
 	public function isElementalTurn():Boolean {
-		return player.hasPerk(PerkLib.FirstAttackElementals) && player.statusEffectv1(StatusEffects.SummonedElementals) > 0 && (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 3 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) && flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] != 1 && !doWeDisableThisOne(2);
+		return player.hasPerk(PerkLib.FirstAttackElementals) && player.statusEffectv1(StatusEffects.SummonedElementals) > 0 && (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 3 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) && flags[kFLAGS.ATTACKING_EPIC_ELEMENTAL_TYPE] != 30 && flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] != 1 && !doWeDisableThisOne(2);
 	}
 
 	public function doElementalTurn():void {
@@ -1136,3 +1155,5 @@ public class CombatUI extends BaseCombatContent {
 	}
 }
 }
+
+

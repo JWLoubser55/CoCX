@@ -320,6 +320,12 @@ public class Skin extends SaveableBodyPart {
 		appearanceDesc: "Your body is covered with covered with circuit like patterns.",
 		base:true
 	});
+	public static const PATTERN_RUNIC: int = 23;
+	EnumValue.add(PatternTypes, PATTERN_RUNIC, "RUNIC_TATTOO", {
+		name:"runic pattern",
+		appearanceDesc: "Your body is covered with runic patterns.",
+		base:true
+	});
 	// Don't forget to add new types in DebugMenu.as lists SKIN_BASE_TYPES or SKIN_COAT_TYPES
 
 	public var base:SkinLayer;
@@ -601,6 +607,12 @@ public class Skin extends SaveableBodyPart {
 	}
 	public function hasBioluminescence():Boolean {
 		return base.pattern == PATTERN_BIOLUMINESCENCE;
+	}
+	public function hasDemonicPleasureRune():Boolean {
+		return base.pattern == PATTERN_DEMONIC_PLEASURE_RUNE;
+	}
+	public function hasRunicTattoo():Boolean {
+		return base.pattern == PATTERN_RUNIC;
 	}
 	override public function restore(keepTone:Boolean = true):void {
 		coverage = COVERAGE_NONE;

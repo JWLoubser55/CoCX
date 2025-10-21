@@ -6,6 +6,7 @@ import classes.BodyParts.*;
 import classes.GeneticMemories.BallsMem;
 import classes.GlobalFlags.kFLAGS;
 import classes.Items.Armors.LustyMaidensArmor;
+import classes.Items.Vehicles;
 import classes.Races.DemonRace;
 import classes.Scenes.Dungeons.Factory.*;
 import classes.Scenes.Metamorph;
@@ -99,19 +100,19 @@ use namespace CoC;
 
 		private function takeSupervisorKey():void {
 			clearOutput();
-			outputText("You search the desk and find a silver key labelled 'Supervisor'.\n\nYou take the <b>Supervisor Key</b> to keep with your other important items.");
+			outputText("You search the desk and find a silver key labeled 'Supervisor'.\n\nYou take the <b>Supervisor Key</b> to keep with your other important items.");
 			player.createKeyItem("Supervisor's Key", 0, 0, 0, 0);
 			doNext(roomForemanOffice);
 		}
 		private function readTheLetter():void {
 			clearOutput();
-			outputText("As you root through the desk, you find some…oddly organised letters. You begin to read them, curious about what the demons could be up to. One in particular sticks out.\n\n");
+			outputText("As you root through the desk, you find some…oddly organized letters. You begin to read them, curious about what the demons could be up to. One in particular sticks out.\n\n");
 			outputText("<i>Dear Grevia:</i>\n\n");
 			outputText("<i>I have come to understand that you’ve been promoted. I am pleasantly surprised by this. You’ve come a long way from when we knew each other. As you know, you oversee operation Deluge, or the push to corrupt that holdout bitch ‘Goddess’ Marae.</i>\n\n");
 			outputText("<i>All the same, you and I both know how much of a waste it is to be using uncorrupted humans for this operation. Such things are rarities, and as you well know, just about any demon can produce the corrupted fluids needed for your operation. Humans need to be processed and changed extensively for such uses.</i>\n\n");
 			outputText("<i>You also know, or at least suspect, how extensive my own operations are, and how important they are to our queen’s current objectives.</i>\n\n");
 			outputText("<i>Infighting would be pointless, and only serve to benefit our enemies. I propose a…mutually beneficial exchange. Any humans you find, or otherwise obtain, you give to me. In exchange, I provide you with three fully functional fluid-cows. You know how effective my people are at…modifications. They’ll be more effective than your current supply.</i>\n\n");
-			outputText("<i>To sweeten the deal further, you know I have the queen’s ear. Your dedication to working together, for the benefit of all, will be noted. In a world where Queen Lethice needs to carefully watch most of her overseers, a trustworthy one is worth her weight in gems…And you know what kinds of benefits the queen’s favour can provide.</i>\n\n");
+			outputText("<i>To sweeten the deal further, you know I have the queen’s ear. Your dedication to working together, for the benefit of all, will be noted. In a world where Queen Lethice needs to carefully watch most of her overseers, a trustworthy one is worth her weight in gems…And you know what kinds of benefits the queen’s favor can provide.</i>\n\n");
 			outputText("<i>Time is of the essence, you know how impatient our kind can be.\nTalk to you soon, my friend.</i>\n\n");
 			outputText("<i>-A</i>");
 			doNext(roomForemanOffice);
@@ -194,6 +195,30 @@ use namespace CoC;
 			player.createKeyItem("Breast Milker",0,0,0,0);
 			flags[kFLAGS.FACTORY_MILKER_BUILT] = 1;
 			doNext(roomRepairCloset);
+		}
+
+		private function factoryBasement():void {
+			clearOutput();
+//			outputText("You puzzle out how to build a fully functional breast-milker from the spare parts here and assemble it.\n\nYou gained a <b>Breast Milker</b>!");
+//			menu();
+//			if (flags[kFLAGS.D3_GOBLIN_MECH_PRIME] == 0) addButton(0, "Mech", takeMech);
+//			if (Ecihtel) addButton(1, "Cocoon", );
+//		}
+		
+//		private function takeMech():void {
+//			clearOutput();
+			outputText("As you explore the factory basement storage area you come up on what appears to be the wreckages of several gigantic metal objects or so at first you think, A thorough inspection reveal one of them to be of mechanical origin and thanks to your goblin knowledge you quickly identify this as a goblin mech model, Its highly damaged but with some material from the basement and a little work you could put it back into working shape!");
+			if (player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop)) {
+				var item:Vehicles;
+				item = vehicles.GOBMPRI;
+				outputText("You grab a walkie talkie and call your Eldest to let her know you need backup. Soon all of your kids are there with machinery and retrieval equipment assisting in moving the big mech back to the workshop. You can't wait to get started on this project!");
+				flags[kFLAGS.D3_GOBLIN_MECH_PRIME] = 1;
+				inventory.takeItem(item, playerMenu);
+			}
+			else {
+				outputText("Sadly theres no way you could bring this back to camp all on your own without dismantling it, thus you leave it there and vow to recover it later.");
+				doNext(roomRepairCloset);
+			}
 		}
 
 		private function WTFYOUCHEATER():void{
@@ -1781,6 +1806,7 @@ use namespace CoC;
 				outputText("You see a box in the bottom of the cupboard you didn't notice before and go to open it up. Inside you find a strange device that looks like it may be part of a Cock Milker.\n\nDo you take the Cock Milker: Anal Attachment?\n\n");
 				addButton(1, "Anal Attachment", takeAnalAttachment);
 			}
+			if (flags[kFLAGS.D3_GOBLIN_MECH_PRIME] == 0) addButton(2, "Basement", factoryBasement).hint("A stairway down into the factory basement storage area");//Ecihtel check || 
 			outputText("The only exit is back to the south.");
 		}
 

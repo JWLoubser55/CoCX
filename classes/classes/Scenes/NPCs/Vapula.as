@@ -335,7 +335,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 
 			outputText("You tell Vapula that you want her hooked up to a milking machine whenever possible; you need her fluids.");
 
-			outputText("\n\n\"<i>Ooh, so that’s why you wanted me to come out here!</i>\" Vapula grins and her fingers reach for a breast, already fantasising about insistent pressure on her nipples.");
+			outputText("\n\n\"<i>Ooh, so that’s why you wanted me to come out here!</i>\" Vapula grins and her fingers reach for a breast, already fantasizing about insistent pressure on her nipples.");
 
 			if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 0) outputText("\"<i>It’ll sure as hell beat whatever disgusting thing the bitch would have me doing instead. Why don’t you make her build a concentration machine? Lethice has loads; makes one dose of cream go so much further.</i>\"");
 			else outputText("\"<i>As you insist, [master]. It’ll sure as hell beat working.</i>\"");
@@ -351,7 +351,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 
 			outputText("You tell Vapula to stop producing succubus milk; you’re practically drowning in the stuff.");
 
-			outputText("\n\n\"<i>Well, that was the whole idea, [master]. Sure you don’t want to drink some more? Alright, alright!</i>\" A familiarly sulky expression descends on the demon’s face as you deny her her second most favourite activity.");
+			outputText("\n\n\"<i>Well, that was the whole idea, [master]. Sure you don’t want to drink some more? Alright, alright!</i>\" A familiarly sulky expression descends on the demon’s face as you deny her her second most favorite activity.");
 
 			flags[kFLAGS.FOLLOWER_PRODUCTION_VAPULA] = 0;
 

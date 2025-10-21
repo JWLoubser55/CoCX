@@ -180,7 +180,7 @@ public function neisaSparLost():void {
 private function LevelingHerself():void {
 	if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] >= 1) flags[kFLAGS.NEISA_DEFEATS_COUNTER]++;
 	else flags[kFLAGS.NEISA_DEFEATS_COUNTER] = 1;
-	if (flags[kFLAGS.NEISA_LVL_UP] < 8) {
+	if (flags[kFLAGS.NEISA_LVL_UP] < 24) {
 		if (flags[kFLAGS.NEISA_DEFEATS_COUNTER] >= flags[kFLAGS.NEISA_LVL_UP]) {
 			if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers4)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers4, 4, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.NEISA_LVL_UP]);
 			else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers4, 0, 0, 0, player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * flags[kFLAGS.NEISA_LVL_UP]);

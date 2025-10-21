@@ -219,6 +219,8 @@ public class Weapon extends Equipable
 		public function isStaffPart():Boolean { return hasTag(W_STAFFPART); }
 		public function isMusicInstrument():Boolean { return hasTag(W_MUSICINSTR); }
 		public function isTechWeapon():Boolean { return hasTag(W_HTECHWEAPON); }
+		public function isWoodenMelee():Boolean { return hasTag(W_WOODEN_MEELE); }
+		public function isMonkWeapon():Boolean { return hasTag(W_MONKWEAPON); }
 		public function isTetsubo():Boolean { return hasTag(W_TETSUBO); }
 		public function isThrown():Boolean { return hasTag(W_THROWN); }
 		public function isWhirlwind():Boolean { return hasTag(W_WHIRLWIND); }
@@ -320,7 +322,7 @@ public class Weapon extends Equipable
 					return false;
 				}
 				else if (isDual() && !isDualUnarmed()) {
-					if (!game.player.hasPerk(PerkLib.TitanGrip)) {
+					if (!game.player.isAbleToOneHandWieldMassiveWeapon()) {
 						if (!game.player.hasPerk(PerkLib.TitanGripSu)) {
 							if (!game.player.hasFourArms()) {
 								if (doOutput) outputText(getItemText("dualmassive_4afail"));
@@ -333,10 +335,10 @@ public class Weapon extends Equipable
 						}
 					}
 				}
-				else if (!game.player.hasPerk(PerkLib.TitanGrip)) {
+				else if (!game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()) {
 					if (slot == SLOT_WEAPON_MELEE_OFF) noMainHandAllowed = true;
 					else noShieldOffHandAllowed = true;
-					if (!game.player.isAbleToOneHandWieldLargeWeapon()) {
+					if (!game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()) {
 						if (doOutput) outputText(getItemText("massive_fail"));
 						return false;
 					}
@@ -401,19 +403,19 @@ public class Weapon extends Equipable
 		override public function beforeEquip(doOutput:Boolean, slot:int):Equipable {
 			if (!game.player.shield.isNothing) {
 				if (isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
-					|| isMassive() && !game.player.hasPerk(PerkLib.TitanGrip)){
+					|| isMassive() && !game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()){
 					SceneLib.inventory.unequipShield();
 				}
 			}
 			if (!game.player.weaponOff.isNothing) {
 				if (game.player.weapon.isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
-					|| game.player.weapon.isMassive() && !game.player.hasPerk(PerkLib.TitanGrip)){
+					|| game.player.weapon.isMassive() && !game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()){
 					SceneLib.inventory.unequipWeaponOff();
 				}
 			}
 			if (!game.player.weapon.isNothing) {
 				if (game.player.weaponOff.isLarge() && !game.player.isAbleToOneHandWieldLargeWeapon()
-					|| game.player.weaponOff.isMassive() && !game.player.hasPerk(PerkLib.TitanGrip)){
+					|| game.player.weaponOff.isMassive() && !game.player.isAbleToOneHandWieldMassiveWeapon() && !game.player.isAbleToTwoHandWieldMassiveWeaponWithFourArms()){
 					SceneLib.inventory.unequipWeapon();
 				}
 			}

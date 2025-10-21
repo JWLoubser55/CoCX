@@ -8,6 +8,7 @@ import classes.*;
 import classes.BodyParts.Hair;
 import classes.BodyParts.Tail;
 import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.Camp.Garden;
 import classes.Scenes.Monsters.OniIncubus;
 import classes.Scenes.SceneLib;
 import classes.display.SpriteDb;
@@ -30,6 +31,9 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 	public var bimboPatchInteractionHappened:Boolean;
 	public var amilyInteractionHappened:Boolean;
 	public var heliaInteractionHappened:Boolean;
+	public var RestaurantMeals:int;
+	public var ChiChiRestaurantTalks:int;
+	public var ArenaDecline:int;
 
 	public function stateObjectName():String {
 		return "ChiChiFollower";
@@ -49,6 +53,9 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 		bimboPatchInteractionHappened = false;
 		amilyInteractionHappened = false;
 		heliaInteractionHappened = false;
+		RestaurantMeals = 0;
+		ChiChiRestaurantTalks = 0;
+		ArenaDecline = 0;
 	}
 
 	public function saveToObject():Object {
@@ -65,7 +72,10 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 			"lunaInteractionHappened": lunaInteractionHappened,
 			"bimboPatchInteractionHappened": bimboPatchInteractionHappened,
 			"amilyInteractionHappened": amilyInteractionHappened,
-			"heliaInteractionHappened": heliaInteractionHappened
+			"heliaInteractionHappened": heliaInteractionHappened,
+			"RestaurantMeals": RestaurantMeals,
+			"ChiChiRestaurantTalks": ChiChiRestaurantTalks,
+			"ArenaDecline": ArenaDecline
 		};
 	}
 
@@ -84,6 +94,9 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 			bimboPatchInteractionHappened = o["bimboPatchInteractionHappened"];
 			amilyInteractionHappened = o["amilyInteractionHappened"];
 			heliaInteractionHappened = o["heliaInteractionHappened"];
+			RestaurantMeals = valueOr(o["RestaurantMeals"], 0);
+			ChiChiRestaurantTalks = valueOr(o["ChiChiRestaurantTalks"], 0);
+			ArenaDecline = valueOr(o["ArenaDecline"], 0);
 		} else resetState();
 	}
 
@@ -117,13 +130,45 @@ public class ChiChiFollower extends NPCAwareContent implements TimeAwareInterfac
 public function EnterOfTheChiChi():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
-	outputText("You step into the arena once more, but this time your opponent is slightly different. While of small stature like other mice you’ve met in He’Xin’Dao, this mouse morph has pinkish red hair and oriental clothes. She wears a pair of spiked gloves, her fists are clenched slightly at her sides, and she clearly sports a pair of C cup breasts under her clothes. The announcer screams out the participant's names as usual, their enthusiastic introductions is something you’ve grown used to.\n\n");
-	outputText("\"<i>In the left corner, coming from another world, [name], Champion of Ingnam! And in the right corner, from a land far away to the east, the martial arts master, Chi Chi of the four winds!</i>\"\n\n");
+	outputText("As you approach the gate, ready to step into the arena, a female figure walks toward you. "+(flags[kFLAGS.CHI_CHI_FOLLOWER] > 0?"It’s Chi Chi, the mouse morph waitress from the local restaurant.":"She appears to be a mouse morph.")+"\n\n");
+	outputText("\"<i>Here to challenge the arena again? Sorry, but for all the praise they sing about your matches, you’re far from that impressive, honestly."+(ChiChiRestaurantTalks == 3?" Seeing as you won’t drop the whole champion act on your own I’ve come to try and tell you to stop using the title of great heroes like its "+(silly()?"free real estate":"a flag to boost your ego")+".":"")+"</i>\"\n\n");
+	outputText("What does the outlook of your matches have anything to do with her?\n\n");
+	outputText("\"<i>Put bluntly, you annoy me. That damn announcer keeps selling you out as some kind of hero in the making, and you have that self appropriated champion title you boast of. A champion title implies that you are the best. If you TRULY are a champion and not a fraud, then fight me in a one on one battle to prove it. I will show you what a true fight is.</i>\"\n\n");
+	outputText("This is an annoying situation but you got the choice to take her on or not at the time, will you chicken out of the fight?\n\n");
+	menu();
+	addButton(1, "Decline", EnterOfTheChiChiDecline);
+	addButton(3, "Accept", EnterOfTheChiChiAccept);
+}
+public function EnterOfTheChiChi2():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("As you approach the gate, ready to step into the arena, a female figure walks toward you. "+(flags[kFLAGS.CHI_CHI_FOLLOWER] > 0?"As you expected It’s Chi Chi, the mouse morph waitress from the local restaurant and she came to try and dissuade you again":"As you expected it's that mouse morph from before")+".\n\n");
+	outputText("\"<i>You know how it goes, " + player.mf("mister", "miss") + " champion. I ain’t letting you use the arena for anything until you’ve had a fight with me. If you want to head in, you have to accept my duel first.</i>\"\n\n");
+	outputText("This is an annoying situation but you still got the choice to take her on or not do you chicken out again?\n\n");
+	menu();
+	addButton(1, "Decline", EnterOfTheChiChiDecline);
+	addButton(3, "Accept", EnterOfTheChiChiAccept);
+}
+private function EnterOfTheChiChiDecline():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("Yea no you ain’t planning to fight her it would just feel wrong.\n\n");
+	outputText("\"<i>If you ain’t planning to fight for your conviction then you should give up on the champion title and since you’re at it the arena matches as well. I happen to have history with the arena master and I can decide whether you go in or not. Until you are ready to prove yourself I will keep tabs on you and prevent you from requesting more matches. Don’t hate me for this, I'm doing it for your own good.</i>\"\n\n");
+	outputText("On this you head back to camp. This is a rather annoying situation as you won’t be able to use the arena for a while now, well at least until you take on "+(flags[kFLAGS.CHI_CHI_FOLLOWER] > 0?"Chi Chi":"the mouse girl")+" request. This said there is no rush, you can spend some time to prepare and come back later ready to win.\n\n");
+	if (ArenaDecline < 1) ArenaDecline = 1;
+	doNext(camp.returnToCampUseOneHour);
+}
+private function EnterOfTheChiChiAccept():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("With this kind of provocation and your title of champion put into question, there’s no way you can walk off from this! You accept the challenge on the spot!\n\n");
+	outputText("As you both walk into the arena you begin to study your challenger. While of a small stature, like other mice you’ve met in He’Xin’Dao or Tel Adre, she has pinkish red hair and oriental clothes. "+(ChiChiRestaurantTalks > 1?"Maybe these fiery colors are what sets her aside as an Hinezumi? ":"")+"She wears a pair of gloves with spikes along the wrists, her fists are clenched slightly at her sides, and she clearly sports a pair of C cup breasts under her clothes. That aside, no weapon or armor in sight, just how does she plan to fight you? While you ponder this nagging question the announcer screams out the participant’s names, as usual, their enthusiastic introductions are something you’ve grown used to.\n\n");
+	outputText("\"<i>In the left corner, coming from another world, [name], Champion of Ingnam! And in the right corner, from a land far away to the east, the martial arts master, Chi Chi, of the school of the four winds!</i>\"\n\n");
 	if (flags[kFLAGS.CHI_CHI_FOLLOWER] > 0) {
-		outputText("You recognize her from the exotic restaraunt here in town. Chi Chi adopts a battle stance as she catches fire, turning into a living inferno.\n\n");
-		outputText("\"<i>Today's dishes will be EXTRA spicy. I hope you're used to the heat [name], because I’m about to leave you with fifth-degree burns!!!</i>\"");
+		outputText("Chi Chi adopts a battle stance as she catches fire, turning into a living inferno. Well damn that’s a new trick!"+(ChiChiRestaurantTalks > 2?" You expected her to throw fireballs around like some kind of mage not set her body parts ablaze!":"")+"\n\n");
+		outputText("\"<i>Get ready for this dish, it will be EXTRA spicy! Do you prefer Inferno or Hell? Because I’m about to leave you with fifth-degree burns!</i>\"\n\n");
 	}
-	else outputText("Chi Chi, as it’s obviously her name, adopts a battle stance. Her fists, tail and legs suddenly light aflame. You blink in surprise as the heat washes over you. Something tells you this is going to hurt.");
+	else outputText("Chi Chi adopts a battle stance as her fists, tail and legs suddenly combust into a roaring flame. With more tricks than you expected, it seems that you must be ready for anything with her.\n\n");
 	flags[kFLAGS.CHI_CHI_AFFECTION] = 0;
 	flags[kFLAGS.CHI_CHI_LVL_UP] = 1;
 	startCombat(new ChiChi());
@@ -132,34 +177,93 @@ public function EnterOfTheChiChi():void {
 public function WonFirstFight():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
-	outputText("The mouse looks at you in complete disbelief, her shaking voice slowly breaking down as she falls to her knees and coughs blood on the ground.\n\n");
-	outputText("\"<i>Is this... my blood... it is... beautiful. I never thought I would see the day when I would finally find...</i>\"\n\n");
-	outputText("She smiles as she stands a final time, trying to run toward you to deliver one last punch. But midway, she falls to the ground, still smiling, with an obvious trail of blood on the corner of her mouth. Muttering two last words as her eyes lose their light.\n\n");
+	if (ChiChiRestaurantTalks > 2) {
+		outputText("The hinezumi looks at you in complete disbelief, her shaking voice slowly breaking down as she falls to her knees and coughs blood on the ground. Strangely enough, you doubt you struck her with enough force to cause such injuries. Chi Chi herself looks confused at the blood stain on the ground as if disbelieving it.\n\n");
+		outputText("\"<i>Is this… my blood? No… it’s too soon… I can’t lose yet… I haven’t found it! I have to fight on and win!</i>\"\n\n");
+		outputText("Chi Chi attempts to keep going, her aura flaring yet again, but whatever skill she is using is causing her apparent wounds to worsen. You want to scream at the referee to end the fight but rules state the combatants can keep going until they yield to one another or when the combatant is no longer in a state to properly yield. Each kick and punch she throws at you becomes easier to avoid to the point at the end you even catch her fist into your palm. Wasn’t this damn arena supposed to be non lethal combat why is she bleeding?!\n\n");
+		outputText("\"<i>Hey… champion… I gave all I could to win this battle but lost anyway. My time is short and I’m afraid I won’t be able to serve you any more delicious meals at that restaurant anymore. Would you care to…</i>\"\n\n");
+		outputText("You figure what’s going on right away. Blood loss… slow movement and speech. Whatever technique she used during the fight has a heavy backlash and it will probably kill her within seconds if you don’t do anything. What recklessness, did she fight from the start with the intent to win or die? You could attempt and try to save her; it might not be too late just yet.\n\n");
+		menu();
+		addButtonIfTrue(1, "Save her", WonFirstFightSaveHer, "Despite your attempts, nothing is working, her condition worsens.", (poulticeCheck() || player.hasStatusEffect(StatusEffects.KnowsHeal) || player.hasStatusEffect(StatusEffects.KnowsRestore)), "You can’t let her fall yet, not now.");
+		addButton(3, "Let her die", WonFirstFightLetHerDie).hint("Time claims us all");
+	}
+	else {
+		outputText("The mouse looks at you in complete disbelief, her shaking voice slowly breaking down as she falls to her knees and coughs blood on the ground. Strangely enough, you doubt you struck her with enough force to cause such injuries. Chi Chi herself looks confused at the blood stain on the ground as if disbelieving it.\n\n");
+		outputText("\"<i>Is this… my blood? No… it’s too soon I can’t lose yet… I haven’t found it! I have to fight on and win!</i>\"\n\n");
+		outputText("Chi Chi attempts to keep going, her aura flaring yet again, but whatever skill she is using is causing her apparent wounds to worsen. You want to scream at the referee to end the fight but rules state the combatants can keep going until they yield to one another or when the combatant is no longer in a state to properly yield. Each kick and punch she throws at you becomes easier to avoid to the point at the end you even catch her fist into your palm. Wasn’t this damn arena supposed to be non lethal combat why is she bleeding?!\n\n");
+		outputText("\"<i>Hey… champion… I gave all I could to win this battle but lost anyway. Care to do something for me… Please, I beg of you, kill the demon queen. If you can do that it'll be enough.</i>\"\n\n");
+		outputText("You barely know her making a promise to a stranger would normally not be something you'd do but your goal was to defeat the demon all along, thus this shouldn’t be too much of a problem. That’s why you’re the champion of Ingnam, after all. Whatever the title is worth.\n\n");
+		outputText("She smiles as she rises to her feet one last time, trying to run toward you to deliver a final punch. But midway, she falls to the ground, still smiling, with an obvious trail of blood on the corner of her mouth. Muttering two last words as her eyes lose their light.\n\n");
+		outputText("\"<i>Thank you...</i>\"\n\n");
+		outputText("The entire crowd falls silent as the martial artist hits the sandy arena ground, a small kid starts to cry in the background. The medics run to her in a hurry, but scream something about her having died from fatal self-inflicted injuries. You pick up her gloves on the ground as a prize for your victory but it feels hollow and wrong. Was this really the only way it could've gone? Should you simply have let her win? The air feels eerily still, shouldn’t you have a louder audience here? Not even the announcer breaks through the suffocating silence. (I sincerely advise that you reload your game without saving unless you are fine with losing access to a lot of important key content.)\n\n");
+		flags[kFLAGS.CHI_CHI_FOLLOWER] = 2;
+		inventory.takeItem(weapons.MASTGLO, cleanupAfterCombat);
+	}
+}
+private function WonFirstFightSaveHer():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("Ain’t no way you’re just letting her die on you like that. You might know her only from those meetings at the restaurant but letting people die right in front of you is against your principles as a champion. Before her body breaks down you grab her and force in your best healing "+(poulticeCheck()?"salve":"spell")+" repairing the damage caused by the ability just before its too late. Chi Chi stare at you in absolute confusion as instead of losing strength further she undergoes nothing short of a miraculous recovery. Puzzled, she look back at your still outstretched hand.\n\n");
+	outputText("\"<i>Why did you… save me?</i>\"\n\n");
+	outputText("Does one need a reason to act in a state of emergency clearly those medics would never had made it in time.\n\n");
+	outputText("\"<i>I chose to fight to my last breath and die in valiant combat but you went and denied me that. What do you know about me in the first place? How I live and end my life is my own business!</i>\"\n\n");
+	outputText("Enough that the both of you are no stranger and that you won’t allow her to simply commit suicide. You don’t know what reason she has for seeking death but you’re not going to just stand by and watch her die for something as silly as an arena fight. What of that determination she spoke of, where has hers gone to?\n\n");
+	outputText("Chi Chi stares at you confused for a few seconds before declaring.\n\n");
+	outputText("\"<i>Fine, you won in every possible way and I lost. Congratulations my pride is in shambles now and I feel like dying but you won’t let that happen will you? So what could you possibly want from me.</i>\"\n\n");
+	outputText("You want her to teach you her techniques whatever she knows you definitely could use it.\n\n");
+	outputText("\"<i>You believe someone as strong as you could have any use for my martial techniques? Seriously? Well, have it your way then, I will teach you what I know. Seek me out in the river village by the beach later I'll pass on to you all that I know. Damn idiot…</i>\"\n\n");
+	outputText("Looking thoroughly pissed, the fire mouse leaves the arena as the commentator begins to explain the rather strange end of the battle.\n\n");
+	flags[kFLAGS.CHI_CHI_AFFECTION] = 20;
+	ArenaDecline = 2;
+	cleanupAfterCombat();
+}
+private function WonFirstFightLetHerDie():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("Your goal was to defeat the demon all along, so this shouldn’t be too much of a problem. That’s why you’re the champion of Ingnam, after all. Whatever the title is worth.\n\n");
+	outputText("She smiles as she rises to her feet one last time, trying to move toward you to deliver a final punch. But midway, she falls to the ground, still smiling, with an obvious trail of blood on the corner of her mouth. Muttering two last words as her eyes lose their light.\n\n");
 	outputText("\"<i>Thank you...</i>\"\n\n");
-	outputText("The entire crowd falls silent as the mouse morph hits the sandy arena ground, a small kid starts to cry in background. The medics run to her in a hurry, but scream something about her having died from fatal self-inflicted injuries. You don’t really care however and just pick up her gloves on the ground as a prize for your victory. Surprisingly no-one cheers for you this time, not even the announcer who is normally so talkative. (I sincerely advise that you reload your game without saving unless you are fine with losing access to a lot of important key content.)\n\n");
+	outputText("The entire crowd falls silent as the martial artist hits the sandy arena ground, a small kid starts to cry in the background. The medics run to her in a hurry, but scream something about her having died from fatal self-inflicted injuries. You pick up her gloves on the ground as a prize for your victory but it feels hollow and wrong. Was this really the only way it could've gone? Should you simply have let her win? The air feels eerily still, shouldn’t you have a louder audience here? Not even the announcer breaks through the suffocating silence. (I sincerely advise that you reload your game without saving unless you are fine with losing access to a lot of important key content.)\n\n");
 	flags[kFLAGS.CHI_CHI_FOLLOWER] = 2;
 	inventory.takeItem(weapons.MASTGLO, cleanupAfterCombat);
+}
+private function poulticeCheck():Boolean {
+	return (Garden.PotionsBagSlot01Potion == "Poultice" && Garden.PotionsBagSlot01 > 0) ||
+		   (Garden.PotionsBagSlot02Potion == "Poultice" && Garden.PotionsBagSlot02 > 0) ||
+		   (Garden.PotionsBagSlot03Potion == "Poultice" && Garden.PotionsBagSlot03 > 0) ||
+		   (Garden.PotionsBagSlot04Potion == "Poultice" && Garden.PotionsBagSlot04 > 0) ||
+		   (Garden.PotionsBagSlot05Potion == "Poultice" && Garden.PotionsBagSlot05 > 0) ||
+		   (Garden.PotionsBagSlot06Potion == "Poultice" && Garden.PotionsBagSlot06 > 0);// ||
+		   //(Garden.PotionsBagSlot07Potion == "Poultice" && Garden.PotionsBagSlot07 > 0) ||
+		   //(Garden.PotionsBagSlot08Potion == "Poultice" && Garden.PotionsBagSlot08 > 0) ||
+		   //(Garden.PotionsBagSlot09Potion == "Poultice" && Garden.PotionsBagSlot09 > 0) ||
+		   //(Garden.PotionsBagSlot10Potion == "Poultice" && Garden.PotionsBagSlot10 > 0)
 }
 
 public function LostFirstFight():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
 	if (player.HP < 1) {
-		outputText("\"<i>Is that all you’ve got? How dare you even call yourself a champion? You barely know how to fight! You tried but that was <i>not</i> enough. If you intend to call yourself a true warrior, you should seek me out in town. I could teach you...  if you already know the basics. I don’t have time for complete novices.</i>\"\n\n");
-		outputText("The mouse girl leaves you half conscious on the arena sand as the medics come to your rescue.\n\n");
+		outputText("With a final exploding kick connecting to your jaw, you are sent flying toward the arena wall behind you, which fissures into a crater upon impact. You want to stand back up and fight, but your body doesn't respond. Any attempts to move are futile as you notice you're utterly paralyzed. You grimace at the sight of your shattered body and broken limbs, in critical need of aid. The smoke and dust clear up before you as you notice a pair of legs illuminated by flame filling your vision. Your opponent lowers to her knees, meeting your eyes.\n\n");
+		outputText("\"<i>Still alive and kicking, I see? Sorry, I don’t go easy on warriors, no matter how green they are. All battles are a matter of life and death for me. You got a decent foundation, I can tell that, but your technique is self-taught and rough around the edges. Too many openings here to exploit, and while it might get you by against imps and goblins...</i>\" ");
+		outputText("She takes a sharp breath, eyeing your form once more with a hint of concern, \"<i>Experienced fighters will defeat you in a heartbeat. You have potential, more than most, but it won’t mean anything if you continue training in that fashion. All the might of the world without technique will only allow you to move you so far.</i>\"\n\n");
 	}
 	else {
-		outputText("Declared the winner, the burning mouse approaches you. She looks angry and it's likely because you forfeited.\n\n");
-		outputText("\"<i>I’m disappointed. You pretend to be a champion, yet you seem to consider battles a kid’s game. Do you have any idea what would have happened in a real fight? No demon would back off like this. You seem to have some potential at least, so perhaps someday you should seek me out. I could teach you...  if you already know the basics. I don’t have time for complete novices</i>\"\n\n");
-		outputText("The fiery mouse girl leaves you there as she heads out of the ring.\n\n");
+		outputText("Overwhelmed by carnal desires, you kneel down and forfeit. There's something hell of damn alluring about the rodent martial artist.\n\n");
+		outputText("Chi Chi raises an eyebrow then she stares back looking rather disgusted.\n\n");
+		outputText("\"<i>You can’t be serious?! The whole time we were fighting… you were just getting off to it? You really need someone to beat that sickness out of your head. Thats a damn shame because if you weren’t twice as horny as you are good in a battle you might have been good for something other than fucking. You got a decent foundation, something you could build on but there’s many issues. The real issue is that your technique is self-taught and rough around the edges. Too many openings here to exploit, and while it might get you by against imps and goblins...</i>\" ");
+		outputText("She takes a sharp breath, eyeing your form once more with a hint of concern, \"<i>Experienced fighters will defeat you in a heartbeat. You have potential, more than most, but it won’t mean anything if you keep training in that fashion. All the might of the world without technique will only allow you to move you so far.</i>\"\n\n");
 	}
+	outputText("You groan in annoyance, but can't find a means to discredit your opponent. You call out loud that some of those attacks felt like they came right out of nowhere.\n\n");
+	outputText("She stands boldly, straightening her back, \"<i>That is what people here refer to as martial arts. I could teach you a few moves, mostly unarmed combat. I only require that you dedicate yourself to those lessons seriously. With a proper training regiment and a few technique scrolls you could easily pass from decent to extraordinary. Should you ever want to polish your martial skill, seek me out by the training dummy area in town.</i>\"\n\n");
 	flags[kFLAGS.CHI_CHI_AFFECTION] = 20;
+	ArenaDecline = 3;
 	cleanupAfterCombat();
 }
 
 public function WonSecondFight():void {
 	spriteSelect(SpriteDb.s_chichi);
-	clearOutput();
+	clearOutput();//outputText("\"<i></i>\"\n\n");
 	outputText("Chi Chi looks at you in disbelief, as your last hit propels her brutally into the arena wall, the sheer power of your strike imprinting the mouse's form in the rock.\n\n");
 	outputText("Chi Chi falls limp to the ground, barely able to stand as her fire dies out with a puff of smoke. She looks so weak and vulnerable now.\n\n");
 	outputText("\"<i>I f..forfeit. You win. P...perhaps I had misjudged you after all. You truly are... hero material.</i>\" She gives a faint fading smile, then falls unconscious to the ground before you, a small scroll falling to her side.\n\n");
@@ -214,7 +318,7 @@ public function WonSecondFightYes():void {
 	if (player.hasKeyItem("Radiant shard") >= 0) player.addKeyValue("Radiant shard",1,+1);
 	else player.createKeyItem("Radiant shard", 1,0,0,0);
 	outputText("\n\n<b>Before fully settling in your camp, as if remembering something, Chi Chi pulls a shining shard from her inventory and hands it over to you as a gift. You acquired a Radiant shard!</b>");
-	flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 3;
+	flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 13;
 	flags[kFLAGS.CHI_CHI_FOLLOWER] = 3;
 	flags[kFLAGS.CHI_CHI_LVL_UP] = 1;
 	if (player.hasCock()) player.sexReward("vaginalFluids","Dick");
@@ -280,20 +384,22 @@ public function LostSparringFight():void {
 public function MeetingChiChiInHeXinDao():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
-	outputText("You spot Chi Chi meditating by the river. There are various scorched wooden dummies next to her and it’s obvious the monk was practicing her techniques. You barely take two steps towards her before the mouse stands up and looks you straight in the eye.\n\n");
-	if (flags[kFLAGS.CHI_CHI_AFFECTION] > 20) {
-		outputText("\"<i>I take it you're here to continue our training. Are you ready?</i>\"\n\n");
+	outputText("You spot Chi Chi meditating in the park. There are various scorched wooden dummies next to her, obviously the monk was practicing her techniques. You barely take two steps towards her before the mouse stands up and looks you straight in the eye.\n\n");
+	if (ArenaDecline > 4) {
+		outputText("\"<i>Glad to see you again [name] we still have plenty of training to do. Get ready to smash some dummies today because I’ll keep working you up until you’ve mastered everything I have to teach you.</i>\"\n\n");
 	}
 	else {
-		outputText("\"<i>I knew you would be coming. You're here to learn martial arts and it's my duty as a sensei to teach a prospective student.</i>\"\n\n");
-		outputText("She sizes you up for a moment.\n\n");
+		if (ArenaDecline == 3) outputText("\"<i>I see you decided to hear my advice. I was worried you would walk away and go get yourself enslaved by demon’s to prove me wrong. You have no idea of the number of young adventurers that vanish in these lands yearly only to turn up dead, sporting a pair of horns or collared like a pet. I would like to try to reduce these numbers and, if possible, maybe train a strong enough apprentice to put an end to the demon threat once and for all.</i>\"\n\n");
+		else outputText("\"<i>Well you did show up after all I was worried you would forget about requesting those martial lessons. Well as you may have figured out by now the only reason I’ve kept going thus far is to pass on my technique or find someone strong enough to defeat Lethice.(end of cut between victory and defeat) Should such a warrior finally appear, I could truly rest. Regardless, you're here to learn martial arts, and it's my duty as a teacher to teach a prospective student. Let's begin by evaluating your body.</i>\"\n\n");
+		outputText("She sizes you up for a moment. Checking your arms and legs then staring at you as if peering for something else.\n\n");
 		if (flags[kFLAGS.TIMES_TRAINED_WITH_JOJO] < 16 && !player.hasPerk(PerkLib.Enlightened) && !player.hasPerk(PerkLib.JobMonk) && !(sceneHunter.other && campCorruptJojo())) {
-			outputText("\"<i>Sadly, you barely have an understanding of the discipline to begin with. You will need to train with a less experienced master first. I heard a mouse fancying himself a monk wanders the woods, I suggest you seek him out and learn what you can from him first. Once you are done, come back to me.</i>\"\n\n");
+			outputText("\"<i>Sadly while you do have a decent foundation, you barely have an understanding of the discipline I’m about to teach to begin with. Everyone in this here town has knowledge of the basics of martial arts, or has been practicing meditation for years. You will need to train with a less experienced master first in order to properly learn this. I heard a mouse fancying himself as a monk wanders the woods trying to cleanse corruption left and right. It's probably a fool's errand but if the monk is worth anything he can teach you the basics of breathing techniques. I suggest you seek him out and learn what you can from him. Once you are done, come back to me.</i>\"\n\n");
 			doNext(camp.returnToCampUseOneHour);
             return;
 		}
 		else {
-			outputText("\"<i>I see you’ve had some novice training in the art of the lotus. Not bad but the lotus were pacifists to begin with, what I’m about to teach you is an entirely new discipline, forged in the fire of the demon war. Are you ready?</i>\"\n\n");
+			outputText("\"<i>I see you’ve had some novice training in the art of the lotus. Not bad, you can use basic techniques such as breathing and meditation. However the lotus gentle fist users were pacifists to begin with and have never been so fond of fighting techniques, something that led to their eventual ruin as you probably learned from your teacher. For all I know the order of the lotus is more or less extinct now with most of its knowledge and technique lost hence why you could only learn this much. What I’m about to teach you is an entirely new discipline, forged and tempered in the fires of the demon war. Are you ready?</i>\"\n\n");
+			ArenaDecline = 4;
 			flags[kFLAGS.CHI_CHI_AFFECTION] += 10;
 		}
 	}
@@ -326,41 +432,54 @@ public function TrainingSoulArtsWithChiChi():void {
 	spriteSelect(SpriteDb.s_chichi);
 	clearOutput();
 	if (flags[kFLAGS.CHI_CHI_DAILY_TRAINING] < 1) {
-		if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 2) {
-			outputText("Chi Chi almost seems to be expecting you today, as she simply stands in the middle of the training grounds, arm crossed. You ask her what is the next step of your training.\n\n");
-			outputText("\"<i>You have successfully finished all possible tests but the final one. Today, we will see if your training will bear fruit. Your final challenge is to defeat me, your sensei, and prove that you have finally mastered the martial arts. Are you ready?</i>\"\n\n");
-			outputText("There is no turning back once you engage her and you know this well. This is a fight you can’t afford to lose, so the question stands. Are you truly ready for it?\n\n");
-			menu();
-			addButton(0, "No", NotReadyForTheFinalTraining);
-			addButton(1, "Yes", VeryReadyForTheFinalTraining);
-		}
-		else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 1) {
-			outputText("As you head to practice on the dummy, Chi Chi holds you back.\n\n");
-			if (flags[kFLAGS.CHI_CHI_AFFECTION] > 60) {
-				outputText("You go to see Chi Chi, still a little hesitant to continue this particular lesson.\n\n");
-				outputText("\"<i>Good to see you’re back, it’s about time we resume your training.</i>\"\n\n");
+		if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) {
+			if (ArenaDecline == 2) {
+				outputText("Chi Chi seems to be looking rather tired today, as she simply sit in the middle of the training grounds, legs crossed. You ask her what is the next step of your training.\n\n");
+				outputText("\"<i>I’m afraid that's the end of it. I have nothing else to teach you. You’ve surpassed all that which I expected in a student. From now on, you must learn on your own. Congratulations I guess as much as I hate to grant you the point, you bear the title of champion quite well now. Which finally leads me to this…</i>\"\n\n");
+				outputText("She hands you over a single scroll.\n\n");
+				outputText("\"<i>That's Soul Blast, my ultimate martial technique. It is both magic and martial art, a rather unique ability in the discipline. Use it well.</i>\"\n\n");
+				outputText("The vacant stare in the hinezumi eyes tells you something is off so you ask her a bit worried what she plans to do next.\n\n");
+				outputText("\"<i>Well that's rather simple. I will walk to the demon battlefield, rush headlong into a fight and kill as many demon’s as I can, burning brightly like a candle for the last time before snuffing out. This is how my story began and this is how it should end. I held my promise and trained a proper successor to my art. Now I’m ready to join those that await me on the other side of the river.</i>\"\n\n");
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 13;
+				inventory.takeItem(consumables.SOBLMAN, FinalTraining);
 			}
 			else {
-				outputText("\"<i>Not today. You have already mastered the basics. Now, we will delve deeper into the darkest recesses of martial arts. If you want to win a battle, you have to be ready to bleed and suffer for it. The point of this lesson is that while caution is important to avoid unnecessary injuries, it is sometimes better to take an injury than to lose a battle entirely. ");
-				outputText("Your opponent uses lust to break your mind and steal your soul, the direct counteragent to lust is pain and rage, pure and simple. If, and only if, you're ready to accept them entirely, can you achieve greater heights of power.</i>\"\n\n");
-				outputText("The mouse suddenly strikes at a nearby dummy like lightning. A bloody red aura runs along her body's length as she deals blows that would likely shatter stone and bend the hardest steel. However, as she finishes the target, propelling it toward the ground with such violence that it explodes on impact, you quickly notice the steep price she had to pay to achieve such power. ");
-				outputText("Her body is covered with wounds and her arms are limp. She uses what looks like a different ability to heal her wounds, but she clearly looks exhausted.\n\n");
-				outputText("\"<i>It’s your turn now... I want you to attack this dummy so hard you will feel your bones crack. Do not stop until the pain is so strong you can no longer fight!</i>\"\n\n");
+				outputText("Chi Chi almost seems to be expecting you today, as she simply stands in the middle of the training grounds, arms crossed. You ask her what is the next step of your training.\n\n");
+				outputText("\"<i>You have successfully finished all possible tests but the final one. Today, we will see if your training will bear fruit. Either you will officially become the strongest student I ever trained or just another lucky adventurer who happened to chance by my teachings. Your final challenge is to defeat me, your teacher, and prove that you have finally mastered the martial arts. Are you ready?</i>\"\n\n");
+				outputText("There is no turning back once you engage her and you know this well. This is a fight you can’t afford to lose, so the question stands. Are you truly ready for it?\n\n");
+				menu();
+				addButton(1, "No", NotReadyForTheFinalTraining);
+				addButton(3, "Yes", VeryReadyForTheFinalTraining);
+			}
+		}
+		else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 6 && flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 12) {
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 7) {
+				outputText("You go to see Chi Chi, still a little hesitant to continue this particular lesson.\n\n");
+				outputText("\"<i>Good to see you’re back, it’s about time we resume your training where we left it. Hit that dummy until your fist bleeds or the dummy break whichever comes first. Don’t you worry I got plenty of medicines and spare dummies.</i>\"\n\n");
+				outputText("\"<i></i>\"\n\n");
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] += 1;
+			}
+			else {
+				outputText("As you head to practice on the dummy, Chi Chi holds you back.\n\n");
+				outputText("\"<i>You’ve done enough of that, there's no point continuing that part of the training as you have already mastered the basics. I could teach you more of this, but It would take years of practice even for a genius student in order to assimilate everything. Thus, this is something you will have to refine and discover on your own using the tricks I lent you. For now, we will delve deeper into the darkest recesses of martial arts. If you want to win a battle, you have to be ready to bleed and suffer for it. ");
+				outputText("The point of this next lesson is that while caution is important to avoid unnecessary injuries, it is sometimes better to take an injury than to lose a battle entirely. Your opponent uses lust to break your mind and steal your soul, the direct counteragent to lust is pain and rage, pure and simple. If, and only if, you're ready to accept them entirely, can you achieve greater heights of power. Yet anger is self destructive, and a lapse in judgment can cost you dearly. Learning how to catalyze this anger and go beyond what should be your body's own limiters is going to be the focus of this lesson.</i>\"\n\n");
+				outputText("The mouse suddenly strikes at a nearby dummy like lightning. A bloody red aura runs along her body's length as she deals blows that would likely shatter stone and bend the hardest steel. However, as she finishes the target, propelling it toward the ground with such violence that it explodes on impact, you quickly notice the steep price she had to pay to achieve such power. Her body is covered with wounds and her arms are limp. She uses what looks like a different ability to heal her wounds, but she clearly took some form of recoil damage.\n\n");
+				outputText("\"<i>It’s your turn now… I want you to attack this dummy so hard that you will feel your bones crack. Do not stop until the pain is so strong you can no longer fight!</i>\"\n\n");
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 7;
 			}
 			outputText("You spend several hours punching the dummy so hard it actually hurts. You feel blood on your fists and legs by the end, however you also feel sturdier as a result, the pain being lighter than the last time.");
-			player.HP -= player.maxHP() * 0.5;
-			player.trainStat("str", +2, player.trainStatCap("str",75));
-			player.trainStat("str", +1, player.trainStatCap("str",100));
-			player.trainStat("spe", +2, player.trainStatCap("spe",75));
-			player.trainStat("spe", +1, player.trainStatCap("spe",100));
-			if (player.str >= 100 && player.spe >= 100) {
+			player.HP -= Math.round(player.maxHP() * 0.5);
+			if (player.hasPerk(PerkLib.IcyFlesh)) player.trainStat("int", +5, player.trainStatCap("int",100));
+			else if (player.hasPerk(PerkLib.HaltedVitals)) player.trainStat("lib", +5, player.trainStatCap("lib",100));
+			else player.trainStat("tou", +5, player.trainStatCap("tou",100));
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 11) {
 				if (!player.hasStatusEffect(StatusEffects.KnowsOverlimit)) {
-					outputText(" Chi Chi, noticing that you’re training hard, hands you a scroll.\n\n");
-					outputText("\"<i>This is a scroll containing the technique Overlimit. Use it with caution, because if abused, this technique can and WILL kill you.</i>\"\n\n");
-					outputText("<b>You learned the martial power Overlimit.</b>\n\n");
+					outputText(" Chi Chi, noticing that you’re training hard Chi Chi calls it off then hands you a scroll.\n\n");
+					outputText("\"<i>This is a scroll containing the technique Overlimit. Do know the only reason I’m handling you this is because you’ve trained hard enough that I’m no longer concerned you might misuse it and cripple yourself for life. Use it with caution, because if abused, this technique can and WILL kill you.</i>\"\n\n");
+					outputText("<b>You learned the martial power Overlimit.</b>");
 					player.createStatusEffect(StatusEffects.KnowsOverlimit, 0, 0, 0, 0);
 				}
-				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 2;
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 12;
 				flags[kFLAGS.CHI_CHI_AFFECTION] += 30;
 			}
 			outputText("\n\n");
@@ -369,28 +488,25 @@ public function TrainingSoulArtsWithChiChi():void {
 		}
 		else {
 			outputText("You're ready to begin your training and tell her as such.\n\n");
-			outputText("Chi Chi nods, then proceeds to show you a whole new form of combat, this one much more aggressive than that of the Lotus. Soon you manage to learn a few additional stances, as well as how to control the energy flow in your body to increase the power of an impact. She has you training on the dummies for several hours to increase your stamina. ");
-			outputText("As the flow of your movements and energy starts to become automatic, you discover your kicks and punches have become way stronger.");
-			if (player.hasPerk(PerkLib.IcyFlesh)) {
-				player.trainStat("int", +2, player.trainStatCap("int",75));
-				player.trainStat("int", +1, player.trainStatCap("int",100));
+			outputText("Chi Chi nods, then proceeds to show you a whole new style of combat.\n\n");
+			outputText("\"<i>First off, I’ll teach you how to punch to deal as much harm as possible. There’s no point in landing a blow if the damage is only superficial. You want to defeat your opponent, not just inflict pain on it. Heck why stop to fist only? Whether you got a weapon or not, start using those legs too. Here’s a few techniques to improve your hits.</i>\"\n\n");
+			outputText("This new training is much more aggressive than that of the Lotus. Soon, you manage to learn a few additional moves, as well as how to control the energy flowing through your body to increase the power of an impact. She has you training on the dummies for several hours to increase your stamina. As the flow of your movements and energy starts to become automatic, you discover your kicks and punches have become far deadlier.\n\n");
+			outputText("\"<i>That's good, you’re already shaping up to become a deadly combatant, even if you don’t end up using your fist like me, this training is going to improve your overall fitness. Ask again tomorrow and we can continue improving your skill. In the meantime, you can continue training on the dummy or go beat some enemies. Just try and avoid getting yourself enslaved by demon’s or worse. It would really suck if I lost such a promising student before your potential was properly realized, not that you’re the first nor the last. I had many like you before, some far more talented than you are.</i>\"\n\n");
+			if (!player.hasStatusEffect(StatusEffects.MartialTraining)) {
+				outputText("Learning martial arts for the first time you begin to refine your combat knowledge into something new. Through diligent practice and cultivation you may unlock new ways to use your techniques and improve your overall fighting knowledge. <b>Unlocked the martial training stat.</b>\n\n");
+				player.createStatusEffect(StatusEffects.MartialTraining, 6, 0, 0, 0);
 			}
-			else if (player.hasPerk(PerkLib.HaltedVitals)) {
-				player.trainStat("lib", +2, player.trainStatCap("lib",75));
-				player.trainStat("lib", +1, player.trainStatCap("lib",100));
-			}
-			else {
-				player.trainStat("tou", +2, player.trainStatCap("tou",75));
-				player.trainStat("tou", +1, player.trainStatCap("tou",100));
-			}
-			if (player.tou >= 100 || (player.hasPerk(PerkLib.IcyFlesh) && player.inte >= 100) || (player.hasPerk(PerkLib.HaltedVitals) && player.lib >= 100)) {
+			player.trainStat("str", +5, player.trainStatCap("str",100));
+			player.trainStat("spe", +5, player.trainStatCap("spe",100));
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 5) {
 				if (!player.hasPerk(PerkLib.MightyFist)) {
 					player.createPerk(PerkLib.MightyFist, 0, 0, 0, 0);
 					outputText(" <b>You've gained the Mighty Fist perk.</b>");
 				}
-				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 1;
+				flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 6;
 				flags[kFLAGS.CHI_CHI_AFFECTION] += 30;
 			}
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 5) flags[kFLAGS.CHI_CHI_SAM_TRAINING] += 1;
 			outputText("\n\n");
 			flags[kFLAGS.CHI_CHI_DAILY_TRAINING] = 1;
 			doNext(camp.returnToCampUseFourHours);
@@ -413,6 +529,60 @@ public function VeryReadyForTheFinalTraining():void {
 	outputText("\"<i>Prepare yourself!...</i>\"\n\n");
 	startCombat(new ChiChi());
 }
+public function FinalTraining():void {
+	menu();
+	addButton(1, "Let go", FinalTrainingLetGo);
+	addButton(3, "Hug her", FinalTrainingHugHer);
+}
+public function FinalTrainingLetGo():void {
+	outputText("Something tells you Chi Chi has been broken for quite a long time. She postponed the alluring call of death only long enough to pass on what she knew to the next hero and now that it's done she wants to end it all. Unable to find anything to say to console the crestfallen martial artist, you watch her walk away from town waving her hand off for a final goodbye. A gust of wind lifts a veil of dust and now she’s no longer there. On the ground where she used to sit remains a pair of spiked gloves. She won't need them anymore, not where she is going.\n\n");
+	flags[kFLAGS.CHI_CHI_FOLLOWER] = 2;
+	inventory.takeItem(weapons.MASTGLO, camp.returnToCampUseOneHour);
+}
+public function FinalTrainingHugHer():void {
+	outputText("You tightly hug Chi Chi from behind you can see the telltale sign of your master’s suicidal tendancies coming back on the surface now. You tell her she can’t go, not anymore. She has someone now who needs her, she has you and you would feel heartbroken if she left you behind to join those she lost.\n\n");
+	outputText("Regardless of how harsh she was with you, Chi Chi is looking weak right now. Nowhere close to the strong stubborn woman she looked to be before she now bared down all her defences revealing herself to be a fragile girl possibly haunted by a tragic past. Why is it that she became a broken mess ready to throw her life away in the first place. Right now she needs emotional support.\n\n");
+	outputText("You prolong hugging the emotional hinezumi so she can cry or whatever on your shoulder. Now certain that she won’t run away and off herself somewhere where you can’t see her, you proceed to carry her back to camp, laying her down in your bed. Chi Chi has been crying on your back the whole time calling out names and apologizing for her many failures until exhausted she finally fell asleep. A little later Chi Chi wakes up and seeks you out.\n\n");
+	outputText("\"<i>I guess since you are so determined to keep me alive I should give this a chance. Got to admit I’ve been growing fond of you thanks to all the time we spent together from the moment we first met in the restorant to now. I first doubted that whole ‘hero in shining armor out to save everyone’ part of you but I guess fairy tales can occasionally have true live exemple out of books too.</i>\"\n\n");
+	if (ChiChiCorruption > 90) outputText("Well you ain’t much of a true hero anymore but factly being a hero has nothing to do with helping out a girl you like. You don’t need a hero tag to help or save someone when you feel like it. She should believe in real people also known as the real you over romanced characters that only exist in books. Let your actions speak for you, not some over the top hero stereotype.\n\n");
+	else outputText("You reply that being a hero is not impossible so long as you stay the path and keep going without giving up. You were given the title of champion but you are more than just a title, you are an adventurer who firmly believes "+player.mf("he", "she")+" can save Mareth.\n\n");
+	outputText("\"<i>A fair answer… However, I’m tired of fighting… I’ve fought all my life and it’s about time I retire as a warrior and perhaps live down the rest of my year at home practicing occasionally just so I don’t get completely rusty. The lotus monks had a philosophy against the weaponization of martial arts and perhaps they were right. You should know that I lost my school and pupils to the demons and swore vengeance upon them, ");
+	outputText("but vengeance breeds hatred and hatred breeds suffering. I can’t change the past but what I can do is change the future. In the end, I knew I wouldn’t be able to defeat the demon’s without my emotional baggage. They would just use my trauma against me. It's clear to me now that someone else had to deliver justice. Someone like you, [name].</i>\"\n\n");
+	outputText("Chi Chi’s face is but a few inches away from yours and for several seconds you look each other in the eye, until she finally takes the initiative, surprising you with a kiss.\n\n");
+	outputText("\"<i>My people have a saying… live of battles until the flame dies out and once you find peace and clarity of mind, live from love. You bested me on the battlefield and went on to heal my mind thus I have no more need or desire for fighting. However, a new flame is born from our meeting… so...could we…?</i>\"\n\n");
+	outputText("You need no more words as you slowly proceed to strip the mouse of her qipao. She gasps at your touch, but doesn’t try to stop you. Her C cup breasts are now displayed to you and you can feel something wet near your leg where her vagina should be. Chi Chi simply waits for you to remove your own clothes eagerly anticipating what will come next.\n\n");
+	if (player.hasCock()) {
+		outputText("You ");
+		if (!player.isNaked()) outputText(" slowly remove your [armor] to");
+		outputText("expose your [cock]. Chi Chi smiles tenderly as she slowly begins to stroke your shaft.\n\n");
+		outputText("\"<i>I didn’t get to appreciate it during your training, I hope you will allow me to see what I was missing out on.</i>\"\n\n");
+		outputText("You return the feeling by slowly fingering her pussy, her wetness soon coats your fingers. Once the both of you are suitably aroused, you begin to align your cock with her mouse pussy. Still remembering that she is a monk and may or may not have taken a vow of chastity, you ask her if this is really what she wants.\n\n");
+		outputText("\"<i>I’m a monk only by name and trade, not by philosophy. It’s a part of me I’m willing to give up to you… if you would accept to take responsibility.</i>\"\n\n");
+		outputText("Of course you would. You had made up your mind the moment you hugged her and won’t go back on your choice. Chi Chi sighs in relief as you slowly insert your -cockdescript- into her waiting pussy. She hugs you tight as you gently start to piston in and out of her. Chi Chi seems to enjoy herself and makes it obvious as she kisses you and draws her tongue in. The sex is calm and soothing unlike most of what you have experienced so far with Mareth denizens, who tend to prefer different trends or wilder kinks, making this slow and vanilla experience something you cherish. Chi Chi only breaks the kiss in order to whisper a sweet nothing to you.\n\n");
+		outputText("\"<i>When I’m close to you, I feel safe and warm… like a relaxing bath in the hot springs of my homeland. I hope we can stay like this for a while.</i>\"\n\n");
+		outputText("You slowly keep working her hole, the mouse moaning every now and then, panting as her body prepares for climax. You are not so far from yours either as you feel your cock twitching and soon you cum in Chi Chi’s pussy, the mouse reaching her peak at about the same time with a delighted squeak. The two of you bask in the afterglow for a moment and you stay locked with Chi Chi kissing and whispering sweet nothings to you for several minutes. Eventually, time runs out and you prepare to leave, but Chi Chi holds your arm.\n\n");
+	}
+	else {
+		outputText("You give her a good view of your [breasts] and [pussy] as you lie down next to her. The mouse moves her arms to hug you, pushing her breast against yours as she begins to kiss you and seek your tongue. You play with hers for a few minutes, savoring the cinnamony taste of her lips before slowly moving your hand to her breast in order to massage her. Chi Chi gasps in pleasure at your touch, encouraging you to continue.\n\n");
+		outputText("\"<i>I hope they are not too small for your taste… I know there's plenty of girls with larger assets than mine.</i>\"\n\n");
+		outputText("You tell her that she is fine and should feel more confident of her charms. Rather it's everyone else that is weird. There were plenty of women back home that would’ve felt like her had they compared to the people around Mareth. You thus resume the slow massaging of her breasts, making her moan in delight as you feel her tail entwining with your leg. She weakly moves her hand towards your pussy, eliciting a moan from you as she begins to slowly finger you. You go for hers with your other hand and massage her inner folds, the both of you pleasuring each other for a while. It is a relaxing experience ");
+		outputText("which allows you to truly connect with her for the first time, as you gently bring each other toward the edge. The sex is calm and soothing, unlike most of what you have experienced so far with the denizens of Mareth, who tend to prefer different trends or wilder kinks, making this slow and vanilla experience something you cherish, as the both of you eventually cum next to each other, Chi Chi tensing then relaxing against you. Despite her concealed strength you handle the hinezumi as you would a small skitty rabbit, with love and care and she rewards you with affection of her own.\n\n");
+		outputText("Eventually you build up confidence and change position, scissoring her and rubbing your pussy lips against hers, the mouse moaning every now and then, panting as her body prepares for climax. You are not so far from yours either and shortly you both exchange juices, the mouse reaching her peak at about the same time with a delighted squeak. The two of you bask in the afterglow for a moment and you stay locked with Chi Chi kissing and whispering sweet nothings to you for several minutes. Eventually, time runs out and you prepare to leave, but Chi Chi holds your arm.\n\n");
+	}
+	outputText("\"<i>Thank you for staying by my side. It might be a little late to say this but, if you would let me stay with you, I want you to know I love…</i>\"\n\n");
+	outputText("You cut her short… These feelings are shared. If she would have you, then you see no reason to refuse her staying in your camp.\n\n");
+	outputText("\"<i>Please take care of my fragile heart, [name]. I’m not as tough inside as I look on the outside. I would like you to have my gloves. I will no longer need them now that my long quest is finally over.</i>\"\n\n");
+	outputText("She is offering you her gloves, the weapon she has used to defeat so many foes. You carefully remove them from her so not to hurt her as Chi Chi rests her head on your shoulder. You think she is smiling in happiness but it would be difficult for you to see without removing the pair of arms hugging you.\n\n");
+	outputText("(<b>Chi Chi has been added to the Lovers menu!</b>)\n\n");
+	if (player.hasKeyItem("Radiant shard") >= 0) player.addKeyValue("Radiant shard",1,+1);
+	else player.createKeyItem("Radiant shard", 1,0,0,0);
+	outputText("\n\n<b>Before fully settling in your camp, as if remembering something, Chi Chi pulls a shining shard from her inventory and hands it over to you as a gift. You acquired a Radiant shard!</b>");
+	flags[kFLAGS.CHI_CHI_FOLLOWER] = 3;
+	flags[kFLAGS.CHI_CHI_LVL_UP] = 1;
+	if (player.hasCock()) player.sexReward("vaginalFluids","Dick");
+	player.sexReward("vaginalFluids");
+	inventory.takeItem(weapons.MASTGLO, camp.returnToCampUseOneHour);
+}
 
 public function SoulskilsManualsShop():void {
 	spriteSelect(SpriteDb.s_chichi);
@@ -423,9 +593,10 @@ public function SoulskilsManualsShop():void {
 	menu();
 	addButton(0, "Ice Fist", SoulskilsManualsShopIceFist);
 	addButton(1, "Fire Punch", SoulskilsManualsShopFirePunch);
-	addButton(2, "Hurricane Dance", SoulskilsManualsShopHurricaneDance);
-	addButton(3, "Earth Stance", SoulskilsManualsShopEarthStance);
-	addButton(4, "Punishing Kick", SoulskilsManualsShopPunishingKick);
+	addButton(2, "Soul Fist", SoulskilsManualsShopSoulFist);
+	addButton(3, "Hurricane Dance", SoulskilsManualsShopHurricaneDance);
+	addButton(4, "Earth Stance", SoulskilsManualsShopEarthStance);
+	addButton(5, "Punishing Kick", SoulskilsManualsShopPunishingKick);
 	if (flags[kFLAGS.CHI_CHI_FOLLOWER] < 2) addButton(14, "Back", MeetingChiChiInHeXinDao2);
 	else addButton(14, "Back", ChiChiCampMainMenu);
 }
@@ -472,6 +643,29 @@ public function SoulskilsManualsShopFirePunch2():void {
 	outputText("Chi Chi nods and begins to give you a full lecture of the technique. Once done, you practice on dummies for a few hours until you finally master it.\n\n");
 	outputText("<b>You learned how to use Fire Punch!</b>\n\n");
 	if (!player.hasStatusEffect(StatusEffects.KnowsFirePunch)) player.createStatusEffect(StatusEffects.KnowsFirePunch, 0, 0, 0, 0);
+	flags[kFLAGS.SPIRIT_STONES] -= 5;
+	doNext(camp.returnToCampUseFourHours);
+}
+
+public function SoulskilsManualsShopSoulFist():void {
+	spriteSelect(SpriteDb.s_chichi);
+	clearOutput();
+	outputText("\"<i>This one? Are you sure about that?</i>\"\n\n");
+	menu();
+	if (player.hasStatusEffect(StatusEffects.KnowsSoulFist)) addButtonDisabled(0, "Yes", "You already learned how to use Soul Fist");
+	else addButton(0, "Yes", SoulskilsManualsShopSoulFist2);
+	addButton(1, "No", SoulskilsManualsShop);
+}
+public function SoulskilsManualsShopSoulFist2():void {
+	if (flags[kFLAGS.SPIRIT_STONES] < 5 && flags[kFLAGS.CHI_CHI_FOLLOWER] < 4) {
+		outputText("\"<i>Sorry [name], but I don’t teach these for free. Get me spirit stones and then I will show you what you want.</i>\"\n\n");
+		doNext(SoulskilsManualsShop);
+		return;
+	}
+	if (flags[kFLAGS.CHI_CHI_FOLLOWER] >= 6) outputText("\"<i>Well since we are together I will gladly teach you this technique for free... let me explain so you don’t mock it up and hurt yourself.</i>\"\n\n");
+	outputText("Chi Chi nods and begins to give you a full lecture of the technique. Once done, you practice on dummies for a few hours until you finally master it.\n\n");
+	outputText("<b>You learned how to use Soul Fist!</b>\n\n");
+	if (!player.hasStatusEffect(StatusEffects.KnowsSoulFist)) player.createStatusEffect(StatusEffects.KnowsSoulFist, 0, 0, 0, 0);
 	flags[kFLAGS.SPIRIT_STONES] -= 5;
 	doNext(camp.returnToCampUseFourHours);
 }
@@ -884,7 +1078,7 @@ public function chichiSex5():void {
 		outputText("You fondly remember how he broke your silly ideas of rebellion, teaching you the perfect shape of his cock until it molded your pussy so that no other cock would fit, and how you cummed out your soul in accordance with the master’s desire. Once a succubus, it became way easier for you to actually agree to his ways.\n\n");
 		outputText("\"<i>Wife… my saké, now!</i>\"\n\n");
 		outputText("Ah yes, the master is always drunk… there's nothing to do about it. You slide off from his cock as you get him a cup of saké. He's not exactly the kindest of men, but his rough and violent sexual tastes are just what you and Chi Chi want, ravaging you with drunken brutality. Heck, you couldn’t care less how he fucks you as long as he feeds your devilish demon body enough cum to sate your hunger for sex. Chi Chi and you still do partner up every now and then as lovers, although the Master has been clear that he is to remain your priority. Perhaps Master Chon would allow it more often if the pair of you put on a show for him, ");
-		outputText("his favourite harem sluts fucking while he watches until he gives them what they need most. You’re pulled out of your revery by your beloved Master as he picks up the cup of saké and drinks it, then lifts you up and slides your pussy on his magnificent tool. Your cock sleeve cunny reacts accordingly molding snug against his skin as you begin to slide up and down against his length in order to milk his semen, moaning as your spaded tail flails wildly and your wings flap already ecstatic at the experience.\n\n");
+		outputText("his favorite harem sluts fucking while he watches until he gives them what they need most. You’re pulled out of your reverie by your beloved Master as he picks up the cup of saké and drinks it, then lifts you up and slides your pussy on his magnificent tool. Your cock sleeve cunny reacts accordingly molding snug against his skin as you begin to slide up and down against his length in order to milk his semen, moaning as your spaded tail flails wildly and your wings flap already ecstatic at the experience.\n\n");
 		outputText("You forgot what it is to have free will long ago… only Chon-sama’s desires matter to you now.\n\n");
 		cleanupAfterCombat();
 		EventParser.gameOver();

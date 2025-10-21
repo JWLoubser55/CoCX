@@ -1496,36 +1496,95 @@ public class TailTransformations extends MutationsHelper {
 			}
 	);
 
-	public const TailYgddrasil: Transformation = new SimpleTransformation("Ygddrasil Tail",
+	public function TailYgddrasil(tailCount: int = 1): Transformation {
+		return new SimpleTransformation("Ygddrasil Tail",
 			// apply effect
 			function (doOutput: Boolean): void {
 				var desc: String = "";
 
 				TransformationUtils.removeLowerBodyIfIncompatible(player, doOutput);
-
 				TransformationUtils.applyTFIfNotPresent(transformations.TailNone, doOutput);
 
-				desc += "You feel a weird sensation in your ";
-				if (player.tailType > Tail.NONE) {
-					desc += "tail";
-					if (player.tailCount > 1) desc += "s";
+				if (player.tailType !== Tail.YGGDRASIL) {
+					desc += "You feel a weird sensation in your ";
+					if (player.tailType > Tail.NONE) {
+						desc += "tail";
+						if (player.tailCount > 1) desc += "s";
+					}
+					else desc += "tailbone";
+					desc += ". It kind of feels cool, pleasurable and makes you queasy all at once. Suddenly, ";
+					if (player.tailType > Tail.NONE) desc += "it begins to twist and writhe as the odd sensation intensifies.  Before your eyes, it twists into a reptilian appendage";
+					else desc += "your tailbone erupts and elongates into a new limb, your new tail";
+					desc += ". Long, thin, prehensile, good for maintaining your balance. As if in conclusion, a leaf suddenly sprouts from the tip of your tail. <b>You now have a leaf-tipped reptilian tail!</b>";
+					player.tailType = Tail.YGGDRASIL;
+					player.tailCount = 1;
+					if (tailCount > 1) {
+						desc += "\n\n";
+					}
 				}
-				else desc += "tailbone";
-				desc += ". It kind of feels cool, pleasurable and makes you queasy all at once. Suddenly, ";
-				if (player.tailType > Tail.NONE) desc += "it begins to twist and writhe as the odd sensation intensifies.  Before your eyes, it twists into a reptilian appendage";
-				else desc += "your tailbone erupts and elongates into a new limb, your new tail";
-				desc += ". Long, thin, prehensile, good for maintaining your balance. As if in conclusion, a leaf suddenly sprouts from the tip of your tail. <b>You now have a leaf-tipped reptilian tail!</b>";
-				player.tailType = Tail.YGGDRASIL;
-				player.tailCount = 1;
 
-				if (doOutput) outputText(desc);
-				Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.YGGDRASIL));
-			},
-			// is present
-			function (): Boolean {
-				return player.tailType === Tail.YGGDRASIL;
-			}
-	);
+				if (player.tailCount < tailCount) {
+					const newTails: int = tailCount - player.tailCount;
+					desc += "A tingling pressure builds on your backside, and your reptilian tail" + ((player.tailCount > 1) ? "s begin" : " begins") + " to glow with an gentle, green light. With a few stray leafs, ";
+					if (player.tailCount == 1) {
+						desc += "your tail splits itself in " + Utils.num2Text(tailCount) + "!"
+					} else {
+						if (newTails == 1) {
+							desc += "one of your tails splits in two!"
+						} else {
+							desc += "your tails multiply, creating " + Utils.num2Text(newTails) + " more besides the " + Utils.num2Text(player.tailCount) + " you already had!"
+						}
+					}
+				} else if (player.tailCount > tailCount) {
+					const removedTails: int = tailCount - player.tailCount;
+
+					desc += "A tingling pressure builds on your backside, and your reptilian tail" + ((player.tailCount > 1) ? "s begin" : " begins") + " to glow with an gentle, green light. With a few stray leafs, ";
+
+					if (tailCount == 1) {
+						desc += (player.tailCount == 2 ? "both" : "all") + " your tails"
+					} else if (removedTails == 1) {
+						desc += "two of your tails"
+					} else {
+						desc += "some of your tails"
+					}
+
+					desc += " magically fuse, leaving you with "
+
+					if (tailCount == 1) {
+						desc += "only a single remaining leaf-tipped reptilian tail!"
+					} else {
+						desc += Utils.num2Text(tailCount) + " remaining leaf-tipped reptilian tails!"
+					}
+				}
+
+				desc += " <b>You now have " + Utils.num2Text(tailCount) + " leaf-tipped reptilian tail" + ((tailCount > 1) ? "s" : "") + "!</b>"
+
+					if (tailCount == 1) ( desc += "<b>\nYour next tail will be available at level 6, provided you have 15 Intelligence and 30 Wisdom.</b>" )
+					else if (tailCount == 2) ( desc += "<b>\nYour next tail will be available at level 12, provided you have 30 Intelligence and 60 Wisdom.</b>" )
+					else if (tailCount == 3) ( desc += "<b>\nYour next tail will be available at level 18, provided you have 45 Intelligence and 90 Wisdom.</b>" )
+
+					player.tailCount = tailCount;
+					if (doOutput) outputText(desc);
+
+					//noinspection FallThroughInSwitchStatementJS			// Fallthrough is intended for retroactively unlocking in Metamorph after getting GeneticMemory
+					switch (tailCount) {
+						case 4:
+							Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.YGGDRASIL_4));
+						case 3:
+							Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.YGGDRASIL_3));
+						case 2:
+							Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.YGGDRASIL_2));
+						case 1:
+							Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.YGGDRASIL));
+							break;
+					}
+				},
+				// is present
+				function (): Boolean {
+					return player.tailType === Tail.YGGDRASIL && player.tailCount == tailCount;
+				}
+		)
+	}
 
 	public const TailArigeanGreen: Transformation = new SimpleTransformation("Arigean Tail (Green)",
 			// apply effect
@@ -1601,7 +1660,7 @@ public class TailTransformations extends MutationsHelper {
 				TransformationUtils.removeLowerBodyIfIncompatible(player, doOutput);
 
 
-				desc += "you suddenly feel like your tailbone is in pain, like something is bursting out of it, suddenly the pain subsides and you feel something resting atop your ass, eventually you stop noticing it. <b>You now have a moth abdomen</b>";
+				desc += "you suddenly feel like your tailbone is in pain, like something is bursting out of it, suddenly the pain subsides and you feel something resting atop your ass, eventually you stop noticing it. <b>You now have a moth abdomen.</b>";
 				player.tailType = Tail.MOTH_ABDOMEN;
 				player.tailCount = 1;
 
@@ -1673,6 +1732,33 @@ public class TailTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.tailType === Tail.AUTOMATA_TAIL_CABLE;
+			}
+	);
+
+	public const TailBarometz: Transformation = new SimpleTransformation("Barometz Tail",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.TailNone, doOutput);
+
+				if (player.tailType == Tail.SPIDER_ADBOMEN || player.tailType == Tail.BEE_ABDOMEN || player.tailType == Tail.SCORPION || player.tailType == Tail.MANTIS_ABDOMEN || player.tailType == Tail.ANT_ABDOMEN || player.tailType == Tail.MOTH_ABDOMEN) {
+					desc += "Your insect-like abdomen bunches up as it begins shrinking, exoskeleton flaking off like a snake sheds its skin. It bunches up until it is as small as a tennis ball, then blooms outwards, growing into an animalistic tail shape made of multiple green foliage. Moments later, the greenery grows to full size your foliage imitating something akin to a horsetail.";
+				} else {
+					TransformationUtils.applyTFIfNotPresent(transformations.TailNone, doOutput);
+					desc += "There is a sudden tickling on your ass, and you notice you have sprouted a long leafy trail not unlike a vegetal tail.";
+				}
+
+				desc += " <b>You now have a leafy barometz tail.</b>";
+				player.tailType = Tail.BAROMETZ;
+				player.tailCount = 1;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.BAROMETZ));
+			},
+			// is present
+			function (): Boolean {
+				return player.tailType === Tail.BAROMETZ;
 			}
 	);
 	/*

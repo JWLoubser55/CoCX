@@ -9,10 +9,13 @@ import classes.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.API.Encounters;
 import classes.Scenes.API.ExplorationEntry;
+import classes.Scenes.API.FnHelpers;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.Caves.*;
+import classes.Scenes.Dungeons.RiverDungeon.EarthElemental;
 import classes.Scenes.Monsters.CaveGolems;
 import classes.Scenes.Monsters.DarkElfScene;
+import classes.Scenes.Monsters.WerespiderScene;
 import classes.Scenes.NPCs.Forgefather;
 import classes.Scenes.SceneLib;
 
@@ -24,6 +27,7 @@ use namespace CoC;
 		public var cavewyrmScene:CaveWyrmScene = new CaveWyrmScene();
 		public var matangoScene:MatangoScene = new MatangoScene();
 		public var automatonScene:AutomatonScene = new AutomatonScene();
+		public var werespiderScene:WerespiderScene = new WerespiderScene();
 		public var darkslimeScene:DarkSlimeScene = new DarkSlimeScene();
 
 		public function Caves() {
@@ -43,6 +47,7 @@ use namespace CoC;
 		}
 
 		private function init():void {
+			const fn:FnHelpers    = Encounters.fn;
 			_cavesEncounter = Encounters.group("caves", {
 				name: "discoverashlands",
 				label : "New Area",
@@ -111,15 +116,15 @@ use namespace CoC;
 					if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) < player.matangoControlLimit()) matangoScene.gainingMatango();
 					else matangoScene.mantangoEncounter();
 				}
-			},/* {
+			}, {
 				name: "darkelf",
 				label : "Dark Elf",
 				kind : 'monster',
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					darkelfScene.introDarkELfRangerCaves();
+					darkelfScene.introDarkELfScout();
 				}
-			},*/ {
+			}, {
 				name: "gemgolem",
 				label : "Gem Golem",
 				kind : 'monster',
@@ -207,21 +212,29 @@ use namespace CoC;
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					automatonScene.automatonEncounter();
 				}
+			}, {
+				name: "werespider",
+				label : "Werespider",
+				kind : 'monster',
+				call: function ():void {
+					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					werespiderScene.werespiderEncounter();
+				}
 			}, /*{
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					//antworker.();
 					clearOutput();
 					//outputText("You spend one hour exploring the caves but you don't manage to find anything interesting, unless feeling like you are becoming slightly tougher counts.");
 					break;
-			}, {
+			}, */{
 				name: "darkelf",
 				label : "Dark Elf",
 				kind : 'monster',
 				call: function ():void {
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					darkelfScene.introDarkELfRangerCaves();
+					darkelfScene.introDarkELfSlaver();
 				}
-			}, {
+			}, /*{
 				name: "darkslime",
 				label : "Dark Slime",
 				kind : 'monster',
@@ -237,6 +250,12 @@ use namespace CoC;
 					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
 					adamantineGolemEncount()
 				}
+			}, {
+				name: "earth ele",
+				label : "Earth Elemental",
+				kind  : 'monster',
+				when: fn.ifLevelMin(88),
+				call: bedrockEarthElemental
 			}, {
 				name: "",
 				label : 'Walk',
@@ -409,6 +428,15 @@ use namespace CoC;
 			} else {
 				SceneLib.bashemathScene.repeatEncWM();
 			}
+		}
+	
+		private function bedrockEarthElemental():void {
+			clearOutput();
+			outputText("While wandering bedrock you spot a nice large rock to climb on and get a good vantage of the area from. You begin climbing onto the rocky formation when the ground around begins to shake. You drop from the rock as soon as it begins to rise from the ground, a massive woman made out of solid stone stretching out of the ground to stare at you. ");
+			outputText("This fully manifested Gnome was just minding her own business sleeping when you accidentally woke her up and now that her nap and sweet happy dreams are ruined she is going to take her anger on you. Mother nature is having a rough day and she isn’t taking your excuse nicely anymore. Nah today she’s determined to answer by crushing you until you turn into fertilizers!\n\n");
+			outputText("You ready for combat as the gnome lifts her rocky hands up and begins throwing a tantrum.");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 6;
+			startCombat(new EarthElemental());
 		}
 
 		public function partsofTouhounaM3():void {

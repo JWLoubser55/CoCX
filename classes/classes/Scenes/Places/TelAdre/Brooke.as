@@ -1392,8 +1392,8 @@ public function brookeVHeckelBrookeWins2():void {
 			var anal:Boolean = flags[kFLAGS.TIMES_FUCKED_HECKEL_ANAL] > 0;
 			
 			if (bj && anal)	outputText("  Every time you met Heckel, you either went down on her, or had to take her dick up your ass – now, with the rare opportunity to return the favor, y"); 
-			else if (bj && !anal) outputText("  Every time you met Heckel, you went down on her - now, with the rare opportunity to return the favour, y");
-			else outputText("  Every time you met Heckel, you had to take her dick up your ass - now, with the rare opportunity to return the favour, y");
+			else if (bj && !anal) outputText("  Every time you met Heckel, you went down on her - now, with the rare opportunity to return the favor, y");
+			else outputText("  Every time you met Heckel, you had to take her dick up your ass - now, with the rare opportunity to return the favor, y");
 		}
 		else outputText("Y");
 		outputText("ou savor every thrust into her tight velvet tunnel.  She's tight, far tighter than you had expected, but she's definitely no virgin either.  You draw your hands down to her hips, gripping and pulling delightedly at her tight muscles as you work her cunt, whetting your " + cockDescript(x) + " with the fruit you've been forbidden all this time.");
@@ -1401,7 +1401,7 @@ public function brookeVHeckelBrookeWins2():void {
 		if(player.cockTotal() >= 2) outputText("  Your extra dick flops lamely up the crack of her ass, hotdogging between her cheeks with every thrust.  You consider the possibility of maybe double-dicking the cocky hyena, but you opt against it, not willing to break the good flow you've got between the three of you.");
 		outputText("\n\nFor her part, Heckel gasps more often when you thrust into her than when Brooke thrusts onto her own cock, although you take that more to mean she's not used to getting fucked than you're outdoing Brooke.");
 
-		outputText("\n\nHeckel keeps up her part of the threesome, fucking and getting fucked, her moans and gasps among the most feminine things you've ever heard her make.  She leans more into you for support, unable to stay standing for long periods with the burn in her legs, but Brooke is more than happy to compensate, draping her body over the hyena as she takes her hard cock.  The Shepherd girl leans in, shutting up Heckel's moaning with another passionate, dominate kiss, as her tongue uncontestably glides in and claims the hyena's mouth for her own.");
+		outputText("\n\nHeckel keeps up her part of the threesome, fucking and getting fucked, her moans and gasps among the most feminine things you've ever heard her make.  She leans more into you for support, unable to stay standing for long periods with the burn in her legs, but Brooke is more than happy to compensate, draping her body over the hyena as she takes her hard cock.  The Shepherd girl leans in, shutting up Heckel's moaning with another passionate, dominate kiss, as her tongue incontestably glides in and claims the hyena's mouth for her own.");
 
 		outputText("\n\nYou slide your hands up, feeling every ridge of her muscles and her ribs until you reach Heckel's B-cup breasts, roughly gripping and groping them.  Brooke gets the same idea, searching her hands across Heckel's well-defined biceps and shoulders before reaching down to the hyena's breasts.  You and her take turns, each covering half a breast, mauling and rubbing the supple flesh, you both enjoying passing and pinching over her nipples and hearing the delighted yips she tries to make around Brooke's still-kissing mouth.  You look down, watching the herm girl fuck hard and deep into Brooke before you, seeing her massive knot collide greedily against the dog's snatch in a bid to break in and unload her warm, waiting seed into her womb.");
 

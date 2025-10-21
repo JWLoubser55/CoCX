@@ -212,12 +212,16 @@ public final class ConsumableLib extends AlchemyLib
 		//MAGIC STORAGES AND LOOT BAGS OF COSMOS
 		public const BAGOCOS: Consumable = mk("BagOCos", "BagOfCosmos", "a Bag of Cosmos", 1200, "It's small bag used by Soul Cultivators covered with a complex symbols making it object that allow to store many more things that the size of itself would indicate.", m.bagofcosmos);
 		public const SPPEARL: Consumable = mk("SPPearl", "SkyPoisonPearl", "a Sky Poison Pearl", 12000, "Mysterious Pearl.", m.skypoisonpearl);//moze jednak zmniejszyc do 6k tylko - 60 slotow po 200 gems kazdy wart = 12k (maybe reduce it to only 6k - 60 slots with 200 gems each worth = 12k)
-		public const BAGOCA1: Consumable = mk("BagOCA1", "BagOfCosmosA1", "a Bag of Cosmos (A1)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA1);
-		public const BAGOCA2: Consumable = mk("BagOCA2", "BagOfCosmosA2", "a Bag of Cosmos (A2)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA2);
-		public const BAGOCA3: Consumable = mk("BagOCA3", "BagOfCosmosA3", "a Bag of Cosmos (A3)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA3);
-		public const BAGOCA4: Consumable = mk("BagOCA4", "BagOfCosmosA4", "a Bag of Cosmos (A4)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA4);
+		public const BAGOCA1: Consumable = new BagOfCosmosA1();
+		public const BAGOCA2: Consumable = new BagOfCosmosA2();
+		public const BAGOCA3: Consumable = new BagOfCosmosA3();
+		public const BAGOCA4: Consumable = new BagOfCosmosA4();
 		public const BAGOCA5: Consumable = mk("BagOCA5", "BagOfCosmosA5", "a Bag of Cosmos (A5)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA5);
 		public const BAGOCA6: Consumable = mk("BagOCA6", "BagOfCosmosA6", "a Bag of Cosmos (A6)", 0, "It's small bag used by enemy Soul Cultivator to store much more things that the size of itself would indicate. What could be in this one?", m.bagofcosmosA6);
+		public const BAGOCB1: Consumable = new BagOfCosmosB1();
+		public const BAGOCB2: Consumable = new BagOfCosmosB2();
+		public const BAGOCB3: Consumable = new BagOfCosmosB3();
+		public const BAGOCB4: Consumable = new BagOfCosmosB4();
 
 		//PILLS
 		public const LG_SFRP: Consumable = mk("LGSFRP", "LGSFRPill", "a low-grade Soulforce Recovery Pill", 10, "This low-grade recovery pill could help you recover some of the spent soulforce.  Naturally, it won't be much, but in a tight situation, it could mean the difference between winning or losing.", m.lowgradesoulforcerecoverypill);
@@ -603,6 +607,19 @@ public final class ConsumableLib extends AlchemyLib
 							[1, AR_LIB]
 						]
 				);
+		public const FIENOIL: Consumable = mk("FienOil", "FiendishOil", "a vial of fiendish oil", 20, "Somehow this altered snake oil smells and probably tastes even worse than normal.", curry(m.snakeOil, 2), ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						MULTIRACE_ESSENCE_DROP_TABLE(AE_MARILITH, AE_SNAKE),
+						[
+							[1, AR_LIB]
+						],
+						concatUnique(
+								MarilithRace.MarilithSkinColors,
+								MarilithRace.MarilithHairColors,
+								MarilithRace.MarilithScaleColors
+						)
+				);
 		public const FIERYS_: Consumable = mk("FieryS", "FieryS.", "Fiery saké", 10, "A strong alcoholic beverage best served hot. The Hinezumi drink of this regularly.", curry(m.mouseCocoa, 1), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
@@ -622,14 +639,6 @@ public final class ConsumableLib extends AlchemyLib
 								FoxRace.FoxFurColors
 						)
 				);
-		public const FRRTFRT: Consumable = mk("Frrtfrt", "FerretFrt", "a ferret fruit", 6, "This fruit is curved oddly, just like the tree it came from.  The skin is fuzzy and brown, like the skin of a peach.", m.ferretTF, ItemConstants.U_TF)
-				.refineableInto(
-						DEFAULT_SUBSTANCES_DROP_TABLE,
-						DEFAULT_ESSENCE_DROP_TABLE(AE_FERRET),
-						[
-							[1, AR_SPE]
-						]
-				);
 		public const FOXJEWL: Consumable = mk("FoxJewl", "Fox Jewel", "a fox jewel", 50, "A shining teardrop-shaped jewel.  An eerie blue flame dances beneath the surface.", curry(m.foxJewel, false), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
@@ -645,6 +654,14 @@ public final class ConsumableLib extends AlchemyLib
 								KitsuneRace.BasicKitsuneSkinColors
 						)
 				);
+		public const FRRTFRT: Consumable = mk("Frrtfrt", "FerretFrt", "a ferret fruit", 6, "This fruit is curved oddly, just like the tree it came from.  The skin is fuzzy and brown, like the skin of a peach.", m.ferretTF, ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_FERRET),
+						[
+							[1, AR_SPE]
+						]
+				);
 		public const FSNAILS: Consumable = mk("FSnailS", "FireSnailSaliva", "a Fire snail Saliva", 20, "The saliva of a fire snail. Highly volatile.", m.firesnailsaliva, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
@@ -653,7 +670,10 @@ public final class ConsumableLib extends AlchemyLib
 		public const G_FRUIT: Consumable = mk("G.Fruit", "G.Fruit", "a Ghastly fruit", 10, "A ghastly whisker fruit from some underground place. Legends even says they may have grown in the netherworld. Highly favored by nekomata.", m.ghastlyFruit, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
-						MULTIRACE_ESSENCE_DROP_TABLE(AE_NEKOMATA, AE_CAT)
+						MULTIRACE_ESSENCE_DROP_TABLE(AE_NEKOMATA, AE_CAT),
+						[
+							[1, AR_SPE]
+						]
 				);
 		public const GLDRIND:GoldenRind       = new GoldenRind();
 		public const GORGOIL: Consumable = mk("GorgOil", "GorgonOil", "a vial of gorgon oil", 20, "A vial the size of your fist made of dark green glass. It contains what appears to be oily, greenish liquid. The odor is foul.", curry(m.evolvedNagaOil, 0), ItemConstants.U_TF)
@@ -718,6 +738,17 @@ public final class ConsumableLib extends AlchemyLib
 						)
 				);
 		public const HDEWCAK:HoneydewCake     = new HoneydewCake();
+		public const HORNFRU: Consumable = mk("HornFru", "HornedFruit", "a horned fruit", 6, "A delicious fruit of which the twisting stem reminds of the curving horn of a ram. Supposedly it naturally grows on the vines covered, mossy pelt of barometz when the season is right.", m.hornedFruit, ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_BAROMETZ),
+						[
+							[1, AR_TOU],
+							[1, AR_SPE],
+							[1, AR_WIS],
+							[1, AR_LIB]
+						]
+				);
 		public const HUMMUS_: Consumable = mk("Hummus ", "Hummus", "a blob of cheesy-looking hummus", 100, "This pile of hummus doesn't look that clean.  It looks bland.  So bland that you feel blander just by looking at it.", m.regularHummus, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,

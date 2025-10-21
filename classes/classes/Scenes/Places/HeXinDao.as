@@ -167,7 +167,7 @@ public class HeXinDao extends BaseContent
         addButton(2, "SoulEquip", serenamerchant);
         addButton(3, "SoulArrow", ermaswiftarrowmerchant);
 		addButton(4, "FSAAWY", qimerchant).hint("Flying Swords are always with you!");
-		//addButton(5, "", ); siedziba lokalnej grupy zrzeszającej soul cultivators - PC aby potem pojsc dalej bedzie musial dolaczyc tutaj (pomyslec nad wiarygodnym sposobem zmuszenia go do tego - moze jakies ciekawe itemy/inne rzeczy dla czlonkow beda a miejsce sie zwolni jak wywala tak goblinke tworzynie golemow, ktora potem oczywiscie wcisnie sie do obozu PC aby w spokoju rozwijac sie w tworzeniu golemow itp.)
+		addButtonDisabled(5, "State of Azoh", "State of Azoh");
         addButton(6, "JourTTEast", SceneLib.journeyToTheEast.enteringInn);
         addButton(7, "Arena", soularena);
         addButton(8, "Restaurant", restaurantShiraOfTheEast);
@@ -234,8 +234,9 @@ public class HeXinDao extends BaseContent
             buyItem1 = curry(MultiBuy.confirmBuyMulti,TierI,"Golem",1);
             buyItem2 = curry(MultiBuy.confirmBuyMulti,TierI,"Golem",5);
 			menu();
-            addButton(2, "Bag of Cosmos", curry(buyItem2,consumables.BAGOCOS), sayLine2(consumables.BAGOCOS,"A quintessential item for all soul cultivators, this little bag is dimensionally transcendental, that is, it's bigger on the inside. "),"\n", true).hint("Bag of Cosmos.");
-			addButton(3, "BT.Solution", curry(buyItem2,useables.BTSOLUTION), sayLine2(useables.BTSOLUTION,"This vial contain solution commonly used by body cultivators. In case of anyone else trying to ingest this fluid it raged from sever ingestion to death."),"\n", true).hint("Vial of Body Tempering Solution.");
+            addButton(1, "Bag of Cosmos", curry(buyItem2,consumables.BAGOCOS), sayLine2(consumables.BAGOCOS,"A quintessential item for all soul cultivators, this little bag is dimensionally transcendental, that is, it's bigger on the inside. "),"\n", true).hint("Bag of Cosmos.");
+			addButton(2, "BT.Solution", curry(buyItem2,useables.BTSOLUTION), sayLine2(useables.BTSOLUTION,"This vial contain solution commonly used by body cultivators. In case of anyone else trying to ingest this fluid it raged from sever ingestion to death."),"\n", true).hint("Vial of Body Tempering Solution.");
+			addButton(3, "HF.Solution", curry(buyItem2,useables.HFSOLUTION), sayLine2(useables.HFSOLUTION,"This vial contain solution commonly used by heartforce cultivators. In case of anyone else trying to ingest this fluid it raged from sever hallucinations to brain death."),"\n", true).hint("Vial of Heartforce Tempering Solution.");
 			addButton(4, "Fasting Pill", curry(buyItem2,consumables.FATPILL), sayLine2(consumables.FATPILL,"It's a rather useful item for soul cultivators, this little pill can help you stave off hunger for a few days."),"\n", true).hint("Fasting Pill.").disableIf(flags[kFLAGS.HUNGER_ENABLED] == 0);
             addButton(5, "Triple Thrust", curry(buyItem2,consumables.TRITMAN), sayLine2(consumables.TRITMAN,"It's a manual for Triple Thrust. This very simple technique allows you to unleash three thrusts that will become stronger and stronger as you train your body and soul."), "\n\nWhether you are going to try to go deeper into all that 'soulforce' stuff or not, at least you now have something to begin with.  It seems like even the name of the manual could have been influenced by this realm's nature... either that or it's just a coincidence.",true).hint("Triple Thrust Manual.").disableIf(!hasSoulCultivator);
             addButton(6, "Draco Sweep", curry(buyItem2,consumables.DRASMAN), sayLine2(consumables.DRASMAN,"It's a manual for Draco Sweep. This simple technique allows you to unleash an attack that would strike in wide arc before you, perfect for when you are fighting a group of enemies. It also becomes more powerful as long you train your body and soul."), "\n\nWhether you are going to try to go deeper into all that 'soulforce' stuff or not, at least you now have something to use when fighting a group of enemies.  You don't often meet more than one enemy at a time, but you're sure that deeper in this forsaken realm you will face groups or maybe even hordes of demons at once and would need something to deal with them.  ", true).hint("Draco Sweep Manual.").disableIf(!hasSoulCultivator);
@@ -861,8 +862,9 @@ public class HeXinDao extends BaseContent
 		addButton(5, weaponsflyingswords.S_TWINS.shortName, flyingSwordBuy, weaponsflyingswords.S_TWINS, qimerchant);
 		addButton(6, weaponsflyingswords.A_HALFM.shortName, flyingSwordBuy, weaponsflyingswords.A_HALFM, qimerchant);
 		addButton(7, weaponsflyingswords.O_HALFM.shortName, flyingSwordBuy, weaponsflyingswords.O_HALFM, qimerchant);
-		addButton(10, weaponsflyingswords.ASAUCHI.shortName, flyingSwordBuy, weaponsflyingswords.ASAUCHI, qimerchant);
-        addButton(11, weaponsflyingswords.C_NEW_M.shortName, flyingSwordBuy, weaponsflyingswords.C_NEW_M, qimerchant);
+		addButton(9, weaponsflyingswords.ASAUCHI.shortName, flyingSwordBuy, weaponsflyingswords.ASAUCHI, qimerchant);
+        addButton(10, weaponsflyingswords.C_NEW_M.shortName, flyingSwordBuy, weaponsflyingswords.C_NEW_M, qimerchant);
+        addButton(11, weaponsflyingswords.S_FULLM.shortName, flyingSwordBuy, weaponsflyingswords.S_FULLM, qimerchant);
         addButton(12, consumables.SUNRMAN.shortName, flyingSwordBuy, consumables.SUNRMAN, qimerchant)
 		addButton(13, "Qi", qimerchantTraningMain).hint("Flying Sword training and others related matters.");
         addButton(14, "Back", riverislandVillageStuff);
@@ -875,6 +877,9 @@ public class HeXinDao extends BaseContent
 		menu();
 		if (player.hasPerk(PerkLib.SoulSense) && flags[kFLAGS.SPIRIT_STONES] >= 50) addButtonIfTrue(0, "Basic training", qimerchantTraningMainFlyingSwordPath1, "You already learned basic control of flying swords.", !player.hasPerk(PerkLib.FlyingSwordPath));
 		else addButtonDisabled(0, "Basic training", "Req. Soul Sense perk & 50 spirit stones.");
+		addButtonDisabled(1, "Intermediate training", "Commming soon.");
+		//(2, "Advanced training", "Commming soon.");
+		//(3, "Expert training", "Commming soon.");
 		addButtonIfTrue(10, "Soaring Blades", qimerchantTraningMainSoaringBladesManual, "You need to learn how to control flying swords first (Req. Flying Sword Path perk).", player.hasPerk(PerkLib.FlyingSwordPath));
 		addButtonIfTrue(11, "1stAtk: F.Sword", qimerchantTraningMainFirstAttackFlyingSwordManual, "You need to learn how to control flying swords first (Req. Flying Sword Path perk).", player.hasPerk(PerkLib.FlyingSwordPath));
 		addButton(14, "Back", qimerchant);
@@ -902,6 +907,16 @@ public class HeXinDao extends BaseContent
 	private function qimerchantTraningMainFlyingSwordPath2():void {
 		clearOutput();
 		outputText("\"<i></i>\"\n\n");
+		player.addPerkValue(PerkLib.FlyingSwordPath, 1, 1);
+		flags[kFLAGS.SPIRIT_STONES] -= 50;
+		advanceMinutes(150);
+		doNext(qimerchantTraningMain);
+	}
+	private function qimerchantTraningMainFlyingSwordPath3():void {
+		clearOutput();
+		outputText("\"<i></i>\"\n\n");
+		player.addPerkValue(PerkLib.FlyingSwordPath, 1, 1);
+		flags[kFLAGS.SPIRIT_STONES] -= 50;
 		advanceMinutes(150);
 		doNext(qimerchantTraningMain);
 	}
@@ -947,7 +962,10 @@ public class HeXinDao extends BaseContent
 
 public function soularena():void {
 	clearOutput();//arena do walk z przeciwnikami na exp tylko - zadnych sex scenes tylko walk do wygranej niewazne czy przez hp czy lust - przeciwnicy: ?weak deviant golem?, niskopoziomowi przeciwnicy uzywajacy soul skills (moze po prostu wesje zwyklych przeciwnikow ale z dodanymi soul attakami?)
-	if (flags[kFLAGS.CHI_CHI_AFFECTION] >= 10 && flags[kFLAGS.CHI_CHI_AFFECTION] < 15 && !player.hasStatusEffect(StatusEffects.ChiChiOff) && !SceneLib.chichiScene.ChiChiKickedOut) SceneLib.chichiScene.EnterOfTheChiChi();
+	if (flags[kFLAGS.CHI_CHI_AFFECTION] >= 10 && flags[kFLAGS.CHI_CHI_AFFECTION] < 15 && !player.hasStatusEffect(StatusEffects.ChiChiOff) && !SceneLib.chichiScene.ChiChiKickedOut) {
+		if (SceneLib.chichiScene.ArenaDecline > 0) SceneLib.chichiScene.EnterOfTheChiChi2();
+		else SceneLib.chichiScene.EnterOfTheChiChi();
+	}
 	else {
 		outputText("Coming closer to the arena you see two muscular tigersharks standing on each side of the entrance, they only briefly glance at you the moment you pass by. Moments after you enter, a tall, slightly muscular cat-morph approaches you. Most of his body is covered by armor, yet two long tails wave behind him.");//osoba zarządzająca areną bedzie male nekomanta npc
 		outputText("\n\n\"<i>Welcome to the Soul Arena. Don't start fights outside of the proper place or you will be thrown out. We have training facilities, and fights you can enter. Fights cost spirit stones. Make sure you have enough of them. We aren't a charity.</i>\"");
@@ -962,7 +980,10 @@ public function soularena():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 3) addButtonDisabled(2, "Challange", "To go to the section of soul arena for challenges you need to give 3 spirit stones.");
 		else addButton(2, "Challenge", soularenaChallenge).hint("Go to the section of soul arena for challenges. (Who knows what rewards you may get after winning any of the challenges there...)");
 		if (flags[kFLAGS.IGNIS_ARENA_SEER] >= 1) addButton(10, "Ignis", ignisarenaseer.mainIgnisMenu);
-		addButton(11, "M.S.L.", mrsShigureLectures).hint("Mrs. Shigure Lectures about soul cultivation.");
+		if (time.hours >= 12 && time.hours < 17) addButton(11, "M.S.L.", mrsShigureLectures).hint("Mrs. Shigure Lectures about soul cultivation.");//flags[kFLAGS.LUNA_MOON_CYCLE] == 8 && 
+		else addButtonDisabled(11, "???", "There is no lecture today. (come back in the afternoon)");//at 8th day of moon cycle 
+		if (player.hasPerk(PerkLib.Dantain)) addButton(13, "MissAkemi", missAkemiManualsShop);
+		else addButtonDisabled(13, "???", "You must attend the 2nd grade of Lectures first.");
 		addButton(14, "Back", riverislandVillageStuff);
 		statScreenRefresh();
 	}
@@ -1045,7 +1066,6 @@ public function soularena():void {
 			//addButton(0, "Kitty", arenaSelection1, Veronika);
 			//addButton(1, "Golemancer", arenaSelection1,Jeniffer).hint("Golemancer goblin.");
 			//addButton(2, "AyotechManiac", arenaSelection1,Jinx).hint("Crazy gremlin girl wearing lots of belts... err Ayotech weapons.");
-			//addButton(5, "Macho Mander", arenaSelection1,Syth).hint("He's Macho & Mander.");
 			//if () addButton(6, "Miss Mander", arenaSelection1,Asuka).hint("Salamander woman.");
 			//else addButton(6, "Miss Mander", arenaSelection1,Asuka).hint("Young salamander girl.");
 			//addButton(7, "Miss Oni", arenaSelection1,Rangiku);
@@ -1054,6 +1074,7 @@ public function soularena():void {
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "") addButtonDisabled(10, "IntermedLeader", "Req. to have any henchman with you to start this fight.");
 				else addButton(10, "IntermedLeader", intermediateleadershipfight1).hint("Intermediate Leadership fight");
 			}
+			//11 - next step of leadership fights here
 			addButton(14, "Back", soularenaChallengeBack);
 		}
 	}
@@ -1080,7 +1101,7 @@ public function soularena():void {
 	public function intermediateleadershipfight1():void {
 		clearOutput();
 		outputText("As you enter the arena the announcer voice booms in and the crowd cheers you up. They get to see the hero who defeated the previous trial make a come back and thats clearly not an everyday spectacle.\n\n");
-		outputText("\"<i>Greeting people of the river town, welcome to the arena. Today our favourite champion faces off against team battles, you know what this means!</i>\"\n\n");
+		outputText("\"<i>Greeting people of the river town, welcome to the arena. Today our favorite champion faces off against team battles, you know what this means!</i>\"\n\n");
 		outputText("The crowd suddenly starts calling out as a pair of large figures easily 8 feet tall steps out from the opposite archway. It's a minotaur and its lacta bovine wife. ");
 		outputText("A single minotaur is normally much trouble but partnered up with a lacta bovine there's no telling what shenanigan could happen! The bull walks toward you confident in his might he won't let you simply trample his pride before his wife.\n\n");
 		player.createStatusEffect(StatusEffects.SoulArena, 0, 0, 0, 0);
@@ -1092,8 +1113,8 @@ public function soularena():void {
 		clearOutput();
 		soularenafightsbetween();
 		outputText("\n\nAs the minotaur couple falls down utterly defeated the announcer claims. \"<i>Well seeing as the challenger defeated the cows we have a special surprise for you today. Angels do not typically associate with us folks as they are too busy waging a bloody war against the demon and scouring corruption from the land ");
-		outputText("but through many deals and persuasion we managed to secure the collaboration of these two. I present to you Gabriel and Uriel the angel twins! Do not be deceived by their beauty noor their innocent look they are definitely out for blood!</i>\"\n\n");
-		outputText("The two angels calmly hover into the battlefield flanked by two pairs of toothed winged orbs. Their demeanour is almost void of expression as they fixate you and emotionlessly declare at the same time.\n\n");
+		outputText("but through many deals and persuasion we managed to secure the collaboration of these two. I present to you Gabriel and Uriel the angel twins! Do not be deceived by their beauty nor their innocent look they are definitely out for blood!</i>\"\n\n");
+		outputText("The two angels calmly hover into the battlefield flanked by two pairs of toothed winged orbs. Their demeanor is almost void of expression as they fixate you and emotionlessly declare at the same time.\n\n");
         outputText("\"<i>Do not make this complicated for us mortal… simply fall.</i>\"\n\n");
 		startCombat(new AngelLR());
         monster.createStatusEffect(StatusEffects.NoLoot, 0, 0, 0, 0);
@@ -1479,8 +1500,6 @@ public function soularena():void {
 			else addButtonDisabled(4, "5th", "You don't have enough spirit stones (20) or not surtvived your first tribulation to listen to today's lecture.");
 		}
 		else if (player.hasKeyItem("A summary of Marethian Sects") >= 0) addButtonDisabled(4, "5th", "You already taken the fourth step of soul cultivation.");
-		if (player.hasPerk(PerkLib.Dantain)) addButton(13, "MissAkemi", missAkemiManualsShop);
-		else addButtonDisabled(13, "???", "You must attend the 2nd grade of Lectures first.");
 		addButton(14, "Back", soularena);
 	}
 	public function mrsShigureLecturesBasics():void {
@@ -1602,33 +1621,187 @@ public function soularena():void {
 		clearOutput();
 		outputText("\"<i>Five Spirit Stones per manual.</i>\" From the look in her young eyes, you can tell that trying to haggle would be a poor decision.\n\n");
 		menu();
-		addButtonIfTrue(0, "Daoist", missAkemiManualsShopDaoist, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") < 0);
-		addButtonIfTrue(1, "BodyCult", missAkemiManualsShopBodyCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") < 0);
+		addButtonIfTrue(0, "Daoist(1)", missAkemiManualsShopDaoistMyDaoHeartIsFirm, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") < 0, "Buy Cultivation Manual: My Dao Heart is Firm");
+		addButtonIfTrue(1, "Daoist(2)", missAkemiManualsShopDaoistEmperorOfDragon, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Emperor of Dragon") < 0, "Buy Cultivation Manual: Emperor of Dragon");
+		addButtonIfTrue(2, "Daoist(3)", missAkemiManualsShopDaoistEmbodimentOfTengliu, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Embodiment of Tengliu") < 0, "Buy Cultivation Manual: Embodiment of Tengliu");
+		addButtonIfTrue(3, "Daoist(4)", missAkemiManualsShopDaoistLordOfKirin, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Lord of Kirin") < 0, "Buy Cultivation Manual: Lord of Kirin");
+		addButtonIfTrue(4, "Daoist(5)", missAkemiManualsShopDaoistJudgeOfPhantom, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Judge of Phantom") < 0, "Buy Cultivation Manual: Judge of Phantom");
+		addButtonIfTrue(5, "Daoist(6)", missAkemiManualsShopDaoistDoctorOfTheSerpent, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Doctor of the Serpent") < 0, "Buy Cultivation Manual: Doctor of the Serpent");
+		addButtonIfTrue(6, "Daoist(7)", missAkemiManualsShopDaoistPriestOfTheLeviathan, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Priest of the Leviathan") < 0, "Buy Cultivation Manual: Priest of the Leviathan");
+		addButtonIfTrue(7, "Daoist(8)", missAkemiManualsShopDaoistKingOfGaruda, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: King of Garuda") < 0, "Buy Cultivation Manual: King of Garuda");
+		addButtonIfTrue(8, "Daoist(9)", missAkemiManualsShopDaoistMonarchOfTortoise, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Monarch of Tortoise") < 0, "Buy Cultivation Manual: Monarch of Tortoise");
+		addButtonIfTrue(9, "Daoist(10)", missAkemiManualsShopDaoistGeneralOfHydra, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: General of Hydra") < 0, "Buy Cultivation Manual: General of Hydra");
+		//addButtonIfTrue(0, "Daoist", missAkemiManualsShopDaoist, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: My Dao Sticks are better than Yours") < 0);
+		addButtonIfTrue(10, "BodyCult(1)", missAkemiManualsShopBodyCultivatorFistofMetal, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Fist of Metal") < 0, "Buy Cultivation Manual: Fist of Metal");
+		addButtonIfTrue(11, "BodyCult(2)", missAkemiManualsShopBodyCultivatorScaleofDragon, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Scale of Dragon") < 0, "Buy Cultivation Manual: Scale of Dragon");
+		addButtonIfTrue(12, "BodyCult(3)", missAkemiManualsShopBodyCultivatorVigorofLizan, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Vigor of Lizan") < 0, "Buy Cultivation Manual: Vigor of Lizan");
+		//addButtonIfTrue(1, "BodyCult", missAkemiManualsShopBodyCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") < 0);
+		//outputText("\"<i>So you're into Coke Demons.... er... Fiends?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
 		//addButtonIfTrue(2, "HeartCult", missAkemiManualsShopHeartforceCultivator, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") < 0);
-		addButton(4, "Back", mrsShigureLectures);
+		//player.createKeyItem("Cultivation Manual: Meditation on the Soul", 0, 0, 0, 0); - manual for clone creation xD
+		addButtonIfTrue(13, "HeartCult(1)", missAkemiManualsShopHeartforceCultivatorHeartsEye, "You already bought this manual.", player.hasKeyItem("Cultivation Manual: Heart's Eye") < 0, "Buy Cultivation Manual: Heart's Eye");
+		addButton(14, "Back", soularena);
 	}
-	public function missAkemiManualsShopDaoist():void {
+		//outputText("\"<i>You like sticks, do you?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");			not delete those 6 lines as they would be needed for future manuals
+		//outputText("<b>Gained Key Item: Cultivation Manual: My Dao Sticks are better than Yours</b>");
+		//player.createKeyItem("Cultivation Manual: My Dao Sticks are better than Yours", 0, 0, 0, 0);
+		//outputText("\"<i>So you're into Coke Demons.... er... Fiends?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
+		//outputText("<b>Gained Key Item: Cultivation Manual: Body like a Coke Fiend</b>");
+		//player.createKeyItem("Cultivation Manual: Body like a Coke Fiend", 0, 0, 0, 0);
+	public function missAkemiManualsShopDaoistMyDaoHeartIsFirm():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
 			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
 			doNext(missAkemiManualsShop);
 			return;
 		}
 		flags[kFLAGS.SPIRIT_STONES] -= 5;
-		outputText("\"<i>You like sticks, do you?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
-		outputText("<b>Gained Key Item: Cultivation Manual: My Dao Sticks are better than Yours</b>");
-		player.createKeyItem("Cultivation Manual: My Dao Sticks are better than Yours", 0, 0, 0, 0);
+		outputText("\"<i>You not dragon-morph, right? Some of them can't withstand this manual power and their minds shatters,</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: My Dao Heart is Firm</b>");
+		player.createKeyItem("Cultivation Manual: My Dao Heart is Firm", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
-	public function missAkemiManualsShopBodyCultivator():void {
+	public function missAkemiManualsShopDaoistEmperorOfDragon():void {
 		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
 			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
 			doNext(missAkemiManualsShop);
 			return;
 		}
 		flags[kFLAGS.SPIRIT_STONES] -= 5;
-		outputText("\"<i>So you're into Coke Demons.... er... Fiends?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
-		outputText("<b>Gained Key Item: Cultivation Manual: Body like a Coke Fiend</b>");
-		player.createKeyItem("Cultivation Manual: Body like a Coke Fiend", 0, 0, 0, 0);
+		outputText("\"<i>Emperor... wait why not Empress? Oh well for you that doesn't make the difference does it?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Emperor of Dragon</b>");
+		player.createKeyItem("Cultivation Manual: Emperor of Dragon", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistEmbodimentOfTengliu():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>You not secretly want to shag some Yuki Onna do you?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Embodiment of Tengliu</b>");
+		player.createKeyItem("Cultivation Manual: Embodiment of Tengliu", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistLordOfKirin():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>Did you by chance been between horny Raiju and Kirin in Plains? Are you sure you wasn't?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Lord of Kirin</b>");
+		player.createKeyItem("Cultivation Manual: Lord of Kirin", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistJudgeOfPhantom():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>Are you judge, jury and police at the same time?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Judge of Phantom</b>");
+		player.createKeyItem("Cultivation Manual: Judge of Phantom", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistDoctorOfTheSerpent():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>Do you need a doctor, doctor to bring you back to life?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Doctor of the Serpent</b>");
+		player.createKeyItem("Cultivation Manual: Doctor of the Serpent", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistPriestOfTheLeviathan():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>You want to worship that calamar head or what?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Priest of the Leviathan</b>");
+		player.createKeyItem("Cultivation Manual: Priest of the Leviathan", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistKingOfGaruda():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>A big bird with a tiny 'bird', right?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: King of Garuda</b>");
+		player.createKeyItem("Cultivation Manual: King of Garuda", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistMonarchOfTortoise():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>They see me Turtlin', They Hatin'</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Monarch of Tortoise</b>");
+		player.createKeyItem("Cultivation Manual: Monarch of Tortoise", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopDaoistGeneralOfHydra():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>You up for having multiple heads up and down, and even using them ALL?</i>\" she teases, sticking her tongue out as she hands over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: General of Hydra</b>");
+		player.createKeyItem("Cultivation Manual: General of Hydra", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopBodyCultivatorFistofMetal():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>So you're into Fist...ing with Metal Fists?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Fist of Metal</b>");
+		player.createKeyItem("Cultivation Manual: Fist of Metal", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopBodyCultivatorScaleofDragon():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>So you're into checking if Dragons have Reverse Scale?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Scale of Dragon</b>");
+		player.createKeyItem("Cultivation Manual: Scale of Dragon", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopBodyCultivatorVigorofLizan():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>So you're into Lizan Vigor or... Lizans themself?</i>\" she eyes you suspisciously as she passes over the tome.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Vigor of Lizan</b>");
+		player.createKeyItem("Cultivation Manual: Vigor of Lizan", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 	public function missAkemiManualsShopHeartforceCultivator():void {
@@ -1641,6 +1814,18 @@ public function soularena():void {
 		outputText("\"<i>Watch out for their eyes... the upper ones at least,</i>\" she says somberly, handing over the manual.\n\n");
 		outputText("<b>Gained Key Item: Cultivation Manual: Heart-shaped Eyed She-Devil</b>");
 		player.createKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil", 0, 0, 0, 0);
+		doNext(missAkemiManualsShop);
+	}
+	public function missAkemiManualsShopHeartforceCultivatorHeartsEye():void {
+		if (flags[kFLAGS.SPIRIT_STONES] < 5) {
+			outputText("\"<i><i>I sincerely hope you're joking. Please try to remember our prices, okay? Five spirit stones. No more, no less.</i> She seems genuinely concerned for your well-being. You blush, slightly embarassed by her sincerity\"</i>\"\n\n");
+			doNext(missAkemiManualsShop);
+			return;
+		}
+		flags[kFLAGS.SPIRIT_STONES] -= 5;
+		outputText("\"<i>Growing eye in your heart... okayyyy,</i>\" she says somberly, handing over the manual.\n\n");
+		outputText("<b>Gained Key Item: Cultivation Manual: Heart's Eye</b>");
+		player.createKeyItem("Cultivation Manual: Heart's Eye", 0, 0, 0, 0);
 		doNext(missAkemiManualsShop);
 	}
 
@@ -1830,8 +2015,49 @@ public function soularena():void {
         menu();
         addButton(0, "Dumpling", orderFood,0,5,0).hint("Effects: +Spe, +Tou", "Dumpling");
         addButton(1, "Soup", orderFood,0,0,5).hint("Effects: +Int, +Tou", "Soup");
-        addButton(2, "Ramen", orderFood,5,0,0).hint("Effects: +Str, +Tou", "Ramen");
+        addButton(2, "Ramen", orderFood, 5, 0, 0).hint("Effects: +Str, +Tou", "Ramen");
+		if (flags[kFLAGS.CHI_CHI_FOLLOWER] < 2 && !player.hasStatusEffect(StatusEffects.ChiChiOff) && !SceneLib.chichiScene.ChiChiKickedOut && SceneLib.chichiScene.RestaurantMeals > 0) addButton(7, "Talks", chichiTalks);
     }
+	private function chichiTalks():void {
+		clearOutput();
+		if (flags[kFLAGS.CHI_CHI_AFFECTION] >= 5 && SceneLib.chichiScene.RestaurantMeals > 9) {
+			outputText("This time before you can wave Chi Chi herself comes to you.\n\n");
+			outputText("\"<i>You really need to stop using that champion title everywhere. What if the demons catch wind of it and trap you? A while ago I was watching the fight at the arena and the announcer boldly called you the Champion of Ingnam. Doing something like that is bound to get you hurt eventually. Besides, you have been a good patron to this shop, It would really suck if you turned up enslaved by demons.</i>\"\n\n");
+			outputText("You are the champion though, this is your title and your duty is to defeat the demons so that people like her can finally be freed from their malignant shadow.\n\n");
+			outputText("\"<i>Boldness and stupidity are often confused. While you’ve been lucky so far, everyone’s luck runs out.. Hundreds of brave souls before you have said the same words and failed…And failure like that comes with lethal consequences.</i>\" Chi Chi seems genuinely concerned for your safety, putting a gentle hand on your shoulder. \"<i>I’m telling you for your own good, you should drop the quest, hole up somewhere and take a job. Maybe marry someone and have children. Mareth is a messed up place but life finds a way. It's not too late for you to live an ordinary existence away from foolish heroics and mostly near impossible quests. Realistic goals just anyone can achieve.</i>\"\n\n");
+			outputText("If no one becomes a hero then who will save Mareth?\n\n");
+			outputText("\"<i>If a hero had shown up I’m sure we would all know by now. I used to think I was a hero too before everything I cared about was taken away from me.</i>\"\n\n");
+			outputText("Her, a hero?\n\n");
+			outputText("\"<i>Every adventurer probably dreamed of saving the world once or twice. I’ve long gone past this point now I’m just Chi Chi the waitress. Speaking of that, would you like to order a meal?</i>\"\n\n");
+			if (SceneLib.chichiScene.ChiChiRestaurantTalks < 3) SceneLib.chichiScene.ChiChiRestaurantTalks = 3;
+		}
+		else if (SceneLib.chichiScene.RestaurantMeals > 4) {
+			outputText("You wave at the waitress and Chi Chi smiles back coming to attend to you.\n\n");
+			outputText("\"<i>Oh " + player.mf("mister", "miss") + " champion it's you again. have you come to get some of that spicy speciality I prepared this morning?</i>\"\n\n");
+			outputText("She’s a chef too? You thought she only worked as a waitress.\n\n");
+			outputText("\"<i>Actually I occasionally cook food as well. Cooking is a pastime of mine though I’m no house maid or master chef. Like most fire species, I’m quite fond of hot food. Most of my people are, as it resonates well with our bodies.</i>\"\n\n");
+			outputText("A fire species? You thought she was a mouse morph.\n\n");
+			outputText("\"<i>I am an Hinezumi, while you aren’t far off,  the mouse morphs are like distant cousins. To me the difference is a rather big one. Unlike the mouse morphs you may have seen by the lake, I am immune to fire and can produce flame at will. Haven’t you ever heard of the so-called hinezumi coat or the tale of the bamboo cutter? It's a story from my homeland far to the west. While the story is mostly a tale for children there's some truth to it, my people are a living embodiment of what people call determination or battle spirit.</i>\"\n\n");
+			outputText("So she embodies courage and the will never to give up?\n\n");
+			outputText("\"<i>Or being straight up more stubborn than a mule to the end. This can be a bad or good thing depending on the situation, but determination is a common trait among my people.</i>\"\n\n");
+			outputText("So her people, where are they now?\n\n");
+			outputText("\"<i>They're gone… most of them are. The demons destroyed the country and all that used to exist beyond the horizon in the great demon war. There’s perhaps four or five like me left in Mareth.</i>\"\n\n");
+			outputText("From her pained expression this seems to be a rather difficult topic for her so you drop it.\n\n");
+			if (SceneLib.chichiScene.ChiChiRestaurantTalks < 2) SceneLib.chichiScene.ChiChiRestaurantTalks = 2;
+		}
+		else {
+			outputText("Instead of ordering another meal, you decide to engage in conversation with Chi Chi the waitress. What is life like here in the river village?\n\n");
+			outputText("\"<i>Well I’ve only really been here for a few years. I used to be a teacher, then a wandering adventurer for a while, but that's all in the past now. I retired and work here in this restaurant to make ends meet, although I still do the former once in a while if they truly need my help.</i>\" Chi Chi pulls out a chair, sitting down in front of you. Her whiskers twitch, and she seems to be sizing you up. \"<i>You seem to be new around here, and yet you’re making something of a name for yourself. On that note, claiming to be a champion of Ingnam-That's a rather bold statement. It’s not a title to take lightly.</i>\"\n\n");
+			outputText("Your village gave you that title and duty so you bear it proudly. To do otherwise would be to let down ");
+			if (SceneLib.dungeons.checkFactoryClear()) outputText("all your predecessors who you want to avenge. ");
+			else outputText("the people back home who are depending on you to keep them safe. ");
+			outputText("You tell the waitress you come to Mareth to defeat the demons once and for all, to the best of your power. This makes Chi Chi give a wry smile, a hint of amusement creeping on her cute face.\n\n");
+			outputText("\"<i>That's a very noble goal, [name], but, on a serious note, you should try for something more realistic. Joke enough about defeating the demons with such a determined face and people might actually end up believing you are serious. Many folk have passed through this restaurant, making the same boast, and then they vanish. It might take a day, a week, some determined souls lasting for a month or two - but soon, they all stop coming.</i>\" Chi Chi sighs slightly, barely more than an exhale, and she stands, offering you a menu. The look she gives you is no longer curious…But slightly sad. \"<i>Still an adventure should begin with a good meal, so what can I serve up for you today?</i>\"\n\n");
+			if (SceneLib.chichiScene.ChiChiRestaurantTalks < 1) SceneLib.chichiScene.ChiChiRestaurantTalks = 1;
+		}
+		doNext(riverislandVillageStuff);
+		cheatTime(1/12);
+	}
     private function orderFood(str:int,spe:int,inte:int,tou:int=5):void{
         outputText("\n\nShe notes your order on a piece of paper.");
         outputText("\n\n\"<i>How spicy would you like it to be?</i>\"");
@@ -1869,10 +2095,12 @@ public function soularena():void {
 				break;
         }
         outputText("\n\nRegardless, the food is excellent and you leave in high spirits. You hadn't expected to find something so delicious in this realm.");
+		SceneLib.chichiScene.RestaurantMeals += 1;
         flags[kFLAGS.SPIRIT_STONES]--;
 		player.refillHunger(100);
         statScreenRefresh();
-        doNext(camp.returnToCampUseOneHour);
+		advanceMinutes(60);
+        doNext(riverislandVillageStuff);
     }
 }
 }

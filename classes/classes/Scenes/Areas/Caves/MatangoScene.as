@@ -59,7 +59,7 @@ public function winningOverMantangoLeave():void {
 
 public function losingToMantango():void {
 	clearOutput();
-	if (rand(4) == 0) {
+	if (rand(4) == 0 || player.blockingBodyTransformations()) {
 		outputText("You fall on the ground, defeated, but just as you are about to get thoroughly violated, a cave wyrm rampages through the area.\n\n");
 		outputText("\"<i>GIVE ME YOUR COCK SHROOM BITCH, I NEED IT FOR MY EGGS!!</i>\"\n\n");
 		outputText("Under your confused stare, the horny lizard steals away the mushroom infested woman and runs off into the dark. Damn, that was close, better not lose again. There’s no chance such luck will happen twice.\n\n");
@@ -97,10 +97,10 @@ public function losingToMantango():void {
 		transformations.SkinPlain.applyEffect(false);
 		if (player.breastRows.length == 0) transformations.CreateBreastRow(4).applyEffect(false);
 		else player.growTits(4, 1, false, 3);
-		player.skinColor = randomChoice(MyconidRace.MyconidSkinColors);<
-        if (player.hasCockCockOnly()) transformations.CockShroom().applyEffect(false);
+		player.skinColor = randomChoice(MyconidRace.MyconidSkinColors);
 		if (player.hasVagina() && player.vaginaType() != VaginaClass.SHROOM) transformations.VaginaShroom().applyEffect(false);
 		if (player.clitLength < 10) player.clitLength = 10;
+		if (player.hasCockCockOnly()) transformations.CockShroom().applyEffect(false);
 		if (!player.hasStatusEffect(StatusEffects.GlowingNipples)) transformations.NipplesGlowing.applyEffect(false);
 		if (!player.hasStatusEffect(StatusEffects.GlowingAsshole)) transformations.AssholeGlowing.applyEffect(false);
 		if (!player.hasPerk(PerkLib.Androgyny)) player.createPerk(PerkLib.Androgyny, 0, 0, 0, 0);

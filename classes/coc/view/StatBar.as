@@ -181,10 +181,30 @@ public class StatBar extends Block {
 		} else {
 			var bValue:String = Math.floor(value).toString();
 			var mValue:String = Math.floor(maxValue).toString();
-			if (value > 1000000) bValue = value.toPrecision(3);
-			if (maxValue > 1000000) mValue = maxValue.toPrecision(3);
+			//if (value > 1000000) bValue = value.toPrecision(3);
+			//if (maxValue > 1000000) mValue = maxValue.toPrecision(3);
+			bValue = shortHandNumber(value);
+			mValue = shortHandNumber(maxValue);
+			
 			valueText = '' + bValue + (showMax ? '/' + mValue : '');
 		}
+	}
+	public function shortHandNumber(num:Number):String {
+		if (z == Number.MAX_VALUE || num == -Number.MAX_VALUE) return "INF";
+		num = Math.round(num);
+		var b0:Boolean = num < 0;
+		if (b0) num = 0 - num;
+		var sNum:String = num.toString();
+		var l:String = "";
+		var p:int = 0;
+		if (num > 10*1000) {l = "k"; p += 3;}
+		if (num > 1*1000000) {l = "m"; p += 3;}
+		if (num > 1*1000000000) {l = "b"; p += 3;}
+		if (num > 1*1000000000000) {l = "t"; p += 3;}
+		if (num > 1*1000000000000000) {l = "q"; p += 3;}
+		if (l == "") return sNum;
+		var po:String = sNum.charAt(sNum.length - p);
+		return (b0 ? "-":"")+sNum.substr(0, sNum.length - p)+ ( Number(po) > 0 ? "." + po:"" )+l;
 	}
 	public function get rawValue():Number {
 		return _value;

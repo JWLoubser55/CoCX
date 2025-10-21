@@ -263,7 +263,7 @@ public class ItemConstants extends Utils {
 	public static const W_STAFFPART:String      = "StaffPart";
 	public static const W_THROWN:String         = "Thrown";
 	public static const W_TETSUBO:String        = "Tetsubo";
-	public static const W_MUSICINSTR:String     = "MusicalInstrument";
+	public static const W_MUSICINSTR:String     = "Musical Instrument";
 	public static const W_HTECHWEAPON:String    = "High Tech Weapon";
 	public static const W_LGWRATH:String        = "LGWrath";
 	public static const W_MGWRATH:String        = "MGWrath";
@@ -275,6 +275,9 @@ public class ItemConstants extends Utils {
 	public static const W_LIGHTNING_TYPE:String = "Lightning-type Weapon";
 	public static const W_DARKNESS_TYPE:String  = "Darkness-type Weapon";
 	public static const W_PLASMA_TYPE:String    = "Plasma-type Weapon";
+	//= "Black Ice-type Weapon";
+	public static const W_WOODEN_MEELE:String   = "Wooden Melee Weapon";
+	public static const W_MONKWEAPON:String   	= "Monk Weapon";
 	
 	public static const W_ENVENOM_POSSIBLE:String  = "Can be envenomed";
 	///////////////////

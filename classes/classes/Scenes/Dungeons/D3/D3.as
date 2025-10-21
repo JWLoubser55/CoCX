@@ -4,7 +4,6 @@ import classes.BaseContent;
 import classes.EventParser;
 import classes.GlobalFlags.kFLAGS;
 import classes.Items.Consumable;
-import classes.Items.Vehicles;
 import classes.Items.Weapon;
 import classes.Scenes.SceneLib;
 import classes.StatusEffects;
@@ -453,7 +452,7 @@ import classes.room;
 			
 			outputText("You are back in the southern end of the Magpie Hall.  Without the bustle of activity below it is a gapingly empty and quiet place, the only sound the murmur of activity from elsewhere. There is a vast amount of collected junk below but it would take, well, an army of basilisks to sort through it to find anything worthwhile. You could check out the massive pile of eggs, though.");
 			
-			if (eggsAvailable() >= 0 || flags[kFLAGS.D3_DEMONIC_SCYTHE] == 0 || flags[kFLAGS.D3_GOBLIN_MECH_PRIME] == 0) addButton(2, "Eggs", goToEggPile);
+			if (eggsAvailable() >= 0 || flags[kFLAGS.D3_DEMONIC_SCYTHE] == 0) addButton(2, "Eggs", goToEggPile);
 			
 			return false;
 		}
@@ -497,7 +496,6 @@ import classes.room;
 			if (!(flagNum & BROWN)) addButton(4, "Brown", takeEgg, BROWN);
 			if (!(flagNum & PURPLE)) addButton(5, "Purple", takeEgg, PURPLE);
 			if (flags[kFLAGS.D3_DEMONIC_SCYTHE] == 0) addButton(6, "Scythe", takeScythe);
-			if (flags[kFLAGS.D3_GOBLIN_MECH_PRIME] == 0) addButton(7, "Mech", takeMech);
 			
 			addButton(14, "Back", resumeFromFight);
 		}
@@ -534,23 +532,6 @@ import classes.room;
 			inventory.takeItem(item, playerMenu);
 		}
 		
-		private function takeMech():void
-		{
-			clearOutput();
-			outputText("A large goblin mech similar to the one you own but of a way better quality is parked amongst the pile of trash the basilisk’s gathered. ");
-			if (player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop)) {
-				var item:Vehicles;
-				item = vehicles.GOBMPRI;
-				outputText("You decide to haul it back home and call on the walkie-talkie system in your mech to tell your daughters to come and pick it up for you. It should be at camp the next time you're there and ready to install any and all upgrades you already own.");
-				flags[kFLAGS.D3_GOBLIN_MECH_PRIME] = 1;
-				inventory.takeItem(item, playerMenu);
-			}
-			else {
-				outputText("Sadly you don't have the resources or the personnel to haul back this new mech at the time.");
-				doNext(playerMenu);
-			}
-		}
-		
 		private function fallbackFromMagpieHallS():void
 		{
 			clearOutput();
@@ -574,7 +555,7 @@ import classes.room;
 				return true;
 			}
 			outputText("You are back in the northern end of the Magpie Hall. Without the bustle of activity below it is a gapingly empty and quiet place, the only sound the murmur of activity from elsewhere. There is a vast amount of collected junk below but it would take, well, an army of basilisks to sort through it to find anything worthwhile. You could check out the massive pile of eggs, though.");
-			if (eggsAvailable() >= 0 || flags[kFLAGS.D3_DEMONIC_SCYTHE] == 0 || flags[kFLAGS.D3_GOBLIN_MECH_PRIME] == 0) addButton(2, "Eggs", goToEggPile);
+			if (eggsAvailable() >= 0 || flags[kFLAGS.D3_DEMONIC_SCYTHE] == 0) addButton(2, "Eggs", goToEggPile);
 			return false;
 		}
 		

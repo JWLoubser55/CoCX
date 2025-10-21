@@ -154,7 +154,7 @@ import classes.Scenes.SceneLib;
 				this.bonusLust = 95;
 				this.level = 3;
 			}
-			if (flags[kFLAGS.NEISA_LVL_UP] >= 2 && flags[kFLAGS.NEISA_LVL_UP] < 9) {
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 2 && flags[kFLAGS.NEISA_LVL_UP] < 24) {
 				var mod:int = (flags[kFLAGS.NEISA_LVL_UP] - 1);
 				initStrTouSpeInte(50 + 45*mod, 80 + 52*mod, 50 + 45*mod, 44 + 38*mod);
 				initWisLibSensCor(44 + 38*mod, 52 + 50*mod, 40 + 35*mod, 0);

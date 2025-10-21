@@ -742,6 +742,26 @@ public class WingsTransformations extends MutationsHelper {
 			}
 	);
 
+	public const WingsYggdrasilOctupleHuge: Transformation = new SimpleTransformation("Huge Octuple Yggdrasil Wings",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.WingsYggdrasilHuge, doOutput);
+
+				desc += "You hear the song of the world tree, extending your massive wings wide. Closing your [eyes], you spread your arms and wings in anticipation. To your surprise, your shoulders grow thicker, a painful nub forming under your [skin]. You kneel, as you had before, and to your surprise, another pair of vines shoot from your back. "+
+						"Years of growth seem to happen in an instant, and when your body stops shaking, a fourth pair of leafy wings have grown from you, no smaller than your first three pairs. <b>You now have four large, majestic pairs of plant-like wings!</b>";
+				player.wings.type = Wings.YGGDRASIL_HUGE_4;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(WingsMem.getMemory(WingsMem.YGGDRASIL_HUGE_X8));
+			},
+			// is present
+			function (): Boolean {
+				return player.wings.type === Wings.YGGDRASIL_HUGE_4;
+			}
+	);
+
 	public const WingsYggdrasilSextupleHuge: Transformation = new SimpleTransformation("Huge Sextuple Yggdrasil Wings",
 			// apply effect
 			function (doOutput: Boolean): void {
@@ -832,7 +852,7 @@ public class WingsTransformations extends MutationsHelper {
 				if ((player.wings.type != Wings.NONE)) {
 					desc += "Your wings feel…warm, lethargic, almost. They begin to sag, ignoring your commands. They wither, turning to a dark, putrid brown before falling off your body. ";
 				}
-				desc += "your back hurts as you suddenly feel something burst out your shoulder blades, reaching back you feel 2 small silky things like wings.\n\n <b>You now have small Moth Wings.</b>";
+				desc += "your back hurts as you suddenly feel something burst out your shoulder blades, reaching back you feel 2 small silky things like wings. <b>You now have small Moth Wings.</b>";
 
 				player.wings.type = Wings.MOTH_SMALL;
 				Metamorph.unlockMetamorph(WingsMem.getMemory(WingsMem.MOTH_SMALL));

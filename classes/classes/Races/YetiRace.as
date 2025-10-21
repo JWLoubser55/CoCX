@@ -7,7 +7,7 @@ import classes.Race;
 
 public class YetiRace extends Race {
 	public static const YetiSkinColors:/*String*/Array = ["dark", "tan"];
-	public static const YetiEyeColors:/*String*/Array = ["siilver", "grey", "gray"];
+	public static const YetiEyeColors:/*String*/Array = ["silver", "grey", "gray"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",

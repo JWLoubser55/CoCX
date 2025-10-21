@@ -345,7 +345,7 @@ public class Konstantin extends NPCAwareContent
 					outputText("You show him the pieces of glowing-white, thick bark.\n\n");
 					outputText("\"<i>Funny thing.</i>\" Konstantin retorts. \"<i>I heard a feminine voice in my head asking me to craft a thing out of this. Voice said that she was Marae, and that she gave it as a reward to a brave warrior or something.</i>\"\n\n");
 					outputText("Really?\n\n");
-					outputText("\"<i>Yeah. Listen, I usually don’t buy the deities nonsense, but If you’d like, I could do as the voice asked and try to carve an armour out of this thing. It seems sturdy and flexible enough for most battlefields.</i>\"\n\n");
+					outputText("\"<i>Yeah. Listen, I usually don’t buy the deities nonsense, but If you’d like, I could do as the voice asked and try to carve an armor out of this thing. It seems sturdy and flexible enough for most battlefields.</i>\"\n\n");
 				}
 				if (player.hasItem(useables.TBAPLAT)) {
 					outputText("You show him the pieces of thick bark with tentacles attached.\n\n");
@@ -790,6 +790,9 @@ public class Konstantin extends NPCAwareContent
 			addButton(1, "Sword", KonstantinCraftingYggdrasilItems2, 2, null, null, weapons.WDBLADE.description);
 			addButton(2, "Bow", KonstantinCraftingYggdrasilItems2, 3, null, null, weaponsrange.WARDBOW.description);
 			addButton(3, "Staff", KonstantinCraftingYggdrasilItems2, 4, null, null, weapons.WDSTAFF.description);
+			//4 spear / dagger / claws(gauntlet) / massive sized sword / shield (nullify next non phys/psionic/ture dmg attack) / axe
+			//5
+			//6
 			addButton(14, "Back", KonstantinMainCampMenu);
 		}
 		private function KonstantinCraftingYggdrasilItems2(yggdrasilType:int):void {

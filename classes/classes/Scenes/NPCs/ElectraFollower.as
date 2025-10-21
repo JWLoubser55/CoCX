@@ -239,7 +239,7 @@ public function ElectraRecruitingNah():void {
 public function ElectraRecruitingAgain():void {
 	spriteSelect(SpriteDb.s_electra);
 	clearOutput();
-	outputText("You run into Electra again this time around. Shockingly, she ain't chasing after the locals for sex. Instead she walks straight up to you, looking somewhat troubled. While she isn't sparking, she fidgets. You know why she's approaching you. \n\n");
+	outputText("You run into Electra again this time around. Shockingly, she ain't chasing after the locals for sex. Instead she walks straight up to you, looking somewhat troubled. While she isn't sparking, she fidgets. You know why she's approaching you.\n\n");
 	outputText("\"<i>[name] please, I hope you would reconsider! It’s very clear to me that we are meant to be together as a couple! Why else would you keep helping me up like that, my heart beat with yours. I really want it so badly for you to say that you will take me with you this time around.</i>\"\n\n");
 	outputText("Guess you are at that crossroad again, what is your choice?\n\n");
 	menu();
@@ -366,7 +366,7 @@ public function ElectraSexPlayer():void {
 	outputText("You on the other hand fare poorly. She just zapped you with several orgasms worth of accumulated desire and your body is wracked by pleasure as the static makes you cum over and over again in rapid succession. The ground under you swiftly turns into a pool made out of your own fluid as you see white from your overcharged genitals");
 	if (player.hasBreasts()) outputText(" and milk gushing nipples");
 	outputText(", the electricity sends all your pleasure nerves into overdrive as your sensitivity skyrockets. You barely see her taking her leave as you faint from the pleasure overdose.\n\n");
-	outputText("You wake up in a pool of your own fluids. After such mind wracking pleasure, your entire body feels sensitive and aches to be touched from the slowly receding voltage. You wince, knowing that indulging would be a bad idea. \n\n");
+	outputText("You wake up in a pool of your own fluids. After such mind wracking pleasure, your entire body feels sensitive and aches to be touched from the slowly receding voltage. You wince, knowing that indulging would be a bad idea.\n\n");
 	if (player.hasStatusEffect(StatusEffects.RaijuLightningStatus))
 		player.removeStatusEffect(StatusEffects.RaijuLightningStatus);
 	player.createStatusEffect(StatusEffects.RaijuLightningStatus,25,0,0,0);
@@ -583,42 +583,42 @@ public function ElectraSeXNo():void {
 }
 
 private function ElectraPregChance():void {
-		//Get out if already pregged.
-		if (pregnancy.isPregnant) return;
-		var preg:Boolean = false;
-		//1% chance per 100mLs of cum, max 15%
-		var score:Number = Math.min(player.cumQ()/100,5);
-		score += player.virilityQ() * 200;
+	//Get out if already pregged.
+	if (pregnancy.isPregnant) return;
+	var preg:Boolean = false;
+	//1% chance per 100mLs of cum, max 15%
+	var score:Number = Math.min(player.cumQ()/100,5);
+	score += player.virilityQ() * 200;
 	outputText("Electra checking virility score " + score);
-		if((player.cumQ() > (score >= rand(100)) || player.hasPerk(PerkLib.PilgrimsBounty))) {
-			preg = true;
-		}
-		if (preg) {
-			pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_ELECTRA);
-			sceneHunter.print("\n<b>Electra is pregnant!</b>");
-		}
+	if((player.cumQ() > (score >= rand(100)) || player.hasPerk(PerkLib.PilgrimsBounty))) {
+		preg = true;
 	}
+	if (preg) {
+		pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_ELECTRA);
+		sceneHunter.print("\n<b>Electra is pregnant!</b>");
+	}
+}
 
 //----------Electra Preg Stuff---------------
 
 public function ElectraPregAnnouncement():void {
 	spriteSelect(SpriteDb.s_electra);
-       if (ElectraTotalKidsNum == 0) {
-		outputText("As you return to camp, you notice Electra sitting by your [cabin]. As she notices you, she stands. You notice, to your discomfort, she has an imp tied up at her feet. Upon further inspection, her hands are sparking, and that the imp’s cock is ramrod straight, despite the small pool of cum around him. \n\n");
-		outputText("She drags the imp behind her, and as she gets closer, you notice that he’s tied up, not with rope, but with a copper cable. She sighs, annoyed, and the imp flails as blue electricity arcs down her wire, through him.  \n\n");
-		outputText("You ask about her…toy, and Electra shakes her head, looking at you as if it’s your fault. \"<i>Well, for the next little while, I’m going to be producing more electricity.</i>\" She gives you a little shake of her tail, dropping the imp. \"<i>I’m…Going to be making electricity for two.</i>\"  \n\n");
-		outputText("She lets the silence hang for a few seconds. \"<i>...Yeah. I’m…Pregnant.</i>\" She looks down and away, to your shock, she’s actually blushing. \"<i>Normally we Raiju don’t get pregnant. Not if we don’t want it.</i>\" Her tail wraps around herself, and she hugs it, unusually bashful. \"<i>It’s not something we…consciously control, but our bodies just seem to…know when it means more to us than release.</i>\"  \n\n");
-		outputText("Electra grabs her coiled imp, releasing another bolt of electricity, before opening her arms wide. \"<i>...Look, I won’t shock you, but…Could you come here for a bit?</i>\" She’s not showing her pregnancy yet, but her feet are tilted inwards, and her fluffy tail wags behind her.  \n\n");
-		outputText("You see no reason to deny her, and as you step into her arms, Electra buries her head into your [chest]. True to her word, you don’t even feel the usual sparks or hair-raising charge that usually comes with contact with your Raiju lover. Her hug is warm, the fur on her neck tickling you. After a minute or so, Electra sighs happily, releasing you.  \n\n");
-        outputText("\"<i>It’s nice…Having someone who’s more than just a plug.</i>\" She looks down at her belly, a smile on her face. \"<i>...This won’t change my feelings for you.</i>\"  \n\n");
-	   } else {
+    if (ElectraTotalKidsNum == 0) {
+		outputText("As you return to camp, you notice Electra sitting by your [cabin]. As she notices you, she stands. You notice, to your discomfort, she has an imp tied up at her feet. Upon further inspection, her hands are sparking, and that the imp’s cock is ramrod straight, despite the small pool of cum around him.\n\n");
+		outputText("She drags the imp behind her, and as she gets closer, you notice that he’s tied up, not with rope, but with a copper cable. She sighs, annoyed, and the imp flails as blue electricity arcs down her wire, through him.\n\n");
+		outputText("You ask about her…toy, and Electra shakes her head, looking at you as if it’s your fault. \"<i>Well, for the next little while, I’m going to be producing more electricity.</i>\" She gives you a little shake of her tail, dropping the imp. \"<i>I’m…Going to be making electricity for two.</i>\"\n\n");
+		outputText("She lets the silence hang for a few seconds. \"<i>...Yeah. I’m…Pregnant.</i>\" She looks down and away, to your shock, she’s actually blushing. \"<i>Normally we Raiju don’t get pregnant. Not if we don’t want it.</i>\" Her tail wraps around herself, and she hugs it, unusually bashful. \"<i>It’s not something we…consciously control, but our bodies just seem to…know when it means more to us than release.</i>\"\n\n");
+		outputText("Electra grabs her coiled imp, releasing another bolt of electricity, before opening her arms wide. \"<i>...Look, I won’t shock you, but…Could you come here for a bit?</i>\" She’s not showing her pregnancy yet, but her feet are tilted inwards, and her fluffy tail wags behind her.\n\n");
+		outputText("You see no reason to deny her, and as you step into her arms, Electra buries her head into your [chest]. True to her word, you don’t even feel the usual sparks or hair-raising charge that usually comes with contact with your Raiju lover. Her hug is warm, the fur on her neck tickling you. After a minute or so, Electra sighs happily, releasing you.\n\n");
+        outputText("\"<i>It’s nice…Having someone who’s more than just a plug.</i>\" She looks down at her belly, a smile on her face. \"<i>...This won’t change my feelings for you.</i>\"\n\n");
+	} else {
         if (ElectraTotalKidsNum != 0) {
-		outputText("You find Electra waiting for you at the entrance to camp. She sees you, sparks flying from her claws as you approach.  \n\n");
-		outputText("\"<i>Good morning</i>\" She says meekly, rubbing her belly. You know what she’s about to say. \"<i>We’re going to have more children. I…Just wanted you to know that.</i>\" You give your Raiju lover a reassuring smile and a quick hug, and she wraps her arms around you, claws digging slightly into your [back].  \n\n");
-        outputText("\"<i>Feel free to join me in the charging hut.</i>\" She says with a wink, before skipping back to her part of camp, whistling a happy tune. \n\n");
-		outputText(" \n\n");
-	   }
-doNext(playerMenu);
+			outputText("You find Electra waiting for you at the entrance to camp. She sees you, sparks flying from her claws as you approach.\n\n");
+			outputText("\"<i>Good morning</i>\" She says meekly, rubbing her belly. You know what she’s about to say. \"<i>We’re going to have more children. I…Just wanted you to know that.</i>\" You give your Raiju lover a reassuring smile and a quick hug, and she wraps her arms around you, claws digging slightly into your back.\n\n");
+			outputText("\"<i>Feel free to join me in the charging hut.</i>\" She says with a wink, before skipping back to her part of camp, whistling a happy tune.\n\n");
+			outputText("\n\n");
+		}
+		doNext(playerMenu);
 	}
 }
 
@@ -656,46 +656,46 @@ public function ElectraPregProgression2():void {
 	spriteSelect(SpriteDb.s_electra);
 		if (ElectraTotalKidsNum == 0) {
         //first time pregnant Electra
-		outputText("You see Electra, her stomach noticeably bulging, talking to Ralthazul. Behind her, you can see a steel pole, firmly planted in the ground, with several small ‘branches’ off of them. A small mechanical device is at the base of each metal ‘branch’, and you notice Electra holding what appears to be a clear dildo with a copper wire through it…A cock you recognize.  \n\n"); 
-		outputText("\"<i>-The…Model works</i>\", Electra says, a blush on her face. \"<i>And the wire seems to…erm…’plug’ properly.</i>\"  \n\n");
-		outputText("\"<i>That’s wonderful news.</i>\" Ralthazul seems pleased. \"<i>So, the device will run off your own power, and provide you with a way to release your charge without the need to trouble anyone.</i>\" He grins with what you can only describe as a ‘mad scientist’ grin. \"<i>But, there is one thing you should know.</i>\"  \n\n");
-		outputText("\"<i>What is that?</i>\" Electra seems confused, and Ralthazul rubs his hands together.  \n\n");
-		outputText("\"<i>You’ll also be helping us around the camp.</i>\" His smile grows into something more genuine. \"<i>Using the Plasma samples you’ve kindly provided, I was able to figure out how your race stores electric energy so efficiently.</i>\" He flourishes a small, metal box. \"<i>This is my first attempt, a device that uses a similar process as your own biology to store electricity!</i>\"  \n\n");
-		outputText("Electra looks even more confused at that, and he smiles, shaking his head. \"<i>No need to worry, my dear. Suffice to say that with a bit more work, both you and your children will be able to rest easy, knowing that this encampment is safer with your help.</i>\"  \n\n");
-        outputText("Electra looks at the device, then around at the camp. \"<i>...Before you celebrate…Perhaps we should make…Walls? Around the thing?</i>\" She sees you, and blushes slightly. \"<i>I don’t exactly want to give everyone here a regular show…Especially the kids.</i>\"  \n\n");
-		outputText("\"<i>Ah, yes. I suppose that would be a good idea.</i>\" Ralthazul says sheepishly.  \n\n");
-		outputText("You approach, and Electra winces slightly, rubbing her belly. \"<i>Oh, hey.</i>\" Ralthazul nods respectfully, heading back to his part of camp. \"<i>I was just…Working with the old rat.</i>\" You see sparks fly across the surface of her stomach, and Electra winces slightly, flinching.  \n\n");
-        outputText("You step in, gently rubbing her stomach, and the sparks fade. Electra takes your hand, smiling, before gently pushing you away. \"<i>Thanks for calming them down, but I’ve got some things I need to do before they get here.</i>\"  \n\n");
-		outputText("You nod, putting a hand on her shoulder, and Electra nuzzles your arm affectionately. You decide to let Electra and Ralthazul have time to work out their odd...mechanical problems, heading back to camp. \n\n");
+		outputText("You see Electra, her stomach noticeably bulging, talking to Ralthazul. Behind her, you can see a steel pole, firmly planted in the ground, with several small ‘branches’ off of them. A small mechanical device is at the base of each metal ‘branch’, and you notice Electra holding what appears to be a clear dildo with a copper wire through it…A cock you recognize.\n\n"); 
+		outputText("\"<i>-The…Model works</i>\", Electra says, a blush on her face. \"<i>And the wire seems to…erm…’plug’ properly.</i>\"\n\n");
+		outputText("\"<i>That’s wonderful news.</i>\" Ralthazul seems pleased. \"<i>So, the device will run off your own power, and provide you with a way to release your charge without the need to trouble anyone.</i>\" He grins with what you can only describe as a ‘mad scientist’ grin. \"<i>But, there is one thing you should know.</i>\"\n\n");
+		outputText("\"<i>What is that?</i>\" Electra seems confused, and Ralthazul rubs his hands together.\n\n");
+		outputText("\"<i>You’ll also be helping us around the camp.</i>\" His smile grows into something more genuine. \"<i>Using the Plasma samples you’ve kindly provided, I was able to figure out how your race stores electric energy so efficiently.</i>\" He flourishes a small, metal box. \"<i>This is my first attempt, a device that uses a similar process as your own biology to store electricity!</i>\"\n\n");
+		outputText("Electra looks even more confused at that, and he smiles, shaking his head. \"<i>No need to worry, my dear. Suffice to say that with a bit more work, both you and your children will be able to rest easy, knowing that this encampment is safer with your help.</i>\"\n\n");
+        outputText("Electra looks at the device, then around at the camp. \"<i>...Before you celebrate…Perhaps we should make…Walls? Around the thing?</i>\" She sees you, and blushes slightly. \"<i>I don’t exactly want to give everyone here a regular show…Especially the kids.</i>\"\n\n");
+		outputText("\"<i>Ah, yes. I suppose that would be a good idea.</i>\" Ralthazul says sheepishly.\n\n");
+		outputText("You approach, and Electra winces slightly, rubbing her belly. \"<i>Oh, hey.</i>\" Ralthazul nods respectfully, heading back to his part of camp. \"<i>I was just…Working with the old rat.</i>\" You see sparks fly across the surface of her stomach, and Electra winces slightly, flinching.\n\n");
+        outputText("You step in, gently rubbing her stomach, and the sparks fade. Electra takes your hand, smiling, before gently pushing you away. \"<i>Thanks for calming them down, but I’ve got some things I need to do before they get here.</i>\"\n\n");
+		outputText("You nod, putting a hand on her shoulder, and Electra nuzzles your arm affectionately. You decide to let Electra and Ralthazul have time to work out their odd...mechanical problems, heading back to camp.\n\n");
 		} else if (ElectraTotalKidsNum != 0) {
 		//Subsequent times
-        outputText("You see Electra as she exits the \"<i>charging booth</i>\", a tired smile on her face and one hand on her clearly pregnant stomach. As you get closer, her stomach moves, and she winces as electric sparks play across her claws.  \n\n");
-        outputText("\"<i>Oh, I’m okay.</i>\" She says reassuringly. \"<i>They’re just producing more electricity now that they’re more developed.</i>\" Electra opens her arms, giving you a hug that makes your [hair] stand up on end. \"<i>Hmm…</i>\" She gently grabs the back of your head, sandwiching your head between her magnificent breasts.  \n\n");
-		outputText("You hug Electra back for a few moments, letting her rub her cheek against yours, before asserting that you need to leave. Electra nods, letting go, and you head back to your part of camp. \n\n");
-		outputText(" \n\n");
+        outputText("You see Electra as she exits the \"<i>charging booth</i>\", a tired smile on her face and one hand on her clearly pregnant stomach. As you get closer, her stomach moves, and she winces as electric sparks play across her claws.\n\n");
+        outputText("\"<i>Oh, I’m okay.</i>\" She says reassuringly. \"<i>They’re just producing more electricity now that they’re more developed.</i>\" Electra opens her arms, giving you a hug that makes your [hair] stand up on end. \"<i>Hmm…</i>\" She gently grabs the back of your head, sandwiching your head between her magnificent breasts.\n\n");
+		outputText("You hug Electra back for a few moments, letting her rub her cheek against yours, before asserting that you need to leave. Electra nods, letting go, and you head back to your part of camp.\n\n");
+		outputText("\n\n");
 		}
 doNext(playerMenu);
 }
 
 public function ElectraPregProgression3():void {
 	spriteSelect(SpriteDb.s_electra);
-		outputText("Electra stands in front of (first time) a small wooden building, (otherwise) the charging hut, (split end) looking up at its roof and lightning rod with more than a little nervousness. Seeing her, you walk over, wrapping an arm around her waist.  \n\n"); 
-		outputText("\"<i>Oh, hey.</i>\" Electra says softly. Her belly is swollen, far more than before, and she leans on you. There’s small bags under her eyes, and you notice that she’s walking a little funny. You ask if she’s alright, and she nods, resting her chin on your shoulder.  \n\n");
-		outputText("\"<i>I’ll be fine. Your kids are burning up a ton of food though</i>\", she complains. \"<i>And once they produce the electricity, I need to burn it off again.</i>\" You notice that other than her belly, Electra’s looking a bit more thin than usual. You comment that, and she nods. \"<i>Raiju tend to lose weight during pregnancy. I’ll put it back on in a few days.</i>\" She smiles a little, seeming happy at your concern. \n\n");
+		outputText("Electra stands in front of (first time) a small wooden building, (otherwise) the charging hut, (split end) looking up at its roof and lightning rod with more than a little nervousness. Seeing her, you walk over, wrapping an arm around her waist.\n\n"); 
+		outputText("\"<i>Oh, hey.</i>\" Electra says softly. Her belly is swollen, far more than before, and she leans on you. There’s small bags under her eyes, and you notice that she’s walking a little funny. You ask if she’s alright, and she nods, resting her chin on your shoulder.\n\n");
+		outputText("\"<i>I’ll be fine. Your kids are burning up a ton of food though</i>\", she complains. \"<i>And once they produce the electricity, I need to burn it off again.</i>\" You notice that other than her belly, Electra’s looking a bit more thin than usual. You comment that, and she nods. \"<i>Raiju tend to lose weight during pregnancy. I’ll put it back on in a few days.</i>\" She smiles a little, seeming happy at your concern.\n\n");
 doNext(playerMenu);
 }
 public function ElectraDeliversRaijuBabies():void {
 	spriteSelect(SpriteDb.s_electra);
-		outputText("As you walk towards camp, you notice that the otherwise clear sky is…black over your section of camp. Dark clouds rumble every so often, and you see a bolt of lightning strike the charging hut. Far fainter, you hear a woman’s cry…It’s Electra! \n\n"); 
-		outputText("You rush into camp, heading straight for the charging hut. You hear Electra inside, yelping in pain, and you shoulder open the door. Inside, Electra’s panting, eyes wide as she dangles from one of the charging outlets, her ‘plug’ up her ass. Her water’s already broken, and she hisses in pain with each breath.  \n\n");
-		outputText("Thankfully, she disabled the machine, but you have more pressing concerns. She looks over and sees you, but as she does, more electricity shoots out of her, up the machine and into the lightning rod. You wait, counting the seconds, and as soon as her lightning fades, you grab Electra’s shoulders, pulling her up and off the ‘plug’.  \n\n");
-		outputText("You gently lay her down, then rush over to a small cabinet on the far side of the hut. You grab a towel, a rubber mat, and some water, getting Electra as comfortable as you can. Between bursts of static, you remove her kimono, get the towel under her head, and spread her legs, making sure that Electra’s comfortable. \n\n");
-		outputText("\"<i>[Name]...The baby’s…Ngh…Coming.</i>\" You gently tell Electra that you know, you’re here, and that she should just focus on pushing. You grab another towel, and as you position yourself in front of Electra’s love hole, you notice the telltale sign of Electra’s arousal. Pink lightning arcs from her clit, and you narrowly avoid getting hit.  \n\n");
-		outputText("\"<i>S-sorry…</i>\" Electra says weakly.  \n\n");
-        outputText("It takes an hour or two of gentle coaxing, avoiding or enduring lightning strikes, and lots of water, but you eventually see a spiky-haired little head poke out from between Electra’s lips. You tell Electra to push, that she’s almost done…And as you hold out the towel, waiting for your newborn, you have to close your eyes, as a bright light emerges, blinding you. You feel a numb, burning sensation, and feel a sudden *thump* of impact as a small, soft projectile hits you in the chest… \n\n");
-		outputText("You open your eyes to see green, slitted eyes staring up at you. Purple fur covers the little one’s body from head to toe, and you quickly wrap them in the towel, wiping some embryonic fluid away from their mouth.  \n\n");
-        outputText("Looking back at Electra, you see her stomach flattening back down, as the last of the birthing fluid gushes out. She weakly pulls her legs together, tail limp from exhaustion. Her E-cup breasts are leaking milk, and the little one starts to cry. Gently, you help Electra into a sitting position, leaning her against the wall, and pass your little one over to her.  \n\n");
-		outputText("Electra coos, taking your baby into her arms, letting them suckle. Soon, both mother and baby are asleep, snoring gently. You leave a bucket of water and a cup by her side, kissing Electra’s hand before you quietly leave the charging hut. \n\n");
+		outputText("As you walk towards camp, you notice that the otherwise clear sky is…black over your section of camp. Dark clouds rumble every so often, and you see a bolt of lightning strike the charging hut. Far fainter, you hear a woman’s cry…It’s Electra!\n\n"); 
+		outputText("You rush into camp, heading straight for the charging hut. You hear Electra inside, yelping in pain, and you shoulder open the door. Inside, Electra’s panting, eyes wide as she dangles from one of the charging outlets, her ‘plug’ up her ass. Her water’s already broken, and she hisses in pain with each breath.\n\n");
+		outputText("Thankfully, she disabled the machine, but you have more pressing concerns. She looks over and sees you, but as she does, more electricity shoots out of her, up the machine and into the lightning rod. You wait, counting the seconds, and as soon as her lightning fades, you grab Electra’s shoulders, pulling her up and off the ‘plug’.\n\n");
+		outputText("You gently lay her down, then rush over to a small cabinet on the far side of the hut. You grab a towel, a rubber mat, and some water, getting Electra as comfortable as you can. Between bursts of static, you remove her kimono, get the towel under her head, and spread her legs, making sure that Electra’s comfortable.\n\n");
+		outputText("\"<i>[Name]...The baby’s…Ngh…Coming.</i>\" You gently tell Electra that you know, you’re here, and that she should just focus on pushing. You grab another towel, and as you position yourself in front of Electra’s love hole, you notice the telltale sign of Electra’s arousal. Pink lightning arcs from her clit, and you narrowly avoid getting hit.\n\n");
+		outputText("\"<i>S-sorry…</i>\" Electra says weakly.\n\n");
+        outputText("It takes an hour or two of gentle coaxing, avoiding or enduring lightning strikes, and lots of water, but you eventually see a spiky-haired little head poke out from between Electra’s lips. You tell Electra to push, that she’s almost done…And as you hold out the towel, waiting for your newborn, you have to close your eyes, as a bright light emerges, blinding you. You feel a numb, burning sensation, and feel a sudden *thump* of impact as a small, soft projectile hits you in the chest…\n\n");
+		outputText("You open your eyes to see green, slitted eyes staring up at you. Purple fur covers the little one’s body from head to toe, and you quickly wrap them in the towel, wiping some embryonic fluid away from their mouth.\n\n");
+        outputText("Looking back at Electra, you see her stomach flattening back down, as the last of the birthing fluid gushes out. She weakly pulls her legs together, tail limp from exhaustion. Her E-cup breasts are leaking milk, and the little one starts to cry. Gently, you help Electra into a sitting position, leaning her against the wall, and pass your little one over to her.\n\n");
+		outputText("Electra coos, taking your baby into her arms, letting them suckle. Soon, both mother and baby are asleep, snoring gently. You leave a bucket of water and a cup by her side, kissing Electra’s hand before you quietly leave the charging hut.\n\n");
 
 	switch (rand(3)) {
   case 0:
@@ -704,12 +704,12 @@ ElectraTotalKidsNum += 1;
 ElectraSonsNum += 1;
     break;
   case 1:
-outputText("Electra calls out to you, \"<i>[Name]...It's a boy.</i>\" You smile to yourself, going back for a moment, kissing Electra on the forehead. Your son cries out, eyes wide, and stares at you, his spiky hair already filled with static. You ruffle his hair, getting a coo from both mother and baby. You spend a few minutes with Electra before excusing yourself. \n\n");
+outputText("Electra calls out to you, \"<i>[Name]...It's a boy.</i>\" You smile to yourself, going back for a moment, kissing Electra on the forehead. Your son cries out, eyes wide, and stares at you, his spiky hair already filled with static. You ruffle his hair, getting a coo from both mother and baby. You spend a few minutes with Electra before excusing yourself.\n\n");
 ElectraTotalKidsNum += 1;
 ElectraDaughtersNum += 1;
     break;
   case 2:
-  outputText("Electra calls out to you, \"<i>[Name]...It's a Herm.</i>\" You head back to Electra, who seems a little nervous. \"<i>They'll have an easier time plugging, it's just...A little nerve-wracking.</i>\" You reassure Electra that it's alright. Hell, herms might be more common than men at this point. This doesn't really reassure her, but she reaches up, weakly taking your hand. You bring her hand to your cheek, closing your eyes and basking in her presence, before leaving her to nurse your child. \n\n");
+  outputText("Electra calls out to you, \"<i>[Name]...It's a Herm.</i>\" You head back to Electra, who seems a little nervous. \"<i>They'll have an easier time plugging, it's just...A little nerve-wracking.</i>\" You reassure Electra that it's alright. Hell, herms might be more common than men at this point. This doesn't really reassure her, but she reaches up, weakly taking your hand. You bring her hand to your cheek, closing your eyes and basking in her presence, before leaving her to nurse your child.\n\n");
    ElectraHermKidsNum +=1;
    ElectraTotalKidsNum += 1;
 }
@@ -718,65 +718,65 @@ doNext(playerMenu);
 
 private function ElectraCleanBJ():void {
 		clearOutput();
-		outputText("You nod, and Electra takes the bowl, gently pouring some of the warm water on your shaft, before bringing the cloth up, wiping some of the plaster off. Bit by bit, she repeats this, gently removing the grime from your glorious tool. Unbeknownst to your Raiju lover, however, you intend to use more than her hands to clean you.  \n\n"); 
-		outputText("Electra frequently rubs her head against cleaned parts of you, nuzzling your length, and when she’s worked her way up to your head, you make your move. As she kisses your tip, you take her head in both hands, pushing an inch or so of your tool past Electra’s lips.  \n\n");
-		outputText("She looks up at you, giving you a mischievous wink, and tightens her lips around your shaft. You push yourself in, making Electra gag slightly, but she’s still looking up at you, and gives you a thumbs-up. You need no further encouragement, and thrust your [hips] forward, pulling Electra’s head in as you sink yourself balls deep in her throat.  \n\n");
-		outputText("You feel Electra’s throat tighten, and you pull back, tip at her lips, letting her breathe, before slamming yourself back in. Electra’s eyes well up, but as she gags, you can see her eyes, still looking back up at you. She’s clearly enjoying this. \n\n");
-		outputText("You begin at a moderate pace, your hands gripping your Raiju lover’s hair as you throat-fuck her. Electra’s silent at first, except for the occasional wet sound of breathing when your cock leaves her airway, but as you continue, she begins moaning, sending shivers of pleasure up your shaft. Electra picks up the pace, pulling at your hands, throating your [cock] as fast as she can. \n\n");
-		outputText("You get the message. Holding her head in place, you slam yourself to the base as fast as you can, ignoring Electra’s gagging.  \n\n");
-        outputText("\"<i>MmM! *slurp* \"<i>MMMMM!</i>\" Electra nicks you with her teeth, sending a literal bolt of pleasure up your shaft. Despite your best efforts, your [cock] twitches, weakening your [legs] and your grip on Electra’s head. Your Raiju lover feels this, and tightens her cock-swollen throat even more, looking you in the eyes as her lips touch your [leg].  \n\n"); 
-		outputText("Despite your best efforts, you groan, aching cock releasing violently.  \n\n");
+		outputText("You nod, and Electra takes the bowl, gently pouring some of the warm water on your shaft, before bringing the cloth up, wiping some of the plaster off. Bit by bit, she repeats this, gently removing the grime from your glorious tool. Unbeknownst to your Raiju lover, however, you intend to use more than her hands to clean you.\n\n"); 
+		outputText("Electra frequently rubs her head against cleaned parts of you, nuzzling your length, and when she’s worked her way up to your head, you make your move. As she kisses your tip, you take her head in both hands, pushing an inch or so of your tool past Electra’s lips.\n\n");
+		outputText("She looks up at you, giving you a mischievous wink, and tightens her lips around your shaft. You push yourself in, making Electra gag slightly, but she’s still looking up at you, and gives you a thumbs-up. You need no further encouragement, and thrust your [hips] forward, pulling Electra’s head in as you sink yourself balls deep in her throat.\n\n");
+		outputText("You feel Electra’s throat tighten, and you pull back, tip at her lips, letting her breathe, before slamming yourself back in. Electra’s eyes well up, but as she gags, you can see her eyes, still looking back up at you. She’s clearly enjoying this.\n\n");
+		outputText("You begin at a moderate pace, your hands gripping your Raiju lover’s hair as you throat-fuck her. Electra’s silent at first, except for the occasional wet sound of breathing when your cock leaves her airway, but as you continue, she begins moaning, sending shivers of pleasure up your shaft. Electra picks up the pace, pulling at your hands, throating your [cock] as fast as she can.\n\n");
+		outputText("You get the message. Holding her head in place, you slam yourself to the base as fast as you can, ignoring Electra’s gagging.\n\n");
+        outputText("\"<i>MmM!</i>\" *slurp* \"<i>MMMMM!</i>\" Electra nicks you with her teeth, sending a literal bolt of pleasure up your shaft. Despite your best efforts, your [cock] twitches, weakening your [legs] and your grip on Electra’s head. Your Raiju lover feels this, and tightens her cock-swollen throat even more, looking you in the eyes as her lips touch your [leg].\n\n"); 
+		outputText("Despite your best efforts, you groan, aching cock releasing violently.\n\n");
 		if(player.cumQ() <= 100) {
-        outputText("Electra greedily gulps down your cum, slowly pulling back until only your tip remains in her mouth. She messily begins jerking you off as your orgasm slows, claws almost painful against your tender shaft. Your orgasm stops, and you feel a draining feeling as Electra keeps her lips on your tip, sucking the last drops from your urethra.  \n\n");
-		outputText("She opens her mouth as you look down, lightheaded, and you notice a bit of your cum still on her tongue. Electra gives you a languid smile, then swallows.  \n\n");
-		outputText("\"<i>Now THAT…Was satisfying.</i>\" Electra says, equal parts tired and content. \"<i>Good to the last drop.</i>\" She looks down at herself, then slaps you playfully on the ass. \"<i>Let’s wash up, okay?</i>\" \n\n");
+        outputText("Electra greedily gulps down your cum, slowly pulling back until only your tip remains in her mouth. She messily begins jerking you off as your orgasm slows, claws almost painful against your tender shaft. Your orgasm stops, and you feel a draining feeling as Electra keeps her lips on your tip, sucking the last drops from your urethra.\n\n");
+		outputText("She opens her mouth as you look down, lightheaded, and you notice a bit of your cum still on her tongue. Electra gives you a languid smile, then swallows.\n\n");
+		outputText("\"<i>Now THAT…Was satisfying.</i>\" Electra says, equal parts tired and content. \"<i>Good to the last drop.</i>\" She looks down at herself, then slaps you playfully on the ass. \"<i>Let’s wash up, okay?</i>\"\n\n");
 		} else if(player.cumQ() <= 400) {
         //Medium Volume
-		outputText("Electra greedily gulps down your cum, slowly pulling back until only your tip remains in her mouth. As your [cock] twitches, you notice her throat working, as she jerks you off with both hands, working your tool like a spigot. You notice her eyes starting to roll back, and she gags a little, but the Raiju manages to swallow it all. Electra looks up at you with glazed eyes, no small amount of your spooge still in her mouth, a bit of it trailing from her tongue as it lolls from her mouth. She pants for a few breaths, before bringing her tongue back in, and swallowing what was left. \n\n");
-        outputText("\"<i>Mmm…</i>\" Electra moans, kissing your shaft. \"<i>No wonder you managed to knock me up.</i>\"  \n\n"); 
-		outputText("You decide to help Electra to her feet. \"<i>...We’re even messier now.</i>\" Electra says, eyes still half-lidded. \"<i>Let’s go down to the river and clean up.</i>\"  \n\n"); 
+		outputText("Electra greedily gulps down your cum, slowly pulling back until only your tip remains in her mouth. As your [cock] twitches, you notice her throat working, as she jerks you off with both hands, working your tool like a spigot. You notice her eyes starting to roll back, and she gags a little, but the Raiju manages to swallow it all. Electra looks up at you with glazed eyes, no small amount of your spooge still in her mouth, a bit of it trailing from her tongue as it lolls from her mouth. She pants for a few breaths, before bringing her tongue back in, and swallowing what was left.\n\n");
+        outputText("\"<i>Mmm…</i>\" Electra moans, kissing your shaft. \"<i>No wonder you managed to knock me up.</i>\"\n\n"); 
+		outputText("You decide to help Electra to her feet. \"<i>...We’re even messier now.</i>\" Electra says, eyes still half-lidded. \"<i>Let’s go down to the river and clean up.</i>\"\n\n"); 
 		} else if (player.cumQ() >= 400) {
         //high volume
-		outputText("Electra buries her head into you, her throat bulging as you cum. She makes a wet gurgling sound after a few seconds, pulling you out of her until only your tip remains in her mouth. Despite her clear lack of air, Electra keeps swallowing, stomach beginning to swell with your seed. She brings her hands to your shaft, keeping your orgasm going, but as her cheeks begin turning white, her eyes rolling back into her head, Electra finally gives up, gasping for air as your still twitching member fires sticky strands into her face. She’s still jerking you off, but five or so salvos in, you feel yourself start to soften, your cum drooling down her face and onto her generous tits.  \n\n");
-		outputText("Electra, now looking the part of an expectant mother, falls forward at your feet, on her hands and knees, still gasping for air.  \n\n");
-		outputText("\"<i>H-holy shit.</i>\" She sighs, running her cum-soaked hands through her hair. \"<i>Th-that was amazing.</i>\" You decide to let yourself join her on the ground, feeling quite a bit dizzy after losing that much fluid. \n\n");
-		outputText("\"<i>Oh, yeah…</i>\" Electra notices your dizziness, and helps you to your feet. \"<i>Let’s get you washed off first, okay?</i>\" \n\n");
+		outputText("Electra buries her head into you, her throat bulging as you cum. She makes a wet gurgling sound after a few seconds, pulling you out of her until only your tip remains in her mouth. Despite her clear lack of air, Electra keeps swallowing, stomach beginning to swell with your seed. She brings her hands to your shaft, keeping your orgasm going, but as her cheeks begin turning white, her eyes rolling back into her head, Electra finally gives up, gasping for air as your still twitching member fires sticky strands into her face. She’s still jerking you off, but five or so salvos in, you feel yourself start to soften, your cum drooling down her face and onto her generous tits.\n\n");
+		outputText("Electra, now looking the part of an expectant mother, falls forward at your feet, on her hands and knees, still gasping for air.\n\n");
+		outputText("\"<i>H-holy shit.</i>\" She sighs, running her cum-soaked hands through her hair. \"<i>Th-that was amazing.</i>\" You decide to let yourself join her on the ground, feeling quite a bit dizzy after losing that much fluid.\n\n");
+		outputText("\"<i>Oh, yeah…</i>\" Electra notices your dizziness, and helps you to your feet. \"<i>Let’s get you washed off first, okay?</i>\"\n\n");
 		} else if(player.cumQ() >= 700) {
         //VERY high volume
-        outputText("Electra’s eyes widen as she feels your orgasm coming, your cum rocketing down your shaft and into her stomach. She latches on, wrapping her arms around your [legs] as her throat bulges. You feel your [legs] weaken as load after hot load rushes down her throat, and her stomach begins to noticeably grow. Electra gags, and you notice that she’s got droplets of your jizz coming out her nose. Electricity arcs off your Raiju lover, and you feel yourself tense up, barely able to move as your balls churn, dumping more and more through your [cock] and into Electra’s stomach.  \n\n");
-		outputText("Her moans begin to get higher, more intense, and you notice that tears are falling down Electra’s face. Her eyes are wide open, and her pale face is losing its colour. You realise that she’s trying to pull herself off you. Stiffly, through the electricity coursing through you, you manage to take her head in both hands, helping Electra pull your shaft out of her throat. Your orgasm rolls on, and as your [cockhead] exits her mouth with a loud *pop*, you’re still cumming.  \n\n");
-		outputText("Electra, barely conscious, closes one eye as your thick ropes cover that side of her face, falling backwards into a rapidly growing puddle. Trails of your hot load splatter her tits, then stomach.  \n\n");
-        outputText("Now that her electricity isn’t hampering your movements, you instinctively grab your [cock], jerking yourself off as you aim your loads lower, covering Electra’s fuzzy legs and enticing entrance in your cum. Eventually, slowly, your orgasm slows, then stops, and you look down on your handiwork.  \n\n");
-		outputText("On her back, unable to rise, Electra coughs, clearing some of your spooge from her lungs. Her tits bounce enticingly as she heaves, her eyes glazed over, unfocused. Barely able to stand yourself, you kneel beside her, drunkenly asking if she’s okay. \n\n");
-		outputText("Electra moans, cheeks bright red, and she gives you a thumbs-up. She seems barely conscious, and you flop down beside her, suddenly very, VERY dizzy.  \n\n");
-        outputText("You wake up to see a still sperm-soaked Electra sitting up, groaning slightly as she rubs her jaw. \"<i>Whoa…</i>\" She looks down at herself, almost laughing. \"<i>D-did I go to the Bazaar?</i>\" Then she sees you, and puts two and two together.  \n\n");
-		outputText("\"<i>Oh…Wow. You really hosed me down, huh?</i>\" Electra says. \"<i>Let’s get down to the river, before this crusts over.</i>\" \n\n");
+        outputText("Electra’s eyes widen as she feels your orgasm coming, your cum rocketing down your shaft and into her stomach. She latches on, wrapping her arms around your [legs] as her throat bulges. You feel your [legs] weaken as load after hot load rushes down her throat, and her stomach begins to noticeably grow. Electra gags, and you notice that she’s got droplets of your jizz coming out her nose. Electricity arcs off your Raiju lover, and you feel yourself tense up, barely able to move as your balls churn, dumping more and more through your [cock] and into Electra’s stomach.\n\n");
+		outputText("Her moans begin to get higher, more intense, and you notice that tears are falling down Electra’s face. Her eyes are wide open, and her pale face is losing its colour. You realise that she’s trying to pull herself off you. Stiffly, through the electricity coursing through you, you manage to take her head in both hands, helping Electra pull your shaft out of her throat. Your orgasm rolls on, and as your [cockhead] exits her mouth with a loud *pop*, you’re still cumming.\n\n");
+		outputText("Electra, barely conscious, closes one eye as your thick ropes cover that side of her face, falling backwards into a rapidly growing puddle. Trails of your hot load splatter her tits, then stomach.\n\n");
+        outputText("Now that her electricity isn’t hampering your movements, you instinctively grab your [cock], jerking yourself off as you aim your loads lower, covering Electra’s fuzzy legs and enticing entrance in your cum. Eventually, slowly, your orgasm slows, then stops, and you look down on your handiwork.\n\n");
+		outputText("On her back, unable to rise, Electra coughs, clearing some of your spooge from her lungs. Her tits bounce enticingly as she heaves, her eyes glazed over, unfocused. Barely able to stand yourself, you kneel beside her, drunkenly asking if she’s okay.\n\n");
+		outputText("Electra moans, cheeks bright red, and she gives you a thumbs-up. She seems barely conscious, and you flop down beside her, suddenly very, VERY dizzy.\n\n");
+        outputText("You wake up to see a still sperm-soaked Electra sitting up, groaning slightly as she rubs her jaw. \"<i>Whoa…</i>\" She looks down at herself, almost laughing. \"<i>D-did I go to the Bazaar?</i>\" Then she sees you, and puts two and two together.\n\n");
+		outputText("\"<i>Oh…Wow. You really hosed me down, huh?</i>\" Electra says. \"<i>Let’s get down to the river, before this crusts over.</i>\"\n\n");
 		}
         doNext(ElectraPregBJCleanup);
 }
 
 private function ElectraPregBJCleanup():void {
 		clearOutput();
-		outputText("You and Electra shakily head down to the river, getting some side-eye from your companions, but you don’t really care. Electra and you reek of sex, and as you enter the river, Electra is a surprisingly attentive bathing companion, helping you with your [hair], back and of course, paying attention to your [cock]. She brings some clean-smelling soap that she happily shares, and before long, you’re completely clean.  \n\n"); 
+		outputText("You and Electra shakily head down to the river, getting some side-eye from your companions, but you don’t really care. Electra and you reek of sex, and as you enter the river, Electra is a surprisingly attentive bathing companion, helping you with your [hair], back and of course, paying attention to your [cock]. She brings some clean-smelling soap that she happily shares, and before long, you’re completely clean.\n\n"); 
         if(player.cumQ() >= 100) {
-		outputText("\"<i>Would you mind helping me out a bit?</i>\" Electra asks, motioning to her cum-soaked hair. You nod, and take a position just behind her. You run your hands through Electra’s hair, applying the soap, then move down to her breasts, kneading her soft skin…and as you do, you can feel your [cock] rising again, rubbing her inner thigh.  \n\n");
-		outputText("You return the favour, taking the soap and running your hands along Electra’s back. You step in, pressing yourself against her, and Electra shivers slightly as you knead her breasts, rubbing her areolae. \n\n");
+		outputText("\"<i>Would you mind helping me out a bit?</i>\" Electra asks, motioning to her cum-soaked hair. You nod, and take a position just behind her. You run your hands through Electra’s hair, applying the soap, then move down to her breasts, kneading her soft skin…and as you do, you can feel your [cock] rising again, rubbing her inner thigh.\n\n");
+		outputText("You return the favor, taking the soap and running your hands along Electra’s back. You step in, pressing yourself against her, and Electra shivers slightly as you knead her breasts, rubbing her areolae.\n\n");
 		}
         //split end
-		outputText("\"<i>As much as I would enjoy another round…I want to stay clean for at least an hour or so.</i>\" Electra says, turning around to face you. Her suds-covered breasts press softly into your [chest], and she smiles. \"<i>Thanks for this. I wouldn’t mind doing that again sometime.</i>\"  \n\n");
-		outputText("You nod, leaving your Raiju lover to finish up. You dry yourself off, redress, and head back to camp. \n\n");
+		outputText("\"<i>As much as I would enjoy another round…I want to stay clean for at least an hour or so.</i>\" Electra says, turning around to face you. Her suds-covered breasts press softly into your [chest], and she smiles. \"<i>Thanks for this. I wouldn’t mind doing that again sometime.</i>\"\n\n");
+		outputText("You nod, leaving your Raiju lover to finish up. You dry yourself off, redress, and head back to camp.\n\n");
 		doNext(playerMenu);
 }
 
 public function ElectraCleanNoSex():void {
 		clearOutput();
-		outputText("You nod, and Electra takes the bowl, gently pouring some of the warm water on your shaft, before bringing the cloth up, wiping some of the plaster off. Despite the sensation, and Electra’s gentle, stimulating touch, when your shaft is clean, you redress, giving Electra a chaste kiss on the forehead, before heading back out.  \n\n"); 
+		outputText("You nod, and Electra takes the bowl, gently pouring some of the warm water on your shaft, before bringing the cloth up, wiping some of the plaster off. Despite the sensation, and Electra’s gentle, stimulating touch, when your shaft is clean, you redress, giving Electra a chaste kiss on the forehead, before heading back out.\n\n"); 
 doNext(playerMenu);
 }
 
 public function ElectraCleanYourself():void {
 		clearOutput();
-		outputText("You thank Electra for the offer, but decide to go clean yourself off on your own. Going down to the river, you clean yourself off and head back to camp.  \n\n"); 
+		outputText("You thank Electra for the offer, but decide to go clean yourself off on your own. Going down to the river, you clean yourself off and head back to camp.\n\n"); 
 		doNext(playerMenu);
 }
 

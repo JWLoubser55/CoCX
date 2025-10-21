@@ -198,8 +198,10 @@ public class DraculinaScene extends BaseContent {
         IMutationsLib.HollowFangsIM.trueMutation = true;
         player.updateRacialParagon(Races.DRACULA);
         player.removeAllRacialMutation();
-        outputText("\n<b>Gained Perk: Soulless!</b> "+PerkLib.Soulless.desc());
-        player.createPerk(PerkLib.Soulless, 0, 0, 0, 0);
+		if (!player.hasPerk(PerkLib.Soulless)) {
+			outputText("\n<b>Gained Perk: Soulless!</b> "+PerkLib.Soulless.desc());
+			player.createPerk(PerkLib.Soulless, 0, 0, 0, 0);
+		}
 		player.createPerk(PerkLib.Undeath, 0, 0, 0, 0);
 		player.createPerk(PerkLib.SoulDrinker, 0, 0, 0, 0);
         player.createPerk(PerkLib.TransformationImmunity2, 9, 0, 0, 0);

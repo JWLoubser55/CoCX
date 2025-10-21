@@ -1154,7 +1154,7 @@ public class CampMakeWinions extends BaseContent
 				}
 				if (subtype == 1) {
 					outputText("ore.");
-					inventory.takeItem(useables.SKYMETA, takeCore);
+					inventory.takeItem(useables.ADAMANT, takeCore);
 				}
 			}
 			else {
@@ -1167,7 +1167,7 @@ public class CampMakeWinions extends BaseContent
 				}
 				if (subtype == 1) {
 					outputText("ore.");
-					inventory.takeItem(useables.SKYMETA, takeCore);
+					inventory.takeItem(useables.ADAMANT, takeCore);
 				}
 			}
 		}
@@ -1254,14 +1254,14 @@ public class CampMakeWinions extends BaseContent
 			"(Mid) Viscount Rank", // idx = 31
 			"(Advanced) Viscount Rank",
 			"(Peak) Viscount Rank",
-			"(Low) Earl Rank",// lvl = 186
-			"(Mid) Earl Rank",// lvl = 192
-			"(Advanced) Earl Rank",// lvl = 198
-			"(Peak) Earl Rank",// lvl = 204
-			"(Low) Marquess Rank",// lvl = 210
-			"(Mid) Marquess Rank",// lvl = 216
-			"(Advanced) Marquess Rank",// lvl = 222
-			"(Peak) Marquess Rank",// lvl = 228
+			"(Low) Earl Rank",
+			"(Mid) Earl Rank",
+			"(Advanced) Earl Rank",
+			"(Peak) Earl Rank",
+			"(Low) Marquess Rank",
+			"(Mid) Marquess Rank",
+			"(Advanced) Marquess Rank",
+			"(Peak) Marquess Rank", // idx = 41
 			"(Low) Duke Rank",// lvl = 234
 			"(Mid) Duke Rank",// lvl = 240
 			"(Advanced) Duke Rank",// lvl = 246
@@ -1286,8 +1286,8 @@ public class CampMakeWinions extends BaseContent
 			"(Lord Rank)",
 			"(Baron Rank)",
 			"(Viscount Rank)",
-			"(Earl Rank)",// lvl = 204
-			"(Marquess Rank)",// lvl = 228
+			"(Earl Rank)",
+			"(Marquess Rank)",
 			"(Duke Rank)",// lvl = 252
 			"(Prince Rank)",// lvl = 276
 			"(King Rank)"// lvl = 300
@@ -1449,7 +1449,7 @@ public class CampMakeWinions extends BaseContent
 		}
 		private function elementaLvlUpEpic():void {
 			menu();
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsAirE) && player.statusEffectv2(StatusEffects.SummonedElementalsAirE) < 8) {
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsAirE) && player.statusEffectv2(StatusEffects.SummonedElementalsAirE) < 10) {
 				if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) >= (player.statusEffectv2(StatusEffects.SummonedElementalsAirE) * rankUpElementalElementalEnergyCost())) {
 					if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > player.statusEffectv2(StatusEffects.SummonedElementalsAirE)) addButton(0, "Air", rankUpElementalAirEpic);
 					else addButtonDisabled(0, "Air", "Your Arcane Circle can't handle the epic elemental level up safely!");
@@ -1457,7 +1457,7 @@ public class CampMakeWinions extends BaseContent
 				else addButtonDisabled(0, "Air", "Your stored elemental energy is too low. Missing: "+((player.statusEffectv2(StatusEffects.SummonedElementalsAirE) * rankUpElementalElementalEnergyCost())-player.statusEffectv1(StatusEffects.ElementalEnergyConduits))+"");
 			}
 			else addButtonDisabled(0, "Air", "You don't have this epic elemental yet!");
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEarthE) && player.statusEffectv2(StatusEffects.SummonedElementalsEarthE) < 8) {
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsEarthE) && player.statusEffectv2(StatusEffects.SummonedElementalsEarthE) < 10) {
 				if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) >= (player.statusEffectv2(StatusEffects.SummonedElementalsEarthE) * rankUpElementalElementalEnergyCost())) {
 					if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > player.statusEffectv2(StatusEffects.SummonedElementalsEarthE)) addButton(1, "Earth", rankUpElementalEarthEpic);
 					else addButtonDisabled(1, "Earth", "Your Arcane Circle can't handle the epic elemental level up safely!");
@@ -1465,7 +1465,7 @@ public class CampMakeWinions extends BaseContent
 				else addButtonDisabled(1, "Earth", "Your stored elemental energy is too low. Missing: "+((player.statusEffectv2(StatusEffects.SummonedElementalsEarthE) * rankUpElementalElementalEnergyCost())-player.statusEffectv1(StatusEffects.ElementalEnergyConduits))+"");
 			}
 			else addButtonDisabled(1, "Earth", "You don't have this epic elemental yet!");
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsFireE) && player.statusEffectv2(StatusEffects.SummonedElementalsFireE) < 8) {
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsFireE) && player.statusEffectv2(StatusEffects.SummonedElementalsFireE) < 10) {
 				if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) >= (player.statusEffectv2(StatusEffects.SummonedElementalsFireE) * rankUpElementalElementalEnergyCost())) {
 					if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > player.statusEffectv2(StatusEffects.SummonedElementalsFireE)) addButton(2, "Fire", rankUpElementalFireEpic);
 					else addButtonDisabled(2, "Fire", "Your Arcane Circle can't handle the epic elemental level up safely!");
@@ -1473,7 +1473,7 @@ public class CampMakeWinions extends BaseContent
 				else addButtonDisabled(2, "Fire", "Your stored elemental energy is too low. Missing: "+((player.statusEffectv2(StatusEffects.SummonedElementalsFireE) * rankUpElementalElementalEnergyCost())-player.statusEffectv1(StatusEffects.ElementalEnergyConduits))+"");
 			}
 			else addButtonDisabled(2, "Fire", "You don't have this epic elemental yet!");
-			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWaterE) && player.statusEffectv2(StatusEffects.SummonedElementalsWaterE) < 8) {
+			if (player.hasStatusEffect(StatusEffects.SummonedElementalsWaterE) && player.statusEffectv2(StatusEffects.SummonedElementalsWaterE) < 10) {
 				if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) >= (player.statusEffectv2(StatusEffects.SummonedElementalsWaterE) * rankUpElementalElementalEnergyCost())) {
 					if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > player.statusEffectv2(StatusEffects.SummonedElementalsWaterE)) addButton(3, "Water", rankUpElementalWaterEpic);
 					else addButtonDisabled(3, "Water", "Your Arcane Circle can't handle the epic elemental level up safely!");
@@ -1494,27 +1494,40 @@ public class CampMakeWinions extends BaseContent
 			else addButtonDisabled(1, "Yes", "You don't have any Large Elemental Shards to convert currently.");
 			if (player.hasItem(useables.ELCRYST, 1)) addButton(2, "Yes", elementalShardsConversionGo, 2).hint("Use 1 Elemental Crystal");
 			else addButtonDisabled(2, "Yes", "You don't have any Elemental Crystals to convert currently.");
-			if (player.hasItem(useables.EL_CORE, 1)) addButton(3, "Yes", elementalShardsConversionGo, 3).hint("Use 1 Elemental Core");
+			if (player.hasItem(useables.LELCRYST, 1)) addButton(3, "Yes", elementalShardsConversionGo, 3).hint("Use 1 Large Elemental Crystal");
 			else addButtonDisabled(3, "Yes", "You don't have any Elemental Cores to convert currently.");
+			if (player.hasItem(useables.EL_CORE, 1)) addButton(4, "Yes", elementalShardsConversionGo, 4).hint("Use 1 Elemental Core");
+			else addButtonDisabled(4, "Yes", "You don't have any Elemental Cores to convert currently.");
 			if (player.hasItem(useables.ELSHARD, 5)) addButton(5, "Yes", elementalShardsConversionGo, 10).hint("Use 5 Elemental Shards");
 			else addButtonDisabled(5, "Yes", "You don't have enough Elemental Shards to convert currently.");
 			if (player.hasItem(useables.LELSHARD, 5)) addButton(6, "Yes", elementalShardsConversionGo, 11).hint("Use 5 Large Elemental Shards");
 			else addButtonDisabled(6, "Yes", "You don't have enough Large Elemental Shards to convert currently.");
 			if (player.hasItem(useables.ELCRYST, 5)) addButton(7, "Yes", elementalShardsConversionGo, 12).hint("Use 5 Elemental Crystals");
 			else addButtonDisabled(7, "Yes", "You don't have enough Elemental Crystals to convert currently.");
-			if (player.hasItem(useables.EL_CORE, 5)) addButton(8, "Yes", elementalShardsConversionGo, 13).hint("Use 5 Elemental Cores");
+			if (player.hasItem(useables.LELCRYST, 5)) addButton(8, "Yes", elementalShardsConversionGo, 13).hint("Use 5 Large Elemental Crystals");
 			else addButtonDisabled(8, "Yes", "You don't have enough Elemental Cores to convert currently.");
-			if (player.hasPerk(PerkLib.ElementalConjurerKnowledgeSu)) {
-				if (player.soulforce >= 10000) addButton(10, "1K", soulforceConversionGo, 1000).hint("Convert 10,000 SF into 1,000 EE");
-				else addButtonDisabled(10, "1K", "You not have enough (10,000) SF for conversion.");
-				if (player.soulforce >= 20000) addButton(11, "2K", soulforceConversionGo, 2000).hint("Convert 20,000 SF into 2,000 EE");
-				else addButtonDisabled(11, "2K", "You not have enough (20,000) SF for conversion.");
-				if (player.soulforce >= 50000) addButton(12, "5K", soulforceConversionGo, 5000).hint("Convert 50,000 SF into 5,000 EE");
-				else addButtonDisabled(12, "5K", "You not have enough (50,000) SF for conversion.");
-				if (player.soulforce >= 100000) addButton(13, "10K", soulforceConversionGo, 10000).hint("Convert 100,000 SF into 10,000 EE");
-				else addButtonDisabled(13, "10K", "You not have enough (100,000) SF for conversion.");
-			}
+			if (player.hasItem(useables.EL_CORE, 5)) addButton(9, "Yes", elementalShardsConversionGo, 14).hint("Use 5 Elemental Cores");
+			else addButtonDisabled(9, "Yes", "You don't have enough Elemental Cores to convert currently.");
+			if (player.hasPerk(PerkLib.ElementalConjurerKnowledgeSu)) addButton(13, "SF to EE", elementalShardsConversion2);
 			addButton(14, "Back", accessSummonElementalsMainMenu);
+		}
+		private function elementalShardsConversion2():void {
+			menu();
+			if (player.soulforce >= 5000) addButton(0, "500", soulforceConversionGo, 500).hint("Convert 5,000 SF into 500 EE");
+			else addButtonDisabled(0, "500", "You not have enough (5,000) SF for conversion.");
+			if (player.soulforce >= 10000) addButton(1, "1K", soulforceConversionGo, 1000).hint("Convert 10,000 SF into 1,000 EE");
+			else addButtonDisabled(1, "1K", "You not have enough (10,000) SF for conversion.");
+			if (player.soulforce >= 20000) addButton(2, "2K", soulforceConversionGo, 2000).hint("Convert 20,000 SF into 2,000 EE");
+			else addButtonDisabled(2, "2K", "You not have enough (20,000) SF for conversion.");
+			if (player.soulforce >= 50000) addButton(3, "5K", soulforceConversionGo, 5000).hint("Convert 50,000 SF into 5,000 EE");
+			else addButtonDisabled(3, "5K", "You not have enough (50,000) SF for conversion.");
+			if (player.soulforce >= 100000) addButton(4, "10K", soulforceConversionGo, 10000).hint("Convert 100,000 SF into 10,000 EE");
+			else addButtonDisabled(4, "10K", "You not have enough (100,000) SF for conversion.");
+			if (player.soulforce >= 200000) addButton(5, "20K", soulforceConversionGo, 20000).hint("Convert 200,000 SF into 20,000 EE");
+			else addButtonDisabled(5, "20K", "You not have enough (200,000) SF for conversion.");
+			if (player.soulforce >= 500000) addButton(6, "50K", soulforceConversionGo, 50000).hint("Convert 500,000 SF into 50,000 EE");
+			else addButtonDisabled(6, "50K", "You not have enough (500,000) SF for conversion.");
+			addButton(14, "Back", elementalShardsConversion);
 		}
 		private function elementalShardsConversionGo(shardtype:Number):void {
 			clearOutput();
@@ -1534,8 +1547,12 @@ public class CampMakeWinions extends BaseContent
 				shardEnergy += 4000;
 			}
 			if (shardtype == 3) {
-				player.destroyItems(useables.EL_CORE, 1);
+				player.destroyItems(useables.LELCRYST, 1);
 				shardEnergy += 8000;
+			}
+			if (shardtype == 4) {
+				player.destroyItems(useables.EL_CORE, 1);
+				shardEnergy += 20000;
 			}
 			if (shardtype == 10) {
 				player.destroyItems(useables.ELSHARD, 5);
@@ -1550,8 +1567,12 @@ public class CampMakeWinions extends BaseContent
 				shardEnergy += 20000;
 			}
 			if (shardtype == 13) {
-				player.destroyItems(useables.EL_CORE, 5);
+				player.destroyItems(useables.LELCRYST, 5);
 				shardEnergy += 40000;
+			}
+			if (shardtype == 14) {
+				player.destroyItems(useables.EL_CORE, 5);
+				shardEnergy += 100000;
 			}
 			if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) + shardEnergy > player.statusEffectv2(StatusEffects.ElementalEnergyConduits)) convertedShard += (player.statusEffectv2(StatusEffects.ElementalEnergyConduits) - player.statusEffectv1(StatusEffects.ElementalEnergyConduits));
 			else convertedShard += shardEnergy;
@@ -1802,7 +1823,7 @@ public class CampMakeWinions extends BaseContent
 				player.destroyItems(useables.ELSHARD, 2);
 				fatigue(200);
 				statScreenRefresh();
-				outputText("Since this is your first time summoning an epic air elemental, you begin the ritual by drawing a small circle of rune inside the larger arcane circle you already built, including runes for binding, and directive. In the centre you place your Air Sylph Core. With that complete, you initiate the most dangerous part of the ritual—invoking the primal might of the elemental. The air elemental appears within the circle. ");
+				outputText("Since this is your first time summoning an epic air elemental, you begin the ritual by drawing a small circle of rune inside the larger arcane circle you already built, including runes for binding, and directive. In the center you place your Air Sylph Core. With that complete, you initiate the most dangerous part of the ritual—invoking the primal might of the elemental. The air elemental appears within the circle. ");
 				outputText("At first huge and terrifying, it fights against its bindings, trying to break free. However, the binding circle holds, acting as a powerful barrier the creature cannot breach. As the restraint rune takes hold, it slowly shrinks to a size you can properly control. As it decreases in size, its shape also morphs into the masculine humanoid form of a sylph, rather than the generic form typical of elementals. ");
 				outputText("Their duty fulfilled the binding runes fades disappearing into the elemental until you call upon them again. \"<b>The ritual is finally complete congratulation is in order as you bound your very own epic air elemental!</b>\"");
 				player.createStatusEffect(StatusEffects.SummonedElementalsAirE, 1, 1, 0, 0);
@@ -1820,7 +1841,7 @@ public class CampMakeWinions extends BaseContent
 				player.destroyItems(useables.ELSHARD, 2);
 				fatigue(200);
 				statScreenRefresh();
-				outputText("Since this is your first time summoning an epic earth elemental, you begin the ritual by drawing a small circle of rune inside the larger arcane circle you already built, including runes for binding, and directive. In the centre you place your Earth Golem Core. With that complete, you initiate the most dangerous part of the ritual—invoking the primal might of the elemental. The earth elemental appears within the circle. ");
+				outputText("Since this is your first time summoning an epic earth elemental, you begin the ritual by drawing a small circle of rune inside the larger arcane circle you already built, including runes for binding, and directive. In the center you place your Earth Golem Core. With that complete, you initiate the most dangerous part of the ritual—invoking the primal might of the elemental. The earth elemental appears within the circle. ");
 				outputText("At first huge and terrifying, it fights against its bindings, trying to break free. However, the binding circle holds, acting as a powerful barrier the creature cannot breach. As the restraint rune takes hold, it slowly shrinks to a size you can properly control. As it decreases in size, its shape also morphs into the feminine humanoid form of a golem, rather than the generic form typical of elementals. ");
 				outputText("Their duty fulfilled the binding runes fades disappearing into the elemental until you call upon them again. \"<b>The ritual is finally complete congratulation is in order as you bound your very own epic earth elemental!</b>\"");
 				player.createStatusEffect(StatusEffects.SummonedElementalsEarthE, 1, 1, 0, 0);
@@ -1838,7 +1859,7 @@ public class CampMakeWinions extends BaseContent
 				player.destroyItems(useables.ELSHARD, 2);
 				fatigue(200);
 				statScreenRefresh();
-				outputText("Since this is your first time summoning an epic fire elemental, you begin the ritual by drawing a small circle of rune inside the larger arcane circle you already built, including runes for binding, and directive. In the centre you place your Fire Ifrit Core. With that complete, you initiate the most dangerous part of the ritual—invoking the primal might of the elemental. The fire elemental appears within the circle. ");
+				outputText("Since this is your first time summoning an epic fire elemental, you begin the ritual by drawing a small circle of rune inside the larger arcane circle you already built, including runes for binding, and directive. In the center you place your Fire Ifrit Core. With that complete, you initiate the most dangerous part of the ritual—invoking the primal might of the elemental. The fire elemental appears within the circle. ");
 				outputText("At first huge and terrifying, it fights against its bindings, trying to break free. However, the binding circle holds, acting as a powerful barrier the creature cannot breach. As the restraint rune takes hold, it slowly shrinks to a size you can properly control. As it decreases in size, its shape also morphs into the feminine humanoid form of an ifrit, rather than the generic form typical of elementals. ");
 				outputText("Their duty fulfilled the binding runes fades disappearing into the elemental until you call upon them again. \"<b>The ritual is finally complete congratulation is in order as you bound your very own epic fire elemental!</b>\"");
 				player.createStatusEffect(StatusEffects.SummonedElementalsFireE, 1, 1, 0, 0);
@@ -1856,7 +1877,7 @@ public class CampMakeWinions extends BaseContent
 				player.destroyItems(useables.ELSHARD, 2);
 				fatigue(200);
 				statScreenRefresh();
-				outputText("Since this is your first time summoning an epic water elemental, you begin the ritual by drawing a small circle of rune inside the larger arcane circle you already built, including runes for binding, and directive. In the centre you place your Water Undine Core. With that complete, you initiate the most dangerous part of the ritual—invoking the primal might of the elemental. The water elemental appears within the circle. ");
+				outputText("Since this is your first time summoning an epic water elemental, you begin the ritual by drawing a small circle of rune inside the larger arcane circle you already built, including runes for binding, and directive. In the center you place your Water Undine Core. With that complete, you initiate the most dangerous part of the ritual—invoking the primal might of the elemental. The water elemental appears within the circle. ");
 				outputText("At first huge and terrifying, it fights against its bindings, trying to break free. However, the binding circle holds, acting as a powerful barrier the creature cannot breach. As the restraint rune takes hold, it slowly shrinks to a size you can properly control. As it decreases in size, its shape also morphs into the masculine humanoid form of an undine, rather than the generic form typical of elementals. ");
 				outputText("Their duty fulfilled the binding runes fades disappearing into the elemental until you call upon them again. \"<b>The ritual is finally complete congratulation is in order as you bound your very own epic water elemental!</b>\"");
 				player.createStatusEffect(StatusEffects.SummonedElementalsWaterE, 1, 1, 0, 0);

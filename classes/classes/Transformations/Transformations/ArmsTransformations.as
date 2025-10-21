@@ -838,7 +838,7 @@ public class ArmsTransformations extends MutationsHelper {
 					desc += "Then, a cloak of soft, [feather color], colored feathers start sprouting from your armpits, covering every bare inch of skin up your elbows, stopping a few inches before your hands. When the growing stops, the skin over your hands changes too, turning into a layer of [skin], skin, albeit rougher than the usual, and made of thousands of diminutive scales. The structure of your palm and fingers remain the same, tough your fingernails turn into short talons.";
 				} else if (player.isFurCovered()) {
 					desc += "A bit weary about the possible effects of the seed on your body, you quickly notice when the fur covering your starts thickening, some patches merging an thickening, first forming barbs, and then straight-out feathers. To your surprise, your hand and forearms become strangely numb, and, to make things worse, the process continues, as the worrying sensation creeps up your arms until it reaches your shoulders. Soon, no matter how much you try, you aren’t able to move your arms in any way.";
-					desc += "The newly formed feathers keep growing making the excess fur fall, until you’ve gained a cloak of soft, [feather colors], colored feathers start sprouting from your armpits, covering every bare inch of skin up your elbows, stopping a few inches before your hands. Once the effects on that area end, the fur over your hands changes too, falling quickly and leaving behind soft, bare skin, that quickly turns into a layer of [skin], skin, ";
+					desc += "The newly formed feathers keep growing making the excess fur fall, until you’ve gained a cloak of soft, [feather color], colored feathers start sprouting from your armpits, covering every bare inch of skin up your elbows, stopping a few inches before your hands. Once the effects on that area end, the fur over your hands changes too, falling quickly and leaving behind soft, bare skin, that quickly turns into a layer of [skin], skin, ";
 					desc += "albeit rougher than the usual, made of thousands of diminutive scales. The structure of your palm and fingers remain the same, though your fingernails turn into short talons.";
 				} else if (player.isScaleCovered()) {
 					desc += "Undoubtedly affected by the dry fruit reactives, the layer of scales covering your arms falls like snowflakes, leaving only a soft layer of [skin] behind. To your surprise, your hand and forearms become strangely numb, and, to make things worse, the process continues, as the worrying sensation creeps up your arms until it reaches your shoulders. Soon, no matter how much you try, you aren’t able to move your arms in any way.";
@@ -1343,7 +1343,7 @@ public class ArmsTransformations extends MutationsHelper {
 
 				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
 
-				desc += "Your arms begin to itch so you scratch at them, eventually you look over and discover your arms are now covered in a sleeve like fuzzy mass. A second pair has even begun sprouting just underneath, forming these same traits. <b>You now have Moth arms</b>";
+				desc += "Your arms begin to itch so you scratch at them, eventually you look over and discover your arms are now covered in a sleeve like fuzzy mass. A second pair has even begun sprouting just underneath, forming these same traits. <b>You now have moth arms!</b>";
 
 				player.arms.type = Arms.MOTH;
 				if (doOutput) outputText(desc);

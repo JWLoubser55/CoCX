@@ -25,16 +25,16 @@ use namespace CoC;
 			SimpleStrike();
 			SimpleStrike();
 			SimpleStrike();
-			if (!player.hasPerk(PerkLib.Resolute) && flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 2) {
+			if (!player.hasPerk(PerkLib.Resolute) && flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 12) {
 				outputText(" You stagger under the violent force of the consecutive impacts, unable to recover your balance.");
 				player.createStatusEffect(StatusEffects.Stunned, 0, 0, 0, 0);
 			}
-			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 2) outputText(" Thankfully your training with her helped you learn how to counter most of these attacks and you manage to weaken her normally overwhelming blows.");
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] >= 12) outputText(" Thankfully your training with her helped you learn how to counter most of these attacks and you manage to weaken her normally overwhelming blows.");
 			outputText("\n\n");
 		}
 		public function SimpleStrike():void {
 			var damage:Number = 0;
-			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 2 || flags[kFLAGS.CHI_CHI_LVL_UP] >= 7) {
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 12 || flags[kFLAGS.CHI_CHI_LVL_UP] >= 7) {
 				damage += eBaseStrengthDamage() * 2;
 				damage += eBaseDamage() * 2;
 				if (flags[kFLAGS.CHI_CHI_LVL_UP] >= 12) {
@@ -46,7 +46,7 @@ use namespace CoC;
 					damage += eBaseDamage() * 2;
 				}
 			}
-			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 2 || (flags[kFLAGS.CHI_CHI_LVL_UP] >= 2 && flags[kFLAGS.CHI_CHI_LVL_UP] < 7)) {
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12 || (flags[kFLAGS.CHI_CHI_LVL_UP] >= 2 && flags[kFLAGS.CHI_CHI_LVL_UP] < 7)) {
 				damage += eBaseStrengthDamage() * 1.4;
 				damage += eBaseDamage() * 1.4;
 			}
@@ -130,17 +130,41 @@ use namespace CoC;
 			}
 		}
 		
+		private function retry():void {
+			clearOutput();
+			if (hasStatusEffect(StatusEffects.CombatWounds)) {
+				addStatusValue(StatusEffects.CombatWounds, 1, 10);
+				if (statusEffectv1(StatusEffects.CombatWounds) > 90) chichiScene.LostFirstFight();
+			}
+			else createStatusEffect(StatusEffects.CombatWounds, 10, 0, 0, 0);
+			HP = maxHP();
+			lust = 0;
+			outputText("As lust begins to overwhelm Chi Chi she suddenly adopts a new stance.\n\n");
+			outputText("\"<i>You think you can win just by making me horny? Watch and learn.</i>\"\n\n");
+			outputText("Chi Chi suddenly begins to kick at the air at tremendous speed unleashing a flurry of fireballs at you. To your absolute dismay, with each kick, the lusty haze in her eyes dissipates until it's completely gone. Meanwhile, you end up getting immolated by her barrage of fiery projectiles!\n\n");
+			outputText("As the barrage ends, Chi Chi taunts you.\n\n");
+			outputText("\"<i>I’m literally just starting to get fired up. I hope you can handle the heat!</i>\"\n\n");
+			outputText("She speaks big but you can tell this barrage of strikes left her weaker than before. It seems that this technique forces her to exhaust herself more than normal. The problem is just how much of a beating can you take before she overwhelms you with it.\n\n");
+			SceneLib.combat.combatRoundOver();
+		}
+
 		override public function defeated(hpVictory:Boolean):void
 		{
-			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 3) chichiScene.WonSparringFight();
-			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 2) chichiScene.WonSecondFight();
-			else chichiScene.WonFirstFight();
+			if (flags[kFLAGS.CHI_CHI_FOLLOWER] > 2 && flags[kFLAGS.CHI_CHI_FOLLOWER] != 5) chichiScene.WonSparringFight();
+			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) chichiScene.WonSecondFight();
+			else {
+				if (hpVictory) chichiScene.WonFirstFight();
+				else {
+					retry();
+					return;
+				}
+			}
 		}
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 3) chichiScene.LostSparringFight();
-			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 2) chichiScene.LostSecondFight();
+			if (flags[kFLAGS.CHI_CHI_FOLLOWER] > 2 && flags[kFLAGS.CHI_CHI_FOLLOWER] != 5) chichiScene.LostSparringFight();
+			else if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12) chichiScene.LostSecondFight();
 			else chichiScene.LostFirstFight();
 		}
 
@@ -153,7 +177,7 @@ use namespace CoC;
 		
 		public function ChiChi()
 		{
-			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 2) {
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 12) {
 				initStrTouSpeInte(630, 630, 610, 400);
 				initWisLibSensCor(400, 190, 160, 0);
 				this.weaponAttack = 140;
@@ -203,7 +227,7 @@ use namespace CoC;
 				this.bonusLust = 369;
 				this.level = 49;
 			}
-			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 2 || flags[kFLAGS.CHI_CHI_LVL_UP] == 5) {
+			if (flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 12 || flags[kFLAGS.CHI_CHI_LVL_UP] == 5) {
 				initStrTouSpeInte(500, 500, 480, 340);
 				initWisLibSensCor(340, 200, 160, 0);
 				this.weaponAttack = 112;

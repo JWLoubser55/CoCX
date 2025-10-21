@@ -46,7 +46,7 @@ public class FetishZealotScene extends AbstractLakeContent
 		 Lust dagger (+3 attack, slight lust effect added to regular attacks)
 		 \"A dagger with a short blade in a zigzag pattern(lightning bolt?).  Its edge seems to have been enchanted to always be covered in a light aphrodisiac to arouse anything cut with it.  \"
 		 \"L. Dagger\"
-		 Comfortable clothes (same as Cultist drop, and the starting armour of the player)
+		 Comfortable clothes (same as Cultist drop, and the starting armor of the player)
 		 */
 
 //Scenes
@@ -127,7 +127,7 @@ public class FetishZealotScene extends AbstractLakeContent
 			//============================================
 			function scene(male:Boolean):void {
 				//is that a guy?  Or does he just look like one?
-				//Set asside a varaible for this, its used a few times
+				//Set aside a variable for this, its used a few times
 				if (male && player.hasCock()) {
 					//set the player's armor to their new male teacher outfit, see lower down for a full description.
 					if (player.armor == armors.C_CLOTH) {
@@ -137,7 +137,7 @@ public class FetishZealotScene extends AbstractLakeContent
 				}
 				//no its a girl, or it looks like one
 				else if (!male) {
-					//Set armour to female teacher outfit with no back side.
+					//Set armor to female teacher outfit with no back side.
 					if (player.armor == armors.C_CLOTH) {
 						player.modArmorName = "backless female teacher's clothes";  // again, change this if you've got a better name
 					}
@@ -270,11 +270,11 @@ public class FetishZealotScene extends AbstractLakeContent
 				//same as cultist
 				//If there were changes to the player's chest
 				//same as cultist
-				//If armour is replaced
+				//If armor is replaced
 				if (player.armor == armors.C_CLOTH) {
 					outputText("\n\nYou notice that you still have the [armor] from the fantasy that your mind was trapped in, with no sign of your original clothes.");
 				}
-				//If armour is not replaced
+				//If armor is not replaced
 				else {
 					outputText("\n\nYou find that your [armor] are back to normal, and there is no sign of the strange clothes you were wearing before.");
 				}

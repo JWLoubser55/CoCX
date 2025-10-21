@@ -1238,5 +1238,21 @@ public class FaceTransformations extends MutationsHelper {
 				return player.faceType === Face.AUTOMATA;
 			}
 	);
+
+	public const FaceWerespiderFangs: Transformation = new SimpleTransformation("Werespider Fangs Face",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "Tension builds within your upper gum, just above your canines. You open your mouth and prod at the affected area, pricking your finger on the sharpening tooth as your throat grow dryer. It slides down while you're touching it, lengthening into a needle-like fang.  You could go for some wine right now, with a bloody steak to top it off… maybe just the steak. Or just the blood, really. You aren’t picky. Really, it’s up to you whether just rip off some poor sod’s throat and drink straight from the tap or drink blood from a wineglass, what with <b>your new werespider fangs!</b>";
+
+				if (doOutput) outputText(desc);
+				player.faceType = Face.WERESPIDER_FANGS;
+				if (player.tailRecharge < 5) player.tailRecharge = 5;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.WERESPIDER));
+			},
+			// is present
+			function (): Boolean {
+				return player.faceType === Face.WERESPIDER_FANGS;
+			}
+	);
 }
 }

@@ -66,7 +66,7 @@ use namespace CoC;
 				return;
 			}
 			outputText("Your demonic foe places his hands behind his head and lewdly pumps and thrusts his hips at you.  Your eyes open wide as a globule of cum erupts from the demon-prick and flies right at you.  ");
-			if (player.shield == game.shields.DRGNSHL && rand(2) == 0)
+			if (player.isFluidAbsorbingShield() && rand(2) == 0)
 			{
 				outputText("Your shield managed to absorb the attack!");
 				return;

@@ -39,6 +39,7 @@ use namespace CoC;
 		public var lightelfScene:LightElfScene = new LightElfScene();
 		public var aikoScene:AikoScene = new AikoScene();
 		public var nightmareScene:NightmareScene = new NightmareScene();
+		public var barometzScene:BarometzScene = new BarometzScene();
 		// public var dullahanScene:DullahanScene = new DullahanScene(); // [INTERMOD:8chan]
 
 		public function Forest() {
@@ -740,7 +741,7 @@ use namespace CoC;
 					return isHalloween()
 						   && (!player.hasPerk(PerkLib.FerasBoonBreedingBitch) || (player.hasPerk(PerkLib.FerasBoonBreedingBitch) && player.perkv4(PerkLib.FerasBoonBreedingBitch) > 0))
 						   && (!player.hasPerk(PerkLib.FerasBoonAlpha) || (player.hasPerk(PerkLib.FerasBoonAlpha) && player.perkv4(PerkLib.FerasBoonAlpha) > 0))
-						   && date.fullYear > flags[kFLAGS.PUMPKIN_FUCK_YEAR_DONE];
+						   && (date.fullYear > flags[kFLAGS.PUMPKIN_FUCK_YEAR_DONE] || flags[kFLAGS.ITS_EVERY_DAY] >= 1);
 				},
 				call: SceneLib.holidays.pumpkinFuckEncounter
 			}, {
@@ -751,6 +752,7 @@ use namespace CoC;
 				when: function():Boolean {
 					return isHalloween()
 						   && flags[kFLAGS.FERAS_TRAP_SPRUNG_YEAR] == 0
+						   && flags[kFLAGS.PUMPKIN_FUCK_YEAR_DONE] > 0
 						   && (date.fullYear > flags[kFLAGS.FERAS_GLADE_EXPLORED_YEAR] || flags[kFLAGS.ITS_EVERY_DAY] >= 1);
 				},
 				call: SceneLib.holidays.feraSceneTwoIntroduction
@@ -781,6 +783,12 @@ use namespace CoC;
 				when: function():Boolean {
 					return player.isAlraune();
 				}
+			}, {
+				name: "barometz",
+				label : "Barometz",
+				kind  : 'monster',
+				night : false,
+				call: barometzScene.barometzDeepwoods
 			}, {
 				name  : "light_elf_scout",
 				label : "Light Elf Scout",
@@ -856,6 +864,12 @@ use namespace CoC;
 				call  : findTruffle,
 				chance: 0.20
 			}, {
+				name  : "hornedfruit",
+				label : "HornedFruit",
+				kind : 'item',
+				call  : findHornedFruit,
+				chance: 0.20
+			}, {
 				name  : "chitin",
 				label : "Chitin",
 				kind : 'item',
@@ -924,6 +938,10 @@ use namespace CoC;
 		public function findTruffle():void {
 			outputText("You spot something unusual. Taking a closer look, it's definitely a truffle of some sort.");
 			inventory.takeItem(consumables.PIGTRUF, explorer.done);
+		}
+		public function findHornedFruit():void {
+			outputText("While exploring the forest you find what appears to be a strange fruits with curved horn like stems. You pick up the fruits who knows those might come in handy.");
+			inventory.takeItem(consumables.HORNFRU, explorer.done);
 		}
 		public function findHPill():void {
 			outputText("You find a pill stamped with the letter 'H' discarded on the ground.");

@@ -145,7 +145,7 @@ public final class LustyMaidensArmor extends Armor {
         public static function addTitfuckButton(btn:int, player:Player = null, monster:Monster = null):CoCButton {
 			if (player == null) player = CoC.instance.player;
             if (player.armor is LustyMaidensArmor || player.armor is SuccubusArmor)
-                return EngineCore.addButton(btn, "B.Titfuck", curry(lustyMaidenPaizuri, player, monster)).hint("Take advantage of the properties of your special armour and get [themonster] to give you a good titfuck.");
+                return EngineCore.addButton(btn, "B.Titfuck", curry(lustyMaidenPaizuri, player, monster)).hint("Take advantage of the properties of your special armor and get [themonster] to give you a good titfuck.");
             else return EngineCore.addButtonDisabled(btn, "B.Titfuck", "Req. to have Lusty Maiden's or Succubus' armor equipped.")
         }
 	}

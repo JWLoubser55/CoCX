@@ -34,7 +34,7 @@ import classes.Races;
             if (pTier >= 3){
                 descS += ". Gain temporary regeneration +" + pAccc + "% after a fluid intake for one hour";
             }
-            if (pTier >= 3){
+            if (pTier >= 4){
                 descS += ". Fluid intake heals all status damage, drains and weakening by 5% per intake";
             }
             if (descS != "")descS += ".";

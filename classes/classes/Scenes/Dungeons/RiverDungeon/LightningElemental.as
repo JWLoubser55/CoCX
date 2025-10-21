@@ -89,8 +89,11 @@ public class LightningElemental extends Monster
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			/*if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByAirElementalSubBoss();
-			else */SceneLib.dungeons.riverdungeon.defeatedByLightningElemental();
+			if (inDungeon) {
+				/*if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByAirElementalSubBoss();
+				else */SceneLib.dungeons.riverdungeon.defeatedByLightningElemental();
+			}
+			else cleanupAfterCombat();
 		}
 		
 		public function LightningElemental() 
@@ -151,12 +154,23 @@ public class LightningElemental extends Monster
 				this.bonusHP = 2100;
 				this.additionalXP = 275;
 			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+				this.short = "lightning elemental";
+				this.imageName = "lightning elemental";
+				this.long = "You're currently fighting lightning elemental. It's a four, nine inch tall body of lightning shaped into a humanoid form. It's using bare fists to fight.";
+				this.tallness = 54;
+				initStrTouSpeInte(266, 286, 326, 1330);
+				initWisLibSensCor(1330, 20, 850, 0);
+				this.weaponAttack = 272;
+				this.armorDef = 344;
+				this.armorMDef = 1740;
+				this.level = 100;
+				this.bonusHP = 8900;
+				this.additionalXP = 1295;
+			}
 			this.a = "the ";
 			this.plural = false;
 			this.lustVuln = 0.01;
-			this.drop = new WeightedDrop()
-					.add(useables.ELSHARD, 3)
-					.add(useables.LELSHARD, 1);
 			this.createBreastRow(0, 1);
 			initGenderless();
 			this.weaponName = "fists";
@@ -165,6 +179,17 @@ public class LightningElemental extends Monster
 			this.createPerk(PerkLib.EnemyElementalType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.LightningNature, 0, 0, 0, 0);
+			if (inDungeon) {
+				this.drop = new WeightedDrop()
+					.add(useables.ELSHARD, 3)
+					.add(useables.LELSHARD, 1);
+			}
+			else {
+				this.createStatusEffect(StatusEffects.Flying, 50, 0, 0, 0);
+				this.drop = new WeightedDrop()
+					.add(useables.ELCRYST, 3)
+					.add(useables.LELCRYST, 1);
+			}
 			checkMonster();
 		}
 		

@@ -92,7 +92,8 @@ public class MouseRace extends Race {
 					"str.mult": +0.75,
 					"tou.mult": -0.10,
 					"spe.mult": +0.80,
-					"wis.mult": +0.80
+					"wis.mult": +0.80,
+					"maxsf_mult": +1.0
 				})
 				.end();
 	}

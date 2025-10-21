@@ -172,7 +172,7 @@ public class Holli extends Monster
 				player.removeStatusEffect(StatusEffects.HolliConstrict);
 			}
 			//else if normal str-based success
-			else if (Math.round(player.strStat.core.value / player.strStat.core.max * 80) > rand(100) || player.hasPerk(PerkLib.FluidBody)) {
+			else if (SceneLib.combat.struggleCentralizedCheck()) {
 				outputText("You manage to force the roots open when the distracted Holli begins to stroke her plant-shaft, pulling out of the bindings just as a drop of sap oozes out and falls where you were standing.  You're free!");
 				//sap rose pls go
 				player.removeStatusEffect(StatusEffects.HolliConstrict);
@@ -272,7 +272,6 @@ public class Holli extends Monster
 			this.level = 20;
 			this.gems = 0;
 			this.drop = NO_DROP;
-			this.createPerk(PerkLib.FireVulnerability, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyPlantType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.UniqueNPC, 0, 0, 0, 0);
 			checkMonster();

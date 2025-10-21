@@ -12,7 +12,7 @@ public class ThunderstormSpell extends AbstractDivineSpell {
 			"Call upon the heavenly thunder, starting a lightning storm that will systematically zap your opponents every turn for up to 30 rounds.  ",
 			TARGET_ENEMY,
 			TIMING_LASTING,
-			[TAG_DAMAGING, TAG_LIGHTNING]
+			[TAG_DAMAGING, TAG_LIGHTNING, TAG_TIER3]
 		);
 		baseManaCost = 1200;
 	}
@@ -52,14 +52,10 @@ public class ThunderstormSpell extends AbstractDivineSpell {
 	}
 	
 	public function calcDamage(monster:Monster, randomize:Boolean=true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
-		return adjustSpellDamage(
-				scalingBonusIntelligence(randomize),
-				DamageType.LIGHTNING,
-				CAT_SPELL_DIVINE,
-				monster,
-				false,
-                casting
-			);
+		var baseDamage:Number = damageCalculationTier3Spells(randomize);
+		daaamageaddons(baseDamage);
+		if (player.hasPerk(PerkLib.PureMagic) && (monster && monster.hasPerk(PerkLib.EnemyTrueDemon))) baseDamage *= 1.25;
+		return adjustSpellDamage(baseDamage, DamageType.LIGHTNING, CAT_SPELL_DIVINE, monster, true, casting);
 	}
 	
 	override protected function doSpellEffect(display:Boolean = true):void {
@@ -67,7 +63,6 @@ public class ThunderstormSpell extends AbstractDivineSpell {
 			outputText("You call upon the anger of the gods to smite your foe and they gladly answer with thunder. Lightning begins to strike down upon your opponent"+(monster.plural ? "s":"")+" with perfect precision.");
 		}
 		var damage:Number = calcDamage(monster, true, true);
-		
 		player.createStatusEffect(StatusEffects.Thunderstorm, damage, calcDuration(), 0, 0);
 		damage = critAndRepeatDamage(display, damage, DamageType.LIGHTNING);
 		checkAchievementDamage(damage);

@@ -222,6 +222,7 @@ public class AbstractSpell extends CombatAbility {
 		}
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+		if (player.weapon == weapons.QULIPOTH) lustDmg *= 1.5;
 
 		if (applyOmnicaster && (category != CAT_SPELL_GREEN || !player.hasPerk(PerkLib.ArcaneVenom))) {
 			lustDmg *= omnicasterDamageFactor();
@@ -392,13 +393,13 @@ public class AbstractSpell extends CombatAbility {
 		if (monster != null) {
 			if (hasTag(TAG_AOE) && (monster.plural || monster.hasPerk(PerkLib.EnemyGigantType) || monster.hasPerk(PerkLib.EnemyColossalType))) damage *= 5;
 			if (category == CAT_SPELL_WHITE || category == CAT_SPELL_DIVINE) {
-				if (player.hasPerk(PerkLib.DivineKnowledge) && monster.cor > 65) {
+				if (player.hasPerk(PerkLib.DivineKnowledge) && monster.cor > 35) {
 					damage *= 1.2;
 				}
 				damage *= pureMagicPerkFactor(monster);
 			}
 			if (category == CAT_SPELL_BLACK || category == CAT_SPELL_HEX) {
-				if (player.hasPerk(PerkLib.HexKnowledge) && monster.cor < 34) {
+				if (player.hasPerk(PerkLib.HexKnowledge) && monster.cor < -35) {
 					damage *= 1.2;
 				}
 				damage *= corruptMagicPerkFactor(monster);
@@ -407,7 +408,10 @@ public class AbstractSpell extends CombatAbility {
 		if (applyOmnicaster) {
 			damage *= omnicasterDamageFactor();
 		}
-		
+		if (player.weapon == weapons.ANCIENTO) {
+			damage *= 1.25;
+		}
+		damage *= (1 + (0.01 * combat.masteryMagicCombat()));
 		return Math.round(damage);
 	}
 	private function damageTypeDarknessAdd():Number {
@@ -724,6 +728,7 @@ public class AbstractSpell extends CombatAbility {
 			outputText(" damage.");
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 		}
+		combat.spellcastingMasteryXP(combat.spellcastingMasteryEXPgained(crit));
 		return damage*repeats;
 	}
 	

@@ -42,43 +42,22 @@ import classes.internals.*;
 			cost *= spellCostMultiplier();
 			return cost;
 		}
-		public function soulskillCostManyBirds():Number {
-			var cost:Number = 10;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) cost -= 1;
-			if (hasPerk(PerkLib.DaoistWarriorStage)) cost -= 1;
-			if (hasPerk(PerkLib.DaoistElderStage)) cost -= 1;
-			return cost;
-		}
-		public function soulskillCostHailofBlades():Number {
-			var cost:Number = 50;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) cost -= 5;
-			if (hasPerk(PerkLib.DaoistWarriorStage)) cost -= 5;
-			if (hasPerk(PerkLib.DaoistElderStage)) cost -= 5;
-			return cost;
-		}
-		public function soulskillCostGrandioseHailofBlades():Number {
-			var cost:Number = 200;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) cost -= 20;
-			if (hasPerk(PerkLib.DaoistWarriorStage)) cost -= 20;
-			if (hasPerk(PerkLib.DaoistElderStage)) cost -= 20;
-			return cost;
-		}
 		
 		public function SoulskillMod():Number {
 			var mod1:Number = 1;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) {
-				if (hasPerk(PerkLib.SoulApprentice)) mod1 += .3;
-				if (hasPerk(PerkLib.SoulPersonage)) mod1 += .3;
-				if (hasPerk(PerkLib.SoulWarrior)) mod1 += .3;
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) mod1 += 1.25;
+				if (hasPerk(PerkLib.SoulPersonage)) mod1 += 1.25;
+				if (hasPerk(PerkLib.SoulWarrior)) mod1 += 1.25;
 			}
-			if (hasPerk(PerkLib.DaoistWarriorStage)) {
-				if (hasPerk(PerkLib.SoulSprite)) mod1 += .6;
-				if (hasPerk(PerkLib.SoulScholar)) mod1 += .6;
-				if (hasPerk(PerkLib.SoulGrandmaster)) mod1 += .6;
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) mod1 += 2.5;
+				if (hasPerk(PerkLib.SoulScholar)) mod1 += 2.5;
+				if (hasPerk(PerkLib.SoulGrandmaster)) mod1 += 2.5;
 			}
-			if (hasPerk(PerkLib.DaoistElderStage)) {
-				if (hasPerk(PerkLib.SoulElder)) mod1 += 1;
-				if (hasPerk(PerkLib.SoulExalt)) mod1 += 1;
+			if (hasPerk(PerkLib.DaoistMDHiFElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) mod1 += 3.75;
+				if (hasPerk(PerkLib.SoulExalt)) mod1 += 3.75;
 			}
 			return mod1;
 		}
@@ -96,7 +75,7 @@ import classes.internals.*;
 		
 		public function castManyBirdsSoulskillDinah():void {
 			outputText("She thrust her hand outwards with deadly intent, and in the blink of an eye a crystals shoots towards you.  Crystals hits you, dealing ");
-			soulforce -= soulskillCostManyBirds();
+			soulforce -= 10;
 			var damage:Number = wisdomscalingbonus();
 			if (damage < 10) damage = 10;
 			damage *= SoulskillMod();
@@ -106,14 +85,14 @@ import classes.internals.*;
 		}
 		public function castHailOfBladesSoulskillDinah():void {
 			outputText("Letting soulforce leak out around her, Dinah form six ethereal two meter long weapons. Then she thrust her hand outwards and in the blink of an eye, weapons shoot forwards you. Weapons hits you, dealing ");
-			soulforce -= soulskillCostHailofBlades();
+			soulforce -= 50;
 			var hobD:Number = 6;
 			while (hobD-->0) bladesD();
 			outputText("damage!");
 		}
 		public function castGrandioseHailOfBladesSoulskillDinah():void {
 			outputText("Letting soulforce leak out around her, Dinah form eighteen ethereal two meter long weapons in two rows. Then she thrust her hand outwards and in the blink of an eye, weapons shoot forwards you. Weapons hits you, dealing ");
-			soulforce -= soulskillCostGrandioseHailofBlades();
+			soulforce -= 200;
 			createStatusEffect(StatusEffects.AbilityCooldown2, 3, 0, 0, 0);
 			var ghobD:Number = 9;
 			while (ghobD-->0) bladesD(2);
@@ -269,12 +248,12 @@ import classes.internals.*;
 						else eAttack();
 						break;
 					case 2:
-						if ((soulforce >= soulskillCostManyBirds()) && rand(2) == 0) castManyBirdsSoulskillDinah();
+						if ((soulforce >= 10) && rand(2) == 0) castManyBirdsSoulskillDinah();
 						else hellcatFireballDinah();
 						break;
 					case 3:
-						if ((soulforce >= soulskillCostGrandioseHailofBlades()) && !hasStatusEffect(StatusEffects.AbilityCooldown2)) castGrandioseHailOfBladesSoulskillDinah();
-						else if ((soulforce >= soulskillCostHailofBlades()) && rand(2) == 0) castHailOfBladesSoulskillDinah();
+						if ((soulforce >= 200) && !hasStatusEffect(StatusEffects.AbilityCooldown2)) castGrandioseHailOfBladesSoulskillDinah();
+						else if ((soulforce >= 50) && rand(2) == 0) castHailOfBladesSoulskillDinah();
 						else hellcatInfernalClawDinah();
 						break;
 					case 4:
@@ -301,11 +280,11 @@ import classes.internals.*;
 						else eAttack();
 						break;
 					case 2:
-						if ((soulforce >= soulskillCostManyBirds()) && rand(2) == 0) castManyBirdsSoulskillDinah();
+						if ((soulforce >= 10) && rand(2) == 0) castManyBirdsSoulskillDinah();
 						else hellcatFireballDinah();
 						break;
 					case 3:
-						if ((soulforce >= soulskillCostHailofBlades()) && rand(2) == 0) castHailOfBladesSoulskillDinah();
+						if ((soulforce >= 50) && rand(2) == 0) castHailOfBladesSoulskillDinah();
 						else hellcatInfernalClawDinah();
 						break;
 					case 4:
@@ -383,6 +362,7 @@ import classes.internals.*;
 				this.lustVuln = .9;
 				this.level = 2;
 				this.drop = NO_DROP;
+				this.createPerk(PerkLib.EnemyForBeginnersType, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.DINAH_LVL_UP] >= 1) {
 				this.a = "";
@@ -545,7 +525,7 @@ import classes.internals.*;
 			}
 			if (flags[kFLAGS.DINAH_LVL_UP] >= 2) {
 				this.createPerk(PerkLib.ManaAffinityI, 0, 0, 0, 0);
-				this.createPerk(PerkLib.DaoistApprenticeStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.DaoistMDHiFApprenticeStage, 0, 0, 0, 0);
 				this.createPerk(PerkLib.SoulApprentice, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.DINAH_LVL_UP] >= 3) {
@@ -569,7 +549,7 @@ import classes.internals.*;
 				this.createPerk(PerkLib.Channeling, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.DINAH_LVL_UP] >= 7) {
-				this.createPerk(PerkLib.DaoistWarriorStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.DaoistMDHiFWarriorStage, 0, 0, 0, 0);
 				this.createPerk(PerkLib.EpicIntelligence, 0, 0, 0, 0);
 				this.createPerk(PerkLib.Mage, 0, 0, 0, 0);
 			}
@@ -585,7 +565,7 @@ import classes.internals.*;
 			}
 			if (flags[kFLAGS.DINAH_LVL_UP] >= 10) {
 				this.createPerk(PerkLib.SoulElder, 0, 0, 0, 0);
-				this.createPerk(PerkLib.DaoistElderStage, 0, 0, 0, 0);
+				this.createPerk(PerkLib.DaoistMDHiFElderStage, 0, 0, 0, 0);
 				this.createPerk(PerkLib.GrandArchmage, 0, 0, 0, 0);
 			}
 			//if (flags[kFLAGS.DINAH_LVL_UP] >= 11) x

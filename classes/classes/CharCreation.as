@@ -512,6 +512,7 @@ import classes.Scenes.Combat.CombatAbility;
 			var aSPPMX:Number = 1;
 			if (player.hasPerk(PerkLib.AscensionSkyPoisonPearlMasteryStageX)) aSPPMX += player.perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX);
 			if (flags[kFLAGS.SPIRIT_STONES] > (100 * (1 + player.newGamePlusMod()) * aSPPMX)) flags[kFLAGS.SPIRIT_STONES] = (100 * (1 + player.newGamePlusMod()) * aSPPMX);
+			if (player.negativeLevel > 0) player.negativeLevel = 0;
 			//Time reset
 			model.time.days = 0;
 			model.time.hours = 0;
@@ -2743,7 +2744,7 @@ import classes.Scenes.Combat.CombatAbility;
 			}
 			btn++
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 3 && player.hasPerk(PerkLib.AscensionHerosLegacy)) {
-				if (player.ascensionPerkPoints >= 75 && !player.hasPerk(PerkLib.AscensionBloodlineHeritage)) addButton(btn, "BloodHeritage", perkBloodlineHeritage).hint("Perk giving you an additional 1 perk point, 1 super perk point and 5 stat points at the start of the game (scaling with current NG tier, for super perk points amount is reduced by 3). Also would increase any bloodline perk bonus by 1.\n\nCost: 75 points");
+				if (player.ascensionPerkPoints >= 75 && !player.hasPerk(PerkLib.AscensionBloodlineHeritage)) addButton(btn, "BloodHeritage", perkBloodlineHeritage).hint("Perk giving you an additional 1 perk point, 1 super perk point and 5 stat points at the start of the game (scaling with current NG tier, for super perk points amount is reduced by 3). Also would increase any bloodline perk bonus by 2.\n\nCost: 75 points");
 				else if (player.ascensionPerkPoints < 75) button(btn).disable("You do not have enough ascension perk points!");
 				else addButtonDisabled(btn, "BloodHeritage", "You already bought Bloodline Heritage perk.");
 			}
@@ -3678,6 +3679,10 @@ import classes.Scenes.Combat.CombatAbility;
 				if (player.hasPerk(PerkLib.TechOverdrive) && player.perkv4(PerkLib.TechOverdrive) < 1) addButton(2, "TechOverdrive", permanentizePerk4, PerkLib.TechOverdrive);
 				else if (player.hasPerk(PerkLib.TechOverdrive) && player.perkv4(PerkLib.TechOverdrive) > 0) addButtonDisabled(2, "TechOverdrive", "Tech Overdrive perk is already made permanent and will carry over in all subsequent ascensions.");
 				else addButtonDisabled(2, "TechOverdrive", "Tech Overdrive");
+				if (player.hasPerk(PerkLib.DarkSlimeEmpressCore) && player.perkv4(PerkLib.DarkSlimeEmpressCore) < 1) addButton(3, "E.D.Essence", permanentizePerk4, PerkLib.DarkSlimeEmpressCore);
+				else if (player.hasPerk(PerkLib.DarkSlimeEmpressCore) && player.perkv4(PerkLib.DarkSlimeEmpressCore) > 0) addButtonDisabled(3, "E.D.Essence", "Empress's Dark Essence perk is already made permanent and will carry over in all subsequent ascensions.");
+				else addButtonDisabled(3, "E.D.Essence", "Empress's Dark Essence");
+				
 				//3
 				//addButton(4, "Next", ascensionPermeryMenu, page + 1);
 				//5
@@ -4155,8 +4160,8 @@ import classes.Scenes.Combat.CombatAbility;
 			if (player.humanScore() >= 10 && player.howManyDifferentHumanIMYouGot() >= 4 && flags[kFLAGS.HUMAN_BLOODLINE] == 0) flags[kFLAGS.HUMAN_BLOODLINE] = 1;
 			if (player.humanScore() >= 20 && player.howManyDifferentHumanIMYouGot() >= 8 && flags[kFLAGS.HUMAN_BLOODLINE] == 1) flags[kFLAGS.HUMAN_BLOODLINE] = 2;
 			if (player.humanScore() >= 40 && player.howManyDifferentHumanIMYouGot() >= 12 && flags[kFLAGS.HUMAN_BLOODLINE] == 2) flags[kFLAGS.HUMAN_BLOODLINE] = 3;
-			if (player.humanScore() >= 50 && player.howManyDifferentHumanIMYouGot() >= 14 && flags[kFLAGS.HUMAN_BLOODLINE] == 3) flags[kFLAGS.HUMAN_BLOODLINE] = 4;//>= 77 - >= 14
-			if (player.isRaceCached(Races.LICH)) {
+			if (player.humanScore() >= 60 && player.howManyDifferentHumanIMYouGot() >= 14 && flags[kFLAGS.HUMAN_BLOODLINE] == 3) flags[kFLAGS.HUMAN_BLOODLINE] = 4;//>= 77 - >= 14
+			if (player.hasPerk(PerkLib.Phylactery) && !player.hasPerk(PerkLib.Soulless)) {
 				if (player.hasPerk(PerkLib.StrengthenBody)) player.removePerk(PerkLib.StrengthenBody);
 				if (player.hasPerk(PerkLib.StrengthenMagic)) player.removePerk(PerkLib.StrengthenMagic);
 			}
@@ -4265,4 +4270,5 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 	} // what the fuck are those weird comments here? ^
 }
-
+
+

@@ -29,7 +29,9 @@ public class DeathBlossomSpell extends AbstractGreenSpell {
 	}
 
 	override public function calcDuration():int {
-		var dura:Number = 5;
+		var dura:Number = 3;
+		if (player.weapon == weapons.QULIPOTH) dura += 2;
+		if (player.hasPerk(PerkLib.PersistentSpell)) dura += 2;
 		if (player.hasPerk(PerkLib.GreenMagic)) dura *= 2;
 		return dura;
 	}
@@ -46,7 +48,11 @@ public class DeathBlossomSpell extends AbstractGreenSpell {
 	}
 	
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
-		var baseDamage:Number = ((3 * scalingBonusIntelligence() + 3 * scalingBonusLibido()));
+		var baseDamage:Number = ((3 * scalingBonusIntelligence() + 3 * scalingBonusLibido())) * 0.125;
+		if (player.hasPerk(PerkLib.DruidicFocus)) baseDamage += (3 * scalingBonusToughness());
+		baseDamage *= 0.25;
+		if (player.hasPerk(PerkLib.GreenMagic)) baseDamage *= 2;
+		if (player.checkNaturalOath()) baseDamage *= 2;
 		return adjustLustDamage(baseDamage, monster, CAT_SPELL_GREEN, randomize);
 	}
 	

@@ -2317,6 +2317,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 			if (doOutput) {
 				// No special text outside the event
 			}
+			player.legCount = 2;
 			player.lowerBody = LowerBody.ARMORED_LEGS;
 			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.ARIGEAN));
 		},
@@ -2352,7 +2353,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 				if (doOutput) {
 					var desc: String = "";
 
-					desc += "Your legs begin to itch as you scratch at them, eventually you look over and discover your legs are now covered in a bell bottom like fuzzy mass. <b>You now have Moth Legs</b>";
+					desc += "Your legs begin to itch as you scratch at them, eventually you look over and discover your legs are now covered in a bell bottom like fuzzy mass. <b>You now have Moth Legs.</b>";
 
 					if (doOutput) outputText(desc);
 					player.legCount = 2;
@@ -2414,6 +2415,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 			if (doOutput) {
 				// No special text outside the event
 			}
+			player.legCount = 2;
 			player.lowerBody = LowerBody.SHROOM_SKIRT;
 			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.SHROOM_SKIRT));
 		},
@@ -2429,6 +2431,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 			if (doOutput) {
 				// No special text outside the event
 			}
+			player.legCount = 2;
 			player.lowerBody = LowerBody.MECHANICAL_DOLL_LEGS;
 		},
 		// is present
@@ -2436,6 +2439,72 @@ public class LowerBodyTransformations extends MutationsHelper {
 			return player.lowerBody === LowerBody.MECHANICAL_DOLL_LEGS;
 		}
 	);
+
+	public const LowerBodyWerespider: Transformation = new SimpleTransformation("Werespider Lower Body",
+		// apply effect
+		function (doOutput: Boolean): void {
+			var desc: String = "";
+			TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyHuman, doOutput);
+
+			if (player.lowerBody == LowerBody.ANT) {
+				desc += "Feeling as though something is crawling down your legs, you glance down and realize the chitin covering your hips drops to only cover up to your thighs. ";
+				if (!player.chitinColor2 == "black") desc += "You also realize that the color changes to black. ";
+				desc += "<b>You now have human-like legs covered in a black, arachnid exoskeleton.</b>"
+			}
+			else desc += "Starting at your [feet], a tingle runs up your [legs], not stopping until it reaches your thighs. From the waist down, your strength completely deserts you, leaving you to fall hard on your [butt] in the dirt. With nothing else to do, you look down, only to be mesmerized by the sight of black exoskeleton creeping up a perfectly human-looking hips. It crests up your knee to envelop the joint in a many-faceted onyx coating. Then, it resumes its slow upward crawl, not stopping until it has girded your thighs in glittery, midnight exoskeleton. From a distance it would look almost like a black, thigh-high boot, but you know the truth. <b>You now have human-like legs covered in a black, arachnid exoskeleton.</b>";
+
+			if (doOutput) outputText(desc);
+			player.chitinColor2 = "black";
+			player.lowerBody = LowerBody.WERESPIDER;
+			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.WERESPIDER));
+		},
+		// is present
+		function (): Boolean {
+			return player.lowerBody === LowerBody.WERESPIDER && player.legCount === 2;
+		}
+	);
+
+	public function LowerBodyBarometz(legCount: int = undefined, toggleTaur:Boolean = false): Transformation {
+		return new SimpleTransformation("Barometz Lower Body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (!legCount) legCount = player.legCount;
+				var desc: String = "";
+				if(player.lowerBody == LowerBody.BAROMETZ ){
+					if (toggleTaur && legCount === 2) legCount = 4;
+					else if (toggleTaur && legCount >= 4) legCount = 2;
+					else if (legCount === 1) legCount = 2;
+				}
+				
+				// Case 1: Morph Taur legs without changing leg count
+				if (player.isTaur() && legCount >= 4) {
+					desc += "Your legs begin to change as a coat of moss grows all the way to your knee. Just as the fuzzy moss stops growing, you scream in agony as the bones in your legs break and rearrange. Once the pain subsides, you inspect your legs, finding that they are still alright, mostly. Your toes have united into a pair of dark cloven hooves of which the nail is revealed to be hard bark. <b>You now have cloven bark hooves just like a barometz.</b>";
+				}
+				// Case 2: Bipedal TF
+				else if (legCount === 2) {
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyBipedal, doOutput);
+
+					// Display TF text if the player is obtaining this part instead of only changing leg count
+					if (player.lowerBody !== LowerBody.BAROMETZ) {
+						desc += "Your legs begin to change as a coat of moss grows all the way to your knee. Just as the fuzzy moss stops growing, you scream in agony as the bones in your legs break and rearrange. Once the pain subsides, you inspect your legs, finding that they are still alright, mostly. Your toes have united into a pair of dark cloven hooves of which the nail is revealed to be hard bark. <b>You now have cloven bark hooves just like a barometz.</b>";
+					}
+				}
+				// Case 3: Taur TF
+				else if (!player.isTaur() && legCount >= 4) {
+					transformations.LowerBodyTaur(LowerBody.BAROMETZ).applyEffect(doOutput);
+				}
+
+				if (doOutput) outputText(desc);
+				player.lowerBody = LowerBody.BAROMETZ;
+				player.legCount = legCount;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.BAROMETZ));
+			},
+			// is present
+			function (): Boolean {
+				return !Metamorph.checkTaurUnlock() && player.lowerBody === LowerBody.BAROMETZ;
+			}
+		)
+	}
 	
 	/*
   */

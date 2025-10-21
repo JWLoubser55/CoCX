@@ -1116,12 +1116,12 @@ public function openTamanisSatchel():void {
 		isEmpty = false;
 	}
 	outputText("\n\n");
-	addButton(14, "Close", inventory.inventoryMenu);
+	addButton(14, "Close", camp.campActions);
 	if (isEmpty) {
 		clearOutput();
 		outputText("The satchel is devoid of its content. You discard the empty satchel.");
 		player.removeKeyItem("Tamani's Satchel");
-		doNext(inventory.inventoryMenu);
+		doNext(camp.campActions);
 	}
 }
 private function satchelTakeItem(item:ItemType, keyValue:int):void {

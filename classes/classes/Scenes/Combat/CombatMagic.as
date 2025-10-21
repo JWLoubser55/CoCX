@@ -110,7 +110,7 @@ public class CombatMagic extends BaseCombatContent {
 	internal function spellCostImpl(mod:Number):Number {
 		var costPercent:Number = 100 + costChange_all() + costChange_spell();
 		//Addiditive mods
-		if (spellModImpl() > 1) costPercent += Math.round(spellModImpl() - 1) * 10;
+		if (spellModImplPre() > 1) costPercent += Math.round(spellModImplPre() - 1) * 10;
 		//Limiting it and multiplicative mods
 		if (player.hasPerk(PerkLib.BloodMage) && costPercent < 50) costPercent = 50;
 		mod *= costPercent / 100;
@@ -133,7 +133,7 @@ public class CombatMagic extends BaseCombatContent {
 		//
 		if (player.hasPerk(PerkLib.BloodDemonWisdom)) costPercent -= 5;
 		//
-		if (spellModImpl() > 1) costPercent += Math.round(spellModImpl() - 1) * 10;
+		if (spellModImplPre() > 1) costPercent += Math.round(spellModImplPre() - 1) * 10;
 		if (player.hasPerk(PerkLib.AscensionMysticality)) costPercent -= (player.perkv1(PerkLib.AscensionMysticality) * 2);
 		//Limiting it and multiplicative mods
 		if (costPercent < 5) costPercent = 5;
@@ -231,6 +231,8 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.necklace == necklaces.SILCNEC && player.hasPerk(PerkLib.Soulless)) mod += 0.5;
 		if (player.hasAetherTwinsTierWeapon()) mod += 0.2;
 		if (player.hasAetherTwinsTierShield()) mod += 0.5;
+		if (player.hasAetherTwinsTierWeaponLStaff()) mod += 0.6;
+		if (player.hasAetherTwinsTierLeftStaff()) mod += 0.6;
 		if (player.perkv1(IMutationsLib.FiendishMetabolismIM) >= 3 && player.hasPerk(PerkLib.DemonEnergyThirst) && player.perkv1(PerkLib.DemonEnergyThirst) > 0) {
 			var mTPCur:Number = player.perkv1(PerkLib.DemonEnergyThirst);
 			var mTPCap:Number = 5 * player.perkv1(IMutationsLib.FiendishMetabolismIM);
@@ -330,6 +332,95 @@ public class CombatMagic extends BaseCombatContent {
     }
 
 	internal function spellModImpl():Number {
+		var mod:Number = spellModImplPre();
+		if (player.hasPerk(PerkLib.JobSorcerer)) mod += .1;
+		if (player.hasPerk(PerkLib.PrestigeJobWarlock)) mod += 1;
+		if (player.hasPerk(PerkLib.PrestigeJobArchpriest)) mod += 1;
+		if (player.hasPerk(PerkLib.Spellpower)) mod += .05;
+		if (player.hasPerk(PerkLib.MagesWrath)) mod += .05;
+		if (player.hasPerk(PerkLib.WarMageNovice)) mod += .05;
+		if (player.hasPerk(PerkLib.GreyMagic)) mod += .05;
+		if (player.hasPerk(PerkLib.SpellpowerGrey)) mod += .05;
+		if (player.hasPerk(PerkLib.Mage)) mod += .1;
+		if (player.hasPerk(PerkLib.Channeling)) mod += .1;
+		if (player.hasPerk(PerkLib.StaffChanneling)) mod += .1;
+		if (player.hasPerk(PerkLib.MagesWrathEx)) mod += .1;
+		if (player.hasPerk(PerkLib.GreyMageApprentice)) mod += .1;
+		if (player.hasPerk(PerkLib.BrutalSpells)) mod += .1;
+		if (player.hasPerk(PerkLib.GrandMage)) mod += .15;
+		if (player.hasPerk(PerkLib.FocusedMind)) mod += .15;
+		if (player.hasPerk(PerkLib.RagingInferno)) mod += .15;
+		if (player.hasPerk(PerkLib.GlacialStorm)) mod += .15;
+		if (player.hasPerk(PerkLib.HighVoltage)) mod += .15;
+		if (player.hasPerk(PerkLib.EclipsingShadow)) mod += .15;
+		if (player.hasPerk(PerkLib.HighTide)) mod += .15;
+		if (player.hasPerk(PerkLib.HowlingGale)) mod += .15;
+		if (player.hasPerk(PerkLib.RumblingQuake)) mod += .15;
+		if (player.hasPerk(PerkLib.CorrosiveMeltdown)) mod += .15;
+		if (player.hasPerk(PerkLib.WarMageApprentice)) mod += .15;
+		if (player.hasPerk(PerkLib.NatureMage) && combat.isOutside()) mod += .15;
+		if (player.hasPerk(PerkLib.Archmage)) mod += .2;
+		if (player.hasPerk(PerkLib.TraditionalMageI)) mod += .2;
+		if (player.hasPerk(PerkLib.TraditionalMageII)) mod += .2;
+		if (player.hasPerk(PerkLib.TraditionalMageIII)) mod += .2;
+		if (player.hasPerk(PerkLib.FortressOfIntellect)) mod += .2;
+		if (player.hasPerk(PerkLib.GreyMage)) mod += .2;
+		if (player.hasPerk(PerkLib.DefensiveStaffChanneling)) mod += .2;
+		if (player.hasPerk(PerkLib.OffensiveStaffChanneling)) mod += .2;
+		if (player.hasPerk(PerkLib.GrandArchmage)) mod += .25;
+		if (player.hasPerk(PerkLib.TraditionalMageIV)) mod += .25;
+		if (player.hasPerk(PerkLib.TraditionalMageV)) mod += .25;
+		if (player.hasPerk(PerkLib.TraditionalMageVI)) mod += .25;
+		if (player.hasPerk(PerkLib.ElementalBolt)) mod += .25;
+		if (player.hasPerk(PerkLib.WarMageAdept)) mod += .25;
+		if (player.hasPerk(PerkLib.Convergence)) mod += .25;
+		if (player.hasPerk(PerkLib.GrandArchmage2ndCircle)) mod += .3;
+		if (player.hasPerk(PerkLib.RagingInfernoEx)) mod += .3;
+		if (player.hasPerk(PerkLib.GlacialStormEx)) mod += .3;
+		if (player.hasPerk(PerkLib.HighTideEx)) mod += .3;
+		if (player.hasPerk(PerkLib.EclipsingShadowEx)) mod += .3;
+		if (player.hasPerk(PerkLib.HighTideEx)) mod += .3;
+		if (player.hasPerk(PerkLib.HowlingGaleEx)) mod += .3;
+		if (player.hasPerk(PerkLib.RumblingQuakeEx)) mod += .3;
+		if (player.hasPerk(PerkLib.CorrosiveMeltdownEx)) mod += .3;
+		if (player.hasPerk(PerkLib.GrandArchmage3rdCircle)) mod += .35;
+		if (player.hasPerk(PerkLib.WarMageExpert)) mod += .35;
+		if (player.hasPerk(PerkLib.GreyArchmage)) mod += .35;
+		if (player.hasPerk(PerkLib.VampiricMagic)) mod += .4;
+		if (player.hasPerk(PerkLib.SuperConvergence)) mod += .4;
+		if (player.hasPerk(PerkLib.WarMageMaster)) mod += .45;
+		if (player.hasPerk(PerkLib.GrandGreyArchmage)) mod += .45;
+		if (player.hasPerk(PerkLib.RagingInfernoSu)) mod += .5;
+		if (player.hasPerk(PerkLib.GlacialStormSu)) mod += .5;
+		if (player.hasPerk(PerkLib.HighVoltageSu)) mod += .5;
+		if (player.hasPerk(PerkLib.EclipsingShadowSu)) mod += .5;
+		if (player.hasPerk(PerkLib.HighTideSu)) mod += .5;
+		if (player.hasPerk(PerkLib.HowlingGaleSu)) mod += .5;
+		if (player.hasPerk(PerkLib.RumblingQuakeSu)) mod += .5;
+		if (player.hasPerk(PerkLib.CorrosiveMeltdownSu)) mod += .5;
+		if (player.hasPerk(PerkLib.HexKnowledge)) mod += .55;
+		if (player.hasPerk(PerkLib.DivineKnowledge)) mod += .55;
+		if (player.hasPerk(PerkLib.GrandGreyArchmage2ndCircle)) mod += .55;
+		if (player.hasPerk(PerkLib.DarkRitual)) mod += .6;
+		if (player.hasPerk(PerkLib.DivineArmament)) mod += .6;
+		if (player.hasPerk(PerkLib.CorruptMagic)) mod += .65;
+		if (player.hasPerk(PerkLib.PureMagic)) mod += .65;
+		if (player.hasPerk(PerkLib.ArchmageEx)) mod += .65;
+		if (player.hasPerk(PerkLib.UltimateMagic)) mod += .8;
+		if (player.hasPerk(PerkLib.UltimateMagicEx)) mod += 1.05;
+		if (player.hasPerk(PerkLib.RagingInfernoMastered)) mod += 1.4;
+		if (player.hasPerk(PerkLib.GlacialStormMastered)) mod += 1.4;
+		if (player.hasPerk(PerkLib.HighVoltageMastered)) mod += 1.4;
+		if (player.hasPerk(PerkLib.EclipsingShadowMastered)) mod += 1.4;
+		if (player.hasPerk(PerkLib.HighTideMastered)) mod += 1.4;
+		if (player.hasPerk(PerkLib.HowlingGaleMastered)) mod += 1.4;
+		if (player.hasPerk(PerkLib.RumblingQuakeMastered)) mod += 1.4;
+		if (player.hasPerk(PerkLib.CorrosiveMeltdownMastered)) mod += 1.4;
+		mod = Math.round(mod * 100) / 100;
+		return mod;
+	}
+	
+	internal function spellModImplPre():Number {
 		var mod:Number = 1 + modChange_all() + modChange_spell_1() + modChange_spell_2();
 		if (player.hasPerk(PerkLib.Obsession)) mod += player.perkv1(PerkLib.Obsession);
 		if (player.headJewelry == headjewelries.DMONSKUL) mod += player.cor * .006;
@@ -445,9 +536,13 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.VegetalAffinity)) mod += 0.5;
 		if (player.hasPerk(PerkLib.GreenMagic)) mod += 1;
 		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
-			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE))) mod += player.plantChlorophyllBoost();
+			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2 && (player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.BAROMETZ))) mod += player.plantChlorophyllBoost();
 			mod += 1;
 		}
+		if (player.weapon == weapons.GNARLEDS) mod += 0.75;
+		if (player.checkNaturalOath()) mod *= 2;
+		if (player.weapon == weapons.QULIPOTH) mod *= 2;
+		if (player.weapon == weapons.ANCIENTO) mod *= 2;
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;

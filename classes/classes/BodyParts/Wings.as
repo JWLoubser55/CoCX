@@ -385,7 +385,7 @@ public class Wings extends SaveableBodyPart {
 	
 	public static const MOTH_SMALL: int = 45;
 	EnumValue.add(Types, MOTH_SMALL, "MOTH_SMALL", {
-		name:"moth",
+		name:"small moth-like",
 		desc:"fuzzy, small",
 		appearanceDesc: "A pair of small [chitin color1] fuzzy satin covered insectile wings.",
 		canFly: true,
@@ -394,7 +394,7 @@ public class Wings extends SaveableBodyPart {
 	
 	public static const MOTH_LARGE: int = 46;
 	EnumValue.add(Types, MOTH_LARGE, "MOTH_LARGE", {
-		name:"moth",
+		name:"large moth-like",
 		desc:"fuzzy, large",
 		appearanceDesc: "A pair of large [chitin color1] fuzzy satin covered insectile wings.",
 		canFly: true,
@@ -414,6 +414,16 @@ public class Wings extends SaveableBodyPart {
 		name:"three large pairs of majestic yggdrasil",
 		desc:"three large, majestic pairs of plant-like",
 		appearanceDesc: "Three pairs of massive wings of wood extend from your shoulders, the leafy plumage shivering with each step you take. The air around you is filled with the rustling, like the wind through a dense forest canopy. Now far too large to hide, you keep your woodland wings unfurled behind you, a grand, capelike display.",
+		wingSlap: true,
+		canFly: true,
+		physical: true
+	});
+	
+	public static const YGGDRASIL_HUGE_4: int = 49;
+	EnumValue.add(Types, YGGDRASIL_HUGE_4, "YGGDRASIL_HUGE_4", {
+		name:"four large pairs of majestic yggdrasil",
+		desc:"four large, majestic pairs of plant-like",
+		appearanceDesc: "Four pairs of massive wings of wood extend from your shoulders, the leafy plumage shivering with each step you take. The air around you is filled with the rustling, like the wind through a dense forest canopy. Now far too large to hide, you keep your woodland wings unfurled behind you, a grand, capelike display.",
 		wingSlap: true,
 		canFly: true,
 		physical: true

@@ -20,6 +20,7 @@ import classes.Scenes.Dungeons.DesertCave.SandMother;
 import classes.Scenes.Dungeons.EbonLabyrinth.*;
 import classes.Scenes.Explore.Pierce;
 import classes.Scenes.Monsters.Malikore;
+import classes.Scenes.NPCs.AetherTwinsFollowers;
 import classes.Scenes.NPCs.Alvina;
 import classes.Scenes.NPCs.Aria;
 import classes.Scenes.NPCs.Belisa;
@@ -69,11 +70,12 @@ public class TestMenu extends BaseContent
 		bd.add("BodyPartEditor", curry(SceneLib.debugMenu.bodyPartEditorRoot, SoulforceCheats), "");
 		bd.add("Insta-house", instaHouse, "Instant-house + bed. No Mutant here.");
 		bd.add("Learn Hexes", learnHexes, "Learn Prestige Job - Warlock and different hex spells");
-		bd.add("WendigoTrigger", wendigoTrigger, "Trigger Wendigo transformation. (Without active Wendigo Psychosis will do nothing ;) )");
+		bd.add("WendigoTrigger", wendigoTrigger, "Trigger Wendigo transformation.");
 		bd.add("ChimeraBodyUlt", ChimeraBodyUltimateStage, "Ultimate Stage of Chimera Body for tests and lulz. Now with on/off switch for more lulz.");
 		bd.add("All4HiddenPrestige", hiddenPJ, "A11 th4t H1dd3n Prestige is Y0urs to T4ke!!!");
 		bd.add("PerkGalore1", PerkGalore1, "");
 		bd.add("PerkGalore2", PerkGalore2, "");
+		bd.add("UnPerkGal2Part", unPerkGalore2Part, "");
 		bd.add("RemoveRP", cheatRemoveRP, "Remove Racial Paragon perk");
 		bd.add("Fix Shards", cheatFixShards, "Check the player's quests and give the deserved shards.");
 		bd.add("Add Shard", cheatAddShard, "Add 1 radiant shard");
@@ -95,6 +97,11 @@ public class TestMenu extends BaseContent
 		bd.add("X-Uni 2", MightyOrNot, "Adding status effect needed for gifts and yuri scene unlock in demon lair.");
 		bd.add("RuinedTown", SceneLib.ruinedTown.enterVillage, "Test the Mousetown");
 		bd.add("LichTest", MightyOrNot2, "Lich Testing");
+		bd.add("Re:Pearl", MightyOrNot3, "Restore chance to find Pearl after regaining soul").disableIf(flags[kFLAGS.SKY_POISON_PEARL] > 0);
+		bd.add("Chi-a-Chi-Fix", MightyOrNot4).disableIf((flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 3 || flags[kFLAGS.CHI_CHI_SAM_TRAINING] == 3));
+		bd.add("Test5", MightyOrNot5, "Testing NaN");
+		bd.add("Test6", MightyOrNot6, "It's Tengliu not Teiling.");
+		bd.add("Test7", MightyOrNot7, "Combat Slaves Operational.");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -130,6 +137,46 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot7():void {
+		if (flags[kFLAGS.STELLA_FOLLOWER] == 1) {
+			flags[kFLAGS.STELLA_LVL_UP] = 1;
+			flags[kFLAGS.STELLA_DEFEATS_COUNTER] = 0;
+		}
+		if (flags[kFLAGS.SYTHRIL_FOLLOWER] == 1) {
+			flags[kFLAGS.SYTHRIL_LVL_UP] = 1;
+			flags[kFLAGS.SYTHRIL_DEFEATS_COUNTER] = 0;
+		}
+		if (flags[kFLAGS.ELISE_FOLLOWER] == 1) {
+			flags[kFLAGS.ELISE_LVL_UP] = 1;
+			flags[kFLAGS.ELISE_DEFEATS_COUNTER] = 0;
+		}
+		doNext(SoulforceCheats);
+	}
+	
+	public function MightyOrNot6():void {
+		if (player.hasKeyItem("Cultivation Manual: Embodiment of Teiling") >= 0) {
+			player.removeKeyItem("Cultivation Manual: Embodiment of Teiling");
+			player.createKeyItem("Cultivation Manual: Embodiment of Tengliu", 0, 0, 0, 0);
+		}
+		doNext(SoulforceCheats);
+	}
+	
+	public function MightyOrNot5():void {
+		outputText("\n\n<b>Setting HP to 100 unless your save is potentialy bugged without help.</b>\n\n");
+		player.HP = 100;
+		doNext(SoulforceCheats);
+	}
+	
+	public function MightyOrNot4():void {
+		flags[kFLAGS.CHI_CHI_SAM_TRAINING] = 3;
+		doNext(SoulforceCheats);
+	}
+	
+	public function MightyOrNot3():void {
+		flags[kFLAGS.SKY_POISON_PEARL] = 0;
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot2():void {
@@ -758,8 +805,8 @@ public class TestMenu extends BaseContent
 	public function wendigoTrigger():void {
 		if (player.hasStatusEffect(StatusEffects.WendigoPsychosis)) SceneLib.glacialRift.wendigoScene.becomeWendigo();
 		else {
-			outputText("Get a Life... i mean Wendigo Psychosis...");
-			doNext(SoulforceCheats);
+			player.createStatusEffect(StatusEffects.WendigoPsychosis, 3, 0, 0, 0);
+			SceneLib.glacialRift.wendigoScene.becomeWendigo();
 		}
 	}
 	public function AddMaxBackpack5():void {
@@ -1040,14 +1087,6 @@ public class TestMenu extends BaseContent
 		doNext(SoulforceCheats);
 	}
 	public function PerkGalore2():void {
-		if (!player.hasPerk(PerkLib.PrestigeJobSeer)) {
-			player.createPerk(PerkLib.PrestigeJobSeer, 0, 0, 0, 0);
-			outputText("\n\n<b>(Gained Perk: Prestige Job: Seer!)</b>");
-		}
-		if (!player.hasPerk(PerkLib.PrestigeJobSoulArcher)) {
-			player.createPerk(PerkLib.PrestigeJobSoulArcher, 0, 0, 0, 0);
-			outputText("\n\n<b>(Gained Perk: Prestige Job: Soul Archer!)</b>");
-		}
 		if (!player.hasPerk(PerkLib.PiercedCrimstone)) {
 			player.createPerk(PerkLib.PiercedCrimstone, 5, 0, 0, 0);
 			outputText("\n\n<b>(Gained Perk: Pierced: Crimstone!)</b>");
@@ -1227,6 +1266,17 @@ public class TestMenu extends BaseContent
 		if (!player.hasPerk(PerkLib.HistoryFeral) && !player.hasPerk(PerkLib.PastLifeFeral)) {
 			player.createPerk(PerkLib.HistoryFeral, 0, 0, 0, 0);
 			outputText("\n\n<b>(Gained Perk: History: Feral!)</b>");
+		}
+		doNext(SoulforceCheats);
+	}
+	public function unPerkGalore2Part():void {
+		if (player.hasPerk(PerkLib.PrestigeJobSeer)) {
+			player.removePerk(PerkLib.PrestigeJobSeer);
+			outputText("\n\n<b>(Lost Perk: Prestige Job: Seer!)</b>");
+		}
+		if (player.hasPerk(PerkLib.PrestigeJobSoulArcher)) {
+			player.removePerk(PerkLib.PrestigeJobSoulArcher);
+			outputText("\n\n<b>(Lost Perk: Prestige Job: Soul Archer!)</b>");
 		}
 		doNext(SoulforceCheats);
 	}
@@ -1793,7 +1843,7 @@ public class TestMenu extends BaseContent
 			addButton(1, "CDI", AddCurrentDebugItem).hint("Add 1 Gun.");
 			addButton(2, "TrollFig", AddTrollFig).hint("Add 1 Troll Fig.");
 			addButton(3, "CyclopTF", AddEyedrop).hint("Add 1 cyclop TF.");
-			//addButton(4, "", ).hint("Add 1  .");
+			addButton(4, "BarometzTF", AddHornedFruit).hint("Add 1 Barometz TF.");
 			addButton(5, "ALICORN", AddAlicornium).hint("Add 1 Alicornium.");
 			addButton(6, "D.Fruit", AddDisplacerFruit).hint("Add 1 Displacer Fruit.");
 			addButton(7, "AbyssalSTooth", AddAbyssalSharkTooth).hint("Add 1 Abyssal Shark Tooth.");
@@ -1877,9 +1927,9 @@ public class TestMenu extends BaseContent
 		if (page == 2) {
 			addButton(0, "Skymetal", AddSkymetalOre).hint("Add 1 Skymetal Ore.");
 			addButton(1, "Moonstone", AddMoonstone).hint("Add 1 Moonstone.");
-			//addButton(2, "", ).hint("Add 1 .");
-			//addButton(3, "", ).hint("Add 1 .");
-			//addButton(4, "", ).hint("Add 1 .");
+			addButton(2, "Orichalcum", AddOrichalcumOre).hint("Add 1 Orichalcum.");
+			addButton(3, "Mithral", AddMithralOre).hint("Add 1 Mithral.");
+			addButton(4, "Adamantine", AddAdamantineOre).hint("Add 1 Adamantine.");
 			addButton(5, "E.Shard", AddElementalShard).hint("Add 1 E.Shard.");//addButton(5, "", ).hint("Add 1 .");
 			addButton(6, "UnicornHair", AddUnicornHair).hint("Add 1 Unicorn Hair.");
 			addButton(7, "GolemCore", AddGolemCore).hint("Add 1 Golem Core.");
@@ -2063,6 +2113,10 @@ public class TestMenu extends BaseContent
 		outputText("\n\n<b>(Gained 1 Cyclop TF)</b>\n\n");
 		inventory.takeItem(consumables.EYEDROP, curry(NonEquipmentMenu, 1));
 	}
+	public function AddHornedFruit():void {
+		outputText("\n\n<b>(Gained 1 Barometz TF)</b>\n\n");
+		inventory.takeItem(consumables.HORNFRU, curry(NonEquipmentMenu, 1));
+	}
 	public function AddDesertBerry():void {
 		outputText("\n\n<b>(Gained 1 Werefox TF)</b>\n\n");
 		inventory.takeItem(consumables.DESERTB, curry(NonEquipmentMenu, 2));
@@ -2194,6 +2248,18 @@ public class TestMenu extends BaseContent
 	public function AddSkymetalOre():void {
 		outputText("\n\n<b>(Gained 1 Skymetal Ore!)</b>\n\n");
 		inventory.takeItem(useables.SKYMETA, curry(MaterialMenu, 2));
+	}
+	public function AddOrichalcumOre():void {
+		outputText("\n\n<b>(Gained 1 Orichalcum Ore!)</b>\n\n");
+		inventory.takeItem(useables.ORICHAL, curry(MaterialMenu, 2));
+	}
+	public function AddMithralOre():void {
+		outputText("\n\n<b>(Gained 1 Mithral Ore!)</b>\n\n");
+		inventory.takeItem(useables.MITHRAL, curry(MaterialMenu, 2));
+	}
+	public function AddAdamantineOre():void {
+		outputText("\n\n<b>(Gained 1 Adamantine Ore!)</b>\n\n");
+		inventory.takeItem(useables.ADAMANT, curry(MaterialMenu, 2));
 	}
 	public function AddMoonstone():void {
 		outputText("\n\n<b>(Gained 1 Moonstone!)</b>\n\n");
@@ -2787,4 +2853,4 @@ public class TestMenu extends BaseContent
 		SceneLib.lily.lilyEncounter();
 	}
 	}
-}
+}

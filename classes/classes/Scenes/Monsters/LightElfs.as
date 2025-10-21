@@ -205,9 +205,9 @@ public class LightElfs extends Monster
 			this.armorName = "elven armor";
 			this.lustVuln = .7;
 			this.lust = 50;
-			this.drop = new WeightedDrop().
-					add(weaponsrange.BOWLIGH,1).
-					add(consumables.ELFEARS,4);
+			this.drop = new WeightedDrop()
+					.add(weaponsrange.BOWLIGH,1)
+					.add(consumables.ELFEARS,4);
 			this.abilities = [
 				{ call: eAttack, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_BODY]},
 				{ call: LightElfBowShooting, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_WEAPON]},

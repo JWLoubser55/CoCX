@@ -87,8 +87,11 @@ public class IceElemental extends Monster
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			/*if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByAirElementalSubBoss();
-			else */SceneLib.dungeons.riverdungeon.defeatedByIceElemental();
+			if (inDungeon) {
+				/*if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatedByAirElementalSubBoss();
+				else */SceneLib.dungeons.riverdungeon.defeatedByIceElemental();
+			}
+			else cleanupAfterCombat();
 		}
 		
 		public function IceElemental() 
@@ -149,12 +152,37 @@ public class IceElemental extends Monster
 				this.bonusHP = 1840;
 				this.additionalXP = 275;
 			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 5) {
+				this.short = "ice elemental";
+				this.imageName = "ice elemental";
+				this.long = "You're currently fighting ice elemental. It's a four, nine inch tall body of ice shaped into a humanoid form. It's using bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(176, 206, 246, 870);
+				initWisLibSensCor(870, 20, 550, 0);
+				this.weaponAttack = 212;
+				this.armorDef = 224;
+				this.armorMDef = 2160;
+				this.level = 70;
+				this.bonusHP = 4880;
+				this.additionalXP = 845;
+			}
+			else if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 6) {
+				this.short = "ice elemental";
+				this.imageName = "ice elemental";
+				this.long = "You're currently fighting ice elemental. It's a four, nine inch tall body of ice shaped into a humanoid form. It's using bare fists to fight.";
+				this.tallness = 57;
+				initStrTouSpeInte(266, 296, 336, 1320);
+				initWisLibSensCor(1320, 20, 850, 0);
+				this.weaponAttack = 272;
+				this.armorDef = 344;
+				this.armorMDef = 3360;
+				this.level = 100;
+				this.bonusHP = 7280;
+				this.additionalXP = 1295;
+			}
 			this.a = "the ";
 			this.plural = false;
 			this.lustVuln = 0.01;
-			this.drop = new WeightedDrop()
-					.add(useables.ELSHARD, 3)
-					.add(useables.LELSHARD, 1);
 			this.createBreastRow(0, 1);
 			initGenderless();
 			this.weaponName = "fists";
@@ -164,6 +192,23 @@ public class IceElemental extends Monster
 			this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.IceNature, 0, 0, 0, 0);
 			this.createPerk(PerkLib.MonsterRegeneration, 1, 0, 0, 0);
+			if (inDungeon) {
+				this.drop = new WeightedDrop()
+					.add(useables.ELSHARD, 3)
+					.add(useables.LELSHARD, 1);
+			}
+			else {
+				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 6) {
+					this.drop = new WeightedDrop()
+						.add(useables.ELCRYST, 3)
+						.add(useables.LELCRYST, 1);
+				}
+				else {
+					this.drop = new WeightedDrop()
+						.add(useables.LELSHARD, 3)
+						.add(useables.ELCRYST, 1);
+				}
+			}
 			checkMonster();
 		}
 		

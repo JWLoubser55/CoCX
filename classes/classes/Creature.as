@@ -826,6 +826,29 @@ public class Creature extends Utils
 				if (hasStatusEffect(StatusEffects.SummonedElementalsWaterE)) max += maxHP_ElementalBondFleshMulti() * 20 * statusEffectv2(StatusEffects.SummonedElementalsWaterE);
 			}
 			if (hasPerk(PerkLib.JobGuardian)) max += 120;
+			if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) max += (1000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+				if (hasPerk(PerkLib.SoulPersonage)) max += (1000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+				if (hasPerk(PerkLib.SoulWarrior)) max += (1000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) max += (2000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+				if (hasPerk(PerkLib.SoulScholar)) max += (2000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+				if (hasPerk(PerkLib.SoulGrandmaster)) max += (2000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) max += (3000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+				if (hasPerk(PerkLib.SoulExalt)) max += (3000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+				if (hasPerk(PerkLib.SoulOverlord)) max += (3000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) max += (4000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+				if (hasPerk(PerkLib.SoulKing)) max += (4000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+				if (hasPerk(PerkLib.SoulEmperor)) max += (4000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) max += (5000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
+			}
 			if (hasPerk(PerkLib.FleshBodyApprenticeStage)) {
 				if (hasPerk(PerkLib.SoulApprentice)) max += (400 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
 				if (hasPerk(PerkLib.SoulPersonage)) max += (400 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
@@ -954,10 +977,35 @@ public class Creature extends Utils
 				if (bonus > limit) bonus = limit;
 				maxOver2 += (0.01 * bonus);
 			}
+			if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) maxOver2 += 0.01;
+				if (hasPerk(PerkLib.SoulPersonage)) maxOver2 += 0.01;
+				if (hasPerk(PerkLib.SoulWarrior)) maxOver2 += 0.01;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) maxOver2 += 0.02;
+				if (hasPerk(PerkLib.SoulScholar)) maxOver2 += 0.02;
+				if (hasPerk(PerkLib.SoulGrandmaster)) maxOver2 += 0.02;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) maxOver2 += 0.03;
+				if (hasPerk(PerkLib.SoulExalt)) maxOver2 += 0.03;
+				if (hasPerk(PerkLib.SoulOverlord)) maxOver2 += 0.03;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) maxOver2 += 0.04;
+				if (hasPerk(PerkLib.SoulKing)) maxOver2 += 0.04;
+				if (hasPerk(PerkLib.SoulEmperor)) maxOver2 += 0.04;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) maxOver2 += 0.05;
+			}
 			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) maxOver2 += 0.1;
 			if (perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxOver2 += 0.2;
 			if (perkv1(IMutationsLib.HumanBonesIM) >= 4) maxOver2 += 0.1;
 			if (hasPerk(PerkLib.Soulless)) maxOver2 += (0.01 * level);
+			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
+			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
 			maxOver *= maxOver2;//~270%
 			maxOver = Math.round(maxOver);
 			return Math.min(54999999,maxOver);
@@ -1180,7 +1228,7 @@ public class Creature extends Utils
 			HP = oldHPratio * maxHP();
 
 			// Keep values in bounds (lust and HP handled above)
-			fatigue = Math.min(fatigue, maxFatigue());
+			fatigue = Math.min(fatigue, maxOverFatigue());
 			mana = Math.min(mana, maxOverMana());
 			soulforce = Math.min(soulforce, maxOverSoulforce());
 			wrath = Math.min(wrath,maxOverWrath());
@@ -3080,8 +3128,12 @@ public class Creature extends Utils
 			return countCocksOfType(CockTypesEnum.HUMAN);
 		}
 
-		public function tentacleCocks():int { //How many tentaclecocks?
+		public function tentacleCocks():int { //How many all tentaclecocks?
 			return countCocksOfType(CockTypesEnum.TENTACLE) + countCocksOfType(CockTypesEnum.STAMEN) + countCocksOfType(CockTypesEnum.SCYLLATENTACLE);
+		}
+
+		public function tentacleOnlyCocks():int { //How many tentaclecocks?
+			return countCocksOfType(CockTypesEnum.TENTACLE);
 		}
 
 		public function stamenCocks():int { //How many stamencocks?
@@ -3102,6 +3154,10 @@ public class Creature extends Utils
 
 		public function insectCocks():int { //How many insectcocks?
 			return countCocksOfType(CockTypesEnum.INSECT);
+		}
+
+		public function barometzCocks():int { //How many insectcocks?
+			return countCocksOfType(CockTypesEnum.BAROMETZ);
 		}
 
 
@@ -3257,7 +3313,7 @@ public class Creature extends Utils
 		{
 			if (gills.type != Gills.NONE || lowerBody == LowerBody.SCYLLA || lowerBody == LowerBody.KRAKEN || lowerBody == LowerBody.MELKIE || tailType == Tail.ARIGEAN_GREEN || tailType == Tail.ARIGEAN_RED || tailType == Tail.ARIGEAN_YELLOW || tailType == Tail.ARIGEAN_PRINCESS ||
 				rearBody.type == RearBody.ORCA_BLOWHOLE || hasStatusEffect(StatusEffects.Airweed) || game.player.necklaceName == "Magic coral and pearl necklace" || game.player.headjewelryName == "Aqua breather" ||
-				(game.player.isInGoblinMech() && game.player.hasKeyItem("Safety bubble") >= 0) || game.player.hasPerk(PerkLib.AffinityUndine) || game.player.hasPerk(PerkLib.Undeath))
+				(game.player.isInGoblinMech() && game.player.hasKeyItem("Safety bubble") >= 0) || (perkv1(IMutationsLib.HumanLungsIM) >= 4 && game.player.racialScore(Races.HUMAN) > 17) || game.player.hasPerk(PerkLib.AffinityUndine) || game.player.hasPerk(PerkLib.Undeath))
 				return true;	//efekt of itemów dające oddych. pod wodą
 			return false;
 		}
@@ -3786,7 +3842,8 @@ public class Creature extends Utils
 		public function isGooSkin():Boolean { return skin.isGooSkin(); }
 		public function isGhostSkin():Boolean { return skin.isGhostSkin(); }
 		public function isBarkSkin():Boolean { return skin.hasBark(); }
-		public function isGargoyle():Boolean { return skin.hasBaseOnly(Skin.STONE); }
+		public function isGargoyle():Boolean { return hasPerk(PerkLib.GargoyleCorrupted) || hasPerk(PerkLib.GargoylePure); }
+		public function isAutomata():Boolean { return hasPerk(PerkLib.AlphaProtocol); }
 		public function skinDescript():String { return skin.describe('base'); }
 		public function skinFurScales():String { return skin.describe('coat'); }
 
@@ -3853,14 +3910,19 @@ public class Creature extends Utils
 			return eggs() >= 10 && hasPerk(PerkLib.AntOvipositor) && tail.type == Tail.ANT_ABDOMEN;
 		}
 
+		public function canOvipositMoth():Boolean
+		{
+			return eggs() >= 10 && hasPerk(PerkLib.MothOvipositor) && tail.type == Tail.MOTH_ABDOMEN;
+		}
+
 		public function canOviposit():Boolean
 		{
-			return canOvipositSpider() || canOvipositBee() || canOvipositMantis() || canOvipositAnt();
+			return canOvipositSpider() || canOvipositBee() || canOvipositMantis() || canOvipositAnt() || canOvipositMoth();
 		}
 
 		public function eggs():int
 		{
-			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor))
+			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor))
 				return -1;
 			else if (hasPerk(PerkLib.SpiderOvipositor))
 				return perkv1(PerkLib.SpiderOvipositor);
@@ -3868,6 +3930,8 @@ public class Creature extends Utils
 				return perkv1(PerkLib.BeeOvipositor);
 			else if (hasPerk(PerkLib.MantisOvipositor))
 				return perkv1(PerkLib.MantisOvipositor);
+			else if (hasPerk(PerkLib.MothOvipositor))
+				return perkv1(PerkLib.MothOvipositor);
 			else
 				return perkv1(PerkLib.AntOvipositor);
 			}
@@ -3885,7 +3949,7 @@ public class Creature extends Utils
 		}
 
 		public function dumpEggs():void {
-			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor))
+			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor))
 				return;
 			if (hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) {
 				addPerkValue(PerkLib.BeeOvipositor, 1, -25);
@@ -3898,7 +3962,7 @@ public class Creature extends Utils
 		}
 
 		private function getOviPerk():PerkType {
-			var oviPerks:Array = [PerkLib.SpiderOvipositor, PerkLib.BeeOvipositor, PerkLib.MantisOvipositor, PerkLib.AntOvipositor];
+			var oviPerks:Array = [PerkLib.SpiderOvipositor, PerkLib.BeeOvipositor, PerkLib.MantisOvipositor, PerkLib.AntOvipositor, PerkLib.MothOvipositor];
 			for each (var perk:PerkType in oviPerks)
 				if (hasPerk(perk)) return perk;
 			return null;

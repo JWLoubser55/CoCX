@@ -140,6 +140,7 @@ package classes.Scenes.Areas.GlacialRift
 			player.createPerk(PerkLib.EndlessHunger, 0, 0, 0, 0);
 			player.createPerk(PerkLib.WendigoCurse, 0, 0, 0, 0);
 			player.updateRacialParagon(Races.WENDIGO);
+			if (player.thickness > 40) player.thickness = 40;
 			player.hunger = 80;
 			endEncounter();
 		}

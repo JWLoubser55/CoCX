@@ -62,14 +62,8 @@ public class MeteorShowerSpell extends AbstractWhiteSpell{
 	public function calcDamage(target:Monster, randomize:Boolean=true, casting:Boolean = true):Number {
 		var baseDamage:Number = damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
-		return adjustSpellDamage(
-				baseDamage,
-				DamageType.FIRE,
-				CAT_SPELL_WHITE,
-				target,
-                true,
-                casting
-		);
+		if (player.hasPerk(PerkLib.PureMagic) && (monster && monster.hasPerk(PerkLib.EnemyTrueDemon))) baseDamage *= 1.25;
+		return adjustSpellDamage(baseDamage, DamageType.FIRE, CAT_SPELL_WHITE, monster, true, casting);
 	}
 	
 	public function meteorShowerHit(display: Boolean = true):void {

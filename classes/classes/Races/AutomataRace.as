@@ -44,6 +44,7 @@ public class AutomataRace extends Race {
 	public override function setup():void {
 		addScores()
 				.hairType(Hair.SYNTHETIC, +1)
+				.hairColor1(ANY(AutomataHairColors), +1)
 				.hornType(Horns.HEADSET, +1)
 				.antennaeType(Antennae.AUTOMATA, +1)
 				.faceType(Face.AUTOMATA, +1)
@@ -51,7 +52,6 @@ public class AutomataRace extends Race {
 				.eyeColor(ANY(AutomataEyesColors), +1)
 				.earType(ANY(Ears.AUTOMATA_FOX, Ears.AUTOMATA_CAT, Ears.AUTOMATA_BUNNY), +1)
 				.tongueType(Tongue.AUTOMATA, +1)
-				.hairColor1(ANY(AutomataHairColors), +1)
 				.skinBaseType(Skin.STEEL, +1)
 				.skinBasePattern(Skin.PATTERN_CIRCUIT_TATTOO, +1)
 				.skinColor1(ANY(AutomataSkinColors), +1)
@@ -65,7 +65,7 @@ public class AutomataRace extends Race {
 							return body.player.hasStatusEffect(StatusEffects.GlowingNipples) || body.player.hasStatusEffect(StatusEffects.GlowingAsshole);
 						}, +1)
 				.cockOrVaginaOfType(CockTypesEnum.AUTOMATA, VaginaClass.AUTOMATA, +1)
-				//.hasPerk(PerkLib., +1)
+				.hasPerk(PerkLib.Circuit, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.SoulCoreIM, +3);

@@ -65,6 +65,10 @@ public class PlantRace extends Race {
 						function (body:BodyData):Boolean {
 							return !body.player.isRace(Races.YGGDRASIL);
 						}, 0, -4)
+				.customRequirement("","not barometz",
+						function (body:BodyData):Boolean {
+							return !body.player.isRace(Races.BAROMETZ);
+						}, 0, -4)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 				
 		addMutation(IMutationsLib.PlantChlorophyllIM);

@@ -8,6 +8,7 @@ import classes.Scenes.API.Encounters;
 import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.HighMountains.*;
+import classes.Scenes.Dungeons.RiverDungeon.AirElemental;
 import classes.Scenes.Monsters.LightElfScene;
 import classes.Scenes.NPCs.EtnaFollower;
 import classes.Scenes.SceneLib;
@@ -142,6 +143,11 @@ public class HighMountains extends BaseContent {
 			kind  : 'monster',
 			call: SceneLib.lake.fetishZealotScene.zealotHighMountains
 		}, {
+			name: "wind ele",
+			label : "Wind Elemental",
+			kind  : 'monster',
+			call: highmountainsWindElemental
+		}, {
             name: "nekobakeInn",
 			label : "Nekobake Inn",
 			kind  : 'place',
@@ -187,6 +193,13 @@ public class HighMountains extends BaseContent {
 		var temp:Number = 0.5;
 		temp *= player.npcChanceToEncounter();
 		return temp;
+	}
+	
+	private function highmountainsWindElemental():void {
+		clearOutput();
+		outputText("While exploring the high mountains a sudden gust of wind sends you sprawling to the ground. Lifting your head up you see what appears to be a green skinned woman of which the ethereal frame moves and swirls like a small cyclone as various debris are carried in her wake. This is a fully manifested Sylpheed and the capricious elemental has definitively decided to pick on you to stave her boredom. Knowing full well you can’t reason with this aerial prankster you prepare to fight.\n");
+		flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 7;
+		startCombat(new AirElemental());
 	}
 
     public function caveScene():void {

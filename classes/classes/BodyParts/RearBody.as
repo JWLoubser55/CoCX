@@ -218,7 +218,12 @@ public class RearBody extends BodyPart {
 	EnumValue.add(Types, SERIAL_CODE, "SERIAL_CODE", {
 		name: "serial code",
 		appearanceDesc: "A serial code with your number and designation is imprinted on your flank."
-	});
+	});/*
+	public static const WERESPIDER: int = 37;
+	EnumValue.add(Types, WERESPIDER, "WERESPIDER", {
+		name: "An extra pair of spider legs",
+		appearanceDesc: "Pairs of chitinous, black spider legs sprout from your shoulders and back."
+	});*/
 
 	public function RearBody(creature:Creature) {
 		super(creature, null);

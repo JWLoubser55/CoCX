@@ -149,6 +149,15 @@ public class Races {
 	public static const MYCONID:MyconidRace				   = new MyconidRace(124);
 	public static const AUTOMATA:AutomataRace			   = new AutomataRace(125);
 	public static const MARILITH:MarilithRace			   = new MarilithRace(126);
+	public static const BAROMETZ:BarometzRace			   = new BarometzRace(127);
+	public static const WEREBAT:WerebatRace				   = new WerebatRace(128);
+	public static const WERECAT:WerecatRace				   = new WerecatRace(129);
+	public static const WERERAVEN:WereravenRace			   = new WereravenRace(130);
+	public static const WEREBEAR:WerebearRace			   = new WerebearRace(131);
+	public static const RAT:RatRace						   = new RatRace(132);
+	public static const ABYSSAL_ELF:AbyssalElfRace		   = new AbyssalElfRace(133);
+	public static const SHEEP:SheepRace					   = new SheepRace(134);
+	public static const HOLLOW:HollowRace				   = new HollowRace(135);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
@@ -171,6 +180,15 @@ public class Races {
 	];
 	public static const UndeadRaces:/*Race*/Array = [
 			YUKIONNA, JIANGSHI, DRACULA, MUMMY, LICH
+	];
+	public static const PlantRaces:/*Race*/Array = [
+			PLANT, ALRAUNE, YGGDRASIL, BAROMETZ
+	];
+	public static const WerebeastRaces:/*Race*/Array = [
+			WEREWOLF, WEREFOX, WERESPIDER, WERESHARK, WEREBAT, WERECAT, WERERAVEN, WEREBEAR
+	];
+	public static const GhostlikeRaces:/*Race*/Array = [
+			POLTERGEIST, BANSHEE, WENDIGO, HOLLOW
 	];
 	public static const RacesForRandomEnchantments:/*Race*/Array = [
 			// populated in load() as AllVisibleRaces - RacesExcludedFromRandomEnchantments

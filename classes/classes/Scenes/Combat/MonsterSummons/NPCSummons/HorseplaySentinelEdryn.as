@@ -17,7 +17,7 @@ public class HorseplaySentinelEdryn extends AbstractSummonMonster {
 
     override protected function doSpellEffect(display:Boolean = true):void {
 		if (display) {
-			outputText("As you focus your magic, sands whirl into existence in front of you. They form into a centaur woman, covered in metal armour and wielding a large halberd. The smell of leather and hay fills the air, invigorating you. \n");
+			outputText("As you focus your magic, sands whirl into existence in front of you. They form into a centaur woman, covered in metal armor and wielding a large halberd. The smell of leather and hay fills the air, invigorating you. \n");
 		}
 		
 	}

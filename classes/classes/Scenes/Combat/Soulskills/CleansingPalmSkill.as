@@ -45,11 +45,8 @@ public class CleansingPalmSkill extends AbstractSoulSkill {
 	}
 
 	private function calcCorruptionMulti(monster:Monster):Number {
-		var corruptionMulti:Number = (monster.cor - 20) / 25;
-		if (corruptionMulti > 1.5) {
-			corruptionMulti = 1.5;
-			corruptionMulti += ((monster.cor - 57.5) / 100); //The increase to multiplier is diminished.
-		}
+		var corruptionMulti:Number = (monster.cor / 25);
+		if (corruptionMulti < 0) corruptionMulti = 0;
 		return corruptionMulti;
 	}
 
@@ -102,7 +99,7 @@ public class CleansingPalmSkill extends AbstractSoulSkill {
 					outputText((monster as Monster).mfn(" him", " her", " it"));
 				}
 				outputText(" back a few feet.\n\n");
-				if (silly() && calcCorruptionMulti(monster) >= 1.75) outputText("It's super effective!  ");
+				if (silly() && monster.cor >= 66) outputText("It's super effective!  ");
 			}
 			//Determine if critical hit!
 			var crit:Boolean = false;
@@ -122,13 +119,18 @@ public class CleansingPalmSkill extends AbstractSoulSkill {
 					outputText(" <b>*Critical Hit!*</b>");
 				outputText("damage \n\n");
 			}
-			
+			if (player.hasPerk(PerkLib.BrutalSpells) && monster.armorMDef > 0) {
+				outputText("Your soulskills are so brutal that you damage [themonster]'s magical resistance!\n\n");
+				var bbc:Number = (Math.round(monster.armorMDef * 0.1) + 5);
+				if (monster.armorMDef - bbc > 0) monster.armorMDef -= bbc;
+				else monster.armorMDef = 0;
+			}
 		}
 		else {
 			if (display) {
 				outputText("You thrust your palm forward, causing a blast of pure energy to slam against [themonster], which they ignore. It is probably best you don’t use this technique against the pure.\n\n");
 			}
-		} 
+		}
 		combat.WrathGenerationPerHit2(5);
 		if (!player.hasStatusEffect(StatusEffects.BloodCultivator) && flags[kFLAGS.IN_COMBAT_PLAYER_ANUBI_HEART_LEECH] == 0) this.anubiHeartLeeching(damage);
 		combat.heroBaneProc(damage);

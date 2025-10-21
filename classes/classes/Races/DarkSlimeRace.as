@@ -51,6 +51,8 @@ public class DarkSlimeRace extends Race {
 				}, +1)
 				.hasStatusEffect(StatusEffects.SlimeCraving, "Slime Craving", +1)
 				.hasPerk(PerkLib.DarkSlimeCore, +1)
+				.hasPerk(PerkLib.DarkSlimeEmpressCore, +5)
+				.hasPerk(PerkLib.RoyalSlimeJelly, +2)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addConditionedScores(function (body:BodyData):Boolean {
@@ -68,22 +70,58 @@ public class DarkSlimeRace extends Race {
 		addMutation(IMutationsLib.SlimeMetabolismIM);
 		addMutation(IMutationsLib.SlimeFluidIM);
 		
-		buildTier(12, "dark slime")
-				.namesMaleFemale("dark slime boi", "dark slime girl")
+		buildTier(12, "Dark Slime")
+				.namesMaleFemale("Dark Slime boi", "Dark Slime Girl")
 				.buffs({
-					"tou.mult": +0.90,
-					"spe.mult": -0.40,
-					"int.mult": +0.45,
-					"lib.mult": +1.00
+					"tou.mult": +0.65,
+					"spe.mult": -0.30,
+					"int.mult": +0.55,
+					"lib.mult": +0.90
 				})
 				.end();
 		
-		buildTier(16, "dark slime queen")
+		buildTier(16, "Dark Slime Princess")
+				.namesMaleFemale("Dark Slime Prince", "Dark Slime Princess")
 				.buffs({
-					"tou.mult": +1.15,
+					"tou.mult": +1.05,
 					"spe.mult": -0.50,
-					"int.mult": +0.45,
-					"lib.mult": +1.45
+					"int.mult": +0.85,
+					"lib.mult": +1.00
+				})
+				.end();
+				
+		buildTier(24, "Dark Slime Queen")
+				.namesMaleFemale("Dark Slime King", "Dark Slime Queen")
+				.require("Slimy Crown or Sovereign's Dark Slime Core perk", function(body:BodyData):Boolean {
+				return body.player.hasKeyItem("Slimy Crown")!=-1 || body.player.hasPerk(PerkLib.DarkSlimeEmpressCore)})
+				.buffs({
+					"tou.mult": +1.45,
+					"spe.mult": -0.75,
+					"int.mult": +1.65,
+					"lib.mult": +1.25
+				})
+				.end();
+		buildTier(26, "Dark Slime Sovereign")
+				.require("Slimy Crown or Sovereign's Dark Slime Core perk", function(body:BodyData):Boolean {
+				return body.player.hasKeyItem("Slimy Crown")!=-1 || body.player.hasPerk(PerkLib.DarkSlimeEmpressCore)})
+				.requirePerk(PerkLib.TransformationImmunity2)
+				.buffs({
+					"tou.mult": +5.9,
+					"spe.mult": -0.85,
+					"int.mult": +4.0,
+					"lib.mult": +2.65
+				})
+				.end();
+		
+		buildTier(34, "Dark Slime Empress")
+				.namesMaleFemale("Dark Slime Emperor", "Dark Slime Empress")
+				.requirePerk(PerkLib.DarkSlimeEmpressCore)
+				.requirePerk(PerkLib.TransformationImmunity2)
+				.buffs({
+					"tou.mult": +7.0,
+					"spe.mult": -0.95,
+					"int.mult": +5.5,
+					"lib.mult": +3.75
 				})
 				.end();
 	}

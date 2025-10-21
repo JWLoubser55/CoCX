@@ -87,6 +87,7 @@ public class FusionSpecial2ndSkill extends AbstractMagicSpecial {
 		amountToHeal += scalingBonusWisdom() * multiWis;
 
         if (player.hasPerk(PerkLib.WisenedHealer)) amountToHeal += scalingBonusWisdom();
+		if (player.hasPerk(PerkLib.DruidicFocus)) amountToHeal += scalingBonusToughness();
         if (player.armor == armors.NURSECL) amountToHeal *= 1.2;
 		if (player.weapon == weapons.U_STAFF) amountToHeal *= 1.5;
 		if (player.weapon == weapons.ECLIPSE) amountToHeal *= 0.5;

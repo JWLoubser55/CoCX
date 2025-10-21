@@ -8,7 +8,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.Combat.Combat;
 
 public class BladeHailSkill extends AbstractSoulSkill {
-	//Skill name, number of attacks, status effect to sjow knowledge of skill, base SF cost, cooldown, number of attack rounds, hits per attack round
+	//Skill name, number of attacks, status effect to show knowledge of skill, base SF cost, cooldown, number of attack rounds, hits per attack round
 	private var hailArray:Array = [
 		["Hail of Blades", "six", StatusEffects.KnowsHailOfBlades, 50, 0, 6, 1],
 		["Grandiose Hail Of Blades", "eighteen", StatusEffects.KnowsGrandioseHailOfBlades, 200, 3, 9, 2],
@@ -129,6 +129,12 @@ public class BladeHailSkill extends AbstractSoulSkill {
 		var rounds:Number = hailArray[hailSelection][5];
 		while (rounds-->0) fireHail(hailArray[hailSelection][6], display);
 		if (display) outputText(" damage!\n\n");
+		if (player.hasPerk(PerkLib.BrutalBlows) && player.str > 75) {
+            if (monster.armorDef > 0) outputText("Your hits are so brutal that you damage [themonster]'s defenses!\n\n");
+            var bbc:Number = (Math.round(monster.armorDef * 0.1) + 5);
+			if (monster.armorDef - bbc > 0) monster.armorDef -= bbc;
+            else monster.armorDef = 0;
+        }
 		if (!player.hasStatusEffect(StatusEffects.BloodCultivator) && flags[kFLAGS.IN_COMBAT_PLAYER_ANUBI_HEART_LEECH] == 0) anubiHeartLeeching(flags[kFLAGS.HERO_BANE_DAMAGE_BANK]);
 		combat.heroBaneProc2();
 		combat.EruptingRiposte2();

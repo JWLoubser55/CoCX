@@ -512,7 +512,7 @@ public class SkinTransformations extends MutationsHelper {
 				function (doOutput: Boolean): void {
 					var desc: String = "";
 					desc += "Your [skin] burns, and you look down, your [skin] blackening, beginning to flake off. Crying out in shock, you scratch your arm. This only speeds up the process, your [skin] sloughing off in thin strips. The pain is intense, and your arms curl, ignoring your commands as your shoulders spasm. For a moment, you can see beneath your skin, muscles visible, before a brown-black coating pushes through, up from your bones. A sense of relief fills you, and after a few minutes, you regain control, bringing your hands to your face.";
-					desc += "Thick bark, not unlike that of the world tree’s, now covers your entire body. The iron-hard, rough wood is surprisingly flexible, but you notice that you can’t feel as much through this new, natural armour. <b>You are now covered by [skin color] bark from head to toe.</b>";
+					desc += "Thick bark, not unlike that of the world tree’s, now covers your entire body. The iron-hard, rough wood is surprisingly flexible, but you notice that you can’t feel as much through this new, natural armor. <b>You are now covered by [skin color] bark from head to toe.</b>";
 					player.skin.setBaseOnly({type: Skin.BARK, adj: "bark-like", pattern: Skin.PATTERN_NONE});
 					if (doOutput) outputText(desc);
 					Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.BARK));
@@ -530,6 +530,8 @@ public class SkinTransformations extends MutationsHelper {
 		return new SimpleTransformation("Steel Skin",
 				function (doOutput: Boolean): void {
 					var desc: String = "";
+					player.skin.setBaseOnly({type: Skin.STEEL, adj: "steel-like"});
+					if (doOutput) outputText(desc);
 				},
 				// is present
 				function (): Boolean {
@@ -567,7 +569,7 @@ public class SkinTransformations extends MutationsHelper {
 			function (doOutput: Boolean): void {
 				var desc: String = "";
 
-				desc += "Your skin patterns itche incessantly, and as you scratch, they shift and change, becoming less and less visible till they are gone. <b>Your skin is without any skin patterns!</b>";
+				desc += "Your skin patterns itches incessantly, and as you scratch, they shift and change, becoming less and less visible till they are gone. <b>Your skin is without any skin patterns!</b>";
 				player.skin.base.adj = "";
 				player.skin.base.pattern = Skin.PATTERN_NONE;
 				player.skin.coat.pattern = Skin.PATTERN_NONE;
@@ -928,6 +930,40 @@ public class SkinTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.skin.base.pattern === Skin.PATTERN_CIRCUIT_TATTOO;
+			}
+	);
+
+	public const SkinPatternDemonicPleasureRune: Transformation = new SimpleTransformation("Demonic Pleasure Rune Skin Pattern",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You feel something like tickling all over your skin as something like a demonic tattoo etches itself across your body, the relief near your pussy tracing the shape of a heart with tendrils where your ovaries should be. The magical tattoo seems to have an effect on you as you become increasingly hornier. <b>Your skin is now marked with a demonic pleasure rune.</b>";
+				player.skin.base.pattern = Skin.PATTERN_DEMONIC_PLEASURE_RUNE;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SkinPatternMem.getMemory(SkinPatternMem.DEMONIC_PLEASURE_RUNE));
+			},
+			// is present
+			function (): Boolean {
+				return player.skin.base.pattern === Skin.PATTERN_DEMONIC_PLEASURE_RUNE;
+			}
+	);
+
+	public const SkinPatternRunic: Transformation = new SimpleTransformation("Runic Skin Pattern",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Your skin itches as a glowing green tattoo etches themselves across your arm and belly. The scribblings seem to assist with your mana flow and are definitely magical in nature. <b>Your skin is now marked with a raunic patterns.</b>";
+				player.skin.base.pattern = Skin.PATTERN_RUNIC;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SkinPatternMem.getMemory(SkinPatternMem.RUNIC));
+			},
+			// is present
+			function (): Boolean {
+				return player.skin.base.pattern === Skin.PATTERN_RUNIC;
 			}
 	);
 	/*

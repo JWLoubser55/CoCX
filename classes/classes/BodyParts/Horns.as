@@ -385,6 +385,32 @@ public class Horns extends BodyPart {
 		}
 	});
 
+	public static const RAM: int = 29;
+	EnumValue.add(Types, RAM, "RAM", {
+		name:"ram",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = "";
+
+			desc += "Two large sized spiraling horns grow from the side of your head, similar to those of a ram. They give you a regal, if not intimidating outlook.";
+
+			return desc;
+		},
+		gore: true
+	});
+
+	public static const VERDANT_RAM: int = 30;
+	EnumValue.add(Types, VERDANT_RAM, "VERDANT_RAM", {
+		name:"v.ram",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = "";
+
+			desc += "Two large sized spiraling horns covered with vines grow from the side of your head, similar to those of a ram. They give you a regal, if not intimidating outlook.";
+
+			return desc;
+		},
+		gore: true
+	});
+
 	public function Horns(creature:Creature) {
 		super(creature, null);
 	}

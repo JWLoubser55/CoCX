@@ -30,7 +30,7 @@ public class ChargeWeaponSpell extends AbstractWhiteSpell {
 	}
 	
 	override public function manaCost():Number {
-		return super.manaCost() * costMultiplier();
+		return baseManaCost * costMultiplier();
 	}
 	
 	override public function advance(display:Boolean):void {
@@ -38,9 +38,8 @@ public class ChargeWeaponSpell extends AbstractWhiteSpell {
 			player.removeStatusEffect(StatusEffects.ChargeWeapon);
 			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx) && player.mana >= CombatAbilities.ChargeWeapon.manaCost()) CombatAbilities.ChargeWeapon.autocast();
 			else if (display) outputText("<b>Charged Weapon effect wore off!</b>\n\n");
-		} else {
-			if (!player.hasPerk(PerkLib.PureMagic)) player.addStatusValue(StatusEffects.ChargeWeapon, 2, -1);
 		}
+		else player.addStatusValue(StatusEffects.ChargeWeapon, 2, -1);
 	}
 	
 	override protected function usabilityCheck():String {
@@ -54,7 +53,7 @@ public class ChargeWeaponSpell extends AbstractWhiteSpell {
 		return "";
 	}
 	
-	private function weaponSizeBoost():Number {
+	private function weaponBoost():Number {
 		var ab12:Number = 2;
 		if (player.weapon == weapons.MGSWORD) ab12 *= 2;
 		return ab12;
@@ -88,9 +87,9 @@ public class ChargeWeaponSpell extends AbstractWhiteSpell {
 		var ChargeWeaponBoostCap:Number = 4;
 		var ChargeWeaponBoost:Number = 5;
 		if (player.hasPerk(PerkLib.SelfbuffsProficiency)) {
-			var capB:Number = 1.2;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 0.8;
-			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 5;
+			var capB:Number = 1.5;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx)) capB += 1;
+			if (player.hasPerk(PerkLib.SelfbuffsProficiencySu)) capB *= 7.5;
 			ChargeWeaponBoostCap *= capB;
 		}
 		ChargeWeaponBoostCap *= ChargeWeaponBoost;
@@ -103,7 +102,7 @@ public class ChargeWeaponSpell extends AbstractWhiteSpell {
 		ChargeWeaponBoost *= spellModWhite();
 		//ChargeWeaponBoost = FnHelpers.FN.logScale(ChargeWeaponBoost,ChargeWeaponABC,10);
 		if (ChargeWeaponBoost > ChargeWeaponBoostCap) ChargeWeaponBoost = ChargeWeaponBoostCap;
-		ChargeWeaponBoost *= weaponSizeBoost();
+		ChargeWeaponBoost *= weaponBoost();
 		ChargeWeaponBoost = Math.round(ChargeWeaponBoost);
 		var ChargeWeaponDuration:Number = 5;
 		ChargeWeaponDuration += combat.magic.perkRelatedDurationBoosting();

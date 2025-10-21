@@ -63,7 +63,7 @@ use namespace CoC;
 		}
 		
 		private function atlachNachaPinDown():void {
-			outputText("The spider spits webbing gluing your wing and causing you to crash down to the ground. ");
+			outputText("The spider spits webbing gluing your "+((player.isInGoblinMech()||player.isInNonGoblinMech())?"mech":"body")+" and causing you to crash down to the ground. ");
 			player.takePhysDamage((50 + (player.thickness * 2)), true);
 			outputText(" <b>There is no way you will be able to fly in these conditions!</b>\n\n");
 			player.createStatusEffect(StatusEffects.FlyingDisabled, 5, 0, 0, 0);
@@ -149,6 +149,7 @@ use namespace CoC;
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);
+			this.createPerk(PerkLib.EnemyEldritchType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
 			this.drop = new WeightedDrop(consumables.M_GOSSR, 1);
 			this.checkMonster();

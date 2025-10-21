@@ -44,11 +44,13 @@ public class HealSpell extends AbstractWhiteSpell {
 		var heal:Number = 0;
 		heal += scalingBonusIntelligence();
 		if (player.hasPerk(PerkLib.WisenedHealer)) heal += scalingBonusWisdom();
+		if (player.hasPerk(PerkLib.DruidicFocus)) heal += scalingBonusToughness();
 		heal *= healModWhite();
 		if (player.armor == armors.NURSECL) heal *= 1.2;
 		if (player.weapon == weapons.U_STAFF) heal *= 1.5;
 		if (player.weapon == weapons.ECLIPSE) heal *= 0.5;
 		if (player.weapon == weapons.OCCULUS) heal *= 1.5;
+		if (player.weapon == weapons.ANCIENTO) heal *= 1.25;
 		if (player.hasPerk(PerkLib.CloseToDeath) && player.HP < (player.maxHP() * 0.25)) {
 			if (player.hasPerk(PerkLib.CheatDeath) && player.HP < (player.maxHP() * 0.1)) heal *= 2.5;
 			else heal *= 1.5;

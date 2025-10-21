@@ -55,7 +55,9 @@ public class NagaRace extends Race {
 							return !(GorgonRace.isGorgonLike(body)
 									|| CouatlRace.isCouatlLike(body)
 									|| VouivreRace.isVouivreLike(body)
-									|| HydraRace.isHydraLike(body));
+									|| HydraRace.isHydraLike(body)
+									|| ApophisRace.isApophisLike(body)
+									|| MarilithRace.isMarilithLike(body));
 						}, 0, -1000)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		

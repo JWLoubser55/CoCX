@@ -12,6 +12,7 @@ import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.Cliffs.*;
 import classes.Scenes.Areas.Lake.SwordInStone;
+import classes.Scenes.Dungeons.RiverDungeon.LightningElemental;
 import classes.Scenes.SceneLib;
 
 use namespace CoC;
@@ -85,6 +86,11 @@ public class Cliffs extends BaseContent
 			kind : 'monster',
 			call: golemEncounters
 		}, {
+			name: "lightning ele",
+			label : "Lightning Elemental",
+			kind  : 'monster',
+			call: cliffsLightningElemental
+		}, {
 			chance: 0.25,
 			name: "nothing",
 			call: nothingEncounter,
@@ -123,6 +129,14 @@ public class Cliffs extends BaseContent
 		}
 		dynStats("tou", .5);
 		endEncounter();
+	}
+	
+	private function cliffsLightningElemental():void {
+		clearOutput();
+		outputText("We awaits for... ");
+		outputText("Lia writing nice intro here.\n\n");//lvl 100
+		flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
+		startCombat(new LightningElemental());
 	}
 
 	public function golemEncounters():void {

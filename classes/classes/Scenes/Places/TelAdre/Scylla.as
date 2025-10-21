@@ -32,7 +32,7 @@ private function scyllaSprite():void {
 
 public function scyllaBarSelectAction():void {
 	//This allows Scylla's activity at the bar to be determined before any description of what Kath and Urta be doing.
-	//Required because Scylla's behaviour in the bar is partly random, so you can't just check flags to see what she's up to.
+	//Required because Scylla's behavior in the bar is partly random, so you can't just check flags to see what she's up to.
 	if (model.time.totalTime == scyllaLastActionSelectionTime) return; //Only choose action once per visit to the bar
 	scyllaLastActionSelectionTime = model.time.totalTime;
 	scyllaAction = SCYLLA_NOT_PRESENT;

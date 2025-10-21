@@ -99,6 +99,7 @@ public class PregnancyStore extends Object
 		public static const PREGNANCY_ELECTRA:int               =  48;
 		public static const PREGNANCY_LUNA:int					=  49;
 		public static const PREGNANCY_NADIA:int					=  50;
+		public static const PREGNANCY_MOTH_EGGS:int				=  51;
 
 		public static const INCUBATION_IMP:int                  = 432; //Time for standard imps. Imp lords, Ceraph, Lilium and the imp horde cause slightly faster pregnancies
 		public static const INCUBATION_MINOTAUR:int             = 432;

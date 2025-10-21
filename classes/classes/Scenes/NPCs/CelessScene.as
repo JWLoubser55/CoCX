@@ -184,7 +184,7 @@ public class CelessScene extends XXCNPC implements TimeAwareInterface {
 		menu();
 		addButton(0,"Appearance",celessChildAppearance)
 		if (isAdult) {
-			outputText("\n\n<i>\""+player.mf("Dad", "Mom")+", now that I'm fully grown...I can feel power surging through my horn. I don't know how it works, exactly...But I can create powerful items for you, real actual artefacts. Should you ever find <b>radiant shards</b> and a decent medium I could use my innate magic to craft an armament of legend. Simply ask me if you ever want one." +
+			outputText("\n\n<i>\""+player.mf("Dad", "Mom")+", now that I'm fully grown...I can feel power surging through my horn. I don't know how it works, exactly...But I can create powerful items for you, real actual artifacts. Should you ever find <b>radiant shards</b> and a decent medium I could use my innate magic to craft an armament of legend. Simply ask me if you ever want one." +
 					" please don't ask me how I know this. I think it's just innate knowledge or something my dad magically passed down to me.\"</i>");
 			if (isCorrupt || player.cor >= 20) {
 				addButton(1, "Incest", incestMenu);
@@ -382,6 +382,7 @@ public class CelessScene extends XXCNPC implements TimeAwareInterface {
 			[CoC.instance.weapons.BFTHSWORD, CoC.instance.weapons.ARMAGED, CoC.instance.weapons.CHAOSEA],
 			[CoC.instance.weapons.A_WAND, CoC.instance.weapons.OCCULUS, CoC.instance.weapons.ECLIPSE],
 			[CoC.instance.weapons.PFLUTTE, CoC.instance.weapons.ELYSIUM, CoC.instance.weapons.HELLCAL],
+			[CoC.instance.weapons.GNARLEDS, CoC.instance.weapons.ANCIENTO, CoC.instance.weapons.QULIPOTH],
 			[CoC.instance.weaponsrange.BOWLONG, CoC.instance.weaponsrange.ARTEMIS, CoC.instance.weaponsrange.WILDHUN],
 			[CoC.instance.weaponsrange.SHUNHAR, CoC.instance.weaponsrange.KSLHARP, CoC.instance.weaponsrange.LEVHARP],
 			[CoC.instance.weaponsrange.SIXSHOT, CoC.instance.weaponsrange.GOODSAM, CoC.instance.weaponsrange.BADOMEN],
@@ -516,7 +517,8 @@ public class CelessScene extends XXCNPC implements TimeAwareInterface {
 					menu();
 					addButton(0, "Okay", celessUnicornIntro1, (player.isMale() || player.isGenderless()) ? 2 : 3)
 						.disableIf(player.isMale() && player.blockingBodyTransformations(), "Due to your unusual body, you have a feeling this won't work at you.")
-						.disableIf(player.isGargoyle(), "You are a gargoyle... you can't carry <b>anyone's</b> essence.");
+						.disableIf(player.isGargoyle(), "You are a gargoyle... you can't carry <b>anyone's</b> essence.")
+						.disableIf(player.isAutomata(), "You are an automata... you can't carry <b>anyone's</b> essence.");
 					var warningStr:String = "You have a strange feeling that you can miss something very important by doing this.\n\n"
 						+ "<b>You can still get Celess this way by enabling 'Other' in SceneHunter settings.</b>";
 					var noteStr:String = "<b>SH: Now this works as alternative way to Celess.</b>";

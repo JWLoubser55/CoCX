@@ -27,8 +27,7 @@ import classes.VaginaClass;
 			// Cribbing from combat mechanics - if the number we got here is <= 0, it was deflected, blocked or otherwise missed.
 			// We'll use this as our primary failure to hit, and then mix in a bit of random.
 			// tl;dr this avoids a bunch of weapon effects and perks, but given the specific means of attack, I think it actually makes sense overall. (Basically having to pull back from what you would normally do mid-attack to successfully land any kind of hit).
-			if (damage > 0 && rand(2) == 0)
-			{
+			if (damage > 0 && rand(2) == 0) {
 				outputText("  At the very last moment, you twist downwards and strike into your opponent’s trunk, drawing a gasp of pain from " + player.mf("him", "her") +" as " + player.mf("he", "she") +" clumsily lashes [his] own " + weaponName +" over you. It’s your turn to mirror " + player.mf("him", "her") +", smiling mockingly at " + player.mf("his", "her") +" rabid snarls as " + player.mf("he", "she") +" resets " + player.mf("him", "her") +"self, " + player.mf("his", "her") +" voice bubbling and flickering for a moment as " + player.mf("he", "she") +" tries to maintain control.");
 			} else {
 				outputText("  Your");

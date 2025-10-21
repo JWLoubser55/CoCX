@@ -50,7 +50,6 @@ public class HumanRace extends Race {
 				.faceType(Face.HUMAN, +1)
 				.eyeType(Eyes.HUMAN, +1)
 				.earType(Ears.HUMAN, +1)
-				.earType(NOT(Ears.ELVEN), 0, -7)
 				.tongueType(Tongue.HUMAN, +1)
 				.noGills(+1)
 				.noAntennae(+1)
@@ -73,26 +72,38 @@ public class HumanRace extends Race {
 				.hasPerk(PerkLib.HumanSupremacyImproved, +3)
 				.hasPerk(PerkLib.HumanSupremacySuperior, +4)
 				.hasPerk(PerkLib.HumanSupremacyPeerless, +4)
-				.customRequirement("", "Bloodline: Common human OR Common human's descendant",
+				.customScoreRequirement("", "Bloodline: Common human OR Common human's descendant",
 						function (body:BodyData):Boolean {
 							return (body.player.hasPerk(PerkLib.CommonHumanBloodline)
 									|| body.player.hasPerk(PerkLib.CommonHumansDescendant))
-						}, +2)
-				.customRequirement("", "Bloodline: Noble human OR Noble human's descendant",
+						},
+						function (body:BodyData):int {
+							return body.player.increaseFromBloodlinePerks();
+						})
+				.customScoreRequirement("", "Bloodline: Noble human OR Noble human's descendant",
 						function (body:BodyData):Boolean {
 							return (body.player.hasPerk(PerkLib.NobleHumanBloodline)
 									|| body.player.hasPerk(PerkLib.NobleHumansDescendant))
-						}, +4)
-				.customRequirement("", "Bloodline: Royal human OR Royal human's descendant",
+						},
+						function (body:BodyData):int {
+							return (body.player.increaseFromBloodlinePerks() + 2);
+						})
+				.customScoreRequirement("", "Bloodline: Royal human OR Royal human's descendant",
 						function (body:BodyData):Boolean {
 							return (body.player.hasPerk(PerkLib.RoyalHumanBloodline)
 									|| body.player.hasPerk(PerkLib.RoyalHumansDescendant))
-						}, +6)
-				.customRequirement("", "Bloodline: Primarch OR Primarch's descendant",
+						},
+						function (body:BodyData):int {
+							return (body.player.increaseFromBloodlinePerks() + 4);
+						})
+				.customScoreRequirement("", "Bloodline: Primarch OR Primarch's descendant",
 						function (body:BodyData):Boolean {
 							return (body.player.hasPerk(PerkLib.PrimarchBloodline)
 									|| body.player.hasPerk(PerkLib.PrimarchsDescendant))
-						}, +10)
+						},
+						function (body:BodyData):int {
+							return (body.player.increaseFromBloodlinePerks() + 8);
+						})
 				.hasPerk(PerkLib.AlteredAnima, -10)
 				.hasPerk(PerkLib.Soulless, -20)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
@@ -103,10 +114,12 @@ public class HumanRace extends Race {
 		addMutation(IMutationsLib.HumanDigestiveTractIM);
 		addMutation(IMutationsLib.HumanEyesIM);
 		addMutation(IMutationsLib.HumanFatIM);
+		addMutation(IMutationsLib.HumanLungsIM);
 		addMutation(IMutationsLib.HumanMetabolismIM);
 		addMutation(IMutationsLib.HumanMusculatureIM);
 		addMutation(IMutationsLib.HumanOvariesIM);
 		addMutation(IMutationsLib.HumanParathyroidGlandIM);
+		addMutation(IMutationsLib.HumanSecondaryHeartIM);
 		addMutation(IMutationsLib.HumanSmartsIM);
 		addMutation(IMutationsLib.HumanTesticlesIM);
 		addMutation(IMutationsLib.HumanThyroidGlandIM);
@@ -114,7 +127,8 @@ public class HumanRace extends Race {
 		
 		tiers.push(new HumanRaceTier(1, maxScore-9, "Human", {"str.mult": +0.20, "tou.mult": +0.20, "spe.mult": +0.20, "int.mult": +0.20, "wis.mult": +0.20, "lib.mult": +0.20}));
 		tiers.push(new HumanRaceTier(2, maxScore+1, "Super Human", {"str.mult": +0.50, "tou.mult": +0.50, "spe.mult": +0.50, "int.mult": +0.50, "wis.mult": +0.50, "lib.mult": +0.50, "sens": +30}));
-        tiers.push(new HumanRaceTier(3, maxScore+19, "Primaris Super Human", {"str.mult": +1.00, "tou.mult": +1.00, "spe.mult": +1.00, "int.mult": +1.00, "wis.mult": +1.00, "lib.mult": +1.00, "sens": +60}));
+        tiers.push(new HumanRaceTier(3, maxScore+19, "Firstborn Human", {"str.mult": +1.00, "tou.mult": +1.00, "spe.mult": +1.00, "int.mult": +1.00, "wis.mult": +1.00, "lib.mult": +1.00, "sens": +60}));
+        tiers.push(new HumanRaceTier(4, maxScore+46, "Primaris Super Human", {"str.mult": +2.00, "tou.mult": +2.00, "spe.mult": +2.00, "int.mult": +2.00, "wis.mult": +2.00, "lib.mult": +2.00, "sens": +120}));
 
 		debugForms = {
 			"human": [

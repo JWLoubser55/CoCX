@@ -214,7 +214,8 @@ use namespace CoC;
 					.add(weapons.ENESPEA,0.1)
 					.add(weapons.ENESWOR,0.1)
 					.add(weaponsrange.ENERGYG,0.1)
-					.add(null,0.7);
+					.add(useables.ENECORE,0.1)
+					.add(null,0.6);
 			this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.GoliathI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);

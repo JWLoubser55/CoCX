@@ -13,6 +13,7 @@ import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.HighMountains.PhoenixScene;
 import classes.Scenes.Areas.VolcanicCrag.*;
+import classes.Scenes.Dungeons.RiverDungeon.FireElemental;
 import classes.Scenes.NPCs.EtnaFollower;
 import classes.Scenes.SceneLib;
 
@@ -20,6 +21,8 @@ public class VolcanicCrag extends BaseContent
 	{
 		public var behemothScene:BehemothScene = new BehemothScene();
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
+		//public var lavaHotsprings:LavaHotspring = new LavaHotspring();
+		public var oreMerchants:SalamanderOreMerchants = new SalamanderOreMerchants();
 		
 		public function VolcanicCrag() {
 			onGameInit(init);
@@ -137,6 +140,19 @@ public class VolcanicCrag extends BaseContent
 				kind : 'monster',
 				call: behemothScene.behemothIntro
 			}, {
+				name: "fire ele",
+				label : "Fire Elemental",
+				kind  : 'monster',
+				call: outerVulcanicCragFireElemental
+			}, {
+				name: "hellcatK",
+				label : "Hellcat Kasha",
+				kind : 'monster',
+				when: function ():Boolean {
+					return flags[kFLAGS.WITCHES_SABBATH] >= 1;
+				},
+				call: SceneLib.ashlands.hellcatScene.HellCatKashaIntro
+			}, {
 				//Helia monogamy fucks
 				name  : "helcommon",
 				label : "Helia",
@@ -165,6 +181,26 @@ public class VolcanicCrag extends BaseContent
 					VolcanicCragConditions();
 					SceneLib.etnaScene.repeatYandereEnc();
 				}
+			}, {
+				name: "SalamanderOreMerchants",
+				label : "OreMerchants",
+				kind  : 'npc',
+				chance: 0.5,
+				call: function ():void {
+					VolcanicCragConditions();
+					oreMerchants.introOreMerchant()
+				}
+//			}, {
+//				name: "LavaHotspring",
+//				label : "LavaHotspring",
+//				kind  : 'place',
+//				when: function ():Boolean {
+//					return ((player.hasCock() || player.hasVagina()))
+//				},
+//				call: function ():void {
+//					VolcanicCragConditions();
+//					lavaHotsprings.discoverLavaHotsprings()
+//				}
 			}, {
 				name: "demonProjects",
 				label : "DemLab Subject",
@@ -197,6 +233,14 @@ public class VolcanicCrag extends BaseContent
 			var temp:Number = 0.5;
 			temp *= player.npcChanceToEncounter();
 			return temp;
+		}
+	
+		private function outerVulcanicCragFireElemental():void {
+			clearOutput();
+			outputText("As you wander vulcanic crag you stumble into a somewhat horrifying scene. A blazing woman is laughing maniacally as she sets a bunch of charred screaming humanoid creatures on fire. Whatever these were they are so burned out now that you can’t even identify their races anymore. ");
+			outputText("As the last victim screams its dying breath the fully grown Ignis suddenly realise you are here. She turns to face you, flames amassing in her palm as she prepares to add one more victim to her fiery rampage. You ready yourself for a fight as there is definitively no way you can resolve that issue peacefully.\n\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 6;
+			startCombat(new FireElemental());
 		}
 
 		private function findNothing():void {

@@ -313,6 +313,12 @@ public class Ears extends BodyPart {
 		name: "automata bunny",
 		appearanceDesc: "A pair of metal sound receptors sits on top of your head. They look similar to the ears of a bunny. They allow you the reception and registering of ambient sound perfectly and even provide senses akin to a sonic vision."
 	});
+	public static const BAROMETZ: int = 52;
+	EnumValue.add(Types, BAROMETZ, "BAROMETZ", {
+		name: "barometz",
+		appearanceDesc: "Your ears look similar to those of a sheep, minus the fur being moss instead. They flap from time to time in response to sounds.",
+		fur: true
+	});
 	
 	public static const HoleEars:/*String*/Array = [LIZARD, DRAGON, ORCA2, AVIAN, INSECT];
 	

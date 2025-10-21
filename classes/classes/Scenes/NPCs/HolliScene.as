@@ -16,7 +16,7 @@ public function treeMenu(output:Boolean = true):void {
 		menu();
 		addButton(1,"Fight",fightHolli);
 		if(player.hasKeyItem("Jojo's Talisman") >= 0) addButton(2,"Call Jojo",callDatJojo);
-		addButton(3, "Back", inventory.inventoryMenu);
+		addButton(3, "Back", camp.campActions);
 	}
 	else if(flags[kFLAGS.FUCK_FLOWER_LEVEL] == 1) flowerStage1Menu(output);
 	else if(flags[kFLAGS.FUCK_FLOWER_LEVEL] == 2) flowerStage2Menu(output);
@@ -53,7 +53,7 @@ public function flowerStage2Menu(output:Boolean = true):void {
 		.disableIf(player.lust < 33, "Not aroused enough!")
 		.disableIf(!player.hasVagina(), "Req. a vagina.");
 	if (!recalling) addButton(3, "Destroy It", destroyDatFuckingPlantAtP2);
-	addButton(8, "Back", recalling ? recallWakeUp : inventory.inventoryMenu);
+	addButton(8, "Back", recalling ? recallWakeUp : camp.campActions);
 }
 
 public function flowerStage3Menu(output:Boolean = true):void {
@@ -71,7 +71,7 @@ public function flowerStage3Menu(output:Boolean = true):void {
 		if(output) outputText("\n\nIt could be burned down with your supernatural fire, but it would definitely tire you.");
 		addButton(8, "Torch It", torchP3Tree);
 	}
-	addButton(9, "Back", recalling ? recallWakeUp : inventory.inventoryMenu);
+	addButton(9, "Back", recalling ? recallWakeUp : camp.campActions);
 }
 
 public function holliCampMenu(output:Boolean = true):void {
@@ -137,7 +137,7 @@ public function holliCampMenu(output:Boolean = true):void {
 public function alrauneExtraSceneWithHollicyntiaTentacleDuel():void {
 	clearOutput();
 	if (!player.isLiliraune()) sceneHunter.print("Check failed: Liliraune!");
-	outputText("As you ponder how you will deal with Hollicyntia’s behaviour today, you catch a glimpse of her checking out your vines. Holli seems to be comparing her vines with yours, evaluating size and length thoroughly like a boy in a shower room. As if that upstart could rival your floral perfection!\n\n");
+	outputText("As you ponder how you will deal with Hollicyntia’s behavior today, you catch a glimpse of her checking out your vines. Holli seems to be comparing her vines with yours, evaluating size and length thoroughly like a boy in a shower room. As if that upstart could rival your floral perfection!\n\n");
 	outputText("\"<i>These are big and healthy, but mine are better!</i>\" she taunts, evidently trying to rile you up.\n\n");
 	if (player.isLiliraune()) outputText("Your twin responds right away clearly upset \"<i>As if! Twice the girl, twice the pleasure! You’re just jealous that I get to literally enjoy having an orgy partner all day long! If both of us worked you up you would not even last a minute before melting in your tree little sis!</i>\"\n\n");
 	else outputText("Surely not! You bet you could fuck your sister’s brains out before she actually managed to get you off. With confidence you issue her a challenge, your vines raised around you. Here’s the deal, both of you will try to fuck each other silly, and whoever orgasms first loses!\n\n");

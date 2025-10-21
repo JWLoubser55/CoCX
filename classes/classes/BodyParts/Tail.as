@@ -366,7 +366,7 @@ public class Tail extends SaveableBodyPart {
 	public static const BURNING: int = 39;
 	EnumValue.add(Types, BURNING, "BURNING", {
 		name:"burning",
-		appearanceDesc: "A blazing cat tail pokes out from your [butt]. It has a tendency to light things on fire if you are not careful, but at least it assists with your balance.",
+		appearanceDesc: "A blazing cat tail pokes out from above your [butt]. It has a tendency to light things on fire if you are not careful but at least It assists with your balance.",
 		isLong: true,
 		feline: true,
 		fur: true
@@ -517,7 +517,7 @@ public class Tail extends SaveableBodyPart {
 	public static const MOTH_ABDOMEN: int = 61;
 	EnumValue.add(Types, MOTH_ABDOMEN, "MOTH_ABDOMEN", {
 		name:"moth abdomen",
-		appearanceDesc: "A large, spherical moth abdomen has grown out from your backside, covered in shiny [fur color] fur. Though it's heavy and bobs with every motion, it doesn't seem to slow you down."
+		appearanceDesc: "A small, spherical moth abdomen has grown out from your backside, covered in shiny [fur color] fur."
 	});
 	public static const TROLL: int = 62;
 	EnumValue.add(Types, TROLL, "TROLL", {
@@ -542,6 +542,12 @@ public class Tail extends SaveableBodyPart {
 	EnumValue.add(Types, AUTOMATA_TAIL_CABLE, "AUTOMATA_TAIL_CABLE", {
 		name:"automata tail cable",
 		appearanceDesc: "A long flexible cable with a shiny tip at the end extends from your butt like a tail. It can be used to deliver electric discharges in order to neutralize and pacify a target.",
+		isLong: true
+	});
+	public static const BAROMETZ: int = 66;
+	EnumValue.add(Types, BAROMETZ, "BAROMETZ", {
+		name:"barometz",
+		appearanceDesc: "The long trail of vine and leafs that compose your verdant tail hangs from your [butt].",
 		isLong: true
 	});
 

@@ -72,9 +72,11 @@ public class ConsumingDarknessSpell extends AbstractHexSpell {
 	public function calcDamage(monster:Monster, randomize:Boolean=true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
 		var baseDamage:Number = scalingBonusIntelligence() * 2;
 		daaamageaddons(baseDamage);
-		if (player.weapon == weapons.UGRAVES) {
-			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) baseDamage *= 2.6;
-			else baseDamage *= 1.8;
+		if (player.weapon == weapons.UGRAVES || player.weaponOff == weapons.UGRAVES) {
+			var blue:Number = 0.8;
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) blue *= 2;
+			if (player.weapon == weapons.UGRAVES && player.weaponOff == weapons.UGRAVES) blue *= 2;
+			baseDamage *= (1 + blue);
 		}
 		return adjustSpellDamage(
 				baseDamage,

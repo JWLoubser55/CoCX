@@ -192,6 +192,7 @@ public class EventParser {
             SceneLib.combat.wrathregeneration1(false);
 			SceneLib.combat.fatigueRecovery1(false);
 			SceneLib.combat.venomCombatRecharge1(false);
+			if (player.hasPerk(PerkLib.Photosynthesis)) SceneLib.combat.checkPhotosynthesis();
             //Inform all time aware classes that a new hour has arrived
             for (var tac:int = 0; tac < _timeAwareClassList.length; tac++) {
                 item = _timeAwareClassList[tac];
@@ -270,22 +271,6 @@ public class EventParser {
             trace("Uma's massage bonus time remaining: " + player.statusEffectv3(StatusEffects.UmasMassage));
         }
 
-        //Drop axe if too short!
-        if (player.tallness < 78 && player.weapon == CoC.instance.weapons.L__AXE) {
-            EngineCore.outputText("<b>\nThis axe is too large for someone of your stature to wield, though you can keep it in your inventory until you are big enough.</b>\n");
-            SceneLib.inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
-            return true;
-        }
-        if (player.tallness < 78 && player.weapon == CoC.instance.weapons.DL_AXE_) {
-            EngineCore.outputText("<b>\nThis dual axes are too large for someone of your stature to use, though you can keep them in your inventory until you are big enough.</b>\n");
-            SceneLib.inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
-            return true;
-        }
-        if (player.tallness < 60 && player.weapon == CoC.instance.weapons.L_HAMMR) {
-            EngineCore.outputText("<b>\nYou've become too short to use this hammer anymore.  You can still keep it in your inventory, but you'll need to be taller to effectively wield it.</b>\n");
-            SceneLib.inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
-            return true;
-        }
         //Remove tail ornament if no demonic tail
         if (player.miscJewelry1 == CoC.instance.miscjewelries.DMAGETO && player.tailType != Tail.DEMONIC) {
             EngineCore.outputText("<b>\nSince you don't have a demonic tail anymore, your beautiful ornament becomes useless.</b>\n");

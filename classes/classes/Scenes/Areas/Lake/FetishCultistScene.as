@@ -207,7 +207,7 @@ public class FetishCultistScene extends AbstractLakeContent
 
 				if (sceneHunter.lossSelect) {
 					outputText("Somehow you start to believe her. The nurse really cares about you. Maybe you shouldn't struggle too much?\n\n");
-					outputText("Noticing the change in your behaviour, she smiles. \"<i>So, what troubles you, my patient? Oh, right, you can't talk. Well... nod if I mention something that you have any problems with.</i>\" She starts going over the entire list of your bodyparts. Some names even make you blush: how is she going to use your nose or ear, if you agree with yer? Well, it's time to answer something that could at least provide you pleasure, before <b>she</b> selects for you.");
+					outputText("Noticing the change in your behavior, she smiles. \"<i>So, what troubles you, my patient? Oh, right, you can't talk. Well... nod if I mention something that you have any problems with.</i>\" She starts going over the entire list of your bodyparts. Some names even make you blush: how is she going to use your nose or ear, if you agree with yer? Well, it's time to answer something that could at least provide you pleasure, before <b>she</b> selects for you.");
 					menu();
 					if (player.gender == 0)
 						addButton(0, "Nothing", nothing);

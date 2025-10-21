@@ -68,7 +68,7 @@ import classes.Scenes.NPCs.Forgefather;
 			if (goal == thickness)
 				return "";
 			//Lose weight fatty!
-			if (goal < thickness && goal < 50)
+			if (goal < thickness && goal < Math.round(game.player.maxThicknessCap() * 0.5))
 			{
 				thickness -= strength;
 				//YOUVE GONE TOO FAR! TURN BACK!
@@ -76,7 +76,7 @@ import classes.Scenes.NPCs.Forgefather;
 					thickness = goal;
 			}
 			//Sup tubby!
-			if (goal > thickness && goal > 50)
+			if (goal > thickness && goal > Math.round(game.player.maxThicknessCap() * 0.5))
 			{
 				thickness += strength;
 				//YOUVE GONE TOO FAR! TURN BACK!
@@ -85,10 +85,10 @@ import classes.Scenes.NPCs.Forgefather;
 			}
 			trace("MOD THICKNESS FIRE");
 			//DIsplay 'U GOT FAT'
-			if (goal >= thickness && goal >= 50)
+			if (goal >= thickness && goal >= Math.round(game.player.maxThicknessCap() * 0.5))
 				return "\n\nYour center of balance changes a little bit as your body noticeably widens. (+" + strength + " body thickness)";
 			//GET THIN BITCH
-			else if (goal <= thickness && goal <= 50)
+			else if (goal <= thickness && goal <= Math.round(game.player.maxThicknessCap() * 0.5))
 				return "\n\nEach movement feels a tiny bit easier than the last.  Did you just lose a little weight!? (+" + strength + " thin)";
 			return "";
 		}
@@ -98,7 +98,7 @@ import classes.Scenes.NPCs.Forgefather;
 			if (goal == tone)
 				return "";
 			//Lose muscle visibility!
-			if (goal < tone && goal < 50)
+			if (goal < tone && goal < Math.round(game.player.maxToneCap() * 0.5))
 			{
 				tone -= strength;
 				//YOUVE GONE TOO FAR! TURN BACK!
@@ -109,7 +109,7 @@ import classes.Scenes.NPCs.Forgefather;
 				}
 			}
 			//MOAR hulkness
-			if (goal > tone && goal > 50)
+			if (goal > tone && goal > Math.round(game.player.maxToneCap() * 0.5))
 			{
 				tone += strength;
 				//YOUVE GONE TOO FAR! TURN BACK!
@@ -120,23 +120,22 @@ import classes.Scenes.NPCs.Forgefather;
 				}
 			}
 			//DIsplay BITCH I WORK OUT
-			if (goal >= tone && goal > 50)
+			if (goal >= tone && goal > Math.round(game.player.maxToneCap() * 0.5))
 				return "\n\nYour body feels a little more solid as you move, and your muscles look slightly more visible. (+" + strength + " muscle tone)";
 			//Display DERP I HAVE GIRL MUSCLES
-			else if (goal <= tone && goal < 50)
+			else if (goal <= tone && goal < Math.round(game.player.maxToneCap() * 0.5))
 				return "\n\nMoving brings with it a little more jiggle than you're used to.  You don't seem to have gained weight, but your muscles look less visible. (-" + strength + " muscle tone)";
 			return "";
 		}
 
-
-	public function hasBeard():Boolean{ return facePart.hasBeard(); }
-	public function beard():String{ return facePart.beard(); }
-	public function hasMuzzle():Boolean{ return facePart.hasMuzzle(); }
-	public function hasBeak():Boolean{ return facePart.hasBeak(); }
-	public function face():String { return facePart.describe(); }
-	public function faceDesc():String { return facePart.describeMF(); }
-	public function faceDescArticle():String { return facePart.describeMF(true); }
-	public function hasLongTail():Boolean { return tail.isLong(); }
+		public function hasBeard():Boolean{ return facePart.hasBeard(); }
+		public function beard():String{ return facePart.beard(); }
+		public function hasMuzzle():Boolean{ return facePart.hasMuzzle(); }
+		public function hasBeak():Boolean{ return facePart.hasBeak(); }
+		public function face():String { return facePart.describe(); }
+		public function faceDesc():String { return facePart.describeMF(); }
+		public function faceDescArticle():String { return facePart.describeMF(true); }
+		public function hasLongTail():Boolean { return tail.isLong(); }
 
 		public function isPregnant():Boolean { return _pregnancyType > 0 || _pregnancy2Type > 0; }
 		public function canGetPregnant():Boolean { return (vaginas.length > 0 && _pregnancyType == 0) || (vaginas.length > 1 && _pregnancy2Type == 0); }
@@ -173,7 +172,7 @@ import classes.Scenes.NPCs.Forgefather;
 			//Chance for eggs fertilization - ovi elixir and imps excluded!
 			if (type != PregnancyStore.PREGNANCY_IMP && type != PregnancyStore.PREGNANCY_OVIELIXIR_EGGS && type != PregnancyStore.PREGNANCY_ANEMONE)
 			{
-				if (hasPerk(PerkLib.SpiderOvipositor) || hasPerk(PerkLib.BeeOvipositor) || hasPerk(PerkLib.MantisOvipositor) || hasPerk(PerkLib.AntOvipositor))
+				if (hasPerk(PerkLib.SpiderOvipositor) || hasPerk(PerkLib.BeeOvipositor) || hasPerk(PerkLib.MantisOvipositor) || hasPerk(PerkLib.AntOvipositor) || hasPerk(PerkLib.MothOvipositor))
 				{
 					if (totalFertility() + bonus > Math.floor(Math.random() * beat))
 					{
@@ -597,11 +596,17 @@ import classes.Scenes.NPCs.Forgefather;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
+			if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
 			if (perkv1(IMutationsLib.HumanBloodstreamIM) >= 4) max2 += 0.05;
 			if (perkv1(IMutationsLib.HumanFatIM) >= 4) max2 += 0.1;
 			if (perkv1(IMutationsLib.HumanMetabolismIM) >= 4) max2 += 0.2;
 			if (perkv1(IMutationsLib.HumanMusculatureIM) >= 4) max2 += 0.1;
-			max1 *= max2;//~140%
+			max1 *= max2;//~200%
 			max1 = Math.round(max1);
 			if (max1 > 2199999) max1 = 2199999;
 			return max1;
@@ -660,7 +665,38 @@ import classes.Scenes.NPCs.Forgefather;
 				if (hasPerk(PerkLib.SoulTyrant)) max += 300;
 				if (hasPerk(PerkLib.SoulKing)) max += 300;
 				if (hasPerk(PerkLib.SoulEmperor)) max += 300;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistTyrantStage)) {
 				//if (hasPerk(PerkLib.SoulAncestor)) max += 300;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) max += 125;
+				if (hasPerk(PerkLib.SoulPersonage)) max += 125;
+				if (hasPerk(PerkLib.SoulWarrior)) max += 125;
+				multimax += 0.05;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) max += 250;
+				if (hasPerk(PerkLib.SoulScholar)) max += 250;
+				if (hasPerk(PerkLib.SoulGrandmaster)) max += 250;
+				multimax += 0.05;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) max += 375;
+				if (hasPerk(PerkLib.SoulExalt)) max += 375;
+				if (hasPerk(PerkLib.SoulOverlord)) max += 375;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) max += 500;
+				if (hasPerk(PerkLib.SoulKing)) max += 500;
+				if (hasPerk(PerkLib.SoulEmperor)) max += 500;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) max += 625;
 				multimax += 0.1;
 			}
 			if (hasPerk(PerkLib.AscensionSoulPurity)) max += perkv1(PerkLib.AscensionSoulPurity) * 50;
@@ -720,9 +756,15 @@ import classes.Scenes.NPCs.Forgefather;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
+			if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
 			if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 4) max2 += 0.2;
 			if (perkv1(IMutationsLib.HumanSmartsIM) >= 4) max2 += 0.05;
-			max1 *= max2;//~130%
+			max1 *= max2;//~190%
 			max1 = Math.round(max1);
 			if (max1 > 1999999) max1 = 1999999;
 			return max1;
@@ -732,6 +774,7 @@ import classes.Scenes.NPCs.Forgefather;
 			var max:Number = 50;
 			max += level * 10;
 			if (hasPerk(PerkLib.DarkAscensionBottomlessHunger)) max *= (1 + (0.05 * perkv1(PerkLib.DarkAscensionBottomlessHunger)));
+			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment12) && flags[kFLAGS.SOULFORCE_GAINED_FROM_CULTIVATING] > 0) max *= (1 + (flags[kFLAGS.SOULFORCE_GAINED_FROM_CULTIVATING] * 0.01));
 			if (!hasPerk(PerkLib.Soulless)) max *= 0.5;
 			max = Math.round(max);
 			return max;
@@ -787,8 +830,14 @@ import classes.Scenes.NPCs.Forgefather;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
+			if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
 			if (perkv1(IMutationsLib.HumanBloodstreamIM) >= 4) max2 += 0.05;
-			max1 *= max2;//~195%
+			max1 *= max2;//~255%
 			max1 = Math.round(max1);//~905 188,025
 			if (max1 > 955999) max1 = 955999;
 			return max1;
@@ -901,8 +950,14 @@ import classes.Scenes.NPCs.Forgefather;
 			if (hasPerk(PerkLib.GreySageIntelligence)) max2 += 0.1;
 			if (hasPerk(PerkLib.HyperCasting)) max2 += 0.1;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
+			if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
 			if (perkv1(IMutationsLib.HumanSmartsIM) >= 4) max2 += 0.05;
-			max1 *= max2;//~130%
+			max1 *= max2;//~190%
 			max1 = Math.round(max1);
 			if (max1 > 3299999) max1 = 3299999;
 			return max1;

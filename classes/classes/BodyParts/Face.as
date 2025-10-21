@@ -221,7 +221,7 @@ public class Face extends SaveableBodyPart {
 
 			if (creature.hasPlainSkinOnly()){
 				desc += " It looks a bit strange with no fur coverage.";
-			} 
+			}
 			else if (creature.hasScaleMaterial()) desc += " The presence of said scales gives your visage an eerie look, more reptile than mammal.";
 			else if (creature.hasChitinMaterial()) desc += " The presence of said chitin gives your visage an eerie look, more insect than mammal.";
 
@@ -568,7 +568,7 @@ public class Face extends SaveableBodyPart {
 	public static const YUKI_ONNA: int = 50;
 	EnumValue.add(Types, YUKI_ONNA, "YUKI_ONNA", {
 		name: "yuki onna",
-		appearanceDesc: "Your lips, as lacking in wamth as the rest of your body, are dyed blue by the cold.",
+		appearanceDesc: "Your lips, as lacking in warmth as the rest of your body, are dyed blue by the cold.",
 		humanShaped: true
 	});
 	public static const KUDERE: int = 51;
@@ -599,7 +599,7 @@ public class Face extends SaveableBodyPart {
 	public static const SMUG: int = 55;
 	EnumValue.add(Types, SMUG, "SMUG", {
 		name: "smug",
-		appearanceDesc: "The length of your incisors gives your visage a hint of squirrel-like cuteness, and once in a while you can't help but smirk smuggly at your interlocutors.",
+		appearanceDesc: "The length of your incisors gives your visage a hint of squirrel-like cuteness, and once in a while you can't help but smirk smugly at your interlocutors.",
 		humanShaped: true
 	});
 	public static const SQUIRREL: int = 56;
@@ -708,6 +708,13 @@ public class Face extends SaveableBodyPart {
 	EnumValue.add(Types, AUTOMATA, "AUTOMATA", {
 		name: "automata",
 		appearanceDesc: "Your face is human in shape and structure with [skin coat] covered with synthetic skin for flexibility. You do not display your emotions naturally, instead relying on an advanced simulation program called social mode to convincingly replicate the expressions and conversational behavior of living beings.",
+		humanShaped: true
+	});
+	public static const WERESPIDER_FANGS: int = 68;
+	EnumValue.add(Types, WERESPIDER_FANGS, "WERESPIDER_FANGS", {
+		name: "werespider",
+		appearanceDesc: "A set of retractable, long and pointy vampire canines sit in place of your canines and are ready to dispense their venom or to pierce into victims and reach their blood.",
+		bite: true,
 		humanShaped: true
 	});
 

@@ -109,12 +109,12 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 					return true;
 				}
 				//Pure amily flips her shit and moves out!
-				if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && player.cor >= 66 + player.corruptionTolerance && flags[kFLAGS.AMILY_WARNING] > 0) {
+				if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && player.cor >= 66 + player.corruptionTolerance && !player.hasPerk(PerkLib.FalseLight) && flags[kFLAGS.AMILY_WARNING] > 0) {
 					amilyScene.farewellNote();
 					return true;
 				}
 				//Amily moves back in once uncorrupt.
-				if (flags[kFLAGS.AMILY_TREE_FLIPOUT] == 0 && flags[kFLAGS.AMILY_WARNING] > 0 && player.cor <= 25 + player.corruptionTolerance && flags[kFLAGS.AMILY_FOLLOWER] == 0) {
+				if (flags[kFLAGS.AMILY_TREE_FLIPOUT] == 0 && flags[kFLAGS.AMILY_WARNING] > 0 && (player.cor <= 25 + player.corruptionTolerance || player.hasPerk(PerkLib.FalseLight)) && flags[kFLAGS.AMILY_FOLLOWER] == 0) {
 					amilyScene.amilyReturns();
 					return true;
 				}
@@ -280,7 +280,7 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 				if (!player.hasStatusEffect(StatusEffects.Infested)) flags[kFLAGS.AMILY_GROSSED_OUT_BY_WORMS] = 0;
 			}
 			//Corrupt blow up! - requires you've met Amily
-			if (flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] == 0 && flags[kFLAGS.AMILY_MET] > 0 && player.cor > 25 + player.corruptionTolerance) {
+			if (flags[kFLAGS.AMILY_CORRUPT_FLIPOUT] == 0 && flags[kFLAGS.AMILY_MET] > 0 && player.cor > 25 + player.corruptionTolerance && !player.hasPerk(PerkLib.FalseLight)) {
 				meetAmilyAsACorruptAsshat();
 				return;
 			}
@@ -2454,12 +2454,12 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 			}
 			amilySprite();
 			//Amily freakout
-			if(player.cor >= 50 + player.corruptionTolerance && flags[kFLAGS.AMILY_WARNING] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1) {
+			if(player.cor >= 50 + player.corruptionTolerance && !player.hasPerk(PerkLib.FalseLight) && flags[kFLAGS.AMILY_WARNING] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1) {
 				amilyTaintWarning();
 				return;
 			}
 			//Clear warning if PC is good!
-			if(player.cor < 50 + player.corruptionTolerance && flags[kFLAGS.AMILY_WARNING] > 0) flags[kFLAGS.AMILY_WARNING] = 0;
+			if((player.cor < 50 + player.corruptionTolerance || player.hasPerk(PerkLib.FalseLight)) && flags[kFLAGS.AMILY_WARNING] > 0) flags[kFLAGS.AMILY_WARNING] = 0;
 			//Preggo birthing!
 			if (pregnancy.isPregnant && pregnancy.incubation == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
 				clearOutput();
@@ -7088,7 +7088,7 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 			if (amilyCorrupt()) {
 				outputText("Beckoning your furry little slut over to you, you inform her that she should be changed back to the way she was before you've even met her. You produce the two batches of mouse cocoa and give them to Amily, telling her to just suck on it.\n\nEagerly, she sucks on the mouse cocoa and her eyes widen. Her face changes, rodent snout and whiskers grow. Fur grows all over her body and her hands warp into more paw-like. <b>Amily is now back to her former mouse self albeit corrupted.</b>");
 			} else {
-				outputText("She squares up to you with a hand planted on her slender hip, looking to you expectantly.  Without words, you reach into your pack and produce the batches of mouse cocoa.  You pass them to the mouse girl, and she looks over them curiously.  \"<i>Are you sure you want me to change back?</i>\" she asks somewhat nervously.  Your nod is the only urging she needs.  She sucks on the mouse cocoa, savouring the chocolatey taste.\n\n");
+				outputText("She squares up to you with a hand planted on her slender hip, looking to you expectantly.  Without words, you reach into your pack and produce the batches of mouse cocoa.  You pass them to the mouse girl, and she looks over them curiously.  \"<i>Are you sure you want me to change back?</i>\" she asks somewhat nervously.  Your nod is the only urging she needs.  She sucks on the mouse cocoa, savoring the chocolatey taste.\n\n");
 				outputText("Her face changes, rodent snout and whiskers grow. Fur grows all over her body and her hands warp into more paw-like. <b>Amily is now back to her former mouse self.</b>");
 			}
 			flags[kFLAGS.AMILY_NOT_FURRY] = 0;
@@ -7105,7 +7105,7 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 			}
 			else {
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "Amily") addButton(5, "Team (1)", amilyHenchmanOption2, 21).hint("Ask Amily to stay in camp.");
-				else addButtonDisabled(5, "Team (1)", "You already have other henchman accompany you as first party member. Ask him/her to stay at camp before you talk with Amily about accompaning you as first party member.");
+				else addButtonDisabled(5, "Team (1)", "You already have other henchman accompany you as first party member. Ask him/her to stay at camp before you talk with Amily about accompanying you as first party member.");
 			}
 			if (player.hasPerk(PerkLib.IntermediateLeadership)) {
 				if (flags[kFLAGS.PLAYER_COMPANION_2] == "") {

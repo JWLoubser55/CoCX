@@ -11,7 +11,7 @@ public class Leth1te extends Consumable {
 
     public function Leth1te() {
         var descr:String;
-        descr = "A chunk of average lethicite. It's rare as lethicite is only produced when a mortal becomes a demon and cums their souls out. A demon's favourite treat."
+        descr = "A chunk of average lethicite. It's rare as lethicite is only produced when a mortal becomes a demon and cums their souls out. A demon's favorite treat."
         super("Leth1te", "Average Lethicite", "a chunk of average lethicite", 2000, descr );
     }
 
@@ -32,6 +32,7 @@ public class Leth1te extends Consumable {
         outputText("You grab the crystal and gulp it down, smiling contently as you feel it dissolve into your core and suffuse your body with raw power.");
 		var gains:Number = 100;
 		if (player.hasPerk(PerkLib.Phylactery)) gains *= 0.5;
+		if (player.hasPerk(PerkLib.LethiciteConnoisseur)) gains *= 2;
 		if (player.demonicenergy + gains > player.maxDemonicEnergy()) gains = player.maxDemonicEnergy() - player.demonicenergy;
 		player.demonicenergy += gains;
 		outputText(" (+"+gains+" DE)");

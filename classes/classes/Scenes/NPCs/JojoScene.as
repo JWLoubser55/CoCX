@@ -2299,10 +2299,10 @@ public function refuseOfferOfHelp():void
 public function jojoCamp2():void {
 	if (!player.hasStatusEffect(StatusEffects.LunaOff) && !player.hasStatusEffect(StatusEffects.LunaWasWarned)) {
 		if ((flags[kFLAGS.LUNA_JEALOUSY] > 200 && rand(10) < 4) || (flags[kFLAGS.LUNA_JEALOUSY] > 300 && rand(10) < 8)) mishapsLunaJojo();
-		if ((flags[kFLAGS.JOJO_BIMBO_STATE] = 5)) joJoyCampMenu();
+		if ((flags[kFLAGS.JOJO_BIMBO_STATE] == 5)) joJoyCampMenu();
 		else jojoCamp();
 	}
-	if ((flags[kFLAGS.JOJO_BIMBO_STATE] = 5)) joJoyCampMenu();
+	if ((flags[kFLAGS.JOJO_BIMBO_STATE] == 5)) joJoyCampMenu();
 	else jojoCamp();
 }
 
@@ -2411,13 +2411,13 @@ public function talkMenu():void
 	if (flags[kFLAGS.UNLOCKED_JOJO_TRAINING] == 0 && flags[kFLAGS.TIMES_TALKED_WITH_JOJO] >= 4) addButton(7, "Training", apparantlyJojoDOESlift).hint("Ask him if he's willing to train you.");
 	if (flags[kFLAGS.MINERVA_PURIFICATION_JOJO_TALKED] == 1 && flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] < 10) addButton(8, "Purification", SceneLib.mountain.minervaScene.minervaPurification.purificationByJojoPart1).hint("Ask him if he can exorcise the demonic parasite infesting Minerva.");
 	//Sex button
-	if (player.cor <= (10 + player.corruptionTolerance) && player.lust >= 33) {
+	if ((player.cor <= (10 + player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight)) && player.lust >= 33) {
 		addButton(9, "Sex?", offerSexFirstTime).hint("Ask him if he's willing to have sex with you.");
 		if (flags[kFLAGS.TIMES_TALKED_WITH_JOJO] < 4) addButtonDisabled(9, "Sex?", "You should socialize with Jojo a bit more.");
 		//if (player.hasStatusEffect(StatusEffects.EverRapedJojo)) addButtonDisabled(9, "Sex?". "You've raped Jojo in the past, now you can't ask him out.");
 	}
-	if (player.cor <= 10 && player.lust >= 33 && monk == -1) addButtonDisabled(9, "Sex?", "You need to spend more time with Jojo. \n\nTalk sessions: " + flags[kFLAGS.TIMES_TALKED_WITH_JOJO] + "/6 \nTraining sessions: " + flags[kFLAGS.TIMES_TRAINED_WITH_JOJO] + "/10 \nMeditation sessions: " + player.statusEffectv1(StatusEffects.JojoMeditationCount) + "/10 \nYou must be pure enough and have sufficient lust as well.");
-	if (player.cor <= 10 && player.lust >= 33 && flags[kFLAGS.TIMES_TALKED_WITH_JOJO] >= 6 && flags[kFLAGS.TIMES_TRAINED_WITH_JOJO] >= 10 && player.statusEffectv1(StatusEffects.JojoMeditationCount) >= 10 && monk > -3) addButton(9, "Sex?", offerSexFirstTimeHighAffection).hint("You've spent quite the time with Jojo, maybe you can offer him if he's willing to have sex with you?"); //Will unlock consensual sex scenes.
+	if ((player.cor <= 10 || player.hasPerk(PerkLib.FalseLight)) && player.lust >= 33 && monk == -1) addButtonDisabled(9, "Sex?", "You need to spend more time with Jojo. \n\nTalk sessions: " + flags[kFLAGS.TIMES_TALKED_WITH_JOJO] + "/6 \nTraining sessions: " + flags[kFLAGS.TIMES_TRAINED_WITH_JOJO] + "/10 \nMeditation sessions: " + player.statusEffectv1(StatusEffects.JojoMeditationCount) + "/10 \nYou must be pure enough and have sufficient lust as well.");
+	if ((player.cor <= 10 || player.hasPerk(PerkLib.FalseLight)) && player.lust >= 33 && flags[kFLAGS.TIMES_TALKED_WITH_JOJO] >= 6 && flags[kFLAGS.TIMES_TRAINED_WITH_JOJO] >= 10 && player.statusEffectv1(StatusEffects.JojoMeditationCount) >= 10 && monk > -3) addButton(9, "Sex?", offerSexFirstTimeHighAffection).hint("You've spent quite the time with Jojo, maybe you can offer him if he's willing to have sex with you?"); //Will unlock consensual sex scenes.
 	if (monk <= -3) removeButton(9);
 	if (TyrantiaFollower.TyrantiaFollowerStage == 5) addButton(10, "Tyrantia", TyrantiaEggQuestJoJo);
 	if (flags[kFLAGS.JOJO_BIMBO_STATE] > 3) {
@@ -2539,7 +2539,7 @@ private function TyrantiaEggQuestJoJo():void {
 		{
 			outputText("You slide an arm around " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "Joy": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "Jojo":"") + "’s shoulders in an attempt to reassure the monk.  " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "She": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "he":"") + "manages a smile in response as " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "She": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "he":"") + "looks up at you.  A single tear manages to slide down  muzzle as " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "She": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "he":"") + "says, \"<i>Thank you, my friend.</i>\"\n\n");
 		}
-		else if (player.cor >= 35 && player.cor <= 75)
+		else if (player.cor >= 35 && (player.cor <= 75 || player.hasPerk(PerkLib.FalseLight)))
 		{
 			outputText("You try to further console the distressed monk by moving your hand to  back and giving " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "her": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "him":"") + " a few friendly taps.  " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "Joy": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "Jojo":"") + " visibly pulls " + (flags[kFLAGS.JOJO_BIMBO_STATE] !=4? "her": flags[kFLAGS.JOJO_BIMBO_STATE] ==4? "him":"") + "self together. \"Thank you, I’m alright now,\" he tells you as he looks up and gives you a weak smile.\n\n");
 		}
@@ -2993,7 +2993,7 @@ public function offerSexFirstTimeHighAffection():void {
 	menu();
 	addButton(0, "Meditate", jojoFollowerMeditate);
 	addButton(1, "Drop It", noThanksToMeditate);
-	if (player.inte >= 60 && player.cor <= (10+ player.corruptionTolerance)) addButton(2, "Confront", confrontChastity);
+	if (player.inte >= 60 && (player.cor <= (10+ player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight))) addButton(2, "Confront", confrontChastity);
 }
 
 public function confrontChastity():void {

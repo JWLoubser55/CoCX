@@ -91,10 +91,12 @@ public class IMutationsLib
 		public static const HumanDigestiveTractIM:IMutationPerkType = new HumanDigestiveTractMutation();
 		public static const HumanEyesIM:IMutationPerkType = new HumanEyesMutation();
 		public static const HumanFatIM:IMutationPerkType = new HumanFatMutation();
+		public static const HumanLungsIM:IMutationPerkType = new HumanLungsMutation();
 		public static const HumanMetabolismIM:IMutationPerkType = new HumanMetabolismMutation();
 		public static const HumanMusculatureIM:IMutationPerkType = new HumanMusculatureMutation();
 		public static const HumanOvariesIM:IMutationPerkType = new HumanOvariesMutation();
 		public static const HumanParathyroidGlandIM:IMutationPerkType = new HumanParathyroidGlandMutation();
+		public static const HumanSecondaryHeartIM:IMutationPerkType = new HumanSecondaryHeart();
 		public static const HumanSmartsIM:IMutationPerkType = new HumanSmartsMutation();
 		public static const HumanTesticlesIM:IMutationPerkType = new HumanTesticlesMutation();
 		public static const HumanThyroidGlandIM:IMutationPerkType = new HumanThyroidGlandMutation();
@@ -135,6 +137,7 @@ public class IMutationsLib
 		public static const UndeadMetabolismIM:UndeadMetabolismMutation = new UndeadMetabolismMutation();
 		public static const VampiricBloodstreamIM:IMutationPerkType = new VampiricBloodstreamMutation();
 		public static const VenomGlandsIM:IMutationPerkType = new VenomGlandsMutation();
+		public static const WendigoMetabolismIM:IMutationPerkType = new WendigoMetabolismMutation();
 		public static const WhaleFatIM:IMutationPerkType = new WhaleFatMutation();
 		public static const WhiteFacedOneBirthrightIM:IMutationPerkType = new WhiteFacedOneBirthrightMutation();
 		public static const YetiFatIM:IMutationPerkType = new YetiFatMutation();

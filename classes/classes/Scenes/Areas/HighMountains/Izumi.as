@@ -255,7 +255,7 @@ public class Izumi extends Monster
 			outputText("" + oniname() + " leaps backwards onto one foot, spinning around and unleashing a thundering roundhouse kick.  Luckily, you manage to duck just in time, avoiding what surely would have been a monstrously powerful blow.  Unfortunately, as " + oniname() + "’s leg scythes through the air over your head, you find your gaze naturally following the line of her thigh muscles until you’re staring directly up the fluttering folds of " + oniname() + "’s increasingly impractical kimono.\n\n");
 			if (player.cor >= 50 || player.lib >= 50 || player.sens >= 50)
 			{
-				outputText("You fall backwards and stagger away, already feeling a flush of warmth colouring your cheeks, trying to drag your mind back to the fight and away from... other things.");
+				outputText("You fall backwards and stagger away, already feeling a flush of warmth coloring your cheeks, trying to drag your mind back to the fight and away from... other things.");
 				if (flags[kFLAGS.IZUMI_LVL_UP] >= 6) player.takeLustDamage(30 + player.lib / 10, true);
 				else if (flags[kFLAGS.IZUMI_LVL_UP] >= 2) player.takeLustDamage(20 + player.lib / 10, true);
 				else player.takeLustDamage(10 + player.lib / 10, true);
@@ -428,7 +428,7 @@ public class Izumi extends Monster
 		{
 			if (combatDebug) trace("Titsmother Struggle");
 			var brokeFree:Boolean;
-			if ((rand(player.str) > this.str / 4) || player.hasPerk(PerkLib.FluidBody))
+			if (SceneLib.combat.struggleCentralizedCheck())
 			{
 				brokeFree = true;
 			}

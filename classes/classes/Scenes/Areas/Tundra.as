@@ -6,12 +6,14 @@
 package classes.Scenes.Areas
 {
 import classes.*;
+import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.API.Encounters;
 import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.Lake.SwordInStone;
 import classes.Scenes.Areas.Forest.AlrauneScene;
 import classes.Scenes.Areas.Tundra.*;
+import classes.Scenes.Dungeons.RiverDungeon.IceElemental;
 import classes.Scenes.NPCs.Forgefather;
 import classes.Scenes.SceneLib;
 
@@ -93,6 +95,11 @@ use namespace CoC;
 				kind : 'monster',
 				call: golemEncounters
 			}, {
+				name: "ice ele",
+				label : "Ice Elemental",
+				kind  : 'monster',
+				call: tundraIceElemental
+			}, {
 				// choice[choice.length] = 5; Find Alabaster
 				name: "alabaster",
 				label : "Mine",
@@ -142,6 +149,14 @@ use namespace CoC;
 			}
 			dynStats("tou", .5);
 			endEncounter();
+		}
+	
+		private function tundraIceElemental():void {
+			clearOutput();
+			outputText("We awaits for... ");
+			outputText("Lia writing nice intro here.\n\n");//lvl 70
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
+			startCombat(new IceElemental());
 		}
 
 		public function alabasterEncounter():void {

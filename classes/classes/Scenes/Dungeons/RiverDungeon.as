@@ -2467,7 +2467,10 @@ public class RiverDungeon extends DungeonAbstractContent
 			doNext(roomC32);
 		}
 		private function anvilMaterialsCheck():Boolean {
-			return ((player.hasItem(useables.PCSHARD, 6)) ||
+			return (/*(player.hasItem(useables.ELCRYST, 4)) ||
+					(player.hasItem(useables.LELSHARD, 4)) ||
+					(player.hasItem(useables.ELSHARD, 4)) ||
+					*/(player.hasItem(useables.PCSHARD, 6)) ||
 					/*(player.hasItem(useables.PCSHARD, 3) && player.hasItem(useables.SRESIDUE, 3)) ||*/
 					(player.hasItem(useables.RED_GEL, 1) && player.hasItem(consumables.CHOCBOX, 1) && player.hasItem(consumables.LETHITE, 1) && player.hasItem(consumables.SALAMFW, 1) && player.hasItem(useables.SRESIDUE, 1) && player.hasItem(consumables.ONISAKE, 1)));
 		}

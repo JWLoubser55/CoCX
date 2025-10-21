@@ -119,7 +119,7 @@ public class MainMenu extends BaseContent {
 		if (Holidays.isEvangelineBirthday())
 			outputText("\n\n<b>It's Milady Evangeline Birthday Month!</b>");
 		if (Holidays.isAlvinaBirthday())
-			outputText("\n\n<b>It's our lady and saviour Alvina Shadowmantle Birthday Month!</b>");
+			outputText("\n\n<b>It's our lady and savior Alvina Shadowmantle Birthday Month!</b>");
 		if (Holidays.isHeliaBirthday())
 			outputText("\n\n<b>It's Helia's Birthday Month!</b>");
 		//Brief credits
@@ -128,10 +128,10 @@ public class MainMenu extends BaseContent {
 		outputText("aimozg, Amygdala, Cmacleod42, Enterprise2001, Fake-Name, Gedan, Yoffy, Kitteh6660, et al"); //Contributions
 		outputText("\n\n<b>Edited by:</b> Ashi, SoS, Prisoner416, Zeikfried, et al"); //Edited By
 		outputText("\n\n<b>Created by:</b> Fenoxo\n"); //The Original Creator
-		//Github for Mod
+		//GitHub for Mod
 		outputText("\n<b>Modded Game Source Code:</b> <u><a href='https://github.com/Ormael13/CoCX'>https://github.com/Ormael13/CoCX</a></u>");
 		outputText("\n<b>Modded Game Bug Tracker:</b> <u><a href='https://github.com/Ormael13/CoCX/issues'>https://github.com/Ormael13/CoCX/issues</a></u>");
-		//Github for Original
+		//GitHub for Original
 		outputText("\n\n<b>Original Game Source Code:</b> <u><a href='https://github.com/OXOIndustries/Corruption-of-Champions'>https://github.com/OXOIndustries/Corruption-of-Champions</a></u>");
 	}
 

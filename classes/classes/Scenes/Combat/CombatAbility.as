@@ -225,6 +225,10 @@ public class CombatAbility extends BaseCombatContent {
 		name: 'Plasma',
 		desc: "This ability's primary element is Plasma"
 	});
+	public static const TAG_BLACKICE:int = EnumValue.add(AllTags, 22, 'BLACKICE', {
+		name: 'BlackIce',
+		desc: "This ability's primary element is Black Ice"
+	});
 	
 	/**
 	 * Unique id of this ability.

@@ -62,7 +62,9 @@ public class LadyRafflesia extends Monster
 		public function ladyRafflesiaGrab():void {
 			outputText("Rafflesia’s vines swiftly coil around you, immobilizing your body.\n\n");
 			outputText("<i>\"Mmmmm playtime is over... I will eat you now.\"</i>\n\n");
-			player.createStatusEffect(StatusEffects.LadyRafflesiaGrab, 2 + rand(5), 0, 0, 0);
+			var duraLRG:Number = 2 + rand(5);
+			player.createStatusEffect(StatusEffects.LadyRafflesiaGrab, duraLRG, 0, 0, 0);
+			createStatusEffect(StatusEffects.AbilityCooldownGrapple, (duraLRG + 3), 0, 0, 0);
 		}
 		
 		public function ladyRafflesiaTeaseAttack():void {
@@ -114,7 +116,10 @@ public class LadyRafflesia extends Monster
 						if (!hasStatusEffect(StatusEffects.LustAura)) ladyRafflesiaPollenCloud();
 						else ladyRafflesiaTeaseAttack();
 					}
-					if (choice == 2) ladyRafflesiaGrab();
+					if (choice == 2) {
+						if (hasStatusEffect(StatusEffects.AbilityCooldownGrapple)) ladyRafflesiaTeaseAttack();
+						else ladyRafflesiaGrab();
+					}
 				}
 				if (!hasStatusEffect(StatusEffects.Climbed)) {
 					outputText("\n\nMeanwhile the vines keep pulling you toward the pitcher.");
@@ -176,7 +181,6 @@ public class LadyRafflesia extends Monster
 			this.lust = 20 + rand(40);
 			this.lustVuln = 0.15;
 			this.gems = rand(20) + 5;
-			this.createPerk(PerkLib.FireVulnerability, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyPlantType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
 			this.createStatusEffect(StatusEffects.AlrauneRunDisabled, 0, 0, 0, 0);

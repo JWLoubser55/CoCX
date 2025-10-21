@@ -48,10 +48,7 @@ use namespace CoC;
 				damage += this.weaponRangeAttack * 150;
 				if (player.companionsInPCParty()) {
 					var splash:Number = 1;
-					if (flags[kFLAGS.PLAYER_COMPANION_0] != "") splash += 1;
-					if (flags[kFLAGS.PLAYER_COMPANION_1] != "") splash += 1;
-					if (flags[kFLAGS.PLAYER_COMPANION_2] != "") splash += 1;
-					if (flags[kFLAGS.PLAYER_COMPANION_3] != "") splash += 1;
+					splash += player.companionsInPcPartyCount();
 					damage *= splash;
 				}
 				player.takePhysDamage(damage, true);
@@ -90,10 +87,7 @@ use namespace CoC;
 			damage += this.weaponRangeAttack * 750;
 			if (player.companionsInPCParty()) {
 				var splash:Number = 1;
-				if (flags[kFLAGS.PLAYER_COMPANION_0] != "") splash += 1;
-				if (flags[kFLAGS.PLAYER_COMPANION_1] != "") splash += 1;
-				if (flags[kFLAGS.PLAYER_COMPANION_2] != "") splash += 1;
-				if (flags[kFLAGS.PLAYER_COMPANION_3] != "") splash += 1;
+				splash += player.companionsInPcPartyCount();
 				damage *= splash;
 			}
 			player.takePhysDamage(damage, true);

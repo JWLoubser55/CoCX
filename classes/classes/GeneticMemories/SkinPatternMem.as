@@ -209,6 +209,28 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const DEMONIC_PLEASURE_RUNE:int = _partid++;
+		EnumValue.add(Memories, DEMONIC_PLEASURE_RUNE, "DEMONIC_PLEASURE_RUNE", {
+			id: "Demonic Pleasure Rune Patterns",
+			name: "Demonic Pleasure Rune Patterns",
+			cost: 100,
+			title: "Pleasure Rune",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.SkinPatternDemonicPleasureRune
+			}
+		});
+
+		public static const RUNIC:int = _partid++;
+		EnumValue.add(Memories, RUNIC, "RUNIC", {
+			id: "Anubis Glyph Pattern",
+			name: "Glyph Tattoos",
+			cost: 100,
+			title: "Anubis",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.SkinPatternRunic
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

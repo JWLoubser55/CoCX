@@ -716,6 +716,16 @@ public class Appearance extends Utils
 					"steel hard plug",
 					"steel hard shaft");
 			}
+			else if (cockType == CockTypesEnum.BAROMETZ) {
+				return randomChoice("flared verdant horse-cock",
+					"verdant equine prick",
+					"bestial verdant horse-shaft",
+					"flat-tipped verdant horse-member",
+					"animalistic verdant stallion-prick",
+					"verdant equine dong",
+					"verdant beast cock",
+					"flared verdant stallion-cock");
+			}
 			return randomChoice("cock",
 				"prick",
 				"pecker",
@@ -2467,8 +2477,14 @@ public class Appearance extends Utils
 				}
 				//If mixed
 				if (!descripted) {
-					descript += creature.cockAdjective() + ", ";
-					descript += randomChoice("mutated cocks", "mutated dicks", "mixed cocks", "mismatched dicks");
+					if (creature.cocks[0].cockType == CockTypesEnum.BAROMETZ) {
+						descript += ", " + creature.cockDescript(0) + " ";
+						descript += "Slithering out of your sheath, you have "+num2Text(currCock-1)+" vine like tentacle cock, ready to plug and erupt into a fertile hole at any given time. You sometimes use them to jerk yourself to orgasm when feeling antsy.";
+					}
+					else {
+						descript += creature.cockAdjective() + ", ";
+						descript += randomChoice("mutated cocks", "mutated dicks", "mixed cocks", "mismatched dicks");
+					}
 				}
 			}
 			return descript;

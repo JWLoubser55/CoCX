@@ -95,7 +95,10 @@ use namespace CoC;
 		public const ELCRYST:SimpleUseable = new SimpleUseable("ELCryst", "Elemental Crystal", "an Elemental Crystal", 10,
 			"An Elemental Crystal.",
 			"You look at the elemental crystal. It occasionally glows gently in your hand.  It's a precious material that may be useful for making your summoned elementals stronger.");
-		public const EL_CORE:SimpleUseable = new SimpleUseable("ELCore", "Elemental Core", "an Elemental Core", 20,
+		public const LELCRYST:SimpleUseable = new SimpleUseable("LELCryst", "Large Elemental Crystal", "a Large Elemental Crystal", 20,
+			"A Large Elemental Crystal.",
+			"You look at the large elemental crystal. It occasionally glows gently in your hand.  It's a precious material that may be useful for making your summoned elementals stronger.");
+		public const EL_CORE:SimpleUseable = new SimpleUseable("ELCore", "Elemental Core", "an Elemental Core", 50,
 			"An Elemental Core.",
 			"You look at the elemental core. It occasionally glows gently in your hand.  Rare treasure that have wide range of uses for elementalists.");
 		public const E_ICHOR:SimpleUseable = new SimpleUseable("E.Ichor", "E-Ichor vial", "a vial of E-Ichor", 1,
@@ -107,15 +110,33 @@ use namespace CoC;
 		public const BTSOLUTION:SimpleUseable = new SimpleUseable("BTSolution", "Body Tempering Solution vial", "a vial of Body Tempering solution", 100,
 			"A vial of Body Tempering solution.",
 			"You look at the vial of substance called Body Tempering solution. It's only useful for Body Cultivators and probably harmful for anyone else.");
+		public const HFSOLUTION:SimpleUseable = new SimpleUseable("HFSolution", "Heartforce Tempering Solution vial", "a vial of Heartforce Tempering solution", 500,
+			"A vial of Heartforce Tempering solution.",
+			"You look at the vial of substance called Heartforce Tempering solution. It's only useful for Heartforce Cultivators and probably harmful for anyone else.");
 		public const SRESIDUE:SimpleUseable = new SimpleUseable("SoulResidue", "Soul Residue", "a Soul Residue", 1,
 			"A Soul Residue.",
 			"You look at the soul residue. It looks to be incredibly fine powder and may have some uses. If you find anyone that could work with this.");
-		public const SKYMETA:SimpleUseable = new SimpleUseable("Skymetal", "Skymetal" , "a Skymetal", 900,
+		public const DARKSTI:SimpleUseable = new SimpleUseable("DarkStI", "Darksteel ingot", "a Darksteel ingot", 120,
+			"A Darksteel ingot.",
+			"You look over the Darksteel ingot. Likely useful for making some equipment.");
+		public const SOULMETB:SimpleUseable = new SimpleUseable("SoulmetB", "Soulmetal bar", "a Soulmetal bar", 240,
+			"A Soulmetal bar.",
+			"You look over the Soulmetal bar. Likely useful for making cultivators equipment, still it's only of averange purity.");
+		public const SKYMETA:SimpleUseable = new SimpleUseable("Skymetal", "Skymetal" , "a Skymetal", 2000,
 			"A Skymetal ore.",
-			"You gaze at the skymetal ore. Likely useful for making some weapons.");
+			"You gaze at the skymetal ore. A deep blue ore rumored to be the metal of genesis used by the gods to make the world. Skymetal can only be mined from meteorites and is so rare as to be considered a myth by most craftsmen. It both conducts magic and acts as a nigh indestructible material. Many divine artefacts are rumored to be made out of Skymetal.");
 		public const MOONSTO:SimpleUseable = new SimpleUseable("Moonsto", "Moonstone" , "a Moonstone", 900,
 			"A Moonstone.",
 			"You gaze at the Moonstone. Likely useful for making some weapons.");
+		public const MITHRAL:SimpleUseable = new SimpleUseable("Mithral", "Mithral" , "a Mithral", 1000,
+			"A Mithral.",
+			"You gaze at the Mithral. A beautiful ore the color of silver, rumored to never rust. Light and Sturdy.");
+		public const ORICHAL:SimpleUseable = new SimpleUseable("Orichal", "Orichalcum" , "an Orichalcum", 1200,
+			"An Orichalcum.",
+			"You gaze at the Orichalcum. A ore the same color as gold that can only be found and mined underwater. It has powerful magical properties that makes it a prized material in the crafting of casting weapons.");
+		public const ADAMANT:SimpleUseable = new SimpleUseable("Adamant", "Adamantine" , "an Adamantine", 1500,
+			"An Adamantine.",
+			"You gaze at the Adamantine. A dark green colored ore rumored to be indestructible. Adamantine can be melted but once hardened never breaks or bends.");
 		public const UNICORNH:SimpleUseable = new SimpleUseable("UnicornH", "UnicornHair" , "an Unicorn Hair", 900,
 			"An Unicorn Hair.",
 			"You gaze at the Unicorn Hair. Likely useful for making some weapons stronger.");
@@ -144,6 +165,9 @@ use namespace CoC;
 		public const E_P_BOT:SimpleUseable = new SimpleUseable("E P Bot.", "empty pill bottle", "an empty pill bottle", 10,
 			"An empty pill bottle used to keep various pills.",
 			"You look at the empty pill bottle. It can help hold your sourforce pills more organized compared to keeping them loose.");
+		public const SFIBBOT:SimpleUseable = new SimpleUseable("SfIBBot", "bottle of sf-infused blood", "a bottle of sf-infused blood", 10,
+			"A bottle of sf-infused blood.",
+			"You look at the bottle of sf-infused blood. It can be used to sustain sf sensitive beings or to transformation items.");
 		public const ENECORE:SimpleUseable = new SimpleUseable("EneCore", "Energy Core", "an Energy Core", 1015,
 			"A power source for devices.",
 			"You look at Energy Core.  It's component used to make goblin tech.");
@@ -202,7 +226,7 @@ use namespace CoC;
 			"A vial of reagent.",
 			"You look at the reagent vial.  It's used with dyes to dye scales, chitins and other similar types of natural armor covering your body.");
 		public const S_SHARD:SimpleUseable = new SimpleUseable("S_SHARD", "S.Shard", "a tarnished shard of metal wich may have been part of a golden weapon", 200,
-			"These appear to be the shards of a shattered weapon.",
+			"A shards of a shattered weapon.",
 			"These appear to be the shards of a shattered weapon though which one you do not know. You are no smith and thus have no idea how to reforge this item. From what Vala told you it might have been part of the scepter of the fairy queen. You recall that you will need 15 shards in total to start...");
 		public const IARROWHEAD:SimpleUseable = new SimpleUseable("IArrowHead", "IArrowHeads", "an iron arrowheads", 1,
 			"Hundred iron arrowheads.",
@@ -217,11 +241,14 @@ use namespace CoC;
 			"Hundred ebonbloom arrowheads.",
 			"You look at a hundred ebonbloom arrowheads.  They could be used to craft special arrows.");
 		public const TEDDY:SimpleUseable = new SimpleUseable("TeddyBear", "TeddyBear", "a Teddy bear", 200,
-				"An old Teddy bear with A small piece of paper with the name Mister Paw tied to it.",
-				"You look at an old Teddy bear and see there is A small piece of paper with the name Mister Paw tied to it.");
+			"An old Teddy bear with A small piece of paper with the name Mister Paw tied to it.",
+			"You look at an old Teddy bear and see there is A small piece of paper with the name Mister Paw tied to it.");
 		public const BANDAGE:SimpleUseable = new SimpleUseable("Bandage", "Bandages", "a Bandages", 25,
 			"A Bandages.",
 			"A roll of bandages. What are you gonna do with this anyway?");
+		public const DUCATS_:SimpleUseable = new SimpleUseable("Ducats", "Ducats", "a Ducats", 500,
+			"Weird coins from another world worthless in this universe but still made of gold, can be sold at the pawn shop for gems.",
+			"You look at Ducats.  Weird coins from another world worthless in this universe but still made of gold, can be sold at the pawn shop for gems.");
 		// Alchemical catalysts:
 		// Substance/Essence/Residue/Pigment
 		// Minor/Common/Major

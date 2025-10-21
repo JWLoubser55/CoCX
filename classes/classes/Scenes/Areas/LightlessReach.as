@@ -12,6 +12,7 @@ import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.LightlessReach.*;
 import classes.Scenes.Areas.Lake.SwordInStone;
+import classes.Scenes.Dungeons.RiverDungeon.DarknessElemental;
 import classes.Scenes.SceneLib;
 
 use namespace CoC;
@@ -98,6 +99,11 @@ public class LightlessReach extends BaseContent
 				golemEncounters()
 			}
 		}, {
+			name: "darkness ele",
+			label : "Darkness Elemental",
+			kind  : 'monster',
+			call: lightlessReachDarknessElemental
+		}, {
 			chance: 0.25,
 			name: "nothing",
 			call: nothingEncounter,
@@ -136,6 +142,14 @@ public class LightlessReach extends BaseContent
 		}
 		dynStats("tou", .5);
 		endEncounter();
+	}
+	
+	private function lightlessReachDarknessElemental():void {
+		clearOutput();
+		outputText("We awaits for... ");
+		outputText("Lia writing nice intro here.\n\n");//lvl 90
+		flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
+		startCombat(new DarknessElemental());
 	}
 
 	public function golemEncounters():void {

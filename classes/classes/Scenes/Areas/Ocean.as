@@ -13,6 +13,7 @@ import classes.Scenes.API.ExplorationEntry;
 import classes.Scenes.API.GroupEncounter;
 import classes.Scenes.Areas.DeepSea.AbyssalSharkScene;
 import classes.Scenes.Areas.Ocean.*;
+import classes.Scenes.Dungeons.RiverDungeon.WaterElemental;
 import classes.Scenes.NPCs.CeaniScene;
 import classes.Scenes.Places.Boat.SharkGirlScene;
 import classes.Scenes.SceneLib;
@@ -158,6 +159,11 @@ use namespace CoC;
 				day : false,
 				call  : SceneLib.weresharkScene.weresharkEncounter,
 				chance: 0.50
+			}, {
+				name: "water ele",
+				label : "Water Elemental",
+				kind  : 'monster',
+				call: costalWatersWaterElemental
 			})
 			_oceanInnerEncounter = Encounters.group("inner ocean", {
 				name: "fishing",
@@ -197,6 +203,11 @@ use namespace CoC;
 					player.createStatusEffect(StatusEffects.InWater,0,0,0,0);
 					abyssalsharkScene.oceanJuvenileAbyssalSharkEncounter();
 				}
+			}, {
+				name: "water ele",
+				label : "Water Elemental",
+				kind  : 'monster',
+				call: innerOceanWaterElemental
 			})
 		}
 
@@ -227,6 +238,21 @@ use namespace CoC;
 			var temp:Number = 0.5;
 			temp *= player.npcChanceToEncounter();
 			return temp;
+		}
+	
+		private function costalWatersWaterElemental():void {
+			clearOutput();
+			outputText("While wandering costal waters you feel the need to take a leak. Thankfully the area is full of pristine water to cleanly deliver into. A few seconds later the dirty deed is done and you prepare to move out when you hear a low grumbling like the sound of an incoming tidal wave. Slowly turning around you spot what appears to be a very pissed up woman taping her pristine semi transparent foot against the water surface. ");
+			outputText("This fully manifested undine was guarding this body of water… water you accidentally went and polluted with your defects. While water elementals are generally benevolent the one thing they despise the most is the despoilment of their source and you just went and soiled hers. The waters quickly begin to churn violently as the vengeful elemental prepares to deliver divine punishment. It’s a fight!\n\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
+			startCombat(new WaterElemental());
+		}
+		private function innerOceanWaterElemental():void {
+			clearOutput();
+			outputText("While wandering ocean you feel the need to take a leak. Thankfully the area is full of pristine water to cleanly deliver into. A few seconds later the dirty deed is done and you prepare to move out when you hear a low grumbling like the sound of an incoming tidal wave. Slowly turning around you spot what appears to be a very pissed up woman taping her pristine semi transparent foot against the water surface. ");
+			outputText("This fully manifested undine was guarding this body of water… water you accidentally went and polluted with your defects. While water elementals are generally benevolent the one thing they despise the most is the despoilment of their source and you just went and soiled hers. The waters quickly begin to churn violently as the vengeful elemental prepares to deliver divine punishment. It’s a fight!\n\n");
+			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 6;
+			startCombat(new WaterElemental());
 		}
 
 		private function findNothing():void {

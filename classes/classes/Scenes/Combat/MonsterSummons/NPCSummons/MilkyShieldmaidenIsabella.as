@@ -17,7 +17,7 @@ public class MilkyShieldmaidenIsabella extends AbstractSummonMonster {
 
     override protected function doSpellEffect(display:Boolean = true):void {
 		if (display) {
-			outputText("You hear the clang of steel, and from thin air drops a bovine woman in scaled armour which barely holds her large lactating breasts. She stands between you and" [themonster], "tower shield held in front. \n");
+			outputText("You hear the clang of steel, and from thin air drops a bovine woman in scaled armor which barely holds her large lactating breasts. She stands between you and" [themonster], "tower shield held in front. \n");
 		}
 		
 	}

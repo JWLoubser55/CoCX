@@ -68,7 +68,7 @@ public class Phoenix extends Monster
 			}
 			else {
 				outputText("You cough and hack, waving your arms to try and dissipate the fog, but by the time the cloud has faded you feel lightheaded and lusty. Your");
-				if (player.hasCock()) outputText("shaft quickly engorges inside your armour, already leaking precum down your leg");
+				if (player.hasCock()) outputText("shaft quickly engorges inside your armor, already leaking precum down your leg");
 				if (player.hasCock() && player.hasVagina()) outputText("whilst your");
 				if (player.hasVagina()) outputText("thighs are suddenly soaked by a torrent of girlcum as your body reacts to the potent chemicals");
 				outputText(".");

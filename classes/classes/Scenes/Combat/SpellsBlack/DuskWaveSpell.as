@@ -53,9 +53,11 @@ public class DuskWaveSpell extends AbstractBlackSpell {
 	public function calcDamage(monster:Monster, randomize:Boolean = true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
 		var baseDamage:Number = damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
-		if (player.weapon == weapons.UGRAVES) {
-			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) baseDamage *= 2.6;
-			else baseDamage *= 1.8;
+		if (player.weapon == weapons.UGRAVES || player.weaponOff == weapons.UGRAVES) {
+			var blue:Number = 0.8;
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) blue *= 2;
+			if (player.weapon == weapons.UGRAVES && player.weaponOff == weapons.UGRAVES) blue *= 2;
+			baseDamage *= (1 + blue);
 		}
 		if (ex) baseDamage *= 2;
 		return adjustSpellDamage(baseDamage, DamageType.DARKNESS, CAT_SPELL_BLACK, monster, true, casting);

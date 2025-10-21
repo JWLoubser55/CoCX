@@ -512,7 +512,7 @@ public class MagicSpecials extends BaseCombatContent {
 			var word1:String = player.perkv1(IMutationsLib.BlackHeartIM) >= 1? ", intelligence" : "";
 			var word2:String = player.perkv1(IMutationsLib.BlackHeartIM) >= 2? ", wisdom" : "";
 			var word3:String = player.perkv1(IMutationsLib.BlackHeartIM) >= 3? ", sensitivity" : "";
-			bd.hint("Use arcane gestures to flare up enemy lust. The higher your libido" + word3 + word2 + word1 + " and horny you're at the moment the higher enemy lust will rise. \n");
+			bd.hint("Use arcane gestures to flare up enemy lust. \nThe higher your libido" + word3 + word2 + word1 + " and \nthe hornier you are, the more the enemy will be aroused. \n");
 			bd.requireFatigue(50, true);
 			if(player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 				bd.disable("You cannot focus on drawing symbols while you're having so much difficult breathing.");
@@ -556,16 +556,41 @@ public class MagicSpecials extends BaseCombatContent {
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
 		if (player.statusEffectv1(StatusEffects.VampireThirst) >= 1) {
-			//Eclipsing shadow
-			bd = buttons.add("Eclipsing shadow", EclipsingShadow, "Plunge the area in complete darkness denying vision to your opponent. \n");
-			if (player.hasStatusEffect(StatusEffects.CooldownEclipsingShadow)) {
-				bd.disable("<b>You need more time before you can use Eclipsing shadow again.</b>\n\n");
-			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
-			//Sonic scream
-			bd = buttons.add("Sonic scream", SonicScream, "Draw on your tainted blood power to unleash a powerful sonic shockwave. \n");
-			if (player.hasStatusEffect(StatusEffects.CooldownSonicScream)) {
-				bd.disable("<b>You need more time before you can use Sonic scream again.</b>\n\n");
-			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			if (player.hasPerk(PerkLib.Araneathropy)) {
+				//Blood Web
+				if (player.lowerBody == LowerBody.WERESPIDER && player.tailType == Tail.SPIDER_ADBOMEN) {
+					bd = buttons.add("Blood Web", BloodWeb, "Spin a thread of web using your own blood to tie up your victim in place. Also reduce opponent speed after each use. \n");
+					if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
+						bd.disable("You cannot focus to use this ability while you're having so much difficult breathing.");
+					} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.statusEffectv1(StatusEffects.VampireThirst) >= 3) {
+					//Sanguine Strength
+					bd = buttons.add("Sanguine Strength", SanguineStrength, "Increase your strength at the price of burning some of your blood. \n");
+					if (player.hasStatusEffect(StatusEffects.SanguineStrength)) {
+						bd.disable("<b>You already under Sanguine Strength effect.</b>\n\n");
+					}
+				}
+			}
+			if (player.isRaceCached(Races.DRACULA) || player.isRaceCached(Races.VAMPIRE)) {
+				//Eclipsing shadow
+				bd = buttons.add("Eclipsing shadow", EclipsingShadow, "Plunge the area in complete darkness denying vision to your opponent. \n");
+				if (player.hasStatusEffect(StatusEffects.CooldownEclipsingShadow)) {
+					bd.disable("<b>You need more time before you can use Eclipsing shadow again.</b>\n\n");
+				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				//Sonic scream
+				bd = buttons.add("Sonic scream", SonicScream, "Draw on your tainted blood power to unleash a powerful sonic shockwave. \n");
+				if (player.hasStatusEffect(StatusEffects.CooldownSonicScream)) {
+					bd.disable("<b>You need more time before you can use Sonic scream again.</b>\n\n");
+				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
+			if (player.statusEffectv1(StatusEffects.VampireThirst) >= 3) {
+				//Sanguine Haste
+				bd = buttons.add("Sanguine Haste", SanguineHaste, "Increase your speed attack (+1 atk per turn) at the price of burning some of your blood. \n");
+				if (player.hasStatusEffect(StatusEffects.SanguineHaste)) {
+					bd.disable("<b>You already under Sanguine Haste effect.</b>\n\n");
+				}
+			}
 			//Vampire Thirst Stacks To Health/Mana
 			bd = buttons.add("Health Tap (1)", curry(VampireThirstStacksToHealth, 1), "Draw on your tainted blood power to heal yourself. \n");
 			if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv1(StatusEffects.VampThirstStacksHPMana) > 0) {
@@ -583,6 +608,12 @@ public class MagicSpecials extends BaseCombatContent {
 				bd = buttons.add("Mana Tap (5)", curry(VampireThirstStacksToMana, 5), "Draw on your tainted blood power to recover some of your magic energies. \n");
 				if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv2(StatusEffects.VampThirstStacksHPMana) > 0) {
 					bd.disable("<b>You can't use Mana Tap more than once a turn.</b>\n\n");
+				}
+			}
+			if (player.hasPerk(PerkLib.Araneathropy) && player.statusEffectv1(StatusEffects.VampireThirst) >= 10) {
+				bd = buttons.add("Health Tap (10)", curry(VampireThirstStacksToHealth, 10), "Draw on your tainted blood power to heal yourself. \n");
+				if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv1(StatusEffects.VampThirstStacksHPMana) > 0) {
+					bd.disable("<b>You can't use Health Tap more than once a turn.</b>\n\n");
 				}
 			}
 		}
@@ -966,9 +997,9 @@ public class MagicSpecials extends BaseCombatContent {
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 35 && (player.inHeat || player.inRut)) boost += 20;
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 40) boost *= 2;
 			if (player.hasStatusEffect(StatusEffects.TyrantState)) {
-				bd = buttons.add("TyrantState(Off)", deactivaterTyrantState).hint("Deactivate Tyrant State.");
+				bd = buttons.add("TyrantState(Off)", deactivateTyrantState).hint("Deactivate Tyrant State.");
 			} else {
-				bd = buttons.add("TyrantState(On)", activaterTyrantState).hint("Strain your body to its limit to increase melee damage dealt by "+boost+"% at the cost of getting horny. This also decrease physical resistance.");
+				bd = buttons.add("TyrantState(On)", activateTyrantState).hint("Strain your body to its limit to increase melee damage dealt by "+boost+"% at the cost of getting horny. This also decrease physical resistance."+(TyrantiaFollower.TyrantiaTrainingSessions >= 30 ? " Would delay lust defeat by two turns. (Timer reset each time lust drop below max overlust value)":"")+"");
 			}
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 15) {
 				bd = buttons.add("False Weapon", activaterFalseWeapon).hint("Create False weapon based on currently wielded melee weapon to attack each time you attack with it. Deals 20% dmg (Phalluspear False Weapon deals 100%).");
@@ -982,7 +1013,14 @@ public class MagicSpecials extends BaseCombatContent {
 			bd = buttons.add("Tech Overdrive", techOverdrive).hint("Empower your technological equipment, causing it to deal increased damage but weaken your defenses as a result.");
 			bd.requireMana(spellCost(40));
 			if (player.hasStatusEffect(StatusEffects.TechOverdrive)) {
-				bd.disable("You're already pretty activated Tech Overdrive!");
+				bd.disable("You're already activated Tech Overdrive!");
+			}
+		}
+		if (player.isRaceCached(Races.AUTOMATA)) {
+			bd = buttons.add("Overdrive", automataOverdrive).hint("Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).");
+			bd.requireMana(spellCost(40));
+			if (player.hasStatusEffect(StatusEffects.AutomataOverdrive)) {
+				bd.disable("You're already activated Overdrive!");
 			}
 		}
 		if (player.racialScore(Races.GREMLIN) >= 15) {
@@ -1146,6 +1184,12 @@ public class MagicSpecials extends BaseCombatContent {
 			bd.requireFatigue(200);
 			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
 				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+		}
+		if (player.hasPerk(PerkLib.LookADistraction)) {
+			bd = buttons.add("LOOKOUT!", LookADistraction).hint("Mental special attack. Base 25% success rate, +0.5% for every point of WIS you have over your enemy’s WIS. Stuns and Doubles next melee hit if done next round, only works once per combat.");
+			if (player.hasStatusEffect(StatusEffects.LookoutUsed)) {
+				bd.disable("You already used this special in this fight.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
 		if (player.hasPerk(PerkLib.ElementalBody)) {
@@ -3433,6 +3477,14 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 
+	public function automataOverdrive():void {
+		clearOutput();
+		useMana(40);
+		outputText("You override your safety protocols, causing your circuits to spark as they double their power output. This hostile has proven dangerous enough for you to truly go all out.");
+		player.createStatusEffect(StatusEffects.AutomataOverdrive,10,0,0,0);
+		enemyAI();
+	}
+
 	public function malfunction():void {
 		clearOutput();
 		useMana(40);
@@ -3713,13 +3765,13 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 
-	public function activaterTyrantState():void {
+	public function activateTyrantState():void {
 		clearOutput();
 		outputText("You stare at your foe, letting your Lust build and bubble within you. Sweet release is in front of you…But first… You feel the heat building in your loins, and you let out a roar, the heat spreading through your body. You face your opponent with an unsettling grin. Let’s Dance!\n\n");
 		player.createStatusEffect(StatusEffects.TyrantState, 0, 0, 0, 0);
 		enemyAI();
 	}
-	public function deactivaterTyrantState():void {
+	public function deactivateTyrantState():void {
 		clearOutput();
 		outputText("Breathing heavily, you focus your mind. The heat through your body isn’t going away yet, but at the very least, you aren’t generating more. With a lot of mental effort, you reign in your lusty thoughts.\n\n");
 		player.removeStatusEffect(StatusEffects.TyrantState);
@@ -4632,6 +4684,11 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		fireDamage = calcInfernoMod(Math.round(damage * combat.fireDamageBoostedByDao()), true);
 		darknessDamage = calcEclypseMod(Math.round(damage * combat.darknessDamageBoostedByDao()), true);
+		if (player.weapon == weapons.UGRAVES) {
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) darknessDamage *= 2.6;
+			else darknessDamage *= 1.8;
+			darknessDamage = Math.round(darknessDamage);
+		}
 		if (monster.lustVuln == 0) {
 			outputText("  It has no effect!  Your foe clearly does not experience lust in the same way as you.");
 		}
@@ -5276,6 +5333,30 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 
+	public function LookADistraction():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		var triggerChance:Number = 25;
+		player.createStatusEffect(StatusEffects.LookoutUsed, 0, 0, 0, 0);
+		if (player.wis > monster.wis) {
+			if (player.wis > (monster.wis + 150)) triggerChance += 75;
+			else triggerChance += (0.5 * (player.wis - monster.wis));
+		}
+		outputText("You point behind [themonster], raising your voice to the top of your lungs.\n\n");
+		if (rand(2) == 0) outputText("\"<i>Oh, dear Gods, WHAT IS THAT THING?!</i>\" You scream, putting a look of sheer terror on your face.\n\n");
+		else outputText("\"<i>Look out! Behind you!</i>\" You yell, putting a concerned look on your face.\n\n");
+		if (monster.hasPerk(PerkLib.EnemyConstructType) || monster.hasPerk(PerkLib.EnemyEldritchType) || monster.hasPerk(PerkLib.EnemyPlantType)) outputText("[Themonster] is entirely unmoved by your words. Come to think of it, can they even understand you?\n\n");
+		else {
+			if (rand(100) < triggerChance) {
+				outputText("[Themonster] turns as they whip around to face…nothing. They just fell for the oldest trick in the book.\n\n");
+				monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
+				monster.createStatusEffect(StatusEffects.LookoutUsed, 1, 0, 0, 0);
+			}
+			else outputText("[Themonster] looks at you, sheer contempt on their face. Did you really expect them to fall for that?\n\n");
+		}
+		enemyAI();
+	}
+
 	//Slime Bolt
 	public function SlimeBolt():void {
 		clearOutput();
@@ -5745,28 +5826,32 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		outputText("You start drawing symbols in the air toward [themonster].");
-		var lustRatio:Number = 10;
-		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 4) lustRatio -= 5;
-		var lustDmg:Number = player.lust / lustRatio + player.lib / 10;
-		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 1) lustDmg += player.inte / 10;
-		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 2) lustDmg += player.wis / 10;
-		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 3) lustDmg += player.sens / 10;
+		var lustRatio:Number = 4;
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 2) lustRatio = 2;
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 4) lustRatio = 1;
+		var lustDmg:Number = player.lust / lustRatio + player.lib / 4; // these values were 10
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 1) lustDmg += player.inte / 4;
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 2) lustDmg += player.wis / 4;
+		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 3) lustDmg += player.sens / 4;
 		if (player.hasPerk(PerkLib.EromancyExpert)) lustDmg *= 1.5;
 		if(monster.lustVuln == 0) {
-			outputText("It has no effect!  Your foe clearly does not experience lust in the same way as you.\n\n");
+			outputText("\nIt has no effect!  Your foe clearly does not experience lust in the same way as you.\n\n");
 			enemyAI();
 			return;
 		}
-		if(monster.lust < (monster.maxLust() * 0.3)) outputText("[Themonster] squirms as the magic affects [monster him].  ");
+		
+		if(monster.lust < (monster.maxLust() * 0.3)) outputText("\n[themonster] squirms as the magic affects [monster him].  ");
 		if(monster.lust >= (monster.maxLust() * 0.3) && monster.lust < (monster.maxLust() * 0.6)) {
-			if(monster.plural) outputText("[Themonster] stagger, suddenly weak and having trouble focusing on staying upright.  ");
-			else outputText("[Themonster] staggers, suddenly weak and having trouble focusing on staying upright.  ");
+			if(monster.plural) outputText("\n[Themonster] stagger, suddenly weak and having trouble focusing on staying upright.  ");
+			else outputText("\n[Themonster] staggers, suddenly weak and having trouble focusing on staying upright.  ");
 		}
 		if(monster.lust >= (monster.maxLust() * 0.6)) {
-			outputText("[Themonster]'");
+			outputText("\n[Themonster]'");
 			if(!monster.plural) outputText("s");
 			outputText(" eyes glaze over with desire for a moment.  ");
 		}
+		
+		
 		mosterTeaseText();
 		lustDmg *= magicAbilitiesGoBrrr();
 		if(player.armorName == "Scandalous Succubus Clothing") lustDmg *= 1.25;
@@ -5774,6 +5859,16 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
 		if (player.perkv1(IMutationsLib.BlackHeartIM) >= 4) lustDmg += combat.teases.teaseBaseLustDamage();
 		monster.teased(Math.round(monster.lustVuln * lustDmg));
+		
+		var LSVulnLimit:int = 0;
+		if (player.hasPerk(PerkLib.CorruptTheBody)) LSVulnLimit = -1;
+		if (player.hasPerk(PerkLib.CorruptTheHeart)) LSVulnLimit = -2;
+		if (player.hasPerk(PerkLib.CorruptTheMind)) LSVulnLimit = -3;
+		if (player.hasPerk(PerkLib.CorruptTheSoul) || monster.lustVuln > LSVulnLimit){
+			monster.lustVuln += (0.1+ (player.perkv1(IMutationsLib.BlackHeartIM)/20));
+			outputText("\n\nA bit of the magic seems to remain within [themonster].\nIt seems to be making [monster him] more lustful.");
+		}
+		
 		outputText("\n\n");
 		if (player.hasPerk(PerkLib.EromancyMaster)) combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
 		doNext(playerMenu);
@@ -5791,6 +5886,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
 			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage += Math.round(scalingBonusToughness() * 0.1);
 		}
+		damage *= combat.psychicDamageBoostedByDao();
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -5869,8 +5965,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (monster.hasPerk(PerkLib.EnemyGhostType)) {
 			outputText("With a smile and a wink, your form becomes completely intangible, and you waste no time in throwing yourself toward the opponent's frame.  Sadly, it was doomed to fail, as you bounce right off your foe's ghostly form.");
 		}
-		else if (monster is LivingStatue)
-		{
+		else if (monster is LivingStatue) {
 			outputText("There is nothing to possess inside the golem.");
 		}
 		else if ((!monster.hasCock() && !monster.hasVagina()) || monster.lustVuln == 0 || monster.inte == 0 || monster.inte > maxIntCapForFail) {
@@ -5893,12 +5988,16 @@ public class MagicSpecials extends BaseCombatContent {
 				outputText("Recorporealizing, you notice your enemy's blush, and know your efforts were somewhat successful.");
 			}
 			var damage:Number = Math.round(player.inte / 5) + rand(player.level) + player.level;
+			if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 3) {
+				damage += scalingBonusStrength();
+				damage += scalingBonusToughness();
+			}
 			damage *= Math.round(1 + (0.1 * player.racialScore(Races.POLTERGEIST)));
 			damage *= magicAbilitiesGoBrrr();
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 			if (player.hasPerk(PerkLib.EromancyExpert)) damage *= 1.5;
 			if (player.armor == armors.ELFDRES && player.isElf()) damage *= 2;
-        if (player.armor == armors.FMDRESS && player.isWoodElf()) damage *= 2;
+			if (player.armor == armors.FMDRESS && player.isWoodElf()) damage *= 2;
 			if (player.isRaceCached(Races.POLTERGEIST,3)) {
 				damage += Math.round(player.lust * 0.1);
 				player.lust -= Math.round(player.lust * 0.1);
@@ -5906,8 +6005,12 @@ public class MagicSpecials extends BaseCombatContent {
 			monster.teased(Math.round(monster.lustVuln * damage));
 			outputText("\n\n");
 			if (player.hasPerk(PerkLib.EromancyMaster)) combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
-			if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownPossess,1,0,0,0);
-			else player.createStatusEffect(StatusEffects.CooldownPossess,2,0,0,0);
+			var pc:Number = 2;
+			if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
+			if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 3) pc -= 1;
+			if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 4) pc -= 1;
+			if (pc < 0) pc = 0;
+			player.createStatusEffect(StatusEffects.CooldownPossess,pc,0,0,0);
 		}
 		//Fail
 		else {
@@ -5917,6 +6020,7 @@ public class MagicSpecials extends BaseCombatContent {
 	}
 	public function possess2():void {
 		if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical)) player.removeStatusEffect(StatusEffects.PlayerBoundPhysical);
+		if (player.hasStatusEffect(StatusEffects.KashaCapture)) player.removeStatusEffect(StatusEffects.KashaCapture);
 		if (player.hasStatusEffect(StatusEffects.ScyllaBind)) player.removeStatusEffect(StatusEffects.ScyllaBind);
 		if (player.hasStatusEffect(StatusEffects.WolfHold)) player.removeStatusEffect(StatusEffects.WolfHold);
 		if (player.hasStatusEffect(StatusEffects.TrollHold)) player.removeStatusEffect(StatusEffects.TrollHold);
@@ -5939,16 +6043,30 @@ public class MagicSpecials extends BaseCombatContent {
 //Spectral Scream
 	public function SpectralScream():void {
 		clearOutput();
-		if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownSpectralScream,5,0,0,0);
-		else player.createStatusEffect(StatusEffects.CooldownSpectralScream,6,0,0,0);
+		var ssc:Number = 6;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) ssc -= 1;
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 3) ssc -= 1;
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 4) ssc -= 1;
+		player.createStatusEffect(StatusEffects.CooldownSpectralScream,ssc,0,0,0);
 		outputText("You let out a soul-chilling scream freezing your opponent" + (monster.plural ? "s":"") + " in [monster his] tracks from sheer terror. This also seems to have damaged [monster his] sanity. ");
 		var damage:Number = 0;
 		damage += scalingBonusIntelligence() * spellMod();
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 3) {
+			damage += scalingBonusStrength();
+			damage += scalingBonusToughness();
+		}
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = Math.round(damage);
 		doMagicDamage(damage, true, true);
-		monster.createStatusEffect(StatusEffects.Fear,1+rand(3),0,0,0);
+		var intDebuff:Number = 0;
+		var wisDebuff:Number = 0;
+		intDebuff += Math.round(0.1 * monster.inte);
+		wisDebuff += Math.round(0.1 * monster.wis);
+		monster.intStat.core.value -= intDebuff;
+		monster.wisStat.core.value -= wisDebuff;
+		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 2) monster.createStatusEffect(StatusEffects.Fear,3,0,0,0);
+		else monster.createStatusEffect(StatusEffects.Fear,1,0,0,0);
 		enemyAI();
 	}
 
@@ -6035,6 +6153,63 @@ public class MagicSpecials extends BaseCombatContent {
 		doNext(playerMenu);
 		if (monster.HP <= monster.minHP()) doNext(endHpVictory);
 		else enemyAI();
+	}
+
+//Sanguine Strength
+	public function SanguineStrength():void {
+		clearOutput();
+		var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
+		thirst.modSatiety(-3);
+		player.createStatusEffect(StatusEffects.SanguineStrength,0,0,0,0);
+		outputText("Your blood boil as your muscle expend dramaticaly, you feel like you could grind rocks to dust with your finguers. Red mist is released from your pore.\n\n");
+		enemyAI();
+	}
+
+//Blood Web
+	public function BloodWeb():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		if (monster is EncapsulationPod) {
+			clearOutput();
+			outputText("You can't web something you're trapped inside of!");
+			//Gone		menuLoc = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
+		thirst.modSatiety(-1);
+		if (monster.hasStatusEffect(StatusEffects.BloodWeb)) {
+			outputText("[Themonster] is completely covered in webbing, but you hose " + monster.mf("him", "her") + " down again anyway doubling the number of sharp wire and adding to its bloody injuries. ");
+			monster.addStatusValue(StatusEffects.BloodWeb, 1, 2);
+			monster.addStatusValue(StatusEffects.Hemorrhage, 1, 2);
+			monster.addStatusValue(StatusEffects.Hemorrhage, 2, 0.02);
+		}
+		else {
+			outputText("Turning and clenching muscles that no human should have, you expel a spray of sticky webs at [themonster]! Pulling on a singular string you cause the web blade sharp strings to contracts inflicting deep blood weeping wounds on your victim. ");
+			var dura:Number = 4 + rand(2);
+			monster.createStatusEffect(StatusEffects.BloodWeb,dura,0,0,0);
+			var Multiplier:Number = 1;
+			if(player.perkv1(IMutationsLib.ArachnidBookLungIM) >= 2) Multiplier += 0.5;
+			if(player.perkv1(IMutationsLib.ArachnidBookLungIM) >= 3) Multiplier += 0.5;
+			if(player.hasPerk(PerkLib.RacialParagon)) Multiplier += (combat.RacialParagonAbilityBoost() - 1);
+			monster.statStore.addBuffObject({spe:-50*Multiplier}, "Blood Web",{text:"Blood Web"});
+			if (player.perkv1(IMutationsLib.ArachnidBookLungIM) >= 3 && rand(100) > 50) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			monster.createStatusEffect(StatusEffects.Hemorrhage, dura, 0.02, 0, 0);
+			awardAchievement("How Do I Shot Web?", kACHIEVEMENTS.COMBAT_SHOT_WEB);
+		}
+		outputText("\n\n");
+		enemyAI();
+	}
+
+//Sanguine Haste
+	public function SanguineHaste():void {
+		clearOutput();
+		var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
+		thirst.modSatiety(-3);
+		player.createStatusEffect(StatusEffects.SanguineHaste,0,0,0,0);
+		outputText("Your blood boil as you body fills with seemingly infinite energy and latent power, your movement speeds up greatly. Red mist is released from your pore.\n\n");
+		enemyAI();
 	}
 	
 //Vampire Thirst Stacks To Health/Mana

@@ -416,7 +416,7 @@
 		<cell rect="951,150,49,59" name="arms_bg_pattern/Bvenom" dx="56" dy="64"/>
 		<cell rect="1301,150,49,59" name="arms_bg_pattern/Bdemonic" dx="56" dy="64"/>
 		<cell rect="1,1364,49,59" name="arms_bg/gazer" dx="65" dy="65"/>
-		<cell rect="1351,150,49,55" name="arms_bg/prayer" dx="78" dy="64"/>
+		<cell rect="1351,150,49,59" name="arms_bg/prayer" dx="78" dy="64"/>
 		<cell rect="1,210,49,59" name="arms/human" dx="104" dy="64"/>
 		<cell rect="51,210,49,59" name="arms/fur" dx="104" dy="64"/>
 		<cell rect="551,210,49,59" name="arms/furracoon" dx="104" dy="64"/>
@@ -499,6 +499,12 @@
 		<cell rect="751,270,49,59" name="hands_bg/wendigo" dx="56" dy="64"/>
 		<cell rect="901,270,49,59" name="hands_bg/mindbreaker" dx="61" dy="74"/>
 		<cell rect="1101,270,49,59" name="hands_bg/arigean" dx="56" dy="64"/>
+		<cell rect="1151,270,49,59" name="hands_bg/myconidWhite" dx="57" dy="64"/>
+		<cell rect="1201,270,49,59" name="hands_bg/myconidRed" dx="57" dy="64"/>
+		<cell rect="1251,270,49,59" name="hands_bg/myconidYellow" dx="57" dy="64"/>
+		<cell rect="1301,270,49,59" name="hands_bg/myconidGreen" dx="57" dy="64"/>
+		<cell rect="1351,270,49,59" name="hands_bg/myconidBlue" dx="57" dy="64"/>
+		<cell rect="1401,270,49,59" name="hands_bg/myconidPurple" dx="57" dy="64"/>
 		<cell rect="hands_bg/fire" name="overhands_bg/fire" dx="56" dy="64"/>
 		<cell rect="301,853,49,59" name="overhands_bg/arigeanRedAura" dx="56" dy="64"/>
 		<cell rect="351,853,49,59" name="overhands_bg/arigeanYellowAura" dx="56" dy="64"/>
@@ -530,6 +536,12 @@
 		<cell rect="1051,210,49,59" name="hands/gnomeRight" dx="60" dy="46"/>
 		<cell rect="901,330,49,59" name="hands/mindbreaker" dx="97" dy="74"/>
 		<cell rect="1101,330,49,59" name="hands/arigean" dx="104" dy="64"/>
+		<cell rect="1151,330,49,59" name="hands/myconidWhite" dx="101" dy="62"/>
+		<cell rect="1201,330,49,59" name="hands/myconidRed" dx="101" dy="62"/>
+		<cell rect="1251,330,49,59" name="hands/myconidYellow" dx="101" dy="62"/>
+		<cell rect="1301,330,49,59" name="hands/myconidGreen" dx="101" dy="62"/>
+		<cell rect="1351,330,49,59" name="hands/myconidBlue" dx="101" dy="62"/>
+		<cell rect="1401,330,49,59" name="hands/myconidPurple" dx="101" dy="62"/>
 		<cell rect="951,210,49,59" name="hands_fg/wraithrightlewd" dx="105" dy="48"/>
 		<cell rect="351,330,49,59" name="overhands/fire" dx="104" dy="64"/>
 		<cell rect="851,270,49,59" name="overhands/ratatoskrLeft" dx="56" dy="64"/>
@@ -601,6 +613,12 @@
 		<cell rect="751,450,49,59" name="feet/ratatoskr" dx="79" dy="115"/>
 		<cell rect="801,450,49,59" name="feet/raiju" dx="79" dy="115"/>
 		<cell rect="901,390,49,59" name="feet/arigean" dx="79" dy="115"/>
+		<cell rect="1184,520,90,90" name="feet/myconidWhite" dx="60" dy="95"/>
+		<cell rect="1275,520,90,90" name="feet/myconidRed" dx="60" dy="95"/>
+		<cell rect="1366,520,90,90" name="feet/myconidYellow" dx="60" dy="95"/>
+		<cell rect="1457,520,90,90" name="feet/myconidGreen" dx="60" dy="95"/>
+		<cell rect="1548,520,90,90" name="feet/myconidBlue" dx="60" dy="95"/>
+		<cell rect="1639,520,90,90" name="feet/myconidPurple" dx="60" dy="95"/>		
 		<cell rect="1002,611,90,90" name="legs_bg/gnome" dx="58" dy="93"/>
 		<cell rect="151,450,49,59" name="overfeet/fire" dx="79" dy="115"/>
 		<cell rect="301,793,49,59" name="overfeet/arigeanRedAura" dx="79" dy="115"/>
@@ -638,6 +656,7 @@
 		<cell rect="122,1514,173,86" name="legs_fg/liliraune" dx="2" dy="123"/>
 		<cell rect="1166,1114,70,100" name="legs_fg/sandWorm" dx="61" dy="47"/>
 		<cell rect="1514,798,173,156" name="legs_fg/kirin" dx="57" dy="93"/>
+		<cell rect="1736,669,143,128" name="legs_fg/barometz" dx="57" dy="93"/>
 		<cell rect="9,580,102,105" name="legs_fg/Wereshark" dx="48" dy="93"/>
 		<cell rect="1253,1114,70,100" name="legs_truefg/sandWorm" dx="98" dy="45"/>
 		<cell rect="1166,1234,70,100" name="hands/sandWorm" dx="93" dy="46"/>
@@ -659,6 +678,7 @@
 		<cell rect="722,434,130,108" name="legs/frostWyrm" dx="42" dy="97"/>
 		<cell rect="853,543,80,88" name="legs/fairyFlying" dx="65" dy="89"/>
 		<cell rect="1340,798,173,156" name="legs/kirin" dx="43" dy="104"/>
+		<cell rect="1880,669,143,128" name="legs/barometz" dx="57" dy="93"/> 
 		<cell rect="122,1114,173,156" name="legs_bg/hydra2" dx="29" dy="47"/>
 		<cell rect="296,1114,173,156" name="legs_bg/hydra3" dx="29" dy="47"/>
 		<cell rect="470,1114,173,156" name="legs_bg/hydra4" dx="29" dy="47"/>
@@ -683,6 +703,12 @@
 		<cell rect="217,59,54,31" name="neck/weasel" dx="77" dy="50"/>
 		<cell rect="162,27,54,31" name="neck/centipede" dx="77" dy="49"/>
 		<cell rect="217,91,15,9" name="neck/mindbreaker" dx="97" dy="63"/>
+		<cell rect="201,274,17,10" name="neck/myconidWhite" dx="96" dy="63"/>
+		<cell rect="219,274,17,10" name="neck/myconidRed" dx="96" dy="63"/>
+		<cell rect="237,274,17,10" name="neck/myconidYellow" dx="96" dy="63"/>
+		<cell rect="201,285,17,10" name="neck/myconidGreen" dx="96" dy="63"/>
+		<cell rect="219,285,17,10" name="neck/myconidBlue" dx="96" dy="63"/>
+		<cell rect="237,285,17,10" name="neck/myconidPurple" dx="96" dy="63"/>
 		<cell rect="217,27,54,31" name="rearbody/shark" dx="84" dy="72"/>
 		<cell rect="61,689,100,100" name="rearbody/snail" dx="87" dy="82"/>
 		<cell rect="1340,1114,173,156" name="tail/arigean" dx="14" dy="16"/>
@@ -1059,7 +1085,7 @@
 		<cell rect="481,150,29,32" name="eyes/mindbreakerMale" dx="90" dy="37"/>
 		<cell rect="511,150,29,32" name="eyes_fg/corruptinfernal" dx="90" dy="37"/>
 		<cell rect="541,150,29,32" name="eyes/closed" dx="90" dy="37"/>
-		<!--<cell rect="571,150,29,32" name="antennae/marilithEye" dx="90" dy="37"/>-->
+		<cell rect="571,150,29,32" name="antennae/marilithEye" dx="91" dy="37"/>
 		<cell rect="1,190,29,32" name="ears_bg/human" dx="90" dy="37"/>
 		<cell rect="31,190,29,32" name="ears/fur" dx="90" dy="37"/>
 		<cell rect="61,190,59,32" name="ears_bg/elfin" dx="75" dy="36"/>
@@ -1120,6 +1146,14 @@
 		<cell rect="211,396,29,30" name="horns/frostWyrm" dx="105" dy="23"/>
 		<cell rect="211,429,29,30" name="horns/frostWyrmLeft" dx="73" dy="23"/>
 		<cell rect="631,396,58,32" name="horns/blackOracle" dx="74" dy="28"/>
+		<cell rect="105,536,103,45" name="horns/myconidCapWhite" dx="55" dy="23"/>
+		<cell rect="209,536,103,45" name="horns/myconidCapRed" dx="55" dy="23"/>
+		<cell rect="313,536,103,45" name="horns/myconidCapYellow" dx="55" dy="23"/>
+		<cell rect="417,536,103,45" name="horns/myconidCapGreen" dx="55" dy="23"/>
+		<cell rect="521,536,103,45" name="horns/myconidCapBlue" dx="55" dy="23"/>
+		<cell rect="625,536,103,45" name="horns/myconidCapPurple" dx="55" dy="23"/>
+		<cell rect="181,470,59,65" name="horns/ram" dx="75" dy="10"/>
+		<cell rect="241,470,59,65" name="horns/barometz" dx="75" dy="10"/>
 		<cell rect="1,330,59,65" name="horns_bg/orchid" dx="73" dy="4"/>
 		<cell rect="61,330,59,65" name="horns_bg/devil" dx="76" dy="5"/>
 		<cell rect="121,330,59,65" name="horns_bg/cow" dx="75" dy="4"/>
@@ -1134,6 +1168,7 @@
 		<cell rect="721,330,59,65" name="horns_bg/jabberwockycrown" dx="75" dy="20"/>
 		<cell rect="241,396,59,65" name="horns_fg/balrog" dx="73" dy="25"/>
 		<cell rect="481,396,59,65" name="back_bg/cobraHood" dx="77" dy="32"/>
+		<cell rect="1,536,103,45" name="back_bg/myconidCap_bg" dx="57" dy="35"/>		
 		<cell rect="301,396,59,65" name="horns_overclothe/deer" dx="74" dy="-5"/>
 		<cell rect="1,470,59,65" name="antennae/bee" dx="75" dy="4"/>
 		<cell rect="61,470,88,65" name="neck/seaDragonWhisker" dx="63" dy="57"/>
@@ -1320,6 +1355,16 @@
 		<cell rect="penis/arigean" name="penis_taur/arigean_taur" dx="116" dy="138"/>
 		<cell rect="1061,230,49,59" name="penis/arigeanbig" dx="74" dy="99"/>
 		<cell rect="penis/arigeanbig" name="penis_taur/arigeanbig_taur" dx="115" dy="130"/>
+		<cell rect="361,290,49,59" name="penis/barometz" dx="77" dy="103"/>
+		<cell rect="penis/barometz" name="penis_taur/barometz_taur" dx="117" dy="134"/>
+		<cell rect="411,290,49,59" name="penis/barometzbig" dx="77" dy="103"/>
+		<cell rect="penis/barometzbig" name="penis_taur/barometzbig_taur" dx="117" dy="133"/>
+		<cell rect="1111,200,49,29" name="penis/myconidWhite" dx="75" dy="104"/>
+		<cell rect="1111,230,49,29" name="penis/myconidRed" dx="75" dy="104"/>
+		<cell rect="1111,260,49,29" name="penis/myconidYellow" dx="75" dy="104"/>
+		<cell rect="1161,200,49,29" name="penis/myconidGreen" dx="75" dy="104"/>
+		<cell rect="1161,230,49,29" name="penis/myconidBlue" dx="75" dy="104"/>
+		<cell rect="1161,260,49,29" name="penis/myconidPurple" dx="75" dy="104"/>
 		<cell rect="11,290,49,29" name="balls/Bhumansmall" dx="79" dy="104"/>
 		<cell rect="balls/Bhumansmall" name="balls_taur/Bhumansmall_taur" dx="121" dy="128"/>
 		<cell rect="11,320,49,29" name="balls/Bhumanlarge" dx="79" dy="104"/>
@@ -1707,6 +1752,8 @@
 		<cell rect="tail/kamaitachi" name="tail/kamaitachi_taur" dx="149" dy="94"/>
 		<cell rect="593,351,82,69" name="tail/kirin" dx="95" dy="87"/>
 		<cell rect="tail/kirin" name="tail/kirin_taur" dx="140" dy="88"/>
+		<cell rect="845,71,83,139" name="tail/barometz" dx="97" dy="43"/>
+		<cell rect="tail/barometz" name="tail/barometz_taur" dx="150" dy="55"/>
 		<cell rect="255,211,83,139" name="tail_bg/cat" dx="108" dy="40"/>
 		<cell rect="tail_bg/cat" name="tail_bg/cat_taur" dx="158" dy="51"/>
 		<cell rect="339,211,83,139" name="tail_bg/cat2" dx="108" dy="40"/>
@@ -1735,24 +1782,24 @@
 		<cell rect="tail_bg/fox8" name="tail_bg/fox8_taur" dx="60" dy="47"/>
 		<cell rect="1,701,173,156" name="tail_bg/fox9" dx="21" dy="37"/>
 		<cell rect="tail_bg/fox9" name="tail_bg/fox9_taur" dx="60" dy="47"/>
-		<cell rect="1,1486,173,156" name="tail_bg_overlay/firefox1" dx="4" dy="31"/>
-		<cell rect="tail_bg_overlay/firefox1" name="tail_bg_overlay/firefox1_taur" dx="60" dy="47"/>
-		<cell rect="523,1329,173,156" name="tail_bg_overlay/firefox2" dx="16" dy="36"/>
-		<cell rect="tail_bg_overlay/firefox2" name="tail_bg_overlay/firefox2_taur" dx="63" dy="43"/>
-		<cell rect="349,1329,173,156" name="tail_bg_overlay/firefox3" dx="17" dy="35"/>
-		<cell rect="tail_bg_overlay/firefox3" name="tail_bg_overlay/firefox3_taur" dx="67" dy="47"/>
-		<cell rect="175,1329,173,156" name="tail_bg_overlay/firefox4" dx="20" dy="36"/>
-		<cell rect="tail_bg_overlay/firefox4" name="tail_bg_overlay/firefox4_taur" dx="65" dy="47"/>
-		<cell rect="1,1329,173,156" name="tail_bg_overlay/firefox5" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox5" name="tail_bg_overlay/firefox5_taur" dx="61" dy="47"/>
-		<cell rect="523,1172,173,156" name="tail_bg_overlay/firefox6" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox6" name="tail_bg_overlay/firefox6_taur" dx="60" dy="47"/>
-		<cell rect="349,1172,173,156" name="tail_bg_overlay/firefox7" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox7" name="tail_bg_overlay/firefox7_taur" dx="60" dy="47"/>
-		<cell rect="175,1172,173,156" name="tail_bg_overlay/firefox8" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox8" name="tail_bg_overlay/firefox8_taur" dx="60" dy="47"/>
-		<cell rect="1,1172,173,156" name="tail_bg_overlay/firefox9" dx="21" dy="37"/>
-		<cell rect="tail_bg_overlay/firefox9" name="tail_bg_overlay/firefox9_taur" dx="60" dy="47"/>
+		<cell rect="1,1486,173,156" name="tail_bg/firefox1" dx="4" dy="31"/>
+		<cell rect="tail_bg/firefox1" name="tail_bg/firefox1_taur" dx="60" dy="47"/>
+		<cell rect="523,1329,173,156" name="tail_bg/firefox2" dx="16" dy="36"/>
+		<cell rect="tail_bg/firefox2" name="tail_bg/firefox2_taur" dx="63" dy="43"/>
+		<cell rect="349,1329,173,156" name="tail_bg/firefox3" dx="17" dy="35"/>
+		<cell rect="tail_bg/firefox3" name="tail_bg/firefox3_taur" dx="67" dy="47"/>
+		<cell rect="175,1329,173,156" name="tail_bg/firefox4" dx="20" dy="36"/>
+		<cell rect="tail_bg/firefox4" name="tail_bg/firefox4_taur" dx="65" dy="47"/>
+		<cell rect="1,1329,173,156" name="tail_bg/firefox5" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox5" name="tail_bg/firefox5_taur" dx="61" dy="47"/>
+		<cell rect="523,1172,173,156" name="tail_bg/firefox6" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox6" name="tail_bg/firefox6_taur" dx="60" dy="47"/>
+		<cell rect="349,1172,173,156" name="tail_bg/firefox7" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox7" name="tail_bg/firefox7_taur" dx="60" dy="47"/>
+		<cell rect="175,1172,173,156" name="tail_bg/firefox8" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox8" name="tail_bg/firefox8_taur" dx="60" dy="47"/>
+		<cell rect="1,1172,173,156" name="tail_bg/firefox9" dx="21" dy="37"/>
+		<cell rect="tail_bg/firefox9" name="tail_bg/firefox9_taur" dx="60" dy="47"/>
 	</spritemap>
 	<spritemap file="weapons.png">
 		<cell rect="1094,652,89,105" name="weapon/staffGeneric" dx="38" dy="55"/>
@@ -1949,7 +1996,7 @@
 		<cell rect="508,350,168,139" name="wings/ghost" dx="21" dy="27"/>
 		<cell rect="170,350,168,139" name="rearbody/displacertentacle" dx="24" dy="20"/>
 		<cell rect="1,630,248,139" name="wings_bg/vampire_bg" dx="-3" dy="30"/>
-		<cell rect="254,630,168,139" name="overclothe/vampire" dx="20" dy="28"/>
+		<cell rect="254,630,168,139" name="wings_overclothe/vampire" dx="20" dy="28"/>
 		<cell rect="677,350,83,139" name="backtentacles_bg/atlach" dx="17" dy="-3"/>
 		<cell rect="747,350,83,139" name="backtentacles/atlach" dx="87" dy="-3"/>
 		<cell rect="423,630,135,139" name="wings_bg/seaDragonLeft" dx="-25" dy="18"/>
@@ -1963,6 +2010,7 @@
 
 	<!-- LAYER AREA -->
 	<layers>
+		<layer name="wings_overclothe"/>
 		<layer name="glove_fg"/>
 		<layer name="hands_fg"/>
 		<layer name="arms_fg"/>
@@ -2339,7 +2387,7 @@
 		</if>
 		<if test="not showWeapon">
 			<set var="MeleeWeaponSprite" value="''"/>
-			<set var="meleeWeaponOffSprite" value="''"/>
+			<set var="MeleeWeaponOffSprite" value="''"/>
 			<set var="RangedWeaponSprite" value="''"/>
 			<set var="PlayerHasADaggerTwin" value="false"/>
 			<set var="PlayerHasAShieldTwin" value="false"/>
@@ -2391,21 +2439,21 @@
 					<set var="fireBuffType">sword</set>
 					<show part="weapon/swordGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/swordGenericOH"/>
+						
 					</if>
 				</case>
 				<case value="'sword_holy'">
 					<set var="fireBuffType">sword</set>
 					<show part="weapon/swordHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/swordHolyOH"/>
+						
 					</if>
 				</case>
 				<case value="'sword_unholy'">
 					<set var="fireBuffType">sword</set>
 					<show part="weapon/swordUnholy"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/swordUnholyOH"/>
+						
 					</if>
 				</case>
 				
@@ -2418,21 +2466,21 @@
 					<set var="fireBuffType">sword_large</set>
 					<show part="weapon/swordLargeGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/swordLargeGenericOH"/>
+						
 					</if>
 				</case>
 				<case value="'large_sword_holy'">
 					<set var="fireBuffType">sword_large</set>
 					<show part="weapon/swordLargeHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/swordLargeHolyOH"/>
+						
 					</if>
 				</case>
 				<case value="'large_sword_unholy'">
 					<set var="fireBuffType">sword_large</set>
 					<show part="weapon/swordLargeUnholy"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/swordLargeUnholyOH"/>
+						
 					</if>
 				</case>
 				
@@ -2440,21 +2488,21 @@
 					<set var="fireBuffType">sword_massive</set>
 					<show part="weapon/swordMassiveGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/swordMassiveGenericOH"/>
+						
 					</if>
 				</case>
 				<case value="'massive_sword_holy'">
 					<set var="fireBuffType">sword_massive</set>
 					<show part="weapon/swordMassiveHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/swordMassiveHolyOH"/>
+						
 					</if>
 				</case>
 				<case value="'massive_sword_unholy'">
 					<set var="fireBuffType">sword_massive</set>
 					<show part="weapon/swordMassiveUnholy"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/swordMassiveUnholyOH"/>
+						
 					</if>
 				</case>
 
@@ -2462,19 +2510,19 @@
 				<case value="'axe'">
 					<show part="weapon/axeGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/axeGenericOH"/>
+						
 					</if>
 				</case>
 				<case value="'axe_holy'">
 					<show part="weapon/axeHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/axeHolyOH"/>
+						
 					</if>
 				</case>
 				<case value="'axe_unholy'">
 					<show part="weapon/axeUnholy"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/axeUnholyOH"/>
+						
 					</if>
 				</case>
 
@@ -2493,19 +2541,19 @@
 				<case value="'hammer'">
 					<show part="weapon/hammerGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/hammerGenericOH"/>
+						
 					</if>
 				</case>
 				<case value="'hammer_holy'">
 					<show part="weapon/hammerHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/hammerHolyOH"/>
+						
 					</if>
 				</case>
 				<case value="'hammer_unholy'">
 					<show part="weapon/hammerUnholy"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/hammerUnholyOH"/>
+						
 					</if>
 				</case>
 
@@ -2527,7 +2575,7 @@
 				<case value="'spear_phallus'">
 					<show part="weapon/spearPhallus"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/spearPhallusOH"/>
+						
 					</if>
 				</case>
 
@@ -2536,21 +2584,21 @@
 					<set var="fireBuffType">katana</set>
 					<show part="weapon/katanaGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/katanaGenericOH"/>
+						
 					</if>
 				</case>
 				<case value="'katana_holy'">
 					<set var="fireBuffType">katana</set>
 					<show part="weapon/katanaHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/katanaHolyOH"/>
+						
 					</if>
 				</case>
 				<case value="'katana_unholy'">
 					<set var="fireBuffType">katana</set>
 					<show part="weapon/katanaUnholy"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/katanaUnholyOH"/>
+						
 					</if>
 				</case>
 
@@ -2566,21 +2614,21 @@
 					<set var="fireBuffType">nodachi</set>
 					<show part="weapon/nodachiGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/nodachiGenericOH"/>
+						
 					</if>
 				</case>
 				<case value="'nodachi_holy'">
 					<set var="fireBuffType">nodachi</set>
 					<show part="weapon/nodachiHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/nodachiHolyOH"/>
+						
 					</if>
 				</case>
 				<case value="'nodachi_unholy'">
 					<set var="fireBuffType">nodachi</set>
 					<show part="weapon/nodachiUnholy"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/nodachiUnholyOH"/>
+						
 					</if>
 				</case>
 
@@ -2603,21 +2651,21 @@
 					<set var="fireBuffType">dagger</set>
 					<show part="weapon/daggerGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/daggerGenericOH"/>
+						
 					</if>
 				</case>
 				<case value="'dagger_holy'">
 					<set var="fireBuffType">dagger</set>
 					<show part="weapon/daggerHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/daggerHolyOH"/>
+						
 					</if>
 				</case>
 				<case value="'dagger_unholy'">
 					<set var="fireBuffType">dagger</set>
 					<show part="weapon/daggerUnholy"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/daggerUnholyOH"/>
+						
 					</if>
 				</case>
 
@@ -2627,8 +2675,8 @@
 					<show part="weapon/scytheShaftGeneric"/>
 					<show part="weapon_bg/scytheBladeGeneric"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/scytheShaftGenericOH"/>
-						<show part="weapon_bg/scytheBladeGenericOH"/>
+						
+						
 					</if>
 				</case>
 				<case value="'scythe_holy'">
@@ -2636,10 +2684,19 @@
 					<show part="weapon/scytheShaftHoly"/>
 					<show part="weapon_bg/scytheBladeHoly"/>
 					<if test="PlayerHasADualMeleeWeapon">
-						<show part="weapon/scytheShaftHolyOH"/>
-						<show part="weapon_bg/scytheBladeHolyOH"/>
+						
+						
 					</if>
 				</case>	
+				<case value="'scythe_unholy'">
+					<set var="fireBuffType">scythe</set>
+					<show part="weapon/scytheShaftUnholy"/>
+					<show part="weapon_bg/scytheBladeUnholy"/>
+					<if test="PlayerHasADualMeleeWeapon">
+						
+						
+					</if>
+				</case>					
 			</switch>
 			
 			<set var="fireBuffOhType"></set>
@@ -3105,6 +3162,35 @@
 			<case values="Horns.SEA_DRAGON">
 				<show part="horns_bg/seaDragon"/>
 			</case>
+			<case values="Horns.SHROOM_HEADCAP">
+				<show part="back_bg/myconidCap_bg"/>
+				<switch>
+					<case test="horns.count gt 14">
+						<show part="horns/myconidCapPurple"/>
+					</case>
+					<case test="horns.count gt 12">
+						<show part="horns/myconidCapBlue"/>
+					</case>
+					<case test="horns.count gt 10">
+						<show part="horns/myconidCapGreen"/>
+					</case>
+					<case test="horns.count gt 8">
+						<show part="horns/myconidCapYellow"/>
+					</case>
+					<case test="horns.count gt 6">
+						<show part="horns/myconidCapRed"/>
+					</case>
+					<default>
+						<show part="horns/myconidCapWhite"/>
+					</default>
+				</switch>	
+			</case>
+			<case values="Horns.RAM">
+				<show part="horns/ram"/>
+			</case>
+			<case values="Horns.VERDANT_RAM">
+				<show part="horns/barometz"/>
+			</case>
 			<default><!--TODO DRACONIC_X2, , ANTLERS, RHINO, OAK-->
 				<show part="horns/2large"/>
 			</default>
@@ -3116,7 +3202,7 @@
 			<case values="Ears.HUMAN">
 				<show part="ears_bg/human"/>
 			</case>
-			<case values="Ears.COW,Ears.PIG,Ears.RHINO,Ears.ECHIDNA"><!--TODO-->
+			<case values="Ears.COW,Ears.PIG,Ears.RHINO,Ears.ECHIDNA,Ears.BAROMETZ"><!--TODO-->
 				<show part="ears/goat"/>
 				<show part="ears_bg/goat"/>
 			</case>
@@ -3256,7 +3342,7 @@
 			<case values="Eyes.FERAL,Eyes.FENRIR">
 				<show part="eyes/yandere"/>
 			</case>
-			<case values="Eyes.GOAT, Eyes.KRAKEN">
+			<case values="Eyes.GOAT,Eyes.KRAKEN">
 				<show part="eyes/goat"/>
 			</case>
 			<case values="Eyes.CENTIPEDE">
@@ -3276,6 +3362,10 @@
 			</case>
 			<case values="Eyes.MINDBREAKERMALE">
 				<show part="eyes/mindbreakerMale"/>
+			</case>
+			<case values="Eyes.MARILITH">
+				<show part="eyes/devil"/>
+				<show part="antennae/marilithEye"/>
 			</case>
 			<default>
 				<show part="eyes/human"/>
@@ -3395,6 +3485,32 @@
 			</case>
 			<case values="RearBody.COBRA_HOOD">
 				<show part="back_bg/cobraHood"/>
+			</case>
+			<case values="RearBody.BRA_AND_NECK">
+				<if test="horns.type == Horns.SHROOM_HEADCAP">
+					<switch>
+						<case test="horns.count gt 14">
+							<show part="neck/myconidPurple"/>
+						</case>
+						<case test="horns.count gt 12">
+							<show part="neck/myconidBlue"/>
+						</case>
+						<case test="horns.count gt 10">
+							<show part="neck/myconidGreen"/>
+						</case>
+						<case test="horns.count gt 8">
+							<show part="neck/myconidYellow"/>
+						</case>
+						<case test="horns.count gt 6">
+							<show part="neck/myconidRed"/>
+						</case>
+						<default>
+							<show part="neck/myconidWhite"/>
+						</default>
+					</switch>
+				<else/>
+					<show part="neck/myconidWhite"/>
+				</if>	
 			</case>
 			<default>
 			</default>
@@ -4472,6 +4588,46 @@
 				<show part="hands/arigean"/>
 				<show part="hands_bg/arigean"/>
 			</case>
+			<case values="Arms.MARILITH">
+				<show part="hands/scales"/>
+				<show part="hands_bg/scales"/>
+				<show part="arms_bg/prayer"/>
+				<show part="arms_front/prayer"/>
+				<show part="arms_fg/marilith"/>
+			</case>
+			<case values="Arms.SHROOM_ARMS">
+				<if test="horns.type == Horns.SHROOM_HEADCAP">
+					<switch>
+						<case test="horns.count gt 14">
+							<show part="hands/myconidPurple"/>
+							<show part="hands_bg/myconidPurple"/>
+						</case>
+						<case test="horns.count gt 12">
+							<show part="hands/myconidBlue"/>
+							<show part="hands_bg/myconidBlue"/>
+						</case>
+						<case test="horns.count gt 10">
+							<show part="hands/myconidGreen"/>
+							<show part="hands_bg/myconidGreen"/>
+						</case>
+						<case test="horns.count gt 8">
+							<show part="hands/myconidYellow"/>
+							<show part="hands_bg/myconidYellow"/>
+						</case>
+						<case test="horns.count gt 6">
+							<show part="hands/myconidRed"/>
+							<show part="hands_bg/myconidRed"/>
+						</case>
+						<default>
+							<show part="hands/myconidWhite"/>
+							<show part="hands_bg/myconidWhite"/>
+						</default>
+					</switch>
+				<else/>					
+					<show part="hands/myconidWhite"/>
+					<show part="hands_bg/myconidWhite"/>
+				</if>
+			</case>	
 			<default>
 				<!--see switch[value=skinType]-->
 			</default>
@@ -4537,6 +4693,34 @@
 					<case test="legCount==4">
 						<show part="legs/kirin"/>
 						<show part="legs_fg/kirin"/>
+					</case>
+					<default>
+						<switch>
+							<case test="hasPartialCoatOfType(Skin.SCALES,Skin.AQUA_SCALES,Skin.DRAGON_SCALES)">
+								<show part="legs/hoof_pscales"/>
+							</case>
+							<case test="hasFullCoatOfType(Skin.FUR)">
+								<show part="legs/hoof_fur"/>
+							</case>
+							<case test="hasFullCoatOfType(Skin.CHITIN)">
+								<show part="legs/hoof_chitin"/>
+							</case>
+							<case test="hasFullCoatOfType(Skin.SCALES,Skin.AQUA_SCALES,Skin.DRAGON_SCALES)">
+								<show part="legs/hoof_scales"/>
+							</case>
+							<default>
+								<show part="legs/hoof_human"/>
+							</default>
+						</switch>
+					</default>
+				</switch>
+			</case>
+			<case values="LowerBody.BAROMETZ">
+				<hide part="legs/*"/>
+				<switch>
+					<case test="legCount==4">
+						<show part="legs/barometz"/>
+						<show part="legs_fg/barometz"/>
 					</case>
 					<default>
 						<switch>
@@ -4788,6 +4972,32 @@
 			</case>
 			<case values="LowerBody.ARMORED_LEGS">
 				<show part="feet/arigean"/>
+			</case>
+			<case values="LowerBody.SHROOM_SKIRT">
+				<if test="horns.type == Horns.SHROOM_HEADCAP">
+					<switch>
+						<case test="horns.count gt 14">
+							<show part="feet/myconidPurple"/>
+						</case>
+						<case test="horns.count gt 12">
+							<show part="feet/myconidBlue"/>
+						</case>
+						<case test="horns.count gt 10">
+							<show part="feet/myconidGreen"/>
+						</case>
+						<case test="horns.count gt 8">
+							<show part="feet/myconidYellow"/>
+						</case>
+						<case test="horns.count gt 6">
+							<show part="feet/myconidRed"/>
+						</case>
+						<default>
+							<show part="feet/myconidWhite"/>
+						</default>
+					</switch>
+				<else/>				
+					<show part="feet/myconidWhite"/>
+				</if>
 			</case>
 			<!--<case values="LowerBody.GARGOYLE">TODO </case>-->
 			<!--<case values="LowerBody.PLANT_HIGH_HEELS">TODO </case>-->
@@ -5192,7 +5402,7 @@
 				<show part="wings_bg/jabberwockRight"/>
 			</case>
 			<case values="Wings.VAMPIRE">
-				<show part="overclothe/vampire"/>
+				<show part="wings_overclothe/vampire"/>
 				<show part="wings_bg/vampire_bg"/>
 			</case>
 			<default>
@@ -5262,8 +5472,7 @@
 				<show part="tail_bg/fox$tailCount$taur"/>
 			</case>
 			<case values="Tail.KITSHOO">
-				<show part="tail_bg/fox$tailCount$taur"/>
-				<show part="tail_bg_overlay/firefox$tailCount$taur"/>
+				<show part="tail_bg/firefox$tailCount$taur"/>
 			</case>
 			<case values="Tail.KANGAROO"><!--TODO -->
 				<show part="tail/cat$taur"/>
@@ -5335,6 +5544,9 @@
 			</case>
 			<case values="Tail.KIRIN">
 				<show part="tail/kirin$taur"/>
+			</case>
+			<case values="Tail.BAROMETZ">
+				<show part="tail/barometz$taur"/>
 			</case>
 			<case values="Tail.YGGDRASIL">
 				<!--TODO -->
@@ -5459,6 +5671,39 @@
 
 				<case values="CockTypesEnum.ARIGEAN">
 					<show part="penis$big/arigean$big$taur"/>
+				</case>
+				
+				<case values="CockTypesEnum.SHROOM">
+					<if test="horns.type == Horns.SHROOM_HEADCAP">
+						<switch>
+							<case test="horns.count gt 14">
+								<show part="penis/myconidPurple"/>
+							</case>
+							<case test="horns.count gt 12">
+								<show part="penis/myconidBlue"/>
+							</case>
+							<case test="horns.count gt 10">
+								<show part="penis/myconidGreen"/>
+							</case>
+							<case test="horns.count gt 8">
+								<show part="penis/myconidYellow"/>
+							</case>
+							<case test="horns.count gt 6">
+								<show part="penis/myconidRed"/>
+							</case>
+							<default>
+								<show part="penis/myconidWhite"/>
+							</default>
+						</switch>
+					<else/>					
+						<show part="penis/myconidWhite"/>
+					</if>
+				</case>
+				<case values="CockTypesEnum.BAROMETZ">
+					<show part="penis$taur/barometz$big$taur"/>
+					<if test="showDickDrippies">
+						<show part="cum$taur/horse$big$taur"/>
+					</if>
 				</case>
 
 				<!-- <case values="CockTypesEnum.HUMAN"></case> use default -->
@@ -5672,6 +5917,9 @@
 			</if>
 		</if>
 
+		<!-- HIDING INVALID LEG PATTERN AREA >-->
+		
+
 		<!-- Succu arm stuff -->
 		<if test="(succuLeftArm or succuRightArm or succuLegs)">
 			<switch value="arms.type">
@@ -5748,6 +5996,9 @@
 			<hide part="legs_pattern/*"/>
 		</if>
 		<if test="lowerBody == LowerBody.NAGA">
+			<hide part="legs_pattern/*"/>
+		</if>
+		<if test="lowerBody == LowerBody.FROSTWYRM">
 			<hide part="legs_pattern/*"/>
 		</if>
 		<if test="lowerBody == LowerBody.HYDRA">

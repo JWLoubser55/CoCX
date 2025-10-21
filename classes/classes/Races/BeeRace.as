@@ -65,6 +65,7 @@ public class BeeRace extends Race {
 	
 	public function BeeRace(id:int) {
 		super("Bee", id, []);//RaceBody);
+		mutationThreshold = 4;
 	}
 	
 	override public function finalizeScore(body:BodyData, score:int, checkRP:Boolean = true, outputText:Function = null):int {
@@ -81,7 +82,7 @@ public class BeeRace extends Race {
 				.chitinColors(ANY("yellow and black","yellow and ebony"), +1)
 				.eyeType(Eyes.BLACK_EYES_SAND_TRAP, +1)
 				.antennaeType(Antennae.BEE, +1)
-				.faceType(Face.HUMAN, +1) //potem zamienić na specificzny dla pszczół wariant twarzy
+				.faceType(Face.HUMAN, +1)
 				.earType(Ears.INSECT, +1)
 				.noHorns(+1)
 				.armType(Arms.BEE, +1)
@@ -89,8 +90,7 @@ public class BeeRace extends Race {
 				.tailType(Tail.BEE_ABDOMEN, +1)
 				.wingType(Wings.BEE_SMALL, +1)
 				.wingType(Wings.BEE_LARGE, +4)
-				.noRearBody(+1)
-				.skinCoatPattern(Skin.PATTERN_BEE_STRIPES, +1)
+				.skinCoatPattern(Skin.PATTERN_BEE_STRIPES, +2)
 				.hasPerk(PerkLib.BeeOvipositor, +1)
 				.cockOrVaginaOfType(CockTypesEnum.BEE, VaginaClass.BEE,1)
 				.hasPerk(PerkLib.TransformationImmunityBeeHandmaiden, +2)

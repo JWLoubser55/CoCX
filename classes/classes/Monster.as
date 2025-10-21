@@ -49,6 +49,7 @@ import classes.Scenes.NPCs.ChiChi;
 import classes.Scenes.Places.Boat.Marae;
 import classes.Scenes.Quests.UrtaQuest.MilkySuccubus;
 import classes.Scenes.SceneLib;
+import classes.StatusEffects.VampireThirstEffect;
 import classes.internals.ChainedDrop;
 import classes.internals.RandomDrop;
 import classes.internals.Utils;
@@ -313,6 +314,29 @@ import classes.Scenes.Combat.CombatAbilities;
 				}
 			}
 			if (hasPerk(PerkLib.JobGuardian)) temp += 120;
+			if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) temp += (1000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.SoulPersonage)) temp += (1000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.SoulWarrior)) temp += (1000 * (1 + newGamePlusMod()));
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) temp += (2000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.SoulScholar)) temp += (2000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.SoulGrandmaster)) temp += (2000 * (1 + newGamePlusMod()));
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) temp += (3000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.SoulExalt)) temp += (3000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.SoulOverlord)) temp += (3000 * (1 + newGamePlusMod()));
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) temp += (4000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.SoulKing)) temp += (4000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.SoulEmperor)) temp += (4000 * (1 + newGamePlusMod()));
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) temp += (5000 * (1 + newGamePlusMod()));
+			}
 			if (hasPerk(PerkLib.FleshBodyApprenticeStage)) {
 				if (hasPerk(PerkLib.SoulApprentice)) temp += (400 * (1 + newGamePlusMod()));
 				if (hasPerk(PerkLib.SoulPersonage)) temp += (400 * (1 + newGamePlusMod()));
@@ -349,7 +373,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.EnemyLargeGroupType)) temp *= 10;
 			if (hasPerk(PerkLib.Enemy300Type)) temp *= 15;
 			if ((hasPerk(PerkLib.EnemyEliteType) || hasPerk(PerkLib.EnemyChampionType) || hasPerk(PerkLib.EnemyBossType)) && flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] > 0) {
-				if (hasPerk(PerkLib.EnemyEliteType)) temp *= (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING]* 1.25);
+				if (hasPerk(PerkLib.EnemyEliteType)) temp *= (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING]*1.25);
 				if (hasPerk(PerkLib.EnemyChampionType)) temp *= (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING]*2.5);
 				if (hasPerk(PerkLib.EnemyBossType)) temp *= (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING]*5);
 			}
@@ -406,8 +430,30 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (bonus > limit) bonus = limit;
 				maxOver2 += (maxHP() * 0.01 * bonus);
 			}
+			if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) maxOver2 += 0.01;
+				if (hasPerk(PerkLib.SoulPersonage)) maxOver2 += 0.01;
+				if (hasPerk(PerkLib.SoulWarrior)) maxOver2 += 0.01;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) maxOver2 += 0.02;
+				if (hasPerk(PerkLib.SoulScholar)) maxOver2 += 0.02;
+				if (hasPerk(PerkLib.SoulGrandmaster)) maxOver2 += 0.02;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) maxOver2 += 0.03;
+				if (hasPerk(PerkLib.SoulExalt)) maxOver2 += 0.03;
+				if (hasPerk(PerkLib.SoulOverlord)) maxOver2 += 0.03;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) maxOver2 += 0.04;
+				if (hasPerk(PerkLib.SoulKing)) maxOver2 += 0.04;
+				if (hasPerk(PerkLib.SoulEmperor)) maxOver2 += 0.04;
+			}
 			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) maxOver2 += 0.1;
 			if (perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxOver2 += 0.2;
+			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
+			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
 			maxOver *= maxOver2;//~290%
 			if (hasStatusEffect(StatusEffects.CorpseExplosion)) maxOver *= (1 - (0.2 * statusEffectv1(StatusEffects.CorpseExplosion)));
 			if (hasStatusEffect(StatusEffects.CombatWounds)) maxOver *= (1 - (0.01 * statusEffectv1(StatusEffects.CombatWounds)));
@@ -649,7 +695,13 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
-			max1 *= max2;//~125%
+			if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
+			max1 *= max2;//~185%
 			max1 = Math.round(max1);
 			return max1;
 		}
@@ -721,7 +773,38 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasPerk(PerkLib.SoulTyrant)) temp += 300;
 				if (hasPerk(PerkLib.SoulKing)) temp += 300;
 				if (hasPerk(PerkLib.SoulEmperor)) temp += 300;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistTyrantStage)) {
 				//if (hasPerk(PerkLib.SoulAncestor)) temp += 300;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) temp += 125;
+				if (hasPerk(PerkLib.SoulPersonage)) temp += 125;
+				if (hasPerk(PerkLib.SoulWarrior)) temp += 125;
+				multimax += 0.05;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) temp += 250;
+				if (hasPerk(PerkLib.SoulScholar)) temp += 250;
+				if (hasPerk(PerkLib.SoulGrandmaster)) temp += 250;
+				multimax += 0.05;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) temp += 375;
+				if (hasPerk(PerkLib.SoulExalt)) temp += 375;
+				if (hasPerk(PerkLib.SoulOverlord)) temp += 375;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) temp += 500;
+				if (hasPerk(PerkLib.SoulKing)) temp += 500;
+				if (hasPerk(PerkLib.SoulEmperor)) temp += 500;
+				multimax += 0.1;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) temp += 625;
 				multimax += 0.1;
 			}
 			if (hasPerk(PerkLib.DeityJobMunchkin)) multimax += 0.1;
@@ -741,7 +824,13 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.SwordIntentAura)) max2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) max2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
-			max1 *= max2;//~125%
+			if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
+			max1 *= max2;//~185%
 			max1 = Math.round(max1);
 			return max1;
 		}
@@ -842,6 +931,12 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.SwordIntentAura)) temp2 += 0.05;
 			if (hasPerk(PerkLib.SwordImmortalFirstForm)) temp2 += 0.05;
 			if (hasPerk(PerkLib.MunchkinAtWork)) temp2 += 0.1;
+			if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				temp2 += (0.01 * bonus);
+			}
 			temp1 *= temp2;
 			temp1 = Math.round(temp1);
 			return temp1;
@@ -921,7 +1016,13 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (hasPerk(PerkLib.HyperCasting)) max2 += 0.1;
 			if (hasPerk(PerkLib.MunchkinAtWork)) max2 += 0.1;
 			if (hasPerk(PerkLib.WellOfMana)) max2 += 0.1;
-			max1 *= max2;//~130%
+			if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				max2 += (0.01 * bonus);
+			}
+			max1 *= max2;//~190%
 			max1 = Math.round(max1);
 			return max1;
 		}
@@ -1019,6 +1120,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				armorMod -= ar;
 				var ap:int = game.player.weapon.effectPower(IELib.ArmorPenetration);
 				if (game.player.isSpearTypeWeapon() && game.player.hasPerk(PerkLib.SpearAffinity)) ap = 100;
+				if (game.player.isStaffTypeWeapon() && game.player.hasPerk(PerkLib.Shillelagh)) ap = 40;
 				armorMod *= (100 - ap) / 100;
 			}
 			if (game.player.hasPerk(PerkLib.LungingAttacks)) armorMod *= 0.5;
@@ -2138,10 +2240,12 @@ import classes.Scenes.Combat.CombatAbilities;
 				StatusEffects.GrabBear,
 				StatusEffects.CancerGrab,
 				StatusEffects.MysticWeb,
+				StatusEffects.BloodWeb,
 				StatusEffects.TelekineticGrab,
 				StatusEffects.Entangled,
 				StatusEffects.Swallowed,
 				StatusEffects.Straddle,
+				StatusEffects.SlimeInsert,
 			]
 			for each (var effect:StatusEffectType in effects) if (hasStatusEffect(effect)) return true;
 			return false;
@@ -2333,6 +2437,17 @@ import classes.Scenes.Combat.CombatAbilities;
 					return;
 				}
 			}
+			if (hasStatusEffect(StatusEffects.Swarmbringer)) {
+				var dFAAA:Number = 0;
+				dFAAA += this.str;
+				dFAAA += eBaseStrengthDamage();
+				dFAAA += this.weaponAttack;
+				dFAAA = Math.round(dFAAA);
+				outputText("\n\nThe swarm continues their relentless assault, practically blinding you with their sheer numbers. You need to do something about this swarm, and quickly!");
+				player.takePhysDamage(dFAAA, true);
+				outputText("\n\n");
+				player.buff("Swarmbringer").addStats({"str": -20, "spe": -20}).withText("Swarmbringer!").combatPermanent();
+			}
 
 			//Only start temp resolute decay once monster is no longer incapacitated
 			if (hasTempResolute() && getPerkValue(PerkLib.Resolute, 3) == 2) setPerkValue(PerkLib.Resolute, 3, 1);
@@ -2360,6 +2475,17 @@ import classes.Scenes.Combat.CombatAbilities;
 					removeStatusEffect(StatusEffects.MysticWeb);
 				}
 				addStatusValue(StatusEffects.MysticWeb, 1, -1);
+				if (player.hasPerk(PerkLib.ControlFreak)) ControlFreakStacking();
+				return false;
+			}
+			if (hasStatusEffect(StatusEffects.BloodWeb)) {
+				EngineCore.outputText("[Themonster] struggle to get free from your web!");
+				if (statusEffectv1(StatusEffects.BloodWeb) <= 0) {
+					EngineCore.outputText("[Themonster] struggle to get free and manage to shove you break off your webbing.");
+					if (player.hasStatusEffect(StatusEffects.ControlFreak)) removeStatusEffect(StatusEffects.ControlFreak);
+					removeStatusEffect(StatusEffects.BloodWeb);
+				}
+				addStatusValue(StatusEffects.BloodWeb, 1, -1);
 				if (player.hasPerk(PerkLib.ControlFreak)) ControlFreakStacking();
 				return false;
 			}
@@ -3527,9 +3653,10 @@ import classes.Scenes.Combat.CombatAbilities;
 			if (this.mana > maxOverMana()) this.mana = maxMana();
 			//health, soulforce and mana regeneration for monsters
 			if (((hasPerk(PerkLib.Regeneration) || hasPerk(PerkLib.LizanRegeneration) || hasPerk(PerkLib.LustyRegeneration) || perkv1(IMutationsLib.LizanMarrowIM) >= 1 || perkv1(IMutationsLib.DrakeHeartIM) >= 3 || perkv1(IMutationsLib.DrakeBloodIM) >= 1 || perkv1(IMutationsLib.FerasBirthrightIM) >= 1 || perkv1(IMutationsLib.HydraBloodIM) >= 1
-			|| perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 || hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration) || hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline)
-			|| hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor)
-			|| hasStatusEffect(StatusEffects.PostfluidIntakeRegen) || hasStatusEffect(StatusEffects.MonsterRegen) || hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP()) || (hasStatusEffect(StatusEffects.MonsterVPT) && (this.HP < maxOverHP()) && (this.HP > minHP()))) {
+			|| perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 || hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodyFoMApprenticeStage) || hasPerk(PerkLib.FleshBodySoDApprenticeStage) || hasPerk(PerkLib.FleshBodyVoLApprenticeStage) || hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration)
+			|| hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline) || hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor)
+			|| hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor) || hasStatusEffect(StatusEffects.PostfluidIntakeRegen) || hasStatusEffect(StatusEffects.MonsterRegen) || hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP())
+			|| (hasStatusEffect(StatusEffects.MonsterVPT) && (this.HP < maxOverHP()) && (this.HP > minHP()))) {
 				var healingPercent:Number = 0;
 				var temp2:Number = 0;
 				var temp3:Number = 0;
@@ -3568,6 +3695,11 @@ import classes.Scenes.Combat.CombatAbilities;
 				}
 				if (hasPerk(PerkLib.TrollRegeneration) && !hasStatusEffect(StatusEffects.TrollRegenerationDisabled) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 6;
 				if (hasPerk(PerkLib.IcyFlesh)) healingPercent += 1;
+				if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) healingPercent += 1;
+				if (hasPerk(PerkLib.FleshBodyVoLWarriorStage)) healingPercent += 1;
+				if (hasPerk(PerkLib.FleshBodyVoLElderStage)) healingPercent += 1;
+				if (hasPerk(PerkLib.FleshBodyVoLOverlordStage)) healingPercent += 1;
+				if (hasPerk(PerkLib.FleshBodyVoLTyrantStage)) healingPercent += 1;
 				if (hasPerk(PerkLib.FleshBodyApprenticeStage)) healingPercent += 0.5;
 				if (hasPerk(PerkLib.FleshBodyWarriorStage)) healingPercent += 0.5;
 				if (hasPerk(PerkLib.FleshBodyElderStage)) healingPercent += 0.5;
@@ -3619,15 +3751,25 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (temp3 > 0) healingPercent *= temp3;
 				if (hasPerk(PerkLib.EnemyTrueDemon)) healingPercent *= 2;
 				temp2 = Math.round(maxHP() * healingPercent / 100);
-				if (hasPerk(PerkLib.Lifeline)) temp2 += (45 * (1 + newGamePlusMod()));
-				if (hasPerk(PerkLib.ImprovedLifeline)) temp2 += (60 * (1 + newGamePlusMod()));
-				if (hasPerk(PerkLib.GreaterLifeline)) temp2 += (90 * (1 + newGamePlusMod()));
-				if (hasPerk(PerkLib.EpicLifeline)) temp2 += (120 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.Lifeline)) temp2 += (6 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.ImprovedLifeline)) temp2 += (8 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.GreaterLifeline)) temp2 += (12 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.EpicLifeline)) temp2 += (16 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) temp2 += (250 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMWarriorStage)) temp2 += (500 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMElderStage)) temp2 += (750 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMOverlordStage)) temp2 += (1000 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodyFoMTyrantStage)) temp2 += (1250 * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDApprenticeStage)) temp2 += (level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDWarriorStage)) temp2 += (2 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDElderStage)) temp2 += (3 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDOverlordStage)) temp2 += (4 * level * (1 + newGamePlusMod()));
+				if (hasPerk(PerkLib.FleshBodySoDTyrantStage)) temp2 += (5 * level * (1 + newGamePlusMod()));
 				if (hasStatusEffect(StatusEffects.MonsterRegen2)) temp2 += statusEffectv2(StatusEffects.MonsterRegen2);
 				if (hasStatusEffect(StatusEffects.MonsterVPT)) temp2 += statusEffectv1(StatusEffects.MonsterVPT);
 				if (temp2 > 0) {
 					temp2 = Math.round(temp2);
-					if (this is ChiChi && (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 2 || hasStatusEffect(StatusEffects.MonsterRegen))) {
+					if (this is ChiChi && (flags[kFLAGS.CHI_CHI_SAM_TRAINING] < 12 || hasStatusEffect(StatusEffects.MonsterRegen))) {
 						outputText("To your surprise, Chi Chi’s wounds start closing! <b>([font-heal]+" + temp2 + "[/font])</b>.\n\n");
 					}
 					else {
@@ -3662,6 +3804,12 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasPerk(PerkLib.DaoistWarriorStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.005);
 				if (hasPerk(PerkLib.DaoistElderStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.005);
 				if (hasPerk(PerkLib.DaoistOverlordStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.005);
+				if (hasPerk(PerkLib.DaoistTyrantStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.005);
+				if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
+				if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
+				if (hasPerk(PerkLib.DaoistMDHiFElderStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
+				if (hasPerk(PerkLib.DaoistMDHiFOverlordStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
+				if (hasPerk(PerkLib.DaoistMDHiFTyrantStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 1) soulforceRecovery += 4;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 2) soulforceRecovery += 4;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) soulforceRecovery += 4;
@@ -3671,6 +3819,12 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 3) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 4) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
 				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3) soulforceRecovery += Math.round(maxSoulforce() * 0.01 * (perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
+				if (hasPerk(PerkLib.SPMysticalTrainingX)) {
+					var limit:Number = perkv1(PerkLib.SPMysticalTrainingX) * 10;
+					var bonus:Number = Math.round((level - 1) / 3);
+					if (bonus > limit) bonus = limit;
+					soulforceRecovery += Math.round(maxSoulforce() * 0.001 * bonus);
+				}
 				soulforceRecovery *= soulforceRecoveryMulti;
 				if (hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) soulforceRecovery = 0;
 				addSoulforce(soulforceRecovery);
@@ -3704,6 +3858,12 @@ import classes.Scenes.Combat.CombatAbilities;
 					else manaRecovery += Math.round(maxMana() * this.inte * 0.001);
 				}
 				if (hasPerk(PerkLib.GreySageWisdom)) manaRecovery += Math.round(maxMana() * 0.005);
+				if (hasPerk(PerkLib.SPMagicalTrainingX)) {
+					var limit1:Number = perkv1(PerkLib.SPMagicalTrainingX) * 10;
+					var bonus1:Number = Math.round((level - 1) / 3);
+					if (bonus1 > limit1) bonus1 = limit1;
+					manaRecovery += Math.round(maxMana() * 0.001 * bonus);
+				}
 				if (hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) manaRecovery = 0;
 				addMana(manaRecovery);
 			}
@@ -3842,6 +4002,10 @@ import classes.Scenes.Combat.CombatAbilities;
 					removeStatusEffect(StatusEffects.Polarize);
 				}
 				else outputText("<b>" + capitalA + short + (plural ? " are" : " is") + " currently polarized!</b>\n\n");
+			}
+			if (hasStatusEffect(StatusEffects.LookoutUsed)) {
+				if(statusEffectv1(StatusEffects.LookoutUsed) <= 0) removeStatusEffect(StatusEffects.LookoutUsed);
+				addStatusValue(StatusEffects.LookoutUsed, 1, -1);
 			}
 			if(hasStatusEffect(StatusEffects.Earthshield)) {
 				outputText("<b>[Themonster] is protected by a shield of rocks!</b>\n\n");
@@ -4064,6 +4228,16 @@ import classes.Scenes.Combat.CombatAbilities;
 						hemorrhage1 += 2 * SceneLib.combat.scalingBonusWisdom();
 						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 					}
+					if (hasStatusEffect(StatusEffects.BloodWeb)) {
+						EngineCore.HPChange(Math.round(player.maxHP() * 0.01), false, false);
+						var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
+						var drinked:Number = 1;
+						if (player.perkv1(IMutationsLib.HollowFangsIM) >= 3) drinked += 1;
+						if (player.perkv1(IMutationsLib.HollowFangsIM) >= 4) drinked += 3;
+						if (player.perkv1(IMutationsLib.VampiricBloodstreamIM) >= 4) drinked *= 2;
+						if (player.hasPerk(PerkLib.BloodMastery)) drinked *= 2;
+						thirst.drink(drinked);
+					}
 					hemorrhage1 *= SceneLib.combat.BleedDamageBoost();
 					hemorrhage1 = SceneLib.combat.fixPercentDamage(hemorrhage1);
 					hemorrhage1 = SceneLib.combat.doDamage(hemorrhage1);
@@ -4135,12 +4309,14 @@ import classes.Scenes.Combat.CombatAbilities;
 				addStatusValue(StatusEffects.Timer,1,-1);
 			}
 			if(hasStatusEffect(StatusEffects.Briarthorn)) {
-				var store16:Number = (player.str + player.spe) * 2;
+				var store16:Number = (player.str + player.spe) * 0.5;
 				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 					store16 += 8 * SceneLib.combat.scalingBonusIntelligence();
 					store16 += 2 * SceneLib.combat.scalingBonusWisdom();
 					EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 				}
+				if (player.hasPerk(PerkLib.GreenMagic)) store16 *= 2;
+				if (player.checkNaturalOath()) store16 *= 2;
 				store16 *= SceneLib.combat.BleedDamageBoost();
 				store16 += maxHP()*0.05;
 				store16 = SceneLib.combat.fixPercentDamage(store16);
@@ -4155,7 +4331,9 @@ import classes.Scenes.Combat.CombatAbilities;
 					removeStatusEffect(StatusEffects.Rosethorn);
 					outputText("<b>Bleeding cause by deep wounds your rose thorns left behind stopped!</b>[pg]");
 				} else {
-					var store17:Number = (player.str + player.spe);
+					var store17:Number = (player.str + player.spe) * 0.25;
+					if (player.hasPerk(PerkLib.GreenMagic)) store17 *= 2;
+					if (player.checkNaturalOath()) store17 *= 2;
 					store17 *= SceneLib.combat.BleedDamageBoost();
 					store17 *= statusEffectv1(StatusEffects.Rosethorn) * 0.1;
 					store17 += maxHP()*0.01;
@@ -4783,6 +4961,10 @@ import classes.Scenes.Combat.CombatAbilities;
 				else addStatusValue(StatusEffects.DefPDebuff,1,-1);
 			}
 			if (hasStatusEffect(StatusEffects.TimesBashed) && statusEffectv2(StatusEffects.TimesBashed) > 0) addStatusValue(StatusEffects.TimesBashed, 2, -1);
+			if (hasStatusEffect(StatusEffects.AbilityCooldownGrapple)) {
+				if (statusEffectv1(StatusEffects.AbilityCooldownGrapple) > 0) addStatusValue(StatusEffects.AbilityCooldownGrapple, 1, -1);
+				else removeStatusEffect(StatusEffects.AbilityCooldownGrapple);
+			}
 		}
 
 		public function handleAwardItemText(itype:ItemType):ItemType
@@ -5049,6 +5231,76 @@ import classes.Scenes.Combat.CombatAbilities;
 					armorMDef += (12 * (1 + newGamePlusMod()));
 				}*/
 			}
+			if (hasPerk(PerkLib.FleshBodySoDApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) {
+					armorDef += (10 * (1 + newGamePlusMod()));
+					armorMDef += (10* (1 + newGamePlusMod()));
+				}
+				if (hasPerk(PerkLib.SoulPersonage)) {
+					armorDef += (10* (1 + newGamePlusMod()));
+					armorMDef += (10 * (1 + newGamePlusMod()));
+				}
+				if (hasPerk(PerkLib.SoulWarrior)) {
+					armorDef += (10 * (1 + newGamePlusMod()));
+					armorMDef += (10 * (1 + newGamePlusMod()));
+				}
+			}
+			if (hasPerk(PerkLib.FleshBodySoDWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) {
+					armorDef += (15 * (1 + newGamePlusMod()));
+					armorMDef += (15 * (1 + newGamePlusMod()));
+				}
+				if (hasPerk(PerkLib.SoulScholar)) {
+					armorDef += (15 * (1 + newGamePlusMod()));
+					armorMDef += (15 * (1 + newGamePlusMod()));
+				}
+				if (hasPerk(PerkLib.SoulGrandmaster)) {
+					armorDef += (15 * (1 + newGamePlusMod()));
+					armorMDef += (15 * (1 + newGamePlusMod()));
+				}
+			}
+			if (hasPerk(PerkLib.FleshBodySoDElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) {
+					armorDef += (20 * (1 + newGamePlusMod()));
+					armorMDef += (20 * (1 + newGamePlusMod()));
+				}
+				if (hasPerk(PerkLib.SoulExalt)) {
+					armorDef += (20 * (1 + newGamePlusMod()));
+					armorMDef += (20 * (1 + newGamePlusMod()));
+				}
+				if (hasPerk(PerkLib.SoulOverlord)) {
+					armorDef += (20 * (1 + newGamePlusMod()));
+					armorMDef += (20 * (1 + newGamePlusMod()));
+				}
+			}
+			if (hasPerk(PerkLib.FleshBodySoDOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) {
+					armorDef += (25 * (1 + newGamePlusMod()));
+					armorMDef += (25 * (1 + newGamePlusMod()));
+				}
+				if (hasPerk(PerkLib.SoulKing)) {
+					armorDef += (25 * (1 + newGamePlusMod()));
+					armorMDef += (25 * (1 + newGamePlusMod()));
+				}
+				if (hasPerk(PerkLib.SoulEmperor)) {
+					armorDef += (25 * (1 + newGamePlusMod()));
+					armorMDef += (25 * (1 + newGamePlusMod()));
+				}
+			}
+			if (hasPerk(PerkLib.FleshBodySoDTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) {
+					armorDef += (30 * (1 + newGamePlusMod()));
+					armorMDef += (30 * (1 + newGamePlusMod()));
+				}/*
+				if (hasPerk(PerkLib.soul)) {
+					armorDef += (30 * (1 + newGamePlusMod()));
+					armorMDef += (30 * (1 + newGamePlusMod()));
+				}
+				if (hasPerk(PerkLib.)) {
+					armorDef += (30 * (1 + newGamePlusMod()));
+					armorMDef += (30 * (1 + newGamePlusMod()));
+				}*/
+			}
 			if (hasPerk(PerkLib.EnemyTrueDemon)) armorMDef += 30;
 			armorDef += ((int)(1 + armorDef / 10)) * 3 * newGamePlusMod();
 			armorMDef += ((int)(1 + armorMDef / 10)) * 3 * newGamePlusMod();
@@ -5101,6 +5353,8 @@ import classes.Scenes.Combat.CombatAbilities;
 				armorDef += Math.round(armorDef * 2.5);
 				armorMDef += Math.round(armorMDef * 2.5);
 			}
+			if (hasPerk(PerkLib.EnemyTrueDemon) && !hasPerk(PerkLib.EnemyTrueAngel)) this.cor += (1 + (rand(50)));
+			if (!hasPerk(PerkLib.EnemyTrueDemon) && hasPerk(PerkLib.EnemyTrueAngel)) this.cor -= (1 + (rand(50)));
 			if (level < 9) {
 				if (hasPerk(PerkLib.EnemyForBeginnersType)) this.lust *= 0.1;
 				else this.lust *= 0.6;
@@ -5108,4 +5362,5 @@ import classes.Scenes.Combat.CombatAbilities;
 			}
 		}
 	}
+
 }

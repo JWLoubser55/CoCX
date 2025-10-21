@@ -525,6 +525,17 @@ package classes.GeneticMemories {
 				return CoC.instance.transformations.EyesMarilith;
 			}
 		});
+
+		public static const WERESPIDER:int = _partid++;
+		EnumValue.add(Memories, WERESPIDER, "WERESPIDER", {
+			id: "Werespider Eyes",
+			name: "Werespider Eyes",
+			cost: 100,
+			title: "Werespider",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyeWerespider;
+			}
+		});
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

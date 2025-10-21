@@ -1708,7 +1708,7 @@ import classes.display.SpriteDb;
 					outputText("\n\n<b>Oral experience (Cock): " + flags[kFLAGS.WHITNEY_ORAL_TRAINING_COCK]);
 					outputText("\nOral experience (Vagina): " + flags[kFLAGS.WHITNEY_ORAL_TRAINING_VAG]);
 					outputText("\nLearning 'stages' (both): 0, 1-3, 4, 5-9, 10, 11, 12+");
-					outputText("\nYou can enable stop her learning if you want in 'Control' dialogue (requires to enable SH 'Other' option).");
+					outputText("\nYou can enable stop her learning if you want in 'Control' dialogue (requires to enable SH 'Other' option).</b>");
 				}
 			}
 			menu();

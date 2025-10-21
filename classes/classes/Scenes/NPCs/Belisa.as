@@ -214,7 +214,7 @@ public class Belisa extends Monster
 				this.bonusLust = 200;
 				this.level = 20;
 			}
-			if (flags[kFLAGS.BELISA_LVL_UP] >= 1 && flags[kFLAGS.BELISA_LVL_UP] < 18) {
+			if (flags[kFLAGS.BELISA_LVL_UP] >= 1 && flags[kFLAGS.BELISA_LVL_UP] < 20) {
 				var mod:int = flags[kFLAGS.BELISA_LVL_UP];
 				initStrTouSpeInte(80 + 18*mod, 90 + 24*mod, 180 + 30*mod, 250 + 50*mod);
 				initWisLibSensCor(200 + 45*mod, 80 + 20*mod, 150 + 25*mod, -100);

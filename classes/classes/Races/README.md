@@ -101,13 +101,14 @@ public class ZzzRace extends Race {
         /*Perks*/		"Human"];
         
     public function ZzzRace(id:int) {
-        super("Zzz", id, RaceBody);
+        super("Zzz", id, []);//RaceBody);
+		disabled = true;
     }
     
     public override function setup():void {
         addScores()
-                .//start ctrl-spacing here
-                ;
+                //.start ctrl-spacing here
+                .hasPerk(PerkLib.GOBXChemical, -1000);
 
         buildTier(1000, "tierName")
                 .buffs({

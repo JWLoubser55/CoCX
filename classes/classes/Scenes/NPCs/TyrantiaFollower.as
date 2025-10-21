@@ -905,7 +905,7 @@ public function TyrantiaTraining2():void {
 		if (TyrantiaTrainingSessions == 14) outputText("<b>You have gained new magic special: False Weapon - costs 10% of your max Lust and 100 Fatigue and lasts until the end of combat.</b>\n\n");
 		if (TyrantiaTrainingSessions == 19) outputText("<b>You can now use toggle to turn on/off auto-cast of Tyrant State at the combat start.</b>\n\n");
 		if (TyrantiaTrainingSessions == 24) outputText("<b>You have gained ability to take less physical and lust damage the closer you're to the maximum lust. (20% at 50% Max Lust, up to 70% at max)</b>\n\n");
-		if (TyrantiaTrainingSessions == 29) outputText("<b>You can delay your own defeat by Lust for two turns. Reducing your own Lust below the max will reset the timer.</b>\n\n");
+		if (TyrantiaTrainingSessions == 29) outputText("<b>You can delay your own defeat by Lust for two turns (when in Tyrant State). Reducing your own Lust below the max will reset the timer.</b>\n\n");
 		if (TyrantiaTrainingSessions == 34) outputText("<b>Constant Buildup - If you are in Rut or Heat, halve the lust DoT you take from it, and deal an additional 20% physical damage while under the effects.</b>\n\n");
 		if (TyrantiaTrainingSessions == 39) {
 			outputText("<b>Mental Bastion - The effects of Tyrant State are doubled: While active, you take 30% less damage from magic. You count as either pure or corrupt (whichever is better) for equipment. (Pure for the Beautiful weapons etc, corrupt for corrupt weapons)</b>\n\n");
@@ -957,7 +957,7 @@ public function TyrantiaLetDieYouMonster():void {
 public function TyrantiaSaveFight():void {
 	clearOutput();
 	outputText("With a roar of rage, you jump from hiding, bowling through the shocked demons. The commander turns, too late, as you draw your [weapon], striking him hard enough to snap his neck with a single blow. Shocked, the demons take a step back as their commanding officer falls, dead. You turn, putting your back to Tyrantia.\n\n");
-	outputText("<i>“[name], what are you doing here?!”</i> She snaps back, alert once more. <i>“Leave me. I’m not worth your life. You...You heard what they said?”</i> You call her an idiot. You tell her that your life is yours to live, and yours to spend. You remind her that she has her mission as well, to find her sisters, and that she can’t do that from the end of a demon’s dick. She looks at you, five eyes focusing, and she grits her teeth in raw anger, her armour visibly rippling as she looks down at her fists.\n\n");
+	outputText("<i>“[name], what are you doing here?!”</i> She snaps back, alert once more. <i>“Leave me. I’m not worth your life. You...You heard what they said?”</i> You call her an idiot. You tell her that your life is yours to live, and yours to spend. You remind her that she has her mission as well, to find her sisters, and that she can’t do that from the end of a demon’s dick. She looks at you, five eyes focusing, and she grits her teeth in raw anger, her armor visibly rippling as she looks down at her fists.\n\n");
 	outputText("<i>“Argh!”</i> She punches the ground, sending tremors through it. Nearby demons lose their footing, but she punches again, cracking the stone of the battlefield and sending stone shards flying. Her cunt drools faster, and the black energy emitting from her stops, reversing its course and covering her body. <i>“Stupid!”</i> The earth shakes again as she slams her fist through a stone the size of your head. <i>“Weak-willed!”</i> She stands, shattering the stone by flexing her wrist. <i>“I’ve...Had...ENOUGH!”</i> Her roars of rage echo throughout the battlefield, and as you watch, in utter awe, her helmet flies from the ground, planting itself back on her head.\n\n");
 	outputText("The aura that had once flowed from her, in pulsing waves, now clings tight to her body. Her violet eyes shine brighter, and her black armor pulses with brown light. Tyrantia motions with one hand, and the stones on the battleground form into more spears, complete with the crude phalluses on the tips. <i>“YOU WANNA GET FUCKED?!”</i> She roars, her new, odd aura flaring, the spears rotating, aiming at the demon horde. <i>“LETS FUCKING GO!”</i>\n\n");
 	outputText("You notice that there are still a hundred or so demons left, but the one-woman army at your back looks like she could take on the whole damn horde...Something you find surprisingly arousing. You smile at the incoming demons, letting out your own, much quieter, less dramatic war cry, and you charge the demon horde together.\n\n");
@@ -1411,6 +1411,7 @@ public function itemImproveMenuCorrupt():void {
 		[weapons.BFTHSWORD, weapons.ARMAGED, weapons.CHAOSEA],
 		[weapons.A_WAND, weapons.OCCULUS, weapons.ECLIPSE],
 		[weapons.PFLUTTE, weapons.ELYSIUM, weapons.HELLCAL],
+		[weapons.GNARLEDS, weapons.ANCIENTO, weapons.QULIPOTH],
 		[weaponsrange.BOWLONG, weaponsrange.ARTEMIS, weaponsrange.WILDHUN],
 		[weaponsrange.SHUNHAR, weaponsrange.KSLHARP, weaponsrange.LEVHARP],
 		[weaponsrange.SIXSHOT, weaponsrange.GOODSAM, weaponsrange.BADOMEN],

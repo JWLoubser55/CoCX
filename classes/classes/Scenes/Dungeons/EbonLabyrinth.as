@@ -164,7 +164,7 @@ public class EbonLabyrinth extends DungeonAbstractContent {
         outputText("<b>Are you sure about that?</b>");
         doYesNo(exitDungeon, playerMenu);
     }
-	
+
 	public function shortcuts():void {
 		statScreenRefresh();
         hideUpDown();
@@ -179,7 +179,7 @@ public class EbonLabyrinth extends DungeonAbstractContent {
 		addButtonIfTrue(5, "300", navigateToRoomEL300, "you've not even beaten 6 bosses yet.", flags[kFLAGS.EBON_LABYRINTH_RECORD] >= 300, "Skip 300 rooms but beware of the boss at the end of this detour.");
 		addButtonIfTrue(6, "350", navigateToRoomEL350, "you've not even beaten 7 bosses yet.", flags[kFLAGS.EBON_LABYRINTH_RECORD] >= 350, "Skip 350 rooms but beware of the boss at the end of this detour.");
 	}
-	
+
 	public function returnFromDraculinaRoom():void {
 		clearOutput();
 		outputText("You not open boss room door and return to previous room.");
@@ -415,10 +415,10 @@ public class EbonLabyrinth extends DungeonAbstractContent {
     private function encountersLootChest():void {
         clearOutput();
         //adjusting rewards to enemy level. Sounds fair to me
-		var exp:int = int(2000 * Math.exp(0.2*enemyLevelMod));
-		var gems:int = int(500 * Math.exp(0.2*enemyLevelMod));
-        player.XP += exp;
-        player.gems += gems;
+		var exp:Number = Number(2000 * Math.exp(0.2*enemyLevelMod));
+		var gems:Number = Number(500 * Math.exp(0.2*enemyLevelMod));
+        player.XP += (exp < 0 || player.XP + exp < 0 ? Number.MAX_VALUE - player.XP : exp);
+        player.gems += (gems < 0 || player.gems + gems < 0 ? Number.MAX_VALUE - player.gems : gems);
         outputText("As you explore the labyrinth you stumble upon what appears to be a room filled with gems and a pillar upon which sits a single jewel. Grabbing the jewel, you see green mist swirl out of the stone then around you before entering your body. Memories not your own flash through your mind. ");
         outputText("Battles of the present and the past. You know you've learned from these battles and as you gather the gems and leave the room you do so with new enriching experiences. (+" + exp + " EXP, +" + gems + " gems)\n\n");
         doNext(roomStatic); //easier to implement.
@@ -426,7 +426,7 @@ public class EbonLabyrinth extends DungeonAbstractContent {
 
     //Selects the boss. Tier (1,2) selects the boss pool. 0 - includes ALL tiers
     private function bossSelector(tier:int = 0):void {
-        //Make the pool of encounters
+		//Make the pool of encounters
         var choices:Array = [];
         var boss:int;
         for (boss = 0; boss < bossPool[tier].length; ++boss) //[bit_num, function]
@@ -554,3 +554,4 @@ public class EbonLabyrinth extends DungeonAbstractContent {
     }
 }
 }
+

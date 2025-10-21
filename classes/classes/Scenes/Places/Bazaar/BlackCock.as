@@ -4,6 +4,7 @@ import classes.*;
 import classes.BodyParts.*;
 import classes.GlobalFlags.*;
 import classes.Races.SatyrRace;
+import classes.Scenes.Places.SlaveDen;
 import classes.lists.Gender;
 
 /**
@@ -15,6 +16,7 @@ import classes.lists.Gender;
 
 		public function BlackCock()
 		{}
+		public var trapDoor:SlaveDen = new SlaveDen();
 
 		public function blackCockDescription():void {
 			if (isChristmas()) outputText("\n\nThere is also a large marquee-style tent made with black canvas. Smoke rises out of an open flap in the rear. There is a wooden sign next to the front flap depicting a small black rooster; beneath its yellow feet the words \"The Black Cock\" are etched into the old sign. Around the sign there is a festive Christmas wreath with flickering candles. The smell of greasy food and sweets wafts out of the open entrance.");
@@ -44,6 +46,7 @@ import classes.lists.Gender;
 			addButton(0, "Check Menu", checkFoodMenu);
 			addButton(1, "Staff", checkStaff);
 			addButton(2, "Patrons", checkPatrons);
+			addButton(13, "Trapdoor", trapDoor.trapDoor).hint("Get in the (fucking) trapdoor PC.");
 			addButton(14, "Leave", bazaar.enterTheBazaarAndMenu);
 		}
 
@@ -178,7 +181,7 @@ import classes.lists.Gender;
 				case "Prot. Shake":
 					player.refillHunger(30);
 					player.modTone(player.maxToneCap(), 1);
-					player.modThickness(0, -1);
+					player.modThickness(0, 1);
 					break;
 				case "Funnel Cake":
 					player.refillHunger(50);

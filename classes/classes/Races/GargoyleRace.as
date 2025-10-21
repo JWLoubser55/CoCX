@@ -59,7 +59,7 @@ public class GargoyleRace extends Race {
 				.noGills(+1)
 				.noRearBody(+1)
 				.noAntennae(+1)
-				.hasAnyPerk([PerkLib.GargoylePure, PerkLib.GargoyleCorrupted], +1)
+				.hasAnyPerk([PerkLib.GargoylePure, PerkLib.GargoyleCorrupted], +1, -20)
 				.hasPerk(PerkLib.TransformationImmunity, +5)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		

@@ -66,6 +66,11 @@ public class CombatTeases extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.DemonEnergyThirst)) inotcareanymore *= 2;
 			damagemultiplier += (inotcareanymore * player.statusEffectv1(StatusEffects.DemonEnergyThirstFeed));
 		}
+		if (player.hasStatusEffect(StatusEffects.CorruptedFlesh)) {
+			var maybeidocare:Number = 5;
+			if (player.hasPerk(PerkLib.Soulless)) maybeidocare *= 2;
+			damagemultiplier += (maybeidocare * player.statusEffectv1(StatusEffects.CorruptedFlesh));
+		}
 		if (player.perkv1(IMutationsLib.FiendishOvariesIM) >= 3 && (player.pregnancyType == PregnancyStore.PREGNANCY_IMP || player.pregnancy2Type == PregnancyStore.PREGNANCY_IMP)) {
 			if (player.perkv1(IMutationsLib.FiendishOvariesIM) >= 4) damagemultiplier += 0.5;
 			else damagemultiplier += 0.25;
@@ -175,6 +180,7 @@ public class CombatTeases extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.JobCourtesan) && monster && monster.hasPerk(PerkLib.EnemyBossType)) lustDmg *= 1.2;
 		if (player.hasPerk(PerkLib.SluttySimplicity) && player.armor.hasTag(ItemConstants.A_REVEALING)) lustDmg *= (1 + ((10 + rand(11)) / 100));
 		if (player.hasPerk(PerkLib.ElectrifiedDesire)) lustDmg *= (1 + (player.lust100 * 0.01));
+		if (player.hasPerk(PerkLib.FalseLight)) lustDmg *= (1 + (camp.companionsCount() * 0.1));
 		if (player.hasPerk(PerkLib.HistoryWhore) || player.hasPerk(PerkLib.PastLifeWhore)) lustDmg *= (1 + combat.historyWhoreBonus());
 		if (player.hasPerk(PerkLib.ArouseTheAudience) && monster && (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyLargeGroupType))) lustDmg *= 1.2;
         if (player.hasPerk(PerkLib.ChiReflowLust)) lustDmg *= UmasShop.NEEDLEWORK_LUST_TEASE_DAMAGE_MULTI;

@@ -22,7 +22,7 @@ public class LightningBoltSwiftcastSpell extends AbstractWhiteSpell {
 	
 	override public function get isKnown():Boolean {
 		return player.hasStatusEffect(StatusEffects.KnowsLightningBolt) &&
-				player.hasPerk(PerkLib.SwiftCasting);
+				(player.hasPerk(PerkLib.SwiftCasting) || player.hasPerk(PerkLib.FiendishConcentration));
 	}
 	
 	override public function calcCooldown():int {
@@ -31,6 +31,7 @@ public class LightningBoltSwiftcastSpell extends AbstractWhiteSpell {
 	public function calcDamage(monster:Monster, randomize:Boolean=true, casting:Boolean = true):Number { //casting - Increase Elemental Counter while casting (like Raging Inferno)
 		var baseDamage:Number = 0.75 * damageCalculationTier1Spells(randomize);
 		daaamageaddons(baseDamage);
+		if (player.hasPerk(PerkLib.PureMagic) && (monster && monster.hasPerk(PerkLib.EnemyTrueDemon))) baseDamage *= 1.25;
 		if (player.armorName == "FrancescaCloak") baseDamage *= 2;
 		return adjustSpellDamage(baseDamage, DamageType.LIGHTNING, CAT_SPELL_WHITE, monster, true, casting);
 	}

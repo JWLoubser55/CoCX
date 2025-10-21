@@ -175,6 +175,7 @@ public class UniqueSexScenes extends BaseContent
 				USSStlWmth(),
 				USSGobMech(),
 				USSBrainMlt(),
+				USSConvert(),
 				USSAlrauneSS(),
 				USSWoodElf(),
 				USSEastrBny(),
@@ -324,6 +325,12 @@ public class UniqueSexScenes extends BaseContent
             else btnSet.push(false, "Req. to be a mindbreaker.");
             return btnSet;
         }
+		private function USSConvert():Array{
+			var btnSet:Array = ["Convert"];
+			if (player.isAutomata()) btnSet.push(convert, "");
+			else btnSet.push(false, "Req. to be a automata.");
+			return btnSet;
+		}
         private function USSAlrauneSS():Array{
             var btnSet:Array = [];
             if (player.isAlraune()) {
@@ -641,13 +648,54 @@ public class UniqueSexScenes extends BaseContent
 			}
 			if (player.hasCock()) outputText("While you mentally rape your victim of everything that used to make its sense of self you push your needy cock through the now welcoming hole that is your half broken toy butt, thrusting to bring yourself to new heights of pleasant delirium.");
 			outputText("\n\nYou cum green, your fluids dripping from your partner and tainting the ground beneath into a small pool of defiled fluid as you draw in whatever remains of your victim's now empty brain.");
-
-			if (player.buff("Brain melt").getValueOfStatBuff("int.mult") < (player.perkv1(PerkLib.MindbreakerBrain1toX)*2)){
-				player.buff("Brain melt").addStat("int.mult",0.01);
+			if (player.buff("Brain melt").getValueOfStatBuff("int.mult") < (player.perkv1(PerkLib.MindbreakerBrain1toX)*10)){
+				player.buff("Brain melt").addStat("int.mult",0.05);
 				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
 				CoC.instance.mainView.statsView.showStatUp("int");
 			}
+			player.sexReward("no");
+			statScreenRefresh();
+			cleanupAfterCombat();
+		}
 
+		public function convert():void {
+			clearOutput();
+			outputText("As [monster name] falls defeated you arch your taser cable and deliver a swift shock to their head sending them sprawling on the ground. You grab the specimen and head for the closest remodeling camp.\n\n");
+			outputText("Once there you drop the native onto the pile of recently caught specimens just in time for a fellow unit to grab [monster him] and drag [monster him] to a conversion chamber. You receive an update a few hours later signaling that the network has expanded which causes you to nod in satisfaction at a job well done.\n\n");
+			outputText("With your functions accomplished it’s time to get back unto the previous (while) loop and look for more specimens to bring back.");
+			var statconv:Number = rand(6);
+			switch (statconv) {
+				case 0:
+					player.buff("Convert").addStat("str.mult",0.05);
+					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
+					CoC.instance.mainView.statsView.showStatUp("str");
+					break;
+				case 1:
+					player.buff("Convert").addStat("tou.mult",0.05);
+					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
+					CoC.instance.mainView.statsView.showStatUp("tou");
+					break;
+				case 2:
+					player.buff("Convert").addStat("spe.mult",0.05);
+					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
+					CoC.instance.mainView.statsView.showStatUp("spe");
+					break;
+				case 3:
+					player.buff("Convert").addStat("int.mult",0.05);
+					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
+					CoC.instance.mainView.statsView.showStatUp("int");
+					break;
+				case 4:
+					player.buff("Convert").addStat("wis.mult",0.05);
+					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
+					CoC.instance.mainView.statsView.showStatUp("wis");
+					break;
+				case 5:
+					player.buff("Convert").addStat("lib.mult",0.05);
+					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
+					CoC.instance.mainView.statsView.showStatUp("lib");
+					break;
+			}
 			player.sexReward("no");
 			statScreenRefresh();
 			cleanupAfterCombat();

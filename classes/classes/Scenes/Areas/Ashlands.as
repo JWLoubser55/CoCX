@@ -14,6 +14,8 @@ import classes.Scenes.Areas.Ashlands.*;
 import classes.Scenes.Areas.Lake.SwordInStone;
 import classes.Scenes.Areas.Forest.AlrauneScene;
 import classes.Scenes.Areas.HighMountains.PhoenixScene;
+import classes.Scenes.Areas.VolcanicCrag.SalamanderOreMerchants;
+import classes.Scenes.Dungeons.RiverDungeon.FireElemental;
 import classes.Scenes.NPCs.Forgefather;
 import classes.Scenes.SceneLib;
 
@@ -25,6 +27,7 @@ public class Ashlands extends BaseContent
 	public var alrauneScene:AlrauneScene = new AlrauneScene();
 	public var hellcatScene:HellCatScene = new HellCatScene();
 	public var swordInStone:SwordInStone = new SwordInStone();
+	public var oreMerchants:SalamanderOreMerchants = new SalamanderOreMerchants();
 
 	public function Ashlands() {
 		onGameInit(init);
@@ -81,7 +84,7 @@ public class Ashlands extends BaseContent
 			unique: true,
 			when: function ():Boolean {
 				return (flags[kFLAGS.WITCHES_SABBATH] > 3 && player.isRace(Races.HELLCAT, 1, false) && player.gender == 3) ||
-						(flags[kFLAGS.WITCHES_SABBATH] > 0 && player.isRace(Races.CAT) && player.inte >= 40 && player.hasStatusEffect(StatusEffects.KnowsWhitefire))
+						(flags[kFLAGS.WITCHES_SABBATH] > 0 && player.isRaceCached(Races.CAT) && player.inte >= 40 && player.hasStatusEffect(StatusEffects.KnowsWhitefire))
 			},
 			call: SceneLib.ashlands.hellcatScene.WitchesSabbath
 		}, {
@@ -101,6 +104,11 @@ public class Ashlands extends BaseContent
 			kind : 'monster',
 			call: fireGolemEncounterFn
 		}, {
+			name: "fire ele",
+			label : "Fire Elemental",
+			kind  : 'monster',
+			call: ashlandsFireElemental
+		}, {
 			name: "granite",
 			label : "Mine",
 			kind  : 'place',
@@ -108,6 +116,12 @@ public class Ashlands extends BaseContent
 					return player.hasKeyItem("Old Pickaxe") > 0 && Forgefather.materialsExplained
 				},
 			call: findGranite
+		}, {
+			name: "SalamanderOreMerchants",
+			label : "OreMerchants",
+			kind  : 'npc',
+			chance: 0.5,
+			call: oreMerchants.introOreMerchant
 		}, {
 			name: "nothing",
 			call: findNothing,
@@ -154,6 +168,14 @@ public class Ashlands extends BaseContent
 		outputText("You walk for some time, roaming the ashlands. As you progress, you can feel the air getting warm. It gets hotter as you progress until you finally stumble across a blackened landscape. You reward yourself with a sight of the endless series of a volcanic landscape. Crags dot the landscape.\n\n");
 		outputText("<b>You've discovered the Volcanic Crag!</b>");
 		endEncounter(120);
+	}
+	
+	private function ashlandsFireElemental():void {
+		clearOutput();
+		outputText("As you wander ashlands you stumble into a somewhat horrifying scene. A blazing woman is laughing maniacally as she sets a bunch of charred screaming humanoid creatures on fire. Whatever these were they are so burned out now that you can’t even identify their races anymore. ");
+		outputText("As the last victim screams its dying breath the fully grown Ignis suddenly realise you are here. She turns to face you, flames amassing in her palm as she prepares to add one more victim to her fiery rampage. You ready yourself for a fight as there is definitively no way you can resolve that issue peacefully.\n\n");
+		flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
+		startCombat(new FireElemental());
 	}
 
 	private function findNothing():void {

@@ -254,14 +254,14 @@ use namespace CoC;
 					this.level = 36;
 				}
 				else if (flags[kFLAGS.ELECTRA_LVL_UP] == 18) {
-					initStrTouSpeInte(490, 760, 750, 1000);
-					initWisLibSensCor(1000, 1390, 780, 60);
-					this.weaponAttack = 190;
-					this.armorDef = 190;
-					this.armorMDef = 266;
-					this.bonusHP = 1425;
-					this.bonusLust = 2308;
-					this.level = 96;
+					initStrTouSpeInte(610, 940, 930, 1240);
+					initWisLibSensCor(1240, 1750, 960, 60);
+					this.weaponAttack = 232;
+					this.armorDef = 250;
+					this.armorMDef = 350;
+					this.bonusHP = 1875;
+					this.bonusLust = 2884;
+					this.level = 138;
 				}
 				else {	//leave min and max levels to easily balance npc combat
 					var electraLvl:Number = flags[kFLAGS.ELECTRA_LVL_UP]-1;

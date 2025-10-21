@@ -468,6 +468,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const YGGDRASIL_HUGE_X8:int = _partid++;
+		EnumValue.add(Memories, YGGDRASIL_HUGE_X8, "YGGDRASIL_HUGE_X8", {
+			id: "Yggdrasil Huge Octuple Wings",
+			name: "Yggdrasil Huge Octuple Wings",
+			cost: 500,
+			title: "Yggdrasil(H) x8",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.WingsYggdrasilOctupleHuge;
+			}
+		});
+
 		public static const MOTH_SMALL:int = _partid++;
 		EnumValue.add(Memories, MOTH_SMALL, "MOTH_SMALL", {
 			id: "Moth Small Wings",

@@ -33,8 +33,16 @@ use namespace CoC;
 		
 		public function onisunetwinsoulskillMod():Number {
 			var kmodss:Number = 1;
-			if (hasPerk(PerkLib.DaoistApprenticeStage)) kmodss += .3;
-			if (hasPerk(PerkLib.DaoistWarriorStage)) kmodss += .6;
+			if (hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) kmodss += 1.25;
+				if (hasPerk(PerkLib.SoulPersonage)) kmodss += 1.25;
+				if (hasPerk(PerkLib.SoulWarrior)) kmodss += 1.25;
+			}
+			if (hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) kmodss += 2.5;
+				if (hasPerk(PerkLib.SoulScholar)) kmodss += 2.5;
+				if (hasPerk(PerkLib.SoulGrandmaster)) kmodss += 2.5;
+			}
 			return kmodss;
 		}
 		
@@ -253,7 +261,7 @@ use namespace CoC;
 			this.drop = new WeightedDrop().
 					add(consumables.FOXJEWL,3).
 					add(consumables.ONISAKE,2).
-					add(useables.EL_CORE,1);
+					add(useables.LELCRYST,1);
 			this.arms.type = Arms.ONI;
 			this.lowerBody = LowerBody.ONI;
 			this.tailType = Tail.FOX;
@@ -269,8 +277,8 @@ use namespace CoC;
 			this.createPerk(PerkLib.SoulSprite, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulScholar, 0, 0, 0, 0);
 			this.createPerk(PerkLib.SoulGrandmaster, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DaoistApprenticeStage, 0, 0, 0, 0);
-			this.createPerk(PerkLib.DaoistWarriorStage, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DaoistMDHiFApprenticeStage, 0, 0, 0, 0);
+			this.createPerk(PerkLib.DaoistMDHiFWarriorStage, 0, 0, 0, 0);
 			this.createPerk(PerkLib.JobSorcerer, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Spellpower, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Mage, 0, 0, 0, 0);

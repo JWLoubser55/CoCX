@@ -1588,7 +1588,7 @@ import classes.lists.Gender;
 			outputText("\n\n\"<i>Ooh!</i>\" She moans. \"<i>Like, please, [name]; lick my needy little pussy! It's so hooot... like, stick your tongue in there and put the fire out.</i>\" She pleads.");
 			outputText("\n\nWell... you were actually looking for a bit of foreplay, but the urgency with which she pleads makes it clear that she's just too aroused to engage in any foreplay. So you pull your fingers out and extend your " + tongueDescript() + " to give her pussy a wet lick.");
 			outputText("\n\nShe shudders in delight and gives a wordless squeak" + joyHasCockText(", her tail stroking her erect cock with increased pace") + ".");
-			outputText("\n\nYou quickly close your mouth around her labia, just in time to receive a sudden serving of deliciously sweet girl-cum; you savour every drop as you drink from Joy, kissing and slurping her lower lips, as well as teasing her little hard clitty with your nose.");
+			outputText("\n\nYou quickly close your mouth around her labia, just in time to receive a sudden serving of deliciously sweet girl-cum; you savor every drop as you drink from Joy, kissing and slurping her lower lips, as well as teasing her little hard clitty with your nose.");
 			outputText("\n\nShe wriggles and squeaks, pushing herself forward to grind her cunt against your face" + joyHasCockText(", her balls flopping into your nose at the motion") + ". \"<i>Like, ooh, yeah, that's the stuff, [name]!</i>\"");
 			outputText("\n\nYour slurping mouth curls into a smile when you see the effect you're having on the horny bimbo mouse; then you decide to step up the game by plugging your " + tongueDescript() + " as far as you can inside Joy's wanton cunt.");
 			if (player.tongue.type > 0) {

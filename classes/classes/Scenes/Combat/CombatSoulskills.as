@@ -10,6 +10,7 @@ import classes.PerkLib;
 import classes.Races;
 import classes.Scenes.API.FnHelpers;
 import classes.Scenes.Dungeons.D3.LivingStatue;
+import classes.Scenes.NPCs.AetherTwinsFollowers;
 import classes.Scenes.NPCs.Jojo;
 import classes.Scenes.NPCs.JojoScene;
 import classes.StatusEffects;
@@ -99,6 +100,7 @@ public class CombatSoulskills extends BaseCombatContent {
 			}
 		}
 		if (player.perkv1(IMutationsLib.AnubiHeartIM) >= 2 && player.soulforce >= Math.round(player.maxSoulforce() * sfT())) modss *= 2;
+		if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) modss *= 2;
 		modss = Math.round(modss * 100) / 100;
 		return modss;
 	}
@@ -126,9 +128,38 @@ public class CombatSoulskills extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.SoulTyrant)) modssp += 2;
 			if (player.hasPerk(PerkLib.SoulKing)) modssp += 2;
 			if (player.hasPerk(PerkLib.SoulEmperor)) modssp += 2;
-			//if (player.hasPerk(PerkLib.SoulAncestor)) modssp += 2;
 		}
+		if (player.hasPerk(PerkLib.FleshBodyTyrantStage)) {
+			if (player.hasPerk(PerkLib.SoulAncestor)) modssp += 2.5;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMApprenticeStage)) {
+			if (player.hasPerk(PerkLib.SoulApprentice)) modssp += 1.25;
+			if (player.hasPerk(PerkLib.SoulPersonage)) modssp += 1.25;
+			if (player.hasPerk(PerkLib.SoulWarrior)) modssp += 1.25;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMWarriorStage)) {
+			if (player.hasPerk(PerkLib.SoulSprite)) modssp += 2.5;
+			if (player.hasPerk(PerkLib.SoulScholar)) modssp += 2.5;
+			if (player.hasPerk(PerkLib.SoulGrandmaster)) modssp += 2.5;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMElderStage)) {
+			if (player.hasPerk(PerkLib.SoulElder)) modssp += 3.75;
+			if (player.hasPerk(PerkLib.SoulExalt)) modssp += 3.75;
+			if (player.hasPerk(PerkLib.SoulOverlord)) modssp += 3.75;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMOverlordStage)) {
+			if (player.hasPerk(PerkLib.SoulTyrant)) modssp += 5;
+			if (player.hasPerk(PerkLib.SoulKing)) modssp += 5;
+			if (player.hasPerk(PerkLib.SoulEmperor)) modssp += 5;
+		}
+		if (player.hasPerk(PerkLib.FleshBodyFoMTyrantStage)) {
+			if (player.hasPerk(PerkLib.SoulAncestor)) modssp += 6.25;
+		}
+		if (player.hasStatusEffect(StatusEffects.MartialTraining) && player.statusEffectv2(StatusEffects.MartialTraining) > 3) modssp += (0.1 * (player.statusEffectv2(StatusEffects.MartialTraining) - 3));
+		if (player.hasPerk(PerkLib.BrutalBlows)) modssp += 0.05;
 		if (player.perkv1(IMutationsLib.HumanBonesIM) >= 4 && player.racialScore(Races.HUMAN) > 17) modssp += 1;
+		if (player.hasAetherTwinsTierWeaponMSword() || player.hasAetherTwinsTierWeaponLSword() || player.hasAetherTwinsTierWeaponLSpear() || player.hasAetherTwinsTierWeaponLScythe()) modssp += 0.4;
+		if (player.hasAetherTwinsTierLeftSword() || player.hasAetherTwinsTierLeftSpear() || player.hasAetherTwinsTierLeftScythe()) modssp += 0.4;
 		if (modsspb > 1) modssp *= modsspb;
 		modssp = Math.round(modssp * 100) / 100;
 		return modssp;
@@ -157,7 +188,32 @@ public class CombatSoulskills extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.SoulTyrant)) modssm += 2;
 			if (player.hasPerk(PerkLib.SoulKing)) modssm += 2;
 			if (player.hasPerk(PerkLib.SoulEmperor)) modssm += 2;
-			//if (player.hasPerk(PerkLib.SoulAncestor)) modssm += 2;
+		}
+		if (player.hasPerk(PerkLib.DaoistTyrantStage)) {
+			if (player.hasPerk(PerkLib.SoulAncestor)) modssm += 2.5;
+		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage)) {
+			if (player.hasPerk(PerkLib.SoulApprentice)) modssm += 1.25;
+			if (player.hasPerk(PerkLib.SoulPersonage)) modssm += 1.25;
+			if (player.hasPerk(PerkLib.SoulWarrior)) modssm += 1.25;
+		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFWarriorStage)) {
+			if (player.hasPerk(PerkLib.SoulSprite)) modssm += 2.5;
+			if (player.hasPerk(PerkLib.SoulScholar)) modssm += 2.5;
+			if (player.hasPerk(PerkLib.SoulGrandmaster)) modssm += 2.5;
+		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFElderStage)) {
+			if (player.hasPerk(PerkLib.SoulElder)) modssm += 3.75;
+			if (player.hasPerk(PerkLib.SoulExalt)) modssm += 3.75;
+			if (player.hasPerk(PerkLib.SoulOverlord)) modssm += 3.75;
+		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFOverlordStage)) {
+			if (player.hasPerk(PerkLib.SoulTyrant)) modssm += 5;
+			if (player.hasPerk(PerkLib.SoulKing)) modssm += 5;
+			if (player.hasPerk(PerkLib.SoulEmperor)) modssm += 5;
+		}
+		if (player.hasPerk(PerkLib.DaoistMDHiFTyrantStage)) {
+			if (player.hasPerk(PerkLib.SoulAncestor)) modssm += 6.25;
 		}
 		if (player.perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 2) {
 			var wfb:Number = 0.5;
@@ -167,10 +223,13 @@ public class CombatSoulskills extends BaseCombatContent {
 			modssm += wfb;
 		}
 		if (player.hasPerk(PerkLib.DaoOfTraning)) modssm += (flags[kFLAGS.SOULFORCE_GAINED_FROM_CULTIVATING]) * 0.01;
+		if (player.hasPerk(PerkLib.BrutalSpells)) modssm += 0.1;
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) modssm += 1;
 		if (player.shieldName == "spirit focus") modssm += .25;
 		if (player.armor == armors.DEATHPO) modssm += .5;
 		if (player.armor == armors.DEATHPGA) modssm += 2;
+		if (player.hasAetherTwinsTierWeaponLSword() || player.hasAetherTwinsTierWeaponLStaff()) modssm += 0.4;
+		if (player.hasAetherTwinsTierLeftStaff() || (player.shield == shields.AETHERS && (AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Greatswords" || AetherTwinsFollowers.AetherTwinsShape == "Human-tier Dual Large Spears"))) modssm += 0.4;
 		if (modssmb > 1) modssm *= modssmb;
 		modssm = Math.round(modssm * 100) / 100;
 		return modssm;
@@ -188,7 +247,10 @@ public class CombatSoulskills extends BaseCombatContent {
 
 	internal function soulskillCostImpl():Number {
 		var modssc:Number = player.soulskillcostStat.value;
-		if (soulskillMod() > 1) modssc += (soulskillMod() - 1) * 0.1;
+		if (soulskillMod() > 1) {
+			if (player.hasPerk(PerkLib.MunchkinAtClosedDoorsCultivation)) modssc += (soulskillMod() - 1) * 0.05;
+			else modssc += (soulskillMod() - 1) * 0.1;
+		}
 		if (player.hasPerk(PerkLib.DaoistApprenticeStage)) modssc -= .1;
 		if (player.hasPerk(PerkLib.DaoistWarriorStage)) modssc -= .1;
 		if (player.hasPerk(PerkLib.DaoistElderStage)) modssc -= .1;

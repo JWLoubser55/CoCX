@@ -130,6 +130,7 @@ use namespace CoC;
 			this.lust = 30;
 			this.drop = new WeightedDrop(consumables.MADMENK, 1);
 			this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
+			this.createPerk(PerkLib.EnemyEldritchType, 0, 0, 0, 0);
 			checkMonster();
 		}
 		

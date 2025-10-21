@@ -22,7 +22,7 @@ use namespace CoC;
 			this.a = "the ";
 			this.short = "corrupted basic flesh golem";
 			this.imageName = "corrupted basic flesh golem";
-			this.long = "You're currently fighting a corrupted basic flesh golem. She's seven feet tall, her flesh covered sporadically by fragments of what must have once been a decorative set of armour. They seem to have been broken in places, but the shards of armor still provide decent protection. Several large holes in the armour were clearly made intentionally, exposing a throbbing cock and firm breasts. The golem keeps its head aligned with you, large, gaping mouth open constantly. She clutches a pair of swords in her meaty fists.";
+			this.long = "You're currently fighting a corrupted basic flesh golem. She's seven feet tall, her flesh covered sporadically by fragments of what must have once been a decorative set of armor. They seem to have been broken in places, but the shards of armor still provide decent protection. Several large holes in the armor were clearly made intentionally, exposing a throbbing cock and firm breasts. The golem keeps its head aligned with you, large, gaping mouth open constantly. She clutches a pair of swords in her meaty fists.";
 			this.createVagina(false, VaginaClass.WETNESS_WET, VaginaClass.LOOSENESS_LOOSE);
 			//this.createVagina(true, VaginaClass.WETNESS_WET, VaginaClass.LOOSENESS_LOOSE);
 			this.createStatusEffect(StatusEffects.BonusVCapacity, 200, 0, 0, 0);

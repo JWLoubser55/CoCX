@@ -1896,18 +1896,18 @@ private function marbleKidsPlaytime():void {
 	if(flags[kFLAGS.MARBLE_KIDS] > 1) choices[choices.length] = 5;
 	var select:int = choices[rand(choices.length)];
 	if(flags[kFLAGS.KID_SITTER] == 2 && flags[kFLAGS.ANEMONE_KID] > 0) select = 6;
-	//Bovine Saviour (Z)
+	//Bovine Savior (Z)
 	//requires exactly 1 kid  (just put it on the RNG; players get knocked up so much and lots of people have 10+ Marble kids already -Z)
 	if(select == 1) {
 		if(flags[kFLAGS.MARBLE_KIDS] == 1 && flags[kFLAGS.MARBLE_BOYS] == 1)
 		{
-			outputText("Your son immediately clops up to you and jumps into your arms.  \"<i>" + player.mf("Daddy, daddy","Mommy, mommy") + "!  Play with me!</i>\"  You laugh at the boy in your arms, so young and yet full of energy.  He proceeds to rope you into a grand adventure, where you play the parts of the one who searches for a hero to save their camp, and the monster that has to be stopped, and also the monster's hostage that needs to be saved, while she is the great bovine saviour that carries out this grand quest.");
-			outputText("\n\nThe game finally ends with the bovine saviour victorious over the horde of ravenous monsters  - somewhere along the line it was decided that hostages were no fun and single combat wasn't impressive enough, and you exhausted your theatrical skills to provide a bevy of satisfyingly scary faces and growls - and the people of the land (you) rejoicing.  You're left a bit tired afterwards, but you certainly don't regret having played with your child.");
+			outputText("Your son immediately clops up to you and jumps into your arms.  \"<i>" + player.mf("Daddy, daddy","Mommy, mommy") + "!  Play with me!</i>\"  You laugh at the boy in your arms, so young and yet full of energy.  He proceeds to rope you into a grand adventure, where you play the parts of the one who searches for a hero to save their camp, and the monster that has to be stopped, and also the monster's hostage that needs to be saved, while she is the great bovine savior that carries out this grand quest.");
+			outputText("\n\nThe game finally ends with the bovine savior victorious over the horde of ravenous monsters  - somewhere along the line it was decided that hostages were no fun and single combat wasn't impressive enough, and you exhausted your theatrical skills to provide a bevy of satisfyingly scary faces and growls - and the people of the land (you) rejoicing.  You're left a bit tired afterwards, but you certainly don't regret having played with your child.");
 		}
 		else
 		{
-			outputText("Your daughter immediately clops up to you and jumps into your arms.  \"<i>" + player.mf("Daddy, daddy","Mommy, mommy") + "!  Play with me!</i>\"  You laugh at the girl in your arms, so young and yet full of energy.  She proceeds to rope you into a grand adventure, where you play the parts of the one who searches for a hero to save their camp, and the monster that has to be stopped, and also the monster's hostage that needs to be saved, while she is the great bovine saviour that carries out this grand quest.");
-			outputText("\n\nThe game finally ends with the bovine saviour victorious over the horde of ravenous monsters  - somewhere along the line it was decided that hostages were no fun and single combat wasn't impressive enough, and you exhausted your theatrical skills to provide a bevy of satisfyingly scary faces and growls - and the people of the land (you) rejoicing.  You're left a bit tired afterwards, but you certainly don't regret having played with your child.");
+			outputText("Your daughter immediately clops up to you and jumps into your arms.  \"<i>" + player.mf("Daddy, daddy","Mommy, mommy") + "!  Play with me!</i>\"  You laugh at the girl in your arms, so young and yet full of energy.  She proceeds to rope you into a grand adventure, where you play the parts of the one who searches for a hero to save their camp, and the monster that has to be stopped, and also the monster's hostage that needs to be saved, while she is the great bovine savior that carries out this grand quest.");
+			outputText("\n\nThe game finally ends with the bovine savior victorious over the horde of ravenous monsters  - somewhere along the line it was decided that hostages were no fun and single combat wasn't impressive enough, and you exhausted your theatrical skills to provide a bevy of satisfyingly scary faces and growls - and the people of the land (you) rejoicing.  You're left a bit tired afterwards, but you certainly don't regret having played with your child.");
 		}
 		//increase fatigue by 10, decrease lust by 5, and decrease libido by 1, advance time by 1 hour
 		fatigue(10);
@@ -2105,7 +2105,7 @@ private function talkWithMarbleAtCamp():void {
 		outputText("You tell Marble about how you've managed to slay Marae. She drops her jaws in surprise. \"<i>Sweetie... REALLY? You've managed to kill a goddess, didn't you?</i>\" You tell her that you did manage to defeat the corrupted goddess for real. She says, \"<i>If you've managed to defeat a powerful being, that means you could dominate anything, sweetie!</i>\"\n\n");
 		if (player.armorName == "tentacled bark armor")
 		{
-			outputText("You tell her about how you've brought the bark platings infested with tentacles and got Rathazul to shape it into armor. The cowgirl takes a glance at your bizarre armour. \"<i>That armour you're wearing... There are tentacles in there. Are you okay with having tentacles, sweetie?</i>\" she says. ");
+			outputText("You tell her about how you've brought the bark platings infested with tentacles and got Rathazul to shape it into armor. The cowgirl takes a glance at your bizarre armor. \"<i>That armor you're wearing... There are tentacles in there. Are you okay with having tentacles, sweetie?</i>\" she says. ");
 			outputText("You assure her that it's entirely up to you. \"<i>Thanks for telling me the story, sweetie,</i>\" she says.")
 		}
 		flags[kFLAGS.MARBLE_CORRUPT_MARAE_STORY] = 1;
