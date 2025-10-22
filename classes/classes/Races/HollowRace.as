@@ -35,12 +35,14 @@ public class HollowRace extends Race {
 
 	public function HollowRace(id:int) {
 		super("Hollow", id, []);//RaceBody);
-		disabled = true;
 	}
 	
 	public override function setup():void {
 		addScores()
 				.hornType(ANY(Horns.RAM, Horns.DRACONIC_X2, Horns.DRACONIC_X4_12_INCH_LONG, Horns.DEMON, Horns.ANTLERS), +1)
+				//.eyeType(Eyes., +1)
+				//.faceType(Face., +1)
+				//.armType(Arms., +2)
 				.armType(ANY(Arms.HUMAN, Arms.DEVIL, Arms.SATYR, Arms.ONI, Arms.RAIJU, Arms.WENDIGO), +1)
 				.legType(ANY(LowerBody.HUMAN, LowerBody.HOOFED, LowerBody.KIRIN, LowerBody.ONI, LowerBody.RAIJU, LowerBody.CLOVEN_HOOFED, LowerBody.SCYLLA), +1)
 				.isTaur(+1)
@@ -59,18 +61,18 @@ public class HollowRace extends Race {
 					"wis.mult": +0.75,
 					"sens": +40
 				})
-				.end();/*
+				.end();
 		
-		buildTier(24, "Hollow")//360+50
-				requirePerk(PerkLib.)
+		buildTier(24, "Hollow")
+				//requirePerk(PerkLib.)
 				.buffs({
-					"str.mult": +0.20,
-					"tou.mult": +0.35,
-					"int.mult": +0.20,
-					"wis.mult": +0.35,
-					"sens": +50
+					"str.mult": +0.80,
+					"tou.mult": +1.40,
+					"int.mult": +0.80,
+					"wis.mult": +1.40,
+					"sens": +80
 				})
-				.end();*/
+				.end();
 	}
 }
 }
