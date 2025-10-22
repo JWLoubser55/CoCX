@@ -1779,17 +1779,37 @@ private function IMutationsSelector(page:int = 0):void {
 		menu();
 		clearOutput();
 
-		switch (mutations.name()) {
-			default:
-				outputText("Evangeline gets to brewing the mutagen. An half hour later, the injection is ready. She has you laid down into a makeshift seat.\n\n");
-				outputText("\"<i>This might sting a little… bear it with me [name].</i>\"\n\n");
-				outputText("You don't have the time to gasp before she pushes the injection in. The transformative in the wound burns at first but then spreads to your organ as it slowly changes to acquire new inhuman property. The transformation was successful.");
+		switch (mutations.mName) {
+			case IMutationsLib.HumanSecondaryHeartIM.mName:
+				if(player.perkv1(mutations) == 1){
+					mutationGenericText();
+					outputText("The injection is completed before you know it. You wait and wait...but found no noticable changes, fearing the injection might be a dud and about to raise your concern, you felt your heart quicken and a reverberation of tremor follows all across your chest, as if you just finished a marathon...could it be?\n\n");
 
-				// outputText("Mutation Level?: " + player.perkv1(mutations))
+					outputText("<i>\"It seems like your heart has become larger thus able to pump larger amount of blood.\"</i> As Evangeline finished up the diagnosis after you voiced your newfound discovery. ");
+					if (player.racialScore(Races.HUMAN) > 16) {
+						outputText("<i>\"I am not sure what are you expecting, trying to obtain a mutation as a human and all...I suppose all turns out well, frankly there simply isn't much human left in Mareth and I am curious about the result myself.</i> ...Good to know. ");
+					}
+				}
+				else { //placeholder
+					mutationGenericText();
+					outputText("You don't have the time to gasp before she pushes the injection in. The transformative in the wound burns at first but then spreads to your organ as it slowly changes to acquire new inhuman property. The transformation was successful.");
+				}
+				break;
+			default:
+				mutationGenericText();
+				outputText("You don't have the time to gasp before she pushes the injection in. The transformative in the wound burns at first but then spreads to your organ as it slowly changes to acquire new inhuman property. The transformation was successful.");
+				// outputText("\n\nMutation: "+ mutations.name() + " \nMutation Level?: " + player.perkv1(mutations))
 		}
+
+		outputText("\n\n<b>You now have "+ mutations.name() + ".</b>");
 
 		advanceMinutes(15);
 		doNext(InternalMutations);
+	}
+
+	function mutationGenericText():void {
+		outputText("Evangeline gets to brewing the mutagen. An half hour later, the injection is ready. She has you laid down into a makeshift seat.\n\n");
+		outputText("\"<i>This might sting a little… bear it with me [name].</i>\"\n\n");
 	}
 }
 }
