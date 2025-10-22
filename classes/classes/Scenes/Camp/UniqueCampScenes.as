@@ -5,11 +5,10 @@
 package classes.Scenes.Camp 
 {
 	import classes.*;
-	import classes.BodyParts.Skin;
-import classes.BodyParts.Wings;
-import classes.GlobalFlags.kFLAGS;
-import classes.Items.Consumable;
-import classes.display.SpriteDb;
+	import classes.BodyParts.*;
+	import classes.GlobalFlags.kFLAGS;
+	import classes.Items.Consumable;
+	import classes.display.SpriteDb;
 	
 	public class UniqueCampScenes extends BaseContent
 	{
@@ -122,6 +121,21 @@ public function badendManticoreOuroboros():void {
 	outputText("\n\n Without thinking any further you curl your tail between your legs and plug it to your own twitching cock. The pleasure is instantaneous as you instinctively sting yourself, [cock] twitching as you unleash a deluge of cum into your tail. Your [legs] spasm, making you fall to the ground hard. You try to pull yourself off, but your arms aren't responding, your eyes rolling back as the pleasure overwhelms your mind. Your thoughts fade away, replaced by the need. The endless thirst and satiation, cumming and feeding. You let out a worldess moan, your own fluids fueling you with the endless supply of stamina needed to never stop cumming.");
 	outputText("\n\n Even if you tried to stop now, you wouldn't be able to. Your will is nonexistent, your own body betraying you. Your tail instinctively tries to milk your dick to a last drop that will never come. Unable to form coherent thoughts anymore, you become a creature of pure basest instinct. Months and years will pass before ultimately you die of old age... Not that you know, or care, having long lost the ability to process rational thought.");
 	EventParser.gameOver();
+}
+
+public function transformationIntoDemiHollow():void {
+	clearOutput();
+	outputText("A sudden darkness takes your vision.\n\n");
+	outputText("Your awareness dims, your body feels distant. A strange sensation hangs around you like smoke and ash circling to fire. Your [chest] aches, needles of pain stab at you heart, breath throttled in your chest. You look down and see it: a chain, spectral links embedded in where your heart should be. It dangles downwards and fades into nothingness.\n\n");
+	outputText("A soundless panic rips its way from your throat - and you try to breathe. The chest heaves, the lungs contract, but nothing comes. The act itself feels like pantomime, a muscle memory, a phantom pain.\n\n");
+	outputText("The [skin] of your [face] burns, peels - no, hardens. Something smooth and bone-white pushes outward, sculpting itself across your features like wet clay hastily fired. Faint cracks form pulsing with soulforce. Your [hands] scratches at it, but it does not budge. Instead your sensation of touch feels dull. The frame of your body twists - too long in the limbs, too sharp in the ribs, feral yet ethereal. Lanky arms that twitch, a jaw that aches with jagged teeth you do not remember growing.\n\n");
+	outputText("You try to breathe but no breath rises your chest. You keep at it, the sensation feels like it grounds you, as if should you stop you would fade away. The silence that follows, broken only by whispers - jealousy of those that walk free of the pains that hail you. And strange hunger gnaws at your very core. They are not yours, and yet they cling to you.\n\n");
+	player.addStatusValue(StatusEffects.ChainOfFate, 1, 168);
+	player.createPerk(PerkLib.ExanimationI, 0, 0, 0, 0);
+	player.faceType = Face.HOLLOW_MASK;
+	player.eyes.type = Eyes.HOLLOW;
+	player.eyes.colour = "yellow";
+	doNext(camp.returnToCamp);
 }
 
 public function hellhoundCapture():void {

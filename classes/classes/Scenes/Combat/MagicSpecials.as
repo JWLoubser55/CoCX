@@ -122,6 +122,10 @@ public class MagicSpecials extends BaseCombatContent {
 				bd.disable("<b>You need more time before you can use Spectral scream again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
+		if (player.hasPerk(PerkLib.ExanimationI)) {
+			bd = buttons.add("Sagitta", Sagitta, "Fire a volley of concussive soulforce bullets. \n");
+			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+		}
 		if ((player.isRaceCached(Races.RAIJU) || (player.isRaceCached(Races.THUNDERBIRD) && player.tailType == Tail.THUNDERBIRD) || player.isRaceCached(Races.KIRIN)) && player.hasPerk(PerkLib.ElectrifiedDesire) >= 0) {
 			bd = buttons.add("Orgasmic L.S.", OrgasmicLightningStrike, "Masturbate to unleash a massive discharge.", "Orgasmic Lightning Strike");
 			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -6067,6 +6071,25 @@ public class MagicSpecials extends BaseCombatContent {
 		monster.wisStat.core.value -= wisDebuff;
 		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 2) monster.createStatusEffect(StatusEffects.Fear,3,0,0,0);
 		else monster.createStatusEffect(StatusEffects.Fear,1,0,0,0);
+		enemyAI();
+	}
+
+//Hollow specials
+	public function Sagitta():void {
+		clearOutput();
+		outputText("Soulforce flaring, you concentrate the spiritual energy in the palm of your hand. At the peak focus, you launch a volley of soul force bullets at your foe. ");
+		var damage:Number = player.wis;
+		damage += scalingBonusWisdom() * 2;
+		damage += scalingBonusSpeed();
+		if (damage < 10) damage = 10;
+		//soulskill mod effect
+		damage *= soulskillMagicalMod();
+		if (monster.hp100 < 50) damage *= 1.2;
+		damage = Math.round(damage);
+		doMagicDamage(damage, true, true);
+		if (player.level >= 20) doMagicDamage(damage, true, true);
+		if (player.level >= 30) doMagicDamage(damage, true, true);
+		if (player.level >= 40) doMagicDamage(damage, true, true);
 		enemyAI();
 	}
 

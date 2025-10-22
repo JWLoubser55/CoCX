@@ -1748,6 +1748,13 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					}
 				}
 			}
+			//Hollowfication
+			if (player.hasStatusEffect(StatusEffects.ChainOfFate)) {
+				if (player.statusEffectv3(StatusEffects.ChainOfFate) <= 0 && !player.hasPerk(PerkLib.ExanimationI)) SceneLib.camp.campUniqueScenes.transformationIntoDemiHollow();
+				if (player.statusEffectv3(StatusEffects.ChainOfFate) > 0) {
+					player.addStatusValue(StatusEffects.ChainOfFate, 3, -1);
+				}
+			}
 			return needNext;
 		}
 		private function hourlyCheckRacialPerks():Boolean {

@@ -6,6 +6,7 @@ import classes.GeneticMemories.RaceMem;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.StatusEffects;
 
 public class HollowRace extends Race {
     public static const RaceBody:/*String*/Array = [
@@ -40,20 +41,27 @@ public class HollowRace extends Race {
 	public override function setup():void {
 		addScores()
 				.hornType(ANY(Horns.RAM, Horns.DRACONIC_X2, Horns.DRACONIC_X4_12_INCH_LONG, Horns.DEMON, Horns.ANTLERS), +1)
-				//.eyeType(Eyes., +1)
-				//.faceType(Face., +1)
+				.eyeType(Eyes.HOLLOW, +2)
+				.faceType(Face.HOLLOW_MASK, +2)
 				//.armType(Arms., +2)
 				.armType(ANY(Arms.HUMAN, Arms.DEVIL, Arms.SATYR, Arms.ONI, Arms.RAIJU, Arms.WENDIGO), +1)
+				//.legType(LowerBody., +3)
 				.legType(ANY(LowerBody.HUMAN, LowerBody.HOOFED, LowerBody.KIRIN, LowerBody.ONI, LowerBody.RAIJU, LowerBody.CLOVEN_HOOFED, LowerBody.SCYLLA), +1)
 				.isTaur(+1)
 				.tailType(ANY(Tail.SALAMANDER, Tail.DRACONIC), +1)
+				.customRequirement("",'Chain of Fate',
+						function (body:BodyData):Boolean {
+							return body.player.hasStatusEffect(StatusEffects.ChainOfFate) && body.player.statusEffectv1(StatusEffects.ChainOfFate) > 0
+						}, +1)
 				.skinCoatPattern(Skin.PATTERN_WHITE_BLACK_VEINS, +1)
+				.hasPerk(PerkLib.ExanimationI, +6)
+				//.hasPerk(PerkLib.ExanimationII, +8)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.LivingWeaponIM);
 		
 		buildTier(14, "Demi-Hollow")
-				//requirePerk(PerkLib.)
+				.requirePerk(PerkLib.ExanimationI)
 				.buffs({
 					"str.mult": +0.50,
 					"tou.mult": +0.75,
@@ -64,7 +72,7 @@ public class HollowRace extends Race {
 				.end();
 		
 		buildTier(24, "Hollow")
-				//requirePerk(PerkLib.)
+				//.requirePerk(PerkLib.ExanimationII)
 				.buffs({
 					"str.mult": +0.80,
 					"tou.mult": +1.40,

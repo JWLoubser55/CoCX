@@ -102,6 +102,8 @@ public class TestMenu extends BaseContent
 		bd.add("Test5", MightyOrNot5, "Testing NaN");
 		bd.add("Test6", MightyOrNot6, "It's Tengliu not Teiling.");
 		bd.add("Test7", MightyOrNot7, "Combat Slaves Operational.");
+		bd.add("Test8", NotAnAizen, "If you really not wanna go to Ignam agian for this testing use this.").disableIf(player.hasStatusEffect(StatusEffects.ChainOfFate));
+		
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -137,6 +139,12 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function NotAnAizen():void {
+		outputText("\n\n<b>You been hand patted on your shoulder. Beware of the masks.</b>\n\n");
+		player.createStatusEffect(StatusEffects.ChainOfFate, 0, 2, 0, 0);
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot7():void {
