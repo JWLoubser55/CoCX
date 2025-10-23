@@ -89,7 +89,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		private function hourlyHunger():Boolean {
 			var needNext:Boolean = false;
 			var hungerActive:Boolean = false;
-			if (flags[kFLAGS.HUNGER_ENABLED] > 0 || player.hasPerk(PerkLib.EndlessHunger)) hungerActive = true;
+			if (flags[kFLAGS.HUNGER_ENABLED] > 0 || player.hasPerk(PerkLib.EndlessHunger) || player.hasPerk(PerkLib.ExanimationI)) hungerActive = true;
 			if (hungerActive) {
 				if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2 || flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 3) hungerActive = false;
 				else if (player.hasPerk(PerkLib.DeadMetabolism)) hungerActive = false;
@@ -110,6 +110,9 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					else if (player.maxHunger() > 100) multiplier += 0.25;
 					else multiplier += 0.25;
 				}
+				if (player.hasPerk(PerkLib.ExanimationI)) multiplier += 0.3;
+				if (player.hasPerk(PerkLib.ExanimationII)) multiplier += 0.3;
+				if (player.hasPerk(PerkLib.ExanimationIII)) multiplier += 0.3;
 				if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 2) multiplier += (0.15 * (player.perkv1(IMutationsLib.WendigoMetabolismIM) - 1));
 				if (player.hasPerk(PerkLib.ManticoreCumAddict)) multiplier *= 2;
 				if (player.hasPerk(PerkLib.HydraRegeneration)) multiplier *= 2;
@@ -131,6 +134,11 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						player.hunger = 50;
 					}
 				}
+				if (player.hunger <= Math.round(player.maxHunger() * 0.5) && player.hasPerk(PerkLib.ExanimationI)) {
+					EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.15));
+					if (player.soulforce <= 0) player.takePhysDamage(player.maxHP() * 0.35);
+				}
+				if (player.hunger <= Math.round(player.maxHunger() * 0.3) && player.hasPerk(PerkLib.ExanimationI)) player.takePhysDamage(player.maxHP() * 0.2);
 				if (player.hunger <= 0) {
 					if (player.isGargoyle()) campUniqueScene.droppingToZeroSatietyAsGargoyle();
 					else {
@@ -3373,3 +3381,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		//End of Interface Implementation
 	}
 }
+

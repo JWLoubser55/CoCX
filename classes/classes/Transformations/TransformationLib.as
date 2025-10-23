@@ -479,7 +479,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const EyesAutomata: Transformation       = eyes.EyesAutomata.registerTf(AS_EYES, AE_AUTOMATA);
 	public const EyesYggdrasil: Transformation		= eyes.EyesYggdrasil.registerTf(AS_EYES, AE_YGGDRASIL);
 	public const EyesMarilith: Transformation		= eyes.EyesMarilith.registerTf(AS_EYES, AE_MARILITH);
-	public const EyeWerespider: Transformation		= eyes.EyeWerespider.registerTf(AS_EYES, AE_WERESPIDER);
+	public const EyesWerespider: Transformation		= eyes.EyesWerespider.registerTf(AS_EYES, AE_WERESPIDER);
+	public const EyesHollow: Transformation			= eyes.EyesHollow.registerTf(AS_EYES, AE_HOLLOW);
 //=================================
 //                                =
 //   EYE COLORS                   =
@@ -589,6 +590,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const FaceGlacialTroll: Transformation 		= face.FaceGlacialTroll.registerTf(AS_FACE, AE_GLACIAL_TROLL);
     public const FaceAutomata: Transformation 			= face.FaceAutomata.registerTf(AS_FACE, AE_AUTOMATA);
     public const FaceWerespiderFangs: Transformation 	= face.FaceWerespiderFangs.registerTf(AS_FACE, AE_WERESPIDER);
+    public const FaceHollowMask: Transformation 		= face.FaceHollowMask.registerTf(AS_FACE, AE_HOLLOW);
 
 
 //GILLS

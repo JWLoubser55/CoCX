@@ -533,7 +533,18 @@ package classes.GeneticMemories {
 			cost: 100,
 			title: "Werespider",
 			transformation: function(): Transformation {
-				return CoC.instance.transformations.EyeWerespider;
+				return CoC.instance.transformations.EyesWerespider;
+			}
+		});
+
+		public static const HOLLOW:int = _partid++;
+		EnumValue.add(Memories, HOLLOW, "HOLLOW", {
+			id: "Hollow Eyes",
+			name: "Hollow Eyes",
+			cost: 100,
+			title: "Hollow",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyesHollow;
 			}
 		});
 		public static function getMemory(memoryId: Number): * {

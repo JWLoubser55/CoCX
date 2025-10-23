@@ -47,7 +47,7 @@ private function tfIntoWereSpider():void {
 	CoC.instance.transformations.FaceWerespiderFangs.applyEffect(false);
 	CoC.instance.transformations.LowerBodyWerespider.applyEffect(false);
 	CoC.instance.transformations.EarsInsect.applyEffect(false);
-	CoC.instance.transformations.EyeWerespider.applyEffect(false);
+	CoC.instance.transformations.EyesWerespider.applyEffect(false);
 	CoC.instance.transformations.TongueHuman.applyEffect(false);
 	CoC.instance.transformations.GillsNone.applyEffect(false);
 	CoC.instance.transformations.WingsNone.applyEffect(false);

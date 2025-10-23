@@ -715,6 +715,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const HOLLOW_MASK:int =_partid++;
+		EnumValue.add(Memories, HOLLOW_MASK, "HOLLOW_MASK", {
+			id: "Hollow Mask",
+			name: "Hollow Mask",
+			cost: 100,
+			title: "Hollow Mask",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceHollowMask;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

@@ -1254,5 +1254,22 @@ public class FaceTransformations extends MutationsHelper {
 				return player.faceType === Face.WERESPIDER_FANGS;
 			}
 	);
+
+	public const FaceHollowMask: Transformation = new SimpleTransformation("Face with Hollow Mask",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.FaceHuman, doOutput);
+
+				if (doOutput) outputText(desc);
+				player.faceType = Face.HOLLOW_MASK;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.WERESPIDER));
+			},
+			// is present
+			function (): Boolean {
+				return player.faceType === Face.HOLLOW_MASK;
+			}
+	);
 }
 }

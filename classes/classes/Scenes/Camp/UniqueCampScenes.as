@@ -132,10 +132,16 @@ public function transformationIntoDemiHollow():void {
 	outputText("You try to breathe but no breath rises your chest. You keep at it, the sensation feels like it grounds you, as if should you stop you would fade away. The silence that follows, broken only by whispers - jealousy of those that walk free of the pains that hail you. And strange hunger gnaws at your very core. They are not yours, and yet they cling to you.\n\n");
 	player.addStatusValue(StatusEffects.ChainOfFate, 1, 168);
 	player.createPerk(PerkLib.ExanimationI, 0, 0, 0, 0);
-	player.faceType = Face.HOLLOW_MASK;
-	player.eyes.type = Eyes.HOLLOW;
-	player.eyes.colour = "yellow";
+	player.createPerk(PerkLib.EmptyVessel, 0, 0, 0, 0);
+	CoC.instance.transformations.FaceHollowMask.applyEffect(false);
+	CoC.instance.transformations.EyesHollow.applyEffect(false);
 	doNext(camp.returnToCamp);
+}
+public function transformationIntoHollow():void {
+	//arms
+	//legs
+	//tail
+	//horns
 }
 
 public function hellhoundCapture():void {

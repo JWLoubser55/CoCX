@@ -1366,6 +1366,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const CooldownAdamantineShell:StatusEffectType           	= mkCombat("Cooldown Adamantine Shell");
 		public static const CooldownAtavism:StatusEffectType                    = mkCombat("Cooldown Atavism");
 		public static const CooldownBalefulPolymorph:StatusEffectType      		= mkCombat("Cooldown Baleful Polymorph");
+		public static const CooldownCero:StatusEffectType          				= mkCombat("Cooldown Cero");
 		public static const CooldownChargedShot:StatusEffectType       	 		= mkCombat("Cooldown Charged Shot");
 		public static const CooldownCompellingAria:StatusEffectType      		= mkCombat("Cooldown Compelling Aria");
 		public static const CooldownCumCannon:StatusEffectType           		= mkCombat("Cooldown Cum Cannon");
@@ -1434,6 +1435,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const CooldownPossess:StatusEffectType             		= mkCombat("Cooldown Possess");
 		public static const CooldownPunishingKick:StatusEffectType       		= mkCombat("Cooldown Punishing Kick");
 		public static const CooldownRaijinBlaster:StatusEffectType   			= mkCombat("Cooldown Raijin blaster");
+		public static const CooldownSagitta:StatusEffectType          			= mkCombat("Cooldown Sagitta");
 		public static const CooldownSecondWind:StatusEffectType          		= mkCombat("Cooldown Second Wind");
 		public static const CooldownSextupleThrust:StatusEffectType      		= mkCombat("Cooldown Sextuple Thrust");
 		public static const CooldownShadowTeleport:StatusEffectType     		= mkCombat("Cooldown Shadow Teleport");
@@ -1529,4 +1531,4 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 	}
 
-}
+}

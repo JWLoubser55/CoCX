@@ -123,8 +123,10 @@ public class MagicSpecials extends BaseCombatContent {
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
 		if (player.hasPerk(PerkLib.ExanimationI)) {
-			bd = buttons.add("Sagitta", Sagitta, "Fire a volley of concussive soulforce bullets. \n");
-			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			bd = buttons.add("Sagitta", Sagitta, "Fire a volley of concussive soulforce bullets. \nWould go into cooldown after use for: 5 rounds\n");
+			if (player.hasStatusEffect(StatusEffects.CooldownSagitta)) {
+				bd.disable("<b>You need more time before you can use Sagitta again.</b>\n\n");
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
 		if ((player.isRaceCached(Races.RAIJU) || (player.isRaceCached(Races.THUNDERBIRD) && player.tailType == Tail.THUNDERBIRD) || player.isRaceCached(Races.KIRIN)) && player.hasPerk(PerkLib.ElectrifiedDesire) >= 0) {
 			bd = buttons.add("Orgasmic L.S.", OrgasmicLightningStrike, "Masturbate to unleash a massive discharge.", "Orgasmic Lightning Strike");
@@ -6086,10 +6088,12 @@ public class MagicSpecials extends BaseCombatContent {
 		damage *= soulskillMagicalMod();
 		if (monster.hp100 < 50) damage *= 1.2;
 		damage = Math.round(damage);
-		doMagicDamage(damage, true, true);
-		if (player.level >= 20) doMagicDamage(damage, true, true);
-		if (player.level >= 30) doMagicDamage(damage, true, true);
-		if (player.level >= 40) doMagicDamage(damage, true, true);
+		var rounds:Number = 4;
+		if (player.level > 8) rounds += Math.round((player.level - 4) / 9);
+		while (rounds-->0) doMagicDamage(damage, true, true);
+		var pc:Number = 5;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
+		player.createStatusEffect(StatusEffects.CooldownSagitta,pc,0,0,0);
 		enemyAI();
 	}
 

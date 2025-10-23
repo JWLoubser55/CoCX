@@ -876,7 +876,7 @@ public class EyesTransformations extends MutationsHelper {
 			}
 	);
 
-	public const EyeWerespider: Transformation = new SimpleTransformation("Werespider Eyes",
+	public const EyesWerespider: Transformation = new SimpleTransformation("Werespider Eyes",
 			// apply effect
 			function (doOutput: Boolean): void {
 				var desc: String = "";
@@ -891,6 +891,24 @@ public class EyesTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.eyes.type === Eyes.WERESPIDER;
+			}
+	);
+	
+	public const EyesHollow: Transformation = new SimpleTransformation("Hollow Eyes",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Your vision shifts, colors inverse and you can see the faint aura traces of the living. It takes a moment for you to adapt to the weird sensory changes and control what colours you want to see but once you recover you go to a puddle and notice your eyes now have yellow pupils with sinister black sclera. <b>You now have Hollow eyes!</b>";
+
+				player.eyes.type = Eyes.HOLLOW;
+				player.eyes.colour = "yellow";
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.HOLLOW));
+			},
+			// is present
+			function (): Boolean {
+				return player.eyes.type === Eyes.HOLLOW;
 			}
 	);
 

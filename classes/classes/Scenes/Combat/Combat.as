@@ -14260,6 +14260,22 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
                 player.addStatusValue(StatusEffects.CooldownSpectralScream, 1, -1);
             }
         }
+		//Sagitta
+		if (player.hasStatusEffect(StatusEffects.CooldownSagitta)) {
+            if (player.statusEffectv1(StatusEffects.CooldownSagitta) <= 0) {
+                player.removeStatusEffect(StatusEffects.CooldownSagitta);
+            } else {
+                player.addStatusValue(StatusEffects.CooldownSagitta, 1, -1);
+            }
+        }
+		//Cero
+		if (player.hasStatusEffect(StatusEffects.CooldownCero)) {
+            if (player.statusEffectv1(StatusEffects.CooldownCero) <= 0) {
+                player.removeStatusEffect(StatusEffects.CooldownCero);
+            } else {
+                player.addStatusValue(StatusEffects.CooldownCero, 1, -1);
+            }
+        }
         //Punishing Kick
         if (player.hasStatusEffect(StatusEffects.CooldownPunishingKick)) {
             if (player.statusEffectv1(StatusEffects.CooldownPunishingKick) <= 0) {

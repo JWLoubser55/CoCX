@@ -5794,6 +5794,7 @@ use namespace CoC;
 			if (flags[kFLAGS.HUNGER_ENABLED] > 0) hungerActive = true;
 			if (hungerActive) {
 				if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2 || flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 3) hungerActive = false;
+				else if (hasPerk(PerkLib.EmptyVessel)) hungerActive = false;
 				else if (hasPerk(PerkLib.DeadMetabolism)) hungerActive = false;
 				else if (hasPerk(PerkLib.GargoylePure) || hasPerk(PerkLib.GargoyleCorrupted)) hungerActive = false;
 			}
@@ -8183,6 +8184,22 @@ use namespace CoC;
 			refillHunger(Ammount);
 		}
 
+		public function hollowFeed(subtype:Number):void {
+			var amnt:Number = 0;
+			if (subtype == 1) {
+				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.1));
+				amnt += Math.round(maxHunger() * 0.15);
+			}
+			var oldHunger:Number = hunger;
+			hunger += amnt;
+			if (hunger > maxHunger()) hunger = maxHunger();
+			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
+			//game.dynStats("lus", 0, "scale", false);
+			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
+			dynStats("lus", 0, "scale", false);
+			EngineCore.statScreenRefresh();
+		}
+
         public function wendigoFeed():void {
 			var duration:Number = 10;
 			var boostValue:Number = 1;
@@ -8302,6 +8319,7 @@ use namespace CoC;
 						}
 						if (hasPerk(PerkLib.ManticoreCumAddict)) manticoreFeed();
 						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
+						if (hasPerk(PerkLib.EmptyVessel)) hollowFeed(1);
 						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'vaginalFluids':
@@ -8309,12 +8327,14 @@ use namespace CoC;
 							if (statusEffectv3(StatusEffects.Overheat) != 1) addStatusValue(StatusEffects.Overheat, 3, 1);
 						}
 						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
+						if (hasPerk(PerkLib.EmptyVessel)) hollowFeed(1);
 						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'saliva':
 						break;
 					case 'milk':
 						if (hasPerk(PerkLib.DisplacerMilkAddict)) displacerFeed();
+						if (hasPerk(PerkLib.EmptyVessel)) hollowFeed(1);
 						refillHunger(10, false, true);
 						break;
 				}

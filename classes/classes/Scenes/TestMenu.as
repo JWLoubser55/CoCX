@@ -103,6 +103,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test6", MightyOrNot6, "It's Tengliu not Teiling.");
 		bd.add("Test7", MightyOrNot7, "Combat Slaves Operational.");
 		bd.add("Test8", NotAnAizen, "If you really not wanna go to Ignam agian for this testing use this.").disableIf(player.hasStatusEffect(StatusEffects.ChainOfFate));
+		bd.add("Test9", NotHollowed, "Cheatish curing Demi-hollow state.");
 		
 		submenu(bd, playerMenu, 0, false);
 	}
@@ -144,6 +145,16 @@ public class TestMenu extends BaseContent
 	public function NotAnAizen():void {
 		outputText("\n\n<b>You been hand patted on your shoulder. Beware of the masks.</b>\n\n");
 		player.createStatusEffect(StatusEffects.ChainOfFate, 0, 2, 0, 0);
+		doNext(SoulforceCheats);
+	}
+	
+	public function NotHollowed():void {
+		outputText("\n\n<b>You specification was restored to default ^^</b>\n\n");
+		if (player.hasStatusEffect(StatusEffects.ChainOfFate)) player.removeStatusEffect(StatusEffects.ChainOfFate);
+		if (player.hasPerk(PerkLib.ExanimationI)) player.removePerk(PerkLib.ExanimationI);
+		if (player.hasPerk(PerkLib.EmptyVessel)) player.removePerk(PerkLib.EmptyVessel);
+		CoC.instance.transformations.FaceHuman.applyEffect(false);
+		CoC.instance.transformations.EyesHuman.applyEffect(false);
 		doNext(SoulforceCheats);
 	}
 	

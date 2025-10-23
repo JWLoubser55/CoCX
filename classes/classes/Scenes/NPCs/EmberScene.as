@@ -1442,6 +1442,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("\n\nAs you break the kiss; Ember leans over, supporting [ember em]self on your shoulders.  \"<i>Ugh... I guess we overdid it... I feel woozy.</i>\"");
             outputText("\n\nYou quickly offer [ember em] a helping hand, inquiring if [ember ey] is all right.  Ember accepts your help, using your hand to balance [ember em]self.  \"<i>I-I'll be fine... just, no more sharing for the day...</i>\"");
         }
+		if (player.hasPerk(PerkLib.EmptyVessel)) player.hollowFeed(1);
         endEncounter();
     }
 
