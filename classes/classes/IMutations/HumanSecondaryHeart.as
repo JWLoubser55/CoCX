@@ -22,19 +22,23 @@ public class HumanSecondaryHeart extends IMutationPerkType
 			var perkCent:int = 1 + pTier;
 			if (pTier >= 3) perkCent += 1;
 			if (pTier >= 4) perkCent += 4;
-            if (pTier >= 1){
+            if (pTier >= 3){
                 descS += "You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased ";
             }
-			if (pTier == 1) descS += "a bit ";
-			if (pTier == 2) descS += "slightly ";
-			if (pTier == 4) descS += "greatly ";
-			if (pTier >= 1){
+            else {
+                descS += "Your heart grew " + (pTier == 1 ? "slightly":"almost doubled") +  " in size. Your health and fatigue recovery are increased ";
+            }
+			if (pTier == 1) descS += "a bit";
+			else if (pTier == 2) descS += "slightly";
+			else if (pTier == 4) descS += "greatly ";
+			if (pTier >= 3){
 				descS += "("+perkCent+"%) as the new heart ";
 			}
-            if (pTier == 1) descS += "struggles to find its rhythm alongside your first";
-            if (pTier == 2) descS += "begins to find its rhythm alongside your first";
-			if (pTier == 3) descS += "has adapted to the rhythm of the original";
-			if (pTier == 4) descS += "pumps in perfect opposition to your original. As your secondary heart has grown to rival the first, the first time you would lose in combat, prevent that loss and continue on with 1HP as your secondary heart takes the full weight of running your body until your win or lose a second time";
+            // bit unhealthy innit
+            // if (pTier == 1) descS += "struggles to find its rhythm alongside your first";
+            // if (pTier == 2) descS += "begins to find its rhythm alongside your first";
+			if (pTier == 3) descS += "adapted to the rhythm of the original";
+			else if (pTier == 4) descS += "pumps in perfect opposition to your original. As your secondary heart has grown to rival the first, the first time you would lose in combat, prevent that loss and continue on with 1HP as your secondary heart takes the full weight of running your body until your win or lose a second time";
             if (descS != "")descS += ".";
             if (pTier >= 1) descS += " (req. 18+ human score to have all effects active)";
             return descS;
