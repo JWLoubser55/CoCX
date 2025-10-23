@@ -285,8 +285,8 @@ public class Changelog extends BaseContent
 			outputText("Increase the duration of spectral scream to 3 rounds. Spectral Scream and Possess gains an increased modifier based on your combined strength and toughness and have their cooldowns reduced by one round.\n");
 			outputText("-New mutation perk: Wendigo metabolism (Final Form). Req. Wendigo metabolism (Evolved) and lvl 90+. Effects: Gain High regeneration (2%) but make Endless hunger permanent. Regeneration is further increased (3%) but so is the hunger (45%). Feeding now increases toughness and strength up to 200% more and the increment increased to 5% per stack. ");
 			outputText("Increase the duration of spectral scream to 3 rounds. Spectral Scream and Possess gains an increased modifier based on your combined strength and toughness and have their cooldowns reduced by two rounds. Do four more claw attacks when hunger is mostly sated (90%+).\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-At 5 pm when in Ignam PC can meet an old merchant. Talking with him would set event that would trigger around 24 hours after pc arrive in Mareth.\n");
+			outputText("-New event perk: Exanimation I. Gained by reaching Demi-Hollow tier of Hollow race. Effects: Enables the use of Hollow special 'Sagitta'.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -39,7 +39,7 @@ import classes.Races;
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireMusclesMutationSlot()
-                    .requireAnyRace(Races.GARGOYLE, Races.AUTOMATA);
+                    .requireAnyRace(Races.GARGOYLE, Races.AUTOMATA, Races.HOLLOW);
                 }
                 else{
                     var pLvl:int = pTier * 30;

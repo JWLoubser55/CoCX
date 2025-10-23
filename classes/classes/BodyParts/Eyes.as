@@ -311,6 +311,11 @@ public class Eyes extends BodyPart {
 		name:"marilith",
 		appearanceDesc: "Your [eyecolor] eyes have slitted pupils like that of a snake with black sclera which betray your corrupted nature. A third eye sits eerily on your forehead alluding to your fiendish nature."
 	});
+	public static const HOLLOW: int = 52;
+	EnumValue.add(Types, HOLLOW, "HOLLOW", {
+		name:"hollow",
+		appearanceDesc: "Your eyes are a strange mix of black sclera and [eyecolor] iris, through eyes even the faintest pulse of soulforce is visible to you."
+	});
 
 	public var count:int;
 	public var colour:String = "brown";

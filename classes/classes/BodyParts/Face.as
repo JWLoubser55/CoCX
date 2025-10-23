@@ -3,6 +3,7 @@
  */
 package classes.BodyParts {
 import classes.Creature;
+import classes.PerkLib;
 import classes.internals.EnumValue;
 import classes.BodyParts.*;
 import classes.internals.Utils;
@@ -714,6 +715,26 @@ public class Face extends SaveableBodyPart {
 	EnumValue.add(Types, WERESPIDER_FANGS, "WERESPIDER_FANGS", {
 		name: "werespider",
 		appearanceDesc: "A set of retractable, long and pointy vampire canines sit in place of your canines and are ready to dispense their venom or to pierce into victims and reach their blood.",
+		bite: true,
+		humanShaped: true
+	});
+	public static const HOLLOW_MASK: int = 69;
+	EnumValue.add(Types, HOLLOW_MASK, "HOLLOW_MASK", {
+		name: "hollow mask",
+		appearanceDescFunc: function(creature: *): String {
+			var desc: String = "";
+
+			desc += " Upon your face rest a mask that seems to respond to your feels and even splitting itself wide open to give you fresh air.";
+			if (creature.hasPerk(PerkLib.ExanimationIII)) {
+				desc += " Your face is human in shape and structure with [skin coat]. Your mouth is somewhat human save for your fox-like canines.";
+			} else if (creature.hasPerk(PerkLib.ExanimationII)) {
+				desc += " The mask closes over half of your face, an asymmetrical skull that mocks human expression. The eyehole is wider, blacker, and often weeps smoky trails. Teeth sharpen and overlap like a predator forcing its jaw into existence.";
+			} else {
+				desc += " Its a cracked, bone-white fragment clings to the cheek and brow. The edges are jagged, brittle, and faintly smoking with dark soulforce. Hollow eye-sockets flicker faintly but never fully open.";
+			}
+
+			return desc;
+		},
 		bite: true,
 		humanShaped: true
 	});
