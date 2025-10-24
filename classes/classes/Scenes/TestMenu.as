@@ -144,7 +144,7 @@ public class TestMenu extends BaseContent
 	
 	public function NotAnAizen():void {
 		outputText("\n\n<b>You been hand patted on your shoulder. Beware of the masks.</b>\n\n");
-		player.createStatusEffect(StatusEffects.ChainOfFate, 0, 2, 0, 0);
+		player.createStatusEffect(StatusEffects.ChainOfFate, 0, 6, 0, 0);
 		doNext(SoulforceCheats);
 	}
 	

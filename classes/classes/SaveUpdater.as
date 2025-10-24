@@ -2820,10 +2820,12 @@ public class SaveUpdater extends NPCAwareContent {
 						player.createPerk(PerkLib.DaoistMDHiFTyrantStage, 0, 0, 0, 0);
 					}
 				}
-			}/*
+			}
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.594) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.594;
-			}
+				flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] = 0;
+				flags[kFLAGS.DISCOVERED_LOW_MOUNTAIN] = 0;
+			}/*
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.60) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.60;
 			}

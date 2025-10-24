@@ -433,7 +433,7 @@ public class UniqueSexScenes extends BaseContent
 		}
 		private function USSHollowSouldrainingHumanoids():Array{
             var btnSet:Array = ["Souldrain"];
-            if (player.hasPerk(PerkLib.EmptyVessel) && SuccubusIncubusFeastNotWrongEnemyType()) {
+            if (player.hasPerk(PerkLib.EmptyVessel) && HollowNotWrongEnemyType()) {
                 btnSet.push("Souldrain", hollowSouldrain, "Siphon soulforce from your foe. It's not much but at least they are not dead. (Give up to 10% of satiety, 25% of soulforce, 10% of hp)");
             }
             else {
@@ -445,7 +445,7 @@ public class UniqueSexScenes extends BaseContent
         }
 		private function USSHollowSouleatingHumanoids():Array{
             var btnSet:Array = ["Souleater"];
-            if (player.hasPerk(PerkLib.EmptyVessel) && SuccubusIncubusFeastNotWrongEnemyType()) {
+            if (player.hasPerk(PerkLib.EmptyVessel) && HollowNotWrongEnemyType()) {
                 btnSet.push("Souleater", hollowSouleater, "Eat the soul of your foe, killing them in the process. (Give up to 30% of total satiety, 30% of soulforce, 30% of Hp, and +10 corruption)");
             }
             else {

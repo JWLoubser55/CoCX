@@ -44,7 +44,8 @@ public class KillingIntentSkill extends AbstractSoulSkill {
 									flags[kFLAGS.HELLHOUNDS_KILLED] +
 									flags[kFLAGS.IMPS_KILLED] +
 									flags[kFLAGS.MINOTAURS_KILLED] +
-									flags[kFLAGS.TRUE_DEMONS_KILLED];
+									flags[kFLAGS.TRUE_DEMONS_KILLED] +
+									flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER];
 		mod += 0.1 * flags[kFLAGS.SOUL_CULTIVATION] * monstersKilled;
 		return mod;
 	}
@@ -62,6 +63,7 @@ public class KillingIntentSkill extends AbstractSoulSkill {
 		//other bonuses
 		if (player.hasPerk(PerkLib.Heroism) && (monster && (monster.hasPerk(PerkLib.EnemyBossType) || monster.hasPerk(PerkLib.EnemyHugeType)))) damage *= 2;
 		if (player.perkv1(IMutationsLib.AnubiHeartIM) >= 4 && player.HP < Math.round(player.maxHP() * 0.5)) damage *= 1.5;
+		if (player.hasPerk(PerkLib.ExanimationI)) damage *= combat.hollowSkillsAndSoulskillsBoost();
 		return Math.round(damage);
 	}
 

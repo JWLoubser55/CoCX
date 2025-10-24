@@ -43,6 +43,7 @@ public class BloodDewdropsSkill extends AbstractBloodSoulSkill {
 		if (monster && monster.plural) damage *= 5;
 		if (player.hasPerk(PerkLib.BloodAffinity)) damage *= 2;
 		if (player.perkv1(IMutationsLib.AnubiHeartIM) >= 4 && player.HP < Math.round(player.maxHP() * 0.5)) damage *= 1.5;
+		if (player.hasPerk(PerkLib.ExanimationI)) damage *= combat.hollowSkillsAndSoulskillsBoost();
 		if (sfInfusion) {
 			//soulskill mod effect
 			damage *= soulskillPhysicalMod();

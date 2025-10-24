@@ -4403,7 +4403,9 @@ public class PerkLib
 		public static const ElvenSense:PerkType = mk("Elven Sense", "Elven Sense",
 				"Gain a chance to dodge attacks and an increased chance to score critical hits.");
 		public static const EmptyVessel:PerkType = mk("Empty Vessel", "Empty Vessel",
-				"You will no longer gain nourishment from anything with the exception of Breast milk (Marble's bottled milk is allowed, and drinking Ember's blood is allowed - counts as breastfeeding) and soul-draining humanoids. The Hollow may drain soulforce or consume the souls of defeated foes to restore vitality and accumulate Soulforce.");
+				"You will no longer gain nourishment from anything with the exception of Breast milk (Marble's bottled milk is allowed, and drinking Ember's blood is allowed - counts as breastfeeding) and soul-draining humanoids. The Hollow may drain soulforce or consume the souls of defeated foes to restore vitality and accumulate Soulforce. "+
+				"(When dropping below 50% of max satiety would cause drain of 20% of max soulforce per hour (if lacking soulforce would drain health 15% of max HP per hour). When dropping below 30% of max satiety would cause drain of 20% of max health per hour. "+
+				"At 70% and above satiety, the pc will get a 20% boost to all stats (excluding sensitivity), 20% boost to Soulforce skills and Hollow skills.)");
 		public static const EndlessHunger:PerkType = mk("Endless Hunger", "Endless Hunger",
 				"Your hunger progress at twice the normal speed but must be sated through oral sex. As a result, you are completely unable to obtain a body shape larger than a thin frame.");
 		public static const Enigma:PerkType = mk("Enigma", "Enigma",
@@ -4417,11 +4419,11 @@ public class PerkLib
 		public static const EquineStrength:PerkType = mk("Equine Strength", "Equine Strength",
 				"Add 25% of your speed and libido to your strength stat.");
 		public static const ExanimationI:PerkType = mk("Exanimation I", "Exanimation I",
-				"The first step into becoming a Hollow. Gives racial status Demi-Hollow. Enables the use of Hollow special 'Sagitta'. (Hunger gauge deplete 30% faster)");//, +15% Soulforce skills, +15% Hollow skills
+				"The first step into becoming a Hollow. Gives racial status Demi-Hollow. Enables the use of Hollow special 'Sagitta'. (Hunger gauge deplete 30% faster, +15% Soulforce skills, +15% Hollow skills)");
 		public static const ExanimationII:PerkType = mk("Exanimation II", "Exanimation II",
-				"You've lost the tether between your body and soul now are a Hollow. Gives racial status Hollow. Enables the use of Hollow special 'Cero' and Hollow passive 'Touch of the Damned'. (Hunger gauge deplete 30%(60%) faster)");//, +25% Soulforce skills, +25% Hollow skills
+				"You've lost the tether between your body and soul now are a Hollow. Gives racial status Hollow. Enables the use of Hollow special 'Cero' and Hollow passive 'Touch of the Damned'. (Hunger gauge deplete 30%(60%) faster, +25% Soulforce skills, +25% Hollow skills)");
 		public static const ExanimationIII:PerkType = mk("Exanimation III", "Exanimation III",
-				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster)");
+				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +25% Soulforce skills, +25% Hollow skills)");
 		public static const EzekielBlessing:PerkType = mk("Ezekiel Blessing", "Ezekiel Blessing",
 				"You've received the blessing of Ezekiel, enhancing your body and mind. +10 to all stats.").withBuffs({'sens':10}, false);
 		public static const Feeder:PerkType = mk("Feeder", "Feeder",
@@ -4589,7 +4591,7 @@ public class PerkLib
 		public static const PoisonAffinity:PerkType = mk("Poison Affinity", "Poison Affinity",
 				"You have high resistance to poison effects, and mastery over poison abilities and magic.");
 		public static const PsionicEmpowerment:PerkType = mk("Psionic Empowerment", "Psionic Empowerment",
-			"Your powers expands in accordance with each new convert that joins the sisterhood hivemind.");
+				"Your powers expands in accordance with each new convert that joins the sisterhood hivemind.");
 		public static const PurityBlessing:PerkType = mk("Purity Blessing", "Purity Blessing",
 				"Reduces the rate at which your corruption, libido, and lust increase. Reduces minimum libido slightly.")
 				.withBuffs({'minlustx':-0.1});

@@ -1763,6 +1763,14 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					player.addStatusValue(StatusEffects.ChainOfFate, 3, -1);
 				}
 			}
+			if (player.hasPerk(PerkLib.EmptyVessel) && player.soulforce >= Math.round(player.maxSoulforce() * 0.6)) {
+				outputText("Your soulforce seems to stream around your body, immersing you in a transparent aura of spiritual energy. Its pressure is dense enough that it acts like a thin barrier.");
+				needNext = true;
+			}
+			if (player.hasPerk(PerkLib.EmptyVessel) && player.hunger >= Math.round(player.maxHunger() * 0.7)) {
+				outputText("You feel strong, you feel the soulforce pulsing within your body. It's strengthening your muscles and sharpening your senses.");
+				needNext = true;
+			}
 			return needNext;
 		}
 		private function hourlyCheckRacialPerks():Boolean {

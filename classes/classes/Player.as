@@ -3176,6 +3176,7 @@ use namespace CoC;
 			var dmm:Number = 0;
 			if (touStat.core.value > 0) dmmc += touStat.core.value;
 			if (touStat.train.value > 0) dmmt += touStat.train.value;
+			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) dmmm += 3;
 			if (hasPerk(PerkLib.JobGuardian)) dmmm += 1;
 			if (hasPerk(PerkLib.TankI)) dmmm += 1;
 			if (hasPerk(PerkLib.TankII)) dmmm += 1;
@@ -3567,6 +3568,7 @@ use namespace CoC;
 			var percent:Number = 1;
 			var armorMod:Number = armorDef;
 			if (shield == game.shields.PRIDWEN) armorMod += shieldBlock;
+			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) percent += 3;
 			if (armorMod > 50) percent += Math.sqrt(armorMod - 50);
 			return percent;
 		}
@@ -3752,6 +3754,7 @@ use namespace CoC;
 			var percent:Number = 1;
 			var armorMMod:Number = armorMDef;
 			if (shield == game.shields.PRIDWEN) armorMMod += shieldBlock;
+			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) percent += 3;
 			if (armorMMod > 50) percent += Math.sqrt(armorMMod - 50);
 			return percent;
 		}
@@ -6700,11 +6703,16 @@ use namespace CoC;
 			if (statStore.hasBuff('Titanic Strength')) statStore.removeBuffs('Titanic Strength');
 			if (statStore.hasBuff('Condensed Power')) statStore.removeBuffs('Condensed Power');
 			if (statStore.hasBuff('Dracoforce')) statStore.removeBuffs('Dracoforce');
+			if (statStore.hasBuff('Exanimation')) statStore.removeBuffs('Exanimation');
 			if (statStore.hasBuff('Lusty Strength')) statStore.removeBuffs('Lusty Strength');
 			if (statStore.hasBuff('Sanguine Strength')) statStore.removeBuffs('Sanguine Strength');
 			if (statStore.hasBuff('Photosynthesis')) statStore.removeBuffs('Photosynthesis');
 			var strengthBase:Number = str;
 			var toughnessBase:Number = tou;
+			var speedBase:Number = spe;
+			var intelligenceBase:Number = inte;
+			var wisdomBase:Number = wis;
+			var libidoBase:Number = lib;
 			if (effectiveTallness >= 108 && hasPerk(PerkLib.TitanicStrength)) {
 				var strTS:Number = Math.round(0.01 * strengthBase * Math.round(effectiveTallness / 6));
 				statStore.replaceBuffObject({'str': strTS}, 'Titanic Strength', { text: 'Titanic Strength' });
@@ -6728,6 +6736,9 @@ use namespace CoC;
 				var strD:Number = Math.round(strengthBase/2);
 				var touD:Number = Math.round(toughnessBase/2);
 				statStore.replaceBuffObject({'str': strD, 'tou': touD}, 'Dracoforce', { text: 'Dracoforce' });
+			}
+			if (hasPerk(PerkLib.EmptyVessel) && hunger >= Math.round(maxHunger() * 0.7)) {
+				statStore.replaceBuffObject({'str': Math.round(strengthBase*0.2), 'tou': Math.round(toughnessBase*0.2), 'spe': Math.round(speedBase*0.2), 'int': Math.round(intelligenceBase*0.2), 'wis': Math.round(wisdomBase*0.2), 'lib': Math.round(libidoBase*0.2)}, 'Exanimation', { text: 'Exanimation' });
 			}
 			if (!hasPerk(PerkLib.DeathlyPower) && statStore.hasBuff('Deathly power')) statStore.removeBuffs('Deathly power');
 			if (hasPerk(PerkLib.Enigma)) statStore.replaceBuffObject({'str.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2))),'tou.mult':Math.round(((intStat.mult.value/2)+(wisStat.mult.value/2)))}, 'Enigma', { text: 'Enigma' });

@@ -55,7 +55,8 @@ public class HollowRace extends Race {
 						}, +1)
 				.skinCoatPattern(Skin.PATTERN_WHITE_BLACK_VEINS, +1)
 				.hasPerk(PerkLib.ExanimationI, +6)
-				//.hasPerk(PerkLib.ExanimationII, +8)
+				.hasPerk(PerkLib.ExanimationII, +8)
+				//.hasPerk(PerkLib.ExanimationII, +10)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.LivingWeaponIM);
@@ -72,7 +73,7 @@ public class HollowRace extends Race {
 				.end();
 		
 		buildTier(24, "Hollow")
-				//.requirePerk(PerkLib.ExanimationII)
+				.requirePerk(PerkLib.ExanimationII)
 				.buffs({
 					"str.mult": +0.80,
 					"tou.mult": +1.40,
