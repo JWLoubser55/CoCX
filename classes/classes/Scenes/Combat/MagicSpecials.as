@@ -6086,6 +6086,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (damage < 10) damage = 10;
 		//soulskill mod effect
 		damage *= soulskillMagicalMod();
+		damage *= combat.hollowSkillsAndSoulskillsBoost();
 		if (monster.hp100 < 50) damage *= 1.2;
 		damage = Math.round(damage);
 		var rounds:Number = 4;

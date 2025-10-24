@@ -704,6 +704,8 @@ public class PlayerInfo extends BaseContent {
 		killCountStats += "<b>Imps:</b> " + flags[kFLAGS.IMPS_KILLED] + "\n";
 		killCountStats += "<b>Minotaurs:</b> " + flags[kFLAGS.MINOTAURS_KILLED] + "\n";
 		killCountStats += "<b>True Demons:</b> " + flags[kFLAGS.TRUE_DEMONS_KILLED] + "\n";
+		killCountStats += "<b>Other enemies:</b> " + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] + "\n";
+		killCountStats += "<b>Souleater kill count:</b> " + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] + flags[kFLAGS.GOBLINS_KILLED] + "\n";
 		killCountStats += "<i>Total kill count: " + player.enemiesKillCount() + "</i>\n";
 
 		if (killCountStats != "")

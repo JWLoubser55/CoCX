@@ -78,6 +78,7 @@ public class MultiThrustSkill extends AbstractSoulSkill {
 		damage *= soulskillPhysicalMod();
 		//other bonuses
 		if (player.perkv1(IMutationsLib.AnubiHeartIM) >= 4 && player.HP < Math.round(player.maxHP() * 0.5)) damage *= 1.5;
+		if (player.hasPerk(PerkLib.ExanimationI)) damage *= combat.hollowSkillsAndSoulskillsBoost();
 		if (monster && monster.hasStatusEffect(StatusEffects.FrozenSolid)) damage *= 2;
 		return damage;
 	}

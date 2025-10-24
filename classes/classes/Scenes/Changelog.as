@@ -289,11 +289,12 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Exanimation I. Gained by reaching Demi-Hollow tier of Hollow race. Effects: Enables the use of Hollow special 'Sagitta'. (Hunger gauge deplete 30% faster)\n");
 			outputText("-Human Heart Tier 1 Mutation Text and General Desc Revamp. (NUZ/Shirane)\n");
 			outputText("-New M. Special: Sagitta. Usable by having Exanimation I perk. Effect: Fires up 4 projectiles with moderate speed scaling, +1 projectile per every 9 lvls, +20% damage if target hp below 50%, 5 round cooldown.\n");
-			outputText("-New event perk: Empty Vessel. Gained by reaching Demi-Hollow tier of Hollow race. Effects: You will no longer gain nourishment from anything with the exception of Breast milk (Marble's bottled milk is allowed, and drinking Ember's blood is allowed - counts as breastfeeding) and soul-draining humanoids. The Hollow may drain soulforce or consume the souls of defeated foes to restore vitality and accumulate Soulforce.\n");
+			outputText("-New event perk: Empty Vessel. Gained by reaching Demi-Hollow tier of Hollow race. Effects: You will no longer gain nourishment from anything with the exception of Breast milk (Marble's bottled milk is allowed, and drinking Ember's blood is allowed - counts as breastfeeding) and soul-draining humanoids. The Hollow may drain soulforce or consume the souls of defeated foes to restore vitality and accumulate Soulforce. ");
+			outputText("(When dropping below 50% of max satiety would cause drain of 20% of max soulforce per hour (if lacking soulforce would drain health 15% of max HP per hour). When dropping below 30% of max satiety would cause drain of 20% of max health per hour.)\n");
 			outputText("-Master wip / No description provided. (Liadri)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New Unique Sexscene: Souldrain - req. to have Empty Vessel / Spiritual Hunger perk. Can be only used against humanoid enemies that have soul. Siphon soulforce from your foe. It's not much but at least they are not dead. (Give up to 10% of satiety, 25% of soulforce, 10% of hp)\n");
+			outputText("-New Unique Sexscene: Souleater - req. to have Empty Vessel / Spiritual Hunger perk. Can be only used against humanoid enemies that have soul. Eat the soul of your foe, killing them in the process. (Give up to 30% of total satiety, 30% of soulforce, 30% of Hp, and +10 corruption)\n");
+			outputText("-In kill count section of stats page was added two more counters: other enemies, enemies killed by souleater.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

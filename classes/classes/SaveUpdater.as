@@ -2400,7 +2400,7 @@ public class SaveUpdater extends NPCAwareContent {
 				// explore, forestOuter, forestInner, lake, desertOuter - handled by postLoadSaveObject()
 				SceneLib.exploration.counters.desertInner         = flags[kFLAGS.WEREFOX_EXTRAS];
 				SceneLib.exploration.counters.battlefieldBoundary = flags[kFLAGS.GOLEM_ENEMY_TYPE];
-				SceneLib.exploration.counters.battlefieldOuter    = flags[kFLAGS.DISCOVERED_OUTER_BATTLEFIELD];
+				SceneLib.exploration.counters.battlefieldOuter    = flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER];
 				// mountainsMid - handled by postLoadSaveObject()
 				SceneLib.exploration.counters.hills               = flags[kFLAGS.MECH_AI_ATTACK];
 				SceneLib.exploration.counters.mountainsLow        = flags[kFLAGS.DISCOVERED_LOW_MOUNTAIN];

@@ -41,6 +41,10 @@ import classes.Races.HumanRace;
 import classes.Scenes.Combat.Combat;
 import classes.Scenes.Combat.CombatAbilities;
 import classes.Scenes.Combat.CombatAbility;
+import classes.Scenes.Monsters.Goblin;
+import classes.Scenes.Monsters.GoblinAssassin;
+import classes.Scenes.Monsters.GoblinShaman;
+import classes.Scenes.Monsters.GoblinWarrior;
 import classes.Scenes.NPCs.AetherTwinsFollowers;
 import classes.Scenes.NPCs.BelisaFollower;
 import classes.Scenes.NPCs.EvangelineFollower;
@@ -6032,7 +6036,7 @@ use namespace CoC;
 		
 		public function enemiesKillCount():Number
 		{
-			return (flags[kFLAGS.THIEFS_KILLED] + flags[kFLAGS.GOBLINS_KILLED] + flags[kFLAGS.HELLHOUNDS_KILLED] +flags[kFLAGS.IMPS_KILLED] +flags[kFLAGS.MINOTAURS_KILLED] + flags[kFLAGS.TRUE_DEMONS_KILLED]);
+			return (flags[kFLAGS.THIEFS_KILLED] + flags[kFLAGS.GOBLINS_KILLED] + flags[kFLAGS.HELLHOUNDS_KILLED] +flags[kFLAGS.IMPS_KILLED] +flags[kFLAGS.MINOTAURS_KILLED] + flags[kFLAGS.TRUE_DEMONS_KILLED] + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER]);
 		}
 
 		public function armorDescript(nakedText:String = "gear"):String
@@ -8190,13 +8194,26 @@ use namespace CoC;
 				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.1));
 				amnt += Math.round(maxHunger() * 0.15);
 			}
+			if (subtype == 2) {
+				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.25));
+				EngineCore.HPChange(Math.round(maxHP() * 0.1), true, false);
+				amnt += Math.round(maxHunger() * 0.1);
+			}
+			if (subtype == 3)  {
+				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.3));
+				EngineCore.HPChange(Math.round(maxHP() * 0.3), true, false);
+				amnt += Math.round(maxHunger() * 0.3);
+				if (game.monster is Goblin || game.monster is GoblinAssassin || game.monster is GoblinShaman || game.monster is GoblinWarrior) flags[kFLAGS.GOBLINS_KILLED]++;
+				else flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER]++;
+			}
 			var oldHunger:Number = hunger;
 			hunger += amnt;
 			if (hunger > maxHunger()) hunger = maxHunger();
 			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
 			//game.dynStats("lus", 0, "scale", false);
 			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
-			dynStats("lus", 0, "scale", false);
+			if (subtype == 3)  dynStats("cor", 10);
+			else dynStats("lus", 0, "scale", false);
 			EngineCore.statScreenRefresh();
 		}
 

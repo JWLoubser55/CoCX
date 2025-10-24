@@ -20054,6 +20054,14 @@ public function debuffsOrDoTDuration(duration:Number):Number {
     return duration;
 }
 
+public function hollowSkillsAndSoulskillsBoost():Number {
+	var hollowed:Number = 1.15;
+	if (player.hasPerk(PerkLib.ExanimationII)) hollowed += 0.1;
+	if (player.hasPerk(PerkLib.ExanimationIII)) hollowed += 0.15;
+	if (player.hunger >= Math.round(player.maxHunger() * 0.7)) hollowed += 0.2;
+	return hollowed;
+}
+
 public function aPoisonGlandsMyconidSpores():void {
 	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25)), false);
 	else monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);

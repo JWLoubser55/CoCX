@@ -185,6 +185,8 @@ public class UniqueSexScenes extends BaseContent
 				USSLichSoulDrn(),
 				USSLichZombification(),
 				USSAnubiMummyCurse(),
+				USSHollowSouldrainingHumanoids(),
+				USSHollowSouleatingHumanoids(),
 				USSTrueDemonSuccubusFeast(),
 				USSTrueDemonIncubusFeast()];
 
@@ -428,6 +430,33 @@ public class UniqueSexScenes extends BaseContent
         private function AnubiMummyCurseOrLichZombieNotWrongEnemyType():Boolean{
 			return (!monster.hasPerk(PerkLib.Enemy300Type) && !monster.hasPerk(PerkLib.EnemyConstructType) && !monster.hasPerk(PerkLib.EnemyElementalType) && !monster.hasPerk(PerkLib.EnemyFleshConstructType) && !monster.hasPerk(PerkLib.EnemyGhostType) && !monster.hasPerk(PerkLib.EnemyGooType) &&
 			!monster.hasPerk(PerkLib.EnemyLargeGroupType) && !monster.hasPerk(PerkLib.EnemyPlantType) && !monster.hasPerk(PerkLib.EnemyTrueAngel) && !monster.hasPerk(PerkLib.EnemyTrueDemon) && !monster.hasPerk(PerkLib.EnemyUndeadType) && !monster.hasPerk(PerkLib.UniqueNPC));
+		}
+		private function USSHollowSouldrainingHumanoids():Array{
+            var btnSet:Array = ["Souldrain"];
+            if (player.hasPerk(PerkLib.EmptyVessel) && SuccubusIncubusFeastNotWrongEnemyType()) {
+                btnSet.push("Souldrain", hollowSouldrain, "Siphon soulforce from your foe. It's not much but at least they are not dead. (Give up to 10% of satiety, 25% of soulforce, 10% of hp)");
+            }
+            else {
+				if (monster.hasPerk(PerkLib.EmptyVessel)) btnSet.push(false, "You need to have Empty Veasel / Spiritual Hunger perk.");
+				else if (monster.hasPerk(PerkLib.EnemyBeastOrAnimalMorphType)) btnSet.push(false, "Req. humanoid enemy (No animal-morph/beast)");
+				else btnSet.push(false, "Req. enemy to have soul. (No constructs/elementals)");
+			}
+            return btnSet;
+        }
+		private function USSHollowSouleatingHumanoids():Array{
+            var btnSet:Array = ["Souleater"];
+            if (player.hasPerk(PerkLib.EmptyVessel) && SuccubusIncubusFeastNotWrongEnemyType()) {
+                btnSet.push("Souleater", hollowSouleater, "Eat the soul of your foe, killing them in the process. (Give up to 30% of total satiety, 30% of soulforce, 30% of Hp, and +10 corruption)");
+            }
+            else {
+				if (monster.hasPerk(PerkLib.EmptyVessel)) btnSet.push(false, "You need to have Empty Veasel / Spiritual Hunger perk.");
+				else if (monster.hasPerk(PerkLib.EnemyBeastOrAnimalMorphType)) btnSet.push(false, "Req. humanoid enemy (No animal-morph/beast)");
+				else btnSet.push(false, "Req. enemy to have soul. (No constructs/elementals)");
+			}
+            return btnSet;
+        }
+		private function HollowNotWrongEnemyType():Boolean{
+			return (!monster.hasPerk(PerkLib.Soulless) && !monster.hasPerk(PerkLib.EnemyBeastOrAnimalMorphType) && !monster.hasPerk(PerkLib.EnemyConstructType) && !monster.hasPerk(PerkLib.EnemyElementalType) && !monster.hasPerk(PerkLib.EnemyFleshConstructType) && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType) && !monster.hasPerk(PerkLib.Enemy300Type));
 		}
         private function USSTrueDemonSuccubusFeast():Array{
             var btnSet:Array = ["Succubus Feast"];
@@ -1044,6 +1073,27 @@ public class UniqueSexScenes extends BaseContent
 			player.addPerkValue(PerkLib.MummyLord, 1, 1);
 			if (player.hasCock()) player.sexReward("no", "Dick");
 			else player.sexReward("no","Vaginal");
+			cleanupAfterCombat();
+		}
+
+		public function hollowSouldrain():void {
+			clearOutput();
+			outputText("With [themonster] defeated, you loom over your would-be opponent.\n\n");
+			outputText("You lean in close. Your body doesn’t need air anymore, yet your chest convulses in ragged spasms. The ache in your chest is gnawing, insatiable. Hunger claws through you like a second heartbeat and you beckon the very soul of [themonster]. The soul flickers above [themonster]’s chest. A pale ember trembling against the air, its rhythm syncing to the flaring of your soulforce.\n\n");
+			outputText("Instinct takes hold. Your mask splits along the jawline with a sickening crack. Teeth grinding against each other as they force open. You press your hand down on the spirit. Fingers digging deep into its intangible form, and the first pull comes unbidden.\n\n");
+			outputText("A stream of soulforce pours into you. Your maw clamps down greedily. Jaw muscles spasming as molten wire slides down your throat. It burns - a bitterness with a cloying sweetness that lingers. Almost unbearable in its intensity. The warmth spreads through your ruined chest, nourishing yourself.\n\n");
+			outputText("[Themonster] arches, thrashing beneath you. Body and spirit both writhing, a soundless scream locked behind lips that cannot move. [Themonster] eyes roll back as their essence torn off bit by bit. Not enough to kill, but far too much to ignore. When you finally wrench yourself away,they collapse. A puppet with slack strings. Yetlive, but drained and trembling.\n\n");
+			outputText("You rise over them, mask still aglow with soulforce. [Themonster] shifts below you, dazed, shivering in submission. You’ve left [themonster] alive, your dominance etched into [themonster] very spirit.\n\n");
+			player.hollowFeed(2);
+			cleanupAfterCombat();
+		}
+		public function hollowSouleater():void {
+			clearOutput();
+			outputText("With [themonster] defeated, you loom over your would be opponent.\n\n");
+			outputText("You lean over [themonster] - you don’t breathe anymore, but your body mimics the motion in ragged spasms. Your chest aches where the Chain of Fate has rotted away, and in its place the hunger claws at you. The soul hangs above [themonster] like a pale ember, trembling, maybe trying to escape. You can feel its pulse quicken at your approach. The way air around it thrums against your skin, its rhythm syncs with echoes in the gaping hole in your chest.\n\n");
+			outputText("Instinct guides you. Your mask splits at the jawline, the teeth within grinding against each other as they split. Your hand pins the fading spirit, and the first pull comes without thought.\n\n");
+			outputText("Your maw snaps shut with greedy aplomb. The soul doesn't go down easy, coiling down your throat like molten wire. The taste is unbearable: bitterness with a sugar sweet aftertaste, shockingly intoxicating. It fills you with warmth and bolsters your strength.\n\n");
+			player.hollowFeed(3);
 			cleanupAfterCombat();
 		}
 
