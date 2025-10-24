@@ -689,8 +689,6 @@
 		<cell rect="992,1114,173,371" name="legs_bg/sandWorm" dx="39" dy="33"/>
 		<cell rect="470,956,173,156" name="fullbody/femalejiangshi" dx="16" dy="23"/>
 		<cell rect="470,1272,173,156" name="fullbody/malejiangshi" dx="16" dy="23"/>
-		<cell rect="2036,798,173,156" name="fullbody/femaleMummy" dx="16" dy="23"/>
-		<cell rect="2036,956,173,156" name="fullbody/maleMummy" dx="16" dy="23"/>
 		<cell rect="644,956,173,156" name="fullbody/gnome" dx="17" dy="23"/>
 		<cell rect="818,956,173,156" name="fullbody/ignis" dx="16" dy="21"/>
 		<cell rect="992,956,173,156" name="fullbody/undine" dx="16" dy="21"/>
@@ -7538,17 +7536,6 @@
 				<show part="fullbody/malejiangshi"/>
 			<else/>
 				<show part="fullbody/femalejiangshi"/>
-			</if>
-		</if>
-		
-		<!-- Mummy -->
-		<if test="horns.type == Horns.BANDAGED_HEAD">
-			<!-- Hide everything else -->
-			<hide part="*"/>
-			<if test="breastTier lte 0"><!--FLAT-->
-				<show part="fullbody/maleMummy"/>
-			<else/>
-				<show part="fullbody/femaleMummy"/>
 			</if>
 		</if>
 
