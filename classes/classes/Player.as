@@ -8319,7 +8319,7 @@ use namespace CoC;
 						}
 						if (hasPerk(PerkLib.ManticoreCumAddict)) manticoreFeed();
 						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
-						if (hasPerk(PerkLib.EmptyVessel)) hollowFeed(1);
+						//if (hasPerk(PerkLib.) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(1);
 						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'vaginalFluids':
@@ -8327,14 +8327,14 @@ use namespace CoC;
 							if (statusEffectv3(StatusEffects.Overheat) != 1) addStatusValue(StatusEffects.Overheat, 3, 1);
 						}
 						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
-						if (hasPerk(PerkLib.EmptyVessel)) hollowFeed(1);
+						//if (hasPerk(PerkLib.) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(1);
 						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'saliva':
 						break;
 					case 'milk':
 						if (hasPerk(PerkLib.DisplacerMilkAddict)) displacerFeed();
-						if (hasPerk(PerkLib.EmptyVessel)) hollowFeed(1);
+						if (hasPerk(PerkLib.EmptyVessel) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(1);
 						refillHunger(10, false, true);
 						break;
 				}
