@@ -674,6 +674,24 @@ public class HornsTransformations extends MutationsHelper {
 				return player.horns.type === Horns.VERDANT_RAM;
 			}
 	);
+
+	public const HornsHollow: Transformation = new SimpleTransformation("Hollow Horns",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You writhe in pain as two bony lumps begin to push out of the side of your head. The transformation makes your soulforce flare, and as it does the spiritual flames seem to become liquid then solid. They connect to the bony stumps on your skull. <b>A zigzag pattern forms, as soon as it is over, you feel for the two large Hollow Horn!</b>";
+
+				player.horns.count = 4;
+				player.horns.type = Horns.HOLLOW;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(HornsMem.getMemory(HornsMem.HOLLOW));
+			},
+			// is present
+			function (): Boolean {
+				return player.horns.type === Horns.HOLLOW;
+			}
+	);
 	/*
   */
 

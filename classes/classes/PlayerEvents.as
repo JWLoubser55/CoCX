@@ -1758,9 +1758,9 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			}
 			//Hollowfication
 			if (player.hasStatusEffect(StatusEffects.ChainOfFate)) {
-				if (player.statusEffectv3(StatusEffects.ChainOfFate) <= 0 && !player.hasPerk(PerkLib.ExanimationI)) SceneLib.camp.campUniqueScenes.transformationIntoDemiHollow();
-				if (player.statusEffectv3(StatusEffects.ChainOfFate) > 0) {
-					player.addStatusValue(StatusEffects.ChainOfFate, 3, -1);
+				if (player.statusEffectv2(StatusEffects.ChainOfFate) <= 0 && player.statusEffectv3(StatusEffects.ChainOfFate) <= 0 && !player.hasPerk(PerkLib.ExanimationI)) SceneLib.camp.campUniqueScenes.transformationIntoDemiHollow();
+				if (player.statusEffectv2(StatusEffects.ChainOfFate) > 0) {
+					player.addStatusValue(StatusEffects.ChainOfFate, 2, -1);
 				}
 			}
 			if (player.hasPerk(PerkLib.EmptyVessel) && player.soulforce >= Math.round(player.maxSoulforce() * 0.6)) {

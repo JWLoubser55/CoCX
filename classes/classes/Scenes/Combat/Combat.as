@@ -13247,6 +13247,13 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             if (player.statusEffectv1(StatusEffects.AcidDoT) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) {
                 if (!player.hasPerk(PerkLib.Circuit)) outputText("Acid wounds left by [themonster] finally close ups.\n\n");
                 player.removeStatusEffect(StatusEffects.AcidDoT);
+            } else {
+                var acidDoTPlayer:Number = (monster.str + monster.spe + monster.tou) * 2.5;
+                acidDoTPlayer += player.maxHP() * player.statusEffectv2(StatusEffects.AcidDoT);
+				if (player.statStore.hasBuff("Crossed Holy Band")) frostburnPlayer *= 0.5;
+                outputText("You are hurt by lingering Acid after-effect. ");
+                player.takeAcidDamage(acidDoTPlayer, true);
+                outputText("\n\n");
             }
         }
         //Frostburn DoT

@@ -688,6 +688,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const HornsAutomataHeadset: Transformation 		= horns.HornsAutomataHeadset.registerTf(AS_HORNS, AE_AUTOMATA);
     public const HornsRam: Transformation 					= horns.HornsRam.registerTf(AS_HORNS, AE_BAROMETZ);
     public const HornsVerdantRam: Transformation 			= horns.HornsVerdantRam.registerTf(AS_HORNS, AE_BAROMETZ);
+    public const HornsHollow: Transformation 				= horns.HornsHollow.registerTf(AS_HORNS, AE_HOLLOW);
 
 
 //LOWER BODY ( LEGS )

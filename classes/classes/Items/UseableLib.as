@@ -116,6 +116,15 @@ use namespace CoC;
 		public const SRESIDUE:SimpleUseable = new SimpleUseable("SoulResidue", "Soul Residue", "a Soul Residue", 1,
 			"A Soul Residue.",
 			"You look at the soul residue. It looks to be incredibly fine powder and may have some uses. If you find anyone that could work with this.");
+		public const HMASKFRAG:SimpleUseable = new SimpleUseable("HollowMaskFragment", "Hollow Mask fragment", "a Hollow Mask fragment", 200,
+			"A Hollow Mask fragment.",
+			"Shard of a Hollow's mask. You have seen them eat the other, down to the mask.");/*
+		public const HMASKFRAG:SimpleUseable = new SimpleUseable("MaskFragment", " Mask fragment", "a  Mask fragment", 400,
+			"A  Mask fragment.",
+			"Shard of a 's mask. You have seen them eat the other, down to the mask.");*/
+		public const MMASKFRAG:SimpleUseable = new SimpleUseable("MortarchMaskFragment", "Mortarch Mask fragment", "a Mortarch Mask fragment", 600,
+			"A Mortarch Mask fragment.",
+			"Shard of a Mortarch's mask. You have seen them eat the other, down to the mask.");
 		public const DARKSTI:SimpleUseable = new SimpleUseable("DarkStI", "Darksteel ingot", "a Darksteel ingot", 120,
 			"A Darksteel ingot.",
 			"You look over the Darksteel ingot. Likely useful for making some equipment.");

@@ -295,7 +295,7 @@ public class Changelog extends BaseContent
 			outputText("-New Unique Sexscene: Souldrain - req. to have Empty Vessel / Spiritual Hunger perk. Can be only used against humanoid enemies that have soul. Siphon soulforce from your foe. It's not much but at least they are not dead. (Give up to 10% of satiety, 25% of soulforce, 10% of hp)\n");
 			outputText("-New Unique Sexscene: Souleater - req. to have Empty Vessel / Spiritual Hunger perk. Can be only used against humanoid enemies that have soul. Eat the soul of your foe, killing them in the process. (Give up to 30% of total satiety, 30% of soulforce, 30% of Hp, and +10 corruption)\n");
 			outputText("-In kill count section of stats page was added two more counters: other enemies, enemies killed by souleater.\n");
-			outputText("-\n");
+			outputText("-New usable item: Mortarch Mask fragment. Costing 600 gems and can be dropped by defeated hollow. Could be eater by Hollow or higher tiers of their evolution forms to gain Soul points used to trigger evolution.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

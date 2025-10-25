@@ -271,6 +271,14 @@ use namespace CoC;
 					chance: desertChance,
 					when  : SceneLib.helScene.helSexualAmbushCondition
 				}, {
+					name  : "Pale Hollow",
+					kind  : "npc",
+					unique: true,
+					when  : function ():Boolean {
+						return !player.hasStatusEffect(StatusEffects.ChainOfFate) && !player.hasStatusEffect(StatusEffects.DarkSign)
+					},
+					call  : SceneLib.hollowScene.encounterWhite
+				}, {
 					name  : "desertloot",
 					label : "Cake",
 					kind  : 'item',

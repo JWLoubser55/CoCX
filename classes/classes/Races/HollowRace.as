@@ -41,18 +41,24 @@ public class HollowRace extends Race {
 	public override function setup():void {
 		addScores()
 				.hornType(ANY(Horns.RAM, Horns.DRACONIC_X2, Horns.DRACONIC_X4_12_INCH_LONG, Horns.DEMON, Horns.ANTLERS), +1)
+				.hornType(Horns.HOLLOW, +2)
 				.eyeType(Eyes.HOLLOW, +2)
 				.faceType(Face.HOLLOW_MASK, +2)
-				//.armType(Arms., +2)
 				.armType(ANY(Arms.HUMAN, Arms.DEVIL, Arms.SATYR, Arms.ONI, Arms.RAIJU, Arms.WENDIGO), +1)
-				//.legType(LowerBody., +3)
+				//.armType(Arms., +2)
 				.legType(ANY(LowerBody.HUMAN, LowerBody.HOOFED, LowerBody.KIRIN, LowerBody.ONI, LowerBody.RAIJU, LowerBody.CLOVEN_HOOFED, LowerBody.SCYLLA), +1)
+				//.legType(LowerBody., +3)
 				.isTaur(+1)
 				.tailType(ANY(Tail.SALAMANDER, Tail.DRACONIC), +1)
+				//.tailType
 				.customRequirement("",'Chain of Fate',
 						function (body:BodyData):Boolean {
 							return body.player.hasStatusEffect(StatusEffects.ChainOfFate) && body.player.statusEffectv1(StatusEffects.ChainOfFate) > 0
 						}, +1)
+				.customRequirement("",'Dark Sign',
+						function (body:BodyData):Boolean {
+							return body.player.hasStatusEffect(StatusEffects.DarkSign)
+						}, +2)
 				.skinCoatPattern(Skin.PATTERN_WHITE_BLACK_VEINS, +1)
 				.hasPerk(PerkLib.ExanimationI, +6)
 				.hasPerk(PerkLib.ExanimationII, +8)

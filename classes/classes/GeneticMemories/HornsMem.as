@@ -284,6 +284,17 @@ package classes.GeneticMemories {
 		  }
 	  });
 
+	  public static const HOLLOW:int = _partid++;
+	  EnumValue.add(Memories, HOLLOW, "HOLLOW", {
+		  id: "Hollow Horns",
+		  name: "Hollow Horns",
+		  cost: 100,
+		  title: "Hollow Horns",
+		  transformation: function(): Transformation {
+			  return CoC.instance.transformations.HornsHollow;
+		  }
+	  });
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

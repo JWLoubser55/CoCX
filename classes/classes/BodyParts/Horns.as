@@ -411,6 +411,19 @@ public class Horns extends BodyPart {
 		gore: true
 	});
 
+	public static const HOLLOW: int = 31;
+	EnumValue.add(Types, HOLLOW, "HOLLOW", {
+		name:"hollow",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = "";
+
+			desc += "Two large sized bone-white horns grow from the side of your head, they have an odd shape, growing out in a zigzag pattern. They give you a fierce presence that shakes even a stoic soul.";
+
+			return desc;
+		},
+		gore: true
+	});
+
 	public function Horns(creature:Creature) {
 		super(creature, null);
 	}

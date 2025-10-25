@@ -339,6 +339,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const CrimsonOverflow:StatusEffectType				= mk("Crimson Overflow");
 		public static const CuntStretched:StatusEffectType                  = mk("CuntStretched");
 		public static const DarkRitual:StatusEffectType            	   		= mk("Dark Ritual");
+		public static const DarkSign:StatusEffectType             			= mk("Dark Sign");
 		public static const DaoOfAcid:StatusEffectType                      = mk("Dao of Acid");
 		public static const DaoOfBlood:StatusEffectType                     = mk("Dao of Blood");
 		public static const DaoOfDarkness:StatusEffectType                  = mk("Dao of Darkness");

@@ -133,15 +133,28 @@ public function transformationIntoDemiHollow():void {
 	player.addStatusValue(StatusEffects.ChainOfFate, 1, 168);
 	player.createPerk(PerkLib.ExanimationI, 0, 0, 0, 0);
 	player.createPerk(PerkLib.EmptyVessel, 0, 0, 0, 0);
+	CoC.instance.transformations.HornsDraconicDual.applyEffect(false);
 	CoC.instance.transformations.FaceHollowMask.applyEffect(false);
 	CoC.instance.transformations.EyesHollow.applyEffect(false);
+	CoC.instance.transformations.ArmsHuman.applyEffect(false);
+	CoC.instance.transformations.LowerBodyHuman.applyEffect(false);
+	CoC.instance.transformations.TailDraconic.applyEffect(false);
 	doNext(camp.returnToCamp);
 }
 public function transformationIntoHollow():void {
+	clearOutput();
+	outputText("Your soul flares – its energy enveloping you in an uncontrollable furnace of energy. [Skin] crackles, your entire body feels as though it is crumbling away. As consciousness fades, the image of a vase appears in your mind – shuttered and scuffed, being rebuilt by a skilled unseen hand. The vision fades and you blink yourself into reality, a phantom pulse quickens in your chest. The currency that buys your now cursed existence time on this land has come to the fore.\n\n");
+	outputText("A sudden darkness takes your vision.\n\n");
+	outputText("Your limbs grow powerful, your claws sharpened to cut flesh and spirit alike. Yet the pantomime persists - you still mimic breath, the heaving, hoping to take gulps of air. It is not comfortable. It is compulsion. It anchors you to your body.\n\n");
+	outputText("Hunger seizes you. The living echo that burns whit hot in your mind, and even the dead stir your appetite. You would lunge at it without a second thought. Stranger yet, the whispers press harder \"<i>Feed. Feed. Feed.</i>\"\n\n");
+	player.removeStatusEffect(StatusEffects.ChainOfFate);
+	player.createStatusEffect(StatusEffects.DarkSign, 0, 0, 0, 0);
+	player.createPerk(PerkLib.ExanimationII, 0, 0, 0, 0);
 	//arms
 	//legs
 	//tail
 	//horns
+	doNext(camp.returnToCamp);
 }
 
 public function hellhoundCapture():void {

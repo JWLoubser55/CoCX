@@ -192,6 +192,8 @@ public class SceneLib {
 
     public static var holliScene:HolliScene = new HolliScene();
 
+    public static var hollowScene:HollowScene = new HollowScene();
+
     public static var iridesianFollower:IridesianFollower = new IridesianFollower();
 
     public static var isabellaScene:IsabellaScene = new IsabellaScene();
