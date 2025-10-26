@@ -537,7 +537,9 @@ public class PlayerAppearance extends BaseContent {
 			specialCasesDesc += "<b>Your belly is a bit pudgy and your vagina is inflamed from constant stimulation, and the reason becomes apparent when some of the worms that infest your womb momentarily peek outside. There is no way you are getting pregnant until you get rid of these worms!</b>[pg]";
 		}
 		if (player.hasStatusEffect(StatusEffects.ChainOfFate) && player.statusEffectv1(StatusEffects.ChainOfFate) > 0) {
-			specialCasesDesc += "<b>An ethereal chain connected to your chest. Each day the feeling in your body seems to dull, and each link disappears at the end of the day. There are seven in total. You get the feeling that you need to fix this thing fast. A gifted healer might do the trick.</b>";
+			var chainLinks:int = (player.statusEffectv1(StatusEffects.ChainOfFate) + 11);
+			chainLinks = Math.round(chainLinks / 24);
+			specialCasesDesc += "<b>An ethereal chain connected to your chest. Each day the feeling in your body seems to dull, and each link disappears at the end of the day. There are "+NUMBER_WORDS_NORMAL[chainLinks]+" in total. You get the feeling that you need to fix this thing fast. A gifted healer might do the trick.</b>";
 		}
 
 		return specialCasesDesc;

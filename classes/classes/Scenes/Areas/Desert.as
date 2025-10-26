@@ -275,7 +275,7 @@ use namespace CoC;
 					kind  : "npc",
 					unique: true,
 					when  : function ():Boolean {
-						return !player.hasStatusEffect(StatusEffects.ChainOfFate) && !player.hasStatusEffect(StatusEffects.DarkSign)
+						return !player.hasStatusEffect(StatusEffects.ChainOfFate) && !player.hasStatusEffect(StatusEffects.DarkSign) && !player.blockingBodyTransformations()
 					},
 					call  : SceneLib.hollowScene.encounterWhite
 				}, {

@@ -195,6 +195,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const ArmsYggdrasil: Transformation 			= arms.ArmsYggdrasil.registerTf(AS_ARMS, AE_YGGDRASIL);
     public const ArmsWerespider: Transformation 		= arms.ArmsWerespider.registerTf(AS_ARMS, AE_WERESPIDER);
     public const ArmsMarilith: Transformation 			= arms.ArmsMarilith.registerTf(AS_ARMS, AE_MARILITH);
+    public const ArmsHollow: Transformation 			= arms.ArmsHollow.registerTf(AS_ARMS, AE_HOLLOW)
 
 
 //ASS

@@ -835,6 +835,17 @@ import classes.CoC;
             }
         });
 
+		public static const HOLLOW:int = _partid++;
+		EnumValue.add(Memories, HOLLOW, "HOLLOW", {
+			id: "Hollow Arms",
+			name: "Hollow Arms",
+			cost: 100,
+			title: "Hollow",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.ArmsHollow;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

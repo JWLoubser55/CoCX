@@ -45,7 +45,7 @@ public class HollowRace extends Race {
 				.eyeType(Eyes.HOLLOW, +2)
 				.faceType(Face.HOLLOW_MASK, +2)
 				.armType(ANY(Arms.HUMAN, Arms.DEVIL, Arms.SATYR, Arms.ONI, Arms.RAIJU, Arms.WENDIGO), +1)
-				//.armType(Arms., +2)
+				.armType(Arms.HOLLOW, +2)
 				.legType(ANY(LowerBody.HUMAN, LowerBody.HOOFED, LowerBody.KIRIN, LowerBody.ONI, LowerBody.RAIJU, LowerBody.CLOVEN_HOOFED, LowerBody.SCYLLA), +1)
 				//.legType(LowerBody., +3)
 				.isTaur(+1)

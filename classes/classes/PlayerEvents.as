@@ -1728,7 +1728,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			if (CoC.instance.model.time.hours == 6) {
 				//Getting chrismas tree
 				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 2) {
-					outputText("Around the edge of your camp, you spot some plant-life beginning to sprout.  The barren, wasteland crust is fractured and broken, giving up a leafy green shoot.  It only reaches up to your knee, but the plant looks healthy and young.  Perhaps it will grow larger?  There is a central stem that supports most of the weight, but a dozen branches fork off, supporting a bevy of shiny green leaves. Looks like the seed was able to take root in the barren land after all.\n");
+					outputText("\nAround the edge of your camp, you spot some plant-life beginning to sprout.  The barren, wasteland crust is fractured and broken, giving up a leafy green shoot.  It only reaches up to your knee, but the plant looks healthy and young.  Perhaps it will grow larger?  There is a central stem that supports most of the weight, but a dozen branches fork off, supporting a bevy of shiny green leaves. Looks like the seed was able to take root in the barren land after all.\n");
 					flags[kFLAGS.CHRISTMAS_TREE_GROWTH_COUNTER] = 0;
 					flags[kFLAGS.CHRISTMAS_TREE_LEVEL] = 3;
 					needNext = true;
@@ -1761,16 +1761,24 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.statusEffectv2(StatusEffects.ChainOfFate) <= 0 && player.statusEffectv3(StatusEffects.ChainOfFate) <= 0 && !player.hasPerk(PerkLib.ExanimationI)) SceneLib.camp.campUniqueScenes.transformationIntoDemiHollow();
 				if (player.statusEffectv2(StatusEffects.ChainOfFate) > 0) {
 					player.addStatusValue(StatusEffects.ChainOfFate, 2, -1);
-				}
+				}/*
+				if (player.statusEffectv1(StatusEffects.ChainOfFate) <= 0 && player.statusEffectv2(StatusEffects.ChainOfFate) <= 0) SceneLib.camp.campUniqueScenes
+				if (player.statusEffectv1(StatusEffects.ChainOfFate) > 0) {
+					player.addStatusValue(StatusEffects.ChainOfFate, 1, -1);
+				}*/
 			}
-			if (player.hasPerk(PerkLib.EmptyVessel) && player.soulforce >= Math.round(player.maxSoulforce() * 0.6)) {
-				outputText("Your soulforce seems to stream around your body, immersing you in a transparent aura of spiritual energy. Its pressure is dense enough that it acts like a thin barrier.");
+			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv1(PerkLib.EmptyVessel) == 0 && player.soulforce >= Math.round(player.maxSoulforce() * 0.6)) {
+				outputText("\nYour soulforce seems to stream around your body, immersing you in a transparent aura of spiritual energy. Its pressure is dense enough that it acts like a thin barrier.");
+				player.addPerkValue(PerkLib.EmptyVessel, 1, 1);
 				needNext = true;
 			}
-			if (player.hasPerk(PerkLib.EmptyVessel) && player.hunger >= Math.round(player.maxHunger() * 0.7)) {
-				outputText("You feel strong, you feel the soulforce pulsing within your body. It's strengthening your muscles and sharpening your senses.");
+			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv1(PerkLib.EmptyVessel) == 1 && player.soulforce < Math.round(player.maxSoulforce() * 0.6)) player.addPerkValue(PerkLib.EmptyVessel, 1, -1);
+			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv2(PerkLib.EmptyVessel) == 0 && player.hunger >= Math.round(player.maxHunger() * 0.7)) {
+				outputText("\nYou feel strong, you feel the soulforce pulsing within your body. It's strengthening your muscles and sharpening your senses.");
+				player.addPerkValue(PerkLib.EmptyVessel, 2, 1);
 				needNext = true;
 			}
+			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv2(PerkLib.EmptyVessel) == 0 && player.hunger < Math.round(player.maxHunger() * 0.7)) player.addPerkValue(PerkLib.EmptyVessel, 2, -1);
 			return needNext;
 		}
 		private function hourlyCheckRacialPerks():Boolean {

@@ -618,6 +618,13 @@ public class Arms extends SaveableBodyPart {
 		scales: true
 	});
 
+	public static const HOLLOW:int = 80;
+	EnumValue.add(Types, HOLLOW, "HOLLOW", {
+		name:"hollow",
+		appearanceDesc: "Your arms are covered in bone-white ridges that cascade from arm to wrist with talons that are as strong and they are dexterous.",
+		claw: true
+	});
+
 	public static function canFly(id: int): Boolean {
 		return Types[id].canFly || false;
 	}

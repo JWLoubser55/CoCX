@@ -4421,9 +4421,11 @@ public class PerkLib
 		public static const ExanimationI:PerkType = mk("Exanimation I", "Exanimation I",
 				"The first step into becoming a Hollow. Gives racial status Demi-Hollow. Enables the use of Hollow special 'Sagitta'. (Hunger gauge deplete 30% faster, +15% Soulforce skills, +15% Hollow skills)");
 		public static const ExanimationII:PerkType = mk("Exanimation II", "Exanimation II",
-				"You've lost the tether between your body and soul now are a Hollow. Gives racial status Hollow. Enables the use of Hollow special 'Cero' and Hollow passive 'Touch of the Damned'. (Hunger gauge deplete 30%(60%) faster, +25% Soulforce skills, +25% Hollow skills)");
+				"You've lost the tether between your body and soul now are a Hollow. Gives racial status Hollow. Enables the use of Hollow passive 'Touch of the Damned'. (Hunger gauge deplete 30%(60%) faster, +25% Soulforce skills, +25% Hollow skills)");
 		public static const ExanimationIII:PerkType = mk("Exanimation III", "Exanimation III",
-				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +25% Soulforce skills, +25% Hollow skills)");
+				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Cero', 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +25% Soulforce skills, +25% Hollow skills)");
+		public static const ExanimationIV:PerkType = mk("Exanimation IV", "Exanimation IV",
+				"");
 		public static const EzekielBlessing:PerkType = mk("Ezekiel Blessing", "Ezekiel Blessing",
 				"You've received the blessing of Ezekiel, enhancing your body and mind. +10 to all stats.").withBuffs({'sens':10}, false);
 		public static const Feeder:PerkType = mk("Feeder", "Feeder",
@@ -9218,4 +9220,4 @@ public class PerkLib
 	}
 }
 
-}
+}

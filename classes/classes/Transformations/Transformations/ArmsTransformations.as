@@ -1482,6 +1482,25 @@ public class ArmsTransformations extends MutationsHelper {
 				return player.arms.type === Arms.MARILITH;
 			}
 	);
+
+	public const ArmsHollow: Transformation = new SimpleTransformation("Hollow Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
+
+				desc += "Bone-white ridges burst through your [skin]. They layer into plates that crawl down to your hands. Your [fingers] elongate, the nails stretching into talons that glint with metallic sheen. The muscles twist beneath, corded and alien. They are no longer built for manoeuvring tools but for rending, piercing, clutching prey tight enough to crush bone. When you flex, the claws scrape against one another, sparking faint trails of soulforce in the air. <b>You now have hollow arms!</b>!";
+				player.arms.type = Arms.HOLLOW;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.HOLLOW));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.HOLLOW;
+			}
+	);
 	/*
   */
 }

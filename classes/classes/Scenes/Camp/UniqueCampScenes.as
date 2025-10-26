@@ -150,10 +150,10 @@ public function transformationIntoHollow():void {
 	player.removeStatusEffect(StatusEffects.ChainOfFate);
 	player.createStatusEffect(StatusEffects.DarkSign, 0, 0, 0, 0);
 	player.createPerk(PerkLib.ExanimationII, 0, 0, 0, 0);
-	//arms
-	//legs
-	//tail
-	//horns
+	CoC.instance.transformations.ArmsHollow.applyEffect(false);
+	//legs	LowerBodyHuman.applyEffect(false);
+	//tail	TailDraconic.applyEffect(false);
+	CoC.instance.transformations.HornsHollow.applyEffect(false);
 	doNext(camp.returnToCamp);
 }
 
