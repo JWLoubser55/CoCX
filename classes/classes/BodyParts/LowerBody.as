@@ -904,7 +904,7 @@ public class LowerBody extends SaveableBodyPart {
 	EnumValue.add(Types, LICH, "LICH", {
 		name: "lich",
 		appearanceDesc: "While your legs are human in appearance your body is quite rigid due to pseudo rigor mortis thus you mostly move by magical means."
-  });
+	});
   
 	public static const HUMANCHAINED:int = 89;
 	EnumValue.add(Types, HUMANCHAINED, "HUMAN_CHAINED", {
@@ -949,6 +949,12 @@ public class LowerBody extends SaveableBodyPart {
 		},
 		canTaur: true,
 		fur: true
+	});
+
+	public static const HOLLOW:int = 94;
+	EnumValue.add(Types, HOLLOW, "HOLLOW", {
+		name: "hollow",
+		appearanceDesc: "Two legs grow down from your [hips], muscles corded like braids pulse with soulforce under your thighs. From the calves down your feet are a strange combination of hoof and talon."
 	});
 
 	override public function set type(value:int):void {

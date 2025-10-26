@@ -1758,14 +1758,14 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			}
 			//Hollowfication
 			if (player.hasStatusEffect(StatusEffects.ChainOfFate)) {
-				if (player.statusEffectv2(StatusEffects.ChainOfFate) <= 0 && player.statusEffectv3(StatusEffects.ChainOfFate) <= 0 && !player.hasPerk(PerkLib.ExanimationI)) SceneLib.camp.campUniqueScenes.transformationIntoDemiHollow();
 				if (player.statusEffectv2(StatusEffects.ChainOfFate) > 0) {
 					player.addStatusValue(StatusEffects.ChainOfFate, 2, -1);
-				}/*
-				if (player.statusEffectv1(StatusEffects.ChainOfFate) <= 0 && player.statusEffectv2(StatusEffects.ChainOfFate) <= 0) SceneLib.camp.campUniqueScenes
+					if (player.statusEffectv2(StatusEffects.ChainOfFate) <= 0 && player.statusEffectv3(StatusEffects.ChainOfFate) <= 0 && !player.hasPerk(PerkLib.ExanimationI)) SceneLib.camp.campUniqueScenes.transformationIntoDemiHollow();
+				}
 				if (player.statusEffectv1(StatusEffects.ChainOfFate) > 0) {
 					player.addStatusValue(StatusEffects.ChainOfFate, 1, -1);
-				}*/
+					if (player.statusEffectv1(StatusEffects.ChainOfFate) <= 0 && player.statusEffectv2(StatusEffects.ChainOfFate) <= 0) SceneLib.camp.campUniqueScenes.transformationIntoHollow();
+				}
 			}
 			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv1(PerkLib.EmptyVessel) == 0 && player.soulforce >= Math.round(player.maxSoulforce() * 0.6)) {
 				outputText("\nYour soulforce seems to stream around your body, immersing you in a transparent aura of spiritual energy. Its pressure is dense enough that it acts like a thin barrier.");
@@ -3397,4 +3397,3 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		//End of Interface Implementation
 	}
 }
-

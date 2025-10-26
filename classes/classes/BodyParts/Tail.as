@@ -421,7 +421,6 @@ public class Tail extends SaveableBodyPart {
 		name:"ushi-oni",
 		appearanceDescFunc: function(player: *): String {
 			var desc: String = "You have an ushi-oni tail whose furred member is " + (player.tallness > 72 ? "five" : "four") + " feet long and prehensile. Its tip can shoot very thick and strong web strings which double as an aphrodisiac when in contact with the victim.";
-
 			return desc;
 		}
 	});
@@ -531,7 +530,6 @@ public class Tail extends SaveableBodyPart {
 		appearanceDesc: "Your long, white silky troll tail extends out from just above your [butt]. The fur is luxurious, especially in the tuft of hair at the tip of your tail.",
 		isLong: true
 	});
-
 	public static const DEMONICCHAINED: int = 64;
 	EnumValue.add(Types, DEMONICCHAINED, "DEMONICCHAINED", {
 		name:"demonic chained",
@@ -548,6 +546,13 @@ public class Tail extends SaveableBodyPart {
 	EnumValue.add(Types, BAROMETZ, "BAROMETZ", {
 		name:"barometz",
 		appearanceDesc: "The long trail of vine and leafs that compose your verdant tail hangs from your [butt].",
+		isLong: true
+	});
+	public static const HOLLOW: int = 67;
+	EnumValue.add(Types, HOLLOW, "HOLLOW", {
+		name:"hollow",
+		appearanceDesc: "A long prehensile muscular tail swings behind your [ass]. It's covered in smooth bone-white plating with a bladed tip on its end.",
+		tailSlam: true,
 		isLong: true
 	});
 

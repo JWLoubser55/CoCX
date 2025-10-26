@@ -895,6 +895,17 @@ import classes.CoC;
 			}
 		});
 
+		public static const HOLLOW:int = _partid++;
+		EnumValue.add(Memories, HOLLOW, "HOLLOW", {
+			id: "Hollow Tail",
+			name: "Hollow Tail",
+			cost: function():Number { return getTailCost(player.tailCount, 1);},
+			title: "Hollow",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TailHollow;
+			}
+		});
+
 		public static function getTailCost(startTails:int, endTails:int):int {
 			return Math.abs(startTails - endTails)*100 || 100;
 		}

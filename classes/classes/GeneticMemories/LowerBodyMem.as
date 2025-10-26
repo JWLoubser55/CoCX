@@ -598,6 +598,13 @@ package classes.GeneticMemories {
           title: "Barometz",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyBarometzToggle(true)}});
 
+      public static const HOLLOW: int = _partid++;
+      EnumValue.add(Memories, HOLLOW, "HOLLOW", {
+          id: "Hollow Lower Body",name: "Hollow Legs",
+          cost: 100,
+          title: "Hollow Legs",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyHollow}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

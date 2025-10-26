@@ -323,14 +323,14 @@ public class UniqueSexScenes extends BaseContent
         }
         private function USSBrainMlt():Array{
             var btnSet:Array = ["Brain Melt"];
-            if (Mindbreaker.MindBreakerQuest == Mindbreaker.QUEST_STAGE_ISMB) btnSet.push(brainMelt, "");
-            else btnSet.push(false, "Req. to be a mindbreaker.");
+            if (Mindbreaker.MindBreakerQuest == Mindbreaker.QUEST_STAGE_ISMB && !monster.hasPerk(PerkLib.UniqueNPC)) btnSet.push(brainMelt, "");
+			else btnSet.push(false, "Req. to be a mindbreaker and enemy must be non-unique npc.");
             return btnSet;
         }
 		private function USSConvert():Array{
 			var btnSet:Array = ["Convert"];
-			if (player.isAutomata()) btnSet.push(convert, "");
-			else btnSet.push(false, "Req. to be a automata.");
+			if (player.isAutomata() && !monster.hasPerk(PerkLib.UniqueNPC)) btnSet.push(convert, "");
+			else btnSet.push(false, "Req. to be a automata and enemy must be non-unique npc.");
 			return btnSet;
 		}
         private function USSAlrauneSS():Array{
@@ -456,7 +456,8 @@ public class UniqueSexScenes extends BaseContent
             return btnSet;
         }
 		private function HollowNotWrongEnemyType():Boolean{
-			return (!monster.hasPerk(PerkLib.Soulless) && !monster.hasPerk(PerkLib.EnemyBeastOrAnimalMorphType) && !monster.hasPerk(PerkLib.EnemyConstructType) && !monster.hasPerk(PerkLib.EnemyElementalType) && !monster.hasPerk(PerkLib.EnemyFleshConstructType) && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType) && !monster.hasPerk(PerkLib.Enemy300Type));
+			return (!monster.hasPerk(PerkLib.UniqueNPC) && !monster.hasPerk(PerkLib.EnemyBeastOrAnimalMorphType) && !monster.hasPerk(PerkLib.EnemyConstructType) && !monster.hasPerk(PerkLib.EnemyElementalType) && !monster.hasPerk(PerkLib.EnemyFleshConstructType)
+				 && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType) && !monster.hasPerk(PerkLib.Enemy300Type) && !monster.hasPerk(PerkLib.Soulless) && !monster.hasPerk(PerkLib.EnemyTrueDemon));
 		}
         private function USSTrueDemonSuccubusFeast():Array{
             var btnSet:Array = ["Succubus Feast"];
@@ -1086,6 +1087,9 @@ public class UniqueSexScenes extends BaseContent
 			outputText("You rise over them, mask still aglow with soulforce. [Themonster] shifts below you, dazed, shivering in submission. You’ve left [themonster] alive, your dominance etched into [themonster] very spirit.\n\n");
 			player.hollowFeed(2);
 			cleanupAfterCombat();
+			if (player.hasStatusEffect(StatusEffects.ChainOfFate) && player.statusEffectv1(StatusEffects.ChainOfFate) > 0 && player.statusEffectv2(StatusEffects.ChainOfFate) <= 0) {
+				doNext(SceneLib.camp.campUniqueScenes.transformationIntoHollow, true);
+			}
 		}
 		public function hollowSouleater():void {
 			clearOutput();
@@ -1095,6 +1099,9 @@ public class UniqueSexScenes extends BaseContent
 			outputText("Your maw snaps shut with greedy aplomb. The soul doesn't go down easy, coiling down your throat like molten wire. The taste is unbearable: bitterness with a sugar sweet aftertaste, shockingly intoxicating. It fills you with warmth and bolsters your strength.\n\n");
 			player.hollowFeed(3);
 			cleanupAfterCombat();
+			if (player.hasStatusEffect(StatusEffects.ChainOfFate) && player.statusEffectv1(StatusEffects.ChainOfFate) > 0 && player.statusEffectv2(StatusEffects.ChainOfFate) <= 0) {
+				doNext(SceneLib.camp.campUniqueScenes.transformationIntoHollow, true);
+			}
 		}
 
 		public function trueDemonSuccubusFeast():void {

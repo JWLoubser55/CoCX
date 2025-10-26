@@ -831,6 +831,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const LowerBodyShroomShirt:Transformation           	= lowerBody.LowerBodyShroomShirt.registerTf(AS_LEGS, AE_MYCONID);
     public const LowerBodyMechanicalDoll:Transformation         = lowerBody.LowerBodyMechanicalDoll.registerTf(AS_LEGS, AE_AUTOMATA);
     public const LowerBodyWerespider: Transformation 			= lowerBody.LowerBodyWerespider.registerTf(AS_LEGS, AE_WERESPIDER);
+    public const LowerBodyHollow: Transformation 				= lowerBody.LowerBodyHollow.registerTf(AS_LEGS, AE_HOLLOW);
 
 
 //OTHER ( SPECIAL )
@@ -1052,6 +1053,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const TailGlacialTroll: Transformation               = tail.TailGlacialTroll.registerTf(AS_TAIL, AE_GLACIAL_TROLL);
     public const TailCable: Transformation               		= tail.TailCable.registerTf(AS_TAIL, AE_AUTOMATA);
     public const TailBarometz: Transformation               	= tail.TailBarometz.registerTf(AS_TAIL, AE_BAROMETZ);
+	public const TailHollow: Transformation               		= tail.TailHollow.registerTf(AS_TAIL, AE_HOLLOW);
 
 	/**
 	 * @param tailCount target tail count

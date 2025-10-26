@@ -1761,6 +1761,26 @@ public class TailTransformations extends MutationsHelper {
 				return player.tailType === Tail.BAROMETZ;
 			}
 	);
+
+	public const TailHollow: Transformation = new SimpleTransformation("Hollow Tail",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.TailNone, doOutput);
+
+				desc += "It erupts from your spine in a whip of agony. It unfurls into a long, serpentine appendage plated in smooth, bone-white segments. The tip flickers, flexing between a jagged blade and a spaded lash, always restless. It coils around your legs like a serpent, then whips outward with a sound like tearing cloth. The tail moves with its own hunger, an extension of will sharpened into instinct. Always twitching as though eager to strike. <b>You now have a hollow tail!</b>";
+				player.tailType = Tail.HOLLOW;
+				player.tailCount = 1;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.HOLLOW));
+			},
+			// is present
+			function (): Boolean {
+				return player.tailType === Tail.HOLLOW;
+			}
+	);
 	/*
   */
 }

@@ -4426,6 +4426,8 @@ public class PerkLib
 				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Cero', 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +25% Soulforce skills, +25% Hollow skills)");
 		public static const ExanimationIV:PerkType = mk("Exanimation IV", "Exanimation IV",
 				"");
+		public static const TouchOfTheDamned:PerkType = mk("Touch of the Damned", "Touch of the Damned",
+				"");
 		public static const EzekielBlessing:PerkType = mk("Ezekiel Blessing", "Ezekiel Blessing",
 				"You've received the blessing of Ezekiel, enhancing your body and mind. +10 to all stats.").withBuffs({'sens':10}, false);
 		public static const Feeder:PerkType = mk("Feeder", "Feeder",
@@ -9220,4 +9222,4 @@ public class PerkLib
 	}
 }
 
-}
+}

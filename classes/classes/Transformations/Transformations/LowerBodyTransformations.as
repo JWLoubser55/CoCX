@@ -2505,6 +2505,27 @@ public class LowerBodyTransformations extends MutationsHelper {
 			}
 		)
 	}
+
+	public const LowerBodyHollow: Transformation = new SimpleTransformation("Hollow lower body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (doOutput) {
+					var desc: String = "";
+
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyHuman, doOutput);
+					desc += "Your legs buckle and lengthen. Joints contorting until they settle into a stance with predatory grace. The thighs thicken with sinew, veins glowing under pale flesh. The calves narrow into a perfect coil of speed. Your feet split, reshaping into something between hoof and talon, made for explosive leaps and crushing impacts. A predator ready to spring at any second. <b>You now have hollow legs!</b>";
+
+					if (doOutput) outputText(desc);
+					player.legCount = 2;
+				}
+				player.lowerBody = LowerBody.HOLLOW;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.HOLLOW));
+			},
+			// is present
+			function (): Boolean {
+				return player.lowerBody === LowerBody.HOLLOW;
+			}
+	);
 	
 	/*
   */

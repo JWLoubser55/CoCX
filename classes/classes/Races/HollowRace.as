@@ -47,10 +47,10 @@ public class HollowRace extends Race {
 				.armType(ANY(Arms.HUMAN, Arms.DEVIL, Arms.SATYR, Arms.ONI, Arms.RAIJU, Arms.WENDIGO), +1)
 				.armType(Arms.HOLLOW, +2)
 				.legType(ANY(LowerBody.HUMAN, LowerBody.HOOFED, LowerBody.KIRIN, LowerBody.ONI, LowerBody.RAIJU, LowerBody.CLOVEN_HOOFED, LowerBody.SCYLLA), +1)
-				//.legType(LowerBody., +3)
+				.legType(LowerBody.HOLLOW, +3)
 				.isTaur(+1)
 				.tailType(ANY(Tail.SALAMANDER, Tail.DRACONIC), +1)
-				//.tailType
+				.tailType(Tail.HOLLOW, +2)
 				.customRequirement("",'Chain of Fate',
 						function (body:BodyData):Boolean {
 							return body.player.hasStatusEffect(StatusEffects.ChainOfFate) && body.player.statusEffectv1(StatusEffects.ChainOfFate) > 0
@@ -59,7 +59,7 @@ public class HollowRace extends Race {
 						function (body:BodyData):Boolean {
 							return body.player.hasStatusEffect(StatusEffects.DarkSign)
 						}, +2)
-				.skinCoatPattern(Skin.PATTERN_WHITE_BLACK_VEINS, +1)
+				.skinBasePattern(Skin.PATTERN_WHITE_BLACK_VEINS, +1)
 				.hasPerk(PerkLib.ExanimationI, +6)
 				.hasPerk(PerkLib.ExanimationII, +8)
 				//.hasPerk(PerkLib.ExanimationII, +10)
@@ -86,6 +86,17 @@ public class HollowRace extends Race {
 					"int.mult": +0.80,
 					"wis.mult": +1.40,
 					"sens": +80
+				})
+				.end();
+		
+		buildTier(30, "Vacant")
+				.requirePerk(PerkLib.ExanimationIII)
+				.buffs({
+					"str.mult": +3.00,
+					"tou.mult": +5.40,
+					"int.mult": +3.00,
+					"wis.mult": +5.40,
+					"sens": +330
 				})
 				.end();
 	}

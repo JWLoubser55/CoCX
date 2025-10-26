@@ -541,6 +541,9 @@ public class PlayerAppearance extends BaseContent {
 			chainLinks = Math.round(chainLinks / 24);
 			specialCasesDesc += "<b>An ethereal chain connected to your chest. Each day the feeling in your body seems to dull, and each link disappears at the end of the day. There are "+NUMBER_WORDS_NORMAL[chainLinks]+" in total. You get the feeling that you need to fix this thing fast. A gifted healer might do the trick.</b>";
 		}
+		if (player.hasStatusEffect(StatusEffects.DarkSign)) {
+			specialCasesDesc += "<b>An empty gaping hole in the middle of your chest. It is an oddity, as it allows anyone to look through you, yet spying the corners there is nothing but an abyss.</b>";
+		}
 
 		return specialCasesDesc;
 	}
@@ -1658,4 +1661,4 @@ public class PlayerAppearance extends BaseContent {
 		return cockSockDesc;
 	}
 }
-}
+}

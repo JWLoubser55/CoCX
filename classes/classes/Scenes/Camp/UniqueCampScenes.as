@@ -139,9 +139,10 @@ public function transformationIntoDemiHollow():void {
 	CoC.instance.transformations.ArmsHuman.applyEffect(false);
 	CoC.instance.transformations.LowerBodyHuman.applyEffect(false);
 	CoC.instance.transformations.TailDraconic.applyEffect(false);
+	CoC.instance.transformations.SkinPatternWhiteBlackVeins.applyEffect(false);
 	doNext(camp.returnToCamp);
 }
-public function transformationIntoHollow():void {
+public function transformationIntoHollow(postFeeding:Boolean = false):void {
 	clearOutput();
 	outputText("Your soul flares – its energy enveloping you in an uncontrollable furnace of energy. [Skin] crackles, your entire body feels as though it is crumbling away. As consciousness fades, the image of a vase appears in your mind – shuttered and scuffed, being rebuilt by a skilled unseen hand. The vision fades and you blink yourself into reality, a phantom pulse quickens in your chest. The currency that buys your now cursed existence time on this land has come to the fore.\n\n");
 	outputText("A sudden darkness takes your vision.\n\n");
@@ -150,11 +151,13 @@ public function transformationIntoHollow():void {
 	player.removeStatusEffect(StatusEffects.ChainOfFate);
 	player.createStatusEffect(StatusEffects.DarkSign, 0, 0, 0, 0);
 	player.createPerk(PerkLib.ExanimationII, 0, 0, 0, 0);
+	player.createPerk(PerkLib.TouchOfTheDamned, 0, 0, 0, 0);
 	CoC.instance.transformations.ArmsHollow.applyEffect(false);
-	//legs	LowerBodyHuman.applyEffect(false);
-	//tail	TailDraconic.applyEffect(false);
+	CoC.instance.transformations.LowerBodyHollow.applyEffect(false);
+	CoC.instance.transformations.TailHollow.applyEffect(false);
 	CoC.instance.transformations.HornsHollow.applyEffect(false);
-	doNext(camp.returnToCamp);
+	if (postFeeding) explorer.stopExploring();
+	doNext(camp.returnToCampUseOneHour);
 }
 
 public function hellhoundCapture():void {
