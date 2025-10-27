@@ -8466,7 +8466,7 @@ public final class Mutations extends MutationsHelper {
 			}
 		}
         //Boost cum production
-        if ((player.hasBalls() || player.hasCockCockOnly()) && player.cumQ() < 3000 && rand(3) == 0 && changeLimit > 1) {
+        if ((player.hasBalls() || player.hasCockCockOnly()) && player.cumQ(true) < 3000 && rand(3) == 0 && changeLimit > 1) {
             changes++;
             player.cumMultiplier += 3 + rand(7);
             if (player.cumQ() >= 250) dynStats("lus", 3, "scale", false);
