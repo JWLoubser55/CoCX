@@ -2919,7 +2919,7 @@ public class Creature extends Utils
 		}
 
 		//Calculate cum return
-		public function cumQ():Number
+		public function cumQ(ballskip:Boolean = false):Number
 		{
 			if (!hasCock())
 				return 0;
@@ -2937,11 +2937,9 @@ public class Creature extends Utils
 				percent = lustCoefficient + (hoursSinceCum + 10);
 				if (percent > 100)
 					percent = 100;
-				if (quantity > cumCapacity())
-					quantity = cumCapacity();
-				return (percent / 100) * cumCapacity();
+				return (percent / 100) * cumCapacity(ballskip);
 			}
-			if (balls == 0)
+			if (ballskip || balls == 0)
 				quantity = int(1.25 * 2 * cumMultiplier * 2 * lustCoefficient * (hoursSinceCum + 10) / 24) / 10;
 			else
 				quantity = int(ballSize * balls * cumMultiplier * 2 * lustCoefficient * (hoursSinceCum + 10) / 24) / 10;
@@ -3010,14 +3008,14 @@ public class Creature extends Utils
 		}
 
 		//Limits how much cum you can produce. Can be altered with perks, ball size, and multiplier. Only applies to realistic mode.
-		public function cumCapacity():Number
+		public function cumCapacity(ballskip:Boolean = false):Number
 		{
 			if (!hasCock()) return 0;
 			var cumCap:Number = 0;
 			//Alter capacity by balls.
 			var balls:Number = this.balls;
 			var ballSize:Number = this.ballSize;
-			if (balls == 0) {
+			if (ballskip || balls == 0) {
 				balls = 2;
 				ballSize = 1;
 			}

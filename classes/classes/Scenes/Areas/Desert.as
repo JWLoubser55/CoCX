@@ -274,6 +274,7 @@ use namespace CoC;
 					name  : "Pale Hollow",
 					kind  : "npc",
 					unique: true,
+					day: false,
 					when  : function ():Boolean {
 						return !player.hasStatusEffect(StatusEffects.ChainOfFate) && !player.hasStatusEffect(StatusEffects.DarkSign) && !player.blockingBodyTransformations()
 					},
