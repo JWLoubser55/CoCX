@@ -4083,6 +4083,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 1) {
@@ -4103,6 +4104,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				damage *= 3;
 			}
+			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 2) {
@@ -4123,6 +4125,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				damage *= 3;
 			}
+			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 3) {
@@ -4146,6 +4149,7 @@ public class Combat extends BaseContent {
 				damage *= 3;
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 4) {
@@ -4167,6 +4171,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				damage *= 3;
 			}
+			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
 			mTWayOfTheSilentStormChance += 1;
 		}
         else {
@@ -8840,6 +8845,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp1);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);*/
 				if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+				//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp1 += 1;
 			}
 		}
 		if (player.hasPerk(PerkLib.WayOfTheSilentStorm)) {
@@ -8873,6 +8879,7 @@ public class Combat extends BaseContent {
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp2 * 0.2), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp2);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
+				//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp2 += 1;
 				outputText("\n\n");
 			}
 		}
@@ -8891,6 +8898,7 @@ public class Combat extends BaseContent {
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp3 * 0.2), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp3);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
+				//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
 				outputText("\n\n");
 			}
 		}

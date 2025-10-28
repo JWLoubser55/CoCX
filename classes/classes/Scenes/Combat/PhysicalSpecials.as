@@ -340,11 +340,17 @@ public class PhysicalSpecials extends BaseCombatContent {
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
 				if (player.tailType == Tail.ORCA && !player.hasPerk(PerkLib.ElementalBody)) {
-					bd = buttons.add("Tail Smack", tailSmackAttack).hint("Smack your powerful tail at your opponent face.</b>");
+					bd = buttons.add("Tail Smack", tailSmackAttack).hint("Smack your powerful tail at your opponent face.");
 					bd.requireFatigue(physicalSpecialsCost(40));
 					if (player.hasStatusEffect(StatusEffects.CooldownTailSmack)) {
 						bd.disable("<b>You need more time before you can perform Tail Smack again.</b>\n\n");
 					} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				if (player.tailType == Tail.HOLLOW && !player.hasPerk(PerkLib.ElementalBody)) {
+					bd = buttons.add("Tail Slash", tailSlashAttack).hint("Slashes with a sharp end of tail. High critical-hit ratio.");
+					if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(80));
+					else bd.requireFatigue(physicalSpecialsCost(40));
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
 				if ((player.isRaceCached(Races.PIG) || player.perkv1(IMutationsLib.PigBoarFatIM) >= 3 || player.isRaceCached(Races.REDPANDA)) && player.thickness >= minThicknessReq()) {
 					bd = buttons.add("Body Slam", bodySlam).hint("Body slam your opponent (small chance to stun). Damage scale with toughness and thickness.");
@@ -1103,7 +1109,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
 				//Kick
-				if (player.isTaur() || player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BAROMETZ || player.lowerBody == LowerBody.BUNNY || player.lowerBody == LowerBody.KANGAROO || player.perkv1(IMutationsLib.MightyLegsIM) >= 1) {
+				if (player.isTaur() || player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BAROMETZ || player.lowerBody == LowerBody.BUNNY || player.lowerBody == LowerBody.KANGAROO || player.lowerBody == LowerBody.HOLLOW || player.perkv1(IMutationsLib.MightyLegsIM) >= 1) {
 					bd = buttons.add("Kick", kick).hint("Attempt to kick an enemy using your powerful lower body.");
 					if (player.hasStatusEffect(StatusEffects.CooldownKick)) {
 						bd.disable("<b>You need more time before you can perform Kick again.</b>\n\n");
@@ -2349,6 +2355,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 			else monster.createStatusEffect(StatusEffects.IzmaBleed,3,0,0,0);
 		}
+		//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
 		enemyAI();
 	}
 
@@ -2568,6 +2575,69 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		combat.WrathGenerationPerHit2(5);
 		outputText("\n\n");
+		enemyAI();
+	}
+	
+	public function tailSlashAttack():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		if (player.hasPerk(PerkLib.PhantomStrike)) fatigue(physicalSpecialsCost(80), USEFATG_PHYSICAL);
+		else fatigue(physicalSpecialsCost(40), USEFATG_PHYSICAL);
+		//miss
+		if((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) {
+			outputText("You slash your tail at [themonster], but connect with only empty air.");
+		}
+		else {
+			outputText("You stride into a one-two step, then launch your tail. It lashes out, slashing with its bladed tip.");
+			var damage:Number = 0;
+			damage += player.str * 4;
+			damage += scalingBonusStrength();
+			damage += combat.meleeUnarmedDamageNoLagSingle();
+			if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 2) damage += combat.scalingBonusStrength() * 0.5 * (player.perkv1(IMutationsLib.MightyLowerHalfIM) - 1);
+			if (player.hasStatusEffect(StatusEffects.Gallop)) {
+				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
+				else damage *= 1.5;
+			}
+			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
+			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
+			damage *= (1 + (0.01 * combat.masterySwordLevel()));
+			//Determine if critical hit!
+			var crit:Boolean = false;
+			var critChance:int = 25;
+			critChance += combatPhysicalCritical();
+			if (player.weaponFlyingSwords == weaponsflyingswords.ASAUCHI) critChance -= 15;
+			if (rand(100) < critChance) {
+				crit = true;
+				damage *= 1.75;
+			}
+			damage *= monster.damagePercent() / 100;
+			if (damage < 5) damage = 5;
+			doPhysicalDamage(damage, true, true);
+			if (crit) outputText(" <b>*Critical Hit!*</b>");
+			if (player.hasPerk(PerkLib.PhantomStrike)) {
+				outputText("  Phantom strike dealing additional ");
+				doPhysicalDamage(damage, true, true);
+				outputText(" damage! ");
+				if (crit) outputText(" <b>*Critical Hit!*</b>");
+				damage *= 2;
+			}
+			if (!monster.isImmuneToBleed()) {
+				if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
+                else monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05, 0, 0);
+			}
+		}
+		outputText("\n\n");
+		var baseMasteryXP:Number = 1;
+		if (player.hasPerk(PerkLib.MeleeWeaponsMastery)) baseMasteryXP += 2;
+        var critCounter:int = 1;
+		if (crit && player.hasPerk(PerkLib.MeleeWeaponsMasteryEx)) critCounter *= 2;
+		var meleeMasteryEXPgains:Number = baseMasteryXP * critCounter;
+		combat.unarmedCombatXP(meleeMasteryEXPgains);
+		combat.swordXP(meleeMasteryEXPgains, false);
+		combat.weaponSmallMastery(meleeMasteryEXPgains);
+		combat.WrathGenerationPerHit2(5);
+		combat.heroBaneProc(damage);
+		combat.EruptingRiposte();
 		enemyAI();
 	}
 
@@ -6892,11 +6962,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//(bunbun kick)
 		else if (player.lowerBody == LowerBody.BUNNY) outputText("You leap straight into the air and lash out with both your furred feet simultaneously, slamming forward in a strong kick.  ");
 		//(centaur kick)
-		else if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED)
+		else if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED || player.lowerBody == LowerBody.HOLLOW)
 			if (player.isTaur()) outputText("You lurch up onto your backlegs, lifting your forelegs from the ground a split-second before you lash them out in a vicious kick.  ");
 			//(bipedal hoof-kick)
 			else outputText("You twist and lurch as you raise a leg and slam your hoof forward in a kick.  ");
-
 		if (flags[kFLAGS.PC_FETISH] >= 3) {
 			outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  Ceraph's piercings have made normal attack impossible!  Maybe you could try something else?\n\n");
 			enemyAI();
@@ -6944,12 +7013,18 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine damage
 		//Base:
 		var damage:Number = 0;
-		damage += combat.meleeUnarmedDamageNoLagSingle(2);
+		if (player.lowerBody == LowerBody.HOLLOW) damage += combat.meleeUnarmedDamageNoLagSingle(1);
+		else damage += combat.meleeUnarmedDamageNoLagSingle(2);
 		//Leg bonus: Bunny - 20, 1 hoof = 30, 2 hooves = 40, Kangaroo - 50
-		if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED) damage += 30;
-		else if (player.lowerBody == LowerBody.BUNNY) damage += 20;
-		else if (player.lowerBody == LowerBody.KANGAROO) damage += 50;
-		if (player.isTaur()) damage += 10;
+		if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED) damage *= 1.3;
+		else if (player.lowerBody == LowerBody.BUNNY) damage *= 1.2;
+		else if (player.lowerBody == LowerBody.KANGAROO) damage *= 1.5;
+		else if (player.lowerBody == LowerBody.HOLLOW) {
+			damage += player.str;
+			damage += scalingBonusStrength() * 0.25;
+			damage *= 1.5;
+		}
+		if (player.isTaur()) damage *= 1.1;
 		//other bonuses
 		if (player.perkv1(IMutationsLib.MightyLegsIM) >= 1) damage += (5 * player.perkv1(IMutationsLib.MightyLegsIM));
 		//Damage post processing!
@@ -6989,6 +7064,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 				doDamage(damage, true);
 				damage *= 2;
 			}
+			if (!monster.isImmuneToBleed()) {
+				if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
+                else monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05, 0, 0);
+			}
+			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
 		}
 		if (damage > 0) {
 			//Lust raised by anemone contact!

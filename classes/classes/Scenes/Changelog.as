@@ -298,9 +298,9 @@ public class Changelog extends BaseContent
 			outputText("-New usable item: Mortarch Mask fragment. Costing 600 gems and can be dropped by defeated hollow. Could be eater by Hollow or higher tiers of their evolution forms to gain Soul points used to trigger evolution.\n");
 			outputText("-When exploring outer desert or using general explore can encounter Pale Hollow enemy if PC isn't pernamently transformed. After this encounter PC would be marked and after day change into Demi-Hollow.\n");
 			outputText("-Flared carrot cum boost now ignore balls (since you can already do that ingame by removing it manually might as well make life easier, more flavor text later) (NUZ/Shirane)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Applied the fix for dragon arms. (Stadler)\n");
+			outputText("-New P. Special: Tail Slash. Usable by having Hollow Tail. Cost 40 fatigue and can cause bleed for 4 turns. It have higher crit chance and additionaly add bonuses from sword mastery.\n");
+			outputText("-Kick special have bonuses for each legs type changed from flat number (10 to 50) to multipliers (10% to 50%). Hollow legs kick can additionaly cause bleeding.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
