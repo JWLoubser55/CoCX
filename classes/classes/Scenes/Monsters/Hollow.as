@@ -6,9 +6,12 @@ package classes.Scenes.Monsters
 {
 import classes.*;
 import classes.BodyParts.*;
+import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
 //import classes.Scenes.Combat.CombatAbilities;
+
+import coc.view.CoCButton;
 
 use namespace CoC;
 
@@ -65,73 +68,186 @@ use namespace CoC;
 			this.takePhysDamage(Math.round(this.maxHP()*0.2));
 		}
 		
+		public function moveStandardFeralAttack():void {
+			outputText("It unleashes a bestial raw, lunging at you. Swipe after swipe, it tries to cut you to ribbons with vicious claws that leave you bleeding. ");
+			eAttack();
+			eAttack();
+			if (!player.immuneToAcid()) {
+                if (player.hasStatusEffect(StatusEffects.AcidDoT)) player.addStatusValue(StatusEffects.AcidDoT, 1, 1);
+                else player.createStatusEffect(StatusEffects.AcidDoT, 3, 15, 0, 0);
+            }
+			var hornspoke:Number = this.str;
+			hornspoke += eBaseStrengthDamage();
+			player.takePhysDamage(hornspoke, true);
+			if (!player.immuneToBleed()) {
+				if (player.hasStatusEffect(StatusEffects.Hemorrhage)) player.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
+				else player.createStatusEffect(StatusEffects.Hemorrhage, SceneLib.combat.debuffsOrDoTDuration(3), 0.05, 0, 0);
+			}
+		}
+		
+		public function moveHollowGrapple():void {
+			outputText("It unleashes a bestial raw, lunging at you. Tackling you to the ground, it holds you in a fierce grip. Its claws bite deep into your [skin]. ");
+			player.createStatusEffect(StatusEffects.Pounced, 3, 0, 0, 0);
+			if (!player.immuneToBleed()) player.createStatusEffect(StatusEffects.Hemorrhage, SceneLib.combat.debuffsOrDoTDuration(3), 0.02, 0, 0);
+		}
+		
+		public function hollowPouncedStruggle():void {
+			if (SceneLib.combat.struggleCentralizedCheck()) hollowPounceSuccess();
+			else hollowPounceFail();
+			SceneLib.combat.enemyAIImpl();
+		}
+		public function hollowPouncedWait():void {
+			hollowPounceFail();
+			SceneLib.combat.enemyAIImpl();
+		}
+		private function hollowPounceSuccess():void {
+			createStatusEffect(StatusEffects.AbilityCooldown1, 4, 0, 0, 0);
+			player.removeStatusEffect(StatusEffects.Pounced);
+		}
+		private function hollowPounceFail():void {
+			player.addStatusValue(StatusEffects.Pounced, 1, -1);
+			if (player.getStatusValue(StatusEffects.Pounced, 1) == 0) {
+				createStatusEffect(StatusEffects.AbilityCooldown1, 4, 0, 0, 0);
+				player.removeStatusEffect(StatusEffects.Pounced);
+				clearOutput();
+				outputText("The hollow soulforce flares, then concentrates that spiritual energy at the jagged maw of its mask as it stares down on you in its grip. At the apex of power, it fires a volley of soul force bullets point blank at you. ");
+				var sagittaDMG:Number = this.wis + this.inte;
+				sagittaDMG += wisdomscalingbonus() * 0.5;
+				sagittaDMG += inteligencescalingbonus() * 0.5;
+				var rounds:Number = 4;
+				if (this.level > 8) rounds += Math.round((this.level - 4) / 9);
+				while (rounds-->0) player.takeMagicDamage(sagittaDMG, true);
+			}
+		}
+		
+		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+			if (player.hasStatusEffect(StatusEffects.Pounced)) {
+				btnStruggle.call(hollowPouncedStruggle);
+				btnBoundWait.call(hollowPouncedWait);
+			}
+		}
+		
 		override protected function performCombatAction():void
 		{
-			var choice:Number = rand(4);
-			if (choice == 0) moveFeralAttack();
-			if (choice == 1) {
-				if (hasStatusEffect(StatusEffects.AbilityCooldown1)) moveFeralAttack();
-				else moveCero();
+			if (flags[kFLAGS.HOLLOW_TYPE] == 0) {
+				var choice0:Number = rand(4);
+				if (choice0 == 0) moveFeralAttack();
+				if (choice0 == 1) {
+					if (hasStatusEffect(StatusEffects.AbilityCooldown1)) moveFeralAttack();
+					else moveCero();
+				}
+				if (choice0 == 2) {
+					moveLightingBolt();
+				}
+				if (choice0 == 3) {
+					if (hasStatusEffect(StatusEffects.AbilityCooldown2)) moveLightingBolt();
+					else moveThunderclap();
+				}
 			}
-			if (choice == 2) {
-				moveLightingBolt();
-			}
-			if (choice == 3) {
-				if (hasStatusEffect(StatusEffects.AbilityCooldown2)) moveLightingBolt();
-				else moveThunderclap();
+			else {
+				if (rand(2) == 0 && !player.hasStatusEffect(StatusEffects.Pounced) && !hasStatusEffect(StatusEffects.AbilityCooldown1)) moveHollowGrapple();
+				else moveStandardFeralAttack();
 			}
 		}
 		
 		override public function defeated(hpVictory:Boolean):void
 		{
-			hollow.wonWithWhite();
+			if (flags[kFLAGS.HOLLOW_TYPE] == 0) hollow.wonWithWhite();
+			else cleanupAfterCombat();
 		}
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
 		{
-			hollow.lostToWhite();
+			if (flags[kFLAGS.HOLLOW_TYPE] == 0) hollow.lostToWhite();
+			else hollow.lostToHollow();
 		}
 		
 		public function Hollow() 
 		{
+			if (flags[kFLAGS.HOLLOW_TYPE] == 0) {
+				this.short = "pale hollow";
+				this.long = "Your opponent is a Hollow, a lingering spiritual remnant who died before corruption could take them. She looks like a strange mix of cat girl, ghost and baboon of all things. Her feral looking mask hides her face but those piercing white irises submerged in black speaks of her morbid intentions. Aside from her mask, she wears nothing to hide her modesty, displaying an androgynous emaciated figure, though you do spot a pair of flat droopy tits.";
+				createVagina(true,VaginaClass.WETNESS_NORMAL,VaginaClass.LOOSENESS_TIGHT);
+				createBreastRow(Appearance.breastCupInverse("D"));
+				this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+				this.ass.analWetness = AssClass.WETNESS_DRY;
+				this.bodyColor = "pale";
+				this.hairColor = "red";
+				initStrTouSpeInte(165, 135, 185, 200);
+				initWisLibSensCor(200, 95, 80, 60);
+				this.weaponAttack = 108;
+				this.armorDef = 10;
+				this.armorMDef = 200;
+				this.bonusHP = 500;
+				this.bonusLust = 194;
+				this.level = 19;
+				this.gems = 15 + rand(10);
+				this.drop = new ChainedDrop().add(useables.MMASKFRAG,1);
+				this.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
+				this.createPerk(PerkLib.Flexibility, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.HOLLOW_TYPE] == 1 || flags[kFLAGS.HOLLOW_TYPE] == 2) {
+				this.short = "hollow";
+				this.long = "Your opponent is a Hollow, a lingering spiritual remnant who died before corruption could take them. The androgynous creature looks emaciated, yet its feral appearance keeps you on edge. Its skin is weathered and pale, its bone-white claws at the ready. Its yellow irises stare at you through the darkness of its eyes, searching for weakness.";
+				this.createBreastRow(0, 1);
+				initGenderless();
+				this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+				this.ass.analWetness = AssClass.WETNESS_DRY;
+				this.bodyColor = "pale";
+				this.hairColor = "black";
+				if (flags[kFLAGS.HOLLOW_TYPE] == 1) {
+					initStrTouSpeInte(165, 135, 185, 200);
+					initWisLibSensCor(200, 95, 80, 60);
+					this.weaponAttack = 108;
+					this.armorDef = 50;
+					this.armorMDef = 100;
+					this.bonusHP = 500;
+					this.bonusLust = 194;
+					this.level = 19;
+					this.gems = 15 + rand(10);
+				}
+				else {
+					initStrTouSpeInte(245, 195, 275, 300);
+					initWisLibSensCor(300, 145, 120, 60);
+					this.weaponAttack = 148;
+					this.armorDef = 75;
+					this.armorMDef = 150;
+					this.bonusHP = 750;
+					this.bonusLust = 296;
+					this.level = 31;
+					this.gems = 25 + rand(10);
+				}
+				this.drop = new ChainedDrop().add(useables.HMASKFRAG,1);
+				this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.HOLLOW_TYPE] == 3) {
+				this.short = "vacant";
+				this.long = "Your opponent is a Vacant, a lingering spiritual remnant who died before corruption could take them and intern have consumed others to further itself. The androgynous creature before you is bulky and strong, it has gorged itself to quench the clawing hunger yet its feral appearance keeps you on edge. Its skin is weathered and pale, claws – bone-white and at the ready. Yellow irises stare at you through the darkness of its mask, searching for weakness.";
+				this.createBreastRow(0, 1);
+				initGenderless();
+				this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
+				this.ass.analWetness = AssClass.WETNESS_DRY;
+				this.bodyColor = "pale";
+				this.hairColor = "black";
+			}
 			this.a = "the ";
-			this.short = "pale hollow";
-			this.long = "Your opponent is a Hollow, a lingering spiritual remnant who died before corruption could take them. She looks like a strange mix of cat girl, ghost and baboon of all things. Her feral looking mask hides her face but those piercing white irises submerged in black speaks of her morbid intentions. Aside from her mask, she wears nothing to hide her modesty, displaying an androgynous emaciated figure, though you do spot a pair of flat droopy tits.";
-			createVagina(true,VaginaClass.WETNESS_NORMAL,VaginaClass.LOOSENESS_TIGHT);
-			createBreastRow(Appearance.breastCupInverse("D"));
-			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
-			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.tallness = 72;
 			this.hips.type = Hips.RATING_AVERAGE;
 			this.butt.type = Butt.RATING_AVERAGE;
-			this.bodyColor = "pale";
-			this.hairColor = "red";
 			this.hairLength = 13;
-			initStrTouSpeInte(165, 135, 185, 200);
-			initWisLibSensCor(200, 95, 80, 60);
-			this.weaponAttack = 108;
 			this.weaponName = "claw";
 			this.weaponVerb="claw-slash";
 			this.armorName = "iron skin";
-			this.armorDef = 10;
-			this.armorMDef = 200;
-			this.bonusHP = 500;
-			this.bonusLust = 194;
 			this.lust = 30;
 			this.lustVuln = .8;
-			this.level = 19;
-			this.gems = 15 + rand(10);
-			this.drop = new ChainedDrop().add(useables.MMASKFRAG,1);
 			this.horns.type = Horns.HOLLOW;
 			this.horns.count = 2;
 			this.faceType = Face.HOLLOW_MASK;
 			this.eyes.type = Eyes.HOLLOW;
-			this.arms.type = Arms.HUMAN;
-			this.lowerBody = LowerBody.HUMAN;
-			this.tailType = Tail.MONKEY;
+			this.arms.type = Arms.HOLLOW;
+			this.lowerBody = LowerBody.HOLLOW;
+			this.tailType = Tail.HOLLOW;
 			this.tailRecharge = 0;
-			this.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
-			this.createPerk(PerkLib.Flexibility, 0, 0, 0, 0);
 			checkMonster();
 		}
 		

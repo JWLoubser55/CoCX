@@ -22,6 +22,7 @@ public class HollowScene extends BaseContent
 			outputText("A pale feminine figure wearing a jagged mask burst from the storm like a bullet. Her limbs bent with too much speed, her tail whipping through the air like a lash of steel. She slammed into a dune, sending up a cloud of the ash - colored sand. You ready yourself for conflict as this is the twisted natural marethian greeting, the pale figure emerges from the cloud.\n\n");
 			outputText("It looks emaciated and unnaturally thin like someone that hasn't eaten in weeks. The skin of this strange creature looks like a combination of chitin and armor. Stranger still is the mask it wears–the grimace sends alarm bells ringing through your mind. Her horns bare an aggressive zigzag pattern–a reticle zeroing in on you. ");
 			outputText("A hairline crack runs across her mask, revealing jagged teeth bared in a rictus grin, twin black pits for eyes, and those white irises–glaring at you.\n\n");
+			flags[kFLAGS.HOLLOW_TYPE] = 0;
 			startCombat(new Hollow());
 		}
 		
@@ -35,7 +36,7 @@ public class HollowScene extends BaseContent
 			outputText("She tries to keep drinking, tries to finish you, but her mask fractures further, glowing with fissures. She snarls, desperate. And then she collapses on top of you.\n\n");
 			outputText("Her voice breaks apart, into a  whisper but then a static scream: \"<i>Don’t—leave me—</i>\"\n\n");
 			outputText("Her form disintegrates into pale dust, dissolving in your grasp then bursts into an ashy cloud. When the storm clears, you are alone. Scarred, weakened, but alive.\n\n");
-			player.createStatusEffect(StatusEffects.ChainOfFate,0,24,0,0);
+			player.createStatusEffect(StatusEffects.ChainOfFate,0,24,0,1);
 			cleanupAfterCombat();
 		}
 		
@@ -49,7 +50,40 @@ public class HollowScene extends BaseContent
 			outputText("But before she scatters, she lunges. She's going for your throat! You ready yourself for one more bout, midair the emaciated blur bursts into a cloud of pale ash.\n\n");
 			outputText("The world goes white.\n\n");
 			outputText("You feel something coursing below your skin—hot, jagged, venomous. A scream of \"<i>Mine. Mine. Mine.</i>\" bursts inside your head as the pale cloud disintegrates around you. When the ash settles, you are alone on the dunes.\n\n");
-			player.createStatusEffect(StatusEffects.ChainOfFate,0,24,0,0);
+			player.createStatusEffect(StatusEffects.ChainOfFate,0,24,0,1);
+			cleanupAfterCombat();
+		}
+		
+		public function encounterHollow1():void {
+			encounterHollow(1);
+		}
+		public function encounterHollow2():void {
+			encounterHollow(2);
+		}
+		private function encounterHollow(area:Number):void {
+			clearOutput();
+		//	spriteSelect(SpriteDb.);
+			outputText("The dunes are restless tonight. Soulforce crawls across your skin in prickling waves, warning you before the sound reaches your ears.\n\n");
+			outputText("A low rasp, wet and ragged, echoes from behind a jagged rock. Then it emerges—thin as famine, with limbs too long and a mask that looks half-melted, like clay left in a fire. Its teeth jut out in crooked rows, gnashing without rhythm, a hollow mimicry of hunger.\n\n");
+			outputText("A yawning hole opens and closes in its chest, half-decayed. Something like a strangled scream and a wail echoes from it as though reliving its final moments. Empty sockets lock onto you, and for a moment, you think the thing is cognizant.\n\n");
+			outputText("The Hollow screeches and lunges, claws outstretched, its jagged mask splitting with the force of its cry.\n\n");
+			if (area == 1) flags[kFLAGS.HOLLOW_TYPE] = 1;
+			else flags[kFLAGS.HOLLOW_TYPE] = 2;
+			startCombat(new Hollow());
+		}
+		
+		public function lostToHollow():void {
+			clearOutput();
+		//	spriteSelect(SpriteDb.);
+			outputText("It’s faster than you thought.\n\n");
+			outputText("The Hollow’s claws rake across your [chest], sparks of pain exploding as your soulforce falters. You fall back onto the ground, your vision swimming with black and white static.\n\n");
+			outputText("It looms over you, the abyssal hole in its chest yawning. Its mask splits, the jaw unhinging far too wide. The pull begins.\n\n");
+			outputText("Your soul jerks upward, thrumming in the grip of its hunger. Vitality drains from [skin] as light leaks out of you thread by thread. The sensation of molten earth poured across your [chest] blooms in your head. Your skin starts as though you’re being unraveled from the inside.\n\n");
+			outputText("But then—it stops.\n\n");
+			outputText("The Hollow shudders, convulses, and rips itself away from you. Your soul slips back into your body, weak and tattered, but intact. The Hollow screeches, its hunger unsated, before fleeing like a feral beast.\n\n");
+			outputText("You are alive. But the scar it left behind aches like fire, a reminder of how close you came to being nothing more than another ember to feed the endless hunger of these creatures.\n\n");
+			if (player.hasStatusEffect(StatusEffects.ChainOfFate) || player.hasStatusEffect(StatusEffects.DarkSign)) player.negativeLevel += 9;
+			else player.createStatusEffect(StatusEffects.ChainOfFate,0,24,0,0);
 			cleanupAfterCombat();
 		}
 		

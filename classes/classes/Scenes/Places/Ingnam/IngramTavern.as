@@ -88,10 +88,10 @@ public class IngramTavern extends BaseContent implements SaveableState {
         addButton(0, "Order Drink", orderDrink).hint("Buy some refreshing beverages.");
         addButton(1, "Order Food", orderFood).hint("Buy some food" + (flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 50 ? " and curb that hunger of yours!": ".") + "");
         if (IngramRumors < 3) addButton(2, "Stories", hearRumors).hint("Hear the stories the innkeeper has to offer.");
-		if (!player.hasStatusEffect(StatusEffects.ChainOfFate)) {
+		/*if (!player.hasStatusEffect(StatusEffects.ChainOfFate)) {
 			if (time.hours == 17) addButton(4, "Sollertia Rex", meetTotalyNotAizen);
 			else addButtonDisabled(4, "???", "Come to Tavern at 5 pm.");
-		}
+		}*/
         //if (player.hasPerk(PerkLib.HistoryWhore)) addButton(5, "Prostitute", whoreForGems).hint("Seek someone who's willing to have sex with you for profit.");
         addButton(14, "Leave", SceneLib.ingnam.menuIngnam);
     }

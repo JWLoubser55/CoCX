@@ -2403,7 +2403,7 @@ public class SaveUpdater extends NPCAwareContent {
 				SceneLib.exploration.counters.battlefieldOuter    = flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER];
 				// mountainsMid - handled by postLoadSaveObject()
 				SceneLib.exploration.counters.hills               = flags[kFLAGS.MECH_AI_ATTACK];
-				SceneLib.exploration.counters.mountainsLow        = flags[kFLAGS.DISCOVERED_LOW_MOUNTAIN];
+				SceneLib.exploration.counters.mountainsLow        = flags[kFLAGS.HOLLOW_TYPE];
 				SceneLib.exploration.counters.highMountains       = flags[kFLAGS.TAMED_01_NAME];
 				SceneLib.exploration.counters.plains              = flags[kFLAGS.TAMED_02_NAME];
 				SceneLib.exploration.counters.swamp               = flags[kFLAGS.TAMED_03_NAME];
@@ -2824,7 +2824,7 @@ public class SaveUpdater extends NPCAwareContent {
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.594) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.594;
 				flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] = 0;
-				flags[kFLAGS.DISCOVERED_LOW_MOUNTAIN] = 0;
+				flags[kFLAGS.HOLLOW_TYPE] = 0;
 			}/*
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.60) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.60;

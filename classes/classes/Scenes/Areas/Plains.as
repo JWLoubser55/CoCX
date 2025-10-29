@@ -271,6 +271,14 @@ use namespace CoC;
 				chance: 0.3,
 				call: bunnyGirl.bunnbunbunMeet
 			}, {
+				name  : "Hollow",
+				kind  : "monster",
+				day: false,
+				when  : function ():Boolean {
+					return !player.blockingBodyTransformations()
+				},
+				call  : SceneLib.hollowScene.encounterHollow2
+			}, {
 				name: "usagi",
 				label : "Usagi",
 				kind : 'npc',

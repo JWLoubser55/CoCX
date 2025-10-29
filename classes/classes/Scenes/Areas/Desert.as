@@ -144,6 +144,14 @@ use namespace CoC;
 					kind  : 'monster',
 					call: desertWindElemental1
 				}, {
+					name  : "Hollow",
+					kind  : "monster",
+					day: false,
+					when  : function ():Boolean {
+						return !player.blockingBodyTransformations()
+					},
+					call  : SceneLib.hollowScene.encounterHollow1
+				}, {
 					name  : "wanderer",
 					label : "Wanderer",
 					kind  : 'event',
@@ -270,7 +278,7 @@ use namespace CoC;
 					call  : SceneLib.helScene.helSexualAmbush,
 					chance: desertChance,
 					when  : SceneLib.helScene.helSexualAmbushCondition
-				}, {
+				}/*, {
 					name  : "Pale Hollow",
 					kind  : "npc",
 					unique: true,
@@ -279,7 +287,7 @@ use namespace CoC;
 						return !player.hasStatusEffect(StatusEffects.ChainOfFate) && !player.hasStatusEffect(StatusEffects.DarkSign) && !player.blockingBodyTransformations()
 					},
 					call  : SceneLib.hollowScene.encounterWhite
-				}, {
+				}*/, {
 					name  : "desertloot",
 					label : "Cake",
 					kind  : 'item',

@@ -2532,7 +2532,7 @@ public class Combat extends BaseContent {
         if (player.hasStatusEffect(StatusEffects.KitsuneTailTangle)) {
             (monster as Kitsune).kitsuneWait();
             skipMonsterAction = true;
-        } else if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical)) {
+        } else if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical) && player.statusEffectv2(StatusEffects.PlayerBoundPhysical) == 1) {
             (monster as HellcatKasha).hellcatKashaFlameWhipWait();
             skipMonsterAction = true;
         } else if (player.hasStatusEffect(StatusEffects.MinotaurEntangled)) {
@@ -2690,7 +2690,7 @@ public class Combat extends BaseContent {
         } else if (player.hasStatusEffect(StatusEffects.KitsuneTailTangle)) {
             (monster as Kitsune).kitsuneStruggle();
             skipMonsterAction = true;
-        } else if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical)) {
+        } else if (player.hasStatusEffect(StatusEffects.PlayerBoundPhysical) && player.statusEffectv2(StatusEffects.PlayerBoundPhysical) == 1) {
             (monster as HellcatKasha).hellcatKashaFlameWhipStruggle();
             skipMonsterAction = true;
         } else if (player.hasStatusEffect(StatusEffects.HolliConstrict)) {

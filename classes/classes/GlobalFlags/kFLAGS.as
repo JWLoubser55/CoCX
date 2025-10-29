@@ -2677,7 +2677,7 @@ public static const ATTACKS_ACCURACY_OFF:int                                   	
 public static const COMBAT_MAGICAL_CHARM:int                                   		= 2668;
 public static const IN_COMBAT_PLAYER_GOBLIN_GADGET_USED:int                         = 2669;
 public static const MECH_AI_ATTACK:int                                   			= 2670;
-public static const DISCOVERED_LOW_MOUNTAIN:int                                   	= 2671; // No longer used
+public static const HOLLOW_TYPE:int                                   				= 2671;
 public static const AURORA_LVL:int                                   				= 2672;
 public static const AURORA_DEFEATS_COUNTER:int                                   	= 2673;
 public static const AURORA_02674:int                                                = 2674;	//Not Yet Used Flag

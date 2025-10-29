@@ -2601,6 +2601,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 			damage *= (1 + (0.01 * combat.masterySwordLevel()));
+			damage *= (1 + (0.01 * combat.weaponSizeSmall()));
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 25;

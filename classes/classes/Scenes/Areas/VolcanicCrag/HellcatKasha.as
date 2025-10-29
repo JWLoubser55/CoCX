@@ -33,7 +33,7 @@ import classes.internals.*;
 		public function hellcatKashaFlameWhip():void
 		{
 			outputText("The kasha swing her whip and burn you with its unholy fire both pleasurable and painful before suddenly wrapping around your leg causing you to fall over as the chariot pulls you around the volcanic landscape. ");
-			player.createStatusEffect(StatusEffects.PlayerBoundPhysical, 0, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.PlayerBoundPhysical, 0, 1, 0, 0);
 			player.createStatusEffect(StatusEffects.KashaCapture, 0, 0, 0, 0);
 			flameWhipDmgrepeat();
 		}
