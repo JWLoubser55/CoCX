@@ -75,16 +75,25 @@ public class HollowScene extends BaseContent
 		public function lostToHollow():void {
 			clearOutput();
 		//	spriteSelect(SpriteDb.);
-			outputText("It’s faster than you thought.\n\n");
-			outputText("The Hollow’s claws rake across your [chest], sparks of pain exploding as your soulforce falters. You fall back onto the ground, your vision swimming with black and white static.\n\n");
-			outputText("It looms over you, the abyssal hole in its chest yawning. Its mask splits, the jaw unhinging far too wide. The pull begins.\n\n");
-			outputText("Your soul jerks upward, thrumming in the grip of its hunger. Vitality drains from [skin] as light leaks out of you thread by thread. The sensation of molten earth poured across your [chest] blooms in your head. Your skin starts as though you’re being unraveled from the inside.\n\n");
-			outputText("But then—it stops.\n\n");
-			outputText("The Hollow shudders, convulses, and rips itself away from you. Your soul slips back into your body, weak and tattered, but intact. The Hollow screeches, its hunger unsated, before fleeing like a feral beast.\n\n");
-			outputText("You are alive. But the scar it left behind aches like fire, a reminder of how close you came to being nothing more than another ember to feed the endless hunger of these creatures.\n\n");
-			if (player.hasStatusEffect(StatusEffects.ChainOfFate) || player.hasStatusEffect(StatusEffects.DarkSign)) player.negativeLevel += 9;
-			else player.createStatusEffect(StatusEffects.ChainOfFate,0,24,0,0);
-			cleanupAfterCombat();
+			if (player.hasStatusEffect(StatusEffects.ChainOfFate) || player.hasStatusEffect(StatusEffects.DarkSign)) {
+				outputText("It’s faster than you thought.\n\n");
+				outputText("The Hollow’s claws rake across your [chest], sparks of pain exploding as your soulforce falters. You fall back onto the ground, your vision swimming with black and white static.\n\n");
+				outputText("It looms over you, the abyssal hole in its chest yawning. Its mask splits, the jaw unhinging far too wide. The pull begins.\n\n");
+				outputText("Your soul jerks upward, thrumming in the grip of its hunger. Vitality drains from [skin] as light leaks out of you thread by thread. The sensation of molten earth poured across your [chest] blooms in your head. Your skin starts as though you’re being unraveled from the inside.\n\n");
+				outputText("But then—it stops.\n\n");
+				outputText("The Hollow shudders, convulses, and rips itself away from you. Your soul slips back into your body, weak and tattered, but intact. The Hollow screeches, its hunger unsated, before fleeing like a feral beast.\n\n");
+				outputText("You are alive. But the scar it left behind aches like fire, a reminder of how close you came to being nothing more than another ember to feed the endless hunger of these creatures.\n\n");
+				player.negativeLevel += 9;
+				cleanupAfterCombat();
+			}
+			else {
+				outputText("The creature’s stabs it's talons into your chest. Hooks curl into warm flesh. It's cold and unfeeling eyes gaze into your [eyes]. You try to struggle, but its grip tightens — claws sinking deeper like stones dropped in a swamp. Its mask gleams in the pale light — jagged teeth gleaming, eager to tear into [skin].\n\n");
+				outputText("It lunges.\n\n");
+				outputText("Teeth tear through your shoulder. A searing pulse of agony flashing white overwhelming your vision. The world narrows to the sound of gnawing and your own heartbeat slowing, stuttering, then stops.\n\n");
+				outputText("As your body crumples, the creature straightens. A pale mist —your essence— spills from your [lips]. It inhales greedily, mask crackling with satisfied laugh.\n\n");
+				outputText("The hunger moves on, and you are left as little more than a strips of flesh upon the ground.\n\n");
+				EventParser.gameOver();
+			}
 		}
 		
 		private function a():void {

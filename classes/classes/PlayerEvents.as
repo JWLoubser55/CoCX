@@ -1779,6 +1779,22 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv2(PerkLib.EmptyVessel) == 0 && player.hunger < Math.round(player.maxHunger() * 0.7)) player.addPerkValue(PerkLib.EmptyVessel, 2, -1);
+			//hollow perks
+			if (player.hasStatusEffect(StatusEffects.ChainOfFate) && !player.isRaceCached(Races.HOLLOW, 1)) {
+				outputText("\n\nSensation returns to your [skin]. The chain connected to chest and heart recedes into your being. Breath returns to you once more, you are whole again!");
+				player.removeStatusEffect(StatusEffects.ChainOfFate);
+				player.removePerk(PerkLib.ExanimationI);
+				player.removePerk(PerkLib.EmptyVessel);
+				needNext = true;
+			}
+			if (player.hasStatusEffect(StatusEffects.DarkSign) && !player.isRaceCached(Races.HOLLOW, 2) && !player.hasStatusEffect(StatusEffects.ChainOfFate)) {
+				outputText("\n\nSensations that were dull now flicker in across your mind, they tease senses but only faintly. The yawning hole in your [chest] fills out with your Chain of fate.");
+				player.removeStatusEffect(StatusEffects.DarkSign);
+				player.createStatusEffect(StatusEffects.ChainOfFate, 168, 0, 0, 0);
+				player.removePerk(PerkLib.ExanimationII);
+				player.removePerk(PerkLib.TouchOfTheDamned);
+				needNext = true;
+			}
 			return needNext;
 		}
 		private function hourlyCheckRacialPerks():Boolean {

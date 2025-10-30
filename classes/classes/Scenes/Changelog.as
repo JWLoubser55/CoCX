@@ -165,7 +165,7 @@ public class Changelog extends BaseContent
 			outputText("Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Dark Elf Scout - lvl 60. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Werespider - lvl 83. Dark Elf Slaver - lvl 80. Encountered in Tunnels. True Lightning Golem - lvl 81. Encountered in Cliffs. True Darkness Golem - lvl 76, Primordial Displacer Beast - lvl 84. Encountered in Lightless Reach. ");
 			outputText("Barometz - lvl 50. Encountered in Deepwoods. Earth Elemental - lvl 16/26/106. Encountered in Outer Desert / Inner Desert / Tunnels (it temporaly traveled from bedrock region and req. lvl 88+ to encounter). ");
 			outputText("Water Elemental - lvl 18/86/106. Encountered when using Lake Boat/Sea Boat. Wind Elemental - lvl 16/26/56/86. Encountered in Outer Desert / Inner Desert / Mountains / High Mountains. Fire Elemental - lvl 76/106. Encountered in Ashlands / Outer Vulcanic Crag. ");
-			outputText("Ice Elemental - lvl 70/100. Encountered in Tundra / Outer Glacial Rift. Lightning Elemental - lvl 100. Encountered in Cliffs. Lightning Elemental - lvl 90. Encountered in Lightless Reach. Kasha - lvl 87. Encountered in Outer Vulcanic Crag. Hollow - - lvl 19 / 31. Encountered in Outer Desert / Plains at night.\n");
+			outputText("Ice Elemental - lvl 70/100. Encountered in Tundra / Outer Glacial Rift. Lightning Elemental - lvl 100. Encountered in Cliffs. Lightning Elemental - lvl 90. Encountered in Lightless Reach. Kasha - lvl 87. Encountered in Outer Vulcanic Crag. Hollow - lvl 19 / 31. Encountered in Outer Desert / Plains at night.\n");
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig); Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event); Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event); Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes, Huge Octuple Yggdrasil Wings (from transforming with World Tree help); Werespider eyes, Werespider arms, Werespider Legs, Werepspider fangs (from transforming after been bitten by werespider); Barometz Legs, Barometz Ears, Barometz Tail, Ram Horns, Verdant Ram Horns, Runic Patterns, ");
 			outputText("Barometz Cock (from Horned fruit), Automata Tail Cable (from automata event); Hollow Mask (Face), Hollow Eyes, Hollow Horns, Hollow Arms, Hollow Lower Body, Hollow tail (from Hollowfication events)\n");
@@ -302,7 +302,7 @@ public class Changelog extends BaseContent
 			outputText("-New P. Special: Tail Slash. Usable by having Hollow Tail. Cost 40 fatigue and can cause bleed for 4 turns. It have higher crit chance and additionaly add bonuses from sword mastery.\n");
 			outputText("-Kick special have bonuses for each legs type changed from flat number (10 to 50) to multipliers (10% to 50%). Hollow legs kick can additionaly cause bleeding.\n");
 			outputText("-New usable item: Hollow Mask fragment. Costing 200 gems and can be dropped by defeated hollow. Could be eater by Hollow or higher tiers of their evolution forms to gain Soul points used to trigger evolution.\n");
-			outputText("-\n");
+			outputText("-Loosing to any Hollow enemy can lead to bad end if PC is not at least Demi-Hollow.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
