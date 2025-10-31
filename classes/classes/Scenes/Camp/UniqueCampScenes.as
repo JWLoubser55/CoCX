@@ -131,6 +131,7 @@ public function transformationIntoDemiHollow():void {
 	outputText("The [skin] of your [face] burns, peels - no, hardens. Something smooth and bone-white pushes outward, sculpting itself across your features like wet clay hastily fired. Faint cracks form pulsing with soulforce. Your [hands] scratches at it, but it does not budge. Instead your sensation of touch feels dull. The frame of your body twists - too long in the limbs, too sharp in the ribs, feral yet ethereal. Lanky arms that twitch, a jaw that aches with jagged teeth you do not remember growing.\n\n");
 	outputText("You try to breathe but no breath rises your chest. You keep at it, the sensation feels like it grounds you, as if should you stop you would fade away. The silence that follows, broken only by whispers - jealousy of those that walk free of the pains that hail you. And strange hunger gnaws at your very core. They are not yours, and yet they cling to you.\n\n");
 	player.addStatusValue(StatusEffects.ChainOfFate, 1, 168);
+	player.addStatusValue(StatusEffects.ChainOfFate, 4, -1);
 	player.createPerk(PerkLib.ExanimationI, 0, 0, 0, 0);
 	player.createPerk(PerkLib.EmptyVessel, 0, 0, 0, 0);
 	CoC.instance.transformations.HornsDraconicDual.applyEffect(false);

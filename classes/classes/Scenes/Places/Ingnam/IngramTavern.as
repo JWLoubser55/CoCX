@@ -88,10 +88,10 @@ public class IngramTavern extends BaseContent implements SaveableState {
         addButton(0, "Order Drink", orderDrink).hint("Buy some refreshing beverages.");
         addButton(1, "Order Food", orderFood).hint("Buy some food" + (flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 50 ? " and curb that hunger of yours!": ".") + "");
         if (IngramRumors < 3) addButton(2, "Stories", hearRumors).hint("Hear the stories the innkeeper has to offer.");
-		/*if (!player.hasStatusEffect(StatusEffects.ChainOfFate)) {
+		if (!player.hasStatusEffect(StatusEffects.ChainOfFate)) {
 			if (time.hours == 17) addButton(4, "Sollertia Rex", meetTotalyNotAizen);
 			else addButtonDisabled(4, "???", "Come to Tavern at 5 pm.");
-		}*/
+		}
         //if (player.hasPerk(PerkLib.HistoryWhore)) addButton(5, "Prostitute", whoreForGems).hint("Seek someone who's willing to have sex with you for profit.");
         addButton(14, "Leave", SceneLib.ingnam.menuIngnam);
     }
@@ -325,7 +325,7 @@ public class IngramTavern extends BaseContent implements SaveableState {
 		outputText("His smile lingered, unreadable, as he rose from his seat. The merchant gave the table a slow, deliberate pat, then turned to the corner where a massive travel pack leaned against the wall. The kind of burden that would buckle even a mule’s legs, yet he hefted it with a practiced ease.\n\n");
 		outputText("\"<i>Well then,</i>\" he said, straightening with a faint groan, \"<i>if you’ll excuse me, this old man needs his sleep.</i>\"\n\n");
 		outputText("With a nod and a last gleam in his grey eyes, he staggered toward the door, his gait a mix of drunken sway and purposeful march. The inn’s door creaked open, spilling a draft of cold night air inside. When it shut behind him, only the clatter of mugs and the low murmur of other patrons remained. You could still feel the chill of his handshake lingering in your palm.\n\n");
-		player.createStatusEffect(StatusEffects.ChainOfFate,0,0,1,0);
+		player.createStatusEffect(StatusEffects.ChainOfFate,0,0,1,1);
 		cheatTime(1/12);
         doNext(menuTavern);
 	}

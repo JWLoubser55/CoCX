@@ -1780,7 +1780,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			}
 			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv2(PerkLib.EmptyVessel) == 0 && player.hunger < Math.round(player.maxHunger() * 0.7)) player.addPerkValue(PerkLib.EmptyVessel, 2, -1);
 			//hollow perks
-			if (player.hasStatusEffect(StatusEffects.ChainOfFate) && !player.isRaceCached(Races.HOLLOW, 1)) {
+			if (player.hasStatusEffect(StatusEffects.ChainOfFate) && player.statusEffectv4(StatusEffects.ChainOfFate) == 0 && !player.isRaceCached(Races.HOLLOW, 1)) {
 				outputText("\n\nSensation returns to your [skin]. The chain connected to chest and heart recedes into your being. Breath returns to you once more, you are whole again!");
 				player.removeStatusEffect(StatusEffects.ChainOfFate);
 				player.removePerk(PerkLib.ExanimationI);
