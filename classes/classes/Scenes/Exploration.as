@@ -1417,7 +1417,7 @@ public class Exploration extends BaseContent implements SaveableState
 							return flags[kFLAGS.LUMI_MET] == 0
 						},
 						call  : SceneLib.lumi.lumiEncounter
-					}/*, {
+					}, {
 						name  : "Pale Hollow",
 						kind  : "npc",
 						unique: true,
@@ -1426,7 +1426,7 @@ public class Exploration extends BaseContent implements SaveableState
 							return !player.hasStatusEffect(StatusEffects.ChainOfFate) && !player.hasStatusEffect(StatusEffects.DarkSign) && !player.blockingBodyTransformations()
 						},
 						call  : SceneLib.hollowScene.encounterWhite
-					}*/, _commonEncounters
+					}, _commonEncounters
 			);
 		}
 		//Try to find a new location - called from doExplore once the first location is found
@@ -1840,4 +1840,4 @@ public class Exploration extends BaseContent implements SaveableState
 		}
 
 	}
-}
+}

@@ -1364,6 +1364,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const MonsterSummonedDriderLadySisters:StatusEffectType  = mkCombat("Monster Summoned:DriderLadySisters");
 
 		//cooldowns
+		public static const CooldownAcidSpit:StatusEffectType          			= mkCombat("Cooldown Acid Spit");
 		public static const CooldownAdamantineShell:StatusEffectType           	= mkCombat("Cooldown Adamantine Shell");
 		public static const CooldownAtavism:StatusEffectType                    = mkCombat("Cooldown Atavism");
 		public static const CooldownBalefulPolymorph:StatusEffectType      		= mkCombat("Cooldown Baleful Polymorph");

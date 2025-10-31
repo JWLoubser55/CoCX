@@ -75,7 +75,7 @@ public class HollowScene extends BaseContent
 		public function lostToHollow():void {
 			clearOutput();
 		//	spriteSelect(SpriteDb.);
-			if (player.hasStatusEffect(StatusEffects.ChainOfFate) || player.hasStatusEffect(StatusEffects.DarkSign)) {
+			if (player.hasStatusEffect(StatusEffects.ChainOfFate) || player.hasStatusEffect(StatusEffects.DarkSign) || !player.blockingBodyTransformations()) {
 				outputText("It’s faster than you thought.\n\n");
 				outputText("The Hollow’s claws rake across your [chest], sparks of pain exploding as your soulforce falters. You fall back onto the ground, your vision swimming with black and white static.\n\n");
 				outputText("It looms over you, the abyssal hole in its chest yawning. Its mask splits, the jaw unhinging far too wide. The pull begins.\n\n");
@@ -87,11 +87,11 @@ public class HollowScene extends BaseContent
 				cleanupAfterCombat();
 			}
 			else {
-				outputText("The creature’s stabs it's talons into your chest. Hooks curl into warm flesh. It's cold and unfeeling eyes gaze into your [eyes]. You try to struggle, but its grip tightens — claws sinking deeper like stones dropped in a swamp. Its mask gleams in the pale light — jagged teeth gleaming, eager to tear into [skin].\n\n");
+				outputText("The creature stabs its talons into your chest with brutal, tearing force. Hooks curl into warm, yielding flesh. Searing waves of agony batter your psyche. Its cold and unfeeling eyes gaze into your [eyes], as though trying to drain your very life with its stare alone.\n\n");
+				outputText("You try to struggle, but its grip tightens—claws sinking deeper like stones dropped in a swamp.Its mask, an abomination of jagged teeth, gleams with menace, eager to tear into [skin].\n\n");
 				outputText("It lunges.\n\n");
-				outputText("Teeth tear through your shoulder. A searing pulse of agony flashing white overwhelming your vision. The world narrows to the sound of gnawing and your own heartbeat slowing, stuttering, then stops.\n\n");
-				outputText("As your body crumples, the creature straightens. A pale mist —your essence— spills from your [lips]. It inhales greedily, mask crackling with satisfied laugh.\n\n");
-				outputText("The hunger moves on, and you are left as little more than a strips of flesh upon the ground.\n\n");
+				outputText("Teeth tear through your shoulder with a sickening crunch. A searing pulse of agony flashing white overwhelms your vision. The world narrows to the sound of gnawing and your own heartbeat slowing, stuttering, and then stopping.As your body crumples, the creature straightens. A pale mist—your essence—spills from your [lips]. It inhales greedily, the mask crackling with a satisfied laugh.\n\n");
+				outputText("The walking mouth moves on, and you are left as little more than a strip of flesh upon the ground.\n\n");
 				EventParser.gameOver();
 			}
 		}

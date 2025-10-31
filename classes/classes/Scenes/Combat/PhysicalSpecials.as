@@ -2355,7 +2355,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 			else monster.createStatusEffect(StatusEffects.IzmaBleed,3,0,0,0);
 		}
-		//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
+		if (player.hasPerk(PerkLib.TouchOfTheDamned)) combat.touchOfTheDamnedAtMonster(damage);
 		enemyAI();
 	}
 
@@ -2593,6 +2593,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage += player.str * 4;
 			damage += scalingBonusStrength();
 			damage += combat.meleeUnarmedDamageNoLagSingle();
+			if (player.statStore.hasBuff("SwordIntentAura")) damage += combat.layerSwordIntentAuraOnThis(damage);
 			if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 2) damage += combat.scalingBonusStrength() * 0.5 * (player.perkv1(IMutationsLib.MightyLowerHalfIM) - 1);
 			if (player.hasStatusEffect(StatusEffects.Gallop)) {
 				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
@@ -2626,6 +2627,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
                 else monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05, 0, 0);
 			}
+			if (player.hasPerk(PerkLib.TouchOfTheDamned)) combat.touchOfTheDamnedAtMonster(damage);
 		}
 		outputText("\n\n");
 		var baseMasteryXP:Number = 1;
@@ -7069,7 +7071,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
                 else monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05, 0, 0);
 			}
-			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
+			if (player.hasPerk(PerkLib.TouchOfTheDamned)) combat.touchOfTheDamnedAtMonster(damage);
 		}
 		if (damage > 0) {
 			//Lust raised by anemone contact!

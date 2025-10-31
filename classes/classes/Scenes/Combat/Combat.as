@@ -4083,7 +4083,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
-			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
+			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 1) {
@@ -4104,7 +4104,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				damage *= 3;
 			}
-			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
+			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 2) {
@@ -4125,7 +4125,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				damage *= 3;
 			}
-			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
+			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 3) {
@@ -4149,7 +4149,7 @@ public class Combat extends BaseContent {
 				damage *= 3;
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
-			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
+			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 4) {
@@ -4171,7 +4171,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				damage *= 3;
 			}
-			//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
+			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
 			mTWayOfTheSilentStormChance += 1;
 		}
         else {
@@ -8796,6 +8796,24 @@ public class Combat extends BaseContent {
 		damage = Math.round(damage);
 		return damage;
 	}
+	public function touchOfTheDamnedAtMonster(damage:Number):void {
+		if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
+			monster.addStatusValue(StatusEffects.AcidDoT,1,1);
+			monster.addStatusValue(StatusEffects.AcidDoT,3,1);
+		}
+		else {
+			if (player.hasPerk(PerkLib.ExanimationIII)) monster.createStatusEffect(StatusEffects.AcidDoT, 3, 0.15, 1, 0);
+			else monster.createStatusEffect(StatusEffects.AcidDoT, 3, 0.05, 1, 0);
+		}
+		if (player.hasPerk(PerkLib.ExanimationIII)) {
+			EngineCore.SoulforceChange(Math.round(damage * 0.15));
+			player.refillHunger(3);
+		}
+		else {
+			EngineCore.SoulforceChange(Math.round(damage * 0.05));
+			player.refillHunger(1);
+		}
+	}
 	
 	public function addGreasedLightning(damage:Number, display:Boolean = true):void {
 		doLightningDamage(Math.round(damage * player.statusEffectv1(StatusEffects.GreasedLightning) * lightningDamageBoostedByDao()), true, display);
@@ -8845,7 +8863,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp1);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);*/
 				if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
-				//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp1 += 1;
+				if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(temp1);
 			}
 		}
 		if (player.hasPerk(PerkLib.WayOfTheSilentStorm)) {
@@ -8879,7 +8897,7 @@ public class Combat extends BaseContent {
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp2 * 0.2), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp2);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
-				//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp2 += 1;
+				if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(temp2);
 				outputText("\n\n");
 			}
 		}
@@ -8898,7 +8916,7 @@ public class Combat extends BaseContent {
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(temp3 * 0.2), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp3);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
-				//if (player.hasPerk(PerkLib.TouchOfTheDamned)) temp3 += 1;
+				if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(temp3);
 				outputText("\n\n");
 			}
 		}
@@ -14281,6 +14299,14 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
                 player.removeStatusEffect(StatusEffects.CooldownSagitta);
             } else {
                 player.addStatusValue(StatusEffects.CooldownSagitta, 1, -1);
+            }
+        }
+		//Acid Spit
+		if (player.hasStatusEffect(StatusEffects.CooldownAcidSpit)) {
+            if (player.statusEffectv1(StatusEffects.CooldownAcidSpit) <= 0) {
+                player.removeStatusEffect(StatusEffects.CooldownAcidSpit);
+            } else {
+                player.addStatusValue(StatusEffects.CooldownAcidSpit, 1, -1);
             }
         }
 		//Cero

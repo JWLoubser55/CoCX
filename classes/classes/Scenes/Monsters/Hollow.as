@@ -27,6 +27,8 @@ use namespace CoC;
                 if (player.hasStatusEffect(StatusEffects.AcidDoT)) player.addStatusValue(StatusEffects.AcidDoT, 1, 1);
                 else player.createStatusEffect(StatusEffects.AcidDoT, 3, 15, 0, 0);
             }
+			EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.05));
+			player.refillHunger(-5, false);
 			outputText("She then flips back and launches herself–horns first at you. ");
 			var hornspoke:Number = this.str;
 			hornspoke += eBaseStrengthDamage();
@@ -85,6 +87,15 @@ use namespace CoC;
 			}
 		}
 		
+		public function moveAcidSpit():void {
+			outputText("The Hollow’s soulforce flares then coalesces at its stomach. Its flesh bulging and vibrating. Violent bursts of flesh grotesquely grow. Its pupils sharpen to pinpricks, keen focus poised for action. In one violent lunge, its cheeks bulged with vile juices. It spews a torrent of acid! ");
+			var acidSpitDMG:Number = this.wis + this.inte;
+			acidSpitDMG += wisdomscalingbonus();
+			acidSpitDMG += inteligencescalingbonus();
+			player.takeAcidDamage(acidSpitDMG, true);
+			createStatusEffect(StatusEffects.AbilityCooldown2, 2, 0, 0, 0);
+		}
+		
 		public function moveHollowGrapple():void {
 			outputText("It unleashes a bestial raw, lunging at you. Tackling you to the ground, it holds you in a fierce grip. Its claws bite deep into your [skin]. ");
 			player.createStatusEffect(StatusEffects.Pounced, 3, 0, 0, 0);
@@ -110,13 +121,15 @@ use namespace CoC;
 				createStatusEffect(StatusEffects.AbilityCooldown1, 4, 0, 0, 0);
 				player.removeStatusEffect(StatusEffects.Pounced);
 				clearOutput();
-				outputText("The hollow soulforce flares, then concentrates that spiritual energy at the jagged maw of its mask as it stares down on you in its grip. At the apex of power, it fires a volley of soul force bullets point blank at you. ");
-				var sagittaDMG:Number = this.wis + this.inte;
-				sagittaDMG += wisdomscalingbonus() * 0.5;
-				sagittaDMG += inteligencescalingbonus() * 0.5;
-				var rounds:Number = 4;
-				if (this.level > 8) rounds += Math.round((this.level - 4) / 9);
-				while (rounds-->0) player.takeMagicDamage(sagittaDMG, true);
+				outputText("The hollow soulforce flares, then concentrates that spiritual energy in the pits of its gut as it stares down on you in its grip. At the apex of power, it vomits the contents of the stomach. A vile acrid scent fires your senses as flesh starts to melt. ");
+				var acidSpitDMG:Number = this.wis + this.inte;
+				acidSpitDMG += wisdomscalingbonus() * 0.5;
+				acidSpitDMG += inteligencescalingbonus() * 0.5;
+				player.takeAcidDamage(acidSpitDMG, true);
+				if (!player.immuneToAcid()) {
+					if (player.hasStatusEffect(StatusEffects.AcidDoT)) player.addStatusValue(StatusEffects.AcidDoT, 1, 1);
+					else player.createStatusEffect(StatusEffects.AcidDoT, 3, 15, 0, 0);
+				}
 			}
 		}
 		
@@ -145,8 +158,18 @@ use namespace CoC;
 				}
 			}
 			else {
-				if (rand(2) == 0 && !player.hasStatusEffect(StatusEffects.Pounced) && !hasStatusEffect(StatusEffects.AbilityCooldown1)) moveHollowGrapple();
-				else moveStandardFeralAttack();
+				var choice1:Number = rand(3);
+				if (choice1 == 0) {
+					if (!player.hasStatusEffect(StatusEffects.Pounced) && !hasStatusEffect(StatusEffects.AbilityCooldown1)) moveHollowGrapple();
+					else moveStandardFeralAttack();
+				}
+				if (choice1 == 1) {
+					moveStandardFeralAttack();
+				}
+				if (choice1 == 2) {
+					if (hasStatusEffect(StatusEffects.AbilityCooldown2)) moveStandardFeralAttack();
+					else moveAcidSpit();
+				}
 			}
 		}
 		

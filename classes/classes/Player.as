@@ -5823,6 +5823,7 @@ use namespace CoC;
 				if (perkv1(IMutationsLib.HumanDigestiveTractIM) >= 4) overeatingLimit += (25 + Math.round(maxHunger()*0.1));
 				if (perkv1(IMutationsLib.HumanDigestiveTractIM) >= 1) amnt = Math.round(amnt * postConsumptionMlt());
 				hunger += amnt;
+				if (hunger < 0) hunger = 0;
 				if (hunger > maxHunger() + overeatingLimit) {
 					weightChange = Math.ceil((hunger - (maxHunger() + overeatingLimit)) / overeatingLimit); //rounded UP to int
 					modThickness(maxThicknessCap(), weightChange);

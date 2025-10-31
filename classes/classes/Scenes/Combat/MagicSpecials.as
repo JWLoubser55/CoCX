@@ -128,6 +128,12 @@ public class MagicSpecials extends BaseCombatContent {
 				bd.disable("<b>You need more time before you can use Sagitta again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
+		if (player.hasPerk(PerkLib.ExanimationII)) {
+			bd = buttons.add("Acid Spit", AcidSpitHollow, "Spit acid at your opponent corroding his defence and dealing progressive damage. \nWould go into cooldown after use for: 2 rounds\n");
+			if (player.hasStatusEffect(StatusEffects.CooldownAcidSpit)) {
+				bd.disable("<b>You need more time before you can use Acid Spit again.</b>\n\n");
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+		}
 		if ((player.isRaceCached(Races.RAIJU) || (player.isRaceCached(Races.THUNDERBIRD) && player.tailType == Tail.THUNDERBIRD) || player.isRaceCached(Races.KIRIN)) && player.hasPerk(PerkLib.ElectrifiedDesire) >= 0) {
 			bd = buttons.add("Orgasmic L.S.", OrgasmicLightningStrike, "Masturbate to unleash a massive discharge.", "Orgasmic Lightning Strike");
 			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -836,7 +842,7 @@ public class MagicSpecials extends BaseCombatContent {
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
 		if (player.hasPerk(PerkLib.AcidSpit)) {
-			bd = buttons.add("Acid Spit", acidSpit).hint("Spit acid at your opponent corroding his defence and dealing progressive damage.", "Acid Spit");
+			bd = buttons.add("Acid Spit", acidSpitCaveWyrm).hint("Spit acid at your opponent corroding his defence and dealing progressive damage.", "Acid Spit");
 			bd.requireFatigue(spellCost(40));
 			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
@@ -2141,7 +2147,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 	}
 
-	public function acidSpit():void {
+	public function acidSpitCaveWyrm():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(40, USEFATG_MAGIC_NOBM);
@@ -6096,6 +6102,60 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
 		player.createStatusEffect(StatusEffects.CooldownSagitta,pc,0,0,0);
 		enemyAI();
+	}
+	
+	public function AcidSpitHollow():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		fatigue(40, USEFATG_MAGIC_NOBM);
+		var damage:Number = player.wis;
+		damage += scalingBonusWisdom();
+		damage += player.inte;
+		damage += scalingBonusIntelligence();
+		damage *= soulskillMagicalMod();
+		damage *= combat.hollowSkillsAndSoulskillsBoost();
+		damage = calcCorrosionMod(damage, true);
+		damage = Math.round(damage);
+		//Shell
+		if(monster.hasStatusEffect(StatusEffects.Shell)) {
+			outputText("As soon as your magic touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+			enemyAI();
+			return;
+		}
+		if (combat.checkConcentration()) return; //Amily concentration
+		if (monster is LivingStatue)
+		{
+			outputText("The acid courses by the stone skin harmlessly. It does leave the surface of the statue glossier in its wake.");
+			enemyAI();
+			return;
+		}
+		outputText("Your soulforce flares then coalesces in your stomach. Your flesh bulging and vibrating. Violent bursts of flesh grotesquely grow. Yours pupils sharpen to pinpricks, keen focus poised for action. In one violent lunge, your cheeks bulged with vile juices and you spews a torrent of acid! ");
+		//Miss:
+		if(((player.playerIsBlinded() && rand(2) == 0) || ((monster.getEvasionRoll(false, player.spe)))) && !monster.monsterIsStunned()) {
+			outputText("  Despite the heavy impact caused by your attack, [themonster] manages to take it at an angle and remain on [monster his] feet and focuses on you, ready to keep fighting.");
+		}
+		//Special enemy avoidances
+		else if (valaReflect(damage, "acid spit", player.takeAcidDamage)) {}
+		else {
+			outputText(" ");
+			doAcidDamage(damage, true, true);
+		}
+		outputText("\n\n");
+		if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
+			monster.addStatusValue(StatusEffects.AcidDoT,1,1);
+			monster.addStatusValue(StatusEffects.AcidDoT,3,1);
+		}
+		else {
+			var powab:Number = 0.05;
+			if (player.hasPerk(PerkLib.ExanimationIII)) powab *= 3;
+			monster.createStatusEffect(StatusEffects.AcidDoT, 4, powab, 1, 0);
+		}
+		var pc:Number = 2;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
+		player.createStatusEffect(StatusEffects.CooldownAcidSpit,pc,0,0,0);
+		checkAchievementDamage(damage);
+		combat.heroBaneProc(damage);
+		checkLethiceAndCombatRoundOver();
 	}
 
 //Feline Curse

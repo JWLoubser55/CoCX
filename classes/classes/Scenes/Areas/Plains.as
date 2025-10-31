@@ -274,9 +274,6 @@ use namespace CoC;
 				name  : "Hollow",
 				kind  : "monster",
 				day: false,
-				when  : function ():Boolean {
-					return !player.blockingBodyTransformations()
-				},
 				call  : SceneLib.hollowScene.encounterHollow2
 			}, {
 				name: "usagi",
