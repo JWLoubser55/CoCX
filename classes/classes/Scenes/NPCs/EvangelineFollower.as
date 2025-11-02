@@ -217,16 +217,16 @@ public function meetEvangeline():void {
 	else addButtonDisabled(9, "???", "Req. Evangeline been lvl 16+.");
 	if (player.hasStatusEffect(StatusEffects.ArigeanInfected) || player.tailType == Tail.ARIGEAN_GREEN || player.tailType == Tail.ARIGEAN_RED || player.tailType == Tail.ARIGEAN_YELLOW || player.tailType == Tail.ARIGEAN_PRINCESS) addButton(10, "Arigean I.", curingArigeanMain);
 	else addButtonDisabled(10, "???", "Req. to be infected by Arigean.");
-	if (player.hasPerk(PerkLib.WendigoCurse)) {
-		if (player.perkv1(PerkLib.WendigoCurse) > 0) {
-			if (player.hasItem(consumables.PURPEAC, 5) && player.hasItem(consumables.PPHILTR, 5)) addButton(11, "Wendigo", curingWendigo);
-			else addButtonDisabled(11, "Wendigo", "Req. five pure peaches and five purity philters to fix your 'issue'.");
+	if (player.hasPerk(PerkLib.ExanimationI)) {
+		if (player.perkv1(PerkLib.ExanimationI) > 0) {
+			if (player.hasItem(consumables.PURPEAC, 5) && player.hasItem(consumables.PPHILTR, 5) && player.hasItem(consumables.FATPILL, 1)) addButton(11, "Hollow", curingHollow);
+			else addButtonDisabled(11, "Hollow", "Req. five pure peaches, five purity philters and one fasting pill to fix your 'issue'.");
 		}
-		else addButton(11, "Wendigo", curingWendigo);
+		else addButton(11, "Hollow", curingHollow);
 	}
-	else addButtonDisabled(11, "???", "Req. to be cursed by Wendigo.");
-	if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2 || flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 3 || player.isRaceCached(Races.MUMMY)) addButton(12, "J/M", curingSemiPermTFs);
-	else addButtonDisabled(12, "???", "Req. to be Jiangshi/Mummy.");
+	else addButtonDisabled(11, "???", "Req. to be hollowfied.");
+	if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2 || flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 3 || player.isRaceCached(Races.MUMMY) || player.hasPerk(PerkLib.WendigoCurse)) addButton(12, "W/J/M", curingSemiPermTFs);
+	else addButtonDisabled(12, "???", "Req. to be Wendigo / Jiangshi / Mummy.");
 	if (player.hasKeyItem("Soul Gem Research") >= 0) {
 		if (player.statusEffectv1(StatusEffects.SoulGemCrafting) == 0)  addButton(13, "Soul Gem", receivingCraftedSoulGem).hint("Pick up crafted Soul Gem.");
 		if (!player.hasStatusEffect(StatusEffects.SoulGemCrafting)) addButton(13, "Soul Gem", craftingSoulGem).hint("Ask Evangeline for crafting Soul Gem.");
@@ -1136,6 +1136,70 @@ private function curingArigean5a():void {
 	advanceMinutes(15);
 }
 
+private function curingHollow():void {
+	clearOutput();
+	if (player.hasItem(consumables.PURPEAC, 5) && player.hasItem(consumables.PPHILTR, 5) && player.hasItem(consumables.FATPILL, 1)) {
+		player.destroyItems(consumables.PURPEAC, 5);
+		player.destroyItems(consumables.PPHILTR, 5);
+		player.destroyItems(consumables.FATPILL, 1);
+		outputText("Evangeline nods in approval as you showcase your finds, setting out multiple sets of instruments for her task to come. She commissions  herself to mashing the fruit into a pulp, then mixing it with the philters. The air tinges of peach as she works, the aroma enveloping the room in a warm, sweet embrace.\n\n");
+		outputText("She reaches for the fasting pill, using a mortar and pestle, grinds it into powder and then adds it to the mix with the care of an artisan at work. Fishing out a hidden contraption from her chest, she pours the mixture into a glass flask secured inside the mechanism. The device hums to life, vibrating with rhythmic pulsations. Within moments, Evangeline pulls out an amber liquid, shining in its flask.\n\n");
+		outputText("Without hesitation, you down the tonic. The scent of peach is overwhelming, drowning you in its rich, luscious essence. A sudden swift in your mind drives you to your knees. Your vision blurs and motions below the skin start to writhe. Bone and muscle start to warp and break, the pain is intense yet transient. The hollow features that once warped your mortal essence start to return to their human state.\n\n");
+		outputText("As the transformation wanes, your [eyes] flutter open, and the world bursts into vibrant colors. You see the room anew, the hues and textures vivid and profound. As it was meant to be seen.\n\n");
+		outputText("<b>(Lost Perks: ");
+		if (player.hasPerk(PerkLib.ExanimationII)) {
+			outputText("Exanimation II, Touch of the Damned");
+			player.removePerk(PerkLib.ExanimationII);
+			player.removePerk(PerkLib.TouchOfTheDamned);
+		}
+		else outputText("Exanimation I");
+		outputText(", Empty Vessel)</b>\n\n");
+		player.removePerk(PerkLib.ExanimationI);
+		player.removePerk(PerkLib.EmptyVessel);
+		if (player.hasStatusEffect(StatusEffects.DarkSign)) player.removeStatusEffect(StatusEffects.DarkSign);
+		if (player.hasStatusEffect(StatusEffects.ChainOfFate)) player.removeStatusEffect(StatusEffects.ChainOfFate);
+		CoC.instance.transformations.FaceHuman.applyEffect(false);
+		player.eyes.type = Eyes.HUMAN;
+		player.horns.type = Horns.NONE;
+		player.horns.count = 0;
+		player.arms.type = Arms.HUMAN;
+		player.lowerBody = LowerBody.HUMAN;
+		player.tailType = Tail.NONE;
+		CoC.instance.transformations.SkinPatternNone.applyEffect(false);
+		doNext(camp.returnToCampUseTwoHours);
+	}
+	else {
+		outputText("Evangeline barely turns from her workbench to look at you before reeling back in shock.\n\n");
+		outputText("\"<i>God's above! What has happened to you, [name]! You don't look well...,</i>\" she steps back clearly troubled  by your ghostly appearance. \"<i>You're not feral are you? You're not even breathing!</i>\"\n\n");
+		outputText("You explain your situation and the curse to her somewhat.\n\n");
+		outputText("\"<i>Look,</i>\" she throws down a hefty tome from a dusty collection, flipping through pages until she finds a section of her liking. The words seem to shift and change whenever you try to read them. \"<i>I will need five pure peaches, five purity philters and a fasting pill to fix this up, how you get them is up to you.</i>\"\n\n");
+		player.addPerkValue(PerkLib.ExanimationI, 1, 1);
+		doNext(camp.campFollowers);
+		advanceMinutes(15);
+	}
+}
+
+private function curingSemiPermTFs():void {
+	menu();
+	if (player.hasPerk(PerkLib.WendigoCurse)) {
+		if (player.perkv1(PerkLib.WendigoCurse) > 0) {
+			if (player.hasItem(consumables.PURPEAC, 5) && player.hasItem(consumables.PPHILTR, 5)) addButton(0, "Wendigo", curingWendigo);
+			else addButtonDisabled(0, "Wendigo", "Req. five pure peaches and five purity philters to fix your 'issue'.");
+		}
+		else addButton(0, "Wendigo", curingWendigo);
+	}
+	else addButtonDisabled(0, "???", "Req. to be cursed by Wendigo.");
+	if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2 || flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 3) {
+		if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2) addButton(1, "Jiangshi", curingJiangshi);
+		else if (player.hasItem(consumables.VITAL_T, 5) && player.hasItem(consumables.PPHILTR, 5)) addButton(1, "Jiangshi", curingJiangshi);
+		else addButtonDisabled(1, "Jiangshi", "Req. five vitality tinctures and five purity philters to fix your 'issue'.");
+	}
+	else addButtonDisabled(1, "???", "Req. to be Jiangshi.");
+	if (player.isRaceCached(Races.MUMMY)) addButton(2, "Mummy", curingJiangshi);
+	else addButtonDisabled(2, "???", "Req. to be Mummy.");
+	addButton(14, "Back", meetEvangeline);
+}
+
 private function curingWendigo():void {
 	clearOutput();
 	if (player.hasItem(consumables.PURPEAC, 5) && player.hasItem(consumables.PPHILTR, 5)) {
@@ -1155,19 +1219,6 @@ private function curingWendigo():void {
 		doNext(camp.campFollowers);
 		advanceMinutes(15);
 	}
-}
-
-private function curingSemiPermTFs():void {
-	menu();
-	if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2 || flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 3) {
-		if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2) addButton(1, "Jiangshi", curingJiangshi);
-		else if (player.hasItem(consumables.VITAL_T, 5) && player.hasItem(consumables.PPHILTR, 5)) addButton(1, "Jiangshi", curingJiangshi);
-		else addButtonDisabled(1, "Jiangshi", "Req. five vitality tinctures and five purity philters to fix your 'issue'.");
-	}
-	else addButtonDisabled(1, "???", "Req. to be Jiangshi.");
-	if (player.isRaceCached(Races.MUMMY)) addButton(2, "Mummy", curingJiangshi);
-	else addButtonDisabled(2, "???", "Req. to be Mummy.");
-	addButton(14, "Back", meetEvangeline);
 }
 
 private function curingJiangshi():void {
