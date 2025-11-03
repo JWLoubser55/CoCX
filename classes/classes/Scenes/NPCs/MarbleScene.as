@@ -496,7 +496,10 @@ private function apologizetoWalkingTitsIMEANMARBLE():void {
 	outputText("\n\n\"<i>Care to have some of my bountiful breasts, you sweet thing?</i>\" she says, smiling eagerly and presenting you with one of her half-inch long reddish nipples.  You notice that each nipple has a sore-looking swollen ring around it, probably the source of Marble's discomfort.");
 	outputText("\n\nYou knew she was going to get around to this, so you figure you might as well get it over with.  It's not like they're not really nice breasts, after all...  You lower your [face] to her nipple, and gently wrap your lips around it.  Marble sighs contentedly as you do so, and starts to groan slightly in pleasure as the first of the milk leaks from her teats.  You certainly can't argue with the taste, sweet and creamy, and start to down the delicious fluid with relish.  Marble doesn't seem to mind at all; in fact, the sounds of her pleasure only increase.");
 	outputText("\n\nAfter several minutes, Marble puts her hand on your forehead, and gently asks you to take care of her other breast.  You don't disappoint her, and deeply draw milk from the other nipple with just as much vigor as before.");
-	if (!recalling) player.refillHunger(20);
+	if (!recalling) {
+		player.refillHunger(20);
+		if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
+	}
 	outputText("\n\nAfter another few minutes, you finally have drawn your fill, and pull back from Marble, as she looks down at you with a kindly and pleased face.  \"<i>Thank you so much for that, sweetie.  I can't possibly refuse your apology after that.  You're welcome to come and visit me here on the farm any time.</i>\"  The cow-girl gives you a peck on the check and redresses her bountiful bosoms - a small part of you is sad to see them go.  She helps you to stand up and walks you back to the main barn, then returns to her chores.");
     if (!recalling) {
         marbleStatusChange(5, 10);
@@ -618,7 +621,10 @@ private function marblePicksYouUpInitially():void {
 	marbleSprite();
 	clearOutput();
 	outputText("She gently lifts you up and carries you over to her bed. Laying you down on her lap, she lifts your head to one of her nipples and pushes your lips against it. She smiles and holds you there firmly as you feel a warm and delicious fluid start to fill your mouth. Once you've had a taste of her milk, you can't help yourself and eagerly start to gulp it down. After a little while you hear Marble sigh, \"<i>Oh sweetie, that's just what I needed. I know it's annoying to stop for a moment, but could you do the other teat too?</i>\" She pulls her hand back and flips you around on her lap before lifting you to her other nipple. You don't need any encouragement this time, and start drinking eagerly without hesitation. \"<i>Drink your fill sweetie, I know we're both enjoying this.</i>\"\n\n");
-    if (!recalling) player.refillHunger(30);
+    if (!recalling) {
+		player.refillHunger(30);
+		if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
+	}
 	//new paragraph
 	outputText("Once you'd had enough, you take your mouth off her teat and lean against her chest. Marble puts her hands around you and ");
 	if(player.ears.type > Ears.HUMAN) outputText("gently scratches behind your ears.  ");
@@ -652,6 +658,7 @@ private function suckleMarble():void {
 	outputText("You walk over to her and lean in to suck from her nipple. Your mouth is soon filled with a delicious warm fluid, and you eagerly begin to gulp it down. As you drink, you can hear Marble sighing softly above you. \"<i>Thank you, sweetie. Could you put your mouth on the other teat too?</i>\" She says after a few minutes. You eagerly comply, and just like before, the fluid fills your mouth. Her milk is easily the most delicious thing you've ever drunk, and not only that, drinking it from her breast just feels so right. You hear Marble sigh again, but this time it turns into a moan.  Once you'd had enough, you slowly pull back. You feel very satisfied with your drink, and you can see that Marble is quite satisfied too. She smiles at you and says \"<i>That was wonderful. You're welcome to come and visit any time.</i>\" With that, the two of you part company. You feel an odd euphoria as you walk away from the barn.");
     if (!recalling) {
         player.refillHunger(30);
+		if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
         marbleStatusChange(15, 10);
         applyMarblesMilk();
         dynStats("lus", 25, "scale", false);
@@ -718,6 +725,7 @@ private function drinkMarbleMilk():void {
     player.slimeFeed();
 	HPChange(10, false, false);
 	player.refillHunger(20);
+	if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
 	fatigue(-20);
 	//(increase player lust by a 20 and libido, if player lust is over a threshold like 60, trigger milk sex scene)
 	dynStats("lib", 1, "lus", 20);
@@ -1313,6 +1321,7 @@ public function postAddictionFarmMornings():void {
 	outputText("You hurry over to the farm to get your daily dose of Marble's milk.  It takes an hour of your day, but your body is satisfied.");
 	//(increase player corr by 2 if corr is under 30, otherwise increase corr by 1 up to a max of 40)
 	player.refillHunger(20);
+	if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
 	player.slimeFeed();
 	if(player.cor < 40) {
 		if(player.cor < 30) dynStats("cor", 1);
@@ -1494,6 +1503,7 @@ public function postAddictionCampMornings(extra:Boolean = true):void {
 	}
 	if (player.lib < 40) dynStats("lib", .1);
 	player.refillHunger(20);
+	if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
 	player.slimeFeed();
 	if(!extra) return;
 	//(if the player has less than 5 bottles of milk in their inventory or storage containers)

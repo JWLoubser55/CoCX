@@ -276,6 +276,7 @@ public function ExcelliaMilkEffects():void {
 	dynStats("lus", 15, "scale", false);
 	fatigue(-200);
 	player.refillHunger(100);
+	if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
 }
 
 public function ExcelliaCampFixHerGetMilkBottle():void {

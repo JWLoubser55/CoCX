@@ -1840,4 +1840,4 @@ public class Exploration extends BaseContent implements SaveableState
 		}
 
 	}
-}
+}

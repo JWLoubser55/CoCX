@@ -461,6 +461,7 @@ public function nomOnMommaIzzysTits():void {
 	if(flags[kFLAGS.ISABELLA_MILKED_YET] > 0) flags[kFLAGS.ISABELLA_MILKED_YET] = 0;
 	player.slimeFeed();
 	player.refillHunger(40);
+	if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
 	//(Chance of thickening body to 75, chance of softening body if PC has a vag)
 	if(rand(2) == 0) outputText(player.modThickness(75,4));
 	if(rand(2) == 0 && player.hasVagina()) outputText(player.modTone(0,4));
@@ -743,6 +744,7 @@ public function IsabellaWinsAndSpanks():void {
 		outputText("You go back to sleep, your backside bruised and your belly full of Isabella's milk.\n\n");
 		//(+4 sensitivity, -100 lust if masochist, -40 fatigue)
 		player.refillHunger(30);
+		if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
 		fatigue(-40);
 		dynStats("sen", 4);
 		if(player.hasPerk(PerkLib.Masochist)) player.orgasm();
@@ -805,6 +807,7 @@ public function IsabellaWinsAndSpanks():void {
 		//(+4 sensitivity, -100 lust if masochist, -40 fatigue)
         //she doesn't like you
 		player.refillHunger(30);
+		if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
 		fatigue(-40);
 		dynStats("sen", 4);
 		if(player.hasPerk(PerkLib.Masochist)) player.orgasm();

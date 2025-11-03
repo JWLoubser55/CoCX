@@ -1433,12 +1433,14 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             outputText("You decide to continue drinking Ember's blood; intent on acquiring all the power it can bring out from within you.");
             //check for TFs and output appropriate text from below
             emberTFs();
+			if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
             outputText("\n\n\"<i>Ugh... you drank too much... I feel woozy,</i>\" the dragon gripes.");
             outputText("\n\nYou offer [ember em] a helping hand.  Ember, surprisingly, accepts your help.  \"<i>Thanks.  I guess no more work for today... I need some food and a nap.</i>\"");
         } else {
             outputText("\n\nYou decide to continue drinking Ember's blood; intent on acquiring all the power it can bring out from within you.");
             //output tf from below
             emberTFs();
+			if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
             outputText("\n\nAs you break the kiss; Ember leans over, supporting [ember em]self on your shoulders.  \"<i>Ugh... I guess we overdid it... I feel woozy.</i>\"");
             outputText("\n\nYou quickly offer [ember em] a helping hand, inquiring if [ember ey] is all right.  Ember accepts your help, using your hand to balance [ember em]self.  \"<i>I-I'll be fine... just, no more sharing for the day...</i>\"");
         }
@@ -1671,6 +1673,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("  Your throat feels soothed as the scratching and soreness die down; you feel like you could shout to the mountaintops!");
             }
             player.refillHunger(25);
+			if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
             //(no new PG, PC has dragon-morph status and is opposite Ember's sex:
             if (rand(2) == 0 && player.racialScore(Races.DRAGON, false) >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
                 outputText("  Though, a sudden swell of lust races through your ");
@@ -1736,6 +1739,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("  Your throat feels soothed as the scratching and soreness die down; you feel like you could shout to the mountaintops!");
             }
             player.refillHunger(50);
+			if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
             //(no new PG, PC has dragon-morph status and is opposite Ember's sex:
             if (rand(2) == 0 && player.racialScore(Races.DRAGON, false) >= 4 && player.gender > 0 && (player.gender != flags[kFLAGS.EMBER_GENDER] || (player.gender == 3 && flags[kFLAGS.EMBER_GENDER] == 3))) {
                 outputText("  Though, a sudden swell of lust races through your ");
@@ -1830,6 +1834,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("\n\nYeah, yeah.  You finish draining the second breast and then lift it, planting a kiss on the sensitized nipple.");
             }
             player.refillHunger(50);
+			if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
             if (player.tou > 40) player.addCurse("tou", 1, 1);
             //merge wuss and jerk forks
             outputText("\n\nEmber gets so flustered that [ember ey] just stares at you in stunned silence, wearing a goofy smile.  \"<i>Wha... you know, there's no point in saying anything.  I know you'll just sneak another opportunity like this in the future... doesn't mean I won't make you pay for this when I catch you later.</i>\"");
@@ -3360,6 +3365,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
                 if (flags[kFLAGS.EMBER_OVIPOSITION] > 0) {
                     outputText("\n\nHer breasts look bloated, and you think you can see a drop of milk leaking from one of her perky nubs.  \"<i>Help me drain these,</i>\" she says, lifting her milky jugs and letting them fall.\n\nYou ask her if she'll have enough for the baby.  \"<i>Of course I will, it won't need any milk.  At least not until it hatches.  It'll take some time until then, and my breasts feel so uncomfortable.  So don't question me, just drink it!</i>\" she demands" + (flags[kFLAGS.EMBER_ROUNDFACE] > 0 ? ", a blush forming on her cheeks at her request" : "") + ".\n\nYou nod and lay down beside her, gently taking one of her nubs inside your mouth; then you begin suckling.  \"<i>Ooooh, yes...  Keep going...  This feels so good,</i>\" she moans in equal parts pleasure and relief.\n\nYou're happy to oblige, and begin drinking without stopping.  Ember's nutritious milk fills you.  ");
                     player.refillHunger(40, true);
+					if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
                     if (flags[kFLAGS.EMBER_MILK] > 0) {
                         outputText("Her breasts have always been full, but this time there's an incredible amount coming out.  She must've been really uncomfortable, and each suckle earns you a jet of milk and a moan of relief from Ember.  You keep at it for a long time; until you've drained one of Ember's ripe tits.\n\nThen you move to the other, intent on doing the same, however you feel very full already; you don't think you'll manage to empty this one.  Ember's moans of pleasure and relief push you on. You keep drinking regardless, and before you realize it, her other breast has been drained.\n\n\"<i>Ahhh, that feels much better.  I guess you're not too bad at making this feel good.</i>\" she admits" + (flags[kFLAGS.EMBER_ROUNDFACE] > 0 ? ", blushing softly" : "") + ". You stifle a burp and smile, then return to your duties.\n");
                     } else {
@@ -3368,6 +3374,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
                 } else {
                     outputText("\nYou decide to check up on Ember and see how she's been doing.  Once you're close enough she looks at you with tired eyes; clearly she hasn't been getting much sleep lately.  \"<i>[name], perfect timing!  I need you to help me drain my breasts, they're so heavy they hurt.</i>\"\n\nYou look at her breasts; they're so swollen they're at least a cup-size bigger than usual, maybe as much as two.  You can readily believe that she's in pain from carrying so much, and agree to help her out, then ask if she has any particular preferences.\n\n\"<i>Just take care of it... NOW!</i>\" Ember growls.\n\nWith a long-suffering sigh, you seat yourself down beside her, gently lift up one of her milk-bloated breasts, close your lips softly around the nipple, and start to suckle.  At once your efforts are rewarded with a long, strong gush of sweet, cool dragon-milk.  Ember sighs in relief and reaches out to hold your head against her breast.\n\nYou suckle gently, wondering how well Ember will take to nursing a real baby, but simply enjoying being so close to her.  You drink and drink, alternating between breasts, until finally you've vented the worst of the pressure, at the cost of visibly distending your own stomach with the amount of milk you've drunk.  You settle back on your [ass] and stifle a belch, looking at Ember and wondering what she thinks of your efforts to help.\n\nEmber yawns.  \"<i>Good... I feel much better, now I think I need a nap.</i>\"\n\nYou sigh softly, watch as she falls over on her side, belly visibly jiggling as she disturbs the unborn dragon in her womb, and is soon fast asleep.  You clamber back upright and leave her to get some rest; you've a feeling it won't be too long before she gives birth.\n");
                     player.refillHunger(40, false);
+					if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
                 }
                 fatigue(-25);
                 return true;
@@ -3493,6 +3500,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
 
             outputText("\n\nYou continue drinking, draining Ember's bloated breasts, the cool nutritious milk helps you relax for a spell and forget about your troubles.  Your ordeals are forgotten for the moments you find yourself drifting off, guided into the land of dreams by Ember's soft purring - or is it snoring?  You can't tell, and it doesn't matter right now...");
             player.refillHunger(40);
+			if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
             outputText("\n\nYou wake up a short while later.  Ember's breasts are completely drained of their milk, and your belly is bulging a bit from the amount you've drank.  Ember sleeps softly under you.  Gently you extract yourself from Ember's embrace - a difficult task, considering Ember's tail is intent on holding you like a boa constrictor.  Eventually though, you manage to withdraw yourself from its insistent grip and slowly sneak out of the den.\n");
             flags[kFLAGS.EMBER_EGGS]++;
         }
@@ -4261,12 +4269,14 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
                 outputText("\n\nYou nod your head quietly, choosing not to offend Ember's pride, before gently reaching out to stroke [ember eir] ever-naked bosom, feeling the weight of [ember eir] breasts in your hands.  They actually feel dramatically heavier than usual... Poor thing, [ember ey] must be in such pain from it.  Not wanting to keep [ember em] waiting, you bend your head in and close your lips around the first nipple.  At once milk spurts into your mouth, cool and sweet as always, hardly needing encouragement to be coaxed from the dragon's tit into your mouth.");
                 outputText("\n\n\"<i>Ah!... Be careful!  They're sensitive...</i>\" Ember scolds you, slowly leaning back to lay on [ember eir] nest.  You apologize and try to be gentler about the act, gently massaging [ember eir] breast to help relieve the tension, even as you continue to suckle the cool, sweet fluid. ");
                 player.refillHunger(25);
+				if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
                 outputText("\n\nEmber sighs in relief.  \"<i>Ahh... just like that... You have no idea, how much of a relief this is... I felt like I was going to burst...</i>\" You're surprised by Ember's suddenly calm response; to be honest you'd already gotten used to [ember eir] rather brash behavior... still now is not the time to ponder such things.  You've got a titful of dragon milk to empty into your thirsty belly, after all.");
                 outputText("\n\nYou continue to suckle and knead, relishing the delicious treat and gently stroking your draconic lover's breasts, something [ember ey] evidently enjoys, by [ember eir] soft purring, as well as by the little sighs of pleasure.  When you judge you've vented the worst of it from the first breast, you get started on the second one, continuing your treatment.");
                 outputText("\n\n\"<i>Yesss.... don't stop... hmmm...</i>\" Ember's purring rumbles louder, a quick glance at [ember eir] face reveals [ember ey] is actually smiling, eyes closed.  You're glad you seem to be doing a good job of this, and of course the milky treat helps... You have to wonder though... Despite Ember's usual production of milk being pretty high, this is a bit too much even for [ember em].  Maybe [ember ey] ate something that triggered this?  You'll just have to ask [ember em] once you're done.");
                 outputText("\n\nYou drink and drink, but as you keep drinking, you become aware of a certain dampness on your cheek.  You stop your suckling and lift your head from Ember's breast to reveal that the other breast has visibly swollen back up; it's just as full of milk now as it was when you started!");
                 outputText("\n\nYou ask Ember what did [ember ey] do?  It's not normal for [ember eir] milk production to be this high.  Your only reply however is a soft snore from the - now sleeping - dragon.  It seems the relief from your suckling was enough to put [ember em] out like a candle... well, anyways you did offer to help [ember em], so that's what you're gonna do.  With a sigh, you latch back onto the first breast and begin drinking anew. ");
                 player.refillHunger(25);
+				if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
                 outputText("\n\nAfter a while, you find that whenever you suckle [ember em] in a particularly pleasurable way, you interrupt Ember's soft snoring with a sigh or a gasp, still the dragon does not wake up.  It's kinda funny actually...");
                 outputText("\n\n<b>Sometime later...</b>");
                 outputText("\n\nYou've been at this for quite some time now... how many times have you drained Ember's breasts?  Four?  Five?  You don't know... and besides that, you're feeling rather tired yourself... plus all this milk sloshing inside your belly does not help keep you awake... still you must press on...");
