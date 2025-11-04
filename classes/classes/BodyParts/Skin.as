@@ -326,6 +326,12 @@ public class Skin extends SaveableBodyPart {
 		appearanceDesc: "Your body is covered with runic patterns.",
 		base:true
 	});
+	public static const PATTERN_SOULFORCE_SCARING: int = 24;
+	EnumValue.add(PatternTypes, PATTERN_SOULFORCE_SCARING, "SOULFORCE_SCARING", {
+		name:"soulforce scaring",
+		appearanceDesc: "Esoteric sigils paint your [skin]. They disappear and reappear, all along your [chest], [arms], and [legs] - pulsing with spiritual energy.",
+		base:true
+	});
 	// Don't forget to add new types in DebugMenu.as lists SKIN_BASE_TYPES or SKIN_COAT_TYPES
 
 	public var base:SkinLayer;
@@ -613,6 +619,9 @@ public class Skin extends SaveableBodyPart {
 	}
 	public function hasRunicTattoo():Boolean {
 		return base.pattern == PATTERN_RUNIC;
+	}
+	public function hasSoulforceScaring():Boolean {
+		return base.pattern == PATTERN_SOULFORCE_SCARING;
 	}
 	override public function restore(keepTone:Boolean = true):void {
 		coverage = COVERAGE_NONE;

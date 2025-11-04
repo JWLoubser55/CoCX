@@ -222,12 +222,23 @@ package classes.GeneticMemories {
 
 		public static const RUNIC:int = _partid++;
 		EnumValue.add(Memories, RUNIC, "RUNIC", {
-			id: "Anubis Glyph Pattern",
-			name: "Glyph Tattoos",
+			id: "Barometz Runic Pattern",
+			name: "Runic Tattoos",
 			cost: 100,
 			title: "Anubis",
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.SkinPatternRunic
+			}
+		});
+
+		public static const SOULFORCE_SCARING:int = _partid++;
+		EnumValue.add(Memories, SOULFORCE_SCARING, "SOULFORCE_SCARING", {
+			id: "Hollow Soulforce Scaring",
+			name: "Soulforce Scaring",
+			cost: 100,
+			title: "Hollow",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.SkinPatternSoulforceScaring
 			}
 		});
 

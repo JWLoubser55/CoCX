@@ -4426,8 +4426,10 @@ public class PerkLib
 				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Cero', 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +x%(+25%) Soulforce skills, +x%(+25%) Hollow skills)");
 		public static const ExanimationIV:PerkType = mk("Exanimation IV", "Exanimation IV",
 				"");
-		public static const TouchOfTheDamned:PerkType = mk("Touch of the Damned", "Touch of the Damned",
-				"All unarmed attacks and natural weapons: inflicts acid damage for 3 turns. This acid damage stacks on top of other acid attacks and DOTs. (5% / 15% of foes Total hp) Also generate soulforce equivalent to 5% / 15% of damage done to foe and fill satiety by 1 / 3.");
+		public static const ExanimationV:PerkType = mk("Exanimation V", "Exanimation V",
+				"");
+		public static const ExanimationVI:PerkType = mk("Exanimation VI", "Exanimation VI",
+				"");
 		public static const EzekielBlessing:PerkType = mk("Ezekiel Blessing", "Ezekiel Blessing",
 				"You've received the blessing of Ezekiel, enhancing your body and mind. +10 to all stats.").withBuffs({'sens':10}, false);
 		public static const Feeder:PerkType = mk("Feeder", "Feeder",
@@ -4619,6 +4621,10 @@ public class PerkLib
 				"An anubis never truly runs out of soul force and regenerates 5% of its total soul force per round from absorbing ambient wandering soul energy.");
 		public static const SpiderOvipositor:PerkType = mk("Spider Ovipositor", "Spider Ovipositor",
 				"Allows you to lay eggs through a special organ on your arachnid abdomen, though you need at least 10 eggs to lay.");
+		public static const SpiritualHunger:PerkType = mk("Spiritual Hunger", "Spiritual Hunger",
+				"You will no longer gain nourishment from anything with the exception of Breast milk (Marble's bottled milk is allowed), semen, girlcum, Souldrain or Souleat foes, eating lethicite, eating soul residue, eating hollows and eating mask fragments. "+
+				"(When dropping below 50% of max satiety would cause drain of 20% of max soulforce per hour (if lacking soulforce would drain health 15% of max HP per hour). When dropping below 30% of max satiety would cause drain of 20% of max health per hour. "+
+				"At 70% and above satiety, the pc will get a 20% boost to all stats (excluding sensitivity), 20% boost to Soulforce skills and Hollow skills.)");
 		public static const StrengthOfStone:PerkType = mk("Strenght of stone", "Strength of stone", //first is purposeful typo to revert back to original perk id
 				"Add half of the gargoyle toughness as a bonus to strength.");
 		public static const Supercharged:PerkType = mk("Supercharged", "Supercharged",
@@ -4635,6 +4641,8 @@ public class PerkLib
 				"You are five times taller than your effective base size.");
 		public static const TitanicStrength:PerkType = mk("Titanic Strength", "Titanic Strength",
 				"While 9 ft tall or above ability increases total strength based on tallness up to 1% per 0.5 ft.");
+		public static const TouchOfTheDamned:PerkType = mk("Touch of the Damned", "Touch of the Damned",
+				"All unarmed attacks and natural weapons: inflicts acid damage for 3 turns. This acid damage stacks on top of other acid attacks and DOTs. (5% / 15% of foes Total hp) Also generate soulforce equivalent to 5% / 15% of damage done to foe and fill satiety by 1 / 3.");
 		public static const TransformationAcclimation:PerkType = mk("Transformation Acclimation", "Transformation Acclimation",
 				"Increases the likelihood of undergoing a transformation even if you have transformation resistance.");
 		public static const TransformationResistance:PerkType = mk("Transformation Resistance", "Transformation Resistance",
@@ -9222,4 +9230,4 @@ public class PerkLib
 	}
 }
 
-}
+}

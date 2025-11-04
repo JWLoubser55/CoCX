@@ -982,6 +982,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const SkinPatternCircuit:Transformation 			    = skin.SkinPatternCircuit.registerTf(AS_SKIN_PATTERN, AE_AUTOMATA);
     public const SkinPatternDemonicPleasureRune:Transformation	= skin.SkinPatternDemonicPleasureRune.registerTfMultiple(AS_SKIN_PATTERN, AE_DEMON, AE_MARILITH);
     public const SkinPatternRunic:Transformation				= skin.SkinPatternRunic.registerTf(AS_SKIN_PATTERN, AE_BAROMETZ);
+    public const SkinPatternSoulforceScaring:Transformation		= skin.SkinPatternSoulforceScaring.registerTf(AS_SKIN_PATTERN, AE_HOLLOW);
 
 
 //TAIL
@@ -1317,4 +1318,4 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 		trace("\n"+dump.join("\n"));
 	}
 }
-}
+}

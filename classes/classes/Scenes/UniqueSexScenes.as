@@ -1085,7 +1085,7 @@ public class UniqueSexScenes extends BaseContent
 			outputText("A stream of soulforce pours into you. Your maw clamps down greedily. Jaw muscles spasming as molten wire slides down your throat. It burns - a bitterness with a cloying sweetness that lingers. Almost unbearable in its intensity. The warmth spreads through your ruined chest, nourishing yourself.\n\n");
 			outputText("[Themonster] arches, thrashing beneath you. Body and spirit both writhing, a soundless scream locked behind lips that cannot move. [Themonster] eyes roll back as their essence torn off bit by bit. Not enough to kill, but far too much to ignore. When you finally wrench yourself away,they collapse. A puppet with slack strings. Yetlive, but drained and trembling.\n\n");
 			outputText("You rise over them, mask still aglow with soulforce. [Themonster] shifts below you, dazed, shivering in submission. You’ve left [themonster] alive, your dominance etched into [themonster] very spirit.\n\n");
-			player.hollowFeed(2);
+			player.hollowFeed(3);
 			cleanupAfterCombat();
 			if (player.hasStatusEffect(StatusEffects.ChainOfFate) && player.statusEffectv1(StatusEffects.ChainOfFate) > 0 && player.statusEffectv2(StatusEffects.ChainOfFate) <= 0) {
 				doNext(SceneLib.camp.campUniqueScenes.transformationIntoHollow, true);
@@ -1097,7 +1097,7 @@ public class UniqueSexScenes extends BaseContent
 			outputText("You lean over [themonster] - you don’t breathe anymore, but your body mimics the motion in ragged spasms. Your chest aches where the Chain of Fate has rotted away, and in its place the hunger claws at you. The soul hangs above [themonster] like a pale ember, trembling, maybe trying to escape. You can feel its pulse quicken at your approach. The way air around it thrums against your skin, its rhythm syncs with echoes in the gaping hole in your chest.\n\n");
 			outputText("Instinct guides you. Your mask splits at the jawline, the teeth within grinding against each other as they split. Your hand pins the fading spirit, and the first pull comes without thought.\n\n");
 			outputText("Your maw snaps shut with greedy aplomb. The soul doesn't go down easy, coiling down your throat like molten wire. The taste is unbearable: bitterness with a sugar sweet aftertaste, shockingly intoxicating. It fills you with warmth and bolsters your strength.\n\n");
-			player.hollowFeed(3);
+			player.hollowFeed(4);
 			cleanupAfterCombat();
 			if (player.hasStatusEffect(StatusEffects.ChainOfFate) && player.statusEffectv1(StatusEffects.ChainOfFate) > 0 && player.statusEffectv2(StatusEffects.ChainOfFate) <= 0) {
 				doNext(SceneLib.camp.campUniqueScenes.transformationIntoHollow, true);

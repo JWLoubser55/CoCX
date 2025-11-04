@@ -96,7 +96,7 @@ public class PlayerInfo extends BaseContent {
 		if (player.hasPerk(PerkLib.ExanimationII)) {
 			bodyStats += "<b>Soul Points:</b> ";
 			if (player.perkv2(PerkLib.ExanimationII) == 1) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 100\n";
-			else bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 30\n";
+			else bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 40\n";
 		}
 		bodyStats += "<b>Times Transformed:</b> " + flags[kFLAGS.TIMES_TRANSFORMED] + "\n";
 		bodyStats += "<b>Tone:</b> " + player.tone + " / " + player.maxToneCap() + "\n";

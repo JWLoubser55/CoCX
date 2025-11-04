@@ -966,6 +966,23 @@ public class SkinTransformations extends MutationsHelper {
 				return player.skin.base.pattern === Skin.PATTERN_RUNIC;
 			}
 	);
+
+	public const SkinPatternSoulforceScaring: Transformation = new SimpleTransformation("Soulforce Scaring Skin Pattern",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Flecks of soulforce tear out of your flesh, they streak across your [body] and creep their way along your legs. The voilent flare up of spiritual pressure fades, you note that from your [chest] to [arms] and all across [body] and down your [legs] - are abstract patterns. They remind you of sigils and patterns one would see from tribals and occult studies. <b>You now have Soulforce Scaring skin pattern.</b>";
+				player.skin.base.pattern = Skin.PATTERN_SOULFORCE_SCARING;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SkinPatternMem.getMemory(SkinPatternMem.SOULFORCE_SCARING));
+			},
+			// is present
+			function (): Boolean {
+				return player.skin.base.pattern === Skin.PATTERN_SOULFORCE_SCARING;
+			}
+	);
 	/*
   */
 }

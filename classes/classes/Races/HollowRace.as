@@ -59,10 +59,13 @@ public class HollowRace extends Race {
 						function (body:BodyData):Boolean {
 							return body.player.hasStatusEffect(StatusEffects.DarkSign)
 						}, +2)
+				.skinBasePattern(Skin.PATTERN_SOULFORCE_SCARING, +2)
 				.skinBasePattern(Skin.PATTERN_WHITE_BLACK_VEINS, +1)
 				.hasPerk(PerkLib.ExanimationI, +6)
-				.hasPerk(PerkLib.ExanimationII, +8)
-				//.hasPerk(PerkLib.ExanimationII, +10)
+				.hasPerk(PerkLib.ExanimationII, +6)
+				.hasPerk(PerkLib.ExanimationIII, +6)
+				.hasPerk(PerkLib.ExanimationIV, +12)
+				//.hasPerk(PerkLib.ExanimationV, +12)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.LivingWeaponIM);
@@ -89,14 +92,25 @@ public class HollowRace extends Race {
 				})
 				.end();
 		
-		buildTier(30, "Vacant")
+		buildTier(32, "Vacant")
 				.requirePerk(PerkLib.ExanimationIII)
 				.buffs({
-					"str.mult": +3.00,
-					"tou.mult": +5.40,
-					"int.mult": +3.00,
-					"wis.mult": +5.40,
-					"sens": +330
+					"str.mult": +3.10,
+					"tou.mult": +5.80,
+					"int.mult": +3.10,
+					"wis.mult": +5.80,
+					"sens": +340
+				})
+				.end();
+		
+		buildTier(40, "Atarxis")
+				.requirePerk(PerkLib.ExanimationIV)
+				.buffs({
+					"str.mult": +4.10,
+					"tou.mult": +7.00,
+					"int.mult": +4.10,
+					"wis.mult": +7.00,
+					"sens": +420
 				})
 				.end();
 	}

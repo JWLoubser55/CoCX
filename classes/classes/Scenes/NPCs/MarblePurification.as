@@ -1542,7 +1542,7 @@ public class MarblePurification extends NPCAwareContent{
 		 	outputText("\n\nWhile savoring the taste, you think that you should give some special attention to the fleshy nub in your mouth, and let your tongue play over the tip.  A few flicks and then a careful circle yields a very pleasant groan.  At the same time, Marble's hands run across your face and head while she mutters gentle words of encouragement and gratitude.");
 		 	outputText("\n\nAs you drink, you feel the aches and pains of the day wash away, and new energy fills your body.  The strengthening properties have vanished with the corruption and although the healing properties are weaker, they yet remain.  The flow starts to slow, and you take that as the cue to switch over to the other tit.  A satisfying sigh of pleasure accompanies this switch, and the gentle bovine gives your head a gentle hug, stroking the back of your head.");
 			player.refillHunger(30);
-			if (player.hasPerk(PerkLib.ExanimationII)) player.hollowFeed(1);
+			if (player.hasPerk(PerkLib.EmptyVessel)) player.hollowFeed(1);
 		 	outputText("\n\nFinally, your tender moment with your mate comes to an end, and the last of her milk flows down your throat.  You separate, and a small burp escapes your lips.  Marble giggles at this and tells you to come and see her again whenever you're feeling thirsty.  She should be ready to nurse you again in about four hours.");
 			//Restore 20% of PC's health
 			HPChange(Math.round(player.maxHP()*.2),false,false);

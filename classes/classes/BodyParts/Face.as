@@ -725,8 +725,10 @@ public class Face extends SaveableBodyPart {
 			var desc: String = "";
 
 			desc += " Upon your face rest a mask that seems to respond to your feels and even splitting itself wide open to give you fresh air.";
-			if (creature.hasPerk(PerkLib.ExanimationIII)) {
+			if (creature.hasPerk(PerkLib.ExanimationIV)) {
 				desc += " Your face is human in shape and structure with [skin coat]. Your mouth is somewhat human save for your fox-like canines.";
+			} else if (creature.hasPerk(PerkLib.ExanimationIII)) {
+				desc += " It is a complete skull, jagged and asymmetrical, grows across the entire head. Spikes and ridges erupt along its features, each one unique to your spirit. The eye-sockets are twin abysses, glowing faintly with the flame of your soul.";
 			} else if (creature.hasPerk(PerkLib.ExanimationII)) {
 				desc += " The mask closes over half of your face, an asymmetrical skull that mocks human expression. The eyehole is wider, blacker, and often weeps smoky trails. Teeth sharpen and overlap like a predator forcing its jaw into existence.";
 			} else {
