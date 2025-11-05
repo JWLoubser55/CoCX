@@ -1665,4 +1665,4 @@ public class MarblePurification extends NPCAwareContent{
 		outputText("\n\n");
 	}
 }
-}
+}

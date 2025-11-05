@@ -14309,6 +14309,22 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
                 player.addStatusValue(StatusEffects.CooldownAcidSpit, 1, -1);
             }
         }
+		//Ferro Pellis
+		if (player.hasStatusEffect(StatusEffects.CooldownFerroPellis)) {
+            if (player.statusEffectv1(StatusEffects.CooldownFerroPellis) <= 0) {
+                player.removeStatusEffect(StatusEffects.CooldownFerroPellis);
+            } else {
+                player.addStatusValue(StatusEffects.CooldownFerroPellis, 1, -1);
+            }
+        }
+		//Pacisci
+		if (player.hasStatusEffect(StatusEffects.CooldownPacisci)) {
+            if (player.statusEffectv1(StatusEffects.CooldownPacisci) <= 0) {
+                player.removeStatusEffect(StatusEffects.CooldownPacisci);
+            } else {
+                player.addStatusValue(StatusEffects.CooldownPacisci, 1, -1);
+            }
+        }
 		//Cero
 		if (player.hasStatusEffect(StatusEffects.CooldownCero)) {
             if (player.statusEffectv1(StatusEffects.CooldownCero) <= 0) {
@@ -20098,8 +20114,11 @@ public function debuffsOrDoTDuration(duration:Number):Number {
 public function hollowSkillsAndSoulskillsBoost():Number {
 	var hollowed:Number = 1.15;
 	if (player.hasPerk(PerkLib.ExanimationII)) hollowed += 0.1;
-	if (player.hasPerk(PerkLib.ExanimationIII)) hollowed += 0.15;
-	if (player.hunger >= Math.round(player.maxHunger() * 0.7)) hollowed += 0.2;
+	if (player.hasPerk(PerkLib.ExanimationIII)) hollowed += 1.25;
+	if (player.hunger >= Math.round(player.maxHunger() * 0.7)) {
+		if (player.hasPerk(PerkLib.SpiritualHunger)) hollowed += 0.8;
+		hollowed += 0.2;
+	}
 	return hollowed;
 }
 

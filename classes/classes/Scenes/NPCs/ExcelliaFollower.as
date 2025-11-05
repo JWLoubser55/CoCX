@@ -794,4 +794,4 @@ public function ExcelliaAndJojoCampScene():void {
 	doNext(camp.returnToCampUseOneHour);
 }
 	}
-}
+}

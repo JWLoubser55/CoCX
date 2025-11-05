@@ -4423,13 +4423,15 @@ public class PerkLib
 		public static const ExanimationII:PerkType = mk("Exanimation II", "Exanimation II",
 				"You've lost the tether between your body and soul now are a Hollow. Gives racial status Hollow. Enables the use of Hollow special 'Acid Spit' and passive 'Touch of the Damned'. (Hunger gauge deplete 30%(60%) faster, +10%(+25%) Soulforce skills, +10%(+25%) Hollow skills)");
 		public static const ExanimationIII:PerkType = mk("Exanimation III", "Exanimation III",
-				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Cero', 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +x%(+25%) Soulforce skills, +x%(+25%) Hollow skills)");
+				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +125%(+150%) Soulforce skills, +125%(+150%) Hollow skills)");
 		public static const ExanimationIV:PerkType = mk("Exanimation IV", "Exanimation IV",
 				"");
 		public static const ExanimationV:PerkType = mk("Exanimation V", "Exanimation V",
 				"");
 		public static const ExanimationVI:PerkType = mk("Exanimation VI", "Exanimation VI",
 				"");
+		public static const SoulResonance:PerkType = mk("Soul resonance", "Soul resonance",
+				"Soulforce scaring will manifest one random elemental Affinity. Yields an additional Affinity once pc is of Mortarch or higher.");
 		public static const EzekielBlessing:PerkType = mk("Ezekiel Blessing", "Ezekiel Blessing",
 				"You've received the blessing of Ezekiel, enhancing your body and mind. +10 to all stats.").withBuffs({'sens':10}, false);
 		public static const Feeder:PerkType = mk("Feeder", "Feeder",
@@ -4624,7 +4626,7 @@ public class PerkLib
 		public static const SpiritualHunger:PerkType = mk("Spiritual Hunger", "Spiritual Hunger",
 				"You will no longer gain nourishment from anything with the exception of Breast milk (Marble's bottled milk is allowed), semen, girlcum, Souldrain or Souleat foes, eating lethicite, eating soul residue, eating hollows and eating mask fragments. "+
 				"(When dropping below 50% of max satiety would cause drain of 20% of max soulforce per hour (if lacking soulforce would drain health 15% of max HP per hour). When dropping below 30% of max satiety would cause drain of 20% of max health per hour. "+
-				"At 70% and above satiety, the pc will get a 20% boost to all stats (excluding sensitivity), 20% boost to Soulforce skills and Hollow skills.)");
+				"At 70% and above satiety, the pc will get a 20% boost to all stats (excluding sensitivity), 80%(100%) boost to Soulforce skills and Hollow skills.)");
 		public static const StrengthOfStone:PerkType = mk("Strenght of stone", "Strength of stone", //first is purposeful typo to revert back to original perk id
 				"Add half of the gargoyle toughness as a bonus to strength.");
 		public static const Supercharged:PerkType = mk("Supercharged", "Supercharged",
@@ -9230,4 +9232,4 @@ public class PerkLib
 	}
 }
 
-}
+}
