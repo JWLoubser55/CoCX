@@ -130,9 +130,6 @@ public function transformationIntoDemiHollow():void {
 	outputText("A soundless panic rips its way from your throat - and you try to breathe. The chest heaves, the lungs contract, but nothing comes. The act itself feels like pantomime, a muscle memory, a phantom pain.\n\n");
 	outputText("The [skin] of your [face] burns, peels - no, hardens. Something smooth and bone-white pushes outward, sculpting itself across your features like wet clay hastily fired. Faint cracks form pulsing with soulforce. Your [hands] scratches at it, but it does not budge. Instead your sensation of touch feels dull. The frame of your body twists - too long in the limbs, too sharp in the ribs, feral yet ethereal. Lanky arms that twitch, a jaw that aches with jagged teeth you do not remember growing.\n\n");
 	outputText("You try to breathe but no breath rises your chest. You keep at it, the sensation feels like it grounds you, as if should you stop you would fade away. The silence that follows, broken only by whispers - jealousy of those that walk free of the pains that hail you. And strange hunger gnaws at your very core. They are not yours, and yet they cling to you.\n\n");
-	player.addStatusValue(StatusEffects.ChainOfFate, 1, 168);
-	player.createPerk(PerkLib.ExanimationI, 0, 0, 0, 0);
-	player.createPerk(PerkLib.EmptyVessel, 0, 0, 0, 0);
 	CoC.instance.transformations.HornsDraconicDual.applyEffect(false);
 	CoC.instance.transformations.FaceHollowMask.applyEffect(false);
 	CoC.instance.transformations.EyesHollow.applyEffect(false);
@@ -140,6 +137,9 @@ public function transformationIntoDemiHollow():void {
 	CoC.instance.transformations.LowerBodyHuman.applyEffect(false);
 	CoC.instance.transformations.TailDraconic.applyEffect(false);
 	CoC.instance.transformations.SkinPatternWhiteBlackVeins.applyEffect(false);
+	player.addStatusValue(StatusEffects.ChainOfFate, 1, 168);
+	player.createPerk(PerkLib.ExanimationI, 0, 0, 0, 0);
+	player.createPerk(PerkLib.EmptyVessel, 0, 0, 0, 0);
 	doNext(camp.returnToCamp);
 }
 public function transformationIntoHollow(postFeeding:Boolean = false):void {
@@ -151,14 +151,54 @@ public function transformationIntoHollow(postFeeding:Boolean = false):void {
 	outputText("Hunger seizes you. The living echo that burns whit hot in your mind, and even the dead stir your appetite. You would lunge at it without a second thought. Stranger yet, the whispers press harder \"<i>Feed. Feed. Feed.</i>\"\n\n");
 	outputText("<b>That all too familiar pang in your core nags at the corner of your mind. The relentless hunger drives you on and you learn to love it against your better judgment. Giving into it will lead to damnation. But the power that sings in your veins whisper promises of greater heights.\n\n");
 	outputText("Every soul you harvest, another voice in your choir. You must find a cure if you are to escape the grasp of this madness or take the plunge and transcend Unlife.</b>\n\n");
-	player.removeStatusEffect(StatusEffects.ChainOfFate);
-	player.createStatusEffect(StatusEffects.DarkSign, 0, 0, 0, 0);
-	player.createPerk(PerkLib.ExanimationII, 0, 0, 0, 0);
-	player.createPerk(PerkLib.TouchOfTheDamned, 0, 0, 0, 0);
 	CoC.instance.transformations.ArmsHollow.applyEffect(false);
 	CoC.instance.transformations.LowerBodyHollow.applyEffect(false);
 	CoC.instance.transformations.TailHollow.applyEffect(false);
 	CoC.instance.transformations.HornsHollow.applyEffect(false);
+	player.removeStatusEffect(StatusEffects.ChainOfFate);
+	player.createStatusEffect(StatusEffects.DarkSign, 0, 0, 0, 0);
+	player.createPerk(PerkLib.ExanimationII, 0, 0, 0, 0);
+	player.createPerk(PerkLib.TouchOfTheDamned, 0, 0, 0, 0);
+	if (postFeeding) explorer.stopExploring();
+	doNext(camp.returnToCampUseOneHour);
+}
+public function transformationIntoVacantHollow(postFeeding:Boolean = false):void {
+	clearOutput();
+	outputText("Your soul flares with power, and with it comes the sickly bloom of growth you have come to dread as much as crave.\n\n");
+	outputText("One hunt is never enough. You have feasted until your form warps. Limbs grow thicker, heavier. A tail lashes behind you, spines erupt along your back. Yet something feels wrong - your body is in constant flux. At times it feels as though you have four or five legs, but when you look down, all you see are your own.\n\n");
+	outputText("Your mask changes with each kill, and with every soul drained of its luster. Cracks spider across its surface. Only to be mended by soulforce, glowing with seams like molten veins. Ridges carve themselves deeper, some forming patterns like tribal paint. Others twisting into jagged, abstract designs. The mask becomes animated, expressive - almost alive.\n\n");
+	outputText("Within your mind, voices crawl and whisper. A crowd of writhing, screaming shadows surrounds you. One in particular stands still and quiet amid the cacophony, wearing a wide grin. As soon as you focus on it, its eyes snap open. Irises as white as its teeth and sclera as black as the carapace of a drider - eyes one would mistake for a demon. You blink, and the figure, along with its companions, vanishes. You’re left wondering if what you saw was only in your head.\n\n");
+	if (player.faceType != Face.HOLLOW_MASK) CoC.instance.transformations.FaceHollowMask.applyEffect(false);
+	if (player.eyes.type != Eyes.HOLLOW) CoC.instance.transformations.EyesHollow.applyEffect(false);
+	if (player.arms.type != Arms.HOLLOW) CoC.instance.transformations.ArmsHollow.applyEffect(false);
+	if (player.lowerBody != LowerBody.HOLLOW) CoC.instance.transformations.LowerBodyHollow.applyEffect(false);
+	if (player.tailType != Tail.HOLLOW) CoC.instance.transformations.TailHollow.applyEffect(false);
+	if (player.horns.type != Horns.HOLLOW) CoC.instance.transformations.HornsHollow.applyEffect(false);
+	CoC.instance.transformations.SkinPatternSoulforceScaring.applyEffect(false);
+	player.setPerkValue(PerkLib.ExanimationII, 1, 0);
+	player.setPerkValue(PerkLib.ExanimationII, 2, 0);
+	player.addPerkValue(PerkLib.ExanimationII, 4, 1);
+	player.createPerk(PerkLib.ExanimationIII, 0, 0, 0, 0);
+	player.createPerk(PerkLib.GiantSize, 0, 0, 0, 0);
+	player.createPerk(PerkLib.AcidAffinity, 0, 0, 0, 0);
+	player.createPerk(PerkLib.SoulResonance, 0, 0, 0, 0);
+	var choice1:Number = rand(3);
+	switch (choice1) {
+		case 0:
+			return player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
+		case 1:
+			return player.createPerk(PerkLib.FireAffinity, 0, 0, 0, 0);
+		case 2:
+			return player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
+		default:
+			return player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
+	}
+	if (postFeeding) explorer.stopExploring();
+	doNext(camp.returnToCampUseOneHour);
+}
+public function transformationIntoAtarxisHollow(postFeeding:Boolean = false):void {
+	clearOutput();
+	outputText("\"<i></i>\"\n\n");
 	if (postFeeding) explorer.stopExploring();
 	doNext(camp.returnToCampUseOneHour);
 }

@@ -306,10 +306,10 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Touch of the Damned. Gained by reaching Hollow tier of Hollow race. Effects: All unarmed attacks and natural weapons: inflicts acid damage for 3 turns. This acid damage stacks on top of other acid attacks and DOTs. (5% / 15% of foes Total hp) Also generate soulforce equivalent to 5% / 15% of damage done to foe and fill satiety by 1 / 3.\n");
 			outputText("-New event perk: Exanimation II. Gained by reaching Hollow tier of Hollow race. Effects: Enables the use of Hollow special 'Acid Spit' and passive 'Touch of the Damned'. (Hunger gauge deplete 30%(60%) faster, +10%(+25%) Soulforce skills, +10%(+25%) Hollow skills)\n");
 			outputText("-New M. Special: Acid Spit. Usable by having Exanimation II perk. Effect: Spit acid at your opponent corroding his defence and dealing progressive damage, 2 turns cooldown.\n");
-			outputText("-Action like Explore, Herbalism and fighting Dummy now can be done not onbly by night races but also those PC's that have night/dark vision.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Action like Explore, Herbalism and fighting Dummy now can be done not only by night races but also those PC's that have night/dark vision.\n");
+			outputText("-New event perk: Giant size. Gained by reaching Vacant tier of Hollow race. Effects: You are three times taller than your effective base size.\n");
+			outputText("-New event perk: Titan might. Gained by becoming Cyclop / Sea Dragon. Effects: You count as four times taller than your effective base size for the purpose of perk effects.\n");
+			outputText("-Gigant might perk effects been decreased from 'five times' to 'two and half time'.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

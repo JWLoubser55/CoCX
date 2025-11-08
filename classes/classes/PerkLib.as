@@ -4430,8 +4430,6 @@ public class PerkLib
 				"");
 		public static const ExanimationVI:PerkType = mk("Exanimation VI", "Exanimation VI",
 				"");
-		public static const SoulResonance:PerkType = mk("Soul resonance", "Soul resonance",
-				"Soulforce scaring will manifest one random elemental Affinity. Yields an additional Affinity once pc is of Mortarch or higher.");
 		public static const EzekielBlessing:PerkType = mk("Ezekiel Blessing", "Ezekiel Blessing",
 				"You've received the blessing of Ezekiel, enhancing your body and mind. +10 to all stats.").withBuffs({'sens':10}, false);
 		public static const Feeder:PerkType = mk("Feeder", "Feeder",
@@ -4468,7 +4466,9 @@ public class PerkLib
 		public static const Ghostslinger:PerkType = mk("Ghost-slinger", "Ghost-slinger",
 				"Increases damage with guns and thrown weapons by 15%.");
 		public static const GiantMight:PerkType = mk("Giant might", "Giant might",
-				"You count as five times taller than your effective base size for the purpose of perk effects.");
+				"You count as two and half times taller than your effective base size for the purpose of perk effects.");
+		public static const GiantSize:PerkType = mk("Giant size", "Giant size",
+				"You are three times taller than your effective base size.");
 		public static const GoblinoidBlood:PerkType = mk("Goblinoid blood", "Goblinoid blood",
 				"Your blood is highly susceptible to chemical drugs, stimulants and poisons.");
 		public static const GreaterDiehardEx:PerkType = mk("Greater Diehard (Ex)", "Greater Diehard (Ex)",
@@ -4621,6 +4621,8 @@ public class PerkLib
 				"You have the ability to consume souls for power.");
 		public static const SoulNexus:PerkType = mk("Soul Nexus", "Soul Nexus",
 				"An anubis never truly runs out of soul force and regenerates 5% of its total soul force per round from absorbing ambient wandering soul energy.");
+		public static const SoulResonance:PerkType = mk("Soul resonance", "Soul resonance",
+				"Soulforce scaring will manifest one random elemental (Ice/Fire/Lightning) Affinity. Yields an additional Affinity once pc is of Mortarch or higher.");
 		public static const SpiderOvipositor:PerkType = mk("Spider Ovipositor", "Spider Ovipositor",
 				"Allows you to lay eggs through a special organ on your arachnid abdomen, though you need at least 10 eggs to lay.");
 		public static const SpiritualHunger:PerkType = mk("Spiritual Hunger", "Spiritual Hunger",
@@ -4639,6 +4641,8 @@ public class PerkLib
 				"You have the power to wield and throw objects with your mind alone. Gain a bonus to damage based on intelligence when using various -kinesis specials, using thrown weapons and aquire additional attacks based on character level.");
 		public static const ThickSkin:PerkType = mk("Thick Skin", "Thick Skin",
 				"Toughens your dermis to provide 2 points of armor and 1 point of magic resistance.");
+		public static const TitanicMight:PerkType = mk("Titan might", "Titan might",
+				"You count as four times taller than your effective base size for the purpose of perk effects.");
 		public static const TitanicSize:PerkType = mk("Titan size", "Titan size",
 				"You are five times taller than your effective base size.");
 		public static const TitanicStrength:PerkType = mk("Titanic Strength", "Titanic Strength",

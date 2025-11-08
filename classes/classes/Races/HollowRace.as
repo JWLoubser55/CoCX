@@ -61,6 +61,7 @@ public class HollowRace extends Race {
 						}, +2)
 				.skinBasePattern(Skin.PATTERN_SOULFORCE_SCARING, +2)
 				.skinBasePattern(Skin.PATTERN_WHITE_BLACK_VEINS, +1)
+				.hasPerk(PerkLib.SoulResonance, +6)
 				.hasPerk(PerkLib.ExanimationI, +6)
 				.hasPerk(PerkLib.ExanimationII, +6)
 				.hasPerk(PerkLib.ExanimationIII, +6)
@@ -92,14 +93,14 @@ public class HollowRace extends Race {
 				})
 				.end();
 		
-		buildTier(32, "Vacant")
+		buildTier(40, "Vacant")
 				.requirePerk(PerkLib.ExanimationIII)
 				.buffs({
-					"str.mult": +3.10,
-					"tou.mult": +5.80,
-					"int.mult": +3.10,
-					"wis.mult": +5.80,
-					"sens": +340
+					"str.mult": +4.10,
+					"tou.mult": +7.00,
+					"int.mult": +4.10,
+					"wis.mult": +7.00,
+					"sens": +420
 				})
 				.end();
 		

@@ -1767,6 +1767,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					if (player.statusEffectv1(StatusEffects.ChainOfFate) <= 0 && player.statusEffectv2(StatusEffects.ChainOfFate) <= 0) SceneLib.camp.campUniqueScenes.transformationIntoHollow();
 				}
 			}
+			if (player.hasStatusEffect(StatusEffects.DarkSign)) {
+				/*if (player.perkv1(PerkLib.ExanimationII) ==  && player.perkv2(PerkLib.ExanimationII) >= 2 && player.perkv4(PerkLib.ExanimationII) == 1) SceneLib.camp.campUniqueScenes.transformationIntoAtarxisHollow();
+				else */if (player.perkv1(PerkLib.ExanimationII) == 60 && player.perkv2(PerkLib.ExanimationII) >= 1) SceneLib.camp.campUniqueScenes.transformationIntoVacantHollow();
+			}
 			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv1(PerkLib.EmptyVessel) == 0 && player.soulforce >= Math.round(player.maxSoulforce() * 0.6)) {
 				outputText("\nYour soulforce seems to stream around your body, immersing you in a transparent aura of spiritual energy. Its pressure is dense enough that it acts like a thin barrier.");
 				player.addPerkValue(PerkLib.EmptyVessel, 1, 1);
@@ -2372,20 +2376,33 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			needNext = player.gainOrLosePerk(PerkLib.EquineStrength, player.isAnyRaceCached(Races.HORSE, Races.CENTAUR, Races.LAQUINE), "You are enough of a horse-morph or centaur and have gained your special abilities!", "You are no longer enough of a horse-morph or centaur and have lost your special abilities!") || needNext;
 			//Laquine Might
 			needNext = player.gainOrLosePerk(PerkLib.LaquineMight, player.isRaceCached(Races.LAQUINE), "Woa maybe you’ve eaten too many raw carrots you feel your body ripple with power. It might also be you turning into a full Laquine doing this.", "As your body becomes less Laquine like you feel your energy is down both in libido and strength.") || needNext;
-			//Titan Might
+			//Titanic Size
 			needNext = player.gainOrLosePerk(PerkLib.TitanicSize,(player.tallness >= 80 && (player.isRaceCached(Races.SCYLLA, 2) || player.isAnyRaceCached(Races.HYDRA, Races.FROSTWYRM, Races.SANDWORM))), "Whoa, you've grown so big its a sheer miracle you don't damage the landscape while moving. That said, your size now contributes to your strength as well.",
 					(player.tallness < 80) ? "You sadly are no longer able to benefit from your size as much as you did before. Probably because you have shrunk to a smaller size." : "You sadly are no longer able to benefit from your size as much as you did before. Probably because you have transformed again.") || needNext;
-			//Oni Might
-			if (player.isRaceCached(Races.ONI) || player.isRaceCached(Races.CYCLOP) || player.isRaceCached(Races.ORCA) || player.isRaceCached(Races.SEA_DRAGON) || player.isRaceCached(Races.ABYSSAL_SHARK)) {
+			//Giant Might && Titan Might
+			if (player.isRaceCached(Races.ONI) || player.isRaceCached(Races.ORCA) || player.isRaceCached(Races.ABYSSAL_SHARK)) {
 				if (!player.hasPerk(PerkLib.GiantMight)) {
-					outputText("\nWhoa, you just feel so damn powerful like you could move mountains like your size has no relative correlation with your current strength. That must be the so called fabled strength of the giants.\n\n<b>(Gained Oni Might perk!)</b>\n");
+					outputText("\nWhoa, you just feel so damn powerful like you could move hills like your size has no relative correlation with your current strength. That must be the so called fabled strength of the giants.\n\n<b>(Gained Giant Might perk!)</b>\n");
 					player.createPerk(PerkLib.GiantMight, 0, 0, 0, 0);
 					needNext = true;
 				}
 			} else {
 				if (player.hasPerk(PerkLib.GiantMight)) {
-					outputText("\nYou sadly are no longer able to benefit from the giant natural might as much as you did before. Probably because you have transformed again.\n\n<b>(Lost the Oni Might perk!)</b>\n");
+					outputText("\nYou sadly are no longer able to benefit from the giant natural might as much as you did before. Probably because you have transformed again.\n\n<b>(Lost the Giant Might perk!)</b>\n");
 					player.removePerk(PerkLib.GiantMight);
+					needNext = true;
+				}
+			}
+			if (player.isRaceCached(Races.CYCLOP) || player.isRaceCached(Races.SEA_DRAGON)) {
+				if (!player.hasPerk(PerkLib.TitanicMight)) {
+					outputText("\nWhoa, you just feel so damn powerful like you could move mountains like your size has no relative correlation with your current strength. That must be the so called fabled strength of the titans.\n\n<b>(Gained Titan Might perk!)</b>\n");
+					player.createPerk(PerkLib.TitanicMight, 0, 0, 0, 0);
+					needNext = true;
+				}
+			} else {
+				if (player.hasPerk(PerkLib.TitanicMight)) {
+					outputText("\nYou sadly are no longer able to benefit from the titan natural might as much as you did before. Probably because you have transformed again.\n\n<b>(Lost the Titan Might perk!)</b>\n");
+					player.removePerk(PerkLib.TitanicMight);
 					needNext = true;
 				}
 			}

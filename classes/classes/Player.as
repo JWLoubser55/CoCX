@@ -45,6 +45,7 @@ import classes.Scenes.Monsters.Goblin;
 import classes.Scenes.Monsters.GoblinAssassin;
 import classes.Scenes.Monsters.GoblinShaman;
 import classes.Scenes.Monsters.GoblinWarrior;
+import classes.Scenes.Monsters.Hollow;
 import classes.Scenes.NPCs.AetherTwinsFollowers;
 import classes.Scenes.NPCs.BelisaFollower;
 import classes.Scenes.NPCs.EvangelineFollower;
@@ -8203,9 +8204,10 @@ use namespace CoC;
 		public function hollowFeed(subtype:Number):void {
 			var amnt:Number = 0;
 			var oldsp:Number = 0;
-			var capsp:Number = 40;//60
-			if (perkv2(PerkLib.ExanimationII) > 0) capsp += 50;//153
-			if (perkv2(PerkLib.ExanimationII) > 1) capsp += 50;//129
+			var capsp:Number = 60;
+			if (perkv2(PerkLib.ExanimationII) > 0) capsp += 50;//152
+			if (perkv2(PerkLib.ExanimationII) > 1) capsp += 50;//202
+			if (perkv2(PerkLib.ExanimationII) > 2) capsp += 50;//252
 			if (subtype == 0 || subtype == 1) {
 				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.1));
 				amnt += Math.round(maxHunger() * 0.15);
@@ -8242,6 +8244,8 @@ use namespace CoC;
 					oldsp += perkv1(PerkLib.ExanimationII);
 					if ((capsp - oldsp) >= 5) addPerkValue(PerkLib.ExanimationII, 1, 5);
 					else addPerkValue(PerkLib.ExanimationII, 1, (capsp - oldsp));
+					if (perkv2(PerkLib.ExanimationII) == 0 && perkv2(PerkLib.ExanimationII) < 1) addPerkValue(PerkLib.ExanimationII, 2, 1);
+					if (perkv2(PerkLib.ExanimationII) == 1 && perkv2(PerkLib.ExanimationII) < 2 && game.monster is Hollow) addPerkValue(PerkLib.ExanimationII, 2, 1);
 				}
 			}
 			var oldHunger:Number = hunger;
@@ -8250,7 +8254,7 @@ use namespace CoC;
 			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
 			//game.dynStats("lus", 0, "scale", false);
 			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
-			if (subtype == 3)  dynStats("cor", 10);
+			if (subtype == 4)  dynStats("cor", 10);
 			else dynStats("lus", 0, "scale", false);
 			EngineCore.statScreenRefresh();
 		}

@@ -314,7 +314,8 @@ public class Eyes extends BodyPart {
 	public static const HOLLOW: int = 52;
 	EnumValue.add(Types, HOLLOW, "HOLLOW", {
 		name:"hollow",
-		appearanceDesc: "Your eyes are a strange mix of black sclera and [eyecolor] iris, through eyes even the faintest pulse of soulforce is visible to you."
+		appearanceDesc: "Your eyes are a strange mix of black sclera and [eyecolor] iris, through eyes even the faintest pulse of soulforce is visible to you.",
+		Darkvision: true
 	});
 
 	public var count:int;

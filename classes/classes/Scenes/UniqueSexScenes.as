@@ -1102,6 +1102,10 @@ public class UniqueSexScenes extends BaseContent
 			if (player.hasStatusEffect(StatusEffects.ChainOfFate) && player.statusEffectv1(StatusEffects.ChainOfFate) > 0 && player.statusEffectv2(StatusEffects.ChainOfFate) <= 0) {
 				doNext(SceneLib.camp.campUniqueScenes.transformationIntoHollow, true);
 			}
+			if (player.hasStatusEffect(StatusEffects.DarkSign)) {
+				/*if (player.perkv1(PerkLib.ExanimationII) ==  && player.perkv2(PerkLib.ExanimationII) >= 2 && player.perkv4(PerkLib.ExanimationII) == 1) SceneLib.camp.campUniqueScenes.transformationIntoAtarxisHollow();
+				else */if (player.perkv1(PerkLib.ExanimationII) == 60 && player.perkv2(PerkLib.ExanimationII) >= 1) doNext(SceneLib.camp.campUniqueScenes.transformationIntoVacantHollow, true);
+			}
 		}
 
 		public function trueDemonSuccubusFeast():void {

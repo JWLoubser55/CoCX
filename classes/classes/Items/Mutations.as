@@ -12631,7 +12631,7 @@ public final class Mutations extends MutationsHelper {
             transformations.FaceRaccoonMask.applyEffect();
             changes++;
         }
-                //gain full-coon face (requires half-coon and fur)
+        //gain full-coon face (requires half-coon and fur)
         //from humanoid - should be the only one possible
         else if (player.faceType == Face.RACCOON_MASK && player.lowerBody == LowerBody.RACCOON && player.isFurCovered() && (player.skin.coverage == Skin.COVERAGE_COMPLETE || player.skin.coverage == Skin.COVERAGE_HIGH) && rand(4) == 0 && changes < changeLimit) {
             outputText("[pg]");

@@ -1344,7 +1344,8 @@ public class Creature extends Utils
 		private var _tallness:Number = 0;
 		public function get tallness():Number {
 			var multiplier:Number = 1;
-			if (hasPerk(PerkLib.TitanicSize)) multiplier = 5;
+			if (hasPerk(PerkLib.GiantSize)) multiplier += 2;
+			if (hasPerk(PerkLib.TitanicSize)) multiplier += 4;
 			return basetallness*multiplier;
 		}
 
@@ -1354,12 +1355,14 @@ public class Creature extends Utils
 
 		public function get effectiveTallness():Number {
 			var multiplier:Number = 1;
-			if (hasPerk(PerkLib.GiantMight)) multiplier += 4;
+			if (hasPerk(PerkLib.GiantMight)) multiplier += 1.5;
+			if (hasPerk(PerkLib.TitanicMight)) multiplier += 3;
 			return tallness*multiplier;
 		}
 
 		public function set tallness(value:Number):void {
 			var multiplier:Number = 1;
+			if (hasPerk(PerkLib.GiantSize)) multiplier += 2;
 			if (hasPerk(PerkLib.TitanicSize)) multiplier += 4;
 			_tallness = value*multiplier;
 		}
