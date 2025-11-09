@@ -679,6 +679,12 @@ public class Arms extends SaveableBodyPart {
 			.replace(upperCasePattern, function($0:*):* {return $0.toUpperCase();});
 	}
 
+	public function arms():String {
+		var prefix:String = "";
+		if (hasFourArms()) prefix = "four ";
+		return prefix + "arms";
+	}
+
 	public static function hasFelineArms(creature: *):Boolean {
 		const id: int = creature.arms.type;
 

@@ -1768,8 +1768,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 			}
 			if (player.hasStatusEffect(StatusEffects.DarkSign)) {
-				/*if (player.perkv1(PerkLib.ExanimationII) ==  && player.perkv2(PerkLib.ExanimationII) >= 2 && player.perkv4(PerkLib.ExanimationII) == 1) SceneLib.camp.campUniqueScenes.transformationIntoAtarxisHollow();
-				else */if (player.perkv1(PerkLib.ExanimationII) == 60 && player.perkv2(PerkLib.ExanimationII) >= 1) SceneLib.camp.campUniqueScenes.transformationIntoVacantHollow();
+				/*if (player.perkv1(PerkLib.ExanimationII) >=  && player.perkv2(PerkLib.ExanimationII) >= 2 && player.perkv4(PerkLib.ExanimationII) == 1) SceneLib.camp.campUniqueScenes.transformationIntoAtarxisHollow();
+				else */if (player.perkv1(PerkLib.ExanimationII) >= 60 && player.perkv2(PerkLib.ExanimationII) >= 1) SceneLib.camp.campUniqueScenes.transformationIntoVacantHollow();
 			}
 			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv1(PerkLib.EmptyVessel) == 0 && player.soulforce >= Math.round(player.maxSoulforce() * 0.6)) {
 				outputText("\nYour soulforce seems to stream around your body, immersing you in a transparent aura of spiritual energy. Its pressure is dense enough that it acts like a thin barrier.");
@@ -2090,7 +2090,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
 				needNext = true;
 			}
-			else if (!player.isRaceCached(Races.YETI) && !player.isRaceCached(Races.YUKIONNA) && !player.isRaceCached(Races.MELKIE) && !player.isRaceCached(Races.FROSTWYRM) && !player.isRaceCached(Races.GLACIAL_TROLL) && !player.isRaceCached(Races.WENDIGO) && !player.perkv1(IMutationsLib.WhaleFatIM) >= 1 && !player.hasPerk(PerkLib.SnowLily) && player.hasPerk(PerkLib.ColdAffinity)) {
+			else if (!player.isRaceCached(Races.YETI) && !player.isRaceCached(Races.YUKIONNA) && !player.isRaceCached(Races.MELKIE) && !player.isRaceCached(Races.FROSTWYRM) && !player.isRaceCached(Races.GLACIAL_TROLL) && !player.isRaceCached(Races.WENDIGO) && !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 2 && !player.perkv1(IMutationsLib.WhaleFatIM) >= 1 && !player.hasPerk(PerkLib.SnowLily) && player.hasPerk(PerkLib.ColdAffinity)) {
 				outputText("\nYou suddenly feel a chill in the air. You guess you somehow no longer resist the cold.\n\n<b>(Lost Perks: Cold Affinity");
 				player.removePerk(PerkLib.ColdAffinity);
 				if (player.hasPerk(PerkLib.FreezingBreathYeti)){
@@ -2155,7 +2155,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			//Fire Shadow Affinity		player.isAnyRaceCached(Races.NEKOMATA, Races.HELLCAT, Races.FIRESNAILS, Races.KITSHOO, Races.CERBERUS)
 			needNext = player.gainOrLosePerk(PerkLib.FireShadowAffinity, player.isRaceCached(Races.NEKOMATA), "A sinister fire grows within you and your body begins casting terrifying shadows from it. You realize you can innately control both those shadows and the flame like they are part of your own body which after a few minute of contemplation you realize they are.", "As your inner flames dims so does the supernatural shadows you cast.") || needNext;
 			//Fire Affinity
-			needNext = player.gainOrLosePerk(PerkLib.FireAffinity, player.isAnyRaceCached(Races.SALAMANDER, Races.PHOENIX, Races.HELLCAT, Races.FIRESNAILS, Races.KITSHOO, Races.CERBERUS) || player.isRaceCached(Races.MOUSE, 2) || player.hasPerk(PerkLib.Cinderbloom), "You suddenly feels your body temperature rising to ridiculous level. You pant for several minutes until you're finally at ease with your bodily heat. You doubt any more heat is going to make you more uncomfortable then this as you quietly soak in the soothing warmth your body naturally produce. It's like your body is made out of living fire.", "You suddenly feel chilly as your bodily temperature drop down to human level. You lost your natural warmth reverting to that of a standard human.") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.FireAffinity, player.isAnyRaceCached(Races.SALAMANDER, Races.PHOENIX, Races.HELLCAT, Races.FIRESNAILS, Races.KITSHOO, Races.CERBERUS) || player.isRaceCached(Races.MOUSE, 2) || player.hasPerk(PerkLib.Cinderbloom) || (player.hasPerk(PerkLib.SoulResonance) && player.perkv1(PerkLib.SoulResonance) == 3), "You suddenly feels your body temperature rising to ridiculous level. You pant for several minutes until you're finally at ease with your bodily heat. You doubt any more heat is going to make you more uncomfortable then this as you quietly soak in the soothing warmth your body naturally produce. It's like your body is made out of living fire.", "You suddenly feel chilly as your bodily temperature drop down to human level. You lost your natural warmth reverting to that of a standard human.") || needNext;
 			//Lightning Affinity
 			if ((player.isRaceCached(Races.SEA_DRAGON)) && !player.hasPerk(PerkLib.LightningAffinity)) {
 				outputText("\nYou suddenly feel a rush of electricity run across your skin as your biolight goes crazy! It would seem you gained the ability to generate and control electricity not unlike an electric eel or more specifically a sea dragon\n");
@@ -2184,7 +2184,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.createPerk(PerkLib.ElectrifiedDesire, 0, 0, 0, 0);
 				needNext = true;
 			}
-			else if (!player.isRaceCached(Races.RAIJU) && !player.isRaceCached(Races.THUNDERBIRD) && player.hasPerk(PerkLib.LightningAffinity) && player.hasStatusEffect(StatusEffects.IsRaiju) && !player.hasStatusEffect(StatusEffects.IsThunderbird)  && !player.hasStatusEffect(StatusEffects.IsKirin)) {
+			else if (!player.isRaceCached(Races.RAIJU) && !player.isRaceCached(Races.THUNDERBIRD) && player.hasPerk(PerkLib.LightningAffinity) && player.hasStatusEffect(StatusEffects.IsRaiju) && !player.hasStatusEffect(StatusEffects.IsThunderbird)  && !player.hasStatusEffect(StatusEffects.IsKirin) && !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 1) {
 				outputText("\nYour natural electricity production start dropping at a dramatic rate until finally there is no more. You realise you likely aren’t raiju enough to build electricity anymore which, considering you can reach satisfaction again, might not be a bad thing.\n\n<b>(Lost the lightning affinity perk, electrified desire perk, Lightning claw perk, Pleasure bolt ability and Orgasmic lightning strike ability!)</b>\n");
 				player.removeStatusEffect(StatusEffects.IsRaiju);
 				player.removePerk(PerkLib.LightningAffinity);
@@ -2193,7 +2193,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.removePerk(PerkLib.Supercharged);
 				needNext = true;
 			}
-			else if (!player.isRaceCached(Races.KIRIN) && !player.isRaceCached(Races.RAIJU) && !player.isRaceCached(Races.THUNDERBIRD) && player.hasPerk(PerkLib.LightningAffinity) && player.hasStatusEffect(StatusEffects.IsRaiju) && !player.hasStatusEffect(StatusEffects.IsThunderbird) && !player.hasStatusEffect(StatusEffects.IsKirin)) {
+			else if (!player.isRaceCached(Races.KIRIN) && !player.isRaceCached(Races.RAIJU) && !player.isRaceCached(Races.THUNDERBIRD) && player.hasPerk(PerkLib.LightningAffinity) && player.hasStatusEffect(StatusEffects.IsRaiju) && !player.hasStatusEffect(StatusEffects.IsThunderbird) && !player.hasStatusEffect(StatusEffects.IsKirin) && !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 1) {
 				outputText("\nYour natural electricity production start dropping at a dramatic rate until finally there is no more. You realize you likely aren’t kirin enough to build electricity anymore which, considering you can reach satisfaction again, might not be a bad thing.\n\n<b>(Lost the lightning affinity perk, electrified desire perk, Lightning claw perk, Pleasure bolt ability and Orgasmic lightning strike ability!)</b>\n");
 				player.removeStatusEffect(StatusEffects.IsKirin);
 				player.removePerk(PerkLib.LightningAffinity);
@@ -2201,7 +2201,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.removePerk(PerkLib.Supercharged);
 				needNext = true;
 			}
-			else if (!player.isRaceCached(Races.THUNDERBIRD) && player.hasPerk(PerkLib.LightningAffinity) && player.hasStatusEffect(StatusEffects.IsThunderbird) && !player.hasStatusEffect(StatusEffects.IsRaiju) && !player.hasStatusEffect(StatusEffects.IsKirin)) {
+			else if (!player.isRaceCached(Races.THUNDERBIRD) && player.hasPerk(PerkLib.LightningAffinity) && player.hasStatusEffect(StatusEffects.IsThunderbird) && !player.hasStatusEffect(StatusEffects.IsRaiju) && !player.hasStatusEffect(StatusEffects.IsKirin) && !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 1) {
 				outputText("\nYour natural electricity production starts dropping at a dramatic rate until finally there is no more. You realize you likely aren’t thunderbird enough to build electricity anymore which, considering you can reach satisfaction again, might not be a bad thing.\n\n<b>(Lost the lightning affinity perk, electrified desire perk, Lightning claw perk, Pleasure bolt ability and Orgasmic lightning strike ability!)</b>\n");
 				player.removeStatusEffect(StatusEffects.IsThunderbird);
 				player.removePerk(PerkLib.LightningAffinity);
@@ -2209,7 +2209,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.removePerk(PerkLib.Supercharged);
 				needNext = true;
 			}
-			else if (!player.isRaceCached(Races.SEA_DRAGON) && player.hasPerk(PerkLib.LightningAffinity) && !player.hasStatusEffect(StatusEffects.IsKirin) && !player.hasStatusEffect(StatusEffects.IsThunderbird) && !player.hasStatusEffect(StatusEffects.IsRaiju)) {
+			else if (!player.isRaceCached(Races.SEA_DRAGON) && player.hasPerk(PerkLib.LightningAffinity) && !player.hasStatusEffect(StatusEffects.IsKirin) && !player.hasStatusEffect(StatusEffects.IsThunderbird) && !player.hasStatusEffect(StatusEffects.IsRaiju) && !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 1) {
 				outputText("\nYour natural electricity production starts dropping at a dramatic rate until finally there is no more. You realize you likely aren’t a sea dragon enough to build electricity anymore.\n\n<b>(Lost the lightning affinity perk and electric discharge ability!!)</b>\n");
 				player.removePerk(PerkLib.LightningAffinity);
 				needNext = true;
@@ -2257,7 +2257,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
 				needNext = true;
 			}
-			else if (player.thundermantis() < 10 && player.tailType != Tail.THUNDERBIRD && player.hasPerk(PerkLib.LightningAffinity)) {
+			else if (player.thundermantis() < 10 && player.tailType != Tail.THUNDERBIRD && player.hasPerk(PerkLib.LightningAffinity) && !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 1) {
 				outputText("\nYour natural electricity production start dropping at a dramatic rate until finally there is no more. You realize you likely aren’t thunderbird enough to build electricity anymore.\n\n<b>(Lost the lightning affinity perk and Orgasmic lightning strike ability!)</b>\n");
 				player.removePerk(PerkLib.LightningAffinity);
 				needNext = true;

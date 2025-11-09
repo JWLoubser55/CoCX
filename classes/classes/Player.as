@@ -8229,23 +8229,21 @@ use namespace CoC;
 				EngineCore.HPChange(Math.round(maxHP() * 0.1), true, false);
 				amnt += Math.round(maxHunger() * 0.1);
 				if (hasPerk(PerkLib.ExanimationII)) {
-					oldsp += perkv1(PerkLib.ExanimationII);
-					if ((capsp - oldsp) >= 3) addPerkValue(PerkLib.ExanimationII, 1, 3);
-					else addPerkValue(PerkLib.ExanimationII, 1, (capsp - oldsp));
+					addPerkValue(PerkLib.ExanimationII, 1, 3);
+					if (perkv1(PerkLib.ExanimationII) > capsp) setPerkValue(PerkLib.ExanimationII, 1, capsp);
 				}
 			}
-			if (subtype == 4)  {
+			if (subtype == 4) {
 				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.3));
 				EngineCore.HPChange(Math.round(maxHP() * 0.3), true, false);
 				amnt += Math.round(maxHunger() * 0.3);
 				if (game.monster is Goblin || game.monster is GoblinAssassin || game.monster is GoblinShaman || game.monster is GoblinWarrior) flags[kFLAGS.GOBLINS_KILLED]++;
 				else flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER]++;
 				if (hasPerk(PerkLib.ExanimationII)) {
-					oldsp += perkv1(PerkLib.ExanimationII);
-					if ((capsp - oldsp) >= 5) addPerkValue(PerkLib.ExanimationII, 1, 5);
-					else addPerkValue(PerkLib.ExanimationII, 1, (capsp - oldsp));
-					if (perkv2(PerkLib.ExanimationII) == 0 && perkv2(PerkLib.ExanimationII) < 1) addPerkValue(PerkLib.ExanimationII, 2, 1);
-					if (perkv2(PerkLib.ExanimationII) == 1 && perkv2(PerkLib.ExanimationII) < 2 && game.monster is Hollow) addPerkValue(PerkLib.ExanimationII, 2, 1);
+					addPerkValue(PerkLib.ExanimationII, 1, 5);
+					if (perkv1(PerkLib.ExanimationII) > capsp) setPerkValue(PerkLib.ExanimationII, 1, capsp);
+					if (perkv4(PerkLib.ExanimationII) == 0 && perkv2(PerkLib.ExanimationII) < 1) addPerkValue(PerkLib.ExanimationII, 2, 1);
+					if (perkv4(PerkLib.ExanimationII) == 1 && perkv2(PerkLib.ExanimationII) < 2 && game.monster is Hollow) addPerkValue(PerkLib.ExanimationII, 2, 1);
 				}
 			}
 			var oldHunger:Number = hunger;
@@ -8254,7 +8252,7 @@ use namespace CoC;
 			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
 			//game.dynStats("lus", 0, "scale", false);
 			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
-			if (subtype == 4)  dynStats("cor", 10);
+			if (subtype == 4) dynStats("cor", 10);
 			else dynStats("lus", 0, "scale", false);
 			EngineCore.statScreenRefresh();
 		}

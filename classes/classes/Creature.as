@@ -3855,6 +3855,7 @@ public class Creature extends Utils
 		// </mod>
 
 		public function hasFourArms():Boolean { return arms.hasFourArms(); }
+		public function arm():String { return arms.arms(); }
 		public function legs():String { return lowerBodyPart.legs(); }
 		public function leg():String { return lowerBodyPart.leg(); }
 		public function feet():String { return lowerBodyPart.feet(); }

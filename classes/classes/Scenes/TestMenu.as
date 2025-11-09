@@ -104,6 +104,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test7", MightyOrNot7, "Combat Slaves Operational.");
 		bd.add("Test8", NotAnAizen, "If you really not wanna go to Ignam agian for this testing use this.").disableIf(player.hasStatusEffect(StatusEffects.ChainOfFate));
 		bd.add("Test9", NotHollowed, "Cheatish curing Demi-hollow state.");
+		bd.add("Test10", FeedYourHollow, "Feed Your Hollow.");
 		
 		submenu(bd, playerMenu, 0, false);
 	}
@@ -140,6 +141,12 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function FeedYourHollow():void {
+		outputText("\n\n<b>Feed You Hollow</b>\n\n");
+		player.addPerkValue(PerkLib.ExanimationII, 1, 60);
+		doNext(SoulforceCheats);
 	}
 	
 	public function NotAnAizen():void {

@@ -4423,7 +4423,7 @@ public class PerkLib
 		public static const ExanimationII:PerkType = mk("Exanimation II", "Exanimation II",
 				"You've lost the tether between your body and soul now are a Hollow. Gives racial status Hollow. Enables the use of Hollow special 'Acid Spit' and passive 'Touch of the Damned'. (Hunger gauge deplete 30%(60%) faster, +10%(+25%) Soulforce skills, +10%(+25%) Hollow skills)");
 		public static const ExanimationIII:PerkType = mk("Exanimation III", "Exanimation III",
-				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +125%(+150%) Soulforce skills, +125%(+150%) Hollow skills)");
+				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Ferro Pellis' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +375%(+400%) Soulforce skills, +375%(+400%) Hollow skills)");
 		public static const ExanimationIV:PerkType = mk("Exanimation IV", "Exanimation IV",
 				"");
 		public static const ExanimationV:PerkType = mk("Exanimation V", "Exanimation V",

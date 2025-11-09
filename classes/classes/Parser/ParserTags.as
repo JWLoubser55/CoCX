@@ -38,6 +38,7 @@ public class ParserTags {
         "antennae"              : function ():* { return CoC.instance.player.antennaeDescript(); },
         "armor"                 : function ():* { return CoC.instance.player.armorName; },
         "armorname"             : function ():* { return CoC.instance.player.armorName; },
+        "arms"                  : function ():* { return CoC.instance.player.arm(); },
         "ass"                   : function ():* { return CoC.instance.player.buttDescript(); },
         "asshole"               : function ():* { return CoC.instance.player.assholeDescript(); },
         "balls"                 : function ():* { return CoC.instance.player.ballsDescriptLight(); },

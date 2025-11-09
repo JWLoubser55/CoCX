@@ -181,17 +181,19 @@ public function transformationIntoVacantHollow(postFeeding:Boolean = false):void
 	player.createPerk(PerkLib.ExanimationIII, 0, 0, 0, 0);
 	player.createPerk(PerkLib.GiantSize, 0, 0, 0, 0);
 	player.createPerk(PerkLib.AcidAffinity, 0, 0, 0, 0);
-	player.createPerk(PerkLib.SoulResonance, 0, 0, 0, 0);
-	var choice1:Number = rand(3);
-	switch (choice1) {
-		case 0:
-			return player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
-		case 1:
-			return player.createPerk(PerkLib.FireAffinity, 0, 0, 0, 0);
-		case 2:
-			return player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
-		default:
-			return player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
+	if (rand(3) == 0) {
+		player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
+		player.createPerk(PerkLib.SoulResonance, 1, 0, 0, 0);
+	}
+	else {
+		if (rand(2) == 0) {
+			player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
+			player.createPerk(PerkLib.SoulResonance, 2, 0, 0, 0);
+		}
+		else {
+			player.createPerk(PerkLib.FireAffinity, 0, 0, 0, 0);
+			player.createPerk(PerkLib.SoulResonance, 3, 0, 0, 0);
+		}
 	}
 	if (postFeeding) explorer.stopExploring();
 	doNext(camp.returnToCampUseOneHour);
