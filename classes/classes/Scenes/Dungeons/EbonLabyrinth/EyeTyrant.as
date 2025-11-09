@@ -42,7 +42,7 @@ use namespace CoC;
 				}
 			}
 
-			damage = player.takeDamage(damage,4,true, hit);
+			damage = player.takeDamage(damage,4,true,hit);
 
 			outputText("\n\n");
 		}

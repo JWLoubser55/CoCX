@@ -1237,7 +1237,7 @@ public class Creature extends Utils
 		public function lustPercent():Number {
 			return 100;
 		}
-		public function takePhysDamage(damage:Number, display:Boolean = false):Number {
+		public function takePhysDamage(damage:Number, display:Boolean = false, hit:Number = 1, soulskilluse:Boolean = false):Number {
 			HP = boundFloat(0,HP-Math.round(damage),HP);
 			return (damage > 0 && damage < 1) ? 1 : damage;
 		}

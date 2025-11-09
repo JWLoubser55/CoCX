@@ -133,15 +133,18 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownAcidSpit)) {
 				bd.disable("<b>You need more time before you can use Acid Spit again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
-		}/*
-		if (player.hasPerk(PerkLib.ExanimationIII)) {
-			bd = buttons.add("Ferro Pellis", FerroPellisHollow, "Envelop yourself in a spiritual aura that makes your skin as hard as steel. \nWould go into cooldown after use for: 5 rounds\n");
-			if (player.hasStatusEffect(StatusEffects.CooldownFerroPellis)) {
-				bd.disable("<b>You need more time before you can use Ferro Pellis again.</b>\n\n");
-			}
+		}
+		if (player.hasPerk(PerkLib.ExanimationIII)) {/*
+			bd = buttons.add("Cero", CeroHollow, ". \nWould go into cooldown after use for: ? rounds\n");*/
 			bd = buttons.add("Pacisci", PacisciHollow, "Creates a barrier that lasts 4 turns that repels all Magical and Soulforce attacks. \nWould go into cooldown after use for: 5 rounds\n");
 			if (player.hasStatusEffect(StatusEffects.CooldownPacisci)) {
 				bd.disable("<b>You need more time before you can use Pacisci again.</b>\n\n");
+			} else if (player.hasStatusEffect(StatusEffects.Pacisci)) bd.disable("<b>You already created barrier.</b>\n\n");
+		}/*
+		if (player.hasPerk(PerkLib.ExanimationIV)) {
+			bd = buttons.add("Ferro Pellis", FerroPellisHollow, "Envelop yourself in a spiritual aura that makes your skin as hard as steel. \nWould go into cooldown after use for: 5 rounds\n");
+			if (player.hasStatusEffect(StatusEffects.CooldownFerroPellis)) {
+				bd.disable("<b>You need more time before you can use Ferro Pellis again.</b>\n\n");
 			}
 		}*/
 		if ((player.isRaceCached(Races.RAIJU) || (player.isRaceCached(Races.THUNDERBIRD) && player.tailType == Tail.THUNDERBIRD) || player.isRaceCached(Races.KIRIN)) && player.hasPerk(PerkLib.ElectrifiedDesire) >= 0) {
@@ -6168,10 +6171,12 @@ public class MagicSpecials extends BaseCombatContent {
 		checkLethiceAndCombatRoundOver();
 	}
 	
-	public function FerroPellisHollow():void {
+	public function CeroHollow():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(40, USEFATG_MAGIC_NOBM);
+		outputText("You flare your soulforce, then concentrate it around your body. You feel as though blades would break upon your skin. ");
+		player.createStatusEffect(StatusEffects.AcidDoT,3,0,0,0);
 		var pc:Number = 5;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
 		player.createStatusEffect(StatusEffects.CooldownFerroPellis,pc,0,0,0);
@@ -6182,9 +6187,23 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(40, USEFATG_MAGIC_NOBM);
+		outputText("You form a Mudra seal with your [hands] and pour soulforce into it. A barrier manifests between you and your foes magical techniques. ");
+		player.createStatusEffect(StatusEffects.Pacisci,4,0,0,0);
 		var pc:Number = 5;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
 		player.createStatusEffect(StatusEffects.CooldownPacisci,pc,0,0,0);
+		enemyAI();
+	}
+	
+	public function FerroPellisHollow():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		fatigue(40, USEFATG_MAGIC_NOBM);
+		outputText("You flare your soulforce, then concentrate it around your body. You feel as though blades would break upon your skin. ");
+		player.createStatusEffect(StatusEffects.AcidDoT,3,0,0,0);
+		var pc:Number = 5;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
+		player.createStatusEffect(StatusEffects.CooldownFerroPellis,pc,0,0,0);
 		enemyAI();
 	}
 

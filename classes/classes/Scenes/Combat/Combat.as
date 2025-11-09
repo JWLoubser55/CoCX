@@ -12324,6 +12324,13 @@ public class Combat extends BaseContent {
                 outputText("<b>You finally manage to shake off the fear.</b>\n\n");
             }
         }
+        if (player.hasStatusEffect(StatusEffects.Pacisci)) {
+            player.addStatusValue(StatusEffects.Pacisci, 1, -1);
+            if (player.statusEffectv1(StatusEffects.Pacisci) <= 0) {
+                player.removeStatusEffect(StatusEffects.Pacisci);
+                outputText("<b>Your barrier disappears.</b>\n\n");
+            }
+        }
         if (player.hasStatusEffect(StatusEffects.Disarmed)) {
             player.addStatusValue(StatusEffects.Disarmed, 1, -1);
             if (player.statusEffectv1(StatusEffects.Disarmed) <= 0) {
@@ -12874,7 +12881,7 @@ public class Combat extends BaseContent {
         if (player.hasStatusEffect(StatusEffects.MonsterSummonedFinalFlamebearer)) {
             outputText("Attack: Your draconic Flamebearer roars, swooping down on your foe. They grab [themonster] in their razor-sharp talons, then bring their maw in close, shooting a stream of flames into their face. ");
         }
-if (player.hasStatusEffect(StatusEffects.MonsterSummonedFeatheredBroodmother)) {
+		if (player.hasStatusEffect(StatusEffects.MonsterSummonedFeatheredBroodmother)) {
             outputText("Your broodmother leaps at [themonster], talons out…and lands a kiss on their lips, rubbing her pussy lips on them. They swipe at her, but your broodmother’s already moving, wings pumping. She lands back in front of you, ready to attack again. ");
         }
         if (player.hasStatusEffect(StatusEffects.MonsterSummonedHarpyMatriarch)) {
@@ -12884,7 +12891,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedFeatheredBroodmother)) {
             outputText("[themonster] is suddenly engulfed by a feathery storm! You hear muffled sounds from within the bunch, kissing, rubbing…A few even try to grab at them and pull them away, with no success. After a few seconds, they break off, circling you again. [themonster] is covered in little lipstick marks. ");
             
         }
-if (player.hasStatusEffect(StatusEffects.MonsterSummonedArmouredGoo)) {
+		if (player.hasStatusEffect(StatusEffects.MonsterSummonedArmouredGoo)) {
             outputText("");
         }
         if (player.hasStatusEffect(StatusEffects.MonsterSummonedReluctantRebirther)) {
@@ -12893,7 +12900,7 @@ if (player.hasStatusEffect(StatusEffects.MonsterSummonedArmouredGoo)) {
         if (player.hasStatusEffect(StatusEffects.MonsterSummonedShackledRat)) {
             outputText("");
         }
-if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
+		if (player.hasStatusEffect(StatusEffects.MonsterSummonedRodentsReborn)) {
             outputText("With many high pitched war cries, your little army charges [themonster]. Some shoot undersized darts, others rush in with tiny weapons. Individually, they don’t seem to be doing much, but they’re many, and [themonster] constantly has to watch their footing. ");
         }
         if (player.hasStatusEffect(StatusEffects.MonsterSummonedMartyrMagician)) {

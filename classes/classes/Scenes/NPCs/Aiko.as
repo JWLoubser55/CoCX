@@ -251,7 +251,7 @@ import classes.internals.*;
 			var lustDmg:int = 110 + int(player.effectiveSensitivity() / 3);
 			if (player.hasStatusEffect(StatusEffects.Illusion)) {
 				outputText("A series of Aiko's illusions surround you! You try to find the real one but you're too slow! An arrow comes from the side, impaling you!  ");
-				player.takePhysDamage(int(str/2) + rand(15), true);
+				player.takePhysDamage(int(str/2) + rand(15), true, 1, true);
 				if (x === 0) {
 						outputText("\n\nYou attack Aiko, but her figure was just an illusion! She appears behind you and rapidly shoots an arrow, she got you! But.... what has she done?! You feel a tingling sensation in your groin, the arrow was poisoned with some kind of lust-inducing venom!  ");
 						if (!player.hasStatusEffect(StatusEffects.lustvenom)) {

@@ -1161,6 +1161,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const NoFlee:StatusEffectType                    = mkCombat("NoFlee");
 		public static const OniRampage:StatusEffectType                = mkCombat("Oni Rampage");
 		public static const Overlimit:StatusEffectType                 = mkCombat("Overlimit");
+		public static const Pacisci:StatusEffectType                   = mkCombat("Pacisci");
 		public static const PerfectClarity:StatusEffectType            = mkCombat("Perfect Clarity");
 		public static const PastPresent:StatusEffectType               = mkCombat("Past Present");
 		public static const PhysicalDisabled:StatusEffectType          = mkCombat("Physical Disabled");

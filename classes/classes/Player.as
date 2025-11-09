@@ -3177,7 +3177,10 @@ use namespace CoC;
 			var dmm:Number = 0;
 			if (touStat.core.value > 0) dmmc += touStat.core.value;
 			if (touStat.train.value > 0) dmmt += touStat.train.value;
-			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) dmmm += 3;
+			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) {
+				if (hasPerk(PerkLib.SpiritualHunger)) dmmm += 6;
+				dmmm += 3;
+			}
 			if (hasPerk(PerkLib.JobGuardian)) dmmm += 1;
 			if (hasPerk(PerkLib.TankI)) dmmm += 1;
 			if (hasPerk(PerkLib.TankII)) dmmm += 1;
@@ -3248,7 +3251,7 @@ use namespace CoC;
 			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] >= 6) damageMultiplier *= 3.5;
 			return damage * damageMultiplier;
 		}
-		public function takeDamage(damage:Number, damagetype:Number = 0, display:Boolean = false, hit:Number = 1):Number{
+		public function takeDamage(damage:Number, damagetype:Number = 0, display:Boolean = false, hit:Number = 1, soulskilluse:Boolean = false):Number{
 			// Damage types:
 			// 0: phys, 1: null, 2: null, 3: null
 			// 4: magical, 5: fire, 6: ice
@@ -3258,6 +3261,7 @@ use namespace CoC;
 			// 16: sound?
 			damage = difficultyDamageMultiplier(damage);
 			damage *= 1/toughnessDamageMultiplier();
+			if (damagetype == 0 && soulskilluse && hasStatusEffect(StatusEffects.Pacisci)) damage *= 0;
 			var physTeaseDmg:Boolean = false;
 			var remainingHit:Array = [];
 			//all dmg reduction effect(s)
@@ -3569,7 +3573,10 @@ use namespace CoC;
 			var percent:Number = 1;
 			var armorMod:Number = armorDef;
 			if (shield == game.shields.PRIDWEN) armorMod += shieldBlock;
-			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) percent += 3;
+			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) {
+				if (hasPerk(PerkLib.SpiritualHunger)) percent += 6;
+				percent += 3;
+			}
 			if (armorMod > 50) percent += Math.sqrt(armorMod - 50);
 			return percent;
 		}
@@ -3718,8 +3725,8 @@ use namespace CoC;
 			if (!hasStatusEffect(StatusEffects.Defend) && mult < 20) mult = 20;
 			return mult;
 		}
-		public override function takePhysDamage(damage:Number, display:Boolean = false):Number{
-			return takeDamage(damage, 0, display);
+		public override function takePhysDamage(damage:Number, display:Boolean = false, hit:Number = 1, soulskilluse:Boolean = false):Number{
+			return takeDamage(damage, 0, display, hit, soulskilluse);
 		}
 		public function reducePhysDamage(damage:Number):Number {
 			//Opponents can critical too!
@@ -3755,7 +3762,10 @@ use namespace CoC;
 			var percent:Number = 1;
 			var armorMMod:Number = armorMDef;
 			if (shield == game.shields.PRIDWEN) armorMMod += shieldBlock;
-			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) percent += 3;
+			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) {
+				if (hasPerk(PerkLib.SpiritualHunger)) percent += 6;
+				percent += 3;
+			}
 			if (armorMMod > 50) percent += Math.sqrt(armorMMod - 50);
 			return percent;
 		}
@@ -3852,6 +3862,7 @@ use namespace CoC;
 			//Caps damage reduction at 80/99%
 			if (hasStatusEffect(StatusEffects.Defend) && hasPerk(PerkLib.PerfectDefenceStance) && tou >= 160 && mult < 1) mult = 1;
 			if (!hasStatusEffect(StatusEffects.Defend) && mult < 20) mult = 20;
+			if (hasStatusEffect(StatusEffects.Pacisci)) mult = 0;
 			return mult;
 		}
 		public override function takeMagicDamage(damage:Number, display:Boolean = false):Number {
@@ -8201,28 +8212,28 @@ use namespace CoC;
 			refillHunger(Ammount);
 		}
 
-		public function hollowFeed(subtype:Number):void {
-			var amnt:Number = 0;
-			var oldsp:Number = 0;
+		public function hollowFeedSoulPointsCap():Number {
 			var capsp:Number = 60;
-			if (perkv2(PerkLib.ExanimationII) > 0) capsp += 50;//152
+			if (perkv2(PerkLib.ExanimationII) > 0) capsp += 101;//152
 			if (perkv2(PerkLib.ExanimationII) > 1) capsp += 50;//202
 			if (perkv2(PerkLib.ExanimationII) > 2) capsp += 50;//252
+			return capsp;
+		}
+		public function hollowFeed(subtype:Number):void {
+			var amnt:Number = 0;
 			if (subtype == 0 || subtype == 1) {
 				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.1));
 				amnt += Math.round(maxHunger() * 0.15);
 				if (hasPerk(PerkLib.ExanimationII) && subtype == 1) {
-					oldsp += perkv1(PerkLib.ExanimationII);
-					if ((capsp - oldsp) >= 1) addPerkValue(PerkLib.ExanimationII, 1, 1);
-					else addPerkValue(PerkLib.ExanimationII, 1, (capsp - oldsp));
+					addPerkValue(PerkLib.ExanimationII, 1, 1);
+					if (perkv1(PerkLib.ExanimationII) > hollowFeedSoulPointsCap()) setPerkValue(PerkLib.ExanimationII, 1, hollowFeedSoulPointsCap());
 				}
 			}
 			if (subtype == 2) {
 				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.1));
 				amnt += Math.round(maxHunger() * 0.15);
-				oldsp += perkv1(PerkLib.ExanimationII);
-				if ((capsp - oldsp) >= 1) addPerkValue(PerkLib.ExanimationII, 1, 1);
-				else addPerkValue(PerkLib.ExanimationII, 1, (capsp - oldsp));
+				addPerkValue(PerkLib.ExanimationII, 1, 1);
+				if (perkv1(PerkLib.ExanimationII) > hollowFeedSoulPointsCap()) setPerkValue(PerkLib.ExanimationII, 1, hollowFeedSoulPointsCap());
 			}
 			if (subtype == 3) {
 				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.25));
@@ -8230,7 +8241,7 @@ use namespace CoC;
 				amnt += Math.round(maxHunger() * 0.1);
 				if (hasPerk(PerkLib.ExanimationII)) {
 					addPerkValue(PerkLib.ExanimationII, 1, 3);
-					if (perkv1(PerkLib.ExanimationII) > capsp) setPerkValue(PerkLib.ExanimationII, 1, capsp);
+					if (perkv1(PerkLib.ExanimationII) > hollowFeedSoulPointsCap()) setPerkValue(PerkLib.ExanimationII, 1, hollowFeedSoulPointsCap());
 				}
 			}
 			if (subtype == 4) {
@@ -8241,7 +8252,7 @@ use namespace CoC;
 				else flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER]++;
 				if (hasPerk(PerkLib.ExanimationII)) {
 					addPerkValue(PerkLib.ExanimationII, 1, 5);
-					if (perkv1(PerkLib.ExanimationII) > capsp) setPerkValue(PerkLib.ExanimationII, 1, capsp);
+					if (perkv1(PerkLib.ExanimationII) > hollowFeedSoulPointsCap()) setPerkValue(PerkLib.ExanimationII, 1, hollowFeedSoulPointsCap());
 					if (perkv4(PerkLib.ExanimationII) == 0 && perkv2(PerkLib.ExanimationII) < 1) addPerkValue(PerkLib.ExanimationII, 2, 1);
 					if (perkv4(PerkLib.ExanimationII) == 1 && perkv2(PerkLib.ExanimationII) < 2 && game.monster is Hollow) addPerkValue(PerkLib.ExanimationII, 2, 1);
 				}

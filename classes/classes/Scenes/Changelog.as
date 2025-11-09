@@ -311,6 +311,8 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Titan might. Gained by becoming Cyclop / Sea Dragon. Effects: You count as four times taller than your effective base size for the purpose of perk effects.\n");
 			outputText("-Gigant might perk effects been decreased from 'five times' to 'two and half time'.\n");
 			outputText("-New event perk: Soul resonance. Gained by reaching Vacant tier of Hollow race. Effects: Soulforce scaring will manifest one random elemental (Ice/Fire/Lightning) Affinity. Yields an additional Affinity once pc is of Mortarch or higher.\n");
+			outputText("-\n");//New M. Special: Cero. Usable by having Exanimation III perk. Effect: x_x
+			outputText("-New M. Special: Pacisci. Usable by having Exanimation III perk. Effect: Creates a barrier that lasts 4 turns that repels all Magical and Soulforce attacks.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -322,9 +324,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New M. Special: Ferro Pellis. Usable by having Exanimation IV perk. Effect: Gives you 20 phys DR for 3 rounds but reduces magic DR by 50%.
 			outputText("-\n");
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .

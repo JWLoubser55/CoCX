@@ -129,7 +129,7 @@ use namespace CoC;
 			td2 += (rand(21) * 0.01);
 			td *= td2;
 			td = Math.round(td);
-			td = player.takePhysDamage(td, true);
+			td = player.takePhysDamage(td, true, 1, true);
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			outputText(" ");
 		}

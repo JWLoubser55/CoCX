@@ -184,15 +184,18 @@ public function transformationIntoVacantHollow(postFeeding:Boolean = false):void
 	if (rand(3) == 0) {
 		player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
 		player.createPerk(PerkLib.SoulResonance, 1, 0, 0, 0);
+		outputText("<b>(Gained Acid / Lightning Affinities)</b>\n\n");
 	}
 	else {
 		if (rand(2) == 0) {
 			player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
 			player.createPerk(PerkLib.SoulResonance, 2, 0, 0, 0);
+		outputText("<b>(Gained Acid / Cold Affinities)</b>\n\n");
 		}
 		else {
 			player.createPerk(PerkLib.FireAffinity, 0, 0, 0, 0);
 			player.createPerk(PerkLib.SoulResonance, 3, 0, 0, 0);
+		outputText("<b>(Gained Acid / Fire Affinities)</b>\n\n");
 		}
 	}
 	if (postFeeding) explorer.stopExploring();
