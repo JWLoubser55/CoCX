@@ -1079,11 +1079,17 @@ public class CombatUI extends BaseCombatContent {
 						break;
 					case 8:
 						btnContinue.show("Continue", combat.mspecials.arigeanChargedShot, "Continue gathering energy.");
-						break;/*
+						break;
 					case 9:
+						btnContinue.show("Continue", combat.mspecials.CeroHollow, "Continue gathering energy.");
+						break;/*
+					case 10:
 						btnContinue.show("Continue", combat.magic., "Continue casting  spell.");
 						break;
-					case 10:
+					case 11:
+						btnContinue.show("Continue", combat.magic., "Continue casting  spell.");
+						break;
+					case 12:
 						btnContinue.show("Continue", combat.magic., "Continue casting  spell.");
 						break;*/
 				}

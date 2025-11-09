@@ -301,7 +301,7 @@ public class Changelog extends BaseContent
 			outputText("-Applied the fix for dragon arms. (Stadler)\n");
 			outputText("-New P. Special: Tail Slash. Usable by having Hollow Tail. Cost 40 fatigue and can cause bleed for 4 turns. It have higher crit chance and additionaly add bonuses from sword mastery.\n");
 			outputText("-Kick special have bonuses for each legs type changed from flat number (10 to 50) to multipliers (10% to 50%). Hollow legs kick can additionaly cause bleeding.\n");
-			outputText("-New usable item: Hollow Mask fragment. Costing 200 gems and can be dropped by defeated hollow. Could be eater by Hollow or higher tiers of their evolution forms to gain Soul points used to trigger evolution.\n");
+			outputText("-New consumable item: Hollow Mask fragment. Costing 200 gems and can be dropped by defeated hollow. Could be eater by Hollow or higher tiers of their evolution forms to gain Soul points used to trigger evolution.\n");
 			outputText("-Loosing to any Hollow enemy can lead to bad end if PC is not at least Demi-Hollow.\n");
 			outputText("-New event perk: Touch of the Damned. Gained by reaching Hollow tier of Hollow race. Effects: All unarmed attacks and natural weapons: inflicts acid damage for 3 turns. This acid damage stacks on top of other acid attacks and DOTs. (5% / 15% of foes Total hp) Also generate soulforce equivalent to 5% / 15% of damage done to foe and fill satiety by 1 / 3.\n");
 			outputText("-New event perk: Exanimation II. Gained by reaching Hollow tier of Hollow race. Effects: Enables the use of Hollow special 'Acid Spit' and passive 'Touch of the Damned'. (Hunger gauge deplete 30%(60%) faster, +10%(+25%) Soulforce skills, +10%(+25%) Hollow skills)\n");
@@ -311,7 +311,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Titan might. Gained by becoming Cyclop / Sea Dragon. Effects: You count as four times taller than your effective base size for the purpose of perk effects.\n");
 			outputText("-Gigant might perk effects been decreased from 'five times' to 'two and half time'.\n");
 			outputText("-New event perk: Soul resonance. Gained by reaching Vacant tier of Hollow race. Effects: Soulforce scaring will manifest one random elemental (Ice/Fire/Lightning) Affinity. Yields an additional Affinity once pc is of Mortarch or higher.\n");
-			outputText("-\n");//New M. Special: Cero. Usable by having Exanimation III perk. Effect: x_x
+			outputText("-New M. Special: Cero. Usable by having Exanimation III perk. Effect: Fire a powerful blast of concentrated spiritual energy at the target.\n");
 			outputText("-New M. Special: Pacisci. Usable by having Exanimation III perk. Effect: Creates a barrier that lasts 4 turns that repels all Magical and Soulforce attacks.\n");
 			outputText("-\n");
 			outputText("-\n");

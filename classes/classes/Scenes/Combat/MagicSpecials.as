@@ -134,8 +134,11 @@ public class MagicSpecials extends BaseCombatContent {
 				bd.disable("<b>You need more time before you can use Acid Spit again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
-		if (player.hasPerk(PerkLib.ExanimationIII)) {/*
-			bd = buttons.add("Cero", CeroHollow, ". \nWould go into cooldown after use for: ? rounds\n");*/
+		if (player.hasPerk(PerkLib.ExanimationIII)) {
+			bd = buttons.add("Cero", CeroHollow, "Fire a powerful blast of concentrated spiritual energy at the target. \nWould go into cooldown after use for: 3 rounds\n");
+			if (player.hasStatusEffect(StatusEffects.CooldownCero)) {
+				bd.disable("<b>You need more time before you can use Cero again.</b>\n\n");
+			}
 			bd = buttons.add("Pacisci", PacisciHollow, "Creates a barrier that lasts 4 turns that repels all Magical and Soulforce attacks. \nWould go into cooldown after use for: 5 rounds\n");
 			if (player.hasStatusEffect(StatusEffects.CooldownPacisci)) {
 				bd.disable("<b>You need more time before you can use Pacisci again.</b>\n\n");
@@ -1500,7 +1503,6 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		else {
 			fatigue(50, USEFATG_MAGIC_NOBM);
-			clearOutput();
 			outputText("You start singing an enrapturing song.");
 			var lustDmg:Number = monster.lustVuln * 0.5 * (player.inte / 5 * (player.teaseLevel * 0.2) + rand(monster.lib - monster.inte * 2 + monster.cor) / 5);
 			lustDmg += IntligenceModifier * 0.25;
@@ -1512,7 +1514,7 @@ public class MagicSpecials extends BaseCombatContent {
 				else monster.createStatusEffect(StatusEffects.LustDoTSP, 5, 0, 0, 0);
 			}
 			player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
-			player.createStatusEffect(StatusEffects.ChanneledAttackType, 1, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.ChanneledAttackType, 9, 0, 0, 0);
 			outputText("\n\n");
 			enemyAI();
 		}
@@ -6174,13 +6176,62 @@ public class MagicSpecials extends BaseCombatContent {
 	public function CeroHollow():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
-		fatigue(40, USEFATG_MAGIC_NOBM);
-		outputText("You flare your soulforce, then concentrate it around your body. You feel as though blades would break upon your skin. ");
-		player.createStatusEffect(StatusEffects.AcidDoT,3,0,0,0);
-		var pc:Number = 5;
-		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
-		player.createStatusEffect(StatusEffects.CooldownFerroPellis,pc,0,0,0);
-		enemyAI();
+		if (player.hasStatusEffect(StatusEffects.ChanneledAttack)) {
+			outputText("You flare your soulforce, then concentrate that spiritual energy in the empty space between your horns. Then release a powerful blast of concentrated spiritual energy towards [themonster].");
+			var damage:Number = player.wis * 5;
+			damage += scalingBonusWisdom() * 5;
+			damage += player.inte;
+			damage += scalingBonusIntelligence();
+			damage *= soulskillMagicalMod();
+			damage *= combat.hollowSkillsAndSoulskillsBoost();
+			damage = Math.round(damage);
+			doMagicDamage(damage, true, true);
+			if (player.hasPerk(PerkLib.AcidAffinity)) {
+				var damage2:Number = damage * 0.7;
+				damage2 = calcCorrosionMod(damage2, true);
+				damage2 = Math.round(damage2);
+				doAcidDamage(damage2, true, true);
+			}
+			if (player.hasPerk(PerkLib.LightningAffinity)) {
+				var damage3:Number = damage * 0.7;
+				damage3 = calcVoltageMod(damage3, true);
+				damage3 = Math.round(damage3);
+				doLightningDamage(damage3, true, true);
+			}
+			if (player.hasPerk(PerkLib.ColdAffinity)) {
+				var damage4:Number = damage * 0.7;
+				damage4 = calcGlacialMod(damage4, true);
+				damage4 = Math.round(damage4);
+				doIceDamage(damage4, true, true);
+			}
+			if (player.hasPerk(PerkLib.FireAffinity)) {
+				var damage5:Number = damage * 0.7;
+				damage5 = calcInfernoMod(damage5, true);
+				damage5 = Math.round(damage5);
+				doFireDamage(damage5, true, true);
+			}
+			player.removeStatusEffect(StatusEffects.ChanneledAttack);
+			player.removeStatusEffect(StatusEffects.ChanneledAttackType);
+			outputText("\n\n");
+			if (damage2 > 0) damage += damage2;
+			if (damage3 > 0) damage += damage3;
+			if (damage4 > 0) damage += damage4;
+			if (damage5 > 0) damage += damage5;
+			checkAchievementDamage(damage);
+			combat.heroBaneProc(damage);
+			checkLethiceAndCombatRoundOver();
+		}
+		else {
+			fatigue(40, USEFATG_MAGIC_NOBM);
+			outputText("The air stands still as particles of soulforce rush towards empty space between your horns.");
+			var pc:Number = 4;
+			if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
+			player.createStatusEffect(StatusEffects.CooldownCero,pc,0,0,0);
+			player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.ChanneledAttackType, 9, 0, 0, 0);
+			outputText("\n\n");
+			enemyAI();
+		}
 	}
 	
 	public function PacisciHollow():void {

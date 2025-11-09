@@ -90,7 +90,7 @@ public class HollowScene extends BaseContent
 				outputText("The creature stabs its talons into your chest with brutal, tearing force. Hooks curl into warm, yielding flesh. Searing waves of agony batter your psyche. Its cold and unfeeling eyes gaze into your [eyes], as though trying to drain your very life with its stare alone.\n\n");
 				outputText("You try to struggle, but its grip tightens—claws sinking deeper like stones dropped in a swamp.Its mask, an abomination of jagged teeth, gleams with menace, eager to tear into [skin].\n\n");
 				outputText("It lunges.\n\n");
-				outputText("Teeth tear through your shoulder with a sickening crunch. A searing pulse of agony flashing white overwhelms your vision. The world narrows to the sound of gnawing and your own heartbeat slowing, stuttering, and then stopping.As your body crumples, the creature straightens. A pale mist—your essence—spills from your [lips]. It inhales greedily, the mask crackling with a satisfied laugh.\n\n");
+				outputText("Teeth tear through your shoulder with a sickening crunch. A searing pulse of agony flashing white overwhelms your vision. The world narrows to the sound of gnawing and your own heartbeat slowing, stuttering, and then stopping.As your body crumples, the creature straightens. A pale mist—your essence—spills from your lips. It inhales greedily, the mask crackling with a satisfied laugh.\n\n");
 				outputText("The walking mouth moves on, and you are left as little more than a strip of flesh upon the ground.\n\n");
 				EventParser.gameOver();
 			}

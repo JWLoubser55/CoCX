@@ -240,7 +240,7 @@ use namespace CoC;
 					this.level = 31;
 					this.gems = 25 + rand(10);
 				}
-				this.drop = new ChainedDrop().add(useables.HMASKFRAG,1);
+				this.drop = new ChainedDrop().add(consumables.HM_FRAG,1);
 				this.createPerk(PerkLib.TankI, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.HOLLOW_TYPE] == 3) {

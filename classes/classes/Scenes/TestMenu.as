@@ -104,7 +104,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test7", MightyOrNot7, "Combat Slaves Operational.");
 		bd.add("Test8", NotAnAizen, "If you really not wanna go to Ignam agian for this testing use this.").disableIf(player.hasStatusEffect(StatusEffects.ChainOfFate));
 		bd.add("Test9", NotHollowed, "Cheatish curing Demi-hollow state.");
-		bd.add("Test10", FeedYourHollow, "Feed Your Hollow.");
+		bd.add("Test10", ConvertYourMaskFragments, "Convert Your Mask Fragments.");
 		
 		submenu(bd, playerMenu, 0, false);
 	}
@@ -143,10 +143,13 @@ public class TestMenu extends BaseContent
 		submenu(bd, SoulforceCheats, 0, false);
 	}
 	
-	public function FeedYourHollow():void {
-		outputText("\n\n<b>Feed You Hollow</b>\n\n");
-		player.addPerkValue(PerkLib.ExanimationII, 1, 60);
-		doNext(SoulforceCheats);
+	public function ConvertYourMaskFragments():void {
+		outputText("\n\n<b>Convert Your Mask Fragments</b>\n\n");
+		if (player.hasItem(useables.HMASKFRAG, 1)) {
+			player.destroyItems(useables.HMASKFRAG, 1);
+			inventory.takeItem(consumables.HM_FRAG, SoulforceCheats);
+		}
+		else doNext(SoulforceCheats);
 	}
 	
 	public function NotAnAizen():void {
@@ -2879,4 +2882,4 @@ public class TestMenu extends BaseContent
 		SceneLib.lily.lilyEncounter();
 	}
 	}
-}
+}
