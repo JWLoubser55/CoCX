@@ -104,14 +104,14 @@ public class HollowRace extends Race {
 				})
 				.end();
 		
-		buildTier(42, "Atarxis")
+		buildTier(52, "Atarxis")
 				.requirePerk(PerkLib.ExanimationIV)
 				.buffs({
-					"str.mult": +4.20,
-					"tou.mult": +7.40,
-					"int.mult": +4.20,
-					"wis.mult": +7.40,
-					"sens": +430
+					"str.mult": +5.20,
+					"tou.mult": +9.20,
+					"int.mult": +5.20,
+					"wis.mult": +9.20,
+					"sens": +540
 				})
 				.end();
 	}

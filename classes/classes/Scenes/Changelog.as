@@ -294,7 +294,7 @@ public class Changelog extends BaseContent
 			outputText("-Master wip / No description provided. (Liadri)\n");
 			outputText("-New Unique Sexscene: Souldrain - req. to have Empty Vessel / Spiritual Hunger perk. Can be only used against humanoid enemies that have soul. Siphon soulforce from your foe. It's not much but at least they are not dead. (Give up to 10% of satiety, 25% of soulforce, 10% of hp)\n");
 			outputText("-New Unique Sexscene: Souleater - req. to have Empty Vessel / Spiritual Hunger perk. Can be only used against humanoid enemies that have soul. Eat the soul of your foe, killing them in the process. (Give up to 30% of total satiety, 30% of soulforce, 30% of Hp, and +10 corruption)\n");
-			outputText("-In kill count section of stats page was added two more counters: other enemies, enemies killed by souleater.\n");
+			outputText("-In kill count section of stats page was added three more counters: hollows, other enemies, enemies killed by souleater.\n");
 			outputText("-New consumable item: Mortarch Mask fragment. Costing 600 gems and can be dropped by defeated mortarch hollow. Could be eater by Hollow or higher tiers of their evolution forms to gain Soul points used to trigger evolution.\n");
 			outputText("-When exploring outer desert or using general explore can encounter Pale Hollow enemy if PC isn't pernamently transformed. After this encounter PC would be marked and after day change into Demi-Hollow.\n");
 			outputText("-Flared carrot cum boost now ignore balls (since you can already do that ingame by removing it manually might as well make life easier, more flavor text later) (NUZ/Shirane)\n");
@@ -313,7 +313,11 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Soul resonance. Gained by reaching Vacant tier of Hollow race. Effects: Soulforce scaring will manifest one random elemental (Ice/Fire/Lightning) Affinity. Yields an additional Affinity once pc is of Mortarch or higher.\n");
 			outputText("-New M. Special: Cero. Usable by having Exanimation III perk. Effect: Fire a powerful blast of concentrated spiritual energy at the target.\n");
 			outputText("-New M. Special: Pacisci. Usable by having Exanimation III perk. Effect: Creates a barrier that lasts 4 turns that repels all Magical and Soulforce attacks.\n");
-			outputText("-Pig/Boar TF can now give up to 5 rows of breasts.\n");
+			outputText("-Pig/Boar TF can now give up to 5 rows of breasts. It also giving race score points for each row up to 5th.\n");
+			outputText("-New M. Special: Ferro Pellis. Usable by having Exanimation IV perk. Effect: Envelop yourself in a spiritual aura that makes your skin as hard as steel. (Gives 20 phys DR for 3 rounds but reduces magic DR by half.)\n");
+			outputText("-New event perk: Exanimation III. Gained by reaching Vacant tier of Hollow race. Effects: You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Cero' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +375%(+400%) Soulforce skills, +375%(+400%) Hollow skills)\n");
+			outputText("-New event perk: Exanimation IV. Gained by reaching Atarxis tier of Hollow race. Effects: You've consumed enough souls and energy that your mind swims within a legion of restless spirits. They subsist on you as much as you feed on them. Your soulforce flares throughout your body like an immense flare. Gives racial status of Atarxis. ");
+			outputText("Enables perks the use of Hollow Skill: 'Ferro Pellis'. (Hunger gauge deplete 30%(120%) faster, +100%(+500%) Soulforce skills, +100%(+500%) Hollow skills)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -322,9 +326,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New M. Special: Ferro Pellis. Usable by having Exanimation IV perk. Effect: Gives you 20 phys DR for 3 rounds but reduces magic DR by 50%.
 			outputText("-\n");
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .

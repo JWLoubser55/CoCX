@@ -20122,6 +20122,7 @@ public function hollowSkillsAndSoulskillsBoost():Number {
 	var hollowed:Number = 1.15;
 	if (player.hasPerk(PerkLib.ExanimationII)) hollowed += 0.1;
 	if (player.hasPerk(PerkLib.ExanimationIII)) hollowed += 3.75;
+	if (player.hasPerk(PerkLib.ExanimationIV)) hollowed += 1;
 	if (player.hunger >= Math.round(player.maxHunger() * 0.7)) {
 		if (player.hasPerk(PerkLib.SpiritualHunger)) hollowed += 0.8;
 		hollowed += 0.2;

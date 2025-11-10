@@ -95,9 +95,10 @@ public class PlayerInfo extends BaseContent {
 		}
 		if (player.hasPerk(PerkLib.ExanimationII)) {
 			bodyStats += "<b>Soul Points:</b> ";
-			if (player.perkv1(PerkLib.ExanimationIII) == 2) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 264\n";
-			else if (player.perkv1(PerkLib.ExanimationIII) == 1) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 202\n";
-			else bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 60\n";
+			if (player.perkv1(PerkLib.ExanimationIII) == 2) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 264";
+			else if (player.perkv1(PerkLib.ExanimationIII) == 1) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 212";
+			else bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 60";
+			bodyStats += " (" + player.perkv2(PerkLib.ExanimationII) + ")\n";
 		}
 		bodyStats += "<b>Times Transformed:</b> " + flags[kFLAGS.TIMES_TRANSFORMED] + "\n";
 		bodyStats += "<b>Tone:</b> " + player.tone + " / " + player.maxToneCap() + "\n";
@@ -674,9 +675,10 @@ public class PlayerInfo extends BaseContent {
 		killCountStats += "<b>Hellhounds:</b> " + flags[kFLAGS.HELLHOUNDS_KILLED] + "\n";
 		killCountStats += "<b>Imps:</b> " + flags[kFLAGS.IMPS_KILLED] + "\n";
 		killCountStats += "<b>Minotaurs:</b> " + flags[kFLAGS.MINOTAURS_KILLED] + "\n";
+		killCountStats += "<b>Hollows:</b> " + flags[kFLAGS.HOLLOWS_KILLED] + "\n";
 		killCountStats += "<b>True Demons:</b> " + flags[kFLAGS.TRUE_DEMONS_KILLED] + "\n";
 		killCountStats += "<b>Other enemies:</b> " + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] + "\n";
-		killCountStats += "<b>Souleater kill count:</b> " + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] + flags[kFLAGS.GOBLINS_KILLED] + "\n";
+		killCountStats += "<b>Souleater kill count:</b> " + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] + flags[kFLAGS.HOLLOWS_KILLED] + flags[kFLAGS.GOBLINS_KILLED] + "\n";
 		killCountStats += "<i>Total kill count: " + player.enemiesKillCount() + "</i>\n";
 
 		if (killCountStats != "")

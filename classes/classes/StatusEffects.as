@@ -1060,6 +1060,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const DragonsNom:StatusEffectType                = mkCombat("Dragon Nom");
 		public static const DragonWaterBreath:StatusEffectType         = mkCombat("Dragon Water Breath");
 		public static const EarthStance:StatusEffectType	           = mkCombat("Earth Stance");
+		public static const FerroPellis:StatusEffectType          	   = mkCombat("Ferro Pellis");
 		public static const ElectrifyWeapon:StatusEffectType       	   = mkCombat("ElectrifyWeapon");
 		public static const ElectrocutionDoT:StatusEffectType          = mkCombat("Electrocution DoT");
 		public static const ElvenEye:StatusEffectType	           	   = mkCombat("Elven Eye");

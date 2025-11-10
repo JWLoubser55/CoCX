@@ -176,7 +176,7 @@ use namespace CoC;
 		override public function defeated(hpVictory:Boolean):void
 		{
 			if (flags[kFLAGS.HOLLOW_TYPE] == 0) hollow.wonWithWhite();
-			else cleanupAfterCombat();
+			else hollow.wonWithHollow();
 		}
 
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void

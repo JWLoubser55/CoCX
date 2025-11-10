@@ -13297,6 +13297,12 @@ public final class Mutations extends MutationsHelper {
             player.ballSize++;
             changes++;
         }
+        //Increase player's breast size, if they are big EE or smaller
+        if (player.smallestTitSize() <= 5 && player.gender == 2 && changes < changeLimit && rand(2) == 0) {
+            outputText("[pg]After absorbing it, your chest aches and tingles, and your hands reach up to scratch at it unthinkingly.  Silently, you hope that you aren't allergic to it.  Just as you start to scratch at your " + breastDescript(player.smallestTitRow()) + ", your chest pushes out in slight but sudden growth.");
+            player.breastRows[player.smallestTitRow()].breastRating++;
+            changes++;
+        }
         //Multiboobages
         if (changes < changeLimit && player.breastRows.length > 0) {
             //if bigger than A cup
@@ -13368,6 +13374,13 @@ public final class Mutations extends MutationsHelper {
                     }
                 }
             }
+        }
+        //Grow tits if have NO breasts/nipples AT ALL
+        else if (rand(2) == 0 && changes < changeLimit) {
+            transformations.CreateBreastRow(2).applyEffect();
+            dynStats("lus", 6, "scale", false);
+            player.addCurse("sens", 4, 1);
+            changes++;
         }
 		if (player.blockingBodyTransformations()) changeLimit = 0;
         //-----------------------

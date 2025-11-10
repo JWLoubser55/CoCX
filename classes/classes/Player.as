@@ -3181,6 +3181,7 @@ use namespace CoC;
 				if (hasPerk(PerkLib.SpiritualHunger)) dmmm += 6;
 				dmmm += 3;
 			}
+			if (hasStatusEffect(StatusEffects.FerroPellis)) dmmm += 20;
 			if (hasPerk(PerkLib.JobGuardian)) dmmm += 1;
 			if (hasPerk(PerkLib.TankI)) dmmm += 1;
 			if (hasPerk(PerkLib.TankII)) dmmm += 1;
@@ -3577,6 +3578,7 @@ use namespace CoC;
 				if (hasPerk(PerkLib.SpiritualHunger)) percent += 6;
 				percent += 3;
 			}
+			if (hasStatusEffect(StatusEffects.FerroPellis)) percent += 20;
 			if (armorMod > 50) percent += Math.sqrt(armorMod - 50);
 			return percent;
 		}
@@ -3767,6 +3769,7 @@ use namespace CoC;
 				percent += 3;
 			}
 			if (armorMMod > 50) percent += Math.sqrt(armorMMod - 50);
+			if (hasStatusEffect(StatusEffects.FerroPellis)) percent = Math.round(percent*0.5);
 			return percent;
 		}
 		public override function damageMagicalPercent():Number {
@@ -6052,7 +6055,7 @@ use namespace CoC;
 		
 		public function enemiesKillCount():Number
 		{
-			return (flags[kFLAGS.THIEFS_KILLED] + flags[kFLAGS.GOBLINS_KILLED] + flags[kFLAGS.HELLHOUNDS_KILLED] +flags[kFLAGS.IMPS_KILLED] +flags[kFLAGS.MINOTAURS_KILLED] + flags[kFLAGS.TRUE_DEMONS_KILLED] + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER]);
+			return (flags[kFLAGS.THIEFS_KILLED] + flags[kFLAGS.GOBLINS_KILLED] + flags[kFLAGS.HELLHOUNDS_KILLED] + flags[kFLAGS.IMPS_KILLED] + flags[kFLAGS.MINOTAURS_KILLED] + flags[kFLAGS.HOLLOWS_KILLED] + flags[kFLAGS.TRUE_DEMONS_KILLED] + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER]);
 		}
 
 		public function armorDescript(nakedText:String = "gear"):String
@@ -8214,7 +8217,7 @@ use namespace CoC;
 
 		public function hollowFeedSoulPointsCap():Number {
 			var capsp:Number = 60;
-			if (perkv1(PerkLib.ExanimationIII) > 0) capsp += 142;//152
+			if (perkv1(PerkLib.ExanimationIII) > 0) capsp += 152;
 			if (perkv1(PerkLib.ExanimationIII) > 1) capsp += 52;//202
 			if (perkv1(PerkLib.ExanimationIII) > 2) capsp += 52;//252
 			return capsp;
@@ -8249,6 +8252,7 @@ use namespace CoC;
 				EngineCore.HPChange(Math.round(maxHP() * 0.3), true, false);
 				amnt += Math.round(maxHunger() * 0.3);
 				if (game.monster is Goblin || game.monster is GoblinAssassin || game.monster is GoblinShaman || game.monster is GoblinWarrior) flags[kFLAGS.GOBLINS_KILLED]++;
+				else if (game.monster is Hollow) flags[kFLAGS.HOLLOWS_KILLED]++;
 				else flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER]++;
 				if (hasPerk(PerkLib.ExanimationII)) {
 					addPerkValue(PerkLib.ExanimationII, 1, 5);

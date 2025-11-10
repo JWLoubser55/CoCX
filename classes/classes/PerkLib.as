@@ -4425,7 +4425,7 @@ public class PerkLib
 		public static const ExanimationIII:PerkType = mk("Exanimation III", "Exanimation III",
 				"You've consumed enough souls and energy that there are even souls within you that subsist on the residual your soulforce. You have crossed the point of no return. Gives racial status of Vacant. Enables perks the use of Hollow Skills: 'Cero' and 'Pacisci'. (Hunger gauge deplete 30%(90%) faster, +375%(+400%) Soulforce skills, +375%(+400%) Hollow skills)");
 		public static const ExanimationIV:PerkType = mk("Exanimation IV", "Exanimation IV",
-				"");
+				"You've consumed enough souls and energy that your mind swims within a legion of restless spirits. They subsist on you as much as you feed on them. Your soulforce flares throughout your body like an immense flare. Gives racial status of Atarxis. Enables perks the use of Hollow Skill: 'Ferro Pellis'. (Hunger gauge deplete 30%(120%) faster, +100%(+500%) Soulforce skills, +100%(+500%) Hollow skills)");
 		public static const ExanimationV:PerkType = mk("Exanimation V", "Exanimation V",
 				"");
 		public static const ExanimationVI:PerkType = mk("Exanimation VI", "Exanimation VI",

@@ -44,6 +44,7 @@ public class KillingIntentSkill extends AbstractSoulSkill {
 									flags[kFLAGS.HELLHOUNDS_KILLED] +
 									flags[kFLAGS.IMPS_KILLED] +
 									flags[kFLAGS.MINOTAURS_KILLED] +
+									flags[kFLAGS.HOLLOWS_KILLED] +
 									flags[kFLAGS.TRUE_DEMONS_KILLED] +
 									flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER];
 		mod += 0.1 * flags[kFLAGS.SOUL_CULTIVATION] * monstersKilled;

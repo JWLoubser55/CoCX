@@ -143,13 +143,13 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownPacisci)) {
 				bd.disable("<b>You need more time before you can use Pacisci again.</b>\n\n");
 			} else if (player.hasStatusEffect(StatusEffects.Pacisci)) bd.disable("<b>You already created barrier.</b>\n\n");
-		}/*
+		}
 		if (player.hasPerk(PerkLib.ExanimationIV)) {
 			bd = buttons.add("Ferro Pellis", FerroPellisHollow, "Envelop yourself in a spiritual aura that makes your skin as hard as steel. \nWould go into cooldown after use for: 5 rounds\n");
 			if (player.hasStatusEffect(StatusEffects.CooldownFerroPellis)) {
 				bd.disable("<b>You need more time before you can use Ferro Pellis again.</b>\n\n");
-			}
-		}*/
+			} else if (player.hasStatusEffect(StatusEffects.FerroPellis)) bd.disable("<b>You already enveloped yourself in a spiritual aura.</b>\n\n");
+		}
 		if ((player.isRaceCached(Races.RAIJU) || (player.isRaceCached(Races.THUNDERBIRD) && player.tailType == Tail.THUNDERBIRD) || player.isRaceCached(Races.KIRIN)) && player.hasPerk(PerkLib.ElectrifiedDesire) >= 0) {
 			bd = buttons.add("Orgasmic L.S.", OrgasmicLightningStrike, "Masturbate to unleash a massive discharge.", "Orgasmic Lightning Strike");
 			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -6176,9 +6176,15 @@ public class MagicSpecials extends BaseCombatContent {
 	public function CeroHollow():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
-		if (player.hasStatusEffect(StatusEffects.ChanneledAttack)) {
+		var damage:Number = 0;
+		var damage2:Number = 0;
+		var damage3:Number = 0;
+		var damage4:Number = 0;
+		var damage5:Number = 0;
+		if (player.hasPerk(PerkLib.ExanimationIV)) {
+			fatigue(40, USEFATG_MAGIC_NOBM);
 			outputText("You flare your soulforce, then concentrate that spiritual energy in the empty space between your horns. Then release a powerful blast of concentrated spiritual energy towards [themonster].");
-			var damage:Number = player.wis * 5;
+			damage += player.wis * 5;
 			damage += scalingBonusWisdom() * 5;
 			damage += player.inte;
 			damage += scalingBonusIntelligence();
@@ -6187,50 +6193,98 @@ public class MagicSpecials extends BaseCombatContent {
 			damage = Math.round(damage);
 			doMagicDamage(damage, true, true);
 			if (player.hasPerk(PerkLib.AcidAffinity)) {
-				var damage2:Number = damage * 0.7;
+				damage2 = damage * 0.7;
 				damage2 = calcCorrosionMod(damage2, true);
 				damage2 = Math.round(damage2);
 				doAcidDamage(damage2, true, true);
 			}
 			if (player.hasPerk(PerkLib.LightningAffinity)) {
-				var damage3:Number = damage * 0.7;
+				damage3 = damage * 0.7;
 				damage3 = calcVoltageMod(damage3, true);
 				damage3 = Math.round(damage3);
 				doLightningDamage(damage3, true, true);
 			}
 			if (player.hasPerk(PerkLib.ColdAffinity)) {
-				var damage4:Number = damage * 0.7;
+				damage4 = damage * 0.7;
 				damage4 = calcGlacialMod(damage4, true);
 				damage4 = Math.round(damage4);
 				doIceDamage(damage4, true, true);
 			}
 			if (player.hasPerk(PerkLib.FireAffinity)) {
-				var damage5:Number = damage * 0.7;
+				damage5 = damage * 0.7;
 				damage5 = calcInfernoMod(damage5, true);
 				damage5 = Math.round(damage5);
 				doFireDamage(damage5, true, true);
 			}
-			player.removeStatusEffect(StatusEffects.ChanneledAttack);
-			player.removeStatusEffect(StatusEffects.ChanneledAttackType);
 			outputText("\n\n");
 			if (damage2 > 0) damage += damage2;
 			if (damage3 > 0) damage += damage3;
 			if (damage4 > 0) damage += damage4;
 			if (damage5 > 0) damage += damage5;
+			var pc1:Number = 3;
+			if (player.hasPerk(PerkLib.NaturalInstincts)) pc1 -= 1;
+			player.createStatusEffect(StatusEffects.CooldownCero,pc1,0,0,0);
 			checkAchievementDamage(damage);
 			combat.heroBaneProc(damage);
 			checkLethiceAndCombatRoundOver();
 		}
 		else {
-			fatigue(40, USEFATG_MAGIC_NOBM);
-			outputText("The air stands still as particles of soulforce rush towards empty space between your horns.");
-			var pc:Number = 4;
-			if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
-			player.createStatusEffect(StatusEffects.CooldownCero,pc,0,0,0);
-			player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
-			player.createStatusEffect(StatusEffects.ChanneledAttackType, 9, 0, 0, 0);
-			outputText("\n\n");
-			enemyAI();
+			if (player.hasStatusEffect(StatusEffects.ChanneledAttack)) {
+				outputText("You flare your soulforce, then concentrate that spiritual energy in the empty space between your horns. Then release a powerful blast of concentrated spiritual energy towards [themonster].");
+				damage += player.wis * 4;
+				damage += scalingBonusWisdom() * 4;
+				damage += player.inte;
+				damage += scalingBonusIntelligence();
+				damage *= soulskillMagicalMod();
+				damage *= combat.hollowSkillsAndSoulskillsBoost();
+				damage = Math.round(damage);
+				doMagicDamage(damage, true, true);
+				if (player.hasPerk(PerkLib.AcidAffinity)) {
+					damage2 = damage * 0.7;
+					damage2 = calcCorrosionMod(damage2, true);
+					damage2 = Math.round(damage2);
+					doAcidDamage(damage2, true, true);
+				}
+				if (player.hasPerk(PerkLib.LightningAffinity)) {
+					damage3 = damage * 0.7;
+					damage3 = calcVoltageMod(damage3, true);
+					damage3 = Math.round(damage3);
+					doLightningDamage(damage3, true, true);
+				}
+				if (player.hasPerk(PerkLib.ColdAffinity)) {
+					damage4 = damage * 0.7;
+					damage4 = calcGlacialMod(damage4, true);
+					damage4 = Math.round(damage4);
+					doIceDamage(damage4, true, true);
+				}
+				if (player.hasPerk(PerkLib.FireAffinity)) {
+					damage5 = damage * 0.7;
+					damage5 = calcInfernoMod(damage5, true);
+					damage5 = Math.round(damage5);
+					doFireDamage(damage5, true, true);
+				}
+				player.removeStatusEffect(StatusEffects.ChanneledAttack);
+				player.removeStatusEffect(StatusEffects.ChanneledAttackType);
+				outputText("\n\n");
+				if (damage2 > 0) damage += damage2;
+				if (damage3 > 0) damage += damage3;
+				if (damage4 > 0) damage += damage4;
+				if (damage5 > 0) damage += damage5;
+				checkAchievementDamage(damage);
+				combat.heroBaneProc(damage);
+				checkLethiceAndCombatRoundOver();
+			}
+			else {
+				fatigue(40, USEFATG_MAGIC_NOBM);
+				outputText("The air stands still as particles of soulforce rush towards empty space between your horns.");
+				var pc2:Number = 4;
+				if (player.hasPerk(PerkLib.NaturalInstincts)) pc2 -= 1;
+				player.createStatusEffect(StatusEffects.CooldownCero,pc2,0,0,0);
+				player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
+				player.createStatusEffect(StatusEffects.ChanneledAttackType, 9, 0, 0, 0);
+				outputText("\n\n");
+				enemyAI();
+			}
 		}
 	}
 	
@@ -6251,7 +6305,7 @@ public class MagicSpecials extends BaseCombatContent {
 		clearOutput();
 		fatigue(40, USEFATG_MAGIC_NOBM);
 		outputText("You flare your soulforce, then concentrate it around your body. You feel as though blades would break upon your skin. ");
-		player.createStatusEffect(StatusEffects.AcidDoT,3,0,0,0);
+		player.createStatusEffect(StatusEffects.FerroPellis,3,0,0,0);
 		var pc:Number = 5;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
 		player.createStatusEffect(StatusEffects.CooldownFerroPellis,pc,0,0,0);

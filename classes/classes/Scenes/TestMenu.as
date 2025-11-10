@@ -106,6 +106,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test9", NotHollowed, "Cheatish curing Demi-hollow state.");
 		bd.add("Test10", ConvertYourMaskFragments, "Convert Your Mask Fragments. One at the time!");
 		bd.add("Test11", MightyOrNot8, "Fixing ascension bug for Exanimation II.");
+		bd.add("Test12", MightyOrNot9, "Testing Hollow evolutions faster.");
 		
 		submenu(bd, playerMenu, 0, false);
 	}
@@ -142,6 +143,11 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot9():void {
+		if (player.hasPerk(PerkLib.ExanimationII)) player.addPerkValue(PerkLib.ExanimationII, 1, 60);
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot8():void {

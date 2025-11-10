@@ -207,6 +207,24 @@ public function transformationIntoVacantHollow(postFeeding:Boolean = false):void
 }
 public function transformationIntoAtarxisHollow(postFeeding:Boolean = false):void {
 	clearOutput();
+	outputText("Your soul flares once more. Giddy with anticipation. A massive grin blooms across your face as you savor the rapture of metamorphosis.\n\n");
+	outputText("The souls you have devoured no longer whisper at the borders of your mind. They shriek, they writhe, they batter at your thoughts. Manifesting in your mask until it reshapes itself into a fractured, many-layered visage. A single face becomes legion: jaws stacked upon jaws. Eyes clustering into a grotesque constellation of sight.\n\n");
+	outputText("A spiked bone-white collar erupts around your neck in a flare of soulforce. The surface is studded with runic grooves that pulse with soulforce. From your seams spills a shroud of darkness — soulforce leaking between shifting limbs. It stitches you together when by all rights you should be coming apart.\n\n");
+	outputText("The howling spirits inside you gnaw through your sense of reality. Your vision drowns in ink-black void, pocked by wavering motes of light. Among them drift the shades, screaming themselves into being. Their forms mumbling and buckling against each other. And stalking their edges, a white blur.\n\n");
+	outputText("It sports a shapely yet lanky figure. A shade of ivory: slender and pallid. Fissures glow faintly across her frame. It flickers, unstable at the edges — yet each movement is deliberate.\n\n");
+	outputText("With a single violent lunge. A row of sharklike teeth sink into a mumbling shade. It rends onyx flesh, ichor splattering the pale body as white shade devours its prey whole. Then it stops and grins at you through the gloom of shadows.\n\n");
+	outputText("Reeling from such a raw predator act, you stagger back — only to feel a hand, cold as marble, steady you.\n\n");
+	outputText("\"<i>More. Don’t stop now. See how easy it is?</i>\" Says a low pitched feminine voice. You turn, but nothing is there. And in that instant, you are thrust back into the waking world.\n\n");
+	player.setPerkValue(PerkLib.ExanimationII, 1, 0);
+	player.setPerkValue(PerkLib.ExanimationII, 2, 0);
+	player.addPerkValue(PerkLib.ExanimationIII, 1, 1);
+	player.createPerk(PerkLib.ExanimationIV, 0, 0, 0, 0);
+	if (postFeeding) explorer.stopExploring();
+	doNext(camp.returnToCampUseOneHour);
+}
+public function transformationIntoMortarchHollow(postFeeding:Boolean = false):void {
+	clearOutput();
+	outputText("\"<i></i>\"\n\n");
 	outputText("\"<i></i>\"\n\n");
 	if (postFeeding) explorer.stopExploring();
 	doNext(camp.returnToCampUseOneHour);

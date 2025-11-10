@@ -2297,7 +2297,7 @@ public static const GOLEM_ENEMY_TYPE:int                             				= 2288;
 public static const IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED:int                      = 2289;
 public static const TAMED_09_NAME:int                        						= 2290;
 public static const TAMED_10_NAME:int                           		            = 2291;
-public static const DISCOVERED_DEEP_SEA:int                           		        = 2292; // Not used
+public static const HOLLOWS_KILLED:int                           		        	= 2292;
 public static const DISCOVERED_SEABED:int                                   		= 2293;	//Not Yet Used Flag
 public static const HEXINDAO_UNLOCKED:int                          		            = 2294;
 public static const UNKNOWN_FLAG_NUMBER_02295:int                                   = 2295;	//Not Yet Used Flag	//for wuxia related place 2
@@ -3020,3 +3020,4 @@ public static const GLOBAL_FLAGS_ARRAY:Array = [
 ];
 	}
 }
+

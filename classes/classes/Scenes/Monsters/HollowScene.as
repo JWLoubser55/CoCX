@@ -6,6 +6,7 @@ package classes.Scenes.Monsters
 {
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.Scenes.SceneLib;
 	import classes.CoC;
 
 public class HollowScene extends BaseContent
@@ -96,7 +97,17 @@ public class HollowScene extends BaseContent
 			}
 		}
 		
+		public function wonWithHollow():void {
+			clearOutput();
+		//	spriteSelect(SpriteDb.);
+			menu();
+			addButtonIfTrue(0, "Souleater", SceneLib.uniqueSexScene.hollowSouleater, "Req. Exanimation II perk.", player.hasPerk(PerkLib.ExanimationII));
+			addButton(14, "Leave", cleanupAfterCombat);
+		}
+		
 		private function a():void {
+			outputText("\n\n");
+			outputText("\"<i></i>\"\n\n");
 			outputText("\n\n");
 			outputText("\"<i></i>\"\n\n");
 		}

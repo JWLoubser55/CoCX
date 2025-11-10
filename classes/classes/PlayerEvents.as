@@ -113,6 +113,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasPerk(PerkLib.ExanimationI)) multiplier += 0.3;
 				if (player.hasPerk(PerkLib.ExanimationII)) multiplier += 0.3;
 				if (player.hasPerk(PerkLib.ExanimationIII)) multiplier += 0.3;
+				if (player.hasPerk(PerkLib.ExanimationIV)) multiplier += 0.3;
 				if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 2) multiplier += (0.15 * (player.perkv1(IMutationsLib.WendigoMetabolismIM) - 1));
 				if (player.hasPerk(PerkLib.ManticoreCumAddict)) multiplier *= 2;
 				if (player.hasPerk(PerkLib.HydraRegeneration)) multiplier *= 2;
@@ -1768,8 +1769,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 			}
 			if (player.hasStatusEffect(StatusEffects.DarkSign)) {
-				/*if (player.perkv1(PerkLib.ExanimationII) >=  && player.perkv2(PerkLib.ExanimationII) >= 2 && player.perkv1(PerkLib.ExanimationIII) == 1) SceneLib.camp.campUniqueScenes.transformationIntoAtarxisHollow();
-				else */if (player.perkv1(PerkLib.ExanimationII) >= 60 && player.perkv2(PerkLib.ExanimationII) >= 1) SceneLib.camp.campUniqueScenes.transformationIntoVacantHollow();
+				if (player.perkv1(PerkLib.ExanimationII) >= 212 && player.perkv2(PerkLib.ExanimationII) >= 2 && player.perkv1(PerkLib.ExanimationIII) == 1) SceneLib.camp.campUniqueScenes.transformationIntoAtarxisHollow();
+				else if (player.perkv1(PerkLib.ExanimationII) >= 60 && player.perkv2(PerkLib.ExanimationII) >= 1 && !player.hasPerk(PerkLib.ExanimationIII)) SceneLib.camp.campUniqueScenes.transformationIntoVacantHollow();
 			}
 			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv1(PerkLib.EmptyVessel) == 0 && player.soulforce >= Math.round(player.maxSoulforce() * 0.6)) {
 				outputText("\nYour soulforce seems to stream around your body, immersing you in a transparent aura of spiritual energy. Its pressure is dense enough that it acts like a thin barrier.");

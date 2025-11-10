@@ -45,7 +45,7 @@ public class DogRace extends Race {
 				.legType(LowerBody.DOG, +1)
 				.hasCockOfType(CockTypesEnum.DOG, +2)
 				.breastRowCount(2, +1)
-				.breastRowCount(3, +1)
+				.breastRowCount(3, +2)
 				.skinCoatType(Skin.FUR, +1)
 				.customRequirement("","not Cerberus",
 						function (body:BodyData):Boolean {
