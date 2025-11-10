@@ -104,7 +104,8 @@ public class TestMenu extends BaseContent
 		bd.add("Test7", MightyOrNot7, "Combat Slaves Operational.");
 		bd.add("Test8", NotAnAizen, "If you really not wanna go to Ignam agian for this testing use this.").disableIf(player.hasStatusEffect(StatusEffects.ChainOfFate));
 		bd.add("Test9", NotHollowed, "Cheatish curing Demi-hollow state.");
-		bd.add("Test10", ConvertYourMaskFragments, "Convert Your Mask Fragments.");
+		bd.add("Test10", ConvertYourMaskFragments, "Convert Your Mask Fragments. One at the time!");
+		bd.add("Test11", MightyOrNot8, "Fixing ascension bug for Exanimation II.");
 		
 		submenu(bd, playerMenu, 0, false);
 	}
@@ -143,9 +144,21 @@ public class TestMenu extends BaseContent
 		submenu(bd, SoulforceCheats, 0, false);
 	}
 	
+	public function MightyOrNot8():void {
+		if (player.perkv4(PerkLib.ExanimationII) > 0) {
+			player.setPerkValue(PerkLib.ExanimationII, 4, 0);
+			if (player.hasPerk(PerkLib.ExanimationIII)) player.addPerkValue(PerkLib.ExanimationIII, 1, 1);
+		}
+		doNext(SoulforceCheats);
+	}
+	
 	public function ConvertYourMaskFragments():void {
 		outputText("\n\n<b>Convert Your Mask Fragments</b>\n\n");
-		if (player.hasItem(useables.HMASKFRAG, 1)) {
+		if (player.hasItem(useables.MMASKFRAG, 1)) {
+			player.destroyItems(useables.MMASKFRAG, 1);
+			inventory.takeItem(consumables.MTMFRAG, SoulforceCheats);
+		}
+		else if (player.hasItem(useables.HMASKFRAG, 1)) {
 			player.destroyItems(useables.HMASKFRAG, 1);
 			inventory.takeItem(consumables.HM_FRAG, SoulforceCheats);
 		}

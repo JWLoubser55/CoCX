@@ -7,6 +7,7 @@ package classes.Scenes.Camp
 	import classes.*;
 	import classes.BodyParts.*;
 	import classes.GlobalFlags.kFLAGS;
+	import classes.IMutations.IMutationsLib;
 	import classes.Items.Consumable;
 	import classes.display.SpriteDb;
 	
@@ -177,8 +178,7 @@ public function transformationIntoVacantHollow(postFeeding:Boolean = false):void
 	CoC.instance.transformations.SkinPatternSoulforceScaring.applyEffect(false);
 	player.setPerkValue(PerkLib.ExanimationII, 1, 0);
 	player.setPerkValue(PerkLib.ExanimationII, 2, 0);
-	player.addPerkValue(PerkLib.ExanimationII, 4, 1);
-	player.createPerk(PerkLib.ExanimationIII, 0, 0, 0, 0);
+	player.createPerk(PerkLib.ExanimationIII, 1, 0, 0, 0);
 	player.createPerk(PerkLib.GiantSize, 0, 0, 0, 0);
 	player.createPerk(PerkLib.AcidAffinity, 0, 0, 0, 0);
 	if (rand(3) == 0) {
@@ -198,6 +198,10 @@ public function transformationIntoVacantHollow(postFeeding:Boolean = false):void
 		outputText("<b>(Gained Acid / Fire Affinities)</b>\n\n");
 		}
 	}
+	player.updateRacialParagon(Races.HOLLOW);
+	//IMutationsLib.ArachnidBookLungIM.trueMutation = true;
+	IMutationsLib.LivingWeaponIM.trueMutation = true;
+	player.removeAllRacialMutation();
 	if (postFeeding) explorer.stopExploring();
 	doNext(camp.returnToCampUseOneHour);
 }

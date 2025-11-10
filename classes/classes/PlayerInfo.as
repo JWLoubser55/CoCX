@@ -95,8 +95,8 @@ public class PlayerInfo extends BaseContent {
 		}
 		if (player.hasPerk(PerkLib.ExanimationII)) {
 			bodyStats += "<b>Soul Points:</b> ";
-			if (player.perkv4(PerkLib.ExanimationII) == 2) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 211\n";
-			else if (player.perkv4(PerkLib.ExanimationII) == 1) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 161\n";
+			if (player.perkv1(PerkLib.ExanimationIII) == 2) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 264\n";
+			else if (player.perkv1(PerkLib.ExanimationIII) == 1) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 202\n";
 			else bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 60\n";
 		}
 		bodyStats += "<b>Times Transformed:</b> " + flags[kFLAGS.TIMES_TRANSFORMED] + "\n";

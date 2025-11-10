@@ -205,7 +205,7 @@ use namespace CoC;
 				this.bonusLust = 194;
 				this.level = 19;
 				this.gems = 15 + rand(10);
-				this.drop = new ChainedDrop().add(useables.MMASKFRAG,1);
+				this.drop = new ChainedDrop().add(consumables.MTMFRAG,1);
 				this.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
 				this.createPerk(PerkLib.Flexibility, 0, 0, 0, 0);
 			}

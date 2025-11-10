@@ -1103,7 +1103,7 @@ public class UniqueSexScenes extends BaseContent
 				doNext(SceneLib.camp.campUniqueScenes.transformationIntoHollow, true);
 			}
 			else if (player.hasStatusEffect(StatusEffects.DarkSign)) {
-				/*if (player.perkv1(PerkLib.ExanimationII) >=  && player.perkv2(PerkLib.ExanimationII) >= 2 && player.perkv4(PerkLib.ExanimationII) == 1) SceneLib.camp.campUniqueScenes.transformationIntoAtarxisHollow();
+				/*if (player.perkv1(PerkLib.ExanimationII) >=  && player.perkv2(PerkLib.ExanimationII) >= 2 && player.perkv1(PerkLib.ExanimationIII) == 1) SceneLib.camp.campUniqueScenes.transformationIntoAtarxisHollow();
 				else */if (player.perkv1(PerkLib.ExanimationII) >= 60 && player.perkv2(PerkLib.ExanimationII) >= 1) doNext(SceneLib.camp.campUniqueScenes.transformationIntoVacantHollow, true);
 			}
 		}

@@ -295,7 +295,7 @@ public class Changelog extends BaseContent
 			outputText("-New Unique Sexscene: Souldrain - req. to have Empty Vessel / Spiritual Hunger perk. Can be only used against humanoid enemies that have soul. Siphon soulforce from your foe. It's not much but at least they are not dead. (Give up to 10% of satiety, 25% of soulforce, 10% of hp)\n");
 			outputText("-New Unique Sexscene: Souleater - req. to have Empty Vessel / Spiritual Hunger perk. Can be only used against humanoid enemies that have soul. Eat the soul of your foe, killing them in the process. (Give up to 30% of total satiety, 30% of soulforce, 30% of Hp, and +10 corruption)\n");
 			outputText("-In kill count section of stats page was added two more counters: other enemies, enemies killed by souleater.\n");
-			outputText("-New usable item: Mortarch Mask fragment. Costing 600 gems and can be dropped by defeated mortarch hollow. Could be eater by Hollow or higher tiers of their evolution forms to gain Soul points used to trigger evolution.\n");
+			outputText("-New consumable item: Mortarch Mask fragment. Costing 600 gems and can be dropped by defeated mortarch hollow. Could be eater by Hollow or higher tiers of their evolution forms to gain Soul points used to trigger evolution.\n");
 			outputText("-When exploring outer desert or using general explore can encounter Pale Hollow enemy if PC isn't pernamently transformed. After this encounter PC would be marked and after day change into Demi-Hollow.\n");
 			outputText("-Flared carrot cum boost now ignore balls (since you can already do that ingame by removing it manually might as well make life easier, more flavor text later) (NUZ/Shirane)\n");
 			outputText("-Applied the fix for dragon arms. (Stadler)\n");
@@ -313,7 +313,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Soul resonance. Gained by reaching Vacant tier of Hollow race. Effects: Soulforce scaring will manifest one random elemental (Ice/Fire/Lightning) Affinity. Yields an additional Affinity once pc is of Mortarch or higher.\n");
 			outputText("-New M. Special: Cero. Usable by having Exanimation III perk. Effect: Fire a powerful blast of concentrated spiritual energy at the target.\n");
 			outputText("-New M. Special: Pacisci. Usable by having Exanimation III perk. Effect: Creates a barrier that lasts 4 turns that repels all Magical and Soulforce attacks.\n");
-			outputText("-\n");
+			outputText("-Pig/Boar TF can now give up to 5 rows of breasts.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

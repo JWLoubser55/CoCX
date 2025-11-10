@@ -321,6 +321,7 @@ public final class ConsumableLib extends AlchemyLib
 		public const MH_PILL: Consumable = mk("MH.Pill", "M.Heal Pill", "a medium healing pill", 15, "A medium healing pill that's guaranteed to heal you by a bit.", m.mediumhealpill);
 		public const MILKPTN:Consumable       = new MilkPotion();
 		public const MIND_UP:MindUp           = new MindUp();
+		public const MTMFRAG:MortarchMaskFrag = new MortarchMaskFrag();
 		public const NUMBCND: Consumable = mk("NumbCnd","Numb Candies", "a strange packet of 'Numb Candies'", 40, "This packet of innocuous looking 'candy' guarantees to reduce troublesome hear or rut and taste delicious.", m.numbCandies);
 		public const NUMBROX:Consumable       = new NumbRocks();
 		public const NUMBOIL:Consumable       = new NumbingOil();

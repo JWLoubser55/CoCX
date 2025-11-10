@@ -8214,9 +8214,9 @@ use namespace CoC;
 
 		public function hollowFeedSoulPointsCap():Number {
 			var capsp:Number = 60;
-			if (perkv2(PerkLib.ExanimationII) > 0) capsp += 101;//152
-			if (perkv2(PerkLib.ExanimationII) > 1) capsp += 50;//202
-			if (perkv2(PerkLib.ExanimationII) > 2) capsp += 50;//252
+			if (perkv1(PerkLib.ExanimationIII) > 0) capsp += 142;//152
+			if (perkv1(PerkLib.ExanimationIII) > 1) capsp += 52;//202
+			if (perkv1(PerkLib.ExanimationIII) > 2) capsp += 52;//252
 			return capsp;
 		}
 		public function hollowFeed(subtype:Number):void {

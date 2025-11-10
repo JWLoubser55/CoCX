@@ -47,7 +47,7 @@ public class DrakeBonesMutation extends IMutationPerkType
                         return InCollection(player.arms.type, Arms.DRACONIC, Arms.FROSTWYRM, Arms.SEA_DRAGON, Arms.FEY_DRACONIC, Arms.LIZARD, Arms.YGGDRASIL, Arms.JABBERWOCKY);
                     }, "Dragon race or its variants arms")
                     .requireCustomFunction(function (player:Player):Boolean {
-                        return (LowerBody.hasDraconicLegs(player) || player.lowerBody == LowerBody.KIRIN);
+                        return (LowerBody.hasDraconicLegs(player) || player.lowerBody == LowerBody.JABBERWOCKY || player.lowerBody == LowerBody.KIRIN);
                     }, "Dragon race or its variants legs")
                     .requireCustomFunction(function (player:Player):Boolean {
                         return (Tail.hasDraconicTail(player) || (LowerBody.hasDraconicLegs(player) && LowerBody.hasTail(player)) || player.tailType == Tail.KIRIN);
