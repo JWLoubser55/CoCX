@@ -5182,6 +5182,9 @@ use namespace CoC;
 		public function isRaceCached(race:Race, minTier:int=1):Boolean {
 			return racialTierCached(race) >= minTier;
 		}
+		public function isRaceSpecificTier(race:Race, specificTier:int=1):Boolean {
+			return racialTierCached(race) == specificTier;
+		}
 
 		// returns the player's top race
 		public function raceObject(useCache:Boolean=false):Race {
@@ -8257,8 +8260,8 @@ use namespace CoC;
 				if (hasPerk(PerkLib.ExanimationII)) {
 					addPerkValue(PerkLib.ExanimationII, 1, 5);
 					if (perkv1(PerkLib.ExanimationII) > hollowFeedSoulPointsCap()) setPerkValue(PerkLib.ExanimationII, 1, hollowFeedSoulPointsCap());
-					if (perkv4(PerkLib.ExanimationII) == 0 && perkv2(PerkLib.ExanimationII) < 1) addPerkValue(PerkLib.ExanimationII, 2, 1);
-					if (perkv4(PerkLib.ExanimationII) == 1 && perkv2(PerkLib.ExanimationII) < 2 && game.monster is Hollow) addPerkValue(PerkLib.ExanimationII, 2, 1);
+					if (!hasPerk(PerkLib.ExanimationIII) && perkv2(PerkLib.ExanimationII) < 1) addPerkValue(PerkLib.ExanimationII, 2, 1);
+					if (perkv1(PerkLib.ExanimationIII) == 1 && perkv2(PerkLib.ExanimationII) < 2 && game.monster is Hollow) addPerkValue(PerkLib.ExanimationII, 2, 1);
 				}
 			}
 			var oldHunger:Number = hunger;

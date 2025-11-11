@@ -3020,4 +3020,3 @@ public static const GLOBAL_FLAGS_ARRAY:Array = [
 ];
 	}
 }
-

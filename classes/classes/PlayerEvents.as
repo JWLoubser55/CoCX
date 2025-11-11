@@ -2378,7 +2378,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			//Laquine Might
 			needNext = player.gainOrLosePerk(PerkLib.LaquineMight, player.isRaceCached(Races.LAQUINE), "Woa maybe you’ve eaten too many raw carrots you feel your body ripple with power. It might also be you turning into a full Laquine doing this.", "As your body becomes less Laquine like you feel your energy is down both in libido and strength.") || needNext;
 			//Titanic Size
-			needNext = player.gainOrLosePerk(PerkLib.TitanicSize,(player.tallness >= 80 && (player.isRaceCached(Races.SCYLLA, 2) || player.isAnyRaceCached(Races.HYDRA, Races.FROSTWYRM, Races.SANDWORM))), "Whoa, you've grown so big its a sheer miracle you don't damage the landscape while moving. That said, your size now contributes to your strength as well.",
+			needNext = player.gainOrLosePerk(PerkLib.TitanicSize,(player.tallness >= 80 && (player.isRaceCached(Races.SCYLLA, 2) || player.isAnyRaceCached(Races.HYDRA, Races.FROSTWYRM, Races.SANDWORM) || player.isRaceSpecificTier(Races.HOLLOW, 4))), "Whoa, you've grown so big its a sheer miracle you don't damage the landscape while moving. That said, your size now contributes to your strength as well.",
 					(player.tallness < 80) ? "You sadly are no longer able to benefit from your size as much as you did before. Probably because you have shrunk to a smaller size." : "You sadly are no longer able to benefit from your size as much as you did before. Probably because you have transformed again.") || needNext;
 			//Giant Might && Titan Might
 			if (player.isRaceCached(Races.ONI) || player.isRaceCached(Races.ORCA) || player.isRaceCached(Races.ABYSSAL_SHARK)) {
@@ -3414,4 +3414,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}

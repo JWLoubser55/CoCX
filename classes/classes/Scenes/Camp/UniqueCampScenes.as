@@ -215,10 +215,13 @@ public function transformationIntoAtarxisHollow(postFeeding:Boolean = false):voi
 	outputText("With a single violent lunge. A row of sharklike teeth sink into a mumbling shade. It rends onyx flesh, ichor splattering the pale body as white shade devours its prey whole. Then it stops and grins at you through the gloom of shadows.\n\n");
 	outputText("Reeling from such a raw predator act, you stagger back — only to feel a hand, cold as marble, steady you.\n\n");
 	outputText("\"<i>More. Don’t stop now. See how easy it is?</i>\" Says a low pitched feminine voice. You turn, but nothing is there. And in that instant, you are thrust back into the waking world.\n\n");
+	if (player.tallness < 80) player.tallness = 80 + rand(11);
 	player.setPerkValue(PerkLib.ExanimationII, 1, 0);
 	player.setPerkValue(PerkLib.ExanimationII, 2, 0);
 	player.addPerkValue(PerkLib.ExanimationIII, 1, 1);
 	player.createPerk(PerkLib.ExanimationIV, 0, 0, 0, 0);
+	player.createPerk(PerkLib.TitanicSize, 0, 0, 0, 0);
+	player.removePerk(PerkLib.GiantSize);
 	if (postFeeding) explorer.stopExploring();
 	doNext(camp.returnToCampUseOneHour);
 }
