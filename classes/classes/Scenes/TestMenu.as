@@ -107,7 +107,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test10", ConvertYourMaskFragments, "Convert Your Mask Fragments. One at the time!");
 		bd.add("Test11", MightyOrNot8, "Fixing ascension bug for Exanimation II.");
 		bd.add("Test12", MightyOrNot9, "Testing Hollow evolutions faster.");
-		bd.add("Test13", MightyOrNot10, "Grow big on milk Artaxis ^^");
+		//bd.add("Test13", MightyOrNot10, "");
 		
 		submenu(bd, playerMenu, 0, false);
 	}
@@ -147,13 +147,7 @@ public class TestMenu extends BaseContent
 	}
 	
 	public function MightyOrNot10():void {
-		if (player.hasPerk(PerkLib.ExanimationIV)) {
-			if (player.tallness < 80) player.tallness = 80 + rand(11);
-			if (player.hasPerk(PerkLib.GiantSize)) {
-				if (!player.hasPerk(PerkLib.TitanicSize)) player.createPerk(PerkLib.TitanicSize, 0, 0, 0, 0);
-				player.removePerk(PerkLib.GiantSize);
-			}
-		}
+		
 		doNext(SoulforceCheats);
 	}
 	

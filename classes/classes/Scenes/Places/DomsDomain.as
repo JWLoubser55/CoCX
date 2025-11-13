@@ -586,14 +586,12 @@ public class DomsDomain extends BaseContent implements SaveableState, TimeAwareI
 
     private function EatFish():void {
         clearOutput();
-
         outputText("Emerald gives you a warm smile. “Personally, that’s my favorite.” Emerald sashays away, giving you ample time to examine her bubble-butt and wide hips as she heads off to the kitchen. In minutes, she comes back with a tender-looking filet, steaming ever so slightly. On a bed of pink rice, the dish is dainty, and you eat slowly, savoring the flavors. As you eat, you feel like the Incubi are eyeing you a bit more…and you find yourself enjoying that thought, your eyes half-lidding as you lazily watch a few Incubi bicker across the bar. \n\n");
         outputText("Soon enough, you’ve finished your meal. You decide to take your leave, and explore the Dom’s Domain a bit more.\n\n");
         outputText("");
-        player.hunger = player.maxHunger();
-        HPChange(Math.round(player.maxHP() * .05), false, true);
-        EngineCore.ManaChange(player.maxMana() * 0.05);
-        player.hunger = player.maxHunger();
+        var gain:Number = player.maxHunger();
+		gain -= player.hunger;
+		player.refillHunger(gain);
         HPChange(Math.round(player.maxHP() * .05), false, true);
         EngineCore.ManaChange(player.maxMana() * 0.05);
         FishEaten += 1;
@@ -606,7 +604,9 @@ public class DomsDomain extends BaseContent implements SaveableState, TimeAwareI
         outputText("“Enjoy!” Emerald says brightly, topping off a wine glass and putting it down beside you. You tear into the meat…It’s savory to the extreme, the fat practically dripping off it. You finish before you realize it, completely satiated. The warmth from the meal fills your belly…and begins to collect in your loins. Your eye begins to follow the succubi a little more closely.\n\n");
         outputText("Soon enough, you’ve finished your meal. You decide to take your leave, and explore the Dom’s Domain a bit more.\n\n");
         //increase food, virility and cum production
-        player.hunger = player.maxHunger();
+        var gain:Number = player.maxHunger();
+		gain -= player.hunger;
+		player.refillHunger(gain);
         HPChange(Math.round(player.maxHP() * .05), false,true);
         EngineCore.ManaChange(player.maxMana() * 0.05);
         SteakEaten +=1;

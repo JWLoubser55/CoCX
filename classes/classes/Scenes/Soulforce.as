@@ -563,8 +563,8 @@ public class Soulforce extends BaseContent
 			paths += 1;
 		}
 		outputText("<b>Current subpaths that are cultivated / Maximum subpaths that can be cultivated:</b> " + paths + " / " + pathscap + "\n\n");
-		outputText("<i>Current body refining subpaths that are cultivated:</i> " + pathsd + " of " + pathscap + " (3)\n");
-		outputText("<i>Current daoist subpaths that are cultivated:</i> " + pathsb + " of " + pathscap + " (10)\n");
+		outputText("<i>Current body refining subpaths that are cultivated:</i> " + pathsb + " of " + pathscap + " (3)\n");
+		outputText("<i>Current daoist subpaths that are cultivated:</i> " + pathsd + " of " + pathscap + " (10)\n");
 		outputText("<i>Current heartforce subpaths that are cultivated:</i> " + pathsh + " of " + pathscap + " (1)\n");
 		menu();
 		if (player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") >= 0) {
@@ -955,7 +955,7 @@ public class Soulforce extends BaseContent
 		var i:int;
 		for (i = 0; i < stages.length; ++i)
 			addButton(i, stages[i][0], heartforceSubPathChosen2, stages[i][1], stages[i][2])
-				.disableIf(!player.hasItem(stages[i][2], 1) || !player.hasItem(useables.BTSOLUTION, 1),
+				.disableIf(!player.hasItem(stages[i][2], 1) || !player.hasItem(useables.HFSOLUTION, 1),
 					"Requires 1 bottle of " + (stages[i][2] as ItemType).longName
 					+ " and 1 vial of " + useables.BTSOLUTION.longName)
 				.disableIf(!player.hasPerk(stages[i][3]), "Requires perk: " + (stages[i][3] as PerkType).name())
@@ -965,7 +965,7 @@ public class Soulforce extends BaseContent
 	}
 	private function heartforceSubPathChosen2(perk:PerkType, bottle:ItemType):void {
 		player.destroyItems(bottle, 1);
-		player.destroyItems(useables.BTSOLUTION, 1);
+		player.destroyItems(useables.HFSOLUTION, 1);
 		player.createPerk(perk, 0, 0, 0, 0);
 		outputText("\n\n<b>Gained perk - " + perk.name() + "</b>");
 		doNext(camp.returnToCampUseFourHours);

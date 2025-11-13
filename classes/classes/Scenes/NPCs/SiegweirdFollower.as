@@ -286,7 +286,9 @@ public function siegweirdCampSoup():void
 		outputText("\"<i>Sure there's plenty to share and enjoy! Bottoms up, [name], let us never forget or purpose here!</i>\"\n\n");
 		outputText("You share the meal with Siegweird, the magical soup replenishing your endurance and healing your wounds.\n\n");
 		player.addStatusValue(StatusEffects.SiegweirdSoup, 1, 1);
-		player.hunger = player.maxHunger();
+		var gain:Number = player.maxHunger();
+		gain -= player.hunger;
+		player.refillHunger(gain);
         var recoveryV:Number = soupRecovery();
 		HPChange(Math.round(player.maxHP() * recoveryV), true, false);
 		EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * recoveryV)));
