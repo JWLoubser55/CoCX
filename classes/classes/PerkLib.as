@@ -1375,6 +1375,9 @@ public class PerkLib
 		public static const ComboMaster:PerkType = mk("Combo Master", "Combo Master",
 				"Gain another extra attack with fist (weapon). (not using feral stance)",
 				"You've chosen the 'Combo Master' perk, gaining another extra attack with fist (weapon). (not using feral stance)");
+		public static const CondensedPower:PerkType = mk("Condensed Power", "Condensed Power",
+				"While smaller than 6ft, gain a percentage bonus of your total strength score based on how small you are.",
+				"You've chosen the 'Condensed Power' perk. While smaller than 6ft, gain a percentage bonus of your total strength score based on how small you are.");
 		public static const ControlFreak:PerkType = mk("Control freak", "Control freak",
 				"Grapple damage and tease damage increase by 50% for each consecutive round you are holding a grapple or straddle. Damage multiplier reset to 1 once grapple ends.",
 				"You've chosen the 'Control freak' perk. Grapple damage and tease damage increase by 50% for each consecutive round you are holding a grapple or straddle. Damage multiplier reset to 1 once grapple ends.");
@@ -3493,6 +3496,9 @@ public class PerkLib
 		public static const TitanGripSu:PerkType = mk("Titan's Grip (Su)", "Titan's Grip (Su)",
 				"Gain an ability to wield large weapons in one hand. (+5 to max Str/Tou/Spe)",
 				"You've chosen the 'Titan's Grip (Su)' perk, gaining an ability to wield large weapons in one hand. (+5 to max Str/Tou/Spe)").withBuffs({'str.mult':1.0,'tou.mult':1.0,'spe.mult':1.0});
+		public static const TitanicStrength:PerkType = mk("Titanic Strength", "Titanic Strength",
+				"While 9 ft tall or abovegain a percentage bonus of your total strength score based on how tall you are.",
+				"You've chosen the 'Titanic Strength' perk. While 9 ft tall or abovegain a percentage bonus of your total strength score based on how tall you are.");
 		public static const Tongs:PerkType = mk("Tongs", "Tongs",
 				"You no longer burn your hands when forging, allowing you to actually get work done! This increases armor proficiency. (+5% phys/mag resistance)",
 				"You've chosen the 'Tongs' perk, increasing armor proficiency. (+5% phys/mag resistance)");
@@ -4324,8 +4330,6 @@ public class PerkLib
 				"You have high resistance to cold effects, immunity to the frostburn condition, and mastery over ice abilities and magic. However, you are highly susceptible to fire.");
 		public static const ColdMastery:PerkType = mk("Cold Mastery", "Cold Mastery",
 				"You now have complete control over the ice element adding your own inner power to all cold based attacks.");
-		public static const CondensedPower:PerkType = mk("Condensed Power", "Condensed Power",
-				"While smaller than 6ft, gain a percentage bonus of your total strength score based on how small you are.");
 		public static const CorruptedKitsune:PerkType = mk("Corrupted Kitsune", "Corrupted Kitsune",
 				"The mystical energy of the kitsunes surges through you, filling you with phenomenal cosmic power!  Your boundless magic allows you to recover quickly after casting spells, but your method of attaining it has corrupted the transformation, preventing you from achieving true enlightenment.",null,true);
 		public static const CorruptedNinetails:PerkType = mk("Corrupted Nine-tails", "Corrupted Nine-tails",
@@ -4645,8 +4649,6 @@ public class PerkLib
 				"You count as four times taller than your effective base size for the purpose of perk effects.");
 		public static const TitanicSize:PerkType = mk("Titan size", "Titan size",
 				"You are five times taller than your effective base size.");
-		public static const TitanicStrength:PerkType = mk("Titanic Strength", "Titanic Strength",
-				"While 9 ft tall or above ability increases total strength based on tallness up to 1% per 0.5 ft.");
 		public static const TouchOfTheDamned:PerkType = mk("Touch of the Damned", "Touch of the Damned",
 				"All unarmed attacks and natural weapons: inflicts acid damage for 3 turns. This acid damage stacks on top of other acid attacks and DOTs. (5% / 15% of foes Total hp) Also generate soulforce equivalent to 5% / 15% of damage done to foe and fill satiety by 1 / 3.");
 		public static const TransformationAcclimation:PerkType = mk("Transformation Acclimation", "Transformation Acclimation",

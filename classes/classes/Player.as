@@ -6732,16 +6732,16 @@ use namespace CoC;
 			var intelligenceBase:Number = inte;
 			var wisdomBase:Number = wis;
 			var libidoBase:Number = lib;
-			if (effectiveTallness >= 108 && hasPerk(PerkLib.TitanicStrength)) {
-				var strTS:Number = Math.round(0.01 * strengthBase * Math.round(effectiveTallness / 6));
+			if (basetallness >= 108 && hasPerk(PerkLib.TitanicStrength)) {
+				var strTS:Number = Math.round(0.05 * strengthBase * basetallness);
 				statStore.replaceBuffObject({'str': strTS}, 'Titanic Strength', { text: 'Titanic Strength' });
 			}
-			if (effectiveTallness <= 72 && hasPerk(PerkLib.CondensedPower)) {
-				var strCP:Number = Math.round(0.01 * strengthBase * (132 - effectiveTallness));
+			if (basetallness <= 72 && hasPerk(PerkLib.CondensedPower)) {
+				var strCP:Number = Math.round(0.05 * strengthBase * (132 - basetallness));
 				statStore.replaceBuffObject({'str':strCP}, 'Condensed Power', { text: 'Condensed Power' });
 			}
-			if (effectiveTallness<=72 && hasPerk(PerkLib.SmallCaster)) statStore.replaceBuffObject({'spellpower':(0.01 * (132 - basetallness))}, 'Small Caster', { text: 'Small Caster' });
-			if ((effectiveTallness>72 || !hasPerk(PerkLib.SmallCaster)) && statStore.hasBuff('Small Caster')) statStore.removeBuffs('Small Caster');
+			if (basetallness <= 72 && hasPerk(PerkLib.SmallCaster)) statStore.replaceBuffObject({'spellpower':(0.05 * (132 - basetallness))}, 'Small Caster', { text: 'Small Caster' });
+			if ((basetallness > 72 || !hasPerk(PerkLib.SmallCaster)) && statStore.hasBuff('Small Caster')) statStore.removeBuffs('Small Caster');
 			if (statStore.hasBuff('Small frame')) statStore.removeBuffs('Small frame');
 			if (hasPerk(PerkLib.HarpyQueen) && (isRaceCached(Races.HARPY, 1) || isRaceCached(Races.PHOENIX, 1) || isRaceCached(Races.THUNDERBIRD, 1))) statStore.replaceBuffObject({"tou.mult":SophieFollowerScene.HarpyKids,"spe.mult":SophieFollowerScene.HarpyKids,"lib.mult":SophieFollowerScene.HarpyKids}, "Harpy Queen",{text:"Your motherly love for and from your many harpy childrens grants you incredible strength."});
 			if (!isRaceCached(Races.HARPY, 1) && !isRaceCached(Races.PHOENIX, 1) && !isRaceCached(Races.THUNDERBIRD, 1)) statStore.removeBuffs('Harpy Queen');
