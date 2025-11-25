@@ -6733,11 +6733,11 @@ use namespace CoC;
 			var wisdomBase:Number = wis;
 			var libidoBase:Number = lib;
 			if (tallness >= 108 && hasPerk(PerkLib.TitanicStrength)) {
-				var strTS:Number = Math.round(0.05 * strengthBase * tallness);
+				var strTS:Number = Math.round(0.05 * strengthBase * effectiveTallness);
 				statStore.replaceBuffObject({'str': strTS}, 'Titanic Strength', { text: 'Titanic Strength' });
 			}
 			if (tallness <= 72 && hasPerk(PerkLib.CondensedPower)) {
-				var strCP:Number = Math.round(0.05 * strengthBase * (132 - tallness));
+				var strCP:Number = Math.round(0.05 * strengthBase * (132 - tallness) * (effectiveTallness / tallness));
 				statStore.replaceBuffObject({'str':strCP}, 'Condensed Power', { text: 'Condensed Power' });
 			}
 			if (tallness <= 72 && hasPerk(PerkLib.SmallCaster)) statStore.replaceBuffObject({'spellpower':(0.05 * (132 - tallness))}, 'Small Caster', { text: 'Small Caster' });
