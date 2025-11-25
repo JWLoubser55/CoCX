@@ -1460,12 +1460,12 @@ public class TestMenu extends BaseContent
 	}
 	public function AddTallness1():void {
 		player.tallness += 2;
-		if (player.basetallness >= 132) player.tallness = 132;
+		if (player.tallness >= 132) player.tallness = 132;
 		BodyStateMenu();
 	}
 	public function AddTallness2():void {
 		player.tallness += 12;
-		if (player.basetallness >= 132) player.tallness = 132;
+		if (player.tallness >= 132) player.tallness = 132;
 		BodyStateMenu();
 	}
 	public function AddHairLength():void {
@@ -1500,12 +1500,12 @@ public class TestMenu extends BaseContent
 	}
 	public function SubTallness1():void {
 		player.tallness -= 2;
-		if (player.basetallness < 42) player.tallness = 42;
+		if (player.tallness < 42) player.tallness = 42;
 		BodyStateMenu();
 	}
 	public function SubTallness2():void {
 		player.tallness -= 12;
-		if (player.basetallness < 42) player.tallness = 42;
+		if (player.tallness < 42) player.tallness = 42;
 		BodyStateMenu();
 	}
 	public function SubHairLength():void {

@@ -6820,7 +6820,7 @@ public class Combat extends BaseContent {
             outputText("\n");
         }
         //Unique TENTACLES STRIKES
-        if ((player.isScylla() || player.isKraken()) && player.basetallness >= 108){
+        if ((player.isScylla() || player.isKraken()) && player.tallness >= 108){
             outputText("You raise your tentacles and begin to violently slam them against your opponent as if you were trying to wreck a ship.");
             ExtraNaturalWeaponAttack();
             ExtraNaturalWeaponAttack();

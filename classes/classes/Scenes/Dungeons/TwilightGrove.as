@@ -319,9 +319,9 @@ import classes.CoC;
 			player.trainStat("int",2,player.trainStatCap("int",100));
 			player.trainStat("wis",2,player.trainStatCap("wis",100));
 			player.trainStat("lib",2,player.trainStatCap("lib",100));
-			if (player.basetallness < 132) {
+			if (player.tallness < 132) {
 				player.tallness += 1 + rand(3);
-				if (player.basetallness > 132) player.tallness = 132;
+				if (player.tallness > 132) player.tallness = 132;
 			}
 			endEncounter();
 		}

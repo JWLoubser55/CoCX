@@ -57,10 +57,10 @@ public class Centaurinum extends Consumable {
 		//Temporary storage
 		var temp2:Number = 0;
 		var temp3:Number = 0;
-        if (changes < changeLimit && rand(2) == 0 && player.basetallness < 84) {
+        if (changes < changeLimit && rand(2) == 0 && player.tallness < 84) {
             temp = rand(5) + 3;
             //Slow rate of growth near ceiling
-            if (player.basetallness > 90) temp = Math.floor(temp / 2);
+            if (player.tallness > 90) temp = Math.floor(temp / 2);
             //Never 0
             if (temp == 0) temp = 1;
             //Flavor texts.  Flavored like 1950's cigarettes. Yum.

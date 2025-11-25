@@ -724,7 +724,7 @@ public class Face extends SaveableBodyPart {
 		appearanceDescFunc: function(creature: *): String {
 			var desc: String = "";
 
-			desc += " Upon your face rest a mask that seems to respond to your feels and even splitting itself wide open to give you fresh air.";
+			desc += " upon your face rest a mask that seems to respond to your feels and even splitting itself wide open to give you fresh air.";
 			if (creature.hasPerk(PerkLib.ExanimationVI)) {
 				desc += " The mask fuses seamlessly into the flesh, appearing less like bone and more like armor. It stretches into smooth, symmetrical perfection that compliments your face. A grotesque caricature of humanity. Your [eyes] blaze with authority.";
 			} else if (creature.hasPerk(PerkLib.ExanimationV)) {

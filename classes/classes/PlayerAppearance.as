@@ -293,7 +293,10 @@ public class PlayerAppearance extends BaseContent {
 			if (player.race() != player.startingRace) outputText("You began your journey as a " + player.startingRace + ", but gave that up as you explored the dangers of this realm. ");
 			//Height and race.
 			outputText("You are a ");
+			outputText(Measurements.footInchOrMetres(player.basetallness));
+			outputText(" (out of combat: ");
 			outputText(Measurements.footInchOrMetres(player.tallness));
+			outputText(")");
 			var pcrace:String = player.race();
 			var genderlessRace:Array = ["half cow-morph", "half cow-girl", "cow-girl", "cow-girl", "cow-morph", "minotaur", "half-minotaur", "alraune", "liliraune", "half unicorn", "unicorn", "unicornkin", "half alicorn", "alicorn", "alicornkin", "true alicorn", "half bicorn", "bicorn", "bicornkin", "half nightmare","nightmare", "nightmarekin", "true nightmare"];
 			if (!(genderlessRace.indexOf(pcrace) >= 0))
@@ -1661,4 +1664,4 @@ public class PlayerAppearance extends BaseContent {
 		return cockSockDesc;
 	}
 }
-}
+}

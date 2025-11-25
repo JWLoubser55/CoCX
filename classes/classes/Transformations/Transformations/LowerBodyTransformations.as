@@ -1540,9 +1540,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 				outputText("[pg]The internal walls of your [vagOrAss] feel a tingly wave of strange tightness.  Experimentally, you slip a few fingers, then your hand, then most of your forearm inside yourself.  <b>It seems you're now able to accommodate just about ANYTHING inside your body.</b>");
 
 			player.tallness -= 3 + rand(2);
-			if (player.basetallness < 36) {
-				player.tallness = 36;
-			}
+			if (player.tallness < 36) player.tallness = 36;
 			if (doOutput) outputText(desc);
 			player.legCount = 1;
 			player.lowerBody = LowerBody.GOO;

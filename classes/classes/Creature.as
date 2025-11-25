@@ -1342,29 +1342,21 @@ public class Creature extends Utils
 		}
 
 		private var _tallness:Number = 0;
-		public function get tallness():Number {
+		public function get tallness():Number { return _tallness; }
+		public function set tallness(value:Number):void { _tallness = value; }
+
+		public function get basetallness():Number {
 			var multiplier:Number = 1;
 			if (hasPerk(PerkLib.GiantSize)) multiplier += 2;
 			if (hasPerk(PerkLib.TitanicSize)) multiplier += 4;
-			return basetallness*multiplier;
-		}
-
-		public function get basetallness():Number {
-			return _tallness;
+			return tallness*multiplier;
 		}
 
 		public function get effectiveTallness():Number {
 			var multiplier:Number = 1;
 			if (hasPerk(PerkLib.GiantMight)) multiplier += 1.5;
 			if (hasPerk(PerkLib.TitanicMight)) multiplier += 3;
-			return tallness*multiplier;
-		}
-
-		public function set tallness(value:Number):void {
-			var multiplier:Number = 1;
-			if (hasPerk(PerkLib.GiantSize)) multiplier += 2;
-			if (hasPerk(PerkLib.TitanicSize)) multiplier += 4;
-			_tallness = value*multiplier;
+			return basetallness*multiplier;
 		}
 
 		public var bodyMaterials:/*BodyMaterial*/Array = [];

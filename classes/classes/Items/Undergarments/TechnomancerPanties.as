@@ -15,7 +15,7 @@ package classes.Items.Undergarments
 		}
 		
 		override public function canEquip(doOutput:Boolean, slot:int):Boolean{
-			if (game.player.basetallness < 48){return super.canEquip(doOutput, slot)}
+			if (game.player.tallness < 48){return super.canEquip(doOutput, slot)}
 			if (doOutput) outputText("There is no way this tiny set of clothing would fit your current size.");
 			return false;
 		}
