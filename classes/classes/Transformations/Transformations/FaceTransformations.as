@@ -719,6 +719,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.BUCKTOOTH;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.BUCKTOOTH));
 			},
 			// is present
 			function (): Boolean {
@@ -735,6 +736,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.JABBERWOCKY;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.JABBERWOCKY));
 			},
 			// is present
 			function (): Boolean {
@@ -1013,6 +1015,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.KUDERE;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.KUDERE));
 			},
 			// is present
 			function (): Boolean {
@@ -1264,7 +1267,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.HOLLOW_MASK;
-				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.WERESPIDER));
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.HOLLOW_MASK));
 			},
 			// is present
 			function (): Boolean {

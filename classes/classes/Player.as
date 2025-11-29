@@ -6733,14 +6733,14 @@ use namespace CoC;
 			var wisdomBase:Number = wis;
 			var libidoBase:Number = lib;
 			if (tallness >= 108 && hasPerk(PerkLib.TitanicStrength)) {
-				var strTS:Number = Math.round(0.05 * strengthBase * effectiveTallness);
+				var strTS:Number = Math.round(0.01 * strengthBase * effectiveTallness);
 				statStore.replaceBuffObject({'str': strTS}, 'Titanic Strength', { text: 'Titanic Strength' });
 			}
 			if (tallness <= 72 && hasPerk(PerkLib.CondensedPower)) {
-				var strCP:Number = Math.round(0.05 * strengthBase * (132 - tallness) * (effectiveTallness / tallness));
+				var strCP:Number = Math.round(0.01 * strengthBase * (132 - tallness) * (effectiveTallness / tallness));
 				statStore.replaceBuffObject({'str':strCP}, 'Condensed Power', { text: 'Condensed Power' });
 			}
-			if (tallness <= 72 && hasPerk(PerkLib.SmallCaster)) statStore.replaceBuffObject({'spellpower':(0.05 * (132 - tallness))}, 'Small Caster', { text: 'Small Caster' });
+			if (tallness <= 72 && hasPerk(PerkLib.SmallCaster)) statStore.replaceBuffObject({'spellpower':(0.01 * (132 - tallness) * (effectiveTallness / tallness))}, 'Small Caster', { text: 'Small Caster' });
 			if ((tallness > 72 || !hasPerk(PerkLib.SmallCaster)) && statStore.hasBuff('Small Caster')) statStore.removeBuffs('Small Caster');
 			if (statStore.hasBuff('Small frame')) statStore.removeBuffs('Small frame');
 			if (hasPerk(PerkLib.HarpyQueen) && (isRaceCached(Races.HARPY, 1) || isRaceCached(Races.PHOENIX, 1) || isRaceCached(Races.THUNDERBIRD, 1))) statStore.replaceBuffObject({"tou.mult":SophieFollowerScene.HarpyKids,"spe.mult":SophieFollowerScene.HarpyKids,"lib.mult":SophieFollowerScene.HarpyKids}, "Harpy Queen",{text:"Your motherly love for and from your many harpy childrens grants you incredible strength."});
@@ -8221,7 +8221,7 @@ use namespace CoC;
 		public function hollowFeedSoulPointsCap():Number {
 			var capsp:Number = 60;
 			if (perkv1(PerkLib.ExanimationIII) > 0) capsp += 152;
-			if (perkv1(PerkLib.ExanimationIII) > 1) capsp += 102;//202
+			if (perkv1(PerkLib.ExanimationIII) > 1) capsp += 152;//202
 			if (perkv1(PerkLib.ExanimationIII) > 2) capsp += 52;//252
 			return capsp;
 		}

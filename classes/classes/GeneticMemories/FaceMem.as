@@ -726,6 +726,39 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const BUCKTOOTH:int = _partid++;
+		EnumValue.add(Memories, BUCKTOOTH, "BUCKTOOTH", {
+			id: "Bucktooth Face",
+			name: "Bucktooth Face",
+			cost: 100,
+			title: "Bucktooth Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceBucktooth;
+			}
+		});
+
+		public static const JABBERWOCKY:int = _partid++;
+		EnumValue.add(Memories, JABBERWOCKY, "JABBERWOCKY", {
+			id: "Jabberwocky Face",
+			name: "Jabberwocky Face",
+			cost: 100,
+			title: "Jabberwocky Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceJabberwocky;
+			}
+		});
+
+		public static const KUDERE:int = _partid++;
+		EnumValue.add(Memories, KUDERE, "KUDERE", {
+			id: "Kuudere Face",
+			name: "Kuudere Face",
+			cost: 100,
+			title: "Kuudere Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceKudere;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

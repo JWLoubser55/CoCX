@@ -319,7 +319,8 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Exanimation IV. Gained by reaching Atarxis tier of Hollow race. Effects: You've consumed enough souls and energy that your mind swims within a legion of restless spirits. They subsist on you as much as you feed on them. Your soulforce flares throughout your body like an immense flare. Gives racial status of Atarxis. ");
 			outputText("Enables perks the use of Hollow Skill: 'Ferro Pellis'. (Hunger gauge deplete 30%(120%) faster, +100%(+500%) Soulforce skills, +100%(+500%) Hollow skills)\n");
 			outputText("-Fasting Pill no longer req. to have hunger turned on.\n");
-			outputText("-Titanic Strength and Condensed Power perks would be checking effective tallness / base tallness multiplied by any bonuses from effective tallness. Base tallness is now displayed on appearance screen as out of combat tallness. Giant Size / Titanic Size perks would be only applied to tallness when in combat (any scene that want to have pc account for this increased tallness would be now as new variants of scenes pc could choose).\n");
+			outputText("-Titanic Strength and Condensed Power perks would be checking effective tallness / base tallness multiplied by any bonuses from effective tallness. Base tallness is now displayed on appearance screen as out of combat tallness. Effective tallness (after adding all size increase effects and effects that boost str but not give more height) is displayed right after out of combat tallness.");
+			outputText("Giant Size / Titanic Size perks would be only applied to tallness when in combat (any scene that want to have pc account for this increased tallness would be now as new variants of scenes pc could choose).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
