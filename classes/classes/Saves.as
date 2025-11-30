@@ -161,6 +161,7 @@ public function loadSaveDisplay(saveFile:Object, slotName:String):String
 private function loadSaveFromSlotNumber(slot:int):void {
 	trace("Loading save with name", saveFileNames[slot], "at index", slot);
 	loadGameFromSharedObject(saveFileNames[slot]);
+	flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] = slot;
 }
 
 CONFIG::AIR
@@ -385,10 +386,10 @@ public function deleteScreen():void
 public function confirmDeleteSlot(slotNumber:int):void {
 	clearOutput();
 	outputText("You are about to delete the following save: <b>" + saveFileNames[slotNumber] + "</b>\n\nAre you sure you want to delete it?");
-	simpleChoices("No", deleteScreen, "Yes", curry(purgeTheMutant, slotNumber), "", null, "", null, "", null);
+	simpleChoices("No", deleteScreen, "Yes", curry(purgeTheMutant, slotNumber, true), "", null, "", null, "", null);
 }
 
-public function purgeTheMutant(slotNumber:int):void
+public function purgeTheMutant(slotNumber:int, notabadend:Boolean = false):void
 {
 	var test:* = SharedObject.getLocal(saveFileNames[slotNumber], "/");
 	trace("DELETING SLOT: " + saveFileNames[slotNumber]);
@@ -399,7 +400,7 @@ public function purgeTheMutant(slotNumber:int):void
 	clearOutput();
 	outputText(saveFileNames[slotNumber] + " has " + blah[select] + ".");
 	test.clear();
-	doNext(deleteScreen);
+	if (notabadend) doNext(deleteScreen);
 }
 
 public function confirmOverwrite(slot:String):void {

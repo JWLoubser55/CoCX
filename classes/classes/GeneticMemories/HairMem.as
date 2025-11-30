@@ -229,6 +229,28 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const COW:int = _partid++;
+		EnumValue.add(Memories, COW, "COW", {
+			id: "Cow Hair",
+			name: "Cow Hair",
+			cost: 100,
+			title: "Cow",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.HairCow;
+			}
+		});
+
+		public static const PRISMATIC:int = _partid++;
+		EnumValue.add(Memories, PRISMATIC, "PRISMATIC", {
+			id: "Prismatic Hair",
+			name: "Prismatic Hair",
+			cost: 100,
+			title: "Prismatic",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.HairPrismatic;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

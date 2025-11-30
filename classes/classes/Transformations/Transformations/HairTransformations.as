@@ -412,6 +412,7 @@ public class HairTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.hairType = Hair.PRISMATIC;
+                Metamorph.unlockMetamorph(HairMem.getMemory(HairMem.PRISMATIC));
 			},
 			// is present
 			function (): Boolean {
@@ -454,6 +455,7 @@ public class HairTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.hairType = Hair.COW;
+                Metamorph.unlockMetamorph(HairMem.getMemory(HairMem.COW));
 			},
 			// is present
 			function (): Boolean {
@@ -501,6 +503,7 @@ public class HairTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.hairType = Hair.MYCONID;
+                Metamorph.unlockMetamorph(HairMem.getMemory(HairMem.MYCONID));
 			},
 			// is present
 			function (): Boolean {
