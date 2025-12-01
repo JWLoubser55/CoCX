@@ -1666,4 +1666,4 @@ public class PlayerAppearance extends BaseContent {
 		return cockSockDesc;
 	}
 }
-}
+}

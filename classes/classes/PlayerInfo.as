@@ -495,7 +495,7 @@ public class PlayerInfo extends BaseContent {
 		combatStats += "\n";
 		combatStats += "<b>Physical DR from armor:</b> 1 / " + round(player.damagePercentArmor(), 2) + "\n";
 		combatStats += "<b>Magical DR from armor:</b> 1 / " + round(player.damagePercentMRes(), 2) + "\n";
-		combatStats += "<b>DR from toughness:</b> 1 / " + player.toughnessDamageMultiplier() + "\n";
+		combatStats += "<b>DR from toughness / toughness-focused jobs:</b> 1 / " + player.toughnessDamageMultiplier() + "\n";
 		combatStats += "\n";
 		combatStats += "<b>Spells Effect Multiplier:</b> " + Math.round(100 * combat.spellMod()) + "%\n";
 		combatStats += "<b>Spells Cost:</b> " + combat.spellCost(100) + "%\n";

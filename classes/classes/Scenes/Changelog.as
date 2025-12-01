@@ -39,7 +39,7 @@ public class Changelog extends BaseContent
 			outputText("-Prestige Job: Soul Art Master req. for Flesh Body: Apprentice Stage was changed to any of accesable body cultivations paths apprentice stage perk.\n");
 			outputText("-Charge Weapon spell bonus to atk is now additionaly increased by weapon size if it's larger then small (which would have 1x multiplier) up to x4 for massive weapons.\n");
 			outputText("-Monsters have now damage reduction based on their toughness score. Each 1000 pts it increase by +1 starting from 1/2 when monster tou is above 1000.\n");
-			outputText("-Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.\n");
+			outputText("-Player gained damage reduction based on picked guardian/othe toughness focused jobs perks. Player gained health multiplication based on sum of toughness core and trained stat values. Each point increase multiplier by 1.\n");
 			outputText("-When Wendigo would apply Wendigo Psychosis status effect to PC during fight (not in post fight scene) it will now be notification ingame for this.\n");
 			
 			outputText("-Changes including Tome of Imps and Imps birth. Tome of Imp and Demonhood is now accounted for when birthing imps. Giving birth to imps adds 5 imps to the tome directly. (Liadri)\n");
@@ -321,6 +321,7 @@ public class Changelog extends BaseContent
 			outputText("-Fasting Pill no longer req. to have hunger turned on.\n");
 			outputText("-Titanic Strength and Condensed Power perks would be checking effective tallness / base tallness multiplied by any bonuses from effective tallness. Base tallness is now displayed on appearance screen as out of combat tallness. Effective tallness (after adding all size increase effects and effects that boost str but not give more height) is displayed right after out of combat tallness.");
 			outputText("Giant Size / Titanic Size perks would be only applied to tallness when in combat (any scene that want to have pc account for this increased tallness would be now as new variants of scenes pc could choose).\n");
+			outputText("-After eons of been forgotten cow hair count as +1 to cow score \o/\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -332,8 +333,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values.  Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
@@ -735,7 +735,7 @@ public class Changelog extends BaseContent
 			outputText("-Added 1 additional rank to Ascension: Additional Organ Mutation and 2 additional ranks to Ascension: Transcendental Genetic Memory perks.\n");
 			outputText("-I heard you all like prime numbers level cap so here is another new prime number lvl cap: 233 (worry no new prime number cap until 2026 at least)\n");
 			outputText("-Hardcore difficulty setting would remove limitations on level to find new areas or finding enemies in areas if they had their own level checks (and Lake will be no longer a safe area until lvl 3 after first 7 ingame days).\n");
-			outputText("-Wake up option at ad end will now reset core and trained stats to state they been on character creation (0 core and 15 trained) and take away all XP gathered in addition to other effects it had before.\n");
+			outputText("-Wake up option will now reset core and trained stats to state they been on character creation (0 core and 15 trained) and take away all XP gathered in addition to other effects it had before.\n");
 			outputText("-Autosave option will no longer require PC to go to sleep (insert your favorite joke about: sleep is for the ...) and having at least saved once manually. Instead will still need to save once manually but then will always trigger with all other once a day events (which all happens between 11pm and 12 pm).\n");
 			outputText("-Due to general evaluation of difficulty changed it been reseted to Easy setting and to return to what it was before it require to adjust all the toggles in Settings > Gameplay (1) menu.\n");
 			outputText("-Damage of all types when lvl diff between enemy and pc is 50+ changed from dropping right away from 2% at 49 lvl diff to 1 dmg at 50 lvl diff. Now it would drop to 1 point of dmg at 60+ lvl diff. For diff of 50-59 it would reduce dmg to 1%-0,000000001%.\n");

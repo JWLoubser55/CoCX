@@ -705,6 +705,7 @@ public class Creature extends Utils
 		protected function maxHP_base():Number {
 			var max:Number = maxHpBaseStat.value;
 			var multimax:Number = maxHpMultStat.value;
+			var dmmmm:Number = 0;
 			if (hasPerk(PerkLib.IcyFlesh)) {
 				max += int(inte * 2 + 50);
 				if (inte >= 21) max += Math.round(inte);
@@ -901,6 +902,9 @@ public class Creature extends Utils
 			if (hasPerk(PerkLib.LimitBreakerBody2ndStage)) multimax += 0.1;
 			if (hasPerk(PerkLib.LimitBreakerBody3rdStage)) multimax += 0.15;
 			if (hasPerk(PerkLib.DeityJobMunchkin)) multimax += 0.2;
+			if (this.touStat.core.value > 0) dmmmm += this.touStat.core.value;
+			if (this.touStat.train.value > 0) dmmmm += this.touStat.train.value;
+			if (dmmmm > 1) multimax *= dmmmm;
 			max *= multimax;
 			max = Math.round(max);
 			return max;
@@ -956,7 +960,7 @@ public class Creature extends Utils
 		}
 		public function maxHP():Number {
 			var max:Number = Math.round(maxHP_base()*maxHP_mult());
-			return Math.min(19999999,max);
+			return Math.min(19999999999,max);
 		}
 		public function maxOverHP():Number {
 			var maxOver:Number = maxHP();
@@ -1008,7 +1012,7 @@ public class Creature extends Utils
 			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
 			maxOver *= maxOver2;//~270%
 			maxOver = Math.round(maxOver);
-			return Math.min(54999999,maxOver);
+			return Math.min(54999999999,maxOver);
 		}
 		public function minHP():Number {
 			return 0;

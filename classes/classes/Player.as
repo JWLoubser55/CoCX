@@ -3175,8 +3175,8 @@ use namespace CoC;
 			var dmmt:Number = 0;
 			var dmmm:Number = 0;
 			var dmm:Number = 0;
-			if (touStat.core.value > 0) dmmc += touStat.core.value;
-			if (touStat.train.value > 0) dmmt += touStat.train.value;
+			//if (touStat.core.value > 0) dmmc += touStat.core.value;
+			//if (touStat.train.value > 0) dmmt += touStat.train.value;
 			if (hasPerk(PerkLib.EmptyVessel) && soulforce >= Math.round(maxSoulforce() * 0.6)) {
 				if (hasPerk(PerkLib.SpiritualHunger)) dmmm += 6;
 				dmmm += 3;
