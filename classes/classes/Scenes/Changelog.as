@@ -322,9 +322,10 @@ public class Changelog extends BaseContent
 			outputText("-Titanic Strength and Condensed Power perks would be checking effective tallness / base tallness multiplied by any bonuses from effective tallness. Base tallness is now displayed on appearance screen as out of combat tallness. Effective tallness (after adding all size increase effects and effects that boost str but not give more height) is displayed right after out of combat tallness.");
 			outputText("Giant Size / Titanic Size perks would be only applied to tallness when in combat (any scene that want to have pc account for this increased tallness would be now as new variants of scenes pc could choose).\n");
 			outputText("-After eons of been forgotten cow hair count as +1 to cow score \o/\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New armor (by Liadri): Arch-Necromancer cloak - buyable at Kaiba shop in Tel'Adre. Cost 800 gems, 1 magic resistance, (robe) light type armor. An outfit once worn by a powerful necromancer. It is old and tattered yet still charged with magic. This cloak and set of jewelry doubles cold and dark damage at the expense of fire and lightning. ");
+			outputText("While worn, increase spell power by 1% for every minion under your command and increase minion damage by 25%. Tease 10 bonus, Misdirection.\n");
+			outputText("-New upper underwear (by Liadri): Arch-Necromancer bra - buyable at Kaiba shop in Tel'Adre. Cost 200 gems. A bra made of silk and ornamental bones plated in silver. Increase minion damage by 20%.\n");
+			outputText("-New bottom underwear (by Liadri): Arch-Necromancer panty - buyable at Kaiba shop in Tel'Adre. Cost 200 gems. A panty made of silk and ornamental bones plated in silver. Increase minion damage by 20%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -343,9 +344,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
 			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-\n");
-			outputText("-\n");//New armor (by Liadri): Undead Lord cloak - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New upper underwear (by Liadri): Undead Lord bra - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
-			outputText("-\n");//New bottom underwear (by Liadri): Undead Lord panty - buyable at Kaiba shop in Tel'Adre. Cost 00 gems. .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .

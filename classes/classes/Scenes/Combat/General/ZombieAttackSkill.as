@@ -40,6 +40,9 @@ public class ZombieAttackSkill extends AbstractGeneral {
         if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) zummyDamage *= combat.historyTacticianBonus();
         var zummyamplification:Number = 1;
         if (player.weapon == weapons.SCECOMM) zummyamplification += 0.5;
+        if (player.armor == armors.ARCHNECC) zummyamplification += 0.25;
+        if (player.upperGarment == undergarments.ARCHNECB) zummyamplification += 0.2;
+        if (player.lowerGarment == undergarments.ARCHNECP) zummyamplification += 0.2;
 		if (player.hasPerk(PerkLib.CommandingTone)) zummyamplification += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) zummyamplification += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) zummyamplification += 0.15;

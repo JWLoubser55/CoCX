@@ -15,6 +15,7 @@ public final class UndergarmentLib extends ItemConstants
 		public static const NOTHING:Undergarment = new Nothing();
 		
 		//Upper
+		public const ARCHNECB:Undergarment = new Undergarment("ArchNecB", "ArchNecromancerBra", "Arch-Necromancer bra", "an Arch-Necromancer bra", UT_TOP, 200, 3, 1, 2, "A bra made of silk and ornamental bones plated in silver. Increase minion damage by 20%. \n\nType: Undergarment (Upper)");
 		public const BN_TOP:Undergarment = new Undergarment("BN. Top", "Neko Top", "black Neko leather top", "a black neko leather top", UT_TOP, 500, 0, 0, 2, "A bra made of leather black as night. Makes one slimmer than it appears, increasing evasion. Stronger at night. \n\nType: Undergarment (Upper)")
 				.withBuffs({'evade': +2}) as Undergarment;
 		public const C_BRA  :Undergarment = new Undergarment("C. Bra ", "C. Bra", "comfortable bra", "a comfortable bra", UT_TOP, DEFAULT_VALUE, 0, 0, 0, "A generic pair of bra. \n\nType: Undergarment (Upper)");
@@ -34,6 +35,7 @@ public final class UndergarmentLib extends ItemConstants
 		public const STSHIRT:Undergarment = new Undergarment("STShirt", "S.T.Shirt", "soul training shirt", "a soul training shirt", UT_TOP, 200, 0, 0, 0, "A shirt made from fabric capable of helping to train soulforce. \n\nType: Undergarment (Upper)");
 		public const TECHBRA:TechnomancerBra = new TechnomancerBra();
 		//Lower
+		public const ARCHNECP:Undergarment = new Undergarment("ArchNecP", "ArchNecromancerPanty", "Arch-Necromancer panty", "an Arch-Necromancer panty", UT_BOTTOM, 200, 0, 0, 2, "A panty made of silk and ornamental bones plated in silver. Increase minion damage by 20%. \n\nType: Undergarment (Lower)");
 		public const BN_SKIRT:Undergarment = new Undergarment("BN. SKIRT", "Neko Bottom", "black Neko bottom", "a black Neko leather panty", UT_BOTTOM, 500, 0, 0, 2, "A panty made of leather black as night. Makes one slimmer than it appears, increasing evasion. Stronger at night. \n\nType: Undergarment (Lower)")
 				.withBuffs({'evade': +2}) as Undergarment;
 		public const C_LOIN :Undergarment = new Undergarment("C. Loin", "C. Loin", "comfortable loincloth", "a comfortable loincloth", UT_BOTTOM, DEFAULT_VALUE, 0, 0, 0, "A generic pair of loincloth. \n\nType: Undergarment (Lower)", "NagaWearable");

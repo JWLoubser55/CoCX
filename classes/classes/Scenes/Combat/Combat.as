@@ -9420,6 +9420,9 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.ElementalConjurerDedication)) elementalamplification += 0.2 * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
         if (player.hasPerk(PerkLib.ElementalConjurerSacrifice)) elementalamplification += 0.3 * flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
         if (player.weapon == weapons.SCECOMM) elementalamplification += 0.5;
+		if (player.armor == armors.ARCHNECC) elementalamplification += 0.25;
+		if (player.upperGarment == undergarments.ARCHNECB) elementalamplification += 0.2;
+		if (player.lowerGarment == undergarments.ARCHNECP) elementalamplification += 0.2;
 		if (player.weaponRange == weaponsrange.E_TOME_) elementalamplification += 0.5;
         if (player.shield == shields.Y_U_PAN) elementalamplification += 0.25;
 		if (player.hasPerk(PerkLib.CommandingTone)) elementalamplification += 0.1;
@@ -11191,6 +11194,7 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.InfernalRage)) damage *= (1 + (player.wrath100 * 0.01));
         if (player.shieldName == "Nekonomicon") damage *= 2;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
+		if (player.armor == armors.ARCHNECC) damage *= 0.5;
 		damage *= EyesOfTheHunterDamageBonus();
         if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.hasMutation(IMutationsLib.HellhoundFireBallsIM) && player.perkv1(IMutationsLib.HellhoundFireBallsIM) >= 2) {
@@ -11273,6 +11277,7 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.IceQueenGown)) damage *= 2;
         if (player.hasPerk(PerkLib.WalpurgisIzaliaRobe)) damage = damage / 100;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
+		if (player.armor == armors.ARCHNECC) damage *= 2;
 		damage *= EyesOfTheHunterDamageBonus();
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
@@ -11343,6 +11348,7 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.IceQueenGown)) damage *= 2;
         if (player.hasPerk(PerkLib.WalpurgisIzaliaRobe)) damage = damage / 100;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
+		if (player.armor == armors.ARCHNECC) damage *= 0.5;
 		damage *= EyesOfTheHunterDamageBonus();
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
@@ -11410,6 +11416,7 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.IceQueenGown)) damage = damage / 100;
         if (player.shieldName == "Nekonomicon") damage *= 2;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
+		if (player.armor == armors.ARCHNECC) damage *= 2;
 		damage *= EyesOfTheHunterDamageBonus();
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
@@ -19470,6 +19477,9 @@ public function sendSkeletonToFight():void {
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
+	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
+	if (player.upperGarment == undergarments.ARCHNECB) dmgamp += 0.2;
+	if (player.lowerGarment == undergarments.ARCHNECP) dmgamp += 0.2;
 	if (player.hasPerk(PerkLib.CommandingTone)) dmgamp += 0.1;
 	if (player.hasPerk(PerkLib.DiaphragmControl)) dmgamp += 0.1;
 	if (player.hasPerk(PerkLib.VocalTactician)) dmgamp += 0.15;
@@ -19535,6 +19545,9 @@ public function skeletonSmash():void {
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
+	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
+	if (player.upperGarment == undergarments.ARCHNECB) dmgamp += 0.2;
+	if (player.lowerGarment == undergarments.ARCHNECP) dmgamp += 0.2;
 	if (player.hasPerk(PerkLib.CommandingTone)) dmgamp += 0.1;
 	if (player.hasPerk(PerkLib.DiaphragmControl)) dmgamp += 0.1;
 	if (player.hasPerk(PerkLib.VocalTactician)) dmgamp += 0.15;

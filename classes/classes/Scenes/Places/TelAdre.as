@@ -1161,6 +1161,7 @@ public function kaibaShopMainMenu2():void {
 			addButtonDisabled(6, "Avelynn", "You already bought item from Kaiba today.");
 			addButtonDisabled(7, "Oni enchanted drinking jug", "You already bought item from Kaiba today.");
 			addButtonDisabled(8, "Storm Ruler", "You already bought item from Kaiba today.");
+			addButtonDisabled(9, "A-Necro cloak", "You already bought item from Kaiba today.");
 		}
 		else {
 			addButton(0, "Teddy Bear", buyItem, useables.TEDDY).hint("An old Teddy bear with a small paper with the name Mister Paw tied to it.");
@@ -1172,6 +1173,7 @@ public function kaibaShopMainMenu2():void {
 			addButton(6, "Avelynn", buyItem, weaponsrange.AVELYNN).hint("Avelynn - Crossbow that will shoot two additional bolts each time.");
 			addButton(7, "Oni enchanted drinking gourd", buyItem, miscjewelries.ONI_GOURD).hint("Oni enchanted drinking gourd - A magical drinking gourd beloved by onis. Suposedly it greatly increases its users attack power but also grants an endless supply of fresh drinks!");
 			addButton(8, "Storm Ruler", buyItem, weapons.S_RULER).hint("Storm Ruler - A large sword that is wielded like a hammer. Naturally deals lightning-type damage, and inflicts 50% more damage to huge or larger enemies. Also increases physical soulskill damage by 20%.");
+			addButton(9, "A-Necro cloak", buyItem, armors.ARCHNECC).hint("Arch-Necromancer cloak - An outfit once worn by a powerful necromancer. It is old and tattered yet still charged with magic. This cloak and set of jewelry doubles cold and dark damage at the expense of fire and lightning. While worn, increase spell power by 1% for every minion under your command and increase minion damage by 25%.");
 		}
 		//addButton(0, "Necklace", buyItem, necklaces.CSNECK);
 		addButton(11, "-1-", kaibaShopMainMenuPage1);
@@ -1219,6 +1221,8 @@ public function kaibaShopMainMenu2():void {
 			addButtonDisabled(5, "F.M.Dress", "You already bought item from Kaiba today.");
 			addButtonDisabled(6, "Pan Flute", "You already bought item from Kaiba today.");
 			addButtonDisabled(7, "D.B.Helmet", "You already bought item from Kaiba today.");
+			addButtonDisabled(8, "A-Necro bra", "You already bought item from Kaiba today.");
+			addButtonDisabled(9, "A-Necro panty", "You already bought item from Kaiba today.");
 		}
 		else {
 			addButton(0, "Cat Gloves", buyItem, weapons.CATGLOV).hint("Black Cat Gloves - Not quite a weapon as much as they are black gloves with open fingers to let the tips out. These were made and custom enchanted for a cat girl adventurer. This is a temporary sale.");
@@ -1229,6 +1233,8 @@ public function kaibaShopMainMenu2():void {
 			addButton(5, "F.M.Dress", buyItem, armors.FMDRESS).hint("Forest Mage Dress - The wearer of this dress desire and pleasure is no longer vexed by the limitations of mortal flesh allowing one to keep control over their lust long enough to claim victory by diluting their own lust within the ambiant natural world for a time. So long as a Green Magic spell was cast within the 5 previous rounds the user of this dress effectively is able to maintain their focus and mind entirely to the task at hand at the cost of potentialy turning into a lecherous sex maniac due to all the dilluted lust merging back with the user at the end of combat. There is a small chance for this to backfire instead causing the ambiant flora to turn on and rape the wearer of the dress. This is a temporary sale.");
 			addButton(6, "Pan Flute", buyItem, weapons.PFLUTTE).hint("Pan Flute - Small mace/hammer type weapon granting bonuses: +50% spellpower, +100% performance power.");
 			addButton(7, "D.B.Helmet", buyItem, headjewelries.DRABLOH).hint("Dragon Blood Helmet - Reinforce all breath weapon Effect by 50%. Deals 20% more damage against dragons.");
+			addButton(8, "A-Necro bra", buyItem, undergarments.ARCHNECB).hint("Arch-Necromancer bra - A bra made of silk and ornamental bones plated in silver. Increase minion damage by 20%.");
+			addButton(9, "A-Necro panty", buyItem, undergarments.ARCHNECP).hint("Arch-Necromancer panty - A panty made of silk and ornamental bones plated in silver. Increase minion damage by 20%.");
 		}
 		//addButton(0, "Necklace", buyItem, necklaces.CSNECK);
 		addButton(11, "-1-", kaibaShopMainMenuPage1);

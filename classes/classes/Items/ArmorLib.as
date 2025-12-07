@@ -63,6 +63,7 @@ public final class ArmorLib extends ItemConstants
 					'teasedmg': 5
 				})
 				.withTag(A_REVEALING) as Armor;
+		public const ARCHNECC:ArchNecromancerCloak = new ArchNecromancerCloak();
 		public const B_CHANG:Armor = new Armor("B.Chang","BlueChangshan","Blue Lunar new year dress (m)","a Blue Lunar new year dress (m)",0,0,100,"A simple yet elegant blue changshan with dragon motif. This clothing is said to bring in good luck increasing evasiveness and critical chance.","Light");
 		public const B_DRESS:Armor = new Armor("B.Dress","Long Dress","long ballroom dress patterned with sequins","a ballroom dress patterned with sequins",0,0,40,"A long ballroom dress patterned with sequins.  Perfect for important occasions.","Medium");
 		public const B_QIPAO:Armor = new Armor("B.Qipao","BlueQipao","Blue Lunar new year dress (f)","a Blue Lunar new year dress (f)",0,0,100,"A simple yet elegant blue qipao with floral motif. This dress is said to bring in good luck increasing evasiveness and critical chance.","Light");

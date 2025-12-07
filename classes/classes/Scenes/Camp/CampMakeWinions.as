@@ -178,8 +178,7 @@ public class CampMakeWinions extends BaseContent
 			}
 			else tamingAttemptYes();
 		}
-		public function
-		 tamingAttemptYes():void {
+		public function tamingAttemptYes():void {
 			outputText("With [themonster] weakened, you deftly approach, attempting to tame it. Avoiding any chance of harm, you put your skills to the test, using every trick and tool at your disposal to subdue [monster him], turning him into a manageable companion. ");
 			if (playerWisdomCheck() > monsterWisdomCheck()) {
 				outputText("Fortunately, after some effort, you manage to successfully claim a new ally—for now, at least.");

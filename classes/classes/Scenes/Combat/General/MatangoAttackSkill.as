@@ -36,6 +36,9 @@ public class MatangoAttackSkill extends AbstractGeneral {
         if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) matangoDamage *= combat.historyTacticianBonus();
         var matangoamplification:Number = 1;
         if (player.weapon == weapons.SCECOMM) matangoamplification += 0.5;
+		if (player.armor == armors.ARCHNECC) matangoamplification += 0.25;
+		if (player.upperGarment == undergarments.ARCHNECB) matangoamplification += 0.2;
+		if (player.lowerGarment == undergarments.ARCHNECP) matangoamplification += 0.2;
 		if (player.hasPerk(PerkLib.CommandingTone)) matangoamplification += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) matangoamplification += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) matangoamplification += 0.15;

@@ -3229,6 +3229,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.weapon == weapons.G_ROD) dmgAMP += 0.75;
 		if (player.weaponRange == weaponsrange.G_E_MAN) dmgAMP += 0.5;
 		if (player.shield == shields.Y_U_PAN) dmgAMP += 0.25;
+        if (player.armor == armors.ARCHNECC) dmgAMP += 0.25;
+        if (player.upperGarment == undergarments.ARCHNECB) dmgAMP += 0.2;
+        if (player.lowerGarment == undergarments.ARCHNECP) dmgAMP += 0.2;
 		if (player.hasPerk(PerkLib.CommandingTone)) dmgAMP += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) dmgAMP += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) dmgAMP += 0.15;
@@ -3620,6 +3623,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.weapon == weapons.G_ROD) dmgamp += 0.75;
 		if (player.weaponRange == weaponsrange.G_E_MAN) dmgamp += 0.5;
 		if (player.shield == shields.Y_U_PAN) dmgamp += 0.25;
+        if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
+        if (player.upperGarment == undergarments.ARCHNECB) dmgamp += 0.2;
+        if (player.lowerGarment == undergarments.ARCHNECP) dmgamp += 0.2;
 		if (player.hasPerk(PerkLib.CommandingTone)) dmgamp += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) dmgamp += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) dmgamp += 0.15;
