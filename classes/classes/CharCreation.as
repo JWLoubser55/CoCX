@@ -1829,7 +1829,7 @@ import classes.Scenes.Combat.CombatAbility;
 			clearOutput();
 			switch (choice) {
 				case PerkLib.HistoryScholar:
-					outputText("You spent much of your time in school, and even begged the richest man in town, Mr. " + (silly() ? "Savin" : "Sellet") + ", to let you read some of his books.  You are much better at focusing, your mana cap increased by 10%, start out with 150 gems and will start with Job: Sorcerer perk.  Is this your history?");
+					outputText("You spent much of your time in school, and even begged the richest man in town, Mr. " + (silly() ? "Savin" : "Sellet") + ", to let you read some of his books.  You are much better at focusing, your mana cap increased by 10%, start out with 100 gems and will start with Job: Sorcerer perk + 1 basic damage spell.  Is this your history?");
 					break;
 				case PerkLib.HistoryScout:
 					outputText("You spent much of your time learning how to use ranged weapons, and you had plans to find work as a hunter when you grew up.  You do 10% more damage with physical range attacks and +20% accuracy.  You will also start out with 50 gems and Job: Ranger perk.  Is this your history?");
@@ -1879,11 +1879,12 @@ import classes.Scenes.Combat.CombatAbility;
 				player.gems += 50;
 			}
 			if (choice == PerkLib.HistoryScholar) {
-				player.gems += 150;
+				player.gems += 100;
 			}
 			if (flags[kFLAGS.HISTORY_PERK_SELECTED] == 0) {
 				flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
-				completeCharacterCreation();
+				if (choice == PerkLib.HistoryScholar) chooseWhiteBlackSpell();
+				else completeCharacterCreation();
 			}
 			else { //Special escape clause for very old saves that do not have a history perk. This is used to allow them the chance to select a perk at camp on load.
 				flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
@@ -1894,6 +1895,34 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] < 11) player.perkPoints += (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] + 1);
 			else player.perkPoints += 12;
 			flags[kFLAGS.HISTORY_PERK_SELECTED] = 1;
+			completeCharacterCreation();
+		}
+		private function chooseWhiteBlackSpell():void {
+			clearOutput();
+			outputText("Reading Mr. " + (silly() ? "Savin" : "Sellet") + "books you learned one of the simpler spells.  What was that spell?");
+			menu();
+			addButton(6, "Whitef", chooseWhiteBlackSpellConclusion, 1).hint("Whitefire spell");
+			addButton(7, "I.Spik", chooseWhiteBlackSpellConclusion, 2).hint("Ice Spike spell");
+			addButton(11, "L.Bolt", chooseWhiteBlackSpellConclusion, 3).hint("Lightning Bolt spell");
+			addButton(12, "D.Shar", chooseWhiteBlackSpellConclusion, 4).hint("Darkness Shard spell");
+		}
+		private function chooseWhiteBlackSpellConclusion(spell:Number):void {
+			switch (spell) {
+				case 1:
+					player.createStatusEffect(StatusEffects.KnowsWhitefire, 0, 0, 0, 0);
+					break;
+				case 2:
+					player.createStatusEffect(StatusEffects.KnowsIceSpike, 0, 0, 0, 0);
+					break;
+				case 3:
+					player.createStatusEffect(StatusEffects.KnowsLightningBolt, 0, 0, 0, 0);
+					break;
+				case 4:
+					player.createStatusEffect(StatusEffects.KnowsDarknessShard, 0, 0, 0, 0);
+					break;
+				default:
+					outputText("You not learned any spell. It's bug.");
+			}
 			completeCharacterCreation();
 		}
 

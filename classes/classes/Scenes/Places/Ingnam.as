@@ -25,12 +25,13 @@ public class Ingnam extends BaseContent
 		//Main Ingnam menu.
 		public function menuIngnam():void {
 			//Force autosave
-			if (player.slotName != "VOID" && mainView.getButtonText(0) != "Game Over" && flags[kFLAGS.HARDCORE_MODE] > 0)
+			/*if (player.slotName != "VOID" && mainView.getButtonText(0) != "Game Over" && flags[kFLAGS.HARDCORE_MODE] > 0)
 			{
 				trace("Autosaving to slot: " + player.slotName);
-
-			CoC.instance.saves.saveGameToSharedObject(player.slotName);
-            }
+				CoC.instance.saves.saveGameToSharedObject(player.slotName);
+            }*/
+			var canExploreAtNight:Boolean = (player.isNightCreature());
+			var isAWerebeast:Boolean = (player.isWerebeast());
 			//Banished to Mareth.
 			if (model.time.days >= 0 && flags[kFLAGS.INGNAM_PROLOGUE_COMPLETE] <= 0) {
 				getBanishedToMareth();
@@ -77,13 +78,18 @@ public class Ingnam extends BaseContent
 			//Show wait/rest/sleep depending on conditions.
 			addButton(9, "Wait", SceneLib.camp.doWait);
             if (player.fatigue > 40 || player.HP / player.maxHP() <= .9) addButton(9, "Rest", SceneLib.camp.rest);
-			if (model.time.hours >= 23 || model.time.hours < 6) removeButton(0);
+			if ((model.time.hours >= 23 || model.time.hours < 6) && !canExploreAtNight) removeButton(0);
             if (model.time.hours >= 21 || model.time.hours < 6) {
 				removeButton(1);
 				removeButton(2);
 				removeButton(4);
-                addButton(9, "Sleep", SceneLib.camp.doSleep);
             }
+			if (((model.time.hours <= 5 || model.time.hours >= 21) && !canExploreAtNight) || (!isNightTime && canExploreAtNight)) {
+				addButton(9, "Sleep", SceneLib.camp.doSleep);
+				if (isAWerebeast && flags[kFLAGS.LUNA_MOON_CYCLE] == 8) {
+					addButtonDisabled(9, "Sleep", "Try as you may you cannot find sleep tonight. The damn moon won't let you rest as your urges to hunt and fuck are on the rise.");
+				}
+			}
 			if (player.hasPerk(PerkLib.JobSoulCultivator)) addButton(10, "Soulforce", soulforce.accessSoulforceMenu).hint("Spend some time on the cultivation or spend some of the soulforce.");
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] > 0 && model.time.days < 0) addButton(11, "Skip", skipDay);
 		}

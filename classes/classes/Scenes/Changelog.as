@@ -326,8 +326,8 @@ public class Changelog extends BaseContent
 			outputText("While worn, increase spell power by 1% for every minion under your command and increase minion damage by 25%. Tease 10 bonus, Misdirection.\n");
 			outputText("-New upper underwear (by Liadri): Arch-Necromancer bra - buyable at Kaiba shop in Tel'Adre. Cost 200 gems. A bra made of silk and ornamental bones plated in silver. Increase minion damage by 20%.\n");
 			outputText("-New bottom underwear (by Liadri): Arch-Necromancer panty - buyable at Kaiba shop in Tel'Adre. Cost 200 gems. A panty made of silk and ornamental bones plated in silver. Increase minion damage by 20%.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-As weird as it can be to PC became race that can be active at night during Ignam prologue it will no longer mess up sleep options or not allowing hunting for thiefs during the night.\n");
+			outputText("-Scholar History would give now 50 gems less (100 gems only) but would instead give chance to choose one of basic spells to strart with (in addition to M.bolt spell).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -354,6 +354,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
@@ -435,14 +444,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -473,9 +476,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

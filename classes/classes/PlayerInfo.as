@@ -175,6 +175,23 @@ public class PlayerInfo extends BaseContent {
 			miscStats += "<i>Camp Aboveground Population:</i> " + (camp.getCampPopulation() - camp.getCampUndergroundPopulation()) + "\n";
 			miscStats += "<i>Camp Underground Population:</i> " + camp.getCampUndergroundPopulation() + "\n";
 			miscStats += "<b>Minions Count:</b> " + player.playerMinionsCount() + "\n";
+			if (player.hasStatusEffect(StatusEffects.SummonedElementals)) {
+				if (player.statusEffectv1(StatusEffects.SummonedElementals) > 0) miscStats += "<i>Normal Elementals:</i> " + player.statusEffectv1(StatusEffects.SummonedElementals) + "\n";
+				if (player.statusEffectv2(StatusEffects.SummonedElementals) > 0) miscStats += "<i>Epic Elementals:</i> " + player.statusEffectv2(StatusEffects.SummonedElementals) + "\n";
+				if (player.statusEffectv3(StatusEffects.SummonedElementals) > 0) miscStats += "<i>Unique Elementals:</i> " + player.statusEffectv3(StatusEffects.SummonedElementals) + "\n";
+			}
+			if (flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0) miscStats += "<i>Pernament Stone Golems:</i> " + flags[kFLAGS.PERMANENT_GOLEMS_BAG] + "\n";
+			if (flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0) miscStats += "<i>Improved Pernament Stone Golems:</i> " + flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] + "\n";
+			if (flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0) miscStats += "<i>Pernament Steel Golems:</i> " + flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] + "\n";
+			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) {
+				if (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0) miscStats += "<i>Skeletal warriors:</i> " + player.perkv2(PerkLib.PrestigeJobNecromancer) + "\n";
+				if (player.perkv1(PerkLib.GreaterHarvest) > 0) miscStats += "<i>Skeletal archers:</i> " + player.perkv1(PerkLib.GreaterHarvest) + "\n";
+				if (player.perkv2(PerkLib.GreaterHarvest) > 0) miscStats += "<i>Skeletal mages:</i> " + player.perkv2(PerkLib.GreaterHarvest) + "\n";
+			}
+			if (player.hasPerk(PerkLib.MummyLord) && player.perkv1(PerkLib.MummyLord) > 0) miscStats += "<i>Mummies:</i> " + player.perkv1(PerkLib.MummyLord) + "\n";
+			if (player.hasPerk(PerkLib.UndeadLord) && player.perkv1(PerkLib.UndeadLord) > 0) miscStats += "<i>Zombies:</i> " + player.perkv1(PerkLib.UndeadLord) + "\n";
+			if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) > 0) miscStats += "<i>Matango:</i> " + player.perkv1(PerkLib.FungalNobility) + "\n";
+			if (player.hasPerk(PerkLib.JobTamer) && SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount() > 0) miscStats += "<i>Tamed monsters:</i> " + SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount() + "\n";// || have ring of taming
 			if (player.isRace(Races.FMINDBREAKER) || player.isRace(Races.MMINDBREAKER)) {
 				miscStats += "<b>Mindbroken Minions:</b> " + Mindbreaker.MindBreakerConvert + "\n";
 				miscStats += "<b>Mindbreaker Goal:</b> " + Mindbreaker.MindBreakerConvertGoal + "\n";
