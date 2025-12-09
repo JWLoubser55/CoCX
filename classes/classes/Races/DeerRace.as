@@ -62,11 +62,22 @@ public class DeerRace extends Race{
 		buildTier(8, "deer")
 				.namesMaleFemaleMorphTaur("deer-morph", "deer-girl", "deer-morph", "deer-taur")
 				.buffs({
-					"str.mult": +0.25,
-					"tou.mult": +0.25,
+					"str.mult": +0.75,
+					"tou.mult": +0.75,
+					"spe.mult": +0.25,
+					"lib.mult": +0.20,
+					"sens": +75
+				})
+				.end();
+		
+		buildTier(16, "froststrider deer")
+				.namesMaleFemaleMorphTaur("froststrider deer-morph", "froststrider deer-girl", "froststrider deer-morph", "froststrider deer-taur")
+				.buffs({
+					"str.mult": +1.50,
+					"tou.mult": +1.50,
 					"spe.mult": +0.50,
-					"int.mult": -0.20,
-					"wis.mult": +0.40
+					"lib.mult": +0.40,
+					"sens": +150
 				})
 				.end();/*
 		

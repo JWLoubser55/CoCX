@@ -326,6 +326,7 @@ public class Changelog extends BaseContent
 			outputText("While worn, increase spell power by 1% for every minion under your command and increase minion damage by 25%. Tease 10 bonus, Misdirection.\n");
 			outputText("-New upper underwear (by Liadri): Arch-Necromancer bra - buyable at Kaiba shop in Tel'Adre. Cost 200 gems. A bra made of silk and ornamental bones plated in silver. Increase minion damage by 20%.\n");
 			outputText("-New bottom underwear (by Liadri): Arch-Necromancer panty - buyable at Kaiba shop in Tel'Adre. Cost 200 gems. A panty made of silk and ornamental bones plated in silver. Increase minion damage by 20%.\n");
+			outputText("-Minions counter at stats page now have additional few lines to show additionaly each different type of minions count.\n");
 			outputText("-As weird as it can be to PC became race that can be active at night during Ignam prologue it will no longer mess up sleep options or not allowing hunting for thiefs during the night.\n");
 			outputText("-Scholar History would give now 50 gems less (100 gems only) but would instead give chance to choose one of basic spells to strart with (in addition to M.bolt spell).\n");
 			outputText("-\n");
@@ -334,15 +335,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values.  Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
-			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
-			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
-			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
-			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
-			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -355,15 +355,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
 			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
 			outputText("-\n");
+			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values.  Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
+			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
+			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
+			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
+			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");

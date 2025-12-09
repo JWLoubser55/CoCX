@@ -258,7 +258,7 @@ package classes.GeneticMemories {
 		  cost: 100,
 		  title: "Shroom Headcap",
 		  transformation: function(): Transformation {
-			  return CoC.instance.transformations.HornsOrchid;
+			  return CoC.instance.transformations.HornsShroomHeadcap;
 		  }
 	  });
 
