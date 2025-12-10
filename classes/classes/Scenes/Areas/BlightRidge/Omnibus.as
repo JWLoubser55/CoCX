@@ -150,7 +150,7 @@ use namespace CoC;
 			if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) {
 				this.drop = new WeightedDrop().
 						add(weapons.WHIP, 2).
-						add(consumables.LETHITE, 5).
+						add(consumables.LETH0TE, 5).
 						add(useables.PCSHARD, 5);
 			}
 			else {

@@ -6,9 +6,9 @@ import classes.*;
 import classes.Items.Consumable;
 import classes.Scenes.SceneLib;
 
-public class Leth2te extends Lethite {
-	public function Leth2te() {
-		super("Leth2te", "Greater Lethicite", "a chunk of greater lethicite", 5000, 250, 25);
+public class Leth0te extends Lethite {
+	public function Leth0te() {
+		super("Lethite", "Lesser Lethicite", "a chunk of lesser lethicite", 1000, 50, 5);
 	}
 }
 }

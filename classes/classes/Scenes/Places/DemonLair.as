@@ -42,7 +42,7 @@ public class DemonLair extends BaseContent
 			}
 			if (player.statusEffectv1(StatusEffects.MeetXuviel) == 1) {
 				outputText("Instead of going to your destination, an unknown force pushes you in a different direction. You know where you are going the moment you see the silver door again, your pussy instinctively drooling in anticipation, despite your terror.\n\n");
-				outputText("This time you walk to what looks to be a dining room. Xuviel is casually sitting by the table eating what seems to be "+(((player.itemCount(consumables.LETHITE)+player.itemCount(consumables.LETH1TE)+player.itemCount(consumables.LETH2TE)+player.itemCount(consumables.LETH3TE))>0)?"lethicites":"purple crystals")+" and he greets you the moment you arrive.\n\n");
+				outputText("This time you walk to what looks to be a dining room. Xuviel is casually sitting by the table eating what seems to be "+(((player.itemCount(consumables.LETH0TE)+player.itemCount(consumables.LETH1TE)+player.itemCount(consumables.LETH2TE)+player.itemCount(consumables.LETH3TE))>0)?"lethicites":"purple crystals")+" and he greets you the moment you arrive.\n\n");
 				outputText("\"<i>Oh, [name], how wonderful of you to join my table tonight. Please, have a seat.</i>\"\n\n");
 				outputText("You mention to your host that you didn’t join him, he forced you to come over.\n\n");
 				outputText("\"<i>Oh the intent means little, all that matters is that you are here.</i>\"\n\n");

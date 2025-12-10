@@ -2472,7 +2472,7 @@ public class RiverDungeon extends DungeonAbstractContent
 					(player.hasItem(useables.ELSHARD, 4)) ||
 					*/(player.hasItem(useables.PCSHARD, 6)) ||
 					/*(player.hasItem(useables.PCSHARD, 3) && player.hasItem(useables.SRESIDUE, 3)) ||*/
-					(player.hasItem(useables.RED_GEL, 1) && player.hasItem(consumables.CHOCBOX, 1) && player.hasItem(consumables.LETHITE, 1) && player.hasItem(consumables.SALAMFW, 1) && player.hasItem(useables.SRESIDUE, 1) && player.hasItem(consumables.ONISAKE, 1)));
+					(player.hasItem(useables.RED_GEL, 1) && player.hasItem(consumables.CHOCBOX, 1) && player.hasItem(consumables.LETH0TE, 1) && player.hasItem(consumables.SALAMFW, 1) && player.hasItem(useables.SRESIDUE, 1) && player.hasItem(consumables.ONISAKE, 1)));
 		}
 		private function anvilMaterialsList():void {
 			clearOutput();
@@ -2487,7 +2487,7 @@ public class RiverDungeon extends DungeonAbstractContent
 			menu();
 			if (player.hasItem(useables.PCSHARD, 6)) addButton(0, "???", anvilUncrafting2, 2).hint("Purple Crystal");
 			//if (player.hasItem(useables.PCSHARD, 3) && player.hasItem(useables.SRESIDUE, 3)) addButton(1, "???", anvilUncrafting2, 3).hint("Large Purple Soul Crystal Shard");
-			if (player.hasItem(useables.RED_GEL, 1) && player.hasItem(consumables.CHOCBOX, 1) && player.hasItem(consumables.LETHITE, 1) && player.hasItem(consumables.SALAMFW, 1) && player.hasItem(useables.SRESIDUE, 1) && player.hasItem(consumables.ONISAKE, 1)) {
+			if (player.hasItem(useables.RED_GEL, 1) && player.hasItem(consumables.CHOCBOX, 1) && player.hasItem(consumables.LETH0TE, 1) && player.hasItem(consumables.SALAMFW, 1) && player.hasItem(useables.SRESIDUE, 1) && player.hasItem(consumables.ONISAKE, 1)) {
 				if (player.hasKeyItem("Black Crystal") >= 0) addButtonDisabled(7, "Black Crystal", "You can't craft a 2nd one until you use the one you have.");
 				else addButton(7, "Black Crystal", anvilUncrafting2, 1);
 			}
@@ -2501,7 +2501,7 @@ public class RiverDungeon extends DungeonAbstractContent
 			if (type == 1) {
 				player.destroyItems(useables.RED_GEL, 1);
 				player.destroyItems(consumables.CHOCBOX, 1);
-				player.destroyItems(consumables.LETHITE, 1);
+				player.destroyItems(consumables.LETH0TE, 1);
 				player.destroyItems(consumables.SALAMFW, 1);
 				player.destroyItems(useables.SRESIDUE, 1);
 				player.destroyItems(consumables.ONISAKE, 1);

@@ -308,7 +308,7 @@ public final class ConsumableLib extends AlchemyLib
 		public const INCOINS: Consumable = mk("IncOIns", "IncenOfIns", "an incense of Insight", 15, "These sticks, when burned, are rumored to fill an area with an incense that allows for deep meditation and granting greater insight.", m.incenseOfInsight);
 		public const ICICLE_:Consumable       = new IceShard();
 		public const KITGIFT:KitsuneGift	  = new KitsuneGift();
-		public const LETHITE:Lethite	      = new Lethite();
+		public const LETH0TE:Leth0te	      = new Leth0te();
 		public const LETH1TE:Leth1te	      = new Leth1te();
 		public const LETH2TE:Leth2te	      = new Leth2te();
 		public const LETH3TE:Leth3te	      = new Leth3te();
