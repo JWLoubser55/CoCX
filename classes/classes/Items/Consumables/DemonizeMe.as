@@ -70,7 +70,7 @@ public class DemonizeMe extends Consumable {
 					outputText("\"<i>Use in small dosage.</i>\"\n\n");
 				}
 				demonizePlayer();
-				if (player.level < 25) SceneLib.inventory.takeItem(CoC.instance.consumables.LETHITE, EventParser.playerMenu);
+				if (player.level < 25) SceneLib.inventory.takeItem(CoC.instance.consumables.LETH0TE, EventParser.playerMenu);
 				else if (player.level < 50) SceneLib.inventory.takeItem(CoC.instance.consumables.LETH1TE, EventParser.playerMenu);
 				else if (player.level < 75) SceneLib.inventory.takeItem(CoC.instance.consumables.LETH2TE, EventParser.playerMenu);
 				else SceneLib.inventory.takeItem(CoC.instance.consumables.LETH3TE, EventParser.playerMenu);

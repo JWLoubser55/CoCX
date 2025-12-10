@@ -1668,7 +1668,7 @@ use namespace CoC;
 		private function goDemonSharedEnd():void {
 			clearOutput();
 			consumables.DEMONME.demonizePlayer();
-			if (player.level < 25) inventory.takeItem(consumables.LETHITE, playerMenu);
+			if (player.level < 25) inventory.takeItem(consumables.LETH0TE, playerMenu);
 			else if (player.level < 50) inventory.takeItem(consumables.LETH1TE, playerMenu);
 			else if (player.level < 75) inventory.takeItem(consumables.LETH2TE, playerMenu);
 			else inventory.takeItem(consumables.LETH3TE, playerMenu);

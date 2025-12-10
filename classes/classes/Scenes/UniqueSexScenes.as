@@ -1135,7 +1135,7 @@ public class UniqueSexScenes extends BaseContent
 			outputText("\n\nSatisfied nonetheless and feeling great from the cum shot in your lower mouth you head back to camp.\n\n");
 			player.sexReward("cum","Vaginal");
 			if (SuccubusIncubusFeastNotWrongEnemyTypeForLethicite() && player.hasPerk(PerkLib.Soulless)) {
-				if (monster.level < 25) inventory.takeItem(consumables.LETHITE, cleanupAfterCombat);
+				if (monster.level < 25) inventory.takeItem(consumables.LETH0TE, cleanupAfterCombat);
 				else if (monster.level < 50) inventory.takeItem(consumables.LETH1TE, cleanupAfterCombat);
 				else if (monster.level < 75) inventory.takeItem(consumables.LETH2TE, cleanupAfterCombat);
 				else inventory.takeItem(consumables.LETH3TE, cleanupAfterCombat);
@@ -1182,7 +1182,7 @@ public class UniqueSexScenes extends BaseContent
 			outputText("\n\nShe probably won't even be conscious for a day or so...which means it's time to find your next new plaything.\n\n");
 			player.sexReward("girlcum","Dick");
 			if (SuccubusIncubusFeastNotWrongEnemyTypeForLethicite() && player.hasPerk(PerkLib.Soulless)) {
-				if (monster.level < 25) inventory.takeItem(consumables.LETHITE, cleanupAfterCombat);
+				if (monster.level < 25) inventory.takeItem(consumables.LETH0TE, cleanupAfterCombat);
 				else if (monster.level < 50) inventory.takeItem(consumables.LETH1TE, cleanupAfterCombat);
 				else if (monster.level < 75) inventory.takeItem(consumables.LETH2TE, cleanupAfterCombat);
 				else inventory.takeItem(consumables.LETH3TE, cleanupAfterCombat);

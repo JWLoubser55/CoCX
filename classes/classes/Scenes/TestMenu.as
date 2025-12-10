@@ -2392,7 +2392,7 @@ public class TestMenu extends BaseContent
 	}
 	public function AddLethicite1():void {
 		outputText("\n\n<b>(Gained 1 (light coooked) Lethicite!)</b>\n\n");
-		inventory.takeItem(consumables.LETHITE, AddLethicite);
+		inventory.takeItem(consumables.LETH0TE, AddLethicite);
 	}
 	public function AddLethicite2():void {
 		outputText("\n\n<b>(Gained 1 (medium coooked) Lethicite!)</b>\n\n");

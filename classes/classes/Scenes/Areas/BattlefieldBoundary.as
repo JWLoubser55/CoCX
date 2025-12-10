@@ -273,7 +273,7 @@ use namespace CoC;
 			outputText("While the demons would probably spare their opponent in order to corrupt them or turn them into sex toys the cultivator warriors have no such qualm to their demonic victims which they mercilessly execute given the chance."+(player.cor >= 50 ? " A chilling thought pass through your mind as thinking hard on it you realise if you crossed path with one of those cultivator they would probably try and kill you on the spot.":"")+"\n\n");
 			outputText("On the bodies you retrieve fragments of lethicites and " + gems + " gems.\n\n");
 			player.gems += gems;
-			if (player.level < 25) SceneLib.inventory.takeItem(CoC.instance.consumables.LETHITE, explorer.done);
+			if (player.level < 25) SceneLib.inventory.takeItem(CoC.instance.consumables.LETH0TE, explorer.done);
 			else if (player.level < 50) SceneLib.inventory.takeItem(CoC.instance.consumables.LETH1TE, explorer.done);
 			else if (player.level < 75) SceneLib.inventory.takeItem(CoC.instance.consumables.LETH2TE, explorer.done);
 			else SceneLib.inventory.takeItem(CoC.instance.consumables.LETH3TE, explorer.done);
