@@ -8,8 +8,8 @@ import classes.Items.Consumable;
 import classes.Scenes.SceneLib;
 
 public class Lethite extends Consumable {
-	public var demonGains:Number;
-	public var hollowGains:Number;
+	private var demonGains:Number;
+	private var hollowGains:Number;
 
 	public function Lethite(id:String, shortName:String, longName:String, value:Number, demonGains:Number, hollowGains:Number) {
 		var descr:String = Utils.capitalizeFirstLetter(longName) + ". It's rare as lethicite is only produced when a mortal becomes a demon and cums their souls out. A demon's favorite treat."
