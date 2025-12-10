@@ -5819,7 +5819,7 @@ use namespace CoC;
 			if (flags[kFLAGS.HUNGER_ENABLED] > 0) hungerActive = true;
 			if (hungerActive) {
 				if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2 || flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 3) hungerActive = false;
-				else if (hasPerk(PerkLib.EmptyVessel)) hungerActive = false;
+				else if (hasPerk(PerkLib.EmptyVessel) || hasPerk(PerkLib.SpiritualHunger)) hungerActive = false;
 				else if (hasPerk(PerkLib.DeadMetabolism)) hungerActive = false;
 				else if (hasPerk(PerkLib.GargoylePure) || hasPerk(PerkLib.GargoyleCorrupted)) hungerActive = false;
 			}
@@ -6756,7 +6756,7 @@ use namespace CoC;
 				var touD:Number = Math.round(toughnessBase/2);
 				statStore.replaceBuffObject({'str': strD, 'tou': touD}, 'Dracoforce', { text: 'Dracoforce' });
 			}
-			if (hasPerk(PerkLib.EmptyVessel) && hunger >= Math.round(maxHunger() * 0.7)) {
+			if ((hasPerk(PerkLib.EmptyVessel) || hasPerk(PerkLib.SpiritualHunger)) && hunger >= Math.round(maxHunger() * 0.7)) {
 				statStore.replaceBuffObject({'str': Math.round(strengthBase*0.2), 'tou': Math.round(toughnessBase*0.2), 'spe': Math.round(speedBase*0.2), 'int': Math.round(intelligenceBase*0.2), 'wis': Math.round(wisdomBase*0.2), 'lib': Math.round(libidoBase*0.2)}, 'Exanimation', { text: 'Exanimation' });
 			}
 			if (!hasPerk(PerkLib.DeathlyPower) && statStore.hasBuff('Deathly power')) statStore.removeBuffs('Deathly power');
@@ -8394,7 +8394,7 @@ use namespace CoC;
 						}
 						if (hasPerk(PerkLib.ManticoreCumAddict)) manticoreFeed();
 						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
-						if (hasPerk(PerkLib.ExanimationII) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(2);
+						if (hasPerk(PerkLib.SpiritualHunger) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(2);
 						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'vaginalFluids':
@@ -8402,14 +8402,14 @@ use namespace CoC;
 							if (statusEffectv3(StatusEffects.Overheat) != 1) addStatusValue(StatusEffects.Overheat, 3, 1);
 						}
 						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
-						if (hasPerk(PerkLib.ExanimationII) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(2);
+						if (hasPerk(PerkLib.SpiritualHunger) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(2);
 						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'saliva':
 						break;
 					case 'milk':
 						if (hasPerk(PerkLib.DisplacerMilkAddict)) displacerFeed();
-						if (hasPerk(PerkLib.EmptyVessel) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(2);
+						if ((hasPerk(PerkLib.EmptyVessel) || hasPerk(PerkLib.SpiritualHunger)) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(2);
 						refillHunger(10, false, true);
 						break;
 				}

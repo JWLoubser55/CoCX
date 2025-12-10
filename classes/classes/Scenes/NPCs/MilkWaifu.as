@@ -685,7 +685,7 @@ private function suckleDatMilk():void {
 	outputText("\n\nEventually, the boobgasm subsides, leaving " + flags[kFLAGS.MILK_NAME] + " a quivering, panting pile of lust in your arms, her fingers absently rubbing through her panties as the last dribbles of milk trickle down her chest and your chin.  Taking the first deep breath you've managed to get in the last few minutes, you grab a towel from nearby and try to dry yourself and the leaky girl off as best you can, brushing off the gallons of milk that have washed over you both.  When you're done, " + flags[kFLAGS.MILK_NAME] + " leans over and plants a long, lusty kiss on your lips, her tongue lapping up little drops of her own milk still inside your mouth.  She breaks the kiss after a long, pleasant moment, whispering \"<i>Thank you, [name].</i>\"");
 	player.slimeFeed();
 	player.refillHunger(50);
-	if (player.hasPerk(PerkLib.EmptyVessel)) player.hollowFeed(1);
+	if (player.hasPerk(PerkLib.EmptyVessel) || player.hasPerk(PerkLib.SpiritualHunger)) player.hollowFeed(1);
 	fatigue(-50);
 	dynStats("lus", 10+player.sens/10, "scale", false);
 	doNext(camp.returnToCampUseOneHour);

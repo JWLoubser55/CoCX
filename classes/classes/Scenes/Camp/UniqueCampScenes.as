@@ -181,6 +181,8 @@ public function transformationIntoVacantHollow(postFeeding:Boolean = false):void
 	player.createPerk(PerkLib.ExanimationIII, 1, 0, 0, 0);
 	player.createPerk(PerkLib.GiantSize, 0, 0, 0, 0);
 	player.createPerk(PerkLib.AcidAffinity, 0, 0, 0, 0);
+	player.createPerk(PerkLib.SpiritualHunger, 0, 0, 0, 0);
+	if (player.hasPerk(PerkLib.EmptyVessel)) player.removePerk(PerkLib.EmptyVessel);
 	if (rand(3) == 0) {
 		player.createPerk(PerkLib.LightningAffinity, 0, 0, 0, 0);
 		player.createPerk(PerkLib.SoulResonance, 1, 0, 0, 0);
@@ -190,12 +192,12 @@ public function transformationIntoVacantHollow(postFeeding:Boolean = false):void
 		if (rand(2) == 0) {
 			player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
 			player.createPerk(PerkLib.SoulResonance, 2, 0, 0, 0);
-		outputText("<b>(Gained Acid / Cold Affinities)</b>\n\n");
+			outputText("<b>(Gained Acid / Cold Affinities)</b>\n\n");
 		}
 		else {
 			player.createPerk(PerkLib.FireAffinity, 0, 0, 0, 0);
 			player.createPerk(PerkLib.SoulResonance, 3, 0, 0, 0);
-		outputText("<b>(Gained Acid / Fire Affinities)</b>\n\n");
+			outputText("<b>(Gained Acid / Fire Affinities)</b>\n\n");
 		}
 	}
 	player.updateRacialParagon(Races.HOLLOW);

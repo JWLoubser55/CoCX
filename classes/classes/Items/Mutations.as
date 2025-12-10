@@ -3660,7 +3660,7 @@ public final class Mutations extends MutationsHelper {
             player.addStatusValue(StatusEffects.BottledMilk, 1, (6 + rand(6)));
         } else player.createStatusEffect(StatusEffects.BottledMilk, 12, 0, 0, 0);
 		if (player.perkv1(IMutationsLib.DisplacerMetabolismIM) >= 1) player.displacerFeedFromBottle();
-		if (player.hasPerk(PerkLib.EmptyVessel)) player.hollowFeed(0);
+		if (player.hasPerk(PerkLib.EmptyVessel) || player.hasPerk(PerkLib.SpiritualHunger)) player.hollowFeed(0);
         player.refillHunger(20);
     }
 
@@ -10939,7 +10939,7 @@ public final class Mutations extends MutationsHelper {
         if (player.fatigue > 0) outputText("  You feel much less tired! (-"+(Math.round(33*player.postConsumptionMlt()))+" fatigue)");
         fatigue(-Math.round(33*player.postConsumptionMlt()));
 		if (player.perkv1(IMutationsLib.DisplacerMetabolismIM) >= 1) player.displacerFeedFromBottle();
-		if (player.hasPerk(PerkLib.EmptyVessel)) player.hollowFeed(0);
+		if (player.hasPerk(PerkLib.EmptyVessel) || player.hasPerk(PerkLib.SpiritualHunger)) player.hollowFeed(0);
         player.refillHunger(20);
     }
 
@@ -10953,7 +10953,7 @@ public final class Mutations extends MutationsHelper {
         dynStats("lus", Math.round(5*player.postConsumptionMlt()), "scale", false);
         fatigue(-Math.round(50*player.postConsumptionMlt()));
 		if (player.perkv1(IMutationsLib.DisplacerMetabolismIM) >= 1) player.displacerFeedFromBottle();
-		if (player.hasPerk(PerkLib.EmptyVessel)) player.hollowFeed(0);
+		if (player.hasPerk(PerkLib.EmptyVessel) || player.hasPerk(PerkLib.SpiritualHunger)) player.hollowFeed(0);
         player.refillHunger(25);
     }
 
@@ -11835,7 +11835,7 @@ public final class Mutations extends MutationsHelper {
         dynStats("lus", -(Math.round(((player.maxLust() * 0.05) + 90)*player.postConsumptionMlt())), "cor", -2);
         player.addCurse("lib", 2, 1);
 		if (player.perkv1(IMutationsLib.DisplacerMetabolismIM) >= 1) player.displacerFeedFromBottle();
-		if (player.hasPerk(PerkLib.EmptyVessel)) player.hollowFeed(0);
+		if (player.hasPerk(PerkLib.EmptyVessel) || player.hasPerk(PerkLib.SpiritualHunger)) player.hollowFeed(0);
         player.refillHunger(40);
     }
 

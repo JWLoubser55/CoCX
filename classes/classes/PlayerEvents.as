@@ -1784,6 +1784,18 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (player.hasPerk(PerkLib.EmptyVessel) && player.perkv2(PerkLib.EmptyVessel) == 0 && player.hunger < Math.round(player.maxHunger() * 0.7)) player.addPerkValue(PerkLib.EmptyVessel, 2, -1);
+			if (player.hasPerk(PerkLib.SpiritualHunger) && player.perkv1(PerkLib.SpiritualHunger) == 0 && player.soulforce >= Math.round(player.maxSoulforce() * 0.6)) {
+				outputText("\nYour soulforce seems to stream around your body, immersing you in a transparent aura of spiritual energy. Its pressure is dense enough that it acts like a thin barrier.");
+				player.addPerkValue(PerkLib.SpiritualHunger, 1, 1);
+				needNext = true;
+			}
+			if (player.hasPerk(PerkLib.SpiritualHunger) && player.perkv1(PerkLib.SpiritualHunger) == 1 && player.soulforce < Math.round(player.maxSoulforce() * 0.6)) player.addPerkValue(PerkLib.SpiritualHunger, 1, -1);
+			if (player.hasPerk(PerkLib.SpiritualHunger) && player.perkv2(PerkLib.SpiritualHunger) == 0 && player.hunger >= Math.round(player.maxHunger() * 0.7)) {
+				outputText("\nYou feel strong, you feel the soulforce pulsing within your body. It's strengthening your muscles and sharpening your senses.");
+				player.addPerkValue(PerkLib.SpiritualHunger, 2, 1);
+				needNext = true;
+			}
+			if (player.hasPerk(PerkLib.SpiritualHunger) && player.perkv2(PerkLib.SpiritualHunger) == 0 && player.hunger < Math.round(player.maxHunger() * 0.7)) player.addPerkValue(PerkLib.SpiritualHunger, 2, -1);
 			return needNext;
 		}
 		private function hourlyCheckRacialPerks():Boolean {

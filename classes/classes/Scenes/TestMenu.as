@@ -107,7 +107,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test10", ConvertYourMaskFragments, "Convert Your Mask Fragments. One at the time!");
 		bd.add("Test11", MightyOrNot8, "Fixing ascension bug for Exanimation II.");
 		bd.add("Test12", MightyOrNot9, "Testing Hollow evolutions faster.");
-		//bd.add("Test13", MightyOrNot10, "");
+		bd.add("Test13", MightyOrNot10, "Missing Spiritual Hunger for VAcant and higher hollows.");
 		
 		submenu(bd, playerMenu, 0, false);
 	}
@@ -147,7 +147,10 @@ public class TestMenu extends BaseContent
 	}
 	
 	public function MightyOrNot10():void {
-		
+		if (player.hasPerk(PerkLib.EmptyVessel) && player.hasPerk(PerkLib.ExanimationIII)) {
+			player.createPerk(PerkLib.SpiritualHunger, 0, 0, 0, 0);
+			player.removePerk(PerkLib.EmptyVessel);
+		}
 		doNext(SoulforceCheats);
 	}
 	
@@ -2908,4 +2911,4 @@ public class TestMenu extends BaseContent
 		SceneLib.lily.lilyEncounter();
 	}
 	}
-}
+}
