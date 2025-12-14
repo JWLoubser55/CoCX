@@ -533,7 +533,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			}
 			menu();
 			addButton(1, "No", firstTimeMeetingNekomataBoyNo);
-			addButton(3, "Yes", firstTimeMeetingNekomataBoyYes);
+			addButton(3, "Yes", firstTimeMeetingNekomataBoyYes).disableIf(!player.blockingBodyTransformations(), "Can't have any effect that block body transformations.");
 		}
 		public function firstTimeMeetingNekomataBoyNo():void {
 			outputText("Yeah no, this is looking too good to be true and truth be told it likely is. You tell the sketchy cat you will pass on it for now and head back towards the bar.\n\n");
@@ -604,8 +604,8 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			player.createPerk(PerkLib.Rigidity, 0, 0, 0, 0);
 			player.createPerk(PerkLib.LifeLeech, 0, 0, 0, 0);
 			player.createPerk(PerkLib.Undeath, 0, 0, 0, 0);
-			player.updateRacialParagon(Races.JIANGSHI);
 			player.createPerk(PerkLib.EnergyDependent, 0, 0, 0, 0);
+			player.updateRacialParagon(Races.JIANGSHI);
 			if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 0) flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD]++;
 			var item:ItemType;
 			if (!player.weapon.isNothing) {

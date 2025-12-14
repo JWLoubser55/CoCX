@@ -107,8 +107,8 @@ public class TestMenu extends BaseContent
 		bd.add("Test10", ConvertYourMaskFragments, "Convert Your Mask Fragments. One at the time!");
 		bd.add("Test11", MightyOrNot8, "Fixing ascension bug for Exanimation II.");
 		bd.add("Test12", MightyOrNot9, "Testing Hollow evolutions faster.");
-		bd.add("Test13", MightyOrNot10, "Missing Spiritual Hunger for VAcant and higher hollows.");
-		
+		bd.add("Test13", MightyOrNot10, "Testing Bad End after effects.");
+		bd.add("Test14", MightyOrNot11, "Missing Spiritual Hunger for Vacant and higher hollows.");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -146,11 +146,16 @@ public class TestMenu extends BaseContent
 		submenu(bd, SoulforceCheats, 0, false);
 	}
 	
-	public function MightyOrNot10():void {
+	public function MightyOrNot11():void {
 		if (player.hasPerk(PerkLib.EmptyVessel) && player.hasPerk(PerkLib.ExanimationIII)) {
 			player.createPerk(PerkLib.SpiritualHunger, 0, 0, 0, 0);
 			player.removePerk(PerkLib.EmptyVessel);
 		}
+		doNext(SoulforceCheats);
+	}
+	
+	public function MightyOrNot10():void {
+		EventParser.gameOver(true);
 		doNext(SoulforceCheats);
 	}
 	

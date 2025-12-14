@@ -134,7 +134,10 @@ public class GameSettings extends BaseContent {
 				outputText("Hardcore Modifier: <b>[font-olive]Disabled[/font]</b>");
 			}
 			else if (flags[kFLAGS.HARDCORE_MODE] == 1) {
-				outputText("Hardcore Modifier: <b>[font-red]Enabled[/font]</b> (No level limits for unlocking new areas)");
+				outputText("Hardcore Modifier: <b>[font-red]Enabled[/font]</b> (Bad End would delete save. No level limits for unlocking new areas.)");
+			}
+			else if (flags[kFLAGS.HARDCORE_MODE] == 2) {
+				outputText("Hardcore Modifier: <b>[font-red]Enabled[/font]</b> (Bad End would delete save. No level limits for unlocking new areas.)");
 			}
 			outputText("\n\n");
 			if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 0) {
@@ -200,8 +203,8 @@ public class GameSettings extends BaseContent {
 			addButton(0, "Prime Difficulty", difficultySelectionMenu1).hint("Adjust primary difficulty to make game easier or harder.");
 			addButton(1, "Sec.Mon.Stat", difficultySelectionMenu2).hint("Adjusts monsters secondary stats multiplier to make game easier or harder.");
 			addButton(2, "E/Ch/B.Mon.Stat", difficultySelectionMenu3).hint("Adjusts elite/champion/boss monsters HP multiplier to make game easier or harder.");
-			if (flags[kFLAGS.HARDCORE_MODE] != 1) addButton(5, "Hardcore+", enableHardcoreModifierForReal);
-			else addButton(5, "Hardcore-", disableHardcoreModifierForReal);
+			if (flags[kFLAGS.HARDCORE_MODE] == 0) addButton(5, "Hardcore I", enableHardcoreModifierForReal).hint("Enabling this option would not allow to turn it off later on so choose wisely.");
+			//if (flags[kFLAGS.HARDCORE_MODE] == 1) addButton(5, "Hardcore II", disableHardcoreModifierForReal);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0) addButton(6, "Hunger (Off)", disableHungerModifierForReal);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0.5) addButton(7, "Hunger (On)", enableHungerModifierForReal);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 1) addButton(8, "Realistic (On)", enableRealisticModifierForReal);
@@ -701,8 +704,8 @@ public class GameSettings extends BaseContent {
 		addButton(1, "Mutation Assist", flagUpdate, kFLAGS.MUTATIONS_SPOILERS, 1).hint("Mutation Tracker Spoiler Mode. For when you want to discover mutations by yourself, or with some help.");
 		addButton(2, "PerkView Simplified", flagUpdate, kFLAGS.NEWPERKSDISPLAY, 1).hint("Simplified Perk Viewing. So duplicate entries/tiers don't show up.");
 		addButton(3, "Inventory Mgmt", flagUpdate, kFLAGS.INVT_MGMT_TYPE, 1).hint("Toggle between existing SHIFT to remove items vs an extra menu. Recommended to enable for Mobile users.");
-		addButton(4,"USS Display Opt.", flagUpdate, kFLAGS.USSDISPLAY_STYLE,1).hint("Switches between USS Display options.");
-		addButton(5,"IMDB Details", flagUpdate, kFLAGS.IMDB_DETAILS,1).hint("Switches between Internal Mutation DB display styles.");
+		addButton(4, "USS Display Opt.", flagUpdate, kFLAGS.USSDISPLAY_STYLE,1).hint("Switches between USS Display options.");
+		addButton(5, "IMDB Details", flagUpdate, kFLAGS.IMDB_DETAILS,1).hint("Switches between Internal Mutation DB display styles.");
 		addButton(14, "Back", settingsScreenMain);
 		function fastLvlSettings():void{
 			if (flags[kFLAGS.LVL_UP_FAST] == 2) {
@@ -851,15 +854,15 @@ public class GameSettings extends BaseContent {
 
 	public function enableHardcoreModifierForReal():void {
 		clearOutput();
-		outputText("Hardcore modifier is now enabled.");
+		outputText("Hardcore I modifier is now pernamently enabled.");
 		flags[kFLAGS.HARDCORE_MODE] = 1;
 		setTheFuckingDifficultyForFuckingGood();
 		doNext(settingsScreenGameSettings);
 	}
 	public function disableHardcoreModifierForReal():void {
 		clearOutput();
-		outputText("Hardcore modifier is now disabled.");
-		flags[kFLAGS.HARDCORE_MODE] = 0;
+		outputText("Hardcore II modifier is now pernamently enabled.");
+		flags[kFLAGS.HARDCORE_MODE] = 2;
 		setTheFuckingDifficultyForFuckingGood();
 		doNext(settingsScreenGameSettings);
 	}
@@ -989,6 +992,7 @@ public class GameSettings extends BaseContent {
 		if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] > 0) sTFDFFG += 1;
 		if (flags[kFLAGS.HUNGER_ENABLED] > 0) sTFDFFG += 1;
 		if (flags[kFLAGS.HARDCORE_MODE] > 0) sTFDFFG += 1;
+		//if (flags[kFLAGS.HARDCORE_MODE] > 1) sTFDFFG += 1;
 		if (flags[kFLAGS.EXP_BANKING] > 0) sTFDFFG += 1;
 		flags[kFLAGS.GAME_DIFFICULTY] = sTFDFFG;
 	}

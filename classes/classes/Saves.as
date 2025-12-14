@@ -141,6 +141,8 @@ public function loadSaveDisplay(saveFile:Object, slotName:String):String
 				}
 				else holding += "[font-olive]Normal[/font]";
 			}
+			if (saveFile.data.flags[kFLAGS.HARDCORE_MODE] > 0)
+				holding += " | [font-red]HARDCORE SAVE[/font]";
 		}
 		else {
 			holding += " | <b>REQUIRES UPGRADE</b>";
@@ -161,7 +163,7 @@ public function loadSaveDisplay(saveFile:Object, slotName:String):String
 private function loadSaveFromSlotNumber(slot:int):void {
 	trace("Loading save with name", saveFileNames[slot], "at index", slot);
 	loadGameFromSharedObject(saveFileNames[slot]);
-	flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] = slot;
+	if (flags[kFLAGS.HARDCORE_MODE] > 0) flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] = slot;
 }
 
 CONFIG::AIR

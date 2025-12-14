@@ -10661,6 +10661,7 @@ public class Combat extends BaseContent {
 			else playerLevelAdjustment += Math.round((player.sens - 12) / 25);
 		}
 		if (flags[kFLAGS.HARDCORE_MODE] == 1) playerLevelAdjustment += 300;
+		if (flags[kFLAGS.HARDCORE_MODE] == 2) playerLevelAdjustment += 300;
         return playerLevelAdjustment;
     }
 

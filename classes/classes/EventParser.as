@@ -82,7 +82,7 @@ public class EventParser {
             EngineCore.outputText("[/font]");
             //Delete save on hardcore.
             if (CoC.instance.flags[kFLAGS.HARDCORE_MODE] > 0) {
-                EngineCore.outputText("\n\n<b>Your save file has been deleted as you are on Hardcore Mode!</b>");
+                EngineCore.outputText("\n\n<b>Your save file has been deleted as you enabled Hardcore I or Hardcore II settings!</b>");
                 CoC.instance.saves.purgeTheMutant(CoC.instance.flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION]);
             }
             CoC.instance.flags[kFLAGS.TIMES_BAD_ENDED]++;

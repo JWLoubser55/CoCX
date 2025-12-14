@@ -367,6 +367,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
 			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -443,14 +452,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -478,9 +481,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -737,7 +737,7 @@ public class Changelog extends BaseContent
 			outputText("-Ascension: Transcendental Genetic Memory perk can attain 2 more ranks for even more slots to perm metamorph options.\n");
 			outputText("-Added 1 additional rank to Ascension: Additional Organ Mutation and 2 additional ranks to Ascension: Transcendental Genetic Memory perks.\n");
 			outputText("-I heard you all like prime numbers level cap so here is another new prime number lvl cap: 233 (worry no new prime number cap until 2026 at least)\n");
-			outputText("-Hardcore difficulty setting would remove limitations on level to find new areas or finding enemies in areas if they had their own level checks (and Lake will be no longer a safe area until lvl 3 after first 7 ingame days).\n");
+			outputText("-Hardcore I mode setting would remove limitations on level to find new areas or finding enemies in areas if they had their own level checks (and Lake will be no longer a safe area until lvl 3 after first 7 ingame days). Additionaly would no longer limit saving to different save slots nor would it force to choose one slot used to keep save in it.\n");
 			outputText("-Wake up option will now reset core and trained stats to state they been on character creation (0 core and 15 trained) and take away all XP gathered in addition to other effects it had before.\n");
 			outputText("-Autosave option will no longer require PC to go to sleep (insert your favorite joke about: sleep is for the ...) and having at least saved once manually. Instead will still need to save once manually but then will always trigger with all other once a day events (which all happens between 11pm and 12 pm).\n");
 			outputText("-Due to general evaluation of difficulty changed it been reseted to Easy setting and to return to what it was before it require to adjust all the toggles in Settings > Gameplay (1) menu.\n");

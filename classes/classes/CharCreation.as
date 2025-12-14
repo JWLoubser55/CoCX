@@ -2024,15 +2024,15 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 		private function toggleForHardcoreOn():void {
 			clearOutput();
-			outputText("You have chosen to have Hardcore Modifier enabled.");
+			outputText("You have chosen to have Hardcore I Modifier pernamently enabled.");
 			flags[kFLAGS.HARDCORE_MODE] = 1;
 			setTheFuckingDifficultyForFuckingGood();
 			doNext(chooseGameModes);
 		}
 		private function toggleForHardcoreOff():void {
 			clearOutput();
-			outputText("You have chosen to have Hardcore Modifier disabled.");
-			flags[kFLAGS.HARDCORE_MODE] = 0;
+			outputText("You have chosen to have Hardcore II Modifier pernamently enabled.");
+			flags[kFLAGS.HARDCORE_MODE] = 2;
 			setTheFuckingDifficultyForFuckingGood();
 			doNext(chooseGameModes);
 		}
@@ -2078,13 +2078,18 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] > 0) sTFDFFG += 1;
 			if (flags[kFLAGS.HUNGER_ENABLED] > 0) sTFDFFG += 1;
 			if (flags[kFLAGS.HARDCORE_MODE] > 0) sTFDFFG += 1;
+			//if (flags[kFLAGS.HARDCORE_MODE] > 1) sTFDFFG += 1;
 			if (flags[kFLAGS.EXP_BANKING] > 0) sTFDFFG += 1;
 			flags[kFLAGS.GAME_DIFFICULTY] = sTFDFFG;
 		}
 		private function chooseGameModesDesc():void {
 			outputText("Choose a game modifiers. Depending on picked amount final difficulty would be adjusted.\n\n");
-			outputText("<b>Primary Difficulty Modifier:</b> "+(flags[kFLAGS.PRIMARY_DIFFICULTY] == 0?"Disabled":"Enabled (Opponent(s) take less HP/Lust dmg, deal more damage and gives more EXP)")+"\n");
-			outputText("<b>Secondary Stats Modifier:</b> ");
+			outputText("<b>Primary Difficulty Modifier:</b> ");
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 0) outputText("Disabled");
+			else {
+				outputText("Enabled (Opponent(s) take less HP/Lust dmg, deal more damage and gives more EXP)");
+			}
+			outputText("\n<b>Secondary Stats Modifier:</b> ");
 			if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 0) outputText("Disabled");
 			else {
 				outputText("Enabled (Opponent(s) would have ");
@@ -2123,8 +2128,9 @@ import classes.Scenes.Combat.CombatAbility;
 			addButton(0, "-1-", chooseGameModes1).hint("Primary Difficulty");
 			addButton(1, "-2-", chooseGameModes2).hint("Secondary Stat");
 			addButton(2, "-3-", chooseGameModes3).hint("Elite/Champion/Boss Enemies");
-			if (flags[kFLAGS.HARDCORE_MODE] != 1) addButton(3, "Hardcore (On)", toggleForHardcoreOn);
-			if (flags[kFLAGS.HARDCORE_MODE] != 0) addButton(4, "Hardcore (Off)", toggleForHardcoreOff);
+			//3
+			if (flags[kFLAGS.HARDCORE_MODE] == 0) addButton(4, "Hardcore I", toggleForHardcoreOn);
+			//if (flags[kFLAGS.HARDCORE_MODE] == 1) addButton(4, "Hardcore II", toggleForHardcoreOff);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0) addButton(5, "Hunger (Off)", toggleForHungerOff);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 0.5) addButton(6, "Hunger (On)", toggleForHungerOn);
 			if (flags[kFLAGS.HUNGER_ENABLED] != 1) addButton(7, "Realistic (On)", toggleForRealisticOn);
@@ -2132,6 +2138,8 @@ import classes.Scenes.Combat.CombatAbility;
 			if (flags[kFLAGS.EXP_BANKING] != 1) addButton(9, "Exp Banking (Off)", toggleXPBankingOff);
 			//10+
 			//11-
+			//12+
+			//13-
 			addButton(14, "Start", startTheGame);
 		}
 		private function chooseGameModes1():void {
