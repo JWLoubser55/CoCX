@@ -88,30 +88,30 @@ public class GameSettings extends BaseContent {
 				outputText("Primary Difficulty: [font-olive]<b>Easy</b>[/font]\n No opponent(s) stats modifiers. You can resume from bad-ends with penalties. No penalties for too high wrath. Internal mutation negative effects will be triggered after accumulating 11 points in internal mutation score.");
 			}
 			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) {
-				outputText("Primary Difficulty: <b>[font-dred]Normal[/font]</b>\n Opponent(s) take 2x less HP/Lust dmg, deal 20% more damage and gives ~20% more EXP. No penalties for too high wrath. Bad-ends can ruin your game. Internal mutation negative effects will be triggered after accumulating 6 points in internal mutation score.");
+				outputText("Primary Difficulty: <b>[font-dred]Normal[/font]</b>\n Opponent(s) take 5x less HP/Lust dmg, deal 100% more damage and gives ~20% more EXP. No penalties for too high wrath. Bad-ends can ruin your game. Internal mutation negative effects will be triggered after accumulating 6 points in internal mutation score.");
 			}
 			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) {
-				outputText("Primary Difficulty: <b>[font-red]Hard[/font]</b>\n Opponent(s) take 5x less HP/Lust dmg, deal 50% more damage and gives ~50% more EXP." +
+				outputText("Primary Difficulty: <b>[font-red]Hard[/font]</b>\n Opponent(s) take 10x less HP/Lust dmg, deal 200% more damage and gives ~40% more EXP." +
 						" If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately.");
 			}
 			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) {
-				outputText("Primary Difficulty: <b>[font-red]Nightmare[/font]</b>\n Opponent(s) take 10x less HP/Lust dmg, deal more 100% damage and gives ~100% more EXP." +
+				outputText("Primary Difficulty: <b>[font-red]Nightmare[/font]</b>\n Opponent(s) take 25x less HP/Lust dmg, deal more 500% damage and gives ~100% more EXP." +
 						" If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately.");
 			}
 			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) {
-				outputText("Primary Difficulty: <b>[font-lred]Extreme[/font]</b>\n Opponent(s) take 25x less HP/Lust dmg, deal more 250% damage and gives ~150% more EXP." +
+				outputText("Primary Difficulty: <b>[font-lred]Extreme[/font]</b>\n Opponent(s) take 75x less HP/Lust dmg, deal more 1500% damage and gives ~300% more EXP." +
 						" If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately.");
 			}
 			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) {
-				outputText("Primary Difficulty: <b>[font-lred]Inferno[/font]</b>\n Opponent(s) take 25x less HP/Lust dmg, deal more 250% damage and gives ~150% more EXP." +
+				outputText("Primary Difficulty: <b>[font-lred]Inferno[/font]</b>\n Opponent(s) take 300x less HP/Lust dmg, deal more 6000% damage and gives ~1200% more EXP." +
 						" If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately.");
 			}
 			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 6) {
-				outputText("Primary Difficulty: <b>[font-pink]Metroid Dread[/font]</b>\n Opponent(s) take 25x less HP/Lust dmg, deal more 250% damage and gives ~150% more EXP." +
+				outputText("Primary Difficulty: <b>[font-pink]Metroid Dread[/font]</b>\n Opponent(s) take 300x less HP/Lust dmg, deal more 6000% damage and gives ~1200% more EXP." +
 						" If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately.");
 			}
 			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] >= 7) {
-				outputText("Primary Difficulty: <b>[font-pink]Xianxia MC[/font]</b>\n Opponent(s) take 25x less HP/Lust dmg, deal more 250% damage and gives ~150% more EXP." +
+				outputText("Primary Difficulty: <b>[font-pink]Xianxia MC[/font]</b>\n Opponent(s) take 300x less HP/Lust dmg, deal more 6000% damage and gives ~1200% more EXP." +
 						" If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately.");
 			}
 			outputText("\n\n");
@@ -905,10 +905,11 @@ public class GameSettings extends BaseContent {
 		clearOutput();
 		outputText("You can choose a prime difficulty to set how hard battles will be.\n");
 		if (flags[kFLAGS.PRIMARY_DIFFICULTY] <= 0) outputText("\n No opponent(s) stats modifiers. You can resume from bad-ends with penalties. No penalties for too high wrath. Negative effects from internal mutations will be triggered after accumulating 11 points in your internal mutation score.");
-		else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) outputText("\n Opponent(s) take 2x less HP/Lust dmg, deal 20% more damage and gives ~20% more EXP. No penalties for too high wrath. Bad-ends can ruin your game. Negative effects from internal mutations will be triggered after accumulating 6 points in your internal mutation score. (+1 diff modifier)");
-		else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) outputText("\n Opponent(s) take 5x less HP/Lust dmg, deal 50% more damage and gives ~50% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately. (+1 diff modifier)");
-		else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) outputText("\n Opponent(s) take 10x less HP/Lust dmg, deal more 100% damage and gives ~100% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately. (+1 diff modifier)");
-		else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) outputText("\n Opponent(s) take 25x less HP/Lust dmg, deal more 250% damage and gives ~150% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately. (+1 diff modifier)");
+		else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) outputText("\n Opponent(s) take 5x less HP/Lust dmg, deal 100% more damage and gives ~20% more EXP. No penalties for too high wrath. Bad-ends can ruin your game. Negative effects from internal mutations will be triggered after accumulating 6 points in your internal mutation score. (+1 diff modifier)");
+		else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) outputText("\n Opponent(s) take 10x less HP/Lust dmg, deal 200% more damage and gives ~40% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately. (+1 diff modifier)");
+		else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) outputText("\n Opponent(s) take 25x less HP/Lust dmg, deal more 500% damage and gives ~100% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately. (+1 diff modifier)");
+		else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) outputText("\n Opponent(s) take 75x less HP/Lust dmg, deal more 1500% damage and gives ~300% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately. (+1 diff modifier)");
+		else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) outputText("\n Opponent(s) take 300x less HP/Lust dmg, deal more 6000% damage and gives ~1200% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately. (+1 diff modifier)");
 		menu();
 		if (flags[kFLAGS.PRIMARY_DIFFICULTY] != 0) addButton(0, "-0-", chooseDifficulty1, 0);
 		else addButtonDisabled(0, "-0-", "Currently choosen option.");
@@ -920,6 +921,8 @@ public class GameSettings extends BaseContent {
 		else addButtonDisabled(3, "-3-", "Currently choosen option.");
 		if (flags[kFLAGS.PRIMARY_DIFFICULTY] != 4) addButton(4, "-4-", chooseDifficulty1, 4);
 		else addButtonDisabled(4, "-4-", "Currently choosen option.");
+		if (flags[kFLAGS.PRIMARY_DIFFICULTY] != 5) addButton(5, "-5-", chooseDifficulty1, 5);
+		else addButtonDisabled(5, "-5-", "Currently choosen option.");
 		addButton(14, "Back", settingsScreenGameSettings);
 	}
 	public function chooseDifficulty1(difficulty:int = 0):void {

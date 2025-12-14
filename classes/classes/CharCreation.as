@@ -2087,7 +2087,13 @@ import classes.Scenes.Combat.CombatAbility;
 			outputText("<b>Primary Difficulty Modifier:</b> ");
 			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 0) outputText("Disabled");
 			else {
-				outputText("Enabled (Opponent(s) take less HP/Lust dmg, deal more damage and gives more EXP)");
+				outputText("Enabled (");
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) outputText("Opponent(s) take 5x less HP/Lust dmg, deal 100% more damage and gives ~20% more EXP. No penalties for too high wrath. Bad-ends can ruin your game. Negative effects from internal mutations will be triggered after accumulating 6 points in your internal mutation score");
+				else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) outputText("Opponent(s) take 10x less HP/Lust dmg, deal 200% more damage and gives ~40% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately");
+				else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) outputText("Opponent(s) take 25x less HP/Lust dmg, deal more 500% damage and gives ~100% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately");
+				else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) outputText("Opponent(s) take 75x less HP/Lust dmg, deal more 1500% damage and gives ~300% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately");
+				else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) outputText("Opponent(s) take 300x less HP/Lust dmg, deal more 6000% damage and gives ~1200% more EXP. If you want to spellcast or use magic specials, you have to pay attention to your accumulated wrath. Additionally, the negative effects of internal mutations begin immediately");
+				outputText(".)");
 			}
 			outputText("\n<b>Secondary Stats Modifier:</b> ");
 			if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 0) outputText("Disabled");
@@ -2111,8 +2117,12 @@ import classes.Scenes.Combat.CombatAbility;
 				else if (flags[kFLAGS.BOSS_CHAMPION_ELITE_SCALING] >= 4) outputText("5x / 10x / 20x");
 				outputText(" more Health)");
 			}
-			outputText("\n<b>Hardcore Modifier:</b> "+(flags[kFLAGS.HARDCORE_MODE] == 1?"Enabled (No level limits for unlocking new areas)":"Disabled")+"\n");
-			outputText("<b>Hunger Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0?"Enabled (PC must manage his own hunger lest you want see his death from starvation)":"Disabled")+"\n");
+			outputText("\n<b>Hardcore Modifier:</b> ");
+			if (flags[kFLAGS.HARDCORE_MODE] == 0) outputText("Disabled");
+			else {
+				outputText("Enabled (Bad End would delete save. No level limits for unlocking new areas.)");
+			}
+			outputText("\n<b>Hunger Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0?"Enabled (PC must manage his own hunger lest you want see his death from starvation)":"Disabled")+"\n");
 			outputText("<b>Realistic Mode Modifier:</b> "+(flags[kFLAGS.HUNGER_ENABLED] > 0.5?"Enabled (PC must manage his own hunger lest you want see his death from starvation + your cum production is capped and having oversized parts will weigh you down)":"Disabled")+"\n");
 			outputText("<b>Exp Banking:</b> "+(flags[kFLAGS.EXP_BANKING] > 0?"Disabled":"Enabled (PC can stack experience indefinitely from defeated opponents)")+"\n");
 
@@ -2156,6 +2166,8 @@ import classes.Scenes.Combat.CombatAbility;
 			else addButtonDisabled(3, "PrimaryDiff(3)", "Currently choosen option.");
 			if (flags[kFLAGS.PRIMARY_DIFFICULTY] != 4) addButton(4, "PrimaryDiff(4)", toggleForPrimaryDiffultyModifier, 4);
 			else addButtonDisabled(4, "PrimaryDiff(4)", "Currently choosen option.");
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] != 5) addButton(5, "PrimaryDiff(5)", toggleForPrimaryDiffultyModifier, 5);
+			else addButtonDisabled(5, "PrimaryDiff(5)", "Currently choosen option.");
 			addButton(14, "Back", chooseGameModes);
 		}
 		private function chooseGameModes2():void {

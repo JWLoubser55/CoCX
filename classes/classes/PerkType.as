@@ -191,7 +191,7 @@ public class PerkType extends BaseContent
 				fn  : fnRequireAttr("level", value),
 				text: "Level " + value,
 				type: "level",
-				value: value,
+				value: value,//if (CoC.instance.flags[kFLAGS.HARDCORE_MODE] > 1) 
 				distance: value*DISTANCE_PER_LEVEL,
 				distanceFor: fnDistanceAttr("level", value, DISTANCE_PER_LEVEL)
 			});

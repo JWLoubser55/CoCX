@@ -1085,16 +1085,18 @@ import classes.Scenes.Combat.CombatAbilities;
 		public function damageReductionBasedOnDifficulty():Number {
 			var dRBOD:Number = 1;
 			if (hasPerk(PerkLib.EnemyForBeginnersType)) {
-				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) dRBOD *= 1.1;
-				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) dRBOD *= 1.25;
-				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) dRBOD *= 1.5;
-				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) dRBOD *= 2;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) dRBOD *= 1.25;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) dRBOD *= 1.5;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) dRBOD *= 2.25;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) dRBOD *= 4.75;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) dRBOD *= 16;
 			}
 			else {
-				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) dRBOD *= 2;
-				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) dRBOD *= 5;
-				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) dRBOD *= 10;
-				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) dRBOD *= 25;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) dRBOD *= 5;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) dRBOD *= 10;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) dRBOD *= 25;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) dRBOD *= 75;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) dRBOD *= 300;
 			}
 			return dRBOD;
 		}
@@ -1479,12 +1481,13 @@ import classes.Scenes.Combat.CombatAbilities;
 		protected function baseXP():Number
 		{
 			var baseMonXP:Number = this.level * 5;
-			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) baseMonXP += this.level;
-			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) baseMonXP += this.level * 2.5;
-			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) baseMonXP += this.level * 5;
-			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) baseMonXP += this.level * 7.5;
-			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) baseMonXP += this.level * 7.5;
-			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 6) baseMonXP += this.level * 7.5;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) baseMonXP *= 1.2;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) baseMonXP *= 1.4;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) baseMonXP *= 2;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) baseMonXP *= 4;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) baseMonXP *= 13;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 6) baseMonXP *= 13;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] >= 7) baseMonXP *= 13;
 			if (this.level < 7) baseMonXP += (this.level * 5) + rand(this.level * 5);
 			else baseMonXP += rand(this.level * 5);
 			return baseMonXP;

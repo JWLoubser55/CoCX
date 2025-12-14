@@ -350,12 +350,12 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values.  Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 230+ wisdom. Effect: max 4 tammed monsters in group and 250% and max 4 groups
@@ -367,12 +367,12 @@ public class Changelog extends BaseContent
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
 			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
 			outputText("-\n");
+			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -452,8 +452,20 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -481,6 +493,12 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
