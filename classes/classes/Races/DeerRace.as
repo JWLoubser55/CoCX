@@ -1,6 +1,7 @@
 package classes.Races {
 import classes.BodyParts.*;
 import classes.CockTypesEnum;
+import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 import classes.VaginaClass;
@@ -33,8 +34,6 @@ public class DeerRace extends Race{
 
     public function DeerRace(id:int) {
 		super("Deer", id, []);//RaceBody);
-		chimeraTier = 0;
-		grandChimeraTier = 0;
 	}
 	
 	public override function setup():void {
@@ -43,11 +42,11 @@ public class DeerRace extends Race{
 				.earType(Ears.DEER, +1)
 				.tailType(Tail.DEER, +1)
 				.faceType(Face.DEER, +1)
-				.armType(Arms.DEER, +1)
-				.armType(Arms.REINDEER, +2)
+				.armType(ANY(Arms.HUMAN, Arms.DEER), +1)
+				//.armType(Arms.REINDEER, +2)
 				.armType(NOT(Arms.WENDIGO), 0, -5)
 				.legType(LowerBody.CLOVEN_HOOFED, +1)
-				.legType(LowerBody.CLOVEN_HOOFED_2, +2)
+				//.legType(LowerBody.CLOVEN_HOOFED_2, +2)
 				.legType(NOT(LowerBody.WENDIGO), 0, -5)
 				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(4), +1)
 				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(14), +1)
@@ -58,6 +57,10 @@ public class DeerRace extends Race{
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addBloodline(PerkLib.DeersDescendant, PerkLib.BloodlineDeer);
+		addMutation(IMutationsLib.TwinHeartIM);
+		addMutation(IMutationsLib.MightyLegsIM);
+		//addMutation(IMutationsLib.);
+		addMutation(IMutationsLib.EquineMuscleIM);
 		
 		buildTier(8, "deer")
 				.namesMaleFemaleMorphTaur("deer-morph", "deer-girl", "deer-morph", "deer-taur")

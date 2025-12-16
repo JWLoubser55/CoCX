@@ -902,8 +902,8 @@ public class Creature extends Utils
 			if (hasPerk(PerkLib.LimitBreakerBody2ndStage)) multimax += 0.1;
 			if (hasPerk(PerkLib.LimitBreakerBody3rdStage)) multimax += 0.15;
 			if (hasPerk(PerkLib.DeityJobMunchkin)) multimax += 0.2;
-			if (this.touStat.core.value > 0) dmmmm += this.touStat.core.value;
-			if (this.touStat.train.value > 0) dmmmm += this.touStat.train.value;
+			if (this.touStat.core.value > 0) dmmmm += this.touStat.core.value * 0.5;
+			if (this.touStat.train.value > 0) dmmmm += this.touStat.train.value * 0.5;
 			if (dmmmm > 1) multimax *= dmmmm;
 			max *= multimax;
 			max = Math.round(max);
