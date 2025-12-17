@@ -706,6 +706,7 @@ public class Creature extends Utils
 			var max:Number = maxHpBaseStat.value;
 			var multimax:Number = maxHpMultStat.value;
 			var dmmmm:Number = 0;
+			var dmmmml:Number = 0.1;
 			if (hasPerk(PerkLib.IcyFlesh)) {
 				max += int(inte * 2 + 50);
 				if (inte >= 21) max += Math.round(inte);
@@ -881,7 +882,7 @@ public class Creature extends Utils
 			if (hasPerk(PerkLib.AscensionHardiness)) max += perkv1(PerkLib.AscensionHardiness) * 400;
 			if (hasPerk(PerkLib.ChiReflowDefense)) max += UmasShop.NEEDLEWORK_DEFENSE_EXTRA_HP;
 			max += level * maxHpPerLevelStat.value;
-			if (level <= 6) max += level * 60;
+			if (level <= 9) max += level * 60;
 			if (hasPerk(PerkLib.UnlockBody)) max += level * 60;
 			if (hasPerk(PerkLib.UnlockBody2ndStage)) max += level * 60;
 			if (hasPerk(PerkLib.UnlockBody3rdStage)) max += level * 60;
@@ -902,8 +903,11 @@ public class Creature extends Utils
 			if (hasPerk(PerkLib.LimitBreakerBody2ndStage)) multimax += 0.1;
 			if (hasPerk(PerkLib.LimitBreakerBody3rdStage)) multimax += 0.15;
 			if (hasPerk(PerkLib.DeityJobMunchkin)) multimax += 0.2;
-			if (this.touStat.core.value > 0) dmmmm += this.touStat.core.value * 0.5;
-			if (this.touStat.train.value > 0) dmmmm += this.touStat.train.value * 0.5;
+			if (level > 9) dmmmml += 0.1;
+			if (level > 24) dmmmml += 0.1;
+			if (level > 56) dmmmml += 0.1;
+			if (this.touStat.core.value > 0) dmmmm += this.touStat.core.value * dmmmml;
+			if (this.touStat.train.value > 0) dmmmm += this.touStat.train.value * dmmmml;
 			if (dmmmm > 1) multimax *= dmmmm;
 			max *= multimax;
 			max = Math.round(max);

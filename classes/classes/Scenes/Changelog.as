@@ -39,7 +39,7 @@ public class Changelog extends BaseContent
 			outputText("-Prestige Job: Soul Art Master req. for Flesh Body: Apprentice Stage was changed to any of accesable body cultivations paths apprentice stage perk.\n");
 			outputText("-Charge Weapon spell bonus to atk is now additionaly increased by weapon size if it's larger then small (which would have 1x multiplier) up to x4 for massive weapons.\n");
 			outputText("-Monsters have now damage reduction based on their toughness score. Each 1000 pts it increase by +1 starting from 1/2 when monster tou is above 1000.\n");
-			outputText("-Player gained damage reduction based on picked guardian/othe toughness focused jobs perks. Player gained health multiplication based on sum of toughness core and trained stat values. Each point increase multiplier by 0.5.\n");
+			outputText("-Player gained damage reduction based on picked guardian/othe toughness focused jobs perks. Player gained health multiplication based on sum of toughness core and trained stat values. Each point increase multiplier by 0.1 + 0.1 more at lvl 9+, 24+ and 56+.\n");
 			outputText("-When Wendigo would apply Wendigo Psychosis status effect to PC during fight (not in post fight scene) it will now be notification ingame for this.\n");
 			
 			outputText("-Changes including Tome of Imps and Imps birth. Tome of Imp and Demonhood is now accounted for when birthing imps. Giving birth to imps adds 5 imps to the tome directly. (Liadri)\n");
@@ -331,7 +331,7 @@ public class Changelog extends BaseContent
 			outputText("-Scholar History would give now 50 gems less (100 gems only) but would instead give chance to choose one of basic spells to strart with (in addition to M.bolt spell).\n");
 			outputText("-New event perk: Spiritual Hunger. Gained by reaching Vacant tier of Hollow race. Effects: You will no longer gain nourishment from anything with the exception of Breast milk (Marble's bottled milk is allowed), semen, girlcum, Souldrain or Souleat foes, eating lethicite, eating soul residue, eating hollows and eating mask fragments.  ");
 			outputText("(When dropping below 50% of max satiety would cause drain of 20% of max soulforce per hour (if lacking soulforce would drain health 15% of max HP per hour). When dropping below 30% of max satiety would cause drain of 20% of max health per hour. At 70% and above satiety, the pc will get a 20% boost to all stats (excluding sensitivity), 80%(100%) boost to Soulforce skills and Hollow skills.)\n");
-			outputText("-\n");
+			outputText("-Imp race req. to be small is slight increased to be below or at 4 feet (from 3 and half feet).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
