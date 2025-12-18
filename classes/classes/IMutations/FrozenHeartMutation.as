@@ -7,6 +7,7 @@ package classes.IMutations
 import classes.PerkClass;
 import classes.IMutationPerkType;
 import classes.Creature;
+import classes.Player;
 import classes.Races;
 
 public class FrozenHeartMutation extends IMutationPerkType
@@ -19,13 +20,25 @@ public class FrozenHeartMutation extends IMutationPerkType
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
-                descS += "Allows you to retain the abilities Ice Barrage and Hungering Cold at all times and increase their damage by " + 10 * pTier + "%";
+                descS += "Allows you to retain any ice race learned abilities at all times and increase their damage by " + 25 * pTier + "%";
+            }
+            if (pTier >= 2){
+                descS += ". Freeze effects last for ";
+            }
+            if (pTier >= 2){
+                descS += "1 additional turn and cold racial skill recharges 1 turn";
             }
             if (pTier >= 3){
-                descS += ", Hungering Cold lasts for 3 additional turns and recharges 3 turns faster. Gain an extra modifier from your intelligence to health. (Increases original value by 50%)";
+                descS += "2 additional turns and cold racial skill recharges 2 turns";
             }
-            else if (pTier >= 2){
-                descS += ". Hungering Cold lasts for an additional turn and recharges 1 turn faster";
+            if (pTier >= 4){
+                descS += "3 additional turns and cold racial skill recharges 3 turns";
+            }
+            if (pTier >= 2){
+                descS += " faster. Gain an extra modifier from your intelligence to health (increase original value by " + 25 * (pTier - 1) + "%)";
+            }
+            if (pTier >= 4){
+                descS += ". While in a cold or wet environment gain 2% stat regeneration";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -39,7 +52,9 @@ public class FrozenHeartMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireHeartMutationSlot()
-                    .requireRace(Races.YUKIONNA)
+                    .requireCustomFunction(function (player:Player):Boolean {
+                        return player.isRace(Races.YUKIONNA) || player.isRace(Races.YETI) || player.isRace(Races.DEER,2);
+                    }, "Yuki  race");
                 }
                 else{
                     var pLvl:int = pTier * 30;

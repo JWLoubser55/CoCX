@@ -805,7 +805,7 @@ public class MagicSpecials extends BaseCombatContent {
 				bd.disable("You need more time before you can use Freezing Breath again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
-		if (player.hasPerk(PerkLib.FreezingBreathYeti)) {
+		if (player.hasPerk(PerkLib.FreezingBreathYeti) || player.perkv1(IMutationsLib.FrozenHeartIM) >= 1) {
 			bd = buttons.add("FreezingBreath", yetiFreezingBreath, "Freeze your foe solid with a powerful breath attack. \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "9":"10")+" rounds");
 			bd.requireFatigue(spellCost(50));
 			if (player.hasStatusEffect(StatusEffects.CooldownFreezingBreathYeti)) {
@@ -816,8 +816,7 @@ public class MagicSpecials extends BaseCombatContent {
 			bd = buttons.add("Ice Barrage", iceBarrage).hint("Call up a frigid storm to freeze and bombard your enemies.", "Ice Barrage");
 			bd.requireFatigue(spellCost(40));
 			var HCCDv:Number = 10;
-			if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 2) HCCDv -= 1;
-			if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 3) HCCDv -= 3;
+			if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 2) HCCDv -= (player.perkv1(IMutationsLib.FrozenHeartIM) - 1);
 			if (player.hasPerk(PerkLib.NaturalInstincts)) HCCDv -= 1;
 			bd = buttons.add("HungeringCold", hungeringCold).hint("Freeze the air around your target, encasing it in ice and dealing hypothermia damage. Weakens opponents ice resistance to further attacks damage by 50% stacking up to 3 times. \n\nWould go into cooldown after use for: " + HCCDv + " rounds", "Hungering cold");
 			bd.requireFatigue(spellCost(40));
@@ -825,7 +824,7 @@ public class MagicSpecials extends BaseCombatContent {
 				bd.disable("You need more time before you can use Hungering Cold again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
-		if (player.isRaceCached(Races.YUKIONNA) && player.hasPerk(PerkLib.ColdAffinity)) {
+		if ((player.isRaceCached(Races.YUKIONNA) && player.hasPerk(PerkLib.ColdAffinity)) || player.perkv1(IMutationsLib.FrozenHeartIM) >= 1) {
 			bd = buttons.add("Frozen Kiss", frozenKiss).hint("Inflict damage, drain health, stun for 2 rounds and lust out the opponent. Usable only if the victim is humanoid and non giant.", "Frozen Kiss");
 			bd.requireFatigue(spellCost(60));
 			if (player.hasStatusEffect(StatusEffects.CooldownFrozenKiss)) {
@@ -1995,12 +1994,7 @@ public class MagicSpecials extends BaseCombatContent {
 		clearOutput();
 		fatigue(40, USEFATG_MAGIC_NOBM);
 		var damage:Number = scalingBonusIntelligence() * spellModBlack() * 4;
-		if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 1) {
-			var IBM:Number = 1.1;
-			if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 2) IBM += 0.2;
-			if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 3) IBM += 0.3;
-			damage *= IBM;
-		}
+		if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.FrozenHeartIM)));
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -2050,18 +2044,17 @@ public class MagicSpecials extends BaseCombatContent {
 			HCD += 1;
 		}
 		if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 3) {
+			HCCD -= 2;
+			HCD += 2;
+		}
+		if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 4) {
 			HCCD -= 3;
 			HCD += 3;
 		}
 		if (player.hasPerk(PerkLib.NaturalInstincts)) HCCD -= 1;
 		player.createStatusEffect(StatusEffects.CooldownHungeringCold,HCCD,0,0,0);
 		var damage:Number = scalingBonusIntelligence() * spellModBlack() * 0.8;
-		if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 1) {
-			var HCM:Number = 1.1;
-			if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 2) HCM += 0.2;
-			if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 3) HCM += 0.3;
-			damage *= HCM;
-		}
+		if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.FrozenHeartIM)));
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;

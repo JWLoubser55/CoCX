@@ -60,6 +60,7 @@ public class YetiRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.YetiFatIM);
+		addMutation(IMutationsLib.FrozenHeartIM);
 		
 		buildTier(14,"yeti")
 				.namesTauric("yeti", "yeti-taur")

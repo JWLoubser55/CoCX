@@ -59,7 +59,7 @@ public class DeerRace extends Race{
 		addBloodline(PerkLib.DeersDescendant, PerkLib.BloodlineDeer);
 		addMutation(IMutationsLib.TwinHeartIM);
 		addMutation(IMutationsLib.MightyLegsIM);
-		//addMutation(IMutationsLib.);
+		addMutation(IMutationsLib.FrozenHeartIM);
 		addMutation(IMutationsLib.EquineMuscleIM);
 		
 		buildTier(8, "deer")
@@ -81,6 +81,18 @@ public class DeerRace extends Race{
 					"spe.mult": +0.50,
 					"lib.mult": +0.40,
 					"sens": +150
+				})
+				.end();
+		
+		buildTier(24, "cernos")
+				.namesTauric("cernos","cernos-taur")
+				.requirePreviousTier()
+				.buffs({
+					"str.mult": +1.80,
+					"tou.mult": +1.80,
+					"spe.mult": +1.00,
+					"lib.mult": +1.00,
+					"sens": +200
 				})
 				.end();/*
 		

@@ -332,7 +332,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Spiritual Hunger. Gained by reaching Vacant tier of Hollow race. Effects: You will no longer gain nourishment from anything with the exception of Breast milk (Marble's bottled milk is allowed), semen, girlcum, Souldrain or Souleat foes, eating lethicite, eating soul residue, eating hollows and eating mask fragments.  ");
 			outputText("(When dropping below 50% of max satiety would cause drain of 20% of max soulforce per hour (if lacking soulforce would drain health 15% of max HP per hour). When dropping below 30% of max satiety would cause drain of 20% of max health per hour. At 70% and above satiety, the pc will get a 20% boost to all stats (excluding sensitivity), 80%(100%) boost to Soulforce skills and Hollow skills.)\n");
 			outputText("-Imp race req. to be small is slight increased to be below or at 4 feet (from 3 and half feet).\n");
-			outputText("-\n");
+			outputText("-Frozen Heart internal mutation effects was changed a bit and more race can access it too.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

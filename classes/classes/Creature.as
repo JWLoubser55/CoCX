@@ -713,8 +713,14 @@ public class Creature extends Utils
 				if (inte >= 41) max += Math.round(inte);
 				if (inte >= 61) max += Math.round(inte);
 				if (inte >= 81) max += Math.round(inte);
-				if (inte >= 101) max += Math.round(inte) * Math.floor( (inte-100)/50 + 1);
-				if (perkv1(IMutationsLib.FrozenHeartIM) >= 3) max *= 1.5;
+				if (inte >= 101) max += Math.round(inte) * Math.floor( (inte-100) / 50 + 1);
+				if (perkv1(IMutationsLib.FrozenHeartIM) >= 2) {
+					if (perkv1(IMutationsLib.FrozenHeartIM) >= 3) {
+						if (perkv1(IMutationsLib.FrozenHeartIM) >= 4) max *= 1.75;
+						else max *= 1.5;
+					}
+					else max *= 1.25;
+				}
 			}
 			else if (hasPerk(PerkLib.HaltedVitals) || hasPerk(PerkLib.Undeath)) {
 				max += int(lib * 2 + 50);
@@ -741,21 +747,18 @@ public class Creature extends Utils
 				}
 			}
 			if (hasPerk(PerkLib.IcyFlesh)) {
-				if (perkv1(IMutationsLib.FrozenHeartIM) >= 3) {
-					if (hasPerk(PerkLib.TankI)) max += Math.round(inte*18);
-					if (hasPerk(PerkLib.TankII)) max += Math.round(inte*18);
-					if (hasPerk(PerkLib.TankIII)) max += Math.round(inte*18);
-					if (hasPerk(PerkLib.TankIV)) max += Math.round(inte*18);
-					if (hasPerk(PerkLib.TankV)) max += Math.round(inte*18);
-					if (hasPerk(PerkLib.TankVI)) max += Math.round(inte*18);
-				}
-				else {
-					if (hasPerk(PerkLib.TankI)) max += Math.round(inte*12);
-					if (hasPerk(PerkLib.TankII)) max += Math.round(inte*12);
-					if (hasPerk(PerkLib.TankIII)) max += Math.round(inte*12);
-					if (hasPerk(PerkLib.TankIV)) max += Math.round(inte*12);
-					if (hasPerk(PerkLib.TankV)) max += Math.round(inte*12);
-					if (hasPerk(PerkLib.TankVI)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankI)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankII)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankIII)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankIV)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankV)) max += Math.round(inte*12);
+				if (hasPerk(PerkLib.TankVI)) max += Math.round(inte * 12);
+				if (perkv1(IMutationsLib.FrozenHeartIM) >= 2) {
+					if (perkv1(IMutationsLib.FrozenHeartIM) >= 3) {
+						if (perkv1(IMutationsLib.FrozenHeartIM) >= 4) max *= 1.75;
+						else max *= 1.5;
+					}
+					else max *= 1.25;
 				}
 			}
 			else {
@@ -764,7 +767,7 @@ public class Creature extends Utils
 				if (hasPerk(PerkLib.TankIII)) max += Math.round(tou*12);
 				if (hasPerk(PerkLib.TankIV)) max += Math.round(tou*12);
 				if (hasPerk(PerkLib.TankV)) max += Math.round(tou*12);
-				if (hasPerk(PerkLib.TankVI)) max += Math.round(tou * 12);
+				if (hasPerk(PerkLib.TankVI)) max += Math.round(tou*12);
 				if (hasPerk(PerkLib.DeathPriest)) {
 					if (hasPerk(PerkLib.TankI)) max += Math.round(wis*12);
 					if (hasPerk(PerkLib.TankII)) max += Math.round(wis*12);
@@ -807,6 +810,13 @@ public class Creature extends Utils
 				if (hasPerk(PerkLib.TankIV)) max += Math.round(inte*12);
 				if (hasPerk(PerkLib.TankV)) max += Math.round(inte*12);
 				if (hasPerk(PerkLib.TankVI)) max += Math.round(inte*12);
+			}
+			if (perkv1(IMutationsLib.FrozenHeartIM) >= 2 && !hasPerk(PerkLib.IcyFlesh) && !hasPerk(PerkLib.IcyFlesh)) {
+				if (perkv1(IMutationsLib.FrozenHeartIM) >= 3) {
+					if (perkv1(IMutationsLib.FrozenHeartIM) >= 4) max += Math.round(inte*21);
+					else max += Math.round(inte*18);
+				}
+				else max += Math.round(inte*15);
 			}
 			if (hasPerk(PerkLib.ElementalBondFlesh)) {
 				if (hasStatusEffect(StatusEffects.SummonedElementalsAir)) max += maxHP_ElementalBondFleshMulti() * 4 * statusEffectv2(StatusEffects.SummonedElementalsAir);
@@ -5077,4 +5087,4 @@ public class Creature extends Utils
 			//Do nothing
 		}
 	}
-}
+}
