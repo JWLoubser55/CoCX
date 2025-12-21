@@ -158,6 +158,7 @@ public class Races {
 	public static const ABYSSAL_ELF:AbyssalElfRace		   = new AbyssalElfRace(133);
 	public static const SHEEP:SheepRace					   = new SheepRace(134);
 	public static const HOLLOW:HollowRace				   = new HollowRace(135);
+	public static const CAVESTALKER:CaveStalkerRace		   = new CaveStalkerRace(136);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [

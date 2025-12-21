@@ -49,6 +49,7 @@ public class SlimeRace extends Race {
 					return body.player.isGooSkin() && body.skinBaseAdj == "slimy"
 				}, +1)
 				.hasStatusEffect(StatusEffects.SlimeCraving, "Slime Craving", +1)
+				.hasPerk(PerkLib.AcidAffinity, +1)
 				.hasPerk(PerkLib.SlimeCore, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		

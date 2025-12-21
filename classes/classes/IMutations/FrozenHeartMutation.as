@@ -54,7 +54,7 @@ public class FrozenHeartMutation extends IMutationPerkType
                     this.requireHeartMutationSlot()
                     .requireCustomFunction(function (player:Player):Boolean {
                         return player.isRace(Races.YUKIONNA) || player.isRace(Races.YETI) || player.isRace(Races.DEER,2);
-                    }, "Yuki  race");
+                    }, "Yuki Onna, Yeti, Deer (tier 2+) race");
                 }
                 else{
                     var pLvl:int = pTier * 30;
