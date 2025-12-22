@@ -533,7 +533,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			}
 			menu();
 			addButton(1, "No", firstTimeMeetingNekomataBoyNo);
-			addButton(3, "Yes", firstTimeMeetingNekomataBoyYes).disableIf(!player.blockingBodyTransformations(), "Can't have any effect that block body transformations.");
+			addButton(3, "Yes", firstTimeMeetingNekomataBoyYes).disableIf(player.blockingBodyTransformations(), "Can't have any effect that block body transformations.");
 		}
 		public function firstTimeMeetingNekomataBoyNo():void {
 			outputText("Yeah no, this is looking too good to be true and truth be told it likely is. You tell the sketchy cat you will pass on it for now and head back towards the bar.\n\n");
