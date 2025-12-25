@@ -125,15 +125,16 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			else outputText("morning");
 			outputText(" " + player.mf("mister", "miss") + ", what can I get you?</i>\"\n\n");
 			menu();
-			addButton(0, "ManUp B", confirmBuyDrink, consumables.MANUP_B, 1).hint("1 spirit stone");
-			addButton(1, "Gob.Ale", confirmBuyDrink, consumables.GOB_ALE, 1).hint("1 spirit stone");
-			addButton(2, "OrcMead", confirmBuyDrink, consumables.ORCMEAD, 1).hint("1 spirit stone");
-			addButton(3, "OniSake", confirmBuyDrink, consumables.ONISAKE, 1).hint("1 spirit stone");
-			addButton(5, "Fiery S", confirmBuyDrink, consumables.FIERYS_, 1).hint("1 spirit stone");
-			addButton(6, "SalamFW", confirmBuyDrink, consumables.SALAMFW, 1).hint("1 spirit stone");
-			addButton(7, "NoceLiq", confirmBuyDrink, consumables.NOCELIQ, 2).hint("2 spirit stones");
+			addButton(0, "ManUp Beer", confirmBuyDrink, consumables.MANUP_B, 1).hint("1 spirit stone");
+			addButton(1, "Goblin Ale", confirmBuyDrink, consumables.GOB_ALE, 1).hint("1 spirit stone");
+			addButton(2, "Orc Mead", confirmBuyDrink, consumables.ORCMEAD, 1).hint("1 spirit stone");
+			addButton(3, "Oni Sake", confirmBuyDrink, consumables.ONISAKE, 1).hint("1 spirit stone");
+			addButton(4, "Cervinium", confirmBuyDrink, consumables.CERVINI, 1).hint("1 spirit stone");
+			addButton(5, "Fiery Sake", confirmBuyDrink, consumables.FIERYS_, 1).hint("1 spirit stone");
+			addButton(6, "Salamand FW", confirmBuyDrink, consumables.SALAMFW, 1).hint("1 spirit stone");
+			addButton(7, "Nocello Liq", confirmBuyDrink, consumables.NOCELIQ, 2).hint("2 spirit stones");
 			addButton(8, "Asumaki", confirmBuyDrink, consumables.ASKIRIN, 2).hint("2 spirit stones");
-			addButton(12, "BimboL", confirmBuyDrink, consumables.BIMBOLQ, 100).hint("100 spirit stones");
+			addButton(12, "BimboLiq", confirmBuyDrink, consumables.BIMBOLQ, 100).hint("100 spirit stones");
 			addButton(13, "BroBrew", confirmBuyDrink, consumables.BROBREW, 100).hint("100 spirit stones");
 			addButton(14, "Back", notThirsty);
 		}

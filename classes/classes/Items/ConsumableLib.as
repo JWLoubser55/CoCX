@@ -381,9 +381,9 @@ public final class ConsumableLib extends AlchemyLib
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						MULTIRACE_ESSENCE_DROP_TABLE(AE_SHARK, AE_HARPY, AE_SIREN),
 						[
-								[1, AR_STR],
-								[1, AR_SPE],
-								[1, AR_LIB]
+							[1, AR_STR],
+							[1, AR_SPE],
+							[1, AR_LIB]
 						]
 				);
 		public const ASKIRIN:AsumaKirin 	  = new AsumaKirin();
@@ -401,7 +401,11 @@ public final class ConsumableLib extends AlchemyLib
 		public const B_GOSSR: Consumable = mk("B.Gossr", "B.Gossr", "a bundle of black, gossamer webbing", 6, "These strands of gooey black gossamer seem quite unlike the normal silk that driders produce.  It smells sweet and is clearly edible, but who knows what it might do to you?", curry(m.sweetGossamer, 1), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
-						MULTIRACE_ESSENCE_DROP_TABLE(AE_DRIDER, AE_SPIDER)
+						MULTIRACE_ESSENCE_DROP_TABLE(AE_DRIDER, AE_SPIDER),
+						[
+							[1, AR_TOU],
+							[1, AR_INT]
+						]
 				);
 		public const BAYRLEA: Consumable = mk("BayrLea", "Bayr leaf", "a Bayr leaf", 6, "This small leaf shaped like a bear paw can be made into a tea or used as a seasoning.", m.bayrleaf, ItemConstants.U_TF)
 				.refineableInto(
@@ -428,10 +432,10 @@ public final class ConsumableLib extends AlchemyLib
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						DEFAULT_ESSENCE_DROP_TABLE(AE_DOG),
 						[
-								[1, AR_LIB],
-								[1, AR_STR],
-								[1, AR_SPE],
-								[1, AR_TOU]
+							[1, AR_LIB],
+							[1, AR_STR],
+							[1, AR_SPE],
+							[1, AR_TOU]
 						]
 				);
 		public const BLADEGR: Consumable = mk("BladeGr", "BladeGrass", "a blade shaped grass", 6, "A form of herb normally infused in samurai and other warrior tea.  You think infusing this unprocessed item in your tea could result in interesting result.", m.bladeGrass, ItemConstants.U_TF)
@@ -487,15 +491,24 @@ public final class ConsumableLib extends AlchemyLib
 						]
 				);
 		public const CENTARI:Centaurinum      = new Centaurinum();
+		public const CERVINI: Consumable = mk("Cervini", "Cervinium", "Cervinium", 10, "A flask of liquid that looks oddly similar to eggnog. A favorite of the rare cervids that wanders the glacial rifts.", m.cernosCervinium, ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						MULTIRACE_ESSENCE_DROP_TABLE(AE_CERNOS, AE_DEER),
+						[
+							[1, AR_STR],
+							[1, AR_TOU]
+						]
+				);
 		public const CHILLYP: Consumable = mk("ChillyP", "ChillyPp", "a Chilly pepper", 10, "This pepper is positively shrouded with a thin layer of ice.", m.chillyPepper, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						MULTIRACE_ESSENCE_DROP_TABLE(AE_FENRIR, AE_WOLF),
 						[
-								[1, AR_LIB],
-								[1, AR_STR],
-								[1, AR_SPE],
-								[1, AR_TOU]
+							[1, AR_LIB],
+							[1, AR_STR],
+							[1, AR_SPE],
+							[1, AR_TOU]
 						]
 				);
 		public const COUAOIL: Consumable = mk("CouaOil", "CouatlOil", "a vial of couatl oil", 20, "A vial the size of your fist made of dark blue glass. It contains what appears to be an oily, red liquid. The odor is strange.", curry(m.evolvedNagaOil, 2), ItemConstants.U_TF)
@@ -511,7 +524,12 @@ public final class ConsumableLib extends AlchemyLib
 		public const D_FRUIT: Consumable = mk("D.Fruit", "D.Fruit", "a Displacement Fruit", 25, "This weird fruit is said to taste completely otherworldly. They grow in only the weirdest of place. Highly favored by displacer beasts.", m.displacementFruit, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
-						DEFAULT_ESSENCE_DROP_TABLE(AE_DISPLACER_BEAST)
+						DEFAULT_ESSENCE_DROP_TABLE(AE_DISPLACER_BEAST),
+						[
+							[1, AR_STR],
+							[1, AR_SPE],
+							[1, AR_LIB]
+						]
 				);
 		public const DBLPEPP: Consumable = mk("DblPepp", "DblPepp", "a double canine pepper", 10, "This canine pepper is actually two that have grown together due to some freak coincidence.", curry(m.caninePepper, 2), ItemConstants.U_TF)
 				.refineableInto(
@@ -549,7 +567,11 @@ public final class ConsumableLib extends AlchemyLib
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						DEFAULT_ESSENCE_DROP_TABLE(AE_DRAGON),
-						[],
+						[
+							[1, AR_STR],
+							[1, AR_TOU],
+							[1, AR_SPE]
+						],
 						DragonRace.DragonScaleColors
 				);
 		public const DRYTENT: Consumable = mk("DryTent", "DryTent", "a shriveled tentacle", 6, "A dried tentacle from one of the lake anemones.  It's probably edible, but the stingers are still a little active.", m.shriveledTentacle, ItemConstants.U_TF)
@@ -574,8 +596,8 @@ public final class ConsumableLib extends AlchemyLib
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						DEFAULT_ESSENCE_DROP_TABLE(AE_ELF, true),
 						[
-								[1, AR_SPE],
-								[1, AR_INT],
+							[1, AR_SPE],
+							[1, AR_INT],
 						],
 						concatUnique(
 								ElfRace.ElfHairColors,
@@ -625,7 +647,11 @@ public final class ConsumableLib extends AlchemyLib
 		public const FIERYS_: Consumable = mk("FieryS", "FieryS.", "Fiery saké", 10, "A strong alcoholic beverage best served hot. The Hinezumi drink of this regularly.", curry(m.mouseCocoa, 1), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
-						MULTIRACE_ESSENCE_DROP_TABLE(AE_HINEZUMI, AE_MOUSE)
+						MULTIRACE_ESSENCE_DROP_TABLE(AE_HINEZUMI, AE_MOUSE),
+						[
+							[1, AR_SPE],
+							[1, AR_WIS]
+						]
 				);
 		public const FCARROT: Consumable = mk("FCarrot", "FlaredCarrot", "a Flared Carrot", 6, "A staple food loved both by bunny and horse morph. May have transformative properties when eaten raw.", curry(m.neonPinkEgg, false, 1));
 		public const FOXBERY: Consumable = mk("FoxBery", "Fox Berry", "a fox berry", 6, "This large orange berry is heavy in your hands.  It may have gotten its name from its bright orange coloration.  You're certain it is no mere fruit.", curry(m.foxTF, false), ItemConstants.U_TF)
@@ -646,9 +672,9 @@ public final class ConsumableLib extends AlchemyLib
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						MULTIRACE_ESSENCE_DROP_TABLE(AE_KITSUNE, AE_KITSUNE, AE_FOX, AE_HUMAN),
 						[
-								[1, AR_INT],
-								[1, AR_WIS],
-								[1, AR_LIB]
+							[1, AR_INT],
+							[1, AR_WIS],
+							[1, AR_LIB]
 						],
 						concatUnique(
 								KitsuneRace.BasicKitsuneHairColors,
@@ -667,7 +693,10 @@ public final class ConsumableLib extends AlchemyLib
 		public const FSNAILS: Consumable = mk("FSnailS", "FireSnailSaliva", "a Fire snail Saliva", 20, "The saliva of a fire snail. Highly volatile.", m.firesnailsaliva, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
-						DEFAULT_ESSENCE_DROP_TABLE(AE_FIRE_SNAIL)
+						DEFAULT_ESSENCE_DROP_TABLE(AE_FIRE_SNAIL),
+						[
+							[1, AR_TOU]
+						]
 				);
 		public const G_FRUIT: Consumable = mk("G.Fruit", "G.Fruit", "a Ghastly fruit", 10, "A ghastly whisker fruit from some underground place. Legends even says they may have grown in the netherworld. Highly favored by nekomata.", m.ghastlyFruit, ItemConstants.U_TF)
 				.refineableInto(
@@ -713,17 +742,17 @@ public final class ConsumableLib extends AlchemyLib
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						[
-								[10, AE_GOBLIN],
-								[2, AE_HUMAN],
-								[2, AE_SHRINK],
-								[1, AE_REMOVE]
+							[10, AE_GOBLIN],
+							[2, AE_HUMAN],
+							[2, AE_SHRINK],
+							[1, AE_REMOVE]
 						],
 						[
-								[1, AR_SPE]
+							[1, AR_SPE]
 						], concatUnique(
-								GoblinRace.GoblinHairColors,
-								GoblinRace.GoblinEyeColors,
-								GoblinRace.GoblinSkinColors
+							GoblinRace.GoblinHairColors,
+							GoblinRace.GoblinEyeColors,
+							GoblinRace.GoblinSkinColors
 						)
 				);
 		public const GRE_BER: Consumable = mk("Gre.Beer", "Gre.Beer", "a flagon of potent gremlin beer", 6, "This disgusting brew is made from the combination of goblin ale and incubi draft. It smells of old engine oil and rust, let’s hope it does not taste like that as well.", m.gremlinBeer, ItemConstants.U_TF)
@@ -784,10 +813,10 @@ public final class ConsumableLib extends AlchemyLib
 						DEFAULT_ESSENCE_DROP_TABLE(AE_IMP),
 						[],
 						concatUnique(
-								ImpRace.ImpEyeColors,
-								ImpRace.ImpHairColors,
-								ImpRace.ImpSkinColors,
-								ImpRace.ImpRareSkinColors
+							ImpRace.ImpEyeColors,
+							ImpRace.ImpHairColors,
+							ImpRace.ImpSkinColors,
+							ImpRace.ImpRareSkinColors
 						)
 				);
 		public const INFWINE: Consumable = mk("InfWine", "InfWine", "a bottle of infernal wine", 500, "This drink is made from a bottle of satyr wine, an incubus draft, and some succubus milk. It reeks of corruption. Are you sure it would be a smart idea to drink this?", m.infernalWine, ItemConstants.U_TF)
@@ -871,9 +900,9 @@ public final class ConsumableLib extends AlchemyLib
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						[[1, AE_HARPY]],
 						[
-								[1, AR_STR],
-								[1, AR_SPE],
-								[1, AR_LIB]
+							[1, AR_STR],
+							[1, AR_SPE],
+							[1, AR_LIB]
 						],
 						HumanRace.HumanSkinColors
 				);

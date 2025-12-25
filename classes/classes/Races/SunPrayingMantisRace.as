@@ -39,8 +39,9 @@ public class SunPrayingMantisRace extends Race {
 	
 	public override function setup():void {
         addScores()
-                //.start ctrl-spacing here
-                .hasPerk(PerkLib.GOBXChemical, -1000);
+				.wingType(Wings.MANTIS_LARGE_2, +4)
+                .hasPerk(PerkLib.MantisOvipositor, +1)
+				.hasPerk(PerkLib.GOBXChemical, -1000);
 
         buildTier(1000, "tierName")
                 .buffs({

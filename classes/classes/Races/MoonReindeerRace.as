@@ -39,7 +39,8 @@ public class MoonReindeerRace extends Race {
 	
 	public override function setup():void {
         addScores()
-                //.start ctrl-spacing here
+				.armType(Arms.REINDEER, +2)
+				.legType(LowerBody.CLOVEN_HOOFED_2, +2)
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
         buildTier(1000, "tierName")
@@ -52,7 +53,19 @@ public class MoonReindeerRace extends Race {
                         "lib.mult": +0.00,
                         "sens": +0
                     })
-                .end();
+                .end();/*
+		
+		buildTier(12, "reindeer")
+				.namesMaleFemaleMorphTaur("reindeer-morph", "reindeer-girl", "reindeer-morph", "reindeer-taur")
+				.buffs({
+					"str.mult": +0.25,
+					"tou.mult": +0.25,
+					"spe.mult": +0.50,
+					"int.mult": -0.20,
+					"wis.mult": +0.40
+					//"sens": +85
+				})
+				.end();*/
     }
 }
 }

@@ -7,6 +7,8 @@ import classes.Race;
 import classes.VaginaClass;
 
 public class DeerRace extends Race{
+    public static const DeerFurColors:/*String*/Array = ["brown", "white", "silver white"];
+    public static const DeerHairColors:/*String*/Array = ["snow white", "silver white", "platinum blonde", "quartz white"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -42,18 +44,21 @@ public class DeerRace extends Race{
 				.earType(Ears.DEER, +1)
 				.tailType(Tail.DEER, +1)
 				.faceType(Face.DEER, +1)
+				.tongueType(Tongue.HUMAN, +1)
 				.armType(ANY(Arms.HUMAN, Arms.DEER), +1)
-				//.armType(Arms.REINDEER, +2)
 				.armType(NOT(Arms.WENDIGO), 0, -5)
 				.legType(LowerBody.CLOVEN_HOOFED, +1)
-				//.legType(LowerBody.CLOVEN_HOOFED_2, +2)
 				.legType(NOT(LowerBody.WENDIGO), 0, -5)
 				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(4), +1)
 				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(14), +1)
 				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(24), +1)
 				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(34), +1)
 				.skinCoatType(Skin.FUR, +1)
-				.cockOrVaginaOfType(CockTypesEnum.HORSE, VaginaClass.EQUINE, +1)
+				.furColor1(ANY(DeerFurColors), +1)
+				.hairColor1(ANY(DeerHairColors), +1)
+				.biggestTitSize(GREATER_THAN(4), +1)
+				.vaginaType(VaginaClass.EQUINE, +1)
+				.hasCockOfType(CockTypesEnum.HORSE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addBloodline(PerkLib.DeersDescendant, PerkLib.BloodlineDeer);
@@ -94,19 +99,7 @@ public class DeerRace extends Race{
 					"lib.mult": +1.00,
 					"sens": +200
 				})
-				.end();/*
-		
-		buildTier(12, "reindeer")
-				.namesMaleFemaleMorphTaur("reindeer-morph", "reindeer-girl", "reindeer-morph", "reindeer-taur")
-				.buffs({
-					"str.mult": +0.25,
-					"tou.mult": +0.25,
-					"spe.mult": +0.50,
-					"int.mult": -0.20,
-					"wis.mult": +0.40
-					//"sens": +85
-				})
-				.end();*/
+				.end();
 	}
 }
 }

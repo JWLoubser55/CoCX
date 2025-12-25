@@ -2098,12 +2098,13 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.createPerk(PerkLib.FreezingBreathYeti, 0, 0, 0, 0);
 				needNext = true;
 			}
-			if ((player.isRaceCached(Races.MELKIE) || player.isRaceCached(Races.FROSTWYRM) || player.isRaceCached(Races.GLACIAL_TROLL)) && !player.hasPerk(PerkLib.ColdAffinity)) {
+			if ((player.isRaceCached(Races.MELKIE) || player.isRaceCached(Races.FROSTWYRM) || player.isRaceCached(Races.GLACIAL_TROLL) || player.isRaceCached(Races.DEER, 2)) && !player.hasPerk(PerkLib.ColdAffinity)) {
 				outputText("\nYou suddenly no longer feel the cold so you guess you finally got acclimated to the icy winds of the glacial rift. You feel at one with the cold. So well that you actually developed icy power of your own.\n\n(<b>Gained Perks: Cold Affinity</b>)\n");
 				player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
 				needNext = true;
 			}
-			else if (!player.isRaceCached(Races.YETI) && !player.isRaceCached(Races.YUKIONNA) && !player.isRaceCached(Races.MELKIE) && !player.isRaceCached(Races.FROSTWYRM) && !player.isRaceCached(Races.GLACIAL_TROLL) && !player.isRaceCached(Races.WENDIGO) && !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 2 && !player.perkv1(IMutationsLib.WhaleFatIM) >= 1 && !player.hasPerk(PerkLib.SnowLily) && player.hasPerk(PerkLib.ColdAffinity)) {
+			else if (!player.isRaceCached(Races.YETI) && !player.isRaceCached(Races.YUKIONNA) && !player.isRaceCached(Races.MELKIE) && !player.isRaceCached(Races.FROSTWYRM) && !player.isRaceCached(Races.GLACIAL_TROLL) && !player.isRaceCached(Races.WENDIGO) && !player.isRaceCached(Races.DEER, 2) && 
+					 !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 2 && !player.perkv1(IMutationsLib.WhaleFatIM) >= 1 && !player.hasPerk(PerkLib.SnowLily) && player.hasPerk(PerkLib.ColdAffinity)) {
 				outputText("\nYou suddenly feel a chill in the air. You guess you somehow no longer resist the cold.\n\n<b>(Lost Perks: Cold Affinity");
 				player.removePerk(PerkLib.ColdAffinity);
 				if (player.hasPerk(PerkLib.FreezingBreathYeti)){

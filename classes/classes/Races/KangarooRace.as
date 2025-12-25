@@ -42,7 +42,7 @@ public class KangarooRace extends Race {
 				.earType(Ears.KANGAROO, +1)
 				.tailType(Tail.KANGAROO, +1)
 				.legType(LowerBody.KANGAROO, +1)
-				.faceType(Face.KANGAROO,1)
+				.faceType(Face.KANGAROO, +1)
 				.skinCoatType(Skin.FUR, +1)
 				.hasCockOfType(CockTypesEnum.KANGAROO, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
