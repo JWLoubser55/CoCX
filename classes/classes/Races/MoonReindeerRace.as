@@ -35,6 +35,7 @@ public class MoonReindeerRace extends Race {
 
 	public function MoonReindeerRace(id:int) {
 		super("Moon Reindeer", id, []);//RaceBody);
+		disabled = true;
 	}
 	
 	public override function setup():void {

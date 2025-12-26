@@ -35,6 +35,7 @@ public class SunPrayingMantisRace extends Race {
 
 	public function SunPrayingMantisRace(id:int) {
 		super("Sun Praying Mantis", id, []);//RaceBody);
+		disabled = true;
 	}
 	
 	public override function setup():void {

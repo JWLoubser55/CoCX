@@ -334,7 +334,7 @@ public class Changelog extends BaseContent
 			outputText("-Imp race req. to be small is slight increased to be below or at 4 feet (from 3 and half feet).\n");
 			outputText("-Frozen Heart internal mutation effects was changed a bit and more race can access it too.\n");
 			outputText("-New event perk: Acid Affinity. Gained by been Vacant Hollow / Cave Wyrm / Hydra / Cave Stalker / Slime / Sandworm. Effects: You have high resistance to acid effects, immunity to the acid condition, and mastery over acid abilities and magic.\n");
-			outputText("-\n");
+			outputText("-Mining in quarry would no loger limit amount of stone gained to less then 100 on ng0. I would now take into account mining level too so expect to see 3 digit or maybe even 4 digit numbers in ng0 if you got that mining level go up.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
