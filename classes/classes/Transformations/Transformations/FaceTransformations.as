@@ -1274,5 +1274,22 @@ public class FaceTransformations extends MutationsHelper {
 				return player.faceType === Face.HOLLOW_MASK;
 			}
 	);
+
+	public const FaceDeerBlush: Transformation = new SimpleTransformation("Deer Blush Face",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You feel a sudden tickling across your face just beneath your eyes. When you go to check what is happening, you discover that you now have light freckles similar to the spots on a deer’s fur, <b>just like those of a cernos.</b>";
+
+				if (doOutput) outputText(desc);
+				player.faceType = Face.DEER_BLUSH;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.DEER_BLUSH));
+			},
+			// is present
+			function (): Boolean {
+				return player.faceType === Face.DEER_BLUSH;
+			}
+	);
 }
 }

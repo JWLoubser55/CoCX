@@ -525,6 +525,11 @@ public class MagicSpecials extends BaseCombatContent {
 					bd.disable("You need more time before you can use Hydra acid breath again.\n\n");
 				} */else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			}// \n\nWould go into cooldown after use for: " + (player.hasPerk(PerkLib.NaturalInstincts) ? "7" : "8") + " rounds 
+			if (player.hasStatusEffect(StatusEffects.WinterFlash) && player.statusEffectv1(StatusEffects.WinterFlash) > 1) {
+				bd = buttons.add("Winter Flash", winterFlash).hint("Bring cheerful radiance to the world with your nose. Deals heavy damage to naughty opponents and stun them for 3 rounds. \n");
+				bd.requireFatigue(spellCost(200), true);
+				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			}
 		}
 		if (player.hasPerk(PerkLib.DarkCharm)) {
 			// Fascinate
@@ -4157,8 +4162,6 @@ public class MagicSpecials extends BaseCombatContent {
 	public function judgementflare():void {
 		clearOutput();
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
-		clearOutput();
-		doNext(combatMenu);
 		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) useMana(50, Combat.USEMANA_MAGIC);
 		else useMana(40, Combat.USEMANA_MAGIC);
 		combat.darkRitualCheckDamage();
@@ -4607,6 +4610,41 @@ public class MagicSpecials extends BaseCombatContent {
 		checkAchievementDamage(damage);
 		combat.heroBaneProc(damage);
 		statScreenRefresh();
+		if (monster.HP <= monster.minHP()) doNext(endHpVictory);
+		else enemyAI();
+	}
+	
+	public function winterFlash():void {
+		clearOutput();
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		useMana(200, Combat.USEMANA_MAGIC);
+		combat.darkRitualCheckDamage();
+		outputText("Your nose suddenly emits a blinding flash of light, delivering punishment to all those on the naughty list who glimpse it! ");
+		var damage:Number = scalingBonusIntelligence() * 2;
+		damage *= spellMod();
+		//Determine if critical hit!
+		var crit:Boolean = false;
+		var critChance:int = 5;
+		critChance += combatMagicalCritical();
+		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+		if (rand(100) < critChance) {
+			crit = true;
+			damage *= 1.75;
+		}
+		//High damage to goes.
+		damage *= magicAbilitiesGoBrrr();
+		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		damage = calcEclypseMod(Math.round(damage * combat.darknessDamageBoostedByDao()), true);
+		damage = Math.round(damage);
+		if (monster.cor > 0) {
+			doMagicDamage(damage, true, true);
+			if (crit) outputText(" <b>*Critical Hit!*</b>");
+			if (!monster.hasStatusEffect(StatusEffects.Stunned)) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+		}
+		else {
+			outputText("Instead of dealing damage as you expected to [themonster], [monster he] seems to be invigorated. It would seem this person was on the nice list after all! <b>([font-heal]+" + damage + "[/font])</b> ");
+			monster.addHP(damage);
+		}
 		if (monster.HP <= monster.minHP()) doNext(endHpVictory);
 		else enemyAI();
 	}

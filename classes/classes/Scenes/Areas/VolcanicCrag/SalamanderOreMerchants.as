@@ -72,6 +72,7 @@ public class SalamanderOreMerchants extends BaseContent implements SaveableState
 		addButton(6, useables.ORICHAL.shortName, sellItem, useables.ORICHAL);
 		addButton(7, useables.ADAMANT.shortName, sellItem, useables.ADAMANT);
 		addButton(7, useables.SKYMETA.shortName, sellItem, useables.SKYMETA);
+		addButton(12, consumables.COAL___.shortName, sellItem2, consumables.COAL___);
 		addButtonIfTrue(13, "Pickaxes", pickaxes, "Req. to have Old Pickaxe.", player.hasKeyItem("Old Pickaxe") >= 0, "Better Pickaxes then Old Pickaxe.");
         addButton(14, "Finished!", unShop, true);
     }
@@ -106,6 +107,18 @@ public class SalamanderOreMerchants extends BaseContent implements SaveableState
 				break;
 		}
 		var onBuyStr:String = "\n\nYou pass on the gems to the salamander merchant's hands and he nods.\n\n\"Happy to do business with you adventurer here is your piece of "+item.shortName+". Would you like to purchase anything else?\"\n\n";
+		MultiBuy.confirmBuyMulti(curry(shopSalamanderWares, true), "ore peddler", priceRate, item, descString, onBuyStr, false);
+	}
+	private function sellItem2(item:Useable, cost:int = -1, buy:Boolean = false):void {
+		var priceRate:Number = 20;
+		var priceToShow:int = item.value * 20;
+		var descString:String;
+		switch(item){
+			case consumables.COAL___:
+				descString = "You ask the merchant if you could purchase coal as well.\n\n\"<i>What coal? Well, I guess we do have a supply of it. Though, that's by no means a useful mineral… Unless you want to start a BBQ or keep a forge hot. It's going to be <b>" + priceToShow.toString() + " gems</b> per large chunk.</i>\"";
+				break;
+		}
+		var onBuyStr:String = "\n\nYou briefly ponder how naughty you may have been this year before purchasing the chunks of coal.\n\n\"Careful, it's a rather dirty stone. Try not to stain yourself with it... In more ways than one.\"\n\n";
 		MultiBuy.confirmBuyMulti(curry(shopSalamanderWares, true), "ore peddler", priceRate, item, descString, onBuyStr, false);
 	}
 	

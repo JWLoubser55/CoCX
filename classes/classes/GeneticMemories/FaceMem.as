@@ -759,6 +759,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const DEER_BLUSH:int = _partid++;
+		EnumValue.add(Memories, DEER_BLUSH, "DEER_BLUSH", {
+			id: "Deer Blush Face",
+			name: "Deer Blush Face",
+			cost: 100,
+			title: "Deer Blush",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceDeerBlush;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

@@ -40,6 +40,10 @@ public class MoonReindeerRace extends Race {
 	
 	public override function setup():void {
         addScores()
+				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(4), +1)
+				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(14), +1)
+				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(24), +1)
+				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(34), +1)
 				.armType(Arms.REINDEER, +2)
 				.legType(LowerBody.CLOVEN_HOOFED_2, +2)
                 .hasPerk(PerkLib.GOBXChemical, -1000);

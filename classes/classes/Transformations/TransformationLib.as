@@ -548,7 +548,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const FaceBoar: Transformation 				= face.FaceBoar.registerTf(AS_FACE, AE_BOAR);
     public const FaceRhino: Transformation 				= face.FaceRhino.registerTf(AS_FACE, AE_RHINO);
     public const FaceEchidna: Transformation 			= face.FaceEchidna.registerTf(AS_FACE, AE_ECHIDNA);
-    public const FaceDeer: Transformation 				= face.FaceDeer.registerTfMultiple(AS_FACE, AE_DEER, AE_REINDEER);
+    public const FaceDeer: Transformation 				= face.FaceDeer.registerTfMultiple(AS_FACE, AE_DEER, AE_CERNOS);
     public const FaceWolf: Transformation 				= face.FaceWolf.registerTf(AS_FACE, AE_WOLF);
     public const FaceManticore: Transformation 			= face.FaceManticore.registerTf(AS_FACE, AE_MANTICORE);
     public const FaceSalamanderFangs: Transformation 	= face.FaceSalamanderFangs.registerTf(AS_FACE, AE_SALAMANDER);
@@ -592,6 +592,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const FaceAutomata: Transformation 			= face.FaceAutomata.registerTf(AS_FACE, AE_AUTOMATA);
     public const FaceWerespiderFangs: Transformation 	= face.FaceWerespiderFangs.registerTf(AS_FACE, AE_WERESPIDER);
     public const FaceHollowMask: Transformation 		= face.FaceHollowMask.registerTf(AS_FACE, AE_HOLLOW);
+    public const FaceDeerBlush: Transformation 			= face.FaceDeerBlush.registerTfMultiple(AS_FACE, AE_DEER, AE_CERNOS);
 
 
 //GILLS

@@ -12985,19 +12985,20 @@ public final class Mutations extends MutationsHelper {
             outputText("\n\nFor a moment, it looks like a ray of sunlight has shimmered through the canopy. You blink and realize that your fur has become dappled, with lighter, sun-speckled spots highlighting it.");
 			transformations.SkinFur(Skin.COVERAGE_COMPLETE, {color: color1}).applyEffect(false);
 			changes++;
-		}/*
+		}
 		//Change face to normal
-		if (rand(2) == 0 && changes < changeLimit && player.ears.type == Ears.DEER && (player.faceType != Face.HUMAN && player.faceType != Face.DEER)) {
+		if (rand(2) == 0 && changes < changeLimit && player.ears.type == Ears.DEER && player.faceType != Face.HUMAN && player.faceType != Face.DEER && player.faceType != Face.DEER_BLUSH) {
 			outputText("\n\nYour face grows warm as suddenly your vision is engulfed in smoke, coughing and beating the smoke back you noticed a marked change in your features. Touching yourself you confirm you have a <b>normal human shaped face once again</b>.");
 			transformations.FaceHuman.applyEffect(false);
 			changes++;
 		}
 		//Gain deer face
-		if (rand(2) == 0 && changes < changeLimit && player.isFurCovered() && player.ears.type == Ears.DEER && player.tailType == Tail.DEER && player.faceType != Face.DEER) {
+		if (rand(2) == 0 && changes < changeLimit && player.isFurCovered() && player.ears.type == Ears.DEER && (player.faceType == Face.HUMAN || player.faceType == Face.DEER || player.faceType == Face.DEER_BLUSH)) {
 			outputText("\n\n");
-			transformations.FaceDeer.applyEffect();
+			if (rand(2) == 0) transformations.FaceDeer.applyEffect();
+			else transformations.FaceDeerBlush.applyEffect();
 			changes++;
-		}
+		}/*
 		//Change legs to cloven hooves
 		if (rand(2) == 0 && changes < changeLimit && player.ears.type == Ears.DEER && player.tailType == Tail.DEER && player.isFurCovered() && (player.lowerBody != LowerBody.DEERTAUR && player.lowerBody != LowerBody.CLOVEN_HOOFED)) {
 			if (player.lowerBody == LowerBody.HOOFED) {

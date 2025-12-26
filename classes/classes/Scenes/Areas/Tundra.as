@@ -109,6 +109,14 @@ use namespace CoC;
 				},
 				call: alabasterEncounter
 			}, {
+				name: "xmascoalcollection",
+				label : "coal coll",
+				kind  : 'event',
+				when: function():Boolean {
+					return !player.hasStatusEffect(StatusEffects.WinterFlash) || (player.hasItem(consumables.COAL___, 10) && player.hasStatusEffect(StatusEffects.WinterFlash) && player.statusEffectv1(StatusEffects.WinterFlash) < 1);
+				},
+				call: chrismasEventCoalCollection
+			}, {
 				//Find nothing!
 				// choice[choice.length] = 6;
 				chance: 0.25,
@@ -231,6 +239,52 @@ use namespace CoC;
 			else {
 				outputText(" Your mining skill is too low to find any Sapphires.");
 				endEncounter(120);
+			}
+		}
+
+		public function chrismasEventCoalCollection():void {
+			clearOutput();
+			if (player.hasStatusEffect(StatusEffects.WinterFlash)) {
+				outputText("\"<i></i>\"\n\n");
+				outputText("\"<i></i>\"\n\n");
+				menu();//model.time.hours >= 18
+				addButton(0, "Yes", chrismasEventCoalCollectionYes);
+				addButton(1, "Sorry no", explorer.done);
+			}
+			else {
+				outputText("While wandering the rift, you encounter a strange sight. What you mistake at first for an ordinary centaur turns out to be something else altogether! The taur maiden’s head is crowned by her large antlers, and her back is draped in shaggy fur. Her short, puffy tail is more reminiscent of a reindeer than a horse’s. As you approach her, she turns around and trots toward you.\n\n");
+				outputText("\"<i>Adventurer! I and my master are in dire need of your help, please do the right thing and help me save the snowy eve. Only YOU can prevent the disaster that is about to strike this land!</i>\"\n\n");
+				outputText("You tell her to slow down and tell you what she needs you to do. Yes, you are a champion, "+(player.cor >= 50 ? "well you used to be one at least,":"")+" and you won’t stand by idly when someone ask for your assistance"+(player.cor >= 50 ? " doubly so if a nice reward is promised at the end":"")+".\n\n");
+				outputText("\"<i>Coal, that is the problem. We have run out of coal! So many people have been naughty this year, and the father has run out of coal to send to them! I need you to collect at least 10 coal and bring them back to me so that everyone can receive a fitting gift! It must have been those pests in the swamp, or maybe the salamander stole the reserve for their smith work. ");
+				outputText("Please help us save the celebration before it is too late!.</i>\"\n\nThe cervid woman is clearly distressed, you promise her to be on the lookout for coal before heading out back into the blizzard.\n\n");
+				player.createStatusEffect(StatusEffects.WinterFlash, 0, 0, 0, 0);
+				endEncounter();
+			}
+		}
+		
+		private function chrismasEventCoalCollectionYes():void {
+			player.destroyItems(consumables.COAL___, 10);
+			player.addStatusValue(StatusEffects.WinterFlash, 1, 1);
+			if (player.isRaceCached(Races.DEER, 3)) {
+				outputText("You deliver the coal to the cervid woman who nods in appreciation.\n\n");
+				outputText("\"<i>Yes! This will be perfect! I thank you for your assistance… umm come to think of it, could you also assist me with something else?</i>\"\n\n");
+				outputText("Before you can even consider, she has already roped you into her idea.\n\n");
+				outputText("\"<i>One of my partners got sick and won’t be able to take to the sky this year. I was going to look for a replacement, but you came by just in time. Hope you wouldn’t mind, but could you help me pull the good father’s cart across the country while he delivers gifts across every house? By the by, the job is tonight.</i>\"\n\n");
+				outputText("Looking at yourself, you do more or less have the body to pull a cart, and since she offered a reward for it, you may as well help her to the very end. She hands to you what appears to be an amulet of which the ornament is a set of jingling bells.\n\n");
+				outputText("\"<i>This will let you take to the sky with us, it also should greatly improve your movement based abilities now we have a bit of time before the job so how about we had a few drinks, you and I, don’t you worry about paying, it will all be on my tab.</i>\"\n\n");
+				outputText("The remainder of the evening is a blur. You remember drinking a lot of eggnog, then putting on a harness and helping pull out a heavy sleigh across the sky with the help of eight more cervid girls at the front guiding everyone. When you wake up in the morning, still feeling groggy from the alcohol, you notice something strange. Your nose is quite itchy. ");
+				outputText("Looking at yourself in a pond of water, you discover it has turned red as a tomato and can even produce light to smite the naughty!\n\n<b>Acquired ability Winter Flash!</b>\n\n");
+				player.addStatusValue(StatusEffects.WinterFlash, 1, 1);
+				inventory.takeItem(necklaces.WBCOLLAR, explorer.done);
+				doNext(camp.returnToCampUseTwelveHours);
+			}
+			else {
+				outputText("You deliver the coal to the cervid woman who nods in appreciation.\n\n");
+				outputText("\"<i>Yes, this will be perfect! I thank you for your assistance… umm come to think of it, you could probably use these.</i>\"\n\n");
+				outputText("She tosses at you what appears to be an amulet of which the ornament is a set of jingling bells.\n\n");
+				outputText("\"<i>One of my partners got sick and won’t be able to take to the sky this year. That's fine, though, if you have a centaur friend or someone who got the hindquarters of one, these will let you take to the sky! It also greatly improves movement based abilities. Oh right I was about to forget, before I leave, a merry winter’s eve to you!</i>\"\n\n");
+				outputText("To your surprise, she suddenly takes off running upward into the sky to gods know where. A second before, she was right in front of you, and now she’s gone. You can hear the faint sound of jingling bells in the distance as she vanishes into the blizzard along with the loud, cheerful laughter of an old man.\n\n");
+				inventory.takeItem(necklaces.WBCOLLAR, explorer.done);
 			}
 		}
 	}
