@@ -71,7 +71,7 @@ public class SalamanderOreMerchants extends BaseContent implements SaveableState
 		addButton(5, useables.MITHRAL.shortName, sellItem, useables.MITHRAL);
 		addButton(6, useables.ORICHAL.shortName, sellItem, useables.ORICHAL);
 		addButton(7, useables.ADAMANT.shortName, sellItem, useables.ADAMANT);
-		addButton(7, useables.SKYMETA.shortName, sellItem, useables.SKYMETA);
+		addButton(8, useables.SKYMETA.shortName, sellItem, useables.SKYMETA);
 		addButton(12, consumables.COAL___.shortName, sellItem2, consumables.COAL___);
 		addButtonIfTrue(13, "Pickaxes", pickaxes, "Req. to have Old Pickaxe.", player.hasKeyItem("Old Pickaxe") >= 0, "Better Pickaxes then Old Pickaxe.");
         addButton(14, "Finished!", unShop, true);

@@ -19,7 +19,7 @@ import classes.Scenes.Dungeons.D3.MinotaurKing;
 import classes.Scenes.Dungeons.HiddenCave.BossGolems;
 import classes.Scenes.Dungeons.RiverDungeon;
 import classes.Scenes.Monsters.*;
-import classes.Scenes.NPCs.Jinx;
+import classes.Scenes.NPCs.Adrienne;
 import classes.Scenes.Places.HeXinDao.*;
 import classes.Scenes.SceneLib;
 import classes.Scenes.API.MultiBuy;
@@ -1066,9 +1066,10 @@ public function soularena():void {
 			//addButton(0, "Kitty", arenaSelection1, Veronika);
 			//addButton(1, "Golemancer", arenaSelection1,Jeniffer).hint("Golemancer goblin.");
 			//addButton(2, "AyotechManiac", arenaSelection1,Jinx).hint("Crazy gremlin girl wearing lots of belts... err Ayotech weapons.");
-			//if () addButton(6, "Miss Mander", arenaSelection1,Asuka).hint("Salamander woman.");
-			//else addButton(6, "Miss Mander", arenaSelection1,Asuka).hint("Young salamander girl.");
-			//addButton(7, "Miss Oni", arenaSelection1,Rangiku);
+			//if () addButton(5, "Miss Mander", arenaSelection1,Asuka).hint("Salamander woman.");
+			//else addButton(5, "Miss Mander", arenaSelection1,Asuka).hint("Young salamander girl.");
+			addButton(6, "Miss Mander", arenaSelection1,Adrienne).hint("Almost adult salamander girl.");
+			//addButton(7, "Miss Oni", arenaSelection1,Rangiku).hint("Oni woman.");
 			addButton(9, "-1-", soularenaChallengeSubpages, page - 1);
 			if (flags[kFLAGS.ANGELIC_FRACTION_TOGGLE] == 0) {
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "") addButtonDisabled(10, "IntermedLeader", "Req. to have any henchman with you to start this fight.");

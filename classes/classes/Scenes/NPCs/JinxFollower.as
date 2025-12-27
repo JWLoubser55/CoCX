@@ -55,14 +55,16 @@ import classes.Scenes.SceneLib;
 			menu();
 			if (flags[kFLAGS.SPIRIT_STONES] < 250) addButtonDisabled(1, "Buy", "You do not have enough spirit stones to buy this.");
 			else addButton(1, "Buy", buyItemMinoBomberYes);
-			addButton(3, "Don't Buy", bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) addButton(3, "Don't Buy", campJinxMenuMain);
+			else addButton(3, "Don't Buy", bazaarEncounters);
 		}
 		private function buyItemMinoBomberYes():void {
 			flags[kFLAGS.SPIRIT_STONES] -= 250;
 			statScreenRefresh();
 			outputText("She counts the stones carefully, putting them away before handing your purchase over.\n\n");
 			outputText("\"<i>Always happy to do business! Anything else you want to buy, [name]?</i>\"\n\n");
-			inventory.takeItem(weaponsrange.MBOMBER, bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) inventory.takeItem(weaponsrange.MBOMBER, campJinxMenuMain);
+			else inventory.takeItem(weaponsrange.MBOMBER, bazaarEncounters);
 		}
 		private function buyItemNailGun():void {
 			clearOutput();
@@ -70,14 +72,16 @@ import classes.Scenes.SceneLib;
 			menu();
 			if (flags[kFLAGS.SPIRIT_STONES] < 150) addButtonDisabled(1, "Buy", "You do not have enough spirit stones to buy this.");
 			else addButton(1, "Buy", buyItemNailGunYes);
-			addButton(3, "Don't Buy", bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) addButton(3, "Don't Buy", campJinxMenuMain);
+			else addButton(3, "Don't Buy", bazaarEncounters);
 		}
 		private function buyItemNailGunYes():void {
 			flags[kFLAGS.SPIRIT_STONES] -= 150;
 			statScreenRefresh();
 			outputText("She counts the stones carefully, putting them away before handing your purchase over.\n\n");
 			outputText("\"<i>Always happy to do business! Anything else you want to buy, [name]?</i>\"\n\n");
-			inventory.takeItem(weaponsrange.NAILGUN, bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) inventory.takeItem(weaponsrange.NAILGUN, campJinxMenuMain);
+			else inventory.takeItem(weaponsrange.NAILGUN, bazaarEncounters);
 		}
 		private function buyItemPileBunker():void {
 			clearOutput();
@@ -85,18 +89,21 @@ import classes.Scenes.SceneLib;
 			menu();
 			if (flags[kFLAGS.SPIRIT_STONES] < 1480) addButtonDisabled(1, "Buy", "You do not have enough spirit stones to buy this.");
 			else addButton(1, "Buy", buyItemPileBunkerYes);
-			addButton(3, "Don't Buy", bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) addButton(3, "Don't Buy", campJinxMenuMain);
+			else addButton(3, "Don't Buy", bazaarEncounters);
 		}
 		private function buyItemPileBunkerYes():void {
 			flags[kFLAGS.SPIRIT_STONES] -= 1480;
 			statScreenRefresh();
 			outputText("She counts the stones carefully, putting them away before handing your purchase over.\n\n");
 			outputText("\"<i>Always happy to do business! Anything else you want to buy, [name]?</i>\"\n\n");
-			inventory.takeItem(weapons.PILEBUN, bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) inventory.takeItem(weapons.PILEBUN, campJinxMenuMain);
+			else inventory.takeItem(weapons.PILEBUN, bazaarEncounters);
 		}
 		private function buyItemUnknownCore():void {
 			clearOutput();
-			inventory.takeItem(useables.GOLCORE, bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) inventory.takeItem(useables.GOLCORE, campJinxMenuMain);
+			else inventory.takeItem(useables.GOLCORE, bazaarEncounters);
 		}
 		private function buyItemEnergyCore():void {
 			clearOutput();
@@ -106,7 +113,8 @@ import classes.Scenes.SceneLib;
 			if (flags[kFLAGS.SPIRIT_STONES] < cost) addButtonDisabled(1, "Buy", "You do not have enough spirit stones to buy this.");
 			else if (CampStatsAndResources.EnergyCoreResc >= 200) addButtonDisabled(1, "Buy", "You can't store any more of this type of items.");
 			else addButton(1, "Buy", curry(buyItemEnergyCoreYes, cost));
-			addButton(3, "Don't Buy", bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) addButton(3, "Don't Buy", campJinxMenuMain);
+			else addButton(3, "Don't Buy", bazaarEncounters);
 		}
 		private function buyItemEnergyCoreYes(cost:Number):void {
 			flags[kFLAGS.SPIRIT_STONES] -= cost;
@@ -114,7 +122,8 @@ import classes.Scenes.SceneLib;
 			outputText("She counts the stones carefully, putting them away before handing your purchase over.\n\n");
 			outputText("\"<i>Always happy to do business! Anything else you want to buy, [name]?</i>\"\n\n");
 			CampStatsAndResources.EnergyCoreResc++;
-			doNext(bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) doNext(campJinxMenuMain);
+			else doNext(bazaarEncounters);
 		}
 		private function buyItemGolemCore():void {
 			clearOutput();
@@ -122,14 +131,16 @@ import classes.Scenes.SceneLib;
 			menu();
 			if (flags[kFLAGS.SPIRIT_STONES] < 1) addButtonDisabled(1, "Buy", "You do not have spirit stone to buy this.");
 			else addButton(1, "Buy", buyItemGolemCoreYes);
-			addButton(3, "Don't Buy", bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) addButton(3, "Don't Buy", campJinxMenuMain);
+			else addButton(3, "Don't Buy", bazaarEncounters);
 		}
 		private function buyItemGolemCoreYes():void {
 			flags[kFLAGS.SPIRIT_STONES] -= 1;
 			statScreenRefresh();
 			outputText("She puts the single stone away before handing your purchase over.\n\n");
 			outputText("\"<i>Always happy to do business, anything else you want to buy [name]?</i>\"\n\n");
-			inventory.takeItem(useables.GOLCORE, bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) inventory.takeItem(useables.GOLCORE, campJinxMenuMain);
+			else inventory.takeItem(useables.GOLCORE, bazaarEncounters);
 		}
 		private function buyItemMetalPlates(amt:Number):void {
 			clearOutput();
@@ -139,7 +150,8 @@ import classes.Scenes.SceneLib;
 			if (flags[kFLAGS.SPIRIT_STONES] < cost) addButtonDisabled(1, "Buy", "You do not have enough spirit stones to buy this.");
 			else if (CampStatsAndResources.MetalPieces >= (201 - amt)) addButtonDisabled(1, "Buy", "You can't store any more of this type of items.");
 			else addButton(1, "Buy", curry(buyItemMetalPlatesYes, cost, amt));
-			addButton(3, "Don't Buy", bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) addButton(3, "Don't Buy", campJinxMenuMain);
+			else addButton(3, "Don't Buy", bazaarEncounters);
 		}
 		private function buyItemMetalPlatesYes(cost:Number, amt:Number):void {
 			flags[kFLAGS.SPIRIT_STONES] -= cost;
@@ -147,7 +159,8 @@ import classes.Scenes.SceneLib;
 			outputText("She counts the stones carefully, putting them away before handing your purchase over.\n\n");
 			outputText("\"<i>Always happy to do business! Anything else you want to buy, [name]?</i>\"\n\n");
 			CampStatsAndResources.MetalPieces += amt;
-			doNext(bazaarEncounters);
+			if (flags[kFLAGS.JINX_LVL_UP] >= 1) doNext(campJinxMenuMain);
+			else doNext(bazaarEncounters);
 		}
 		
 		public function bazaarEncountersYou():void {
