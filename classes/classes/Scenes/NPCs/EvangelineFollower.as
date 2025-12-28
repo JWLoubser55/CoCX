@@ -217,13 +217,14 @@ public function meetEvangeline():void {
 	else addButtonDisabled(9, "???", "Req. Evangeline been lvl 16+.");
 	if (player.hasStatusEffect(StatusEffects.ArigeanInfected) || player.tailType == Tail.ARIGEAN_GREEN || player.tailType == Tail.ARIGEAN_RED || player.tailType == Tail.ARIGEAN_YELLOW || player.tailType == Tail.ARIGEAN_PRINCESS) addButton(10, "Arigean I.", curingArigeanMain);
 	else addButtonDisabled(10, "???", "Req. to be infected by Arigean.");
-	if (player.hasPerk(PerkLib.ExanimationI)) {
+	if (player.hasPerk(PerkLib.ExanimationI) && !player.hasPerk(PerkLib.ExanimationIII)) {
 		if (player.perkv1(PerkLib.ExanimationI) > 0) {
 			if (player.hasItem(consumables.PURPEAC, 5) && player.hasItem(consumables.PPHILTR, 5) && player.hasItem(consumables.FATPILL, 1)) addButton(11, "Hollow", curingHollow);
 			else addButtonDisabled(11, "Hollow", "Req. five pure peaches, five purity philters and one fasting pill to fix your 'issue'.");
 		}
 		else addButton(11, "Hollow", curingHollow);
 	}
+	else if (player.hasPerk(PerkLib.ExanimationIII)) addButtonDisabled(11, "???", "Hollowfication gone to far to revert it. (Yes you're now pernamently TF'd and only ascension or dark ascension can change this)");
 	else addButtonDisabled(11, "???", "Req. to be hollowfied.");
 	if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2 || flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 3 || player.isRaceCached(Races.MUMMY) || player.hasPerk(PerkLib.WendigoCurse)) addButton(12, "W/J/M", curingSemiPermTFs);
 	else addButtonDisabled(12, "???", "Req. to be Wendigo / Jiangshi / Mummy.");

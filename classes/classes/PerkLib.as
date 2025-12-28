@@ -4490,6 +4490,8 @@ public class PerkLib
 				"Allows access to a hydra acid breath attack.");
 		public static const HydraRegeneration:PerkType = mk("Hydra Regeneration", "Hydra Regeneration",
 				"(Amount of hydra heads)% health and (Amount of hydra heads) points of fatigue regeneration but double hunger decaying speed. Stops for 5 rounds when damaged by fire.");
+		public static const Icerunner:PerkType = mk("Icerunner", "Icerunner",
+				"You can charge and move normally even in thick snow or even a blizzard.");
 		public static const IcyFlesh:PerkType = mk("Icy flesh", "Icy flesh",
 				"You are about as frigid and dead as a corpse however your mastery of ice magic grants you the ability to harden your flesh to the durability of diamonds. Gain an intelligence modifier as a bonus to health calculation equal to that of toughness as well as 1% regeneration. Gain an extra 40% resistance to cold.");
 		public static const ImpNobility:PerkType = mk("Imp Nobility", "Imp Nobility",
@@ -4613,6 +4615,8 @@ public class PerkLib
 				"After finishing of your training, increase attack power of any rapier you're using.");
 		public static const Rigidity:PerkType = mk("Rigidity", "Rigidity",
 				"Your cadaverous rigidity prevents any form of escape in battle.");
+		public static const Skywalk:PerkType = mk("Skywalk", "Skywalk",
+				"You may gallop through the sky as if flying but incur none of the normal flying restrictions. Flying enemies have no advantages against your melee attacks.");
 		public static const SlimeCore:PerkType = mk("Slime Core", "Slime Core",
 				"Grants more control over your slimy body, allowing you to go twice as long without fluids.");
 		public static const SmallCaster:PerkType = mk("Small Caster", "Small Caster",

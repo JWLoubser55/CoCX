@@ -403,9 +403,10 @@ use namespace CoC;
 		}
 		
 		public function GlacialRiftConditions():void {
-			if (!player.headJewelry == headjewelries.SKIGOGG) player.createStatusEffect(StatusEffects.Snowstorms,0,0,0,0);
-			if (player.countMiscJewelry(miscjewelries.SNOWBOA) == 0) player.createStatusEffect(StatusEffects.Snow,0,0,0,0);
-			if (!player.hasPerk(PerkLib.ColdAffinity)) player.createStatusEffect(StatusEffects.SubZeroConditions,2,0,0,0);
+			if (!player.headJewelry == headjewelries.SKIGOGG && !player.hasPerk(PerkLib.Icerunner)) player.createStatusEffect(StatusEffects.Snowstorms, 0, 0, 0, 0);
+			if (player.countMiscJewelry(miscjewelries.SNOWBOA) == 0 || player.hasPerk(PerkLib.Icerunner)) player.createStatusEffect(StatusEffects.Snow, 0, 0, 0, 0);
+			if (!player.hasPerk(PerkLib.ColdAffinity)) player.createStatusEffect(StatusEffects.SubZeroConditions, 2, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.ColdEnvironment, 0, 0, 0, 0);
 		}
 
 		public function SubZeroConditionsTick():void {

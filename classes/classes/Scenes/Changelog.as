@@ -336,9 +336,9 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Acid Affinity. Gained by been Vacant Hollow / Cave Wyrm / Hydra / Cave Stalker / Slime / Sandworm. Effects: You have high resistance to acid effects, immunity to the acid condition, and mastery over acid abilities and magic.\n");
 			outputText("-Mining in quarry would no loger limit amount of stone gained to less then 100 on ng0. I would now take into account mining level too so expect to see 3 digit or maybe even 4 digit numbers in ng0 if you got that mining level go up.\n");
 			outputText("-New M. Special: Winter Flash. Usable by having Red Nose (from cernos girl winter event). Effect: Bring cheerful radiance to the world with your nose. Deals heavy damage to naughty opponents and stun them for 3 rounds.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Skywalk. Gained by been Cernos or wearing Winter Bell Collar. Effects: You may gallop through the sky as if flying but incur none of the normal flying restrictions. Flying enemies have no advantages against your melee attacks.\n");
+			outputText("-New event perk: Icerunner. Gained by been Cernos. Effects: You can charge and move normally even in thick snow or even a blizzard.\n");
+			outputText("-New necklace (by Liadri): Winter Bell Collar - obtained from X-mas event with Cernos girl. Cost 1600 gems. Effect: Grant the Skywalk ability if you are tauric. Increase all movement based P.Ability by 100% as well as increases core speed value by 50. The effects of this necklace are increased by an extra 50% during winter or when in an area of intense cold.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

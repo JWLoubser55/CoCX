@@ -71,7 +71,7 @@ public class SandWorm extends Monster
 			outputText("The worm leaps out the ground next to you, its maw wide open as it plunges to take you in. ")
 			if (Combat.playerWaitsOrDefends()){
 				outputText("By observing your environment and staying alert, you manage to dodge just in time as the great worm plunges back into the sands. \n\n");
-			} else if (player.isFlying()) {
+			} else if (player.isFlying() || player.hasPerk(PerkLib.Icerunner)) {
 				if (rand(3) == 0) {
 					outputText("Surprising you, the sand worm surges even higher, swallowing you where you hover before you even have the chance to react!\n\n")
 					player.createStatusEffect(StatusEffects.Devoured, 2 + rand(5), 0, 0, 0);

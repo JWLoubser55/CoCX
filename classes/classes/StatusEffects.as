@@ -1034,6 +1034,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const ChargeRWeapon:StatusEffectType             = mkCombat("Charge Range Weapon");
 		public static const ChargeWeapon:StatusEffectType              = mkCombat("Charge Weapon");
 		public static const Chokeslam:StatusEffectType                 = mkCombat("Chokeslam");
+		public static const ColdEnvironment:StatusEffectType           = mkCombat("Cold Environment");
 		public static const CompBoostingPCArmorValue:StatusEffectType  = mkCombat("Companion Boosting PC Armor Value");
 		public static const Confusion:StatusEffectType                 = mkCombat("Confusion");
 		public static const ConstantHeatConditions:StatusEffectType    = mkCombat("Constant heat conditions");

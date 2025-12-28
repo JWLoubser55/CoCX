@@ -1873,6 +1873,9 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			//Hydra Regeneration and Hydra acid breath perk
 			needNext = player.gainOrLosePerk(PerkLib.HydraRegeneration, player.lowerBody == LowerBody.HYDRA, "", "You accidentally cut yourself but to your stupor the wound does not close as fast as it should. Guess you are no longer a hydra enough to benefit from superior regeneration.") || needNext;
 			needNext = player.gainOrLosePerk(PerkLib.HydraAcidBreath, player.lowerBody == LowerBody.HYDRA, "", "As your lead hydra head vanishes so do your ability to belch acid.") || needNext;
+			//Cernos perks
+			needNext = player.gainOrLosePerk(PerkLib.Icerunner, player.isRaceCached(Races.DEER, 2), "Information Noona informs: Go yell for Lia on missing text here.", "Information Noona informs: Go yell for Lia on missing text here.") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.Skywalk, player.isRaceCached(Races.DEER, 2), "Information Noona informs: Go yell for Lia on missing text here.", "Information Noona informs: Go yell for Lia on missing text here.") || needNext;
 			//Troll Regeneration
 			needNext = player.gainOrLosePerk(PerkLib.TrollRegeneration, player.isAnyRaceCached(Races.TROLL, Races.GLACIAL_TROLL), "", "You accidentally cut yourself but to your stupor the wound does not close as fast as it should. I appears your lack of troll blood is no longer enough to benefit from superior regeneration.") || needNext;
 			if (!player.hasStatusEffect(StatusEffects.Overheat) && (player.isAnyRaceCached(Races.SALAMANDER, Races.KITSHOO, Races.HELLCAT) || player.hasStatusEffect(StatusEffects.HinezumiCoat))) {

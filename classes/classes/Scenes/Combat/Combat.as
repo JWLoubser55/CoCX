@@ -42,6 +42,7 @@ import classes.Scenes.Dungeons.EbonLabyrinth.*;
 import classes.Scenes.Dungeons.HelDungeon.*;
 import classes.Scenes.Dungeons.RiverDungeon.Demetrial;
 import classes.Scenes.Dungeons.RiverDungeon.TwinBosses;
+import classes.Scenes.Holidays;
 import classes.Scenes.Monsters.Magnar;
 import classes.Scenes.Monsters.WerewolfFemale;
 import classes.Scenes.Monsters.WerewolfHuntress;
@@ -2865,7 +2866,7 @@ public class Combat extends BaseContent {
 		}
         if (player.hasPerk(PerkLib.HistoryFighter) || player.hasPerk(PerkLib.PastLifeFighter)) accmod += 40;
         if (player.hasPerk(PerkLib.HistoryFeral) || player.hasPerk(PerkLib.PastLifeFeral)) accmod += 20;
-        if (player.isFlying() && player.hasPerk(PerkLib.AerialCombat) && !player.haveWeaponForJouster() && !player.haveThrowableMeleeWeapon()) {
+        if ((player.isFlying() || player.pcCanSkywalk()) && player.hasPerk(PerkLib.AerialCombat) && !player.haveWeaponForJouster() && !player.haveThrowableMeleeWeapon()) {
             if (player.jewelry1 != jewelries.RNGAMBI) accmod -= 60;
             if (player.hasPerk(PerkLib.Aerobatics)) accmod += 40;
             if (player.hasPerk(PerkLib.AdvancedAerobatics)) accmod += 100;
@@ -2921,7 +2922,7 @@ public class Combat extends BaseContent {
 		}
         if (player.hasPerk(PerkLib.HistoryFighter) || player.hasPerk(PerkLib.PastLifeFighter)) accmod += 40;
         if (player.hasPerk(PerkLib.HistoryFeral) || player.hasPerk(PerkLib.PastLifeFeral)) accmod += 20;
-        if (player.isFlying() && player.hasPerk(PerkLib.AerialCombat) && !player.haveWeaponForJouster() && !player.haveThrowableMeleeWeapon()) {
+        if ((player.isFlying() || player.pcCanSkywalk()) && player.hasPerk(PerkLib.AerialCombat) && !player.haveWeaponForJouster() && !player.haveThrowableMeleeWeapon()) {
             if (player.jewelry1 != jewelries.RNGAMBI) accmod -= 60;
             if (player.hasPerk(PerkLib.Aerobatics)) accmod += 40;
             if (player.hasPerk(PerkLib.AdvancedAerobatics)) accmod += 100;
@@ -3066,7 +3067,7 @@ public class Combat extends BaseContent {
             else baccmod += 100;
         }
         if (player.hasPerk(PerkLib.CarefulButRecklessAimAndShooting)) baccmod += 60;
-        if (player.isFlying()) {
+        if (player.isFlying() || player.pcCanSkywalk()) {
             if (player.jewelry1 != jewelries.RINGDEA) baccmod -= 100;
             if (player.hasPerk(PerkLib.Aerobatics)) baccmod += 40;
             if (player.hasPerk(PerkLib.AdvancedAerobatics)) baccmod += 100;
@@ -6391,7 +6392,7 @@ public class Combat extends BaseContent {
             outputText("\n");
         }
         //TALON
-        if (player.isFlying()) {
+        if (player.isFlying() || player.pcCanSkywalk()) {
             if (player.hasTalonsAttack()){
                 outputText("You rend at your opponent with your talons twice.");
                 if (pLibHellFireCoat) {
@@ -9150,7 +9151,7 @@ public class Combat extends BaseContent {
     }
 
     private function harpyDamageBonus(damage:Number):Number {
-        if (player.isFlying()) {
+        if (player.isFlying() || player.pcCanSkywalk()) {
             if (player.perkv1(IMutationsLib.HarpyHollowBonesIM) >= 1) damage *= 1.2;
             if (player.perkv1(IMutationsLib.HarpyHollowBonesIM) >= 2) damage *= 1.3;
             if (player.perkv1(IMutationsLib.HarpyHollowBonesIM) >= 3) damage *= 1.5;
@@ -19174,6 +19175,7 @@ public function greatDive():void {
         if (monster.plural) damage *= 5;
         else damage *= 1.5;
     }
+	damage = movementPhysicalSpecialsBoost(damage);
     var crit:Boolean = false;
     var critChance:int = 5;
     critChance += combatPhysicalCritical();
@@ -20147,6 +20149,22 @@ public function hollowSkillsAndSoulskillsBoost():Number {
 public function aPoisonGlandsMyconidSpores():void {
 	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25)), false);
 	else monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+}
+
+public function gallopDamageBoost(baseValue:Number):Number {
+	var gallopBoost:Number = 1;
+	if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) gallopBoost += 1;
+	else gallopBoost += 0.5;
+	if (player.hasStatusEffect(StatusEffects.WinterBellCollarA)) gallopBoost = movementPhysicalSpecialsBoost(gallopBoost);
+	baseValue *= gallopBoost;
+	return baseValue;
+}
+public function movementPhysicalSpecialsBoost(baseValue:Number):Number {
+	var moveBoost:Number = 1;
+	if (player.hasStatusEffect(StatusEffects.WinterBellCollarA)) moveBoost += 1;
+	if (Holidays.isChristmas() || player.hasStatusEffect(StatusEffects.ColdEnvironment)) moveBoost += 0.5;
+	baseValue *= moveBoost;
+	return baseValue;
 }
 
 public function ghostStrength():Number {

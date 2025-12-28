@@ -3092,6 +3092,10 @@ use namespace CoC;
 			}
 		}
 
+		public function pcCanSkywalk():Boolean {
+			return (hasPerk(PerkLib.Skywalk) || (necklace == game.necklaces.WBCOLLAR && isTaur()));
+		}
+
 		public function manaShieldAbsorbMagic(damage:Number, display:Boolean = false):Number {
 			return manaShieldAbsorb(damage, display, true);
 		}

@@ -88,9 +88,9 @@ public class CombatUI extends BaseCombatContent {
 		}
 		else {/*
 			btnMelee.show("Attack", combat.basemeleeattacks, "Attempt to attack the enemy with your "+player.weaponName+".  Damage done is determined by your strength and weapon.");
-			if (!player.isFlying() && monster.isFlying() && !player.haveThrowableMeleeWeapon()) {
+			if (!player.isFlying() && !player.pcCanSkywalk() && monster.isFlying() && !player.haveThrowableMeleeWeapon()) {
 				btnMelee.disable("No way you could reach enemy in air with melee attacks.");
-			} else if (player.isFlying() && !player.hasPerk(PerkLib.AerialCombat)) {
+			} else if ((player.isFlying() || player.pcCanSkywalk()) && !player.hasPerk(PerkLib.AerialCombat)) {
 				if (!player.haveWeaponForJouster() && !player.haveThrowableMeleeWeapon()) {
 					btnMelee.disable("No way you could reach enemy with melee attacks while flying.");
 				}
@@ -125,9 +125,9 @@ public class CombatUI extends BaseCombatContent {
 			else if (player.hasStatusEffect(StatusEffects.Gallop)) btnMelee.disable("No way you could hit enemy with melee attacks while galloping. Unless you stop for a moment or two.");
 			else {
 				if (monster.isFlying()) {
-					if (player.isFlying() || monster.hasStatusEffect(StatusEffects.RootOfTheIssue) || player.haveThrowableMeleeWeapon() || player.weapon.isWhipType() || player.weaponOff.isWhipType() || player.weapon.isRibbonType() || player.weaponOff.isRibbonType() ||
+					if (player.isFlying() || monster.hasStatusEffect(StatusEffects.RootOfTheIssue) || player.haveThrowableMeleeWeapon() || player.weapon.isWhipType() || player.weaponOff.isWhipType() || player.weapon.isRibbonType() || player.weaponOff.isRibbonType() || player.pcCanSkywalk() ||
 						((player.isStaffTypeWeapon() || player.weapon.isWandType() || player.weaponOff.isWandType() || player.isPartiallyStaffTypeWeapon()) && player.hasPerk(PerkLib.StaffChanneling) && flags[kFLAGS.STAFF_CHANNELING_MODE])) {
-						if (player.isFlying() || monster.hasStatusEffect(StatusEffects.RootOfTheIssue)) {
+						if (player.isFlying() || monster.hasStatusEffect(StatusEffects.RootOfTheIssue) || player.pcCanSkywalk()) {
 							if (player.hasPerk(PerkLib.AerialCombat) || player.haveThrowableMeleeWeapon() || player.weapon.isWhipType() || player.weaponOff.isWhipType() || player.weapon.isRibbonType() || player.weaponOff.isRibbonType()) {
 								if (!Wings.Types[player.wings.type].canFly && Arms.Types[player.arms.type].canFly) btnMelee.disable("No way you could use your melee weapon with those arms while flying.");
 								else btnMelee.show("Attack", combat.basemeleeattacks, "Attempt to attack the enemy with your " + player.weaponName+".  Damage done is determined by your strength and weapon.").icon("A_Melee");

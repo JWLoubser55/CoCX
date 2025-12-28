@@ -44,7 +44,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var bd:ButtonData;
 		var isEnemyInvisible:Boolean = combat.isEnemyInvisible;
 		if (!player.isInGoblinMech() && !player.isInNonGoblinMech()) {
-			if (player.isFlying() == monster.isFlying()) {
+			if ((player.isFlying() == monster.isFlying()) || (player.hasPerk(PerkLib.Icerunner) && monster.isFlying())) {
 				if (player.hasPerk(PerkLib.PowerAttack)) {
 					bd = buttons.add("PowerAttack", powerAttack).hint("Do a single way more powerful wrath-enhanced melee strike.");
 					if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
@@ -1347,10 +1347,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage *= 2;
 		}
 		if (player.hasPerk(PerkLib.ZenjisInfluence3)) damage *= 1.5;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		damage *= PAMulti;
 		var crit:Boolean = false;
@@ -1428,10 +1425,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.ZenjisInfluence3)) damage *= 1.5;
 		if (player.weaponRangeName == "Wild Hunt" && player.level > monster.level) damage *= 1.2;
 		if (player.weaponRangeName == "Hodr's bow" && monster.hasStatusEffect(StatusEffects.Blind)) damage *= 1.1;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		if (player.isRaceCached(Races.CENTAUR) && player.hasPerk(PerkLib.CentaurHunterStyleMeteorShower)) damage *= 0.6;
 		damage *= PSMulti;
@@ -1517,10 +1511,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		if (damage < 10) damage = 10;
 		if (player.hasPerk(PerkLib.ZenjisInfluence3)) damage *= 1.5;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		if (monster.hasPerk(PerkLib.EnemyGroupType)) damage *= 3;
 		if (monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 5;
@@ -1978,10 +1969,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DevastatingCharge)) damage *= 1.5;
 		if (player.armor.name == "some taur paladin armor" || player.armor.name == "some taur blackguard armor") damage *= 2;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.movementPhysicalSpecialsBoost(damage);
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		damage *= PAM2;
 		var crit:Boolean = false;
@@ -2111,10 +2100,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else damage *= 1.25;
 		}
 		if (player.hasPerk(PerkLib.GiantsReach) && (player.weapon.isLarge() || (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isSingleMassive() || player.weaponOff.isSingleMassive())) || (player.hasPerk(PerkLib.GigantGripSu) && player.weapon.isSingleMassive() && player.weaponOff.isSingleMassive()))) damage *= 1.25;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		//crit
 		var crit:Boolean = false;
@@ -2196,10 +2182,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else damage *= 1.25;
 		}
 		if (player.hasPerk(PerkLib.GiantsReach) && (player.weapon.isLarge() || (player.hasPerk(PerkLib.GigantGripEx) && player.weapon.isSingleMassive()))) damage *= 1.25;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		//crit
 		var crit:Boolean = false;
@@ -2286,10 +2269,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else damage *= 2;
 		}
 		if (player.hasPerk(PerkLib.ZenjisInfluence3)) damage *= 1.5;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		//crit
 		var crit:Boolean = false;
@@ -2703,10 +2683,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.upperGarment == player.game.undergarments.COW_BRA) damage *= 1.50;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		damage = Math.round(damage);
 		if (damage < 1) damage = 1;
@@ -2750,10 +2727,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		if (player.perkv1(IMutationsLib.FiendishBallsIM) >= 4) damage *= 4;
 		damage = Math.round(damage);
@@ -3887,10 +3861,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage += (combat.meleeUnarmedDamageNoLagSingle() * 2);
 		if (player.hasPerk(PerkLib.MasterGadgeteer)) damage += combat.scalingBonusIntelligence();
 		damage *= (spellMod() * 2);
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		if (player.hasPerk(PerkLib.Technical)) damage *= 2;
 		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
@@ -5235,6 +5206,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 			if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+			damage = combat.movementPhysicalSpecialsBoost(damage);
 			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 			damage = Math.round(damage);
 			doDamage(damage, true, true);
@@ -5342,10 +5314,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		damage *= 1.6;
 		//Determine if critical hit!
@@ -5470,6 +5439,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 			if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+			damage = combat.movementPhysicalSpecialsBoost(damage);
 			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 			//Determine if critical hit!
 			var crit:Boolean = false;
@@ -6019,10 +5989,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		//Determine if critical hit!
 		var crit:Boolean = false;
@@ -6164,6 +6131,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 			if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+			damage = combat.movementPhysicalSpecialsBoost(damage);
 			if (player.hasStatusEffect(StatusEffects.Gallop)) {
 				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
 				else damage *= 1.5;
@@ -6316,6 +6284,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 			if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+			damage = combat.movementPhysicalSpecialsBoost(damage);
 			if (player.hasStatusEffect(StatusEffects.Gallop)) {
 				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
 				else damage *= 1.5;
@@ -7041,10 +7010,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		if (player.perkv1(IMutationsLib.MightyLegsIM) >= 2) damage *= (1 + (0.5 * (player.perkv1(IMutationsLib.MightyLegsIM) - 1)));
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
@@ -7181,10 +7147,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasStatusEffect(StatusEffects.Gallop)) {
-			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-			else damage *= 1.5;
-		}
+		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		//Determine if critical hit!
 		var crit:Boolean = false;

@@ -104,11 +104,12 @@ public class TestMenu extends BaseContent
 		bd.add("Test7", MightyOrNot7, "Combat Slaves Operational.");
 		bd.add("Test8", NotAnAizen, "If you really not wanna go to Ignam agian for this testing use this.").disableIf(player.hasStatusEffect(StatusEffects.ChainOfFate));
 		bd.add("Test9", NotHollowed, "Cheatish curing Demi-hollow state.");
-		bd.add("Test10", ConvertYourMaskFragments, "Convert Your Mask Fragments. One at the time!");
-		bd.add("Test11", MightyOrNot8, "Fixing ascension bug for Exanimation II.");
-		bd.add("Test12", MightyOrNot9, "Testing Hollow evolutions faster.");
-		bd.add("Test13", MightyOrNot10, "Testing Bad End after effects.");
+		bd.add("Test10", NotHollowed2, "Cheatish curing Exanimation II or IV due to bug with evangeline curing those stages.");
+		bd.add("Test11", ConvertYourMaskFragments, "Convert Your Mask Fragments. One at the time!");
+		bd.add("Test12", MightyOrNot8, "Fixing ascension bug for Exanimation II.");
+		bd.add("Test13", MightyOrNot9, "Testing Hollow evolutions faster.");
 		bd.add("Test14", MightyOrNot11, "Missing Spiritual Hunger for Vacant and higher hollows.");
+		bd.add("Test15", MightyOrNot10, "Testing Bad End after effects.");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -197,6 +198,23 @@ public class TestMenu extends BaseContent
 		if (player.hasStatusEffect(StatusEffects.ChainOfFate)) player.removeStatusEffect(StatusEffects.ChainOfFate);
 		if (player.hasPerk(PerkLib.ExanimationI)) player.removePerk(PerkLib.ExanimationI);
 		if (player.hasPerk(PerkLib.EmptyVessel)) player.removePerk(PerkLib.EmptyVessel);
+		CoC.instance.transformations.FaceHuman.applyEffect(false);
+		CoC.instance.transformations.EyesHuman.applyEffect(false);
+		doNext(SoulforceCheats);
+	}
+	
+	public function NotHollowed2():void {
+		outputText("\n\n<b>You specification was restored to default ^^</b>\n\n");
+		if (player.hasPerk(PerkLib.ExanimationIII)) player.removePerk(PerkLib.ExanimationIII);
+		if (player.hasPerk(PerkLib.ExanimationIV)) player.removePerk(PerkLib.ExanimationIV);
+		if (player.hasPerk(PerkLib.GiantSize)) player.removePerk(PerkLib.GiantSize);
+		if (player.hasPerk(PerkLib.TitanicSize)) player.removePerk(PerkLib.TitanicSize);
+		if (player.hasPerk(PerkLib.AcidAffinity)) player.removePerk(PerkLib.AcidAffinity);
+		if (player.hasPerk(PerkLib.LightningAffinity)) player.removePerk(PerkLib.LightningAffinity);
+		if (player.hasPerk(PerkLib.ColdAffinity)) player.removePerk(PerkLib.ColdAffinity);
+		if (player.hasPerk(PerkLib.FireAffinity)) player.removePerk(PerkLib.FireAffinity);
+		if (player.hasPerk(PerkLib.SpiritualHunger)) player.removePerk(PerkLib.SpiritualHunger);
+		if (player.hasPerk(PerkLib.SoulResonance)) player.removePerk(PerkLib.EmptyVessel);
 		CoC.instance.transformations.FaceHuman.applyEffect(false);
 		CoC.instance.transformations.EyesHuman.applyEffect(false);
 		doNext(SoulforceCheats);
