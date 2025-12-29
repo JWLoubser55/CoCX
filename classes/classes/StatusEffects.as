@@ -1250,6 +1250,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const WinterClaw:StatusEffectType       		   = mkCombat("Winter Claw");
 		public static const Whispered:StatusEffectType                 = mkCombat("Whispered");
 		public static const WindWall:StatusEffectType                  = mkCombat("Wind Wall");
+		public static const WinterRider:StatusEffectType       		   = mkCombat("WinterRider");
 		public static const WolfHold:StatusEffectType                  = mkCombat("Wolf Hold");
 		public static const WoundPoison:StatusEffectType               = mkCombat("Wound Poison");
 		// For the following: 1 - modifier (1=5%), 2 - "spell cast in the current turn, no decreasing", 3 - "spell is being channeled, no decrease for (Su)"

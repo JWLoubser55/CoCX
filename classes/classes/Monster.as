@@ -1420,6 +1420,9 @@ import classes.Scenes.Combat.CombatAbilities;
 		public function calcLightningDamage():int{
 			return player.reduceLightningDamage(eBaseDamage());
 		}
+		public function calcIceDamage():int{
+			return player.reduceIceDamage(eBaseDamage());
+		}
 
 		public function totalXP(playerLevel:Number=-1):Number
 		{
@@ -1878,6 +1881,10 @@ import classes.Scenes.Combat.CombatAbilities;
 			else if (hasStatusEffect(StatusEffects.ElectrifyWeapon)) {
 				var damageElectrifyWeapon:int = calcLightningDamage();
 				if (damageElectrifyWeapon > 0) damage = player.takeLightningDamage(damageElectrifyWeapon, display);
+			}
+			else if (hasStatusEffect(StatusEffects.WinterRider)) {
+				var damageWinterRider:int = calcIceDamage();
+				if (damageWinterRider > 0) damage = player.takeIceDamage(damageWinterRider, display);
 			}
 			else {
 				damage = calcDamage();
@@ -4948,6 +4955,15 @@ import classes.Scenes.Combat.CombatAbilities;
 					outputText("<b>[Themonster]'s Flame Blade effect wore off.</b>\n\n");
 				}
 				else addStatusValue(StatusEffects.FlameBlade,1,-1);
+			}
+
+			//Winter Rider
+			if (hasStatusEffect(StatusEffects.WinterRider)) {
+				if (statusEffectv1(StatusEffects.WinterRider) <= 0) {
+					removeStatusEffect(StatusEffects.WinterRider);
+					outputText("<b>[Themonster]'s Winter Rider effect wore off.</b>\n\n");
+				}
+				else addStatusValue(StatusEffects.WinterRider,1,-1);
 			}
 
 			//lowered damage done by enemy attacks debuff

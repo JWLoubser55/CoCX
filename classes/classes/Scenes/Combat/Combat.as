@@ -9196,7 +9196,8 @@ public class Combat extends BaseContent {
     }
     public function isIceTypeWeaponMain():Boolean {
         return ((player.weapon == weapons.SCLAYMO || player.weapon == weapons.TSCLAYM || player.weapon == weapons.SDAGGER || player.weapon == weapons.DSDAGGER || player.weapon == weapons.GGRAVEA) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "sapphire"))
-                || player.weapon.hasTag(ItemConstants.W_ICE_TYPE);
+                || player.weapon.hasTag(ItemConstants.W_ICE_TYPE)
+				|| player.winterRiderActiveMain();
     }
     public function isLightningTypeWeaponMain():Boolean {
         return ((player.weapon == weapons.TCLAYMO || player.weapon == weapons.TTCLAYM || player.weapon == weapons.TODAGGER || player.weapon == weapons.DTODAGGER || player.weapon == weapons.SGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
@@ -9219,7 +9220,8 @@ public class Combat extends BaseContent {
     }
     public function isIceTypeWeaponOff():Boolean {
         return ((player.weaponOff == weapons.SCLAYMO || player.weaponOff == weapons.TSCLAYM || player.weaponOff == weapons.SDAGGER || player.weaponOff == weapons.DSDAGGER || player.weaponOff == weapons.GGRAVEA) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "sapphire"))
-                || player.weaponOff.hasTag(ItemConstants.W_ICE_TYPE);
+                || player.weaponOff.hasTag(ItemConstants.W_ICE_TYPE)
+				|| player.winterRiderActiveOff();
     }
     public function isLightningTypeWeaponOff():Boolean {
         return ((player.weaponOff == weapons.TCLAYMO || player.weaponOff == weapons.TTCLAYM || player.weaponOff == weapons.TODAGGER || player.weaponOff == weapons.DTODAGGER || player.weaponOff == weapons.SGRAVES) && (player.hasStatusEffect(StatusEffects.ChargeWeapon) || Forgefather.channelInlay == "topaz"))
@@ -13468,6 +13470,12 @@ public class Combat extends BaseContent {
                 player.removeStatusEffect(StatusEffects.ElectrifyWeapon);
                 outputText("<b>Electrify Weapon effect wore off!</b>\n\n");
             } else player.addStatusValue(StatusEffects.ElectrifyWeapon, 1, -1);
+        }
+        if (player.hasStatusEffect(StatusEffects.WinterRider)) {
+            if (player.statusEffectv1(StatusEffects.WinterRider) <= 0) {
+                player.removeStatusEffect(StatusEffects.WinterRider);
+                outputText("<b>Winter Rider effect wore off!</b>\n\n");
+            } else player.addStatusValue(StatusEffects.WinterRider, 1, -1);
         }
         if (player.hasStatusEffect(StatusEffects.Maleficium)) {
             if (player.statusEffectv1(StatusEffects.Maleficium) <= 0) {

@@ -482,6 +482,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const EyesMarilith: Transformation		= eyes.EyesMarilith.registerTf(AS_EYES, AE_MARILITH);
 	public const EyesWerespider: Transformation		= eyes.EyesWerespider.registerTf(AS_EYES, AE_WERESPIDER);
 	public const EyesHollow: Transformation			= eyes.EyesHollow.registerTf(AS_EYES, AE_HOLLOW);
+	public const EyesDeer: Transformation			= eyes.EyesDeer.registerTf(AS_EYES, AE_DEER);
 //=================================
 //                                =
 //   EYE COLORS                   =
@@ -984,6 +985,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const SkinPatternDemonicPleasureRune:Transformation	= skin.SkinPatternDemonicPleasureRune.registerTfMultiple(AS_SKIN_PATTERN, AE_DEMON, AE_MARILITH);
     public const SkinPatternRunic:Transformation				= skin.SkinPatternRunic.registerTf(AS_SKIN_PATTERN, AE_BAROMETZ);
     public const SkinPatternSoulforceScaring:Transformation		= skin.SkinPatternSoulforceScaring.registerTf(AS_SKIN_PATTERN, AE_HOLLOW);
+    public const SkinPatternIceheartTattoo:Transformation		= skin.SkinPatternIceheartTattoo.registerTf(AS_SKIN_PATTERN, AE_DEER);
 
 
 //TAIL
@@ -1319,4 +1321,4 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 		trace("\n"+dump.join("\n"));
 	}
 }
-}
+}

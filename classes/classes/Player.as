@@ -1563,6 +1563,14 @@ use namespace CoC;
 		{
 			return ((weaponOff.isDuelingType() || weaponOff.isSwordType() || weaponOff.isSpearType() || weaponOff.isStaffType()) && hasStatusEffect(StatusEffects.ElectrifyWeapon));
 		}
+		public function winterRiderActiveMain():Boolean
+		{
+			return hasStatusEffect(StatusEffects.WinterRider);//((weapon.isDuelingType() || weapon.isSwordType() || weapon.isAxeType() || weapon.isDaggerType() || weapon.isScytheType()) && )
+		}
+		public function winterRiderActiveOff():Boolean
+		{
+			return hasStatusEffect(StatusEffects.WinterRider);//((weaponOff.isDuelingType() || weaponOff.isSwordType() || weaponOff.isAxeType() || weaponOff.isDaggerType() || weaponOff.isScytheType()) && )
+		}
 		public function mummyControlLimit():Number
 		{
 			var mummyCL:Number = 5;

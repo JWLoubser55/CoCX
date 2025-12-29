@@ -171,7 +171,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.isRaceCached(Races.KIRIN) && (player.weapon.isDuelingType() || player.weapon.isSwordType() || player.weapon.isSpearType() || player.weapon.isStaffType() ||
 				player.weaponOff.isDuelingType() || player.weaponOff.isSwordType() || player.weaponOff.isSpearType() || player.weaponOff.isStaffType())) {
 				//Electrify Weapon
-				bd = buttons.add("Electrify Weapon", ElectrifyWeapon).hint("Coat your weapon with a sheet of lusty electricity.");
+				bd = buttons.add("Electrify Weapon", electrifyWeapon).hint("Coat your weapon with a sheet of lusty electricity.");
 				if (player.hasStatusEffect(StatusEffects.ElectrifyWeapon)) {
 					bd.disable("Your weapon is already imbued with lightning!");
 				}
@@ -902,6 +902,12 @@ public class MagicSpecials extends BaseCombatContent {
 			bd = buttons.add("Flame Blade", flameBlade).hint("Set your weapon on fire. \n", "Flame Blade");
 			if (player.hasStatusEffect(StatusEffects.FlameBlade)) {
 				bd.disable("Your weapon is already on fire!");
+			}
+		}
+		if (player.isRaceCached(Races.DEER, 2)) {
+			bd = buttons.add("Winter Rider", winterRider).hint("Condense and freeze humidity around your weapon to coat the edge in deadly ice adding cold damage to attacks. \n", "Winter Rider");
+			if (player.hasStatusEffect(StatusEffects.WinterRider)) {
+				bd.disable("Your weapon is already coated with ice!");
 			}
 		}
 		if (player.hasPerk(PerkLib.JobWarrior)) {
@@ -3564,7 +3570,7 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 
-	public function ElectrifyWeapon():void {
+	public function electrifyWeapon():void {
 		clearOutput();
 		var electrifyWeaponDuration:Number = 10;
 		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) electrifyWeaponDuration += 1;
@@ -3572,6 +3578,15 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) electrifyWeaponDuration += 7;
 		outputText("Your lift your weapon toward the sky, drawing bolts of lightning towards it.\n\n");
 		player.createStatusEffect(StatusEffects.ElectrifyWeapon,electrifyWeaponDuration,0,0,0);
+		statScreenRefresh();
+		enemyAI();
+	}
+	
+	public function winterRider():void {
+		clearOutput();
+		var winterRiderDuration:Number = 10;
+		outputText("You focus the powers of winter onto your weapon coating it with a jagged layer of ice!\n\n");
+		player.createStatusEffect(StatusEffects.WinterRider,winterRiderDuration,0,0,0);
 		statScreenRefresh();
 		enemyAI();
 	}

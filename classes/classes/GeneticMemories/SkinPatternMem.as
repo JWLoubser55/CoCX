@@ -242,6 +242,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const ICEHEART:int = _partid++;
+		EnumValue.add(Memories, ICEHEART, "ICEHEART", {
+			id: "Iceheart Pattern",
+			name: "Iceheart Tattoos",
+			cost: 100,
+			title: "Cernos",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.SkinPatternAnubis
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

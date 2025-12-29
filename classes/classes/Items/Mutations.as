@@ -12998,7 +12998,19 @@ public final class Mutations extends MutationsHelper {
 			if (rand(2) == 0) transformations.FaceDeer.applyEffect();
 			else transformations.FaceDeerBlush.applyEffect();
 			changes++;
-		}/*
+		}
+		//get deer eyes
+        if (transformations.EyesDeer.isPossible() && transformations.EyesHuman.isPresent() && rand(3) == 0 && changes < changeLimit) {
+            outputText("[pg]");
+            transformations.EyesDeer.applyEffect();
+            changes++;
+        }
+        //Remove odd eyes
+        if (player.eyes.type != Eyes.HUMAN && player.eyes.type != Eyes.DEER && rand(2) == 0 && changes < changeLimit) {
+            outputText("[pg]");
+            transformations.EyesHuman.applyEffect();
+            changes++;
+        }/*
 		//Change legs to cloven hooves
 		if (rand(2) == 0 && changes < changeLimit && player.ears.type == Ears.DEER && player.tailType == Tail.DEER && player.isFurCovered() && (player.lowerBody != LowerBody.DEERTAUR && player.lowerBody != LowerBody.CLOVEN_HOOFED)) {
 			if (player.lowerBody == LowerBody.HOOFED) {
@@ -13020,6 +13032,11 @@ public final class Mutations extends MutationsHelper {
 		}
 		if (changes < changeLimit && rand(2) == 0 && player.tongue.type != Tongue.HUMAN) {
 			transformations.TongueHuman.applyEffect();
+		}
+		if (!player.skin.hasIceheartTattoo() && rand(2) == 0 && changes < changeLimit) {
+			outputText("[pg]");
+			CoC.instance.transformations.SkinPatternIceheartTattoo.applyEffect();
+			changes++;
 		}
 		//Dye those hairs
         if (!InCollection(player.hairColor, Cernos_HairColor) && changes < changeLimit && rand(3) == 0) {
