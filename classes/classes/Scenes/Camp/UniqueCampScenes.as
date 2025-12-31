@@ -311,7 +311,7 @@ public function impTomeScene():void {
 	addButton(1, "Resist", impTomeResist);
 }
 private function impTomeResist():void {
-	outputText("You resist the strange urge, and wonder how such a strange though came to be, how would you even fuck a book?")
+	outputText("You resist the strange urge, and wonder how such a strange though came to be, how would you even fuck a book?");
 	doNext(playerMenu);
 }
 private function impTomeGiveIn():void {
@@ -337,6 +337,12 @@ private function impTomeGiveIn():void {
 	outputText("Back in your camp you prepare your battle plans for world domination. First, you will need more imps.[pg]");
 	CoC.instance.mutations.archImpTFforce(player);
 	doNext(camp.returnToCampUseFourHours);
+}
+
+public function triggerTerminalCorruptionTF():void {
+	clearOutput();
+	CoC.instance.mutations.archImpTFforce(player);
+	doNext(camp.returnToCampUseOneHour);
 }
 	}
 

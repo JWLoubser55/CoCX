@@ -944,6 +944,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const RunDisabled:StatusEffectType        	= mk("Run Disabled");
 		public static const Shell:StatusEffectType              	= mk("Shell");
 		public static const SirenSong:StatusEffectType          	= mk("Siren Song");
+		public static const SoulCohesion:StatusEffectType           = mk("Soul Cohesion");
 		public static const Spar:StatusEffectType               	= mk("spar");
 		public static const Sparring:StatusEffectType           	= mk("sparring");
 		public static const spiderfight:StatusEffectType        	= mk("spiderfight");

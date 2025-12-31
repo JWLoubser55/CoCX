@@ -13155,7 +13155,7 @@ public class Combat extends BaseContent {
             outputText("The raiju electricity stored in your body continuously tingle around your genitals!\n\n");
             player.takeLustDamage(14 + int(player.effectiveSensitivity()) / 8, true);
         }
-        if (player.hasStatusEffect(StatusEffects.KissOfDeath)) {
+        if (player.hasStatusEffect(StatusEffects.KissOfDeath) && !player.hasPerk(PerkLib.Soulless)) {
             //Effect
             if (player.hasPerk(PerkLib.AlteredAnima)) {
 				outputText("Your body suddenly goes slack as you feel bits of your soul leave your body. But before long, violet whisps return to your body with a reinvigorating spasm, as you try desperately to hold back frenzied laughter from the sensation.\n\n");
@@ -13165,6 +13165,14 @@ public class Combat extends BaseContent {
 				outputText("Your lips burn with an unexpected flash of heat.  They sting and burn with unholy energies as a puff of ectoplasmic gas escapes your lips.  That puff must be a part of your soul!  It darts through the air to [themonster], who slurps it down like a delicious snack.  You feel feverishly hot and exhausted...\n\n");
 				player.takeLustDamage(5, true);
 				player.takePhysDamage(15);
+				if (player.hasStatusEffect(StatusEffects.SoulCohesion)) player.addStatusValue(StatusEffects.SoulCohesion, 1, 5);
+				else player.createStatusEffect(StatusEffects.SoulCohesion, 5, 0, 0, 0);
+				if (player.statusEffectv1(StatusEffects.SoulCohesion) >= 50) {
+					outputText("Something within you breaks and you willingly submit as you are overwelmed by your rampaging lust.");
+					player.lust = player.maxOverLust();
+					doNext(endLustLoss);
+					return;
+				}
 			}
         }
         if (player.hasStatusEffect(StatusEffects.DemonSeed)) {
@@ -13294,7 +13302,7 @@ public class Combat extends BaseContent {
             } else {
                 var acidDoTPlayer:Number = (monster.str + monster.spe + monster.tou) * 2.5;
                 acidDoTPlayer += player.maxHP() * player.statusEffectv2(StatusEffects.AcidDoT);
-				if (player.statStore.hasBuff("Crossed Holy Band")) frostburnPlayer *= 0.5;
+				if (player.statStore.hasBuff("Crossed Holy Band")) acidDoTPlayer *= 0.5;
                 outputText("You are hurt by lingering Acid after-effect. ");
                 player.takeAcidDamage(acidDoTPlayer, true);
                 outputText("\n\n");

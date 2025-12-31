@@ -93,6 +93,12 @@ public class PlayerInfo extends BaseContent {
 			if (player.hunger >= 100) bodyStats += "[font-blue]Very full[/font]";
 			bodyStats += ")\n";
 		}
+		if (player.hasStatusEffect(StatusEffects.SoulCohesion)) {
+			bodyStats += "<b>Soul Cohesion:</b> " + (100 - player.statusEffectv1(StatusEffects.SoulCohesion)) + "%\n";
+			bodyStats += "<i>Absolute Soul Cohesion:</i> " + (100 - player.statusEffectv1(StatusEffects.SoulCohesion) + player.statusEffectv2(StatusEffects.SoulCohesion)) + "%\n";
+		}
+		else if (player.hasPerk(PerkLib.Soulless)) bodyStats += "<b>Soul Cohesion:</b> 0%\n";
+		else bodyStats += "<b>Soul Cohesion:</b> 100%\n";
 		if (player.hasPerk(PerkLib.ExanimationII)) {
 			bodyStats += "<b>Soul Points:</b> ";
 			if (player.perkv1(PerkLib.ExanimationIII) == 2) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 264";

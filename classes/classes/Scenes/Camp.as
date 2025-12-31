@@ -770,6 +770,10 @@ public class Camp extends NPCAwareContent{
 			SceneLib.graydaScene.graydaRandomnCampEvents();
 			return;
 		}
+		if (player.statusEffectv1(StatusEffects.SoulCohesion) >= 50 && !player.hasPerk(PerkLib.Soulless)) {
+			campUniqueScenes.triggerTerminalCorruptionTF();
+			return;
+		}
 		//Reset.
 		flags[kFLAGS.CAME_WORMS_AFTER_COMBAT] = 0;
 		campQ = false;

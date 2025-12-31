@@ -1153,6 +1153,51 @@ public final class Mutations extends MutationsHelper {
         }
         player.orgasm('Dick');
     }
+	
+	public function terminalCorruption(player:Player):void {
+		var choice1:String = randomChoice(DemonRace.DemonSkinColors);
+		var choice2:String = randomChoice(DemonRace.DemonSkin2Colors);
+		player.skinColor1 = choice1;
+		player.skinColor2 = choice2;
+		outputText("The demon may have banged you badly but this is not enough… you somehow still feel very horny and need to achieve release again right away. Desperate to achieve orgasm yet again you begin fiercely masturbating ");
+		if (player.hasCock()) outputText("your cock dripping bead after dead of pre but never fully gushing out "+(player.hasVagina()?"while ":"")+"");
+		if (player.hasVagina()) outputText("your pussy gushes around you pistoning finger yet you fail to reach your peak");
+		outputText(". You will not be denied you need to cum… you want to shoot everything out!\n\n");
+		outputText("You keep masturbating your brain away as your skin flush to a new "+player.skinColor1+"ish hue. You’re so close yet so far. You moan in delight as a pair of fleshy wings pushes out of your back ");
+		if (player.tailType == Tail.NONE) {
+			outputText("while a long sinuous tail grows out of your ass like a erect cock out of its sheath");
+			if (!player.isGenderless()) {
+				outputText(" to ");
+				if (player.hasCock()) outputText("wrap itself around your dick assisting your hand");
+				else outputText("plunge itself into your pussy next to your finger the heart shaped bulge at the end pulsing pleasantly inside");
+			}
+		}
+		else outputText(", your tail tingling with pleasure in sympathy as it is overcome by changing the sensitive tip changing shape to match its new form");
+		outputText(". Your pleasure climbs up higher and higher and your vision turns white like cum as two large horns burst out of your skull as if growing straight out of your pleasure-addled brain.\n\n");
+		outputText("You seem to have struck a bottleneck unable to achieve release as your pleasure keep reaching intolerable heights but finally the dam breaks allowing you to release everything out. When you come down from your orgasm you finally realize what just happened. You didn’t just came you came your soul out now your no defrent from the demons who fucked you into this state. ");
+		outputText("You quickly adapt to the change however and take what's left of your soul from the ground eating it right away. It seems you’ve become a demon, there's no going back to having a soul now but that doesn’t mean your quest has to end there far from it, you’re going to turn this shity land into your playground and get back at it for everything that's been done to you. The champion you is no more but you’ve got plenty of grievances with the place to address still and you will only rest until it's all under your demonic foot.\n\n");
+		transformations.TailDemonic.applyEffect(false);
+        transformations.HornsDemonic.applyEffect(false);
+        if (player.faceType != Face.HUMAN && player.faceType != Face.DEMON) transformations.FaceHuman.applyEffect(false);
+        transformations.FaceDemon.applyEffect(false);
+        transformations.EarsElfin.applyEffect(false);
+		transformations.TongueDemonic.applyEffect(false);
+        transformations.EyesDemonColors.applyEffect(false);
+		if (rand(2) == 0) transformations.EyesDemon.applyEffect(false);
+		else transformations.EyesDevil.applyEffect(false);
+		if (!InCollection(player.arms.type, Arms.HUMAN, Arms.DEMON)) transformations.ArmsHuman.applyEffect(false);
+        transformations.ArmsDemon.applyEffect(false);
+        if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) transformations.LowerBodyDemonClawed.applyEffect(false);
+        else {
+            if (rand(2) == 0) transformations.LowerBodyDemonHighHeels.applyEffect(false);
+			else transformations.LowerBodyDemonGracefulFeet.applyEffect(false);
+        }
+		if (player.wings.type != Wings.NONE) transformations.WingsNone.applyEffect(false);
+        transformations.WingsDemonicTiny.applyEffect(false);
+		transformations.WingsDemonicLarge.applyEffect(false);
+		player.createPerk(PerkLib.Soulless, 0, 0, 0, 0);
+		player.demonicenergy += 50;
+	}
 
     public function minotaurCum(purified:Boolean, player:Player):void {
         player.slimeFeed();
