@@ -249,7 +249,7 @@ package classes.GeneticMemories {
 			cost: 100,
 			title: "Cernos",
 			transformation: function(): Transformation {
-				return CoC.instance.transformations.SkinPatternAnubis
+				return CoC.instance.transformations.SkinPatternIceheartTattoo
 			}
 		});
 

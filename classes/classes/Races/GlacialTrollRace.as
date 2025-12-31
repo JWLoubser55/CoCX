@@ -45,9 +45,9 @@ public class GlacialTrollRace extends Race {
 				.skinCoatTypeAndColor1(Skin.FUR, ANY(GlacialTrollFurColors), +2)
 				.biggestTitSize(AT_MOST(2), +1)
 				.height(AT_LEAST(84), +1)
-				.customRequirement("",'Troll Tail and having cock OR having human vagina',
+				.customRequirement("",'Glacial Troll Tail and having cock OR having human vagina',
 						function (body:BodyData):Boolean {
-							return (body.tailType == Tail.TROLL && body.player.hasCock()) || (body.player.hasVagina() && body.player.vaginaType() == VaginaClass.HUMAN)
+							return (body.tailType == Tail.GLACIAL_TROLL && body.player.hasCock()) || (body.player.hasVagina() && body.player.vaginaType() == VaginaClass.HUMAN)
 						}, +1)
 				.customRequirement("",'Feminity less than 56',
 						function (body:BodyData):Boolean {

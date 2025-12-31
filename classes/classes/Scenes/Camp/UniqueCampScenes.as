@@ -341,7 +341,7 @@ private function impTomeGiveIn():void {
 
 public function triggerTerminalCorruptionTF():void {
 	clearOutput();
-	CoC.instance.mutations.archImpTFforce(player);
+	CoC.instance.mutations.terminalCorruption(player);
 	doNext(camp.returnToCampUseOneHour);
 }
 	}

@@ -46,7 +46,7 @@ public class TrollRace extends Race {
 				.skinCoatTypeAndColor1(Skin.FUR, ANY(TrollFurColors), +2)
 				.biggestTitSize(AT_MOST(2), +1)
 				.height(AT_LEAST(84), +1)
-				.customRequirement("",'Glacial Troll Tail and having cock OR having human vagina',
+				.customRequirement("",'Troll Tail and having cock OR having human vagina',
 						function (body:BodyData):Boolean {
 							return (body.tailType == Tail.TROLL && body.player.hasCock()) || (body.player.hasVagina() && body.player.vaginaType() == VaginaClass.HUMAN)
 						}, +1)

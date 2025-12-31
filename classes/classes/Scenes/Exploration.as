@@ -1703,8 +1703,8 @@ public class Exploration extends BaseContent implements SaveableState
 			//Pale Hollow avoidance chance
 			outputText("(placeholder text (for now (until 2026))). You about to face enemy that would inflict slow acting forced tf effects on your PC that could be fixed if you recruited Evangeline. It will happen no matter fi you win or lose and only escaping from fight, which would be 100% successful, would make possible to avoid those.\n\n<b>Knowing about consequences: Do you still want proceed to this encounter?</b>\n\n");
 			menu();
-			addButton(0, "Yes", explorer.done);
-			addButton(1, "No", SceneLib.hollowScene.encounterWhite);
+			addButton(0, "Yes", SceneLib.hollowScene.encounterWhite);
+			addButton(1, "No", explorer.done);
 		}
 
 		public function ryubifirstenc():void {
