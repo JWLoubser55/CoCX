@@ -340,8 +340,8 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Icerunner. Gained by been Cernos. Effects: You can charge and move normally even in thick snow or even a blizzard.\n");
 			outputText("-New necklace (by Liadri): Winter Bell Collar - obtained from X-mas event with Cernos girl. Cost 1600 gems. Effect: Grant the Skywalk ability if you are tauric. Increase all movement based P.Ability by 100% as well as increases core speed value by 50. The effects of this necklace are increased by an extra 50% during winter or when in an area of intense cold.\n");
 			outputText("-New M. Special: Winter Rider. Usable by been Cernos. Effect: Condense and freeze humidity around your weapon to coat the edge in deadly ice adding cold damage to attacks.\n");
-			outputText("-Added to Stats general subpage Soul Cohesion stat - it says how much % soul PC still have left. Naturaly it only goes from ~50% to infinity (and beyond). For soulless PC's would be at 0% (for obvious reasons). It increase by 1% each day on it won. Can be regained faster using specific items that helps mend soul and could be lost as after-effect of some demon attacks.\n");
-			outputText("-Kiss of Death status that can be gained from Kiss special used by succubus / omnibus enemeis cause each turn loosing 5% of Soul Cohesion. Altered Anima perk protect from this effect.\n");
+			outputText("-Added to Stats general subpage Soul Cohesion stat - it says how much % soul PC still have left. Naturaly it only goes from ~50% to infinity (and beyond). For soulless PC's would be at 0% (for obvious reasons). It increase by 1% each day on it own. Can be regained faster using specific items that helps mend soul and could be lost as after-effect of some demon attacks.\n");
+			outputText("-Kiss of Death status that can be gained from Kiss special used by succubus / omnibus enemies cause each turn loosing 5% of Soul Cohesion. Altered Anima perk protect from this effect.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
