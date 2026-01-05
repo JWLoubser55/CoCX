@@ -1,4 +1,5 @@
 package classes.Races {
+import classes.BodyData;
 import classes.BodyParts.*;
 import classes.CockTypesEnum;
 import classes.IMutations.IMutationsLib;
@@ -49,6 +50,10 @@ public class DeerRace extends Race{
 				.armType(ANY(Arms.HUMAN, Arms.DEER), +1)
 				.armType(NOT(Arms.WENDIGO), 0, -5)
 				.armType(NOT(Arms.REINDEER), 0, -5)
+				.customRequirement("legs","shaggy centaur lower body",
+						function (body:BodyData): Boolean {
+							return body.legType == LowerBody.CLOVEN_HOOFED && body.player.isTaur();
+						}, +3)
 				.legType(LowerBody.CLOVEN_HOOFED, +1)
 				.legType(NOT(LowerBody.WENDIGO), 0, -5)
 				.legType(NOT(LowerBody.CLOVEN_HOOFED_2), 0, -5)
@@ -100,6 +105,18 @@ public class DeerRace extends Race{
 					"spe.mult": +1.00,
 					"lib.mult": +1.00,
 					"sens": +200
+				})
+				.end();
+		
+		buildTier(32, "grand cernos")
+				.namesTauric("grand cernos","grand cernos-taur")
+				.requirePreviousTier()
+				.buffs({
+					"str.mult": +2.00,
+					"tou.mult": +2.00,
+					"spe.mult": +1.65,
+					"lib.mult": +1.65,
+					"sens": +250
 				})
 				.end();
 	}

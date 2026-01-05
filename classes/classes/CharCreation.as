@@ -2396,19 +2396,19 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 
 		public function ascensionMenuChoice():void {
-			outputText("\n\nWould you like to ascend without increasing the New Game+ cycle (difficulty) or not?");
+			outputText("\n\nWould you like to ascend with increasing the New Game+ cycle (difficulty)?");
 			menu();
-			addButton(1, "Yes", ascensionMenu).hint("Ascend with increased difficulty.");
-			if (player.ascensionPerkPoints >= 50) addButton(3, "Maybe?", ascensionMenuChoiceMaybe).hint("Ascend without increasing difficulty.");
-			else addButtonDisabled(3, "Maybe?", "50 ascension points required.");
+			addButton(1, "Yes", ascensionMenu).hint("Ascend WITH increased difficulty.");
+			if (player.ascensionPerkPoints >= 50) addButton(3, "No", ascensionMenuChoiceMaybe).hint("Ascend WITHOUT increasing difficulty.");
+			else addButtonDisabled(3, "No", "50 ascension points required.");
 		}
 		public function darkAscensionMenuChoice():void {
-			outputText("\n\nWould you like to ascend without increasing the New Game+ cycle (difficulty) or not?");
+			outputText("\n\nWould you like to dark ascend with increasing the New Game+ cycle (difficulty)?");
 			if (player.perkv4(PerkLib.Soulless) < 1) player.addPerkValue(PerkLib.Soulless, 4, 1);
 			menu();
-			addButton(1, "Yes", darkAscensionMenu).hint("Ascend with increased difficulty.");
-			if (player.ascensionPerkPoints >= 50) addButton(3, "Maybe?", ascensionMenuChoiceMaybe).hint("Ascend without increasing difficulty.");
-			else addButtonDisabled(3, "Maybe?", "50 ascension points required.");
+			addButton(1, "Yes", darkAscensionMenu).hint("Ascend WITH increased difficulty.");
+			if (player.ascensionPerkPoints >= 50) addButton(3, "No", ascensionMenuChoiceMaybe).hint("Ascend WITHOUT increasing difficulty.");
+			else addButtonDisabled(3, "No", "50 ascension points required.");
 		}
 		public function ascensionMenuChoiceMaybe():void {
 			player.ascensionPerkPoints -= 50;

@@ -829,7 +829,7 @@ public class Exploration extends BaseContent implements SaveableState
 		public function demonLabProjectEncountersEnabled():Boolean {
 			return DemonLab.MainAreaComplete >= 4;
 		}
-		public function demonLabProjectEncounters(type:Number = 0):void {
+		public function demonLabProjectEncounters(type:Number = 0, area:Number = 0):void {
 			clearOutput();
 			var choices:Array = [];
 			if (type == 1) {
@@ -876,6 +876,7 @@ public class Exploration extends BaseContent implements SaveableState
 				outputText("“<i>Sweet blood, come... Sate yourself.</i>” Her nails are like black claws, but as she licks the blood off her fingers, part of you recoils in fear. “<i>Sate you... Then you sate... me.</i>” You draw your [weapon], bracing for the worst, but she only smiles wider as the short, curvaceous figure tilts her head, her movements unnervingly fluid. Without warning, she launches herself at you, claws outstretched, the eerie grin still on her face.[pg]");
 				outputText("“<i>I'll consume your blood... every last drop!</i>” The words crawl from her lips, twisted and ripping with hunger, as if every word could tear flesh from bone.");
 				outputText("[pg]“<b>You are now fighting Project Nightwalker.</b>”");
+				if (area == 1) SceneLib.caves.CavesConditions();
 				startCombat(new ProjectNightwalker());
 			}
 			function tyrantEncounter():void {
@@ -883,6 +884,7 @@ public class Exploration extends BaseContent implements SaveableState
 				outputText("[pg]On the creature’s back sits a heavily muscled Incubus, armored lightly, and holding an odd crossbow in one hand. He looks at you, smirking, and points.");
 				outputText("[pg]“<i>Tyrant? Kill!</i>”");
 				outputText("[pg]“<b>You are now fighting Project Tyrant.</b>”");
+				if (area == 1) SceneLib.caves.CavesConditions();
 				startCombat(new ProjectTyrant());
 			}
 			function flamespreaderEncounter():void {
@@ -890,12 +892,14 @@ public class Exploration extends BaseContent implements SaveableState
 				outputText("Your attacker has dusky brown skin, red scales from calf to neck, and slender curves. You look at her face, with draconic fangs, demonic horns and reptilian eyes. Flames jet from her nose with every breath, and she shifts her weight from side to side. She’s an odd mix of dragon and demon, with wide, womanly hips. She plants her spear, wings flapping.[pg]");
 				outputText("You ready yourself for battle, and you hear the cracking of bones as the creature almost violently twists its own neck one way, then the other, laughing as it takes off, flying towards you with malice in its gaze.");
 				outputText("[pg]“<b>You are now fighting Project Flamespreader.</b>”");
+				if (area == 1) SceneLib.caves.CavesConditions();
 				startCombat(new ProjectFlameSpreader());
 			}
 			function ultimisEcounter():void {
 				outputText("You and your dragoness lover travel through area, stopping for a moment. The air smells vaguely of sulphur...and it’s getting stronger. Casting your gaze skyward, you see a massive form, bright red, flying low to the ground...and heading right towards you. You barely have any time at all to react, but you manage to leap to the side, narrowly dodging a veritable pillar of flame. Kiha roars her rage, taking to the sky, but as she does, no less than five Flamespreaders fly in, forcing her to evade their deadly spears. Kiha looks back at you for a moment, before banking away, taking all five of the fakers with her.");
 				if (silly()) outputText("[pg]Having seen plenty of Kiha’s ass, child-bearing hips and bountiful breasts, you conclude that they’re not even good enough to be Kiha’s fakes! You just hope she doesn’t eat those words.");
 				outputText("[pg]“<b>You are now fighting the Ultimis Flamespreader.</b>”");
+				if (area == 1) SceneLib.caves.CavesConditions();
 				startCombat(new UltimisFlamespreader());
 			}
 		}

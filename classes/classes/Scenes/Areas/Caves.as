@@ -104,7 +104,7 @@ use namespace CoC;
 				label : "Cave Wyrm",
 				kind : 'monster',
 				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					CavesConditions();
 					cavewyrmScene.berserkingCaveWyrmEncounter();
 				}
 			}, {
@@ -112,7 +112,7 @@ use namespace CoC;
 				label : "Matango",
 				kind : 'monster',
 				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					CavesConditions();
 					if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) < player.matangoControlLimit()) matangoScene.gainingMatango();
 					else matangoScene.mantangoEncounter();
 				}
@@ -121,7 +121,7 @@ use namespace CoC;
 				label : "Dark Elf",
 				kind : 'monster',
 				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					CavesConditions();
 					darkelfScene.introDarkELfScout();
 				}
 			}, {
@@ -129,8 +129,8 @@ use namespace CoC;
 				label : "Gem Golem",
 				kind : 'monster',
 				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					gemGolemEncount()
+					CavesConditions();
+					gemGolemEncount();
 				}
 			}, {
 				name: "",
@@ -168,7 +168,7 @@ use namespace CoC;
 				when: function ():Boolean {
 					return SceneLib.exploration.demonLabProjectEncountersEnabled();
 				},
-				call: curry(SceneLib.exploration.demonLabProjectEncounters, 1)
+				call: curry(SceneLib.exploration.demonLabProjectEncounters, 1, 1)
 			});
 			_tunnelsEncounter = Encounters.group("tunnels", {
 				name: "discovercliffs",
@@ -209,7 +209,7 @@ use namespace CoC;
 				label : "Automaton",
 				kind : 'monster',
 				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					CavesConditions();
 					automatonScene.automatonEncounter();
 				}
 			}, {
@@ -217,11 +217,11 @@ use namespace CoC;
 				label : "Werespider",
 				kind : 'monster',
 				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					CavesConditions();
 					werespiderScene.werespiderEncounter();
 				}
 			}, /*{
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					CavesConditions();
 					//antworker.();
 					clearOutput();
 					//outputText("You spend one hour exploring the caves but you don't manage to find anything interesting, unless feeling like you are becoming slightly tougher counts.");
@@ -231,7 +231,7 @@ use namespace CoC;
 				label : "Dark Elf",
 				kind : 'monster',
 				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					CavesConditions();
 					darkelfScene.introDarkELfSlaver();
 				}
 			}, /*{
@@ -239,7 +239,7 @@ use namespace CoC;
 				label : "Dark Slime",
 				kind : 'monster',
 				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
+					CavesConditions();
 					darkslimeScene.cavesDarkSlimeEncounter();
 				}
 			},*/{
@@ -247,8 +247,8 @@ use namespace CoC;
 				label : "Adamantine Golem",
 				kind : 'monster',
 				call: function ():void {
-					player.createStatusEffect(StatusEffects.InsideSmallSpace,0,0,0,0);
-					adamantineGolemEncount()
+					CavesConditions();
+					adamantineGolemEncount();
 				}
 			}, {
 				name: "earth ele",
@@ -420,8 +420,13 @@ use namespace CoC;
 			endEncounter();
 		}
 
-		private function manticoreEncounterFn():void {
+		public function CavesConditions():void {
 			player.createStatusEffect(StatusEffects.InsideSmallSpace, 0, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.ColdEnvironment, 0, 0, 0, 0);
+		}
+
+		private function manticoreEncounterFn():void {
+			CavesConditions();
 			if (rand(2) == 0) {
 				player.createStatusEffect(StatusEffects.WildManticore, 0, 0, 0, 0);
 				SceneLib.etnaScene.repeatEnc();
@@ -436,6 +441,7 @@ use namespace CoC;
 			outputText("This fully manifested Gnome was just minding her own business sleeping when you accidentally woke her up and now that her nap and sweet happy dreams are ruined she is going to take her anger on you. Mother nature is having a rough day and she isn’t taking your excuse nicely anymore. Nah today she’s determined to answer by crushing you until you turn into fertilizers!\n\n");
 			outputText("You ready for combat as the gnome lifts her rocky hands up and begins throwing a tantrum.");
 			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 6;
+			CavesConditions();
 			startCombat(new EarthElemental());
 		}
 
@@ -497,6 +503,7 @@ use namespace CoC;
 			outputText("As you take a stroll, a golem emerges from the nearby shadow. Looks like you've encountered a gem golem! You ready your [weapon] for a fight!");
 			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_GOLEMS);
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 20;
+			CavesConditions();
 			startCombat(new CaveGolems());
 		}
 		private function adamantineGolemEncount():void {
@@ -504,6 +511,7 @@ use namespace CoC;
 			outputText("As you take a stroll, a golem emerges from the nearby shadow. Looks like you've encountered an adamantine golem! You ready your [weapon] for a fight!");
 			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_GOLEMS);
 			flags[kFLAGS.GOLEM_ENEMY_TYPE] = 21;
+			CavesConditions();
 			startCombat(new CaveGolems());
 		}
 	}

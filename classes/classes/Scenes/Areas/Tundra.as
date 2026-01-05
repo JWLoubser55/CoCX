@@ -164,6 +164,7 @@ use namespace CoC;
 			outputText("We awaits for... ");
 			outputText("Lia writing nice intro here.\n\n");//lvl 70
 			flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] = 5;
+			TundraConditions();
 			startCombat(new IceElemental());
 		}
 
@@ -179,6 +180,7 @@ use namespace CoC;
 		public function golemEncounters():void {
 			clearOutput();
 			outputText("As you take a stroll, from nearby trees emerge huge golem. Looks like you have encountered 'true ice golem'! You ready your [weapon] for a fight!");
+			TundraConditions();
 			startCombat(new GolemTrueIce());
 		}
 
@@ -197,6 +199,7 @@ use namespace CoC;
 		public function frostGiantEncounter():void {
 			clearOutput();
 			outputText("You wander the chilling landscape of the Tundra. As you cross the peak of a rather large, lightly forested hill, you come face to gigantic face with a Young Frost Giant! He belches fiercely at you and you tumble back down the hill. He mostly steps over it as you come to your senses. You quickly draw your [weapon] and withdraw from the hill to prepare for battle.\n\n");
+			TundraConditions();
 			startCombat(new YoungFrostGiant());
 		}
 
@@ -240,6 +243,10 @@ use namespace CoC;
 				outputText(" Your mining skill is too low to find any Sapphires.");
 				endEncounter(120);
 			}
+		}
+
+		public function TundraConditions():void {
+			player.createStatusEffect(StatusEffects.ColdEnvironment, 0, 0, 0, 0);
 		}
 
 		public function chrismasEventCoalCollection():void {

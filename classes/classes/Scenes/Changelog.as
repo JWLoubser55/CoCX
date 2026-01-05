@@ -342,7 +342,7 @@ public class Changelog extends BaseContent
 			outputText("-New M. Special: Winter Rider. Usable by been Cernos. Effect: Condense and freeze humidity around your weapon to coat the edge in deadly ice adding cold damage to attacks.\n");
 			outputText("-Added to Stats general subpage Soul Cohesion stat - it says how much % soul PC still have left. Naturaly it only goes from ~50% to infinity (and beyond). For soulless PC's would be at 0% (for obvious reasons). It increase by 1% each day on it own. Can be regained faster using specific items that helps mend soul and could be lost as after-effect of some demon attacks.\n");
 			outputText("-Kiss of Death status that can be gained from Kiss special used by succubus / omnibus enemies cause each turn loosing 5% of Soul Cohesion. Altered Anima perk protect from this effect.\n");
-			outputText("-\n");
+			outputText("-New TF item (by Liadri): Cervinium. Bought in Journey to the East inn in He'Xin'Dao. Using this item will turn PC into Cernos. Their race bonuses for Deer-morph / Froststrider Deer / Cernos / Grand Cernos (8/16/24/32): +75%/+150%/+180%/+200% to Str/Tou multi, +25%/+50%/+100%/+165% to Spe multi, +20%/+40%/+100%/+165% to Lib multi, +75/+150/+200/+250 to sensitivity.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
