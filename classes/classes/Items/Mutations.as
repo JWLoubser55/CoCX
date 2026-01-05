@@ -13055,19 +13055,13 @@ public final class Mutations extends MutationsHelper {
             outputText("[pg]");
             transformations.EyesHuman.applyEffect();
             changes++;
-        }/*
-		//Change legs to cloven hooves
-		if (rand(2) == 0 && changes < changeLimit && player.ears.type == Ears.DEER && player.tailType == Tail.DEER && player.isFurCovered() && (player.lowerBody != LowerBody.DEERTAUR && player.lowerBody != LowerBody.CLOVEN_HOOFED)) {
-			if (player.lowerBody == LowerBody.HOOFED) {
-				outputText("\n\nYou feel a sharp stinging sensation from your hooves, accompanied by a loud CRACK.  You look down in alarm, prancing from one hooved foot to another, realizing that your solid, heavy hooves have been replaced with delicate, cloven hooves.  You squint, also noting a subtle thinness across your legs in general--if you had to guess, you’d hazard that you’re looking <b>more deer-like than horse-like</b>.");
-			}
-			else {
-				outputText("\n\nYou feel a strange tightness from your feet and nearly topple over as your balance shifts.  You’re balancing on your toes for some reason.  You look down in amazement as your legs slim and lengthen, your feet elongating and darkening at the ends until you’re balancing on <b>two, graceful deer legs</b>.");
-			}
-			if (player.isTaur()) player.lowerBody = LowerBody.DEERTAUR;
-			else transformations.LowerBodyClovenHoofed(2).applyEffect(false);
+        }
+		//Change legs to taur cloven hooves
+		if (rand(2) == 0 && changes < changeLimit && player.ears.type == Ears.DEER && player.tailType == Tail.DEER && player.isFurCovered() && player.lowerBody != LowerBody.CLOVEN_HOOFED) {
+			outputText("[pg]");
+			transformations.LowerBodyClovenHoofed(4).applyEffect();
 			changes++;
-		}*/
+		}
 		//Change arms to human/deer
 		if (rand(2) == 0 && changes < changeLimit && player.isFurCovered() && player.tailType == Tail.DEER && player.arms.type != Arms.HUMAN && player.arms.type != Arms.DEER) {
 			outputText("\n\n");

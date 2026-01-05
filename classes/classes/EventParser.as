@@ -251,14 +251,8 @@ public class EventParser {
             timeAwareLargeLastEntry = -1; //If this var is -1 then this function has called timeChangeLarge for all entries in the _timeAwareClassList
 
             if (!DungeonAbstractContent.inDungeon) {
-                Utils.Begin("eventParser", "impGangBangProgress");
-                var igb:int = impGangBangProgress();
-                Utils.End("eventParser", "impGangBangProgress");
-                if (igb == 1) needNext = true;
-                if (igb == 2) return true;
-
                 Utils.Begin("eventParser", "pregnancyProgress");
-                igb = pregnancyProgress();
+                var igb:int = pregnancyProgress();
                 Utils.End("eventParser", "pregnancyProgress");
                 if (igb == 1) needNext = true;
                 if (igb == 2) return true;
@@ -511,104 +505,6 @@ public class EventParser {
             return 2;
         }
         return needNext ? 1 : 0;
-    }
-
-    private static function impGangBangProgress():int {
-        //IMP GANGBAAAAANGA
-        //The more imps you create, the more often you get gangraped.
-        var player:Player = CoC.instance.player;
-        var chance:Number = player.statusEffectv1(StatusEffects.BirthedImps) * 2;
-        if (chance > 7) chance = 7;
-        if (player.hasPerk(PerkLib.PiercedLethite)) chance += 4;
-        if (player.inHeat) chance += 2;
-        if (SceneLib.vapula.vapulaSlave()) chance += 7;
-        //Reduce chance
-        var flags:DefaultDict = CoC.instance.flags;
-        if (flags[kFLAGS.CAMP_WALL_PROGRESS] > 0) chance /= 1 + (flags[kFLAGS.CAMP_WALL_PROGRESS] / 100);
-        if (flags[kFLAGS.CAMP_WALL_GATE] > 0) chance /= 2;
-        if (flags[kFLAGS.CAMP_WALL_SKULLS] > 0) chance *= 1 - (flags[kFLAGS.CAMP_WALL_SKULLS] / 100);
-        if (CoC.instance.model.time.hours == 2) {
-            if (!flags[kFLAGS.KID_A_GOBLIN_NIGHT_HAPPENED] && flags[kFLAGS.ANEMONE_KID] > 0 && player.hasCock() && flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 40) {
-                flags[kFLAGS.KID_A_GOBLIN_NIGHT_HAPPENED] = 1;
-                SceneLib.kidAScene.goblinNightAnemone();
-                return 1;
-            } else if (chance > Utils.rand(100) && !player.hasStatusEffect(StatusEffects.DefenseCanopy)) {
-                if (player.gender > 0 && (!player.hasStatusEffect(StatusEffects.JojoNightWatch) || !player.hasStatusEffect(StatusEffects.PureCampJojo)) && (flags[kFLAGS.HEL_GUARDING] == 0 || !SceneLib.helFollower.followerHel()) && !player.hasStatusEffect(StatusEffects.HeliaOff) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0 || flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) && (flags[kFLAGS.KIHA_CAMP_WATCH] == 0 || !SceneLib.kihaFollower.followerKiha()) && EtnaDaughterScene.EtnaDaughterGuardingCamp != 2 && SceneLib.midokaScene.MidokaGuardingCamp != 2 &&
-                        (!player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv1(StatusEffects.Familiar) == 0) && !(SceneLib.camp.sleepInCabin() && (player.inte / 5 >= Utils.rand(15) || player.lust < 0.8 * player.maxLust() || CoC.instance.gameSettings.sceneHunter_inst.other)) && !flags[kFLAGS.IN_INGNAM] || flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] == 2) {
-                    SceneLib.impScene.impGangabangaEXPLOSIONS();
-                    EngineCore.doNext(playerMenu);
-                    return 2;
-                }
-                else if (flags[kFLAGS.KIHA_CAMP_WATCH] > 0 && SceneLib.kihaFollower.followerKiha()) {
-                    EngineCore.outputText("\n<b>You find charred imp carcasses all around the camp once you wake.  It looks like Kiha repelled a swarm of the little bastards.</b>\n");
-                    return 1;
-                }
-                else if (flags[kFLAGS.HEL_GUARDING] > 0 && SceneLib.helFollower.followerHel() && !player.hasStatusEffect(StatusEffects.HeliaOff)) {
-                    EngineCore.outputText("\n<b>Helia informs you over a mug of beer that she whupped some major imp asshole last night.  She wiggles her tail for emphasis.</b>\n");
-                    return 1;
-                }
-                else if (player.gender > 0 && player.hasStatusEffect(StatusEffects.JojoNightWatch) && player.hasStatusEffect(StatusEffects.PureCampJojo) && flags[kFLAGS.JOJO_BIMBO_STATE] != 3) {
-                    EngineCore.outputText("\n<b>Jojo informs you that he dispatched a crowd of imps as they tried to sneak into camp in the night.</b>\n");
-                    return 1;
-                }
-                else if (flags[kFLAGS.HOLLI_DEFENSE_ON] > 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] == 4) {
-                    EngineCore.outputText("\n<b>During the night, you hear distant screeches of surprise, followed by orgasmic moans.  It seems some imps found their way into Holli's canopy...</b>\n");
-                    return 1;
-                }
-                else if (flags[kFLAGS.HOLLI_DEFENSE_ON] > 0 && flags[kFLAGS.FLOWER_LEVEL] == 4) {
-                    EngineCore.outputText("\n<b>During the night, you hear distant screeches of surprise, followed by screams of pain.  It seems some imps found their way into Holli's canopy...</b>\n");
-                    return 1;
-                }
-                else if (flags[kFLAGS.ANEMONE_WATCH] > 0) {
-                    EngineCore.outputText("\n<b>Your sleep is momentarily disturbed by the sound of tiny clawed feet skittering away in all directions.  When you sit up, you can make out Kid A holding a struggling, concussed imp in a headlock and wearing a famished expression.  You catch her eye and she sheepishly retreats to a more urbane distance before beginning her noisy meal.</b>\n");
-                    return 1;
-                }
-                else if (ZenjiScenes.ZenjiNightWatch == 1) {
-                    EngineCore.outputText("\n<b>Zenji informs you that he managed to fend off creatures that tried to assault you during the night.</b>\n");
-                    return 1;
-                }
-                else if (EtnaDaughterScene.EtnaDaughterGuardingCamp == 2) {
-                    EngineCore.outputText("\n<b>A group of imps tried to attack that night but you heard their screams in the distance as [etnakidname] laughed and made a feast out of them.</b>\n");
-                    return 1;
-                }
-                else if (player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv1(StatusEffects.Familiar) == 1) {
-                    EngineCore.outputText("\n<b>The screams and roars alerts you to the fact your ghoul caught and defeated some invaders. You sleep comfortably to the sound of the bloodshed ongoing nearby.</b>\n");
-                    return 1;
-                }
-                else if (SceneLib.camp.sleepInCabin() && player.inte / 5 >= Utils.rand(15) && player.lust < 0.8 * player.maxLust()) { //lust condition: horny - less smart!
-                    EngineCore.outputText("\n<b>Your sleep is momentarily disturbed by the sound of imp hands banging against your cabin door. Fortunately, you've locked the door before you've went to sleep.</b>\n");
-                    return 1;
-                }
-                else if (flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] == 3) {
-                    EngineCore.outputText("\n<b>You notice an unusual pulse in the ward surrounding the camp.  It appears that a few uninvited visitors attempted to locate your camp last night.</b>\n");
-                    return 1;
-                }
-            }
-            //wormgasms
-            else if (flags[kFLAGS.EVER_INFESTED] == 1 && Utils.rand(100) <= 4 && player.hasCock() && !player.hasStatusEffect(StatusEffects.Infested)) {
-                if (player.hasCock() && (!player.hasStatusEffect(StatusEffects.JojoNightWatch) || !player.hasStatusEffect(StatusEffects.PureCampJojo)) && (flags[kFLAGS.HEL_GUARDING] == 0 || !SceneLib.helFollower.followerHel()) && !player.hasStatusEffect(StatusEffects.HeliaOff) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && flags[kFLAGS.SLEEP_WITH] == "")) {
-                    SceneLib.mountain.wormsScene.nightTimeInfestation();
-                    return 2;
-                }
-                else if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && flags[kFLAGS.SLEEP_WITH] == "") {
-                    EngineCore.outputText("\n<b>You hear the sound of a horde of worms banging against the door. Good thing you locked it before you went to sleep!</b>\n");
-                    return 1;
-                }
-                else if (flags[kFLAGS.HEL_GUARDING] > 0 && SceneLib.helFollower.followerHel() && !player.hasStatusEffect(StatusEffects.HeliaOff)) {
-                    EngineCore.outputText("\n<b>Helia informs you over a mug of beer that she stomped a horde of gross worms into paste.  She shudders after at the memory.</b>\n");
-                    return 1;
-                }
-                else if (player.gender > 0 && player.hasStatusEffect(StatusEffects.JojoNightWatch) && player.hasStatusEffect(StatusEffects.PureCampJojo) && flags[kFLAGS.JOJO_BIMBO_STATE] != 3) {
-                    EngineCore.outputText("\n<b>Jojo informs you that he dispatched a horde of tiny, white worms as they tried to sneak into camp in the night.</b>\n");
-                    return 1;
-                }
-                else if (flags[kFLAGS.ANEMONE_WATCH] > 0) {
-                    EngineCore.outputText("\n<b>Kid A seems fairly well fed in the morning, and you note a trail of slime leading off in the direction of the lake.</b>\n"); // Yeah, blah blah travel weirdness. Quickfix so it seems logically correct.
-                    return 1;
-                }
-            }
-        }
-        return 0;
     }
 
     public static function cheatTime(time:Number, needNext:Boolean = false):void {
