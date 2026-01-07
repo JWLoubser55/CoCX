@@ -372,7 +372,7 @@ public class Camp extends NPCAwareContent{
             }
 			else if (chance > rand(100) && !player.hasStatusEffect(StatusEffects.DefenseCanopy)) {
                 if (player.gender > 0 && (!player.hasStatusEffect(StatusEffects.JojoNightWatch) || !player.hasStatusEffect(StatusEffects.PureCampJojo)) && (flags[kFLAGS.HEL_GUARDING] == 0 || !SceneLib.helFollower.followerHel()) && !player.hasStatusEffect(StatusEffects.HeliaOff) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0 || flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) && (flags[kFLAGS.KIHA_CAMP_WATCH] == 0 || !SceneLib.kihaFollower.followerKiha()) && EtnaDaughterScene.EtnaDaughterGuardingCamp != 2 && SceneLib.midokaScene.MidokaGuardingCamp != 2 &&
-                        (!player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv1(StatusEffects.Familiar) == 0) && !(SceneLib.camp.sleepInCabin() && (player.inte / 5 >= rand(15) || player.lust < 0.8 * player.maxLust() || CoC.instance.gameSettings.sceneHunter_inst.other)) && !flags[kFLAGS.IN_INGNAM] || flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] == 2) {
+                        (!player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv1(StatusEffects.Familiar) == 0) && !(sleepInCabin() && (player.inte / 5 >= rand(15) || player.lust < 0.8 * player.maxLust() || CoC.instance.gameSettings.sceneHunter_inst.other)) && !flags[kFLAGS.IN_INGNAM] || flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] == 2) {
                     SceneLib.impScene.impGangabangaEXPLOSIONS();
                     doNext(playerMenu);
                     return;
@@ -413,12 +413,12 @@ public class Camp extends NPCAwareContent{
                     outputText("\n<b>The screams and roars alerts you to the fact your ghoul caught and defeated some invaders. You sleep comfortably to the sound of the bloodshed ongoing nearby.</b>\n");
                     return;
                 }
-                else if (SceneLib.camp.sleepInCabin() && player.inte / 5 >= rand(15) && player.lust < 0.8 * player.maxLust()) { //lust condition: horny - less smart!
-                    outputText("\n<b>Your sleep is momentarily disturbed by the sound of imp hands banging against your cabin door. Fortunately, you've locked the door before you've went to sleep.</b>\n");
-                    return;
-                }
                 else if (flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] == 3) {
                     outputText("\n<b>You notice an unusual pulse in the ward surrounding the camp.  It appears that a few uninvited visitors attempted to locate your camp last night.</b>\n");
+                    return;
+                }
+                else { //lust condition: horny - less smart!
+                    outputText("\n<b>Your sleep is momentarily disturbed by the sound of imp hands banging against your cabin door. Fortunately, you've locked the door before you've went to sleep.</b>\n");
                     return;
                 }
             }
@@ -2410,12 +2410,19 @@ public class Camp extends NPCAwareContent{
 				if (flags[kFLAGS.NIEVE_STAGE] == 1) outputText("\nThere's some odd snow here that you could do something with...\n");
 				else outputText("\nYou have a snow" + Holidays.nieveMF("man", "woman") + " here that seems like it could use a little something...\n");
 			}
+			if (Holidays.nieveHoliday()) {
+				if (flags[kFLAGS.NIEVE_STAGE] > 0 && flags[kFLAGS.NIEVE_STAGE] < 5) addButton(0, "Snow", SceneLib.holidays.nieveBuilding);
+				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 1 && player.hasKeyItem("Mysterious Seed") >= 0) addButton(1, "Mysterious Seed", Magnolia.treeMenu);
+				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] > 2 && flags[kFLAGS.CHRISTMAS_TREE_LEVEL] < 9) {
+					if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 7 && player.hasKeyItem("Decorations") >= 0) addButton(1, "Decorate Tree", Magnolia.treeMenu);
+					else addButton(1, (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] >= 8 ? "Ch. Tree" : "Green Tree"), Magnolia.treeMenu);
+				}
+			}
+			if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 1 && flags[kFLAGS.FUCK_FLOWER_LEVEL] < 4) addButton(2, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), SceneLib.holliScene.treeMenu);
+			if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FLOWER_LEVEL] >= 1 && flags[kFLAGS.FLOWER_LEVEL] < 4) addButton(2, (flags[kFLAGS.FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), HolliPure.treeMenu);
 			if (player.hasKeyItem("Dragon Egg") >= 0) {
                       SceneLib.emberScene.emberCampDesc();
 				addButton(3, "Egg", SceneLib.emberScene.emberEggInteraction);
-			}
-			if (player.hasKeyItem("Tamani's Satchel") >= 0) {
-				addButton(5, "Satchel", tamaniScene.openTamanisSatchel);
 			}
 			if (flags[kFLAGS.ANEMONE_KID] > 0) {
 				SceneLib.kidAScene.anemoneBarrelDescription();
@@ -2426,19 +2433,15 @@ public class Camp extends NPCAwareContent{
 				if (flags[kFLAGS.ALRAUNE_GROWING] > 14) outputText(" Some have already grown to adulthood.");
 				outputText("\n");
 			}
-			if (Holidays.nieveHoliday()) {
-				if (flags[kFLAGS.NIEVE_STAGE] > 0 && flags[kFLAGS.NIEVE_STAGE] < 5) addButton(1, "Snow", SceneLib.holidays.nieveBuilding);
-				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 1 && player.hasKeyItem("Mysterious Seed") >= 0) addButton(7, "Mysterious Seed", Magnolia.treeMenu);
-				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] > 2 && flags[kFLAGS.CHRISTMAS_TREE_LEVEL] < 9) {
-					if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 7 && player.hasKeyItem("Decorations") >= 0) addButton(7, "Decorate Tree", Magnolia.treeMenu);
-					else addButton(7, (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] >= 8 ? "Ch. Tree" : "Green Tree"), Magnolia.treeMenu);
-				}
+			if (flags[kFLAGS.ALRAUNE_SEEDS] > 0 && model.time.hours >= 6) addButton(5, "Garden", Gardening.manageyourgarden).hint("Visit your plant offspring");
+			if (player.hasKeyItem("Tamani's Satchel") >= 0) {
+				addButton(6, "Satchel", tamaniScene.openTamanisSatchel);
 			}
-			if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 1 && flags[kFLAGS.FUCK_FLOWER_LEVEL] < 4) addButton(2, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), SceneLib.holliScene.treeMenu);
-			if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FLOWER_LEVEL] >= 1 && flags[kFLAGS.FLOWER_LEVEL] < 4) addButton(2, (flags[kFLAGS.FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), HolliPure.treeMenu);
-			if (flags[kFLAGS.ALRAUNE_SEEDS] > 0 && model.time.hours >= 6) addButton(0, "Garden", Gardening.manageyourgarden).hint("Visit your plant offspring");
-			if (player.hasKeyItem("Rathazul's Purity Elixir") >= 0 && player.perkv1(PerkLib.PurityElixir) < 5) addButton(9, "PurityElixir", PurityElixir);
+			if (player.hasKeyItem("Rathazul's Purity Elixir") >= 0 && player.perkv1(PerkLib.PurityElixir) < 5) addButton(8, "PurityElixir", PurityElixir);
 		}
+		if (player.hasKeyItem("Gryphon Statuette") >= 0) addButton(9, "Gryphon", useGryphonStatuette);
+		if (player.hasKeyItem("Peacock Statuette") >= 0) addButton(9, "Peacock", usePeacockStatuette);
+		if (player.hasKeyItem("Gryphon Statuette") == 0 && player.hasKeyItem("Peacock Statuette") == 0) addButtonDisabled(9, "???", "Perhaps if you had a magical statuette...");
 		if (player.isInAyoArmor()) addButton(11, "Ayo Armors", AyoArmorsMaintance);
 		else addButtonDisabled(11, "Ayo Armors", "You need to wear any type of Ayo Armor to use this option.");
 		addButton(14, "Back", campActions);
@@ -2548,9 +2551,6 @@ public class Camp extends NPCAwareContent{
 			else addButtonDisabled(2, "Watch Sky", "The option to watch the sunset is available at 7pm, \n\nStargazing 8pm-5am.");
 		}
 		addButton(3, "Read Codex", codex.accessCodexMenu).hint("Read any codex entries you have unlocked.");
-		if (player.hasKeyItem("Gryphon Statuette") >= 0) addButton(9, "Gryphon", useGryphonStatuette);
-		if (player.hasKeyItem("Peacock Statuette") >= 0) addButton(9, "Peacock", usePeacockStatuette);
-		if (player.hasKeyItem("Gryphon Statuette") == 0 && player.hasKeyItem("Peacock Statuette") == 0) addButtonDisabled(9, "???", "Perhaps if you had a magical statuette...");
 		addButtonIfTrue(10, "Heal", useHealAtCamp, "Req. knowing Heal spell and have 30+ mana.", player.hasStatusEffect(StatusEffects.KnowsHeal) && player.mana >= 30);
 		addButtonIfTrue(11, "Cure", useCureAtCamp, "Req. knowing Cure spell and have 500+ mana.", player.hasStatusEffect(StatusEffects.KnowsCure) && player.mana >= 500);
 		addButton(14, "Back", campActions);
