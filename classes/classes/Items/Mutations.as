@@ -16897,7 +16897,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
 
-        if (type %3 == 0) {		//female
+        if (player.gender == 2) {		//female
             if (player.biggestTitSize() <= 20 && changes < changeLimit && rand(3) == 0) {
                 if (rand(2) == 0) outputText("[pg]Your [breasts] tingle for a moment before becoming larger.");
                 else outputText("[pg]You feel a little weight added to your chest as your [breasts] seem to inflate and settle in a larger size.");
@@ -17007,7 +17007,7 @@ public final class Mutations extends MutationsHelper {
             if (player.thickness < 66) outputText(player.modThickness(70, 5));
             if (player.femininity < 100) player.modFem(100, rand(3));
         }
-        if (type %3 == 1) {	//herm
+        if (player.gender == 3) {	//herm
             if (player.biggestTitSize() <= 22 && changes < changeLimit && rand(3) == 0) {
                 if (rand(2) == 0) outputText("[pg]Your [breasts] tingle for a moment before becoming larger.");
                 else outputText("[pg]You feel a little weight added to your chest as your [breasts] seem to inflate and settle in a larger size.");
@@ -17095,7 +17095,7 @@ public final class Mutations extends MutationsHelper {
             if (player.thickness < player.maxThicknessCap()) outputText(player.modThickness(player.maxThicknessCap(), 5));
             if (player.femininity < 85) player.modFem(85, rand(3));
         }
-        if (type %3 == 2) {	//male
+        if (player.gender == 1) {	//male
             //-Remove extra breast rows
             if (changes < changeLimit && player.bRows() > 1 && rand(3) == 0) {
                 changes++;
@@ -17194,9 +17194,8 @@ public final class Mutations extends MutationsHelper {
             }
         }
 
-        var skinColor:String = UshiOniRace.UshiOniSkinColors[type%6];
-        if (player.hasPlainSkinOnly() && player.skinColor != skinColor && changes < changeLimit && rand(3) == 0) {
-            player.skinColor = skinColor;
+        if (player.hasPlainSkinOnly() && !InCollection(player.skinColor, UshiOniRace.UshiOniSkinColors) && changes < changeLimit && rand(3) == 0) {
+			player.skinColor = randomChoice(UshiOniRace.UshiOniSkinColors);
             outputText("[pg]Your skin tingles ever so slightly as the color changes before your eyes. As the tingling diminishes, you find that your skin has turned " + player.skinColor + ".");
             changes++;
         }
@@ -17206,10 +17205,9 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
 
-        var hairColor: String = UshiOniRace.UshiOniHairColors[type%6]
-        if (player.hairType == Hair.NORMAL && player.hairColor != hairColor && changes < changeLimit && rand(3) == 0) {
-            player.hairColor = hairColor;
-            outputText("[pg]Your head tingles as something in your hair changes, the strands flashing for an instant before they turn " + hairColor + ".");
+        if (player.hairType == Hair.NORMAL && !InCollection(player.hairColor, UshiOniRace.UshiOniHairColors) && changes < changeLimit && rand(3) == 0) {
+            player.hairColor = randomChoice(UshiOniRace.UshiOniHairColors);
+            outputText("[pg]Your head tingles as something in your hair changes, the strands flashing for an instant before they turn " + player.hairColor + ".");
             changes++;
         }
 
@@ -17221,10 +17219,6 @@ public final class Mutations extends MutationsHelper {
         }
         //Ears
         if ((type == 0 || type == 1 || type == 2) && player.ears.type != Ears.COW && changes < changeLimit && rand(3) == 0) {
-            if (player.hasStatusEffect(StatusEffects.UshiOnnaVariant)) {
-                player.removeStatusEffect(StatusEffects.UshiOnnaVariant);
-                player.createStatusEffect(StatusEffects.UshiOnnaVariant, 0, 0, 0, 0);
-            } else player.createStatusEffect(StatusEffects.UshiOnnaVariant, 0, 0, 0, 0);
             outputText("[pg]");
 			transformations.EarsCow.applyEffect();
             changes++;
@@ -17257,6 +17251,11 @@ public final class Mutations extends MutationsHelper {
         }
         //Tail
         if (player.tailType != Tail.USHI_ONI && (player.lowerBody == LowerBody.CHITINOUS_SPIDER_LEGS || player.lowerBody == LowerBody.DRIDER) && rand(4) == 0) {// && player.arms.type == Arms.SPIDER
+            if (player.hasStatusEffect(StatusEffects.UshiOnnaVariant)) {
+                player.removeStatusEffect(StatusEffects.UshiOnnaVariant);
+                player.createStatusEffect(StatusEffects.UshiOnnaVariant, 0, 0, 0, 0);
+            }
+			else player.createStatusEffect(StatusEffects.UshiOnnaVariant, 0, 0, 0, 0);
             outputText("[pg]");
             transformations.TailUshiOni.applyEffect();
             changes++;
@@ -17308,11 +17307,15 @@ public final class Mutations extends MutationsHelper {
             transformations.HornsNone.applyEffect();
             changes++;
         }
+		if (player.faceType == Face.USHI_ONI && player.eyes.type == Eyes.HUMAN && rand(3) == 0 && changes < changeLimit) {
+			outputText("[pg]");
+			transformations.EyesSpider.applyEffect();
+            changes++;
+        }
         //eyes color change
-        var eyeColor:String = UshiOniRace.UshiOniEyeColors[type%6];
-        if (transformations.EyesChangeColor([eyeColor]).isPossible() && changes < changeLimit && rand(2) == 0) {
-            transformations.EyesChangeColor([eyeColor]).applyEffect(false);
-            outputText("[pg]Your vision gets blurry and your eyes itch, you go to a barrel with water and put your head underwater, eyes wide open. After the pain has subsided you take your head out of the water and look at its surface, your eyes are now "+eyeColor+".");
+        if (!InCollection(player.eyes.colour, UshiOniRace.UshiOniEyeColors) && changes < changeLimit && rand(2) == 0) {
+            transformations.EyesChangeColor(UshiOniRace.UshiOniEyeColors).applyEffect(false);
+            outputText("[pg]Your vision gets blurry and your eyes itch, you go to a barrel with water and put your head underwater, eyes wide open. After the pain has subsided you take your head out of the water and look at its surface, your eyes are now "+player.eyes.colour+".");
             changes++;
         }
 

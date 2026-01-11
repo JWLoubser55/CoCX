@@ -42,23 +42,18 @@ public class UshiOniRace extends Race{
 		
 		addScores()
 				.earType(Ears.COW, +1)
-				.tailType(Tail.USHI_ONI, +1)
+				.eyeType(Eyes.SPIDER, +1)
 				.faceType(Face.USHI_ONI, +1)
 				.hornType(Horns.USHI_ONI, +1)
+				.tailType(Tail.USHI_ONI, +1)
 				.armType(Arms.USHI_ONI, +1)
 				.legType(LowerBody.USHI_ONI, +2)
-				.skinBasePattern(Skin.PATTERN_RED_PANDA_UNDERBODY, +2)
+				.skinBasePattern(Skin.PATTERN_USHI_ONI_TATTOO, +2)
 				.hairTypeAndColor1(Hair.NORMAL, ANY(UshiOniHairColors), +1)
+				.plainSkinOfColor1(ANY(UshiOniSkinColors), +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
-		addConditionedScores(
-				function (body:BodyData): Boolean {
-					return body.player.hasPlainSkinOnly();
-				},
-				"plain skin;"
-		)
-				.skinColor1(ANY(UshiOniSkinColors), +1);
 		
-		buildTier(11, "ushi-oni")
+		buildTier(10, "ushi-oni")
 				.customNamingFunction(function(body:BodyData):String {
 					var prefix:String = "";
 					switch (body.player.statusEffectv1(StatusEffects.UshiOnnaVariant)) {
@@ -73,8 +68,8 @@ public class UshiOniRace extends Race{
 				.buffs({
 					"str.mult": +0.80,
 					"tou.mult": +0.70,
-					"int.mult": -0.40,
-					"wis.mult": -0.40,
+					"int.mult": -0.50,
+					"wis.mult": -0.45,
 					"lib.mult": +0.95
 				})
 				.end();
