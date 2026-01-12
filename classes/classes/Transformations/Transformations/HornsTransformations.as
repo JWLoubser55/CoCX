@@ -551,6 +551,7 @@ public class HornsTransformations extends MutationsHelper {
 
 				player.horns.type = Horns.USHI_ONI;
 				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(HornsMem.getMemory(HornsMem.USHI_ONI));
 			},
 			// is present
 			function (): Boolean {

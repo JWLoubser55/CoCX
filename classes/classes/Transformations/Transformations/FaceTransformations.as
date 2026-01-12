@@ -1032,6 +1032,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.USHI_ONI;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.USHI_ONI));
 			},
 			// is present
 			function (): Boolean {

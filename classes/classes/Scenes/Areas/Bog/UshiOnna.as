@@ -13,7 +13,7 @@ import classes.internals.*;
 	 * ...
 	 * @author ...
 	 */
-	public class UshiOnna 
+	public class UshiOnna extends AbstractSpiderMorph 
 	{
 		
 		public function UshiOnna() 

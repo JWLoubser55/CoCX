@@ -753,6 +753,7 @@ public class SkinTransformations extends MutationsHelper {
 				player.skin.base.adj = "black spider glyph-tattooed";
 
 				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SkinPatternMem.getMemory(SkinPatternMem.USHI_ONI_TATTOO));
 			},
 			// is present
 			function (): Boolean {

@@ -295,6 +295,17 @@ package classes.GeneticMemories {
 		  }
 	  });
 
+	  public static const USHI_ONI:int = _partid++;
+	  EnumValue.add(Memories, USHI_ONI, "USHI_ONI", {
+		  id: "UshiOni Horns",
+		  name: "UshiOni Horns",
+		  cost: 100,
+		  title: "UshiOni Horns",
+		  transformation: function(): Transformation {
+			  return CoC.instance.transformations.HornsUshiOni;
+		  }
+	  });
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

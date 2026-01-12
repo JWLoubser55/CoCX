@@ -1,6 +1,7 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
+import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 import classes.StatusEffects;
@@ -52,6 +53,8 @@ public class UshiOniRace extends Race{
 				.hairTypeAndColor1(Hair.NORMAL, ANY(UshiOniHairColors), +1)
 				.plainSkinOfColor1(ANY(UshiOniSkinColors), +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
+		
+		addMutation(IMutationsLib.VenomGlandsIM);
 		
 		buildTier(10, "ushi-oni")
 				.customNamingFunction(function(body:BodyData):String {

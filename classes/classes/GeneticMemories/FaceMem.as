@@ -770,6 +770,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const USHI_ONI:int = _partid++;
+		EnumValue.add(Memories, USHI_ONI, "USHI_ONI", {
+			id: "UshiOni Face",
+			name: "UshiOni Face",
+			cost: 100,
+			title: "UshiOni Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceUshiOniOnna;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}
