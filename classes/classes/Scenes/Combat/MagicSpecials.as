@@ -834,7 +834,13 @@ public class MagicSpecials extends BaseCombatContent {
 			bd.requireFatigue(spellCost(60));
 			if (player.hasStatusEffect(StatusEffects.CooldownFrozenKiss)) {
 				bd.disable("You need more time before you can use Frozen Kiss again.");
-
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+		}
+		if (player.isRaceCached(Races.USHIONNA)) {
+			bd = buttons.add("ToxicBreath", ushiOnnaToxicBreath, "Poison your foe with a powerful breath attack. \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "9":"10")+" rounds");
+			bd.requireFatigue(spellCost(50));
+			if (player.hasStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna)) {
+				bd.disable("You need more time before you can use Toxic Breath again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 		}
 		if (player.hasPerk(PerkLib.FireLord)) {
@@ -1370,29 +1376,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		player.createStatusEffect(StatusEffects.CooldownFreezingBreathYeti,cooldown,0,0,0);
 		var damage:Number = 0;
-		if (player.tou < 21) damage += (player.tou/3 + rand(player.tou/2));	//omfg why....
-		else if (player.tou < 41) damage += (player.tou / 2 + rand((player.tou * 3) / 4));
-		else if (player.tou < 61) damage += ((player.tou * 2) / 3 + rand(player.tou));
-		else if (player.tou < 81) damage += ((player.tou * 5) / 6 + rand(player.tou * 1.25));
-		else if (player.tou < 101) damage += (player.tou + rand(player.tou * 1.5));
-		else if (player.tou < 151) damage += ((player.tou * 1.25) + rand(player.tou * 1.75));
-		else if (player.tou < 201) damage += ((player.tou * 1.5) + rand(player.tou * 2));
-		else if (player.tou < 251) damage += ((player.tou * 1.75) + rand(player.tou * 2.25));
-		else if (player.tou < 301) damage += ((player.tou * 2) + rand(player.tou * 2.5));
-		else if (player.tou < 351) damage += ((player.tou * 2.25) + rand(player.tou * 2.75));
-		else if (player.tou < 401) damage += ((player.tou * 2.5) + rand(player.tou * 3));
-		else if (player.tou < 451) damage += ((player.tou * 2.75) + rand(player.tou * 3.25));
-		else if (player.tou < 501) damage += ((player.tou * 3) + rand(player.tou * 3.5));
-		else if (player.tou < 551) damage += ((player.tou * 3.25) + rand(player.tou * 3.75));
-		else if (player.tou < 601) damage += ((player.tou * 3.5) + rand(player.tou * 4));
-		else if (player.tou < 651) damage += ((player.tou * 3.75) + rand(player.tou * 4.25));
-		else if (player.tou < 701) damage += ((player.tou * 4) + rand(player.tou * 4.5));
-		else if (player.tou < 751) damage += ((player.tou * 4.25) + rand(player.tou * 4.75));
-		else if (player.tou < 801) damage += ((player.tou * 4.5) + rand(player.tou * 5));
-		else if (player.tou < 851) damage += ((player.tou * 4.75) + rand(player.tou * 5.25));
-		else if (player.tou < 901) damage += ((player.tou * 5) + rand(player.tou * 5.5));
-		else if (player.tou < 951) damage += ((player.tou * 5.25) + rand(player.tou * 5.75));
-		else damage += ((player.tou * 5.5) + rand(player.tou * 6));
+		damage += scalingBonusToughness() * 0.2;
 		damage = calcGlacialMod(damage, true);
 		if (combat.wearingWinterScarf()) damage *= 1.2;
 		damage *= magicAbilitiesGoBrrr();
@@ -1433,6 +1417,48 @@ public class MagicSpecials extends BaseCombatContent {
 			}
 			outputText(" ");
 			doIceDamage(damage, true, true);
+		}
+		outputText("\n\n");
+		checkAchievementDamage(damage);
+		combat.heroBaneProc(damage);
+		checkLethiceAndCombatRoundOver();
+	}
+
+	public function ushiOnnaToxicBreath():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		fatigue(50, USEFATG_MAGIC_NOBM);
+		var cooldown:Number = 10;
+		//if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) cooldown -= 3;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+		player.createStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna,cooldown,0,0,0);
+		var damage:Number = 0;
+		damage += scalingBonusToughness() * 0.2;
+		//damage = calcEclypseMod(damage, true);
+		//if (combat.wearingWinterScarf()) damage *= 1.2;
+		damage *= magicAbilitiesGoBrrr();
+		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		//if (player.perkv1(IMutationsLib.YetiFatIM) >= 1) damage *= 1.50;
+		damage = Math.round(damage * combat.poisonDamageBoostedByDao());
+		outputText("You inhale deeply, then blow a toxic breath attack at your opponent!");
+		//Shell
+		if(monster.hasStatusEffect(StatusEffects.Shell)) {
+			outputText("As soon as your magic touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+			enemyAI();
+			return;
+		}
+		if (combat.checkConcentration()) return; //Amily concentration
+		if (monster is LivingStatue)
+		{
+			outputText("The poisons courses by the stone skin harmlessly. Thou it does leave the surface of the statue shimerring with a thin layer of the toxins.");
+			enemyAI();
+			return;
+		}
+		//Special enemy avoidances
+		if (valaReflect(damage, "poison breath", player.takePoisonDamage)) {}
+		else {
+			outputText(" ");
+			doPoisonDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -6728,7 +6754,7 @@ public class MagicSpecials extends BaseCombatContent {
 				doLightningDamage((damage * 3), true, true);
 				break;
 			case 1:
-				outputText("[Themonster]  starts to burn as [monster his] body catches fire from the eyebeam! ");
+				outputText("[Themonster] starts to burn as [monster his] body catches fire from the eyebeam! ");
 				if (player.armor == armors.SFLAREQ) damage *= 3;
 				damage = Math.round(damage * combat.fireDamageBoostedByDao());
 				doFireDamage(damage, true, true);
@@ -6736,7 +6762,7 @@ public class MagicSpecials extends BaseCombatContent {
 				else monster.createStatusEffect(StatusEffects.BurnDoT, 2, 0.01, 0, 0);
 				break;
 			case 2:
-				outputText("[Themonster]  turns green as a potent poison inflicted by the eyebeam saps [monster his] strength! ");
+				outputText("[Themonster] turns green as a potent poison inflicted by the eyebeam saps [monster his] strength! ");
 				damage = Math.round(damage * combat.poisonDamageBoostedByDao());
 				doPoisonDamage(damage, true, true);
 				var strDebuff:Number = 0;
@@ -6749,7 +6775,7 @@ public class MagicSpecials extends BaseCombatContent {
 				monster.speStat.core.value -= speDebuff;
 				break;
 			case 3:
-				outputText("[Themonster]  skin is covered with ice from the eyebeam as the air surrounding [monster him] freezes solid! ");
+				outputText("[Themonster] skin is covered with ice from the eyebeam as the air surrounding [monster him] freezes solid! ");
 				damage = Math.round(damage * combat.iceDamageBoostedByDao());
 				doIceDamage(damage, true, true);
 				if (!monster.hasPerk(PerkLib.Resolute)) {
@@ -6760,12 +6786,12 @@ public class MagicSpecials extends BaseCombatContent {
 				}
 				break;
 			case 4:
-				outputText("[Themonster]  takes heavy cold damage! ");
+				outputText("[Themonster] takes heavy cold damage! ");
 				damage = Math.round(damage * combat.iceDamageBoostedByDao());
 				doIceDamage((damage * 3), true, true);
 				break;
 			case 5:
-				outputText("[Themonster]  is magically aroused by the eyebeam. ");
+				outputText("[Themonster] is magically aroused by the eyebeam. ");
 				var lustDmg:Number = player.lib / 10;
 				if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 				if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;

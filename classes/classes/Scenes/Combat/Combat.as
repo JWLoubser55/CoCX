@@ -13976,6 +13976,14 @@ public class Combat extends BaseContent {
                 player.addStatusValue(StatusEffects.CooldownFreezingBreathYeti, 1, -1);
             }
         }
+		//Toxic Breath Ushi Onna
+		if (player.hasStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna)) {
+            if (player.statusEffectv1(StatusEffects.CooldownToxicBreathUshiOnna) <= 0) {
+                player.removeStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna);
+            } else {
+                player.addStatusValue(StatusEffects.CooldownToxicBreathUshiOnna, 1, -1);
+            }
+        }
         //Phoenix Fire Breath
         if (player.hasStatusEffect(StatusEffects.CooldownPhoenixFireBreath)) {
             if (player.statusEffectv1(StatusEffects.CooldownPhoenixFireBreath) <= 0) {

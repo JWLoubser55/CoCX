@@ -1479,6 +1479,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const CooldownTelekineticGrab:StatusEffectType            = mkCombat("Cooldown Telekinetic Grab");
 		public static const CooldownTerror:StatusEffectType              		= mkCombat("Cooldown Terror");
 		public static const CooldownTornadoStrike:StatusEffectType       		= mkCombat("Cooldown Tornado Strike");
+		public static const CooldownToxicBreathUshiOnna:StatusEffectType  		= mkCombat("Cooldown Toxic Breath (UO)");
 		public static const CooldownTremor:StatusEffectType        				= mkCombat("Cooldown Tremor");
 		public static const CooldownTrueEvasion:StatusEffectType           		= mkCombat("Cooldown True Evasion");
 		public static const CooldownThunderGore:StatusEffectType           		= mkCombat("Cooldown Thunder Gore");

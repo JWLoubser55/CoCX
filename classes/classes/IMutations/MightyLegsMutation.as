@@ -43,7 +43,7 @@ public class MightyLegsMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireAdaptationsMutationSlot()
-                    .requireAnyRace(Races.KANGAROO, Races.BUNNY, Races.EASTERBUNNY, Races.LAQUINE, Races.HORSE, Races.CENTAUR, Races.COW, Races.MINOTAUR, Races.JABBERWOCKY, Races.SATYR, Races.DEER);
+                    .requireAnyRace(Races.KANGAROO, Races.BUNNY, Races.EASTERBUNNY, Races.LAQUINE, Races.HORSE, Races.CENTAUR, Races.COW, Races.MINOTAUR, Races.JABBERWOCKY, Races.SATYR, Races.DEER, Races.USHIONNA);
                 }
                 else{
                     var pLvl:int = pTier * 30;

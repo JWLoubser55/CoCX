@@ -15,7 +15,32 @@ import classes.internals.*;
 	 */
 	public class UshiOnna extends AbstractSpiderMorph 
 	{
+		private function toxicBreath():void {
+			var damage:Number = (eBaseIntelligenceDamage() + eBaseWisdomDamage()) * 1.2;
+			damage = Math.round(damage);
+			if (hasStatusEffect(StatusEffects.Provoke)) damage = Math.round(damage * statusEffectv2(StatusEffects.Provoke));
+			outputText("She inhale deeply, then blow a toxic breath attack toward you! ");
+			player.takePoisonDamage(damage, true);
+		}
 		
+		override protected function performCombatAction():void
+		{
+			if(player.spe >= 2 && rand(2) == 0) {
+				spiderMorphWebAttack();
+			}
+			else if(!player.hasStatusEffect(StatusEffects.WebSilence) && rand(3) == 0) {
+				spiderSilence();
+			}
+			else if(!player.hasStatusEffect(StatusEffects.Disarmed) && !player.isFistOrFistWeapon() && rand(3) == 0) {
+				spiderDisarm();
+			}
+			else if(rand(2) == 0 || player.spe < 2) getBitten();
+			else {
+				if (rand(2) == 0) toxicBreath();
+				else eAttack();
+			}
+		}
+
 		public function UshiOnna() 
 		{
 			this.a = "the ";
@@ -56,6 +81,7 @@ import classes.internals.*;
 					.add(useables.T_SSILK,1)
 					.add(null,4);
 			this.tailType = Tail.USHI_ONI;
+			this.createPerk(PerkLib.MonsterRegeneration, 1, 0, 0, 0);
 			checkMonster();
 		}
 		
