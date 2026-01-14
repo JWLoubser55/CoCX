@@ -16882,7 +16882,6 @@ public final class Mutations extends MutationsHelper {
         clearOutput();
         outputText("You use all the courage you can muster and in one go, swallow the gossamer. At that very moment, your stomach groans as you feel your body changing...");
 		if (player.blockingBodyTransformations()) changeLimit = 0;
-
         if (changes < changeLimit && rand(2) == 0 && player.tallness < 84) {
             temp = rand(5) + 3;
             //Slow rate of growth near ceiling
@@ -16896,7 +16895,6 @@ public final class Mutations extends MutationsHelper {
             player.tallness += temp;
             changes++;
         }
-
         if (player.gender == 2) {		//female
             if (player.biggestTitSize() <= 20 && changes < changeLimit && rand(3) == 0) {
                 if (rand(2) == 0) outputText("[pg]Your [breasts] tingle for a moment before becoming larger.");
@@ -16980,7 +16978,6 @@ public final class Mutations extends MutationsHelper {
                 player.butt.type--;
                 outputText("[pg]A feeling of tightness starts in your [butt], increasing gradually. The sensation grows and grows, but as it does your center of balance shifts. You reach back to feel yourself, and sure enough your massive booty is shrinking into a more manageable size.");
             }
-
             if (changes < changeLimit && player.cocks.length > 0 && rand(2) == 0) {
                 //If the player has at least one dick, decrease the size of each slightly,
                 outputText("[pg]");
@@ -17090,7 +17087,6 @@ public final class Mutations extends MutationsHelper {
                 player.butt.type--;
                 outputText("[pg]A feeling of tightness starts in your [butt], increasing gradually. The sensation grows and grows, but as it does your center of balance shifts. You reach back to feel yourself, and sure enough your massive booty is shrinking into a more manageable size.");
             }
-
             if (player.tone < player.maxToneCap()) outputText(player.modTone(player.maxToneCap(), 15));
             if (player.thickness < player.maxThicknessCap()) outputText(player.modThickness(player.maxThicknessCap(), 5));
             if (player.femininity < 85) player.modFem(85, rand(3));
@@ -17169,11 +17165,9 @@ public final class Mutations extends MutationsHelper {
                 player.butt.type--;
                 outputText("[pg]A feeling of tightness starts in your [butt], increasing gradually. The sensation grows and grows, but as it does your center of balance shifts. You reach back to feel yourself, and sure enough your massive booty is shrinking into a more manageable size.");
             }
-
             if (player.tone < player.maxToneCap()) outputText(player.modTone(player.maxToneCap(), 15));
             if (player.thickness < 30) outputText(player.modThickness(30, 5));
             if (player.femininity > 10) player.modFem(10, 20);
-
             //Kills vagina size (and eventually the whole vagina)
             if (player.vaginas.length > 0) {
                 if (player.vaginas[0].vaginalLooseness > VaginaClass.LOOSENESS_TIGHT) {
@@ -17193,7 +17187,6 @@ public final class Mutations extends MutationsHelper {
                 changes++;
             }
         }
-
         if (player.hasPlainSkinOnly() && !InCollection(player.skinColor, UshiOniRace.UshiOniSkinColors) && changes < changeLimit && rand(3) == 0) {
 			player.skinColor = randomChoice(UshiOniRace.UshiOniSkinColors);
             outputText("[pg]Your skin tingles ever so slightly as the color changes before your eyes. As the tingling diminishes, you find that your skin has turned " + player.skinColor + ".");
@@ -17204,13 +17197,11 @@ public final class Mutations extends MutationsHelper {
             transformations.SkinPlain.applyEffect();
             changes++;
         }
-
         if (player.hairType == Hair.NORMAL && !InCollection(player.hairColor, UshiOniRace.UshiOniHairColors) && changes < changeLimit && rand(3) == 0) {
             player.hairColor = randomChoice(UshiOniRace.UshiOniHairColors);
             outputText("[pg]Your head tingles as something in your hair changes, the strands flashing for an instant before they turn " + player.hairColor + ".");
             changes++;
         }
-
         //Remove special hairs
         if (changes < changeLimit && player.hairType != Hair.NORMAL && rand(3) == 0) {
 		    outputText("[pg]");
@@ -17218,39 +17209,19 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Ears
-        if ((type == 0 || type == 1 || type == 2) && player.ears.type != Ears.COW && changes < changeLimit && rand(3) == 0) {
+        if (player.ears.type != Ears.COW && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
 			transformations.EarsCow.applyEffect();
             changes++;
         }
         //Tattoo
-        if (player.skin.base.type == Skin.PLAIN && !player.skin.hasUshiOniTattoo() && rand(3) == 0 && changes < changeLimit) {
+        if (player.hasPlainSkinOnly() && !player.skin.hasUshiOniTattoo() && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.SkinPatternUshiOniTattoo.applyEffect();
             changes++;
         }
-        //Legs
-        if ((!player.isBiped() && player.lowerBody != LowerBody.DRIDER) && changes < changeLimit && rand(4) == 0) {
-            outputText("[pg]");
-            transformations.LowerBodyHuman.applyEffect();
-            changes++;
-        }
-        //Normal Biped Legs -> Carapace-Clad Legs
-		if ((
-                (type == 1 && !InCollection(player.lowerBody, LowerBody.DRIDER, LowerBody.ATLACH_NACHA, LowerBody.CHITINOUS_SPIDER_LEGS))
-                ||
-                (type != 1 && player.lowerBody != LowerBody.CHITINOUS_SPIDER_LEGS)
-            ) && (
-                !player.isGoo() && !player.isNaga() && !player.isTaur() && !player.isScylla()
-            )
-            && changes < changeLimit && rand(4) == 0
-		) {
-            outputText("[pg]");
-            transformations.LowerBodySpider.applyEffect();
-            changes++;
-        }
         //Tail
-        if (player.tailType != Tail.USHI_ONI && (player.lowerBody == LowerBody.CHITINOUS_SPIDER_LEGS || player.lowerBody == LowerBody.DRIDER) && rand(4) == 0) {// && player.arms.type == Arms.SPIDER
+        if (player.tailType != Tail.USHI_ONI && rand(3) == 0 && changes < changeLimit) {// && player.arms.type == Arms.SPIDER
             if (player.hasStatusEffect(StatusEffects.UshiOnnaVariant)) {
                 player.removeStatusEffect(StatusEffects.UshiOnnaVariant);
                 player.createStatusEffect(StatusEffects.UshiOnnaVariant, 0, 0, 0, 0);
@@ -17260,26 +17231,38 @@ public final class Mutations extends MutationsHelper {
             transformations.TailUshiOni.applyEffect();
             changes++;
         }
-        //Drider Item Only: Carapace-Clad Legs to Drider Legs
-        if (player.lowerBody == LowerBody.CHITINOUS_SPIDER_LEGS && rand(4) == 0 && player.tailType == Tail.SPIDER_ADBOMEN) {
-            outputText("[pg]");
-            transformations.LowerBodyDrider.applyEffect();
-            changes++;
-        }
         //Drider butt
         if (player.isDrider() && player.tailType == Tail.USHI_ONI && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
             transformations.LowerBodyUshiOni.applyEffect();
             changes++;
         }
+        //Drider Item Only: Carapace-Clad Legs to Drider Legs
+        if (player.lowerBody == LowerBody.CHITINOUS_SPIDER_LEGS && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.LowerBodyDrider.applyEffect();
+            changes++;
+        }
+        //Normal Biped Legs -> Carapace-Clad Legs
+		if (player.lowerBody == LowerBody.HUMAN && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.LowerBodySpider.applyEffect();
+            changes++;
+        }
+        //Legs
+        if (player.lowerBody != LowerBody.CHITINOUS_SPIDER_LEGS && player.lowerBody != LowerBody.DRIDER && player.lowerBody != LowerBody.USHI_ONI && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.LowerBodyHuman.applyEffect();
+            changes++;
+        }
         //Ushi oni/onna arms
-        if (player.arms.type == Arms.SPIDER && player.arms.type != Arms.USHI_ONI && player.lowerBody == LowerBody.USHI_ONI && changes < changeLimit && rand(3) == 0) {
+        if (player.arms.type == Arms.SPIDER && player.arms.type != Arms.USHI_ONI && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
             transformations.ArmsUshiOni.applyEffect();
             changes++;
         }
         //(Arms to carapace-covered arms)
-        if (!InCollection(Arms.SPIDER) && player.lowerBody == LowerBody.USHI_ONI && changes < changeLimit && rand(3) == 0) {
+        if (player.lowerBody == LowerBody.USHI_ONI && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
             transformations.ArmsSpider.applyEffect();
             changes++;
@@ -17332,7 +17315,7 @@ public final class Mutations extends MutationsHelper {
 			player.tallness += temp;
 			changes++;
 		}
-		player.refillHunger(20);
+		player.refillHunger(5);
         flags[kFLAGS.TIMES_TRANSFORMED] += changes;
     }
 

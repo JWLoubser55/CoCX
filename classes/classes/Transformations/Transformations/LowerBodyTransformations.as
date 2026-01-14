@@ -1732,8 +1732,6 @@ public class LowerBodyTransformations extends MutationsHelper {
 
 			TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyDrider, doOutput);
 
-			TransformationUtils.applyTFIfNotPresent(transformations.TailUshiOni, doOutput);
-
 			desc += "Your spider body trembles, an intense pressure forming under the chitin, at the same time your plates fall to the ground and [haircolor] fur begins to sprout all over your abdomen. You wince in pain from the sudden growth, your drider legs chitin falls off as well, getting thicker and harder turning into bone. After the torturous session, you look back to see <b>you now have an Ushi-Oni lower body with an internal skeleton and fur.</b>";
 
 			if (doOutput) outputText(desc);
