@@ -53,6 +53,7 @@ public class UshiOniRace extends Race{
 				.hairTypeAndColor1(Hair.NORMAL, ANY(UshiOniHairColors), +1)
 				.plainSkinOfColor1(ANY(UshiOniSkinColors), +1)
 				.height(AT_LEAST(108), +1)
+				//.hasPerk(PerkLib.MonstrousRegeneration, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.VenomGlandsIM);
@@ -77,9 +78,9 @@ public class UshiOniRace extends Race{
 					"wis.mult": -0.45,
 					"lib.mult": +0.95
 				})
-				.end();
-		/*
-		buildTier(10, "elder ushi-oni")
+				.end();/*
+		
+		buildTier(16, "elder ushi-oni")
 				.customNamingFunction(function(body:BodyData):String {
 					var prefix:String = "";
 					switch (body.player.statusEffectv1(StatusEffects.UshiOnnaVariant)) {
@@ -92,11 +93,11 @@ public class UshiOniRace extends Race{
 					return prefix + body.mf("ushi-oni","ushi-onna");
 				})
 				.buffs({
-					"str.mult": +0.80,
-					"tou.mult": +0.70,
-					"int.mult": -0.50,
-					"wis.mult": -0.45,
-					"lib.mult": +0.95
+					"str.mult": +1.20,
+					"tou.mult": +1.05,
+					"int.mult": -0.75,
+					"wis.mult": -0.60,
+					"lib.mult": +1.50
 				})
 				.end();*/
 	}

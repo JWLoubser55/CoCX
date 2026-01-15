@@ -4567,6 +4567,8 @@ public class PerkLib
 		public static const MindbreakerBrain1toX:MindBreakerBrain = new MindBreakerBrain();
 		public static const MindFungus:PerkType = mk("Mind Fungus", "Mind Fungus",
 				"Half of your intelligence is added as an extra modifier to psionic ability.");
+		public static const MonstrousRegeneration:PerkType = mk("Monstrous Regeneration", "Monstrous Regeneration",
+				"Your monstrous nature allow to regenerates 1% of HP per round in combat and 2% of HP per hour.");
 		public static const MothOvipositor:PerkType = mk("Moth Ovipositor", "Moth Ovipositor",
 				"Allows you to lay eggs through a special organ on your insect abdomen, though you need at least 10 eggs to lay.");
 		public static const MummyCurse:PerkType = mk("Mummy Curse", "Mummy Curse",
@@ -9242,4 +9244,4 @@ public class PerkLib
 	}
 }
 
-}
+}

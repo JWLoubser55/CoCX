@@ -1433,7 +1433,8 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		player.createStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna,cooldown,0,0,0);
 		var damage:Number = 0;
-		damage += scalingBonusToughness() * 0.2;
+		damage += scalingBonusStrength() * 0.1;
+		damage += scalingBonusToughness() * 0.1;
 		//damage = calcEclypseMod(damage, true);
 		//if (combat.wearingWinterScarf()) damage *= 1.2;
 		damage *= magicAbilitiesGoBrrr();
@@ -1455,10 +1456,12 @@ public class MagicSpecials extends BaseCombatContent {
 			return;
 		}
 		//Special enemy avoidances
-		if (valaReflect(damage, "poison breath", player.takePoisonDamage)) {}
+		if (valaReflect(damage, "toxic breath", player.takePoisonDamage)) {}
 		else {
 			outputText(" ");
 			doPoisonDamage(damage, true, true);
+			if (monster.hasStatusEffect(StatusEffects.PoisonDoT)) monster.addStatusValue(StatusEffects.PoisonDoT, 1, 1);
+			else monster.createStatusEffect(StatusEffects.PoisonDoT, 3, 0.02, 0, 0);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -7803,4 +7806,4 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 }
-}
+}

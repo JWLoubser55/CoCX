@@ -13308,6 +13308,23 @@ public class Combat extends BaseContent {
                 outputText("\n\n");
             }
         }
+        //Poison DoT
+        if (player.hasStatusEffect(StatusEffects.PoisonDoT)) {
+			if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 2) player.addStatusValue(StatusEffects.PoisonDoT, 1, -2);
+            else player.addStatusValue(StatusEffects.PoisonDoT, 1, -1);
+            //Heal wounds
+            if (player.statusEffectv1(StatusEffects.PoisonDoT) <= 0 || player.hasPerk(PerkLib.KingOfTheJungle) || player.hasPerk(PerkLib.Circuit)) {
+                if (!player.hasPerk(PerkLib.Circuit)) outputText("Poisoned wounds left by [themonster] finally close ups.\n\n");
+                player.removeStatusEffect(StatusEffects.AcidDoT);
+            } else {
+                var poisonDoTPlayer:Number = (monster.str + monster.spe + monster.tou) * 2.5;
+                poisonDoTPlayer += player.maxHP() * player.statusEffectv2(StatusEffects.PoisonDoT);
+				if (player.statStore.hasBuff("Crossed Holy Band")) poisonDoTPlayer *= 0.5;
+                outputText("You are hurt by lingering Poison after-effect. ");
+                player.takeAcidDamage(poisonDoTPlayer, true);
+                outputText("\n\n");
+            }
+        }
         //Frostburn DoT
         if (player.hasStatusEffect(StatusEffects.FrostburnDoT)) {
             if (player.perkv1(IMutationsLib.HumanMetabolismIM) >= 2) player.addStatusValue(StatusEffects.FrostburnDoT, 1, -2);
@@ -14694,6 +14711,7 @@ public class Combat extends BaseContent {
 			if (player.perkv1(PerkLib.AbsorbNutrient) > 6) maxPercentRegen += 1;
 			else maxPercentRegen += 0.5;
 		}
+        if (player.hasPerk(PerkLib.MonstrousRegeneration)) maxPercentRegen += 1;
         if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) maxPercentRegen += 1 * player.humanBodyCultivators();
         if (player.hasPerk(PerkLib.FleshBodyVoLWarriorStage)) maxPercentRegen += 1 * player.humanBodyCultivators();
         if (player.hasPerk(PerkLib.FleshBodyVoLElderStage)) maxPercentRegen += 1 * player.humanBodyCultivators();

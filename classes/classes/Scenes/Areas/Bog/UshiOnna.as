@@ -5,24 +5,16 @@ import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
 import classes.BodyParts.LowerBody;
 import classes.BodyParts.Tail;
+import classes.Scenes.Monsters.AbstractBullSpider;
 import classes.Scenes.SceneLib;
-import classes.Scenes.Areas.Swamp.AbstractSpiderMorph;
 import classes.internals.*;
 
 /**
 	 * ...
 	 * @author ...
 	 */
-	public class UshiOnna extends AbstractSpiderMorph 
+	public class UshiOnna extends AbstractBullSpider 
 	{
-		private function toxicBreath():void {
-			var damage:Number = (eBaseIntelligenceDamage() + eBaseWisdomDamage()) * 1.2;
-			damage = Math.round(damage);
-			if (hasStatusEffect(StatusEffects.Provoke)) damage = Math.round(damage * statusEffectv2(StatusEffects.Provoke));
-			outputText("She inhale deeply, then blow a toxic breath attack toward you! ");
-			player.takePoisonDamage(damage, true);
-		}
-		
 		override protected function performCombatAction():void
 		{
 			if(player.spe >= 2 && rand(2) == 0) {
@@ -36,7 +28,7 @@ import classes.internals.*;
 			}
 			else if(rand(2) == 0 || player.spe < 2) getBitten();
 			else {
-				if (rand(2) == 0) toxicBreath();
+				if (rand(2) == 0) toxicBreathBullSpider();
 				else eAttack();
 			}
 		}
@@ -81,7 +73,7 @@ import classes.internals.*;
 					.add(useables.T_SSILK,1)
 					.add(null,4);
 			this.tailType = Tail.USHI_ONI;
-			this.createPerk(PerkLib.MonsterRegeneration, 1, 0, 0, 0);
+			this.createPerk(PerkLib.MonsterRegeneration, 2, 0, 0, 0);
 			checkMonster();
 		}
 		
