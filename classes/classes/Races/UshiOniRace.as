@@ -78,9 +78,9 @@ public class UshiOniRace extends Race{
 					"wis.mult": -0.45,
 					"lib.mult": +0.95
 				})
-				.end();/*
+				.end();
 		
-		buildTier(16, "elder ushi-oni")
+		buildTier(18, "elder ushi-oni")
 				.customNamingFunction(function(body:BodyData):String {
 					var prefix:String = "";
 					switch (body.player.statusEffectv1(StatusEffects.UshiOnnaVariant)) {
@@ -93,13 +93,34 @@ public class UshiOniRace extends Race{
 					return prefix + body.mf("ushi-oni","ushi-onna");
 				})
 				.buffs({
-					"str.mult": +1.20,
-					"tou.mult": +1.05,
+					"str.mult": +1.30,
+					"tou.mult": +1.15,
 					"int.mult": -0.75,
 					"wis.mult": -0.60,
-					"lib.mult": +1.50
+					"lib.mult": +1.60
 				})
-				.end();*/
+				.end();
+		
+		buildTier(26, "ancient ushi-oni")
+				.customNamingFunction(function(body:BodyData):String {
+					var prefix:String = "";
+					switch (body.player.statusEffectv1(StatusEffects.UshiOnnaVariant)) {
+						case 1: prefix = "fiery "; break;
+						case 2: prefix = "frozen "; break;
+						case 3: prefix = "sandy "; break;
+						case 4: prefix = "pure "; break;
+						case 5: prefix = "wicked "; break;
+					}
+					return prefix + body.mf("ushi-oni","ushi-onna");
+				})
+				.buffs({
+					"str.mult": +1.80,
+					"tou.mult": +1.50,
+					"int.mult": -1.00,
+					"wis.mult": -0.75,
+					"lib.mult": +2.35
+				})
+				.end();
 	}
 }
 }

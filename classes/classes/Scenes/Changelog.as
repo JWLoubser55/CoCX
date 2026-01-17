@@ -168,7 +168,7 @@ public class Changelog extends BaseContent
 			outputText("Ice Elemental - lvl 70/100. Encountered in Tundra / Outer Glacial Rift. Lightning Elemental - lvl 100. Encountered in Cliffs. Lightning Elemental - lvl 90. Encountered in Lightless Reach. Kasha - lvl 87. Encountered in Outer Vulcanic Crag. Hollow - lvl 19 / 31. Encountered in Outer Desert / Plains at night.\n");
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig); Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event); Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event); Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes, Huge Octuple Yggdrasil Wings (from transforming with World Tree help); Werespider eyes, Werespider arms, Werespider Legs, Werepspider fangs (from transforming after been bitten by werespider); Barometz Legs, Barometz Ears, Barometz Tail, Ram Horns, Verdant Ram Horns, Runic Patterns, ");
-			outputText("Barometz Cock (from Horned fruit), Automata Tail Cable (from automata event); Hollow Mask (Face), Hollow Eyes, Hollow Horns, Hollow Arms, Hollow Lower Body, Hollow tail, Soulforce Scaring (from Hollowfication events); Deer Blush, Deer Eyes, Iceheart Tatoo (from Cervinium)\n");
+			outputText("Barometz Cock (from Horned fruit), Automata Tail Cable (from automata event); Hollow Mask (Face), Hollow Eyes, Hollow Horns, Hollow Arms, Hollow Lower Body, Hollow Tail, Soulforce Scaring (from Hollowfication events); Deer Blush, Deer Eyes, Iceheart Tatoo (from Cervinium); Ushi Onna Face, Ushi Onna Horns, Ushi Onna Tail, Ushi Onna Arms, Ushi Onna Lower Body, Ushi Oni Tattoo (from Thick Green Onna Gossamer)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
 			//outputText("-New HB Mech upgrade options: Armor Plating (+armor), Leather Insulation (+magic resistance), Agility (+base melee atk dmg), Dragon's Breath Flamer (fire dmg special), Scatter Laser (lightning dmg special), Rapid Reload (+base ranged atk dmg), Internal Systems (increase mech SF capacity and lower it consumption during high activity)\n");
 			//outputText(", Camouflage Mode (allow to enter 1 turn long camouflage opening option to use Sneak Attack (melee & range) specials), Invisibility Mode (the same as Camouflage Mode but can last until PC run out of SF to keep it active or deactivate it manualy / upgrade to decrease SF consumption)");
@@ -345,15 +345,15 @@ public class Changelog extends BaseContent
 			outputText("-New TF item (by Liadri): Cervinium. Bought in Journey to the East inn in He'Xin'Dao. Using this item will turn PC into Cernos. Their race bonuses for Deer-morph / Froststrider Deer / Cernos / Grand Cernos (8/16/24/32): +75%/+150%/+180%/+200% to Str/Tou multi, +25%/+50%/+100%/+165% to Spe multi, +20%/+40%/+100%/+165% to Lib multi, +75/+150/+200/+250 to sensitivity.\n");
 			outputText("-New M. Special: Toxic Breath. Usable by been Ushi Oni/Onna. Effect: Breath toxic fumes at the enemy dealing poison damage and applying Poison DoT status.\n");
 			outputText("-Fix swapped colors in scales color set. (Stadler)\n");
+			outputText("-Fixes for vagina 2 and metamorph. (Akaku-Keninari)\n");
+			outputText("-New TF item (by Dragnarus): Thick Green Onna Gossamer. Dropped by ushi oni/onna enemies. Using this item will turn PC into Ushi Oni/Onna. Their race bonuses for Ushi Oni / Elder Ushi Oni / Ancient Ushi Oni (10/18/26): +80%/+130%/+180% to Str multi, +70%/+115%/+150% to Tou multi, -50%/-75%/-100% to Int multi, -45%/-60%/-75% to Wis multi, +95%/+160%/+235% to Lib multi.\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");//New event perk: Monstrous Regeneration. Gained by been Ushi Oni/Onna. Effects: Your monstrous nature allow to regenerates 1% of HP per round in combat and 2% of HP per hour.
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -382,7 +382,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM)
+			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM) (Akaku-Keninari)
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
