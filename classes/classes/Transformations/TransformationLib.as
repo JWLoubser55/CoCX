@@ -853,6 +853,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
         public const OvipositorSpider:Transformation 		= special.OvipositorSpider;
         public const OvipositorMantis:Transformation 		= special.OvipositorMantis;
         public const OvipositorAnt:Transformation 			= special.OvipositorAnt;
+        public const OvipositorMoth:Transformation 			= special.OvipositorMoth;
         public const RemoveOviposition:Transformation 		= special.RemoveOviposition;
         public const GainOviposition:Transformation 		= special.GainOviposition;
         public const AssholeGlowing:Transformation 			= special.AssholeGlowing;

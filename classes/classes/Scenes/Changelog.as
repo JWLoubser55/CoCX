@@ -347,13 +347,13 @@ public class Changelog extends BaseContent
 			outputText("-Fix swapped colors in scales color set. (Stadler)\n");
 			outputText("-Fixes for vagina 2 and metamorph. (Akaku-Keninari)\n");
 			outputText("-New TF item (by Dragnarus): Thick Green Onna Gossamer. Dropped by ushi oni/onna enemies. Using this item will turn PC into Ushi Oni/Onna. Their race bonuses for Ushi Oni / Elder Ushi Oni / Ancient Ushi Oni (10/18/26): +80%/+130%/+180% to Str multi, +70%/+115%/+150% to Tou multi, -50%/-75%/-100% to Int multi, -45%/-60%/-75% to Wis multi, +95%/+160%/+235% to Lib multi.\n");
+			outputText("-Lizan Regeneration health regeneration increased (1,5% > 2% and 3% > 4%) and it grant now +2 to lizan/hydra race score. No wings grants now +4 to lizan score.\n");
+			outputText("-Lizan race bonuses changed from Lizan (8): +70% to Tou multi, +50% to Int multi, +100 max fatigue to Lizan/Elder Lizan/Ancient Lizan (10/18/26): +100%/+200%/+310% to Tou multi, +50%/+70%/+80% to Int multi, +5%/+10%/+20% to max hp multi, +100/+200/+400 max fatigue\n");
+			outputText("-Lizan Marrow HP regeneration is twice higher (1% in combat/2% out of combat per tier), losted bodyparts recover is increased to 1%/2%. Rest of the effects is unchanged. When Lizan race bonuses reach at least tier 1 changed parts of IM getting additional (1+race bonuses tier) boost.\n");
+			outputText("-Regeneration base % cap is increased from 2% to 5%. Cultivation supaths or hidden job perks that may increase % health regeneration would now increase max regeneration cap by the same amount.\n");
+			outputText("-New event perk: Monstrous Regeneration. Gained by been Ushi Oni/Onna, Cave Wyrm. Effects: Your monstrous nature allow to regenerates 1% of HP per round in combat and 2% of HP per hour.\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New event perk: Monstrous Regeneration. Gained by been Ushi Oni/Onna. Effects: Your monstrous nature allow to regenerates 1% of HP per round in combat and 2% of HP per hour.
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

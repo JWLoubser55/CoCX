@@ -782,9 +782,15 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					}
 				}
 			}
-			if (player.hasStatusEffect(StatusEffects.CombatWounds) && player.hasMutation(IMutationsLib.LizanMarrowIM) && player.perkv1(IMutationsLib.LizanMarrowIM) > 3) {
-				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.01) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.01);
-				else player.removeStatusEffect(StatusEffects.CombatWounds);
+			if (player.hasStatusEffect(StatusEffects.CombatWounds) && player.hasMutation(IMutationsLib.LizanMarrowIM) && player.perkv1(IMutationsLib.LizanMarrowIM) >= 4) {
+				if (player.isRace(Races.LIZARD)) {
+					if (player.statusEffectv1(StatusEffects.CombatWounds) > (0.02 * player.lizarnRaceTier())) player.addStatusValue(StatusEffects.CombatWounds, 1, -(0.02 * player.lizarnRaceTier()));
+					else player.removeStatusEffect(StatusEffects.CombatWounds);
+				}
+				else {
+					if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.02) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.02);
+					else player.removeStatusEffect(StatusEffects.CombatWounds);
+				}
 			}
 			if (player.statusEffectv2(StatusEffects.Kelt) > 0) player.addStatusValue(StatusEffects.Kelt, 2, -0.15); //Reduce kelt submissiveness by 1 every 5 hours
 			//Mino cum update.
@@ -1878,7 +1884,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			//Troll Regeneration
 			needNext = player.gainOrLosePerk(PerkLib.TrollRegeneration, player.isAnyRaceCached(Races.TROLL, Races.GLACIAL_TROLL), "", "You accidentally cut yourself but to your stupor the wound does not close as fast as it should. I appears your lack of troll blood is no longer enough to benefit from superior regeneration.") || needNext;
 			//Monstrous Regeneration
-			//needNext = player.gainOrLosePerk(PerkLib.MonstrousRegeneration, player.isRaceCached(Races.USHIONNA), "", "") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.MonstrousRegeneration, player.isAnyRaceCached(Races.USHIONNA, Races.CAVEWYRM), "The shock of the transformation is so sudden that you fall over and scrap yourself on a rock. To your surprise what should have stayed a bleeding wound slowly closes all on its own within seconds. <b>It looks like you have gained the power of super regeneration in the form of Monstrous Regeneration!</b>", "You accidentally cut yourself but to your stupor the wound does not close as fast as it should. Guess you are no longer monstrous enough to benefit from superior regeneration.") || needNext;
 			//Cernos perks
 			needNext = player.gainOrLosePerk(PerkLib.Icerunner, player.isRaceCached(Races.DEER, 2), "Information Noona informs: Go yell for Lia on missing text here.", "Information Noona informs: Go yell for Lia on missing text here.") || needNext;
 			needNext = player.gainOrLosePerk(PerkLib.Skywalk, player.isRaceCached(Races.DEER, 2), "Information Noona informs: Go yell for Lia on missing text here.", "Information Noona informs: Go yell for Lia on missing text here.") || needNext;
@@ -2049,7 +2055,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			//Lizan Regeneration perk
-			needNext = player.gainOrLosePerk(PerkLib.LizanRegeneration, player.perkv1(IMutationsLib.LizanMarrowIM) >= 1 || (player.tailType == Tail.LIZARD && player.lowerBody == LowerBody.LIZARD && player.arms.type == Arms.LIZARD) || (player.lowerBody == LowerBody.HYDRA && player.arms.type == Arms.HYDRA), "You start to feel an unusual feeling somewhere within your body. Like tiny ripples moving inside your veins, making you feel so much more refreshed than a moment ago. Considering the fact that lizans are so much like lizards and that they usually possess a natural talent to regenerate from even severe injuries, you wonder if it could be that.", "All of a sudden, something changes inside your body. You think about it for a long time until it dawns on you. You can't feel that refreshing feeling inside your body anymore, meaning your recovery rate has reverted back to normal.", player.perkv4(PerkLib.LizanRegeneration) == 0) || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.LizanRegeneration, player.perkv1(IMutationsLib.LizanMarrowIM) >= 1 || player.isAnyRaceCached(Races.LIZARD, Races.HYDRA), "You start to feel an unusual feeling somewhere within your body. Like tiny ripples moving inside your veins, making you feel so much more refreshed than a moment ago. Considering the fact that lizans are so much like lizards and that they usually possess a natural talent to regenerate from even severe injuries, you wonder if it could be that.", "All of a sudden, something changes inside your body. You think about it for a long time until it dawns on you. You can't feel that refreshing feeling inside your body anymore, meaning your recovery rate has reverted back to normal.", player.perkv4(PerkLib.LizanRegeneration) == 0) || needNext;
 			//Lustzerker perk
 			needNext = player.gainOrLosePerk(PerkLib.Lustzerker, player.isAnyRaceCached(Races.SALAMANDER, Races.PHOENIX, Races.KITSHOO) || player.hasMutation(IMutationsLib.SalamanderAdrenalGlandsIM), "You start to feel a weird, slightly unpleasant feeling inside your body. Like many tiny flames coursing through your veins, making you ponder what is happening with your body. Remembering about salamanders' natural talent for entering a berserk-like state, you guess that should be it.", "All of a sudden, something changes inside your body. You think about it for a long time until it dawns on you. You can't feel that fire in your veins anymore, meaning for now, no more lustzerking.", player.perkv4(PerkLib.Lustzerker) == 0) || needNext;
 			//Tech Overdrive perk

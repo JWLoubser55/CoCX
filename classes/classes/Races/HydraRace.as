@@ -61,7 +61,7 @@ public class HydraRace extends Race {
 				.height(AT_LEAST(120), +1)
 				.cockOrVaginaOfType(CockTypesEnum.LIZARD, VaginaClass.NAGA, +1)
 				.hasPerk(PerkLib.AcidAffinity, +1)
-				.hasPerk(PerkLib.LizanRegeneration, +1)
+				.hasPerk(PerkLib.LizanRegeneration, +2)
 				.hasPerk(PerkLib.HydraRegeneration, +1)
 				.hasPerk(PerkLib.HydraAcidBreath, +1)
 				.customRequirement("","not another snake-like race",

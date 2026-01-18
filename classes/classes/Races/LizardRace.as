@@ -70,18 +70,40 @@ public class LizardRace extends Race {
 				.hornType(ANY(Horns.DRACONIC_X2,Horns.DRACONIC_X4_12_INCH_LONG), +1)
 				.skinCoatType(ANY(Skin.SCALES, Skin.AQUA_SCALES, Skin.DRAGON_SCALES), +1)
 				.hasCockOfType(CockTypesEnum.LIZARD, +1)
-				.hasPerk(PerkLib.LizanRegeneration, +1)
+				.noWings(+4)
+				.hasPerk(PerkLib.LizanRegeneration, +2)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addBloodline(PerkLib.LizardsDescendant, PerkLib.BloodlineLizard);
 		addMutation(IMutationsLib.LizanMarrowIM);
 		
-		buildTier(8, "lizan")
+		buildTier(10, "lizan")
 				.namesTauric("lizan", "lizan-taur")
 				.buffs({
-					"tou.mult": +0.70,
+					"maxhp_mult": +0.05,
+					"tou.mult": +1.00,
 					"int.mult": +0.50,
 					"maxfatigue_base": +100
+				})
+				.end();
+		
+		buildTier(18, "elder lizan")
+				.namesTauric("elder lizan", "elder lizan-taur")
+				.buffs({
+					"maxhp_mult": +0.10,
+					"tou.mult": +2.00,
+					"int.mult": +0.70,
+					"maxfatigue_base": +200
+				})
+				.end();
+		
+		buildTier(26, "ancient lizan")
+				.namesTauric("ancient lizan", "ancient lizan-taur")
+				.buffs({
+					"maxhp_mult": +0.20,
+					"tou.mult": +3.10,
+					"int.mult": +0.80,
+					"maxfatigue_base": +400
 				})
 				.end();
 	}

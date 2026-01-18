@@ -3675,12 +3675,16 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasPerk(PerkLib.VladimirRegalia) && !isNightTime()) healingPercent -= 5;
 				if (hasPerk(PerkLib.VladimirRegalia) && isNightTime()) healingPercent += 5;
 				if (hasPerk(PerkLib.LustyRegeneration)) healingPercent += 0.5;
-				if (hasPerk(PerkLib.LizanRegeneration) && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 1.5;
-				if (perkv1(IMutationsLib.LizanMarrowIM) >= 1 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 0.5 * perkv1(IMutationsLib.LizanMarrowIM);
-				if (perkv1(IMutationsLib.LizanMarrowIM) == 3 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify) && this.HP < (this.maxHP() * 0.25)) healingPercent += 1.5;
-				if (perkv1(IMutationsLib.LizanMarrowIM) == 4 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) {
-					if (this.HP < (this.maxHP() * 0.6)) healingPercent += 2;
-					if (this.HP < (this.maxHP() * 0.2)) healingPercent += 2;
+				if (hasPerk(PerkLib.LizanRegeneration) && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 2;
+				if (perkv1(IMutationsLib.LizanMarrowIM) >= 1 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) {
+					var lizanRegenM:Number = 1 * perkv1(IMutationsLib.LizanMarrowIM);
+					if (perkv1(IMutationsLib.LizanMarrowIM) == 3 && this.HP < (this.maxHP() * 0.25)) lizanRegenM *= 2;
+					if (perkv1(IMutationsLib.LizanMarrowIM) == 4) {
+						if (this.HP < (this.maxHP() * 0.6)) lizanRegenM *= 2;
+						if (this.HP < (this.maxHP() * 0.2)) lizanRegenM *= 1.5;
+					}
+					if (perkv1(PerkLib.LizanRegeneration) > 0) healingPercent *= (1 + perkv1(PerkLib.LizanRegeneration));
+					healingPercent += lizanRegenM;
 				}
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) healingPercent += 1;
 				if (perkv1(IMutationsLib.DrakeBloodIM) >= 1) healingPercent += perkv1(IMutationsLib.DrakeBloodIM);

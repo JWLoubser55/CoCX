@@ -46,14 +46,15 @@ public class UshiOniRace extends Race{
 				.eyeType(Eyes.SPIDER, +1)
 				.faceType(Face.USHI_ONI, +1)
 				.hornType(Horns.USHI_ONI, +1)
-				.tailType(Tail.USHI_ONI, +1)
-				.armType(Arms.USHI_ONI, +1)
-				.legType(LowerBody.USHI_ONI, +2)
+				.tailType(Tail.USHI_ONI, +2)
+				.armType(Arms.USHI_ONI, +2)
+				.legType(LowerBody.USHI_ONI, +4)
 				.skinBasePattern(Skin.PATTERN_USHI_ONI_TATTOO, +2)
 				.hairTypeAndColor1(Hair.NORMAL, ANY(UshiOniHairColors), +1)
 				.plainSkinOfColor1(ANY(UshiOniSkinColors), +1)
 				.height(AT_LEAST(108), +1)
-				//.hasPerk(PerkLib.MonstrousRegeneration, +1)
+				.hasPerk(PerkLib.MonstrousRegeneration, +1)
+				.hasPerk(PerkLib.SpiderOvipositor, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.VenomGlandsIM);

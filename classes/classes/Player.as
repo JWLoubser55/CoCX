@@ -4992,6 +4992,13 @@ use namespace CoC;
 			}
 		}
 
+		public function lizarnRaceTier():Number {
+			var lRT:Number = 2;
+			if (isRace(Races.MOUSE, 2)) lRT += 1;
+			if (isRace(Races.MOUSE, 3)) lRT += 1;
+			return lRT;
+		}
+
 		//Body Type
 		public function bodyType():String
 		{

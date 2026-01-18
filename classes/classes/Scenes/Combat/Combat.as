@@ -1544,8 +1544,14 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.NaturalHerbalism)) power *= 2;
         Math.round(power);
 		if (player.hasStatusEffect(StatusEffects.CombatWounds)) {
-			if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.04) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.04);
-			else player.removeStatusEffect(StatusEffects.CombatWounds);
+			if (player.isRace(Races.LIZARD)) {
+				if (player.statusEffectv1(StatusEffects.CombatWounds) > (0.04 * player.lizarnRaceTier())) player.addStatusValue(StatusEffects.CombatWounds, 1, -(0.04 * player.lizarnRaceTier()));
+				else player.removeStatusEffect(StatusEffects.CombatWounds);
+			}
+			else {
+				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.04) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.04);
+				else player.removeStatusEffect(StatusEffects.CombatWounds);
+			}
 		}
         HPChange(power,false, false);
         outputText("You apply the poultice, your wounds closing at high speed. Healed for ");
@@ -14569,8 +14575,8 @@ public class Combat extends BaseContent {
             if ((player.hasPerk(PerkLib.Diehard) || player.hasPerk(PerkLib.GreaterDiehardEx)) && !player.hasPerk(PerkLib.EpicDiehard) && player.HP < 1) negativeHPRegen += 1;
             if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 3 && player.HP < 1) negativeHPRegen += 1;
 			if (negativeHPRegen > 0 && !player.hasPerk(PerkLib.BloodDemonToughness)) healingPercent -= negativeHPRegen;
-			if (player.hasStatusEffect(StatusEffects.CombatWounds) && player.hasMutation(IMutationsLib.LizanMarrowIM) && player.perkv1(IMutationsLib.LizanMarrowIM) > 3) {
-				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.005) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.005);
+			if (player.hasStatusEffect(StatusEffects.CombatWounds) && player.hasMutation(IMutationsLib.LizanMarrowIM) && player.perkv1(IMutationsLib.LizanMarrowIM) >= 4) {
+				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.01) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.01);
 				else player.removeStatusEffect(StatusEffects.CombatWounds);
 			}
             if (healingPercent > maximumRegeneration()) healingPercent = maximumRegeneration();
@@ -14658,12 +14664,16 @@ public class Combat extends BaseContent {
 			}
 		}
         if (player.hasPerk(PerkLib.LustyRegeneration)) maxPercentRegen += 0.5;
-        if (player.hasPerk(PerkLib.LizanRegeneration)) maxPercentRegen += 1.5;
-        if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 1) maxPercentRegen += 0.5 * player.perkv1(IMutationsLib.LizanMarrowIM);
-		if (player.perkv1(IMutationsLib.LizanMarrowIM) == 3 && player.HP < (player.maxHP() * 0.25)) maxPercentRegen += 1.5;
-		if (player.perkv1(IMutationsLib.LizanMarrowIM) == 4) {
-			if (player.HP < (player.maxHP() * 0.6)) maxPercentRegen += 2;
-			if (player.HP < (player.maxHP() * 0.2)) maxPercentRegen += 2;
+        if (player.hasPerk(PerkLib.LizanRegeneration)) maxPercentRegen += 2;
+        if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 1) {
+			var lizanRegen:Number = 1 * player.perkv1(IMutationsLib.LizanMarrowIM);
+			if (player.perkv1(IMutationsLib.LizanMarrowIM) == 3 && player.HP < (player.maxHP() * 0.25)) lizanRegen *= 2;
+			if (player.perkv1(IMutationsLib.LizanMarrowIM) == 4) {
+				if (player.HP < (player.maxHP() * 0.6)) lizanRegen *= 2;
+				if (player.HP < (player.maxHP() * 0.2)) lizanRegen *= 1.5;
+			}
+			if (player.isRace(Races.LIZARD)) lizanRegen *= player.lizarnRaceTier();
+			maxPercentRegen += lizanRegen;
 		}
 		if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) maxPercentRegen += 1;
 		if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 1) maxPercentRegen += player.perkv1(IMutationsLib.DrakeBloodIM);
@@ -14763,14 +14773,18 @@ public class Combat extends BaseContent {
     }
 
     public function maximumRegeneration():Number {
-        var maxRegen:Number = 2;
+        var maxRegen:Number = 5;
 		if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)) maxRegen += 1;
-		if (player.hasPerk(PerkLib.LizanRegeneration)) maxRegen += 1.5;
-        if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 1) maxRegen += 0.5 * player.perkv1(IMutationsLib.LizanMarrowIM);
-        if (player.perkv1(IMutationsLib.LizanMarrowIM) == 3 && player.HP < (player.maxHP() * 0.25)) maxRegen += 1.5;
-		if (player.perkv1(IMutationsLib.LizanMarrowIM) == 4) {
-			if (player.HP < (player.maxHP() * 0.6)) maxRegen += 2;
-			if (player.HP < (player.maxHP() * 0.2)) maxRegen += 2;
+		if (player.hasPerk(PerkLib.LizanRegeneration)) maxRegen += 2;
+        if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 1) {
+			var lizanRegenMax:Number = 1 * player.perkv1(IMutationsLib.LizanMarrowIM);
+			if (player.perkv1(IMutationsLib.LizanMarrowIM) == 3 && player.HP < (player.maxHP() * 0.25)) lizanRegenMax *= 2;
+			if (player.perkv1(IMutationsLib.LizanMarrowIM) == 4) {
+				if (player.HP < (player.maxHP() * 0.6)) lizanRegenMax *= 2;
+				if (player.HP < (player.maxHP() * 0.2)) lizanRegenMax *= 1.5;
+			}
+			if (player.isRace(Races.LIZARD)) lizanRegenMax *= player.lizarnRaceTier();
+			maxRegen += lizanRegenMax;
 		}
 		if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) maxRegen += 1;
 		if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 1) maxRegen += player.perkv1(IMutationsLib.DrakeBloodIM);
@@ -14824,11 +14838,25 @@ public class Combat extends BaseContent {
 			if (player.perkv1(PerkLib.AbsorbNutrient) > 6) maxRegen += 1;
 			else maxRegen += 0.5;
 		}
-        if (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) maxRegen += 0.5;
-        if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor)) maxRegen += 0.5;
-        if (player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor)) maxRegen += 0.5;
-        if (player.hasPerk(PerkLib.FFclassHeavenTribulationSurvivor)) maxRegen += 0.5;
-        if (player.hasPerk(PerkLib.EclassHeavenTribulationSurvivor)) maxRegen += 0.5;
+        if (player.hasPerk(PerkLib.MonstrousRegeneration)) maxRegen += 1;
+        if (player.hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) maxRegen += 1 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyVoLWarriorStage)) maxRegen += 1 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyVoLElderStage)) maxRegen += 1 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyVoLOverlordStage)) maxRegen += 1 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyVoLTyrantStage)) maxRegen += 1 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyApprenticeStage)) maxRegen += 0.5 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyWarriorStage)) maxRegen += 0.5 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyElderStage)) maxRegen += 0.5 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyOverlordStage)) maxRegen += 0.5 * player.humanBodyCultivators();
+        if (player.hasPerk(PerkLib.FleshBodyTyrantStage)) maxRegen += 0.5 * player.humanBodyCultivators();
+		if (player.hasPerk(PerkLib.BloodDemonToughness)) maxRegen += 0.5;
+		if (player.hasPerk(PerkLib.BloodDemonIntelligence)) maxRegen += 0.5;
+		if (player.hasPerk(PerkLib.BloodDemonWisdom)) maxRegen += 0.5;
+        if (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) maxRegen += 1;
+        if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor)) maxRegen += 1;
+        if (player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor)) maxRegen += 1;
+        if (player.hasPerk(PerkLib.FFclassHeavenTribulationSurvivor)) maxRegen += 1;
+        if (player.hasPerk(PerkLib.EclassHeavenTribulationSurvivor)) maxRegen += 1;
 		if (combat && player.headJewelry == headjewelries.CUNDKIN && player.HP < 1) maxRegen += 1;
 		if (player.hasPerk(PerkLib.Soulless)) {
 			maxRegen += 1;

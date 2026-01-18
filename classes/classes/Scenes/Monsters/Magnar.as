@@ -344,7 +344,7 @@ import classes.internals.*;
 			this.createPerk(PerkLib.LegendarySpeed, 0, 0, 0, 0);
 			this.createPerk(PerkLib.LegendaryLibido, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Regeneration, 0, 0, 0, 0);
-			this.createPerk(PerkLib.LizanRegeneration, 0, 0, 0, 0);
+			this.createPerk(PerkLib.LizanRegeneration, 3, 0, 0, 0);
 			this.createPerk(PerkLib.InhumanDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.DemonicDesireI, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Lifeline, 0, 0, 0, 0);

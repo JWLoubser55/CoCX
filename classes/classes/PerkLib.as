@@ -4545,7 +4545,7 @@ public class PerkLib
 		public static const LightningClaw:PerkType = mk("Lightning claw", "Lightning claw",
 				"Your natural weapons are charged with raiju electricity adding a lusty discharge effect to all attacks.");
 		public static const LizanRegeneration:PerkType = mk("Lizan Regeneration", "Lizan Regeneration",
-				"Regenerates 1.5% of HP per round in combat and 3% of HP per hour and additional slightly increasing maximal attainable natural healing rate.");
+				"Regenerates 2% of HP per round in combat and 4% of HP per hour and additional slightly increasing maximal attainable natural healing rate.");
 		public static const LustingWarrior:PerkType = mk("Lusting Warrior", "Lusting Warrior",
 				"As a salamander, while in heat or rutting add your libido to your strength as your lust for battle and sex empowers you with might.");
 		public static const LustyStrength:PerkType = mk("Lusty Strength", "Lusty Strength",
@@ -9244,4 +9244,4 @@ public class PerkLib
 	}
 }
 
-}
+}
