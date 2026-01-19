@@ -1544,14 +1544,8 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.NaturalHerbalism)) power *= 2;
         Math.round(power);
 		if (player.hasStatusEffect(StatusEffects.CombatWounds)) {
-			if (player.isRace(Races.LIZARD)) {
-				if (player.statusEffectv1(StatusEffects.CombatWounds) > (0.04 * player.lizarnRaceTier())) player.addStatusValue(StatusEffects.CombatWounds, 1, -(0.04 * player.lizarnRaceTier()));
-				else player.removeStatusEffect(StatusEffects.CombatWounds);
-			}
-			else {
-				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.04) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.04);
-				else player.removeStatusEffect(StatusEffects.CombatWounds);
-			}
+			if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.04) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.04);
+			else player.removeStatusEffect(StatusEffects.CombatWounds);
 		}
         HPChange(power,false, false);
         outputText("You apply the poultice, your wounds closing at high speed. Healed for ");
@@ -14576,8 +14570,14 @@ public class Combat extends BaseContent {
             if (player.perkv1(IMutationsLib.LizanMarrowIM) >= 3 && player.HP < 1) negativeHPRegen += 1;
 			if (negativeHPRegen > 0 && !player.hasPerk(PerkLib.BloodDemonToughness)) healingPercent -= negativeHPRegen;
 			if (player.hasStatusEffect(StatusEffects.CombatWounds) && player.hasMutation(IMutationsLib.LizanMarrowIM) && player.perkv1(IMutationsLib.LizanMarrowIM) >= 4) {
-				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.01) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.01);
-				else player.removeStatusEffect(StatusEffects.CombatWounds);
+				if (player.isRace(Races.LIZARD)) {
+					if (player.statusEffectv1(StatusEffects.CombatWounds) > (0.01 * player.lizarnRaceTier())) player.addStatusValue(StatusEffects.CombatWounds, 1, -(0.01 * player.lizarnRaceTier()));
+					else player.removeStatusEffect(StatusEffects.CombatWounds);
+				}
+				else {
+					if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.01) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.01);
+					else player.removeStatusEffect(StatusEffects.CombatWounds);
+				}
 			}
             if (healingPercent > maximumRegeneration()) healingPercent = maximumRegeneration();
             HPChange(Math.round((player.maxHP() * healingPercent / 100) + nonPercentBasedRegeneration()), false, false);

@@ -37,6 +37,7 @@ public class DeerRace extends Race{
 
     public function DeerRace(id:int) {
 		super("Deer", id, []);//RaceBody);
+		mutationThreshold = 6;
 	}
 	
 	public override function setup():void {

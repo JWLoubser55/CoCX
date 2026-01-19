@@ -1231,10 +1231,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 				//Twilight Grove storage refill
 				if (player.statusEffectv1(StatusEffects.TGStorage) < 5 || player.statusEffectv2(StatusEffects.TGStorage) < 5 || player.statusEffectv3(StatusEffects.TGStorage) < 5 || player.statusEffectv4(StatusEffects.TGStorage) < 1) {
-					if (player.statusEffectv1(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 1 , 5);
-					if (player.statusEffectv2(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 2 , 5);
-					if (player.statusEffectv3(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 3 , 5);
-					if (player.statusEffectv4(StatusEffects.TGStorage) < 1) player.changeStatusValue(StatusEffects.TGStorage, 4 , 1);
+					if (player.statusEffectv1(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 1, 5);
+					if (player.statusEffectv2(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 2, 5);
+					if (player.statusEffectv3(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 3, 5);
+					if (player.statusEffectv4(StatusEffects.TGStorage) < 1) player.changeStatusValue(StatusEffects.TGStorage, 4, 1);
 				}
 				//Countdown to 5th floor boss rematch
 				if (flags[kFLAGS.RIVER_DUNGEON_FLOORS_PROGRESS] > 12 && flags[kFLAGS.RIVER_DUNGEON_FLOORS_PROGRESS] < 13) flags[kFLAGS.RIVER_DUNGEON_FLOORS_PROGRESS] -= 0.1;
@@ -1379,7 +1379,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasStatusEffect(StatusEffects.MitziIzmaDaughters)) player.removeStatusEffect(StatusEffects.MitziIzmaDaughters);
 				if (flags[kFLAGS.SAMIRAH_HYPNOSIS] == 4 || flags[kFLAGS.SAMIRAH_HYPNOSIS] == 2) flags[kFLAGS.SAMIRAH_HYPNOSIS]++;
 				//Soul Cohesion restoration
-				if (player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0) player.addStatusValue(StatusEffects.SoulCohesion, 1, -1);
+				if (player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0) {
+					player.addStatusValue(StatusEffects.SoulCohesion, 1, -51);
+					if (player.statusEffectv1(StatusEffects.SoulCohesion) < 0) player.changeStatusValue(StatusEffects.SoulCohesion, 1, 0);
+				}
 				//Soul Arena Gauntlet reset
 				if (player.hasStatusEffect(StatusEffects.SoulArenaGauntlets1)) {
 					if (player.statusEffectv1(StatusEffects.SoulArenaGauntlets1) > 1) player.addStatusValue(StatusEffects.SoulArenaGauntlets1, 1, -1);
@@ -1884,7 +1887,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			//Troll Regeneration
 			needNext = player.gainOrLosePerk(PerkLib.TrollRegeneration, player.isAnyRaceCached(Races.TROLL, Races.GLACIAL_TROLL), "", "You accidentally cut yourself but to your stupor the wound does not close as fast as it should. I appears your lack of troll blood is no longer enough to benefit from superior regeneration.") || needNext;
 			//Monstrous Regeneration
-			needNext = player.gainOrLosePerk(PerkLib.MonstrousRegeneration, player.isAnyRaceCached(Races.USHIONNA, Races.CAVEWYRM), "The shock of the transformation is so sudden that you fall over and scrap yourself on a rock. To your surprise what should have stayed a bleeding wound slowly closes all on its own within seconds. <b>It looks like you have gained the power of super regeneration in the form of Monstrous Regeneration!</b>", "You accidentally cut yourself but to your stupor the wound does not close as fast as it should. Guess you are no longer monstrous enough to benefit from superior regeneration.") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.MonstrousRegeneration, player.isAnyRaceCached(Races.USHIONNA, Races.CAVEWYRM), "The shock of the transformation is so sudden that you fall over and scrap yourself on a rock. To your surprise what should have stayed a bleeding wound slowly closes all on its own within seconds. <b>It looks like you have gained the power of super regeneration in the form of Monstrous Regeneration!</b>", "While moving around you accidentaly trip over and stare in stupor at the bleeding wound, since when do these no longuer closes on their own? <b>It would appear that with the various changes to your body you have lost the ability to regenerate.</b>") || needNext;
 			//Cernos perks
 			needNext = player.gainOrLosePerk(PerkLib.Icerunner, player.isRaceCached(Races.DEER, 2), "Information Noona informs: Go yell for Lia on missing text here.", "Information Noona informs: Go yell for Lia on missing text here.") || needNext;
 			needNext = player.gainOrLosePerk(PerkLib.Skywalk, player.isRaceCached(Races.DEER, 2), "Information Noona informs: Go yell for Lia on missing text here.", "Information Noona informs: Go yell for Lia on missing text here.") || needNext;
