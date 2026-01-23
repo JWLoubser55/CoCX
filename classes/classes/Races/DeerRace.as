@@ -37,18 +37,16 @@ public class DeerRace extends Race{
 
     public function DeerRace(id:int) {
 		super("Deer", id, []);//RaceBody);
-		mutationThreshold = 6;
 	}
 	
 	public override function setup():void {
 		
 		addScores()
 				.earType(Ears.DEER, +1)
-				.eyeType(Eyes.DEER, +1)
-				.eyeColor("golden", +1)
+				.eyeTypeAndColor(Eyes.DEER, "golden", +2)
 				.faceType(ANY(Face.DEER, Face.DEER_BLUSH), +1)
 				.tongueType(Tongue.HUMAN, +1)
-				.armType(ANY(Arms.HUMAN, Arms.DEER), +1)
+				.armType(Arms.DEER, +1)
 				.armType(NOT(Arms.WENDIGO), 0, -5)
 				.armType(NOT(Arms.REINDEER), 0, -5)
 				.customRequirement("legs","shaggy centaur lower body",
@@ -64,10 +62,12 @@ public class DeerRace extends Race{
 				.furColor1(ANY(DeerFurColors), +1)
 				.hairColor1(ANY(DeerHairColors), +1)
 				.skinBasePattern(Skin.PATTERN_ICEHEART_TATOO, +1)
-				.biggestTitSize(GREATER_THAN(4), +1)
 				.vaginaType(VaginaClass.EQUINE, +1)
 				.hasCockOfType(CockTypesEnum.HORSE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
+		addScoresAfter(6)
+				.armType(Arms.HUMAN, +1)
+				.biggestTitSize(GREATER_THAN(4), +1);
 		
 		addBloodline(PerkLib.DeersDescendant, PerkLib.BloodlineDeer);
 		addMutation(IMutationsLib.TwinHeartIM);
