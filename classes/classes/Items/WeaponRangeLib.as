@@ -88,6 +88,7 @@ public final class WeaponRangeLib extends ItemConstants
 		public const T_KNIFE:WeaponRange = new WeaponRange("T.Knife", "ThrowingKnife", "throwing knife", "a throwing knife", "shot", 2, 100, "A small knife that could be thrown.  Preferred weapon for the rogues. You can carry up to 10 on you and need to retrieve them after battles.", "Throwing");
 		public const TDEEAGL:TwinDesertEagles = new TwinDesertEagles();
 		public const TDPISTO:TwinDartPistol = new TwinDartPistol();
+		public const TENERGYG:TwinEnergyGuns = new TwinEnergyGuns();
 		public const TM1CERB:TwinM1Cerberuses = new TwinM1Cerberuses();
 		public const TOUHOM3:WeaponRange = new WeaponRange("TouhoM3", "TouhounaM3", "Touhouna M3", "a Touhouna M3", "shot", 20, 430, "Pinnacle of goblin engineering, the Touhouna is what goblins call a mechagun. Never needing to be reloaded it shoots bullets in very fast succession achieving with sheer shot number what way more unwieldy or hazardous gun do.\n\nGoblin Mech Compatible", WT_2H_FIREARM);
 		public const TRFATBI:WeaponRange = new WeaponRange("TrFatbi", "TripxiFatbilly", "Tripxi Fatbilly", "a Tripxi Fatbilly", "shot", 260, 5230, "Tripxi has one moto… if you can't aim right, deliver an artillery shot so wide it hit everything in the next 200 yard reliably.", WT_2H_FIREARM);
@@ -123,8 +124,8 @@ public final class WeaponRangeLib extends ItemConstants
 			[M1CERBE, TM1CERB],
 			[ALAKABL, DALAKABL],
 			[DESEAGL, TDEEAGL],
-			[NAILGUN, NAILGUN2]
-			//[HARKON1, HARKON2],
+			[NAILGUN, NAILGUN2],
+			[ENERGYG, TENERGYG]
 		];
 		
 		/*

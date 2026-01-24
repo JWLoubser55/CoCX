@@ -5192,7 +5192,7 @@ public class Combat extends BaseContent {
                         }
                         if (crit) outputText(" <b>*Critical Hit!*</b>");
 					}
-					else if (player.weaponRange == weaponsrange.ENERGYG) {
+					else if (player.weaponRange == weaponsrange.ENERGYG || player.weaponRange == weaponsrange.TENERGYG) {
 						if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
 							doPlasmaDamage(damage, true, true, ignoreDR);
 							doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
@@ -5341,7 +5341,7 @@ public class Combat extends BaseContent {
 							if (crit) outputText(" <b>*Critical Hit!*</b>");
                         }
 					}
-					if (player.weaponRange == weaponsrange.ENERGYG) {
+					if (player.weaponRange == weaponsrange.ENERGYG || player.weaponRange == weaponsrange.TENERGYG) {
 						outputText(" ");
                         doPlasmaDamage(damage, true, true, ignoreDR);
 						if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -5583,6 +5583,7 @@ public class Combat extends BaseContent {
         if (player.weaponRange == weaponsrange.ADBSHOT) player.ammo = 2;
         if (player.weaponRange == weaponsrange.ADBSCAT) player.ammo = 2;
 		if (player.weaponRange == weaponsrange.DBDRAGG) player.ammo = 2;
+		if (player.weaponRange == weaponsrange.TENERGYG) player.ammo = 2;
         if (player.weaponRange == weaponsrange.TM1CERB) player.ammo = 2;
         if (player.weaponRange == weaponsrange.HARKON2) player.ammo = 2;
 		if (player.weaponRange == weaponsrange.ENERGYG) player.ammo = 1;
@@ -15515,6 +15516,7 @@ public class Combat extends BaseContent {
         if (player.weaponRange == weaponsrange.ADBSHOT) player.ammo = 2;
         if (player.weaponRange == weaponsrange.ADBSCAT) player.ammo = 2;
         if (player.weaponRange == weaponsrange.DBDRAGG) player.ammo = 2;
+		if (player.weaponRange == weaponsrange.TENERGYG) player.ammo = 2;
         if (player.weaponRange == weaponsrange.TM1CERB) player.ammo = 2;
         if (player.weaponRange == weaponsrange.HARKON2) player.ammo = 2;
 		if (player.weaponRange == weaponsrange.ENERGYG) player.ammo = 1;
