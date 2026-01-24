@@ -66,6 +66,10 @@ import classes.StatusEffects;
 				if (player.hasStatusEffect(StatusEffects.TamedMonster07)) addButton(6, "No.7", tamedMonstersActionMenu, 7).hint("Use tamed monster No.7");
 				else addButtonDisabled(6, "No.7", "You do not have Monster No.7 tamed.");
 			}
+			if (player.hasPerk(PerkLib.KaijuNo8)) {
+				if (player.hasStatusEffect(StatusEffects.TamedMonster08)) addButton(7, "No.8", tamedMonstersActionMenu, 8).hint("Use tamed monster No.8");
+				else addButtonDisabled(7, "No.8", "You do not have Monster No.8 tamed.");
+			}
 			addButton(14, "Back", SceneLib.combat.combatMenu, false);
 		}
 		
@@ -120,6 +124,13 @@ import classes.StatusEffects;
 				if (flags[kFLAGS.TAMED_MONSTER_PROTECTING] > 0) addButtonIfTrue(4, "Protect", curry(tamedMonsterProtect, 7), "Tamed monster No.7 has not yet fully recovered.", player.statusEffectv2(StatusEffects.TamedMonster07)>0, "Command tamed monster No.7 to protect you.");
 				else addButtonDisabled(4, "Protect", "You already commanded one of the tamed monsters to protect you.");
 			}
+			if (no == 8) {
+				if (monster.isFlying() || monster.flyer) addButtonIfTrue(0, "Attack", curry(tamedMonsterAttackMelee, 8), "Your tamed monster can’t attack flying enemies.", player.statusEffectv3(StatusEffects.TamedMonster08)>0, "Command tamed monster No.8 to attack.");
+				else addButton(0, "Attack", curry(tamedMonsterAttackMelee, 8)).hint("Command tamed monster No.8 to attack.");
+				addButtonIfTrue(1, "M.Bolt", curry(tamedMonsterAttackMagic, 8), "Your tamed monster can’t spellcast.", player.statusEffectv2(StatusEffects.TamedMonster08)>0, "Command tamed monster No.8 to cast magic bolt.");
+				if (flags[kFLAGS.TAMED_MONSTER_PROTECTING] > 0) addButtonIfTrue(4, "Protect", curry(tamedMonsterProtect, 8), "Tamed monster No.8 has not yet fully recovered.", player.statusEffectv2(StatusEffects.TamedMonster08)>0, "Command tamed monster No.8 to protect you.");
+				else addButtonDisabled(4, "Protect", "You already commanded one of the tamed monsters to protect you.");
+			}
 			addButton(14, "Back", tamedMonstersMenu);
 		}
 		
@@ -158,6 +169,10 @@ import classes.StatusEffects;
 				weapon += player.statusEffectv1(StatusEffects.TamedMonster07);
 				dmg += SceneLib.combat.scalingBonusStrengthTamedMonster(7);
 			}
+			if (no == 8) {
+				weapon += player.statusEffectv1(StatusEffects.TamedMonster08);
+				dmg += SceneLib.combat.scalingBonusStrengthTamedMonster(8);
+			}
 			if (weapon < 51) dmg *= (1 + (weapon * 0.03));
 			else if (weapon >= 51 && weapon < 101) dmg *= (2.5 + ((weapon - 50) * 0.025));
 			else if (weapon >= 101 && weapon < 151) dmg *= (3.75 + ((weapon - 100) * 0.02));
@@ -175,6 +190,7 @@ import classes.StatusEffects;
 			if (no == 5) outputText(""+flags[kFLAGS.TAMED_05_NAME]+"");
 			if (no == 6) outputText(""+flags[kFLAGS.TAMED_06_NAME]+"");
 			if (no == 7) outputText(""+flags[kFLAGS.TAMED_07_NAME]+"");
+			if (no == 8) outputText(""+flags[kFLAGS.TAMED_08_NAME]+"");
 			outputText(" attacks [themonster]. ");
 			doDamage(dmg, true, true);
 			if (repeat > 0) doDamage(dmg, true, true);
@@ -199,6 +215,7 @@ import classes.StatusEffects;
 			if (no == 5) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(5);
 			if (no == 6) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(6);
 			if (no == 7) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(7);
+			if (no == 8) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(8);
 			if (weapon < 51) dmg *= (1 + (weapon * 0.03));
 			else if (weapon >= 51 && weapon < 101) dmg *= (2.5 + ((weapon - 50) * 0.025));
 			else if (weapon >= 101 && weapon < 151) dmg *= (3.75 + ((weapon - 100) * 0.02));
@@ -216,6 +233,7 @@ import classes.StatusEffects;
 			if (no == 5) outputText(""+flags[kFLAGS.TAMED_05_NAME]+"");
 			if (no == 6) outputText(""+flags[kFLAGS.TAMED_06_NAME]+"");
 			if (no == 7) outputText(""+flags[kFLAGS.TAMED_07_NAME]+"");
+			if (no == 8) outputText(""+flags[kFLAGS.TAMED_08_NAME]+"");
 			outputText(" shoot a magic bolt toward [themonster]. ");
 			doMagicDamage(dmg, true, true);
 			if (repeat > 0) doMagicDamage(dmg, true, true);
@@ -232,6 +250,7 @@ import classes.StatusEffects;
 			if (no == 5) outputText(""+flags[kFLAGS.TAMED_05_NAME]+"");
 			if (no == 6) outputText(""+flags[kFLAGS.TAMED_06_NAME]+"");
 			if (no == 7) outputText(""+flags[kFLAGS.TAMED_07_NAME]+"");
+			if (no == 8) outputText(""+flags[kFLAGS.TAMED_08_NAME]+"");
 			outputText(" to protect you from next enemy attack.");
 			flags[kFLAGS.TAMED_MONSTER_PROTECTING] = no;
 			menu();

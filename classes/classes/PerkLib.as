@@ -866,6 +866,9 @@ public class PerkLib
 		public static const FalseLight:PerkType = mk("False Light", "False Light",
 				"You are so good at lies and manipulation you can not only conceal your corruption but also convince others that you are righteous and pure by warping their perception of you. Furthermore for each follower, lover or slave you own gain a +10% increase to tease damage.",
 				"You've chosen the 'False Light' perk. You are so good at lies and manipulation you can not only conceal your corruption but also convince others that you are righteous and pure by warping their perception of you. Furthermore for each follower, lover or slave you own gain a +10% increase to tease damage.");
+		public static const KaijuNo8:PerkType = mk("Kaiju No8", "Kaiju No8",
+				"8th kaiju joins your team of monsters.",
+				"You've chosen the 'Kaiju No8' perk. 8th kaiju joins your team of monsters.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -877,9 +880,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -7496,6 +7496,9 @@ public class PerkLib
                     .requireSpe(90)
                     .requireLevel(36);
             //Tier 7 Wisdom perks
+            KaijuNo8.requireLevel(42)
+                    .requirePerk(LuckyNumberTamer)
+                    .requireWis(200);
 			ElementalConjurerKnowledgeSu.requirePerk(ElementalConjurerKnowledgeEx)
 					.requireWis(200)
                     .requireLevel(42)

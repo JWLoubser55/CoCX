@@ -354,6 +354,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Monstrous Regeneration. Gained by been Ushi Oni/Onna, Cave Wyrm. Effects: Your monstrous nature allow to regenerates 1% of HP per round in combat and 2% of HP per hour.\n");
 			outputText("-When meditating (soulforce menu) for at least 4 hours, having dantian perk and soul cohesion is below 100% PC can restore it slowly. 1% base increased by 1% per each 4 more full hours spent meditating. Reaching Dantian stage above Qi Condensation Dantian would multiply it per each stage attained.\n");
 			outputText("-New range weapon (by Ormael): Twin Energy Guns - can be gained by combining 2x Energy Gun weapon. Cost 2,560 gems. Base atk is 25, ammo clip size 1 and it dealing plasma damage. Each perk for mutli attacks per turn increase times it deal dmg by 2. It's Dual Firearm type range weapon.\n");
+			outputText("-New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -371,8 +372,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.
-			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: max 3 tammed monsters in group and 200% and max 3 groups
+			outputText("-\n");//New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 180+ wisdom. Effect: You could now group tamed monsters in groups of three of the same type. Together they would be 200% stronger and you can only control max 3 groups of tamed monsters.
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -1723,6 +1723,12 @@ public class Exploration extends BaseContent implements SaveableState
 			startCombat(new RyuBiDragon());
 		}
 
+		public function elementalsDefeated():void {
+			menu();
+			addButton(0, "Next", cleanupAfterCombat);
+			addButtonIfTrue(12, "Tame It", SceneLib.campMakeWinions.tamingAttempt, "Req. to have Job: Tamer", player.hasPerk(PerkLib.JobTamer));
+		}
+
 		public function goSearchForPearls():void {
 			clearOutput();
 			outputText("You grab your [weapon] and go on searching for a solution to your waning physical constitution.");
@@ -1853,4 +1859,4 @@ public class Exploration extends BaseContent implements SaveableState
 		}
 
 	}
-}
+}

@@ -99,9 +99,9 @@ public class EarthElemental extends Monster
 		{
 			if (inDungeon) {
 				if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatEarthElementalSubBoss();
-				else cleanupAfterCombat();
+				else SceneLib.exploration.elementalsDefeated();
 			}
-			else cleanupAfterCombat();
+			else SceneLib.exploration.elementalsDefeated();
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void
