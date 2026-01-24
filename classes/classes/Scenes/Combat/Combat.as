@@ -20321,13 +20321,14 @@ private function ghostRealStrengthCompanion():Number {
 
 private function ghostRealStrengthTamedMonster(no:Number):Number {
 	var ghostRealStrTamedMonster:Number = 0;
-	if (no == 1) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster01a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 2) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster02a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 3) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster03a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 4) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster04a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 5) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster05a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 6) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster06a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 1) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster01a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(1);
+	if (no == 2) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster02a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(2);
+	if (no == 3) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster03a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(3);
+	if (no == 4) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster04a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(4);
+	if (no == 5) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster05a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(5);
+	if (no == 6) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster06a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(6);
 	if (no == 7) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster07a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 8) ghostRealStrTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster08a)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
 	return ghostRealStrTamedMonster;
 }
 
@@ -20396,13 +20397,14 @@ private function ghostRealIntelligenceCompanion():Number {
 
 private function ghostRealIntelligenceTamedMonster(no:Number):Number {
 	var ghostRealIntTamedMonster:Number = 0;
-	if (no == 1) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster01b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 2) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster02b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 3) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster03b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 4) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster04b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 5) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster05b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
-	if (no == 6) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster06b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 1) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster01b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(1);
+	if (no == 2) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster02b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(2);
+	if (no == 3) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster03b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(3);
+	if (no == 4) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster04b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(4);
+	if (no == 5) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster05b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(5);
+	if (no == 6) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster06b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier(6);
 	if (no == 7) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster07b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
+	if (no == 8) ghostRealIntTamedMonster += player.statusEffectv1(StatusEffects.TamedMonster08b)*SceneLib.campMakeWinions.monsterBaseStatsMultiplier();
 	return ghostRealIntTamedMonster;
 }
 

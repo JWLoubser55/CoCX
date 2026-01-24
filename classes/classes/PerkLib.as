@@ -869,6 +869,12 @@ public class PerkLib
 		public static const KaijuNo8:PerkType = mk("Kaiju No8", "Kaiju No8",
 				"8th kaiju joins your team of monsters.",
 				"You've chosen the 'Kaiju No8' perk. 8th kaiju joins your team of monsters.");
+		public static const ApesTogetherStronger:PerkType = mk("Apes Together Stronger", "Apes Together Stronger",
+				"You could now group tamed monsters in groups of three of the same type. Together they would be 200% stronger and you can only control max 3 groups of tamed monsters.",
+				"You've chosen the 'Apes Together Stronger' perk. You could now group tamed monsters in groups of three of the same type. Together they would be 200% stronger and you can only control max 3 groups of tamed monsters.");
+		public static const ApesTogetherStrongest:PerkType = mk("Apes Together Strongest", "Apes Together Strongest",
+				"You could now group tamed monsters in groups of four of the same type. Together they would be 250% stronger and you can only control max 4 groups of tamed monsters.",
+				"You've chosen the 'Apes Together Strongest' perk. You could now group tamed monsters in groups of four of the same type. Together they would be 250% stronger and you can only control max 4 groups of tamed monsters.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -880,12 +886,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -7499,6 +7499,9 @@ public class PerkLib
             KaijuNo8.requireLevel(42)
                     .requirePerk(LuckyNumberTamer)
                     .requireWis(200);
+            ApesTogetherStronger.requireLevel(42)
+                    .requirePerk(ApesTogetherStrong)
+                    .requireWis(205);
 			ElementalConjurerKnowledgeSu.requirePerk(ElementalConjurerKnowledgeEx)
 					.requireWis(200)
                     .requireLevel(42)
@@ -7542,6 +7545,9 @@ public class PerkLib
 					.requireCustomFunction(function (player:Player):Boolean {
                         return player.hasPerk(PerkLib.ElementalContractRank10) || (player.hasPerk(PerkLib.DaoOfTheElements) && player.perkv1(PerkLib.DaoOfTheElements) >= 3);
                     }, "Having Elemental Contract Rank 10 or Dao of the Elements (layer 3 or higher) perks");
+            ApesTogetherStrongest.requireLevel(54)
+                    .requirePerk(ApesTogetherStronger)
+                    .requireWis(255);
             //Tier 10 Wisdom perks
             PerfectStrike.requireLevel(60)
                     .requirePerk(PrestigeJobSoulArtMaster);
@@ -9247,4 +9253,4 @@ public class PerkLib
 	}
 }
 
-}
+}

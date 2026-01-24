@@ -152,10 +152,12 @@ import classes.StatusEffects;
 			if (no == 3) {
 				weapon += player.statusEffectv1(StatusEffects.TamedMonster03);
 				dmg += SceneLib.combat.scalingBonusStrengthTamedMonster(3);
+				if (player.statusEffectv4(StatusEffects.TamedMonster03) > 0) repeat += player.statusEffectv4(StatusEffects.TamedMonster03);
 			}
 			if (no == 4) {
 				weapon += player.statusEffectv1(StatusEffects.TamedMonster04);
 				dmg += SceneLib.combat.scalingBonusStrengthTamedMonster(4);
+				if (player.statusEffectv4(StatusEffects.TamedMonster04) > 0) repeat += player.statusEffectv4(StatusEffects.TamedMonster04);
 			}
 			if (no == 5) {
 				weapon += player.statusEffectv1(StatusEffects.TamedMonster05);
@@ -210,8 +212,14 @@ import classes.StatusEffects;
 				dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(2);
 				if (player.statusEffectv4(StatusEffects.TamedMonster02) > 0) repeat += player.statusEffectv4(StatusEffects.TamedMonster02);
 			}
-			if (no == 3) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(3);
-			if (no == 4) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(4);
+			if (no == 3) {
+				dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(3);
+				if (player.statusEffectv4(StatusEffects.TamedMonster03) > 0) repeat += player.statusEffectv4(StatusEffects.TamedMonster03);
+			}
+			if (no == 4) {
+				dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(4);
+				if (player.statusEffectv4(StatusEffects.TamedMonster04) > 0) repeat += player.statusEffectv4(StatusEffects.TamedMonster04);
+			}
 			if (no == 5) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(5);
 			if (no == 6) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(6);
 			if (no == 7) dmg += SceneLib.combat.scalingBonusIntelligenceTamedMonster(7);

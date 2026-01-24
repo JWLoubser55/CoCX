@@ -1075,6 +1075,7 @@ public function soularena():void {
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "") addButtonDisabled(10, "IntermedLeader", "Req. to have any henchman with you to start this fight.");
 				else addButton(10, "IntermedLeader", intermediateleadershipfight1).hint("Intermediate Leadership fight");
 			}
+			else addButtonDisabled(10, "IntermedLeader", "Req. to have enabled Angel Fraction enemies.");
 			//11 - next step of leadership fights here
 			addButton(14, "Back", soularenaChallengeBack);
 		}
