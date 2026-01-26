@@ -15,6 +15,7 @@ import classes.Items.Weapons.Tidarion;
 import classes.PerkLib;
 import classes.Races;
 import classes.Scenes.Areas.VolcanicCrag.HellcatKasha;
+import classes.Scenes.Camp.CampMakeWinions;
 import classes.Scenes.Dungeons.D3.*;
 import classes.Scenes.SceneLib;
 import classes.StatusEffectClass;
@@ -300,6 +301,8 @@ public class CombatUI extends BaseCombatContent {
 			doMechAITurn();
 		else if (isSlimeTurn())
 			doSlimeTurn();
+		else if (isTamedMonsterTurn())
+			doTamedMonsterTurn();
 		//PC: is busy with something
 		else if (isPlayerBound()) {
 			mainMenuWhenBound();
@@ -839,6 +842,21 @@ public class CombatUI extends BaseCombatContent {
 			.disableIf(!CombatAbilities.BPHeartSeeker.isKnownAndUsable);
 		
 	}
+
+	public function isTamedMonsterTurn():Boolean {
+		return player.hasPerk(PerkLib.FirstAttackTamedMonsters) && SceneLib.campMakeWinions.playerAlreadyHaveAnyTamedMonster() && flags[kFLAGS.IN_COMBAT_PLAYER_TAMED_MONSTER_ATTACKED] != 1 && flags[kFLAGS.TAMED_MONSTER_ATTACK] == 1 && !doWeDisableThisOne(11);
+	}
+
+    public function doTamedMonsterTurn():void {
+		if (SceneLib.campMakeWinions.playerAlreadyHaveAnyTamedMonster()) {
+			combat.comtamed.tamedMonstersFirstAttack();
+			flags[kFLAGS.IN_COMBAT_PLAYER_TAMED_MONSTER_ATTACKED] = 1;
+			if (!player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn)) {
+				menu();
+				addButton(0, "Next", combatMenu, false);
+			}
+		}
+    }
 
 	public function isCompanionTurn(num:int):Boolean {
 		var present:Boolean;

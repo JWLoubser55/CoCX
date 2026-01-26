@@ -875,6 +875,9 @@ public class PerkLib
 		public static const ApesTogetherStrongest:PerkType = mk("Apes Together Strongest", "Apes Together Strongest",
 				"You could now group tamed monsters in groups of four of the same type. Together they would be 250% stronger and you can only control max 4 groups of tamed monsters.",
 				"You've chosen the 'Apes Together Strongest' perk. You could now group tamed monsters in groups of four of the same type. Together they would be 250% stronger and you can only control max 4 groups of tamed monsters.");
+		public static const FirstAttackTamedMonsters:PerkType = mk("First Attack: Tamed Monsters", "First Attack: Tamed Monsters",
+				"Before your actions your tamed monster will attack.",
+				"You've chosen the 'First Attack: Tamed Monsters' perk. Allowing your tamed monster to attack independently from you.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -886,9 +889,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -7373,10 +7373,9 @@ public class PerkLib
             TheLoveableLoser.requireLevel(24)
                     .requirePerk(TheDesperateDegenerate)
                     .requireWis(130);
-//            ComboMaster.requirePerk(Combo)
-//                    .requireWis(125)
-//                    .requireSpe(100)
-//                    .requireLevel(24);
+            FirstAttackTamedMonsters.requirePerk(StrongerTamedMosters)
+                    .requireLevel(24)
+					.requirePerk(FourthTamerOfTheApocalypse);
 			MeteorStrike.requirePerks(JabbingGrandmaster, GrabbingGrandmaster)
 					.requireWis(105)
 					.requireSpe(65)
@@ -9253,4 +9252,4 @@ public class PerkLib
 	}
 }
 
-}
+}

@@ -40,6 +40,7 @@ import classes.StatusEffects;
 			if (player.hasStatusEffect(StatusEffects.TamedMonster05)) outputText("<b>Tamed Monster No.5 HP:</b> "+(100-player.statusEffectv2(StatusEffects.TamedMonster05))+"%");
 			if (player.hasStatusEffect(StatusEffects.TamedMonster06)) outputText("<b>Tamed Monster No.6 HP:</b> "+(100-player.statusEffectv2(StatusEffects.TamedMonster06))+"%");
 			if (player.hasStatusEffect(StatusEffects.TamedMonster07)) outputText("<b>Tamed Monster No.7 HP:</b> "+(100-player.statusEffectv2(StatusEffects.TamedMonster07))+"%");
+			if (player.hasStatusEffect(StatusEffects.TamedMonster08)) outputText("<b>Tamed Monster No.8 HP:</b> "+(100-player.statusEffectv2(StatusEffects.TamedMonster08))+"%");
 			if (player.hasStatusEffect(StatusEffects.TamedMonster01)) addButton(0, "No.1", tamedMonstersActionMenu, 1).hint("Use tamed monster No.1");
 			else addButtonDisabled(0, "No.1", "You do not have Monster No.1 tamed.");
 			if (player.hasPerk(PerkLib.Beast02)) {
@@ -71,6 +72,19 @@ import classes.StatusEffects;
 				else addButtonDisabled(7, "No.8", "You do not have Monster No.8 tamed.");
 			}
 			addButton(14, "Back", SceneLib.combat.combatMenu, false);
+		}
+		
+		public function tamedMonstersFirstAttack():void {
+			if (player.hasStatusEffect(StatusEffects.TamedMonster01)) tamedMonsterAttackMelee(1);
+			else if (player.hasStatusEffect(StatusEffects.TamedMonster02)) tamedMonsterAttackMelee(2);
+			else if (player.hasStatusEffect(StatusEffects.TamedMonster03)) tamedMonsterAttackMelee(3);
+			else if (player.hasStatusEffect(StatusEffects.TamedMonster04)) tamedMonsterAttackMelee(4);
+			else if (player.hasStatusEffect(StatusEffects.TamedMonster05)) tamedMonsterAttackMelee(5);
+			else if (player.hasStatusEffect(StatusEffects.TamedMonster06)) tamedMonsterAttackMelee(6);
+			else if (player.hasStatusEffect(StatusEffects.TamedMonster07)) tamedMonsterAttackMelee(7);
+			else if (player.hasStatusEffect(StatusEffects.TamedMonster08)) tamedMonsterAttackMelee(8);
+			else if (player.hasStatusEffect(StatusEffects.TamedMonster09)) tamedMonsterAttackMelee(9);
+			else if (player.hasStatusEffect(StatusEffects.TamedMonster10)) tamedMonsterAttackMelee(10);
 		}
 		
 		public function tamedMonstersActionMenu(no:Number):void {

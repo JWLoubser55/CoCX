@@ -305,6 +305,10 @@ public class PerkMenu extends BaseContent {
 			outputText("\n<b>You can adjust the behavior of your mech ai during combat.</b>");
 			bd.add("Mech AI", mechAiBehaviourOptions);
 		}
+		if (player.hasPerk(PerkLib.FirstAttackTamedMonsters)) {
+			outputText("\n<b>You can adjust your tamed monsters behavior during combat.</b>");
+			bd.add("Tamed Monsters", tammedMonstersBehaviourOptions);
+		}
 		submenu(bd, CoC.instance.inCombat ? curry(combat.combatMenu, false) : displayPerks, 0, false);
 	}
 
@@ -1023,6 +1027,20 @@ public class PerkMenu extends BaseContent {
 			.disableIf(flags[kFLAGS.MECH_AI_ATTACK] == 0);
 		addButton(11, "Enable", toggleFlag, mechAiBehaviourOptions, kFLAGS.MECH_AI_ATTACK)
 			.disableIf(flags[kFLAGS.MECH_AI_ATTACK] == 1);
+		addButton(14, "Back", minionOptions);
+	}
+
+	public function tammedMonstersBehaviourOptions():void {
+		clearOutput();
+		menu();
+		outputText("You can choose how your tamed monsters will behave during each fight.\n\n");
+		outputText("\n<b>Tamed monsters behavior:</b>\n");
+		if (flags[kFLAGS.TAMED_MONSTER_ATTACK] == 0) outputText("Your tamed monsters will not attack.");
+		if (flags[kFLAGS.TAMED_MONSTER_ATTACK] == 1) outputText("Your tamed monsters will attack at the beginning of each turn. (Need to have any tamed monster for this setting to have any effect)");
+		addButton(10, "Disable", toggleFlag, tammedMonstersBehaviourOptions, kFLAGS.TAMED_MONSTER_ATTACK)
+			.disableIf(flags[kFLAGS.TAMED_MONSTER_ATTACK] == 0);
+		addButton(11, "Enable", toggleFlag, tammedMonstersBehaviourOptions, kFLAGS.TAMED_MONSTER_ATTACK)
+			.disableIf(flags[kFLAGS.TAMED_MONSTER_ATTACK] == 1);
 		addButton(14, "Back", minionOptions);
 	}
 
@@ -1834,4 +1852,4 @@ public class PerkMenu extends BaseContent {
 	 }
 	 */
 }
-}
+}

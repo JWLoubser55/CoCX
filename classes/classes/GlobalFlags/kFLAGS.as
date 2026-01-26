@@ -1354,8 +1354,8 @@ public static const ENCOUNTERED_DARKSLIME_EMPRESS:int                           
 public static const PLAYER_SLIMES_COUNT:int                                         = 1346;
 public static const IN_COMBAT_PLAYER_SLIMES_ATTACKED:int                            = 1347;
 public static const BAAZAR_SLAVE_DEN:int                                   			= 1348;
-public static const UNKNOWN_FLAG_NUMBER_01349:int                                   = 1349;
-public static const UNKNOWN_FLAG_NUMBER_01350:int                                   = 1350;
+public static const IN_COMBAT_PLAYER_TAMED_MONSTER_ATTACKED:int                     = 1349;
+public static const TAMED_MONSTER_ATTACK:int                                   		= 1350;
 public static const UNKNOWN_FLAG_NUMBER_01351:int                                   = 1351;
 public static const UNKNOWN_FLAG_NUMBER_01352:int                                   = 1352;
 public static const UNKNOWN_FLAG_NUMBER_01353:int                                   = 1353;

@@ -357,7 +357,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.\n");
 			outputText("-New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 205+ wisdom. Effect: You could now group tamed monsters in groups of three of the same type. Together they would be 200% stronger and you can only control max 3 groups of tamed monsters.\n");
 			outputText("-New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 255+ wisdom. Effect: You could now group tamed monsters in groups of four of the same type. Together they would be 250% stronger and you can only control max 4 groups of tamed monsters.\n");
-			outputText("-\n");
+			outputText("-New tier 4 wisdom lvl-up perk: First Attack: Tamed Monsters. Req. Fourth Tamer of the Apocalypse and Stronger Tamed Mosters perks. Effect: Before your actions your tamed monster will attack.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
