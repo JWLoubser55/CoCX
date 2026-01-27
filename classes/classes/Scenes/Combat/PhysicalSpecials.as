@@ -3232,19 +3232,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var shatterChance:int = 10;
 		var overloadedGolemCoresBag:Boolean = false;
 		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) {
-			damage += ((player.inte + player.wis) * 5);
+			damage += ((player.inte + player.wis) * 100);
 			shatterChance -= 2;
 		}
 		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) {
-			damage += ((player.inte + player.wis) * 6);
+			damage += ((player.inte + player.wis) * 120);
 			shatterChance -= 2;
 		}
 		if (player.hasPerk(PerkLib.ExpertGolemMaker)) {
-			damage += ((player.inte + player.wis) * 7);
+			damage += ((player.inte + player.wis) * 140);
 			shatterChance -= 3;
 		}
 		if (player.hasPerk(PerkLib.MasterGolemMaker)) {
-			damage += ((player.inte + player.wis) * 8);
+			damage += ((player.inte + player.wis) * 160);
 			shatterChance -= 3;
 		}
 		if (rand(100) < shatterChance) {
@@ -3255,8 +3255,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else overloadedGolemCoresBag = true;
 		}
 		damage += ((player.inte + player.wis + 300 + rand(121)) * 20);
-		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 10);
-		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 10);
+		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 100);
+		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 100);
 		dmgamp += temporalGolemsAplification();
 		damage *= dmgamp;
 		damage = Math.round(damage);
@@ -3278,19 +3278,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var overloadedGolemCoresBag:Boolean = false;
 		var partialyoverloadedGolemCoresBag:Boolean = false;
 		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) {
-			damage += ((player.inte + player.wis) * 5);
+			damage += ((player.inte + player.wis) * 100);
 			shatterChance -= 2;
 		}
 		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) {
-			damage += ((player.inte + player.wis) * 6);
+			damage += ((player.inte + player.wis) * 120);
 			shatterChance -= 2;
 		}
 		if (player.hasPerk(PerkLib.ExpertGolemMaker)) {
-			damage += ((player.inte + player.wis) * 7);
+			damage += ((player.inte + player.wis) * 140);
 			shatterChance -= 3;
 		}
 		if (player.hasPerk(PerkLib.MasterGolemMaker)) {
-			damage += ((player.inte + player.wis) * 8);
+			damage += ((player.inte + player.wis) * 160);
 			shatterChance -= 3;
 		}
 		if (rand(100) < shatterChance) {
@@ -3306,9 +3306,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 				partialyoverloadedGolemCoresBag = true;
 			}
 		}
-		damage += ((player.inte + player.wis + 300 + rand(121)) * 20);
-		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 10);
-		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 10);
+		damage += ((player.inte + player.wis + 300 + rand(121)) * 200);
+		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 100);
+		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 100);
 		damage *= 3;
 		dmgamp += temporalGolemsAplification();
 		damage *= dmgamp;
@@ -3332,19 +3332,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var overloadedGolemCoresBag:Boolean = false;
 		var partialyoverloadedGolemCoresBag:Boolean = false;
 		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) {
-			damage += ((player.inte + player.wis) * 5);
+			damage += ((player.inte + player.wis) * 100);
 			shatterChance -= 2;
 		}
 		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) {
-			damage += ((player.inte + player.wis) * 6);
+			damage += ((player.inte + player.wis) * 120);
 			shatterChance -= 2;
 		}
 		if (player.hasPerk(PerkLib.ExpertGolemMaker)) {
-			damage += ((player.inte + player.wis) * 7);
+			damage += ((player.inte + player.wis) * 140);
 			shatterChance -= 3;
 		}
 		if (player.hasPerk(PerkLib.MasterGolemMaker)) {
-			damage += ((player.inte + player.wis) * 8);
+			damage += ((player.inte + player.wis) * 160);
 			shatterChance -= 3;
 		}
 		if (rand(100) < shatterChance) {
@@ -3360,9 +3360,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 				partialyoverloadedGolemCoresBag = true;
 			}
 		}
-		damage += ((player.inte + player.wis + 300 + rand(121)) * 20);
-		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 10);
-		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 10);
+		damage += ((player.inte + player.wis + 300 + rand(121)) * 200);
+		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 100);
+		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 100);
 		damage *= 5;
 		dmgamp += temporalGolemsAplification();
 		damage *= dmgamp;
@@ -3381,19 +3381,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var dmgamp:Number = 1;
 		var overloadedGolemCoresBag:Boolean = false;
 		var partialyoverloadedGolemCoresBag:Boolean = false;
-		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) damage += ((player.inte + player.wis) * 5);
-		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) damage += ((player.inte + player.wis) * 6);
-		if (player.hasPerk(PerkLib.ExpertGolemMaker)) damage += ((player.inte + player.wis) * 7);
-		if (player.hasPerk(PerkLib.MasterGolemMaker)) damage += ((player.inte + player.wis) * 8);
+		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) damage += ((player.inte + player.wis) * 100);
+		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) damage += ((player.inte + player.wis) * 120);
+		if (player.hasPerk(PerkLib.ExpertGolemMaker)) damage += ((player.inte + player.wis) * 140);
+		if (player.hasPerk(PerkLib.MasterGolemMaker)) damage += ((player.inte + player.wis) * 160);
 		if (!overloadedGolemCoresBag) {
 			if ((SceneLib.campMakeWinions.maxReusableGolemCoresBagSize() - flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG]) < 4) {
 				flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] = SceneLib.campMakeWinions.maxReusableGolemCoresBagSize();
 				partialyoverloadedGolemCoresBag = true;
 			}
 		}
-		damage += ((player.inte + player.wis + 300 + rand(121)) * 20);
-		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 10);
-		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 10);
+		damage += ((player.inte + player.wis + 300 + rand(121)) * 200);
+		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 100);
+		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 100);
 		damage *= 4;
 		dmgamp += temporalGolemsAplification();
 		damage *= dmgamp;
@@ -3411,19 +3411,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var dmgamp:Number = 1;
 		var overloadedGolemCoresBag:Boolean = false;
 		var partialyoverloadedGolemCoresBag:Boolean = false;
-		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) damage += ((player.inte + player.wis) * 5);
-		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) damage += ((player.inte + player.wis) * 6);
-		if (player.hasPerk(PerkLib.ExpertGolemMaker)) damage += ((player.inte + player.wis) * 7);
-		if (player.hasPerk(PerkLib.MasterGolemMaker)) damage += ((player.inte + player.wis) * 8);
+		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) damage += ((player.inte + player.wis) * 100);
+		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) damage += ((player.inte + player.wis) * 120);
+		if (player.hasPerk(PerkLib.ExpertGolemMaker)) damage += ((player.inte + player.wis) * 140);
+		if (player.hasPerk(PerkLib.MasterGolemMaker)) damage += ((player.inte + player.wis) * 160);
 		if (!overloadedGolemCoresBag) {
 			if ((SceneLib.campMakeWinions.maxReusableGolemCoresBagSize() - flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG]) < 10) {
 				flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] = SceneLib.campMakeWinions.maxReusableGolemCoresBagSize();
 				partialyoverloadedGolemCoresBag = true;
 			}
 		}
-		damage += ((player.inte + player.wis + 300 + rand(121)) * 20);
-		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 10);
-		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 10);
+		damage += ((player.inte + player.wis + 300 + rand(121)) * 200);
+		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 100);
+		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 100);
 		damage *= 10;
 		dmgamp += temporalGolemsAplification();
 		damage *= dmgamp;
@@ -3441,19 +3441,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var dmgamp:Number = 1;
 		var overloadedGolemCoresBag:Boolean = false;
 		var partialyoverloadedGolemCoresBag:Boolean = false;
-		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) damage += ((player.inte + player.wis) * 5);
-		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) damage += ((player.inte + player.wis) * 6);
-		if (player.hasPerk(PerkLib.ExpertGolemMaker)) damage += ((player.inte + player.wis) * 7);
-		if (player.hasPerk(PerkLib.MasterGolemMaker)) damage += ((player.inte + player.wis) * 8);
+		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) damage += ((player.inte + player.wis) * 100);
+		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) damage += ((player.inte + player.wis) * 120);
+		if (player.hasPerk(PerkLib.ExpertGolemMaker)) damage += ((player.inte + player.wis) * 140);
+		if (player.hasPerk(PerkLib.MasterGolemMaker)) damage += ((player.inte + player.wis) * 160);
 		if (!overloadedGolemCoresBag) {
 			if ((SceneLib.campMakeWinions.maxReusableGolemCoresBagSize() - flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG]) < 20) {
 				flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] = SceneLib.campMakeWinions.maxReusableGolemCoresBagSize();
 				partialyoverloadedGolemCoresBag = true;
 			}
 		}
-		damage += ((player.inte + player.wis + 300 + rand(121)) * 20);
-		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 10);
-		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 10);
+		damage += ((player.inte + player.wis + 300 + rand(121)) * 200);
+		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 100);
+		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 100);
 		damage *= 4;
 		dmgamp += temporalGolemsAplification();
 		damage *= dmgamp;
@@ -3472,10 +3472,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var overloadedGolemCoresBag:Boolean = false;
 		var partialyoverloadedGolemCoresBag:Boolean = false;
 		var usedGolems:Number = flags[kFLAGS.TEMPORAL_GOLEMS_BAG];
-		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) damage += ((player.inte + player.wis) * 5);
-		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) damage += ((player.inte + player.wis) * 5);
-		if (player.hasPerk(PerkLib.ExpertGolemMaker)) damage += ((player.inte + player.wis) * 5);
-		if (player.hasPerk(PerkLib.MasterGolemMaker)) damage += ((player.inte + player.wis) * 5);
+		if (player.hasPerk(PerkLib.BeginnerGolemMaker)) damage += ((player.inte + player.wis) * 100);
+		if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) damage += ((player.inte + player.wis) * 120);
+		if (player.hasPerk(PerkLib.ExpertGolemMaker)) damage += ((player.inte + player.wis) * 140);
+		if (player.hasPerk(PerkLib.MasterGolemMaker)) damage += ((player.inte + player.wis) * 160);
 		flags[kFLAGS.TEMPORAL_GOLEMS_BAG] = 0;
 		if (flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] + usedGolems < SceneLib.campMakeWinions.maxReusableGolemCoresBagSize()) flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] += usedGolems;
 		else overloadedGolemCoresBag = true;
@@ -3485,9 +3485,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 				partialyoverloadedGolemCoresBag = true;
 			}
 		}
-		damage += ((player.inte + player.wis + 300 + rand(121)) * 20);
-		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 10);
-		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 10);
+		damage += ((player.inte + player.wis + 300 + rand(121)) * 400);
+		if (player.hasPerk(PerkLib.ChargedCore)) damage += ((300 + rand(121)) * 200);
+		if (player.hasPerk(PerkLib.SuperChargedCore)) damage += ((300 + rand(121)) * 200);
 		damage *= usedGolems;
 		dmgamp += temporalGolemsAplification();
 		damage *= dmgamp;
@@ -3629,7 +3629,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		else useMana(permanentgolemsendcost() * cnt);
 		//base
-		var damage:Number = (player.inte + player.wis + 500 + rand(201)) * 2;
+		var damage:Number = (player.inte + player.wis + 500 + rand(201)) * 10;
 		var dmgamp:Number = 1;
 		dmgamp += dmgamp_permanent_shared();
 		if ((player.hasStatusEffect(StatusEffects.GolemUpgrades1) && player.statusEffectv2(StatusEffects.GolemUpgrades1) > 0)) damage *= (1 + (player.statusEffectv2(StatusEffects.GolemUpgrades1) * 0.25));
@@ -3662,7 +3662,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			return;
 		}
 		else useMana(permanentimprovedgolemsendcost() * cnt);
-		var damage:Number = ((player.inte + player.wis + 1500 + rand(501)) * 10);
+		var damage:Number = ((player.inte + player.wis + 1500 + rand(501)) * 50);
 		var dmgamp:Number = 1;
 		dmgamp += dmgamp_permanent_shared();
 		dmgamp *= 2;
@@ -3698,7 +3698,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			return;
 		}
 		else useMana(permanentsteelgolemsendcost() * cnt);
-		var damage:Number = ((player.inte + player.wis + 750 + rand(251)) * 5);
+		var damage:Number = ((player.inte + player.wis + 750 + rand(251)) * 25);
 		var dmgamp:Number = 1;
 		dmgamp += dmgamp_permanent_shared();
 		dmgamp *= 1.2;
@@ -3732,7 +3732,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			return;
 		}
 		else useMana(permanentimprovedsteelgolemsendcost() * cnt);
-		var damage:Number = ((player.inte + player.wis + 2250 + rand(751)) * 25);
+		var damage:Number = ((player.inte + player.wis + 2250 + rand(751)) * 125);
 		var dmgamp:Number = 1;
 		dmgamp += dmgamp_permanent_shared();
 		dmgamp *= 2.4;

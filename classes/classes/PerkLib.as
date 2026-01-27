@@ -788,9 +788,9 @@ public class PerkLib
 		public static const HyperServosMastery:PerkType = mk("Hyper-Servos Mastery", "Hyper-Servos Mastery",
 				"Boosts armor points by a portion of your speed on vehicle armors. (1:100 ratio)",
 				"You've chosen the 'Hyper-Servos Mastery' perk. Boosts armor points by a portion of your speed on vehicle armors. (1:100 ratio)");
-		public static const StrongerTamedMosters:PerkType = mk("Stronger Tamed Mosters", "Stronger Tamed Mosters",
+		public static const StrongerTamedMosters:PerkType = mk("Stronger Tamed Mosters", "Stronger Tamed Monsters",
 				"Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)",
-				"You've chosen the 'Stronger Tamed Mosters' perk. Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)");
+				"You've chosen the 'Stronger Tamed Monsters' perk. Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)");
 		public static const FifthTamed:PerkType = mk("Fifth Tamed", "Fifth Tamed",
 				"Now you can add fifth wheel... tamed monster to your team.",
 				"You've chosen the 'Fifth Wheel' perk. Now you can add fifth wheel... tamed monster to your team.");
@@ -9252,4 +9252,4 @@ public class PerkLib
 	}
 }
 
-}
+}

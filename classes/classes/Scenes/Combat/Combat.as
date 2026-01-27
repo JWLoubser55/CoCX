@@ -989,51 +989,40 @@ public class Combat extends BaseContent {
 	
 	public function disableEachHelperIfTheyCauseSoftLock():void {
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_BLOOD_PUPPIES_ATTACKED] != 0 && flags[kFLAGS.BLOOD_PUPPY_SUMMONS] > 0) {
-			player.createStatusEffect(StatusEffects.DisableMHActing, 0, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing00, 0, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_EPIC_ELEMENTAL_ATTACKED] != 0 && flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] > 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 1, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing01, 0, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_ELEMENTAL_ATTACKED] != 0 && flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] > 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 2, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing02, 0, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_SKELETONS_ATTACKED] != 0 && flags[kFLAGS.NECROMANCER_SKELETONS] == 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 3, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing03, 0, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_GOLEM_ATTACKED] != 0 && flags[kFLAGS.GOLEMANCER_PERM_GOLEMS] == 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 4, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing04, 0, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_FLYING_SWORD_ATTACKED] != 0 && flags[kFLAGS.FLYING_SWORD] == 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 5, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing05, 0, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_MUMMY_ZOMBIE_ATTACKED] != 0 && flags[kFLAGS.MUMMY_ZOMBIE_ATTACK] == 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 6, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing06, 0, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_WILL_O_THE_WISP_ATTACKED] != 0 && flags[kFLAGS.WILL_O_THE_WISP] < 2) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 7, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing07, 0, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_MATANGO_ATTACKED] != 0 && flags[kFLAGS.MATANGO_ATTACK] == 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 8, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing08, 0, 0, 0, 0);
 		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_GOBLIN_MECH_AI_ATTACKED] != 0 && flags[kFLAGS.MECH_AI_ATTACK] == 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 9, 0, 0, 0);
-		}/*
-		if (flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] != 0 && flags[kFLAGS.MECH_AI_ATTACK] == 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 10, 0, 0, 0);
-		}*/
+			player.createStatusEffect(StatusEffects.DisableMHActing09, 0, 0, 0, 0);
+		}
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_TAMED_MONSTER_ATTACKED] != 0 && flags[kFLAGS.TAMED_MONSTER_ATTACK] == 1) {
-			if (player.hasStatusEffect(StatusEffects.DisableMHActing)) player.removeStatusEffect(StatusEffects.DisableMHActing);
-			player.createStatusEffect(StatusEffects.DisableMHActing, 11, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.DisableMHActing10, 0, 0, 0, 0);
+		}
+		if (flags[kFLAGS.IN_COMBAT_PLAYER_SLIMES_ATTACKED] != 0 && monster.getStatusValue(StatusEffects.SlimeSurround,2) > 0) {
+			monster.changeStatusValue(StatusEffects.SlimeSurround, 2, 0);
 		}
 	}
 

@@ -357,8 +357,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 7 wisdom lvl-up perk: Kaiju No8. Req. Lucky Number Tamer perk and 200+ wisdom. Effect: 8th kaiju joins your team of monsters.\n");
 			outputText("-New tier 7 wisdom lvl-up perk: Apes Together Stronger. Req. Apes Together Strong perk and 205+ wisdom. Effect: You could now group tamed monsters in groups of three of the same type. Together they would be 200% stronger and you can only control max 3 groups of tamed monsters.\n");
 			outputText("-New tier 9 wisdom lvl-up perk: Apes Together Strongest. Req. Apes Together Stronger perk and 255+ wisdom. Effect: You could now group tamed monsters in groups of four of the same type. Together they would be 250% stronger and you can only control max 4 groups of tamed monsters.\n");
-			outputText("-New tier 4 wisdom lvl-up perk: First Attack: Tamed Monsters. Req. Fourth Tamer of the Apocalypse and Stronger Tamed Mosters perks. Effect: Before your actions your tamed monster will attack.\n");
-			outputText("-\n");
+			outputText("-New tier 4 wisdom lvl-up perk: First Attack: Tamed Monsters. Req. Fourth Tamer of the Apocalypse and Stronger Tamed Monsters perks. Effect: Before your actions your tamed monster will attack.\n");
+			outputText("-Temporal Golems dmg scaling was increased by 20x and pernament golems scaling by 5x.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -1265,7 +1265,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 misc lvl-up perk: Magnetize. Req. Polarize perk, 60+ wisdom and 60+ intelligence. Effect: Double the damage bonus from Polarize. Enemies weak to electricity take twice as much damage from Polarize.\n");
 			outputText("-New tier 3 wisdom lvl-up perk: Exo-Giant’s Grip. Req. Ayo Armor Master perk and 100+ wisdom. Effect: Gain an ability to wield large (melee or range) weapons and massive shields in one hand OR wield massive weapon using both hands as long you wear powered Ayo armor. (+10% melee physical attacks multiplier)\n");
 			outputText("-New tier 3 toughness lvl-up perk: Hyper-Servos Mastery. Req. Job: Artificier perk and 100+ toughness Effect: Boosts armor and magical resistance by a portion of your speed on vehicle armors. (1:100 ratio)\n");
-			outputText("-New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)\n");
+			outputText("-New tier 3 wisdom lvl-up perk: Stronger Tamed Monsters. Req. Fourth Tamer of the Apocalypse perk and 105+ wisdom. Effect: Using your link with tamed monster you share a bit of your own power with them. (increase by 100% base tamed monster stats and recovery rate)\n");
 			outputText("-New tier 4 wisdom lvl-up perk: Dual Wield (2H Firearms). Req. Dual Wield (Firearms) and Amateur Gunslinger perks; 50+ wis, 40+ int and 30+ spe. Effect: Allows you to wield two firearms (2H ones) more effectively. (damage and accuracy penalties decreased by 40% and 20%)\n");
 			outputText("-New tier 4 sensitivity lvl-up perk: Electrokinesis. Req. Job: Psychic perk and 110+ sensitivity. Effect: As psychic you have gained ability to manipulate or control lightning.\n");
 			outputText("-New tier 4 sensitivity lvl-up perk: Aerokinesis. Req. Job: Psychic perk and 110+ sensitivity. Effect: As psychic you have gained ability to manipulate or control air/wind.\n");
