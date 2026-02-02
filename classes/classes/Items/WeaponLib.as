@@ -864,7 +864,7 @@ public final class WeaponLib extends ItemConstants
 				"Similar to the machine Greatsword, this weapon is highly mechanical. Instead of a sharp straight blade, the weapon’s sides are a set of sharp metal teeth that constantly move in order to properly saw through flesh and more solid matter, creating grievous wounds. The blades movement is so fast it creates heat along the length and thanks to a small system set, the saw is constantly aflame. Aside of cutting fleshy things in half, it is very good for taking down trees.",
 				WT_EXOTIC, WSZ_LARGE)
 				.withEffect(IELib.Bleed, 100)
-				.withTags(W_HTECHWEAPON)  as Weapon;
+				.withTags(W_HTECHWEAPON, W_FIRE_TYPE)  as Weapon;
 		public const RRAPIER:Weapon = new Weapon(
 				"RRapier", "RRapier", "vulpine rapier", "Raphael's vulpine rapier", "slash", 8, 640,
 				"He's bound it with his red sash around the length like a ribbon, as though he has now gifted it to you.  Perhaps it is his way of congratulating you.",
@@ -1038,7 +1038,7 @@ public final class WeaponLib extends ItemConstants
 				"Similar to the machine Greatsword, those weapons are highly mechanical. Instead of a sharp straight blade, the weapon’s sides are a set of sharp metal teeth that constantly move in order to properly saw through flesh and more solid matter, creating grievous wounds. The blades movement is so fast it creates heat along the length and thanks to a small system set, the saws are constantly aflame. Aside of cutting fleshy things in half, it is very good for taking down trees.",
 				WT_EXOTIC, WSZ_LARGE, true)
 				.withEffect(IELib.Bleed, 100)
-				.withTags(W_HTECHWEAPON) as Weapon;
+				.withTags(W_HTECHWEAPON, W_FIRE_TYPE) as Weapon;
 		public const TRSABER:Weapon = new Weapon(
 				"TRSaber","TwelveRingedSaber","Twelve-ringed Saber","a twelve-ringed saber","slash",70,5600,//320 atk for massive mid-grade wrath variant of ringed saber
 				"This large saber, with added twelve rings is capable of delivering deep, jagged wounds.",

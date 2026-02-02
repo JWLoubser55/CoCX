@@ -98,7 +98,7 @@ public class PerkLib
 		public static const AscensionHerosHeritage:PerkType = mk("Ascension: Hero's Heritage", "Ascension: Hero's Heritage",
 				"After you reincarnated, you ended up in the body of a local hero descendant possessing a much firmer body and resolve giving you a slightly easier start to your quest in Mareth.");
 		public static const AscensionHerosLegacy:PerkType = mk("Ascension: Hero's Legacy", "Ascension: Hero's Legacy",
-				"You were reincarnated as the descendant of a regional hero, giving you a significantly better start to your journey. Now, after another reincarnation, you realize how much you truly NEEDED it");
+				"You were reincarnated as the descendant of a regional hero, giving you a significantly better start to your journey. Now, after another reincarnation, you realize how much you truly NEEDED it.");
 		public static const AscensionHerosLineage:PerkType = mk("Ascension: Hero's Lineage", "Ascension: Hero's Lineage",
 				"The body you reincarnate into has a stronger heroic lineage than yours, offering you an even greater advantage before embarking on your journey into Mareth. You’ll likely need it.");
 		public static const AscensionHybridTheory:PerkType = mk("Ascension: Hybrid Theory", "Ascension: Hybrid Theory",
@@ -9252,4 +9252,4 @@ public class PerkLib
 	}
 }
 
-}
+}

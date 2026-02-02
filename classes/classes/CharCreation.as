@@ -1511,7 +1511,7 @@ import classes.Scenes.Combat.CombatAbility;
 			if (!player.hasPerk(PerkLib.BloodlineDemon)) addButton(3, "Demon", confirmBloodline4, PerkLib.DemonsDescendant).hint("(+2 to demon score)");
 			else addButtonDisabled(3, "Demon", "You already have this bloodline!");
 			if (!player.hasPerk(PerkLib.BloodlineDevil)) addButton(4, "Devil", confirmBloodline4, PerkLib.DevilsDescendant).hint("(+2 to devil score)");
-			else addButtonDisabled(4, "Demon", "You already have this bloodline!");
+			else addButtonDisabled(4, "Devil", "You already have this bloodline!");
 			addButton(10, "-1-", chooseBloodline1);
 			addButton(11, "-2-", chooseBloodline2);
 			addButton(12, "-3-", chooseBloodline3);

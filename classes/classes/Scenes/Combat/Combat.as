@@ -9960,7 +9960,7 @@ public class Combat extends BaseContent {
                 else outputText("Despite the gashes you've torn in its exterior, [themonster] does not bleed.");
             } else {
                 if (player.weapon == weapons.MACGRSW || player.weapon == weapons.TMACGRSW || player.weapon == weapons.RIPPER1 ||  player.weapon == weapons.TRIPPER1 || player.weapon == weapons.RIPPER2 || player.weapon == weapons.TRIPPER2) {
-					if (monster.hasStatusEffect(StatusEffects.Hemorrhage))  monster.removeStatusEffect(StatusEffects.Hemorrhage);
+					if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage,1,1);
                     if (player.weapon == weapons.MACGRSW || player.weapon == weapons.TMACGRSW) monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.02, 0, 0);
                     else monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05, 0, 0);
                 } else {
@@ -20550,3 +20550,4 @@ private function touSpeStrScale(stat:int):Number {
 }
 
 
+

@@ -488,14 +488,14 @@ public class TempleOfTheDivine extends BaseContent {
 			clearOutput();
 			if (player.hasItem(shields.BSHIELD, 1)) {
 				outputText("You feel a weird resonance engulf you, as the power of the Altar of Marae echos with an item on your person.\n\n");
-				outputText("Pulling out the Beautiful Sword, you notice the weapon is now shining with a dim white light. Curious, you place the weapon on the altar, and watch as the sword surges with power, the light seeming to be absorbed into the blade. The altar feels way more potent with the sword resting upon it. However, it occurs to you, such a weapon likely is a powerful artifact, and that as such, it could be useful in your battles against the demons.");
+				outputText("Pulling out the Beautiful Shield, you notice the armor is now shining with a dim white light. Curious, you place the armor on the altar, and watch as the shield surges with power, the light seeming to be absorbed into the shield. The altar feels way more potent with the shield resting upon it. However, it occurs to you, such an armor likely is a powerful artifact, and that as such, it could be useful in your battles against the demons.");
 				player.destroyItems(shields.BSHIELD, 1);
 				if (player.hasStatusEffect(StatusEffects.TempleOfTheDivineTracker2)) player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 2, 2);
 				else player.createStatusEffect(StatusEffects.TempleOfTheDivineTracker2, 0, 2, 0, 0);
 			}
 			else {
-				outputText("The altar radiates with increased potency as the sword is put back on display.");
-				player.destroyItems(shields.BSHIELD, 1);
+				outputText("The altar radiates with increased potency as the shield is put back on display.");
+				player.destroyItems(shields.PRIDWEN, 1);
 				player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 2, 1);
 			}
 			doNext(templeMainMenu);
