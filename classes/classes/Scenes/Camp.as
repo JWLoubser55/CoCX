@@ -2372,7 +2372,7 @@ public class Camp extends NPCAwareContent{
 		hideMenus();
 		menu();
 		// [Build   ] [Winions] [Misc     ] [SpendTime] [NPC's     ]
-		// [Crafting] [Garden ] [Herbalism] [Inventory] [Quest Loot]
+		// [Crafting] [Garden ] [Herbalism] [Inv Misc ] [Quest Loot]
 		// [Questlog] [Recall ] [Dummy    ] [Ascension] [Back      ]
 		clearOutput();
 		outputText("What would you like to do?");
@@ -2386,7 +2386,7 @@ public class Camp extends NPCAwareContent{
 		if (SceneLib.garden.canAccessGarden()) addButton(6, "Garden", SceneLib.garden.accessGarden).hint("Manage your garden of medicinal plants.");
 		else addButtonDisabled(6, "Garden", "You need an herb bag before you can start gardening. For some reason, the traveling merchant Giacomo comes to mind...");
 		addButton(7, "Herbalism", SceneLib.garden.herbalismMenu).hint("Use ingredients to craft poultice and battle medicines.").disableIf((isNightTime && !player.isNightCreature() && !player.hasDarkVision()),"It's too dark to do any gardening!").disableIf(!player.hasStatusEffect(StatusEffects.CampRathazul),"You’ll need an alchemist in your camp to help with this. Perhaps Rathazul could teach you the basics of herbalism?");
-		if (!inDungeon && !inRoomedDungeon && !flags[kFLAGS.IN_INGNAM]) addButton(8, "Misc", campInventoryActions).hint("Action that could been used from Inventory menu if it not been already full of options.");
+		if (!inDungeon && !inRoomedDungeon && !flags[kFLAGS.IN_INGNAM]) addButton(8, "Inv Misc", campInventoryActions).hint("Action that could been used from Inventory menu if it not been already full of options.");
 		addButton(9, "Quest Loot", SceneLib.adventureGuild.questItemsBag).hint("Manage your bag with quest items.").disableIf(!AdventurerGuild.playerInGuild, "Join the Adventure Guild for a quest bag!");
 		addButton(10, "Questlog", questlog.accessQuestlogMainMenu).hint("Check your questlog.");
 		addButton(11, "Recall", sceneHunter.recallScenes).hint("Recall some of the unique events that happened during your adventure.");
@@ -3211,10 +3211,10 @@ public class Camp extends NPCAwareContent{
 		else addButtonDisabled(0, "Make", "You need to learn the Golemancer job to use this option.");player.hasPerk(PerkLib.JobElementalConjurer)
 		if (player.hasPerk(PerkLib.JobElementalConjurer) && flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > 0) addButton(1, "Summon", SceneLib.campMakeWinions.accessSummonElementalsMainMenu).hint("Check your options for managing your elemental summons.");
 		else addButtonDisabled(1, "Summon", "You should build an Arcane Circle and learn Elemental Conjurer job to use this option. Without some tools from the carpenter's toolbox, it would be near impossible to make Arcane Circle.");
-		if (player.hasPerk(PerkLib.JobTamer)) addButton(2, "Tame", SceneLib.campMakeWinions.accessTamedWinionsMainMenu).hint("Check your options for tamed minions.");
-		else addButtonDisabled(2, "Tame", "You need to learn the Tamer job to use this option.");
-		if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(5, "Skeletons", SceneLib.campMakeWinions.accessMakeSkeletonWinionsMainMenu).hint("Check your options for making some skeletons.");
-		else addButtonDisabled(5, "Skeletons", "You need to learn the Necromancer job to use this option.");
+		if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(2, "Skeletons", SceneLib.campMakeWinions.accessMakeSkeletonWinionsMainMenu).hint("Check your options for making some skeletons.");
+		else addButtonDisabled(2, "Skeletons", "You need to learn the Necromancer job to use this option.");
+		if (player.hasPerk(PerkLib.JobTamer)) addButton(5, "Tame", SceneLib.campMakeWinions.accessTamedWinionsMainMenu).hint("Check your options for tamed minions.");
+		else addButtonDisabled(5, "Tame", "You need to learn the Tamer job to use this option.");
 		if (player.hasPerk(PerkLib.PrestigeJobDruid)) addButton(6, "Fusions", druidMenu);
 		else addButtonDisabled(6, "Fusions", "You need to learn the Druid job to use this option.");
 		addButton(14, "Back", campActions);

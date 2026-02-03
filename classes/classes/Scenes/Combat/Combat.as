@@ -3259,7 +3259,7 @@ public class Combat extends BaseContent {
         }
         else if (player.isFirearmTypeWeapon()) {
             flags[kFLAGS.MULTIPLE_ARROWS_STYLE] = Math.min((flags[kFLAGS.MULTISHOT_STYLE] || 0) + 1, maxRangedAttacks);
-			if (player.weaponRange == weaponsrange.GOODSAM || player.weaponRange == weaponsrange.BADOMEN) {
+			if (player.weaponRange == weaponsrange.GOODSAM || player.weaponRange == weaponsrange.BADOMEN || player.weaponRange == weaponsrange.TGOODSAM || player.weaponRange == weaponsrange.BADOMENS) {
 				var recoil:Number = 1;
 				if (player.str >= 50) recoil += 1;
 				if (player.str >= 100) recoil += 1;
@@ -4737,10 +4737,10 @@ public class Combat extends BaseContent {
 				damage += rangeDamageNoLagSingle(2);
 				damage *= 1.5;
                 //Weapon addition!
-                if (player.weaponRange == weaponsrange.KSLHARP || player.weaponRange == weaponsrange.GOODSAM || Forgefather.purePearlEaten) {
+                if (player.weaponRange == weaponsrange.KSLHARP || player.weaponRange == weaponsrange.GOODSAM || player.weaponRange == weaponsrange.TGOODSAM || Forgefather.purePearlEaten) {
                     damage = monsterPureDamageBonus(damage);
                 }
-                if (player.weaponRange == weaponsrange.LEVHARP || player.weaponRange == weaponsrange.BADOMEN || Forgefather.lethiciteEaten) {
+                if (player.weaponRange == weaponsrange.LEVHARP || player.weaponRange == weaponsrange.BADOMEN || player.weaponRange == weaponsrange.BADOMENS || Forgefather.lethiciteEaten) {
                     damage = monsterCorruptDamageBonus(damage);
                 }
 				if (player.countMiscJewelry(miscjewelries.ATLATL_) > 0) damage *= 1.25;
@@ -5566,6 +5566,8 @@ public class Combat extends BaseContent {
 		}
         if (player.weaponRange == weaponsrange.BLUNDER) player.ammo = 9;
         if (player.weaponRange == weaponsrange.TDEEAGL) player.ammo = 8;
+        if (player.weaponRange == weaponsrange.TGOODSAM) player.ammo = 8;
+        if (player.weaponRange == weaponsrange.BADOMENS) player.ammo = 8;
         if (player.weaponRange == weaponsrange.SIXSHOT) player.ammo = 6;
         if (player.weaponRange == weaponsrange.TDPISTO) player.ammo = 6;
         if (player.weaponRange == weaponsrange.GOODSAM) player.ammo = 4;
@@ -9114,8 +9116,8 @@ public class Combat extends BaseContent {
 
     public function perkBonusDamage(damage:Number):Number {
         if (player.hasPerk(PerkLib.HistoryFighter) || player.hasPerk(PerkLib.PastLifeFighter)) damage *= historyFighterBonus();
-        if (player.weaponRange == weaponsrange.BADOMEN && monster.hasPerk(PerkLib.EnemyTrueAngel)) damage *= 1.25;
-        if (player.weaponRange == weaponsrange.GOODSAM && monster.hasPerk(PerkLib.EnemyTrueDemon)) damage *= 1.25;
+        if ((player.weaponRange == weaponsrange.BADOMEN || player.weaponRange == weaponsrange.BADOMENS) && monster.hasPerk(PerkLib.EnemyTrueAngel)) damage *= 1.25;
+        if ((player.weaponRange == weaponsrange.GOODSAM || player.weaponRange == weaponsrange.TGOODSAM) && monster.hasPerk(PerkLib.EnemyTrueDemon)) damage *= 1.25;
         if (player.hasPerk(PerkLib.DemonSlayer) && monster.hasPerk(PerkLib.EnemyTrueDemon)) damage *= 1 + player.perkv1(PerkLib.DemonSlayer);
         if (player.hasPerk(PerkLib.FeralHunter) && monster.hasPerk(PerkLib.EnemyFeralType)) damage *= 1 + player.perkv1(PerkLib.FeralHunter);
         if (player.hasPerk(PerkLib.JobWarrior)) damage *= 1.05;
@@ -15499,6 +15501,8 @@ public class Combat extends BaseContent {
 		}
         if (player.weaponRange == weaponsrange.BLUNDER) player.ammo = 9;
         if (player.weaponRange == weaponsrange.TDEEAGL) player.ammo = 8;
+        if (player.weaponRange == weaponsrange.TGOODSAM) player.ammo = 8;
+        if (player.weaponRange == weaponsrange.BADOMENS) player.ammo = 8;
         if (player.weaponRange == weaponsrange.SIXSHOT) player.ammo = 6;
         if (player.weaponRange == weaponsrange.TDPISTO) player.ammo = 6;
         if (player.weaponRange == weaponsrange.GOODSAM) player.ammo = 4;
