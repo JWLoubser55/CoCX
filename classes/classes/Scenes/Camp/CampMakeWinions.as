@@ -2161,9 +2161,9 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function maxSkeletonWarriors():Number {
 			var maxSkeletonWarriorsCounter:Number = 0;
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) maxSkeletonWarriorsCounter += 3;
-			if (player.hasPerk(PerkLib.GreaterHarvest)) maxSkeletonWarriorsCounter += 3;
-			if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonWarriorsCounter += 4;
+			if (player.hasPerk(PerkLib.JobHaruspex)) maxSkeletonWarriorsCounter += 3;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonWarriorsCounter += 3;
+			//if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonWarriorsCounter += 4;
 			if (player.weapon == weapons.NECROWA) maxSkeletonWarriorsCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonWarriorsCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonWarriorsCounter += 1;
@@ -2172,9 +2172,10 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function maxSkeletonArchers():Number {
 			var maxSkeletonArchersCounter:Number = 0;
-			if (player.hasPerk(PerkLib.GreaterHarvest)) maxSkeletonArchersCounter += 3;
-			if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonArchersCounter += 3;
-			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonArchersCounter += 4;
+			if (player.hasPerk(PerkLib.BoneyBow)) maxSkeletonArchersCounter += 3;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonArchersCounter += 3;
+			//if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonArchersCounter += 3;
+			//if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonArchersCounter += 4;
 			if (player.weapon == weapons.NECROWA) maxSkeletonArchersCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonArchersCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonArchersCounter += 1;
@@ -2183,9 +2184,10 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function maxSkeletonMages():Number {
 			var maxSkeletonMagesCounter:Number = 0;
-			if (player.hasPerk(PerkLib.GreaterHarvest)) maxSkeletonMagesCounter += 3;
-			if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonMagesCounter += 3;
-			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonMagesCounter += 4;
+			if (player.hasPerk(PerkLib.BoneyWand)) maxSkeletonMagesCounter += 3;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonMagesCounter += 3;
+			//if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonMagesCounter += 3;
+			//if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonMagesCounter += 4;
 			if (player.weapon == weapons.NECROWA) maxSkeletonMagesCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonMagesCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonMagesCounter += 1;
@@ -2196,89 +2198,77 @@ public class CampMakeWinions extends BaseContent
 		public function accessMakeSkeletonWinionsMainMenu():void {
 			clearOutput();
 			outputText("Which type of skeleton would you like to create?\n\n");
-			outputText("<b>Stored Demon Bones:</b> " + player.perkv1(PerkLib.PrestigeJobNecromancer) + " / " + maxDemonBonesStored() + "\n");
-			outputText("<b>Skeleton Warriors:</b> " + player.perkv2(PerkLib.PrestigeJobNecromancer) + " / " + maxSkeletonWarriors() + "\n");
-			if (player.hasPerk(PerkLib.GreaterHarvest)) {
-				outputText("<b>Skeleton Archers:</b> " + player.perkv1(PerkLib.GreaterHarvest) + " / " + maxSkeletonArchers() + "\n");
-				outputText("<b>Skeleton Mages:</b> " + player.perkv2(PerkLib.GreaterHarvest) + " / " + maxSkeletonMages() + "\n");
+			outputText("<b>Stored Demon Bones:</b> " + player.perkv1(PerkLib.JobHaruspex) + " / " + maxDemonBonesStored() + "\n");
+			outputText("<b>Skeleton Warriors:</b> " + player.perkv2(PerkLib.JobHaruspex) + " / " + maxSkeletonWarriors() + "\n");
+			if (player.hasPerk(PerkLib.BoneyBow)) {
+				outputText("<b>Skeleton Archers:</b> " + player.perkv1(PerkLib.BoneyBow) + " / " + maxSkeletonArchers() + "\n");
+				outputText("<b>Skeleton Mages:</b> " + player.perkv1(PerkLib.BoneyWand) + " / " + maxSkeletonMages() + "\n");
 			}
 			menu();
-			if (player.perkv1(PerkLib.PrestigeJobNecromancer) >= 20 && (player.soulforce >= 5000 || (player.mana >= 5000 && player.hasPerk(PerkLib.Soulless)))) {
+			if (player.perkv1(PerkLib.JobHaruspex) >= 20 && (player.soulforce >= 5000 || (player.mana >= 5000 && player.hasPerk(PerkLib.Soulless)))) {
 				addButton(0, "C.Skeleton(W)", createSkeletonWarrior).hint("Create Skeleton Warrior.");
-				if (player.hasPerk(PerkLib.GreaterHarvest)) {
-					if (player.perkv1(PerkLib.PrestigeJobNecromancer) > 0) {
-						if (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0) addButton(1, "C.Skeleton(A)", createSkeletonArcher).hint("Create Skeleton Archer.");
-						else addButtonDisabled(1, "C.Skeleton(A)", "Req. to create at least 1 Skeleton Warrior before creating a Skeleton Archer.");
-						if (player.perkv1(PerkLib.GreaterHarvest) > 0) addButton(2, "C.Skeleton(M)", createSkeletonMage).hint("Create Skeleton Mage.");
-						else addButtonDisabled(2, "C.Skeleton(M)", "Req. to create at least 1 Skeleton Archer before creating a Skeleton Mage.");
-					}
-				}
-				else {
-					addButtonDisabled(1, "???", "Req. Greater harvest perk to unlock this option.");
-					addButtonDisabled(2, "???", "Req. Greater harvest perk to unlock this option.");
-				}
+				if (player.hasPerk(PerkLib.BoneyBow)) addButton(1, "C.Skeleton(A)", createSkeletonArcher).hint("Create Skeleton Archer.");
+				else addButtonDisabled(1, "???", "Req. Boney Bow perk to unlock this option.");
+				if (player.hasPerk(PerkLib.BoneyWand)) addButton(2, "C.Skeleton(M)", createSkeletonMage).hint("Create Skeleton Mage.");
+				else addButtonDisabled(2, "???", "Req. Boney Wand perk to unlock this option.");
 			}
 			else {
 				addButtonDisabled(0, "C.Skeleton(W)", "You lack the required amount of demon bones (20+) and/or soulforce/mana (5000+) to create a skeleton warrior.");
-				if (player.hasPerk(PerkLib.GreaterHarvest)) {
-					addButtonDisabled(1, "C.Skeleton(A)", "You lack the required amount of demon bones (20+) and/or soulforce/mana (5000+) to create a skeleton archer.");
-					addButtonDisabled(2, "C.Skeleton(M)", "You lack the required amount of demon bones (20+) and/or soulforce/mana (5000+) to create a skeleton mage.");
-				}
-				else {
-					addButtonDisabled(1, "???", "Req. Greater harvest perk to unlock this option.");
-					addButtonDisabled(2, "???", "Req. Greater harvest perk to unlock this option.");
-				}
+				if (player.hasPerk(PerkLib.BoneyBow)) addButtonDisabled(1, "C.Skeleton(A)", "You lack the required amount of demon bones (20+) and/or soulforce/mana (5000+) to create a skeleton archer.");
+				else addButtonDisabled(1, "???", "Req. Boney Bow perk to unlock this option.");
+				if (player.hasPerk(PerkLib.BoneyWand)) addButtonDisabled(2, "C.Skeleton(M)", "You lack the required amount of demon bones (20+) and/or soulforce/mana (5000+) to create a skeleton mage.");
+				else addButtonDisabled(2, "???", "Req. Boney Wand perk to unlock this option.");
 			}
 			addButton(14, "Back", camp.campWinionsArmySim);
 		}
 
 		public function createSkeletonWarrior():void {
 			clearOutput();
-			if (player.perkv2(PerkLib.PrestigeJobNecromancer) == maxSkeletonWarriors()) {
+			if (player.perkv2(PerkLib.JobHaruspex) == maxSkeletonWarriors()) {
 				outputText("You already have as many Skeleton Warriors as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, -20);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -20);
 			if (player.hasPerk(PerkLib.Soulless)) player.mana -= 5000;
 			else player.soulforce -= 5000;
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Warrior, ready to fight and obey your every command.");
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 2, 1);
+			player.addPerkValue(PerkLib.JobHaruspex, 2, 1);
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(10);
 		}
 		public function createSkeletonArcher():void {
 			clearOutput();
-			if (player.perkv1(PerkLib.GreaterHarvest) == maxSkeletonArchers()) {
+			if (player.perkv1(PerkLib.BoneyBow) == maxSkeletonArchers()) {
 				outputText("You already have as many Skeleton Archers as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, -20);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -20);
 			if (player.hasPerk(PerkLib.Soulless)) player.mana -= 5000;
 			else player.soulforce -= 5000;
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you can feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Archer, ready to fight and obey your every command.");
-			player.addPerkValue(PerkLib.GreaterHarvest, 1, 1);
+			player.addPerkValue(PerkLib.BoneyBow, 1, 1);
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(10);
 		}
 		public function createSkeletonMage():void {
 			clearOutput();
-			if (player.perkv2(PerkLib.GreaterHarvest) == maxSkeletonMages()) {
+			if (player.perkv2(PerkLib.BoneyWand) == maxSkeletonMages()) {
 				outputText("You already have as many Skeleton Mages as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, -20);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -20);
 			if (player.hasPerk(PerkLib.Soulless)) player.mana -= 5000;
 			else player.soulforce -= 5000;
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Mage, ready to fight and obey your every command.");
-			player.addPerkValue(PerkLib.GreaterHarvest, 2, 1);
+			player.addPerkValue(PerkLib.BoneyWand, 1, 1);
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(10);
 		}
 	}
-}
+}

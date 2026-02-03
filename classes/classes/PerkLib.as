@@ -878,6 +878,15 @@ public class PerkLib
 		public static const FirstAttackTamedMonsters:PerkType = mk("First Attack: Tamed Monsters", "First Attack: Tamed Monsters",
 				"Before your actions your tamed monster will attack.",
 				"You've chosen the 'First Attack: Tamed Monsters' perk. Allowing your tamed monster to attack independently from you.");
+		public static const BoneyBow:PerkType = mk("Boney Bow", "Boney Bow",
+				"You can now make (max 3) skeleton archers out of demon bones.",
+				"You've chosen the 'Boney Bow' perk. You can now make (max 3) skeleton archers out of demon bones.");
+		public static const BoneyWand:PerkType = mk("Boney Wand", "Boney Wand",
+				"You can now make (max 3) skeleton mages out of demon bones.",
+				"You've chosen the 'Boney Wand' perk. You can now make (max 3) skeleton mages out of demon bonese.");
+		//public static const GreaterHarvest:PerkType = mk("Greater harvest", "Greater harvest",
+		//		"You may now have up to 6 skeletons of each type.",
+		//		"You've chosen the 'Greater harvest' perk. You may now have up to 6 skeletons of each type.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -2025,8 +2034,8 @@ public class PerkLib
 				"You enhanced your Transference special second time to transfer 40% of your current arousal to your opponent at doubled fatigue cost compared to previous enhance (1,5x of orginal fatigue cost).",
 				"You've chosen the 'Greater Gift of Lust' perk, enhancing the Transference special a second time to transfer 15% more lust to the enemy at increased fatigue cost.");
 		public static const GreaterHarvest:PerkType = mk("Greater harvest", "Greater harvest",
-				"A demon is now considered to carry 5 to 20 bones and you may now have up to 6 skeletons of each type.",
-				"You've chosen the 'Greater harvest' perk. A demon is now considered to carry 5 to 20 bones and you may now have up to 6 skeletons of each type.");
+				"A demon is now considered to carry 5 to 20 bones.",
+				"You've chosen the 'Greater harvest' perk. A demon is now considered to carry 5 to 20 bones.");
 		public static const GreaterLifeline:PerkType = mk("Greater Lifeline", "Greater Lifeline",
 				"Increases health recovery by (12 * level) out of combat and by (6 * level) in combat (using defend option will double it). (+7 to tou based DR)",
 				"You've chosen the 'Greater Lifeline' perk, greatly increasing your health recovery. (+7 to tou based DR)");
@@ -3236,8 +3245,8 @@ public class PerkLib
 				"Firearms deals 20% extra damage and 50% increased critical damage to demons and their corrupted servants. (+15% firearms attacks multiplier)",
 				"You've chosen the 'Silver for monsters' perk. Firearms deals 20% extra damage and 50% increased critical damage to demons and their corrupted servants. (+15% firearms attacks multiplier)");
 		public static const SkeletonLord:PerkType = mk("Skeleton Lord", "Skeleton Lord",
-				"You may now control up to 10 skeletons of each type. Allows you to levitate all skeletons.",
-				"You've chosen the 'Skeleton Lord' perk. You may now control up to 10 skeletons of each type. Allows you to levitate all skeletons.");
+				"You may now control up to 6 skeletons of each type. Allows you to levitate all skeletons.",
+				"You've chosen the 'Skeleton Lord' perk. You may now control up to 6 skeletons of each type. Allows you to levitate all skeletons.");
 		public static const SkilledFighterEx:PerkType = mk("Skilled Fighter (Ex)", "Skilled Fighter (Ex)",
 				"When melee attack critical chance exceeds 100%, critical damage is x2, and when it exceeds 200% crit dmg is x3. (+15% melee physical attacks multiplier and then adds another 50% (total of 100%) on top of final result)",
 				"You've chosen the 'Skilled Fighter (Ex)' perk. When melee attack critical chance exceeds 100%, critical damage is x2, and when it exceeds 200% crit dmg is x3. (+15% melee physical attacks multiplier and then adds another 50% (total of 100%) on top of final result)");
@@ -5059,6 +5068,9 @@ public class PerkLib
 		public static const JobGunslinger:PerkType = mk("Job: Gunslinger", "Job ( Advanced ): Gunslinger",
 				"You've trained in ranged combat using firearms.",
 				"You have chosen the 'Job ( Advanced ): Gunslinger' perk, training yourself to become a(n) Gunslinger.").withBuffs({'wis.mult':0.10,'maxfatigue_base':10});
+		public static const JobHaruspex:PerkType = mk("Job: Haruspex", "Job ( Advanced ): Haruspex",
+				"You've mastered the art of making skeletons.",
+				"You have chosen the 'Job ( Advanced ): Haruspex' perk, training yourself to become a(n) skeletons controler.").withBuffs({'int.mult':0.05,'wis.mult':0.05});
 		public static const JobHealer:PerkType = mk("Job: Healer", "Job ( Advanced ): Healer",
 				"You've trained in using more effectively heal spells and effects.",
 				"You have chosen the 'Job ( Advanced ): Healer' perk, training yourself to become a(n) Healer.").withBuffs({'int.mult':0.05,'wis.mult':0.05});
@@ -5383,6 +5395,7 @@ public class PerkLib
 			JobEromancer,
 			JobGolemancer,
 			JobGunslinger,
+			JobHaruspex,
 			JobHealer,
 			JobHunter,
 			JobKnight,
@@ -6583,7 +6596,7 @@ public class PerkLib
             WarMageNovice.requireAnyPerk(JobSorcerer, JobHealer)
                     .requireInt(40);
             UnlockForce.requireInt(20);
-            MindOverBodyI.requireAnyPerk(JobSorcerer, JobHealer, JobElementalConjurer, JobGolemancer)
+            MindOverBodyI.requireAnyPerk(JobSorcerer, JobHealer, JobElementalConjurer, JobGolemancer, JobHaruspex)
                     .requireInt(25);
             MindOverBodyII.requirePerk(MindOverBodyI)
                     .requireInt(45)
@@ -6653,7 +6666,7 @@ public class PerkLib
                     .requireInt(60)
                     .requirePerk(BasicSpirituality)
                     .requireLevel(6);
-            ArcaneRegenerationMinor.requireAnyPerk(JobSorcerer, JobHealer, JobElementalConjurer, JobGolemancer, GreyMageApprentice)
+            ArcaneRegenerationMinor.requireAnyPerk(JobSorcerer, JobHealer, JobElementalConjurer, JobGolemancer, JobHaruspex, GreyMageApprentice)
                     .requireInt(50)
                     .requireLevel(6);
             GreyMageApprentice.requirePerks(GreyMagic, JobSorcerer)
@@ -7519,16 +7532,16 @@ public class PerkLib
                     .requireAnyPerk(FleshBodyVoLApprenticeStage, FleshBodySoDApprenticeStage, FleshBodyFoMApprenticeStage)
                     .requirePerk(JobMonk)
                     .requireWis(200)
-                    .requireLevel(54);
+                    .requireLevel(54);/*
 			PrestigeJobNecromancer.requirePrestigeJobSlot()
-                    .requirePerk(JobGolemancer)
+                    .requirePerk(JobHaruspex)
 					.requireInt(125)
 					.requireWis(175)
                     .requireLevel(54)
 					.requireCustomFunction(function (player:Player):Boolean {
                         return (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage) || player.hasPerk(PerkLib.DaoistEoDApprenticeStage) || player.hasPerk(PerkLib.DaoistEoTApprenticeStage) || player.hasPerk(PerkLib.DaoistLoKApprenticeStage) || player.hasPerk(PerkLib.DaoistJoPApprenticeStage) || player.hasPerk(PerkLib.DaoistDotSApprenticeStage)
 							|| player.hasPerk(PerkLib.DaoistPotLApprenticeStage) || player.hasPerk(PerkLib.DaoistKoGApprenticeStage) || player.hasPerk(PerkLib.DaoistMoTApprenticeStage) || player.hasPerk(PerkLib.DaoistGoHApprenticeStage) || (player.hasPerk(PerkLib.JobSorcerer) && player.hasPerk(PerkLib.Soulless)));
-                    }, "Having any of Daoist: Apprentice Stage perks OR Job: Sorcerer and Soulless perks");
+                    }, "Having any of Daoist: Apprentice Stage perks OR Job: Sorcerer and Soulless perks");*/
 			PrestigeJobDruid.requirePrestigeJobSlot()
                     .requireAnyPerk(Archmage, ArchmageEx)
                     .requireWis(200)
@@ -7550,8 +7563,6 @@ public class PerkLib
             //Tier 10 Wisdom perks
             PerfectStrike.requireLevel(60)
                     .requirePerk(PrestigeJobSoulArtMaster);
-            GreaterHarvest.requireLevel(60)
-                    .requirePerk(PrestigeJobNecromancer);
             SharedPower.requireLevel(60)
                     .requirePerk(PrestigeJobDruid);
             UnlockSpirit3rdStage.requirePerk(UnlockSpirit2ndStage)
@@ -7560,8 +7571,8 @@ public class PerkLib
             //Tier 11 Wisdom perks
             Backlash.requireLevel(66)
                     .requirePerk(PerfectStrike);
-            BoneSoul.requireLevel(66)
-                    .requirePerk(GreaterHarvest);
+            //BoneSoul.requireLevel(66)
+            //        .requirePerk(GreaterHarvest);
             ElementalTouch.requireLevel(66)
                     .requirePerk(SharedPower);
             LegendaryWisdom.requireWis(15)
@@ -7570,8 +7581,6 @@ public class PerkLib
             //Tier 12 Wisdom perks
             FlurryOfBlows.requireLevel(72)
                     .requirePerk(Backlash);
-            SkeletonLord.requireLevel(72)
-                    .requirePerk(BoneSoul);
             GreaterSharedPower.requireLevel(72)
                     .requirePerk(ElementalTouch);
             StrongerElementalBondEx.requirePerk(StrongerElementalBond)
@@ -8276,6 +8285,19 @@ public class PerkLib
                     .requireLevel(6)
                     .requireInt(25)
                     .requireWis(25);
+            JobHaruspex.requireAdvancedJobSlot()
+					.requirePerk(JobLeader)
+                    .requireLevel(6)
+                    .requireInt(25)
+                    .requireWis(25);
+            BoneyBow.requirePerk(JobHaruspex)
+					.requireLevel(6)
+                    .requireInt(30)
+                    .requireWis(30);
+            BoneyWand.requirePerk(JobHaruspex)
+					.requireLevel(6)
+                    .requireInt(30)
+                    .requireWis(30);
             ArcanePoolI.requireLevel(6)
                     .requireInt(30)
                     .requireWis(30)
@@ -8308,6 +8330,14 @@ public class PerkLib
                     .requireWis(80)
                     .requirePerk(BiggerGolemBagII)
                     .requireNGPlus(2);
+            SkeletonLord.requirePerk(JobHaruspex)
+					.requireLevel(12)
+                    .requireInt(50)
+                    .requireWis(50);
+            GreaterHarvest.requirePerk(SkeletonLord)
+					.requireLevel(12)
+                    .requireInt(55)
+                    .requireWis(55);
             ImprovingNaturesBlueprintsNaturalWeapons.requirePerk(JobBeastWarrior)
                     .requireStr(35)
                     .requireTou(35)
@@ -8693,6 +8723,8 @@ public class PerkLib
                     .requireLevel(24);
             FirstAttackGolems.requireLevel(24)
                     .requirePerk(MasterGolemMaker);
+            FirstAttackSkeletons.requireLevel(24)
+                    .requirePerks(SkeletonLord);
             GoblinatusGraduate.requireLevel(24)
                     .requirePerk(SimplifiedInterface)
                     .requireInt(75)
@@ -8964,8 +8996,6 @@ public class PerkLib
 					.requirePerk(LimitBreakerHeart1stStage);
 			ElementalBloodline.requireLevel(54)
 					.requirePerks(HclassHeavenTribulationSurvivor, PrestigeJobDruid);
-            FirstAttackSkeletons.requireLevel(54)
-                    .requirePerks(FirstAttackGolems, PrestigeJobNecromancer);
 			SubzeroLustfulFury.requireLevel(54)
 					.requirePerk(PrestigeJobBerserker)
                     .requireAnyPerk(ColderFury, ColderLust);

@@ -189,10 +189,10 @@ public class PlayerInfo extends BaseContent {
 			if (flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0) miscStats += "<i>Pernament Stone Golems:</i> " + flags[kFLAGS.PERMANENT_GOLEMS_BAG] + "\n";
 			if (flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0) miscStats += "<i>Improved Pernament Stone Golems:</i> " + flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] + "\n";
 			if (flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0) miscStats += "<i>Pernament Steel Golems:</i> " + flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] + "\n";
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) {
-				if (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0) miscStats += "<i>Skeletal warriors:</i> " + player.perkv2(PerkLib.PrestigeJobNecromancer) + "\n";
-				if (player.perkv1(PerkLib.GreaterHarvest) > 0) miscStats += "<i>Skeletal archers:</i> " + player.perkv1(PerkLib.GreaterHarvest) + "\n";
-				if (player.perkv2(PerkLib.GreaterHarvest) > 0) miscStats += "<i>Skeletal mages:</i> " + player.perkv2(PerkLib.GreaterHarvest) + "\n";
+			if (player.hasPerk(PerkLib.JobHaruspex)) {
+				if (player.perkv2(PerkLib.JobHaruspex) > 0) miscStats += "<i>Skeletal warriors:</i> " + player.perkv2(PerkLib.JobHaruspex) + "\n";
+				if (player.perkv1(PerkLib.BoneyBow) > 0) miscStats += "<i>Skeletal archers:</i> " + player.perkv1(PerkLib.BoneyBow) + "\n";
+				if (player.perkv1(PerkLib.BoneyWand) > 0) miscStats += "<i>Skeletal mages:</i> " + player.perkv1(PerkLib.BoneyWand) + "\n";
 			}
 			if (player.hasPerk(PerkLib.MummyLord) && player.perkv1(PerkLib.MummyLord) > 0) miscStats += "<i>Mummies:</i> " + player.perkv1(PerkLib.MummyLord) + "\n";
 			if (player.hasPerk(PerkLib.UndeadLord) && player.perkv1(PerkLib.UndeadLord) > 0) miscStats += "<i>Zombies:</i> " + player.perkv1(PerkLib.UndeadLord) + "\n";

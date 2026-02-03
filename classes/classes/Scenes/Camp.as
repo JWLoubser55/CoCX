@@ -2396,7 +2396,7 @@ public class Camp extends NPCAwareContent{
 		addButton(14, "Back", playerMenu);
 	}
 	private function doYouHaveMinions():Boolean {
-		if (player.hasPerk(PerkLib.JobElementalConjurer) || player.hasPerk(PerkLib.PrestigeJobDruid) || player.hasPerk(PerkLib.JobGolemancer) || player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.JobTamer)) return true;
+		if (player.hasPerk(PerkLib.JobElementalConjurer) || player.hasPerk(PerkLib.PrestigeJobDruid) || player.hasPerk(PerkLib.JobGolemancer) || player.hasPerk(PerkLib.JobHaruspex) || player.hasPerk(PerkLib.JobTamer)) return true;
 		else return false;
 	}
 	
@@ -3211,8 +3211,8 @@ public class Camp extends NPCAwareContent{
 		else addButtonDisabled(0, "Make", "You need to learn the Golemancer job to use this option.");player.hasPerk(PerkLib.JobElementalConjurer)
 		if (player.hasPerk(PerkLib.JobElementalConjurer) && flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > 0) addButton(1, "Summon", SceneLib.campMakeWinions.accessSummonElementalsMainMenu).hint("Check your options for managing your elemental summons.");
 		else addButtonDisabled(1, "Summon", "You should build an Arcane Circle and learn Elemental Conjurer job to use this option. Without some tools from the carpenter's toolbox, it would be near impossible to make Arcane Circle.");
-		if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(2, "Skeletons", SceneLib.campMakeWinions.accessMakeSkeletonWinionsMainMenu).hint("Check your options for making some skeletons.");
-		else addButtonDisabled(2, "Skeletons", "You need to learn the Necromancer job to use this option.");
+		if (player.hasPerk(PerkLib.JobHaruspex)) addButton(2, "Skeletons", SceneLib.campMakeWinions.accessMakeSkeletonWinionsMainMenu).hint("Check your options for making some skeletons.");
+		else addButtonDisabled(2, "Skeletons", "You need to learn the Haruspex job to use this option.");
 		if (player.hasPerk(PerkLib.JobTamer)) addButton(5, "Tame", SceneLib.campMakeWinions.accessTamedWinionsMainMenu).hint("Check your options for tamed minions.");
 		else addButtonDisabled(5, "Tame", "You need to learn the Tamer job to use this option.");
 		if (player.hasPerk(PerkLib.PrestigeJobDruid)) addButton(6, "Fusions", druidMenu);

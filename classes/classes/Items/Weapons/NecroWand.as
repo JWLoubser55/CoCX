@@ -29,19 +29,19 @@ package classes.Items.Weapons
 		}
 		
 		override public function afterUnequip(doOutput:Boolean, slot:int):void {
-			if ((CoC.instance.player.perkv2(PerkLib.PrestigeJobNecromancer) - 1) > SceneLib.campMakeWinions.maxSkeletonWarriors() || (CoC.instance.player.perkv1(PerkLib.GreaterHarvest) - 1) > SceneLib.campMakeWinions.maxSkeletonArchers() || (CoC.instance.player.perkv2(PerkLib.GreaterHarvest) - 1) > SceneLib.campMakeWinions.maxSkeletonMages()) {
+			if ((CoC.instance.player.perkv2(PerkLib.JobHaruspex) - 1) > SceneLib.campMakeWinions.maxSkeletonWarriors() || (CoC.instance.player.perkv1(PerkLib.BoneyBow) - 1) > SceneLib.campMakeWinions.maxSkeletonArchers() || (CoC.instance.player.perkv1(PerkLib.BoneyWand) - 1) > SceneLib.campMakeWinions.maxSkeletonMages()) {
 				outputText("\n\nAfter you unequip the necro wand, some of your skeletons fall apart due to insufficient control to sustain them. You gather the leftover bones for future use.  ");
-				if ((CoC.instance.player.perkv2(PerkLib.PrestigeJobNecromancer) - 1) > SceneLib.campMakeWinions.maxSkeletonWarriors()) {
-					CoC.instance.player.addPerkValue(PerkLib.PrestigeJobNecromancer, 2, -1);
-					CoC.instance.player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, 20);
+				if ((CoC.instance.player.perkv2(PerkLib.JobHaruspex) - 1) > SceneLib.campMakeWinions.maxSkeletonWarriors()) {
+					CoC.instance.player.addPerkValue(PerkLib.JobHaruspex, 2, -1);
+					CoC.instance.player.addPerkValue(PerkLib.JobHaruspex, 1, 20);
 				}
-				if ((CoC.instance.player.perkv1(PerkLib.GreaterHarvest) - 1) > SceneLib.campMakeWinions.maxSkeletonArchers()) {
-					CoC.instance.player.addPerkValue(PerkLib.GreaterHarvest, 1, -1);
-					CoC.instance.player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, 20);
+				if ((CoC.instance.player.perkv1(PerkLib.BoneyBow) - 1) > SceneLib.campMakeWinions.maxSkeletonArchers()) {
+					CoC.instance.player.addPerkValue(PerkLib.BoneyBow, 1, -1);
+					CoC.instance.player.addPerkValue(PerkLib.JobHaruspex, 1, 20);
 				}
-				if ((CoC.instance.player.perkv2(PerkLib.GreaterHarvest) - 1) > SceneLib.campMakeWinions.maxSkeletonMages()) {
-					CoC.instance.player.addPerkValue(PerkLib.GreaterHarvest, 2, -1);
-					CoC.instance.player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, 20);
+				if ((CoC.instance.player.perkv1(PerkLib.BoneyWand) - 1) > SceneLib.campMakeWinions.maxSkeletonMages()) {
+					CoC.instance.player.addPerkValue(PerkLib.BoneyWand, 2, -1);
+					CoC.instance.player.addPerkValue(PerkLib.JobHaruspex, 1, 20);
 				}
 			}
 			SceneLib.setItemsChecks.unequipNecroItemsSet();

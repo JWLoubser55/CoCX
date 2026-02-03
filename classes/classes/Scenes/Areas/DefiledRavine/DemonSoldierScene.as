@@ -198,8 +198,8 @@ public class DemonSoldierScene extends BaseContent {
         player.dynStats("cor", -1);
 		menu();
 		addButton(1, "Leave", killTheSoldierLeave);
-		if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(3, "Harvest", killTheSoldierHarvest);
-		else addButtonDisabled(3, "???", "Req. Prestige Job: Necromancer.");
+		if (player.hasPerk(PerkLib.JobHaruspex)) addButton(3, "Harvest", killTheSoldierHarvest);
+		else addButtonDisabled(3, "???", "Req. Advanced Job: Haruspex.");
     }
 	private function killTheSoldierLeave():void {
 		//Additional loot!

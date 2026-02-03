@@ -2825,6 +2825,30 @@ public class SaveUpdater extends NPCAwareContent {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.594;
 				flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] = 0;
 				flags[kFLAGS.HOLLOW_TYPE] = 0;
+			}
+			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.595) {
+				flags[kFLAGS.MOD_SAVE_VERSION] = 36.595;
+				outputText("\n\nNot mine me your friendly Information Noona while we silently reforms Necromancer job carrier path.");
+				if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) {
+					player.createPerk(PerkLib.JobHaruspex, 0, 0, 0, 0);
+					if (player.perkv1(PerkLib.PrestigeJobNecromancer) > 0) player.addPerkValue(PerkLib.JobHaruspex, 1, player.perkv1(PerkLib.PrestigeJobNecromancer));
+					if (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0) player.addPerkValue(PerkLib.JobHaruspex, 2, player.perkv2(PerkLib.PrestigeJobNecromancer));
+					player.removePerk(PerkLib.PrestigeJobNecromancer);
+				}
+				if (player.hasPerk(PerkLib.GreaterHarvest)) {
+					player.createPerk(PerkLib.BoneyBow, 0, 0, 0, 0);
+					if (player.perkv1(PerkLib.GreaterHarvest) > 0) player.addPerkValue(PerkLib.BoneyBow, 1, player.perkv1(PerkLib.GreaterHarvest));
+					if (player.perkv2(PerkLib.GreaterHarvest) > 0) {
+						player.createPerk(PerkLib.BoneyWand, 0, 0, 0, 0);
+						player.addPerkValue(PerkLib.BoneyWand, 1, player.perkv2(PerkLib.GreaterHarvest));
+						player.perkPoints -= 1;
+					}
+					player.removePerk(PerkLib.PrestigeJobNecromancer);
+				}
+				if (player.hasPerk(PerkLib.BoneSoul)) {
+					player.removePerk(PerkLib.BoneSoul);
+					player.perkPoints += 1;
+				}
 			}/*
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.60) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.60;

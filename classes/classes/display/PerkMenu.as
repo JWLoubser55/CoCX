@@ -281,7 +281,7 @@ public class PerkMenu extends BaseContent {
 			outputText("\n<b>You can adjust your elemental summons behavior during combat.</b>");
 			bd.add("Elementals", summonsbehaviourOptions);
 		}
-		if ((flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0 || flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0 || flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0 || flags[kFLAGS.IMPROVED_PERMANENT_STEEL_GOLEMS_BAG] > 0) || (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0 || player.perkv1(PerkLib.GreaterHarvest) > 0 || player.perkv2(PerkLib.GreaterHarvest) > 0))) {
+		if ((flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0 || flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0 || flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0 || flags[kFLAGS.IMPROVED_PERMANENT_STEEL_GOLEMS_BAG] > 0) || (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.JobHaruspex) > 0 || player.perkv1(PerkLib.BoneyBow) > 0 || player.perkv1(PerkLib.BoneyWand) > 0))) {
 			outputText("\n<b>You can adjust your permanent golems (or skeletons) behavior during combat.</b>");
 			bd.add("Golems/Skeletons", golemsskeletonsbehaviourOptions);
 		}
@@ -762,7 +762,7 @@ public class PerkMenu extends BaseContent {
 		}
 		if (flags[kFLAGS.GOLEMANCER_PERM_GOLEMS] == 1) addButton(10, "G. Waiting", golemsAttacking,false).hint("Golems will not attack at the beginning of the turn.");
 		if (flags[kFLAGS.GOLEMANCER_PERM_GOLEMS] != 1) addButton(11, "G. Attacking", golemsAttacking, true).hint("Golems will attack at the beginning of the turn.");
-		if (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0 || player.perkv1(PerkLib.GreaterHarvest) > 0 || player.perkv2(PerkLib.GreaterHarvest) > 0)) {
+		if (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.JobHaruspex) > 0 || player.perkv1(PerkLib.BoneyBow) > 0 || player.perkv1(PerkLib.BoneyWand) > 0)) {
 			outputText("\n\n<b>Skeletons attack pattern behaviors:</b>\n");
 			if (flags[kFLAGS.NECROMANCER_SKELETONS] == 1) outputText("Attacking at the beginning of each turn.");
 			if (flags[kFLAGS.NECROMANCER_SKELETONS] < 1) outputText("Waiting for the owner to give an attack command each turn.");

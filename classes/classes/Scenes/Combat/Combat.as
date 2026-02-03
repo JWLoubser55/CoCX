@@ -1193,12 +1193,12 @@ public class Combat extends BaseContent {
         }
 		if (player.shieldName == "Ancient Conduit") bd = buttons.add("A.Conduit", AncientConduitMenu);
 		if (player.hasPerk(PerkLib.JobTamer)) bd = buttons.add("Tamed Monster(s)", comtamed.tamedMonstersMenu);
-		if (player.hasPerk(PerkLib.PrestigeJobNecromancer) && player.perkv2(PerkLib.PrestigeJobNecromancer) > 0) {
+		if (player.hasPerk(PerkLib.JobHaruspex) && player.perkv2(PerkLib.JobHaruspex) > 0) {
 			bd = buttons.add("S.S. to F.", sendSkeletonToFight).hint("Send Skeleton to fight - Order your Skeletons to beat the crap out of your foe.");
-			if (monster.isFlying() && (!player.hasPerk(PerkLib.GreaterHarvest) || (player.perkv1(PerkLib.GreaterHarvest) == 0 && player.perkv2(PerkLib.GreaterHarvest) == 0))) {
+			if (monster.isFlying() && !player.hasPerk(PerkLib.BoneyBow) && !player.hasPerk(PerkLib.BoneyWand)) {
 				bd.disable("None of your skeletons can attack airborn enemies.");
 			}
-			if (player.perkv2(PerkLib.PrestigeJobNecromancer) > 5) {
+			if (player.perkv2(PerkLib.JobHaruspex) > 5) {
 				bd = buttons.add("S.S.", skeletonSmash).hint("Skeleton Smash - Order your Skeletons to go all out on your foe.");
 				if (monster.isFlying()) {
 					bd.disable("None of your skeletons can attack airborn enemies.");
@@ -19538,7 +19538,7 @@ public function asurasXFingersOfDestruction(fingercount:String):void {
 
 public function sendSkeletonToFight():void {
     if (flags[kFLAGS.NECROMANCER_SKELETONS] == 1) outputText("\n\n");
-	if (!monster.isFlying()) outputText("Your skeleton warrior"+(player.perkv2(PerkLib.PrestigeJobNecromancer) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.PrestigeJobNecromancer) > 1 ? "their":"his")+" blade"+(player.perkv2(PerkLib.PrestigeJobNecromancer) > 1 ? "s":"")+" around. ");
+	if (!monster.isFlying()) outputText("Your skeleton warrior"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "their":"his")+" blade"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" around. ");
     var damage:Number = 0;
     var dmgamp:Number = 1;
     damage += 1500 + rand(451);
@@ -19546,9 +19546,11 @@ public function sendSkeletonToFight():void {
     damage += scalingBonusWisdom() * 1.2;
 	damage *= soulskillMod();
 	if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) damage *= historyTacticianBonus();
+    if (player.hasPerk(PerkLib.BoneyBow)) dmgamp += 0.1;
+    if (player.hasPerk(PerkLib.BoneyWand)) dmgamp += 0.1;
+    if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
-    if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
 	if (player.upperGarment == undergarments.ARCHNECB) dmgamp += 0.2;
@@ -19575,17 +19577,17 @@ public function sendSkeletonToFight():void {
     if (rand(100) < critChance)
         damage *= 1.75;
     damage = Math.round(damage);
-	var sSWTF:Number = player.perkv2(PerkLib.PrestigeJobNecromancer);
+	var sSWTF:Number = player.perkv2(PerkLib.JobHaruspex);
 	while (sSWTF-->0) doMinionPhysDamage(damage, true, true);
     outputText("\n\n");
-    if (player.hasPerk(PerkLib.GreaterHarvest) && player.perkv1(PerkLib.GreaterHarvest) > 0) {
-		outputText("Your archer"+(player.perkv1(PerkLib.GreaterHarvest) > 1 ? "s":"")+" "+(monster.isFlying()?"":"follow suit ")+"unleashing a volley of arrows. ");
-		var sSATF:Number = player.perkv1(PerkLib.GreaterHarvest);
+    if (player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) > 0) {
+		outputText("Your archer"+(player.perkv1(PerkLib.BoneyBow) > 1 ? "s":"")+" "+(monster.isFlying()?"":"follow suit ")+"unleashing a volley of arrows. ");
+		var sSATF:Number = player.perkv1(PerkLib.BoneyBow);
 		while (sSATF-->0) doMinionPhysDamage(damage, true, true);
         outputText("\n\n");
-        if (player.perkv2(PerkLib.GreaterHarvest) > 0) {
-			outputText((monster.isFlying()?"S":"Finally the s")+"keletal mage"+(player.perkv2(PerkLib.GreaterHarvest) > 1 ? "s":"")+" unleash a barrage of magic missiles. ");
-			var sSMTF:Number = player.perkv2(PerkLib.GreaterHarvest);
+        if (player.perkv1(PerkLib.BoneyWand) > 0) {
+			outputText((monster.isFlying()?"S":"Finally the s")+"keletal mage"+(player.perkv1(PerkLib.BoneyWand) > 1 ? "s":"")+" unleash a barrage of magic missiles. ");
+			var sSMTF:Number = player.perkv1(PerkLib.BoneyWand);
 			while (sSMTF-->0) doMinionPhysDamage(damage, true, true);
         }
     }
@@ -19614,9 +19616,11 @@ public function skeletonSmash():void {
     damage += scalingBonusWisdom() * 1.2;
 	damage *= soulskillMod();
 	if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) damage *= historyTacticianBonus();
+    if (player.hasPerk(PerkLib.BoneyBow)) dmgamp += 0.1;
+    if (player.hasPerk(PerkLib.BoneyWand)) dmgamp += 0.1;
+    if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
-    if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
 	if (player.upperGarment == undergarments.ARCHNECB) dmgamp += 0.2;
@@ -19636,7 +19640,7 @@ public function skeletonSmash():void {
     }
     damage *= dmgamp;
 	if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet)) damage *= (1 + (0.1 * player.statusEffectv2(StatusEffects.BonusEffectsNecroSet)));
-    if (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0) damage *= player.perkv2(PerkLib.PrestigeJobNecromancer);
+    if (player.perkv2(PerkLib.JobHaruspex) > 0) damage *= player.perkv2(PerkLib.JobHaruspex);
     //Determine if critical hit!
     var critChance:int = 5;
     critChance += combatPhysicalCritical();

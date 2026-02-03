@@ -39,31 +39,31 @@ public function unequipNecroItemsSet():void {
 		player.addStatusValue(StatusEffects.BonusEffectsNecroSet, 1, -5);// 3 -> 2, remove 3 item bonus
 		player.addStatusValue(StatusEffects.BonusEffectsNecroSet, 2, -3);
 		player.addStatusValue(StatusEffects.BonusEffectsNecroSet, 3, -1);
-		if ((player.perkv2(PerkLib.PrestigeJobNecromancer) - 5) > SceneLib.campMakeWinions.maxSkeletonWarriors()) {
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 2, -5);
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, 100);
+		if ((player.perkv2(PerkLib.JobHaruspex) - 5) > SceneLib.campMakeWinions.maxSkeletonWarriors()) {
+			player.addPerkValue(PerkLib.JobHaruspex, 2, -5);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, 100);
 		}
-		if ((player.perkv1(PerkLib.GreaterHarvest) - 5) > SceneLib.campMakeWinions.maxSkeletonArchers()) {
-			player.addPerkValue(PerkLib.GreaterHarvest, 1, -5);
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, 100);
+		if ((player.perkv1(PerkLib.BoneyBow) - 5) > SceneLib.campMakeWinions.maxSkeletonArchers()) {
+			player.addPerkValue(PerkLib.BoneyBow, 1, -5);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, 100);
 		}
-		if ((player.perkv2(PerkLib.GreaterHarvest) - 5) > SceneLib.campMakeWinions.maxSkeletonMages()) {
-			player.addPerkValue(PerkLib.GreaterHarvest, 2, -5);
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, 100);
+		if ((player.perkv2(PerkLib.BoneyWand) - 5) > SceneLib.campMakeWinions.maxSkeletonMages()) {
+			player.addPerkValue(PerkLib.BoneyWand, 1, -5);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, 100);
 		}
 	} else if (count == 1) {
 		player.removeStatusEffect(StatusEffects.BonusEffectsNecroSet);// 2 -> 1, remove 2 item bonus
-		if ((player.perkv2(PerkLib.PrestigeJobNecromancer) - 2) > SceneLib.campMakeWinions.maxSkeletonWarriors()) {
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 2, -2);
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, 40);
+		if ((player.perkv2(PerkLib.JobHaruspex) - 2) > SceneLib.campMakeWinions.maxSkeletonWarriors()) {
+			player.addPerkValue(PerkLib.JobHaruspex, 2, -2);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, 40);
 		}
-		if ((player.perkv1(PerkLib.GreaterHarvest) - 2) > SceneLib.campMakeWinions.maxSkeletonArchers()) {
-			player.addPerkValue(PerkLib.GreaterHarvest, 1, -2);
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, 40);
+		if ((player.perkv1(PerkLib.BoneyBow) - 2) > SceneLib.campMakeWinions.maxSkeletonArchers()) {
+			player.addPerkValue(PerkLib.BoneyBow, 1, -2);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, 40);
 		}
-		if ((player.perkv2(PerkLib.GreaterHarvest) - 2) > SceneLib.campMakeWinions.maxSkeletonMages()) {
-			player.addPerkValue(PerkLib.GreaterHarvest, 2, -2);
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, 40);
+		if ((player.perkv2(PerkLib.BoneyWand) - 2) > SceneLib.campMakeWinions.maxSkeletonMages()) {
+			player.addPerkValue(PerkLib.BoneyWand, 1, -2);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, 40);
 		}
 	}
 }

@@ -361,12 +361,12 @@ public class Changelog extends BaseContent
 			outputText("-Temporal Golems dmg scaling was increased by 20x and pernament golems scaling by 5x.\n");
 			outputText("-New range weapon (by Lady Aeducan): Two Good Samaritans - can be gained by combining 2x Good Samaritan. Base atk is 150 (including up to 50 from corruption scaling and up to 90 from str scaling) and ammo clip size 4. Without 200+ str amount of shoots per turn (with feat for those) will be reduced due to recoil effect. It's Dual Firearm type range weapon, dealing bonus dmg to corrupted enemies, +25% dmg to true demons.\n");
 			outputText("-New range weapon (by Lady Aeducan): Bad Omens - can be gained by combining 2x Bad Omen. Base atk is 150 (including up to 50 from corruption scaling and up to 90 from str scaling) and ammo clip size 4. Without 200+ str amount of shoots per turn (with feat for those) will be reduced due to recoil effect. It's Dual Firearm type range weapon, dealing bonus dmg to pure enemies, +25% dmg to true angels.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 1 misc lvl-up perk: (Basic) Job: Haruspex. Req. Job: Leader perk, 25+ intelligence and 25+ wisdom. Effect: Allow to harvest bones from demonic enemies and make warrior skeletons (max 3).\n");
+			outputText("-Skeleton Lord perk effect changed to grant only 3 more skeletons of each type. Also it's now tier 2 mis perk and req. changed to Job: Haruspex perk, 50+ int, 50+ wis.\n");
+			outputText("-Greater Harvest perk effects changed to only increase bones harvested from enemies. Perk lowered to tier 3 misc perk req. Skeleton Lord perk, 55+ int, 55+ wis.\n");
+			outputText("-New tier 1 misc lvl-up perk: Boney Bow. Req. Job: Haruspex perk, 30+ intelligence and 30+ wisdom. Effect: You can now make (max 3) skeleton archers out of demon bones.\n");
+			outputText("-New tier 1 misc lvl-up perk: Boney Wand. Req. Job: Haruspex perk, 30+ intelligence and 30+ wisdom. Effect: You can now make (max 3) skeleton mages out of demon bones.\n");
+			outputText("-First Attack: Skeletons perk tier was changed (9 > 4) and req. now only Skeleton Lord perk.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -392,6 +392,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
@@ -467,14 +476,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -499,9 +502,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

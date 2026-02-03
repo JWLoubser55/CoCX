@@ -5539,6 +5539,8 @@ use namespace CoC;
 				advancedJobs1++;
 			if (hasPerk(PerkLib.JobGunslinger))
 				advancedJobs1++;
+			if (hasPerk(PerkLib.JobHaruspex))
+				advancedJobs1++;
 			if (hasPerk(PerkLib.JobHealer))
 				advancedJobs1++;
 			if (hasPerk(PerkLib.JobHunter))
@@ -5949,10 +5951,10 @@ use namespace CoC;
 			if (flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0) minions += flags[kFLAGS.PERMANENT_GOLEMS_BAG];
 			if (flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0) minions += flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG];
 			if (flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0) minions += flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG];
-			if (hasPerk(PerkLib.PrestigeJobNecromancer)) {
-				minions += perkv2(PerkLib.PrestigeJobNecromancer);
-				minions += perkv1(PerkLib.GreaterHarvest);
-				minions += perkv2(PerkLib.GreaterHarvest);
+			if (hasPerk(PerkLib.JobHaruspex)) {
+				minions += perkv2(PerkLib.JobHaruspex);
+				minions += perkv1(PerkLib.BoneyBow);
+				minions += perkv1(PerkLib.BoneyWand);
 			}
 			if (hasPerk(PerkLib.MummyLord) && perkv1(PerkLib.MummyLord) > 0) minions += perkv1(PerkLib.MummyLord);
 			if (hasPerk(PerkLib.UndeadLord) && perkv1(PerkLib.UndeadLord) > 0) minions += perkv1(PerkLib.UndeadLord);

@@ -61,12 +61,12 @@ public class AbstractNecroSpell extends AbstractSpell {
 	}
 	
 	public static function demonBonesAvailable():int {
-		if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) return player.perkv1(PerkLib.PrestigeJobNecromancer);
+		if (player.hasPerk(PerkLib.JobHaruspex)) return player.perkv1(PerkLib.JobHaruspex);
 		else return 0;
 	}
 	
 	public static function addDemonBones(delta:int):void {
-		player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, delta);
+		player.addPerkValue(PerkLib.JobHaruspex, 1, delta);
 	}
 	
 	public static function boneSoulBonus(bonesCost:int):Number {

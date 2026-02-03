@@ -947,9 +947,9 @@ public final class Mutations extends MutationsHelper {
     public function packOfDemonBones(player:Player):void {
         clearOutput();
         var harv:Number = 10;
-		if (harv + player.perkv1(PerkLib.PrestigeJobNecromancer) > SceneLib.campMakeWinions.maxDemonBonesStored()) harv = SceneLib.campMakeWinions.maxDemonBonesStored() - player.perkv1(PerkLib.PrestigeJobNecromancer);
+		if (harv + player.perkv1(PerkLib.JobHaruspex) > SceneLib.campMakeWinions.maxDemonBonesStored()) harv = SceneLib.campMakeWinions.maxDemonBonesStored() - player.perkv1(PerkLib.JobHaruspex);
 		outputText("You open the pack to find " + harv + " demon bones inside.");
-		player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, harv);
+		player.addPerkValue(PerkLib.JobHaruspex, 1, harv);
     }
 
     /* ITEMZZZZZ FUNCTIONS GO HERE */

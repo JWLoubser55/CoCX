@@ -688,8 +688,8 @@ import classes.display.SpriteDb;
 			menu();
 			addButton(1, "Leave", cleanupAfterCombat);
 			addButton(2, "Take Skull", takeSkull);
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(3, "Harvest", harvestBones);
-			else addButtonDisabled(3, "???", "Req. Prestige Job: Necromancer.");
+			if (player.hasPerk(PerkLib.JobHaruspex)) addButton(3, "Harvest", harvestBones);
+			else addButtonDisabled(3, "???", "Req. Advanced Job: Haruspex.");
 		}
 		private function killDemon2():void {
 			clearOutput();
@@ -710,8 +710,8 @@ import classes.display.SpriteDb;
 			menu();
 			addButton(1, "Leave", cleanupAfterCombat);
 			addButton(2, "Take Skull", takeSkull2);
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(3, "Harvest", harvestBones);
-			else addButtonDisabled(3, "???", "Req. Prestige Job: Necromancer.");
+			if (player.hasPerk(PerkLib.JobHaruspex)) addButton(3, "Harvest", harvestBones);
+			else addButtonDisabled(3, "???", "Req. Advanced Job: Haruspex.");
 		}
 		private function killDemonHellhound():void {
 			clearOutput();
@@ -726,8 +726,8 @@ import classes.display.SpriteDb;
 			menu();
 			addButton(1, "Leave", cleanupAfterCombat);
 			addButton(2, "Take Skulls", takeSkull3);
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(3, "Harvest", harvestBones2);
-			else addButtonDisabled(3, "???", "Req. Prestige Job: Necromancer.");
+			if (player.hasPerk(PerkLib.JobHaruspex)) addButton(3, "Harvest", harvestBones);
+			else addButtonDisabled(3, "???", "Req. Advanced Job: Haruspex.");
 		}
 		private function takeSkull():void {
 			inventory.takeItem(useables.DEMSKLL, cleanupAfterCombat);
@@ -757,9 +757,9 @@ import classes.display.SpriteDb;
 		public function harvestDemonBones():void {
 			var harv:Number = 1 + rand(5);
 			if (player.hasPerk(PerkLib.GreaterHarvest)) harv += 4 + rand(12);
-			if (harv + player.perkv1(PerkLib.PrestigeJobNecromancer) > SceneLib.campMakeWinions.maxDemonBonesStored()) harv = SceneLib.campMakeWinions.maxDemonBonesStored() - player.perkv1(PerkLib.PrestigeJobNecromancer);
+			if (harv + player.perkv1(PerkLib.JobHaruspex) > SceneLib.campMakeWinions.maxDemonBonesStored()) harv = SceneLib.campMakeWinions.maxDemonBonesStored() - player.perkv1(PerkLib.JobHaruspex);
 			outputText("You take your time to harvest material. You acquired " + harv + " bones!");
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, harv);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, harv);
 		}
 	}
 }
