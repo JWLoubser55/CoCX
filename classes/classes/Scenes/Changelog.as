@@ -362,11 +362,14 @@ public class Changelog extends BaseContent
 			outputText("-New range weapon (by Lady Aeducan): Two Good Samaritans - can be gained by combining 2x Good Samaritan. Base atk is 150 (including up to 50 from corruption scaling and up to 90 from str scaling) and ammo clip size 4. Without 200+ str amount of shoots per turn (with feat for those) will be reduced due to recoil effect. It's Dual Firearm type range weapon, dealing bonus dmg to corrupted enemies, +25% dmg to true demons.\n");
 			outputText("-New range weapon (by Lady Aeducan): Bad Omens - can be gained by combining 2x Bad Omen. Base atk is 150 (including up to 50 from corruption scaling and up to 90 from str scaling) and ammo clip size 4. Without 200+ str amount of shoots per turn (with feat for those) will be reduced due to recoil effect. It's Dual Firearm type range weapon, dealing bonus dmg to pure enemies, +25% dmg to true angels.\n");
 			outputText("-New tier 1 misc lvl-up perk: (Basic) Job: Haruspex. Req. Job: Leader perk, 25+ intelligence and 25+ wisdom. Effect: Allow to harvest bones from demonic enemies and make warrior skeletons (max 3).\n");
-			outputText("-Skeleton Lord perk effect changed to grant only 3 more skeletons of each type. Also it's now tier 2 mis perk and req. changed to Job: Haruspex perk, 50+ int, 50+ wis.\n");
+			outputText("-Skeleton Lord perk effect changed to grant only 3 normal and 1 large more skeletons of each type. Also it's now tier 2 mis perk and req. changed to Job: Haruspex perk, 50+ int, 50+ wis.\n");
 			outputText("-Greater Harvest perk effects changed to only increase bones harvested from enemies. Perk lowered to tier 3 misc perk req. Skeleton Lord perk, 55+ int, 55+ wis.\n");
 			outputText("-New tier 1 misc lvl-up perk: Boney Bow. Req. Job: Haruspex perk, 30+ intelligence and 30+ wisdom. Effect: You can now make (max 3) skeleton archers out of demon bones.\n");
 			outputText("-New tier 1 misc lvl-up perk: Boney Wand. Req. Job: Haruspex perk, 30+ intelligence and 30+ wisdom. Effect: You can now make (max 3) skeleton mages out of demon bones.\n");
 			outputText("-First Attack: Skeletons perk tier was changed (9 > 4) and req. now only Skeleton Lord perk.\n");
+			outputText("-Prestige Job: Necromancer req. for Job: Golemancer replaced by Skeleton Lord. Bone Soul perk tier lowered by 1.\n");
+			outputText("-New tier 3 misc lvl-up perk: Bone Century. Req. Skeleton Lord perk, 75+ int, 75+ wis. Effect: You may now control up to 12 normal size skeletons of each type.\n");
+			outputText("-New tier 3 misc lvl-up perk: Greatest Harvest. Req. Greater Harvest perk, 80+ int, 80+ wis. Effect: Harvesting bones from demons would give now 20 to 25 bones.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -379,30 +382,27 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
-			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM) (Akaku-Keninari)
 			outputText("-\n");
-			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values.  Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
-			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
+			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
+			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong)
+			outputText("-\n");// (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM) (Akaku-Keninari)
 			outputText("-\n");
+			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values.  Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
+			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -476,8 +476,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -502,6 +508,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

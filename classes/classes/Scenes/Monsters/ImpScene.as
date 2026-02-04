@@ -2451,6 +2451,10 @@ use namespace CoC;
 		private function harvestBones():void {
 			var harv:Number = 1 + rand(5);
 			if (player.hasPerk(PerkLib.GreaterHarvest)) harv += 4 + rand(12);
+			if (player.hasPerk(PerkLib.GreatestHarvest)) {
+				if (harv < 20) harv = 20;
+				harv += rand(6);
+			}
 			if (harv + player.perkv1(PerkLib.JobHaruspex) > SceneLib.campMakeWinions.maxDemonBonesStored()) harv = SceneLib.campMakeWinions.maxDemonBonesStored() - player.perkv1(PerkLib.JobHaruspex);
 			outputText("You take your time to harvest material. You acquired " + harv + " bones!");
 			player.addPerkValue(PerkLib.JobHaruspex, 1, harv);
@@ -2464,4 +2468,3 @@ use namespace CoC;
 		}
 	}
 }
-

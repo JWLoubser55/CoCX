@@ -726,7 +726,7 @@ import classes.display.SpriteDb;
 			menu();
 			addButton(1, "Leave", cleanupAfterCombat);
 			addButton(2, "Take Skulls", takeSkull3);
-			if (player.hasPerk(PerkLib.JobHaruspex)) addButton(3, "Harvest", harvestBones);
+			if (player.hasPerk(PerkLib.JobHaruspex)) addButton(3, "Harvest", harvestBones2);
 			else addButtonDisabled(3, "???", "Req. Advanced Job: Haruspex.");
 		}
 		private function takeSkull():void {
@@ -757,6 +757,10 @@ import classes.display.SpriteDb;
 		public function harvestDemonBones():void {
 			var harv:Number = 1 + rand(5);
 			if (player.hasPerk(PerkLib.GreaterHarvest)) harv += 4 + rand(12);
+			if (player.hasPerk(PerkLib.GreatestHarvest)) {
+				if (harv < 20) harv = 20;
+				harv += rand(6);
+			}
 			if (harv + player.perkv1(PerkLib.JobHaruspex) > SceneLib.campMakeWinions.maxDemonBonesStored()) harv = SceneLib.campMakeWinions.maxDemonBonesStored() - player.perkv1(PerkLib.JobHaruspex);
 			outputText("You take your time to harvest material. You acquired " + harv + " bones!");
 			player.addPerkValue(PerkLib.JobHaruspex, 1, harv);

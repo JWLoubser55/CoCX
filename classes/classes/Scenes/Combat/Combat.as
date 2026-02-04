@@ -1195,7 +1195,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.JobTamer)) bd = buttons.add("Tamed Monster(s)", comtamed.tamedMonstersMenu);
 		if (player.hasPerk(PerkLib.JobHaruspex) && player.perkv2(PerkLib.JobHaruspex) > 0) {
 			bd = buttons.add("S.S. to F.", sendSkeletonToFight).hint("Send Skeleton to fight - Order your Skeletons to beat the crap out of your foe.");
-			if (monster.isFlying() && !player.hasPerk(PerkLib.BoneyBow) && !player.hasPerk(PerkLib.BoneyWand)) {
+			if (monster.isFlying() && (!player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) == 0) && (!player.hasPerk(PerkLib.BoneyWand) && player.perkv1(PerkLib.BoneyWand) == 0)) {
 				bd.disable("None of your skeletons can attack airborn enemies.");
 			}
 			if (player.perkv2(PerkLib.JobHaruspex) > 5) {
@@ -20556,6 +20556,3 @@ private function touSpeStrScale(stat:int):Number {
 }
 
 }
-
-
-

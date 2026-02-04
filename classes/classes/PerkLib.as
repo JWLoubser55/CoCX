@@ -884,9 +884,12 @@ public class PerkLib
 		public static const BoneyWand:PerkType = mk("Boney Wand", "Boney Wand",
 				"You can now make (max 3) skeleton mages out of demon bones.",
 				"You've chosen the 'Boney Wand' perk. You can now make (max 3) skeleton mages out of demon bonese.");
-		//public static const GreaterHarvest:PerkType = mk("Greater harvest", "Greater harvest",
-		//		"You may now have up to 6 skeletons of each type.",
-		//		"You've chosen the 'Greater harvest' perk. You may now have up to 6 skeletons of each type.");
+		public static const GreatestHarvest:PerkType = mk("Greatest harvest", "Greatest harvest",
+				"Harvesting bones from demons would give now 20 to 25 bones.",
+				"You've chosen the 'Greatest harvest' perk. Harvesting bones from demons would give now 20 to 25 bones.");
+		public static const BoneCentury:PerkType = mk("Bone Century", "Bone Century",
+				"You may now control up to 12 normal size skeletons of each type.",
+				"You've chosen the 'Bone Century' perk. You may now control up to 12 normal size skeletons of each type.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -3245,8 +3248,8 @@ public class PerkLib
 				"Firearms deals 20% extra damage and 50% increased critical damage to demons and their corrupted servants. (+15% firearms attacks multiplier)",
 				"You've chosen the 'Silver for monsters' perk. Firearms deals 20% extra damage and 50% increased critical damage to demons and their corrupted servants. (+15% firearms attacks multiplier)");
 		public static const SkeletonLord:PerkType = mk("Skeleton Lord", "Skeleton Lord",
-				"You may now control up to 6 skeletons of each type. Allows you to levitate all skeletons.",
-				"You've chosen the 'Skeleton Lord' perk. You may now control up to 6 skeletons of each type. Allows you to levitate all skeletons.");
+				"You may now control additional 3 normal and 1 large skeletons of each type. Allows you to levitate all skeletons.",
+				"You've chosen the 'Skeleton Lord' perk. You may now control additional 3 normal and 1 large skeletons of each type. Allows you to levitate all skeletons.");
 		public static const SkilledFighterEx:PerkType = mk("Skilled Fighter (Ex)", "Skilled Fighter (Ex)",
 				"When melee attack critical chance exceeds 100%, critical damage is x2, and when it exceeds 200% crit dmg is x3. (+15% melee physical attacks multiplier and then adds another 50% (total of 100%) on top of final result)",
 				"You've chosen the 'Skilled Fighter (Ex)' perk. When melee attack critical chance exceeds 100%, critical damage is x2, and when it exceeds 200% crit dmg is x3. (+15% melee physical attacks multiplier and then adds another 50% (total of 100%) on top of final result)");
@@ -7532,16 +7535,16 @@ public class PerkLib
                     .requireAnyPerk(FleshBodyVoLApprenticeStage, FleshBodySoDApprenticeStage, FleshBodyFoMApprenticeStage)
                     .requirePerk(JobMonk)
                     .requireWis(200)
-                    .requireLevel(54);/*
+                    .requireLevel(54);
 			PrestigeJobNecromancer.requirePrestigeJobSlot()
-                    .requirePerk(JobHaruspex)
+                    .requirePerk(SkeletonLord)
 					.requireInt(125)
 					.requireWis(175)
                     .requireLevel(54)
 					.requireCustomFunction(function (player:Player):Boolean {
                         return (player.hasPerk(PerkLib.DaoistMDHiFApprenticeStage) || player.hasPerk(PerkLib.DaoistEoDApprenticeStage) || player.hasPerk(PerkLib.DaoistEoTApprenticeStage) || player.hasPerk(PerkLib.DaoistLoKApprenticeStage) || player.hasPerk(PerkLib.DaoistJoPApprenticeStage) || player.hasPerk(PerkLib.DaoistDotSApprenticeStage)
 							|| player.hasPerk(PerkLib.DaoistPotLApprenticeStage) || player.hasPerk(PerkLib.DaoistKoGApprenticeStage) || player.hasPerk(PerkLib.DaoistMoTApprenticeStage) || player.hasPerk(PerkLib.DaoistGoHApprenticeStage) || (player.hasPerk(PerkLib.JobSorcerer) && player.hasPerk(PerkLib.Soulless)));
-                    }, "Having any of Daoist: Apprentice Stage perks OR Job: Sorcerer and Soulless perks");*/
+                    }, "Having any of Daoist: Apprentice Stage perks OR Job: Sorcerer and Soulless perks");
 			PrestigeJobDruid.requirePrestigeJobSlot()
                     .requireAnyPerk(Archmage, ArchmageEx)
                     .requireWis(200)
@@ -7563,6 +7566,8 @@ public class PerkLib
             //Tier 10 Wisdom perks
             PerfectStrike.requireLevel(60)
                     .requirePerk(PrestigeJobSoulArtMaster);
+            BoneSoul.requireLevel(60)
+                    .requirePerk(PrestigeJobNecromancer);
             SharedPower.requireLevel(60)
                     .requirePerk(PrestigeJobDruid);
             UnlockSpirit3rdStage.requirePerk(UnlockSpirit2ndStage)
@@ -7571,8 +7576,6 @@ public class PerkLib
             //Tier 11 Wisdom perks
             Backlash.requireLevel(66)
                     .requirePerk(PerfectStrike);
-            //BoneSoul.requireLevel(66)
-            //        .requirePerk(GreaterHarvest);
             ElementalTouch.requireLevel(66)
                     .requirePerk(SharedPower);
             LegendaryWisdom.requireWis(15)
@@ -8285,19 +8288,6 @@ public class PerkLib
                     .requireLevel(6)
                     .requireInt(25)
                     .requireWis(25);
-            JobHaruspex.requireAdvancedJobSlot()
-					.requirePerk(JobLeader)
-                    .requireLevel(6)
-                    .requireInt(25)
-                    .requireWis(25);
-            BoneyBow.requirePerk(JobHaruspex)
-					.requireLevel(6)
-                    .requireInt(30)
-                    .requireWis(30);
-            BoneyWand.requirePerk(JobHaruspex)
-					.requireLevel(6)
-                    .requireInt(30)
-                    .requireWis(30);
             ArcanePoolI.requireLevel(6)
                     .requireInt(30)
                     .requireWis(30)
@@ -8330,14 +8320,19 @@ public class PerkLib
                     .requireWis(80)
                     .requirePerk(BiggerGolemBagII)
                     .requireNGPlus(2);
-            SkeletonLord.requirePerk(JobHaruspex)
-					.requireLevel(12)
-                    .requireInt(50)
-                    .requireWis(50);
-            GreaterHarvest.requirePerk(SkeletonLord)
-					.requireLevel(12)
-                    .requireInt(55)
-                    .requireWis(55);
+            JobHaruspex.requireAdvancedJobSlot()
+					.requirePerk(JobLeader)
+                    .requireLevel(6)
+                    .requireInt(25)
+                    .requireWis(25);
+            BoneyBow.requirePerk(JobHaruspex)
+					.requireLevel(6)
+                    .requireInt(30)
+                    .requireWis(30);
+            BoneyWand.requirePerk(JobHaruspex)
+					.requireLevel(6)
+                    .requireInt(30)
+                    .requireWis(30);
             ImprovingNaturesBlueprintsNaturalWeapons.requirePerk(JobBeastWarrior)
                     .requireStr(35)
                     .requireTou(35)
@@ -8516,6 +8511,14 @@ public class PerkLib
                     .requireInt(70)
                     .requireWis(70)
                     .requirePerk(JobGolemancer);
+            SkeletonLord.requirePerk(JobHaruspex)
+					.requireLevel(12)
+                    .requireInt(50)
+                    .requireWis(50);
+            GreaterHarvest.requirePerk(SkeletonLord)
+					.requireLevel(12)
+                    .requireInt(55)
+                    .requireWis(55);
             ImprovedCrinosShape.requirePerk(ImprovingNaturesBlueprintsNaturalWeapons)
                     .requireStr(50)
                     .requireTou(50)
@@ -8602,6 +8605,14 @@ public class PerkLib
                     .requireInt(90)
                     .requireWis(90)
                     .requirePerks(ExpertGolemMaker, ChargedCore);
+            BoneCentury.requirePerk(SkeletonLord)
+					.requireLevel(18)
+                    .requireInt(75)
+                    .requireWis(75);
+            GreatestHarvest.requirePerk(GreaterHarvest)
+					.requireLevel(18)
+                    .requireInt(80)
+                    .requireWis(80);
             MakeItDouble.requireLevel(18)
                     .requireStr(50)
                     .requireTou(50)
@@ -9282,4 +9293,4 @@ public class PerkLib
 	}
 }
 
-}
+}

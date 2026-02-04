@@ -2163,7 +2163,7 @@ public class CampMakeWinions extends BaseContent
 			var maxSkeletonWarriorsCounter:Number = 0;
 			if (player.hasPerk(PerkLib.JobHaruspex)) maxSkeletonWarriorsCounter += 3;
 			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonWarriorsCounter += 3;
-			//if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonWarriorsCounter += 4;
+			if (player.hasPerk(PerkLib.BoneCentury)) maxSkeletonWarriorsCounter += 6;
 			if (player.weapon == weapons.NECROWA) maxSkeletonWarriorsCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonWarriorsCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonWarriorsCounter += 1;
@@ -2174,7 +2174,7 @@ public class CampMakeWinions extends BaseContent
 			var maxSkeletonArchersCounter:Number = 0;
 			if (player.hasPerk(PerkLib.BoneyBow)) maxSkeletonArchersCounter += 3;
 			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonArchersCounter += 3;
-			//if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonArchersCounter += 3;
+			if (player.hasPerk(PerkLib.BoneCentury)) maxSkeletonArchersCounter += 6;
 			//if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonArchersCounter += 4;
 			if (player.weapon == weapons.NECROWA) maxSkeletonArchersCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonArchersCounter += 1;
@@ -2186,13 +2186,21 @@ public class CampMakeWinions extends BaseContent
 			var maxSkeletonMagesCounter:Number = 0;
 			if (player.hasPerk(PerkLib.BoneyWand)) maxSkeletonMagesCounter += 3;
 			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonMagesCounter += 3;
-			//if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonMagesCounter += 3;
+			if (player.hasPerk(PerkLib.BoneCentury)) maxSkeletonMagesCounter += 6;
 			//if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonMagesCounter += 4;
 			if (player.weapon == weapons.NECROWA) maxSkeletonMagesCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonMagesCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonMagesCounter += 1;
 			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet)) maxSkeletonMagesCounter += player.statusEffectv1(StatusEffects.BonusEffectsNecroSet);
 			return maxSkeletonMagesCounter;
+		}
+		private function bonesUsedToMakeNormalSkeleton():Number {
+			var bonesUsedToMakeNormalSkely:Number = 20;
+			return bonesUsedToMakeNormalSkely;
+		}
+		private function resourcesUsedToMakeNormalSkeleton():Number {
+			var resourcesUsedToMakeNormalSkely:Number = 5000;
+			return resourcesUsedToMakeNormalSkely;
 		}
 
 		public function accessMakeSkeletonWinionsMainMenu():void {
@@ -2205,7 +2213,7 @@ public class CampMakeWinions extends BaseContent
 				outputText("<b>Skeleton Mages:</b> " + player.perkv1(PerkLib.BoneyWand) + " / " + maxSkeletonMages() + "\n");
 			}
 			menu();
-			if (player.perkv1(PerkLib.JobHaruspex) >= 20 && (player.soulforce >= 5000 || (player.mana >= 5000 && player.hasPerk(PerkLib.Soulless)))) {
+			if (player.perkv1(PerkLib.JobHaruspex) >= bonesUsedToMakeNormalSkeleton() && (player.soulforce >= resourcesUsedToMakeNormalSkeleton() || (player.mana >= resourcesUsedToMakeNormalSkeleton() && player.hasPerk(PerkLib.Soulless)))) {
 				addButton(0, "C.Skeleton(W)", createSkeletonWarrior).hint("Create Skeleton Warrior.");
 				if (player.hasPerk(PerkLib.BoneyBow)) addButton(1, "C.Skeleton(A)", createSkeletonArcher).hint("Create Skeleton Archer.");
 				else addButtonDisabled(1, "???", "Req. Boney Bow perk to unlock this option.");
@@ -2229,9 +2237,9 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.JobHaruspex, 1, -20);
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= 5000;
-			else player.soulforce -= 5000;
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeNormalSkeleton());
+			if (player.hasPerk(PerkLib.Soulless)) player.mana -= resourcesUsedToMakeNormalSkeleton();
+			else player.soulforce -= resourcesUsedToMakeNormalSkeleton();
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Warrior, ready to fight and obey your every command.");
 			player.addPerkValue(PerkLib.JobHaruspex, 2, 1);
@@ -2245,9 +2253,9 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.JobHaruspex, 1, -20);
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= 5000;
-			else player.soulforce -= 5000;
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeNormalSkeleton());
+			if (player.hasPerk(PerkLib.Soulless)) player.mana -= resourcesUsedToMakeNormalSkeleton();
+			else player.soulforce -= resourcesUsedToMakeNormalSkeleton();
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you can feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Archer, ready to fight and obey your every command.");
 			player.addPerkValue(PerkLib.BoneyBow, 1, 1);
@@ -2261,9 +2269,9 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.JobHaruspex, 1, -20);
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= 5000;
-			else player.soulforce -= 5000;
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeNormalSkeleton());
+			if (player.hasPerk(PerkLib.Soulless)) player.mana -= resourcesUsedToMakeNormalSkeleton();
+			else player.soulforce -= resourcesUsedToMakeNormalSkeleton();
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Mage, ready to fight and obey your every command.");
 			player.addPerkValue(PerkLib.BoneyWand, 1, 1);
@@ -2271,4 +2279,4 @@ public class CampMakeWinions extends BaseContent
 			advanceMinutes(10);
 		}
 	}
-}
+}
