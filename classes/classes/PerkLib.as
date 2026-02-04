@@ -890,6 +890,15 @@ public class PerkLib
 		public static const BoneCentury:PerkType = mk("Bone Century", "Bone Century",
 				"You may now control up to 12 normal size skeletons of each type.",
 				"You've chosen the 'Bone Century' perk. You may now control up to 12 normal size skeletons of each type.");
+		public static const BoneCohort:PerkType = mk("Bone Cohort", "Bone Cohort",
+				"You may now control up to 24 normal size skeletons of each type.",
+				"You've chosen the 'Bone Cohort' perk. You may now control up to 24 normal size skeletons of each type.");
+		public static const BoneLegion:PerkType = mk("Bone Legion", "Bone Legion",
+				"You may now control up to 48 normal size skeletons of each type.",
+				"You've chosen the 'Bone Legion' perk. You may now control up to 48 normal size skeletons of each type.");
+		public static const BoneEfficiency:PerkType = mk("Bone Efficiency", "Bone Efficiency",
+				"You improved efficiency of making skeletons leading to less wasted bones or SF/Mana. (-50% costs)",
+				"You've chosen the 'Bone Efficiency' perk. You improved efficiency of making skeletons leading to less wasted bones or SF/Mana. (-50% costs)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -7282,10 +7291,6 @@ public class PerkLib
                     .requireWis(150)
                     .requireLevel(22)
                     .requireNGPlus(5);
-//            Combo.requirePerk(JobMonk)
-//                    .requireWis(75)
-//                    .requireSpe(50)
-//                    .requireLevel(12);
 			GrabbingStyle.requirePerk(JobMonk)
 					.requireWis(75)
 					.requireSpe(50)
@@ -7608,19 +7613,19 @@ public class PerkLib
             MythicalWisdom.requireWis(20)
                     .requirePerk(LegendaryWisdom)
                     .requireLevel(96);
-			///Tier 17 Wisdom perks
+			//Tier 17 Wisdom perks
             StrongestElementalBond.requirePerk(StrongerElementalBondSu)
 					.requireOrPerks(ElementalContractRank20, DaoOfTheElements, 5)
                     .requireWis(500)
                     .requireLevel(90)
 					.requirePerk(JobElementalConjurer);
-			///Tier 22 Wisdom perks
+			//Tier 22 Wisdom perks
             StrongestElementalBondEx.requirePerk(StrongestElementalBond)
 					.requireOrPerks(ElementalContractRank24, DaoOfTheElements, 6)
                     .requireWis(600)
                     .requireLevel(138)
 					.requirePerk(JobElementalConjurer);
-			///Tier 27 Wisdom perks
+			//Tier 27 Wisdom perks
             StrongestElementalBondSu.requirePerk(StrongestElementalBondEx)
 					.requireOrPerks(ElementalContractRank28, DaoOfTheElements, 7)
                     .requireWis(700)
@@ -8291,7 +8296,7 @@ public class PerkLib
             ArcanePoolI.requireLevel(6)
                     .requireInt(30)
                     .requireWis(30)
-                    .requireAnyPerk(JobElementalConjurer, JobGolemancer);
+                    .requireAnyPerk(JobElementalConjurer, JobGolemancer, JobHaruspex);
             ArcanePoolII.requireLevel(8)
                     .requireInt(40)
                     .requireWis(40)
@@ -8635,11 +8640,6 @@ public class PerkLib
                     .requirePerk(NaturalHealingMinor)
                     .requireInt(20)
                     .requireWis(80);
-//            WeaponClawsMultiClawAttack.requireLevel(18)
-//                    .requirePerk(WeaponClawsExtraClawAttack)
-//					.requireCustomFunction(function (player:Player):Boolean {
-//					return player.hasNaturalWeapons() || player.haveNaturalClawsTypeWeapon();
-//					}, "Any natural weapon");
             NaturalArsenal.requireLevel(18)
 					.requireStr(60)
 					.requireSpe(60)
@@ -8722,6 +8722,10 @@ public class PerkLib
                     .requireInt(100)
                     .requireWis(100)
                     .requirePerk(ExpertGolemMaker);
+            BoneEfficiency.requirePerk(GreatestHarvest)
+					.requireLevel(24)
+                    .requireInt(110)
+                    .requireWis(110);
             GiantsReach.requireLevel(24)
                     .requireStr(100)
                     .requireTou(100)
@@ -8744,16 +8748,6 @@ public class PerkLib
                     .requirePerk(NaturalHealingMajor)
                     .requireInt(25)
                     .requireWis(100);
-//            WeaponClawsClawingFlurry.requireLevel(24)
-//                    .requirePerk(WeaponClawsMultiClawAttack)
-//					.requireCustomFunction(function (player:Player):Boolean {
-//					return player.hasNaturalWeapons() || player.haveNaturalClawsTypeWeapon();
-//					}, "Any natural weapon");
-//            WeaponClawsSavageRend.requireLevel(30)
-//                    .requirePerk(WeaponClawsClawingFlurry)
-//					.requireCustomFunction(function (player:Player):Boolean {
-//					return player.hasNaturalWeapons() || player.haveNaturalClawsTypeWeapon();
-//					}, "Any natural weapon");
             CheatDeath.requireLevel(24)
                     .requirePerk(CloseToDeath)
                     .requireInt(100)
@@ -8839,6 +8833,10 @@ public class PerkLib
                     .requireInt(110)
                     .requireWis(110)
                     .requirePerk(MasterGolemMaker);
+            BoneCohort.requirePerk(BoneCentury)
+					.requireLevel(30)
+                    .requireInt(125)
+                    .requireWis(125);
             NaturalHealingLegendary.requireLevel(30)
                     .requirePerk(NaturalHealingEpic)
                     .requireInt(30)
@@ -8919,6 +8917,10 @@ public class PerkLib
                     .requireInt(140)
                     .requireWis(140)
                     .requirePerk(GrandMasterGolemMaker);
+            BoneLegion.requirePerk(BoneCohort)
+					.requireLevel(42)
+                    .requireInt(175)
+                    .requireWis(175);
             EpicDiehard.requireLevel(42)
                     .requirePerk(EpicToughness)
 					.requireAnyPerk(GreaterDiehard, GreaterDiehardEx);

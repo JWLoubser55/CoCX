@@ -1438,6 +1438,7 @@ public class PerkMenu extends BaseContent {
 			["FCh", PerkLib.JobBeastlord],
 			["Glm", PerkLib.JobGolemancer],
 			["Gsg", PerkLib.JobGunslinger],
+			["Har", PerkLib.JobHaruspex],
 			["Hlr", PerkLib.JobHealer],
 			["Hnt", PerkLib.JobHunter],
 			["Knt", PerkLib.JobKnight],
