@@ -81,9 +81,9 @@ public class EventParser {
             EngineCore.outputText("<b>" + textChoices[Utils.rand(EngineCore.silly() ? textChoices.length : 4)] + "</b>");
             EngineCore.outputText("[/font]");
             //Delete save on hardcore.
-            if (CoC.instance.flags[kFLAGS.HARDCORE_MODE] > 0) {
+            if (CoC.instance.flags[kFLAGS.HARDCORE_MODE] > 0 && CoC.instance.flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] > 0) {
                 EngineCore.outputText("\n\n<b>Your save file has been deleted as you enabled Hardcore I or Hardcore II!</b>");
-                CoC.instance.saves.purgeTheMutant(CoC.instance.flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION]);
+                CoC.instance.saves.purgeTheMutant((CoC.instance.flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] - 1));
             }
             CoC.instance.flags[kFLAGS.TIMES_BAD_ENDED]++;
             EngineCore.awardAchievement("Game Over!", kACHIEVEMENTS.GENERAL_GAME_OVER, true, true);

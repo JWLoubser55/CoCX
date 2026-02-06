@@ -41,29 +41,33 @@ public function unequipNecroItemsSet():void {
 		player.addStatusValue(StatusEffects.BonusEffectsNecroSet, 3, -1);
 		if ((player.perkv2(PerkLib.JobHaruspex) - 5) > SceneLib.campMakeWinions.maxSkeletonWarriors()) {
 			player.addPerkValue(PerkLib.JobHaruspex, 2, -5);
-			player.addPerkValue(PerkLib.JobHaruspex, 1, 100);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, (5 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
 		}
 		if ((player.perkv1(PerkLib.BoneyBow) - 5) > SceneLib.campMakeWinions.maxSkeletonArchers()) {
 			player.addPerkValue(PerkLib.BoneyBow, 1, -5);
-			player.addPerkValue(PerkLib.JobHaruspex, 1, 100);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, (5 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
 		}
-		if ((player.perkv2(PerkLib.BoneyWand) - 5) > SceneLib.campMakeWinions.maxSkeletonMages()) {
+		if ((player.perkv1(PerkLib.BoneyWand) - 5) > SceneLib.campMakeWinions.maxSkeletonMages()) {
 			player.addPerkValue(PerkLib.BoneyWand, 1, -5);
-			player.addPerkValue(PerkLib.JobHaruspex, 1, 100);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, (5 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
+		}
+		if ((player.perkv1(PerkLib.BoneGiants) - 1) > SceneLib.campMakeWinions.maxSkeletonGiants()) {
+			player.addPerkValue(PerkLib.BoneGiants, 1, -1);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton());
 		}
 	} else if (count == 1) {
 		player.removeStatusEffect(StatusEffects.BonusEffectsNecroSet);// 2 -> 1, remove 2 item bonus
 		if ((player.perkv2(PerkLib.JobHaruspex) - 2) > SceneLib.campMakeWinions.maxSkeletonWarriors()) {
 			player.addPerkValue(PerkLib.JobHaruspex, 2, -2);
-			player.addPerkValue(PerkLib.JobHaruspex, 1, 40);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, (2 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
 		}
 		if ((player.perkv1(PerkLib.BoneyBow) - 2) > SceneLib.campMakeWinions.maxSkeletonArchers()) {
 			player.addPerkValue(PerkLib.BoneyBow, 1, -2);
-			player.addPerkValue(PerkLib.JobHaruspex, 1, 40);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, (2 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
 		}
-		if ((player.perkv2(PerkLib.BoneyWand) - 2) > SceneLib.campMakeWinions.maxSkeletonMages()) {
+		if ((player.perkv1(PerkLib.BoneyWand) - 2) > SceneLib.campMakeWinions.maxSkeletonMages()) {
 			player.addPerkValue(PerkLib.BoneyWand, 1, -2);
-			player.addPerkValue(PerkLib.JobHaruspex, 1, 40);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, (2 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
 		}
 	}
 }

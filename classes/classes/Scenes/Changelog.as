@@ -373,6 +373,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 5 misc lvl-up perk: Bone Cohort. Req. Bone Century perk, 125+ int, 125+ wis. Effect: You may now control up to 24 normal size skeletons of each type.\n");
 			outputText("-New tier 7 misc lvl-up perk: Bone Legion. Req. Bone Cohort perk, 175+ int, 175+ wis. Effect: You may now control up to 48 normal size skeletons of each type.\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Efficiency. Req. Greatest Harvest perk, 110+ int, 110+ wis. Effect: You improved efficiency of making skeletons leading to less wasted bones or SF/Mana. (-50% costs)\n");
+			outputText("-\n");//New tier 4 misc lvl-up perk: Bone Giants. Req. Boney Bow OR Boney Wand perk, 100+ intelligence and 100+ wisdom. Effect: .
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -389,9 +390,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
-			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
-			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
@@ -404,9 +404,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
+			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
+			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -705,10 +705,8 @@ public class Creature extends Utils
 		protected function maxHP_base():Number {
 			var max:Number = maxHpBaseStat.value;
 			var multimax:Number = maxHpMultStat.value;
-			var dmmmm:Number = 0;
-			var dmmmml:Number = 0.1;
 			if (hasPerk(PerkLib.IcyFlesh)) {
-				max += int(inte * 2 + 50);
+				max += int((inte * level) + 50);
 				if (inte >= 21) max += Math.round(inte);
 				if (inte >= 41) max += Math.round(inte);
 				if (inte >= 61) max += Math.round(inte);
@@ -723,7 +721,7 @@ public class Creature extends Utils
 				}
 			}
 			else if (hasPerk(PerkLib.HaltedVitals) || hasPerk(PerkLib.Undeath)) {
-				max += int(lib * 2 + 50);
+				max += int((lib * level) + 50);
 				if (lib >= 21) max += Math.round(lib);
 				if (lib >= 41) max += Math.round(lib);
 				if (lib >= 61) max += Math.round(lib);
@@ -731,14 +729,14 @@ public class Creature extends Utils
 				if (lib >= 101) max += Math.round(lib) * Math.floor( (lib-100)/50 + 1);
 			}
 			else {
-				max += int(tou * 2 + 50);
+				max += int((tou * level) + 50);
 				if (tou >= 21) max += Math.round(tou);
 				if (tou >= 41) max += Math.round(tou);
 				if (tou >= 61) max += Math.round(tou);
 				if (tou >= 81) max += Math.round(tou);
 				if (tou >= 101) max += Math.round(tou) * Math.floor( (tou-100)/50 + 1);
 				if (hasPerk(PerkLib.DeathPriest)) {
-					max += int(wis * 2 + 50);
+					max += int((wis * level) + 50);
 					if (wis >= 21) max += Math.round(wis);
 					if (wis >= 41) max += Math.round(wis);
 					if (wis >= 61) max += Math.round(wis);
@@ -798,7 +796,7 @@ public class Creature extends Utils
 				else max += Math.round(lib*0.25);
 			}
 			if (perkv1(IMutationsLib.SoulCoreIM) >= 4) {
-				max += int(inte * 2 + 50);
+				max += int((inte * level) + 50);
 				if (inte >= 21) max += Math.round(inte);
 				if (inte >= 41) max += Math.round(inte);
 				if (inte >= 61) max += Math.round(inte);
@@ -837,7 +835,6 @@ public class Creature extends Utils
 				if (hasStatusEffect(StatusEffects.SummonedElementalsFireE)) max += maxHP_ElementalBondFleshMulti() * 20 * statusEffectv2(StatusEffects.SummonedElementalsFireE);
 				if (hasStatusEffect(StatusEffects.SummonedElementalsWaterE)) max += maxHP_ElementalBondFleshMulti() * 20 * statusEffectv2(StatusEffects.SummonedElementalsWaterE);
 			}
-			if (hasPerk(PerkLib.JobGuardian)) max += 120;
 			if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
 				if (hasPerk(PerkLib.SoulApprentice)) max += (1000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
 				if (hasPerk(PerkLib.SoulPersonage)) max += (1000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
@@ -897,12 +894,14 @@ public class Creature extends Utils
 			if (hasPerk(PerkLib.UnlockBody2ndStage)) max += level * 60;
 			if (hasPerk(PerkLib.UnlockBody3rdStage)) max += level * 60;
 			if (hasPerk(PerkLib.UnlockBody4thStage)) max += level * 60;
-			if (hasPerk(PerkLib.AscensionUnlockedPotential) >= 0) max += level * 80;
-			if (hasPerk(PerkLib.AscensionUnlockedPotential3rdStage) >= 0) max += level * 80;
+			if (hasPerk(PerkLib.AscensionUnlockedPotential)) max += level * 80;
+			if (hasPerk(PerkLib.AscensionUnlockedPotential3rdStage)) max += level * 80;
 			if (jewelryEffectId == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude;
 			if (jewelryEffectId2 == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude2;
 			if (jewelryEffectId3 == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude3;
 			if (jewelryEffectId4 == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude4;
+			if (hasPerk(PerkLib.JobGuardian)) multimax += 0.01;
+			if (hasPerk(PerkLib.JobDefender)) multimax += 0.04;
 			if (hasPerk(PerkLib.RefinedBodyI)) multimax += 0.05;
 			if (hasPerk(PerkLib.RefinedBodyII)) multimax += 0.05;
 			if (hasPerk(PerkLib.RefinedBodyIII)) multimax += 0.05;
@@ -913,12 +912,8 @@ public class Creature extends Utils
 			if (hasPerk(PerkLib.LimitBreakerBody2ndStage)) multimax += 0.1;
 			if (hasPerk(PerkLib.LimitBreakerBody3rdStage)) multimax += 0.15;
 			if (hasPerk(PerkLib.DeityJobMunchkin)) multimax += 0.2;
-			if (level > 9) dmmmml += 0.1;
-			if (level > 24) dmmmml += 0.1;
-			if (level > 56) dmmmml += 0.1;
-			if (this.touStat.core.value > 0) dmmmm += this.touStat.core.value * dmmmml;
-			if (this.touStat.train.value > 0) dmmmm += this.touStat.train.value * dmmmml;
-			if (dmmmm > 1) multimax *= dmmmm;
+			if (this.touStat.core.value > 0) multimax += this.touStat.core.value * 0.1;
+			if (this.touStat.train.value > 0) multimax += this.touStat.train.value * 0.1;
 			max *= multimax;
 			max = Math.round(max);
 			return max;

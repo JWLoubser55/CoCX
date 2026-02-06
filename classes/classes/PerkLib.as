@@ -899,6 +899,9 @@ public class PerkLib
 		public static const BoneEfficiency:PerkType = mk("Bone Efficiency", "Bone Efficiency",
 				"You improved efficiency of making skeletons leading to less wasted bones or SF/Mana. (-50% costs)",
 				"You've chosen the 'Bone Efficiency' perk. You improved efficiency of making skeletons leading to less wasted bones or SF/Mana. (-50% costs)");
+		public static const BoneGiants:PerkType = mk("Bone Giants", "Bone Giants",
+				"You can now make (max 1) skeleton giant out of demon bones.",
+				"You've chosen the 'Bone Giants' perk. You can now make (max 1) skeleton giant out of demon bones.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -910,9 +913,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8722,6 +8722,10 @@ public class PerkLib
                     .requireInt(100)
                     .requireWis(100)
                     .requirePerk(ExpertGolemMaker);
+            //BoneGiants.requireAnyPerk(BoneyBow, BoneyWand)
+			//		.requireLevel(24)
+            //        .requireInt(100)
+            //        .requireWis(100);
             BoneEfficiency.requirePerk(GreatestHarvest)
 					.requireLevel(24)
                     .requireInt(110)
