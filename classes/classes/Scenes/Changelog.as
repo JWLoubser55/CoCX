@@ -373,7 +373,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 5 misc lvl-up perk: Bone Cohort. Req. Bone Century perk, 125+ int, 125+ wis. Effect: You may now control up to 24 normal size skeletons of each type.\n");
 			outputText("-New tier 7 misc lvl-up perk: Bone Legion. Req. Bone Cohort perk, 175+ int, 175+ wis. Effect: You may now control up to 48 normal size skeletons of each type.\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Efficiency. Req. Greatest Harvest perk, 110+ int, 110+ wis. Effect: You improved efficiency of making skeletons leading to less wasted bones or SF/Mana. (-50% costs)\n");
-			outputText("-\n");//New tier 4 misc lvl-up perk: Bone Giants. Req. Boney Bow OR Boney Wand perk, 100+ intelligence and 100+ wisdom. Effect: .
+			outputText("-New tier 4 misc lvl-up perk: Bone Giants. Req. Boney Bow OR Boney Wand perk, 100+ intelligence and 100+ wisdom. Effect: You can now make (max 1) skeleton giant out of demon bones.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

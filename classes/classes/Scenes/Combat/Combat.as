@@ -19538,7 +19538,7 @@ public function asurasXFingersOfDestruction(fingercount:String):void {
 
 public function sendSkeletonToFight():void {
     if (flags[kFLAGS.NECROMANCER_SKELETONS] == 1) outputText("\n\n");
-	if (!monster.isFlying()) outputText("Your skeleton warrior"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "their":"his")+" blade"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" around. ");
+	if (!monster.isFlying() || player.hasPerk(PerkLib.SkeletonLord)) outputText("Your skeleton warrior"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "their":"his")+" blade"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" around. ");
     var damage:Number = 0;
     var dmgamp:Number = 1;
     damage += 1500 + rand(451);
@@ -19550,6 +19550,7 @@ public function sendSkeletonToFight():void {
     if (player.hasPerk(PerkLib.BoneyWand)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
+    if (player.hasPerk(PerkLib.BoneGiants)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
@@ -19580,6 +19581,12 @@ public function sendSkeletonToFight():void {
 	var sSWTF:Number = player.perkv2(PerkLib.JobHaruspex);
 	while (sSWTF-->0) doMinionPhysDamage(damage, true, true);
     outputText("\n\n");
+	if ((!monster.isFlying() || player.hasPerk(PerkLib.SkeletonLord)) && player.hasPerk(PerkLib.BoneGiants) && player.perkv1(PerkLib.BoneGiants) > 0) {
+		outputText("Your skeleton giant"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "their":"his")+" fist"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" around. ");
+		var sSGTF:Number = (player.perkv1(PerkLib.BoneGiants)*2);
+		while (sSGTF-->0) doMinionPhysDamage((damage*2), true, true);
+		outputText("\n\n");
+	}
     if (player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) > 0) {
 		outputText("Your archer"+(player.perkv1(PerkLib.BoneyBow) > 1 ? "s":"")+" "+(monster.isFlying()?"":"follow suit ")+"unleashing a volley of arrows. ");
 		var sSATF:Number = player.perkv1(PerkLib.BoneyBow);
@@ -19620,6 +19627,7 @@ public function skeletonSmash():void {
     if (player.hasPerk(PerkLib.BoneyWand)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
+    if (player.hasPerk(PerkLib.BoneGiants)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;

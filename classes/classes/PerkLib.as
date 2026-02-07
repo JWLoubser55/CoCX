@@ -8722,10 +8722,10 @@ public class PerkLib
                     .requireInt(100)
                     .requireWis(100)
                     .requirePerk(ExpertGolemMaker);
-            //BoneGiants.requireAnyPerk(BoneyBow, BoneyWand)
-			//		.requireLevel(24)
-            //        .requireInt(100)
-            //        .requireWis(100);
+            BoneGiants.requireAnyPerk(BoneyBow, BoneyWand)
+					.requireLevel(24)
+                    .requireInt(100)
+                    .requireWis(100);
             BoneEfficiency.requirePerk(GreatestHarvest)
 					.requireLevel(24)
                     .requireInt(110)

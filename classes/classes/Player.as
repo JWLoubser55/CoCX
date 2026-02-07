@@ -5955,6 +5955,7 @@ use namespace CoC;
 				minions += perkv2(PerkLib.JobHaruspex);
 				minions += perkv1(PerkLib.BoneyBow);
 				minions += perkv1(PerkLib.BoneyWand);
+				minions += perkv1(PerkLib.BoneGiants);
 			}
 			if (hasPerk(PerkLib.MummyLord) && perkv1(PerkLib.MummyLord) > 0) minions += perkv1(PerkLib.MummyLord);
 			if (hasPerk(PerkLib.UndeadLord) && perkv1(PerkLib.UndeadLord) > 0) minions += perkv1(PerkLib.UndeadLord);

@@ -615,6 +615,7 @@ public class HornsTransformations extends MutationsHelper {
 
 				player.horns.type = Horns.SHROOM_HEADCAP;
 				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(HornsMem.getMemory(HornsMem.SHROOM_HEADCAP));
 			},
 			// is present
 			function (): Boolean {

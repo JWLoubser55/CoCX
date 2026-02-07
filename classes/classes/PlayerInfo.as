@@ -193,6 +193,7 @@ public class PlayerInfo extends BaseContent {
 				if (player.perkv2(PerkLib.JobHaruspex) > 0) miscStats += "<i>Skeletal warriors:</i> " + player.perkv2(PerkLib.JobHaruspex) + "\n";
 				if (player.perkv1(PerkLib.BoneyBow) > 0) miscStats += "<i>Skeletal archers:</i> " + player.perkv1(PerkLib.BoneyBow) + "\n";
 				if (player.perkv1(PerkLib.BoneyWand) > 0) miscStats += "<i>Skeletal mages:</i> " + player.perkv1(PerkLib.BoneyWand) + "\n";
+				if (player.perkv1(PerkLib.BoneGiants) > 0) miscStats += "<i>Skeletal giants:</i> " + player.perkv1(PerkLib.BoneGiants) + "\n";
 			}
 			if (player.hasPerk(PerkLib.MummyLord) && player.perkv1(PerkLib.MummyLord) > 0) miscStats += "<i>Mummies:</i> " + player.perkv1(PerkLib.MummyLord) + "\n";
 			if (player.hasPerk(PerkLib.UndeadLord) && player.perkv1(PerkLib.UndeadLord) > 0) miscStats += "<i>Zombies:</i> " + player.perkv1(PerkLib.UndeadLord) + "\n";

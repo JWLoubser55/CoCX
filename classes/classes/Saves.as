@@ -271,6 +271,7 @@ public function saveToSlotScreen():void
 {
 	function saveToSlot(slot:int):void {
 		trace("Saving game with name", saveFileNames[slot], "at index", slot);
+		flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] = slot + 1;
 		saveGameToSharedObject(saveFileNames[slot], true);
 	}
 	mainView.nameBox.x = mainView.mainText.x;
@@ -685,7 +686,6 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 			}
 		}
 		saveFile.data.flags[kFLAGS.EXP_BANKING] = flags[kFLAGS.EXP_BANKING];
-		saveFile.data.flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] = (slot + 1);
 		saveFile.data.counters = [];
 
 		//CLOTHING/ARMOR
@@ -3030,4 +3030,4 @@ public function unFuckSave():void
 	}
 
 }
-}
+}
