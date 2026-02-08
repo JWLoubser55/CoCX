@@ -110,6 +110,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test13", MightyOrNot9, "Testing Hollow evolutions faster.");
 		bd.add("Test14", MightyOrNot11, "Missing Spiritual Hunger for Vacant and higher hollows.");
 		bd.add("Test15", MightyOrNot10, "Testing Bad End after effects.");
+		bd.add("Test16", MightyOrNot12, "Fixing Skeleton Giants counter.");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -145,6 +146,11 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot12():void {
+		if (player.hasPerk(PerkLib.BoneGiants) && player.perkv1(PerkLib.BoneGiants) < 0) SceneLib.campMakeWinions.fixinSkeletonGiants();
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot11():void {

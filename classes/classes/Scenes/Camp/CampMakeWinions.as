@@ -2152,7 +2152,8 @@ public class CampMakeWinions extends BaseContent
 
 		public function maxDemonBonesStored():Number {
 			var maxDemonBonesStoredCounter:Number = 100;
-			if (player.hasPerk(PerkLib.BoneSoul)) maxDemonBonesStoredCounter += 100;
+			if (player.hasPerk(PerkLib.BoneyBag)) maxDemonBonesStoredCounter += 100;
+			if (player.hasPerk(PerkLib.BoneSoul)) maxDemonBonesStoredCounter += 150;
 			if (player.hasPerk(PerkLib.Equilibrium)) {
 				maxDemonBonesStoredCounter += 10;
 				maxDemonBonesStoredCounter *= 1.1;
@@ -2257,13 +2258,13 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			if (player.soulforce < resourcesUsedToMakeNormalSkeleton() || (player.mana < resourcesUsedToMakeNormalSkeleton() && player.hasPerk(PerkLib.Soulless))) {
+			if (player.soulforce < resourcesUsedToMakeNormalSkeleton() || player.mana < resourcesUsedToMakeNormalSkeleton()) {
 				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeNormalSkeleton()+") to create a Skeleton Warrior.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
 			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeNormalSkeleton());
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= resourcesUsedToMakeNormalSkeleton();
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeNormalSkeleton() && player.mana >= resourcesUsedToMakeNormalSkeleton())) player.mana -= resourcesUsedToMakeNormalSkeleton();
 			else player.soulforce -= resourcesUsedToMakeNormalSkeleton();
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Warrior, ready to fight and obey your every command.");
@@ -2283,13 +2284,13 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			if (player.soulforce < resourcesUsedToMakeNormalSkeleton() || (player.mana < resourcesUsedToMakeNormalSkeleton() && player.hasPerk(PerkLib.Soulless))) {
+			if (player.soulforce < resourcesUsedToMakeNormalSkeleton() || player.mana < resourcesUsedToMakeNormalSkeleton()) {
 				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeNormalSkeleton()+") to create a Skeleton Archer.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
 			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeNormalSkeleton());
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= resourcesUsedToMakeNormalSkeleton();
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeNormalSkeleton() && player.mana >= resourcesUsedToMakeNormalSkeleton())) player.mana -= resourcesUsedToMakeNormalSkeleton();
 			else player.soulforce -= resourcesUsedToMakeNormalSkeleton();
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you can feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Archer, ready to fight and obey your every command.");
@@ -2309,13 +2310,13 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			if (player.soulforce < resourcesUsedToMakeNormalSkeleton() || (player.mana < resourcesUsedToMakeNormalSkeleton() && player.hasPerk(PerkLib.Soulless))) {
+			if (player.soulforce < resourcesUsedToMakeNormalSkeleton() || player.mana < resourcesUsedToMakeNormalSkeleton()) {
 				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeNormalSkeleton()+") to create a Skeleton Mage.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
 			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeNormalSkeleton());
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= resourcesUsedToMakeNormalSkeleton();
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeNormalSkeleton() && player.mana >= resourcesUsedToMakeNormalSkeleton())) player.mana -= resourcesUsedToMakeNormalSkeleton();
 			else player.soulforce -= resourcesUsedToMakeNormalSkeleton();
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Mage, ready to fight and obey your every command.");
@@ -2335,19 +2336,23 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			if (player.soulforce < resourcesUsedToMakeLargeSkeleton() || (player.mana < resourcesUsedToMakeLargeSkeleton() && player.hasPerk(PerkLib.Soulless))) {
+			if (player.soulforce < resourcesUsedToMakeLargeSkeleton() || player.mana < resourcesUsedToMakeLargeSkeleton()) {
 				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeLargeSkeleton()+") to create a Skeleton Giant.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.BoneGiants, 1, -bonesUsedToMakeLargeSkeleton());
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= resourcesUsedToMakeLargeSkeleton();
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeLargeSkeleton() && player.mana >= resourcesUsedToMakeLargeSkeleton())) player.mana -= resourcesUsedToMakeLargeSkeleton();
 			else player.soulforce -= resourcesUsedToMakeLargeSkeleton();
 			statScreenRefresh();
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a massive, 30-foot-tall shape. As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Giant, ready to fight and obey your every command.");
 			player.addPerkValue(PerkLib.BoneGiants, 1, 1);
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(10);
+		}
+		public function fixinSkeletonGiants():void {
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());
+			player.addPerkValue(PerkLib.BoneGiants, 1, +bonesUsedToMakeLargeSkeleton());
 		}
 	}
 }

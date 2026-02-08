@@ -74,7 +74,7 @@ public class AbstractNecroSpell extends AbstractSpell {
 		var bones:int = demonBonesAvailable();
 		if (bones < 50) return 1.0
 		var bonus:Number = Math.round((bones - 50) / 10);
-		if (bonus >= 2.0) bonus = 2.0;
+		if (bonus >= 3.0) bonus = 3.0;
 		return 1.0 + bonus;
 	}
 }

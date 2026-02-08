@@ -902,6 +902,9 @@ public class PerkLib
 		public static const BoneGiants:PerkType = mk("Bone Giants", "Bone Giants",
 				"You can now make (max 1) skeleton giant out of demon bones.",
 				"You've chosen the 'Bone Giants' perk. You can now make (max 1) skeleton giant out of demon bones.");
+		public static const BoneyBag:PerkType = mk("Boney Bag", "Boney Bag",
+				"Increase limit of stored demonic bones by 100.",
+				"You've chosen the 'Boney Bag' perk. Increase limit of stored demonic bones by 100.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1238,8 +1241,8 @@ public class PerkLib
 				"Your body has adapted to constant fighting, making your bones as hard as steel, increasing the damage dealt with melee attacks. (+10% melee phys dmg)",
 				"You've chosen the 'Bones of Steel' perk, gaining +10% melee phys dmg.");
 		public static const BoneSoul:PerkType = mk("Bone soul", "Bone soul",
-				"When the bone reserve is at 0 you can still cast necromancy spells. However, the effect of these spells is reduced by 50%. If the player has more than 50 demon bones, damage is instead increased by 10% per 10 bones owned up to 200%. Increase limit of stored demonic bones by 100.",
-				"You've chosen the 'Bone soul' perk. When the bone reserve is at 0 you can still cast necromancy spells. However, the effect of these spells is reduced by 50%. If the player has more than 50 demon bones, damage is instead increased by 10% per 10 bones owned up to 200%. Increase limit of stored demonic bones by 100.");
+				"When the bone reserve is at 0 you can still cast necromancy spells. However, the effect of these spells is reduced by 50%. If the player has more than 50 demon bones, damage is instead increased by 10% per 10 bones owned up to 300%. Increase limit of stored demonic bones by 150.",
+				"You've chosen the 'Bone soul' perk. When the bone reserve is at 0 you can still cast necromancy spells. However, the effect of these spells is reduced by 50%. If the player has more than 50 demon bones, damage is instead increased by 10% per 10 bones owned up to 300%. Increase limit of stored demonic bones by 150.");
 		public static const Brawler:PerkType = mk("Brawler", "Brawler",
 				"Brawling experience allows you to make two unarmed attacks in a turn.",
 				"You've chosen the 'Brawler' perk, allowing you to make two unarmed attacks in a turn!");
@@ -8618,6 +8621,10 @@ public class PerkLib
 					.requireLevel(18)
                     .requireInt(80)
                     .requireWis(80);
+            BoneyBag.requirePerk(GreatestHarvest)
+					.requireLevel(18)
+                    .requireInt(85)
+                    .requireWis(85);
             MakeItDouble.requireLevel(18)
                     .requireStr(50)
                     .requireTou(50)

@@ -374,8 +374,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 7 misc lvl-up perk: Bone Legion. Req. Bone Cohort perk, 175+ int, 175+ wis. Effect: You may now control up to 48 normal size skeletons of each type.\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Efficiency. Req. Greatest Harvest perk, 110+ int, 110+ wis. Effect: You improved efficiency of making skeletons leading to less wasted bones or SF/Mana. (-50% costs)\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Giants. Req. Boney Bow OR Boney Wand perk, 100+ intelligence and 100+ wisdom. Effect: You can now make (max 1) skeleton giant out of demon bones.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 3 misc lvl-up perk: Boney Bag. Req. Greatest Harvest perk, 85+ intelligence and 100+ wisdom. Effect: Increase limit of stored demonic bones by 100.\n");
+			outputText("-Bone Soul perk effects slight changed: max bones stored increased to +150, max cap of bonus spellpower from having over 50 bones increased to +300%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
