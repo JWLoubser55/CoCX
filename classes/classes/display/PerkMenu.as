@@ -10,7 +10,6 @@ import classes.CoC;
 import classes.GlobalFlags.kFLAGS;
 import classes.IMutationPerkType;
 import classes.IMutations.*;
-import classes.internals.Utils;
 import classes.Parser.Parser;
 import classes.PerkClass;
 import classes.PerkLib;
@@ -23,6 +22,7 @@ import classes.Scenes.NPCs.TyrantiaFollower;
 import classes.Scenes.SceneLib;
 import classes.Stats.StatUtils;
 import classes.StatusEffects;
+import classes.internals.Utils;
 
 import coc.view.Block;
 import coc.view.ButtonDataList;
@@ -31,7 +31,6 @@ import coc.view.MainView;
 import coc.view.UIUtils;
 
 import flash.events.MouseEvent;
-import flash.events.TextEvent;
 import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.utils.Dictionary;
@@ -1385,7 +1384,7 @@ public class PerkMenu extends BaseContent {
 		}
 	}
 	
-	public function newPerkMenu(category:*=null):void {
+	public function newPerkMenu(category:* =null):void {
 		preferOld = false;
 		mainView.toolTipView.hide();
 		clearOutput();

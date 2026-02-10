@@ -105,19 +105,15 @@ import classes.Scenes.Combat.CombatAbility;
 			}
 			XXCNPC.unloadSavedNPCs();
 			CoC.instance.saves.resetSaveableStates();
-			mainView.eventTestInput.x = -10207.5;
-			mainView.eventTestInput.y = -1055.1;
+			mainView.hideTestInputPanel();
 			hideStats();
 			hideUpDown();
-			mainView.nameBox.visible = true;
-			mainView.nameBox.width = 165;
 			mainView.hideMenuButton( MainView.MENU_NEW_MAIN );
 			mainView.hideMenuButton( MainView.MENU_DATA );
 			mainView.hideMenuButton( MainView.MENU_LEVEL );
 			mainView.hideMenuButton( MainView.MENU_PERKS );
 			//Hide perk boxes
 			mainView.hideComboBox();
-			mainView.setButtonText(0, "Newgame");
 
 			var showSpecialNames:Boolean = true; // achievements[kACHIEVEMENTS.STORY_FINALBOSS] > 0;
 
@@ -126,11 +122,7 @@ import classes.Scenes.Combat.CombatAbility;
 			outputText("What is your name?");
 			menu();
 			addButton(0, "OK", chooseName);
-			mainView.nameBox.x = mainView.mainText.x + 5;
-			mainView.nameBox.y = mainView.mainText.y + 3 + mainView.mainText.textHeight;
-			mainView.nameBox.text = "";
-			mainView.nameBox.maxChars = 16;
-			mainView.nameBox.restrict = null;
+			mainView.showNameBoxAfterText("Tim");
 
 			var preList:Array = [];
 			for (var t:int = 0; t < specialCharacters.customs.length; t++) preList.push( { label: specialCharacters.customs[t][0], data:specialCharacters.customs[t] } );
@@ -152,7 +144,6 @@ import classes.Scenes.Combat.CombatAbility;
                 player.autoSave = false;
             }
 
-			model.player = player;
 			player.strStat.core.value = 0;
 			player.touStat.core.value = 0;
 			player.speStat.core.value = 0;
@@ -217,106 +208,14 @@ import classes.Scenes.Combat.CombatAbility;
 			player.beardLength = 0;
 			player.beardStyle = 0;
 			//Inventory clear
-			player.itemSlot1.unlocked = true;
-			player.itemSlot1.emptySlot();
-			player.itemSlot2.unlocked = true;
-			player.itemSlot2.emptySlot();
-			player.itemSlot3.unlocked = true;
-			player.itemSlot3.emptySlot();
-			player.itemSlot4.unlocked = true;
-			player.itemSlot4.emptySlot();
-			player.itemSlot5.unlocked = true;
-			player.itemSlot5.emptySlot();
-			player.itemSlot6.unlocked = true;
-			player.itemSlot6.emptySlot();
-			player.itemSlot7.unlocked = false;
-			player.itemSlot7.emptySlot();
-			player.itemSlot8.unlocked = false;
-			player.itemSlot8.emptySlot();
-			player.itemSlot9.unlocked = false;
-			player.itemSlot9.emptySlot();
-			player.itemSlot10.unlocked = false;
-			player.itemSlot10.emptySlot();
-			player.itemSlot11.unlocked = false;
-			player.itemSlot11.emptySlot();
-			player.itemSlot12.unlocked = false;
-			player.itemSlot12.emptySlot();
-			player.itemSlot13.unlocked = false;
-			player.itemSlot13.emptySlot();
-			player.itemSlot14.unlocked = false;
-			player.itemSlot14.emptySlot();
-			player.itemSlot15.unlocked = false;
-			player.itemSlot15.emptySlot();
-			player.itemSlot16.unlocked = false;
-			player.itemSlot16.emptySlot();
-			player.itemSlot17.unlocked = false;
-			player.itemSlot17.emptySlot();
-			player.itemSlot18.unlocked = false;
-			player.itemSlot18.emptySlot();
-			player.itemSlot19.unlocked = false;
-			player.itemSlot19.emptySlot();
-			player.itemSlot20.unlocked = false;
-			player.itemSlot20.emptySlot();
-			player.itemSlot21.unlocked = false;
-			player.itemSlot21.emptySlot();
-			player.itemSlot22.unlocked = false;
-			player.itemSlot22.emptySlot();
-			player.itemSlot23.unlocked = false;
-			player.itemSlot23.emptySlot();
-			player.itemSlot24.unlocked = false;
-			player.itemSlot24.emptySlot();
-			player.itemSlot25.unlocked = false;
-			player.itemSlot25.emptySlot();
-			player.itemSlot26.unlocked = false;
-			player.itemSlot26.emptySlot();
-			player.itemSlot27.unlocked = false;
-			player.itemSlot27.emptySlot();
-			player.itemSlot28.unlocked = false;
-			player.itemSlot28.emptySlot();
-			player.itemSlot29.unlocked = false;
-			player.itemSlot29.emptySlot();
-			player.itemSlot30.unlocked = false;
-			player.itemSlot30.emptySlot();
-			player.itemSlot31.unlocked = false;
-			player.itemSlot31.emptySlot();
-			player.itemSlot32.unlocked = false;
-			player.itemSlot32.emptySlot();
-			player.itemSlot33.unlocked = false;
-			player.itemSlot33.emptySlot();
-			player.itemSlot34.unlocked = false;
-			player.itemSlot34.emptySlot();
-			player.itemSlot35.unlocked = false;
-			player.itemSlot35.emptySlot();
-			player.itemSlot36.unlocked = false;
-			player.itemSlot36.emptySlot();
-			player.itemSlot37.unlocked = false;
-			player.itemSlot37.emptySlot();
-			player.itemSlot38.unlocked = false;
-			player.itemSlot38.emptySlot();
-			player.itemSlot39.unlocked = false;
-			player.itemSlot39.emptySlot();
-			player.itemSlot40.unlocked = false;
-			player.itemSlot40.emptySlot();
-			player.itemSlot41.unlocked = false;
-			player.itemSlot41.emptySlot();
-			player.itemSlot42.unlocked = false;
-			player.itemSlot42.emptySlot();
-			player.itemSlot43.unlocked = false;
-			player.itemSlot43.emptySlot();
-			player.itemSlot44.unlocked = false;
-			player.itemSlot44.emptySlot();
-			player.itemSlot45.unlocked = false;
-			player.itemSlot45.emptySlot();
-			player.itemSlot46.unlocked = false;
-			player.itemSlot46.emptySlot();
-			player.itemSlot47.unlocked = false;
-			player.itemSlot47.emptySlot();
-			player.itemSlot48.unlocked = false;
-			player.itemSlot48.emptySlot();
-			player.itemSlot49.unlocked = false;
-			player.itemSlot49.emptySlot();
-			player.itemSlot50.unlocked = false;
-			player.itemSlot50.emptySlot();
+			for (i = 0; i < 6; i++) {
+				player.itemSlots[i].unlocked = true;
+				player.itemSlots[i].emptySlot();
+			}
+			for (i = 6; i < Player.MAX_NUM_ITEM_SLOTS; i++) {
+				player.itemSlots[i].unlocked = false;
+				player.itemSlots[i].emptySlot();
+			}
             //PIERCINGS
             player.nipplesPierced = 0;
             player.nipplesPShort = "";
@@ -353,7 +252,6 @@ import classes.Scenes.Combat.CombatAbility;
 			JojoScene.monk                               = JojoScene.JOJO_NOT_MET;
 			SandWitchScene.rapedBefore = false;
 			//Replaced by flag	CoC.instance.beeProgress = 0;
-			SceneLib.isabellaScene.isabellaOffspringData = []; //CLEAR!
 			//Lets get this bitch started
 			CoC.instance.inCombat = false;
 			inDungeon = false;
@@ -540,6 +438,7 @@ import classes.Scenes.Combat.CombatAbility;
 				if (flags[kFLAGS.LETHICE_DEFEATED] > 0) renamePrompt();
 				else newGameGo();
 				outputText("\n\n\n<b>You must select a name.</b>");
+				flushOutputTextToGUI();
 				return;
 			}
 			clearOutput();
@@ -1253,7 +1152,7 @@ import classes.Scenes.Combat.CombatAbility;
 		private function confirmEndowmentPerversion():void {
 			clearOutput();
 			clearOutput();
-			outputText("Are you unusually perverted?  (+5 Corruption)\n\Corruption affects certain scenes and having a higher corruption makes you more prone to Bad Ends.\n");
+			outputText("Are you unusually perverted?  (+5 Corruption)\nCorruption affects certain scenes and having a higher corruption makes you more prone to Bad Ends.\n");
 			menu();
 			addButton(0, "Yes", setEndowmentPerversion);
 			addButton(1, "No", chooseEndowment, true);
@@ -2789,13 +2688,13 @@ import classes.Scenes.Combat.CombatAbility;
 			} else {
 				perkAOMXCheck(1, btn);
 			}
-			btn++
+			btn++;
 			if (player.hasPerk(PerkLib.AscensionAdvTrainingX)){
 				perkAdvancedTrainingCheck(player.perkv1(PerkLib.AscensionAdvTrainingX) + 1, btn);
 			} else {
 				perkAdvancedTrainingCheck(1, btn);
 			}
-			btn++
+			btn++;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 3 && player.hasPerk(PerkLib.AscensionHerosLegacy)) {
 				if (player.ascensionPerkPoints >= 75 && !player.hasPerk(PerkLib.AscensionBloodlineHeritage)) addButton(btn, "BloodHeritage", perkBloodlineHeritage).hint("Perk giving you an additional 1 perk point, 1 super perk point and 5 stat points at the start of the game (scaling with current NG tier, for super perk points amount is reduced by 3). Also would increase any bloodline perk bonus by 2.\n\nCost: 75 points");
 				else if (player.ascensionPerkPoints < 75) button(btn).disable("You do not have enough ascension perk points!");
@@ -2809,7 +2708,7 @@ import classes.Scenes.Combat.CombatAbility;
 			} else {
 				perkBPCheck(1, btn);
 			}
-			btn++
+			btn++;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1 && player.hasPerk(PerkLib.AscensionHybridTheory)) {
 				if (player.ascensionPerkPoints >= 20 && !player.hasPerk(PerkLib.AscensionCruelChimerasThesis)) addButton(btn, "C Chimera's T", perkCruelChimerasThesis).hint("Perk allowing you to receive race bonuses for one point less. (still req. min 8 race points to work).\n\nCost: 20 points");
 				else if (player.ascensionPerkPoints < 20) addButtonDisabled(btn, "C Chimera's T", "You do not have enough ascension perk points!");
@@ -3154,7 +3053,6 @@ import classes.Scenes.Combat.CombatAbility;
 		private function perkTGMEXCheck(tier:int, btn:int):void {
 			var NGPL:Array = [1, 3, 5, 7];
 			var pCost:int = 20;
-			var tier:int = player.perkv1(PerkLib.AscensionTrancendentalGeneticMemoryExStageX) + 1;
 			if (tier > 4) {
 				addButtonDisabled(btn, "T.G.M.Ex Rank "+ (tier-1).toString(),"You have the highest tier already.");
 			}
@@ -4307,7 +4205,7 @@ import classes.Scenes.Combat.CombatAbility;
 		}	//ale potem zamienić to na specialne soulskills z każdego z klanów (but then replace it with special soulskills from each of the clans)
 
 		public static function hasAscensionSpell(spellCat:int):Boolean {
-			var spellsToCheck:/*StatusEffect*/Array;
+			var spellsToCheck:/*StatusEffectType*/Array;
 			switch(spellCat) {
 				case CombatAbility.CAT_SPELL_WHITE: spellsToCheck = [StatusEffects.KnowsMeteorShower];
 													break;

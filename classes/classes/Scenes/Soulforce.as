@@ -25,12 +25,7 @@ use namespace CoC;
 
 public class Soulforce extends BaseContent
 {
-	public var tamaniDaughtersScene:TamainsDaughtersScene = new TamainsDaughtersScene();
-	public var tamaniScene:TamaniScene = new TamaniScene();
-	public var izumiScenes:IzumiScene = new IzumiScene();
-	public var nagaScene:NagaScene = new NagaScene();
 	public var worldtreeScene:WorldTree = new WorldTree();
-	public var minotaurSonsScene:MinotaurMobScene = new MinotaurMobScene();
 
 	public function accessSoulforceMenu():void {
 		clearOutput();
@@ -1610,7 +1605,7 @@ public class Soulforce extends BaseContent
 		SceneLib.isabellaScene.isabellaGreeting();
 	}
 	public function sneakOnThePlane():void {
-		nagaScene.nagaEncounter();
+		SceneLib.desert.nagaScene.nagaEncounter();
 	}
 	public function quasiDragoness():void {
 		SceneLib.kihaScene.encounterKiha();

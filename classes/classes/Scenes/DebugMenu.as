@@ -172,7 +172,7 @@ public class DebugMenu extends BaseContent
 		}
 
 		private var selectedScene:*;
-		private function testScene(selected:*=null):void{
+		private function testScene(selected:* =null):void{
 			clearOutput();
 			if(!selected){selected = SceneLib;}
 			selectedScene = selected;

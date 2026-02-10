@@ -2217,7 +2217,7 @@ private function getButtWreckedByArian():void {
 		if(player.cockTotal() > 1) outputText("s");
 		outputText(" drooling precum onto [arian eir] belly");
 	}
-	if (player.gender == 0) outputText("null body shiverring with pleasure")//Would look weird without Genderless text.
+	if (player.gender == 0) outputText("null body shiverring with pleasure");//Would look weird without Genderless text.
 	outputText(".  You're so close now, you can feel it.  You tell Arian you're going to cum, and beg [arian em] to cum with you.");
 
 	outputText("\n\nAs if on cue, Arian gasps and [arian eir] shaft");

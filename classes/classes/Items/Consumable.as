@@ -114,25 +114,25 @@ import classes.internals.Utils;
 				residues:/*Number[]*/Array = null,
 				pigments:Array = null
 		):Consumable {
-			var i:int;
+			var i:int, a:Array;
 			if (substances && substances.length > 0) {
 				if (!this.substances) this.substances = [];
-				for each (i in substances) {
-					if (!AlchemyLib.Substances[i]) throw new Error("Ingredient "+id+" has invalid refineableInto substance "+i);
+				for each (a in substances) {
+					if (!AlchemyLib.Substances[a[1]]) throw new Error("Ingredient "+id+" has invalid refineableInto substance "+a);
 				}
 				pushAll(this.substances, substances);
 			}
 			if (essences && essences.length > 0) {
 				if (!this.essences) this.essences = [];
-				for each (i in essences) {
-					if (!AlchemyLib.Essences[i]) throw new Error("Ingredient "+id+" has invalid refineableInto essence "+i);
+				for each (a in essences) {
+					if (!AlchemyLib.Essences[a[1]]) throw new Error("Ingredient "+id+" has invalid refineableInto essence "+a);
 				}
 				pushAll(this.essences, essences);
 			}
 			if (residues && residues.length > 0) {
 				if (!this.residues) this.residues = [];
-				for each (i in residues) {
-					if (!AlchemyLib.Residues[i]) throw new Error("Ingredient "+id+" has invalid refineableInto residue "+i);
+				for each (a in residues) {
+					if (!AlchemyLib.Residues[a[1]]) throw new Error("Ingredient "+id+" has invalid refineableInto residue "+a);
 				}
 				pushAll(this.residues, residues);
 			}

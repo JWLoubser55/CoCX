@@ -303,7 +303,6 @@ public class CoC extends MovieClip
 
 			//The Player object, used everywhere
 			//player = new Player();
-			model.player = player;
 			player2 = new Player();
 			new PlayerEvents();
 

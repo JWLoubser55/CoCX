@@ -331,7 +331,7 @@ public function jojoMutationOfferYes():void {
 	outputText("There's no question about it, this is a great idea.  It might be coming from the corruption in your blood, but why bother to fight it?  You take Marae's lethicite and grab one of the larger crystalline protrusions.  With a hard yank, you break it off from the main cluster, sending tiny crystalline shards over the campsite.  They vanish into the ground before you have a chance to gather them.\n\n");
 	outputText("Whether by luck or some unconscious demonic magic, the smaller piece of lethicite is rather phallic. If it weren't for the sharp corners and hard edges, it would look like a large dildo with a pair of balls at the base.  You put away the larger piece, focusing this tool and your plans for your pet.\n\n");
 	outputText("You lick the sharp crystalline dildo, slathering it with spit.  You aren't sure, but you seem unable to stop.  It's as if some demonic force guides you.  It's difficult to focus on much beyond your own arousal and the tingling feeling that spreads through your body as you taste this piece of a goddess' essence.  Your mind drifts off into a perverted fantasy, unable to cope with total loss of control and oral debauchery.\n==========================================\n");
-	sceneHunter.selectGender(dickF, vagF, null, null)
+	sceneHunter.selectGender(dickF, vagF, null, null);
 	//[Male]
 	function dickF():void {
 		outputText("<i>In your fantasy you're fucking Jojo again, bottoming out against his cute girlish ass over and over.  His dick spurts mouse-milk with each thrust, feeding a dozen growing puddles underneath him as they slowly merge together.  He writhes and squirms, a pair of crystalline balls against his chin while he deep-throats a massive dildo.  You blast another wave into his overloaded spunk-dumpster, forcing a thick jet out of him and into the cum-puddles underneath you.\n\n");
@@ -1535,7 +1535,7 @@ public function jojoFollowerMeditate(doClear:Boolean = true):void {
 			if (JojoRapeRoleplay) {
 				outputText("As you enter the forest, you slyly tell Jojo that you have something in mind for a scenario. He tilts his head, curious, and you give him a grin. You tell him that you've raped him a few times, and he's getting into it. Jojo gives you a sly look, and nods once. Before he can do much more, you rush in, sweeping his leg, forcing the monk to his knees.\n\n");
 			}
-				sceneHunter.selectGender(dickF, vagF, null, null, -1)
+				sceneHunter.selectGender(dickF, vagF, null, null, -1);
 
 			//Male Version
 			function dickF():void {
@@ -3287,7 +3287,7 @@ public function afterDebimboTalk():void {
 			case 1:
 				if (flags[kFLAGS.LUNA_AFFECTION] == 100) {
 					outputText(" To your surprise, you see your maid. Luna's on a table, lying on her stomach, eyes closed in bliss. Joy's standing beside her, hands softly caressing Luna's slender neck. As she kneads Luna's muscles, you maid seems content, for once, to just relax.\n\n");
-					outputText("\<i>She was complaining about muscle pain.\"</i> Joy explains. <i>\"And one of the things I learned at the monastary was how to relax muscles. Luna's been very helpful lately, so I figured she deserved some time for herself. Poor girl never relaxes.\"</i>  \n\n");
+					outputText("<i>She was complaining about muscle pain.\"</i> Joy explains. <i>\"And one of the things I learned at the monastary was how to relax muscles. Luna's been very helpful lately, so I figured she deserved some time for herself. Poor girl never relaxes.\"</i>  \n\n");
 					outputText("Joy takes her hands away, and you can hear Luna's breathing slow. Within moments, she's sound asleep, and Joy carries a pillow in, gently placing it under her head and leaving your maid to rest. \n\n");
 					outputText("<i>\"She'll only be out for an hour, knowing her.\"</i> Joy says, bemused. <i>\"She's obsessed with you, you know. Works herself silly because of it\".</i> You tell Joy that you know, and she gives you a stern glance.  <i>\"As long as you're not taking advantage of her love.\"</i> You reassure Joy that you'd never, and she smiles.  \n\n");
 					outputText("<i>\"Anyways, what brings you to me today? Need a little Joy?\"</i> She winks, and you groan internally. \n\n");

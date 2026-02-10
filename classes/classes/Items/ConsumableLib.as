@@ -936,7 +936,7 @@ public final class ConsumableLib extends AlchemyLib
 		public const MGHTYVG: Consumable = mk("MghtyVg", "MghtyVg", "a mightily enhanced piece of kanga fruit", 6, "A yellow, fibrous, tubular pod.  A split in the end reveals many lumpy, small seeds inside.  The smell of mild fermentation wafts from them.  It glows slightly from Lumi's enhancements.", curry(m.kangaFruit, 1), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
-						[[1, KANGAFT]]
+						[[1, AE_KANGAROO]]
 				);
 		public const MINOBLO:MinotaurBlood    = new MinotaurBlood();
 		public const MOTHDUS:MothDust    = new MothDust();

@@ -9,11 +9,11 @@ import coc.view.IconLib;
 
 public class Armor extends Equipable
 	{
-		private var _def:Number;
-		private var _mdef:Number;
-		private var _perk:String;
-		private var _supportsBulge:Boolean;
-		private var _supportsUndergarment:Boolean;
+		protected var _def:Number;
+		protected var _mdef:Number;
+		protected var _perk:String;
+		protected var _supportsBulge:Boolean;
+		protected var _supportsUndergarment:Boolean;
 		
 		override public function get category():String {
 			return CATEGORY_ARMOR;

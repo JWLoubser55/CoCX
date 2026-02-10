@@ -9,6 +9,8 @@ import classes.internals.Utils;
 import coc.view.ButtonData;
 import coc.view.CoCButton;
 import coc.view.Color;
+import coc.view.ExplorationMap;
+import coc.view.ExplorationMapNode;
 import coc.view.MainView;
 import coc.view.UIUtils;
 
@@ -59,7 +61,7 @@ public class ExplorationEngine extends BaseContent {
 	private const filters:/*Function*/Array = [filterForStart, filterForMid, filterForEnd];
 
 	public function ExplorationEngine() {
-		const SIZE:Number = ExplorationEntry.RADIUS * 2;
+		const SIZE:Number = ExplorationMapNode.RADIUS * 2;
 		const XGAP:Number = (MainView.TEXTZONE_W) / (MAXDEPTH + 1) - SIZE;
 		const YGAP:Number = SIZE * 1.5;
 
@@ -461,16 +463,15 @@ public class ExplorationEngine extends BaseContent {
 		}
 		entry.encounter.execEncounter();
 	}
-	private function createMap():Sprite {
-		var map:Sprite = new Sprite();
-		var g:Graphics = map.graphics;
+	private function createMap():ExplorationMap {
+		var map:ExplorationMap = new ExplorationMap();
 
 		if (roadIndex < 0) {
 			startPos.isPlayerHere = true;
 			playerEntry           = startPos;
 		}
 		startPos.redraw();
-		map.addChild(startPos.sprite);
+		map.addNode(startPos.sprite);
 
 		for (var i:int = 0; i < NROADS; i++) {
 			for (var j:int = 0; j < MAXDEPTH; j++) {
@@ -478,42 +479,21 @@ public class ExplorationEngine extends BaseContent {
 				if (node.encounter) {
 					// draw the sprite
 					node.redraw();
-					map.addChild(node.sprite);
+					map.addNode(node.sprite);
 					if (j == 0) {
 						// draw the lines from startPos
 						var lineColor: String;
 						if (node.isDisabled) lineColor = LINE_DISABLED;
 						else if (node.isNext) lineColor = LINE_NEXT;
 						else lineColor = LINE_COLOR;
-						g.lineStyle(LINE_WIDTH, Color.convertColor(lineColor));
-						g.moveTo(startPos.centerX, startPos.centerY);
-						var midx:Number = (startPos.centerX + node.centerX) / 2;
-						g.lineTo(midx, startPos.centerY);
-						g.lineTo(midx, node.centerY);
-						if (roadIndex < 0) {
-							var tf:TextField = UIUtils.newTextField({
-								text             : "" + (i + 1),
-								x                : midx + 2,
-								y                : node.centerY,
-								defaultTextFormat: {
-									font : mainView.mainText.defaultTextFormat.font,
-									size : Number(mainView.mainText.defaultTextFormat.size) - 2,
-									color: mainView.mainText.defaultTextFormat.color
-								}
-							});
-							map.addChild(tf);
-							tf.y -= tf.height;
-						}
-						g.lineTo(node.centerX, node.centerY);
+						map.drawOrthoLine(startPos, node, LINE_WIDTH, lineColor, roadIndex < 0 ? ""+(i+1) : "");
 					}
 					for each (var next:ExplorationEntry in node.nextNodes) {
 						if (!next.encounter) continue;
 						if (next.isDisabled) lineColor = LINE_DISABLED;
 						else if (next.isNext && node.isPlayerHere) lineColor = LINE_NEXT;
 						else lineColor = LINE_COLOR;
-						g.lineStyle(LINE_WIDTH, Color.convertColor(lineColor));
-						g.moveTo(node.centerX, node.centerY);
-						g.lineTo(next.centerX, next.centerY);
+						map.drawLine(node, next, LINE_WIDTH, lineColor);
 					}
 				}
 			}

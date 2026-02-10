@@ -963,5 +963,14 @@ public class MainView extends Block {
 		statsView.setTheme(theme, font);
 		monsterStatsView.setTheme(theme, font);
 	}
+	public function showNameBoxAfterText(text:String = ""): void {
+		nameBox.visible = true;
+		nameBox.width = 165;
+		nameBox.x = mainText.x + 5;
+		nameBox.y = mainText.y + 3 + mainText.textHeight;
+		nameBox.text = "";
+		nameBox.maxChars = 16;
+		nameBox.restrict = null;
+	}
 }
 }

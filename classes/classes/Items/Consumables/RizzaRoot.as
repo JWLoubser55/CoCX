@@ -3,14 +3,14 @@
  */
 package classes.Items.Consumables
 {
+import classes.Items.Consumable;
 import classes.Player;
 import classes.internals.Utils;
 
-public class RizzaRoot extends SimpleConsumable
+public class RizzaRoot extends Consumable
     {
 
-        private function rizzaRootEffect(player:Player):void
-        {
+        override public function useItem():Boolean {
             clearOutput();
 			var changes:Number = 0;
 			var changeLimit:Number = 2;
@@ -43,11 +43,12 @@ public class RizzaRoot extends SimpleConsumable
 			else if (player.tallness >= 108){
 				outputText("\n\nYou don’t feel anything happening along your spine.  Perhaps this is as tall as the rizza root can make you.");
 			}
+		    return false;
         }
 
         public function RizzaRoot()
         {
-            super("RizzaRt", "Rizza Root", "a tube of rizza root strands", rizzaRootEffect, 10, "A small ceramic tube full of fine red root strands.  They smell something like citrus fruit.");
+            super("RizzaRt", "Rizza Root", "a tube of rizza root strands", 10, "A small ceramic tube full of fine red root strands.  They smell something like citrus fruit.");
 			withTag(U_TF);
         }
 

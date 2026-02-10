@@ -1272,7 +1272,7 @@ public class BeeGirlScene extends BaseContent
 		private function beeRapesTaurs():void {
 			var cockIndex:int = player.cockThatFits(50);
 			if (cockIndex < 0) cockIndex = player.smallestCockIndex();
-			sceneHunter.print("Fork: HP and lust loses...")
+			sceneHunter.print("Fork: HP and lust loses...");
 			//Damage:
 			if (player.HP < 1) {
 				outputText("The bee-girl smirks at you and approaches. Her chitin covered hand slides along your flank, and you shiver with anticipation. She slaps your haunch, hard, and you reflexively buck. Displeased, she gives you a shove, and you run into a tree. A honey covered hand is rammed inside your " + assholeDescript() + " and you grab the tree for support.\n\n");

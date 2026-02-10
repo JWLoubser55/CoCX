@@ -101,7 +101,7 @@ public class MainViewManager extends BaseContent {
 		mainView.charView.visible = false;
 		tweenInStats();
 	}
-	public function createFloatingText(x:Number, y:Number, htmlText:String, color:* = "#000", shadowColor:*="#fff"):void {
+	public function createFloatingText(x:Number, y:Number, htmlText:String, color:* = "#000", shadowColor:* ="#fff"):void {
 		var tf:TextField = UIUtils.newTextField({
 			x: x,
 			y: y,
@@ -121,10 +121,10 @@ public class MainViewManager extends BaseContent {
 		});
 		
 	}
-	public function createFloatingTextAtCursor(htmlText:String, color:*="#000", shadowColor:*="#fff"):void {
+	public function createFloatingTextAtCursor(htmlText:String, color:* ="#000", shadowColor:* ="#fff"):void {
 		createFloatingText(mainView.mouseX, mainView.mouseY, htmlText, color, shadowColor);
 	}
-	public function createFloatingTextAtElement(element:DisplayObject, htmlText:String, color:*="#000", shadowColor:*="#fff"):void {
+	public function createFloatingTextAtElement(element:DisplayObject, htmlText:String, color:* ="#000", shadowColor:* ="#fff"):void {
 		var point:Point = UIUtils.getRelativePos(element, mainView);
 		createFloatingText(point.x, point.y, htmlText, color, shadowColor);
 	}

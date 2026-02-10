@@ -2233,19 +2233,19 @@ public class PlayerInfo extends BaseContent {
 		outputText("<b>" + perk.perkName + "</b> gained!");
 		player.createPerk(perk.ptype, perk.value1, perk.value2, perk.value3, perk.value4);
 		if (perk.ptype == PerkLib.StrongBack3) {
-			player.itemSlot13.unlocked = true;
-			player.itemSlot14.unlocked = true;
-			player.itemSlot15.unlocked = true;
+			player.itemSlots[12].unlocked = true;
+			player.itemSlots[13].unlocked = true;
+			player.itemSlots[14].unlocked = true;
 		}
 		if (perk.ptype == PerkLib.StrongBack2) {
-			player.itemSlot10.unlocked = true;
-			player.itemSlot11.unlocked = true;
-			player.itemSlot12.unlocked = true;
+			player.itemSlots[9].unlocked = true;
+			player.itemSlots[10].unlocked = true;
+			player.itemSlots[11].unlocked = true;
 		}
 		if (perk.ptype == PerkLib.StrongBack) {
-			player.itemSlot7.unlocked = true;
-			player.itemSlot8.unlocked = true;
-			player.itemSlot9.unlocked = true;
+			player.itemSlots[6].unlocked = true;
+			player.itemSlots[7].unlocked = true;
+			player.itemSlots[8].unlocked = true;
 		}
 		if (perk.ptype == PerkLib.TankI || perk.ptype == PerkLib.TankII || perk.ptype == PerkLib.TankIII || perk.ptype == PerkLib.TankIV || perk.ptype == PerkLib.TankV || perk.ptype == PerkLib.TankVI) {
 			HPChange(player.tou, false, false);

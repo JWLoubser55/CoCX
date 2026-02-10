@@ -77,6 +77,7 @@ use namespace CoC;
 	 */
 	public class Player extends Character {
 
+		public static const MAX_NUM_ITEM_SLOTS:int = 50;
 		public function Player() {
 			for (var i:int = 0; i < CombatAbility.Registry.length; i++) {
 				cooldowns[i] = 0;
@@ -85,58 +86,10 @@ use namespace CoC;
 				durations[duration] = 0;
 			}
 			//Item things
-			itemSlot1 = new ItemSlotClass();
-			itemSlot2 = new ItemSlotClass();
-			itemSlot3 = new ItemSlotClass();
-			itemSlot4 = new ItemSlotClass();
-			itemSlot5 = new ItemSlotClass();
-			itemSlot6 = new ItemSlotClass();
-			itemSlot7 = new ItemSlotClass();
-			itemSlot8 = new ItemSlotClass();
-			itemSlot9 = new ItemSlotClass();
-			itemSlot10 = new ItemSlotClass();
-			itemSlot11 = new ItemSlotClass();
-			itemSlot12 = new ItemSlotClass();
-			itemSlot13 = new ItemSlotClass();
-			itemSlot14 = new ItemSlotClass();
-			itemSlot15 = new ItemSlotClass();
-			itemSlot16 = new ItemSlotClass();
-			itemSlot17 = new ItemSlotClass();
-			itemSlot18 = new ItemSlotClass();
-			itemSlot19 = new ItemSlotClass();
-			itemSlot20 = new ItemSlotClass();
-			itemSlot21 = new ItemSlotClass();
-			itemSlot22 = new ItemSlotClass();
-			itemSlot23 = new ItemSlotClass();
-			itemSlot24 = new ItemSlotClass();
-			itemSlot25 = new ItemSlotClass();
-			itemSlot26 = new ItemSlotClass();
-			itemSlot27 = new ItemSlotClass();
-			itemSlot28 = new ItemSlotClass();
-			itemSlot29 = new ItemSlotClass();
-			itemSlot30 = new ItemSlotClass();
-			itemSlot31 = new ItemSlotClass();
-			itemSlot32 = new ItemSlotClass();
-			itemSlot33 = new ItemSlotClass();
-			itemSlot34 = new ItemSlotClass();
-			itemSlot35 = new ItemSlotClass();
-			itemSlot36 = new ItemSlotClass();
-			itemSlot37 = new ItemSlotClass();
-			itemSlot38 = new ItemSlotClass();
-			itemSlot39 = new ItemSlotClass();
-			itemSlot40 = new ItemSlotClass();
-			itemSlot41 = new ItemSlotClass();
-			itemSlot42 = new ItemSlotClass();
-			itemSlot43 = new ItemSlotClass();
-			itemSlot44 = new ItemSlotClass();
-			itemSlot45 = new ItemSlotClass();
-			itemSlot46 = new ItemSlotClass();
-			itemSlot47 = new ItemSlotClass();
-			itemSlot48 = new ItemSlotClass();
-			itemSlot49 = new ItemSlotClass();
-			itemSlot50 = new ItemSlotClass();
-			itemSlots = [itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5, itemSlot6, itemSlot7, itemSlot8, itemSlot9, itemSlot10, itemSlot11, itemSlot12, itemSlot13, itemSlot14, itemSlot15, itemSlot16, itemSlot17, itemSlot18, itemSlot19, itemSlot20, itemSlot21, itemSlot22, itemSlot23, itemSlot24, itemSlot25,
-				itemSlot26, itemSlot27, itemSlot28, itemSlot29, itemSlot30, itemSlot31, itemSlot32, itemSlot33, itemSlot34, itemSlot35, itemSlot36, itemSlot37, itemSlot38, itemSlot39, itemSlot40, itemSlot41, itemSlot42, itemSlot43, itemSlot44, itemSlot45, itemSlot46, itemSlot47, itemSlot48, itemSlot49, itemSlot50];
+			itemSlots = [];
+			for (i = 0; i < MAX_NUM_ITEM_SLOTS; i++) {
+				itemSlots.push(new ItemSlotClass());
+			}
 			for each (var slot:EnumValue in ItemConstants.EquipmentSlots) {
 				_equipment[slot.value] = slot.nothing();
 			}
@@ -264,58 +217,8 @@ use namespace CoC;
 		override public function pregnancyUpdate():Boolean {
 			return pregnancy.updatePregnancy(); //Returns true if we need to make sure pregnancy texts aren't hidden
 		}
-		
+
 		// Inventory
-		public var itemSlot1:ItemSlotClass;
-		public var itemSlot2:ItemSlotClass;
-		public var itemSlot3:ItemSlotClass;
-		public var itemSlot4:ItemSlotClass;
-		public var itemSlot5:ItemSlotClass;
-		public var itemSlot6:ItemSlotClass;
-		public var itemSlot7:ItemSlotClass;
-		public var itemSlot8:ItemSlotClass;
-		public var itemSlot9:ItemSlotClass;
-		public var itemSlot10:ItemSlotClass;
-		public var itemSlot11:ItemSlotClass;
-		public var itemSlot12:ItemSlotClass;
-		public var itemSlot13:ItemSlotClass;
-		public var itemSlot14:ItemSlotClass;
-		public var itemSlot15:ItemSlotClass;
-		public var itemSlot16:ItemSlotClass;
-		public var itemSlot17:ItemSlotClass;
-		public var itemSlot18:ItemSlotClass;
-		public var itemSlot19:ItemSlotClass;
-		public var itemSlot20:ItemSlotClass;
-		public var itemSlot21:ItemSlotClass;
-		public var itemSlot22:ItemSlotClass;
-		public var itemSlot23:ItemSlotClass;
-		public var itemSlot24:ItemSlotClass;
-		public var itemSlot25:ItemSlotClass;
-		public var itemSlot26:ItemSlotClass;
-		public var itemSlot27:ItemSlotClass;
-		public var itemSlot28:ItemSlotClass;
-		public var itemSlot29:ItemSlotClass;
-		public var itemSlot30:ItemSlotClass;
-		public var itemSlot31:ItemSlotClass;
-		public var itemSlot32:ItemSlotClass;
-		public var itemSlot33:ItemSlotClass;
-		public var itemSlot34:ItemSlotClass;
-		public var itemSlot35:ItemSlotClass;
-		public var itemSlot36:ItemSlotClass;
-		public var itemSlot37:ItemSlotClass;
-		public var itemSlot38:ItemSlotClass;
-		public var itemSlot39:ItemSlotClass;
-		public var itemSlot40:ItemSlotClass;
-		public var itemSlot41:ItemSlotClass;
-		public var itemSlot42:ItemSlotClass;
-		public var itemSlot43:ItemSlotClass;
-		public var itemSlot44:ItemSlotClass;
-		public var itemSlot45:ItemSlotClass;
-		public var itemSlot46:ItemSlotClass;
-		public var itemSlot47:ItemSlotClass;
-		public var itemSlot48:ItemSlotClass;
-		public var itemSlot49:ItemSlotClass;
-		public var itemSlot50:ItemSlotClass;
 		public var itemSlots:/*ItemSlotClass*/Array;
 
 		public var previouslyWornClothes:/*String*/Array = []; //For tracking achievement.
@@ -1740,7 +1643,7 @@ use namespace CoC;
 		public function carriedKnownCursedItems():/*ItemSlotClass*/Array {
 			var result:/*ItemSlotClass*/Array = [];
 			for each (var slot:ItemSlotClass in itemSlots) {
-				if (slot.unlocked && !slot.itype is IDynamicItem && (slot.itype as IDynamicItem).curseStatus == ItemConstants.CS_KNOWN_CURSED) result.push(slot);
+				if (slot.unlocked && !(slot.itype is IDynamicItem) && (slot.itype as IDynamicItem).curseStatus == ItemConstants.CS_KNOWN_CURSED) result.push(slot);
 			}
 			return result;
 		}

@@ -4001,7 +4001,7 @@ public class Camp extends NPCAwareContent{
 		//since this section is WIP anyway, let her be here too, lol
 		if (flags[kFLAGS.GOTTA_CAMP_THEM_ALL_MODE] < 2) addButton(11, "Activate", GottaCampThemALLOn).hint("Turn on 'Gotta Camp them ALL' Mode.");
 		if (flags[kFLAGS.GOTTA_CAMP_THEM_ALL_MODE] == 2) addButton(11, "Deactivate", GottaCampThemALLOff).hint("Turn off 'Gotta Camp them ALL' Mode.");
-		addButton(12, "Members", SparrableNPCsMenuCampNPCs)..hint("Enable or Disable Camp Followers from appearing.");
+		addButton(12, "Members", SparrableNPCsMenuCampNPCs).hint("Enable or Disable Camp Followers from appearing.");
 		addButton(13, "Others", SparrableNPCsMenuOthers).hint("Out of camp encounters only.");
 		addButton(14, "Back", campActions);
 	}
@@ -5022,7 +5022,7 @@ public class Camp extends NPCAwareContent{
 				.disableIf(!farmFound(), "Search the lake.", null, "???");
 		bd.add("Marae", maraeIsland)
 				.hint("Visit Marae's Island in the middle of the Lake.")
-				.disableIf(flags[kFLAGS.MARAE_ISLAND] <= 0, "Search the lake on the boat.", null, "???")
+				.disableIf(flags[kFLAGS.MARAE_ISLAND] <= 0, "Search the lake on the boat.", null, "???");
 		// Row 3 - places/NPCs 6-10
 		bd.add("Salon", SceneLib.mountain.salon.salonGreeting)
 				.hint("Visit the salon for hair services.")

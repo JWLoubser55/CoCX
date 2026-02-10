@@ -3577,7 +3577,7 @@ public class MagicSpecials extends BaseCombatContent {
 
 	public function WinterClaws():void {
 		clearOutput();
-		var WinterClawsDuration:Number = 10
+		var WinterClawsDuration:Number = 10;
 		//if (player.perkv1(IMutationsLib.HinezumiBurningBloodIM) >= 1) blazingBattleSpiritDuration += 1;
 		//if (player.perkv1(IMutationsLib.HinezumiBurningBloodIM) >= 2) blazingBattleSpiritDuration += 2;
 		//if (player.perkv1(IMutationsLib.HinezumiBurningBloodIM) >= 3) blazingBattleSpiritDuration += 7;

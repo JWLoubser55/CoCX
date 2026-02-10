@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
-    public class CaveWyrmLungsMutation extends IMutationPerkType
+public class CaveWyrmLungsMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Cave Wyrm Lungs";
-        }
+		public static const MNAME:String = "Cave Wyrm Lungs";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -64,7 +65,7 @@ import classes.Races;
         }
 
         public function CaveWyrmLungsMutation() {
-            super(mName + " IM", mName, SLOT_LUNGS, 3);
+            super(MNAME, SLOT_LUNGS, 3);
         }
         
     }

@@ -45,7 +45,7 @@ public class AntsScene extends BaseContent
             phyllaSprite();
 			outputText("While traversing an unfamiliar part of this desert wasteland, ");
 			if (player.cor > 75 && player.lust > 50) outputText(" looking for something to slake your unquenchable lusts, ");
-			outputText("you come across an abandoned merchant's cart.  The cart looks eerily disheveled, with a majority of its contents strewn about the sand.  Whoever or whatever deserted this thing did so in a hurry, and for seemingly no reason.")
+			outputText("you come across an abandoned merchant's cart.  The cart looks eerily disheveled, with a majority of its contents strewn about the sand.  Whoever or whatever deserted this thing did so in a hurry, and for seemingly no reason.");
             //add button to avoid savescumming
             outputText("Do you want to approach the cart <i>right now</i>, risking to attact demon's attention, or leave?\n\n");
             menu();

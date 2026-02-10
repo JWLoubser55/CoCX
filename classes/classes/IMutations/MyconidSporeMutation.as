@@ -4,16 +4,17 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Races;
 
-    public class MyconidSporeMutation extends IMutationPerkType
+public class MyconidSporeMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Myconid Spore";
-        }
+		public static const MNAME:String = "Myconid Spore";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -59,7 +60,7 @@ import classes.Races;
         }
 
         public function MyconidSporeMutation() {
-            super(mName + " IM", mName, SLOT_OVARIES, 4);
+            super(MNAME, SLOT_OVARIES, 4);
         }
 
     }

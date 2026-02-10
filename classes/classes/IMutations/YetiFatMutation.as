@@ -11,9 +11,10 @@ import classes.Races;
 
 public class YetiFatMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Yeti Fat";
-        }
+		public static const MNAME:String = "Yeti Fat";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -63,7 +64,7 @@ public class YetiFatMutation extends IMutationPerkType
         }
 
         public function YetiFatMutation() {
-            super(mName + " IM", mName, SLOT_FAT, 3);
+            super(MNAME, SLOT_FAT, 3);
         }
     }
 }

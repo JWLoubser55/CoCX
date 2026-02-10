@@ -89,7 +89,7 @@ public class BuffableStat implements IStat, Jsonable {
 	 *     max: default +Infinity;
 	 * }
 	 */
-	public function BuffableStat(host:Creature, name:String, options:*=null) {
+	public function BuffableStat(host:Creature, name:String, options:* =null) {
 		this._host = host;
 		this._name = name;
 		redefine(options);

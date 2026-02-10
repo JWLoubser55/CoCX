@@ -4,16 +4,16 @@
  */
 package classes.IMutations
 {
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
-import classes.Races;
 
-    public class MutationTemplate extends IMutationPerkType
+public class MutationTemplate extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "PerkName Here";
-        }
+		public static const MNAME:String = "PerkName Here";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -72,7 +72,7 @@ import classes.Races;
 
         public function MutationTemplate() {
             // replace SLOT_NONE with other SLOT_XXXX constant
-            super(mName + " IM", mName, SLOT_NONE, 3);
+            super(MNAME, SLOT_NONE, 3);
         }
 
     }

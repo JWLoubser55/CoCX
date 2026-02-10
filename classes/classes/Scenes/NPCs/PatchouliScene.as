@@ -668,7 +668,7 @@ public class PatchouliScene extends NPCAwareContent {
 		function giveHairDye():void {
 			var buttons:ButtonDataList = new ButtonDataList();
 			var current:String         = flags[kFLAGS.PATCHOULI_HAIR_COLOR];
-			var dyes:Vector.<HairDye>  = new <HairDye>[
+			var dyes:/*HairDye*/Array  = [
 				consumables.AUBURND, consumables.BLACK_D, consumables.BLOND_D, consumables.BLUEDYE,
 				consumables.BROWN_D, consumables.GRAYDYE, consumables.GREEN_D, consumables.ORANGDY,
 				consumables.PINKDYE, consumables.PURPDYE, consumables.RAINDYE, consumables.WHITEDY,

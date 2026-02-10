@@ -56,21 +56,14 @@ public class DynamicWeapon extends Weapon implements IDynamicItem {
 	
 	public function DynamicWeapon(id:String, params:Object) {
 		var parsedParams:Object = DynamicItems.loadCommonDynamicItemParams(params, Subtypes);
-		_subtypeId              = parsedParams.subtypeId;
-		_subtype                = parsedParams.subtype || {};
-		_quality                = parsedParams.quality;
-		_rarity                 = parsedParams.rarity;
-		_curseStatus            = parsedParams.curseStatus;
-		_cursed                 = parsedParams.cursed;
-		_identified             = parsedParams.identified;
-		_effects                = parsedParams.effects;
 		var shortName:String    = parsedParams.shortName;
 		var name:String         = parsedParams.name;
 		var longName:String     = parsedParams.longName;
 		var desc:String         = parsedParams.desc;
-		_effectDesc             = parsedParams.effectDesc;
 		var value:Number        = parsedParams.value;
 		var buffs:Object        = parsedParams.buffs;
+		var subtype:Object      = parsedParams.subtype || {};
+		var quality:int         = parsedParams.quality;
 		var verb:String         = subtype.verb;
 		var type:String         = subtype.type;
 		var size:int            = valueOr(subtype.size, WSZ_LARGE);
@@ -102,7 +95,16 @@ public class DynamicWeapon extends Weapon implements IDynamicItem {
 				size,
 				dual
 		);
-		
+		_subtypeId              = parsedParams.subtypeId;
+		_subtype                = subtype;
+		_quality                = quality;
+		_rarity                 = parsedParams.rarity;
+		_curseStatus            = parsedParams.curseStatus;
+		_cursed                 = parsedParams.cursed;
+		_identified             = parsedParams.identified;
+		_effects                = parsedParams.effects;
+		_effectDesc             = parsedParams.effectDesc;
+
 		DynamicItems.postConstruct(this, tags, buffs, itemEffects, qitemEffects, quality);
 	}
 	
