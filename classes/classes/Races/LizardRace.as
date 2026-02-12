@@ -64,14 +64,14 @@ public class LizardRace extends Race {
 				.faceType(Face.LIZARD, +1)
 				.earType(Ears.LIZARD, +1)
 				.eyeType(Eyes.LIZARD, +1)
-				.tailType(Tail.LIZARD, +1)
-				.armType(Arms.LIZARD, +1)
-				.legType(LowerBody.LIZARD, +1)
+				.tailType(Tail.LIZARD, +2)
+				.armType(Arms.LIZARD, +2)
+				.legType(LowerBody.LIZARD, +2)
 				.hornType(ANY(Horns.DRACONIC_X2,Horns.DRACONIC_X4_12_INCH_LONG), +1)
-				.skinCoatType(ANY(Skin.SCALES, Skin.AQUA_SCALES, Skin.DRAGON_SCALES), +1)
+				.skinCoatType(Skin.SCALES, +2)
 				.hasCockOfType(CockTypesEnum.LIZARD, +1)
-				.noWings(+4)
-				.hasPerk(PerkLib.LizanRegeneration, +2)
+				.noWings(+1)
+				.hasPerk(PerkLib.LizanRegeneration, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addBloodline(PerkLib.LizardsDescendant, PerkLib.BloodlineLizard);
