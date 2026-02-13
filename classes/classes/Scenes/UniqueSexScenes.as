@@ -680,8 +680,8 @@ public class UniqueSexScenes extends BaseContent
 			outputText("\n\nYou cum green, your fluids dripping from your partner and tainting the ground beneath into a small pool of defiled fluid as you draw in whatever remains of your victim's now empty brain.");
 			if (player.buff("Brain melt").getValueOfStatBuff("int.mult") < (player.perkv1(PerkLib.MindbreakerBrain1toX)*10)){
 				player.buff("Brain melt").addStat("int.mult",0.05);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp("int");
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp("int");
 			}
 			player.sexReward("no");
 			statScreenRefresh();
@@ -697,33 +697,33 @@ public class UniqueSexScenes extends BaseContent
 			switch (statconv) {
 				case 0:
 					player.buff("Convert").addStat("str.mult",0.05);
-					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-					CoC.instance.mainView.statsView.showStatUp("str");
+					CoC.instance.mainViewManager.refreshStats();
+					CoC.instance.mainViewManager.showStatUp("str");
 					break;
 				case 1:
 					player.buff("Convert").addStat("tou.mult",0.05);
-					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-					CoC.instance.mainView.statsView.showStatUp("tou");
+					CoC.instance.mainViewManager.refreshStats();
+					CoC.instance.mainViewManager.showStatUp("tou");
 					break;
 				case 2:
 					player.buff("Convert").addStat("spe.mult",0.05);
-					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-					CoC.instance.mainView.statsView.showStatUp("spe");
+					CoC.instance.mainViewManager.refreshStats();
+					CoC.instance.mainViewManager.showStatUp("spe");
 					break;
 				case 3:
 					player.buff("Convert").addStat("int.mult",0.05);
-					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-					CoC.instance.mainView.statsView.showStatUp("int");
+					CoC.instance.mainViewManager.refreshStats();
+					CoC.instance.mainViewManager.showStatUp("int");
 					break;
 				case 4:
 					player.buff("Convert").addStat("wis.mult",0.05);
-					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-					CoC.instance.mainView.statsView.showStatUp("wis");
+					CoC.instance.mainViewManager.refreshStats();
+					CoC.instance.mainViewManager.showStatUp("wis");
 					break;
 				case 5:
 					player.buff("Convert").addStat("lib.mult",0.05);
-					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-					CoC.instance.mainView.statsView.showStatUp("lib");
+					CoC.instance.mainViewManager.refreshStats();
+					CoC.instance.mainViewManager.showStatUp("lib");
 					break;
 			}
 			player.sexReward("no");

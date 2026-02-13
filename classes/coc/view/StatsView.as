@@ -10,6 +10,9 @@ import classes.Stats.StatUtils;
 import classes.internals.Utils;
 
 import coc.model.TimeModel;
+import coc.view.NewStatsView;
+
+import flash.display.DisplayObject;
 
 import flash.events.MouseEvent;
 import flash.text.TextField;
@@ -34,6 +37,14 @@ public class StatsView extends Block {
 		size:18
 	};
 
+
+	private var newStatsView:NewStatsView;
+	private var oldStatsView:Block;
+	private var corner:CornerStatsView;
+	private var _useNewStatsView:Boolean = false;
+	private var toggleButton:CoCButton;
+	// OLD statview
+	// ============
 	private var sideBarBG:BitmapDataSprite;
 	private var nameText:TextField;
 	private var coreStatsText:TextField;
@@ -58,7 +69,6 @@ public class StatsView extends Block {
 
 	private var col1:Block;
 	private var col2:Block;
-	private var corner:CornerStatsView;
 
 	public function StatsView(mainView:MainView, cornerStatsView:CornerStatsView) {
 		super({
@@ -67,8 +77,30 @@ public class StatsView extends Block {
 			width: MainView.STATBAR_W,
 			height: MainView.STATBAR_H
 		});
+		this.newStatsView = new NewStatsView();
+		this.newStatsView.visible = false;
+		this.addElement(this.newStatsView);
+
+		const o:Block = new Block({
+			x    : 0,
+			y    : 0,
+			width: MainView.STATBAR_W,
+			height: MainView.STATBAR_H
+		});
+		o.visible = false;
+		this.oldStatsView = o;
+		this.addElement(o);
+
 		this.corner = cornerStatsView;
-		sideBarBG     = addBitmapDataSprite({
+		this.toggleButton = new CoCButton({
+			x: MainView.STATBAR_W - MainView.BTN_H - 1,
+			y: 1,
+			square: true
+		});
+		this.addElement(toggleButton);
+
+		// Populate oldStatsView;
+		sideBarBG     = o.addBitmapDataSprite({
 			x:0,y:0,
 			width: MainView.STATBAR_W,
 			height: MainView.STATBAR_H,
@@ -77,14 +109,14 @@ public class StatsView extends Block {
 			borderWidth: 1,
 			borderRadius: 2
 		});
-		nameText      = addTextField({
+		nameText      = o.addTextField({
 			x:0,y:0,
 			width: MainView.STATBAR_W,
 			defaultTextFormat: Utils.extend({},LABEL_FORMAT,{
 				align:TextFormatAlign.CENTER
 			})
 		});
-		addElement(col1 = new Block({
+		o.addElement(col1 = new Block({
 			x: 0,
 			y: 20,
 			width: MainView.STATBAR_COL_W,
@@ -97,7 +129,7 @@ public class StatsView extends Block {
 				gap: 1
 			}
 		}));
-		addElement(col2 = new Block({
+		o.addElement(col2 = new Block({
 			x: MainView.STATBAR_COL_W,
 			y: 20,
 			width: MainView.STATBAR_COL_W,
@@ -199,10 +231,18 @@ public class StatsView extends Block {
 			if (e) allStats.push(e);
 		}
 	}
+	private function toggleClick():void {
+		this.useNewStatsView = !this.useNewStatsView;
+	}
 	override public function invalidateLayout():void {
 		super.invalidateLayout();
-		if (col1) col1.invalidateLayout();
-		if (col2) col2.invalidateLayout();
+		if (_useNewStatsView) {
+			if (newStatsView) this.newStatsView.invalidateLayout();
+		} else {
+			if (oldStatsView) this.oldStatsView.invalidateLayout();
+			if (col1) col1.invalidateLayout();
+			if (col2) col2.invalidateLayout();
+		}
 		if (corner) corner.invalidateLayout();
 	}
 	public function show():void {
@@ -213,13 +253,32 @@ public class StatsView extends Block {
 		this.visible = false;
 	}
 
-	
+
+	public function get useNewStatsView():Boolean {
+		return _useNewStatsView;
+	}
+
+	public function set useNewStatsView(value:Boolean):void {
+		if (_useNewStatsView != value) {
+			_useNewStatsView = value;
+			this.oldStatsView.visible = !value;
+			this.newStatsView.visible = value;
+			refreshStats();
+		}
+	}
+
 	override public function set visible(value:Boolean):void {
 		if (visible != value) {
 			for each (var sb:StatBar in allStats) {
 				sb.animate = value && (CoC.instance.flags[kFLAGS.STATBAR_ANIMATIONS] == 0);
 			}
+			if (_useNewStatsView) {
+				this.newStatsView.visible = value;
+			} else {
+				this.oldStatsView.visible = value;
+			}
 		}
+		this.toggleButton.show("",this.toggleClick).icon("Back");
 		super.visible = value;
 		if (corner) corner.visible = visible;
 	}
@@ -262,17 +321,17 @@ public class StatsView extends Block {
 			case 'cor':
 				return corBar;
 			case 'hp':
-				return hpBar;
+				return _useNewStatsView ? newStatsView.hpBar : hpBar;
 			case 'wrath':
-				return wrathBar;
+				return _useNewStatsView ? newStatsView.wrathBar : wrathBar;
 			case 'lust':
-				return lustBar;
+				return _useNewStatsView ? newStatsView.lustBar : lustBar;
 			case 'fatigue':
-				return fatigueBar;
+				return _useNewStatsView ? newStatsView.fatigueBar : fatigueBar;
 			case 'mana':
-				return manaBar;
+				return _useNewStatsView ? newStatsView.manaBar : manaBar;
 			case 'soulforce':
-				return soulforceBar;
+				return _useNewStatsView ? newStatsView.soulforceBar : soulforceBar;
 			case 'hunger':
 				return hungerBar;
 			case 'level':
@@ -304,7 +363,13 @@ public class StatsView extends Block {
 		hungerBar.visible = show;
 		invalidateLayout();
 	}
-	public function refreshStats(game:CoC):void {
+	public function refreshStats():void {
+		if (_useNewStatsView) {
+			newStatsView.refreshAll();
+			refreshCornerStats();
+			return;
+		}
+		const game:CoC = CoC.instance;
 		var player:Player            = game.player;
 		nameText.htmlText     = "<b>" + player.short + "</b>";
 		strBar.maxValue       = player.strStat.max;
@@ -350,6 +415,13 @@ public class StatsView extends Block {
 			hungerBar.statName = 'Satiety:';
 		}
 
+		refreshCornerStats();
+		invalidateLayout();
+	}
+
+	public function refreshCornerStats():void {
+		const game:CoC = CoC.instance;
+		const player:Player = game.player;
 		corner.advancementText.htmlText = "<b>Advancement</b>";
 		corner.levelBar.value           = player.level;
 		if (player.negativeLevel) corner.levelBar.valueText = "(-" + player.negativeLevel + ") " + player.level;
@@ -377,17 +449,17 @@ public class StatsView extends Block {
 			ampm = hours < 12 ? "am" : "pm";
 		}
 		corner.timeText.htmlText = "<u>Days Passed: " + game.model.time.days + "</u>\n"
-			+ (CoC.instance.model.time.useRealDate() ? '' : '<u>Date: ' + TimeModel.formatDate(CoC.instance.model.time.date) + '</u>\n')
-			+ "Time: " + hrs + ":" + minutesDisplay + ampm;
+				+ (CoC.instance.model.time.useRealDate() ? '' : '<u>Date: ' + TimeModel.formatDate(CoC.instance.model.time.date) + '</u>\n')
+				+ "Time: " + hrs + ":" + minutesDisplay + ampm;
 		corner.debugBuildVersion.htmlText = "CoCX: " + CoC.instance.debugGameVer +
 				", NG: "+ CoC.instance.flags[kFLAGS.NEW_GAME_PLUS_LEVEL];
-
-		invalidateLayout();
 	}
 
 	public function setTheme(type:int, font:String):void {
 		var style:* = MainView.Themes[type];
 		if (!style) return;
+		newStatsView.setTheme(type, font);
+		// TODO subscribe elements globally on ThemeChangeEvent?
 		sideBarBG.borderColor = style.statBorderColor;
 		sideBarBG.fillColor = style.statGlass;
 		sideBarBG.fillAlpha = style.statGlassAlpha;
@@ -414,36 +486,39 @@ public class StatsView extends Block {
 		}
 	}
 
-	private function hoverStat(statname:String, event:MouseEvent):void {
+	public static function hoverStat(statname:String, event:MouseEvent):void {
 		var player:Player = CoC.instance.player;
 		switch (event.type) {
 			case MouseEvent.ROLL_OVER:
+				var text:String;
 				var astat:IStat = player.statStore.findStat(statname);
 				var isPositiveStat:Boolean = true;
-				var bar:StatBar = event.target as StatBar;
+				var bar:DisplayObject = event.target as DisplayObject;
 				if (astat is BuffableStat) {
+					var displayName:String = StatUtils.nameOfStat(statname);
 					var stat:BuffableStat = astat as BuffableStat;
 					if (!stat) return;
 					if (!bar) return;
 					if (statname == "sens" || statname == "cor" || statname == "minlust") isPositiveStat = false;
 					if (statname == "minlust") {
 						var lustValue:String = (CoC.instance.flags[kFLAGS.LUST_STATBAR_PERCENTAGE])? "Lust: " +
-							 Utils.formatNumber(Math.floor(player.lust)) + (bar.showMax ? '/' + Utils.formatNumber(player.maxLust()) : '') + "\n": "";
-						var text:String = lustValue + StatUtils.describeBuffs(stat, false, isPositiveStat);
+							 Utils.formatNumber(Math.floor(player.lust)) + '/' + Utils.formatNumber(player.maxLust()) + "\n": "";
+						text = lustValue + StatUtils.describeBuffs(stat, false, isPositiveStat);
 						player.listMinLustMultiBuffs();
 						text += StatUtils.describeBuffs(player.minLustXStat, true, isPositiveStat);
 						CoC.instance.mainView.toolTipView.showForElement(
 								bar,
-								bar.statName,
+								displayName,
 								text);
 					}
 					else {
 						CoC.instance.mainView.toolTipView.showForElement(
 								bar,
-								bar.statName,
+								displayName,
 								StatUtils.describeBuffs(stat, false, isPositiveStat));
 					}
 				} else if (astat is PrimaryStat) {
+					displayName = StatUtils.nameOfStat(statname);
 					var primStat:PrimaryStat = astat as PrimaryStat;
 					if (!primStat) return;
 					if (statname == "sens" || statname == "cor") isPositiveStat = false;
@@ -456,17 +531,53 @@ public class StatsView extends Block {
 								"" + StatUtils.describeBuffs(primStat.bonus, false, isPositiveStat) + "" +
 								"" + StatUtils.describeBuffs(primStat.mult, true, isPositiveStat) + "";
 					}
-					CoC.instance.mainView.toolTipView.showForElement(bar,bar.statName,s);
-				} else if (statname == "hp") {
+					CoC.instance.mainView.toolTipView.showForElement(bar,displayName,s);
+				} else if (statname == "cor") {
 					if (!bar) return;
-					if (!CoC.instance.flags[kFLAGS.HP_STATBAR_PERCENTAGE]) return;
-					var hpText:String = "HP: " + Utils.formatNumber(Math.floor(player.HP)) + (bar.showMax ? '/' + Utils.formatNumber(player.maxHP()) : '');
-					CoC.instance.mainView.toolTipView.showForElement(bar,bar.statName,hpText);
+					text = "Corruption: " + Utils.formatNumber(Math.floor(player.cor)) + '/100';
+					CoC.instance.mainView.toolTipView.showForElement(bar,"Corruption",text);
+				}  else if (statname == "hp") {
+					if (!bar) return;
+					text = "HP: " + Utils.formatNumber(Math.floor(player.HP)) + '/' + Utils.formatNumber(player.maxHP());
+					text+="\n"+StatUtils.describeBuffs(player.maxHpBaseStat, false);
+					text += "\n" + StatUtils.describeBuffs(player.maxHpMultStat, true);
+					CoC.instance.mainView.toolTipView.showForElement(bar,"HP",text);
+				} else if (statname == "lust") {
+					if (!bar) return;
+					text = "Lust: " + Utils.formatNumber(Math.floor(player.lust)) + '/' + Utils.formatNumber(player.maxLust());
+					text+="\n"+StatUtils.describeBuffs(player.maxLustBaseStat, false);
+					text += "\n" + StatUtils.describeBuffs(player.maxLustMultStat, true);
+					text += "\n\n<b>Min Lust: "+player.minLust()+"</b>\n"
+					text += StatUtils.describeBuffs(player.minLustXStat, true, false);
+					CoC.instance.mainView.toolTipView.showForElement(bar,"Lust",text);
 				} else if (statname == "wrath") {
 					if (!bar) return;
-					if (!CoC.instance.flags[kFLAGS.WRATH_STATBAR_PERCENTAGE]) return;
-					var wrathText:String = "Wrath: " + Utils.formatNumber(Math.floor(player.wrath)) + (bar.showMax ? '/' + Utils.formatNumber(player.maxWrath()) : '');
-					CoC.instance.mainView.toolTipView.showForElement(bar,bar.statName,wrathText);
+					text = "Wrath: " + Utils.formatNumber(Math.floor(player.wrath)) + '/' + Utils.formatNumber(player.maxWrath())+"\n";
+					text += "\n" + StatUtils.describeBuffs(player.maxWrathBaseStat, false);
+					text += "\n" + StatUtils.describeBuffs(player.maxWrathMultStat, true);
+					CoC.instance.mainView.toolTipView.showForElement(bar,"Wrath",text);
+				} else if (statname == "mana") {
+					if (!bar) return;
+					text = "Mana: " + Utils.formatNumber(Math.floor(player.mana)) + '/' + Utils.formatNumber(player.maxMana())+"\n";
+					text += "\n" + StatUtils.describeBuffs(player.maxManaBaseStat, false);
+					text += "\n" + StatUtils.describeBuffs(player.maxManaMultStat, true);
+					CoC.instance.mainView.toolTipView.showForElement(bar,"Mana",text);
+				} else if (statname == "fatigue") {
+					if (!bar) return;
+					text = "Fatigue: " + Utils.formatNumber(Math.floor(player.fatigue)) + '/' + Utils.formatNumber(player.maxFatigue())+"\n";
+					text += "\n" + StatUtils.describeBuffs(player.maxFatigueBaseStat, false);
+					text += "\n" + StatUtils.describeBuffs(player.maxFatigueMultStat, true);
+					CoC.instance.mainView.toolTipView.showForElement(bar,"Fatigue",text);
+				} else if (statname == "soulforce") {
+					if (!bar) return;
+					text = "Soulforce: " + Utils.formatNumber(Math.floor(player.soulforce)) + '/' + Utils.formatNumber(player.maxSoulforce())+"\n";
+					text += "\n" + StatUtils.describeBuffs(player.maxSfBaseStat, false);
+					text += "\n" + StatUtils.describeBuffs(player.maxSfMultStat, true);
+					CoC.instance.mainView.toolTipView.showForElement(bar,"Soulforce",text);
+				} else if (statname == "hunger") {
+					if (!bar) return;
+					text = "Satiety: " + Utils.formatNumber(Math.floor(player.hunger)) + '/' + Utils.formatNumber(player.maxHunger())+"\n";
+					CoC.instance.mainView.toolTipView.showForElement(bar,"Satiety",text);
 				}
 				break;
 			case MouseEvent.ROLL_OUT:

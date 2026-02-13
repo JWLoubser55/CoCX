@@ -11915,10 +11915,10 @@ public class Combat extends BaseContent {
         if (mod > 0 && (player.hasStatusEffect(StatusEffects.AlterBindScroll3) || player.hasStatusEffect(StatusEffects.AlterBindScroll5) || player.hasPerk(PerkLib.Undeath))) return;
 		else player.fatigue += mod;
         if (mod < 0) {
-            mainView.statsView.showStatUp('fatigue');
+            showStatUp('fatigue');
         }
         if (mod > 0) {
-            mainView.statsView.showStatDown('fatigue');
+            showStatDown('fatigue');
         }
         dynStats("lus", 0, "scale", false); //Force display fatigue up/down by invoking zero lust change.
         if (player.fatigue > player.maxOverFatigue()) player.fatigue = player.maxOverFatigue();
@@ -12063,7 +12063,7 @@ public class Combat extends BaseContent {
                 if (player.XP > (player.requiredXP()*3)) player.XP = (player.requiredXP()*3);
             }
         }
-        mainView.statsView.showStatUp('xp');
+	    mainViewManager.showStatUp('xp');
         dynStats("lust", 0, "scale", false); //Forces up arrow.
     }
 
@@ -13304,13 +13304,13 @@ public class Combat extends BaseContent {
                 outputText("You negate the effects of the drider incubus’ venom with your "+(player.perkv1(IMutationsLib.HumanMetabolismIM) >= 1 ? "body's detoxification abilities":"knowledge of medicine")+"!\n\n");
                 player.statStore.removeBuffs("Poison");
                 player.removeStatusEffect(StatusEffects.DriderIncubusVenom);
-                CoC.instance.mainView.statsView.showStatUp('str');
+                CoC.instance.mainViewManager.showStatUp('str');
             } else {
                 player.addStatusValue(StatusEffects.DriderIncubusVenom, 1, -1);
                 if (player.statusEffectv1(StatusEffects.DriderIncubusVenom) <= 0) {
                     player.statStore.removeBuffs("Poison");
                     player.removeStatusEffect(StatusEffects.DriderIncubusVenom);
-                    CoC.instance.mainView.statsView.showStatUp('str');
+                    CoC.instance.mainViewManager.showStatUp('str');
                     outputText("The drider incubus’ venom wanes, the effects of the poision weakening as strength returns to your limbs!\n\n");
                 } else {
                     outputText("The demonic drider managed to bite you, infecting you with his strength-draining poison!\n\n");
@@ -18371,7 +18371,7 @@ public function activateSwordIntentAura2():void {
 	temp1 = Math.round(temp1);
 	var oldHPratio:Number = player.hp100/100;
 	tempSpe = temp1;
-	mainView.statsView.showStatUp('spe');
+	showStatUp('spe');
 	player.buff("SwordIntentAura").addStats({spe:tempSpe}).withText("Sword Intent Aura").combatPermanent();
 	player.HP = oldHPratio*player.maxHP();
 	statScreenRefresh();
@@ -18396,7 +18396,7 @@ public function activatePsychoBarrier():void {
 	temp1 = Math.round(temp1);
 	var oldHPratio:Number = player.hp100/100;
 	tempTou = temp1;
-	mainView.statsView.showStatUp('tou');
+	showStatUp('tou');
 	player.buff("PsychoBarrier").addStats({tou:tempTou}).withText("Psycho-Barrier").combatPermanent();
 	player.HP = oldHPratio*player.maxHP();
 	statScreenRefresh();
@@ -19450,9 +19450,9 @@ public function assumeAsuraForm007():void {
     tempStr = temp1;
     tempTou = temp2;
     tempSpe = temp3;
-    mainView.statsView.showStatUp('str');
-    mainView.statsView.showStatUp('tou');
-    mainView.statsView.showStatUp('spe');
+	mainViewManager.showStatUp('str');
+	mainViewManager.showStatUp('tou');
+	mainViewManager.showStatUp('spe');
     player.buff("AsuraForm").addStats({str:tempStr,tou:tempTou,spe:tempSpe}).withText("Asura Form").combatPermanent();
     player.HP = oldHPratio*player.maxHP();
 }
@@ -19712,7 +19712,7 @@ public function noLimiterState():void {
     clearOutput();
 		outputText("No Limiter on!\n\n");
     var tempStr:Number = player.str;
-    mainView.statsView.showStatUp('str');
+    showStatUp('str');
 		player.buff("NoLimiterState").addStats({"str":tempStr}).withText("No Limiter").combatPermanent();
     statScreenRefresh();
     menu();

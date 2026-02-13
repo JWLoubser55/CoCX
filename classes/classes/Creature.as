@@ -477,8 +477,8 @@ public class Creature extends Utils
 				if (stat.train.value > limit){
 					stat.train.value = limit;
 				}
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp(statName);
 				return true;
 			}
 			return false;
@@ -560,12 +560,12 @@ public class Creature extends Utils
 			if (this.hasPerk(PerkLib.ZenjisInfluence2)) power *= 0.60;
 			if (statName == "sens" || statName == "cor") {
 				statStore.addBuff(statName, power, tierPower, {text: tierPower});
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp(statName);
 			} else {
 				statStore.addBuff(statName, -power, tierPower, {text: tierPower});
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatDown(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatDown(statName);
 			}
 		}
 
@@ -603,13 +603,13 @@ public class Creature extends Utils
 				if (current > 0) {
 					if (power >= current) {
 						stat.removeBuff(tierPower);
-						CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-						CoC.instance.mainView.statsView.showStatDown(statName);
+						CoC.instance.mainViewManager.refreshStats();
+						CoC.instance.mainViewManager.showStatDown(statName);
 						change = current;
 					} else if (power < current) {
 						stat.addOrIncreaseBuff(tierPower, -power);
-						CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-						CoC.instance.mainView.statsView.showStatUp(statName);
+						CoC.instance.mainViewManager.refreshStats();
+						CoC.instance.mainViewManager.showStatUp(statName);
 						change = power;
 					}
 				}
@@ -618,13 +618,13 @@ public class Creature extends Utils
 				if (current < 0) {
 					if (power >= -current) {
 						stat.removeBuff(tierPower);
-						CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-						CoC.instance.mainView.statsView.showStatUp(statName);
+						CoC.instance.mainViewManager.refreshStats();
+						CoC.instance.mainViewManager.showStatUp(statName);
 						change = -current;
 					} else if (power < -current) {
 						stat.addOrIncreaseBuff(tierPower, power);
-						CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-						CoC.instance.mainView.statsView.showStatDown(statName);
+						CoC.instance.mainViewManager.refreshStats();
+						CoC.instance.mainViewManager.showStatDown(statName);
 						change = power;
 					}
 				}

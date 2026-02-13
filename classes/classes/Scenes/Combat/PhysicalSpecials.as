@@ -8250,7 +8250,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum) * limit1);
 		if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
 		var oldHPratio:Number    = player.hp100 / 100;
-		mainView.statsView.showStatUp('spe');
+		showStatUp('spe');
 		player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
 		player.HP = oldHPratio * player.maxHP();
 	}

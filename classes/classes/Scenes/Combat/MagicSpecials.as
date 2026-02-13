@@ -3674,9 +3674,9 @@ public class MagicSpecials extends BaseCombatContent {
 			tempSpe += Math.round(player.speStat.core.value * 0.1);
 		}
 		tempStr *= 2;
-		mainView.statsView.showStatUp('str');
-		mainView.statsView.showStatUp('tou');
-		mainView.statsView.showStatUp('spe');
+		showStatUp('str');
+		showStatUp('tou');
+		showStatUp('spe');
 		if (player.hasPerk(PerkLib.BerserkerArmor) || (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3 && player.racialScore(Races.HUMAN) > 17)) {
 			var tempB:Number = 1.5;
 			if (player.hasPerk(PerkLib.BerserkerArmor) && player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) {
@@ -3798,9 +3798,9 @@ public class MagicSpecials extends BaseCombatContent {
 		tempStr = temp1;
 		tempTou = temp2;
 		tempSpe = temp3;
-		mainView.statsView.showStatUp('str');
-		mainView.statsView.showStatUp('tou');
-		mainView.statsView.showStatUp('spe');
+		showStatUp('str');
+		showStatUp('tou');
+		showStatUp('spe');
 		player.buff("CrinosShape").addStats({str:tempStr,tou:tempTou,spe:tempSpe}).withText("Crinos Shape").combatPermanent();
 		player.HP = oldHPratio*player.maxHP();
 	}
@@ -3819,8 +3819,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var oldHPratio:Number = player.hp100/100;
 		tempStr += player.strStat.totalCore;
 		tempSpe += player.speStat.totalCore;
-		mainView.statsView.showStatUp('str');
-		mainView.statsView.showStatUp('spe');
+		showStatUp('str');
+		showStatUp('spe');
 		player.buff("Atavism").addStats({str:tempStr,spe:tempSpe}).withText("Atavism State").combatPermanent();
 		player.HP = oldHPratio*player.maxHP();
 		statScreenRefresh();
@@ -3874,7 +3874,7 @@ public class MagicSpecials extends BaseCombatContent {
 		temp1 = Math.round(temp1);
 		var oldHPratio:Number = player.hp100/100;
 		tempSpe = temp1;
-		mainView.statsView.showStatUp('spe');
+		showStatUp('spe');
 		player.buff("FoxflamePelt").addStats({spe:tempSpe}).withText("Foxflame Pelt").combatPermanent();
 		player.HP = oldHPratio * player.maxHP();
 		if (monster is Draculina && player.hasStatusEffect(StatusEffects.MonsterInvisible)) player.removeStatusEffect(StatusEffects.MonsterInvisible);

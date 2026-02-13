@@ -804,12 +804,12 @@ import coc.xxc.StoryContext;
 
 		protected function showStatDown(arg:String):void
 		{
-			CoC.instance.mainView.statsView.showStatDown(arg);
+			mainViewManager.showStatDown(arg);
 		}
 
 		protected function showStatUp(arg:String):void
 		{
-			CoC.instance.mainView.statsView.showStatUp(arg);
+			mainViewManager.showStatUp(arg);
 		}
 
 		protected function buttonTextIsOneOf(index:int, possibleLabels:Array):Boolean {

@@ -402,7 +402,7 @@ public class CoC extends MovieClip
         //Hide sprites
         mainView.hideSprite();
         //Hide up/down arrows
-        mainView.statsView.hideUpDown();
+        mainViewManager.hideUpDown();
         new Story("lib",rootStory,"monsters",true);
         execPostInit();
         loadStory();

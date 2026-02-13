@@ -1,6 +1,7 @@
 //The code that is responsible for managing MainView.
 package classes {
 import classes.GlobalFlags.kFLAGS;
+import classes.internals.Utils;
 
 import coc.view.BoundClip;
 import coc.view.MainView;
@@ -21,7 +22,7 @@ import flash.ui.Keyboard;
 import flash.utils.Timer;
 import flash.utils.getQualifiedClassName;
 
-public class MainViewManager extends BaseContent {
+public class MainViewManager extends Utils {
 	//Interface flags
 	public var registeredShiftKey:Boolean = false;
 
@@ -36,11 +37,36 @@ public class MainViewManager extends BaseContent {
 
 	}
 
+	private function get flags():DefaultDict {
+		return CoC.instance.flags;
+	}
+	private function get mainView():MainView {
+		return CoC.instance.mainView;
+	}
+	private function get player():Player {
+		return CoC.instance.player;
+	}
+
 	//------------
 	// SHOW/HIDE
 	//------------
+	public function showStatUp(statName:String):void {
+		mainView.statsView.showStatUp(statName);
+	}
+	public function showStatDown(statName:String):void {
+		mainView.statsView.showStatDown(statName);
+	}
+	public function hideUpDown():void {
+		mainView.statsView.hideUpDown();
+	}
 	public function darkThemeImpl():Boolean {
 		return darkThemes[flags[kFLAGS.BACKGROUND_STYLE]];
+	}
+	public function showLevelUp():void {
+		mainView.statsView.showLevelUp();
+	}
+	public function hideLevelUp():void {
+		mainView.statsView.hideLevelUp();
 	}
 
 	public function setTheme():void {
@@ -62,16 +88,22 @@ public class MainViewManager extends BaseContent {
 	//------------
 	// REFRESH
 	//------------
+	public function hungerBarVisible():Boolean {
+		return flags[kFLAGS.HUNGER_ENABLED] > 0 && flags[kFLAGS.URTA_QUEST_STATUS] != 0.75;
+	}
 	public function refreshStats():void {
-		if (flags[kFLAGS.HUNGER_ENABLED] > 0 && flags[kFLAGS.URTA_QUEST_STATUS] != 0.75) {
+		if (hungerBarVisible()) {
 			mainView.statsView.toggleHungerBar(true);
 		} else {
 			mainView.statsView.toggleHungerBar(false);
 		}
 		//Set theme!
 		setTheme();
-        mainView.statsView.refreshStats(CoC.instance);
+		mainView.statsView.refreshStats();
     }
+	public function showStats():void {
+		mainView.statsView.show();
+	}
 	public function updateCharviewIfNeeded():void {
 		if (flags[kFLAGS.CHARVIEW_STYLE] != 0) { // if not display always
 			hidePlayerDoll();
@@ -90,7 +122,7 @@ public class MainViewManager extends BaseContent {
 			mainView.charView.x = 0;
 			mainView.charView.y = 0;
 			BoundClip.nextContent = mainView.charView;
-			outputText("<img src='coc.view::BoundClip' align='left' id='charview'/>");
+			EngineCore.outputText("<img src='coc.view::BoundClip' align='left' id='charview'/>");
 		} else {
 			// display in the corner
 			mainView.placeCharviewAtRight();
@@ -178,12 +210,12 @@ public class MainViewManager extends BaseContent {
 
 	public function keyPressed(event:KeyboardEvent):void {
 		if (event.keyCode == Keyboard.SHIFT) {
-			shiftKeyDown = true;
+			flags[kFLAGS.SHIFT_KEY_DOWN] = true;
 		}
 	}
 	public function keyReleased(event:KeyboardEvent):void {
 		if (event.keyCode == Keyboard.SHIFT) {
-			shiftKeyDown = false;
+			flags[kFLAGS.SHIFT_KEY_DOWN] = false;
 		}
 	}
 	public function traceSelf():String {

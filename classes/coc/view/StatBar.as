@@ -32,12 +32,15 @@ public class StatBar extends Block {
 			hasGauge   : true,
 			hasBar     : true,
 			hasMinBar  : false,
+			hasArrow   : true,
 			barAlpha   : 0.4,
 			barHeight  : 1.0, // relative to height
 			barColor   : '#0000ff',
 			minBarColor: '#8080ff',
 			bgColor    : null,
-			percentage : false
+			percentage : false,
+			numberStyle: 'kmb',
+			labelAlign : 'right'
 		};
 	}
 	private static var DEFAULT_OPTIONS:Object     = factoryReset();
@@ -49,6 +52,7 @@ public class StatBar extends Block {
 	}
 
 	private var _bar:BitmapDataSprite;
+	private var _gauge:BitmapDataSprite;
 	private var _minBar:BitmapDataSprite;
 	private var _bgBar:BitmapDataSprite;
 	private var _arrowUp:BitmapDataSprite;
@@ -62,17 +66,22 @@ public class StatBar extends Block {
 	private var _tween:SimpleTween;
 	private var _animate:Boolean;
 	private var _percentage:Boolean;
+	private var _numberStyle:String;
+	private var _hasArrow:Boolean;
+	private var _initialized:Boolean; // is in constructor
 
 	private function get arrowSz():Number {
-		return this.height-2;
+		return _hasArrow ? this.height-2 : 0;
 	}
 
 	public function StatBar(options:Object) {
 		super();
+		_initialized = false;
 		options             = Utils.extend({},DEFAULT_OPTIONS, options);
+		_hasArrow = options['hasArrow'];
 		var myWidth:Number = options.width;
 		var myHeight:Number = options.height;
-		var arrowSz:Number  = myHeight - 2;
+		var arrowSz:Number  = _hasArrow ? myHeight - 2 : 0;
 		var barWidth:Number = myWidth - arrowSz - 2;
 		if (options.hasBar) {
 			var barX:Number = 1;
@@ -107,7 +116,7 @@ public class StatBar extends Block {
 			}
 			if (options.hasGauge) {
 				/*gauge=*/
-				addBitmapDataSprite({
+				_gauge = addBitmapDataSprite({
 					x          : 0,
 					y          : myHeight - 10,
 					width      : barWidth+2,
@@ -136,26 +145,29 @@ public class StatBar extends Block {
 				align: 'right'
 			}
 		});
-		_arrowUp    = addBitmapDataSprite({
-			bitmapClass: ArrowUp,
-			width      : arrowSz,
-			height     : arrowSz,
-			stretch    : true,
-			x          : myWidth - arrowSz - 1,
-			y          : 1,
-			visible    : false
-		});
-		_arrowDown  = addBitmapDataSprite({
-			bitmapClass: ArrowDown,
-			width      : arrowSz,
-			height     : arrowSz,
-			stretch    : true,
-			x          : myWidth - arrowSz - 1,
-			y          : 1,
-			visible    : false
-		});
+		if (_hasArrow) {
+			_arrowUp = addBitmapDataSprite({
+				bitmapClass: ArrowUp,
+				width: arrowSz,
+				height: arrowSz,
+				stretch: true,
+				x: myWidth - arrowSz - 1,
+				y: 1,
+				visible: false
+			});
+			_arrowDown = addBitmapDataSprite({
+				bitmapClass: ArrowDown,
+				width: arrowSz,
+				height: arrowSz,
+				stretch: true,
+				x: myWidth - arrowSz - 1,
+				y: 1,
+				visible: false
+			});
+		}
 		UIUtils.setProperties(this, options);
 		update();
+		_initialized = true;
 	}
 
 	public function get minValue():Number {
@@ -179,18 +191,33 @@ public class StatBar extends Block {
 			var valueStr:String = pValue.toFixed(1);
 			valueText = '' + valueStr + '%';
 		} else {
-			var bValue:String = Math.floor(value).toString();
-			var mValue:String = Math.floor(maxValue).toString();
+			var bValue:String;
+			var mValue:String;
+			switch (_numberStyle) {
+				case 'raw':{
+					bValue = Math.floor(value).toString();
+					mValue = Math.floor(maxValue).toString();
+					break;
+				}
+				case 'kmb': {
+					bValue = shortHandNumber(value);
+					mValue = shortHandNumber(maxValue);
+					break;
+				}
+				case 'comma': {
+					bValue = Utils.addComma(value);
+					mValue = Utils.addComma(maxValue);
+					break;
+				}
+			}
 			//if (value > 1000000) bValue = value.toPrecision(3);
 			//if (maxValue > 1000000) mValue = maxValue.toPrecision(3);
-			bValue = shortHandNumber(value);
-			mValue = shortHandNumber(maxValue);
-			
+
 			valueText = '' + bValue + (showMax ? '/' + mValue : '');
 		}
 	}
-	public function shortHandNumber(num:Number):String {
-		if (z == Number.MAX_VALUE || num == -Number.MAX_VALUE) return "INF";
+	public static function shortHandNumber(num:Number):String {
+		if (num == Number.MAX_VALUE || num == -Number.MAX_VALUE) return "INF";
 		num = Math.round(num);
 		var b0:Boolean = num < 0;
 		if (b0) num = 0 - num;
@@ -213,6 +240,13 @@ public class StatBar extends Block {
 		_value    = value;
 		renderValue();
 		update();
+	}
+	public function get numberStyle():String {
+		return _numberStyle;
+	}
+	public function set numberStyle(value:String):void {
+		_numberStyle = value;
+		renderValue();
 	}
 	public function get value():Number {
 		return _value;
@@ -246,6 +280,15 @@ public class StatBar extends Block {
 	public function set valueText(value:String):void {
 		if (_valueLabel) _valueLabel.text = value;
 	}
+	public function get labelAlign():String {
+		return _valueLabel ? _valueLabel.defaultTextFormat.align : 'right';
+	}
+	public function set labelAlign(value: String):void {
+		if (!_valueLabel) return;
+		const tf:TextFormat = _valueLabel.defaultTextFormat;
+		tf.align = value;
+		_valueLabel.defaultTextFormat = tf;
+	}
 	public function update():void {
 		if (_bar) {
 			_bar.width = maxValue > 0 ?
@@ -264,16 +307,18 @@ public class StatBar extends Block {
 		renderValue();
 	}
 	public function get isUp():Boolean {
-		return _arrowUp.visible;
+		return _arrowUp && _arrowUp.visible;
 	}
 	public function set isUp(value:Boolean):void {
+		if (!_arrowUp) return;
 		_arrowUp.visible = value;
 		if (value) _arrowDown.visible = false;
 	}
 	public function get isDown():Boolean {
-		return _arrowDown.visible;
+		return _arrowDown && _arrowDown.visible;
 	}
 	public function set isDown(value:Boolean):void {
+		if (!_arrowDown) return;
 		_arrowDown.visible = value;
 		if (value) _arrowUp.visible = false;
 	}
@@ -318,6 +363,68 @@ public class StatBar extends Block {
 	{
 		_percentage = value;
 		renderValue();
+	}
+
+
+	override public function get width():Number {
+		return super.width;
+	}
+	override public function set width(value:Number):void {
+		super.width = value;
+		if (_initialized) resizeStatBar();
+	}
+
+	override public function get height():Number {
+		return super.height;
+	}
+
+	override public function set height(value:Number):void {
+		super.height = value;
+		if (_initialized) resizeStatBar();
+	}
+
+	public function resizeStatBar():void {
+		var myWidth:Number = this.width;
+		var myHeight:Number = this.height;
+		var barWidth:Number = myWidth - arrowSz - 2;
+		var barHeight:Number = myHeight*1.0;
+		var barX:Number = 1;
+		var barY:Number = myHeight - barHeight;
+		if (_bgBar) {
+			_bgBar.x = barX;
+			_bgBar.y = barY;
+			_bgBar.width = barWidth;
+			_bgBar.height = barHeight
+		}
+		if (_bar) {
+			_bar.x = barX;
+			_bar.y = barY;
+			_bar.height = barHeight;
+		}
+		if (_gauge) {
+			_gauge.y = myHeight-10;
+			_gauge.width = barWidth + 2;
+		}
+		if (_nameLabel) {
+			_nameLabel.width = barWidth;
+			_nameLabel.height = myHeight-4;
+		}
+		if (_valueLabel) {
+			_valueLabel.y = myHeight-30;
+			_valueLabel.width = barWidth;
+			_valueLabel.height = 30;
+		}
+		if (_arrowUp) {
+			_arrowUp.width = arrowSz;
+			_arrowUp.height = arrowSz;
+			_arrowUp.x = myWidth-arrowSz-1;
+		}
+		if (_arrowDown) {
+			_arrowDown.width = arrowSz;
+			_arrowDown.height = arrowSz;
+			_arrowDown.x = myWidth-arrowSz-1;
+		}
+		update();
 	}
 }
 }

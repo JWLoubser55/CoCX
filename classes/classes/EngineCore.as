@@ -123,7 +123,7 @@ public class EngineCore {
             else {
                 if (display) HPChangeNotify(changeNum);
                 CoC.instance.player.HP += int(changeNum);
-                CoC.instance.mainView.statsView.showStatUp('hp');
+                CoC.instance.mainViewManager.showStatUp('hp');
                 // hpUp.visible = true;
             }
         }
@@ -132,12 +132,12 @@ public class EngineCore {
             if (CoC.instance.player.HP + changeNum <= minHP()) {
                 if (display) HPChangeNotify(changeNum);
                 CoC.instance.player.HP = minHP();
-                CoC.instance.mainView.statsView.showStatDown('hp');
+                CoC.instance.mainViewManager.showStatDown('hp');
             }
             else {
                 if (display) HPChangeNotify(changeNum);
                 CoC.instance.player.HP += changeNum;
-                CoC.instance.mainView.statsView.showStatDown('hp');
+                CoC.instance.mainViewManager.showStatDown('hp');
             }
         }
         CoC.instance.player.dynStats("lust", 0, "scale", false); //Workaround to showing the arrow.
@@ -682,7 +682,7 @@ public class EngineCore {
         if (!CoC.instance || !CoC.instance.player) return;
         Utils.Begin("engineCore", "statScreenRefresh");
         CoC.instance.mainViewManager.refreshStats();
-        CoC.instance.mainView.statsView.show();
+        CoC.instance.mainViewManager.showStats();
         if (CoC.instance.inCombat) {
             CoC.instance.mainView.monsterStatsView.refreshStats(CoC.instance);
             CoC.instance.mainView.monsterStatsView.show();
@@ -702,7 +702,6 @@ public class EngineCore {
      * Show the stats pane. (Name, stats and attributes)
      */
     public static function showStats():void {
-        CoC.instance.mainView.statsView.show();
         CoC.instance.mainViewManager.refreshStats();
         CoC.instance.mainViewManager.tweenInStats();
     }
@@ -800,10 +799,10 @@ public class EngineCore {
 
         for(var i:Number = 0; i< allStats.length; i++) {
             if (CoC.instance.player[allStats[i]] > CoC.instance.oldStats[allStatsOld[i]]) {
-                CoC.instance.mainView.statsView.showStatUp(allStats[i]);
+                CoC.instance.mainViewManager.showStatUp(allStats[i]);
             }
             if (CoC.instance.player[allStats[i]] < CoC.instance.oldStats[allStatsOld[i]]) {
-                CoC.instance.mainView.statsView.showStatDown(allStats[i]);
+                CoC.instance.mainViewManager.showStatDown(allStats[i]);
             }
         }
         Utils.End("engineCore", "showUpDown");

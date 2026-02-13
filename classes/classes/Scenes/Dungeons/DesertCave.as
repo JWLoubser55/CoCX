@@ -2348,7 +2348,7 @@ public class DesertCave extends DungeonAbstractContent
 				outputText("  \"<i>Your tale has the ring of truth to it, [name].  I am the Sand Mother of this coven, and it seems we are not enemies after all.  If you like I can instruct my daughters to let you pass through the sands unhindered.</i>\"  She spreads her arms graciously and asks, \"<i>Was there anything you would like to discuss?  It has been an age since I've had a new arrival to converse with.</i>\"\n\n(+200 XP)");
 				//(Award XP)
 				player.XP += 200;
-				mainView.statsView.showStatUp( 'xp' );
+				showStatUp( 'xp' );
 				dynStats("lust", 0, "scale", false); //Forces up arrow.
 				//xpUp.visible = true;
 				statScreenRefresh();
@@ -2409,7 +2409,7 @@ public class DesertCave extends DungeonAbstractContent
 			outputText("\n\n\"<i>Very well.  You are either not a demon agent or the most clever spy this side of Marae's Lake,</i>\" the regal enchantress admits, quietly fixing her hair.  \"<i>Either way, it seems I have no choice but to take you at your word until your actions prove otherwise.</i>\"  She finishes with her hair and idly folds her hands across her lap, which only serves to strain her silken robe tighter around her double-bust.");
 			outputText("\n\n\"<i>Is there something you would like to discuss, or aid you would request?  It has been a great deal of time since I have had the pleasure of discourse with an outsider.</i>\"");
 			player.XP += 200;
-			mainView.statsView.showStatUp( 'xp' );
+			showStatUp( 'xp' );
 			// xpUp.visible = true;
 			statScreenRefresh();
 			//(Set friendly)

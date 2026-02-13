@@ -89,7 +89,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			SceneLib.combat.cleanupAfterCombatImpl();
 		}
 		protected static function showStatDown(a:String):void{
-			CoC.instance.mainView.statsView.showStatDown(a);
+			CoC.instance.mainViewManager.showStatDown(a);
 		}
 		protected final function statScreenRefresh():void {
 			EngineCore.statScreenRefresh();
@@ -1726,7 +1726,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		protected const NO_DROP:WeightedDrop = new WeightedDrop();
 
 		public function isFullyInit():Boolean {
-			for each (var phase:Object in initsCalled) {
+			for each (var phase:Object in Utils.values(initsCalled)) {
 				if (phase is Boolean && !phase) return false;
 			}
 			return true;
@@ -4464,8 +4464,8 @@ import classes.Scenes.Combat.CombatAbilities;
 								var buff:Number = 1;
 								if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2
 								player.statStore.replaceBuffObject({'spe.mult':Math.round(speStat.mult.value)*buff}, 'Supercharged', { text: 'Supercharged!' });
-								CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-								CoC.instance.mainView.statsView.showStatUp('spe');
+								CoC.instance.mainViewManager.refreshStats();
+								CoC.instance.mainViewManager.showStatUp('spe');
 								outputText("\n\nYour body suddenly begins to generate a massive amount of electricity and the barely contained lightning uncontrollably starts surging left and right around you in short bursts as what's left of your sanity completely gets washed away by the supercharged state. ");
 							}
 							else {

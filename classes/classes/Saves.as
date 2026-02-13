@@ -2336,7 +2336,7 @@ public function loadGameObject(saveData:Object, slot:String = "VOID"):void
 		EventParser.badEnded = false; //reset bad end if we're going from it
 	}
 	game.isLoadingSave = false;
-	mainView.statsView.hide(); // to reset animations
+	EngineCore.hideStats();
 }
 
 public function unFuckSave():void

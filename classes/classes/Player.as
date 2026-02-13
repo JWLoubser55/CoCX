@@ -3036,7 +3036,7 @@ use namespace CoC;
 
 			if(display) SceneLib.combat.CommasForDigits(damage - returnDamage, false, "Absorbed ");
 
-			game.mainView.statsView.showStatDown('mana');
+			game.mainViewManager.showStatDown('mana');
 			dynStats("lus", 0);
 
 			return returnDamage;
@@ -3045,7 +3045,7 @@ use namespace CoC;
 				if (damage * magicmult > mana) mana = 0;
 				else mana -= (damage * magicmult);
 				if (display) SceneLib.combat.CommasForDigits(damage, false, "Absorbed ");
-				game.mainView.statsView.showStatDown('mana');
+				game.mainViewManager.showStatDown('mana');
 				dynStats("lus", 0); //Force display arrow.
 				return 0;
 			}
@@ -3054,7 +3054,7 @@ use namespace CoC;
 				damage -= partial;
 				if (display) SceneLib.combat.CommasForDigits(partial, false, "Absorbed ");
 				mana = 0;
-				game.mainView.statsView.showStatDown('mana');
+				game.mainViewManager.showStatDown('mana');
 				dynStats("lus", 0); //Force display arrow.
 				return damage;
 			}
@@ -3461,7 +3461,7 @@ use namespace CoC;
 					HP -= damage;
 					returnDamage = damage;
 
-					game.mainView.statsView.showStatDown('hp');
+					game.mainViewManager.showStatDown('hp');
 					dynStats("lus", 0); //Force display arrow.
 
 				}
@@ -5773,7 +5773,7 @@ use namespace CoC;
 					modThickness(maxThicknessCap(), weightChange);
 					hunger = maxHunger(); //don't mind overeating?
 				}
-				if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
+				if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp('hunger');
 				//game.dynStats("lus", 0, "scale", false);
 				if (nl) outputText("\n\n");
 				//Messages
@@ -5794,7 +5794,7 @@ use namespace CoC;
 				if (oldHunger >= 240) EngineCore.awardAchievement("Epic Glutton ", kACHIEVEMENTS.REALISTIC_EPIC_GLUTTON);
 				if (oldHunger >= 490) EngineCore.awardAchievement("Legendary Glutton ", kACHIEVEMENTS.REALISTIC_LEGENDARY_GLUTTON);
 				if (oldHunger >= 990) EngineCore.awardAchievement("Mythical Glutton ", kACHIEVEMENTS.REALISTIC_MYTHICAL_GLUTTON);
-				if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
+				if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp("hunger");
 				dynStats("lus", 0, "scale", false);
 				EngineCore.statScreenRefresh();
 			}
@@ -5803,10 +5803,10 @@ use namespace CoC;
 			var oldHunger:Number = hunger;
 			hunger += amnt;
 			if (hunger > maxHunger()) hunger = maxHunger();
-			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
+			if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp('hunger');
 			//game.dynStats("lus", 0, "scale", false);
 			if (nl) outputText("\n");
-			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
+			if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp("hunger");
 			dynStats("lus", 0, "scale", false);
 			EngineCore.statScreenRefresh();
 		}
@@ -5819,7 +5819,7 @@ use namespace CoC;
 			var oldHunger:Number = hunger;
 			hunger -= amnt;
 			if (hunger < 0) hunger = 0;
-			if (hunger < oldHunger) CoC.instance.mainView.statsView.showStatDown('hunger');
+			if (hunger < oldHunger) CoC.instance.mainViewManager.showStatDown('hunger');
 			dynStats("lus", 0, "scale", false);
 		}
 
@@ -6873,7 +6873,7 @@ use namespace CoC;
 			if (hasStatusEffect(StatusEffects.DriderIncubusVenom))
 			{
 				removeStatusEffect(StatusEffects.DriderIncubusVenom);
-				CoC.instance.mainView.statsView.showStatUp('str');
+				CoC.instance.mainViewManager.showStatUp('str');
 			}
 			if(CoC.instance.monster.hasStatusEffect(StatusEffects.Sandstorm)) CoC.instance.monster.removeStatusEffect(StatusEffects.Sandstorm);
 			if(hasStatusEffect(StatusEffects.Berzerking)) {
@@ -8196,9 +8196,9 @@ use namespace CoC;
 			var oldHunger:Number = hunger;
 			hunger += amnt;
 			if (hunger > maxHunger()) hunger = maxHunger();
-			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
+			if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp('hunger');
 			//game.dynStats("lus", 0, "scale", false);
-			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
+			if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp("hunger");
 			if (subtype == 4) dynStats("cor", 10);
 			else dynStats("lus", 0, "scale", false);
 			EngineCore.statScreenRefresh();
@@ -8600,8 +8600,8 @@ use namespace CoC;
             var addBonus:Number = bonus_sign * Math.min(Math.abs(bonus_sign * cap - current), Math.abs(bonus * 0.01));
             if (applyEffect) {
                 buff("Mutagen").addStat(statName + ".mult", addBonus);
-                CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-                CoC.instance.mainView.statsView.showStatUp(statName);
+                CoC.instance.mainViewManager.refreshStats();
+                CoC.instance.mainViewManager.showStatUp(statName);
             }
             return true;
 		}
@@ -8622,8 +8622,8 @@ use namespace CoC;
 			removeCurse(statName, bonus, -2);
 			if (buff("Alchemical").getValueOfStatBuff(""+statName+".mult") < aBCap){
 				buff("Alchemical").addStat(""+statName+".mult",0.01);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp(statName);
 			}
 		}
 
@@ -8634,8 +8634,8 @@ use namespace CoC;
 			removeCurse(statName, bonus, -2);
 			if (buff("Knowledge").getValueOfStatBuff(""+statName+".mult") < KBCap){
 				buff("Knowledge").addStat(""+statName+".mult",0.01);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp(statName);
 			}
 		}
 
@@ -8655,10 +8655,10 @@ use namespace CoC;
 				buff("Devoured Mind").addStat("int.mult",0.05);
 				buff("Devoured Mind").addStat("wis.mult",0.05);
 				buff("Devoured Mind").addStat("lib.mult",0.05);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp("inte");
-				CoC.instance.mainView.statsView.showStatUp("wis");
-				CoC.instance.mainView.statsView.showStatUp("lib");
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp("inte");
+				CoC.instance.mainViewManager.showStatUp("wis");
+				CoC.instance.mainViewManager.showStatUp("lib");
 				outputText("Your mind surges with newfound knowledge, your brain expanding slightly from the stolen information. You orgasm in sympathy with this new added knowledge.");
 			}
 			else{
@@ -8694,13 +8694,13 @@ use namespace CoC;
 				buff("Elf Sisters").addStat("int.mult",0.05);
 				buff("Elf Sisters").addStat("wis.mult",0.05);
 				buff("Elf Sisters").addStat("lib.mult",0.05);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp("str");
-				CoC.instance.mainView.statsView.showStatUp("tou");
-				CoC.instance.mainView.statsView.showStatUp("spe");
-				CoC.instance.mainView.statsView.showStatUp("inte");
-				CoC.instance.mainView.statsView.showStatUp("wis");
-				CoC.instance.mainView.statsView.showStatUp("lib");
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp("str");
+				CoC.instance.mainViewManager.showStatUp("tou");
+				CoC.instance.mainViewManager.showStatUp("spe");
+				CoC.instance.mainViewManager.showStatUp("inte");
+				CoC.instance.mainViewManager.showStatUp("wis");
+				CoC.instance.mainViewManager.showStatUp("lib");
 				setPerkValue(PerkLib.OneWiththeForest, 1, (ElfSistersBonus*100));
 				if ((ElfSistersBonus*100) >= 10) setPerkValue(PerkLib.OneWiththeForest, 2, Math.round(((ElfSistersBonus*100)-5)*0.1));
 			}
@@ -8716,13 +8716,13 @@ use namespace CoC;
 				buff("Dominant Alpha").addStat("int.mult",0.02);
 				buff("Dominant Alpha").addStat("wis.mult",0.02);
 				buff("Dominant Alpha").addStat("lib.mult",0.02);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp("str");
-				CoC.instance.mainView.statsView.showStatUp("tou");
-				CoC.instance.mainView.statsView.showStatUp("spe");
-				CoC.instance.mainView.statsView.showStatUp("inte");
-				CoC.instance.mainView.statsView.showStatUp("wis");
-				CoC.instance.mainView.statsView.showStatUp("lib");
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp("str");
+				CoC.instance.mainViewManager.showStatUp("tou");
+				CoC.instance.mainViewManager.showStatUp("spe");
+				CoC.instance.mainViewManager.showStatUp("inte");
+				CoC.instance.mainViewManager.showStatUp("wis");
+				CoC.instance.mainViewManager.showStatUp("lib");
 			}
 			if (hasStatusEffect(StatusEffects.DominantAlpha) && statusEffectv1(StatusEffects.DominantAlpha) > 1 && buff("Dominant Alpha").getValueOfStatBuff("str") < 200)
 				buff("Dominant Alpha").addStat("str",200);
@@ -8980,8 +8980,8 @@ use namespace CoC;
 					var buff:Number = 1;
 					if (perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2
 					statStore.replaceBuffObject({'spe.mult':Math.round(speStat.mult.value)*buff}, 'Supercharged', { text: 'Supercharged!' });
-					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-					CoC.instance.mainView.statsView.showStatUp('spe');
+					CoC.instance.mainViewManager.refreshStats();
+					CoC.instance.mainViewManager.showStatUp('spe');
 					outputText("\n\nAs your bottled up voltage ramps up you begin to lose yourself to lust turning increasingly feral as your overwhelming need to discharge override any rational thinking. FUCK… you need someone to fuck that voltage out of you!");
 					if(game.inCombat) outputText(" [themonster] gulps as [monster he] see's your lust crazed expression. Should you win [he] won't get off the hook so easily!");
 					outputText("\n\n<b>You entered the supercharged state!</b>\n\n");

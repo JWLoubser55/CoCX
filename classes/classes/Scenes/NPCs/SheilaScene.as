@@ -204,7 +204,7 @@ private function sheilaCorruptionUpdate():void {
 				else sheilaCorruption(1);
 			}
 			player.cor = Math.round(player.cor);
-			mainView.statsView.showStatDown( 'cor' );
+			showStatDown( 'cor' );
 			// corUp.visible = false;
 			// corDown.visible = true;
 			statScreenRefresh();
@@ -226,7 +226,7 @@ private function sheilaCorruptionUpdate():void {
 				else sheilaCorruption(-1);
 			}
 			player.cor = Math.round(player.cor);
-			mainView.statsView.showStatUp( 'cor' );
+			showStatUp( 'cor' );
 			// corUp.visible = true;
 			// corDown.visible = false;
 			statScreenRefresh();
