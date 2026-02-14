@@ -2258,7 +2258,7 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			if (player.soulforce < resourcesUsedToMakeNormalSkeleton() || player.mana < resourcesUsedToMakeNormalSkeleton()) {
+			if ((player.soulforce < resourcesUsedToMakeNormalSkeleton()) && (player.mana < resourcesUsedToMakeNormalSkeleton())) {
 				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeNormalSkeleton()+") to create a Skeleton Warrior.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
@@ -2284,7 +2284,7 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			if (player.soulforce < resourcesUsedToMakeNormalSkeleton() || player.mana < resourcesUsedToMakeNormalSkeleton()) {
+			if ((player.soulforce < resourcesUsedToMakeNormalSkeleton()) && (player.mana < resourcesUsedToMakeNormalSkeleton())) {
 				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeNormalSkeleton()+") to create a Skeleton Archer.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
@@ -2310,7 +2310,7 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			if (player.soulforce < resourcesUsedToMakeNormalSkeleton() || player.mana < resourcesUsedToMakeNormalSkeleton()) {
+			if ((player.soulforce < resourcesUsedToMakeNormalSkeleton()) && (player.mana < resourcesUsedToMakeNormalSkeleton())) {
 				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeNormalSkeleton()+") to create a Skeleton Mage.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
@@ -2336,7 +2336,7 @@ public class CampMakeWinions extends BaseContent
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			if (player.soulforce < resourcesUsedToMakeLargeSkeleton() || player.mana < resourcesUsedToMakeLargeSkeleton()) {
+			if ((player.soulforce < resourcesUsedToMakeLargeSkeleton()) && (player.mana < resourcesUsedToMakeLargeSkeleton())) {
 				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeLargeSkeleton()+") to create a Skeleton Giant.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
