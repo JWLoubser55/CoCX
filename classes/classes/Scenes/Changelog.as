@@ -14,7 +14,7 @@ public class Changelog extends BaseContent
 		{}
 		
 		public function accessChangelogMenu():void {
-			Changelog60();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, status effect, key item, item, consumable, usable, material, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene
+			Changelog61();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, status effect, key item, item, consumable, usable, material, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene
 		}
 		//zrobić do 2022 na świeta event z reniferami i nie odblokowywać go do ok. 20-24 grudnia 2021 xD
 		private function Changelog63():void {
@@ -236,7 +236,7 @@ public class Changelog extends BaseContent
 			outputText("-First Attack: Skeletons perk tier was changed (9 > 4) and req. now only Skeleton Lord perk.\n");
 			outputText("-Prestige Job: Necromancer req. for Job: Golemancer replaced by Skeleton Lord. Bone Soul perk tier lowered by 1.\n");
 			outputText("-Bone Soul perk effects slight changed: max bones stored increased to +150, max cap of bonus spellpower from having over 50 bones increased to +300%.\n");
-			outputText("-\n");
+			outputText("-New tier 4 misc lvl-up perk: Gigachad Skeletal Mages. Req. Boney Wand perk, 120+ intelligence and 120+ wisdom. Effect: You can now make (max 1) gigachad skeleton mage out of demon bones.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

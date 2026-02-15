@@ -28,10 +28,8 @@ public class LizanMarrowMutation extends IMutationPerkType
             if (pTier == 4){
                 descS = ". When below 60%/20% of max HP regeneration provided by Lizan regeneration is 2x/3x. Could slowly recover lost bodyparts (~1/2% per combat round/hour). You can't lose by HP until your health drops into the negatives more than 10% of max HP, +10% OverMax HP";
             }
-            if (pTier >= 1){
-                descS = ". (Lizan race gaining extra profits: +1 to multi of the regeneration values per reached race bonuses tier (excluding increased HP recover below specific HP tresholds))";
-            }
             if (descS != "")descS += ".";
+            if (pTier >= 1) descS += " (Lizan race gaining extra profits: +1 to multi of the regeneration values per reached race bonuses tier (excluding increased HP recover below specific HP tresholds))";
             return descS;
         }
 

@@ -761,7 +761,7 @@ public class CombatUI extends BaseCombatContent {
 	}
 
 	public function isSkeletonsTurn():Boolean {
-		return (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.JobHaruspex) > 0 || player.perkv1(PerkLib.BoneyBow) > 0 || player.perkv1(PerkLib.BoneyWand) > 0 || player.perkv1(PerkLib.BoneGiants) > 0)) && flags[kFLAGS.NECROMANCER_SKELETONS] == 1 && flags[kFLAGS.IN_COMBAT_PLAYER_SKELETONS_ATTACKED] != 1 && !player.hasStatusEffect(StatusEffects.DisableMHActing03);
+		return (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.JobHaruspex) > 0 || player.perkv1(PerkLib.BoneyBow) > 0 || player.perkv1(PerkLib.BoneyWand) > 0 || player.perkv1(PerkLib.BoneGiants) > 0 || player.perkv1(PerkLib.GigachadSkeletalMages) > 0)) && flags[kFLAGS.NECROMANCER_SKELETONS] == 1 && flags[kFLAGS.IN_COMBAT_PLAYER_SKELETONS_ATTACKED] != 1 && !player.hasStatusEffect(StatusEffects.DisableMHActing03);
 	}
 
 	public function isEpicElementalTurn():Boolean {

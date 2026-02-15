@@ -2133,11 +2133,11 @@ public class Combat extends BaseContent {
                 break;
             case WOOD:
                 elementalDamage *= 2;
-                doMinionPhysDamage(elementalDamage, true, true);
+                doMinionMagDamage(elementalDamage, true, true);
                 break;
             case METAL:
                 elementalDamage *= 1.3;
-                doMinionPhysDamage(elementalDamage, true, true);
+                doMinionMagDamage(elementalDamage, true, true);
                 break;
             case AIR:
             case AIR_E:
@@ -2165,14 +2165,14 @@ public class Combat extends BaseContent {
                 break;
             case PURITY:
                 elementalDamage *= purityScalingDA();
-                doMinionPhysDamage(elementalDamage, true, true);
+                doMinionMagDamage(elementalDamage, true, true);
                 break;
             case CORRUPTION:
                 elementalDamage *= corruptionScalingDA();
-                doMinionPhysDamage(elementalDamage, true, true);
+                doMinionMagDamage(elementalDamage, true, true);
                 break;
             default:
-                doMinionPhysDamage(elementalDamage, true, true);
+                doMinionMagDamage(elementalDamage, true, true);
                 break;
         }
         if (crit) outputText(" <b>Critical!</b>");
@@ -11138,6 +11138,10 @@ public class Combat extends BaseContent {
         return damage;
     }
 
+    public function doMinionMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doMagicDamage(damage, apply, display, ignoreDR);
+    }
+
     private function doElementalDamageMultiplier(damage:Number):Number {
 		if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1) damage *= doDamageAscensionModifer();
         if (damage < 1) damage = 1;
@@ -11265,6 +11269,10 @@ public class Combat extends BaseContent {
         return damage;
     }
 
+    public function doMinionFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doFireDamage(damage, apply, display, ignoreDR);
+    }
+
     public function doIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11332,6 +11340,10 @@ public class Combat extends BaseContent {
             outputText(" The icy shield encasing [themonster] hardens from the cold.");
         }
         return damage;
+    }
+
+    public function doMinionIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doIceDamage(damage, apply, display, ignoreDR);
     }
 
     public function doLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
@@ -11405,6 +11417,10 @@ public class Combat extends BaseContent {
         return damage;
     }
 
+    public function doMinionLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doLightningDamage(damage, apply, display, ignoreDR);
+    }
+
     public function doDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11469,6 +11485,10 @@ public class Combat extends BaseContent {
         return damage;
     }
 
+    public function doMinionDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doDarknessDamage(damage, apply, display, ignoreDR);
+    }
+
     public function doPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11525,6 +11545,10 @@ public class Combat extends BaseContent {
         //Keep shit in bounds.
         if (monster.HP < monster.minHP()) monster.HP = monster.minHP();
         return damage;
+    }
+
+    public function doMinionPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doPoisonDamage(damage, apply, display, ignoreDR);
     }
 
     public function doWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
@@ -11585,6 +11609,10 @@ public class Combat extends BaseContent {
         return damage;
     }
 
+    public function doMinionWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doWindDamage(damage, apply, display, ignoreDR);
+    }
+
     public function doWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11641,6 +11669,10 @@ public class Combat extends BaseContent {
         //Keep shit in bounds.
         if (monster.HP < monster.minHP()) monster.HP = monster.minHP();
         return damage;
+    }
+
+    public function doMinionWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doWaterDamage(damage, apply, display, ignoreDR);
     }
 
     public function doEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
@@ -11701,6 +11733,10 @@ public class Combat extends BaseContent {
         return damage;
     }
 
+    public function doMinionEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doEarthDamage(damage, apply, display, ignoreDR);
+    }
+
     public function doAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11757,6 +11793,10 @@ public class Combat extends BaseContent {
         //Keep shit in bounds.
         if (monster.HP < monster.minHP()) monster.HP = monster.minHP();
         return damage;
+    }
+
+    public function doMinionAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doAcidDamage(damage, apply, display, ignoreDR);
     }
 	
 	public function doPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
@@ -19551,6 +19591,7 @@ public function sendSkeletonToFight():void {
     if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.BoneGiants)) dmgamp += 0.2;
+    if (player.hasPerk(PerkLib.GigachadSkeletalMages)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
@@ -19580,24 +19621,26 @@ public function sendSkeletonToFight():void {
     damage = Math.round(damage);
 	var sSWTF:Number = player.perkv2(PerkLib.JobHaruspex);
 	while (sSWTF-->0) doMinionPhysDamage(damage, true, true);
-    outputText("\n\n");
-	if ((!monster.isFlying() || player.hasPerk(PerkLib.SkeletonLord)) && player.hasPerk(PerkLib.BoneGiants) && player.perkv1(PerkLib.BoneGiants) > 0) {
-		outputText("Your skeleton giant"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "their":"his")+" fist"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" around. ");
+    if ((!monster.isFlying() || player.hasPerk(PerkLib.SkeletonLord)) && player.hasPerk(PerkLib.BoneGiants) && player.perkv1(PerkLib.BoneGiants) > 0) {
+		outputText("\n\nYour skeleton giant"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "their":"his")+" fist"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" around. ");
 		var sSGTF:Number = (player.perkv1(PerkLib.BoneGiants)*2);
 		while (sSGTF-->0) doMinionPhysDamage((damage*2), true, true);
-		outputText("\n\n");
 	}
     if (player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) > 0) {
-		outputText("Your archer"+(player.perkv1(PerkLib.BoneyBow) > 1 ? "s":"")+" "+(monster.isFlying()?"":"follow suit ")+"unleashing a volley of arrows. ");
+		outputText("\n\nYour archer"+(player.perkv1(PerkLib.BoneyBow) > 1 ? "s":"")+" unleashing a volley of arrows. ");
 		var sSATF:Number = player.perkv1(PerkLib.BoneyBow);
 		while (sSATF-->0) doMinionPhysDamage(damage, true, true);
-        outputText("\n\n");
-        if (player.perkv1(PerkLib.BoneyWand) > 0) {
-			outputText((monster.isFlying()?"S":"Finally the s")+"keletal mage"+(player.perkv1(PerkLib.BoneyWand) > 1 ? "s":"")+" unleash a barrage of magic missiles. ");
-			var sSMTF:Number = player.perkv1(PerkLib.BoneyWand);
-			while (sSMTF-->0) doMinionPhysDamage(damage, true, true);
-        }
     }
+	if (player.hasPerk(PerkLib.BoneyWand) && player.perkv1(PerkLib.BoneyWand) > 0) {
+		outputText("\n\nYour skeletal mage"+(player.perkv1(PerkLib.BoneyWand) > 1 ? "s":"")+" unleashing a barrage of magic missiles. ");
+		var sSMTF:Number = player.perkv1(PerkLib.BoneyWand);
+		while (sSMTF-->0) doMinionMagDamage(damage, true, true);
+	}
+	if (player.hasPerk(PerkLib.GigachadSkeletalMages) && player.perkv1(PerkLib.GigachadSkeletalMages) > 0) {
+		outputText("\n\nYour gigachad skeletal mage"+(player.perkv1(PerkLib.GigachadSkeletalMages) > 1 ? "s":"")+" unleashing a barrage of magic missiles. ");
+		var sGSMTF:Number = player.perkv1(PerkLib.GigachadSkeletalMages);
+		while (sGSMTF-->0) doMinionMagDamage((damage*4), true, true);
+	}
     if (flags[kFLAGS.NECROMANCER_SKELETONS] == 0) outputText("\n\n");
     //checkAchievementDamage(damage);
     statScreenRefresh();
@@ -19628,6 +19671,7 @@ public function skeletonSmash():void {
     if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.BoneGiants)) dmgamp += 0.2;
+    if (player.hasPerk(PerkLib.GigachadSkeletalMages)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
@@ -19654,7 +19698,7 @@ public function skeletonSmash():void {
     critChance += combatPhysicalCritical();
     if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
     if (rand(100) < critChance)
-        damage *= 1.75;
+	damage *= 1.75;
     damage = Math.round(damage);
     doMinionPhysDamage(damage, true, true);
     monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);

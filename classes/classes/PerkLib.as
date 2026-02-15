@@ -905,6 +905,9 @@ public class PerkLib
 		public static const BoneyBag:PerkType = mk("Boney Bag", "Boney Bag",
 				"Increase limit of stored demonic bones by 100.",
 				"You've chosen the 'Boney Bag' perk. Increase limit of stored demonic bones by 100.");
+		public static const GigachadSkeletalMages:PerkType = mk("Gigachad Skeletal Mages", "Gigachad Skeletal Mages",
+				"You can now make (max 1) gigachad skeleton mage out of demon bones.",
+				"You've chosen the 'Gigachad Skeletal Mages' perk. You can now make (max 1) gigachad skeleton mage out of demon bones.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -916,9 +919,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8737,6 +8737,10 @@ public class PerkLib
 					.requireLevel(24)
                     .requireInt(110)
                     .requireWis(110);
+            GigachadSkeletalMages.requirePerk(BoneyWand)
+					.requireLevel(24)
+                    .requireInt(120)
+                    .requireWis(120);
             GiantsReach.requireLevel(24)
                     .requireStr(100)
                     .requireTou(100)
