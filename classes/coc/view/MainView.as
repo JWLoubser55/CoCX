@@ -965,9 +965,11 @@ public class MainView extends Block {
 		// sprite.x = SCREEN_W - GAP - sprite.width; // align right
 		// sprite.y = SCREEN_H - GAP - sprite.height; // align bottom
 	}
+	public var theme:*;
 	public function setTheme(theme:int, font:String):void {
 		var style:* = Themes[theme];
 		if (!style) return;
+		this.theme = style;
 		background.bitmapClass    = style.bgBitmap;
 		backgroundGlass.fillColor = style.glass;
 		backgroundGlass.alpha     = style.glassAlpha;

@@ -210,6 +210,7 @@ public class Block extends Sprite {
 	public var dataset:Object = {};
 	private var _xminCached:Number = -1;
 	private var _yminCached:Number = -1;
+	public var stretch:Boolean = false;
 
 	public function Block(options:Object = null) {
 		super();
@@ -271,7 +272,7 @@ public class Block extends Sprite {
 			graphics.drawRect(0, 0, width, height);
 			graphics.endFill();
 		}
-		if (width && height) {
+		if (width && height && stretch) {
 			super.width  = width+Math.max(0,-xmin);
 			super.height = height+Math.max(0,-ymin);
 		}

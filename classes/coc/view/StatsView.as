@@ -39,7 +39,7 @@ public class StatsView extends Block {
 	private var newStatsView:NewStatsView;
 	private var oldStatsView:Block;
 	private var corner:CornerStatsView;
-	private var _useNewStatsView:Boolean = false;
+	private var _useNewStatsView:Boolean = true;
 	private var toggleButton:CoCButton;
 	// OLD statview
 	// ============
@@ -223,7 +223,8 @@ public class StatsView extends Block {
 		}
 	}
 	private function toggleClick():void {
-		this.useNewStatsView = !this.useNewStatsView;
+		this.newStatsView.toggle();
+		// this.useNewStatsView = !this.useNewStatsView;
 	}
 	override public function invalidateLayout():void {
 		super.invalidateLayout();
@@ -312,17 +313,17 @@ public class StatsView extends Block {
 			case 'cor':
 				return corBar;
 			case 'hp':
-				return _useNewStatsView ? newStatsView.hpBar : hpBar;
+				return _useNewStatsView ? newStatsView.resourceTab.hpBar : hpBar;
 			case 'wrath':
-				return _useNewStatsView ? newStatsView.wrathBar : wrathBar;
+				return _useNewStatsView ? newStatsView.resourceTab.wrathBar : wrathBar;
 			case 'lust':
-				return _useNewStatsView ? newStatsView.lustBar : lustBar;
+				return _useNewStatsView ? newStatsView.resourceTab.lustBar : lustBar;
 			case 'fatigue':
-				return _useNewStatsView ? newStatsView.fatigueBar : fatigueBar;
+				return _useNewStatsView ? newStatsView.resourceTab.fatigueBar : fatigueBar;
 			case 'mana':
-				return _useNewStatsView ? newStatsView.manaBar : manaBar;
+				return _useNewStatsView ? newStatsView.resourceTab.manaBar : manaBar;
 			case 'soulforce':
-				return _useNewStatsView ? newStatsView.soulforceBar : soulforceBar;
+				return _useNewStatsView ? newStatsView.resourceTab.soulforceBar : soulforceBar;
 			case 'hunger':
 				return hungerBar;
 			case 'level':

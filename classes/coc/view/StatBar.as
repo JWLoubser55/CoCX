@@ -40,7 +40,10 @@ public class StatBar extends Block {
 			bgColor    : null,
 			percentage : false,
 			numberStyle: 'kmb',
-			labelAlign : 'right'
+			labelAlign : 'right',
+			labelFontSz: 15,
+			labelY     : -2,
+			valueFontSz: 20
 		};
 	}
 	private static var DEFAULT_OPTIONS:Object     = factoryReset();
@@ -69,6 +72,7 @@ public class StatBar extends Block {
 	private var _numberStyle:String;
 	private var _hasArrow:Boolean;
 	private var _initialized:Boolean; // is in constructor
+	private var _options:*;
 
 	private function get arrowSz():Number {
 		return _hasArrow ? this.height-2 : 0;
@@ -76,8 +80,10 @@ public class StatBar extends Block {
 
 	public function StatBar(options:Object) {
 		super();
+		stretch = false;
 		_initialized = false;
 		options             = Utils.extend({},DEFAULT_OPTIONS, options);
+		this._options = options;
 		_hasArrow = options['hasArrow'];
 		var myWidth:Number = options.width;
 		var myHeight:Number = options.height;
@@ -132,17 +138,18 @@ public class StatBar extends Block {
 			height           : myHeight - 4,
 			defaultTextFormat: {
 				font: 'Georgia',
-				size: 15
+				size: options.labelFontSz
 			}
 		});
 		_valueLabel = addTextField({
-			x                : 0, y: myHeight-30,
+			x                : 0,
+			y                : options.labelY,
 			width            : barWidth,
-			height           : 30,
+			height           : options.valueFontSz+10,
 			defaultTextFormat: {
 				font : 'Georgia',
-				size : 20,
-				align: 'right'
+				size : options.valueFontSz,
+				align: options.labelAlign
 			}
 		});
 		if (_hasArrow) {
@@ -188,7 +195,8 @@ public class StatBar extends Block {
 	private function renderValue():void {
 		if (percentage) {
 			var pValue:Number = (value / maxValue) * 100;
-			var valueStr:String = pValue.toFixed(1);
+			var valueStr:String = pValue < 100 ? pValue.toFixed(1) : pValue.toFixed(0);
+			if (valueStr == '0.0') valueStr = '0';
 			valueText = '' + valueStr + '%';
 		} else {
 			var bValue:String;
@@ -278,7 +286,9 @@ public class StatBar extends Block {
 		return _valueLabel ? _valueLabel.text : value + '';
 	}
 	public function set valueText(value:String):void {
-		if (_valueLabel) _valueLabel.text = value;
+		if (_valueLabel) {
+			_valueLabel.text = value;
+		}
 	}
 	public function get labelAlign():String {
 		return _valueLabel ? _valueLabel.defaultTextFormat.align : 'right';
@@ -410,9 +420,9 @@ public class StatBar extends Block {
 			_nameLabel.height = myHeight-4;
 		}
 		if (_valueLabel) {
-			_valueLabel.y = myHeight-30;
+			_valueLabel.y = _options.labelY;
 			_valueLabel.width = barWidth;
-			_valueLabel.height = 30;
+			_valueLabel.height = _options.valueFontSz+10;
 		}
 		if (_arrowUp) {
 			_arrowUp.width = arrowSz;
