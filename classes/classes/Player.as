@@ -6863,7 +6863,7 @@ use namespace CoC;
 			return temp;
 		}
 		public function canLevelUpOrRestore():Boolean {
-			return XP >= requiredXP() && (level <= game.levelCap || negativeLevel > 0);
+			return XP >= requiredXP() && (level < game.levelCap || negativeLevel > 0);
 		}
 
 
