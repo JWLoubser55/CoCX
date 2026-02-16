@@ -472,8 +472,8 @@ public class LunaFollower extends NPCAwareContent implements SaveableState, Time
 				var gain:Number = player.maxHunger();
 				gain -= player.hunger;
 				player.refillHunger(gain);
-				HPChange(Math.round(player.maxHP() * .05), true, false);
-				EngineCore.ManaChange(player.maxMana() * 0.05);
+				pc.HPChange(Math.round(player.maxHP() * .05), true, false);
+				pc.ManaChange(player.maxMana() * 0.05);
 				player.buff("WellFed").setStats({"str.mult":0.05,"tou.mult":0.05,"spe.mult":0.05}).forDays(1).withText("Well Fed");
 				EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * 0.2)));
 				flags[kFLAGS.LUNA_MEAL] = 1;
@@ -504,7 +504,7 @@ public class LunaFollower extends NPCAwareContent implements SaveableState, Time
 				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.05) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.05);
 				else player.removeStatusEffect(StatusEffects.CombatWounds);
 			}
-			HPChange(Math.round(player.maxHP() * .1), true, false);
+			pc.HPChange(Math.round(player.maxHP() * .1), true, false);
 			Nursed = true;
 			NursedCooldown = 24;
 			if (flags[kFLAGS.LUNA_FOLLOWER] > 10) {

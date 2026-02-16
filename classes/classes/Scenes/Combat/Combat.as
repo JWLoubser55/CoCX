@@ -7,12 +7,11 @@ import classes.CockTypesEnum;
 import classes.EngineCore;
 import classes.GlobalFlags.kACHIEVEMENTS;
 import classes.GlobalFlags.kFLAGS;
-import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.*;
 import classes.ItemType;
 import classes.Items.IELib;
-import classes.Items.ItemEffect;
 import classes.Items.ItemConstants;
+import classes.Items.ItemEffect;
 import classes.Items.Weapon;
 import classes.Items.WeaponLib;
 import classes.Items.WeaponRange;
@@ -61,9 +60,6 @@ import classes.StatusEffects.VampireThirstEffect;
 import coc.view.ButtonData;
 import coc.view.ButtonDataList;
 import coc.view.MainView;
-
-import mx.formatters.NumberFormatter;
-import classes.Items.ItemEffectType;
 
 //import flash.utils.getTimer;
 
@@ -637,7 +633,7 @@ public class Combat extends BaseContent {
 				if (player.hasPerk(PerkLib.PrestigeJobNecromancer) && monster.soulforce > 0) {
 					var SFHarvest:Number = monster.level * (1 + rand(3));
 					if (SFHarvest > monster.soulforce) SFHarvest = monster.soulforce;
-					EngineCore.SoulforceChange(SFHarvest);
+					pc.SoulforceChange(SFHarvest);
 				}
             }
         }
@@ -787,7 +783,7 @@ public class Combat extends BaseContent {
         if (player.hasStatusEffect(StatusEffects.Straddle) && monster is ProjectNightwalker) (monster as ProjectNightwalker).faceSittingDescript();
         if (player.hasStatusEffect(StatusEffects.DragonsNom)) outputText("\n<b>The Dragon has you firmly clamped between its jaws!</b>");
         var foundStatus:Boolean = playerStatuses.some(function (status:StatusEffectType, index:int, array:Array):Boolean {
-            return player.hasStatusEffect(status);
+            return CoC.instance.player.hasStatusEffect(status);
         });
         return foundStatus;
     }
@@ -1541,7 +1537,7 @@ public class Combat extends BaseContent {
 			if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.04) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.04);
 			else player.removeStatusEffect(StatusEffects.CombatWounds);
 		}
-        HPChange(power,false, false);
+        pc.HPChange(power,false, false);
         outputText("You apply the poultice, your wounds closing at high speed. Healed for ");
         CommasForDigits(power*-1);
     }
@@ -1723,7 +1719,7 @@ public class Combat extends BaseContent {
 		}
         else outputText("You decided to stop preparing your super ultra hyper mega fabulous attack!");
         outputText("\n\n");
-        for each (var perkObj:Object in CombatMagic.magicCounterPerks) {
+        for each (var perkObj:Object in values(CombatMagic.magicCounterPerks)) {
             if ((player.hasPerk(perkObj.tier3) || player.hasPerk(perkObj.tier4)) && player.hasStatusEffect(perkObj.counter)) player.addStatusValue(perkObj.counter, 3, -1);
         }
 		player.removeStatusEffect(StatusEffects.ChanneledAttack);
@@ -3557,7 +3553,7 @@ public class Combat extends BaseContent {
 					if (player.hasPerk(PerkLib.VerdantLeech)) {
 						if (monster.lustVuln != 0 && !player.enemiesImmuneToLustResistanceDebuff()) monster.lustVuln += 0.01;
 						if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
-						HPChange(Math.round(player.maxHP() * 0.05), false, false);
+						pc.HPChange(Math.round(player.maxHP() * 0.05), false, false);
 					}
 					if (monster.hasStatusEffect(StatusEffects.Rosethorn) && monster.statusEffectv1(StatusEffects.Rosethorn) < 6) monster.addStatusValue(StatusEffects.Rosethorn, 1, 1);
 					else monster.createStatusEffect(StatusEffects.Rosethorn, 6, 0, 0, 0);
@@ -4491,7 +4487,7 @@ public class Combat extends BaseContent {
 
     public function phantomArrowsEffect(damage:Number, ammoWord:String = ""):void {
         if (flags[kFLAGS.PHANTOM_ARROWS] == 1 && player.mana >= 5) {
-			EngineCore.ManaChange(-5);
+			pc.ManaChange(-5);
             doArcheryDamage(damage, 2);
 			if (player.hasPerk(PerkLib.ArrowStorm) && rand(2) == 0) {
 				outputText("Your " + ammoWord + " continue past its target flying into a U-turn before piercing it again!\n");
@@ -6033,7 +6029,7 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.FenrirSpiritstrike) && !monster.hasPerk(PerkLib.EnemyTrueDemon)){
                 biteMultiplier = 10;
                 outputText(" and tearing at your foe's very soul!");
-                HPChange(player.maxHP()*0.25,false,false);
+                pc.HPChange(player.maxHP()*0.25,false,false);
             }
             // Bite Attacks Check
             switch(player.faceType){
@@ -6853,8 +6849,7 @@ public class Combat extends BaseContent {
     }
 
     public function CommasForDigits(damage:Number, lustColor:Boolean = false, text:String = "", elementTag:String = ""):void {
-        var numberformat:NumberFormatter = new NumberFormatter();
-        var dmgText:String = numberformat.format(Math.floor(Math.abs(damage)));
+        var dmgText:String = formatNumber(Math.floor(Math.abs(damage)));
         if (elementTag == ""){
             outputText("<b>([font-" + (damage < 0 ? "heal" : damage == 0 ? "miss" : lustColor ? "lust" : "damage") + "]" + text + dmgText + "[/font])</b>");
         }
@@ -8192,10 +8187,10 @@ public class Combat extends BaseContent {
 					if (player.perkv1(IMutationsLib.StillHeartIM) >= 1) sippedA += (0.0025 * player.perkv1(IMutationsLib.StillHeartIM));
                     if (player.hasStatusEffect(StatusEffects.AlterBindScroll2)) sippedA *= 2;
 					if (player.perkv1(IMutationsLib.StillHeartIM) >= 3) sippedA += (0.01 * (player.perkv1(IMutationsLib.StillHeartIM) - 2));
-                    if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) EngineCore.HPChange(player.maxHP() * sippedA, false, true);
-					else EngineCore.HPChange(player.maxHP() * sippedA, false, false);
-                    EngineCore.ManaChange(player.maxMana() * sippedA);
-                    EngineCore.SoulforceChange(player.maxSoulforce() * sippedA);
+                    if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) pc.HPChange(player.maxHP() * sippedA, false, true);
+					else pc.HPChange(player.maxHP() * sippedA, false, false);
+                    pc.ManaChange(player.maxMana() * sippedA);
+                    pc.SoulforceChange(player.maxSoulforce() * sippedA);
 					player.fatigue -= player.maxFatigue() * sippedA;
                     if (player.fatigue < 0) player.fatigue = 0;
                 }
@@ -8804,11 +8799,11 @@ public class Combat extends BaseContent {
 			else monster.createStatusEffect(StatusEffects.AcidDoT, 3, 0.05, 1, 0);
 		}
 		if (player.hasPerk(PerkLib.ExanimationIII)) {
-			EngineCore.SoulforceChange(Math.round(damage * 0.15));
+			pc.SoulforceChange(Math.round(damage * 0.15));
 			player.refillHunger(3);
 		}
 		else {
-			EngineCore.SoulforceChange(Math.round(damage * 0.05));
+			pc.SoulforceChange(Math.round(damage * 0.05));
 			player.refillHunger(1);
 		}
 	}
@@ -8835,7 +8830,7 @@ public class Combat extends BaseContent {
 				mTSpinningKick = true;
 				mTWayOfTheSilentStormChance += 1;
 				outputText("Using the momentum of your previous attack, you spin on yourself, chaining with a mighty kick to your opponent.\n\n");
-				EngineCore.SoulforceChange(basecost2);
+				pc.SoulforceChange(basecost2);
 				CombatAbilities.PunishingKick.perform(true,true);
 			}
 		}
@@ -8843,7 +8838,7 @@ public class Combat extends BaseContent {
 			if (rand(4) < martialTrain && player.soulforce >= basecost2 && !mTSuddenPunch) {
 				mTSuddenPunch = true;
 				mTWayOfTheSilentStormChance += 1;
-				EngineCore.SoulforceChange(basecost2);
+				pc.SoulforceChange(basecost2);
 				var temp1:Number = meleeUnarmedDamageNoLagSingle();
 				if (player.hasStatusEffect(StatusEffects.SoulFist)) temp1 += scalingBonusWisdom();
 				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
@@ -8883,7 +8878,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.BeastlyKick) && player.legCount > 1 && player.lowerBody != LowerBody.HUMAN) {
 			if (player.wrath >= basecost3 && !fChBeastlyKick) {
 				fChBeastlyKick = true;
-				EngineCore.WrathChange(-basecost3);
+				pc.WrathChange(-basecost3);
 				var temp2:Number = meleeUnarmedDamageNoLagSingle();
 				if (player.hasStatusEffect(StatusEffects.SoulFist)) temp2 += scalingBonusWisdom();
 				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
@@ -8902,7 +8897,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.WarTail) && player.tailType > Tail.NONE) {
 			if (player.wrath >= basecost3 && !fChWarTail) {
 				fChWarTail = true;
-				EngineCore.WrathChange(-basecost3);
+				pc.WrathChange(-basecost3);
 				var temp3:Number = meleeUnarmedDamageNoLagSingle();
 				if (player.hasStatusEffect(StatusEffects.SoulFist)) temp3 += scalingBonusWisdom();
 				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
@@ -10003,10 +9998,10 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 1) restoreamount *= (1 + (0.25 * player.perkv1(IMutationsLib.StillHeartIM)));
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 3) restoreamount += Math.round(player.maxHP() * 0.01 * (player.perkv1(IMutationsLib.StillHeartIM) - 2));
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) cangoto11 = true;
-            if (player.weapon.isSmall()) HPChange(Math.round(player.maxHP() * restoreamount * 0.005), false, cangoto11);
-            else if (player.weapon.isLarge()) HPChange(Math.round(player.maxHP() * restoreamount * 0.02), false, cangoto11);
-            else if (player.weapon.isMassive()) HPChange(Math.round(player.maxHP() * restoreamount * 0.04), false, cangoto11);
-            else HPChange(Math.round(player.maxHP() * restoreamount * 0.01), false, cangoto11);
+            if (player.weapon.isSmall()) pc.HPChange(Math.round(player.maxHP() * restoreamount * 0.005), false, cangoto11);
+            else if (player.weapon.isLarge()) pc.HPChange(Math.round(player.maxHP() * restoreamount * 0.02), false, cangoto11);
+            else if (player.weapon.isMassive()) pc.HPChange(Math.round(player.maxHP() * restoreamount * 0.04), false, cangoto11);
+            else pc.HPChange(Math.round(player.maxHP() * restoreamount * 0.01), false, cangoto11);
         }
 		if (player.weapon == weapons.VENCLAW && monster.lustVuln > 0) {
             outputText("\n[monster he] seems to be affected by the poison, showing increasing sign of arousal.");
@@ -10172,10 +10167,10 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 1) restoreamount *= (1 + (0.25 * player.perkv1(IMutationsLib.StillHeartIM)));
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 3) restoreamount += Math.round(player.maxHP() * 0.01 * (player.perkv1(IMutationsLib.StillHeartIM) - 2));
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) cangoto11 = true;
-            if (player.weaponOff.isSmall()) HPChange(Math.round(player.maxHP() * restoreamount * 0.005), false, cangoto11);
-            else if (player.weaponOff.isLarge()) HPChange(Math.round(player.maxHP() * restoreamount * 0.02), false, cangoto11);
-            else if (player.weaponOff.isMassive()) HPChange(Math.round(player.maxHP() * restoreamount * 0.04), false, cangoto11);
-            else HPChange(Math.round(player.maxHP() * restoreamount * 0.01), false, cangoto11);
+            if (player.weaponOff.isSmall()) pc.HPChange(Math.round(player.maxHP() * restoreamount * 0.005), false, cangoto11);
+            else if (player.weaponOff.isLarge()) pc.HPChange(Math.round(player.maxHP() * restoreamount * 0.02), false, cangoto11);
+            else if (player.weaponOff.isMassive()) pc.HPChange(Math.round(player.maxHP() * restoreamount * 0.04), false, cangoto11);
+            else pc.HPChange(Math.round(player.maxHP() * restoreamount * 0.01), false, cangoto11);
         }
 		if (player.weaponOff == weapons.CHAOSEA) {
 			var devouredWrath:Number = 0;
@@ -10235,8 +10230,8 @@ public class Combat extends BaseContent {
             }
         }
 		if (player.hasStatusEffect(StatusEffects.LifestealEnchantment) && !monster.hasPerk(PerkLib.EnemyConstructType)) {
-			if (player.hasPerk(PerkLib.WayOfTheBlood)) HPChange(Math.round(player.maxHP() * (0.01+(0.0025 * player.progressBloodDemon()))), false, false);
-			else HPChange(Math.round(player.maxHP() * 0.01), false, false);
+			if (player.hasPerk(PerkLib.WayOfTheBlood)) pc.HPChange(Math.round(player.maxHP() * (0.01+(0.0025 * player.progressBloodDemon()))), false, false);
+			else pc.HPChange(Math.round(player.maxHP() * 0.01), false, false);
 		}
 		if (player.weaponRangePerk == "Throwing" && player.hasPerk(PerkLib.ImpactThrow) && rand(10) == 0) {
             outputText("Attack leaves your opponent dazed!\n\n");
@@ -10260,7 +10255,7 @@ public class Combat extends BaseContent {
             if (monster.plural) outputText("\n[Themonster] bleed profusely from the many bloody gashes your "+player.weaponFlyingSwordsName+" leave"+(player.usingSingleFlyingSword()?"":"s")+" behind.");
             else outputText("\n[Themonster] bleeds profusely from the many bloody gashes your "+player.weaponFlyingSwordsName+" leave"+(player.usingSingleFlyingSword()?"":"s")+" behind.");
         }
-		if (player.hasStatusEffect(StatusEffects.LifestealEnchantment) && !monster.hasPerk(PerkLib.EnemyConstructType)) HPChange(Math.round(player.maxHP() * 0.01), false, false);
+		if (player.hasStatusEffect(StatusEffects.LifestealEnchantment) && !monster.hasPerk(PerkLib.EnemyConstructType)) pc.HPChange(Math.round(player.maxHP() * 0.01), false, false);
     }
 
 	public function ShieldsStatusProcs():void {
@@ -10289,7 +10284,7 @@ public class Combat extends BaseContent {
 		if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) addedWrath *= 5;
 		if (player.hasPerk(PerkLib.ImprovedAdrenaline)) addedWrath += Math.round(player.maxWrath() * 0.02);
 		if (player.hasPerk(PerkLib.PrestigeJobBerserker)) addedWrath += Math.round(player.maxWrath() * 0.01);
-		EngineCore.WrathChange(addedWrath);
+		pc.WrathChange(addedWrath);
 	}
 	public function WrathGenerationPerHit2(damage:int = 0):void {	//specials wrath generation
 		var addedWrath:Number = damage;
@@ -10298,7 +10293,7 @@ public class Combat extends BaseContent {
 		if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) addedWrath *= 5;
 		if (player.hasPerk(PerkLib.ImprovedAdrenaline)) addedWrath += Math.round(player.maxWrath() * 0.02);
 		if (player.hasPerk(PerkLib.PrestigeJobBerserker)) addedWrath += Math.round(player.maxWrath() * 0.01);
-		EngineCore.WrathChange(addedWrath);
+		pc.WrathChange(addedWrath);
 	}
 	public function PASPAS(type:Number = 1):Number {
 		var PAS:Number = 0.5;
@@ -10589,8 +10584,8 @@ public class Combat extends BaseContent {
 		if (player.shieldPerk == "Massive") wrathShieldSize += 4;
         if (blockChance >= (rand(100) + 1) && player.wrath >= wrathShieldSize && player.shieldName != "nothing" && player.isShieldsForShieldBash()) {// && player.weaponRange != weaponsrange.M1CERBE
             if (doFatigue) {
-                if (player.hasPerk(PerkLib.ShieldGrandmastery) && player.tou >= 100) EngineCore.WrathChange((wrathShieldSize * 0.5));
-                else EngineCore.WrathChange(wrathShieldSize);
+                if (player.hasPerk(PerkLib.ShieldGrandmastery) && player.tou >= 100) pc.WrathChange((wrathShieldSize * 0.5));
+                else pc.WrathChange(wrathShieldSize);
             }
             return true;
         } else return false;
@@ -10789,7 +10784,7 @@ public class Combat extends BaseContent {
 			if (monster.monsterIsBleeding() && player.hasPerk(PerkLib.YourPainMyPower)) {
 				player.HP += damage;
 				if (player.HP > (player.maxHP() + player.maxOverHP())) player.HP = player.maxHP() + player.maxOverHP();
-				if (flags[kFLAGS.YPMP_WRATH_GEN] == 0) EngineCore.WrathChange(WrathGains);
+				if (flags[kFLAGS.YPMP_WRATH_GEN] == 0) pc.WrathChange(WrathGains);
 			}
 			else monster.wrath += WrathGains;
             if (monster.wrath > monster.maxOverWrath()) monster.wrath = monster.maxOverWrath();
@@ -10858,7 +10853,7 @@ public class Combat extends BaseContent {
 			if (monster.monsterIsBleeding() && player.hasPerk(PerkLib.YourPainMyPower)) {
 				player.HP += damage;
 				if (player.HP > (player.maxHP() + player.maxOverHP())) player.HP = player.maxHP() + player.maxOverHP();
-				if (flags[kFLAGS.YPMP_WRATH_GEN] == 0) EngineCore.WrathChange(WrathGains);
+				if (flags[kFLAGS.YPMP_WRATH_GEN] == 0) pc.WrathChange(WrathGains);
 			}
 			else monster.wrath += WrathGains;
             if (monster.wrath > monster.maxOverWrath()) monster.wrath = monster.maxOverWrath();
@@ -10960,7 +10955,7 @@ public class Combat extends BaseContent {
 			if (monster.monsterIsBleeding() && player.hasPerk(PerkLib.YourPainMyPower)) {
 				player.HP += damage;
 				if (player.HP > (player.maxHP() + player.maxOverHP())) player.HP = player.maxHP() + player.maxOverHP();
-				if (flags[kFLAGS.YPMP_WRATH_GEN] == 0) EngineCore.WrathChange(WrathGains);
+				if (flags[kFLAGS.YPMP_WRATH_GEN] == 0) pc.WrathChange(WrathGains);
 			}
 			else monster.wrath += WrathGains;
             if (monster.wrath > monster.maxOverWrath()) monster.wrath = monster.maxOverWrath();
@@ -11864,14 +11859,14 @@ public class Combat extends BaseContent {
     }
 
     public function darkRitualCheckDamage():void {
-        if (player.hasStatusEffect(StatusEffects.DarkRitual)) HPChange(-Math.round(player.maxHP() * 0.1), false, false);
+        if (player.hasStatusEffect(StatusEffects.DarkRitual)) pc.HPChange(-Math.round(player.maxHP() * 0.1), false, false);
     }
 
     //Modify mana (mod>0 - subtract, mod<0 - regen)
     public function useManaImpl(mod:Number, type:int = USEMANA_NORMAL):void {
         mod = finalSpellCost(mod, type); //Spell reductions - spells do this for themselves!
         if (mod < 0) mod *= manaRecoveryMultiplier();
-        EngineCore.ManaChange(-mod);
+        pc.ManaChange(-mod);
     }
 
     public function fatigueCost(mod:Number, type:Number = USEFATG_NORMAL):Number {
@@ -11932,7 +11927,7 @@ public class Combat extends BaseContent {
             return;
         }
         monster.doAI();
-        if (player.statStore.hasBuff("ScarletSpiritCharge")) HPChange(-Math.round(player.maxHP()*0.05), false, false);
+        if (player.statStore.hasBuff("ScarletSpiritCharge")) pc.HPChange(-Math.round(player.maxHP()*0.05), false, false);
         if (player.statStore.hasBuff("TranceTransformation")) player.soulforce -= 50;
         if (player.statStore.hasBuff("CrinosShape")) player.wrath -= mspecials.crinosshapeCost();
         if (player.statStore.hasBuff("AsuraForm")) player.wrath -= asuraformCost();
@@ -11948,7 +11943,7 @@ public class Combat extends BaseContent {
 			player.soulforce -= soulforcecost2;
 			fatigue(physicalCost(10));
 		}
-		if (player.hasStatusEffect(StatusEffects.SoulFist)) EngineCore.SoulforceChange(-Math.round(Math.sqrt(player.maxSoulforce() * 0.01)));
+		if (player.hasStatusEffect(StatusEffects.SoulFist)) pc.SoulforceChange(-Math.round(Math.sqrt(player.maxSoulforce() * 0.01)));
         combatRoundOver();
     }
 
@@ -12185,7 +12180,7 @@ public class Combat extends BaseContent {
             }
         }
         //Manage cumulative magic damage counter degradation
-        for each (var perkObj:Object in CombatMagic.magicCounterPerks) {
+        for each (var perkObj:Object in values(CombatMagic.magicCounterPerks)) {
             if (player.hasStatusEffect(perkObj.counter)) {
             if (player.statusEffectv1(perkObj.counter) > 0 && player.statusEffectv2(perkObj.counter) == 0 && player.statusEffectv3(perkObj.counter) == 0) {
 				if (player.hasPerk(perkObj.tier3) || player.hasPerk(perkObj.tier4)) player.addStatusValue(perkObj.counter, 1, -4);
@@ -12203,7 +12198,7 @@ public class Combat extends BaseContent {
         monster.combatRoundUpdate();
 		// Advance abilities
         for each (var ability:CombatAbility in CombatAbility.Registry) {
-            if (ability.isActive()) {
+            if (ability && ability.isActive()) {
                 ability.advance(true);
             }
         }
@@ -13051,7 +13046,7 @@ public class Combat extends BaseContent {
             outputText("\n\n");
 			var dmg002:Number = damageBS;
 			if (dmg002 > Math.round(player.maxHP() * 0.03)) dmg002 = Math.round(player.maxHP() * 0.03);
-			HPChange(dmg002, true, false);
+			pc.HPChange(dmg002, true, false);
 			var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
 			var drinked:Number = 1;
 			if (player.perkv1(IMutationsLib.HollowFangsIM) >= 3) drinked += 1;
@@ -13196,7 +13191,7 @@ public class Combat extends BaseContent {
             //Effect
             if (player.hasPerk(PerkLib.AlteredAnima)) {
 				outputText("Your body suddenly goes slack as you feel bits of your soul leave your body. But before long, violet whisps return to your body with a reinvigorating spasm, as you try desperately to hold back frenzied laughter from the sensation.\n\n");
-				EngineCore.ManaChange(Math.round(player.maxMana() * 0.005));
+				pc.ManaChange(Math.round(player.maxMana() * 0.005));
 			}
 			else {
 				outputText("Your lips burn with an unexpected flash of heat.  They sting and burn with unholy energies as a puff of ectoplasmic gas escapes your lips.  That puff must be a part of your soul!  It darts through the air to [themonster], who slurps it down like a delicious snack.  You feel feverishly hot and exhausted...\n\n");
@@ -13591,7 +13586,7 @@ public class Combat extends BaseContent {
                 if (selfLust < 1) selfLust = 1;
                 selfLust = Math.round(selfLust);
                 player.dynStats("lus", selfLust);
-                HPChange(hpChange3, false, false);
+                pc.HPChange(hpChange3, false, false);
             }
         }
         //Bone armor
@@ -14554,7 +14549,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.VerdantLeech)) {
 			if (monster.lustVuln != 0 && !player.enemiesImmuneToLustResistanceDebuff()) monster.lustVuln += 0.025;
 			if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
-			HPChange(Math.round(player.maxHP() * 0.01), false, false);
+			pc.HPChange(Math.round(player.maxHP() * 0.01), false, false);
 		}
 	}
 	
@@ -14571,7 +14566,7 @@ public class Combat extends BaseContent {
 		healingPercent += PercentBasedRegeneration();
         if (player.armor == armors.GOOARMR) healingPercent += (SceneLib.valeria.valeriaFluidsEnabled() ? (flags[kFLAGS.VALERIA_FLUIDS] < 50 ? flags[kFLAGS.VALERIA_FLUIDS] / 16 : 3) : 3);
         if (healingPercent > maximumRegeneration()) healingPercent = maximumRegeneration();
-        HPChange(Math.round(((player.maxHP() * healingPercent / 100) + nonPercentBasedRegeneration()) * 0.02), false, false);
+        pc.HPChange(Math.round(((player.maxHP() * healingPercent / 100) + nonPercentBasedRegeneration()) * 0.02), false, false);
 	}
 	public function regeneration1(combat:Boolean = true):void {
         var healingPercent:Number;
@@ -14617,14 +14612,14 @@ public class Combat extends BaseContent {
 				}
 			}
             if (healingPercent > maximumRegeneration()) healingPercent = maximumRegeneration();
-            HPChange(Math.round((player.maxHP() * healingPercent / 100) + nonPercentBasedRegeneration()), false, false);
+            pc.HPChange(Math.round((player.maxHP() * healingPercent / 100) + nonPercentBasedRegeneration()), false, false);
         }
 		else {
 			healingPercent = 0;
             healingPercent += PercentBasedRegeneration() * 2;
             if (player.armor == armors.GOOARMR) healingPercent += (SceneLib.valeria.valeriaFluidsEnabled() ? (flags[kFLAGS.VALERIA_FLUIDS] < 50 ? flags[kFLAGS.VALERIA_FLUIDS] / 16 : 3) : 3);
             if (healingPercent > (maximumRegeneration() * 2)) healingPercent = (maximumRegeneration() * 2);
-            HPChange(Math.round(((player.maxHP() * healingPercent / 100) + nonPercentBasedRegeneration()) * 2), false, false);
+            pc.HPChange(Math.round(((player.maxHP() * healingPercent / 100) + nonPercentBasedRegeneration()) * 2), false, false);
         }
     }
 
@@ -15002,7 +14997,7 @@ public class Combat extends BaseContent {
 		gainedsoulforce *= soulforceRecoveryMultiplier();
 		gainedsoulforce = Math.round(gainedsoulforce * 0.02 * minutes);
 		if (player.hasPerk(PerkLib.EnergyDependent)) gainedsoulforce = 0;
-		EngineCore.SoulforceChange(gainedsoulforce);
+		pc.SoulforceChange(gainedsoulforce);
 	}
 	public function soulforceregeneration1(combat:Boolean = true, minutes:Number = 1):void {
         var gainedsoulforce:Number = 0;
@@ -15013,13 +15008,13 @@ public class Combat extends BaseContent {
             gainedsoulforce *= soulforceRecoveryMultiplier();
             if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1 || (player.hasStatusEffect(StatusEffects.Defend) && player.hasPerk(PerkLib.DefenceStance))) gainedsoulforce *= 2;
             gainedsoulforce = Math.round(gainedsoulforce);
-            EngineCore.SoulforceChange(gainedsoulforce);
+            pc.SoulforceChange(gainedsoulforce);
         }
 		else {
             gainedsoulforce += soulforceregeneration2() * 2;
             gainedsoulforce *= soulforceRecoveryMultiplier();
             gainedsoulforce = Math.round(gainedsoulforce);
-            EngineCore.SoulforceChange(gainedsoulforce);
+            pc.SoulforceChange(gainedsoulforce);
         }
     }
 
@@ -15100,7 +15095,7 @@ public class Combat extends BaseContent {
         gainedmana += manaregeneration2();
         gainedmana *= manaRecoveryMultiplier();
         gainedmana = Math.round(gainedmana * 0.02 * minutes);
-        EngineCore.ManaChange(gainedmana);
+        pc.ManaChange(gainedmana);
     }
 	public function manaregeneration1(combat:Boolean = true):void {
         var gainedmana:Number = 0;
@@ -15115,13 +15110,13 @@ public class Combat extends BaseContent {
 				if (player.hasPerk(PerkLib.WellOfMana)) gainedmana *= 2;
 			}
             gainedmana = Math.round(gainedmana);
-            EngineCore.ManaChange(gainedmana);
+            pc.ManaChange(gainedmana);
         }
 		else {
             gainedmana += manaregeneration2() * 2;
             gainedmana *= manaRecoveryMultiplier();
             gainedmana = Math.round(gainedmana);
-            EngineCore.ManaChange(gainedmana);
+            pc.ManaChange(gainedmana);
         }
     }
 
@@ -15222,7 +15217,7 @@ public class Combat extends BaseContent {
 			gainedwrath += LostWrathPerTick;
 		}
 		gainedwrath = Math.round(gainedwrath);
-        EngineCore.WrathChange(gainedwrath);
+        pc.WrathChange(gainedwrath);
     }
 	public function wrathregeneration1(combat:Boolean = true):void {
         var gainedwrath:Number = 0;
@@ -15253,7 +15248,7 @@ public class Combat extends BaseContent {
                 if (player.hasPerk(PerkLib.ItsZerkingTime)) gainedwrath += 2 * BonusWrathMult;
 			}
             if (player.hasPerk(PerkLib.Ferocity) && player.HP < 1) gainedwrath *= 2 * BonusWrathMult;
-            EngineCore.WrathChange(gainedwrath);
+            pc.WrathChange(gainedwrath);
         }
 		else {
 			if (player.hasPerk(PerkLib.AbsoluteStrength)) gainedwrath += wrathregeneration2();
@@ -15264,7 +15259,7 @@ public class Combat extends BaseContent {
 				LostWrathPerTick = Math.round(LostWrathPerTick);
 				gainedwrath += LostWrathPerTick;
 			}
-            EngineCore.WrathChange(gainedwrath);
+            pc.WrathChange(gainedwrath);
         }
     }
 
@@ -15328,7 +15323,7 @@ public class Combat extends BaseContent {
 		var gainedVenom:Number = 0;
         if (combat) gainedVenom += venomCombatRecharge2();
 		else gainedVenom += venomCombatRecharge2() * 2;
-        EngineCore.VenomWebChange(gainedVenom);
+        pc.VenomWebChange(gainedVenom);
     }
 	public function venomCombatRecharge2():Number {
 		var venomCRecharge:Number = 0;
@@ -16099,8 +16094,8 @@ public function combatRoundOver():void {
     }
 	if ((player.hasPerk(PerkLib.ChallengingShoutEx) && player.wrath < 500) || (player.hasPerk(PerkLib.ChallengingShoutMastered) && player.wrath < 750)) {
 		EngineCore.outputText("\nYou let out a weak primal shout that lets your enemies know you won’t be easily defeated.\n");
-		if (player.hasPerk(PerkLib.ChallengingShoutMastered)) EngineCore.WrathChange(750);
-		else EngineCore.WrathChange(500);
+		if (player.hasPerk(PerkLib.ChallengingShoutMastered)) pc.WrathChange(750);
+		else pc.WrathChange(500);
 	}
     if (player.statStore.recentlyRemovedTags["Might"]){
         if (player.hasPerk(PerkLib.SelfbuffsProficiencyEx) && player.mana >= CombatAbilities.Might.manaCost()) CombatAbilities.Might.autocast();
@@ -16111,7 +16106,7 @@ public function combatRoundOver():void {
         else EngineCore.outputText("\nYour speeds wanes as your Blink spell ends.\n");
     }
 	if (player.hasPerk(PerkLib.MagicalCharm) && flags[kFLAGS.COMBAT_MAGICAL_CHARM] == 0) {
-		if (player.mana >= Math.round(player.maxMana() * 0.01)) EngineCore.ManaChange(-Math.round(player.maxMana() * 0.01));
+		if (player.mana >= Math.round(player.maxMana() * 0.01)) pc.ManaChange(-Math.round(player.maxMana() * 0.01));
 		else flags[kFLAGS.COMBAT_MAGICAL_CHARM] = 1;
 	}
     player.restoreHPRatio();
@@ -16850,14 +16845,14 @@ private function StraddleTeaseRe():void {
             player.refillHunger(2, false);
         }
         if (player.HP < player.maxOverHP()) {
-            EngineCore.HPChange(25 + (player.tou/2), true, false);
+            pc.HPChange(25 + (player.tou/2), true, false);
         }
         if (player.mana < player.maxOverMana()) {
-            EngineCore.ManaChange(25 + (player.inte/2));
+            pc.ManaChange(25 + (player.inte/2));
         }
         EngineCore.changeFatigue(-(25 + (player.spe/2)));
         if (player.soulforce < player.maxOverSoulforce() && player.hasPerk(PerkLib.KitsuneEnergyThirst)) {
-            EngineCore.SoulforceChange(100 + (player.wis*2));
+            pc.SoulforceChange(100 + (player.wis*2));
         }
     }
     if (player.hasPerk(PerkLib.EnergyDependent)) {
@@ -17913,7 +17908,7 @@ public function ManticoreFeed():void {
             {
                 player.refillHunger(10, false);
             }
-            EngineCore.HPChange(100 + (player.tou*2), true, false);
+            pc.HPChange(100 + (player.tou*2), true, false);
             EngineCore.changeFatigue(-(100 + (player.spe*2)));
             player.manticoreFeed();
             player.addStatusValue(StatusEffects.ManticorePlug,3,+1);
@@ -17968,7 +17963,7 @@ public function displacerFeedContinue():void {
             {
                 player.refillHunger(10, false);
             }
-            EngineCore.HPChange(100 + (player.tou*2), true, false);
+            pc.HPChange(100 + (player.tou*2), true, false);
             EngineCore.changeFatigue(-(100 + (player.spe*2)));
             player.displacerFeed();
             player.addStatusValue(StatusEffects.DisplacerPlug,3,+1);
@@ -18026,7 +18021,7 @@ public function SlimeRapeFeed():void {
             {
                 player.refillHunger(10, false);
             }
-            EngineCore.HPChange(100 + (player.tou*2), true, false);
+            pc.HPChange(100 + (player.tou*2), true, false);
             EngineCore.changeFatigue(-(100 + (player.spe*2)));
             player.slimeFeed();
             player.addStatusValue(StatusEffects.SlimeInsert,3,+1);
@@ -18057,7 +18052,7 @@ public function VampiricBite():void {
             outputText("almost instantly spit it out. What manner of disgusting blood is this? Saps?");
         }
         outputText(" Your opponent makes use of your confusion to free itself.");
-        HPChange((-100 * (1 + player.newGamePlusMod())), false, false);
+        pc.HPChange((-100 * (1 + player.newGamePlusMod())), false, false);
         monster.removeStatusEffect(StatusEffects.EmbraceVampire);
         enemyAIImpl();
         return;
@@ -18073,8 +18068,8 @@ public function VampiricBite():void {
     doPhysicalDamage(damage, true, true);
 	if (player.perkv1(IMutationsLib.StillHeartIM) >= 1) damage = Math.round(damage * (1 + (0.25 * player.perkv1(IMutationsLib.StillHeartIM))));
 	if (player.perkv1(IMutationsLib.StillHeartIM) >= 3) damage += Math.round(player.maxHP() * 0.01 * (player.perkv1(IMutationsLib.StillHeartIM) - 2));
-    if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) EngineCore.HPChange(damage, false, true);
-	else EngineCore.HPChange(damage, false, false);
+    if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) pc.HPChange(damage, false, true);
+	else pc.HPChange(damage, false, false);
     outputText(" damage. You feel yourself grow stronger with each drop. ");
     var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
 	var drinked:Number = 1;
@@ -19504,7 +19499,7 @@ public function asurasHowl():void {
     heal = Math.round(heal);
     outputText("Gathering all you wrath you unleash howl while your wounds healing a bit. <b>([font-heal]+" + heal + "[/font])</b>.");
     if (crit) outputText(" <b>*Critical Heal!*</b>");
-    HPChange(heal,false,false);
+    pc.HPChange(heal,false,false);
     basemeleeattacks();
 }
 

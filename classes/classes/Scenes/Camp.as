@@ -27,10 +27,6 @@ use namespace CoC;
 
 public class Camp extends NPCAwareContent{
 
-	protected static function set timeQ(value:Number):void {
-		CoC.instance.timeQ = value;
-	}
-
 	private var campQ:Boolean = false;
 	private var waitingORresting:int = 1;
 
@@ -185,7 +181,7 @@ public class Camp extends NPCAwareContent{
 			return;
 		}
 		if (player.hasStatusEffect(StatusEffects.PostAnemoneBeatdown)) {
-			HPChange(Math.round(player.maxHP() / 2), false, false);
+			pc.HPChange(Math.round(player.maxHP() / 2), false, false);
 			player.removeStatusEffect(StatusEffects.PostAnemoneBeatdown);
 		}
 
@@ -2520,7 +2516,7 @@ public class Camp extends NPCAwareContent{
 		amnt = Math.min(amnt, maxSFCapacity - flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR]);
 		outputText("You focus on your spiritual power and guide it to armor energy storages recharging it for "+amnt+" soulforce.");
 		flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] += amnt;
-		EngineCore.SoulforceChange(-amnt);
+		pc.SoulforceChange(-amnt);
 		doNext(AyoArmorsMaintance);
 	}
 
@@ -3784,8 +3780,8 @@ public class Camp extends NPCAwareContent{
 		player.createStatusEffect(Soulforce.clones[newClone], 0, 0, 0, 0);
 		FormCloneText();
 		outputText("You share a grin now that the process is successful. Your quest remains to be completed, but now you have the power of "+NUMBER_WORDS_NORMAL[newClone+2]+".\n\n");
-		EngineCore.SoulforceChange(-player.maxSoulforce()*0.85);
-		HPChange(-(player.maxHP() * 0.85), true, false);
+		pc.SoulforceChange(-player.maxSoulforce()*0.85);
+		pc.HPChange(-(player.maxHP() * 0.85), true, false);
 		player.negativeLevel += Soulforce.clonelevelcost;
 		doNext(camp.returnToCampUseEightHours);
 	}
@@ -3826,8 +3822,8 @@ public class Camp extends NPCAwareContent{
 				outputText("You share a grin now that the process is successful. Your quest remains to be completed, but now you have the power of two.\n\n");
 				outputText("<b>Your clone is fully formed.</b>\n\n");
 				player.addStatusValue(StatusEffects.PCClone, 3, 1);
-				EngineCore.SoulforceChange(-player.maxSoulforce());
-				HPChange(-(player.maxHP() * 0.5), true, false);
+				pc.SoulforceChange(-player.maxSoulforce());
+				pc.HPChange(-(player.maxHP() * 0.5), true, false);
 				player.addNegativeLevels(30);
 			}
 			else if (player.statusEffectv3(StatusEffects.PCClone) == 2) {
@@ -3836,8 +3832,8 @@ public class Camp extends NPCAwareContent{
 				outputText("Six hours pass as the cocoon hardens into a substance akin to hard, black chitin until the cocoon becomes opaque. A small part of the layer around the navel keeps some translucent properties.\n\n");
 				outputText("Fatigue steadily overwhelms you after expending such intense amounts of your life energy. You lie down and rest for an hour before you decide to resume.\n\n");
 				player.addStatusValue(StatusEffects.PCClone, 3, 1);
-				EngineCore.SoulforceChange(-player.maxSoulforce());
-				HPChange(-(player.maxHP() * 0.5), true, false);
+				pc.SoulforceChange(-player.maxSoulforce());
+				pc.HPChange(-(player.maxHP() * 0.5), true, false);
 			}
 			else {
 				outputText("Having recovered your spent life force and soul energy, you return to the halted ritual. Sitting before you is a slowly rotating basketball-sized sphere of soul and life essences. You start to focus on the next phase of clone formation.\n\n");
@@ -3846,8 +3842,8 @@ public class Camp extends NPCAwareContent{
 				outputText("With the second phase completed, you slowly break the connection with your clone. Your mind and body wrack from the expended essence you've given to your clone. You decide to take the time to rest.\n\n");
 				outputText("After a couple of hours, you rise before leaving the half-finished creation in the corner of your [camp].\n\n");
 				player.addStatusValue(StatusEffects.PCClone, 3, 1);
-				EngineCore.SoulforceChange(-player.maxSoulforce());
-				HPChange(-(player.maxHP() * 0.5), true, false);
+				pc.SoulforceChange(-player.maxSoulforce());
+				pc.HPChange(-(player.maxHP() * 0.5), true, false);
 			}
 		}
 		else {
@@ -3855,8 +3851,8 @@ public class Camp extends NPCAwareContent{
 			outputText("An hour passes as you steadily concentrate on the essence that has left your body. Keeping your concentration on the swirling life, you guide more of essence and soul energy to leave your body and drift toward the new creation growing before you.\n\n");
 			outputText("The process is slow. While nourishing the core of the clone, you find yourself unable to expend any more of your life essence or risk being completely drained of soul essence.\n\n");
 			player.createStatusEffect(StatusEffects.PCClone, 0, 0, 1, 0);
-			EngineCore.SoulforceChange(-(player.maxSoulforce()));
-			HPChange(-(player.maxHP() * 0.5), true, false);
+			pc.SoulforceChange(-(player.maxSoulforce()));
+			pc.HPChange(-(player.maxHP() * 0.5), true, false);
 		}
 		doNext(camp.returnToCampUseEightHours);
 	}
@@ -4291,14 +4287,14 @@ public class Camp extends NPCAwareContent{
 	
 	private function useHealAtCamp():void {
 		clearOutput();
-		EngineCore.ManaChange(-30);
+		pc.ManaChange(-30);
 		CombatAbilities.Heal.doEffect();
 		advanceMinutes(15);
 		doNext(playerMenu);
 	}
 	private function useCureAtCamp():void {
 		clearOutput();outputText("You channel white magic to rid yourself of all negative effects affecting you.");
-		EngineCore.ManaChange(-500);
+		pc.ManaChange(-500);
 		CombatAbilities.Cure.doEffect();
 		advanceMinutes(15);
 		doNext(playerMenu);
@@ -4384,7 +4380,7 @@ public class Camp extends NPCAwareContent{
 			var hpBefore:int = player.HP;
 			timeQ = waitingORresting;
 			//THIS IS THE TEXT AREA FOR NOCTURNAL
-			HPChange(hpTime * hpRecovery * multiplier, false, false);
+			pc.HPChange(hpTime * hpRecovery * multiplier, false, false);
 			fatigue(timeQ * -fatRecovery * multiplier);
 
 			if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && !ingnam.inIngnam) {
@@ -4437,7 +4433,7 @@ public class Camp extends NPCAwareContent{
 
 			}
 
-			EngineCore.HPChangeNotify(player.HP - hpBefore);
+			pc.HPChangeNotify(player.HP - hpBefore);
 		} else {
 			clearOutput();
 			if (timeQ != 1) outputText("You continue to rest for " + num2Text(timeQ) + " more hours.\n");
@@ -4834,7 +4830,7 @@ public class Camp extends NPCAwareContent{
 					"\"<i>Good night.</i>\"\n\n");
 		}
 		//REGULAR HP/FATIGUE RECOVERY
-		HPChange(acceleratingRecoveryFactor(timeQ, true) * hpRecovery * multiplier, display, false);
+		pc.HPChange(acceleratingRecoveryFactor(timeQ, true) * hpRecovery * multiplier, display, false);
 		//fatigue
 		fatigue(-(timeQ * fatRecovery * multiplier));
 		if (player.perkv1(IMutationsLib.BlackBloodIM) >= 4 && flags[kFLAGS.LUNA_MOON_CYCLE] == 8 && (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || player.statStore.hasBuff("Damaged"))) {

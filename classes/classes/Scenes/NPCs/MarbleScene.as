@@ -506,7 +506,7 @@ private function apologizetoWalkingTitsIMEANMARBLE():void {
         flags[kFLAGS.MARBLE_WARNING] = 0;
         applyMarblesMilk();
         dynStats("lib", .2, "lus", (5 + player.lib / 10));
-        HPChange(100, false, false);
+        pc.HPChange(100, false, false);
         fatigue(-50);
         doNext(camp.returnToCampUseOneHour);
     } else doNext(recallWakeUp);
@@ -723,7 +723,7 @@ private function drinkMarbleMilk():void {
 	//(apply Marble's Milk status effect)
 	applyMarblesMilk();
     player.slimeFeed();
-	HPChange(10, false, false);
+	pc.HPChange(10, false, false);
 	player.refillHunger(20);
 	if (player.hasPerk(PerkLib.EmptyVessel) || player.hasPerk(PerkLib.SpiritualHunger)) player.hollowFeed(1);
 	fatigue(-20);

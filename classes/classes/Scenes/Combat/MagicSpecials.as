@@ -2160,7 +2160,7 @@ public class MagicSpecials extends BaseCombatContent {
 		outputText("  ");
 		damage = Math.round(damage * combat.iceDamageBoostedByDao());
 		doIceDamage(damage, true, true);
-		HPChange(damage,false,false);
+		pc.HPChange(damage,false,false);
 		outputText("\n\n");
 		if (player.hasPerk(PerkLib.EromancyMaster)) combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
 		doNext(playerMenu);
@@ -2997,7 +2997,7 @@ public class MagicSpecials extends BaseCombatContent {
 			player.createStatusEffect(StatusEffects.DragonBreathCooldown,0,0,0,0);
 			player.removeStatusEffect(StatusEffects.ChanneledAttack);
 			player.removeStatusEffect(StatusEffects.ChanneledAttackType);
-			for each (var perkObj:Object in CombatMagic.magicCounterPerks) {
+			for each (var perkObj:Object in values(CombatMagic.magicCounterPerks)) {
 				if ((player.hasPerk(perkObj.tier3) || player.hasPerk(perkObj.tier4)) && player.hasStatusEffect(perkObj.counter)) player.addStatusValue(perkObj.counter, 3, -1);
 			}
 
@@ -3074,7 +3074,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("You open your jaw, collecting all your draconic power into your chest. The light of your mixed power coalescing in your throat as you focus.\n\n");
 			player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
 			player.createStatusEffect(StatusEffects.ChanneledAttackType, 4, 0, 0, 0);
-			for each (var perkDragonObj:Object in CombatMagic.magicCounterPerks) {
+			for each (var perkDragonObj:Object in values(CombatMagic.magicCounterPerks)) {
 				if (player.hasPerk(perkDragonObj.tier3) || player.hasPerk(perkDragonObj.tier4)) player.addStatusValue(perkDragonObj.counter, 3, 1);
 			}
 			enemyAI();
@@ -4445,7 +4445,7 @@ public class MagicSpecials extends BaseCombatContent {
 			doMagicDamage(damage, true, true);
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			outputText(" damage!\n\n");
-			if (player.armor == armors.P_REGAL) HPChange(Math.round(damage*0.15), true, false);
+			if (player.armor == armors.P_REGAL) pc.HPChange(Math.round(damage*0.15), true, false);
 			checkAchievementDamage(damage);
 			combat.heroBaneProc(damage);
 			statScreenRefresh();
@@ -4517,7 +4517,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			outputText(" damage!\n\n");
 			damage *= 5;
-			if (player.armor == armors.P_REGAL) HPChange(Math.round(damage*0.15), true, false);
+			if (player.armor == armors.P_REGAL) pc.HPChange(Math.round(damage*0.15), true, false);
 			checkAchievementDamage(damage);
 			combat.heroBaneProc(damage);
 			statScreenRefresh();
@@ -4595,11 +4595,11 @@ public class MagicSpecials extends BaseCombatContent {
 		var enemyHPlost:Number = 0.3;
 		if (player.armor == armors.P_REGAL) enemyHPlost *= 1.5;
 		if (player.hasStatusEffect(StatusEffects.DarkRitual)) {
-			HPChange(-Math.round(player.maxHP() * 0.7), true, false);
+			pc.HPChange(-Math.round(player.maxHP() * 0.7), true, false);
 			monster.HP -= Math.round(monster.maxHP() * (enemyHPlost * 3));
 		}
 		else {
-			HPChange(-Math.round(player.maxHP() * 0.6), true, false);
+			pc.HPChange(-Math.round(player.maxHP() * 0.6), true, false);
 			monster.HP -= Math.round(monster.maxHP() * enemyHPlost);
 		}
 		enemyAI();
@@ -6537,7 +6537,7 @@ public class MagicSpecials extends BaseCombatContent {
 		outputText("You convert some of your stolen blood back to health.");
 		if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana)) player.addStatusValue(StatusEffects.VampThirstStacksHPMana,1,1);
 		else player.createStatusEffect(StatusEffects.VampThirstStacksHPMana,1,0,0,0);
-		HPChange(Math.round(player.maxHP()*0.05*stack), false, false);
+		pc.HPChange(Math.round(player.maxHP()*0.05*stack), false, false);
 		combat.combatMenu(false);
 	}
 	public function VampireThirstStacksToMana(stack:Number = 1):void {
@@ -6547,7 +6547,7 @@ public class MagicSpecials extends BaseCombatContent {
 		outputText("You convert some of your stolen blood back to energy.");
 		if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana)) player.addStatusValue(StatusEffects.VampThirstStacksHPMana,2,1);
 		else player.createStatusEffect(StatusEffects.VampThirstStacksHPMana,0,1,0,0);
-		EngineCore.ManaChange(Math.round(player.maxMana()*0.05*stack));
+		pc.ManaChange(Math.round(player.maxMana()*0.05*stack));
 		combat.combatMenu(false);
 	}
 
@@ -7049,7 +7049,7 @@ public class MagicSpecials extends BaseCombatContent {
 		temp += scalingBonusWisdom() * multiWis;
 		temp = Math.round(temp);
 		outputText("Your elemental encases your body within a bubble of curative spring water, slowly closing your wounds. The bubbles pop leaving you wet, but on the way to full recovery. <b>([font-heal]+" + temp + "[/font])</b>");
-		HPChange(temp,false,false);
+		pc.HPChange(temp,false,false);
 		outputText("\n\n");
 		enemyAI();
 	}
@@ -7202,7 +7202,7 @@ public class MagicSpecials extends BaseCombatContent {
 		temp += scalingBonusWisdom() * multiWis;
 		temp = Math.round(temp);
 		outputText("Your elemental temporarily covers your skin with bark, shielding you against strikes. This is the bark of medicinal plants and as such you recover from your injuries. <b>([font-heal]+" + temp + "[/font])</b>");
-		HPChange(temp,false,false);
+		pc.HPChange(temp,false,false);
 		outputText("\n\n");
 		enemyAI();
 	}
@@ -7720,7 +7720,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (type == 3) outputText("You channel warmth into your wounds soothing the pain and repairing the damages you sustained.");
 		if (type == 4) outputText("You relax and concentrate on your liquid form closing breaches and repairing any damage you sustained.");
 		outputText(" <b>([font-heal]+" + temp + "[/font])</b>");
-		HPChange(temp,false,false);
+		pc.HPChange(temp,false,false);
 		outputText("\n\n");
 		enemyAI();
 	}

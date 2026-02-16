@@ -65,12 +65,12 @@ public class VioletPupilTransformationSkill extends AbstractSoulSkill {
 			super.toggleOff(display);
 			if (display) outputText("<b>Your soulforce is too low to continue using Violet Pupil Transformation. </b>\n\n");
 		} else {
-			EngineCore.SoulforceChange(-sfCost);
+			pc.SoulforceChange(-sfCost);
 			
 			var amountToHeal:int = calcHealAmount();
 			if (display) outputText("<b>As your soulforce is drained you can feel Violet Pupil Transformation's regenerative power spreading throughout your body. ([font-heal]+"
 				 + numberFormat(amountToHeal) + "[/font])</b>\n\n");
-			HPChange(amountToHeal, false, false);
+			pc.HPChange(amountToHeal, false, false);
 		}
 	}
 

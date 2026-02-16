@@ -118,6 +118,7 @@ public class CoC extends MovieClip
     public var mainMenu:MainMenu = new MainMenu();
     public var perkMenu:PerkMenu = new PerkMenu();
     public var playerInfo:PlayerInfo = new PlayerInfo();
+    public var playerController:PlayerController = new PlayerController();
     public var debugInfoMenu:DebugInfo = new DebugInfo();
     public var gameSettings:GameSettings = new GameSettings();
     public var rootStory:Story = new Story("story",null,"root",true);
@@ -360,7 +361,6 @@ public class CoC extends MovieClip
 
         //Used for stat tracking to keep up/down arrows correct.
         oldStats = {};
-        model.oldStats = oldStats;
         oldStats.oldStr  = 0;
         oldStats.oldTou  = 0;
         oldStats.oldSpe  = 0;

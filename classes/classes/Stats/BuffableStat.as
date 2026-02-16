@@ -221,7 +221,7 @@ public class BuffableStat implements IStat, Jsonable {
 	public function listBuffs():/*Buff*/Array {
 		return _buffs.slice();
 	}
-	/** Return reference to internal buff list. READONLY OPERATIONS ONLY! */
+	/** Return reference to internal buff list. READ OPERATIONS ONLY! */
 	public function listBuffsUnsafe():/*Buff*/Array {
 		return _buffs;
 	}

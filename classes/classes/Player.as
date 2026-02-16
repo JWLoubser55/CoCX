@@ -102,6 +102,9 @@ use namespace CoC;
 			if (clear) EngineCore.clearOutputTextOnly();
 			EngineCore.outputText(text);
 		}
+		protected function get pc():PlayerController {
+			return game.playerController;
+		}
 
 		public var startingRace:String = "human";
 
@@ -3000,7 +3003,7 @@ use namespace CoC;
 				var gainedWrath:Number = 0;
 				gainedWrath += Math.sqrt(damage / 10);
 				gainedWrath = Math.round(gainedWrath * wrathFromHPmulti());
-				if (gainedWrath > 0) EngineCore.WrathChange(gainedWrath);
+				if (gainedWrath > 0) pc.WrathChange(gainedWrath);
 			}
 		}
 
@@ -3456,7 +3459,7 @@ use namespace CoC;
 					// var damage now store total damage across all hits
 					//Wrath
 					wrathFromBeenPunchingBag(damage);
-					//game.HPChange(-damage, display);
+					//pc.HPChange(-damage, display);
 					damage = Math.round(damage);
 					HP -= damage;
 					returnDamage = damage;
@@ -5902,8 +5905,8 @@ use namespace CoC;
 			if (perkv1(IMutationsLib.SlimeMetabolismIM) >= 1) {
 				var percent:Number = 0.01;
 				percent += (0.01 * perkv1(IMutationsLib.SlimeMetabolismIM));
-				EngineCore.HPChange(Math.round(maxHP() * percent), true, false);
-				EngineCore.ManaChange(Math.round(maxMana() * percent));
+				pc.HPChange(Math.round(maxHP() * percent), true, false);
+				pc.ManaChange(Math.round(maxMana() * percent));
 				EngineCore.changeFatigue(-Math.round(maxFatigue() * percent));
 			}
 			if (perkv1(IMutationsLib.SlimeMetabolismIM) >= 3 && !hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) createStatusEffect(StatusEffects.PostfluidIntakeRegeneration, 0, 0, 0, 0);
@@ -8102,7 +8105,7 @@ use namespace CoC;
 					}
 				}
 			}
-			EngineCore.HPChange(Math.round(maxHP() * .2), true, false);
+			pc.HPChange(Math.round(maxHP() * .2), true, false);
 			cumOmeter(40);
 			cor += 2;
 			var Ammount:Number = 100;
@@ -8139,7 +8142,7 @@ use namespace CoC;
 					}
 				}
 			}
-			EngineCore.HPChange(Math.round(maxHP() * .2), true, false);
+			pc.HPChange(Math.round(maxHP() * .2), true, false);
 			cumOmeter(40);
 			cor += 2;
 			var Ammount:Number = 100;
@@ -8157,7 +8160,7 @@ use namespace CoC;
 		public function hollowFeed(subtype:Number):void {
 			var amnt:Number = 0;
 			if (subtype == 0 || subtype == 1) {
-				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.1));
+				pc.SoulforceChange(Math.round(maxSoulforce() * 0.1));
 				amnt += Math.round(maxHunger() * 0.15);
 				if (hasPerk(PerkLib.ExanimationII) && subtype == 1) {
 					addPerkValue(PerkLib.ExanimationII, 1, 1);
@@ -8165,14 +8168,14 @@ use namespace CoC;
 				}
 			}
 			if (subtype == 2) {
-				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.1));
+				pc.SoulforceChange(Math.round(maxSoulforce() * 0.1));
 				amnt += Math.round(maxHunger() * 0.15);
 				addPerkValue(PerkLib.ExanimationII, 1, 1);
 				if (perkv1(PerkLib.ExanimationII) > hollowFeedSoulPointsCap()) setPerkValue(PerkLib.ExanimationII, 1, hollowFeedSoulPointsCap());
 			}
 			if (subtype == 3) {
-				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.25));
-				EngineCore.HPChange(Math.round(maxHP() * 0.1), true, false);
+				pc.SoulforceChange(Math.round(maxSoulforce() * 0.25));
+				pc.HPChange(Math.round(maxHP() * 0.1), true, false);
 				amnt += Math.round(maxHunger() * 0.1);
 				if (hasPerk(PerkLib.ExanimationII)) {
 					addPerkValue(PerkLib.ExanimationII, 1, 3);
@@ -8180,8 +8183,8 @@ use namespace CoC;
 				}
 			}
 			if (subtype == 4) {
-				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.3));
-				EngineCore.HPChange(Math.round(maxHP() * 0.3), true, false);
+				pc.SoulforceChange(Math.round(maxSoulforce() * 0.3));
+				pc.HPChange(Math.round(maxHP() * 0.3), true, false);
 				amnt += Math.round(maxHunger() * 0.3);
 				if (game.monster is Goblin || game.monster is GoblinAssassin || game.monster is GoblinShaman || game.monster is GoblinWarrior) flags[kFLAGS.GOBLINS_KILLED]++;
 				else if (game.monster is Hollow) flags[kFLAGS.HOLLOWS_KILLED]++;
@@ -8231,9 +8234,9 @@ use namespace CoC;
 
 		public function myconidAbsorbNutrient():void {
 			addPerkValue(PerkLib.AbsorbNutrient, 2, 1);
-			EngineCore.HPChange(((100 + (tou*2)) * 1), true, false);
-			EngineCore.ManaChange(((100 + (inte*2)) * 1));
-			EngineCore.SoulforceChange(((100 + (wis*2)) * 1));
+			pc.HPChange(((100 + (tou*2)) * 1), true, false);
+			pc.ManaChange(((100 + (inte*2)) * 1));
+			pc.SoulforceChange(((100 + (wis*2)) * 1));
 			EngineCore.changeFatigue(-((100 + (spe*2)) * 1));
 			if (perkv2(PerkLib.AbsorbNutrient) > 125) {
 				outputText("You sigh in delight as you fully absorb the nutrient from your most recent meal into your cap yet unable to evolve further your cap instead release this in the form of a metabolic boost as you feel a surge in your esper ability.");
@@ -8276,7 +8279,7 @@ use namespace CoC;
 					}
 				}
 			}
-			EngineCore.HPChange(Math.round(maxHP() * .2), true, false);
+			pc.HPChange(Math.round(maxHP() * .2), true, false);
 			cumOmeter(40);
 			cor += 2;
 			var Ammount:Number = 100;
@@ -8300,8 +8303,8 @@ use namespace CoC;
 					var mfFM:Number = 1;
 					if (perkv1(IMutationsLib.FiendishMetabolismIM) >= 4) mfFM *= 2;
 					if (hunger < maxHunger()) refillHunger((10 * mfFM), false, true);
-					EngineCore.HPChange(((100 + (tou*2)) * mfFM), true, false);
-					EngineCore.ManaChange(((100 + (inte*2)) * mfFM));
+					pc.HPChange(((100 + (tou*2)) * mfFM), true, false);
+					pc.ManaChange(((100 + (inte*2)) * mfFM));
 					EngineCore.changeFatigue(-((100 + (spe*2)) * mfFM));
 					outputText("You feel energised and empowered by the energy drained out of the fluid of your recent fuck. What a meal!\n\n");
 					addPerkValue(PerkLib.DemonEnergyThirst, 1, 1);
@@ -8443,9 +8446,9 @@ use namespace CoC;
 			var hpc:Number = 25 + (lib / 2);
 			if (perkv1(IMutationsLib.StillHeartIM) >= 1) hpc *= (1 + (0.01 * perkv1(IMutationsLib.StillHeartIM)));
 			if (perkv1(IMutationsLib.StillHeartIM) >= 3) hpc += Math.round(maxHP() * 0.01 * (perkv1(IMutationsLib.StillHeartIM) - 2));
-			if (perkv1(IMutationsLib.StillHeartIM) >= 2) EngineCore.HPChange(hpc, true, true);
-			else EngineCore.HPChange(hpc, true, false);
-			EngineCore.ManaChange(25 + (inte/2));
+			if (perkv1(IMutationsLib.StillHeartIM) >= 2) pc.HPChange(hpc, true, true);
+			else pc.HPChange(hpc, true, false);
+			pc.ManaChange(25 + (inte/2));
 			EngineCore.changeFatigue(-(25 + (spe/2)));
 			removeCurse("lib", 5, 1);
 			removeCurse("lib", 5, 2);
@@ -8469,7 +8472,7 @@ use namespace CoC;
 					}
 				}
 			}
-			EngineCore.HPChange(Math.round(maxHP() * .05), true, false);
+			pc.HPChange(Math.round(maxHP() * .05), true, false);
 		}
 
 		public function hasUniquePregnancy():Boolean{

@@ -632,7 +632,7 @@ public class Parser
 
 			if (mainParserDebug) trace("WARNING: string length = ", textCtnt.length);
 
-			else if (singleWordTagRegExp.exec(textCtnt))
+			if (singleWordTagRegExp.exec(textCtnt))
 			{
 				if (mainParserDebug) trace("WARNING: It's a single word!");
 				retStr += convertSingleArg(textCtnt);

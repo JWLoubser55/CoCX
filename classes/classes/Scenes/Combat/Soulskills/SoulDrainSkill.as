@@ -105,8 +105,8 @@ public class SoulDrainSkill extends AbstractSoulSkill {
 		doDarknessDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		checkAchievementDamage(damage);
-		if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) HPChange(calcHealAmount(), display, true);
-		else HPChange(calcHealAmount(), display, false);
+		if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) pc.HPChange(calcHealAmount(), display, true);
+		else pc.HPChange(calcHealAmount(), display, false);
 		monster.addSoulforce(-calcSoulforceDrain(monster)); 
 		if (display) outputText("\n\n");
 		if (player.hasPerk(PerkLib.BrutalSpells) && monster.armorMDef > 0) {

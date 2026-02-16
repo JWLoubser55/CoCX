@@ -1218,7 +1218,7 @@ import classes.Scenes.Combat.CombatAbility;
 			player.tone += 5;
 			player.thickness += 5;
 			if (!player.hasPerk(PerkLib.Tough)) player.createPerk(PerkLib.Tough, 1, 0, 0, 0);
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 			chooseBloodlineorNot();
 		}
 

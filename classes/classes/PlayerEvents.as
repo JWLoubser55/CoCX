@@ -136,7 +136,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					}
 				}
 				if (player.hunger <= Math.round(player.maxHunger() * 0.5) && player.hasPerk(PerkLib.ExanimationI)) {
-					EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.15));
+					pc.SoulforceChange(-Math.round(player.maxSoulforce() * 0.15));
 					if (player.soulforce <= 0) player.takePhysDamage(player.maxHP() * 0.35);
 				}
 				if (player.hunger <= Math.round(player.maxHunger() * 0.3) && player.hasPerk(PerkLib.ExanimationI)) player.takePhysDamage(player.maxHP() * 0.2);
@@ -385,7 +385,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 							else drainAmt += 60;
 						}
 					}
-					if (player.hasPerk(PerkLib.ConductionSoulforceCharge) && player.soulforce >= drainAmt) EngineCore.SoulforceChange(-drainAmt);
+					if (player.hasPerk(PerkLib.ConductionSoulforceCharge) && player.soulforce >= drainAmt) pc.SoulforceChange(-drainAmt);
 					else flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] -= drainAmt;
 				}
 				if (flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] <= 0) {
@@ -1271,7 +1271,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				//if (player.hasPerk(PerkLib.MetamorphMastery) && player.perkv1(PerkLib.MetamorphMastery) < 5) player.addPerkValue(PerkLib.MetamorphMastery, 1, 1);
 				//Daily regeneration of mana for non mages
 				if (!player.hasPerk(PerkLib.JobSorcerer) && !player.hasPerk(PerkLib.JobHealer) && !player.hasPerk(PerkLib.JobElementalConjurer) && !player.hasPerk(PerkLib.JobGolemancer)) {
-					EngineCore.ManaChange(150);
+					pc.ManaChange(150);
 				}
 				//Chi Chi healing progress
 				if (flags[kFLAGS.CHI_CHI_LVL_UP] < 5 && flags[kFLAGS.CHI_CHI_DAILY_TRAINING] < 1) {
@@ -2042,10 +2042,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hunger < player.maxHunger()) {
 					player.refillHunger(10, false);
 				}
-				EngineCore.HPChange(100 + (player.tou*2), true, false);
-				EngineCore.ManaChange(100 + (player.inte*2));
+				pc.HPChange(100 + (player.tou*2), true, false);
+				pc.ManaChange(100 + (player.inte*2));
 				EngineCore.changeFatigue(-(100 + (player.spe*2)));
-				EngineCore.SoulforceChange(500 + (player.wis*2));
+				pc.SoulforceChange(500 + (player.wis*2));
 				outputText("You feel energized and empowered by the life force drained out of the fluids of your recent blind date. What a meal!\n\n");
 				player.removeStatusEffect(StatusEffects.KitsuneEnergyThirstFeed);
 			}
