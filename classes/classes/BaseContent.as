@@ -53,6 +53,11 @@ import coc.xxc.StoryContext;
 		{
 			return CoC.instance.timeQ + Math.floor(CoC.instance.timeQmin/60);
 		}
+		protected static function set timeQ(value:Number): void
+		{
+			CoC.instance.timeQ = value;
+			CoC.instance.timeQmin %= 60;
+		}
 
 		/**
 		 * Time advancement is planned
@@ -592,10 +597,6 @@ import coc.xxc.StoryContext;
 			return EngineCore.silly();
 		}
 
-		protected function HPChange(changeNum:Number,display:Boolean, stillness:Boolean):void
-		{
-			EngineCore.HPChange(changeNum,display,stillness);
-		}
 
 		// For fatigue(mod,type) calls
 		public static const USEFATG_NORMAL:int = 0;
@@ -618,6 +619,9 @@ import coc.xxc.StoryContext;
 		}
 
 		protected static function playerMenu():void { EventParser.playerMenu(); }
+		protected static function get pc():PlayerController {
+			return CoC.instance.playerController;
+		}
 		protected static function get player():Player
 		{
 			return CoC.instance.player;
@@ -804,12 +808,12 @@ import coc.xxc.StoryContext;
 
 		protected function showStatDown(arg:String):void
 		{
-			CoC.instance.mainView.statsView.showStatDown(arg);
+			mainViewManager.showStatDown(arg);
 		}
 
 		protected function showStatUp(arg:String):void
 		{
-			CoC.instance.mainView.statsView.showStatUp(arg);
+			mainViewManager.showStatUp(arg);
 		}
 
 		protected function buttonTextIsOneOf(index:int, possibleLabels:Array):Boolean {

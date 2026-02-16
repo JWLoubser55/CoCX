@@ -1391,7 +1391,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.wrath > player.maxWrath()) PAC += player.maxWrath();
 			else PAC += player.wrath;
 		}
-		EngineCore.WrathChange(-PAC);
+		pc.WrathChange(-PAC);
 		combat.heroBaneProc(damage);
 		combat.EruptingRiposte();
 		enemyAI();
@@ -1479,7 +1479,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.wrath > player.maxWrath()) PSC += player.maxWrath();
 			else PSC += player.wrath;
 		}
-		EngineCore.WrathChange(-PSC);
+		pc.WrathChange(-PSC);
 		combat.heroBaneProc(damage);
 		flags[kFLAGS.ARROWS_SHOT]++;
 		bowPerkUnlock();
@@ -1916,7 +1916,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.CooldownWarriorShout, 10, 0, 0, 0);
 		}
 		wsr *= player.maxOverWrath();
-		EngineCore.WrathChange(wsr);
+		pc.WrathChange(wsr);
 		menu();
 		addButton(0, "Next", combatMenu, false);
 	}
@@ -1924,7 +1924,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function charging():void {
 		clearOutput();
 		var costvalue:Number = chargingcoooooost();
-		if (player.statStore.hasBuff("ScarletSpiritCharge")) HPChange(-(costvalue*2), false, false);
+		if (player.statStore.hasBuff("ScarletSpiritCharge")) pc.HPChange(-(costvalue*2), false, false);
 		else {
 			fatigue(physicalSpecialsCost(costvalue), USEFATG_PHYSICAL);
 			if (player.perkv1(IMutationsLib.TwinHeartIM) >= 1 && (player.isTaur() || player.isDrider())) {
@@ -5170,7 +5170,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				monster.armorDef -= debuff;
 				monster.createStatusEffect(StatusEffects.DefPDebuff, 3, debuff, 0, 0);
 			}
-			if (player.armor == armors.P_REGAL) HPChange(Math.round(damage*0.15), true, false);
+			if (player.armor == armors.P_REGAL) pc.HPChange(Math.round(damage*0.15), true, false);
 		}
 		else outputText("[Themonster] moves back just in time to avoid being crushed.");
 		outputText("\n\n");
@@ -7173,7 +7173,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 
 	public function shieldBash():void {
 		clearOutput();
-		if (!player.hasStatusEffect(StatusEffects.CounterAction)) EngineCore.WrathChange(-shieldbashcostly());
+		if (!player.hasStatusEffect(StatusEffects.CounterAction)) pc.WrathChange(-shieldbashcostly());
 		outputText("You ready your [shield] and prepare to slam it towards [themonster].  ");
 		if ((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) {
 			if (monster.spe - player.spe >= 20) outputText("[Themonster] deftly avoids your slow attack.");
@@ -8250,7 +8250,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		storedmomentum2 = Math.round(storedmomentum2 * player.statusEffectv1(StatusEffects.StoredMomentum) * limit1);
 		if (player.statStore.hasBuff("Stored Momentum")) player.statStore.removeBuffs("Stored Momentum");
 		var oldHPratio:Number    = player.hp100 / 100;
-		mainView.statsView.showStatUp('spe');
+		showStatUp('spe');
 		player.buff("Stored Momentum").setStats({"spe": storedmomentum1, "str": storedmomentum2}).combatTemporary(limit);
 		player.HP = oldHPratio * player.maxHP();
 	}

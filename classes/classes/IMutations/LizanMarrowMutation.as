@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
 public class LizanMarrowMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Lizan Marrow";
-        }
+		public static const MNAME:String = "Lizan Marrow";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -72,7 +73,7 @@ public class LizanMarrowMutation extends IMutationPerkType
         }
 
         public function LizanMarrowMutation() {
-            super(mName + " IM", mName, SLOT_BONE, 4);
+            super(MNAME, SLOT_BONE, 4);
         }
 
     }

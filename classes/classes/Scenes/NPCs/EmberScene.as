@@ -1871,7 +1871,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
         if (emberAffection() < 75) dynStats("lus", 20, "scale", false);
         fatigue(-50);
         player.slimeFeed();
-        HPChange(player.maxHP() * .33, false, false);
+        pc.HPChange(player.maxHP() * .33, false, false);
         endEncounter();
     }
 
@@ -1978,7 +1978,7 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
             emberAffection(-5);
         }
         cleanupAfterCombat();
-        HPChange(player.maxHP() * .33, false, false);
+        pc.HPChange(player.maxHP() * .33, false, false);
     }
 
     //[Catch Anal] - a dragon coq up the date (Z)

@@ -1364,7 +1364,7 @@ import classes.lists.Gender;
 			var refillAmount:int = (flags[kFLAGS.JOY_BREAST_SIZE] + 6) * 5;
 			player.refillHunger(refillAmount);
 			fatigue(-40);
-			HPChange(50 + player.maxHP() / 5, false, false);
+			pc.HPChange(50 + player.maxHP() / 5, false, false);
 			dynStats("lus", 20 + (player.lib / 5), "scale", false);
 			//Libido reduction
 			dynStats("lib", -1);
@@ -2184,7 +2184,7 @@ import classes.lists.Gender;
 			outputText("\n\nYou yawn and rub the sleep off your eyes, thanking Joy for her help.");
 			outputText("\n\n\"<i>Like, it's nothing.... [name]?</i>\" She asks, softly.");
 			outputText("\n\nYou perk up, listening attentively to what Joy has to say.");
-			outputText("\n\n\"<i>Don't you think our babies are so cute...? Well, let's make some more then! Right away!</i>\ The bimbo hermaphrodite enthuses.");
+			outputText("\n\n\"<i>Don't you think our babies are so cute...? Well, let's make some more then! Right away!</i> The bimbo hermaphrodite enthuses.");
 			outputText("\n\nYou laugh at Joy's offer; then tell her to give you a break and let you at least recover from this birth before suggesting something like that.");
 			outputText("\n\n\"<i>Like, I'm sorry, I guess I just wasn't thinking, huh, [name]?</i>\" Joy replies, clearly abashed.");
 			outputText("\n\nUpon seeing that, you give her a hug, ruffling her hair and tell her you'll think about it.");

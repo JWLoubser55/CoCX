@@ -16,10 +16,6 @@ import classes.internals.WeightedDrop;
 
 import coc.view.CoCButton;
 
-import flash.utils.Dictionary;
-
-import mx.formatters.NumberFormatter;
-
 public class Lethice extends Monster
 	{
 		public function Lethice()
@@ -382,9 +378,8 @@ public class Lethice extends Monster
 				}
 				var index:int = dictOrder.indexOf(dict);
 				if(index>-1){
-					var numberformat:NumberFormatter = new NumberFormatter();
 					var deflectDamage:Number = Math.round(damage * (dictValue[index]/100));
-					var dmgText:String = numberformat.format(Math.floor(Math.abs(deflectDamage)));
+					var dmgText:String = formatNumber(Math.floor(Math.abs(deflectDamage)));
 					switch(dict){
 						case "lust":
 							player.takeLustDamage(deflectDamage);

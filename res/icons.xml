@@ -322,6 +322,19 @@
             <icon>Yes</icon>
             <icon>No</icon>
             <icon>Back</icon>
+            <icon>Tab</icon>
+        </row>
+        <row>
+            <icon>Up</icon>
+            <icon>Down</icon>
+        </row>
+        <row>
+            <icon>LeftRed</icon>
+            <icon>RightRed</icon>
+        </row>
+        <row>
+            <icon>UpRed</icon>
+            <icon>DownRed</icon>
         </row>
     </file>
 

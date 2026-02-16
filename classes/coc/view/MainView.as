@@ -16,6 +16,8 @@ import classes.CoC;
 import classes.CoC_Settings;
 import classes.EngineCore;
 
+import coc.view.NewStatsView;
+
 
 import com.bit101.components.ComboBox;
 import com.bit101.components.ScrollBar;
@@ -155,35 +157,35 @@ public class MainView extends Block {
 	internal static const BOTTOM_BUTTON_COUNT:int = BOTTOM_COLS * BOTTOM_ROWS;
 	
 	// Column 1 core
-	internal static const STATBAR_COL_W:Number   = 205;
-	internal static const STATBAR_W:Number       = STATBAR_COL_W * 2;
-	internal static const CHARVIEW_W:Number      = 200*2;
-	internal static const COLUMN_1_X:Number      = HALFGAP;
-	internal static const COLUMN_1_W:Number      = Math.max(STATBAR_W, CHARVIEW_W);
-	internal static const COLUMN_1_RIGHT:Number  = COLUMN_1_X + COLUMN_1_W;
+	public static const STATBAR_COL_W:Number   = 205;
+	public static const STATBAR_W:Number       = STATBAR_COL_W * 2 + HALFGAP;
+	public static const CHARVIEW_W:Number      = 200*2;
+	public static const COLUMN_1_X:Number      = HALFGAP;
+	public static const COLUMN_1_W:Number      = Math.max(STATBAR_W, CHARVIEW_W);
+	public static const COLUMN_1_RIGHT:Number  = COLUMN_1_X + COLUMN_1_W;
 	// Column 2 core
-	public static const TEXTZONE_W:Number        = 770;
-	internal static const COLUMN_2_X:Number      = COLUMN_1_RIGHT + GAP;
-	internal static const COLUMN_2_W:Number      = TEXTZONE_W;
-	internal static const COLUMN_2_RIGHT:Number  = COLUMN_2_X + COLUMN_2_W;
+	public static const TEXTZONE_W:Number      = 770;
+	public static const COLUMN_2_X:Number      = COLUMN_1_RIGHT + GAP;
+	public static const COLUMN_2_W:Number      = TEXTZONE_W;
+	public static const COLUMN_2_RIGHT:Number  = COLUMN_2_X + COLUMN_2_W;
 	// Column 3 core
-	internal static const COLUMN_3_X:Number      = COLUMN_2_RIGHT + GAP;
-	internal static const COLUMN_3_RIGHT:Number  = SCREEN_W - HALFGAP;
-	internal static const COLUMN_3_W:Number      = COLUMN_3_RIGHT - COLUMN_3_X;
+	public static const COLUMN_3_X:Number      = COLUMN_2_RIGHT + GAP;
+	public static const COLUMN_3_RIGHT:Number  = SCREEN_W - HALFGAP;
+	public static const COLUMN_3_W:Number      = COLUMN_3_RIGHT - COLUMN_3_X;
 	// Top row. Its width depends on textzone size and declared later
-	internal static const TOPROW_X:Number        = COLUMN_1_X;
-	internal static const TOPROW_Y:Number        = HALFGAP;
-	internal static const TOPROW_H:Number        = BTN_H;
-	internal static const TOPROW_BOTTOM:Number   = TOPROW_Y + TOPROW_H + GAP;
+	public static const TOPROW_X:Number        = COLUMN_1_X;
+	public static const TOPROW_Y:Number        = HALFGAP;
+	public static const TOPROW_H:Number        = BTN_H;
+	public static const TOPROW_BOTTOM:Number   = TOPROW_Y + TOPROW_H + GAP;
 	// Stat bar and its columns. Height depends on charview size
 	public static const STATBAR_X:Number       = COLUMN_1_X;
-	internal static const STATBAR_Y:Number       = TOPROW_BOTTOM + GAP;
-	internal static const STATBAR_1_X:Number     = STATBAR_X;
-	internal static const STATBAR_1_RIGHT:Number = STATBAR_1_X + STATBAR_COL_W + HALFGAP;
-	internal static const STATBAR_2_X:Number     = STATBAR_1_RIGHT;
-	internal static const STATBAR_2_RIGHT:Number = STATBAR_2_X + STATBAR_COL_W + HALFGAP;
-	internal static const STATBAR_RIGHT:Number   = STATBAR_2_RIGHT;
-	public static const STATBAR_WIDTH:Number     = STATBAR_RIGHT - STATBAR_X;
+	public static const STATBAR_Y:Number       = TOPROW_BOTTOM + GAP;
+	public static const STATBAR_1_X:Number     = STATBAR_X;
+	public static const STATBAR_1_RIGHT:Number = STATBAR_1_X + STATBAR_COL_W + HALFGAP;
+	public static const STATBAR_2_X:Number     = STATBAR_1_RIGHT;
+	public static const STATBAR_2_RIGHT:Number = STATBAR_2_X + STATBAR_COL_W + HALFGAP;
+	public static const STATBAR_RIGHT:Number   = STATBAR_2_RIGHT;
+	public static const STATBAR_WIDTH:Number   = STATBAR_RIGHT - STATBAR_X;
 	// Char viewer
 	internal static const CHARVIEW_X:Number      = 0;
 	internal static const CHARVIEW_H:Number      = 202*2;
@@ -215,9 +217,9 @@ public class MainView extends Block {
 	internal static const CORNERSTATS_BOTTOM:Number = SCREEN_H - HALFGAP;
 	// Various dependencies
 	internal static const TEXTZONE_H:Number         = SCREEN_H - TEXTZONE_Y - BOTTOM_H - 2 * GAP;
-	internal static const TOPROW_W:Number           = TEXTZONE_X + TEXTZONE_W;
-	internal static const STATBAR_BOTTOM:Number     = CHARVIEW_BOTTOM - CHARVIEW_H - GAP;
-	internal static const STATBAR_H:Number          = STATBAR_BOTTOM - STATBAR_Y;
+	public static const TOPROW_W:Number           = TEXTZONE_X + TEXTZONE_W;
+	public static const STATBAR_BOTTOM:Number     = CHARVIEW_BOTTOM - CHARVIEW_H - GAP;
+	public static const STATBAR_H:Number          = STATBAR_BOTTOM - STATBAR_Y;
 
 	private var blackBackground:BitmapDataSprite;
 	public var textBGWhite:BitmapDataSprite;
@@ -733,6 +735,15 @@ public class MainView extends Block {
 		var button:CoCButton = this.getMenuButtonByName(name);
 		button.visible       = false;
 	}
+	public function flashMenuButton(name:String, color:String="#ffcc00"):void {
+		var button:CoCButton = this.getMenuButtonByName(name);
+		button.flashLabelColor(color);
+	}
+
+	public function unflashMenuButton(name:String):void {
+		var button:CoCButton = this.getMenuButtonByName(name);
+		button.unflashLabelColor();
+	}
 
 	public function showAllMenuButtons():void {
 		this.showMenuButton(MENU_NEW_MAIN);
@@ -954,14 +965,25 @@ public class MainView extends Block {
 		// sprite.x = SCREEN_W - GAP - sprite.width; // align right
 		// sprite.y = SCREEN_H - GAP - sprite.height; // align bottom
 	}
+	public var theme:*;
 	public function setTheme(theme:int, font:String):void {
 		var style:* = Themes[theme];
 		if (!style) return;
+		this.theme = style;
 		background.bitmapClass    = style.bgBitmap;
 		backgroundGlass.fillColor = style.glass;
 		backgroundGlass.alpha     = style.glassAlpha;
 		statsView.setTheme(theme, font);
 		monsterStatsView.setTheme(theme, font);
+	}
+	public function showNameBoxAfterText(text:String = ""): void {
+		nameBox.visible = true;
+		nameBox.width = 165;
+		nameBox.x = mainText.x + 5;
+		nameBox.y = mainText.y + 3 + mainText.textHeight;
+		nameBox.text = "";
+		nameBox.maxChars = 16;
+		nameBox.restrict = null;
 	}
 }
 }

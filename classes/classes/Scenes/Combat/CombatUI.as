@@ -199,7 +199,7 @@ public class CombatUI extends BaseCombatContent {
 		if (player.weapon == weapons.MGSWORD && (player.weaponRangePerk == "" || player.weaponRangePerk == "Tome")) btnRanged.show("MoonWave", combat.throwElementalAttack, "Attack enemy with wave of moonlight.  Damage done is determined by your intelligence and weapon.").icon("A_Ranged");
 		if (player.weapon == weapons.MCLAWS && (player.weaponRangePerk == "" || player.weaponRangePerk == "Tome")) btnRanged.show("MoonWave", combat.throwElementalAttack, "Attack enemy with wave of moonlight.  Damage done is determined by your intelligence and weapon.").icon("A_Ranged");
 		if (player.weapon is Tidarion && (player.weaponRangePerk == "" || player.weaponRangePerk == "Tome")) btnRanged.show("FireBeam", combat.throwElementalAttack, "Attack enemy with a beam of fire.  Damage done is determined by your intelligence and weapon.").icon("A_Ranged");
-		btnItems.show("Items", inventory.inventoryMenu, "The inventory allows you to use an item.  Be careful, as this leaves you open to a counterattack when in combat.").icon("I_red potion icon id")
+		btnItems.show("Items", inventory.inventoryMenu, "The inventory allows you to use an item.  Be careful, as this leaves you open to a counterattack when in combat.").icon("I_red potion icon id");
 
 		// Submenus
 		function vampireBiteDuringGrapple(Position:int):void {
@@ -249,7 +249,7 @@ public class CombatUI extends BaseCombatContent {
 		if (spellBookButtons.length > 0) btnMagic.show("Spells", submenuSpells, "Opens your spells menu, where you can cast any spells you have learned.", "Spells").icon("A_Magic")
 		if (player.hasStatusEffect(StatusEffects.OniRampage) || player.wrath > player.maxSafeWrathSpellcasting()) {
 			btnMagic.disable("You are too angry to think straight. Smash your puny opponents first and think later.\n\n").icon("A_Magic")
-		} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic")
+		} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic");
 		// Submenu - Soulskills
 		//buildAbilityMenu(CombatAbilities.ALL_SOULSKILLS, soulforceButtons);
 		BuildSoulskillMenu(soulforceButtons);

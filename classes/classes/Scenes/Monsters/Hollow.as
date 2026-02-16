@@ -27,7 +27,7 @@ use namespace CoC;
                 if (player.hasStatusEffect(StatusEffects.AcidDoT)) player.addStatusValue(StatusEffects.AcidDoT, 1, 1);
                 else player.createStatusEffect(StatusEffects.AcidDoT, 3, 15, 0, 0);
             }
-			EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.05));
+			pc.SoulforceChange(-Math.round(player.maxSoulforce() * 0.05));
 			player.refillHunger(-5, false);
 			outputText("She then flips back and launches herself–horns first at you. ");
 			var hornspoke:Number = this.str;

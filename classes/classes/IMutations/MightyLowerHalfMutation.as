@@ -4,17 +4,17 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.PerkLib;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Races;
 
 public class MightyLowerHalfMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Mighty Lower Half";
-        }
+		public static const MNAME:String = "Mighty Lower Half";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -66,7 +66,7 @@ public class MightyLowerHalfMutation extends IMutationPerkType
 
         public function MightyLowerHalfMutation() 
 		{
-			super(mName + " IM", mName, SLOT_ADAPTATIONS, 4);
+			super(MNAME, SLOT_ADAPTATIONS, 4);
         }
     }
 }

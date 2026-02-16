@@ -136,7 +136,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					}
 				}
 				if (player.hunger <= Math.round(player.maxHunger() * 0.5) && player.hasPerk(PerkLib.ExanimationI)) {
-					EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.15));
+					pc.SoulforceChange(-Math.round(player.maxSoulforce() * 0.15));
 					if (player.soulforce <= 0) player.takePhysDamage(player.maxHP() * 0.35);
 				}
 				if (player.hunger <= Math.round(player.maxHunger() * 0.3) && player.hasPerk(PerkLib.ExanimationI)) player.takePhysDamage(player.maxHP() * 0.2);
@@ -186,50 +186,50 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			if (player.cumMultiplier > 19999) player.cumMultiplier = 19999;
 			if (player.ballSize > 400) player.ballSize = 400;
 			var maxSlots:int = inventory.getMaxSlots();
-			player.itemSlot7.unlocked = maxSlots >= 7;
-			player.itemSlot8.unlocked = maxSlots >= 8;
-			player.itemSlot9.unlocked = maxSlots >= 9;
-			player.itemSlot10.unlocked = maxSlots >= 10;
-			player.itemSlot11.unlocked = maxSlots >= 11;
-			player.itemSlot12.unlocked = maxSlots >= 12;
-			player.itemSlot13.unlocked = maxSlots >= 13;
-			player.itemSlot14.unlocked = maxSlots >= 14;
-			player.itemSlot15.unlocked = maxSlots >= 15;
-			player.itemSlot16.unlocked = maxSlots >= 16;
-			player.itemSlot17.unlocked = maxSlots >= 17;
-			player.itemSlot18.unlocked = maxSlots >= 18;
-			player.itemSlot19.unlocked = maxSlots >= 19;
-			player.itemSlot20.unlocked = maxSlots >= 20;
-			player.itemSlot21.unlocked = maxSlots >= 21;
-			player.itemSlot22.unlocked = maxSlots >= 22;
-			player.itemSlot23.unlocked = maxSlots >= 23;
-			player.itemSlot24.unlocked = maxSlots >= 24;
-			player.itemSlot25.unlocked = maxSlots >= 25;
-			player.itemSlot26.unlocked = maxSlots >= 26;
-			player.itemSlot27.unlocked = maxSlots >= 27;
-			player.itemSlot28.unlocked = maxSlots >= 28;
-			player.itemSlot29.unlocked = maxSlots >= 29;
-			player.itemSlot30.unlocked = maxSlots >= 30;
-			player.itemSlot31.unlocked = maxSlots >= 31;
-			player.itemSlot32.unlocked = maxSlots >= 32;
-			player.itemSlot33.unlocked = maxSlots >= 33;
-			player.itemSlot34.unlocked = maxSlots >= 34;
-			player.itemSlot35.unlocked = maxSlots >= 35;
-			player.itemSlot36.unlocked = maxSlots >= 36;
-			player.itemSlot37.unlocked = maxSlots >= 37;
-			player.itemSlot38.unlocked = maxSlots >= 38;
-			player.itemSlot39.unlocked = maxSlots >= 39;
-			player.itemSlot40.unlocked = maxSlots >= 40;
-			player.itemSlot41.unlocked = maxSlots >= 41;
-			player.itemSlot42.unlocked = maxSlots >= 42;
-			player.itemSlot43.unlocked = maxSlots >= 43;
-			player.itemSlot44.unlocked = maxSlots >= 44;
-			player.itemSlot45.unlocked = maxSlots >= 45;
-			player.itemSlot46.unlocked = maxSlots >= 46;
-			player.itemSlot47.unlocked = maxSlots >= 47;
-			player.itemSlot48.unlocked = maxSlots >= 48;
-			player.itemSlot49.unlocked = maxSlots >= 49;
-			player.itemSlot50.unlocked = maxSlots >= 50;
+			player.itemSlots[6].unlocked = maxSlots >= 7;
+			player.itemSlots[7].unlocked = maxSlots >= 8;
+			player.itemSlots[8].unlocked = maxSlots >= 9;
+			player.itemSlots[9].unlocked = maxSlots >= 10;
+			player.itemSlots[10].unlocked = maxSlots >= 11;
+			player.itemSlots[11].unlocked = maxSlots >= 12;
+			player.itemSlots[12].unlocked = maxSlots >= 13;
+			player.itemSlots[13].unlocked = maxSlots >= 14;
+			player.itemSlots[14].unlocked = maxSlots >= 15;
+			player.itemSlots[15].unlocked = maxSlots >= 16;
+			player.itemSlots[16].unlocked = maxSlots >= 17;
+			player.itemSlots[17].unlocked = maxSlots >= 18;
+			player.itemSlots[18].unlocked = maxSlots >= 19;
+			player.itemSlots[19].unlocked = maxSlots >= 20;
+			player.itemSlots[20].unlocked = maxSlots >= 21;
+			player.itemSlots[21].unlocked = maxSlots >= 22;
+			player.itemSlots[22].unlocked = maxSlots >= 23;
+			player.itemSlots[23].unlocked = maxSlots >= 24;
+			player.itemSlots[24].unlocked = maxSlots >= 25;
+			player.itemSlots[25].unlocked = maxSlots >= 26;
+			player.itemSlots[26].unlocked = maxSlots >= 27;
+			player.itemSlots[27].unlocked = maxSlots >= 28;
+			player.itemSlots[28].unlocked = maxSlots >= 29;
+			player.itemSlots[29].unlocked = maxSlots >= 30;
+			player.itemSlots[30].unlocked = maxSlots >= 31;
+			player.itemSlots[31].unlocked = maxSlots >= 32;
+			player.itemSlots[32].unlocked = maxSlots >= 33;
+			player.itemSlots[33].unlocked = maxSlots >= 34;
+			player.itemSlots[34].unlocked = maxSlots >= 35;
+			player.itemSlots[35].unlocked = maxSlots >= 36;
+			player.itemSlots[36].unlocked = maxSlots >= 37;
+			player.itemSlots[37].unlocked = maxSlots >= 38;
+			player.itemSlots[38].unlocked = maxSlots >= 39;
+			player.itemSlots[39].unlocked = maxSlots >= 40;
+			player.itemSlots[40].unlocked = maxSlots >= 41;
+			player.itemSlots[41].unlocked = maxSlots >= 42;
+			player.itemSlots[42].unlocked = maxSlots >= 43;
+			player.itemSlots[43].unlocked = maxSlots >= 44;
+			player.itemSlots[44].unlocked = maxSlots >= 45;
+			player.itemSlots[45].unlocked = maxSlots >= 46;
+			player.itemSlots[46].unlocked = maxSlots >= 47;
+			player.itemSlots[47].unlocked = maxSlots >= 48;
+			player.itemSlots[48].unlocked = maxSlots >= 49;
+			player.itemSlots[49].unlocked = maxSlots >= 50;
 			if (flags[kFLAGS.SOCK_COUNTER] > 0) {
 				flags[kFLAGS.SOCK_COUNTER]--;
 				if (flags[kFLAGS.SOCK_COUNTER] < 0) flags[kFLAGS.SOCK_COUNTER] = 0;
@@ -385,7 +385,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 							else drainAmt += 60;
 						}
 					}
-					if (player.hasPerk(PerkLib.ConductionSoulforceCharge) && player.soulforce >= drainAmt) EngineCore.SoulforceChange(-drainAmt);
+					if (player.hasPerk(PerkLib.ConductionSoulforceCharge) && player.soulforce >= drainAmt) pc.SoulforceChange(-drainAmt);
 					else flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] -= drainAmt;
 				}
 				if (flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] <= 0) {
@@ -1271,7 +1271,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				//if (player.hasPerk(PerkLib.MetamorphMastery) && player.perkv1(PerkLib.MetamorphMastery) < 5) player.addPerkValue(PerkLib.MetamorphMastery, 1, 1);
 				//Daily regeneration of mana for non mages
 				if (!player.hasPerk(PerkLib.JobSorcerer) && !player.hasPerk(PerkLib.JobHealer) && !player.hasPerk(PerkLib.JobElementalConjurer) && !player.hasPerk(PerkLib.JobGolemancer)) {
-					EngineCore.ManaChange(150);
+					pc.ManaChange(150);
 				}
 				//Chi Chi healing progress
 				if (flags[kFLAGS.CHI_CHI_LVL_UP] < 5 && flags[kFLAGS.CHI_CHI_DAILY_TRAINING] < 1) {
@@ -2042,10 +2042,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hunger < player.maxHunger()) {
 					player.refillHunger(10, false);
 				}
-				EngineCore.HPChange(100 + (player.tou*2), true, false);
-				EngineCore.ManaChange(100 + (player.inte*2));
+				pc.HPChange(100 + (player.tou*2), true, false);
+				pc.ManaChange(100 + (player.inte*2));
 				EngineCore.changeFatigue(-(100 + (player.spe*2)));
-				EngineCore.SoulforceChange(500 + (player.wis*2));
+				pc.SoulforceChange(500 + (player.wis*2));
 				outputText("You feel energized and empowered by the life force drained out of the fluids of your recent blind date. What a meal!\n\n");
 				player.removeStatusEffect(StatusEffects.KitsuneEnergyThirstFeed);
 			}

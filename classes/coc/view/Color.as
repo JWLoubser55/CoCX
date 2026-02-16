@@ -154,10 +154,10 @@ public class Color {
 			b: endARGB.b - startARGB.b
 		};
 		return fromArgbFloat(
-						Utils.lerp(startARGB.a, deltaARGB.a, t),
-						Utils.lerp(startARGB.r, deltaARGB.r, t),
-						Utils.lerp(startARGB.g, deltaARGB.g, t),
-						Utils.lerp(startARGB.b, deltaARGB.b, t)
+						Utils.lerp(startARGB.a, endARGB.a, t),
+						Utils.lerp(startARGB.r, endARGB.r, t),
+						Utils.lerp(startARGB.g, endARGB.g, t),
+						Utils.lerp(startARGB.b, endARGB.b, t)
 				);
 	}
 	private static const KnownColors:Object = {

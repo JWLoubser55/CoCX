@@ -59,42 +59,18 @@ public class DynamicArmor extends Armor implements IDynamicItem {
 	
 	public function DynamicArmor(id:String, params:Object) {
 		var parsedParams:Object  = DynamicItems.loadCommonDynamicItemParams(params, Subtypes);
-		_subtypeId               = parsedParams.subtypeId;
-		_subtype                 = parsedParams.subtype || {};
-		_quality                 = parsedParams.quality;
-		_rarity                  = parsedParams.rarity;
-		_curseStatus             = parsedParams.curseStatus;
-		_cursed                  = parsedParams.cursed;
-		_identified              = parsedParams.identified;
-		_effects                 = parsedParams.effects;
+		var subtype:Object = parsedParams.subtype || {};
 		var shortName:String     = parsedParams.shortName;
 		var name:String          = parsedParams.name;
 		var longName:String      = parsedParams.longName;
 		var desc:String          = parsedParams.desc;
-		_effectDesc              = parsedParams.effectDesc;
-		var value:Number         = parsedParams.value;
-		var buffs:Object         = parsedParams.buffs;
-		_playerPerks             = subtype.perks || [];
-		var type:String          = subtype.type;
-		var tags:Array           = subtype.tags || [];
 		var def:Number           = subtype.def;
 		var mdef:Number          = subtype.mdef;
 		var qdef:Number          = numberOr(subtype.qdef, 0);
-		var bulge:Boolean        = subtype.bulge;
-		var undergarment:Boolean = valueOr(subtype.undergarment,true);
-		var itemEffects:Array    = subtype.effects || [];
-		var qitemEffects:Array   = subtype.qeffects || [];
-		if (parsedParams.error) {
-			trace("[ERROR] Failed to parse " + id + " with error " + parsedParams.error);
-			name      = "ERROR " + name;
-			shortName = "ERROR " + shortName;
-			longName  = "ERROR " + longName;
-			desc      = "INVALID ITEM:\n" + parsedParams.error + "\n" + desc;
-		}
-		
+		var quality:int          = parsedParams.quality;
+		var value:int            = parsedParams.value;
 		def *= (1.0 + quality * qdef);
 		mdef *= (1.0 + quality * qdef);
-		
 		super(
 				id,
 				shortName,
@@ -104,11 +80,31 @@ public class DynamicArmor extends Armor implements IDynamicItem {
 				mdef,
 				value,
 				desc,
-				type,
-				bulge,
-				undergarment
+				subtype.type,
+				subtype.bulge,
+				valueOr(subtype.undergarment,true)
 		);
-		
+		_subtypeId               = parsedParams.subtypeId;
+		_subtype                 = parsedParams.subtype || {};
+		_quality                 = parsedParams.quality;
+		_rarity                  = parsedParams.rarity;
+		_curseStatus             = parsedParams.curseStatus;
+		_cursed                  = parsedParams.cursed;
+		_identified              = parsedParams.identified;
+		_effects                 = parsedParams.effects;
+		_effectDesc              = parsedParams.effectDesc;
+		var buffs:Object         = parsedParams.buffs;
+		_playerPerks             = subtype.perks || [];
+		var tags:Array           = subtype.tags || [];
+		var itemEffects:Array    = subtype.effects || [];
+		var qitemEffects:Array   = subtype.qeffects || [];
+		if (parsedParams.error) {
+			trace("[ERROR] Failed to parse " + id + " with error " + parsedParams.error);
+			name      = "ERROR " + name;
+			shortName = "ERROR " + shortName;
+			longName  = "ERROR " + longName;
+			desc      = "INVALID ITEM:\n" + parsedParams.error + "\n" + desc;
+		}
 		DynamicItems.postConstruct(this, tags, buffs, itemEffects, qitemEffects, quality);
 	}
 	

@@ -156,6 +156,7 @@ public class Block extends Sprite {
 	 * `stretch` - Stretch children horizontally (column mode) or vertically (row mode). Default false
 	 * Hints:
 	 * `before`, `after` - Additional gap before/after that element. May be negative
+	 * `autosize` - if element is a TextField, set its width/height = textWidth/textHeight (depending on direction)
 	 */
 	public static const LAYOUT_FLOW:String = 'flow';
 	private function applyFlowLayout():void {
@@ -184,6 +185,13 @@ public class Block extends Sprite {
 				if (column) child.width = innerWidth;
 				else child.height = innerHeight;
 			}
+			if (hint['autosize']) {
+				const tf:TextField = child as TextField;
+				if (tf) {
+					if (column) tf.height = tf.textHeight + 4;
+					else tf.width = tf.textWidth;
+				}
+			}
 			var after:Number = 'after' in hint ? hint['after'] : 0;
 			if (column) {
 				y += child.height + after + gap;
@@ -202,6 +210,7 @@ public class Block extends Sprite {
 	public var dataset:Object = {};
 	private var _xminCached:Number = -1;
 	private var _yminCached:Number = -1;
+	public var stretch:Boolean = false;
 
 	public function Block(options:Object = null) {
 		super();
@@ -263,7 +272,7 @@ public class Block extends Sprite {
 			graphics.drawRect(0, 0, width, height);
 			graphics.endFill();
 		}
-		if (width && height) {
+		if (width && height && stretch) {
 			super.width  = width+Math.max(0,-xmin);
 			super.height = height+Math.max(0,-ymin);
 		}

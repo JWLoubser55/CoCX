@@ -4,16 +4,17 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Races;
 
-    public class SlimeMetabolismMutation extends IMutationPerkType
+public class SlimeMetabolismMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Slime Metabolism";
-        }
+		public static const MNAME:String = "Slime Metabolism";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -71,7 +72,7 @@ import classes.Races;
         }
 
         public function SlimeMetabolismMutation() {
-            super(mName + " IM", mName, SLOT_METABOLISM, 4);
+            super(MNAME, SLOT_METABOLISM, 4);
         }
         
     }

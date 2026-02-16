@@ -2217,7 +2217,7 @@ private function getButtWreckedByArian():void {
 		if(player.cockTotal() > 1) outputText("s");
 		outputText(" drooling precum onto [arian eir] belly");
 	}
-	if (player.gender == 0) outputText("null body shiverring with pleasure")//Would look weird without Genderless text.
+	if (player.gender == 0) outputText("null body shiverring with pleasure");//Would look weird without Genderless text.
 	outputText(".  You're so close now, you can feel it.  You tell Arian you're going to cum, and beg [arian em] to cum with you.");
 
 	outputText("\n\nAs if on cue, Arian gasps and [arian eir] shaft");
@@ -3212,7 +3212,7 @@ private function giveArianLactaid():void {
 	}
 	else { //Lizard milk! Recover some HP and fatigue.
 		fatigue(-15);
-		HPChange(player.maxHP() * .2, false, false);
+		pc.HPChange(player.maxHP() * .2, false, false);
 		outputText("\n\nAfter some time, Arian begins panting, sweating as [arian eir] body temperature goes up.  \"<i>I feel... hot.</i>\"  In an attempt to lower [arian eir] body temperature, Arian discards [arian eir] robes and lays down on [arian eir] bed, fanning [arian emself] with [arian eir] clawed hands.");
 
 		outputText("\n\nYou approach [arian em] cautiously, asking if [arian ey]'s okay.");

@@ -435,19 +435,19 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.fertility = 100;
 			player.cor = 25;
 			//Inventory: Lactaid, GroPlus, BimboLq
-			player.itemSlot1.setItemAndQty(consumables.LACTAID,5);
-			player.itemSlot2.setItemAndQty(consumables.GROPLUS,5);
-			player.itemSlot3.setItemAndQty(consumables.BIMBOLQ,1);
-			player.itemSlot4.setItemAndQty(armors.BIMBOSK,1);
-			player.itemSlot7.unlocked = true;
-			player.itemSlot8.unlocked = true;
-			player.itemSlot9.unlocked = true;
-			player.itemSlot10.unlocked = true;
-			player.itemSlot11.unlocked = true;
-			player.itemSlot12.unlocked = true;
-			player.itemSlot13.unlocked = true;
-			player.itemSlot14.unlocked = true;
-			player.itemSlot15.unlocked = true;
+			player.itemSlots[0].setItemAndQty(consumables.LACTAID,5);
+			player.itemSlots[1].setItemAndQty(consumables.GROPLUS,5);
+			player.itemSlots[2].setItemAndQty(consumables.BIMBOLQ,1);
+			player.itemSlots[3].setItemAndQty(armors.BIMBOSK,1);
+			player.itemSlots[6].unlocked = true;
+			player.itemSlots[7].unlocked = true;
+			player.itemSlots[8].unlocked = true;
+			player.itemSlots[9].unlocked = true;
+			player.itemSlots[10].unlocked = true;
+			player.itemSlots[11].unlocked = true;
+			player.itemSlots[12].unlocked = true;
+			player.itemSlots[13].unlocked = true;
+			player.itemSlots[14].unlocked = true;
 			outputText("You've got large breasts prone to lactation.  You aren't sure WHY you got chosen as a champion, but with your considerable strength, you're sure you'll do a good job protecting Ingnam.");
 		}
 
@@ -561,8 +561,8 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.setArmor(armors.LEATHRA);
 	//		if(!player.hasPerk(PerkLib.WizardsEndurance)) player.createPerk(PerkLib.WizardsEndurance,30,0,0,0);
 			player.setWeapon(weapons.W_STAFF);
-			player.itemSlot1.setItemAndQty(consumables.B__BOOK, 1);
-			player.itemSlot2.setItemAndQty(consumables.W__BOOK, 2);
+			player.itemSlots[0].setItemAndQty(consumables.B__BOOK, 1);
+			player.itemSlots[1].setItemAndQty(consumables.W__BOOK, 2);
 			player.createBreastRow();
 			player.createVagina();
 			player.breastRows[0].breastRating = 4;
@@ -574,7 +574,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.intStat.train.value = 17;
 			player.wisStat.train.value = 17;
 			player.cor = 0;
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 			player.hairLength=13;
 			player.skin.restore();
 			player.faceType = Face.HUMAN;
@@ -649,7 +649,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.strStat.train.value = 18;
 			player.touStat.train.value = 17;
 			player.cor = 0;
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 			player.hairLength = 1;
 			player.skin.setAllProps({base:{color:"light"}});
 			player.hairColor = "brown";
@@ -876,8 +876,8 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.createPerk(PerkLib.Smart,1,0,0,0);
 			//History- Schooling
 			if (!player.hasPerk(PerkLib.PastLifeScholar)) player.createPerk(PerkLib.HistoryScholar,0,0,0,0);
-			player.itemSlot1.setItemAndQty(consumables.W__BOOK,1);
-			player.itemSlot2.setItemAndQty(consumables.B__BOOK,1);
+			player.itemSlots[0].setItemAndQty(consumables.W__BOOK,1);
+			player.itemSlots[1].setItemAndQty(consumables.B__BOOK,1);
 			player.tallness = 64;
 			player.femininity = 75;
 			player.butt.type = 7;
@@ -1023,7 +1023,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.speStat.train.value = 18;
 			player.intStat.train.value += 2;
 			player.cor = 0;
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 			player.skin.restore();
 			player.faceType = Face.HUMAN;
 			player.tailType = Tail.NONE;
@@ -1510,7 +1510,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.wisStat.train.value = 100;
 			player.libStat.train.value = 30;
 			player.cor = 71;
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 			player.hairLength = 10;
 			player.skin.restore();
 			player.faceType = Face.HUMAN;
@@ -1583,19 +1583,19 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			flags[kFLAGS.VALERIA_AT_CAMP] = 1;
 			player.gems += 30000;
 			outputText("You're something of a powerhouse, and you wager that between your odd mutations, power strong enough to threaten the village order, and talents, you're the natural choice to send through the portal.");
-			player.itemSlot7.unlocked = true;
-			player.itemSlot8.unlocked = true;
-			player.itemSlot9.unlocked = true;
-			player.itemSlot10.unlocked = true;
-			player.itemSlot11.unlocked = true;
-			player.itemSlot12.unlocked = true;
-			player.itemSlot13.unlocked = true;
-			player.itemSlot14.unlocked = true;
-			player.itemSlot15.unlocked = true;
-			player.itemSlot1.setItemAndQty(consumables.P_LBOVA, 5);
-			player.itemSlot2.setItemAndQty(consumables.L_PNKEG, 1);
-			player.itemSlot3.setItemAndQty(consumables.OVIELIX, 1);
-			player.itemSlot4.setItemAndQty(consumables.REPTLUM, 1);
+			player.itemSlots[6].unlocked = true;
+			player.itemSlots[7].unlocked = true;
+			player.itemSlots[8].unlocked = true;
+			player.itemSlots[9].unlocked = true;
+			player.itemSlots[10].unlocked = true;
+			player.itemSlots[11].unlocked = true;
+			player.itemSlots[12].unlocked = true;
+			player.itemSlots[13].unlocked = true;
+			player.itemSlots[14].unlocked = true;
+			player.itemSlots[0].setItemAndQty(consumables.P_LBOVA, 5);
+			player.itemSlots[1].setItemAndQty(consumables.L_PNKEG, 1);
+			player.itemSlots[2].setItemAndQty(consumables.OVIELIX, 1);
+			player.itemSlots[3].setItemAndQty(consumables.REPTLUM, 1);
 
 			player.createStatusEffect(StatusEffects.TelAdre, 1, 0, 0, 0);
 			//player.createStatusEffect(StatusEffects.MetWhitney, 2, 0, 0, 0);
@@ -1707,7 +1707,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.speStat.train.value = 18;
 			player.intStat.train.value = 17;
 			player.cor = 0;
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 			player.hairLength = 10;
 			player.skin.restore();
 			player.faceType = Face.HUMAN;
@@ -1790,15 +1790,15 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.createPerk(PerkLib.StrongBack,0,0,0,0);
 			player.createPerk(PerkLib.StrongBack2,0,0,0,0);
 			player.createPerk(PerkLib.StrongBack3,0,0,0,0);
-			player.itemSlot7.unlocked = true;
-			player.itemSlot8.unlocked = true;
-			player.itemSlot9.unlocked = true;
-			player.itemSlot10.unlocked = true;
-			player.itemSlot11.unlocked = true;
-			player.itemSlot12.unlocked = true;
-			player.itemSlot13.unlocked = true;
-			player.itemSlot14.unlocked = true;
-			player.itemSlot15.unlocked = true;
+			player.itemSlots[6].unlocked = true;
+			player.itemSlots[7].unlocked = true;
+			player.itemSlots[8].unlocked = true;
+			player.itemSlots[9].unlocked = true;
+			player.itemSlots[10].unlocked = true;
+			player.itemSlots[11].unlocked = true;
+			player.itemSlots[12].unlocked = true;
+			player.itemSlots[13].unlocked = true;
+			player.itemSlots[14].unlocked = true;
 			if (!player.hasPerk(PerkLib.PastLifeSlacker)) player.createPerk(PerkLib.HistorySlacker,0,0,0,0);
 			player.strStat.train.value += 4;
 			player.touStat.train.value += 4;
@@ -1828,7 +1828,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.setUnderBottom(undergarments.C_LOIN);
 			player.createKeyItem("Dark Mage’s Grimoire",0,0,0,0);
 			if (player.hasKeyItem("Backpack") < 0) player.createKeyItem("Backpack", 4, 0, 0, 0);
-			player.itemSlot1.setItemAndQty(consumables.H_BISCU, 5);
+			player.itemSlots[0].setItemAndQty(consumables.H_BISCU, 5);
 			if (!player.hasPerk(PerkLib.PastLifeScholar)) player.createPerk(PerkLib.HistoryScholar, 0, 0, 0, 0);
 			if (!player.hasPerk(PerkLib.PastLifeHealer)) player.createPerk(PerkLib.HistoryHealer, 0, 0, 0, 0);
 			player.createKeyItem("Cultivation Manual: Duality", 0, 0, 0, 0);
@@ -1930,21 +1930,21 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			// almost compulsive hoarder, start with backpack, chests and racks... never enough storage space
 			if (!player.hasPerk(PerkLib.StrongBack)) {
 				player.createPerk(PerkLib.StrongBack, 0, 0, 0, 0);
-				player.itemSlot7.unlocked = true;
-				player.itemSlot8.unlocked = true;
-				player.itemSlot9.unlocked = true;
+				player.itemSlots[6].unlocked = true;
+				player.itemSlots[7].unlocked = true;
+				player.itemSlots[8].unlocked = true;
 			}
 			if (!player.hasPerk(PerkLib.StrongBack2)) {
 				player.createPerk(PerkLib.StrongBack2, 0, 0, 0, 0);
-				player.itemSlot10.unlocked = true;
-				player.itemSlot11.unlocked = true;
-				player.itemSlot12.unlocked = true;
+				player.itemSlots[9].unlocked = true;
+				player.itemSlots[10].unlocked = true;
+				player.itemSlots[11].unlocked = true;
 			}
 			if (!player.hasPerk(PerkLib.StrongBack3)) {
 				player.createPerk(PerkLib.StrongBack3, 0, 0, 0, 0);
-				player.itemSlot13.unlocked = true;
-				player.itemSlot14.unlocked = true;
-				player.itemSlot15.unlocked = true;
+				player.itemSlots[12].unlocked = true;
+				player.itemSlots[13].unlocked = true;
+				player.itemSlots[14].unlocked = true;
 			}
 			var i:int = 0;
 			if (player.hasKeyItem("Backpack") < 0) player.createKeyItem("Backpack", 6, 0, 0, 0);
@@ -1994,10 +1994,10 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			flags[kFLAGS.HUNGER_ENABLED] = 0.5;
 
 			// you still aren't sure about gender preferences, but have some stashed eggs just in case... [why almost all inventory functions are private?]
-			if (player.itemSlot1.isEmpty())  player.itemSlot1.setItemAndQty(consumables.L_PNKEG, 1); // if you want to get rid of tentacles, but still maintain dragon one you'll have to find Ceraph
-			if (player.itemSlot2.isEmpty())  player.itemSlot2.setItemAndQty(consumables.L_BLUEG, 1);
-			if (debug && player.itemSlot3.isEmpty())  player.itemSlot3.setItemAndQty(consumables.REDUCTO, 5);
-			if (debug && player.itemSlot4.isEmpty())  player.itemSlot4.setItemAndQty(consumables.GROPLUS, 5);
+			if (player.itemSlots[0].isEmpty())  player.itemSlots[0].setItemAndQty(consumables.L_PNKEG, 1); // if you want to get rid of tentacles, but still maintain dragon one you'll have to find Ceraph
+			if (player.itemSlots[1].isEmpty())  player.itemSlots[1].setItemAndQty(consumables.L_BLUEG, 1);
+			if (debug && player.itemSlots[2].isEmpty())  player.itemSlots[2].setItemAndQty(consumables.REDUCTO, 5);
+			if (debug && player.itemSlots[3].isEmpty())  player.itemSlots[3].setItemAndQty(consumables.GROPLUS, 5);
 
 			player.earsPierced = 1;
 			player.earsPShort = "crimstone earrings";
@@ -2010,7 +2010,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 
 			player.hoursSinceCum = 0;
 			player.fatigue = 0;
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 
 			player.gems += 20;
 
@@ -2245,7 +2245,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 
 			player.hoursSinceCum = 0;
 			player.fatigue = 0;
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 
 			player.gems += 15+ rand(55);
 
@@ -2387,7 +2387,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			flags[kFLAGS.HUNGER_ENABLED] = 0.5;
 			flags[kFLAGS.FERAL_COMBAT_MODE] = 1;
 
-			if (player.itemSlot1.isEmpty())  player.itemSlot1.setItemAndQty(weapons.H_GAUNT, 1);
+			if (player.itemSlots[0].isEmpty())  player.itemSlots[0].setItemAndQty(weapons.H_GAUNT, 1);
 			if (debug) player.perkPoints += 1000;
 			if (debug) player.statPoints += 1000;
 			if (debug) player.XP = 10000000
@@ -2398,7 +2398,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 
 			player.hoursSinceCum = 0;
 			player.fatigue = 0;
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 
 			outputText("You are young (by kitsune measure), but very talented.\n\nFormer priestess, you abandoned religion after obtaining nine tails due to disappointment in achieved enlightment and resorted to your hobby - alchemy.\n\nYou tried to improve your body with controlled transformations, and mostly successfull. Now you are half-dragon, and while most changes are hidden inside your body, you still possess magnificent wings, imposing horns, incredibly long tongue and odd cock. Sharing common for kitsune tentacle obsession, you was unable to resist temptation, and now you have 3 tentacle cocks and venomous tentacle hair. Otherwise you body is mostly what you would expect from kitsune - cute, graceful and having capacity, straightforward impossible for your thin and small 4 foot frame.\n\nWith both religious and alchemical training you are skilled healer, able to treat wounds and poisonings alike. Your kitsune's trickster nature and pervert inclinations are making you susceptable to corruption, but at the same time your enlightment keeps you from really turning into demon, so corruption level does not really affect you much. Even with your willpower and religious training you sometimes struggle to restrain your impulse, and you always are ready for something very lewd. With your knowledge of healing and innatural body it is easy for you to enjoy things which would be really painful for others, and you are always ready to return favor. Still, you tend to care about mutual enjoyment - there are difference between extreme entertainment and torture, and you are mischievous, not evil. Natural gift, strong even by kitsune's measures and complimented by nine tails, granted you with very strong magic affinity, so you can cast spells not exhausting yourself even without enchanted robe, but despite strong magic affinity you wasn't actually much interested in combat magic before, so only can use fox fire as offensive spell.\n\nYour experiments left some strange effects within your body. Some are nice (you have unusually fast regeneration), some are strange (you can shift to incorporeality for a few seconds and even try to possess someone while in this state), and some brought more problems than benefits (insignificant improvement in magic power came with crippling penalty for your physical abilities).\n\nAlso, you are almost compulsive hoarder, so you developed ability to carry and store huge amount of things.\n\nNow you want to give your new body thorough test run, and portal to demon infested world looks appealing. No one said that common sense is one of your strong sides...\n\nTroublesome villagers near portal had strange demands about things which you can carry to other side, but you managed to conceal magic whip, so you wouldn't be unarmed, bud damned (literally) thing takes it's toll on user.\n\nYou still aren't really sure about your gender - having both sets doubles the fun, you still are a bit shy of your tentacles (that's main reason for your concealing clothes - your body is your doubtless masterpiece in all other parts), and being female in demon infested worlds tends to be a problem, so you decided to bring few transformative eggs, just in case.");
  		}

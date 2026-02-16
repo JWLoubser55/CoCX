@@ -58,26 +58,19 @@ public class DynamicShield extends Shield implements IDynamicItem {
 	
 	public function DynamicShield(id:String, params:Object) {
 		var parsedParams:Object = DynamicItems.loadCommonDynamicItemParams(params, Subtypes);
-		_subtypeId              = parsedParams.subtypeId;
-		_subtype                = parsedParams.subtype || {};
-		_quality                = parsedParams.quality;
-		_rarity                 = parsedParams.rarity;
-		_curseStatus            = parsedParams.curseStatus;
-		_cursed                 = parsedParams.cursed;
-		_identified             = parsedParams.identified;
-		_effects                = parsedParams.effects;
 		var shortName:String    = parsedParams.shortName;
 		var name:String         = parsedParams.name;
 		var longName:String     = parsedParams.longName;
 		var desc:String         = parsedParams.desc;
-		_effectDesc             = parsedParams.effectDesc;
 		var value:Number        = parsedParams.value;
 		var buffs:Object        = parsedParams.buffs;
+		var subtype:Object      = parsedParams.subtype || {};
 		var perk:Array          = (subtype.perk || []).slice();
 		var tags:Array          = subtype.tags || [];
 		var block:Number        = subtype.block;
 		var itemEffects:Array   = subtype.effects || [];
 		var qitemEffects:Array  = subtype.qeffects || [];
+		var quality:int         = parsedParams.quality;
 		if (parsedParams.error) {
 			trace("[ERROR] Failed to parse " + id + " with error " + parsedParams.error);
 			name      = "ERROR " + name;
@@ -85,7 +78,7 @@ public class DynamicShield extends Shield implements IDynamicItem {
 			longName  = "ERROR " + longName;
 			desc      = "INVALID ITEM:\n" + parsedParams.error + "\n" + desc;
 		}
-		
+
 		block *= (1.0 + quality * subtype.qblock);
 		
 		super(
@@ -98,7 +91,16 @@ public class DynamicShield extends Shield implements IDynamicItem {
 				desc,
 				perk.join(", ")
 		);
-		
+		_subtypeId              = parsedParams.subtypeId;
+		_subtype                = subtype;
+		_quality                = quality;
+		_rarity                 = parsedParams.rarity;
+		_curseStatus            = parsedParams.curseStatus;
+		_cursed                 = parsedParams.cursed;
+		_identified             = parsedParams.identified;
+		_effects                = parsedParams.effects;
+		_effectDesc             = parsedParams.effectDesc;
+
 		DynamicItems.postConstruct(this, tags, buffs, itemEffects, qitemEffects, quality);
 	}
 	

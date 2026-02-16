@@ -7,7 +7,7 @@ package classes.internals
 	{
 		private var items:Array = [];
 		private var sum:Number = 0;
-		public function WeightedDrop(first:*=null,firstWeight:Number=0)
+		public function WeightedDrop(first:* =null,firstWeight:Number=0)
 		{
 			if (first != null){
 				items.push([first,firstWeight]);

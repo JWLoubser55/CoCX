@@ -4,18 +4,19 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Player;
 import classes.Races;
 import classes.StatusEffects;
 
 public class VampiricBloodstreamMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Vampiric Bloodstream";
-        }
+		public static const MNAME:String = "Vampiric Bloodstream";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -82,7 +83,7 @@ public class VampiricBloodstreamMutation extends IMutationPerkType
         }
 
         public function VampiricBloodstreamMutation() {
-            super(mName + " IM", mName, SLOT_BLOODSTREAM, 4);
+            super(MNAME, SLOT_BLOODSTREAM, 4);
         }
 
     }

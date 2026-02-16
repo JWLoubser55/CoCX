@@ -4,18 +4,18 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.PerkLib;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Player;
 import classes.Races;
 
 public class BlazingHeartMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Blazing Heart";
-        }
+		public static const MNAME:String = "Blazing Heart";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -64,7 +64,7 @@ public class BlazingHeartMutation extends IMutationPerkType
 
         public function BlazingHeartMutation() 
 		{
-			super(mName + " IM", mName, SLOT_HEART, 4);
+			super(MNAME, SLOT_HEART, 4);
         }
 
         

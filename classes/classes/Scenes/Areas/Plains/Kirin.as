@@ -201,8 +201,8 @@ import classes.internals.*;
 				var string:String = "";
 				superCharged = true
 				statStore.replaceBuffObject({'spe.mult':Math.round(speStat.mult.value)}, 'Supercharged', { text: 'Supercharged!' });
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp('spe');
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp('spe');
 				// More penis description heh
 				string += "The Kirin suddenly grips her massive tits in pleasure as her body overloads. It would seem the zappy pony has entered a state of supercharge, which may or may not be a <b>VERY</b> bad thing for you. Not to mention her now flared cock positively glowing with electrified desire, hosing pint after pints of neon blue pre-ejaculate with each angry throbb.\n\n"
 				outputText(string);

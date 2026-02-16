@@ -25,12 +25,7 @@ use namespace CoC;
 
 public class Soulforce extends BaseContent
 {
-	public var tamaniDaughtersScene:TamainsDaughtersScene = new TamainsDaughtersScene();
-	public var tamaniScene:TamaniScene = new TamaniScene();
-	public var izumiScenes:IzumiScene = new IzumiScene();
-	public var nagaScene:NagaScene = new NagaScene();
 	public var worldtreeScene:WorldTree = new WorldTree();
-	public var minotaurSonsScene:MinotaurMobScene = new MinotaurMobScene();
 
 	public function accessSoulforceMenu():void {
 		clearOutput();
@@ -259,7 +254,7 @@ public class Soulforce extends BaseContent
 	}
 
 	private function contPrimary(name:String, perk:PerkType):void {
-		EngineCore.SoulforceChange(-player.maxSoulforce());
+		pc.SoulforceChange(-player.maxSoulforce());
 		player.addPerkValue(PerkLib.JobSoulCultivator, 2, 1);
 		player.createPerk(perk, 0, 0, 0, 0);
 		player.setPerkValue(PerkLib.JobSoulCultivator, 1, 1);
@@ -267,7 +262,7 @@ public class Soulforce extends BaseContent
 	}
 
 	private function contSecondary(name:String):void {
-		EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.3));
+		pc.SoulforceChange(-Math.round(player.maxSoulforce() * 0.3));
 		player.addPerkValue(PerkLib.JobSoulCultivator, 1, 1);
 		contShared(name);
 	}
@@ -1257,7 +1252,7 @@ public class Soulforce extends BaseContent
 		var predict:int = meditationPredict(hours);
 		outputText("The spent time has allowed you to restore " + predict + " soulforce.\n\n");
 		outputText("Current soulpower: " + (player.soulforce + predict) + " / " + player.maxSoulforce());
-		EngineCore.SoulforceChange(sfRegen(hours)); //actual regen
+		pc.SoulforceChange(sfRegen(hours)); //actual regen
 		if (player.hasPerk(PerkLib.Dantain) && player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0 && hours >= 4) {
 			var scma:Number = 1;
 			if (player.perkv1(PerkLib.Dantain) >= 1) scma += player.perkv1(PerkLib.Dantain);
@@ -1423,8 +1418,8 @@ public class Soulforce extends BaseContent
 	public function convertSoulforce(amount:int):void {
 		clearOutput();
 		outputText("You sit down and channel your spiritual power, feeling it surge through your body. Slowly, your depleted mana begins to replenish, each breath drawing in energy from the surroundings. Within moments, a wave of calm washes over you, leaving you feeling rested and renewed.");
-		EngineCore.SoulforceChange(-amount);
-		EngineCore.ManaChange(amount);
+		pc.SoulforceChange(-amount);
+		pc.ManaChange(amount);
 		flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT]++;
 		doNext(ManaAndSoulforce);
 	}
@@ -1432,8 +1427,8 @@ public class Soulforce extends BaseContent
 	public function convertMana(amount:int):void {
 		clearOutput();
 		outputText("You sit down and concentrate deeply, directing your focus inward. Gradually, you begin to drain your mana, feeling it flow through you as it transforms into soulforce. Each pulse of energy restores your spiritual strength, leaving you feeling reinvigorated.");
-		EngineCore.ManaChange(-amount);
-		EngineCore.SoulforceChange(amount / 2);
+		pc.ManaChange(-amount);
+		pc.SoulforceChange(amount / 2);
 		flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT]++;
 		doNext(ManaAndSoulforce);
 	}
@@ -1610,7 +1605,7 @@ public class Soulforce extends BaseContent
 		SceneLib.isabellaScene.isabellaGreeting();
 	}
 	public function sneakOnThePlane():void {
-		nagaScene.nagaEncounter();
+		SceneLib.desert.nagaScene.nagaEncounter();
 	}
 	public function quasiDragoness():void {
 		SceneLib.kihaScene.encounterKiha();

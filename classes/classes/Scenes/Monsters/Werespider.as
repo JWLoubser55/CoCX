@@ -72,7 +72,7 @@ import coc.view.CoCButton;
 			if (hasStatusEffect(StatusEffects.WerespiderAbilities) && statusEffectv1(StatusEffects.WerespiderAbilities) < 1 && HPRatio() > .1 && rand(4) > 0) werespiderThousandHands();
 			if (!hasStatusEffect(StatusEffects.WerespiderAbilities) && HPRatio() > .1 && rand(4) > 0) werespiderHydraulicStr();
 			if (player.buff("Web").isPresent()) {
-				EngineCore.HPChange(Math.round(player.maxHP() * 0.05), true, false);
+				pc.HPChange(Math.round(player.maxHP() * 0.05), true, false);
 				addHP(maxHP() * .05);
 			}
 			var choice:Number = rand(3);

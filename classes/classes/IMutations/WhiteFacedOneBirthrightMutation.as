@@ -12,9 +12,10 @@ import classes.Races;
 
 public class WhiteFacedOneBirthrightMutation extends IMutationPerkType
 	{
-        override public function get mName():String {
-            return "White-Faced One Birthright";
-        }
+		public static const MNAME:String = "White-Faced One Birthright";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -130,7 +131,7 @@ public class WhiteFacedOneBirthrightMutation extends IMutationPerkType
 
         public function WhiteFacedOneBirthrightMutation() 
 		{
-			super(mName + " IM", mName, SLOT_ADAPTATIONS, 4);
+			super(MNAME, SLOT_ADAPTATIONS, 4);
         }
 
     }

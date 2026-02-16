@@ -89,7 +89,7 @@ public class BuffableStat implements IStat, Jsonable {
 	 *     max: default +Infinity;
 	 * }
 	 */
-	public function BuffableStat(host:Creature, name:String, options:*=null) {
+	public function BuffableStat(host:Creature, name:String, options:* =null) {
 		this._host = host;
 		this._name = name;
 		redefine(options);
@@ -220,6 +220,10 @@ public class BuffableStat implements IStat, Jsonable {
 	}
 	public function listBuffs():/*Buff*/Array {
 		return _buffs.slice();
+	}
+	/** Return reference to internal buff list. READ OPERATIONS ONLY! */
+	public function listBuffsUnsafe():/*Buff*/Array {
+		return _buffs;
 	}
 	public function removeAllBuffs():void {
 		this._buffs = [];

@@ -99,10 +99,10 @@ public class TranceSkill extends AbstractSoulSkill {
 		TranceBoost = FnHelpers.FN.logScale(TranceBoost,TranceABC,10);
 		TranceBoost = Math.round(TranceBoost);
 		tempStrTou = TranceBoost;
-		mainView.statsView.showStatUp('str');
+		showStatUp('str');
 		// strUp.visible = true;
 		// strDown.visible = false;
-		mainView.statsView.showStatUp('tou');
+		showStatUp('tou');
 		// touUp.visible = true;
 		// touDown.visible = false;
 		player.buff("TranceTransformation").addStats({str:TranceBoost,tou:TranceBoost}).withText("Trance Transformation").combatPermanent();

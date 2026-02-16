@@ -966,7 +966,7 @@ private function heliaRoughSex(output:Boolean = true):void {
 		clearOutput();
 		outputText("<i>\"Mmm, need to blow off some steam, lover?\"</i>  Hel grins, reaching around to undo the straps of her scale bikini.  <i>\"Well, I'm all for that!\"</i>");
 	}
-	sceneHunter.print("Centaur and naga scenes are different from 'fuckbuddy' Hel.")
+	sceneHunter.print("Centaur and naga scenes are different from 'fuckbuddy' Hel.");
 	//check cocks
 	var cockV:int = player.cockThatFits(helCapacity());
 	var cockA:int = player.cockThatFits(helAnalCapacity());

@@ -70,7 +70,7 @@ public class HealSpell extends AbstractWhiteSpell {
 		}
 		outputText("<b>([font-heal]+" + heal + "[/font])</b>.");
 		if (crit) outputText(" <b>*Critical Heal!*</b>");
-		HPChange(heal,false,false);
+		pc.HPChange(heal,false,false);
 	}
 }
 }

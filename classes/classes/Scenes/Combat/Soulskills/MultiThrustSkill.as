@@ -10,7 +10,7 @@ import classes.Scenes.Combat.Combat;
 import classes.Items.Weapons.Tidarion;
 
 public class MultiThrustSkill extends AbstractSoulSkill {
-	private var thrustArray:Array = [
+	private static var thrustArray:Array = [
 		["Triple Thrust", "three", StatusEffects.KnowsTripleThrust, 30, "thrice", 0],
 		["Sextuple Thrust", "six", StatusEffects.KnowsSextupleThrust, 70, "sixfold", 3],
 		["Nonuple Thrust", "nine", StatusEffects.KnowsNonupleThrust, 150, "ninefold", 9]

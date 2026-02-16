@@ -55,7 +55,7 @@ public class Anubis extends Monster
 			player.takeDarknessDamage(dmgW1);
 			this.HP += Math.round(this.maxHP() * 0.2);
 			if (this.HP > this.maxOverHP()) this.HP = this.maxOverHP();
-			EngineCore.SoulforceChange(-Math.round(player.maxSoulforce()*0.2));
+			pc.SoulforceChange(-Math.round(player.maxSoulforce()*0.2));
 			if (player.soulforce <= 0) {
 				if (this.hasVagina()) anubisGender = 1;
 				anubisScene.anubisWon(anubisGender);

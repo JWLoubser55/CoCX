@@ -77,6 +77,7 @@ use namespace CoC;
 	 */
 	public class Player extends Character {
 
+		public static const MAX_NUM_ITEM_SLOTS:int = 50;
 		public function Player() {
 			for (var i:int = 0; i < CombatAbility.Registry.length; i++) {
 				cooldowns[i] = 0;
@@ -85,58 +86,10 @@ use namespace CoC;
 				durations[duration] = 0;
 			}
 			//Item things
-			itemSlot1 = new ItemSlotClass();
-			itemSlot2 = new ItemSlotClass();
-			itemSlot3 = new ItemSlotClass();
-			itemSlot4 = new ItemSlotClass();
-			itemSlot5 = new ItemSlotClass();
-			itemSlot6 = new ItemSlotClass();
-			itemSlot7 = new ItemSlotClass();
-			itemSlot8 = new ItemSlotClass();
-			itemSlot9 = new ItemSlotClass();
-			itemSlot10 = new ItemSlotClass();
-			itemSlot11 = new ItemSlotClass();
-			itemSlot12 = new ItemSlotClass();
-			itemSlot13 = new ItemSlotClass();
-			itemSlot14 = new ItemSlotClass();
-			itemSlot15 = new ItemSlotClass();
-			itemSlot16 = new ItemSlotClass();
-			itemSlot17 = new ItemSlotClass();
-			itemSlot18 = new ItemSlotClass();
-			itemSlot19 = new ItemSlotClass();
-			itemSlot20 = new ItemSlotClass();
-			itemSlot21 = new ItemSlotClass();
-			itemSlot22 = new ItemSlotClass();
-			itemSlot23 = new ItemSlotClass();
-			itemSlot24 = new ItemSlotClass();
-			itemSlot25 = new ItemSlotClass();
-			itemSlot26 = new ItemSlotClass();
-			itemSlot27 = new ItemSlotClass();
-			itemSlot28 = new ItemSlotClass();
-			itemSlot29 = new ItemSlotClass();
-			itemSlot30 = new ItemSlotClass();
-			itemSlot31 = new ItemSlotClass();
-			itemSlot32 = new ItemSlotClass();
-			itemSlot33 = new ItemSlotClass();
-			itemSlot34 = new ItemSlotClass();
-			itemSlot35 = new ItemSlotClass();
-			itemSlot36 = new ItemSlotClass();
-			itemSlot37 = new ItemSlotClass();
-			itemSlot38 = new ItemSlotClass();
-			itemSlot39 = new ItemSlotClass();
-			itemSlot40 = new ItemSlotClass();
-			itemSlot41 = new ItemSlotClass();
-			itemSlot42 = new ItemSlotClass();
-			itemSlot43 = new ItemSlotClass();
-			itemSlot44 = new ItemSlotClass();
-			itemSlot45 = new ItemSlotClass();
-			itemSlot46 = new ItemSlotClass();
-			itemSlot47 = new ItemSlotClass();
-			itemSlot48 = new ItemSlotClass();
-			itemSlot49 = new ItemSlotClass();
-			itemSlot50 = new ItemSlotClass();
-			itemSlots = [itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5, itemSlot6, itemSlot7, itemSlot8, itemSlot9, itemSlot10, itemSlot11, itemSlot12, itemSlot13, itemSlot14, itemSlot15, itemSlot16, itemSlot17, itemSlot18, itemSlot19, itemSlot20, itemSlot21, itemSlot22, itemSlot23, itemSlot24, itemSlot25,
-				itemSlot26, itemSlot27, itemSlot28, itemSlot29, itemSlot30, itemSlot31, itemSlot32, itemSlot33, itemSlot34, itemSlot35, itemSlot36, itemSlot37, itemSlot38, itemSlot39, itemSlot40, itemSlot41, itemSlot42, itemSlot43, itemSlot44, itemSlot45, itemSlot46, itemSlot47, itemSlot48, itemSlot49, itemSlot50];
+			itemSlots = [];
+			for (i = 0; i < MAX_NUM_ITEM_SLOTS; i++) {
+				itemSlots.push(new ItemSlotClass());
+			}
 			for each (var slot:EnumValue in ItemConstants.EquipmentSlots) {
 				_equipment[slot.value] = slot.nothing();
 			}
@@ -148,6 +101,9 @@ use namespace CoC;
 		{
 			if (clear) EngineCore.clearOutputTextOnly();
 			EngineCore.outputText(text);
+		}
+		protected function get pc():PlayerController {
+			return game.playerController;
 		}
 
 		public var startingRace:String = "human";
@@ -264,58 +220,8 @@ use namespace CoC;
 		override public function pregnancyUpdate():Boolean {
 			return pregnancy.updatePregnancy(); //Returns true if we need to make sure pregnancy texts aren't hidden
 		}
-		
+
 		// Inventory
-		public var itemSlot1:ItemSlotClass;
-		public var itemSlot2:ItemSlotClass;
-		public var itemSlot3:ItemSlotClass;
-		public var itemSlot4:ItemSlotClass;
-		public var itemSlot5:ItemSlotClass;
-		public var itemSlot6:ItemSlotClass;
-		public var itemSlot7:ItemSlotClass;
-		public var itemSlot8:ItemSlotClass;
-		public var itemSlot9:ItemSlotClass;
-		public var itemSlot10:ItemSlotClass;
-		public var itemSlot11:ItemSlotClass;
-		public var itemSlot12:ItemSlotClass;
-		public var itemSlot13:ItemSlotClass;
-		public var itemSlot14:ItemSlotClass;
-		public var itemSlot15:ItemSlotClass;
-		public var itemSlot16:ItemSlotClass;
-		public var itemSlot17:ItemSlotClass;
-		public var itemSlot18:ItemSlotClass;
-		public var itemSlot19:ItemSlotClass;
-		public var itemSlot20:ItemSlotClass;
-		public var itemSlot21:ItemSlotClass;
-		public var itemSlot22:ItemSlotClass;
-		public var itemSlot23:ItemSlotClass;
-		public var itemSlot24:ItemSlotClass;
-		public var itemSlot25:ItemSlotClass;
-		public var itemSlot26:ItemSlotClass;
-		public var itemSlot27:ItemSlotClass;
-		public var itemSlot28:ItemSlotClass;
-		public var itemSlot29:ItemSlotClass;
-		public var itemSlot30:ItemSlotClass;
-		public var itemSlot31:ItemSlotClass;
-		public var itemSlot32:ItemSlotClass;
-		public var itemSlot33:ItemSlotClass;
-		public var itemSlot34:ItemSlotClass;
-		public var itemSlot35:ItemSlotClass;
-		public var itemSlot36:ItemSlotClass;
-		public var itemSlot37:ItemSlotClass;
-		public var itemSlot38:ItemSlotClass;
-		public var itemSlot39:ItemSlotClass;
-		public var itemSlot40:ItemSlotClass;
-		public var itemSlot41:ItemSlotClass;
-		public var itemSlot42:ItemSlotClass;
-		public var itemSlot43:ItemSlotClass;
-		public var itemSlot44:ItemSlotClass;
-		public var itemSlot45:ItemSlotClass;
-		public var itemSlot46:ItemSlotClass;
-		public var itemSlot47:ItemSlotClass;
-		public var itemSlot48:ItemSlotClass;
-		public var itemSlot49:ItemSlotClass;
-		public var itemSlot50:ItemSlotClass;
 		public var itemSlots:/*ItemSlotClass*/Array;
 
 		public var previouslyWornClothes:/*String*/Array = []; //For tracking achievement.
@@ -1740,7 +1646,7 @@ use namespace CoC;
 		public function carriedKnownCursedItems():/*ItemSlotClass*/Array {
 			var result:/*ItemSlotClass*/Array = [];
 			for each (var slot:ItemSlotClass in itemSlots) {
-				if (slot.unlocked && !slot.itype is IDynamicItem && (slot.itype as IDynamicItem).curseStatus == ItemConstants.CS_KNOWN_CURSED) result.push(slot);
+				if (slot.unlocked && !(slot.itype is IDynamicItem) && (slot.itype as IDynamicItem).curseStatus == ItemConstants.CS_KNOWN_CURSED) result.push(slot);
 			}
 			return result;
 		}
@@ -3097,7 +3003,7 @@ use namespace CoC;
 				var gainedWrath:Number = 0;
 				gainedWrath += Math.sqrt(damage / 10);
 				gainedWrath = Math.round(gainedWrath * wrathFromHPmulti());
-				if (gainedWrath > 0) EngineCore.WrathChange(gainedWrath);
+				if (gainedWrath > 0) pc.WrathChange(gainedWrath);
 			}
 		}
 
@@ -3133,7 +3039,7 @@ use namespace CoC;
 
 			if(display) SceneLib.combat.CommasForDigits(damage - returnDamage, false, "Absorbed ");
 
-			game.mainView.statsView.showStatDown('mana');
+			game.mainViewManager.showStatDown('mana');
 			dynStats("lus", 0);
 
 			return returnDamage;
@@ -3142,7 +3048,7 @@ use namespace CoC;
 				if (damage * magicmult > mana) mana = 0;
 				else mana -= (damage * magicmult);
 				if (display) SceneLib.combat.CommasForDigits(damage, false, "Absorbed ");
-				game.mainView.statsView.showStatDown('mana');
+				game.mainViewManager.showStatDown('mana');
 				dynStats("lus", 0); //Force display arrow.
 				return 0;
 			}
@@ -3151,7 +3057,7 @@ use namespace CoC;
 				damage -= partial;
 				if (display) SceneLib.combat.CommasForDigits(partial, false, "Absorbed ");
 				mana = 0;
-				game.mainView.statsView.showStatDown('mana');
+				game.mainViewManager.showStatDown('mana');
 				dynStats("lus", 0); //Force display arrow.
 				return damage;
 			}
@@ -3553,12 +3459,12 @@ use namespace CoC;
 					// var damage now store total damage across all hits
 					//Wrath
 					wrathFromBeenPunchingBag(damage);
-					//game.HPChange(-damage, display);
+					//pc.HPChange(-damage, display);
 					damage = Math.round(damage);
 					HP -= damage;
 					returnDamage = damage;
 
-					game.mainView.statsView.showStatDown('hp');
+					game.mainViewManager.showStatDown('hp');
 					dynStats("lus", 0); //Force display arrow.
 
 				}
@@ -5870,7 +5776,7 @@ use namespace CoC;
 					modThickness(maxThicknessCap(), weightChange);
 					hunger = maxHunger(); //don't mind overeating?
 				}
-				if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
+				if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp('hunger');
 				//game.dynStats("lus", 0, "scale", false);
 				if (nl) outputText("\n\n");
 				//Messages
@@ -5891,7 +5797,7 @@ use namespace CoC;
 				if (oldHunger >= 240) EngineCore.awardAchievement("Epic Glutton ", kACHIEVEMENTS.REALISTIC_EPIC_GLUTTON);
 				if (oldHunger >= 490) EngineCore.awardAchievement("Legendary Glutton ", kACHIEVEMENTS.REALISTIC_LEGENDARY_GLUTTON);
 				if (oldHunger >= 990) EngineCore.awardAchievement("Mythical Glutton ", kACHIEVEMENTS.REALISTIC_MYTHICAL_GLUTTON);
-				if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
+				if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp("hunger");
 				dynStats("lus", 0, "scale", false);
 				EngineCore.statScreenRefresh();
 			}
@@ -5900,10 +5806,10 @@ use namespace CoC;
 			var oldHunger:Number = hunger;
 			hunger += amnt;
 			if (hunger > maxHunger()) hunger = maxHunger();
-			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
+			if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp('hunger');
 			//game.dynStats("lus", 0, "scale", false);
 			if (nl) outputText("\n");
-			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
+			if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp("hunger");
 			dynStats("lus", 0, "scale", false);
 			EngineCore.statScreenRefresh();
 		}
@@ -5916,7 +5822,7 @@ use namespace CoC;
 			var oldHunger:Number = hunger;
 			hunger -= amnt;
 			if (hunger < 0) hunger = 0;
-			if (hunger < oldHunger) CoC.instance.mainView.statsView.showStatDown('hunger');
+			if (hunger < oldHunger) CoC.instance.mainViewManager.showStatDown('hunger');
 			dynStats("lus", 0, "scale", false);
 		}
 
@@ -5999,8 +5905,8 @@ use namespace CoC;
 			if (perkv1(IMutationsLib.SlimeMetabolismIM) >= 1) {
 				var percent:Number = 0.01;
 				percent += (0.01 * perkv1(IMutationsLib.SlimeMetabolismIM));
-				EngineCore.HPChange(Math.round(maxHP() * percent), true, false);
-				EngineCore.ManaChange(Math.round(maxMana() * percent));
+				pc.HPChange(Math.round(maxHP() * percent), true, false);
+				pc.ManaChange(Math.round(maxMana() * percent));
 				EngineCore.changeFatigue(-Math.round(maxFatigue() * percent));
 			}
 			if (perkv1(IMutationsLib.SlimeMetabolismIM) >= 3 && !hasStatusEffect(StatusEffects.PostfluidIntakeRegeneration)) createStatusEffect(StatusEffects.PostfluidIntakeRegeneration, 0, 0, 0, 0);
@@ -6944,6 +6850,9 @@ use namespace CoC;
 		}
 
 		public function requiredXP():int {
+			return requiredXPAt(level);
+		}
+		public static function requiredXPAt(level:int):int {
 			var xpm:Number = 100;
 			if (level >= 42) xpm += 100;
 			if (level >= 102) xpm += 100;
@@ -6953,6 +6862,10 @@ use namespace CoC;
 			//if (temp > 93200) temp = 93200;(max lvl)233 * 400(exp multi)
 			return temp;
 		}
+		public function canLevelUpOrRestore():Boolean {
+			return XP >= requiredXP() && (level < game.levelCap || negativeLevel > 0);
+		}
+
 
 		public function minotaurAddicted():Boolean {
 			return !hasPerk(PerkLib.MinotaurCumResistance) && !hasPerk(PerkLib.ManticoreCumAddict) && !fiendishMetabolismNFER() && (hasPerk(PerkLib.MinotaurCumAddict) || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1);
@@ -6970,7 +6883,7 @@ use namespace CoC;
 			if (hasStatusEffect(StatusEffects.DriderIncubusVenom))
 			{
 				removeStatusEffect(StatusEffects.DriderIncubusVenom);
-				CoC.instance.mainView.statsView.showStatUp('str');
+				CoC.instance.mainViewManager.showStatUp('str');
 			}
 			if(CoC.instance.monster.hasStatusEffect(StatusEffects.Sandstorm)) CoC.instance.monster.removeStatusEffect(StatusEffects.Sandstorm);
 			if(hasStatusEffect(StatusEffects.Berzerking)) {
@@ -8199,7 +8112,7 @@ use namespace CoC;
 					}
 				}
 			}
-			EngineCore.HPChange(Math.round(maxHP() * .2), true, false);
+			pc.HPChange(Math.round(maxHP() * .2), true, false);
 			cumOmeter(40);
 			cor += 2;
 			var Ammount:Number = 100;
@@ -8236,7 +8149,7 @@ use namespace CoC;
 					}
 				}
 			}
-			EngineCore.HPChange(Math.round(maxHP() * .2), true, false);
+			pc.HPChange(Math.round(maxHP() * .2), true, false);
 			cumOmeter(40);
 			cor += 2;
 			var Ammount:Number = 100;
@@ -8254,7 +8167,7 @@ use namespace CoC;
 		public function hollowFeed(subtype:Number):void {
 			var amnt:Number = 0;
 			if (subtype == 0 || subtype == 1) {
-				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.1));
+				pc.SoulforceChange(Math.round(maxSoulforce() * 0.1));
 				amnt += Math.round(maxHunger() * 0.15);
 				if (hasPerk(PerkLib.ExanimationII) && subtype == 1) {
 					addPerkValue(PerkLib.ExanimationII, 1, 1);
@@ -8262,14 +8175,14 @@ use namespace CoC;
 				}
 			}
 			if (subtype == 2) {
-				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.1));
+				pc.SoulforceChange(Math.round(maxSoulforce() * 0.1));
 				amnt += Math.round(maxHunger() * 0.15);
 				addPerkValue(PerkLib.ExanimationII, 1, 1);
 				if (perkv1(PerkLib.ExanimationII) > hollowFeedSoulPointsCap()) setPerkValue(PerkLib.ExanimationII, 1, hollowFeedSoulPointsCap());
 			}
 			if (subtype == 3) {
-				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.25));
-				EngineCore.HPChange(Math.round(maxHP() * 0.1), true, false);
+				pc.SoulforceChange(Math.round(maxSoulforce() * 0.25));
+				pc.HPChange(Math.round(maxHP() * 0.1), true, false);
 				amnt += Math.round(maxHunger() * 0.1);
 				if (hasPerk(PerkLib.ExanimationII)) {
 					addPerkValue(PerkLib.ExanimationII, 1, 3);
@@ -8277,8 +8190,8 @@ use namespace CoC;
 				}
 			}
 			if (subtype == 4) {
-				EngineCore.SoulforceChange(Math.round(maxSoulforce() * 0.3));
-				EngineCore.HPChange(Math.round(maxHP() * 0.3), true, false);
+				pc.SoulforceChange(Math.round(maxSoulforce() * 0.3));
+				pc.HPChange(Math.round(maxHP() * 0.3), true, false);
 				amnt += Math.round(maxHunger() * 0.3);
 				if (game.monster is Goblin || game.monster is GoblinAssassin || game.monster is GoblinShaman || game.monster is GoblinWarrior) flags[kFLAGS.GOBLINS_KILLED]++;
 				else if (game.monster is Hollow) flags[kFLAGS.HOLLOWS_KILLED]++;
@@ -8293,9 +8206,9 @@ use namespace CoC;
 			var oldHunger:Number = hunger;
 			hunger += amnt;
 			if (hunger > maxHunger()) hunger = maxHunger();
-			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp('hunger');
+			if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp('hunger');
 			//game.dynStats("lus", 0, "scale", false);
-			if (hunger > oldHunger) CoC.instance.mainView.statsView.showStatUp("hunger");
+			if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp("hunger");
 			if (subtype == 4) dynStats("cor", 10);
 			else dynStats("lus", 0, "scale", false);
 			EngineCore.statScreenRefresh();
@@ -8328,9 +8241,9 @@ use namespace CoC;
 
 		public function myconidAbsorbNutrient():void {
 			addPerkValue(PerkLib.AbsorbNutrient, 2, 1);
-			EngineCore.HPChange(((100 + (tou*2)) * 1), true, false);
-			EngineCore.ManaChange(((100 + (inte*2)) * 1));
-			EngineCore.SoulforceChange(((100 + (wis*2)) * 1));
+			pc.HPChange(((100 + (tou*2)) * 1), true, false);
+			pc.ManaChange(((100 + (inte*2)) * 1));
+			pc.SoulforceChange(((100 + (wis*2)) * 1));
 			EngineCore.changeFatigue(-((100 + (spe*2)) * 1));
 			if (perkv2(PerkLib.AbsorbNutrient) > 125) {
 				outputText("You sigh in delight as you fully absorb the nutrient from your most recent meal into your cap yet unable to evolve further your cap instead release this in the form of a metabolic boost as you feel a surge in your esper ability.");
@@ -8373,7 +8286,7 @@ use namespace CoC;
 					}
 				}
 			}
-			EngineCore.HPChange(Math.round(maxHP() * .2), true, false);
+			pc.HPChange(Math.round(maxHP() * .2), true, false);
 			cumOmeter(40);
 			cor += 2;
 			var Ammount:Number = 100;
@@ -8397,8 +8310,8 @@ use namespace CoC;
 					var mfFM:Number = 1;
 					if (perkv1(IMutationsLib.FiendishMetabolismIM) >= 4) mfFM *= 2;
 					if (hunger < maxHunger()) refillHunger((10 * mfFM), false, true);
-					EngineCore.HPChange(((100 + (tou*2)) * mfFM), true, false);
-					EngineCore.ManaChange(((100 + (inte*2)) * mfFM));
+					pc.HPChange(((100 + (tou*2)) * mfFM), true, false);
+					pc.ManaChange(((100 + (inte*2)) * mfFM));
 					EngineCore.changeFatigue(-((100 + (spe*2)) * mfFM));
 					outputText("You feel energised and empowered by the energy drained out of the fluid of your recent fuck. What a meal!\n\n");
 					addPerkValue(PerkLib.DemonEnergyThirst, 1, 1);
@@ -8540,9 +8453,9 @@ use namespace CoC;
 			var hpc:Number = 25 + (lib / 2);
 			if (perkv1(IMutationsLib.StillHeartIM) >= 1) hpc *= (1 + (0.01 * perkv1(IMutationsLib.StillHeartIM)));
 			if (perkv1(IMutationsLib.StillHeartIM) >= 3) hpc += Math.round(maxHP() * 0.01 * (perkv1(IMutationsLib.StillHeartIM) - 2));
-			if (perkv1(IMutationsLib.StillHeartIM) >= 2) EngineCore.HPChange(hpc, true, true);
-			else EngineCore.HPChange(hpc, true, false);
-			EngineCore.ManaChange(25 + (inte/2));
+			if (perkv1(IMutationsLib.StillHeartIM) >= 2) pc.HPChange(hpc, true, true);
+			else pc.HPChange(hpc, true, false);
+			pc.ManaChange(25 + (inte/2));
 			EngineCore.changeFatigue(-(25 + (spe/2)));
 			removeCurse("lib", 5, 1);
 			removeCurse("lib", 5, 2);
@@ -8566,7 +8479,7 @@ use namespace CoC;
 					}
 				}
 			}
-			EngineCore.HPChange(Math.round(maxHP() * .05), true, false);
+			pc.HPChange(Math.round(maxHP() * .05), true, false);
 		}
 
 		public function hasUniquePregnancy():Boolean{
@@ -8697,8 +8610,8 @@ use namespace CoC;
             var addBonus:Number = bonus_sign * Math.min(Math.abs(bonus_sign * cap - current), Math.abs(bonus * 0.01));
             if (applyEffect) {
                 buff("Mutagen").addStat(statName + ".mult", addBonus);
-                CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-                CoC.instance.mainView.statsView.showStatUp(statName);
+                CoC.instance.mainViewManager.refreshStats();
+                CoC.instance.mainViewManager.showStatUp(statName);
             }
             return true;
 		}
@@ -8719,8 +8632,8 @@ use namespace CoC;
 			removeCurse(statName, bonus, -2);
 			if (buff("Alchemical").getValueOfStatBuff(""+statName+".mult") < aBCap){
 				buff("Alchemical").addStat(""+statName+".mult",0.01);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp(statName);
 			}
 		}
 
@@ -8731,8 +8644,8 @@ use namespace CoC;
 			removeCurse(statName, bonus, -2);
 			if (buff("Knowledge").getValueOfStatBuff(""+statName+".mult") < KBCap){
 				buff("Knowledge").addStat(""+statName+".mult",0.01);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp(statName);
 			}
 		}
 
@@ -8752,10 +8665,10 @@ use namespace CoC;
 				buff("Devoured Mind").addStat("int.mult",0.05);
 				buff("Devoured Mind").addStat("wis.mult",0.05);
 				buff("Devoured Mind").addStat("lib.mult",0.05);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp("inte");
-				CoC.instance.mainView.statsView.showStatUp("wis");
-				CoC.instance.mainView.statsView.showStatUp("lib");
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp("inte");
+				CoC.instance.mainViewManager.showStatUp("wis");
+				CoC.instance.mainViewManager.showStatUp("lib");
 				outputText("Your mind surges with newfound knowledge, your brain expanding slightly from the stolen information. You orgasm in sympathy with this new added knowledge.");
 			}
 			else{
@@ -8791,13 +8704,13 @@ use namespace CoC;
 				buff("Elf Sisters").addStat("int.mult",0.05);
 				buff("Elf Sisters").addStat("wis.mult",0.05);
 				buff("Elf Sisters").addStat("lib.mult",0.05);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp("str");
-				CoC.instance.mainView.statsView.showStatUp("tou");
-				CoC.instance.mainView.statsView.showStatUp("spe");
-				CoC.instance.mainView.statsView.showStatUp("inte");
-				CoC.instance.mainView.statsView.showStatUp("wis");
-				CoC.instance.mainView.statsView.showStatUp("lib");
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp("str");
+				CoC.instance.mainViewManager.showStatUp("tou");
+				CoC.instance.mainViewManager.showStatUp("spe");
+				CoC.instance.mainViewManager.showStatUp("inte");
+				CoC.instance.mainViewManager.showStatUp("wis");
+				CoC.instance.mainViewManager.showStatUp("lib");
 				setPerkValue(PerkLib.OneWiththeForest, 1, (ElfSistersBonus*100));
 				if ((ElfSistersBonus*100) >= 10) setPerkValue(PerkLib.OneWiththeForest, 2, Math.round(((ElfSistersBonus*100)-5)*0.1));
 			}
@@ -8813,13 +8726,13 @@ use namespace CoC;
 				buff("Dominant Alpha").addStat("int.mult",0.02);
 				buff("Dominant Alpha").addStat("wis.mult",0.02);
 				buff("Dominant Alpha").addStat("lib.mult",0.02);
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp("str");
-				CoC.instance.mainView.statsView.showStatUp("tou");
-				CoC.instance.mainView.statsView.showStatUp("spe");
-				CoC.instance.mainView.statsView.showStatUp("inte");
-				CoC.instance.mainView.statsView.showStatUp("wis");
-				CoC.instance.mainView.statsView.showStatUp("lib");
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp("str");
+				CoC.instance.mainViewManager.showStatUp("tou");
+				CoC.instance.mainViewManager.showStatUp("spe");
+				CoC.instance.mainViewManager.showStatUp("inte");
+				CoC.instance.mainViewManager.showStatUp("wis");
+				CoC.instance.mainViewManager.showStatUp("lib");
 			}
 			if (hasStatusEffect(StatusEffects.DominantAlpha) && statusEffectv1(StatusEffects.DominantAlpha) > 1 && buff("Dominant Alpha").getValueOfStatBuff("str") < 200)
 				buff("Dominant Alpha").addStat("str",200);
@@ -9077,8 +8990,8 @@ use namespace CoC;
 					var buff:Number = 1;
 					if (perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2
 					statStore.replaceBuffObject({'spe.mult':Math.round(speStat.mult.value)*buff}, 'Supercharged', { text: 'Supercharged!' });
-					CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-					CoC.instance.mainView.statsView.showStatUp('spe');
+					CoC.instance.mainViewManager.refreshStats();
+					CoC.instance.mainViewManager.showStatUp('spe');
 					outputText("\n\nAs your bottled up voltage ramps up you begin to lose yourself to lust turning increasingly feral as your overwhelming need to discharge override any rational thinking. FUCK… you need someone to fuck that voltage out of you!");
 					if(game.inCombat) outputText(" [themonster] gulps as [monster he] see's your lust crazed expression. Should you win [he] won't get off the hook so easily!");
 					outputText("\n\n<b>You entered the supercharged state!</b>\n\n");

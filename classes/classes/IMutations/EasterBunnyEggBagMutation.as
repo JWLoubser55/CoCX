@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
 public class EasterBunnyEggBagMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Easter Bunny Egg Bag";
-        }
+		public static const MNAME:String = "Easter Bunny Egg Bag";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -63,7 +64,7 @@ public class EasterBunnyEggBagMutation extends IMutationPerkType
         }
 
         public function EasterBunnyEggBagMutation() {
-            super(mName + " IM", mName, SLOT_TESTICLES, 3);
+            super(MNAME, SLOT_TESTICLES, 3);
         }
 
     }

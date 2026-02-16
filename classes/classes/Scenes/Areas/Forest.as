@@ -142,7 +142,6 @@ use namespace CoC;
 					}, {
 						name  : "innerforest",
 						label : "New Area",
-						kind  : 'event',
 						kind  : 'place',
 						unique: true,
 						when: canDiscoverInner,

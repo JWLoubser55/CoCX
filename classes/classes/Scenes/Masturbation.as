@@ -2356,7 +2356,7 @@ public class Masturbation extends BaseContent {
 			outputText("You find a flat, comfortable " + description + " to sit down on and meditate.  As always, meditation brings a sense of peace and calm to you, but it eats up one hour of the day.");
 			dynStats("lus", -Math.round(player.maxLust()*0.2), "scale", false);
 			dynStats("cor", -.3 - 0.3 * player.countCockSocks("alabaster"));
-			if (player.hasPerk(PerkLib.Enlightened) && player.cor < 10) HPChange(50, true, false);
+			if (player.hasPerk(PerkLib.Enlightened) && player.cor < 10) pc.HPChange(50, true, false);
 			fatigue( -10);
 			endEncounter();
 		}
@@ -3668,7 +3668,7 @@ public class Masturbation extends BaseContent {
 			outputText((player.gender == 3?"While your cock is being taken care of, a":"A")+" mummy stretches backwards between your legs and grabs your tights to get easy access to your needy snatch, its black tongue slithering in to leech at your excess soul force. You gladly let the intruder in, savoring as it laps at your button to quench its insatiable thirst.\n\n");
 			outputText((player.hasBreasts()?"You knead your own nipple, grabbing your breasts with both hands and pulling hard in order to maximize the crashing wave of pleasures as your servants’’ tingling touches drive you over the edge. ":"")+"You cum hard "+(player.gender == 3?"both ":"")+"from your "+(player.hasCock()?"overwhelmed cock "+(player.hasBalls()?"and nuts ":"")+"":"")+(player.gender == 3?", as well as ":"")+(player.hasVagina()?"drenched [pussy] ":"")+"feeding your servants with a torrent of soul force, albeit just enough to power them up and keep them well addicted to you. Now fed with energy they will be extra vicious for a while.\n\n");
 			outputText("Satisfied, you order your pets off and redress, ready to go back to your adventures.");
-			EngineCore.SoulforceChange( -Math.round(player.maxSoulforce() * 0.5));
+			pc.SoulforceChange( -Math.round(player.maxSoulforce() * 0.5));
 			player.addPerkValue(PerkLib.MummyLord,2,24);
 			flags[kFLAGS.TIMES_MASTURBATED]++;
 			if (player.gender == 3) masturGasm("Dick", "Vaginal");

@@ -963,6 +963,9 @@ import classes.Scenes.NPCs.Forgefather;
 			return max1;
 		}
 
+		public function canUseVenom():Boolean {
+			return maxVenom() > 0;
+		}
 		public function maxVenom():Number
 		{
 			var maxven:Number = 0;
@@ -1014,8 +1017,8 @@ import classes.Scenes.NPCs.Forgefather;
 				if (hasPerk(PerkLib.EclassHeavenTribulationSurvivor)) multimaxven += 0.3;
 			}
 			if (perkv1(IMutationsLib.ArachnidBookLungIM) > 0) multimaxven += perkv1(IMutationsLib.ArachnidBookLungIM);
-			if (game.player.hasKeyItem("Sky Poison Pearl") >= 0) maxven += 300;
-			if (hasPerk(PerkLib.AscensionSkyPoisonPearlMasteryStageX)) multimaxven += perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX);
+			if (game.player.hasKeyItem("Sky Poison Pearl") >= 0 && maxven > 0) maxven += 300;
+			if (hasPerk(PerkLib.AscensionSkyPoisonPearlMasteryStageX) && maxven > 0) multimaxven += perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX);
 			maxven *= multimaxven;
 			maxven = Math.round(maxven);
 			return maxven;

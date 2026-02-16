@@ -4,18 +4,18 @@
  */
 package classes.IMutations
 {
-import classes.BodyParts.Tail;
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
 public class KitsuneParathyroidGlandMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Kitsune Parathyroid Gland";
-        }
+		public static const MNAME:String = "Kitsune Parathyroid Gland";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -72,7 +72,7 @@ public class KitsuneParathyroidGlandMutation extends IMutationPerkType
         }
 
         public function KitsuneParathyroidGlandMutation() {
-            super(mName + " IM", mName, SLOT_PARATHYROID, 3);
+            super(MNAME, SLOT_PARATHYROID, 3);
         }
         
     }

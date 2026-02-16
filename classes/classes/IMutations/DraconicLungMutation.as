@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
 public class DraconicLungMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Draconic Lung";
-        }
+		public static const MNAME:String = "Draconic Lung";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -62,7 +63,7 @@ public class DraconicLungMutation extends IMutationPerkType
         }
 
         public function DraconicLungMutation() {
-            super(mName + " IM", mName, SLOT_NONE, 1);//super(mName + " IM", mName, SLOT_LUNGS, 3);
+            super(MNAME, SLOT_NONE, 1);//super(MNAME, SLOT_LUNGS, 3);
         }
 
     }

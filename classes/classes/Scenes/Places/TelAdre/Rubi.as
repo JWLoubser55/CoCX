@@ -2244,7 +2244,7 @@ private function getFuckedByRubi():void {
 
 	outputText("\n\nYour arms tingle, hands gripping at the sheets in an attempt to anchor yourself.  Your [legs] shiver as goose bumps rise on your flesh.  One leg spasms wildly, unwilling to follow your brain's commands in the face of this rising pleasure.  Your head spins, awash in feelings of bliss and something else... could it be love?  You bite your lip, your face contorting into a look of needful desperation.  Love for this demon-tainted " + rubiMF("boy","girl") + ", for this person who's shared their secrets, their life with you?  Your mind grows foggy, and at this point not even you are certain of the true answer buried under all of these sensations.  The look on Rubi's face, however, is as plain as day.  Adoration pours from [rubi em] as [rubi ey] pounds away, fucking your [vagOrAss] faster and faster with each measured, careful thrust.");
 
-	outputText("\n\nSeveral things happen in quick succession.  First, your lover glances down at you with that same look [rubi ey]'s used all day.  That questioning, submissive look, the look that just minutes ago said, \"<i>Can I fuck you?\</i>\"  Now it says, through the guise of those sparkling ");
+	outputText("\n\nSeveral things happen in quick succession.  First, your lover glances down at you with that same look [rubi ey]'s used all day.  That questioning, submissive look, the look that just minutes ago said, \"<i>Can I fuck you?</i>\"  Now it says, through the guise of those sparkling ");
 	if(flags[kFLAGS.RUBI_EYE_TYPE] == 0 || rubiBimbo()) outputText("green");
 	else if(flags[kFLAGS.RUBI_EYE_TYPE] == 1) outputText("purple");
 	else outputText("black");

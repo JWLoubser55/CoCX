@@ -220,7 +220,7 @@ public class TempleOfTheDivine extends BaseContent {
 			outputText("You pray to the trickster patron Taoth. As you word out your prayer, suggestions of pranks flow into your mind, both playful and troublemaking, as you feel the laughter of the god cheer you up, healing your wounds and washing away corrupt thoughts. You also feel the blessing of the deity empowering your agility.\n");
 			loseBlessing("Taoth");
 			outputText("<b>You gained the Blessing of Divine Agency - Taoth for 7 days</b>");
-			mainView.statsView.showStatUp('spe');
+			showStatUp('spe');
 			player.statStore.replaceBuffObject({ 'spe.mult': 0.1 }, 'TaothBlessing', {
 				text: 'Taoth Blessing',
 				rate: Buff.RATE_DAYS,
@@ -241,8 +241,8 @@ public class TempleOfTheDivine extends BaseContent {
 				'str.mult': 0.1,
 				'tou.mult': 0.1
 			}, 'FenrirBlessing', { text: 'Fenrir Blessing', rate: Buff.RATE_DAYS, tick: 7 });
-			mainView.statsView.showStatUp('str');
-			mainView.statsView.showStatUp('tou');
+			showStatUp('str');
+			showStatUp('tou');
 			if (player.HP < player.maxHP()) player.HP = player.maxHP();
 			dynStats("cor", -10);
 			statScreenRefresh();
