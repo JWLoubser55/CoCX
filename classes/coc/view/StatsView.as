@@ -10,10 +10,8 @@ import classes.Stats.StatUtils;
 import classes.internals.Utils;
 
 import coc.model.TimeModel;
-import coc.view.NewStatsView;
 
 import flash.display.DisplayObject;
-
 import flash.events.MouseEvent;
 import flash.text.TextField;
 import flash.text.TextFormat;
@@ -147,30 +145,22 @@ public class StatsView extends Block {
 			defaultTextFormat: LABEL_FORMAT
 		},{before:1});
 		col1.addElement(strBar = new StatBar({statName: "Strength:"}));
-		strBar.addEventListener("rollOver",Utils.curry(hoverStat,'str'));
-		strBar.addEventListener("rollOut",Utils.curry(hoverStat,'str'));
+		addStatTooltip(strBar, 'str');
 		col1.addElement(touBar = new StatBar({statName: "Toughness:"}));
-		touBar.addEventListener("rollOver",Utils.curry(hoverStat,'tou'));
-		touBar.addEventListener("rollOut",Utils.curry(hoverStat,'tou'));
+		addStatTooltip(touBar, 'tou');
 		col1.addElement(speBar = new StatBar({statName: "Speed:"}));
-		speBar.addEventListener("rollOver",Utils.curry(hoverStat,'spe'));
-		speBar.addEventListener("rollOut",Utils.curry(hoverStat,'spe'));
+		addStatTooltip(speBar, 'spe');
 		col1.addElement(intBar = new StatBar({statName: "Intelligence:"}));
-		intBar.addEventListener("rollOver",Utils.curry(hoverStat,'int'));
-		intBar.addEventListener("rollOut",Utils.curry(hoverStat,'int'));
+		addStatTooltip(intBar, 'int');
 		col1.addElement(wisBar = new StatBar({statName: "Wisdom:"}));
-		wisBar.addEventListener("rollOver",Utils.curry(hoverStat,'wis'));
-		wisBar.addEventListener("rollOut",Utils.curry(hoverStat,'wis'));
+		addStatTooltip(wisBar, 'wis');
 		col1.addElement(libBar = new StatBar({statName: "Libido:"}));
-		libBar.addEventListener("rollOver",Utils.curry(hoverStat,'lib'));
-		libBar.addEventListener("rollOut",Utils.curry(hoverStat,'lib'));
+		addStatTooltip(libBar, 'lib');
 		col1.addElement(senBar = new StatBar({statName: "Sensitivity:"}));
-		senBar.addEventListener("rollOver",Utils.curry(hoverStat,'sens'));
-		senBar.addEventListener("rollOut",Utils.curry(hoverStat,'sens'));
+		addStatTooltip(senBar, 'sens');
 		col1.addElement(corBar = new StatBar({statName: "Corruption:"}));
-		corBar.addEventListener("rollOver",Utils.curry(hoverStat,'cor'));
-		corBar.addEventListener("rollOut",Utils.curry(hoverStat,'cor'));
-		
+		addStatTooltip(corBar, 'cor');
+
 		combatStatsText = col2.addTextField({
 			text: 'Combat stats',
 			defaultTextFormat: LABEL_FORMAT
@@ -181,8 +171,7 @@ public class StatsView extends Block {
 			bgColor : '#ff0000',
 			showMax : true
 		}));
-		hpBar.addEventListener("rollOver",Utils.curry(hoverStat,'hp'));
-		hpBar.addEventListener("rollOut",Utils.curry(hoverStat,'hp'));
+		addStatTooltip(hpBar, 'hp');
 		col2.addElement(lustBar = new StatBar({
 			statName   : "Lust:",
 		//	barColor   : '#ff1493',
@@ -190,32 +179,34 @@ public class StatsView extends Block {
 			hasMinBar  : true,
 			showMax    : true
 		}));
-		lustBar.addEventListener("rollOver",Utils.curry(hoverStat,'minlust'));
-		lustBar.addEventListener("rollOut",Utils.curry(hoverStat,'minlust'));
+		addStatTooltip(lustBar, 'lust');
 		col2.addElement(wrathBar = new StatBar({
 			statName: "Wrath:",
 			showMax : true
 		}));
-		wrathBar.addEventListener("rollOver",Utils.curry(hoverStat,'wrath'));
-		wrathBar.addEventListener("rollOut",Utils.curry(hoverStat,'wrath'));
+		addStatTooltip(wrathBar, 'wrath');
 		col2.addElement(fatigueBar = new StatBar({
 			statName: "Fatigue:",
 			showMax : true
 		}));
+		addStatTooltip(fatigueBar, 'fatigue');
 		col2.addElement(manaBar = new StatBar({
 			statName: "Mana:",
 		//	barColor: '#0000ff',
 			showMax : true
 		}));
+		addStatTooltip(manaBar, 'mana');
 		col2.addElement(soulforceBar = new StatBar({
 			statName: "SF:",
 		//	barColor: '#ffd700',
 			showMax : true
 		}));
+		addStatTooltip(soulforceBar, 'soulforce');
 		col2.addElement(hungerBar = new StatBar({
 			statName: "Satiety:",
 			showMax : true
 		}));
+		addStatTooltip(hungerBar, 'hunger');
 		///////////////////////////
 		allStats = [];
 		for (var ci:int = 0, cn:int = col1.numElements; ci < cn; ci++) {
@@ -278,7 +269,7 @@ public class StatsView extends Block {
 				this.oldStatsView.visible = value;
 			}
 		}
-		this.toggleButton.show("",this.toggleClick).icon("Back");
+		this.toggleButton.show("",this.toggleClick).icon("Tab");
 		super.visible = value;
 		if (corner) corner.visible = visible;
 	}
@@ -486,6 +477,10 @@ public class StatsView extends Block {
 		}
 	}
 
+	public static function addStatTooltip(element:DisplayObject, statName:String):void {
+		element.addEventListener("rollOver",Utils.curry(hoverStat, statName));
+		element.addEventListener("rollOut",Utils.curry(hoverStat, statName));
+	}
 	public static function hoverStat(statname:String, event:MouseEvent):void {
 		var player:Player = CoC.instance.player;
 		switch (event.type) {

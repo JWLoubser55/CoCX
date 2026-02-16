@@ -20,6 +20,7 @@ import classes.display.SpriteDb;
 import classes.lists.Gender;
 
 import coc.view.ButtonDataList;
+import coc.view.CoCButton;
 import coc.view.MainView;
 import classes.Scenes.Combat.CombatAbilities;
 
@@ -5849,22 +5850,25 @@ public function rebirthFromBadEnd():void {
         return total;
     }
 	public function setLevelButton(allowAutoLevelTransition:Boolean):Boolean {
-		var levelup:Boolean = player.XP >= player.requiredXP() && (player.level < CoC.instance.levelCap || player.negativeLevel > 0);
+		var levelup:Boolean = player.canLevelUpOrRestore();
+		mainView.levelButton.icon('');
 		if (levelup || player.perkPoints > 0 || player.statPoints > 0) {
 			if (!levelup) {
 				if (player.statPoints > 0) {
-					mainView.setMenuButton(MainView.MENU_LEVEL, "Stat Up");
+					mainView.levelButton.labelText = "Stat Up";
 					mainView.levelButton.toolTipText = "Distribute your stats points. \n\nYou currently have " + String(player.statPoints) + ".";
 				} else  if (player.perkPoints > 0) {
-					mainView.setMenuButton(MainView.MENU_LEVEL, "Perk Up");
+					mainView.levelButton.labelText = "Perk Up";
 					mainView.levelButton.toolTipText = "Spend your perk points on a new perk. \n\nYou currently have " + String(player.perkPoints) + ".";
 				}
 			} else {
 				if (player.negativeLevel > 0) {
-					mainView.setMenuButton(MainView.MENU_LEVEL, "Restore Lvl");
+					mainView.levelButton.labelText = "Restore Lvl";
+					mainView.levelButton.icon("UpRed");
 					mainView.levelButton.toolTipText = "Level up to restore your lost levels.";
 				} else {
-					mainView.setMenuButton(MainView.MENU_LEVEL, "Level Up");
+					mainView.levelButton.labelText = "Level Up";
+					mainView.levelButton.icon("Up");
 					mainView.levelButton.toolTipText = getLevelUpStatsForButton();
 				}
 				if (flags[kFLAGS.AUTO_LEVEL] > 0 && allowAutoLevelTransition) {

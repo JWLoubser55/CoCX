@@ -735,6 +735,15 @@ public class MainView extends Block {
 		var button:CoCButton = this.getMenuButtonByName(name);
 		button.visible       = false;
 	}
+	public function flashMenuButton(name:String, color:String="#ffcc00"):void {
+		var button:CoCButton = this.getMenuButtonByName(name);
+		button.flashLabelColor(color);
+	}
+
+	public function unflashMenuButton(name:String):void {
+		var button:CoCButton = this.getMenuButtonByName(name);
+		button.unflashLabelColor();
+	}
 
 	public function showAllMenuButtons():void {
 		this.showMenuButton(MENU_NEW_MAIN);

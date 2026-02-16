@@ -6850,6 +6850,9 @@ use namespace CoC;
 		}
 
 		public function requiredXP():int {
+			return requiredXPAt(level);
+		}
+		public static function requiredXPAt(level:int):int {
 			var xpm:Number = 100;
 			if (level >= 42) xpm += 100;
 			if (level >= 102) xpm += 100;
@@ -6859,6 +6862,10 @@ use namespace CoC;
 			//if (temp > 93200) temp = 93200;(max lvl)233 * 400(exp multi)
 			return temp;
 		}
+		public function canLevelUpOrRestore():Boolean {
+			return XP >= requiredXP() && (level <= game.levelCap || negativeLevel > 0);
+		}
+
 
 		public function minotaurAddicted():Boolean {
 			return !hasPerk(PerkLib.MinotaurCumResistance) && !hasPerk(PerkLib.ManticoreCumAddict) && !fiendishMetabolismNFER() && (hasPerk(PerkLib.MinotaurCumAddict) || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1);

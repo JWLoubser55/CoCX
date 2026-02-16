@@ -1,20 +1,9 @@
 package coc.view {
 import classes.CoC;
-import classes.Parser.Parser;
 import classes.Player;
 import classes.Stats.Buff;
 import classes.Stats.BuffableStat;
 import classes.internals.Utils;
-
-import coc.view.BitmapDataSprite;
-import coc.view.Block;
-import coc.view.MainView;
-import coc.view.StatBar;
-import coc.view.StatOrbBar;
-import coc.view.StatsView;
-import coc.view.UIUtils;
-
-import flash.display.DisplayObject;
 
 import flash.text.TextField;
 import flash.text.TextFormatAlign;
@@ -54,13 +43,24 @@ public class NewStatsView extends Block {
 		size:16,
 		align:TextFormatAlign.LEFT
 	};
+	public static const XP_BAR_BG:String = "#222222";
+	public static const XP_BAR_BORDER:String = "#888888";
+	public static const XP_BAR_FILL:String = "#eeee00";
+	public static const XP_BAR_FILL_LEVELUP:String = "#eeeecc";
+	public static const XP_BAR_FILL_LEVELCAP:String = "#ff8000";
+	public static const XP_BAR_HEIGHT:int = 8;
+	public static const XP_BAR_BORDER_SIZE:int = 1;
 
 	private var bg:BitmapDataSprite;
 
 	public var titleLabel:TextField;
 	public var subtitleLabel:TextField;
 
-	private var main:Block;
+	public var xpBar:Block;
+	public var xpBarFill:BitmapDataSprite;
+	public var xpBarBg:BitmapDataSprite;
+	public var xpBarBorder:BitmapDataSprite;
+
 	private var row1:Block;
 	private var row2:Block;
 
@@ -102,6 +102,9 @@ public class NewStatsView extends Block {
 	public var soulforceLabel:TextField;
 	public var soulforceBar:StatBar;
 	public var soulforceMax:TextField;
+	public var venomLabel:TextField;
+	public var venomBar:StatBar;
+	public var venomMax:TextField;
 	private var _textColor:uint = 0x000000;
 
 
@@ -142,6 +145,32 @@ public class NewStatsView extends Block {
 		}, {
 			autosize: true
 		});
+		xpBar = new Block({
+			width: width-2,
+			height: XP_BAR_HEIGHT
+		});
+		addElement(xpBar);
+		xpBarBorder = xpBar.addBitmapDataSprite({
+			x:1,
+			y:0,
+			width:width-2,
+			height:XP_BAR_HEIGHT,
+			fillColor:XP_BAR_BORDER
+		});
+		xpBarBg = xpBar.addBitmapDataSprite({
+			x:1+XP_BAR_BORDER_SIZE,
+			y:XP_BAR_BORDER_SIZE,
+			width:width-2-XP_BAR_BORDER_SIZE*2,
+			height:XP_BAR_HEIGHT-XP_BAR_BORDER_SIZE*2,
+			fillColor:XP_BAR_BG
+		});
+		xpBarFill = xpBar.addBitmapDataSprite({
+			x:xpBarBg.x,
+			y:xpBarBg.y,
+			width:xpBarBg.width,
+			height:xpBarBg.height,
+			fillColor:XP_BAR_FILL
+		});
 		row1 = new Block({
 			width: width,
 			layoutConfig: {
@@ -157,7 +186,7 @@ public class NewStatsView extends Block {
 			layoutConfig: {
 				type: 'grid',
 				gap: 2,
-				rows: 6,
+				rows: 9,
 				cols: 3,
 				columns: [0.2,0.65,0.15],
 				setWidth: true,
@@ -176,32 +205,24 @@ public class NewStatsView extends Block {
 			selectable: false
 		};
 		strLabel = row1.addTextField(Utils.extend({text:'Str'}, row1nameformat));
-		strLabel.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'str'));
-		strLabel.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'str'));
+		StatsView.addStatTooltip(strLabel, 'str');
 		touLabel = row1.addTextField(Utils.extend({text:'Tou'}, row1nameformat));
-		touLabel.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'tou'));
-		touLabel.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'tou'));
+		StatsView.addStatTooltip(touLabel, 'tou');
 		speLabel = row1.addTextField(Utils.extend({text:'Spe'}, row1nameformat));
-		speLabel.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'spe'));
-		speLabel.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'spe'));
+		StatsView.addStatTooltip(speLabel, 'spe');
 		intLabel = row1.addTextField(Utils.extend({text:'Int'}, row1nameformat));
-		intLabel.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'int'));
-		intLabel.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'int'));
+		StatsView.addStatTooltip(intLabel, 'int');
 		wisLabel = row1.addTextField(Utils.extend({text:'Wis'}, row1nameformat));
-		wisLabel.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'wis'));
-		wisLabel.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'wis'));
+		StatsView.addStatTooltip(wisLabel, 'wis');
 		libLabel = row1.addTextField(Utils.extend({text:'Lib'}, row1nameformat));
-		libLabel.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'lib'));
-		libLabel.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'lib'));
+		StatsView.addStatTooltip(libLabel, 'lib');
 		senLabel = row1.addTextField(Utils.extend({text:'Sen'}, row1nameformat));
-		senLabel.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'sens'));
-		senLabel.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'sens'));
+		StatsView.addStatTooltip(senLabel, 'sens');
 		corLabel = row1.addTextField(Utils.extend({text:'Cor'}, row1nameformat));
-		corLabel.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'cor'));
-		corLabel.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'cor'));
+		StatsView.addStatTooltip(corLabel, 'cor');
 		satLabel = row1.addTextField(Utils.extend({text:'Sat'}, row1nameformat));
-		satLabel.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'hunger'));
-		satLabel.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'hunger'));
+		StatsView.addStatTooltip(satLabel, 'hunger');
+
 		var row2h:int = STATVALUE_FORMAT.size+6;
 		const row1valueformat:* = {
 			defaultTextFormat: STATVALUE_FORMAT,
@@ -211,32 +232,23 @@ public class NewStatsView extends Block {
 			selectable: false
 		};
 		strValue = row1.addTextField(row1valueformat);
-		strValue.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'str'));
-		strValue.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'str'));
+		StatsView.addStatTooltip(strValue, 'str');
 		touValue = row1.addTextField(row1valueformat);
-		touValue.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'tou'));
-		touValue.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'tou'));
+		StatsView.addStatTooltip(touValue, 'tou');
 		speValue = row1.addTextField(row1valueformat);
-		speValue.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'spe'));
-		speValue.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'spe'));
+		StatsView.addStatTooltip(speValue, 'spe');
 		intValue = row1.addTextField(row1valueformat);
-		intValue.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'int'));
-		intValue.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'int'));
+		StatsView.addStatTooltip(intValue, 'int');
 		wisValue = row1.addTextField(row1valueformat);
-		wisValue.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'wis'));
-		wisValue.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'wis'));
+		StatsView.addStatTooltip(wisValue, 'wis');
 		libValue = row1.addTextField(row1valueformat);
-		libValue.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'lib'));
-		libValue.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'lib'));
+		StatsView.addStatTooltip(libValue, 'lib');
 		senValue = row1.addTextField(row1valueformat);
-		senValue.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'sens'));
-		senValue.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'sens'));
+		StatsView.addStatTooltip(senValue, 'sens');
 		corValue = row1.addTextField(row1valueformat);
-		corValue.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'cor'));
-		corValue.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'cor'));
+		StatsView.addStatTooltip(corValue, 'cor');
 		satValue = row1.addTextField(row1valueformat);
-		satValue.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'hunger'));
-		satValue.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'hunger'));
+		StatsView.addStatTooltip(satValue, "hunger");
 
 
 		// Row 2
@@ -244,7 +256,8 @@ public class NewStatsView extends Block {
 			showMax: false,
 			labelAlign: 'center',
 			numberStyle: 'comma',
-			hasArrow: false
+			hasArrow: false,
+			barAlpha: 0.6
 		};
 		hpLabel = row2.addTextField({text:'HP', defaultTextFormat: BARLABEL_FORMAT});
 		hpBar = new StatBar(Utils.extend({
@@ -252,8 +265,7 @@ public class NewStatsView extends Block {
 			barAlpha: 0.6,
 			bgColor : '#ff0000'
 		}, statBarOptions));
-		hpBar.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'hp'));
-		hpBar.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'hp'));
+		StatsView.addStatTooltip(hpBar, 'hp');
 		row2.addElement(hpBar);
 		hpMax = row2.addTextField({text:'', defaultTextFormat: BARMAX_FORMAT});
 
@@ -264,8 +276,7 @@ public class NewStatsView extends Block {
 			barAlpha: 0.6,
 			hasMinBar: true
 		}, statBarOptions)));
-		lustBar.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'lust'));
-		lustBar.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'lust'));
+		StatsView.addStatTooltip(lustBar, 'lust');
 		lustMax = row2.addTextField({text:'', defaultTextFormat: BARMAX_FORMAT});
 
 		wrathLabel = row2.addTextField({text:'Wrath', defaultTextFormat: BARLABEL_FORMAT});
@@ -273,8 +284,7 @@ public class NewStatsView extends Block {
 //			barColor: '#a00000',
 //			barAlpha: 0.6
 		}, statBarOptions)));
-		wrathBar.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'wrath'));
-		wrathBar.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'wrath'));
+		StatsView.addStatTooltip(wrathBar, 'wrath');
 		wrathMax = row2.addTextField({text:'', defaultTextFormat: BARMAX_FORMAT});
 
 		fatigueLabel = row2.addTextField({text:'Stamina', defaultTextFormat: BARLABEL_FORMAT});
@@ -282,8 +292,7 @@ public class NewStatsView extends Block {
 //			barColor: '#c0c000',
 //			barAlpha: 0.8
 		}, statBarOptions)));
-		fatigueBar.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'fatigue'));
-		fatigueBar.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'fatigue'));
+		StatsView.addStatTooltip(fatigueBar, 'fatigue');
 		fatigueMax = row2.addTextField({text:'', defaultTextFormat: BARMAX_FORMAT});
 
 		manaLabel = row2.addTextField({text:'Mana', defaultTextFormat: BARLABEL_FORMAT});
@@ -291,8 +300,7 @@ public class NewStatsView extends Block {
 //			barColor: '#00a0a0',
 //			barAlpha: 0.8
 		}, statBarOptions)));
-		manaBar.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'mana'));
-		manaBar.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'mana'));
+		StatsView.addStatTooltip(manaBar, 'mana');
 		manaMax = row2.addTextField({text:'', defaultTextFormat: BARMAX_FORMAT});
 
 		soulforceLabel = row2.addTextField({text:'SF', defaultTextFormat: BARLABEL_FORMAT});
@@ -300,9 +308,15 @@ public class NewStatsView extends Block {
 //			barColor: '#c0c0c0',
 //			barAlpha: 0.8
 		}, statBarOptions)));
-		soulforceBar.addEventListener("rollOver",Utils.curry(StatsView.hoverStat,'soulforce'));
-		soulforceBar.addEventListener("rollOut",Utils.curry(StatsView.hoverStat,'soulforce'));
+		StatsView.addStatTooltip(soulforceBar, 'soulforce');
 		soulforceMax = row2.addTextField({text:'', defaultTextFormat: BARMAX_FORMAT});
+
+		venomLabel = row2.addTextField({text:'Venom',defaultTextFormat:BARLABEL_FORMAT});
+		row2.addElement(venomBar = new StatBar(Utils.extend({
+
+		}, statBarOptions)));
+		StatsView.addStatTooltip(venomBar, 'venom');
+		venomMax = row2.addTextField({text:'',defaultTextFormat:BARMAX_FORMAT});
 
 		/*
 		const orbSize:Number = Math.floor((width-8)/3);
@@ -355,7 +369,23 @@ public class NewStatsView extends Block {
 		const player:Player = CoC.instance.player;
 
 		titleLabel.text = player.short;
-		subtitleLabel.text = "Level "+player.level+" "+player.race();
+		var levelText:String;
+		if (player.negativeLevel) {
+			levelText = "<font color='#900000'>(-"+player.negativeLevel+")</font> "+player.level;
+		} else {
+			levelText = String(player.level);
+		}
+		subtitleLabel.text = "Level "+levelText+" "+player.race();
+
+		var xppc:Number;
+		if (player.level >= CoC.instance.levelCap) {
+			xpBarFill.fillColor = XP_BAR_FILL_LEVELCAP;
+			xppc = 1.0;
+		} else {
+			xppc = Utils.boundFloat(0.0, Number(player.XP)/Number(player.requiredXP()), 1.0);
+			xpBarFill.fillColor = xppc >= 1.0 ? XP_BAR_FILL_LEVELUP : XP_BAR_FILL;
+		}
+		xpBarFill.width = Math.round(xppc * xpBarBg.width);
 
 		showStatValue(strLabel, strValue, player.str, player.strStat.bonus, player.strStat.mult);
 		showStatValue(touLabel, touValue, player.tou, player.touStat.bonus, player.touStat.mult);
@@ -411,6 +441,19 @@ public class NewStatsView extends Block {
 		soulforceBar.maxValue = player.maxSoulforce();
 		soulforceMax.text = ""+StatBar.shortHandNumber(player.maxSoulforce());
 
+		if (player.maxVenom() > 0) {
+			venomBar.value = player.tailVenom;
+			venomBar.maxValue = player.maxVenom();
+			venomMax.text = ""+StatBar.shortHandNumber(venomBar.maxValue);
+			venomLabel.visible = true;
+			venomBar.visible = true;
+			venomMax.visible = true;
+		} else {
+			venomLabel.visible = false;
+			venomBar.visible = false;
+			venomMax.visible = false;
+		}
+
 		row1.invalidateLayout();
 		row2.invalidateLayout();
 		invalidateLayout();
@@ -441,11 +484,12 @@ public class NewStatsView extends Block {
 				manaLabel,manaMax,
 				fatigueLabel,fatigueMax,
 				soulforceLabel,soulforceMax,
+				venomLabel,venomMax
 		]) {
 			UIUtils.setTextColor(tf, _textColor);
 		}
 		for each (var bar:StatBar in [
-				hpBar,lustBar,wrathBar,manaBar,fatigueBar,soulforceBar
+				hpBar,lustBar,wrathBar,manaBar,fatigueBar,soulforceBar,venomBar
 		]) {
 			UIUtils.setTextColor(bar.nameLabel, _textColor);
 			UIUtils.setTextColor(bar.valueLabel, _textColor);
@@ -456,7 +500,7 @@ public class NewStatsView extends Block {
 	override public function doLayout():void {
 		super.doLayout();
 		bg.width = width;
-		bg.height = row2.y + soulforceBar.y + soulforceBar.height + MainView.GAP;
+		bg.height = row2.y + (venomBar.visible ? venomBar.y + venomBar.height : (soulforceBar.y + soulforceBar.height)) + MainView.GAP;
 	}
 }
 }
