@@ -4,6 +4,9 @@
 package classes.Scenes.Combat {
 import classes.BaseContent;
 
+import coc.view.ButtonData;
+import coc.view.CoCButton;
+
 public class BaseCombatContent extends BaseContent {
 	public function BaseCombatContent() {
 	}
@@ -398,5 +401,29 @@ public class BaseCombatContent extends BaseContent {
 	protected function maintainCorrosionMod():void {
         combat.magic.maintainCorrosionModImpl();
     }
+	// ====
+	//  UI
+	// ====
+
+	/**
+	 * Mark this button data as a "skill" that could be favourited.
+	 * This should be called ONLY AFTER callback is initialized, because it
+	 * will be wrapped.
+	 *
+	 * skillId is a unique button identifier
+	 */
+	protected function favbd(bd:ButtonData, skillId:String):void {
+		combat.ui.favBdImpl(bd, skillId);
+	}
+	/**
+	 * Mark this button as a "skill" that could be favourited.
+	 * This should be called ONLY AFTER callback is initialized, because it
+	 * will be wrapped.
+	 *
+	 * skillId is a unique button identifier
+	 */
+	protected function favbtn(bd:CoCButton, skillId:String):void {
+		combat.ui.favImpl(bd, skillId);
+	}
 }
 }

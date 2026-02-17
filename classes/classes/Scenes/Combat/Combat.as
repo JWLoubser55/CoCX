@@ -59,6 +59,7 @@ import classes.StatusEffects.VampireThirstEffect;
 
 import coc.view.ButtonData;
 import coc.view.ButtonDataList;
+import coc.view.CoCButton;
 import coc.view.MainView;
 
 //import flash.utils.getTimer;
@@ -962,7 +963,7 @@ public class Combat extends BaseContent {
             addButton(0, "Attack", basemeleeattacks).hint("Attempt to attack the enemy with your [weapon].  Damage done is determined by your strength and weapon.");
             addButton(1, "P. Specials", SceneLib.urtaQuest.urtaSpecials).hint("Physical special attack menu.", "Physical Specials");
             addButton(2, "M. Specials", SceneLib.urtaQuest.urtaMSpecials).hint("Mental and supernatural special attack menu.", "Magical Specials");
-            CombatAbilities.Tease.createButton(monster).applyTo(button(3));
+            CombatAbilities.Tease.createButton(monster).applyToSlot(3);
             addButton(5, "Fantasize", fantasize).hint("Fantasize about your opponent in a sexual way.  Its probably a pretty bad idea to do this unless you want to end up getting raped.");
             addButton(6, "Wait", wait).hint("Take no action for this round.  Why would you do this?  This is a terrible idea.");
         }
@@ -1024,8 +1025,10 @@ public class Combat extends BaseContent {
 
     internal function buildOtherActions(buttons:ButtonDataList, backFunc:Function, aspectButtons:ButtonDataList = null):void {
         var bd:ButtonData;
-		buttons.add("Surrender(H)", surrenderByHP, "Stop defending yourself. You'll take a hell of a beating. Why would you do this?");
-        buttons.add("Surrender(L)", surrenderByLust, "Fantasize about your opponent in a sexual way so much it would fill up your lust. You'll end up getting raped...But is it rape if you get what you want?");
+		bd = buttons.add("Surrender(H)", surrenderByHP, "Stop defending yourself. You'll take a hell of a beating. Why would you do this?");
+	    favbd(bd, "Surrender(H)");
+        bd = buttons.add("Surrender(L)", surrenderByLust, "Fantasize about your opponent in a sexual way so much it would fill up your lust. You'll end up getting raped...But is it rape if you get what you want?");
+	    favbd(bd, "Surrender(L)");
         buttons.add("Minions", CoC.instance.perkMenu.minionOptions, "You can adjust the behavior of your minions during combat.");
         buttons.add("F.S. Opt", CoC.instance.perkMenu.flyingSwordBehaviourOptions, "You can adjust the behavior of your flying sword during combat.");
         if ((player.calculateMultiAttacks() > 1) || (player.hasPerk(PerkLib.JobBeastWarrior) && (player.hasNaturalWeapons() || player.haveNaturalClawsTypeWeapon())) ||
@@ -1043,13 +1046,16 @@ public class Combat extends BaseContent {
             buttons.add("CheatStats", debugCheatStats).hint("Adjust your or enemy stats. May break things!");
         }
         if (player.hasPerk(PerkLib.AbsoluteBash) && monster.hasStatusEffect(StatusEffects.TimesBashed) && monster.statusEffectv1(StatusEffects.TimesBashed) > 0 && (player.fatigue + Math.round(player.maxFatigue() * 0.1) < player.maxOverFatigue())) {
-            buttons.add("Refresh Bash", refreshbash).hint("By spending 10% of your fatigue you may reset Shield bash to full efficiency.");
+            bd = buttons.add("Refresh Bash", refreshbash).hint("By spending 10% of your fatigue you may reset Shield bash to full efficiency.");
+	        favbd(bd, "Refresh Bash");
         }
         if (player.hasPerk(PerkLib.JobDefender)) {
-            buttons.add("Defend", defendpose).hint("Take no offensive action for this round.  Are you that confident in your defensive stance?");
+            bd = buttons.add("Defend", defendpose).hint("Take no offensive action for this round.  Are you that confident in your defensive stance?");
+	        favbd(bd, "Defend");
         }
         if (player.hasPerk(PerkLib.SecondWind) && !player.hasStatusEffect(StatusEffects.CooldownSecondWind)) {
-            buttons.add("Second Wind", seconwindGo).hint("Enter your second wind, recovering from your wounds and fatigue once per battle.");
+            bd = buttons.add("Second Wind", seconwindGo).hint("Enter your second wind, recovering from your wounds and fatigue once per battle.");
+	        favbd(bd, "Second Wind");
         }
         if (player.hasStatusEffect(StatusEffects.SoulDrill1)) {
             buttons.add("Soul Drill", soul1Drill).hint("Menu to adjust your Soul Drill spinning speed.");
@@ -1061,69 +1067,107 @@ public class Combat extends BaseContent {
             buttons.append(CombatAbilities.FlyingSwordAttack.createButton(monster));
         }
         if (!player.isFlying()) {
-            if (player.canFly()) buttons.add("Take Flight", takeFlightWings)
-                .hint("Make use of your wings or other options avilable to take flight into the air for up to 7 turns. \n\nFatigue cost per turn: "+flyingWithWingsCost()+"  \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
-                .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
-			if (player.isInGoblinMech() && player.jetpackChecks()) buttons.add("Jetpack", takeFlightGoblinMech)
-				.hint("Make use of your mech jetpack to take flight into the air for up to 5 turns. \n\nWould go into cooldown after use for: 3 rounds")
-				.disableIf(player.hasStatusEffect(StatusEffects.CooldownJetpack), "You need more time before you can use jetpack again.")
-				.disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
-			if (player.weaponFlyingSwordsName != "nothing" && player.canFlyOnFlyingSwords()) buttons.add("Take Flight", takeFlightByFlyingSword)
-                .hint("Make use of your flying sword to take flight into the air. \n\nSoulforce cost per turn: "+flyingSwordUseCost()+" \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
-                .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
-			if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor)) buttons.add("Take Flight", takeFlightNoWings)
-                .hint("Use your own soulforce to take flight into the air. \n\nSoulforce cost per turn: "+flyingWithSoulforceCost()+" \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
-                .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
-			if (player.statStore.hasBuff("FoxflamePelt") && player.tailCount >= 9) buttons.add("Take Flight", takeFlightFoxflamePelt)
-                .hint("Use your own foxflame pelt to take flight into the air. \n\nSoulforce cost per turn: "+Math.round(25 * soulskillCost() * soulskillcostmulti())+"\nMana cost per turn: "+spellCost(50 * combat.mspecials.kitsuneskill2Cost())+" \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
-                .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
+            if (player.canFly()) {
+	            bd = buttons.add("Take Flight", takeFlightWings)
+			            .hint("Make use of your wings or other options avilable to take flight into the air for up to 7 turns. \n\nFatigue cost per turn: " + flyingWithWingsCost() + "  \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
+			            .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
+	            favbd(bd, "Take Flight");
+            }
+			if (player.isInGoblinMech() && player.jetpackChecks()) {
+				bd = buttons.add("Jetpack", takeFlightGoblinMech)
+						.hint("Make use of your mech jetpack to take flight into the air for up to 5 turns. \n\nWould go into cooldown after use for: 3 rounds")
+						.disableIf(player.hasStatusEffect(StatusEffects.CooldownJetpack), "You need more time before you can use jetpack again.")
+						.disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
+				favbd(bd, "Jetpack");
+			}
+			if (player.weaponFlyingSwordsName != "nothing" && player.canFlyOnFlyingSwords()) {
+				bd = buttons.add("Take Flight", takeFlightByFlyingSword)
+						.hint("Make use of your flying sword to take flight into the air. \n\nSoulforce cost per turn: " + flyingSwordUseCost() + " \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
+						.disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
+				favbd(bd, "Take Flight (Flying Sword)");
+			}
+	        if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor)) {
+		        bd = buttons.add("Take Flight", takeFlightNoWings)
+				        .hint("Use your own soulforce to take flight into the air. \n\nSoulforce cost per turn: " + flyingWithSoulforceCost() + " \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
+				        .disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
+		        favbd(bd, "Take Flight (No Wings)")
+	        }
+			if (player.statStore.hasBuff("FoxflamePelt") && player.tailCount >= 9) {
+				bd = buttons.add("Take Flight", takeFlightFoxflamePelt)
+						.hint("Use your own foxflame pelt to take flight into the air. \n\nSoulforce cost per turn: " + Math.round(25 * soulskillCost() * soulskillcostmulti()) + "\nMana cost per turn: " + spellCost(50 * combat.mspecials.kitsuneskill2Cost()) + " \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.")
+						.disableIf(player.hasStatusEffect(StatusEffects.FlyingDisabled), "You're being prevented from taking flight!");
+				favbd(bd, "Take Flight (Foxflame Pelt)")
+			}
         }
 		if (player.isFlying()) {
-			if (player.statusEffectv2(StatusEffects.Flying) == 1) buttons.add("Land", landAfterUsingFlyingSword);
-			if (player.statusEffectv2(StatusEffects.Flying) == 2 || player.statusEffectv2(StatusEffects.Flying) == 3) buttons.add("Land", landAfterUsingSoulforce);
-            buttons.add("Great Dive", greatDive)
+			if (player.statusEffectv2(StatusEffects.Flying) == 1) {
+				buttons.add("Land", landAfterUsingFlyingSword);
+				favbd(bd, "Land");
+			}
+			if (player.statusEffectv2(StatusEffects.Flying) == 2 || player.statusEffectv2(StatusEffects.Flying) == 3) {
+				buttons.add("Land", landAfterUsingSoulforce);
+				favbd(bd, "Land");
+			}
+            bd = buttons.add("Great Dive", greatDive)
             .hint("Make a Great Dive to deal TONS of damage!")
             .disableIf(isEnemyInvisible, "You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Great Dive");
         }
         if (CombatAbilities.FlamesOfLove.isKnown) {
-            buttons.append(CombatAbilities.FlamesOfLove.createButton(monster));
+            bd = CombatAbilities.FlamesOfLove.createButton(monster);
+	        buttons.append(bd);
+	        favbd(bd, "Flames Of Love");
         }
         if (CombatAbilities.IciclesOfLove.isKnown) {
-            buttons.append(CombatAbilities.IciclesOfLove.createButton(monster));
+            bd = CombatAbilities.IciclesOfLove.createButton(monster);
+	        buttons.append(bd);
+	        favbd(bd, "Icicles Of Love");
         }
 		if (CombatAbilities.StormOfSisterhood.isKnown) {
-            buttons.append(CombatAbilities.StormOfSisterhood.createButton(monster));
+			bd = CombatAbilities.StormOfSisterhood.createButton(monster);
+            buttons.append(bd);
+			favbd(bd, "Storm Of Sisterhood");
 		}
 		if (CombatAbilities.NightOfBrotherhood.isKnown) {
-            buttons.append(CombatAbilities.NightOfBrotherhood.createButton(monster));
+			bd = CombatAbilities.NightOfBrotherhood.createButton(monster);
+            buttons.append(bd);
+			favbd(bd, "Night Of Brotherhood");
 		}
         if (CombatAbilities.Devourer.isKnown) {
-            buttons.append(CombatAbilities.Devourer.createButton(monster));
+	        bd = CombatAbilities.Devourer.createButton(monster);
+            buttons.append(bd);
+	        favbd(bd, "Devourer");
         }
 		if ((monster.hasStatusEffect(StatusEffects.Stunned) || monster.hasStatusEffect(StatusEffects.StunnedTornado) || monster.hasStatusEffect(StatusEffects.Polymorphed) || monster.hasStatusEffect(StatusEffects.Sleep) || monster.hasStatusEffect(StatusEffects.Fascinated)) && (player.fatigueLeft() >= combat.physicalCost(20)) && player.perkv1(IMutationsLib.HollowFangsIM) >= 2) {
 			bd = buttons.add("Bite", VampiricBite).hint("Suck on the blood of an opponent. \n\nFatigue Cost: " + physicalCost(20) + "");
+			favbd(bd, "Vampiric Bite");
 		}// || monster.hasStatusEffect(StatusEffects.InvisibleOrStealth)
 		if (player.hasPerk(PerkLib.SwordIntentAura)) {
 			if (player.statStore.hasBuff("SwordIntentAura")) {
-				buttons.add("SwordIntentAD", deactivateSwordIntentAura).hint("Disperse sword intent aura.");
+				bd = buttons.add("SwordIntentAD", deactivateSwordIntentAura).hint("Disperse sword intent aura.");
+				favbd(bd, "Sword Intent Aura");
 			} else {
 				bd = buttons.add("SwordIntentAA", activateSwordIntentAura, "Coat your weapons with sword intent aura. (It would drain soulforce and fatigue until dispersed)\n");
 				bd.requireSoulforce(10 * soulskillCost() * soulskillcostmulti());
 				bd.requireFatigue(10);
+				favbd(bd, "Sword Intent Aura");
 			}
 		}
 		//Esper cool beans (start)
 		if (player.hasPerk(PerkLib.PsychicBarrier)) {
 			if (player.statStore.hasBuff("PsychoBarrier")) {
-				buttons.add("Psycho-Barrier/Off", deactivatePsychoBarrier).hint("Disperse Psycho-Barrier.");
+				bd = buttons.add("Psycho-Barrier/Off", deactivatePsychoBarrier).hint("Disperse Psycho-Barrier.");
+				favbd(bd, "Psycho Barrier");
 			} else {
 				bd = buttons.add("Psycho-Barrier/On", activatePsychoBarrier, "Cover yourself with Psycho-Barrier. (It would drain fatigue until dispersed)\n");
 				bd.requireFatigue(20);
+				favbd(bd, "Psycho Barrier");
 			}
 		}
 		if (player.hasPerk(PerkLib.PsychicBolt)) {
 			bd = buttons.add("Psychic Bolt", castPsychicBolt, "Attempt to attack the enemy with psychic bolt.  Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(10);
+			favbd(bd, "Psychic Bolt");
 		}
 		if (player.hasPerk(PerkLib.TelekineticGrapple) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
 			bd = buttons.add("Telekinetic Grab", mspecials.TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 6 rounds");
@@ -1131,46 +1175,57 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
 				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Telekinetic Grapple");
 		}
 		if (player.hasPerk(PerkLib.Pyrokinesis)) {
 			bd = buttons.add("Pyrokinesis", usePyrokinesis, "Attempt to attack the enemy with fire ball. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Pyrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Hydrokinesis)) {
 			bd = buttons.add("Hydrokinesis", useHydrokinesis, "Attempt to attack the enemy with water sphere. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Hydrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Cryokinesis)) {
 			bd = buttons.add("Cryokinesis", useCryokinesis, "Attempt to attack the enemy with icicle. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Cryokinesis");
 		}
 		if (player.hasPerk(PerkLib.Geokinesis)) {
 			bd = buttons.add("Geokinesis", useGeokinesis, "Attempt to attack the enemy with rock. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Geokinesis");
 		}
 		if (player.hasPerk(PerkLib.Electrokinesis)) {
 			bd = buttons.add("Electrokinesis", useElectrokinesis, "Attempt to attack the enemy with bolt of lightning. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Electrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Aerokinesis)) {
 			bd = buttons.add("Aerokinesis", useAerokinesis, "Attempt to attack the enemy with wind sphere. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd,"Aerokinesis");
 		}
 		if (player.hasPerk(PerkLib.Umbrakinesis)) {
 			bd = buttons.add("Umbrakinesis", useUmbrakinesis, "Attempt to attack the enemy with darkness sphere. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd,"Umbrakinesis");
 		}
 		if (player.hasPerk(PerkLib.Acidokinesis)) {
 			bd = buttons.add("Acidokinesis", useAcidokinesis, "Attempt to attack the enemy with acid ball. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd,"Acidokinesis");
 		}
 		if (player.hasPerk(PerkLib.Ionikinesis)) {
 			bd = buttons.add("Ionikinesis", useIonikinesis, "Attempt to attack the enemy with plasma ball. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd,"Ionikinesis");
 		}
 		if (player.hasPerk(PerkLib.Cocytokinesis)) {
 			bd = buttons.add("Cocytokinesis", useCocytokinesis, "Attempt to attack the enemy with black icicle. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd,"Cocytokinesis");
 		}
 		//Esper cool beans (end)
 		if (player.hasStatusEffect(StatusEffects.CombatFollowerZenji) && (player.statusEffectv3(StatusEffects.CombatFollowerZenji) == 1 || player.statusEffectv3(StatusEffects.CombatFollowerZenji) == 3)) {
@@ -1186,6 +1241,7 @@ public class Combat extends BaseContent {
                 buttonFunc = ElementalAspectsMenu
             }
             bd = buttons.add("Elem.Asp", buttonFunc, "Use the once-per-battle elemental aspects of your basic elementals.", "Elemental Aspects");
+			favbd(bd,"Elemental Aspects");
         }
 		if (player.shieldName == "Ancient Conduit") bd = buttons.add("A.Conduit", AncientConduitMenu);
 		if (player.hasPerk(PerkLib.JobTamer)) bd = buttons.add("Tamed Monster(s)", comtamed.tamedMonstersMenu);
@@ -1194,20 +1250,24 @@ public class Combat extends BaseContent {
 			if (monster.isFlying() && (!player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) == 0) && (!player.hasPerk(PerkLib.BoneyWand) && player.perkv1(PerkLib.BoneyWand) == 0)) {
 				bd.disable("None of your skeletons can attack airborn enemies.");
 			}
+			favbd(bd,"Send Skeletons");
 			if (player.perkv2(PerkLib.JobHaruspex) > 5) {
 				bd = buttons.add("S.S.", skeletonSmash).hint("Skeleton Smash - Order your Skeletons to go all out on your foe.");
 				if (monster.isFlying()) {
 					bd.disable("None of your skeletons can attack airborn enemies.");
 				}
+				favbd(bd,"Skeleton Smash");
 			}
 		}
 		if (player.hasPerk(PerkLib.HiddenJobAsura)) {
 			if (player.statStore.hasBuff("AsuraForm")) {
 				bd = buttons.add("Return", returnToNormalShape).hint("Return to normal from Asura form.");
+				favbd(bd,"Asura Form");
 				bd = buttons.add("Asura's Howl", asurasHowl).hint("Unleash a howl before giving enemy good punching. \n\nWrath Cost: 100");
 				if (player.wrath < 100) {
 					bd.disable("Your wrath is too low to unleash your howl!");
 				}
+				favbd(bd,"Asura's Howl");
 				if (player.hasPerk(PerkLib.AbsoluteStrength)) {
 					if (player.hasPerk(PerkLib.ItsZerkingTime)) bd = buttons.add("TwFoD", asuras12FingersOfDestruction).hint("Twelve Fingers of Destruction - Poke your enemies Asura Style. \n\nWrath Cost: 50% of max Wrath");
 					else if (player.hasPerk(PerkLib.LikeAnAsuraBoss)) bd = buttons.add("TFoD", asuras10FingersOfDestruction).hint("Ten Fingers of Destruction - Poke your enemies Asura Style. \n\nWrath Cost: 50% of max Wrath");
@@ -1216,6 +1276,7 @@ public class Combat extends BaseContent {
 					if (player.wrath < (player.maxWrath() * 0.5)) {
 						bd.disable("Your wrath is too low to poke your enemies Asura Style!");
 					}
+					favbd(bd,"Fingers of Destruction");
 				}
 				if (player.hasPerk(PerkLib.AsuraStrength)) {
 				
@@ -1231,6 +1292,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("CrinosShape")) {// && !player.hasPerk(PerkLib.HiddenJobAsura)
 					bd.disable("You are under transformantion effect incompatibile with Asura Form!");
 				}
+				favbd(bd,"Asura Form");
 			}
 		}
 		if (player.hasPerk(PerkLib.JobWarrior)) {
@@ -1239,6 +1301,7 @@ public class Combat extends BaseContent {
 			if(player.statStore.hasBuff("WarriorsRage")) {
 				bd.disable("You're already raging!");
 			}
+			favbd(bd,"Warrior's Rage");
 		}
 		if (player.hasPerk(PerkLib.Berzerker)) {
 			bd = buttons.add("Berserk", mspecials.berzerk);
@@ -1253,23 +1316,27 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.Berzerking)) {
 				bd.disable("You're already pretty goddamn mad!");
 			}
+			favbd(bd,"Berserk");
 		}
 		if (player.hasPerk(PerkLib.Anger) && player.hasStatusEffect(StatusEffects.Berzerking)) {
 			bd = buttons.add("Berserk G2", mspecials.berzerkG2);
 			if (player.statusEffectv2(StatusEffects.Berzerking) >= 1) {
 				bd.disable("You're already reached 2nd grade of Berserk!");
 			}
+			favbd(bd,"Berserk G2");
 			if (player.statusEffectv2(StatusEffects.Berzerking) >= 1) {
 				bd = buttons.add("Berserk G3", mspecials.berzerkG3);
 				if (player.statusEffectv2(StatusEffects.Berzerking) >= 2) {
 					bd.disable("You're already reached 3rd grade of Berserk!");
 				}
+				favbd(bd,"Berserk G3");
 			}
 			if (player.hasPerk(PerkLib.EndlessRage) && player.statusEffectv2(StatusEffects.Berzerking) >= 2) {
 				bd = buttons.add("Berserk G4", mspecials.berzerkG4);
 				if (player.statusEffectv2(StatusEffects.Berzerking) >= 3) {
 					bd.disable("You're already reached 4th grade of Berserk!");
 				}
+				favbd(bd,"Berserk G4");
 			}
 		}
 		if (player.hasPerk(PerkLib.Lustzerker) || player.countRings(jewelries.FLLIRNG)) {
@@ -1285,28 +1352,33 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.Lustzerking)) {
 				bd.disable("You're already raging, anger and lust combined!");
 			}
+			favbd(bd,"Lustserk");
 		}
 		if (player.hasPerk(PerkLib.Anger) && player.hasStatusEffect(StatusEffects.Lustzerking)) {
 			bd = buttons.add("Lustserk G2", mspecials.lustzerkG2);
 			if (player.statusEffectv2(StatusEffects.Lustzerking) >= 1) {
 				bd.disable("You're already reached 2nd grade of Lustserk!");
 			}
+			favbd(bd,"Lustserk G2");
 			if (player.statusEffectv2(StatusEffects.Lustzerking) >= 1) {
 				bd = buttons.add("Lustserk G3", mspecials.lustzerkG3);
 				if (player.statusEffectv2(StatusEffects.Lustzerking) >= 2) {
 					bd.disable("You're already reached 3rd grade of Lustserk!");
 				}
+				favbd(bd,"Lustserk G3");
 			}
 			if (player.hasPerk(PerkLib.EndlessRage) && player.statusEffectv2(StatusEffects.Lustzerking) >= 2) {
 				bd = buttons.add("Lustserk G4", mspecials.lustzerkG4);
 				if (player.statusEffectv2(StatusEffects.Lustzerking) >= 3) {
 					bd.disable("You're already reached 4th grade of Lustserk!");
 				}
+				favbd(bd,"Lustserk G4");
 			}
 		}
 		if (player.hasPerk(PerkLib.JobBeastWarrior) || player.necklaceName == "Crinos Shape necklace") {
 			if (player.statStore.hasBuff("CrinosShape")) {
-				buttons.add("Return", mspecials.returnToNormalShape).hint("Return to normal from Crinos Shape.");
+				bd = buttons.add("Return", mspecials.returnToNormalShape).hint("Return to normal from Crinos Shape.");
+				favbd(bd,"Crinos Shape");
 			} else {
 				bd = buttons.add("CrinosShape", mspecials.assumeCrinosShape).hint("Let your wrath flow through you, transforming you into a bestial shape!  Greatly increases your strength, speed and fortitude! \n\nWrath Cost: " + mspecials.crinosshapeCost() + " per turn");
 				if (player.wrath < mspecials.crinosshapeCost()) {
@@ -1315,13 +1387,16 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("AsuraForm")) {// && !player.hasPerk(PerkLib.HiddenJobAsura)
 					bd.disable("You are under transformantion effect incompatibile with Crinos Shape!");
 				}
+				favbd(bd,"Crinos Shape");
 			}
 		}
 		if (player.hasPerk(PerkLib.Atavism)) {
 			if (player.statStore.hasBuff("Atavism")) {
-				buttons.add("Return", mspecials.returnToNormalStateA).hint("Return to normal from Atavism State.");
+				bd = buttons.add("Return", mspecials.returnToNormalStateA).hint("Return to normal from Atavism State.");
+				favbd(bd,"Atavism");
 			} else {
 				bd = buttons.add("Atavism", mspecials.assumeAtavismState).hint("Turn feral for a while, abandoning yourself to your animalistic instincts. Unlock the full potential in your body by boosting your physical might and sharpening your senses but silence your ability to process intelligent logical thoughts. \n");
+				favbd(bd,"Atavism");
 			}
 		}
 		if (player.racialScore(Races.ONI, false) >= mspecials.minOniScoreReq()) {
@@ -1330,15 +1405,23 @@ public class Combat extends BaseContent {
 			if(player.hasStatusEffect(StatusEffects.OniRampage)) {
 				bd.disable("You're already rampaging!");
 			}
+			favbd(bd,"Oni Rampage");
 		}
 		if (player.hasStatusEffect(StatusEffects.AlterBindScroll1)) {
-			if (player.statStore.hasBuff("NoLimiterState")) buttons.add("No Limiter", returnToNormalState).hint("Toggle off No Limiter.");
-			else buttons.add("No Limiter", noLimiterState).hint("Toggle on No Limiter. (STR+++, ?Lib-?)");
+			if (player.statStore.hasBuff("NoLimiterState")) {
+				bd = buttons.add("No Limiter", returnToNormalState).hint("Toggle off No Limiter.");
+				favbd(bd,"No Limiter");
+			} else {
+				bd = buttons.add("No Limiter", noLimiterState).hint("Toggle on No Limiter. (STR+++, ?Lib-?)");
+				favbd(bd,"No Limiter");
+			}
 		}
 		if (player.hasPerk(PerkLib.ElementalBody)) {
             for each (var fusionAbility:CombatAbility in CombatAbilities.ALL_ELEMENTAL_FUSION_ATTACKS) {
                 if (fusionAbility.isKnown) {
-                    buttons.append(fusionAbility.createButton(monster));
+	                bd = fusionAbility.createButton(monster);
+	                buttons.append(bd);
+	                favbd(bd, fusionAbility.name);
                 }
             }
 		}
@@ -20600,6 +20683,12 @@ private function touSpeStrScale(stat:int):Number {
     public function isNearWater():Boolean {
         return player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost) || player.hasStatusEffect(StatusEffects.NearWater) || explorer.areaTags.water;
     }
+	protected function favbd(bd:ButtonData, skillId:String):void {
+		ui.favBdImpl(bd, skillId);
+	}
+	protected function favbtn(bd:CoCButton, skillId:String):void {
+		ui.favImpl(bd, skillId);
+	}
 }
 
 }

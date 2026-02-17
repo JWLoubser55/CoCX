@@ -26,6 +26,7 @@ public class ButtonData {
 	public var iconId:String = null;
 	public var iconQty:String = "";
 	public var cornerLabelText:String = "";
+	public var clickOnDisabled:Boolean = false;
 	public function ButtonData(text:String="", callback:Function =null, toolTipText:String ="", toolTipHeader:String ="") {
 		this.text = text;
 		this.callback = callback;
@@ -44,6 +45,7 @@ public class ButtonData {
 		iconId = "";
 		iconQty = "";
 		cornerLabelText = "";
+		clickOnDisabled = false;
 		return this;
 	}
 	public function show(text:String,callback:Function,toolTipText:String="",toolTipHeader:String=""): ButtonData {
@@ -54,6 +56,10 @@ public class ButtonData {
 		this.toolTipHeader = toolTipHeader;
 		this.visible = !!text;
 		this.enabled = this.callback != null;
+		return this;
+	}
+	public function hide():ButtonData {
+		visible = false;
 		return this;
 	}
 	public function showDisabled(text:String,toolTipText:String="",toolTipHeader:String=""):ButtonData {
@@ -146,6 +152,12 @@ public class ButtonData {
 					.disableIf(!enabled)
 					.icon(iconId, iconQty)
 					.cornerLabel(cornerLabelText);
+			btn.clickOnDisabled = clickOnDisabled;
+		}
+	}
+	public function applyToSlot(i:int):void {
+		if (i >= 0 && i <= 14) {
+			applyTo(CoC.instance.mainView.bottomButtons[i]);
 		}
 	}
 	public function copyTo(bd:ButtonData):void {
@@ -163,6 +175,7 @@ public class ButtonData {
 		bd.iconId = iconId;
 		bd.iconQty = iconQty;
 		bd.cornerLabelText = cornerLabelText;
+		bd.clickOnDisabled = clickOnDisabled;
 	}
 	/**
 	 * Adds a Soulforce requirement hint, and disables if player has not enough.
@@ -258,6 +271,7 @@ public class ButtonData {
 		this.toolTipText = btn.toolTipText;
 		this.labelColor = btn.labelColor;
 		this.iconId = btn.iconId;
+		this.clickOnDisabled = btn.clickOnDisabled;
 		// Still not enough to copy fields associated with items
 		return this;
 	}

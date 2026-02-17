@@ -399,15 +399,20 @@ public class EngineCore {
         CoC.instance.mainView.hideBottomButton(buttonToRemove);
     }
 
+    public static var menuName:String = "";
     /**
      * Hides all bottom buttons.
      */
-    public static function menu():void { //The newer, simpler menu - blanks all buttons so addButton can be used
+    public static function menu(menuName:String=""):void { //The newer, simpler menu - blanks all buttons so addButton can be used
+        EngineCore.menuName = menuName;
         for (var i:int = 0; i <= 14; i++) {
             CoC.instance.mainView.hideBottomButton(i);
         }
         CoC.instance.flushOutputTextToGUI();
         statScreenRefresh();
+    }
+    public static function inMenu(expectedMenuName:String):Boolean {
+        return menuName == expectedMenuName;
     }
 
     /**

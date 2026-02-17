@@ -299,9 +299,14 @@ import coc.xxc.StoryContext;
 			EngineCore.doNext.apply(null, [func].concat(args));
 		}
 
-		protected static function menu():void
+		protected static function menu(menuName:String=""):void
 		{
-			EngineCore.menu();
+			EngineCore.menu(menuName);
+		}
+
+		protected static function inMenu(expectedMenuName:String):Boolean
+		{
+			return EngineCore.inMenu(expectedMenuName);
 		}
 
 		protected function hideMenus():void
