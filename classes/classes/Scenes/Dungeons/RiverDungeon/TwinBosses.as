@@ -14,7 +14,7 @@ import classes.BodyParts.Tail;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 use namespace CoC;
 
@@ -171,7 +171,7 @@ use namespace CoC;
 			}
 		}
 
-		override public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton, btnSpecial2:CoCButton):void{
+		override public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData, btnSpecial2:ButtonData):void{
 			if (!player.hasStatusEffect(StatusEffects.MinoKing) && player.companionsInPCParty()) btnSpecial1.show("Dish Helper", SceneLib.dungeons.riverdungeon.dishHelperTB);
 			else btnSpecial1.showDisabled("Dish Helper", "You don't have anyone to take care of other twin!");
 		}

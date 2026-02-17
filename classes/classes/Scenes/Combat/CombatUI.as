@@ -61,26 +61,21 @@ public class CombatUI extends BaseCombatContent {
 		eAspectButtons.clear();
 		otherButtons.clear();
 
-		var btnMelee:CoCButton      = button(0).icon("A_Melee");
-		var btnRanged:CoCButton     = button(1).icon("A_Ranged");
-		var btnTease:CoCButton      = button(2).icon("A_Tease");
-		var btnWait:CoCButton       = button(3);
-		var btnItems:CoCButton      = button(4).icon("A_Items")
-		var btnPSpecials:CoCButton  = button(5);
-		var btnMSpecials:CoCButton  = button(6);
-		var btnMagic:CoCButton      = button(7).icon("A_Magic")
-		var btnSoulskills:CoCButton = button(8);
-		var btnOther:CoCButton      = button(9);
-		var btnSpecial1:CoCButton   = button(10);
-		var btnSpecial2:CoCButton   = button(11);
-		var btnSpecial3:CoCButton   = button(12);
-		var btnFantasize:CoCButton  = button(13);
-		var btnRun:CoCButton        = button(14);
-		/*
-		 0 [ Melee ] [ Range ] [ Tease ] [  Wait   ] [ Items ]
-		 5 ability groups
-		10 [   ?   ] [   ?   ] [   ?   ] [Fantasize] [  Run  ]
-		 */
+		var btnMelee:ButtonData      = new ButtonData().icon("A_Melee");
+		var btnRanged:ButtonData     = new ButtonData().icon("A_Ranged");
+		var btnTease:ButtonData      = new ButtonData().icon("A_Tease");
+		var btnWait:ButtonData       = new ButtonData();
+		var btnItems:ButtonData      = new ButtonData().icon("A_Items")
+		var btnPSpecials:ButtonData  = new ButtonData();
+		var btnMSpecials:ButtonData  = new ButtonData();
+		var btnMagic:ButtonData      = new ButtonData().icon("A_Magic")
+		var btnSoulskills:ButtonData = new ButtonData();
+		var btnOther:ButtonData      = new ButtonData();
+		var btnSpecial1:ButtonData   = new ButtonData();
+		var btnSpecial2:ButtonData   = new ButtonData();
+		var btnSpecial3:ButtonData   = new ButtonData();
+		var btnFantasize:ButtonData  = new ButtonData();
+		var btnRun:ButtonData        = new ButtonData();
 
 		//Standard menu before modifications.
 		if (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 2 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) {
@@ -261,11 +256,11 @@ public class CombatUI extends BaseCombatContent {
 
 		btnFantasize.show("Fantasize", combat.fantasize, "Fantasize about your opponent in a sexual way.  Its probably a pretty bad idea to do this unless you want to end up getting raped.");
 		if (CombatAbilities.GoblinLustBomb.isKnown) {
-			CombatAbilities.GoblinLustBomb.createButton(monster).applyTo(btnTease);
+			CombatAbilities.GoblinLustBomb.createButton(monster).copyTo(btnTease);
 		}
 		else if (player.vehicles == vehicles.HB_MECH) btnTease.disable("No way you could make an enemy more aroused by striking a seductive pose and exposing parts of your body while piloting elf mech.");
 		else if (monster.lustVuln != 0 && monster.hasStatusEffect(StatusEffects.Stunned) && player.hasPerk(PerkLib.Straddle) && !combat.isEnemyInvisible) btnTease.show("Straddle", combat.Straddle, "Go to town on your opponent with devastating teases.").icon("A_Tease");
-		else CombatAbilities.Tease.createButton(monster).applyTo(btnTease);
+		else CombatAbilities.Tease.createButton(monster).copyTo(btnTease);
 		btnWait.show("Wait", combat.wait, "Take no action for this round.  Why would you do this?  This is a terrible idea.");
 		if (monster.hasStatusEffect(StatusEffects.CreepingDoom)) btnRun.show("Struggle", combat.struggleCreepingDoom, "Shake away the pests.");
 		else btnRun.show("Run", combat.runAway, "Choosing to run will let you try to escape from your enemy. However, it will be hard to escape enemies that are faster than you and if you fail, your enemy will get a free attack.");
@@ -456,7 +451,7 @@ public class CombatUI extends BaseCombatContent {
 		} else if (monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
 			menu();
 			vampireBiteDuringGrappleV(0);
-			CombatAbilities.Tease.createButton(monster).applyTo(btnTease);
+			CombatAbilities.Tease.createButton(monster).copyTo(btnTease);
 			btnTease.hint("Attempt to make an enemy more aroused by striking a seductive pose and exposing parts of your body.");
 			//addButton(4, "Release", combat.VampireLeggoMyEggo);
 			//combat.mspecials.buildMenu(magspButtons);
@@ -572,6 +567,45 @@ public class CombatUI extends BaseCombatContent {
 			}
 			flushOutputTextToGUI();
 		}
+
+		/* OLD MENU
+		 0 [ Melee ] [ Range ] [ Tease ] [  Wait   ] [ Items ]
+		 5 ability groups
+		10 [   ?   ] [   ?   ] [   ?   ] [Fantasize] [  Run  ]
+		/**/
+		btnMelee.applyTo(button(0));
+		btnRanged.applyTo(button(1));
+		btnTease.applyTo(button(2));
+		btnWait.applyTo(button(3));
+		btnItems.applyTo(button(4));
+		btnPSpecials.applyTo(button(5));
+		btnMSpecials.applyTo(button(6));
+		btnMagic.applyTo(button(7));
+		btnSoulskills.applyTo(button(8));
+		btnOther.applyTo(button(9));
+		btnSpecial1.applyTo(button(10));
+		btnSpecial2.applyTo(button(11));
+		btnSpecial3.applyTo(button(12));
+		btnFantasize.applyTo(button(13));
+		btnRun.applyTo(button(14));
+		/**/
+
+		/* NEW MENU
+		 0 [ Fav. 1 ] [ Fav. 2 ] [ Fav. 3 ] [ Fav. 4 ] [ Fav. 5 ]
+		 5 [ Last 1 ] [ Last 2 ] [ Last 3 ] [ Last 4 ] [ Last 5 ]
+		10 [   ??   ] [   ??   ] [   ??   ] [ Skills ] [ Other  ]
+
+		Skills:
+		 0 [ Melee  ] [ Ranged ] [ Tease  ] [        ] [        ]
+		 5 [ PhySpc ] [ MagSpc ] [Soulskil] [        ] [        ]
+		10 [        ] [        ] [        ] [        ] [        ]
+
+		Other:
+		 0 [ Items  ] [  Wait  ] [Fantasiz] [        ] [  Run   ]
+		 5 [        ] [        ] [        ] [        ] [        ]
+		10 [        ] [        ] [        ] [        ] [        ]
+		 */
+		/**/
 	}
 
 	public function isWispTurn():Boolean {
@@ -1020,8 +1054,8 @@ public class CombatUI extends BaseCombatContent {
 
 	internal function mainMenuWhenBound():void {
 		menu();
-		var btnStruggle:CoCButton  = addButton(0, "Struggle", combat.struggle);
-		var btnBoundWait:CoCButton = addButton(1, "Wait", combat.wait);
+		var btnStruggle:ButtonData  = new ButtonData("Struggle", combat.struggle);
+		var btnBoundWait:ButtonData = new ButtonData("Wait", combat.wait);
 		if (player.hasPerk(PerkLib.Spectre) && player.hasPerk(PerkLib.Incorporeality)) {
 			if (player.hasStatusEffect(StatusEffects.CooldownPossess)) addButtonDisabled(3, "Possess", "<b>You need more time before you can use Possess again.</b>");
 			else addButton(3, "Possess", combat.mspecials.possess2);
@@ -1058,6 +1092,8 @@ public class CombatUI extends BaseCombatContent {
 				addButton(2, "Dispell", (monster as Lethice).dispellRapetacles);
 			}
 		}
+		btnStruggle.applyTo(button(0));
+		btnStruggle.applyTo(button(1));
 	}
 
 	internal function mainMenuWhenChanneling():void {

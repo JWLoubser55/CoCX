@@ -8,7 +8,7 @@ import classes.Scenes.Combat.Combat;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class SandWorm extends Monster
 	{
@@ -136,7 +136,7 @@ public class SandWorm extends Monster
 			player.addStatusValue(StatusEffects.MonsterDig, 1, -1);
 		}
 
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.Devoured)) {
 				btnStruggle.call(sandWormDevourStruggle);
 				btnBoundWait.call(sandWormDevourWait);

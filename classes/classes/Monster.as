@@ -20,7 +20,6 @@ import classes.Items.ConsumableLib;
 import classes.Items.DynamicItems;
 import classes.Items.HeadJewelryLib;
 import classes.Items.IELib;
-import classes.Items.ItemConstants;
 import classes.Items.JewelryLib;
 import classes.Items.NecklaceLib;
 import classes.Items.ShieldLib;
@@ -37,11 +36,10 @@ import classes.Scenes.Areas.Ocean.UnderwaterSharkGirl;
 import classes.Scenes.Areas.Ocean.UnderwaterSharkGirlsPack;
 import classes.Scenes.Areas.Ocean.UnderwaterTigersharkGirl;
 import classes.Scenes.Camp.TrainingDummy;
+import classes.Scenes.Combat.CombatAbilities;
 import classes.Scenes.Combat.CombatAbility;
-import classes.Scenes.Combat.CombatUI;
 import classes.Scenes.Dungeons.DenOfDesire.HeroslayerOmnibus;
 import classes.Scenes.Dungeons.DungeonAbstractContent;
-import classes.Scenes.Dungeons.EbonLabyrinth.Hydra;
 import classes.Scenes.Dungeons.Factory.OmnibusOverseer;
 import classes.Scenes.Dungeons.Factory.SecretarialSuccubus;
 import classes.Scenes.Dungeons.TwilightGrove.LadyRafflesia;
@@ -55,10 +53,9 @@ import classes.internals.RandomDrop;
 import classes.internals.Utils;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 import flash.utils.getQualifiedClassName;
-import classes.Scenes.Combat.CombatAbilities;
 
 /**
 	 * ...
@@ -2969,7 +2966,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		 *     <li>Used to modify button in the bottom left corner</li>
 		 * </ul>
 		 */
-		public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton,btnSpecial2:CoCButton):void{
+		public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData,btnSpecial2:ButtonData):void{
 
 		}
 
@@ -2982,7 +2979,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		 *     <li>It is used for monster that possess player binding ability, used it if you want to alter buttons callback through .call(function)</li>
 		 * </ul>
 		 */
-		public function changeBtnWhenBound(btnStruggle:CoCButton,btnBoundWait:CoCButton):void{
+		public function changeBtnWhenBound(btnStruggle:ButtonData,btnBoundWait:ButtonData):void{
 		}
 
 		/**

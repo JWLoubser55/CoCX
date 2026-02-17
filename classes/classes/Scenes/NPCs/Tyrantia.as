@@ -13,9 +13,8 @@ import classes.BodyParts.LowerBody;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
-import classes.Monster;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class Tyrantia extends Monster
 	{
@@ -150,7 +149,7 @@ public class Tyrantia extends Monster
 			player.takeLustDamage((lustFromHits() * 4), true);
 			player.buff("Goop Web").addStats( {"spe":-30} ).withText("Goop Web").combatPermanent();
 		}
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.Pounced)) {
 				outputText("\n<b>You’re trapped underneath the giant Drider, and all you can see is her armored undercarriage. Eight legs jab down at you, steel glinting dangerously. You need to get out of here, or you’ll end up crushed!</b>");
 				btnStruggle.call(tyrantiaPouncedStruggle);

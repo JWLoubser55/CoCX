@@ -13,7 +13,7 @@ import classes.Scenes.SceneLib;
 import classes.display.SpriteDb;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class Alraune extends Monster
 	{
@@ -107,7 +107,7 @@ public class Alraune extends Monster
 			}
 		}
 
-		override public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton, btnSpecial2:CoCButton):void{
+		override public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData, btnSpecial2:ButtonData):void{
 			if (player.fatigueLeft() < 50) btnSpecial1.disable("You're too tired to struggle.");
 			else btnSpecial1.show("Struggle", SceneLib.combat.wait2, "Struggle to forcefully pull yourself a good distance away from plant woman.");
 		}
