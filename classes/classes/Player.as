@@ -1646,7 +1646,7 @@ use namespace CoC;
 		public function carriedKnownCursedItems():/*ItemSlotClass*/Array {
 			var result:/*ItemSlotClass*/Array = [];
 			for each (var slot:ItemSlotClass in itemSlots) {
-				if (slot.unlocked && !(slot.itype is IDynamicItem) && (slot.itype as IDynamicItem).curseStatus == ItemConstants.CS_KNOWN_CURSED) result.push(slot);
+				if (slot.unlocked && (slot.itype is IDynamicItem) && (slot.itype as IDynamicItem).curseStatus == ItemConstants.CS_KNOWN_CURSED) result.push(slot);
 			}
 			return result;
 		}

@@ -161,13 +161,13 @@ public class PrimaryStatsView extends Block {
 			statName: 'Sensitivity'
 		}, row2BarOptions));
 		row2.addElement(sensBar);
-		StatsView.addStatTooltip(bar, 'sens');
+		StatsView.addStatTooltip(sensBar, 'sens');
 		corBar = new StatBar(Utils.extend({}, row2BarOptions, {
 			statName: 'Corruption',
 			barColor: '#5500cc'
 		}));
 		row2.addElement(corBar);
-		StatsView.addStatTooltip(bar, 'sens');
+		StatsView.addStatTooltip(corBar, 'cor');
 	}
 
 	public function refreshAll():void {
