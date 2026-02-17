@@ -203,8 +203,8 @@ public class StatBar extends Block {
 			var mValue:String;
 			switch (_numberStyle) {
 				case 'raw':{
-					bValue = Math.floor(value).toString();
-					mValue = Math.floor(maxValue).toString();
+					bValue = Math.round(value).toString();
+					mValue = Math.round(maxValue).toString();
 					break;
 				}
 				case 'kmb': {

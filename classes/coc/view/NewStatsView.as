@@ -152,7 +152,7 @@ public class NewStatsView extends Block {
 		} else {
 			levelText = String(player.level);
 		}
-		subtitleLabel.text = "Level "+levelText+" "+player.race();
+		subtitleLabel.htmlText = "Level "+levelText+" "+player.race();
 
 		var xppc:Number;
 		if (player.level >= CoC.instance.levelCap) {

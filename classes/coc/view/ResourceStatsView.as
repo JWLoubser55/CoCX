@@ -88,7 +88,7 @@ public class ResourceStatsView extends Block {
 				setWidth: true
 			}
 		});
-		addElement(row2, { before: 8 });
+		addElement(row2);
 
 		// Row 1
 		var row1h:int = NewStatsView.STATLABEL_FORMAT.size+6;
@@ -118,7 +118,7 @@ public class ResourceStatsView extends Block {
 		satLabel = row1.addTextField(Utils.extend({text:'Sat'}, row1nameformat));
 		StatsView.addStatTooltip(satLabel, 'hunger');
 
-		var row2h:int = NewStatsView.STATVALUE_FORMAT.size+6;
+		var row2h:int = NewStatsView.STATVALUE_FORMAT.size+14;
 		const row1valueformat:* = {
 			defaultTextFormat: NewStatsView.STATVALUE_FORMAT,
 			autoSize: 'none',
