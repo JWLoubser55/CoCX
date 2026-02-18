@@ -68,7 +68,7 @@ public class CoC extends MovieClip
         return _instance;
     }
     //Game Version
-    public var debugGameVer:String = "v0.9a.739";
+    public var debugGameVer:String = "v0.9a.740";
 
     //Mod save version.
     public var modSaveVersion:Number = 36.595;
@@ -118,7 +118,7 @@ public class CoC extends MovieClip
     public var mainMenu:MainMenu = new MainMenu();
     public var perkMenu:PerkMenu = new PerkMenu();
     public var playerInfo:PlayerInfo = new PlayerInfo();
-    public var playerController:PlayerController = new PlayerController();
+	public var playerController:PlayerController = new PlayerController();
     public var debugInfoMenu:DebugInfo = new DebugInfo();
     public var gameSettings:GameSettings = new GameSettings();
     public var rootStory:Story = new Story("story",null,"root",true);
@@ -402,7 +402,7 @@ public class CoC extends MovieClip
         //Hide sprites
         mainView.hideSprite();
         //Hide up/down arrows
-        mainViewManager.hideUpDown();
+        mainView.statsView.hideUpDown();
         new Story("lib",rootStory,"monsters",true);
         execPostInit();
         loadStory();
