@@ -54,7 +54,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 	public var favCount:int = 5;
 	public var favSkills:/*String*/Array = [null,null,null,null,null];
 	public var favLastSkills:/*String*/Array = [null,null,null,null,null];
-
+	private var manualMode:Boolean = false;
 
 	public function stateObjectName():String {
 		return "CombatUI";
@@ -80,7 +80,11 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			favSkills = o.favSkills as Array;
 			favLastSkills = o.favLastSkills as Array;
 			favCount = intOr(o.favCount, 5);
-			if (!favSkills || favSkills.length != favCount || !favLastSkills || favLastSkills.length != (10-favCount)) {
+			if (favSkills && favSkills.length == favCount && favLastSkills && favLastSkills.length == (10 - favCount)) {
+				// Copy the arrays to not keep references to SharedObject
+				favSkills = favSkills.slice();
+				favLastSkills = favLastSkills.slice();
+			} else {
 				resetState();
 			}
 		} else {
@@ -102,6 +106,10 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 		for (var i:int = 0; i <= 10; i++) {
 			button(i).show(String(i), curry(modFavCount, i, back), ""+i+" favourite(s) / "+(10-i)+" last used");
 		}
+		button(13).show("Manual Mode", function():void {
+			manualMode = !manualMode;
+			back();
+		}, "(Useful for mobile mode) Toggle Manual Menu Edit mode to add abilities to favourites (or remove) when you click the button.");
 		button(14).show("Back", back).icon("Back");
 	}
 	private function modFavCount(i:int, back:Function):void {
@@ -136,39 +144,34 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 		favBdImpl(bd, skillId);
 		bd.applyTo(btn);
 	}
-	private function favClick(skillId:String, callback:Function):void {
-		var i:int;
-		if (shiftKeyDown) {
-			i = favSkills.indexOf(skillId);
-			if (i < 0){
-				// add to favs if possible
-				i = favSkills.indexOf(null);
-				if (i >= 0) {
-					CoCButton.lastClicked.cornerLabelText = "*" + (i + 1);
-					favSkills[i] = skillId;
-				}
-				i = favLastSkills.indexOf(skillId);
-				if (i >= 0) {
-					favLastSkills.splice(i, 1);
-					favLastSkills.push(null);
-				}
-				if (inMenu("CombatUI.mainMenu")) {
-					mainMenu();
-				}
-			} else {
-				// remove from favs
-				CoCButton.lastClicked.cornerLabelText = "*";
-				if (inMenu("CombatUI.mainMenu")) {
-					CoCButton.lastClicked.showDisabled("", "Shift+click an ability to favourite it", "Favourite slot "+(i+1));
-				}
-				favSkills[i] = null;
-			}
-			return;
+	private function addToFavs(skillId:String):void {
+		// add to favs if possible
+		var i:int = favSkills.indexOf(null);
+		if (i >= 0) {
+			CoCButton.lastClicked.cornerLabelText = "*" + (i + 1);
+			favSkills[i] = skillId;
 		}
-		if (!CoCButton.lastClicked.enabled) {
-			return;
+		i = favLastSkills.indexOf(skillId);
+		if (i >= 0) {
+			favLastSkills.splice(i, 1);
+			favLastSkills.push(null);
 		}
-		i = favSkills.indexOf(skillId);
+		if (inMenu("CombatUI.mainMenu")) {
+			mainMenu();
+		}
+	}
+	private function removeFromFavs(skillId:String):void {
+		// remove from favs
+		var i:int = favSkills.indexOf(skillId);
+		if (i < 0) return;
+		CoCButton.lastClicked.cornerLabelText = "*";
+		if (inMenu("CombatUI.mainMenu")) {
+			CoCButton.lastClicked.showDisabled("", "Shift+click an ability to favourite it", "Favourite slot "+(i+1));
+		}
+		favSkills[i] = null;
+	}
+	private function addToLastFav(skillId:String):void {
+		var i:int = favSkills.indexOf(skillId);
 		if (i < 0) {
 			// move skill to first position in favLastSkills
 			i = favLastSkills.indexOf(skillId);
@@ -182,7 +185,67 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 				favLastSkills.unshift(skillId);
 			} // else already at first position
 		}
+	}
+	private function favClick(skillId:String, callback:Function):void {
+		if (manualMode) {
+			favManualMenu(skillId, callback);
+			return;
+		}
+		if (shiftKeyDown) {
+			if (favSkills.indexOf(skillId) < 0) {
+				addToFavs(skillId);
+			} else {
+				removeFromFavs(skillId);
+			}
+			return;
+		}
+		if (!CoCButton.lastClicked.enabled) {
+			return;
+		}
+		addToLastFav(skillId);
 		callback();
+	}
+	private function favManualMenu(skillId:String, callback:Function):void {
+		var i:int = favSkills.indexOf(skillId);
+		clearOutput();
+		outputText("You're in <b>Manual Menu Edit</b> mode. You've clicked button '"+skillId+"'.\n");
+		outputText("\n<b>Invoke Cont</b> - invoke the '" + skillId + "' ability/submenu, stay in edit mode.")
+		outputText("\n<b>Invoke End</b> - invoke the '" + skillId + "' ability/submenu, leave edit mode.")
+		outputText("\n<b>Fav Cont</b> - add '" + skillId + "' to favourites, stay in edit mode.");
+		outputText("\n<b>Fav End</b> - add '" +skillId+"' to favourites, leave edit mode.");
+		outputText("\n<b>Unfav Cont</b> - remove '" + skillId + "' from favourites, stay in edit mode.");
+		outputText("\n<b>Unfav End</b> - remove '" +skillId+"' from favourites, leave edit mode.");
+		menu();
+		button(0).show("Invoke Cont", function():void {
+			addToLastFav(skillId);
+			clearOutput();
+			callback();
+		});
+		button(5).show("Invoke End", function():void {
+			manualMode = false;
+			addToLastFav(skillId);
+			clearOutput();
+			callback();
+		});
+		button(1).show("Fav Cont", function():void {
+			addToFavs(skillId);
+			mainMenu();
+		}).disableIf(i >= 0).disableIf(favSkills.indexOf(null)<0,"All favoutire slots busy!");
+		button(6).show("Fav End", function():void {
+			manualMode = false;
+			addToFavs(skillId);
+			mainMenu();
+		}).disableIf(i >= 0).disableIf(favSkills.indexOf(null)<0,"All favoutire slots busy!");
+		button(2).show("Unfav Cont", function():void {
+			removeFromFavs(skillId);
+			mainMenu();
+		}).disableIf(i < 0);
+		button(7).show("Unfav End", function():void {
+			manualMode = false;
+			removeFromFavs(skillId);
+			mainMenu();
+		}).disableIf(i < 0);
+		button(14).show("Back", mainMenu);
 	}
 
 	public function mainMenu():void {
@@ -799,7 +862,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			clearOutput();
 			rawOutputText(text);
 			mainMenu();
-		}), "Configure number of favourite skills");
+		}), "Configure favourite skills button count");
 		otherButtons.prepend(bd);
 		btnOtherNew.show("Other", submenuOther, "Combat options and uncategorized actions");
 		/**/
