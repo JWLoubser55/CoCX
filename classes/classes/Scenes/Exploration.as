@@ -523,18 +523,18 @@ public class Exploration extends BaseContent implements SaveableState
 			if (canMeetXuviel()) SceneLib.demonicLair.questProgressScenes();
 			else {
 				addButton(0, "Explore", tryDiscover).hint("Explore to find new regions or visit any discovered regions.");
-				btnExploreForestOutskirts().applyTo(button(1));
-				btnExploreLake().applyTo(button(2));
-				btnExploreDesertOuter().applyTo(button(3));
+				btnExploreForestOutskirts().applyToSlot(1);
+				btnExploreLake().applyToSlot(2);
+				btnExploreDesertOuter().applyToSlot(3);
 				
-				btnExploreBattlefieldBoundary().applyTo(button(5));
-				btnExploreHills().applyTo(button(6));
-				btnExplorePlains().applyTo(button(7));
-				btnExploreSwamp().applyTo(button(8));
+				btnExploreBattlefieldBoundary().applyToSlot(5);
+				btnExploreHills().applyToSlot(6);
+				btnExplorePlains().applyToSlot(7);
+				btnExploreSwamp().applyToSlot(8);
 				
-				btnExploreBlightRidge().applyTo(button(10));
-				btnExploreBeach().applyTo(button(11));
-				btnExploreCaves().applyTo(button(12));
+				btnExploreBlightRidge().applyToSlot(10);
+				btnExploreBeach().applyToSlot(11);
+				btnExploreCaves().applyToSlot(12);
 				
 				addButton(4, "Next", explorePageII);
 				addButton(9, "Menu Style", toggleMenuStyle).hint("Switch to the new menu style");
@@ -549,20 +549,20 @@ public class Exploration extends BaseContent implements SaveableState
 			hideMenus();
 			menu();
 			
-			btnExploreBattlefieldOuter().applyTo(button(0));
-			btnExploreForestInner().applyTo(button(1));
-			btnExploreLakeBoat().applyTo(button(2));
-			btnExploreDesertInner().applyTo(button(3));
+			btnExploreBattlefieldOuter().applyToSlot(0);
+			btnExploreForestInner().applyToSlot(1);
+			btnExploreLakeBoat().applyToSlot(2);
+			btnExploreDesertInner().applyToSlot(3);
 			
-			btnExploreDefiledRavine().applyTo(button(5));
-			btnExploreMountainsLow().applyTo(button(6));
+			btnExploreDefiledRavine().applyToSlot(5);
+			btnExploreMountainsLow().applyToSlot(6);
 			// 7 - plains inner part
-			btnExploreBog().applyTo(button(8));
+			btnExploreBog().applyToSlot(8);
 			
-			btnExploreTundra().applyTo(button(10));
-			btnExploreAshlands().applyTo(button(11));
-			btnExploreLightlessReach().applyTo(button(12));
-			btnExploreCliffs().applyTo(button(13));
+			btnExploreTundra().applyToSlot(10);
+			btnExploreAshlands().applyToSlot(11);
+			btnExploreLightlessReach().applyToSlot(12);
+			btnExploreCliffs().applyToSlot(13);
 			
 			addButton(4, "Next", explorePageIII);
 			addButton(9, "Previous", goBackToPageI);
@@ -574,19 +574,19 @@ public class Exploration extends BaseContent implements SaveableState
 			hideMenus();
 			menu();
 			// 0 - battlefield inner part
-			btnExploreDeepwoods().applyTo(button(1));
+			btnExploreDeepwoods().applyToSlot(1);
 			//addButtonDisabled(2, "Shore", "TBA");//Discovered when exploring using Lake Boat.
 			
 			//if (flags[kFLAGS.DISCOVERED_] > 0) addButton(5, "",	//Wuxia related area - ?latająca wyspa?
 			//if (flags[kFLAGS.DISCOVERED_] > 0) addButton(9, "",	//Wuxia related area - ?latająca wyspa?
 			//if (flags[kFLAGS.DISCOVERED_PIT] > 0) addButton(5, "Pit", CoC.instance.abyss.explorePit).hint("Visit the pit. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_PIT] : ""));
 			//if (flags[kFLAGS.DISCOVERED_ABYSS] > 0) addButton(5, "Abyss", CoC.instance.abyss.exploreAbyss).hint("Visit the abyss. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_ABYSS] : ""));
-			btnExploreMountainsMid().applyTo(button(6));
-			btnExploreOcean().applyTo(button(7));
-			btnExploreTunnels().applyTo(button(8));
+			btnExploreMountainsMid().applyToSlot(6);
+			btnExploreOcean().applyToSlot(7);
+			btnExploreTunnels().applyToSlot(8);
 			
-			btnExploreGlacialRiftOuter().applyTo(button(10));
-			btnExploreVolcanicCragOuter().applyTo(button(11));
+			btnExploreGlacialRiftOuter().applyToSlot(10);
+			btnExploreVolcanicCragOuter().applyToSlot(11);
 			
 			addButton(4, "Next", goBackToPageIV);
 			addButton(9, "Previous", goBackToPageII);
@@ -598,8 +598,8 @@ public class Exploration extends BaseContent implements SaveableState
 			hideMenus();
 			menu();
 			
-			btnExploreMountainsHigh().applyTo(button(6));
-			btnExploreInnerOcean().applyTo(button(8));
+			btnExploreMountainsHigh().applyToSlot(6);
+			btnExploreInnerOcean().applyToSlot(8);
 			//if (flags[kFLAGS.DISCOVERED_DEEP_SEA] > 0 && player.canSwimUnderwater()) addButton(8, "Deep Sea", SceneLib.deepsea.exploreDeepSea).hint("Visit the 'almost virgin' deep sea. But beware of... krakens. " + (debug ? "\n\nTimes explored: " + flags[kFLAGS.DISCOVERED_DEEP_SEA] : ""));
 			
 			addButton(4, "Next", goBackToPageV);

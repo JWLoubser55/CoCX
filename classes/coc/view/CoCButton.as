@@ -90,6 +90,7 @@ public class CoCButton extends Block {
 
 	public var toolTipHeader:String,
 			   toolTipText:String;
+	public var clickOnDisabled:Boolean;
 
 		/**
 		 * @param options  enabled, labelText, bitmapClass, callback
@@ -244,8 +245,9 @@ public class CoCButton extends Block {
 	}
 
 	public function click(event:MouseEvent = null):void {
-		if (!this.enabled) return;
+		if (!this.enabled && !this.clickOnDisabled) return;
 		CoC.instance.mainView.toolTipView.hide();
+		lastClicked = this;
 		try {
 			if (this._preCallback != null)
 				this._preCallback(this);
@@ -260,7 +262,7 @@ public class CoCButton extends Block {
 		}
 	}
 
-
+	public static var lastClicked:CoCButton = null;
 
 		//////// Getters and Setters ////////
 
@@ -578,6 +580,7 @@ public class CoCButton extends Block {
 		iconId          = null;
 		iconQty         = "";
 		cornerLabelText = "";
+		clickOnDisabled = false;
 		return this;
 	}
 	/**

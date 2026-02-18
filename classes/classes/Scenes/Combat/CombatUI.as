@@ -8,26 +8,29 @@ import classes.BodyParts.LowerBody;
 import classes.BodyParts.RearBody;
 import classes.BodyParts.Tail;
 import classes.BodyParts.Wings;
+import classes.CoC;
 import classes.CoC_Settings;
 import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
 import classes.Items.Weapons.Tidarion;
 import classes.PerkLib;
 import classes.Races;
+import classes.Saves;
 import classes.Scenes.Areas.VolcanicCrag.HellcatKasha;
-import classes.Scenes.Camp.CampMakeWinions;
 import classes.Scenes.Dungeons.D3.*;
 import classes.Scenes.SceneLib;
 import classes.StatusEffectClass;
 import classes.StatusEffects;
+import classes.internals.SaveableState;
 
 import coc.view.ButtonData;
 import coc.view.ButtonDataList;
 import coc.view.CoCButton;
 
-public class CombatUI extends BaseCombatContent {
+public class CombatUI extends BaseCombatContent implements SaveableState {
 
 	public function CombatUI() {
+		Saves.registerSaveableState(this);
 	}
 
 	private var magspButtons:ButtonDataList = new ButtonDataList();
@@ -44,8 +47,210 @@ public class CombatUI extends BaseCombatContent {
 	private var soulforceButtons:ButtonDataList = new ButtonDataList();
 	private var eAspectButtons:ButtonDataList = new ButtonDataList();
 	private var otherButtons:ButtonDataList = new ButtonDataList();
-	public function mainMenu():void {
+
+	public static var useNewMenu:Boolean = true;
+	// skillId:String -> ButtonData
+	public var favMap:Object = {};
+	public var favCount:int = 5;
+	public var favSkills:/*String*/Array = [null,null,null,null,null];
+	public var favLastSkills:/*String*/Array = [null,null,null,null,null];
+	private var manualMode:Boolean = false;
+
+	public function stateObjectName():String {
+		return "CombatUI";
+	}
+
+	public function resetState():void {
+		favMap = {};
+		favCount = 5;
+		favSkills = ["Melee Attack","Ranged Attack","Tease","Items","Wait"];
+		favLastSkills = [null,null,null,null,null];
+	}
+
+	public function saveToObject():Object {
+		return {
+			favSkills: favSkills,
+			favLastSkills: favLastSkills,
+			favCount: favCount
+		}
+	}
+
+	public function loadFromObject(o:Object, ignoreErrors:Boolean):void {
+		if (o) {
+			favSkills = o.favSkills as Array;
+			favLastSkills = o.favLastSkills as Array;
+			favCount = intOr(o.favCount, 5);
+			if (favSkills && favSkills.length == favCount && favLastSkills && favLastSkills.length == (10 - favCount)) {
+				// Copy the arrays to not keep references to SharedObject
+				favSkills = favSkills.slice();
+				favLastSkills = favLastSkills.slice();
+			} else {
+				resetState();
+			}
+		} else {
+			resetState();
+		}
+	}
+
+	public function setFavCount(newCount:int):void {
+		favCount = boundInt(0, newCount, 10);
+		favSkills = favSkills.concat(favLastSkills);
+		favLastSkills = favSkills.slice(favCount);
+		favSkills = favSkills.slice(0, favCount);
+	}
+
+	public function modFavCountMenu(back:Function):void {
+		clearOutput();
+		outputText("Current settings: \n"+favCount+" slot(s) for favourite skills\n"+(10-favCount)+" slot(s) for last used skills.\n\nSet favourite slot count to:");
 		menu();
+		for (var i:int = 0; i <= 10; i++) {
+			button(i).show(String(i), curry(modFavCount, i, back), ""+i+" favourite(s) / "+(10-i)+" last used");
+		}
+		button(13).show("Manual Mode", function():void {
+			manualMode = !manualMode;
+			back();
+		}, "(Useful for mobile mode) Toggle Manual Menu Edit mode to add abilities to favourites (or remove) when you click the button.");
+		button(14).show("Back", back).icon("Back");
+	}
+	private function modFavCount(i:int, back:Function):void {
+		setFavCount(i);
+		back();
+	}
+
+	public function favBdImpl(bd:ButtonData, skillId:String):void {
+		if (!useNewMenu) return;
+		if (skillId in favMap) {
+			trace("[WARN] Duplicate favBd call for skill "+skillId);
+			return;
+		}
+		favMap[skillId] = bd;
+		var cb:Function = bd.callback;
+		bd.callback = function():void {
+			favClick(skillId, cb);
+		}
+		var i:int = favSkills.indexOf(skillId);
+		if (i >= 0) {
+			bd.cornerLabelText = "*"+(i+1);
+			bd.toolTipText += "\n\nShift+click to remove from favourites";
+		} else {
+			bd.cornerLabelText = "*";
+			bd.toolTipText += "\n\nShift+click to add to favourites";
+		}
+		bd.clickOnDisabled = true;
+	}
+	public function favImpl(btn:CoCButton, skillId:String):void {
+		if (!useNewMenu) return;
+		var bd:ButtonData = new ButtonData().fromButton(btn);
+		favBdImpl(bd, skillId);
+		bd.applyTo(btn);
+	}
+	private function addToFavs(skillId:String):void {
+		// add to favs if possible
+		var i:int = favSkills.indexOf(null);
+		if (i >= 0) {
+			CoCButton.lastClicked.cornerLabelText = "*" + (i + 1);
+			favSkills[i] = skillId;
+		}
+		i = favLastSkills.indexOf(skillId);
+		if (i >= 0) {
+			favLastSkills.splice(i, 1);
+			favLastSkills.push(null);
+		}
+		if (inMenu("CombatUI.mainMenu")) {
+			mainMenu();
+		}
+	}
+	private function removeFromFavs(skillId:String):void {
+		// remove from favs
+		var i:int = favSkills.indexOf(skillId);
+		if (i < 0) return;
+		CoCButton.lastClicked.cornerLabelText = "*";
+		if (inMenu("CombatUI.mainMenu")) {
+			CoCButton.lastClicked.showDisabled("", "Shift+click an ability to favourite it", "Favourite slot "+(i+1));
+		}
+		favSkills[i] = null;
+	}
+	private function addToLastFav(skillId:String):void {
+		var i:int = favSkills.indexOf(skillId);
+		if (i < 0) {
+			// move skill to first position in favLastSkills
+			i = favLastSkills.indexOf(skillId);
+			if (i < 0) {
+				// [f1 f2 f3 f4 f5] -> [*new* f1 f2 f3 f4 f5]
+				favLastSkills.pop();
+				favLastSkills.unshift(skillId);
+			} else if (i > 0) {
+				// [f1 *f2* f3 f4 f5] -> [*f2* f1 f3 f4 f5]
+				favLastSkills.splice(i, 1);
+				favLastSkills.unshift(skillId);
+			} // else already at first position
+		}
+	}
+	private function favClick(skillId:String, callback:Function):void {
+		if (manualMode) {
+			favManualMenu(skillId, callback);
+			return;
+		}
+		if (shiftKeyDown) {
+			if (favSkills.indexOf(skillId) < 0) {
+				addToFavs(skillId);
+			} else {
+				removeFromFavs(skillId);
+			}
+			return;
+		}
+		if (!CoCButton.lastClicked.enabled) {
+			return;
+		}
+		addToLastFav(skillId);
+		callback();
+	}
+	private function favManualMenu(skillId:String, callback:Function):void {
+		var i:int = favSkills.indexOf(skillId);
+		clearOutput();
+		outputText("You're in <b>Manual Menu Edit</b> mode. You've clicked button '"+skillId+"'.\n");
+		outputText("\n<b>Invoke Cont</b> - invoke the '" + skillId + "' ability/submenu, stay in edit mode.")
+		outputText("\n<b>Invoke End</b> - invoke the '" + skillId + "' ability/submenu, leave edit mode.")
+		outputText("\n<b>Fav Cont</b> - add '" + skillId + "' to favourites, stay in edit mode.");
+		outputText("\n<b>Fav End</b> - add '" +skillId+"' to favourites, leave edit mode.");
+		outputText("\n<b>Unfav Cont</b> - remove '" + skillId + "' from favourites, stay in edit mode.");
+		outputText("\n<b>Unfav End</b> - remove '" +skillId+"' from favourites, leave edit mode.");
+		menu();
+		button(0).show("Invoke Cont", function():void {
+			addToLastFav(skillId);
+			clearOutput();
+			callback();
+		});
+		button(5).show("Invoke End", function():void {
+			manualMode = false;
+			addToLastFav(skillId);
+			clearOutput();
+			callback();
+		});
+		button(1).show("Fav Cont", function():void {
+			addToFavs(skillId);
+			mainMenu();
+		}).disableIf(i >= 0).disableIf(favSkills.indexOf(null)<0,"All favoutire slots busy!");
+		button(6).show("Fav End", function():void {
+			manualMode = false;
+			addToFavs(skillId);
+			mainMenu();
+		}).disableIf(i >= 0).disableIf(favSkills.indexOf(null)<0,"All favoutire slots busy!");
+		button(2).show("Unfav Cont", function():void {
+			removeFromFavs(skillId);
+			mainMenu();
+		}).disableIf(i < 0);
+		button(7).show("Unfav End", function():void {
+			manualMode = false;
+			removeFromFavs(skillId);
+			mainMenu();
+		}).disableIf(i < 0);
+		button(14).show("Back", mainMenu);
+	}
+
+	public function mainMenu():void {
+		favMap = {};
+		menu("CombatUI.mainMenu");
 		magspButtons.clear();
 		physpButtons.clear();
 		spellBookButtons.clear();
@@ -61,26 +266,21 @@ public class CombatUI extends BaseCombatContent {
 		eAspectButtons.clear();
 		otherButtons.clear();
 
-		var btnMelee:CoCButton      = button(0).icon("A_Melee");
-		var btnRanged:CoCButton     = button(1).icon("A_Ranged");
-		var btnTease:CoCButton      = button(2).icon("A_Tease");
-		var btnWait:CoCButton       = button(3);
-		var btnItems:CoCButton      = button(4).icon("A_Items")
-		var btnPSpecials:CoCButton  = button(5);
-		var btnMSpecials:CoCButton  = button(6);
-		var btnMagic:CoCButton      = button(7).icon("A_Magic")
-		var btnSoulskills:CoCButton = button(8);
-		var btnOther:CoCButton      = button(9);
-		var btnSpecial1:CoCButton   = button(10);
-		var btnSpecial2:CoCButton   = button(11);
-		var btnSpecial3:CoCButton   = button(12);
-		var btnFantasize:CoCButton  = button(13);
-		var btnRun:CoCButton        = button(14);
-		/*
-		 0 [ Melee ] [ Range ] [ Tease ] [  Wait   ] [ Items ]
-		 5 ability groups
-		10 [   ?   ] [   ?   ] [   ?   ] [Fantasize] [  Run  ]
-		 */
+		var btnMelee:ButtonData      = new ButtonData().icon("A_Melee");
+		var btnRanged:ButtonData     = new ButtonData().icon("A_Ranged");
+		var btnTease:ButtonData      = new ButtonData().icon("A_Tease");
+		var btnWait:ButtonData       = new ButtonData();
+		var btnItems:ButtonData      = new ButtonData().icon("A_Items")
+		var btnPSpecials:ButtonData  = new ButtonData().hide();
+		var btnMSpecials:ButtonData  = new ButtonData().hide();
+		var btnMagic:ButtonData      = new ButtonData().hide().icon("A_Magic")
+		var btnSoulskills:ButtonData = new ButtonData().hide();
+		var btnOther:ButtonData      = new ButtonData().hide();
+		var btnSpecial1:ButtonData   = new ButtonData().hide();
+		var btnSpecial2:ButtonData   = new ButtonData().hide();
+		var btnSpecial3:ButtonData   = new ButtonData().hide();
+		var btnFantasize:ButtonData  = new ButtonData();
+		var btnRun:ButtonData        = new ButtonData();
 
 		//Standard menu before modifications.
 		if (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 2 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) {
@@ -261,11 +461,11 @@ public class CombatUI extends BaseCombatContent {
 
 		btnFantasize.show("Fantasize", combat.fantasize, "Fantasize about your opponent in a sexual way.  Its probably a pretty bad idea to do this unless you want to end up getting raped.");
 		if (CombatAbilities.GoblinLustBomb.isKnown) {
-			CombatAbilities.GoblinLustBomb.createButton(monster).applyTo(btnTease);
+			CombatAbilities.GoblinLustBomb.createButton(monster).copyTo(btnTease);
 		}
 		else if (player.vehicles == vehicles.HB_MECH) btnTease.disable("No way you could make an enemy more aroused by striking a seductive pose and exposing parts of your body while piloting elf mech.");
 		else if (monster.lustVuln != 0 && monster.hasStatusEffect(StatusEffects.Stunned) && player.hasPerk(PerkLib.Straddle) && !combat.isEnemyInvisible) btnTease.show("Straddle", combat.Straddle, "Go to town on your opponent with devastating teases.").icon("A_Tease");
-		else CombatAbilities.Tease.createButton(monster).applyTo(btnTease);
+		else CombatAbilities.Tease.createButton(monster).copyTo(btnTease);
 		btnWait.show("Wait", combat.wait, "Take no action for this round.  Why would you do this?  This is a terrible idea.");
 		if (monster.hasStatusEffect(StatusEffects.CreepingDoom)) btnRun.show("Struggle", combat.struggleCreepingDoom, "Shake away the pests.");
 		else btnRun.show("Run", combat.runAway, "Choosing to run will let you try to escape from your enemy. However, it will be hard to escape enemies that are faster than you and if you fail, your enemy will get a free attack.");
@@ -274,6 +474,7 @@ public class CombatUI extends BaseCombatContent {
 		//==============================================================================================================
 		//ALLIES - 'smart' ones (wisps & mummies & henchmen). Do not depend on PC to do anything. Call them first!
 		var playerBusy:Boolean = true; //changed to true if 'stupid' allies can help.
+		var customMenu:Boolean = false;
 		//no elses - Simpturn works without 'Next'!
 		if (player.hasStatusEffect(StatusEffects.SimplifiedNonPCTurn))
 			combat.simplifiedPrePCTurn_smart();
@@ -307,12 +508,14 @@ public class CombatUI extends BaseCombatContent {
 		else if (isPlayerBound()) {
 			mainMenuWhenBound();
 		} else if (isPlayerStunned() || isPlayerPowerStunned() || isPlayerFeared()) {
+			customMenu = true;
 			menu();
 			addButton(0, "Recover", combat.wait);
-			if (CombatAbilities.ClearMind.isKnown) CombatAbilities.ClearMind.createButton(monster).applyTo(button(1));
+			if (CombatAbilities.ClearMind.isKnown) CombatAbilities.ClearMind.createButton(monster).applyToSlot(1);
 			addButton(13, "Surrender(H)", combat.surrenderByHP).hint("Stop defending up to the point enemy would beat you down to minimal HP.");
 			addButton(14, "Surrender(L)", combat.surrenderByLust).hint("Fantasize about your opponent in a sexual way so much it would fill up your lust you'll end up getting raped.");
 		} else if (player.hasStatusEffect(StatusEffects.ChanneledAttack)) {
+			customMenu = true;
 			mainMenuWhenChanneling();
 		} else if (player.hasStatusEffect(StatusEffects.KnockedBack)) {
 			if (player.ammo <= 0 && (player.weaponRangeName == "flintlock pistol" || player.weaponRangeName == "blunderbuss rifle")){
@@ -325,6 +528,7 @@ public class CombatUI extends BaseCombatContent {
 		}
 		//HYPNOSIS
 		else if (monster.hasStatusEffect(StatusEffects.HypnosisNaga) && !monster.hasStatusEffect(StatusEffects.Constricted)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Heal", combat.HypnosisHeal);
 			addButton(1, "Attack", combat.HypnosisAttack);
@@ -336,6 +540,7 @@ public class CombatUI extends BaseCombatContent {
 				addButton(6, "D.Wave", combat.HypnosisDuskWave);
 			}
 		} else if (monster.hasStatusEffect(StatusEffects.HypnosisNaga) && monster.hasStatusEffect(StatusEffects.Constricted)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Squeeze", SceneLib.desert.nagaScene.nagaSqueeze).hint("Squeeze some HP out of your opponent! Break hypnosis! \n\nFatigue Cost: " + physicalCost(20) + "");
 			addButton(1, "Tease", SceneLib.desert.nagaScene.nagaTease).hint("Deals lesser lust damage. Does not break hypnosis.");
@@ -344,12 +549,14 @@ public class CombatUI extends BaseCombatContent {
 		}
 		//Naga grapple
 		else if (monster.hasStatusEffect(StatusEffects.Constricted) && !monster.hasStatusEffect(StatusEffects.HypnosisNaga)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Squeeze", SceneLib.desert.nagaScene.nagaSqueeze).hint("Squeeze some HP out of your opponent! \n\nFatigue Cost: " + physicalCost(20) + "");
 			addButton(1, "Tease", SceneLib.desert.nagaScene.nagaTease);
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", SceneLib.desert.nagaScene.nagaLeggoMyEggo);
 		} else if (monster.hasStatusEffect(StatusEffects.CancerGrab)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Guillotine", combat.Guillotine).hint("Crush your foe with your pincer and attempt to break it apart! \n\nFatigue Cost: " + physicalCost(20) + "");
 			vampireBiteDuringGrapple(3);
@@ -357,6 +564,7 @@ public class CombatUI extends BaseCombatContent {
 		}
 		//Grappling scylla
 		else if (monster.hasStatusEffect(StatusEffects.ConstrictedScylla)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Squeeze", combat.ScyllaSqueeze);
 			if (monster.plural) {
@@ -368,6 +576,7 @@ public class CombatUI extends BaseCombatContent {
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", combat.ScyllaLeggoMyEggo);
 		} else if (monster.hasStatusEffect(StatusEffects.ConstrictedWhip)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Strangulate", combat.WhipStrangulate);
 			vampireBiteDuringGrapple(3);
@@ -375,6 +584,7 @@ public class CombatUI extends BaseCombatContent {
 		}
 		//Orca be playing rought
 		else if (monster.hasStatusEffect(StatusEffects.OrcaPlay)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Juggle", combat.OrcaJuggle).hint("Deal bite damage and send your foe back in the air at the cost of a fairly decent amount of fatigue. Extend the duration of play by 2 rounds up to twice. \n\nFatigue Cost: " + physicalCost(50) + "");
 			addButton(1, "Tail wack", combat.OrcaWack).hint("Stun your opponent and smash it back into the air with your tail.\n\nFatigue Cost: " + physicalCost(20) + "");
@@ -385,26 +595,32 @@ public class CombatUI extends BaseCombatContent {
 			addButton(3, "Impale", combat.OrcaImpale).hint("End the game by viciously impaling your falling foe on your weapon. \n\nFatigue Cost: " + physicalCost(20) + "");
 			addButton(4, "Release", combat.OrcaLeggoMyEggo).hint("Stop playing early and let your prey fall to the ground.");
 		} else if (monster.hasStatusEffect(StatusEffects.Straddle)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Tease", combat.StraddleTease).hint("Use a powerful teasing attack");
 			vampireBiteDuringGrappleBreakHypnosis(3);
 			addButton(4, "Release", combat.straddleLeggoMyEggo).hint("Release your opponent.");
 		} else if (monster.hasStatusEffect(StatusEffects.ManticorePlug)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Feed", combat.ManticoreFeed).hint("Milk your victim's cock with your powerful tail!");
 		} else if (monster.hasStatusEffect(StatusEffects.DisplacerPlug)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Feed", combat.displacerFeedContinue).hint("Milk your victim's breast with your tentacles!");
 		} else if (monster.hasStatusEffect(StatusEffects.SlimeInsert)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Rape", combat.SlimeRapeFeed).hint("Violate your opponent from the inside!");
 			addButton(4, "Release", combat.SlimeRapeStop).hint("Release your opponent.");
 		} else if (monster.hasStatusEffect(StatusEffects.Swallowed)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Tease", combat.SwallowTease).hint("Use a powerful teasing attack").icon("A_Tease");
 			if (monster.lustVuln != 0 && player.hasPerk(PerkLib.Straddle) && monster.hasStatusEffect(StatusEffects.Stunned)) addButton(1, "Straddle", combat.Straddle).hint("Change position and initiate a straddling stance").icon("A_Tease");
 			addButton(4, "Release", combat.SwallowLeggoMyEggo).hint("Release your opponent.");
 		} else if (monster.hasStatusEffect(StatusEffects.Dig)) {
+			customMenu = true;
 			menu();
 			if (monster.statusEffectv1(StatusEffects.Dig) > 0){
 				if (player.lowerBody == LowerBody.CANCER) addButton(0, "Grab", combat.CancerGrab).hint("Dig underneath your opponent and attempt to grab it in your pincers");
@@ -428,6 +644,7 @@ public class CombatUI extends BaseCombatContent {
 			addButton(14, "Escape", combat.runAway).hint("Escape away from the battle through underground tunneling.");
 		//Singing
 		} else if (player.hasStatusEffect(StatusEffects.Sing)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Arouse", combat.SingArouse).hint("Arouse your opponent with lustful music.");
 			addButton(1, "Aria", combat.SingDevastatingAria).hint("Unleash a devastating wave of sound to deal magic damage.");
@@ -446,17 +663,20 @@ public class CombatUI extends BaseCombatContent {
 			if (!recalling) addButton(14, "Run", combat.runAway).hint("Escape away from the battle.");
 		}
 		else if (monster.hasStatusEffect(StatusEffects.GooEngulf)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Tease", combat.GooTease).hint("Toy with your opponent");
 			addButton(4, "Release", combat.GooLeggoMyEggo).hint("Release your opponent.");
 		} else if (monster.hasStatusEffect(StatusEffects.EmbraceVampire)) {
+			customMenu = true;
 			menu();
 			vampireBiteDuringGrappleV(0);
 			addButton(4, "Release", combat.VampireLeggoMyEggo);
 		} else if (monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
+			customMenu = true;
 			menu();
 			vampireBiteDuringGrappleV(0);
-			CombatAbilities.Tease.createButton(monster).applyTo(btnTease);
+			CombatAbilities.Tease.createButton(monster).copyTo(btnTease);
 			btnTease.hint("Attempt to make an enemy more aroused by striking a seductive pose and exposing parts of your body.");
 			//addButton(4, "Release", combat.VampireLeggoMyEggo);
 			//combat.mspecials.buildMenu(magspButtons);
@@ -471,6 +691,7 @@ public class CombatUI extends BaseCombatContent {
 				btnMagic.disable("You are too angry to think straight. Smash your puny opponents first and think later.\n\n").icon("A_Magic")
 			} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic")
 		} else if (monster.hasStatusEffect(StatusEffects.MysticWeb) || monster.hasStatusEffect(StatusEffects.BloodWeb)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Tease", combat.WebTease).hint("Toy with your opponent");
 			addButton(1, "Bite", combat.spiderBiteAttack).hint("Inject your venom.");
@@ -488,6 +709,7 @@ public class CombatUI extends BaseCombatContent {
 				btnMagic.disable("You are too angry to think straight. Smash your puny opponents first and think later.\n\n").icon("A_Magic")
 			} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic")
 		} else if (monster.hasStatusEffect(StatusEffects.Pounce)) {
+			customMenu = true;
 			menu();
 			if (player.arms.type == Arms.DISPLACER) addButton(0, "Ravage", combat.clawsRend).hint("Rend your enemy using your four sets of claws. \n\nFatigue Cost: " + physicalCost(20) + "");
 			else addButton(0, "Claws", combat.clawsRend).hint("Rend your enemy using your claws. \n\nFatigue Cost: " + physicalCost(20) + "");
@@ -502,11 +724,13 @@ public class CombatUI extends BaseCombatContent {
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", combat.PussyLeggoMyEggo);
 		} else if (monster.hasStatusEffect(StatusEffects.GrabBear)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Hug", combat.bearHug).hint("Crush your opponent with a bear hug. \n\nFatigue Cost: " + physicalCost(30) + "");
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", combat.BearLeggoMyEggo);
 		} else if (monster.hasStatusEffect(StatusEffects.MummyBandage)) {
+			customMenu = true;
 			menu();
 			addButton(0, "Constrict", combat.mummyConstrict).hint("Constrict your opponent with your wrapping. \n\nFatigue Cost: " + physicalCost(30) + "");
 			if (monster.lustVuln != 0 && !monster.plural && player.hasPerk(PerkLib.Straddle)) addButton(1, "Straddle", combat.Straddle).hint("Change position and initiate a straddling stance");
@@ -572,6 +796,138 @@ public class CombatUI extends BaseCombatContent {
 			}
 			flushOutputTextToGUI();
 		}
+
+		if (customMenu) {
+			// Do not create default menu if it was overwritten
+			return;
+		}
+		menu("CombatUI.mainMenu");
+		/* OLD MENU
+		 0 [ Melee ] [ Range ] [ Tease ] [  Wait   ] [ Items ]
+		 5 ability groups
+		10 [   ?   ] [   ?   ] [   ?   ] [Fantasize] [  Run  ]
+		 */
+		if (!useNewMenu) {
+			btnMelee.applyToSlot(0);
+			btnRanged.applyToSlot(1);
+			btnTease.applyToSlot(2);
+			btnWait.applyToSlot(3);
+			btnItems.applyToSlot(4);
+			btnPSpecials.applyToSlot(5);
+			btnMSpecials.applyToSlot(6);
+			btnMagic.applyToSlot(7);
+			btnSoulskills.applyToSlot(8);
+			btnOther.applyToSlot(9);
+			btnSpecial1.applyToSlot(10);
+			btnSpecial2.applyToSlot(11);
+			btnSpecial3.applyToSlot(12);
+			btnFantasize.applyToSlot(13);
+			btnRun.applyToSlot(14);
+			return;
+		}
+
+		/* NEW MENU
+		 0 [ Fav. 1 ] [ Fav. 2 ] [ Fav. 3 ] [ Fav. 4 ] [ Fav. 5 ]
+		 5 [ Last 1 ] [ Last 2 ] [ Last 3 ] [ Last 4 ] [ Last 5 ]
+		10 [   ??   ] [   ??   ] [   ??   ] [ Skills ] [ Other  ]
+
+		Skills:
+		 0 [ Melee  ] [ Ranged ] [ Tease  ] [        ] [        ]
+		 5 [ PhySpc ] [ MagSpc ] [Soulskil] [ Magic  ] [        ]
+		10 [        ] [        ] [        ] [        ] [  Back  ]
+
+		Other:
+		 0 [ Items  ] [  Wait  ] [Fantasiz] [  Run   ] ...old "Other"
+		 */
+		favbd(btnMelee, "Melee Attack");
+		favbd(btnRanged, "Ranged Attack");
+		favbd(btnTease, "Tease");
+		favbd(btnPSpecials, "Physical Specials");
+		favbd(btnMSpecials, "Magical Specials");
+		favbd(btnSoulskills, "Soulskills");
+		favbd(btnMagic, "Magic");
+		favbd(btnItems, "Items");
+		favbd(btnFantasize, "Fantasize");
+		favbd(btnWait, "Wait");
+		favbd(btnRun, "Run");
+		var btnSkillsNew:ButtonData = new ButtonData();
+		btnSkillsNew.show("Skills",curry(skillsSubmenuNew, btnMelee, btnRanged, btnTease, btnPSpecials, btnMSpecials, btnSoulskills, btnMagic));
+		var btnOtherNew:ButtonData = new ButtonData();
+		otherButtons.prepend(btnRun);
+		otherButtons.prepend(btnFantasize);
+		otherButtons.prepend(btnWait);
+		otherButtons.prepend(btnItems);
+		var text:String = CoC.instance.currentText;
+		bd = new ButtonData("Btn Config", curry(modFavCountMenu, function():void {
+			clearOutput();
+			rawOutputText(text);
+			mainMenu();
+		}), "Configure favourite skills button count");
+		otherButtons.prepend(bd);
+		btnOtherNew.show("Other", submenuOther, "Combat options and uncategorized actions");
+		/**/
+		var i:int;
+		var bd:ButtonData;
+		for (i = 0; i < favCount; i++) {
+			if (favSkills[i] != null) {
+				bd = favMap[favSkills[i]] as ButtonData;
+				if (bd) {
+					bd.applyTo(button(i));
+				} else {
+					button(i).show("N/A", curry(unfavSlot, i), "The favourited ability '"+favSkills[i]+"' is not available. Shift-click to unfavourite it.").disable().clickOnDisabled = true;
+				}
+			} else {
+				button(i).showDisabled("", "Shift+click a button with '*' to favourite it", "Favourite slot "+(i+1))
+			}
+		}
+		for (i = favCount; i < 10; i++) {
+			if (favLastSkills[i-favCount] != null) {
+				bd = favMap[favLastSkills[i-favCount]] as ButtonData;
+				if (bd) {
+					bd.applyTo(button(i));
+				} else {
+					button (i).hide();
+				}
+			} else {
+				button(i).hide();
+			}
+		}
+		btnSpecial1.applyToSlot(10);
+		btnSpecial2.applyToSlot(11);
+		btnSpecial3.applyToSlot(12);
+		btnSkillsNew.applyToSlot(13);
+		btnOtherNew.applyToSlot(14);
+	}
+	private function unfavSlot(favSlot:int):void {
+		if (shiftKeyDown) {
+			favSkills[favSlot] = null;
+			mainMenu();
+		}
+	}
+	public function skillsSubmenuNew(
+			btnMelee:ButtonData,
+			btnRanged:ButtonData,
+			btnTease:ButtonData,
+			btnPSpecials:ButtonData,
+			btnMSpecials:ButtonData,
+			btnSoulskills:ButtonData,
+			btnMagic:ButtonData
+	): void {
+		/*
+		Skills:
+		 0 [ Melee  ] [ Ranged ] [ Tease  ] [        ] [        ]
+		 5 [ PhySpc ] [ MagSpc ] [Soulskil] [ Magic  ] [        ]
+		10 [        ] [        ] [        ] [        ] [        ]
+		 */
+		menu();
+		btnMelee.applyToSlot(0);
+		btnRanged.applyToSlot(1);
+		btnTease.applyToSlot(2);
+		btnPSpecials.applyToSlot(5);
+		btnMSpecials.applyToSlot(6);
+		btnSoulskills.applyToSlot(7);
+		btnMagic.applyToSlot(8);
+		button(14).show("Back", mainMenu);
 	}
 
 	public function isWispTurn():Boolean {
@@ -936,6 +1292,7 @@ public class CombatUI extends BaseCombatContent {
 			} else if (player.hasStatusEffect(StatusEffects.MonsterDig)) {
 				bd.disable("You cannot use offensive spell against an opponent you cannot see or target.");
 			}
+			favbd(bd, "Magic Bolt");
 			if (player.hasPerk(PerkLib.MagesWrath)) {
 				bd = buttons.add("M.Bolt(Ex)", combat.magic.spellEdgyMagicBolt);
 				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Magic Bolt");
@@ -949,6 +1306,7 @@ public class CombatUI extends BaseCombatContent {
 				} else if (player.hasStatusEffect(StatusEffects.MonsterDig)) {
 					bd.disable("You cannot use offensive spell against an opponent you cannot see or target.");
 				}
+				favbd(bd, "Magic Bolt Ex");
 			}
 		}
 		if (player.hasPerk(PerkLib.ElementalBolt)) {
@@ -962,6 +1320,7 @@ public class CombatUI extends BaseCombatContent {
 			} else if (player.hasStatusEffect(StatusEffects.MonsterDig)) {
 				bd.disable("You cannot use offensive spell against an opponent you cannot see or target.");
 			}
+			favbd(bd, "Elemental Bolt");
 			if (player.hasPerk(PerkLib.MagesWrath)) {
 				bd = buttons.add("E.Bolt(Ex)", combat.magic.spellEdgyElementalBolt);
 				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Elemental Bolt");
@@ -975,9 +1334,13 @@ public class CombatUI extends BaseCombatContent {
 				} else if (player.hasStatusEffect(StatusEffects.MonsterDig)) {
 					bd.disable("You cannot use offensive spell against an opponent you cannot see or target.");
 				}
+				favbd(bd, "Elemental Bolt Ex");
 			}
 		}
-		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) bd = buttons.add("G.Coven(off)", combat.magic.spellGreenCovenantOff).hint("Ends Green Covenant effect.");
+		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
+			bd = buttons.add("G.Coven(off)", combat.magic.spellGreenCovenantOff).hint("Ends Green Covenant effect.");
+			favbd(bd, "Green Covenant");
+		}
 		buildAbilityMenu(CombatAbilities.ALL_WHITE_SPELLS, whiteSpellButtons);
 		buildAbilityMenu(CombatAbilities.ALL_BLACK_SPELLS, blackSpellButtons);
 		buildAbilityMenu(CombatAbilities.ALL_GREY_SPELLS, greySpellButtons);
@@ -986,14 +1349,38 @@ public class CombatUI extends BaseCombatContent {
 		buildAbilityMenu(CombatAbilities.ALL_NECRO_SPELLS, necroSpellButtons);
 		buildAbilityMenu(CombatAbilities.ALL_BLOOD_SPELLS, bloodSpellButtons);
 		buildAbilityMenu(CombatAbilities.ALL_GREEN_SPELLS, greenSpellButtons);
-		if (whiteSpellButtons.length > 0) buttons.add("White Spells", curry(submenu,whiteSpellButtons, submenuSpells, 0, false)).hint("Open your White magic book");
-		if (blackSpellButtons.length > 0) buttons.add("Black Spells", curry(submenu,blackSpellButtons, submenuSpells, 0, false)).hint("Open your Black magic book");
-		if ((player.hasPerk(PerkLib.GreyMagic) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && greySpellButtons.length > 0) buttons.add("Grey Spells", curry(submenu,greySpellButtons, submenuSpells, 0, false)).hint("Open your Grey magic book");
-		if ((player.hasPerk(PerkLib.HexKnowledge) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && hexSpellButtons.length > 0) buttons.add("Hexes", curry(submenu,hexSpellButtons, submenuSpells, 0, false)).hint("Open your Hex grimoire");
-		if ((player.hasPerk(PerkLib.DivineKnowledge) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && divineSpellButtons.length > 0) buttons.add("Divine", curry(submenu,divineSpellButtons, submenuSpells, 0, false)).hint("Open your Divine tome");
-		if ((player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && necroSpellButtons.length > 0) buttons.add("Necro Spells", curry(submenu,necroSpellButtons, submenuSpells, 0, false)).hint("Open your Necromicon");
-		if ((player.hasPerk(PerkLib.HiddenJobBloodDemon) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && bloodSpellButtons.length > 0) buttons.add("Blood Spells", curry(submenu,bloodSpellButtons, submenuSpells, 0, false)).hint("Open your Blood grimoire");
-		if (greenSpellButtons.length > 0) buttons.add("Green Spells", curry(submenu,greenSpellButtons, submenuSpells, 0, false)).hint("Open your Green magic book");
+		if (whiteSpellButtons.length > 0) {
+			bd = buttons.add("White Spells", curry(submenu, whiteSpellButtons, submenuSpells, 0, false)).hint("Open your White magic book");
+			favbd(bd, "White Spells");
+		}
+		if (blackSpellButtons.length > 0) {
+			bd = buttons.add("Black Spells", curry(submenu, blackSpellButtons, submenuSpells, 0, false)).hint("Open your Black magic book");
+			favbd(bd, "Black Spells");
+		}
+		if ((player.hasPerk(PerkLib.GreyMagic) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && greySpellButtons.length > 0) {
+			bd = buttons.add("Grey Spells", curry(submenu, greySpellButtons, submenuSpells, 0, false)).hint("Open your Grey magic book");
+			favbd(bd, "Grey Spells");
+		}
+		if ((player.hasPerk(PerkLib.HexKnowledge) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && hexSpellButtons.length > 0) {
+			bd = buttons.add("Hexes", curry(submenu, hexSpellButtons, submenuSpells, 0, false)).hint("Open your Hex grimoire");
+			favbd(bd, "Hex Spells");
+		}
+		if ((player.hasPerk(PerkLib.DivineKnowledge) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && divineSpellButtons.length > 0) {
+			bd = buttons.add("Divine", curry(submenu, divineSpellButtons, submenuSpells, 0, false)).hint("Open your Divine tome");
+			favbd(bd, "Divine Spells");
+		}
+		if ((player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && necroSpellButtons.length > 0) {
+			bd = buttons.add("Necro Spells", curry(submenu, necroSpellButtons, submenuSpells, 0, false)).hint("Open your Necromicon");
+			favbd(bd, "Necro Spells");
+		}
+		if ((player.hasPerk(PerkLib.HiddenJobBloodDemon) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && bloodSpellButtons.length > 0) {
+			bd = buttons.add("Blood Spells", curry(submenu, bloodSpellButtons, submenuSpells, 0, false)).hint("Open your Blood grimoire");
+			favbd(bd, "Blood Spells");
+		}
+		if (greenSpellButtons.length > 0) {
+			bd = buttons.add("Green Spells", curry(submenu, greenSpellButtons, submenuSpells, 0, false)).hint("Open your Green magic book");
+			favbd(bd, "Green Spells");
+		}
 	}
 	
 	private function BuildSoulskillMenu(buttons:ButtonDataList):void {
@@ -1013,15 +1400,17 @@ public class CombatUI extends BaseCombatContent {
 	private function buildAbilityMenu(abilities:/*CombatAbility*/Array, buttons:ButtonDataList):void {
 		for each(var ability:CombatAbility in abilities) {
 			if (ability.isKnown) {
-				buttons.append(ability.createButton(monster));
+				var bd:ButtonData = ability.createButton(monster);
+				buttons.append(bd);
+				favbd(bd, ability.name);
 			}
 		}
 	}
 
 	internal function mainMenuWhenBound():void {
 		menu();
-		var btnStruggle:CoCButton  = addButton(0, "Struggle", combat.struggle);
-		var btnBoundWait:CoCButton = addButton(1, "Wait", combat.wait);
+		var btnStruggle:ButtonData  = new ButtonData("Struggle", combat.struggle);
+		var btnBoundWait:ButtonData = new ButtonData("Wait", combat.wait);
 		if (player.hasPerk(PerkLib.Spectre) && player.hasPerk(PerkLib.Incorporeality)) {
 			if (player.hasStatusEffect(StatusEffects.CooldownPossess)) addButtonDisabled(3, "Possess", "<b>You need more time before you can use Possess again.</b>");
 			else addButton(3, "Possess", combat.mspecials.possess2);
@@ -1058,6 +1447,8 @@ public class CombatUI extends BaseCombatContent {
 				addButton(2, "Dispell", (monster as Lethice).dispellRapetacles);
 			}
 		}
+		btnStruggle.applyToSlot(0);
+		btnStruggle.applyToSlot(1);
 	}
 
 	internal function mainMenuWhenChanneling():void {

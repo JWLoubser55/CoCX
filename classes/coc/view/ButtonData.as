@@ -9,6 +9,8 @@ import classes.PerkLib;
 import classes.StatusEffects;
 import classes.internals.Utils;
 
+import mx.controls.Button;
+
 public class ButtonData {
 	public var text:String = "";
 	public var callback:Function = null;
@@ -24,12 +26,52 @@ public class ButtonData {
 	public var iconId:String = null;
 	public var iconQty:String = "";
 	public var cornerLabelText:String = "";
-	public function ButtonData(text:String, callback:Function =null, toolTipText:String ="", toolTipHeader:String ="") {
+	public var clickOnDisabled:Boolean = false;
+	public function ButtonData(text:String="", callback:Function =null, toolTipText:String ="", toolTipHeader:String ="") {
 		this.text = text;
 		this.callback = callback;
 		this.enabled = callback != null;
 		this.toolTipText = toolTipText;
 		this.toolTipHeader = toolTipHeader;
+	}
+	public function reset():ButtonData {
+		this.color(CoCButton.DEFAULT_COLOR);
+		visible = false;
+		text = "";
+		toolTipHeader = "";
+		toolTipText = "";
+		enabled = false;
+		callback = null;
+		iconId = "";
+		iconQty = "";
+		cornerLabelText = "";
+		clickOnDisabled = false;
+		return this;
+	}
+	public function show(text:String,callback:Function,toolTipText:String="",toolTipHeader:String=""): ButtonData {
+		this.reset();
+		this.text = text;
+		this.callback = callback;
+		this.toolTipText = toolTipText;
+		this.toolTipHeader = toolTipHeader;
+		this.visible = !!text;
+		this.enabled = this.callback != null;
+		return this;
+	}
+	public function hide():ButtonData {
+		visible = false;
+		return this;
+	}
+	public function showDisabled(text:String,toolTipText:String="",toolTipHeader:String=""):ButtonData {
+		return show(text, null, toolTipText, toolTipHeader);
+	}
+	public function call(fn:Function, ...args:Array):ButtonData {
+		if (args.length > 0) {
+			this.callback = Utils.curry.apply(null, [fn].concat(args));
+		} else {
+			this.callback = fn;
+		}
+		return this;
 	}
 	public function hint(toolTipText:String,toolTipHeader:String=""):ButtonData {
 		this.toolTipText = toolTipText;
@@ -110,7 +152,30 @@ public class ButtonData {
 					.disableIf(!enabled)
 					.icon(iconId, iconQty)
 					.cornerLabel(cornerLabelText);
+			btn.clickOnDisabled = clickOnDisabled;
 		}
+	}
+	public function applyToSlot(i:int):void {
+		if (i >= 0 && i <= 14) {
+			applyTo(CoC.instance.mainView.bottomButtons[i]);
+		}
+	}
+	public function copyTo(bd:ButtonData):void {
+		bd.text = text;
+		bd.callback = callback;
+		bd.enabled = enabled;
+		bd.visible = visible;
+		bd.toolTipHeader = toolTipHeader;
+		bd.toolTipText = toolTipText;
+		bd.labelColor = labelColor;
+		bd.extraData = extraData;
+		bd.draggable = draggable;
+		bd.slot = slot;
+		bd.slotType = slotType;
+		bd.iconId = iconId;
+		bd.iconQty = iconQty;
+		bd.cornerLabelText = cornerLabelText;
+		bd.clickOnDisabled = clickOnDisabled;
 	}
 	/**
 	 * Adds a Soulforce requirement hint, and disables if player has not enough.
@@ -206,6 +271,7 @@ public class ButtonData {
 		this.toolTipText = btn.toolTipText;
 		this.labelColor = btn.labelColor;
 		this.iconId = btn.iconId;
+		this.clickOnDisabled = btn.clickOnDisabled;
 		// Still not enough to copy fields associated with items
 		return this;
 	}

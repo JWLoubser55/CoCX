@@ -553,7 +553,7 @@ public class ExplorationEngine extends BaseContent {
 			}
 			if (n == 0) {
 				// End of the road
-				onEnd.applyTo(button(0));
+				onEnd.applyToSlot(0);
 				button(0).call(function ():void {
 					stopExploring();
 					onEnd.callback.call();
@@ -592,7 +592,7 @@ public class ExplorationEngine extends BaseContent {
 		if (debug) {
 			button(14).show("Menu", cheatMenu);
 		} else {
-			if (leave && !finished && !isAtEnd) leave.applyTo(button(14));
+			if (leave && !finished && !isAtEnd) leave.applyToSlot(14);
 		}
 		if (onMenu != null) onMenu();
 		mainViewManager.updateCharviewIfNeeded();
@@ -629,7 +629,7 @@ public class ExplorationEngine extends BaseContent {
 		button(4).show("Camp", camp.returnToCampUseOneHour)
 				 .hint("Return to camp");
 
-		if (leave && !finished && !isAtEnd) leave.applyTo(button(13));
+		if (leave && !finished && !isAtEnd) leave.applyToSlot(13);
 		button(14).show("Back", showUI).icon("Back");
 	}
 	public function generateAt(roadNo:int, roadPos:int):void {

@@ -10,13 +10,11 @@ import classes.BodyParts.Hips;
 import classes.BodyParts.LowerBody;
 import classes.GlobalFlags.kFLAGS;
 import classes.Items.Weapon;
-import classes.Items.WeaponLib;
 import classes.Items.WeaponRange;
-import classes.Items.WeaponRangeLib;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class WoodElvesHuntingParty extends Monster
 	{
@@ -132,7 +130,7 @@ public class WoodElvesHuntingParty extends Monster
             SceneLib.combat.enemyAIImpl();
         }
 
-		override public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton, btnSpecial2:CoCButton):void{
+		override public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData, btnSpecial2:ButtonData):void{
 				if (flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID] != 0) btnSpecial1.show("Pick (M)", pickUpMelee, "Pick up your melee weapon.");
 				if (flags[kFLAGS.PLAYER_DISARMED_WEAPON_R_ID] != 0) btnSpecial2.show("Pick (R)", pickUpRange, "Pick up your range weapon.");
 		}

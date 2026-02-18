@@ -8,7 +8,7 @@ import classes.IMutations.*;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class Izumi extends Monster
 	{
@@ -119,7 +119,7 @@ public class Izumi extends Monster
 			checkMonster();
 		}
 
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.Titsmother)) {
 				btnStruggle.call(titSmotherStruggle);
 				btnBoundWait.call(titSmotherWait);

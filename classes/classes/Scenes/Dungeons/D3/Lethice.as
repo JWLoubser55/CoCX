@@ -14,7 +14,7 @@ import classes.StatusEffectType;
 import classes.StatusEffects;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class Lethice extends Monster
 	{
@@ -481,7 +481,7 @@ public class Lethice extends Monster
 			companionCheck = false;
 		}
 
-		override public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton, btnSpecial2:CoCButton):void{
+		override public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData, btnSpecial2:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.LethicesRapeTentacles)) {
 				if (player.lust < SceneLib.combat.magic.getWhiteMagicLustCap() && player.hasStatusEffect(StatusEffects.KnowsWhitefire)
 						&& ((!player.hasPerk(PerkLib.BloodMage) && player.mana >= 30) || (player.hasStatusEffect(StatusEffects.BloodMage) && ((player.HP + 30) > (player.minHP() + 30))))) {

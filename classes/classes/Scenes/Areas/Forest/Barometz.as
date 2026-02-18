@@ -11,7 +11,7 @@ import classes.BodyParts.LowerBody;
 import classes.Scenes.SceneLib;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class Barometz extends Monster
 	{
@@ -80,7 +80,7 @@ public class Barometz extends Monster
 			outputText("\n");
 		}
 		
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.Tentagrappled)) {
 				btnStruggle.call(baroGrappleStruggle);
 				btnBoundWait.call(baroGrappleWait);

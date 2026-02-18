@@ -9,9 +9,8 @@ import classes.PerkLib;
 import classes.Scenes.SceneLib;
 import classes.StatusEffects;
 import classes.internals.WeightedDrop;
-import classes.EngineCore;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class MinotaurKing extends Monster
 	{
@@ -296,7 +295,7 @@ public class MinotaurKing extends Monster
 			}
 		}
 
-		override public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton, btnSpecial2:CoCButton):void{
+		override public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData, btnSpecial2:ButtonData):void{
 			if (!player.hasStatusEffect(StatusEffects.MinoKing) && player.companionsInPCParty()) btnSpecial1.show("Dish Helper", SceneLib.hexindao.dishHelper);
 			else btnSpecial1.showDisabled("Dish Helper", "You don't have anyone to take care of "+(player.hasStatusEffect(StatusEffects.SoulArena)?"cow maid":"Excellia")+"!");
 		}

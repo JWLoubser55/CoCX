@@ -5,10 +5,10 @@ import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
 import classes.BodyParts.Tail;
 import classes.Scenes.SceneLib;
-import classes.internals.*;
 import classes.display.SpriteDb;
+import classes.internals.*;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class SandTrap extends Monster
 	{
@@ -79,7 +79,7 @@ public class SandTrap extends Monster
 			}
 		}
 
-		override public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton, btnSpecial2:CoCButton):void{
+		override public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData, btnSpecial2:ButtonData):void{
 			btnSpecial1.show("Climb", SceneLib.combat.wait2, "Climb the sand to move away from the sand trap.");
 		}
 

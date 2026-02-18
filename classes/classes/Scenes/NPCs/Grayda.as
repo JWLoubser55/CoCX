@@ -3,11 +3,11 @@ package classes.Scenes.NPCs
 import classes.*;
 import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
-import classes.Scenes.SceneLib;
 import classes.GlobalFlags.kFLAGS;
+import classes.Scenes.SceneLib;
 import classes.internals.*;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class Grayda extends Monster
 	{
@@ -89,7 +89,7 @@ public class Grayda extends Monster
 			player.removeStatusEffect(StatusEffects.Terrorize);
 			SceneLib.combat.enemyAIImpl();
 		}
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.Terrorize)) {
 				btnStruggle.call(graydaTerrorizeStruggle);
 				btnBoundWait.call(graydaTerrorizeWait);

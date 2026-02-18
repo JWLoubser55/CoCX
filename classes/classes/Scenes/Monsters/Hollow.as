@@ -9,9 +9,10 @@ import classes.BodyParts.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
-//import classes.Scenes.Combat.CombatAbilities;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
+
+//import classes.Scenes.Combat.CombatAbilities;
 
 use namespace CoC;
 
@@ -133,7 +134,7 @@ use namespace CoC;
 			}
 		}
 		
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.Pounced)) {
 				btnStruggle.call(hollowPouncedStruggle);
 				btnBoundWait.call(hollowPouncedWait);

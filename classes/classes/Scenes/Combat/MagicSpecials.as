@@ -115,46 +115,55 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownCursedRiddle)) {
 				bd.disable("<b>You need some time to think of a new riddle.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Cursed Riddle");
 		}
 		if (player.isRaceCached(Races.WENDIGO)) {
 			bd = buttons.add("Spectral scream", SpectralScream, "Let out a soul-chilling scream to stun your opponent and damage their sanity and soul. \n");
 			if (player.hasStatusEffect(StatusEffects.CooldownSpectralScream)) {
 				bd.disable("<b>You need more time before you can use Spectral scream again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Spectral Scream");
 		}
 		if (player.hasPerk(PerkLib.ExanimationI)) {
 			bd = buttons.add("Sagitta", Sagitta, "Fire a volley of concussive soulforce bullets. \nWould go into cooldown after use for: 5 rounds\n");
 			if (player.hasStatusEffect(StatusEffects.CooldownSagitta)) {
 				bd.disable("<b>You need more time before you can use Sagitta again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Sagitta");
 		}
 		if (player.hasPerk(PerkLib.ExanimationII)) {
 			bd = buttons.add("Acid Spit", AcidSpitHollow, "Spit acid at your opponent corroding his defence and dealing progressive damage. \nWould go into cooldown after use for: 2 rounds\n");
 			if (player.hasStatusEffect(StatusEffects.CooldownAcidSpit)) {
 				bd.disable("<b>You need more time before you can use Acid Spit again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Acid Spit");
 		}
 		if (player.hasPerk(PerkLib.ExanimationIII)) {
 			bd = buttons.add("Cero", CeroHollow, "Fire a powerful blast of concentrated spiritual energy at the target. \nWould go into cooldown after use for: 3 rounds\n");
 			if (player.hasStatusEffect(StatusEffects.CooldownCero)) {
 				bd.disable("<b>You need more time before you can use Cero again.</b>\n\n");
 			}
+			favbd(bd, "Cero");
 			bd = buttons.add("Pacisci", PacisciHollow, "Creates a barrier that lasts 4 turns that repels all Magical and Soulforce attacks. \nWould go into cooldown after use for: 5 rounds\n");
 			if (player.hasStatusEffect(StatusEffects.CooldownPacisci)) {
 				bd.disable("<b>You need more time before you can use Pacisci again.</b>\n\n");
 			} else if (player.hasStatusEffect(StatusEffects.Pacisci)) bd.disable("<b>You already created barrier.</b>\n\n");
+			favbd(bd, "Pacisci");
 		}
 		if (player.hasPerk(PerkLib.ExanimationIV)) {
 			bd = buttons.add("Ferro Pellis", FerroPellisHollow, "Envelop yourself in a spiritual aura that makes your skin as hard as steel. \nWould go into cooldown after use for: 5 rounds\n");
 			if (player.hasStatusEffect(StatusEffects.CooldownFerroPellis)) {
 				bd.disable("<b>You need more time before you can use Ferro Pellis again.</b>\n\n");
 			} else if (player.hasStatusEffect(StatusEffects.FerroPellis)) bd.disable("<b>You already enveloped yourself in a spiritual aura.</b>\n\n");
+			favbd(bd, "Ferro Pellis");
 		}
 		if ((player.isRaceCached(Races.RAIJU) || (player.isRaceCached(Races.THUNDERBIRD) && player.tailType == Tail.THUNDERBIRD) || player.isRaceCached(Races.KIRIN)) && player.hasPerk(PerkLib.ElectrifiedDesire) >= 0) {
 			bd = buttons.add("Orgasmic L.S.", OrgasmicLightningStrike, "Masturbate to unleash a massive discharge.", "Orgasmic Lightning Strike");
 			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Orgasmic Lightning Strike");
 			bd = buttons.add("Pleasure bolt", PleasureBolt, "Release a discharge of your lust inducing electricity. It will rise your lust by 2% of max lust after each use.", "Pleasure bolt");
 			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Pleasure Bolt");
 			if ((player.hasVagina() && (player.isRaceCached(Races.COW) || player.perkv1(IMutationsLib.LactaBovinaOvariesIM) >= 1 || (player.perkv1(IMutationsLib.HumanOvariesIM) >= 3 && player.racialScore(Races.HUMAN) > 17))) ||
 			(player.hasCock() && (player.isRaceCached(Races.MINOTAUR) || player.perkv1(IMutationsLib.MinotaurTesticlesIM) >= 1 || (player.perkv1(IMutationsLib.HumanTesticlesIM) >= 3 && player.racialScore(Races.HUMAN) > 17)))) {
 				bd = buttons.add("Plasma blast", PlasmaBlast, "Masturbate to unleash a massive discharge of milk/cum mixed with plasma.", "Plasma blast");
@@ -162,11 +171,13 @@ public class MagicSpecials extends BaseCombatContent {
 					if (player.perkv1(IMutationsLib.LactaBovinaOvariesIM) >= 3 || player.perkv1(IMutationsLib.MinotaurTesticlesIM) >= 3) bd.disable("\n<b>You need more time before you can do it again.</b>");
 					else bd.disable("You can't use it more than once during fight.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Plasma Blast");
 			}
 			if (player.isRaceCached(Races.THUNDERBIRD) && player.isFlying()) {
 				// Lust Storm
 				bd = buttons.add("Lust storm", Luststorm).hint("Supercharge the air with your lusty electricity to unleash a thunderstorm.");
 				if (player.hasStatusEffect(StatusEffects.lustStorm)) bd.disable("<b>You already unleashed a thunderstorm on the battlefield</b>\n\n");
+				favbd(bd, "Lust Storm");
 			}
 			if (player.isRaceCached(Races.KIRIN) && (player.weapon.isDuelingType() || player.weapon.isSwordType() || player.weapon.isSpearType() || player.weapon.isStaffType() ||
 				player.weaponOff.isDuelingType() || player.weaponOff.isSwordType() || player.weaponOff.isSpearType() || player.weaponOff.isStaffType())) {
@@ -175,20 +186,24 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.ElectrifyWeapon)) {
 					bd.disable("Your weapon is already imbued with lightning!");
 				}
+				favbd(bd, "Electrify Weapon");
 			}
 		}
 		//Esper cool beans (start)
 		if (player.hasPerk(PerkLib.PsychicBarrier)) {
 			if (player.statStore.hasBuff("PsychoBarrier")) {
-				buttons.add("Psycho-Barrier/Off", combat.deactivatePsychoBarrier).hint("Disperse Psycho-Barrier.");
+				bd = buttons.add("Psycho-Barrier/Off", combat.deactivatePsychoBarrier).hint("Disperse Psycho-Barrier.");
+				favbd(bd, "Psycho Barrier");
 			} else {
 				bd = buttons.add("Psycho-Barrier/On", combat.activatePsychoBarrier, "Cover yourself with Psycho-Barrier. (It would drain fatigue until dispersed)\n");
 				bd.requireFatigue(20);
+				favbd(bd, "Psycho Barrier");
 			}
 		}
 		if (player.hasPerk(PerkLib.PsychicBolt)) {
 			bd = buttons.add("Psychic Bolt", combat.castPsychicBolt, "Attempt to attack the enemy with psychic bolt.  Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(10);
+			favbd(bd, "Psychic Bolt");
 		}
 		if (player.hasPerk(PerkLib.TelekineticGrapple) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
 			bd = buttons.add("Telekinetic Grab", TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 8 rounds");
@@ -196,46 +211,57 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
 				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Telekinetic Grab");
 		}
 		if (player.hasPerk(PerkLib.Pyrokinesis)) {
 			bd = buttons.add("Pyrokinesis", combat.usePyrokinesis, "Attempt to attack the enemy with fire ball. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Pyrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Hydrokinesis)) {
 			bd = buttons.add("Hydrokinesis", combat.useHydrokinesis, "Attempt to attack the enemy with water sphere. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Hydrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Cryokinesis)) {
 			bd = buttons.add("Cryokinesis", combat.useCryokinesis, "Attempt to attack the enemy with icicle. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Cryokinesis");
 		}
 		if (player.hasPerk(PerkLib.Geokinesis)) {
 			bd = buttons.add("Geokinesis", combat.useGeokinesis, "Attempt to attack the enemy with rock. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Geokinesis");
 		}
 		if (player.hasPerk(PerkLib.Electrokinesis)) {
 			bd = buttons.add("Electrokinesis", combat.useElectrokinesis, "Attempt to attack the enemy with bolt of lightning. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Electrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Aerokinesis)) {
 			bd = buttons.add("Aerokinesis", combat.useAerokinesis, "Attempt to attack the enemy with wind sphere. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Aerokinesis");
 		}
 		if (player.hasPerk(PerkLib.Umbrakinesis)) {
 			bd = buttons.add("Umbrakinesis", combat.useUmbrakinesis, "Attempt to attack the enemy with darkness sphere. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Umbrakinesis");
 		}
 		if (player.hasPerk(PerkLib.Acidokinesis)) {
 			bd = buttons.add("Acidokinesis", combat.useAcidokinesis, "Attempt to attack the enemy with acid ball. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Acidokinesis");
 		}
 		if (player.hasPerk(PerkLib.Ionikinesis)) {
 			bd = buttons.add("Ionikinesis", combat.useIonikinesis, "Attempt to attack the enemy with plasma ball. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Ionikinesis");
 		}
 		if (player.hasPerk(PerkLib.Cocytokinesis)) {
 			bd = buttons.add("Cocytokinesis", combat.useCocytokinesis, "Attempt to attack the enemy with black icicle. Damage done is determined by your sensitivity.\n");
 			bd.requireFatigue(20);
+			favbd(bd, "Cocytokinesis");
 		}
 		//Esper cool beans (end)
 		if (!player.hasPerk(PerkLib.ElementalBody)) {
@@ -244,10 +270,12 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownPossess)) {
 					bd.disable("<b>You need more time before you can use Possess again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Possess");
 			}
 			if (player.wings.type == Wings.SEA_DRAGON && player.antennae.type == Antennae.SEA_DRAGON && player.skin.base.pattern == Skin.PATTERN_SEA_DRAGON_UNDERBODY) {
 				bd = buttons.add("Electric Discharge", ElectricDischarge, "Release a deadly discharge of electricity.", "Electric discharge");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Electric Discharge");
 			}
 			if (player.hasPerk(PerkLib.TransformationImmunity2) && player.lowerBody == LowerBody.ATLACH_NACHA && !monster.hasStatusEffect(StatusEffects.MysticWeb)) {
 				bd = buttons.add("Mystic Web", MysticWeb, "Spin a thread of animated web using your magic to tie up your victim in place. Also reduce opponent speed after each use. \n");
@@ -257,6 +285,7 @@ public class MagicSpecials extends BaseCombatContent {
 				} else if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 					bd.disable("You cannot focus to use this ability while you're having so much difficult breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Mystic Web");
 			}
 			if ((player.tailType == Tail.FOX && player.tailCount >= 2 && player.tailCount < 7) || (player.tailType == Tail.KITSHOO && player.tailCount >= 2)) {
 				bd = buttons.add("Fox Fire", basicFoxFire, "Unleash fox flame at your opponent for high damage. \n");
@@ -267,6 +296,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 					bd.disable("You cannot focus to use this ability while you're having so much difficult breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Fox Fire");
 			}
 			if (player.hasPerk(PerkLib.NinetailsKitsuneOfBalance) && player.tailType == Tail.FOX && player.tailCount >= 7) {
 				bd = buttons.add("F.FoxFire", fusedFoxFire, "Unleash fused ethereal blue and corrupted purple flame at your opponent for high damage. \n");
@@ -275,6 +305,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 					bd.disable("You cannot focus to use this ability while you're having so much difficult breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Fused Fox Fire");
 			}
 			if (player.hasPerk(PerkLib.CorruptedKitsune) && player.tailType == Tail.FOX && player.tailCount >= 7) {
 				// Corrupt Fox Fire
@@ -284,6 +315,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 					bd.disable("You cannot focus to use this ability while you're having so much difficult breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Corrupted Fox Fire");
 				// Terror
 				bd = buttons.add("Terror", kitsuneTerror, "Instill fear into your opponent with eldritch horrors. The more you cast this in a battle, the lesser effective it becomes.  ");
 				var terror:Number = 9;
@@ -307,6 +339,7 @@ public class MagicSpecials extends BaseCombatContent {
 				} else if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 					bd.disable("You cannot focus to reach the enemy's mind while you're having so much difficult breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Terror");
 			}
 			if (player.hasPerk(PerkLib.EnlightenedKitsune) && player.tailType == Tail.FOX && player.tailCount >= 7) {
 				// Pure Fox Fire
@@ -316,6 +349,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 					bd.disable("You cannot focus to use this ability while you're having so much difficult breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Pure Fox Fire");
 				// Illusion
 				bd = buttons.add("Illusion", kitsuneIllusion, "Warp the reality around your opponent to temporary boost your evasion for 3 rounds and arouse target slightly.");
 				var illusion:Number = 9;
@@ -339,10 +373,12 @@ public class MagicSpecials extends BaseCombatContent {
 				} else if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 					bd.disable("You cannot focus to use this ability while you're having so much difficulty breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Illusion");
 			}
 			if (player.tailType == Tail.KITSHOO && player.tailCount >= 6) {
 				if (player.statStore.hasBuff("FoxflamePelt")) {
-					buttons.add("Return", extinguishFoxflamePelt).hint("Release foxflames.");
+					bd = buttons.add("Return", extinguishFoxflamePelt).hint("Release foxflames.");
+					favbd(bd, "Foxflame Pelt");
 				} else {
 					bd = buttons.add("Foxflame Pelt", lightupFoxflamePelt, "Coat yourself with foxflame pelt. (It would drain soulforce and mana until deactivated)\n");
 					if (player.tailCount >= 9) {
@@ -353,6 +389,7 @@ public class MagicSpecials extends BaseCombatContent {
 						bd.requireSoulforce(Math.round(50 * soulskillCost() * soulskillcostmulti()));
 						bd.requireMana(spellCost(100 * kitsuneskill2Cost()));
 					}
+					favbd(bd, "Foxflame Pelt");
 				}
 			}
 			if ((player.tailType == Tail.NEKOMATA_FORKED_1_3 || player.tailType == Tail.NEKOMATA_FORKED_2_3 || (player.tailType == Tail.CAT && player.tailCount == 2))) {//player.hasPerk(MutationsLib.NekomataThyroidGland) ||
@@ -371,6 +408,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 					bd.disable("You cannot focus to use this ability while you're having so much difficult breathing.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Ghost Fire");
 				//bd = buttons.add("Puppeteer", nekomataPuppeteer).hint(". \n");
 			}	//also combining fatigue and soulfroce
 			if (player.rearBody.type == RearBody.TENTACLE_EYESTALKS && player.statusEffectv1(StatusEffects.GazerEyeStalksPlayer) >= 2) {
@@ -380,6 +418,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownChaosBeams)) {
 					bd.disable("You need time to gather enough winds to unleash a Chaos beams again.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Chaos Beams");
 			}
 			if (player.eyes.type == Eyes.MONOEYE && !monster.plural) {
 				bd = buttons.add("Dominating Gaze", DominatingGaze).hint("Obliterate your foe sense of self with your powerful gaze. \n", "Dominating Gaze");
@@ -389,10 +428,12 @@ public class MagicSpecials extends BaseCombatContent {
                     bd.disable("You need time to gather enough winds to unleash a wind scythe again.");
                 } else */
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Dominating Gaze");
 			}
 			if ((player.hasPerk(PerkLib.JobBeastWarrior) || player.necklaceName == "Crinos Shape necklace")) {
 				if (player.statStore.hasBuff("CrinosShape")) {
-					buttons.add("Return", returnToNormalShape).hint("Return to normal from Crinos Shape.");
+					bd = buttons.add("Return", returnToNormalShape).hint("Return to normal from Crinos Shape.");
+					favbd(bd, "Crinos Shape");
 				} else {
 					bd = buttons.add("CrinosShape", assumeCrinosShape).hint("Let your wrath flow thou you, transforming you into more bestial shape!  Greatly increases your strength, speed and fortitude! \n\nWrath Cost: " + crinosshapeCost() + " per turn");
 					if (player.wrath < crinosshapeCost()) {
@@ -401,22 +442,27 @@ public class MagicSpecials extends BaseCombatContent {
 					if (player.statStore.hasBuff("AsuraForm")) {// && !player.hasPerk(PerkLib.HiddenJobAsura)
 						bd.disable("You are under transformantion effect incompatibile with Crinos Shape!");
 					}
+					favbd(bd, "Crinos Shape");
 				}
 			}
 			if (player.hasPerk(PerkLib.Atavism)) {
 			if (player.statStore.hasBuff("Atavism")) {
-					buttons.add("Return", returnToNormalStateA).hint("Return to normal from Atavism State.");
+					bd = buttons.add("Return", returnToNormalStateA).hint("Return to normal from Atavism State.");
+					favbd(bd, "Atavism");
 				} else {
 					bd = buttons.add("Atavism", assumeAtavismState).hint("Turn feral for a while, abandoning yourself to your animalistic instincts. Unlock the full potential in your body by boosting your physical might and sharpening your senses but silence your ability to process intelligent logical thoughts. \n");
 					if (player.hasStatusEffect(StatusEffects.CooldownAtavism)) {
 						bd.disable("You lack the focus to use this ability at the time.");
 					}
+					favbd(bd, "Atavism");
 				}
 			}
 			if (player.hasPerk(PerkLib.HiddenJobAsura)) {
 				if (player.statStore.hasBuff("AsuraForm")) {
 					bd = buttons.add("Return", combat.returnToNormalShape).hint("Return to normal from Asura form.");
+					favbd(bd, "Asura Form");
 					bd = buttons.add("Asura's Howl", combat.asurasHowl).hint("Unleash a howl before giving enemy good punching. \n\nWrath Cost: 50");
+					favbd(bd, "Asura's Howl");
 					if (player.wrath < 50) {
 						bd.disable("Your wrath is too low to unleash howl!");
 					}
@@ -428,6 +474,7 @@ public class MagicSpecials extends BaseCombatContent {
 						if (player.wrath < (player.maxWrath() * 0.5)) {
 							bd.disable("Your wrath is too low to poke your enemies Asura Style!");
 						}
+						favbd(bd, "Fingers of Destruction");
 					}
 					if (player.hasPerk(PerkLib.AsuraStrength)) {
 
@@ -446,6 +493,7 @@ public class MagicSpecials extends BaseCombatContent {
 					if (player.statStore.hasBuff("CrinosShape")) {// && !player.hasPerk(PerkLib.HiddenJobAsura)
 						bd.disable("You are under transformantion effect incompatibile with Asura Form!");
 					}
+					favbd(bd, "Asura Form");
 				}
 			}
 			if (player.racialScore(Races.ONI) >= minOniScoreReq()) {
@@ -454,6 +502,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.OniRampage)) {
 					bd.disable("You already rampaging!");
 				}
+				favbd(bd, "Oni Rampage");
 			}
 			if (((player.eyes.type == Eyes.GORGON && player.hairType == Hair.GORGON) || player.perkv1(IMutationsLib.GorgonEyesIM) >= 1)) {
 				bd = buttons.add("Petrify", curry(petrify, false)).hint("Use your gaze to temporally turn your enemy into a stone. \n");
@@ -465,12 +514,14 @@ public class MagicSpecials extends BaseCombatContent {
 				} else if (isEnemyInvisible && player.hasStatusEffect(StatusEffects.MonsterDig)) {
 					bd.disable("You cannot use a gaze attack against an opponent you cannot see or target.");
 				}
+				favbd(bd, "Petrify");
 				if (player.perkv1(IMutationsLib.GorgonEyesIM) >= 4) {
 					bd = buttons.add("E. Petrify", curry(petrify, true)).hint("Use your enhanced gaze to temporally turn your enemy into a stone and even halt its recovery temporarily. \n");
 					bd.requireFatigue(spellCost(1000), true);
 					if (isEnemyInvisible && player.hasStatusEffect(StatusEffects.MonsterDig)) {
 						bd.disable("You cannot use a gaze attack against an opponent you cannot see or target.");
 					}
+					favbd(bd, "Enhanced Petrify");
 				}
 			}
 			if (player.lowerBody == LowerBody.HYDRA) {
@@ -478,14 +529,17 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownHydraAcidBreath)) {
 					bd.disable("You need more time before you can use Hydra acid breath again.\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Hydra Acid Breath");
 			}
 			if (player.isNaga() && flags[kFLAGS.SAMIRAH_HYPNOSIS] == 6 && !monster.plural) {
 				bd = buttons.add("Tactical Distraction", TacticalDistraction).hint("Make the target lose its current turn forcing it to interrupt whatever it is doing. \n\nWould go into cooldown after use for: " + (player.hasPerk(PerkLib.NaturalInstincts) ? "4" : "5") + " rounds", "Tactical Distraction");
 				if (player.hasStatusEffect(StatusEffects.CooldownTDistraction)) {
 					bd.disable("You need more time before you can use Tactical Distraction again.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Tactical Distraction");
 				bd = buttons.add("Hypnosis", NagaHypnosis).hint("Lull your opponent into a trance but only allow a limited set of options.", "Hypnosis");
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Hypnosis");
 			}
 			if (player.racialScore(Races.ARIGEAN) >= 16) {
 				bd = buttons.add("Mana Shot", manaShot).hint("Fire a single blast from "+(player.tailCount>1?"one of your extra maws":"your large extra mouth")+". \n");
@@ -493,11 +547,13 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownManaShot)) {
 					bd.disable("You need more time before you can use Mana Shot again.\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Mana Shot");
 				bd = buttons.add("Mana Barrage", manaBarrage).hint("Fire a barrage of blasts from your extra maw"+(player.tailCount>1?"s":"")+". \n");
 				bd.requireMana(spellCost(200*arigeanMagicSpecialsCost()), true);
 				if (player.hasStatusEffect(StatusEffects.CooldownManaBarrage)) {
 					bd.disable("You need more time before you can use Mana Barrage again.\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Mana Barrage");
 			}
 			//Charged Shot & Finality Barrage
 			if (player.tailType == Tail.ARIGEAN_PRINCESS) {
@@ -506,6 +562,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownChargedShot)) {
 					bd.disable("You need more time before you can use Charged Shot again.\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Arigean Charged Shot");
 				if (player.perkv1(IMutationsLib.ArigeanAssociationCortexIM) >= 4) {
 					var amount:Number = 0.6;
 					if (player.hasStatusEffect(StatusEffects.DarkRitual)) amount += 0.1;
@@ -515,6 +572,7 @@ public class MagicSpecials extends BaseCombatContent {
 					} else if (player.hasStatusEffect(StatusEffects.CooldownFinalityBarrage)) {
 						bd.disable("You need more time before you can use Finality Barrage again.\n\n");
 					} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					favbd(bd, "Finality Barrage");
 				}
 			}
 			if (player.isRaceCached(Races.LICH)) {
@@ -524,11 +582,13 @@ public class MagicSpecials extends BaseCombatContent {
 				} /*else if (player.hasStatusEffect(StatusEffects.CooldownHydraAcidBreath)) {
 					bd.disable("You need more time before you can use Hydra acid breath again.\n\n");
 				} */else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Paralyzing Touch");
 			}// \n\nWould go into cooldown after use for: " + (player.hasPerk(PerkLib.NaturalInstincts) ? "7" : "8") + " rounds 
 			if (player.hasStatusEffect(StatusEffects.WinterFlash) && player.statusEffectv1(StatusEffects.WinterFlash) > 1) {
 				bd = buttons.add("Winter Flash", winterFlash).hint("Bring cheerful radiance to the world with your nose. Deals heavy damage to naughty opponents and stun them for 3 rounds. \n");
 				bd.requireFatigue(spellCost(200), true);
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Winter Flash");
 			}
 		}
 		if (player.hasPerk(PerkLib.DarkCharm)) {
@@ -540,6 +600,7 @@ public class MagicSpecials extends BaseCombatContent {
 			} else if(player.hasStatusEffect(StatusEffects.Stunned)) {
 				bd.disable("You cannot focus to reach the enemy's mind with your charming display while you can't even move.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Fascinate");
 			// Lust Strike
 			bd = buttons.add("Lust Strike", LustStrike);
 			var word1:String = player.perkv1(IMutationsLib.BlackHeartIM) >= 1? ", intelligence" : "";
@@ -550,6 +611,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 				bd.disable("You cannot focus on drawing symbols while you're having so much difficult breathing.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Lust Strike");
 		}
 		if (player.hasPerk(PerkLib.Transference)) {
 			bd = buttons.add("Transfer", lustTransfer).hint("Transfer some of your own arousal to your opponent. \n");
@@ -557,24 +619,28 @@ public class MagicSpecials extends BaseCombatContent {
 			else if (player.hasPerk(PerkLib.GiftOfLust)) bd.requireFatigue(spellCost(30),true);
 			else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			else bd.requireFatigue(spellCost(40),true);
+			favbd(bd, "Transference");
 		}
 		if (player.isRaceCached(Races.AZAZEL) || player.perkv1(IMutationsLib.DiamondHeartIM) >= 1) {
 			bd = buttons.add("Exorcism",exorcism).disableIf(player.hasStatusEffect(StatusEffects.Exorcism), "Already used in this fight.").hint("Damage any creature above 25% corruption for 50% of its hit point total. Can be used only once per battle. \n");
 			if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) bd.requireMana(spellCost(100),true);
 			else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			else bd.requireMana(spellCost(80),true);
+			favbd(bd, "Exorcism");
 		}
 		if (player.isRaceCached(Races.DEVIL) || player.perkv1(IMutationsLib.ObsidianHeartIM) >= 1) {
 			bd = buttons.add("Infernal flare", infernalflare).hint("Use corrupted flames to burn your opponent. \n");
 			if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 3) bd.requireMana(spellCost(50),true);
 			else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			else bd.requireMana(spellCost(40),true);
+			favbd(bd, "Infernal Flare");
 		}
 		if (player.isRaceCached(Races.AZAZEL) || player.perkv1(IMutationsLib.DiamondHeartIM) >= 1) {
 			bd = buttons.add("JudgementFlare",judgementflare).hint("Unleash a burst of holy fire. \n");
 			if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) bd.requireMana(spellCost(50),true);
 			else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			else bd.requireMana(spellCost(40),true);
+			favbd(bd, "Judgement Flare");
 		}
 		if (player.isRaceCached(Races.HELLCAT)) {
 			//Feline Curse
@@ -582,11 +648,13 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownFelineCurse)) {
 				bd.disable("<b>You need more time before you can use Feline curse again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Feline Curse");
 			//Infernal Claw
 			bd = buttons.add("Infernal claw", InfernalClaw, "Enhance your attack with magic then wound an opponent with your claw to inflict damage and status. \n");
 			if (player.hasStatusEffect(StatusEffects.CooldownInfernalClaw)) {
 				bd.disable("<b>You need more time before you can use Infernal claw again.</b>\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Infernal Claw");
 		}
 		if (player.statusEffectv1(StatusEffects.VampireThirst) >= 1) {
 			if (player.hasPerk(PerkLib.Araneathropy)) {
@@ -596,6 +664,7 @@ public class MagicSpecials extends BaseCombatContent {
 					if (player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 						bd.disable("You cannot focus to use this ability while you're having so much difficult breathing.");
 					} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					favbd(bd, "Blood Web");
 				}
 				if (player.statusEffectv1(StatusEffects.VampireThirst) >= 3) {
 					//Sanguine Strength
@@ -603,6 +672,7 @@ public class MagicSpecials extends BaseCombatContent {
 					if (player.hasStatusEffect(StatusEffects.SanguineStrength)) {
 						bd.disable("<b>You already under Sanguine Strength effect.</b>\n\n");
 					}
+					favbd(bd, "Sanguine Strength");
 				}
 			}
 			if (player.isRaceCached(Races.DRACULA) || player.isRaceCached(Races.VAMPIRE)) {
@@ -611,11 +681,13 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownEclipsingShadow)) {
 					bd.disable("<b>You need more time before you can use Eclipsing shadow again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Eclipsing Shadow");
 				//Sonic scream
 				bd = buttons.add("Sonic scream", SonicScream, "Draw on your tainted blood power to unleash a powerful sonic shockwave. \n");
 				if (player.hasStatusEffect(StatusEffects.CooldownSonicScream)) {
 					bd.disable("<b>You need more time before you can use Sonic scream again.</b>\n\n");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Sonic Scream");
 			}
 			if (player.statusEffectv1(StatusEffects.VampireThirst) >= 3) {
 				//Sanguine Haste
@@ -623,31 +695,37 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.SanguineHaste)) {
 					bd.disable("<b>You already under Sanguine Haste effect.</b>\n\n");
 				}
+				favbd(bd, "Sanguine Haste");
 			}
 			//Vampire Thirst Stacks To Health/Mana
 			bd = buttons.add("Health Tap (1)", curry(VampireThirstStacksToHealth, 1), "Draw on your tainted blood power to heal yourself. \n");
 			if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv1(StatusEffects.VampThirstStacksHPMana) > 0) {
 				bd.disable("<b>You can't use Health Tap more than once a turn.</b>\n\n");
 			}
+			favbd(bd, "Health Tap (1)");
 			bd = buttons.add("Mana Tap (1)", curry(VampireThirstStacksToMana, 1), "Draw on your tainted blood power to recover some of your magic energies. \n");
 			if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv2(StatusEffects.VampThirstStacksHPMana) > 0) {
 				bd.disable("<b>You can't use Mana Tap more than once a turn.</b>\n\n");
 			}
+			favbd(bd, "Mana Tap (1)");
 			if (player.statusEffectv1(StatusEffects.VampireThirst) >= 5) {
 				bd = buttons.add("Health Tap (5)", curry(VampireThirstStacksToHealth, 5), "Draw on your tainted blood power to heal yourself. \n");
 				if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv1(StatusEffects.VampThirstStacksHPMana) > 0) {
 					bd.disable("<b>You can't use Health Tap more than once a turn.</b>\n\n");
 				}
+				favbd(bd, "Health Tap (5)");
 				bd = buttons.add("Mana Tap (5)", curry(VampireThirstStacksToMana, 5), "Draw on your tainted blood power to recover some of your magic energies. \n");
 				if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv2(StatusEffects.VampThirstStacksHPMana) > 0) {
 					bd.disable("<b>You can't use Mana Tap more than once a turn.</b>\n\n");
 				}
+				favbd(bd, "Mana Tap (5)");
 			}
 			if (player.hasPerk(PerkLib.Araneathropy) && player.statusEffectv1(StatusEffects.VampireThirst) >= 10) {
 				bd = buttons.add("Health Tap (10)", curry(VampireThirstStacksToHealth, 10), "Draw on your tainted blood power to heal yourself. \n");
 				if (player.hasStatusEffect(StatusEffects.VampThirstStacksHPMana) && player.statusEffectv1(StatusEffects.VampThirstStacksHPMana) > 0) {
 					bd.disable("<b>You can't use Health Tap more than once a turn.</b>\n\n");
 				}
+				favbd(bd, "Health Tap (10)");
 			}
 		}
 		if (player.isRaceCached(Races.COUATL) && player.isFlying()) {
@@ -657,6 +735,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.CooldownHurricane)) {
 				bd.disable("You need time to gather enough winds to empower your Hurricane again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Hurricane");
 		}
 		if (player.isRaceCached(Races.KAMAITACHI) && player.arms.type == Arms.KAMAITACHI) {
 			bd = buttons.add("Wind scythe", WindScythe).hint("Create a sharp wave of wind, slashing everything in its path for heavy bleed damage. More powerful against groups. \n", "Wind Scythe");
@@ -665,6 +744,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.CooldownWindScythe)) {
 				bd.disable("You need time to gather enough winds to unleash a wind scythe again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Wind Scythe");
 		}
 		if (player.hasPerk(PerkLib.DragonFireBreath)) {
 			bd = buttons.add("Dragon(Fire)", dragonfireBreath);
@@ -678,6 +758,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Fire");
 		}
 		if (player.hasPerk(PerkLib.DragonIceBreath)) {
 			bd = buttons.add("Dragon(Ice)", dragoniceBreath);
@@ -691,6 +772,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Ice");
 		}
 		if (player.hasPerk(PerkLib.DragonLightningBreath)) {
 			bd = buttons.add("Dragon(Light)", dragonlightningBreath);
@@ -704,6 +786,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Lightning");
 		}
 		if (player.hasPerk(PerkLib.DragonDarknessBreath)) {
 			bd = buttons.add("Dragon(Dark)", dragondarknessBreath);
@@ -717,6 +800,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Darkness");
 		}
 		if (player.hasPerk(PerkLib.DragonPoisonBreath)) {
 			bd = buttons.add("Dragon(Poison)", dragonpoisonBreath);
@@ -730,6 +814,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Poison");
 		}
 		if (player.hasPerk(PerkLib.DragonWaterBreath)) {
 			bd = buttons.add("Dragon(Water)", dragonWaterBreath);
@@ -743,6 +828,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonWaterBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Water");
 		}
 		if (player.hasPerk(PerkLib.DragonFaerieBreath)) {
 			bd = buttons.add("Dragon(Faerie)", dragonFaerieBreath);
@@ -756,6 +842,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Faerie");
 		}
 		if (player.hasPerk(PerkLib.DragonPoisonousSapBreath)) {
 			bd = buttons.add("Dragon(P.Sap)", dragonPoisonousSapBreath);
@@ -769,6 +856,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Poisonous Sap Breath");
 		}
 		if (player.hasPerk(PerkLib.DragonRegalBreath)) {
 			bd = buttons.add("Dragon(Royal)", dragonRoyalBreath);
@@ -782,6 +870,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Royal Breath");
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
 			bd = buttons.add("TrueDragonBreath", trueDragonBreath);
@@ -796,12 +885,14 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) bd.disable("Your throat is incredibly sore and hoarse. You aren’t sure you can talk let alone try that attack for a while.");
 				else bd.disable("Your throat is incredibly sore and hoarse. You aren’t sure you can talk let alone try that attack for more than a day.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "True Dragon Breath");
 		}
 		if (player.hasPerk(PerkLib.DragonLustPoisonBreath)) {
 			bd = buttons.add("Poison Breath", DragonLustPoisonBreath).hint("Unleash a cloud of aphrodisiac poison. Particularly powerful against groups.  \n\nVenom: " + player.tailVenom + "/" + player.maxVenom());
 			if (player.tailVenom < player.VenomWebCost() * 5) {
 				bd.disable("You do not have enough poison in your glands to breath a cloud right now! (Req. "+player.VenomWebCost()*5+"+)");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Lust Poison Breath");
 		}
 		if (player.faceType == Face.WOLF && player.hasKeyItem("Gleipnir Collar") >= 0) {
 			bd = buttons.add("FreezingBreath", fenrirFreezingBreath,"Freeze your foe solid with a powerful breath attack. \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "9":"10")+" rounds  \n<b>AoE attack.</b>");
@@ -809,6 +900,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownFreezingBreath)) {
 				bd.disable("You need more time before you can use Freezing Breath again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Fenrir Freezing Breath");
 		}
 		if (player.hasPerk(PerkLib.FreezingBreathYeti) || player.perkv1(IMutationsLib.FrozenHeartIM) >= 1) {
 			bd = buttons.add("FreezingBreath", yetiFreezingBreath, "Freeze your foe solid with a powerful breath attack. \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "9":"10")+" rounds");
@@ -816,6 +908,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownFreezingBreathYeti)) {
 				bd.disable("You need more time before you can use Freezing Breath again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Yeti Freezing Breath");
 		}
 		if ((player.isRaceCached(Races.YUKIONNA) && player.hasPerk(PerkLib.ColdAffinity)) || player.perkv1(IMutationsLib.FrozenHeartIM) >= 1) {
 			bd = buttons.add("Ice Barrage", iceBarrage).hint("Call up a frigid storm to freeze and bombard your enemies.", "Ice Barrage");
@@ -823,11 +916,13 @@ public class MagicSpecials extends BaseCombatContent {
 			var HCCDv:Number = 10;
 			if (player.perkv1(IMutationsLib.FrozenHeartIM) >= 2) HCCDv -= (player.perkv1(IMutationsLib.FrozenHeartIM) - 1);
 			if (player.hasPerk(PerkLib.NaturalInstincts)) HCCDv -= 1;
+			favbd(bd, "Ice Barrage");
 			bd = buttons.add("HungeringCold", hungeringCold).hint("Freeze the air around your target, encasing it in ice and dealing hypothermia damage. Weakens opponents ice resistance to further attacks damage by 50% stacking up to 3 times. \n\nWould go into cooldown after use for: " + HCCDv + " rounds", "Hungering cold");
 			bd.requireFatigue(spellCost(40));
 			if (player.hasStatusEffect(StatusEffects.CooldownHungeringCold)) {
 				bd.disable("You need more time before you can use Hungering Cold again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Hungering Cold");
 		}
 		if ((player.isRaceCached(Races.YUKIONNA) && player.hasPerk(PerkLib.ColdAffinity)) || player.perkv1(IMutationsLib.FrozenHeartIM) >= 1) {
 			bd = buttons.add("Frozen Kiss", frozenKiss).hint("Inflict damage, drain health, stun for 2 rounds and lust out the opponent. Usable only if the victim is humanoid and non giant.", "Frozen Kiss");
@@ -835,6 +930,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownFrozenKiss)) {
 				bd.disable("You need more time before you can use Frozen Kiss again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Frozen Kiss");
 		}
 		if (player.isRaceCached(Races.USHIONNA)) {
 			bd = buttons.add("ToxicBreath", ushiOnnaToxicBreath, "Poison your foe with a powerful breath attack. \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "9":"10")+" rounds");
@@ -842,22 +938,26 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna)) {
 				bd.disable("You need more time before you can use Toxic Breath again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Ushi Onna Toxic Breath");
 		}
 		if (player.hasPerk(PerkLib.FireLord)) {
 			bd = buttons.add("Fire Breath",fireballuuuuu).hint("Unleash fire from your mouth. \n", "Fire Breath");
 			bd.requireFatigue(20);
 			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Fire Lord Breath");
 		}
 		if (player.hasPerk(PerkLib.Hellfire)) {
 			if (player.faceType == Face.CERBERUS) {
 				bd = buttons.add("Hellfire",hellFire).hint("Unleash fire from your mouths.\n");
 				bd.requireFatigue(spellCost(150));
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Hellfire");
 			}
 			else {
 				bd = buttons.add("Hellfire",hellFire).hint("Unleash fire from your mouth.\n");
 				bd.requireFatigue(spellCost(50));
 				if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Hellfire");
 			}
 		}
 		if (player.hasPerk(PerkLib.PhoenixFireBreath)) {
@@ -866,16 +966,19 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownPhoenixFireBreath)) {
 				bd.disable("You need more time before you can use Phoenix Fire again.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Phoenix Fire Breath");
 		}
 		if (player.hasPerk(PerkLib.AcidSpit)) {
 			bd = buttons.add("Acid Spit", acidSpitCaveWyrm).hint("Spit acid at your opponent corroding his defence and dealing progressive damage.", "Acid Spit");
 			bd.requireFatigue(spellCost(40));
 			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Cave Wyrm Acid Spit");
 		}
 		if (player.hasPerk(PerkLib.AzureflameBreath)) {
 			bd = buttons.add("Azureflame B.", azureflameBreath).hint("Inhale a cone of bluish flames at your opponent. Cause burn.", "Azureflame Breath");
 			bd.requireFatigue(spellCost(40));
 			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Azureflame Breath");
 		}
 		if ((player.isRaceCached(Races.MOUSE, 2)) || player.countRings(jewelries.INMORNG)) {
 			bd = buttons.add("Blazing battle spirit", blazingBattleSpirit);
@@ -890,18 +993,21 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost)) {
 				bd.disable("You can't use this underwater!");
 			}
+			favbd(bd, "Blazing Battle Spirit");
 		}
 		if (player.hasPerk(PerkLib.FromTheFrozenWaste)){
 			bd = buttons.add("Winter Claws", WinterClaws).hint("Natural weapon damage is increased by 200% as cold damage but take very highly increased damage from fire attacks.");
 			if(player.hasStatusEffect(StatusEffects.WinterClaw)) {
 				bd.disable("Your natural weapons are already generating cold!");
 			}
+			favbd(bd, "Winter Claws");
 		}
 		if ((player.isRaceCached(Races.MOUSE, 2)) || player.perkv1(IMutationsLib.HinezumiBurningBloodIM) >= 3) {
 			bd = buttons.add("Cauterize", cauterize).hint("Flash burn your wounds to cause them to close. Take damage but recover over time. \n", "Cauterize");
 			if(player.hasStatusEffect(StatusEffects.Cauterize)) {
 				bd.disable("You already cauterizing your wounds!");
 			}
+			favbd(bd, "Cauterize");
 		}
 		if ((((player.racialScore(Races.SALAMANDER) >= 12 || player.racialScore(Races.PHOENIX) >= 15) && player.tail.type == Tail.SALAMANDER) || (player.racialScore(Races.KITSHOO) >= 12 && player.tail.type == Tail.KITSHOO)) &&
 			(player.weapon.isDuelingType() || player.weaponOff.isDuelingType() || player.weapon.isSwordType() || player.weaponOff.isSwordType() || player.weapon.isAxeType() || player.weaponOff.isAxeType() || player.weapon.isDaggerType() || player.weaponOff.isDaggerType() || player.weapon.isScytheType() || player.weaponOff.isScytheType())) {
@@ -909,12 +1015,14 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.FlameBlade)) {
 				bd.disable("Your weapon is already on fire!");
 			}
+			favbd(bd, "Flame Blade");
 		}
 		if (player.isRaceCached(Races.DEER, 2)) {
 			bd = buttons.add("Winter Rider", winterRider).hint("Condense and freeze humidity around your weapon to coat the edge in deadly ice adding cold damage to attacks. \n", "Winter Rider");
 			if (player.hasStatusEffect(StatusEffects.WinterRider)) {
 				bd.disable("Your weapon is already coated with ice!");
 			}
+			favbd(bd, "Winter Rider");
 		}
 		if (player.hasPerk(PerkLib.JobWarrior)) {
 			bd = buttons.add("WarriorRage", warriorsrage).hint("Throw yourself into a warrior's rage!  Greatly increases your strength, speed and fortitude! \n", "Warrior's Rage");
@@ -922,6 +1030,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.statStore.hasBuff("WarriorsRage")) {
 				bd.disable("You already raging!");
 			}
+			favbd(bd, "Warrior's Rage");
 		}
 		if (player.hasPerk(PerkLib.Berzerker)) {
 			bd = buttons.add("Berserk G1", berzerk);
@@ -936,12 +1045,14 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.Berzerking)) {
 				bd.disable("You're already pretty goddamn mad!");
 			}
+			favbd(bd, "Berserk G1");
 			if (player.hasPerk(PerkLib.SubzeroLustfulFury) && player.hasPerk(PerkLib.EndlessRage)) {
 				bd = buttons.add("Berserk G1+2", berzerkG1and2);
 				bd.requireWrath(50);
 				if (player.hasStatusEffect(StatusEffects.Berzerking) && player.statusEffectv2(StatusEffects.Berzerking) >= 1) {
 					bd.disable("You're already reached 2nd grade of Berserk!");
 				}
+				favbd(bd, "Berserk G1+2");
 			}
 		}
 		if (player.hasPerk(PerkLib.PrestigeJobBerserker) && player.hasStatusEffect(StatusEffects.Berzerking)) {
@@ -955,23 +1066,27 @@ public class MagicSpecials extends BaseCombatContent {
 					bd.disable("You're already reached 3rd grade of Berserk!");
 				}
 			}
+			favbd(bd, "Berserk G2");
 			if (player.statusEffectv2(StatusEffects.Berzerking) >= 1) {
 				bd = buttons.add("Berserk G3", berzerkG3);
 				if (player.statusEffectv2(StatusEffects.Berzerking) >= 2) {
 					bd.disable("You're already reached 3rd grade of Berserk!");
 				}
+				favbd(bd, "Berserk G3");
 			}
 			if (player.hasPerk(PerkLib.EndlessRage) && player.statusEffectv2(StatusEffects.Berzerking) >= 1 && player.hasPerk(PerkLib.SubzeroLustfulFury)) {
 				bd = buttons.add("Berserk G3+4", berzerkG3and4);
 				if (player.statusEffectv2(StatusEffects.Berzerking) >= 3) {
 					bd.disable("You're already reached 4th grade of Berserk!");
 				}
+				favbd(bd, "Berserk G3+4");
 			}
 			if (player.hasPerk(PerkLib.EndlessRage) && player.statusEffectv2(StatusEffects.Berzerking) >= 2) {
 				bd = buttons.add("Berserk G4", berzerkG4);
 				if (player.statusEffectv2(StatusEffects.Berzerking) >= 3) {
 					bd.disable("You're already reached 4th grade of Berserk!");
 				}
+				favbd(bd, "Berserk G4");
 			}
 		}
 		if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 1 || player.isAnyRaceCached(Races.SHARK, Races.ABYSSAL_SHARK)) {
@@ -983,6 +1098,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.statStore.hasBuff("Blood Frenzy")) {
 				bd.disable("You're already frenzied!");
 			}
+			favbd(bd, "Blood Frenzy");
 		}
 		if (player.hasPerk(PerkLib.Lustzerker) || player.countRings(jewelries.FLLIRNG)) {
 			bd = buttons.add("Lustserk G1", lustzerk);
@@ -997,12 +1113,14 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.Lustzerking)) {
 				bd.disable("You're already pretty goddamn mad & lustfull!");
 			}
+			favbd(bd, "Lustserk G1");
 			if (player.hasPerk(PerkLib.SubzeroLustfulFury) && player.hasPerk(PerkLib.EndlessRage)) {
 				bd = buttons.add("Lustserk G1+2", lustzerkG1and2);
 				bd.requireWrath(50);
 				if (player.hasStatusEffect(StatusEffects.Lustzerking) && player.statusEffectv2(StatusEffects.Lustzerking) >= 1) {
 					bd.disable("You're already reached 2nd grade of Lustserk!");
 				}
+				favbd(bd, "Lustserk G1+2");
 			}
 		}
 		if (player.hasPerk(PerkLib.PrestigeJobBerserker) && player.hasStatusEffect(StatusEffects.Lustzerking)) {
@@ -1010,29 +1128,34 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.statusEffectv2(StatusEffects.Lustzerking) >= 1) {
 				bd.disable("You're already reached 2nd grade of Lustserk!");
 			}
+			favbd(bd, "Lustserk G2");
 			if (player.hasPerk(PerkLib.EndlessRage) && player.hasPerk(PerkLib.SubzeroLustfulFury)) {
 				bd = buttons.add("Lustserk G2+3", lustzerkG2and3);
 				if (player.statusEffectv2(StatusEffects.Lustzerking) >= 2) {
 					bd.disable("You're already reached 3rd grade of Lustserk!");
 				}
+				favbd(bd, "Lustserk G2+3");
 			}
 			if (player.statusEffectv2(StatusEffects.Lustzerking) >= 1) {
 				bd = buttons.add("Lustserk G3", lustzerkG3);
 				if (player.statusEffectv2(StatusEffects.Lustzerking) >= 2) {
 					bd.disable("You're already reached 3rd grade of Lustserk!");
 				}
+				favbd(bd, "Lustserk G3");
 			}
 			if (player.hasPerk(PerkLib.EndlessRage) && player.statusEffectv2(StatusEffects.Lustzerking) >= 1 && player.hasPerk(PerkLib.SubzeroLustfulFury)) {
 				bd = buttons.add("Lustserk G3+4", lustzerkG3and4);
 				if (player.statusEffectv2(StatusEffects.Lustzerking) >= 3) {
 					bd.disable("You're already reached 4th grade of Lustserk!");
 				}
+				favbd(bd, "Lustserk G3+4");
 			}
 			if (player.hasPerk(PerkLib.EndlessRage) && player.statusEffectv2(StatusEffects.Lustzerking) >= 2) {
 				bd = buttons.add("Lustserk G4", lustzerkG4);
 				if (player.statusEffectv2(StatusEffects.Lustzerking) >= 3) {
 					bd.disable("You're already reached 4th grade of Lustserk!");
 				}
+				favbd(bd, "Lustserk G4");
 			}
 		}
 		if (player.hasStatusEffect(StatusEffects.KnowsTyrantState)) {
@@ -1042,8 +1165,10 @@ public class MagicSpecials extends BaseCombatContent {
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 40) boost *= 2;
 			if (player.hasStatusEffect(StatusEffects.TyrantState)) {
 				bd = buttons.add("TyrantState(Off)", deactivateTyrantState).hint("Deactivate Tyrant State.");
+				favbd(bd, "Tyrant State");
 			} else {
 				bd = buttons.add("TyrantState(On)", activateTyrantState).hint("Strain your body to its limit to increase melee damage dealt by "+boost+"% at the cost of getting horny. This also decrease physical resistance."+(TyrantiaFollower.TyrantiaTrainingSessions >= 30 ? " Would delay lust defeat by two turns. (Timer reset each time lust drop below max overlust value)":"")+"");
+				favbd(bd, "Tyrant State");
 			}
 			if (TyrantiaFollower.TyrantiaTrainingSessions >= 15) {
 				bd = buttons.add("False Weapon", activaterFalseWeapon).hint("Create False weapon based on currently wielded melee weapon to attack each time you attack with it. Deals 20% dmg (Phalluspear False Weapon deals 100%).");
@@ -1051,6 +1176,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.lust < Math.round(player.maxLust() * 0.1)) {
 					bd.disable("Your lust is too low!");
 				}
+				favbd(bd, "False Weapon");
 			}
 		}
 		if (player.hasPerk(PerkLib.TechOverdrive)) {
@@ -1059,6 +1185,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.TechOverdrive)) {
 				bd.disable("You're already activated Tech Overdrive!");
 			}
+			favbd(bd, "Tech Overdrive");
 		}
 		if (player.isRaceCached(Races.AUTOMATA)) {
 			bd = buttons.add("Overdrive", automataOverdrive).hint("Increase your weakness to electricity (100%) and physical trauma (20%) but drastically raise your own damage (100%).");
@@ -1066,6 +1193,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.AutomataOverdrive)) {
 				bd.disable("You're already activated Overdrive!");
 			}
+			favbd(bd, "Overdrive");
 		}
 		if (player.racialScore(Races.GREMLIN) >= 15) {
 			bd = buttons.add("Malfunction", malfunction).hint("Overload a magitech or construction, causing damage and immobilizing it for a while. Does not work on living things or sentient constructs.");
@@ -1075,6 +1203,7 @@ public class MagicSpecials extends BaseCombatContent {
 			} else if (!monster.hasPerk(PerkLib.EnemyConstructType) && !monster.hasPerk(PerkLib.EnemyFleshConstructType) && !monster.hasPerk(PerkLib.Sentience)) {
 				bd.disable("Only work on nonsentient constructs and technology.");
 			}
+			favbd(bd, "Malfunction");
 		}
 		if (player.hasPerk(PerkLib.Whispered)) {
 			bd = buttons.add("Whisper", superWhisperAttack).hint("Whisper and induce fear in your opponent. \n");
@@ -1082,18 +1211,21 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.ThroatPunch) || player.hasStatusEffect(StatusEffects.WebSilence)) {
 				bd.disable("You cannot focus to reach the enemy's mind while you're having so much difficult breathing.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Whisper");
 		}
 		if (player.isRaceCached(Races.DEVIL) || player.perkv1(IMutationsLib.ObsidianHeartIM) >= 1) {
 			bd = buttons.add("Maleficium", maleficium).hint("Infuse yourself with corrupt power empowering your magic but reducing your resistance to carnal assault.");
 			if(player.hasStatusEffect(StatusEffects.Maleficium)) {
 				bd.disable("You already empowered with corrupt power!");
 			}
+			favbd(bd, "Maleficium");
 		}
 		if (player.isRaceCached(Races.AZAZEL) || player.perkv1(IMutationsLib.DiamondHeartIM) >= 1) {
 			bd = buttons.add("PerfectClarity", perfectclarity).hint("Infuse yourself with holy power empowering your magic but reducing your resistance to physical assault.");
 			if(player.hasStatusEffect(StatusEffects.PerfectClarity)) {
 				bd.disable("You already empowered with holy power!");
 			}
+			favbd(bd, "Perfect Clarity");
 		}
 		if ((player.isRaceCached(Races.PLANT) || player.isRaceCached(Races.YGGDRASIL) || player.isRaceCached(Races.ALRAUNE) || player.isRaceCached(Races.WOODELF)) && player.hasStatusEffect(StatusEffects.KnowsGreenCovenant)) {
 			bd = buttons.add("Green Covenant", greenCovenant).hint("Enforce the full might of your elven pact. Connect with nearby plants gaining high regeneration damage reduction, and empowering elven magic but taking periodic lust damage and reducing evade.");
@@ -1107,6 +1239,7 @@ public class MagicSpecials extends BaseCombatContent {
 			else if(player.hasStatusEffect(StatusEffects.CooldownGreenCovenant)) {
 				bd.disable("You need more time before you can use Green Covenant again.");
 			}
+			favbd(bd, "Green Covenant");
 		}
 		if (player.isRaceCached(Races.CHESHIRE)) {
 			bd = buttons.add("Ever&Nowhere", EverywhereAndNowhere).hint("Periodically phase out of reality increasing your invasion as well as granting you the ability to surprise your opponent denying their defences.  \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "9":"10")+" rounds");
@@ -1114,6 +1247,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownEveryAndNowhere)) {
 				bd.disable("You need more time before you can use Everywhere and nowhere again.\n\n");
 			}
+			favbd(bd, "Evrywhere And Nowhere");
 		}
 		if (player.isRaceCached(Races.DRACULA)) {
 			bd = buttons.add("ShadowTeleport", ShadowTeleport).hint("Periodically phase out of reality increasing your invasion as well as granting you the ability to surprise your opponent denying their defences.  \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "9":"10")+" rounds");
@@ -1121,15 +1255,18 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownShadowTeleport)) {
 				bd.disable("You need more time before you can use Shadow Teleport again.\n\n");
 			}
+			favbd(bd, "Shadow Teleport");
 		}
 		if (player.isRaceCached(Races.FAIRY)) {
 			bd = buttons.add("Fae Storm", FaeStorm).hint("Use a beam of chaotic magic, damaging your foe and inflicting various status effects. Single target but very likely to cause a lot of effects.");
 			bd.requireMana(spellCost(80));
+			favbd(bd, "Fae Storm");
 			bd = buttons.add("Baleful Polymorph", BalefulPolymorph).hint("Turn an opponent into a cute harmless critter.");
 			bd.requireMana(spellCost(80));
 			if (player.hasStatusEffect(StatusEffects.CooldownBalefulPolymorph)) {
 				bd.disable("You need more time before you can use Baleful Polymorph again.\n\n");
 			}
+			favbd(bd, "Baleful Polymorph");
 		}
 		if (player.isRaceCached(Races.FAIRY) || player.isRaceCached(Races.FAERIEDRAGON)) {
 			bd = buttons.add("Flicker", Flicker).hint("Vanish out of sight for a short time. \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "3":"4")+" rounds");
@@ -1137,14 +1274,17 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownFlicker)) {
 				bd.disable("You need more time before you can use Flicker again.\n\n");
 			}
+			favbd(bd, "Flicker");
 		}
 		if (player.isRaceCached(Races.FAIRY) && !player.hasStatusEffect(StatusEffects.Minimise)) {
 			bd = buttons.add("Minimise", Minimise).hint("Shrink to the size of 5 inches, gaining highly increased evasion but reducing melee and ranged damage as well as physical strength.");
 			bd.requireMana(spellCost(50));
+			favbd(bd, "Minimise");
 		}
 		if (player.isRaceCached(Races.FAIRY) && player.hasStatusEffect(StatusEffects.Minimise)) {
 			bd = buttons.add("Enlarge", Enlarge).hint("Grow back to your normal size.");
 			bd.requireMana(spellCost(40));
+			favbd(bd, "Enlarge");
 		}
 		if (player.isRaceCached(Races.DISPLACERBEAST)) {
 			bd = buttons.add("Displacement", Displacement).hint("Teleport around to avoid your opponents attacks. \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "9":"10")+" rounds");
@@ -1152,6 +1292,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownDisplacement)) {
 				bd.disable("You need more time before you can use Displacement again.\n\n");
 			}
+			favbd(bd, "Displacement");
 		}
 		if (player.isRaceCached(Races.RACCOON, 2) || player.perkv1(IMutationsLib.NukiNutsIM) >= 1) {
 			if (!monster.plural) {
@@ -1159,11 +1300,13 @@ public class MagicSpecials extends BaseCombatContent {
 				if (player.hasStatusEffect(StatusEffects.CooldownPrank)) {
 					bd.disable("You need more time before you can prank your opponent again.");
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				favbd(bd, "Prank");
 			}
 			bd = buttons.add("Money Strike", MoneyStrike).hint("Attack your opponent using magically enhanced money. Damage is based on personal wealth. Cost some gems upon use.", "Money Strike");
 			bd.requireFatigue(spellCost(40),true);
 			if (player.gems < 100) bd.disable("You need more gems in order to use Money Strike.");
 			else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Money Strike");
 		}
 		if (player.isRaceCached(Races.RATATOSKR)) {
 			var cdko:Number = 12;
@@ -1178,11 +1321,13 @@ public class MagicSpecials extends BaseCombatContent {
 			var cdp:Number = 6;
 			if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) cdp -= 1;
 			if (player.hasPerk(PerkLib.NaturalInstincts)) cdp -= 1;
+			favbd(bd, "Knowledge Overload");
 			bd = buttons.add("Provoke", Provoke).hint("Insult your opponent and cause it to fly into a murderous rage increasing its damage but negating its defences and ability to do anything but attack blindly with physical strikes. \n\nWould go into cooldown after use for: "+cdp+" rounds", "Provoke");
 			bd.requireMana(spellCost(80));
 			if (player.hasStatusEffect(StatusEffects.CooldownProvoke)) {
 				bd.disable("You need more time before you can use Provoke again.\n\n");
 			}
+			favbd(bd, "Provoke");
 		}
 		if (player.isRaceCached(Races.RATATOSKR) || player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 1) {
 			var cdww:Number = 4;
@@ -1193,18 +1338,21 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownWeirdWords)) {
 				bd.disable("You need more time before you can use Weird words again.\n\n");
 			}
+			favbd(bd, "Weird Words");
 		}
 		if (player.isRaceCached(Races.SLIME) || player.isRaceCached(Races.MAGMASLIME) || player.isRaceCached(Races.DARKSLIME)) {
 			bd = buttons.add("Slime Bolt", SlimeBolt).hint("Summon a huge slimy projectile and toss it at your opponent causing serious lust and physical damage, reducing speed.\n\nMana Cost: " + spellCostWhite(50) + "");
 			if (player.mana < spellCost(50)) {
 				bd.disable("Your mana is too low to toss slime bolt.");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Slime Bolt");
 		}
 		if (Mindbreaker.MindBreakerQuest == Mindbreaker.QUEST_STAGE_ISMB){
 			bd = buttons.add("Mind Thrust", mindThrust).hint("Use your psychic powers to strike at the opponent’s mind dealing severe physical damage.\n\nMana Cost: " + spellCostWhite(100) + "");
 			if (player.mana < spellCost(100)) {
 				bd.disable("Your mana is too low to use mind thrust.");
 			}
+			favbd(bd, "Mind Thrust");
 			bd = buttons.add("Mind Blast", mindBlast).hint("Overload an opponent’s mind with lewd information, stunning it.\n\nMana Cost: " + spellCostWhite(100) + "");
 			if (player.mana < spellCost(50)) {
 				bd.disable("Your mana is too low to use mind blast.");
@@ -1212,15 +1360,18 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownSpellMindBlast)) {
 				bd.disable("You need more time before you can use mind blast again.\n\n");
 			}
+			favbd(bd, "Mind Blast");
 			bd = buttons.add("Mirror Image", mirrorImage).hint("Create multiple clone of yourself to distract your opponent.\n\nMana Cost: " + spellCostWhite(100) + "");
 			if (player.mana < spellCost(100)) {
 				bd.disable("Your mana is too low to use mirror image.");
 			}
+			favbd(bd, "Mirror Image");
 		}
 		//Sing
 		if (player.hasPerk(PerkLib.MelkieSong) || player.hasPerk(PerkLib.HarpySong) || player.hasPerk(PerkLib.PanLabyrinth) || player.hasPerk(PerkLib.PrestigeJobBard)) {
 			if (player.weapon.isMusicInstrument()) bd = buttons.add("Perform", SingInitiate).hint("Players begin a musical performance. While performing, players may add various mystical effects to the tune.\n.");
 			else bd = buttons.add("Sing", SingInitiate).hint("Begin singing. While singing, you may add various powerful effects to your tune.\n.");
+			favbd(bd, "Perform/Sing");
 		}
 		//Telekinetic Grab
 		if ((player.racialScore(Races.VAMPIRE) >= 20 || player.racialScore(Races.DRACULA) >= 22) && !player.hasPerk(PerkLib.TelekineticGrapple) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
@@ -1229,23 +1380,36 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
 				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Telekinetic Grab");
 		}
 		if (player.hasPerk(PerkLib.LookADistraction)) {
 			bd = buttons.add("LOOKOUT!", LookADistraction).hint("Mental special attack. Base 25% success rate, +0.5% for every point of WIS you have over your enemy’s WIS. Stuns and Doubles next melee hit if done next round, only works once per combat.");
 			if (player.hasStatusEffect(StatusEffects.LookoutUsed)) {
 				bd.disable("You already used this special in this fight.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "LOOKOUT!");
 		}
 		if (player.hasPerk(PerkLib.ElementalBody)) {
 			for each (var fusionAbility:CombatAbility in CombatAbilities.ALL_ELEMENTAL_FUSION_ATTACKS) {
                 if (fusionAbility.isKnown) {
-                    buttons.append(fusionAbility.createButton(monster));
+	                bd = fusionAbility.createButton(monster);
+	                buttons.append(bd);
+	                favbd(bd, fusionAbility.name);
                 }
             }
 		}
-		if (player.hasStatusEffect(StatusEffects.ShieldingSpell)) buttons.add("Shielding", shieldingSpell);
-		if (player.hasStatusEffect(StatusEffects.ImmolationSpell)) buttons.add("Immolation", immolationSpell);
-		if (player.hasStatusEffect(StatusEffects.IcePrisonSpell)) buttons.add("Ice Prison", iceprisonSpell);
+		if (player.hasStatusEffect(StatusEffects.ShieldingSpell)) {
+			bd = buttons.add("Shielding", shieldingSpell);
+			favbd(bd, "Shielding");
+		}
+		if (player.hasStatusEffect(StatusEffects.ImmolationSpell)) {
+			bd = buttons.add("Immolation", immolationSpell);
+			favbd(bd, "Immolation");
+		}
+		if (player.hasStatusEffect(StatusEffects.IcePrisonSpell)) {
+			bd = buttons.add("Ice Prison", iceprisonSpell);
+			favbd(bd, "Ice Prison");
+		}
 	}
 	
 	public function magicAbilitiesGoBrrr():Number {
