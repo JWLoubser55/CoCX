@@ -572,8 +572,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 					if (player.hasStatusEffect(StatusEffects.UnderwaterCombatBoost)) {
 						bd.disable("<b>You can't dig in open water!</b>\n\n");
 					}
+					favbd(bd, "Dig");
 				}
-				favbd(bd, "Dig");
 			}
 			//Drink
 			if (player.countMiscJewelry(miscjewelries.ONI_GOURD) > 0) {

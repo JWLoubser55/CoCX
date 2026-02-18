@@ -294,11 +294,13 @@ public class PlayerAppearance extends BaseContent {
 			//Height and race.
 			outputText("You are a ");
 			outputText(Measurements.footInchOrMetres(player.basetallness));
-			outputText(" (out of combat: ");
-			outputText(Measurements.footInchOrMetres(player.tallness));
-			outputText(", effective: ");
-			outputText(Measurements.footInchOrMetres(player.effectiveTallness));
-			outputText(")");
+			if (player.basetallness != player.tallness || player.basetallness != player.effectiveTallness) {
+				outputText(" (out of combat: ");
+				outputText(Measurements.footInchOrMetres(player.tallness));
+				outputText(", effective: ");
+				outputText(Measurements.footInchOrMetres(player.effectiveTallness));
+				outputText(")");
+			}
 			var pcrace:String = player.race();
 			var genderlessRace:Array = ["half cow-morph", "half cow-girl", "cow-girl", "cow-girl", "cow-morph", "minotaur", "half-minotaur", "alraune", "liliraune", "half unicorn", "unicorn", "unicornkin", "half alicorn", "alicorn", "alicornkin", "true alicorn", "half bicorn", "bicorn", "bicornkin", "half nightmare","nightmare", "nightmarekin", "true nightmare"];
 			if (!(genderlessRace.indexOf(pcrace) >= 0))

@@ -8,6 +8,7 @@ import classes.BodyParts.LowerBody;
 import classes.BodyParts.RearBody;
 import classes.BodyParts.Tail;
 import classes.BodyParts.Wings;
+import classes.CoC;
 import classes.CoC_Settings;
 import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
@@ -737,6 +738,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			// Do not create default menu if it was overwritten
 			return;
 		}
+		menu("CombatUI.mainMenu");
 		/* OLD MENU
 		 0 [ Melee ] [ Range ] [ Tease ] [  Wait   ] [ Items ]
 		 5 ability groups
@@ -769,7 +771,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 		Skills:
 		 0 [ Melee  ] [ Ranged ] [ Tease  ] [        ] [        ]
 		 5 [ PhySpc ] [ MagSpc ] [Soulskil] [ Magic  ] [        ]
-		10 [        ] [        ] [        ] [        ] [        ]
+		10 [        ] [        ] [        ] [        ] [  Back  ]
 
 		Other:
 		 0 [ Items  ] [  Wait  ] [Fantasiz] [  Run   ] ...old "Other"
@@ -777,9 +779,14 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 		favbd(btnMelee, "Melee Attack");
 		favbd(btnRanged, "Ranged Attack");
 		favbd(btnTease, "Tease");
+		favbd(btnPSpecials, "Physical Specials");
+		favbd(btnMSpecials, "Magical Specials");
+		favbd(btnSoulskills, "Soulskills");
+		favbd(btnMagic, "Magic");
 		favbd(btnItems, "Items");
 		favbd(btnFantasize, "Fantasize");
 		favbd(btnWait, "Wait");
+		favbd(btnRun, "Run");
 		var btnSkillsNew:ButtonData = new ButtonData();
 		btnSkillsNew.show("Skills",curry(skillsSubmenuNew, btnMelee, btnRanged, btnTease, btnPSpecials, btnMSpecials, btnSoulskills, btnMagic));
 		var btnOtherNew:ButtonData = new ButtonData();
@@ -787,7 +794,12 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 		otherButtons.prepend(btnFantasize);
 		otherButtons.prepend(btnWait);
 		otherButtons.prepend(btnItems);
-		bd = new ButtonData("Btn Config", curry(modFavCountMenu, mainMenu), "Configure number of favourite skills");
+		var text:String = CoC.instance.currentText;
+		bd = new ButtonData("Btn Config", curry(modFavCountMenu, function():void {
+			clearOutput();
+			rawOutputText(text);
+			mainMenu();
+		}), "Configure number of favourite skills");
 		otherButtons.prepend(bd);
 		btnOtherNew.show("Other", submenuOther, "Combat options and uncategorized actions");
 		/**/
@@ -799,10 +811,10 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 				if (bd) {
 					bd.applyTo(button(i));
 				} else {
-					button(i).show("-", curry(unfavSlot, i), "The favourited ability '"+favSkills[i]+"' is not available. Shift-click to unfavourite it.").disable();
+					button(i).show("N/A", curry(unfavSlot, i), "The favourited ability '"+favSkills[i]+"' is not available. Shift-click to unfavourite it.").disable().clickOnDisabled = true;
 				}
 			} else {
-				button(i).showDisabled("", "Shift+click an ability to favourite it", "Favourite slot "+(i+1))
+				button(i).showDisabled("", "Shift+click a button with '*' to favourite it", "Favourite slot "+(i+1))
 			}
 		}
 		for (i = favCount; i < 10; i++) {
@@ -1217,6 +1229,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			} else if (player.hasStatusEffect(StatusEffects.MonsterDig)) {
 				bd.disable("You cannot use offensive spell against an opponent you cannot see or target.");
 			}
+			favbd(bd, "Magic Bolt");
 			if (player.hasPerk(PerkLib.MagesWrath)) {
 				bd = buttons.add("M.Bolt(Ex)", combat.magic.spellEdgyMagicBolt);
 				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered magic bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Magic Bolt");
@@ -1230,6 +1243,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 				} else if (player.hasStatusEffect(StatusEffects.MonsterDig)) {
 					bd.disable("You cannot use offensive spell against an opponent you cannot see or target.");
 				}
+				favbd(bd, "Magic Bolt Ex");
 			}
 		}
 		if (player.hasPerk(PerkLib.ElementalBolt)) {
@@ -1243,6 +1257,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			} else if (player.hasStatusEffect(StatusEffects.MonsterDig)) {
 				bd.disable("You cannot use offensive spell against an opponent you cannot see or target.");
 			}
+			favbd(bd, "Elemental Bolt");
 			if (player.hasPerk(PerkLib.MagesWrath)) {
 				bd = buttons.add("E.Bolt(Ex)", combat.magic.spellEdgyElementalBolt);
 				if (player.hasPerk(PerkLib.StaffChanneling) && (player.weapon.isWandType() || player.weaponOff.isWandType() || player.weapon.isStaffType() || player.weaponOff.isStaffType())) bd.hint("Attempt to attack the enemy with wrath-empowered elemental bolt from your [weapon].  Damage done is determined by your intelligence, wisdom and weapon.", "Wrath-Empowered Elemental Bolt");
@@ -1256,9 +1271,13 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 				} else if (player.hasStatusEffect(StatusEffects.MonsterDig)) {
 					bd.disable("You cannot use offensive spell against an opponent you cannot see or target.");
 				}
+				favbd(bd, "Elemental Bolt Ex");
 			}
 		}
-		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) bd = buttons.add("G.Coven(off)", combat.magic.spellGreenCovenantOff).hint("Ends Green Covenant effect.");
+		if (player.hasStatusEffect(StatusEffects.GreenCovenant)) {
+			bd = buttons.add("G.Coven(off)", combat.magic.spellGreenCovenantOff).hint("Ends Green Covenant effect.");
+			favbd(bd, "Green Covenant");
+		}
 		buildAbilityMenu(CombatAbilities.ALL_WHITE_SPELLS, whiteSpellButtons);
 		buildAbilityMenu(CombatAbilities.ALL_BLACK_SPELLS, blackSpellButtons);
 		buildAbilityMenu(CombatAbilities.ALL_GREY_SPELLS, greySpellButtons);
@@ -1267,14 +1286,38 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 		buildAbilityMenu(CombatAbilities.ALL_NECRO_SPELLS, necroSpellButtons);
 		buildAbilityMenu(CombatAbilities.ALL_BLOOD_SPELLS, bloodSpellButtons);
 		buildAbilityMenu(CombatAbilities.ALL_GREEN_SPELLS, greenSpellButtons);
-		if (whiteSpellButtons.length > 0) buttons.add("White Spells", curry(submenu,whiteSpellButtons, submenuSpells, 0, false)).hint("Open your White magic book");
-		if (blackSpellButtons.length > 0) buttons.add("Black Spells", curry(submenu,blackSpellButtons, submenuSpells, 0, false)).hint("Open your Black magic book");
-		if ((player.hasPerk(PerkLib.GreyMagic) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && greySpellButtons.length > 0) buttons.add("Grey Spells", curry(submenu,greySpellButtons, submenuSpells, 0, false)).hint("Open your Grey magic book");
-		if ((player.hasPerk(PerkLib.HexKnowledge) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && hexSpellButtons.length > 0) buttons.add("Hexes", curry(submenu,hexSpellButtons, submenuSpells, 0, false)).hint("Open your Hex grimoire");
-		if ((player.hasPerk(PerkLib.DivineKnowledge) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && divineSpellButtons.length > 0) buttons.add("Divine", curry(submenu,divineSpellButtons, submenuSpells, 0, false)).hint("Open your Divine tome");
-		if ((player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && necroSpellButtons.length > 0) buttons.add("Necro Spells", curry(submenu,necroSpellButtons, submenuSpells, 0, false)).hint("Open your Necromicon");
-		if ((player.hasPerk(PerkLib.HiddenJobBloodDemon) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && bloodSpellButtons.length > 0) buttons.add("Blood Spells", curry(submenu,bloodSpellButtons, submenuSpells, 0, false)).hint("Open your Blood grimoire");
-		if (greenSpellButtons.length > 0) buttons.add("Green Spells", curry(submenu,greenSpellButtons, submenuSpells, 0, false)).hint("Open your Green magic book");
+		if (whiteSpellButtons.length > 0) {
+			bd = buttons.add("White Spells", curry(submenu, whiteSpellButtons, submenuSpells, 0, false)).hint("Open your White magic book");
+			favbd(bd, "White Spells");
+		}
+		if (blackSpellButtons.length > 0) {
+			bd = buttons.add("Black Spells", curry(submenu, blackSpellButtons, submenuSpells, 0, false)).hint("Open your Black magic book");
+			favbd(bd, "Black Spells");
+		}
+		if ((player.hasPerk(PerkLib.GreyMagic) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && greySpellButtons.length > 0) {
+			bd = buttons.add("Grey Spells", curry(submenu, greySpellButtons, submenuSpells, 0, false)).hint("Open your Grey magic book");
+			favbd(bd, "Grey Spells");
+		}
+		if ((player.hasPerk(PerkLib.HexKnowledge) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && hexSpellButtons.length > 0) {
+			bd = buttons.add("Hexes", curry(submenu, hexSpellButtons, submenuSpells, 0, false)).hint("Open your Hex grimoire");
+			favbd(bd, "Hex Spells");
+		}
+		if ((player.hasPerk(PerkLib.DivineKnowledge) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && divineSpellButtons.length > 0) {
+			bd = buttons.add("Divine", curry(submenu, divineSpellButtons, submenuSpells, 0, false)).hint("Open your Divine tome");
+			favbd(bd, "Divine Spells");
+		}
+		if ((player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && necroSpellButtons.length > 0) {
+			bd = buttons.add("Necro Spells", curry(submenu, necroSpellButtons, submenuSpells, 0, false)).hint("Open your Necromicon");
+			favbd(bd, "Necro Spells");
+		}
+		if ((player.hasPerk(PerkLib.HiddenJobBloodDemon) || player.hasPerk(PerkLib.PrestigeJobGreySage)) && bloodSpellButtons.length > 0) {
+			bd = buttons.add("Blood Spells", curry(submenu, bloodSpellButtons, submenuSpells, 0, false)).hint("Open your Blood grimoire");
+			favbd(bd, "Blood Spells");
+		}
+		if (greenSpellButtons.length > 0) {
+			bd = buttons.add("Green Spells", curry(submenu, greenSpellButtons, submenuSpells, 0, false)).hint("Open your Green magic book");
+			favbd(bd, "Green Spells");
+		}
 	}
 	
 	private function BuildSoulskillMenu(buttons:ButtonDataList):void {
@@ -1294,7 +1337,9 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 	private function buildAbilityMenu(abilities:/*CombatAbility*/Array, buttons:ButtonDataList):void {
 		for each(var ability:CombatAbility in abilities) {
 			if (ability.isKnown) {
-				buttons.append(ability.createButton(monster));
+				var bd:ButtonData = ability.createButton(monster);
+				buttons.append(bd);
+				favbd(bd, ability.name);
 			}
 		}
 	}
