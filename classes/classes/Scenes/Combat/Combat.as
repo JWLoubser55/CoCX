@@ -19670,6 +19670,7 @@ public function sendSkeletonToFight():void {
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.BoneGiants)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.GigachadSkeletalMages)) dmgamp += 0.2;
+    if (player.hasPerk(PerkLib.BoneBallistaSkelies)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
@@ -19708,6 +19709,11 @@ public function sendSkeletonToFight():void {
 		outputText("\n\nYour archer"+(player.perkv1(PerkLib.BoneyBow) > 1 ? "s":"")+" unleashing a volley of arrows. ");
 		var sSATF:Number = player.perkv1(PerkLib.BoneyBow);
 		while (sSATF-->0) doMinionPhysDamage(damage, true, true);
+    }
+    if (player.hasPerk(PerkLib.BoneBallistaSkelies) && player.perkv1(PerkLib.BoneBallistaSkelies) > 0) {
+		outputText("\n\nYour bone ballista skeleton"+(player.perkv1(PerkLib.BoneBallistaSkelies) > 1 ? "s":"")+" unleashing a volley of ballista bolts. ");
+		var sBBSTF:Number = player.perkv1(PerkLib.BoneBallistaSkelies);
+		while (sBBSTF-->0) doMinionPhysDamage((damage*4), true, true);
     }
 	if (player.hasPerk(PerkLib.BoneyWand) && player.perkv1(PerkLib.BoneyWand) > 0) {
 		outputText("\n\nYour skeletal mage"+(player.perkv1(PerkLib.BoneyWand) > 1 ? "s":"")+" unleashing a barrage of magic missiles. ");
@@ -19750,6 +19756,7 @@ public function skeletonSmash():void {
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.BoneGiants)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.GigachadSkeletalMages)) dmgamp += 0.2;
+    if (player.hasPerk(PerkLib.BoneBallistaSkelies)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;

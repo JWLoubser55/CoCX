@@ -2213,6 +2213,13 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxSkeletonGigachadMagesCounter += 1;
 			return maxSkeletonGigachadMagesCounter;
 		}
+		public function maxBoneBallistaSkeletons():Number {
+			var maxBoneBallistaSkeletonsCounter:Number = 0;
+			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) maxBoneBallistaSkeletonsCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxBoneBallistaSkeletonsCounter += 1;
+			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxBoneBallistaSkeletonsCounter += 1;
+			return maxBoneBallistaSkeletonsCounter;
+		}
 		public function bonesUsedToMakeNormalSkeleton():Number {
 			var bonesUsedToMakeNormalSkely:Number = 20;
 			if (player.hasPerk(PerkLib.BoneEfficiency)) bonesUsedToMakeNormalSkely -= 10;
@@ -2242,7 +2249,8 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.BoneyBow)) outputText("<b>Skeleton Archers:</b> " + player.perkv1(PerkLib.BoneyBow) + " / " + maxSkeletonArchers() + "\n");
 			if (player.hasPerk(PerkLib.BoneyWand)) outputText("<b>Skeleton Mages:</b> " + player.perkv1(PerkLib.BoneyWand) + " / " + maxSkeletonMages() + "\n");
 			if (player.hasPerk(PerkLib.BoneGiants)) outputText("<b>Skeleton Giants:</b> " + player.perkv1(PerkLib.BoneGiants) + " / " + maxSkeletonGiants() + "\n");
-			if (player.hasPerk(PerkLib.BoneGiants)) outputText("<b>Skeleton Gigachad Mages:</b> " + player.perkv1(PerkLib.GigachadSkeletalMages) + " / " + maxSkeletonGigachadMages() + "\n");
+			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) outputText("<b>Skeleton Gigachad Mages:</b> " + player.perkv1(PerkLib.GigachadSkeletalMages) + " / " + maxSkeletonGigachadMages() + "\n");
+			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) outputText("<b>Bone Ballista Skeletons:</b> " + player.perkv1(PerkLib.BoneBallistaSkelies) + " / " + maxBoneBallistaSkeletons() + "\n");
 			menu();
 			addButton(0, "C.Skeleton(W)", createSkeletonWarrior).hint("Create Skeleton Warrior.");
 			if (player.hasPerk(PerkLib.BoneyBow)) addButton(1, "C.Skeleton(A)", createSkeletonArcher).hint("Create Skeleton Archer.");
@@ -2253,6 +2261,8 @@ public class CampMakeWinions extends BaseContent
 			else addButtonDisabled(3, "???", "Req. Bone Giants perk to unlock this option.");
 			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) addButton(4, "C.Skeleton(GM)", createGigachadSkeletalMage).hint("Create Gigachad Skeletal Mage.");
 			else addButtonDisabled(4, "???", "Req. Gigachad Skeletal Mages perk to unlock this option.");
+			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) addButton(5, "C.Skeleton(BB)", createBoneBallistaSkeleton).hint("Create Bone Ballista Skeleton.");
+			else addButtonDisabled(5, "???", "Req. Bone Ballista perk to unlock this option.");
 			addButton(14, "Back", camp.campWinionsArmySim);
 		}
 
@@ -2366,7 +2376,7 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function createGigachadSkeletalMage():void {
 			clearOutput();
-			if (player.perkv1(PerkLib.GigachadSkeletalMages) >= maxSkeletonGiants()) {
+			if (player.perkv1(PerkLib.GigachadSkeletalMages) >= maxSkeletonGigachadMages()) {
 				outputText("You already have as many Gigachad Skeletal Mages as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
@@ -2388,6 +2398,33 @@ public class CampMakeWinions extends BaseContent
 			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a massive, 30-foot-tall shape. ");
 			outputText("As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Gigachad Skeletal Mage, ready to fight and obey your every command.");
 			player.addPerkValue(PerkLib.GigachadSkeletalMages, 1, 1);
+			doNext(accessMakeSkeletonWinionsMainMenu);
+			advanceMinutes(20);
+		}
+		public function createBoneBallistaSkeleton():void {
+			clearOutput();
+			if (player.perkv1(PerkLib.BoneBallistaSkelies) >= maxBoneBallistaSkeletons()) {
+				outputText("You already have as many Bone Ballista Skeletons as you can realistically control.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if (player.perkv1(PerkLib.JobHaruspex) < bonesUsedToMakeLargeSkeleton()) {
+				outputText("You lack the required amount of demon bones ("+bonesUsedToMakeLargeSkeleton()+") to create a Bone Ballista Skeleton.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if ((player.soulforce < resourcesUsedToMakeLargeSkeleton()) && (player.mana < resourcesUsedToMakeLargeSkeleton())) {
+				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeLargeSkeleton()+") to create a Bone Ballista Skeleton.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeLargeSkeleton() && player.mana >= resourcesUsedToMakeLargeSkeleton())) player.mana -= resourcesUsedToMakeLargeSkeleton();
+			else player.soulforce -= resourcesUsedToMakeLargeSkeleton();
+			statScreenRefresh();
+			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a massive, 30-foot-tall shape. ");
+			outputText("As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Bone Ballista Skeleton, ready to fight and obey your every command.");
+			player.addPerkValue(PerkLib.BoneBallistaSkelies, 1, 1);
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(20);
 		}
