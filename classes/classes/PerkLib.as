@@ -911,6 +911,18 @@ public class PerkLib
 		public static const BoneBallistaSkelies:PerkType = mk("Bone Ballista Skelies", "Bone Ballista Skelies",
 				"You can now make (max 1) bone ballista skeleton out of demon bones.",
 				"You've chosen the 'Bone Ballista Skelies' perk. You can now make (max 1) bone ballista skeleton out of demon bones.");
+		public static const SkeletonHighLord:PerkType = mk("Skeleton High Lord", "Skeleton High Lord",
+				"You may now control additional 9 normal and 2 large skeletons of each type. Allows you to save 40% of skeletons SF/Mana costs.",
+				"You've chosen the 'Skeleton High Lord' perk. You may now control additional 9 normal and 2 large skeletons of each type. Allows you to save 40% of skeletons SF/Mana costs.");
+		public static const SkeletonKing:PerkType = mk("Skeleton King", "Skeleton King",
+				"You may now control additional 18 normal and 3 large skeletons of each type. Allows you to levitate all skeletons.",
+				"You've chosen the 'Skeleton King' perk. You may now control additional 18 normal and 3 large skeletons of each type. Allows you to levitate all skeletons.");
+		public static const SkeletonOverlord:PerkType = mk("Skeleton Overlord", "Skeleton Overlord",
+				"You may now control additional 30 normal and 4 large skeletons of each type. Allows you to levitate all skeletons.",
+				"You've chosen the 'Skeleton Overlord' perk. You may now control additional 30 normal and 4 large skeletons of each type. Allows you to levitate all skeletons.");
+	//	public static const SkeletonOverlord:PerkType = mk("Skeleton Overlord", "Skeleton Overlord",
+	//			"You may now control additional 30 normal and 4 large skeletons of each type. Allows you to levitate all skeletons.",
+	//			"You've chosen the 'Skeleton Emperor / Monarch / Sovereign' perk. You may now control additional 30 normal and 4 large skeletons of each type. Allows you to levitate all skeletons.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -8773,7 +8785,7 @@ public class PerkLib
             FirstAttackGolems.requireLevel(24)
                     .requirePerk(MasterGolemMaker);
             FirstAttackSkeletons.requireLevel(24)
-                    .requirePerks(SkeletonLord);
+                    .requirePerk(SkeletonLord);
             GoblinatusGraduate.requireLevel(24)
                     .requirePerk(SimplifiedInterface)
                     .requireInt(75)
@@ -8907,6 +8919,10 @@ public class PerkLib
                     .requireInt(125)
                     .requireWis(125)
                     .requirePerk(MasterGolemMaker);
+            SkeletonHighLord.requirePerks(SkeletonLord, BoneEfficiency)
+					.requireLevel(36)
+                    .requireInt(150)
+                    .requireWis(150);
             MotivationSu.requireLevel(36)
                     .requirePerk(MotivationEx);//.requirePerk(AdvancedLeadership)
             AdvancedAllRounderEducation.requireLevel(36)

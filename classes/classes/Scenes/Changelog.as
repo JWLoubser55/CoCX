@@ -229,6 +229,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 misc lvl-up perk: Boney Bag. Req. Greatest Harvest perk, 85+ intelligence and 100+ wisdom. Effect: Increase limit of stored demonic bones by 100.\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Efficiency. Req. Greatest Harvest perk, 110+ int, 110+ wis. Effect: You improved efficiency of making skeletons leading to less wasted bones or SF/Mana. (-50% costs)\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Giants. Req. Boney Bow OR Boney Wand perk, 100+ intelligence and 100+ wisdom. Effect: You can now make (max 1) skeleton giant out of demon bones.\n");
+			outputText("-New tier 4 misc lvl-up perk: Gigachad Skeletal Mages. Req. Boney Wand perk, 120+ intelligence and 120+ wisdom. Effect: You can now make (max 1) gigachad skeleton mage out of demon bones.\n");
+			outputText("-New tier 4 misc lvl-up perk: Bone Ballista Skelies. Req. Boney Bow perk, 120+ intelligence and 120+ wisdom. Effect: You can now make (max 1) bone ballista skeleton out of demon bones.\n");
 			outputText("-New tier 5 misc lvl-up perk: Bone Cohort. Req. Bone Century perk, 125+ int, 125+ wis. Effect: You may now control up to 24 normal size skeletons of each type.\n");
 			outputText("-New tier 7 misc lvl-up perk: Bone Legion. Req. Bone Cohort perk, 175+ int, 175+ wis. Effect: You may now control up to 48 normal size skeletons of each type.\n");
 			outputText("-Skeleton Lord perk effect changed to grant only 3 normal and 1 large more skeletons of each type. Also it's now tier 2 mis perk and req. changed to Job: Haruspex perk, 50+ int, 50+ wis.\n");
@@ -236,14 +238,12 @@ public class Changelog extends BaseContent
 			outputText("-First Attack: Skeletons perk tier was changed (9 > 4) and req. now only Skeleton Lord perk.\n");
 			outputText("-Prestige Job: Necromancer req. for Job: Golemancer replaced by Skeleton Lord. Bone Soul perk tier lowered by 1.\n");
 			outputText("-Bone Soul perk effects slight changed: max bones stored increased to +150, max cap of bonus spellpower from having over 50 bones increased to +300%.\n");
-			outputText("-New tier 4 misc lvl-up perk: Gigachad Skeletal Mages. Req. Boney Wand perk, 120+ intelligence and 120+ wisdom. Effect: You can now make (max 1) gigachad skeleton mage out of demon bones.\n");
 			outputText("-New UI + other changes. (aimozg)\n");
 			outputText("-New Combat UI. (aimozg)\n");
-			outputText("-New tier 4 misc lvl-up perk: Bone Ballista Skelies. Req. Boney Bow perk, 120+ intelligence and 120+ wisdom. Effect: You can now make (max 1) bone ballista skeleton out of demon bones.\n");
 			outputText("-When below lvl 32 Giacomo selling Pure Peaches for Hollowfied PC's.\n");
-			outputText("-Necro set when completed increase all large sized skeletons control by 1.\n");
-			outputText("-Skeleton Giant ignore enemy DR. Bone Ballista Skellies deal increased damage to enemy groups or large enemies. Gigachad Skeletal Mages can have selected elemental damage they deal out of combat between any not complex element or pure magic damage.\n");
-			outputText("-\n");
+			outputText("-Necro set when completed increase all large sized skeletons control by 1. Each piece of Necro set would add now 3 to each normal sized skeletons caps.\n");
+			outputText("-Skeleton Giant ignore enemy DR. Bone Ballista Skelies deal increased damage to enemy groups or large enemies. Gigachad Skeletal Mages can have selected elemental damage they deal out of combat between any not complex element or pure magic damage.\n");
+			outputText("-New tier 6 misc lvl-up perk: Skeleton High Lord. Req. Skeleton Lord and Bone Efficiency perks, 150+ int, 150+ wis. Effect: You may now control additional 9 normal and 2 large skeletons of each type. Allows you to save 40% of skeletons SF/Mana costs.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

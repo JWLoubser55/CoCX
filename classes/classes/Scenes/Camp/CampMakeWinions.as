@@ -2167,6 +2167,9 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.BoneCentury)) maxSkeletonWarriorsCounter += 6;
 			if (player.hasPerk(PerkLib.BoneCohort)) maxSkeletonWarriorsCounter += 12;
 			if (player.hasPerk(PerkLib.BoneLegion)) maxSkeletonWarriorsCounter += 24;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonWarriorsCounter += 9;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonWarriorsCounter += 18;
+			// (player.hasPerk(PerkLib.SkeletonOverlord))  += 30;
 			if (player.weapon == weapons.NECROWA) maxSkeletonWarriorsCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonWarriorsCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonWarriorsCounter += 1;
@@ -2180,6 +2183,9 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.BoneCentury)) maxSkeletonArchersCounter += 6;
 			if (player.hasPerk(PerkLib.BoneCohort)) maxSkeletonArchersCounter += 12;
 			if (player.hasPerk(PerkLib.BoneLegion)) maxSkeletonArchersCounter += 24;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonArchersCounter += 9;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonArchersCounter += 18;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxSkeletonArchersCounter += 30;
 			if (player.weapon == weapons.NECROWA) maxSkeletonArchersCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonArchersCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonArchersCounter += 1;
@@ -2193,6 +2199,9 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.BoneCentury)) maxSkeletonMagesCounter += 6;
 			if (player.hasPerk(PerkLib.BoneCohort)) maxSkeletonMagesCounter += 12;
 			if (player.hasPerk(PerkLib.BoneLegion)) maxSkeletonMagesCounter += 24;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonMagesCounter += 9;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonMagesCounter += 18;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxSkeletonMagesCounter += 30;
 			if (player.weapon == weapons.NECROWA) maxSkeletonMagesCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonMagesCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonMagesCounter += 1;
@@ -2203,6 +2212,9 @@ public class CampMakeWinions extends BaseContent
 			var maxSkeletonGiantsCounter:Number = 0;
 			if (player.hasPerk(PerkLib.BoneGiants)) maxSkeletonGiantsCounter += 1;
 			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonGiantsCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonGiantsCounter += 2;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonGiantsCounter += 3;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxSkeletonGiantsCounter += 4;
 			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxSkeletonGiantsCounter += 1;
 			return maxSkeletonGiantsCounter;
 		}
@@ -2210,6 +2222,9 @@ public class CampMakeWinions extends BaseContent
 			var maxBoneBallistaSkeletonsCounter:Number = 0;
 			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) maxBoneBallistaSkeletonsCounter += 1;
 			if (player.hasPerk(PerkLib.SkeletonLord)) maxBoneBallistaSkeletonsCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxBoneBallistaSkeletonsCounter += 2;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxBoneBallistaSkeletonsCounter += 3;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxBoneBallistaSkeletonsCounter += 4;
 			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxBoneBallistaSkeletonsCounter += 1;
 			return maxBoneBallistaSkeletonsCounter;
 		}
@@ -2217,6 +2232,9 @@ public class CampMakeWinions extends BaseContent
 			var maxSkeletonGigachadMagesCounter:Number = 0;
 			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) maxSkeletonGigachadMagesCounter += 1;
 			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonGigachadMagesCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonGigachadMagesCounter += 2;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonGigachadMagesCounter += 3;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxSkeletonGigachadMagesCounter += 4;
 			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxSkeletonGigachadMagesCounter += 1;
 			return maxSkeletonGigachadMagesCounter;
 		}
@@ -2228,6 +2246,7 @@ public class CampMakeWinions extends BaseContent
 		private function resourcesUsedToMakeNormalSkeleton():Number {
 			var resourcesUsedToMakeNormalSkely:Number = 5000;
 			if (player.hasPerk(PerkLib.BoneEfficiency)) resourcesUsedToMakeNormalSkely -= 2500;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) resourcesUsedToMakeNormalSkely -= 2000;
 			return resourcesUsedToMakeNormalSkely;
 		}
 		public function bonesUsedToMakeLargeSkeleton():Number {
@@ -2238,6 +2257,7 @@ public class CampMakeWinions extends BaseContent
 		private function resourcesUsedToMakeLargeSkeleton():Number {
 			var resourcesUsedToMakeLargeSkely:Number = 12500;
 			if (player.hasPerk(PerkLib.BoneEfficiency)) resourcesUsedToMakeLargeSkely -= 6250;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) resourcesUsedToMakeLargeSkely -= 5000;
 			return resourcesUsedToMakeLargeSkely;
 		}
 
@@ -2462,7 +2482,7 @@ public class CampMakeWinions extends BaseContent
 			addButton(14, "Back", camp.campWinionsArmySim);
 		}
 		private function selectGigachadElement(element:Number):void {
-			player.setPerkValue(PerkLib.GigachadSkeletalMages, 2, 0);
+			player.setPerkValue(PerkLib.GigachadSkeletalMages, 2, element);
 			doNext(chooseGigachadMagesElement);
 		}
 		public function fixinSkeletonGiants():void {
