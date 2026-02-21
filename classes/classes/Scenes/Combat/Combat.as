@@ -19702,8 +19702,8 @@ public function sendSkeletonToFight():void {
 	while (sSWTF-->0) doMinionPhysDamage(damage, true, true);
     if ((!monster.isFlying() || player.hasPerk(PerkLib.SkeletonLord)) && player.hasPerk(PerkLib.BoneGiants) && player.perkv1(PerkLib.BoneGiants) > 0) {
 		outputText("\n\nYour skeleton giant"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "their":"his")+" fist"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" around. ");
-		var sSGTF:Number = (player.perkv1(PerkLib.BoneGiants)*2);
-		while (sSGTF-->0) doMinionPhysDamage((damage*2), true, true);
+		var sSGTF:Number = (player.perkv1(PerkLib.BoneGiants)*4);
+		while (sSGTF-->0) doMinionPhysDamage((damage*2), true, true, true);
 	}
     if (player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) > 0) {
 		outputText("\n\nYour archer"+(player.perkv1(PerkLib.BoneyBow) > 1 ? "s":"")+" unleashing a volley of arrows. ");
@@ -19713,7 +19713,11 @@ public function sendSkeletonToFight():void {
     if (player.hasPerk(PerkLib.BoneBallistaSkelies) && player.perkv1(PerkLib.BoneBallistaSkelies) > 0) {
 		outputText("\n\nYour bone ballista skeleton"+(player.perkv1(PerkLib.BoneBallistaSkelies) > 1 ? "s":"")+" unleashing a volley of ballista bolts. ");
 		var sBBSTF:Number = player.perkv1(PerkLib.BoneBallistaSkelies);
-		while (sBBSTF-->0) doMinionPhysDamage((damage*4), true, true);
+		var dmgBallista:Number = 4;
+		if (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyHugeType)) dmgBallista += 4;
+		if (monster.hasPerk(PerkLib.EnemyLargeGroupType) || monster.hasPerk(PerkLib.EnemyGigantType)) dmgBallista += 8;
+		if (monster.hasPerk(PerkLib.Enemy300Type) || monster.hasPerk(PerkLib.EnemyColossalType)) dmgBallista += 12;
+		while (sBBSTF-->0) doMinionPhysDamage((damage*dmgBallista), true, true);
     }
 	if (player.hasPerk(PerkLib.BoneyWand) && player.perkv1(PerkLib.BoneyWand) > 0) {
 		outputText("\n\nYour skeletal mage"+(player.perkv1(PerkLib.BoneyWand) > 1 ? "s":"")+" unleashing a barrage of magic missiles. ");
@@ -19723,7 +19727,18 @@ public function sendSkeletonToFight():void {
 	if (player.hasPerk(PerkLib.GigachadSkeletalMages) && player.perkv1(PerkLib.GigachadSkeletalMages) > 0) {
 		outputText("\n\nYour gigachad skeletal mage"+(player.perkv1(PerkLib.GigachadSkeletalMages) > 1 ? "s":"")+" unleashing a barrage of magic missiles. ");
 		var sGSMTF:Number = player.perkv1(PerkLib.GigachadSkeletalMages);
-		while (sGSMTF-->0) doMinionMagDamage((damage*4), true, true);
+		while (sGSMTF-->0) {
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 0) doMinionMagDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 1) doMinionFireDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 2) doMinionIceDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 3) doMinionLightningDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 4) doMinionDarknessDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 5) doMinionPoisonDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 6) doMinionWindDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 7) doMinionWaterDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 8) doMinionEarthDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 9) doMinionAcidDamage((damage*4), true, true);
+		}
 	}
     if (flags[kFLAGS.NECROMANCER_SKELETONS] == 0) outputText("\n\n");
     //checkAchievementDamage(damage);

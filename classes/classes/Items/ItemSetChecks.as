@@ -55,6 +55,14 @@ public function unequipNecroItemsSet():void {
 			player.addPerkValue(PerkLib.BoneGiants, 1, -1);
 			player.addPerkValue(PerkLib.JobHaruspex, 1, SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton());
 		}
+		if ((player.perkv1(PerkLib.BoneBallistaSkelies) - 1) > SceneLib.campMakeWinions.maxBoneBallistaSkeletons()) {
+			player.addPerkValue(PerkLib.BoneBallistaSkelies, 1, -1);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton());
+		}
+		if ((player.perkv1(PerkLib.GigachadSkeletalMages) - 1) > SceneLib.campMakeWinions.maxSkeletonGigachadMages()) {
+			player.addPerkValue(PerkLib.GigachadSkeletalMages, 1, -1);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton());
+		}
 	} else if (count == 1) {
 		player.removeStatusEffect(StatusEffects.BonusEffectsNecroSet);// 2 -> 1, remove 2 item bonus
 		if ((player.perkv2(PerkLib.JobHaruspex) - 2) > SceneLib.campMakeWinions.maxSkeletonWarriors()) {

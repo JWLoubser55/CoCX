@@ -2206,19 +2206,19 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxSkeletonGiantsCounter += 1;
 			return maxSkeletonGiantsCounter;
 		}
-		public function maxSkeletonGigachadMages():Number {
-			var maxSkeletonGigachadMagesCounter:Number = 0;
-			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) maxSkeletonGigachadMagesCounter += 1;
-			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonGigachadMagesCounter += 1;
-			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxSkeletonGigachadMagesCounter += 1;
-			return maxSkeletonGigachadMagesCounter;
-		}
 		public function maxBoneBallistaSkeletons():Number {
 			var maxBoneBallistaSkeletonsCounter:Number = 0;
 			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) maxBoneBallistaSkeletonsCounter += 1;
 			if (player.hasPerk(PerkLib.SkeletonLord)) maxBoneBallistaSkeletonsCounter += 1;
 			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxBoneBallistaSkeletonsCounter += 1;
 			return maxBoneBallistaSkeletonsCounter;
+		}
+		public function maxSkeletonGigachadMages():Number {
+			var maxSkeletonGigachadMagesCounter:Number = 0;
+			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) maxSkeletonGigachadMagesCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonGigachadMagesCounter += 1;
+			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxSkeletonGigachadMagesCounter += 1;
+			return maxSkeletonGigachadMagesCounter;
 		}
 		public function bonesUsedToMakeNormalSkeleton():Number {
 			var bonesUsedToMakeNormalSkely:Number = 20;
@@ -2248,9 +2248,9 @@ public class CampMakeWinions extends BaseContent
 			outputText("<b>Skeleton Warriors:</b> " + player.perkv2(PerkLib.JobHaruspex) + " / " + maxSkeletonWarriors() + "\n");
 			if (player.hasPerk(PerkLib.BoneyBow)) outputText("<b>Skeleton Archers:</b> " + player.perkv1(PerkLib.BoneyBow) + " / " + maxSkeletonArchers() + "\n");
 			if (player.hasPerk(PerkLib.BoneyWand)) outputText("<b>Skeleton Mages:</b> " + player.perkv1(PerkLib.BoneyWand) + " / " + maxSkeletonMages() + "\n");
-			if (player.hasPerk(PerkLib.BoneGiants)) outputText("<b>Skeleton Giants:</b> " + player.perkv1(PerkLib.BoneGiants) + " / " + maxSkeletonGiants() + "\n");
-			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) outputText("<b>Skeleton Gigachad Mages:</b> " + player.perkv1(PerkLib.GigachadSkeletalMages) + " / " + maxSkeletonGigachadMages() + "\n");
-			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) outputText("<b>Bone Ballista Skeletons:</b> " + player.perkv1(PerkLib.BoneBallistaSkelies) + " / " + maxBoneBallistaSkeletons() + "\n");
+			if (player.hasPerk(PerkLib.BoneGiants)) outputText("<b>Skeleton Giants:</b> " + player.perkv1(PerkLib.BoneGiants) + " / " + maxSkeletonGiants() + " (Ignoring enemy DR)\n");
+			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) outputText("<b>Bone Ballista Skeletons:</b> " + player.perkv1(PerkLib.BoneBallistaSkelies) + " / " + maxBoneBallistaSkeletons() + " (Extra damage to group or large sized enemies)\n");
+			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) outputText("<b>Skeleton Gigachad Mages:</b> " + player.perkv1(PerkLib.GigachadSkeletalMages) + " / " + maxSkeletonGigachadMages() + " (Can freely change elemental damage they deal)\n");
 			menu();
 			addButton(0, "C.Skeleton(W)", createSkeletonWarrior).hint("Create Skeleton Warrior.");
 			if (player.hasPerk(PerkLib.BoneyBow)) addButton(1, "C.Skeleton(A)", createSkeletonArcher).hint("Create Skeleton Archer.");
@@ -2259,10 +2259,16 @@ public class CampMakeWinions extends BaseContent
 			else addButtonDisabled(2, "???", "Req. Boney Wand perk to unlock this option.");
 			if (player.hasPerk(PerkLib.BoneGiants)) addButton(3, "C.Skeleton(G)", createSkeletonGiant).hint("Create Skeleton Giant.");
 			else addButtonDisabled(3, "???", "Req. Bone Giants perk to unlock this option.");
-			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) addButton(4, "C.Skeleton(GM)", createGigachadSkeletalMage).hint("Create Gigachad Skeletal Mage.");
-			else addButtonDisabled(4, "???", "Req. Gigachad Skeletal Mages perk to unlock this option.");
-			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) addButton(5, "C.Skeleton(BB)", createBoneBallistaSkeleton).hint("Create Bone Ballista Skeleton.");
-			else addButtonDisabled(5, "???", "Req. Bone Ballista perk to unlock this option.");
+			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) addButton(4, "C.Skeleton(BB)", createBoneBallistaSkeleton).hint("Create Bone Ballista Skeleton.");
+			else addButtonDisabled(4, "???", "Req. Bone Ballista perk to unlock this option.");
+			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) {
+				addButton(5, "C.Skeleton(GM)", createGigachadSkeletalMage).hint("Create Gigachad Skeletal Mage.");
+				addButton(13, "GigachadEle", chooseGigachadMagesElement).hint("Choose Element Gigachad Skeletal Mages would use.");
+			}
+			else {
+				addButtonDisabled(5, "???", "Req. Gigachad Skeletal Mages perk to unlock this option.");
+				addButtonDisabled(13, "???", "Req. Gigachad Skeletal Mages perk to unlock this option.");
+			}
 			addButton(14, "Back", camp.campWinionsArmySim);
 		}
 
@@ -2374,6 +2380,33 @@ public class CampMakeWinions extends BaseContent
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(20);
 		}
+		public function createBoneBallistaSkeleton():void {
+			clearOutput();
+			if (player.perkv1(PerkLib.BoneBallistaSkelies) >= maxBoneBallistaSkeletons()) {
+				outputText("You already have as many Bone Ballista Skeletons as you can realistically control.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if (player.perkv1(PerkLib.JobHaruspex) < bonesUsedToMakeLargeSkeleton()) {
+				outputText("You lack the required amount of demon bones ("+bonesUsedToMakeLargeSkeleton()+") to create a Bone Ballista Skeleton.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if ((player.soulforce < resourcesUsedToMakeLargeSkeleton()) && (player.mana < resourcesUsedToMakeLargeSkeleton())) {
+				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeLargeSkeleton()+") to create a Bone Ballista Skeleton.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeLargeSkeleton() && player.mana >= resourcesUsedToMakeLargeSkeleton())) player.mana -= resourcesUsedToMakeLargeSkeleton();
+			else player.soulforce -= resourcesUsedToMakeLargeSkeleton();
+			statScreenRefresh();
+			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a massive, 30-foot-tall shape. ");
+			outputText("As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Bone Ballista Skeleton, ready to fight and obey your every command.");
+			player.addPerkValue(PerkLib.BoneBallistaSkelies, 1, 1);
+			doNext(accessMakeSkeletonWinionsMainMenu);
+			advanceMinutes(20);
+		}
 		public function createGigachadSkeletalMage():void {
 			clearOutput();
 			if (player.perkv1(PerkLib.GigachadSkeletalMages) >= maxSkeletonGigachadMages()) {
@@ -2401,32 +2434,36 @@ public class CampMakeWinions extends BaseContent
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(20);
 		}
-		public function createBoneBallistaSkeleton():void {
+		public function chooseGigachadMagesElement():void {
 			clearOutput();
-			if (player.perkv1(PerkLib.BoneBallistaSkelies) >= maxBoneBallistaSkeletons()) {
-				outputText("You already have as many Bone Ballista Skeletons as you can realistically control.");
-				doNext(accessMakeSkeletonWinionsMainMenu);
-				return;
-			}
-			if (player.perkv1(PerkLib.JobHaruspex) < bonesUsedToMakeLargeSkeleton()) {
-				outputText("You lack the required amount of demon bones ("+bonesUsedToMakeLargeSkeleton()+") to create a Bone Ballista Skeleton.");
-				doNext(accessMakeSkeletonWinionsMainMenu);
-				return;
-			}
-			if ((player.soulforce < resourcesUsedToMakeLargeSkeleton()) && (player.mana < resourcesUsedToMakeLargeSkeleton())) {
-				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeLargeSkeleton()+") to create a Bone Ballista Skeleton.");
-				doNext(accessMakeSkeletonWinionsMainMenu);
-				return;
-			}
-			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());
-			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeLargeSkeleton() && player.mana >= resourcesUsedToMakeLargeSkeleton())) player.mana -= resourcesUsedToMakeLargeSkeleton();
-			else player.soulforce -= resourcesUsedToMakeLargeSkeleton();
-			statScreenRefresh();
-			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a massive, 30-foot-tall shape. ");
-			outputText("As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Bone Ballista Skeleton, ready to fight and obey your every command.");
-			player.addPerkValue(PerkLib.BoneBallistaSkelies, 1, 1);
-			doNext(accessMakeSkeletonWinionsMainMenu);
-			advanceMinutes(20);
+			outputText("Which element your Gigachad Skeletal Mage would use?\n\n");
+			outputText("Curretly used element: ");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 0) outputText(" Magic (no element)");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 1) outputText(" Fire");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 2) outputText(" Ice");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 3) outputText(" Lightning");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 4) outputText(" Darkness");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 5) outputText(" Poison");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 6) outputText(" Wind");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 7) outputText(" Water");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 8) outputText(" Earth");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 9) outputText(" Acid");
+			menu();
+			addButtonIfTrue(0, "None", curry(selectGigachadElement, 0), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 0, "Reset to just pure magic damage.");
+			addButtonIfTrue(1, "Fire", curry(selectGigachadElement, 1), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 1, "Select Fire element.");
+			addButtonIfTrue(2, "Ice", curry(selectGigachadElement, 2), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 2, "Select Ice element.");
+			addButtonIfTrue(3, "Lightning", curry(selectGigachadElement, 3), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 3, "Select Lightning element.");
+			addButtonIfTrue(4, "Darkness", curry(selectGigachadElement, 4), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 4, "Select Darkness element.");
+			addButtonIfTrue(5, "Poison", curry(selectGigachadElement, 5), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 5, "Select Poison element.");
+			addButtonIfTrue(6, "Wind", curry(selectGigachadElement, 6), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 6, "Select Wind element.");
+			addButtonIfTrue(7, "Water", curry(selectGigachadElement, 7), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 7, "Select Water element.");
+			addButtonIfTrue(8, "Earth", curry(selectGigachadElement, 8), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 8, "Select Earth element.");
+			addButtonIfTrue(9, "Acid", curry(selectGigachadElement, 9), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 9, "Select Acid element.");
+			addButton(14, "Back", camp.campWinionsArmySim);
+		}
+		private function selectGigachadElement(element:Number):void {
+			player.setPerkValue(PerkLib.GigachadSkeletalMages, 2, 0);
+			doNext(chooseGigachadMagesElement);
 		}
 		public function fixinSkeletonGiants():void {
 			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());

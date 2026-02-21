@@ -16,7 +16,7 @@ package classes.Items.Necklaces
 		
 		public function NecroNecklace() 
 		{
-			super("NecroNe", "necronecklace", "necro necklace", "a necro necklace", 0, 0, 1200, "A simple necklace made from bones. Increases the user's mastery over animated bone constructs. \n\nType: Jewelry (Necklace) \nBase value: 4,500 \nSpecial: Increases control over skeletons of any type by 1.", "Necklace");
+			super("NecroNe", "necronecklace", "necro necklace", "a necro necklace", 0, 0, 1200, "A simple necklace made from bones. Increases the user's mastery over animated bone constructs. \n\nType: Jewelry (Necklace) \nBase value: 4,500 \nSpecial: Increases control over skeletons of any normal size type by 2.", "Necklace");
 		}
 		
 		override public function afterEquip(doOutput:Boolean, slot:int):void {
