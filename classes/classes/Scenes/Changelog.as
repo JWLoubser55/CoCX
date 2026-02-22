@@ -244,7 +244,7 @@ public class Changelog extends BaseContent
 			outputText("-Necro set when completed increase all large sized skeletons control by 1. Each piece of Necro set would add now 3 to each normal sized skeletons caps.\n");
 			outputText("-Skeleton Giant ignore enemy DR. Bone Ballista Skelies deal increased damage to enemy groups or large enemies. Gigachad Skeletal Mages can have selected elemental damage they deal out of combat between any not complex element or pure magic damage.\n");
 			outputText("-New tier 6 misc lvl-up perk: Skeleton High Lord. Req. Skeleton Lord and Bone Efficiency perks, 150+ int, 150+ wis. Effect: You may now control additional 9 normal and 2 large skeletons of each type. Allows you to save 40% of skeletons SF/Mana costs.\n");
-			outputText("-\n");
+			outputText("-New tier 17 misc lvl-up perk: Wisp Brigadier General. Req. Wisp Colonel perk, 260+ in, 260+ wis and 21+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 60% (210% in total).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

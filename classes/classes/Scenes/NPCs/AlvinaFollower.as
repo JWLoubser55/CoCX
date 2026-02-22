@@ -1564,7 +1564,7 @@ public function alvinaCampTryACustomRitual():void {
 	CoC.instance.transformations.SkinPatternNone.applyEffect(false);
 	player.skinAdj = "flawless";
 	CoC.instance.transformations.FaceDemon.applyEffect(false);
-	player.eyes.type = Eyes.LICH;
+	CoC.instance.transformations.EyesLich.applyEffect(false);
 	CoC.instance.transformations.EyesChangeColor(["light blue"]).applyEffect(false);
 	CoC.instance.transformations.EarsHuman.applyEffect(false);
 	CoC.instance.transformations.HairHuman.applyEffect(false);
@@ -1572,9 +1572,9 @@ public function alvinaCampTryACustomRitual():void {
 	CoC.instance.transformations.TongueDemonic.applyEffect(false);
 	CoC.instance.transformations.HornsNone.applyEffect(false);
 	CoC.instance.transformations.AntennaeNone.applyEffect(false);
-	player.arms.type = Arms.LICH;
-	player.lowerBody = LowerBody.LICH;
-	player.wings.type = Wings.LEVITATION;
+	CoC.instance.transformations.ArmsLich.applyEffect(false);
+	CoC.instance.transformations.LowerBodyLich.applyEffect(false);
+	CoC.instance.transformations.WingsLevitation.applyEffect(false);
 	player.createPerk(PerkLib.Phylactery, 0, 0, 0, 0);
 	player.createPerk(PerkLib.UndeadLord, 1, 0, 0, 0);
 	player.createPerk(PerkLib.Undeath, 1, 0, 0, 0);

@@ -9515,6 +9515,7 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.WispCaptain)) elementalamplification += 0.3;
             if (player.hasPerk(PerkLib.WispMajor)) elementalamplification += 0.4;
             if (player.hasPerk(PerkLib.WispColonel)) elementalamplification += 0.5;
+			if (player.hasPerk(PerkLib.WispBrigadierGeneral)) elementalamplification += 0.6;
         }
         if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) elementalamplification += (1 - historyTacticianBonus());
         
@@ -19688,6 +19689,7 @@ public function sendSkeletonToFight():void {
         if (player.hasPerk(PerkLib.WispCaptain)) dmgamp += 0.3;
         if (player.hasPerk(PerkLib.WispMajor)) dmgamp += 0.4;
         if (player.hasPerk(PerkLib.WispColonel)) dmgamp += 0.5;
+		if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgamp += 0.6;
     }
     damage *= dmgamp;
 	if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet)) damage *= (1 + (0.1 * player.statusEffectv2(StatusEffects.BonusEffectsNecroSet)));
@@ -19789,6 +19791,7 @@ public function skeletonSmash():void {
         if (player.hasPerk(PerkLib.WispCaptain)) dmgamp += 0.3;
         if (player.hasPerk(PerkLib.WispMajor)) dmgamp += 0.4;
         if (player.hasPerk(PerkLib.WispColonel)) dmgamp += 0.5;
+		if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgamp += 0.6;
     }
     damage *= dmgamp;
 	if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet)) damage *= (1 + (0.1 * player.statusEffectv2(StatusEffects.BonusEffectsNecroSet)));

@@ -558,6 +558,17 @@ package classes.GeneticMemories {
 				return CoC.instance.transformations.EyesDeer;
 			}
 		});
+
+		public static const LICH:int = _partid++;
+		EnumValue.add(Memories, LICH, "LICH", {
+			id: "Lich Eyes",
+			name: "Lich Eyes",
+			cost: 100,
+			title: "Lich",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyesLich;
+			}
+		});
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

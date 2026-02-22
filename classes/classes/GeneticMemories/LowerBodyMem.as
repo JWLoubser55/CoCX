@@ -605,6 +605,13 @@ package classes.GeneticMemories {
           title: "Hollow Legs",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyHollow}});
 
+      public static const LICH: int = _partid++;
+      EnumValue.add(Memories, LICH, "LICH", {
+          id: "Lich Lower Body",name: "Lich Legs",
+          cost: 100,
+          title: "Lich Legs",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyLich}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

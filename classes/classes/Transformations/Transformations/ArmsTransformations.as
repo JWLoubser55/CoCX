@@ -1501,6 +1501,23 @@ public class ArmsTransformations extends MutationsHelper {
 				return player.arms.type === Arms.HOLLOW;
 			}
 	);
+
+	public const ArmsLich: Transformation = new SimpleTransformation("Lich Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.arms.type = Arms.SHROOM_ARMS;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.LICH));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.LICH;
+			}
+	);
 	/*
   */
 }

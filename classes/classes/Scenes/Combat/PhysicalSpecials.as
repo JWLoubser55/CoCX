@@ -3127,6 +3127,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (player.hasPerk(PerkLib.WispCaptain)) dmgAmp += 0.3;
 				if (player.hasPerk(PerkLib.WispMajor)) dmgAmp += 0.4;
 				if (player.hasPerk(PerkLib.WispColonel)) dmgAmp += 0.5;
+				if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgAmp += 0.6;
 			}
 			
 			if (dmgType == 2){
@@ -3339,6 +3340,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.WispCaptain)) dmgAMP += 0.3;
 			if (player.hasPerk(PerkLib.WispMajor)) dmgAMP += 0.4;
 			if (player.hasPerk(PerkLib.WispColonel)) dmgAMP += 0.5;
+			if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgAMP += 0.6;
 		}
 		if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) dmgAMP += (1 - combat.historyTacticianBonus());
 		return dmgAMP;
@@ -3733,6 +3735,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.WispCaptain)) dmgamp += 0.3;
 			if (player.hasPerk(PerkLib.WispMajor)) dmgamp += 0.4;
 			if (player.hasPerk(PerkLib.WispColonel)) dmgamp += 0.5;
+			if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgamp += 0.6;
 		}
 		if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) dmgamp += (1 - combat.historyTacticianBonus());
 		return dmgamp;
@@ -8381,3 +8384,4 @@ public class PhysicalSpecials extends BaseCombatContent {
 }
 
 }
+

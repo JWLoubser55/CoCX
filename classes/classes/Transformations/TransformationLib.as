@@ -195,7 +195,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const ArmsYggdrasil: Transformation 			= arms.ArmsYggdrasil.registerTf(AS_ARMS, AE_YGGDRASIL);
     public const ArmsWerespider: Transformation 		= arms.ArmsWerespider.registerTf(AS_ARMS, AE_WERESPIDER);
     public const ArmsMarilith: Transformation 			= arms.ArmsMarilith.registerTf(AS_ARMS, AE_MARILITH);
-    public const ArmsHollow: Transformation 			= arms.ArmsHollow.registerTf(AS_ARMS, AE_HOLLOW)
+    public const ArmsHollow: Transformation 			= arms.ArmsHollow.registerTf(AS_ARMS, AE_HOLLOW);
+    public const ArmsLich: Transformation 				= arms.ArmsLich.registerTf(AS_ARMS, AE_LICH);
 
 
 //ASS
@@ -483,6 +484,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const EyesWerespider: Transformation		= eyes.EyesWerespider.registerTf(AS_EYES, AE_WERESPIDER);
 	public const EyesHollow: Transformation			= eyes.EyesHollow.registerTf(AS_EYES, AE_HOLLOW);
 	public const EyesDeer: Transformation			= eyes.EyesDeer.registerTf(AS_EYES, AE_DEER);
+	public const EyesLich: Transformation			= eyes.EyesLich.registerTf(AS_EYES, AE_LICH);
 //=================================
 //                                =
 //   EYE COLORS                   =
@@ -834,6 +836,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const LowerBodyMechanicalDoll:Transformation         = lowerBody.LowerBodyMechanicalDoll.registerTf(AS_LEGS, AE_AUTOMATA);
     public const LowerBodyWerespider: Transformation 			= lowerBody.LowerBodyWerespider.registerTf(AS_LEGS, AE_WERESPIDER);
     public const LowerBodyHollow: Transformation 				= lowerBody.LowerBodyHollow.registerTf(AS_LEGS, AE_HOLLOW);
+    public const LowerBodyLich: Transformation 					= lowerBody.LowerBodyLich.registerTf(AS_LEGS, AE_LICH);
 
 
 //OTHER ( SPECIAL )

@@ -3776,10 +3776,10 @@ public class PerkLib
 				"You've chosen the 'Whistles' perk, gaining +20% fatigue recovery rate.");
 		public static const WisenedHealer:PerkType = mk("Wisened Healer", "Wizened Healer",
 				"Adds wisdom based scaling to healing spells at cost of doubling spells costs.",
-				"You've chosen the 'Wizened Healer' perk. Increasing healing spells effects based on current wisdom.");/*
+				"You've chosen the 'Wizened Healer' perk. Increasing healing spells effects based on current wisdom.");
 		public static const WispBrigadierGeneral:PerkType = mk("Wisp Brigadier General", "Wisp Brigadier General",
 				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 60% (210% in total).",
-				"You've chosen the 'Wisp Brigadier General' perk, training your wisp to Wisp Brigadier General.");*/
+				"You've chosen the 'Wisp Brigadier General' perk, training your wisp to Wisp Brigadier General.");
 		public static const WispCaptain:PerkType = mk("Wisp Captain", "Wisp Captain",
 				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 30% (60% in total).",
 				"You've chosen the 'Wisp Captain' perk, training your wisp to Wisp Captain.");
@@ -5583,7 +5583,7 @@ public class PerkLib
 			//[WeaponSmallDoubleAttack, WeaponSmallTripleAttack, WeaponSmallQuadrupleAttack, WeaponSmallPentaAttack, WeaponSmallHexaAttack,
 			//	WeaponSmallHectaAttack, WeaponSmallOctaAttack, WeaponSmallNonaAttack, WeaponSmallDecaAttack],
 			[Whistles, LyingDown, TakingABreak, SkippingWork, Napping, ZZZ],
-			[WispLieutenant, WispCaptain, WispMajor, WispColonel],
+			[WispLieutenant, WispCaptain, WispMajor, WispColonel, WispBrigadierGeneral],
 			[Wizened, PathOfEnlightenment, Embodiment, InControl, Metamorphable, SoulPowered],
 			// special sections
 			[EpicIntelligence, LegendaryIntelligence, MythicalIntelligence],
@@ -9214,6 +9214,13 @@ public class PerkLib
                     .requireInt(260)
                     .requireWis(260)
                     .requirePerks(GolemArmyColonel, LegendaryGolemMaker2ndCircle);
+            WispBrigadierGeneral.requireLevel(102)
+                    .requirePerk(WispColonel)
+					.requireInt(260)
+					.requireWis(260)
+					.requireCustomFunction(function (player:Player):Boolean {
+					return player.playerMinionsCount() >= 21;
+					}, "21+ pets/minions/tamed monsters");
 			Saturation.requireLevel(102)
 					.requirePerk(Refinement);
 			Metamorphable.requireLevel(102)

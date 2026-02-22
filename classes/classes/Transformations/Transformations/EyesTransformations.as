@@ -929,6 +929,22 @@ public class EyesTransformations extends MutationsHelper {
 				return player.eyes.type === Eyes.DEER;
 			}
 	);
+	
+	public const EyesLich: Transformation = new SimpleTransformation("Lich Eyes",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				player.eyes.type = Eyes.LICH;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.LICH));
+			},
+			// is present
+			function (): Boolean {
+				return player.eyes.type === Eyes.LICH;
+			}
+	);
 
 // EYE COLORS
 

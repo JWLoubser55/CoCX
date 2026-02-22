@@ -2522,6 +2522,22 @@ public class LowerBodyTransformations extends MutationsHelper {
 				return player.lowerBody === LowerBody.HOLLOW;
 			}
 	);
+
+	public const LowerBodyLich: Transformation = new SimpleTransformation("Lich lower body",
+		// apply effect
+		function (doOutput: Boolean): void {
+			if (doOutput) {
+				// No special text outside the event
+			}
+			player.legCount = 2;
+			player.lowerBody = LowerBody.LICH;
+			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.LICH));
+		},
+		// is present
+		function (): Boolean {
+			return player.lowerBody === LowerBody.LICH;
+		}
+	);
 	
 	/*
   */

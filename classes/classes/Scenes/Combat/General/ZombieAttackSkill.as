@@ -52,6 +52,7 @@ public class ZombieAttackSkill extends AbstractGeneral {
             if (player.hasPerk(PerkLib.WispCaptain)) zummyamplification += 0.3;
             if (player.hasPerk(PerkLib.WispMajor)) zummyamplification += 0.4;
             if (player.hasPerk(PerkLib.WispColonel)) zummyamplification += 0.5;
+            if (player.hasPerk(PerkLib.WispBrigadierGeneral)) zummyamplification += 0.6;
         }
 		//if (player.perkv2(PerkLib.MummyLord) > 0) zummyamplification *= 2;
         zummyDamage *= zummyamplification;
