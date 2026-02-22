@@ -43,7 +43,9 @@ public final class WeaponLib extends ItemConstants
 				PARACEL,
 				ASTERIUS,
 				ELYSIUM,
-				ANCIENTO
+				ANCIENTO,
+				PASHA__,
+				D_PASHA
 			];
 		}
 		public function LegendaryCorrupt():Array {
@@ -169,7 +171,7 @@ public final class WeaponLib extends ItemConstants
 				.withTag(W_WHIPPING)
 				.withEffect(IELib.Require_CorBelow, 33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3)
-				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon as Weapon;
+				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon;
 		public const B_FLYWHISK :Weapon = new BeautifulFlyWhisk();
 		public const B_SCARB:Weapon = new Weapon(
 				"B.ScarB", "B.ScarBlade", "broken scarred blade", "a broken scarred blade", "slash", 12, 480,
@@ -394,7 +396,7 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.LustDamage, 10, 1/8) as Weapon;
 		public const DEXCALI:Weapon = new Weapon(
 				"DExcalib", "DualExcalibur", "Dual Excalibur", "a Dual Excalibur", "slash", 40, 1600,
-				"A legendary dual swords said to have been made by Marae for her champion. Those weapon radiates divine power, purifying its wielder and protecting them from impurity.",
+				"A legendary dual swords said to have been made by Marae for her champion. Those weapons radiates divine power, purifying its wielder and protecting them from impurity.",
 				WT_SWORD, WSZ_MEDIUM, true)
 				.withEffect(IELib.Require_CorBelow, 33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3)
@@ -461,6 +463,15 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.Stun, 10)
 				.withEffect(IELib.ScaleAttack_Str, 75)
 				.withEffect(IELib.AttackBonus_Cor, 1/20) as Weapon;
+		public const D_PASHA:Weapon = new Weapon(
+				"DPasha", "DualPasha", "Dual Pasha", "a Dual Pasha", "whipping", 33, 1320,
+				"A legendary whip said to have been made by Marae for her champion.  The handle and transition knot are heavily decorated in gold and brass.  This weapon radiates divine power, purifying its wielder and protecting them from impurity.",
+				WT_WHIP, WSZ_MEDIUM, true)
+				.withBuffs({'teasedmg': 35})
+				.withTags(I_LEGENDARY, W_WHIPPING)
+				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.AttackBonus_Purity, 1/3)
+				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon;
 		public const D_WHAM_:Weapon = new Weapon(
 				"D.WHam", "D.WarHam", "dual huge warhammer", "a dual huge warhammer", "smash", 15, 2400,
 				"A pair of huge war-hammers made almost entirely of steel that only the strongest warriors could use.  Getting hit with this might stun the victim.",
@@ -773,6 +784,15 @@ public final class WeaponLib extends ItemConstants
 				"This is a simple pair of rusted pipe of unknown origins.  They're hefty and could probably be used as an effective bludgeoning tool.",
 				WT_MACE_HAMMER, WSZ_MEDIUM, true);
 		public const PARACEL:Weapon = new Paracelsus();
+		public const PASHA__:Weapon = new Weapon(
+				"Pasha", "Pasha", "Pasha", "a Pasha", "whipping", 33, 660,
+				"A legendary whip said to have been made by Marae for her champion.  The handle and transition knot are heavily decorated in gold and brass.  This weapon radiates divine power, purifying its wielder and protecting them from impurity.",
+				WT_WHIP, WSZ_MEDIUM)
+				.withBuffs({'teasedmg': 35})
+				.withTags(I_LEGENDARY, W_WHIPPING)
+				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.AttackBonus_Purity, 1/3)
+				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon;
 		public const PHALLUS:Weapon = new ThePhalluspear();
 		public const PHALUSS:Weapon = new ThePhalluspears();
 		public const PILEBUN:Weapon = new Weapon(
@@ -1241,7 +1261,8 @@ public final class WeaponLib extends ItemConstants
 			[NRSABER, TNRSABER],
 			[TRSABER, TTRSABER],
 			[PIPE, P_PIPE],
-			[TRIDAG, DTRIDAG]
+			[TRIDAG, DTRIDAG],
+			[PASHA__, D_PASHA]
 		]
 	}
 }

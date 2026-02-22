@@ -245,8 +245,8 @@ public class Changelog extends BaseContent
 			outputText("-Skeleton Giant ignore enemy DR. Bone Ballista Skelies deal increased damage to enemy groups or large enemies. Gigachad Skeletal Mages can have selected elemental damage they deal out of combat between any not complex element or pure magic damage.\n");
 			outputText("-New tier 6 misc lvl-up perk: Skeleton High Lord. Req. Skeleton Lord and Bone Efficiency perks, 150+ int, 150+ wis. Effect: You may now control additional 9 normal and 2 large skeletons of each type. Allows you to save 40% of skeletons SF/Mana costs.\n");
 			outputText("-New tier 17 misc lvl-up perk: Wisp Brigadier General. Req. Wisp Colonel perk, 260+ in, 260+ wis and 21+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 60% (210% in total).\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New pure legendary melee weapon (by Electra Simp): Pasha - obtainable by putting Beautiful Whip on restored Marae Altar and then taking it back. Base atk is 33, costing 660 gems, normal sized whip type wepaon with purity scaling and selfpurification effect.\n");
+			outputText("-New melee weapon (by Ormael): Dual Pasha - can be gained by combining 2x Pasha weapon. Cost 1600 gems. Base atk is 33. It's dual normal sized weapon belonging to whip type.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

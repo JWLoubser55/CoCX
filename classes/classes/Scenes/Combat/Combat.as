@@ -7981,7 +7981,7 @@ public class Combat extends BaseContent {
 					}
                     //Selfpurifying and Lust lowering weapons
                     if ((player.weapon == weapons.LHSCYTH || player.weapon == weapons.NPHBLDE) && player.cor > 10) dynStats("cor", -1);
-                    if (player.weapon == weapons.EXCALIB || player.weapon == weapons.DEXCALI || player.weapon == weapons.PARACEL) {
+                    if (player.weapon == weapons.EXCALIB || player.weapon == weapons.DEXCALI || player.weaponOff == weapons.PASHA__ || player.weaponOff == weapons.D_PASHA || player.weapon == weapons.PARACEL) {
                         if (player.cor > 10) dynStats("cor", -0.3);
                         var legendaryBeautifulWeaponsLustSelf:Number;
                         legendaryBeautifulWeaponsLustSelf = (rand(2) == 0) ? 0 : 1;
@@ -8546,7 +8546,7 @@ public class Combat extends BaseContent {
 					}
                     //Selfpurifying and Lust lowering weapons
                     if ((player.weaponOff == weapons.LHSCYTH || player.weaponOff == weapons.NPHBLDE) && player.cor > 10) dynStats("cor", -1);
-                    if (player.weaponOff == weapons.EXCALIB || player.weaponOff == weapons.DEXCALI || player.weaponOff == weapons.PARACEL) {
+                    if (player.weaponOff == weapons.EXCALIB || player.weaponOff == weapons.DEXCALI || player.weaponOff == weapons.PASHA__ || player.weaponOff == weapons.D_PASHA || player.weaponOff == weapons.PARACEL) {
                         if (player.cor > 10) dynStats("cor", -0.3);
                         var legendaryBeautifulWeaponsLustSelf:Number;
                         legendaryBeautifulWeaponsLustSelf = (rand(2) == 0) ? 0 : 1;

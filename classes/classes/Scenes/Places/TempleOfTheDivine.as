@@ -88,16 +88,21 @@ public class TempleOfTheDivine extends BaseContent {
 				if (player.statusEffectv1(StatusEffects.TempleOfTheDivineTracker2) == 2 || player.statusEffectv1(StatusEffects.TempleOfTheDivineTracker2) == 3) addButton(4, "Take Staff", takingParacelsusFromAltar);
 				if (player.hasItem(shields.BSHIELD, 1) || player.hasItem(shields.PRIDWEN, 1)) addButton(5, "Put Shield", puttingBShieldOrPridwenOnAltar);
 				if (player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker2) == 2 || player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker2) == 3) addButton(5, "Take Shield", takingPridwenFromAltar);
-				//6
+				if (player.hasItem(weapons.B_WHIP, 1) || player.hasItem(weapons.PASHA__, 1)) addButton(6, "Put Whip", puttingBWhipOrPashaOnAltar);
+				if (player.statusEffectv3(StatusEffects.TempleOfTheDivineTracker2) == 2 || player.statusEffectv3(StatusEffects.TempleOfTheDivineTracker2) == 3) addButton(6, "Take Whip", takingPashaFromAltar);
 				//7
+				//8
+				//9
 			}
 			else {
 				addButtonDisabled(2, "Pearl", "Req. PURE Marae");
 				addButtonDisabled(3, "Put Sword", "Req. PURE Marae");
 				addButtonDisabled(4, "Put Staff", "Req. PURE Marae");
 				addButtonDisabled(5, "Put Shield", "Req. PURE Marae");
-				//6
+				addButtonDisabled(6, "Put Whip", "Req. PURE Marae");
 				//7
+				//8
+				//9
 			}
 			addButton(10, "Sapphire", sapphire.sapphiremenu).hint("Have a chat with the gargoyle.");
 			if (flags[kFLAGS.ONYX_PATH] > 0) addButton(11, "[onyx name]", onyx.krystalonyxmenu).hint("Have a sex with [onyx name].");
@@ -506,6 +511,30 @@ public class TempleOfTheDivine extends BaseContent {
 			if (player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker2) == 3) player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 2, -2);
 			else player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 2, -1);
 			inventory.takeItem(shields.PRIDWEN, templeMainMenu);
+		}
+		
+		public function puttingBWhipOrPashaOnAltar():void {
+			clearOutput();
+			if (player.hasItem(weapons.B_WHIP, 1)) {
+				outputText("You feel a weird resonance engulf you, as the power of the Altar of Marae echos with an item on your person.\n\n");
+				outputText("Pulling out the Beautiful Whip, you notice the weapon is now shining with a dim white light. Curious, you place the weapon on the altar, and watch as the whip surges with power, the light seeming to be absorbed into the handle. The altar feels way more potent with the whip resting upon it. However, it occurs to you, such a weapon likely is a powerful artifact, and that as such, it could be useful in your battles against the demons.");
+				player.destroyItems(weapons.B_WHIP, 1);
+				if (player.hasStatusEffect(StatusEffects.TempleOfTheDivineTracker2)) player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 3, 2);
+				else player.createStatusEffect(StatusEffects.TempleOfTheDivineTracker2, 3, 0, 0, 0);
+			}
+			else {
+				outputText("The altar radiates with increased potency as the staff is put back on display.");
+				player.destroyItems(weapons.PASHA__, 1);
+				player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 3, 1);
+			}
+			doNext(templeMainMenu);
+		}
+		public function takingPashaFromAltar():void {
+			clearOutput();
+			outputText("You feel the power of the altar diminishing, however the weapon is stronger than ever and likely ready for its primary use, demon slaying.\n\n");
+			if (player.statusEffectv3(StatusEffects.TempleOfTheDivineTracker2) == 3) player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 3, -2);
+			else player.addStatusValue(StatusEffects.TempleOfTheDivineTracker2, 3, -1);
+			inventory.takeItem(weapons.PASHA__, templeMainMenu);
 		}
 		
 		public function puttingPurePearlOnAltar():void {
