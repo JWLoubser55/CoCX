@@ -164,7 +164,6 @@ public class CoC extends MovieClip
     public var currentText:String;
     public var oldStats:*; // I *think* this is a generic object
     public var inputManager:InputManager;
-    public var monkey:ChaosMonkey;
     public var testingBlockExiting:Boolean;
 
     public var kFLAGS_REF:*;
@@ -230,10 +229,6 @@ public class CoC extends MovieClip
         // cheat for the parser to be able to find kFLAGS
         // If you're not the parser, DON'T USE THIS
 
-        // This is a flag used to prevent the game from exiting when running under the automated tester
-        // (the chaos monkey)
-        testingBlockExiting = false;
-
         // Used for stopping chaos monkey on syntax errors. Separate flag so we can make stopping optional
         CoC_Settings.haltOnErrors = false;
 
@@ -291,8 +286,6 @@ public class CoC extends MovieClip
         this.images = new ImageManager(stage, mainView);
         this.inputManager = new InputManager(stage, mainView, false);
         new ControlBindings().run(inputManager);
-
-        this.monkey = new ChaosMonkey(this);
 
         //} endregion
 

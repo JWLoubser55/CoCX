@@ -1120,42 +1120,39 @@ public function saveGameObject(slot:String, isFile:Boolean):void
 	// Something to do in the future
 	if (isFile && !processingError)
 	{
-		if (!(CoC.instance.monkey.run))
+		//outputText(serializeToString(saveFile.data), true);
+		var bytes:ByteArray = new ByteArray();
+		bytes.writeObject(saveFile);
+		CONFIG::AIR
 		{
-			//outputText(serializeToString(saveFile.data), true);
-			var bytes:ByteArray = new ByteArray();
-			bytes.writeObject(saveFile);
-			CONFIG::AIR
+			// saved filename: "name of character".coc
+			var airSaveDir:File = File.documentsDirectory.resolvePath(savedGameDir);
+			var airFile:File = airSaveDir.resolvePath(player.short + ".coc");
+			var stream:FileStream = new FileStream();
+			try
 			{
-				// saved filename: "name of character".coc
-				var airSaveDir:File = File.documentsDirectory.resolvePath(savedGameDir);
-				var airFile:File = airSaveDir.resolvePath(player.short + ".coc");
-				var stream:FileStream = new FileStream();
-				try
-				{
-					airSaveDir.createDirectory();
-					stream.open(airFile, FileMode.WRITE);
-					stream.writeBytes(bytes);
-					stream.close();
-					clearOutput();
-					outputText("Saved to file: " + airFile.url);
-					doNext(playerMenu);
-				}
-				catch (error:Error)
-				{
-					backupAborted = true;
-					clearOutput();
-					outputText("Failed to write to file: " + airFile.url + " (" + error.message + ") Go to application and change CoC permission to allow storage of data");
-					doNext(playerMenu);
-				}
-			}
-			CONFIG::STANDALONE
-			{
-				file = new FileReference();
-				file.save(bytes, null);
+				airSaveDir.createDirectory();
+				stream.open(airFile, FileMode.WRITE);
+				stream.writeBytes(bytes);
+				stream.close();
 				clearOutput();
-				outputText("Attempted to save to file.");
+				outputText("Saved to file: " + airFile.url);
+				doNext(playerMenu);
 			}
+			catch (error:Error)
+			{
+				backupAborted = true;
+				clearOutput();
+				outputText("Failed to write to file: " + airFile.url + " (" + error.message + ") Go to application and change CoC permission to allow storage of data");
+				doNext(playerMenu);
+			}
+		}
+		CONFIG::STANDALONE
+		{
+			file = new FileReference();
+			file.save(bytes, null);
+			clearOutput();
+			outputText("Attempted to save to file.");
 		}
 	}
 	else if (!processingError)
@@ -1239,24 +1236,19 @@ public function restore(slotName:String):void
 
 public function onLoadFromFileClick():void
 {
-
-	// Block when running the chaos monkey
-	if (!(CoC.instance.monkey.run))
+	CONFIG::AIR
 	{
-		CONFIG::AIR
-		{
-			loadScreenAIR();
-		}
-		CONFIG::STANDALONE
-		{
-			file = new FileReference();
-			file.addEventListener(Event.SELECT, onFileSelected);
-			file.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
-			file.browse();
-		}
-		//var fileObj : Object = readObjectFromStringBytes("");
-		//loadGameFile(fileObj);
+		loadScreenAIR();
 	}
+	CONFIG::STANDALONE
+	{
+		file = new FileReference();
+		file.addEventListener(Event.SELECT, onFileSelected);
+		file.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+		file.browse();
+	}
+	//var fileObj : Object = readObjectFromStringBytes("");
+	//loadGameFile(fileObj);
 }
 
 

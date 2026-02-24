@@ -418,12 +418,6 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 
 		private function chooseName():void {
-			if (CoC.instance.testingBlockExiting) {
-				// We're running under the testing script.
-				// Stuff a name in the box and go go go
-				mainView.nameBox.text = "Derpy";
-				return;
-			}
 			if (mainView.nameBox.text == "") {
 				//If part of newgame+, don't fully wipe.
 				if (player.XP > 0 && SceneLib.exploration.counters.explore == 0) {
@@ -946,12 +940,6 @@ import classes.Scenes.Combat.CombatAbility;
 		//-----------------
 		private function setHeight():void {
 			clearOutput();
-			if (CoC.instance.testingBlockExiting)
-			{
-				// We're running under the testing script.
-				// Stuff a number in the box and go go go
-				mainView.nameBox.text = "69";
-			}
 			outputText("Set your height in inches.");
 			outputText("\nYou can choose any height between 4 feet (48 inches) and 8 feet (96 inches).");
 			mainView.nameBox.visible = true;
