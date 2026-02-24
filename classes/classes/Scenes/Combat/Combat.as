@@ -19739,7 +19739,13 @@ public function sendSkeletonToFight():void {
 			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 6) doMinionWindDamage((damage*4), true, true);
 			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 7) doMinionWaterDamage((damage*4), true, true);
 			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 8) doMinionEarthDamage((damage*4), true, true);
-			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 9) doMinionAcidDamage((damage*4), true, true);
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 9) doMinionAcidDamage((damage*4), true, true);/*
+			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
+				var damage1:Number = (damage*4);
+				damage1 = darknessTypeDamageBonus(damage1);
+				damage1 *= darknessDamageBoostedByDao();
+				doMinionDarknessDamage(damage1, true, true);
+			}*/
 		}
 	}
     if (flags[kFLAGS.NECROMANCER_SKELETONS] == 0) outputText("\n\n");

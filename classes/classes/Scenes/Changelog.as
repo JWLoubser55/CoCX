@@ -247,8 +247,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 17 misc lvl-up perk: Wisp Brigadier General. Req. Wisp Colonel perk, 260+ in, 260+ wis and 21+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 60% (210% in total).\n");
 			outputText("-New pure legendary melee weapon (by Electra Simp): Pasha - obtainable by putting Beautiful Whip on restored Marae Altar and then taking it back. Base atk is 33, costing 660 gems, normal sized whip type wepaon with purity scaling and selfpurification effect.\n");
 			outputText("-New melee weapon (by Ormael): Dual Pasha - can be gained by combining 2x Pasha weapon. Cost 1600 gems. Base atk is 33. It's dual normal sized weapon belonging to whip type.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New Sprite for Alvina by Liadri.\n");
+			outputText("-\n");//New pure legendary range weapon (by Brother Five Burning Steps): Failnaught - obtainable by putting Beautiful Bow on restored Marae Altar and then taking it back. 
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -16,7 +16,8 @@ public final class WeaponRangeLib extends ItemConstants
 			return [
 				ARTEMIS,
 				KSLHARP,
-				GOODSAM
+				GOODSAM//,
+				//FAILNAU
 			]
 		}
 		public function LegendaryCorrupt():Array {
@@ -42,6 +43,7 @@ public final class WeaponRangeLib extends ItemConstants
 		public const BADOMEN:BadOmen = new BadOmen();
 		public const BADOMENS:BadOmens = new BadOmens();
 		public const BEA_BOW:BeautifulBow = new BeautifulBow();
+		//public const FAILNAU:Failnaught = new ();
 		public const B_F_BOW:BFBow = new BFBow();
 		public const BFXBOW_:WeaponRange = new WeaponRange("BFXBow", "BFXBow", "big fucking crossbow", "a big fucking crossbow", "shot", 60, 3000, "Big Fucking Crossbow - the best solution for a tiny e-pen complex at this side of the Mareth!", WT_CROSSBOW).withBuffs({'rangedaccuracy':+60}) as WeaponRange;
 		public const BLUNDER:WeaponRange = new WeaponRange("Blunder", "Blunderbuss", "blunderbuss rifle", "a blunderbuss rifle", "shot", 16, 590, "This is a blunderbuss rifle. It's effective at short range but poor at long range.\n\nGoblin Mech Compatible", WT_RIFLE);

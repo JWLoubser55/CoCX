@@ -64,7 +64,6 @@ public class ZombieAttackSkill extends AbstractGeneral {
 		var zummyDamage1:Number = calcDamage(monster);
 		zummyDamage1 = combat.darknessTypeDamageBonus(zummyDamage1);
 		zummyDamage1 *= combat.darknessDamageBoostedByDao();
-
 		return Math.round(zummyDamage1);
 	}
 
@@ -85,14 +84,14 @@ public class ZombieAttackSkill extends AbstractGeneral {
 		damage = Math.round(damage);
 
 		if (display) outputText("\n\nYour zombie servants swarm, punch and bite at [themonster] trying to immobilize it so they can feast on [monster his] energy. ");
-		doPhysicalDamage(damage, true, display);
+		doMinionPhysDamage(damage, true, display);
 		if (display) {
 			if (crit) outputText(" <b>Critical! </b>");
 			if (!player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) outputText("\n\n");
 		}
 		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
 			outputText(" ");
-			doDarknessDamage(calcDamage1(monster), true, display);
+			doMinionDarknessDamage(calcDamage1(monster), true, display);
 			if (display) outputText("\n\n");
 		}
     }
