@@ -12,10 +12,10 @@ package classes
 		public static function footInchOrMetres(inches:Number, precision:int = 2):String
 		{
 			var pHeight:String = "";
-			if (CoC.instance.flags[kFLAGS.USE_METRICS] == 1){
+			if (CoC.instance.settings.useMetrics == 1){
 				pHeight = (Math.round(inches * 2.54) / Math.pow(10, precision)).toFixed(precision) + " metres";
 			}
-			else if (CoC.instance.flags[kFLAGS.USE_METRICS] == 0){
+			else if (CoC.instance.settings.useMetrics == 0){
 				pHeight = Math.floor(inches / 12) + " foot"
 				if (inches % 12 > 0){
 					pHeight = pHeight + " " +  inches % 12 + " inch";
@@ -34,7 +34,7 @@ package classes
 		{
 			if (inches < 1) return inchesOrCentimetres(inches);
 			var value:int = Math.round(inches);
-			if (CoC.instance.flags[kFLAGS.USE_METRICS] == 1) {
+			if (CoC.instance.settings.useMetrics == 1) {
 				value = Math.round(inches * 2.54);
 				return Utils.num2Text(value) + (value === 1 ? " centimetre" : " centimetres");
 			}
@@ -45,18 +45,18 @@ package classes
 		public static function inchesOrCentimetres(inches:Number, precision:int = 1):String
 		{
 			var value:Number = Math.round(inchToCm(inches) * Math.pow(10, precision)) / Math.pow(10, precision);
-			var text:String = value.toString() + (CoC.instance.flags[kFLAGS.USE_METRICS] == 1 ? " centimetre" : " inch");
+			var text:String = value.toString() + (CoC.instance.settings.useMetrics == 1 ? " centimetre" : " inch");
 			if (value === 1) return text;
-			return text + (CoC.instance.flags[kFLAGS.USE_METRICS] == 1 ? "s" : "es");
+			return text + (CoC.instance.settings.useMetrics == 1 ? "s" : "es");
 		}
 		public static function shortSuffix(inches:Number, precision:int = 1):String
 		{
 			var value:Number = Math.round(inchToCm(inches) * Math.pow(10, precision)) / Math.pow(10, precision);
-			return value.toString() + (CoC.instance.flags[kFLAGS.USE_METRICS]  == 1 ? "-cm" : "-inch");
+			return value.toString() + (CoC.instance.settings.useMetrics  == 1 ? "-cm" : "-inch");
 		}
 		public static function inchToCm(inches:Number):Number
 		{
-			return CoC.instance.flags[kFLAGS.USE_METRICS] == 1 ? inches * 2.54 : inches;
+			return CoC.instance.settings.useMetrics == 1 ? inches * 2.54 : inches;
 		}
 	}
 }

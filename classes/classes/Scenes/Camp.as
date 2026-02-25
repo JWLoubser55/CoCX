@@ -4973,7 +4973,7 @@ public class Camp extends NPCAwareContent{
 		hideMenus();
 		clearOutput();
 		outputText("Which place would you like to visit?\n");
-		if (flags[kFLAGS.EXPLORE_MENU_STYLE] == 1) {
+		if (settings.exploreMenuStyle == 1) {
 			oldPlacesMenu();
 			return;
 		}
@@ -5871,7 +5871,7 @@ public function rebirthFromBadEnd():void {
 					mainView.levelButton.icon("Up");
 					mainView.levelButton.toolTipText = getLevelUpStatsForButton();
 				}
-				if (flags[kFLAGS.AUTO_LEVEL] > 0 && allowAutoLevelTransition) {
+				if (settings.autoLevel > 0 && allowAutoLevelTransition) {
 					CoC.instance.playerInfo.levelUpMenu();
 					return true; //True indicates that you should be routed to level-up.
 				}

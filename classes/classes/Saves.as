@@ -553,6 +553,7 @@ public function savePermObject(isFile:Boolean):void {
 				saveFile.data.achievements[i] = achievements[i];
 			}
 		}
+		saveFile.data.settings = settings.saveToObject();
         if (CoC.instance.permObjVersionID != 0)
             saveFile.data.permObjVersionID = CoC.instance.permObjVersionID;
     }
@@ -590,6 +591,9 @@ public function loadPermObject():void {
             CoC.instance.permObjVersionID = saveFile.data.permObjVersionID;
             trace("Found internal permObjVersionID:", CoC.instance.permObjVersionID);
         }
+		if (saveFile.data.settings) {
+			settings.loadFromObject(saveFile.data.settings, true);
+		}
 
 		if (CoC.instance.permObjVersionID < 1039900) {
             // apply fix for issue #337 (Wrong IDs in kACHIEVEMENTS conflicting with other achievements)

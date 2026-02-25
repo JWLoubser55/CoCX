@@ -262,7 +262,7 @@ public class StatsView extends Block {
 	override public function set visible(value:Boolean):void {
 		if (visible != value) {
 			for each (var sb:StatBar in allStats) {
-				sb.animate = value && (CoC.instance.flags[kFLAGS.STATBAR_ANIMATIONS] == 0);
+				sb.animate = value && (CoC.instance.settings.statbarAnimations == 0);
 			}
 			if (_useNewStatsView) {
 				this.newStatsView.visible = value;
@@ -379,15 +379,15 @@ public class StatsView extends Block {
 		senBar.maxValue       = player.sens;
 		senBar.value          = player.effectiveSensitivity();
 		corBar.value          = player.cor;
-		var hpPercent:Boolean = game.flags[kFLAGS.HP_STATBAR_PERCENTAGE] == 1;
+		var hpPercent:Boolean = game.settings.hpStatbarPercentage == 1;
 		hpBar.maxValue        = player.maxHP();
 		hpBar.value           = player.HP;
 		hpBar.percentage	  = hpPercent;
-		var wrathPercent:Boolean = game.flags[kFLAGS.WRATH_STATBAR_PERCENTAGE] == 1;
+		var wrathPercent:Boolean = game.settings.wrathStatbarPercentage == 1;
 		wrathBar.maxValue 	  = player.maxWrath();
 		wrathBar.value    	  = player.wrath;
 		wrathBar.percentage	  = wrathPercent;
-		var lustPercent:Boolean = game.flags[kFLAGS.LUST_STATBAR_PERCENTAGE] == 1;
+		var lustPercent:Boolean = game.settings.lustStatbarPercentage == 1;
 		lustBar.maxValue      = player.maxLust();
 		lustBar.minValue      = player.minLust();
 		lustBar.percentage	  = lustPercent;
@@ -433,7 +433,7 @@ public class StatsView extends Block {
 
 		var hours:Number = game.model.time.hours;
 		var hrs:String, ampm:String;
-		if (game.flags[kFLAGS.USE_12_HOURS] == 0) {
+		if (game.settings.use12hours == 0) {
 			hrs  = "" + hours;
 			ampm = "";
 		} else {
@@ -497,7 +497,7 @@ public class StatsView extends Block {
 					if (!bar) return;
 					if (statname == "sens" || statname == "cor" || statname == "minlust") isPositiveStat = false;
 					if (statname == "minlust") {
-						var lustValue:String = (CoC.instance.flags[kFLAGS.LUST_STATBAR_PERCENTAGE])? "Lust: " +
+						var lustValue:String = (CoC.instance.settings.lustStatbarPercentage)? "Lust: " +
 							 Utils.formatNumber(Math.floor(player.lust)) + '/' + Utils.formatNumber(player.maxLust()) + "\n": "";
 						text = lustValue + StatUtils.describeBuffs(stat, false, isPositiveStat);
 						player.listMinLustMultiBuffs();

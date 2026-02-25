@@ -193,7 +193,7 @@ public class UniqueSexScenes extends BaseContent
 			var bd:ButtonDataList = new ButtonDataList();
 			//menuItems.push();
 			sceneList = ScenePostProc(sceneList);
-			if (flags[kFLAGS.USSDISPLAY_STYLE] == 0){ //Available options first, then the unavailable ones.
+			if (settings.ussDisplayStyle == 0){ //Available options first, then the unavailable ones.
 				var temphold:Array = [];
 				for each(var USSScenesRez:Array in sceneList){
 					if (USSScenesRez[1] is Function) menuItems.push(USSScenesRez);

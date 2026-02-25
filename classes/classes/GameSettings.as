@@ -28,18 +28,18 @@ public class GameSettings extends BaseContent {
     public var sceneHunter_inst:SceneHunter = new SceneHunter();
 	
 	public static function get buttonIconsEnabled():Boolean {
-		return flags && !flags[kFLAGS.BUTTON_ICONS_DISABLED];
+		return flags && !settings.buttonIconsDisabled;
 	}
 
 	public function get charviewEnabled():Boolean {
-		return flags[kFLAGS.CHARVIEWER_ENABLED];
+		return settings.charviewEnabled > 0;
 	}
 
 	private var daysPerYear_temp:int; //used for storing the flag value without exiting the menu (to avoid issues while cycling through 'real' date.
 
 	public function settingsScreenMain(justOpened:Boolean = false):void {
 		CoC.instance.saves.savePermObject(false);
-		if (justOpened) daysPerYear_temp = flags[kFLAGS.DAYS_PER_YEAR];
+		if (justOpened) daysPerYear_temp = settings.daysPerYear;
 		else model.time.changeDPY(daysPerYear_temp);
         mainView.showMenuButton(MainView.MENU_NEW_MAIN);
 		mainView.showMenuButton(MainView.MENU_DATA);
@@ -65,7 +65,7 @@ public class GameSettings extends BaseContent {
 
 		clearOutput();
 		displayHeader("Gameplay Settings");
-		if (flags[kFLAGS.AUTO_LEVEL] >= 1) {
+		if (settings.autoLevel >= 1) {
 			outputText("Automatic Leveling: [font-green]<b>ON</b>[/font]\n Leveling up is done automatically once you accumulate enough experience.");
 		}
 		else
@@ -77,7 +77,7 @@ public class GameSettings extends BaseContent {
 		if (player) {
 			if (daysPerYear_temp == 0) {
 				outputText("Timescale: [font-green]<b>REAL</b>[/font]\n In-game date (used for holiday events) uses real date from your computer.");
-				if (flags[kFLAGS.DAYS_PER_YEAR] > 0) outputText("\n[font-dred]<b>WARNING: your current in-game date will be erased after you exit this menu.</b>[/font]");
+				if (settings.daysPerYear > 0) outputText("\n[font-dred]<b>WARNING: your current in-game date will be erased after you exit this menu.</b>[/font]");
 			} else {
 				outputText("Timescale: [font-blue]<b>DAYS ("+daysPerYear_temp+" in-game days per year)</b>[/font]\n In-game date is calculated from the days spent in Mareth.");
 			}
@@ -231,7 +231,7 @@ public class GameSettings extends BaseContent {
 			addButtonDisabled(11, "Fetishes", "Requires a loaded save.");
 			addButtonDisabled(12, "Timescale", "Requires a loaded save.");
 		}
-		addButton(13, "Auto level", toggleFlag, kFLAGS.AUTO_LEVEL, settingsScreenGameSettings).hint("Toggles automatic leveling when you accumulate sufficient experience.");
+		addButton(13, "Auto level", toggleSetting, "autoLevel", settingsScreenGameSettings).hint("Toggles automatic leveling when you accumulate sufficient experience.");
 		addButton(14, "Back", settingsScreenMain);
 
 		//===========================
@@ -325,6 +325,10 @@ public class GameSettings extends BaseContent {
 		flags[flagID] = !flags[flagID];
 		menuFun();
 	}
+	public function toggleSetting(propname:String, menuFun:Function):void {
+		settings[propname] = !settings[propname];
+		menuFun();
+	}
 	private function ILLYProtocolOn():void {
 		player.createStatusEffect(StatusEffects.ILLYProtocol, 0, 0, 0, 0);
 		settingsScreenGameSettings2();
@@ -346,18 +350,18 @@ public class GameSettings extends BaseContent {
 		IMDBdisplayStyle();
 		outputText("\n\n");
 		menu();
-		addButton(0, "Fast Lvl", flagUpdate, kFLAGS.LVL_UP_FAST, 2).hint("Immediately level to the highest possible from XP instead of spamming next.");
-		addButton(1, "Mutation Assist", flagUpdate, kFLAGS.MUTATIONS_SPOILERS, 1).hint("Mutation Tracker Spoiler Mode. For when you want to discover mutations by yourself, or with some help.");
-		addButton(2, "PerkView Simplified", flagUpdate, kFLAGS.NEWPERKSDISPLAY, 1).hint("Simplified Perk Viewing. So duplicate entries/tiers don't show up.");
-		addButton(3, "Inventory Mgmt", flagUpdate, kFLAGS.INVT_MGMT_TYPE, 1).hint("Toggle between existing SHIFT to remove items vs an extra menu. Recommended to enable for Mobile users.");
-		addButton(4, "USS Display Opt.", flagUpdate, kFLAGS.USSDISPLAY_STYLE,1).hint("Switches between USS Display options.");
-		addButton(5, "IMDB Details", flagUpdate, kFLAGS.IMDB_DETAILS,1).hint("Switches between Internal Mutation DB display styles.");
+		addButton(0, "Fast Lvl", settingsUpdate, "lvlUpFast", 2).hint("Immediately level to the highest possible from XP instead of spamming next.");
+		addButton(1, "Mutation Assist", settingsUpdate, "mutationsSpoiler", 1).hint("Mutation Tracker Spoiler Mode. For when you want to discover mutations by yourself, or with some help.");
+		addButton(2, "PerkView Simplified", settingsUpdate, "newPerksDisplay", 1).hint("Simplified Perk Viewing. So duplicate entries/tiers don't show up.");
+		addButton(3, "Inventory Mgmt", settingsUpdate, "invtMgmgType", 1).hint("Toggle between existing SHIFT to remove items vs an extra menu. Recommended to enable for Mobile users.");
+		addButton(4, "USS Display Opt.", settingsUpdate, "ussDisplayStyle",1).hint("Switches between USS Display options.");
+		addButton(5, "IMDB Details", settingsUpdate, "imdbDetails",1).hint("Switches between Internal Mutation DB display styles.");
 		addButton(14, "Back", settingsScreenMain);
 		function fastLvlSettings():void{
-			if (flags[kFLAGS.LVL_UP_FAST] == 2) {
+			if (settings.lvlUpFast == 2) {
 				outputText("Instant Leveling: [font-green]<b>ON, Direct Jump</b>[/font]\nInstantly levels you up to the highest possible given your xp.");
 			}
-			else if (flags[kFLAGS.LVL_UP_FAST] == 1){
+			else if (settings.lvlUpFast == 1){
 				outputText("Instant Leveling: [font-blue]<b>ON, Manual Increase</b>[/font]\nIncrease XP by specific amounts.");
 			}
 			else {
@@ -369,7 +373,7 @@ public class GameSettings extends BaseContent {
 		}
 
 		function mutationsSpoilersSetting():void {
-			if (flags[kFLAGS.MUTATIONS_SPOILERS] >= 1){
+			if (settings.mutationsSpoiler >= 1){
 				outputText("Mutation Assist: [font-green]<b>ON</b>[/font]\nAll mutations are known, and hints to acquire them are provided.");
 			}
 			else {
@@ -379,7 +383,7 @@ public class GameSettings extends BaseContent {
 		}
 
 		function simpPerkSetting():void{
-			if (flags[kFLAGS.NEWPERKSDISPLAY] >= 1){
+			if (settings.newPerksDisplay >= 1){
 				outputText("Perks Display: [font-green]<b>Enabled</b>[/font]\nPerks are collapsed to their highest tier. Use this for faster perks menu loading, and less clutter.");
 			}
 			else {
@@ -389,7 +393,7 @@ public class GameSettings extends BaseContent {
 		}
 
 		function invMgmtSetting():void{
-			if (flags[kFLAGS.INVT_MGMT_TYPE] > 0){
+			if (settings.invtMgmgType > 0){
 				outputText("Inventory Mgmt: <b>New</b>\n A prompt will appear asking you what you want to do with the item.");
 			}
 			else{
@@ -400,7 +404,7 @@ public class GameSettings extends BaseContent {
 		}
 
 		function USSdisplayOpt():void{
-			if (flags[kFLAGS.USSDISPLAY_STYLE] > 0){
+			if (settings.ussDisplayStyle > 0){
 				outputText("USS Display: <b>Old</b>\n All options will be shown.");
 			}
 			else{
@@ -411,7 +415,7 @@ public class GameSettings extends BaseContent {
 		}
 
 		function IMDBdisplayStyle():void{
-			if (flags[kFLAGS.IMDB_DETAILS] > 0){
+			if (settings.imdbDetails > 0){
 				outputText("IMDB style: <b>Detailed</b>\n All mutation tiers will be displayed.");
 			}
 			else{
@@ -424,6 +428,11 @@ public class GameSettings extends BaseContent {
 		function flagUpdate(flag:*, max:int = 1):void{
 			flags[flag]++;
 			if (flags[flag] > max) flags[flag] = 0;
+			settingsScreenQoLSettings();
+		}
+		function settingsUpdate(propname:String, max:int = 1):void{
+			settings[propname]++;
+			if (settings[propname] > max) settings[propname] = 0;
 			settingsScreenQoLSettings();
 		}
 	}
@@ -653,7 +662,7 @@ public class GameSettings extends BaseContent {
 		clearOutput();
 		displayHeader("Interface Settings");
 
-		if (flags[kFLAGS.USE_OLD_FONT] >= 1) {
+		if (settings.useOldFont >= 1) {
 			outputText("Font: <b>Lucida Sans Typewriter</b>\n");
 		}
 		else
@@ -662,10 +671,10 @@ public class GameSettings extends BaseContent {
 		outputText("\n\n");
 
 		outputText("Char Viewer: ");
-		if (flags[kFLAGS.CHARVIEWER_ENABLED] == 1) outputText("[font-green]<b>ON</b>[/font]\n Player visualiser is available under \\[Appearance\\].");
+		if (settings.charviewEnabled == 1) outputText("[font-green]<b>ON</b>[/font]\n Player visualiser is available under \\[Appearance\\].");
 		else outputText("[font-dred]<b>OFF</b>[/font]\n Player visualiser is disabled.");
 		outputText("\nChar View Style: ");
-		switch (flags[kFLAGS.CHARVIEW_STYLE]) {
+		switch (settings.charviewStyle) {
 			case 0:
 				outputText("[font-blue]<b>ALWAYS</b>[/font]\n Viewer is shown on the left, always visible");
 				break;
@@ -677,13 +686,13 @@ public class GameSettings extends BaseContent {
 				break;
 		}
 		outputText("\nChar View Armor: ");
-		if (flags[kFLAGS.CHARVIEW_ARMOR_HIDDEN])
+		if (settings.charviewArmorHidden)
             outputText("[font-dred]<b>OFF</b>[/font]\n Armor is hidden - enjoy your naked look!");
 		else
             outputText("[font-green]<b>ON</b>[/font]\n Armor is shown (some body parts may be hidden or displayed wrongly)");
 		
         outputText("\n\n");
-		if (flags[kFLAGS.IMAGEPACK_OFF] == 0) {
+		if (settings.imagepackOff == 0) {
 			outputText("Image Pack: [font-green]<b>ON</b>[/font]\n Image pack is enabled.");
 		}
 		else
@@ -691,10 +700,10 @@ public class GameSettings extends BaseContent {
 
 		outputText("\n\n");
 
-		if (flags[kFLAGS.SHOW_SPRITES_FLAG] == 0) {
+		if (settings.spritesOff == 0) {
 			outputText("Sprites: [font-green]<b>ON</b>[/font]\n You like to look at pretty pictures.");
 			outputText("\n\n");
-			if (flags[kFLAGS.SPRITE_STYLE] == 0)
+			if (settings.spriteStyle == 0)
 				outputText("Sprite Type: <b>New</b>\n 16-bit sprites will be used.");
 			else
 				outputText("Sprite Type: <b>Old</b>\n 8-bit sprites will be used.");
@@ -706,16 +715,16 @@ public class GameSettings extends BaseContent {
 
 		outputText("\n\n");
 
-		if (flags[kFLAGS.USE_12_HOURS] > 0)
+		if (settings.use12hours > 0)
 			outputText("Time Format: <b>12 hours</b>\n Time will display in 12 hours format (AM/PM)");
 		else
 			outputText("Time Format: <b>24 hours</b>\n Time will display in 24 hours format.");
 
 		outputText("\n\n");
 
-		if (flags[kFLAGS.USE_METRICS] == 1)
+		if (settings.useMetrics == 1)
 			outputText("Measurement: <b>Metric</b>\n Height and cock size will be measured in metres and centimetres.");
-		else if (flags[kFLAGS.USE_METRICS] == 0)
+		else if (settings.useMetrics == 0)
 			outputText("Measurement: <b>Imperial</b>\n Height and cock size will be measured in feet and inches. (Worded)");
 		else	//Yes, this is 2. Yes, this was added as an afterthought.
 			outputText("Measurement: <b>Imperial</b>\n Height and cock size will be measured in feet and inches. (Symbols)");
@@ -727,25 +736,25 @@ public class GameSettings extends BaseContent {
 			outputText("Button icons: <b>OFF</b>");
 		outputText("\n\n");
 		
-		if (flags[kFLAGS.STATBAR_ANIMATIONS] == 1)
+		if (settings.statbarAnimations == 1)
 			outputText("Stat bar animations: <b>OFF</b>");
 		else
 			outputText("Stat bar animations: <b>ON</b>");
 		outputText("\n\n");
 
-		if (flags[kFLAGS.HP_STATBAR_PERCENTAGE] == 0)
+		if (settings.hpStatbarPercentage == 0)
 			outputText("HP bars show percentages: <b>OFF</b>");
 		else
 			outputText("HP bars show percentages: <b>ON</b>");
 		outputText("\n\n");
 
-		if (flags[kFLAGS.LUST_STATBAR_PERCENTAGE] == 0)
+		if (settings.lustStatbarPercentage == 0)
 			outputText("Lust bars show percentages: <b>OFF</b>");
 		else
 			outputText("Lust bars show percentages: <b>ON</b>");
 		outputText("\n\n");
 
-		if (flags[kFLAGS.WRATH_STATBAR_PERCENTAGE] == 0)
+		if (settings.wrathStatbarPercentage == 0)
 			outputText("Wrath bars show percentages: <b>OFF</b>");
 		else
 			outputText("Wrath bars show percentages: <b>ON</b>");
@@ -757,7 +766,7 @@ public class GameSettings extends BaseContent {
 			outputText("Angelic Faction: <b>ABSENT</b>");
 		outputText("\n\n");
 
-		if (flags[kFLAGS.CHARVIEWER_MODEL] == 0)
+		if (settings.charviewModel == 0)
 			outputText("Charviewer Model: <b>OLD</b>");
 		else
 			outputText("Charviewer model: <b>NEW</b>")
@@ -765,7 +774,7 @@ public class GameSettings extends BaseContent {
 
 		var buttons:ButtonDataList = new ButtonDataList();
 		menu();
-		buttons.add("Side Bar Font", curry(toggleFlag, kFLAGS.USE_OLD_FONT, settingsScreenInterfaceSettings), "Toggle between old and new font for side bar.");
+		buttons.add("Side Bar Font", curry(toggleSetting, "useOldFont", settingsScreenInterfaceSettings), "Toggle between old and new font for side bar.");
 		buttons.add("Main BG", menuMainBackground, "Choose a background for main game interface.");
 		buttons.add("Text BG", menuTextBackground, "Choose a background for text.");
 		buttons.add("Sprites", menuSpriteSelect, "Turn sprites on/off and change sprite style preference.");
@@ -774,12 +783,12 @@ public class GameSettings extends BaseContent {
 		buttons.add("Time Format", toggleTimeFormat, "Toggles between 12-hour and 24-hour format.");
 		buttons.add("Measurements", toggleMeasurements, "Switch between imperial and metric measurements.  \n\nNOTE: Only applies to your appearance screen.");
 		buttons.add("Toggle CharView", toggleCharViewer, "Turn PC visualizer on/off.");
-		buttons.add("Charview Armor", curry(toggleFlag, kFLAGS.CHARVIEW_ARMOR_HIDDEN, settingsScreenInterfaceSettings), "Turn PC armor and underwear display on/off");
-		buttons.add("Button Icons", curry(toggleFlag, kFLAGS.BUTTON_ICONS_DISABLED, settingsScreenInterfaceSettings));
-		buttons.add("Statbar Anim.", curry(toggleFlag, kFLAGS.STATBAR_ANIMATIONS, settingsScreenInterfaceSettings), "Toggle stat bar animations when value changes");
-		buttons.add("HP Percent", curry(toggleFlag, kFLAGS.HP_STATBAR_PERCENTAGE, settingsScreenInterfaceSettings), "Toggle between showing the HP stat as a percentage");
-		buttons.add("Lust Percent", curry(toggleFlag, kFLAGS.LUST_STATBAR_PERCENTAGE, settingsScreenInterfaceSettings), "Toggle between showing the Lust stat as a percentage");
-		buttons.add("Wrath Percent", curry(toggleFlag, kFLAGS.WRATH_STATBAR_PERCENTAGE, settingsScreenInterfaceSettings), "Toggle between showing the Wrath stat as a percentage");
+		buttons.add("Charview Armor", curry(toggleSetting, "charviewArmorHidden", settingsScreenInterfaceSettings), "Turn PC armor and underwear display on/off");
+		buttons.add("Button Icons", curry(toggleSetting, "buttonIconsDisabled", settingsScreenInterfaceSettings));
+		buttons.add("Statbar Anim.", curry(toggleSetting, "statbarAnimations", settingsScreenInterfaceSettings), "Toggle stat bar animations when value changes");
+		buttons.add("HP Percent", curry(toggleSetting, "hpStatbarPercentage", settingsScreenInterfaceSettings), "Toggle between showing the HP stat as a percentage");
+		buttons.add("Lust Percent", curry(toggleSetting, "lustStatbarPercentage", settingsScreenInterfaceSettings), "Toggle between showing the Lust stat as a percentage");
+		buttons.add("Wrath Percent", curry(toggleSetting, "wrathStatbarPercentage", settingsScreenInterfaceSettings), "Toggle between showing the Wrath stat as a percentage");
 		buttons.add("Angelic Fract", curry(toggleFlag, kFLAGS.ANGELIC_FRACTION_TOGGLE, settingsScreenInterfaceSettings), "Toggle between full and no presence of angelic fraction ingame");
 		buttons.add("CharView Model", toggleCharViewerModel, "Toggle between new/old character model on PC visualizer.");
 		submenu(buttons, settingsScreenMain, 0, false);
@@ -813,30 +822,30 @@ public class GameSettings extends BaseContent {
 		addButton(14, "Back", settingsScreenInterfaceSettings);
 	}
 
-	public function toggleCharViewer(flag:int = kFLAGS.CHARVIEWER_ENABLED):void {
-		if (flags[flag] < 1) {
-			flags[flag] = 1;
+	public function toggleCharViewer():void {
+		if (settings.charviewEnabled < 1) {
+			settings.charviewEnabled = 1;
 			mainView.charView.reload();
 		} else {
-			flags[flag] = 0;
+			settings.charviewEnabled = 0;
 		}
 		settingsScreenInterfaceSettings();
 	}
 	public function toggleCharViewerStyle():void {
-		flags[kFLAGS.CHARVIEW_STYLE] = (flags[kFLAGS.CHARVIEW_STYLE]+1)%3;
+		settings.charviewStyle = (settings.charviewStyle+1)%3;
 		settingsScreenInterfaceSettings();
 	}
 
 	public function toggleCharViewerModel():void {
-		if (flags[kFLAGS.CHARVIEWER_MODEL] < 1) flags[kFLAGS.CHARVIEWER_MODEL] = 1;
-		else flags[kFLAGS.CHARVIEWER_MODEL] = 0;
+		if (settings.charviewModel < 1) settings.charviewModel = 1;
+		else settings.charviewModel = 0;
 		mainView.charView.reload();
 		settingsScreenInterfaceSettings();
 
 	}
 
 	public function setMainBackground(type:int):void {
-			flags[kFLAGS.BACKGROUND_STYLE]     = type;
+			settings.backgroundStyle     = type;
 			mainViewManager.setTheme();
 			settingsScreenInterfaceSettings();
 		}
@@ -850,27 +859,27 @@ public class GameSettings extends BaseContent {
 	}
 
 	public function toggleSpritesFlag(enabled:Boolean, style:int):void {
-		flags[kFLAGS.SHOW_SPRITES_FLAG] = enabled;
-		flags[kFLAGS.SPRITE_STYLE]      = style;
+		settings.spritesOff = enabled;
+		settings.spriteStyle      = style;
 		settingsScreenInterfaceSettings();
 
 	}
 
 	public function toggleImages():void {
-		if (flags[kFLAGS.IMAGEPACK_OFF] < 1) flags[kFLAGS.IMAGEPACK_OFF] = 1;
-		else flags[kFLAGS.IMAGEPACK_OFF] = 0;
+		if (settings.imagepackOff < 1) settings.imagepackOff = 1;
+		else settings.imagepackOff = 0;
 		settingsScreenInterfaceSettings();
 	}
 
 	public function toggleTimeFormat():void {
-		if (flags[kFLAGS.USE_12_HOURS] < 1) flags[kFLAGS.USE_12_HOURS] = 1;
-		else flags[kFLAGS.USE_12_HOURS] = 0;
+		if (settings.use12hours < 1) settings.use12hours = 1;
+		else settings.use12hours = 0;
 		settingsScreenInterfaceSettings();
 	}
 
 	public function toggleMeasurements():void {
-		if (flags[kFLAGS.USE_METRICS] < 2) flags[kFLAGS.USE_METRICS] += 1;
-		else flags[kFLAGS.USE_METRICS] = 0;
+		if (settings.useMetrics < 2) settings.useMetrics += 1;
+		else settings.useMetrics = 0;
 		settingsScreenInterfaceSettings();
 	}
 
@@ -897,7 +906,7 @@ public class GameSettings extends BaseContent {
 
 		trace("Font size set to: " + (fmt.size as Number));
 		mainView.mainText.setTextFormat(fmt);
-		flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
+		settings.customFontSize = fmt.size;
 	}
 
 	public function decFontSize():void {
@@ -911,7 +920,7 @@ public class GameSettings extends BaseContent {
 
 		trace("Font size set to: " + (fmt.size as Number));
 		mainView.mainText.setTextFormat(fmt);
-		flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
+		settings.customFontSize = fmt.size;
 	}
 
 	public function resetFontSize():void {
@@ -919,7 +928,7 @@ public class GameSettings extends BaseContent {
 		if (fmt.size == null) fmt.size = 20;
 		fmt.size = 20;
 		mainView.mainText.setTextFormat(fmt);
-		flags[kFLAGS.CUSTOM_FONT_SIZE] = 0;
+		settings.customFontSize = 0;
 	}
 
     private function displayControls():void

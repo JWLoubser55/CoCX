@@ -41,7 +41,7 @@ public class PerkMenu extends BaseContent {
 	public function displayPerks():void {
 		clearOutput();
 		displayHeader("Perks (Total: " + (player.perks.length + player.perksCountForMergedOnes()) + " / Merged: " + player.perksCountForMergedOnes() + ")");
-		if (flags[kFLAGS.NEWPERKSDISPLAY] >= 1){
+		if (settings.newPerksDisplay >= 1){
 			playerPerksList();
 		}
 		else{
@@ -1051,7 +1051,7 @@ public class PerkMenu extends BaseContent {
 		if (review) {	//Initial screen for user to know how many points they have per part
 			clearOutput();
 			displayHeader("Mutation Stats");
-			if (flags[kFLAGS.MUTATIONS_SPOILERS]) {
+			if (settings.mutationsSpoiler) {
 				outputText("Mutations Assistant: <b>On</b>\n");
 			}
 			else{
@@ -1063,7 +1063,7 @@ public class PerkMenu extends BaseContent {
 					"\nNote: Not all body parts will use all available slots.\n\n");
 
 			outputText("Mutations can be obtained by ");
-			if (flags[kFLAGS.MUTATIONS_SPOILERS] || EvangelineFollower.EvangelineAffectionMeter >= 3){
+			if (settings.mutationsSpoiler || EvangelineFollower.EvangelineAffectionMeter >= 3){
 				outputText("finding Evangeline and asking her about it.\n");
 			}
 			else{
@@ -1089,7 +1089,7 @@ public class PerkMenu extends BaseContent {
 					outputText("[font-green]");
 				}
 				outputText( mCount +"[/font] of " + (mutationCount > mPerkarray.length ? mPerkarray.length : mutationCount) + ". Max:(");
-				if (flags[kFLAGS.MUTATIONS_SPOILERS]){
+				if (settings.mutationsSpoiler){
 					outputText(mPerkarray.length + ")\n");
 				}
 				else{
@@ -1185,7 +1185,7 @@ public class PerkMenu extends BaseContent {
 
 	//Mutations check helper. Cloned + stripped requirements logic from PerkMenuDB.
 	public function mutationsDatabaseVerify(mutationsArray:Array):void {
-		if(flags[kFLAGS.MUTATIONS_SPOILERS]) {
+		if(settings.mutationsSpoiler) {
 			for each(var mutation:IMutationPerkType in mutationsArray) {
 				var pMutateLvl:int = player.perkv1(mutation);
 				if (pMutateLvl > 0) {	//Just checking if you have the base.
@@ -1229,7 +1229,7 @@ public class PerkMenu extends BaseContent {
 					}
 				}
 
-				if (flags[kFLAGS.IMDB_DETAILS]) {
+				if (settings.imdbDetails) {
 					outputText("\nAll Tier Descriptions:");
 					for (var tier:int = 1; tier <= mutation.maxLvl; ++tier) {
 						var temptxt:String = ("\n" + tier + ": " + mutation.mDesc(player.getPerk(mutation), tier));

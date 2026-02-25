@@ -948,7 +948,7 @@ public class DebugMenu extends BaseContent
 			var row:Block = new Block({
 				height: 24
 			});
-			var style:* = MainView.Themes[flags[kFLAGS.BACKGROUND_STYLE]];
+			var style:* = MainView.Themes[settings.backgroundStyle];
 			row.addTextField({
 				text: label,
 				defaultTextFormat:{color:style.statTextColor}

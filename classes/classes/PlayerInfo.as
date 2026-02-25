@@ -1798,9 +1798,9 @@ public class PlayerInfo extends BaseContent {
 			}
 		}
 		if (player.XP >= player.requiredXP()) {
-			if (flags[kFLAGS.LVL_UP_FAST] == 1){ // multi
+			if (settings.lvlUpFast == 1){ // multi
 				levelUpFastMenu();
-			} else if (flags[kFLAGS.LVL_UP_FAST] == 2){ // instant
+			} else if (settings.lvlUpFast == 2){ // instant
 				lUFSMM();
 				if (player.statPoints > 0) { doNext(attributeMenu); }
 				else if (player.perkPoints > 0) { doNext(perkBuyMenu); }
@@ -1861,7 +1861,7 @@ public class PlayerInfo extends BaseContent {
 		for (var i:int = 1; i <= incmax; i++) {
 			if ((player.XP >= player.requiredXP() || noxpcost) && (player.level < CoC.instance.levelCap || player.negativeLevel > 0)) levelUp(noxpcost);
 		}
-		if (flags[kFLAGS.LVL_UP_FAST] == 1 && !noxpcost) levelUpFastMenu(true);
+		if (settings.lvlUpFast == 1 && !noxpcost) levelUpFastMenu(true);
 	}
 	public function lUFSMAP():void {
 		if (player.statPoints > 0) {
@@ -3068,4 +3068,4 @@ public class PlayerInfo extends BaseContent {
 		doNext(superPerkBuyMenu, 6);
 	}
 }
-}
+}

@@ -85,7 +85,7 @@ public class CoC extends MovieClip
 
     /*private static var doCamp:Function; //Set by campInitialize, should only be called by playerMenu
     private static function campInitialize(passDoCamp:Function):void { doCamp = passDoCamp; }*/
-
+    public var settings:Settings                   = new Settings();
     public var charCreation:CharCreation           = new CharCreation();
     public var saves:Saves                         = new Saves(gameStateDirectGet, gameStateDirectSet);
     public var playerAppearance:PlayerAppearance   = new PlayerAppearance();
@@ -499,7 +499,7 @@ public class CoC extends MovieClip
 
     public function spriteSelect(choice:Class = null):void {
         // Inlined call from lib/src/coc/view/MainView.as
-        if (choice == null || flags[kFLAGS.SHOW_SPRITES_FLAG] == 1)
+        if (choice == null || settings.spritesOff == 1)
             mainViewManager.hideSprite();
         else
             mainViewManager.showSpriteBitmap(SpriteDb.bitmapData(choice));
@@ -531,7 +531,7 @@ public class CoC extends MovieClip
     {
         var fmt:TextFormat = mainView.mainText.defaultTextFormat;
 
-        if (flags[kFLAGS.CUSTOM_FONT_SIZE] != 0) fmt.size = flags[kFLAGS.CUSTOM_FONT_SIZE];
+        if (settings.customFontSize != 0) fmt.size = settings.customFontSize;
         fmt.color                           = mainViewManager.darkThemeImpl() ? 0xffffff : 0;
         mainView.mainText.defaultTextFormat = fmt;
         mainView.setOutputText(currentText);

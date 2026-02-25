@@ -138,7 +138,7 @@ public class MonsterStatsView extends Block {
 		if (visible != value) {
 			for (var i:int = 0; i < numElements; i++) {
 				var sb:StatBar = getElementAt(i) as StatBar;
-				if(sb) sb.animate = value && (CoC.instance.flags[kFLAGS.STATBAR_ANIMATIONS]==0);
+				if(sb) sb.animate = value && (CoC.instance.settings.statbarAnimations==0);
 			}
 		}
 		super.visible = value;
@@ -149,11 +149,11 @@ public class MonsterStatsView extends Block {
 		nameText.text         = Utils.capitalizeFirstLetter(monster.short);
 		nameText.height       = nameText.textHeight+5;
 		levelBar.value        = monster.level;
-		var hpPercent:Boolean = game.flags[kFLAGS.HP_STATBAR_PERCENTAGE] == 1;
+		var hpPercent:Boolean = game.settings.hpStatbarPercentage == 1;
 		hpBar.maxValue        = monster.maxHP();
 		hpBar.value           = monster.HP;
 		hpBar.percentage	  = hpPercent;
-		var lustPercent:Boolean = game.flags[kFLAGS.LUST_STATBAR_PERCENTAGE] == 1;
+		var lustPercent:Boolean = game.settings.lustStatbarPercentage == 1;
 		lustBar.maxValue      = monster.maxLust();
 		lustBar.minValue      = monster.minLust();
 		lustBar.value         = monster.lust;
@@ -166,7 +166,7 @@ public class MonsterStatsView extends Block {
 		manaBar.value         = monster.mana;
 		manaBar.maxValue      = monster.maxMana();
 		manaBar.visible       = player.hasPerk(PerkLib.JobSorcerer);
-		var wrathPercent:Boolean = game.flags[kFLAGS.WRATH_STATBAR_PERCENTAGE] == 1;
+		var wrathPercent:Boolean = game.settings.wrathStatbarPercentage == 1;
 		wrathBar.value        = monster.wrath;
 		wrathBar.maxValue     = monster.maxWrath();
 		wrathBar.percentage	  = wrathPercent;
@@ -219,15 +219,15 @@ public class MonsterStatsView extends Block {
 				var bar:StatBar = event.target as StatBar;
 				if (!bar) return;
 				if (statname == "hp") {
-					if (!CoC.instance.flags[kFLAGS.HP_STATBAR_PERCENTAGE]) return;
+					if (!CoC.instance.settings.hpStatbarPercentage) return;
 					var hpText:String = "HP: " + Utils.formatNumber(Math.floor(monster.HP)) + (bar.showMax ? '/' + Utils.formatNumber(monster.maxHP()) : '');
 					CoC.instance.mainView.toolTipView.showForElement(bar,bar.statName,hpText);
 				} else if (statname == "lust") {
-					if (!CoC.instance.flags[kFLAGS.LUST_STATBAR_PERCENTAGE]) return;
+					if (!CoC.instance.settings.lustStatbarPercentage) return;
 					var lustValue:String = "Lust: " + Utils.formatNumber(Math.floor(monster.lust)) + (bar.showMax ? '/' + Utils.formatNumber(monster.maxLust()) : '');
 					CoC.instance.mainView.toolTipView.showForElement(bar,bar.statName,lustValue);
 				} else if (statname == "wrath") {
-					if (!CoC.instance.flags[kFLAGS.WRATH_STATBAR_PERCENTAGE]) return;
+					if (!CoC.instance.settings.wrathStatbarPercentage) return;
 					var wrathText:String = "Wrath: " + Utils.formatNumber(Math.floor(monster.wrath)) + (bar.showMax ? '/' + Utils.formatNumber(monster.maxWrath()) : '');
 					CoC.instance.mainView.toolTipView.showForElement(bar,bar.statName,wrathText);
 				}

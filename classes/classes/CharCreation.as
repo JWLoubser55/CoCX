@@ -104,7 +104,9 @@ import classes.Scenes.Combat.CombatAbility;
 				EventParser.badEnded = false;
 			}
 			XXCNPC.unloadSavedNPCs();
+			var oldSettings:* = settings.saveToObject();
 			CoC.instance.saves.resetSaveableStates();
+			settings.loadFromObject(oldSettings, true);
 			mainView.hideTestInputPanel();
 			hideStats();
 			hideUpDown();
@@ -360,8 +362,8 @@ import classes.Scenes.Combat.CombatAbility;
             //keep settings flags
 			if (player.hasKeyItem("Ascension") >= 0) {
 				for each(var flag:int in [
-					kFLAGS.BACKGROUND_STYLE,
-					kFLAGS.CUSTOM_FONT_SIZE,
+					kFLAGS.BACKGROUND_STYLE, // moved to settings
+					kFLAGS.CUSTOM_FONT_SIZE, // moved to settings
                     kFLAGS.NEW_GAME_PLUS_LEVEL,
                     kFLAGS.HUNGER_ENABLED,
                     kFLAGS.SECONDARY_STATS_SCALING,
@@ -386,13 +388,13 @@ import classes.Scenes.Combat.CombatAbility;
                     kFLAGS.LOW_STANDARDS_FOR_ALL,
                     kFLAGS.HYPER_HAPPY,
                     kFLAGS.NEW_GAME_PLUS_BONUS_UNLOCKED_HERM,
-                    kFLAGS.LVL_UP_FAST,
-                    kFLAGS.MUTATIONS_SPOILERS,
-                    kFLAGS.INVT_MGMT_TYPE,
-                    kFLAGS.NEWPERKSDISPLAY,
-                    kFLAGS.CHARVIEW_STYLE,
-                    kFLAGS.CHARVIEW_ARMOR_HIDDEN,
-					kFLAGS.EXPLORE_MENU_STYLE,
+                    kFLAGS.LVL_UP_FAST, // moved to settings
+                    kFLAGS.MUTATIONS_SPOILERS, // moved to settings
+                    kFLAGS.INVT_MGMT_TYPE, // moved to settings
+                    kFLAGS.NEWPERKSDISPLAY, // moved to settings
+                    kFLAGS.CHARVIEW_STYLE, // moved to settings
+                    kFLAGS.CHARVIEW_ARMOR_HIDDEN, // moved to settings
+					kFLAGS.EXPLORE_MENU_STYLE, // moved to settings
                     kFLAGS.SPIRIT_STONES,
 					kFLAGS.HP_STATBAR_PERCENTAGE,
 					kFLAGS.LUST_STATBAR_PERCENTAGE,
@@ -2113,7 +2115,7 @@ import classes.Scenes.Combat.CombatAbility;
 			addButton(9, "DAYS-365", setTimescale, 365);
 
 			function setTimescale(val:int):void {
-				flags[kFLAGS.DAYS_PER_YEAR] = val;
+				settings.daysPerYear = val;
 				chooseGameModes();
 			}
 		}
