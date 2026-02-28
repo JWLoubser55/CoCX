@@ -1247,13 +1247,15 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.JobTamer)) bd = buttons.add("Tamed Monster(s)", comtamed.tamedMonstersMenu);
 		if (player.hasPerk(PerkLib.JobHaruspex) && player.perkv2(PerkLib.JobHaruspex) > 0) {
 			bd = buttons.add("S.S. to F.", sendSkeletonToFight).hint("Send Skeleton to fight - Order your Skeletons to beat the crap out of your foe.");
-			if (monster.isFlying() && (!player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) == 0) && (!player.hasPerk(PerkLib.BoneyWand) && player.perkv1(PerkLib.BoneyWand) == 0)) {
+			if (monster.isFlying() && (!player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) == 0) && (!player.hasPerk(PerkLib.BoneyWand) && player.perkv1(PerkLib.BoneyWand) == 0)
+				&& (!player.hasPerk(PerkLib.BoneBallistaSkelies) && player.perkv1(PerkLib.BoneBallistaSkelies) == 0) && (!player.hasPerk(PerkLib.GigachadSkeletalMages) && player.perkv1(PerkLib.GigachadSkeletalMages) == 0)) {
 				bd.disable("None of your skeletons can attack airborn enemies.");
 			}
 			favbd(bd,"Send Skeletons");
 			if (player.perkv2(PerkLib.JobHaruspex) > 5) {
 				bd = buttons.add("S.S.", skeletonSmash).hint("Skeleton Smash - Order your Skeletons to go all out on your foe.");
-				if (monster.isFlying()) {
+				if (monster.isFlying() && (!player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) == 0) && (!player.hasPerk(PerkLib.BoneyWand) && player.perkv1(PerkLib.BoneyWand) == 0)
+					&& (!player.hasPerk(PerkLib.BoneBallistaSkelies) && player.perkv1(PerkLib.BoneBallistaSkelies) == 0) && (!player.hasPerk(PerkLib.GigachadSkeletalMages) && player.perkv1(PerkLib.GigachadSkeletalMages) == 0)) {
 					bd.disable("None of your skeletons can attack airborn enemies.");
 				}
 				favbd(bd,"Skeleton Smash");
@@ -19661,9 +19663,11 @@ public function sendSkeletonToFight():void {
 	if (!monster.isFlying() || player.hasPerk(PerkLib.SkeletonLord)) outputText("Your skeleton warrior"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "their":"his")+" blade"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" around. ");
     var damage:Number = 0;
     var dmgamp:Number = 1;
-    damage += 1500 + rand(451);
-    damage += scalingBonusIntelligence() * 0.6;
-    damage += scalingBonusWisdom() * 1.2;
+	var statsmuli:Number = 0.6;
+    //if (player.hasPerk(PerkLib.)) statsmuli += ;
+	damage += 1500 + rand(451);
+    damage += scalingBonusIntelligence() * statsmuli;
+    damage += scalingBonusWisdom() * 2 * statsmuli;
 	damage *= soulskillMod();
 	if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) damage *= historyTacticianBonus();
     if (player.hasPerk(PerkLib.BoneyBow)) dmgamp += 0.1;
@@ -19671,8 +19675,8 @@ public function sendSkeletonToFight():void {
     if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.BoneGiants)) dmgamp += 0.2;
-    if (player.hasPerk(PerkLib.GigachadSkeletalMages)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneBallistaSkelies)) dmgamp += 0.2;
+    if (player.hasPerk(PerkLib.GigachadSkeletalMages)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
@@ -19702,16 +19706,40 @@ public function sendSkeletonToFight():void {
         damage *= 1.75;
     damage = Math.round(damage);
 	var sSWTF:Number = player.perkv2(PerkLib.JobHaruspex);
-	while (sSWTF-->0) doMinionPhysDamage(damage, true, true);
+	while (sSWTF-->0) {
+		doMinionPhysDamage(damage, true, true);
+		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
+			var damage1:Number = (damage*4);
+			damage1 = darknessTypeDamageBonus(damage1);
+			damage1 *= darknessDamageBoostedByDao();
+			doMinionDarknessDamage(damage1, true, true);
+		}
+	}
     if ((!monster.isFlying() || player.hasPerk(PerkLib.SkeletonLord)) && player.hasPerk(PerkLib.BoneGiants) && player.perkv1(PerkLib.BoneGiants) > 0) {
 		outputText("\n\nYour skeleton giant"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" charge into battle swinging "+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "their":"his")+" fist"+(player.perkv2(PerkLib.JobHaruspex) > 1 ? "s":"")+" around. ");
 		var sSGTF:Number = (player.perkv1(PerkLib.BoneGiants)*4);
-		while (sSGTF-->0) doMinionPhysDamage((damage*2), true, true, true);
+		while (sSGTF-->0) {
+			doMinionPhysDamage((damage*2), true, true, true);
+			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
+				var damage2:Number = (damage*4);
+				damage2 = darknessTypeDamageBonus(damage2);
+				damage2 *= darknessDamageBoostedByDao();
+				doMinionDarknessDamage(damage2, true, true);
+			}
+		}
 	}
     if (player.hasPerk(PerkLib.BoneyBow) && player.perkv1(PerkLib.BoneyBow) > 0) {
 		outputText("\n\nYour archer"+(player.perkv1(PerkLib.BoneyBow) > 1 ? "s":"")+" unleashing a volley of arrows. ");
 		var sSATF:Number = player.perkv1(PerkLib.BoneyBow);
-		while (sSATF-->0) doMinionPhysDamage(damage, true, true);
+		while (sSATF-->0) {
+			doMinionPhysDamage(damage, true, true);
+			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
+				var damage3:Number = (damage*4);
+				damage3 = darknessTypeDamageBonus(damage3);
+				damage3 *= darknessDamageBoostedByDao();
+				doMinionDarknessDamage(damage3, true, true);
+			}
+		}
     }
     if (player.hasPerk(PerkLib.BoneBallistaSkelies) && player.perkv1(PerkLib.BoneBallistaSkelies) > 0) {
 		outputText("\n\nYour bone ballista skeleton"+(player.perkv1(PerkLib.BoneBallistaSkelies) > 1 ? "s":"")+" unleashing a volley of ballista bolts. ");
@@ -19720,12 +19748,28 @@ public function sendSkeletonToFight():void {
 		if (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyHugeType)) dmgBallista += 4;
 		if (monster.hasPerk(PerkLib.EnemyLargeGroupType) || monster.hasPerk(PerkLib.EnemyGigantType)) dmgBallista += 8;
 		if (monster.hasPerk(PerkLib.Enemy300Type) || monster.hasPerk(PerkLib.EnemyColossalType)) dmgBallista += 12;
-		while (sBBSTF-->0) doMinionPhysDamage((damage*dmgBallista), true, true);
+		while (sBBSTF-->0) {
+			doMinionPhysDamage((damage*dmgBallista), true, true);
+			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
+				var damage4:Number = (damage*4);
+				damage4 = darknessTypeDamageBonus(damage4);
+				damage4 *= darknessDamageBoostedByDao();
+				doMinionDarknessDamage(damage4, true, true);
+			}
+		}
     }
 	if (player.hasPerk(PerkLib.BoneyWand) && player.perkv1(PerkLib.BoneyWand) > 0) {
 		outputText("\n\nYour skeletal mage"+(player.perkv1(PerkLib.BoneyWand) > 1 ? "s":"")+" unleashing a barrage of magic missiles. ");
 		var sSMTF:Number = player.perkv1(PerkLib.BoneyWand);
-		while (sSMTF-->0) doMinionMagDamage(damage, true, true);
+		while (sSMTF-->0) {
+			doMinionMagDamage(damage, true, true);
+			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
+				var damage5:Number = (damage*4);
+				damage5 = darknessTypeDamageBonus(damage5);
+				damage5 *= darknessDamageBoostedByDao();
+				doMinionDarknessDamage(damage5, true, true);
+			}
+		}
 	}
 	if (player.hasPerk(PerkLib.GigachadSkeletalMages) && player.perkv1(PerkLib.GigachadSkeletalMages) > 0) {
 		outputText("\n\nYour gigachad skeletal mage"+(player.perkv1(PerkLib.GigachadSkeletalMages) > 1 ? "s":"")+" unleashing a barrage of magic missiles. ");
@@ -19742,10 +19786,10 @@ public function sendSkeletonToFight():void {
 			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 8) doMinionEarthDamage((damage*4), true, true);
 			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 9) doMinionAcidDamage((damage*4), true, true);
 			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
-				var damage1:Number = (damage*4);
-				damage1 = darknessTypeDamageBonus(damage1);
-				damage1 *= darknessDamageBoostedByDao();
-				doMinionDarknessDamage(damage1, true, true);
+				var damage6:Number = (damage*4);
+				damage6 = darknessTypeDamageBonus(damage6);
+				damage6 *= darknessDamageBoostedByDao();
+				doMinionDarknessDamage(damage6, true, true);
 			}
 		}
 	}
@@ -19769,6 +19813,8 @@ public function skeletonSmash():void {
     outputText("Your Skeletons upon command gang up on [themonster] swarming from all side and leaving [monster him] stunned. ");
     var damage:Number = 0;
     var dmgamp:Number = 1;
+	var statsmuli:Number = 0.6;
+    //if (player.hasPerk(PerkLib.)) statsmuli += ;
     damage += 1500 + rand(451);
     damage += scalingBonusIntelligence() * 0.6;
     damage += scalingBonusWisdom() * 1.2;
@@ -19779,8 +19825,8 @@ public function skeletonSmash():void {
     if (player.hasPerk(PerkLib.SkeletonLord)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.GreaterHarvest)) dmgamp += 0.1;
     if (player.hasPerk(PerkLib.BoneGiants)) dmgamp += 0.2;
-    if (player.hasPerk(PerkLib.GigachadSkeletalMages)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneBallistaSkelies)) dmgamp += 0.2;
+    if (player.hasPerk(PerkLib.GigachadSkeletalMages)) dmgamp += 0.2;
     if (player.hasPerk(PerkLib.BoneSoul)) dmgamp += 0.1;
     if (player.weapon == weapons.SCECOMM) dmgamp += 0.5;
 	if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
@@ -19802,7 +19848,14 @@ public function skeletonSmash():void {
     }
     damage *= dmgamp;
 	if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet)) damage *= (1 + (0.1 * player.statusEffectv2(StatusEffects.BonusEffectsNecroSet)));
-    if (player.perkv2(PerkLib.JobHaruspex) > 0) damage *= player.perkv2(PerkLib.JobHaruspex);
+	var muli:Number = 0;
+    if (player.perkv2(PerkLib.JobHaruspex) > 0) muli += player.perkv2(PerkLib.JobHaruspex);
+    if (player.perkv1(PerkLib.BoneyBow) > 0) muli += player.perkv1(PerkLib.BoneyBow);
+    if (player.perkv1(PerkLib.BoneyWand) > 0) muli += player.perkv1(PerkLib.BoneyWand);
+    if (player.perkv1(PerkLib.BoneGiants) > 0) muli += player.perkv1(PerkLib.BoneGiants);
+    if (player.perkv1(PerkLib.BoneBallistaSkelies) > 0) muli += player.perkv1(PerkLib.BoneBallistaSkelies);
+    if (player.perkv1(PerkLib.GigachadSkeletalMages) > 0) muli += player.perkv1(PerkLib.GigachadSkeletalMages);
+	damage *= muli;
     //Determine if critical hit!
     var critChance:int = 5;
     critChance += combatPhysicalCritical();

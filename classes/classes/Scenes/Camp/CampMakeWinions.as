@@ -2260,17 +2260,22 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.SkeletonHighLord)) resourcesUsedToMakeLargeSkely -= 5000;
 			return resourcesUsedToMakeLargeSkely;
 		}
+		public function maxSkeletonMulti():Number {
+			var maxSkeletonMulity:Number = 1;
+			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) maxSkeletonMulity *= 2;
+			return maxSkeletonMulity;
+		}
 
 		public function accessMakeSkeletonWinionsMainMenu():void {
 			clearOutput();
 			outputText("Which type of skeleton would you like to create?\n\n");
 			outputText("<b>Stored Demon Bones:</b> " + player.perkv1(PerkLib.JobHaruspex) + " / " + maxDemonBonesStored() + "\n");
-			outputText("<b>Skeleton Warriors:</b> " + player.perkv2(PerkLib.JobHaruspex) + " / " + maxSkeletonWarriors() + "\n");
-			if (player.hasPerk(PerkLib.BoneyBow)) outputText("<b>Skeleton Archers:</b> " + player.perkv1(PerkLib.BoneyBow) + " / " + maxSkeletonArchers() + "\n");
-			if (player.hasPerk(PerkLib.BoneyWand)) outputText("<b>Skeleton Mages:</b> " + player.perkv1(PerkLib.BoneyWand) + " / " + maxSkeletonMages() + "\n");
-			if (player.hasPerk(PerkLib.BoneGiants)) outputText("<b>Skeleton Giants:</b> " + player.perkv1(PerkLib.BoneGiants) + " / " + maxSkeletonGiants() + " (Ignoring enemy DR)\n");
-			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) outputText("<b>Bone Ballista Skeletons:</b> " + player.perkv1(PerkLib.BoneBallistaSkelies) + " / " + maxBoneBallistaSkeletons() + " (Extra damage to group or large sized enemies)\n");
-			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) outputText("<b>Skeleton Gigachad Mages:</b> " + player.perkv1(PerkLib.GigachadSkeletalMages) + " / " + maxSkeletonGigachadMages() + " (Can freely change elemental damage they deal)\n");
+			outputText("<b>Skeleton Warriors:</b> " + player.perkv2(PerkLib.JobHaruspex) + " / " + (maxSkeletonWarriors() * maxSkeletonMulti()) + "\n");
+			if (player.hasPerk(PerkLib.BoneyBow)) outputText("<b>Skeleton Archers:</b> " + player.perkv1(PerkLib.BoneyBow) + " / " + (maxSkeletonArchers() * maxSkeletonMulti()) + "\n");
+			if (player.hasPerk(PerkLib.BoneyWand)) outputText("<b>Skeleton Mages:</b> " + player.perkv1(PerkLib.BoneyWand) + " / " + (maxSkeletonMages() * maxSkeletonMulti()) + "\n");
+			if (player.hasPerk(PerkLib.BoneGiants)) outputText("<b>Skeleton Giants:</b> " + player.perkv1(PerkLib.BoneGiants) + " / " + (maxSkeletonGiants() * maxSkeletonMulti()) + " (Ignoring enemy DR)\n");
+			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) outputText("<b>Bone Ballista Skeletons:</b> " + player.perkv1(PerkLib.BoneBallistaSkelies) + " / " + (maxBoneBallistaSkeletons() * maxSkeletonMulti()) + " (Extra damage to group or large sized enemies)\n");
+			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) outputText("<b>Skeleton Gigachad Mages:</b> " + player.perkv1(PerkLib.GigachadSkeletalMages) + " / " + (maxSkeletonGigachadMages() * maxSkeletonMulti()) + " (Can freely change elemental damage they deal)\n");
 			menu();
 			addButton(0, "C.Skeleton(W)", createSkeletonWarrior).hint("Create Skeleton Warrior.");
 			if (player.hasPerk(PerkLib.BoneyBow)) addButton(1, "C.Skeleton(A)", createSkeletonArcher).hint("Create Skeleton Archer.");
@@ -2294,7 +2299,7 @@ public class CampMakeWinions extends BaseContent
 
 		public function createSkeletonWarrior():void {
 			clearOutput();
-			if (player.perkv2(PerkLib.JobHaruspex) >= maxSkeletonWarriors()) {
+			if (player.perkv2(PerkLib.JobHaruspex) >= (maxSkeletonWarriors() * maxSkeletonMulti())) {
 				outputText("You already have as many Skeleton Warriors as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
@@ -2321,7 +2326,7 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function createSkeletonArcher():void {
 			clearOutput();
-			if (player.perkv1(PerkLib.BoneyBow) >= maxSkeletonArchers()) {
+			if (player.perkv1(PerkLib.BoneyBow) >= (maxSkeletonArchers() * maxSkeletonMulti())) {
 				outputText("You already have as many Skeleton Archers as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
@@ -2348,7 +2353,7 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function createSkeletonMage():void {
 			clearOutput();
-			if (player.perkv1(PerkLib.BoneyWand) >= maxSkeletonMages()) {
+			if (player.perkv1(PerkLib.BoneyWand) >= (maxSkeletonMages() * maxSkeletonMulti())) {
 				outputText("You already have as many Skeleton Mages as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
@@ -2375,7 +2380,7 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function createSkeletonGiant():void {
 			clearOutput();
-			if (player.perkv1(PerkLib.BoneGiants) >= maxSkeletonGiants()) {
+			if (player.perkv1(PerkLib.BoneGiants) >= (maxSkeletonGiants() * maxSkeletonMulti())) {
 				outputText("You already have as many Skeleton Giants as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
@@ -2402,7 +2407,7 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function createBoneBallistaSkeleton():void {
 			clearOutput();
-			if (player.perkv1(PerkLib.BoneBallistaSkelies) >= maxBoneBallistaSkeletons()) {
+			if (player.perkv1(PerkLib.BoneBallistaSkelies) >= (maxBoneBallistaSkeletons() * maxSkeletonMulti())) {
 				outputText("You already have as many Bone Ballista Skeletons as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
@@ -2429,7 +2434,7 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function createGigachadSkeletalMage():void {
 			clearOutput();
-			if (player.perkv1(PerkLib.GigachadSkeletalMages) >= maxSkeletonGigachadMages()) {
+			if (player.perkv1(PerkLib.GigachadSkeletalMages) >= (maxSkeletonGigachadMages() * maxSkeletonMulti())) {
 				outputText("You already have as many Gigachad Skeletal Mages as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;

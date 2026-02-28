@@ -535,6 +535,42 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				var over:Number = (player.zombieControlLimit() - player.perkv1(PerkLib.UndeadLord));
 				player.addPerkValue(PerkLib.UndeadLord, 1, -over);
 			}
+			if (player.perkv2(PerkLib.JobHaruspex) > (SceneLib.campMakeWinions.maxSkeletonWarriors() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase1:Number = player.perkv2(PerkLib.JobHaruspex);
+				erase1 -= (SceneLib.campMakeWinions.maxSkeletonWarriors() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.JobHaruspex, 2, -erase1);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase1 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
+			}
+			if (player.perkv1(PerkLib.BoneyBow) > (SceneLib.campMakeWinions.maxSkeletonArchers() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase2:Number = player.perkv1(PerkLib.BoneyBow);
+				erase2 -= (SceneLib.campMakeWinions.maxSkeletonArchers() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.BoneyBow, 1, -erase2);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase2 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
+			}
+			if (player.perkv1(PerkLib.BoneyWand) > (SceneLib.campMakeWinions.maxSkeletonMages() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase3:Number = player.perkv1(PerkLib.BoneyWand);
+				erase3 -= (SceneLib.campMakeWinions.maxSkeletonMages() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.BoneyWand, 1, -erase3);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase3 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
+			}
+			if (player.perkv1(PerkLib.BoneGiants) > (SceneLib.campMakeWinions.maxSkeletonGiants() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase4:Number = player.perkv1(PerkLib.BoneGiants);
+				erase4 -= (SceneLib.campMakeWinions.maxSkeletonGiants() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.BoneGiants, 1, -erase4);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase4 * SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton()));
+			}
+			if (player.perkv1(PerkLib.BoneBallistaSkelies) > (SceneLib.campMakeWinions.maxBoneBallistaSkeletons() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase5:Number = player.perkv1(PerkLib.BoneBallistaSkelies);
+				erase5 -= (SceneLib.campMakeWinions.maxBoneBallistaSkeletons() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.BoneBallistaSkelies, 1, -erase5);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase5 * SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton()));
+			}
+			if (player.perkv1(PerkLib.GigachadSkeletalMages) > (SceneLib.campMakeWinions.maxSkeletonGigachadMages() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase6:Number = player.perkv1(PerkLib.GigachadSkeletalMages);
+				erase6 -= (SceneLib.campMakeWinions.maxSkeletonGigachadMages() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.GigachadSkeletalMages, 1, -erase6);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase6 * SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton()));
+			}
 			if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv4(PerkLib.AbsorbNutrient) > 0) player.addPerkValue(PerkLib.AbsorbNutrient, 4, -1);
 			if (player.hasStatusEffect(StatusEffects.Feeder)) { //Feeder checks
 				if (player.cor <= (20-player.corruptionTolerance)) { //Go away if pure
