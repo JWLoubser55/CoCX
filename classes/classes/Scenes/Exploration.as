@@ -1429,7 +1429,7 @@ public class Exploration extends BaseContent implements SaveableState
 						when  : function ():Boolean {
 							return !player.hasStatusEffect(StatusEffects.ChainOfFate) && !player.hasStatusEffect(StatusEffects.DarkSign) && !player.blockingBodyTransformations()
 						},
-						call  : paleHollowEncounterFn
+						call  : SceneLib.hollowScene.encounterWhite
 					}, _commonEncounters
 			);
 		}
@@ -1700,15 +1700,6 @@ public class Exploration extends BaseContent implements SaveableState
 			outputText("No, you do not want to sacrifice anything. Leaving the watch behind, you return to the camp.\n\n");
 			player.createStatusEffect(StatusEffects.PocketWatch, 0, 0, 0, 0);
 			endEncounter();
-		}
-
-		private function paleHollowEncounterFn():void {
-			clearOutput();
-			//Pale Hollow avoidance chance
-			outputText("(placeholder text (for now (until 2026))). You about to face enemy that would inflict slow acting forced tf effects on your PC that could be fixed if you recruited Evangeline. It will happen no matter fi you win or lose and only escaping from fight, which would be 100% successful, would make possible to avoid those.\n\n<b>Knowing about consequences: Do you still want proceed to this encounter?</b>\n\n");
-			menu();
-			addButton(0, "Yes", SceneLib.hollowScene.encounterWhite);
-			addButton(1, "No", explorer.done);
 		}
 
 		public function ryubifirstenc():void {

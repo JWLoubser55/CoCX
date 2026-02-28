@@ -9494,6 +9494,18 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.AcidAffinity)) damage *= 2;
         return damage;
     }
+	
+	public function wispAmplification():Number {
+		var wispdmgamp:Number = 0.1;
+		if (player.hasPerk(PerkLib.WispLieutenant)) wispdmgamp += 0.2;
+		if (player.hasPerk(PerkLib.WispCaptain)) wispdmgamp += 0.3;
+		if (player.hasPerk(PerkLib.WispMajor)) wispdmgamp += 0.4;
+		if (player.hasPerk(PerkLib.WispColonel)) wispdmgamp += 0.5;
+		if (player.hasPerk(PerkLib.WispBrigadierGeneral)) wispdmgamp += 0.6;
+		if (player.hasPerk(PerkLib.WispMajorGeneral)) wispdmgamp += 0.7;
+		if (player.hasPerk(PerkLib.WispLieutenantGeneral)) wispdmgamp += 0.8;
+		return wispdmgamp;
+	}
 
     public function elementalAmplificationMod(summonedElementals:int):Number {
         var elementalamplification:Number = 1;
@@ -9512,14 +9524,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) elementalamplification += 0.5;
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) elementalamplification += 0.5;
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) elementalamplification += 1;
-        if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
-            elementalamplification += 0.1;
-            if (player.hasPerk(PerkLib.WispLieutenant)) elementalamplification += 0.2;
-            if (player.hasPerk(PerkLib.WispCaptain)) elementalamplification += 0.3;
-            if (player.hasPerk(PerkLib.WispMajor)) elementalamplification += 0.4;
-            if (player.hasPerk(PerkLib.WispColonel)) elementalamplification += 0.5;
-			if (player.hasPerk(PerkLib.WispBrigadierGeneral)) elementalamplification += 0.6;
-        }
+        if (flags[kFLAGS.WILL_O_THE_WISP] == 2) elementalamplification += wispAmplification();
         if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) elementalamplification += (1 - historyTacticianBonus());
         
         if (flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 2 || flags[kFLAGS.ELEMENTAL_CONJUER_SUMMONS] == 4) {
@@ -18788,160 +18793,187 @@ public function runAway(callHook:Boolean = true):void {
         return;
     }
     clearOutput();
-    if (inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 4) {
-        clearOutput();
-        outputText("You try to run, but you just can't seem to escape.  <b>Your ability to run was sealed, and now you've wasted a chance to attack!</b>\n\n");
-        enemyAIImpl();
-        return;
-    }
-    //Rut doesnt let you run from dicks.
-    if (player.inRut && monster.cockTotal() > 0) {
-        clearOutput();
-        outputText("The thought of another male in your area competing for all the pussy infuriates you. There will be <i>no</i> competition to mate!");
-        //Pass false to combatMenu instead:		menuLoc = 3;
-        //		doNext(combatMenu);
-        menu();
-        addButton(0, "Next", combatMenu, false);
-        return;
-    }
-    if (monster.hasStatusEffect(StatusEffects.Level) && player.canFly() && monster is SandTrap) {
-        clearOutput();
-        outputText("You flex the muscles in your back and, shaking clear of the sand, burst into the air!  Wasting no time you fly free of the sandtrap and its treacherous pit.  \"One day your wings will fall off, little ant,\" the snarling voice of the thwarted androgyne carries up to you as you make your escape.  \"And I will be waiting for you when they do!\"");
-        inCombat = false;
-        clearStatuses(false);
-        endEncounter();
-        return;
-    }
-    if (monster.hasStatusEffect(StatusEffects.Dig)) {
-        clearOutput();
-        outputText("You tunnel away from your opponent, escaping the fight and fleeing back to camp.\n");
-        inCombat = false;
-        clearStatuses(false);
-        endEncounter();
-        return;
-    }
-    if (monster.hasStatusEffect(StatusEffects.GenericRunDisabled) || SceneLib.urtaQuest.isUrta()) {
-        outputText("You can't escape from this fight!");
-//Pass false to combatMenu instead:		menuLoc = 3;
-//		doNext(combatMenu);
-        menu();
-        addButton(0, "Next", combatMenu, false);
-        return;
-    }
-    if (monster.hasStatusEffect(StatusEffects.AlrauneRunDisabled)) {
-        if (player.hasKeyItem("Torch") < 0){
-            clearOutput();
-            outputText("You burn away the vines and run for it, much to the frustration of the [monster name]. You’re thankful that she’s this slow.\n");
-            inCombat = false;
-            clearStatuses(false);
-            endEncounter();
-            return;
-        }
-        else{
-            outputText("You are currently being grappled by [monster name] vines, there's no way for you to simply break free!");
-            menu();
-            addButton(0, "Next", combatMenu, false);
-            return;
-        }
-    }
-    if (player.hasStatusEffect(StatusEffects.Tentagrappled) && monster is Barometz) {
-        outputText("You are currently entangled in vines and can't run away!");
-        menu();
-        addButton(0, "Next", combatMenu, false);
-        return;
-    }
-    if (player.lowerBody == LowerBody.FIRE_SNAIL) {
-        outputText("You're too slow to escape from this fight!");
-        //Pass false to combatMenu instead:		menuLoc = 3;
-        //		doNext(combatMenu);
-        menu();
-        addButton(0, "Next", combatMenu, false);
-        return;
-    }
-    if (player.isRaceCached(Races.JIANGSHI)) {
-        outputText("Your cadaverous rigidity prevents any form of escape in battle!");
-        //Pass false to combatMenu instead:		menuLoc = 3;
-        //		doNext(combatMenu);
-        menu();
-        addButton(0, "Next", combatMenu, false);
-        return;
-    }
-    if (player.statStore.hasBuff("Supercharged") && monster.short != "training dummy" && monster.short != "training dummies") {
-        outputText("Run...SERIOUSLY? There is no way you could run! You need to discharge NOW! Your genitals are glistening with dripping plasma. You need to FUCK!");
-        if (monster.isHerm() && player.isHerm()) outputText(" Cock or cunt you don't even care! All you WANT is for that herm to fuck you wildly until your charge is gone!");
-        else{
-            if(monster.hasCock() && player.hasVagina()) outputText("Your drooling outlet DEMANDS that plug!");
-            else if(player.hasCock() && monster.hasVagina()) outputText("Your drooling plug DEMANDS that outlet!");
-        }
-        //Pass false to combatMenu instead:		menuLoc = 3;
-        //		doNext(combatMenu);
-        menu();
-        addButton(0, "Next", combatMenu, false);
-        return;
-    }
-    if (monster.hasStatusEffect(StatusEffects.Level) && monster.statusEffectv1(StatusEffects.Level) < 4 && monster is SandTrap) {
-        outputText("You're too deeply mired to escape!  You'll have to <b>climb</b> some first!");
-        //Pass false to combatMenu instead:		menuLoc = 3;
-        //		doNext(combatMenu);
-        menu();
-        addButton(0, "Next", combatMenu, false);
-        return;
-    }
-    if (monster.hasStatusEffect(StatusEffects.RunDisabled)) {
-        outputText("You'd like to run, but you can't scale the walls of the pit, not with so many demonic hands pulling you down!");
-        //Pass false to combatMenu instead:		menuLoc = 3;
-        //		doNext(combatMenu);
-        menu();
-        addButton(0, "Next", combatMenu, false);
-        return;
-    }
-    if (monster is MinotaurMob && (monster as MinotaurMob).wastedTurn) {
-        (monster as MinotaurMob).wastedTurn = false;
-        //(Free run away)
-        clearOutput();
-        outputText("You slink away while the pack of brutes is arguing.  Once they finish that argument, they'll be sorely disappointed!");
-        inCombat = false;
-        clearStatuses(false);
-        endEncounter();
-        return;
-    } else if (monster.short == "minotaur tribe" && monster.HPRatio() >= 0.75) {
-        clearOutput();
-        outputText("There's too many of them surrounding you to run!");
-        //Pass false to combatMenu instead:		menuLoc = 3;
-        //		doNext(combatMenu);
-        menu();
-        addButton(0, "Next", combatMenu, false);
-        return;
-    }
-    if (inDungeon || inRoomedDungeon) {
-        clearOutput();
-        if (monster is HellfireSnail) {
-            outputText("You run as fast as you can, taking random corridors and running past the confused enemies all the way back to the labyrinth entrance. You lose the slug-woman quickly, however your flight attracts more attention, forcing you all the way back to the surface. \n\n");
-            SceneLib.dungeons.ebonlabyrinth.room = 1;
-            SceneLib.dungeons.ebonlabyrinth.depth = 0;
-            inCombat = false;
-            clearStatuses(false);
-            doNext(playerMenu);
-        } else if (monster is TwinBosses) {
-			SceneLib.dungeons.riverdungeon.almostdefeatedByTwinBosses();
-		} else if (monster.hasPerk(PerkLib.AlwaysSuccesfullRunaway)) {
-			inCombat = false;
-            clearStatuses(false);
-			outputText("You're decide to retreat fro the fight and [monster name] not even stops you from this!\n\n");
-            doNext(playerMenu);
-		} else {
-            outputText("You're trapped in your foe's domain - there is nowhere to run!\n\n");
-            enemyAIImpl();
+	if (!monster.hasPerk(PerkLib.AlwaysSuccesfullRunaway)) {
+		if (inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 4) {
+			clearOutput();
+			outputText("You try to run, but you just can't seem to escape.  <b>Your ability to run was sealed, and now you've wasted a chance to attack!</b>\n\n");
+			enemyAIImpl();
+			return;
 		}
-        return;
-    }
-    //Attempt texts!
-    if (monster is Marae) {
-        outputText("Your boat is blocked by tentacles! ");
-        if (!player.canFly()) outputText("You will not be able to swim fast enough. ");
-        else outputText("You grit your teeth with effort as you try to fly away but the tentacles suddenly grab your [legs] and pull you down. ");
-        outputText("It looks like you cannot escape. ");
-        enemyAIImpl();
+		//Rut doesnt let you run from dicks.
+		if (player.inRut && monster.cockTotal() > 0) {
+			clearOutput();
+			outputText("The thought of another male in your area competing for all the pussy infuriates you. There will be <i>no</i> competition to mate!");
+			//Pass false to combatMenu instead:		menuLoc = 3;
+			//		doNext(combatMenu);
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (monster.hasStatusEffect(StatusEffects.Level) && player.canFly() && monster is SandTrap) {
+			clearOutput();
+			outputText("You flex the muscles in your back and, shaking clear of the sand, burst into the air!  Wasting no time you fly free of the sandtrap and its treacherous pit.  \"One day your wings will fall off, little ant,\" the snarling voice of the thwarted androgyne carries up to you as you make your escape.  \"And I will be waiting for you when they do!\"");
+			inCombat = false;
+			clearStatuses(false);
+			endEncounter();
+			return;
+		}
+		if (monster.hasStatusEffect(StatusEffects.Dig)) {
+			clearOutput();
+			outputText("You tunnel away from your opponent, escaping the fight and fleeing back to camp.\n");
+			inCombat = false;
+			clearStatuses(false);
+			endEncounter();
+			return;
+		}
+		if (monster.hasStatusEffect(StatusEffects.GenericRunDisabled) || SceneLib.urtaQuest.isUrta()) {
+			outputText("You can't escape from this fight!");
+	//Pass false to combatMenu instead:		menuLoc = 3;
+	//		doNext(combatMenu);
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (monster.hasStatusEffect(StatusEffects.AlrauneRunDisabled)) {
+			if (player.hasKeyItem("Torch") < 0){
+				clearOutput();
+				outputText("You burn away the vines and run for it, much to the frustration of the [monster name]. You’re thankful that she’s this slow.\n");
+				inCombat = false;
+				clearStatuses(false);
+				endEncounter();
+				return;
+			}
+			else{
+				outputText("You are currently being grappled by [monster name] vines, there's no way for you to simply break free!");
+				menu();
+				addButton(0, "Next", combatMenu, false);
+				return;
+			}
+		}
+		if (player.hasStatusEffect(StatusEffects.Tentagrappled) && monster is Barometz) {
+			outputText("You are currently entangled in vines and can't run away!");
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (player.lowerBody == LowerBody.FIRE_SNAIL) {
+			outputText("You're too slow to escape from this fight!");
+			//Pass false to combatMenu instead:		menuLoc = 3;
+			//		doNext(combatMenu);
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (player.isRaceCached(Races.JIANGSHI)) {
+			outputText("Your cadaverous rigidity prevents any form of escape in battle!");
+			//Pass false to combatMenu instead:		menuLoc = 3;
+			//		doNext(combatMenu);
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (player.statStore.hasBuff("Supercharged") && monster.short != "training dummy" && monster.short != "training dummies") {
+			outputText("Run...SERIOUSLY? There is no way you could run! You need to discharge NOW! Your genitals are glistening with dripping plasma. You need to FUCK!");
+			if (monster.isHerm() && player.isHerm()) outputText(" Cock or cunt you don't even care! All you WANT is for that herm to fuck you wildly until your charge is gone!");
+			else{
+				if(monster.hasCock() && player.hasVagina()) outputText("Your drooling outlet DEMANDS that plug!");
+				else if(player.hasCock() && monster.hasVagina()) outputText("Your drooling plug DEMANDS that outlet!");
+			}
+			//Pass false to combatMenu instead:		menuLoc = 3;
+			//		doNext(combatMenu);
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (monster.hasStatusEffect(StatusEffects.Level) && monster.statusEffectv1(StatusEffects.Level) < 4 && monster is SandTrap) {
+			outputText("You're too deeply mired to escape!  You'll have to <b>climb</b> some first!");
+			//Pass false to combatMenu instead:		menuLoc = 3;
+			//		doNext(combatMenu);
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (monster.hasStatusEffect(StatusEffects.RunDisabled)) {
+			outputText("You'd like to run, but you can't scale the walls of the pit, not with so many demonic hands pulling you down!");
+			//Pass false to combatMenu instead:		menuLoc = 3;
+			//		doNext(combatMenu);
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (monster is MinotaurMob && (monster as MinotaurMob).wastedTurn) {
+			(monster as MinotaurMob).wastedTurn = false;
+			//(Free run away)
+			clearOutput();
+			outputText("You slink away while the pack of brutes is arguing.  Once they finish that argument, they'll be sorely disappointed!");
+			inCombat = false;
+			clearStatuses(false);
+			endEncounter();
+			return;
+		} else if (monster.short == "minotaur tribe" && monster.HPRatio() >= 0.75) {
+			clearOutput();
+			outputText("There's too many of them surrounding you to run!");
+			//Pass false to combatMenu instead:		menuLoc = 3;
+			//		doNext(combatMenu);
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if (inDungeon || inRoomedDungeon) {
+			clearOutput();
+			if (monster is HellfireSnail) {
+				outputText("You run as fast as you can, taking random corridors and running past the confused enemies all the way back to the labyrinth entrance. You lose the slug-woman quickly, however your flight attracts more attention, forcing you all the way back to the surface. \n\n");
+				SceneLib.dungeons.ebonlabyrinth.room = 1;
+				SceneLib.dungeons.ebonlabyrinth.depth = 0;
+				inCombat = false;
+				clearStatuses(false);
+				doNext(playerMenu);
+			} else if (monster is TwinBosses) {
+				SceneLib.dungeons.riverdungeon.almostdefeatedByTwinBosses();
+			} else {
+				outputText("You're trapped in your foe's domain - there is nowhere to run!\n\n");
+				enemyAIImpl();
+			}
+			return;
+		}
+		//Attempt texts!
+		if (monster is Marae) {
+			outputText("Your boat is blocked by tentacles! ");
+			if (!player.canFly()) outputText("You will not be able to swim fast enough. ");
+			else outputText("You grit your teeth with effort as you try to fly away but the tentacles suddenly grab your [legs] and pull you down. ");
+			outputText("It looks like you cannot escape. ");
+			enemyAIImpl();
+			return;
+		}
+		if (player.hasStatusEffect(StatusEffects.LockingCurse)) {
+			if (player.statusEffectv1(StatusEffects.LockingCurse) == 1) {
+				outputText("The anubis acursed magic prevents you from escaping as an invisible wall blocks your path!");
+				enemyAIImpl();
+				return;
+			}
+			if (player.statusEffectv1(StatusEffects.LockingCurse) == 0 && !monster.hasStatusEffect(StatusEffects.Dig)) {
+				if (player.canFly()) {
+					clearOutput();
+					outputText("Gritting your teeth with effort, you beat your wings quickly and lift off!  Wasting no time you fly away.");
+					inCombat = false;
+					clearStatuses(false);
+					endEncounter();
+					return;
+				}
+				else {
+					outputText("The anubis has you surrounded by h"+(monster.hasVagina()?"er":"is")+" pet, there is no escape by land!");
+					enemyAIImpl();
+					return;
+				}
+			}
+		}
+	}
+    if ((inDungeon || inRoomedDungeon) && monster.hasPerk(PerkLib.AlwaysSuccesfullRunaway)) {
+        clearOutput();
+        inCombat = false;
+        clearStatuses(false);
+		outputText("You're decide to retreat fro the fight and [monster name] not even stops you from this!\n\n");
+        doNext(playerMenu);
         return;
     }
     if (monster is Ember) {
@@ -18960,28 +18992,6 @@ public function runAway(callHook:Boolean = true):void {
     if (monster is TrainingDummy) {
         outputText("As you retreat the training dummy just stands there. ");
     }
-	if (player.hasStatusEffect(StatusEffects.LockingCurse)) {
-		if (player.statusEffectv1(StatusEffects.LockingCurse) == 1) {
-			outputText("The anubis acursed magic prevents you from escaping as an invisible wall blocks your path!");
-			enemyAIImpl();
-			return;
-		}
-		if (player.statusEffectv1(StatusEffects.LockingCurse) == 0 && !monster.hasStatusEffect(StatusEffects.Dig)) {
-			if (player.canFly()) {
-				clearOutput();
-				outputText("Gritting your teeth with effort, you beat your wings quickly and lift off!  Wasting no time you fly away.");
-				inCombat = false;
-				clearStatuses(false);
-				endEncounter();
-				return;
-			}
-			else {
-				outputText("The anubis has you surrounded by h"+(monster.hasVagina()?"er":"is")+" pet, there is no escape by land!");
-				enemyAIImpl();
-				return;
-			}
-		}
-	}
     else if (player.canFly() && !player.hasStatusEffect(StatusEffects.FlyingDisabled)) {
         var wingsNoFlap:Array = [Wings.ETHEREAL, Wings.LEVITATION, Wings.THUNDEROUS_AURA, Wings.WINDY_AURA];
         if(!(wingsNoFlap.indexOf(player.wings.type) >= 0)){
@@ -18991,11 +19001,10 @@ public function runAway(callHook:Boolean = true):void {
             outputText("You leap into the air, and hover in the sky!  ");
         }
     }
-
     //Nonflying PCs
     else {
         //Stuck!
-        if (player.hasStatusEffect(StatusEffects.NoFlee)) {
+        if (player.hasStatusEffect(StatusEffects.NoFlee) && !monster.hasPerk(PerkLib.AlwaysSuccesfullRunaway)) {
             clearOutput();
             if (monster.short == "goblin") outputText("You try to flee, but get stuck in the sticky white goop surrounding you.\n\n");
             else outputText("You put all your skills at running to work, ducking and diving in an effort to escape, but are unable to get away!\n\n");
@@ -19005,10 +19014,9 @@ public function runAway(callHook:Boolean = true):void {
         //Nonstuck!
         else outputText("You turn tail and attempt to flee!  ");
     }
-
     //Calculations
     var escapeMod:Number = 20 + monster.level * 3;
-    if (debug) escapeMod -= 300;
+    if (debug || monster.hasPerk(PerkLib.AlwaysSuccesfullRunaway)) escapeMod -= 30000;
     if (player.tailType == Tail.RACCOON && player.ears.type == Ears.RACCOON && player.hasPerk(PerkLib.Runner)) escapeMod -= 25;
     if (monster.hasStatusEffect(StatusEffects.Stunned)) escapeMod -= 50;
     if (player.hasStatusEffect(StatusEffects.Snow) && player.effectiveTallness < 84) escapeMod += 200;
@@ -19029,89 +19037,91 @@ public function runAway(callHook:Boolean = true):void {
         if (player.ballSize >= 48 && player.hasBalls()) escapeMod += 10;
         if (player.ballSize >= 120 && player.hasBalls()) escapeMod += 10;
     }
-    //ANEMONE OVERRULES NORMAL RUN
-    if (monster is Anemone) {
-        //Autosuccess - less than 60 lust
-        if (player.lust < (player.maxLust() * 0.6)) {
-            clearOutput();
-            outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
-            inCombat = false;
-            clearStatuses(false);
-            endEncounter();
-            return;
-        }
-        //Speed dependent
-        else {
-            //Success
-            if (player.spe > rand(monster.spe + escapeMod)) {
-                inCombat = false;
-                clearStatuses(false);
-                clearOutput();
-                outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
-                endEncounter();
-                return;
-            }
-            //Run failed:
-            else {
-                outputText("You try to shake off the fog and run, but the anemone slinks over to you and her tentacles wrap around your waist.  <i>\"Stay?\"</i> she asks, pressing her small breasts into you as a tentacle slides inside your [armor] and down to your nethers.  The combined stimulation of the rubbing and the tingling venom causes your knees to buckle, hampering your resolve and ending your escape attempt.");
-                //(gain lust, temp lose spd/str)
-                (monster as Anemone).applyVenom((4 + player.effectiveSensitivity() / 20));
-                combatRoundOver();
-                return;
-            }
-        }
-    }
-    //SEA ANEMONE OVERRULES NORMAL RUN
-    if (monster is SeaAnemone) {
-        //Autosuccess - less than 60 lust
-        if (player.lust < (player.maxLust() * 0.6)) {
-            clearOutput();
-            outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
-            inCombat = false;
-            clearStatuses(false);
-            endEncounter();
-            return;
-        }
-        //Speed dependent
-        else {
-            //Success
-            if (player.spe > rand(monster.spe + escapeMod)) {
-                inCombat = false;
-                clearStatuses(false);
-                clearOutput();
-                outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
-                endEncounter();
-                return;
-            }
-            //Run failed:
-            else {
-                outputText("You try to shake off the fog and run, but the anemone slinks over to you and her tentacles wrap around your waist.  <i>\"Stay?\"</i> she asks, pressing her small breasts into you as a tentacle slides inside your [armor] and down to your nethers.  The combined stimulation of the rubbing and the tingling venom causes your knees to buckle, hampering your resolve and ending your escape attempt.");
-                //(gain lust, temp lose spd/str)
-                (monster as SeaAnemone).applyVenom((4 + player.effectiveSensitivity() / 20));
-                combatRoundOver();
-                return;
-            }
-        }
-    }
-    //Ember is SPUCIAL
-    if (monster is Ember) {
-        //GET AWAY
-        if (player.spe > rand(monster.spe + escapeMod) || (player.hasPerk(PerkLib.Runner) && rand(100) < 50)) {
-            if (player.hasPerk(PerkLib.Runner)) outputText("Using your skill at running, y");
-            else outputText("Y");
-            outputText("ou easily outpace the dragon, who begins hurling imprecations at you.  \"What the hell, [name], you weenie; are you so scared that you can't even stick out your punishment?\"");
-            outputText("\n\nNot to be outdone, you call back, \"Sucks to be you!  If even the mighty Last Ember of Hope can't catch me, why do I need to train?  Later, little bird!\"");
-            inCombat = false;
-            clearStatuses(false);
-            endEncounter();
-        }
-        //Fail:
-        else {
-            outputText("Despite some impressive jinking, " + SceneLib.emberScene.emberMF("he", "she") + " catches you, tackling you to the ground.\n\n");
-            enemyAIImpl();
-        }
-        return;
-    }
+	if (!monster.hasPerk(PerkLib.AlwaysSuccesfullRunaway)) {
+		//ANEMONE OVERRULES NORMAL RUN
+		if (monster is Anemone) {
+			//Autosuccess - less than 60 lust
+			if (player.lust < (player.maxLust() * 0.6)) {
+				clearOutput();
+				outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
+				inCombat = false;
+				clearStatuses(false);
+				endEncounter();
+				return;
+			}
+			//Speed dependent
+			else {
+				//Success
+				if (player.spe > rand(monster.spe + escapeMod)) {
+					inCombat = false;
+					clearStatuses(false);
+					clearOutput();
+					outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
+					endEncounter();
+					return;
+				}
+				//Run failed:
+				else {
+					outputText("You try to shake off the fog and run, but the anemone slinks over to you and her tentacles wrap around your waist.  <i>\"Stay?\"</i> she asks, pressing her small breasts into you as a tentacle slides inside your [armor] and down to your nethers.  The combined stimulation of the rubbing and the tingling venom causes your knees to buckle, hampering your resolve and ending your escape attempt.");
+					//(gain lust, temp lose spd/str)
+					(monster as Anemone).applyVenom((4 + player.effectiveSensitivity() / 20));
+					combatRoundOver();
+					return;
+				}
+			}
+		}
+		//SEA ANEMONE OVERRULES NORMAL RUN
+		if (monster is SeaAnemone) {
+			//Autosuccess - less than 60 lust
+			if (player.lust < (player.maxLust() * 0.6)) {
+				clearOutput();
+				outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
+				inCombat = false;
+				clearStatuses(false);
+				endEncounter();
+				return;
+			}
+			//Speed dependent
+			else {
+				//Success
+				if (player.spe > rand(monster.spe + escapeMod)) {
+					inCombat = false;
+					clearStatuses(false);
+					clearOutput();
+					outputText("Marshalling your thoughts, you frown at the strange girl and turn to march up the beach.  After twenty paces inshore you turn back to look at her again.  The anemone is clearly crestfallen by your departure, pouting heavily as she sinks beneath the water's surface.");
+					endEncounter();
+					return;
+				}
+				//Run failed:
+				else {
+					outputText("You try to shake off the fog and run, but the anemone slinks over to you and her tentacles wrap around your waist.  <i>\"Stay?\"</i> she asks, pressing her small breasts into you as a tentacle slides inside your [armor] and down to your nethers.  The combined stimulation of the rubbing and the tingling venom causes your knees to buckle, hampering your resolve and ending your escape attempt.");
+					//(gain lust, temp lose spd/str)
+					(monster as SeaAnemone).applyVenom((4 + player.effectiveSensitivity() / 20));
+					combatRoundOver();
+					return;
+				}
+			}
+		}
+		//Ember is SPUCIAL
+		if (monster is Ember) {
+			//GET AWAY
+			if (player.spe > rand(monster.spe + escapeMod) || (player.hasPerk(PerkLib.Runner) && rand(100) < 50)) {
+				if (player.hasPerk(PerkLib.Runner)) outputText("Using your skill at running, y");
+				else outputText("Y");
+				outputText("ou easily outpace the dragon, who begins hurling imprecations at you.  \"What the hell, [name], you weenie; are you so scared that you can't even stick out your punishment?\"");
+				outputText("\n\nNot to be outdone, you call back, \"Sucks to be you!  If even the mighty Last Ember of Hope can't catch me, why do I need to train?  Later, little bird!\"");
+				inCombat = false;
+				clearStatuses(false);
+				endEncounter();
+			}
+			//Fail:
+			else {
+				outputText("Despite some impressive jinking, " + SceneLib.emberScene.emberMF("he", "she") + " catches you, tackling you to the ground.\n\n");
+				enemyAIImpl();
+			}
+			return;
+		}
+	}
     //SUCCESSFUL FLEE
     if ((player.spe > rand(monster.spe + escapeMod)) || monster.hasPerk(PerkLib.AlwaysSuccesfullRunaway)) {
         //Fliers flee!
@@ -19688,14 +19698,7 @@ public function sendSkeletonToFight():void {
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgamp += 0.5;
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgamp += 0.5;
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgamp += 1;
-    if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
-        dmgamp += 0.1;
-        if (player.hasPerk(PerkLib.WispLieutenant)) dmgamp += 0.2;
-        if (player.hasPerk(PerkLib.WispCaptain)) dmgamp += 0.3;
-        if (player.hasPerk(PerkLib.WispMajor)) dmgamp += 0.4;
-        if (player.hasPerk(PerkLib.WispColonel)) dmgamp += 0.5;
-		if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgamp += 0.6;
-    }
+    if (flags[kFLAGS.WILL_O_THE_WISP] == 2) dmgamp += wispAmplification();
     damage *= dmgamp;
 	if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet)) damage *= (1 + (0.1 * player.statusEffectv2(StatusEffects.BonusEffectsNecroSet)));
     //Determine if critical hit!
@@ -19838,14 +19841,7 @@ public function skeletonSmash():void {
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgamp += 0.5;
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgamp += 0.5;
 	if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgamp += 1;
-    if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
-        dmgamp += 0.1;
-        if (player.hasPerk(PerkLib.WispLieutenant)) dmgamp += 0.2;
-        if (player.hasPerk(PerkLib.WispCaptain)) dmgamp += 0.3;
-        if (player.hasPerk(PerkLib.WispMajor)) dmgamp += 0.4;
-        if (player.hasPerk(PerkLib.WispColonel)) dmgamp += 0.5;
-		if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgamp += 0.6;
-    }
+    if (flags[kFLAGS.WILL_O_THE_WISP] == 2) dmgamp += wispAmplification();
     damage *= dmgamp;
 	if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet)) damage *= (1 + (0.1 * player.statusEffectv2(StatusEffects.BonusEffectsNecroSet)));
 	var muli:Number = 0;

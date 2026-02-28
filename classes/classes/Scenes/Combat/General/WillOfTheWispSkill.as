@@ -44,6 +44,8 @@ public class WillOfTheWispSkill extends AbstractGeneral {
         if (player.hasPerk(PerkLib.WispMajor)) willothewispamplification += 1;
         if (player.hasPerk(PerkLib.WispColonel)) willothewispamplification += 1;
         if (player.hasPerk(PerkLib.WispBrigadierGeneral)) willothewispamplification += 1;
+        if (player.hasPerk(PerkLib.WispMajorGeneral)) willothewispamplification += 1;
+        if (player.hasPerk(PerkLib.WispLieutenantGeneral)) willothewispamplification += 1;
         willothewispDamage *= willothewispamplification;
 
 		return Math.round(willothewispDamage);

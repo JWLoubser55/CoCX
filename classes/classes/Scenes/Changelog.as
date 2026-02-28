@@ -249,8 +249,8 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Ormael): Dual Pasha - can be gained by combining 2x Pasha weapon. Cost 1600 gems. Base atk is 33. It's dual normal sized weapon belonging to whip type.\n");
 			outputText("-New Sprite for Alvina by Liadri.\n");
 			outputText("-New pure legendary range weapon (by Brother Five Burning Steps): Failnaught - obtainable by putting Beautiful Bow on restored Marae Altar and then taking it back. Increase range weapons mastery exp multiplier to 3x, double amount of shoot arrows.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 21 misc lvl-up perk: Wisp Major General. Req. Wisp Brigadier General perk, 310+ in, 310+ wis and 28+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 70% (280% in total).\n");
+			outputText("-New tier 25 misc lvl-up perk: Wisp Lieutenant General. Req. Wisp Major General perk, 360+ in, 360+ wis and 36+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 80% (360% in total).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -3120,24 +3120,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.RoyalSlimeJelly)) damage *= 0.2;
 			if (player.hasPerk(PerkLib.DarkSlimeEmpressCore)) dmgAmp += 0.2;
 			if (player.hasPerk(PerkLib.DarkSlimeEmpressCore) && isAuto==false) dmgAmp += 0.2;
-		
-			if (flags[kFLAGS.WILL_O_THE_WISP] == 2 && dmgType!=2) {
-				dmgAmp += 0.1;
-				if (player.hasPerk(PerkLib.WispLieutenant)) dmgAmp += 0.2;
-				if (player.hasPerk(PerkLib.WispCaptain)) dmgAmp += 0.3;
-				if (player.hasPerk(PerkLib.WispMajor)) dmgAmp += 0.4;
-				if (player.hasPerk(PerkLib.WispColonel)) dmgAmp += 0.5;
-				if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgAmp += 0.6;
-			}
-			
+			if (flags[kFLAGS.WILL_O_THE_WISP] == 2 && dmgType!=2) dmgAmp += combat.wispAmplification();
 			if (dmgType == 2){
 				if (player.hasPerk(PerkLib.EromancyExpert)) damage *= 1.5;
 				if (player.hasPerk(PerkLib.JobCourtesan) && monster.hasPerk(PerkLib.EnemyBossType)) damage *= 1.2;
 				if (player.hasPerk(PerkLib.SluttySimplicity) && player.armor.hasTag(ItemConstants.A_REVEALING)) damage *= (1 + ((10 + rand(11)) / 100));
 				if (player.hasPerk(PerkLib.HistoryWhore) || player.hasPerk(PerkLib.PastLifeWhore)) damage *= (1 + combat.historyWhoreBonus());
 			}
-			
-			
 			damage *= dmgAmp;
 		}
 		
@@ -3334,14 +3323,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgAMP += 0.5;
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgAMP += 0.5;
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgAMP += 1;
-		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
-			dmgAMP += 0.1;
-			if (player.hasPerk(PerkLib.WispLieutenant)) dmgAMP += 0.2;
-			if (player.hasPerk(PerkLib.WispCaptain)) dmgAMP += 0.3;
-			if (player.hasPerk(PerkLib.WispMajor)) dmgAMP += 0.4;
-			if (player.hasPerk(PerkLib.WispColonel)) dmgAMP += 0.5;
-			if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgAMP += 0.6;
-		}
+		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) dmgAMP += combat.wispAmplification();
 		if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) dmgAMP += (1 - combat.historyTacticianBonus());
 		return dmgAMP;
 	}
@@ -3729,14 +3711,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 4) dmgamp += 0.5;
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 5) dmgamp += 0.5;
 		if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv1(PerkLib.AbsorbNutrient) > 6) dmgamp += 1;
-		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
-			dmgamp += 0.1;
-			if (player.hasPerk(PerkLib.WispLieutenant)) dmgamp += 0.2;
-			if (player.hasPerk(PerkLib.WispCaptain)) dmgamp += 0.3;
-			if (player.hasPerk(PerkLib.WispMajor)) dmgamp += 0.4;
-			if (player.hasPerk(PerkLib.WispColonel)) dmgamp += 0.5;
-			if (player.hasPerk(PerkLib.WispBrigadierGeneral)) dmgamp += 0.6;
-		}
+		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) dmgamp += combat.wispAmplification();
 		if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) dmgamp += (1 - combat.historyTacticianBonus());
 		return dmgamp;
 	}

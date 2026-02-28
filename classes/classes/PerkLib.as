@@ -3794,16 +3794,16 @@ public class PerkLib
 				"You've chosen the 'Wisp Field Marshal' perk, training your wisp to Wisp Lieutenant General.");*/
 		public static const WispLieutenant:PerkType = mk("Wisp Lieutenant", "Wisp Lieutenant",
 				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 20% (30% in total).",
-				"You've chosen the 'Wisp Lieutenant' perk, training your wisp to Wisp Lieutenant.");/*
+				"You've chosen the 'Wisp Lieutenant' perk, training your wisp to Wisp Lieutenant.");
 		public static const WispLieutenantGeneral:PerkType = mk("Wisp Lieutenant General", "Wisp Lieutenant General",
 				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 80% (360% in total).",
-				"You've chosen the 'Wisp Lieutenant General' perk, training your wisp to Wisp Lieutenant General.");*/
+				"You've chosen the 'Wisp Lieutenant General' perk, training your wisp to Wisp Lieutenant General.");
 		public static const WispMajor:PerkType = mk("Wisp Major", "Wisp Major",
 				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 40% (100% in total).",
-				"You've chosen the 'Wisp Major' perk, training your wisp to Wisp Major.");/*
+				"You've chosen the 'Wisp Major' perk, training your wisp to Wisp Major.");
 		public static const WispMajorGeneral:PerkType = mk("Wisp Major General", "Wisp Major General",
 				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 70% (280% in total).",
-				"You've chosen the 'Wisp Major General' perk, training your wisp to Wisp Brigadier General.");*/
+				"You've chosen the 'Wisp Major General' perk, training your wisp to Wisp Brigadier General.");
 		public static const Wizened:PerkType = mk("Wizened", "Wizened",
 				"You are wise, what did you expect, something wise? You do get 10% more soulforce though.",
 				"You've chosen the 'Wizened' perk, gaining +10% max Soulforce.")
@@ -5583,7 +5583,7 @@ public class PerkLib
 			//[WeaponSmallDoubleAttack, WeaponSmallTripleAttack, WeaponSmallQuadrupleAttack, WeaponSmallPentaAttack, WeaponSmallHexaAttack,
 			//	WeaponSmallHectaAttack, WeaponSmallOctaAttack, WeaponSmallNonaAttack, WeaponSmallDecaAttack],
 			[Whistles, LyingDown, TakingABreak, SkippingWork, Napping, ZZZ],
-			[WispLieutenant, WispCaptain, WispMajor, WispColonel, WispBrigadierGeneral],
+			[WispLieutenant, WispCaptain, WispMajor, WispColonel, WispBrigadierGeneral, WispMajorGeneral, WispLieutenantGeneral],
 			[Wizened, PathOfEnlightenment, Embodiment, InControl, Metamorphable, SoulPowered],
 			// special sections
 			[EpicIntelligence, LegendaryIntelligence, MythicalIntelligence],
@@ -9264,6 +9264,13 @@ public class PerkLib
 			LimitBreakerPsyche3rdStage.requireLevel(120)
 					.requirePerk(LimitBreakerFlesh3rdStage);
             //Tier 21
+            WispMajorGeneral.requireLevel(126)
+                    .requirePerk(WispBrigadierGeneral)
+					.requireInt(310)
+					.requireWis(310)
+					.requireCustomFunction(function (player:Player):Boolean {
+					return player.playerMinionsCount() >= 28;
+					}, "28+ pets/minions/tamed monsters");
 			LimitBreakerSoul3rdStage.requireLevel(126)
 					.requirePerk(LimitBreakerPsyche3rdStage);
             //Tier 22
@@ -9277,7 +9284,13 @@ public class PerkLib
             //Tier 24
 
             //Tier 25
-
+			WispLieutenantGeneral.requireLevel(150)
+                    .requirePerk(WispMajorGeneral)
+					.requireInt(310)
+					.requireWis(310)
+					.requireCustomFunction(function (player:Player):Boolean {
+					return player.playerMinionsCount() >= 36;
+					}, "36+ pets/minions/tamed monsters");
             //Tier 26
 
             //Tier 27
