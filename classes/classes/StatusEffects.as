@@ -759,6 +759,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const TelAdreTripxiGuns6:StatusEffectType             = mk("Tel'Adre Tripxi Guns 6");
 		public static const TempleOfTheDivineTracker:StatusEffectType       = mk("Temple of the Divine Tracker");
 		public static const TempleOfTheDivineTracker2:StatusEffectType      = mk("Temple of the Divine Tracker 2");
+		public static const TempleOfTheDivineTracker3:StatusEffectType      = mk("Temple of the Divine Tracker 3");
 		public static const TentacleBadEndCounter:StatusEffectType          = mk("TentacleBadEndCounter");
 		public static const TentacleJojo:StatusEffectType                   = mk("Tentacle Jojo");
 		public static const TensionReleased:StatusEffectType                = mk("TensionReleased");

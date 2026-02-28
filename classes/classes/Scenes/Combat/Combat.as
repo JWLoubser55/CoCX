@@ -3323,6 +3323,7 @@ public class Combat extends BaseContent {
 				else flags[kFLAGS.MULTIPLE_ARROWS_STYLE] += 2;
 			}
 			if (player.isWoodElf() && player.hasPerk(PerkLib.ELFTwinShot)) flags[kFLAGS.MULTIPLE_ARROWS_STYLE] *= (flags[kFLAGS.ELVEN_TWINSHOT_ENABLED] ? 2 : 1);
+			if (player.weaponRange == weaponsrange.FAILNAU) flags[kFLAGS.MULTIPLE_ARROWS_STYLE] *= 2;
         }
         else if (player.weaponRangePerk == ItemConstants.WT_CROSSBOW) {
             flags[kFLAGS.MULTIPLE_ARROWS_STYLE] = Math.min((flags[kFLAGS.MULTISHOT_STYLE] || 0) + 1, maxRangedAttacks);
@@ -19739,13 +19740,13 @@ public function sendSkeletonToFight():void {
 			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 6) doMinionWindDamage((damage*4), true, true);
 			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 7) doMinionWaterDamage((damage*4), true, true);
 			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 8) doMinionEarthDamage((damage*4), true, true);
-			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 9) doMinionAcidDamage((damage*4), true, true);/*
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 9) doMinionAcidDamage((damage*4), true, true);
 			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
 				var damage1:Number = (damage*4);
 				damage1 = darknessTypeDamageBonus(damage1);
 				damage1 *= darknessDamageBoostedByDao();
 				doMinionDarknessDamage(damage1, true, true);
-			}*/
+			}
 		}
 	}
     if (flags[kFLAGS.NECROMANCER_SKELETONS] == 0) outputText("\n\n");
@@ -20283,6 +20284,7 @@ public function rangeMasteryEXPgained(crit:Boolean = false):Number {
     var rangeMasteryEXPgains:Number = 1;
     if (player.hasPerk(PerkLib.RangeWeaponsMastery)) rangeMasteryEXPgains += 2;
     if (player.weaponRange == weaponsrange.BEA_BOW) rangeMasteryEXPgains *= 2;
+	if (player.weaponRange == weaponsrange.FAILNAU) rangeMasteryEXPgains *= 3;
     if (monster is TrainingDummy && flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 1) {
         rangeMasteryEXPgains *= 2;
         var bMXPMulti:Number = 1;

@@ -294,14 +294,14 @@ public class EventParser {
             SceneLib.inventory.takeItem(player.setWeapon(WeaponLib.FISTS), playerMenu);
             return true;
         }
-        //Drop beautiful bow if corrupted!
-        if (player.weaponRange == CoC.instance.weaponsrange.BEA_BOW && player.cor >= 33 + player.corruptionTolerance) {
+        //Drop beautiful bow / Failnaught if corrupted!
+        if ((player.weaponRange == CoC.instance.weaponsrange.BEA_BOW || player.weaponRange == CoC.instance.weaponsrange.FAILNAU) && player.cor >= 33 + player.corruptionTolerance) {
             EngineCore.outputText("<b>\nThe <u>[weaponrange]</u> grows hot in your hand, until you are forced to drop it.  Whatever power inhabits this range weapon appears to be unhappy with you.  Touching it gingerly, you realize it is no longer hot, but as soon as you go to grab the riser, it nearly burns you.\n\nYou realize you won't be able to use it right now, but you could probably keep it in your inventory.</b>\n\n");
             SceneLib.inventory.takeItem(player.unequipWeaponRange(), playerMenu);
             return true;
         }
-        //Drop beautiful shield if corrupted!
-        if (player.shield == CoC.instance.shields.BSHIELD && player.cor >= 33 + player.corruptionTolerance) {
+        //Drop beautiful shield / Priwden if corrupted!
+        if ((player.shield == CoC.instance.shields.BSHIELD || player.shield == CoC.instance.shields.PRIDWEN) && player.cor >= 33 + player.corruptionTolerance) {
             EngineCore.outputText("<b>\nThe <u>[shield]</u> grows hot in your hand, until you are forced to drop it.  Whatever power inhabits this shield appears to be unhappy with you.  Touching it gingerly, you realize it is no longer hot, but as soon as you go to grab the enarmes, it nearly burns you.\n\nYou realize you won't be able to use it right now, but you could probably keep it in your inventory.</b>\n\n");
             SceneLib.inventory.takeItem(player.unequipShield(), playerMenu);
             return true;
