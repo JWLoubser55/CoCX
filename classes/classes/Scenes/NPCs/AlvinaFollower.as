@@ -933,7 +933,8 @@ public function alvinaMainCampMenuDiary():void
 		outputText("I was finally named archmage out of all the fools at the palace. Truth be told, poisoning the old codgers with undetectable toxins turned out to be perfect because most people think the wizards died from ageing. I can now fully devote my time to my research using all the old man had at his disposal.</i>\n\n");
 		outputText("Alvina almost catches you this time but you manage to act like you didn't open her diary or read it. This is starting to become dangerous. Maybe you should stop your reading now? You head back to camp.\n\n");
 		flags[kFLAGS.ALVINA_DIARY] = 4;
-		doNext(camp.campFollowers);
+		if (flags[kFLAGS.ALVINA_FOLLOWER] > 19) doNext(camp.campLoversMenu);
+		else doNext(camp.campFollowers);
 		advanceMinutes(20);
 	}
 	else if (flags[kFLAGS.ALVINA_DIARY] == 2) {
@@ -959,7 +960,8 @@ public function alvinaMainCampMenuDiary():void
 		outputText("They are still investigating the incident at the school, but as I predicted I am far away now and with the entirety of the forbidden collection. It is unlikely they will find out anything about what happened, let alone trace it back to me, because for all they know there were no survivors. I also left them a parting gift, and should someone try and visit the school in the following years they will have a nasty surprise.</i>\n\n");
 		outputText("You decide to close the book before Alvina catches you reading it. This is getting creepier the more you know about her. Thankfully she didn’t notice and so you head back to camp.\n\n");
 		flags[kFLAGS.ALVINA_DIARY] = 3;
-		doNext(camp.campFollowers);
+		if (flags[kFLAGS.ALVINA_FOLLOWER] > 19) doNext(camp.campLoversMenu);
+		else doNext(camp.campFollowers);
 		advanceMinutes(20);
 	}
 	else if (flags[kFLAGS.ALVINA_DIARY] == 1) {
@@ -973,7 +975,8 @@ public function alvinaMainCampMenuDiary():void
 		outputText("instead he just walked to me and pat me on the head. At that moment I felt strange… as if hot water poured into my body drop by drop, it felt so horribly wrong yet so great. He left saying he would be back in a few years when whatever he did to me would have grown enough that I would be able to call him again, he also said I am indebted to him now but I guess since he saved my life it is not so bad right?</i>\n\n");
 		outputText("You decide to close the book before Alvina catches you reading it. This is getting creepier the more you learn about her. Thankfully she didn’t notice, so you head back to camp.\n\n");
 		flags[kFLAGS.ALVINA_DIARY] = 2;
-		doNext(camp.campFollowers);
+		if (flags[kFLAGS.ALVINA_FOLLOWER] > 19) doNext(camp.campLoversMenu);
+		else doNext(camp.campFollowers);
 		advanceMinutes(10);
 	}
 	else {
@@ -988,14 +991,16 @@ public function alvinaMainCampMenuDiary():void
 		outputText("He said he's desperate to talk to someone and needs me for it. My arm is still in pain from the hot iron he marked me with to inscribe some weird drawing into my skin.</i>\n\n");
 		outputText("You decide to close the book before Alvina catches you reading it. Thankfully she didn’t notice and so you head back to camp.\n\n");
 		flags[kFLAGS.ALVINA_DIARY] = 1;
-		doNext(camp.campFollowers);
+		if (flags[kFLAGS.ALVINA_FOLLOWER] > 19) doNext(camp.campLoversMenu);
+		else doNext(camp.campFollowers);
 		advanceMinutes(10);
 	}
 }
 public function alvinaMainCampMenuDiaryNo():void
 {
 	outputText("You close the book and head back to camp feeling strangely relieved.\n\n");
-	doNext(camp.campFollowers);
+	if (flags[kFLAGS.ALVINA_FOLLOWER] > 19) doNext(camp.campLoversMenu);
+	else doNext(camp.campFollowers);
 }
 public function alvinaMainCampMenuDiaryAreYouSure():void
 {
@@ -1017,7 +1022,8 @@ public function alvinaMainCampMenuDiaryYes():void
 		outputText("\"<i>Flatterer. You are lucky to already be in on the secret otherwise I would have to destroy you in order to keep you silenced.</i>\"\n\n");
 		outputText("She picks up her journal and packs it up back in her bag.\n\n");
 		flags[kFLAGS.ALVINA_DIARY] = 6;
-		doNext(camp.campFollowers);
+		if (flags[kFLAGS.ALVINA_FOLLOWER] > 19) doNext(camp.campLoversMenu);
+		else doNext(camp.campFollowers);
 		advanceMinutes(5);
 	}
 	else {
@@ -1090,7 +1096,7 @@ public function alvinaMainCampSexMenu2():void
 		if (player.hasVagina()) addButton(3, "Contract of Mephistopheles", alvinaMainCampSexMenuContractOfMephistopheles);
 		else addButtonDisabled(3, "Contract of Mephistopheles", "Need to have pussy for this.");
 		if (player.hasVagina()) addButton(4, "Gluttony of Beelzebub", alvinaMainCampSexMenuGluttonyOfBeelzebub).hint("Warning this one is weird");
-		else addButtonDisabled(4, "Gluttony of Beelzebub", "Not yet coded.");
+		else addButtonDisabled(4, "Gluttony of Beelzebub", "Need to have pussy for this.");
 		addButton(14, "Back", alvinaMainCampMenu);
 	} else {
 		outputText("It's barely been an hour and Alvina has already become quite bored. She shakes her head negatively and removes herself from you.\n\n");

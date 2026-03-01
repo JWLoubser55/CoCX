@@ -58,7 +58,7 @@ public class SpecialTransformations extends MutationsHelper {
 		},
 		// is possible
 		function ():Boolean {
-			return ((player.hasPerk(PerkLib.SpiderOvipositor) && (!player.isDrider() || player.tailType != Tail.SPIDER_ADBOMEN || player.tailType != Tail.USHI_ONI)) ||
+			return ((player.hasPerk(PerkLib.SpiderOvipositor) && !player.isDrider() && player.tailType != Tail.SPIDER_ADBOMEN && player.tailType != Tail.USHI_ONI) ||
 					(player.hasPerk(PerkLib.BeeOvipositor) && player.tailType != Tail.BEE_ABDOMEN) ||
 					(player.hasPerk(PerkLib.MantisOvipositor) && player.tailType != Tail.MANTIS_ABDOMEN) ||
 					(player.hasPerk(PerkLib.AntOvipositor) && player.tailType != Tail.ANT_ABDOMEN) ||

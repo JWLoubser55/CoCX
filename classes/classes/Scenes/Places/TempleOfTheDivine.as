@@ -90,8 +90,8 @@ public class TempleOfTheDivine extends BaseContent {
 				if (player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker2) == 2 || player.statusEffectv2(StatusEffects.TempleOfTheDivineTracker2) == 3) addButton(5, "Take Shield", takingPridwenFromAltar);
 				if (player.hasItem(weapons.B_WHIP, 1) || player.hasItem(weapons.PASHA__, 1)) addButton(6, "Put Whip", puttingBWhipOrPashaOnAltar);
 				if (player.statusEffectv3(StatusEffects.TempleOfTheDivineTracker2) == 2 || player.statusEffectv3(StatusEffects.TempleOfTheDivineTracker2) == 3) addButton(6, "Take Whip", takingPashaFromAltar);
-				if (player.hasItem(weaponsrange.BEA_BOW, 1) || player.hasItem(weaponsrange.FAILNAU, 1)) addButton(7, "Put Bow", puttingBStaffOrParacelsusOnAltar);
-				if (player.statusEffectv1(StatusEffects.TempleOfTheDivineTracker3) == 2 || player.statusEffectv1(StatusEffects.TempleOfTheDivineTracker3) == 3) addButton(4, "Take Bow", takingParacelsusFromAltar);
+				if (player.hasItem(weaponsrange.BEA_BOW, 1) || player.hasItem(weaponsrange.FAILNAU, 1)) addButton(7, "Put Bow", puttingBBowOrFailnaughtOnAltar);
+				if (player.statusEffectv1(StatusEffects.TempleOfTheDivineTracker3) == 2 || player.statusEffectv1(StatusEffects.TempleOfTheDivineTracker3) == 3) addButton(4, "Take Bow", takingFailnaughtFromAltar);
 				//8
 				//9
 			}
