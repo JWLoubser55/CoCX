@@ -613,12 +613,14 @@ public class Utils extends Object
 
 		public static function addComma(num:Number):String{
 			if (!isFinite(num)) return String(num);
+			num = Math.round(num);
+			if (num === 0) return "0";
 			var str:String = "";
-			if (num <= 0) return "0";
+			if (num < 0) return "-"+addComma(-num);
 			while (num>0){
 				var tmp:uint = num % 1000;
 				str = ( num > 999 ?"," + (tmp < 100 ? ( tmp < 10 ? "00": "0"): ""): "") + tmp + str;
-				num = num / 1000;
+				num = Math.floor(num / 1000);
 			}
 			return str;
 		}
