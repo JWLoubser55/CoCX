@@ -25,6 +25,7 @@ public class StatBar extends Block {
 		return {
 			width      : 200,
 			height     : 28,
+			zeroValue  : 0,
 			minValue   : 0,
 			maxValue   : 100,
 			rawValue   : 0,
@@ -66,6 +67,7 @@ public class StatBar extends Block {
 	private var _arrowDown:BitmapDataSprite;
 	private var _nameLabel:TextField;
 	private var _valueLabel:TextField;
+	private var _zeroValue:Number;
 	private var _minValue:Number;
 	private var _maxValue:Number;
 	private var _value:Number;
@@ -210,6 +212,16 @@ public class StatBar extends Block {
 		if (showMax) renderValue();
 		update();
 	}
+	public function get zeroValue():Number {
+		return _zeroValue;
+	}
+	public function set zeroValue(value:Number):void {
+		if (_zeroValue != value && _animate && _tween) {
+			_tween.fastForward();
+		}
+		_zeroValue = value;
+		update();
+	}
 	private function renderValue():void {
 		if (percentage) {
 			var pValue:Number = (value / maxValue) * 100;
@@ -320,12 +332,12 @@ public class StatBar extends Block {
 	public function update():void {
 		var barMaxWidth:Number = _arrowStyle == 'big' ? (width - 2 - arrowSz) : (width - 2)
 		if (_bar) {
-			_bar.width = maxValue > 0 ?
-					Utils.boundFloat(0, value, maxValue) * barMaxWidth / maxValue : 0;
+			_bar.width = maxValue > zeroValue ?
+					Utils.boundFloat(zeroValue, value, maxValue) * barMaxWidth / (maxValue-zeroValue) : 0;
 		}
 		if (_minBar) {
-			_minBar.width = maxValue > 0 ?
-					Utils.boundFloat(0, minValue, maxValue) * barMaxWidth / maxValue : 0;
+			_minBar.width = maxValue > zeroValue ?
+					Utils.boundFloat(zeroValue, minValue, maxValue) * barMaxWidth / (maxValue-zeroValue) : 0;
 		}
 	}
 	public function get showMax():Boolean {

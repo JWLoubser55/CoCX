@@ -611,7 +611,8 @@ public class Utils extends Object
 			return number.toString() + "th";
 		}
 
-		public static function addComma(num:int):String{
+		public static function addComma(num:Number):String{
+			if (!isFinite(num)) return String(num);
 			var str:String = "";
 			if (num <= 0) return "0";
 			while (num>0){

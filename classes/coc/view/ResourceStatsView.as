@@ -290,6 +290,7 @@ public class ResourceStatsView extends Block {
 
 
 		hpBar.value = player.HP;
+		hpBar.zeroValue = player.minHP();
 		hpBar.maxValue = player.maxHP();
 //		hpOrb.value = player.HP;
 //		hpOrb.maxValue = hpBar.maxValue;
