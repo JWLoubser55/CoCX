@@ -276,6 +276,7 @@ public class StatsView extends Block {
 	}
 	// <- hideUpDown
 	public function hideUpDown():void {
+		newStatsView.hideUpDown();
 		var ci:int, cc:int = this.allStats.length;
 		for (ci = 0; ci < cc; ++ci) {
 			var c:StatBar = this.allStats[ci];
@@ -295,35 +296,35 @@ public class StatsView extends Block {
 	public function statByName(statName:String):StatBar {
 		switch (statName.toLowerCase()) {
 			case 'str':
-				return strBar;
+				return newStatsView.primaryTab.strBar;
 			case 'tou':
-				return touBar;
+				return newStatsView.primaryTab.touBar;
 			case 'spe':
-				return speBar;
+				return newStatsView.primaryTab.speBar;
 			case 'inte':
 			case 'int':
-				return intBar;
+				return newStatsView.primaryTab.intBar;
 			case 'wis':
-				return wisBar;
+				return newStatsView.primaryTab.wisBar;
 			case 'lib':
-				return libBar;
+				return newStatsView.primaryTab.libBar;
 			case 'sens':
 			case 'sen':
-				return senBar;
+				return newStatsView.primaryTab.sensBar;
 			case 'cor':
-				return corBar;
+				return newStatsView.primaryTab.corBar;
 			case 'hp':
-				return _useNewStatsView ? newStatsView.resourceTab.hpBar : hpBar;
+				return newStatsView.resourceTab.hpBar;
 			case 'wrath':
-				return _useNewStatsView ? newStatsView.resourceTab.wrathBar : wrathBar;
+				return newStatsView.resourceTab.wrathBar;
 			case 'lust':
-				return _useNewStatsView ? newStatsView.resourceTab.lustBar : lustBar;
+				return newStatsView.resourceTab.lustBar;
 			case 'fatigue':
-				return _useNewStatsView ? newStatsView.resourceTab.fatigueBar : fatigueBar;
+				return newStatsView.resourceTab.fatigueBar;
 			case 'mana':
-				return _useNewStatsView ? newStatsView.resourceTab.manaBar : manaBar;
+				return newStatsView.resourceTab.manaBar;
 			case 'soulforce':
-				return _useNewStatsView ? newStatsView.resourceTab.soulforceBar : soulforceBar;
+				return newStatsView.resourceTab.soulforceBar;
 			case 'hunger':
 				return hungerBar;
 			case 'level':

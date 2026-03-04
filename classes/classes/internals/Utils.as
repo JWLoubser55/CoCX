@@ -181,6 +181,8 @@ public class Utils extends Object
 			return Math.round(value*base)/base;
 		}
 		public static function formatNumber(value:Number, options:Object = null):String {
+			if (isNaN(value)) return "NaN";
+			if (!isFinite(value)) return value > 0 ? "Infinity" : "-Infinity";
 			var nf:NumberFormatter = new NumberFormatter();
 			return nf.format(value);
 		}

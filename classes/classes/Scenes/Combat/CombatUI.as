@@ -171,6 +171,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 		favSkills[i] = null;
 	}
 	private function addToLastFav(skillId:String):void {
+		if (favCount >= 10) return;
 		var i:int = favSkills.indexOf(skillId);
 		if (i < 0) {
 			// move skill to first position in favLastSkills

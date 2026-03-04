@@ -2032,6 +2032,7 @@ public class PlayerInfo extends BaseContent {
 		attributeMenu();
 	}
 	private function finishAttributes():void {
+		shiftKeyDown = false; // clear shift key in case it was set on mobile
 		clearOutput();
 		if (player.tempStr > 0) {
 			if (player.tempStr >= 3) outputText("Your muscles feel significantly stronger from your time adventuring.\n");

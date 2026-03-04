@@ -6935,7 +6935,14 @@ public class Combat extends BaseContent {
     }
 
     public function CommasForDigits(damage:Number, lustColor:Boolean = false, text:String = "", elementTag:String = ""):void {
-        var dmgText:String = formatNumber(Math.floor(Math.abs(damage)));
+        var displayNumber:Number = Math.floor(Math.abs(damage));
+        var dmgText:String = formatNumber(displayNumber);
+        var sz:int = int(mainView.mainText.defaultTextFormat.size);
+        while (displayNumber >= 1000 && sz < 48) {
+            displayNumber /= 1000;
+            sz++;
+        }
+	    dmgText = '<font size="'+sz+'">'+dmgText+"</font>";
         if (elementTag == ""){
             outputText("<b>([font-" + (damage < 0 ? "heal" : damage == 0 ? "miss" : lustColor ? "lust" : "damage") + "]" + text + dmgText + "[/font])</b>");
         }

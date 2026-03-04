@@ -151,7 +151,7 @@ public class ResourceStatsView extends Block {
 			showMax: false,
 			labelAlign: 'center',
 			numberStyle: 'comma',
-			hasArrow: false,
+			arrowStyle: 'small',
 			barAlpha: 0.6
 		};
 		hpLabel = row2.addTextField({text:'HP', defaultTextFormat: NewStatsView.BARLABEL_FORMAT});
@@ -367,6 +367,16 @@ public class ResourceStatsView extends Block {
 			UIUtils.setTextColor(bar.valueLabel, textColor);
 		}
 
+	}
+
+	public function hideUpDown():void {
+
+		for each (var bar:StatBar in [
+			hpBar,lustBar,wrathBar,manaBar,fatigueBar,soulforceBar,venomBar
+		]) {
+			bar.isUp = false;
+			bar.isDown = false;
+		}
 	}
 }
 }
