@@ -532,7 +532,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (player.perkv1(PerkLib.UndeadLord) > player.zombieControlLimit()) {
-				var over:Number = (player.zombieControlLimit() - player.perkv1(PerkLib.UndeadLord));
+				var over:Number = (player.perkv1(PerkLib.UndeadLord) - player.zombieControlLimit());
 				player.addPerkValue(PerkLib.UndeadLord, 1, -over);
 			}
 			if (player.perkv2(PerkLib.JobHaruspex) > (SceneLib.campMakeWinions.maxSkeletonWarriors() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
@@ -2310,6 +2310,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasPerk(PerkLib.Nightshade)) player.removePerk(PerkLib.Nightshade);
 				if (player.hasPerk(PerkLib.DarknessAffinity) && player.perkv3(PerkLib.DarknessAffinity) == 1) player.removePerk(PerkLib.DarknessAffinity);
 			}
+			//Hollow affinity related perks
+			//needNext = player.gainOrLosePerk(PerkLib., (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
+			//needNext = player.gainOrLosePerk(PerkLib.ToxicRomance, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
+			//needNext = player.gainOrLosePerk(PerkLib.MeltingPot, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
 			if (player.racialScore(Races.SATYR) >= 15 && !player.hasPerk(PerkLib.PanLabyrinth)) {
 				outputText("\nAs you become more satyr like your ability for music seems to have improved further. Whistling out to yourself you notice the ambient animals behaving strangely. It would seem your song acquired the ability to confuse and daze foes. <b>You gained the Pan Labyrinth ability!</b>\n");
 				player.createPerk(PerkLib.PanLabyrinth, 0, 0, 0, 0);
