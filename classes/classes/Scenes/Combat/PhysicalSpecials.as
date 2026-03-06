@@ -2303,6 +2303,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else damage *= 1.25;
 		}
 		if (player.hasPerk(PerkLib.GiantsReach) && (player.weapon.isLarge() || (player.hasPerk(PerkLib.GigantGripEx) && player.weapon.isSingleMassive()))) damage *= 1.25;
+		if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
 		damage = combat.gallopDamageBoost(damage);
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		//crit

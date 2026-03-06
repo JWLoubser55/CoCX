@@ -83,6 +83,7 @@ public class CombatTeases extends BaseCombatContent {
 			if (power1 > powerC) power1 = powerC;
 			damagemultiplier += power1;
 		}
+		if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damagemultiplier += 0.35;
 		if (player.hasStatusEffect(StatusEffects.FontOfCorruption)) damagemultiplier *= 1.1;
 		tBLD *= damagemultiplier;
 

@@ -1689,9 +1689,11 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						}
 					}
 					if (cloneDao == 9) {
-						if (player.statusEffectv2(StatusEffects.MartialTraining) < SceneLib.soulforce.highestLayerOfMartialTraining()) {
-							SceneLib.soulforce.martialTrainingEffect(Soulforce.daosnot[i][1], Soulforce.daosnot[i][0], true);
-							needNext = true;
+						for (var j:int = 0; j < Soulforce.daosnot.length; ++j) {
+							if (player.statusEffectv2(StatusEffects.MartialTraining) < SceneLib.soulforce.highestLayerOfMartialTraining()) {
+								SceneLib.soulforce.martialTrainingEffect(Soulforce.daosnot[j][1], Soulforce.daosnot[j][0], true);
+								needNext = true;
+							}
 						}
 					}
 				}
@@ -2312,7 +2314,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			}
 			//Hollow affinity related perks
 			//needNext = player.gainOrLosePerk(PerkLib., (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
-			//needNext = player.gainOrLosePerk(PerkLib.ToxicRomance, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.ToxicRomance, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
 			//needNext = player.gainOrLosePerk(PerkLib.MeltingPot, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
 			if (player.racialScore(Races.SATYR) >= 15 && !player.hasPerk(PerkLib.PanLabyrinth)) {
 				outputText("\nAs you become more satyr like your ability for music seems to have improved further. Whistling out to yourself you notice the ambient animals behaving strangely. It would seem your song acquired the ability to confuse and daze foes. <b>You gained the Pan Labyrinth ability!</b>\n");
@@ -3487,4 +3489,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}

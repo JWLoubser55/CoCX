@@ -252,7 +252,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 21 misc lvl-up perk: Wisp Major General. Req. Wisp Brigadier General perk, 310+ in, 310+ wis and 28+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 70% (280% in total).\n");
 			outputText("-New tier 25 misc lvl-up perk: Wisp Lieutenant General. Req. Wisp Major General perk, 360+ in, 360+ wis and 36+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 80% (360% in total).\n");
 			outputText("-\n");
-			//outputText("-New event perk: Toxic Romance. Gained by having Exanimation IV and Acid Affinity perks. Effects: Grapples/Tease attacks/Whip attack/Throws receive 35% increase in damage to foes affected by Acid dot.\n");
+			outputText("-New event perk: Toxic Romance. Gained by having Exanimation IV and Acid Affinity perks. Effects: Grapples/Tease attacks/Whip attack/Throws receive 35% increase in damage to foes affected by Acid dot.\n");
 			//outputText("-New event perk: Melting Pot. Gained by having Exanimation IV and Acid Affinity perks. Effects: All companions/minions/henchmen deal 30% more damage to a foe affected by an acid dot and for the pc to 10% boost in acid amount applied to foe for every companion/minion/henchmen in the party.\n");
 			outputText("-\n");
 			outputText("-\n");
