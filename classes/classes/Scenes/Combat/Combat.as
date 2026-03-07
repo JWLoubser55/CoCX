@@ -3944,6 +3944,7 @@ public class Combat extends BaseContent {
 
 	public function checkForElementalEnchantmentAndDoDamageMain(damage:Number, canUseFist:Boolean = true, canUseWhip:Boolean = true, crit:Boolean = false, IsFeralCombat:Boolean = false, INeedOnlyOneFistOrKick:Number = 0):void{
 		if (((player.weapon.isSwordType() && (player.weapon.isMedium() || player.weapon.isDualMedium())) || player.weapon.isStaffType() || player.weapon.isMonkWeapon() || player.weapon.isGauntletType()) && player.hasStatusEffect(StatusEffects.MartialTraining) && !IsFeralCombat) damage *= (1 + daoModifier(player.statusEffectv2(StatusEffects.MartialTraining)));
+		if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned() && player.weapon.isWhipType()) damage *= 1.35;
 		if (isFireTypeWeaponMain() && !isPlasmaTypeWeaponMain()) {
 			if (player.flameBladeActiveMain()) damage += scalingBonusLibido() * 0.2;
 			if (player.weapon == weapons.VGRAVEH) damage *= 1.25;
@@ -4300,6 +4301,7 @@ public class Combat extends BaseContent {
 	}
 	public function checkForElementalEnchantmentAndDoDamageOff(damage:Number, canUseFist:Boolean = true, canUseWhip:Boolean = true, crit:Boolean = false):void{
 		if (((player.weaponOff.isSwordType() && (player.weaponOff.isMedium() || player.weaponOff.isDualMedium())) || player.weaponOff.isStaffType() || player.weaponOff.isMonkWeapon()) && player.hasStatusEffect(StatusEffects.MartialTraining)) damage *= (1 + daoModifier(player.statusEffectv2(StatusEffects.MartialTraining)));
+		if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned() && player.weaponOff.isWhipType()) damage *= 1.35;
 		if (isFireTypeWeaponOff() && !isPlasmaTypeWeaponOff()) {
 			if (player.flameBladeActiveOff()) damage += scalingBonusLibido() * 0.2;
 			if (player.weaponOff == weapons.VGRAVEH) damage *= 1.25;
@@ -4954,6 +4956,7 @@ public class Combat extends BaseContent {
             if (player.hasPerk(PerkLib.Ghostslinger)) damage *= 1.15;
             if (player.hasPerk(PerkLib.PhantomShooting)) damage *= 1.05;
             if (player.countMiscJewelry(miscjewelries.ATLATL_) > 0) damage *= 1.25;
+			if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
             //Determine if critical hit!
             var crit:Boolean;
             var critChance:Number = calculateCritRange();
@@ -17384,6 +17387,7 @@ public function ScyllaSqueeze():void {
     if (monster.plural) damage *= 5;
     if (player.hasPerk(PerkLib.KrakenBlackDress)) damage *= 2;
     if (player.hasPerk(PerkLib.UnbreakableBind)) damage *= 2;
+	if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
 	if (player.perkv1(IMutationsLib.ScyllaInkGlandsIM) >= 2 && player.isKraken()) damage *= player.perkv1(IMutationsLib.ScyllaInkGlandsIM);
     if (player.hasStatusEffect(StatusEffects.ControlFreak)) damage *= player.statusEffectv1(StatusEffects.ControlFreak);
 	if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.MightyLowerHalfIM)));
@@ -17708,6 +17712,7 @@ public function WhipStrangulate():void {
 	if (player.hasPerk(PerkLib.UnbreakableBind)) damage *= 2;
 	if (player.hasStatusEffect(StatusEffects.ControlFreak)) damage *= player.statusEffectv1(StatusEffects.ControlFreak);
 	if (player.hasPerk(PerkLib.Sadomasochism)) damage *= player.sadomasochismBoost();
+	if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
 	damage = Math.round(damage);
 	doPhysicalDamage(damage, true, true);
 	//Enemy faints -

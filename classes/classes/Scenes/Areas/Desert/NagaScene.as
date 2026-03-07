@@ -1001,6 +1001,7 @@ public function nagaSqueeze():void {
 	if (player.hasPerk(PerkLib.UnbreakableBind)) damage *= 2;
 	if (player.hasStatusEffect(StatusEffects.ControlFreak)) damage *= player.statusEffectv1(StatusEffects.ControlFreak);
 	if (player.hasPerk(PerkLib.Sadomasochism)) damage *= player.sadomasochismBoost();
+	if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
 	if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.MightyLowerHalfIM)));
 	damage = damage+damageBonus;
 	SceneLib.combat.doDamage(damage, true, true);

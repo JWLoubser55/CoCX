@@ -4610,6 +4610,8 @@ public class PerkLib
 				"Causes you to crave cum frequently.  Yet at the same time grants you immunity to Minotaur Cum addiction.");
 		public static const MantisOvipositor:PerkType = mk("Mantis Ovipositor", "Mantis Ovipositor",
 				"Allows you to lay eggs through a special organ on your insect abdomen, though you need at least 10 eggs to lay.");
+		public static const MeltingPot:PerkType = mk("Melting Pot", "Melting Pot",
+				"All companions/minions/henchmen deal 30% more damage to a foe affected by an acid dot and for the pc to 10% boost in acid amount applied to foe for every companion/minion/henchmen in the party.");
 		public static const MilkMaid:MilkMaidPerk = new MilkMaidPerk();
 		public static const MinotaurCumAddict:PerkType = mk("Minotaur Cum Addict", "Minotaur Cum Addict",
 				"Causes you to crave minotaur cum frequently.  You cannot shake this addiction.");
@@ -4708,6 +4710,8 @@ public class PerkLib
 				"You are five times taller than your effective base size.");
 		public static const TouchOfTheDamned:PerkType = mk("Touch of the Damned", "Touch of the Damned",
 				"All unarmed attacks and natural weapons: inflicts acid damage for 3 turns. This acid damage stacks on top of other acid attacks and DOTs. (5% / 15% of foes Total hp) Also generate soulforce equivalent to 5% / 15% of damage done to foe and fill satiety by 1 / 3.");
+		public static const ToxicRomance:PerkType = mk("Toxic Romance", "Toxic Romance",
+				"Grapples/Tease attacks/Whip attack/Throws receive 35% increase in damage to foes affected by Acid dot.");
 		public static const TransformationAcclimation:PerkType = mk("Transformation Acclimation", "Transformation Acclimation",
 				"Increases the likelihood of undergoing a transformation even if you have transformation resistance.");
 		public static const TransformationResistance:PerkType = mk("Transformation Resistance", "Transformation Resistance",
