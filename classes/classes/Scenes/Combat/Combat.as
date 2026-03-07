@@ -9507,6 +9507,9 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.WispBrigadierGeneral)) wispdmgamp += 0.6;
 		if (player.hasPerk(PerkLib.WispMajorGeneral)) wispdmgamp += 0.7;
 		if (player.hasPerk(PerkLib.WispLieutenantGeneral)) wispdmgamp += 0.8;
+		if (player.hasPerk(PerkLib.IDontHaveMinionsIGotFamily)) wispdmgamp *= 4;
+		if (player.hasPerk(PerkLib.IDontHave2FastMinionsIGot2FuriousFamily)) wispdmgamp *= 4;
+		if (player.hasPerk(PerkLib.IDontHaveMinionsIGotFamilyMarethDrift)) wispdmgamp *= 4;
 		return wispdmgamp;
 	}
 
@@ -20778,4 +20781,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

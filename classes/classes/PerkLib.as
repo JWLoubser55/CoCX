@@ -923,6 +923,15 @@ public class PerkLib
 	//	public static const SkeletonOverlord:PerkType = mk("Skeleton Overlord", "Skeleton Overlord",
 	//			"You may now control additional 30 normal and 4 large skeletons of each type. Allows you to levitate all skeletons.",
 	//			"You've chosen the 'Skeleton Emperor / Monarch / Sovereign' perk. You may now control additional 30 normal and 4 large skeletons of each type. Allows you to levitate all skeletons.");
+		public static const IDontHaveMinionsIGotFamily:PerkType = mk("I don't have minions, I got family", "I don't have minions, I got family",
+				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 400% (400% in total) and decrease wisp own attack damage by 50% (50% in total).",
+				"You've chosen the 'I don't have minions, I got family' perk. Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 400% (400% in total) and decrease wisp own attack damage by 50% (50% in total).");
+		public static const IDontHave2FastMinionsIGot2FuriousFamily:PerkType = mk("I don't have 2 fast minions, I got 2 furious family", "I don't have 2 fast minions, I got 2 furious family",
+				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 1200% (1600% in total) and decrease wisp own attack damage by 25% (75% in total).",
+				"You've chosen the 'I don't have 2 fast minions, I got 2 furious family' perk. Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 1200% (1600% in total) and decrease wisp own attack damage by 25% (75% in total).");
+		public static const IDontHaveMinionsIGotFamilyMarethDrift:PerkType = mk("I don't have minions, I got family: Mareth Drift", "I don't have minions, I got family: Mareth Drift",
+				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).",
+				"You've chosen the 'I don't have minions, I got family: Mareth Drift' perk. Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -934,15 +943,6 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -5540,6 +5540,7 @@ public class PerkLib
 			[GreyMageApprentice, GreyMage, GreyArchmage, GrandGreyArchmage, GrandGreyArchmage2ndCircle],
 			[HistoryBuff, GuerrillaTactics, StrengthInNumbers, General, SmallArmy, Fellowship],
 			[HumanSupremacyInitial, HumanSupremacyBasic, HumanSupremacyImproved, HumanSupremacyAdvanced, HumanSupremacySuperior, HumanSupremacyPeerless],
+			[IDontHaveMinionsIGotFamily, IDontHave2FastMinionsIGot2FuriousFamily, IDontHaveMinionsIGotFamilyMarethDrift],
 			[InhumanDesireI, InhumanDesireII, InhumanDesireIII, InhumanDesireIV, InhumanDesireV, InhumanDesireVI],
 			[InsightfulResourcesI, InsightfulResourcesII, InsightfulResourcesIII, InsightfulResourcesIV,
 				InsightfulResourcesV, InsightfulResourcesVI],
@@ -8372,6 +8373,13 @@ public class PerkLib
 					.requireLevel(6)
                     .requireInt(30)
                     .requireWis(30);
+            WispLieutenant.requireLevel(6)
+                    .requirePerk(JobLeader)
+					.requireInt(50)
+					.requireWis(50)
+					.requireCustomFunction(function (player:Player):Boolean {
+					return player.playerMinionsCount() >= 3;
+					}, "3+ pets/minions/tamed monsters");
             ImprovingNaturesBlueprintsNaturalWeapons.requirePerk(JobBeastWarrior)
                     .requireStr(35)
                     .requireTou(35)
@@ -8419,13 +8427,6 @@ public class PerkLib
                     .requirePerks(Evade, Runner, Incorporeality);
 			IronStomachEx.requireLevel(6)
                     .requirePerk(IronStomach);
-            WispLieutenant.requireLevel(6)
-                    .requirePerk(JobLeader)
-					.requireInt(50)
-					.requireWis(50)
-					.requireCustomFunction(function (player:Player):Boolean {
-					return player.playerMinionsCount() >= 3;
-					}, "3+ pets/minions/tamed monsters");
             ShootTheLoadAndHitTheRoad.requireLevel(6)
                     .requirePerk(JobLeader)
 					.requireInt(60)
@@ -8558,6 +8559,13 @@ public class PerkLib
 					.requireLevel(12)
                     .requireInt(55)
                     .requireWis(55);
+            IDontHaveMinionsIGotFamily.requireLevel(12)
+                    .requirePerk(WispLieutenant)
+					.requireInt(65)
+					.requireWis(65)
+					.requireCustomFunction(function (player:Player):Boolean {
+					return player.playerMinionsCount() >= 4;
+					}, "4+ pets/minions/tamed monsters");
             ImprovedCrinosShape.requirePerk(ImprovingNaturesBlueprintsNaturalWeapons)
                     .requireStr(50)
                     .requireTou(50)
@@ -8861,6 +8869,13 @@ public class PerkLib
                     .requireCustomFunction(function (player:Player):Boolean {
                         return player.internalHumanScore() >= 20 && player.racialScore(Races.HUMAN) > 17;
                     }, "Twenty human internal mutations & 18+ human score");
+            IDontHave2FastMinionsIGot2FuriousFamily.requireLevel(33)
+                    .requirePerk(IDontHaveMinionsIGotFamily)
+					.requireInt(115)
+					.requireWis(115)
+					.requireCustomFunction(function (player:Player):Boolean {
+					return player.playerMinionsCount() >= 7;
+					}, "7+ pets/minions/tamed monsters");
             VoltaicEdge.requireLevel(30)
                     .requirePerk(Magnetize)
                     .requireInt(90)
@@ -9085,6 +9100,13 @@ public class PerkLib
                     .requireInt(175)
                     .requireWis(175)
                     .requirePerk(EpicGolemMaker);
+            IDontHaveMinionsIGotFamilyMarethDrift.requireLevel(60)
+                    .requirePerk(IDontHave2FastMinionsIGot2FuriousFamily)
+					.requireInt(175)
+					.requireWis(175)
+					.requireCustomFunction(function (player:Player):Boolean {
+					return player.playerMinionsCount() >= 11;
+					}, "11+ pets/minions/tamed monsters");
 			LimitBreakerPsyche1stStage.requireLevel(60)
 					.requirePerk(LimitBreakerFlesh1stStage);
 			NaturalOath.requireLevel(60)
@@ -9370,3 +9392,4 @@ public class PerkLib
 }
 
 }
+
