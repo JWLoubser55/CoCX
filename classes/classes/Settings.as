@@ -152,33 +152,33 @@ public class Settings extends Utils implements SaveableState {
 		var i:int = 0;
 		// Do not reorder. Add new options to the end.
 		// Order must match saveToObject
-		autoLevel = options[i++];
-		lvlUpFast = options[i++];
-		mutationsSpoiler = options[i++];
-		daysPerYear = options[i++];
+		autoLevel = valueOr(options[i++], 0);
+		lvlUpFast = valueOr(options[i++], 0);
+		mutationsSpoiler = valueOr(options[i++], 0);
+		daysPerYear = valueOr(options[i++], 0);
 
-		backgroundStyle = options[i++];
-		buttonIconsDisabled = options[i++];
-		charviewArmorHidden = options[i++];
-		charviewEnabled = options[i++];
-		charviewModel = options[i++];
-		charviewStyle = options[i++];
-		customFontSize = options[i++];
-		exploreMenuStyle = options[i++];
-		hpStatbarPercentage = options[i++];
-		imagepackOff = options[i++];
-		imdbDetails = options[i++];
-		invtMgmgType = options[i++];
-		lustStatbarPercentage = options[i++];
-		newPerksDisplay = options[i++];
-		spritesOff = options[i++];
-		spriteStyle = options[i++];
-		statbarAnimations = options[i++];
-		use12hours = options[i++];
-		useMetrics = options[i++];
-		useOldFont = options[i++];
-		ussDisplayStyle = options[i++];
-		wrathStatbarPercentage = options[i++];
+		backgroundStyle = valueOr(options[i++], 0);
+		buttonIconsDisabled = valueOr(options[i++], 0);
+		charviewArmorHidden = valueOr(options[i++], 0);
+		charviewEnabled = valueOr(options[i++], 0);
+		charviewModel = valueOr(options[i++], 0);
+		charviewStyle = valueOr(options[i++], 0);
+		customFontSize = valueOr(options[i++], 0);
+		exploreMenuStyle = valueOr(options[i++], 0);
+		hpStatbarPercentage = valueOr(options[i++], 0);
+		imagepackOff = valueOr(options[i++], 0);
+		imdbDetails = valueOr(options[i++], 0);
+		invtMgmgType = valueOr(options[i++], 0);
+		lustStatbarPercentage = valueOr(options[i++], 0);
+		newPerksDisplay = valueOr(options[i++], 0);
+		spritesOff = valueOr(options[i++], false);
+		spriteStyle = valueOr(options[i++], 0);
+		statbarAnimations = valueOr(options[i++], 0);
+		use12hours = valueOr(options[i++], 0);
+		useMetrics = valueOr(options[i++], 0);
+		useOldFont = valueOr(options[i++], 0);
+		ussDisplayStyle = valueOr(options[i++], 0);
+		wrathStatbarPercentage = valueOr(options[i++], 0);
 	}
 }
 }
