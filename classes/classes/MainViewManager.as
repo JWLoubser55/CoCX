@@ -18,6 +18,7 @@ import flash.events.TimerEvent;
 import flash.geom.Point;
 import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
+import flash.text.TextFormat;
 import flash.ui.Keyboard;
 import flash.utils.Timer;
 import flash.utils.getQualifiedClassName;
@@ -78,6 +79,11 @@ public class MainViewManager extends Utils {
 		//Set background
 		var style:int                      = settings.backgroundStyle;
 		var font:String      = (settings.useOldFont > 0) ? StatsView.ValueFontOld : StatsView.ValueFont;
+		var fmt:TextFormat = mainView.mainText.defaultTextFormat;
+		fmt.font = "Times New Roman";
+		fmt.size = settings.customFontSize || 20;
+		fmt.color                           = darkThemeImpl() ? 0xffffff : 0;
+		mainView.mainText.defaultTextFormat = fmt;
 		mainView.setTheme(style, font);
 	}
 

@@ -17,7 +17,7 @@ public class Settings extends Utils implements SaveableState {
 	public var charviewEnabled: int = 0;
 	public var charviewModel: int = 0; //0 is old charviewer model, 1 is new one
 	public var charviewStyle: int = 0; // 0 for in text, 1 for sidebar, 2 for sidebar always visible
-	public var customFontSize: Object = 0;
+	public var customFontSize: int = 0;
 	public var exploreMenuStyle: int = 0;
 	public var hpStatbarPercentage: int = 0; //HP bars show a percentage rather than the core number
 	public var imagepackOff: int = 0; // 1 if imagepack is disabled.
