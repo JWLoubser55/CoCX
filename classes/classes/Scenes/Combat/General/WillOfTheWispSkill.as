@@ -46,6 +46,10 @@ public class WillOfTheWispSkill extends AbstractGeneral {
         if (player.hasPerk(PerkLib.WispBrigadierGeneral)) willothewispamplification += 1;
         if (player.hasPerk(PerkLib.WispMajorGeneral)) willothewispamplification += 1;
         if (player.hasPerk(PerkLib.WispLieutenantGeneral)) willothewispamplification += 1;
+		if (player.hasPerk(PerkLib.BinaryFission)) willothewispamplification *= 2;
+		if (player.hasPerk(PerkLib.OneWispArmyMinor)) willothewispamplification *= 4;
+		if (player.hasPerk(PerkLib.OneWispArmyMajor)) willothewispamplification *= 4;
+		if (player.hasPerk(PerkLib.OneWispArmyEpic)) willothewispamplification *= 4;
 		if (player.hasPerk(PerkLib.IDontHaveMinionsIGotFamily)) willothewispamplification *= 0.5;
 		if (player.hasPerk(PerkLib.IDontHave2FastMinionsIGot2FuriousFamily)) willothewispamplification *= 0.5;
 		if (player.hasPerk(PerkLib.IDontHaveMinionsIGotFamilyMarethDrift)) willothewispamplification *= 0.5;

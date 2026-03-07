@@ -8360,4 +8360,3 @@ public class PhysicalSpecials extends BaseCombatContent {
 }
 
 }
-

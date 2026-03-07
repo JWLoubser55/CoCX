@@ -232,6 +232,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 4 misc lvl-up perk: Gigachad Skeletal Mages. Req. Boney Wand perk, 120+ intelligence and 120+ wisdom. Effect: You can now make (max 1) gigachad skeleton mage out of demon bones.\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Ballista Skelies. Req. Boney Bow perk, 120+ intelligence and 120+ wisdom. Effect: You can now make (max 1) bone ballista skeleton out of demon bones.\n");
 			outputText("-New tier 5 misc lvl-up perk: Bone Cohort. Req. Bone Century perk, 125+ int, 125+ wis. Effect: You may now control up to 24 normal size skeletons of each type.\n");
+			outputText("-New tier 6 misc lvl-up perk: Skeleton High Lord. Req. Skeleton Lord and Bone Efficiency perks, 150+ int, 150+ wis. Effect: You may now control additional 9 normal and 2 large skeletons of each type. Allows you to save 40% of skeletons SF/Mana costs.\n");
 			outputText("-New tier 7 misc lvl-up perk: Bone Legion. Req. Bone Cohort perk, 175+ int, 175+ wis. Effect: You may now control up to 48 normal size skeletons of each type.\n");
 			outputText("-Skeleton Lord perk effect changed to grant only 3 normal and 1 large more skeletons of each type. Also it's now tier 2 mis perk and req. changed to Job: Haruspex perk, 50+ int, 50+ wis.\n");
 			outputText("-Greater Harvest perk effects changed to only increase bones harvested from enemies. Perk lowered to tier 3 misc perk req. Skeleton Lord perk, 55+ int, 55+ wis.\n");
@@ -243,7 +244,6 @@ public class Changelog extends BaseContent
 			outputText("-When below lvl 32 Giacomo selling Pure Peaches for Hollowfied PC's.\n");
 			outputText("-Necro set when completed increase all large sized skeletons control by 1. Each piece of Necro set would add now 3 to each normal sized skeletons caps.\n");
 			outputText("-Skeleton Giant ignore enemy DR. Bone Ballista Skelies deal increased damage to enemy groups or large enemies. Gigachad Skeletal Mages can have selected elemental damage they deal out of combat between any not complex element or pure magic damage.\n");
-			outputText("-New tier 6 misc lvl-up perk: Skeleton High Lord. Req. Skeleton Lord and Bone Efficiency perks, 150+ int, 150+ wis. Effect: You may now control additional 9 normal and 2 large skeletons of each type. Allows you to save 40% of skeletons SF/Mana costs.\n");
 			outputText("-New tier 17 misc lvl-up perk: Wisp Brigadier General. Req. Wisp Colonel perk, 260+ in, 260+ wis and 21+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 60% (210% in total).\n");
 			outputText("-New pure legendary melee weapon (by Electra Simp): Pasha - obtainable by putting Beautiful Whip on restored Marae Altar and then taking it back. Base atk is 33, costing 660 gems, normal sized whip type wepaon with purity scaling and selfpurification effect.\n");
 			outputText("-New melee weapon (by Ormael): Dual Pasha - can be gained by combining 2x Pasha weapon. Cost 1600 gems. Base atk is 33. It's dual normal sized weapon belonging to whip type.\n");
@@ -257,10 +257,10 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 misc lvl-up perk: I don't have minions, I got family. Req. Wisp Lieutenant perk, 65+ int, 65+ wis and 4+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 400% (400% in total) and decrease wisp own attack damage by 50% (50% in total).\n");
 			outputText("-New tier 5 misc lvl-up perk: I don't have 2 fast minions, I got 2 furious family. Req. I don't have minions, I got family perk, 115+ int, 115+ wis and 7+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 1200% (1600% in total) and decrease wisp own attack damage by 25% (75% in total).\n");
 			outputText("-New tier 10 misc lvl-up perk: I don't have minions, I got family: Mareth Drift. Req. I don't have 2 fast minions, I got 2 furious family perk, 175+ int, 175+ wis and 11+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 1 misc lvl-up perk: Binary Fission. Req. Job: Leader perk, 25+ int, 25+ wis. Effect: You wisp divided itself into two. (Double effect of attack or commnad mode)\n");
+			outputText("-New tier 2 misc lvl-up perk: One Wisp Army (Minor). Req. Binary Fission perk, 65+ int, 65+ wis. Effect: Increase wisp own attack damage by 400% (400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 50% (50% in total).\n");
+			outputText("-New tier 5 misc lvl-up perk: One Wisp Army (Major). Req. One Wisp Army (Minor) perk, 115+ int, 115+ wis. Effect: Increase wisp own attack damage by 1200% (1600% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 25% (75% in total).\n");
+			outputText("-New tier 10 misc lvl-up perk: One Wisp Army (Epic). Req. One Wisp Army (Major) perk, 175+ int, 175+ wis. Effect: Increase wisp own attack damage by 4800% (6400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 12,5% (87,5% in total).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -281,6 +281,24 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -360,20 +378,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -404,12 +410,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

@@ -455,6 +455,9 @@ public class PerkLib
 		public static const General:PerkType = mk("General", "General",
 				"You've learned all that you could from those old history books, but now it's finally time to put your knowledge to the ultimate test. Inspire your comrades! Lead them to victory! (+10% minions/pets damage)",
 				"You've chosen the 'General' perk. (+10% minions/pets damage)");
+		public static const GreaterMetabolization:PerkType = mk("Greater Metabolization", "Greater Metabolization",
+				"Increases the duration of lingering nourishment effects by another 100% of base duration, and slows hunger progression even further if any(note does not raise racial scores).",
+				"You've chosen the 'Greater Metabolization' perk. Increases the duration of lingering nourishment effects by another 100% of base duration, and slows hunger progression even further if any(note does not raise racial scores).");
 		public static const GuerrillaTactics:PerkType = mk("Guerrilla Tactics", "Guerrilla Tactics",
 				"No man is an island. Having companions around you, even if they're only familiars, puts your mind at ease. (+10% minions/pets damage)",
 				"You've chosen the 'Guerrilla Tactics' perk. (+10% minions/pets damage)");
@@ -479,6 +482,9 @@ public class PerkLib
 		public static const HumanSupremacySuperior:PerkType = mk("Human Supremacy (Superior)", "Human Supremacy (Superior)",
 				"Delay the onset of negative HP regeneration by 15 points. (+4 to human score)",
 				"You've chosen the 'Human Supremacy (Superior)' perk. Delay by 15 points appearing effect of negative HP regeneration. (+4 to human score)");
+		public static const ImprovedMetabolization:PerkType = mk("Improved Metabolization", "Improved Metabolization",
+				"Increases the duration of lingering nourishment effects by an extra 100% of base duration, and slows hunger progression, if any (note: does not raise racial scores).",
+				"You've chosen the 'Improved Metabolization' perk. Increases the duration of lingering nourishment effects by an extra 100% of base duration, and slows hunger progression, if any (note: does not raise racial scores).");
 		public static const MattressActressActor:PerkType = mk("Mattress Actress/Actor", "Mattress Actress/Actor",
 				"You know just how they like it, every time. No need for words; just lay back and let the fantasy come to life. Don't worry, you'll take good care of them. +10% max lust, +5 to anal/vaginal capacity.",
 				"You've chosen the 'Mattress Actress/Actor' perk. +10% max lust, +5 to anal/vaginal capacity.")
@@ -487,10 +493,16 @@ public class PerkLib
 				"Having your holes filled is all you know and understand. +10% max lust, +5 to anal/vaginal capacity.",
 				"You've chosen the 'Meat Hole' perk. +10% max lust, +5 to anal/vaginal capacity.")
 				.withBuffs({'maxlust_mult':+0.1});
+		public static const Metabolization:PerkType = mk("Metabolization", "Metabolization",
+				"Increases the duration of lingering nourishment effects by 100% of base duration, and slows hunger progression, if any (note: does not raise racial scores).",
+				"You've chosen the 'Metabolization' perk. Increases the duration of lingering nourishment effects by 100% of base duration, and slows hunger progression, if any (note: does not raise racial scores).");
 		public static const PartyBoyGirl:PerkType = mk("Party Boy/Girl", "Party Boy/Girl",
 				"You're the life of the party, particularly the types of parties that happen in Mareth. +10% max lust, +5 to anal/vaginal capacity.",
 				"You've chosen the 'Party Boy/Girl' perk. +10% max lust, +5 to anal/vaginal capacity.")
 				.withBuffs({'maxlust_mult':+0.1});
+		public static const Penetrator:PerkType = mk("Penetrator", "Penetrator",
+				"Thrown weapons and firearms (+ mech weapons) ignore damage reductions piercing right through your opponent's armor weak points (ignore enemy dmg red). (+5% range physical attacks multiplier)",
+				"You've chosen the 'Penetrator' perk. Thrown weapons and firearms (+ mech weapons) ignore damage reductions piercing right through your opponent's armor weak points (ignore enemy dmg red). (+5% range physical attacks multiplier)");
 		public static const PowerAttack:PerkType = mk("Power Attack", "Power Attack",
 				"Enable Power Attack special attack. Add ~20% of base stat scaling value to melee damage. (+5% melee physical attacks multiplier)",
 				"You've chosen the 'Power Attack' perk. Enable Power Attack special attack. Add ~20% of base stat scaling value to melee damage. (+5% melee physical attacks multiplier)");
@@ -516,6 +528,9 @@ public class PerkLib
 				"You had something of a reputation back in Ingnam. If someone was feeling lonely, anxious, or sore (in whichever way), they knew who to call. +10% max lust, +5 to anal/vaginal capacity.",
 				"You've chosen the 'Tension Tamer' perk. +10% max lust, +5 to anal/vaginal capacity.")
 				.withBuffs({'maxlust_mult':+0.1});
+		public static const TwinThunder:PerkType = mk("Twin Thunder", "Twin Thunder",
+				"When using more than one weapon at once, power attack/strike now delivers as many hits as the number of weapons used.",
+				"You've chosen the 'Twin Thunder' perk. When using more than one weapon at once, power attack/strike now delivers as many hits as the number of weapons used.");
 		//public static const BloodSacrifice:PerkType = mk("Blood Sacrifice", "Blood Sacrifice",
 				//"You are currently sacrificing blood to empower your spells.",
 				//"You are currently sacrificing blood to empower your spells.");
@@ -531,21 +546,6 @@ public class PerkLib
 		public static const Alliance:PerkType = mk("Alliance", "Alliance",
 				". (+10% minions/pets damage)",
 				"You've chosen the 'Alliance' perk. (+10% minions/pets damage)");
-		public static const TwinThunder:PerkType = mk("Twin Thunder", "Twin Thunder",
-				"When using more than one weapon at once, power attack/strike now delivers as many hits as the number of weapons used.",
-				"You've chosen the 'Twin Thunder' perk. When using more than one weapon at once, power attack/strike now delivers as many hits as the number of weapons used.");
-		public static const Metabolization:PerkType = mk("Metabolization", "Metabolization",
-				"Increases the duration of lingering nourishment effects by 100% of base duration, and slows hunger progression, if any (note: does not raise racial scores).",
-				"You've chosen the 'Metabolization' perk. Increases the duration of lingering nourishment effects by 100% of base duration, and slows hunger progression, if any (note: does not raise racial scores).");
-		public static const ImprovedMetabolization:PerkType = mk("Improved Metabolization", "Improved Metabolization",
-				"Increases the duration of lingering nourishment effects by an extra 100% of base duration, and slows hunger progression, if any (note: does not raise racial scores).",
-				"You've chosen the 'Improved Metabolization' perk. Increases the duration of lingering nourishment effects by an extra 100% of base duration, and slows hunger progression, if any (note: does not raise racial scores).");
-		public static const GreaterMetabolization:PerkType = mk("Greater Metabolization", "Greater Metabolization",
-				"Increases the duration of lingering nourishment effects by another 100% of base duration, and slows hunger progression even further if any(note does not raise racial scores).",
-				"You've chosen the 'Greater Metabolization' perk. Increases the duration of lingering nourishment effects by another 100% of base duration, and slows hunger progression even further if any(note does not raise racial scores).");
-		public static const Penetrator:PerkType = mk("Penetrator", "Penetrator",
-				"Thrown weapons and firearms (+ mech weapons) ignore damage reductions piercing right through your opponent's armor weak points (ignore enemy dmg red). (+5% range physical attacks multiplier)",
-				"You've chosen the 'Penetrator' perk. Thrown weapons and firearms (+ mech weapons) ignore damage reductions piercing right through your opponent's armor weak points (ignore enemy dmg red). (+5% range physical attacks multiplier)");
 		public static const UtilitySkillsBeginner:PerkType = mk("Utility Skills: Beginner", "Utility Skills: Beginner",
 				"Increasing mastery gains in non-combat skills by 100% of base and slightly decreasing the experience required to level up.",
 				"You've chosen the 'Utility Skills: Beginner' perk. Increasing mastery gains in non-combat skills by 100% of base and slightly decreasing the experience required to level up.");
@@ -932,6 +932,18 @@ public class PerkLib
 		public static const IDontHaveMinionsIGotFamilyMarethDrift:PerkType = mk("I don't have minions, I got family: Mareth Drift", "I don't have minions, I got family: Mareth Drift",
 				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).",
 				"You've chosen the 'I don't have minions, I got family: Mareth Drift' perk. Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).");
+		public static const BinaryFission:PerkType = mk("Binary Fission", "Binary Fission",
+				"You wisp divided itself into two. (Double effect of attack or commnad mode)",
+				"You've chosen the 'Binary Fission' perk. You wisp divided itself into two. (Double effect of attack or commnad mode)");
+		public static const OneWispArmyMinor:PerkType = mk("One Wisp Army (Minor)", "One Wisp Army (Minor)",
+				"Increase wisp own attack damage by 400% (400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 50% (50% in total).",
+				"You've chosen the 'One Wisp Army (Minor)' perk. Increase wisp own attack damage by 400% (400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 50% (50% in total).");
+		public static const OneWispArmyMajor:PerkType = mk("One Wisp Army (Major)", "One Wisp Army (Major)",
+				"Increase wisp own attack damage by 1200% (1600% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 25% (75% in total).",
+				"You've chosen the 'One Wisp Army (Major)' perk. Increase wisp own attack damage by 1200% (1600% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 25% (75% in total).");
+		public static const OneWispArmyEpic:PerkType = mk("One Wisp Army (Epic)", "One Wisp Army (Epic)",
+				"Increase wisp own attack damage by 4800% (6400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 12,5% (87,5% in total).",
+				"You've chosen the 'One Wisp Army (Epic)' perk. Increase wisp own attack damage by 4800% (6400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 12,5% (87,5% in total).");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -943,12 +955,9 @@ public class PerkLib
 		public static const DomainKineses:PerkType = mk("Domain Kineses", "Domain Kineses",
 				".",
 				"You've chosen the 'Domain Kineses' perk. .");
-		public static const :PerkType = mk("", "",
+		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
+				"You've chosen the 'Foreleaders, bear witness' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -5559,6 +5568,7 @@ public class PerkLib
 			[Naturaljouster, NaturaljousterMastergrade],
 			[NaturesSpringI, NaturesSpringII, NaturesSpringIII, NaturesSpringIV],
 			[Nurse, Doctor, FirstResponse, Paramedic, SurgeonsAide, Surgeon],
+			[OneWispArmyMinor, OneWispArmyMajor, OneWispArmyEpic],
 			[PewWarmer, Acolyte, Priest, Pastor, Saint, Cardinal],
 			[PrimalFuryI, PrimalFuryII, PrimalFuryIII, PrimalFuryIV],
 			[RangeWeaponsMastery, RangeWeaponsMasteryEx, RangeWeaponsMasterySu],
@@ -8380,6 +8390,10 @@ public class PerkLib
 					.requireCustomFunction(function (player:Player):Boolean {
 					return player.playerMinionsCount() >= 3;
 					}, "3+ pets/minions/tamed monsters");
+			BinaryFission.requireLevel(6)
+                    .requirePerk(JobLeader)
+					.requireInt(25)
+					.requireWis(25);
             ImprovingNaturesBlueprintsNaturalWeapons.requirePerk(JobBeastWarrior)
                     .requireStr(35)
                     .requireTou(35)
@@ -8566,6 +8580,10 @@ public class PerkLib
 					.requireCustomFunction(function (player:Player):Boolean {
 					return player.playerMinionsCount() >= 4;
 					}, "4+ pets/minions/tamed monsters");
+            OneWispArmyMinor.requireLevel(12)
+                    .requirePerk(BinaryFission)
+					.requireInt(65)
+					.requireWis(65);
             ImprovedCrinosShape.requirePerk(ImprovingNaturesBlueprintsNaturalWeapons)
                     .requireStr(50)
                     .requireTou(50)
@@ -8876,6 +8894,10 @@ public class PerkLib
 					.requireCustomFunction(function (player:Player):Boolean {
 					return player.playerMinionsCount() >= 7;
 					}, "7+ pets/minions/tamed monsters");
+            OneWispArmyMajor.requireLevel(33)
+                    .requirePerk(OneWispArmyMinor)
+					.requireInt(115)
+					.requireWis(115);
             VoltaicEdge.requireLevel(30)
                     .requirePerk(Magnetize)
                     .requireInt(90)
@@ -9107,6 +9129,10 @@ public class PerkLib
 					.requireCustomFunction(function (player:Player):Boolean {
 					return player.playerMinionsCount() >= 11;
 					}, "11+ pets/minions/tamed monsters");
+            OneWispArmyEpic.requireLevel(60)
+                    .requirePerk(OneWispArmyMajor)
+					.requireInt(175)
+					.requireWis(175);
 			LimitBreakerPsyche1stStage.requireLevel(60)
 					.requirePerk(LimitBreakerFlesh1stStage);
 			NaturalOath.requireLevel(60)
@@ -9392,4 +9418,3 @@ public class PerkLib
 }
 
 }
-

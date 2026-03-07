@@ -1566,5 +1566,3 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 	}
 }
 }
-
-
