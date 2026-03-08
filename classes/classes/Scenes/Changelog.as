@@ -264,8 +264,8 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Winter's Grasp. Gained by having Exanimation IV and Ice Affinity perks. Effects: You emits an aura of frost that deals small ice damage every turn, foe suffers a 25% reduction in magic defense and physical defense. Attacks that deal ice damage receive a 25% increase in damage.\n");
 			outputText("-New event perk: Icestorm. Gained by having Exanimation IV and Ice Affinity perks. Effects: Stunned foes receive 30% taken from all sources and all ice attacks receive a 40% increase in damage.\n");
 			outputText("-New event perk: Glacial blockade. Gained by having Exanimation IV and Ice Affinity perks. Effects: PC receives +10 to Physical DR from armor / Magical DR from armor / DR from toughness when a foe is affected by an ice dot.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Precision perk changed to lower enemy armor by 10% or 10 (whichever is greater) instead of just lower enemy armor value by 10.\n");
+			outputText("-New tier 0 wisdom lvl-up perk: Magic Precision. Req. 25+ wisdom. Effect: Reduces enemy magic resistance by 10% or 10 (whichever is greater). (Req's 25+ Wisdom)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -297,6 +297,24 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
@@ -381,20 +399,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -428,12 +434,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

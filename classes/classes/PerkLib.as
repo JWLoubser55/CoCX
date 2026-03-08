@@ -2702,6 +2702,9 @@ public class PerkLib
 		public static const MagicMetabolism:PerkType = mk("Magic Metabolism", "Magic Metabolism",
 				"When your hunger level go down below 50, you start losing mana (5:1 ratio for mana:hunger decay) instead of hunger when it should happen. If your mana is empty, hunger works as usual.",
 				"You've chosen the 'Magic Metabolism' perk. If PC have enough mana can use it as way to keep hunger around 50 pts.");
+		public static const MagicPrecision:PerkType = mk("Magic Precision", "Magic Precision",
+				"Reduces enemy magic resistance by 10% or 10 (whichever is greater). (Req's 25+ Wisdom)",
+				"You've chosen the 'Precision' perk.  Thanks to your wisdom, you're now more adept at finding and striking an enemy's weak points, reducing their magic resistance by 10% or 10 (whichever is greater).  If your wisdom ever drops below 25 you'll no longer be wise enough to benefit from this perk.");
 		public static const MagiculesTheory:PerkType = mk("Magicules Theory", "Magicules Theory",
 				"[if(player.wis>=50)" +
 						"Increases magical critical hit chance by up to 10% (Wisdom-based)." +
@@ -3029,8 +3032,8 @@ public class PerkLib
 				"Increase traditional range weapons (like bows) base attack by 50%. (+10% range physical attacks multiplier)",
 				"You've chosen the 'Practiced shot' perk, increasing traditional range weapons base attack. (+10% range physical attacks multiplier)");
 		public static const Precision:PerkType = mk("Precision", "Precision",
-				"Reduces enemy armor by 10. (Req's 25+ Intelligence)",
-				"You've chosen the 'Precision' perk.  Thanks to your intelligence, you're now more adept at finding and striking an enemy's weak points, reducing their damage resistance from armor by 10.  If your intelligence ever drops below 25 you'll no longer be smart enough to benefit from this perk.");
+				"Reduces enemy armor by 10% or 10 (whichever is greater). (Req's 25+ Intelligence)",
+				"You've chosen the 'Precision' perk.  Thanks to your intelligence, you're now more adept at finding and striking an enemy's weak points, reducing their damage resistance from armor by 10% or 10 (whichever is greater).  If your intelligence ever drops below 25 you'll no longer be smart enough to benefit from this perk.");
 		public static const President:PerkType = mk("President", "President",
 				"You own the school board, controlling what classes are taught, further increasing max mana by 10%.",
 				"You've chosen the 'President' perk, gaining +10% max Mana.")
@@ -6646,10 +6649,8 @@ public class PerkLib
             //------------
             // INTELLIGENCE
             //------------
-            JobSorcerer.requireInt(10);
-            //Slot 4 - precision - -10 enemy toughness for damage calc
             Precision.requireInt(25);
-            //Spellpower - boosts spell power
+            JobSorcerer.requireInt(10);
             Spellpower.requirePerk(JobSorcerer)
                     .requireInt(50);
             MagesWrath.requirePerk(JobSorcerer)
@@ -7244,6 +7245,7 @@ public class PerkLib
             //------------
             // WISDOM
             //------------
+            MagicPrecision.requireWis(25);
             JobTamer.requireWis(10);
             HighStakesTamer.requirePerk(JobTamer)
                     .requireWis(25);

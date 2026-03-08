@@ -15569,10 +15569,23 @@ public class Combat extends BaseContent {
             monster.pronoun2 = SceneLib.emberScene.emberMF("him", "her");
             monster.pronoun3 = SceneLib.emberScene.emberMF("his", "her");
         }
-        //Reduce enemy def if player has precision!
+        //Reduce enemy physical def
+		if (player.hasPerk(PerkLib.WintersGrasp)) monster.armorDef = Math.round(monster.armorDef * 0.75);
         if (player.hasPerk(PerkLib.Precision) && player.inte >= 25) {
             if (monster.armorDef <= 10) monster.armorDef = 0;
-            else monster.armorDef -= 10;
+            else {
+				if (monster.armorDef > 100) monster.armorDef = Math.round(monster.armorDef * 0.9);
+				else monster.armorDef -= 10;
+			}
+        }
+        //Reduce enemy magical def
+        if (player.hasPerk(PerkLib.WintersGrasp)) monster.armorMDef = Math.round(monster.armorMDef * 0.75);
+		if (player.hasPerk(PerkLib.MagicPrecision) && player.wis >= 25) {
+            if (monster.armorMDef <= 10) monster.armorMDef = 0;
+            else {
+				if (monster.armorMDef > 100) monster.armorMDef = Math.round(monster.armorMDef * 0.9);
+				else monster.armorMDef -= 10;
+			}
         }
 		//Adjust lust vulnerability in New Game+.
         if (player.newGamePlusMod() == 1) monster.lustVuln *= 0.9;
@@ -15606,10 +15619,20 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.WintersGrasp)) monster.armorDef = Math.round(monster.armorDef * 0.75);
         if (player.hasPerk(PerkLib.Precision) && player.inte >= 25) {
             if (monster.armorDef <= 10) monster.armorDef = 0;
-            else monster.armorDef -= 10;
+            else {
+				if (monster.armorDef > 100) monster.armorDef = Math.round(monster.armorDef * 0.9);
+				else monster.armorDef -= 10;
+			}
         }
         //Reduce enemy magical def
         if (player.hasPerk(PerkLib.WintersGrasp)) monster.armorMDef = Math.round(monster.armorMDef * 0.75);
+		if (player.hasPerk(PerkLib.MagicPrecision) && player.wis >= 25) {
+            if (monster.armorMDef <= 10) monster.armorMDef = 0;
+            else {
+				if (monster.armorMDef > 100) monster.armorMDef = Math.round(monster.armorMDef * 0.9);
+				else monster.armorMDef -= 10;
+			}
+        }
         //Adjust lust vulnerability in New Game+.
         if (player.newGamePlusMod() == 1) monster.lustVuln *= 0.9;
         else if (player.newGamePlusMod() == 2) monster.lustVuln *= 0.8;
