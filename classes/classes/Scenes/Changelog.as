@@ -239,33 +239,33 @@ public class Changelog extends BaseContent
 			outputText("-First Attack: Skeletons perk tier was changed (9 > 4) and req. now only Skeleton Lord perk.\n");
 			outputText("-Prestige Job: Necromancer req. for Job: Golemancer replaced by Skeleton Lord. Bone Soul perk tier lowered by 1.\n");
 			outputText("-Bone Soul perk effects slight changed: max bones stored increased to +150, max cap of bonus spellpower from having over 50 bones increased to +300%.\n");
+			outputText("-New tier 2 misc lvl-up perk: I don't have minions, I got family. Req. Wisp Lieutenant perk, 65+ int, 65+ wis and 4+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 400% (400% in total) and decrease wisp own attack damage by 50% (50% in total).\n");
+			outputText("-New tier 5 misc lvl-up perk: I don't have 2 fast minions, I got 2 furious family. Req. I don't have minions, I got family perk, 115+ int, 115+ wis and 7+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 1200% (1600% in total) and decrease wisp own attack damage by 25% (75% in total).\n");
+			outputText("-New tier 10 misc lvl-up perk: I don't have minions, I got family: Mareth Drift. Req. I don't have 2 fast minions, I got 2 furious family perk, 175+ int, 175+ wis and 11+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).\n");
+			outputText("-New tier 17 misc lvl-up perk: Wisp Brigadier General. Req. Wisp Colonel perk, 260+ in, 260+ wis and 21+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 60% (210% in total).\n");
+			outputText("-New tier 21 misc lvl-up perk: Wisp Major General. Req. Wisp Brigadier General perk, 310+ int, 310+ wis and 28+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 70% (280% in total).\n");
+			outputText("-New tier 25 misc lvl-up perk: Wisp Lieutenant General. Req. Wisp Major General perk, 360+ int, 360+ wis and 36+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 80% (360% in total).\n");
 			outputText("-New UI + other changes. (aimozg)\n");
 			outputText("-New Combat UI. (aimozg)\n");
 			outputText("-When below lvl 32 Giacomo selling Pure Peaches for Hollowfied PC's.\n");
 			outputText("-Necro set when completed increase all large sized skeletons control by 1. Each piece of Necro set would add now 3 to each normal sized skeletons caps.\n");
 			outputText("-Skeleton Giant ignore enemy DR. Bone Ballista Skelies deal increased damage to enemy groups or large enemies. Gigachad Skeletal Mages can have selected elemental damage they deal out of combat between any not complex element or pure magic damage.\n");
-			outputText("-New tier 17 misc lvl-up perk: Wisp Brigadier General. Req. Wisp Colonel perk, 260+ in, 260+ wis and 21+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 60% (210% in total).\n");
 			outputText("-New pure legendary melee weapon (by Electra Simp): Pasha - obtainable by putting Beautiful Whip on restored Marae Altar and then taking it back. Base atk is 33, costing 660 gems, normal sized whip type wepaon with purity scaling and selfpurification effect.\n");
 			outputText("-New melee weapon (by Ormael): Dual Pasha - can be gained by combining 2x Pasha weapon. Cost 1600 gems. Base atk is 33. It's dual normal sized weapon belonging to whip type.\n");
 			outputText("-New Sprite for Alvina by Liadri.\n");
 			outputText("-New pure legendary range weapon (by Brother Five Burning Steps): Failnaught - obtainable by putting Beautiful Bow on restored Marae Altar and then taking it back. Increase range weapons mastery exp multiplier to 3x, double amount of shoot arrows.\n");
-			outputText("-New tier 21 misc lvl-up perk: Wisp Major General. Req. Wisp Brigadier General perk, 310+ int, 310+ wis and 28+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 70% (280% in total).\n");
-			outputText("-New tier 25 misc lvl-up perk: Wisp Lieutenant General. Req. Wisp Major General perk, 360+ int, 360+ wis and 36+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 80% (360% in total).\n");
 			outputText("-\n");
 			outputText("-New event perk: Toxic Romance. Gained by having Exanimation IV and Acid Affinity perks. Effects: Grapples/Tease attacks/Whip attack/Throws receive 35% increase in damage to foes affected by Acid dot.\n");
 			outputText("-New event perk: Melting Pot. Gained by having Exanimation IV and Acid Affinity perks. Effects: All companions/henchmen deal 30% more damage to a foe affected by an acid dot and for the pc to 10% boost in acid amount applied to foe for every companion/henchmen in the party.\n");
-			outputText("-New tier 2 misc lvl-up perk: I don't have minions, I got family. Req. Wisp Lieutenant perk, 65+ int, 65+ wis and 4+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 400% (400% in total) and decrease wisp own attack damage by 50% (50% in total).\n");
-			outputText("-New tier 5 misc lvl-up perk: I don't have 2 fast minions, I got 2 furious family. Req. I don't have minions, I got family perk, 115+ int, 115+ wis and 7+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 1200% (1600% in total) and decrease wisp own attack damage by 25% (75% in total).\n");
-			outputText("-New tier 10 misc lvl-up perk: I don't have minions, I got family: Mareth Drift. Req. I don't have 2 fast minions, I got 2 furious family perk, 175+ int, 175+ wis and 11+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).\n");
 			outputText("-New tier 1 misc lvl-up perk: Binary Fission. Req. Job: Leader perk, 25+ int, 25+ wis. Effect: You wisp divided itself into two. (Double effect of attack or command mode)\n");
 			outputText("-New tier 2 misc lvl-up perk: One Wisp Army (Minor). Req. Binary Fission perk, 65+ int, 65+ wis. Effect: Increase wisp own attack damage by 400% (400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 50% (50% in total).\n");
 			outputText("-New tier 5 misc lvl-up perk: One Wisp Army (Major). Req. One Wisp Army (Minor) perk, 115+ int, 115+ wis. Effect: Increase wisp own attack damage by 1200% (1600% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 25% (75% in total).\n");
 			outputText("-New tier 10 misc lvl-up perk: One Wisp Army (Epic). Req. One Wisp Army (Major) perk, 175+ int, 175+ wis. Effect: Increase wisp own attack damage by 4800% (6400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 12,5% (87,5% in total).\n");
-			outputText("-\n");
+			outputText("-New event perk: Winter's Grasp. Gained by having Exanimation IV and Ice Affinity perks. Effects: You emits an aura of frost that deals small ice damage every turn, foe suffers a 25% reduction in magic defense and physical defense. Attacks that deal ice damage receive a 25% increase in damage.\n");
 			outputText("-New event perk: Icestorm. Gained by having Exanimation IV and Ice Affinity perks. Effects: Stunned foes receive 30% taken from all sources and all ice attacks receive a 40% increase in damage.\n");
+			outputText("-New event perk: Glacial blockade. Gained by having Exanimation IV and Ice Affinity perks. Effects: PC receives +10 to Physical DR from armor / Magical DR from armor / DR from toughness when a foe is affected by an ice dot.\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -296,7 +296,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
@@ -378,8 +378,26 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -410,6 +428,15 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

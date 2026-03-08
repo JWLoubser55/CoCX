@@ -4533,6 +4533,8 @@ public class PerkLib
 				"You count as two and half times taller than your effective base size for the purpose of perk effects.");
 		public static const GiantSize:PerkType = mk("Giant size", "Giant size",
 				"You are three times taller than your effective base size.");
+		public static const GlacialBlockade:PerkType = mk("Glacial blockade", "Glacial blockade",
+				"PC receives +10 to Physical DR from armor / Magical DR from armor / DR from toughness when a foe is affected by an ice dot.");
 		public static const GoblinoidBlood:PerkType = mk("Goblinoid blood", "Goblinoid blood",
 				"Your blood is highly susceptible to chemical drugs, stimulants and poisons.");
 		public static const GreaterDiehardEx:PerkType = mk("Greater Diehard (Ex)", "Greater Diehard (Ex)",
@@ -4554,6 +4556,8 @@ public class PerkLib
 				"You can charge and move normally even in thick snow or even a blizzard.");
 		public static const Icestorm:PerkType = mk("Icestorm", "Icestorm",
 				"Stunned foes receive 30% taken from all sources and all ice attacks receive a 40% increase in damage.");
+		public static const WintersGrasp:PerkType = mk("Winter's Grasp", "Winter's Grasp",
+				"You emits an aura of frost that deals small ice damage every turn, foe suffers a 25% reduction in magic defense and physical defense. Attacks that deal ice damage receive a 25% increase in damage.");
 		public static const IcyFlesh:PerkType = mk("Icy flesh", "Icy flesh",
 				"You are about as frigid and dead as a corpse however your mastery of ice magic grants you the ability to harden your flesh to the durability of diamonds. Gain an intelligence modifier as a bonus to health calculation equal to that of toughness as well as 1% regeneration. Gain an extra 40% resistance to cold.");
 		public static const ImpNobility:PerkType = mk("Imp Nobility", "Imp Nobility",

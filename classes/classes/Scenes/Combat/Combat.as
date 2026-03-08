@@ -11388,6 +11388,7 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.IceQueenGown)) damage *= 2;
         if (player.hasPerk(PerkLib.WalpurgisIzaliaRobe)) damage = damage / 100;
 		if (player.hasPerk(PerkLib.Icestorm)) damage *= 1.4;
+		if (player.hasPerk(PerkLib.WintersGrasp)) damage *= 1.25;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		if (player.armor == armors.ARCHNECC) damage *= 2;
 		damage *= EyesOfTheHunterDamageBonus();
@@ -12696,6 +12697,29 @@ public class Combat extends BaseContent {
 			doPsychicDamage(damagePA, true, true);
 			outputText(" damage!");
 			if (crit0) outputText(" <b>*Critical Hit!*</b>");
+			outputText("\n\n");
+        }
+		//Winter's Grasp
+        if (player.hasPerk(PerkLib.WintersGrasp) && !flags[kFLAGS.DISABLE_AURAS]) {
+            var damageWG:Number = scalingBonusIntelligence();
+			//Determine if critical hit!
+			var critWG:Boolean = false;
+			var critChanceWG:int = 5;
+			critChanceWG += combatMagicalCritical();
+			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChanceWG = 0;
+			if (rand(100) < critChanceWG) {
+				critWG = true;
+				damageWG *= 1.75;
+			}
+			damageWG = magic.calcGlacialModImpl(damage, false);
+			magic.maintainGlacialModImpl();
+			damageWG *= iceDamageBoostedByDao();
+			damageWG = Math.round(damageWG);
+			damageWG = fixPercentDamage(damageWG);
+			outputText("Your sheer overwhelming fost aura slowly affects [themonster] causing [monster him] ");
+			doIceDamage(damageWG, true, true);
+			outputText(" damage!");
+			if (critWG) outputText(" <b>*Critical Hit!*</b>");
 			outputText("\n\n");
         }
         //Unicorn and Bicorn aura
@@ -15578,11 +15602,14 @@ public class Combat extends BaseContent {
             monster.pronoun2 = SceneLib.emberScene.emberMF("him", "her");
             monster.pronoun3 = SceneLib.emberScene.emberMF("his", "her");
         }
-        //Reduce enemy def if player has precision!
+        //Reduce enemy physical def
+		if (player.hasPerk(PerkLib.WintersGrasp)) monster.armorDef = Math.round(monster.armorDef * 0.75);
         if (player.hasPerk(PerkLib.Precision) && player.inte >= 25) {
             if (monster.armorDef <= 10) monster.armorDef = 0;
             else monster.armorDef -= 10;
         }
+        //Reduce enemy magical def
+        if (player.hasPerk(PerkLib.WintersGrasp)) monster.armorMDef = Math.round(monster.armorMDef * 0.75);
         //Adjust lust vulnerability in New Game+.
         if (player.newGamePlusMod() == 1) monster.lustVuln *= 0.9;
         else if (player.newGamePlusMod() == 2) monster.lustVuln *= 0.8;

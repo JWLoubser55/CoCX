@@ -3100,6 +3100,7 @@ use namespace CoC;
 				if (hasPerk(PerkLib.SpiritualHunger)) dmmm += 6;
 				dmmm += 3;
 			}
+			if (hasPerk(PerkLib.GlacialBlockade) && CoC.instance.monster.monsterIsFrostbiten()) dmmm += 10;
 			if (hasStatusEffect(StatusEffects.FerroPellis)) dmmm += 20;
 			if (hasPerk(PerkLib.JobGuardian)) dmmm += 1;
 			if (hasPerk(PerkLib.TankI)) dmmm += 1;
@@ -3501,6 +3502,7 @@ use namespace CoC;
 				if (hasPerk(PerkLib.SpiritualHunger)) percent += 6;
 				percent += 3;
 			}
+			if (hasPerk(PerkLib.GlacialBlockade) && CoC.instance.monster.monsterIsFrostbiten()) percent += 10;
 			if (hasStatusEffect(StatusEffects.FerroPellis)) percent += 20;
 			if (armorMod > 50) percent += Math.sqrt(armorMod - 50);
 			return percent;
@@ -3691,6 +3693,7 @@ use namespace CoC;
 				if (hasPerk(PerkLib.SpiritualHunger)) percent += 6;
 				percent += 3;
 			}
+			if (hasPerk(PerkLib.GlacialBlockade) && CoC.instance.monster.monsterIsFrostbiten()) percent += 10;
 			if (armorMMod > 50) percent += Math.sqrt(armorMMod - 50);
 			if (hasStatusEffect(StatusEffects.FerroPellis)) percent = Math.round(percent*0.5);
 			return percent;
@@ -9025,6 +9028,7 @@ use namespace CoC;
 				|| hasPerk(PerkLib.AuraOfPurity)
 				|| hasPerk(PerkLib.AlrauneNectar)
 				|| hasPerk(PerkLib.JobPsychic)
+				|| hasPerk(PerkLib.WintersGrasp)
 				|| hasPerk(PerkLib.PheromoneCloud)
 				|| hasPerk(PerkLib.SagittariusAuraOfDominance)
 				|| (hasPerk(PerkLib.IceQueenGown) && isRaceCached(Races.YUKIONNA));
