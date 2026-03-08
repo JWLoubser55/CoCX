@@ -253,19 +253,33 @@ public class Changelog extends BaseContent
 			outputText("-New tier 25 misc lvl-up perk: Wisp Lieutenant General. Req. Wisp Major General perk, 360+ int, 360+ wis and 36+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 80% (360% in total).\n");
 			outputText("-\n");
 			outputText("-New event perk: Toxic Romance. Gained by having Exanimation IV and Acid Affinity perks. Effects: Grapples/Tease attacks/Whip attack/Throws receive 35% increase in damage to foes affected by Acid dot.\n");
-			//outputText("-New event perk: Melting Pot. Gained by having Exanimation IV and Acid Affinity perks. Effects: All companions/minions/henchmen deal 30% more damage to a foe affected by an acid dot and for the pc to 10% boost in acid amount applied to foe for every companion/minion/henchmen in the party.\n");
+			outputText("-New event perk: Melting Pot. Gained by having Exanimation IV and Acid Affinity perks. Effects: All companions/henchmen deal 30% more damage to a foe affected by an acid dot and for the pc to 10% boost in acid amount applied to foe for every companion/henchmen in the party.\n");
 			outputText("-New tier 2 misc lvl-up perk: I don't have minions, I got family. Req. Wisp Lieutenant perk, 65+ int, 65+ wis and 4+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 400% (400% in total) and decrease wisp own attack damage by 50% (50% in total).\n");
 			outputText("-New tier 5 misc lvl-up perk: I don't have 2 fast minions, I got 2 furious family. Req. I don't have minions, I got family perk, 115+ int, 115+ wis and 7+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 1200% (1600% in total) and decrease wisp own attack damage by 25% (75% in total).\n");
 			outputText("-New tier 10 misc lvl-up perk: I don't have minions, I got family: Mareth Drift. Req. I don't have 2 fast minions, I got 2 furious family perk, 175+ int, 175+ wis and 11+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).\n");
-			outputText("-New tier 1 misc lvl-up perk: Binary Fission. Req. Job: Leader perk, 25+ int, 25+ wis. Effect: You wisp divided itself into two. (Double effect of attack or commnad mode)\n");
+			outputText("-New tier 1 misc lvl-up perk: Binary Fission. Req. Job: Leader perk, 25+ int, 25+ wis. Effect: You wisp divided itself into two. (Double effect of attack or command mode)\n");
 			outputText("-New tier 2 misc lvl-up perk: One Wisp Army (Minor). Req. Binary Fission perk, 65+ int, 65+ wis. Effect: Increase wisp own attack damage by 400% (400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 50% (50% in total).\n");
 			outputText("-New tier 5 misc lvl-up perk: One Wisp Army (Major). Req. One Wisp Army (Minor) perk, 115+ int, 115+ wis. Effect: Increase wisp own attack damage by 1200% (1600% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 25% (75% in total).\n");
 			outputText("-New tier 10 misc lvl-up perk: One Wisp Army (Epic). Req. One Wisp Army (Major) perk, 175+ int, 175+ wis. Effect: Increase wisp own attack damage by 4800% (6400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 12,5% (87,5% in total).\n");
 			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Icestorm. Gained by having Exanimation IV and Ice Affinity perks. Effects: Stunned foes receive 30% taken from all sources and all ice attacks receive a 40% increase in damage.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");//New mutation perk: Undead Metabolism. Req. having free metabolism mutation slot; zombie, mummy, jiangshi, lich race. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 5% bonus to libido up to 50% and heal all libido damage from starvation.
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
@@ -281,20 +295,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

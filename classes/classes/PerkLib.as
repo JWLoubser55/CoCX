@@ -933,8 +933,8 @@ public class PerkLib
 				"Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).",
 				"You've chosen the 'I don't have minions, I got family: Mareth Drift' perk. Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).");
 		public static const BinaryFission:PerkType = mk("Binary Fission", "Binary Fission",
-				"You wisp divided itself into two. (Double effect of attack or commnad mode)",
-				"You've chosen the 'Binary Fission' perk. You wisp divided itself into two. (Double effect of attack or commnad mode)");
+				"You wisp divided itself into two. (Double effect of attack or command mode)",
+				"You've chosen the 'Binary Fission' perk. You wisp divided itself into two. (Double effect of attack or command mode)");
 		public static const OneWispArmyMinor:PerkType = mk("One Wisp Army (Minor)", "One Wisp Army (Minor)",
 				"Increase wisp own attack damage by 400% (400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 50% (50% in total).",
 				"You've chosen the 'One Wisp Army (Minor)' perk. Increase wisp own attack damage by 400% (400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 50% (50% in total).");
@@ -4552,6 +4552,8 @@ public class PerkLib
 				"(Amount of hydra heads)% health and (Amount of hydra heads) points of fatigue regeneration but double hunger decaying speed. Stops for 5 rounds when damaged by fire.");
 		public static const Icerunner:PerkType = mk("Icerunner", "Icerunner",
 				"You can charge and move normally even in thick snow or even a blizzard.");
+		public static const Icestorm:PerkType = mk("Icestorm", "Icestorm",
+				"Stunned foes receive 30% taken from all sources and all ice attacks receive a 40% increase in damage.");
 		public static const IcyFlesh:PerkType = mk("Icy flesh", "Icy flesh",
 				"You are about as frigid and dead as a corpse however your mastery of ice magic grants you the ability to harden your flesh to the durability of diamonds. Gain an intelligence modifier as a bonus to health calculation equal to that of toughness as well as 1% regeneration. Gain an extra 40% resistance to cold.");
 		public static const ImpNobility:PerkType = mk("Imp Nobility", "Imp Nobility",
@@ -4620,7 +4622,7 @@ public class PerkLib
 		public static const MantisOvipositor:PerkType = mk("Mantis Ovipositor", "Mantis Ovipositor",
 				"Allows you to lay eggs through a special organ on your insect abdomen, though you need at least 10 eggs to lay.");
 		public static const MeltingPot:PerkType = mk("Melting Pot", "Melting Pot",
-				"All companions/minions/henchmen deal 30% more damage to a foe affected by an acid dot and for the pc to 10% boost in acid amount applied to foe for every companion/minion/henchmen in the party.");
+				"All companions/henchmen deal 30% more damage to a foe affected by an acid dot and for the pc to 10% boost in acid amount applied to foe for every companion/henchmen in the party.");
 		public static const MilkMaid:MilkMaidPerk = new MilkMaidPerk();
 		public static const MinotaurCumAddict:PerkType = mk("Minotaur Cum Addict", "Minotaur Cum Addict",
 				"Causes you to crave minotaur cum frequently.  You cannot shake this addiction.");

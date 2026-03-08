@@ -36,6 +36,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			if (player.hasPerk(PerkLib.DiaphragmControl)) IEoA += 0.1;
 			if (player.hasPerk(PerkLib.VocalTactician)) IEoA += 0.15;
 			if (pointsToHouseMareth() >= 3) IEoA *= 1.2;
+			if (player.hasPerk(PerkLib.MeltingPot) && monster.monsterIsAcidBurned()) IEoA *= 1.3;
 			//ITEMS EFFEC TS? MISC ACC / RINGS / NECK / HEAD ACC, WEAPON?
 			return IEoA;
 		}
