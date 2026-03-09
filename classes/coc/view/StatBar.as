@@ -16,11 +16,16 @@ public class StatBar extends Block {
 	public static var ArrowUp:Class;
 	[Embed(source = "../../../res/ui/arrow-down.png")]
 	public static var ArrowDown:Class;
+	[Embed(source = "../../../res/ui/arrow-up-small.png")]
+	public static var ArrowUpSmall:Class;
+	[Embed(source = "../../../res/ui/arrow-down-small.png")]
+	public static var ArrowDownSmall:Class;
 
 	private static function factoryReset():Object {
 		return {
 			width      : 200,
 			height     : 28,
+			zeroValue  : 0,
 			minValue   : 0,
 			maxValue   : 100,
 			rawValue   : 0,
@@ -32,7 +37,7 @@ public class StatBar extends Block {
 			hasGauge   : true,
 			hasBar     : true,
 			hasMinBar  : false,
-			hasArrow   : true,
+			arrowStyle : 'big',
 			barAlpha   : 0.4,
 			barHeight  : 1.0, // relative to height
 			barColor   : '#0000ff',
@@ -62,6 +67,7 @@ public class StatBar extends Block {
 	private var _arrowDown:BitmapDataSprite;
 	private var _nameLabel:TextField;
 	private var _valueLabel:TextField;
+	private var _zeroValue:Number;
 	private var _minValue:Number;
 	private var _maxValue:Number;
 	private var _value:Number;
@@ -70,12 +76,14 @@ public class StatBar extends Block {
 	private var _animate:Boolean;
 	private var _percentage:Boolean;
 	private var _numberStyle:String;
-	private var _hasArrow:Boolean;
+	private var _arrowStyle:String;
 	private var _initialized:Boolean; // is in constructor
 	private var _options:*;
 
 	private function get arrowSz():Number {
-		return _hasArrow ? this.height-2 : 0;
+		if (_arrowStyle === 'big') return this.height-2;
+		if (_arrowStyle === 'small') return 12;
+		return 0;
 	}
 
 	public function StatBar(options:Object) {
@@ -84,11 +92,20 @@ public class StatBar extends Block {
 		_initialized = false;
 		options             = Utils.extend({},DEFAULT_OPTIONS, options);
 		this._options = options;
-		_hasArrow = options['hasArrow'];
+		_arrowStyle = options['arrowStyle'];
 		var myWidth:Number = options.width;
 		var myHeight:Number = options.height;
-		var arrowSz:Number  = _hasArrow ? myHeight - 2 : 0;
-		var barWidth:Number = myWidth - arrowSz - 2;
+		var arrowSz:Number  = this.arrowSz;
+		var barWidth:Number = myWidth - 2;
+		var labelWidth:Number;
+		if (_arrowStyle == 'big') {
+			barWidth -= arrowSz;
+			labelWidth = barWidth;
+		} else if (_arrowStyle == 'small') {
+			labelWidth = barWidth - arrowSz;
+		} else {
+			labelWidth = barWidth;
+		}
 		if (options.hasBar) {
 			var barX:Number = 1;
 			var barHeight:Number = myHeight*options.barHeight;
@@ -134,7 +151,7 @@ public class StatBar extends Block {
 		}
 		_nameLabel  = addTextField({
 			x                : 6, y: 4,
-			width            : barWidth,
+			width            : labelWidth,
 			height           : myHeight - 4,
 			defaultTextFormat: {
 				font: 'Georgia',
@@ -144,7 +161,7 @@ public class StatBar extends Block {
 		_valueLabel = addTextField({
 			x                : 0,
 			y                : options.labelY,
-			width            : barWidth,
+			width            : labelWidth,
 			height           : options.valueFontSz+10,
 			defaultTextFormat: {
 				font : 'Georgia',
@@ -152,23 +169,23 @@ public class StatBar extends Block {
 				align: options.labelAlign
 			}
 		});
-		if (_hasArrow) {
+		if (_arrowStyle !== 'none') {
 			_arrowUp = addBitmapDataSprite({
-				bitmapClass: ArrowUp,
+				bitmapClass: _arrowStyle === 'big' ? ArrowUp : _arrowStyle === 'small' ? ArrowUpSmall : null,
 				width: arrowSz,
 				height: arrowSz,
 				stretch: true,
 				x: myWidth - arrowSz - 1,
-				y: 1,
+				y: (myHeight - arrowSz)/2,
 				visible: false
 			});
 			_arrowDown = addBitmapDataSprite({
-				bitmapClass: ArrowDown,
+				bitmapClass: _arrowStyle === 'big' ? ArrowDown : _arrowStyle === 'small' ? ArrowDownSmall : null,
 				width: arrowSz,
 				height: arrowSz,
 				stretch: true,
 				x: myWidth - arrowSz - 1,
-				y: 1,
+				y: (myHeight - arrowSz)/2,
 				visible: false
 			});
 		}
@@ -188,8 +205,21 @@ public class StatBar extends Block {
 		return _maxValue;
 	}
 	public function set maxValue(value:Number):void {
+		if (_maxValue != value && _animate && _tween) {
+			_tween.fastForward();
+		}
 		_maxValue = value;
 		if (showMax) renderValue();
+		update();
+	}
+	public function get zeroValue():Number {
+		return _zeroValue;
+	}
+	public function set zeroValue(value:Number):void {
+		if (_zeroValue != value && _animate && _tween) {
+			_tween.fastForward();
+		}
+		_zeroValue = value;
 		update();
 	}
 	private function renderValue():void {
@@ -300,13 +330,14 @@ public class StatBar extends Block {
 		_valueLabel.defaultTextFormat = tf;
 	}
 	public function update():void {
+		var barMaxWidth:Number = _arrowStyle == 'big' ? (width - 2 - arrowSz) : (width - 2)
 		if (_bar) {
-			_bar.width = maxValue > 0 ?
-					Utils.boundFloat(0, value, maxValue) * (width - arrowSz-2) / maxValue : 0;
+			_bar.width = maxValue > zeroValue ?
+					Utils.boundFloat(zeroValue, value, maxValue) * barMaxWidth / (maxValue-zeroValue) : 0;
 		}
 		if (_minBar) {
-			_minBar.width = maxValue > 0 ?
-					Utils.boundFloat(0, minValue, maxValue) * (width - arrowSz-2) / maxValue : 0;
+			_minBar.width = maxValue > zeroValue ?
+					Utils.boundFloat(zeroValue, minValue, maxValue) * barMaxWidth / (maxValue-zeroValue) : 0;
 		}
 	}
 	public function get showMax():Boolean {
@@ -396,7 +427,16 @@ public class StatBar extends Block {
 	public function resizeStatBar():void {
 		var myWidth:Number = this.width;
 		var myHeight:Number = this.height;
-		var barWidth:Number = myWidth - arrowSz - 2;
+		var barWidth:Number = myWidth - 2;
+		var labelWidth:Number;
+		if (_arrowStyle == 'big') {
+			barWidth -= arrowSz;
+			labelWidth = barWidth;
+		} else if (_arrowStyle == 'small') {
+			labelWidth = barWidth - arrowSz;
+		} else {
+			labelWidth = barWidth;
+		}
 		var barHeight:Number = myHeight*1.0;
 		var barX:Number = 1;
 		var barY:Number = myHeight - barHeight;
@@ -416,12 +456,14 @@ public class StatBar extends Block {
 			_gauge.width = barWidth + 2;
 		}
 		if (_nameLabel) {
-			_nameLabel.width = barWidth;
+			_nameLabel.x = 6;
+			_nameLabel.width = labelWidth;
 			_nameLabel.height = myHeight-4;
 		}
 		if (_valueLabel) {
+			_valueLabel.x = 0;
 			_valueLabel.y = _options.labelY;
-			_valueLabel.width = barWidth;
+			_valueLabel.width = labelWidth;
 			_valueLabel.height = _options.valueFontSz+10;
 		}
 		if (_arrowUp) {

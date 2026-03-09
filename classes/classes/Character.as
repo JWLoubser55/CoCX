@@ -476,41 +476,42 @@ import classes.Scenes.NPCs.Forgefather;
 		public override function minHP():Number
 		{
 			var min:Number = 0;
+			var maxHP:Number = this.maxHP();
 			if (hasPerk(PerkLib.Diehard)) {
-				min -= maxHP() * 0.02;
+				min -= maxHP * 0.02;
 				min -= (600 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.ImprovedDiehard)) {
-				min -= maxHP() * 0.04;
+				min -= maxHP * 0.04;
 				min -= (1200 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.GreaterDiehard)) {
-				min -= maxHP() * 0.06;
+				min -= maxHP * 0.06;
 				min -= (1800 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.GreaterDiehardEx)) {
-				min -= maxHP() * 0.18;
+				min -= maxHP * 0.18;
 				min -= (5400 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.EpicDiehard)) {
-				min -= maxHP() * 0.08;
+				min -= maxHP * 0.08;
 				min -= (2400 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}//nastepny diehard to 10% i 3000 a potem 12% i 3600
-			if (perkv1(IMutationsLib.LizanMarrowIM) >= 3) min -= maxHP() * 0.05;
-			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) min -= maxHP() * 0.05;
+			if (perkv1(IMutationsLib.LizanMarrowIM) >= 3) min -= maxHP * 0.05;
+			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) min -= maxHP * 0.05;
 			if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 3 || game.player.isRace(Races.ORC)) {
-				if (hasPerk(PerkLib.Ferocity)) min -= maxHP() * 0.07;
-				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 1) min -= maxHP() * 0.01;
-				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 2) min -= maxHP() * 0.02;
-				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4) min -= maxHP() * 0.05;
+				if (hasPerk(PerkLib.Ferocity)) min -= maxHP * 0.07;
+				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 1) min -= maxHP * 0.01;
+				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 2) min -= maxHP * 0.02;
+				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4) min -= maxHP * 0.05;
 			}
 			if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 1 && game.player.racialScore(Races.HUMAN) > 17) {
-				min -= maxHP() * 0.05;
-				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 2) min -= maxHP() * 0.05;
-				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3) min -= maxHP() * 0.15;
-				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4) min -= maxHP() * 0.25;
+				min -= maxHP * 0.05;
+				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 2) min -= maxHP * 0.05;
+				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3) min -= maxHP * 0.15;
+				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4) min -= maxHP * 0.25;
 			}
-			if (hasPerk(PerkLib.Rage)) min -= maxHP() * 0.05;
+			if (hasPerk(PerkLib.Rage)) min -= maxHP * 0.05;
 			if (hasPerk(PerkLib.TooAngryToDie)) min -= maxWrath();
 			if (hasPerk(PerkLib.DeityJobMunchkin)) {
 				min -= str;
@@ -522,38 +523,38 @@ import classes.Scenes.NPCs.Forgefather;
 				min -= sens;
 			}
 			if (headjewelryName == "Crown of the Undefeated King") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (headjewelryName == "Skulls Crown") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (necklaceName == "Skull Necklace") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasStatusEffect(StatusEffects.BonusEffectsSkullSet)) {
-				min -= maxHP() * 0.02;
+				min -= maxHP * 0.02;
 				min -= (200 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (headjewelryName == "Tree of Life Crown") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (necklaceName == "Tree of Life Necklace") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasStatusEffect(StatusEffects.BonusEffectsTreeOfLifeSet)) {
-				min -= maxHP() * 0.02;
+				min -= maxHP * 0.02;
 				min -= (200 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.SPSurvivalTrainingX)) {
 				var limit:Number = perkv1(PerkLib.SPSurvivalTrainingX) * 10;
 				var bonus:Number = Math.round((level - 1) / 3);
 				if (bonus > limit) bonus = limit;
-				min -= (maxHP() * 0.01 * bonus);
+				min -= (maxHP * 0.01 * bonus);
 			}
 			min = Math.round(min);
 			return min;

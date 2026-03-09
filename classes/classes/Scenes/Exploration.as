@@ -367,7 +367,7 @@ public class Exploration extends BaseContent implements SaveableState
 				doNext(tryDiscover);
 				return;
 			} else if (SceneLib.exploration.counters.explore > 1) outputText("You can continue searching for new locations, or explore your previously discovered ones.\n");
-			if (flags[kFLAGS.EXPLORE_MENU_STYLE] == 1) {
+			if (settings.exploreMenuStyle == 1) {
 				oldExploreMenu();
 				return;
 			}
@@ -497,7 +497,7 @@ public class Exploration extends BaseContent implements SaveableState
 		}
 		
 		private function toggleMenuStyle():void {
-			flags[kFLAGS.EXPLORE_MENU_STYLE] = 1 - flags[kFLAGS.EXPLORE_MENU_STYLE];
+			settings.exploreMenuStyle = 1 - settings.exploreMenuStyle;
 			doExplore();
 		}
 		

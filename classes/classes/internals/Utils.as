@@ -181,6 +181,8 @@ public class Utils extends Object
 			return Math.round(value*base)/base;
 		}
 		public static function formatNumber(value:Number, options:Object = null):String {
+			if (isNaN(value)) return "NaN";
+			if (!isFinite(value)) return value > 0 ? "Infinity" : "-Infinity";
 			var nf:NumberFormatter = new NumberFormatter();
 			return nf.format(value);
 		}
@@ -609,13 +611,16 @@ public class Utils extends Object
 			return number.toString() + "th";
 		}
 
-		public static function addComma(num:int):String{
+		public static function addComma(num:Number):String{
+			if (!isFinite(num)) return String(num);
+			num = Math.round(num);
+			if (num === 0) return "0";
 			var str:String = "";
-			if (num <= 0) return "0";
+			if (num < 0) return "-"+addComma(-num);
 			while (num>0){
 				var tmp:uint = num % 1000;
 				str = ( num > 999 ?"," + (tmp < 100 ? ( tmp < 10 ? "00": "0"): ""): "") + tmp + str;
-				num = num / 1000;
+				num = Math.floor(num / 1000);
 			}
 			return str;
 		}

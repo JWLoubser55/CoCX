@@ -10,31 +10,31 @@ public class PrimaryStatsView extends Block {
 	private var row1:Block;
 	private var row2:Block;
 
-	private var hpLabel:TextField;
-	private var hpValue:StatBar;
-	private var lustLabel:TextField;
-	private var lustValue:StatBar;
-	private var wrathLabel:TextField;
-	private var wrathValue:StatBar;
-	private var staminaLabel:TextField;
-	private var staminaValue:StatBar;
-	private var manaLabel:TextField;
-	private var manaValue:StatBar;
-	private var soulforceLabel:TextField;
-	private var soulforceValue:StatBar;
-	private var venomLabel:TextField;
-	private var venomValue:StatBar;
-	private var satLabel:TextField;
-	private var satValue:StatBar;
+	public var hpLabel:TextField;
+	public var hpValue:StatBar;
+	public var lustLabel:TextField;
+	public var lustValue:StatBar;
+	public var wrathLabel:TextField;
+	public var wrathValue:StatBar;
+	public var staminaLabel:TextField;
+	public var staminaValue:StatBar;
+	public var manaLabel:TextField;
+	public var manaValue:StatBar;
+	public var soulforceLabel:TextField;
+	public var soulforceValue:StatBar;
+	public var venomLabel:TextField;
+	public var venomValue:StatBar;
+	public var satLabel:TextField;
+	public var satValue:StatBar;
 
-	private var strBar:StatBar;
-	private var touBar:StatBar;
-	private var speBar:StatBar;
-	private var intBar:StatBar;
-	private var wisBar:StatBar;
-	private var libBar:StatBar;
-	private var sensBar:StatBar;
-	private var corBar:StatBar;
+	public var strBar:StatBar;
+	public var touBar:StatBar;
+	public var speBar:StatBar;
+	public var intBar:StatBar;
+	public var wisBar:StatBar;
+	public var libBar:StatBar;
+	public var sensBar:StatBar;
+	public var corBar:StatBar;
 
 	public function PrimaryStatsView() {
 		super({
@@ -99,7 +99,7 @@ public class PrimaryStatsView extends Block {
 			height: row1h,
 			animate: false,
 			hasGauge: false,
-			hasArrow: false,
+			arrowStyle: 'none',
 			showMax: false,
 			percentage: true,
 			labelAlign: 'center',
@@ -135,7 +135,7 @@ public class PrimaryStatsView extends Block {
 		const row2BarOptions:Object = {
 			showMax: false,
 			numberStyle: 'comma',
-			hasArrow: false,
+			arrowStyle: 'small',
 			barAlpha: 0.6
 		};
 
@@ -241,6 +241,19 @@ public class PrimaryStatsView extends Block {
 		]) {
 			UIUtils.setTextColor(bar.nameLabel, textColor);
 			UIUtils.setTextColor(bar.valueLabel, textColor);
+		}
+	}
+
+	public function hideUpDown():void {
+		for each (var bar:StatBar in [
+			hpValue,lustValue,wrathValue,staminaValue,
+			manaValue,soulforceValue,venomValue,satValue,
+			strBar,touBar,speBar,
+			intBar,wisBar,libBar,
+			sensBar,corBar
+		]) {
+			bar.isUp = false;
+			bar.isDown = false;
 		}
 	}
 }

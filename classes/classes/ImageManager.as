@@ -211,7 +211,7 @@ import flash.display.Loader;
 		{
 			var imageString:String = "";
 			
-			if (CoC.instance.flags[kFLAGS.IMAGEPACK_OFF] > 0) {
+			if (CoC.instance.settings.imagepackOff > 0) {
 				return "";
 			}
 			

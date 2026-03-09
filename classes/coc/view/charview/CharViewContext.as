@@ -369,7 +369,7 @@ public class CharViewContext extends ExecContext {
 					PlayerHasADualMeleeWeapon: player.isDualWieldMelee(),
 					PlayerHasADualRangedWeapon: player.isDualWieldRanged(),
 					
-					ArmorHiddenFlag: game.flags[kFLAGS.CHARVIEW_ARMOR_HIDDEN],
+					ArmorHiddenFlag: game.settings.charviewArmorHidden,
 					WeaponDisplay: game.flags[kFLAGS.WEAPON_DISPLAY_FLAG],
 					BoobDisplay: game.flags[kFLAGS.BOOB_DISPLAY_FLAG],
 					FireBuff: player.hasStatusEffect(StatusEffects.FlameBlade),

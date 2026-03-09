@@ -646,6 +646,10 @@ import coc.xxc.StoryContext;
 		{
 			CoC.instance.player2 = val;
 		}
+		protected static function get settings():Settings
+		{
+			return CoC.instance.settings;
+		}
 
 		protected function get debug():Boolean
 		{

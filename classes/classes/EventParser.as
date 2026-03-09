@@ -62,39 +62,36 @@ public class EventParser {
     public static var badEnded:Boolean = false; //set to 'true' to track bad ended state in save-load menu
 
     public static function gameOver(clear:Boolean = false):void { //Leaves text on screen unless clear is set to true
-        if (CoC.instance.testingBlockExiting) EngineCore.doNext(SceneLib.camp.returnToCampUseOneHour); //Prevent ChaosMonkah instances from getting stuck
-        else {
-            badEnded = true;
-            var textChoices:Array = ["GAME OVER",
-                "Game over, man! Game over!",
-                "You just got Bad-Ended!",
-                "Your adventures have come to an end...",
-                //Silly Mode
-                "Don't lose hope... " + CoC.instance.player.short + "! Stay determined!",
-                "Wasted",
-                "YOU DIED",
-                "Git gud!",
-                "Get rekt, noob!",
-                "OOF."];
-            if (clear) EngineCore.clearOutput();
-            EngineCore.outputText("\n\n[font-dred]");
-            EngineCore.outputText("<b>" + textChoices[Utils.rand(EngineCore.silly() ? textChoices.length : 4)] + "</b>");
-            EngineCore.outputText("[/font]");
-            //Delete save on hardcore.
-            if (CoC.instance.flags[kFLAGS.HARDCORE_MODE] > 0 && CoC.instance.flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] > 0) {
-                EngineCore.outputText("\n\n<b>Your save file has been deleted as you enabled Hardcore I or Hardcore II!</b>");
-                CoC.instance.saves.purgeTheMutant((CoC.instance.flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] - 1));
-            }
-            CoC.instance.flags[kFLAGS.TIMES_BAD_ENDED]++;
-            EngineCore.awardAchievement("Game Over!", kACHIEVEMENTS.GENERAL_GAME_OVER, true, true);
-            EngineCore.menu();
-            EngineCore.addButton(0, "Game Over", gameOverMenuOverride).hint("Your game has ended. Please load a saved file or start a new game.");
-            if (CoC.instance.flags[kFLAGS.HARDCORE_MODE] <= 0) EngineCore.addButton(1, "Continue", SceneLib.camp.wakeFromBadEnd).hint("It's all just a dream. Wake up.\n\n<b>UNSAFE: Some bad-ends are bugged and may set flags/statuses/debuffs/transformations, hence breaking the game state. Use at your own risk; if possible, load a save.</b>");
-			if (CoC.instance.player.hasStatusEffect(StatusEffects.PCClone) && CoC.instance.player.statusEffectv3(StatusEffects.PCClone) >= 1) EngineCore.addButton(2, "Rebirth", SceneLib.camp.rebirthFromBadEnd).hint("You can move your nascent soul into your body clone achieving rebirth.\n\n<b>UNSAFE: Some bad-ends are bugged and may set flags/statuses/debuffs/transformations, hence breaking the game state. Use at your own risk; if possible, load a save.</b>");
-            //addButton(3, "NewGamePlus", charCreation.newGamePlus).hint("Start a new game with your equipment, experience, and gems carried over.");
-            if (CoC.instance.flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1 || CoC.instance.debug) EngineCore.addButton(4, "Debug Cheat", debugCheatBadEnd).hint("<b>UNSAFE: Some bad-ends are bugged and may set flags/statuses/debuffs/transformations, hence breaking the game state. Use at your own risk; if possible, load a save.</b>");
-            gameOverMenuOverride();
+        badEnded = true;
+        var textChoices:Array = ["GAME OVER",
+            "Game over, man! Game over!",
+            "You just got Bad-Ended!",
+            "Your adventures have come to an end...",
+            //Silly Mode
+            "Don't lose hope... " + CoC.instance.player.short + "! Stay determined!",
+            "Wasted",
+            "YOU DIED",
+            "Git gud!",
+            "Get rekt, noob!",
+            "OOF."];
+        if (clear) EngineCore.clearOutput();
+        EngineCore.outputText("\n\n[font-dred]");
+        EngineCore.outputText("<b>" + textChoices[Utils.rand(EngineCore.silly() ? textChoices.length : 4)] + "</b>");
+        EngineCore.outputText("[/font]");
+        //Delete save on hardcore.
+        if (CoC.instance.flags[kFLAGS.HARDCORE_MODE] > 0 && CoC.instance.flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] > 0) {
+            EngineCore.outputText("\n\n<b>Your save file has been deleted as you enabled Hardcore I or Hardcore II!</b>");
+            CoC.instance.saves.purgeTheMutant((CoC.instance.flags[kFLAGS.TEMP_STORAGE_SAVE_DELETION] - 1));
         }
+        CoC.instance.flags[kFLAGS.TIMES_BAD_ENDED]++;
+        EngineCore.awardAchievement("Game Over!", kACHIEVEMENTS.GENERAL_GAME_OVER, true, true);
+        EngineCore.menu();
+        EngineCore.addButton(0, "Game Over", gameOverMenuOverride).hint("Your game has ended. Please load a saved file or start a new game.");
+        if (CoC.instance.flags[kFLAGS.HARDCORE_MODE] <= 0) EngineCore.addButton(1, "Continue", SceneLib.camp.wakeFromBadEnd).hint("It's all just a dream. Wake up.\n\n<b>UNSAFE: Some bad-ends are bugged and may set flags/statuses/debuffs/transformations, hence breaking the game state. Use at your own risk; if possible, load a save.</b>");
+        if (CoC.instance.player.hasStatusEffect(StatusEffects.PCClone) && CoC.instance.player.statusEffectv3(StatusEffects.PCClone) >= 1) EngineCore.addButton(2, "Rebirth", SceneLib.camp.rebirthFromBadEnd).hint("You can move your nascent soul into your body clone achieving rebirth.\n\n<b>UNSAFE: Some bad-ends are bugged and may set flags/statuses/debuffs/transformations, hence breaking the game state. Use at your own risk; if possible, load a save.</b>");
+        //addButton(3, "NewGamePlus", charCreation.newGamePlus).hint("Start a new game with your equipment, experience, and gems carried over.");
+        if (CoC.instance.flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1 || CoC.instance.debug) EngineCore.addButton(4, "Debug Cheat", debugCheatBadEnd).hint("<b>UNSAFE: Some bad-ends are bugged and may set flags/statuses/debuffs/transformations, hence breaking the game state. Use at your own risk; if possible, load a save.</b>");
+        gameOverMenuOverride();
         CoC.instance.inCombat = false;
 		DungeonAbstractContent.inDungeon = false;
 		DungeonAbstractContent.inOutdoorDungeon = false;

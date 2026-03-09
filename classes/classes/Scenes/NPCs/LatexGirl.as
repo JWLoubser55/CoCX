@@ -212,8 +212,7 @@ private function PCCarriedGooBackHomeII():void {
 
 //returns 1 if error
 private function nameReactions(nice:Boolean = false):Boolean {
-    if (CoC.instance.testingBlockExiting) mainView.nameBox.text = "Derptexy";
-	else if (mainView.nameBox.text == "") {
+    if (mainView.nameBox.text == "") {
 		clearOutput();
 		outputText("<b>You must select a name.</b>");
 		mainView.nameBox.x = mainView.mainText.x + 5;

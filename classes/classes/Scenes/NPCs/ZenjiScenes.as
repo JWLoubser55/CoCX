@@ -2788,13 +2788,7 @@ public class ZenjiScenes extends NPCAwareContent implements SaveableState
 		}
 		private function applyZenjikidName():void {
 			spriteSelect(SpriteDb.s_zenji);
-			if (CoC.instance.testingBlockExiting)
-			{
-				// We're running under the testing script.
-				// Stuff a name in the box and go go go
-				mainView.nameBox.text = "Zenji kiddo";
-			}
-			else if (mainView.nameBox.text == "" || mainView.nameBox.text == "0" || mainView.nameBox.text == "Zenji")
+			if (mainView.nameBox.text == "" || mainView.nameBox.text == "0" || mainView.nameBox.text == "Zenji")
 			{
 				clearOutput();
 				if (mainView.nameBox.text == "" || mainView.nameBox.text == "0") outputText("<b>You must select a name.</b>");

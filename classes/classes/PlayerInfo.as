@@ -1798,9 +1798,9 @@ public class PlayerInfo extends BaseContent {
 			}
 		}
 		if (player.XP >= player.requiredXP()) {
-			if (flags[kFLAGS.LVL_UP_FAST] == 1){ // multi
+			if (settings.lvlUpFast == 1){ // multi
 				levelUpFastMenu();
-			} else if (flags[kFLAGS.LVL_UP_FAST] == 2){ // instant
+			} else if (settings.lvlUpFast == 2){ // instant
 				lUFSMM();
 				if (player.statPoints > 0) { doNext(attributeMenu); }
 				else if (player.perkPoints > 0) { doNext(perkBuyMenu); }
@@ -1861,7 +1861,7 @@ public class PlayerInfo extends BaseContent {
 		for (var i:int = 1; i <= incmax; i++) {
 			if ((player.XP >= player.requiredXP() || noxpcost) && (player.level < CoC.instance.levelCap || player.negativeLevel > 0)) levelUp(noxpcost);
 		}
-		if (flags[kFLAGS.LVL_UP_FAST] == 1 && !noxpcost) levelUpFastMenu(true);
+		if (settings.lvlUpFast == 1 && !noxpcost) levelUpFastMenu(true);
 	}
 	public function lUFSMAP():void {
 		if (player.statPoints > 0) {
@@ -2032,6 +2032,7 @@ public class PlayerInfo extends BaseContent {
 		attributeMenu();
 	}
 	private function finishAttributes():void {
+		shiftKeyDown = false; // clear shift key in case it was set on mobile
 		clearOutput();
 		if (player.tempStr > 0) {
 			if (player.tempStr >= 3) outputText("Your muscles feel significantly stronger from your time adventuring.\n");
@@ -2101,41 +2102,36 @@ public class PlayerInfo extends BaseContent {
 			button(1).show("New Menu",CoC.instance.perkMenu.newPerkMenu);
 			return;
 		}
-        if (CoC.instance.testingBlockExiting) {
-            menu();
-			addButton(0, "Next", perkSelect, perks[rand(perks.length)]);
-		} else {
-			outputText("Please select a perk from the drop-down list, then click 'Okay'.  You can press 'Skip' to save your perk point for later.\n");
-            //CoC.instance.showComboBox(perkList, "Choose a perk", perkCbChangeHandler);
-            if (player.perkPoints>1) outputText("You have "+numberOfThings(player.perkPoints,"perk point","perk points")+".\n\n");
-			mainView.linkHandler = linkhandler;
-	        perkList = [];
-			if (filterChoices[0] == 1) perks = perks.filter(filterPerks);
-	        for each(var perk:PerkType in perks.sort()) {
-		        var p:PerkClass = new PerkClass(perk,
-				        perk.defaultValue1, perk.defaultValue2, perk.defaultValue3, perk.defaultValue4);
-		        var lab:* = {label: p.perkName, perk: p};
-		        perkList.push(lab);
-		        outputText("<u><a href=\"event:"+perkList.indexOf(lab)+"\">"+p.perkName+"</a></u>\n");
-	        }
-			mainView.hideMenuButton(MainView.MENU_NEW_MAIN);
-			menu();
-			addButton(1, "Skip", perkSkip);
-			addButton(3, "New Menu",CoC.instance.perkMenu.newPerkMenu);
-			addButton(4,"Filter",changeFilter, 0).hint("Filter perks by reqired stats")
-			if (filterChoices[0]==1)
-			{
-				addButton(5,(filterChoices[1]==1)?"Str Y":"Str N", changeFilter, 1);
-				addButton(6,(filterChoices[2]==1)?"Tou Y":"Tou N", changeFilter, 2);
-				addButton(7,(filterChoices[3]==1)?"Spe Y":"Spe N", changeFilter, 3);
-				addButton(8,(filterChoices[4]==1)?"Int Y":"Int N", changeFilter, 4);
-				addButton(10,(filterChoices[5]==1)?"Wis Y":"Wis N", changeFilter, 5);
-				addButton(11,(filterChoices[6]==1)?"Lib Y":"Lib N", changeFilter, 6);
-				addButton(12,(filterChoices[7]==1)?"Sen Y":"Sen N", changeFilter, 7);
-				addButton(13,(filterChoices[8]==1)?"Cor Y":"Cor N", changeFilter, 8);
-				addButton(9,(filterChoices[9]==1)?"Other Y":"Other N", changeFilter, 9); //perks that have non stat req
-				addButton(14,"Clear",clearFilter);
-			}
+		outputText("Please select a perk from the drop-down list, then click 'Okay'.  You can press 'Skip' to save your perk point for later.\n");
+        //CoC.instance.showComboBox(perkList, "Choose a perk", perkCbChangeHandler);
+        if (player.perkPoints>1) outputText("You have "+numberOfThings(player.perkPoints,"perk point","perk points")+".\n\n");
+		mainView.linkHandler = linkhandler;
+        perkList = [];
+		if (filterChoices[0] == 1) perks = perks.filter(filterPerks);
+        for each(var perk:PerkType in perks.sort()) {
+	        var p:PerkClass = new PerkClass(perk,
+			        perk.defaultValue1, perk.defaultValue2, perk.defaultValue3, perk.defaultValue4);
+	        var lab:* = {label: p.perkName, perk: p};
+	        perkList.push(lab);
+	        outputText("<u><a href=\"event:"+perkList.indexOf(lab)+"\">"+p.perkName+"</a></u>\n");
+        }
+		mainView.hideMenuButton(MainView.MENU_NEW_MAIN);
+		menu();
+		addButton(1, "Skip", perkSkip);
+		addButton(3, "New Menu",CoC.instance.perkMenu.newPerkMenu);
+		addButton(4,"Filter",changeFilter, 0).hint("Filter perks by reqired stats")
+		if (filterChoices[0]==1)
+		{
+			addButton(5,(filterChoices[1]==1)?"Str Y":"Str N", changeFilter, 1);
+			addButton(6,(filterChoices[2]==1)?"Tou Y":"Tou N", changeFilter, 2);
+			addButton(7,(filterChoices[3]==1)?"Spe Y":"Spe N", changeFilter, 3);
+			addButton(8,(filterChoices[4]==1)?"Int Y":"Int N", changeFilter, 4);
+			addButton(10,(filterChoices[5]==1)?"Wis Y":"Wis N", changeFilter, 5);
+			addButton(11,(filterChoices[6]==1)?"Lib Y":"Lib N", changeFilter, 6);
+			addButton(12,(filterChoices[7]==1)?"Sen Y":"Sen N", changeFilter, 7);
+			addButton(13,(filterChoices[8]==1)?"Cor Y":"Cor N", changeFilter, 8);
+			addButton(9,(filterChoices[9]==1)?"Other Y":"Other N", changeFilter, 9); //perks that have non stat req
+			addButton(14,"Clear",clearFilter);
 		}
 	}
 	public  function filterPerks(element:Object, index:int, arr:Array):Boolean{  	//filter from perks availabe for player

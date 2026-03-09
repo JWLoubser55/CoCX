@@ -192,5 +192,10 @@ public class NewStatsView extends Block {
 		bg.width = width;
 		bg.height = (resourceTab.visible ? (resourceTab.y + resourceTab.height) : (primaryTab.y + primaryTab.height)) + MainView.GAP;
 	}
+
+	public function hideUpDown():void {
+		resourceTab.hideUpDown();
+		primaryTab.hideUpDown();
+	}
 }
 }
