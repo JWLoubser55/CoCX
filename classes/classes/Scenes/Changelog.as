@@ -246,7 +246,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 21 misc lvl-up perk: Wisp Major General. Req. Wisp Brigadier General perk, 310+ int, 310+ wis and 28+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 70% (280% in total).\n");
 			outputText("-New tier 25 misc lvl-up perk: Wisp Lieutenant General. Req. Wisp Major General perk, 360+ int, 360+ wis and 36+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 80% (360% in total).\n");
 			outputText("-New UI + other changes. (aimozg)\n");
-			outputText("-New Combat UI. (aimozg)\n");
+			outputText("-New Combat UI + other changes. (aimozg)\n");
 			outputText("-When below lvl 32 Giacomo selling Pure Peaches for Hollowfied PC's.\n");
 			outputText("-Necro set when completed increase all large sized skeletons control by 1. Each piece of Necro set would add now 3 to each normal sized skeletons caps.\n");
 			outputText("-Skeleton Giant ignore enemy DR. Bone Ballista Skelies deal increased damage to enemy groups or large enemies. Gigachad Skeletal Mages can have selected elemental damage they deal out of combat between any not complex element or pure magic damage.\n");
@@ -282,35 +282,35 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
+			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
 			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong)
 			outputText("-\n");// (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM) (Akaku-Keninari)
 			outputText("-\n");
-			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values.  Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
+			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
-			outputText("-\n");
-			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -399,8 +399,26 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -434,24 +452,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
