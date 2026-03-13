@@ -81,7 +81,7 @@ public static function confirmBuyMulti(returnFunc:Function,shopKeep:String,price
 	outputText("\n\n");
 	outputText("Currently buying: " + itype.longName + "\n");
 	outputText("Maximum amount: " + maxQuanity + "\n");
-	outputText("Quanity: " + currentQuantity + "\n");
+	outputText("Quantity: " + currentQuantity + "\n");
 	if (maxBuy != 0) {
 		outputText("Cost: " + String(costPerItem * currentQuantity) + " " + paymentMethod + "\n");
 	} else {

@@ -706,8 +706,8 @@ public class PerkLib
 				"Damage is increased (x2) while in motion gallop or flight.",
 				"You've chosen the 'Earth and Sky' perk. Damage is increased (x2) while in motion gallop or flight.");
 		public static const EfficientUsageOfSoulforce:PerkType = mk("Efficient Usage of Soulforce", "Efficient Usage of Soulforce",
-				"You learned how to more efficient use soulforce powering your Ayo Armor to further fortify your basic physical and magic resitances. (+core tou % up to 300%)",
-				"You've chosen the 'Efficient Usage of Soulforce' perk. You learned how to more efficient use soulforce powering your Ayo Armor to further fortify your basic physical and magic resitances. (+core tou % up to 300%)");
+				"You learned how to more efficient use soulforce powering your Ayo Armor to further fortify your basic physical and magic resistances. (+core tou % up to 300%)",
+				"You've chosen the 'Efficient Usage of Soulforce' perk. You learned how to more efficient use soulforce powering your Ayo Armor to further fortify your basic physical and magic resistances. (+core tou % up to 300%)");
 		public static const VampiricMagic:PerkType = mk("Vampiric Magic", "Vampiric Magic",
 				"Nospheratu cooldown is reduced by 1 round and blood magic spells are 50% stronger. (+40% spellpower bonus)",
 				"You've chosen the 'Vampiric Magic' perk. Nospheratu cooldown is reduced by 1 round and blood magic spells are 50% stronger. (+40% spellpower bonus)");

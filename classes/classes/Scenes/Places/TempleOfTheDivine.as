@@ -105,8 +105,8 @@ public class TempleOfTheDivine extends BaseContent {
 				//8
 				//9
 			}
-			addButton(10, "Sapphire", sapphire.sapphiremenu).hint("Have a chat with the gargoyle.");
-			if (flags[kFLAGS.ONYX_PATH] > 0) addButton(11, "[onyx name]", onyx.krystalonyxmenu).hint("Have a sex with [onyx name].");
+			addButton(10, "Sapphire", sapphire.sapphiremenu).hint("Interact with the gargoyle.");
+			if (flags[kFLAGS.ONYX_PATH] > 0) addButton(11, "[onyx name]", onyx.krystalonyxmenu).hint("Interact with [onyx name].");
 			else addButtonDisabled(11, "???", "Sapphire is a little lonely out there. Maybe you could make her a friend...?")
 			addButton(12, "Basement", templeBasement).hint("Visit the temple basement.");
 			if (flags[kFLAGS.FORGEFATHER_MOVED_TO_TEMPLE] == 1) addButton(13, "Workshop", SceneLib.forgefatherScene.workshopMainMenu);
