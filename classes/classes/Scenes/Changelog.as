@@ -266,6 +266,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Glacial blockade. Gained by having Exanimation IV and Ice Affinity perks. Effects: PC receives +10 to Physical DR from armor / Magical DR from armor / DR from toughness when a foe is affected by an ice dot.\n");
 			outputText("-Precision perk changed to lower enemy armor by 10% or 10 (whichever is greater) instead of just lower enemy armor value by 10.\n");
 			outputText("-New tier 0 wisdom lvl-up perk: Magic Precision. Req. 25+ wisdom. Effect: Reduces enemy magic resistance by 10% or 10 (whichever is greater). (Req's 25+ Wisdom)\n");
+			outputText("-New mutation perk: Undead Metabolism. Req. having free metabolism mutation slot, one of races: Zombie, Mummy, Jiangshi, Lich. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 5% bonus to libido up to 50% and heal libido damage from starvation.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -293,8 +294,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New mutation perk: Undead Metabolism. Req. having free metabolism mutation slot; zombie, mummy, jiangshi, lich race. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 5% bonus to libido up to 50% and heal all libido damage from starvation.
+			outputText("-\n");//New Unique Sexscene: Zombie Sex - req. at least 50% soulforce to use, Lich and at least 3 Zombie pets.
 			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");

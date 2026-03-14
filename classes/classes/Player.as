@@ -5758,7 +5758,7 @@ use namespace CoC;
 				else if (hasPerk(PerkLib.DeadMetabolism)) hungerActive = false;
 				else if (hasPerk(PerkLib.GargoylePure) || hasPerk(PerkLib.GargoyleCorrupted)) hungerActive = false;
 			}
-			if (perkv1(IMutationsLib.FiendishMetabolismIM) >= 1 && !fm) hungerActive = false;
+			if ((perkv1(IMutationsLib.FiendishMetabolismIM) >= 1 || perkv1(IMutationsLib.UndeadMetabolismIM) >= 1) && !fm) hungerActive = false;
 			if (hungerActive) {
 				var oldHunger:Number = hunger;
 				var weightChange:int = 0;
@@ -5778,8 +5778,21 @@ use namespace CoC;
 				hunger += amnt;
 				if (hunger < 0) hunger = 0;
 				if (hunger > maxHunger() + overeatingLimit) {
-					weightChange = Math.ceil((hunger - (maxHunger() + overeatingLimit)) / overeatingLimit); //rounded UP to int
-					modThickness(maxThicknessCap(), weightChange);
+					if (perkv1(IMutationsLib.UndeadMetabolismIM) >= 1) {
+						removeCurse("lib.mult", 0.02, 1);
+						var uma:Number = (5 * perkv1(IMutationsLib.UndeadMetabolismIM));
+						if (hasStatusEffect(StatusEffects.UndeadMetabolism)) {
+							if (statusEffectv1(StatusEffects.UndeadMetabolism) < (10 * uma)) {
+								if ((statusEffectv1(StatusEffects.UndeadMetabolism) + uma) > (10 * uma)) 
+								addStatusValue(StatusEffects.UndeadMetabolism, 1, uma);
+							}
+						}
+						else createStatusEffect(StatusEffects.UndeadMetabolism, uma, 0, 0, 0);
+					}
+					else {
+						weightChange = Math.ceil((hunger - (maxHunger() + overeatingLimit)) / overeatingLimit); //rounded UP to int
+						modThickness(maxThicknessCap(), weightChange);
+					}
 					hunger = maxHunger(); //don't mind overeating?
 				}
 				if (hunger > oldHunger) CoC.instance.mainViewManager.showStatUp('hunger');
@@ -5938,6 +5951,10 @@ use namespace CoC;
 			if (perkv1(IMutationsLib.FiendishMetabolismIM) >= 2) return true;
 			else return false;
 		}
+		public function undeadMetabolismNFER():Boolean {
+			if (perkv1(IMutationsLib.UndeadMetabolismIM) >= 1) return true;
+			else return false;
+		}
 
 		public function minoCumAddiction(raw:Number = 10):void {
 			//Increment minotaur cum intake count
@@ -5954,7 +5971,7 @@ use namespace CoC;
 			if(flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 60 && raw > 0) raw /= 2;
 			if(flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 80 && raw > 0) raw /= 2;
 			if(flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 90 && raw > 0) raw /= 2;
-			if(hasPerk(PerkLib.MinotaurCumResistance) || hasPerk(PerkLib.ManticoreCumAddict) || hasPerk(PerkLib.HaltedVitals) || hasPerk(PerkLib.LactaBovineImmunity) || fiendishMetabolismNFER()) raw *= 0;
+			if(hasPerk(PerkLib.MinotaurCumResistance) || hasPerk(PerkLib.ManticoreCumAddict) || hasPerk(PerkLib.HaltedVitals) || hasPerk(PerkLib.LactaBovineImmunity) || fiendishMetabolismNFER() || undeadMetabolismNFER()) raw *= 0;
 			//If in withdrawl, readdiction is potent!
 			if(flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 2) raw += 5;
 			if(flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 3) raw += 10;
@@ -5962,7 +5979,7 @@ use namespace CoC;
 			//PUT SOME CAPS ON DAT' SHIT
 			if(raw > 50) raw = 50;
 			if(raw < -50) raw = -50;
-			if(!hasPerk(PerkLib.ManticoreCumAddict) || !hasPerk(PerkLib.LactaBovineImmunity) || necklaceName != "Cow bell" || !fiendishMetabolismNFER()) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] += raw;
+			if(!hasPerk(PerkLib.ManticoreCumAddict) && !hasPerk(PerkLib.LactaBovineImmunity) && necklaceName != "Cow bell" && !fiendishMetabolismNFER() && !undeadMetabolismNFER()) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] += raw;
 			//Recheck to make sure shit didn't break
 			if(hasPerk(PerkLib.MinotaurCumResistance)) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] = 0; //Never get addicted!
 			if(flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] > 120) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] = 120;
@@ -6780,6 +6797,10 @@ use namespace CoC;
 				var touP:Number = tou;
 				statStore.replaceBuffObject({'tou': touP}, 'Photosynthesis', { text: 'Photosynthesis' });
 			}
+			if (hasStatusEffect(StatusEffects.UndeadMetabolism)) {
+				var libUM:Number = statusEffectv1(StatusEffects.UndeadMetabolism);
+				statStore.replaceBuffObject({'lib.multi': libUM}, 'Undead Metabolism', { text: 'Undead Metabolism' });
+			}
 			var buffs:Object = calcRacialBuffs(true);
 			statStore.removeBuffs("Racials");
 			statStore.replaceBuffObject(buffs, "Racials", {text:"Racials"});
@@ -6875,10 +6896,10 @@ use namespace CoC;
 
 
 		public function minotaurAddicted():Boolean {
-			return !hasPerk(PerkLib.MinotaurCumResistance) && !hasPerk(PerkLib.ManticoreCumAddict) && !fiendishMetabolismNFER() && (hasPerk(PerkLib.MinotaurCumAddict) || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1);
+			return !hasPerk(PerkLib.MinotaurCumResistance) && !hasPerk(PerkLib.ManticoreCumAddict) && !fiendishMetabolismNFER() && !undeadMetabolismNFER() && (hasPerk(PerkLib.MinotaurCumAddict) || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1);
 		}
 		public function minotaurNeed():Boolean {
-			return !hasPerk(PerkLib.MinotaurCumResistance) && !hasPerk(PerkLib.ManticoreCumAddict) && !fiendishMetabolismNFER() && flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 1;
+			return !hasPerk(PerkLib.MinotaurCumResistance) && !hasPerk(PerkLib.ManticoreCumAddict) && !fiendishMetabolismNFER() && !undeadMetabolismNFER() && flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 1;
 		}
 
 		public function clearStatuses(visibility:Boolean):void
@@ -8341,7 +8362,7 @@ use namespace CoC;
 						if (hasPerk(PerkLib.ManticoreCumAddict)) manticoreFeed();
 						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
 						if (hasPerk(PerkLib.SpiritualHunger) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(2);
-						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
+						if (fiendishMetabolismNFER() || undeadMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'vaginalFluids':
 						if (hasStatusEffect(StatusEffects.Overheat) && inRut) {
@@ -8349,7 +8370,7 @@ use namespace CoC;
 						}
 						if (hasPerk(PerkLib.EndlessHunger)) wendigoFeed();
 						if (hasPerk(PerkLib.SpiritualHunger) && !CoC.instance.monster.hasPerk(PerkLib.EnemyTrueDemon)) hollowFeed(2);
-						if (fiendishMetabolismNFER()) refillHunger(10, false, true);
+						if (fiendishMetabolismNFER() || undeadMetabolismNFER()) refillHunger(10, false, true);
 						break;
 					case 'saliva':
 						break;

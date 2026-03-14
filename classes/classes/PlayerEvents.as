@@ -142,6 +142,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hunger <= Math.round(player.maxHunger() * 0.3) && player.hasPerk(PerkLib.ExanimationI)) player.takePhysDamage(player.maxHP() * 0.2);
 				if (player.hunger <= 0) {
 					if (player.isGargoyle()) campUniqueScene.droppingToZeroSatietyAsGargoyle();
+					else if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 1) player.addCurse("lib.mult", 0.05, 1);
 					else {
 						//Lose HP and makes fatigue go up. Lose body weight and muscles.
 						if (player.thickness < 25) {
@@ -1091,6 +1092,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						vthirst.modSatiety(-1);
 					}
 				}
+				if (player.hasStatusEffect(StatusEffects.UndeadMetabolism) && player.statusEffectv1(StatusEffects.UndeadMetabolism) > 0) player.addStatusValue(StatusEffects.UndeadMetabolism, 1, -5);
 				if (flags[kFLAGS.PC_GOBLIN_DAUGHTERS] > 9 && player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop)) {
 					var protection:Number = 0;
 					if (flags[kFLAGS.PC_GOBLIN_DAUGHTERS] <= 25) protection = 25;

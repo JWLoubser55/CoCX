@@ -790,6 +790,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const WildManticore:StatusEffectType                  = mk("Wild Manticore");
 		public static const WinterBellCollarA:StatusEffectType              = mk("Winter Bell Collar");
 		public static const WinterFlash:StatusEffectType                  	= mk("Winter Flash");
+		public static const UndeadMetabolism:StatusEffectType               = mk("Undead Metabolism");
 		public static const UmbralGraveswordNever:StatusEffectType       	= mk("Umbral Gravesword Never");
 		public static const VampireThirst:StatusEffectType                  = VampireThirstEffect.TYPE;
 		public static const VolcanicGravehammerNever:StatusEffectType       = mk("Volcanic Gravehammer Never");

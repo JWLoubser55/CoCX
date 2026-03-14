@@ -67,6 +67,7 @@ public class JiangshiRace extends Race {
 		
 		addMutation(IMutationsLib.BlackBloodIM);
 		addMutation(IMutationsLib.StillHeartIM);
+		addMutation(IMutationsLib.UndeadMetabolismIM);
 		
 		buildTier(15, "Half Jiangshi")
                 .requireHornType(Horns.SPELL_TAG)
