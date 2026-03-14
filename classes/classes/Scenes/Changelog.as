@@ -725,7 +725,7 @@ public class Changelog extends BaseContent
 			outputText("-When studing Combat Manual in cabin can choose which stat it would rise.\n");
 			outputText("-PC with Soulless perk would loose access to Sky Poison Pearl and will soon enough make replacment storage item called Dimensional Pocket. Also some npc's like Pure Amily, Pure Jojo, Kiha would leave camp.\n");
 			outputText("-One of Prestige Job: Necromancer req. was modified. Instead of req. Daoist: Apprentice Stage can also gain this job by having perks Soulless and Job: Sorcerer. When soulless creating minions would use mana instead of (nonexistent) soulforce.\n");
-			outputText("-PC with demonic vagina could access new unique sex scene: Succubus Feast. If PC have soulless perk and enemy is not group having intact soul scene will have additional bonus of harvesting lethicite from that enemy.\n");
+			outputText("-New Unique Sexscene: Succubus Feast - req. PC with demonic vagina. If PC have soulless perk and enemy is not group having intact soul scene will have additional bonus of harvesting lethicite from that enemy.\n");
 			outputText("-Fixing weirdness on feral combat ingoring all handless PC's (or was it maidenless ones...). Now even they can have rizz.\n");
 			outputText("-Misdirection, Rapier Training and Tech Overdrive perks can be permed on ascension/dark ascension.\n");
 			outputText("-Gigant's Grip perk req. changed from req. only Weapon Mastery to req. either Weapon Mastery or Job: Gunslinger. Also added more info on this perk about it relation to dual wielding range weapons.\n");
@@ -897,7 +897,7 @@ public class Changelog extends BaseContent
 			//New places line
 			//new achievments line
 			//HB mech upgrades
-			outputText("-PC with demonic cock could access new unique sex scene (by MrDumbass): Incubus Feast. If PC have soulless perk and enemy is not group having intact soul scene will have additional bonus of harvesting lethicite from that enemy.\n");
+			outputText("-New Unique Sexscene (by MrDumbass): Incubus Feast - req. PC with demonic cock. If PC have soulless perk and enemy is not group having intact soul scene will have additional bonus of harvesting lethicite from that enemy.\n");
 			outputText("-New Unique Sexscene: Lich Zombification - req. to be lich. Can be only used against enemies that are sentient, humanoid and with soul. After scene PC will gain new zombie minion up to cap of 5 zombies.\n");
 			outputText("-New Unique Sexscene: Soul Drain - req. to be lich. Can be only used against enemies that have soulforce. During scene similary to jiangshi scene 'Drain her/him' would gain soulforce from defeated enemy.\n");
 			outputText("-When exploring Deepwoods can find new dungeon - Twilight Grove. It's potentialy dangerous place for pure PC's but resort-like place for alraunes and/or corrupt PC's. When explored by pure PC it will be series of fights with enemies between 35-39 lvl's and boss of lvl 42. In one of rooms there is few storage box with items that will restock each night. Also rendomized elite mobs will appear even after boss death.\n");
