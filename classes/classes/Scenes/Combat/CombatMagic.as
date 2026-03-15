@@ -452,7 +452,7 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.BloodDemonWisdom)) mod += .5;
 		//
 		if (player.hasPerk(PerkLib.VampiricMagic)) mod += .5;
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;//if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) damage *= player.perkv1(IMutationsLib.UndeadMetabolismIM);
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;
 		return mod;

@@ -4809,6 +4809,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		//High damage to goes.
 		damage *= magicAbilitiesGoBrrr();
+		if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) damage *= player.perkv1(IMutationsLib.UndeadMetabolismIM);
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = calcEclypseMod(Math.round(damage * combat.darknessDamageBoostedByDao()), true);
 		damage = Math.round(damage);

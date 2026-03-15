@@ -20,13 +20,13 @@ public class UndeadMetabolismMutation extends IMutationPerkType
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
 			if (pTier >= 1){
-                descS += "Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 5% bonus to libido up to 50% and heal libido damage from starvation";
+                descS += "Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking "+(pTier*5)+"% bonus to libido up to "+(pTier*5)+"0% and heal libido damage from starvation. These bonuses decay over time";
             }
             if (pTier >= 2){
-                descS += ". Increase all grappling tease damage by %";
+                descS += ". All of your undead racial abilities and necromancy skills are "+(pTier-1)+"00% stronger";
             }
             if (pTier >= 3){
-                descS += ". Gain temporary regeneration +% after a fluid intake for one hour";
+                descS += ". You permanently gain the Darkness Affinity perk";
             }
             if (pTier >= 4){
                 descS += ". Fluid intake heals all status damage, drains and weakening by 5% per intake";
@@ -65,7 +65,7 @@ public class UndeadMetabolismMutation extends IMutationPerkType
         }
 
         public function UndeadMetabolismMutation() {
-            super(MNAME, SLOT_METABOLISM, 1);
+            super(MNAME, SLOT_METABOLISM, 3);
         }
         
     }

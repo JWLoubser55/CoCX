@@ -1,6 +1,7 @@
 package classes.Scenes.Combat.SpellsNecro {
 import classes.Monster;
 import classes.PerkLib;
+import classes.IMutations.IMutationsLib;
 import classes.Scenes.Combat.AbstractNecroSpell;
 import classes.Scenes.Combat.DamageType;
 import classes.StatusEffects;
@@ -41,6 +42,7 @@ public class BoneSpiritSpell extends AbstractNecroSpell {
                 casting
 		);
 		if (player.hasPerk(PerkLib.Necromancy)) damage *= 1.5;
+		if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) damage *= player.perkv1(IMutationsLib.UndeadMetabolismIM);
 		damage *= boneSoulBonus(demonBonesCost());
 		return damage;
 	}

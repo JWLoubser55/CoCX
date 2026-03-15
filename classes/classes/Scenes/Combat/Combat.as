@@ -18498,6 +18498,7 @@ public function mummyConstrict():void {
     damage += player.tou;
     damage += scalingBonusToughness() * 0.5;
     if (player.hasPerk(PerkLib.VladimirRegalia)) damage *= 2;
+    if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) damage *= player.perkv1(IMutationsLib.UndeadMetabolismIM);
     if (player.hasPerk(PerkLib.RacialParagon)) damage *= RacialParagonAbilityBoost();
     damage = Math.round(damage);
     doPhysicalDamage(damage, true, true);

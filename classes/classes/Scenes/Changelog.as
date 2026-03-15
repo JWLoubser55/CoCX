@@ -14,7 +14,7 @@ public class Changelog extends BaseContent
 		{}
 		
 		public function accessChangelogMenu():void {
-			Changelog61();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, status effect, key item, item, consumable, usable, material, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene
+			Changelog61();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, status effect, key item, item, consumable, usable, material, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene, masturbation scene
 		}
 		//zrobić do 2022 na świeta event z reniferami i nie odblokowywać go do ok. 20-24 grudnia 2021 xD
 		private function Changelog63():void {
@@ -266,7 +266,11 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Glacial blockade. Gained by having Exanimation IV and Ice Affinity perks. Effects: PC receives +10 to Physical DR from armor / Magical DR from armor / DR from toughness when a foe is affected by an ice dot.\n");
 			outputText("-Precision perk changed to lower enemy armor by 10% or 10 (whichever is greater) instead of just lower enemy armor value by 10.\n");
 			outputText("-New tier 0 wisdom lvl-up perk: Magic Precision. Req. 25+ wisdom. Effect: Reduces enemy magic resistance by 10% or 10 (whichever is greater). (Req's 25+ Wisdom)\n");
-			outputText("-New mutation perk: Undead Metabolism. Req. having free metabolism mutation slot, one of races: Zombie, Mummy, Jiangshi, Lich. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 5% bonus to libido up to 50% and heal libido damage from starvation.\n");
+			outputText("-New mutation perk: Undead Metabolism. Req. having free metabolism mutation slot, one of races: Zombie, Mummy, Jiangshi, Lich. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 5% bonus to libido up to 50% and heal libido damage from starvation. These bonuses decay over time.\n");
+			outputText("-New mutation perk: Undead Metabolism (Primitive). Req. Undead Metabolism and lvl 30+. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 10% bonus to libido up to 100% and heal all libido damage. ");
+			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 100% stronger.\n");
+			outputText("-New mutation perk: Undead Metabolism (Evolved). Req. Undead Metabolism (Primitive) and lvl 60+. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 15% bonus to libido up to 150% and heal all libido damage. ");
+			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 200% stronger. You permanently gain the Darkness Affinity perk.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -290,12 +294,10 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");//New mutation perk: Undead Metabolism (Final Form). Req. Undead Metabolism (Evolved) and lvl 90+. Effects: 
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New Unique Sexscene: Zombie Sex - req. at least 50% soulforce to use, Lich and at least 3 Zombie pets.
-			outputText("-\n");
+			outputText("-\n");//New Masturbation Scene: Zombie Sex - req. at least 50% soulforce to use, Lich and at least 3 Zombie pets. Increases the zombie attack ability damage for 7 days. Reset time when used.
+			outputText("-\n");//New Masturbation option: Mummy Sex. Req. 50%+ Soulfroce, be Anubi and have 3+ mummies. Beside typical effects it would drain those 50% of SF and increase mummies attack (2x) for 24 hours. (In case PC loose control over mummies in that time timer would be still ticking down each hour so regaining control ove rmummies would keep boost for remaining time until full day would pass by)
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
