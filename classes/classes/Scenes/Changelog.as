@@ -271,6 +271,9 @@ public class Changelog extends BaseContent
 			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 100% stronger.\n");
 			outputText("-New mutation perk: Undead Metabolism (Evolved). Req. Undead Metabolism (Primitive) and lvl 60+. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 15% bonus to libido up to 150% and heal all libido damage. ");
 			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 200% stronger. You permanently gain the Darkness Affinity perk.\n");
+			outputText("-New mutation perk: Undead Metabolism (Final Form). Req. Undead Metabolism (Evolved) and lvl 90+. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 20% bonus to libido up to 200% and heal all libido damage. ");
+			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 300% stronger. You permanently gain the Darkness Affinity perk. Draining effects you cause also inflict toughness damage based on your level: 1% toughness damage per 10 levels.\n");
+			outputText("-New Masturbation Scene: Zombie Sex - req. at least 50% soulforce to use, Lich and at least 3 Zombie pets. Increases the zombie attack (2x) for 7 days. Reset time when used.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -294,17 +297,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New mutation perk: Undead Metabolism (Final Form). Req. Undead Metabolism (Evolved) and lvl 90+. Effects: 
 			outputText("-\n");
-			outputText("-\n");//New Masturbation Scene: Zombie Sex - req. at least 50% soulforce to use, Lich and at least 3 Zombie pets. Increases the zombie attack ability damage for 7 days. Reset time when used.
-			outputText("-\n");//New Masturbation option: Mummy Sex. Req. 50%+ Soulfroce, be Anubi and have 3+ mummies. Beside typical effects it would drain those 50% of SF and increase mummies attack (2x) for 24 hours. (In case PC loose control over mummies in that time timer would be still ticking down each hour so regaining control ove rmummies would keep boost for remaining time until full day would pass by)
+			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");
-			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
-			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong)
-			outputText("-\n");// (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM) (Akaku-Keninari)
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
@@ -314,11 +315,11 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
+			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong)
+			outputText("-\n");// (Imperfect Spell) (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM) (Akaku-Keninari)
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");

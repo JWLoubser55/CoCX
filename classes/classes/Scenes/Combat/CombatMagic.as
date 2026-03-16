@@ -452,7 +452,10 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.BloodDemonWisdom)) mod += .5;
 		//
 		if (player.hasPerk(PerkLib.VampiricMagic)) mod += .5;
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;//if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) damage *= player.perkv1(IMutationsLib.UndeadMetabolismIM);
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;
 		return mod;
@@ -473,7 +476,10 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.level < 18) mod += 1;
 			mod += 1;
 		}
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		return mod;
 	}
@@ -501,7 +507,10 @@ public class CombatMagic extends BaseCombatContent {
 			mod += 1;
 		}
 		if (player.weapon == weapons.PURITAS) mod *= 2.5;
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;
 		return mod;
@@ -524,7 +533,10 @@ public class CombatMagic extends BaseCombatContent {
 			mod += 1;
 		}
 		if (player.weapon == weapons.DEPRAVA) mod *= 2.5;
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;
 		return mod;
@@ -544,7 +556,10 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.checkNaturalOath()) mod *= 2;
 		if (player.weapon == weapons.QULIPOTH) mod *= 2;
 		if (player.weapon == weapons.ANCIENTO) mod *= 2;
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;
 		return mod;

@@ -1735,6 +1735,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasPerk(PerkLib.MummyLord)) player.addPerkValue(PerkLib.MummyLord,2,-1);
 				else player.addPerkValue(PerkLib.MummyLordDormant,2,-1);
 			}
+			if (player.hasPerk(PerkLib.UndeadLord) && player.perkv2(PerkLib.UndeadLord) > 0) player.addPerkValue(PerkLib.UndeadLord,2,-1);
 			//Heaven Tribulations
 			if (player.hasStatusEffect(StatusEffects.TribulationCountdown)) {
 				if (player.statusEffectv1(StatusEffects.TribulationCountdown) <= 1 && !player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) {

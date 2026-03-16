@@ -29,7 +29,7 @@ public class UndeadMetabolismMutation extends IMutationPerkType
                 descS += ". You permanently gain the Darkness Affinity perk";
             }
             if (pTier >= 4){
-                descS += ". Fluid intake heals all status damage, drains and weakening by 5% per intake";
+                descS += ". Draining effects you cause also inflict toughness damage based on your level: 1% toughness damage per 10 levels";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -65,7 +65,7 @@ public class UndeadMetabolismMutation extends IMutationPerkType
         }
 
         public function UndeadMetabolismMutation() {
-            super(MNAME, SLOT_METABOLISM, 3);
+            super(MNAME, SLOT_METABOLISM, 4);
         }
         
     }

@@ -8485,6 +8485,10 @@ use namespace CoC;
 			else pc.HPChange(hpc, true, false);
 			pc.ManaChange(25 + (inte/2));
 			EngineCore.changeFatigue(-(25 + (spe/2)));
+			if (perkv1(IMutationsLib.UndeadMetabolismIM) >= 4 && SceneLib.combat.inCombat) {
+				var touDr:Number = (Math.round(level/10) * 0.01);
+				CoC.instance.monster.addCurse("tou.mult",touDr,2);
+			}
 			removeCurse("lib", 5, 1);
 			removeCurse("lib", 5, 2);
 		}
@@ -9105,4 +9109,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}
