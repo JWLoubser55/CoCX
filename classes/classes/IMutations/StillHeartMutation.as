@@ -35,7 +35,7 @@ public class StillHeartMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireAdaptationsMutationSlot()
-                    .requireAnyRace(Races.JIANGSHI, Races.MUMMY, Races.LICH);
+                    .requireAnyRace(Races.JIANGSHI, Races.MUMMY, Races.LICH, Races.BANSHEE);
                 }
                 else{
                     var pLvl:int = pTier * 30;

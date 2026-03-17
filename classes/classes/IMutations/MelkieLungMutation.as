@@ -35,7 +35,7 @@ public class MelkieLungMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireLungsMutationSlot()
-                    .requireAnyRace(Races.MELKIE, Races.SATYR);
+                    .requireAnyRace(Races.MELKIE, Races.SATYR, Races.BANSHEE);
                 }
                 else{
                     var pLvl:int = pTier * 30;

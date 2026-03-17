@@ -32,7 +32,6 @@ public class BansheeRace extends Race {
 
 	public function BansheeRace(id:int) {
 		super("Banshee", id, []);//RaceBody);
-		disabled = true;
 		chimeraTier = 0;
 		grandChimeraTier = 0;
         //tfRace = RaceMem.appendEnumVal("Banshee", CoC.instance.transformations.FullBanshee);
@@ -40,18 +39,42 @@ public class BansheeRace extends Race {
 	
 	public override function setup():void {
 		addScores()
-				.hairType(Hair.GHOST, +1)
+				.armType(Arms.GHOST, +1)
+				.legType(LowerBody.GHOST, +1)
+				.earType(Ears.ELVEN, +1, -1000)
+				.hairType(Hair.SILKEN, +1)
+				.eyeType(Eyes.ELF, +1)
+				.tongueType(Tongue.ELF, +1, -1000)
+				//
+				//
+				//
+				//
+				.rearType(RearBody.GHOSTLY_AURA, +4)
+				.femininity(GREATER_THAN(69), +3)
+				.femininity(LESS_THAN(70), -6)
+				//Slim (as by elf) +1
+				.corruption(AT_LEAST(20), +2)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
-		buildTier(1000, "tierName")
+		addMutation(IMutationsLib.MelkieLungIM);
+		//
+		addMutation(IMutationsLib.StillHeartIM);
+		
+		buildTier(9, "banshee")
 				.buffs({
-					"str.mult": +0.00,
-					"tou.mult": +0.00,
-					"spe.mult": +0.00,
-					"int.mult": +0.00,
-					"wis.mult": +0.00,
-					"lib.mult": +0.00,
-					"sens": +0
+					"str.mult": -0.45,
+					"int.mult": +0.95,
+					"lib.mult": +1.35,
+					"sens": +50
+				})
+				.end();
+				
+		buildTier(16, "unhallowed banshee")
+				.buffs({
+					"str.mult": -0.90,
+					"int.mult": +1.80,
+					"lib.mult": +2.00,
+					"sens": +50
 				})
 				.end();
 	}
