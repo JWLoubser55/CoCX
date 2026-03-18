@@ -5,6 +5,8 @@ import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 public class BansheeRace extends Race {
+    public static const BansheeHairColors:/*String*/Array = ["midnight black", "black", "snow white"];
+	public static const BansheeSkinColors:/*String*/Array = ["pale blue","pale white"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -45,14 +47,16 @@ public class BansheeRace extends Race {
 				.hairType(Hair.SILKEN, +1)
 				.eyeType(Eyes.ELF, +1)
 				.tongueType(Tongue.ELF, +1, -1000)
-				//
-				//
-				//
-				//
+				.eyeColor("pale blue", +1)
+				.hairColor1(ANY(BansheeHairColors), +1)
+				.skinColor1(ANY(BansheeSkinColors), +1)
+				.plainSkinOfAdj("flawless", +1)
+				.hasPerk(PerkLib.FlawlessBody, +1)
 				.rearType(RearBody.GHOSTLY_AURA, +4)
 				.femininity(GREATER_THAN(69), +3)
 				.femininity(LESS_THAN(70), -6)
-				//Slim (as by elf) +1
+				.tone(AT_MOST(60), +1)
+				.thickness(AT_MOST(50), +1)
 				.corruption(AT_LEAST(20), +2)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
@@ -60,7 +64,7 @@ public class BansheeRace extends Race {
 		//
 		addMutation(IMutationsLib.StillHeartIM);
 		
-		buildTier(9, "banshee")
+		buildTier(9, "lesser banshee")
 				.buffs({
 					"str.mult": -0.45,
 					"int.mult": +0.95,
@@ -69,11 +73,20 @@ public class BansheeRace extends Race {
 				})
 				.end();
 				
-		buildTier(16, "unhallowed banshee")
+		buildTier(16, "banshee")
 				.buffs({
 					"str.mult": -0.90,
 					"int.mult": +1.80,
 					"lib.mult": +2.00,
+					"sens": +50
+				})
+				.end();
+				
+		buildTier(28, "unhallowed banshee")
+				.buffs({
+					"str.mult": -0.90,
+					"int.mult": +3.00,
+					"lib.mult": +2.60,
 					"sens": +50
 				})
 				.end();

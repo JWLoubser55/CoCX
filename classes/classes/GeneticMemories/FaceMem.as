@@ -240,7 +240,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceElf;
 			}
-		});
+		});/*
 
 		public static const ECHIDNA:int = _partid++;
 		EnumValue.add(Memories, ECHIDNA, "ECHIDNA", {
@@ -251,7 +251,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceEchidna;
 			}
-		});
+		});*/
 
 		public static const FERRET:int = _partid++;
 		EnumValue.add(Memories, FERRET, "FERRET", {
@@ -460,7 +460,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceRedPanda;
 			}
-		});
+		});/*
 
 		public static const RHINO:int = _partid++;
 		EnumValue.add(Memories, RHINO, "RHINO", {
@@ -471,7 +471,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceRhino;
 			}
-		});
+		});*/
 
 		public static const SALAMANDER_FANGS:int = _partid++;
 		EnumValue.add(Memories, SALAMANDER_FANGS, "SALAMANDER_FANGS", {

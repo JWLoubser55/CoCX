@@ -258,7 +258,7 @@ package classes.GeneticMemories {
 			transformation: function(cockIndex:int): Transformation {
 				return CoC.instance.transformations.CockAvian(cockIndex);
 			}
-		});
+		});/*
 
 		public static const RHINO:int = _partid++;
 		EnumValue.add(Memories, RHINO, "RHINO", {
@@ -280,7 +280,7 @@ package classes.GeneticMemories {
 			transformation: function(cockIndex:int): Transformation {
 				return CoC.instance.transformations.CockEchidna(cockIndex);
 			}
-		});
+		});*/
 
 		public static const WOLF:int = _partid++;
 		EnumValue.add(Memories, WOLF, "WOLF", {

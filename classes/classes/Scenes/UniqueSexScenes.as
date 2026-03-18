@@ -1144,7 +1144,7 @@ public class UniqueSexScenes extends BaseContent
 				outputText(" purple shard of lethicite.  Your now-demonic partner is still passed out, [monster his] slowly shaping into an " + (monster.hasVagina()?"omnibus":"incubus") + ".  You pocket the shard for later, kissing your new fellow on [monster his] cocktip as a farewell.");
 			}
 			player.sexReward("cum","Vaginal");
-			if (SuccubusIncubusFeastNotWrongEnemyTypeForLethicite() && player.hasPerk(PerkLib.Soulless)) {
+			if (SuccubusIncubusFeastNotWrongEnemyTypeForLethicite() && (player.hasPerk(PerkLib.Soulless) || player.hasPerk(PerkLib.Phylactery))) {
 				if (monster.level < 25) inventory.takeItem(consumables.LETH0TE, cleanupAfterCombat);
 				else if (monster.level < 50) inventory.takeItem(consumables.LETH1TE, cleanupAfterCombat);
 				else if (monster.level < 75) inventory.takeItem(consumables.LETH2TE, cleanupAfterCombat);
@@ -1197,7 +1197,7 @@ public class UniqueSexScenes extends BaseContent
 				outputText(" purple shard of lethicite.  Your now-demonic partner is still passed out, her body slowly shaping into a" + (monster.hasCock()?"n omnibus":" succubus") + ".  You pocket the shard for later, kissing your new fellow on her twat as a farewell.\n\n");
 			}
 			player.sexReward("girlcum","Dick");
-			if (SuccubusIncubusFeastNotWrongEnemyTypeForLethicite() && player.hasPerk(PerkLib.Soulless)) {
+			if (SuccubusIncubusFeastNotWrongEnemyTypeForLethicite() && (player.hasPerk(PerkLib.Soulless) || player.hasPerk(PerkLib.Phylactery))) {
 				if (monster.level < 25) inventory.takeItem(consumables.LETH0TE, cleanupAfterCombat);
 				else if (monster.level < 50) inventory.takeItem(consumables.LETH1TE, cleanupAfterCombat);
 				else if (monster.level < 75) inventory.takeItem(consumables.LETH2TE, cleanupAfterCombat);

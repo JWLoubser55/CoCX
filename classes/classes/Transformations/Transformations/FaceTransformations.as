@@ -472,7 +472,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.RHINO;
-				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.RHINO));
+				//Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.RHINO));
 			},
 			// is present
 			function (): Boolean {
@@ -489,7 +489,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.ECHIDNA;
-				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.ECHIDNA));
+				//Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.ECHIDNA));
 			},
 			// is present
 			function (): Boolean {

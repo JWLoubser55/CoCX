@@ -930,7 +930,7 @@ public class CockTransformations extends MutationsHelper {
 					player.cocks[cock].cockType = CockTypesEnum.RHINO;
 
 					transformations.UnlockCocks();
-					Metamorph.unlockMetamorphEx(CockMem.getMemory(CockMem.RHINO));
+					//Metamorph.unlockMetamorphEx(CockMem.getMemory(CockMem.RHINO));
 				},
 				// is present
 				function ():Boolean {
@@ -964,7 +964,7 @@ public class CockTransformations extends MutationsHelper {
 					player.cocks[cock].cockType = CockTypesEnum.ECHIDNA;
 
 					transformations.UnlockCocks();
-					Metamorph.unlockMetamorphEx(CockMem.getMemory(CockMem.ECHIDNA));
+					//Metamorph.unlockMetamorphEx(CockMem.getMemory(CockMem.ECHIDNA));
 				},
 				// is present
 				function ():Boolean {
