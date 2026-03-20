@@ -57,6 +57,7 @@ public class EyesTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.eyes.type = Eyes.JIANGSHI;
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.JIANGSHI));
 			},
 			// is present
 			function (): Boolean {

@@ -781,6 +781,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const JIANGSHI:int = _partid++;
+		EnumValue.add(Memories, JIANGSHI, "JIANGSHI", {
+			id: "Jiangshi Face",
+			name: "Jiangshi Face",
+			cost: 100,
+			title: "Jiangshi Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceJiangshi;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

@@ -593,12 +593,11 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			outputText("(<b>Gained Perks: Halted vitals, Super strength, Poison nails, Rigidity, Life leech, Undeath, Energy dependent</b>)\n\n");
 			player.skinColor = randomChoice("snow white", "ghostly pale", "light blue");
 			CoC.instance.transformations.FaceJiangshi.applyEffect(false);
-			player.eyes.type = Eyes.JIANGSHI;
+			CoC.instance.transformations.EyesJiangshi.applyEffect(false);
 			CoC.instance.transformations.EyesChangeColor(["turquoise"]).applyEffect(false);
-			player.horns.type = Horns.SPELL_TAG;
-			player.horns.count = 1;
-			player.arms.type = Arms.JIANGSHI;
-			player.lowerBody = LowerBody.JIANGSHI;
+			CoC.instance.transformations.HornsJiangshi.applyEffect(false);
+			CoC.instance.transformations.ArmsJiangshi.applyEffect(false);
+			CoC.instance.transformations.LowerBodyJiangshi.applyEffect(false);
 			player.createPerk(PerkLib.HaltedVitals, 0, 0, 0, 0);
 			player.createPerk(PerkLib.SuperStrength, 0, 0, 0, 0);
 			player.createPerk(PerkLib.PoisonNails, 0, 0, 0, 0);

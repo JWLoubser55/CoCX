@@ -829,14 +829,14 @@ public class ValaScene extends BaseContent implements SaveableState
 			ValaFairyQueenQuest = QUEST_STAGE_PCDACCEPTED;
 			//Turn pc into a proper fairy
 			CoC.instance.transformations.FaceFairy.applyEffect(false);
-			player.eyes.type = Eyes.FAIRY;
+			CoC.instance.transformations.EyesFairy.applyEffect(false);
 			CoC.instance.transformations.HairFairy.applyEffect(false);
 			player.ears.type = Ears.ELVEN;
 			player.tailType = Tail.NONE;
 			player.arms.type = Arms.ELF;
 			player.lowerBody = LowerBody.ELF;
 			player.tongue.type = Tongue.ELF;
-			player.wings.type = Wings.FAIRY;
+			CoC.instance.transformations.WingsFairy.applyEffect(false);
 			player.skinType = Skin.PLAIN;
 			player.skinAdj = "flawless";
 			if (player.hasCock()) player.removeCock(0, player.cockTotal());

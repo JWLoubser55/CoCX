@@ -3166,6 +3166,10 @@ public class Creature extends Utils
 			return countCocksOfType(CockTypesEnum.BAROMETZ);
 		}
 
+		public function ushOniCocks():int { //How many ushi-onicocks?
+			return countCocksOfType(CockTypesEnum.USHI_ONI);
+		}
+
 
 		public function findFirstCockType(ctype:CockTypesEnum):Number
 		{

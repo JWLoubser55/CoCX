@@ -980,6 +980,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.JIANGSHI;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.JIANGSHI));
 			},
 			// is present
 			function (): Boolean {

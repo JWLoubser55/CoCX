@@ -306,6 +306,17 @@ package classes.GeneticMemories {
 		  }
 	  });
 
+	  public static const JIANGSHI_SPELL_TAG:int = _partid++;
+	  EnumValue.add(Memories, JIANGSHI_SPELL_TAG, "JIANGSHI_SPELL_TAG", {
+		  id: "Jiangshi Spell Tag",
+		  name: "Jiangshi Spell Tag",
+		  cost: 100,
+		  title: "Jiangshi Spell Tag",
+		  transformation: function(): Transformation {
+			  return CoC.instance.transformations.HornsJiangshi;
+		  }
+	  });
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

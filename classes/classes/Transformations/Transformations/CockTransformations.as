@@ -1321,6 +1321,7 @@ public class CockTransformations extends MutationsHelper {
 					player.cocks[cock].cockType = CockTypesEnum.SHROOM;
 
 					transformations.UnlockCocks();
+					Metamorph.unlockMetamorphEx(CockMem.getMemory(CockMem.SHROOM));
 				},
 				// is present
 				function ():Boolean {

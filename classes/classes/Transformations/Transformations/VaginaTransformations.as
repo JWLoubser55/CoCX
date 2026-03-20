@@ -646,6 +646,7 @@ public class VaginaTransformations extends MutationsHelper {
 					player.vaginaType(VaginaClass.SHROOM, vagina);
 
 					transformations.UnlockVagina();
+					Metamorph.unlockMetamorphEx(VaginaMem.getMemory(VaginaMem.SHROOM));
 				},
 				// is present
 				function ():Boolean {

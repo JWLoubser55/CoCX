@@ -17096,6 +17096,17 @@ public final class Mutations extends MutationsHelper {
                     if (temp2 > 0) changes++;
                 }
             }
+			//Ushi Oni Cock:
+			if (player.ushOniCocks() < player.cockTotal() && rand(3) == 0 && changes < changeLimit) {
+				for (temp2 = 0; temp2 < player.cocks.length; temp2++) {
+					//Stop loopahn when dick be found
+					if (player.cocks[temp2].cockType != CockTypesEnum.USHI_ONI) break;
+				}
+				transformations.CockUshiOni(temp2).applyEffect();
+				changes++;
+				dynStats("lus", 10, "scale", false);
+				MutagenBonus("lib", 3);
+			}
             //-Grow hips out if narrow.
             if (player.hips.type < 20 && changes < changeLimit && rand(3) == 0) {
                 outputText("[pg]Your gait shifts slightly to accommodate your widening [hips]. The change is subtle, but they're definitely broader.");
@@ -17174,6 +17185,17 @@ public final class Mutations extends MutationsHelper {
                     if (temp2 > 0) changes++;
                 }
             }
+			//Ushi Oni Cock:
+			if (player.ushOniCocks() < player.cockTotal() && rand(3) == 0 && changes < changeLimit) {
+				for (temp2 = 0; temp2 < player.cocks.length; temp2++) {
+					//Stop loopahn when dick be found
+					if (player.cocks[temp2].cockType != CockTypesEnum.USHI_ONI) break;
+				}
+				transformations.CockUshiOni(temp2).applyEffect();
+				changes++;
+				dynStats("lus", 10, "scale", false);
+				MutagenBonus("lib", 3);
+			}
             //-Grow hips out if narrow.
             if (player.hips.type < 4 && changes < changeLimit && rand(3) == 0) {
                 outputText("[pg]Your gait shifts slightly to accommodate your widening [hips]. The change is subtle, but they're definitely broader.");
@@ -18248,4 +18270,4 @@ public final class Mutations extends MutationsHelper {
     }
 }
 
-}
+}

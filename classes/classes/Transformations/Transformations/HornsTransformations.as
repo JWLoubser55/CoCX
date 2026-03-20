@@ -570,6 +570,7 @@ public class HornsTransformations extends MutationsHelper {
 
 				player.horns.type = Horns.SPELL_TAG;
 				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(HornsMem.getMemory(HornsMem.JIANGSHI_SPELL_TAG));
 			},
 			// is present
 			function (): Boolean {
