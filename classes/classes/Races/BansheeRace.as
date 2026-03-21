@@ -61,7 +61,7 @@ public class BansheeRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.MelkieLungIM);
-		//
+		addMutation(IMutationsLib.EctoplasmicEssenceIM);
 		addMutation(IMutationsLib.StillHeartIM);
 		
 		buildTier(9, "lesser banshee")

@@ -9,9 +9,9 @@ import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.Races;
 
-public class BlackBloodMutation extends IMutationPerkType
+public class EctoplasmicEssenceMutation extends IMutationPerkType
     {
-		public static const MNAME:String = "Black Blood";
+		public static const MNAME:String = "Ectoplasmic Essence";
 		override public function get mName():String {
 			return MNAME;
 		}
@@ -19,7 +19,11 @@ public class BlackBloodMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Your undead blood gives you a "+pTier+"0% resistance to cold";
+            if (pTier >= 1) descS += "Reduce Physical damage taken by " + (5 + (5 * pTier)) + "% after damage reduction";
+			if (pTier >= 1 && pTier < 4) {
+				descS += " but increase magical damage taken by ";
+				if (pTier == 1) descS += "40%";
+			}
 			if (pTier >= 2) descS += ". When hunger is sated above "+((6-pTier)*2)+"0% you gain doubled health generation from all sources";
             if (pTier >= 3) descS += ". You gain regeneration "+(pTier-2)+"%";
             if (pTier >= 4) descS += ". You recover from all stat damage except intelligence / libido every full moon night";
@@ -35,7 +39,7 @@ public class BlackBloodMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireBloodsteamMutationSlot()
-                    .requireAnyRace(Races.JIANGSHI, Races.MUMMY, Races.LICH);
+                    .requireAnyRace(Races.POLTERGEIST, Races.BANSHEE);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -56,9 +60,9 @@ public class BlackBloodMutation extends IMutationPerkType
             return pBuffs;
         }
 
-        public function BlackBloodMutation() 
+        public function EctoplasmicEssenceMutation() 
 		{
-			super(MNAME, SLOT_BLOODSTREAM, 4);
+			super(MNAME, SLOT_BLOODSTREAM, 1);
         }
         
     }

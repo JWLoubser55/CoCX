@@ -275,7 +275,7 @@ public class Changelog extends BaseContent
 			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 300% stronger. You permanently gain the Darkness Affinity perk. Draining effects you cause also inflict toughness damage based on your level: 1% toughness damage per 10 levels.\n");
 			outputText("-New Masturbation Scene: Zombie Sex - req. at least 50% soulforce to use, Lich and at least 3 Zombie pets. Increases the zombie attack (2x) for 7 days. Reset time when used.\n");
 			outputText("-Adding new bodyparts to Genetic Memory.\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Ectoplasmic Essence. Req. having free bloodstream mutation slot, one of races: Poltergeist, Banshee. Effects: Reduce Physical damage taken by 10% after damage reduction but increase magical damage taken by 40%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -3683,6 +3683,7 @@ use namespace CoC;
 			}
 			//Apply damage resistance percentage.
 			damage *= damagePercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= (1 - (0.05 * (1 + perkv1(IMutationsLib.EctoplasmicEssenceIM))));
 			return damage;
 		}
 		public function damagePercentMRes():Number {
@@ -3824,6 +3825,7 @@ use namespace CoC;
 			}
 			//Apply magic damage resistance percentage.
 			damage *= damageMagicalPercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 
@@ -3914,6 +3916,7 @@ use namespace CoC;
 			}
 			//Apply fire damage resistance percentage.
 			damage *= damageFirePercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 
@@ -4017,6 +4020,7 @@ use namespace CoC;
 			}
 			//Apply ice damage resistance percentage.
 			damage *= damageIcePercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 
@@ -4106,6 +4110,7 @@ use namespace CoC;
 			}
 			//Apply lightning damage resistance percentage.
 			damage *= damageLightningPercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 
@@ -4188,6 +4193,7 @@ use namespace CoC;
 			}
 			//Apply darkness damage resistance percentage.
 			damage *= damageDarknessPercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 
@@ -4274,6 +4280,7 @@ use namespace CoC;
 			}
 			//Apply poison damage resistance percentage.
 			damage *= damagePoisonPercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 
@@ -4357,6 +4364,7 @@ use namespace CoC;
 			}
 			//Apply wind damage resistance percentage.
 			damage *= damageWindPercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 
@@ -4443,6 +4451,7 @@ use namespace CoC;
 			}
 			//Apply water damage resistance percentage.
 			damage *= damageWaterPercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 
@@ -4526,6 +4535,7 @@ use namespace CoC;
 			}
 			//Apply earth damage resistance percentage.
 			damage *= damageEarthPercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 
@@ -4618,6 +4628,7 @@ use namespace CoC;
 			}
 			//Apply acid damage resistance percentage.
 			damage *= damageAcidPercent() / 100;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= EctoplasmicEssenceMagicReduction();
 			return damage;
 		}
 		
@@ -4734,6 +4745,14 @@ use namespace CoC;
 			//Apply acid damage resistance percentage.
 			damage *= damageTruePercent() / 100;
 			return damage;
+		}
+		
+		private function EctoplasmicEssenceMagicReduction():Number {
+			var EEMR:Number = 1.4;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) EEMR -= 0.2;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 3) EEMR -= 0.1;
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) EEMR -= 0.1;
+			return EEMR;
 		}
 
 		/**
