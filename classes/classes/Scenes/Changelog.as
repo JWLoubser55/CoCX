@@ -276,7 +276,7 @@ public class Changelog extends BaseContent
 			outputText("-New Masturbation Scene: Zombie Sex - req. at least 50% soulforce to use, Lich and at least 3 Zombie pets. Increases the zombie attack (2x) for 7 days. Reset time when used.\n");
 			outputText("-Adding new bodyparts to Genetic Memory.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence. Req. having free bloodstream mutation slot, one of races: Poltergeist, Banshee. Effects: Reduce Physical damage taken by 10% after damage reduction but increase magical damage taken by 40%.\n");
-			outputText("-\n");
+			outputText("-New event perk: Soul drain. Gained by becoming Jiangshi (tier 2)/Mummy. Effects: Leeching from others' souls can permanently improve your own. Sex permanently raises all stats but toughness/sensitivity by 1% when used on target with souls and is twice as strong when using the unique racial sex scenes.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

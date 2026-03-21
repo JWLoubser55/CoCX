@@ -1841,7 +1841,7 @@ import classes.lists.Gender;
 			// Normal TFs
 			//------------
 			//Hair turns back to normal
-			if (rand(4) == 0 && changes < changeLimit && CoC.instance.transformations.HairHuman.isPossible() &&  CoC.instance.transformations.HairQuill.isPossible()) {
+			if (rand(4) == 0 && changes < changeLimit && CoC.instance.transformations.HairHuman.isPossible() && CoC.instance.transformations.HairQuill.isPossible()) {
 				outputText("\n\n");
 				CoC.instance.transformations.HairHuman.applyEffect();
 				changes++;
@@ -2075,9 +2075,123 @@ import classes.lists.Gender;
 			var changes:int = 0;
 			var changeLimit:int = 3 + player.additionalTransformationChances;
 			if (player.blockingBodyTransformations()) changeLimit = 0;
-			if (changes < changeLimit && rand(3) == 0 && player.ears.type != Ears.DRAGON) {
+			if (changes < changeLimit && rand(3) == 0) {
 				outputText("[pg]");
-				transformations.EarsDraconic.applyEffect();
+				var meatMeat1:int = rand(7);
+				switch(meatMeat1) {
+					case 0:
+						transformations.EarsDraconic.applyEffect();
+						break;
+					case 1:
+						transformations.RearBodyDisplacerTentacles.applyEffect();
+						break;
+					case 2:
+						transformations.LowerBodyAvian.applyEffect();
+						break;
+					case 3:
+						transformations.RearBodyWolfCollar.applyEffect();
+						break;
+					case 4:
+						transformations.EarsPig.applyEffect();
+						break;
+					case 5:
+						transformations.ArmsKraken.applyEffect();
+						break;
+					case 6:
+						transformations.ArmsPhoenix.applyEffect();
+						break;
+					default:
+				}
+				changes++;
+			}
+			if (changes < changeLimit && rand(3) == 0) {
+				var meatMeat2:int = rand(7);
+				switch(meatMeat2) {
+					case 0:
+						transformations.LowerBodyGryphon(2).applyEffect();
+						break;
+					case 1:
+						transformations.TongueDemonic.applyEffect();
+						break;
+					case 2:
+						transformations.RearBodySnailShell.applyEffect();
+						break;
+					case 3:
+						transformations.EarsKirin.applyEffect();
+						break;
+					case 4:
+						transformations.TongueDraconic.applyEffect();
+						break;
+					case 5:
+						transformations.AntennaeBee.applyEffect();
+						break;
+					case 6:
+						transformations.EyesSandTrap.applyEffect();
+						break;
+					default:
+				}
+				changes++;
+			}
+			if (changes < changeLimit && rand(3) == 0) {
+				var meatMeat3:int = rand(7);
+				switch(meatMeat3) {
+					case 0:
+						transformations.FaceAnimalTeeth.applyEffect();
+						break;
+					case 1:
+						transformations.ArmsDeer.applyEffect();
+						break;
+					case 2:
+						transformations.ArmsAnt.applyEffect();
+						break;
+					case 3:
+						transformations.TailScorpion.applyEffect();
+						break;
+					case 4:
+						transformations.EarsLion.applyEffect();
+						break;
+					case 5:
+						transformations.TailCow.applyEffect();
+						break;
+					case 6:
+						transformations.EarsInsect.applyEffect();
+						break;
+					default:
+				}
+				changes++;
+			}
+			if (changes < changeLimit && rand(3) == 0) {
+				var meatMeat4:int = rand(4);
+				switch(meatMeat4) {
+					case 0:
+						transformations.EyesMoth.applyEffect();
+						break;
+					case 1:
+						transformations.FaceRedPanda.applyEffect();
+						break;
+					case 2:
+						transformations.LowerBodyClovenHoofed(2).applyEffect();
+						break;
+					case 3:
+						transformations.ArmsBatWing.applyEffect();
+						break;/*
+					case 4:
+						
+						break;
+					case 5:
+						
+						break;
+					case 6:
+						
+						break;*/
+					default:
+				}
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit && player.hairType == Hair.NORMAL) {
+				outputText("\n\n");
+				if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 0) flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD]++;
+				CoC.instance.transformations.HairQuill.applyEffect();
 				changes++;
 			}
 			if (player.faceType == Face.HUMAN && player.ears.type != Ears.ELFIN && changes < changeLimit && rand(3) == 0) {
@@ -2095,24 +2209,9 @@ import classes.lists.Gender;
 				transformations.WingsDemonicTiny.applyEffect();
 				changes++;
 			}
-			if (player.rearBody.type != RearBody.DISPLACER_TENTACLES && rand(3) == 0 && changes < changeLimit) {
-				outputText("[pg]");
-				transformations.RearBodyDisplacerTentacles.applyEffect();
-				changes++;
-			}
 			if (player.tailType != Tail.DEMONIC && player.horns.count > 0 && rand(4) == 0 && changes < changeLimit) {
 				outputText("[pg]");
 				transformations.TailDemonic.applyEffect();
-				changes++;
-			}
-			if (player.lowerBody != LowerBody.AVIAN && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.LowerBodyAvian.applyEffect();
-				changes++;
-			}
-			if (player.rearBody.type != RearBody.WOLF_COLLAR && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.RearBodyWolfCollar.applyEffect();
 				changes++;
 			}
 			if (!player.hasStatusEffect(StatusEffects.BlackNipples) && rand(3) == 0 && changes < changeLimit) {
@@ -2120,69 +2219,14 @@ import classes.lists.Gender;
 				transformations.NipplesBlack.applyEffect();
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.ears.type != Ears.PIG) {
-				outputText("[pg]");
-				transformations.EarsPig.applyEffect();
-				changes++;
-			}
-			if (player.arms.type != Arms.KRAKEN && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.ArmsKraken.applyEffect();
-				changes++;
-			}
-			if (player.arms.type != Arms.PHOENIX && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.ArmsPhoenix.applyEffect();
-				changes++;
-			}
-			if (player.lowerBody != LowerBody.GRYPHON && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.LowerBodyGryphon(2).applyEffect();
-				changes++;
-			}
-			if (player.tongue.type != Tongue.DEMONIC && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.TongueDemonic.applyEffect();
-				changes++;
-			}
 			if (player.tailType != Tail.BEAR && player.lowerBody == LowerBody.BEAR && changes < changeLimit && rand(3) == 0) {
 				outputText("[pg]");
 				transformations.TailBear.applyEffect();
 				changes++;
 			}
-			if (player.rearBody.type != RearBody.SNAIL_SHELL && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.RearBodySnailShell.applyEffect();
-				changes++;
-			}
 			if (changes < changeLimit && player.faceType == Face.FIRE_SNAIL && player.antennae.type != Antennae.FIRE_SNAIL && rand(3) == 0) {
 				outputText("[pg]");
 				transformations.AntennaeFireSnail.applyEffect();
-				changes++;
-			}
-			if (player.ears.type != Ears.KIRIN && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.EarsKirin.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && rand(3) == 0 && player.tongue.type != Tongue.DRACONIC) {
-				outputText("[pg]");
-				transformations.TongueDraconic.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && player.antennae.type != Antennae.BEE && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.AntennaeBee.applyEffect();
-				changes++;
-			}
-			if (player.eyes.type != Eyes.BLACK_EYES_SAND_TRAP && rand(3) == 0 && changes < changeLimit) {
-				outputText("[pg]");
-				transformations.EyesSandTrap.applyEffect();
-				changes++;
-			}
-			if (player.faceType != Face.ANIMAL_TOOTHS && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.FaceAnimalTeeth.applyEffect();
 				changes++;
 			}
 			if (player.wings.type == Wings.NONE && changes < changeLimit && rand(3) == 0) {
@@ -2196,44 +2240,9 @@ import classes.lists.Gender;
 				player.horns.count = 1;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.DEER) {
-				outputText("[pg]");
-				transformations.ArmsDeer.applyEffect();
-				changes++;
-			}
-			if (player.arms.type != Arms.ANT && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.ArmsAnt.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && player.tailType != Tail.SCORPION && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.TailScorpion.applyEffect();
-				changes++;
-			}
-			if (player.ears.type != Ears.LION && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.EarsLion.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && rand(3) == 0 && player.tailType != Tail.COW) {
-				outputText("[pg]");
-				transformations.TailCow.applyEffect();
-				changes++;
-			}
 			if (transformations.HairCrazy.isPossible() && changes < changeLimit && rand(3) == 0) {
 				outputText("[pg]");
 				transformations.HairCrazy.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && rand(3) == 0 && player.ears.type != Ears.INSECT) {
-				outputText("[pg]");
-				transformations.EarsInsect.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && rand(3) == 0 && player.eyes.type != Eyes.MOTH) {
-				outputText("[pg]");
-				transformations.EyesMoth.applyEffect();
 				changes++;
 			}
 			if (player.skin.base.type == Skin.PLAIN && !player.skin.hasBattleTattoo() && rand(3) == 0 && changes < changeLimit) {
@@ -2256,11 +2265,6 @@ import classes.lists.Gender;
                 transformations.WingsVampire.applyEffect();
                 changes++;
             }
-			if (rand(3) == 0 && changes < changeLimit && player.faceType != Face.RED_PANDA) {
-				outputText("[pg]");
-				transformations.FaceRedPanda.applyEffect();
-				changes++;
-			}
 			if (!InCollection(Arms.SPIDER) && changes < changeLimit && rand(3) == 0) {
 				outputText("[pg]");
 				transformations.ArmsSpider.applyEffect();
@@ -2286,21 +2290,11 @@ import classes.lists.Gender;
 				outputText("Aw gosh, you feel tired as hell, it’s like you spent the better part of yesterday night working on some stupid project. Truth is with those darkened eyelids of yours you might just have. That said, perhaps you should think of it less like a sign of fatigue and more like a sign of demonic nature because you easily imagine these on the faces of small fiends or possessed people too. <b>Seems like you have darkened eyelids now.</b>");
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.CLOVEN_HOOFED) {
-				outputText("[pg]");
-				transformations.LowerBodyClovenHoofed(2).applyEffect();
-				changes++;
-			}
 			if (player.skin.base.type == Skin.PLAIN && !player.skin.hasGlyphTattoo() && rand(3) == 0 && changes < changeLimit) {
 				outputText("[pg]");
 				transformations.SkinPatternAnubis.applyEffect();
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.BAT) {
-                outputText("[pg]");
-                transformations.ArmsBatWing.applyEffect();
-                changes++;
-            }
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 	}

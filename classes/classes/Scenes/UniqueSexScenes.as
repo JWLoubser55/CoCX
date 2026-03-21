@@ -972,6 +972,7 @@ public class UniqueSexScenes extends BaseContent
 			if (player.soulforce > player.maxOverSoulforce()) player.soulforce = player.maxOverSoulforce();
 			outputText(" You feel slightly more alive from the soulforce you vampirised from your sexual partner orgasm.");
 			player.sexReward("cum", "Oral");
+			if (player.hasPerk(PerkLib.SoulDrain)) player.addPerkValue(PerkLib.SoulDrain, 1, 1);
 			cleanupAfterCombat();
 		}
 		
@@ -1073,7 +1074,8 @@ public class UniqueSexScenes extends BaseContent
 			player.destroyItems(useables.BANDAGE, 1);
 			player.addPerkValue(PerkLib.MummyLord, 1, 1);
 			if (player.hasCock()) player.sexReward("no", "Dick");
-			else player.sexReward("no","Vaginal");
+			else player.sexReward("no", "Vaginal");
+			if (player.hasPerk(PerkLib.SoulDrain)) player.addPerkValue(PerkLib.SoulDrain, 1, 1);
 			cleanupAfterCombat();
 		}
 

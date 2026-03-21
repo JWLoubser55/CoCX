@@ -348,7 +348,7 @@ public class Horns extends BodyPart {
 		appearanceDescFunc: function(player: *): String {
 			var desc: String = "";
 
-			if (player.horns.count > 0) desc += " Your body is partially bandaged to protect your sensitive skin wich constantly blush from pleasure. The bandages on your head are spaced in the fashion of a messy headband leaving most of your head exposed.";
+			if (player.horns.count > 0) desc += " Your body is partially bandaged to protect your sensitive skin which constantly blush from pleasure. The bandages on your head are spaced in the fashion of a messy headband leaving most of your head exposed.";
 
 			return desc;
 		}

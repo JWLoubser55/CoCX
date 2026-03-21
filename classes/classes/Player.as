@@ -6802,6 +6802,10 @@ use namespace CoC;
 				var smp:Number = perkv1(PerkLib.StrengthenMagic);
 				statStore.replaceBuffObject({'int.mult':(0.05 * smp),'wis.mult':(0.05 * smp),'lib.mult':(0.05 * smp)}, 'Strengthen magic', { text: 'Strengthen magic' });
 			}
+			if (hasPerk(PerkLib.SoulDrain)) {
+				var sdp:Number = perkv1(PerkLib.SoulDrain);
+				statStore.replaceBuffObject({'str.mult':(0.01 * sdp),'spe.mult':(0.01 * sdp),'int.mult':(0.01 * sdp),'wis.mult':(0.01 * sdp),'lib.mult':(0.01 * sdp)}, 'Soul drain', { text: 'Soul drain' });
+			}
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment8)) statStore.replaceBuffObject({'lib.mult':Math.round(intStat.mult.value/2)}, 'Mind rune Imbuement', { text: 'Mind rune Imbuement' });
 			if (!hasStatusEffect(StatusEffects.PhylacteryEnchantment8) && statStore.hasBuff('Mind rune Imbuement')) statStore.removeBuffs('Mind rune Imbuement');
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment9)) statStore.replaceBuffObject({'lib.mult':Math.round(wisStat.mult.value/2)}, 'Soul rune Imbuement', { text: 'Soul rune Imbuement' });
@@ -8510,6 +8514,7 @@ use namespace CoC;
 			}
 			removeCurse("lib", 5, 1);
 			removeCurse("lib", 5, 2);
+			if (hasPerk(PerkLib.SoulDrain)) addPerkValue(PerkLib.SoulDrain, 1, 1);
 		}
 
 		public function displacerFeedFromBottle():void {

@@ -4698,6 +4698,8 @@ public class PerkLib
 				"Naturally small species have better evasion");
 		public static const SnowLily:PerkType = mk("Snow Lily", "Snow Lily",
 				"Your alraune abilities are now considered to be Cold Elements effect and your vine attack delivers extra cold damage.");
+		public static const SoulDrain:PerkType = mk("Soul drain", "Soul drain",
+				"Leeching from others' souls can permanently improve your own. Sex permanently raises all stats but toughness/sensitivity by 1% when used on target with souls and is twice as strong when using the unique racial sex scenes.");
 		public static const SoulEater:PerkType = mk("Soul Eater", "Soul eater",
 				"You have the ability to consume souls for power.");
 		public static const SoulNexus:PerkType = mk("Soul Nexus", "Soul Nexus",
