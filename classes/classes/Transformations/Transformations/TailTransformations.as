@@ -592,7 +592,7 @@ public class TailTransformations extends MutationsHelper {
 				player.tailCount = 1;
 
 				if (doOutput) outputText(desc);
-				Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.ABYSSAL_SHARK));
+				//Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.ABYSSAL_SHARK));
 			},
 			// is present
 			function (): Boolean {

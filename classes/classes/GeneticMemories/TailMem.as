@@ -838,7 +838,7 @@ import classes.CoC;
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.TailYgddrasil(4);
 			}
-		});
+		});/*
 
 		public static const ABYSSAL_SHARK:int = _partid++;
 		EnumValue.add(Memories, ABYSSAL_SHARK, "ABYSSAL_SHARK", {
@@ -849,7 +849,7 @@ import classes.CoC;
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.TailAbyssalShark;
 			}
-		});
+		});*/
 
 		public static const TROLL:int = _partid++;
 		EnumValue.add(Memories, TROLL, "TROLL", {

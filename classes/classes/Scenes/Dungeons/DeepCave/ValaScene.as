@@ -831,11 +831,11 @@ public class ValaScene extends BaseContent implements SaveableState
 			CoC.instance.transformations.FaceFairy.applyEffect(false);
 			CoC.instance.transformations.EyesFairy.applyEffect(false);
 			CoC.instance.transformations.HairFairy.applyEffect(false);
-			player.ears.type = Ears.ELVEN;
-			player.tailType = Tail.NONE;
-			player.arms.type = Arms.ELF;
-			player.lowerBody = LowerBody.ELF;
-			player.tongue.type = Tongue.ELF;
+			CoC.instance.transformations.EarsElven.applyEffect(false);
+			CoC.instance.transformations.TailNone.applyEffect(false);
+			CoC.instance.transformations.ArmsElf.applyEffect(false);
+			CoC.instance.transformations.LowerBodyElf.applyEffect(false);
+			CoC.instance.transformations.TongueElf.applyEffect(false);
 			CoC.instance.transformations.WingsFairy.applyEffect(false);
 			player.skinType = Skin.PLAIN;
 			player.skinAdj = "flawless";
@@ -1324,3 +1324,4 @@ public class ValaScene extends BaseContent implements SaveableState
 		}
 	}
 }
+

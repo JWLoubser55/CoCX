@@ -647,7 +647,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceWolfFangs;
 			}
-		});
+		});/*
 
 		public static const ABYSSAL_SHARK:int = _partid++;
 		EnumValue.add(Memories, ABYSSAL_SHARK, "ABYSSAL_SHARK", {
@@ -658,7 +658,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceAbyssalShark;
 			}
-		});
+		});*/
 
 		public static const ARIGEAN:int = _partid++;
 		EnumValue.add(Memories, ARIGEAN, "ARIGEAN", {
@@ -789,6 +789,17 @@ package classes.GeneticMemories {
 			title: "Jiangshi Face",
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceJiangshi;
+			}
+		});
+
+		public static const FAIRY:int = _partid++;
+		EnumValue.add(Memories, FAIRY, "FAIRY", {
+			id: "Fairy Face",
+			name: "Fairy Face",
+			cost: 100,
+			title: "Fairy Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceFairy;
 			}
 		});
 

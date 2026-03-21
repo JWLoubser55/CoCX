@@ -1261,7 +1261,7 @@ public class ArmsTransformations extends MutationsHelper {
 
 				player.arms.type = Arms.ABYSSAL_SHARK;
 				if (doOutput) outputText(desc);
-				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.ABYSSAL_SHARK));
+				//Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.ABYSSAL_SHARK));
 			},
 			// is present
 			function (): Boolean {
@@ -1329,7 +1329,7 @@ public class ArmsTransformations extends MutationsHelper {
 
 				player.arms.type = Arms.REINDEER;
 				if (doOutput) outputText(desc);
-				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.REINDEER));
+				//Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.REINDEER));
 			},
 			// is present
 			function (): Boolean {

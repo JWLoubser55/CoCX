@@ -3721,11 +3721,11 @@ import classes.Scenes.Combat.CombatAbility;
 			menu();
 
 			const menusList: Array = [
-				{
+				/*{
 					name: "Complete",
 					func: accessCompleteMenu,
 					hint: "Requires 6 tiers of Genetic Memories bought"
-				},
+				},*/
 				{
 					name: "Hair",
 					func: accessHairMenu
@@ -4210,4 +4210,4 @@ import classes.Scenes.Combat.CombatAbility;
 				return false;
 		}
 	} // what the fuck are those weird comments here? ^
-}
+}

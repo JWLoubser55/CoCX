@@ -14454,6 +14454,12 @@ public final class Mutations extends MutationsHelper {
             transformations.RearBodyKraken.applyEffect();
             changes++;
         }
+		//Skin pattern
+		if (!player.skin.hasBioluminescence() && changes < changeLimit && rand(3) == 0) {
+			outputText("[pg]");
+			transformations.SkinPatternBioluminescence.applyEffect();
+			changes++;
+		}
 
         //Face
         if (player.faceType != Face.HUMAN && changes < changeLimit && rand(3) == 0) {

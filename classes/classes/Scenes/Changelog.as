@@ -274,7 +274,7 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Undead Metabolism (Final Form). Req. Undead Metabolism (Evolved) and lvl 90+. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 20% bonus to libido up to 200% and heal all libido damage. ");
 			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 300% stronger. You permanently gain the Darkness Affinity perk. Draining effects you cause also inflict toughness damage based on your level: 1% toughness damage per 10 levels.\n");
 			outputText("-New Masturbation Scene: Zombie Sex - req. at least 50% soulforce to use, Lich and at least 3 Zombie pets. Increases the zombie attack (2x) for 7 days. Reset time when used.\n");
-			outputText("-\n");
+			outputText("-Adding new bodyparts to Genetic Memory.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

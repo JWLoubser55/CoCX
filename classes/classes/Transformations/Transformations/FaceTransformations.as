@@ -1048,6 +1048,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.FAIRY;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.FAIRY));
 			},
 			// is present
 			function (): Boolean {
@@ -1152,7 +1153,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.ABYSSAL_SHARK;
-				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.ABYSSAL_SHARK));
+				//Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.ABYSSAL_SHARK));
 			},
 			// is present
 			function (): Boolean {

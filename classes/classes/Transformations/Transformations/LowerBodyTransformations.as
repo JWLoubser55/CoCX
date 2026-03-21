@@ -1084,7 +1084,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 				if (doOutput) outputText(desc);
 				player.lowerBody = LowerBody.CLOVEN_HOOFED_2;
 				player.legCount = legCount;
-				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.CLOVEN_HOOFED_2));
+				//Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.CLOVEN_HOOFED_2));
 			},
 			// is present
 			function (): Boolean {
@@ -2276,7 +2276,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 			if (doOutput) outputText(desc);
 			player.lowerBody = LowerBody.ABYSSAL_SHARK;
 			player.legCount = 2;
-			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.ABYSSAL_SHARK));
+			//Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.ABYSSAL_SHARK));
 		},
 		// is present
 		function (): Boolean {

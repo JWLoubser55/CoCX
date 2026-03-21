@@ -519,14 +519,14 @@ package classes.GeneticMemories {
           id: "YggRootClaws Lower Body",name: "YggRootClaws Legs",
           cost: 200,
           title: "YggdrasilRootClaws",
-          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyYgddrasilRootClaws}});
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyYgddrasilRootClaws}});/*
 
       public static const ABYSSAL_SHARK: int = _partid++;
       EnumValue.add(Memories, ABYSSAL_SHARK, "ABYSSAL_SHARK", {
           id: "Abyssal Shark Lower Body",name: "Abyssal Shark Legs",
           cost: 200,
           title: "Abyssal Shark Legs",
-          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyAbyssalShark}});
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyAbyssalShark}});*/
 
       public static const WERESHARK: int = _partid++;
       EnumValue.add(Memories, WERESHARK, "WERESHARK", {
@@ -547,14 +547,14 @@ package classes.GeneticMemories {
           id: "Demon Graceful Feet Lower Body",name: "Demonic Graceful Feet",
           cost: 100,
           title: "Dem. G. Feet",
-          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyDemonGracefulFeet}});
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyDemonGracefulFeet}});/*
 
       public static const CLOVEN_HOOFED_2: int = _partid++;
       EnumValue.add(Memories, CLOVEN_HOOFED_2, "CLOVEN_HOOFED_2", {
           id: "Reindeer Lower Body",name: "Reindeer Legs",
           cost: 200,
           title: "Reindeer Legs",
-          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyReindeerToggle(true)}});
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyReindeerToggle(true)}});*/
 
       public static const MOTH: int = _partid++;
       EnumValue.add(Memories, MOTH, "MOTH", {

@@ -480,22 +480,22 @@ public class SkinTransformations extends MutationsHelper {
 						player.skinColor = randomChoice(SlimeRace.SlimeSkinColors);
 						outputText("  Stranger still, your skin tone changes to [skin color]!");
 					}
-					if (!InCollection(player.skinColor, MagmaSlimeRace.MagmaSlimeSkinColors) && type == 1) {
-						player.skinColor = randomChoice(MagmaSlimeRace.MagmaSlimeSkinColors);
-						outputText("  Stranger still, your skin tone changes to [skin color]!");
-					}
-					if (!InCollection(player.skinColor, DarkSlimeRace.DarkSlimeSkinColors) && type == 2) {
+					if (!InCollection(player.skinColor, DarkSlimeRace.DarkSlimeSkinColors) && type == 1) {
 						player.skinColor = randomChoice(DarkSlimeRace.DarkSlimeSkinColors);
 						outputText("  Stranger still, your skin tone changes to [skin color]!");
-					}
+					}/*
+					if (!InCollection(player.skinColor, MagmaSlimeRace.MagmaSlimeSkinColors) && type == 2) {
+						player.skinColor = randomChoice(MagmaSlimeRace.MagmaSlimeSkinColors);
+						outputText("  Stranger still, your skin tone changes to [skin color]!");
+					}*/
 					//if (doOutput) outputText(desc);
 					switch (type) {
 						case 0: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.SLIME));
 							break;
-						case 1: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.MAGMA_SLIME));
+						case 1: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.DARK_SLIME));
 							break;
-						case 2: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.DARK_SLIME));
-							break;
+					//	case 2: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.MAGMA_SLIME));
+					//		break;
 					}
 				},
 				// is present
