@@ -6806,6 +6806,7 @@ use namespace CoC;
 				var sdp:Number = perkv1(PerkLib.SoulDrain);
 				statStore.replaceBuffObject({'str.mult':(0.01 * sdp),'spe.mult':(0.01 * sdp),'int.mult':(0.01 * sdp),'wis.mult':(0.01 * sdp),'lib.mult':(0.01 * sdp)}, 'Soul drain', { text: 'Soul drain' });
 			}
+			if (!hasPerk(PerkLib.SoulDrain) && statStore.hasBuff('Soul drain')) statStore.removeBuffs('Soul drain');
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment8)) statStore.replaceBuffObject({'lib.mult':Math.round(intStat.mult.value/2)}, 'Mind rune Imbuement', { text: 'Mind rune Imbuement' });
 			if (!hasStatusEffect(StatusEffects.PhylacteryEnchantment8) && statStore.hasBuff('Mind rune Imbuement')) statStore.removeBuffs('Mind rune Imbuement');
 			if (hasStatusEffect(StatusEffects.PhylacteryEnchantment9)) statStore.replaceBuffObject({'lib.mult':Math.round(wisStat.mult.value/2)}, 'Soul rune Imbuement', { text: 'Soul rune Imbuement' });

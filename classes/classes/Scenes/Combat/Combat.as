@@ -20514,6 +20514,12 @@ public function aPoisonGlandsMyconidSpores():void {
 	else monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
 }
 
+public function ectoplasmEsseBon():Number {
+	var eEB:Number = 1.5;
+	if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 3) eEB += 0.5;
+	return eEB;
+}
+
 public function gallopDamageBoost(baseValue:Number):Number {
 	var gallopBoost:Number = 1;
 	if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) gallopBoost += 1;
@@ -20850,4 +20856,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

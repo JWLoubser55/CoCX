@@ -103,6 +103,10 @@ public class CombatTeases extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.FueledByDesire) && player.lust100 >= 50 && flags[kFLAGS.COMBAT_TEASE_HEALING] == 0) {
 			damage *= 1.2;
 		}
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 3) {
+			if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) == 4) damage *= (1 + (player.lust100 * 0.01));
+			else damage *= (1 + (player.lust100 * 0.005));
+		}
 		return damage;
 	}
 

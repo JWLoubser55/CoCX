@@ -1,6 +1,7 @@
 package classes.Scenes.Combat.SpecialsMagic {
 
 import classes.Scenes.Combat.AbstractMagicSpecial;
+import classes.IMutations.IMutationsLib;
 import classes.StatusEffects;
 import classes.Monster;
 import classes.PerkLib;
@@ -96,6 +97,7 @@ public class FusionSpecial2ndSkill extends AbstractMagicSpecial {
 			if (player.hasPerk(PerkLib.CheatDeath) && player.HP < (player.maxHP() * 0.1)) amountToHeal *= 2.5;
 			else amountToHeal *= 1.5;
 		}
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) amountToHeal *= combat.ectoplasmEsseBon();
 
         return amountToHeal;
     }

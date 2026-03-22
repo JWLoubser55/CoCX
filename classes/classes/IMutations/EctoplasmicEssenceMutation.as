@@ -23,9 +23,11 @@ public class EctoplasmicEssenceMutation extends IMutationPerkType
 			if (pTier >= 1 && pTier < 4) {
 				descS += " but increase magical damage taken by ";
 				if (pTier == 1) descS += "40%";
+				if (pTier == 2) descS += "20%";
+				if (pTier == 3) descS += "10%";
 			}
-			if (pTier >= 2) descS += ". When hunger is sated above "+((6-pTier)*2)+"0% you gain doubled health generation from all sources";
-            if (pTier >= 3) descS += ". You gain regeneration "+(pTier-2)+"%";
+			if (pTier >= 2) descS += ". Increase the potency of M.Ability with a soulforce cost by " + (5 * (pTier - 1)) + "0%";
+            if (pTier == 3) descS += ". Increase tease modifier by a percentage equal to half of current lust percentage";
             if (pTier >= 4) descS += ". You recover from all stat damage except intelligence / libido every full moon night";
             if (descS != "")descS += ".";
             return descS;
@@ -62,7 +64,7 @@ public class EctoplasmicEssenceMutation extends IMutationPerkType
 
         public function EctoplasmicEssenceMutation() 
 		{
-			super(MNAME, SLOT_BLOODSTREAM, 1);
+			super(MNAME, SLOT_BLOODSTREAM, 3);
         }
         
     }

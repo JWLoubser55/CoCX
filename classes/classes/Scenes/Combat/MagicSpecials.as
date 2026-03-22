@@ -4035,6 +4035,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var tempSpe:Number;
 		temp1 += player.speStat.core.value * 0.1 * (player.tailCount - 5);
 		if (player.tailCount >= 9) temp1 *= 2;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) temp1 *= combat.ectoplasmEsseBon();
 		temp1 = Math.round(temp1);
 		var oldHPratio:Number = player.hp100/100;
 		tempSpe = temp1;
@@ -4934,6 +4935,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var nekomatasfiredmgmulti:Number = 1;
 		nekomatasfiredmgmulti += spellMod() - 1;
 		nekomatasfiredmgmulti += soulskillMagicalMod() - 1;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) nekomatasfiredmgmulti += combat.ectoplasmEsseBon() - 1;
 		//Bonus damage
 		//jakieś bonusy do obrażeń dodawać tu
 		damage *= nekomatasfiredmgmulti;
@@ -4977,6 +4979,7 @@ public class MagicSpecials extends BaseCombatContent {
 		lustDmg *= magicAbilitiesGoBrrr();
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) lustDmg *= combat.ectoplasmEsseBon();
 		lustDmg = Math.round(monster.lustVuln * lustDmg);
 		monster.teased(lustDmg);
 		outputText(" ");
@@ -5038,6 +5041,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NinetailsKitsuneOfBalance)) basicfoxfiredmgmulti += .5;
 		//Hosohi No Tama and bonus damage
 		if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 2) basicfoxfiredmgmulti += 1;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) basicfoxfiredmgmulti += combat.ectoplasmEsseBon() - 1;
 		damage *= basicfoxfiredmgmulti;
 		//High damage to goes.
 		if(monster.short == "goo-girl") damage = Math.round(damage * 1.5);
@@ -5069,6 +5073,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.headjewelryName == "fox hairpin") lustDmg *= 1.2;
 		if (player.hasPerk(PerkLib.TamamoNoMaeCursedKimono)) lustDmg *= 2.5;
 		if (player.hasPerk(PerkLib.InariBlessedKimono)) lustDmg *= 1.5;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) lustDmg *= combat.ectoplasmEsseBon();
 		lustDmg *= magicAbilitiesGoBrrr();
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
@@ -5136,6 +5141,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NinetailsKitsuneOfBalance)) corruptedfoxfiredmgmulti += .25;
 		//Hosohi No Tama bonus damage
 		if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 2 && player.tailType == Tail.FOX && player.tailCount == 9) corruptedfoxfiredmgmulti += .5;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) corruptedfoxfiredmgmulti += combat.ectoplasmEsseBon() - 1;
 		damage *= corruptedfoxfiredmgmulti;
 		damage = combat.monsterCorruptDamageBonus(damage);
 		//High damage to goes.
@@ -5173,6 +5179,7 @@ public class MagicSpecials extends BaseCombatContent {
 		lustDmg *= magicAbilitiesGoBrrr();
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) lustDmg *= combat.ectoplasmEsseBon();
 		lustDmg = Math.round(monster.lustVuln * lustDmg);
 		monster.teased(lustDmg);
 		outputText(" ");
@@ -5236,6 +5243,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NinetailsKitsuneOfBalance)) fusedfoxfiredmgmulti += .5;
 		//Hosohi No Tama and Fusion bonus damage
 		if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 2 && player.tailType == Tail.FOX && player.tailCount == 9) fusedfoxfiredmgmulti += 1;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) fusedfoxfiredmgmulti += combat.ectoplasmEsseBon() - 1;
 		damage *= fusedfoxfiredmgmulti;
 		damage = Math.round(damage * 2);
 		//High damage to goes.
@@ -5273,6 +5281,7 @@ public class MagicSpecials extends BaseCombatContent {
 		lustDmg *= magicAbilitiesGoBrrr();
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) lustDmg *= combat.ectoplasmEsseBon();
 		lustDmg = Math.round(monster.lustVuln * lustDmg);
 		monster.teased(lustDmg);
 		outputText(" ");
@@ -5336,6 +5345,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NinetailsKitsuneOfBalance)) purefoxfiredmgmulti += .25;
 		//Hosohi No Tama bonus damage
 		if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 2 && player.tailType == Tail.FOX && player.tailCount == 9) purefoxfiredmgmulti += .5;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) purefoxfiredmgmulti += combat.ectoplasmEsseBon() - 1;
 		damage *= purefoxfiredmgmulti;
 		damage = combat.monsterPureDamageBonus(damage);
 		//High damage to goes.
@@ -5374,6 +5384,7 @@ public class MagicSpecials extends BaseCombatContent {
 		lustDmg *= magicAbilitiesGoBrrr();
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) lustDmg *= combat.ectoplasmEsseBon();
 		lustDmg = Math.round(monster.lustVuln * lustDmg);
 		monster.teased(lustDmg);
 		outputText(" ");
@@ -5459,6 +5470,7 @@ public class MagicSpecials extends BaseCombatContent {
 			else speedDebuff += 20 - monster.spe;
 		}
 		speedDebuff *= magicAbilitiesGoBrrr();
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) speedDebuff *= combat.ectoplasmEsseBon();
 		if (player.hasPerk(PerkLib.TamamoNoMaeCursedKimono)) speedDebuff *= 2;
 		monster.speStat.core.value -= speedDebuff;
 		monster.createStatusEffect(StatusEffects.Fear, 2+ItemMod, speedDebuff, 0, 0);
@@ -5536,6 +5548,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.InariBlessedKimono)) lustDmg *= 3;
 		if (player.armor == armors.ELFDRES && player.isElf()) lustDmg *= 2;
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) lustDmg *= combat.ectoplasmEsseBon();
 		lustDmg *= 0.1;
 		lustDmg = Math.round(monster.lustVuln * lustDmg);
 		monster.teased(lustDmg);
@@ -7809,6 +7822,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		damage += scalingBonusIntelligence() * multiInt;
 		damage += scalingBonusWisdom() * multiWis;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) damage *= combat.ectoplasmEsseBon();
 		if (type == 1) {
 			outputText("You rub your palms together before unleashing the energy in the form of razor sharp winds. [Themonster] eyes grow wide in surprise as your attack leaves deep bleeding cuts in its flesh! ");
 			damage = calcGaleMod(damage, true);
@@ -7879,6 +7893,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		temp += scalingBonusIntelligence() * multiInt;
 		temp += scalingBonusWisdom() * multiWis;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) temp *= combat.ectoplasmEsseBon();
 		temp = Math.round(temp);
 		if (type == 1) outputText("You soothe your wounds with a calm breeze dulling down the pain.");
 		if (type == 2) outputText("You gather energy from sunlight into the vines covering your body, converting the nutrients and repairing some of your sustained damage.");

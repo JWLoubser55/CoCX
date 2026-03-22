@@ -277,8 +277,8 @@ public class Changelog extends BaseContent
 			outputText("-Adding new bodyparts to Genetic Memory.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence. Req. having free bloodstream mutation slot, one of races: Poltergeist, Banshee. Effects: Reduce Physical damage taken by 10% after damage reduction but increase magical damage taken by 40%.\n");
 			outputText("-New event perk: Soul drain. Gained by becoming Jiangshi (tier 2)/Mummy. Effects: Leeching from others' souls can permanently improve your own. Sex permanently raises all stats but toughness/sensitivity by 1% when used on target with souls and is twice as strong when using the unique racial sex scenes.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Ectoplasmic Essence (Primitive). Req. Ectoplasmic Essence and lvl 30+. Effects: Reduce Physical damage taken by 15% after damage reduction but increase magical damage taken by 20%. Increase the potency of M.Ability with a soulforce cost by 50%.\n");
+			outputText("-New mutation perk: Ectoplasmic Essence (Evolved). Req. Ectoplasmic Essence (Primitive) and lvl 60+. Effects: Reduce Physical damage taken by 20% after damage reduction but increase magical damage taken by 10%. Increase the potency of M.Ability with a soulforce cost by 100%. Increase tease modifier by a percentage equal to half of current lust percentage.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
