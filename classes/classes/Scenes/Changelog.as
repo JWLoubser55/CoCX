@@ -279,9 +279,9 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Soul drain. Gained by becoming Jiangshi (tier 2)/Mummy. Effects: Leeching from others' souls can permanently improve your own. Sex permanently raises all stats but toughness/sensitivity by 1% when used on target with souls and is twice as strong when using the unique racial sex scenes.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence (Primitive). Req. Ectoplasmic Essence and lvl 30+. Effects: Reduce Physical damage taken by 15% after damage reduction but increase magical damage taken by 20%. Increase the potency of M.Ability with a soulforce cost by 50%.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence (Evolved). Req. Ectoplasmic Essence (Primitive) and lvl 60+. Effects: Reduce Physical damage taken by 20% after damage reduction but increase magical damage taken by 10%. Increase the potency of M.Ability with a soulforce cost by 100%. Increase tease modifier by a percentage equal to half of current lust percentage.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Wail of the Banshee. Gained by becoming Banshee. Effects: Sing and its sub powers now also counts as a soulforce ability. Devastating Aria and Captivate now also consume soulforce.\n");
+			outputText("-New event perk: Soul Draining Scream. Gained by becoming Banshee. Effects: Dealing damage or lust damage with singing restores a small amount of soul force and hunger.\n");
+			outputText("-New event perk: Herald of Death. Gained by becoming Banshee. Effects: Damage dealt to opponents below half health is doubled.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -411,8 +411,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -455,6 +461,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

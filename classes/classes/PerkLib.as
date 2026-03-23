@@ -4551,6 +4551,8 @@ public class PerkLib
 				"As a harpy or harpy subtype increase toughness speed and libido based on the amount of harpy children you gave birth to.");
 		public static const HarpyWomb:PerkType = mk("Harpy Womb", "Harpy Womb",
 				"Increases all laid eggs to large size so long as you have harpy legs and a harpy tail.");
+		public static const HeraldOfDeath:PerkType = mk("Herald of Death", "Herald of Death",
+				"Damage dealt to opponents below half health is doubled.");
 		public static const HydraAcidBreath:PerkType = mk("Hydra acid breath", "Hydra acid breath",
 				"Allows access to a hydra acid breath attack.");
 		public static const HydraRegeneration:PerkType = mk("Hydra Regeneration", "Hydra Regeneration",
@@ -4700,6 +4702,8 @@ public class PerkLib
 				"Your alraune abilities are now considered to be Cold Elements effect and your vine attack delivers extra cold damage.");
 		public static const SoulDrain:PerkType = mk("Soul drain", "Soul drain",
 				"Leeching from others' souls can permanently improve your own. Sex permanently raises all stats but toughness/sensitivity by 1% when used on target with souls and is twice as strong when using the unique racial sex scenes.");
+		public static const SoulDrainingScream:PerkType = mk("Soul Draining Scream", "Soul Draining Scream",
+				"Dealing damage or lust damage with singing restores a small amount of soul force and hunger.");
 		public static const SoulEater:PerkType = mk("Soul Eater", "Soul eater",
 				"You have the ability to consume souls for power.");
 		public static const SoulNexus:PerkType = mk("Soul Nexus", "Soul Nexus",
@@ -4743,6 +4747,8 @@ public class PerkLib
 				"You periodically drain any excess soulforce from your pet so that they never achieve true sentience and rebel against your rule remaining ravenous and somewhat mindless.");
 		public static const UnnaturalStrength:PerkType = mk("Unnatural Strength", "Unnatural Strength",
 				"The more sated you are the stronger you get, although your satisfaction is fleeting.");
+		public static const WailOfTheBanshee:PerkType = mk("Wail of the Banshee", "Wail of the Banshee",
+				"Sing and its sub powers now also counts as a soulforce ability. Devastating Aria and Captivate now also consume soulforce.");
 		public static const WendigoCurse:PerkType = mk("Wendigo Curse", "Wendigo Curse",
 				"Your body and soul has been cursed by a wendigo. Transformative no longer have an effect on you.");
 		public static const VegetalAffinity:PerkType = mk("Vegetal Affinity", "Vegetal Affinity",

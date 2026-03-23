@@ -8518,6 +8518,11 @@ use namespace CoC;
 			if (hasPerk(PerkLib.SoulDrain)) addPerkValue(PerkLib.SoulDrain, 1, 1);
 		}
 
+		public function bansheeSoulDrainingScream():void {
+			pc.SoulforceChange(25 + (wis / 2));
+			refillHunger(10, false, true);
+		}
+
 		public function displacerFeedFromBottle():void {
 			if (perkv1(IMutationsLib.DisplacerMetabolismIM) >= 1) {
 				if (perkv1(IMutationsLib.DisplacerMetabolismIM) >= 2) {

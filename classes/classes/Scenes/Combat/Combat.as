@@ -11029,6 +11029,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11202,6 +11203,7 @@ public class Combat extends BaseContent {
 		if (player.perkv1(IMutationsLib.SoulCoreIM) == 3 && player.fatigue100 < 50) damage *= 1.5;
 		if (player.perkv1(IMutationsLib.SoulCoreIM) == 4 && player.mana100 < 75) damage *= 2;
 		if (player.perkv1(IMutationsLib.MyconidSporeIM) == 4 && player.hasStatusEffect(StatusEffects.SporeCloud)) damage *= (1 + (0.1 * player.statusEffectv1(StatusEffects.SporeCloud)));
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11325,6 +11327,7 @@ public class Combat extends BaseContent {
 			}
 			if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 4 && !monster.hasStatusEffect(StatusEffects.BurnDoT) && rand(5) == 0) monster.createStatusEffect(StatusEffects.BurnDoT,5,0.02,0,0);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11405,6 +11408,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11480,6 +11484,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11552,6 +11557,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11614,6 +11620,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11676,6 +11683,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11738,6 +11746,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11800,6 +11809,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -11863,6 +11873,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
         if (sac) {
@@ -16787,6 +16798,7 @@ public function SingArouse(Bee:Boolean = false):void {
     }
     if (player.hasPerk(PerkLib.RacialParagon)) LustDamage *= combat.RacialParagonAbilityBoost();
     if (player.hasPerk(PerkLib.NaturalArsenal)) LustDamage *= 2;
+	if (player.hasPerk(PerkLib.WailOfTheBanshee) && player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) LustDamage *= ectoplasmEsseBon();
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 1) LustDamage *= (1 + (0.25 * player.perkv1(IMutationsLib.MelkieLungIM)));
 	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) LustDamage *= (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25));
 	if (player.weapon == weapons.ELYSIUM) LustDamage *= 2;
@@ -16799,11 +16811,24 @@ public function SingArouse(Bee:Boolean = false):void {
     if (randomcrit) outputText(" Critical hit!");
     outputText("\n\n");
     combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
+	if (player.hasPerk(PerkLib.SoulDrainingScream)) player.bansheeSoulDrainingScream();
     enemyAIImpl();
 }
 
 public function SingCaptivate():void {
     clearOutput();
+	if (player.hasPerk(PerkLib.WailOfTheBanshee)) {
+		var basecost001:Number = Math.round(Math.sqrt(player.maxSoulforce() * 0.005));
+		if (player.soulforce < basecost001) {
+			clearOutput();
+			outputText("You just don't have enough soulforce to sing right now...");
+			//Gone		menuLoc = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		else pc.SoulforceChange(-basecost001);
+	}
     outputText("You temporarily strengthen the hypnotic beat causing your opponent to be fascinated for a brief moment.");
     monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
     player.createStatusEffect(StatusEffects.CooldownSingCaptivate,4,0,0,0);
@@ -16813,6 +16838,18 @@ public function SingCaptivate():void {
 
 public function SingDevastatingAria():void {
     clearOutput();
+	if (player.hasPerk(PerkLib.WailOfTheBanshee)) {
+		var basecost002:Number = Math.round(Math.sqrt(player.maxSoulforce() * 0.01));
+		if (player.soulforce < basecost002) {
+			clearOutput();
+			outputText("You just don't have enough soulforce to sing right now...");
+			//Gone		menuLoc = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		else pc.SoulforceChange(-basecost002);
+	}
     if (player.weapon.isMusicInstrument()) outputText("You strike a deafening note unleashing a devastating wave of sound!");
 	else outputText("You unleash a devastating wave of sound!");
     var damage:Number = combat.teases.teaseBaseLustDamage();
@@ -16832,6 +16869,7 @@ public function SingDevastatingAria():void {
     if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 	if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 	if (player.hasPerk(PerkLib.PerformancePower)) damage *= (1 + player.perkv1(PerkLib.PerformancePower));
+	if (player.hasPerk(PerkLib.WailOfTheBanshee) && player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) damage *= ectoplasmEsseBon();
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.MelkieLungIM)));
 	if (player.weapon == weapons.HELLCAL) damage *= 1.5;
     damage = Math.round(damage);
@@ -16839,6 +16877,7 @@ public function SingDevastatingAria():void {
     if (crit) outputText(" Critical hit!");
     outputText("\n\n");
     combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
+	if (player.hasPerk(PerkLib.SoulDrainingScream)) player.bansheeSoulDrainingScream();
     enemyAIImpl();
 }
 

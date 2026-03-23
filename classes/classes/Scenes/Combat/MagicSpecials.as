@@ -1368,7 +1368,7 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Mirror Image");
 		}
 		//Sing
-		if (player.hasPerk(PerkLib.MelkieSong) || player.hasPerk(PerkLib.HarpySong) || player.hasPerk(PerkLib.PanLabyrinth) || player.hasPerk(PerkLib.PrestigeJobBard)) {
+		if (player.hasPerk(PerkLib.MelkieSong) || player.hasPerk(PerkLib.HarpySong) || player.hasPerk(PerkLib.PanLabyrinth) || player.hasPerk(PerkLib.PrestigeJobBard) || player.hasPerk(PerkLib.WailOfTheBanshee)) {
 			if (player.weapon.isMusicInstrument()) bd = buttons.add("Perform", SingInitiate).hint("Players begin a musical performance. While performing, players may add various mystical effects to the tune.\n.");
 			else bd = buttons.add("Sing", SingInitiate).hint("Begin singing. While singing, you may add various powerful effects to your tune.\n.");
 			favbd(bd, "Perform/Sing");

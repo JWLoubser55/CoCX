@@ -2308,6 +2308,20 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			if (!player.isRaceCached(Races.KIRIN) && (player.hasStatusEffect(StatusEffects.IsRaiju) || player.hasStatusEffect(StatusEffects.IsThunderbird)) && player.hasStatusEffect(StatusEffects.IsKirin)) {
 				player.removeStatusEffect(StatusEffects.IsKirin);
 			}
+			if (player.isRaceCached(Races.BANSHEE) && !player.hasPerk(PerkLib.WailOfTheBanshee)) {
+				outputText("\nYou feel the pain of your recent transformation pool in your body. Unable to fully hold it in anymore you release a wail. As the wave of sound expands outward,patches of grass blacken and wither as the buzzing insects drop dead from the grey and lifeless air, all turning to dust.\n\n<b>(You have gained the Wail of the Banshee, Soul Draining Scream and Herald of Death perks!)</b>\n");
+				player.createPerk(PerkLib.WailOfTheBanshee, 0, 0, 0, 0);
+				player.createPerk(PerkLib.SoulDrainingScream, 0, 0, 0, 0);
+				player.createPerk(PerkLib.HeraldOfDeath, 0, 0, 0, 0);
+				needNext = true;
+			}
+			if (!player.isRaceCached(Races.BANSHEE) && player.hasPerk(PerkLib.WailOfTheBanshee)) {
+				outputText("\nAs your connection to life strengthens, you lose your powers over death and entropy.\n\n<b>(You have lost the Wail of the Banshee, Soul Draining Scream and Herald of Death perks!)</b>\n");
+				player.removePerk(PerkLib.WailOfTheBanshee);
+				player.removePerk(PerkLib.SoulDrainingScream);
+				player.removePerk(PerkLib.HeraldOfDeath);
+				needNext = true;
+			}
 			if (!player.isRaceCached(Races.ALRAUNE) && (player.hasPerk(PerkLib.Cinderbloom) || player.hasPerk(PerkLib.SnowLily) || player.hasPerk(PerkLib.Nightshade))) {
 				if (player.hasPerk(PerkLib.Cinderbloom)) player.removePerk(PerkLib.Cinderbloom);
 				if (player.hasPerk(PerkLib.FireAffinity) && player.perkv3(PerkLib.FireAffinity) == 1) player.removePerk(PerkLib.FireAffinity);
@@ -3496,4 +3510,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}
