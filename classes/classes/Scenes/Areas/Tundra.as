@@ -252,8 +252,8 @@ use namespace CoC;
 		public function chrismasEventCoalCollection():void {
 			clearOutput();
 			if (player.hasStatusEffect(StatusEffects.WinterFlash)) {
-				outputText("\"<i></i>\"\n\n");
-				outputText("\"<i></i>\"\n\n");
+				outputText("While exploring the rift, you run into the cervid taur woman again and right away, she rushes to you and asks for the material.\n\n");
+				outputText("\"<i>It's you again, adventurer! Have you got the coal yet? I repeat: only you can save the winter festival!</i>\"\n\n");
 				menu();//model.time.hours >= 18
 				addButton(0, "Yes", chrismasEventCoalCollectionYes);
 				addButton(1, "Sorry no", explorer.done);

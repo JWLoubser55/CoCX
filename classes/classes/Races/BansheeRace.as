@@ -34,19 +34,18 @@ public class BansheeRace extends Race {
 
 	public function BansheeRace(id:int) {
 		super("Banshee", id, []);//RaceBody);
-		chimeraTier = 0;
-		grandChimeraTier = 0;
+		mutationThreshold = 6;
         //tfRace = RaceMem.appendEnumVal("Banshee", CoC.instance.transformations.FullBanshee);
 	}
 	
 	public override function setup():void {
 		addScores()
 				.armType(Arms.GHOST, +1)
-				.legType(LowerBody.GHOST, +1)
+				.legType(ANY(LowerBody.GHOST, LowerBody.GHOST_2), +1, -1000)
 				.earType(Ears.ELVEN, +1, -1000)
 				.hairType(Hair.SILKEN, +1)
 				.eyeType(Eyes.ELF, +1)
-				.tongueType(Tongue.ELF, +1, -1000)
+				.tongueType(Tongue.ELF, +1)
 				.eyeColor("pale blue", +1)
 				.hairColor1(ANY(BansheeHairColors), +1)
 				.skinColor1(ANY(BansheeSkinColors), +1)
