@@ -4885,7 +4885,40 @@ public class PhysicalSpecials extends BaseCombatContent {
 				outputText("You grab your foe with your powerful tentacle entangling legs and arms in order to immobilize it.");
 			}
 			if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 4) monster.createStatusEffect(StatusEffects.ConstrictedScylla, 4 + rand(3),0,0,0);
-			else monster.createStatusEffect(StatusEffects.ConstrictedScylla, 3 + rand(3),0,0,0);
+			else monster.createStatusEffect(StatusEffects.ConstrictedScylla, 3 + rand(3), 0, 0, 0);
+			if (player.hasPerk(PerkLib.Constrict)) {
+				var damage:int = monster.maxHP() * (.10 + rand(15) / 100) * 1.5;
+				if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 2) damage += scalingBonusStrength() * 0.5 * (player.perkv1(IMutationsLib.MightyLowerHalfIM) - 1);
+				if (player.isKraken()) {
+					damage *= player.effectiveTallness / 25;
+					damage += player.str;
+				}
+				damage = combat.statusEffectBonusDamage(damage);
+				if (player.hasPerk(PerkLib.VladimirRegalia)) damage *= 2;
+				if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
+				if (monster.plural) damage *= 5;
+				if (player.hasPerk(PerkLib.KrakenBlackDress)) damage *= 2;
+				if (player.hasPerk(PerkLib.UnbreakableBind)) damage *= 2;
+				if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
+				if (player.hasPerk(PerkLib.Constrict)) damage *= 2;
+				if (player.perkv1(IMutationsLib.ScyllaInkGlandsIM) >= 2 && player.isKraken()) damage *= player.perkv1(IMutationsLib.ScyllaInkGlandsIM);
+				if (player.hasStatusEffect(StatusEffects.ControlFreak)) damage *= player.statusEffectv1(StatusEffects.ControlFreak);
+				if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.MightyLowerHalfIM)));
+				if (player.hasPerk(PerkLib.CrushingCoil)) {
+					var crit:Boolean = false;
+					var critChance:int = 5;
+					var critMulti:Number = 1.75;
+					critChance += combat.combatPhysicalCritical();
+					if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
+					if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+					if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+					if (rand(100) < critChance) {
+						crit = true;
+						damage *= critMulti;
+					}
+				}
+				doPhysicalDamage(damage, true, true);
+			}
 		}
 		//Failure
 		else {
@@ -4925,7 +4958,33 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//WRAP IT UPPP
 		if(40 + rand(player.spe) > monster.spe) {
 			outputText("[monster a] [monster name] is tied up!");
-			monster.createStatusEffect(StatusEffects.ConstrictedWhip, 3 + rand(3),0,0,0);
+			monster.createStatusEffect(StatusEffects.ConstrictedWhip, 3 + rand(3), 0, 0, 0);
+			if (player.hasPerk(PerkLib.Constrict)) {
+				var damage:int = monster.maxHP() * (.10 + rand(15) / 100);
+				damage = combat.statusEffectBonusDamage(damage);
+				if (player.hasPerk(PerkLib.VladimirRegalia)) damage *= 2;
+				if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
+				if (player.hasPerk(PerkLib.UnbreakableBind)) damage *= 2;
+				if (player.hasStatusEffect(StatusEffects.ControlFreak)) damage *= player.statusEffectv1(StatusEffects.ControlFreak);
+				if (player.hasPerk(PerkLib.Sadomasochism)) damage *= player.sadomasochismBoost();
+				if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
+				if (player.hasPerk(PerkLib.Constrict)) damage *= 2;
+				if (player.hasPerk(PerkLib.CrushingCoil)) {
+					var crit:Boolean = false;
+					var critChance:int = 5;
+					var critMulti:Number = 1.75;
+					critChance += combat.combatPhysicalCritical();
+					if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
+					if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+					if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+					if (rand(100) < critChance) {
+						crit = true;
+						damage *= critMulti;
+					}
+				}
+				damage = Math.round(damage);
+				doPhysicalDamage(damage, true, true);
+			}
 		}
 		//Failure
 		else {

@@ -944,6 +944,12 @@ public class PerkLib
 		public static const OneWispArmyEpic:PerkType = mk("One Wisp Army (Epic)", "One Wisp Army (Epic)",
 				"Increase wisp own attack damage by 4800% (6400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 12,5% (87,5% in total).",
 				"You've chosen the 'One Wisp Army (Epic)' perk. Increase wisp own attack damage by 4800% (6400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 12,5% (87,5% in total).");
+		public static const Constrict:PerkType = mk("Constrict", "Constrict",
+				"Double damage dealt by grappling and inflict twice your grapple damage when first initiating a grapple.",
+				"You've chosen the 'Constrict' perk. Double damage dealt by grappling and inflict twice your grapple damage when first initiating a grapple.");
+		public static const CrushingCoil:PerkType = mk("Crushing Coil", "Crushing Coil",
+				"Grapple now has a chance for critical damage.",
+				"You've chosen the 'Crushing Coil' perk. Grapple now has a chance for critical damage.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -958,12 +964,6 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8438,6 +8438,11 @@ public class PerkLib
 					.requireStr(30)
                     .requireTou(30)
                     .requireSpe(30);
+            Constrict.requirePerk(JobBeastlord)
+					.requireLevel(6)
+					.requireStr(30)
+                    .requireTou(30)
+                    .requireSpe(30);
             JobHealer.requireAdvancedJobSlot()
 					.requireAnyPerk(JobSorcerer, JobSoulCultivator)
 					.requireLevel(6)
@@ -8539,6 +8544,11 @@ public class PerkLib
 					.requireTou(50)
 					.requireSpe(50);
             WarTail.requirePerk(BeastlyKick)
+					.requireLevel(12)
+					.requireStr(45)
+                    .requireTou(45)
+                    .requireSpe(45);
+            CrushingCoil.requirePerk(Constrict)
 					.requireLevel(12)
 					.requireStr(45)
                     .requireTou(45)

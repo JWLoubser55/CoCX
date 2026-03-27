@@ -282,8 +282,8 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Wail of the Banshee. Gained by becoming Banshee. Effects: Sing and its sub powers now also counts as a soulforce ability. Devastating Aria and Captivate now also consume soulforce.\n");
 			outputText("-New event perk: Soul Draining Scream. Gained by becoming Banshee. Effects: Dealing damage or lust damage with singing restores a small amount of soul force and hunger.\n");
 			outputText("-New event perk: Herald of Death. Gained by becoming Banshee. Effects: Damage dealt to opponents below half health is doubled.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 1 misc lvl-up perk: Constrict. Req. Job: Feral Champion perk, 30+ str/tou/spe. Effect: Double damage dealt by grappling and inflict twice your grapple damage when first initiating a grapple.\n");
+			outputText("-New tier 2 misc lvl-up perk: Crushing Coil. Req. Constrict perk, 45+ str/tou/spe. Effect: Grapple now has a chance for critical damage.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
