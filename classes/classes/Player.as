@@ -3684,6 +3684,7 @@ use namespace CoC;
 			//Apply damage resistance percentage.
 			damage *= damagePercent() / 100;
 			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 1) damage *= (1 - (0.05 * (1 + perkv1(IMutationsLib.EctoplasmicEssenceIM))));
+			if (hasPerk(PerkLib.Ethereal)) damage *= 0.5;
 			return damage;
 		}
 		public function damagePercentMRes():Number {

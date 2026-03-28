@@ -4861,6 +4861,8 @@ public class PerkLib
 				"Damage is increased (x3) while in motion gallop or flight. You may start combat galloping or start combat already flying. (as long PC have any options to fly)");
 		public static const EclipsingShadowMastered:PerkType = mk("Eclipsing Shadow (Mastered)", "Eclipsing Shadow (Mastered)",
 				"Cumulative 120% damage increase for every subsequent darkness spell. Each turn without cast darkness spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling darkness based attack. Maximum 50 stacks. (+140% spellpower bonus)");
+		public static const Ethereal:PerkType = mk("Ethereal", "Ethereal",
+				"Physical damage taken is reduced by half after damage reduction but you cannot wear any armor heavier than clothing. Furthermore you cannot masturbate.");
 		public static const FiendishConcentration:PerkType = mk("Fiendish Concentration", "Fiendish Concentration",
 				"Passively cast a selected spell every round so long as at least two hands are free. Cast twice if three hands are free.");
 		public static const ElementalBody:PerkType = mk("Elemental", "Elemental",

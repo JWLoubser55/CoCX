@@ -95,6 +95,10 @@ public class Armor extends Equipable
 				if (doOutput) outputText("You would very like to equip this item but your body stiffness prevents you from doing so.");
 				return false;
 			}
+			else if (game.player.hasPerk(PerkLib.Ethereal) && (perk == "Light" || perk == "Medium" || perk == "Heavy" || perk == "Light Ayo" || perk == "Heavy Ayo" || perk == "Ultra Heavy Ayo")) {
+				if (doOutput) outputText("You would very like to equip this item but your body ethereal state prevents you from doing so.");
+				return false;
+			}
 			return super.canEquip(doOutput, slot);
 		}
 		

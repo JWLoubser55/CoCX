@@ -284,7 +284,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Herald of Death. Gained by becoming Banshee. Effects: Damage dealt to opponents below half health is doubled.\n");
 			outputText("-New tier 1 misc lvl-up perk: Constrict. Req. Job: Feral Champion perk, 30+ str/tou/spe. Effect: Double damage dealt by grappling and inflict twice your grapple damage when first initiating a grapple.\n");
 			outputText("-New tier 2 misc lvl-up perk: Crushing Coil. Req. Constrict perk, 45+ str/tou/spe. Effect: Grapple now has a chance for critical damage.\n");
-			outputText("-\n");
+			outputText("-New event perk: Ethereal. Gained by becoming Banshee/Poltergeist. Effects: Physical damage taken is reduced by half after damage reduction but you cannot wear any armor heavier than clothing. Furthermore you cannot masturbate.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

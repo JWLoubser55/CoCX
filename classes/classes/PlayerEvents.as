@@ -1870,6 +1870,11 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				SceneLib.inventory.takeItem(player.unequipArmor(false, true), playerMenu);
 				needNext = true;
 			}
+			if (player.hasPerk(PerkLib.Ethereal) && (player.armorPerk == "Light" || player.armorPerk == "Medium" || player.isInHeavyArmor() || player.isInAyoArmor)) {
+				outputText("Due to your current body state you are no longer able to wear "+player.armorName+" and thus you put the over item back into your inventory");
+				SceneLib.inventory.takeItem(player.unequipArmor(false, true), playerMenu);
+				needNext = true;
+			}
 			if (player.necklace == necklaces.SILCNEC && player.hasCock() && !player.hasVagina()) {
 				outputText("As the last vestige of your pussy disappears the silver necklace begins to heat up before turning to dust." + (player.hasStatusEffect(StatusEffects.MeetXuviel)?" It would seem you are free of Xuviel’s cursed necklace, which in itself is a good thing.":"") + "");
 				player.unequipNecklace(false, true);
@@ -2963,6 +2968,38 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				outputText("\nA dramatic change in your alignment has altered your formerly corrupt aura into one of purity\n");
 				player.removePerk(PerkLib.AuraOfCorruption);
 				player.createPerk(PerkLib.AuraOfPurity, 0, 0, 0, 0);
+				needNext = true;
+			}
+			//Ethereal
+			if (player.isAnyRaceCached(Races.BANSHEE, Races.POLTERGEIST) && !player.hasPerk(PerkLib.Ethereal)) {
+				if (player.isRaceCached(Races.BANSHEE)) {
+					outputText("\nAs you become more and more ghostlike your relationship with life lessen as your body becomes closer to the composition of an immaterial unbound soul. You start to fade into an ethereal state but never vanish completely, stuck between the metaphysical realm and sustained by your strong soul. While you can still manifest and interact with physical objects to an extent, doing such requires a sustained effort from your soul. This strange state of existence ");
+					outputText("has more or less made the need for vital organs irrelevant as your soul now almost fully sustains the entirety of your being but you will also crave for the soulforce of others as a result of this since you will need it to keep your own reserves from running out. You can’t exactly call yourself ‘alive’ anymore right? This also extends to your senses, aside from sight, touch, taste and smell is about completely gone and you are now no different from the wraiths that wander Mareth");
+					if (flags[kFLAGS.TIMES_MET_SHOULDRA] > 0) outputText(" or from that poor ghost girl Shouldra over there");
+					outputText(".");
+					if (SceneLib.camp.followerShouldra()) outputText("Speaking of Shouldra you’re going to have a hard time feeling the joy of sensation.");
+					else outputText("Thinking on it without the feeling of touch how exactly are you going to masturbate?");
+					outputText(" Without directly interacting with someone else's body through partial possession masturbation is from now on completely impossible. <b>You have gained the Ethereal and Undeath perk.</b>");
+					player.createPerk(PerkLib.Undeath, 0, 0, 0, 0);
+				}
+				else outputText("\nAs you become more ghost-like your body begins to glow slightly. Curious, you try to touch your arm and discover with surprise that your hand ran straight through your limb as if it lacked a material substance. <b>You gained the Ethereal Perk.</b>");
+				player.createPerk(PerkLib.Ethereal, 0, 0, 0, 0);
+				needNext = true;
+			}
+			if (!player.isAnyRaceCached(Races.BANSHEE, Races.POLTERGEIST) && player.hasPerk(PerkLib.Ethereal)) {
+				if (player.isRaceCached(Races.BANSHEE)) {
+					outputText("\nYour body and presence begins to solidify, no longer stuck between the material and immaterial realm. Curious you pinch yourself and sight in relief as you feel the long missed sense of touch looks like you’re back to being corporeal and alive again! <b>You have lost the Ethereal and Undeath perk.</b>");
+					player.removePerk(PerkLib.Undeath);
+				}
+				else outputText("\nYour formerly glowing form loses its luster; it would appear you no longer benefit from etherealness. <b>You lost the Ethereal perk.</b>");
+				player.removePerk(PerkLib.Ethereal);
+				needNext = true;
+			}
+			if (SceneLib.camp.followerShouldra() && player.hasPerk(PerkLib.Ethereal)) {
+				outputText("\nSpeaking of the devil, Shouldra, no longer able to possess your body, floats to your side and looks at you in annoyance.");
+				outputText("\n\n\"<i>Hey champ as much as I liked our jig there's no point if you are also ethereal. A ghost can’t possess another ghost so until you become a living solid thing again I will be waiting for you in the town"+(RuinedTownRebuilt.RebuildState > 0?"":" ruins")+".</i>\"");
+				if (player.hasStatusEffect(StatusEffects.ShouldraOff)) player.removeStatusEffect(StatusEffects.ShouldraOff);
+				flags[kFLAGS.SHOULDRA_FOLLOWER_STATE] = 0;
 				needNext = true;
 			}
 			//Remove Bullshit

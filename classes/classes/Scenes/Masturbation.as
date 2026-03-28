@@ -21,7 +21,8 @@ public class Masturbation extends BaseContent {
 		public function masturButton(pos:int):CoCButton {
 			if (inDungeon && DungeonAbstractContent.dungeonLoc != DungeonAbstractContent.DUNGEON_CABIN || inRoomedDungeon || explorer.isActive) return addButton(pos, "Masturbate", masturbateGo)
 				.hint("Attempt to masturbate in order to relieve your lust buildup.")
-				.disableIf(player.lust < 33, "You're not horny enough to masturbate.");
+				.disableIf(player.lust < 33, "You're not horny enough to masturbate.")
+				.disableIf(player.hasPerk(PerkLib.Ethereal), "You can’t even feel your own body, how could you even masturbate?");
 			else if (canMeditate() && player.lust < 33) return addButton(pos, "Meditate", meditate)
 				.hint("Meditate in order to reduce lust and corruption.")
 				.disableIf(SceneLib.exgartuan.anyAwake(), "Your inner demon won't let you concentrate right now.");
