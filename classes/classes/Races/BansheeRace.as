@@ -40,9 +40,11 @@ public class BansheeRace extends Race {
 	
 	public override function setup():void {
 		addScores()
-				.armType(Arms.GHOST, +1)
-				.legType(ANY(LowerBody.GHOST, LowerBody.GHOST_2), +1, -1000)
+				.armType(ANY(Arms.GHOST, Arms.SPECTRAL_CLAWS), +1, -1000)
+				.legType(LowerBody.GHOST, +1)
+				.legType(LowerBody.SPECTRAL_SHROUD, +2)
 				.earType(Ears.ELVEN, +1, -1000)
+				.faceType(Face.ELF, +1)
 				.hairType(Hair.SILKEN, +1)
 				.eyeType(Eyes.ELF, +1)
 				.tongueType(Tongue.ELF, +1)
@@ -57,6 +59,7 @@ public class BansheeRace extends Race {
 				.tone(AT_MOST(60), +1)
 				.thickness(AT_MOST(50), +1)
 				.corruption(AT_LEAST(20), +2)
+				.hasPerk(PerkLib.Incorporeality, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.MelkieLungIM);

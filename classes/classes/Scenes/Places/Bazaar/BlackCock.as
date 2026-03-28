@@ -2154,14 +2154,14 @@ import classes.lists.Gender;
 						transformations.TailCow.applyEffect();
 						break;
 					case 6:
-						transformations.EarsInsect.applyEffect();
+						transformations.LowerBodyBanshee.applyEffect();
 						break;
 					default:
 				}
 				changes++;
 			}
 			if (changes < changeLimit && rand(3) == 0) {
-				var meatMeat4:int = rand(4);
+				var meatMeat4:int = rand(6);
 				switch(meatMeat4) {
 					case 0:
 						transformations.EyesMoth.applyEffect();
@@ -2174,13 +2174,13 @@ import classes.lists.Gender;
 						break;
 					case 3:
 						transformations.ArmsBatWing.applyEffect();
-						break;/*
+						break;
 					case 4:
-						
+						transformations.ArmsBanshee.applyEffect();
 						break;
 					case 5:
-						
-						break;
+						transformations.EarsInsect.applyEffect();
+						break;/*
 					case 6:
 						
 						break;*/

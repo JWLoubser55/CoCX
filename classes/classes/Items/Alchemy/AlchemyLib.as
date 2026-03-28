@@ -793,6 +793,10 @@ public class AlchemyLib extends BaseContent {
 		short: "CStal",
 		name : "Cave stalker"
 	});
+	public static const AE_BANSHEE:int        = EnumValue.add(Essences, 237, "BANSHEE", {
+		short: "Banshee",
+		name : "Banshee"
+	});
 	public static function DEFAULT_ESSENCE_DROP_TABLE(mainEssencee:int, withHuman:Boolean = false):Array {
 		var result:Array = [
 			[10, mainEssencee],

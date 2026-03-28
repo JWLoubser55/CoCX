@@ -1518,6 +1518,25 @@ public class ArmsTransformations extends MutationsHelper {
 				return player.arms.type === Arms.LICH;
 			}
 	);
+
+	public const ArmsBanshee: Transformation = new SimpleTransformation("Banshee Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
+
+				desc += "Something weird is happening to you. Ghastly soulforce is amassing in your hands the energy exploding at the tips of your digits as the soulforce coats them like a pair of enormous misshapen spectral gloves with vicious claws. These soulforce claws are semi see through allowing you to still watch the shape of the slander human hand within through you muse that physical contact will be very real and unpleasant for those you run them through. <b>You now have spectral claws!</b>!";
+				player.arms.type = Arms.SPECTRAL_CLAWS;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.SPECTRAL_CLAWS));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.SPECTRAL_CLAWS;
+			}
+	);
 	/*
   */
 }

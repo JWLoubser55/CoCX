@@ -197,6 +197,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const ArmsMarilith: Transformation 			= arms.ArmsMarilith.registerTf(AS_ARMS, AE_MARILITH);
     public const ArmsHollow: Transformation 			= arms.ArmsHollow.registerTf(AS_ARMS, AE_HOLLOW);
     public const ArmsLich: Transformation 				= arms.ArmsLich.registerTf(AS_ARMS, AE_LICH);
+    public const ArmsBanshee: Transformation 			= arms.ArmsBanshee.registerTf(AS_ARMS, AE_BANSHEE);
 
 
 //ASS
@@ -837,6 +838,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const LowerBodyWerespider: Transformation 			= lowerBody.LowerBodyWerespider.registerTf(AS_LEGS, AE_WERESPIDER);
     public const LowerBodyHollow: Transformation 				= lowerBody.LowerBodyHollow.registerTf(AS_LEGS, AE_HOLLOW);
     public const LowerBodyLich: Transformation 					= lowerBody.LowerBodyLich.registerTf(AS_LEGS, AE_LICH);
+    public const LowerBodyBanshee: Transformation 				= lowerBody.LowerBodyBanshee.registerTf(AS_LEGS, AE_BANSHEE);
 
 
 //OTHER ( SPECIAL )
@@ -1325,4 +1327,4 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 		trace("\n"+dump.join("\n"));
 	}
 }
-}
+}

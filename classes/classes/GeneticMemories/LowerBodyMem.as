@@ -612,6 +612,13 @@ package classes.GeneticMemories {
           title: "Lich Legs",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyLich}});
 
+      public static const SPECTRAL_SHROUD: int = _partid++;
+      EnumValue.add(Memories, SPECTRAL_SHROUD, "SPECTRAL_SHROUD", {
+          id: "Banshee Lower Body",name: "Banshee Legs",
+          cost: 100,
+          title: "Banshee Legs",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyBanshee}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

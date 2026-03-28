@@ -2538,6 +2538,27 @@ public class LowerBodyTransformations extends MutationsHelper {
 			return player.lowerBody === LowerBody.LICH;
 		}
 	);
+
+	public const LowerBodyBanshee: Transformation = new SimpleTransformation("Banshee lower body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (doOutput) {
+					var desc: String = "";
+
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyHuman, doOutput);
+					desc += "Something weird happens around your ghostly legs as the already see-through effect worsens. You can no longer stand on solid ground and instead begin to float. Your feet vanish entirely all the way up to the knee soulforce erupting at your tight as it manifests into a skirt of soul force the rim of which constantly breaks down and repairs itself as if eaten up by mites or some other cloth eating insects. <b>What's left of your legs has effectively been covered with a spectral shroud making you look more and more like a terrifying ghastly apparition.</b>";
+
+					if (doOutput) outputText(desc);
+					player.legCount = 2;
+				}
+				player.lowerBody = LowerBody.SPECTRAL_SHROUD;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.SPECTRAL_SHROUD));
+			},
+			// is present
+			function (): Boolean {
+				return player.lowerBody === LowerBody.SPECTRAL_SHROUD;
+			}
+	);
 	
 	/*
   */

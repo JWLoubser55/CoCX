@@ -957,6 +957,12 @@ public class LowerBody extends SaveableBodyPart {
 		appearanceDesc: "Two legs grow down from your [hips], muscles corded like braids pulse with soulforce under your thighs. From the calves down your feet are a strange combination of hoof and talon."
 	});
 
+	public static const SPECTRAL_SHROUD:int = 95;
+	EnumValue.add(Types, SPECTRAL_SHROUD, "SPECTRAL_SHROUD", {
+		name: "banshee",
+		appearanceDesc: "Your ghostly human legs only run down to the knee after which they completely fade into nothingness yet those legs are concealed by a frayed shroud of soulforce acting as a ghostly skirt."
+	});
+
 	override public function set type(value:int):void {
 		super.type = value;
 		// Reset leg count

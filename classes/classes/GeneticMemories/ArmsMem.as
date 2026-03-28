@@ -857,6 +857,17 @@ import classes.CoC;
 			}
 		});
 
+		public static const SPECTRAL_CLAWS:int = _partid++;
+		EnumValue.add(Memories, SPECTRAL_CLAWS, "SPECTRAL_CLAWS", {
+			id: "Banshee Arms",
+			name: "Banshee Arms",
+			cost: 100,
+			title: "Banshee",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.ArmsBanshee;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}
