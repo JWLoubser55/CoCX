@@ -9095,6 +9095,7 @@ use namespace CoC;
 		public override function takeLustDamage(lustDmg:Number, display:Boolean = false, applyRes:Boolean = true):Number{
 			var x:Number = super.takeLustDamage(lustDmg, display, applyRes);
 			if (perkv1(IMutationsLib.MyconidSporeIM) >= 2 && hasStatusEffect(StatusEffects.SporeCloud)) lustDmg = Math.round(lustDmg * 1.5);
+			if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH) lustDmg *= 2;
 			raijuSuperchargedCheck();
 			checkFinalCandle();
 			EngineCore.statScreenRefresh();
@@ -9142,4 +9143,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}

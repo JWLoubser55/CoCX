@@ -147,6 +147,9 @@ public final class ArmorLib extends ItemConstants
 				.withTag(A_AGILE) as Armor;
 		public const FULLCHN:Armor = new Armor("FullChn","Full Chain","full-body chainmail","a full suit of chainmail armor",8,0,320,"This full suit of chainmail armor covers its wearer from head to toe in protective steel rings.","Medium");
 		public const FULLPLT:Armor = new Armor("FullPlt","Full Plate","full platemail","a suit of full-plate armor",21,0,1260,"A highly protective suit of steel platemail.  It would be hard to find better physical protection than this.","Heavy");
+		public const FUNERSH:Armor = new Armor("FunerSh","FuneraryShroud","Funerary Shroud","a Funerary Shroud",0,20,1600,"While worn by a creature with the ethereal perk, negates death by damage but increases tease damage taken. Take tease damage from damage when HP is less than 10%. Increase draining effect potency by 50%.","Light", false, false)
+				.withBuffs({'teasedmg': 12})
+				.withTag(A_REVEALING) as Armor;
 		public const G_CHANG:Armor = new Armor("G.Chang","GreenChangshan","Green Lunar new year dress (m)","a Green Lunar new year dress (m)",0,0,100,"A simple yet elegant green changshan with dragon motif. This clothing is said to bring in good luck increasing evasiveness and critical chance.","Light");
 		public const G_DIVES:Armor = new Armor("G.DiveS","GreenDivingSuit","Green Diving Suit","a Green Diving Suit",25,5,1800,"A green diving suit. Good for diving, stomping splicers or slaying demons.","Heavy");
 		public const G_QIPAO:Armor = new Armor("G.Qipao","GreenQipao","Green Lunar new year dress (f)","a Green Lunar new year dress (f)",0,0,100,"A simple yet elegant green qipao with floral motif. This dress is said to bring in good luck increasing evasiveness and critical chance.","Light");

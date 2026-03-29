@@ -507,8 +507,8 @@ public class Combat extends BaseContent {
 			player.HP = player.minHP() + 1;
             combatMenu(false);
 		}
-        else if (player.hasPerk(PerkLib.Immortality) || player.hasPerk(PerkLib.WhatIsReality)) {
-            player.takeLustDamage( player.HP - player.minHP(), true);
+        else if (player.hasPerk(PerkLib.Immortality) || player.hasPerk(PerkLib.WhatIsReality) || (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH)) {
+            player.takeLustDamage((player.HP - player.minHP()), true);
             player.HP = player.minHP() + 1;
             combatMenu(false);
         }
@@ -20963,4 +20963,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

@@ -4210,4 +4210,4 @@ import classes.Scenes.Combat.CombatAbility;
 				return false;
 		}
 	} // what the fuck are those weird comments here? ^
-}
+}

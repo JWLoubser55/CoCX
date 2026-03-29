@@ -567,6 +567,11 @@ use namespace CoC;
 						call  : SceneLib.werewolfFemaleScene.introWerewolfFemale,
 						chance: 0.50
 					}, {
+						name  : "Wraith",
+						kind  : "monster",
+						day: false,
+						call  : SceneLib.wraithScene.encounterWraith1
+					}, {
 						name: "demonProjects",
 						label : "DemLab Subject",
 						kind  : 'monster',
@@ -838,6 +843,11 @@ use namespace CoC;
 				day : false,
 				call  : SceneLib.werewolfFemaleScene.introWerewolfFemale,
 				chance: 0.50
+			}, {
+				name  : "Wraith",
+				kind  : "monster",
+				day: false,
+				call  : SceneLib.wraithScene.encounterWraith2
 			}, {
 				name  : "healingherb",
 				label : "HealingHerb",
