@@ -3254,6 +3254,7 @@ use namespace CoC;
 								CoC.instance.monster.teased(SceneLib.combat.teases.teaseBaseLustDamage() * CoC.instance.monster.lustVuln);
 							}
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							// Bookmark
 							if (damagePercentArmor() > 1){
 								armorMod = 1 / damagePercentArmor();
@@ -3270,6 +3271,7 @@ use namespace CoC;
 							break;
 						case 4: // magical
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 							}
@@ -3285,6 +3287,7 @@ use namespace CoC;
 							break;
 						case 5: // fire
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 								if (hasPerk(PerkLib.WalpurgisIzaliaRobe)) armorMod = armorMod/4*3;
@@ -3301,6 +3304,7 @@ use namespace CoC;
 							break;
 						case 6: // ice
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 							}
@@ -3316,6 +3320,7 @@ use namespace CoC;
 							break;
 						case 7: // lightning
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 							}
@@ -3331,6 +3336,7 @@ use namespace CoC;
 							break;
 						case 8: // darkness
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 							}
@@ -3346,6 +3352,7 @@ use namespace CoC;
 							break;
 						case 9: // poison
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 							}
@@ -3361,6 +3368,7 @@ use namespace CoC;
 							break;
 						case 10: // wind
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 							}
@@ -3376,6 +3384,7 @@ use namespace CoC;
 							break;
 						case 11: // water
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 							}
@@ -3391,6 +3400,7 @@ use namespace CoC;
 							break;
 						case 12: // earth
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 							}
@@ -3406,6 +3416,7 @@ use namespace CoC;
 							break;
 						case 13: // acid
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
 							}
@@ -3421,6 +3432,7 @@ use namespace CoC;
 							break;
 						case 14: // psychic
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 						//	if (damagePercentMRes() > 1){
 						//		armorMod = 1 / damagePercentMRes();
 						//	}
@@ -3436,6 +3448,7 @@ use namespace CoC;
 							break;
 						case 15: // true
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							for(i =0; i < remainingHit.length; i++){
 								remainingHit[i] *= armorMod;
 								remainingHit[i] = reduceAcidDamage(remainingHit[i]);
@@ -3447,6 +3460,7 @@ use namespace CoC;
 							break;
 						default:
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
+							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentArmor() > 1){
 								armorMod = 1 / damagePercentArmor();
 							}
@@ -8522,8 +8536,10 @@ use namespace CoC;
 		}
 
 		public function bansheeSoulDrainingScream():void {
-			pc.SoulforceChange(25 + (wis / 2));
-			refillHunger(10, false, true);
+			var multip:Number = 1;
+			if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH) multip += 0.5;
+			pc.SoulforceChange(Math.round((25 + (wis / 2)) * multip));
+			refillHunger((10 * multip), false, true);
 		}
 
 		public function displacerFeedFromBottle():void {

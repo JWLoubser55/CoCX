@@ -1870,7 +1870,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				SceneLib.inventory.takeItem(player.unequipArmor(false, true), playerMenu);
 				needNext = true;
 			}
-			if (player.hasPerk(PerkLib.Ethereal) && (player.armorPerk == "Light" || player.armorPerk == "Medium" || player.isInHeavyArmor() || player.isInAyoArmor)) {
+			if (player.hasPerk(PerkLib.Ethereal) && (player.armorPerk == "Medium" || player.isInHeavyArmor() || player.isInAyoArmor)) {
 				outputText("Due to your current body state you are no longer able to wear "+player.armorName+" and thus you put the over item back into your inventory");
 				SceneLib.inventory.takeItem(player.unequipArmor(false, true), playerMenu);
 				needNext = true;

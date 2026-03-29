@@ -62,6 +62,7 @@ public class LifeSiphonSpell extends AbstractHexSpell {
 		if (player.hasPerk(PerkLib.Necromancy)) lifesiphon *= 1.5;
 		if (player.hasPerk(PerkLib.CorruptMagic) && player.hasStatusEffect(StatusEffects.DarkRitual)) lifesiphon *= 2;
 		if (player.weapon == weapons.ANCIENTO) lifesiphon *= 1.25;
+		if (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH) lifesiphon *= 1.5;
 		return Math.round(lifesiphon);
 	}
 	

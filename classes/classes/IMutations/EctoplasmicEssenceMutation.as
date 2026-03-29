@@ -27,8 +27,9 @@ public class EctoplasmicEssenceMutation extends IMutationPerkType
 				if (pTier == 3) descS += "10%";
 			}
 			if (pTier >= 2) descS += ". Increase the potency of M.Ability with a soulforce cost by " + (5 * (pTier - 1)) + "0%";
-            if (pTier == 3) descS += ". Increase tease modifier by a percentage equal to half of current lust percentage";
-            if (pTier >= 4) descS += ". You recover from all stat damage except intelligence / libido every full moon night";
+            if (pTier >= 3) descS += ". Increase tease modifier by a percentage equal to ";
+			if (pTier == 3) descS += "half of current lust percentage";
+            if (pTier == 4) descS += "current lust percentage. Add your soulforce to your health but cause soul force ability to also consume health in equal amounts";
             if (descS != "")descS += ".";
             return descS;
         }

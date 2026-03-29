@@ -80,6 +80,10 @@ public class AbstractSoulSkill extends CombatAbility {
 			leech *= 0.2;
 		}
 		else leech *= 0.1;
+		if (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH) {
+			leechCap *= 1.5;
+			leech *= 1.5;
+		}
 		leech = Math.round(leech);
 		if (leech > Math.round(player.maxHP() * leechCap)) leech = Math.round(player.maxHP() * leechCap);
 	    pc.HPChange(leech, false, false);

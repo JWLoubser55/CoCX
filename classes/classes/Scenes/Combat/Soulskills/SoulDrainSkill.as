@@ -81,6 +81,7 @@ public class SoulDrainSkill extends AbstractSoulSkill {
 		var calcHA:Number = player.maxHP() * 0.2;
 		if (player.perkv1(IMutationsLib.StillHeartIM) >= 1) calcHA *= (1 + (0.25 * player.perkv1(IMutationsLib.StillHeartIM)));
 		if (player.perkv1(IMutationsLib.StillHeartIM) >= 3) calcHA += Math.round(player.maxHP() * 0.01 * (player.perkv1(IMutationsLib.StillHeartIM) - 2));
+		if (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH) calcHA *= 1.5;
 		return Math.round(calcHA);
 	}
 

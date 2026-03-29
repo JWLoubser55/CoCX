@@ -10101,6 +10101,7 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.LifestealEnchantment)) {
 				if (player.hasPerk(PerkLib.WayOfTheBlood)) restoreamount += (1 + (0.25 * player.progressBloodDemon()));
 				else restoreamount += 1;
+				if (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH) restoreamount *= 1.5;
 			}
 			if (player.weapon == weapons.LHSCYTH) restoreamount += 1;
 			if (player.weapon == weapons.T_HEART || player.weapon == weapons.DORSOUL || player.weapon == weapons.ARMAGED) restoreamount += 1;
@@ -18343,6 +18344,7 @@ public function VampiricBite():void {
     doPhysicalDamage(damage, true, true);
 	if (player.perkv1(IMutationsLib.StillHeartIM) >= 1) damage = Math.round(damage * (1 + (0.25 * player.perkv1(IMutationsLib.StillHeartIM))));
 	if (player.perkv1(IMutationsLib.StillHeartIM) >= 3) damage += Math.round(player.maxHP() * 0.01 * (player.perkv1(IMutationsLib.StillHeartIM) - 2));
+	if (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH) damage *= 1.5;
     if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) pc.HPChange(damage, false, true);
 	else pc.HPChange(damage, false, false);
     outputText(" damage. You feel yourself grow stronger with each drop. ");
