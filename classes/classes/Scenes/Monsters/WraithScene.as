@@ -28,6 +28,7 @@ public class WraithScene extends BaseContent
 			clearOutput();
 		//	spriteSelect(SpriteDb.);
 			outputText("It's Information Noona here again (not Bashee just Abyssal Elf Maiden of 1k+ years) with info that Director Liadri would write text here... soon(tm) and now go fight that Wraith up there.\n\n");
+			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_WRAITH);
 			if (!player.hasStatusEffect(StatusEffects.WraithFace)) player.createStatusEffect(StatusEffects.WraithFace, 0, 0, 0, 0);
 			if (area == 1) player.changeStatusValue(StatusEffects.WraithFace, 2, 1);
 			else player.changeStatusValue(StatusEffects.WraithFace, 2, 2);

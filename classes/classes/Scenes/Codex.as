@@ -82,7 +82,7 @@ import coc.view.ButtonDataList;
 			var unlocked:int = checkUnlocked();
 			if (unlocked >= 20) awardAchievement("Scholar (1)", kACHIEVEMENTS.GENERAL_SCHOLAR);
 			if (unlocked >= 30) awardAchievement("Scholar (2)", kACHIEVEMENTS.GENERAL_SCHOLAR_2);
-			if (unlocked >= 40) awardAchievement("Scholar (3)", kACHIEVEMENTS.GENERAL_SCHOLAR_3);//aktualnie 40 codex entries exist ingame: 32 races, 3 demon projects, 2 factions, 3 other
+			if (unlocked >= 40) awardAchievement("Scholar (3)", kACHIEVEMENTS.GENERAL_SCHOLAR_3);//aktualnie 41 codex entries exist ingame: 32 races, 3 demon projects, 2 factions, 4 other
 		}
 
 		//CODEX MENUS
@@ -111,6 +111,7 @@ import coc.view.ButtonDataList;
 				[kFLAGS.CODEX_ENTRY_CHESHIRE_CAT, "Cheshire Cat", codexEntryCheshireCat],
 				[kFLAGS.CODEX_ENTRY_CHIMERA, "Chimera", codexEntryChimera],
 				[kFLAGS.CODEX_ENTRY_COCKATRICES, "Cockatrices", codexEntryCockatrices],
+				//[kFLAGS., "Corpse Puppets", codexEntryCorpsePuppets],
 				[kFLAGS.CODEX_ENTRY_DEVIL, "Devil", codexEntryDevil],
 				[kFLAGS.CODEX_ENTRY_DISPLACER_BEAST, "Displacers", codexEntryDisplacerBeast],
 				[kFLAGS.CODEX_ENTRY_ECHIDNAS, "Echidnas", codexEntryEchidnas],
@@ -148,6 +149,7 @@ import coc.view.ButtonDataList;
 			],
 			"Other": [
 				[kFLAGS.CODEX_ENTRY_GOLEMS, "Golems", codexEntryGolems],
+				[kFLAGS.CODEX_ENTRY_WRAITH, "Wraiths", codexEntryWraiths],
 				[kFLAGS.CODEX_ENTRY_MAGIC, "Magic", codexEntryMagic],
 				[kFLAGS.CODEX_ENTRY_IMP_TOME, "Imp Tome", codexEntryImpTome],
 			]
@@ -937,6 +939,22 @@ import coc.view.ButtonDataList;
 			headerSub("Natural enemies");
 			outputText("Zebra-morphs show great anxiety when near lion-morphs since millennia have passed where they were the prey to the lion-morphs.");
 			outputText("\n\n(Written by: Rycharde) ");
+		}
+
+		private function codexEntryWraiths():void {
+			headerMain("Wraiths");
+			outputText("Wraiths are undead created through the result of demonic sexual experimentations. These horrors are the unfortunate victims of demonic denial sexplay and black magic, their body forever locked at the moment of the edge of orgasm, unable to fully achieve release. This causes their will and body to melt together into ectoplasm and the liquid corruption their body continuously produces from their eternally frustrated desire. ");
+			outputText("Unlike poltergeists, this variant of the ghost type is partially solid and cannot use possession. Thus, they are unable to achieve sexual release through the body of another and will mindlessly rape every living thing they can get their claws on to near death. Like most undead, Wraiths’ soulforce production is badly damaged, causing them to need the soul force of the living to constantly sustain themselves ");
+			outputText("(though due to their constant state of edging a wraith can never fully regain sapience). Wraiths are particularly averse to bright light and will hide in caves, ruins or below ground level during day time.");
+			outputText("\n\n(Written By: Liadri)");
+		}
+
+		private function codexEntryCorpsePuppets():void {
+			headerMain("Corpse Puppets");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n\n(Written By: Liadri)");
 		}
 
 		private function codexEntryTyrant():void {

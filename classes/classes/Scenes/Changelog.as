@@ -289,7 +289,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Ethereal. Gained by becoming Banshee/Poltergeist. Effects: Physical damage taken is reduced by half after damage reduction but you cannot wear any armor heavier than clothing. Furthermore you cannot masturbate.\n");
 			outputText("-New armor (by Liadri): Funerary Shroud - obtained by beating Wraith. Cost 1,600 gems, 0 armor, 20 magic resistance, light type armor. Slutty Seduction +12, Revealing. While worn by a creature with the ethereal perk, negates death by damage but increases tease damage taken. Take tease damage from damage when HP is less than 10%. Increase draining effect potency by 50%.\n");
 			outputText("-Losing to Wraith as Elf/Wood Elf (non perm stage)/A.Elf cause PC to TF into Banshee. Their race bonuses for Lesser Banshee / Banshee / Unhallowed Banshee (9/16/28): -45%/+90%/+90% to str multi, +135%/+200%/+260% to lib multi, +95%/+180%/+300% to int multi, +50 to sens\n");
-			outputText("-\n");
+			outputText("-New codex entry added to the game: Wraiths.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

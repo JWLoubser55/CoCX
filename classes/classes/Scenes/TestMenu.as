@@ -55,6 +55,7 @@ public class TestMenu extends BaseContent
 		clearOutput();
 		outputText("Collection of different cheats that can be used by the players.");
 		outputText("\n\nAscension points: " + player.ascensionPerkPoints + "");
+		outputText("\n\nCorruption: "+player.cor+"");
 		var bd:ButtonDataList = new ButtonDataList();
 		bd.add("StatsAdj/Ascen", StatsAscensionMenu, "For more precisely adjusting each of the 8 main stats and Ascension related stuff.");
 		bd.add("P/G/XP", PerksGemsEXP, "Adding/Removing perk points and adding gems/exp.");
@@ -111,6 +112,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test14", MightyOrNot11, "Missing Spiritual Hunger for Vacant and higher hollows.");
 		bd.add("Test15", MightyOrNot10, "Testing Bad End after effects.");
 		bd.add("Test16", MightyOrNot12, "Fixing Skeleton Giants counter.");
+		bd.add("Test17", MightyOrNot13, "Testing corruption botttom limit.");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -146,6 +148,11 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot13():void {
+		dynStats("cor", -1);
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot12():void {
