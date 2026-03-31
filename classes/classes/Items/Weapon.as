@@ -71,11 +71,11 @@ public class Weapon extends Equipable
 			var scale:Number = 1; // scale factor
 			var multiplier:Number = 100; // %
 			var bonus:Number = 0;
-			var playerCor:Number = player.cor;// + 200;
-			var playerPurity:Number = (100 - player.cor);//(400 - (player.cor + 200));
+			var playerCor:Number = player.cor + 10;
+			var playerPurity:Number = (110 - player.cor);
 			if (player.hasPerk(PerkLib.MentalBastion)) {
-				playerCor = 100;//400;
-				playerPurity = 100;//400;
+				playerCor = 110;
+				playerPurity = 110;
 			}
 			// result = (attack + baseAttackBonuss) * scale * (multiplier/100) + bonus
 			

@@ -1139,7 +1139,7 @@ public class Creature extends Utils
 				wis:1,
 				lib:1,
 				sens:10,
-				cor:0
+				cor:-200
 			};
 		}
 		/**
@@ -1235,7 +1235,7 @@ public class Creature extends Utils
 			}
 			lust = Utils.boundFloat(mins.lust, lust + dlust, maxOverLust());
 			cor  = Utils.boundFloat(mins.cor, cor + dcor, 100);
-            if (cor < 1.0) cor = 0;//check [0,1] to avoid confusion
+            if (cor < -199) cor = -200;//check [0,1] to avoid confusion
 
 			// old_hp / old_max = new_hp / new_max
 			HP = oldHPratio * maxHP();
