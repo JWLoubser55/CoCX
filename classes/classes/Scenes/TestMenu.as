@@ -112,7 +112,6 @@ public class TestMenu extends BaseContent
 		bd.add("Test14", MightyOrNot11, "Missing Spiritual Hunger for Vacant and higher hollows.");
 		bd.add("Test15", MightyOrNot10, "Testing Bad End after effects.");
 		bd.add("Test16", MightyOrNot12, "Fixing Skeleton Giants counter.");
-		bd.add("Test17", MightyOrNot13, "Testing corruption botttom limit.");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -150,10 +149,6 @@ public class TestMenu extends BaseContent
 		submenu(bd, SoulforceCheats, 0, false);
 	}
 	
-	public function MightyOrNot13():void {
-		dynStats("cor", -1);
-		doNext(SoulforceCheats);
-	}
 	
 	public function MightyOrNot12():void {
 		if (player.hasPerk(PerkLib.BoneGiants) && player.perkv1(PerkLib.BoneGiants) < 0) SceneLib.campMakeWinions.fixinSkeletonGiants();

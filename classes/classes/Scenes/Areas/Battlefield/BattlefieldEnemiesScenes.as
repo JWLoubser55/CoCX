@@ -47,6 +47,7 @@ import classes.Scenes.Areas.Battlefield.*;
 		}
 		public function encounterZombies():void {
 			clearOutput();
+			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_CORPSE_PUPPETS);
 			outputText("As you explore the battlefield you hear what sounds like pleading moans. Confused, you head toward the sound and find what appears to be several beautiful naked human men and women with pale blue skin. They slowly turn toward you revealing a strange paper tag stuck to their foreheads.\n\n");
 			if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] > 3) outputText("You recognize these creatures...You used to be one of them, after all. But they've noticed you now.");
 			else outputText("At first you ask one of them if it needs help, but the way it's salivating...You look into their eyes, and know they're not going to listen. You ready your [weapon]");

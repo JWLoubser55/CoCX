@@ -82,7 +82,7 @@ import coc.view.ButtonDataList;
 			var unlocked:int = checkUnlocked();
 			if (unlocked >= 20) awardAchievement("Scholar (1)", kACHIEVEMENTS.GENERAL_SCHOLAR);
 			if (unlocked >= 30) awardAchievement("Scholar (2)", kACHIEVEMENTS.GENERAL_SCHOLAR_2);
-			if (unlocked >= 40) awardAchievement("Scholar (3)", kACHIEVEMENTS.GENERAL_SCHOLAR_3);//aktualnie 41 codex entries exist ingame: 32 races, 3 demon projects, 2 factions, 4 other
+			if (unlocked >= 40) awardAchievement("Scholar (3)", kACHIEVEMENTS.GENERAL_SCHOLAR_3);//aktualnie 42 codex entries exist ingame: 33 races, 3 demon projects, 2 factions, 4 other
 		}
 
 		//CODEX MENUS
@@ -111,7 +111,7 @@ import coc.view.ButtonDataList;
 				[kFLAGS.CODEX_ENTRY_CHESHIRE_CAT, "Cheshire Cat", codexEntryCheshireCat],
 				[kFLAGS.CODEX_ENTRY_CHIMERA, "Chimera", codexEntryChimera],
 				[kFLAGS.CODEX_ENTRY_COCKATRICES, "Cockatrices", codexEntryCockatrices],
-				//[kFLAGS., "Corpse Puppets", codexEntryCorpsePuppets],
+				[kFLAGS.CODEX_ENTRY_CORPSE_PUPPETS, "Corpse Puppets", codexEntryCorpsePuppets],
 				[kFLAGS.CODEX_ENTRY_DEVIL, "Devil", codexEntryDevil],
 				[kFLAGS.CODEX_ENTRY_DISPLACER_BEAST, "Displacers", codexEntryDisplacerBeast],
 				[kFLAGS.CODEX_ENTRY_ECHIDNAS, "Echidnas", codexEntryEchidnas],
@@ -951,9 +951,22 @@ import coc.view.ButtonDataList;
 
 		private function codexEntryCorpsePuppets():void {
 			headerMain("Corpse Puppets");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
+			outputText("<b>Genders:</b> Variable\n");
+			outputText("<b>Height:</b> Variable\n");
+			outputText("<b>Body type:</b> Variable\n");
+			outputText("<b>Skin tone:</b> Variable\n");
+			outputText("<b>Fur/hair color:</b> Variable\n");
+			outputText("<b>Eye color:</b> Variable\n");
+			outputText("<b>Notable feature:</b> Invariably stupid until fed and driven by an insatiable hunger for sex. Will moan while shambling toward victims.\n");
+			headerSub("Appearance");
+			outputText("All corpse puppets will typically be made using the body of a living humanoid, though upon transformation, the body tends to take on human characteristics, as is the preference of demons. The most compatible corpse puppets are typically humans who, through the portal, landed into Mareth thanks to the susceptibility of their body to transformatives. Corpse puppets tend to take on a paler, death-like skin tone due to the halting of bodily functions, although the mummy model tends to go toward a more desert themed color pattern.");
+			headerSub("Behavior");
+			outputText("Corpse puppets, being drawn to soul force, will aggressively assault any and all living creatures to attempt and drain their energy. Most corpse puppets will fight using their fist only, but occasionally, it is not unheard of for a more advanced model to use spellcasting.");
+			headerSub("History");
+			outputText("Corpse puppets are the product of black magic rituals and evil soul cultivator’s curses. In order to create a corpse puppet, the caster needs to alter the soul of the victim. Unable to recover enough soulforce on its own, the victim's ego and sense of self devolve into that of a mindless thrall governed by instincts alone, drawn to the soulforce of others. It goes without saying that, thanks to the corruption poured into the victim's body as part of the ritual, the newly made undead will be exceedingly lustful, seeking to feed on anything coming its way at the first opportunity.\n");
+			outputText("Through the manipulation of the ambient soulforce, a skilled puppetmaster can turn corpse puppets into obedient slaves, though this control is only valid so long as the corpse puppet's sense of self remains weak. Similar to demons gaining sustenance from sex, corpse puppets can replenish their soul force by draining it from the living, achieving a temporary state of sapience and even transcend the limits of a normal soul awareness. Since the corpse puppet’s motion and awareness consumes more energy than it can naturally recover, the awakened undead will need to constantly drain soul force from others in order to maintain sapience; otherwise, it will devolve back into its former state.\n");
+			outputText("Corpse puppets are mainly found in two known formulas, the zombie and the mummy. The latter is created mostly by the Black Pharaoh cult. It is speculated more variants of the corpse puppet have been created, though those non-standard creations are said to be rare, and more often than not, far more dangerous to handle. Indeed, even the base corpse puppet is a dangerous opponent to unprepared adventurers as they are lacking many biological limiters, allowing them to deliver punches strong enough to shatter steel plates. Furthermore they often have various biological weapons added to their cursed forms such as poison.\n");
+			outputText("It should be noted that corpse puppet bodies are very close in composition to demons. They do not require a beating heart or working organs at all and can live forever, constantly fueled by their crippled soul and corrupted desire. As such, they are highly prized as quality sex slaves and laborers.\n");
 			outputText("\n\n(Written By: Liadri)");
 		}
 

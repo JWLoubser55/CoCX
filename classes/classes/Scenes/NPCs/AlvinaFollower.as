@@ -1478,7 +1478,7 @@ public function alvinaCampAdvancedStudy():void
 		doNext(camp.returnToCampUseSixHours);
 	}
 	else if (player.statusEffectv1(StatusEffects.AlvinaTraining2) == 1) {
-		if (player.isRace(Races.DEVIL, 1, false) || ((player.isRace(Races.DEMON, 1, false)||player.isRace(Races.IMP, 1, false)) && player.gender > 0)) {
+		if (player.isRace(Races.DEVIL, 1, false) || ((player.isRace(Races.DEMON, 1, false) || player.isRace(Races.IMP, 1, false)) && player.gender > 0)) {
 			if (player.isRace(Races.DEVIL, 1, false)) {
 				outputText("You ask Alvina if this form will work, and she looks at you, amused.\n\n");
 				outputText("\"<i>Well, I didn't expect you to like my form that much. How flattering. I guess you didn’t want to be part of the common rabble, did you? You just had to go a special path? Oh well, like apprentice like master I guess?</i>\"\n\n");
@@ -1975,4 +1975,4 @@ public function postMarriageSleep():void {
 	}
 }
 
-}
+}
