@@ -2446,9 +2446,9 @@ public class Camp extends NPCAwareContent{
 
 	private function PurityElixir():void {
 		clearOutput();
-		if (player.getAllMinStats().cor == -60) {
+		if (player.getAllMinStats().cor == -100) {
 			outputText("You take out the elixir, but reconsider. ");
-			if (player.cor > -60) outputText("All of your corruption can be removed using simpler methods.");
+			if (player.cor > -100) outputText("All of your corruption can be removed using simpler methods.");
 			else outputText("You're completely pure!");
 			outputText("\n\nYou decide to leave the elixir for worse times.");
 		}
@@ -4425,7 +4425,7 @@ public class Camp extends NPCAwareContent{
 			}
 			if (SceneLib.alvinaFollower.AlvinaPurified) {
 				var mincor:int = player.getAllMinStats().cor;
-				if (player.cor <= -60 || player.cor <= mincor) {}
+				if (player.cor <= -100 || player.cor <= mincor) {}
 				else {
 					outputText("\nYour purified lover Alvina exudes a calming and purifying aura which helps you shed some of your built-up corruption.\n");
 					if (player.cor >= mincor+10) dynStats("cor", -10);

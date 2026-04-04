@@ -6329,7 +6329,7 @@ use namespace CoC;
 			var minWis:int = 1;
 			var minLib:int = 0;
 			var minSen:int = 10;
-			var minCor:int = -60;
+			var minCor:int = -100;
 			//Minimum Intelligence
 			if (this.hasPerk(PerkLib.ArigeanKnowledge)) {
 				minInt += 89;
@@ -6417,17 +6417,17 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.Soulless) || hasPerk(PerkLib.Phylactery)) minCor = 100;
 			if (hasPerk(PerkLib.HellfireCoat) || hasPerk(PerkLib.BlessingOfTheAncestorTree)) minCor = 50;
-			if (this.hasStatusEffect(StatusEffects.DevilPurificationScar)) {minCor-=80;}
-			if (hasPerk(PerkLib.Phylactery) && hasPerk(PerkLib.SageMedicine)) minCor = -60;
+			if (this.hasStatusEffect(StatusEffects.DevilPurificationScar)) {minCor-=100;}
+			if (hasPerk(PerkLib.Phylactery) && hasPerk(PerkLib.SageMedicine)) minCor = -100;
 			if (this.hasPerk(PerkLib.PurityElixir)) minCor -= (this.perkv1(PerkLib.PurityElixir) * 20);
-			if (hasPerk(PerkLib.Nightshade)) minCor += 20;
+			if (hasPerk(PerkLib.Nightshade)) minCor += 40;
 			if (racialScore(Races.ARIGEAN) >= 9) minCor += 5;
 			if (racialScore(Races.ARIGEAN) >= 16) minCor += 5;
 			if (racialScore(Races.ARIGEAN) >= 18) minCor += 15;
 			if (racialScore(Races.ARIGEAN) >= 20) minCor += 20;
 			if (racialScore(Races.ARIGEAN) >= 23) minCor += 20;
 			if (minLib < 1) minLib = 1;
-			if (minCor < -60) minCor = -60;
+			if (minCor < -100) minCor = -100;
 			if (minCor > 100) minCor = 100;
 			return {
 				str:minStr,

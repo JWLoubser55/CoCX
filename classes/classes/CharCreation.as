@@ -1055,7 +1055,7 @@ import classes.Scenes.Combat.CombatAbility;
 			clearOutput();
 			outputText("You can choose starting corruption.");
 			menu();
-			addButton(1, "-100", chooseStartingCorruption, -100);
+			addButton(0, "-100", chooseStartingCorruption, -100);
 			addButton(1, "-90", chooseStartingCorruption, -90);
 			addButton(2, "-75", chooseStartingCorruption, -75);
 			addButton(3, "-60", chooseStartingCorruption, -60);
