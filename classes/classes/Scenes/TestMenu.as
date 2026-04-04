@@ -11,6 +11,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.*;
 import classes.Items.*;
 import classes.Items.Dynamic.DynamicWeapon;
+import classes.Races.BansheeRace;
 import classes.Scenes.Areas.DeepSea.Kraken;
 import classes.Scenes.Areas.Mountain.Minotaur;
 import classes.Scenes.Camp.CampStatsAndResources;
@@ -112,6 +113,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test14", MightyOrNot11, "Missing Spiritual Hunger for Vacant and higher hollows.");
 		bd.add("Test15", MightyOrNot10, "Testing Bad End after effects.");
 		bd.add("Test16", MightyOrNot12, "Fixing Skeleton Giants counter.");
+		bd.add("Test17", MightyOrNot13, "Testing Banshee TF");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -149,6 +151,30 @@ public class TestMenu extends BaseContent
 		submenu(bd, SoulforceCheats, 0, false);
 	}
 	
+	public function MightyOrNot13():void {
+		transformations.HairSilky.applyEffect(false);
+		player.hairColor = randomChoice(BansheeRace.BansheeHairColors);
+		transformations.ArmsBanshee.applyEffect(false);
+		transformations.LowerBodyBanshee.applyEffect(false);
+		transformations.RearBodyGhostlyAura.applyEffect(false);
+		transformations.EyesElf.applyEffect(false);
+		player.eyes.colour = "pale blue";
+		transformations.EarsElven.applyEffect(false);
+		transformations.TongueElf.applyEffect(false);
+		transformations.FaceElf.applyEffect(false);
+		if (!player.hasPlainSkinOnly()) transformations.SkinPlain.applyEffect(false);
+		player.skinAdj = "flawless";
+		player.skinColor = randomChoice(BansheeRace.BansheeSkinColors);
+		if (player.femininity < 70) player.femininity = 70;
+		if (player.tone > 60) player.tone = 60;
+		if (player.thickness > 50) player.thickness = 50;
+		if (player.cor < 20) player.cor = 20;
+		if (!player.hasPerk(PerkLib.FlawlessBody)) player.createPerk(PerkLib.FlawlessBody, 0, 0, 0, 0);
+		if (!player.hasPerk(PerkLib.Incorporeality)) player.createPerk(PerkLib.Incorporeality, 0, 0, 0, 0);
+		if (!player.hasPerk(PerkLib.Ethereal)) player.createPerk(PerkLib.Ethereal, 0, 0, 0, 0);
+		if (!player.hasPerk(PerkLib.Undeath)) player.createPerk(PerkLib.Undeath, 0, 0, 0, 0);
+		doNext(SoulforceCheats);
+	}
 	
 	public function MightyOrNot12():void {
 		if (player.hasPerk(PerkLib.BoneGiants) && player.perkv1(PerkLib.BoneGiants) < 0) SceneLib.campMakeWinions.fixinSkeletonGiants();
@@ -2942,4 +2968,4 @@ public class TestMenu extends BaseContent
 		SceneLib.lily.lilyEncounter();
 	}
 	}
-}
+}
