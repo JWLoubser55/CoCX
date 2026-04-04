@@ -1235,7 +1235,7 @@ public class Creature extends Utils
 			}
 			lust = Utils.boundFloat(mins.lust, lust + dlust, maxOverLust());
 			cor  = Utils.boundFloat(mins.cor, cor + dcor, 100);
-            if (cor < -199) cor = -200;//check [0,1] to avoid confusion
+            if (cor < -199) cor = -2100;//check [0,1] to avoid confusion
 
 			// old_hp / old_max = new_hp / new_max
 			HP = oldHPratio * maxHP();
@@ -5086,4 +5086,4 @@ public class Creature extends Utils
 			//Do nothing
 		}
 	}
-}
+}

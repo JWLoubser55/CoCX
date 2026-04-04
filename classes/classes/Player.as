@@ -2787,6 +2787,18 @@ use namespace CoC;
 			return hBC;
 		}
 
+		public function playerCorruption():Number {
+			var pcCor:Number = cor;
+			/*if (true angel) pcCor += 200;
+			else*/pcCor += 100;
+			return pcCor;
+		}
+		public function playerCorruption2():Number {
+			var pcCor2:Number = 200;
+			//if (true angel) pcCor2 += 100;
+			return pcCor2;
+		}
+
 		// Potions
 		/**
 		 * Array of objects { type: PotionType, count: Number }
@@ -6313,7 +6325,7 @@ use namespace CoC;
 			var minWis:int = 1;
 			var minLib:int = 0;
 			var minSen:int = 10;
-			var minCor:int = -10;
+			var minCor:int = -30;
 			//Minimum Intelligence
 			if (this.hasPerk(PerkLib.ArigeanKnowledge)) {
 				minInt += 89;
@@ -6402,7 +6414,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.Soulless) || hasPerk(PerkLib.Phylactery)) minCor = 100;
 			if (hasPerk(PerkLib.HellfireCoat) || hasPerk(PerkLib.BlessingOfTheAncestorTree)) minCor = 50;
 			if (this.hasStatusEffect(StatusEffects.DevilPurificationScar)) {minCor-=50;}
-			if (hasPerk(PerkLib.Phylactery) && hasPerk(PerkLib.SageMedicine)) minCor = -10;
+			if (hasPerk(PerkLib.Phylactery) && hasPerk(PerkLib.SageMedicine)) minCor = -30;
 			if (this.hasPerk(PerkLib.PurityElixir)) minCor -= (this.perkv1(PerkLib.PurityElixir) * 20);
 			if (hasPerk(PerkLib.Nightshade)) minCor += 20;
 			if (racialScore(Races.ARIGEAN) >= 9) minCor += 5;
@@ -6411,7 +6423,7 @@ use namespace CoC;
 			if (racialScore(Races.ARIGEAN) >= 20) minCor += 20;
 			if (racialScore(Races.ARIGEAN) >= 23) minCor += 20;
 			if (minLib < 1) minLib = 1;
-			if (minCor < -10) minCor = -10;
+			if (minCor < -30) minCor = -30;
 			if (minCor > 100) minCor = 100;
 			return {
 				str:minStr,

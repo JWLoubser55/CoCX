@@ -4481,8 +4481,8 @@ import flash.utils.getQualifiedClassName;
 					}
 				}
 				if (statusEffectv1(StatusEffects.ImmolationDoT) < 8) {
-					if (this is Matango) player.takeLustDamage(((eBaseLibidoDamage() / 10) + int(player.lib/10 + player.cor/10)), true);
-					else player.takeLustDamage(((eBaseLibidoDamage() / 40) + int(player.lib/20 + player.cor/25)), true);
+					if (this is Matango) player.takeLustDamage(((eBaseLibidoDamage() / 10) + int(player.lib/10 + (player.cor+200)/10)), true);
+					else player.takeLustDamage(((eBaseLibidoDamage() / 40) + int(player.lib/20 + (player.cor+200)/25)), true);
 				}
 				outputText("\n\n");
 			}

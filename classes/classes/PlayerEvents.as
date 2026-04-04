@@ -2799,8 +2799,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			}
 
 			//Levitation wing slot
-			if (player.wings.type == Wings.LEVITATION && player.rearBody.type != RearBody.GLACIAL_AURA && player.lowerBody != LowerBody.WENDIGO && player.lowerBody != LowerBody.GAZER && !player.isRaceCached(Races.LICH)) {
-				outputText("\nAs you do not meet the requirements, you also lose the knowledge on how to levitate!\nHint: Aura of the Yuki Onna or legs of the Wendigo or Gazer");
+			if (player.wings.type == Wings.LEVITATION && player.rearBody.type != RearBody.GLACIAL_AURA && player.lowerBody != LowerBody.WENDIGO && player.lowerBody != LowerBody.GAZER && player.lowerBody != LowerBody.LICH) {
+				outputText("\nAs you do not meet the requirements, you also lose the knowledge on how to levitate!\nHint: Aura of the Yuki Onna or legs of the Wendigo or Gazer or Lich");
 				player.wings.type = Wings.NONE;
 				needNext = true;
 			}

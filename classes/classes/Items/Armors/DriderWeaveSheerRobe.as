@@ -28,8 +28,8 @@ package classes.Items.Armors
 			else outputText("Your [breasts] are visible to the world, and as you watch, your nipples stand up at the exposure.");
 			if (game.player.lowerGarment.isNothing) {
 				outputText("\n\nYou look between your [legs], and to your ");
-				if (game.player.cor < 30) outputText("dismay");
-				else if (game.player.cor > 60) outputText("delight");
+				if (game.player.cor < -40) outputText("dismay");
+				else if (game.player.cor > 20) outputText("delight");
 				else outputText("indifference");
 				outputText(", your endowments are on full display.");
 			}

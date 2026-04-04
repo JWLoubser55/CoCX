@@ -32,7 +32,7 @@ package classes.Items.Armors
 		}
 		
 		override public function get def():Number{
-			var mod:int = (100-game.player.cor)/10;
+			var mod:int = (game.player.playerCorruption2()-game.player.playerCorruption())/20;
 			return 13 + mod;
 		}
 	}
