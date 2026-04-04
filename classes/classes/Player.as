@@ -5891,9 +5891,7 @@ use namespace CoC;
 		public function get corruptionTolerance():int {
 			if (flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] == 1) return 0;
 			if (flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] == 2) return 400;
-			var multi:Number = 1;
-			//if (true angel) multi *= 2;
-			return perkv1(PerkLib.AscensionTolerance) * multi * (CoC.instance.gameSettings.sceneHunter_inst.other ? 20 : 10);
+			return perkv1(PerkLib.AscensionTolerance) * corruptionMultii() * (CoC.instance.gameSettings.sceneHunter_inst.other ? 20 : 10);
 		}
 		public function get corAdjustedUp():Number {
 			return boundFloat(0, cor + corruptionTolerance, 100);
@@ -5909,8 +5907,13 @@ use namespace CoC;
 		}
 		public function playerCorruption2():Number {
 			var pcCor2:Number = 200;
-			//if (true angel) pcCor2 += 100;
+			//if (true angel) pcCor2 += 200;
 			return pcCor2;
+		}
+		public function corruptionMultii():Number {
+			var multii:Number = 1;
+			//if (true angel) multii *= 2;
+			return multii;
 		}
 
 		public function playerMinionsCount():Number {

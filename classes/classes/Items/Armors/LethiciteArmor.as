@@ -18,7 +18,7 @@ import classes.Items.Armor;
 		{
 			outputText("You " + game.player.clothedOrNaked("strip yourself naked before you ") + "proceed to put on the strange, purple crystalline armor. ");
 			if (game.player.cor < -33) outputText("You hesitate at how the armor will expose your groin but you proceed to put it on anyway. ");
-            if (game.player.cor >= -33 && CoC.instance.player.cor < 33) outputText("You are not sure about the crotch-exposing armor. ");
+            if (game.player.cor >= -33 && game.player.cor < 33) outputText("You are not sure about the crotch-exposing armor. ");
             if (game.player.cor >= 33) outputText("You are eager to show off once you get yourself suited up. ");
 			//Put on breastplate
 			outputText("\n\nFirst, you clamber into the breastplate. It has imposing, spiked pauldrons to protect your shoulders. The breastplate shifts to accommodate your [chest] and when you look down, your [nipples] are exposed. ");

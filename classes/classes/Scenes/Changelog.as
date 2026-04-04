@@ -290,8 +290,8 @@ public class Changelog extends BaseContent
 			outputText("-New armor (by Liadri): Funerary Shroud - obtained by beating Wraith. Cost 1,600 gems, 0 armor, 20 magic resistance, light type armor. Slutty Seduction +12, Revealing. While worn by a creature with the ethereal perk, negates death by damage but increases tease damage taken. Take tease damage from damage when HP is less than 10%. Increase draining effect potency by 50%.\n");
 			outputText("-Losing to Wraith as Elf/Wood Elf (non perm stage)/A.Elf cause PC to TF into Banshee. Their race bonuses for Lesser Banshee / Banshee / Unhallowed Banshee (9/16/28): -45%/+90%/+90% to str multi, +135%/+200%/+260% to lib multi, +95%/+180%/+300% to int multi, +50 to sens\n");
 			outputText("-New codex entries added to the game: Wraiths, Corpse Puppets.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Added to chara creation general customization section new option: starting corruption.\n");
+			outputText("-Player corruption can now drop below 0 all way to -100. All items scalings or req. to equip would take into account this extended corrution scale.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

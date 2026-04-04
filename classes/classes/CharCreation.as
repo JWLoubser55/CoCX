@@ -159,7 +159,7 @@ import classes.Scenes.Combat.CombatAbility;
 			player.wisStat.train.value = 15;
 			player.libStat.train.value = 15;
 			player.sensStat.redefine({base:15});
-			player.cor = 15;
+			player.cor = 0;
 			player.soulforce = 50;
 			player.wrath = 0;
 			player.mana = 100;
@@ -821,6 +821,7 @@ import classes.Scenes.Combat.CombatAbility;
 			addButton(4, "Set Height", setHeight);
 			if (player.hasCock()) addButton(5, "Cock Size", menuCockLength);
 			addButton(6, "Breast Size", menuBreastSize);
+			addButton(7, "StartCor", menuStartingCorruption);
 			addButton(9, "Done", chooseEndowment, true);
 		}
 
@@ -1044,6 +1045,34 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 		private function chooseBreastSize(size:int):void {
 			player.breastRows[0].breastRating = size;
+			genericStyleCustomizeMenu();
+		}
+
+		//-----------------
+		//-- STARTING CORRUPTION
+		//-----------------
+		private function menuStartingCorruption():void {
+			clearOutput();
+			outputText("You can choose starting corruption.");
+			menu();
+			addButton(1, "-100", chooseStartingCorruption, -100);
+			addButton(1, "-90", chooseStartingCorruption, -90);
+			addButton(2, "-75", chooseStartingCorruption, -75);
+			addButton(3, "-60", chooseStartingCorruption, -60);
+			addButton(4, "-45", chooseStartingCorruption, -45);
+			addButton(5, "-30", chooseStartingCorruption, -30);
+			addButton(6, "-15", chooseStartingCorruption, -15);
+			addButton(7, "0", chooseStartingCorruption, 0);
+			addButton(8, "15", chooseStartingCorruption, 15);
+			addButton(9, "30", chooseStartingCorruption, 30);
+			addButton(10, "45", chooseStartingCorruption, 45);
+			addButton(11, "60", chooseStartingCorruption, 60);
+			addButton(12, "75", chooseStartingCorruption, 75);
+			addButton(13, "90", chooseStartingCorruption, 90);
+			addButton(14, "100", chooseStartingCorruption, 100);
+		}
+		private function chooseStartingCorruption(corr:int):void {
+			player.cor = corr;
 			genericStyleCustomizeMenu();
 		}
 
