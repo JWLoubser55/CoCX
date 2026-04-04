@@ -15,7 +15,7 @@ public class ScarredBlade extends Weapon
 		}
 		
 		override public function canEquip(doOutput:Boolean, slot:int):Boolean {
-			if (game.player.cor >= (66 - game.player.corruptionTolerance)) return super.canEquip(doOutput, slot);
+			if (game.player.cor >= (33 - game.player.corruptionTolerance)) return super.canEquip(doOutput, slot);
 			if (doOutput) SceneLib.sheilaScene.rebellingScarredBlade(true);
 			return false;
 		}

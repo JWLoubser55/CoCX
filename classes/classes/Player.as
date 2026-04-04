@@ -2787,18 +2787,6 @@ use namespace CoC;
 			return hBC;
 		}
 
-		public function playerCorruption():Number {
-			var pcCor:Number = cor;
-			/*if (true angel) pcCor += 200;
-			else*/pcCor += 100;
-			return pcCor;
-		}
-		public function playerCorruption2():Number {
-			var pcCor2:Number = 200;
-			//if (true angel) pcCor2 += 100;
-			return pcCor2;
-		}
-
 		// Potions
 		/**
 		 * Array of objects { type: PotionType, count: Number }
@@ -5902,14 +5890,27 @@ use namespace CoC;
 
 		public function get corruptionTolerance():int {
 			if (flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] == 1) return 0;
-			if (flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] == 2) return 100;
-			return perkv1(PerkLib.AscensionTolerance) * (CoC.instance.gameSettings.sceneHunter_inst.other ? 10 : 5);
+			if (flags[kFLAGS.CORRUPTION_TOLERANCE_MODE] == 2) return 400;
+			var multi:Number = 1;
+			//if (true angel) multi *= 2;
+			return perkv1(PerkLib.AscensionTolerance) * multi * (CoC.instance.gameSettings.sceneHunter_inst.other ? 20 : 10);
 		}
 		public function get corAdjustedUp():Number {
 			return boundFloat(0, cor + corruptionTolerance, 100);
 		}
 		public function get corAdjustedDown():Number {
 			return boundFloat(0, cor - corruptionTolerance, 100);
+		}
+		public function playerCorruption():Number {
+			var pcCor:Number = cor;
+			/*if (true angel) pcCor += 200;
+			else*/pcCor += 100;
+			return pcCor;
+		}
+		public function playerCorruption2():Number {
+			var pcCor2:Number = 200;
+			//if (true angel) pcCor2 += 100;
+			return pcCor2;
 		}
 
 		public function playerMinionsCount():Number {
@@ -6325,7 +6326,7 @@ use namespace CoC;
 			var minWis:int = 1;
 			var minLib:int = 0;
 			var minSen:int = 10;
-			var minCor:int = -30;
+			var minCor:int = -60;
 			//Minimum Intelligence
 			if (this.hasPerk(PerkLib.ArigeanKnowledge)) {
 				minInt += 89;
@@ -6413,8 +6414,8 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.Soulless) || hasPerk(PerkLib.Phylactery)) minCor = 100;
 			if (hasPerk(PerkLib.HellfireCoat) || hasPerk(PerkLib.BlessingOfTheAncestorTree)) minCor = 50;
-			if (this.hasStatusEffect(StatusEffects.DevilPurificationScar)) {minCor-=50;}
-			if (hasPerk(PerkLib.Phylactery) && hasPerk(PerkLib.SageMedicine)) minCor = -30;
+			if (this.hasStatusEffect(StatusEffects.DevilPurificationScar)) {minCor-=80;}
+			if (hasPerk(PerkLib.Phylactery) && hasPerk(PerkLib.SageMedicine)) minCor = -60;
 			if (this.hasPerk(PerkLib.PurityElixir)) minCor -= (this.perkv1(PerkLib.PurityElixir) * 20);
 			if (hasPerk(PerkLib.Nightshade)) minCor += 20;
 			if (racialScore(Races.ARIGEAN) >= 9) minCor += 5;
@@ -6423,7 +6424,7 @@ use namespace CoC;
 			if (racialScore(Races.ARIGEAN) >= 20) minCor += 20;
 			if (racialScore(Races.ARIGEAN) >= 23) minCor += 20;
 			if (minLib < 1) minLib = 1;
-			if (minCor < -30) minCor = -30;
+			if (minCor < -60) minCor = -60;
 			if (minCor > 100) minCor = 100;
 			return {
 				str:minStr,

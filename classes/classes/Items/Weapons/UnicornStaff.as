@@ -37,14 +37,14 @@ public class UnicornStaff extends Weapon implements TimeAwareInterface
 
 		public function calcWizardsMult():Number {
 			var multadd:Number = 1.0;
-            if (game && game.player) multadd += (100 - game.player.cor) * 0.05;
+            if (game && game.player) multadd += (game.player.playerCorruption2() - game.player.playerCorruption()) * 0.025;
 			return multadd;
 		}
 
-        private static var lastCor:Number = 100;
+        private static var lastCor:Number = 200;
 
         public function updateWizardsMult():void {
-            if (game.player.cor != lastCor) {
+            if (game.player.playerCorruption() != lastCor) {
 				_buffs['spellpower'] = calcWizardsMult();
                 if (game.player.weapon == game.weapons.U_STAFF) {
                     //re-requip to update player's perk
@@ -53,15 +53,15 @@ public class UnicornStaff extends Weapon implements TimeAwareInterface
                     afterEquip(false, slot);
                 }
             }
-            lastCor = game.player.cor;
+            lastCor = game.player.playerCorruption();
         }
 
         override public function get descBase():String {
             if (game && game.player)
                 return _description + (
-                    game.player.cor > 75 ? "\n\nYour demonic aura almost breaks the flow of energy inside the staff, decreasing its power!\n" :
-                    game.player.cor > 50 ? "\n\nYour corrupted aura interrupts your connection with the staff, decreasing its power.\n" :
-                    game.player.cor > 25 ? "\n\nYour aura slightly distorts the staff's energy flow, not allowing you to use its full power.\n" :
+                    game.player.cor > 50 ? "\n\nYour demonic aura almost breaks the flow of energy inside the staff, decreasing its power!\n" :
+                    game.player.cor > 0 ? "\n\nYour corrupted aura interrupts your connection with the staff, decreasing its power.\n" :
+                    game.player.cor > -50 ? "\n\nYour aura slightly distorts the staff's energy flow, not allowing you to use its full power.\n" :
                     "\n\nYour pure energy flows throgh the staff, empowering it!\n");
             else
                 return _description;
