@@ -13,7 +13,7 @@ package classes.Items.Shields
 		}
 		
 		override public function get block():Number {
-			var temp:int = 7 - (game.player.cor / 6);
+			var temp:int = 7 - (game.player.playerCorruption() / 12);
 			if (temp < 1) temp = 1;
 			return temp;
 		}

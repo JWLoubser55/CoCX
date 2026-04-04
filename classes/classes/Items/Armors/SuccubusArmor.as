@@ -20,13 +20,13 @@ import classes.PerkLib;
 		
 		override public function get def():Number {
 			var mod:int = 0;
-			mod += game.player.cor/10;
+			mod += game.player.playerCorruption()/20;
 			mod += (game.flags[kFLAGS.BIKINI_ARMOR_BONUS] * 2);
 			return 20 + mod;
 		}
 		override public function get mdef():Number{
 			var mod:int = 0;
-			mod += game.player.cor/20;
+			mod += game.player.playerCorruption()/40;
 			mod += game.flags[kFLAGS.BIKINI_ARMOR_BONUS];
 			return 10 + mod;
 		}

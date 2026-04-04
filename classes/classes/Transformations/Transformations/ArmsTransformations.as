@@ -1509,7 +1509,7 @@ public class ArmsTransformations extends MutationsHelper {
 
 				desc += "";
 
-				player.arms.type = Arms.SHROOM_ARMS;
+				player.arms.type = Arms.LICH;
 				if (doOutput) outputText(desc);
 				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.LICH));
 			},

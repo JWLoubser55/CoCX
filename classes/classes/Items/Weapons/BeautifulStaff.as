@@ -32,8 +32,8 @@ import classes.TimeAwareInterface;
 		public function calcWizardsMult():Number {
 			var multadd:Number = 0.4;
             if (game && game.player) {
-                multadd = (40 - game.player.cor) / 100;
-                if (game.player.cor < 3)
+                multadd = (40 - game.player.playerCorruption()) / 200;
+                if (game.player.playerCorruption() < 6)
                     multadd += 0.05;
             }
 			if (multadd < 0.1)
@@ -41,10 +41,10 @@ import classes.TimeAwareInterface;
 			return multadd;
 		}
 
-        private static var lastCor:Number = 40;
+        private static var lastCor:Number = 80;
 
         public function updateWizardsMult():void {
-            if (game.player.cor != lastCor) {
+            if (game.player.playerCorruption() != lastCor) {
 				_buffs['spellpower'] = calcWizardsMult();
                 if (game.player.weapon == this) {
                     //re-requip to update player's perk
@@ -52,17 +52,17 @@ import classes.TimeAwareInterface;
 					afterUnequip(false, slot);
 					afterEquip(false, slot);
                 }
-                lastCor = game.player.cor;
+                lastCor = game.player.playerCorruption();
             }
         }
 
         override public function get descBase():String {
             if (game && game.player)
                 return _description + (
-                    game.player.cor < 3 ? "\n\nYour perfectly pure aura increases the staff's power!\n" :
-                    game.player.cor < 10 ? "\n\nYour almost pure aura <i>almost</i> doesn't interrupt your connection with the staff, but doesn't increase its power either.\n" :
-                    game.player.cor < 20 ? "\n\nYour slightly unclean aura starts to mingle with the flow of energy inside it.\n" :
-                    game.player.cor < 30 ? "\n\nYour impure aura mingles with energy inside it, notably reducing its power.\n" :
+                    game.player.cor < -94 ? "\n\nYour perfectly pure aura increases the staff's power!\n" :
+                    game.player.cor < -80 ? "\n\nYour almost pure aura <i>almost</i> doesn't interrupt your connection with the staff, but doesn't increase its power either.\n" :
+                    game.player.cor < -60 ? "\n\nYour slightly unclean aura starts to mingle with the flow of energy inside it.\n" :
+                    game.player.cor < -40 ? "\n\nYour impure aura mingles with energy inside it, notably reducing its power.\n" :
                     "\n\nYour slightly corrupted aura almost breaks the flow of energy inside the staff.\n");
             else
                 return _description;

@@ -62,6 +62,9 @@ public class WraithScene extends BaseContent
 				outputText("His eyes cross in delight from your borrowed, gushing gash as you hit orgasm after orgasm, the sensation amplified by corruption. Only when the imp passes out from exhaustion do you relent, ending the possession and leaving the broken goblin behind. While you were in control, you pushed her body far past her limits. It's surprising that she didn’t just die on the spot. ");
 				outputText("Not that that's your problem - why would you care for the life of some goblin? You realize that you'll need to keep hopping bodies regularly in order to experience pleasure again - though thanks to the harvested soulforce from the green skank, you will now be able to manifest a solid enough form, to fuck at least semi-normally.\n\n");
 				outputText("<b>Your unholy transformation is complete, you have been converted from an elf into a banshee.</b>\n\n");
+				transformations.HornsNone.applyEffect(false);
+				transformations.AntennaeNone.applyEffect(false);
+				transformations.TailNone.applyEffect(false);
 				transformations.HairSilky.applyEffect(false);
 				player.hairColor = randomChoice(BansheeRace.BansheeHairColors);
 				transformations.ArmsBanshee.applyEffect(false);
