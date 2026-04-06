@@ -1576,9 +1576,6 @@ public function alvinaCampTryACustomRitual():void {
 	CoC.instance.transformations.HairHuman.applyEffect(false);
 	player.hairColor = randomChoice("silver white", "silver", "snow white", "ghostly white");
 	CoC.instance.transformations.TongueDemonic.applyEffect(false);
-	CoC.instance.transformations.HornsNone.applyEffect(false);
-	CoC.instance.transformations.AntennaeNone.applyEffect(false);
-	CoC.instance.transformations.TailNone.applyEffect(false);
 	CoC.instance.transformations.ArmsLich.applyEffect(false);
 	CoC.instance.transformations.LowerBodyLich.applyEffect(false);
 	CoC.instance.transformations.WingsLevitation.applyEffect(false);

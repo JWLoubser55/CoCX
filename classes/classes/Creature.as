@@ -972,56 +972,8 @@ public class Creature extends Utils
 			return Math.min(19999999999,max);
 		}
 		public function maxOverHP():Number {
-			var maxOver:Number = maxHP();
-			var maxOver2:Number = 1;
-			if (hasPerk(PerkLib.HiddenJobBloodDemon)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.WayOfTheBlood)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.BloodDemonToughness)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.MyBloodForBloodPuppies)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.YourPainMyPower)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.BloodDemonIntelligence)) maxOver2 += 0.1;
-			//
-			//
-			if (hasPerk(PerkLib.BloodDemonWisdom)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.MunchkinAtWork)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.SPSurvivalTrainingX)) {
-				var limit:Number = perkv1(PerkLib.SPSurvivalTrainingX) * 10;
-				var bonus:Number = Math.round((level - 1) / 3);
-				if (bonus > limit) bonus = limit;
-				maxOver2 += (0.01 * bonus);
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
-				if (hasPerk(PerkLib.SoulApprentice)) maxOver2 += 0.01;
-				if (hasPerk(PerkLib.SoulPersonage)) maxOver2 += 0.01;
-				if (hasPerk(PerkLib.SoulWarrior)) maxOver2 += 0.01;
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLWarriorStage)) {
-				if (hasPerk(PerkLib.SoulSprite)) maxOver2 += 0.02;
-				if (hasPerk(PerkLib.SoulScholar)) maxOver2 += 0.02;
-				if (hasPerk(PerkLib.SoulGrandmaster)) maxOver2 += 0.02;
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLElderStage)) {
-				if (hasPerk(PerkLib.SoulElder)) maxOver2 += 0.03;
-				if (hasPerk(PerkLib.SoulExalt)) maxOver2 += 0.03;
-				if (hasPerk(PerkLib.SoulOverlord)) maxOver2 += 0.03;
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLOverlordStage)) {
-				if (hasPerk(PerkLib.SoulTyrant)) maxOver2 += 0.04;
-				if (hasPerk(PerkLib.SoulKing)) maxOver2 += 0.04;
-				if (hasPerk(PerkLib.SoulEmperor)) maxOver2 += 0.04;
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLTyrantStage)) {
-				if (hasPerk(PerkLib.SoulAncestor)) maxOver2 += 0.05;
-			}
-			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) maxOver2 += 0.1;
-			if (perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxOver2 += 0.2;
-			if (perkv1(IMutationsLib.HumanBonesIM) >= 4) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.Soulless)) maxOver2 += (0.01 * level);
-			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
-			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
-			maxOver *= maxOver2;//~270%
-			maxOver = Math.round(maxOver);
-			return Math.min(54999999999,maxOver);
+			var max:Number = Math.round(maxHP_base()*maxHP_mult());
+			return Math.min(19999999999,max);
 		}
 		public function minHP():Number {
 			return 0;
@@ -5086,4 +5038,4 @@ public class Creature extends Utils
 			//Do nothing
 		}
 	}
-}
+}

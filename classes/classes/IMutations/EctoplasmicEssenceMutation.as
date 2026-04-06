@@ -29,7 +29,7 @@ public class EctoplasmicEssenceMutation extends IMutationPerkType
 			if (pTier >= 2) descS += ". Increase the potency of M.Ability with a soulforce cost by " + (5 * (pTier - 1)) + "0%";
             if (pTier >= 3) descS += ". Increase tease modifier by a percentage equal to ";
 			if (pTier == 3) descS += "half of current lust percentage";
-            if (pTier == 4) descS += "current lust percentage. Add your soulforce to your health but cause soul force ability to also consume health in equal amounts";
+            if (pTier == 4) descS += "current lust percentage. Add your soulforce to your health but cause soulskills and specials using soulforce to also consume health in equal amounts";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -65,7 +65,7 @@ public class EctoplasmicEssenceMutation extends IMutationPerkType
 
         public function EctoplasmicEssenceMutation() 
 		{
-			super(MNAME, SLOT_BLOODSTREAM, 3);
+			super(MNAME, SLOT_BLOODSTREAM, 4);
         }
         
     }

@@ -4025,6 +4025,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var soulforcecost:int = 50 * soulskillCost() * soulskillcostmulti();
 		if (player.tailCount >= 9) soulforcecost *= 0.5;
 		player.soulforce -= soulforcecost;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		lightupFoxflamePelt2();
 	}
 	public function lightupFoxflamePelt2():void {
@@ -4910,6 +4911,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var soulforcecost:int = 50 * soulskillCost() * soulskillcostmulti();
 		if (player.tailCount == 2 && player.tailType == Tail.CAT) soulforcecost *= 2;
 		player.soulforce -= soulforcecost;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		nekomataGhostFire2();
 	}
 	public function nekomataGhostFire2():void {
@@ -5005,6 +5007,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (!player.statStore.hasBuff("FoxflamePelt")) {
 			var soulforcecost:int = 30 * soulskillCost() * soulskillcostmulti();
 			player.soulforce -= soulforcecost;
+			if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		}
 		basicFoxFire2();
 	}
@@ -5104,6 +5107,7 @@ public class MagicSpecials extends BaseCombatContent {
 		clearOutput();
 		var soulforcecost:int = 40 * soulskillCost() * soulskillcostmulti();
 		player.soulforce -= soulforcecost;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		corruptedFoxFire2();
 	}
 	public function corruptedFoxFire2():void {
@@ -5207,6 +5211,7 @@ public class MagicSpecials extends BaseCombatContent {
 		clearOutput();
 		var soulforcecost:int = 100 * soulskillCost() * soulskillcostmulti();
 		player.soulforce -= soulforcecost;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		fusedFoxFire2();
 	}
 	public function fusedFoxFire2():void {
@@ -5309,6 +5314,7 @@ public class MagicSpecials extends BaseCombatContent {
 		clearOutput();
 		var soulforcecost:int = Math.floor(40 * soulskillCost() * soulskillcostmulti());
 		player.soulforce -= soulforcecost;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		pureFoxFire2();
 	}
 	public function pureFoxFire2():void {
@@ -5440,6 +5446,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		var soulforcecost:int = 20 * soulskillCost() * soulskillcostmulti();
 		player.soulforce -= soulforcecost;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		kitsuneTerror2();
 	}
 	public function kitsuneTerror2():void {
@@ -5489,6 +5496,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		var soulforcecost:int = Math.floor(20 * soulskillCost() * soulskillcostmulti());
 		player.soulforce -= soulforcecost;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		kitsuneIllusion2();
 	}
 	public function kitsuneIllusion2():void {
@@ -7805,6 +7813,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var soulforcecost:Number = 10 * soulskillCost() * soulskillcostmulti();
 		soulforcecost = Math.round(soulforcecost);
 		player.soulforce -= soulforcecost;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		var damage:Number = 0;
 		var multiInt:Number = 2;
 		var multiWis:Number = 2;
@@ -7876,6 +7885,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var soulforcecost:Number = 10 * soulskillCost() * soulskillcostmulti();
 		soulforcecost = Math.round(soulforcecost);
 		player.soulforce -= soulforcecost;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= soulforcecost;
 		var temp:Number = 0;
 		var multiInt:Number = 2;
 		var multiWis:Number = 2;

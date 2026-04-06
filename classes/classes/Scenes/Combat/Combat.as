@@ -4508,7 +4508,7 @@ public class Combat extends BaseContent {
 		}
 		if (player.statStore.hasBuff("FoxflamePelt")) {
 			doFireDamage((damage*2), true, true, ignoreDR);
-			monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+			monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 		}
         if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
 			doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
@@ -4656,7 +4656,7 @@ public class Combat extends BaseContent {
 		else if (player.statStore.hasBuff("FoxflamePelt")) {
 			doFireDamage((damage * 2), true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-			monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+			monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 		}
 		else doPhysicalDamage(damage, true, true);
 	}
@@ -5227,7 +5227,7 @@ public class Combat extends BaseContent {
 				else if (player.statStore.hasBuff("FoxflamePelt")) {
 					doFireDamage((damage * 2), true, true, ignoreDR);
 					if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
-					monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+					monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 					if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 				}
 				else {
@@ -5327,7 +5327,7 @@ public class Combat extends BaseContent {
 								doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
 								if (player.statStore.hasBuff("FoxflamePelt")) {
 									doFireDamage((damage * 2), true, true, ignoreDR);
-									monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							}
@@ -5335,7 +5335,7 @@ public class Combat extends BaseContent {
 								doTrueDamage(damage, true, true);
 								if (player.statStore.hasBuff("FoxflamePelt")) {
 									doFireDamage((damage * 2), true, true, ignoreDR);
-									monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							}
@@ -5345,7 +5345,7 @@ public class Combat extends BaseContent {
 								doMagicDamage(Math.round(damage * 1.2), true, true, ignoreDR);
 								if (player.statStore.hasBuff("FoxflamePelt")) {
 									doFireDamage((damage * 2), true, true, ignoreDR);
-									monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							}
@@ -5353,7 +5353,7 @@ public class Combat extends BaseContent {
 								doMagicDamage(damage, true, true, ignoreDR);
 								if (player.statStore.hasBuff("FoxflamePelt")) {
 									doFireDamage((damage * 2), true, true, ignoreDR);
-									monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							}
@@ -5369,7 +5369,7 @@ public class Combat extends BaseContent {
 									else if (player.statStore.hasBuff("FoxflamePelt")) {
 										doFireDamage((damage * 2), true, true, ignoreDR);
 										if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
-										monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+										monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 										if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 									}
 									else {
@@ -5387,7 +5387,7 @@ public class Combat extends BaseContent {
 								else if (player.statStore.hasBuff("FoxflamePelt")) {
 									doFireDamage((damage * 2), true, true, ignoreDR);
 									if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
-									monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 									if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 								}
 								else {
@@ -5431,7 +5431,7 @@ public class Combat extends BaseContent {
                 if (monster.lustVuln > 0) {
                     var rangeweaponLustDmg:Number = 0;
                     if (player.weaponRange == weaponsrange.TDPISTO || player.weaponRange == weaponsrange.DPISTOL || player.weaponRange == weaponsrange.LBLASTR || player.weaponRange == weaponsrange.MBOMBER) {
-                        rangeweaponLustDmg = (20 + player.cor / 15); // 20-26.7
+                        rangeweaponLustDmg = (20 + player.playerCorruption() / 15); // 20-26.7
                         if (player.armor == armors.ELFDRES && player.isElf()) rangeweaponLustDmg *= 2;
                         if (player.armor == armors.FMDRESS && player.isWoodElf()) rangeweaponLustDmg *= 2;
                         if (rangeweaponLustDmg > 0) {
@@ -5807,14 +5807,14 @@ public class Combat extends BaseContent {
         var baseLustDmg:Number = Math.round(player.maxLust() * 0.05);
 		if (baseLustDmg < 40) baseLustDmg = 40;
         if (monster is FrostGiant && (player.hasStatusEffect(StatusEffects.GiantBoulder))) {
-            lustChange = baseLustDmg + rand(player.lib / 4 + player.cor / 5);
+            lustChange = baseLustDmg + rand(player.lib / 4 + player.playerCorruption() / 5);
             dynStats("lus", lustChange, "scale", false);
             (monster as FrostGiant).giantBoulderFantasize();
             enemyAIImpl();
             return;
         }
         if (monster is YoungFrostGiant && (player.hasStatusEffect(StatusEffects.GiantBoulder))) {
-            lustChange = baseLustDmg / 2 + rand(player.lib / 5 + player.cor / 8);
+            lustChange = baseLustDmg / 2 + rand(player.lib / 5 + player.playerCorruption() / 8);
             dynStats("lus", lustChange, "scale", false);
             (monster as YoungFrostGiant).youngGiantBoulderFantasize();
             enemyAIImpl();
@@ -5824,22 +5824,22 @@ public class Combat extends BaseContent {
             outputText("As you fantasize, you feel Valeria rubbing her gooey body all across your sensitive skin");
             if (player.gender > 0) outputText(" and genitals");
             outputText(", arousing you even further.\n");
-            lustChange = baseLustDmg * 1.25 + rand(player.lib / 8 + player.cor / 8)
+            lustChange = baseLustDmg * 1.25 + rand(player.lib / 8 + player.playerCorruption() / 8)
         } else if (player.hasBalls() && player.ballSize >= 10 && rand(2) == 0) {
             outputText("You daydream about fucking [themonster], feeling your balls swell with seed as you prepare to fuck [monster him] full of cum.\n");
-            lustChange = baseLustDmg / 4 + rand(player.lib / 8 + player.cor / 8);
+            lustChange = baseLustDmg / 4 + rand(player.lib / 8 + player.playerCorruption() / 8);
             outputText("You aren't sure if it's just the fantasy, but your [balls] do feel fuller than before...\n");
             player.hoursSinceCum += 50;
         } else if (player.biggestTitSize() >= 6 && rand(2) == 0) {
             outputText("You fantasize about grabbing [themonster] and shoving [monster him] in between your jiggling mammaries, nearly suffocating [monster him] as you have your way.\n");
-            lustChange = baseLustDmg  / 4 + rand(player.lib / 8 + player.cor / 8)
+            lustChange = baseLustDmg  / 4 + rand(player.lib / 8 + player.playerCorruption() / 8)
         } else if (player.biggestLactation() >= 6 && rand(2) == 0) {
             outputText("You fantasize about grabbing [themonster] and forcing [monster him] against a " + nippleDescript(0) + ", and feeling your milk let down.  The desire to forcefeed SOMETHING makes your nipples hard and moist with milk.\n");
-            lustChange = baseLustDmg / 4 + rand(player.lib / 8 + player.cor / 8)
+            lustChange = baseLustDmg / 4 + rand(player.lib / 8 + player.playerCorruption() / 8)
         } else {
             clearOutput();
             outputText("You fill your mind with perverted thoughts about [themonster], picturing [monster him] in all kinds of perverse situations with you.\n");
-            lustChange = baseLustDmg / 2 + rand(player.lib / 5 + player.cor / 8);
+            lustChange = baseLustDmg / 2 + rand(player.lib / 5 + player.playerCorruption() / 8);
         }
         if (lustChange >= 20) outputText("The fantasy is so vivid and pleasurable you wish it was happening now.  You wonder if [themonster] can tell what you were thinking.\n\n");
         else outputText("\n");
@@ -7949,7 +7949,7 @@ public class Combat extends BaseContent {
                         var effLustDmg:Number = 0;
                         var lustEff:ItemEffect = null;
                         if ((lustEff = player.weapon.findEffect(IELib.LustDamage)) != null) {
-                            effLustDmg = lustEff.power + player.cor*lustEff.value1;
+                            effLustDmg = lustEff.power + player.playerCorruption()*lustEff.value1;
                             if (player.weapon.isWhipType()) {
                                 var hasArcaneLash:Boolean = player.hasPerk(PerkLib.ArcaneLash);
                                 if (player.weapon == weapons.B_WHIP || player.weapon == weapons.WHIP || player.weapon == weapons.PWHIP || player.weapon == weapons.NTWHIP) {
@@ -7993,9 +7993,9 @@ public class Combat extends BaseContent {
 						if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
 					}
                     //Selfpurifying and Lust lowering weapons
-                    if ((player.weapon == weapons.LHSCYTH || player.weapon == weapons.NPHBLDE) && player.cor > 10) dynStats("cor", -1);
+                    if ((player.weapon == weapons.LHSCYTH || player.weapon == weapons.NPHBLDE) && player.cor > -90) dynStats("cor", -1);
                     if (player.weapon == weapons.EXCALIB || player.weapon == weapons.DEXCALI || player.weaponOff == weapons.PASHA__ || player.weaponOff == weapons.D_PASHA || player.weapon == weapons.PARACEL) {
-                        if (player.cor > 10) dynStats("cor", -0.3);
+                        if (player.cor > -90) dynStats("cor", -0.3);
                         var legendaryBeautifulWeaponsLustSelf:Number;
                         legendaryBeautifulWeaponsLustSelf = (rand(2) == 0) ? 0 : 1;
                         if (legendaryBeautifulWeaponsLustSelf > 0) dynStats("lus", -legendaryBeautifulWeaponsLustSelf);
@@ -8558,9 +8558,9 @@ public class Combat extends BaseContent {
 						if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
 					}
                     //Selfpurifying and Lust lowering weapons
-                    if ((player.weaponOff == weapons.LHSCYTH || player.weaponOff == weapons.NPHBLDE) && player.cor > 10) dynStats("cor", -1);
+                    if ((player.weaponOff == weapons.LHSCYTH || player.weaponOff == weapons.NPHBLDE) && player.cor > -90) dynStats("cor", -1);
                     if (player.weaponOff == weapons.EXCALIB || player.weaponOff == weapons.DEXCALI || player.weaponOff == weapons.PASHA__ || player.weaponOff == weapons.D_PASHA || player.weaponOff == weapons.PARACEL) {
-                        if (player.cor > 10) dynStats("cor", -0.3);
+                        if (player.cor > -90) dynStats("cor", -0.3);
                         var legendaryBeautifulWeaponsLustSelf:Number;
                         legendaryBeautifulWeaponsLustSelf = (rand(2) == 0) ? 0 : 1;
                         if (legendaryBeautifulWeaponsLustSelf > 0) dynStats("lus", -legendaryBeautifulWeaponsLustSelf);
@@ -8868,8 +8868,10 @@ public class Combat extends BaseContent {
     }
 	
 	public function layerFoxflamePeltOnThis(damage:Number, display:Boolean = true):void {
-		doFireDamage(Math.round(damage * 2 * fireDamageBoostedByDao()), true, display);
-		var foxpunchlust:Number = (10 + player.cor / 8);
+		var ectoB:Number = 2;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM)) ectoB += 1;
+		doFireDamage(Math.round(damage * ectoB * fireDamageBoostedByDao()), true, display);
+		var foxpunchlust:Number = ((5 + player.playerCorruption() / 16) * ectoB);
 		monster.teased((monster.lustVuln * foxpunchlust), false);
 	}
 	public function canLayerSwordIntentAuraMH():Boolean {
@@ -9798,7 +9800,7 @@ public class Combat extends BaseContent {
                         break;
                     case "foxflame":
                         doFireDamage((damage * 2), true, true);
-                        monster.teased((monster.lustVuln * (10 + player.cor / 8)), false);
+                        monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
                         break;
                     case "ice":
                         doIceDamage(damage, true, true);
@@ -10844,8 +10846,8 @@ public class Combat extends BaseContent {
             dynStats("lus", Math.round(player.maxLust()*0.03));
         }
 		if (player.hasPerk(PerkLib.EclipticInfusion) && player.perkv3(PerkLib.ElementalBody) > 0) {
-			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.cor);
-			else damage *= 1 + (0.01 * (100 - player.cor));
+			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.playerCorruption());
+			else damage *= 1 + (0.01 * (player.playerCorruption2() - player.playerCorruption()));
 		}
         if (monster.hasStatusEffect(StatusEffects.BerzerkingSiegweird)) damage *= 1.2;
         if (player.hasPerk(PerkLib.Anger) && (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking))) {
@@ -10924,8 +10926,8 @@ public class Combat extends BaseContent {
             dynStats("lus", Math.round(player.maxLust()*0.03));
         }
 		if (player.hasPerk(PerkLib.EclipticInfusion) && player.perkv3(PerkLib.ElementalBody) > 0) {
-			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.cor);
-			else damage *= 1 + (0.01 * (100 - player.cor));
+			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.playerCorruption());
+			else damage *= 1 + (0.01 * (player.playerCorruption2() - player.playerCorruption()));
 		}
         if (monster.hasStatusEffect(StatusEffects.BerzerkingSiegweird)) damage *= 1.2;
         if (monster.hasStatusEffect(StatusEffects.Provoke)) damage *= monster.statusEffectv2(StatusEffects.Provoke);
@@ -11000,8 +11002,8 @@ public class Combat extends BaseContent {
             dynStats("lus", Math.round(player.maxLust()*0.03));
         }
 		if (player.hasPerk(PerkLib.EclipticInfusion) && player.perkv3(PerkLib.ElementalBody) > 0) {
-			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.cor);
-			else damage *= 1 + (0.01 * (100 - player.cor));
+			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.playerCorruption());
+			else damage *= 1 + (0.01 * (player.playerCorruption2() - player.playerCorruption()));
 		}
         if (monster.hasStatusEffect(StatusEffects.BerzerkingSiegweird)) damage *= 1.2;
         if (player.hasPerk(PerkLib.Anger) && (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking))) {
@@ -11175,8 +11177,8 @@ public class Combat extends BaseContent {
         }
         if (player.hasPerk(PerkLib.SharedPower) && player.perkv1(PerkLib.SharedPower) > 0) damage *= (1+(0.1*player.perkv1(PerkLib.SharedPower)));
 		if (player.hasPerk(PerkLib.EclipticInfusion) && player.perkv3(PerkLib.ElementalBody) > 0) {
-			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.cor);
-			else damage *= 1 + (0.01 * (100 - player.cor));
+			if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.playerCorruption());
+			else damage *= 1 + (0.01 * (player.playerCorruption2() - player.playerCorruption()));
 		}
         if (monster.hasStatusEffect(StatusEffects.BerzerkingSiegweird)) damage *= 1.2;
         if (player.hasPerk(PerkLib.Anger) && (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking))) {
@@ -11273,8 +11275,8 @@ public class Combat extends BaseContent {
         }
         if (player.hasPerk(PerkLib.SharedPower) && player.perkv1(PerkLib.SharedPower) > 0) damage *= (1+(0.1*player.perkv1(PerkLib.SharedPower)));
         if (player.hasPerk(PerkLib.EclipticInfusion) && player.perkv3(PerkLib.ElementalBody) > 0) {
-            if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.cor);
-            else damage *= 1 + (0.01 * (100 - player.cor));
+            if (player.perkv3(PerkLib.ElementalBody) == 1) damage *= 1 + (0.01 * player.playerCorruption());
+            else damage *= 1 + (0.01 * (player.playerCorruption2() - player.playerCorruption()));
         }
         if (monster.hasStatusEffect(StatusEffects.BerzerkingSiegweird)) damage *= 1.2;
         if (player.hasPerk(PerkLib.Anger) && (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking))) {
@@ -12065,6 +12067,7 @@ public class Combat extends BaseContent {
 			if (player.tailCount >= 9) someN *= 0.5;
 			var soulforcecost:int = someN * soulskillCost() * soulskillcostmulti();
 			player.soulforce -= soulforcecost;
+			if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM)) player.HP -= soulforcecost;
 			useMana((someN * 2 * combat.mspecials.kitsuneskill2Cost()), Combat.USEMANA_MAGIC_NOBM);
 		}
 		if (player.statStore.hasBuff("SwordIntentAura")) {
@@ -12766,14 +12769,14 @@ public class Combat extends BaseContent {
                 SpellMultiplier += spellMod() - 1;
                 damage *= SpellMultiplier;
                 damage = monsterPureDamageBonus(damage);
-                var corruptionModifier:Number = ((100 - player.cor) / 50);
+                var corruptionModifier:Number = ((player.playerCorruption2() - player.playerCorruption()) / 50);
                 if (corruptionModifier < 1) corruptionModifier = 1;
                 if (player.perkv1(IMutationsLib.EclipticMindIM) >= 1) damage *= corruptionModifier;
                 if (player.perkv1(IMutationsLib.EclipticMindIM) >= 2) damage *= corruptionModifier;
                 if (player.perkv1(IMutationsLib.EclipticMindIM) >= 3) damage *= corruptionModifier;
                 if (player.hasPerk(PerkLib.RacialParagon)) damage *= RacialParagonAbilityBoost();
-                if (player.perkv1(IMutationsLib.EclipticMindIM) >= 2 && monster.cor > player.cor / 2) damage = Math.round(damage * 2);
-                else if (player.perkv1(IMutationsLib.EclipticMindIM) >= 3 && monster.cor > player.cor / 2) damage = Math.round(damage * 3);
+                if (player.perkv1(IMutationsLib.EclipticMindIM) >= 2 && monster.cor > player.playerCorruption() / 2) damage = Math.round(damage * 2);
+                else if (player.perkv1(IMutationsLib.EclipticMindIM) >= 3 && monster.cor > player.playerCorruption() / 2) damage = Math.round(damage * 3);
 				damage *= fireDamageBoostedByDao();
                 damage = Math.round(damage);
                 damage = fixPercentDamage(damage);
@@ -12790,12 +12793,12 @@ public class Combat extends BaseContent {
         if ((player.hasPerk(PerkLib.AuraOfCorruption) && monster.lustVuln > 0 || Forgefather.lethiciteEaten) && !flags[kFLAGS.DISABLE_AURAS]) {
             var lustDmg:Number = ((scalingBonusIntelligence() * 0.30) + (scalingBonusLibido() * 0.30));
             lustDmg = teases.teaseAuraLustDamageBonus(monster, lustDmg);
-            if (player.perkv1(IMutationsLib.EclipticMindIM) >= 1) lustDmg *= ((player.cor / 50 / 100)+1);
-            if (player.perkv1(IMutationsLib.EclipticMindIM) >= 2) lustDmg *= ((player.cor / 50 / 100)+1);
-            if (player.perkv1(IMutationsLib.EclipticMindIM) >= 3) lustDmg *= ((player.cor / 50 / 100)+1);
+            if (player.perkv1(IMutationsLib.EclipticMindIM) >= 1) lustDmg *= ((player.playerCorruption() / 50 / 100)+1);
+            if (player.perkv1(IMutationsLib.EclipticMindIM) >= 2) lustDmg *= ((player.playerCorruption() / 50 / 100)+1);
+            if (player.perkv1(IMutationsLib.EclipticMindIM) >= 3) lustDmg *= ((player.playerCorruption() / 50 / 100)+1);
             if (player.hasPerk(PerkLib.RacialParagon)) lustDmg *= RacialParagonAbilityBoost();
-            if (player.perkv1(IMutationsLib.EclipticMindIM) >= 2 && monster.cor < (player.cor / 2)) lustDmg = Math.round(lustDmg * 2);
-            else if (player.perkv1(IMutationsLib.EclipticMindIM) >= 3 && monster.cor < (player.cor / 2)) lustDmg = Math.round(lustDmg * 3);
+            if (player.perkv1(IMutationsLib.EclipticMindIM) >= 2 && monster.cor < (player.playerCorruption() / 2)) lustDmg = Math.round(lustDmg * 2);
+            else if (player.perkv1(IMutationsLib.EclipticMindIM) >= 3 && monster.cor < (player.playerCorruption() / 2)) lustDmg = Math.round(lustDmg * 3);
             outputText("[Themonster] slowly succumbs to [monster his] basest desires as your aura of corruption seeps through [monster him]. ");
             if (monster.cor < 100) outputText("Your victims purity is slowly becoming increasingly eroded by your seeping corruption. ");
             lustDmg *= monster.lustVuln;
@@ -13365,7 +13368,7 @@ public class Combat extends BaseContent {
         }
         if (player.hasStatusEffect(StatusEffects.DemonSeed)) {
             outputText("You feel something shift inside you, making you feel warm.  Finding the desire to fight this... hunk gets harder and harder.\n\n");
-            player.takeLustDamage((player.statusEffectv1(StatusEffects.DemonSeed) + int(player.effectiveSensitivity() / 30) + int(player.lib / 30) + int(player.cor / 30)), true);
+            player.takeLustDamage((player.statusEffectv1(StatusEffects.DemonSeed) + int(player.effectiveSensitivity() / 30) + int(player.lib / 30) + int(player.playerCorruption() / 30)), true);
         }
         if (player.inHeat && player.vaginas.length > 0 && monster.cockTotal() > 0) {
 			var HeatLustDot:Number = (rand(player.lib / 5) + 3 + rand(5));
@@ -13807,7 +13810,7 @@ public class Combat extends BaseContent {
         if (player.statStore.hasBuff("FoxflamePelt")) {
 			var someN:Number = 50;
 			if (player.tailCount >= 9) someN *= 0.5;
-            if ((player.soulforce < someN * soulskillCost() * soulskillcostmulti()) || (player.mana < spellCost(someN * 2 * combat.mspecials.kitsuneskill2Cost()))) {
+            if ((player.soulforce < someN * soulskillCost() * soulskillcostmulti()) || (player.mana < spellCost(someN * 2 * combat.mspecials.kitsuneskill2Cost())) || (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4 && (player.HP < someN * soulskillCost() * soulskillcostmulti()))) {
                 player.statStore.removeBuffs("FoxflamePelt");
                 outputText("<b>The flow of power through you suddenly stops, as you no longer able to sustain it.  Your Foxflame Pelt slowly extinguish, leaving you in your normal form.</b>\n\n");
             }
@@ -14738,8 +14741,8 @@ public class Combat extends BaseContent {
 			}
             if (player.hasPerk(PerkLib.NaturalRecovery) && player.shield.isNothing && player.weapon.isNothing && (player.isNaked() || player.armor.hasTag(ItemConstants.A_REVEALING))) healingPercent += 2;
             if (player.hasPerk(PerkLib.Sanctuary)) healingPercent += 1;
-            if (player.shield == shields.SANCTYL) healingPercent += ((player.corruptionTolerance - player.cor) / (100 + player.corruptionTolerance)) * 4;
-            if (player.shield == shields.SANCTYD) healingPercent += (player.cor / (100 + player.corruptionTolerance)) * 4;
+            if (player.shield == shields.SANCTYL) healingPercent += ((player.corruptionTolerance - player.playerCorruption()) / (player.playerCorruption2() + player.corruptionTolerance)) * 4;
+            if (player.shield == shields.SANCTYD) healingPercent += (player.playerCorruption() / (player.playerCorruption2() + player.corruptionTolerance)) * 4;
             if (player.hasStatusEffect(StatusEffects.SecondWindRegen)) healingPercent += 5;
             if (player.hasStatusEffect(StatusEffects.Cauterize)) {
                 healingPercent += 1.5;
@@ -15129,7 +15132,7 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.Napping)) multi += 0.2;
         if (player.hasPerk(PerkLib.ZZZ)) multi += 0.2;
         if (player.hasPerk(PerkLib.Lazy)) multi += 0.2;
-        if (player.hasPerk(PerkLib.ControlledBreath) && player.cor < (30 + player.corruptionTolerance)) multi += 0.2;
+        if (player.hasPerk(PerkLib.ControlledBreath) && player.playerCorruption() < (60 + player.corruptionTolerance)) multi += 0.2;
         if (player.hasPerk(PerkLib.SpeedyRecovery)) multi += 0.5;
         if (player.hasPerk(PerkLib.SpeedyRecuperation)) multi += 1;
         if (player.hasPerk(PerkLib.SpeedyRejuvenation)) multi += 2;
@@ -15237,7 +15240,7 @@ public class Combat extends BaseContent {
 
     public function soulforceRecoveryMultiplier():Number {
         var multi:Number = 1;
-        if (player.hasPerk(PerkLib.ControlledBreath) && player.cor < (30 + player.corruptionTolerance)) multi += 0.2;
+        if (player.hasPerk(PerkLib.ControlledBreath) && player.playerCorruption() < (60 + player.corruptionTolerance)) multi += 0.2;
         if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 2 && player.racialScore(Races.HUMAN) > 17 && player.hp100 < (10 * (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) + 2))) {
 			if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 4) multi += 2;
 			else multi += 1;
@@ -15341,7 +15344,7 @@ public class Combat extends BaseContent {
         var multi:Number = 1;
 		if (player.hasPerk(PerkLib.WarMageApprentice)) multi += 0.1;
 		if (player.hasPerk(PerkLib.WarMageAdept)) multi += 0.2;
-        if (player.hasPerk(PerkLib.ControlledBreath) && player.cor < (30 + player.corruptionTolerance)) multi += 0.2;
+        if (player.hasPerk(PerkLib.ControlledBreath) && player.playerCorruption() < (60 + player.corruptionTolerance)) multi += 0.2;
 		if (player.hasPerk(PerkLib.GreyMageApprentice)) multi += 0.25;
 		if (player.hasPerk(PerkLib.GreyMage)) multi += 0.5;
         if (player.hasPerk(PerkLib.GreyArchmage)) multi += 0.75;
