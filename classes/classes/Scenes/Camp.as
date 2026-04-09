@@ -858,7 +858,7 @@ public class Camp extends NPCAwareContent{
 			SceneLib.graydaScene.graydaRandomnCampEvents();
 			return;
 		}
-		if (player.statusEffectv1(StatusEffects.SoulCohesion) >= 50 && !player.hasPerk(PerkLib.Soulless)) {
+		if (player.statusEffectv1(StatusEffects.SoulCohesion) >= player.demonificationCorruptionThreshold() && !player.hasPerk(PerkLib.Soulless)) {
 			campUniqueScenes.triggerTerminalCorruptionTF();
 			return;
 		}

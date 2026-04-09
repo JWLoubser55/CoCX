@@ -5915,6 +5915,13 @@ use namespace CoC;
 			//if (true angel) multii *= 2;
 			return multii;
 		}
+		public function demonificationCorruptionThreshold():Number {
+			var dCT:Number = 50;
+			dCT -= Math.round(cor / 4);
+			if (dCT < 25) dCT = 25;
+			if (dCT > 75) dCT = 75;
+			return dCT;
+		}
 
 		public function playerMinionsCount():Number {
 			var minions:Number = 0;

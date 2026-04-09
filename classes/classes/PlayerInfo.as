@@ -99,6 +99,7 @@ public class PlayerInfo extends BaseContent {
 		}
 		else if (player.hasPerk(PerkLib.Soulless)) bodyStats += "<b>Soul Cohesion:</b> 0%\n";
 		else bodyStats += "<b>Soul Cohesion:</b> 100%\n";
+		bodyStats += "<b>Demonification Corruption Threshold:</b> below " + (101 - player.demonificationCorruptionThreshold()) + "% Soul Cohesion\n";
 		if (player.hasPerk(PerkLib.ExanimationII)) {
 			bodyStats += "<b>Soul Points:</b> ";
 			if (player.perkv1(PerkLib.ExanimationIII) == 2) bodyStats += "" + player.perkv1(PerkLib.ExanimationII) + " / 264";

@@ -13358,7 +13358,7 @@ public class Combat extends BaseContent {
 				player.takePhysDamage(15);
 				if (player.hasStatusEffect(StatusEffects.SoulCohesion)) player.addStatusValue(StatusEffects.SoulCohesion, 1, 5);
 				else player.createStatusEffect(StatusEffects.SoulCohesion, 5, 0, 0, 0);
-				if (player.statusEffectv1(StatusEffects.SoulCohesion) >= 50) {
+				if (player.statusEffectv1(StatusEffects.SoulCohesion) >= player.demonificationCorruptionThreshold()) {
 					outputText("Something within you breaks and you willingly submit as you are overwelmed by your rampaging lust.");
 					player.lust = player.maxOverLust();
 					doNext(endLustLoss);
@@ -15154,6 +15154,7 @@ public class Combat extends BaseContent {
 		var gainedsoulforce:Number = 0;
 		gainedsoulforce += soulforceregeneration2();
 		gainedsoulforce *= soulforceRecoveryMultiplier();
+		gainedsoulforce *= recoveryMultiplierFromSoulCohesionAngel();
 		gainedsoulforce = Math.round(gainedsoulforce * 0.02 * minutes);
 		if (player.hasPerk(PerkLib.EnergyDependent)) gainedsoulforce = 0;
 		pc.SoulforceChange(gainedsoulforce);
@@ -15166,12 +15167,14 @@ public class Combat extends BaseContent {
             if (player.hasStatusEffect(StatusEffects.Defend) && player.hasPerk(PerkLib.PerfectDefenceStance)) gainedsoulforce *= 1.4;
             gainedsoulforce *= soulforceRecoveryMultiplier();
             if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1 || (player.hasStatusEffect(StatusEffects.Defend) && player.hasPerk(PerkLib.DefenceStance))) gainedsoulforce *= 2;
+			gainedsoulforce *= recoveryMultiplierFromSoulCohesionAngel();
             gainedsoulforce = Math.round(gainedsoulforce);
             pc.SoulforceChange(gainedsoulforce);
         }
 		else {
             gainedsoulforce += soulforceregeneration2() * 2;
             gainedsoulforce *= soulforceRecoveryMultiplier();
+			gainedsoulforce *= recoveryMultiplierFromSoulCohesionAngel();
             gainedsoulforce = Math.round(gainedsoulforce);
             pc.SoulforceChange(gainedsoulforce);
         }
@@ -15253,6 +15256,7 @@ public class Combat extends BaseContent {
         var gainedmana:Number = 0;
         gainedmana += manaregeneration2();
         gainedmana *= manaRecoveryMultiplier();
+        gainedmana *= recoveryMultiplierFromSoulCohesionDemon();
         gainedmana = Math.round(gainedmana * 0.02 * minutes);
         pc.ManaChange(gainedmana);
     }
@@ -15268,12 +15272,14 @@ public class Combat extends BaseContent {
 				gainedmana *= 2;
 				if (player.hasPerk(PerkLib.WellOfMana)) gainedmana *= 2;
 			}
+			gainedmana *= recoveryMultiplierFromSoulCohesionDemon();
             gainedmana = Math.round(gainedmana);
             pc.ManaChange(gainedmana);
         }
 		else {
             gainedmana += manaregeneration2() * 2;
             gainedmana *= manaRecoveryMultiplier();
+			gainedmana *= recoveryMultiplierFromSoulCohesionDemon();
             gainedmana = Math.round(gainedmana);
             pc.ManaChange(gainedmana);
         }
@@ -15574,6 +15580,19 @@ public class Combat extends BaseContent {
 			}
 		}
     }
+	
+	public function recoveryMultiplierFromSoulCohesionDemon():Number {
+		var multi:Number = 1;
+		if (player.hasStatusEffect(StatusEffects.SoulCohesion)) multi += (player.statusEffectv1(StatusEffects.SoulCohesion) * 0.04);
+		if (player.hasPerk(PerkLib.Soulless)) multi = 5;
+		return multi;
+	}
+	public function recoveryMultiplierFromSoulCohesionAngel():Number {
+		var multi:Number = 1;
+		if (player.hasStatusEffect(StatusEffects.SoulCohesion)) multi -= (player.statusEffectv1(StatusEffects.SoulCohesion) * 0.01);
+        if (player.hasPerk(PerkLib.Soulless)) multi = 0.2;
+		return multi;
+	}
 
     internal var combatRound:int = 1;
 
