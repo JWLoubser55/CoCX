@@ -42,7 +42,7 @@ import classes.TimeAwareInterface;
 			);
 			withBuff('psoulskillpower', 0);
 			withBuff('msoulskillpower', 0);
-			withEffect(IELib.Require_CorBelow, 33);
+			withEffect(IELib.Require_CorBelow, -33);
             EventParser.timeAwareClassAdd(this);
 		}
 		

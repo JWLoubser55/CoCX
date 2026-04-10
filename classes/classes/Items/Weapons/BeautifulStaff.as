@@ -25,7 +25,7 @@ import classes.TimeAwareInterface;
 		{
 			super("B.Staff", "B.Staff", "beautiful staff", "a beautiful shining staff", "bonk", 2, 160, "This beautiful staff shines brilliantly in the light, showing the flawless craftsmanship.  The pommel and guard are heavily decorated in gold and brass.  A craftsman has clearly poured their heart and soul into this staff.", WT_STAFF, WSZ_LARGE);
 			withBuff('spellpower', 0);
-			withEffect(IELib.Require_CorBelow, 33);
+			withEffect(IELib.Require_CorBelow, -33);
             EventParser.timeAwareClassAdd(this);
 		}
 		

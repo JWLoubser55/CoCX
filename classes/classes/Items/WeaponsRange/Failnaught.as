@@ -13,7 +13,7 @@ package classes.Items.WeaponsRange
 		{
 			super("Failnau", "Failnaught", "Failnaught", "a Failnaught", "shot", 41, 1000, "A legendary bow said to have been made by Marae for her champion. This weapon radiates divine power, purifying its wielder and protecting them from impurity.", "Bow");
 			withTag(I_LEGENDARY)
-			withEffect(IELib.Require_CorBelow, 33)
+			withEffect(IELib.Require_CorBelow, -33)
 			withEffect(IELib.AttackBonus_Purity, 1 / 3);
 		}
 		

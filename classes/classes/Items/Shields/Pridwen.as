@@ -9,7 +9,7 @@ package classes.Items.Shields
 		{
 			super("Pridwen", "Pridwen", "Pridwen", "a Pridwen", 1, 200, "A legendary shield said to have been made by Marae for her champion. It radiates divine power, purifying its wielder and protecting them from impurity.");
 			withTag(I_LEGENDARY);
-			withEffect(IELib.Require_CorBelow, 33);
+			withEffect(IELib.Require_CorBelow, -33);
 		}
 		
 		override public function get block():Number {

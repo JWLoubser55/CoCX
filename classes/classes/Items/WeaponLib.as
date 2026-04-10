@@ -161,7 +161,7 @@ public final class WeaponLib extends ItemConstants
 				"B.Sword", "B.Sword", "beautiful sword", "a beautiful shining sword", "slash", 17, 560,
 				"This beautiful sword shines brilliantly in the light, showing the flawless craftsmanship of its blade.  The pommel and guard are heavily decorated in gold and brass.  Some craftsman clearly poured his heart and soul into this blade.",
 				WT_SWORD, WSZ_MEDIUM)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3) as Weapon;
 		public const B_WHIP :Weapon = new Weapon(
 				"B.Whip", "B.Whip", "beautiful whip", "a beautiful shining whip", "whipping", 14, 400,
@@ -169,7 +169,7 @@ public final class WeaponLib extends ItemConstants
 				WT_WHIP, WSZ_MEDIUM)
 				.withBuffs({'teasedmg': 35})
 				.withTag(W_WHIPPING)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3)
 				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon;
 		public const B_FLYWHISK :Weapon = new BeautifulFlyWhisk();
@@ -369,7 +369,7 @@ public final class WeaponLib extends ItemConstants
 				"DBSword", "DB.Sword", "dual beautiful swords", "a dual beautiful shining swords", "slash", 17, 1120,
 				"Those beautiful swords shines brilliantly in the light, showing the flawless craftsmanship of their blades.  The pommel and guard are heavily decorated in gold and brass.  Some craftsman clearly poured his heart and soul into those blade.",
 				WT_SWORD,WSZ_MEDIUM,true)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3) as Weapon;
 		public const DDAGGER:Weapon = new Weapon(
 				"DDagger","D.Daggers","dual daggers","a dual daggers","stab",3,240,
@@ -398,7 +398,7 @@ public final class WeaponLib extends ItemConstants
 				"DExcalib", "DualExcalibur", "Dual Excalibur", "a Dual Excalibur", "slash", 40, 1600,
 				"A legendary dual swords said to have been made by Marae for her champion. Those weapons radiates divine power, purifying its wielder and protecting them from impurity.",
 				WT_SWORD, WSZ_MEDIUM, true)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3)
 				.withTag(I_LEGENDARY) as Weapon;
 		public const DE_GAXE:Weapon = new Weapon(
@@ -469,7 +469,7 @@ public final class WeaponLib extends ItemConstants
 				WT_WHIP, WSZ_MEDIUM, true)
 				.withBuffs({'teasedmg': 35})
 				.withTags(I_LEGENDARY, W_WHIPPING)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3)
 				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon;
 		public const D_WHAM_:Weapon = new Weapon(
@@ -555,7 +555,7 @@ public final class WeaponLib extends ItemConstants
 				"A legendary sword said to have been made by Marae for her champion. This weapon radiates divine power, purifying its wielder and protecting them from impurity.",
 				WT_SWORD, WSZ_MEDIUM)
 				.withTag(I_LEGENDARY)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3) as Weapon;
 		public const FLAIL  :Weapon = findCommonDynamicWeapon("flail");
 		public const FLYINGC:Weapon = new Weapon(
@@ -790,7 +790,7 @@ public final class WeaponLib extends ItemConstants
 				WT_WHIP, WSZ_MEDIUM)
 				.withBuffs({'teasedmg': 35})
 				.withTags(I_LEGENDARY, W_WHIPPING)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3)
 				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon;
 		public const PHALLUS:Weapon = new ThePhalluspear();
