@@ -696,7 +696,8 @@ use namespace CoC;
 				if(player.cumQ() >= 50 && player.cumQ() < 400) outputText("Freed at last, your body clenches tightly as it spurts a big glob of cum onto her waiting sole, soaking the bottom of her foot with slippery male-milk.  She smears her cum-covered foot over every inch of your [cock], making each successive spurt bigger and messier than the last. Somehow she manages to catch more and more of your jizm over her foot, bathing you in cummy silkiness.  You groan helplessly as she milks more and more of from you till her foot is dripping steadily, your own groin and belly soaked with the stuff.  You give a few final exhausted squirts as she languidly rubs it into you.");
 				//[[huge volume]]
 				if (player.cumQ() > 400) outputText("Freed at last, your body clenches powerfully as a massive eruption of cum launches from your [cock] onto her waiting foot.  The succubus looks on incredulously as her entire foot is soaked with your sticky whiteness, forgetting to move as the second wave of cum drenches her to the ankle and rains down over your stomach.  She giggles and moves it back to your cock, massaging your slick spooge into your cock with her foot, wringing an even bigger explosion of cum from your tortured body.  Flopping back, she gets her other foot in on the action, milking you between her feet as you soak yourself completely with bigger and bigger eruptions until at last your orgasm begins to wane.  She slides forwards, rubbing against you and smearing the mess over herself with a blissful expression.");
-				player.sexReward("vaginalFluids","Dick");
+				player.sexReward("vaginalFluids", "Dick");
+				player.fuckingWithDemons(1);
 				if (secretary) {
 					outputText("\n\n\"<i>Good boy,</i>\" she croons, mopping the cum up as it seems to wick into her stockings, \"<i>You'll do well once we get you on the line.</i>\"  You don't have time to ponder the significance of that as you lose consciousness.");
 					doNext(doBadEndGeneric);
@@ -728,7 +729,8 @@ use namespace CoC;
 					player.clitLength += (rand(4) + 2) / 10;
 					outputText("\n\nWhen you wake up, your clit is back to a more reasonable size- though it seems a bit larger than before.");
 				}
-				player.sexReward("vaginalFluids","Default");
+				player.sexReward("vaginalFluids", "Default");
+				player.fuckingWithDemons(1);
 				if (secretary) doNext(doBadEndGeneric);
 				else cleanupAfterCombat();
 			}
@@ -803,6 +805,7 @@ use namespace CoC;
 				player.refillHunger(100);
 				player.sexReward("cum", "Lips");
 				dynStats("cor", 20);
+				player.fuckingWithDemons(1);
 				if (mechanic) {
 					if (flags[kFLAGS.LETHICE_DEFEATED] > 0) outputText("\n\n\"<i>You're lucky I've decided to let you go since you've overthrown Lethice,</i>\" the incubus grumbles.");
 					if (flags[kFLAGS.FACTORY_SHUTDOWN] <= 0) doNext(doBadEndGeneric);
@@ -854,6 +857,7 @@ use namespace CoC;
 					dynStats("cor", 25);
 					player.buttChange(monster.cockArea(0), true);
 					player.sexReward("cum", "Anal");
+					player.fuckingWithDemons(1);
 					if (mechanic) {
 						if (flags[kFLAGS.D3_GARDENER_DEFEATED] > 0 && flags[kFLAGS.D3_CENTAUR_DEFEATED] > 0 && flags[kFLAGS.D3_STATUE_DEFEATED] > 0) outputText("\n\n\"<i>You're lucky I've decided to let you go since you've overthrown Lethice,</i>\" the incubus grumbles.");
 						if (flags[kFLAGS.FACTORY_SHUTDOWN] <= 0) doNext(doBadEndGeneric);
@@ -890,6 +894,7 @@ use namespace CoC;
 					player.buttChange(monster.cockArea(0), true);
 					if (player.hasCock()) player.sexReward("Default", "Dick");
 					player.sexReward("cum", "Anal");
+					player.fuckingWithDemons(1);
 					if (player.isGargoyle() && player.hasPerk(PerkLib.GargoyleCorrupted)) player.refillGargoyleHunger(30);
 					if ((player.isRace(Races.JIANGSHI, 1, false) || player.isRace(Races.MUMMY, 1, false)) && player.hasPerk(PerkLib.EnergyDependent)) player.EnergyDependentRestore();
 					if (mechanic) {
@@ -1972,4 +1977,4 @@ use namespace CoC;
 			addButton(14, "Leave", cleanupAfterCombat);
 		}
 	}
-}
+}

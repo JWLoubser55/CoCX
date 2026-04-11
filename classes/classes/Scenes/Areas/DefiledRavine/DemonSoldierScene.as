@@ -177,15 +177,16 @@ public class DemonSoldierScene extends BaseContent {
             }
             //Corruption variants!
             outputText("\n\n");
-            if (player.cor < 40) {
+            if (player.cor < -20) {
                 outputText("The lascivious display raises a twinge of guilt over succumbing to your base urges with a Demon, ");
                 dynStats("cor", 1);
             } else {
                 outputText("Tempting as it may be to engage with the lascivious display for round two, you have other matters to attend to, ");
-                if (player.cor < 80) dynStats("cor", 0.5);
+                if (player.cor < 60) dynStats("cor", 0.5);
             }
             outputText("so you " + player.clothedOrNakedLower("dress", "move") + " quickly and leave the Demon work out [monster his] frustrations on [monster his] own; the wet, urgent sounds of energetic self-abuse following you as you head off.");
-            cleanupAfterCombat();
+            player.fuckingWithDemons(1);
+			cleanupAfterCombat();
         }
     }
 

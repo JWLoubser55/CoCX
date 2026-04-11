@@ -146,6 +146,7 @@ use namespace CoC;
 			}
 			player.sexReward("Default", "Dick",true,false);
 			if (!condomed) dynStats("cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 		private function rapeImpWithPussy():void {
@@ -174,6 +175,7 @@ use namespace CoC;
 			}
 			player.sexReward("cum", "Vaginal");
 			dynStats("cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -229,6 +231,7 @@ use namespace CoC;
 			player.HP -= 10;
 			if(player.HP < 1) player.HP = 1;
 			player.sexReward("cum");
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 		private function centaurGirlOnImps():void {
@@ -283,6 +286,7 @@ use namespace CoC;
 				outputText("  Collecting your things, you give the assorted bodies one last look and stumble back to camp.");
 				player.sexReward("cum", "Vaginal");
 				dynStats("cor", 1);
+				player.fuckingWithDemons(1);
 			}
 			cleanupAfterCombat();
 		}
@@ -345,7 +349,8 @@ use namespace CoC;
             //<<GoTo I1>>
             centaurOnImpResults(1);
             //<<End>>
-            player.sexReward("Default", "Dick",true,false);
+            player.sexReward("Default", "Dick", true, false);
+			player.fuckingWithDemons(1);
             cleanupAfterCombat();
         }
 
@@ -364,7 +369,8 @@ use namespace CoC;
             //<<GoTo I2>>
             centaurOnImpResults(2);
             //<<End>>
-            player.sexReward("Default", "Dick",true,false);
+            player.sexReward("Default", "Dick", true, false);
+			player.fuckingWithDemons(1);
             cleanupAfterCombat();
         }
 
@@ -374,7 +380,8 @@ use namespace CoC;
             //<<GoTo I1>>
             centaurOnImpResults(1);
             //<<End>>
-            player.sexReward("Default", "Dick",true,false);
+            player.sexReward("Default", "Dick", true, false);
+			player.fuckingWithDemons(1);
             cleanupAfterCombat();
         }
         
@@ -404,7 +411,8 @@ use namespace CoC;
             //<<GoTo I2>>
             centaurOnImpResults(2);
             //<<End>>
-            player.sexReward("Default", "Dick",true,false);
+            player.sexReward("Default", "Dick", true, false);
+			player.fuckingWithDemons(1);
             cleanupAfterCombat();
         }
 
@@ -420,7 +428,8 @@ use namespace CoC;
                 outputText("Feeling merciful you extract yourself from the creature, flipping it unto a nearby rock as it begins to regain consciousness.  Before it realizes what you are doing your " + cockDescript(toAss) + " is prodding at its " + eAssholeDescript() + ", then sliding quickly between its cheeks.  The amount of slobber over you is more than enough lubricant.  You groan in pleasure as it gives a slight squeal, then proceed to finish yourself off in the once-tight orifice.\n\n");
                 //<<Goto I1>>
                 centaurOnImpResults(1);
-                player.sexReward("Default", "Dick",true,false);
+                player.sexReward("Default", "Dick", true, false);
+				player.fuckingWithDemons(1);
                 cleanupAfterCombat();
             }
             //<<Cor 80+>>
@@ -438,7 +447,8 @@ use namespace CoC;
                 //<<cum multiplier: lots>>
                 if(player.cumQ() > 250) outputText("Beneath you the creature's belly is distending more and more, and you can feel some of the overflowing cum filling back out until it is pouring out of the creature's unconscious mouth and overstretched ass, forming a spermy pool beneath it.");
                 outputText("With on last grunt you begin extracting the tentacles back out, almost cumming again from the tightness around them.  You give your " + cockDescript(toMouth) + " one last shake over the creature's face before trotting away satisfied and already thinking about the next creature you might abuse.");
-                player.sexReward("Default", "Dick",true,false);
+                player.sexReward("Default", "Dick", true, false);
+				player.fuckingWithDemons(1);
                 cleanupAfterCombat();
             }
         }
@@ -459,7 +469,8 @@ use namespace CoC;
             //<<GoTo I1>>
             centaurOnImpResults(1);
             //<<End>>
-            player.sexReward("Default", "Dick",true,false);
+            player.sexReward("Default", "Dick", true, false);
+			player.fuckingWithDemons(1);
             cleanupAfterCombat();
         }
         
@@ -493,6 +504,7 @@ use namespace CoC;
 				outputText("When the creature completely bottoms out inside of you, you begin trotting forward with a wicked grin.  The creature's hands grasp your flanks desperately, and its [monster cockshort] bounces inside your [vag], adding to your sensation.  The movement is causing the imp to push himself even harder against you as it tries to not fall off, and it is all you can do to keep an eye on where you are going.  Soon you can feel the imp's sperm filling your [vag] and overflowing even as your cunt-muscles try to milk it of all of its seed. Unsatisfied you begin to speed up as you use its [monster cockshort] to bring about your own orgasm.  The small creature is unable to let go without hurting itself.  It hangs on desperately while you increase the pace and begin making short jumps to force it deeper into you.  The feeling of sperm dripping out and over your [clit] pushes you over and cry out in intense pleasure.  When you finally slow down and clear your head the imp is nowhere to be seen.  Trotting back along the trail of sperm you left behind you find only its small satchel.");
 				player.cuntChange(monster.cockArea(0), true, true, false);
 				player.sexReward("cum", "Vaginal");
+				player.fuckingWithDemons(1);
 				cleanupAfterCombat();
 				//END OF NON GAPE CASE
 			}
@@ -530,6 +542,7 @@ use namespace CoC;
 				if(player.cor < 80) outputText("promise to yourself that you will not do that again.");
 				else outputText("find your cunt juices already dripping down your legs in anticipation of doing this again.");
 				player.sexReward("cum", "Vaginal");
+				player.fuckingWithDemons(1);
 				cleanupAfterCombat();
 			}
 		}
@@ -666,6 +679,7 @@ use namespace CoC;
             if (player.cor >= 80)
                 outputText("  As you trot back the way you have come you idly trace a finger through the dangling sperm, hoping someone might see what a slut you have become. Though if you have to clean it off, you can always get more.. perhaps from an even more copious source.");
 			player.sexReward("cum", "Lips");
+			player.fuckingWithDemons(1);
             player.refillHunger(50);
             dynStats("cor", 5);
             cleanupAfterCombat();
@@ -701,6 +715,7 @@ use namespace CoC;
             if (player.cor >= 80)
                 outputText("\n\nGrinning at the perversity, you lower yourself down and take his dirty [monster cock] into your mouth, cleaning it thoroughly as you enjoy the mixture of your juices.  Your intense sucking and stroking causes a few last spurts of cum to fly out, and you pull the imp out lock enough to shoot the gouy mess over your face and hair while you swallow what was already in your mouth.");
 			player.sexReward("cum", "Anal");
+			player.fuckingWithDemons(1);
             dynStats("cor", 3);
             cleanupAfterCombat();
         }
@@ -733,6 +748,7 @@ use namespace CoC;
                 outputText("before it can see you bringing your nipples to your mouth.  You suck hard to get to as much of his sperm as you can, shoving your tongue deep into yourself and digging around wih your fingers.  When this is not enough to bring you to orgasm you slap and bite your [nipples], crying out as the intensity and perversion finally proves enough to push you over the edge.");
 			player.sexReward("cum", "Lips"); //accurate
             player.refillHunger(20);
+			player.fuckingWithDemons(1);
             dynStats("cor", 5);
             cleanupAfterCombat();
         }
@@ -951,6 +967,7 @@ use namespace CoC;
 				else outputText("Your last coherent thought is to find a way to make your own mutated master imp, maybe even a stable full of them...");
 				player.sexReward("cum", "Vaginal");
 				dynStats("lib", 2, "cor", 3);
+				player.fuckingWithDemons(5);
 				if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 14); //Bigger imp means faster pregnancy
 				if (CoC.instance.inCombat) cleanupAfterCombat();
 				else doNext(playerMenu);
@@ -1084,6 +1101,7 @@ use namespace CoC;
 				else outputText("Why bother with your silly quest, when you've only scratched the surface of the pleasures this land offers you?\n");
 				player.sexReward("cum");
 				dynStats("lib", 2, "cor", 3);
+				player.fuckingWithDemons(5);
 				if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 14); //Bigger imp means faster pregnancy
 				//Stretch!
 				if (player.hasVagina()) {
@@ -1220,6 +1238,7 @@ use namespace CoC;
 				else outputText("Your last coherent thought is to find a way to make your own mutated master imp, one you can keep as a fuck-toy...");
 				player.sexReward("cum");
 				dynStats("lib", 2, "cor", 3);
+				player.fuckingWithDemons(5);
 				if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 14); //Bigger imp means faster pregnancy
 				if (CoC.instance.inCombat) cleanupAfterCombat();
 				else doNext(playerMenu);
@@ -1355,6 +1374,7 @@ use namespace CoC;
 				else outputText("Why bother with your silly quest, when you've only scratched the surface of the pleasures this land offers you?\n\n");
 				player.sexReward("cum");
 				dynStats("lib", 2, "cor", 3);
+				player.fuckingWithDemons(5);
 				if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 14); //Bigger imp means faster pregnancy
 				//Stretch!
 				if (player.hasVagina()) {
@@ -1424,6 +1444,7 @@ use namespace CoC;
             }
             player.sexReward("Default","Dick");
             dynStats("lib", 1, "sen", 1, "cor", 1);
+			player.fuckingWithDemons(1);
             cleanupAfterCombat();
         }
         
@@ -1439,6 +1460,7 @@ use namespace CoC;
             if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 14); //Bigger imp means faster pregnancy
             player.sexReward("cum");
             dynStats("lib", 1, "sen", 1, "cor", 1);
+			player.fuckingWithDemons(1);
             cleanupAfterCombat();
         }
 
@@ -1507,6 +1529,7 @@ use namespace CoC;
 				if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 14); //Bigger imp means faster pregnancy
 				dynStats("lib", 1, "sen", 1, "lus", 1, "cor", 1);
 				player.sexReward("cum", "Vaginal");
+				player.fuckingWithDemons(1);
 				cleanupAfterCombat();
 			}
 
@@ -1526,6 +1549,7 @@ use namespace CoC;
 				outputText("He slowly withdraws his still-pumping cock from you, coating your throat and then mouth with an almost continual spray of his unnaturally hot and sticky demon seed. The imp pulls out of your mouth just in time to splatter your face with his cum before his orgasm stops, coating your lips, nose, eyes, and hair with his incredibly thick and sticky cum.\n\n");
 				outputText("You fall to the ground gasping, exhausted and unable to move, the demon cum on your face and inside you still burning with intense heat and corruption. You lose consciousness, your [cock] still firmly erect, your lust not sated.");
 				dynStats("lus", 20, "cor", 2);
+				player.fuckingWithDemons(1);
 				cleanupAfterCombat();
 				player.sexReward("cum", "Lips");
 			}
@@ -1542,6 +1566,7 @@ use namespace CoC;
 					dynStats("cor", 1);
 				}
 				player.sexReward("cum", "Anal");
+				player.fuckingWithDemons(1);
 				outputText("\n\nYou drop to the ground when he's done with you, cum spilling from your abused ass all over the ground, too exhausted to move.  Consciousness fades.  ");
 				cleanupAfterCombat();
 			}
@@ -1643,6 +1668,7 @@ use namespace CoC;
 			//Gain xp and gems here
 			player.sexReward("cum");
 			dynStats("sen", -3, "cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -1833,6 +1859,7 @@ use namespace CoC;
 			outputText("\n\nYou stumble slightly as you gather up your [armor], and begin to get dressed.");
 			player.sexReward("no", "Dick");
 			dynStats("cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -1881,6 +1908,7 @@ use namespace CoC;
 			outputText("\n\nYou gather your things and put your [armor] back on before turning to leave.  You chance one last glance back at the defeated imp. You notice him laying down on his back, his hands working his own still hard length furiously.  You head back for camp and allow the imp to enjoy the afterglow of his meal.");
 			player.sexReward("no", "Dick");
 			dynStats("cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -1926,6 +1954,7 @@ use namespace CoC;
 			outputText("\n\nAfter a few moments of recovery, you slowly lift yourself off the imp.  Cum rushes out of your [vag], and you clamp your muscles down as best as you can to keep the warm substance inside of you.  You give your swollen, cum-filled belly a motherly rub, before gathering your [armor].");
 			player.sexReward("cum","Vaginal");
 			dynStats("cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -2077,9 +2106,9 @@ use namespace CoC;
 
 			outputText("\n\nYou take the hint and nervously lick the cock clean.  You can taste the corruption, and it sends sparks through your mind.  You almost wish it didn't have to end, but soon the imp is satisfied with your cleaning job, gathers his things and turns to leave you to recover from your ordeal.  Within minutes of him leaving you pass out, collapsing to the ground.  You lay there, in a puddle of sexual fluids for a long time before you wake up.  After gathering your equipment, you begin to make your way back to camp.  Hopefully that green stuff's effects will have worn off once you get back.");
 			player.sexReward("cum, Lips");
-			if(player.hasCock())
-				player.sexReward("no", "Dick");
+			if(player.hasCock()) player.sexReward("no", "Dick");
 			dynStats("sen", 2, "cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -2118,6 +2147,7 @@ use namespace CoC;
 			outputText("\n\nYou stand up weakly after several moments, and gather your [armor].  It takes you a while to get dressed in your defeated state, but you manage to crawl back towards your camp.  Your [vagina] is still leaking some of the demonic cum, but you try not to worry about it as you arrive, collapsing almost immediately.");
 			player.sexReward("cum","Vaginal");
 			dynStats("cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -2214,6 +2244,7 @@ use namespace CoC;
 			outputText("\"<i>Please "+player.mf("master", "mistress")+", don't leave me like this! Please let me cum I can't..I can't keep up like this! Make it stop!</i>\"[pg]");
 			outputText("Staring at your book you confirm that the imp indeed willingly surrendered his being to your care as a new inky note appears in the tome of imp. Satisfied with this you undo the spell, his cock unleashing a lovely fountain of white cream all around him. You almost get painted yourself but flap your tiny wings to evade the jet moving out of reach.[pg]");
 			player.sexReward("cum", "Vaginal");
+			player.fuckingWithDemons(1);
 			recruitImp();
 		}
 
@@ -2240,7 +2271,8 @@ use namespace CoC;
 			outputText("\"<i>Pleasepleaseplease master! Let me cum, I'll do it!</i>\"[pg]");
 			outputText("Staring at your book you confirm that the imp indeed willingly surrendered his being to your care as a new inky note appears in the tome of imp. Now that he's surrendered to you, you're all the more ready to heed his demand. With a loud moan, you hit your climax, unloading wave after wave of seed into him as you finally loosen your grip on him.[pg]");
 			outputText("The imp howls in pleasure as he cums, drenching the ground beneath him with his corrupted cum.[pg]");
-			player.sexReward("Default", "Dick",true,false);
+			player.sexReward("Default", "Dick", true, false);
+			player.fuckingWithDemons(1);
 			recruitImp();
 		}
 
@@ -2323,7 +2355,8 @@ use namespace CoC;
 
 			outputText("Sated for now, you rise up, your body dripping gooey whiteness.  Though in retrospect it isn't nearly as much as was pumped into your womb.");
 			if(player.canGetPregnant()) outputText("  You'll probably get pregnant.");
-			player.sexReward("cum","Vaginal");
+			player.sexReward("cum", "Vaginal");
+			player.fuckingWithDemons(1);
 			if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 14, 50);
 			cleanupAfterCombat();
 		}
@@ -2399,6 +2432,7 @@ use namespace CoC;
 			outputText("Powerless and in the throes of post-coital bliss, you pass out.");
 			if(player.hasCock())player.sexReward("no", "Dick");
 			player.sexReward("cum");
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 

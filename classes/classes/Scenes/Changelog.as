@@ -219,7 +219,7 @@ public class Changelog extends BaseContent
 			outputText("-Lizan race bonuses changed from Lizan (8): +70% to Tou multi, +50% to Int multi, +100 max fatigue to Lizan/Elder Lizan/Ancient Lizan (10/18/26): +100%/+200%/+310% to Tou multi, +50%/+70%/+80% to Int multi, +5%/+10%/+20% to max hp multi, +100/+200/+400 max fatigue\n");
 			outputText("-Lizan Marrow HP regeneration is twice higher (1% in combat/2% out of combat per tier), losted bodyparts recover is increased to 1%/2%. Rest of the effects is unchanged. When Lizan race bonuses reach at least tier 1 changed parts of IM getting additional (1+race bonuses tier) boost.\n");
 			outputText("-Regeneration base % cap is increased from 2% to 5%. Cultivation supaths or hidden job perks that may increase % health regeneration would now increase max regeneration cap by the same amount.\n");
-			outputText("-When meditating (soulforce menu) for at least 4 hours, having dantian perk and soul cohesion is below 100% PC can restore it slowly. 1% base increased by 1% per each 4 more full hours spent meditating. Reaching Dantian stage above Qi Condensation Dantian would multiply it per each stage attained.\n");
+			outputText("-When meditating (soulforce menu) for at least 4 hours, having dantian perk and Soul Cohesion is below 100% PC can restore it slowly. 1% base increased by 1% per each 4 more full hours spent meditating. Reaching Dantian stage above Qi Condensation Dantian would multiply it per each stage attained.\n");
 			outputText("-New range weapon (by Ormael): Twin Energy Guns - can be gained by combining 2x Energy Gun weapon. Cost 2,560 gems. Base atk is 25, ammo clip size 1 and it dealing plasma damage. Each perk for mutli attacks per turn increase times it deal dmg by 2. It's Dual Firearm type range weapon.\n");
 			outputText("-Temporal Golems dmg scaling was increased by 20x and pernament golems scaling by 5x.\n");
 			outputText("-New range weapon (by Lady Aeducan): Two Good Samaritans - can be gained by combining 2x Good Samaritan. Base atk is 150 (including up to 50 from corruption scaling and up to 90 from str scaling) and ammo clip size 4. Without 200+ str amount of shoots per turn (with feat for those) will be reduced due to recoil effect. It's Dual Firearm type range weapon, dealing bonus dmg to corrupted enemies, +25% dmg to true demons.\n");
@@ -294,7 +294,7 @@ public class Changelog extends BaseContent
 			outputText("-Added to chara creation general customization section new option: starting corruption.\n");
 			outputText("-Player corruption can now drop below 0 all way to -100. All items scalings or req. to equip would take into account this extended corrution scale.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence (Final Form). Req. Ectoplasmic Essence (Evolved) and lvl 90+. Effects: Reduce Physical damage taken by 25% after damage reduction. Increase the potency of M.Ability with a soulforce cost by 150%. Increase tease modifier by a percentage equal to current lust percentage. Add your soulforce to your health but cause soulskills and specials using soulforce to also consume health in equal amounts.\n");
-			outputText("-\n");
+			outputText("-Many soulless enemies sex scenes can cause loosing from 1% to 5% of Soul Cohesion. As they say: don't stick into craz... err soulless (or let them stick smth into you) ;)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

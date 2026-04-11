@@ -5922,6 +5922,25 @@ use namespace CoC;
 			if (dCT > 75) dCT = 75;
 			return dCT;
 		}
+		public function loosingSoulCohesion(amnt:Number = 0):void {
+			var cohesionloss:Number = amnt;
+			if (statusEffectv2(StatusEffects.SoulCohesion) > 0) {
+				if (statusEffectv2(StatusEffects.SoulCohesion) > cohesionloss) {
+					addStatusValue(StatusEffects.SoulCohesion, 2, -cohesionloss);
+					cohesionloss = 0;
+				}
+				else {
+					var cohe:Number = cohesionloss - statusEffectv2(StatusEffects.SoulCohesion);
+					addStatusValue(StatusEffects.SoulCohesion, 2, -cohe);
+					cohesionloss -= cohe;
+				}
+			}
+			if (cohesionloss > 0) addStatusValue(StatusEffects.SoulCohesion, 1, cohesionloss);
+		}
+		public function fuckingWithDemons(amnt:Number = 0):void {
+			if (hasStatusEffect(StatusEffects.SoulCohesion)) loosingSoulCohesion(amnt);
+			else createStatusEffect(StatusEffects.SoulCohesion, amnt, 0, 0, 0);
+		}
 
 		public function playerMinionsCount():Number {
 			var minions:Number = 0;

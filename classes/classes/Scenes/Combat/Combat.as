@@ -13356,7 +13356,7 @@ public class Combat extends BaseContent {
 				outputText("Your lips burn with an unexpected flash of heat.  They sting and burn with unholy energies as a puff of ectoplasmic gas escapes your lips.  That puff must be a part of your soul!  It darts through the air to [themonster], who slurps it down like a delicious snack.  You feel feverishly hot and exhausted...\n\n");
 				player.takeLustDamage(5, true);
 				player.takePhysDamage(15);
-				if (player.hasStatusEffect(StatusEffects.SoulCohesion)) player.addStatusValue(StatusEffects.SoulCohesion, 1, 5);
+				if (player.hasStatusEffect(StatusEffects.SoulCohesion)) player.loosingSoulCohesion(5);
 				else player.createStatusEffect(StatusEffects.SoulCohesion, 5, 0, 0, 0);
 				if (player.statusEffectv1(StatusEffects.SoulCohesion) >= player.demonificationCorruptionThreshold()) {
 					outputText("Something within you breaks and you willingly submit as you are overwelmed by your rampaging lust.");
