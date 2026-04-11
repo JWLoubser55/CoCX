@@ -554,6 +554,7 @@ use namespace CoC;
 				outputText("\n\nThe succubus licks her fingers clean, looking totally recovered.  In the blink of an eye, she dashes out the door, disappearing.");
 				if (!recalling) {
 					player.sexReward("vaginalFluids", "Dick");
+					player.fuckingWithDemons(1);
 					dynStats("cor", 5);
 					cleanupAfterCombat();
 				}
@@ -578,6 +579,7 @@ use namespace CoC;
 			outputText("\n\nYou turn away with a bemused sigh.  When you glance back, she has vanished!");
 			if (!recalling) {
 				player.sexReward("vaginalFluids", "Vaginal");
+				player.fuckingWithDemons(1);
 				dynStats("cor", 1);
 				cleanupAfterCombat();
 			}
@@ -918,6 +920,7 @@ use namespace CoC;
 			if (!recalling) {
 				player.buttChange(monster.cockArea(0), true);
 				player.sexReward("no", "Dick");
+				player.fuckingWithDemons(1);
 				dynStats("cor", 2);
 				cleanupAfterCombat();
 			}
@@ -958,6 +961,7 @@ use namespace CoC;
 			if (!recalling) {
 				dynStats("cor", 2);
 				player.sexReward("no", "Dick");
+				player.fuckingWithDemons(1);
 				cleanupAfterCombat();
 			}
 			else doNext(recallWakeUp);
@@ -984,6 +988,7 @@ use namespace CoC;
 			if (!recalling) {
 				player.sexReward("cum", "Vaginal");
 				player.cuntChange(player.vaginalCapacity() * .8, true);
+				player.fuckingWithDemons(1);
 				dynStats("cor", 2);
 				cleanupAfterCombat();
 			}

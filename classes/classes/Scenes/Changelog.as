@@ -295,7 +295,7 @@ public class Changelog extends BaseContent
 			outputText("-Player corruption can now drop below 0 all way to -100. All items scalings or req. to equip would take into account this extended corrution scale.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence (Final Form). Req. Ectoplasmic Essence (Evolved) and lvl 90+. Effects: Reduce Physical damage taken by 25% after damage reduction. Increase the potency of M.Ability with a soulforce cost by 150%. Increase tease modifier by a percentage equal to current lust percentage. Add your soulforce to your health but cause soulskills and specials using soulforce to also consume health in equal amounts.\n");
 			outputText("-Many soulless enemies sex scenes can cause loosing from 1% to 5% of Soul Cohesion. As they say: don't stick into craz... err soulless (or let them stick smth into you) ;)\n");
-			outputText("-\n");
+			outputText("-Even sticking into soulless camp members isn't safe from loosing Soul Cohesion. Right before any of you got funny ideas using many of the options from Unique Sex Scenes menu also would cause Soul Cohesion loss when used on demon enemies.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

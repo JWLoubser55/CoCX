@@ -2220,6 +2220,7 @@ use namespace CoC;
 			outputText("\nYour senses overwhelm you as your orgasm arrives in turn. Your " + (player.hasBalls() ? "ballsack" : "prostate") + " clenches as you empty your seed into the demon's well-fucked asshole. You shudder from the sensation as you pull your cock free, the last of your seed lewdly dripping down the imp's thighs.");
 			outputText("\n\nYou redress and leave the creature, nearly unconscious from the abuse.");
 			player.sexReward("no", "Dick");
+			player.fuckingWithDemons(1);
 			awardAchievement("Urine Trouble", kACHIEVEMENTS.GENERAL_URINE_TROUBLE);
 			dynStats("cor", 3);
 			cleanupAfterCombat();
@@ -2333,6 +2334,7 @@ use namespace CoC;
 
 			outputText("Satisfied, you redress and prepare to continue with your exploration.");
 			player.sexReward("no", "Dick");
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 

@@ -526,6 +526,7 @@ public class UniqueSexScenes extends BaseContent
 					player.sexReward("vaginalFluids","Dick");
 				else
 					player.sexReward("no", "Dick");
+				if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 				player.statStore.removeBuffs('Supercharged');
 				player.lust = 0;
 				statScreenRefresh();
@@ -568,6 +569,7 @@ public class UniqueSexScenes extends BaseContent
 							"You no longer have any need to stick around now that your vision is cleared, and your mind is no longer stuck in a fog. You decide to head back to your camp, satisfied.");
 					player.sexReward("saliva","Vaginal");
 				}
+				if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 				player.statStore.removeBuffs('Supercharged');
 				player.lust = 0;
 				statScreenRefresh();
@@ -584,6 +586,7 @@ public class UniqueSexScenes extends BaseContent
 			outputText("\"<i>Lick me clean you worm! Don’t you see how wet I am?!</i>\"\n\nBoth too terrified and supremely horny to refuse your command, your defeated foe begins to use its tongue to give your sensitive pussy a proper licking. Delighted by the sensations from both of your pussies, you feel like singing your pleasure and to your surprise a series of moans that sound like a song come out from your mouth as you ride orgasm after orgasm, splattering [monster his] crotch and face with your girl juice.\n\n");
 			outputText("Only once [monster his] " + monster.ballsDescriptLight() + " have shrunk to the point they look like a pair of raisins do you let go of what's left of [monster him].\n\nYou lick your lips feeling like you just had a five course meal fit for a queen as you leave the body of your passed out opponent on the ground at the mercy of other potential sexual predators.");
 			player.sexReward("cum");
+			if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 			statScreenRefresh();
 			cleanupAfterCombat();
 		}
@@ -625,6 +628,7 @@ public class UniqueSexScenes extends BaseContent
 			outputText("Only as you reach your third orgasm do you finally release your victim, ordering [monster him] to scram or else. As [monster he] does just that, you can still see your tail imprints on [monster his] neck, but you don't particularly care by this point. You head home quite satisfied.\n\n");
 			if (cock) player.sexReward("saliva", "Dick");
 			else player.sexReward("saliva", "Vaginal");
+			if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 			statScreenRefresh();
 			cleanupAfterCombat();
 		}
@@ -636,7 +640,8 @@ public class UniqueSexScenes extends BaseContent
 			outputText("Unable to wait any longer, you pull him to you, impaling your nectar drenched hole on his cock. You begin to slide yourself up and down, making lewd wet noises as you forcefully milk your former opponent's stamen. Pollination feels so wonderful! You fawn over him, moving into your drugged victim’s open arms and before long it’s hard to figure which of you is the most addicted, as you kiss him with the passion of a longtime lover. You break the sloppy kiss, your mouths still linked by a strand of saliva, as your mate finally bottoms out and fills your flower with his seed.\n\n");
 			outputText("Highly satisfied, you deposit him back on the ground with little ceremony, half conscious from the massive drugged induced orgasm your pollen claimed from him. You can’t help but hope it took, daydreaming of your children to come as you seal your vagina shut to prevent the load from escaping.");
 			player.sexReward("cum","Vaginal");
-			player.sexReward("vaginalFluids","Dick");
+			player.sexReward("vaginalFluids", "Dick");
+			if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 			statScreenRefresh();
 			player.knockUp(PregnancyStore.PREGNANCY_ALRAUNE, PregnancyStore.INCUBATION_ALRAUNE);
 			cleanupAfterCombat();
@@ -650,7 +655,8 @@ public class UniqueSexScenes extends BaseContent
 			outputText("She lazily gasps in surprise and delight as you insert yourself in her, filling her ass and cunt in just the perfect way with your thick vines. You aren't left wanting either, expertly fucking your pussy in a way only your own stamens can manage. You moan in unison with your partner as your stamens work both your and her holes in perfect synchronization. Nectar and pussy juice mix in the bath, as the pair of you reach orgasm after orgasm, pumping your respective bodies full of fluids. Reaching your peak for the last time with a shuddering cry, you slowly pull the girl out of your flower and deposit her back on the ground, leaving her unconscious but satisfied as you caress her belly still full of your semen.\n\n");
 			outputText("Your own belly isn’t any better, and you fantasise at the idea of giving birth hoping it took as you head back to camp.");
 			player.sexReward("cum","Vaginal");
-			player.sexReward("vaginalFluids","Dick");
+			player.sexReward("vaginalFluids", "Dick");
+			if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 			statScreenRefresh();
 			player.knockUp(PregnancyStore.PREGNANCY_ALRAUNE, PregnancyStore.INCUBATION_ALRAUNE);
 			cleanupAfterCombat();
@@ -808,6 +814,7 @@ public class UniqueSexScenes extends BaseContent
 					"You violate the mind broken woman for a good hour before leaving her unconscious on the ground like the overused heap of trash she is to bathe in the ink your many orgasms produced. It's very likely she will find even minotaurs to be too small for her for quite a while. " +
 					"That said, you return to camp satisfied.");
 			player.sexReward("vaginalFluids");
+			if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -822,6 +829,7 @@ public class UniqueSexScenes extends BaseContent
 					"You finally sigh satisfied and draw your unwilling toy out of your vaginal walls still covered from head to toe with your ink. " +
 					"\n\nYou laugh at it’s shocked expression, the scene is just too hilarious. Satisfied you throw your opponent away as you head back to camp.");
 			player.sexReward("no", "Vaginal");
+			if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -837,6 +845,7 @@ public class UniqueSexScenes extends BaseContent
 					"Well you still got plenty of energy left but might as well fuck something that's awake. You unplug your still hard cock from [monster his] asshole gasping as your cock sensitive flesh is exposed to the air again." +
 					" Without anything to plug it the excessive load of cum stashed in your victim's stomach surges out and dye the ground beneath [monster his] white. For good measure you clean your dripping penis on [themonster] ass and hops off back to camp.\n\n");
 			player.sexReward("no", "Dick");
+			if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 
@@ -871,6 +880,7 @@ public class UniqueSexScenes extends BaseContent
 			//We give both sex reward so to end player rut or heat in the event pc has either
 			player.sexReward("cum");
 			player.sexReward("vaginalFluids");
+			if (monster.hasPerk(PerkLib.EnemyTrueDemon)) player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 

@@ -342,6 +342,7 @@ public function loseOrSubmitToVapula():void {
 		else doNext(wakeUpAfterDemonGangBangs);//WAKE UP
 		player.sexReward("cum");
 		if (player.hasCock()) player.sexReward("vaginalFluids", "Dick");
+		player.fuckingWithDemons(5);
 		dynStats("lib", 1, "sen", 2, "cor", 3);
 		flags[kFLAGS.REBECCS_LAST_PLEA] = 0;
 	}
@@ -479,6 +480,7 @@ public function rapeZeVapula():void {
 		if (!recalling) {
 			player.sexReward("vaginalFluids", "Dick");
 			player.sexReward("saliva", "Dick");
+			player.fuckingWithDemons(5);
 		}
 		sharedEnd();
 	}
@@ -539,6 +541,7 @@ public function rapeZeVapula():void {
 		if (!recalling) {
 			player.sexReward("cum", "Vaginal");
 			player.sexReward("cum", "Anal");
+			player.fuckingWithDemons(5);
 			if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 		}
 		sharedEnd();

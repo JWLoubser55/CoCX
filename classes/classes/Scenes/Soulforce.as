@@ -1460,7 +1460,7 @@ public class Soulforce extends BaseContent
 			player.soulforce -= cost;
 			player.cor += change;
 			if (player.cor > 100) player.cor = 100;
-			if (player.cor < 0) player.cor = 0;
+			if (player.cor < -100) player.cor = -100;
 			statScreenRefresh();
 			flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT]++;
 		}

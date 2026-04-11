@@ -188,7 +188,8 @@ public class CeraphScene extends NPCAwareContent
 				sharedEnd();
 			}
 			function sharedEnd():void {
-				player.sexReward("vaginalFluids","Dick");
+				player.sexReward("vaginalFluids", "Dick");
+				player.fuckingWithDemons(1);
 				dynStats("lib", 3, "sen", 3, "cor", 1);
 				if (CoC.instance.inCombat)
 					cleanupAfterCombat();
@@ -246,6 +247,7 @@ public class CeraphScene extends NPCAwareContent
 			outputText("As you leave, you don't bother to spare a glance at the confused omnibus; she isn't worth your time.\n\n");
 			player.cuntChange(monster.cockArea(0), true);
 			player.sexReward("cum", "Vaginal");
+			player.fuckingWithDemons(1);
 			dynStats("lib", 3, "sen", 3, "cor", 1);
 			if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 32, 61); //Ceraph causes faster pregnancies
             if (CoC.instance.inCombat) cleanupAfterCombat();
@@ -815,7 +817,8 @@ public class CeraphScene extends NPCAwareContent
 			outputText("(Do you accept Ceraph's Offer?)");
 			//Y/N – remove 1 fetish level or +10 gems
 			doYesNo(ceraphsNiceOffer, cleanupAfterCombat);
-			player.sexReward("vaginalFluids","Dick");
+			player.sexReward("vaginalFluids", "Dick");
+			player.fuckingWithDemons(1);
 			dynStats("lib", 3, "sen", 3, "cor", 1);
 		}
 
@@ -1440,6 +1443,7 @@ public class CeraphScene extends NPCAwareContent
 			if (player.cor < 33) outputText(" and a little bit by yourself");
 			outputText(", you drop her like a discarded rag.  She moans and begins masturbating, half-insensate from the rough treatment.  You ignore her, get dressed, and get out of there before the mountain's beasts show up.  Ceraph is in for a wild night!");
 			player.sexReward("no", "Dick");
+			player.fuckingWithDemons(1);
             if (CoC.instance.inCombat)
                 cleanupAfterCombat();
 			else endEncounter();
@@ -1456,10 +1460,12 @@ public class CeraphScene extends NPCAwareContent
 			outputText("You buck into her with increasing aggression as she squeezes her legs together, clenching her inner walls against you as she draws out a long moan, desperately trying to milk you of everything you have to offer as she cums. Her juices lubricate you further as your cocks throb with increasing intensity, twitching in barely contained anticipation.[pg]");
 			outputText("Your three heads unleash a bellowing roar as you buck into her with all your might, shoving both your cocks as deep into her as you can reach, forcing her to take in every last ounce of cum as you unload it all into her. Her stomach deforms as she's helpless before the waves of jizz you deposit into her. Her belly bloats before you slowly pull out, your hot cum falling to the ground beneath you.[pg]");
 			outputText("You toss the used toy to the ground now that you're done with it, taking your walk back to camp");
-			player.sexReward("vaginalFluids","Dick");
+			player.sexReward("vaginalFluids", "Dick");
+			player.fuckingWithDemons(1);
 			if (CoC.instance.inCombat)
 				cleanupAfterCombat();
 			else endEncounter();
 		}
 	}
 }
+
