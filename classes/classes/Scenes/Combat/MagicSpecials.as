@@ -1024,6 +1024,14 @@ public class MagicSpecials extends BaseCombatContent {
 			}
 			favbd(bd, "Winter Rider");
 		}
+		if (player.racialScore(Races.CAVEWYRM) >= 10 && (player.weapon.isDuelingType() || player.weaponOff.isDuelingType() || player.weapon.isSwordType() || player.weaponOff.isSwordType() || player.weapon.isAxeType() || player.weaponOff.isAxeType()
+			|| player.weapon.isDaggerType() || player.weaponOff.isDaggerType() || player.weapon.isScytheType() || player.weaponOff.isScytheType() || player.weapon.isMaceHammerType() || player.weaponOff.isMaceHammerType())) {
+			bd = buttons.add("Nitroblade", nitroblade).hint("Coat your weapon with volatile cave wyrm acid making its impact randomly cause explosions which deal acid and fire damage! \n", "Nitroblade");
+			if (player.hasStatusEffect(StatusEffects.Nitroblade)) {
+				bd.disable("Your weapon is already coated with volatile cave wyrm acid!");
+			}
+			favbd(bd, "Nitroblade");
+		}
 		if (player.hasPerk(PerkLib.JobWarrior)) {
 			bd = buttons.add("WarriorRage", warriorsrage).hint("Throw yourself into a warrior's rage!  Greatly increases your strength, speed and fortitude! \n", "Warrior's Rage");
 			bd.requireWrath(50);
@@ -3780,6 +3788,18 @@ public class MagicSpecials extends BaseCombatContent {
 		var winterRiderDuration:Number = 10;
 		outputText("You focus the powers of winter onto your weapon coating it with a jagged layer of ice!\n\n");
 		player.createStatusEffect(StatusEffects.WinterRider,winterRiderDuration,0,0,0);
+		statScreenRefresh();
+		enemyAI();
+	}
+
+	public function nitroblade():void {
+		clearOutput();
+		var nitrobladeDuration:Number = 10;
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 1) nitrobladeDuration += 1;
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 2) nitrobladeDuration += 2;
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 3) nitrobladeDuration += 7;
+		outputText("You spit onto your weapon, coating it with a thick coat of glowing blue fluids.\n\n");
+		player.createStatusEffect(StatusEffects.Nitroblade,nitrobladeDuration,0,0,0);
 		statScreenRefresh();
 		enemyAI();
 	}

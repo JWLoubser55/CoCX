@@ -1184,6 +1184,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const NearWater:StatusEffectType                 = mkCombat("Near Water");
 		public static const NearbyPlants:StatusEffectType              = mkCombat("Nearby Plants");
 		public static const NecrosisDoT:StatusEffectType               = mkCombat("Necrosis DoT");
+		public static const Nitroblade:StatusEffectType       		   = mkCombat("Nitroblade");
 		public static const NoPlantsArea:StatusEffectType              = mkCombat("No Plants Area");
 		public static const NoFlee:StatusEffectType                    = mkCombat("NoFlee");
 		public static const OniRampage:StatusEffectType                = mkCombat("Oni Rampage");

@@ -1478,6 +1478,14 @@ use namespace CoC;
 		{
 			return hasStatusEffect(StatusEffects.WinterRider);//((weaponOff.isDuelingType() || weaponOff.isSwordType() || weaponOff.isAxeType() || weaponOff.isDaggerType() || weaponOff.isScytheType()) && )
 		}
+		public function nitrobladeActiveMain():Boolean
+		{
+			return ((weapon.isDuelingType() || weapon.isSwordType() || weapon.isAxeType() || weapon.isDaggerType() || weapon.isScytheType() || weapon.isMaceHammerType()) && hasStatusEffect(StatusEffects.Nitroblade));
+		}
+		public function nitrobladeActiveOff():Boolean
+		{
+			return ((weaponOff.isDuelingType() || weaponOff.isSwordType() || weaponOff.isAxeType() || weaponOff.isDaggerType() || weaponOff.isScytheType() || weaponOff.isMaceHammerType()) && hasStatusEffect(StatusEffects.Nitroblade));
+		}
 		public function mummyControlLimit():Number
 		{
 			var mummyCL:Number = 5;

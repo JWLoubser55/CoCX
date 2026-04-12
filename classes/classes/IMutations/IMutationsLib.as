@@ -57,6 +57,7 @@ public class IMutationsLib
 		public static const BlackHeartIM:IMutationPerkType = new BlackHeartMutation();
 		public static const BlazingHeartIM:IMutationPerkType = new BlazingHeartMutation();
 		public static const CatLikeNimblenessIM:IMutationPerkType = new CatLikeNimblenessMutation();
+		public static const CaveWyrmAcidIM:IMutationPerkType = new CaveWyrmAcidMutation();
 		public static const CaveWyrmLungsIM:IMutationPerkType = new CaveWyrmLungsMutation();
 		public static const DiamondHeartIM:IMutationPerkType = new DiamondHeartMutation();
 		public static const DisplacerMetabolismIM:IMutationPerkType = new DisplacerMetabolismMutation();

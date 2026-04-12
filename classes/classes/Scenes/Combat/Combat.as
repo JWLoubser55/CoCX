@@ -4005,6 +4005,16 @@ public class Combat extends BaseContent {
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
+		else if (player.nitrobladeActiveMain()) {
+			var damageF:Number = Math.round(damage * 0.5 * fireDamageBoostedByDao());
+			var damageA:Number = Math.round(damage * 0.5 * acidDamageBoostedByDao());
+			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
+			doFireDamage(damageF, true, true);
+			doAcidDamage(damageA, true, true);
+			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+			if (player.weapon == weapons.TIDAR) (player.weapon as Tidarion).afterStrike();
+			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+		}
         else if (isUnarmedCombatButDealFireDamage()) {
 			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
             if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
@@ -4362,6 +4372,15 @@ public class Combat extends BaseContent {
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
+		else if (player.nitrobladeActiveOff()) {
+			var damageF:Number = Math.round(damage * 0.5 * fireDamageBoostedByDao());
+			var damageA:Number = Math.round(damage * 0.5 * acidDamageBoostedByDao());
+			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
+			doFireDamage(damageF, true, true);
+			doAcidDamage(damageA, true, true);
+			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
+			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
+		}
         else if (player.weaponOff == weapons.MGSWORD) {
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
 			doMagicDamage(damage, true, true);
@@ -8000,6 +8019,18 @@ public class Combat extends BaseContent {
                         legendaryBeautifulWeaponsLustSelf = (rand(2) == 0) ? 0 : 1;
                         if (legendaryBeautifulWeaponsLustSelf > 0) dynStats("lus", -legendaryBeautifulWeaponsLustSelf);
                     }
+					//Nitroblade
+					if (player.nitrobladeActiveMain() && rand(100) > 74) {
+						var damageF:Number = Math.round(damage * 1.5 * fireDamageBoostedByDao());
+						var damageA:Number = Math.round(damage * 1.5 * acidDamageBoostedByDao());
+						if (monster.plural) {
+							damageF *= 5;
+							damageA *= 5;
+						}
+						outputText("  The fluids on your weapon ignite on impact creating a small explosion!");
+						doFireDamage(damageF, true, true);
+						doAcidDamage(damageA, true, true);
+					}
                     //Weapon Procs!
                     WeaponMeleeStatusProcsMain();
                 }
@@ -8565,6 +8596,18 @@ public class Combat extends BaseContent {
                         legendaryBeautifulWeaponsLustSelf = (rand(2) == 0) ? 0 : 1;
                         if (legendaryBeautifulWeaponsLustSelf > 0) dynStats("lus", -legendaryBeautifulWeaponsLustSelf);
                     }
+					//Nitroblade
+					if (player.nitrobladeActiveOff() && rand(100) > 74) {
+						var damageF:Number = Math.round(damage * 1.5 * fireDamageBoostedByDao());
+						var damageA:Number = Math.round(damage * 1.5 * acidDamageBoostedByDao());
+						if (monster.plural) {
+							damageF *= 5;
+							damageA *= 5;
+						}
+						outputText("  The fluids on your weapon ignite on impact creating a small explosion!");
+						doFireDamage(damageF, true, true);
+						doAcidDamage(damageA, true, true);
+					}
                     //Weapon Procs!
                     WeaponMeleeStatusProcsOff();
                 }
@@ -13693,6 +13736,12 @@ public class Combat extends BaseContent {
                 outputText("<b>Winter Rider effect wore off!</b>\n\n");
             } else player.addStatusValue(StatusEffects.WinterRider, 1, -1);
         }
+        if (player.hasStatusEffect(StatusEffects.Nitroblade)) {
+            if (player.statusEffectv1(StatusEffects.Nitroblade) <= 0) {
+                player.removeStatusEffect(StatusEffects.Nitroblade);
+                outputText("<b>Nitroblade effect wore off!</b>\n\n");
+            } else player.addStatusValue(StatusEffects.Nitroblade, 1, -1);
+        }
         if (player.hasStatusEffect(StatusEffects.Maleficium)) {
             if (player.statusEffectv1(StatusEffects.Maleficium) <= 0) {
                 player.removeStatusEffect(StatusEffects.Maleficium);
@@ -14893,6 +14942,9 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxPercentRegen += 10;
 		}
 		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) maxPercentRegen += (1 + player.perkv1(IMutationsLib.WendigoMetabolismIM));
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 1) {
+			maxPercentRegen -= 1;
+		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxPercentRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
 			var hshim1:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
@@ -15468,6 +15520,9 @@ public class Combat extends BaseContent {
         if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4) wrathregen += Math.round(player.maxWrath() * 0.005);
         if (player.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult += 1;
 		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) wrathregen += Math.round(player.maxWrath() * 0.05 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 1) {
+			wrathregen += Math.round(player.maxWrath() * 0.02);
+		}
 		if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) {
 			BonusWrathMult += 1;
 			if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4) BonusWrathMult += 4;

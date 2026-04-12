@@ -64,6 +64,7 @@ public class CaveWyrmRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.CaveWyrmLungsIM);
+		addMutation(IMutationsLib.CaveWyrmAcidIM);
 		
 		buildTier(10, "cave wyrm")
 				.namesTauric("cave wyrm", "cave wyrm-taur")
