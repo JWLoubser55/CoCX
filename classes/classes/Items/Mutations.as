@@ -1188,6 +1188,8 @@ public final class Mutations extends MutationsHelper {
 		}
 		player.createPerk(PerkLib.Soulless, 0, 0, 0, 0);
 		player.demonicenergy += 50;
+		if (player.hasStatusEffect(StatusEffects.ArigeanInfected)) player.removeStatusEffect(StatusEffects.ArigeanInfected);
+		if (player.hasPerk(PerkLib.WendigoCurse)) player.removePerk(PerkLib.WendigoCurse);
         outputText("That demon may have gotten you off, but it just wasn't enough.  Somehow, you're STILL hornier than you've ever been - you NEED to get off again.  Desperate, you begin ");
 		if (player.hasCock()) outputText("your cock dripping bead after dead of pre but never fully gushing out "+(player.hasVagina()?"while ":"")+"");
 		if (player.hasVagina()) outputText("your pussy gushes around you pistoning finger yet you fail to reach your peak");

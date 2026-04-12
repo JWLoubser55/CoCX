@@ -813,22 +813,26 @@ import classes.lists.Gender;
 					outputText("\n\nMeditating seems to have helped, and you feel more in control of yourself, despite Joy's antics.");
 					dynStats("lus", -30, "scale", false);
 					var cleanse:int = -2; //Corruption reduction - faster at high corruption
-					if (player.cor > 80)
+					if (player.cor > 60)
 						cleanse -= 3;
-					else if (player.cor > 60)
+					else if (player.cor > 20)
 						cleanse -= 2;
-					else if (player.cor > 40)
+					else if (player.cor > -20)
 						cleanse -= 1;
 					dynStats("cor", cleanse - player.countCockSocks("alabaster"));
-					if (player.str < 45) dynStats("str", 1); //Str boost to 45
-					if (player.tou < 45) dynStats("tou", 1); //Tou boost to 45
-					if (player.spe < 75) dynStats("spe", 1); //Speed boost to 75
-					if (player.inte < 80) dynStats("int", 1); //Int boost to 80
-					if (player.lib > 0) dynStats("lib", -1); //Libido lower to 15
+					player.trainStat("str", +1, player.trainStatCap("str",45));
+					player.trainStat("tou", +1, player.trainStatCap("tou",45));
+					player.trainStat("spe", +1, player.trainStatCap("spe",75));
+					player.trainStat("int", +1, player.trainStatCap("int",80));
+					player.trainStat("lib", +1, player.trainStatCap("lib",40));
 					flags[kFLAGS.JOJO_LAST_MEDITATION] = model.time.days;
 					if (flags[kFLAGS.JOY_INTELLIGENCE] < 50) flags[kFLAGS.JOY_INTELLIGENCE]++;
 				}
 				outputText("\n\nYou thank Joy for her help. She yawns, \"<i>Oh... Uh... Like... Anytime [name]...</i>\" she replies groggily, then begins walking towards the nearby stream, perhaps to spray some water on her face... You get up and go about your business.");
+				if (player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0) {
+					player.addStatusValue(StatusEffects.SoulCohesion, 1, -1);
+					outputText("\n\nYour damaged soul mend itself a little bit. Current Soul Cohesion: " + (100 - player.statusEffectv1(StatusEffects.SoulCohesion)) + "%");
+				}
 			}
 			else { //Epic Fail!
 				outputText("\n\nJoy just doesn't seem to be able to settle down; she keeps on squirming, wriggling her firm butt so that it slides tantalizingly across your crotch, bouncing idly in place. \"<i>This is, like, so boooring!</i>\" She complains. \"<i>I wanna have some *fun*, [name]! Come on, let's do something, like, naughty...</i>\" She audibly licks her lips at the thought, her tail looping affectionately around your neck.");

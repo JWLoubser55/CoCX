@@ -1468,4 +1468,3 @@ public class CeraphScene extends NPCAwareContent
 		}
 	}
 }
-

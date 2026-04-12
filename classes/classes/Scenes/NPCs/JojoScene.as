@@ -1100,11 +1100,11 @@ public function jojoFollowerMeditate(doClear:Boolean = true):void {
 		//Reduces lust
 		dynStats("lus", -30, "scale", false);
 		var cleanse:int = -2; //Corruption reduction - faster at high corruption
-		if (player.cor > 80)
+		if (player.cor > 60)
 			cleanse -= 3;
-		else if (player.cor > 60)
+		else if (player.cor > 20)
 			cleanse -= 2;
-		else if (player.cor > 40)
+		else if (player.cor > -20)
 			cleanse -= 1;
 		dynStats("cor", cleanse - player.countCockSocks("alabaster"));
 		player.trainStat("str", +1, player.trainStatCap("str",50));
@@ -1115,6 +1115,10 @@ public function jojoFollowerMeditate(doClear:Boolean = true):void {
 		player.trainStat("wis", +1, player.trainStatCap("wis",100));
 		flags[kFLAGS.JOJO_LAST_MEDITATION] = model.time.days;
 		player.addStatusValue(StatusEffects.JojoMeditationCount, 1, 1);
+		if (player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0) {
+			player.addStatusValue(StatusEffects.SoulCohesion, 1, -1);
+			outputText("\n\nYour damaged soul mend itself a little bit. Current Soul Cohesion: " + (100 - player.statusEffectv1(StatusEffects.SoulCohesion)) + "%");
+		}
 	}
 	endEncounter();
 }
@@ -2190,7 +2194,7 @@ public function repeatJojoEncounter():void {
 		outputText("\"<i>It seems that the agents of corruption have taken residence within the temple that is your body.</i>\", Jojo says flatly. \"<i>This is a most unfortunate development. There is no reason to despair as there are always ways to fight the corruption. However, great effort will be needed to combat this form of corruption and may leave lasting impressions upon you. If you are ready, we can purge your being of the rogue creatures of lust.</i>\"\n\n");
 		//Choices time!
 		menu();
-        addButton(0, "Meditate", SceneLib.jojoScene.meditateInForest);
+        addButton(0, "Meditate", meditateInForest);
         addButton(1, "Purge", SceneLib.jojoScene.wormRemoval).hint("Request him to purge the worms from your body.");
 		rapeButton(2, false);
         addButton(4, "Leave", explorer.done);
@@ -2200,7 +2204,7 @@ public function repeatJojoEncounter():void {
 	outputText("Jojo the monk appears before you, robes and soft white fur fluttering in the breeze.  He asks, \"<i>Are you ready for a meditation session?</i>\"");
 	//Choices time!
 	menu();
-    doYesNo(SceneLib.jojoScene.meditateInForest, explorer.done);
+    doYesNo(meditateInForest, explorer.done);
 	rapeButton(2, false);
 }
 
@@ -2225,6 +2229,11 @@ public function meditateInForest():void {
 	if (!player.hasStatusEffect(StatusEffects.JojoMeditationCount))
 		player.createStatusEffect(StatusEffects.JojoMeditationCount, 1, 0, 0, 0);
 	else player.addStatusValue(StatusEffects.JojoMeditationCount, 1, 1);
+	
+	if (player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0) {
+		player.addStatusValue(StatusEffects.SoulCohesion, 1, -2);
+		outputText("\n\nYour damaged soul mend itself a little bit. Current Soul Cohesion: " + (100 - player.statusEffectv1(StatusEffects.SoulCohesion)) + "%");
+	}
 
 	if (player.statusEffectv1(StatusEffects.JojoMeditationCount) >= 5) {
 		outputText("\n\nJojo nods respectfully at you when the meditation session is over and smiles.  ");

@@ -5924,7 +5924,8 @@ use namespace CoC;
 		}
 		public function loosingSoulCohesion(amnt:Number = 0):void {
 			var cohesionloss:Number = amnt;
-			if (statusEffectv2(StatusEffects.SoulCohesion) > 0) {
+			if (blockingSoulCohesionLoss() || hasPerk(PerkLib.ExanimationIII) || hasPerk(PerkLib.AlteredAnima)) cohesionloss = 0;
+			if (statusEffectv2(StatusEffects.SoulCohesion) > 0 && cohesionloss > 0) {
 				if (statusEffectv2(StatusEffects.SoulCohesion) > cohesionloss) {
 					addStatusValue(StatusEffects.SoulCohesion, 2, -cohesionloss);
 					cohesionloss = 0;
@@ -8191,8 +8192,11 @@ use namespace CoC;
 		}
 
 		public function blockingBodyTransformations():Boolean {
-			return hasPerk(PerkLib.TransformationImmunity) || hasPerk(PerkLib.TransformationImmunity2) || hasPerk(PerkLib.TransformationImmunityBeeHandmaiden) || hasPerk(PerkLib.Undeath) || hasPerk(PerkLib.WendigoCurse) || hasPerk(PerkLib.BlessingOfTheAncestorTree)
-				|| hasPerk(PerkLib.ExanimationI) || hasStatusEffect(StatusEffects.ArigeanInfected) || tailType == Tail.ARIGEAN_GREEN || tailType == Tail.ARIGEAN_RED || tailType == Tail.ARIGEAN_YELLOW || tailType == Tail.ARIGEAN_PRINCESS || hasItemEffect(IELib.TfImmunity)
+			return hasPerk(PerkLib.WendigoCurse) || hasPerk(PerkLib.ExanimationI) || hasStatusEffect(StatusEffects.ArigeanInfected) || tailType == Tail.ARIGEAN_GREEN || tailType == Tail.ARIGEAN_RED
+				|| tailType == Tail.ARIGEAN_YELLOW || tailType == Tail.ARIGEAN_PRINCESS || hasItemEffect(IELib.TfImmunity) || blockingSoulCohesionLoss();
+		}
+		public function blockingSoulCohesionLoss():Boolean {
+			return hasPerk(PerkLib.TransformationImmunity) || hasPerk(PerkLib.TransformationImmunity2) || hasPerk(PerkLib.TransformationImmunityBeeHandmaiden) || hasPerk(PerkLib.Undeath) || hasPerk(PerkLib.BlessingOfTheAncestorTree)
 				|| flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 2 || flags[kFLAGS.CURSE_OF_THE_JIANGSHI] == 3 || hasPerk(PerkLib.AlphaProtocol);
 		}
 
