@@ -1491,6 +1491,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			crit = true;
 			var buffMultiplier:Number = 0;
 			buffMultiplier += combat.bonusCriticalDamageFromMissingHP();
+			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) buffMultiplier += 1;
 			if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * combat.impaleMultiplier());
 			else damage *= 1.75 + buffMultiplier;
 		}
@@ -1656,6 +1657,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			crit = true;
 			var buffMultiplier:Number = 0;
 			buffMultiplier += combat.bonusCriticalDamageFromMissingHP();
+			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) buffMultiplier += 1;
 			if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * combat.impaleMultiplier());
 			else damage *= (1.75 + buffMultiplier);
 		}
@@ -1742,6 +1744,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			crit = true;
 			var buffMultiplier:Number = 0;
 			buffMultiplier += combat.bonusCriticalDamageFromMissingHP();
+			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) buffMultiplier += 1;
 			if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "Bow") buffMultiplier += 1;
 			if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * combat.impaleMultiplier());
 			else damage *= (critMulti + buffMultiplier);
@@ -2099,6 +2102,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var critMulti:Number = 1.75;
 		critChance += combat.combatPhysicalCritical();
 		critMulti += combat.bonusCriticalDamageFromMissingHP();
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) critMulti += 1;
 		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
 		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
@@ -2239,6 +2243,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			crit = true;
 			var buffMultiplier:Number = 0;
 			buffMultiplier += combat.bonusCriticalDamageFromMissingHP();
+			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) buffMultiplier += 1;
 			if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * combat.impaleMultiplier());
 			else damage *= (1.75 + buffMultiplier);
 		}

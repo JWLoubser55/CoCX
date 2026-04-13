@@ -82,6 +82,7 @@ public class DracoSweepSkill extends AbstractSoulSkill {
 			crit = true;
 			var buffMultiplier:Number = 0;
 			buffMultiplier += combat.bonusCriticalDamageFromMissingHP();
+			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) buffMultiplier += 1;
 			if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * combat.impaleMultiplier());
 			else damage *= (1.75 + buffMultiplier);
 		}

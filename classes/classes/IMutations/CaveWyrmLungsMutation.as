@@ -23,15 +23,18 @@ public class CaveWyrmLungsMutation extends IMutationPerkType
 			if (pTier >= 1){
 				descS += "Your lung has became accustomed to the presence of acid and fire in your biology improving the corrosiveness and volatility of your biochemical weapons. "
 			}
-            if (pTier == 1){
-                descS += "(+200% to azureflame breath / acid spit damage)";
+            if (pTier >= 1){
+                descS += "(+" + (pTier * 2) + "00% to azureflame breath / acid spit damage";
             }
-            if (pTier == 2){
-                descS += "(+400% to azureflame breath / acid spit damage, increase str/tou scaling by 100%) ";
+            if (pTier >= 2){
+                descS += ", increase str/tou scaling by 100%";
             }
-            if (pTier == 3){
-                descS += "(+600% to azureflame breath / acid spit damage, increase str/tou scaling by 100%, azureflame breath can cause stun like fire dragon breath, acid spit DoT increase phys dmg dealt to enemy by 90%, , allows to keep both specials even without been cave wyrm)";
+            if (pTier >= 3){
+                descS += ", azureflame breath can cause stun like fire dragon breath, acid spit DoT increase phys dmg dealt to enemy by 90%, allows to keep both specials even without been cave wyrm";
             }
+			if (pTier >= 1){
+				descS += ")";
+			}
             return descS;
         }
 

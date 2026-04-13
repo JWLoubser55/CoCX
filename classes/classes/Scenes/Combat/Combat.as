@@ -4008,6 +4008,16 @@ public class Combat extends BaseContent {
 		else if (player.nitrobladeActiveMain()) {
 			var damageF:Number = Math.round(damage * 0.5 * fireDamageBoostedByDao());
 			var damageA:Number = Math.round(damage * 0.5 * acidDamageBoostedByDao());
+			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 3) {
+				if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4) {
+					damageF *= 3;
+					damageA *= 3;
+				}
+				else {
+					damageF *= 2;
+					damageA *= 2;
+				}
+			}
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
 			doFireDamage(damageF, true, true);
 			doAcidDamage(damageA, true, true);
@@ -7584,6 +7594,7 @@ public class Combat extends BaseContent {
         if (player.weapon == weapons.MACSPEA) critDamage += 0.25;
         if (player.hasPerk(PerkLib.OrthodoxDuelist) && player.weapon.isDuelingType() && player.isNotHavingShieldCuzPerksNotWorkingOtherwise()) critDamage += 0.2;
 		if (player.hasStatusEffect(StatusEffects.AlterBindScroll4)) critDamage += 1;
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) critDamage += 1;
 		if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) critDamage *= impaleMultiplier();
         if (player.hasPerk(PerkLib.SkilledFighterEx) && calculateCrit() > 100) {
 			if (calculateCrit() > 200) critDamage *= 3;
@@ -7597,6 +7608,7 @@ public class Combat extends BaseContent {
         if ((player.weaponOff == weapons.WG_GAXE && monster.cor > 66) || (player.weaponOff == weapons.DE_GAXE && monster.cor < 33)) critDamage += 0.1;
         if (player.weaponOff == weapons.MACSPEA) critDamage += 0.25;
 		if (player.hasStatusEffect(StatusEffects.AlterBindScroll4)) critDamage += 1;
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveOff()) critDamage += 1;
 		if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) critDamage *= impaleMultiplier();
         if (player.hasPerk(PerkLib.SkilledFighterEx) && calculateCrit() > 100) {
 			if (calculateCrit() > 200) critDamage *= 3;
@@ -8020,16 +8032,30 @@ public class Combat extends BaseContent {
                         if (legendaryBeautifulWeaponsLustSelf > 0) dynStats("lus", -legendaryBeautifulWeaponsLustSelf);
                     }
 					//Nitroblade
-					if (player.nitrobladeActiveMain() && rand(100) > 74) {
-						var damageF:Number = Math.round(damage * 1.5 * fireDamageBoostedByDao());
-						var damageA:Number = Math.round(damage * 1.5 * acidDamageBoostedByDao());
-						if (monster.plural) {
-							damageF *= 5;
-							damageA *= 5;
+					if (player.nitrobladeActiveMain()) {
+						var chanceNb:Number = 74;
+						if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4) chanceNb -= 10;
+						if (rand(100) > chanceNb) {
+							var damageF:Number = Math.round(damage * 1.5 * fireDamageBoostedByDao());
+							var damageA:Number = Math.round(damage * 1.5 * acidDamageBoostedByDao());
+							if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 3) {
+								if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4) {
+									damageF *= 3;
+									damageA *= 3;
+								}
+								else {
+									damageF *= 2;
+									damageA *= 2;
+								}
+							}
+							if (monster.plural) {
+								damageF *= 5;
+								damageA *= 5;
+							}
+							outputText("  The fluids on your weapon ignite on impact creating a small explosion!");
+							doFireDamage(damageF, true, true);
+							doAcidDamage(damageA, true, true);
 						}
-						outputText("  The fluids on your weapon ignite on impact creating a small explosion!");
-						doFireDamage(damageF, true, true);
-						doAcidDamage(damageA, true, true);
 					}
                     //Weapon Procs!
                     WeaponMeleeStatusProcsMain();
@@ -8597,16 +8623,30 @@ public class Combat extends BaseContent {
                         if (legendaryBeautifulWeaponsLustSelf > 0) dynStats("lus", -legendaryBeautifulWeaponsLustSelf);
                     }
 					//Nitroblade
-					if (player.nitrobladeActiveOff() && rand(100) > 74) {
-						var damageF:Number = Math.round(damage * 1.5 * fireDamageBoostedByDao());
-						var damageA:Number = Math.round(damage * 1.5 * acidDamageBoostedByDao());
-						if (monster.plural) {
-							damageF *= 5;
-							damageA *= 5;
+					if (player.nitrobladeActiveOff()) {
+						var chanceNb:Number = 74;
+						if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4) chanceNb -= 10;
+						if (rand(100) > chanceNb) {
+							var damageF:Number = Math.round(damage * 1.5 * fireDamageBoostedByDao());
+							var damageA:Number = Math.round(damage * 1.5 * acidDamageBoostedByDao());
+							if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 3) {
+								if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4) {
+									damageF *= 3;
+									damageA *= 3;
+								}
+								else {
+									damageF *= 2;
+									damageA *= 2;
+								}
+							}
+							if (monster.plural) {
+								damageF *= 5;
+								damageA *= 5;
+							}
+							outputText("  The fluids on your weapon ignite on impact creating a small explosion!");
+							doFireDamage(damageF, true, true);
+							doAcidDamage(damageA, true, true);
 						}
-						outputText("  The fluids on your weapon ignite on impact creating a small explosion!");
-						doFireDamage(damageF, true, true);
-						doAcidDamage(damageA, true, true);
 					}
                     //Weapon Procs!
                     WeaponMeleeStatusProcsOff();
@@ -11141,6 +11181,7 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.GoblinOvariesIM) >= 4) dddd += 0.1;
 			damage *= dddd;
 		}
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 2 && (player.wrath > player.wrath100 * 0.9)) damage *= (1 + (0.25 * (player.perkv1(IMutationsLib.CaveWyrmAcidIM) - 1)));
         if (monster.hasStatusEffect(StatusEffects.WoundPoison)) damage *= 1+(monster.statusEffectv1(StatusEffects.WoundPoison)/100);
         if (player.perkv1(IMutationsLib.AlphaHowlIM) >= 3) {
             var packmultiplier:Number = 1.0;
@@ -14943,7 +14984,8 @@ public class Combat extends BaseContent {
 		}
 		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) maxPercentRegen += (1 + player.perkv1(IMutationsLib.WendigoMetabolismIM));
 		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 1) {
-			maxPercentRegen -= 1;
+			maxPercentRegen -= player.perkv1(IMutationsLib.CaveWyrmAcidIM);
+			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 3) maxPercentRegen -= (player.perkv1(IMutationsLib.CaveWyrmAcidIM) - 2);
 		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxPercentRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
@@ -15521,7 +15563,9 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult += 1;
 		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) wrathregen += Math.round(player.maxWrath() * 0.05 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 1) {
-			wrathregen += Math.round(player.maxWrath() * 0.02);
+			var cwaim:Number = player.perkv1(IMutationsLib.CaveWyrmAcidIM);
+			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 3) cwaim += (player.perkv1(IMutationsLib.CaveWyrmAcidIM) - 2);
+			wrathregen += Math.round(player.maxWrath() * 0.02 * cwaim);
 		}
 		if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) {
 			BonusWrathMult += 1;
@@ -21042,4 +21086,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

@@ -356,6 +356,10 @@ public class Changelog extends BaseContent
 			outputText("-Meditationg with Jojo/Joy can restore a tiny bit of Soul Cohesion (at rate ~1% per hour of meditating).\n");
 			outputText("-New M. Special: Nitroblade. Usable by been Cave Wyrm. Effect: As Flame blade but instead grants a random 25% chance for the weapon to cause explosion on impact dealing tripled fire and acid damage. The explosion is an area of effect. Usable on Daggers, D.Swords, Swords, Axes, Scythes, Maces/Hammers.\n");
 			outputText("-New mutation perk: Cave Wyrm Acid. Req. having free bloodstream mutation slot, Cave Wyrm race. Effects: Your fluids are a highly volatile acidic compound. You can burn hp to gain wrath periodically at the rate of 1% to 2%.\n");
+			outputText("-New mutation perk: Cave Wyrm Acid (Primitive). Req. Cave Wyrm Acid and lvl 30+. Effects: Your fluids are a highly volatile acidic compound. You can burn hp to gain wrath periodically at the rate of 2% to 4%. While wrath is above 90% increases physical damage by 25%.\n");
+			outputText("-New mutation perk: Cave Wyrm Acid (Evolved). Req. Cave Wyrm Acid (Primitive) and lvl 60+. Effects: Your fluids are a highly volatile acidic compound. You can burn hp to gain wrath periodically at the rate of 4% to 8%. While wrath is above 90% increases physical damage by 50%. Increase Nitroblade damage by 100%.\n");
+			outputText("-New mutation perk: Cave Wyrm Acid (Final Form). Req. Cave Wyrm Acid (Evolved) and lvl 90+. Effects: Your fluids are a highly volatile acidic compound. You can burn hp to gain wrath periodically at the rate of 6% to 12%. While wrath is above 90% increases physical damage by 75%. Increase Nitroblade damage by 200%. ");
+			outputText("While affected by Nitroblade the acid sharpens the edge and cleans it of grime increasing critical damage by 1x. Nitroblade acid is even more volatile, increasing the chance of explosion by 10%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -371,9 +375,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New mutation perk: Cave Wyrm Acid (Primitive). Req. Cave Wyrm Acid and lvl 30+. Effects: 
-			outputText("-\n");//New mutation perk: Cave Wyrm Acid (Evolved). Req. Cave Wyrm Acid (Primitive) and lvl 60+. Effects: 
-			outputText("-\n");//New mutation perk: Cave Wyrm Acid (Final Form). Req. Cave Wyrm Acid (Evolved) and lvl 90+. Effects: 
 			outputText("-\n");
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
