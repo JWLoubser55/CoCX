@@ -6180,8 +6180,7 @@ public class MagicSpecials extends BaseCombatContent {
 		outputText("\n\n");
 		if (player.hasPerk(PerkLib.EromancyMaster)) combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
 		doNext(playerMenu);
-		if(!combat.monsterDefeatCheck())
-			enemyAI();
+		if(!combat.monsterDefeatCheck()) enemyAI();
 	}
 
 	public function mindThrust():void {
@@ -6190,11 +6189,6 @@ public class MagicSpecials extends BaseCombatContent {
 		useMana(100, USEFATG_MAGIC_NOBM);
 		combat.darkRitualCheckDamage();
 		var damage:Number = (scalingBonusIntelligence() * spellMod());
-		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 1) {
-			damage += Math.round(scalingBonusToughness() * 0.1 * player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM));
-			if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage += Math.round(scalingBonusToughness() * 0.1);
-		}
-		damage *= combat.psychicDamageBoostedByDao();
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
@@ -6204,6 +6198,8 @@ public class MagicSpecials extends BaseCombatContent {
 			crit = true;
 			damage *= 1.75;
 		}
+		damage += combat.sharedKinesisMidpart(crit);
+		damage *= combat.psychicDamageBoostedByDao();
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.hasPerk(PerkLib.MindbreakerBrain1toX)) damage*=1+(0.5*(1+player.perkv1(PerkLib.MindbreakerBrain1toX)));
@@ -6226,11 +6222,19 @@ public class MagicSpecials extends BaseCombatContent {
 		if (PsionicEmpowermentBonus < 1) PsionicEmpowermentBonus=0;
 		if (PsionicEmpowermentBonus > 5) PsionicEmpowermentBonus=5;
 		PsionicEmpowermentBonus = Math.round(PsionicEmpowermentBonus);
-		if (player.hasPerk(PerkLib.PsionicEmpowerment)) duration -= PsionicEmpowermentBonus;
+		if (player.hasPerk(PerkLib.PsionicEmpowerment)) duration += PsionicEmpowermentBonus;
 		outputText("You assault your opponent’s mind with lewd thoughts, locking them into a blissful daze.");
 		player.createStatusEffect(StatusEffects.CooldownSpellMindBlast,14-PsionicEmpowermentBonus,0,0,0);
-		monster.createStatusEffect(StatusEffects.Stunned, duration,0,0,0);
-		enemyAI();
+		monster.createStatusEffect(StatusEffects.Stunned, duration, 0, 0, 0);
+		var lustDmg:Number = 0;
+		var crit:Boolean = false;
+		var critChance:int = 5;
+		critChance += combatMagicalCritical();
+		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+		if (rand(100) < critChance) crit = true;
+		lustDmg += combat.sharedKinesisMidpart(crit);
+		monster.teased(Math.round(monster.lustVuln * lustDmg));
+		if(!combat.monsterDefeatCheck()) enemyAI();
 	}
 
 	public function mirrorImage():void {

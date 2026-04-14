@@ -1418,7 +1418,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (flags[kFLAGS.SAMIRAH_HYPNOSIS] == 4 || flags[kFLAGS.SAMIRAH_HYPNOSIS] == 2) flags[kFLAGS.SAMIRAH_HYPNOSIS]++;
 				//Soul Cohesion restoration
 				if (player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0) {
-					player.addStatusValue(StatusEffects.SoulCohesion, 1, -51);
+					player.addStatusValue(StatusEffects.SoulCohesion, 1, -1);
 					if (player.statusEffectv1(StatusEffects.SoulCohesion) < 0) player.changeStatusValue(StatusEffects.SoulCohesion, 1, 0);
 				}
 				//Soul Arena Gauntlet reset
@@ -3547,4 +3547,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}
