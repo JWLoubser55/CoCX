@@ -1982,4 +1982,4 @@ use namespace CoC;
 			addButton(14, "Leave", cleanupAfterCombat);
 		}
 	}
-}
+}

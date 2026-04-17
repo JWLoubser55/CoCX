@@ -1861,6 +1861,14 @@ public class Combat extends BaseContent {
         }
 		if (player.hasStatusEffect(StatusEffects.SanguineHaste)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] += 1;
 		if (player.weapon.isDual()) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= 2;
+        if (player.statStore.hasBuff("AsuraForm")) {
+			var AFM:Number = 3;
+            if (player.hasPerk(PerkLib.AsuraStrength)) AFM += 1;
+			if (player.hasPerk(PerkLib.LikeAnAsuraBoss)) AFM += 1;
+			if (player.hasPerk(PerkLib.ItsZerkingTime)) AFM += 1;
+			if ((player.isUnarmedCombat() && player.hasFourArms()) || player.weapon.isDual()) AFM *= 0.5;
+            flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] *= AFM;
+        }
         attack1();
 		if (!player.weaponOff.isNothing) {
 			if (flags[kFLAGS.MULTIATTACK_STYLE_OFF] >= 0) {
@@ -1893,6 +1901,14 @@ public class Combat extends BaseContent {
 			}
 			if (player.hasStatusEffect(StatusEffects.SanguineHaste)) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] += 1;
 			if (player.weaponOff.isDual()) flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= 2;
+			if (player.statStore.hasBuff("AsuraForm")) {
+				var AFO:Number = 3;
+				if (player.hasPerk(PerkLib.AsuraStrength)) AFO += 1;
+				if (player.hasPerk(PerkLib.LikeAnAsuraBoss)) AFO += 1;
+				if (player.hasPerk(PerkLib.ItsZerkingTime)) AFO += 1;
+				if ((player.isUnarmedCombat() && player.hasFourArms()) || player.weaponOff.isDual()) AFO *= 0.5;
+				flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] *= AFO;
+			}
 			attack2();
 		}
     }
@@ -7163,14 +7179,6 @@ public class Combat extends BaseContent {
 			if (player.hasKeyItem("Powboy") >= 0) damage *= 1.15;
 			if (player.hasKeyItem("M.G.S. bracer") >= 0) damage *= 1.2;
 		}
-        if (player.statStore.hasBuff("AsuraForm")) {
-			var AFAAM:Number = 3;
-            if (player.hasPerk(PerkLib.AsuraStrength)) AFAAM += 1;
-			if (player.hasPerk(PerkLib.LikeAnAsuraBoss)) AFAAM += 1;
-			if (player.hasPerk(PerkLib.ItsZerkingTime)) AFAAM += 1;
-			if (player.isUnarmedCombat() && player.hasFourArms()) AFAAM *= 0.5;
-            damage *= AFAAM;
-        }
 		if (SceneLib.urtaQuest.isUrta()) damage *= 2;
 		damage *= meleePhysicalForce();
 		return damage;
@@ -7282,14 +7290,6 @@ public class Combat extends BaseContent {
 			if (player.hasKeyItem("Powboy") >= 0) damage *= 1.15;
 			if (player.hasKeyItem("M.G.S. bracer") >= 0) damage *= 1.2;
 		}
-        if (player.statStore.hasBuff("AsuraForm")) {
-			var AFAAM:Number = 3;
-            if (player.hasPerk(PerkLib.AsuraStrength)) AFAAM += 1;
-			if (player.hasPerk(PerkLib.LikeAnAsuraBoss)) AFAAM += 1;
-			if (player.hasPerk(PerkLib.ItsZerkingTime)) AFAAM += 1;
-			if (player.isUnarmedCombat() && player.hasFourArms()) AFAAM *= 0.5;
-            damage *= AFAAM;
-        }
 		damage *= meleePhysicalForce();
 		return damage;
 	}
@@ -15510,14 +15510,13 @@ public class Combat extends BaseContent {
             pc.WrathChange(gainedwrath);
         }
 		else {
-			if (player.hasPerk(PerkLib.AbsoluteStrength)) gainedwrath += wrathregeneration2();
-			else if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4 && player.wrath < Math.round(player.maxWrath()*0.1)) gainedwrath += Math.round(player.maxWrath()*0.02);
-			else {
-				var LostWrathPerTick:Number = player.maxWrath();
-				LostWrathPerTick *= -0.6;
-				LostWrathPerTick = Math.round(LostWrathPerTick);
-				gainedwrath += LostWrathPerTick;
-			}
+			if (player.hasPerk(PerkLib.AbsoluteStrength)) 
+			var LostWrathPerTick:Number = player.maxWrath();
+			LostWrathPerTick *= -0.6;
+			LostWrathPerTick = Math.round(LostWrathPerTick);
+			if (player.hasPerk(PerkLib.AbsoluteStrength)) LostWrathPerTick = 0;
+			gainedwrath += LostWrathPerTick;
+			gainedwrath += wrathregeneration2();
             pc.WrathChange(gainedwrath);
         }
     }
@@ -15561,6 +15560,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.AsuraToughness)) wrathregen += Math.round(player.maxWrath() * 0.005);
         if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4) wrathregen += Math.round(player.maxWrath() * 0.005);
         if (player.hasPerk(PerkLib.BerserkerArmor)) BonusWrathMult += 1;
+		if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4 && player.wrath < Math.round(player.maxWrath()*0.1)) wrathregen += Math.round(player.maxWrath()*0.02);
 		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) wrathregen += Math.round(player.maxWrath() * 0.05 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 1) {
 			var cwaim:Number = player.perkv1(IMutationsLib.CaveWyrmAcidIM);
