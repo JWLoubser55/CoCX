@@ -123,7 +123,7 @@ public class Horns extends BodyPart {
 			if (player.horns.count >= 2) {
 				if (CoC.instance.transformations.FaceRhino.isPresent()) desc += "A second horns sprouts from your forehead just above the horns on your nose.";
 				else desc += "A single horn sprouts from your forehead. It is conical and resembles a rhino's horn.";
-				desc += "You estimate it to be about seven inches long.";
+				desc += " You estimate it to be about " + (player.horns.count >= 3 ? "nine":"seven") + " inches long.";
 			} else {
 				desc += "A single horn sprouts from your forehead. It is conical and resembles a rhino's horn. You estimate it to be about six inches long.";
 			}

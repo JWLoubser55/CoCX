@@ -913,6 +913,23 @@ public class EarsTransformations extends MutationsHelper {
 				return player.ears.type === Ears.BAROMETZ;
 			}
 	);
+
+	public const EarsRhino: Transformation = new SimpleTransformation("Rhino Ears",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You feel an odd uncomfortable sensation in your ears. Reaching up you find your ears shifting into an open tube shape, once they’re done you flick them around, enjoying the sensation of your new ears swishing through the air. <b>You now have rhino ears.</b>";
+
+				player.ears.type = Ears.RHINO;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EarsMem.getMemory(EarsMem.RHINO));
+			},
+			// is present
+			function (): Boolean {
+				return player.ears.type === Ears.RHINO;
+			}
+	);
 	/*
   */
 }

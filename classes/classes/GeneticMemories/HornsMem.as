@@ -317,6 +317,17 @@ package classes.GeneticMemories {
 		  }
 	  });
 
+	  public static const RHINO:int = _partid++;
+	  EnumValue.add(Memories, RHINO, "RHINO", {
+		  id: "Rhino Horns",
+		  name: "Rhino Horns",
+		  cost: 100,
+		  title: "Rhino Horns",
+		  transformation: function(): Transformation {
+			  return CoC.instance.transformations.HornsRhino;
+		  }
+	  });
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

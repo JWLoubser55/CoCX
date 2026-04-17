@@ -423,6 +423,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const EarsAutomataCat: Transformation 		= ears.EarsAutomataCat.registerTf(AS_EARS, AE_AUTOMATA);
 	public const EarsAutomataBunny: Transformation 		= ears.EarsAutomataBunny.registerTf(AS_EARS, AE_AUTOMATA);
 	public const EarsBarometz: Transformation 			= ears.EarsBarometz.registerTf(AS_EARS, AE_BAROMETZ);
+	public const EarsRhino: Transformation 				= ears.EarsRhino.registerTf(AS_EARS, AE_RHINO);
 
 
 //EYES
@@ -695,6 +696,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const HornsRam: Transformation 					= horns.HornsRam.registerTf(AS_HORNS, AE_BAROMETZ);
     public const HornsVerdantRam: Transformation 			= horns.HornsVerdantRam.registerTf(AS_HORNS, AE_BAROMETZ);
     public const HornsHollow: Transformation 				= horns.HornsHollow.registerTf(AS_HORNS, AE_HOLLOW);
+    public const HornsRhino: Transformation 				= horns.HornsRhino.registerTf(AS_HORNS, AE_RHINO);
 
 
 //LOWER BODY ( LEGS )
@@ -1064,6 +1066,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const TailCable: Transformation               		= tail.TailCable.registerTf(AS_TAIL, AE_AUTOMATA);
     public const TailBarometz: Transformation               	= tail.TailBarometz.registerTf(AS_TAIL, AE_BAROMETZ);
 	public const TailHollow: Transformation               		= tail.TailHollow.registerTf(AS_TAIL, AE_HOLLOW);
+	public const TailRhino: Transformation               		= tail.TailRhino.registerTf(AS_TAIL, AE_RHINO);
 
 	/**
 	 * @param tailCount target tail count

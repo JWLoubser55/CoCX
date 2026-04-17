@@ -361,9 +361,9 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Cave Wyrm Acid (Final Form). Req. Cave Wyrm Acid (Evolved) and lvl 90+. Effects: Your fluids are a highly volatile acidic compound. You can burn hp to gain wrath periodically at the rate of 6% to 12%. While wrath is above 90% increases physical damage by 75%. Increase Nitroblade damage by 200%. ");
 			outputText("While affected by Nitroblade the acid sharpens the edge and cleans it of grime increasing critical damage by 1x. Nitroblade acid is even more volatile, increasing the chance of explosion by 10%.\n");
 			outputText("-Eldritch Magic Abilities are now treated as esper skills and scales as such. Mind Black special been corrected on forgetting it suppose to deal lust damage too and it promised to remember now.\n");
-			outputText("-Reverted Asura Form change for replacing extra sperate attack with increased damage bonus. Also accounted for recent changes like dual wield system rework or quad wield.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Reverted Asura Form change for replacing extra seperate attacks with increased damage bonus. Also accounted for recent changes like dual wield system rework or quad wield.\n");
+			outputText("-Maretian Sanitary Inspection routine control found Rhino Steak sold in Black Cock food tent at Bazaar are now safe to consumeand allowed to selling them again.\n");
+			outputText("-Rhino race score calculations slight update and racial bonus changes. First tier would req. 8+ pts and give better bonuses: +90% to str/tou multi, -20% to int multi, -40 to sens, +100 to max hp, +5 to armor, +2 to m. res.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

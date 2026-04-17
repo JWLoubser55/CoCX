@@ -695,6 +695,34 @@ public class HornsTransformations extends MutationsHelper {
 				return player.horns.type === Horns.HOLLOW;
 			}
 	);
+
+	public const HornsRhino: Transformation = new SimpleTransformation("Rhino Horns",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				if (player.horns.type != Horns.RHINO) {
+					desc += "You begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the sharp nub of a horns protruding from the center of your forehead and growing. Once it'sits complete you estimate it to be about six inches long. If it were sharper and a little longer it would make a useful natural weapon.";
+					player.horns.count = 1;
+				}
+				if (player.horns.type == Horns.RHINO) {
+					if (player.horns.count == 2) desc += "Your horns get a bit bigger. Upheaval is now more effective.";
+					else {
+						desc += "You begin to feel an annoying tingling sensation at the edge of your nose, above your field of vision. Reaching up you feel the sharp edge of a curved horns growing out the edge of your face. The itchy tingle continues as you feel both of your horns become sharp and tall. You estimate your older horns to be a mere seven inches and your new horns to be around a foot long. They’ll be useful natural weapons.";
+						desc += "\n<b>(Gained physical special: Upheaval! Any time you lose your rhino face or horns, you will lose this ability.)</b>";
+					}
+					player.horns.count += 1;
+				}
+
+				player.horns.type = Horns.RHINO;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(HornsMem.getMemory(HornsMem.RHINO));
+			},
+			// is present
+			function (): Boolean {
+				return player.horns.type === Horns.RHINO && player.horns.count >= 3;
+			}
+	);
 	/*
   */
 

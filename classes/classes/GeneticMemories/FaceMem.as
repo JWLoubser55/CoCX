@@ -460,7 +460,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceRedPanda;
 			}
-		});/*
+		});
 
 		public static const RHINO:int = _partid++;
 		EnumValue.add(Memories, RHINO, "RHINO", {
@@ -471,7 +471,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceRhino;
 			}
-		});*/
+		});
 
 		public static const SALAMANDER_FANGS:int = _partid++;
 		EnumValue.add(Memories, SALAMANDER_FANGS, "SALAMANDER_FANGS", {

@@ -1659,7 +1659,6 @@ public class TailTransformations extends MutationsHelper {
 
 				TransformationUtils.removeLowerBodyIfIncompatible(player, doOutput);
 
-
 				desc += "you suddenly feel like your tailbone is in pain, like something is bursting out of it, suddenly the pain subsides and you feel something resting atop your ass, eventually you stop noticing it. <b>You now have a moth abdomen.</b>";
 				player.tailType = Tail.MOTH_ABDOMEN;
 				player.tailCount = 1;
@@ -1779,6 +1778,27 @@ public class TailTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.tailType === Tail.HOLLOW;
+			}
+	);
+
+	public const TailRhino: Transformation = new SimpleTransformation("Rhino Tail",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.removeLowerBodyIfIncompatible(player, doOutput);
+
+				if (player.tailType > 0) desc += "You [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a long ropy tail with a little [fur color] tuft at the end. <b>You now have a rhino tail.</b>";
+				else desc += "You feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a long ropy tail with a little [fur color] tuft on the end. <b>You now have a rhino tail.</b>";
+				player.tailType = Tail.RHINO;
+				player.tailCount = 1;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.RHINO));
+			},
+			// is present
+			function (): Boolean {
+				return player.tailType === Tail.RHINO;
 			}
 	);
 	/*

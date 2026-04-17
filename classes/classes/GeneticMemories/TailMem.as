@@ -906,6 +906,17 @@ import classes.CoC;
 			}
 		});
 
+		public static const RHINO:int = _partid++;
+		EnumValue.add(Memories, RHINO, "RHINO", {
+			id: "Rhino Tail",
+			name: "Rhino Tail",
+			cost: function():Number { return getTailCost(player.tailCount, 1);},
+			title: "Rhino",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TailRhino;
+			}
+		});
+
 		public static function getTailCost(startTails:int, endTails:int):int {
 			return Math.abs(startTails - endTails)*100 || 100;
 		}
