@@ -63,6 +63,7 @@ public class EasterBunnyRace extends Race {
 				.hasPerk(PerkLib.EasterBunnyBalls, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.BunnysDescendant, PerkLib.BloodlineBunny);
 		addMutation(IMutationsLib.EasterBunnyEggBagIM);
 		addMutation(IMutationsLib.MightyLegsIM);
 		

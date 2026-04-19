@@ -52,6 +52,7 @@ public class RhinoRace extends Race {
 				.hasPerk(PerkLib.ThickSkin, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.RhinosDescendant, PerkLib.BloodlineRhino);
 		addMutation(IMutationsLib.EquineMuscleIM);
 		
 		buildTier(8, "rhino")

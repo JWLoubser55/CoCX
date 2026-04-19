@@ -63,6 +63,7 @@ public class CaveWyrmRace extends Race {
 				.hasPerk(PerkLib.MonstrousRegeneration, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.CaveWyrmsDescendant, PerkLib.BloodlineCaveWyrm);
 		addMutation(IMutationsLib.CaveWyrmLungsIM);
 		addMutation(IMutationsLib.CaveWyrmAcidIM);
 		

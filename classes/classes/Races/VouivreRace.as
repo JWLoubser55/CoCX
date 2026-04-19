@@ -73,6 +73,7 @@ public class VouivreRace extends Race {
 		addScoresAfter(11)
 				.hasPerk(PerkLib.DragonFireBreath,+1);
 		
+		addBloodline(PerkLib.LamiasDescendant, PerkLib.BloodlineLamia);
 		addMutation(IMutationsLib.VenomGlandsIM);
 		addMutation(IMutationsLib.DrakeLungsIM);
 		addMutation(IMutationsLib.MightyLowerHalfIM);

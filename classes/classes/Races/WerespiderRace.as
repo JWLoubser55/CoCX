@@ -56,6 +56,7 @@ public class WerespiderRace extends Race {
 				.hasPerk(PerkLib.Araneathropy, +2, -8)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.WerespidersDescendant,PerkLib.BloodlineWerespider);
 		//addMutation(IMutationsLib.AnanasaBirthrightIM);
 		addMutation(IMutationsLib.HollowFangsIM);
 		addMutation(IMutationsLib.VampiricBloodstreamIM);
