@@ -1766,6 +1766,18 @@ import classes.lists.Gender;
 				player.tailType = Tail.RHINO;
 				changes++;
 			}
+			//Change legs to rhino
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.HOOFED_NO_FUR) {
+				outputText("\n\n");
+				CoC.instance.transformations.LowerBodyHoofedNoFurBipedal.applyEffect();
+				changes++;
+			}
+			//Change arms to rhino
+			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.RHINO) {
+				outputText("\n\n");
+				CoC.instance.transformations.ArmsRhino.applyEffect();
+				changes++;
+			}
 			//Gain rhino horns
 			//Tier 1
 			if (rand(3) == 0 && changes < changeLimit && player.faceType == Face.RHINO && player.horns.type != Horns.RHINO && player.horns.type != Horns.ORCHID) {

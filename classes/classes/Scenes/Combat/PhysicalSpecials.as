@@ -98,7 +98,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					favbd(bd, "Charge");
 				}
 				if (!player.hasPerk(PerkLib.ElementalBody)) {
-					if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BAROMETZ) {
+					if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.HOOFED_NO_FUR || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BAROMETZ) {
 						if (player.hasStatusEffect(StatusEffects.Gallop)) bd = buttons.add("Gallop(Stop)", gallopingStop).hint("Stop galloping.");
 						else {
 							bd = buttons.add("Gallop", gallopingStart).hint("Start galloping. Deals 50% more damage with physical specials but disable melee and range base attacks.");
@@ -255,8 +255,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 					//Upheaval - requires rhino horns
 					if (player.horns.type == Horns.RHINO && player.horns.count >= 2 && player.faceType == Face.RHINO) {
 						bd = buttons.add("Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n");
-						if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(30));
-						else bd.requireFatigue(physicalSpecialsCost(15));
+						if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(60));
+						else bd.requireFatigue(physicalSpecialsCost(30));
 						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 						favbd(bd, "Upheaval");
 					}
@@ -1220,8 +1220,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 				//Upheaval - requires rhino horns
 				if (player.horns.type == Horns.RHINO && player.horns.count >= 2 && player.faceType == Face.RHINO) {
 					bd = buttons.add("Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n");
-					if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(30));
-					else bd.requireFatigue(physicalSpecialsCost(15));
+					if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(60));
+					else bd.requireFatigue(physicalSpecialsCost(30));
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
 				//Grapple
@@ -6491,36 +6491,26 @@ public class PhysicalSpecials extends BaseCombatContent {
 			enemyAI();
 			return;
 		}
-		if (player.hasPerk(PerkLib.PhantomStrike)) fatigue(physicalSpecialsCost(30), USEFATG_PHYSICAL);
-		else fatigue(physicalSpecialsCost(15), USEFATG_PHYSICAL);
+		if (player.hasPerk(PerkLib.PhantomStrike)) fatigue(physicalSpecialsCost(60), USEFATG_PHYSICAL);
+		else fatigue(physicalSpecialsCost(30), USEFATG_PHYSICAL);
 		var damage:Number = 0;
 		if (combat.checkConcentration()) return; //Amily concentration
-		//Bigger horns = better success chance.
-		//Small horns - 60% hit
-		if(player.horns.count >= 6 && player.horns.count < 12) {
-			var chance:Number = 60;
-		}
-		//bigger horns - 75% hit
-		if(player.horns.count >= 12 && player.horns.count < 20) {
-			chance = 75;
-		}
-		//huge horns - 90% hit
-		if(player.horns.count >= 20) {
-			chance = 80;
-		}
-		//Vala dodgy bitch!
-		if(monster is Vala) {
-			chance = 20;
-		}
+		var chance:Number = 70;
+		if (player.horns.count >= 3) chance += 20;
 		//Account for monster speed - up to -50%.
-		chance -= monster.spe/2;
+		var ms:Number = monster.spe / 2;
+		if (ms > 50) ms = 50;
+		chance -= ms;
 		//Account for player speed - up to +50%
-		chance += player.spe/2;
+		var ps:Number = player.spe/2;
+		if (ps > 50) ps = 50;
+		chance += ps;
+		//Vala dodgy bitch!
+		if (monster is Vala) chance = 20;
 		//Hit & calculation
 		if(chance >= rand(100)) {
-			damage = 0;
-			damage += ((combat.meleeUnarmedDamageNoLagSingle() + player.horns.count) * 1.2); //As normal attack + horns length bonus
-			if(damage < 0) damage = 5;
+			damage += (combat.meleeUnarmedDamageNoLagSingle() * (player.horns.count + 0.2)); //As normal attack + horns length bonus
+			if(damage < 0) damage = 1;
 			//Normal
 			outputText("You hurl yourself towards [enemy] with your head low and jerk your head upward, every muscle flexing as you send [enemy] flying. ");
 			//Critical
@@ -6536,47 +6526,43 @@ public class PhysicalSpecials extends BaseCombatContent {
 				crit = true;
 				damage *= 1.75;
 			}
-			//CAP 'DAT SHIT
-			if (damage > player.level * 10 + 100) damage = player.level * 10 + 100;
-			if (damage > 0) {
-				if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) {
-					if (player.isRaceCached(Races.MOUSE, 2) && player.countRings(jewelries.INMORNG)) damage *= 2.2;
-					else damage *= 2;
-				}
-				damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
-				//Round it off
-				damage = int(damage);
-				if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
-				if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
-				if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-				if (player.hasStatusEffect(StatusEffects.Gallop)) {
-					if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
-					else damage *= 1.5;
-				}
-				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
-				if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) {
-					damage = Math.round(damage * combat.fireDamageBoostedByDao());
-					doFireDamage(damage, true, true);
-				}
+			if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) {
+				if (player.isRaceCached(Races.MOUSE, 2) && player.countRings(jewelries.INMORNG)) damage *= 2.2;
+				else damage *= 2;
+			}
+			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
+			//Round it off
+			damage = int(damage);
+			if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
+			if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
+			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+			if (player.hasStatusEffect(StatusEffects.Gallop)) {
+				if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 4) damage *= 2;
+				else damage *= 1.5;
+			}
+			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
+			if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) {
+				damage = Math.round(damage * combat.fireDamageBoostedByDao());
+				doFireDamage(damage, true, true);
+			}
+			else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
+				doDamage(damage, true, true);
+				damage = Math.round(damage * combat.fireDamageBoostedByDao());
+				doFireDamage(Math.round(damage*0.1), true, true);
+				if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
+				damage = Math.round(damage * 1.1);
+			}
+			else doDamage(damage, true, true);
+			if (player.hasPerk(PerkLib.PhantomStrike)) {
+				if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) doFireDamage(damage, true, true);
 				else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
 					doDamage(damage, true, true);
-					damage = Math.round(damage * combat.fireDamageBoostedByDao());
 					doFireDamage(Math.round(damage*0.1), true, true);
 					if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 					damage = Math.round(damage * 1.1);
 				}
 				else doDamage(damage, true, true);
-				if (player.hasPerk(PerkLib.PhantomStrike)) {
-					if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) doFireDamage(damage, true, true);
-					else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
-						doDamage(damage, true, true);
-						doFireDamage(Math.round(damage*0.1), true, true);
-						if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
-						damage = Math.round(damage * 1.1);
-					}
-					else doDamage(damage, true, true);
-					damage *= 2;
-				}
+				damage *= 2;
 			}
 			if (crit) outputText("<b>Critical hit! </b>");
 			outputText("\n\n");
@@ -8423,4 +8409,4 @@ public class PhysicalSpecials extends BaseCombatContent {
 	}
 }
 
-}
+}

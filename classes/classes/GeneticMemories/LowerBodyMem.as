@@ -619,6 +619,14 @@ package classes.GeneticMemories {
           title: "Banshee Legs",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyBanshee}});
 
+      public static const HOOFED_NO_FUR: int = _partid++;
+      EnumValue.add(Memories, HOOFED_NO_FUR, "HOOFED_NO_FUR", {
+          id: "Hoofed w/o fur Lower Body",name: "Hooves no fur (Legs)",
+          cost: 100,
+          title: "Hoofed no fur",
+          unlockText: "Now you can metamorph into the Taur variant of any lower body part you unlocked when available!",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyHoofedNoFurToggle(true)}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

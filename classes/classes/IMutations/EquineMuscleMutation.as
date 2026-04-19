@@ -45,8 +45,8 @@ public class EquineMuscleMutation extends IMutationPerkType
                 if (pTier == 0){
                     this.requireMusclesMutationSlot()
                     .requireCustomFunction(function (player:Player):Boolean {
-                        return player.isAnyRaceCached(Races.HORSE, Races.CENTAUR, Races.UNICORN, Races.ALICORN, Races.LAQUINE, Races.BAROMETZ, Races.DEER);
-                    }, "Horse/Centaur/Unicorn/Bicorn/Alicorn/Nightmare/Laquine/Barometz/Deer race");
+                        return player.isAnyRaceCached(Races.HORSE, Races.CENTAUR, Races.UNICORN, Races.ALICORN, Races.LAQUINE, Races.BAROMETZ, Races.DEER, Races.RHINO);
+                    }, "Horse/Centaur/Unicorn/Bicorn/Alicorn/Nightmare/Laquine/Barometz/Deer/Rhino race");
                 }
                 else{
                     var pLvl:int = pTier * 30;

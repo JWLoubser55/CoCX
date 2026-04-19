@@ -100,6 +100,47 @@ public class LowerBodyTransformations extends MutationsHelper {
 		)
 	}
 
+	public function LowerBodyHoofedNoFur(legCount: int = undefined, toggleTaur: Boolean = false): Transformation {
+		return new SimpleTransformation("Hoofed no fur Lower Body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (!legCount) legCount = player.legCount;
+				var desc: String = "";
+				if(Metamorph.checkTaurUnlock() && player.lowerBody == LowerBody.HOOFED_NO_FUR ){
+					if (toggleTaur && legCount === 2) legCount = 4;
+					else if (toggleTaur && legCount >= 4) legCount = 2;
+					else if (legCount === 1) legCount = 2;
+				}
+				// Case 1: Morph Taur legs without changing leg count
+				if (player.isTaur() && legCount >= 4) {
+					desc += "You stagger as your " + Utils.num2Text(player.legCount) + " [feet] change, curling up into painful angry lumps of flesh. They get tighter and tighter, harder and harder, until at last they solidify into hooves! Your skin begins to feel duller, almost... thicker. <b>You now have hooves in place of your [feet]!</b>";
+				}
+				// Case 2: Bipedal TF
+				else if (legCount === 2) {
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyBipedal, doOutput);
+
+					// Display TF text if the player is obtaining this part instead of only changing leg count
+					if (player.lowerBody !== LowerBody.HOOFED_NO_FUR) {
+						desc += "\n\nYou stagger as your pair of [feet] change, curling up into painful angry lumps of flesh. They get tighter and tighter, harder and harder, until at last they solidify into hooves! Your skin begins to feel duller, almost... thicker. <b>You now have hooves in place of your [feet]!</b>";
+					}
+				}
+				// Case 3: Taur TF
+				else if (!player.isTaur() && legCount >= 4) {
+					transformations.LowerBodyTaur(LowerBody.HOOFED_NO_FUR).applyEffect(doOutput);
+				}
+
+				if (doOutput) outputText(desc);
+				player.lowerBody = LowerBody.HOOFED_NO_FUR;
+				player.legCount = legCount;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.HOOFED_NO_FUR));
+			},
+			// is present
+			function (): Boolean {
+				return !Metamorph.checkTaurUnlock() && player.lowerBody === LowerBody.HOOFED_NO_FUR;
+			}
+		)
+	}
+
 	public function LowerBodyKirin(legCount: int = undefined, toggleTaur: Boolean = false): Transformation {
 		return new SimpleTransformation("Kirin Hoofed Lower Body",
 			// apply effect

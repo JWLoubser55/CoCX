@@ -632,6 +632,12 @@ public class Arms extends SaveableBodyPart {
 		claw: true
 	});
 
+	public static const RHINO:int = 82;
+	EnumValue.add(Types, RHINO, "RHINO", {
+		name:"rhino",
+		appearanceDesc: "Your arms are covered by extremely thick, tough skin, ending in hands with paw pads and three fingers ending with hoof-like fingernails."
+	});
+
 	public static function canFly(id: int): Boolean {
 		return Types[id].canFly || false;
 	}

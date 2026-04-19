@@ -198,6 +198,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const ArmsHollow: Transformation 			= arms.ArmsHollow.registerTf(AS_ARMS, AE_HOLLOW);
     public const ArmsLich: Transformation 				= arms.ArmsLich.registerTf(AS_ARMS, AE_LICH);
     public const ArmsBanshee: Transformation 			= arms.ArmsBanshee.registerTf(AS_ARMS, AE_BANSHEE);
+    public const ArmsRhino: Transformation 				= arms.ArmsRhino.registerTf(AS_ARMS, AE_RHINO);
 
 
 //ASS
@@ -778,6 +779,9 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public function LowerBodyBarometz(legCount: int = undefined): Transformation 				{ return lowerBody.LowerBodyBarometz(legCount); }
 	public const LowerBodyBarometzBipedal:Transformation = LowerBodyBarometz(2).registerTf(AS_LEGS, AE_BAROMETZ);
     public function LowerBodyBarometzToggle(toggleTaur:Boolean = false): Transformation 		{ return lowerBody.LowerBodyBarometz(player.legCount, toggleTaur); }
+    public function LowerBodyHoofedNoFur(legCount: int = undefined): Transformation 			{ return lowerBody.LowerBodyHoofedNoFur(legCount); }
+	public const LowerBodyHoofedNoFurBipedal:Transformation = LowerBodyHoofedNoFur(2).registerTf(AS_LEGS, AE_RHINO);
+    public function LowerBodyHoofedNoFurToggle(toggleTaur:Boolean = false): Transformation 		{ return lowerBody.LowerBodyHoofedNoFur(player.legCount, toggleTaur); }
     public const LowerBodyAnt: Transformation 					= lowerBody.LowerBodyAnt.registerTf(AS_LEGS, AE_ANT);
     public const LowerBodyAtlach: Transformation 				= lowerBody.LowerBodyAtlach.registerTf(AS_LEGS, AE_ATLACH_NACHA);
     public const LowerBodyAtlachNacha: Transformation 			= lowerBody.LowerBodyAtlachNacha.registerTf(AS_LEGS, AE_ATLACH_NACHA);
@@ -1330,4 +1334,4 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 		trace("\n"+dump.join("\n"));
 	}
 }
-}
+}

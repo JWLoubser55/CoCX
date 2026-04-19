@@ -216,7 +216,7 @@ public class Changelog extends BaseContent
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig); Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event); Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event); Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes, Huge Octuple Yggdrasil Wings (from transforming with World Tree help); Werespider eyes, Werespider arms, Werespider Legs, Werepspider fangs (from transforming after been bitten by werespider); Barometz Legs, Barometz Ears, Barometz Tail, Ram Horns, Verdant Ram Horns, Runic Patterns, ");
 			outputText("Barometz Cock (from Horned fruit), Automata Tail Cable (from automata event); Hollow Mask (Face), Hollow Eyes, Hollow Horns, Hollow Arms, Hollow Lower Body, Hollow Tail, Soulforce Scaring (from Hollowfication events); Deer Blush, Deer Eyes, Iceheart Tatoo (from Cervinium); Ushi Onna Face, Ushi Onna Horns, Ushi Onna Tail, Ushi Onna Arms, Ushi Onna Lower Body, Ushi Oni Tattoo (from Thick Green Onna Gossamer), ");
-			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf)\n");
+			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf); Hoofed no fur Legs, Rhino Arms (from Rhino Steak)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
 			//outputText("-New HB Mech upgrade options: Armor Plating (+armor), Leather Insulation (+magic resistance), Agility (+base melee atk dmg), Dragon's Breath Flamer (fire dmg special), Scatter Laser (lightning dmg special), Rapid Reload (+base ranged atk dmg), Internal Systems (increase mech SF capacity and lower it consumption during high activity)\n");
 			//outputText(", Camouflage Mode (allow to enter 1 turn long camouflage opening option to use Sneak Attack (melee & range) specials), Invisibility Mode (the same as Camouflage Mode but can last until PC run out of SF to keep it active or deactivate it manualy / upgrade to decrease SF consumption)");
@@ -362,9 +362,9 @@ public class Changelog extends BaseContent
 			outputText("While affected by Nitroblade the acid sharpens the edge and cleans it of grime increasing critical damage by 1x. Nitroblade acid is even more volatile, increasing the chance of explosion by 10%.\n");
 			outputText("-Eldritch Magic Abilities are now treated as esper skills and scales as such. Mind Black special been corrected on forgetting it suppose to deal lust damage too and it promised to remember now.\n");
 			outputText("-Reverted Asura Form change for replacing extra seperate attacks with increased damage bonus. Also accounted for recent changes like dual wield system rework or quad wield.\n");
-			outputText("-Maretian Sanitary Inspection routine control found Rhino Steak sold in Black Cock food tent at Bazaar are now safe to consumeand allowed to selling them again.\n");
+			outputText("-Maretian Sanitary Inspection routine control found that Rhino Steak sold in Black Cock food tent at Bazaar are now safe to consume and so they allowed selling them again.\n");
 			outputText("-Rhino race score calculations slight update and racial bonus changes. First tier would req. 8+ pts and give better bonuses: +90% to str/tou multi, -20% to int multi, -40 to sens, +100 to max hp, +5 to armor, +2 to m. res.\n");
-			outputText("-\n");
+			outputText("-Upheaval special updated to modern standards other p.specials follows + 2x increased fatigue cost.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -1062,7 +1062,7 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Black Blood. Req. having free bloodstream mutation slot, one of races: Jiangshi, Mummy, Lich. Effects: Your undead blood gives you a 10% resistance to cold.\n");
 			outputText("-New mutation perk: Blazing Heart. Req. having free heart mutation slot, Hinezumi, Salamander, Phoenix, Hellcat and Fire Snail race. Effects: Gain permanent weakness to cold and fire resistance. Increase fire damage by 25%.\n");
 			outputText("-New mutation perk: Drake Blood. Req. having free bloodstream mutation slot; Dragon, Frost Wyrm, Sea Dragon and Jabberwocky race. Effects: Dragon strong vitality grants mana, soulforce and health regeneration 1%.\n");
-			outputText("-New mutation perk: Equine Muscle. Req. having free musculature mutation slot, one of races: horse-morph, centaur, unicorn, bicorn, alicorn, nightmare, laquine. Effects: +25% to all Physical Ability damage. Gallop cost 10% less fatigue.\n");
+			outputText("-New mutation perk: Equine Muscle. Req. having free musculature mutation slot, one of races: horse-morph, centaur, unicorn, bicorn, alicorn, nightmare, laquine, barometz, deer, rhino. Effects: +25% to all Physical Ability damage. Gallop cost 10% less fatigue.\n");
 			outputText("-New mutation perk: Fiendish Balls. Req. having free metabolism mutation slot, demon or imp race. Effects: Increase Virility by 40%.\n");
 			outputText("-New mutation perk: Fiendish Metabolism. Req. having free metabolism mutation slot, demon or imp race. Effects: You may no longer gain nourishment from anything short of cum, milk and girl juice. If you have the demonic hunger perk, gain a stacking bonus of 10% to tease damage up to 50%.\n");
 			outputText("-New mutation perk: Fiendish Ovaries. Req. having free metabolism mutation slot, demon race. Effects: Increase Fertility by 40%.\n");

@@ -868,6 +868,17 @@ import classes.CoC;
 			}
 		});
 
+		public static const RHINO:int = _partid++;
+		EnumValue.add(Memories, RHINO, "RHINO", {
+			id: "Rhino Arms",
+			name: "Rhino Arms",
+			cost: 100,
+			title: "Rhino",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.ArmsRhino;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

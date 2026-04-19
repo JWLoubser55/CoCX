@@ -1537,6 +1537,25 @@ public class ArmsTransformations extends MutationsHelper {
 				return player.arms.type === Arms.SPECTRAL_CLAWS;
 			}
 	);
+
+	public const ArmsRhino: Transformation = new SimpleTransformation("Rhino Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
+
+				desc += "Your arms and hands skin start to thicken and as you poke at your palms you jolt up as they become extremely sensitive turning into paw pads heck your nails transformed into hoof like claws so no wonder you felt it that much. <b>You now have thick skinned arms.</b>";
+				player.arms.type = Arms.RHINO;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.RHINO));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.RHINO;
+			}
+	);
 	/*
   */
 }
