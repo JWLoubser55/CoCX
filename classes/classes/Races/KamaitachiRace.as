@@ -54,6 +54,7 @@ public class KamaitachiRace extends Race {
 				.furColor1(ANY(KamaitachiHairColors), +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.MustelidsDescendant, PerkLib.BloodlineMustelid);
 		addMutation(IMutationsLib.HeartOfTheStormIM);
 		
 		buildTier(14, "kamaitachi")

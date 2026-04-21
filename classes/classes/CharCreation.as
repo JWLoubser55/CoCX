@@ -1472,6 +1472,8 @@ import classes.Scenes.Combat.CombatAbility;
 			else addButtonDisabled(8, "Plant", "You already have this bloodline!");
 			if (!player.hasPerk(PerkLib.BloodlineLamia)) addButton(10, "Lamia", confirmBloodline5, PerkLib.LamiasDescendant).hint("(+2 to apophis / couatl / gorgon / marilith / naga / vouivre score)");
 			else addButtonDisabled(10, "Lamia", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineMustelid)) addButton(11, "Mustelid", confirmBloodline5, PerkLib.MustelidsDescendant).hint("(+2 to ferret / kamaitachi score)");
+			else addButtonDisabled(11, "Mustelid", "You already have this bloodline!");
 			addButton(4, "-1-", chooseBloodline1);
 			addButton(9, "-4-", chooseBloodline4);
 			addButton(14, "None", noBloodlineAtAllCuzYouAscendedTooManyTimesAlready).hint("You either cannot add a new unstable bloodline, or you have a stable bloodline. (It mean you only will get some bonus perk points for start instead of new bloodline.)");
@@ -1679,6 +1681,9 @@ import classes.Scenes.Combat.CombatAbility;
 					break;
 				case PerkLib.LamiasDescendant:
 					outputText("Your ancestor was a lamia race member?");
+					break;
+				case PerkLib.MustelidsDescendant:
+					outputText("Your ancestor was a mustelid race member?");
 					break;
 				default:
 					outputText("Your ancestor was a common human?");
@@ -3515,6 +3520,21 @@ import classes.Scenes.Combat.CombatAbility;
 				player.createPerk(PerkLib.BloodlineCanine,0,0,0,1);
 				bloodlineACQ2();
 			}
+			else if (player.hasPerk(PerkLib.PrimatesDescendant)) {
+				player.removePerk(PerkLib.PrimatesDescendant);
+				player.createPerk(PerkLib.BloodlinePrimate,0,0,0,1);
+				bloodlineACQ2();
+			}
+			else if (player.hasPerk(PerkLib.LamiasDescendant)) {
+				player.removePerk(PerkLib.LamiasDescendant);
+				player.createPerk(PerkLib.BloodlineLamia,0,0,0,1);
+				bloodlineACQ2();
+			}
+			else if (player.hasPerk(PerkLib.MustelidsDescendant)) {
+				player.removePerk(PerkLib.MustelidsDescendant);
+				player.createPerk(PerkLib.BloodlineMustelid,0,0,0,1);
+				bloodlineACQ2();
+			}
 			else if (player.hasPerk(PerkLib.DemonsDescendant)) {
 				player.removePerk(PerkLib.DemonsDescendant);
 				player.createPerk(PerkLib.BloodlineDemon,0,0,0,1);
@@ -4300,4 +4320,4 @@ import classes.Scenes.Combat.CombatAbility;
 				return false;
 		}
 	} // what the fuck are those weird comments here? ^
-}
+}
