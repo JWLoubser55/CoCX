@@ -11414,6 +11414,7 @@ public class Combat extends BaseContent {
 			}
 			if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 4 && !monster.hasStatusEffect(StatusEffects.BurnDoT) && rand(5) == 0) monster.createStatusEffect(StatusEffects.BurnDoT,5,0.02,0,0);
 		}
+		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4 && player.hasStatusEffect(StatusEffects.Lustzerking)) damage *= 1.5;
 		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
@@ -15535,6 +15536,7 @@ public class Combat extends BaseContent {
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) wrathregen += 1;
         if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 3) wrathregen += 4;
         if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) wrathregen += 4;
+        if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4) wrathregen += 16;
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 2 && player.racialScore(Races.HUMAN) > 17) wrathregen += 2;
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 3 && player.racialScore(Races.HUMAN) > 17) wrathregen += 2;
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 4 && player.racialScore(Races.HUMAN) > 17) wrathregen += 2;
@@ -21086,4 +21088,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

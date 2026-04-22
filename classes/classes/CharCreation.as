@@ -3505,6 +3505,11 @@ import classes.Scenes.Combat.CombatAbility;
 				player.createPerk(PerkLib.BloodlineMoth,0,0,0,1);
 				bloodlineACQ2();
 			}
+			else if (player.hasPerk(PerkLib.GhostsDescendant)) {
+				player.removePerk(PerkLib.GhostsDescendant);
+				player.createPerk(PerkLib.BloodlineGhost,0,0,0,1);
+				bloodlineACQ2();
+			}
 			else if (player.hasPerk(PerkLib.UrsinesDescendant)) {
 				player.removePerk(PerkLib.UrsinesDescendant);
 				player.createPerk(PerkLib.BloodlineUrsine,0,0,0,1);

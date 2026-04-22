@@ -365,7 +365,8 @@ public class Changelog extends BaseContent
 			outputText("-Maretian Sanitary Inspection routine control found that Rhino Steak sold in Black Cock food tent at Bazaar are now safe to consume and so they allowed selling them again.\n");
 			outputText("-Rhino race score calculations slight update and racial bonus changes. First tier would req. 8+ pts and give better bonuses: +90% to str/tou multi, -20% to int multi, -40 to sens, +100 to max hp, +5 to armor, +2 to m. res.\n");
 			outputText("-Upheaval special updated to modern standards other p.specials follows + 2x increased fatigue cost.\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Salamander Adrenal Glands (Final Form). Req. Salamander Adrenal Glands (Evolved) perk and lvl 90+. Effects: Your Salamander adrenal glands are giving you slight boosts to your natural stamina, strength, speed and libido, extend lustzerker and berserker duration by 20 turns, allows for either or both to trigger on combat start, triple bonus to attack, ");
+			outputText(" boost natural wrath generation rate. While lustzerking fire damage is increased by 50%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

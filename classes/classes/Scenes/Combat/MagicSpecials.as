@@ -44,6 +44,7 @@ public class MagicSpecials extends BaseCombatContent {
 			}
 			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 2) berzerkDuration += 1;
 			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) berzerkDuration += 4;
+			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4) berzerkDuration += 5;
 			if (player.hasPerk(PerkLib.SubzeroLustfulFury) && player.hasPerk(PerkLib.EndlessRage)) {
 				player.HP -= Math.round(player.maxOverHP() * berzerkerandlustzerkerHPdrain());
 				if (!player.hasPerk(PerkLib.EndlessRage)) player.createStatusEffect(StatusEffects.Berzerking,(berzerkDuration-1),0,0,0);
@@ -64,6 +65,7 @@ public class MagicSpecials extends BaseCombatContent {
 			}
 			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 2) lustzerkDuration += 1;
 			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) lustzerkDuration += 4;
+			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4) lustzerkDuration += 5;
 			if (player.hasPerk(PerkLib.SubzeroLustfulFury) && player.hasPerk(PerkLib.EndlessRage)) {
 				player.HP -= Math.round(player.maxOverHP() * berzerkerandlustzerkerHPdrain());
 				if (!player.hasPerk(PerkLib.EndlessRage)) player.createStatusEffect(StatusEffects.Lustzerking,(lustzerkDuration-1),0,0,0);
@@ -3540,6 +3542,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var berzerkDuration:Number = 10;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 2) berzerkDuration += 2;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) berzerkDuration += 8;
+		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4) berzerkDuration += 10;
 		if (player.hasPerk(PerkLib.ColderFury)) {
 			outputText("You roar and unleash your savage fury in order to destroy your foe!\n\n");
 		}
@@ -3556,6 +3559,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var berzerkDuration:Number = 10;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 2) berzerkDuration += 2;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) berzerkDuration += 8;
+		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4) berzerkDuration += 10;
 		if (player.hasPerk(PerkLib.ColderFury)) {
 			outputText("You roar and unleash your savage fury in order to destroy your foe!\n\n");
 		}
@@ -3631,6 +3635,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var lustzerkDuration:Number = 10;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 2) lustzerkDuration += 2;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) lustzerkDuration += 8;
+		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4) lustzerkDuration += 10;
 		if (player.hasPerk(PerkLib.ColderLust)) {
 			outputText("You roar and unleash your lustful fury in order to destroy your foe!\n\n");
 		}
@@ -3647,6 +3652,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var lustzerkDuration:Number = 10;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 2) lustzerkDuration += 2;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) lustzerkDuration += 8;
+		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4) lustzerkDuration += 10;
 		if (player.hasPerk(PerkLib.ColderLust)) {
 			outputText("You roar and unleash your lustful fury in order to destroy your foe!\n\n");
 		}
@@ -3765,6 +3771,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 1) flameBladeDuration += 1;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 2) flameBladeDuration += 2;
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) flameBladeDuration += 7;
+		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4) flameBladeDuration += 10;
 		outputText("Your run "+((player.racialScore(Races.KITSHOO) >= 12 && player.tail.type == Tail.KITSHOO)?"one of your tails":"your tail")+" across your weapon igniting it with raging flames.\n\n");
 		player.createStatusEffect(StatusEffects.FlameBlade,flameBladeDuration,0,0,0);
 		statScreenRefresh();
@@ -3798,6 +3805,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 1) nitrobladeDuration += 1;
 		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 2) nitrobladeDuration += 2;
 		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 3) nitrobladeDuration += 7;
+		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4) nitrobladeDuration += 10;
 		outputText("You spit onto your weapon, coating it with a thick coat of glowing blue fluids.\n\n");
 		player.createStatusEffect(StatusEffects.Nitroblade,nitrobladeDuration,0,0,0);
 		statScreenRefresh();
