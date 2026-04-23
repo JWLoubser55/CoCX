@@ -15511,7 +15511,6 @@ public class Combat extends BaseContent {
             pc.WrathChange(gainedwrath);
         }
 		else {
-			if (player.hasPerk(PerkLib.AbsoluteStrength)) 
 			var LostWrathPerTick:Number = player.maxWrath();
 			LostWrathPerTick *= -0.6;
 			LostWrathPerTick = Math.round(LostWrathPerTick);
