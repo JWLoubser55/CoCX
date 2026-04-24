@@ -65,7 +65,9 @@ public class AzazelRace extends Race {
 							return body.player.furColor == "immaculate white";
 						}, +1)
 				.height(LESS_THAN(48), +1)
-				.corruption(0, +3)
+				.corruption(AT_MOST(0), +1)
+				.corruption(AT_MOST(-50), +1)
+				.corruption(AT_MOST(-100), +1)
 				.hasPerk(PerkLib.InnerPhylactery, +5)
 				.hasPerk(PerkLib.TransformationImmunity2, +3)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
