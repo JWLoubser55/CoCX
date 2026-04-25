@@ -1006,6 +1006,9 @@ public class PerkLib
 		public static const CrushingCoil:PerkType = mk("Crushing Coil", "Crushing Coil",
 				"Grapple now has a chance for critical damage.",
 				"You've chosen the 'Crushing Coil' perk. Grapple now has a chance for critical damage.");
+		public static const BoomingVoice:PerkType = mk("Booming Voice", "Booming Voice",
+				"Increase the potency of all breath weapons, shout and sound based ability by 25% when outdoors. Throat abilities cooldowns are reduced by 1 increment.",
+				"You've chosen the 'Booming Voice' perk. Increase the potency of all breath weapons, shout and sound based ability by 25% when outdoors. Throat abilities cooldowns are reduced by 1 increment.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1020,9 +1023,6 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8497,6 +8497,11 @@ public class PerkLib
                     .requireTou(30)
                     .requireSpe(30);
             Constrict.requirePerk(JobBeastlord)
+					.requireLevel(6)
+					.requireStr(30)
+                    .requireTou(30)
+                    .requireSpe(30);
+            BoomingVoice.requirePerk(JobBeastlord)
 					.requireLevel(6)
 					.requireStr(30)
                     .requireTou(30)

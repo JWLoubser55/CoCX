@@ -7071,34 +7071,34 @@ use namespace CoC;
 			if(hasStatusEffect(StatusEffects.EzekielCurse) && EvangelineFollower.EvangelineAffectionMeter >= 3 && hasPerk(PerkLib.EzekielBlessing)) {
 				removeStatusEffect(StatusEffects.EzekielCurse);
 			}
-			if(hasStatusEffect(StatusEffects.DragonBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 3) {
+			if(hasStatusEffect(StatusEffects.DragonBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 3 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonBreathCooldown);
 			}
-			if(hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			if(hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);
 			}
-			if(hasStatusEffect(StatusEffects.DragonFireBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			if(hasStatusEffect(StatusEffects.DragonFireBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonFireBreathCooldown);
 			}
-			if(hasStatusEffect(StatusEffects.DragonIceBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			if(hasStatusEffect(StatusEffects.DragonIceBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonIceBreathCooldown);
 			}
-			if(hasStatusEffect(StatusEffects.DragonLightningBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			if(hasStatusEffect(StatusEffects.DragonLightningBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonLightningBreathCooldown);
 			}
-			if(hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			if(hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonPoisonBreathCooldown);
 			}
-			if(hasStatusEffect(StatusEffects.DragonWaterBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			if(hasStatusEffect(StatusEffects.DragonWaterBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonWaterBreathCooldown);
 			}
-			if(hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			if(hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonFaerieBreathCooldown);
 			}
-			if(hasStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			if(hasStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown);
 			}
-			if(hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown) && perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			if(hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonRoyalBreathCooldown);
 			}
 			if(hasStatusEffect(StatusEffects.HeroBane)) {

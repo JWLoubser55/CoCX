@@ -648,8 +648,10 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			customMenu = true;
 			menu();
 			addButton(0, "Arouse", combat.SingArouse).hint("Arouse your opponent with lustful music.");
-			addButton(1, "Aria", combat.SingDevastatingAria).hint("Unleash a devastating wave of sound to deal magic damage.");
-			addButton(2, "Captivate", combat.SingCaptivate).hint("Captivate your opponent for a round!");
+			if (player.hasStatusEffect(StatusEffects.CooldownSingAria)) addButtonDisabled(1, "Aria", "Still in cooldown.");
+			else addButton(1, "Aria", combat.SingDevastatingAria).hint("Unleash a devastating wave of sound to deal magic damage.");
+			if (player.hasStatusEffect(StatusEffects.CooldownSingCaptivate)) addButtonDisabled(2, "Captivate", "Still in cooldown.");
+			else addButton(2, "Captivate", combat.SingCaptivate).hint("Captivate your opponent for a round!");
 			addButton(3, "Intensify", combat.SingIntensify).hint("Increase the strength of your song!");
 			addButton(4, "Wait", combat.wait);
 			if (spellBookButtons.length > 0) btnMagic.show("Spells", submenuSpells, "Opens your spells menu, where you can cast any spells you have learned.", "Spells").icon("A_Magic")

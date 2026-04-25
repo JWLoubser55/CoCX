@@ -21,7 +21,7 @@ public class DrakeLungMutation extends IMutationPerkType
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
-                descS = "Allows you to use breath attacks more often. (All dragon breaths usable once per combat)";
+                descS = "Allows you to use breath attacks more often. (All dragon breaths cooldowns are reduced by 1 increment)";
             }
             if (pTier >= 2){
                 descS = "Increases the power of dragon breath attacks threefold. (+300% to dragon breaths damage, +5% of max core Spe as phantom Spe)";

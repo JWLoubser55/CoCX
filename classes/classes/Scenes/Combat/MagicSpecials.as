@@ -1484,9 +1484,11 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(150, USEFATG_MAGIC_NOBM);
-		if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownFreezingBreath,9,0,0,0);
-		else player.createStatusEffect(StatusEffects.CooldownFreezingBreath,10,0,0,0);
 		var damage:Number = 0;
+		var cooldown:Number = 12;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		player.createStatusEffect(StatusEffects.CooldownFreezingBreath,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.2;
 		damage += scalingBonusToughness() * 0.2;
 		damage += rand(60);
@@ -1495,6 +1497,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (combat.wearingWinterScarf()) damage *= 1.2;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.AscensionOneRaceToRuleThemAllX)) damage += (0.25 * player.perkv1(PerkLib.AscensionOneRaceToRuleThemAllX));
 		damage = Math.round(damage * combat.iceDamageBoostedByDao());
 		outputText("Tapping into the power deep within you, you let loose a bellowing roar at your enemy, a powerful wave of cold blasting the area in front of you.  [Themonster] does [monster his] best to avoid it, but the wave of freezing air is too fast.");
@@ -1545,17 +1548,19 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		var cooldown:Number = 10;
+		var damage:Number = 0;
+		var cooldown:Number = 12;
 		if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) cooldown -= 3;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		player.createStatusEffect(StatusEffects.CooldownFreezingBreathYeti,cooldown,0,0,0);
-		var damage:Number = 0;
 		damage += scalingBonusToughness() * 0.2;
 		damage = calcGlacialMod(damage, true);
 		if (combat.wearingWinterScarf()) damage *= 1.2;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.perkv1(IMutationsLib.YetiFatIM) >= 1) damage *= 1.50;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		damage = Math.round(damage * combat.iceDamageBoostedByDao());
 		outputText("You inhale deeply, then blow a freezing breath attack at your opponent, encasing it in ice!");
 		//Shell
@@ -1602,11 +1607,12 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		var cooldown:Number = 10;
+		var damage:Number = 0;
+		var cooldown:Number = 12;
 		//if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) cooldown -= 3;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		player.createStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna,cooldown,0,0,0);
-		var damage:Number = 0;
 		damage += scalingBonusStrength() * 0.1;
 		damage += scalingBonusToughness() * 0.1;
 		//damage = calcEclypseMod(damage, true);
@@ -1614,6 +1620,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		//if (player.perkv1(IMutationsLib.YetiFatIM) >= 1) damage *= 1.50;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		damage = Math.round(damage * combat.poisonDamageBoostedByDao());
 		outputText("You inhale deeply, then blow a toxic breath attack at your opponent!");
 		//Shell
@@ -1686,8 +1693,9 @@ public class MagicSpecials extends BaseCombatContent {
 			monster.teased(lustDmgF);
 			if(!monster.hasPerk(PerkLib.Resolute)) monster.createStatusEffect(StatusEffects.Stunned,4,0,0,0);
 			if (player.hasPerk(PerkLib.PanLabyrinth) && monster.hasStatusEffect(StatusEffects.LustDoTSP)) monster.addStatusValue(StatusEffects.LustDoTSP, 1, 1);
-			if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownCompellingAria,11,0,0,0);
-			else player.createStatusEffect(StatusEffects.CooldownCompellingAria,10,0,0,0);
+			var cooldown:Number = 12;
+			if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+			player.createStatusEffect(StatusEffects.CooldownCompellingAria,cooldown,0,0,0);
 			player.removeStatusEffect(StatusEffects.ChanneledAttack);
 			player.removeStatusEffect(StatusEffects.ChanneledAttackType);
 			outputText("\n\n");
@@ -2123,15 +2131,18 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(40, USEFATG_MAGIC_NOBM);
-		if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownPhoenixFireBreath,4,0,0,0);
-		else player.createStatusEffect(StatusEffects.CooldownPhoenixFireBreath,5,0,0,0);
 		var damage:Number = 0;
+		var cooldown:Number = 12;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		player.createStatusEffect(StatusEffects.CooldownPhoenixFireBreath,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.5;
 		damage += scalingBonusToughness() * 0.5;
 		damage += 50 + rand(20);
 		damage = calcInfernoMod(damage, true);
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage);
 		//Shell
@@ -2532,9 +2543,10 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		player.createStatusEffect(StatusEffects.DragonFireBreathCooldown,0,0,0,0);
 		var damage:Number = 0;
 		var damult:Number = 1;
+		var cooldown:Number = 12;
+		player.createStatusEffect(StatusEffects.DragonFireBreathCooldown,cooldown,0,0,0);
 		damage += scalingBonusIntelligence();
 		damage += scalingBonusWisdom();
 		damage *= 1 + (rand(51) / 100);
@@ -2625,9 +2637,10 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		player.createStatusEffect(StatusEffects.DragonIceBreathCooldown,0,0,0,0);
 		var damage:Number = 0;
 		var damult:Number = 1;
+		var cooldown:Number = 12;
+		player.createStatusEffect(StatusEffects.DragonIceBreathCooldown,cooldown,0,0,0);
 		damage += scalingBonusIntelligence();
 		damage += scalingBonusWisdom();
 		damage *= 1 + (rand(51) / 100);
@@ -2688,9 +2701,10 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		player.createStatusEffect(StatusEffects.DragonLightningBreathCooldown,0,0,0,0);
 		var damage:Number = 0;
 		var damult:Number = 1;
+		var cooldown:Number = 12;
+		player.createStatusEffect(StatusEffects.DragonLightningBreathCooldown,cooldown,0,0,0);
 		damage += scalingBonusIntelligence();
 		damage += scalingBonusWisdom();
 		damage *= 1 + (rand(51) / 100);
@@ -2751,9 +2765,10 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		player.createStatusEffect(StatusEffects.DragonDarknessBreathCooldown,0,0,0,0);
 		var damage:Number = 0;
 		var damult:Number = 1;
+		var cooldown:Number = 12;
+		player.createStatusEffect(StatusEffects.DragonDarknessBreathCooldown,cooldown,0,0,0);
 		damage += scalingBonusIntelligence();
 		damage += scalingBonusWisdom();
 		damage *= 1 + (rand(51) / 100);
@@ -2813,9 +2828,10 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		player.createStatusEffect(StatusEffects.DragonPoisonBreathCooldown,0,0,0,0);
 		var damage:Number = 0;
 		var damult:Number = 1;
+		var cooldown:Number = 12;
+		player.createStatusEffect(StatusEffects.DragonPoisonBreathCooldown,cooldown,0,0,0);
 		damage += scalingBonusIntelligence();
 		damage += scalingBonusWisdom();
 		damage *= 1 + (rand(51) / 100);
@@ -2883,9 +2899,10 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		player.createStatusEffect(StatusEffects.DragonWaterBreathCooldown,0,0,0,0);
 		var damage:Number = 0;
 		var damult:Number = 1;
+		var cooldown:Number = 12;
+		player.createStatusEffect(StatusEffects.DragonWaterBreathCooldown,cooldown,0,0,0);
 		damage += scalingBonusIntelligence();
 		damage += scalingBonusWisdom();
 		damage *= 1 + (rand(51) / 100);
@@ -2946,9 +2963,10 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		player.createStatusEffect(StatusEffects.DragonFaerieBreathCooldown,0,0,0,0);
 		var damage:Number = 0;
 		var damult:Number = 1;
+		var cooldown:Number = 12;
+		player.createStatusEffect(StatusEffects.DragonFaerieBreathCooldown,cooldown,0,0,0);
 		damage += scalingBonusIntelligence();
 		damage += scalingBonusWisdom();
 		damage *= 1 + (rand(51) / 100);
@@ -3051,9 +3069,10 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		player.createStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown,0,0,0,0);
 		var damage:Number = 0;
 		var damult:Number = 1;
+		var cooldown:Number = 12;
+		player.createStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown,cooldown,0,0,0);
 		damage += scalingBonusIntelligence();
 		damage += scalingBonusWisdom();
 		damage *= 1 + (rand(51) / 100);
@@ -3120,9 +3139,10 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
-		player.createStatusEffect(StatusEffects.DragonRoyalBreathCooldown,0,0,0,0);
 		var damage:Number = 0;
 		var damult:Number = 1;
+		var cooldown:Number = 12;
+		player.createStatusEffect(StatusEffects.DragonRoyalBreathCooldown,cooldown,0,0,0);
 		damage += scalingBonusIntelligence();
 		damage += scalingBonusWisdom();
 		damage *= 1 + (rand(51) / 100);
@@ -3168,7 +3188,8 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		if (player.statusEffectv1(StatusEffects.ChanneledAttack) == 1) {
-			player.createStatusEffect(StatusEffects.DragonBreathCooldown,0,0,0,0);
+			var cooldown:Number = 12;
+			player.createStatusEffect(StatusEffects.DragonBreathCooldown,cooldown,0,0,0);
 			player.removeStatusEffect(StatusEffects.ChanneledAttack);
 			player.removeStatusEffect(StatusEffects.ChanneledAttackType);
 			for each (var perkObj:Object in values(CombatMagic.magicCounterPerks)) {
@@ -4129,6 +4150,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 2) KOCD -= 1;
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) KOCD -= 1;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) KOCD -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) KOCD -= 4;
 		player.createStatusEffect(StatusEffects.CooldownKnowledgeOverload,KOCD,0,0,0);
 		outputText("You share some of your well earned knowledge with [themonster] who stands there blankly listening to your spiel in confusion. It's going to take [monster him] a moment to come down from the absurd amount of info you forced into [monster his] tiny head"+(monster.plural?"s":"")+".\n\n");
 		var overloadduration:Number = 0;
@@ -4160,12 +4182,14 @@ public class MagicSpecials extends BaseCombatContent {
 		clearOutput();
 		useMana(80, Combat.USEMANA_MAGIC);
 		combat.darkRitualCheckDamage();
-		var WWCD:Number = 4;
+		var WWCD:Number = 12;
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) WWCD -= 1;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) WWCD -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) WWCD -= 4;
 		player.createStatusEffect(StatusEffects.CooldownWeirdWords,WWCD,0,0,0);
 		var damage:Number = scalingBonusIntelligence() * spellMod() * 4;
 		damage *= 1 + (camp.codex.checkUnlocked() * 0.01);
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 2) damage *= 1.2;
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) damage *= 1.25;
 		//Determine if critical hit!
@@ -4905,8 +4929,10 @@ public class MagicSpecials extends BaseCombatContent {
 			enemyAI();
 			return;
 		}
-		if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownHydraAcidBreath,7,0,0,0);
-		else player.createStatusEffect(StatusEffects.CooldownHydraAcidBreath, 8, 0, 0, 0);
+		var cooldown:Number = 12;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		player.createStatusEffect(StatusEffects.CooldownHydraAcidBreath,cooldown,0,0,0);
 		outputText("You move your " + player.statusEffectv1(StatusEffects.HydraTailsPlayer) + " Hydra heads in an attack formation, belching acid at [themonster]. Your acid begins to eat at your opponents natural defences. ");
 		for (var i:int = player.statusEffectv1(StatusEffects.HydraTailsPlayer); i > 0; i--) {
 			hydraAcidBreathWeaponD(i == player.statusEffectv1(StatusEffects.HydraTailsPlayer));
@@ -4923,6 +4949,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage += scalingBonusToughness();// * 0.5
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		damage = calcCorrosionMod(damage, incAcidCounter);
 		damage = Math.round(damage);
 		doAcidDamage(damage, true, true);
@@ -6363,10 +6390,11 @@ public class MagicSpecials extends BaseCombatContent {
 //Spectral Scream
 	public function SpectralScream():void {
 		clearOutput();
-		var ssc:Number = 6;
-		if (player.hasPerk(PerkLib.NaturalInstincts)) ssc -= 1;
+		var ssc:Number = 12;
 		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 3) ssc -= 1;
 		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 4) ssc -= 1;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) ssc -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) ssc -= 4;
 		player.createStatusEffect(StatusEffects.CooldownSpectralScream,ssc,0,0,0);
 		outputText("You let out a soul-chilling scream freezing your opponent" + (monster.plural ? "s":"") + " in [monster his] tracks from sheer terror. This also seems to have damaged [monster his] sanity. ");
 		var damage:Number = 0;
@@ -6422,6 +6450,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage += scalingBonusIntelligence();
 		damage *= soulskillMagicalMod();
 		damage *= combat.hollowSkillsAndSoulskillsBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		damage = calcCorrosionMod(damage, true);
 		damage = Math.round(damage);
 		//Shell
@@ -6458,8 +6487,9 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.ExanimationIII)) powab *= 3;
 			monster.createStatusEffect(StatusEffects.AcidDoT, 4, powab, 1, 0);
 		}
-		var pc:Number = 2;
+		var pc:Number = 8;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) pc -= 4;
 		player.createStatusEffect(StatusEffects.CooldownAcidSpit,pc,0,0,0);
 		checkAchievementDamage(damage);
 		combat.heroBaneProc(damage);
@@ -6663,9 +6693,11 @@ public class MagicSpecials extends BaseCombatContent {
 	public function SonicScream():void {
 		clearOutput();
 		var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
-		thirst.modSatiety(-1);
-		if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownSonicScream,14,0,0,0);
-		else player.createStatusEffect(StatusEffects.CooldownSonicScream, 15, 0, 0, 0);
+		thirst.modSatiety( -1);
+		var cooldown:Number = 12;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		player.createStatusEffect(StatusEffects.CooldownSonicScream,cooldown,0,0,0);
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
 			outputText("As soon as your magic touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
 			enemyAI();
@@ -6676,6 +6708,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 5;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		damage = Math.round(damage);
 		monster.HP -= damage;
 		outputText("You call on the power of your tainted blood drawing out an almighty scream so strong and sharp it explode from you like a shockwave sending [themonster] flying. [monster He] will be shaken from the glass shattering blast for a moment " + damage + " damage.");

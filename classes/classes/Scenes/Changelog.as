@@ -367,8 +367,8 @@ public class Changelog extends BaseContent
 			outputText("-Upheaval special updated to modern standards other p.specials follows + 2x increased fatigue cost.\n");
 			outputText("-New mutation perk: Salamander Adrenal Glands (Final Form). Req. Salamander Adrenal Glands (Evolved) perk and lvl 90+. Effects: Your Salamander adrenal glands are giving you slight boosts to your natural stamina, strength, speed and libido, extend lustzerker and berserker duration by 20 turns, allows for either or both to trigger on combat start, triple bonus to attack, ");
 			outputText(" boost natural wrath generation rate. While lustzerking fire damage is increased by 50%.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 1 misc lvl-up perk: Booming Voice. Req. Job: Feral Champion perk, 30+ str/tou/spe. Effect: Increase the potency of all breath weapons, shout and sound based ability by 25% when outdoors. Throat abilities cooldowns are reduced by 1 increment.\n");
+			outputText("-Breath, Sing, other specials that use sound and req. to use mouth/throat have all been unified in base cooldown. Some get shorter end of stick some get longer end :D\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

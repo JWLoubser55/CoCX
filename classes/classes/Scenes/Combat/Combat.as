@@ -14135,14 +14135,6 @@ public class Combat extends BaseContent {
                 player.addStatusValue(StatusEffects.CooldownFlicker, 1, -1);
             }
         }
-        //Warrior Shout
-        if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout)) {
-            if (player.statusEffectv1(StatusEffects.CooldownWarriorShout) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownWarriorShout);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownWarriorShout, 1, -1);
-            }
-        }
         //Jabbing Style Periodic removal
         if (player.hasStatusEffect(StatusEffects.JabbingStyle)) {
             player.removeStatusEffect(StatusEffects.JabbingStyle);
@@ -14219,28 +14211,12 @@ public class Combat extends BaseContent {
                 player.addStatusValue(StatusEffects.CooldownWindScythe, 1, -1);
             }
         }
-        //Knowledge overload
-        if (player.hasStatusEffect(StatusEffects.CooldownKnowledgeOverload)) {
-            if (player.statusEffectv1(StatusEffects.CooldownKnowledgeOverload) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownKnowledgeOverload);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownKnowledgeOverload, 1, -1);
-            }
-        }
         //Provoke
         if (player.hasStatusEffect(StatusEffects.CooldownProvoke)) {
             if (player.statusEffectv1(StatusEffects.CooldownProvoke) <= 0) {
                 player.removeStatusEffect(StatusEffects.CooldownProvoke);
             } else {
                 player.addStatusValue(StatusEffects.CooldownProvoke, 1, -1);
-            }
-        }
-        //Weird words
-        if (player.hasStatusEffect(StatusEffects.CooldownWeirdWords)) {
-            if (player.statusEffectv1(StatusEffects.CooldownWeirdWords) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownWeirdWords);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownWeirdWords, 1, -1);
             }
         }
         //Wing Buffet
@@ -14257,38 +14233,6 @@ public class Combat extends BaseContent {
                 player.removeStatusEffect(StatusEffects.CooldownKick);
             } else {
                 player.addStatusValue(StatusEffects.CooldownKick, 1, -1);
-            }
-        }
-        //Freezing Breath Fenrir
-        if (player.hasStatusEffect(StatusEffects.CooldownFreezingBreath)) {
-            if (player.statusEffectv1(StatusEffects.CooldownFreezingBreath) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownFreezingBreath);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownFreezingBreath, 1, -1);
-            }
-        }
-        //Freezing Breath Yeti
-        if (player.hasStatusEffect(StatusEffects.CooldownFreezingBreathYeti)) {
-            if (player.statusEffectv1(StatusEffects.CooldownFreezingBreathYeti) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownFreezingBreathYeti);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownFreezingBreathYeti, 1, -1);
-            }
-        }
-		//Toxic Breath Ushi Onna
-		if (player.hasStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna)) {
-            if (player.statusEffectv1(StatusEffects.CooldownToxicBreathUshiOnna) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownToxicBreathUshiOnna, 1, -1);
-            }
-        }
-        //Phoenix Fire Breath
-        if (player.hasStatusEffect(StatusEffects.CooldownPhoenixFireBreath)) {
-            if (player.statusEffectv1(StatusEffects.CooldownPhoenixFireBreath) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownPhoenixFireBreath);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownPhoenixFireBreath, 1, -1);
             }
         }
         //Green Covenant
@@ -14321,14 +14265,6 @@ public class Combat extends BaseContent {
                 player.removeStatusEffect(StatusEffects.CooldownChargedShot);
             } else {
                 player.addStatusValue(StatusEffects.CooldownChargedShot, 1, -1);
-            }
-        }
-        //Hydra Acid Breath
-        if (player.hasStatusEffect(StatusEffects.CooldownHydraAcidBreath)) {
-            if (player.statusEffectv1(StatusEffects.CooldownHydraAcidBreath) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownHydraAcidBreath);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownHydraAcidBreath, 1, -1);
             }
         }
         //Hungering cold
@@ -14376,14 +14312,6 @@ public class Combat extends BaseContent {
                 player.removeStatusEffect(StatusEffects.CooldownFascinate);
             } else {
                 player.addStatusValue(StatusEffects.CooldownFascinate, 1, -1);
-            }
-        }
-        //Compelling Aria
-        if (player.hasStatusEffect(StatusEffects.CooldownCompellingAria)) {
-            if (player.statusEffectv1(StatusEffects.CooldownCompellingAria) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownCompellingAria);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownCompellingAria, 1, -1);
             }
         }
         //Oni Rampage
@@ -14624,28 +14552,12 @@ public class Combat extends BaseContent {
                 player.addStatusValue(StatusEffects.CooldownInfernalClaw, 1, -1);
             }
         }
-        //Spectral Scream
-        if (player.hasStatusEffect(StatusEffects.CooldownSpectralScream)) {
-            if (player.statusEffectv1(StatusEffects.CooldownSpectralScream) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownSpectralScream);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownSpectralScream, 1, -1);
-            }
-        }
 		//Sagitta
 		if (player.hasStatusEffect(StatusEffects.CooldownSagitta)) {
             if (player.statusEffectv1(StatusEffects.CooldownSagitta) <= 0) {
                 player.removeStatusEffect(StatusEffects.CooldownSagitta);
             } else {
                 player.addStatusValue(StatusEffects.CooldownSagitta, 1, -1);
-            }
-        }
-		//Acid Spit
-		if (player.hasStatusEffect(StatusEffects.CooldownAcidSpit)) {
-            if (player.statusEffectv1(StatusEffects.CooldownAcidSpit) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownAcidSpit);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownAcidSpit, 1, -1);
             }
         }
 		//Ferro Pellis
@@ -14672,6 +14584,203 @@ public class Combat extends BaseContent {
                 player.addStatusValue(StatusEffects.CooldownCero, 1, -1);
             }
         }
+		//Dragon breath specials
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.hasPerk(PerkLib.BoomingVoice)) {
+			if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonDarknessBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonDarknessBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonFireBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonFireBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonFireBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonIceBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonIceBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonIceBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonLightningBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonLightningBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonLightningBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonPoisonBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonPoisonBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonPoisonBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonWaterBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonWaterBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonWaterBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonWaterBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonFaerieBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonFaerieBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonFaerieBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonPoisonousSapBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonPoisonousSapBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonRoyalBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonRoyalBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonRoyalBreathCooldown, 1, -1);
+				}
+			}
+		}
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3 && player.hasPerk(PerkLib.BoomingVoice)) {
+			if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonBreathCooldown, 1, -1);
+				}
+			}
+		}
+		//Other breath, sing, shout specials
+		//Warrior Shout
+		if (player.hasStatusEffect(StatusEffects.CooldownWarriorShout)) {
+			if (player.statusEffectv1(StatusEffects.CooldownWarriorShout) <= 0) {
+				player.removeStatusEffect(StatusEffects.CooldownWarriorShout);
+			} else {
+				player.addStatusValue(StatusEffects.CooldownWarriorShout, 1, -1);
+			}
+		}
+		//Sing Aria
+		if (player.hasStatusEffect(StatusEffects.CooldownSingAria)) {
+			if (player.statusEffectv1(StatusEffects.CooldownSingAria) <= 0) {
+				player.removeStatusEffect(StatusEffects.CooldownSingAria);
+			} else {
+				player.addStatusValue(StatusEffects.CooldownSingAria, 1, -1);
+			}
+		}
+		if (player.hasPerk(PerkLib.BoomingVoice)) {
+			//Freezing Breath Fenrir
+			if (player.hasStatusEffect(StatusEffects.CooldownFreezingBreath)) {
+				if (player.statusEffectv1(StatusEffects.CooldownFreezingBreath) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownFreezingBreath);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownFreezingBreath, 1, -1);
+				}
+			}
+			//Freezing Breath Yeti
+			if (player.hasStatusEffect(StatusEffects.CooldownFreezingBreathYeti)) {
+				if (player.statusEffectv1(StatusEffects.CooldownFreezingBreathYeti) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownFreezingBreathYeti);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownFreezingBreathYeti, 1, -1);
+				}
+			}
+			//Toxic Breath Ushi Onna
+			if (player.hasStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna)) {
+				if (player.statusEffectv1(StatusEffects.CooldownToxicBreathUshiOnna) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownToxicBreathUshiOnna, 1, -1);
+				}
+			}
+			//Phoenix Fire Breath
+			if (player.hasStatusEffect(StatusEffects.CooldownPhoenixFireBreath)) {
+				if (player.statusEffectv1(StatusEffects.CooldownPhoenixFireBreath) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownPhoenixFireBreath);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownPhoenixFireBreath, 1, -1);
+				}
+			}
+			//Hydra Acid Breath
+			if (player.hasStatusEffect(StatusEffects.CooldownHydraAcidBreath)) {
+				if (player.statusEffectv1(StatusEffects.CooldownHydraAcidBreath) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownHydraAcidBreath);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownHydraAcidBreath, 1, -1);
+				}
+			}
+			//Sonic scream
+			if (player.hasStatusEffect(StatusEffects.CooldownSonicScream)) {
+				if (player.statusEffectv1(StatusEffects.CooldownSonicScream) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownSonicScream);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownSonicScream, 1, -1);
+				}
+			}
+			//Sing Captivate
+			if (player.hasStatusEffect(StatusEffects.CooldownSingCaptivate)) {
+				if (player.statusEffectv1(StatusEffects.CooldownSingCaptivate) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownSingCaptivate);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownSingCaptivate, 1, -1);
+				}
+			}
+			//Knowledge overload
+			if (player.hasStatusEffect(StatusEffects.CooldownKnowledgeOverload)) {
+				if (player.statusEffectv1(StatusEffects.CooldownKnowledgeOverload) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownKnowledgeOverload);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownKnowledgeOverload, 1, -1);
+				}
+			}
+			//Weird words
+			if (player.hasStatusEffect(StatusEffects.CooldownWeirdWords)) {
+				if (player.statusEffectv1(StatusEffects.CooldownWeirdWords) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownWeirdWords);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownWeirdWords, 1, -1);
+				}
+			}
+			//Compelling Aria
+			if (player.hasStatusEffect(StatusEffects.CooldownCompellingAria)) {
+				if (player.statusEffectv1(StatusEffects.CooldownCompellingAria) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownCompellingAria);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownCompellingAria, 1, -1);
+				}
+			}
+			//Spectral Scream
+			if (player.hasStatusEffect(StatusEffects.CooldownSpectralScream)) {
+				if (player.statusEffectv1(StatusEffects.CooldownSpectralScream) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownSpectralScream);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownSpectralScream, 1, -1);
+				}
+			}
+			//Acid Spit
+			if (player.hasStatusEffect(StatusEffects.CooldownAcidSpit)) {
+				if (player.statusEffectv1(StatusEffects.CooldownAcidSpit) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownAcidSpit);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownAcidSpit, 1, -1);
+				}
+			}
+		}
         //Punishing Kick
         if (player.hasStatusEffect(StatusEffects.CooldownPunishingKick)) {
             if (player.statusEffectv1(StatusEffects.CooldownPunishingKick) <= 0) {
@@ -14686,22 +14795,6 @@ public class Combat extends BaseContent {
                 player.removeStatusEffect(StatusEffects.CooldownEclipsingShadow);
             } else {
                 player.addStatusValue(StatusEffects.CooldownEclipsingShadow, 1, -1);
-            }
-        }
-        //Sonic scream
-        if (player.hasStatusEffect(StatusEffects.CooldownSonicScream)) {
-            if (player.statusEffectv1(StatusEffects.CooldownSonicScream) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownSonicScream);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownSonicScream, 1, -1);
-            }
-        }
-        //Sing Captivate
-        if (player.hasStatusEffect(StatusEffects.CooldownSingCaptivate)) {
-            if (player.statusEffectv1(StatusEffects.CooldownSingCaptivate) <= 0) {
-                player.removeStatusEffect(StatusEffects.CooldownSingCaptivate);
-            } else {
-                player.addStatusValue(StatusEffects.CooldownSingCaptivate, 1, -1);
             }
         }
         //Tornado Strike
@@ -16980,7 +17073,10 @@ public function SingCaptivate():void {
 	}
     outputText("You temporarily strengthen the hypnotic beat causing your opponent to be fascinated for a brief moment.");
     monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
-    player.createStatusEffect(StatusEffects.CooldownSingCaptivate,4,0,0,0);
+	var cooldown:Number = 12;
+	if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+	if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+	player.createStatusEffect(StatusEffects.CooldownSingCaptivate,cooldown,0,0,0);
     outputText("\n\n");
     enemyAIImpl();
 }
@@ -17001,6 +17097,10 @@ public function SingDevastatingAria():void {
 	}
     if (player.weapon.isMusicInstrument()) outputText("You strike a deafening note unleashing a devastating wave of sound!");
 	else outputText("You unleash a devastating wave of sound!");
+	var cooldown:Number = 8;
+	if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+	if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+	player.createStatusEffect(StatusEffects.CooldownSingAria,cooldown,0,0,0);
     var damage:Number = combat.teases.teaseBaseLustDamage();
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 2) damage *= scalingBonusIntelligence();
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 3) damage *= scalingBonusIntelligence();
@@ -17019,6 +17119,7 @@ public function SingDevastatingAria():void {
 	if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 	if (player.hasPerk(PerkLib.PerformancePower)) damage *= (1 + player.perkv1(PerkLib.PerformancePower));
 	if (player.hasPerk(PerkLib.WailOfTheBanshee) && player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) damage *= ectoplasmEsseBon();
+	if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.MelkieLungIM)));
 	if (player.weapon == weapons.HELLCAL) damage *= 1.5;
     damage = Math.round(damage);
@@ -20738,6 +20839,12 @@ public function hollowSkillsAndSoulskillsBoost():Number {
 		hollowed += 0.2;
 	}
 	return hollowed;
+}
+public function boomingVoiceBoost():Number {
+	var booming:Number = 1.25;
+	//if (player.hasPerk(PerkLib.)) booming += 0.25;
+	//if (player.hasPerk(PerkLib.)) booming += 0.25;
+	return booming;
 }
 
 public function aPoisonGlandsMyconidSpores():void {
