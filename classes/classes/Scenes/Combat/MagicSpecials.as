@@ -750,11 +750,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DragonFireBreath)) {
 			bd = buttons.add("Dragon(Fire)", dragonfireBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-				bd.hint("Unleash fire from your mouth. This can only be done once per fight. \n", "Dragon Fire Breath");
-			} else {
-				bd.hint("Unleash fire from your mouth. This can only be done once a day. \n", "Dragon Fire Breath");
-			}
+			bd.hint("Unleash fire from your mouth. \n", "Dragon Fire Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
 			if(player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown)) {
@@ -764,11 +760,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DragonIceBreath)) {
 			bd = buttons.add("Dragon(Ice)", dragoniceBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-				bd.hint("Unleash ice from your mouth. This can only be done once per fight. \n", "Dragon Ice Breath");
-			} else {
-				bd.hint("Unleash ice from your mouth. This can only be done once a day. \n", "Dragon Ice Breath");
-			}
+			bd.hint("Unleash ice from your mouth. \n", "Dragon Ice Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
 			if(player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown)) {
@@ -778,11 +770,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DragonLightningBreath)) {
 			bd = buttons.add("Dragon(Light)", dragonlightningBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-				bd.hint("Unleash lightning from your mouth. This can only be done once per fight. \n", "Dragon Lightning Breath");
-			} else {
-				bd.hint("Unleash lightning from your mouth. This can only be done once a day. \n", "Dragon Lightning Breath");
-			}
+			bd.hint("Unleash lightning from your mouth. \n", "Dragon Lightning Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
 			if(player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown)) {
@@ -792,11 +780,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DragonDarknessBreath)) {
 			bd = buttons.add("Dragon(Dark)", dragondarknessBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-				bd.hint("Unleash darkness from your mouth. This can only be done once per fight. \n", "Dragon Darkness Breath");
-			} else {
-				bd.hint("Unleash darkness from your mouth. This can only be done once a day. \n", "Dragon Darkness Breath");
-			}
+			bd.hint("Unleash darkness from your mouth. \n", "Dragon Darkness Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
 			if(player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown)) {
@@ -806,11 +790,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DragonPoisonBreath)) {
 			bd = buttons.add("Dragon(Poison)", dragonpoisonBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-				bd.hint("Unleash poison from your mouth. This can only be done once per fight. \n", "Dragon Poison Breath");
-			} else {
-				bd.hint("Unleash poison from your mouth. This can only be done once a day. \n", "Dragon Poison Breath");
-			}
+			bd.hint("Unleash poison from your mouth. \n", "Dragon Poison Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
 			if(player.hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown)) {
@@ -820,11 +800,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DragonWaterBreath)) {
 			bd = buttons.add("Dragon(Water)", dragonWaterBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-				bd.hint("Unleash water from your mouth. This can only be done once per fight. Massively increase lightning damage taken by the target. \n", "Dragon Water Breath");
-			} else {
-				bd.hint("Unleash water from your mouth. This can only be done once a day. Massively increase lightning damage taken by the target. \n", "Dragon Water Breath");
-			}
+			bd.hint("Unleash water from your mouth. Massively increase lightning damage taken by the target. \n", "Dragon Water Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
 			if(player.hasStatusEffect(StatusEffects.DragonWaterBreathCooldown)) {
@@ -834,11 +810,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DragonFaerieBreath)) {
 			bd = buttons.add("Dragon(Faerie)", dragonFaerieBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-				bd.hint("Breathe purple flames which deal damage and may randomly afflict the target with a status. This can only be done once per fight. \n", "Dragon Faerie Breath");
-			} else {
-				bd.hint("Breathe purple flames which deal damage and may randomly afflict the target with a status. This can only be done once a day. \n", "Dragon Faerie Breath");
-			}
+			bd.hint("Breathe purple flames which deal damage and may randomly afflict the target with a status. \n", "Dragon Faerie Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
 			if(player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown)) {
@@ -848,11 +820,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DragonPoisonousSapBreath)) {
 			bd = buttons.add("Dragon(P.Sap)", dragonPoisonousSapBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-				bd.hint("Unleash poison sap from your mouth. This can only be done once per fight. \n", "Dragon Poisonous Sap Breath");
-			} else {
-				bd.hint("Unleash poison sap from your mouth. This can only be done once a day. \n", "Dragon Poisonous Sap Breath");
-			}
+			bd.hint("Unleash poison sap from your mouth. \n", "Dragon Poisonous Sap Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
 			if(player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown)) {
@@ -862,11 +830,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.DragonRegalBreath)) {
 			bd = buttons.add("Dragon(Royal)", dragonRoyalBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-				bd.hint("Unleash a roar so powerful it creates a shockwave damaging and stunning enemies. Confuse the opponent and bleed them as well. This can only be done once per fight. \n", "Dragon Royal Breath");
-			} else {
-				bd.hint("Unleash a roar so powerful it creates a shockwave damaging and stunning enemies. Confuse the opponent and bleed them as well. This can only be done once a day. \n", "Dragon Royal Breath");
-			}
+			bd.hint("Unleash a roar so powerful it creates a shockwave damaging and stunning enemies. Confuse the opponent and bleed them as well. \n", "Dragon Royal Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
 			if(player.hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown)) {
@@ -874,27 +838,22 @@ public class MagicSpecials extends BaseCombatContent {
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			favbd(bd, "Dragon Royal Breath");
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
-			bd = buttons.add("TrueDragonBreath", trueDragonBreath);
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) {
-				bd.hint("Unleash all four elements fused together from your mouth. This can only be done once per fight. \n", "True Dragon Breath");
-			} else {
-				bd.hint("Unleash all four elements fused together from your mouth. This can only be done once a day. \n", "True Dragon Breath");
-			}
-			bd.requireFatigue(spellCost(200));
-			//Not Ready Yet:
-			if(player.hasStatusEffect(StatusEffects.DragonBreathCooldown)) {
-				if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) bd.disable("Your throat is incredibly sore and hoarse. You aren’t sure you can talk let alone try that attack for a while.");
-				else bd.disable("Your throat is incredibly sore and hoarse. You aren’t sure you can talk let alone try that attack for more than a day.");
-			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
-			favbd(bd, "True Dragon Breath");
-		}
 		if (player.hasPerk(PerkLib.DragonLustPoisonBreath)) {
-			bd = buttons.add("Poison Breath", DragonLustPoisonBreath).hint("Unleash a cloud of aphrodisiac poison. Particularly powerful against groups.  \n\nVenom: " + player.tailVenom + "/" + player.maxVenom());
+			bd = buttons.add("Poison Breath", dragonLustPoisonBreath).hint("Unleash a cloud of aphrodisiac poison. Particularly powerful against groups.  \n\nVenom: " + player.tailVenom + "/" + player.maxVenom());
 			if (player.tailVenom < player.VenomWebCost() * 5) {
 				bd.disable("You do not have enough poison in your glands to breath a cloud right now! (Req. "+player.VenomWebCost()*5+"+)");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			favbd(bd, "Dragon Lust Poison Breath");
+		}
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) {
+			bd = buttons.add("QuadElementDragonBreath", quadElementDragonBreath);
+			bd.hint("Unleash all four elements fused together from your mouth. \n", "Quad Element Dragon Breath");
+			bd.requireFatigue(spellCost(200));
+			//Not Ready Yet:
+			if(player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown)) {
+				bd.disable("Your throat is incredibly sore and hoarse. You aren’t sure you can talk let alone try that attack for a while.");
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "True Dragon Breath");
 		}
 		if (player.faceType == Face.WOLF && player.hasKeyItem("Gleipnir Collar") >= 0) {
 			bd = buttons.add("FreezingBreath", fenrirFreezingBreath,"Freeze your foe solid with a powerful breath attack. \n\nWould go into cooldown after use for: "+(player.hasPerk(PerkLib.NaturalInstincts) ? "9":"10")+" rounds  \n<b>AoE attack.</b>");
@@ -1321,12 +1280,7 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Money Strike");
 		}
 		if (player.isRaceCached(Races.RATATOSKR)) {
-			var cdko:Number = 8;
-			if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 2) cdko -= 1;
-			if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) cdko -= 1;
-			if (player.hasPerk(PerkLib.NaturalInstincts)) cdko -= 1;
-			if (player.hasPerk(PerkLib.BoomingVoice)) cdko -= 4;
-			bd = buttons.add("Knowledge overload", KnowledgeOverload).hint("Stun your opponents by overflowing their head with knowledge. \n\nWould go into cooldown after use for: "+cdko+" rounds", "Knowledge overload");
+			bd = buttons.add("Knowledge overload", KnowledgeOverload).hint("Stun your opponents by overflowing their head with knowledge.", "Knowledge overload");
 			bd.requireMana(spellCost(80));
 			if (player.hasStatusEffect(StatusEffects.CooldownKnowledgeOverload)) {
 				bd.disable("You need more time before you can use Knowledge overload again.\n\n");
@@ -1343,11 +1297,7 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Provoke");
 		}
 		if (player.isRaceCached(Races.RATATOSKR) || player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 1) {
-			var cdww:Number = 8;
-			if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) cdww -= 1;
-			if (player.hasPerk(PerkLib.NaturalInstincts)) cdww -= 1;
-			if (player.hasPerk(PerkLib.BoomingVoice)) cdww -= 4;
-			bd = buttons.add("Weird words", WeirdWords).hint("Strike at your opponent with weird sentences charged with magic, so hard to comprehend it hurts. More potent based on your personal knowledge. \n\nWould go into cooldown after use for: "+cdww+" rounds", "Weird words");
+			bd = buttons.add("Weird words", WeirdWords).hint("Strike at your opponent with weird sentences charged with magic, so hard to comprehend it hurts. More potent based on your personal knowledge.", "Weird words");
 			bd.requireMana(spellCost(80));
 			if (player.hasStatusEffect(StatusEffects.CooldownWeirdWords)) {
 				bd.disable("You need more time before you can use Weird words again.\n\n");
@@ -1492,6 +1442,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var cooldown:Number = 12;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+		if (cooldown < 1) cooldown = 1;
 		player.createStatusEffect(StatusEffects.CooldownFreezingBreath,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.2;
 		damage += scalingBonusToughness() * 0.2;
@@ -1557,6 +1509,8 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) cooldown -= 3;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+		if (cooldown < 1) cooldown = 1;
 		player.createStatusEffect(StatusEffects.CooldownFreezingBreathYeti,cooldown,0,0,0);
 		damage += scalingBonusToughness() * 0.2;
 		damage = calcGlacialMod(damage, true);
@@ -1616,6 +1570,8 @@ public class MagicSpecials extends BaseCombatContent {
 		//if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) cooldown -= 3;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+		if (cooldown < 1) cooldown = 1;
 		player.createStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.1;
 		damage += scalingBonusToughness() * 0.1;
@@ -2139,6 +2095,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var cooldown:Number = 12;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+		if (cooldown < 1) cooldown = 1;
 		player.createStatusEffect(StatusEffects.CooldownPhoenixFireBreath,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.5;
 		damage += scalingBonusToughness() * 0.5;
@@ -2455,6 +2413,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var cooldown:Number = 12;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+		if (cooldown < 1) cooldown = 1;
 		player.createStatusEffect(StatusEffects.CooldownAzureflameBreath,cooldown,0,0,0);
 		if (player.perkv1(IMutationsLib.CaveWyrmLungsIM) >= 1) damult += 2;
 		if (player.perkv1(IMutationsLib.CaveWyrmLungsIM) >= 2) {
@@ -2547,21 +2507,61 @@ public class MagicSpecials extends BaseCombatContent {
 //This attack has a cooldown and is more dramatic when used by the PC, it should be some sort of last ditch attack for emergencies. Don't count on using this whenever you want.
 	//once a day or something
 	//Effect of attack: Damages and stuns the enemy for the turn you used this attack on, plus 2 more turns. High chance of success.
+	private function dragonBreathsCooldownManagement(type:Number):void {
+		var cooldown:Number = dragonBreathsCooldownManagement1();
+		//if (player.hasPerk(PerkLib.)) cooldown -= dragonBreathsCooldownManagement0();
+		//if (cooldown < 1) cooldown = 1;
+		if (type == 1) player.createStatusEffect(StatusEffects.DragonFireBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonFireBreathCooldown, cooldown, 0, 0, 0);
+		if (type == 2) player.createStatusEffect(StatusEffects.DragonIceBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonIceBreathCooldown, cooldown, 0, 0, 0);
+		if (type == 3) player.createStatusEffect(StatusEffects.DragonLightningBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonLightningBreathCooldown, cooldown, 0, 0, 0);
+		if (type == 4) player.createStatusEffect(StatusEffects.DragonDarknessBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonDarknessBreathCooldown, cooldown, 0, 0, 0);
+		if (type == 5) player.createStatusEffect(StatusEffects.DragonPoisonBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonPoisonBreathCooldown, cooldown, 0, 0, 0);
+		if (type == 6) player.createStatusEffect(StatusEffects.DragonWaterBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonWaterBreathCooldown, cooldown, 0, 0, 0);
+		if (type == 7) player.createStatusEffect(StatusEffects.DragonFaerieBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonFaerieBreathCooldown, cooldown, 0, 0, 0);
+		if (type == 8) player.createStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown, cooldown, 0, 0, 0);
+		if (type == 9) player.createStatusEffect(StatusEffects.DragonRoyalBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonRoyalBreathCooldown, cooldown, 0, 0, 0);
+		if (type == 50) player.createStatusEffect(StatusEffects.DragonQuadElementBreathCooldown, dragonBreathsCooldownManagement2(), 0, 0, 0);
+		else player.createStatusEffect(StatusEffects.DragonQuadElementBreathCooldown, cooldown, 0, 0, 0);
+	}
+	private function dragonBreathsCooldownManagement0():Number {
+		var cooldown0:Number = 4;
+		//if (player.hasPerk(PerkLib.)) cooldown0 += 4;
+		return cooldown0;
+	}
+	private function dragonBreathsCooldownManagement1():Number {
+		var cooldown1:Number = 12;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.hasPerk(PerkLib.ThunderingEchoes)) cooldown1 -= 4;
+		//if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.hasPerk(PerkLib.)) cooldown -= 4;
+		return cooldown1;
+	}
+	private function dragonBreathsCooldownManagement2():Number {
+		var cooldown2:Number = 12;
+		//if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.hasPerk(PerkLib.)) cooldown2 -= 4;
+		return cooldown2;
+	}
 	public function dragonfireBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var damult:Number = 1;
-		var cooldown:Number = 12;
-		player.createStatusEffect(StatusEffects.DragonFireBreathCooldown,cooldown,0,0,0);
-		damage += scalingBonusIntelligence();
-		damage += scalingBonusWisdom();
-		damage *= 1 + (rand(51) / 100);
+		dragonBreathsCooldownManagement(1);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
 		damage = calcInfernoMod(damage, true);
 		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-			damage *= 1.5;
+			damage *= 2;
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
@@ -2622,16 +2622,12 @@ public class MagicSpecials extends BaseCombatContent {
 			monster.createStatusEffect(StatusEffects.Stunned,0,0,0,0);
 		}
 		else {
-			if(!monster.hasPerk(PerkLib.Resolute)) {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
-				monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-			}
-			else {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] staggering back, but <b>[monster he] ");
-				if(!monster.plural) outputText("is ");
-				else outputText("are");
-				outputText("too resolute to be stunned by your attack.</b> ");
-			}
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 1;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			damage = Math.round(damage * combat.fireDamageBoostedByDao());
 			doFireDamage(damage, true, true);
 		}
@@ -2641,22 +2637,20 @@ public class MagicSpecials extends BaseCombatContent {
 		if (monster is Holli && !monster.hasStatusEffect(StatusEffects.HolliBurning)) (monster as Holli).lightHolliOnFireMagically();
 		checkLethiceAndCombatRoundOver();
 	}
-
 	public function dragoniceBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var damult:Number = 1;
-		var cooldown:Number = 12;
-		player.createStatusEffect(StatusEffects.DragonIceBreathCooldown,cooldown,0,0,0);
-		damage += scalingBonusIntelligence();
-		damage += scalingBonusWisdom();
-		damage *= 1 + (rand(51) / 100);
+		dragonBreathsCooldownManagement(2);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
 		damage = calcGlacialMod(damage, true);
 		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-			damage *= 1.5;
+			damage *= 2;
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
@@ -2689,16 +2683,12 @@ public class MagicSpecials extends BaseCombatContent {
 		//Special enemy avoidances
 		else if (valaReflect(damage, "ice", player.takeIceDamage)) {}
 		else {
-			if(!monster.hasPerk(PerkLib.Resolute)) {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
-				monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-			}
-			else {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] staggering back, but <b>[monster he] ");
-				if(!monster.plural) outputText("is ");
-				else outputText("are");
-				outputText("too resolute to be stunned by your attack.</b> ");
-			}
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 1;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			doIceDamage(damage, true, true);
 		}
 		outputText("\n\n");
@@ -2706,22 +2696,20 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-
 	public function dragonlightningBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var damult:Number = 1;
-		var cooldown:Number = 12;
-		player.createStatusEffect(StatusEffects.DragonLightningBreathCooldown,cooldown,0,0,0);
-		damage += scalingBonusIntelligence();
-		damage += scalingBonusWisdom();
-		damage *= 1 + (rand(51) / 100);
+		dragonBreathsCooldownManagement(3);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
 		damage = calcVoltageMod(damage, true);
 		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-			damage *= 1.5;
+			damage *= 2;
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
@@ -2754,16 +2742,12 @@ public class MagicSpecials extends BaseCombatContent {
 		//Special enemy avoidances
 		else if (valaReflect(damage, "lightning breath", player.takeLightningDamage)) {}
 		else {
-			if(!monster.hasPerk(PerkLib.Resolute)) {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
-				monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-			}
-			else {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] staggering back, but <b>[monster he] ");
-				if(!monster.plural) outputText("is ");
-				else outputText("are");
-				outputText("too resolute to be stunned by your attack.</b> ");
-			}
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 1;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			doLightningDamage(damage, true, true);
 		}
 		outputText("\n\n");
@@ -2771,22 +2755,20 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-
 	public function dragondarknessBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var damult:Number = 1;
-		var cooldown:Number = 12;
-		player.createStatusEffect(StatusEffects.DragonDarknessBreathCooldown,cooldown,0,0,0);
-		damage += scalingBonusIntelligence();
-		damage += scalingBonusWisdom();
-		damage *= 1 + (rand(51) / 100);
+		dragonBreathsCooldownManagement(4);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
 		damage = calcEclypseMod(damage, true);
 		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-			damage *= 1.5;
+			damage *= 2;
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
@@ -2818,16 +2800,12 @@ public class MagicSpecials extends BaseCombatContent {
 		//Special enemy avoidances
 		else if (valaReflect(damage, "darkness breath", player.takeDarknessDamage)) {}
 		else {
-			if(!monster.hasPerk(PerkLib.Resolute)) {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
-				monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-			}
-			else {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] staggering back, but <b>[monster he] ");
-				if(!monster.plural) outputText("is ");
-				else outputText("are");
-				outputText("too resolute to be stunned by your attack.</b> ");
-			}
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 1;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			doDarknessDamage(damage, true, true);
 		}
 		outputText("\n\n");
@@ -2835,22 +2813,20 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-
 	public function dragonpoisonBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var damult:Number = 1;
-		var cooldown:Number = 12;
-		player.createStatusEffect(StatusEffects.DragonPoisonBreathCooldown,cooldown,0,0,0);
-		damage += scalingBonusIntelligence();
-		damage += scalingBonusWisdom();
-		damage *= 1 + (rand(51) / 100);
+		dragonBreathsCooldownManagement(5);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
 		//damage = calcEclypseMod(damage, true);
 		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-			damage *= 1.5;
+			damage *= 2;
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
@@ -2882,16 +2858,12 @@ public class MagicSpecials extends BaseCombatContent {
 		//Special enemy avoidances
 		else if (valaReflect(damage, "poison breath", player.takePoisonDamage)) {}
 		else {
-			if(!monster.hasPerk(PerkLib.Resolute)) {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
-				monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-			}
-			else {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] staggering back, but <b>[monster he] ");
-				if(!monster.plural) outputText("is ");
-				else outputText("are");
-				outputText("too resolute to be stunned by your attack.</b> ");
-			}
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 1;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			doPoisonDamage(damage, true, true);
 			var strDebuff:Number = 0;
 			if (monster.spe >= 21) strDebuff += 20;
@@ -2907,22 +2879,20 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-
 	public function dragonWaterBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var damult:Number = 1;
-		var cooldown:Number = 12;
-		player.createStatusEffect(StatusEffects.DragonWaterBreathCooldown,cooldown,0,0,0);
-		damage += scalingBonusIntelligence();
-		damage += scalingBonusWisdom();
-		damage *= 1 + (rand(51) / 100);
+		dragonBreathsCooldownManagement(6);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
 		damage = calcTideMod(damage, true);
 		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-			damage *= 1.5;
+			damage *= 2;
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
@@ -2954,16 +2924,12 @@ public class MagicSpecials extends BaseCombatContent {
 		//Special enemy avoidances
 		else if (valaReflect(damage, "water breath", player.takeWaterDamage)) {}
 		else {
-			if(!monster.hasPerk(PerkLib.Resolute)) {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
-				monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-			}
-			else {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] staggering back, but <b>[monster he] ");
-				if(!monster.plural) outputText("is ");
-				else outputText("are");
-				outputText("too resolute to be stunned by your attack.</b> ");
-			}
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 1;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			doWaterDamage(damage, true, true);
 			monster.createStatusEffect(StatusEffects.DragonWaterBreath,0,0,0,0);
 		}
@@ -2972,21 +2938,19 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-
 	public function dragonFaerieBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var damult:Number = 1;
-		var cooldown:Number = 12;
-		player.createStatusEffect(StatusEffects.DragonFaerieBreathCooldown,cooldown,0,0,0);
-		damage += scalingBonusIntelligence();
-		damage += scalingBonusWisdom();
-		damage *= 1 + (rand(51) / 100);
+		dragonBreathsCooldownManagement(7);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
 		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-			damage *= 1.5;
+			damage *= 2;
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
@@ -3018,16 +2982,12 @@ public class MagicSpecials extends BaseCombatContent {
 		//Special enemy avoidances
 		else if (valaReflect(damage, "faerie breath", player.takeMagicDamage)) {}
 		else {
-			if(!monster.hasPerk(PerkLib.Resolute)) {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
-				monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-			}
-			else {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] staggering back, but <b>[monster he] ");
-				if(!monster.plural) outputText("is ");
-				else outputText("are");
-				outputText("too resolute to be stunned by your attack.</b> ");
-			}
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 1;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			doMagicDamage(damage, true, true);
 		}
 		//Randomising effects
@@ -3079,24 +3039,22 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-
 	public function dragonPoisonousSapBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var damult:Number = 1;
-		var cooldown:Number = 12;
-		player.createStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown,cooldown,0,0,0);
-		damage += scalingBonusIntelligence();
-		damage += scalingBonusWisdom();
-		damage *= 1 + (rand(51) / 100);
+		dragonBreathsCooldownManagement(8);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
 		//damage = calcEclypseMod(damage, true);
 		damage = calcTideMod(damage, true);
 		damage = calcQuakeMod(damage, true);
 		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-			damage *= 1.5;
+			damage *= 2;
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
@@ -3128,16 +3086,12 @@ public class MagicSpecials extends BaseCombatContent {
 		//Special enemy avoidances
 		else if (valaReflect(damage, "water breath", player.takeWaterDamage)) {}
 		else {
-			if(!monster.hasPerk(PerkLib.Resolute)) {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
-				monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-			}
-			else {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] staggering back, but <b>[monster he] ");
-				if(!monster.plural) outputText("is ");
-				else outputText("are");
-				outputText("too resolute to be stunned by your attack.</b> ");
-			}
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 1;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) damage *= (1 + player.plantChlorophyllBoost());
 			damage = Math.round(damage * 0.34);
 			doPoisonDamage(damage, true, true);
@@ -3150,21 +3104,19 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-
 	public function dragonRoyalBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var damult:Number = 1;
-		var cooldown:Number = 12;
-		player.createStatusEffect(StatusEffects.DragonRoyalBreathCooldown,cooldown,0,0,0);
-		damage += scalingBonusIntelligence();
-		damage += scalingBonusWisdom();
-		damage *= 1 + (rand(51) / 100);
+		dragonBreathsCooldownManagement(9);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
 		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-			damage *= 1.5;
+			damage *= 2;
 		}
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
@@ -3181,16 +3133,12 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("  Despite the heavy impact caused by your roar, [themonster] manages to take it at an angle and remain on [monster his] feet and focuses on you, ready to keep fighting.");
 		}
 		else {
-			if(!monster.hasPerk(PerkLib.Resolute)) {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
-				monster.createStatusEffect(StatusEffects.Stunned,3,0,0,0);
-			}
-			else {
-				outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] staggering back, but <b>[monster he] ");
-				if(!monster.plural) outputText("is ");
-				else outputText("are");
-				outputText("too resolute to be stunned by your attack.</b> ");
-			}
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 3;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			doDamage(damage, true, true);
 			monster.createStatusEffect(StatusEffects.ConfusionM,5,0,0,0);
 			monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05*combat.BleedDamageBoost(true), 0, 0);
@@ -3200,101 +3148,7 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-
-	public function trueDragonBreath():void {
-		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
-		clearOutput();
-		if (player.statusEffectv1(StatusEffects.ChanneledAttack) == 1) {
-			var cooldown:Number = 12;
-			player.createStatusEffect(StatusEffects.DragonBreathCooldown,cooldown,0,0,0);
-			player.removeStatusEffect(StatusEffects.ChanneledAttack);
-			player.removeStatusEffect(StatusEffects.ChanneledAttackType);
-			for each (var perkObj:Object in values(CombatMagic.magicCounterPerks)) {
-				if ((player.hasPerk(perkObj.tier3) || player.hasPerk(perkObj.tier4)) && player.hasStatusEffect(perkObj.counter)) player.addStatusValue(perkObj.counter, 3, -1);
-			}
-
-			var damage:Number = 0;
-			var damult:Number = 1;
-			damage += scalingBonusIntelligence() * 5;
-			damage += scalingBonusWisdom() * 5;
-			damage *= 1.5 + (rand(101) / 100);
-			damage = calcInfernoMod(damage, true);
-			damage = calcGlacialMod(damage, true);
-			damage = calcVoltageMod(damage, true);
-			damage = calcEclypseMod(damage, true);
-
-			if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
-				player.removeStatusEffect(StatusEffects.DragonBreathBoost);
-				damage *= 3;
-			}
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
-			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 1.25;
-			if (player.hasPerk(PerkLib.ColdMastery) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 1.25;
-			if (player.hasPerk(PerkLib.LightningAffinity)) damage *= 1.25;
-			if (player.hasPerk(PerkLib.DarknessAffinity) || player.hasPerk(PerkLib.FireShadowAffinity)) damage *= 1.25;
-			if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + ((player.lust100 * 0.01) * 0.25));
-			if (combat.wearingWinterScarf()) damage *= 1.05;
-			damage *= magicAbilitiesGoBrrr();
-			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-			if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
-			if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
-			damage *= 4;
-			damage *= damult;
-			damage = Math.round(damage * (combat.fireDamageBoostedByDao() + combat.iceDamageBoostedByDao() + combat.lightningDamageBoostedByDao() + combat.darknessDamageBoostedByDao() - 3));
-			//Shell
-			if(monster.hasStatusEffect(StatusEffects.Shell)) {
-				outputText("As soon as your magic touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
-				enemyAI();
-				return;
-			}
-			if (combat.checkConcentration()) return; //Amily concentration
-			if (monster is LivingStatue)
-			{
-				outputText("The elemental energies courses by the stone skin harmlessly. Thou it does leave the surface of the statue with a thin layer of multicolor glow.");
-				enemyAI();
-			return;
-			}
-			outputText("You wreel back your head, sucking in a large breath of air before letting out all the collected energy. You let loose a bellowing roar at [themonster], so forceful that even the landscape begins to warp around the blast. [Themonster] attempts to dodge but the sheer size and speed is to immense to avoid as they are slammed with Fire, Ice, Lightning and Darkness. ");
-			//Miss:
-			if(((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) && !monster.monsterIsStunned()) {
-				outputText("  Despite the heavy impact caused by your roar, [themonster] manages to take it at an angle and remain on [monster his] feet and focuses on you, ready to keep fighting.");
-			}
-			//Special enemy avoidances
-			else if (valaReflect(damage, "true dragon breath", player.takeMagicDamage)) {}
-			else {
-				if(!monster.hasPerk(PerkLib.Resolute)) {
-					outputText(" [Themonster] is stunned and");
-					monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-				}
-				else {
-					outputText(" [Themonster] ");
-					if(!monster.plural) outputText("is ");
-					else outputText("are");
-					outputText("too resolute to be stunned by your attack, but still");
-				}
-				outputText(" takes ");
-				doMagicDamage(damage, true, true);
-				outputText(" from the immense blast.");
-			}
-			outputText("\n\n");
-			checkAchievementDamage(damage);
-			combat.heroBaneProc(damage);
-			checkLethiceAndCombatRoundOver();
-		}
-		else {
-			fatigue(200, USEFATG_MAGIC_NOBM);
-			outputText("You open your jaw, collecting all your draconic power into your chest. The light of your mixed power coalescing in your throat as you focus.\n\n");
-			player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
-			player.createStatusEffect(StatusEffects.ChanneledAttackType, 4, 0, 0, 0);
-			for each (var perkDragonObj:Object in values(CombatMagic.magicCounterPerks)) {
-				if (player.hasPerk(perkDragonObj.tier3) || player.hasPerk(perkDragonObj.tier4)) player.addStatusValue(perkDragonObj.counter, 3, 1);
-			}
-			enemyAI();
-		}
-	}
-
-	public function DragonLustPoisonBreath():void {
+	public function dragonLustPoisonBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		if (combat.checkConcentration()) return; //Amily concentration
@@ -3345,6 +3199,91 @@ public class MagicSpecials extends BaseCombatContent {
 		player.tailVenom -= player.VenomWebCost() * 5;
 		flags[kFLAGS.VENOM_TIMES_USED] += 1;
 		checkLethiceAndCombatRoundOver();
+	}
+	public function quadElementDragonBreath():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		if (player.statusEffectv1(StatusEffects.ChanneledAttack) == 1) {
+			dragonBreathsCooldownManagement(50);
+			player.removeStatusEffect(StatusEffects.ChanneledAttack);
+			player.removeStatusEffect(StatusEffects.ChanneledAttackType);
+			for each (var perkObj:Object in values(CombatMagic.magicCounterPerks)) {
+				if ((player.hasPerk(perkObj.tier3) || player.hasPerk(perkObj.tier4)) && player.hasStatusEffect(perkObj.counter)) player.addStatusValue(perkObj.counter, 3, -1);
+			}
+			var damage:Number = 0;
+			var damult:Number = 1;
+			damage += scalingBonusIntelligence() * 50;
+			damage += scalingBonusWisdom() * 50;
+			damage *= 2 + (rand(151) / 100);
+			damage = calcInfernoMod(damage, true);
+			damage = calcGlacialMod(damage, true);
+			damage = calcVoltageMod(damage, true);
+			damage = calcEclypseMod(damage, true);
+			if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
+				player.removeStatusEffect(StatusEffects.DragonBreathBoost);
+				damage *= 3;
+			}
+			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
+			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 1.25;
+			if (player.hasPerk(PerkLib.ColdMastery) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 1.25;
+			if (player.hasPerk(PerkLib.LightningAffinity)) damage *= 1.25;
+			if (player.hasPerk(PerkLib.DarknessAffinity) || player.hasPerk(PerkLib.FireShadowAffinity)) damage *= 1.25;
+			if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + ((player.lust100 * 0.01) * 0.25));
+			if (combat.wearingWinterScarf()) damage *= 1.05;
+			damage *= magicAbilitiesGoBrrr();
+			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+			if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+			if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
+			damage *= 4;
+			damage *= damult;
+			damage = Math.round(damage * (combat.fireDamageBoostedByDao() + combat.iceDamageBoostedByDao() + combat.lightningDamageBoostedByDao() + combat.darknessDamageBoostedByDao() - 3));
+			//Shell
+			if(monster.hasStatusEffect(StatusEffects.Shell)) {
+				outputText("As soon as your magic touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+				enemyAI();
+				return;
+			}
+			if (combat.checkConcentration()) return; //Amily concentration
+			if (monster is LivingStatue)
+			{
+				outputText("The elemental energies courses by the stone skin harmlessly. Thou it does leave the surface of the statue with a thin layer of multicolor glow.");
+				enemyAI();
+			return;
+			}
+			outputText("You wreel back your head, sucking in a large breath of air before letting out all the collected energy. You let loose a bellowing roar at [themonster], so forceful that even the landscape begins to warp around the blast. [Themonster] attempts to dodge but the sheer size and speed is to immense to avoid as they are slammed with Fire, Ice, Lightning and Darkness. ");
+			//Miss:
+			if(((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) && !monster.monsterIsStunned()) {
+				outputText("  Despite the heavy impact caused by your roar, [themonster] manages to take it at an angle and remain on [monster his] feet and focuses on you, ready to keep fighting.");
+			}
+			//Special enemy avoidances
+			else if (valaReflect(damage, "true dragon breath", player.takeMagicDamage)) {}
+			else {
+				outputText(" [Themonster] is stunned and");
+				var stutter:Number = 1;
+				if (rand(2) == 0) stutter += 1;
+				if (rand(4) == 0) stutter += 1;
+				if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+				else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
+				outputText(" takes ");
+				doMagicDamage(damage, true, true);
+				outputText(" from the immense blast.");
+			}
+			outputText("\n\n");
+			checkAchievementDamage(damage);
+			combat.heroBaneProc(damage);
+			checkLethiceAndCombatRoundOver();
+		}
+		else {
+			fatigue(200, USEFATG_MAGIC_NOBM);
+			outputText("You open your jaw, collecting all your draconic power into your chest. The light of your mixed power coalescing in your throat as you focus.\n\n");
+			player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.ChanneledAttackType, 4, 0, 0, 0);
+			for each (var perkDragonObj:Object in values(CombatMagic.magicCounterPerks)) {
+				if (player.hasPerk(perkDragonObj.tier3) || player.hasPerk(perkDragonObj.tier4)) player.addStatusValue(perkDragonObj.counter, 3, 1);
+			}
+			enemyAI();
+		}
 	}
 //* Terrestrial Fire
 	public function fireballuuuuu():void {
@@ -4169,6 +4108,8 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) KOCD -= 1;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) KOCD -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) KOCD -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) KOCD -= 4;
+		if (KOCD < 1) KOCD = 1;
 		player.createStatusEffect(StatusEffects.CooldownKnowledgeOverload,KOCD,0,0,0);
 		outputText("You share some of your well earned knowledge with [themonster] who stands there blankly listening to your spiel in confusion. It's going to take [monster him] a moment to come down from the absurd amount of info you forced into [monster his] tiny head"+(monster.plural?"s":"")+".\n\n");
 		var overloadduration:Number = 0;
@@ -4204,6 +4145,8 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) WWCD -= 1;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) WWCD -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) WWCD -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) WWCD -= 4;
+		if (WWCD < 1) WWCD = 1;
 		player.createStatusEffect(StatusEffects.CooldownWeirdWords,WWCD,0,0,0);
 		var damage:Number = scalingBonusIntelligence() * spellMod() * 4;
 		damage *= 1 + (camp.codex.checkUnlocked() * 0.01);
@@ -4950,6 +4893,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var cooldown:Number = 12;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+		if (cooldown < 1) cooldown = 1;
 		player.createStatusEffect(StatusEffects.CooldownHydraAcidBreath,cooldown,0,0,0);
 		outputText("You move your " + player.statusEffectv1(StatusEffects.HydraTailsPlayer) + " Hydra heads in an attack formation, belching acid at [themonster]. Your acid begins to eat at your opponents natural defences. ");
 		for (var i:int = player.statusEffectv1(StatusEffects.HydraTailsPlayer); i > 0; i--) {
@@ -5812,6 +5757,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var cooldown:Number = 8;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+		if (cooldown < 1) cooldown = 1;
 		player.createStatusEffect(StatusEffects.CooldownCursedRiddle, cooldown, 0, 0, 0);
 		outputText("You stop fighting for a second and speak aloud a magical riddle.\n\n");
 		var chosen:String = randomChoice(
@@ -6416,6 +6363,8 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 4) ssc -= 1;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) ssc -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) ssc -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) ssc -= 4;
+		if (ssc < 1) ssc = 1;
 		player.createStatusEffect(StatusEffects.CooldownSpectralScream,ssc,0,0,0);
 		outputText("You let out a soul-chilling scream freezing your opponent" + (monster.plural ? "s":"") + " in [monster his] tracks from sheer terror. This also seems to have damaged [monster his] sanity. ");
 		var damage:Number = 0;
@@ -6511,6 +6460,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var pc:Number = 8;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) pc -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) pc -= 4;
+		if (pc < 1) pc = 1;
 		player.createStatusEffect(StatusEffects.CooldownAcidSpit,pc,0,0,0);
 		checkAchievementDamage(damage);
 		combat.heroBaneProc(damage);
@@ -6718,6 +6669,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var cooldown:Number = 12;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+		if (cooldown < 1) cooldown = 1;
 		player.createStatusEffect(StatusEffects.CooldownSonicScream,cooldown,0,0,0);
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
 			outputText("As soon as your magic touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");

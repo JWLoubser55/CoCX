@@ -1009,6 +1009,9 @@ public class PerkLib
 		public static const BoomingVoice:PerkType = mk("Booming Voice", "Booming Voice",
 				"Increase the potency of all breath weapons, shout and sound based ability by 25% when outdoors. Throat abilities cooldowns are reduced by 1 increment.",
 				"You've chosen the 'Booming Voice' perk. Increase the potency of all breath weapons, shout and sound based ability by 25% when outdoors. Throat abilities cooldowns are reduced by 1 increment.");
+		public static const ThunderingEchoes:PerkType = mk("Thundering Echoes", "Thundering Echoes",
+				"Further Increase the potency of all breath weapons, shout and sound based ability by 25%. Throat abilities cooldowns are reduced by 1 further increment.",
+				"You've chosen the 'Thundering Echoes' perk. Further Increase the potency of all breath weapons, shout and sound based ability by 25%. Throat abilities cooldowns are reduced by 1 further increment.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1023,6 +1026,39 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -4807,6 +4843,8 @@ public class PerkLib
 				"Sing and its sub powers now also counts as a soulforce ability. Devastating Aria and Captivate now also consume soulforce.");
 		public static const WendigoCurse:PerkType = mk("Wendigo Curse", "Wendigo Curse",
 				"Your body and soul has been cursed by a wendigo. Transformative no longer have an effect on you.");
+		public static const WildDrake:PerkType = mk("Wild Drake", "Wild Drake",
+				".");
 		public static const VegetalAffinity:PerkType = mk("Vegetal Affinity", "Vegetal Affinity",
 				"Empower Green Magic by 50% weaken fire resistance by 50%.");
 		public static const VerdantMight:PerkType = mk("Verdant Might", "Verdant Might",
@@ -8616,6 +8654,16 @@ public class PerkLib
 					.requireStr(45)
                     .requireTou(45)
                     .requireSpe(45);
+            ThunderingEchoes.requirePerk(BoomingVoice)
+					.requireLevel(18)
+					.requireStr(60)
+                    .requireTou(60)
+                    .requireSpe(60);
+            //.requirePerk(ThunderingEchoes)
+			//		.requireLevel(30)
+			//		.requireStr(90)
+            //        .requireTou(90)
+            //        .requireSpe(90);
             ArcanePoolIV.requireLevel(12)
                     .requireInt(60)
                     .requireWis(60)

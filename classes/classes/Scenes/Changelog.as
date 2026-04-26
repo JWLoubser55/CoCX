@@ -369,6 +369,9 @@ public class Changelog extends BaseContent
 			outputText(" boost natural wrath generation rate. While lustzerking fire damage is increased by 50%.\n");
 			outputText("-New tier 1 misc lvl-up perk: Booming Voice. Req. Job: Feral Champion perk, 30+ str/tou/spe. Effect: Increase the potency of all breath weapons, shout and sound based ability by 25% when outdoors. Throat abilities cooldowns are reduced by 1 increment.\n");
 			outputText("-Breath, Sing, other specials that use sound and req. to use mouth/throat have all been unified in base cooldown. Some get shorter end of stick some get longer end :D\n");
+			outputText("-New tier 3 misc lvl-up perk: Thundering Echoes. Req. Booming Voice perk, 60+ str/tou/spe. Effect: Further Increase the potency of all breath weapons, shout and sound based ability by 25%. Throat abilities cooldowns are reduced by 1 further increment.\n");
+			outputText("-Goat Dragon was a sad dragon and wanted other dragons been to be sad too, so now all Dragon Breath specials share cooldowns (use one and all others PC have would go into cooldown too). Yes we know it sounds a bit scary but now those specials packs over ten time more punch in the punch. ");
+			outputText("And their stuns are now power stuns that can last extra 1 or 2 turns to max 3 turns (with chance if enemy already is having basic stun effect of adding duration to it.)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -381,10 +384,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//Wild Drake - event perk req. any dragon race rank 1+ possesed - lower by 4 turns duration for cd on other unused by pc dragon breath specials
+			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");

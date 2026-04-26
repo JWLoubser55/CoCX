@@ -14585,12 +14585,12 @@ public class Combat extends BaseContent {
             }
         }
 		//Dragon breath specials
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.hasPerk(PerkLib.BoomingVoice)) {
-			if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown)) {
-				if (player.statusEffectv1(StatusEffects.DragonBreathCooldown) <= 0) {
-					player.removeStatusEffect(StatusEffects.DragonBreathCooldown);
+		if ((player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 || player.hasPerk(PerkLib.ThunderingEchoes)) && player.hasPerk(PerkLib.BoomingVoice)) {
+			if (player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonQuadElementBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonQuadElementBreathCooldown);
 				} else {
-					player.addStatusValue(StatusEffects.DragonBreathCooldown, 1, -1);
+					player.addStatusValue(StatusEffects.DragonQuadElementBreathCooldown, 1, -1);
 				}
 			}
 			if (player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown)) {
@@ -14657,12 +14657,12 @@ public class Combat extends BaseContent {
 				}
 			}
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3 && player.hasPerk(PerkLib.BoomingVoice)) {
-			if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown)) {
-				if (player.statusEffectv1(StatusEffects.DragonBreathCooldown) <= 0) {
-					player.removeStatusEffect(StatusEffects.DragonBreathCooldown);
+		if ((player.perkv1(IMutationsLib.DrakeLungsIM) >= 3 || (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.hasPerk(PerkLib.ThunderingEchoes))) && player.hasPerk(PerkLib.BoomingVoice)) {
+			if (player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonQuadElementBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonQuadElementBreathCooldown);
 				} else {
-					player.addStatusValue(StatusEffects.DragonBreathCooldown, 1, -1);
+					player.addStatusValue(StatusEffects.DragonQuadElementBreathCooldown, 1, -1);
 				}
 			}
 		}
@@ -17092,6 +17092,8 @@ public function SingCaptivate():void {
 	var cooldown:Number = 12;
 	if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 	if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+	if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+	if (cooldown < 1) cooldown = 1;
 	player.createStatusEffect(StatusEffects.CooldownSingCaptivate,cooldown,0,0,0);
     outputText("\n\n");
     enemyAIImpl();
@@ -17116,6 +17118,8 @@ public function SingDevastatingAria():void {
 	var cooldown:Number = 8;
 	if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 	if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+	if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+	if (cooldown < 1) cooldown = 1;
 	player.createStatusEffect(StatusEffects.CooldownSingAria,cooldown,0,0,0);
     var damage:Number = combat.teases.teaseBaseLustDamage();
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 2) damage *= scalingBonusIntelligence();
@@ -20858,7 +20862,7 @@ public function hollowSkillsAndSoulskillsBoost():Number {
 }
 public function boomingVoiceBoost():Number {
 	var booming:Number = 1.25;
-	//if (player.hasPerk(PerkLib.)) booming += 0.25;
+	if (player.hasPerk(PerkLib.ThunderingEchoes)) booming += 0.25;
 	//if (player.hasPerk(PerkLib.)) booming += 0.25;
 	return booming;
 }

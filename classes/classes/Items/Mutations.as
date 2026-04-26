@@ -11943,7 +11943,7 @@ public final class Mutations extends MutationsHelper {
         if (player.hasPerk(PerkLib.DragonFireBreath) || player.hasPerk(PerkLib.DragonIceBreath) || player.hasPerk(PerkLib.DragonLightningBreath) || player.hasPerk(PerkLib.DragonDarknessBreath)) {
             var changes:int = 0;
             var changeLimit:int = 1;
-            if (!player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonBreathBoost) && changes < changeLimit) {
+            if (!player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown) && !player.hasStatusEffect(StatusEffects.DragonBreathBoost) && changes < changeLimit) {
                 player.createStatusEffect(StatusEffects.DragonBreathBoost, 0, 0, 0, 0);
                 changes++;
             }
@@ -11963,8 +11963,8 @@ public final class Mutations extends MutationsHelper {
                 player.removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);
                 changes++;
             }
-            if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown) && changes < changeLimit) {
-                player.removeStatusEffect(StatusEffects.DragonBreathCooldown);
+            if (player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown) && changes < changeLimit) {
+                player.removeStatusEffect(StatusEffects.DragonQuadElementBreathCooldown);
                 changes++;
             }
             outputText("[pg]A sudden surge of energy fills your being and you feel like you could blast anything to atoms with a single breath, like the mighty dragons of legends.");

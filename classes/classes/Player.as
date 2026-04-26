@@ -7071,8 +7071,8 @@ use namespace CoC;
 			if(hasStatusEffect(StatusEffects.EzekielCurse) && EvangelineFollower.EvangelineAffectionMeter >= 3 && hasPerk(PerkLib.EzekielBlessing)) {
 				removeStatusEffect(StatusEffects.EzekielCurse);
 			}
-			if(hasStatusEffect(StatusEffects.DragonBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 3 || hasPerk(PerkLib.BoomingVoice))) {
-				removeStatusEffect(StatusEffects.DragonBreathCooldown);
+			if(hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 3 || (perkv1(IMutationsLib.DrakeLungsIM) >= 1 && hasPerk(PerkLib.BoomingVoice)))) {
+				removeStatusEffect(StatusEffects.DragonQuadElementBreathCooldown);
 			}
 			if(hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);

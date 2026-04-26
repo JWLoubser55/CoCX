@@ -1226,16 +1226,16 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					if (player.beardLength > 0 && player.beardLength < 12) EventParser.growBeard(0.02);
 				}
 				//Clear dragon breath cooldowns!
-				if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) player.removeStatusEffect(StatusEffects.DragonBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonFireBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonIceBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonLightningBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonPoisonBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonWaterBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonWaterBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonFaerieBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonRoyalBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 3 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonQuadElementBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonFireBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonIceBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonLightningBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonPoisonBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonWaterBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonWaterBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonFaerieBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonRoyalBreathCooldown);
 				//Reset once a day cooldowns
 				player.resetCooldowns(true);
 				//Reset Mara Fruit daily counter

@@ -1474,7 +1474,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 						btnContinue.show("Continue", combat.mspecials.OrgasmicLightningStrike, "Continue masturbating.");
 						break;
 					case 4:
-						btnContinue.show("Continue", combat.mspecials.trueDragonBreath, "Continue gathering elemental energy.");
+						btnContinue.show("Continue", combat.mspecials.quadElementDragonBreath, "Continue gathering elemental energy.");
 						break;
 					case 5:
 						btnContinue.show("Continue", CombatAbilities.PolarMidnight.buttonCallback, "Continue casting Polar Midnight spell.");
