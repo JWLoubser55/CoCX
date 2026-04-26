@@ -1397,6 +1397,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const CooldownAcidSpit:StatusEffectType          			= mkCombat("Cooldown Acid Spit");
 		public static const CooldownAdamantineShell:StatusEffectType           	= mkCombat("Cooldown Adamantine Shell");
 		public static const CooldownAtavism:StatusEffectType                    = mkCombat("Cooldown Atavism");
+		public static const CooldownAzureflameBreath:StatusEffectType   		= mkCombat("Cooldown Azureflame Breath");
 		public static const CooldownBalefulPolymorph:StatusEffectType      		= mkCombat("Cooldown Baleful Polymorph");
 		public static const CooldownCero:StatusEffectType          				= mkCombat("Cooldown Cero");
 		public static const CooldownChargedShot:StatusEffectType       	 		= mkCombat("Cooldown Charged Shot");

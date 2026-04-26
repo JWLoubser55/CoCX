@@ -979,7 +979,9 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.AzureflameBreath)) {
 			bd = buttons.add("Azureflame B.", azureflameBreath).hint("Inhale a cone of bluish flames at your opponent. Cause burn.", "Azureflame Breath");
 			bd.requireFatigue(spellCost(40));
-			if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			if (player.hasStatusEffect(StatusEffects.CooldownAzureflameBreath)) {
+				bd.disable("You need more time before you can use Azureflame Breath again.");
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			favbd(bd, "Azureflame Breath");
 		}
 		if ((player.isRaceCached(Races.MOUSE, 2)) || player.countRings(jewelries.INMORNG)) {
@@ -1319,19 +1321,20 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Money Strike");
 		}
 		if (player.isRaceCached(Races.RATATOSKR)) {
-			var cdko:Number = 12;
+			var cdko:Number = 8;
 			if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 2) cdko -= 1;
 			if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) cdko -= 1;
 			if (player.hasPerk(PerkLib.NaturalInstincts)) cdko -= 1;
+			if (player.hasPerk(PerkLib.BoomingVoice)) cdko -= 4;
 			bd = buttons.add("Knowledge overload", KnowledgeOverload).hint("Stun your opponents by overflowing their head with knowledge. \n\nWould go into cooldown after use for: "+cdko+" rounds", "Knowledge overload");
 			bd.requireMana(spellCost(80));
 			if (player.hasStatusEffect(StatusEffects.CooldownKnowledgeOverload)) {
 				bd.disable("You need more time before you can use Knowledge overload again.\n\n");
 			}
+			favbd(bd, "Knowledge Overload");
 			var cdp:Number = 6;
 			if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) cdp -= 1;
 			if (player.hasPerk(PerkLib.NaturalInstincts)) cdp -= 1;
-			favbd(bd, "Knowledge Overload");
 			bd = buttons.add("Provoke", Provoke).hint("Insult your opponent and cause it to fly into a murderous rage increasing its damage but negating its defences and ability to do anything but attack blindly with physical strikes. \n\nWould go into cooldown after use for: "+cdp+" rounds", "Provoke");
 			bd.requireMana(spellCost(80));
 			if (player.hasStatusEffect(StatusEffects.CooldownProvoke)) {
@@ -1340,9 +1343,10 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Provoke");
 		}
 		if (player.isRaceCached(Races.RATATOSKR) || player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 1) {
-			var cdww:Number = 4;
+			var cdww:Number = 8;
 			if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) cdww -= 1;
 			if (player.hasPerk(PerkLib.NaturalInstincts)) cdww -= 1;
+			if (player.hasPerk(PerkLib.BoomingVoice)) cdww -= 4;
 			bd = buttons.add("Weird words", WeirdWords).hint("Strike at your opponent with weird sentences charged with magic, so hard to comprehend it hurts. More potent based on your personal knowledge. \n\nWould go into cooldown after use for: "+cdww+" rounds", "Weird words");
 			bd.requireMana(spellCost(80));
 			if (player.hasStatusEffect(StatusEffects.CooldownWeirdWords)) {
@@ -2448,6 +2452,10 @@ public class MagicSpecials extends BaseCombatContent {
 		var damage:Number = 0;
 		var damult:Number = 1;
 		var scalingmulti:Number = 1;
+		var cooldown:Number = 12;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		player.createStatusEffect(StatusEffects.CooldownAzureflameBreath,cooldown,0,0,0);
 		if (player.perkv1(IMutationsLib.CaveWyrmLungsIM) >= 1) damult += 2;
 		if (player.perkv1(IMutationsLib.CaveWyrmLungsIM) >= 2) {
 			damult += 2;
@@ -2559,6 +2567,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage *= 4;
@@ -2654,6 +2663,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (combat.wearingWinterScarf()) damage *= 1.2;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2718,6 +2728,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + (player.lust100 * 0.01));
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2781,6 +2792,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2844,6 +2856,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2915,6 +2928,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2978,6 +2992,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 6;
 		damage *= damult;
@@ -3087,6 +3102,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -3154,6 +3170,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -3220,6 +3237,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (combat.wearingWinterScarf()) damage *= 1.05;
 			damage *= magicAbilitiesGoBrrr();
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+			if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
 			if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 			damage *= 4;
 			damage *= damult;
@@ -4146,7 +4164,7 @@ public class MagicSpecials extends BaseCombatContent {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		useMana(80, Combat.USEMANA_MAGIC);
-		var KOCD:Number = 12;
+		var KOCD:Number = 8;
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 2) KOCD -= 1;
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) KOCD -= 1;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) KOCD -= 1;
@@ -4182,7 +4200,7 @@ public class MagicSpecials extends BaseCombatContent {
 		clearOutput();
 		useMana(80, Combat.USEMANA_MAGIC);
 		combat.darkRitualCheckDamage();
-		var WWCD:Number = 12;
+		var WWCD:Number = 8;
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) WWCD -= 1;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) WWCD -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) WWCD -= 4;
@@ -5791,7 +5809,10 @@ public class MagicSpecials extends BaseCombatContent {
 	//Cursed Riddle
 	public function CursedRiddle():void {
 		clearOutput();
-		player.createStatusEffect(StatusEffects.CooldownCursedRiddle, 0, 0, 0, 0);
+		var cooldown:Number = 8;
+		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
+		player.createStatusEffect(StatusEffects.CooldownCursedRiddle, cooldown, 0, 0, 0);
 		outputText("You stop fighting for a second and speak aloud a magical riddle.\n\n");
 		var chosen:String = randomChoice(
 		"\"<i>If you speak my name, you destroy me. Who am I?</i>\"\n\n",
@@ -8061,4 +8082,4 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 }
-}
+}

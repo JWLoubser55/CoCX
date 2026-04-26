@@ -14683,6 +14683,30 @@ public class Combat extends BaseContent {
 				player.addStatusValue(StatusEffects.CooldownSingAria, 1, -1);
 			}
 		}
+		//Knowledge overload
+		if (player.hasStatusEffect(StatusEffects.CooldownKnowledgeOverload)) {
+			if (player.statusEffectv1(StatusEffects.CooldownKnowledgeOverload) <= 0) {
+				player.removeStatusEffect(StatusEffects.CooldownKnowledgeOverload);
+			} else {
+				player.addStatusValue(StatusEffects.CooldownKnowledgeOverload, 1, -1);
+			}
+		}
+		//Weird words
+		if (player.hasStatusEffect(StatusEffects.CooldownWeirdWords)) {
+			if (player.statusEffectv1(StatusEffects.CooldownWeirdWords) <= 0) {
+				player.removeStatusEffect(StatusEffects.CooldownWeirdWords);
+			} else {
+				player.addStatusValue(StatusEffects.CooldownWeirdWords, 1, -1);
+			}
+		}
+		//Cursed Riddle
+		if (player.hasStatusEffect(StatusEffects.CooldownCursedRiddle)) {
+			if (player.statusEffectv1(StatusEffects.CooldownCursedRiddle) <= 0) {
+				player.removeStatusEffect(StatusEffects.CooldownCursedRiddle);
+			} else {
+				player.addStatusValue(StatusEffects.CooldownCursedRiddle, 1, -1);
+			}
+		}
 		if (player.hasPerk(PerkLib.BoomingVoice)) {
 			//Freezing Breath Fenrir
 			if (player.hasStatusEffect(StatusEffects.CooldownFreezingBreath)) {
@@ -14716,6 +14740,14 @@ public class Combat extends BaseContent {
 					player.addStatusValue(StatusEffects.CooldownPhoenixFireBreath, 1, -1);
 				}
 			}
+			//Azureflame Breath
+			if (player.hasStatusEffect(StatusEffects.CooldownAzureflameBreath)) {
+				if (player.statusEffectv1(StatusEffects.CooldownAzureflameBreath) <= 0) {
+					player.removeStatusEffect(StatusEffects.CooldownAzureflameBreath);
+				} else {
+					player.addStatusValue(StatusEffects.CooldownAzureflameBreath, 1, -1);
+				}
+			}
 			//Hydra Acid Breath
 			if (player.hasStatusEffect(StatusEffects.CooldownHydraAcidBreath)) {
 				if (player.statusEffectv1(StatusEffects.CooldownHydraAcidBreath) <= 0) {
@@ -14738,22 +14770,6 @@ public class Combat extends BaseContent {
 					player.removeStatusEffect(StatusEffects.CooldownSingCaptivate);
 				} else {
 					player.addStatusValue(StatusEffects.CooldownSingCaptivate, 1, -1);
-				}
-			}
-			//Knowledge overload
-			if (player.hasStatusEffect(StatusEffects.CooldownKnowledgeOverload)) {
-				if (player.statusEffectv1(StatusEffects.CooldownKnowledgeOverload) <= 0) {
-					player.removeStatusEffect(StatusEffects.CooldownKnowledgeOverload);
-				} else {
-					player.addStatusValue(StatusEffects.CooldownKnowledgeOverload, 1, -1);
-				}
-			}
-			//Weird words
-			if (player.hasStatusEffect(StatusEffects.CooldownWeirdWords)) {
-				if (player.statusEffectv1(StatusEffects.CooldownWeirdWords) <= 0) {
-					player.removeStatusEffect(StatusEffects.CooldownWeirdWords);
-				} else {
-					player.addStatusValue(StatusEffects.CooldownWeirdWords, 1, -1);
 				}
 			}
 			//Compelling Aria
@@ -21194,4 +21210,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}
