@@ -20866,6 +20866,14 @@ public function boomingVoiceBoost():Number {
 	//if (player.hasPerk(PerkLib.)) booming += 0.25;
 	return booming;
 }
+public function breathSpecialsCooldown(tiers:Number):Number {
+	var bSC:Number = 0;
+	if (tiers > 0) bSC += 4;
+	if (tiers > 1) bSC += 4;
+	if (tiers > 2) bSC += 2;
+	if (tiers > 3) bSC += 2;
+	return bSC;
+}
 
 public function aPoisonGlandsMyconidSpores():void {
 	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25)), false);

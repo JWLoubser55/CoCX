@@ -1443,7 +1443,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-		if (cooldown < 1) cooldown = 1;
+		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownFreezingBreath,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.2;
 		damage += scalingBonusToughness() * 0.2;
@@ -1453,7 +1453,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (combat.wearingWinterScarf()) damage *= 1.2;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.AscensionOneRaceToRuleThemAllX)) damage += (0.25 * player.perkv1(PerkLib.AscensionOneRaceToRuleThemAllX));
 		damage = Math.round(damage * combat.iceDamageBoostedByDao());
 		outputText("Tapping into the power deep within you, you let loose a bellowing roar at your enemy, a powerful wave of cold blasting the area in front of you.  [Themonster] does [monster his] best to avoid it, but the wave of freezing air is too fast.");
@@ -1510,7 +1510,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-		if (cooldown < 1) cooldown = 1;
+		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownFreezingBreathYeti,cooldown,0,0,0);
 		damage += scalingBonusToughness() * 0.2;
 		damage = calcGlacialMod(damage, true);
@@ -1518,7 +1518,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.perkv1(IMutationsLib.YetiFatIM) >= 1) damage *= 1.50;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		damage = Math.round(damage * combat.iceDamageBoostedByDao());
 		outputText("You inhale deeply, then blow a freezing breath attack at your opponent, encasing it in ice!");
 		//Shell
@@ -1571,7 +1571,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-		if (cooldown < 1) cooldown = 1;
+		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.1;
 		damage += scalingBonusToughness() * 0.1;
@@ -1580,7 +1580,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		//if (player.perkv1(IMutationsLib.YetiFatIM) >= 1) damage *= 1.50;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		damage = Math.round(damage * combat.poisonDamageBoostedByDao());
 		outputText("You inhale deeply, then blow a toxic breath attack at your opponent!");
 		//Shell
@@ -2096,7 +2096,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-		if (cooldown < 1) cooldown = 1;
+		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownPhoenixFireBreath,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.5;
 		damage += scalingBonusToughness() * 0.5;
@@ -2104,7 +2104,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage = calcInfernoMod(damage, true);
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage);
 		//Shell
@@ -2414,7 +2414,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-		if (cooldown < 1) cooldown = 1;
+		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownAzureflameBreath,cooldown,0,0,0);
 		if (player.perkv1(IMutationsLib.CaveWyrmLungsIM) >= 1) damult += 2;
 		if (player.perkv1(IMutationsLib.CaveWyrmLungsIM) >= 2) {
@@ -2510,7 +2510,7 @@ public class MagicSpecials extends BaseCombatContent {
 	private function dragonBreathsCooldownManagement(type:Number):void {
 		var cooldown:Number = dragonBreathsCooldownManagement1();
 		//if (player.hasPerk(PerkLib.)) cooldown -= dragonBreathsCooldownManagement0();
-		//if (cooldown < 1) cooldown = 1;
+		//if (cooldown < 0) cooldown = 0;
 		if (type == 1) player.createStatusEffect(StatusEffects.DragonFireBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
 		else player.createStatusEffect(StatusEffects.DragonFireBreathCooldown, cooldown, 0, 0, 0);
 		if (type == 2) player.createStatusEffect(StatusEffects.DragonIceBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
@@ -2567,7 +2567,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage *= 4;
@@ -2657,7 +2657,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (combat.wearingWinterScarf()) damage *= 1.2;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2716,7 +2716,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + (player.lust100 * 0.01));
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2774,7 +2774,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2832,7 +2832,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2898,7 +2898,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -2956,7 +2956,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 6;
 		damage *= damult;
@@ -3060,7 +3060,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -3122,7 +3122,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
 		damage *= damult;
@@ -3233,7 +3233,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (combat.wearingWinterScarf()) damage *= 1.05;
 			damage *= magicAbilitiesGoBrrr();
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-			if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+			if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 			if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 			damage *= 4;
 			damage *= damult;
@@ -4150,7 +4150,7 @@ public class MagicSpecials extends BaseCombatContent {
 		player.createStatusEffect(StatusEffects.CooldownWeirdWords,WWCD,0,0,0);
 		var damage:Number = scalingBonusIntelligence() * spellMod() * 4;
 		damage *= 1 + (camp.codex.checkUnlocked() * 0.01);
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 2) damage *= 1.2;
 		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) damage *= 1.25;
 		//Determine if critical hit!
@@ -4894,7 +4894,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-		if (cooldown < 1) cooldown = 1;
+		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownHydraAcidBreath,cooldown,0,0,0);
 		outputText("You move your " + player.statusEffectv1(StatusEffects.HydraTailsPlayer) + " Hydra heads in an attack formation, belching acid at [themonster]. Your acid begins to eat at your opponents natural defences. ");
 		for (var i:int = player.statusEffectv1(StatusEffects.HydraTailsPlayer); i > 0; i--) {
@@ -4912,7 +4912,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage += scalingBonusToughness();// * 0.5
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		damage = calcCorrosionMod(damage, incAcidCounter);
 		damage = Math.round(damage);
 		doAcidDamage(damage, true, true);
@@ -5758,7 +5758,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-		if (cooldown < 1) cooldown = 1;
+		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownCursedRiddle, cooldown, 0, 0, 0);
 		outputText("You stop fighting for a second and speak aloud a magical riddle.\n\n");
 		var chosen:String = randomChoice(
@@ -6420,7 +6420,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage += scalingBonusIntelligence();
 		damage *= soulskillMagicalMod();
 		damage *= combat.hollowSkillsAndSoulskillsBoost();
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		damage = calcCorrosionMod(damage, true);
 		damage = Math.round(damage);
 		//Shell
@@ -6670,7 +6670,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-		if (cooldown < 1) cooldown = 1;
+		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownSonicScream,cooldown,0,0,0);
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
 			outputText("As soon as your magic touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
@@ -6682,7 +6682,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 5;
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		damage = Math.round(damage);
 		monster.HP -= damage;
 		outputText("You call on the power of your tainted blood drawing out an almighty scream so strong and sharp it explode from you like a shockwave sending [themonster] flying. [monster He] will be shaken from the glass shattering blast for a moment " + damage + " damage.");
@@ -8035,4 +8035,4 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 }
-}
+}

@@ -2039,7 +2039,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			var cooldown:Number = 12;
 			if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
 			if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-			if (cooldown < 1) cooldown = 1;
+			if (cooldown < 0) cooldown = 0;
 			if (player.hasPerk(PerkLib.ChallengingShoutMastered)) cooldown *= 1.5;
 			player.createStatusEffect(StatusEffects.CooldownWarriorShout,cooldown,0,0,0);
 		}
