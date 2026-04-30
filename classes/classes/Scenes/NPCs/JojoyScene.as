@@ -7,11 +7,11 @@ public function joJoyCampMenu():void {
 		outputText("You see your Drider lover, Belisa, standing next to Joy. The two seem to be discussing something in earnest, while Belisa's working on patching one of Joy's robes.\n\n"); 
 		outputText("I know where you're coming from, even if I don't understand everything.\" Belisa says warmly. \"I personally wouldn't go to such extremes, Marae above, I understand your reluctance to tell them at all.\" She chuckles. \"But it seems to have worked for you. You're happier than I've ever seen you before.\" \n\n");
 		outputText("Joy seems a little bashful at that. \"Well...It was an accident the first time. It wasn't...Planned.\" \n\n");
-		outputText("\"Well, nobody sane would drink that...Beverage...Willingly, if they knew what it was.\" Belisa chides. \"Just consider yourself lucky that someone like" +[name] +"was there to get it removed. \n\n");
+		outputText("\"Well, nobody sane would drink that...Beverage...Willingly, if they knew what it was.\" Belisa chides. \"Just consider yourself lucky that someone like" +[player] +"was there to get it removed. \n\n");
 		outputText("\"Oh, I consider myself *very* lucky\" Joy teases. Belisa gently slaps the monk on the shoulder. \n\n");
 		outputText("\"That's what I get for being nice to you!\" Belisa fires back, but you can tell it's just friendly teasing. You step closer, and the two turn their heads, Belisa waving at you happily.\n\n");
 		outputText("\"Hello!\" Belisa says happily. \"We were just discussing-\" Joy lunges, cheeks bright red, to put her hands over the Drider's mouth, but Belisa laughs, ducking. \"Never mind!\" Joy 'chases' Belisa away, but you can tell both ladies are laughing, Joy, a bit embarassed, Belisa, amused to no end.  \n\n");
-		outputText("\"Joy comes back, breathing slightly heavily, her cheeks red. \"Hello, "+[name]+", what can I do for you?\" \n\n");
+		outputText("\"Joy comes back, breathing slightly heavily, her cheeks red. \"Hello, "+[Player]+", what can I do for you?\" \n\n");
 		}
 		else if ((BelisaFollower.BelisaInCamp) == false) {
 		switch (rand(3)) {
@@ -57,6 +57,7 @@ public function joJoyCampMenu():void {
 			}
 		
 		}
+
 		var jojoDefense:String = "N.Watch:";
 		if (player.hasStatusEffect(StatusEffects.JojoNightWatch)) {
 		outputText("(Joy is currently watching for enemies at night.)\n\n");
@@ -72,6 +73,7 @@ public function joJoyCampMenu():void {
 		if (player.hasStatusEffect(StatusEffects.Infested)) addButton(5, "Purge", joJoywormRemoval).hint("Request her to purge the worms from your body.");
         addButton(8, "Sex", joJoySexMenu).hint("Have some sexy time with your mousey monk.");
 		addButton(14, "Leave", camp.campFollowers);
+
 		public function joJoyAppearance():void {
 		clearOutput();
 			outputText(images.showImage("joy-appearance"));
@@ -83,6 +85,8 @@ public function joJoyCampMenu():void {
 			outputText("\n\nBetween her squeezable jiggly asscheeks she has " + joyAssDescript() + ", right where it belongs.");
 		doNext(genericMenu);
 		}
+
+
 		public function joJoyTraining():void {
 		clearOutput();
 		if (!player.hasPerk(PerkLib.ControlledBreath) && !player.hasPerk(PerkLib.CleansingPalm) && !player.hasPerk(PerkLib.Enlightened)) {
@@ -243,6 +247,8 @@ public function joJoyGetSome():void {
 menu();
 addButton (1, "SexTime", joJoySexMenu);
 }
+
+
 public function joJoySlapDat():void {
 		clearOutput();
 		outputText("You sneakily make your way behind Joy, and before your mousey lover can react, you bring one hand back, slapping her ass with a sound that echoes through the forest. Almost as loud as the startled “Eep!” that comes out of Joy’s mouth, as she straightens up, water from her furry snout splashing onto her front. Her arms are rigid, at her side, and as she straightens up, you step in, wrapping your free arm around her waist.  \n\n"); 
@@ -277,6 +283,7 @@ menu();
 addButton (1, "Sex", joJoyRegularMenu);
 addButton (2, "BimboRP", joJoyBimboMenu); //only if you've talked with her about Roleplaying
 addButton (3, "Nvm", camp.returnToCamp);
+
 }
 public function joJoyBimboMenu():void {
 			menu();
@@ -334,6 +341,7 @@ public function joJoyTalkVillage():void
 	doNext(joJoytalkMenu); // Dunno where exactly to kick back to, fuck it, back to camp yo!
 	advanceMinutes(5);
 }
+
 //Joining the Monks convo
 public function joJoyTalkJoiningTheMonks():void
 {
@@ -349,6 +357,7 @@ public function joJoyTalkJoiningTheMonks():void
 	doNext(joJoytalkMenu);
 	advanceMinutes(5);
 }
+
 //Fall of the Monks convo
 public function joJoyTalkFallOfTheMonks():void
 {
@@ -365,6 +374,7 @@ public function joJoyTalkFallOfTheMonks():void
 	doNext(joJoytalkMenu);
 	advanceMinutes(5);
 }
+
 //Forest Convo
 public function joJoyTalkForestConvo():void
 {
@@ -410,6 +420,7 @@ public function joJoyTalkForestConvo():void
 	doNext(talkMenu);
 	advanceMinutes(5);
 }
+
 //Yourself
 //Origin
 public function jojoTalkYourOrigin():void // Prob tack on some interaction count or something to unlock this
@@ -473,6 +484,7 @@ public function jojoTalkYourOrigin():void // Prob tack on some interaction count
 	doNext(joJoytalkMenu);
 	advanceMinutes(5);
 }
+
 //Dungeon Convo: Factory
 //Requirements: Completed Demon Factory -- flags[kFLAGS.FACTORY_SHUTDOWN] > 0
 public function joJoyTalkFactory():void
@@ -496,6 +508,7 @@ public function joJoyTalkFactory():void
 	doNext(joJoytalkMenu);
 	advanceMinutes(5);
 }
+
 //Dungeon Convo: Sand Cave
 //Requirements: Completed Sand Witch Dungeon
 public function JojoyTalkSandCave():void
@@ -545,6 +558,7 @@ public function JojoyTalkSandCave():void
 			outputText("She slaps her own forehead and says, \"<i>Oh... yeah... right.</i>\" Obviously embarrassed by not putting two and two together. She smiles good naturedly though, \"<i>I don’t know I guess I just assumed you found some poor mind addled soul and decided to save her.</i>\" Joy says as he looks over at " + flags[kFLAGS.MILK_NAME] + ".\n\n");
 			outputText("<i>Maybe not all of that cursed liquor made it out of my system after all. </i>\" You tell Joy not to joke like that...Ralthazul is a master of his craft, don't belittle him.\n\n");
 			outputText("This gets both you and Joy laughing, and she promises, between giggles, to go apologize to him later. You stop laughing, and Joy looks over at the poor girl.\n\n");
+
 			//[if (bathSlutStage1 - unaltered)
 			if (flags[kFLAGS.MILK_SIZE] == 0)
 			{

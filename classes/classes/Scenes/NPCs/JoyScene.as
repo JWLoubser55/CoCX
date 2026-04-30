@@ -2232,7 +2232,6 @@ import classes.lists.Gender;
 			flags[kFLAGS.JOY_TAKES_BABIES_AWAY_COUNTER] = -1; //Let's just NOT proc again.
 			doNext(playerMenu);
 		}
-		
-		
+
 	}
 }
