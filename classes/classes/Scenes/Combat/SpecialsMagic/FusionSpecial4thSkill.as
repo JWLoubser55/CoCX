@@ -1,6 +1,7 @@
 package classes.Scenes.Combat.SpecialsMagic {
 
 import classes.Scenes.Combat.AbstractMagicSpecial;
+import classes.IMutations.IMutationsLib;
 import classes.StatusEffects;
 import classes.Monster;
 import classes.PerkLib;
@@ -115,6 +116,7 @@ public class FusionSpecial4thSkill extends AbstractMagicSpecial {
 
         damage *= soulskillMagicalMod();
         if (monster && monster.plural) damage *= 5;
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) damage *= combat.ectoplasmEsseBon();
 
         return damage;
     }

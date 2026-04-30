@@ -9,7 +9,7 @@ import classes.Scenes.Combat.Combat;
 
 public class BladeHailSkill extends AbstractSoulSkill {
 	//Skill name, number of attacks, status effect to show knowledge of skill, base SF cost, cooldown, number of attack rounds, hits per attack round
-	private var hailArray:Array = [
+	private static var hailArray:Array = [
 		["Hail of Blades", "six", StatusEffects.KnowsHailOfBlades, 50, 0, 6, 1],
 		["Grandiose Hail Of Blades", "eighteen", StatusEffects.KnowsGrandioseHailOfBlades, 200, 3, 9, 2],
 		["Grandiose Hail Of Moon Blades", "fifty-six", StatusEffects.KnowsGrandioseHailOfMoonBlades, 800, 9, 19, 4]

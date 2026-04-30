@@ -21,7 +21,8 @@ public class Masturbation extends BaseContent {
 		public function masturButton(pos:int):CoCButton {
 			if (inDungeon && DungeonAbstractContent.dungeonLoc != DungeonAbstractContent.DUNGEON_CABIN || inRoomedDungeon || explorer.isActive) return addButton(pos, "Masturbate", masturbateGo)
 				.hint("Attempt to masturbate in order to relieve your lust buildup.")
-				.disableIf(player.lust < 33, "You're not horny enough to masturbate.");
+				.disableIf(player.lust < 33, "You're not horny enough to masturbate.")
+				.disableIf(player.hasPerk(PerkLib.Ethereal), "You can’t even feel your own body, how could you even masturbate?");
 			else if (canMeditate() && player.lust < 33) return addButton(pos, "Meditate", meditate)
 				.hint("Meditate in order to reduce lust and corruption.")
 				.disableIf(SceneLib.exgartuan.anyAwake(), "Your inner demon won't let you concentrate right now.");
@@ -147,12 +148,17 @@ public class Masturbation extends BaseContent {
 				addButton(6, "Goo Sat", gooeySatisfaction)
 					.hint("Play with your malleable body in a new way.", "Gooey Satisfaction")
 					.disableIf(!player.isGoo(), "Req. goo body.");
-				addButton(7, "Mummy Sex", mummySex)
+				addButton(7, "Mummy Sex", undeadMinionsSex, 1)
 					.disableIf(player.gender == 0, "Req. to not be genderless.")
 					.disableIf(player.soulforce < Math.round(player.maxSoulforce() * 0.5), "Req. 50% of max soulforce.")
-					.disableIf(player.racialScore(Races.ANUBIS) < 15, "Req. to be Anubi race.")
+					.disableIf(player.racialScore(Races.ANUBIS) < 20, "Req. to be Anubi race.")
 					.disableIf(player.perkv2(PerkLib.MummyLord) > 0, "Last mummy sex effect not yet wear off.")
 					.disableIf((player.hasPerk(PerkLib.MummyLord) && player.perkv1(PerkLib.MummyLord) < 3), "Req. to have 3+ mummies.");
+				addButton(8, "Zombie Sex", undeadMinionsSex, 2)
+					.disableIf(player.gender == 0, "Req. to not be genderless.")
+					.disableIf(player.soulforce < Math.round(player.maxSoulforce() * 0.5), "Req. 50% of max soulforce.")
+					.disableIf(player.racialScore(Races.LICH) < 28, "Req. to be Lich race.")
+					.disableIf((player.hasPerk(PerkLib.UndeadLord) && player.perkv1(PerkLib.UndeadLord) < 3), "Req. to have 3+ zombies.");
 				addButton(13, "-1-", specialOptions, page - 1);
 				addButton(14, "Back", masturbateMenu);
 			}
@@ -2356,7 +2362,7 @@ public class Masturbation extends BaseContent {
 			outputText("You find a flat, comfortable " + description + " to sit down on and meditate.  As always, meditation brings a sense of peace and calm to you, but it eats up one hour of the day.");
 			dynStats("lus", -Math.round(player.maxLust()*0.2), "scale", false);
 			dynStats("cor", -.3 - 0.3 * player.countCockSocks("alabaster"));
-			if (player.hasPerk(PerkLib.Enlightened) && player.cor < 10) HPChange(50, true, false);
+			if (player.hasPerk(PerkLib.Enlightened) && player.cor < 10) pc.HPChange(50, true, false);
 			fatigue( -10);
 			endEncounter();
 		}
@@ -3661,15 +3667,29 @@ public class Masturbation extends BaseContent {
 			endEncounter();
 		}
 
-		private function mummySex():void {
+		private function undeadMinionsSex(race:Number):void {
 			clearOutput();
-			outputText("Feeling antsy, you remove your clothes and order your slaves to do their jobs. The dim-witted mummies lumber toward your exposed genitals like a thirsty desert dweller toward an oasis.\n\n");
-			if (player.hasCock()) outputText("One of the mummies grabs hold of your now fully erect [cock] and begins to lick the tip"+(player.hasBalls()?", while another daring zombie kneels beneath your legs and begins suckling on your balls, the mummy aphrodisiac-laden saliva causing them to churn and increase in size with a steadily growing reward for your pets. You're going to cum far more than usual, and your pets will take it to the last drop":"")+". You grab the meat slave’s head and pull it onto your needy prick, incentivizing it to deepthroat you. On cue, the mummy eagerly wraps its tongue around your cock and pulls you in, letting you enjoy the full deal of its throat massage as it attempts to milk you off your excess energy.\n\n");
-			outputText((player.gender == 3?"While your cock is being taken care of, a":"A")+" mummy stretches backwards between your legs and grabs your tights to get easy access to your needy snatch, its black tongue slithering in to leech at your excess soul force. You gladly let the intruder in, savoring as it laps at your button to quench its insatiable thirst.\n\n");
+			var minion:String = "";
+			var minion2:String = "";
+			if (race == 1) {
+				minion = "mummy";
+				minion2 = "mummie";
+			}
+			else {
+				minion = "zombie";
+				minion2 = "zombie";
+			}
+			outputText("Feeling antsy, you remove your clothes and order your slaves to do their jobs. The dim-witted "+minion2+"s lumber toward your exposed genitals"+(race == 1 ? " like a thirsty desert dweller toward an oasis":". Damn those undead minions of yours must be starving for attention")+".\n\n");
+			if (player.hasCock()) outputText("One of the "+minion2+"s grabs hold of your now fully erect [cock] and begins to lick the tip"+(player.hasBalls()?", while another daring "+minion+" kneels beneath your legs and begins suckling on your balls, the "+minion+" aphrodisiac-laden saliva causing them to churn and increase in size with a steadily growing reward for your pets. You're going to cum far more than usual, and your pets will take it to the last drop":"")+". You grab the meat slave’s head and pull it onto your needy prick, incentivizing it to deepthroat you. On cue, the "+minion+" eagerly wraps its tongue around your cock and pulls you in, letting you enjoy the full deal of its throat massage as it attempts to milk you off your excess energy.\n\n");
+			outputText((player.gender == 3?"While your cock is being taken care of, a":"A")+" "+minion+" stretches backwards between your legs and grabs your tights to get easy access to your needy snatch, its black tongue slithering in to leech at your excess soul force. You gladly let the intruder in, savoring as it laps at your button to quench its insatiable thirst.\n\n");
 			outputText((player.hasBreasts()?"You knead your own nipple, grabbing your breasts with both hands and pulling hard in order to maximize the crashing wave of pleasures as your servants’’ tingling touches drive you over the edge. ":"")+"You cum hard "+(player.gender == 3?"both ":"")+"from your "+(player.hasCock()?"overwhelmed cock "+(player.hasBalls()?"and nuts ":"")+"":"")+(player.gender == 3?", as well as ":"")+(player.hasVagina()?"drenched [pussy] ":"")+"feeding your servants with a torrent of soul force, albeit just enough to power them up and keep them well addicted to you. Now fed with energy they will be extra vicious for a while.\n\n");
 			outputText("Satisfied, you order your pets off and redress, ready to go back to your adventures.");
-			EngineCore.SoulforceChange( -Math.round(player.maxSoulforce() * 0.5));
-			player.addPerkValue(PerkLib.MummyLord,2,24);
+			pc.SoulforceChange(-Math.round(player.maxSoulforce() * 0.5));
+			if (race == 1) player.addPerkValue(PerkLib.MummyLord, 2, 24);
+			else {
+				if (player.perkv2(PerkLib.UndeadLord) > 0) player.setPerkValue(PerkLib.UndeadLord, 2, 168);
+				else player.addPerkValue(PerkLib.UndeadLord, 2, 168);
+			}
 			flags[kFLAGS.TIMES_MASTURBATED]++;
 			if (player.gender == 3) masturGasm("Dick", "Vaginal");
 			if (player.gender == 2) masturGasm("Vaginal");

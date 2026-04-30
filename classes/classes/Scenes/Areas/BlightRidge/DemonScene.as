@@ -206,6 +206,7 @@ import classes.display.SpriteDb;
 			player.cuntChange(player.vaginalCapacity()*.8, true);
 			player.sexReward("cum","Vaginal");
 			dynStats("cor", 2);
+			player.fuckingWithDemons(1);
 			if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 			cleanupAfterCombat();
 		}
@@ -219,7 +220,8 @@ import classes.display.SpriteDb;
 			outputText("You feel his balls begin to grow. Perhaps he can sense your thirst for cum, or maybe he just wants to enjoy it - but you are sure he is going to finish spectacularly. They stop swelling just as they reach the size of grapefruits, tingling and pulsing spectacularly in your hand.  You stroke him faster, letting you guzzle his pre as it pours into your greedy mouth.  A coo of delight escapes from your tightly-stretched lips as you savor his tasty fluids.[pg]");
 			outputText("The incubus' hips begin humping your face, stuffing a few more inches of his length into your throat and forcing you to struggle against gagging.  His cock swells wider and nearly unhinges your jaw as you feel a gooey warmth wash your throat, flooding your gullet with demon-seed.  Still impaled on his nubby member, your body is rocked back and forth by the strength of his orgasm, the motions making your belly slosh with an increasingly large load.  You moan at the warmth of his corruption seeping through your body as his orgasm diminishes. Yanking back hard, you let his dick slip free of your mouth as the last spurt of cum blasts your face.");
 			player.refillHunger(50);
-			player.sexReward("cum","Lips");
+			player.sexReward("cum", "Lips");
+			player.fuckingWithDemons(1);
 			outputText("[pg]");
 			outputText("You push the exhausted demon down and idly collect the cum from your face with your fingers, slowly licking each clean.  Feeling rather sensual and sated, you decide to resume exploring.[pg]After redressing you turn about, and see the demon is gone, leaving only a small pool of cum in his wake.");
 			cleanupAfterCombat();
@@ -318,6 +320,7 @@ import classes.display.SpriteDb;
             outputText("As you leave, you don't bother to spare a glance at the confused omnibus.  She isn't worth your time.");
 			player.sexReward("Default","Dick");
 			dynStats("lib", 3, "sen", 3, "cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 
         }
@@ -359,6 +362,7 @@ import classes.display.SpriteDb;
             outputText("As you leave, you don't bother to spare a glance at the confused omnibus; she isn't worth your time.");
 			player.sexReward("Default","Dick");
 			dynStats("lib", 3, "sen", 3, "cor", 1);
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
         }
 		
@@ -396,7 +400,8 @@ import classes.display.SpriteDb;
 			outputText("As you leave, you don't bother to spare a glance at the confused omnibus; she isn't worth your time.[pg]");
 			player.cuntChange(monster.cockArea(0), true);
 			player.sexReward("cum","Vaginal");
-			dynStats("lib", 3, "sen", 3,"cor", 1);
+			dynStats("lib", 3, "sen", 3, "cor", 1);
+			player.fuckingWithDemons(1);
 			if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 32, 61); //Ceraph causes faster pregnancies
 			cleanupAfterCombat();
 		}
@@ -530,7 +535,8 @@ import classes.display.SpriteDb;
             outputText("Still, your possessed maleness is far from finished as it continues to slide along her belly and between her still-dripping tits, and before long you feel another orgasm building.  You hang on for dear life, hoping just to stay conscious through the ordeal...[pg]Hour later you pull away, sated, but with your previous dick.");
             //common
             outputText("[pg]The succubus licks her fingers clean, looking totally recovered.  In the blink of an eye, she dashes out and disappearing in the distance.");
-			player.sexReward("vaginalFluids","Dick");
+			player.sexReward("vaginalFluids", "Dick");
+			player.fuckingWithDemons(1);
 			dynStats("cor", 5);
 			cleanupAfterCombat();
         }
@@ -558,7 +564,8 @@ import classes.display.SpriteDb;
             outputText("[pg]You pant with exertion and pull back, only to have your " + player.cockDescript(x) + " plunge right back in. Beginning another rough fucking session, your hips force-fuck her beyond your control.  Exhausted, you lean over her, figuring you may as well enjoy your double's wondrous breasts until your demonic cock has finally sated itself.  You just hope you don't black out from the waves of pleasure each of your new nubs radiates.[pg]\nHours later you pull away, sated, but with your previous dick.");
 			//common
             outputText("[pg]The succubus licks her fingers clean, looking totally recovered.  In the blink of an eye, she dashes out and disappearing in the distance.");
-			player.sexReward("vaginalFluids","Dick");
+			player.sexReward("vaginalFluids", "Dick");
+			player.fuckingWithDemons(1);
 			dynStats("cor", 5);
 			cleanupAfterCombat();
         }
@@ -581,7 +588,8 @@ import classes.display.SpriteDb;
 			if(player.clitLength >= 3) outputText("You groan with wanton desire as your " + clitDescript() + " continues to grow and grow until reaching full size and slipping inside the defeated slut's sloppy pleasure-hole.  ");
 			outputText("It takes only a few seconds to get the succubus' juices really flowing, the sounds of your grinding hips dissolving into a cacophony of liquid squelches.  The gooey corrupt fem-cum tingles, spreading warmth through every patch of skin it touches.  Your locked hips writhe and twist with hers, eliciting pants and squeals from both of you.  In no time flat, you find yourself cumming and feel your " + vaginaDescript(0) + "'s muscles clench hungrily with an unquenchable desire to be filled.  The succubus shivers in pleasure, probably feeding off your orgasm.  You back off, fingering your " + vaginaDescript(0) + " languidly and denying her a full meal.  Pouting, the succubus dips her fingers back in, determined to cum.");
 			outputText("[pg]You turn away with a bemused sigh.  When you glance back, she has vanished!");
-			player.sexReward("Default","Vaginal");
+			player.sexReward("Default", "Vaginal");
+			player.fuckingWithDemons(1);
 			dynStats("cor", 1);
 			cleanupAfterCombat();
 		}
@@ -645,7 +653,8 @@ import classes.display.SpriteDb;
 			outputText("You buck into her with increasing aggression as she squeezes her legs together, clenching her inner walls against you as she draws out a long moan, desperately trying to milk you of everything you have to offer as she cums. Her juices lubricate you further as your cocks throb with increasing intensity, twitching in barely contained anticipation.[pg]");
 			outputText("Your three heads unleash a bellowing roar as you buck into her with all your might, shoving both your cocks as deep into her as you can reach, forcing her to take in every last ounce of cum as you unload it all into her. Her stomach deforms as she's helpless before the waves of jizz you deposit into her. Her belly bloats before you slowly pull out, your hot cum falling to the ground beneath you.[pg]");
 			outputText("You toss the used toy to the ground now that you're done with it, taking your leave from the crumpled demon.");
-			player.sexReward("vaginalFluids","Dick");
+			player.sexReward("vaginalFluids", "Dick");
+			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
 		
@@ -688,8 +697,8 @@ import classes.display.SpriteDb;
 			menu();
 			addButton(1, "Leave", cleanupAfterCombat);
 			addButton(2, "Take Skull", takeSkull);
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(3, "Harvest", harvestBones);
-			else addButtonDisabled(3, "???", "Req. Prestige Job: Necromancer.");
+			if (player.hasPerk(PerkLib.JobHaruspex)) addButton(3, "Harvest", harvestBones);
+			else addButtonDisabled(3, "???", "Req. Advanced Job: Haruspex.");
 		}
 		private function killDemon2():void {
 			clearOutput();
@@ -710,8 +719,8 @@ import classes.display.SpriteDb;
 			menu();
 			addButton(1, "Leave", cleanupAfterCombat);
 			addButton(2, "Take Skull", takeSkull2);
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(3, "Harvest", harvestBones);
-			else addButtonDisabled(3, "???", "Req. Prestige Job: Necromancer.");
+			if (player.hasPerk(PerkLib.JobHaruspex)) addButton(3, "Harvest", harvestBones);
+			else addButtonDisabled(3, "???", "Req. Advanced Job: Haruspex.");
 		}
 		private function killDemonHellhound():void {
 			clearOutput();
@@ -726,8 +735,8 @@ import classes.display.SpriteDb;
 			menu();
 			addButton(1, "Leave", cleanupAfterCombat);
 			addButton(2, "Take Skulls", takeSkull3);
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(3, "Harvest", harvestBones2);
-			else addButtonDisabled(3, "???", "Req. Prestige Job: Necromancer.");
+			if (player.hasPerk(PerkLib.JobHaruspex)) addButton(3, "Harvest", harvestBones2);
+			else addButtonDisabled(3, "???", "Req. Advanced Job: Haruspex.");
 		}
 		private function takeSkull():void {
 			inventory.takeItem(useables.DEMSKLL, cleanupAfterCombat);
@@ -757,9 +766,13 @@ import classes.display.SpriteDb;
 		public function harvestDemonBones():void {
 			var harv:Number = 1 + rand(5);
 			if (player.hasPerk(PerkLib.GreaterHarvest)) harv += 4 + rand(12);
-			if (harv + player.perkv1(PerkLib.PrestigeJobNecromancer) > SceneLib.campMakeWinions.maxDemonBonesStored()) harv = SceneLib.campMakeWinions.maxDemonBonesStored() - player.perkv1(PerkLib.PrestigeJobNecromancer);
+			if (player.hasPerk(PerkLib.GreatestHarvest)) {
+				if (harv < 20) harv = 20;
+				harv += rand(6);
+			}
+			if (harv + player.perkv1(PerkLib.JobHaruspex) > SceneLib.campMakeWinions.maxDemonBonesStored()) harv = SceneLib.campMakeWinions.maxDemonBonesStored() - player.perkv1(PerkLib.JobHaruspex);
 			outputText("You take your time to harvest material. You acquired " + harv + " bones!");
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, harv);
+			player.addPerkValue(PerkLib.JobHaruspex, 1, harv);
 		}
 	}
 }

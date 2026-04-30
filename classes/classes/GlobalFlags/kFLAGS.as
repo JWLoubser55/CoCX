@@ -1354,8 +1354,8 @@ public static const ENCOUNTERED_DARKSLIME_EMPRESS:int                           
 public static const PLAYER_SLIMES_COUNT:int                                         = 1346;
 public static const IN_COMBAT_PLAYER_SLIMES_ATTACKED:int                            = 1347;
 public static const BAAZAR_SLAVE_DEN:int                                   			= 1348;
-public static const UNKNOWN_FLAG_NUMBER_01349:int                                   = 1349;
-public static const UNKNOWN_FLAG_NUMBER_01350:int                                   = 1350;
+public static const IN_COMBAT_PLAYER_TAMED_MONSTER_ATTACKED:int                     = 1349;
+public static const TAMED_MONSTER_ATTACK:int                                   		= 1350;
 public static const UNKNOWN_FLAG_NUMBER_01351:int                                   = 1351;
 public static const UNKNOWN_FLAG_NUMBER_01352:int                                   = 1352;
 public static const UNKNOWN_FLAG_NUMBER_01353:int                                   = 1353;
@@ -2382,18 +2382,18 @@ public static const JENIFFER_LVL_UP:int                             		        = 
 public static const JENIFFER_DEFEATS_COUNTER:int                                   	= 2374;	//Not Yet Used Flag
 public static const JENIFFER_02375:int                                   = 2375;			//Not Yet Used Flag
 public static const JENIFFER_02376:int                                   = 2376;			//Not Yet Used Flag
-public static const UNKNOWN_FLAG_NUMBER_02377:int                                  		        = 2377; //Not Yet Used Flag
-public static const DIANA_FOLLOWER:int     			                                = 2378; //Not Yet Used Flag
-public static const DIANA_LVL_UP:int                      			                = 2379; //Not Yet Used Flag
-public static const DIANA_CURE_COOLDOWN:int                                   		= 2380; //Not Yet Used Flag
-public static const DIANA_SPELLS_CASTED:int                                   		= 2381; //Not Yet Used Flag
-public static const UNKNOWN_FLAG_NUMBER_02385:int                                   = 2382;	//Not Yet Used Flag
-public static const CAMILLA_AFFECTION:int                                  		    = 2383;	//Not Yet Used Flag
-public static const CAMILLA_FOLLOWER:int                            		        = 2384;	//Not Yet Used Flag
-public static const CAMILLA_LVL_UP:int                                   			= 2385;	//Not Yet Used Flag
-public static const CAMILLA_DEFEATS_COUNTER:int                                   	= 2386;	//Not Yet Used Flag
-public static const CAMILLA_02390:int                                   = 2387;				//Not Yet Used Flag
-public static const CAMILLA_02391:int                                   = 2388;				//Not Yet Used Flag
+public static const DIANA_FOLLOWER:int                                  		    = 2377; //Not Yet Used Flag
+public static const DIANA_LVL_UP:int     			                                = 2378; //Not Yet Used Flag
+public static const DIANA_CURE_COOLDOWN:int                      			                = 2379; //Not Yet Used Flag
+public static const DIANA_SPELLS_CASTED:int                                   		= 2380; //Not Yet Used Flag
+public static const CAMILLA_AFFECTION:int                                   		= 2381; //Not Yet Used Flag
+public static const CAMILLA_FOLLOWER:int                                   			= 2382;	//Not Yet Used Flag
+public static const CAMILLA_LVL_UP:int                                  		    = 2383;	//Not Yet Used Flag
+public static const CAMILLA_DEFEATS_COUNTER:int                            		    = 2384;	//Not Yet Used Flag
+public static const ADRIENNE_AFFECTION:int                                   		= 2385;	//Not Yet Used Flag
+public static const ADRIENNE_FOLLOWER:int                                   		= 2386;	//Not Yet Used Flag
+public static const ADRIENNE_LVL_UP:int                                   			= 2387;	//Not Yet Used Flag
+public static const ADRIENNE_DEFEATS_COUNTER:int                                   	= 2388;	//Not Yet Used Flag
 public static const PANDORA_AFFECTION:int      		                                = 2389;	//Not Yet Used Flag
 public static const PANDORA_FOLLOWER:int           			                        = 2390;	//Not Yet Used Flag
 public static const PANDORA_LVL_UP:int                                   			= 2391;	//Not Yet Used Flag
@@ -2737,8 +2737,8 @@ public static const CODEX_ENTRY_4:int                                   			= 272
 public static const CODEX_ENTRY_TROLLS:int                                   		= 2728;
 public static const CODEX_ENTRY_02729:int                                   		= 2729;//dark elfs
 public static const CODEX_ENTRY_02730:int                                   		= 2730;//light elfs
-public static const UNKNOWN_FLAG_NUMBER_02731:int                                   = 2731;
-public static const UNKNOWN_FLAG_NUMBER_02732:int                                   = 2732;
+public static const CODEX_ENTRY_WRAITH:int                                   		= 2731;
+public static const CODEX_ENTRY_CORPSE_PUPPETS:int                                  = 2732;
 public static const UNKNOWN_FLAG_NUMBER_02733:int                                   = 2733;
 public static const UNKNOWN_FLAG_NUMBER_02734:int                                   = 2734;
 public static const UNKNOWN_FLAG_NUMBER_02735:int                                   = 2735;
@@ -3010,13 +3010,34 @@ public static const WRATH_STATBAR_PERCENTAGE:int                                
 public static const CHARVIEWER_MODEL:int                                   			= 3002; //0 is old charviewer model, 1 is new one
 
 public static const GLOBAL_FLAGS_ARRAY:Array = [
-	NEW_GAME_PLUS_BONUS_UNLOCKED_HERM, SHOW_SPRITES_FLAG, SILLY_MODE_ENABLE_FLAG, SCENEHUNTER_PRINT_CHECKS,
+	NEW_GAME_PLUS_BONUS_UNLOCKED_HERM,
+	SHOW_SPRITES_FLAG, // moved to settings
+	SILLY_MODE_ENABLE_FLAG, SCENEHUNTER_PRINT_CHECKS,
 	SCENEHUNTER_OTHER, SCENEHUNTER_DICK_SELECT, SCENEHUNTER_LOSS_SELECT, SCENEHUNTER_MOCK_FIGHTS, SCENEHUNTER_UNI_HERMS,
-	WATERSPORTS_ENABLED, LVL_UP_FAST, MUTATIONS_SPOILERS, NEWPERKSDISPLAY, INVT_MGMT_TYPE, CHARVIEWER_ENABLED,
-	CHARVIEW_STYLE, CHARVIEW_ARMOR_HIDDEN, USE_OLD_FONT, BACKGROUND_STYLE, IMAGEPACK_OFF, SPRITE_STYLE, USE_12_HOURS,
-	WATERSPORTS_ENABLED, USE_METRICS, AUTO_LEVEL, STRENGTH_SCALING, SPEED_SCALING, WISDOM_SCALING, INTELLIGENCE_SCALING,
-	TOUGHNESS_SCALING, SECONDARY_STATS_SCALING, BOSS_CHAMPION_ELITE_SCALING, PRIMARY_DIFFICULTY, USSDISPLAY_STYLE,
-	IMDB_DETAILS, BUTTON_ICONS_DISABLED, STATBAR_ANIMATIONS
+	WATERSPORTS_ENABLED,
+	LVL_UP_FAST, // moved to settings
+	MUTATIONS_SPOILERS, // moved to settings
+	NEWPERKSDISPLAY, // moved to settings
+	INVT_MGMT_TYPE, // moved to settings
+	CHARVIEWER_ENABLED, // moved to settings
+	CHARVIEW_STYLE, // moved to settings
+	CHARVIEW_ARMOR_HIDDEN, // moved to settings
+	USE_OLD_FONT, // moved to settings
+	BACKGROUND_STYLE, // moved to settings
+	IMAGEPACK_OFF, // moved to settings
+	SPRITE_STYLE, // moved to settings
+	USE_12_HOURS, // moved to settings
+	USE_METRICS, // moved to settings
+	AUTO_LEVEL, // moved to settings
+	STRENGTH_SCALING,
+	SPEED_SCALING,
+	WISDOM_SCALING,
+	INTELLIGENCE_SCALING,
+	TOUGHNESS_SCALING, SECONDARY_STATS_SCALING, BOSS_CHAMPION_ELITE_SCALING, PRIMARY_DIFFICULTY,
+	USSDISPLAY_STYLE, // moved to settings
+	IMDB_DETAILS, // moved to settings
+	BUTTON_ICONS_DISABLED, // moved to settings
+	STATBAR_ANIMATIONS // moved to settings
 ];
 	}
 }

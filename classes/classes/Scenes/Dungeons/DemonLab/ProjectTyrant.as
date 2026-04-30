@@ -9,7 +9,7 @@ import classes.BodyParts.Horns;
 import classes.Scenes.SceneLib;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class ProjectTyrant extends Monster {
 
@@ -138,7 +138,7 @@ public class ProjectTyrant extends Monster {
         }
     }
 
-    override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+    override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
         if (player.hasStatusEffect(StatusEffects.Pounced)) {
             outputText("You are pinned underneath the Drider-beast’s weight, and it begins to crush you!");
             btnStruggle.call(TackleGrappleStruggle);

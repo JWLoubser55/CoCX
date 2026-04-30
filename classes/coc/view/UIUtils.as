@@ -79,6 +79,15 @@ public class UIUtils {
 		else if ('text' in options) e.text = options.text;
 		return e;
 	}
+
+	public static function setTextColor(element:TextField, color:*):void {
+		if (!element) return;
+		const u:uint = convertColor(color);
+		const tf:TextFormat = element.defaultTextFormat;
+		tf.color = u;
+		element.defaultTextFormat = tf;
+		element.textColor = u;
+	}
 	public static function outlineFilter(color:*):DropShadowFilter {
 		return new DropShadowFilter(
 				0.0,

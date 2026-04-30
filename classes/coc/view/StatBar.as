@@ -16,11 +16,16 @@ public class StatBar extends Block {
 	public static var ArrowUp:Class;
 	[Embed(source = "../../../res/ui/arrow-down.png")]
 	public static var ArrowDown:Class;
+	[Embed(source = "../../../res/ui/arrow-up-small.png")]
+	public static var ArrowUpSmall:Class;
+	[Embed(source = "../../../res/ui/arrow-down-small.png")]
+	public static var ArrowDownSmall:Class;
 
 	private static function factoryReset():Object {
 		return {
 			width      : 200,
 			height     : 28,
+			zeroValue  : 0,
 			minValue   : 0,
 			maxValue   : 100,
 			rawValue   : 0,
@@ -32,12 +37,18 @@ public class StatBar extends Block {
 			hasGauge   : true,
 			hasBar     : true,
 			hasMinBar  : false,
+			arrowStyle : 'big',
 			barAlpha   : 0.4,
 			barHeight  : 1.0, // relative to height
 			barColor   : '#0000ff',
 			minBarColor: '#8080ff',
 			bgColor    : null,
-			percentage : false
+			percentage : false,
+			numberStyle: 'kmb',
+			labelAlign : 'right',
+			labelFontSz: 15,
+			labelY     : -2,
+			valueFontSz: 20
 		};
 	}
 	private static var DEFAULT_OPTIONS:Object     = factoryReset();
@@ -49,12 +60,14 @@ public class StatBar extends Block {
 	}
 
 	private var _bar:BitmapDataSprite;
+	private var _gauge:BitmapDataSprite;
 	private var _minBar:BitmapDataSprite;
 	private var _bgBar:BitmapDataSprite;
 	private var _arrowUp:BitmapDataSprite;
 	private var _arrowDown:BitmapDataSprite;
 	private var _nameLabel:TextField;
 	private var _valueLabel:TextField;
+	private var _zeroValue:Number;
 	private var _minValue:Number;
 	private var _maxValue:Number;
 	private var _value:Number;
@@ -62,18 +75,37 @@ public class StatBar extends Block {
 	private var _tween:SimpleTween;
 	private var _animate:Boolean;
 	private var _percentage:Boolean;
+	private var _numberStyle:String;
+	private var _arrowStyle:String;
+	private var _initialized:Boolean; // is in constructor
+	private var _options:*;
 
 	private function get arrowSz():Number {
-		return this.height-2;
+		if (_arrowStyle === 'big') return this.height-2;
+		if (_arrowStyle === 'small') return 12;
+		return 0;
 	}
 
 	public function StatBar(options:Object) {
 		super();
+		stretch = false;
+		_initialized = false;
 		options             = Utils.extend({},DEFAULT_OPTIONS, options);
+		this._options = options;
+		_arrowStyle = options['arrowStyle'];
 		var myWidth:Number = options.width;
 		var myHeight:Number = options.height;
-		var arrowSz:Number  = myHeight - 2;
-		var barWidth:Number = myWidth - arrowSz - 2;
+		var arrowSz:Number  = this.arrowSz;
+		var barWidth:Number = myWidth - 2;
+		var labelWidth:Number;
+		if (_arrowStyle == 'big') {
+			barWidth -= arrowSz;
+			labelWidth = barWidth;
+		} else if (_arrowStyle == 'small') {
+			labelWidth = barWidth - arrowSz;
+		} else {
+			labelWidth = barWidth;
+		}
 		if (options.hasBar) {
 			var barX:Number = 1;
 			var barHeight:Number = myHeight*options.barHeight;
@@ -107,7 +139,7 @@ public class StatBar extends Block {
 			}
 			if (options.hasGauge) {
 				/*gauge=*/
-				addBitmapDataSprite({
+				_gauge = addBitmapDataSprite({
 					x          : 0,
 					y          : myHeight - 10,
 					width      : barWidth+2,
@@ -119,43 +151,47 @@ public class StatBar extends Block {
 		}
 		_nameLabel  = addTextField({
 			x                : 6, y: 4,
-			width            : barWidth,
+			width            : labelWidth,
 			height           : myHeight - 4,
 			defaultTextFormat: {
 				font: 'Georgia',
-				size: 15
+				size: options.labelFontSz
 			}
 		});
 		_valueLabel = addTextField({
-			x                : 0, y: myHeight-30,
-			width            : barWidth,
-			height           : 30,
+			x                : 0,
+			y                : options.labelY,
+			width            : labelWidth,
+			height           : options.valueFontSz+10,
 			defaultTextFormat: {
 				font : 'Georgia',
-				size : 20,
-				align: 'right'
+				size : options.valueFontSz,
+				align: options.labelAlign
 			}
 		});
-		_arrowUp    = addBitmapDataSprite({
-			bitmapClass: ArrowUp,
-			width      : arrowSz,
-			height     : arrowSz,
-			stretch    : true,
-			x          : myWidth - arrowSz - 1,
-			y          : 1,
-			visible    : false
-		});
-		_arrowDown  = addBitmapDataSprite({
-			bitmapClass: ArrowDown,
-			width      : arrowSz,
-			height     : arrowSz,
-			stretch    : true,
-			x          : myWidth - arrowSz - 1,
-			y          : 1,
-			visible    : false
-		});
+		if (_arrowStyle !== 'none') {
+			_arrowUp = addBitmapDataSprite({
+				bitmapClass: _arrowStyle === 'big' ? ArrowUp : _arrowStyle === 'small' ? ArrowUpSmall : null,
+				width: arrowSz,
+				height: arrowSz,
+				stretch: true,
+				x: myWidth - arrowSz - 1,
+				y: (myHeight - arrowSz)/2,
+				visible: false
+			});
+			_arrowDown = addBitmapDataSprite({
+				bitmapClass: _arrowStyle === 'big' ? ArrowDown : _arrowStyle === 'small' ? ArrowDownSmall : null,
+				width: arrowSz,
+				height: arrowSz,
+				stretch: true,
+				x: myWidth - arrowSz - 1,
+				y: (myHeight - arrowSz)/2,
+				visible: false
+			});
+		}
 		UIUtils.setProperties(this, options);
 		update();
+		_initialized = true;
 	}
 
 	public function get minValue():Number {
@@ -169,28 +205,57 @@ public class StatBar extends Block {
 		return _maxValue;
 	}
 	public function set maxValue(value:Number):void {
+		if (_maxValue != value && _animate && _tween) {
+			_tween.fastForward();
+		}
 		_maxValue = value;
 		if (showMax) renderValue();
+		update();
+	}
+	public function get zeroValue():Number {
+		return _zeroValue;
+	}
+	public function set zeroValue(value:Number):void {
+		if (_zeroValue != value && _animate && _tween) {
+			_tween.fastForward();
+		}
+		_zeroValue = value;
 		update();
 	}
 	private function renderValue():void {
 		if (percentage) {
 			var pValue:Number = (value / maxValue) * 100;
-			var valueStr:String = pValue.toFixed(1);
+			var valueStr:String = pValue < 100 ? pValue.toFixed(1) : pValue.toFixed(0);
+			if (valueStr == '0.0') valueStr = '0';
 			valueText = '' + valueStr + '%';
 		} else {
-			var bValue:String = Math.floor(value).toString();
-			var mValue:String = Math.floor(maxValue).toString();
+			var bValue:String;
+			var mValue:String;
+			switch (_numberStyle) {
+				case 'raw':{
+					bValue = Math.round(value).toString();
+					mValue = Math.round(maxValue).toString();
+					break;
+				}
+				case 'kmb': {
+					bValue = shortHandNumber(value);
+					mValue = shortHandNumber(maxValue);
+					break;
+				}
+				case 'comma': {
+					bValue = Utils.addComma(value);
+					mValue = Utils.addComma(maxValue);
+					break;
+				}
+			}
 			//if (value > 1000000) bValue = value.toPrecision(3);
 			//if (maxValue > 1000000) mValue = maxValue.toPrecision(3);
-			bValue = shortHandNumber(value);
-			mValue = shortHandNumber(maxValue);
-			
+
 			valueText = '' + bValue + (showMax ? '/' + mValue : '');
 		}
 	}
-	public function shortHandNumber(num:Number):String {
-		if (z == Number.MAX_VALUE || num == -Number.MAX_VALUE) return "INF";
+	public static function shortHandNumber(num:Number):String {
+		if (num == Number.MAX_VALUE || num == -Number.MAX_VALUE) return "INF";
 		num = Math.round(num);
 		var b0:Boolean = num < 0;
 		if (b0) num = 0 - num;
@@ -213,6 +278,13 @@ public class StatBar extends Block {
 		_value    = value;
 		renderValue();
 		update();
+	}
+	public function get numberStyle():String {
+		return _numberStyle;
+	}
+	public function set numberStyle(value:String):void {
+		_numberStyle = value;
+		renderValue();
 	}
 	public function get value():Number {
 		return _value;
@@ -244,16 +316,28 @@ public class StatBar extends Block {
 		return _valueLabel ? _valueLabel.text : value + '';
 	}
 	public function set valueText(value:String):void {
-		if (_valueLabel) _valueLabel.text = value;
+		if (_valueLabel) {
+			_valueLabel.text = value;
+		}
+	}
+	public function get labelAlign():String {
+		return _valueLabel ? _valueLabel.defaultTextFormat.align : 'right';
+	}
+	public function set labelAlign(value: String):void {
+		if (!_valueLabel) return;
+		const tf:TextFormat = _valueLabel.defaultTextFormat;
+		tf.align = value;
+		_valueLabel.defaultTextFormat = tf;
 	}
 	public function update():void {
+		var barMaxWidth:Number = _arrowStyle == 'big' ? (width - 2 - arrowSz) : (width - 2)
 		if (_bar) {
-			_bar.width = maxValue > 0 ?
-					Utils.boundFloat(0, value, maxValue) * (width - arrowSz-2) / maxValue : 0;
+			_bar.width = maxValue > zeroValue ?
+					Utils.boundFloat(zeroValue, value, maxValue) * barMaxWidth / (maxValue-zeroValue) : 0;
 		}
 		if (_minBar) {
-			_minBar.width = maxValue > 0 ?
-					Utils.boundFloat(0, minValue, maxValue) * (width - arrowSz-2) / maxValue : 0;
+			_minBar.width = maxValue > zeroValue ?
+					Utils.boundFloat(zeroValue, minValue, maxValue) * barMaxWidth / (maxValue-zeroValue) : 0;
 		}
 	}
 	public function get showMax():Boolean {
@@ -264,16 +348,18 @@ public class StatBar extends Block {
 		renderValue();
 	}
 	public function get isUp():Boolean {
-		return _arrowUp.visible;
+		return _arrowUp && _arrowUp.visible;
 	}
 	public function set isUp(value:Boolean):void {
+		if (!_arrowUp) return;
 		_arrowUp.visible = value;
 		if (value) _arrowDown.visible = false;
 	}
 	public function get isDown():Boolean {
-		return _arrowDown.visible;
+		return _arrowDown && _arrowDown.visible;
 	}
 	public function set isDown(value:Boolean):void {
+		if (!_arrowDown) return;
 		_arrowDown.visible = value;
 		if (value) _arrowUp.visible = false;
 	}
@@ -318,6 +404,79 @@ public class StatBar extends Block {
 	{
 		_percentage = value;
 		renderValue();
+	}
+
+
+	override public function get width():Number {
+		return super.width;
+	}
+	override public function set width(value:Number):void {
+		super.width = value;
+		if (_initialized) resizeStatBar();
+	}
+
+	override public function get height():Number {
+		return super.height;
+	}
+
+	override public function set height(value:Number):void {
+		super.height = value;
+		if (_initialized) resizeStatBar();
+	}
+
+	public function resizeStatBar():void {
+		var myWidth:Number = this.width;
+		var myHeight:Number = this.height;
+		var barWidth:Number = myWidth - 2;
+		var labelWidth:Number;
+		if (_arrowStyle == 'big') {
+			barWidth -= arrowSz;
+			labelWidth = barWidth;
+		} else if (_arrowStyle == 'small') {
+			labelWidth = barWidth - arrowSz;
+		} else {
+			labelWidth = barWidth;
+		}
+		var barHeight:Number = myHeight*1.0;
+		var barX:Number = 1;
+		var barY:Number = myHeight - barHeight;
+		if (_bgBar) {
+			_bgBar.x = barX;
+			_bgBar.y = barY;
+			_bgBar.width = barWidth;
+			_bgBar.height = barHeight
+		}
+		if (_bar) {
+			_bar.x = barX;
+			_bar.y = barY;
+			_bar.height = barHeight;
+		}
+		if (_gauge) {
+			_gauge.y = myHeight-10;
+			_gauge.width = barWidth + 2;
+		}
+		if (_nameLabel) {
+			_nameLabel.x = 6;
+			_nameLabel.width = labelWidth;
+			_nameLabel.height = myHeight-4;
+		}
+		if (_valueLabel) {
+			_valueLabel.x = 0;
+			_valueLabel.y = _options.labelY;
+			_valueLabel.width = labelWidth;
+			_valueLabel.height = _options.valueFontSz+10;
+		}
+		if (_arrowUp) {
+			_arrowUp.width = arrowSz;
+			_arrowUp.height = arrowSz;
+			_arrowUp.x = myWidth-arrowSz-1;
+		}
+		if (_arrowDown) {
+			_arrowDown.width = arrowSz;
+			_arrowDown.height = arrowSz;
+			_arrowDown.x = myWidth-arrowSz-1;
+		}
+		update();
 	}
 }
 }

@@ -128,6 +128,11 @@ use namespace CoC;
 				kind : 'monster',
 				call: SceneLib.fleshGolemScenes.introCorruptedBasicFleshGolemS
 			}, {
+				name  : "Wraith",
+				kind  : "monster",
+				day: false,
+				call  : SceneLib.wraithScene.encounterWraith2
+			}, {
 				name: "impfood",
 				label : "Imp Food",
 				kind  : 'item',

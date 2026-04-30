@@ -100,7 +100,7 @@ public class MainMenu extends BaseContent {
 		//outputText("\n<b>Fall of Eden</b> is worth a try too ^^");	//Does it even have any progress?
 		if (debug)
 			outputText("\n\n<b>DEBUG MODE ENABLED:  ITEMS WILL NOT BE CONSUMED BY USE.</b>");
-		if (flags[kFLAGS.SHOW_SPRITES_FLAG])
+		if (settings.spritesOff)
 			outputText("\n\n<b>Sprites disabled.</b>");
 		if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG])
 			outputText("\n\n<b>Easy Mode On:  Bad-ends can be ignored.</b>");

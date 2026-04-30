@@ -4,16 +4,17 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Races;
 
 public class TrachealSystemMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Tracheal System";
-        }
+		public static const MNAME:String = "Tracheal System";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -80,7 +81,7 @@ public class TrachealSystemMutation extends IMutationPerkType
         }
 
         public function TrachealSystemMutation() {
-            super(mName + " IM", mName, SLOT_ADAPTATIONS, 4);
+            super(MNAME, SLOT_ADAPTATIONS, 4);
         }
 
     }

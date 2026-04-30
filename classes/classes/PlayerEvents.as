@@ -136,12 +136,13 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					}
 				}
 				if (player.hunger <= Math.round(player.maxHunger() * 0.5) && player.hasPerk(PerkLib.ExanimationI)) {
-					EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.15));
+					pc.SoulforceChange(-Math.round(player.maxSoulforce() * 0.15));
 					if (player.soulforce <= 0) player.takePhysDamage(player.maxHP() * 0.35);
 				}
 				if (player.hunger <= Math.round(player.maxHunger() * 0.3) && player.hasPerk(PerkLib.ExanimationI)) player.takePhysDamage(player.maxHP() * 0.2);
 				if (player.hunger <= 0) {
 					if (player.isGargoyle()) campUniqueScene.droppingToZeroSatietyAsGargoyle();
+					else if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 1) player.addCurse("lib.mult", 0.05, 1);
 					else {
 						//Lose HP and makes fatigue go up. Lose body weight and muscles.
 						if (player.thickness < 25) {
@@ -186,50 +187,50 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			if (player.cumMultiplier > 19999) player.cumMultiplier = 19999;
 			if (player.ballSize > 400) player.ballSize = 400;
 			var maxSlots:int = inventory.getMaxSlots();
-			player.itemSlot7.unlocked = maxSlots >= 7;
-			player.itemSlot8.unlocked = maxSlots >= 8;
-			player.itemSlot9.unlocked = maxSlots >= 9;
-			player.itemSlot10.unlocked = maxSlots >= 10;
-			player.itemSlot11.unlocked = maxSlots >= 11;
-			player.itemSlot12.unlocked = maxSlots >= 12;
-			player.itemSlot13.unlocked = maxSlots >= 13;
-			player.itemSlot14.unlocked = maxSlots >= 14;
-			player.itemSlot15.unlocked = maxSlots >= 15;
-			player.itemSlot16.unlocked = maxSlots >= 16;
-			player.itemSlot17.unlocked = maxSlots >= 17;
-			player.itemSlot18.unlocked = maxSlots >= 18;
-			player.itemSlot19.unlocked = maxSlots >= 19;
-			player.itemSlot20.unlocked = maxSlots >= 20;
-			player.itemSlot21.unlocked = maxSlots >= 21;
-			player.itemSlot22.unlocked = maxSlots >= 22;
-			player.itemSlot23.unlocked = maxSlots >= 23;
-			player.itemSlot24.unlocked = maxSlots >= 24;
-			player.itemSlot25.unlocked = maxSlots >= 25;
-			player.itemSlot26.unlocked = maxSlots >= 26;
-			player.itemSlot27.unlocked = maxSlots >= 27;
-			player.itemSlot28.unlocked = maxSlots >= 28;
-			player.itemSlot29.unlocked = maxSlots >= 29;
-			player.itemSlot30.unlocked = maxSlots >= 30;
-			player.itemSlot31.unlocked = maxSlots >= 31;
-			player.itemSlot32.unlocked = maxSlots >= 32;
-			player.itemSlot33.unlocked = maxSlots >= 33;
-			player.itemSlot34.unlocked = maxSlots >= 34;
-			player.itemSlot35.unlocked = maxSlots >= 35;
-			player.itemSlot36.unlocked = maxSlots >= 36;
-			player.itemSlot37.unlocked = maxSlots >= 37;
-			player.itemSlot38.unlocked = maxSlots >= 38;
-			player.itemSlot39.unlocked = maxSlots >= 39;
-			player.itemSlot40.unlocked = maxSlots >= 40;
-			player.itemSlot41.unlocked = maxSlots >= 41;
-			player.itemSlot42.unlocked = maxSlots >= 42;
-			player.itemSlot43.unlocked = maxSlots >= 43;
-			player.itemSlot44.unlocked = maxSlots >= 44;
-			player.itemSlot45.unlocked = maxSlots >= 45;
-			player.itemSlot46.unlocked = maxSlots >= 46;
-			player.itemSlot47.unlocked = maxSlots >= 47;
-			player.itemSlot48.unlocked = maxSlots >= 48;
-			player.itemSlot49.unlocked = maxSlots >= 49;
-			player.itemSlot50.unlocked = maxSlots >= 50;
+			player.itemSlots[6].unlocked = maxSlots >= 7;
+			player.itemSlots[7].unlocked = maxSlots >= 8;
+			player.itemSlots[8].unlocked = maxSlots >= 9;
+			player.itemSlots[9].unlocked = maxSlots >= 10;
+			player.itemSlots[10].unlocked = maxSlots >= 11;
+			player.itemSlots[11].unlocked = maxSlots >= 12;
+			player.itemSlots[12].unlocked = maxSlots >= 13;
+			player.itemSlots[13].unlocked = maxSlots >= 14;
+			player.itemSlots[14].unlocked = maxSlots >= 15;
+			player.itemSlots[15].unlocked = maxSlots >= 16;
+			player.itemSlots[16].unlocked = maxSlots >= 17;
+			player.itemSlots[17].unlocked = maxSlots >= 18;
+			player.itemSlots[18].unlocked = maxSlots >= 19;
+			player.itemSlots[19].unlocked = maxSlots >= 20;
+			player.itemSlots[20].unlocked = maxSlots >= 21;
+			player.itemSlots[21].unlocked = maxSlots >= 22;
+			player.itemSlots[22].unlocked = maxSlots >= 23;
+			player.itemSlots[23].unlocked = maxSlots >= 24;
+			player.itemSlots[24].unlocked = maxSlots >= 25;
+			player.itemSlots[25].unlocked = maxSlots >= 26;
+			player.itemSlots[26].unlocked = maxSlots >= 27;
+			player.itemSlots[27].unlocked = maxSlots >= 28;
+			player.itemSlots[28].unlocked = maxSlots >= 29;
+			player.itemSlots[29].unlocked = maxSlots >= 30;
+			player.itemSlots[30].unlocked = maxSlots >= 31;
+			player.itemSlots[31].unlocked = maxSlots >= 32;
+			player.itemSlots[32].unlocked = maxSlots >= 33;
+			player.itemSlots[33].unlocked = maxSlots >= 34;
+			player.itemSlots[34].unlocked = maxSlots >= 35;
+			player.itemSlots[35].unlocked = maxSlots >= 36;
+			player.itemSlots[36].unlocked = maxSlots >= 37;
+			player.itemSlots[37].unlocked = maxSlots >= 38;
+			player.itemSlots[38].unlocked = maxSlots >= 39;
+			player.itemSlots[39].unlocked = maxSlots >= 40;
+			player.itemSlots[40].unlocked = maxSlots >= 41;
+			player.itemSlots[41].unlocked = maxSlots >= 42;
+			player.itemSlots[42].unlocked = maxSlots >= 43;
+			player.itemSlots[43].unlocked = maxSlots >= 44;
+			player.itemSlots[44].unlocked = maxSlots >= 45;
+			player.itemSlots[45].unlocked = maxSlots >= 46;
+			player.itemSlots[46].unlocked = maxSlots >= 47;
+			player.itemSlots[47].unlocked = maxSlots >= 48;
+			player.itemSlots[48].unlocked = maxSlots >= 49;
+			player.itemSlots[49].unlocked = maxSlots >= 50;
 			if (flags[kFLAGS.SOCK_COUNTER] > 0) {
 				flags[kFLAGS.SOCK_COUNTER]--;
 				if (flags[kFLAGS.SOCK_COUNTER] < 0) flags[kFLAGS.SOCK_COUNTER] = 0;
@@ -385,7 +386,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 							else drainAmt += 60;
 						}
 					}
-					if (player.hasPerk(PerkLib.ConductionSoulforceCharge) && player.soulforce >= drainAmt) EngineCore.SoulforceChange(-drainAmt);
+					if (player.hasPerk(PerkLib.ConductionSoulforceCharge) && player.soulforce >= drainAmt) pc.SoulforceChange(-drainAmt);
 					else flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] -= drainAmt;
 				}
 				if (flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] <= 0) {
@@ -532,8 +533,44 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			if (player.perkv1(PerkLib.UndeadLord) > player.zombieControlLimit()) {
-				var over:Number = (player.zombieControlLimit() - player.perkv1(PerkLib.UndeadLord));
+				var over:Number = (player.perkv1(PerkLib.UndeadLord) - player.zombieControlLimit());
 				player.addPerkValue(PerkLib.UndeadLord, 1, -over);
+			}
+			if (player.perkv2(PerkLib.JobHaruspex) > (SceneLib.campMakeWinions.maxSkeletonWarriors() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase1:Number = player.perkv2(PerkLib.JobHaruspex);
+				erase1 -= (SceneLib.campMakeWinions.maxSkeletonWarriors() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.JobHaruspex, 2, -erase1);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase1 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
+			}
+			if (player.perkv1(PerkLib.BoneyBow) > (SceneLib.campMakeWinions.maxSkeletonArchers() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase2:Number = player.perkv1(PerkLib.BoneyBow);
+				erase2 -= (SceneLib.campMakeWinions.maxSkeletonArchers() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.BoneyBow, 1, -erase2);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase2 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
+			}
+			if (player.perkv1(PerkLib.BoneyWand) > (SceneLib.campMakeWinions.maxSkeletonMages() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase3:Number = player.perkv1(PerkLib.BoneyWand);
+				erase3 -= (SceneLib.campMakeWinions.maxSkeletonMages() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.BoneyWand, 1, -erase3);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase3 * SceneLib.campMakeWinions.bonesUsedToMakeNormalSkeleton()));
+			}
+			if (player.perkv1(PerkLib.BoneGiants) > (SceneLib.campMakeWinions.maxSkeletonGiants() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase4:Number = player.perkv1(PerkLib.BoneGiants);
+				erase4 -= (SceneLib.campMakeWinions.maxSkeletonGiants() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.BoneGiants, 1, -erase4);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase4 * SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton()));
+			}
+			if (player.perkv1(PerkLib.BoneBallistaSkelies) > (SceneLib.campMakeWinions.maxBoneBallistaSkeletons() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase5:Number = player.perkv1(PerkLib.BoneBallistaSkelies);
+				erase5 -= (SceneLib.campMakeWinions.maxBoneBallistaSkeletons() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.BoneBallistaSkelies, 1, -erase5);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase5 * SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton()));
+			}
+			if (player.perkv1(PerkLib.GigachadSkeletalMages) > (SceneLib.campMakeWinions.maxSkeletonGigachadMages() * SceneLib.campMakeWinions.maxSkeletonMulti())) {
+				var erase6:Number = player.perkv1(PerkLib.GigachadSkeletalMages);
+				erase6 -= (SceneLib.campMakeWinions.maxSkeletonGigachadMages() * SceneLib.campMakeWinions.maxSkeletonMulti());
+				player.addPerkValue(PerkLib.GigachadSkeletalMages, 1, -erase6);
+				player.addPerkValue(PerkLib.JobHaruspex, 1, (erase6 * SceneLib.campMakeWinions.bonesUsedToMakeLargeSkeleton()));
 			}
 			if (player.hasPerk(PerkLib.AbsorbNutrient) && player.perkv4(PerkLib.AbsorbNutrient) > 0) player.addPerkValue(PerkLib.AbsorbNutrient, 4, -1);
 			if (player.hasStatusEffect(StatusEffects.Feeder)) { //Feeder checks
@@ -782,9 +819,15 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					}
 				}
 			}
-			if (player.hasStatusEffect(StatusEffects.CombatWounds) && player.hasMutation(IMutationsLib.LizanMarrowIM) && player.perkv1(IMutationsLib.LizanMarrowIM) > 3) {
-				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.01) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.01);
-				else player.removeStatusEffect(StatusEffects.CombatWounds);
+			if (player.hasStatusEffect(StatusEffects.CombatWounds) && player.hasMutation(IMutationsLib.LizanMarrowIM) && player.perkv1(IMutationsLib.LizanMarrowIM) >= 4) {
+				if (player.isRace(Races.LIZARD)) {
+					if (player.statusEffectv1(StatusEffects.CombatWounds) > (0.02 * player.lizarnRaceTier())) player.addStatusValue(StatusEffects.CombatWounds, 1, -(0.02 * player.lizarnRaceTier()));
+					else player.removeStatusEffect(StatusEffects.CombatWounds);
+				}
+				else {
+					if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.02) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.02);
+					else player.removeStatusEffect(StatusEffects.CombatWounds);
+				}
 			}
 			if (player.statusEffectv2(StatusEffects.Kelt) > 0) player.addStatusValue(StatusEffects.Kelt, 2, -0.15); //Reduce kelt submissiveness by 1 every 5 hours
 			//Mino cum update.
@@ -1049,6 +1092,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						vthirst.modSatiety(-1);
 					}
 				}
+				if (player.hasStatusEffect(StatusEffects.UndeadMetabolism) && player.statusEffectv1(StatusEffects.UndeadMetabolism) > 0) player.addStatusValue(StatusEffects.UndeadMetabolism, 1, -5);
 				if (flags[kFLAGS.PC_GOBLIN_DAUGHTERS] > 9 && player.hasStatusEffect(StatusEffects.PCDaughtersWorkshop)) {
 					var protection:Number = 0;
 					if (flags[kFLAGS.PC_GOBLIN_DAUGHTERS] <= 25) protection = 25;
@@ -1182,16 +1226,16 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					if (player.beardLength > 0 && player.beardLength < 12) EventParser.growBeard(0.02);
 				}
 				//Clear dragon breath cooldowns!
-				if (player.hasStatusEffect(StatusEffects.DragonBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) player.removeStatusEffect(StatusEffects.DragonBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonFireBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonIceBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonLightningBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonPoisonBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonWaterBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonWaterBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonFaerieBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown);
-				if (player.hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) player.removeStatusEffect(StatusEffects.DragonRoyalBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 3 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonQuadElementBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonFireBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonIceBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonLightningBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonPoisonBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonWaterBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonWaterBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonFaerieBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonRoyalBreathCooldown);
 				//Reset once a day cooldowns
 				player.resetCooldowns(true);
 				//Reset Mara Fruit daily counter
@@ -1225,10 +1269,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 				//Twilight Grove storage refill
 				if (player.statusEffectv1(StatusEffects.TGStorage) < 5 || player.statusEffectv2(StatusEffects.TGStorage) < 5 || player.statusEffectv3(StatusEffects.TGStorage) < 5 || player.statusEffectv4(StatusEffects.TGStorage) < 1) {
-					if (player.statusEffectv1(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 1 , 5);
-					if (player.statusEffectv2(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 2 , 5);
-					if (player.statusEffectv3(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 3 , 5);
-					if (player.statusEffectv4(StatusEffects.TGStorage) < 1) player.changeStatusValue(StatusEffects.TGStorage, 4 , 1);
+					if (player.statusEffectv1(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 1, 5);
+					if (player.statusEffectv2(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 2, 5);
+					if (player.statusEffectv3(StatusEffects.TGStorage) < 5) player.changeStatusValue(StatusEffects.TGStorage, 3, 5);
+					if (player.statusEffectv4(StatusEffects.TGStorage) < 1) player.changeStatusValue(StatusEffects.TGStorage, 4, 1);
 				}
 				//Countdown to 5th floor boss rematch
 				if (flags[kFLAGS.RIVER_DUNGEON_FLOORS_PROGRESS] > 12 && flags[kFLAGS.RIVER_DUNGEON_FLOORS_PROGRESS] < 13) flags[kFLAGS.RIVER_DUNGEON_FLOORS_PROGRESS] -= 0.1;
@@ -1265,7 +1309,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				//if (player.hasPerk(PerkLib.MetamorphMastery) && player.perkv1(PerkLib.MetamorphMastery) < 5) player.addPerkValue(PerkLib.MetamorphMastery, 1, 1);
 				//Daily regeneration of mana for non mages
 				if (!player.hasPerk(PerkLib.JobSorcerer) && !player.hasPerk(PerkLib.JobHealer) && !player.hasPerk(PerkLib.JobElementalConjurer) && !player.hasPerk(PerkLib.JobGolemancer)) {
-					EngineCore.ManaChange(150);
+					pc.ManaChange(150);
 				}
 				//Chi Chi healing progress
 				if (flags[kFLAGS.CHI_CHI_LVL_UP] < 5 && flags[kFLAGS.CHI_CHI_DAILY_TRAINING] < 1) {
@@ -1372,6 +1416,11 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 				if (player.hasStatusEffect(StatusEffects.MitziIzmaDaughters)) player.removeStatusEffect(StatusEffects.MitziIzmaDaughters);
 				if (flags[kFLAGS.SAMIRAH_HYPNOSIS] == 4 || flags[kFLAGS.SAMIRAH_HYPNOSIS] == 2) flags[kFLAGS.SAMIRAH_HYPNOSIS]++;
+				//Soul Cohesion restoration
+				if (player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0) {
+					player.addStatusValue(StatusEffects.SoulCohesion, 1, -1);
+					if (player.statusEffectv1(StatusEffects.SoulCohesion) < 0) player.changeStatusValue(StatusEffects.SoulCohesion, 1, 0);
+				}
 				//Soul Arena Gauntlet reset
 				if (player.hasStatusEffect(StatusEffects.SoulArenaGauntlets1)) {
 					if (player.statusEffectv1(StatusEffects.SoulArenaGauntlets1) > 1) player.addStatusValue(StatusEffects.SoulArenaGauntlets1, 1, -1);
@@ -1642,9 +1691,11 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						}
 					}
 					if (cloneDao == 9) {
-						if (player.statusEffectv2(StatusEffects.MartialTraining) < SceneLib.soulforce.highestLayerOfMartialTraining()) {
-							SceneLib.soulforce.martialTrainingEffect(Soulforce.daosnot[i][1], Soulforce.daosnot[i][0], true);
-							needNext = true;
+						for (var j:int = 0; j < Soulforce.daosnot.length; ++j) {
+							if (player.statusEffectv2(StatusEffects.MartialTraining) < SceneLib.soulforce.highestLayerOfMartialTraining()) {
+								SceneLib.soulforce.martialTrainingEffect(Soulforce.daosnot[j][1], Soulforce.daosnot[j][0], true);
+								needNext = true;
+							}
 						}
 					}
 				}
@@ -1684,6 +1735,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasPerk(PerkLib.MummyLord)) player.addPerkValue(PerkLib.MummyLord,2,-1);
 				else player.addPerkValue(PerkLib.MummyLordDormant,2,-1);
 			}
+			if (player.hasPerk(PerkLib.UndeadLord) && player.perkv2(PerkLib.UndeadLord) > 0) player.addPerkValue(PerkLib.UndeadLord,2,-1);
 			//Heaven Tribulations
 			if (player.hasStatusEffect(StatusEffects.TribulationCountdown)) {
 				if (player.statusEffectv1(StatusEffects.TribulationCountdown) <= 1 && !player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) {
@@ -1818,6 +1870,11 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				SceneLib.inventory.takeItem(player.unequipArmor(false, true), playerMenu);
 				needNext = true;
 			}
+			if (player.hasPerk(PerkLib.Ethereal) && player.armor.name != "nothing" && (player.armorPerk == "Medium" || player.isInHeavyArmor() || player.isInAyoArmor)) {
+				outputText("Due to your current body state you are no longer able to wear "+player.armorName+" and thus you put the over item back into your inventory");
+				SceneLib.inventory.takeItem(player.unequipArmor(false, true), playerMenu);
+				needNext = true;
+			}
 			if (player.necklace == necklaces.SILCNEC && player.hasCock() && !player.hasVagina()) {
 				outputText("As the last vestige of your pussy disappears the silver necklace begins to heat up before turning to dust." + (player.hasStatusEffect(StatusEffects.MeetXuviel)?" It would seem you are free of Xuviel’s cursed necklace, which in itself is a good thing.":"") + "");
 				player.unequipNecklace(false, true);
@@ -1875,6 +1932,11 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			needNext = player.gainOrLosePerk(PerkLib.HydraAcidBreath, player.lowerBody == LowerBody.HYDRA, "", "As your lead hydra head vanishes so do your ability to belch acid.") || needNext;
 			//Troll Regeneration
 			needNext = player.gainOrLosePerk(PerkLib.TrollRegeneration, player.isAnyRaceCached(Races.TROLL, Races.GLACIAL_TROLL), "", "You accidentally cut yourself but to your stupor the wound does not close as fast as it should. I appears your lack of troll blood is no longer enough to benefit from superior regeneration.") || needNext;
+			//Monstrous Regeneration
+			needNext = player.gainOrLosePerk(PerkLib.MonstrousRegeneration, player.isAnyRaceCached(Races.USHIONNA, Races.CAVEWYRM), "The shock of the transformation is so sudden that you fall over and scrap yourself on a rock. To your surprise what should have stayed a bleeding wound slowly closes all on its own within seconds. <b>It looks like you have gained the power of super regeneration in the form of Monstrous Regeneration!</b>", "While moving around you accidentaly trip over and stare in stupor at the bleeding wound, since when do these no longuer closes on their own? <b>It would appear that with the various changes to your body you have lost the ability to regenerate.</b>") || needNext;
+			//Cernos perks
+			needNext = player.gainOrLosePerk(PerkLib.Icerunner, player.isRaceCached(Races.DEER, 2), "Information Noona informs: Go yell for Lia on missing text here.", "Information Noona informs: Go yell for Lia on missing text here.") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.Skywalk, player.isRaceCached(Races.DEER, 2), "Information Noona informs: Go yell for Lia on missing text here.", "Information Noona informs: Go yell for Lia on missing text here.") || needNext;
 			if (!player.hasStatusEffect(StatusEffects.Overheat) && (player.isAnyRaceCached(Races.SALAMANDER, Races.KITSHOO, Races.HELLCAT) || player.hasStatusEffect(StatusEffects.HinezumiCoat))) {
 				//Argument 1 is whether pc is in heat stage or not 1 means active
 				//Argument 2 is how many day left before player enter heats again typically 3;
@@ -2026,10 +2088,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hunger < player.maxHunger()) {
 					player.refillHunger(10, false);
 				}
-				EngineCore.HPChange(100 + (player.tou*2), true, false);
-				EngineCore.ManaChange(100 + (player.inte*2));
+				pc.HPChange(100 + (player.tou*2), true, false);
+				pc.ManaChange(100 + (player.inte*2));
 				EngineCore.changeFatigue(-(100 + (player.spe*2)));
-				EngineCore.SoulforceChange(500 + (player.wis*2));
+				pc.SoulforceChange(500 + (player.wis*2));
 				outputText("You feel energized and empowered by the life force drained out of the fluids of your recent blind date. What a meal!\n\n");
 				player.removeStatusEffect(StatusEffects.KitsuneEnergyThirstFeed);
 			}
@@ -2042,7 +2104,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			//Lizan Regeneration perk
-			needNext = player.gainOrLosePerk(PerkLib.LizanRegeneration, player.perkv1(IMutationsLib.LizanMarrowIM) >= 1 || (player.tailType == Tail.LIZARD && player.lowerBody == LowerBody.LIZARD && player.arms.type == Arms.LIZARD) || (player.lowerBody == LowerBody.HYDRA && player.arms.type == Arms.HYDRA), "You start to feel an unusual feeling somewhere within your body. Like tiny ripples moving inside your veins, making you feel so much more refreshed than a moment ago. Considering the fact that lizans are so much like lizards and that they usually possess a natural talent to regenerate from even severe injuries, you wonder if it could be that.", "All of a sudden, something changes inside your body. You think about it for a long time until it dawns on you. You can't feel that refreshing feeling inside your body anymore, meaning your recovery rate has reverted back to normal.", player.perkv4(PerkLib.LizanRegeneration) == 0) || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.LizanRegeneration, player.perkv1(IMutationsLib.LizanMarrowIM) >= 1 || player.isAnyRaceCached(Races.LIZARD, Races.HYDRA), "You start to feel an unusual feeling somewhere within your body. Like tiny ripples moving inside your veins, making you feel so much more refreshed than a moment ago. Considering the fact that lizans are so much like lizards and that they usually possess a natural talent to regenerate from even severe injuries, you wonder if it could be that.", "All of a sudden, something changes inside your body. You think about it for a long time until it dawns on you. You can't feel that refreshing feeling inside your body anymore, meaning your recovery rate has reverted back to normal.", player.perkv4(PerkLib.LizanRegeneration) == 0) || needNext;
 			//Lustzerker perk
 			needNext = player.gainOrLosePerk(PerkLib.Lustzerker, player.isAnyRaceCached(Races.SALAMANDER, Races.PHOENIX, Races.KITSHOO) || player.hasMutation(IMutationsLib.SalamanderAdrenalGlandsIM), "You start to feel a weird, slightly unpleasant feeling inside your body. Like many tiny flames coursing through your veins, making you ponder what is happening with your body. Remembering about salamanders' natural talent for entering a berserk-like state, you guess that should be it.", "All of a sudden, something changes inside your body. You think about it for a long time until it dawns on you. You can't feel that fire in your veins anymore, meaning for now, no more lustzerking.", player.perkv4(PerkLib.Lustzerker) == 0) || needNext;
 			//Tech Overdrive perk
@@ -2098,12 +2160,13 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.createPerk(PerkLib.FreezingBreathYeti, 0, 0, 0, 0);
 				needNext = true;
 			}
-			if ((player.isRaceCached(Races.MELKIE) || player.isRaceCached(Races.FROSTWYRM) || player.isRaceCached(Races.GLACIAL_TROLL)) && !player.hasPerk(PerkLib.ColdAffinity)) {
+			if ((player.isRaceCached(Races.MELKIE) || player.isRaceCached(Races.FROSTWYRM) || player.isRaceCached(Races.GLACIAL_TROLL) || player.isRaceCached(Races.DEER, 2)) && !player.hasPerk(PerkLib.ColdAffinity)) {
 				outputText("\nYou suddenly no longer feel the cold so you guess you finally got acclimated to the icy winds of the glacial rift. You feel at one with the cold. So well that you actually developed icy power of your own.\n\n(<b>Gained Perks: Cold Affinity</b>)\n");
 				player.createPerk(PerkLib.ColdAffinity, 0, 0, 0, 0);
 				needNext = true;
 			}
-			else if (!player.isRaceCached(Races.YETI) && !player.isRaceCached(Races.YUKIONNA) && !player.isRaceCached(Races.MELKIE) && !player.isRaceCached(Races.FROSTWYRM) && !player.isRaceCached(Races.GLACIAL_TROLL) && !player.isRaceCached(Races.WENDIGO) && !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 2 && !player.perkv1(IMutationsLib.WhaleFatIM) >= 1 && !player.hasPerk(PerkLib.SnowLily) && player.hasPerk(PerkLib.ColdAffinity)) {
+			else if (!player.isRaceCached(Races.YETI) && !player.isRaceCached(Races.YUKIONNA) && !player.isRaceCached(Races.MELKIE) && !player.isRaceCached(Races.FROSTWYRM) && !player.isRaceCached(Races.GLACIAL_TROLL) && !player.isRaceCached(Races.WENDIGO) && !player.isRaceCached(Races.DEER, 2) && 
+					 !player.hasPerk(PerkLib.SoulResonance) && !player.perkv1(PerkLib.SoulResonance) != 2 && !player.perkv1(IMutationsLib.WhaleFatIM) >= 1 && !player.hasPerk(PerkLib.SnowLily) && player.hasPerk(PerkLib.ColdAffinity)) {
 				outputText("\nYou suddenly feel a chill in the air. You guess you somehow no longer resist the cold.\n\n<b>(Lost Perks: Cold Affinity");
 				player.removePerk(PerkLib.ColdAffinity);
 				if (player.hasPerk(PerkLib.FreezingBreathYeti)){
@@ -2124,11 +2187,16 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			//Blood Affinity
 			needNext = player.gainOrLosePerk(PerkLib.BloodAffinity, player.isAnyRaceCached(Races.VAMPIRE, Races.WERESPIDER, Races.DRACULA), "Your ability to hone the power of the red, flowing essence heightens. Hemophilia is a delightful chance for you to revel in the hemorrhage of freshly spilt blood.", "The sight of blood no longer fuels you with the same rousing sensations you once had. Any affinity you carried for the crimson fluid is now lost.") || needNext;
 			//Dark Affinity
-			needNext = player.gainOrLosePerk(PerkLib.DarknessAffinity, player.isAnyRaceCached(Races.VAMPIRE, Races.APOPHIS, Races.ANUBIS, Races.DRACULA, Races.LICH) || player.hasPerk(PerkLib.Nightshade), "You are at home while shrouded in darkness, seeing clearly within the shadows as if it were broad daylight.", "The inky black darkness grows hostile toward you once more as your affinity for it is lost.") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.DarknessAffinity, player.isAnyRaceCached(Races.VAMPIRE, Races.APOPHIS, Races.ANUBIS, Races.DRACULA, Races.LICH, Races.BANSHEE) || player.hasPerk(PerkLib.Nightshade) || (player.hasMutation(IMutationsLib.UndeadMetabolismIM) && player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 3), "You are at home while shrouded in darkness, seeing clearly within the shadows as if it were broad daylight.", "The inky black darkness grows hostile toward you once more as your affinity for it is lost.") || needNext;
+			//Acid Affinity
+			needNext = player.gainOrLosePerk(PerkLib.AcidAffinity, player.isAnyRaceCached(Races.CAVEWYRM, Races.HYDRA, Races.CAVESTALKER, Races.SLIME, Races.SANDWORM) || player.hasPerk(PerkLib.ExanimationIII),
+					"You retch violently suddenly feeling as if about to vomit before a flow of smoking green digestive fluid gushes out of your mouth drenching the ground. You watch in amazement as grass and other foliage matter are swiftly dissolved by your smoking fluids. Looks like you gained the ability to produce strong acid naturally, this is going to take some time getting used to. Coincidently you are resilient to acid now.",
+					"You feel a fundamental change in your guts as your stomach which formerly produced deadly acids calms down the fluid now back to those equivalent of an ordinary human.") || needNext;
 			//Compelling Aria
 			needNext = player.gainOrLosePerk(PerkLib.HarpySong, player.isAnyRaceCached(Races.SIREN, Races.HARPY, Races.PHOENIX, Races.THUNDERBIRD) || player.hasMutation(IMutationsLib.HarpyHollowBonesIM), "Your voice sound like magically entrancing music to your ears now, it would seem you have gained the infamous magically compelling voices common to harpies.", "Your voice no longer carries the magical power it used to and thus you are no longer able to use your compelling aria.") || needNext;
 			needNext = player.gainOrLosePerk(PerkLib.MelkieSong, player.tongue.type == Tongue.MELKIE || player.hasMutation(IMutationsLib.MelkieLungIM), "Your words are notes, your sentence a melody. Your voice is like music to your ears and you realize it is because your body became closer to that of a Melkie adapting even your tongue and voice. Well, you could always go sit on a rock and sing in case some sailor came by.", "Your voice no longer carries the magical power it used to and thus you are no longer able to use your compelling aria.") || needNext;
-
+			//Soul drain
+			needNext = player.gainOrLosePerk(PerkLib.SoulDrain, player.isRaceCached(Races.JIANGSHI, 2) || player.isRaceCached(Races.MUMMY), ".", ".") || needNext;
 			//Alraune perks
 			needNext = player.gainOrLosePerk(PerkLib.AlrauneNectar, player.isAlraune(), "Your flower now produces a delicious nectar the scent of which is sure to draw in partners.", "As you no longer have a pitcher to produce nectar your scent has became more like that of an ordinary human.", function():void {
 						player.vaginaType(VaginaClass.ALRAUNE);
@@ -2245,6 +2313,20 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			if (!player.isRaceCached(Races.KIRIN) && (player.hasStatusEffect(StatusEffects.IsRaiju) || player.hasStatusEffect(StatusEffects.IsThunderbird)) && player.hasStatusEffect(StatusEffects.IsKirin)) {
 				player.removeStatusEffect(StatusEffects.IsKirin);
 			}
+			if (player.isRaceCached(Races.BANSHEE) && !player.hasPerk(PerkLib.WailOfTheBanshee)) {
+				outputText("\nYou feel the pain of your recent transformation pool in your body. Unable to fully hold it in anymore you release a wail. As the wave of sound expands outward,patches of grass blacken and wither as the buzzing insects drop dead from the grey and lifeless air, all turning to dust.\n\n<b>(You have gained the Wail of the Banshee, Soul Draining Scream and Herald of Death perks!)</b>\n");
+				player.createPerk(PerkLib.WailOfTheBanshee, 0, 0, 0, 0);
+				player.createPerk(PerkLib.SoulDrainingScream, 0, 0, 0, 0);
+				player.createPerk(PerkLib.HeraldOfDeath, 0, 0, 0, 0);
+				needNext = true;
+			}
+			if (!player.isRaceCached(Races.BANSHEE) && player.hasPerk(PerkLib.WailOfTheBanshee)) {
+				outputText("\nAs your connection to life strengthens, you lose your powers over death and entropy.\n\n<b>(You have lost the Wail of the Banshee, Soul Draining Scream and Herald of Death perks!)</b>\n");
+				player.removePerk(PerkLib.WailOfTheBanshee);
+				player.removePerk(PerkLib.SoulDrainingScream);
+				player.removePerk(PerkLib.HeraldOfDeath);
+				needNext = true;
+			}
 			if (!player.isRaceCached(Races.ALRAUNE) && (player.hasPerk(PerkLib.Cinderbloom) || player.hasPerk(PerkLib.SnowLily) || player.hasPerk(PerkLib.Nightshade))) {
 				if (player.hasPerk(PerkLib.Cinderbloom)) player.removePerk(PerkLib.Cinderbloom);
 				if (player.hasPerk(PerkLib.FireAffinity) && player.perkv3(PerkLib.FireAffinity) == 1) player.removePerk(PerkLib.FireAffinity);
@@ -2253,6 +2335,13 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasPerk(PerkLib.Nightshade)) player.removePerk(PerkLib.Nightshade);
 				if (player.hasPerk(PerkLib.DarknessAffinity) && player.perkv3(PerkLib.DarknessAffinity) == 1) player.removePerk(PerkLib.DarknessAffinity);
 			}
+			//Hollow affinity related perks
+			//needNext = player.gainOrLosePerk(PerkLib., (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.ToxicRomance, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.MeltingPot, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.WintersGrasp, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.ColdAffinity)), "", "") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.Icestorm, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.ColdAffinity)), "", "") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.GlacialBlockade, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.ColdAffinity)), "", "") || needNext;
 			if (player.racialScore(Races.SATYR) >= 15 && !player.hasPerk(PerkLib.PanLabyrinth)) {
 				outputText("\nAs you become more satyr like your ability for music seems to have improved further. Whistling out to yourself you notice the ambient animals behaving strangely. It would seem your song acquired the ability to confuse and daze foes. <b>You gained the Pan Labyrinth ability!</b>\n");
 				player.createPerk(PerkLib.PanLabyrinth, 0, 0, 0, 0);
@@ -2350,7 +2439,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 			}
 			//Flawless Body
-			else if (player.hasPerk(PerkLib.FlawlessBody) && (player.lowerBody != LowerBody.ELF || player.arms.type != Arms.ELF || !player.hasPlainSkinOnly() || player.skinAdj != "flawless")) {
+			else if (player.hasPerk(PerkLib.FlawlessBody) && ((player.lowerBody != LowerBody.ELF && player.lowerBody != LowerBody.SPECTRAL_SHROUD) || (player.arms.type != Arms.ELF && player.arms.type != Arms.SPECTRAL_CLAWS) || !player.hasPlainSkinOnly() || player.skinAdj != "flawless")) {
 				outputText("\nYour body has becomes less alluring and graceful as part of reverting to a more mundane appearance.\n\n<b>(Lost the Flawless Body perk and the perfect skin!)</b>\n");
 				player.removePerk(PerkLib.FlawlessBody);
 				player.skin.setBaseOnly({type: Skin.PLAIN, adj:""});
@@ -2393,7 +2482,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			needNext = player.gainOrLosePerk(PerkLib.TitanicSize,(player.tallness >= 80 && (player.isRaceCached(Races.SCYLLA, 2) || player.isAnyRaceCached(Races.HYDRA, Races.FROSTWYRM, Races.SANDWORM) || player.isRaceSpecificTier(Races.HOLLOW, 4))), "Whoa, you've grown so big its a sheer miracle you don't damage the landscape while moving. That said, your size now contributes to your strength as well.",
 					(player.tallness < 80) ? "You sadly are no longer able to benefit from your size as much as you did before. Probably because you have shrunk to a smaller size." : "You sadly are no longer able to benefit from your size as much as you did before. Probably because you have transformed again.") || needNext;
 			//Giant Might && Titan Might
-			if (player.isRaceCached(Races.ONI) || player.isRaceCached(Races.ORCA) || player.isRaceCached(Races.ABYSSAL_SHARK)) {
+			if (player.isRaceCached(Races.ONI) || player.isRaceCached(Races.ORCA) || player.isRaceCached(Races.ABYSSAL_SHARK) || player.isRaceCached(Races.USHIONNA)) {
 				if (!player.hasPerk(PerkLib.GiantMight)) {
 					outputText("\nWhoa, you just feel so damn powerful like you could move hills like your size has no relative correlation with your current strength. That must be the so called fabled strength of the giants.\n\n<b>(Gained Giant Might perk!)</b>\n");
 					player.createPerk(PerkLib.GiantMight, 0, 0, 0, 0);
@@ -2710,8 +2799,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			}
 
 			//Levitation wing slot
-			if (player.wings.type == Wings.LEVITATION && player.rearBody.type != RearBody.GLACIAL_AURA && player.lowerBody != LowerBody.WENDIGO && player.lowerBody != LowerBody.GAZER && !player.isRaceCached(Races.LICH)) {
-				outputText("\nAs you do not meet the requirements, you also lose the knowledge on how to levitate!\nHint: Aura of the Yuki Onna or legs of the Wendigo or Gazer");
+			if (player.wings.type == Wings.LEVITATION && player.rearBody.type != RearBody.GLACIAL_AURA && player.lowerBody != LowerBody.WENDIGO && player.lowerBody != LowerBody.GAZER && player.lowerBody != LowerBody.LICH) {
+				outputText("\nAs you do not meet the requirements, you also lose the knowledge on how to levitate!\nHint: Aura of the Yuki Onna or legs of the Wendigo or Gazer or Lich");
 				player.wings.type = Wings.NONE;
 				needNext = true;
 			}
@@ -2879,6 +2968,38 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				outputText("\nA dramatic change in your alignment has altered your formerly corrupt aura into one of purity\n");
 				player.removePerk(PerkLib.AuraOfCorruption);
 				player.createPerk(PerkLib.AuraOfPurity, 0, 0, 0, 0);
+				needNext = true;
+			}
+			//Ethereal
+			if (player.isAnyRaceCached(Races.BANSHEE, Races.POLTERGEIST) && !player.hasPerk(PerkLib.Ethereal)) {
+				if (player.isRaceCached(Races.BANSHEE)) {
+					outputText("\nAs you become more and more ghostlike your relationship with life lessens. Your body has become closer to the composition of an immaterial unbound soul. You start to fade into an ethereal state but never vanish completely, stuck between the metaphysical realm and sustained by your strong soul. While you can still manifest and interact with physical objects to an extent, doing such requires a sustained effort from your soul. This strange state of existence ");
+					outputText("has more or less made the need for vital organs irrelevant as your soul now almost fully sustains the entirety of your being but you will also crave for the soulforce of others as a result of this since you will need it to keep your own reserves from running out. You can’t exactly call yourself ‘alive’ anymore right? This also extends to your senses, aside from sight, touch, taste and smell is about completely gone and you are now no different from the wraiths that wander Mareth");
+					if (flags[kFLAGS.TIMES_MET_SHOULDRA] > 0) outputText(" or from that poor ghost girl Shouldra over there");
+					outputText(".");
+					if (SceneLib.camp.followerShouldra()) outputText("Speaking of Shouldra you’re going to have a hard time feeling the joy of sensation.");
+					else outputText("Thinking on it without the feeling of touch how exactly are you going to masturbate?");
+					outputText(" Without directly interacting with someone else's body through partial possession masturbation is from now on completely impossible. <b>You have gained the Ethereal and Undeath perk.</b>");
+					player.createPerk(PerkLib.Undeath, 0, 0, 0, 0);
+				}
+				else outputText("\nAs you become more ghost-like your body begins to glow slightly. Curious, you try to touch your arm and discover with surprise that your hand ran straight through your limb as if it lacked a material substance. <b>You gained the Ethereal Perk.</b>");
+				player.createPerk(PerkLib.Ethereal, 0, 0, 0, 0);
+				needNext = true;
+			}
+			if (!player.isAnyRaceCached(Races.BANSHEE, Races.POLTERGEIST) && player.hasPerk(PerkLib.Ethereal)) {
+				if (player.isRaceCached(Races.BANSHEE)) {
+					outputText("\nYour body and presence begins to solidify, no longer stuck between the material and immaterial realm. Curious you pinch yourself and sight in relief as you feel the long missed sense of touch looks like you’re back to being corporeal and alive again! <b>You have lost the Ethereal and Undeath perk.</b>");
+					player.removePerk(PerkLib.Undeath);
+				}
+				else outputText("\nYour formerly glowing form loses its luster; it would appear you no longer benefit from etherealness. <b>You lost the Ethereal perk.</b>");
+				player.removePerk(PerkLib.Ethereal);
+				needNext = true;
+			}
+			if (SceneLib.camp.followerShouldra() && player.hasPerk(PerkLib.Ethereal)) {
+				outputText("\nSpeaking of the devil, Shouldra, no longer able to possess your body, floats to your side and looks at you in annoyance.");
+				outputText("\n\n\"<i>Hey champ as much as I liked our jig there's no point if you are also ethereal. A ghost can’t possess another ghost so until you become a living solid thing again I will be waiting for you in the town"+(RuinedTownRebuilt.RebuildState > 0?"":" ruins")+".</i>\"");
+				if (player.hasStatusEffect(StatusEffects.ShouldraOff)) player.removeStatusEffect(StatusEffects.ShouldraOff);
+				flags[kFLAGS.SHOULDRA_FOLLOWER_STATE] = 0;
 				needNext = true;
 			}
 			//Remove Bullshit

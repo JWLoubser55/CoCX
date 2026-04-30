@@ -27,7 +27,7 @@ public class BeatOfWarSkill extends AbstractSoulSkill {
 
     override public function doEffect(display:Boolean = true):void {		
 		if (!player.statStore.hasBuff("BeatOfWar"))
-			mainView.statsView.showStatUp('str');
+			showStatUp('str');
 		player.buff("BeatOfWar").addStats({"str.mult":0.15}).withText("Beat of War").combatPermanent();
 		if (display) 
 			outputText("You momentarily attune yourself to the song of the mother tree, and prepare to add a note of your own to it’s rhythm. You feel the beat shift the song’s tempo slightly, taking a twist towards the ominous. This attunement augments your strength.\n\n");

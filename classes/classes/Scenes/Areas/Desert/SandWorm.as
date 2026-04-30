@@ -8,7 +8,7 @@ import classes.Scenes.Combat.Combat;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class SandWorm extends Monster
 	{
@@ -71,7 +71,7 @@ public class SandWorm extends Monster
 			outputText("The worm leaps out the ground next to you, its maw wide open as it plunges to take you in. ")
 			if (Combat.playerWaitsOrDefends()){
 				outputText("By observing your environment and staying alert, you manage to dodge just in time as the great worm plunges back into the sands. \n\n");
-			} else if (player.isFlying()) {
+			} else if (player.isFlying() || player.hasPerk(PerkLib.Icerunner)) {
 				if (rand(3) == 0) {
 					outputText("Surprising you, the sand worm surges even higher, swallowing you where you hover before you even have the chance to react!\n\n")
 					player.createStatusEffect(StatusEffects.Devoured, 2 + rand(5), 0, 0, 0);
@@ -136,7 +136,7 @@ public class SandWorm extends Monster
 			player.addStatusValue(StatusEffects.MonsterDig, 1, -1);
 		}
 
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.Devoured)) {
 				btnStruggle.call(sandWormDevourStruggle);
 				btnBoundWait.call(sandWormDevourWait);

@@ -247,7 +247,7 @@ public class DinahFollower extends NPCAwareContent// implements TimeAwareInterfa
 			addButton(11, consumables.METHIRC.shortName, buyItem3, 12).hint("Buy a Methir crystal.");
 			if (player.hasItem(weaponsrange.HARKON1, 2)) addButton(12, "Harkonnen II", getHarkonnenIIMade);
 			else addButtonDisabled(12, "???", "Req. to have 2x Harkonnen and 4,500 gems.");
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(13, consumables.PODBONE.shortName, buyItem1, 10).hint("Buy a pack of demon bones.");
+			if (player.hasPerk(PerkLib.JobHaruspex)) addButton(13, consumables.PODBONE.shortName, buyItem1, 10).hint("Buy a pack of demon bones.");
 			else addButtonDisabled(13, "???", "Offers only for Necromancers.");
 			addButton(14, "Back", DinahShopMainMenu);
 		}

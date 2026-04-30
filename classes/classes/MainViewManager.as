@@ -1,6 +1,7 @@
 //The code that is responsible for managing MainView.
 package classes {
 import classes.GlobalFlags.kFLAGS;
+import classes.internals.Utils;
 
 import coc.view.BoundClip;
 import coc.view.MainView;
@@ -17,11 +18,12 @@ import flash.events.TimerEvent;
 import flash.geom.Point;
 import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
+import flash.text.TextFormat;
 import flash.ui.Keyboard;
 import flash.utils.Timer;
 import flash.utils.getQualifiedClassName;
 
-public class MainViewManager extends BaseContent {
+public class MainViewManager extends Utils {
 	//Interface flags
 	public var registeredShiftKey:Boolean = false;
 
@@ -36,19 +38,52 @@ public class MainViewManager extends BaseContent {
 
 	}
 
+	private function get flags():DefaultDict {
+		return CoC.instance.flags;
+	}
+	private function get mainView():MainView {
+		return CoC.instance.mainView;
+	}
+	private function get player():Player {
+		return CoC.instance.player;
+	}
+	private function get settings():Settings {
+		return CoC.instance.settings;
+	}
+
 	//------------
 	// SHOW/HIDE
 	//------------
+	public function showStatUp(statName:String):void {
+		mainView.statsView.showStatUp(statName);
+	}
+	public function showStatDown(statName:String):void {
+		mainView.statsView.showStatDown(statName);
+	}
+	public function hideUpDown():void {
+		mainView.statsView.hideUpDown();
+	}
 	public function darkThemeImpl():Boolean {
-		return darkThemes[flags[kFLAGS.BACKGROUND_STYLE]];
+		return darkThemes[settings.backgroundStyle];
+	}
+	public function showLevelUp():void {
+		mainView.statsView.showLevelUp();
+	}
+	public function hideLevelUp():void {
+		mainView.statsView.hideLevelUp();
 	}
 
 	public function setTheme():void {
 		var i:int = 0; //Will be used for array.
 
 		//Set background
-		var style:int                      = flags[kFLAGS.BACKGROUND_STYLE];
-		var font:String      = (flags[kFLAGS.USE_OLD_FONT] > 0) ? StatsView.ValueFontOld : StatsView.ValueFont;
+		var style:int                      = settings.backgroundStyle;
+		var font:String      = (settings.useOldFont > 0) ? StatsView.ValueFontOld : StatsView.ValueFont;
+		var fmt:TextFormat = mainView.mainText.defaultTextFormat;
+		fmt.font = "Times New Roman";
+		fmt.size = settings.customFontSize || 20;
+		fmt.color                           = darkThemeImpl() ? 0xffffff : 0;
+		mainView.mainText.defaultTextFormat = fmt;
 		mainView.setTheme(style, font);
 	}
 
@@ -62,18 +97,24 @@ public class MainViewManager extends BaseContent {
 	//------------
 	// REFRESH
 	//------------
+	public function hungerBarVisible():Boolean {
+		return flags[kFLAGS.HUNGER_ENABLED] > 0 && flags[kFLAGS.URTA_QUEST_STATUS] != 0.75;
+	}
 	public function refreshStats():void {
-		if (flags[kFLAGS.HUNGER_ENABLED] > 0 && flags[kFLAGS.URTA_QUEST_STATUS] != 0.75) {
+		if (hungerBarVisible()) {
 			mainView.statsView.toggleHungerBar(true);
 		} else {
 			mainView.statsView.toggleHungerBar(false);
 		}
 		//Set theme!
 		setTheme();
-        mainView.statsView.refreshStats(CoC.instance);
+		mainView.statsView.refreshStats();
     }
+	public function showStats():void {
+		mainView.statsView.show();
+	}
 	public function updateCharviewIfNeeded():void {
-		if (flags[kFLAGS.CHARVIEW_STYLE] != 0) { // if not display always
+		if (settings.charviewStyle != 0) { // if not display always
 			hidePlayerDoll();
 		} else { // if display always
 			showPlayerDoll(false);
@@ -85,12 +126,12 @@ public class MainViewManager extends BaseContent {
 		mainView.charView.setCharacter(player);
 		mainView.charView.redraw();
 		mainView.charView.visible = true;
-		if(flags[kFLAGS.CHARVIEW_STYLE] == 2){
+		if(settings.charviewStyle == 2){
 			// display in the text
 			mainView.charView.x = 0;
 			mainView.charView.y = 0;
 			BoundClip.nextContent = mainView.charView;
-			outputText("<img src='coc.view::BoundClip' align='left' id='charview'/>");
+			EngineCore.outputText("<img src='coc.view::BoundClip' align='left' id='charview'/>");
 		} else {
 			// display in the corner
 			mainView.placeCharviewAtRight();
@@ -101,7 +142,7 @@ public class MainViewManager extends BaseContent {
 		mainView.charView.visible = false;
 		tweenInStats();
 	}
-	public function createFloatingText(x:Number, y:Number, htmlText:String, color:* = "#000", shadowColor:*="#fff"):void {
+	public function createFloatingText(x:Number, y:Number, htmlText:String, color:* = "#000", shadowColor:* ="#fff"):void {
 		var tf:TextField = UIUtils.newTextField({
 			x: x,
 			y: y,
@@ -121,10 +162,10 @@ public class MainViewManager extends BaseContent {
 		});
 		
 	}
-	public function createFloatingTextAtCursor(htmlText:String, color:*="#000", shadowColor:*="#fff"):void {
+	public function createFloatingTextAtCursor(htmlText:String, color:* ="#000", shadowColor:* ="#fff"):void {
 		createFloatingText(mainView.mouseX, mainView.mouseY, htmlText, color, shadowColor);
 	}
-	public function createFloatingTextAtElement(element:DisplayObject, htmlText:String, color:*="#000", shadowColor:*="#fff"):void {
+	public function createFloatingTextAtElement(element:DisplayObject, htmlText:String, color:* ="#000", shadowColor:* ="#fff"):void {
 		var point:Point = UIUtils.getRelativePos(element, mainView);
 		createFloatingText(point.x, point.y, htmlText, color, shadowColor);
 	}
@@ -178,12 +219,12 @@ public class MainViewManager extends BaseContent {
 
 	public function keyPressed(event:KeyboardEvent):void {
 		if (event.keyCode == Keyboard.SHIFT) {
-			shiftKeyDown = true;
+			flags[kFLAGS.SHIFT_KEY_DOWN] = true;
 		}
 	}
 	public function keyReleased(event:KeyboardEvent):void {
 		if (event.keyCode == Keyboard.SHIFT) {
-			shiftKeyDown = false;
+			flags[kFLAGS.SHIFT_KEY_DOWN] = false;
 		}
 	}
 	public function traceSelf():String {

@@ -47,7 +47,6 @@ public class MantisRace extends Race {
 				.tailType(Tail.MANTIS_ABDOMEN, +1)
 				.wingType(Wings.MANTIS_SMALL, +1)
 				.wingType(Wings.MANTIS_LARGE, +2)
-				//.wingType(Wings.MANTIS_LARGE_2, +4)
 				.hasPerk(PerkLib.MantisOvipositor, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		

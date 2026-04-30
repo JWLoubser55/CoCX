@@ -219,6 +219,7 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				else addButtonDisabled(7, "Herb Bag (LowG)", "Herbs Bag (Low Grade) Req. lvl 5 in Farming.");
 			}
 			if (Garden.PotionsBagSlot01Cap == 0) addButton(8, "Pot Bag (LowG)", pitchPotionsBag).hint("Potion Bag (Lowest Grade)");
+			if (player.hasPerk(PerkLib.ExanimationI) && !player.hasPerk(PerkLib.ExanimationIII) && player.level < 32) addButton(9, "Torch", pitchPurePeach);
 			if (player.hasKeyItem("Tarnished Ore Bag (Lowest grade)") >= 0) addButton(10, "Ore Bag (LowG)", pitchOreBag).hint("Ore Bag (Lowest Grade)");
 			if (Holidays.nieveHoliday()) {
 				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 0) addButton(11, "Mysterious Seed", pitchMysteriousSeed);
@@ -721,6 +722,27 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				Crafting.BagSlot06Cap = 10;
 				Crafting.BagSlot07Cap = 10;
 				doNext(miscMenu);
+			}
+		}
+		
+		private function pitchPurePeach():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			outputText("Giacomo holds up a peach.  \"<i>While you may not find value in this as a fruit,</i>\", Giacomo opens, \"<i>you never know what you may gain from eating it!  I will offer the super-cheap price of 25 gems!</i>\"");
+			doYesNo(buyPurePeach, miscMenu);
+		}
+		
+		private function buyPurePeach():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			if (player.gems < 25) {
+				outputText("Giacomo sighs, indicating you need 25 gems to purchase this item.");
+				doNext(miscMenu);
+			}
+			else {
+				outputText("The crazy merchant nods satisfied when you hand him over a twenty five gems and in exchange gives you a yellowy-orange peach.");
+				player.gems -= 25;
+				inventory.takeItem(consumables.PURPEAC, miscMenu);
 			}
 		}
 		

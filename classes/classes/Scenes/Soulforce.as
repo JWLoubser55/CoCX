@@ -25,12 +25,7 @@ use namespace CoC;
 
 public class Soulforce extends BaseContent
 {
-	public var tamaniDaughtersScene:TamainsDaughtersScene = new TamainsDaughtersScene();
-	public var tamaniScene:TamaniScene = new TamaniScene();
-	public var izumiScenes:IzumiScene = new IzumiScene();
-	public var nagaScene:NagaScene = new NagaScene();
 	public var worldtreeScene:WorldTree = new WorldTree();
-	public var minotaurSonsScene:MinotaurMobScene = new MinotaurMobScene();
 
 	public function accessSoulforceMenu():void {
 		clearOutput();
@@ -61,7 +56,7 @@ public class Soulforce extends BaseContent
 			if (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor) && player.perkv1(PerkLib.Dantain) == 0) player.addPerkValue(PerkLib.Dantain, 1, 1);
 			if (player.hasPerk(PerkLib.GclassHeavenTribulationSurvivor) && player.perkv1(PerkLib.Dantain) == 1) player.addPerkValue(PerkLib.Dantain, 1, 1);
 			if (player.hasPerk(PerkLib.FclassHeavenTribulationSurvivor) && player.perkv1(PerkLib.Dantain) == 2) player.addPerkValue(PerkLib.Dantain, 1, 1);
-			outputText("<b>Dantain:</b> ");
+			outputText("<b>Dantian:</b> ");
 			if (player.perkv1(PerkLib.Dantain) == 3) outputText("Nascent Soul");
 			else if (player.perkv1(PerkLib.Dantain) == 2) outputText("Core Formation");
 			else if (player.perkv1(PerkLib.Dantain) == 1) outputText("Foundation Establishment");
@@ -78,7 +73,7 @@ public class Soulforce extends BaseContent
 		*/	outputText("<b>Uses of soulforce per day (for 4 first option beside cultivate):</b> " + flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT] + " / " + dailySoulforceUsesLimit + "\n");
 		menu();
 		if (player.hasPerk(PerkLib.EnergyDependent)) addButtonDisabled(0, "Meditations", "You're unable to recover soulforce by meditating.");
-		else addButton(0, "Meditations", SoulforceRegeneration).hint("Spend some time on restoring some of your used soulforce.");
+		else addButton(0, "Meditations", SoulforceRegeneration).hint("Spend some time on restoring some of your used soulforce. And mend your damaged soul if you have Dantian perk + meditate for at least 4 hours.");
 		addButtonIfTrue(1, "Contemplate/Train", DaoContemplations, "Req. to successfully surviving your 1st Tribulation OR have Martial Training unlocked.", (player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || player.hasStatusEffect(StatusEffects.MartialTraining)), "Dao Contemplations / Practice and refine your martial arts. Training can only be done once per day.");
 		//2
 		if (flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT] < dailySoulforceUsesLimit) {
@@ -105,10 +100,10 @@ public class Soulforce extends BaseContent
 		else addButtonDisabled(10, "???", "Req. Metamorph.");
 		if (player.hasPerk(PerkLib.Phylactery)) addButton(11, "Demonic Energy", accessDemonicEnergyMenu).hint("You can use harvested souls and lethicite to improve your magic and body.");
 		else addButtonDisabled(11, "???", "Only for characters with Phylactery.");
-		if (player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") >= 0 || player.hasKeyItem("Cultivation Manual: Emperor of Dragon") >= 0 || player.hasKeyItem("Cultivation Manual: Embodiment of Tengliu") >= 0 || player.hasKeyItem("Cultivation Manual: Judge of Phantom") >= 0 || player.hasKeyItem("Cultivation Manual: Doctor of the Serpent") >= 0 ||
-			player.hasKeyItem("Cultivation Manual: Priest of the Leviathan") >= 0 || player.hasKeyItem("Cultivation Manual: King of Garuda") >= 0 || player.hasKeyItem("Cultivation Manual: Monarch of Tortoise") >= 0 || player.hasKeyItem("Cultivation Manual: General of Hydra") >= 0 ||
+		if (player.hasKeyItem("Cultivation Manual: My Dao Heart is Firm") >= 0 || player.hasKeyItem("Cultivation Manual: Emperor of Dragon") >= 0 || player.hasKeyItem("Cultivation Manual: Embodiment of Tengliu") >= 0 || player.hasKeyItem("Cultivation Manual: Lord of Kirin") >= 0 || player.hasKeyItem("Cultivation Manual: Judge of Phantom") >= 0 ||
+			player.hasKeyItem("Cultivation Manual: Doctor of the Serpent") >= 0 || player.hasKeyItem("Cultivation Manual: Priest of the Leviathan") >= 0 || player.hasKeyItem("Cultivation Manual: King of Garuda") >= 0 || player.hasKeyItem("Cultivation Manual: Monarch of Tortoise") >= 0 || player.hasKeyItem("Cultivation Manual: General of Hydra") >= 0 ||
 			player.hasKeyItem("Cultivation Manual: Vigor of Lizan") >= 0 || player.hasKeyItem("Cultivation Manual: Scale of Dragon") >= 0 || player.hasKeyItem("Cultivation Manual: Fist of Metal") >= 0 ||
-			player.hasKeyItem("Cultivation Manual: Heart-shaped Eyed She-Devil") >= 0) addButton(12, "Sub-paths", SubPaths).hint("Contemplate the mysteries of your chosen sub-path(s).");
+			player.hasKeyItem("Cultivation Manual: Heart's Eye") >= 0) addButton(12, "Sub-paths", SubPaths).hint("Contemplate the mysteries of your chosen sub-path(s).");
 		addButton(13, "Cultivation", Contemplations).hint("Contemplate the mysteries of the world in an attempt to progress your cultivation path.");
 		addButton(14, "Back", playerMenu);// || player.hasKeyItem("Cultivation Manual: Body like a Coke Fiend") >= 0
 	}
@@ -259,7 +254,7 @@ public class Soulforce extends BaseContent
 	}
 
 	private function contPrimary(name:String, perk:PerkType):void {
-		EngineCore.SoulforceChange(-player.maxSoulforce());
+		pc.SoulforceChange(-player.maxSoulforce());
 		player.addPerkValue(PerkLib.JobSoulCultivator, 2, 1);
 		player.createPerk(perk, 0, 0, 0, 0);
 		player.setPerkValue(PerkLib.JobSoulCultivator, 1, 1);
@@ -267,7 +262,7 @@ public class Soulforce extends BaseContent
 	}
 
 	private function contSecondary(name:String):void {
-		EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.3));
+		pc.SoulforceChange(-Math.round(player.maxSoulforce() * 0.3));
 		player.addPerkValue(PerkLib.JobSoulCultivator, 1, 1);
 		contShared(name);
 	}
@@ -957,7 +952,7 @@ public class Soulforce extends BaseContent
 			addButton(i, stages[i][0], heartforceSubPathChosen2, stages[i][1], stages[i][2])
 				.disableIf(!player.hasItem(stages[i][2], 1) || !player.hasItem(useables.HFSOLUTION, 1),
 					"Requires 1 bottle of " + (stages[i][2] as ItemType).longName
-					+ " and 1 vial of " + useables.BTSOLUTION.longName)
+					+ " and 1 vial of " + useables.HFSOLUTION.longName)
 				.disableIf(!player.hasPerk(stages[i][3]), "Requires perk: " + (stages[i][3] as PerkType).name())
 				.disableIf(i != 0 && !player.hasPerk(stages[i - 1][1]), "You need to have achieved the previous stage first.")
 				.disableIf(player.hasPerk(stages[i][1]), "You have already reached this stage.");
@@ -1257,7 +1252,17 @@ public class Soulforce extends BaseContent
 		var predict:int = meditationPredict(hours);
 		outputText("The spent time has allowed you to restore " + predict + " soulforce.\n\n");
 		outputText("Current soulpower: " + (player.soulforce + predict) + " / " + player.maxSoulforce());
-		EngineCore.SoulforceChange(sfRegen(hours)); //actual regen
+		pc.SoulforceChange(sfRegen(hours)); //actual regen
+		if (player.hasPerk(PerkLib.Dantain) && player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0 && hours >= 4) {
+			var scma:Number = 1;
+			if (player.perkv1(PerkLib.Dantain) >= 1) scma += player.perkv1(PerkLib.Dantain);
+			if (hours >= 16) scma *= 4;
+			if (hours >= 12) scma *= 3;
+			if (hours >= 8) scma *= 2;
+			player.addStatusValue(StatusEffects.SoulCohesion, 1, -scma);
+			if (player.statusEffectv1(StatusEffects.SoulCohesion) < 0) player.changeStatusValue(StatusEffects.SoulCohesion, 1, 0);
+			outputText("\n\nYour damaged soul mend itself a little bit. Current Soul Cohesion: " + (100 - player.statusEffectv1(StatusEffects.SoulCohesion)) + "%");
+		}
 		if (player.isGargoyle() && player.hasPerk(PerkLib.GargoylePure)) player.refillGargoyleHunger(20 * hours);
 		doNext(camp.returnToCamp, hours);
 	}
@@ -1413,8 +1418,8 @@ public class Soulforce extends BaseContent
 	public function convertSoulforce(amount:int):void {
 		clearOutput();
 		outputText("You sit down and channel your spiritual power, feeling it surge through your body. Slowly, your depleted mana begins to replenish, each breath drawing in energy from the surroundings. Within moments, a wave of calm washes over you, leaving you feeling rested and renewed.");
-		EngineCore.SoulforceChange(-amount);
-		EngineCore.ManaChange(amount);
+		pc.SoulforceChange(-amount);
+		pc.ManaChange(amount);
 		flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT]++;
 		doNext(ManaAndSoulforce);
 	}
@@ -1422,8 +1427,8 @@ public class Soulforce extends BaseContent
 	public function convertMana(amount:int):void {
 		clearOutput();
 		outputText("You sit down and concentrate deeply, directing your focus inward. Gradually, you begin to drain your mana, feeling it flow through you as it transforms into soulforce. Each pulse of energy restores your spiritual strength, leaving you feeling reinvigorated.");
-		EngineCore.ManaChange(-amount);
-		EngineCore.SoulforceChange(amount / 2);
+		pc.ManaChange(-amount);
+		pc.SoulforceChange(amount / 2);
 		flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT]++;
 		doNext(ManaAndSoulforce);
 	}
@@ -1455,7 +1460,7 @@ public class Soulforce extends BaseContent
 			player.soulforce -= cost;
 			player.cor += change;
 			if (player.cor > 100) player.cor = 100;
-			if (player.cor < 0) player.cor = 0;
+			if (player.cor < -100) player.cor = -100;
 			statScreenRefresh();
 			flags[kFLAGS.DAILY_SOULFORCE_USE_LIMIT]++;
 		}
@@ -1600,7 +1605,7 @@ public class Soulforce extends BaseContent
 		SceneLib.isabellaScene.isabellaGreeting();
 	}
 	public function sneakOnThePlane():void {
-		nagaScene.nagaEncounter();
+		SceneLib.desert.nagaScene.nagaEncounter();
 	}
 	public function quasiDragoness():void {
 		SceneLib.kihaScene.encounterKiha();

@@ -30,8 +30,6 @@ public class StatEnchantmentType extends SimpleEnchantmentType {
 			valueMulBase:Number = 1.0,
 			valueMulPerPower:Number = 0.0
 	) {
-		this.statName          = statName;
-		this.statPerPower      = statPerPower;
 		var displayName:String = StatUtils.nameOfStat(statName);
 		var descPattern:String;
 		if (StatUtils.isPercentageStat(statName)) {
@@ -42,6 +40,8 @@ public class StatEnchantmentType extends SimpleEnchantmentType {
 		super(id, name, curse, prefix, suffix, shortSuffix, descPattern, true,
 				rarity, minLevel,
 				minPower, maxPower, valueAddBase, valueAddPerPower, valueMulBase, valueMulPerPower);
+		this.statName          = statName;
+		this.statPerPower      = statPerPower;
 	}
 	
 	override public function onAdd(enchantment:Enchantment, item:Equipable):void {

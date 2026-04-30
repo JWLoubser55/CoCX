@@ -625,6 +625,19 @@ public class Arms extends SaveableBodyPart {
 		claw: true
 	});
 
+	public static const SPECTRAL_CLAWS:int = 81;
+	EnumValue.add(Types, SPECTRAL_CLAWS, "SPECTRAL_CLAWS", {
+		name:"banshee",
+		appearanceDesc: "Your ghostly hands are humans in shape and form but manifested around them like a pair of nasty gloves are you spectral claws with which you can torment and drain the soulforce of the living.",
+		claw: true
+	});
+
+	public static const RHINO:int = 82;
+	EnumValue.add(Types, RHINO, "RHINO", {
+		name:"rhino",
+		appearanceDesc: "Your arms are covered by extremely thick, tough skin, ending in hands with paw pads and three fingers ending with hoof-like fingernails."
+	});
+
 	public static function canFly(id: int): Boolean {
 		return Types[id].canFly || false;
 	}

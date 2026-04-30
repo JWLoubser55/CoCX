@@ -86,9 +86,11 @@ public class CoCButton extends Block {
 				_callback:Function    = null,
 				_preCallback:Function = null,
 				_iconId:String        = null;
+	private var _flashTween:LoopedTween = null;
 
 	public var toolTipHeader:String,
 			   toolTipText:String;
+	public var clickOnDisabled:Boolean;
 
 		/**
 		 * @param options  enabled, labelText, bitmapClass, callback
@@ -243,8 +245,9 @@ public class CoCButton extends Block {
 	}
 
 	public function click(event:MouseEvent = null):void {
-		if (!this.enabled) return;
+		if (!this.enabled && !this.clickOnDisabled) return;
 		CoC.instance.mainView.toolTipView.hide();
+		lastClicked = this;
 		try {
 			if (this._preCallback != null)
 				this._preCallback(this);
@@ -259,7 +262,7 @@ public class CoCButton extends Block {
 		}
 	}
 
-
+	public static var lastClicked:CoCButton = null;
 
 		//////// Getters and Setters ////////
 
@@ -577,6 +580,7 @@ public class CoCButton extends Block {
 		iconId          = null;
 		iconQty         = "";
 		cornerLabelText = "";
+		clickOnDisabled = false;
 		return this;
 	}
 	/**
@@ -594,6 +598,26 @@ public class CoCButton extends Block {
 	public function unhide():CoCButton {
 		visible = true;
 		return this;
+	}
+
+	override public function get visible():Boolean {
+		return super.visible;
+	}
+
+	override public function set visible(value:Boolean):void {
+		super.visible = value;
+		if (!value) unflashLabelColor();
+	}
+
+	public function flashLabelColor(textColor:String, alternate:Boolean=true, duration:int=1000):void {
+		if (_flashTween) _flashTween.stop();
+		_flashTween = new LoopedTween(this, "labelColor", textColor, duration, {color:true,alternate:alternate});
+	}
+	public function unflashLabelColor():void {
+		if (_flashTween) {
+			_flashTween.stop();
+			_flashTween = null;
+		}
 	}
 }
 }

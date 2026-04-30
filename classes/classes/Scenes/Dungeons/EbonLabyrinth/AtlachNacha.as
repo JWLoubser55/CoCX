@@ -76,7 +76,7 @@ use namespace CoC;
 		
 		override protected function performCombatAction():void
 		{
-			if (player.isFlying() && rand(2) == 0) atlachNachaPinDown();
+			if ((player.isFlying() || player.hasPerk(PerkLib.Icerunner)) && rand(2) == 0) atlachNachaPinDown();
 			else if (player.hasStatusEffect(StatusEffects.ArcaneWeb) && rand(4) > 0) atlachNachaBite();
 			else {
 				var choice:Number = rand(4);

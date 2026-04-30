@@ -701,7 +701,7 @@ import classes.CoC;
             transformation: function(): Transformation {
                 return CoC.instance.transformations.ArmsCanine;
             }
-        });
+        });/*
 
         public static const ABYSSAL_SHARK:int = _partid++;
         EnumValue.add(Memories, ABYSSAL_SHARK, "ABYSSAL_SHARK", {
@@ -712,7 +712,7 @@ import classes.CoC;
             transformation: function(): Transformation {
                 return CoC.instance.transformations.ArmsAbyssalShark;
             }
-        });
+        });*/
 
         public static const ARIGEAN:int = _partid++;
         EnumValue.add(Memories, ARIGEAN, "ARIGEAN", {
@@ -745,7 +745,7 @@ import classes.CoC;
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.ArmsDeer;
 			}
-		});
+		});/*
 
 		public static const REINDEER:int = _partid++;
 		EnumValue.add(Memories, REINDEER, "REINDEER", {
@@ -756,7 +756,7 @@ import classes.CoC;
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.ArmsReindeer;
 			}
-		});
+		});*/
 
 		public static const MOTH:int = _partid++;
 		EnumValue.add(Memories, MOTH, "MOTH", {
@@ -843,6 +843,39 @@ import classes.CoC;
 			title: "Hollow",
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.ArmsHollow;
+			}
+		});
+
+		public static const LICH:int = _partid++;
+		EnumValue.add(Memories, LICH, "LICH", {
+			id: "Lich Arms",
+			name: "Lich Arms",
+			cost: 100,
+			title: "Lich",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.ArmsLich;
+			}
+		});
+
+		public static const SPECTRAL_CLAWS:int = _partid++;
+		EnumValue.add(Memories, SPECTRAL_CLAWS, "SPECTRAL_CLAWS", {
+			id: "Banshee Arms",
+			name: "Banshee Arms",
+			cost: 100,
+			title: "Banshee",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.ArmsBanshee;
+			}
+		});
+
+		public static const RHINO:int = _partid++;
+		EnumValue.add(Memories, RHINO, "RHINO", {
+			id: "Rhino Arms",
+			name: "Rhino Arms",
+			cost: 100,
+			title: "Rhino",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.ArmsRhino;
 			}
 		});
 

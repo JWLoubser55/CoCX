@@ -57,6 +57,7 @@ public class EyesTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.eyes.type = Eyes.JIANGSHI;
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.JIANGSHI));
 			},
 			// is present
 			function (): Boolean {
@@ -909,6 +910,40 @@ public class EyesTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.eyes.type === Eyes.HOLLOW;
+			}
+	);
+	
+	public const EyesDeer: Transformation = new SimpleTransformation("Deer Eyes",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Your eyes feel like they are watering up. Instinctively, you want to rub them, but you force yourself to stop to avoid making the situation worse. You endure the sensation for a few minutes before it finally fades. You look at yourself in the nearest reflective surface and notice your eyes have taken on a deer-like appearance with horizontal pupils in the middle.  <b>You now have deer eyes!</b>";
+
+				player.eyes.type = Eyes.DEER;
+				player.eyes.colour = "golden";
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.DEER));
+			},
+			// is present
+			function (): Boolean {
+				return player.eyes.type === Eyes.DEER;
+			}
+	);
+	
+	public const EyesLich: Transformation = new SimpleTransformation("Lich Eyes",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				player.eyes.type = Eyes.LICH;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.LICH));
+			},
+			// is present
+			function (): Boolean {
+				return player.eyes.type === Eyes.LICH;
 			}
 	);
 

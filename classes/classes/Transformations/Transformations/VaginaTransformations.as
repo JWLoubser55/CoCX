@@ -38,9 +38,11 @@ public class VaginaTransformations extends MutationsHelper {
 			for (index = 0; index < player.vaginas.length; index++)
 				if (player.vaginas[index].type != type) return index;
 		}
-		if (index >= player.vaginas.length) index = 0;
-		return index;
+		//enforce in-order vaginas
+		//if (index >= player.vaginas.length) index = 0;
+		return index >= player.vaginas.length ? player.vaginas.length : index;
 	}
+	// -1: are all vaginas this type
 	// -1: are all vaginas this type
 	private function isPresentVagina(index:int, type:int):Boolean {
 		if (player.vaginas.length == 0) return false;
@@ -66,7 +68,8 @@ public class VaginaTransformations extends MutationsHelper {
 				},
 				// is present
 				function ():Boolean {
-					return !player.hasVagina();
+					//return !player.hasVagina();
+					return vagina < 0 ? player.vaginas.length > 0 : vagina >= player.vaginas.length;
 				}
 		);
 	}
@@ -643,6 +646,7 @@ public class VaginaTransformations extends MutationsHelper {
 					player.vaginaType(VaginaClass.SHROOM, vagina);
 
 					transformations.UnlockVagina();
+					Metamorph.unlockMetamorphEx(VaginaMem.getMemory(VaginaMem.SHROOM));
 				},
 				// is present
 				function ():Boolean {

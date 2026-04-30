@@ -4,16 +4,17 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Races;
 
 public class DiamondHeartMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Diamond Heart";
-        }
+		public static const MNAME:String = "Diamond Heart";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -67,7 +68,7 @@ public class DiamondHeartMutation extends IMutationPerkType
         }
 
         public function DiamondHeartMutation() {
-            super(mName + " IM", mName, SLOT_HEART, 3);
+            super(MNAME, SLOT_HEART, 3);
         }
 
     }

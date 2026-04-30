@@ -58,7 +58,8 @@ public class SimpleTween {
         return _easingFn(time,_startVal,_endVal-_startVal,duration);
     }
     private function colorEasingFn(time:Number,start:*,delta:*,duration:Number):* {
-        return Color.toHex(Color.interpolate(_startVal, _endVal, _easingFn(time,0,1,duration)));
+        var val:uint = Color.interpolate(_startVal, _endVal, _easingFn(time,0,1,duration));
+        return Color.convertColor32(val);
     }
     public static function easingLinear(time:Number, start:Number, delta:Number, duration:Number):Number {
         return Utils.lerp(start,start+delta,time/duration);

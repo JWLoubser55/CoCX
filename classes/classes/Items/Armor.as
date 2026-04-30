@@ -9,11 +9,11 @@ import coc.view.IconLib;
 
 public class Armor extends Equipable
 	{
-		private var _def:Number;
-		private var _mdef:Number;
-		private var _perk:String;
-		private var _supportsBulge:Boolean;
-		private var _supportsUndergarment:Boolean;
+		protected var _def:Number;
+		protected var _mdef:Number;
+		protected var _perk:String;
+		protected var _supportsBulge:Boolean;
+		protected var _supportsUndergarment:Boolean;
 		
 		override public function get category():String {
 			return CATEGORY_ARMOR;
@@ -93,6 +93,10 @@ public class Armor extends Equipable
 			}
 			else if (game.player.hasPerk(PerkLib.Rigidity)) {
 				if (doOutput) outputText("You would very like to equip this item but your body stiffness prevents you from doing so.");
+				return false;
+			}
+			else if (game.player.hasPerk(PerkLib.Ethereal) && (perk == "Medium" || perk == "Heavy" || perk == "Light Ayo" || perk == "Heavy Ayo" || perk == "Ultra Heavy Ayo")) {
+				if (doOutput) outputText("You would very like to equip this item but your body ethereal state prevents you from doing so.");
 				return false;
 			}
 			return super.canEquip(doOutput, slot);

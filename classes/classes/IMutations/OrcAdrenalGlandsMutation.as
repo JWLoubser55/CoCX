@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
 public class OrcAdrenalGlandsMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Orc Adrenal Glands";
-        }
+		public static const MNAME:String = "Orc Adrenal Glands";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -73,7 +74,7 @@ public class OrcAdrenalGlandsMutation extends IMutationPerkType
         }
 
         public function OrcAdrenalGlandsMutation() {
-            super(mName + " IM", mName, SLOT_ADRENALS, 4);
+            super(MNAME, SLOT_ADRENALS, 4);
         }
         
     }

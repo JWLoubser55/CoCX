@@ -3,6 +3,7 @@ package coc.model
 import classes.CoC;
 import classes.DefaultDict;
 import classes.GlobalFlags.kFLAGS;
+import classes.Settings;
 import classes.StatusEffects;
 
 public class TimeModel
@@ -52,10 +53,13 @@ public class TimeModel
 		protected static function get flags():DefaultDict {
 			return CoC.instance.flags;
 		}
+		protected static function get settings():Settings {
+			return CoC.instance.settings;
+		}
 
 		public static function formatDate(d:Date):String {
 			var monthDayYear:Array = d.toDateString().split(" ").slice(1);
-			if (flags[kFLAGS.USE_METRICS]) return monthDayYear[1] + " " + monthDayYear[0] + " " + monthDayYear[2];
+			if (settings.useMetrics) return monthDayYear[1] + " " + monthDayYear[0] + " " + monthDayYear[2];
 			else return monthDayYear[1] + " " + monthDayYear[0] + " " + monthDayYear[2];
 		}
 
@@ -64,7 +68,7 @@ public class TimeModel
 		}
 
 		public function useRealDate():Boolean {
-			return flags[kFLAGS.DAYS_PER_YEAR] <= 0;
+			return settings.daysPerYear <= 0;
 		}
 
 		//days are counted from 0, date from {1,1,1}
@@ -122,12 +126,12 @@ public class TimeModel
 
 		public function get date():Date {
 			return useRealDate() ? dateReal :
-				dateFromDays(CoC.instance.model.time.days + flags[kFLAGS.DATE_OFFSET], flags[kFLAGS.DAYS_PER_YEAR]);
+				dateFromDays(CoC.instance.model.time.days + flags[kFLAGS.DATE_OFFSET], settings.daysPerYear);
 		}
 
 		//Change daysPerYear - and recalculate offset to keep the date as close as possible to original one.
 		public function changeDPY(newDPY:int):void {
-			if (flags[kFLAGS.DAYS_PER_YEAR] == newDPY) return;
+			if (settings.daysPerYear == newDPY) return;
 			var curDate:Date = date; //calculate the date using the current DPY and offset
 			if (newDPY <= 0) { //real date - reset the offset and fix stored year values
 				var yearOffset:int = dateReal.fullYear - curDate.fullYear;
@@ -156,13 +160,13 @@ public class TimeModel
 			} else {
 				var gameDays:int = CoC.instance.model.time.days; //current days counter
 				var dpm365:Array = [31, curDate.fullYear % 4 == 0 ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-				var dpmOld:int = (flags[kFLAGS.DAYS_PER_YEAR] == 0 || flags[kFLAGS.DAYS_PER_YEAR] == 365) ? dpm365[date.month] : flags[kFLAGS.DAYS_PER_YEAR] / 12;
+				var dpmOld:int = (settings.daysPerYear == 0 || settings.daysPerYear == 365) ? dpm365[date.month] : settings.daysPerYear / 12;
 				var dpmNew:int = (newDPY == 365) ? dpm365[date.month] : newDPY / 12;
 				curDate.setDate(int(curDate.date * dpmNew / dpmOld)); //correct the day of month to the new scale
 				var newDays:int = daysFromDate(curDate, newDPY); //calculate the 'new' days value for this date.
 				flags[kFLAGS.DATE_OFFSET] = newDays - gameDays; //fix the offset
 			}
-			flags[kFLAGS.DAYS_PER_YEAR] = newDPY;
+			settings.daysPerYear = newDPY;
 		}
 	}
 }

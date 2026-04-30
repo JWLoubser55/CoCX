@@ -14,11 +14,7 @@ import classes.StatusEffectType;
 import classes.StatusEffects;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
-
-import flash.utils.Dictionary;
-
-import mx.formatters.NumberFormatter;
+import coc.view.ButtonData;
 
 public class Lethice extends Monster
 	{
@@ -382,9 +378,8 @@ public class Lethice extends Monster
 				}
 				var index:int = dictOrder.indexOf(dict);
 				if(index>-1){
-					var numberformat:NumberFormatter = new NumberFormatter();
 					var deflectDamage:Number = Math.round(damage * (dictValue[index]/100));
-					var dmgText:String = numberformat.format(Math.floor(Math.abs(deflectDamage)));
+					var dmgText:String = formatNumber(Math.floor(Math.abs(deflectDamage)));
 					switch(dict){
 						case "lust":
 							player.takeLustDamage(deflectDamage);
@@ -486,7 +481,7 @@ public class Lethice extends Monster
 			companionCheck = false;
 		}
 
-		override public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton, btnSpecial2:CoCButton):void{
+		override public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData, btnSpecial2:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.LethicesRapeTentacles)) {
 				if (player.lust < SceneLib.combat.magic.getWhiteMagicLustCap() && player.hasStatusEffect(StatusEffects.KnowsWhitefire)
 						&& ((!player.hasPerk(PerkLib.BloodMage) && player.mana >= 30) || (player.hasStatusEffect(StatusEffects.BloodMage) && ((player.HP + 30) > (player.minHP() + 30))))) {

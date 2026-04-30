@@ -70,16 +70,12 @@ public function losingToAutomaton():void {
 		outputText(".\n\n\"<i>Battery fully charged unplugging.</i>\"\n\n");
 		outputText("Her tail breaks off from your nethers as she lift off from you leaving you free to move but you’re still too shocked with big hearts in your eye and a dopey smile to notice anything as she leaves.\n\n");
 		outputText("When you more or less come back to your senses she's long gone. Well that was an electrifying experience!\n\n");
-		cleanupAfterCombat();
 	}
 	else {
 		outputText("You fall over on your knees, defeated. The automaton approaches you with her electrified metallic tail poised to strike. You try to back off but she delivers a finishing discharge sending you unconscious.\n\n");
 		if (player.hasStatusEffect(StatusEffects.PostAutomatonBeatdown)) {
 			if (player.statusEffectv1(StatusEffects.PostAutomatonBeatdown) > 3) {
-				if (player.blockingBodyTransformations()) {
-					outputText("You wake up"+(silly()?" next to a dying bonfire,":"")+" still bruised and battered from your recent fight. Guess it's back off to camp with you.\n\n");
-					cleanupAfterCombat();
-				}
+				if (player.blockingBodyTransformations()) outputText("You wake up"+(silly()?" next to a dying bonfire,":"")+" still bruised and battered from your recent fight. Guess it's back off to camp with you.\n\n");
 				else {
 					outputText("You wake up to a world in green… well more like everything beyond the circular glassy walls of your prison are green. Your equipment is gone and you're naked floating into some kind of liquid. "+(player.race() != player.startingRace?"Somehow, at some point, you seem to have reverted back to an ordinary human!":"")+"Panicked, you try to slam your fists against the glass to get free but it's no use as weakened by your recent loss you lack the strength to break it.\n\n");
 					outputText("They put some kind of mask on your face linked by a tube that goes up to the top of the capsule. Whatever is forcefully being fed to you can't be good! As you begin moving, a loud voice suddenly booms in.\n\n");
@@ -141,19 +137,13 @@ public function losingToAutomaton():void {
 					if (!player.hasPerk(PerkLib.Circuit)) player.createPerk(PerkLib.Circuit, 0, 0, 0, 0);
 					if (!player.hasPerk(PerkLib.SelfImprovement)) player.createPerk(PerkLib.SelfImprovement, 0, 0, 0, 0);
 					if (!player.hasPerk(PerkLib.AlphaProtocol)) player.createPerk(PerkLib.AlphaProtocol, player.cor, 0, 0, 0);
-					cleanupAfterCombat();
 				}
 			}
-			else {
-				player.addStatusValue(StatusEffects.PostAutomatonBeatdown, 1, 1);
-				cleanupAfterCombat();
-			}
+			else player.addStatusValue(StatusEffects.PostAutomatonBeatdown, 1, 1);
 		}
-		else {
-			player.createStatusEffect(StatusEffects.PostAutomatonBeatdown, 1, 0, 0, 0);
-			cleanupAfterCombat();
-		}
+		else player.createStatusEffect(StatusEffects.PostAutomatonBeatdown, 1, 0, 0, 0);
 	}
+	cleanupAfterCombat();
 }
 }
 }

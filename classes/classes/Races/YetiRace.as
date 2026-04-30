@@ -59,6 +59,7 @@ public class YetiRace extends Race {
 						}, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.PrimatesDescendant, PerkLib.BloodlinePrimate);
 		addMutation(IMutationsLib.YetiFatIM);
 		addMutation(IMutationsLib.FrozenHeartIM);
 		

@@ -139,9 +139,9 @@ package classes.GeneticMemories {
 		  title: "Dark Slime",
 		  availableCoverages: [Skin.COVERAGE_COMPLETE],
 		  transformationCoverage: function(coverage: int): Transformation {
-			  return CoC.instance.transformations.SkinGoo(coverage, 2);
+			  return CoC.instance.transformations.SkinGoo(coverage, 1);
 		  }
-	  });
+	  });/*
 
 	  public static const MAGMA_SLIME:int = _partid++;
 	  EnumValue.add(Memories, MAGMA_SLIME, "MAGMA_SLIME", {
@@ -151,9 +151,9 @@ package classes.GeneticMemories {
 		  title: "Magma Slime",
 		  availableCoverages: [Skin.COVERAGE_COMPLETE],
 		  transformationCoverage: function(coverage: int): Transformation {
-			  return CoC.instance.transformations.SkinGoo(coverage, 1);
+			  return CoC.instance.transformations.SkinGoo(coverage, 2);
 		  }
-	  });
+	  });*/
 
 	  public static const GHOST:int = _partid++;
 	  EnumValue.add(Memories, GHOST, "GHOST", {

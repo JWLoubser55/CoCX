@@ -10,6 +10,6 @@ package classes
 		/*	Called for every Class in the _saveAwareClassList just before the game is to be saved.
 			Each class should use this opportunity to write all its stored information to one or more flag variables so that it will be saved. */
 		function updateBeforeSave(game:CoC):void;
-		
+		function updateOnRestart(game:CoC):void;
 	}
 }

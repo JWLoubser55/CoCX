@@ -41,14 +41,8 @@ public class MummyAttackSkill extends AbstractGeneral {
 		if (player.hasPerk(PerkLib.CommandingTone)) mummyamplification += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) mummyamplification += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) mummyamplification += 0.15;
-		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
-            mummyamplification += 0.1;
-            if (player.hasPerk(PerkLib.WispLieutenant)) mummyamplification += 0.2;
-            if (player.hasPerk(PerkLib.WispCaptain)) mummyamplification += 0.3;
-            if (player.hasPerk(PerkLib.WispMajor)) mummyamplification += 0.4;
-            if (player.hasPerk(PerkLib.WispColonel)) mummyamplification += 0.5;
-        }
-		if (player.perkv2(PerkLib.MummyLord) > 0) mummyamplification *= 2;
+		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) mummyamplification += combat.wispAmplification();
+        if (player.perkv2(PerkLib.MummyLord) > 0) mummyamplification *= 2;
         mummyDamage *= mummyamplification;
 
 		return Math.round(mummyDamage);

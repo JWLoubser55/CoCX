@@ -332,6 +332,12 @@ public class Skin extends SaveableBodyPart {
 		appearanceDesc: "Esoteric sigils paint your [skin]. They disappear and reappear, all along your [chest], [arms], and [legs] - pulsing with spiritual energy.",
 		base:true
 	});
+	public static const PATTERN_ICEHEART_TATOO: int = 25;
+	EnumValue.add(PatternTypes, PATTERN_ICEHEART_TATOO, "ICEHEART_TATOO", {
+		name:"iceheart Tattoo",
+		appearanceDesc: "Esoteric sigils paint your [skin]. They disappear and reappear, all along your [chest], [arms], and [legs] - pulsing with spiritual energy.",
+		base:true
+	});
 	// Don't forget to add new types in DebugMenu.as lists SKIN_BASE_TYPES or SKIN_COAT_TYPES
 
 	public var base:SkinLayer;
@@ -622,6 +628,9 @@ public class Skin extends SaveableBodyPart {
 	}
 	public function hasSoulforceScaring():Boolean {
 		return base.pattern == PATTERN_SOULFORCE_SCARING;
+	}
+	public function hasIceheartTattoo():Boolean {
+		return base.pattern == PATTERN_ICEHEART_TATOO;
 	}
 	override public function restore(keepTone:Boolean = true):void {
 		coverage = COVERAGE_NONE;

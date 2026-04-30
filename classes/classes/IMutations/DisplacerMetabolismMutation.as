@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
-import classes.GlobalFlags.kFLAGS;
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.GlobalFlags.kFLAGS;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Races;
 
 public class DisplacerMetabolismMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Displacer Metabolism";
-        }
+		public static const MNAME:String = "Displacer Metabolism";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -59,7 +60,7 @@ public class DisplacerMetabolismMutation extends IMutationPerkType
         }
 
         public function DisplacerMetabolismMutation() {
-            super(mName + " IM", mName, SLOT_METABOLISM, 3);
+            super(MNAME, SLOT_METABOLISM, 3);
         }
         
     }

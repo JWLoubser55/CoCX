@@ -19,7 +19,7 @@ package classes
 		private var defaultValue:* = 0;
 		private var size:int = MAX_FLAG_VALUE;
 
-		public function DefaultDict(_defaultValue:*=0,_size:int=MAX_FLAG_VALUE)		// Constructor
+		public function DefaultDict(_defaultValue:* =0,_size:int=MAX_FLAG_VALUE)		// Constructor
 		{
 			defaultValue = _defaultValue;
 			size = _size;

@@ -4,6 +4,7 @@
 package classes.BodyParts {
 import classes.Creature;
 import classes.PerkLib;
+import classes.StatusEffects;
 import classes.internals.EnumValue;
 import classes.BodyParts.*;
 import classes.internals.Utils;
@@ -286,9 +287,7 @@ public class Face extends SaveableBodyPart {
 			var desc: String = "";
 
 			desc += "Your odd visage consists of a long, thin echidna snout";
-
 			if (!creature.hasCoat()) desc += ", though it looks rather strange without any coverage whatsoever"
-
 			desc += ".";
 
 			return desc;
@@ -302,10 +301,9 @@ public class Face extends SaveableBodyPart {
 			var desc: String = "";
 
 			desc += "Your face is like that of a deer, with a nose at the end of your muzzle";
-
 			if (!creature.hasCoat()) desc += ", though it looks rather strange without any coverage whatsoever"
-
 			desc += ".";
+			if (creature.hasStatusEffect(StatusEffects.WinterFlash) && creature.statusEffectv1(StatusEffects.WinterFlash) > 1) desc += " Your nose is bright red and can light up the winter’s night or smite the naughty.";
 
 			return desc;
 		},
@@ -742,6 +740,19 @@ public class Face extends SaveableBodyPart {
 			return desc;
 		},
 		bite: true,
+		humanShaped: true
+	});
+	public static const DEER_BLUSH: int = 70;
+	EnumValue.add(Types, DEER_BLUSH, "DEER_BLUSH", {
+		name: "deer blush",
+		appearanceDescFunc: function(creature: * ): String {
+			var desc: String = "";
+
+			desc += "Your face is mostly human, save for the light freckles ornamenting your cheeks, just like those of a cernos.";
+			if (creature.hasStatusEffect(StatusEffects.WinterFlash) && creature.statusEffectv1(StatusEffects.WinterFlash) > 1) desc += " Your nose is bright red and can light up the winter’s night or smite the naughty.";
+
+			return desc;
+		},
 		humanShaped: true
 	});
 

@@ -294,11 +294,13 @@ public class PlayerAppearance extends BaseContent {
 			//Height and race.
 			outputText("You are a ");
 			outputText(Measurements.footInchOrMetres(player.basetallness));
-			outputText(" (out of combat: ");
-			outputText(Measurements.footInchOrMetres(player.tallness));
-			outputText(", effective: ");
-			outputText(Measurements.footInchOrMetres(player.effectiveTallness));
-			outputText(")");
+			if (player.basetallness != player.tallness || player.basetallness != player.effectiveTallness) {
+				outputText(" (out of combat: ");
+				outputText(Measurements.footInchOrMetres(player.tallness));
+				outputText(", effective: ");
+				outputText(Measurements.footInchOrMetres(player.effectiveTallness));
+				outputText(")");
+			}
 			var pcrace:String = player.race();
 			var genderlessRace:Array = ["half cow-morph", "half cow-girl", "cow-girl", "cow-girl", "cow-morph", "minotaur", "half-minotaur", "alraune", "liliraune", "half unicorn", "unicorn", "unicornkin", "half alicorn", "alicorn", "alicornkin", "true alicorn", "half bicorn", "bicorn", "bicornkin", "half nightmare","nightmare", "nightmarekin", "true nightmare"];
 			if (!(genderlessRace.indexOf(pcrace) >= 0))
@@ -695,7 +697,7 @@ public class PlayerAppearance extends BaseContent {
 			breastsDesc += "You have " + num2Text(player.breastRows[temp].breasts) + (player.breastRows[0].breastRating >= 1 ? " " + player.breastCup(temp) : "") + " breasts, each supporting ";
 			breastsDesc += num2Text(player.breastRows[temp].nipplesPerBreast) + " "; //Number of nipples.
 			breastsDesc += Measurements.shortSuffix(int(player.nippleLength *10)/10)+" ";
-			//if (flags[kFLAGS.USE_METRICS] > 0 ) breastsDesc += int(player.nippleLength * 2.54 * 10) / 10 + "-cm "; //Centimeter display
+			//if (settings.useMetrics > 0 ) breastsDesc += int(player.nippleLength * 2.54 * 10) / 10 + "-cm "; //Centimeter display
 			//else breastsDesc += int(player.nippleLength * 10) / 10 + "-inch "; //Inches display
 			breastsDesc += nippleDescript(temp) + (player.breastRows[0].nipplesPerBreast == 1 ? "" : "s"); //Nipple description and plural
 			if(player.breastRows[0].milkFullness > 75)
@@ -718,7 +720,7 @@ public class PlayerAppearance extends BaseContent {
 				breastsDesc += num2Text(player.breastRows[temp].breasts) + " " + breastDescript(temp) + " with ";
 				breastsDesc += num2Text(player.breastRows[temp].nipplesPerBreast) + " "; //Number of nipples per breast
 				breastsDesc += Measurements.shortSuffix(int(player.nippleLength*10)/10);
-				//if (flags[kFLAGS.USE_METRICS] > 0 ) breastsDesc += int(player.nippleLength * 2.54 * 10) / 10 + "-cm "; //Centimeter
+				//if (settings.useMetrics > 0 ) breastsDesc += int(player.nippleLength * 2.54 * 10) / 10 + "-cm "; //Centimeter
 				//else breastsDesc += int(player.nippleLength * 10) / 10 + "-inch "; //Inches
 				breastsDesc += " " + nippleDescript(temp) + (player.breastRows[0].nipplesPerBreast == 1 ? " each." : "s each."); //Description and Plural
 				if(player.breastRows[temp].breastRating >= 1)

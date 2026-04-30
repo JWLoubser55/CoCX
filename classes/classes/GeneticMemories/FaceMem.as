@@ -240,7 +240,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceElf;
 			}
-		});
+		});/*
 
 		public static const ECHIDNA:int = _partid++;
 		EnumValue.add(Memories, ECHIDNA, "ECHIDNA", {
@@ -251,7 +251,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceEchidna;
 			}
-		});
+		});*/
 
 		public static const FERRET:int = _partid++;
 		EnumValue.add(Memories, FERRET, "FERRET", {
@@ -647,7 +647,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceWolfFangs;
 			}
-		});
+		});/*
 
 		public static const ABYSSAL_SHARK:int = _partid++;
 		EnumValue.add(Memories, ABYSSAL_SHARK, "ABYSSAL_SHARK", {
@@ -658,7 +658,7 @@ package classes.GeneticMemories {
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceAbyssalShark;
 			}
-		});
+		});*/
 
 		public static const ARIGEAN:int = _partid++;
 		EnumValue.add(Memories, ARIGEAN, "ARIGEAN", {
@@ -756,6 +756,50 @@ package classes.GeneticMemories {
 			title: "Kuudere Face",
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.FaceKudere;
+			}
+		});
+
+		public static const DEER_BLUSH:int = _partid++;
+		EnumValue.add(Memories, DEER_BLUSH, "DEER_BLUSH", {
+			id: "Deer Blush Face",
+			name: "Deer Blush Face",
+			cost: 100,
+			title: "Deer Blush",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceDeerBlush;
+			}
+		});
+
+		public static const USHI_ONI:int = _partid++;
+		EnumValue.add(Memories, USHI_ONI, "USHI_ONI", {
+			id: "UshiOni Face",
+			name: "UshiOni Face",
+			cost: 100,
+			title: "UshiOni Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceUshiOniOnna;
+			}
+		});
+
+		public static const JIANGSHI:int = _partid++;
+		EnumValue.add(Memories, JIANGSHI, "JIANGSHI", {
+			id: "Jiangshi Face",
+			name: "Jiangshi Face",
+			cost: 100,
+			title: "Jiangshi Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceJiangshi;
+			}
+		});
+
+		public static const FAIRY:int = _partid++;
+		EnumValue.add(Memories, FAIRY, "FAIRY", {
+			id: "Fairy Face",
+			name: "Fairy Face",
+			cost: 100,
+			title: "Fairy Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceFairy;
 			}
 		});
 

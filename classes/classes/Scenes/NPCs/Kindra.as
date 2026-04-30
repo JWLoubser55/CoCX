@@ -319,7 +319,7 @@ use namespace CoC;
 				}
 			}
 			if (flags[kFLAGS.KINDRA_LVL_UP] == 1) {
-				initStrTouSpeInte(60, 00, 200, 160);
+				initStrTouSpeInte(60, 0, 200, 160);
 				initWisLibSensCor(160, 30, 40, -80);
 				this.armorDef = 25;
 				this.armorMDef = 25;

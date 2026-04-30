@@ -957,6 +957,34 @@ public class LowerBody extends SaveableBodyPart {
 		appearanceDesc: "Two legs grow down from your [hips], muscles corded like braids pulse with soulforce under your thighs. From the calves down your feet are a strange combination of hoof and talon."
 	});
 
+	public static const SPECTRAL_SHROUD:int = 95;
+	EnumValue.add(Types, SPECTRAL_SHROUD, "SPECTRAL_SHROUD", {
+		name: "banshee",
+		appearanceDesc: "Your ghostly human legs only run down to the knee after which they completely fade into nothingness yet those legs are concealed by a frayed shroud of soulforce acting as a ghostly skirt."
+	});
+
+	public static const HOOFED_NO_FUR:int = 96;
+	EnumValue.add(Types, HOOFED_NO_FUR, "HOOFED_NO_FUR", {
+		name: "hoofed no fur",
+		feet: "hooves",
+		foot: "hoof",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = ""
+
+			if (player.isBiped()) {
+				desc += "Your two legs are muscled and jointed oddly, covered in extremely thick, tough skin and end in bestial hooves.";
+			}
+
+			if (player.isTaur()) {
+				desc += "From the waist down, you have the body of a horse, with four muscled legs which are jointed oddly, covered in extremely thick, tough skin and end in bestial hooves."
+			}
+
+			return desc;
+		},
+		canTaur: true,
+		fur: true
+	});
+
 	override public function set type(value:int):void {
 		super.type = value;
 		// Reset leg count

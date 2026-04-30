@@ -24,11 +24,12 @@ public class HairDye extends Consumable
 		{
 			var color:String = params.color;
 			var rarity:int = params.rarity;
-			_color = color.toLowerCase();
 			var shortName:String = capitalizeFirstLetter(color) + " Dye";
-			var longName:String = "a vial of " + _color + " hair dye";
+			color = color.toLowerCase();
+			var longName:String = "a vial of " + color + " hair dye";
 			var description:String = "This bottle of dye will allow you to change the color of your hair, fur, scales, chitin, or feathers.";
 			super(id, shortName, longName, RARITY_TO_VALUE[rarity] || 6, description);
+			_color = color;
 			refineableInto([[1, AlchemyLib.AS_HAIR]], [], [], [_color]);
 		}
 		

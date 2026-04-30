@@ -1,6 +1,7 @@
 package classes.Scenes.Combat.SpellsNecro {
 import classes.Monster;
 import classes.PerkLib;
+import classes.IMutations.IMutationsLib;
 import classes.Scenes.Combat.AbstractNecroSpell;
 import classes.Scenes.Combat.DamageType;
 import classes.StatusEffects;
@@ -37,6 +38,8 @@ public class BoneArmorSpell extends AbstractNecroSpell {
 	
 	override public function calcDuration():int {
 		var duration:Number = 5;
+		if (player.hasPerk(PerkLib.Necromancy)) duration *= 1.5;
+		if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) duration *= player.perkv1(IMutationsLib.UndeadMetabolismIM);
 		duration *= boneSoulBonus(demonBonesCost());
 		return Math.floor(duration);
 	}

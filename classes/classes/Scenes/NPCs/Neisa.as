@@ -204,7 +204,6 @@ import classes.Scenes.SceneLib;
 			this.createPerk(PerkLib.JobGuardian, 0, 0, 0, 0);
 			this.createPerk(PerkLib.ShieldWielder, 0, 0, 0, 0);
 			this.createPerk(PerkLib.Ferocity, 0, 0, 0, 0);
-			this.createPerk(PerkLib.LizanRegeneration, 0, 0, 0, 0);
 			this.createPerk(PerkLib.EnemyDragonType, 0, 0, 0, 0);
 			this.createPerk(IMutationsLib.DrakeLungsIM, 1, 0, 0, 0);
 			this.createPerk(IMutationsLib.DrakeBloodIM, 1, 0, 0, 0);
@@ -212,6 +211,10 @@ import classes.Scenes.SceneLib;
 			this.createPerk(IMutationsLib.LactaBovinaOvariesIM, 1, 0, 0, 0);
 			this.createPerk(IMutationsLib.HumanSmartsIM, 1, 0, 0, 0);
 			this.createPerk(IMutationsLib.OrcAdrenalGlandsIM, 1, 0, 0, 0);//6-0
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 1 && flags[kFLAGS.NEISA_LVL_UP] < 10) this.createPerk(PerkLib.LizanRegeneration, 0, 0, 0, 0);
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 10 && flags[kFLAGS.NEISA_LVL_UP] < 17) this.createPerk(PerkLib.LizanRegeneration, 1, 0, 0, 0);
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 17 && flags[kFLAGS.NEISA_LVL_UP] < 24) this.createPerk(PerkLib.LizanRegeneration, 2, 0, 0, 0);
+			if (flags[kFLAGS.NEISA_LVL_UP] >= 24 && flags[kFLAGS.NEISA_LVL_UP] < 34) this.createPerk(PerkLib.LizanRegeneration, 3, 0, 0, 0);
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 11 && flags[kFLAGS.NEISA_LVL_UP] < 25) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.NEISA_LVL_UP] >= 2) {
 				this.createPerk(IMutationsLib.HumanThyroidGlandIM, 1, 0, 0, 0);

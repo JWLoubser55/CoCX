@@ -290,7 +290,7 @@ public function siegweirdCampSoup():void
 		gain -= player.hunger;
 		player.refillHunger(gain);
         var recoveryV:Number = soupRecovery();
-		HPChange(Math.round(player.maxHP() * recoveryV), true, false);
+		pc.HPChange(Math.round(player.maxHP() * recoveryV), true, false);
 		EngineCore.changeFatigue(-(Math.round(player.maxFatigue() * recoveryV)));
 		doNext(camp.campFollowers);
 		advanceMinutes(15);

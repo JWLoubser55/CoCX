@@ -20,16 +20,13 @@ import classes.display.SpriteDb;
 import classes.lists.Gender;
 
 import coc.view.ButtonDataList;
+import coc.view.CoCButton;
 import coc.view.MainView;
 import classes.Scenes.Combat.CombatAbilities;
 
 use namespace CoC;
 
 public class Camp extends NPCAwareContent{
-
-	protected static function set timeQ(value:Number):void {
-		CoC.instance.timeQ = value;
-	}
 
 	private var campQ:Boolean = false;
 	private var waitingORresting:int = 1;
@@ -185,7 +182,7 @@ public class Camp extends NPCAwareContent{
 			return;
 		}
 		if (player.hasStatusEffect(StatusEffects.PostAnemoneBeatdown)) {
-			HPChange(Math.round(player.maxHP() / 2), false, false);
+			pc.HPChange(Math.round(player.maxHP() / 2), false, false);
 			player.removeStatusEffect(StatusEffects.PostAnemoneBeatdown);
 		}
 
@@ -354,6 +351,97 @@ public class Camp extends NPCAwareContent{
 		if (sceneHunter.other && camp.IsSleeping && flags[kFLAGS.HACK_CELESS_INCUBATION] == 1) {
 			celessScene.hackCelessSpawn();
 			return;
+		}
+		if (model.time.hours == 2) {
+			var chance:Number = player.statusEffectv1(StatusEffects.BirthedImps) * 2;
+			if (chance > 7) chance = 7;
+			if (player.hasPerk(PerkLib.PiercedLethite)) chance += 4;
+			if (player.inHeat) chance += 2;
+			if (SceneLib.vapula.vapulaSlave()) chance += 7;
+			//Reduce chance
+			if (flags[kFLAGS.CAMP_WALL_PROGRESS] > 0) chance /= 1 + (flags[kFLAGS.CAMP_WALL_PROGRESS] / 100);
+			if (flags[kFLAGS.CAMP_WALL_GATE] > 0) chance /= 2;
+			if (flags[kFLAGS.CAMP_WALL_SKULLS] > 0) chance *= 1 - (flags[kFLAGS.CAMP_WALL_SKULLS] / 100);
+			if (!flags[kFLAGS.KID_A_GOBLIN_NIGHT_HAPPENED] && flags[kFLAGS.ANEMONE_KID] > 0 && player.hasCock() && flags[kFLAGS.ANEMONE_WATCH] > 0 && flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] >= 40) {
+                flags[kFLAGS.KID_A_GOBLIN_NIGHT_HAPPENED] = 1;
+                SceneLib.kidAScene.goblinNightAnemone();
+                return;
+            }
+			else if (chance > rand(100) && !player.hasStatusEffect(StatusEffects.DefenseCanopy)) {
+                if (player.gender > 0 && (!player.hasStatusEffect(StatusEffects.JojoNightWatch) || !player.hasStatusEffect(StatusEffects.PureCampJojo)) && (flags[kFLAGS.HEL_GUARDING] == 0 || !SceneLib.helFollower.followerHel()) && !player.hasStatusEffect(StatusEffects.HeliaOff) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0 || flags[kFLAGS.FUCK_FLOWER_KILLED] > 0) && (flags[kFLAGS.KIHA_CAMP_WATCH] == 0 || !SceneLib.kihaFollower.followerKiha()) && EtnaDaughterScene.EtnaDaughterGuardingCamp != 2 && SceneLib.midokaScene.MidokaGuardingCamp != 2 &&
+                        (!player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv1(StatusEffects.Familiar) == 0) && !(sleepInCabin() && (player.inte / 5 >= rand(15) || player.lust < 0.8 * player.maxLust() || CoC.instance.gameSettings.sceneHunter_inst.other)) && !flags[kFLAGS.IN_INGNAM] || flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] == 2) {
+                    SceneLib.impScene.impGangabangaEXPLOSIONS();
+                    doNext(playerMenu);
+                    return;
+                }
+                else if (flags[kFLAGS.KIHA_CAMP_WATCH] > 0 && SceneLib.kihaFollower.followerKiha()) {
+                    outputText("\n<b>You find charred imp carcasses all around the camp once you wake.  It looks like Kiha repelled a swarm of the little bastards.</b>\n");
+                    return;
+                }
+                else if (flags[kFLAGS.HEL_GUARDING] > 0 && SceneLib.helFollower.followerHel() && !player.hasStatusEffect(StatusEffects.HeliaOff)) {
+                    outputText("\n<b>Helia informs you over a mug of beer that she whupped some major imp asshole last night.  She wiggles her tail for emphasis.</b>\n");
+                    return;
+                }
+                else if (player.gender > 0 && player.hasStatusEffect(StatusEffects.JojoNightWatch) && player.hasStatusEffect(StatusEffects.PureCampJojo) && flags[kFLAGS.JOJO_BIMBO_STATE] != 3) {
+                    outputText("\n<b>Jojo informs you that he dispatched a crowd of imps as they tried to sneak into camp in the night.</b>\n");
+                    return;
+                }
+                else if (flags[kFLAGS.HOLLI_DEFENSE_ON] > 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] == 4) {
+                    outputText("\n<b>During the night, you hear distant screeches of surprise, followed by orgasmic moans.  It seems some imps found their way into Holli's canopy...</b>\n");
+                    return;
+                }
+                else if (flags[kFLAGS.HOLLI_DEFENSE_ON] > 0 && flags[kFLAGS.FLOWER_LEVEL] == 4) {
+                    outputText("\n<b>During the night, you hear distant screeches of surprise, followed by screams of pain.  It seems some imps found their way into Holli's canopy...</b>\n");
+                    return;
+                }
+                else if (flags[kFLAGS.ANEMONE_WATCH] > 0) {
+                    outputText("\n<b>Your sleep is momentarily disturbed by the sound of tiny clawed feet skittering away in all directions.  When you sit up, you can make out Kid A holding a struggling, concussed imp in a headlock and wearing a famished expression.  You catch her eye and she sheepishly retreats to a more urbane distance before beginning her noisy meal.</b>\n");
+                    return;
+                }
+                else if (ZenjiScenes.ZenjiNightWatch == 1) {
+                    outputText("\n<b>Zenji informs you that he managed to fend off creatures that tried to assault you during the night.</b>\n");
+                    return;
+                }
+                else if (EtnaDaughterScene.EtnaDaughterGuardingCamp == 2) {
+                    outputText("\n<b>A group of imps tried to attack that night but you heard their screams in the distance as [etnakidname] laughed and made a feast out of them.</b>\n");
+                    return;
+                }
+                else if (player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv1(StatusEffects.Familiar) == 1) {
+                    outputText("\n<b>The screams and roars alerts you to the fact your ghoul caught and defeated some invaders. You sleep comfortably to the sound of the bloodshed ongoing nearby.</b>\n");
+                    return;
+                }
+                else if (flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] == 3) {
+                    outputText("\n<b>You notice an unusual pulse in the ward surrounding the camp.  It appears that a few uninvited visitors attempted to locate your camp last night.</b>\n");
+                    return;
+                }
+                else { //lust condition: horny - less smart!
+                    outputText("\n<b>Your sleep is momentarily disturbed by the sound of imp hands banging against your cabin door. Fortunately, you've locked the door before you've went to sleep.</b>\n");
+                    return;
+                }
+            }
+            //wormgasms
+            else if (flags[kFLAGS.EVER_INFESTED] == 1 && rand(100) <= 4 && player.hasCock() && !player.hasStatusEffect(StatusEffects.Infested)) {
+                if (player.hasCock() && (!player.hasStatusEffect(StatusEffects.JojoNightWatch) || !player.hasStatusEffect(StatusEffects.PureCampJojo)) && (flags[kFLAGS.HEL_GUARDING] == 0 || !SceneLib.helFollower.followerHel()) && !player.hasStatusEffect(StatusEffects.HeliaOff) && flags[kFLAGS.ANEMONE_WATCH] == 0 && (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && flags[kFLAGS.SLEEP_WITH] == "")) {
+                    SceneLib.mountain.wormsScene.nightTimeInfestation();
+                    return;
+                }
+                else if (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && flags[kFLAGS.SLEEP_WITH] == "") {
+                    outputText("\n<b>You hear the sound of a horde of worms banging against the door. Good thing you locked it before you went to sleep!</b>\n");
+                    return;
+                }
+                else if (flags[kFLAGS.HEL_GUARDING] > 0 && SceneLib.helFollower.followerHel() && !player.hasStatusEffect(StatusEffects.HeliaOff)) {
+                    outputText("\n<b>Helia informs you over a mug of beer that she stomped a horde of gross worms into paste.  She shudders after at the memory.</b>\n");
+                    return;
+                }
+                else if (player.gender > 0 && player.hasStatusEffect(StatusEffects.JojoNightWatch) && player.hasStatusEffect(StatusEffects.PureCampJojo) && flags[kFLAGS.JOJO_BIMBO_STATE] != 3) {
+                    outputText("\n<b>Jojo informs you that he dispatched a horde of tiny, white worms as they tried to sneak into camp in the night.</b>\n");
+                    return;
+                }
+                else if (flags[kFLAGS.ANEMONE_WATCH] > 0) {
+                    outputText("\n<b>Kid A seems fairly well fed in the morning, and you note a trail of slime leading off in the direction of the lake.</b>\n"); // Yeah, blah blah travel weirdness. Quickfix so it seems logically correct.
+                    return;
+                }
+            }
 		}
 		if (flags[kFLAGS.JACK_FROST_PROGRESS] > 0) {
 			hideMenus();
@@ -768,6 +856,10 @@ public class Camp extends NPCAwareContent{
 			|| (player.hasStatusEffect(StatusEffects.PureCampJojo) && flags[kFLAGS.JOJO_BIMBO_STATE] != 3) || followerKiha())) {//(flags[kFLAGS.LUNA_FOLLOWER] >= 4 && !player.hasStatusEffect(StatusEffects.LunaOff)) ||
 			player.createStatusEffect(StatusEffects.GraydaRandomnCampEvents, 0, 0, 0, 0);
 			SceneLib.graydaScene.graydaRandomnCampEvents();
+			return;
+		}
+		if (player.statusEffectv1(StatusEffects.SoulCohesion) >= player.demonificationCorruptionThreshold() && !player.hasPerk(PerkLib.Soulless)) {
+			campUniqueScenes.triggerTerminalCorruptionTF();
 			return;
 		}
 		//Reset.
@@ -2277,7 +2369,7 @@ public class Camp extends NPCAwareContent{
 		hideMenus();
 		menu();
 		// [Build   ] [Winions] [Misc     ] [SpendTime] [NPC's     ]
-		// [Crafting] [Garden ] [Herbalism] [Inventory] [Quest Loot]
+		// [Crafting] [Garden ] [Herbalism] [Inv Misc ] [Quest Loot]
 		// [Questlog] [Recall ] [Dummy    ] [Ascension] [Back      ]
 		clearOutput();
 		outputText("What would you like to do?");
@@ -2291,7 +2383,7 @@ public class Camp extends NPCAwareContent{
 		if (SceneLib.garden.canAccessGarden()) addButton(6, "Garden", SceneLib.garden.accessGarden).hint("Manage your garden of medicinal plants.");
 		else addButtonDisabled(6, "Garden", "You need an herb bag before you can start gardening. For some reason, the traveling merchant Giacomo comes to mind...");
 		addButton(7, "Herbalism", SceneLib.garden.herbalismMenu).hint("Use ingredients to craft poultice and battle medicines.").disableIf((isNightTime && !player.isNightCreature() && !player.hasDarkVision()),"It's too dark to do any gardening!").disableIf(!player.hasStatusEffect(StatusEffects.CampRathazul),"You’ll need an alchemist in your camp to help with this. Perhaps Rathazul could teach you the basics of herbalism?");
-		if (!inDungeon && !inRoomedDungeon && !flags[kFLAGS.IN_INGNAM]) addButton(8, "Misc", campInventoryActions).hint("Action that could been used from Inventory menu if it not been already full of options.");
+		if (!inDungeon && !inRoomedDungeon && !flags[kFLAGS.IN_INGNAM]) addButton(8, "Inv Misc", campInventoryActions).hint("Action that could been used from Inventory menu if it not been already full of options.");
 		addButton(9, "Quest Loot", SceneLib.adventureGuild.questItemsBag).hint("Manage your bag with quest items.").disableIf(!AdventurerGuild.playerInGuild, "Join the Adventure Guild for a quest bag!");
 		addButton(10, "Questlog", questlog.accessQuestlogMainMenu).hint("Check your questlog.");
 		addButton(11, "Recall", sceneHunter.recallScenes).hint("Recall some of the unique events that happened during your adventure.");
@@ -2301,7 +2393,7 @@ public class Camp extends NPCAwareContent{
 		addButton(14, "Back", playerMenu);
 	}
 	private function doYouHaveMinions():Boolean {
-		if (player.hasPerk(PerkLib.JobElementalConjurer) || player.hasPerk(PerkLib.PrestigeJobDruid) || player.hasPerk(PerkLib.JobGolemancer) || player.hasPerk(PerkLib.PrestigeJobNecromancer) || player.hasPerk(PerkLib.JobTamer)) return true;
+		if (player.hasPerk(PerkLib.JobElementalConjurer) || player.hasPerk(PerkLib.PrestigeJobDruid) || player.hasPerk(PerkLib.JobGolemancer) || player.hasPerk(PerkLib.JobHaruspex) || player.hasPerk(PerkLib.JobTamer)) return true;
 		else return false;
 	}
 	
@@ -2315,12 +2407,19 @@ public class Camp extends NPCAwareContent{
 				if (flags[kFLAGS.NIEVE_STAGE] == 1) outputText("\nThere's some odd snow here that you could do something with...\n");
 				else outputText("\nYou have a snow" + Holidays.nieveMF("man", "woman") + " here that seems like it could use a little something...\n");
 			}
+			if (Holidays.nieveHoliday()) {
+				if (flags[kFLAGS.NIEVE_STAGE] > 0 && flags[kFLAGS.NIEVE_STAGE] < 5) addButton(0, "Snow", SceneLib.holidays.nieveBuilding);
+				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 1 && player.hasKeyItem("Mysterious Seed") >= 0) addButton(1, "Mysterious Seed", Magnolia.treeMenu);
+				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] > 2 && flags[kFLAGS.CHRISTMAS_TREE_LEVEL] < 9) {
+					if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 7 && player.hasKeyItem("Decorations") >= 0) addButton(1, "Decorate Tree", Magnolia.treeMenu);
+					else addButton(1, (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] >= 8 ? "Ch. Tree" : "Green Tree"), Magnolia.treeMenu);
+				}
+			}
+			if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 1 && flags[kFLAGS.FUCK_FLOWER_LEVEL] < 4) addButton(2, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), SceneLib.holliScene.treeMenu);
+			if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FLOWER_LEVEL] >= 1 && flags[kFLAGS.FLOWER_LEVEL] < 4) addButton(2, (flags[kFLAGS.FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), HolliPure.treeMenu);
 			if (player.hasKeyItem("Dragon Egg") >= 0) {
                       SceneLib.emberScene.emberCampDesc();
 				addButton(3, "Egg", SceneLib.emberScene.emberEggInteraction);
-			}
-			if (player.hasKeyItem("Tamani's Satchel") >= 0) {
-				addButton(5, "Satchel", tamaniScene.openTamanisSatchel);
 			}
 			if (flags[kFLAGS.ANEMONE_KID] > 0) {
 				SceneLib.kidAScene.anemoneBarrelDescription();
@@ -2331,19 +2430,15 @@ public class Camp extends NPCAwareContent{
 				if (flags[kFLAGS.ALRAUNE_GROWING] > 14) outputText(" Some have already grown to adulthood.");
 				outputText("\n");
 			}
-			if (Holidays.nieveHoliday()) {
-				if (flags[kFLAGS.NIEVE_STAGE] > 0 && flags[kFLAGS.NIEVE_STAGE] < 5) addButton(1, "Snow", SceneLib.holidays.nieveBuilding);
-				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 1 && player.hasKeyItem("Mysterious Seed") >= 0) addButton(7, "Mysterious Seed", Magnolia.treeMenu);
-				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] > 2 && flags[kFLAGS.CHRISTMAS_TREE_LEVEL] < 9) {
-					if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 7 && player.hasKeyItem("Decorations") >= 0) addButton(7, "Decorate Tree", Magnolia.treeMenu);
-					else addButton(7, (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] >= 8 ? "Ch. Tree" : "Green Tree"), Magnolia.treeMenu);
-				}
+			if (flags[kFLAGS.ALRAUNE_SEEDS] > 0 && model.time.hours >= 6) addButton(5, "Garden", Gardening.manageyourgarden).hint("Visit your plant offspring");
+			if (player.hasKeyItem("Tamani's Satchel") >= 0) {
+				addButton(6, "Satchel", tamaniScene.openTamanisSatchel);
 			}
-			if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 1 && flags[kFLAGS.FUCK_FLOWER_LEVEL] < 4) addButton(2, (flags[kFLAGS.FUCK_FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), SceneLib.holliScene.treeMenu);
-			if (flags[kFLAGS.FUCK_FLOWER_KILLED] == 0 && flags[kFLAGS.FLOWER_LEVEL] >= 1 && flags[kFLAGS.FLOWER_LEVEL] < 4) addButton(2, (flags[kFLAGS.FLOWER_LEVEL] >= 3 ? "Tree" : "Plant"), HolliPure.treeMenu);
-			if (flags[kFLAGS.ALRAUNE_SEEDS] > 0 && model.time.hours >= 6) addButton(0, "Garden", Gardening.manageyourgarden).hint("Visit your plant offspring");
-			if (player.hasKeyItem("Rathazul's Purity Elixir") >= 0 && player.perkv1(PerkLib.PurityElixir) < 5) addButton(9, "PurityElixir", PurityElixir);
+			if (player.hasKeyItem("Rathazul's Purity Elixir") >= 0 && player.perkv1(PerkLib.PurityElixir) < 5) addButton(8, "PurityElixir", PurityElixir);
 		}
+		if (player.hasKeyItem("Gryphon Statuette") >= 0) addButton(9, "Gryphon", useGryphonStatuette);
+		if (player.hasKeyItem("Peacock Statuette") >= 0) addButton(9, "Peacock", usePeacockStatuette);
+		if (player.hasKeyItem("Gryphon Statuette") == 0 && player.hasKeyItem("Peacock Statuette") == 0) addButtonDisabled(9, "???", "Perhaps if you had a magical statuette...");
 		if (player.isInAyoArmor()) addButton(11, "Ayo Armors", AyoArmorsMaintance);
 		else addButtonDisabled(11, "Ayo Armors", "You need to wear any type of Ayo Armor to use this option.");
 		addButton(14, "Back", campActions);
@@ -2351,9 +2446,9 @@ public class Camp extends NPCAwareContent{
 
 	private function PurityElixir():void {
 		clearOutput();
-		if (player.getAllMinStats().cor == 0) {
+		if (player.getAllMinStats().cor == -100) {
 			outputText("You take out the elixir, but reconsider. ");
-			if (player.cor > 0) outputText("All of your corruption can be removed using simpler methods.");
+			if (player.cor > -100) outputText("All of your corruption can be removed using simpler methods.");
 			else outputText("You're completely pure!");
 			outputText("\n\nYou decide to leave the elixir for worse times.");
 		}
@@ -2422,7 +2517,7 @@ public class Camp extends NPCAwareContent{
 		amnt = Math.min(amnt, maxSFCapacity - flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR]);
 		outputText("You focus on your spiritual power and guide it to armor energy storages recharging it for "+amnt+" soulforce.");
 		flags[kFLAGS.SOULFORCE_STORED_IN_AYO_ARMOR] += amnt;
-		EngineCore.SoulforceChange(-amnt);
+		pc.SoulforceChange(-amnt);
 		doNext(AyoArmorsMaintance);
 	}
 
@@ -2453,9 +2548,6 @@ public class Camp extends NPCAwareContent{
 			else addButtonDisabled(2, "Watch Sky", "The option to watch the sunset is available at 7pm, \n\nStargazing 8pm-5am.");
 		}
 		addButton(3, "Read Codex", codex.accessCodexMenu).hint("Read any codex entries you have unlocked.");
-		if (player.hasKeyItem("Gryphon Statuette") >= 0) addButton(9, "Gryphon", useGryphonStatuette);
-		if (player.hasKeyItem("Peacock Statuette") >= 0) addButton(9, "Peacock", usePeacockStatuette);
-		if (player.hasKeyItem("Gryphon Statuette") == 0 && player.hasKeyItem("Peacock Statuette") == 0) addButtonDisabled(9, "???", "Perhaps if you had a magical statuette...");
 		addButtonIfTrue(10, "Heal", useHealAtCamp, "Req. knowing Heal spell and have 30+ mana.", player.hasStatusEffect(StatusEffects.KnowsHeal) && player.mana >= 30);
 		addButtonIfTrue(11, "Cure", useCureAtCamp, "Req. knowing Cure spell and have 500+ mana.", player.hasStatusEffect(StatusEffects.KnowsCure) && player.mana >= 500);
 		addButton(14, "Back", campActions);
@@ -3116,10 +3208,10 @@ public class Camp extends NPCAwareContent{
 		else addButtonDisabled(0, "Make", "You need to learn the Golemancer job to use this option.");player.hasPerk(PerkLib.JobElementalConjurer)
 		if (player.hasPerk(PerkLib.JobElementalConjurer) && flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > 0) addButton(1, "Summon", SceneLib.campMakeWinions.accessSummonElementalsMainMenu).hint("Check your options for managing your elemental summons.");
 		else addButtonDisabled(1, "Summon", "You should build an Arcane Circle and learn Elemental Conjurer job to use this option. Without some tools from the carpenter's toolbox, it would be near impossible to make Arcane Circle.");
-		if (player.hasPerk(PerkLib.JobTamer)) addButton(2, "Tame", SceneLib.campMakeWinions.accessTamedWinionsMainMenu).hint("Check your options for tamed minions.");
-		else addButtonDisabled(2, "Tame", "You need to learn the Tamer job to use this option.");
-		if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) addButton(5, "Skeletons", SceneLib.campMakeWinions.accessMakeSkeletonWinionsMainMenu).hint("Check your options for making some skeletons.");
-		else addButtonDisabled(5, "Skeletons", "You need to learn the Necromancer job to use this option.");
+		if (player.hasPerk(PerkLib.JobHaruspex)) addButton(2, "Skeletons", SceneLib.campMakeWinions.accessMakeSkeletonWinionsMainMenu).hint("Check your options for making some skeletons.");
+		else addButtonDisabled(2, "Skeletons", "You need to learn the Haruspex job to use this option.");
+		if (player.hasPerk(PerkLib.JobTamer)) addButton(5, "Tame", SceneLib.campMakeWinions.accessTamedWinionsMainMenu).hint("Check your options for tamed minions.");
+		else addButtonDisabled(5, "Tame", "You need to learn the Tamer job to use this option.");
 		if (player.hasPerk(PerkLib.PrestigeJobDruid)) addButton(6, "Fusions", druidMenu);
 		else addButtonDisabled(6, "Fusions", "You need to learn the Druid job to use this option.");
 		addButton(14, "Back", campActions);
@@ -3689,8 +3781,8 @@ public class Camp extends NPCAwareContent{
 		player.createStatusEffect(Soulforce.clones[newClone], 0, 0, 0, 0);
 		FormCloneText();
 		outputText("You share a grin now that the process is successful. Your quest remains to be completed, but now you have the power of "+NUMBER_WORDS_NORMAL[newClone+2]+".\n\n");
-		EngineCore.SoulforceChange(-player.maxSoulforce()*0.85);
-		HPChange(-(player.maxHP() * 0.85), true, false);
+		pc.SoulforceChange(-player.maxSoulforce()*0.85);
+		pc.HPChange(-(player.maxHP() * 0.85), true, false);
 		player.negativeLevel += Soulforce.clonelevelcost;
 		doNext(camp.returnToCampUseEightHours);
 	}
@@ -3731,8 +3823,8 @@ public class Camp extends NPCAwareContent{
 				outputText("You share a grin now that the process is successful. Your quest remains to be completed, but now you have the power of two.\n\n");
 				outputText("<b>Your clone is fully formed.</b>\n\n");
 				player.addStatusValue(StatusEffects.PCClone, 3, 1);
-				EngineCore.SoulforceChange(-player.maxSoulforce());
-				HPChange(-(player.maxHP() * 0.5), true, false);
+				pc.SoulforceChange(-player.maxSoulforce());
+				pc.HPChange(-(player.maxHP() * 0.5), true, false);
 				player.addNegativeLevels(30);
 			}
 			else if (player.statusEffectv3(StatusEffects.PCClone) == 2) {
@@ -3741,8 +3833,8 @@ public class Camp extends NPCAwareContent{
 				outputText("Six hours pass as the cocoon hardens into a substance akin to hard, black chitin until the cocoon becomes opaque. A small part of the layer around the navel keeps some translucent properties.\n\n");
 				outputText("Fatigue steadily overwhelms you after expending such intense amounts of your life energy. You lie down and rest for an hour before you decide to resume.\n\n");
 				player.addStatusValue(StatusEffects.PCClone, 3, 1);
-				EngineCore.SoulforceChange(-player.maxSoulforce());
-				HPChange(-(player.maxHP() * 0.5), true, false);
+				pc.SoulforceChange(-player.maxSoulforce());
+				pc.HPChange(-(player.maxHP() * 0.5), true, false);
 			}
 			else {
 				outputText("Having recovered your spent life force and soul energy, you return to the halted ritual. Sitting before you is a slowly rotating basketball-sized sphere of soul and life essences. You start to focus on the next phase of clone formation.\n\n");
@@ -3751,8 +3843,8 @@ public class Camp extends NPCAwareContent{
 				outputText("With the second phase completed, you slowly break the connection with your clone. Your mind and body wrack from the expended essence you've given to your clone. You decide to take the time to rest.\n\n");
 				outputText("After a couple of hours, you rise before leaving the half-finished creation in the corner of your [camp].\n\n");
 				player.addStatusValue(StatusEffects.PCClone, 3, 1);
-				EngineCore.SoulforceChange(-player.maxSoulforce());
-				HPChange(-(player.maxHP() * 0.5), true, false);
+				pc.SoulforceChange(-player.maxSoulforce());
+				pc.HPChange(-(player.maxHP() * 0.5), true, false);
 			}
 		}
 		else {
@@ -3760,8 +3852,8 @@ public class Camp extends NPCAwareContent{
 			outputText("An hour passes as you steadily concentrate on the essence that has left your body. Keeping your concentration on the swirling life, you guide more of essence and soul energy to leave your body and drift toward the new creation growing before you.\n\n");
 			outputText("The process is slow. While nourishing the core of the clone, you find yourself unable to expend any more of your life essence or risk being completely drained of soul essence.\n\n");
 			player.createStatusEffect(StatusEffects.PCClone, 0, 0, 1, 0);
-			EngineCore.SoulforceChange(-(player.maxSoulforce()));
-			HPChange(-(player.maxHP() * 0.5), true, false);
+			pc.SoulforceChange(-(player.maxSoulforce()));
+			pc.HPChange(-(player.maxHP() * 0.5), true, false);
 		}
 		doNext(camp.returnToCampUseEightHours);
 	}
@@ -3906,7 +3998,7 @@ public class Camp extends NPCAwareContent{
 		//since this section is WIP anyway, let her be here too, lol
 		if (flags[kFLAGS.GOTTA_CAMP_THEM_ALL_MODE] < 2) addButton(11, "Activate", GottaCampThemALLOn).hint("Turn on 'Gotta Camp them ALL' Mode.");
 		if (flags[kFLAGS.GOTTA_CAMP_THEM_ALL_MODE] == 2) addButton(11, "Deactivate", GottaCampThemALLOff).hint("Turn off 'Gotta Camp them ALL' Mode.");
-		addButton(12, "Members", SparrableNPCsMenuCampNPCs)..hint("Enable or Disable Camp Followers from appearing.");
+		addButton(12, "Members", SparrableNPCsMenuCampNPCs).hint("Enable or Disable Camp Followers from appearing.");
 		addButton(13, "Others", SparrableNPCsMenuOthers).hint("Out of camp encounters only.");
 		addButton(14, "Back", campActions);
 	}
@@ -4196,14 +4288,14 @@ public class Camp extends NPCAwareContent{
 	
 	private function useHealAtCamp():void {
 		clearOutput();
-		EngineCore.ManaChange(-30);
+		pc.ManaChange(-30);
 		CombatAbilities.Heal.doEffect();
 		advanceMinutes(15);
 		doNext(playerMenu);
 	}
 	private function useCureAtCamp():void {
 		clearOutput();outputText("You channel white magic to rid yourself of all negative effects affecting you.");
-		EngineCore.ManaChange(-500);
+		pc.ManaChange(-500);
 		CombatAbilities.Cure.doEffect();
 		advanceMinutes(15);
 		doNext(playerMenu);
@@ -4289,7 +4381,7 @@ public class Camp extends NPCAwareContent{
 			var hpBefore:int = player.HP;
 			timeQ = waitingORresting;
 			//THIS IS THE TEXT AREA FOR NOCTURNAL
-			HPChange(hpTime * hpRecovery * multiplier, false, false);
+			pc.HPChange(hpTime * hpRecovery * multiplier, false, false);
 			fatigue(timeQ * -fatRecovery * multiplier);
 
 			if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 && !ingnam.inIngnam) {
@@ -4333,7 +4425,7 @@ public class Camp extends NPCAwareContent{
 			}
 			if (SceneLib.alvinaFollower.AlvinaPurified) {
 				var mincor:int = player.getAllMinStats().cor;
-				if (player.cor == 0 || player.cor <= mincor) {}
+				if (player.cor <= -100 || player.cor <= mincor) {}
 				else {
 					outputText("\nYour purified lover Alvina exudes a calming and purifying aura which helps you shed some of your built-up corruption.\n");
 					if (player.cor >= mincor+10) dynStats("cor", -10);
@@ -4342,7 +4434,7 @@ public class Camp extends NPCAwareContent{
 
 			}
 
-			EngineCore.HPChangeNotify(player.HP - hpBefore);
+			pc.HPChangeNotify(player.HP - hpBefore);
 		} else {
 			clearOutput();
 			if (timeQ != 1) outputText("You continue to rest for " + num2Text(timeQ) + " more hours.\n");
@@ -4739,7 +4831,7 @@ public class Camp extends NPCAwareContent{
 					"\"<i>Good night.</i>\"\n\n");
 		}
 		//REGULAR HP/FATIGUE RECOVERY
-		HPChange(acceleratingRecoveryFactor(timeQ, true) * hpRecovery * multiplier, display, false);
+		pc.HPChange(acceleratingRecoveryFactor(timeQ, true) * hpRecovery * multiplier, display, false);
 		//fatigue
 		fatigue(-(timeQ * fatRecovery * multiplier));
 		if (player.perkv1(IMutationsLib.BlackBloodIM) >= 4 && flags[kFLAGS.LUNA_MOON_CYCLE] == 8 && (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || player.statStore.hasBuff("Damaged"))) {
@@ -4881,7 +4973,7 @@ public class Camp extends NPCAwareContent{
 		hideMenus();
 		clearOutput();
 		outputText("Which place would you like to visit?\n");
-		if (flags[kFLAGS.EXPLORE_MENU_STYLE] == 1) {
+		if (settings.exploreMenuStyle == 1) {
 			oldPlacesMenu();
 			return;
 		}
@@ -4927,7 +5019,7 @@ public class Camp extends NPCAwareContent{
 				.disableIf(!farmFound(), "Search the lake.", null, "???");
 		bd.add("Marae", maraeIsland)
 				.hint("Visit Marae's Island in the middle of the Lake.")
-				.disableIf(flags[kFLAGS.MARAE_ISLAND] <= 0, "Search the lake on the boat.", null, "???")
+				.disableIf(flags[kFLAGS.MARAE_ISLAND] <= 0, "Search the lake on the boat.", null, "???");
 		// Row 3 - places/NPCs 6-10
 		bd.add("Salon", SceneLib.mountain.salon.salonGreeting)
 				.hint("Visit the salon for hair services.")
@@ -5758,37 +5850,40 @@ public function rebirthFromBadEnd():void {
         return total;
     }
 	public function setLevelButton(allowAutoLevelTransition:Boolean):Boolean {
-		var levelup:Boolean = player.XP >= player.requiredXP() && (player.level < CoC.instance.levelCap || player.negativeLevel > 0);
+		var levelup:Boolean = player.canLevelUpOrRestore();
+		mainView.levelButton.icon('');
 		if (levelup || player.perkPoints > 0 || player.statPoints > 0) {
 			if (!levelup) {
 				if (player.statPoints > 0) {
-					mainView.setMenuButton(MainView.MENU_LEVEL, "Stat Up");
+					mainView.levelButton.labelText = "Stat Up";
 					mainView.levelButton.toolTipText = "Distribute your stats points. \n\nYou currently have " + String(player.statPoints) + ".";
 				} else  if (player.perkPoints > 0) {
-					mainView.setMenuButton(MainView.MENU_LEVEL, "Perk Up");
+					mainView.levelButton.labelText = "Perk Up";
 					mainView.levelButton.toolTipText = "Spend your perk points on a new perk. \n\nYou currently have " + String(player.perkPoints) + ".";
 				}
 			} else {
 				if (player.negativeLevel > 0) {
-					mainView.setMenuButton(MainView.MENU_LEVEL, "Restore Lvl");
+					mainView.levelButton.labelText = "Restore Lvl";
+					mainView.levelButton.icon("UpRed");
 					mainView.levelButton.toolTipText = "Level up to restore your lost levels.";
 				} else {
-					mainView.setMenuButton(MainView.MENU_LEVEL, "Level Up");
+					mainView.levelButton.labelText = "Level Up";
+					mainView.levelButton.icon("Up");
 					mainView.levelButton.toolTipText = getLevelUpStatsForButton();
 				}
-				if (flags[kFLAGS.AUTO_LEVEL] > 0 && allowAutoLevelTransition) {
+				if (settings.autoLevel > 0 && allowAutoLevelTransition) {
 					CoC.instance.playerInfo.levelUpMenu();
 					return true; //True indicates that you should be routed to level-up.
 				}
 			}
 			mainView.showMenuButton(MainView.MENU_LEVEL);
-			mainView.statsView.showLevelUp();
+			mainViewManager.showLevelUp();
 			if (player.str >= player.strStat.max && player.tou >= player.touStat.max && player.inte >= player.intStat.max && player.spe >= player.speStat.max && (player.perkPoints <= 0 || PerkTree.availablePerks(CoC.instance.player, false).length <= 0) && (player.XP < player.requiredXP() || player.level >= CoC.instance.levelCap)) {
-				mainView.statsView.hideLevelUp();
+				mainViewManager.hideLevelUp();
 			}
 		} else {
 			mainView.hideMenuButton(MainView.MENU_LEVEL);
-			mainView.statsView.hideLevelUp();
+			mainViewManager.hideLevelUp();
 		}
 		return false;
 	}

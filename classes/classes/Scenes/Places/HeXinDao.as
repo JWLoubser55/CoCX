@@ -19,7 +19,7 @@ import classes.Scenes.Dungeons.D3.MinotaurKing;
 import classes.Scenes.Dungeons.HiddenCave.BossGolems;
 import classes.Scenes.Dungeons.RiverDungeon;
 import classes.Scenes.Monsters.*;
-import classes.Scenes.NPCs.Jinx;
+import classes.Scenes.NPCs.Adrienne;
 import classes.Scenes.Places.HeXinDao.*;
 import classes.Scenes.SceneLib;
 import classes.Scenes.API.MultiBuy;
@@ -1066,14 +1066,16 @@ public function soularena():void {
 			//addButton(0, "Kitty", arenaSelection1, Veronika);
 			//addButton(1, "Golemancer", arenaSelection1,Jeniffer).hint("Golemancer goblin.");
 			//addButton(2, "AyotechManiac", arenaSelection1,Jinx).hint("Crazy gremlin girl wearing lots of belts... err Ayotech weapons.");
-			//if () addButton(6, "Miss Mander", arenaSelection1,Asuka).hint("Salamander woman.");
-			//else addButton(6, "Miss Mander", arenaSelection1,Asuka).hint("Young salamander girl.");
-			//addButton(7, "Miss Oni", arenaSelection1,Rangiku);
+			//if () addButton(5, "Miss Mander", arenaSelection1,Asuka).hint("Salamander woman.");
+			//else addButton(5, "Miss Mander", arenaSelection1,Asuka).hint("Young salamander girl.");
+			addButton(6, "Miss Mander", arenaSelection1,Adrienne).hint("Almost adult salamander girl.");
+			//addButton(7, "Miss Oni", arenaSelection1,Rangiku).hint("Oni woman.");
 			addButton(9, "-1-", soularenaChallengeSubpages, page - 1);
 			if (flags[kFLAGS.ANGELIC_FRACTION_TOGGLE] == 0) {
 				if (flags[kFLAGS.PLAYER_COMPANION_1] == "") addButtonDisabled(10, "IntermedLeader", "Req. to have any henchman with you to start this fight.");
 				else addButton(10, "IntermedLeader", intermediateleadershipfight1).hint("Intermediate Leadership fight");
 			}
+			else addButtonDisabled(10, "IntermedLeader", "Req. to have enabled Angel Fraction enemies.");
 			//11 - next step of leadership fights here
 			addButton(14, "Back", soularenaChallengeBack);
 		}
@@ -1591,7 +1593,7 @@ public function soularena():void {
 		outputText("\"<i>Greetings, everyone. The Head Elder decided that I should be responsible for today’s lecture again. Honestly, I’m not sure whether he thinks he’s punishing me, or rewarding me. </i>\" Shigure cracks up, and chuckles fill the auditorium.\n\n");
 		outputText("\"<i>Today we shall discuss tribulations. It's something that each of us must face in their life at least once. If you feel you're unable to pass even the most basic of tribulations, it may been a mistake to even start. Not all are cut out for the cultivator's path.</i>\" She sits comfortably behind the desk, tails swishing as she looks out on her students.\n\n");
 		outputText("\"<i>Each time us cultivators face a trial, the objective is simple. The world around you will hold nothing back, and you must not either. To pass is to live. To fail...is to die.</i>\" A few students' eyes widen, and several more murmur, seemingly shocked. \"<i>Please, students. Nothing in this world is risk-free.</i>\" She sighs. \"<i>While it is a risk, one could easily argue that every day on Mareth is its own trial, nowadays. And when a cultivator passes, they will be rewarded, not only with possibility to progress further on the endless road, but maybe even gain something else, something...special.</i>\" She looks over the gathered before continuing.\n\n");
-		outputText("\"<i>However, survival isn't always your only focus in such a trial. While risky, it'\s sometimes possible to fight back, rather than simply surviving the trial. While it can leave you vulnerable, should you fail, a cultivator will often gain more by excelling at a trial, defeating it outright, as opposed to simply surviving.</i>\" At that moment some lizan interrupts, raising his hand.\n\n");
+		outputText("\"<i>However, survival isn't always your only focus in such a trial. While risky, it's sometimes possible to fight back, rather than simply surviving the trial. While it can leave you vulnerable, should you fail, a cultivator will often gain more by excelling at a trial, defeating it outright, as opposed to simply surviving.</i>\" At that moment some lizan interrupts, raising his hand.\n\n");
 		outputText("\"<i> Ms. Shigure, are you speaking from experience? Or is this word of mouth from other cultivators?</i>\"\n\n");
 		outputText("\"<i>Hmmmm...</i>\" she pauses, giving the Lizan a favorable smile. \"<i>Yes, I speak from experience. While my first tribulation, I simply sought to live, my subsequent trials were...easier for me. When I realized this, I took a more aggressive approach, dispelling the clouds with my own power. </i>\" She continues the lecture, describing what happened during her tribulations, and those of other cultivators. From there, she moves on to practical matters,  describing the tribulation's lightning, and how a cultivator could avoid or defend against such attacks.\n\n");
 		outputText("\"<i>When the time will come each of you should feel the approaching tribulation. Some feel it in their Dantain, others have noted a strong metallic smell in the air. Luckily for us, it takes time to build up a proper storm... well, beside some rare, extreme, cases, it would take a few hours, at least. So be sure to find a good, open place to face it. Ahh and be careful to not involve others in your trial. Tribulations tend to get much harder if more than one cultivator faces it. Pets or minions should be fine, but trials are unfortunately not group projects.</i>\"\n\n");

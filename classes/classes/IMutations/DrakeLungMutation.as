@@ -4,29 +4,30 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
 public class DrakeLungMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Drake Lung";
-        }
+		public static const MNAME:String = "Drake Lung";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
-                descS = "Allows you to use breath attacks more often. (All dragon breaths usable once per combat)";
+                descS = "Allows you to use breath attacks more often. (All dragon breaths cooldowns are reduced by 1 increment)";
             }
             if (pTier >= 2){
                 descS = "Increases the power of dragon breath attacks threefold. (+300% to dragon breaths damage, +5% of max core Spe as phantom Spe)";
             }
             if (pTier >= 3){
-                descS = "Increases dragon breath attacks power and allows you to combine all 4 basic breath types more often. (+900% to dragon breaths damage, +20% of max core Spe as phantom Spe)";
+                descS = "Increases dragon breath attacks power. (+900% to dragon breaths damage, +20% of max core Spe as phantom Spe)";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -62,7 +63,7 @@ public class DrakeLungMutation extends IMutationPerkType
         }
 
         public function DrakeLungMutation() {
-            super(mName + " IM", mName, SLOT_LUNGS, 3);
+            super(MNAME, SLOT_LUNGS, 3);
         }
 
     }

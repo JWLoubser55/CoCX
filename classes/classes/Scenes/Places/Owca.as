@@ -342,6 +342,7 @@ public function loseOrSubmitToVapula():void {
 		else doNext(wakeUpAfterDemonGangBangs);//WAKE UP
 		player.sexReward("cum");
 		if (player.hasCock()) player.sexReward("vaginalFluids", "Dick");
+		player.fuckingWithDemons(5);
 		dynStats("lib", 1, "sen", 2, "cor", 3);
 		flags[kFLAGS.REBECCS_LAST_PLEA] = 0;
 	}
@@ -479,6 +480,7 @@ public function rapeZeVapula():void {
 		if (!recalling) {
 			player.sexReward("vaginalFluids", "Dick");
 			player.sexReward("saliva", "Dick");
+			player.fuckingWithDemons(5);
 		}
 		sharedEnd();
 	}
@@ -539,6 +541,7 @@ public function rapeZeVapula():void {
 		if (!recalling) {
 			player.sexReward("cum", "Vaginal");
 			player.sexReward("cum", "Anal");
+			player.fuckingWithDemons(5);
 			if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
 		}
 		sharedEnd();
@@ -924,7 +927,7 @@ public function loseToOwca():void {
 	if(player.weaponName != "fists") outputText("your [weapon] is taken away and ");
 	outputText("you are being uncomfortably transported to a destination you can guess easily.  Too dazed to resist or even worry about it; you are promptly brought to the dreaded pit, where the villagers tie you up and rudely shackle you.  Then, before you even realize how desperate your situation is, they're all gone.  Your numerous bruises and fatigue get the better of you and you quickly fall asleep.");
 	//redirect to dusk transition text, restore hp/fat consonant with sleeping until nightfall
-	HPChange(50,false,false);
+	pc.HPChange(50,false,false);
 	fatigue(-30);
 	//after nightly scene, next encounter is Post-Mob Encounter
 	doNext(loseOrSubmitToVapula);

@@ -118,8 +118,11 @@ public class Hel extends Monster
 			if (player.hasStatusEffect(StatusEffects.RiverDungeonA)) {
 				this.a = "the ";
 				this.short = "mist salamander";
-				this.long = "You are fighting a (literally) smoking hot mist salamander – a seven foot tall woman with crimson scales covering her legs, back, and forearms, purple veins covering all unprotected by scales parts fo the body, with a tail swishing menacingly behind her, ablaze with a red-hot fire.  Her violet hair whips wildly around her slender shoulders, occasionally flitting over her hefty E-cup breasts, only just concealed within a scale-covered bikini top.  Bright purple eyes focus on you from an almost-human face as she circles you, ready to close in for the kill.  Her brutal, curved sword is raised to her side, feinting at you between genuine attacks.";
+				this.long = "You are fighting a (literally) smoking hot mist salamander – a seven foot tall woman with crimson scales covering her legs, back, and forearms, purple veins covering all unprotected by scales parts fo the body, with a tail swishing menacingly behind her, ablaze with a red-hot fire.  Her violet hair whips wildly around her slender shoulders, occasionally flitting over her hefty G-cup breasts, only just concealed within a scale-covered bikini top.  Bright purple eyes focus on you from an almost-human face as she circles you, ready to close in for the kill.  Her brutal, curved sword is raised to her side, feinting at you between genuine attacks.";
 				this.hairColor = "violet";
+				createBreastRow(Appearance.breastCupInverse("G"));
+				this.hips.type = Hips.RATING_FERTILE;
+				this.butt.type = Butt.RATING_JIGGLY + 1;
 				initStrTouSpeInte(480, 440, 410, 240);
 				initWisLibSensCor(240, 280, 150, -60);
 				this.weaponAttack = 52;
@@ -130,10 +133,10 @@ public class Hel extends Monster
 				this.level = 54;
 				this.gems = 75 + rand(12);
 				this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
-				this.drop = new ChainedDrop().
-						add(weapons.SCIMITR, 0.3).
-						add(consumables.SALAMFW, 0.7).
-						add(useables.PCSHARD, 1);
+				this.drop = new ChainedDrop()
+						.add(weapons.SCIMITR, 0.3)
+						.add(consumables.SALAMFW, 0.7)
+						.add(useables.PCSHARD, 1);
 			}
 			else {
 				if (game.flags[kFLAGS.HEL_TALKED_ABOUT_HER] == 1) {
@@ -145,6 +148,9 @@ public class Hel extends Monster
 				}
 				this.long = "You are fighting a (literally) smoking hot salamander – a seven foot tall woman with crimson scales covering her legs, back, and forearms, with a tail swishing menacingly behind her, ablaze with a red-hot fire.  Her red hair whips wildly around her slender shoulders, occasionally flitting over her hefty E-cup breasts, only just concealed within a scale-covered bikini top.  Bright red eyes focus on you from an almost-human face as she circles you, ready to close in for the kill.  Her brutal, curved sword is raised to her side, feinting at you between genuine attacks.";
 				this.hairColor = "red";
+				createBreastRow(Appearance.breastCupInverse("E"));
+				this.hips.type = Hips.RATING_CURVY + 2;
+				this.butt.type = Butt.RATING_LARGE + 1;
 				initStrTouSpeInte(180, 160, 150, 120);
 				initWisLibSensCor(120, 140, 50, -60);
 				this.weaponAttack = 52;
@@ -154,21 +160,18 @@ public class Hel extends Monster
 				this.bonusLust = 226;
 				this.level = 36;
 				this.gems = 15 + rand(8);
-				this.drop = new ChainedDrop().
-						add(armors.CHBIKNI,1/20).
-						add(weapons.SCIMITR,1/20).
-						add(consumables.SALAMFW,0.7);
+				this.drop = new ChainedDrop()
+						.add(armors.CHBIKNI,1/20)
+						.add(weapons.SCIMITR,1/20)
+						.add(consumables.SALAMFW,0.7);
 			}
 			this.imageName = "hel";
 			createVagina(true,VaginaClass.WETNESS_NORMAL,VaginaClass.LOOSENESS_NORMAL);
 			createStatusEffect(StatusEffects.BonusVCapacity,85,0,0,0);
-			createBreastRow(Appearance.breastCupInverse("E"));
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,85,0,0,0);
 			this.tallness = 84;
-			this.hips.type = Hips.RATING_CURVY + 2;
-			this.butt.type = Butt.RATING_LARGE + 1;
 			this.bodyColor = "dusky";
 			this.hairLength = 13;
 			this.weaponName = "sword";

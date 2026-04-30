@@ -4,18 +4,19 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
 import classes.BodyParts.Face;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Player;
 import classes.Races;
 
 public class HollowFangsMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Hollow Fangs";
-        }
+		public static const MNAME:String = "Hollow Fangs";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -73,7 +74,7 @@ public class HollowFangsMutation extends IMutationPerkType
         }
 
         public function HollowFangsMutation() {
-            super(mName + " IM", mName, SLOT_MOUTH, 4);
+            super(MNAME, SLOT_MOUTH, 4);
         }
         
     }

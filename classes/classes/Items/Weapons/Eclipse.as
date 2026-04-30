@@ -33,14 +33,14 @@ public class Eclipse extends Weapon implements TimeAwareInterface
 		
 		public function calcWizardsMult():Number {
 			var multadd:Number = 1.0;
-            if (game && game.player) multadd += game.player.cor * 0.07;
+            if (game && game.player) multadd += game.player.playerCorruption() * 0.035;
 			return multadd;
 		}
 
         private static var lastCor:Number = 0;
 
         public function updateWizardsMult():void {
-            if (game.player.cor != lastCor) {
+            if (game.player.playerCorruption() != lastCor) {
 				_buffs['spellpower'] = calcWizardsMult();
                 if (game.player.weapon == this) {
                     //re-requip to update player's perk
@@ -49,15 +49,15 @@ public class Eclipse extends Weapon implements TimeAwareInterface
                     afterEquip(false, slot);
                 }
             }
-            lastCor = game.player.cor;
+            lastCor = game.player.playerCorruption();
         }
 
         override public function get descBase():String {
             if (game && game.player)
                 return _description + (
-                    game.player.cor < 25 ? "\n\nYour pure aura almost breaks the flow of energy inside the wand, decreasing its power!\n" :
-                    game.player.cor < 50 ? "\n\nYour pure aura slightly interrupts your connection with the wand, decreasing its power.\n" :
-                    game.player.cor < 75 ? "\n\nYour corrupted aura slightly increases the wand's power.\n" :
+                    game.player.cor < -50 ? "\n\nYour pure aura almost breaks the flow of energy inside the wand, decreasing its power!\n" :
+                    game.player.cor < 0 ? "\n\nYour pure aura slightly interrupts your connection with the wand, decreasing its power.\n" :
+                    game.player.cor < 50 ? "\n\nYour corrupted aura slightly increases the wand's power.\n" :
                     "\n\nYour corrupted energy flows through the wand, empowering it!\n");
             else
                 return _description;
@@ -65,12 +65,12 @@ public class Eclipse extends Weapon implements TimeAwareInterface
 		
 		override public function get attack():Number {
 			var boost:int = 0;
-			var scal:Number = 25;
+			var scal:Number = 50;
 			if (game.player.str >= 50) {
 				boost += 4;
-				scal -= 5;
+				scal -= 10;
 			}
-			boost += Math.round((100 - game.player.cor) / scal);
+			boost += Math.round((game.player.playerCorruption2() - game.player.playerCorruption()) / scal);
 			return (1 + boost);
 		}
 

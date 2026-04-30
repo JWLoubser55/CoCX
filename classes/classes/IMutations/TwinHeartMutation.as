@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Player;
 import classes.Races;
 
 public class TwinHeartMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Twin Heart";
-        }
+		public static const MNAME:String = "Twin Heart";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -36,7 +37,7 @@ public class TwinHeartMutation extends IMutationPerkType
                 if (pTier == 0){
                     this.requireAdaptationsMutationSlot()
                     .requireCustomFunction(function (player:Player):Boolean {
-                        return player.isRace(Races.CENTAUR) || player.isRace(Races.UNICORN, 2) || player.isRace(Races.SPHINX) || player.isRace(Races.CANCER) || player.isRace(Races.SANDWORM) || player.isRace(Races.BAROMETZ) || player.isRace(Races.DEER) || player.isTaur() || player.isDrider();
+                        return player.isRace(Races.CENTAUR) || player.isRace(Races.UNICORN, 2) || player.isRace(Races.SPHINX) || player.isRace(Races.CANCER) || player.isRace(Races.SANDWORM) || player.isRace(Races.BAROMETZ) || player.isRace(Races.DEER, 2) || player.isTaur() || player.isDrider();
                     }, "Taur/Drider or Unicorn/Bicorn/Sphinx/Cancer/Sandworm/Barometz/Deer race");
                 }
                 else{
@@ -71,7 +72,7 @@ public class TwinHeartMutation extends IMutationPerkType
         }
 
         public function TwinHeartMutation() {
-            super(mName + " IM", mName, SLOT_ADAPTATIONS, 4);
+            super(MNAME, SLOT_ADAPTATIONS, 4);
         }
 
     }

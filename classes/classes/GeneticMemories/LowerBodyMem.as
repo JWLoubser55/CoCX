@@ -519,14 +519,14 @@ package classes.GeneticMemories {
           id: "YggRootClaws Lower Body",name: "YggRootClaws Legs",
           cost: 200,
           title: "YggdrasilRootClaws",
-          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyYgddrasilRootClaws}});
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyYgddrasilRootClaws}});/*
 
       public static const ABYSSAL_SHARK: int = _partid++;
       EnumValue.add(Memories, ABYSSAL_SHARK, "ABYSSAL_SHARK", {
           id: "Abyssal Shark Lower Body",name: "Abyssal Shark Legs",
           cost: 200,
           title: "Abyssal Shark Legs",
-          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyAbyssalShark}});
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyAbyssalShark}});*/
 
       public static const WERESHARK: int = _partid++;
       EnumValue.add(Memories, WERESHARK, "WERESHARK", {
@@ -547,14 +547,14 @@ package classes.GeneticMemories {
           id: "Demon Graceful Feet Lower Body",name: "Demonic Graceful Feet",
           cost: 100,
           title: "Dem. G. Feet",
-          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyDemonGracefulFeet}});
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyDemonGracefulFeet}});/*
 
       public static const CLOVEN_HOOFED_2: int = _partid++;
       EnumValue.add(Memories, CLOVEN_HOOFED_2, "CLOVEN_HOOFED_2", {
           id: "Reindeer Lower Body",name: "Reindeer Legs",
           cost: 200,
           title: "Reindeer Legs",
-          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyReindeerToggle(true)}});
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyReindeerToggle(true)}});*/
 
       public static const MOTH: int = _partid++;
       EnumValue.add(Memories, MOTH, "MOTH", {
@@ -604,6 +604,28 @@ package classes.GeneticMemories {
           cost: 100,
           title: "Hollow Legs",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyHollow}});
+
+      public static const LICH: int = _partid++;
+      EnumValue.add(Memories, LICH, "LICH", {
+          id: "Lich Lower Body",name: "Lich Legs",
+          cost: 100,
+          title: "Lich Legs",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyLich}});
+
+      public static const SPECTRAL_SHROUD: int = _partid++;
+      EnumValue.add(Memories, SPECTRAL_SHROUD, "SPECTRAL_SHROUD", {
+          id: "Banshee Lower Body",name: "Banshee Legs",
+          cost: 100,
+          title: "Banshee Legs",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyBanshee}});
+
+      public static const HOOFED_NO_FUR: int = _partid++;
+      EnumValue.add(Memories, HOOFED_NO_FUR, "HOOFED_NO_FUR", {
+          id: "Hoofed w/o fur Lower Body",name: "Hooves no fur (Legs)",
+          cost: 100,
+          title: "Hoofed no fur",
+          unlockText: "Now you can metamorph into the Taur variant of any lower body part you unlocked when available!",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyHoofedNoFurToggle(true)}});
 
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];

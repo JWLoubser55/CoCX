@@ -49,8 +49,8 @@ public class LifetapSpell extends AbstractHexSpell {
 			}
 			var recmana:Number = 0.25;
 			if (player.hasPerk(PerkLib.Necromancy)) recmana += 0.125;
-			HPChange(-Math.round(player.maxHP() * 0.25), false, false);
-			EngineCore.ManaChange(Math.round(player.maxMana() * recmana));
+			pc.HPChange(-Math.round(player.maxHP() * 0.25), false, false);
+			pc.ManaChange(Math.round(player.maxMana() * recmana));
 		}
 	}
 }

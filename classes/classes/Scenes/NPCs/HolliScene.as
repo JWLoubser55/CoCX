@@ -160,10 +160,12 @@ public function alrauneExtraSceneWithHollicyntiaTentacleDuel():void {
 	player.sexReward("vaginalFluids","Dick");
 	player.sexReward("saliva","Dick");
 	player.sexReward("Default","Dick");
+	player.fuckingWithDemons(5);
 	if (player.isLiliraune()){
 		player.sexReward("cum","Vaginal");
 		player.sexReward("cum","Anal");
 		player.sexReward("cum","Lips");
+		player.fuckingWithDemons(2);
 	}
 	statScreenRefresh();
 	player.knockUp(PregnancyStore.PREGNANCY_ALRAUNE, PregnancyStore.INCUBATION_ALRAUNE);
@@ -354,6 +356,7 @@ private function fuckFuckingFuckFlowerP2():void {
 	outputText("\n\nSatisfied and a little exhausted, you slump down and release your grip on the creampied fuck-flower.  It slowly, laboriously removes itself from around your orgasm-bloated shaft, cleaning the sperm from it as it goes.  There's a visible swallowing motion, and a globular bulb moves down the stalk into the ground.  Once the stalk stands fully erect, the petals bloom back into the flower, the only hint of your tryst a milky-white sheen upon the purple petals.");
 	if (!recalling) {
 		player.sexReward("vaginalFluids", "Dick");
+		player.fuckingWithDemons(1);
 		dynStats("cor", 1);
 		flags[kFLAGS.TIMES_FUCKED_FLOWER] = 1;
 		if (flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] < 1000) flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] += 4;
@@ -401,6 +404,7 @@ private function rideDatFuckingFukkFlowerP2():void {
 	outputText("\n\nYou swoon from it all, your body slowly relaxing, sinking back to the ground.  The fuck-flower visibly swallows your juices, a bulge visible on the stem.  It detaches with a hungry pop, strands of its slime webbing the space between person and plant for a second before it withdraws completely.  Slowing gradually, the corrupt greenery resumes its formerly placid, open state, aimed at the sky.  You can see the tentacle-like stamen still wiggling inside, but they seem a little more lethargic now.  Your [vagina] twitches in rememberence of their caresses, and you wonder when you'll take advantage of this wondrous gift next.");
 	if (!recalling) {
 		player.sexReward("cum", "Vaginal");
+		player.fuckingWithDemons(1);
 		dynStats("cor", 1);
 		fatigue(5);
 		flags[kFLAGS.TIMES_RIDDEN_FLOWER] = 1;
@@ -475,6 +479,7 @@ private function fuckTheFlower():void {
 	outputText("\n\nYou sigh, utterly exhausted and drained of sperm.  What a rush!  Your [armor] slips on easily after that ordeal, though your muscles are a bit sore.");
 	if (!recalling) {
 		player.sexReward("vaginalFluids", "Dick");
+		player.fuckingWithDemons(1);
 		dynStats("cor", 1);
 		fatigue(5);
 		if(flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] < 1000) flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] += 5;
@@ -517,7 +522,8 @@ private function rideTheWalrusP3():void {
 	outputText("\n\nAt some point, you are set back down on the ground and sprayed with a fresh batch of seed.  You rest there for a while, until you can catch your breath and move without pain.  When you start trying to clean up, you realize the puddle of cum is completely gone, likely swallowed back up the tree's hungry roots, and the only mess left is your sodden [skin.type].  You get dressed and stumble away a little drunkenly, your [vagina] raw and oozing.");
 	if (!recalling) {
 		dynStats("lib", 1, "sen", -5);
-		player.sexReward("cum","Vaginal");
+		player.sexReward("cum", "Vaginal");
+		player.fuckingWithDemons(1);
 		if(flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] < 1000) flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] += 5;
 		flags[kFLAGS.TIMES_RIDDEN_FLOWER]++;
 		flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
@@ -727,6 +733,7 @@ private function fuckHolliInZeFlowerPuss():void {
 	flags[kFLAGS.TIMES_FUCKED_FLOWER]++;
 	fertilizeHolli();
 	player.sexReward("vaginalFluids", "Dick");
+	player.fuckingWithDemons(1);
 	dynStats("sen", -1, "cor", 1);
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -781,7 +788,8 @@ private function level4RideHollisTentacruels():void {
 	if(!player.isBiped()) outputText("you'd be walking bowlegged for a week, if you had legs.");
 	else outputText("you'll be walking bowlegged for a week!");
 	//empty lust, boost corruption, slimefeed(), +1 cor, -3 sens, +.5 libido
-	player.sexReward("cum", "Vaginal")
+	player.sexReward("cum", "Vaginal");
+	player.fuckingWithDemons(1);
 	dynStats("lib", .5, "sen", 2, "cor", 1);
 	fertilizeHolli(false);
 	flags[kFLAGS.TIMES_RIDDEN_FLOWER]++;
@@ -966,6 +974,7 @@ private function holliGetsDickDommed():void {
 	outputText("\n\nRemoving yourself from the gaping flowerpot, you admire the fruits of your labors.  Holli breathily says, \"<i>Th-thank you, [name]...  So good...</i>\"");
 	outputText("\n\nYou crook a finger and point down at the slop of sperm and nectar glazing your [cock biggest].  Getting the idea, she leans back out and opens wide.  You get a thorough cock polishing from the much meeker plant-woman.  She swallows it all and withdraws, offering, \"<i>If you ever want another round... my flower is yours.</i>\"");
 	player.sexReward("vaginalFluids", "Dick");
+	player.fuckingWithDemons(1);
 	dynStats("sen", -2, "cor", 1);
 	flags[kFLAGS.TIMES_FUCKED_FLOWER]++;
 	flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
@@ -999,7 +1008,8 @@ private function fullOnTentacleTasticGangBangForHolli():void {
 	outputText("\n\nHolli climaxes again when your load passes into her vagina, deforming the petals slightly as it goes.  Her cunt-tentacles are similarly stretched by the force of your orgasm, distended by spermy knots that erupt inside them.  Jizz and girl-cum drip from the numerous twats, all five of them.  Those pussies aren't simply idly filled either.  They hungrily massage you throughout their own moments of bliss, actually providing a modicum of suction to draw even more spunk from your [balls].  You roar in triumph and thrust all ten at once, pushing them as deep into their chosen locations as you ride out of the ecstasy, spurting and shaking.");
 	outputText("\n\nYou come to a little while later.  Your myriad tentacles have retracted back to your groin, though a goodly number of them have a distinctly feminine odor clinging to them.  Holli is sagging back in her tree, covered in a pearly shine that can only be your fertile batter.  She's panting while the cum runs out and over her unimpeded, dripping from the canopy as well.");
 	outputText("\n\nStretching the kinks from your shoulders, you walk up to the confused cum-dump and say, \"<i>That's how you sow seed, little flower.</i>\"  Holli shudders, releasing a squirt of your goo from her twat.  You laugh and get dressed before departing, feeling blessedly sated.");
-	player.sexReward("vaginalFluids","Dick");
+	player.sexReward("vaginalFluids", "Dick");
+	player.fuckingWithDemons(1);
 	dynStats("lib", .4, "sen", -3, "cor", 1);
 	flags[kFLAGS.TIMES_FUCKED_FLOWER]++;
 	flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
@@ -1052,6 +1062,7 @@ private function vaginalDomHollisTentacruels():void {
 	flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
 	fertilizeHolli(false);
 	player.sexReward("cum","Vaginal");
+	player.fuckingWithDemons(1);
 	dynStats("sen", -2, "cor", 1);
 	doNext(camp.returnToCampUseOneHour);
 }
@@ -1241,6 +1252,7 @@ internal function enjoyYourBadEndBIYAAAATCH():void {
 		
 		//--Next--
 		player.sexReward("vaginalFluids", "Dick");
+		player.fuckingWithDemons(1);
 		dynStats("lib", 5, "sen", 20);
 		menu();
 		addButton(0,"Next",holliPlaysWithPenisesBadEnd);
@@ -1289,6 +1301,7 @@ internal function enjoyYourBadEndBIYAAAATCH():void {
 		
 		//--Next--
 		player.sexReward("cum", "Vaginal");
+		player.fuckingWithDemons(1);
 		dynStats("lib", 5, "sen", 20);
 		menu();
 		addButton(0,"Next",girlsGetANiceManToBadEnd);
@@ -1296,6 +1309,7 @@ internal function enjoyYourBadEndBIYAAAATCH():void {
 	function assF():void {
 		//branch of nothing-having
 		player.sexReward("cum", "Anal");
+		player.fuckingWithDemons(1);
 		dynStats("lib", 5, "sen", 20);
 		outputText("\n\nShe pulls your [armor] free without care, breaking the fastenings in her haste.  A raised eyebrow meets your bare crotch, but Holli doesn't pause for long.  \"<i>My simple little toy... if it were so easy to keep out the corruption of this land, the demons would be overthrown tomorrow.</i>\"  Revising her plans, the demon turns you around and slides a finger between your asscheeks, bending close.  ");
 		if(player.ass.analWetness > 0) outputText("Betraying your depravity, the slick crack opens wide and your greedy, wet asshole practically welcomes the demon's entire hand, sucking it up and making you shiver with repressed delight.  \"<i>Oh, mother!  It seems as though this is not a new lesson to you, is it?  My little whore, will you beg and moan as I fill you?</i>\"");

@@ -7,8 +7,6 @@ public class AlembicCatalyst extends Useable {
 	public var power:int;
 	public var chanceFactor:Number;
 	public function AlembicCatalyst(id:String, reagentType:int, power:int) {
-		this.reagentType = reagentType;
-		this.power       = power;
 		var shortName:String;
 		var longName:String;
 		var compName:String;
@@ -36,6 +34,7 @@ public class AlembicCatalyst extends Useable {
 		}
 		var value:Number;
 		var powerName:String;
+		var chanceFactor:Number;
 		switch (power) {
 			case 1:
 				shortName = "Min." + shortName;
@@ -63,6 +62,9 @@ public class AlembicCatalyst extends Useable {
 		shortName +="ACat";
 		var description:String = "This magical crystal, when placed inside an alchemical alembic, " + powerName + " chances to extract " + compName + ". It is not consumed in the process and can be used mmultiple times."
 		super(id, shortName, longName, value, description);
+		this.chanceFactor = chanceFactor;
+		this.reagentType = reagentType;
+		this.power       = power;
 	}
 	
 	override public function useItem():Boolean {

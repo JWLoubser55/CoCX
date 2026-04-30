@@ -317,6 +317,11 @@ public class Eyes extends BodyPart {
 		appearanceDesc: "Your eyes are a strange mix of black sclera and [eyecolor] iris, through eyes even the faintest pulse of soulforce is visible to you.",
 		Darkvision: true
 	});
+	public static const DEER: int = 53;
+	EnumValue.add(Types, DEER, "DEER", {
+		name:"deer",
+		appearanceDesc: "Your [eyecolor] eyes are like those of a deer with horizontally slit pupils at the center."
+	});
 
 	public var count:int;
 	public var colour:String = "brown";

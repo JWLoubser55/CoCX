@@ -3,6 +3,7 @@ package classes.Scenes.Combat {
 import classes.StatusEffectType;
 import classes.PerkType;
 import classes.Races;
+import classes.IMutations.IMutationsLib;
 
 public class AbstractSpecial extends CombatAbility {
     protected var knownCondition:*;
@@ -51,7 +52,9 @@ public class AbstractSpecial extends CombatAbility {
 
         if (finalWrathCost > 0) {
             player.wrath -= finalWrathCost;
-        }   
+        }
+
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= finalSFCost;
     }
 
     override protected function usabilityCheck():String {
@@ -73,6 +76,10 @@ public class AbstractSpecial extends CombatAbility {
 
         if (player.wrath < wrathCost()) {
 			return "Your wrath is too low to use this ability!"
+		}
+
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4 && (((player.HP - player.minHP()) - 1) < sfCost())) {
+			return "Your hp is too low to use this ability."
 		}
 
         return "";

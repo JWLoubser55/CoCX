@@ -19,8 +19,8 @@ import classes.ItemType;
 		//każde 1 armor point kosztuje 120
 		override public function get supportsBulge():Boolean { return true; }
 		
-		override public function get def():Number { return 20 + (100 - game.player.cor); }
-		override public function get mdef():Number { return 20 + (100 - game.player.cor); }
+		override public function get def():Number { return 20 + ((game.player.playerCorruption2() - game.player.playerCorruption())/2); }
+		override public function get mdef():Number { return 20 + ((game.player.playerCorruption2() - game.player.playerCorruption())/2); }
 		
 		override public function equipText():void
 		{
@@ -47,9 +47,9 @@ import classes.ItemType;
 					}
                     if (CoC.instance.player.biggestCockArea() >= 100) {
                         outputText("Your manhood is too big to be concealed by your silken loincloth. Part of your " + CoC.instance.player.cockDescriptShort(CoC.instance.player.biggestCockIndex()) + " is visible. ");
-                        if (CoC.instance.player.cor < 33) outputText("You let out a sigh. ");
-                        else if (CoC.instance.player.cor >= 33 && CoC.instance.player.cor < 66) outputText("You blush a bit, not sure how you feel. ");
-                        else if (CoC.instance.player.cor >= 66 || game.flags[kFLAGS.PC_FETISH] > 0) outputText("You admire how your manhood is visible. ");
+                        if (CoC.instance.player.cor < -33) outputText("You let out a sigh. ");
+                        else if (CoC.instance.player.cor >= -33 && CoC.instance.player.cor < 33) outputText("You blush a bit, not sure how you feel. ");
+                        else if (CoC.instance.player.cor >= 33 || game.flags[kFLAGS.PC_FETISH] > 0) outputText("You admire how your manhood is visible. ");
                     }
 				}
                 if (CoC.instance.player.cor >= 66 || game.flags[kFLAGS.PC_FETISH] > 0) {
@@ -58,9 +58,9 @@ import classes.ItemType;
 			}
 			else {
 				outputText("Last but not least, you take a silken loincloth in your hand but stop short as you examine your tauric body. There is no way you could properly conceal your genitals! ");
-                if (CoC.instance.player.cor < 33) outputText("You let out a sigh. Being a centaur surely is inconvenient! ");
-                else if (CoC.instance.player.cor >= 33 && CoC.instance.player.cor < 66) outputText("You blush a bit, not sure how you feel. ");
-                else if (CoC.instance.player.cor >= 66 || game.flags[kFLAGS.PC_FETISH] > 0) outputText("Regardless, you are happy with what you are right now. ");
+                if (CoC.instance.player.cor < -33) outputText("You let out a sigh. Being a centaur surely is inconvenient! ");
+                else if (CoC.instance.player.cor >= -33 && CoC.instance.player.cor < 33) outputText("You blush a bit, not sure how you feel. ");
+                else if (CoC.instance.player.cor >= 33 || game.flags[kFLAGS.PC_FETISH] > 0) outputText("Regardless, you are happy with what you are right now. ");
                 outputText("You leave the silken loincloth in your possessions for the time being.");
 			}
 			outputText("You are suited up and all good to go. ");

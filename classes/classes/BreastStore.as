@@ -59,7 +59,11 @@ public class BreastStore extends Utils implements SaveAwareInterface
 			game.flags[_breastFlag] = BREAST_STORE_VERSION_1 + "^" + rows + "^" + cupSize + "^" + lactationLevel + "^" + nippleLength + "^" + _fullness + "^" + _timesMilked
 				+ "^" + preventLactationIncrease + "^" + preventLactationDecrease;
 		}
-		//End of Interface Implementation
+
+		public function updateOnRestart(game:CoC):void {
+		}
+
+//End of Interface Implementation
 
 		public static function breastDescript(size:int, lactation:Number = 0):String {
 			if (size < 1) return "flat breasts";

@@ -29,11 +29,11 @@ package classes.Items.Armors
 		}
 		
 		override public function get def():Number{
-			var mod:int = game.player.cor/5;
+			var mod:int = game.player.playerCorruption()/10;
 			return 20 + mod;
 		}
 		override public function get mdef():Number{
-			var mod:int = game.player.cor/10;
+			var mod:int = game.player.playerCorruption()/20;
 			return 10 + mod;
 		}
 	}

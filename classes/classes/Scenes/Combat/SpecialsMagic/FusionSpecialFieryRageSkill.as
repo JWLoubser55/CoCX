@@ -38,7 +38,7 @@ public class FusionSpecialFieryRageSkill extends AbstractMagicSpecial {
     override public function advance(display:Boolean):void {
         if (isActive()) {
             if (player.soulforce < (player.maxSoulforce() * 0.05)) toggleOff(display);
-            else EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.05));
+            else pc.SoulforceChange(-Math.round(player.maxSoulforce() * 0.05));
 		}
     }
 

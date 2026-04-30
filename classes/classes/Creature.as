@@ -477,8 +477,8 @@ public class Creature extends Utils
 				if (stat.train.value > limit){
 					stat.train.value = limit;
 				}
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp(statName);
 				return true;
 			}
 			return false;
@@ -560,12 +560,12 @@ public class Creature extends Utils
 			if (this.hasPerk(PerkLib.ZenjisInfluence2)) power *= 0.60;
 			if (statName == "sens" || statName == "cor") {
 				statStore.addBuff(statName, power, tierPower, {text: tierPower});
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatUp(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatUp(statName);
 			} else {
 				statStore.addBuff(statName, -power, tierPower, {text: tierPower});
-				CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-				CoC.instance.mainView.statsView.showStatDown(statName);
+				CoC.instance.mainViewManager.refreshStats();
+				CoC.instance.mainViewManager.showStatDown(statName);
 			}
 		}
 
@@ -603,13 +603,13 @@ public class Creature extends Utils
 				if (current > 0) {
 					if (power >= current) {
 						stat.removeBuff(tierPower);
-						CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-						CoC.instance.mainView.statsView.showStatDown(statName);
+						CoC.instance.mainViewManager.refreshStats();
+						CoC.instance.mainViewManager.showStatDown(statName);
 						change = current;
 					} else if (power < current) {
 						stat.addOrIncreaseBuff(tierPower, -power);
-						CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-						CoC.instance.mainView.statsView.showStatUp(statName);
+						CoC.instance.mainViewManager.refreshStats();
+						CoC.instance.mainViewManager.showStatUp(statName);
 						change = power;
 					}
 				}
@@ -618,13 +618,13 @@ public class Creature extends Utils
 				if (current < 0) {
 					if (power >= -current) {
 						stat.removeBuff(tierPower);
-						CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-						CoC.instance.mainView.statsView.showStatUp(statName);
+						CoC.instance.mainViewManager.refreshStats();
+						CoC.instance.mainViewManager.showStatUp(statName);
 						change = -current;
 					} else if (power < -current) {
 						stat.addOrIncreaseBuff(tierPower, power);
-						CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-						CoC.instance.mainView.statsView.showStatDown(statName);
+						CoC.instance.mainViewManager.refreshStats();
+						CoC.instance.mainViewManager.showStatDown(statName);
 						change = power;
 					}
 				}
@@ -705,10 +705,8 @@ public class Creature extends Utils
 		protected function maxHP_base():Number {
 			var max:Number = maxHpBaseStat.value;
 			var multimax:Number = maxHpMultStat.value;
-			var dmmmm:Number = 0;
-			var dmmmml:Number = 0.1;
 			if (hasPerk(PerkLib.IcyFlesh)) {
-				max += int(inte * 2 + 50);
+				max += int((inte * level) + 50);
 				if (inte >= 21) max += Math.round(inte);
 				if (inte >= 41) max += Math.round(inte);
 				if (inte >= 61) max += Math.round(inte);
@@ -723,7 +721,7 @@ public class Creature extends Utils
 				}
 			}
 			else if (hasPerk(PerkLib.HaltedVitals) || hasPerk(PerkLib.Undeath)) {
-				max += int(lib * 2 + 50);
+				max += int((lib * level) + 50);
 				if (lib >= 21) max += Math.round(lib);
 				if (lib >= 41) max += Math.round(lib);
 				if (lib >= 61) max += Math.round(lib);
@@ -731,14 +729,14 @@ public class Creature extends Utils
 				if (lib >= 101) max += Math.round(lib) * Math.floor( (lib-100)/50 + 1);
 			}
 			else {
-				max += int(tou * 2 + 50);
+				max += int((tou * level) + 50);
 				if (tou >= 21) max += Math.round(tou);
 				if (tou >= 41) max += Math.round(tou);
 				if (tou >= 61) max += Math.round(tou);
 				if (tou >= 81) max += Math.round(tou);
 				if (tou >= 101) max += Math.round(tou) * Math.floor( (tou-100)/50 + 1);
 				if (hasPerk(PerkLib.DeathPriest)) {
-					max += int(wis * 2 + 50);
+					max += int((wis * level) + 50);
 					if (wis >= 21) max += Math.round(wis);
 					if (wis >= 41) max += Math.round(wis);
 					if (wis >= 61) max += Math.round(wis);
@@ -798,7 +796,7 @@ public class Creature extends Utils
 				else max += Math.round(lib*0.25);
 			}
 			if (perkv1(IMutationsLib.SoulCoreIM) >= 4) {
-				max += int(inte * 2 + 50);
+				max += int((inte * level) + 50);
 				if (inte >= 21) max += Math.round(inte);
 				if (inte >= 41) max += Math.round(inte);
 				if (inte >= 61) max += Math.round(inte);
@@ -837,7 +835,6 @@ public class Creature extends Utils
 				if (hasStatusEffect(StatusEffects.SummonedElementalsFireE)) max += maxHP_ElementalBondFleshMulti() * 20 * statusEffectv2(StatusEffects.SummonedElementalsFireE);
 				if (hasStatusEffect(StatusEffects.SummonedElementalsWaterE)) max += maxHP_ElementalBondFleshMulti() * 20 * statusEffectv2(StatusEffects.SummonedElementalsWaterE);
 			}
-			if (hasPerk(PerkLib.JobGuardian)) max += 120;
 			if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
 				if (hasPerk(PerkLib.SoulApprentice)) max += (1000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
 				if (hasPerk(PerkLib.SoulPersonage)) max += (1000 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]) * game.player.humanBodyCultivators());
@@ -897,12 +894,14 @@ public class Creature extends Utils
 			if (hasPerk(PerkLib.UnlockBody2ndStage)) max += level * 60;
 			if (hasPerk(PerkLib.UnlockBody3rdStage)) max += level * 60;
 			if (hasPerk(PerkLib.UnlockBody4thStage)) max += level * 60;
-			if (hasPerk(PerkLib.AscensionUnlockedPotential) >= 0) max += level * 80;
-			if (hasPerk(PerkLib.AscensionUnlockedPotential3rdStage) >= 0) max += level * 80;
+			if (hasPerk(PerkLib.AscensionUnlockedPotential)) max += level * 80;
+			if (hasPerk(PerkLib.AscensionUnlockedPotential3rdStage)) max += level * 80;
 			if (jewelryEffectId == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude;
 			if (jewelryEffectId2 == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude2;
 			if (jewelryEffectId3 == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude3;
 			if (jewelryEffectId4 == JewelryLib.MODIFIER_HP) max += jewelryEffectMagnitude4;
+			if (hasPerk(PerkLib.JobGuardian)) multimax += 0.01;
+			if (hasPerk(PerkLib.JobDefender)) multimax += 0.04;
 			if (hasPerk(PerkLib.RefinedBodyI)) multimax += 0.05;
 			if (hasPerk(PerkLib.RefinedBodyII)) multimax += 0.05;
 			if (hasPerk(PerkLib.RefinedBodyIII)) multimax += 0.05;
@@ -913,12 +912,8 @@ public class Creature extends Utils
 			if (hasPerk(PerkLib.LimitBreakerBody2ndStage)) multimax += 0.1;
 			if (hasPerk(PerkLib.LimitBreakerBody3rdStage)) multimax += 0.15;
 			if (hasPerk(PerkLib.DeityJobMunchkin)) multimax += 0.2;
-			if (level > 9) dmmmml += 0.1;
-			if (level > 24) dmmmml += 0.1;
-			if (level > 56) dmmmml += 0.1;
-			if (this.touStat.core.value > 0) dmmmm += this.touStat.core.value * dmmmml;
-			if (this.touStat.train.value > 0) dmmmm += this.touStat.train.value * dmmmml;
-			if (dmmmm > 1) multimax *= dmmmm;
+			if (this.touStat.core.value > 0) multimax += this.touStat.core.value * 0.1;
+			if (this.touStat.train.value > 0) multimax += this.touStat.train.value * 0.1;
 			max *= multimax;
 			max = Math.round(max);
 			return max;
@@ -977,56 +972,8 @@ public class Creature extends Utils
 			return Math.min(19999999999,max);
 		}
 		public function maxOverHP():Number {
-			var maxOver:Number = maxHP();
-			var maxOver2:Number = 1;
-			if (hasPerk(PerkLib.HiddenJobBloodDemon)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.WayOfTheBlood)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.BloodDemonToughness)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.MyBloodForBloodPuppies)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.YourPainMyPower)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.BloodDemonIntelligence)) maxOver2 += 0.1;
-			//
-			//
-			if (hasPerk(PerkLib.BloodDemonWisdom)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.MunchkinAtWork)) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.SPSurvivalTrainingX)) {
-				var limit:Number = perkv1(PerkLib.SPSurvivalTrainingX) * 10;
-				var bonus:Number = Math.round((level - 1) / 3);
-				if (bonus > limit) bonus = limit;
-				maxOver2 += (0.01 * bonus);
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
-				if (hasPerk(PerkLib.SoulApprentice)) maxOver2 += 0.01;
-				if (hasPerk(PerkLib.SoulPersonage)) maxOver2 += 0.01;
-				if (hasPerk(PerkLib.SoulWarrior)) maxOver2 += 0.01;
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLWarriorStage)) {
-				if (hasPerk(PerkLib.SoulSprite)) maxOver2 += 0.02;
-				if (hasPerk(PerkLib.SoulScholar)) maxOver2 += 0.02;
-				if (hasPerk(PerkLib.SoulGrandmaster)) maxOver2 += 0.02;
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLElderStage)) {
-				if (hasPerk(PerkLib.SoulElder)) maxOver2 += 0.03;
-				if (hasPerk(PerkLib.SoulExalt)) maxOver2 += 0.03;
-				if (hasPerk(PerkLib.SoulOverlord)) maxOver2 += 0.03;
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLOverlordStage)) {
-				if (hasPerk(PerkLib.SoulTyrant)) maxOver2 += 0.04;
-				if (hasPerk(PerkLib.SoulKing)) maxOver2 += 0.04;
-				if (hasPerk(PerkLib.SoulEmperor)) maxOver2 += 0.04;
-			}
-			if (hasPerk(PerkLib.FleshBodyVoLTyrantStage)) {
-				if (hasPerk(PerkLib.SoulAncestor)) maxOver2 += 0.05;
-			}
-			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) maxOver2 += 0.1;
-			if (perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxOver2 += 0.2;
-			if (perkv1(IMutationsLib.HumanBonesIM) >= 4) maxOver2 += 0.1;
-			if (hasPerk(PerkLib.Soulless)) maxOver2 += (0.01 * level);
-			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
-			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
-			maxOver *= maxOver2;//~270%
-			maxOver = Math.round(maxOver);
-			return Math.min(54999999999,maxOver);
+			var max:Number = Math.round(maxHP_base()*maxHP_mult());
+			return Math.min(19999999999,max);
 		}
 		public function minHP():Number {
 			return 0;
@@ -1144,7 +1091,7 @@ public class Creature extends Utils
 				wis:1,
 				lib:1,
 				sens:10,
-				cor:0
+				cor:-200
 			};
 		}
 		/**
@@ -1240,7 +1187,7 @@ public class Creature extends Utils
 			}
 			lust = Utils.boundFloat(mins.lust, lust + dlust, maxOverLust());
 			cor  = Utils.boundFloat(mins.cor, cor + dcor, 100);
-            if (cor < 1.0) cor = 0;//check [0,1] to avoid confusion
+            if (cor < -199) cor = -2100;//check [0,1] to avoid confusion
 
 			// old_hp / old_max = new_hp / new_max
 			HP = oldHPratio * maxHP();
@@ -3171,6 +3118,10 @@ public class Creature extends Utils
 			return countCocksOfType(CockTypesEnum.BAROMETZ);
 		}
 
+		public function ushOniCocks():int { //How many ushi-onicocks?
+			return countCocksOfType(CockTypesEnum.USHI_ONI);
+		}
+
 
 		public function findFirstCockType(ctype:CockTypesEnum):Number
 		{
@@ -5087,4 +5038,4 @@ public class Creature extends Utils
 			//Do nothing
 		}
 	}
-}
+}

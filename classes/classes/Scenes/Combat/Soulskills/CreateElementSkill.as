@@ -25,7 +25,7 @@ public class CreateElementSkill extends AbstractSoulSkill {
 		lastAttackType = Combat.LAST_ATTACK_SPELL;
     }
 
-	private function buildTagList(element:String):Array {
+	private static function buildTagList(element:String):Array {
 		var tagArr:Array = [TAG_DAMAGING, TAG_MAGICAL, TAG_TIER1];
 
 		var tagToAdd:int;

@@ -249,7 +249,7 @@ public class Asuka extends Monster
 			this.ass.analLooseness = AssClass.LOOSENESS_TIGHT;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.bodyColor = "light";
-			this.hairColor = "auburn";
+			this.hairColor = "burnt orange";
 			this.lust = 30;
 			this.lustVuln = .35;
 			this.gems = 15 + rand(8);

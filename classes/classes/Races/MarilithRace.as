@@ -75,6 +75,7 @@ public class MarilithRace extends Race {
 				.hasPerk(PerkLib.Soulless, +4)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 				
+		addBloodline(PerkLib.LamiasDescendant, PerkLib.BloodlineLamia);
 		addMutation(IMutationsLib.VenomGlandsIM);
 		addMutation(IMutationsLib.BlackHeartIM);
 		addMutation(IMutationsLib.FiendishMetabolismIM);

@@ -36,9 +36,13 @@ public class AbstractSoulSkill extends CombatAbility {
             return "Your current soulforce is too low."
         }
 
-        if (canUseBlood && player.hasStatusEffect(StatusEffects.BloodCultivator) && ((player.HP - player.minHP()) - 1) < (sfCost())) {
+        if (canUseBlood && player.hasStatusEffect(StatusEffects.BloodCultivator) && (((player.HP - player.minHP()) - 1) < sfCost())) {
             return "Your hp is too low to use this soulskill."
         }
+
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4 && (((player.HP - player.minHP()) - 1) < sfCost())) {
+			return "Your hp is too low to use this soulskill."
+		}
 
         return "";
     }  
@@ -64,6 +68,7 @@ public class AbstractSoulSkill extends CombatAbility {
         else {
             player.soulforce -= sfCost();
         }
+		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= sfCost();
     }
 
     protected function display():String {
@@ -80,9 +85,13 @@ public class AbstractSoulSkill extends CombatAbility {
 			leech *= 0.2;
 		}
 		else leech *= 0.1;
+		if (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH) {
+			leechCap *= 1.5;
+			leech *= 1.5;
+		}
 		leech = Math.round(leech);
 		if (leech > Math.round(player.maxHP() * leechCap)) leech = Math.round(player.maxHP() * leechCap);
-		HPChange(leech, false, false);
+	    pc.HPChange(leech, false, false);
 	}
 
 	protected function monsterDodgeSkill(skillName:String, display:Boolean = true, hitModifier:int = 0):Boolean {

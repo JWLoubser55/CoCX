@@ -35,14 +35,14 @@ import classes.TimeAwareInterface;
 		
 		public function calcWizardsMult():Number {
 			var multadd:Number = 3.0;
-            if (game && game.player) multadd += game.player.cor * 0.03;
+            if (game && game.player) multadd += game.player.playerCorruption() * 0.015;
 			return multadd;
 		}
 
         private static var lastCor:Number = 0;
 
         public function updateWizardsMult():void {
-            if (game.player.cor != lastCor) {
+            if (game.player.playerCorruption() != lastCor) {
 				_buffs['spellpower'] = calcWizardsMult();
                 if (game.player.weapon == this) {
                     //re-requip to update player's perk
@@ -50,16 +50,16 @@ import classes.TimeAwareInterface;
 					afterUnequip(false, slot);
 					afterEquip(false, slot);
                 }
-                lastCor = game.player.cor;
+                lastCor = game.player.playerCorruption();
             }
         }
 
         override public function get descBase():String {
             if (game && game.player)
                 return _description + (
-                    game.player.cor < 25 ? "\n\nYour pure aura almost breaks the flow of energy inside the staff, decreasing its power!\n" :
-                    game.player.cor < 50 ? "\n\nYour pure aura slightly interrupts your connection with the staff, decreasing its power.\n" :
-                    game.player.cor < 75 ? "\n\nYour corrupted aura slightly increases the staff's power.\n" :
+                    game.player.cor < -50 ? "\n\nYour pure aura almost breaks the flow of energy inside the staff, decreasing its power!\n" :
+                    game.player.cor < 0 ? "\n\nYour pure aura slightly interrupts your connection with the staff, decreasing its power.\n" :
+                    game.player.cor < 50 ? "\n\nYour corrupted aura slightly increases the staff's power.\n" :
                     "\n\nYour corrupted energy flows throgh the staff, empowering it!\n");
             else
                 return _description;

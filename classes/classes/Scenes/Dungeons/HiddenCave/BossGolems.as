@@ -61,7 +61,7 @@ public class BossGolems extends AbstractGargoyle
 		{
 			if (player.hasStatusEffect(StatusEffects.SoulArenaGauntlet)) SceneLib.hexindao.gauntletchallange2postfight();
 			else {
-				outputText("Your last attack cause the golems to crumble to rubbles on the ground. It seems the way is clear, better not linguer in the same spot for to long there is no telling when another may cross your path.\n\n");
+				outputText("Your last attack cause the golems to crumble to rubbles on the ground. It seems the way is clear, better not linger in the same spot for to long there is no telling when another may cross your path.\n\n");
 				flags[kFLAGS.HIDDEN_CAVE_BOSSES] = 2;
 				cleanupAfterCombat();
 			}

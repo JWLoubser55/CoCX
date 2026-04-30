@@ -471,7 +471,7 @@ public class HellHoundScene extends BaseContent
 			outputText("You growl loudly as you hilt your erections as deep into him as you can, causing him to give a quick whimper in protest as you finally hit your climax. You practically erupt like a volcano, shooting jet after jet of cum into his abused hole. As your erections slowly deflate, you begin to pull out, satisfied having marked your territory. Your boiling cum dribbles from the head of your length and out of the pup's gaping hole. He'll serve as a reminder to everyone who's the top dog around here.[pg]");
 			if(player.hasMutation(IMutationsLib.AlphaHowlIM) && player.hasMutation(IMutationsLib.HellhoundFireBallsIM)) {
 				var ptier:Number = player.perkv1(IMutationsLib.HellhoundFireBallsIM);
-				if (ptier > 1 && (LunaFollower.HellhoundPackMember < (ptier > 3 ? (Math.floor(2.5*ptier)) : ptier))) {
+				if (ptier >= 1 && (LunaFollower.HellhoundPackMember < (ptier > 3 ? (Math.floor(2.5*ptier)) : ptier))) {
 					outputText("With his ass thoroughly bred the hellhound got two choices right now, either to yield to your overwhelming supremacy and maleness or go back to his old pack in shame. The hellhound hesitates for a moment before ");
 					if (rand(2) == 0) {
 						outputText("following you back to your camp, betraying his old pack to join yours as your subservient new member. Well, you didn't expect him to be a subby bitch but so long as he's willing to take you in once in a while you don't mind keeping him around.");

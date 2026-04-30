@@ -80,13 +80,7 @@ public class MidokaScene extends NPCAwareContent implements TimeAwareInterface, 
 	}
 	private function applyMidokaName():void {
 		//Easter Egg Names Hel WILL NOT ALLOW:
-		if (CoC.instance.testingBlockExiting)
-		{
-			// We're running under the testing script.
-			// Stuff a name in the box and go go go
-			mainView.nameBox.text = "Kiderp";
-		}
-		else if(mainView.nameBox.text == "")
+		if(mainView.nameBox.text == "")
 		{
 			clearOutput();
 			if(mainView.nameBox.text == "") outputText("“<i>Please give her a name [name].</i>”");

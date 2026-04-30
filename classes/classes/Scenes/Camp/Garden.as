@@ -1150,26 +1150,28 @@ import classes.Scenes.SceneLib;
 	}
 	private function HerbalismCraftItem2(Item:Number, IngrediantName:String, CraftingResult:String):void {
 		clearOutput();
+		var multi:Number = 1;
+		if (player.hasPerk(PerkLib.NaturalHerbalism)) multi *= 3;
 		outputText("In which slot do you want to store the crafted potion?");
 		menu();
 		addButton(0, "-01-", HerbalismCraftItem2a, Item, 1, CraftingResult).hint("Put crafted potion in the first slot of potion bag.")
 			.disableIf((PotionsBagSlot01Potion != CraftingResult && PotionsBagSlot01Potion != ""), "You already keep a different type of the potion in this slot.")
-			.disableIf((PotionsBagSlot01 + 1 > PotionsBagSlot01Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
+			.disableIf((PotionsBagSlot01 + multi > PotionsBagSlot01Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
 		addButton(1, "-02-", HerbalismCraftItem2a, Item, 2, CraftingResult).hint("Put crafted potion in the first slot of potion bag.")
 			.disableIf((PotionsBagSlot02Potion != CraftingResult && PotionsBagSlot02Potion != ""), "You already keep a different type of the potion in this slot.")
-			.disableIf((PotionsBagSlot02 + 1 > PotionsBagSlot02Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
+			.disableIf((PotionsBagSlot02 + multi > PotionsBagSlot02Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
 		addButton(2, "-03-", HerbalismCraftItem2a, Item, 3, CraftingResult).hint("Put crafted potion in the first slot of potion bag.")
 			.disableIf((PotionsBagSlot03Potion != CraftingResult && PotionsBagSlot03Potion != ""), "You already keep a different type of the potion in this slot.")
-			.disableIf((PotionsBagSlot03 + 1 > PotionsBagSlot03Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
+			.disableIf((PotionsBagSlot03 + multi > PotionsBagSlot03Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
 		addButton(3, "-04-", HerbalismCraftItem2a, Item, 4, CraftingResult).hint("Put crafted potion in the first slot of potion bag.")
 			.disableIf((PotionsBagSlot04Potion != CraftingResult && PotionsBagSlot04Potion != ""), "You already keep a different type of the potion in this slot.")
-			.disableIf((PotionsBagSlot04 + 1 > PotionsBagSlot04Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
+			.disableIf((PotionsBagSlot04 + multi > PotionsBagSlot04Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
 		addButton(4, "-05-", HerbalismCraftItem2a, Item, 5, CraftingResult).hint("Put crafted potion in the first slot of potion bag.")
 			.disableIf((PotionsBagSlot05Potion != CraftingResult && PotionsBagSlot05Potion != ""), "You already keep a different type of the potion in this slot.")
-			.disableIf((PotionsBagSlot05 + 1 > PotionsBagSlot05Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
+			.disableIf((PotionsBagSlot05 + multi > PotionsBagSlot05Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
 		addButton(5, "-06-", HerbalismCraftItem2a, Item, 6, CraftingResult).hint("Put crafted potion in the first slot of potion bag.")
 			.disableIf((PotionsBagSlot06Potion != CraftingResult && PotionsBagSlot06Potion != ""), "You already keep a different type of the potion in this slot.")
-			.disableIf((PotionsBagSlot06 + 1 > PotionsBagSlot06Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
+			.disableIf((PotionsBagSlot06 + multi > PotionsBagSlot06Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
 		addButton(14, "Back", herbalismMenu);
 	}
 	private function HerbalismCraftItem2a(Item:Number, Item2:Number, CraftingResult:String):void {
@@ -1206,10 +1208,7 @@ import classes.Scenes.SceneLib;
 		}
 		clearOutput();
 		outputText("You spend the better part of the next hour refining the "+Ingredient+" into a "+CraftingResult+" adding it to your potion bag.");
-		if (player.hasPerk(PerkLib.NaturalHerbalism)) {
-			outputText("Your natural knowledge of herbalism allowed you to craft two additional " + CraftingResult + ".");
-			count *= 3;
-		}
+		if (player.hasPerk(PerkLib.NaturalHerbalism)) outputText("Your natural knowledge of herbalism allowed you to craft two additional " + CraftingResult + ".");
 		var HE:Number = 20 + player.level;
 		HE *= player.HerbalismMulti();
 		player.herbXP(HE);
@@ -1219,6 +1218,8 @@ import classes.Scenes.SceneLib;
 		clearOutput();
 		outputText("In which slot do you want to store the crafted potion?");
 		var amount:Number = 0;
+		var multi:Number = 1;
+		if (player.hasPerk(PerkLib.NaturalHerbalism)) multi *= 3;
 		switch (IngrediantName) {
 			case "healing herb":
 				amount = IngrediantBagSlot01;
@@ -1246,22 +1247,22 @@ import classes.Scenes.SceneLib;
 		if (amount >= 5) {
 			addButton(0, "-01-", HerbalismCraftItem3a, Item, 1, CraftingResult).hint("Put crafted potions in first slot of potion bag.")
 				.disableIf((PotionsBagSlot01Potion != CraftingResult && PotionsBagSlot01Potion != ""), "You already keep different type of the potions in this slot.")
-				.disableIf((PotionsBagSlot01 + 5 > PotionsBagSlot01Cap), "You not have left any space to store crafted potions in this potion bag slot.");
+				.disableIf((PotionsBagSlot01 + (5 * multi) > PotionsBagSlot01Cap), "You not have left any space to store crafted potions in this potion bag slot.");
 			addButton(1, "-02-", HerbalismCraftItem3a, Item, 2, CraftingResult).hint("Put crafted potions in second slot of potion bag.")
 				.disableIf((PotionsBagSlot02Potion != CraftingResult && PotionsBagSlot02Potion != ""), "You already keep different type of the potions in this slot.")
-				.disableIf((PotionsBagSlot02 + 5 > PotionsBagSlot02Cap), "You not have left any space to store crafted potions in this potion bag slot.");
+				.disableIf((PotionsBagSlot02 + (5 * multi) > PotionsBagSlot02Cap), "You not have left any space to store crafted potions in this potion bag slot.");
 			addButton(2, "-03-", HerbalismCraftItem3a, Item, 3, CraftingResult).hint("Put crafted potions in third slot of potion bag.")
 				.disableIf((PotionsBagSlot03Potion != CraftingResult && PotionsBagSlot03Potion != ""), "You already keep different type of the potions in this slot.")
-				.disableIf((PotionsBagSlot03 + 5 > PotionsBagSlot03Cap), "You not have left any space to store crafted potions in this potion bag slot.");
+				.disableIf((PotionsBagSlot03 + (5 * multi) > PotionsBagSlot03Cap), "You not have left any space to store crafted potions in this potion bag slot.");
 			addButton(3, "-04-", HerbalismCraftItem3a, Item, 4, CraftingResult).hint("Put crafted potions in fourth slot of potion bag.")
 				.disableIf((PotionsBagSlot04Potion != CraftingResult && PotionsBagSlot04Potion != ""), "You already keep different type of the potions in this slot.")
-				.disableIf((PotionsBagSlot04 + 5 > PotionsBagSlot04Cap), "You not have left any space to store crafted potions in this potion bag slot.");
+				.disableIf((PotionsBagSlot04 + (5 * multi) > PotionsBagSlot04Cap), "You not have left any space to store crafted potions in this potion bag slot.");
 			addButton(4, "-05-", HerbalismCraftItem3a, Item, 5, CraftingResult).hint("Put crafted potions in fifth slot of potion bag.")
 				.disableIf((PotionsBagSlot05Potion != CraftingResult && PotionsBagSlot05Potion != ""), "You already keep different type of the potions in this slot.")
-				.disableIf((PotionsBagSlot05 + 5 > PotionsBagSlot05Cap), "You not have left any space to store crafted potions in this potion bag slot.");
+				.disableIf((PotionsBagSlot05 + (5 * multi) > PotionsBagSlot05Cap), "You not have left any space to store crafted potions in this potion bag slot.");
 			addButton(5, "-06-", HerbalismCraftItem3a, Item, 6, CraftingResult).hint("Put crafted potions in sixth slot of potion bag.")
 				.disableIf((PotionsBagSlot06Potion != CraftingResult && PotionsBagSlot06Potion != ""), "You already keep different type of the potions in this slot.")
-				.disableIf((PotionsBagSlot06 + 5 > PotionsBagSlot06Cap), "You not have left any space to store crafted potions in this potion bag slot.");
+				.disableIf((PotionsBagSlot06 + (5 * multi) > PotionsBagSlot06Cap), "You not have left any space to store crafted potions in this potion bag slot.");
 		}
 		else {
 			outputText("\n\n<b>You do not have enough ingredients to make this potion!</b>");
@@ -1302,10 +1303,7 @@ import classes.Scenes.SceneLib;
 		}
 		clearOutput();
 		outputText("You spend the better part of the next hour refining the "+Ingredient+" into multiple "+CraftingResult+" adding them to your bag.");
-		if (player.hasPerk(PerkLib.NaturalHerbalism)) {
-			outputText("Your natural knowledge of herbalism allowed you to craft three times as many "+CraftingResult+".");
-			count *= 3;
-		}
+		if (player.hasPerk(PerkLib.NaturalHerbalism)) outputText("Your natural knowledge of herbalism allowed you to craft three times as many "+CraftingResult+".");
 		var HE:Number = (20 + player.level)*5;
 		HE *= player.HerbalismMulti();
 		player.herbXP(HE);

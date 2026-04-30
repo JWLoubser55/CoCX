@@ -295,6 +295,39 @@ package classes.GeneticMemories {
 		  }
 	  });
 
+	  public static const USHI_ONI:int = _partid++;
+	  EnumValue.add(Memories, USHI_ONI, "USHI_ONI", {
+		  id: "UshiOni Horns",
+		  name: "UshiOni Horns",
+		  cost: 100,
+		  title: "UshiOni Horns",
+		  transformation: function(): Transformation {
+			  return CoC.instance.transformations.HornsUshiOni;
+		  }
+	  });
+
+	  public static const JIANGSHI_SPELL_TAG:int = _partid++;
+	  EnumValue.add(Memories, JIANGSHI_SPELL_TAG, "JIANGSHI_SPELL_TAG", {
+		  id: "Jiangshi Spell Tag",
+		  name: "Jiangshi Spell Tag",
+		  cost: 100,
+		  title: "Jiangshi Spell Tag",
+		  transformation: function(): Transformation {
+			  return CoC.instance.transformations.HornsJiangshi;
+		  }
+	  });
+
+	  public static const RHINO:int = _partid++;
+	  EnumValue.add(Memories, RHINO, "RHINO", {
+		  id: "Rhino Horns",
+		  name: "Rhino Horns",
+		  cost: 100,
+		  title: "Rhino Horns",
+		  transformation: function(): Transformation {
+			  return CoC.instance.transformations.HornsRhino;
+		  }
+	  });
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

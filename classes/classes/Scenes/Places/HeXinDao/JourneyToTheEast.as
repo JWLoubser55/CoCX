@@ -125,15 +125,16 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			else outputText("morning");
 			outputText(" " + player.mf("mister", "miss") + ", what can I get you?</i>\"\n\n");
 			menu();
-			addButton(0, "ManUp B", confirmBuyDrink, consumables.MANUP_B, 1).hint("1 spirit stone");
-			addButton(1, "Gob.Ale", confirmBuyDrink, consumables.GOB_ALE, 1).hint("1 spirit stone");
-			addButton(2, "OrcMead", confirmBuyDrink, consumables.ORCMEAD, 1).hint("1 spirit stone");
-			addButton(3, "OniSake", confirmBuyDrink, consumables.ONISAKE, 1).hint("1 spirit stone");
-			addButton(5, "Fiery S", confirmBuyDrink, consumables.FIERYS_, 1).hint("1 spirit stone");
-			addButton(6, "SalamFW", confirmBuyDrink, consumables.SALAMFW, 1).hint("1 spirit stone");
-			addButton(7, "NoceLiq", confirmBuyDrink, consumables.NOCELIQ, 2).hint("2 spirit stones");
+			addButton(0, "ManUp Beer", confirmBuyDrink, consumables.MANUP_B, 1).hint("1 spirit stone");
+			addButton(1, "Goblin Ale", confirmBuyDrink, consumables.GOB_ALE, 1).hint("1 spirit stone");
+			addButton(2, "Orc Mead", confirmBuyDrink, consumables.ORCMEAD, 1).hint("1 spirit stone");
+			addButton(3, "Oni Sake", confirmBuyDrink, consumables.ONISAKE, 1).hint("1 spirit stone");
+			addButton(4, "Cervinium", confirmBuyDrink, consumables.CERVINI, 1).hint("1 spirit stone");
+			addButton(5, "Fiery Sake", confirmBuyDrink, consumables.FIERYS_, 1).hint("1 spirit stone");
+			addButton(6, "Salamand FW", confirmBuyDrink, consumables.SALAMFW, 1).hint("1 spirit stone");
+			addButton(7, "Nocello Liq", confirmBuyDrink, consumables.NOCELIQ, 2).hint("2 spirit stones");
 			addButton(8, "Asumaki", confirmBuyDrink, consumables.ASKIRIN, 2).hint("2 spirit stones");
-			addButton(12, "BimboL", confirmBuyDrink, consumables.BIMBOLQ, 100).hint("100 spirit stones");
+			addButton(12, "BimboLiq", confirmBuyDrink, consumables.BIMBOLQ, 100).hint("100 spirit stones");
 			addButton(13, "BroBrew", confirmBuyDrink, consumables.BROBREW, 100).hint("100 spirit stones");
 			addButton(14, "Back", notThirsty);
 		}
@@ -366,7 +367,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.2) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.2);
 				else player.removeStatusEffect(StatusEffects.CombatWounds);
 			}
-			HPChange(player.maxOverHP() * 0.25, true, false);
+			pc.HPChange(player.maxOverHP() * 0.25, true, false);
 			EngineCore.changeFatigue( -(Math.round(player.maxFatigue() * 0.125)));
 			doNext(dianaAtJttEMain);
 			advanceMinutes(15);
@@ -533,7 +534,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			}
 			menu();
 			addButton(1, "No", firstTimeMeetingNekomataBoyNo);
-			addButton(3, "Yes", firstTimeMeetingNekomataBoyYes).disableIf(!player.blockingBodyTransformations(), "Can't have any effect that block body transformations.");
+			addButton(3, "Yes", firstTimeMeetingNekomataBoyYes).disableIf(player.blockingBodyTransformations(), "Can't have any effect that block body transformations.");
 		}
 		public function firstTimeMeetingNekomataBoyNo():void {
 			outputText("Yeah no, this is looking too good to be true and truth be told it likely is. You tell the sketchy cat you will pass on it for now and head back towards the bar.\n\n");
@@ -592,12 +593,11 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			outputText("(<b>Gained Perks: Halted vitals, Super strength, Poison nails, Rigidity, Life leech, Undeath, Energy dependent</b>)\n\n");
 			player.skinColor = randomChoice("snow white", "ghostly pale", "light blue");
 			CoC.instance.transformations.FaceJiangshi.applyEffect(false);
-			player.eyes.type = Eyes.JIANGSHI;
+			CoC.instance.transformations.EyesJiangshi.applyEffect(false);
 			CoC.instance.transformations.EyesChangeColor(["turquoise"]).applyEffect(false);
-			player.horns.type = Horns.SPELL_TAG;
-			player.horns.count = 1;
-			player.arms.type = Arms.JIANGSHI;
-			player.lowerBody = LowerBody.JIANGSHI;
+			CoC.instance.transformations.HornsJiangshi.applyEffect(false);
+			CoC.instance.transformations.ArmsJiangshi.applyEffect(false);
+			CoC.instance.transformations.LowerBodyJiangshi.applyEffect(false);
 			player.createPerk(PerkLib.HaltedVitals, 0, 0, 0, 0);
 			player.createPerk(PerkLib.SuperStrength, 0, 0, 0, 0);
 			player.createPerk(PerkLib.PoisonNails, 0, 0, 0, 0);

@@ -4,6 +4,9 @@
 package classes.Scenes.Combat {
 import classes.BaseContent;
 
+import coc.view.ButtonData;
+import coc.view.CoCButton;
+
 public class BaseCombatContent extends BaseContent {
 	public function BaseCombatContent() {
 	}
@@ -48,9 +51,6 @@ public class BaseCombatContent extends BaseContent {
 	protected function doPhysicalDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPhysicalDamage(damage, apply, display, ignoreDR);
 	}
-	protected function doMinionPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionPhysDamage(damage, apply, display, ignoreDR);
-	}
 	protected function doMagicDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMagicDamage(damage, apply, display, ignoreDR);
 	}
@@ -92,6 +92,39 @@ public class BaseCombatContent extends BaseContent {
 	}
 	protected function doTrueDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
 		return combat.doTrueDamage(damage, apply, display);
+	}
+	protected function doMinionPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionPhysDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionMagDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionFireDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionIceDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionLightningDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionDarknessDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionPoisonDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionWindDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionWaterDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionEarthDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionAcidDamage(damage, apply, display, ignoreDR);
 	}
 	protected function combatParry():Boolean {
 		return combat.combatParry();
@@ -368,5 +401,29 @@ public class BaseCombatContent extends BaseContent {
 	protected function maintainCorrosionMod():void {
         combat.magic.maintainCorrosionModImpl();
     }
+	// ====
+	//  UI
+	// ====
+
+	/**
+	 * Mark this button data as a "skill" that could be favourited.
+	 * This should be called ONLY AFTER callback is initialized, because it
+	 * will be wrapped.
+	 *
+	 * skillId is a unique button identifier
+	 */
+	protected function favbd(bd:ButtonData, skillId:String):void {
+		combat.ui.favBdImpl(bd, skillId);
+	}
+	/**
+	 * Mark this button as a "skill" that could be favourited.
+	 * This should be called ONLY AFTER callback is initialized, because it
+	 * will be wrapped.
+	 *
+	 * skillId is a unique button identifier
+	 */
+	protected function favbtn(bd:CoCButton, skillId:String):void {
+		combat.ui.favImpl(bd, skillId);
+	}
 }
 }

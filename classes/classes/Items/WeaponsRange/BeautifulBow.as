@@ -16,13 +16,13 @@ package classes.Items.WeaponsRange
 		}
 		
 		override public function get attack():Number {
-			var temp:int = 4 - (game.player.cor / 10);
+			var temp:int = 4 - (game.player.playerCorruption() / 20);
 			if (temp < 1) temp = 1;
 			return temp;
 		}
 		
 		override public function canEquip(doOutput:Boolean, slot:int):Boolean {
-			if (game.player.cor < (33 + game.player.corruptionTolerance)) return super.canEquip(doOutput, slot);
+			if (game.player.cor < (-33 + game.player.corruptionTolerance)) return super.canEquip(doOutput, slot);
 			if(doOutput) outputText("You grab hold of the handle of the bow only to have it grow burning hot.  You're forced to let it go lest you burn yourself.  Something within the bow must be displeased.  ");
 			return false;
 		}

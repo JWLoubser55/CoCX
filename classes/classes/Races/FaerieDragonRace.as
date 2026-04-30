@@ -63,6 +63,7 @@ public class FaerieDragonRace extends Race {
 				.hornType(NOT(Horns.FROSTWYRM), 0, -3)
 				.hasCockOfType(CockTypesEnum.DRAGON, +1)
 				.gender(Gender.GENDER_FEMALE, +1)
+				.hasPerk(PerkLib.DragonFaerieBreath, +1)
 				.hasPerk(PerkLib.Dracoforce, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		//addScoresAfter(8)

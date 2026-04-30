@@ -5,14 +5,14 @@
 package classes.Scenes.Monsters 
 {
 
-	import classes.*;
-	import classes.BodyParts.Wings;
-	import classes.Items.DynamicItems;
-	import classes.Scenes.Dungeons.RiverDungeon;
-	import classes.Scenes.SceneLib;
-	import classes.internals.ChainedDrop;
+import classes.*;
+import classes.BodyParts.Wings;
+import classes.Items.DynamicItems;
+import classes.Scenes.Dungeons.RiverDungeon;
+import classes.Scenes.SceneLib;
+import classes.internals.ChainedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class AngelLR extends AbstractAngel
 	{
@@ -102,7 +102,7 @@ public class AngelLR extends AbstractAngel
 			if (choice == 0) AngelEnergyRays();
 			if (choice > 0) AngelBaseAttack();
 		}
-		override public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton, btnSpecial2:CoCButton):void{
+		override public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData, btnSpecial2:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.SoulArena)) {
 				if (!player.hasStatusEffect(StatusEffects.MinoKing) && player.companionsInPCParty()) btnSpecial1.show("Dish Helper", SceneLib.hexindao.dishHelperIL);
 				else btnSpecial1.showDisabled("Dish Helper", "You don't have anyone to take care of second angel!");

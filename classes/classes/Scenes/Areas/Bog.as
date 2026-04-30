@@ -85,6 +85,18 @@ public class Bog extends BaseContent
 				call: SceneLib.trollScene.encounterAdultMaleTroll,
 				chance: 0.5
 			}, {
+				name: "ushionna",
+				label : "Ushi Onna",
+				kind  : 'monster',
+				call: encounterUshiOnna,
+				chance: 0.5
+			}, {
+				name: "ushioni",
+				label : "Ushi Oni",
+				kind  : 'monster',
+				call: encounterUshiOni,
+				chance: 0.5
+			}, {
 				name: "findnothing",
 				label : "Walk",
 				kind:'walk',
@@ -203,6 +215,16 @@ public class Bog extends BaseContent
 				} else SceneLib.zenjiScene.part2TrollEncounterFirst();
 			} else if (flags[kFLAGS.ZENJI_PROGRESS] > 0 && flags[kFLAGS.ZENJI_PROGRESS] < 4) SceneLib.zenjiScene.part1TrollEncounterRepeat();
 			else if (flags[kFLAGS.ZENJI_PROGRESS] == 0) SceneLib.zenjiScene.part1TrollEncounter();
+		}
+		private function encounterUshiOnna():void {
+			clearOutput();
+			outputText("As you are wandering through the bog you are suddenly halted by a noise very near. You turn around and see a large ushi onna leaping towards you. You barely have enough time to dodge her as she tumbles in front of you, quickly springing up to her feet.\n\n");
+			startCombat(new UshiOnna());
+		}
+		private function encounterUshiOni():void {
+			clearOutput();
+			outputText("As you are wandering through the bog you are suddenly halted by a noise very near. You turn around and see a large ushi oni leaping towards you. You barely have enough time to dodge him as he tumbles in front of you, quickly springing up to her feet.\n\n");
+			startCombat(new UshiOni());
 		}
 	}
 }

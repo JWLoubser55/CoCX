@@ -12,7 +12,7 @@ import classes.StatusEffects;
 import classes.StatusEffects.Combat.GardenerSapSpeedDebuff;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 /**
 	 * ...
@@ -83,7 +83,7 @@ import coc.view.CoCButton;
 			else SceneLib.d3.succubusGardener.surrenderToTheGardener(hpVictory);
 		}
 
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.Tentagrappled)) {
 				btnStruggle.call(grappleStruggle);
 				btnBoundWait.call(grappleWait);

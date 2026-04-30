@@ -58,6 +58,7 @@ public function anubisWon(genderA:Number = 0):void {
 	}
 }
 public function anubisWonAndMummifyPC(genderA:Number = 0):void {
+	camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_CORPSE_PUPPETS);
 	outputText("As you fall defeated to the ground the Anubis walks toward you amused.\n\n");
 	outputText("\"<i>Not a bad struggle but your defiance ends there. You are strong enough to put up a token fight, you are worthy of becoming one of my pets.</i>\"\n\n");
 	outputText(""+(genderA == 1 ? "Sh" : "H")+"e runs h"+(genderA == 1 ? "er" : "is")+" hand across your skin making you moan uncontrollably as h"+(genderA == 1 ? "er" : "is")+" dark magic causes your sensitivity to spike to an absurd degree. You orgasm over and over again drenching the sand in your fluids as your brain turns to mush. Thinking is hard, cuming is easy, you only want to keep cuming over and over again. The gentle touch of your jackal tormentor ");

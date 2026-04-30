@@ -98,7 +98,7 @@ use namespace CoC;
 			damage += eBaseWisdomDamage() * 3;
 			damage += eBaseIntelligenceDamage() * 2;
 			damage += eBaseSpeedDamage();
-			if (player.isFlying()) damage *= 2;
+			if (player.isFlying() || player.hasPerk(PerkLib.Icerunner)) damage *= 2;
 			damage = player.takeFireDamage(damage, true);
 			damage = player.takeFireDamage(damage, true);
 			damage = player.takeFireDamage(damage, true);

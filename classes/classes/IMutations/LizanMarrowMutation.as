@@ -4,34 +4,33 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
 public class LizanMarrowMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Lizan Marrow";
-        }
+		public static const MNAME:String = "Lizan Marrow";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier == 1){
-                descS = "Regenerate 0.5% of HP per round in combat and 1% of HP per hour. Additionally your limit for innate self-regeneration rate increased.";
-            }
-            if (pTier == 2){
-                descS = "Regenerate 1% of HP per round in combat and 2% of HP per hour. Additionally your limit for innate self-regeneration rate increased.";
+            if (pTier >= 1){
+                descS = "Regenerate +"+pTier+"% of HP per round in combat and +"+(pTier*2)+"% of HP per hour. Additionally your limit for innate self-regeneration rate increased";
             }
             if (pTier == 3){
-                descS = "Regenerate 1.5% of HP per round in combat and 3% of HP per hour. Additionally your limit for innate self-regeneration rate increased. When below 25% of max HP regeneration provided by Lizan regeneration is 2x. You can't lose by HP until your health drops into the negatives more than 5% of max HP.";
+                descS = ". When below 25% of max HP regeneration provided by Lizan regeneration is 2x. You can't lose by HP until your health drops into the negatives more than 5% of max HP";
             }
             if (pTier == 4){
-                descS = "Regenerate 2% of HP per round in combat and 4% of HP per hour. Additionally your limit for innate self-regeneration rate increased. When below 60%/20% of max HP regeneration provided by Lizan regeneration is 2x/3x. Could slowly recover lost bodyparts (~0.5/1% per combat round/hour). You can't lose by HP until your health drops into the negatives more than 10% of max HP, +10% OverMax HP.";
+                descS = ". When below 60%/20% of max HP regeneration provided by Lizan regeneration is 2x/3x. Could slowly recover lost bodyparts (~1/2% per combat round/hour). You can't lose by HP until your health drops into the negatives more than 10% of max HP, +10% OverMax HP";
             }
             if (descS != "")descS += ".";
+            if (pTier >= 1) descS += " (Lizan race gaining extra profits: +1 to multi of the regeneration values per reached race bonuses tier (excluding increased HP recover below specific HP tresholds))";
             return descS;
         }
 
@@ -74,7 +73,7 @@ public class LizanMarrowMutation extends IMutationPerkType
         }
 
         public function LizanMarrowMutation() {
-            super(mName + " IM", mName, SLOT_BONE, 4);
+            super(MNAME, SLOT_BONE, 4);
         }
 
     }

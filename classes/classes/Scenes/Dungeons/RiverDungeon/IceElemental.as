@@ -82,7 +82,7 @@ public class IceElemental extends Monster
 		override public function defeated(hpVictory:Boolean):void
 		{
 			/*if (flags[kFLAGS.RIVER_DUNGEON_ELEMENTAL_MIXER] == 4) SceneLib.dungeons.riverdungeon.defeatAirElementalSubBoss();
-			else */cleanupAfterCombat();
+			else */SceneLib.exploration.elementalsDefeated();
 		}
 		
 		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void

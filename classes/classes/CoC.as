@@ -68,10 +68,10 @@ public class CoC extends MovieClip
         return _instance;
     }
     //Game Version
-    public var debugGameVer:String = "v0.9a.698";
+    public var debugGameVer:String = "v0.9a.810";
 
     //Mod save version.
-    public var modSaveVersion:Number = 36.594;
+    public var modSaveVersion:Number = 36.595;
     public const levelCap:Number = 233;
 
     //Lock cheats menus from public
@@ -85,7 +85,7 @@ public class CoC extends MovieClip
 
     /*private static var doCamp:Function; //Set by campInitialize, should only be called by playerMenu
     private static function campInitialize(passDoCamp:Function):void { doCamp = passDoCamp; }*/
-
+    public var settings:Settings                   = new Settings();
     public var charCreation:CharCreation           = new CharCreation();
     public var saves:Saves                         = new Saves(gameStateDirectGet, gameStateDirectSet);
     public var playerAppearance:PlayerAppearance   = new PlayerAppearance();
@@ -118,6 +118,7 @@ public class CoC extends MovieClip
     public var mainMenu:MainMenu = new MainMenu();
     public var perkMenu:PerkMenu = new PerkMenu();
     public var playerInfo:PlayerInfo = new PlayerInfo();
+	public var playerController:PlayerController = new PlayerController();
     public var debugInfoMenu:DebugInfo = new DebugInfo();
     public var gameSettings:GameSettings = new GameSettings();
     public var rootStory:Story = new Story("story",null,"root",true);
@@ -163,7 +164,6 @@ public class CoC extends MovieClip
     public var currentText:String;
     public var oldStats:*; // I *think* this is a generic object
     public var inputManager:InputManager;
-    public var monkey:ChaosMonkey;
     public var testingBlockExiting:Boolean;
 
     public var kFLAGS_REF:*;
@@ -229,10 +229,6 @@ public class CoC extends MovieClip
         // cheat for the parser to be able to find kFLAGS
         // If you're not the parser, DON'T USE THIS
 
-        // This is a flag used to prevent the game from exiting when running under the automated tester
-        // (the chaos monkey)
-        testingBlockExiting = false;
-
         // Used for stopping chaos monkey on syntax errors. Separate flag so we can make stopping optional
         CoC_Settings.haltOnErrors = false;
 
@@ -291,8 +287,6 @@ public class CoC extends MovieClip
         this.inputManager = new InputManager(stage, mainView, false);
         new ControlBindings().run(inputManager);
 
-        this.monkey = new ChaosMonkey(this);
-
         //} endregion
 
         /**
@@ -303,7 +297,6 @@ public class CoC extends MovieClip
 
 			//The Player object, used everywhere
 			//player = new Player();
-			model.player = player;
 			player2 = new Player();
 			new PlayerEvents();
 
@@ -361,7 +354,6 @@ public class CoC extends MovieClip
 
         //Used for stat tracking to keep up/down arrows correct.
         oldStats = {};
-        model.oldStats = oldStats;
         oldStats.oldStr  = 0;
         oldStats.oldTou  = 0;
         oldStats.oldSpe  = 0;
@@ -507,7 +499,7 @@ public class CoC extends MovieClip
 
     public function spriteSelect(choice:Class = null):void {
         // Inlined call from lib/src/coc/view/MainView.as
-        if (choice == null || flags[kFLAGS.SHOW_SPRITES_FLAG] == 1)
+        if (choice == null || settings.spritesOff == 1)
             mainViewManager.hideSprite();
         else
             mainViewManager.showSpriteBitmap(SpriteDb.bitmapData(choice));
@@ -539,7 +531,7 @@ public class CoC extends MovieClip
     {
         var fmt:TextFormat = mainView.mainText.defaultTextFormat;
 
-        if (flags[kFLAGS.CUSTOM_FONT_SIZE] != 0) fmt.size = flags[kFLAGS.CUSTOM_FONT_SIZE];
+        if (settings.customFontSize != 0) fmt.size = settings.customFontSize;
         fmt.color                           = mainViewManager.darkThemeImpl() ? 0xffffff : 0;
         mainView.mainText.defaultTextFormat = fmt;
         mainView.setOutputText(currentText);

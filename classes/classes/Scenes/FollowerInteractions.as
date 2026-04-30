@@ -479,11 +479,11 @@ private function srslyPimpinGuyz():void {
 	else outputText("\"<i>Are you all right?</i>\" the armor-goo asks.  You insist her that you have a terrible headache.  ");
 	outputText("You also find a note in a rough script that says: <i>This is what you get for being an asshole.</i>  Those damn bitches.");
 	player.gems *= 0;
-	player.itemSlot1.quantity = 0;
-	player.itemSlot2.quantity = 0;
-	player.itemSlot3.quantity = 0;
-	player.itemSlot4.quantity = 0;
-	player.itemSlot5.quantity = 0;
+	player.itemSlots[0].quantity = 0;
+	player.itemSlots[1].quantity = 0;
+	player.itemSlots[2].quantity = 0;
+	player.itemSlots[3].quantity = 0;
+	player.itemSlots[4].quantity = 0;
 	player.unequipArmor(); //Old armor disappears unless it's Valeria
 	player.setWeapon(WeaponLib.FISTS);
 //	player.armor = armors.C_CLOTH;

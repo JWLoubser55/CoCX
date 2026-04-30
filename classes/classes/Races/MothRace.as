@@ -62,7 +62,8 @@ public class MothRace extends Race {
 				.hasPerk(PerkLib.MothOvipositor, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
-        addMutation(IMutationsLib.TrachealSystemIM);
+        addBloodline(PerkLib.MothsDescendant, PerkLib.BloodlineMoth);
+		addMutation(IMutationsLib.TrachealSystemIM);
 		
 		buildTier(10, "moth-morph")
 				.buffs({

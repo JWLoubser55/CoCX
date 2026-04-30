@@ -34,17 +34,17 @@ public class Tidarion extends Weapon implements TimeAwareInterface {
     public function calcWizardsMult():Number {
         var multadd:Number = 0.5;
         if (game && game.player) {
-            multadd += (50 - game.player.cor) * 0.006; //from 25 to 75
-            if (game.player.cor < 3)
+            multadd += ((game.player.playerCorruption2() * 0.5) - game.player.playerCorruption()) * 0.003; //from 25 to 75
+            if (game.player.playerCorruption() < 6)
                 multadd += 0.1; //small bonus for PERFECTLY pure people
         }
         return multadd;
     }
 
-    private static var lastCor:Number = 50;
+    private static var lastCor:Number = 100;
 
     public function updateWizardsMult():void {
-        if (game.player.cor != lastCor) {
+        if (game.player.playerCorruption() != lastCor) {
             _buffs['spellpower'] = calcWizardsMult();
             if (game.player.weapon == game.weapons.TIDAR) {
                 //re-requip to update player's perk
@@ -52,13 +52,13 @@ public class Tidarion extends Weapon implements TimeAwareInterface {
                 afterUnequip(false, slot);
                 afterEquip(false, slot);
             }
-            lastCor = game.player.cor;
+            lastCor = game.player.playerCorruption();
         }
     }
 
     override public function get attack():Number {
         var base:Number = 20;
-        var pureBonus:Number = 1.0 + (50 - game.player.cor) * 0.01; //from 50 to 150
+        var pureBonus:Number = 1.0 + ((game.player.playerCorruption2() * 0.5) - game.player.playerCorruption()) * 0.005; //from 50 to 150
         var balancedAttack:Number = Math.floor((base + manaUsed() / 100) * pureBonus); //lol still OP, right?
         //remove this shit because I'm sure it WILL break the game eventually.
         return CombatAbilities.Whitefire.adjustSpellDamage(balancedAttack, DamageType.FIRE, CombatAbility.CAT_SPELL_WHITE, CoC.instance.monster, false, false);

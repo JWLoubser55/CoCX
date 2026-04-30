@@ -80,7 +80,7 @@ public class CharView extends Sprite {
 			loading = true;
 			clearAll();
 			if (loaderLocation == "external") trace("loading XML res/model.xml");
-			CoCLoader.loadText(CoC.instance.flags[kFLAGS.CHARVIEWER_MODEL] == 0 ? "res/model.xml" : "res/model2.xml", function (success:Boolean, result:String, e:Event):void {
+			CoCLoader.loadText(CoC.instance.settings.charviewModel == 0 ? "res/model.xml" : "res/model2.xml", function (success:Boolean, result:String, e:Event):void {
 				if (success) {
 					init(XML(result));
 				} else {

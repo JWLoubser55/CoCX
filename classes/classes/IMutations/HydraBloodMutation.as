@@ -4,19 +4,18 @@
  */
 package classes.IMutations
 {
-import classes.BodyParts.Tail;
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
-import classes.Player;
 import classes.Races;
 
 public class HydraBloodMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Hydra Blood";
-        }
+		public static const MNAME:String = "Hydra Blood";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -61,7 +60,7 @@ public class HydraBloodMutation extends IMutationPerkType
 
         public function HydraBloodMutation() 
 		{
-			super(mName + " IM", mName, SLOT_BLOODSTREAM, 4);
+			super(MNAME, SLOT_BLOODSTREAM, 4);
         }
         
     }

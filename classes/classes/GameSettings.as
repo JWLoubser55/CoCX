@@ -2,6 +2,7 @@ package classes {
 import classes.BodyParts.*;
 import classes.GlobalFlags.*;
 import classes.Items.*;
+import classes.Parser.Parser;
 import classes.Scenes.Places.Mindbreaker;
 import classes.Stats.BuffableStat;
 import classes.Stats.IStat;
@@ -9,12 +10,19 @@ import classes.Stats.PrimaryStat;
 import classes.Stats.RawStat;
 import classes.Stats.StatUtils;
 import classes.StatusEffects.CombatStatusEffect;
+import classes.internals.GamedataExporter;
+
+import coc.view.Block;
 
 import coc.view.ButtonDataList;
+import coc.view.CoCButton;
 import coc.view.CoCLoader;
 import coc.view.MainView;
+import coc.view.SettingsPanel;
+import coc.view.UIUtils;
 
 import flash.net.FileReference;
+import flash.text.TextField;
 import flash.text.TextFormat;
 import flash.utils.ByteArray;
 
@@ -27,18 +35,18 @@ public class GameSettings extends BaseContent {
     public var sceneHunter_inst:SceneHunter = new SceneHunter();
 	
 	public static function get buttonIconsEnabled():Boolean {
-		return flags && !flags[kFLAGS.BUTTON_ICONS_DISABLED];
+		return flags && !settings.buttonIconsDisabled;
 	}
 
 	public function get charviewEnabled():Boolean {
-		return flags[kFLAGS.CHARVIEWER_ENABLED];
+		return settings.charviewEnabled > 0;
 	}
 
 	private var daysPerYear_temp:int; //used for storing the flag value without exiting the menu (to avoid issues while cycling through 'real' date.
 
 	public function settingsScreenMain(justOpened:Boolean = false):void {
 		CoC.instance.saves.savePermObject(false);
-		if (justOpened) daysPerYear_temp = flags[kFLAGS.DAYS_PER_YEAR];
+		if (justOpened) daysPerYear_temp = settings.daysPerYear;
 		else model.time.changeDPY(daysPerYear_temp);
         mainView.showMenuButton(MainView.MENU_NEW_MAIN);
 		mainView.showMenuButton(MainView.MENU_DATA);
@@ -49,7 +57,6 @@ public class GameSettings extends BaseContent {
 		addButton(0, "Gameplay(1)", settingsScreenGameSettings).hint("Mainly settings that require a loaded save.");
 		addButton(1, "Interface", settingsScreenInterfaceSettings);
 		addButton(2, "QoL", settingsScreenQoLSettings).hint("Quality of Life Settings.");
-		addButton(3, "Font Size", fontSettingsMenu);
 		addButton(4, "Controls", displayControls);
 		addButton(5, "Gameplay(2)", settingsScreenGameSettings2);
 		addButton(6, "SceneHunter", sceneHunter_inst.settingsPage);
@@ -64,7 +71,7 @@ public class GameSettings extends BaseContent {
 
 		clearOutput();
 		displayHeader("Gameplay Settings");
-		if (flags[kFLAGS.AUTO_LEVEL] >= 1) {
+		if (settings.autoLevel >= 1) {
 			outputText("Automatic Leveling: [font-green]<b>ON</b>[/font]\n Leveling up is done automatically once you accumulate enough experience.");
 		}
 		else
@@ -76,7 +83,7 @@ public class GameSettings extends BaseContent {
 		if (player) {
 			if (daysPerYear_temp == 0) {
 				outputText("Timescale: [font-green]<b>REAL</b>[/font]\n In-game date (used for holiday events) uses real date from your computer.");
-				if (flags[kFLAGS.DAYS_PER_YEAR] > 0) outputText("\n[font-dred]<b>WARNING: your current in-game date will be erased after you exit this menu.</b>[/font]");
+				if (settings.daysPerYear > 0) outputText("\n[font-dred]<b>WARNING: your current in-game date will be erased after you exit this menu.</b>[/font]");
 			} else {
 				outputText("Timescale: [font-blue]<b>DAYS ("+daysPerYear_temp+" in-game days per year)</b>[/font]\n In-game date is calculated from the days spent in Mareth.");
 			}
@@ -230,7 +237,7 @@ public class GameSettings extends BaseContent {
 			addButtonDisabled(11, "Fetishes", "Requires a loaded save.");
 			addButtonDisabled(12, "Timescale", "Requires a loaded save.");
 		}
-		addButton(13, "Auto level", toggleFlag, kFLAGS.AUTO_LEVEL, settingsScreenGameSettings).hint("Toggles automatic leveling when you accumulate sufficient experience.");
+		addButton(13, "Auto level", toggleSetting, "autoLevel", settingsScreenGameSettings).hint("Toggles automatic leveling when you accumulate sufficient experience.");
 		addButton(14, "Back", settingsScreenMain);
 
 		//===========================
@@ -241,362 +248,7 @@ public class GameSettings extends BaseContent {
 		}
 	}
 	private function exportGameDataJs():void {
-		var p:Player           = new Player();
-		var k:String;
-		var entry:Object;
-		var subentry:Object;
-		var file:FileReference = new FileReference();
-		var bytes:ByteArray    = new ByteArray();
-		// see devTools/saveEditor/js/gamedata.d.ts
-		var gamedata:Object    = {
-			version: CoC.instance.ver,
-			versionNumber: CoC.instance.modSaveVersion,
-			/* key: flag_id, value: IGDFlag */
-			flags: {},
-			/* key: perk_id, value: IGDPerk */
-			perks: {},
-			/* key: perk_id, value: IGDMutation */
-			mutations: {},
-			/* key: slot_id, value: IGDMutationSlot */
-			mutation_slots: {
-				"": {name: "Other"}
-			},
-			/* key: item_category, subkey: item_id, value: IGDItem */
-			items: {
-				armor: {},
-				consumable: {},
-				flyingsword: {},
-				headjewelry: {},
-				jewelry: {},
-				miscjewelry: {},
-				necklace: {},
-				shield: {},
-				/* value: IGDItemUndergarment */
-				undergarment: {},
-				useable: {},
-				vehicle: {},
-				weapon: {},
-				weaponrange: {},
-				
-				other: {}
-			},
-			itemTemplates: {},
-			// key: status_id
-			statuses: {},
-			// key: keyitem_id
-			keyitems: {},
-			// key: part
-			// subkey: type_id
-			bptypes: {
-				antennae: {},
-				arms: {},
-				beard: {},
-				claws: {},
-				ears: {},
-				eyes: {},
-				face: {},
-				gills: {},
-				hair: {},
-				hairstyle: {},
-				horns: {},
-				// extra properties: legCount, taur, noTail, tail
-				legs: {},
-				materials: {},
-				rear: {},
-				// extra properties: base, coat
-				skin: {},
-				// extra properties: base, coat
-				pattern: {},
-				tail: {},
-				tongue: {},
-				vagina: {},
-				wings: {}
-			},
-			// value: { name:string, rgb:string }
-			colors: [],
-			// value: { id, name, type="primary"|"buffable"|"raw", isPercentage }
-			stats: [],
-			maxBreastCup: Appearance.BREAST_CUP_NAMES.length - 1,
-			breastCups: Appearance.BREAST_CUP_NAMES,
-			itemSlotCount: p.itemSlots.length
-		};
-		// flags
-		for each(k in keys(kFLAGS, true)) {
-			if (kFLAGS[k] is Number) {
-				gamedata.flags[kFLAGS[k]] = {id: kFLAGS[k], name: k, desc: ""};
-			}
-		}
-		// perks & mutations
-		var monsterPerks:Array = PerkLib.enemyPerkList();
-		var levelupPerks:Array = PerkTree.obtainablePerks();
-		// perk requirement type -> list of extra properties
-		const perkRequirementMappings:Object = {
-			"custom":[],
-			"level": ["value"],
-			"attr": ["attr", "value"],
-			"attr-lt": ["attr", "value"],
-			"ng+": ["value"],
-			"minlust": ["value"],
-			"minsensitivity": ["value"],
-			"soulforce": ["value"], // max soulforce
-			"mana": ["value"], // max mana
-			"venom_web": ["value"], // max venom/web
-			"advanced": [], // free advanced job slot
-			"prestige": [], // free prestige job slot
-			"mutationslot": ["slot"],
-			"dragonmutation": [], // free dragon mutation slot
-			"kitsunemutation": [], // free kitsune mutation slot
-			"hungerflag": [], // hunger enabled
-			"effect": ["effect"],
-			"race": ["race", "tier"],
-			"anyrace": ["races"],
-			"perk": ["perk"],
-			"anyperk": ["perks"],
-			"allperks": ["allperks"],
-			"mutation": ["perk"]
-		};
-		function exportValue(v:*):* {
-			if (v is StatusEffectType) {
-				return (v as StatusEffectType).id;
-			} else if (v is PerkType) {
-				return (v as PerkType).id;
-			} else if (v is Race) {
-				return (v as Race).id;
-			} else if (v is Array) {
-				return v.map(varargify(exportValue));
-			} else {
-				return v;
-			}
-		}
-		for (k in PerkType.getPerkLibrary()) {
-			var pt:PerkType          = PerkType.lookupPerk(k);
-			var mt:IMutationPerkType = pt as IMutationPerkType;
-			var tags:Array           = [];
-			if (mt) {
-				gamedata.mutations[k] = {
-					id: k,
-					name: mt.name(null),
-					desc: mt.desc(null),
-					maxLevel: mt.maxLvl,
-					tags: tags,
-					slot: mt.slot
-				}
-			} else {
-				if (monsterPerks.indexOf(pt) >= 0) tags.push('monster');
-				else if (levelupPerks.indexOf(pt) >= 0) tags.push('levelup');
-				else tags.push('unobtainable');
-				entry = {
-					id: k,
-					name: pt.name(null),
-					desc: pt.desc(null),
-					tags: tags,
-					defaultValues: [pt.defaultValue1, pt.defaultValue2, pt.defaultValue3, pt.defaultValue4],
-					requirements: [],
-					unlocks: []
-				};
-				for each (var pt2:PerkType in CoC.instance.perkTree.listUnlocks(pt)) {
-					entry.unlocks.push(pt2.id);
-				}
-				for each (var r:Object in pt.requirements) {
-					subentry = {
-						text: r.text is String ? r.text : r.statictext,
-						type: r.type
-					};
-					if (r.type in perkRequirementMappings) {
-						for each (var k2:String in perkRequirementMappings[r.type]) {
-							subentry[k2] = exportValue(r[k2]);
-						}
-					}
-					entry.requirements.push(subentry);
-				}
-				gamedata.perks[k] = entry;
-			}
-		}
-		// mutation slots
-		for (k in IMutationPerkType.Slots) {
-			gamedata.mutation_slots[k] = {id:k, name:IMutationPerkType.Slots[k].name};
-		}
-		// items
-		for (k in ItemType.getItemLibrary()) {
-			var it:ItemType = ItemType.lookupItem(k);
-			var itemEffects:Array = [];
-			for each (var ie:ItemEffect in it.itemEffects) {
-				var jie:Object = {name:ie.type.name, power:ie.power};
-				function sanitizeIEValue(value:*):* {
-					if (value is Race) return "Race["+(value as Race).name+"]"
-					return value;
-				}
-				if (ie.value1 !== undefined) jie.value1 = sanitizeIEValue(ie.value1);
-				if (ie.value2 !== undefined) jie.value2 = sanitizeIEValue(ie.value2);
-				if (ie.value3 !== undefined) jie.value3 = sanitizeIEValue(ie.value3);
-				if (ie.value4 !== undefined) jie.value4 = sanitizeIEValue(ie.value4);
-				itemEffects.push(jie);
-			}
-			entry = {name: it.longName, id: k, tags:keys(it.tags), effects:itemEffects};
-			try {
-				entry.desc = it.description;
-			} catch (e:*) {
-				entry.desc = '';
-			}
-			if (it is Armor) {
-				entry.category = "armor";
-				gamedata.items.armor[k] = entry;
-			} else if (it is Consumable) {
-				entry.category = "consumable";
-				gamedata.items.consumable[k] = entry;
-			} else if (it is FlyingSwords) {
-				entry.category = "flyingsword";
-				gamedata.items.flyingsword[k] = entry;
-			} else if (it is HeadJewelry) {
-				entry.category = "headjewelry";
-				gamedata.items.headjewelry[k] = entry;
-			} else if (it is Jewelry) {
-				entry.category = "jewelry";
-				gamedata.items.jewelry[k] = entry;
-			} else if (it is MiscJewelry) {
-				entry.category = "miscjewelry";
-				gamedata.items.miscjewelry[k] = entry;
-			} else if (it is Necklace) {
-				entry.category = "necklace";
-				gamedata.items.necklace[k] = entry;
-			} else if (it is Shield) {
-				entry.category = "shield";
-				gamedata.items.shield[k] = entry;
-			} else if (it is Undergarment) {
-				entry.category = "undergarment";
-				entry.type = (it as Undergarment).type;
-				gamedata.items.undergarment[k] = entry;
-			} else if (it is Vehicles) {
-				entry.category = "vehicle";
-				gamedata.items.vehicle[k] = entry;
-			} else if (it is Weapon) {
-				entry.category = "weapon";
-				entry.type = (it as Weapon).type;
-				entry.size = (it as Weapon).size;
-				entry.dual = (it as Weapon).isDual();
-				gamedata.items.weapon[k] = entry;
-			} else if (it is WeaponRange) {
-				entry.category = "weaponrange";
-				gamedata.items.weaponrange[k] = entry;
-			} else if (it is Useable) {
-				entry.category = "useable";
-				gamedata.items.useable[k] = entry;
-			} else {
-				entry.category = "other";
-				gamedata.items.other[k] = entry;
-			}
-		}
-		// item templates
-		for (k in ItemTemplate.getLibrary()) {
-			var tem:ItemTemplate = ItemTemplate.lookupTemplate(k);
-			gamedata.itemTemplates[tem.templateId] = {
-				id: tem.templateId,
-				name: tem.name,
-				metadata: deepCopy(tem.metadata)
-			}
-		}
-		// statuses
-		for (k in StatusEffectType.getStatusEffectLibrary()) {
-			var st:StatusEffectType = StatusEffectType.lookupStatusEffect(k);
-			gamedata.statuses[k] = {
-				id: k,
-				combat: st.create(0,0,0,0) is CombatStatusEffect
-			}
-		}
-		// body part types
-		// [target, enumValues, extraProperties]
-		// extra props - array of propname or [nameInSource, nameInTarget]
-		var bprec:Array = [
-			[gamedata.bptypes.antennae, Antennae.Types],
-			[gamedata.bptypes.arms, Arms.Types],
-			[gamedata.bptypes.beard, Beard.Types],
-			[gamedata.bptypes.claws, Claws.Types],
-			[gamedata.bptypes.ears, Ears.Types],
-			[gamedata.bptypes.eyes, Eyes.Types],
-			[gamedata.bptypes.face, Face.Types],
-			[gamedata.bptypes.gills, Gills.Types],
-			[gamedata.bptypes.hair, Hair.Types],
-			[gamedata.bptypes.hairstyle, Hair.Styles],
-			[gamedata.bptypes.horns, Horns.Types],
-			[gamedata.bptypes.legs, LowerBody.Types, ["legCount","canTaur","noTail","tail"]],
-			[gamedata.bptypes.materials, BodyMaterial.Types],
-			[gamedata.bptypes.rear, RearBody.Types],
-			[gamedata.bptypes.skin, Skin.SkinTypes, ["base","coat",["name","desc"],"adj"]],
-			[gamedata.bptypes.pattern, Skin.PatternTypes, ["base","coat"]],
-			[gamedata.bptypes.tail, Tail.Types],
-			[gamedata.bptypes.tongue, Tongue.Types],
-			[gamedata.bptypes.vagina, VaginaClass.Types],
-			[gamedata.bptypes.wings, Wings.Types, ["desc"]]
-		];
-		for each (var a:Array in bprec) {
-			// a = [ target, EnumValue[], extra_props ]
-			for each (var ev:Object in a[1]) {
-				if (!ev) continue;
-				entry = {
-					value: ev.value,
-					name: ev.name,
-					id: ev.id
-				};
-				if (a[2]) {
-					for each (var o:* in a[2]) {
-						if (o is Array) {
-							// [exported_name, enumvalue_name]
-							entry[o[1]] = ev[o[0]]
-						} else {
-							entry[o] = ev[o];
-						}
-					}
-				}
-				a[0][ev.value] = entry;
-			}
-		}
-		// colors
-		var model:XML = XML(CoCLoader.getEmbedText("res/model.xml"));
-		var map:Object = {}
-		for each(var prop:XML in model.palette.property) {
-			for each (var color:XML in prop.color) {
-				k = color.@name.toString();
-				map[k] = {
-					name: k,
-					rgb: color.text().toString()
-				};
-			}
-		}
-		for each(color in model.palette.common.color) {
-			k = color.@name.toString();
-			map[k] = {
-				name: k,
-				rgb: color.text().toString()
-			};
-		}
-		gamedata.colors = values(map).sort();
-		// stats
-		for each (var stat:IStat in p.statStore.allStats()) {
-			entry = {
-				id: stat.statName,
-				name: StatUtils.nameOfStat(stat.statName),
-				isPercentage: StatUtils.isPercentageStat(stat.statName)
-			};
-			if (stat is BuffableStat) {
-				entry.type = "buffable";
-				entry.base = (stat as BuffableStat).base;
-				entry.aggregate = (stat as BuffableStat).aggregate;
-			} else if (stat is RawStat) {
-				entry.type = "raw";
-			} else if (stat is PrimaryStat) {
-				entry.type = "primary";
-			} else {
-				entry.type = "unknown"
-			}
-			gamedata.stats.push(entry);
-		}
-		
-		bytes.writeUTFBytes(
-				"// GENERATED FOR " + CoC.instance.version + "\n" +
-				"/** @type {IExportedGameData} */\n" +
-				"let ExportedGamedata=");
-		bytes.writeUTFBytes(JSON.stringify(gamedata));
-		file.save(bytes, "gamedata.js");
+		new GamedataExporter().exportGameData();
 	}
 	public function settingsScreenGameSettings2():void {
 		clearOutput();
@@ -679,6 +331,10 @@ public class GameSettings extends BaseContent {
 		flags[flagID] = !flags[flagID];
 		menuFun();
 	}
+	public function toggleSetting(propname:String, menuFun:Function):void {
+		settings[propname] = !settings[propname];
+		menuFun();
+	}
 	private function ILLYProtocolOn():void {
 		player.createStatusEffect(StatusEffects.ILLYProtocol, 0, 0, 0, 0);
 		settingsScreenGameSettings2();
@@ -692,94 +348,50 @@ public class GameSettings extends BaseContent {
 		clearOutput();
 		displayHeader("Quality of Life Settings");
 		outputText("This page contains settings that can affect the game's performance, appearance, and other tedious tasks.\n\n");
-		fastLvlSettings();
-		mutationsSpoilersSetting();
-		simpPerkSetting();
-		invMgmtSetting();
-		USSdisplayOpt();
-		IMDBdisplayStyle();
-		outputText("\n\n");
-		menu();
-		addButton(0, "Fast Lvl", flagUpdate, kFLAGS.LVL_UP_FAST, 2).hint("Immediately level to the highest possible from XP instead of spamming next.");
-		addButton(1, "Mutation Assist", flagUpdate, kFLAGS.MUTATIONS_SPOILERS, 1).hint("Mutation Tracker Spoiler Mode. For when you want to discover mutations by yourself, or with some help.");
-		addButton(2, "PerkView Simplified", flagUpdate, kFLAGS.NEWPERKSDISPLAY, 1).hint("Simplified Perk Viewing. So duplicate entries/tiers don't show up.");
-		addButton(3, "Inventory Mgmt", flagUpdate, kFLAGS.INVT_MGMT_TYPE, 1).hint("Toggle between existing SHIFT to remove items vs an extra menu. Recommended to enable for Mobile users.");
-		addButton(4, "USS Display Opt.", flagUpdate, kFLAGS.USSDISPLAY_STYLE,1).hint("Switches between USS Display options.");
-		addButton(5, "IMDB Details", flagUpdate, kFLAGS.IMDB_DETAILS,1).hint("Switches between Internal Mutation DB display styles.");
-		addButton(14, "Back", settingsScreenMain);
-		function fastLvlSettings():void{
-			if (flags[kFLAGS.LVL_UP_FAST] == 2) {
-				outputText("Instant Leveling: [font-green]<b>ON, Direct Jump</b>[/font]\nInstantly levels you up to the highest possible given your xp.");
-			}
-			else if (flags[kFLAGS.LVL_UP_FAST] == 1){
-				outputText("Instant Leveling: [font-blue]<b>ON, Manual Increase</b>[/font]\nIncrease XP by specific amounts.");
-			}
-			else {
-				outputText("Instant Leveling: [font-dred]<b>OFF</b>[/font]\nIndividual leveling up, i.e. One level click at a time.");
-			}
+		var sp:SettingsPanel = new SettingsPanel();
+
+		sp.setting("Automatic Leveling", settings, "autoLevel");
+		sp.option(0, "OFF",  "[font-dred]<b>OFF</b>[/font].\nLeveling up is done manually.")
+		sp.option(1, "ON",  "[font-green]<b>ON</b>[/font].\nLeveling up is done automatically once you accumulate enough experience.")
+
+		sp.setting("Instant Leveling", settings, "lvlUpFast");
+		sp.option(0, "OFF", "[font-dred]<b>OFF</b>[/font]\nIndividual leveling up, i.e. One level click at a time.");
+		sp.option(1, "ON", "[font-blue]<b>ON, Manual Increase</b>[/font]\nIncrease XP by specific amounts.");
+		sp.option(2, "Jump", "[font-green]<b>ON, Direct Jump</b>[/font]\nInstantly levels you up to the highest possible given your xp.");
+		/*
 			outputText("\nThis setting has three modes: Default(Leveling up one at a time), Direct(Auto-calculates your highest and sets accordingly), and Manual(You are given the option to increase levels in increments.)");
 			outputText("Works in conjunction with Auto-Leveling.");
-			outputText("\n\n");
-		}
+		 */
 
-		function mutationsSpoilersSetting():void {
-			if (flags[kFLAGS.MUTATIONS_SPOILERS] >= 1){
-				outputText("Mutation Assist: [font-green]<b>ON</b>[/font]\nAll mutations are known, and hints to acquire them are provided.");
-			}
-			else {
-				outputText("Mutation Assist: [font-dred]<b>OFF</b>[/font]\nFor players that want to discover the mutations by themselves.");
-			}
-			outputText("\n\n");
-		}
+		sp.setting("Mutation Assist", settings, "mutationsSpoiler");
+		sp.option(0, "OFF", "[font-dred]<b>OFF</b>[/font]\nFor players that want to discover the mutations by themselves.");
+		sp.option(1, "ON", "[font-green]<b>ON</b>[/font]\nAll mutations are known, and hints to acquire them are provided.")
 
-		function simpPerkSetting():void{
-			if (flags[kFLAGS.NEWPERKSDISPLAY] >= 1){
-				outputText("Perks Display: [font-green]<b>Enabled</b>[/font]\nPerks are collapsed to their highest tier. Use this for faster perks menu loading, and less clutter.");
-			}
-			else {
-				outputText("Perks Display: [font-dred]<b>Disabled</b>[/font]\nPerks display uses old method of displaying all perks. Use this for getting all perk information, but higher loading lag and a whole menu of perks.");
-			}
-			outputText("\n\n");
-		}
+		sp.setting("PerkView Simplified", settings, "newPerksDisplay");
+		sp.option(0, "Disabled", "[font-dred]<b>Disabled</b>[/font]\nPerks display uses old method of displaying all perks. Use this for getting all perk information, but higher loading lag and a whole menu of perks.");
+		sp.option(1, "Enabled", "[font-green]<b>Enabled</b>[/font]\nPerks are collapsed to their highest tier. Use this for faster perks menu loading, and less clutter.");
 
-		function invMgmtSetting():void{
-			if (flags[kFLAGS.INVT_MGMT_TYPE] > 0){
-				outputText("Inventory Mgmt: <b>New</b>\n A prompt will appear asking you what you want to do with the item.");
-			}
-			else{
-				outputText("Inventory Mgmt: <b>Old</b>\n Shift key is required for removing items.");
-			}
-			outputText("This toggle is most useful for mobile players where the shift key is not available, but is functional for desktop use too.");
-			outputText("\n\n");
-		}
+		sp.setting("Inventory Mgmt", settings, "invtMgmgType");
+		sp.option(0, "Shift", "<b>Old</b>\nShift key is required for removing items.");
+		sp.option(1, "Prompt", "<b>New</b>\nA prompt will appear asking you what you want to do with the item.");
 
-		function USSdisplayOpt():void{
-			if (flags[kFLAGS.USSDISPLAY_STYLE] > 0){
-				outputText("USS Display: <b>Old</b>\n All options will be shown.");
-			}
-			else{
-				outputText("USS Display: <b>Shuffled</b>\n Options that can be used will show up first.");
-			}
-			outputText("This toggle is used to hide extra scenes.");
-			outputText("\n\n");
-		}
+		sp.setting("USS Display", settings, "ussDisplayStyle");
+		sp.option(0, "Shuffled", "<b>Shuffled</b>\nOptions that can be used will show up first.");
+		sp.option(1, "Old", "<b>Old</b>\nAll options will be shown.");
+		/*
+		"This toggle is used to hide extra scenes."
+		 */
 
-		function IMDBdisplayStyle():void{
-			if (flags[kFLAGS.IMDB_DETAILS] > 0){
-				outputText("IMDB style: <b>Detailed</b>\n All mutation tiers will be displayed.");
-			}
-			else{
-				outputText("IMDB style: <b>Short</b>\n Only the next tier will be displayed for each mutation.");
-			}
+		sp.setting("IMDB Details", settings, "imdbDetails");
+		sp.option(0, "Short", "<b>Short</b>\nOnly the next tier will be displayed for each mutation.");
+		sp.option(1, "Detailed", "<b>Detailed</b>\nAll mutation tiers will be displayed.");
+		/*
 			outputText("This toggle is used to show more info in Internal Mutation Database.");
-			outputText("\n\n");
-		}
+		 */
 
-		function flagUpdate(flag:*, max:int = 1):void{
-			flags[flag]++;
-			if (flags[flag] > max) flags[flag] = 0;
-			settingsScreenQoLSettings();
-		}
+		sp.show();
+		menu();
+		addButton(1, "Exit", settingsScreenMain);
 	}
 
 	public function toggleDebug():void {
@@ -1007,273 +619,234 @@ public class GameSettings extends BaseContent {
 		clearOutput();
 		displayHeader("Interface Settings");
 
-		if (flags[kFLAGS.USE_OLD_FONT] >= 1) {
-			outputText("Font: <b>Lucida Sans Typewriter</b>\n");
-		}
-		else
-			outputText("Font: <b>Georgia</b>\n");
+		var sp:SettingsPanel = new SettingsPanel();
 
-		outputText("\n\n");
+		sp.setting("Statbar Font", settings, "useOldFont");
+		sp.option(0, "Georgia", "<b>Georgia</b>");
+		sp.option(1, "Typewriter", "<b>Lucida Sans Typewriter</b>\n");
 
-		outputText("Char Viewer: ");
-		if (flags[kFLAGS.CHARVIEWER_ENABLED] == 1) outputText("[font-green]<b>ON</b>[/font]\n Player visualiser is available under \\[Appearance\\].");
-		else outputText("[font-dred]<b>OFF</b>[/font]\n Player visualiser is disabled.");
-		outputText("\nChar View Style: ");
-		switch (flags[kFLAGS.CHARVIEW_STYLE]) {
-			case 0:
-				outputText("[font-blue]<b>ALWAYS</b>[/font]\n Viewer is shown on the left, always visible");
-				break;
-			case 1:
-				outputText("[font-dred]<b>OLD</b>[/font]\n Viewer is shown on the left");
-				break;
-			case 2:
-				outputText("[font-green]<b>NEW</b>[/font]\n Viewer is inline with text");
-				break;
-		}
-		outputText("\nChar View Armor: ");
-		if (flags[kFLAGS.CHARVIEW_ARMOR_HIDDEN])
-            outputText("[font-dred]<b>OFF</b>[/font]\n Armor is hidden - enjoy your naked look!");
-		else
-            outputText("[font-green]<b>ON</b>[/font]\n Armor is shown (some body parts may be hidden or displayed wrongly)");
-		
-        outputText("\n\n");
-		if (flags[kFLAGS.IMAGEPACK_OFF] == 0) {
-			outputText("Image Pack: [font-green]<b>ON</b>[/font]\n Image pack is enabled.");
-		}
-		else
-			outputText("Image Pack: [font-dred]<b>OFF</b>[/font]\n Image pack is disabled.");
+		sp.setting_ex("Font Size",
+				/* getter */
+				function ():int {
+					return settings.customFontSize;
+				},
+				/* setter */
+				function (value:int):void {
+					settings.customFontSize = value;
+					mainViewManager.setTheme();
+					settingsScreenInterfaceSettings();
+				},
+				/* description */
+				function ():String {
+					return "Font Size: " + (settings.customFontSize || "Default")
+				}
+		);
+		sp.option_ex("Smaller Font",
+				"Decrease font size",
+				/* selected */
+				function ():Boolean {
+					return false
+				},
+				/* click */
+				function ():void {
+					settings.customFontSize = (settings.customFontSize || 20) - 1;
+					mainViewManager.setTheme();
+					settingsScreenInterfaceSettings()
+				},
+				/* disabled */
+				function ():Boolean {
+					return settings.customFontSize != 0 && settings.customFontSize <= 14;
+				}
+		);
+		sp.option_ex("Reset size",
+				"Reset font size",
+				/* selected */
+				function ():Boolean {
+					return false
+				},
+				/* click */
+				function ():void {
+					settings.customFontSize = 20;
+					mainViewManager.setTheme();
+					settingsScreenInterfaceSettings()
+				},
+				/* disabled */
+				function ():Boolean {
+					return settings.customFontSize == 0 || settings.customFontSize == 20;
+				}
+		);
+		sp.option_ex("Larger Font",
+				"Increase font size",
+				/* selected */
+				function ():Boolean {
+					return false
+				},
+				/* click */
+				function ():void {
+					settings.customFontSize = (settings.customFontSize || 20) + 1;
+					mainViewManager.setTheme();
+					settingsScreenInterfaceSettings()
+				},
+				/* disabled */
+				function ():Boolean {
+					return settings.customFontSize >= 32;
+				}
+		);
 
-		outputText("\n\n");
+		sp.setting_ex("Background",
+				/* getter */
+				function():int {
+					return settings.backgroundStyle;
+				},
+				/* setter */
+				function (value:int):void {
+					settings.backgroundStyle = value;
+					mainViewManager.setTheme();
+					// trigger redraw to apply new theme
+					settingsScreenInterfaceSettings();
+				}
+		);
+		sp.option(0, "Map (Default)", "Map (Default)");
+		sp.option(1, "Parchment", "Parchment");
+		sp.option(2, "Marble", "Marble");
+		sp.option(3, "Obsidian", "Obsidian");
+		sp.option(4, "Black", "Black");
 
-		if (flags[kFLAGS.SHOW_SPRITES_FLAG] == 0) {
-			outputText("Sprites: [font-green]<b>ON</b>[/font]\n You like to look at pretty pictures.");
-			outputText("\n\n");
-			if (flags[kFLAGS.SPRITE_STYLE] == 0)
-				outputText("Sprite Type: <b>New</b>\n 16-bit sprites will be used.");
-			else
-				outputText("Sprite Type: <b>Old</b>\n 8-bit sprites will be used.");
-		}
-		else {
-			outputText("Sprites: [font-dred]<b>OFF</b>[/font]\n There are only words. Nothing else.");
-			outputText("\n\n\n");
-		}
+		sp.setting_ex("Text Background",
+				/* getter */
+				function(): int {
+					if (mainView.textBGWhite.visible) return 1;
+					if (mainView.textBGTan.visible) return 2;
+					return 0;
+				},
+				/* setter */
+				function (value:int):void {
+					mainView.textBGWhite.visible = (value == 1);
+					mainView.textBGTan.visible = (value == 2);
+				}
+		);
+		sp.option(0, "Normal", "Normal");
+		sp.option(1, "White", "White");
+		sp.option(2, "Tan", "Tan");
 
-		outputText("\n\n");
+		sp.setting_ex("Char Viewer",
+				/* getter */
+				function ():int {
+					return settings.charviewEnabled
+				},
+				/* setter */
+				function (value:int): void {
+					settings.charviewEnabled = value;
+					if (value) {
+						mainView.charView.reload();
+					}
+				}
+				);
+		sp.option(0, "Disabled", "[font-dred]<b>OFF</b>[/font]\n Player visualiser is disabled.");
+		sp.option(1, "Enabled", "[font-green]<b>ON</b>[/font]\n Player visualiser is available under \\[Appearance\\].");
 
-		if (flags[kFLAGS.USE_12_HOURS] > 0)
-			outputText("Time Format: <b>12 hours</b>\n Time will display in 12 hours format (AM/PM)");
-		else
-			outputText("Time Format: <b>24 hours</b>\n Time will display in 24 hours format.");
+		sp.setting_ex("Char Viewer Model",
+				/* getter */
+				function ():int {
+					return settings.charviewModel;
+				},
+				/* setter */
+				function (value: int): void {
+					settings.charviewModel = value;
+					mainView.charView.reload();
+				}
+				);
+		sp.option(0, "Old", "<b>OLD</b>");
+		sp.option(1, "New", "<b>NEW</b> (Work in progress)");
 
-		outputText("\n\n");
+		sp.setting("Char Viewer Position", settings, "charviewStyle");
+		sp.option(0, "ALWAYS", "[font-blue]<b>ALWAYS</b>[/font]\n Viewer is shown on the left, always visible");
+		sp.option(1, "OLD", "[font-dred]<b>OLD</b>[/font]\n Viewer is shown on the left");
+		sp.option(2, "INLINE", "[font-green]<b>NEW</b>[/font]\n Viewer is inline with text");
 
-		if (flags[kFLAGS.USE_METRICS] == 1)
-			outputText("Measurement: <b>Metric</b>\n Height and cock size will be measured in metres and centimetres.");
-		else if (flags[kFLAGS.USE_METRICS] == 0)
-			outputText("Measurement: <b>Imperial</b>\n Height and cock size will be measured in feet and inches. (Worded)");
-		else	//Yes, this is 2. Yes, this was added as an afterthought.
-			outputText("Measurement: <b>Imperial</b>\n Height and cock size will be measured in feet and inches. (Symbols)");
-		outputText("\n\n");
-		
-		if (buttonIconsEnabled)
-			outputText("Button icons: <b>ON</b>");
-		else
-			outputText("Button icons: <b>OFF</b>");
-		outputText("\n\n");
-		
-		if (flags[kFLAGS.STATBAR_ANIMATIONS] == 1)
-			outputText("Stat bar animations: <b>OFF</b>");
-		else
-			outputText("Stat bar animations: <b>ON</b>");
-		outputText("\n\n");
+		sp.setting("Char Viewer Armor", settings, "charviewArmorHidden");
+		sp.option(1, "OFF", "[font-dred]<b>OFF</b>[/font]\n Armor is hidden - enjoy your naked look!");
+		sp.option(0, "ON", "[font-green]<b>ON</b>[/font]\n Armor is shown (some body parts may be hidden or displayed wrongly)");
 
-		if (flags[kFLAGS.HP_STATBAR_PERCENTAGE] == 0)
-			outputText("HP bars show percentages: <b>OFF</b>");
-		else
-			outputText("HP bars show percentages: <b>ON</b>");
-		outputText("\n\n");
+		sp.setting("Image Pack", settings, "imagepackOff");
+		sp.option(1, "OFF", "[font-dred]<b>OFF</b>[/font]\n Image pack is disabled.");
+		sp.option(0, "ON", "[font-green]<b>ON</b>[/font]\n Image pack is enabled.");
 
-		if (flags[kFLAGS.LUST_STATBAR_PERCENTAGE] == 0)
-			outputText("Lust bars show percentages: <b>OFF</b>");
-		else
-			outputText("Lust bars show percentages: <b>ON</b>");
-		outputText("\n\n");
+		sp.setting_ex("Sprites",
+				/*getter*/
+				function():int {
+					if (settings.spritesOff) return -1;
+					return settings.spriteStyle;
+				},
+				/* setter */
+				function(value:int):void {
+					if (value == -1) {
+						settings.spritesOff = true;
+					} else {
+						settings.spritesOff = false;
+						settings.spriteStyle = value;
+					}
+				}
+		);
+		sp.option(-1, "Off", "[font-dred]<b>OFF</b>[/font]\n There are only words. Nothing else.");
+		sp.option(1, "Old", "[font-green]<b>OLD</b>[/font]\nUse the 8-bit sprites from older versions of CoC.");
+		sp.option(0, "New", "[font-green]<b>NEW</b>[/font]\nUse the 16-bit sprites in current versions of CoC.");
 
-		if (flags[kFLAGS.WRATH_STATBAR_PERCENTAGE] == 0)
-			outputText("Wrath bars show percentages: <b>OFF</b>");
-		else
-			outputText("Wrath bars show percentages: <b>ON</b>");
-		outputText("\n\n");
-		
-		if (flags[kFLAGS.ANGELIC_FRACTION_TOGGLE] == 0)
-			outputText("Angelic Faction: <b>FULL PRESENCE</b>");
-		else
-			outputText("Angelic Faction: <b>ABSENT</b>");
-		outputText("\n\n");
+		sp.setting("Sprite Type", settings, "spriteStyle");
+		sp.option(1, "Old", "<b>Old</b>\n 8-bit sprites will be used.");
+		sp.option(0, "New", "<b>New</b>\n 16-bit sprites will be used.");
 
-		if (flags[kFLAGS.CHARVIEWER_MODEL] == 0)
-			outputText("Charviewer Model: <b>OLD</b>");
-		else
-			outputText("Charviewer model: <b>NEW</b>")
-		outputText("\n\n");
+		sp.setting("Time Format", settings, "use12hours");
+		sp.option(0, "24 hours", "<b>24 hours</b>\n Time will display in 24 hours format.");
+		sp.option(1, "12 hours", "<b>12 hours</b>\n Time will display in 12 hours format (AM/PM)");
 
-		var buttons:ButtonDataList = new ButtonDataList();
+		sp.setting("Measurement", settings, "useMetrics");
+		sp.option(1, "Metric", "<b>Metric</b>\n Height and cock size will be measured in metres and centimetres.");
+		sp.option(0, "Imperial (1)", "<b>Imperial</b>\n Height and cock size will be measured in feet and inches. (Worded)");
+		sp.option(2, "Imperial (2)", "Measurement: <b>Imperial</b>\n Height and cock size will be measured in feet and inches. (Symbols)");
+
+		sp.setting("Button icons", settings, "buttonIconsDisabled");
+		sp.option(1, "OFF", "<b>OFF</b>");
+		sp.option(0, "ON", "<b>ON</b>");
+
+		sp.setting("Stat bar animations", settings, "statbarAnimations");
+		sp.option(1, "OFF", "<b>OFF</b>");
+		sp.option(0, "ON", "<b>ON</b>");
+
+		sp.setting("HP bars show percentages", settings, "hpStatbarPercentage");
+		sp.option(0, "OFF", "<b>OFF</b>");
+		sp.option(1, "ON", "<b>ON</b>");
+
+		sp.setting("Lust bars show percentages", settings, "lustStatbarPercentage");
+		sp.option(0, "OFF", "<b>OFF</b>");
+		sp.option(1, "ON", "<b>ON</b>");
+
+		sp.setting("Wrath bars show percentages", settings, "wrathStatbarPercentage");
+		sp.option(0, "OFF", "<b>OFF</b>");
+		sp.option(1, "ON", "<b>ON</b>");
+
+		sp.setting("Angelic Fraction", flags, kFLAGS.ANGELIC_FRACTION_TOGGLE);
+		sp.option(1, "OFF", "<b>ABSENT</b>");
+		sp.option(0, "ON", "<b>FULL PRESENCE</b>");
+
+		sp.show();
 		menu();
-		buttons.add("Side Bar Font", curry(toggleFlag, kFLAGS.USE_OLD_FONT, settingsScreenInterfaceSettings), "Toggle between old and new font for side bar.");
-		buttons.add("Main BG", menuMainBackground, "Choose a background for main game interface.");
-		buttons.add("Text BG", menuTextBackground, "Choose a background for text.");
-		buttons.add("Sprites", menuSpriteSelect, "Turn sprites on/off and change sprite style preference.");
-		buttons.add("Charview Style",toggleCharViewerStyle, "Change between in text and sidebar display");
-		buttons.add("Toggle Images", toggleImages, "Enable or disable image pack.");
-		buttons.add("Time Format", toggleTimeFormat, "Toggles between 12-hour and 24-hour format.");
-		buttons.add("Measurements", toggleMeasurements, "Switch between imperial and metric measurements.  \n\nNOTE: Only applies to your appearance screen.");
-		buttons.add("Toggle CharView", toggleCharViewer, "Turn PC visualizer on/off.");
-		buttons.add("Charview Armor", curry(toggleFlag, kFLAGS.CHARVIEW_ARMOR_HIDDEN, settingsScreenInterfaceSettings), "Turn PC armor and underwear display on/off");
-		buttons.add("Button Icons", curry(toggleFlag, kFLAGS.BUTTON_ICONS_DISABLED, settingsScreenInterfaceSettings));
-		buttons.add("Statbar Anim.", curry(toggleFlag, kFLAGS.STATBAR_ANIMATIONS, settingsScreenInterfaceSettings), "Toggle stat bar animations when value changes");
-		buttons.add("HP Percent", curry(toggleFlag, kFLAGS.HP_STATBAR_PERCENTAGE, settingsScreenInterfaceSettings), "Toggle between showing the HP stat as a percentage");
-		buttons.add("Lust Percent", curry(toggleFlag, kFLAGS.LUST_STATBAR_PERCENTAGE, settingsScreenInterfaceSettings), "Toggle between showing the Lust stat as a percentage");
-		buttons.add("Wrath Percent", curry(toggleFlag, kFLAGS.WRATH_STATBAR_PERCENTAGE, settingsScreenInterfaceSettings), "Toggle between showing the Wrath stat as a percentage");
-		buttons.add("Angelic Fract", curry(toggleFlag, kFLAGS.ANGELIC_FRACTION_TOGGLE, settingsScreenInterfaceSettings), "Toggle between full and no presence of angelic fraction ingame");
-		buttons.add("CharView Model", toggleCharViewerModel, "Toggle between new/old character model on PC visualizer.");
-		submenu(buttons, settingsScreenMain, 0, false);
-	}
-	public function menuMainBackground():void {
-		menu();
-		addButton(0, "Map (Default)", setMainBackground, 0);
-		addButton(1, "Parchment", setMainBackground, 1);
-		addButton(2, "Marble", setMainBackground, 2);
-		addButton(3, "Obsidian", setMainBackground, 3);
-		addButton(4, "Black", setMainBackground, 4);
 
-		addButton(14, "Back", settingsScreenInterfaceSettings);
-	}
-
-	public function menuTextBackground():void {
-		menu();
-		addButton(0, "Normal", setTextBackground, 0);
-		addButton(1, "White", setTextBackground, 1);
-		addButton(2, "Tan", setTextBackground, 2);
-
-		addButton(14, "Back", settingsScreenInterfaceSettings);
-	}
-
-	public function menuSpriteSelect():void {
-		menu();
-		addButton(0, "Off", toggleSpritesFlag, true, 0, null, "Turn off the sprites completely");
-		addButton(1, "Old", toggleSpritesFlag, false, 1, null, "Use the 8-bit sprites from older versions of CoC.");
-		addButton(2, "New", toggleSpritesFlag, false, 0, null, "Use the 16-bit sprites in current versions of CoC.");
-
-		addButton(14, "Back", settingsScreenInterfaceSettings);
-	}
-
-	public function toggleCharViewer(flag:int = kFLAGS.CHARVIEWER_ENABLED):void {
-		if (flags[flag] < 1) {
-			flags[flag] = 1;
-			mainView.charView.reload();
-		} else {
-			flags[flag] = 0;
-		}
-		settingsScreenInterfaceSettings();
-	}
-	public function toggleCharViewerStyle():void {
-		flags[kFLAGS.CHARVIEW_STYLE] = (flags[kFLAGS.CHARVIEW_STYLE]+1)%3;
-		settingsScreenInterfaceSettings();
-	}
-
-	public function toggleCharViewerModel():void {
-		if (flags[kFLAGS.CHARVIEWER_MODEL] < 1) flags[kFLAGS.CHARVIEWER_MODEL] = 1;
-		else flags[kFLAGS.CHARVIEWER_MODEL] = 0;
-		mainView.charView.reload();
-		settingsScreenInterfaceSettings();
-
-	}
-
-	public function setMainBackground(type:int):void {
-			flags[kFLAGS.BACKGROUND_STYLE]     = type;
-			mainViewManager.setTheme();
-			settingsScreenInterfaceSettings();
-		}
-
-	public function setTextBackground(type:int):void {
-		mainView.textBGWhite.visible = false;
-		mainView.textBGTan.visible   = false;
-		if (type == 1) mainView.textBGWhite.visible = true;
-		if (type == 2) mainView.textBGTan.visible = true;
-		settingsScreenInterfaceSettings();
-	}
-
-	public function toggleSpritesFlag(enabled:Boolean, style:int):void {
-		flags[kFLAGS.SHOW_SPRITES_FLAG] = enabled;
-		flags[kFLAGS.SPRITE_STYLE]      = style;
-		settingsScreenInterfaceSettings();
-
-	}
-
-	public function toggleImages():void {
-		if (flags[kFLAGS.IMAGEPACK_OFF] < 1) flags[kFLAGS.IMAGEPACK_OFF] = 1;
-		else flags[kFLAGS.IMAGEPACK_OFF] = 0;
-		settingsScreenInterfaceSettings();
-	}
-
-	public function toggleTimeFormat():void {
-		if (flags[kFLAGS.USE_12_HOURS] < 1) flags[kFLAGS.USE_12_HOURS] = 1;
-		else flags[kFLAGS.USE_12_HOURS] = 0;
-		settingsScreenInterfaceSettings();
-	}
-
-	public function toggleMeasurements():void {
-		if (flags[kFLAGS.USE_METRICS] < 2) flags[kFLAGS.USE_METRICS] += 1;
-		else flags[kFLAGS.USE_METRICS] = 0;
-		settingsScreenInterfaceSettings();
+		button(1).show("Back", settingsScreenMain);
 	}
 
 	//------------
 	// FONT SETTINGS
 	//------------
-	public function fontSettingsMenu():void {
-		menu();
-		simpleChoices("Smaller Font", decFontSize,
-				"Larger Font", incFontSize,
-				"Reset Size", resetFontSize,
-				"", null,
-				"Back", settingsScreenMain);
-	}
 
 	public function incFontSize():void {
-		var fmt:TextFormat = mainView.mainText.getTextFormat();
-
-		if (fmt.size == null) fmt.size = 20;
-
-		fmt.size = (fmt.size as Number) + 1;
-
-		if ((fmt.size as Number) > 32) fmt.size = 32;
-
-		trace("Font size set to: " + (fmt.size as Number));
-		mainView.mainText.setTextFormat(fmt);
-		flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
+		settings.customFontSize = boundInt(14, (settings.customFontSize || 20) + 1, 32);
+		mainViewManager.setTheme();
 	}
 
 	public function decFontSize():void {
-		var fmt:TextFormat = mainView.mainText.getTextFormat();
-
-		if (fmt.size == null) fmt.size = 20;
-
-		fmt.size = (fmt.size as Number) - 1;
-
-		if ((fmt.size as Number) < 14) fmt.size = 14;
-
-		trace("Font size set to: " + (fmt.size as Number));
-		mainView.mainText.setTextFormat(fmt);
-		flags[kFLAGS.CUSTOM_FONT_SIZE] = fmt.size;
-	}
-
-	public function resetFontSize():void {
-		var fmt:TextFormat = mainView.mainText.getTextFormat();
-		if (fmt.size == null) fmt.size = 20;
-		fmt.size = 20;
-		mainView.mainText.setTextFormat(fmt);
-		flags[kFLAGS.CUSTOM_FONT_SIZE] = 0;
+		settings.customFontSize = boundInt(14, (settings.customFontSize || 20) - 1, 32);
+		mainViewManager.setTheme();
 	}
 
     private function displayControls():void

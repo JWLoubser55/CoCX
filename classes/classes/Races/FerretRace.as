@@ -48,6 +48,8 @@ public class FerretRace extends Race {
 				.skinCoatType(Skin.FUR, +2)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.MustelidsDescendant, PerkLib.BloodlineMustelid);
+		
 		buildTier(6, "ferret-morph")
 				.namesMaleFemaleMorph("ferret-boy", "ferret-girl", "ferret-morph")
 				.buffs({

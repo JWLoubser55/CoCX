@@ -242,6 +242,28 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const ICEHEART:int = _partid++;
+		EnumValue.add(Memories, ICEHEART, "ICEHEART", {
+			id: "Iceheart Pattern",
+			name: "Iceheart Tattoos",
+			cost: 100,
+			title: "Cernos",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.SkinPatternIceheartTattoo
+			}
+		});
+
+		public static const USHI_ONI_TATTOO:int = _partid++;
+		EnumValue.add(Memories, USHI_ONI_TATTOO, "USHI_ONI_TATTOO", {
+			id: "Ushi Oni Pattern",
+			name: "Ushi Oni Tattoos",
+			cost: 100,
+			title: "Ushi Oni",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.SkinPatternUshiOniTattoo
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

@@ -7,7 +7,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.SceneLib;
 import classes.display.SpriteDb;
 
-public class IsabellaScene extends NPCAwareContent implements TimeAwareInterface {
+public class IsabellaScene extends NPCAwareContent implements TimeAwareInterface,SaveAwareInterface {
 //Isabella Flags:
 //256	PC decided to approach Isabella's camp yet? 1
 //257	Met Isabella?
@@ -17,11 +17,22 @@ public class IsabellaScene extends NPCAwareContent implements TimeAwareInterface
 //261  Times Izzy sleep-raped the PC?
 //-Has PC raped her?
 
-		public function IsabellaScene()
+	public function updateAfterLoad(game:CoC):void {
+	}
+
+	public function updateBeforeSave(game:CoC):void {
+	}
+
+	public function updateOnRestart(game:CoC):void {
+		isabellaOffspringData = [];
+	}
+
+	public function IsabellaScene()
 		{
 			pregnancy = new PregnancyStore(kFLAGS.ISABELLA_PREGNANCY_TYPE, kFLAGS.ISABELLA_PREGNANCY_INCUBATION, 0, 0);
 			pregnancy.addPregnancyEventSet(PregnancyStore.PREGNANCY_PLAYER, 2160, 1920, 1680, 1440, 1200, 960, 720, 480, 240);
 			EventParser.timeAwareClassAdd(this);
+			Saves.saveAwareClassAdd(this);
 		}
 
 		private var checkedIsabella:int; //Make sure we test this event just once in timeChangeLarge

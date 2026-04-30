@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Player;
 
 public class NaturalPunchingBagMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Natural Punching Bag";
-        }
+		public static const MNAME:String = "Natural Punching Bag";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -64,7 +65,7 @@ public class NaturalPunchingBagMutation extends IMutationPerkType
         }
 
         public function NaturalPunchingBagMutation() {
-            super(mName + " IM", mName, SLOT_FAT, 3);
+            super(MNAME, SLOT_FAT, 3);
         }
 
     }

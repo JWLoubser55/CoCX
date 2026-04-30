@@ -4,16 +4,16 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
-import classes.Races;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 
-    public class MalleablePhysiologyMutation extends IMutationPerkType
+public class MalleablePhysiologyMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Malleable Physiology";
-        }
+		public static const MNAME:String = "Malleable Physiology";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -54,7 +54,7 @@ import classes.Races;
 
         public function MalleablePhysiologyMutation() 
 		{
-			super(mName + " IM", mName, SLOT_NONE, 3);//SLOT_ADAPTATIONS
+			super(MNAME, SLOT_NONE, 3);//SLOT_ADAPTATIONS
         }
 
     }

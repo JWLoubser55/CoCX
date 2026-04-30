@@ -27,11 +27,11 @@ import classes.Player;
 		}
 		
 		override public function get def():Number{
-			var mod:int = (100-game.player.cor)/20;
+			var mod:int = (game.player.playerCorruption2()-game.player.playerCorruption())/40;
 			return 5 + mod;
 		}
 		override public function get mdef():Number{
-			var mod:int = (100-game.player.cor)/5;
+			var mod:int = (game.player.playerCorruption2()-game.player.playerCorruption())/10;
 			return 40 + mod;
 		}
 	}

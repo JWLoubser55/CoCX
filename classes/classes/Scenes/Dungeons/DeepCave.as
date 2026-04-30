@@ -378,6 +378,7 @@ use namespace CoC;
 			outputText("Satisfied, you redress and prepare to continue with your exploration of the cave.");
             if (!recalling) {
                 player.sexReward("no", "Dick");
+				player.fuckingWithDemons(5);
                 cleanupAfterCombat();
             }
             else doNext(recallWakeUp);
@@ -403,7 +404,8 @@ use namespace CoC;
 			outputText("Sated for now, you rise up, your body dripping gooey whiteness.  Though in retrospect it isn't nearly as much as was pumped into your womb.");
 			if (player.canGetPregnant()) outputText("  You'll probably get pregnant.");
             if (!recalling) {
-                player.sexReward("cum","Vaginal");
+                player.sexReward("cum", "Vaginal");
+				player.fuckingWithDemons(5);
                 if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 14, 50);
                 cleanupAfterCombat();
             }

@@ -19,16 +19,16 @@ package classes.Items.WeaponsRange
 		
 		override public function get attack():Number{
 			var boost:int = 0;
-			var scal:Number = 5;
+			var scal:Number = 10;
 			if (game.player.spe >= 100) {
 				boost += 40;
-				scal -= 1;
+				scal -= 2;
 			}
 			if (game.player.spe >= 50) {
 				boost += 30;
-				scal -= 1;
+				scal -= 2;
 			}
-			boost += Math.round((100 - game.player.cor) / scal);
+			boost += Math.round((game.player.playerCorruption2() - game.player.playerCorruption()) / scal);
 			return (27 + boost);
 		}
 		

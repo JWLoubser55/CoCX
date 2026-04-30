@@ -480,22 +480,22 @@ public class SkinTransformations extends MutationsHelper {
 						player.skinColor = randomChoice(SlimeRace.SlimeSkinColors);
 						outputText("  Stranger still, your skin tone changes to [skin color]!");
 					}
-					if (!InCollection(player.skinColor, MagmaSlimeRace.MagmaSlimeSkinColors) && type == 1) {
-						player.skinColor = randomChoice(MagmaSlimeRace.MagmaSlimeSkinColors);
-						outputText("  Stranger still, your skin tone changes to [skin color]!");
-					}
-					if (!InCollection(player.skinColor, DarkSlimeRace.DarkSlimeSkinColors) && type == 2) {
+					if (!InCollection(player.skinColor, DarkSlimeRace.DarkSlimeSkinColors) && type == 1) {
 						player.skinColor = randomChoice(DarkSlimeRace.DarkSlimeSkinColors);
 						outputText("  Stranger still, your skin tone changes to [skin color]!");
-					}
+					}/*
+					if (!InCollection(player.skinColor, MagmaSlimeRace.MagmaSlimeSkinColors) && type == 2) {
+						player.skinColor = randomChoice(MagmaSlimeRace.MagmaSlimeSkinColors);
+						outputText("  Stranger still, your skin tone changes to [skin color]!");
+					}*/
 					//if (doOutput) outputText(desc);
 					switch (type) {
 						case 0: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.SLIME));
 							break;
-						case 1: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.MAGMA_SLIME));
+						case 1: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.DARK_SLIME));
 							break;
-						case 2: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.DARK_SLIME));
-							break;
+					//	case 2: Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.MAGMA_SLIME));
+					//		break;
 					}
 				},
 				// is present
@@ -753,6 +753,7 @@ public class SkinTransformations extends MutationsHelper {
 				player.skin.base.adj = "black spider glyph-tattooed";
 
 				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SkinPatternMem.getMemory(SkinPatternMem.USHI_ONI_TATTOO));
 			},
 			// is present
 			function (): Boolean {
@@ -981,6 +982,24 @@ public class SkinTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.skin.base.pattern === Skin.PATTERN_SOULFORCE_SCARING;
+			}
+	);
+
+	public const SkinPatternIceheartTattoo: Transformation = new SimpleTransformation("Iceheart Tattoo Skin Pattern",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You feel a chilling sensation as glowing, icy blue lines begin forming across your sensitive skin. Within the minute, you get over the cold, now fully acclimated to your new bodily temperature as your skin is now covered with Iceheart runic tattoos, <b>like that of a cernos, granting you mastery over the harsh powers of winter!</b>";
+				player.skin.base.adj = "tattooed";
+				player.skin.base.pattern = Skin.PATTERN_ICEHEART_TATOO;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SkinPatternMem.getMemory(SkinPatternMem.ICEHEART));
+			},
+			// is present
+			function (): Boolean {
+				return player.skin.base.pattern === Skin.PATTERN_ICEHEART_TATOO;
 			}
 	);
 	/*

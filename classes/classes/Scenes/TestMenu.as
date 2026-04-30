@@ -11,6 +11,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.*;
 import classes.Items.*;
 import classes.Items.Dynamic.DynamicWeapon;
+import classes.Races.BansheeRace;
 import classes.Scenes.Areas.DeepSea.Kraken;
 import classes.Scenes.Areas.Mountain.Minotaur;
 import classes.Scenes.Camp.CampStatsAndResources;
@@ -55,6 +56,7 @@ public class TestMenu extends BaseContent
 		clearOutput();
 		outputText("Collection of different cheats that can be used by the players.");
 		outputText("\n\nAscension points: " + player.ascensionPerkPoints + "");
+		outputText("\n\nCorruption: "+player.cor+"");
 		var bd:ButtonDataList = new ButtonDataList();
 		bd.add("StatsAdj/Ascen", StatsAscensionMenu, "For more precisely adjusting each of the 8 main stats and Ascension related stuff.");
 		bd.add("P/G/XP", PerksGemsEXP, "Adding/Removing perk points and adding gems/exp.");
@@ -104,11 +106,14 @@ public class TestMenu extends BaseContent
 		bd.add("Test7", MightyOrNot7, "Combat Slaves Operational.");
 		bd.add("Test8", NotAnAizen, "If you really not wanna go to Ignam agian for this testing use this.").disableIf(player.hasStatusEffect(StatusEffects.ChainOfFate));
 		bd.add("Test9", NotHollowed, "Cheatish curing Demi-hollow state.");
-		bd.add("Test10", ConvertYourMaskFragments, "Convert Your Mask Fragments. One at the time!");
-		bd.add("Test11", MightyOrNot8, "Fixing ascension bug for Exanimation II.");
-		bd.add("Test12", MightyOrNot9, "Testing Hollow evolutions faster.");
-		bd.add("Test13", MightyOrNot10, "Testing Bad End after effects.");
+		bd.add("Test10", NotHollowed2, "Cheatish curing Exanimation II or IV due to bug with evangeline curing those stages.");
+		bd.add("Test11", ConvertYourMaskFragments, "Convert Your Mask Fragments. One at the time!");
+		bd.add("Test12", MightyOrNot8, "Fixing ascension bug for Exanimation II.");
+		bd.add("Test13", MightyOrNot9, "Testing Hollow evolutions faster.");
 		bd.add("Test14", MightyOrNot11, "Missing Spiritual Hunger for Vacant and higher hollows.");
+		bd.add("Test15", MightyOrNot10, "Testing Bad End after effects.");
+		bd.add("Test16", MightyOrNot12, "Fixing Skeleton Giants counter.");
+		bd.add("Test17", MightyOrNot13, "Testing Banshee TF");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -144,6 +149,36 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot13():void {
+		transformations.HairSilky.applyEffect(false);
+		player.hairColor = randomChoice(BansheeRace.BansheeHairColors);
+		transformations.ArmsBanshee.applyEffect(false);
+		transformations.LowerBodyBanshee.applyEffect(false);
+		transformations.RearBodyGhostlyAura.applyEffect(false);
+		transformations.EyesElf.applyEffect(false);
+		player.eyes.colour = "pale blue";
+		transformations.EarsElven.applyEffect(false);
+		transformations.TongueElf.applyEffect(false);
+		transformations.FaceElf.applyEffect(false);
+		if (!player.hasPlainSkinOnly()) transformations.SkinPlain.applyEffect(false);
+		player.skinAdj = "flawless";
+		player.skinColor = randomChoice(BansheeRace.BansheeSkinColors);
+		if (player.femininity < 70) player.femininity = 70;
+		if (player.tone > 60) player.tone = 60;
+		if (player.thickness > 50) player.thickness = 50;
+		if (player.cor < 20) player.cor = 20;
+		if (!player.hasPerk(PerkLib.FlawlessBody)) player.createPerk(PerkLib.FlawlessBody, 0, 0, 0, 0);
+		if (!player.hasPerk(PerkLib.Incorporeality)) player.createPerk(PerkLib.Incorporeality, 0, 0, 0, 0);
+		if (!player.hasPerk(PerkLib.Ethereal)) player.createPerk(PerkLib.Ethereal, 0, 0, 0, 0);
+		if (!player.hasPerk(PerkLib.Undeath)) player.createPerk(PerkLib.Undeath, 0, 0, 0, 0);
+		doNext(SoulforceCheats);
+	}
+	
+	public function MightyOrNot12():void {
+		if (player.hasPerk(PerkLib.BoneGiants) && player.perkv1(PerkLib.BoneGiants) < 0) SceneLib.campMakeWinions.fixinSkeletonGiants();
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot11():void {
@@ -197,6 +232,23 @@ public class TestMenu extends BaseContent
 		if (player.hasStatusEffect(StatusEffects.ChainOfFate)) player.removeStatusEffect(StatusEffects.ChainOfFate);
 		if (player.hasPerk(PerkLib.ExanimationI)) player.removePerk(PerkLib.ExanimationI);
 		if (player.hasPerk(PerkLib.EmptyVessel)) player.removePerk(PerkLib.EmptyVessel);
+		CoC.instance.transformations.FaceHuman.applyEffect(false);
+		CoC.instance.transformations.EyesHuman.applyEffect(false);
+		doNext(SoulforceCheats);
+	}
+	
+	public function NotHollowed2():void {
+		outputText("\n\n<b>You specification was restored to default ^^</b>\n\n");
+		if (player.hasPerk(PerkLib.ExanimationIII)) player.removePerk(PerkLib.ExanimationIII);
+		if (player.hasPerk(PerkLib.ExanimationIV)) player.removePerk(PerkLib.ExanimationIV);
+		if (player.hasPerk(PerkLib.GiantSize)) player.removePerk(PerkLib.GiantSize);
+		if (player.hasPerk(PerkLib.TitanicSize)) player.removePerk(PerkLib.TitanicSize);
+		if (player.hasPerk(PerkLib.AcidAffinity)) player.removePerk(PerkLib.AcidAffinity);
+		if (player.hasPerk(PerkLib.LightningAffinity)) player.removePerk(PerkLib.LightningAffinity);
+		if (player.hasPerk(PerkLib.ColdAffinity)) player.removePerk(PerkLib.ColdAffinity);
+		if (player.hasPerk(PerkLib.FireAffinity)) player.removePerk(PerkLib.FireAffinity);
+		if (player.hasPerk(PerkLib.SpiritualHunger)) player.removePerk(PerkLib.SpiritualHunger);
+		if (player.hasPerk(PerkLib.SoulResonance)) player.removePerk(PerkLib.EmptyVessel);
 		CoC.instance.transformations.FaceHuman.applyEffect(false);
 		CoC.instance.transformations.EyesHuman.applyEffect(false);
 		doNext(SoulforceCheats);
@@ -2916,4 +2968,4 @@ public class TestMenu extends BaseContent
 		SceneLib.lily.lilyEncounter();
 	}
 	}
-}
+}

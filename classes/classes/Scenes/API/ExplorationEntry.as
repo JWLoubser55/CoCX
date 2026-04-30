@@ -3,6 +3,7 @@ import classes.CoC;
 import classes.Scenes.SceneLib;
 
 import coc.view.Color;
+import coc.view.ExplorationMapNode;
 import coc.view.UIUtils;
 
 import flash.display.DisplayObject;
@@ -17,13 +18,11 @@ public class ExplorationEntry {
 	public static const REVEAL_NOT:int  = 0;
 	public static const REVEAL_KIND:int = 1;
 	public static const REVEAL_FULL:int = 2;
-	public static const RADIUS:Number   = 16;
 //	public static const LABEL_TEXT_FORMAT:Object = {
 //		color: "#000000",
 //		align: "center"
 //	};
 //	public static const LABEL_OUTLINE:String     = "#888800";
-	private static const BORDER_WIDTH:Number   = 3;
 	private static const BORDER_CLEARED:String = "#222222";
 	private static const BORDER_UNKNOWN:String = "#222222";
 	private static const BORDER_NEXT:String    = "#0080ff";
@@ -57,10 +56,9 @@ public class ExplorationEntry {
 	public var reenter:Boolean;
 	public var x:Number;
 	public var y:Number;
-	public function get centerX():Number { return x + RADIUS; }
-	public function get centerY():Number { return y + RADIUS; }
-	public var sprite:Sprite;
-	public var tfLabel:TextField;
+	public function get centerX():Number { return sprite.centerX; }
+	public function get centerY():Number { return sprite.centerY; }
+	public var sprite:ExplorationMapNode;
 	public var roadIndex:int;
 	public var roadPos:int;
 	public var nextNodes:/*ExplorationEntry*/Array = [];
@@ -82,49 +80,26 @@ public class ExplorationEntry {
 	}
 
 	private function createUI():void {
-		sprite = new Sprite();
-		tfLabel         = UIUtils.newTextField({
-			x                : 0,
-			y                : 2 * RADIUS,
-			width            : 2 * RADIUS,
-			autoSize         : TextFieldAutoSize.CENTER
-		});
-//		tfLabel.filters       = [UIUtils.outlineFilter(LABEL_OUTLINE)];
-		sprite.addChild(tfLabel);
-
-		sprite.mouseChildren = false;
-		sprite.addEventListener(MouseEvent.CLICK, onClick);
-		sprite.addEventListener(MouseEvent.ROLL_OVER, onHover);
-		sprite.addEventListener(MouseEvent.ROLL_OUT, onDim);
+		sprite = new ExplorationMapNode(
+				onClick,
+				onHover,
+				onDim
+		);
 		sprite.x = x;
 		sprite.y = y;
 	}
 	public function redraw():void {
-		var g:Graphics = sprite.graphics;
-
-		var borderColor:uint = Color.convertColor32(
-				isPlayerHere ? BORDER_PLAYER
-						: isDisabled ? BORDER_CLEARED
-								: isNext ? BORDER_NEXT
-										: isCleared ? BORDER_CLEARED : BORDER_UNKNOWN
+		var borderColor:String = isPlayerHere ? BORDER_PLAYER
+				: isDisabled ? BORDER_CLEARED
+						: isNext ? BORDER_NEXT
+								: isCleared ? BORDER_CLEARED : BORDER_UNKNOWN;
+		var fillColor:String =isPlayerHere ? COLOR_DISABLED : color;
+		sprite.redraw(
+				borderColor,
+				fillColor,
+				label,
+				isNext
 		);
-
-		g.clear();
-		g.lineStyle(BORDER_WIDTH, borderColor);
-		g.beginFill(Color.convertColor32(isPlayerHere ? COLOR_DISABLED : color));
-		g.drawCircle(RADIUS, RADIUS, RADIUS);
-		g.endFill();
-
-		var mainTextFormat:TextFormat = CoC.instance.mainView.mainText.defaultTextFormat;
-		tfLabel.defaultTextFormat = UIUtils.convertTextFormat({
-			font : mainTextFormat.font,
-			size : Number(mainTextFormat.size || 12) - 4,
-			color: mainTextFormat.color,
-			align: 'center'
-		});
-		tfLabel.text = label;
-
-		sprite.buttonMode = isNext;
 	}
 
 	private function onClick(event:MouseEvent):void {

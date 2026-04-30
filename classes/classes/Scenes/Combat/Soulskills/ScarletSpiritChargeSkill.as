@@ -53,11 +53,11 @@ public class ScarletSpiritChargeSkill extends AbstractBloodSoulSkill {
 		ScarletSpiritChargeBoost = FnHelpers.FN.logScale(ScarletSpiritChargeBoost,ScarletSpiritChargeABC,10);
 		ScarletSpiritChargeBoost = Math.round(ScarletSpiritChargeBoost);
 		tempStrTouSpe = ScarletSpiritChargeBoost;
-		mainView.statsView.showStatUp('str');
-		mainView.statsView.showStatUp('tou');
-		mainView.statsView.showStatUp('spe');
-		mainView.statsView.showStatUp('inte');
-		mainView.statsView.showStatUp('wis');
+		showStatUp('str');
+		showStatUp('tou');
+		showStatUp('spe');
+		showStatUp('inte');
+		showStatUp('wis');
 		player.buff("ScarletSpiritCharge").addStats({
 			"str.mult":(ScarletSpiritChargeBoost*0.02),
 			"tou.mult":(ScarletSpiritChargeBoost*0.02),

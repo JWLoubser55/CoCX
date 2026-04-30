@@ -10,7 +10,6 @@ import classes.CoC;
 import classes.GlobalFlags.kFLAGS;
 import classes.IMutationPerkType;
 import classes.IMutations.*;
-import classes.internals.Utils;
 import classes.Parser.Parser;
 import classes.PerkClass;
 import classes.PerkLib;
@@ -23,6 +22,7 @@ import classes.Scenes.NPCs.TyrantiaFollower;
 import classes.Scenes.SceneLib;
 import classes.Stats.StatUtils;
 import classes.StatusEffects;
+import classes.internals.Utils;
 
 import coc.view.Block;
 import coc.view.ButtonDataList;
@@ -31,7 +31,6 @@ import coc.view.MainView;
 import coc.view.UIUtils;
 
 import flash.events.MouseEvent;
-import flash.events.TextEvent;
 import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.utils.Dictionary;
@@ -42,7 +41,7 @@ public class PerkMenu extends BaseContent {
 	public function displayPerks():void {
 		clearOutput();
 		displayHeader("Perks (Total: " + (player.perks.length + player.perksCountForMergedOnes()) + " / Merged: " + player.perksCountForMergedOnes() + ")");
-		if (flags[kFLAGS.NEWPERKSDISPLAY] >= 1){
+		if (settings.newPerksDisplay >= 1){
 			playerPerksList();
 		}
 		else{
@@ -281,7 +280,7 @@ public class PerkMenu extends BaseContent {
 			outputText("\n<b>You can adjust your elemental summons behavior during combat.</b>");
 			bd.add("Elementals", summonsbehaviourOptions);
 		}
-		if ((flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0 || flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0 || flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0 || flags[kFLAGS.IMPROVED_PERMANENT_STEEL_GOLEMS_BAG] > 0) || (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0 || player.perkv1(PerkLib.GreaterHarvest) > 0 || player.perkv2(PerkLib.GreaterHarvest) > 0))) {
+		if ((flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0 || flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0 || flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0 || flags[kFLAGS.IMPROVED_PERMANENT_STEEL_GOLEMS_BAG] > 0) || (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.JobHaruspex) > 0 || player.perkv1(PerkLib.BoneyBow) > 0 || player.perkv1(PerkLib.BoneyWand) > 0))) {
 			outputText("\n<b>You can adjust your permanent golems (or skeletons) behavior during combat.</b>");
 			bd.add("Golems/Skeletons", golemsskeletonsbehaviourOptions);
 		}
@@ -304,6 +303,10 @@ public class PerkMenu extends BaseContent {
 		if (player.hasKeyItem("Improved Artificial Intelligence") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK2") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK3") >= 0 || player.hasKeyItem("Improved Artificial Intelligence MK4") >= 0) {
 			outputText("\n<b>You can adjust the behavior of your mech ai during combat.</b>");
 			bd.add("Mech AI", mechAiBehaviourOptions);
+		}
+		if (player.hasPerk(PerkLib.FirstAttackTamedMonsters)) {
+			outputText("\n<b>You can adjust your tamed monsters behavior during combat.</b>");
+			bd.add("Tamed Monsters", tammedMonstersBehaviourOptions);
 		}
 		submenu(bd, CoC.instance.inCombat ? curry(combat.combatMenu, false) : displayPerks, 0, false);
 	}
@@ -758,7 +761,7 @@ public class PerkMenu extends BaseContent {
 		}
 		if (flags[kFLAGS.GOLEMANCER_PERM_GOLEMS] == 1) addButton(10, "G. Waiting", golemsAttacking,false).hint("Golems will not attack at the beginning of the turn.");
 		if (flags[kFLAGS.GOLEMANCER_PERM_GOLEMS] != 1) addButton(11, "G. Attacking", golemsAttacking, true).hint("Golems will attack at the beginning of the turn.");
-		if (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0 || player.perkv1(PerkLib.GreaterHarvest) > 0 || player.perkv2(PerkLib.GreaterHarvest) > 0)) {
+		if (player.hasPerk(PerkLib.FirstAttackSkeletons) && (player.perkv2(PerkLib.JobHaruspex) > 0 || player.perkv1(PerkLib.BoneyBow) > 0 || player.perkv1(PerkLib.BoneyWand) > 0)) {
 			outputText("\n\n<b>Skeletons attack pattern behaviors:</b>\n");
 			if (flags[kFLAGS.NECROMANCER_SKELETONS] == 1) outputText("Attacking at the beginning of each turn.");
 			if (flags[kFLAGS.NECROMANCER_SKELETONS] < 1) outputText("Waiting for the owner to give an attack command each turn.");
@@ -1026,6 +1029,20 @@ public class PerkMenu extends BaseContent {
 		addButton(14, "Back", minionOptions);
 	}
 
+	public function tammedMonstersBehaviourOptions():void {
+		clearOutput();
+		menu();
+		outputText("You can choose how your tamed monsters will behave during each fight.\n\n");
+		outputText("\n<b>Tamed monsters behavior:</b>\n");
+		if (flags[kFLAGS.TAMED_MONSTER_ATTACK] == 0) outputText("Your tamed monsters will not attack.");
+		if (flags[kFLAGS.TAMED_MONSTER_ATTACK] == 1) outputText("Your tamed monsters will attack at the beginning of each turn. (Need to have any tamed monster for this setting to have any effect)");
+		addButton(10, "Disable", toggleFlag, tammedMonstersBehaviourOptions, kFLAGS.TAMED_MONSTER_ATTACK)
+			.disableIf(flags[kFLAGS.TAMED_MONSTER_ATTACK] == 0);
+		addButton(11, "Enable", toggleFlag, tammedMonstersBehaviourOptions, kFLAGS.TAMED_MONSTER_ATTACK)
+			.disableIf(flags[kFLAGS.TAMED_MONSTER_ATTACK] == 1);
+		addButton(14, "Back", minionOptions);
+	}
+
 	//IMutationsDB!
 	public function mutationsDatabase(page:int = 0, review:Boolean = false):void{
 		/*
@@ -1034,7 +1051,7 @@ public class PerkMenu extends BaseContent {
 		if (review) {	//Initial screen for user to know how many points they have per part
 			clearOutput();
 			displayHeader("Mutation Stats");
-			if (flags[kFLAGS.MUTATIONS_SPOILERS]) {
+			if (settings.mutationsSpoiler) {
 				outputText("Mutations Assistant: <b>On</b>\n");
 			}
 			else{
@@ -1046,7 +1063,7 @@ public class PerkMenu extends BaseContent {
 					"\nNote: Not all body parts will use all available slots.\n\n");
 
 			outputText("Mutations can be obtained by ");
-			if (flags[kFLAGS.MUTATIONS_SPOILERS] || EvangelineFollower.EvangelineAffectionMeter >= 3){
+			if (settings.mutationsSpoiler || EvangelineFollower.EvangelineAffectionMeter >= 3){
 				outputText("finding Evangeline and asking her about it.\n");
 			}
 			else{
@@ -1072,7 +1089,7 @@ public class PerkMenu extends BaseContent {
 					outputText("[font-green]");
 				}
 				outputText( mCount +"[/font] of " + (mutationCount > mPerkarray.length ? mPerkarray.length : mutationCount) + ". Max:(");
-				if (flags[kFLAGS.MUTATIONS_SPOILERS]){
+				if (settings.mutationsSpoiler){
 					outputText(mPerkarray.length + ")\n");
 				}
 				else{
@@ -1168,7 +1185,7 @@ public class PerkMenu extends BaseContent {
 
 	//Mutations check helper. Cloned + stripped requirements logic from PerkMenuDB.
 	public function mutationsDatabaseVerify(mutationsArray:Array):void {
-		if(flags[kFLAGS.MUTATIONS_SPOILERS]) {
+		if(settings.mutationsSpoiler) {
 			for each(var mutation:IMutationPerkType in mutationsArray) {
 				var pMutateLvl:int = player.perkv1(mutation);
 				if (pMutateLvl > 0) {	//Just checking if you have the base.
@@ -1212,7 +1229,7 @@ public class PerkMenu extends BaseContent {
 					}
 				}
 
-				if (flags[kFLAGS.IMDB_DETAILS]) {
+				if (settings.imdbDetails) {
 					outputText("\nAll Tier Descriptions:");
 					for (var tier:int = 1; tier <= mutation.maxLvl; ++tier) {
 						var temptxt:String = ("\n" + tier + ": " + mutation.mDesc(player.getPerk(mutation), tier));
@@ -1367,7 +1384,7 @@ public class PerkMenu extends BaseContent {
 		}
 	}
 	
-	public function newPerkMenu(category:*=null):void {
+	public function newPerkMenu(category:* =null):void {
 		preferOld = false;
 		mainView.toolTipView.hide();
 		clearOutput();
@@ -1420,6 +1437,7 @@ public class PerkMenu extends BaseContent {
 			["FCh", PerkLib.JobBeastlord],
 			["Glm", PerkLib.JobGolemancer],
 			["Gsg", PerkLib.JobGunslinger],
+			["Har", PerkLib.JobHaruspex],
 			["Hlr", PerkLib.JobHealer],
 			["Hnt", PerkLib.JobHunter],
 			["Knt", PerkLib.JobKnight],

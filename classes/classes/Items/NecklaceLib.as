@@ -67,6 +67,7 @@ public final class NecklaceLib extends ItemConstants
 		public const SKULLNE:SkullNecklace = new SkullNecklace();
 		public const TREELNE:TreeOfLifeNecklace = new TreeOfLifeNecklace();
 		public const SILCNEC:SilverCrossNecklace = new SilverCrossNecklace();
+		public const WBCOLLAR:WinterBellCollar = new WinterBellCollar();
 
 		public function NecklaceLib()
 		{

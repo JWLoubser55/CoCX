@@ -16,6 +16,8 @@ public class ElementalPearl extends Consumable {
      */
     public function ElementalPearl(tier:int) {
         var descr:String;
+        var requiredPerk:PerkType;
+        var itemPerk:PerkType;
         switch(tier) {
             case 3:
                 descr = "A pearl formed after defeating a group of golems. It's surrounded by a faint aura of elements. Such pearls can restore the weakened bodies of people who have <i>resolved</i> to spend their lives practicing magic and conjuration."
@@ -43,6 +45,8 @@ public class ElementalPearl extends Consumable {
             tier == 3 ? 200 : tier == 5 ? 400 : 800,
             descr
         );
+        this.requiredPerk = requiredPerk;
+        this.itemPerk = itemPerk;
         if (itemPerk == null) throw new Error("Invalid tier: " + tier + "!");
     }
 

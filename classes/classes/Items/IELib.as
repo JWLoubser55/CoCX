@@ -84,7 +84,7 @@ public class IELib extends ItemConstants {
 	/** must have corruption >= (power) to equip */
 	public static const Require_Cor:ItemEffectType = mk("Require_Cor", "Requires corruption {power} or more").withFlags(IEF_REQUIREMENT);
 	/** must have corruption < (power) to equip */
-	public static const Require_CorBelow:ItemEffectType = mk("Require_CorBelow", "Requires coruption less than {power}").withFlags(IEF_REQUIREMENT);
+	public static const Require_CorBelow:ItemEffectType = mk("Require_CorBelow", "Requires corruption less than {power}").withFlags(IEF_REQUIREMENT);
 	/** Change min femininity by (+power) */
 	public static const MinFem:ItemEffectType = mk("MinFem", "Min. femininity {power;+d}", 80,
 			function(player:Player,item:ItemType,effect:ItemEffect):void {

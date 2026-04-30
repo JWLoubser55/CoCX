@@ -16,7 +16,8 @@ public final class WeaponRangeLib extends ItemConstants
 			return [
 				ARTEMIS,
 				KSLHARP,
-				GOODSAM
+				GOODSAM,
+				FAILNAU
 			]
 		}
 		public function LegendaryCorrupt():Array {
@@ -40,7 +41,9 @@ public final class WeaponRangeLib extends ItemConstants
 		public const ATKNIFE:WeaponRange = new WeaponRange("ATKnife", "A.ThrowingKnife", "amethyst throwing knife", "an amethyst throwing knife", "shot", 3, 300, "A small knife made of obsidian and grotesquely decorated with amethysts and lead engravings that can be thrown. The magic within this murky blade will bleed unnatural darkness when charged with magic. You can carry up to 15 on you and need to retrieve them after battles.", "Throwing");
 		public const AVELYNN:WeaponRange = new WeaponRange("Avelynn", "Avelynn", "Avelynn", "Avelynn", "shot", 40, 6000, "A marvel of goblin prehistory before the time the first firearms were created, Avelynn prototype 3.0 is designed with several chained mechanisms allowing the firing of up to 3 bolts simultaneously. Despite being primitive by modern goblin design this exquisite tool of death does its job well.", WT_CROSSBOW).withBuffs({'rangedaccuracy':+60}) as WeaponRange;
 		public const BADOMEN:BadOmen = new BadOmen();
+		public const BADOMENS:BadOmens = new BadOmens();
 		public const BEA_BOW:BeautifulBow = new BeautifulBow();
+		public const FAILNAU:Failnaught = new Failnaught();
 		public const B_F_BOW:BFBow = new BFBow();
 		public const BFXBOW_:WeaponRange = new WeaponRange("BFXBow", "BFXBow", "big fucking crossbow", "a big fucking crossbow", "shot", 60, 3000, "Big Fucking Crossbow - the best solution for a tiny e-pen complex at this side of the Mareth!", WT_CROSSBOW).withBuffs({'rangedaccuracy':+60}) as WeaponRange;
 		public const BLUNDER:WeaponRange = new WeaponRange("Blunder", "Blunderbuss", "blunderbuss rifle", "a blunderbuss rifle", "shot", 16, 590, "This is a blunderbuss rifle. It's effective at short range but poor at long range.\n\nGoblin Mech Compatible", WT_RIFLE);
@@ -88,6 +91,7 @@ public final class WeaponRangeLib extends ItemConstants
 		public const T_KNIFE:WeaponRange = new WeaponRange("T.Knife", "ThrowingKnife", "throwing knife", "a throwing knife", "shot", 2, 100, "A small knife that could be thrown.  Preferred weapon for the rogues. You can carry up to 10 on you and need to retrieve them after battles.", "Throwing");
 		public const TDEEAGL:TwinDesertEagles = new TwinDesertEagles();
 		public const TDPISTO:TwinDartPistol = new TwinDartPistol();
+		public const TENERGYG:TwinEnergyGuns = new TwinEnergyGuns();
 		public const TM1CERB:TwinM1Cerberuses = new TwinM1Cerberuses();
 		public const TOUHOM3:WeaponRange = new WeaponRange("TouhoM3", "TouhounaM3", "Touhouna M3", "a Touhouna M3", "shot", 20, 430, "Pinnacle of goblin engineering, the Touhouna is what goblins call a mechagun. Never needing to be reloaded it shoots bullets in very fast succession achieving with sheer shot number what way more unwieldy or hazardous gun do.\n\nGoblin Mech Compatible", WT_2H_FIREARM);
 		public const TRFATBI:WeaponRange = new WeaponRange("TrFatbi", "TripxiFatbilly", "Tripxi Fatbilly", "a Tripxi Fatbilly", "shot", 260, 5230, "Tripxi has one moto… if you can't aim right, deliver an artillery shot so wide it hit everything in the next 200 yard reliably.", WT_2H_FIREARM);
@@ -96,6 +100,7 @@ public final class WeaponRangeLib extends ItemConstants
 		public const TTKNIFE:WeaponRange = new WeaponRange("TTKnife", "T.ThrowingKnife", "topaz throwing knife", "a topaz throwing knife", "shot", 3, 300, "A small knife made of eversteel and richly decorated with yellow topazes and copper engravings that could be thrown. The magic within this shining blade will oversaturate the metal with electricity when charged with magic. You can carry up to 15 on you and need to retrieve them after battles.", "Throwing");
 		public const TWINGRA:TwinGrakaturd = new TwinGrakaturd();
 		public const TWINSIXS:TwinSixShooter = new TwinSixShooter();
+		public const TGOODSAM:TwoGoodSamaritans = new TwoGoodSamaritans();
 		public const WARDBOW:WeaponRange = new WeaponRange("WardBow", "WardensBow", "Warden’s bow", "a Warden’s bow", "shot", 20, 2000, "Recurve bows like this serve as a compromise for a shortbow’s accuracy and ease of use, with a longbow’s devastating stopping power.  The sacred wood quietly hums Yggdrasil's song, unheard by all but it’s wielder.", WT_BOW).withBuffs({
 			'rangedaccuracy':+10,
 			'psoulskillpower':+0.4,
@@ -123,8 +128,10 @@ public final class WeaponRangeLib extends ItemConstants
 			[M1CERBE, TM1CERB],
 			[ALAKABL, DALAKABL],
 			[DESEAGL, TDEEAGL],
-			[NAILGUN, NAILGUN2]
-			//[HARKON1, HARKON2],
+			[NAILGUN, NAILGUN2],
+			[ENERGYG, TENERGYG],
+			[BADOMEN, BADOMENS],
+			[GOODSAM, TGOODSAM]
 		];
 		
 		/*

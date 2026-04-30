@@ -67,7 +67,7 @@ import classes.lists.Gender;
 			addFoodToGo(consumables.GODMEAD, 100);
 
 			outputText("\n\n<b><u>Special Meals</u></b>");
-			//addFoodPlate("Rhino Steak", 10, "Despite the name, it doesn't come from any rhinoceros or a rhino-morph. We can guarantee you that no rhinoceros were harmed in the production of this food.\n\nDISCLAIMER: We are not responsible if you find yourself altered.", "When the satyr brings you your steak you can tell from the way it sizzles that it just came off the grill. You take a fork and knife and eat the succulent steak piece by juicy piece, enjoying the explosion of flavor as the tender, juicy meat disappears into your mouth and fills your belly.");
+			addFoodPlate("Rhino Steak", 10, "Despite the name, it doesn't come from any rhinoceros or a rhino-morph. We can guarantee you that no rhinoceros were harmed in the production of this food.\n\nDISCLAIMER: We are not responsible if you find yourself altered.", "When the satyr brings you your steak you can tell from the way it sizzles that it just came off the grill. You take a fork and knife and eat the succulent steak piece by juicy piece, enjoying the explosion of flavor as the tender, juicy meat disappears into your mouth and fills your belly.");
 			//addFoodPlate("Echidna Cake", 10, "Try our special cake, a favorite among the echidna-morphs!\n\nDISCLAIMER: We are not responsible if you find yourself altered.", "You waste no time digging into the cake and it is absolutely delicious! Within moments every savory morsel is gone. Despite the generous size of the piece you were given you can't help wishing that there had been more.");
 			addFoodPlate("Giant Burger", 8, "Want something a bit modern and delicious? We're pleased to offer a large burger fit for a king!", "The satyr brings you a huge burger piled high with meat and bacon and more meat. A generous helping of crisp tomatoes and a single leafy piece of lettuce join in the fray along with a big thick onion ring. When you bite it you taste spices and sauce and cheese along with the meat and veggies you can see. Each bite is a tidal wave of flavor. When you've finished you feel satisfied and a little heavier.");
 			addFoodPlate("P. Potatoes", 5, "It's a party! Try these special potatoes for a guaranteed blast of a taste!", "When the satyr brings you your plate the food on it is still sizzling. Your party potatoes sit alongside sliced bits of beef and wedges of green, red and yellow peppers. Its a messy meal and when you're done you feel a little heavier. With a belch you realize that this is going to go straight to your butt.");
@@ -1589,105 +1589,10 @@ import classes.lists.Gender;
 				player.goIntoRut(true);
 			}
 			if (player.blockingBodyTransformations()) changeLimit = 0;
-			// Special TFs
-			//------------
-			if (rand(4) == 0 && changes < changeLimit && player.horns.type != Horns.UNICORN && player.horns.type != Horns.ORCHID && player.ears.type == Ears.HORSE && (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.CLOVEN_HOOFED || player.racialScore(Races.HORSE, false) >= 3)) {
-				outputText("\n\nYou begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the <b>sharp nub of a horns protruding from the center of your forehead</b> and growing. Once it's complete you estimate it to be about six inches long.");
-				player.horns.type = Horns.UNICORN;
-				player.horns.count = 6;
-				changes++;
-			}
-			if (rand(4) == 0 && changes < changeLimit && player.horns.type == Horns.UNICORN && player.horns.count > 0 && player.horns.count < 12) {
-				outputText("\n\nYou begin to feel an intense pinching sensation in your central horns as it pushes out, growing longer and larger. You reach up and find <b>it has developed its own cute little spiral,</b> you estimate it to be about a foot long, two inches thick and very sturdy, a very useful natural weapon.");
-				player.horns.count = 12;
-				changes++;
-			}
-			// Normal TFs
-			//------------
-			//Removes wings
-			if (rand(4) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && player.wings.type > Wings.NONE) {
-			//	if (player.wings.type == SHARK_FIN) outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine. After a moment the pain passes, though your fin is gone!");
-				outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into each of your shoulder-blades. After a moment the pain passes, though your wings are gone!");
-				player.wings.type = Wings.NONE;
-				changes++;
-			}
-			//Fur/scales fall out
-			if (rand(4) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && (player.hasCoat() || player.skinColor != "gray" || player.skinAdj != "tough")) {
-				outputText("\n\n");
-				if (player.hasCoat()) {
-					switch (player.coatType()) {
-						case Skin.FUR:
-							outputText("You feel an itching sensation as your fur beings to fall off in clumps, <b>revealing tough gray skin</b> beneath it.");
-							break;
-						case Skin.SCALES:
-							outputText("You feel an odd rolling sensation as your scales begin to shift, spreading and reforming as they grow and disappear, <b>becoming tough gray skin</b>.");
-							break;
-
-					}
-				} else switch(player.skin.base.type){
-					case Skin.GOO:
-						outputText("You feel an itchy sensation as your gooey skin solidifies and thickens, <b>becoming tough gray skin</b>.");
-						break;
-					case Skin.PLAIN:
-					default:
-						outputText("You feel an itchy sensation as your [skin base] thickens, <b>becoming tough gray skin</b>.");
-						break;
-				}
-				player.skin.setBaseOnly({color:"gray",adj:"tough",type:Skin.PLAIN});
-				changes++;
-			}
-			//Arms change to regular
-			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && player.arms.type != Arms.HUMAN) {
-				switch(player.arms.type) {
-					case Arms.HARPY:
-						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating. The wing-like shape your arms once had is gone in a matter of moments, leaving [skin.type] behind.");
-						break;
-					case Arms.SPIDER:
-						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your arms' chitinous covering is flaking away. The glossy black coating is soon gone, leaving [skin.type] behind.");
-						break;
-					default:
-				}
-				player.arms.type = Arms.HUMAN;
-				changes++;
-			}
-			//Change legs to normal
-			if (rand(4) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && player.lowerBody != LowerBody.HUMAN) {
-				if (player.isBiped()) outputText("You feel an odd sensation in your [feet]. Your [feet] shift and you hear bones cracking as they reform into normal human feet.");
-				player.lowerBody = LowerBody.HUMAN;
-				player.legCount = 2;
-				changes++;
-			}
-			//Removes antennaes!
-			if (rand(3) == 0 && changes < changeLimit && player.antennae.type > Antennae.NONE) {
-				outputText("\n\nYour " + hairDescript() + " itches so you give it a scratch, only to have your [antennae] fall to the ground. What a relief. <b>You've lost your [antennae]!</b>");
-				changes++;
-				player.antennae.type = Antennae.NONE;
-			}
-			//Hair turns back to normal
-			if (rand(4) == 0 && changes < changeLimit && CoC.instance.transformations.HairHuman.isPossible()) {
-				outputText("\n\n");
-				CoC.instance.transformations.HairHuman.applyEffect();
-				changes++;
-			}
-			//Restart hair growth
-			if(rand(3) == 0 && changes < changeLimit && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] > 0) {
-				outputText("\n\nYou feel an itching sensation in your scalp as you realize the change. <b>Your hair is growing normally again!</b>");
-				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
-				changes++;
-			}
-			//Remove gills
-			if (rand(4) == 0 && changes < changeLimit && player.hasGills()) {
-				if (player.gills.type == Gills.ANEMONE) outputText("\n\nYour chest itches, and as you reach up to scratch it, you realize your gills have withdrawn into your skin.");
-				else outputText("\n\nYou feel your gills tighten, the slits seeming to close all at once. As you let out a choked gasp your gills shrink into nothingness, leaving only smooth skin behind. Seems you won't be able to stay in the water quite so long anymore.");
-				outputText("  <b>You no longer have gills!</b>");
-				player.gills.type = Gills.NONE;
-				changes++;
-			}
-
-			// Rhino TFs
+			// Sexual TFs
 			//------------
 			//Change a cock to rhino.
-			if (rand(4) == 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.RHINO) < player.cockTotal()) {
+			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.RHINO) < player.cockTotal()) {
 				for (var i:int = 0; i < player.cocks.length; i++) {
 					if (player.cocks[i].cockType != CockTypesEnum.RHINO) {
 						transformations.CockRhino(i, player.cocks[i].cockLength, player.cocks[i].cockThickness, true).applyEffect();
@@ -1697,43 +1602,6 @@ import classes.lists.Gender;
 				dynStats("lus", 20, "scale", false);
 				changes++;
 			}
-			//Change ears to rhino
-			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && player.ears.type != Ears.RHINO) {
-				outputText("\n\nYou feel an odd uncomfortable sensation in your ears. Reaching up you find your ears shifting into an open tube shape, once they’re done you flick them around, enjoying the sensation of your new ears swishing through the air. <b>You now have rhino ears.</b>");
-				player.ears.type = Ears.RHINO;
-				changes++;
-			}
-			//Change face to rhino
-			if (rand(4) == 0 && changes < changeLimit && player.ears.type == Ears.RHINO && player.skinColor == "gray" && player.faceType != Face.RHINO) {
-				outputText("\n\n");
-				CoC.instance.transformations.FaceRhino.applyEffect();
-				changes++;
-			}
-			//Change tail to rhino
-			if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.lowerBody != LowerBody.GARGOYLE && player.tailType != Tail.RHINO) {
-				if (player.tailType > 0) outputText("\n\nYou [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a long ropy tail with a little [fur color] tuft at the end. <b>You now have a rhino tail.</b>");
-				else outputText("\n\nYou feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a long ropy tail with a little [fur color] tuft on the end. <b>You now have a rhino tail.</b>");
-				player.tailType = Tail.RHINO;
-				changes++;
-			}
-			//Gain rhino horns
-			//Tier 1
-			if (rand(4) == 0 && changes < changeLimit && player.faceType == Face.RHINO && player.horns.type != Horns.RHINO && player.horns.type != Horns.ORCHID) {
-				outputText("\n\nYou begin to feel an annoying tingling sensation at the top of your head. Reaching up to inspect it you find the sharp nub of a horns protruding from the center of your forehead and growing. Once it'sits complete you estimate it to be about six inches long. If it were sharper and a little longer it would make a useful natural weapon.");
-				player.horns.count = 1;
-				player.horns.type = Horns.RHINO;
-				changes++;
-			}
-			//Tier 2
-			if (rand(4) == 0 && changes < changeLimit && player.faceType == Face.RHINO && player.horns.type == Horns.RHINO && player.horns.count == 1) {
-				outputText("\n\nYou begin to feel an annoying tingling sensation at the edge of your nose, above your field of vision. Reaching up you feel the sharp edge of a curved horns growing out the edge of your face. The itchy tingle continues as you feel both of your horns become sharp and tall. You estimate your older horns to be a mere seven inches and your new horns to be around a foot long. They’ll be useful natural weapons.");
-				outputText("\n<b>(Gained physical special: Upheaval! Any time you lose your rhino face or horns, you will lose this ability.)</b>");
-				player.horns.count = 2;
-				player.tailType = Horns.RHINO;
-				changes++;
-			}
-			// Other Changes
-			//------------
 			//Increase cock size of non-rhino up to 10 inches.
 			if (rand(3) == 0 && changes < changeLimit && player.hasCock() && player.smallestCockLength() < 10 && player.cockTotal() - player.countCocksOfType(CockTypesEnum.RHINO) > 0) {
 				var cocksAffected:int = 0;
@@ -1795,6 +1663,142 @@ import classes.lists.Gender;
 					changes++;
 				}
 			}
+			// Normal TFs
+			//------------
+			//Removes wings
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && player.wings.type > Wings.NONE) {
+			//	if (player.wings.type == SHARK_FIN) outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine. After a moment the pain passes, though your fin is gone!");
+				outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into each of your shoulder-blades. After a moment the pain passes, though your wings are gone!");
+				player.wings.type = Wings.NONE;
+				changes++;
+			}
+			//Fur/scales fall out
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && (player.hasCoat() || player.skinColor != "gray" || player.skinAdj != "tough")) {
+				outputText("\n\n");
+				if (player.hasCoat()) {
+					switch (player.coatType()) {
+						case Skin.FUR:
+							outputText("You feel an itching sensation as your fur beings to fall off in clumps, <b>revealing tough gray skin</b> beneath it.");
+							break;
+						case Skin.SCALES:
+							outputText("You feel an odd rolling sensation as your scales begin to shift, spreading and reforming as they grow and disappear, <b>becoming tough gray skin</b>.");
+							break;
+
+					}
+				} else switch(player.skin.base.type){
+					case Skin.GOO:
+						outputText("You feel an itchy sensation as your gooey skin solidifies and thickens, <b>becoming tough gray skin</b>.");
+						break;
+					case Skin.PLAIN:
+					default:
+						outputText("You feel an itchy sensation as your [skin base] thickens, <b>becoming tough gray skin</b>.");
+						break;
+				}
+				player.skin.setBaseOnly({color:"gray",adj:"tough",type:Skin.PLAIN});
+				changes++;
+			}
+			//Arms change to regular
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && player.arms.type != Arms.HUMAN) {
+				switch(player.arms.type) {
+					case Arms.HARPY:
+						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating. The wing-like shape your arms once had is gone in a matter of moments, leaving [skin.type] behind.");
+						break;
+					case Arms.SPIDER:
+						outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch. Glancing down in irritation, you discover that your arms' chitinous covering is flaking away. The glossy black coating is soon gone, leaving [skin.type] behind.");
+						break;
+					default:
+				}
+				player.arms.type = Arms.HUMAN;
+				changes++;
+			}
+			//Change legs to normal
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && player.lowerBody != LowerBody.HUMAN) {
+				if (player.isBiped()) outputText("You feel an odd sensation in your [feet]. Your [feet] shift and you hear bones cracking as they reform into normal human feet.");
+				player.lowerBody = LowerBody.HUMAN;
+				player.legCount = 2;
+				changes++;
+			}
+			//Removes antennaes!
+			if (rand(3) == 0 && changes < changeLimit && player.antennae.type > Antennae.NONE) {
+				outputText("\n\nYour " + hairDescript() + " itches so you give it a scratch, only to have your [antennae] fall to the ground. What a relief. <b>You've lost your [antennae]!</b>");
+				changes++;
+				player.antennae.type = Antennae.NONE;
+			}
+			//Hair turns back to normal
+			if (rand(3) == 0 && changes < changeLimit && CoC.instance.transformations.HairHuman.isPossible()) {
+				outputText("\n\n");
+				CoC.instance.transformations.HairHuman.applyEffect();
+				changes++;
+			}
+			//Restart hair growth
+			if(rand(3) == 0 && changes < changeLimit && flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] > 0) {
+				outputText("\n\nYou feel an itching sensation in your scalp as you realize the change. <b>Your hair is growing normally again!</b>");
+				flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] = 0;
+				changes++;
+			}
+			//Remove gills
+			if (rand(3) == 0 && changes < changeLimit && player.hasGills()) {
+				if (player.gills.type == Gills.ANEMONE) outputText("\n\nYour chest itches, and as you reach up to scratch it, you realize your gills have withdrawn into your skin.");
+				else outputText("\n\nYou feel your gills tighten, the slits seeming to close all at once. As you let out a choked gasp your gills shrink into nothingness, leaving only smooth skin behind. Seems you won't be able to stay in the water quite so long anymore.");
+				outputText("  <b>You no longer have gills!</b>");
+				player.gills.type = Gills.NONE;
+				changes++;
+			}
+
+			// Rhino TFs
+			//------------
+			//Change ears to rhino
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.GARGOYLE && player.ears.type != Ears.RHINO) {
+				outputText("\n\n");
+				CoC.instance.transformations.EarsRhino.applyEffect();
+				changes++;
+			}
+			//Change face to rhino
+			if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.RHINO && player.skinColor == "gray" && player.faceType != Face.RHINO) {
+				outputText("\n\n");
+				CoC.instance.transformations.FaceRhino.applyEffect();
+				changes++;
+			}
+			//Change tail to rhino
+			if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.lowerBody != LowerBody.GARGOYLE && player.tailType != Tail.RHINO) {
+				outputText("\n\n");
+				CoC.instance.transformations.TailRhino.applyEffect();
+				player.tailType = Tail.RHINO;
+				changes++;
+			}
+			//Change legs to rhino
+			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.HOOFED_NO_FUR) {
+				outputText("\n\n");
+				CoC.instance.transformations.LowerBodyHoofedNoFurBipedal.applyEffect();
+				changes++;
+			}
+			//Change arms to rhino
+			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.RHINO) {
+				outputText("\n\n");
+				CoC.instance.transformations.ArmsRhino.applyEffect();
+				changes++;
+			}
+			//Gain rhino horns
+			//Tier 1
+			if (rand(3) == 0 && changes < changeLimit && player.faceType == Face.RHINO && player.horns.type != Horns.RHINO && player.horns.type != Horns.ORCHID) {
+				outputText("\n\n");
+				CoC.instance.transformations.HornsRhino.applyEffect();
+				changes++;
+			}
+			//Tier 2
+			if (rand(3) == 0 && changes < changeLimit && player.faceType == Face.RHINO && player.horns.type == Horns.RHINO && player.horns.count == 1) {
+				outputText("\n\n");
+				CoC.instance.transformations.HornsRhino.applyEffect();
+				changes++;
+			}
+			//Tier 3
+			if (rand(3) == 0 && changes < changeLimit && player.faceType == Face.RHINO && player.horns.type == Horns.RHINO && player.horns.count == 2) {
+				outputText("\n\n");
+				CoC.instance.transformations.HornsRhino.applyEffect();
+				changes++;
+			}
+			// Other Changes
+			//------------
 			//Gain height
 			if (rand(2) == 0 && changes < changeLimit && player.tallness < 102) {
 				var growth:Number = rand(5) + 3;
@@ -1808,6 +1812,15 @@ import classes.lists.Gender;
 				if (growth >= 3 && growth < 6) outputText("\n\nYou feel dizzy and slightly off, but quickly realize it's due to a sudden increase in height.");
 				if (growth == 6) outputText("\n\nStaggering forwards, you clutch at your head dizzily. You spend a moment getting your balance, and stand up, feeling noticeably taller.");
 				player.tallness += growth;
+				changes++;
+			}
+			//Thick Skin perk
+			if (rand(2) == 0 && changes < changeLimit && !player.hasPerk(PerkLib.ThickSkin)) {
+				outputText("\n\nSlowly, ");
+				if (!player.hasCoat()) outputText("your [skin base]");
+				else outputText("the skin under your [skin coat]");
+				outputText(" begins to feel duller, almost... thicker.  You pinch yourself and find that your epidermis feels more resistant to damage, almost like natural armor!\n<b>(Thick Skin - Perk Gained!)</b>");
+				player.createPerk(PerkLib.ThickSkin, 0, 0, 0, 0);
 				changes++;
 			}
 			//Gain muscle tone
@@ -1841,7 +1854,7 @@ import classes.lists.Gender;
 			// Normal TFs
 			//------------
 			//Hair turns back to normal
-			if (rand(4) == 0 && changes < changeLimit && CoC.instance.transformations.HairHuman.isPossible() &&  CoC.instance.transformations.HairQuill.isPossible()) {
+			if (rand(4) == 0 && changes < changeLimit && CoC.instance.transformations.HairHuman.isPossible() && CoC.instance.transformations.HairQuill.isPossible()) {
 				outputText("\n\n");
 				CoC.instance.transformations.HairHuman.applyEffect();
 				changes++;
@@ -2075,9 +2088,123 @@ import classes.lists.Gender;
 			var changes:int = 0;
 			var changeLimit:int = 3 + player.additionalTransformationChances;
 			if (player.blockingBodyTransformations()) changeLimit = 0;
-			if (changes < changeLimit && rand(3) == 0 && player.ears.type != Ears.DRAGON) {
+			if (changes < changeLimit && rand(3) == 0) {
 				outputText("[pg]");
-				transformations.EarsDraconic.applyEffect();
+				var meatMeat1:int = rand(7);
+				switch(meatMeat1) {
+					case 0:
+						transformations.EarsDraconic.applyEffect();
+						break;
+					case 1:
+						transformations.RearBodyDisplacerTentacles.applyEffect();
+						break;
+					case 2:
+						transformations.LowerBodyAvian.applyEffect();
+						break;
+					case 3:
+						transformations.RearBodyWolfCollar.applyEffect();
+						break;
+					case 4:
+						transformations.EarsPig.applyEffect();
+						break;
+					case 5:
+						transformations.ArmsKraken.applyEffect();
+						break;
+					case 6:
+						transformations.ArmsPhoenix.applyEffect();
+						break;
+					default:
+				}
+				changes++;
+			}
+			if (changes < changeLimit && rand(3) == 0) {
+				var meatMeat2:int = rand(7);
+				switch(meatMeat2) {
+					case 0:
+						transformations.LowerBodyGryphon(2).applyEffect();
+						break;
+					case 1:
+						transformations.TongueDemonic.applyEffect();
+						break;
+					case 2:
+						transformations.RearBodySnailShell.applyEffect();
+						break;
+					case 3:
+						transformations.EarsKirin.applyEffect();
+						break;
+					case 4:
+						transformations.TongueDraconic.applyEffect();
+						break;
+					case 5:
+						transformations.AntennaeBee.applyEffect();
+						break;
+					case 6:
+						transformations.EyesSandTrap.applyEffect();
+						break;
+					default:
+				}
+				changes++;
+			}
+			if (changes < changeLimit && rand(3) == 0) {
+				var meatMeat3:int = rand(7);
+				switch(meatMeat3) {
+					case 0:
+						transformations.FaceAnimalTeeth.applyEffect();
+						break;
+					case 1:
+						transformations.ArmsDeer.applyEffect();
+						break;
+					case 2:
+						transformations.ArmsAnt.applyEffect();
+						break;
+					case 3:
+						transformations.TailScorpion.applyEffect();
+						break;
+					case 4:
+						transformations.EarsLion.applyEffect();
+						break;
+					case 5:
+						transformations.TailCow.applyEffect();
+						break;
+					case 6:
+						transformations.LowerBodyBanshee.applyEffect();
+						break;
+					default:
+				}
+				changes++;
+			}
+			if (changes < changeLimit && rand(3) == 0) {
+				var meatMeat4:int = rand(6);
+				switch(meatMeat4) {
+					case 0:
+						transformations.EyesMoth.applyEffect();
+						break;
+					case 1:
+						transformations.FaceRedPanda.applyEffect();
+						break;
+					case 2:
+						transformations.LowerBodyClovenHoofed(2).applyEffect();
+						break;
+					case 3:
+						transformations.ArmsBatWing.applyEffect();
+						break;
+					case 4:
+						transformations.ArmsBanshee.applyEffect();
+						break;
+					case 5:
+						transformations.EarsInsect.applyEffect();
+						break;/*
+					case 6:
+						
+						break;*/
+					default:
+				}
+				changes++;
+			}
+			if (rand(3) == 0 && changes < changeLimit && player.hairType == Hair.NORMAL) {
+				outputText("\n\n");
+				if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 0) flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD]++;
+				CoC.instance.transformations.HairQuill.applyEffect();
 				changes++;
 			}
 			if (player.faceType == Face.HUMAN && player.ears.type != Ears.ELFIN && changes < changeLimit && rand(3) == 0) {
@@ -2095,24 +2222,9 @@ import classes.lists.Gender;
 				transformations.WingsDemonicTiny.applyEffect();
 				changes++;
 			}
-			if (player.rearBody.type != RearBody.DISPLACER_TENTACLES && rand(3) == 0 && changes < changeLimit) {
-				outputText("[pg]");
-				transformations.RearBodyDisplacerTentacles.applyEffect();
-				changes++;
-			}
 			if (player.tailType != Tail.DEMONIC && player.horns.count > 0 && rand(4) == 0 && changes < changeLimit) {
 				outputText("[pg]");
 				transformations.TailDemonic.applyEffect();
-				changes++;
-			}
-			if (player.lowerBody != LowerBody.AVIAN && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.LowerBodyAvian.applyEffect();
-				changes++;
-			}
-			if (player.rearBody.type != RearBody.WOLF_COLLAR && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.RearBodyWolfCollar.applyEffect();
 				changes++;
 			}
 			if (!player.hasStatusEffect(StatusEffects.BlackNipples) && rand(3) == 0 && changes < changeLimit) {
@@ -2120,69 +2232,14 @@ import classes.lists.Gender;
 				transformations.NipplesBlack.applyEffect();
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.ears.type != Ears.PIG) {
-				outputText("[pg]");
-				transformations.EarsPig.applyEffect();
-				changes++;
-			}
-			if (player.arms.type != Arms.KRAKEN && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.ArmsKraken.applyEffect();
-				changes++;
-			}
-			if (player.arms.type != Arms.PHOENIX && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.ArmsPhoenix.applyEffect();
-				changes++;
-			}
-			if (player.lowerBody != LowerBody.GRYPHON && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.LowerBodyGryphon(2).applyEffect();
-				changes++;
-			}
-			if (player.tongue.type != Tongue.DEMONIC && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.TongueDemonic.applyEffect();
-				changes++;
-			}
 			if (player.tailType != Tail.BEAR && player.lowerBody == LowerBody.BEAR && changes < changeLimit && rand(3) == 0) {
 				outputText("[pg]");
 				transformations.TailBear.applyEffect();
 				changes++;
 			}
-			if (player.rearBody.type != RearBody.SNAIL_SHELL && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.RearBodySnailShell.applyEffect();
-				changes++;
-			}
 			if (changes < changeLimit && player.faceType == Face.FIRE_SNAIL && player.antennae.type != Antennae.FIRE_SNAIL && rand(3) == 0) {
 				outputText("[pg]");
 				transformations.AntennaeFireSnail.applyEffect();
-				changes++;
-			}
-			if (player.ears.type != Ears.KIRIN && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.EarsKirin.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && rand(3) == 0 && player.tongue.type != Tongue.DRACONIC) {
-				outputText("[pg]");
-				transformations.TongueDraconic.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && player.antennae.type != Antennae.BEE && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.AntennaeBee.applyEffect();
-				changes++;
-			}
-			if (player.eyes.type != Eyes.BLACK_EYES_SAND_TRAP && rand(3) == 0 && changes < changeLimit) {
-				outputText("[pg]");
-				transformations.EyesSandTrap.applyEffect();
-				changes++;
-			}
-			if (player.faceType != Face.ANIMAL_TOOTHS && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.FaceAnimalTeeth.applyEffect();
 				changes++;
 			}
 			if (player.wings.type == Wings.NONE && changes < changeLimit && rand(3) == 0) {
@@ -2196,44 +2253,9 @@ import classes.lists.Gender;
 				player.horns.count = 1;
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.DEER) {
-				outputText("[pg]");
-				transformations.ArmsDeer.applyEffect();
-				changes++;
-			}
-			if (player.arms.type != Arms.ANT && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.ArmsAnt.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && player.tailType != Tail.SCORPION && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.TailScorpion.applyEffect();
-				changes++;
-			}
-			if (player.ears.type != Ears.LION && changes < changeLimit && rand(3) == 0) {
-				outputText("[pg]");
-				transformations.EarsLion.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && rand(3) == 0 && player.tailType != Tail.COW) {
-				outputText("[pg]");
-				transformations.TailCow.applyEffect();
-				changes++;
-			}
 			if (transformations.HairCrazy.isPossible() && changes < changeLimit && rand(3) == 0) {
 				outputText("[pg]");
 				transformations.HairCrazy.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && rand(3) == 0 && player.ears.type != Ears.INSECT) {
-				outputText("[pg]");
-				transformations.EarsInsect.applyEffect();
-				changes++;
-			}
-			if (changes < changeLimit && rand(3) == 0 && player.eyes.type != Eyes.MOTH) {
-				outputText("[pg]");
-				transformations.EyesMoth.applyEffect();
 				changes++;
 			}
 			if (player.skin.base.type == Skin.PLAIN && !player.skin.hasBattleTattoo() && rand(3) == 0 && changes < changeLimit) {
@@ -2256,11 +2278,6 @@ import classes.lists.Gender;
                 transformations.WingsVampire.applyEffect();
                 changes++;
             }
-			if (rand(3) == 0 && changes < changeLimit && player.faceType != Face.RED_PANDA) {
-				outputText("[pg]");
-				transformations.FaceRedPanda.applyEffect();
-				changes++;
-			}
 			if (!InCollection(Arms.SPIDER) && changes < changeLimit && rand(3) == 0) {
 				outputText("[pg]");
 				transformations.ArmsSpider.applyEffect();
@@ -2286,21 +2303,11 @@ import classes.lists.Gender;
 				outputText("Aw gosh, you feel tired as hell, it’s like you spent the better part of yesterday night working on some stupid project. Truth is with those darkened eyelids of yours you might just have. That said, perhaps you should think of it less like a sign of fatigue and more like a sign of demonic nature because you easily imagine these on the faces of small fiends or possessed people too. <b>Seems like you have darkened eyelids now.</b>");
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.CLOVEN_HOOFED) {
-				outputText("[pg]");
-				transformations.LowerBodyClovenHoofed(2).applyEffect();
-				changes++;
-			}
 			if (player.skin.base.type == Skin.PLAIN && !player.skin.hasGlyphTattoo() && rand(3) == 0 && changes < changeLimit) {
 				outputText("[pg]");
 				transformations.SkinPatternAnubis.applyEffect();
 				changes++;
 			}
-			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.BAT) {
-                outputText("[pg]");
-                transformations.ArmsBatWing.applyEffect();
-                changes++;
-            }
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 	}

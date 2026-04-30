@@ -5,7 +5,7 @@
 package classes.Items.WeaponsRange 
 {
 	import classes.Items.WeaponRange;
-		import classes.GlobalFlags.kFLAGS;
+	import classes.GlobalFlags.kFLAGS;
 	
 	public class GoodSamaritan extends WeaponRange {
 		
@@ -17,20 +17,20 @@ package classes.Items.WeaponsRange
 		
 		override public function get attack():Number{
 			var boost:int = 0;
-			var scal:Number = 10;
+			var scal:Number = 20;
 			if (game.player.str >= 200) {
 				boost += 40;
-				scal -= 3;
+				scal -= 6;
 			}
 			if (game.player.str >= 100) {
 				boost += 40;
-				scal -= 3;
+				scal -= 6;
 			}
 			if (game.player.str >= 50) {
 				boost += 10;
-				scal -= 2;
+				scal -= 4;
 			}
-			boost += Math.round((100-game.player.cor) / scal);
+			boost += Math.round((game.player.playerCorruption2()-game.player.playerCorruption()) / scal);
 			return (10 + boost);
 		}
 		
