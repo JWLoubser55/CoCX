@@ -27,7 +27,7 @@ public class DraconicLungMutation extends IMutationPerkType
                 descS = "Increases the power of dragon breath attacks threefold. (+300% to dragon breaths damage, +5% of max core Spe as phantom Spe)";
             }
             if (pTier >= 3){
-                descS = "Increases dragon breath attacks power and allows you to combine all 4 basic breath types more often. (+900% to dragon breaths damage, +20% of max core Spe as phantom Spe)";
+                descS = "Increases dragon breath attacks power. (+900% to dragon breaths damage, +20% of max core Spe as phantom Spe)";
             }
             if (descS != "")descS += ".";
             return descS;

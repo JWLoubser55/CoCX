@@ -2037,10 +2037,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.ChallengingShoutSu) || player.hasPerk(PerkLib.ChallengingShoutMastered)) wsr -= (player.statusEffectv1(StatusEffects.CooldownWarriorShout) * 0.048);
 		if (!player.hasStatusEffect(StatusEffects.CooldownWarriorShout)) {
 			var cooldown:Number = 12;
-			if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-			if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
+			cooldown -= combat.breathSpecialsCooldown(0);
 			if (cooldown < 0) cooldown = 0;
-			if (player.hasPerk(PerkLib.ChallengingShoutMastered)) cooldown *= 1.5;
+			if (player.hasPerk(PerkLib.ChallengingShoutMastered) && cooldown > 0) cooldown = Math.round(cooldown * 1.5);
 			player.createStatusEffect(StatusEffects.CooldownWarriorShout,cooldown,0,0,0);
 		}
 		wsr *= player.maxOverWrath();

@@ -17090,10 +17090,9 @@ public function SingCaptivate():void {
     outputText("You temporarily strengthen the hypnotic beat causing your opponent to be fascinated for a brief moment.");
     monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 	var cooldown:Number = 12;
+	cooldown -= breathSpecialsCooldown(0);
 	if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-	if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-	if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-	if (cooldown < 1) cooldown = 1;
+	if (cooldown < 0) cooldown = 0;
 	player.createStatusEffect(StatusEffects.CooldownSingCaptivate,cooldown,0,0,0);
     outputText("\n\n");
     enemyAIImpl();
@@ -17116,10 +17115,9 @@ public function SingDevastatingAria():void {
     if (player.weapon.isMusicInstrument()) outputText("You strike a deafening note unleashing a devastating wave of sound!");
 	else outputText("You unleash a devastating wave of sound!");
 	var cooldown:Number = 8;
+	cooldown -= breathSpecialsCooldown(0);
 	if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-	if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-	if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
-	if (cooldown < 1) cooldown = 1;
+	if (cooldown < 0) cooldown = 0;
 	player.createStatusEffect(StatusEffects.CooldownSingAria,cooldown,0,0,0);
     var damage:Number = combat.teases.teaseBaseLustDamage();
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 2) damage *= scalingBonusIntelligence();
@@ -17139,7 +17137,7 @@ public function SingDevastatingAria():void {
 	if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 	if (player.hasPerk(PerkLib.PerformancePower)) damage *= (1 + player.perkv1(PerkLib.PerformancePower));
 	if (player.hasPerk(PerkLib.WailOfTheBanshee) && player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) damage *= ectoplasmEsseBon();
-	if (player.hasPerk(PerkLib.BoomingVoice) && combat.isOutside()) damage *= combat.boomingVoiceBoost();
+	if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.MelkieLungIM)));
 	if (player.weapon == weapons.HELLCAL) damage *= 1.5;
     damage = Math.round(damage);
@@ -20868,6 +20866,8 @@ public function boomingVoiceBoost():Number {
 }
 public function breathSpecialsCooldown(tiers:Number):Number {
 	var bSC:Number = 0;
+	if (player.hasPerk(PerkLib.BoomingVoice)) tiers += 1;
+	if (player.hasPerk(PerkLib.ThunderingEchoes)) tiers += 1;
 	if (tiers > 0) bSC += 4;
 	if (tiers > 1) bSC += 4;
 	if (tiers > 2) bSC += 2;
@@ -21222,4 +21222,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

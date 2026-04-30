@@ -29,7 +29,7 @@ public class YetiFatMutation extends IMutationPerkType
                 descS += ", the potency of Big Hand and Feet increases by 50%";
             }
             if (pTier >= 3){
-                descS += ", increases the duration of yeti breath stun by 1 round and reduce its cooldown by 3 rounds.";
+                descS += ", increases the duration of yeti breath stun by 1 round and reduce its cooldown by 1 increment.";
             }
             if (descS != "")descS += ".";
             return descS;

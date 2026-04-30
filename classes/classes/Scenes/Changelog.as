@@ -372,7 +372,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 misc lvl-up perk: Thundering Echoes. Req. Booming Voice perk, 60+ str/tou/spe. Effect: Further Increase the potency of all breath weapons, shout and sound based ability by 25%. Throat abilities cooldowns are reduced by 1 further increment.\n");
 			outputText("-Goat Dragon was a sad dragon and wanted other dragons been to be sad too, so now all Dragon Breath specials share cooldowns (use one and all others PC have would go into cooldown too). Yes we know it sounds a bit scary but now those specials packs over ten time more punch in the punch. ");
 			outputText("And their stuns are now power stuns that can last extra 1 or 2 turns to max 3 turns (with chance if enemy already is having basic stun effect of adding duration to it.)\n");
-			outputText("-\n");
+			outputText("-Internal Mutations that was lowering cooldown of breath/scream/shout type specials by x turns now would instead lower cooldown by 1 or 2 increments on cd chart (once per day > once per combat > 12 > 8 > 4 > 2 > 0).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

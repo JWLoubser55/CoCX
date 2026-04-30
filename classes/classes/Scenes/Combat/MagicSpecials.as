@@ -1440,9 +1440,8 @@ public class MagicSpecials extends BaseCombatContent {
 		fatigue(150, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var cooldown:Number = 12;
+		cooldown -= combat.breathSpecialsCooldown(0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
 		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownFreezingBreath,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.2;
@@ -1506,10 +1505,10 @@ public class MagicSpecials extends BaseCombatContent {
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var cooldown:Number = 12;
-		if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) cooldown -= 3;
+		var cool1:Number = 0;
+		if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) cool1 += 1;
+		cooldown -= combat.breathSpecialsCooldown(cool1);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
 		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownFreezingBreathYeti,cooldown,0,0,0);
 		damage += scalingBonusToughness() * 0.2;
@@ -1567,10 +1566,9 @@ public class MagicSpecials extends BaseCombatContent {
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var cooldown:Number = 12;
-		//if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) cooldown -= 3;
+		//if (player.perkv1(IMutationsLib.YetiFatIM) >= 3) cool1 += 1;
+		cooldown -= combat.breathSpecialsCooldown(0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
 		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownToxicBreathUshiOnna,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.1;
@@ -2093,9 +2091,8 @@ public class MagicSpecials extends BaseCombatContent {
 		fatigue(40, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
 		var cooldown:Number = 12;
+		cooldown -= combat.breathSpecialsCooldown(0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
 		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownPhoenixFireBreath,cooldown,0,0,0);
 		damage += scalingBonusStrength() * 0.5;
@@ -2411,9 +2408,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var damult:Number = 1;
 		var scalingmulti:Number = 1;
 		var cooldown:Number = 12;
+		cooldown -= combat.breathSpecialsCooldown(0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
 		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownAzureflameBreath,cooldown,0,0,0);
 		if (player.perkv1(IMutationsLib.CaveWyrmLungsIM) >= 1) damult += 2;
@@ -2538,9 +2534,11 @@ public class MagicSpecials extends BaseCombatContent {
 		return cooldown0;
 	}
 	private function dragonBreathsCooldownManagement1():Number {
-		var cooldown1:Number = 12;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.hasPerk(PerkLib.ThunderingEchoes)) cooldown1 -= 4;
-		//if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.hasPerk(PerkLib.)) cooldown -= 4;
+		var cooldown1:Number = 20;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) cooldown1 -= 4;
+		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown1 -= 4;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown1 -= 4;
+		//if (player.hasPerk(PerkLib.)) cooldown -= 4;
 		return cooldown1;
 	}
 	private function dragonBreathsCooldownManagement2():Number {
@@ -4104,12 +4102,12 @@ public class MagicSpecials extends BaseCombatContent {
 		clearOutput();
 		useMana(80, Combat.USEMANA_MAGIC);
 		var KOCD:Number = 8;
-		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 2) KOCD -= 1;
-		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) KOCD -= 1;
+		var cool1:Number = 0;
+		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 2) cool1 += 1;
+		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) cool1 += 1;
+		KOCD -= combat.breathSpecialsCooldown(cool1);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) KOCD -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) KOCD -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) KOCD -= 4;
-		if (KOCD < 1) KOCD = 1;
+		if (KOCD < 0) KOCD = 0;
 		player.createStatusEffect(StatusEffects.CooldownKnowledgeOverload,KOCD,0,0,0);
 		outputText("You share some of your well earned knowledge with [themonster] who stands there blankly listening to your spiel in confusion. It's going to take [monster him] a moment to come down from the absurd amount of info you forced into [monster his] tiny head"+(monster.plural?"s":"")+".\n\n");
 		var overloadduration:Number = 0;
@@ -4142,11 +4140,9 @@ public class MagicSpecials extends BaseCombatContent {
 		useMana(80, Combat.USEMANA_MAGIC);
 		combat.darkRitualCheckDamage();
 		var WWCD:Number = 8;
-		if (player.perkv1(IMutationsLib.RatatoskrSmartsIM) >= 3) WWCD -= 1;
+		WWCD -= combat.breathSpecialsCooldown(0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) WWCD -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) WWCD -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) WWCD -= 4;
-		if (WWCD < 1) WWCD = 1;
+		if (WWCD < 0) WWCD = 0;
 		player.createStatusEffect(StatusEffects.CooldownWeirdWords,WWCD,0,0,0);
 		var damage:Number = scalingBonusIntelligence() * spellMod() * 4;
 		damage *= 1 + (camp.codex.checkUnlocked() * 0.01);
@@ -4891,9 +4887,8 @@ public class MagicSpecials extends BaseCombatContent {
 			return;
 		}
 		var cooldown:Number = 12;
+		cooldown -= combat.breathSpecialsCooldown(0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
 		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownHydraAcidBreath,cooldown,0,0,0);
 		outputText("You move your " + player.statusEffectv1(StatusEffects.HydraTailsPlayer) + " Hydra heads in an attack formation, belching acid at [themonster]. Your acid begins to eat at your opponents natural defences. ");
@@ -5755,9 +5750,8 @@ public class MagicSpecials extends BaseCombatContent {
 	public function CursedRiddle():void {
 		clearOutput();
 		var cooldown:Number = 8;
+		cooldown -= combat.breathSpecialsCooldown(0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
 		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownCursedRiddle, cooldown, 0, 0, 0);
 		outputText("You stop fighting for a second and speak aloud a magical riddle.\n\n");
@@ -6458,10 +6452,9 @@ public class MagicSpecials extends BaseCombatContent {
 			monster.createStatusEffect(StatusEffects.AcidDoT, 4, powab, 1, 0);
 		}
 		var pc:Number = 8;
+		pc -= combat.breathSpecialsCooldown(0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) pc -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) pc -= 4;
-		if (pc < 1) pc = 1;
+		if (pc < 0) pc = 0;
 		player.createStatusEffect(StatusEffects.CooldownAcidSpit,pc,0,0,0);
 		checkAchievementDamage(damage);
 		combat.heroBaneProc(damage);
@@ -6667,9 +6660,8 @@ public class MagicSpecials extends BaseCombatContent {
 		var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
 		thirst.modSatiety( -1);
 		var cooldown:Number = 12;
+		cooldown -= combat.breathSpecialsCooldown(0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) cooldown -= 1;
-		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown -= 4;
 		if (cooldown < 0) cooldown = 0;
 		player.createStatusEffect(StatusEffects.CooldownSonicScream,cooldown,0,0,0);
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
