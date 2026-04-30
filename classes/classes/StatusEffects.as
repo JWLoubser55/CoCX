@@ -1082,7 +1082,8 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const Displacement:StatusEffectType      		   = mkCombat("Displacer beast displacement");
 		public static const DisplacerPlug:StatusEffectType             = mkCombat("Displacer Plugged for milking");
 		public static const DivineShield:StatusEffectType              = mkCombat("Divine shield");
-		public static const Distracted:StatusEffectType                = mkCombat("Distracted");
+		public static const Dovakhiin:StatusEffectType                 = mkCombat("Distracted");
+		public static const Distracted:StatusEffectType                = mkCombat("Dovakhiin");
 		public static const DriderKiss:StatusEffectType                = mkCombat("Drider Kiss");
 		public static const DragonsNom:StatusEffectType                = mkCombat("Dragon Nom");
 		public static const DragonWaterBreath:StatusEffectType         = mkCombat("Dragon Water Breath");
@@ -1569,4 +1570,4 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 	}
 
-}
+}

@@ -1012,6 +1012,9 @@ public class PerkLib
 		public static const ThunderingEchoes:PerkType = mk("Thundering Echoes", "Thundering Echoes",
 				"Further Increase the potency of all breath weapons, shout and sound based ability by 25%. Throat abilities cooldowns are reduced by 1 further increment.",
 				"You've chosen the 'Thundering Echoes' perk. Further Increase the potency of all breath weapons, shout and sound based ability by 25%. Throat abilities cooldowns are reduced by 1 further increment.");
+		public static const Dovakhiin:PerkType = mk("Dovakhiin", "Dovakhiin",
+				"Increase the potency of all breath weapons, shouts and sound based abilities by 25% for each consecutive usage after the first up to 100%. All stacks of thundering echoes are lost if no breath weapons, shouts or sound based abilities are used within 2 rounds. Throat abilities cooldowns are reduced by 1 further increment.",
+				"You've chosen the 'Dovakhiin' perk. Increase the potency of all breath weapons, shouts and sound based abilities by 25% for each consecutive usage after the first up to 100%. All stacks of thundering echoes are lost if no breath weapons, shouts or sound based abilities are used within 2 rounds. Throat abilities cooldowns are reduced by 1 further increment.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1026,9 +1029,6 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8659,11 +8659,6 @@ public class PerkLib
 					.requireStr(60)
                     .requireTou(60)
                     .requireSpe(60);
-            //.requirePerk(ThunderingEchoes)
-			//		.requireLevel(30)
-			//		.requireStr(90)
-            //        .requireTou(90)
-            //        .requireSpe(90);
             ArcanePoolIV.requireLevel(12)
                     .requireInt(60)
                     .requireWis(60)
@@ -9024,6 +9019,11 @@ public class PerkLib
                     .requireCustomFunction(function (player:Player):Boolean {
                         return player.internalHumanScore() >= 20 && player.racialScore(Races.HUMAN) > 17;
                     }, "Twenty human internal mutations & 18+ human score");
+            Dovakhiin.requirePerk(ThunderingEchoes)
+					.requireLevel(30)
+					.requireStr(90)
+                    .requireTou(90)
+                    .requireSpe(90);
             IDontHave2FastMinionsIGot2FuriousFamily.requireLevel(33)
                     .requirePerk(IDontHaveMinionsIGotFamily)
 					.requireInt(115)

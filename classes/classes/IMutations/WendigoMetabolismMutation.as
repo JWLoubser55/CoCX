@@ -35,10 +35,10 @@ public class WendigoMetabolismMutation extends IMutationPerkType
                 descS += ". Spectral Scream and Possess gains an increased modifier based on your combined strength and toughness and have their cooldowns reduced by ";
             }
             if (pTier == 3){
-                descS += "one round";
+                descS += "1 increment";
             }
             if (pTier == 4){
-                descS += "two rounds";
+                descS += "2 increments";
             }
             if (pTier >= 4){
                 descS += ". Do four more claw attacks when hunger is mostly sated (90%+)";
