@@ -204,6 +204,10 @@ public class Race {
 				if (outputText != null) outputText("Elemental", -score);
 				return 0;
 			}
+			if (player.hasPerk(PerkLib.Phylactery) && player.hasPerk(PerkLib.UndeadLord) && this != Races.LICH) {
+				if (outputText != null) outputText("Lich", -score);
+				return 0;
+			}
 		}
 		if (score < 0) return 0;
         // TODO: Khovel - Find better place to check for race unlock...

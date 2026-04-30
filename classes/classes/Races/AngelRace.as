@@ -41,9 +41,9 @@ public class AngelRace extends Race {
 		
 		addScores()
 				.hornType(NOT(Horns.DEMON), 0, -10)
-				.corruption(AT_MOST(50), +1)
-				.corruption(AT_MOST(25), +1)
 				.corruption(AT_MOST(0), +1)
+				.corruption(AT_MOST(-50), +1)
+				.corruption(AT_MOST(-100), +1)
 				//.hasPerk(PerkLib.Soulless, +4)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		

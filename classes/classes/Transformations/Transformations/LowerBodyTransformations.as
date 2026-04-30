@@ -100,6 +100,47 @@ public class LowerBodyTransformations extends MutationsHelper {
 		)
 	}
 
+	public function LowerBodyHoofedNoFur(legCount: int = undefined, toggleTaur: Boolean = false): Transformation {
+		return new SimpleTransformation("Hoofed no fur Lower Body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (!legCount) legCount = player.legCount;
+				var desc: String = "";
+				if(Metamorph.checkTaurUnlock() && player.lowerBody == LowerBody.HOOFED_NO_FUR ){
+					if (toggleTaur && legCount === 2) legCount = 4;
+					else if (toggleTaur && legCount >= 4) legCount = 2;
+					else if (legCount === 1) legCount = 2;
+				}
+				// Case 1: Morph Taur legs without changing leg count
+				if (player.isTaur() && legCount >= 4) {
+					desc += "You stagger as your " + Utils.num2Text(player.legCount) + " [feet] change, curling up into painful angry lumps of flesh. They get tighter and tighter, harder and harder, until at last they solidify into hooves! Your skin begins to feel duller, almost... thicker. <b>You now have hooves in place of your [feet]!</b>";
+				}
+				// Case 2: Bipedal TF
+				else if (legCount === 2) {
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyBipedal, doOutput);
+
+					// Display TF text if the player is obtaining this part instead of only changing leg count
+					if (player.lowerBody !== LowerBody.HOOFED_NO_FUR) {
+						desc += "\n\nYou stagger as your pair of [feet] change, curling up into painful angry lumps of flesh. They get tighter and tighter, harder and harder, until at last they solidify into hooves! Your skin begins to feel duller, almost... thicker. <b>You now have hooves in place of your [feet]!</b>";
+					}
+				}
+				// Case 3: Taur TF
+				else if (!player.isTaur() && legCount >= 4) {
+					transformations.LowerBodyTaur(LowerBody.HOOFED_NO_FUR).applyEffect(doOutput);
+				}
+
+				if (doOutput) outputText(desc);
+				player.lowerBody = LowerBody.HOOFED_NO_FUR;
+				player.legCount = legCount;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.HOOFED_NO_FUR));
+			},
+			// is present
+			function (): Boolean {
+				return !Metamorph.checkTaurUnlock() && player.lowerBody === LowerBody.HOOFED_NO_FUR;
+			}
+		)
+	}
+
 	public function LowerBodyKirin(legCount: int = undefined, toggleTaur: Boolean = false): Transformation {
 		return new SimpleTransformation("Kirin Hoofed Lower Body",
 			// apply effect
@@ -1084,7 +1125,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 				if (doOutput) outputText(desc);
 				player.lowerBody = LowerBody.CLOVEN_HOOFED_2;
 				player.legCount = legCount;
-				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.CLOVEN_HOOFED_2));
+				//Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.CLOVEN_HOOFED_2));
 			},
 			// is present
 			function (): Boolean {
@@ -1732,8 +1773,6 @@ public class LowerBodyTransformations extends MutationsHelper {
 
 			TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyDrider, doOutput);
 
-			TransformationUtils.applyTFIfNotPresent(transformations.TailUshiOni, doOutput);
-
 			desc += "Your spider body trembles, an intense pressure forming under the chitin, at the same time your plates fall to the ground and [haircolor] fur begins to sprout all over your abdomen. You wince in pain from the sudden growth, your drider legs chitin falls off as well, getting thicker and harder turning into bone. After the torturous session, you look back to see <b>you now have an Ushi-Oni lower body with an internal skeleton and fur.</b>";
 
 			if (doOutput) outputText(desc);
@@ -2278,7 +2317,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 			if (doOutput) outputText(desc);
 			player.lowerBody = LowerBody.ABYSSAL_SHARK;
 			player.legCount = 2;
-			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.ABYSSAL_SHARK));
+			//Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.ABYSSAL_SHARK));
 		},
 		// is present
 		function (): Boolean {
@@ -2522,6 +2561,43 @@ public class LowerBodyTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.lowerBody === LowerBody.HOLLOW;
+			}
+	);
+
+	public const LowerBodyLich: Transformation = new SimpleTransformation("Lich lower body",
+		// apply effect
+		function (doOutput: Boolean): void {
+			if (doOutput) {
+				// No special text outside the event
+			}
+			player.legCount = 2;
+			player.lowerBody = LowerBody.LICH;
+			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.LICH));
+		},
+		// is present
+		function (): Boolean {
+			return player.lowerBody === LowerBody.LICH;
+		}
+	);
+
+	public const LowerBodyBanshee: Transformation = new SimpleTransformation("Banshee lower body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (doOutput) {
+					var desc: String = "";
+
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyHuman, doOutput);
+					desc += "Something weird happens around your ghostly legs as the already see-through effect worsens. You can no longer stand on solid ground and instead begin to float. Your feet vanish entirely all the way up to the knee soulforce erupting at your tight as it manifests into a skirt of soul force the rim of which constantly breaks down and repairs itself as if eaten up by mites or some other cloth eating insects. <b>What's left of your legs has effectively been covered with a spectral shroud making you look more and more like a terrifying ghastly apparition.</b>";
+
+					if (doOutput) outputText(desc);
+					player.legCount = 2;
+				}
+				player.lowerBody = LowerBody.SPECTRAL_SHROUD;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.SPECTRAL_SHROUD));
+			},
+			// is present
+			function (): Boolean {
+				return player.lowerBody === LowerBody.SPECTRAL_SHROUD;
 			}
 	);
 	

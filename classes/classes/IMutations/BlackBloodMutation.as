@@ -4,19 +4,17 @@
  */
 package classes.IMutations
 {
-import classes.BodyParts.Tail;
-import classes.PerkClass;
-import classes.PerkLib;
-import classes.IMutationPerkType;
 import classes.Creature;
-import classes.Player;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Races;
 
 public class BlackBloodMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Black Blood";
-        }
+		public static const MNAME:String = "Black Blood";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -52,15 +50,15 @@ public class BlackBloodMutation extends IMutationPerkType
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
             if (pTier == 1) pBuffs['lib.mult'] = 0.05;
-            if (pTier == 2) pBuffs['tou.mult'] = 0.1;
-            if (pTier == 3) pBuffs['tou.mult'] = 0.15;
-            if (pTier == 4) pBuffs['tou.mult'] = 0.2;
+            if (pTier == 2) pBuffs['lib.mult'] = 0.1;
+            if (pTier == 3) pBuffs['lib.mult'] = 0.15;
+            if (pTier == 4) pBuffs['lib.mult'] = 0.2;
             return pBuffs;
         }
 
         public function BlackBloodMutation() 
 		{
-			super(mName + " IM", mName, SLOT_BLOODSTREAM, 4);
+			super(MNAME, SLOT_BLOODSTREAM, 4);
         }
         
     }

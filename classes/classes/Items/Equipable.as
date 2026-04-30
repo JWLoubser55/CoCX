@@ -190,11 +190,11 @@ public class Equipable extends Useable {
 	 * @return true if the player can wear the item
 	 */
 	public function canEquip(doOutput:Boolean, slot:int):Boolean {
-		if (game.player.cor > effectPower(IELib.Require_CorBelow, 100) + game.player.corruptionTolerance) {
+		if (game.player.cor > effectPower(IELib.Require_CorBelow, (100 * game.player.corruptionMultii())) + game.player.corruptionTolerance) {
 			if (doOutput) outputText(getItemText("too_corrupt"))
 			return false
 		}
-		if (game.player.cor < effectPower(IELib.Require_Cor, 0) - game.player.corruptionTolerance) {
+		if (game.player.cor < effectPower(IELib.Require_Cor, (-100 * game.player.corruptionMultii())) - game.player.corruptionTolerance) {
 			if (doOutput) outputText(getItemText("too_pure"))
 			return false
 		}

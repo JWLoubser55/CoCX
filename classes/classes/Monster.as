@@ -20,7 +20,6 @@ import classes.Items.ConsumableLib;
 import classes.Items.DynamicItems;
 import classes.Items.HeadJewelryLib;
 import classes.Items.IELib;
-import classes.Items.ItemConstants;
 import classes.Items.JewelryLib;
 import classes.Items.NecklaceLib;
 import classes.Items.ShieldLib;
@@ -37,11 +36,10 @@ import classes.Scenes.Areas.Ocean.UnderwaterSharkGirl;
 import classes.Scenes.Areas.Ocean.UnderwaterSharkGirlsPack;
 import classes.Scenes.Areas.Ocean.UnderwaterTigersharkGirl;
 import classes.Scenes.Camp.TrainingDummy;
+import classes.Scenes.Combat.CombatAbilities;
 import classes.Scenes.Combat.CombatAbility;
-import classes.Scenes.Combat.CombatUI;
 import classes.Scenes.Dungeons.DenOfDesire.HeroslayerOmnibus;
 import classes.Scenes.Dungeons.DungeonAbstractContent;
-import classes.Scenes.Dungeons.EbonLabyrinth.Hydra;
 import classes.Scenes.Dungeons.Factory.OmnibusOverseer;
 import classes.Scenes.Dungeons.Factory.SecretarialSuccubus;
 import classes.Scenes.Dungeons.TwilightGrove.LadyRafflesia;
@@ -55,10 +53,9 @@ import classes.internals.RandomDrop;
 import classes.internals.Utils;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 import flash.utils.getQualifiedClassName;
-import classes.Scenes.Combat.CombatAbilities;
 
 /**
 	 * ...
@@ -76,6 +73,10 @@ import classes.Scenes.Combat.CombatAbilities;
 		{
 			return game.player;
 		}
+		protected final function get pc():PlayerController
+		{
+			return game.playerController;
+		}
         public function newGamePlusMod():int {
             return player.newGamePlusMod();
         }
@@ -89,7 +90,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			SceneLib.combat.cleanupAfterCombatImpl();
 		}
 		protected static function showStatDown(a:String):void{
-			CoC.instance.mainView.statsView.showStatDown(a);
+			CoC.instance.mainViewManager.showStatDown(a);
 		}
 		protected final function statScreenRefresh():void {
 			EngineCore.statScreenRefresh();
@@ -1420,6 +1421,9 @@ import classes.Scenes.Combat.CombatAbilities;
 		public function calcLightningDamage():int{
 			return player.reduceLightningDamage(eBaseDamage());
 		}
+		public function calcIceDamage():int{
+			return player.reduceIceDamage(eBaseDamage());
+		}
 
 		public function totalXP(playerLevel:Number=-1):Number
 		{
@@ -1723,7 +1727,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		protected const NO_DROP:WeightedDrop = new WeightedDrop();
 
 		public function isFullyInit():Boolean {
-			for each (var phase:Object in initsCalled) {
+			for each (var phase:Object in Utils.values(initsCalled)) {
 				if (phase is Boolean && !phase) return false;
 			}
 			return true;
@@ -1878,6 +1882,10 @@ import classes.Scenes.Combat.CombatAbilities;
 			else if (hasStatusEffect(StatusEffects.ElectrifyWeapon)) {
 				var damageElectrifyWeapon:int = calcLightningDamage();
 				if (damageElectrifyWeapon > 0) damage = player.takeLightningDamage(damageElectrifyWeapon, display);
+			}
+			else if (hasStatusEffect(StatusEffects.WinterRider)) {
+				var damageWinterRider:int = calcIceDamage();
+				if (damageWinterRider > 0) damage = player.takeIceDamage(damageWinterRider, display);
 			}
 			else {
 				damage = calcDamage();
@@ -2137,7 +2145,7 @@ import classes.Scenes.Combat.CombatAbilities;
 			var dodge:int = player.speedDodge(this);
 			if (dodge>0 && dodge<3) {
 				outputPlayerDodged(dodge);
-				if (player.zerkSereneMind()) EngineCore.WrathChange(Math.round(player.maxWrath()*0.01));
+				if (player.zerkSereneMind()) pc.WrathChange(Math.round(player.maxWrath()*0.01));
 				return true;
 			}
 			var evasionResult:String = player.getEvasionReason(false); // use separate function for speed dodge for expanded dodge description
@@ -2145,24 +2153,24 @@ import classes.Scenes.Combat.CombatAbilities;
 			switch(evasionResult){
 				case EVASION_EVADE:
 					outputPlayerDodged(3);
-					if (player.zerkSereneMind()) EngineCore.WrathChange(Math.round(player.maxWrath()*0.01));
+					if (player.zerkSereneMind()) pc.WrathChange(Math.round(player.maxWrath()*0.01));
 					return true;
 					// break;
 				case EVASION_MISDIRECTION:
 					outputPlayerDodged(4);
-					if (player.zerkSereneMind()) EngineCore.WrathChange(Math.round(player.maxWrath()*0.01));
+					if (player.zerkSereneMind()) pc.WrathChange(Math.round(player.maxWrath()*0.01));
 					return true;
 					// break;
 				case EVASION_FLEXIBILITY:
 					outputPlayerDodged(5);
-					if (player.zerkSereneMind()) EngineCore.WrathChange(Math.round(player.maxWrath()*0.01));
+					if (player.zerkSereneMind()) pc.WrathChange(Math.round(player.maxWrath()*0.01));
 					return true;
 					// break;
 				default:
 					if(evasionResult!=null){
 						outputPlayerDodged(6);
 						// These are not resolvedReason at all these are just extra dodge chance from perks and shit
-						if (player.zerkSereneMind()) EngineCore.WrathChange(Math.round(player.maxWrath()*0.01));
+						if (player.zerkSereneMind()) pc.WrathChange(Math.round(player.maxWrath()*0.01));
 						return true;
 					}
 			}
@@ -2189,7 +2197,7 @@ import classes.Scenes.Combat.CombatAbilities;
 					outputText("As you block the blow you exploit the opening in your opponent’s guard to deliver a vicious kick.");
 					SceneLib.combat.basemeleeattacks();
 				}
-				if (player.zerkSereneMind()) EngineCore.WrathChange(Math.round(player.maxWrath()*0.01));
+				if (player.zerkSereneMind()) pc.WrathChange(Math.round(player.maxWrath()*0.01));
 				return true;
 			}
 			return false;
@@ -2209,7 +2217,7 @@ import classes.Scenes.Combat.CombatAbilities;
 					SceneLib.combat.pspecials.shieldBash();
 				}
 				SceneLib.combat.ShieldsStatusProcs();
-				if (player.zerkSereneMind()) EngineCore.WrathChange(Math.round(player.maxWrath()*0.01));
+				if (player.zerkSereneMind()) pc.WrathChange(Math.round(player.maxWrath()*0.01));
 				return true;
 			}
 			return false;
@@ -2958,7 +2966,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		 *     <li>Used to modify button in the bottom left corner</li>
 		 * </ul>
 		 */
-		public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton,btnSpecial2:CoCButton):void{
+		public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData,btnSpecial2:ButtonData):void{
 
 		}
 
@@ -2971,7 +2979,7 @@ import classes.Scenes.Combat.CombatAbilities;
 		 *     <li>It is used for monster that possess player binding ability, used it if you want to alter buttons callback through .call(function)</li>
 		 * </ul>
 		 */
-		public function changeBtnWhenBound(btnStruggle:CoCButton,btnBoundWait:CoCButton):void{
+		public function changeBtnWhenBound(btnStruggle:ButtonData,btnBoundWait:ButtonData):void{
 		}
 
 		/**
@@ -3089,8 +3097,8 @@ import classes.Scenes.Combat.CombatAbilities;
 		public function monsterSlimeMetabolismRecovery():void {
 			var percent:Number = 0.01;
 			percent += (0.01 * perkv1(IMutationsLib.SlimeMetabolismIM));
-			EngineCore.HPChange(Math.round(maxHP() * percent), false, false);
-			EngineCore.ManaChange(Math.round(maxMana() * percent));
+			pc.HPChange(Math.round(maxHP() * percent), false, false);
+			pc.ManaChange(Math.round(maxMana() * percent));
 			EngineCore.changeFatigue(-Math.round(maxFatigue() * percent));
 		}
 
@@ -3668,12 +3676,16 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (hasPerk(PerkLib.VladimirRegalia) && !isNightTime()) healingPercent -= 5;
 				if (hasPerk(PerkLib.VladimirRegalia) && isNightTime()) healingPercent += 5;
 				if (hasPerk(PerkLib.LustyRegeneration)) healingPercent += 0.5;
-				if (hasPerk(PerkLib.LizanRegeneration) && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 1.5;
-				if (perkv1(IMutationsLib.LizanMarrowIM) >= 1 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 0.5 * perkv1(IMutationsLib.LizanMarrowIM);
-				if (perkv1(IMutationsLib.LizanMarrowIM) == 3 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify) && this.HP < (this.maxHP() * 0.25)) healingPercent += 1.5;
-				if (perkv1(IMutationsLib.LizanMarrowIM) == 4 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) {
-					if (this.HP < (this.maxHP() * 0.6)) healingPercent += 2;
-					if (this.HP < (this.maxHP() * 0.2)) healingPercent += 2;
+				if (hasPerk(PerkLib.LizanRegeneration) && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) healingPercent += 2;
+				if (perkv1(IMutationsLib.LizanMarrowIM) >= 1 && !hasStatusEffect(StatusEffects.RegenInhibitor) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) {
+					var lizanRegenM:Number = 1 * perkv1(IMutationsLib.LizanMarrowIM);
+					if (perkv1(IMutationsLib.LizanMarrowIM) == 3 && this.HP < (this.maxHP() * 0.25)) lizanRegenM *= 2;
+					if (perkv1(IMutationsLib.LizanMarrowIM) == 4) {
+						if (this.HP < (this.maxHP() * 0.6)) lizanRegenM *= 2;
+						if (this.HP < (this.maxHP() * 0.2)) lizanRegenM *= 1.5;
+					}
+					if (perkv1(PerkLib.LizanRegeneration) > 0) healingPercent *= (1 + perkv1(PerkLib.LizanRegeneration));
+					healingPercent += lizanRegenM;
 				}
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) healingPercent += 1;
 				if (perkv1(IMutationsLib.DrakeBloodIM) >= 1) healingPercent += perkv1(IMutationsLib.DrakeBloodIM);
@@ -4084,7 +4096,7 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 						store14 += 8 * SceneLib.combat.scalingBonusIntelligence();
 						store14 += 2 * SceneLib.combat.scalingBonusWisdom();
-						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+						pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 					}
 					store14 = SceneLib.combat.fixPercentDamage(store14, false);
 					store14 = SceneLib.combat.doDamage(store14);
@@ -4123,7 +4135,7 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 						store += 8 * SceneLib.combat.scalingBonusIntelligence();
 						store += 2 * SceneLib.combat.scalingBonusWisdom();
-						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+						pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 					}
 					store *= SceneLib.combat.BleedDamageBoost();
 					store = SceneLib.combat.fixPercentDamage(store);
@@ -4149,7 +4161,7 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 						store3 += 8 * SceneLib.combat.scalingBonusIntelligence();
 						store3 += 2 * SceneLib.combat.scalingBonusWisdom();
-						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+						pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 					}
 					store3 *= SceneLib.combat.BleedDamageBoost(true);
 					if (statusEffectv2(StatusEffects.SharkBiteBleed) > 0) store3 *= statusEffectv2(StatusEffects.SharkBiteBleed);
@@ -4168,7 +4180,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 					store13 += 8 * SceneLib.combat.scalingBonusIntelligence();
 					store13 += 2 * SceneLib.combat.scalingBonusWisdom();
-					EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+					pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 				}
 				store13 *= SceneLib.combat.BleedDamageBoost(true);
 				store13 = Math.round(store13);
@@ -4203,7 +4215,7 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 						store5 += 8 * SceneLib.combat.scalingBonusIntelligence();
 						store5 += 2 * SceneLib.combat.scalingBonusWisdom();
-						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+						pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 					}
 					store5 *= SceneLib.combat.BleedDamageBoost();
 					store5 = SceneLib.combat.fixPercentDamage(store5, false);
@@ -4229,10 +4241,10 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 						hemorrhage1 += 8 * SceneLib.combat.scalingBonusIntelligence();
 						hemorrhage1 += 2 * SceneLib.combat.scalingBonusWisdom();
-						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+						pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 					}
 					if (hasStatusEffect(StatusEffects.BloodWeb)) {
-						EngineCore.HPChange(Math.round(player.maxHP() * 0.01), false, false);
+						pc.HPChange(Math.round(player.maxHP() * 0.01), false, false);
 						var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
 						var drinked:Number = 1;
 						if (player.perkv1(IMutationsLib.HollowFangsIM) >= 3) drinked += 1;
@@ -4262,7 +4274,7 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 						hemorrhage4 += 8 * SceneLib.combat.scalingBonusIntelligence();
 						hemorrhage4 += 2 * SceneLib.combat.scalingBonusWisdom();
-						EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+						pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 					}
 					hemorrhage4 = SceneLib.combat.fixPercentDamage(hemorrhage4);
 					hemorrhage4 = SceneLib.combat.doDamage(hemorrhage4);
@@ -4284,7 +4296,7 @@ import classes.Scenes.Combat.CombatAbilities;
 					if (hasPerk(PerkLib.EnemyLargeGroupType)) bloodfield *= 5;
 					bloodfield = SceneLib.combat.fixPercentDamage(bloodfield);
 					bloodfield = SceneLib.combat.doDamage(bloodfield);
-					EngineCore.HPChange(bloodfield, false, false);
+					pc.HPChange(bloodfield, false, false);
 				}
 			}
 			if (hasStatusEffect(StatusEffects.BloodRequiem)) {
@@ -4316,7 +4328,7 @@ import classes.Scenes.Combat.CombatAbilities;
 				if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2)) {
 					store16 += 8 * SceneLib.combat.scalingBonusIntelligence();
 					store16 += 2 * SceneLib.combat.scalingBonusWisdom();
-					EngineCore.HPChange(Math.round(player.maxHP() * 0.02), false, false);
+					pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 				}
 				if (player.hasPerk(PerkLib.GreenMagic)) store16 *= 2;
 				if (player.checkNaturalOath()) store16 *= 2;
@@ -4453,8 +4465,8 @@ import classes.Scenes.Combat.CombatAbilities;
 								var buff:Number = 1;
 								if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2
 								player.statStore.replaceBuffObject({'spe.mult':Math.round(speStat.mult.value)*buff}, 'Supercharged', { text: 'Supercharged!' });
-								CoC.instance.mainView.statsView.refreshStats(CoC.instance);
-								CoC.instance.mainView.statsView.showStatUp('spe');
+								CoC.instance.mainViewManager.refreshStats();
+								CoC.instance.mainViewManager.showStatUp('spe');
 								outputText("\n\nYour body suddenly begins to generate a massive amount of electricity and the barely contained lightning uncontrollably starts surging left and right around you in short bursts as what's left of your sanity completely gets washed away by the supercharged state. ");
 							}
 							else {
@@ -4469,8 +4481,8 @@ import classes.Scenes.Combat.CombatAbilities;
 					}
 				}
 				if (statusEffectv1(StatusEffects.ImmolationDoT) < 8) {
-					if (this is Matango) player.takeLustDamage(((eBaseLibidoDamage() / 10) + int(player.lib/10 + player.cor/10)), true);
-					else player.takeLustDamage(((eBaseLibidoDamage() / 40) + int(player.lib/20 + player.cor/25)), true);
+					if (this is Matango) player.takeLustDamage(((eBaseLibidoDamage() / 10) + int(player.lib/10 + (player.cor+200)/10)), true);
+					else player.takeLustDamage(((eBaseLibidoDamage() / 40) + int(player.lib/20 + (player.cor+200)/25)), true);
 				}
 				outputText("\n\n");
 			}
@@ -4948,6 +4960,15 @@ import classes.Scenes.Combat.CombatAbilities;
 					outputText("<b>[Themonster]'s Flame Blade effect wore off.</b>\n\n");
 				}
 				else addStatusValue(StatusEffects.FlameBlade,1,-1);
+			}
+
+			//Winter Rider
+			if (hasStatusEffect(StatusEffects.WinterRider)) {
+				if (statusEffectv1(StatusEffects.WinterRider) <= 0) {
+					removeStatusEffect(StatusEffects.WinterRider);
+					outputText("<b>[Themonster]'s Winter Rider effect wore off.</b>\n\n");
+				}
+				else addStatusValue(StatusEffects.WinterRider,1,-1);
 			}
 
 			//lowered damage done by enemy attacks debuff

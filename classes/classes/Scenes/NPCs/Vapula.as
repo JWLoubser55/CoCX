@@ -481,6 +481,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 			if (player.cumQ() >= 1500) outputText(" until she looks six months pregnant");
 			outputText(".  At last, the cum-flow spilling through your urethra starts to ebb and your [cock] stops throbbing; only then does she remove your junk from her mouth with a loud POP.  Your [cock] appears to be clean of any spooge: your cock-slut did a very good job.  Satisfied, you pat her head with your cock and let her digest her lavish meal.");
 			player.sexReward("saliva", "Dick");
+			player.fuckingWithDemons(1);
 			dynStats("cor", .5);
 			flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
 			flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
@@ -581,6 +582,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 			outputText("\n\nSatisfied, you kiss both of your sluts.  \"<i>Thank you [Master].</i>\" they say in unison, before you pat their heads and send them on their way; they will probably need to rest in order to digest their heavy meal.");
 			//lust set to 0
 			player.sexReward("saliva", "Dick");
+			player.fuckingWithDemons(2);
 			dynStats("cor", 1);
 			flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
 			flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
@@ -614,6 +616,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 			outputText("\n\nYou dump your buttsluts, letting them splash in the cum-puddle, exhausted. Triumphantly exhibiting your " + cockDescript(x) + ", you tell them to finish their job.  Vapula and Ceraph growl reluctantly as they grovel in the spunk-tainted mud and crawl toward your junk before licking it with delectation.  You let them enjoy their meal, groaning in pleasure as they squeeze their pittance out of your " + cockDescript(x) + " and suck out the last globs of semen out of your urethra.  When you're all absolutely positive that no residual cum has been wasted, you smirk in satisfaction; you give your sluts a hard cock-slap for good measure and send them away.");
 			//Lust set to 0
 			player.sexReward("no", "Dick");
+			player.fuckingWithDemons(2);
 			dynStats("sen", -2, "cor", 1);
 			flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
 			flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
@@ -663,6 +666,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 			//lust set to 50, lipstick affect (if no adaptation)
 			sophieScene.luststickApplication(10);
 			player.sexReward("vaginalFluids", "Dick");
+			player.fuckingWithDemons(1);
 			dynStats("cor", 2);
 			flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
 			flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
@@ -688,6 +692,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 			outputText("\n\nVapula's expert stimulation as well as Sophie's uncontrollably hot ass eventually drain your stamina and you buck into the harpy as hard as you can, helplessly eager for the return thrusts which push you towards orgasm.  You thrust your tongue deep into the succubus's mouth as you reach it, your pussy spasming around the hot, soft, vibrating mass buried within it.  Dimly, you are aware of the other end of the strap-on fluttering, twinging, and then releasing its milky load.  Sophie climaxes and squirts a copious amount of her juice as you deliver rope after rope of jism into her tight confines.  Remembering your succubus slut, you hastily pull out and wave the over-stimulated cum producer at Vapula, spraying her purple godly body with white paint.  She welcomes the rain with a happy squeal that turns into a demonic cry of pleasure when you stuff it crudely inside her steaming love-tunnel, directly injecting your seed in her womb.  She pulls your head between her chest orbs, screaming in delight as you feed her.  \"<i>Yes! YES! Give it to me! Aaaaaaaaaaaaaaahhh....</i>\"  She growls in utter bliss and satiation as you fill her with even more spunk.  The poor bimbo below you is still busy squirting unbelievable amounts of girl-juices, flooding the immediate area with a mix of various sexual fluids as her large pussy muscles keep contracting on their own.");
 			outputText("\n\nAt last, when you're all done, you dismount.  Your mouth is filled with the succubus' essence, and Gods it tastes good. You tell Vapula to get off Sophie's butt too; as soon as she does the bimbo completely clenches and relaxes before falling into a deep slumber, her stretched anus still exposed as she snores and wallows into a pool of juices, mostly her own.  \"<i>Finish your meal</i>\", you tell Vapula, sighing as you peel out of the strap-on.  The tired succubus complies and proceeds to gently eat both the strap-on and your sex clean of the aftermath of your demented threesome.  She keeps licking at your pleasantly aching " + vaginaDescript(0) + " until it is completely clean, polished with succubus saliva.  \"<i>Enough. You should rest now.</i>\"  Nodding, Vapula heads toward her leaf-bed in order to recover from the intense threesome and digest her copious meal.");
 			player.sexReward("vaginalFluids", "Vaginal");
+			player.fuckingWithDemons(1);
 			dynStats("cor", 2);
 			flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
 			flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
@@ -725,6 +730,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 			}
 			outputText("\n\nYou give a pat to Amily's head, telling her she's been an excellent buttslut. The mousette blushes in contentment under the bemused eyes of Vapula; you give your demon pet a last kiss, telling her Amily is hers for the remainder of the hour.  Knowing how insatiable the succubus is, she'll probably try to suck out your cum out of Amily's ass.  You keep musing these perverse thoughts as you leave your sluts to their business.");
 			player.sexReward("vaginalFluids", "Dick");
+			player.fuckingWithDemons(1);
 			dynStats("cor", 2);
 			flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
 			flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
@@ -772,6 +778,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 			flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
 			flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
 			player.sexReward("vaginalFluids", "Dick");
+			player.fuckingWithDemons(2);
 			dynStats("str", rand(2), "tou", rand(2), "spe", rand(2), "int", rand(2), "cor", 2.5);
 			inventory.takeItem(consumables.CERUL_P, playerMenu);
 		}
@@ -856,6 +863,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 				outputText("\n\nWhen the mouse slut is completely soiled, you order him to place himself behind Vapula.  You want him to lick your cum off her ass while she sucks your dick.  Excited at the prospect of giving and receiving pleasure at the same time, Vapula eagerly does as she is told, suckling from your " + cockDescript(x) + " and presenting her purple, cum-stuffed backside to your other slut.  Whimpering in humiliation, treated as a sex-slave unworthy of getting your cum firsthand, Jojo proceeds to lick the succubus' gaping asshole, sobbing and sniffing every now and then as he loudly slurps your cum.  Not caring in the least about the cumslut wiping her ass clean, your purple demon lover distractedly enjoys her dessert, satiating her craving for semen as she milks the last globs of goo still present in your body.");
 				outputText("\n\nWhen you're both completely empty, you help Vapula to her feet; as the succubus kisses you and thanks you for her meal, you notice that Jojo is still sitting before you, curled up and waiting for your next orders.  You laugh with your succubus companion at his submissive posture; Vapula kicks his butt and snickers, \"<i>Can't you see we're busy?  Piss off, slut.</i>\" You approve.  \"<i>You heard what she said.  Go get fucked elsewhere.</i>\"  Still terrified by the unholy couple you both form, Jojo nods feebly and quickly disappears into the jungle.");
 				player.sexReward("no", "Dick");
+				player.fuckingWithDemons(1);
 				sharedEnd();
 			}
 			//Jojo NTR (as female)
@@ -890,6 +898,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 				outputText("\n\nSince you haven't given him the authorization to get off yet, the fucktoy is forced to endure your white rain as well as the squirts of an orgasming succubus he never got to touch.  Tears mix with your seed as they dribble down his face and stain his fur, but you don't care; if anything, you are only compelled to pollute him with even more thick ropes of demon jism.  When the mousy slut is completely soiled, you order him to place himself behind Vapula; you want him to lick the cum off her ass while she eats you out.  Excited at the prospect of giving and receiving pleasure at the same time, Vapula does as she's told; kneeling before you, she sends her long tongue eagerly searching into your leaking twat, flicking at your " + clitDescript() + " whilst presenting her purple, cum-packed backside to your other slut.  Whimpering in humiliation, treated as a sex-slave unworthy of getting cum firsthand, Jojo proceeds to lick the succubus' gaping asshole, sobbing and sniffing every now and then as he loudly slurps your cum.  Not caring in the least about the cumslut wiping her ass clean, your purple demon lover distractedly enjoys her dessert, exploring every crevice of your sex and teasing out every last drop of sweet girl cum.  When you're both completely clean, you help Vapula to her feet; as the succubus kisses you and thanks you for her meal, you notice that Jojo is still sitting before you, curled up and waiting for your next orders.");
 				outputText("\n\nYou laugh with your succubus companion at his submissive posture.  Vapula kicks his butt and snickers, \"<i>Can't you see we're busy? Piss off, slut.</i>\" You approve: \"<i>You heard what she said. Go get fucked elsewhere.</i>\"  Still terrified by the unholy couple you both form, Jojo nods feebly and quickly disappears into the jungle.");
 				player.sexReward("no", "Vaginal");
+				player.fuckingWithDemons(1);
 				sharedEnd();
 			}
 			function sharedEnd():void {
@@ -957,6 +966,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 			outputText("\n\nYou all spend a few minutes in utter ecstasy, thinking of nothing but the steady flow of sexual juices flowing in and out of various bodies.  You all focus on two things: giving everything you've got and keeping everything you're receiving.  Jojo, the nexus of this network of cum-flows, thrashes savagely as his genitals throb with need and his ass spasms reflexively; the poor thing is clearly getting unbearable pleasure and can't control his own movements anymore.  Your own orgasm brings you to a new level of ecstasy as your " + cockDescript(mainCock) + " keeps pulsating and releasing torrents of baby-batter.  At last, when the cum-flow finally ebbs, you rest on Jojo's back for a while, cock buried deep in his ass.  He does the same to Vapula, but you're too exhausted to care.  Besides, the naughty little pet deserved a reward.  You all fall over, sloshing in a newly-formed puddle of thick sexual fluids, and rest for a while.  As you're about to fall asleep you whisper in Jojo's ear, \"<i>Good job slut...</i>\"  Your last vision is the mouse's head nodding in contentment.");
 			outputText("\n\nWhen you wake up, Jojo is gone, and Vapula is still snoring deep in the cum puddle, her body entirely coated with dried semen.  You cock-slap the purple succubus to wake her and tell her she might as well clean your " + cockDescript(mainCock) + " since the cowardly mouse left.  She nods weakly and her mouth opens, visibly waiting for your sloppy dick to fill her since she's too tired to sit up.  Sighing, you lower your junk into a proper sucking position; her tongue seems to be working on its own as it licks your meat clean of any dirty juice left.  You try to shove more dickflesh inside her throat but you can see she's too winded to perform any elaborate blowjob.  Shrugging in mild disappointment, you leave the purple slut as she carelessly wallows in the cum puddle; you head toward a stream to get cleaned up.");
 			player.sexReward("no", "Dick");
+			player.fuckingWithDemons(1);
 			dynStats("sen", -2, "cor", 2);
 			flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;
 			flags[kFLAGS.VAPULA_TEASE_COUNT] = 0;
@@ -991,6 +1001,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 				outputText("\n\nNodding in approval, you pull out your own " + cockDescript(x) + " out of your tigershark's ass and tell Vapula to keep going.  With your rod still in hand, you walk around Vapula and grab hold of her plush, jiggly ass; without warning, you plunge your still-dripping rod into her tight entrance.  Unsurprisingly, the anal penetration is much easier with the purple succubus.  She jolts a bit but this doesn't reduce the intensity of her ministrations in the least; her tainted saliva appears to have an aphrodisiac effect on Izma's cock, never letting her go completely soft.  You pump your " + cockDescript(x) + " in and out of Vapula's plump rump while she still sucks off your tigershark lover, letting her balls fill back up with cum.  The three of you go at it for what seems like hours, Vapula wobbling back and forth between your hard butt-fuck and Izma's dick.  Her asshole is somehow as tight as Izma's, but so wonderfully hot!  The sudden change of temperature is making you shiver in pleasure.  You keep pounding away, not really caring about a slutty creature used to butt-dickings.");
 				outputText("\n\nYou stare at Izma, the two of you keeping eye contact as you both penetrate your fucktoy from both ends.  Then, at last, you wink at Izma as you both cum a second time, releasing simultaneously streams of spunk in the succubus' horny body.  She happily devours all you've got, her lips and anal-lips contracting mercilessly in order to milk both cocks fresh baby-batter.  You cum and cum, your " + cockDescript(x) + " and Izma's pulsating in rhythm as they paint the succubus' inner depths white.  You then pull out of her ass and walk toward Izma.  The poor tigershark is completely drained from the double-blowjob, and staggers her way toward the stream to get hydrated, pulling back her dick with a loud POP as it escapes from Vapula's needy lips.  The succubus looks disappointed to see her new sperm feeder running away, but you remind her your own " + cockDescript(x) + " still needs to be cleaned. With a happy sigh, she works on your junk for a while, tingling you in the most pleasant way as her tongue runs across your dickflesh and slurps all the remaining goo. When you're as empty as she's full, you both rest side to side, recovering from the intense fuck.");
 				player.sexReward("saliva", "Dick");
+				player.fuckingWithDemons(1);
 			}
 			//Vapula/Izma threesome (as female)
 			else {
@@ -1012,6 +1023,7 @@ public class Vapula extends NPCAwareContent implements TimeAwareInterface
 				outputText("\n\nThe three of you go at it for what seems like hours, Vapula wobbling back and forth between your hard butt-fuck and Izma's dick.  Heat seems to radiate off the succubus, which is unsurprising; the taste of semen and your rough dildo-ing have pushed the sexual creature deep into rut.  You pound away with abandon at her, not really caring about a slut used to butt- dickings.  You stare at Izma, the two of you keeping eye contact as you both penetrate your fucktoy from both ends.  Then, at last, you wink at Izma as you both cum a second time, releasing simultaneously streams of spunk in Vapula's burning body.");
 				outputText("\n\nShe happily devours all you've got, her lips and nether-lips contracting mercilessly in order to milk both cocks for fresh baby-batter.  The sight of the shameless cumbucket getting what she wants pushes you to a new height and you orgasm and orgasm, your end of the strap-on vibrating furiously in your streaming depths as the other end and Izma pulsate in rhythm and paint the succubus' inner depths white.  You then pull out of her ass and walk toward Izma. The poor tigershark is completely drained from the double-blowjob, and staggers her way toward the stream to get hydrated, pulling back her dick with a loud POP as it escapes from Vapula's needy lips.  The succubus looks disappointed to see her new sperm feeder running away, but you remind her you still need to be cleaned.  With a happy sigh, she works on your " + vaginaDescript(0) + " for a while, tingling you in the most pleasant way as her tongue runs slowly across your drooling sex and slurps up all the girl slime she can possibly tease out of you.  When you're as dry as she is full, you both rest side to side, recovering from the intense fuck.");
 				player.sexReward("saliva", "Vaginal");
+				player.fuckingWithDemons(1);
 			}
 			dynStats("sen", -2, "cor", 2);
 			flags[kFLAGS.VAPULA_DAYS_SINCE_FED] = 0;

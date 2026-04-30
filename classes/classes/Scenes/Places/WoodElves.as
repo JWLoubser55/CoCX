@@ -295,7 +295,7 @@ public class WoodElves extends BaseContent implements SaveableState {
 			outputText("You awaken a short while later. Still dazed, you crawl your way to the pond to take a look at yourself, only to find a stunningly beautiful elf girl looking back at you. " +
 					"She has "+player.breastCup(0)+" breasts, round and firm and tipped with pink, blushing nipples, and clear, smooth skin as unblemished as the crystal waters of a forest stream, fairer than any mortal. " +
 					"Her "+ Appearance.hairDescription(player) +" are like silk, " +
-					"and her eyes are the emerald green of fresh leaves in early spring. Slowly your waking mind begins to piece together that this beautiful elven girl is actually you, the resemblance with the elves who found you earlyer is shocking! " +
+					"and her eyes are the emerald green of fresh leaves in early spring. Slowly your waking mind begins to piece together that this beautiful elven girl is actually you, the resemblance with the elves who found you earlier is shocking! " +
 					"\n\n\"<i>Oh heavens, Alyssa was right: you turned out just adorable<b>~♥</b></i>\"\n\n" +
 					"The elf girl who seemed to be the leader of the others speaks from behind you, and you turn to face her. " +
 					"She is gazing at you with eyes full of affection and approval. She is also alone; the other elves seem to have already left. " +

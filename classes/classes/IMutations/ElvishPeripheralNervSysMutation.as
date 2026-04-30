@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
 public class ElvishPeripheralNervSysMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Elvish Peripheral NervSys";
-        }
+		public static const MNAME:String = "Elvish Peripheral NervSys";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             pTier = (pTier == -1)? currentTier(this, player): pTier;
@@ -70,7 +71,7 @@ public class ElvishPeripheralNervSysMutation extends IMutationPerkType
         }
 
         public function ElvishPeripheralNervSysMutation() {
-            super(mName + " IM", mName, SLOT_NERVSYS, 4);
+            super(MNAME, SLOT_NERVSYS, 4);
         }
 
     }

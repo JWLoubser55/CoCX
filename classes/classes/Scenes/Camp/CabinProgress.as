@@ -264,9 +264,8 @@ import classes.Scenes.SceneLib;
 				//later on add here chance to be ambushed by some enemy
 			}
 			outputText("\n\nYou begin slamming your pickaxe against the stone, spending the better part of two hours mining. Once finished, you bring your prize back to camp. ");
-			var minedStones:Number = 13 + ((player.strStat.core.value + player.strStat.train.value) * 4);
+			var minedStones:Number = 13 + ((player.strStat.core.value + player.strStat.train.value) * player.miningLevel);
 			fatigue(gatherWoodsORquarrySiteMineCost(), USEFATG_PHYSICAL);
-			if (minedStones > (40 + (2 * player.miningLevel) + (20 * player.newGamePlusMod()))) minedStones = (40 + (2 * player.miningLevel) + (20 * player.newGamePlusMod()));
 			flags[kFLAGS.ACHIEVEMENT_PROGRESS_YABBA_DABBA_DOO] += minedStones;
 			incrementStoneSupply(minedStones);
 			var mineEXP:Number = player.MiningMulti();

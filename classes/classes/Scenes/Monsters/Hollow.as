@@ -9,9 +9,10 @@ import classes.BodyParts.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
-//import classes.Scenes.Combat.CombatAbilities;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
+
+//import classes.Scenes.Combat.CombatAbilities;
 
 use namespace CoC;
 
@@ -27,7 +28,7 @@ use namespace CoC;
                 if (player.hasStatusEffect(StatusEffects.AcidDoT)) player.addStatusValue(StatusEffects.AcidDoT, 1, 1);
                 else player.createStatusEffect(StatusEffects.AcidDoT, 3, 15, 0, 0);
             }
-			EngineCore.SoulforceChange(-Math.round(player.maxSoulforce() * 0.05));
+			pc.SoulforceChange(-Math.round(player.maxSoulforce() * 0.05));
 			player.refillHunger(-5, false);
 			outputText("She then flips back and launches herself–horns first at you. ");
 			var hornspoke:Number = this.str;
@@ -133,7 +134,7 @@ use namespace CoC;
 			}
 		}
 		
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.Pounced)) {
 				btnStruggle.call(hollowPouncedStruggle);
 				btnBoundWait.call(hollowPouncedWait);

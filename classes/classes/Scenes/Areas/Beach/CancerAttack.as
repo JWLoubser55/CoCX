@@ -7,19 +7,16 @@ package classes.Scenes.Areas.Beach
 import classes.*;
 import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
-import classes.BodyParts.Horns;
 import classes.BodyParts.Tail;
-import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.Combat.Combat;
-import classes.Scenes.Combat.CombatUI;
 import classes.Scenes.SceneLib;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class CancerAttack extends Monster
 	{
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.CancerMonsterGrab)) {
 				btnStruggle.call(cancerGrabStruggle);
 				btnBoundWait.call(cancerGrabWait);

@@ -71,7 +71,7 @@ public class DarkElfs extends Monster
 				CombatAbilities.EAspectAir.advance(true);
 			}
 			else {
-				outputText("The dark elf smirks wickedly before shooting an arrow straight into your wing. You fall, unable to fly, and crash into the ground. ");
+				outputText("The dark elf smirks wickedly before shooting an arrow straight into your "+(player.hasPerk(PerkLib.Icerunner)?"legs":"wing")+". You fall, unable to fly, and crash into the ground. ");
 				player.removeStatusEffect(StatusEffects.Flying);
 				var damage:Number = eBaseSpeedDamage() * 6 + eBaseStrengthDamage() * 3;
 				if (damage < 15) damage = 15;
@@ -105,7 +105,7 @@ public class DarkElfs extends Monster
 				else DarkElfBowShooting();
 			}
 			if (choice == 2) {
-				if (player.isFlying() && rand(4) == 0) WingClip();
+				if ((player.isFlying() || player.hasPerk(PerkLib.Icerunner)) && rand(4) == 0) WingClip();
 				else DarkElfBowShooting();
 			}
 		}
@@ -166,7 +166,7 @@ public class DarkElfs extends Monster
 				{ call: eAttack, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_BODY]},
 				{ call: DarkElfBowShooting, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_WEAPON]},
 				{ call: AnkleShot, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_WEAPON], condition: function():Boolean{return !player.hasStatusEffect(StatusEffects.Sealed2)}},
-				{ call: WingClip, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_WEAPON], condition: function():Boolean {return (player.isFlying() && player.statusEffectv2(StatusEffects.Flying) == 0)}, weight: Infinity}
+				{ call: WingClip, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_WEAPON], condition: function():Boolean {return ((player.isFlying() || player.hasPerk(PerkLib.Icerunner)) && player.statusEffectv2(StatusEffects.Flying) == 0)}, weight: Infinity}
 			];
 			this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
 			if (flags[kFLAGS.DARK_OR_LIGHT_ELF_SUBTYPE] >= 1) this.createPerk(PerkLib.CheetahI, 0, 0, 0, 0);

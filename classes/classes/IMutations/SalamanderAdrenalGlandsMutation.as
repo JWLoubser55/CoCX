@@ -4,31 +4,36 @@
  */
 package classes.IMutations
 {
+import classes.Creature;
+import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.PerkLib;
-import classes.IMutationPerkType;
-import classes.Creature;
 import classes.Races;
 
 public class SalamanderAdrenalGlandsMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Salamander Adrenal Glands";
-        }
+		public static const MNAME:String = "Salamander Adrenal Glands";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1) descS += "Your Salamander adrenal glands are giving you slight boosts to your natural stamina";
-            if (pTier == 1){
-                descS += " and libido";
-            }
-            if (pTier == 2){
-                descS += ", strength, speed, libido and extend lustzerker and berserker duration by 2 turns";
-            }
-            if (pTier == 3){
-                descS += ", strength, speed and libido, extend lustzerker and berserker duration by 8 turns, allows for either or both to trigger on combat start, double bonus to attack, boost slight natural wrath generation rate";
-            }
+            if (pTier == 1) descS += " and libido";
+            if (pTier >= 2) descS += ", strength, speed and libido, extend lustzerker and berserker duration by ";
+            if (pTier == 2) descS += "2";
+            if (pTier == 3) descS += "10";
+			if (pTier == 4) descS += "20";
+            if (pTier >= 2) descS += " turns";
+            if (pTier >= 3) descS += ", allows for either or both to trigger on combat start, ";
+            if (pTier == 3) descS += "double";
+            if (pTier == 3) descS += "triple";
+			if (pTier >= 3) descS += " bonus to attack, boost";
+			if (pTier >= 3) descS += " slight";
+            if (pTier >= 3) descS += " natural wrath generation rate";
+            if (pTier == 4) descS += ". While lustzerking fire damage is increased by 50%";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -71,11 +76,17 @@ public class SalamanderAdrenalGlandsMutation extends IMutationPerkType
                 pBuffs['str.mult'] = 0.2;
                 pBuffs['spe.mult'] = 0.2;
             }
+            else if (pTier == 4) {
+                pBuffs['tou.mult'] = 0.2;
+                pBuffs['lib.mult'] = 0.2;
+                pBuffs['str.mult'] = 0.55;
+                pBuffs['spe.mult'] = 0.55;
+            }
             return pBuffs;
         }
 
         public function SalamanderAdrenalGlandsMutation() {
-            super(mName + " IM", mName, SLOT_ADRENALS, 3);
+            super(MNAME, SLOT_ADRENALS, 4);
         }
 
     }

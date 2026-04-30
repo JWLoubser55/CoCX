@@ -10,7 +10,8 @@ import classes.PerkClass;
 		override public function desc(params:PerkClass = null):String
 		{
 			if (!player || !params) return _desc;
-			var mult:int = CoC.instance.gameSettings.sceneHunter_inst.other ? 10 : 5;
+			var mult:int = CoC.instance.gameSettings.sceneHunter_inst.other ? 20 : 10;
+			//if (true angel) mult *= 2;
 			return "(Rank: " + params.value1 + "/" + CoC.instance.charCreation.MAX_TOLERANCE_LEVEL + ") Increases corruption tolerance by " + params.value1 * mult + " and reduces the corruption requirement by " + params.value1 * mult + ".";
 		}
 		

@@ -83,11 +83,12 @@ public class RacialRequirement {
 	}
 	
 	public function withCondition(conditionFn:Function, conditionName:String):RacialRequirement {
+		var thiz:RacialRequirement = this;
 		return new RacialRequirement(
 				group,
-				conditionName+" "+getName(),
+				conditionName+" "+thiz.getName(),
 				function(body:BodyData):Boolean {
-					return conditionFn(body) && checkFn(body);
+					return conditionFn(body) && thiz.checkFn(body);
 				},
 				_score,
 				failScore,

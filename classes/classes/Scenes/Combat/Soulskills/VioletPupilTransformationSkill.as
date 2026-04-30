@@ -2,6 +2,7 @@ package classes.Scenes.Combat.Soulskills {
 import classes.Scenes.Combat.AbstractSoulSkill;
 import classes.StatusEffects;
 import classes.Monster;
+import classes.PerkLib;
 import classes.Races;
 import classes.EngineCore;
 
@@ -48,6 +49,7 @@ public class VioletPupilTransformationSkill extends AbstractSoulSkill {
 	private function calcHealAmount():Number {
 		var healPercent:Number = 0.05;
 		if (player.isRaceCached(Races.ALICORN, 2)) healPercent += 0.01;
+		if (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH) healPercent *= 1.5;
 		return Math.round(player.maxHP() * healPercent);
 	}
 
@@ -65,12 +67,12 @@ public class VioletPupilTransformationSkill extends AbstractSoulSkill {
 			super.toggleOff(display);
 			if (display) outputText("<b>Your soulforce is too low to continue using Violet Pupil Transformation. </b>\n\n");
 		} else {
-			EngineCore.SoulforceChange(-sfCost);
+			pc.SoulforceChange(-sfCost);
 			
 			var amountToHeal:int = calcHealAmount();
 			if (display) outputText("<b>As your soulforce is drained you can feel Violet Pupil Transformation's regenerative power spreading throughout your body. ([font-heal]+"
 				 + numberFormat(amountToHeal) + "[/font])</b>\n\n");
-			HPChange(amountToHeal, false, false);
+			pc.HPChange(amountToHeal, false, false);
 		}
 	}
 

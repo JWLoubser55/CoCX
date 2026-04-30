@@ -9,6 +9,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.Areas.Ashlands.Cinderbloom;
 import classes.Scenes.Areas.Tundra.SnowLily;
 import classes.Scenes.Places.WoodElves;
+import classes.Scenes.SceneLib;
 import classes.display.SpriteDb;
 
 public class AlrauneScene extends BaseContent
@@ -111,6 +112,7 @@ public class AlrauneScene extends BaseContent
 				outputText("\"<i>Mmmmmm such a nice catch... Come closer into my pitcher.</i>\"\n\n");
 				outputText("There's no way you will let this thing pull you in!\n\n");
 			}
+			SceneLib.tundra.TundraConditions();
 			startCombat(new SnowLily());
 		}
 	}

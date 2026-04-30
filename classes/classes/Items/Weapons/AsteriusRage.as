@@ -31,7 +31,7 @@ public class AsteriusRage extends Weapon {
 			if (game.player.str >= 300) boost += 3;
 			if (game.player.str >= 200) boost += 2;
 			if (game.player.str >= 100) boost += 1;
-			boost += (game.player.cor) / 5;
+			boost += (game.player.playerCorruption()) / 10;
 			return (1 + boost);
 		}
 	}

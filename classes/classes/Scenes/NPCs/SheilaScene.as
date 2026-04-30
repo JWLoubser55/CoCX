@@ -204,7 +204,7 @@ private function sheilaCorruptionUpdate():void {
 				else sheilaCorruption(1);
 			}
 			player.cor = Math.round(player.cor);
-			mainView.statsView.showStatDown( 'cor' );
+			showStatDown( 'cor' );
 			// corUp.visible = false;
 			// corDown.visible = true;
 			statScreenRefresh();
@@ -226,7 +226,7 @@ private function sheilaCorruptionUpdate():void {
 				else sheilaCorruption(-1);
 			}
 			player.cor = Math.round(player.cor);
-			mainView.statsView.showStatUp( 'cor' );
+			showStatUp( 'cor' );
 			// corUp.visible = true;
 			// corDown.visible = false;
 			statScreenRefresh();
@@ -589,7 +589,7 @@ private function sheilaReallyMadStandGround():void {
 	if(silly()) {
 		monster.HP *= 1.2;
 		fatigue(-10);
-		HPChange(20,false,false);
+		pc.HPChange(20,false,false);
 	}
 }
 
@@ -4899,7 +4899,7 @@ public function rebellingScarredBlade(wieldAttempt:Boolean = false):void {
 		var dmg:int = 20;
 		dmg -= player.armorDef;
 		if (dmg < 1) dmg = 1;
-		HPChange(-dmg, false,false);
+		pc.HPChange(-dmg, false,false);
 		player.setWeapon(WeaponLib.FISTS);
 		flags[kFLAGS.SCARRED_BLADE_STATUS] = 1;
 	}

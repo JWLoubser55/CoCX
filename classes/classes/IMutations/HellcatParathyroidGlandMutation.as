@@ -4,15 +4,16 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 
-    public class HellcatParathyroidGlandMutation extends IMutationPerkType
+public class HellcatParathyroidGlandMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Hellcat Parathyroid Glands";
-        }
+		public static const MNAME:String = "Hellcat Parathyroid Glands";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -56,7 +57,7 @@ import classes.Creature;
         }
 
         public function HellcatParathyroidGlandMutation() {
-            super(mName + " IM", mName, SLOT_NONE, 3);
+            super(MNAME, SLOT_NONE, 3);
         }
 
     }

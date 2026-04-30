@@ -88,7 +88,8 @@ public class IMutationPerkType extends PerkType
 		private static var _IMNotvalid:Object = {};
 
 
-		public function IMutationPerkType(id:String, name:String, slot:String, maxLvl:int) {
+		public function IMutationPerkType(name:String, slot:String, maxLvl:int) {
+			var id:String = name+" IM";
 			//GDI probably pre-initialization issue again
 			if (_IMvalid.hasOwnProperty(id)) {
 				name += "_errorIM"

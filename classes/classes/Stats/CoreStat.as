@@ -1,9 +1,10 @@
 package classes.Stats {
 import classes.Creature;
 import classes.PerkLib;
-import classes.Monster;
-import classes.IMutations.IMutationsLib;
 import classes.Player;
+import classes.Monster;
+import classes.StatusEffects;
+import classes.IMutations.IMutationsLib;
 import classes.Scenes.Places.HeXinDao.JourneyToTheEast;
 
 public class CoreStat extends RawStat{
@@ -53,6 +54,7 @@ public class CoreStat extends RawStat{
 				if (host.perkv1(IMutationsLib.HumanBloodstreamIM) >= 1) base += 5;
 				if (host.perkv1(IMutationsLib.HumanBloodstreamIM) >= 2) base += 5;
 				if (host.perkv1(IMutationsLib.HumanBloodstreamIM) >= 4) base += 10;
+				if (host.hasStatusEffect(StatusEffects.WinterBellCollarA)) base += 50;
 				if (host is Player && JourneyToTheEast.EvelynnCoreLimitBreakerCounter > 0) base += JourneyToTheEast.EvelynnCoreLimitBreakerCounter;
 				var spe:Number = 1;
 				if (host.hasPerk(PerkLib.AsuraSpeed)) spe += 0.1;

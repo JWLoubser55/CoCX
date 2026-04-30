@@ -62,6 +62,7 @@ public class LaquineRace extends Race {
 						}, 0, -10)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.BunnysDescendant, PerkLib.BloodlineBunny);
 		addMutation(IMutationsLib.EquineMuscleIM);
 		addMutation(IMutationsLib.MightyLegsIM);
 		

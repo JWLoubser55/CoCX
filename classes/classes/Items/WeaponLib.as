@@ -43,7 +43,9 @@ public final class WeaponLib extends ItemConstants
 				PARACEL,
 				ASTERIUS,
 				ELYSIUM,
-				ANCIENTO
+				ANCIENTO,
+				PASHA__,
+				D_PASHA
 			];
 		}
 		public function LegendaryCorrupt():Array {
@@ -159,7 +161,7 @@ public final class WeaponLib extends ItemConstants
 				"B.Sword", "B.Sword", "beautiful sword", "a beautiful shining sword", "slash", 17, 560,
 				"This beautiful sword shines brilliantly in the light, showing the flawless craftsmanship of its blade.  The pommel and guard are heavily decorated in gold and brass.  Some craftsman clearly poured his heart and soul into this blade.",
 				WT_SWORD, WSZ_MEDIUM)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3) as Weapon;
 		public const B_WHIP :Weapon = new Weapon(
 				"B.Whip", "B.Whip", "beautiful whip", "a beautiful shining whip", "whipping", 14, 400,
@@ -167,9 +169,9 @@ public final class WeaponLib extends ItemConstants
 				WT_WHIP, WSZ_MEDIUM)
 				.withBuffs({'teasedmg': 35})
 				.withTag(W_WHIPPING)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3)
-				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon as Weapon;
+				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon;
 		public const B_FLYWHISK :Weapon = new BeautifulFlyWhisk();
 		public const B_SCARB:Weapon = new Weapon(
 				"B.ScarB", "B.ScarBlade", "broken scarred blade", "a broken scarred blade", "slash", 12, 480,
@@ -367,7 +369,7 @@ public final class WeaponLib extends ItemConstants
 				"DBSword", "DB.Sword", "dual beautiful swords", "a dual beautiful shining swords", "slash", 17, 1120,
 				"Those beautiful swords shines brilliantly in the light, showing the flawless craftsmanship of their blades.  The pommel and guard are heavily decorated in gold and brass.  Some craftsman clearly poured his heart and soul into those blade.",
 				WT_SWORD,WSZ_MEDIUM,true)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3) as Weapon;
 		public const DDAGGER:Weapon = new Weapon(
 				"DDagger","D.Daggers","dual daggers","a dual daggers","stab",3,240,
@@ -394,9 +396,9 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.LustDamage, 10, 1/8) as Weapon;
 		public const DEXCALI:Weapon = new Weapon(
 				"DExcalib", "DualExcalibur", "Dual Excalibur", "a Dual Excalibur", "slash", 40, 1600,
-				"A legendary dual swords said to have been made by Marae for her champion. Those weapon radiates divine power, purifying its wielder and protecting them from impurity.",
+				"A legendary dual swords said to have been made by Marae for her champion. Those weapons radiates divine power, purifying its wielder and protecting them from impurity.",
 				WT_SWORD, WSZ_MEDIUM, true)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3)
 				.withTag(I_LEGENDARY) as Weapon;
 		public const DE_GAXE:Weapon = new Weapon(
@@ -461,6 +463,15 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.Stun, 10)
 				.withEffect(IELib.ScaleAttack_Str, 75)
 				.withEffect(IELib.AttackBonus_Cor, 1/20) as Weapon;
+		public const D_PASHA:Weapon = new Weapon(
+				"DPasha", "DualPasha", "Dual Pasha", "a Dual Pasha", "whipping", 33, 1320,
+				"A legendary whip said to have been made by Marae for her champion.  The handle and transition knot are heavily decorated in gold and brass.  This weapon radiates divine power, purifying its wielder and protecting them from impurity.",
+				WT_WHIP, WSZ_MEDIUM, true)
+				.withBuffs({'teasedmg': 35})
+				.withTags(I_LEGENDARY, W_WHIPPING)
+				.withEffect(IELib.Require_CorBelow, -33)
+				.withEffect(IELib.AttackBonus_Purity, 1/3)
+				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon;
 		public const D_WHAM_:Weapon = new Weapon(
 				"D.WHam", "D.WarHam", "dual huge warhammer", "a dual huge warhammer", "smash", 15, 2400,
 				"A pair of huge war-hammers made almost entirely of steel that only the strongest warriors could use.  Getting hit with this might stun the victim.",
@@ -544,7 +555,7 @@ public final class WeaponLib extends ItemConstants
 				"A legendary sword said to have been made by Marae for her champion. This weapon radiates divine power, purifying its wielder and protecting them from impurity.",
 				WT_SWORD, WSZ_MEDIUM)
 				.withTag(I_LEGENDARY)
-				.withEffect(IELib.Require_CorBelow, 33)
+				.withEffect(IELib.Require_CorBelow, -33)
 				.withEffect(IELib.AttackBonus_Purity, 1/3) as Weapon;
 		public const FLAIL  :Weapon = findCommonDynamicWeapon("flail");
 		public const FLYINGC:Weapon = new Weapon(
@@ -773,6 +784,15 @@ public final class WeaponLib extends ItemConstants
 				"This is a simple pair of rusted pipe of unknown origins.  They're hefty and could probably be used as an effective bludgeoning tool.",
 				WT_MACE_HAMMER, WSZ_MEDIUM, true);
 		public const PARACEL:Weapon = new Paracelsus();
+		public const PASHA__:Weapon = new Weapon(
+				"Pasha", "Pasha", "Pasha", "a Pasha", "whipping", 33, 660,
+				"A legendary whip said to have been made by Marae for her champion.  The handle and transition knot are heavily decorated in gold and brass.  This weapon radiates divine power, purifying its wielder and protecting them from impurity.",
+				WT_WHIP, WSZ_MEDIUM)
+				.withBuffs({'teasedmg': 35})
+				.withTags(I_LEGENDARY, W_WHIPPING)
+				.withEffect(IELib.Require_CorBelow, -33)
+				.withEffect(IELib.AttackBonus_Purity, 1/3)
+				.withEffect(IELib.LustDamage, 5, 1/12) as Weapon;
 		public const PHALLUS:Weapon = new ThePhalluspear();
 		public const PHALUSS:Weapon = new ThePhalluspears();
 		public const PILEBUN:Weapon = new Weapon(
@@ -864,7 +884,7 @@ public final class WeaponLib extends ItemConstants
 				"Similar to the machine Greatsword, this weapon is highly mechanical. Instead of a sharp straight blade, the weapon’s sides are a set of sharp metal teeth that constantly move in order to properly saw through flesh and more solid matter, creating grievous wounds. The blades movement is so fast it creates heat along the length and thanks to a small system set, the saw is constantly aflame. Aside of cutting fleshy things in half, it is very good for taking down trees.",
 				WT_EXOTIC, WSZ_LARGE)
 				.withEffect(IELib.Bleed, 100)
-				.withTags(W_HTECHWEAPON)  as Weapon;
+				.withTags(W_HTECHWEAPON, W_FIRE_TYPE)  as Weapon;
 		public const RRAPIER:Weapon = new Weapon(
 				"RRapier", "RRapier", "vulpine rapier", "Raphael's vulpine rapier", "slash", 8, 640,
 				"He's bound it with his red sash around the length like a ribbon, as though he has now gifted it to you.  Perhaps it is his way of congratulating you.",
@@ -1038,7 +1058,7 @@ public final class WeaponLib extends ItemConstants
 				"Similar to the machine Greatsword, those weapons are highly mechanical. Instead of a sharp straight blade, the weapon’s sides are a set of sharp metal teeth that constantly move in order to properly saw through flesh and more solid matter, creating grievous wounds. The blades movement is so fast it creates heat along the length and thanks to a small system set, the saws are constantly aflame. Aside of cutting fleshy things in half, it is very good for taking down trees.",
 				WT_EXOTIC, WSZ_LARGE, true)
 				.withEffect(IELib.Bleed, 100)
-				.withTags(W_HTECHWEAPON) as Weapon;
+				.withTags(W_HTECHWEAPON, W_FIRE_TYPE) as Weapon;
 		public const TRSABER:Weapon = new Weapon(
 				"TRSaber","TwelveRingedSaber","Twelve-ringed Saber","a twelve-ringed saber","slash",70,5600,//320 atk for massive mid-grade wrath variant of ringed saber
 				"This large saber, with added twelve rings is capable of delivering deep, jagged wounds.",
@@ -1241,7 +1261,8 @@ public final class WeaponLib extends ItemConstants
 			[NRSABER, TNRSABER],
 			[TRSABER, TTRSABER],
 			[PIPE, P_PIPE],
-			[TRIDAG, DTRIDAG]
+			[TRIDAG, DTRIDAG],
+			[PASHA__, D_PASHA]
 		]
 	}
 }

@@ -160,8 +160,8 @@ internal function doThatTestingThang(debugPane:Function):void {
     EngineCore.outputText("* \\\[cockDescript\\\] - [cockDescript]\n");
     EngineCore.outputText("* Generic function calls will be cast to string\n");
     EngineCore.outputText("* \\\[player.cumQ\\\] - [player.cumQ]\n");
-    EngineCore.outputText("* `\[kFLAGS_REF.ARIAN_COCK_SIZE\]` - [kFLAGS_REF.ARIAN_COCK_SIZE]\n");
-    EngineCore.outputText("* `\[flags kFLAGS_REF.ARIAN_COCK_SIZE\]` - [flags kFLAGS_REF.ARIAN_COCK_SIZE]\n");
+    EngineCore.outputText("* `\\[kFLAGS_REF.ARIAN_COCK_SIZE\\]` - [kFLAGS_REF.ARIAN_COCK_SIZE]\n");
+    EngineCore.outputText("* `\\[flags kFLAGS_REF.ARIAN_COCK_SIZE\\]` - [flags kFLAGS_REF.ARIAN_COCK_SIZE]\n");
     EngineCore.outputText("\n\n");
     EngineCore.outputText("**Gender tests**\n");
     EngineCore.outputText("\n\n");

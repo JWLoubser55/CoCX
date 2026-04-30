@@ -57,6 +57,7 @@ public class IMutationsLib
 		public static const BlackHeartIM:IMutationPerkType = new BlackHeartMutation();
 		public static const BlazingHeartIM:IMutationPerkType = new BlazingHeartMutation();
 		public static const CatLikeNimblenessIM:IMutationPerkType = new CatLikeNimblenessMutation();
+		public static const CaveWyrmAcidIM:IMutationPerkType = new CaveWyrmAcidMutation();
 		public static const CaveWyrmLungsIM:IMutationPerkType = new CaveWyrmLungsMutation();
 		public static const DiamondHeartIM:IMutationPerkType = new DiamondHeartMutation();
 		public static const DisplacerMetabolismIM:IMutationPerkType = new DisplacerMetabolismMutation();
@@ -66,6 +67,7 @@ public class IMutationsLib
 		public static const DrakeLungsIM:IMutationPerkType = new DrakeLungMutation();
 		public static const EasterBunnyEggBagIM:IMutationPerkType = new EasterBunnyEggBagMutation();
 		public static const EclipticMindIM:IMutationPerkType = new EclipticMindMutation();
+		public static const EctoplasmicEssenceIM:EctoplasmicEssenceMutation = new EctoplasmicEssenceMutation();
 		public static const ElvishPeripheralNervSysIM:IMutationPerkType = new ElvishPeripheralNervSysMutation();
 		public static const EquineMuscleIM:IMutationPerkType = new EquineMuscleMutation();
 		public static const EyeOfTheTigerIM:IMutationPerkType = new EyeOfTheTigerMutation();

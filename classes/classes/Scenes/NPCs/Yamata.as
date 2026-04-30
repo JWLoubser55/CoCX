@@ -13,6 +13,8 @@ import classes.Scenes.Combat.Combat;
 import classes.Scenes.SceneLib;
 import classes.internals.*;
 
+import coc.view.ButtonData;
+
 import coc.view.CoCButton;
 
 public class Yamata extends Monster
@@ -332,7 +334,7 @@ public class Yamata extends Monster
 			else return true;
 		}
 
-		override public function changeBtnWhenBound(btnStruggle:CoCButton, btnBoundWait:CoCButton):void{
+		override public function changeBtnWhenBound(btnStruggle:ButtonData, btnBoundWait:ButtonData):void{
 			if (player.hasStatusEffect(StatusEffects.YamataEntwine)) {
 				btnStruggle.call(entwineStruggle);
 				btnBoundWait.call(entwineWait);

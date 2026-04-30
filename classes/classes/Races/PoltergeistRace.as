@@ -1,6 +1,7 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
+import classes.IMutations.IMutationsLib;
 import classes.GeneticMemories.RaceMem;
 import classes.PerkLib;
 import classes.Race;
@@ -78,6 +79,8 @@ public class PoltergeistRace extends Race{
 				.hasPerk(PerkLib.PhantomShooting, +1)
 				.hasPerk(PerkLib.Telekinesis, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
+		
+		addMutation(IMutationsLib.EctoplasmicEssenceIM);
 		
 		buildTier(6, "phantom")
 				.buffs({

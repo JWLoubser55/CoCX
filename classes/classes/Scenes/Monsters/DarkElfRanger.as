@@ -70,7 +70,7 @@ public class DarkElfRanger extends DarkElfs
 				{ call: eAttack, type: ABILITY_PHYSICAL, range: RANGE_MELEE, tags:[TAG_BODY]},
 				{ call: DarkElfBowShooting, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_WEAPON]},
 				{ call: AnkleShot, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_WEAPON], condition: function():Boolean{return!player.hasStatusEffect(StatusEffects.Sealed2)}},
-				{ call: WingClip, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_WEAPON], condition: function():Boolean{return player.isFlying()}, weight: Infinity}
+				{ call: WingClip, type: ABILITY_PHYSICAL, range: RANGE_RANGED, tags:[TAG_WEAPON], condition: function():Boolean{return (player.isFlying() || player.hasPerk(PerkLib.Icerunner))}, weight: Infinity}
 			];
 			checkMonster();
 		}

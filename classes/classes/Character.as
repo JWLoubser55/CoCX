@@ -473,44 +473,111 @@ import classes.Scenes.NPCs.Forgefather;
 			return cocks[arg].hasKnot();
 		}
 
+		private function maxHHPP():Number {
+			var max:Number = Math.round(maxHP_base()*maxHP_mult());
+			return Math.min(19999999999,max);
+		}
+		public override function maxHP():Number {
+			var max:Number = maxHHPP();
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) max += maxSoulforce();
+			return max;
+		}
+		private function maxOverHHPP():Number {
+			var maxOver:Number = maxHP();
+			var maxOver2:Number = 1;
+			if (hasPerk(PerkLib.HiddenJobBloodDemon)) maxOver2 += 0.1;
+			if (hasPerk(PerkLib.WayOfTheBlood)) maxOver2 += 0.1;
+			if (hasPerk(PerkLib.BloodDemonToughness)) maxOver2 += 0.1;
+			if (hasPerk(PerkLib.MyBloodForBloodPuppies)) maxOver2 += 0.1;
+			if (hasPerk(PerkLib.YourPainMyPower)) maxOver2 += 0.1;
+			if (hasPerk(PerkLib.BloodDemonIntelligence)) maxOver2 += 0.1;
+			//
+			//
+			if (hasPerk(PerkLib.BloodDemonWisdom)) maxOver2 += 0.1;
+			if (hasPerk(PerkLib.MunchkinAtWork)) maxOver2 += 0.1;
+			if (hasPerk(PerkLib.SPSurvivalTrainingX)) {
+				var limit:Number = perkv1(PerkLib.SPSurvivalTrainingX) * 10;
+				var bonus:Number = Math.round((level - 1) / 3);
+				if (bonus > limit) bonus = limit;
+				maxOver2 += (0.01 * bonus);
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLApprenticeStage)) {
+				if (hasPerk(PerkLib.SoulApprentice)) maxOver2 += 0.01;
+				if (hasPerk(PerkLib.SoulPersonage)) maxOver2 += 0.01;
+				if (hasPerk(PerkLib.SoulWarrior)) maxOver2 += 0.01;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLWarriorStage)) {
+				if (hasPerk(PerkLib.SoulSprite)) maxOver2 += 0.02;
+				if (hasPerk(PerkLib.SoulScholar)) maxOver2 += 0.02;
+				if (hasPerk(PerkLib.SoulGrandmaster)) maxOver2 += 0.02;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLElderStage)) {
+				if (hasPerk(PerkLib.SoulElder)) maxOver2 += 0.03;
+				if (hasPerk(PerkLib.SoulExalt)) maxOver2 += 0.03;
+				if (hasPerk(PerkLib.SoulOverlord)) maxOver2 += 0.03;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLOverlordStage)) {
+				if (hasPerk(PerkLib.SoulTyrant)) maxOver2 += 0.04;
+				if (hasPerk(PerkLib.SoulKing)) maxOver2 += 0.04;
+				if (hasPerk(PerkLib.SoulEmperor)) maxOver2 += 0.04;
+			}
+			if (hasPerk(PerkLib.FleshBodyVoLTyrantStage)) {
+				if (hasPerk(PerkLib.SoulAncestor)) maxOver2 += 0.05;
+			}
+			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) maxOver2 += 0.1;
+			if (perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxOver2 += 0.2;
+			if (perkv1(IMutationsLib.HumanBonesIM) >= 4) maxOver2 += 0.1;
+			if (hasPerk(PerkLib.Soulless)) maxOver2 += (0.01 * level);
+			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
+			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
+			maxOver *= maxOver2;//~270%
+			maxOver = Math.round(maxOver);
+			return Math.min(54999999999,maxOver);
+		}
+		public override function maxOverHP():Number {
+			var max:Number = maxOverHHPP();
+			if (perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) max += maxOverSoulforce();
+			return max;
+		}
 		public override function minHP():Number
 		{
 			var min:Number = 0;
+			var maxHP:Number = this.maxHP();
 			if (hasPerk(PerkLib.Diehard)) {
-				min -= maxHP() * 0.02;
+				min -= maxHP * 0.02;
 				min -= (600 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.ImprovedDiehard)) {
-				min -= maxHP() * 0.04;
+				min -= maxHP * 0.04;
 				min -= (1200 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.GreaterDiehard)) {
-				min -= maxHP() * 0.06;
+				min -= maxHP * 0.06;
 				min -= (1800 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.GreaterDiehardEx)) {
-				min -= maxHP() * 0.18;
+				min -= maxHP * 0.18;
 				min -= (5400 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.EpicDiehard)) {
-				min -= maxHP() * 0.08;
+				min -= maxHP * 0.08;
 				min -= (2400 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}//nastepny diehard to 10% i 3000 a potem 12% i 3600
-			if (perkv1(IMutationsLib.LizanMarrowIM) >= 3) min -= maxHP() * 0.05;
-			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) min -= maxHP() * 0.05;
+			if (perkv1(IMutationsLib.LizanMarrowIM) >= 3) min -= maxHP * 0.05;
+			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) min -= maxHP * 0.05;
 			if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 3 || game.player.isRace(Races.ORC)) {
-				if (hasPerk(PerkLib.Ferocity)) min -= maxHP() * 0.07;
-				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 1) min -= maxHP() * 0.01;
-				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 2) min -= maxHP() * 0.02;
-				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4) min -= maxHP() * 0.05;
+				if (hasPerk(PerkLib.Ferocity)) min -= maxHP * 0.07;
+				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 1) min -= maxHP * 0.01;
+				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 2) min -= maxHP * 0.02;
+				if (perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4) min -= maxHP * 0.05;
 			}
 			if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 1 && game.player.racialScore(Races.HUMAN) > 17) {
-				min -= maxHP() * 0.05;
-				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 2) min -= maxHP() * 0.05;
-				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3) min -= maxHP() * 0.15;
-				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4) min -= maxHP() * 0.25;
+				min -= maxHP * 0.05;
+				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 2) min -= maxHP * 0.05;
+				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 3) min -= maxHP * 0.15;
+				if (perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4) min -= maxHP * 0.25;
 			}
-			if (hasPerk(PerkLib.Rage)) min -= maxHP() * 0.05;
+			if (hasPerk(PerkLib.Rage)) min -= maxHP * 0.05;
 			if (hasPerk(PerkLib.TooAngryToDie)) min -= maxWrath();
 			if (hasPerk(PerkLib.DeityJobMunchkin)) {
 				min -= str;
@@ -522,38 +589,38 @@ import classes.Scenes.NPCs.Forgefather;
 				min -= sens;
 			}
 			if (headjewelryName == "Crown of the Undefeated King") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (headjewelryName == "Skulls Crown") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (necklaceName == "Skull Necklace") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasStatusEffect(StatusEffects.BonusEffectsSkullSet)) {
-				min -= maxHP() * 0.02;
+				min -= maxHP * 0.02;
 				min -= (200 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (headjewelryName == "Tree of Life Crown") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (necklaceName == "Tree of Life Necklace") {
-				min -= maxHP() * 0.05;
+				min -= maxHP * 0.05;
 				min -= (500 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasStatusEffect(StatusEffects.BonusEffectsTreeOfLifeSet)) {
-				min -= maxHP() * 0.02;
+				min -= maxHP * 0.02;
 				min -= (200 * (1 + flags[kFLAGS.NEW_GAME_PLUS_LEVEL]));
 			}
 			if (hasPerk(PerkLib.SPSurvivalTrainingX)) {
 				var limit:Number = perkv1(PerkLib.SPSurvivalTrainingX) * 10;
 				var bonus:Number = Math.round((level - 1) / 3);
 				if (bonus > limit) bonus = limit;
-				min -= (maxHP() * 0.01 * bonus);
+				min -= (maxHP * 0.01 * bonus);
 			}
 			min = Math.round(min);
 			return min;
@@ -963,6 +1030,9 @@ import classes.Scenes.NPCs.Forgefather;
 			return max1;
 		}
 
+		public function canUseVenom():Boolean {
+			return maxVenom() > 0;
+		}
 		public function maxVenom():Number
 		{
 			var maxven:Number = 0;
@@ -1014,8 +1084,8 @@ import classes.Scenes.NPCs.Forgefather;
 				if (hasPerk(PerkLib.EclassHeavenTribulationSurvivor)) multimaxven += 0.3;
 			}
 			if (perkv1(IMutationsLib.ArachnidBookLungIM) > 0) multimaxven += perkv1(IMutationsLib.ArachnidBookLungIM);
-			if (game.player.hasKeyItem("Sky Poison Pearl") >= 0) maxven += 300;
-			if (hasPerk(PerkLib.AscensionSkyPoisonPearlMasteryStageX)) multimaxven += perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX);
+			if (game.player.hasKeyItem("Sky Poison Pearl") >= 0 && maxven > 0) maxven += 300;
+			if (hasPerk(PerkLib.AscensionSkyPoisonPearlMasteryStageX) && maxven > 0) multimaxven += perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX);
 			maxven *= multimaxven;
 			maxven = Math.round(maxven);
 			return maxven;

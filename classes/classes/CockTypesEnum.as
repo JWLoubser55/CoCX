@@ -4,7 +4,6 @@ package classes
 	
 	public class CockTypesEnum extends Enum
 	{
-		{initEnum(CockTypesEnum);}
 		
 		/* Cock types
 		 * 0 - human
@@ -93,6 +92,7 @@ package classes
 		{
 			return CockTypesEnum(Enum.ParseConstantByIndex(CockTypesEnum, i_constantIndex));
 		}
-		
+
+		{initEnum(CockTypesEnum);}
 	}
 }

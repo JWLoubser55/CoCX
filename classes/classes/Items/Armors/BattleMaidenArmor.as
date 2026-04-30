@@ -18,13 +18,13 @@ import classes.Items.Armor;
 		override public function get def():Number{
 			var mod:int = 0;
 			if (game.player.hasVirginVagina()) mod += 40;
-			mod += (100-game.player.cor)/5;
+			mod += (game.player.playerCorruption2()-game.player.playerCorruption())/5;
 			return 20 + mod;
 		}
 		override public function get mdef():Number{
 			var mod:int = 0;
 			if (game.player.hasVirginVagina()) mod += 20;
-			mod += (100 - game.player.cor) / 10;
+			mod += (game.player.playerCorruption2() - game.player.playerCorruption()) / 10;
 			return 10 + mod;
 		}
 		

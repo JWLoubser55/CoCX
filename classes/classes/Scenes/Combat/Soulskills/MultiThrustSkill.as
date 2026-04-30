@@ -10,7 +10,7 @@ import classes.Scenes.Combat.Combat;
 import classes.Items.Weapons.Tidarion;
 
 public class MultiThrustSkill extends AbstractSoulSkill {
-	private var thrustArray:Array = [
+	private static var thrustArray:Array = [
 		["Triple Thrust", "three", StatusEffects.KnowsTripleThrust, 30, "thrice", 0],
 		["Sextuple Thrust", "six", StatusEffects.KnowsSextupleThrust, 70, "sixfold", 3],
 		["Nonuple Thrust", "nine", StatusEffects.KnowsNonupleThrust, 150, "ninefold", 9]
@@ -104,6 +104,7 @@ public class MultiThrustSkill extends AbstractSoulSkill {
 			crit = true;
 			var buffMultiplier:Number = 0;
 			buffMultiplier += combat.bonusCriticalDamageFromMissingHP();
+			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) buffMultiplier += 1;
 			if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * combat.impaleMultiplier());
 			else damage *= (1.75 + buffMultiplier);
 		}

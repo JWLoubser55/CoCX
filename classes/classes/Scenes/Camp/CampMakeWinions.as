@@ -23,9 +23,10 @@ public class CampMakeWinions extends BaseContent
 		//-------------
 
 		private var retrycount:Number = 0;
-		private function playerAlreadyHaveAnyTamedMonster():Boolean {
+		public function playerAlreadyHaveAnyTamedMonster():Boolean {
 			return player.hasStatusEffect(StatusEffects.TamedMonster01) || player.hasStatusEffect(StatusEffects.TamedMonster02) || player.hasStatusEffect(StatusEffects.TamedMonster03) || player.hasStatusEffect(StatusEffects.TamedMonster04)
-					|| player.hasStatusEffect(StatusEffects.TamedMonster05) || player.hasStatusEffect(StatusEffects.TamedMonster06) || player.hasStatusEffect(StatusEffects.TamedMonster07);
+					|| player.hasStatusEffect(StatusEffects.TamedMonster05) || player.hasStatusEffect(StatusEffects.TamedMonster06) || player.hasStatusEffect(StatusEffects.TamedMonster07)
+					|| player.hasStatusEffect(StatusEffects.TamedMonster08);
 		}
 		private function currentTamedMonstersCount():Number {
 			var cTMC:Number = 0;
@@ -36,12 +37,15 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasStatusEffect(StatusEffects.TamedMonster05)) cTMC += 1;
 			if (player.hasStatusEffect(StatusEffects.TamedMonster06)) cTMC += 1;
 			if (player.hasStatusEffect(StatusEffects.TamedMonster07)) cTMC += 1;
+			if (player.hasStatusEffect(StatusEffects.TamedMonster08)) cTMC += 1;
 			return cTMC;
 		}
 		public function currentTamedMonstersIncludingGroupsCount():Number {
 			var cTMIGC:Number = currentTamedMonstersCount();
 			if (player.statusEffectv4(StatusEffects.TamedMonster01) > 0) cTMIGC += player.statusEffectv4(StatusEffects.TamedMonster01);
 			if (player.statusEffectv4(StatusEffects.TamedMonster02) > 0) cTMIGC += player.statusEffectv4(StatusEffects.TamedMonster02);
+			if (player.statusEffectv4(StatusEffects.TamedMonster03) > 0) cTMIGC += player.statusEffectv4(StatusEffects.TamedMonster03);
+			if (player.statusEffectv4(StatusEffects.TamedMonster04) > 0) cTMIGC += player.statusEffectv4(StatusEffects.TamedMonster04);
 			return cTMIGC;
 		}
 		private function currentTamingCap():Number {
@@ -52,10 +56,13 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.FifthTamed)) cTC += 1;
 			if (player.hasPerk(PerkLib.SicEmSix)) cTC += 1;
 			if (player.hasPerk(PerkLib.LuckyNumberTamer)) cTC += 1;
+			if (player.hasPerk(PerkLib.KaijuNo8)) cTC += 1;
 			return cTC;
 		}
 		private function currentGroupCap():Number {
 			var cGC:Number = 2;
+			if (player.hasPerk(PerkLib.ApesTogetherStronger)) cGC += 1;
+			if (player.hasPerk(PerkLib.ApesTogetherStrongest)) cGC += 1;
 			return cGC;
 		}
 		private function playerWisdomCheck():Number {
@@ -81,9 +88,16 @@ public class CampMakeWinions extends BaseContent
 			if (mWc < 1) mWc = 1;
 			return mWc;
 		}
-		public function monsterBaseStatsMultiplier():Number {
+		public function monsterBaseStatsMultiplier(group:Number = 0):Number {
 			var mBSM:Number = 1;
 			if (player.hasPerk(PerkLib.StrongerTamedMosters)) mBSM += 1;
+			var mGBSM:Number = 1.5;
+			if (player.hasPerk(PerkLib.ApesTogetherStronger)) mBSM += 0.5;
+			if (player.hasPerk(PerkLib.ApesTogetherStrongest)) mBSM += 0.5;
+			if (group == 1 && player.statusEffectv4(StatusEffects.TamedMonster01) > 0) mBSM *= mGBSM;
+			if (group == 2 && player.statusEffectv4(StatusEffects.TamedMonster02) > 0) mBSM *= mGBSM;
+			if (group == 3 && player.statusEffectv4(StatusEffects.TamedMonster03) > 0) mBSM *= mGBSM;
+			if (group == 4 && player.statusEffectv4(StatusEffects.TamedMonster04) > 0) mBSM *= mGBSM;
 			return mBSM;
 		}
 		public function accessTamedWinionsMainMenu():void {
@@ -92,9 +106,9 @@ public class CampMakeWinions extends BaseContent
 			//outputText("<b>Tamed Monster No.0 (ring of taming):</b> ");TAMED_00_NAME - for monsters tamed using ring of taming (after it's added)
 			outputText("<b>Tamed Monster No.1:</b> ");
 			if (player.hasStatusEffect(StatusEffects.TamedMonster01)) {
-				outputText(flags[kFLAGS.TAMED_01_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster01)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster01)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster01)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier() + ", ");
-				outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster01b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster01b)*monsterBaseStatsMultiplier() + ", ");
-				outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster01b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster01) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster01) > 0?"Yes":"No") + ")");
+				outputText(flags[kFLAGS.TAMED_01_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster01)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster01)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster01)*monsterBaseStatsMultiplier(1) + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier(1) + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier(1) + ", ");
+				outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster01a)*monsterBaseStatsMultiplier(1) + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster01b)*monsterBaseStatsMultiplier(1) + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster01b)*monsterBaseStatsMultiplier(1) + ", ");
+				outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster01b)*monsterBaseStatsMultiplier(1) + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster01) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster01) > 0?"Yes":"No") + ")");
 			}
 			else outputText("None");
 			menu();
@@ -102,9 +116,9 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.Beast02)) {
 				outputText("\n<b>Tamed Monster No.2:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster02)) {
-					outputText(flags[kFLAGS.TAMED_02_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster02)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster02)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster02)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster02b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster02b)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster02b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster02) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster02) > 0?"Yes":"No") + ")");
+					outputText(flags[kFLAGS.TAMED_02_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster02)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster02)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster02)*monsterBaseStatsMultiplier(2) + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier(2) + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier(2) + ", ");
+					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster02a)*monsterBaseStatsMultiplier(2) + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster02b)*monsterBaseStatsMultiplier(2) + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster02b)*monsterBaseStatsMultiplier(2) + ", ");
+					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster02b)*monsterBaseStatsMultiplier(2) + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster02) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster02) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
 				addButtonIfTrue(2, "No.2", curry(tamingAttemptRelease, 2, true), "You do not have Monster No.2 tamed", player.hasStatusEffect(StatusEffects.TamedMonster02), "Release Monster No.2");
@@ -112,9 +126,9 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.ThreeTimesATame)) {
 				outputText("\n<b>Tamed Monster No.3:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster03)) {
-					outputText(flags[kFLAGS.TAMED_03_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster03)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster03)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster03)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster03b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster03b)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster03b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster03) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster03) > 0?"Yes":"No") + ")");
+					outputText(flags[kFLAGS.TAMED_03_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster03)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster03)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster03)*monsterBaseStatsMultiplier(3) + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier(3) + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier(3) + ", ");
+					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster03a)*monsterBaseStatsMultiplier(3) + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster03b)*monsterBaseStatsMultiplier(3) + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster03b)*monsterBaseStatsMultiplier(3) + ", ");
+					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster03b)*monsterBaseStatsMultiplier(3) + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster03) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster03) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
 				addButtonIfTrue(3, "No.3", curry(tamingAttemptRelease, 3, true), "You do not have Monster No.3 tamed", player.hasStatusEffect(StatusEffects.TamedMonster03), "Release Monster No.3");
@@ -122,9 +136,9 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.FourthTamerOfTheApocalypse)) {
 				outputText("\n<b>Tamed Monster No.4:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster04)) {
-					outputText(flags[kFLAGS.TAMED_04_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster04)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster04)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster04)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster04b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster04b)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster04b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster04) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster04) > 0?"Yes":"No") + ")");
+					outputText(flags[kFLAGS.TAMED_04_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster04)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster04)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster04)*monsterBaseStatsMultiplier(4) + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier(4) + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier(4) + ", ");
+					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster04a)*monsterBaseStatsMultiplier(4) + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster04b)*monsterBaseStatsMultiplier(4) + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster04b)*monsterBaseStatsMultiplier(4) + ", ");
+					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster04b)*monsterBaseStatsMultiplier(4) + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster04) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster04) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
 				addButtonIfTrue(4, "No.4", curry(tamingAttemptRelease, 4, true), "You do not have Monster No.4 tamed", player.hasStatusEffect(StatusEffects.TamedMonster04), "Release Monster No.4");
@@ -132,9 +146,9 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.FifthTamed)) {
 				outputText("\n<b>Tamed Monster No.5:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster05)) {
-					outputText(flags[kFLAGS.TAMED_05_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster05)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster05)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster05)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster05b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster05b)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster05b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster05) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster05) > 0?"Yes":"No") + ")");
+					outputText(flags[kFLAGS.TAMED_05_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster05)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster05)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster05)*monsterBaseStatsMultiplier(5) + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier(5) + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier(5) + ", ");
+					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster05a)*monsterBaseStatsMultiplier(5) + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster05b)*monsterBaseStatsMultiplier(5) + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster05b)*monsterBaseStatsMultiplier(5) + ", ");
+					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster05b)*monsterBaseStatsMultiplier(5) + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster05) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster05) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
 				addButtonIfTrue(5, "No.5", curry(tamingAttemptRelease, 5, true), "You do not have Monster No.5 tamed", player.hasStatusEffect(StatusEffects.TamedMonster05), "Release Monster No.5");
@@ -142,9 +156,9 @@ public class CampMakeWinions extends BaseContent
 			if (player.hasPerk(PerkLib.SicEmSix)) {
 				outputText("\n<b>Tamed Monster No.6:</b> ");
 				if (player.hasStatusEffect(StatusEffects.TamedMonster06)) {
-					outputText(flags[kFLAGS.TAMED_06_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster06)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster06)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster06)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier() + ", ");
-					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster06) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster06) > 0?"Yes":"No") + ")");
+					outputText(flags[kFLAGS.TAMED_06_NAME] + (player.statusEffectv4(StatusEffects.TamedMonster06)>0?" ("+(player.statusEffectv4(StatusEffects.TamedMonster06)+1)+"x)":"") + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster06)*monsterBaseStatsMultiplier(6) + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier(6) + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier(6) + ", ");
+					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster06a)*monsterBaseStatsMultiplier(6) + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier(6) + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier(6) + ", ");
+					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster06b)*monsterBaseStatsMultiplier(6) + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster06) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster06) > 0?"Yes":"No") + ")");
 				}
 				else outputText("None");
 				addButtonIfTrue(6, "No.6", curry(tamingAttemptRelease, 6, true), "You do not have Monster No.6 tamed", player.hasStatusEffect(StatusEffects.TamedMonster06), "Release Monster No.6");
@@ -158,6 +172,16 @@ public class CampMakeWinions extends BaseContent
 				}
 				else outputText("None");
 				addButtonIfTrue(7, "No.7", curry(tamingAttemptRelease, 7, true), "You do not have Monster No.7 tamed", player.hasStatusEffect(StatusEffects.TamedMonster07), "Release Monster No.7");
+			}
+			if (player.hasPerk(PerkLib.KaijuNo8)) {
+				outputText("\n<b>Tamed Monster No.8:</b> ");
+				if (player.hasStatusEffect(StatusEffects.TamedMonster08)) {
+					outputText(flags[kFLAGS.TAMED_08_NAME] + "\n(Atk: " + player.statusEffectv1(StatusEffects.TamedMonster08)*monsterBaseStatsMultiplier() + ", Str: " + player.statusEffectv1(StatusEffects.TamedMonster08a)*monsterBaseStatsMultiplier() + ", Tou: " + player.statusEffectv2(StatusEffects.TamedMonster08a)*monsterBaseStatsMultiplier() + ", ");
+					outputText("Spe: " + player.statusEffectv3(StatusEffects.TamedMonster08a)*monsterBaseStatsMultiplier() + ", Int: " + player.statusEffectv1(StatusEffects.TamedMonster08b)*monsterBaseStatsMultiplier() + ", Wis: " + player.statusEffectv2(StatusEffects.TamedMonster08b)*monsterBaseStatsMultiplier() + ", ");
+					outputText("Lib: " + player.statusEffectv3(StatusEffects.TamedMonster08b)*monsterBaseStatsMultiplier() + ")\n(Spellcaster: " + (player.statusEffectv2(StatusEffects.TamedMonster08) > 0?"Yes":"No") + ", Flyer: " + (player.statusEffectv3(StatusEffects.TamedMonster08) > 0?"Yes":"No") + ")");
+				}
+				else outputText("None");
+				addButtonIfTrue(8, "No.8", curry(tamingAttemptRelease, 8, true), "You do not have Monster No.8 tamed", player.hasStatusEffect(StatusEffects.TamedMonster08), "Release Monster No.8");
 			}
 			addButtonIfTrue(13, "Group", groupUpTamedMonsters, "You do not have Apes Together Strong perk.", player.hasPerk(PerkLib.ApesTogetherStrong), "Group your tamed monsters.");
 			addButton(14, "Back", camp.campWinionsArmySim);
@@ -175,6 +199,7 @@ public class CampMakeWinions extends BaseContent
 				if (player.hasPerk(PerkLib.FifthTamed)) addButtonIfTrue(6, "Release 05", curry(tamingAttemptRelease, 5), "You do not have any tamed monster No.5", player.hasStatusEffect(StatusEffects.TamedMonster05), "Release Monster No.5");
 				if (player.hasPerk(PerkLib.SicEmSix)) addButtonIfTrue(7, "Release 06", curry(tamingAttemptRelease, 6), "You do not have any tamed monster No.6", player.hasStatusEffect(StatusEffects.TamedMonster06), "Release Monster No.6");
 				if (player.hasPerk(PerkLib.LuckyNumberTamer)) addButtonIfTrue(8, "Release 07", curry(tamingAttemptRelease, 7), "You do not have any tamed monster No.7", player.hasStatusEffect(StatusEffects.TamedMonster07), "Release Monster No.7");
+				if (player.hasPerk(PerkLib.KaijuNo8)) addButtonIfTrue(9, "Release 08", curry(tamingAttemptRelease, 8), "You do not have any tamed monster No.8", player.hasStatusEffect(StatusEffects.TamedMonster08), "Release Monster No.8");
 			}
 			else tamingAttemptYes();
 		}
@@ -247,6 +272,15 @@ public class CampMakeWinions extends BaseContent
 					if (monster.flyer) player.addStatusValue(StatusEffects.TamedMonster07, 3, 1);
 					onlyOneTamingAtTime = true;
 				}
+				if (!player.hasStatusEffect(StatusEffects.TamedMonster08) && !onlyOneTamingAtTime) {
+					flags[kFLAGS.TAMED_08_NAME] = monster.short;
+					player.createStatusEffect(StatusEffects.TamedMonster08, monster.weaponAttack, 0, 0, 0);
+					player.createStatusEffect(StatusEffects.TamedMonster08a, monster.strStat.core.value, monster.touStat.core.value, monster.speStat.core.value, 0);
+					player.createStatusEffect(StatusEffects.TamedMonster08b, monster.intStat.core.value, monster.wisStat.core.value, monster.libStat.core.value, 0);
+					if (monster.magicuser) player.addStatusValue(StatusEffects.TamedMonster08, 2, 1);
+					if (monster.flyer) player.addStatusValue(StatusEffects.TamedMonster08, 3, 1);
+					onlyOneTamingAtTime = true;
+				}
 				retrycount = 0;
 			}
 			else {
@@ -278,6 +312,10 @@ public class CampMakeWinions extends BaseContent
 			menu();
 			addButtonIfTrue(0, "-1-", curry(groupUpTamedMonsters2, 1), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster01) && (player.statusEffectv4(StatusEffects.TamedMonster01) < (currentGroupCap() - 1)), "Add monster to No.1 tamed group.");
 			addButtonIfTrue(1, "-2-", curry(groupUpTamedMonsters2, 2), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster02) && (player.statusEffectv4(StatusEffects.TamedMonster02) < (currentGroupCap() - 1)), "Add monster to No.2 tamed group.");
+			if (player.hasPerk(PerkLib.ApesTogetherStronger)) addButtonIfTrue(2, "-3-", curry(groupUpTamedMonsters2, 3), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster03) && (player.statusEffectv4(StatusEffects.TamedMonster03) < (currentGroupCap() - 1)), "Add monster to No.3 tamed group.");
+			else addButtonDisabled(2, "-3-", "Req. perk Apes Together Stronger.");
+			if (player.hasPerk(PerkLib.ApesTogetherStrongest)) addButtonIfTrue(3, "-4-", curry(groupUpTamedMonsters2, 4), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster04) && (player.statusEffectv4(StatusEffects.TamedMonster04) < (currentGroupCap() - 1)), "Add monster to No.4 tamed group.");
+			else addButtonDisabled(3, "-4-", "Req. perk Apes Together Strongest.");
 			addButton(14, "Back", accessTamedWinionsMainMenu);
 		}
 		public function groupUpTamedMonsters2(tameMon:Number):void {
@@ -290,6 +328,7 @@ public class CampMakeWinions extends BaseContent
 				addButtonIfTrue(4, "-5-",  curry(groupUpTamedMonsters3, 1, 5, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_05_NAME]), "You do not have Monster No.5 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster05) && player.statusEffectv4(StatusEffects.TamedMonster05) == 0), "Add to Group No.1 monster from slot 5.");
 				addButtonIfTrue(5, "-6-",  curry(groupUpTamedMonsters3, 1, 6, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_06_NAME]), "You do not have Monster No.6 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster06) && player.statusEffectv4(StatusEffects.TamedMonster06) == 0), "Add to Group No.1 monster from slot 6.");
 				addButtonIfTrue(6, "-7-",  curry(groupUpTamedMonsters3, 1, 7, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_07_NAME]), "You do not have Monster No.7 tamed", player.hasStatusEffect(StatusEffects.TamedMonster07), "Add to Group No.1 monster from slot 7.");
+				addButtonIfTrue(7, "-8-",  curry(groupUpTamedMonsters3, 1, 8, flags[kFLAGS.TAMED_01_NAME], flags[kFLAGS.TAMED_08_NAME]), "You do not have Monster No.8 tamed", player.hasStatusEffect(StatusEffects.TamedMonster08), "Add to Group No.1 monster from slot 8.");
 			}
 			if (tameMon == 2) {
 				//0 for ring of taming monster
@@ -299,6 +338,17 @@ public class CampMakeWinions extends BaseContent
 				addButtonIfTrue(4, "-5-",  curry(groupUpTamedMonsters3, 2, 5, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_05_NAME]), "You do not have Monster No.5 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster05) && player.statusEffectv4(StatusEffects.TamedMonster05) == 0), "Add to Group No.2 monster from slot 5.");
 				addButtonIfTrue(5, "-6-",  curry(groupUpTamedMonsters3, 2, 6, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_06_NAME]), "You do not have Monster No.6 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster06) && player.statusEffectv4(StatusEffects.TamedMonster06) == 0), "Add to Group No.2 monster from slot 6.");
 				addButtonIfTrue(6, "-7-",  curry(groupUpTamedMonsters3, 2, 7, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_07_NAME]), "You do not have Monster No.7 tamed", player.hasStatusEffect(StatusEffects.TamedMonster07), "Add to Group No.2 monster from slot 7.");
+				addButtonIfTrue(7, "-8-",  curry(groupUpTamedMonsters3, 2, 8, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_08_NAME]), "You do not have Monster No.8 tamed", player.hasStatusEffect(StatusEffects.TamedMonster08), "Add to Group No.1 monster from slot 8.");
+			}
+			if (tameMon == 3) {
+				//0 for ring of taming monster
+				addButtonIfTrue(1, "-1-",  curry(groupUpTamedMonsters3, 3, 1, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_01_NAME]), "You do not have Monster No.1 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster01) && player.statusEffectv4(StatusEffects.TamedMonster01) == 0), "Add to Group No.3 monster from slot 1.");
+				addButtonIfTrue(2, "-2-",  curry(groupUpTamedMonsters3, 3, 2, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_02_NAME]), "You do not have Monster No.2 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster02) && player.statusEffectv4(StatusEffects.TamedMonster02) == 0), "Add to Group No.3 monster from slot 2.");
+				addButtonIfTrue(3, "-4-",  curry(groupUpTamedMonsters3, 3, 4, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_04_NAME]), "You do not have Monster No.4 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster04) && player.statusEffectv4(StatusEffects.TamedMonster04) == 0), "Add to Group No.3 monster from slot 4.");
+				addButtonIfTrue(4, "-5-",  curry(groupUpTamedMonsters3, 3, 5, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_05_NAME]), "You do not have Monster No.5 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster05) && player.statusEffectv4(StatusEffects.TamedMonster05) == 0), "Add to Group No.3 monster from slot 5.");
+				addButtonIfTrue(5, "-6-",  curry(groupUpTamedMonsters3, 3, 6, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_06_NAME]), "You do not have Monster No.6 tamed or it's not single monster in that slot", (player.hasStatusEffect(StatusEffects.TamedMonster06) && player.statusEffectv4(StatusEffects.TamedMonster06) == 0), "Add to Group No.3 monster from slot 6.");
+				addButtonIfTrue(6, "-7-",  curry(groupUpTamedMonsters3, 3, 7, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_07_NAME]), "You do not have Monster No.7 tamed", player.hasStatusEffect(StatusEffects.TamedMonster07), "Add to Group No.2 monster from slot 7.");
+				addButtonIfTrue(7, "-8-",  curry(groupUpTamedMonsters3, 3, 8, flags[kFLAGS.TAMED_02_NAME], flags[kFLAGS.TAMED_08_NAME]), "You do not have Monster No.8 tamed", player.hasStatusEffect(StatusEffects.TamedMonster08), "Add to Group No.1 monster from slot 8.");
 			}
 			addButton(14, "Back", groupUpTamedMonsters);
 		}
@@ -311,12 +361,17 @@ public class CampMakeWinions extends BaseContent
 				if (tameMon1 == tameMon2) groupUpTamedMonstersSuccess(tameMonA, tameMonB);
 				else groupUpTamedMonstersFail();
 			}
+			if (tameMonA == 3) {
+				if (tameMon1 == tameMon2) groupUpTamedMonstersSuccess(tameMonA, tameMonB);
+				else groupUpTamedMonstersFail();
+			}
 		}
 		public function groupUpTamedMonstersSuccess(tameMonA:Number, tameMonB:Number):void {
 			clearOutput();
 			outputText("You succeed to add monster to form/expand group of monsters.");
 			if (tameMonA == 1) player.addStatusValue(StatusEffects.TamedMonster01, 4, 1);
 			if (tameMonA == 2) player.addStatusValue(StatusEffects.TamedMonster02, 4, 1);
+			if (tameMonA == 3) player.addStatusValue(StatusEffects.TamedMonster03, 4, 1);
 			clearingTamedMonsterSlot(tameMonB, true);
 			doNext(accessTamedWinionsMainMenu);
 		}
@@ -382,6 +437,13 @@ public class CampMakeWinions extends BaseContent
 				player.removeStatusEffect(StatusEffects.TamedMonster07a);
 				player.removeStatusEffect(StatusEffects.TamedMonster07b);
 				flags[kFLAGS.TAMED_07_NAME] = "";
+			}
+			if (tameMon == 8) {
+				if (textOn) outputText(""+flags[kFLAGS.TAMED_08_NAME]+"");
+				player.removeStatusEffect(StatusEffects.TamedMonster08);
+				player.removeStatusEffect(StatusEffects.TamedMonster08a);
+				player.removeStatusEffect(StatusEffects.TamedMonster08b);
+				flags[kFLAGS.TAMED_08_NAME] = "";
 			}
 		}
 
@@ -1584,7 +1646,7 @@ public class CampMakeWinions extends BaseContent
 			var converted:Number = 0;
 			if (player.statusEffectv1(StatusEffects.ElementalEnergyConduits) + amount > player.statusEffectv2(StatusEffects.ElementalEnergyConduits)) converted += (player.statusEffectv2(StatusEffects.ElementalEnergyConduits) - player.statusEffectv1(StatusEffects.ElementalEnergyConduits));
 			else converted += amount;
-			EngineCore.SoulforceChange(-(amount * 10));
+			pc.SoulforceChange(-(amount * 10));
 			player.addStatusValue(StatusEffects.ElementalEnergyConduits,1,converted);
 			doNext(elementalShardsConversion);
 		}
@@ -1949,7 +2011,7 @@ public class CampMakeWinions extends BaseContent
 			outputText("\"<i>Someday you will attempt this ritual again, and when you do, I will-...</i>\"");
 			outputText("Its final curse is silenced as its power is sealed once more, reducing it back to its former size. \"<b>Well, this ritual is a failure. You'll have to try again once you've gained better control.</b>\"");
 			if (player.hasPerk(PerkLib.ElementalConjurerKnowledgeSu) && elecostr) player.addStatusValue(StatusEffects.ElementalEnergyConduits,1,+(elecost*0.5));
-			HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
+			pc.HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
 		}
 		private function failToRankUpHPCost():Number {
 			var failure:Number = 0.5;
@@ -1983,7 +2045,7 @@ public class CampMakeWinions extends BaseContent
 				outputText("You hit a rock back-first, and as you sit there, dazed, the figure of your epic air elemental lowers itself in front of you.\n\n");
 				outputText("\"<i>The storm seems to have failed to claim you. Good. Call upon the winds once more, once you have recovered.</i>\" Your epic air elemental fades from view, a light warm breeze blowing past your face.\n\n");
 				if (player.hasPerk(PerkLib.ElementalConjurerKnowledgeSu)) player.addStatusValue(StatusEffects.ElementalEnergyConduits,1,+(player.statusEffectv2(StatusEffects.SummonedElementalsAirE) * 0.5 * rankUpElementalElementalEnergyCost()));
-				HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
+				pc.HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
 			}
 			doNext(elementaLvlUpEpic);
 			advanceMinutes(45);
@@ -2014,7 +2076,7 @@ public class CampMakeWinions extends BaseContent
 				outputText("\"<i>Some sooner than most.</i>\" Your mountain caves inward, spikes of stone forming on the inside. You charge one side of your magic circle, and the thin spire of stone explodes outwards. Finally disrupted, the gemstones shatter, pelting you in painful shards. ");
 				outputText("As the dust settles, cuts on your [skin] gushing blood, your elemental frowns, shaking its head. \"<i>A disappointment, to be sure.</i>\"\n\n");
 				if (player.hasPerk(PerkLib.ElementalConjurerKnowledgeSu)) player.addStatusValue(StatusEffects.ElementalEnergyConduits,1,+(player.statusEffectv2(StatusEffects.SummonedElementalsEarthE) * 0.5 * rankUpElementalElementalEnergyCost()));
-				HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
+				pc.HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
 			}
 			doNext(elementaLvlUpEpic);
 			advanceMinutes(45);
@@ -2046,7 +2108,7 @@ public class CampMakeWinions extends BaseContent
 				outputText("The flames roar, and your elemental winces, vanishing from the circle. You watch in horror as the flames roar out of control, consuming your runes, turning them black before they vanish. The lines of your magic circle whine, barely containing the raging inferno. You wince, enduring the flames as best you can, but before it dies down, you’ve taken a lot of damage.\n\n");
 				outputText("\"<i>...And it will consume those who underestimate its power. Perhaps another time, [master].</i>\"\n\n");
 				if (player.hasPerk(PerkLib.ElementalConjurerKnowledgeSu)) player.addStatusValue(StatusEffects.ElementalEnergyConduits,1,+(player.statusEffectv2(StatusEffects.SummonedElementalsFireE) * 0.5 * rankUpElementalElementalEnergyCost()));
-				HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
+				pc.HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
 			}
 			doNext(elementaLvlUpEpic);
 			advanceMinutes(45);
@@ -2076,7 +2138,7 @@ public class CampMakeWinions extends BaseContent
 				outputText("For what feels like hours, you sit in your circle, enduring the waves you unleashed until your power runes are spent.\n\n");
 				outputText("\"<i>...and wash away those foolish enough to think they can weather the storm.</i>\" Your epic water elemental stands. \"<i>A pity, that more of my power cannot be unleashed in this realm.</i>\"\n\n");
 				if (player.hasPerk(PerkLib.ElementalConjurerKnowledgeSu)) player.addStatusValue(StatusEffects.ElementalEnergyConduits,1,+(player.statusEffectv2(StatusEffects.SummonedElementalsWaterE) * 0.5 * rankUpElementalElementalEnergyCost()));
-				HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
+				pc.HPChange(-(Math.round(player.HP * failToRankUpHPCost())), true, false);
 			}
 			doNext(elementaLvlUpEpic);
 			advanceMinutes(45);
@@ -2090,7 +2152,8 @@ public class CampMakeWinions extends BaseContent
 
 		public function maxDemonBonesStored():Number {
 			var maxDemonBonesStoredCounter:Number = 100;
-			if (player.hasPerk(PerkLib.BoneSoul)) maxDemonBonesStoredCounter += 100;
+			if (player.hasPerk(PerkLib.BoneyBag)) maxDemonBonesStoredCounter += 100;
+			if (player.hasPerk(PerkLib.BoneSoul)) maxDemonBonesStoredCounter += 150;
 			if (player.hasPerk(PerkLib.Equilibrium)) {
 				maxDemonBonesStoredCounter += 10;
 				maxDemonBonesStoredCounter *= 1.1;
@@ -2099,9 +2162,14 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function maxSkeletonWarriors():Number {
 			var maxSkeletonWarriorsCounter:Number = 0;
-			if (player.hasPerk(PerkLib.PrestigeJobNecromancer)) maxSkeletonWarriorsCounter += 3;
-			if (player.hasPerk(PerkLib.GreaterHarvest)) maxSkeletonWarriorsCounter += 3;
-			if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonWarriorsCounter += 4;
+			if (player.hasPerk(PerkLib.JobHaruspex)) maxSkeletonWarriorsCounter += 3;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonWarriorsCounter += 3;
+			if (player.hasPerk(PerkLib.BoneCentury)) maxSkeletonWarriorsCounter += 6;
+			if (player.hasPerk(PerkLib.BoneCohort)) maxSkeletonWarriorsCounter += 12;
+			if (player.hasPerk(PerkLib.BoneLegion)) maxSkeletonWarriorsCounter += 24;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonWarriorsCounter += 9;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonWarriorsCounter += 18;
+			// (player.hasPerk(PerkLib.SkeletonOverlord))  += 30;
 			if (player.weapon == weapons.NECROWA) maxSkeletonWarriorsCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonWarriorsCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonWarriorsCounter += 1;
@@ -2110,9 +2178,14 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function maxSkeletonArchers():Number {
 			var maxSkeletonArchersCounter:Number = 0;
-			if (player.hasPerk(PerkLib.GreaterHarvest)) maxSkeletonArchersCounter += 3;
-			if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonArchersCounter += 3;
-			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonArchersCounter += 4;
+			if (player.hasPerk(PerkLib.BoneyBow)) maxSkeletonArchersCounter += 3;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonArchersCounter += 3;
+			if (player.hasPerk(PerkLib.BoneCentury)) maxSkeletonArchersCounter += 6;
+			if (player.hasPerk(PerkLib.BoneCohort)) maxSkeletonArchersCounter += 12;
+			if (player.hasPerk(PerkLib.BoneLegion)) maxSkeletonArchersCounter += 24;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonArchersCounter += 9;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonArchersCounter += 18;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxSkeletonArchersCounter += 30;
 			if (player.weapon == weapons.NECROWA) maxSkeletonArchersCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonArchersCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonArchersCounter += 1;
@@ -2121,102 +2194,305 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function maxSkeletonMages():Number {
 			var maxSkeletonMagesCounter:Number = 0;
-			if (player.hasPerk(PerkLib.GreaterHarvest)) maxSkeletonMagesCounter += 3;
-			if (player.hasPerk(PerkLib.BoneSoul)) maxSkeletonMagesCounter += 3;
-			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonMagesCounter += 4;
+			if (player.hasPerk(PerkLib.BoneyWand)) maxSkeletonMagesCounter += 3;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonMagesCounter += 3;
+			if (player.hasPerk(PerkLib.BoneCentury)) maxSkeletonMagesCounter += 6;
+			if (player.hasPerk(PerkLib.BoneCohort)) maxSkeletonMagesCounter += 12;
+			if (player.hasPerk(PerkLib.BoneLegion)) maxSkeletonMagesCounter += 24;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonMagesCounter += 9;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonMagesCounter += 18;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxSkeletonMagesCounter += 30;
 			if (player.weapon == weapons.NECROWA) maxSkeletonMagesCounter += 1;
 			if (player.shield == shields.NECROSH) maxSkeletonMagesCounter += 1;
 			if (player.necklace == necklaces.NECRONE) maxSkeletonMagesCounter += 1;
 			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet)) maxSkeletonMagesCounter += player.statusEffectv1(StatusEffects.BonusEffectsNecroSet);
 			return maxSkeletonMagesCounter;
 		}
+		public function maxSkeletonGiants():Number {
+			var maxSkeletonGiantsCounter:Number = 0;
+			if (player.hasPerk(PerkLib.BoneGiants)) maxSkeletonGiantsCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonGiantsCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonGiantsCounter += 2;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonGiantsCounter += 3;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxSkeletonGiantsCounter += 4;
+			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxSkeletonGiantsCounter += 1;
+			return maxSkeletonGiantsCounter;
+		}
+		public function maxBoneBallistaSkeletons():Number {
+			var maxBoneBallistaSkeletonsCounter:Number = 0;
+			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) maxBoneBallistaSkeletonsCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxBoneBallistaSkeletonsCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxBoneBallistaSkeletonsCounter += 2;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxBoneBallistaSkeletonsCounter += 3;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxBoneBallistaSkeletonsCounter += 4;
+			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxBoneBallistaSkeletonsCounter += 1;
+			return maxBoneBallistaSkeletonsCounter;
+		}
+		public function maxSkeletonGigachadMages():Number {
+			var maxSkeletonGigachadMagesCounter:Number = 0;
+			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) maxSkeletonGigachadMagesCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonLord)) maxSkeletonGigachadMagesCounter += 1;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) maxSkeletonGigachadMagesCounter += 2;
+			// (player.hasPerk(PerkLib.SkeletonKing)) maxSkeletonGigachadMagesCounter += 3;
+			// (player.hasPerk(PerkLib.SkeletonOverlord)) maxSkeletonGigachadMagesCounter += 4;
+			if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet) && player.statusEffectv1(StatusEffects.BonusEffectsNecroSet) >= 5) maxSkeletonGigachadMagesCounter += 1;
+			return maxSkeletonGigachadMagesCounter;
+		}
+		public function bonesUsedToMakeNormalSkeleton():Number {
+			var bonesUsedToMakeNormalSkely:Number = 20;
+			if (player.hasPerk(PerkLib.BoneEfficiency)) bonesUsedToMakeNormalSkely -= 10;
+			return bonesUsedToMakeNormalSkely;
+		}
+		private function resourcesUsedToMakeNormalSkeleton():Number {
+			var resourcesUsedToMakeNormalSkely:Number = 5000;
+			if (player.hasPerk(PerkLib.BoneEfficiency)) resourcesUsedToMakeNormalSkely -= 2500;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) resourcesUsedToMakeNormalSkely -= 2000;
+			return resourcesUsedToMakeNormalSkely;
+		}
+		public function bonesUsedToMakeLargeSkeleton():Number {
+			var bonesUsedToMakeLargeSkely:Number = 50;
+			if (player.hasPerk(PerkLib.BoneEfficiency)) bonesUsedToMakeLargeSkely -= 25;
+			return bonesUsedToMakeLargeSkely;
+		}
+		private function resourcesUsedToMakeLargeSkeleton():Number {
+			var resourcesUsedToMakeLargeSkely:Number = 12500;
+			if (player.hasPerk(PerkLib.BoneEfficiency)) resourcesUsedToMakeLargeSkely -= 6250;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) resourcesUsedToMakeLargeSkely -= 5000;
+			return resourcesUsedToMakeLargeSkely;
+		}
+		public function maxSkeletonMulti():Number {
+			var maxSkeletonMulity:Number = 1;
+			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) maxSkeletonMulity *= 2;
+			return maxSkeletonMulity;
+		}
 
 		public function accessMakeSkeletonWinionsMainMenu():void {
 			clearOutput();
 			outputText("Which type of skeleton would you like to create?\n\n");
-			outputText("<b>Stored Demon Bones:</b> " + player.perkv1(PerkLib.PrestigeJobNecromancer) + " / " + maxDemonBonesStored() + "\n");
-			outputText("<b>Skeleton Warriors:</b> " + player.perkv2(PerkLib.PrestigeJobNecromancer) + " / " + maxSkeletonWarriors() + "\n");
-			if (player.hasPerk(PerkLib.GreaterHarvest)) {
-				outputText("<b>Skeleton Archers:</b> " + player.perkv1(PerkLib.GreaterHarvest) + " / " + maxSkeletonArchers() + "\n");
-				outputText("<b>Skeleton Mages:</b> " + player.perkv2(PerkLib.GreaterHarvest) + " / " + maxSkeletonMages() + "\n");
-			}
+			outputText("<b>Stored Demon Bones:</b> " + player.perkv1(PerkLib.JobHaruspex) + " / " + maxDemonBonesStored() + "\n");
+			outputText("<b>Skeleton Warriors:</b> " + player.perkv2(PerkLib.JobHaruspex) + " / " + (maxSkeletonWarriors() * maxSkeletonMulti()) + "\n");
+			if (player.hasPerk(PerkLib.BoneyBow)) outputText("<b>Skeleton Archers:</b> " + player.perkv1(PerkLib.BoneyBow) + " / " + (maxSkeletonArchers() * maxSkeletonMulti()) + "\n");
+			if (player.hasPerk(PerkLib.BoneyWand)) outputText("<b>Skeleton Mages:</b> " + player.perkv1(PerkLib.BoneyWand) + " / " + (maxSkeletonMages() * maxSkeletonMulti()) + "\n");
+			if (player.hasPerk(PerkLib.BoneGiants)) outputText("<b>Skeleton Giants:</b> " + player.perkv1(PerkLib.BoneGiants) + " / " + (maxSkeletonGiants() * maxSkeletonMulti()) + " (Ignoring enemy DR)\n");
+			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) outputText("<b>Bone Ballista Skeletons:</b> " + player.perkv1(PerkLib.BoneBallistaSkelies) + " / " + (maxBoneBallistaSkeletons() * maxSkeletonMulti()) + " (Extra damage to group or large sized enemies)\n");
+			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) outputText("<b>Skeleton Gigachad Mages:</b> " + player.perkv1(PerkLib.GigachadSkeletalMages) + " / " + (maxSkeletonGigachadMages() * maxSkeletonMulti()) + " (Can freely change elemental damage they deal)\n");
 			menu();
-			if (player.perkv1(PerkLib.PrestigeJobNecromancer) >= 20 && (player.soulforce >= 5000 || (player.mana >= 5000 && player.hasPerk(PerkLib.Soulless)))) {
-				addButton(0, "C.Skeleton(W)", createSkeletonWarrior).hint("Create Skeleton Warrior.");
-				if (player.hasPerk(PerkLib.GreaterHarvest)) {
-					if (player.perkv1(PerkLib.PrestigeJobNecromancer) > 0) {
-						if (player.perkv2(PerkLib.PrestigeJobNecromancer) > 0) addButton(1, "C.Skeleton(A)", createSkeletonArcher).hint("Create Skeleton Archer.");
-						else addButtonDisabled(1, "C.Skeleton(A)", "Req. to create at least 1 Skeleton Warrior before creating a Skeleton Archer.");
-						if (player.perkv1(PerkLib.GreaterHarvest) > 0) addButton(2, "C.Skeleton(M)", createSkeletonMage).hint("Create Skeleton Mage.");
-						else addButtonDisabled(2, "C.Skeleton(M)", "Req. to create at least 1 Skeleton Archer before creating a Skeleton Mage.");
-					}
-				}
-				else {
-					addButtonDisabled(1, "???", "Req. Greater harvest perk to unlock this option.");
-					addButtonDisabled(2, "???", "Req. Greater harvest perk to unlock this option.");
-				}
+			addButton(0, "C.Skeleton(W)", createSkeletonWarrior).hint("Create Skeleton Warrior.");
+			if (player.hasPerk(PerkLib.BoneyBow)) addButton(1, "C.Skeleton(A)", createSkeletonArcher).hint("Create Skeleton Archer.");
+			else addButtonDisabled(1, "???", "Req. Boney Bow perk to unlock this option.");
+			if (player.hasPerk(PerkLib.BoneyWand)) addButton(2, "C.Skeleton(M)", createSkeletonMage).hint("Create Skeleton Mage.");
+			else addButtonDisabled(2, "???", "Req. Boney Wand perk to unlock this option.");
+			if (player.hasPerk(PerkLib.BoneGiants)) addButton(3, "C.Skeleton(G)", createSkeletonGiant).hint("Create Skeleton Giant.");
+			else addButtonDisabled(3, "???", "Req. Bone Giants perk to unlock this option.");
+			if (player.hasPerk(PerkLib.BoneBallistaSkelies)) addButton(4, "C.Skeleton(BB)", createBoneBallistaSkeleton).hint("Create Bone Ballista Skeleton.");
+			else addButtonDisabled(4, "???", "Req. Bone Ballista perk to unlock this option.");
+			if (player.hasPerk(PerkLib.GigachadSkeletalMages)) {
+				addButton(5, "C.Skeleton(GM)", createGigachadSkeletalMage).hint("Create Gigachad Skeletal Mage.");
+				addButton(13, "GigachadEle", chooseGigachadMagesElement).hint("Choose Element Gigachad Skeletal Mages would use.");
 			}
 			else {
-				addButtonDisabled(0, "C.Skeleton(W)", "You lack the required amount of demon bones (20+) and/or soulforce/mana (5000+) to create a skeleton warrior.");
-				if (player.hasPerk(PerkLib.GreaterHarvest)) {
-					addButtonDisabled(1, "C.Skeleton(A)", "You lack the required amount of demon bones (20+) and/or soulforce/mana (5000+) to create a skeleton archer.");
-					addButtonDisabled(2, "C.Skeleton(M)", "You lack the required amount of demon bones (20+) and/or soulforce/mana (5000+) to create a skeleton mage.");
-				}
-				else {
-					addButtonDisabled(1, "???", "Req. Greater harvest perk to unlock this option.");
-					addButtonDisabled(2, "???", "Req. Greater harvest perk to unlock this option.");
-				}
+				addButtonDisabled(5, "???", "Req. Gigachad Skeletal Mages perk to unlock this option.");
+				addButtonDisabled(13, "???", "Req. Gigachad Skeletal Mages perk to unlock this option.");
 			}
 			addButton(14, "Back", camp.campWinionsArmySim);
 		}
 
 		public function createSkeletonWarrior():void {
 			clearOutput();
-			if (player.perkv2(PerkLib.PrestigeJobNecromancer) == maxSkeletonWarriors()) {
+			if (player.perkv2(PerkLib.JobHaruspex) >= (maxSkeletonWarriors() * maxSkeletonMulti())) {
 				outputText("You already have as many Skeleton Warriors as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, -20);
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= 5000;
-			else player.soulforce -= 5000;
+			if (player.perkv1(PerkLib.JobHaruspex) < bonesUsedToMakeNormalSkeleton()) {
+				outputText("You lack the required amount of demon bones ("+bonesUsedToMakeNormalSkeleton()+") to create a Skeleton Warrior.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if ((player.soulforce < resourcesUsedToMakeNormalSkeleton()) && (player.mana < resourcesUsedToMakeNormalSkeleton())) {
+				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeNormalSkeleton()+") to create a Skeleton Warrior.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeNormalSkeleton());
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeNormalSkeleton() && player.mana >= resourcesUsedToMakeNormalSkeleton())) player.mana -= resourcesUsedToMakeNormalSkeleton();
+			else player.soulforce -= resourcesUsedToMakeNormalSkeleton();
 			statScreenRefresh();
-			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Warrior, ready to fight and obey your every command.");
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 2, 1);
+			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your " + (player.hasPerk(PerkLib.Soulless)?"mana":"soulforce") + " into the pile, aligning the joints into a large, 10-foot-tall shape. ");
+			outputText("As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Warrior, ready to fight and obey your every command.");
+			player.addPerkValue(PerkLib.JobHaruspex, 2, 1);
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(10);
 		}
 		public function createSkeletonArcher():void {
 			clearOutput();
-			if (player.perkv1(PerkLib.GreaterHarvest) == maxSkeletonArchers()) {
+			if (player.perkv1(PerkLib.BoneyBow) >= (maxSkeletonArchers() * maxSkeletonMulti())) {
 				outputText("You already have as many Skeleton Archers as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, -20);
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= 5000;
-			else player.soulforce -= 5000;
+			if (player.perkv1(PerkLib.JobHaruspex) < bonesUsedToMakeNormalSkeleton()) {
+				outputText("You lack the required amount of demon bones ("+bonesUsedToMakeNormalSkeleton()+") to create a Skeleton Archer.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if ((player.soulforce < resourcesUsedToMakeNormalSkeleton()) && (player.mana < resourcesUsedToMakeNormalSkeleton())) {
+				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeNormalSkeleton()+") to create a Skeleton Archer.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeNormalSkeleton());
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeNormalSkeleton() && player.mana >= resourcesUsedToMakeNormalSkeleton())) player.mana -= resourcesUsedToMakeNormalSkeleton();
+			else player.soulforce -= resourcesUsedToMakeNormalSkeleton();
 			statScreenRefresh();
-			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you can feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Archer, ready to fight and obey your every command.");
-			player.addPerkValue(PerkLib.GreaterHarvest, 1, 1);
+			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. ");
+			outputText("As you finish linking your creation, you can feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Archer, ready to fight and obey your every command.");
+			player.addPerkValue(PerkLib.BoneyBow, 1, 1);
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(10);
 		}
 		public function createSkeletonMage():void {
 			clearOutput();
-			if (player.perkv2(PerkLib.GreaterHarvest) == maxSkeletonMages()) {
+			if (player.perkv1(PerkLib.BoneyWand) >= (maxSkeletonMages() * maxSkeletonMulti())) {
 				outputText("You already have as many Skeleton Mages as you can realistically control.");
 				doNext(accessMakeSkeletonWinionsMainMenu);
 				return;
 			}
-			player.addPerkValue(PerkLib.PrestigeJobNecromancer, 1, -20);
-			if (player.hasPerk(PerkLib.Soulless)) player.mana -= 5000;
-			else player.soulforce -= 5000;
+			if (player.perkv1(PerkLib.JobHaruspex) < bonesUsedToMakeNormalSkeleton()) {
+				outputText("You lack the required amount of demon bones ("+bonesUsedToMakeNormalSkeleton()+") to create a Skeleton Mage.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if ((player.soulforce < resourcesUsedToMakeNormalSkeleton()) && (player.mana < resourcesUsedToMakeNormalSkeleton())) {
+				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeNormalSkeleton()+") to create a Skeleton Mage.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeNormalSkeleton());
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeNormalSkeleton() && player.mana >= resourcesUsedToMakeNormalSkeleton())) player.mana -= resourcesUsedToMakeNormalSkeleton();
+			else player.soulforce -= resourcesUsedToMakeNormalSkeleton();
 			statScreenRefresh();
-			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Mage, ready to fight and obey your every command.");
-			player.addPerkValue(PerkLib.GreaterHarvest, 2, 1);
+			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a large, 10-foot-tall shape. ");
+			outputText("As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Mage, ready to fight and obey your every command.");
+			player.addPerkValue(PerkLib.BoneyWand, 1, 1);
 			doNext(accessMakeSkeletonWinionsMainMenu);
 			advanceMinutes(10);
+		}
+		public function createSkeletonGiant():void {
+			clearOutput();
+			if (player.perkv1(PerkLib.BoneGiants) >= (maxSkeletonGiants() * maxSkeletonMulti())) {
+				outputText("You already have as many Skeleton Giants as you can realistically control.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if (player.perkv1(PerkLib.JobHaruspex) < bonesUsedToMakeLargeSkeleton()) {
+				outputText("You lack the required amount of demon bones ("+bonesUsedToMakeLargeSkeleton()+") to create a Skeleton Giant.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if ((player.soulforce < resourcesUsedToMakeLargeSkeleton()) && (player.mana < resourcesUsedToMakeLargeSkeleton())) {
+				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeLargeSkeleton()+") to create a Skeleton Giant.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeLargeSkeleton() && player.mana >= resourcesUsedToMakeLargeSkeleton())) player.mana -= resourcesUsedToMakeLargeSkeleton();
+			else player.soulforce -= resourcesUsedToMakeLargeSkeleton();
+			statScreenRefresh();
+			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a massive, 30-foot-tall shape. ");
+			outputText("As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Skeleton Giant, ready to fight and obey your every command.");
+			player.addPerkValue(PerkLib.BoneGiants, 1, 1);
+			doNext(accessMakeSkeletonWinionsMainMenu);
+			advanceMinutes(20);
+		}
+		public function createBoneBallistaSkeleton():void {
+			clearOutput();
+			if (player.perkv1(PerkLib.BoneBallistaSkelies) >= (maxBoneBallistaSkeletons() * maxSkeletonMulti())) {
+				outputText("You already have as many Bone Ballista Skeletons as you can realistically control.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if (player.perkv1(PerkLib.JobHaruspex) < bonesUsedToMakeLargeSkeleton()) {
+				outputText("You lack the required amount of demon bones ("+bonesUsedToMakeLargeSkeleton()+") to create a Bone Ballista Skeleton.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if ((player.soulforce < resourcesUsedToMakeLargeSkeleton()) && (player.mana < resourcesUsedToMakeLargeSkeleton())) {
+				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeLargeSkeleton()+") to create a Bone Ballista Skeleton.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeLargeSkeleton() && player.mana >= resourcesUsedToMakeLargeSkeleton())) player.mana -= resourcesUsedToMakeLargeSkeleton();
+			else player.soulforce -= resourcesUsedToMakeLargeSkeleton();
+			statScreenRefresh();
+			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a massive, 30-foot-tall shape. ");
+			outputText("As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Bone Ballista Skeleton, ready to fight and obey your every command.");
+			player.addPerkValue(PerkLib.BoneBallistaSkelies, 1, 1);
+			doNext(accessMakeSkeletonWinionsMainMenu);
+			advanceMinutes(20);
+		}
+		public function createGigachadSkeletalMage():void {
+			clearOutput();
+			if (player.perkv1(PerkLib.GigachadSkeletalMages) >= (maxSkeletonGigachadMages() * maxSkeletonMulti())) {
+				outputText("You already have as many Gigachad Skeletal Mages as you can realistically control.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if (player.perkv1(PerkLib.JobHaruspex) < bonesUsedToMakeLargeSkeleton()) {
+				outputText("You lack the required amount of demon bones ("+bonesUsedToMakeLargeSkeleton()+") to create a Gigachad Skeletal Mage.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			if ((player.soulforce < resourcesUsedToMakeLargeSkeleton()) && (player.mana < resourcesUsedToMakeLargeSkeleton())) {
+				outputText("You lack the required amount of soulforce or mana ("+resourcesUsedToMakeLargeSkeleton()+") to create a Gigachad Skeletal Mage.");
+				doNext(accessMakeSkeletonWinionsMainMenu);
+				return;
+			}
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());
+			if (player.hasPerk(PerkLib.Soulless) || (player.soulforce < resourcesUsedToMakeLargeSkeleton() && player.mana >= resourcesUsedToMakeLargeSkeleton())) player.mana -= resourcesUsedToMakeLargeSkeleton();
+			else player.soulforce -= resourcesUsedToMakeLargeSkeleton();
+			statScreenRefresh();
+			outputText("You draw a seal on the ground around the pile of bones that will soon become your servant. Once complete, you step back and begin channeling your "+(player.hasPerk(PerkLib.Soulless)?"mana":"soulforce")+" into the pile, aligning the joints into a massive, 30-foot-tall shape. ");
+			outputText("As you finish linking your creation, you begin to feel its every movement at your fingertips. Satisfied, you admire your brand-new Gigachad Skeletal Mage, ready to fight and obey your every command.");
+			player.addPerkValue(PerkLib.GigachadSkeletalMages, 1, 1);
+			doNext(accessMakeSkeletonWinionsMainMenu);
+			advanceMinutes(20);
+		}
+		public function chooseGigachadMagesElement():void {
+			clearOutput();
+			outputText("Which element your Gigachad Skeletal Mage would use?\n\n");
+			outputText("Curretly used element: ");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 0) outputText(" Magic (no element)");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 1) outputText(" Fire");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 2) outputText(" Ice");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 3) outputText(" Lightning");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 4) outputText(" Darkness");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 5) outputText(" Poison");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 6) outputText(" Wind");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 7) outputText(" Water");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 8) outputText(" Earth");
+			if (player.perkv2(PerkLib.GigachadSkeletalMages) == 9) outputText(" Acid");
+			menu();
+			addButtonIfTrue(0, "None", curry(selectGigachadElement, 0), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 0, "Reset to just pure magic damage.");
+			addButtonIfTrue(1, "Fire", curry(selectGigachadElement, 1), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 1, "Select Fire element.");
+			addButtonIfTrue(2, "Ice", curry(selectGigachadElement, 2), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 2, "Select Ice element.");
+			addButtonIfTrue(3, "Lightning", curry(selectGigachadElement, 3), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 3, "Select Lightning element.");
+			addButtonIfTrue(4, "Darkness", curry(selectGigachadElement, 4), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 4, "Select Darkness element.");
+			addButtonIfTrue(5, "Poison", curry(selectGigachadElement, 5), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 5, "Select Poison element.");
+			addButtonIfTrue(6, "Wind", curry(selectGigachadElement, 6), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 6, "Select Wind element.");
+			addButtonIfTrue(7, "Water", curry(selectGigachadElement, 7), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 7, "Select Water element.");
+			addButtonIfTrue(8, "Earth", curry(selectGigachadElement, 8), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 8, "Select Earth element.");
+			addButtonIfTrue(9, "Acid", curry(selectGigachadElement, 9), "You currently selected this option", player.perkv2(PerkLib.GigachadSkeletalMages) != 9, "Select Acid element.");
+			addButton(14, "Back", camp.campWinionsArmySim);
+		}
+		private function selectGigachadElement(element:Number):void {
+			player.setPerkValue(PerkLib.GigachadSkeletalMages, 2, element);
+			doNext(chooseGigachadMagesElement);
+		}
+		public function fixinSkeletonGiants():void {
+			player.addPerkValue(PerkLib.JobHaruspex, 1, -bonesUsedToMakeLargeSkeleton());
+			player.addPerkValue(PerkLib.BoneGiants, 1, +bonesUsedToMakeLargeSkeleton());
 		}
 	}
 }

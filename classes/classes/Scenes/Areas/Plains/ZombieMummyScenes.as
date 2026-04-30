@@ -30,6 +30,7 @@ import classes.Scenes.SceneLib;
 			encounterZombie();
 		}
 		public function encounterZombie():void {
+			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_CORPSE_PUPPETS);
 			outputText("As you explore the plains you hear what sounds like a pleading moan. Confused, you head toward the sound and find what appears to be a beautiful naked human " + ((flags[kFLAGS.ZOMBIE_MUMMY_GENDER] == 1 || flags[kFLAGS.ZOMBIE_MUMMY_GENDER] == 3)?"wo":"") + "man with pale blue skin.");
 			outputText(" " + ((flags[kFLAGS.ZOMBIE_MUMMY_GENDER] == 1 || flags[kFLAGS.ZOMBIE_MUMMY_GENDER] == 3)?"Sh":"H") + "e slowly turns toward you revealing what appears to be a strange paper tag stuck to its forehead.\n\n");
 			if (flags[kFLAGS.CURSE_OF_THE_JIANGSHI] > 3) outputText("Crap it's a zombie just like you used to be and it noticed you!");
@@ -79,7 +80,7 @@ import classes.Scenes.SceneLib;
 			encounterMummy();
 		}
 		public function encounterMummy():void {
-			clearOutput();
+			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_CORPSE_PUPPETS);
 			outputText("While traveling in the desert you run into what appears to be a woman/man with red glowing eyes. His/her skin is partially covered in bandages. At first you wave to her/him but her dim witted moan and strange lumbering movement alarms you to her aggressive intention. This is no person, this thing is a mummy and it's starving for your lifeforce! ");
 			outputText("The walking dead lunges toward you, its bandaged hand grasping forward for a chance to pull you into its cold loving embrace!");
 			startCombat(new Mummy());

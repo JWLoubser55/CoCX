@@ -937,7 +937,7 @@ use namespace CoC;
 			clearOutput();
 			if (player.itemSlots[slotNum].itype is Useable) {
 				var item:Useable = player.itemSlots[slotNum].itype as Useable;
-			if (flags[kFLAGS.INVT_MGMT_TYPE] == 0){
+			if (settings.invtMgmgType == 0){
 				if (shiftKeyDown) {
 					deleteItemPrompt(item, slotNum);
 				return;

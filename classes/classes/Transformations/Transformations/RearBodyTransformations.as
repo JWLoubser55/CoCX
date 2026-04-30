@@ -437,7 +437,7 @@ public class RearBodyTransformations extends MutationsHelper {
 				player.rearBody.type = RearBody.ABYSSAL_SHARK_FIN;
 
 				if (doOutput) outputText(desc);
-				Metamorph.unlockMetamorph(RearBodyMem.getMemory(RearBodyMem.ABYSSAL_SHARK_FIN));
+				//Metamorph.unlockMetamorph(RearBodyMem.getMemory(RearBodyMem.ABYSSAL_SHARK_FIN));
 			},
 			// is present
 			function (): Boolean {

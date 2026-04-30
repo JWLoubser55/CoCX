@@ -188,10 +188,12 @@ public class PerkType extends BaseContent
 
 		public function requireLevel(value:int):PerkType {
 			requirements.push({
-				fn  : fnRequireAttr("level", value),
+				fn  : function(player:Player):Boolean {
+					return player.level >= value || flags[kFLAGS.HARDCORE_MODE] > 1;
+				},
 				text: "Level " + value,
 				type: "level",
-				value: value,//if (CoC.instance.flags[kFLAGS.HARDCORE_MODE] > 1) 
+				value: value,
 				distance: value*DISTANCE_PER_LEVEL,
 				distanceFor: fnDistanceAttr("level", value, DISTANCE_PER_LEVEL)
 			});

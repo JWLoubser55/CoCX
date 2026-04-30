@@ -9,6 +9,7 @@ import classes.EngineCore;
 import classes.Items.Alchemy.AlchemyLib;
 import classes.Items.Alchemy.AlchemyReagent;
 import classes.Player;
+import classes.PlayerController;
 import classes.Scenes.Camp;
 import classes.Scenes.SceneLib;
 import classes.internals.Utils;
@@ -27,6 +28,7 @@ import classes.internals.Utils;
 		protected function set changeLimit(val:int):void { mutations.changeLimit = val; }
 
 		protected function get player():Player { return CoC.instance.player; }
+		protected function get pc():PlayerController { return CoC.instance.playerController; }
 		protected function get flags():DefaultDict { return CoC.instance.flags; }
 		protected function get camp():Camp { return SceneLib.camp; }
 		protected function doNext(func:Function, ...args):void {
@@ -114,25 +116,25 @@ import classes.internals.Utils;
 				residues:/*Number[]*/Array = null,
 				pigments:Array = null
 		):Consumable {
-			var i:int;
+			var i:int, a:Array;
 			if (substances && substances.length > 0) {
 				if (!this.substances) this.substances = [];
-				for each (i in substances) {
-					if (!AlchemyLib.Substances[i]) throw new Error("Ingredient "+id+" has invalid refineableInto substance "+i);
+				for each (a in substances) {
+					if (!AlchemyLib.Substances[a[1]]) throw new Error("Ingredient "+id+" has invalid refineableInto substance "+a);
 				}
 				pushAll(this.substances, substances);
 			}
 			if (essences && essences.length > 0) {
 				if (!this.essences) this.essences = [];
-				for each (i in essences) {
-					if (!AlchemyLib.Essences[i]) throw new Error("Ingredient "+id+" has invalid refineableInto essence "+i);
+				for each (a in essences) {
+					if (!AlchemyLib.Essences[a[1]]) throw new Error("Ingredient "+id+" has invalid refineableInto essence "+a);
 				}
 				pushAll(this.essences, essences);
 			}
 			if (residues && residues.length > 0) {
 				if (!this.residues) this.residues = [];
-				for each (i in residues) {
-					if (!AlchemyLib.Residues[i]) throw new Error("Ingredient "+id+" has invalid refineableInto residue "+i);
+				for each (a in residues) {
+					if (!AlchemyLib.Residues[a[1]]) throw new Error("Ingredient "+id+" has invalid refineableInto residue "+a);
 				}
 				pushAll(this.residues, residues);
 			}

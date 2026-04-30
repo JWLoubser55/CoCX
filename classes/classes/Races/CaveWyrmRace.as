@@ -57,11 +57,15 @@ public class CaveWyrmRace extends Race {
 							return body.player.hasStatusEffect(StatusEffects.GlowingNipples) || body.player.hasStatusEffect(StatusEffects.GlowingAsshole);
 						}, +1)
 				.cockOrVaginaOfType(CockTypesEnum.CAVE_WYRM, VaginaClass.CAVE_WYRM, +1)
+				.hasPerk(PerkLib.AcidAffinity, +1)
 				.hasPerk(PerkLib.AcidSpit, +1)
 				.hasPerk(PerkLib.AzureflameBreath, +1)
+				.hasPerk(PerkLib.MonstrousRegeneration, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.CaveWyrmsDescendant, PerkLib.BloodlineCaveWyrm);
 		addMutation(IMutationsLib.CaveWyrmLungsIM);
+		addMutation(IMutationsLib.CaveWyrmAcidIM);
 		
 		buildTier(10, "cave wyrm")
 				.namesTauric("cave wyrm", "cave wyrm-taur")

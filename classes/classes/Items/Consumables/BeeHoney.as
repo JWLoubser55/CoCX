@@ -25,9 +25,9 @@ import classes.internals.Utils;
 
 public class BeeHoney extends Consumable
     {
-        private const BEE_HONEY_VALUE:int = 10;
-        private const PURE_HONEY_VALUE:int = 40;
-        private const SPECIAL_HONEY_VALUE:int = 60;
+        private static const BEE_HONEY_VALUE:int = 10;
+        private static const PURE_HONEY_VALUE:int = 40;
+        private static const SPECIAL_HONEY_VALUE:int = 60;
 
         public function BeeHoney(pure:Boolean, special:Boolean) {
 			var honeyName:String = special ? "SpHoney" : ((pure ? "PurHony" : "BeeHony"));

@@ -61,6 +61,7 @@ public class NagaRace extends Race {
 						}, 0, -1000)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.LamiasDescendant, PerkLib.BloodlineLamia);
 		addMutation(IMutationsLib.VenomGlandsIM);
 		addMutation(IMutationsLib.MightyLowerHalfIM);
 		

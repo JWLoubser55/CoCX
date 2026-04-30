@@ -36,6 +36,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			if (player.hasPerk(PerkLib.DiaphragmControl)) IEoA += 0.1;
 			if (player.hasPerk(PerkLib.VocalTactician)) IEoA += 0.15;
 			if (pointsToHouseMareth() >= 3) IEoA *= 1.2;
+			if (player.hasPerk(PerkLib.MeltingPot) && monster.monsterIsAcidBurned()) IEoA *= 1.3;
 			//ITEMS EFFEC TS? MISC ACC / RINGS / NECK / HEAD ACC, WEAPON?
 			return IEoA;
 		}
@@ -366,7 +367,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			outputText(".");
 			if (player.racialScore(Races.VAMPIRE) >= 20 || player.racialScore(Races.DRACULA) >= 22) {
 				outputText(" The blood being redirected and absorbed by you!");
-				HPChange(dmg02, true, false);
+				pc.HPChange(dmg02, true, false);
 				var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
 				var drinked:Number = 1;
 				if (player.perkv1(IMutationsLib.HollowFangsIM) >= 3) drinked += 1;
@@ -400,8 +401,8 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg04 = Math.round(dmg04 * increasedEfficiencyOfAttacks());
 			outputText(flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+" charges from a wide angle, surprising your opponent and biting straight into "+(monster.hasCock()?"his":"her")+" flesh to extract some of its soul force. The ghoul is pushed back, but still manages to steal a bite and some soul force from "+(SceneLib.ghoulishVampireServant.ghoulGender()?"her":"his")+" victim! ");
 			doDamage(dmg04, true, true);
-			HPChange(dmg04, true, false);
-			EngineCore.SoulforceChange(Math.round(dmg04 * 0.2));
+			pc.HPChange(dmg04, true, false);
+			pc.SoulforceChange(Math.round(dmg04 * 0.2));
 			var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
 			var drinked:Number = 1;
 			if (player.perkv1(IMutationsLib.HollowFangsIM) >= 3) drinked += 1;
@@ -504,7 +505,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			}
 			outputText("<b>([font-heal]+" + heal1 + "[/font])</b>.");
 			if (crit) outputText(" <b>*Critical Heal!*</b>");
-			HPChange(heal1, false, false);
+			pc.HPChange(heal1, false, false);
 			outputText("\n\n");
 		}
 		public function ayaneCombatActions2():void {
@@ -847,7 +848,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			outputText("Excellia gasps when notices that you're hurt.\n\n");
 			outputText("\"<i>[name]! Hang on!</i>\"\n\n");
 			outputText("She quickly grabs you and shoves you down onto one of her leaking nipples. The restorative milk squirts into your mouth, giving you a burst of energy and healing some of your wounds.\n\n");
-			HPChange(Math.round(player.maxHP() * .25), true, false);
+			pc.HPChange(Math.round(player.maxHP() * .25), true, false);
             dynStats("lus", 5, "scale", false);
             fatigue(-50);
 		}
@@ -1081,7 +1082,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function zenjiCombatActions5():void {
 			outputText("Seeing your injuries, Zenji quickly rushes to your side, \"<i>It’s okay [name]... I’m here for you…</i>\" he says, wrapping you within his arms, completely shielding you from your enemies. ");
 			outputText("\"<i>It’s… okay… I won’t let them hurt you… I will endure it all for you so you don’t have to. I’d do anything for you.</i>\" He gently rubs a hand over your wounds, helping you recover slightly.\n\n");
-			HPChange(Math.round(player.maxHP() * .1), true, false);
+			pc.HPChange(Math.round(player.maxHP() * .1), true, false);
 			player.addStatusValue(StatusEffects.CombatFollowerZenji, 3, 1);
 			if (player.statusEffectv3(StatusEffects.CombatFollowerZenji) == 1) outputText(" Zenji remains weary, but he stands as if he were completely unaffected by the physical trauma he just endured.");
 			else outputText("Zenji seems much worse for wear after protecting you, \"<i>I’m fine.</i>\" he mumbles, but it’s apparent that he’s sustained heavy damage.");

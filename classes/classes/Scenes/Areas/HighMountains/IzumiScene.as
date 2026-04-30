@@ -776,7 +776,7 @@ import classes.BodyParts.Tail;
 
 				outputText("\"<i>There.  See?  I ain’t so bad.</i>\"  Izumi smiles again, still apparently oblivious to your fun at her expense.  \"<i>Now, we get to move on to the good part.  You ready? </i>\" She asks.  You smile and nod, still basking in the post-coital warmth of your inner glow.\n\n");
 			}
-			else sceneHunter.print("Check failed: Exhibitionist fetish.")
+			else sceneHunter.print("Check failed: Exhibitionist fetish.");
 			// Non-Taurs
 			if (!player.isTaur())
 			{

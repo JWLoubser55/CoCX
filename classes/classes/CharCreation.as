@@ -104,20 +104,18 @@ import classes.Scenes.Combat.CombatAbility;
 				EventParser.badEnded = false;
 			}
 			XXCNPC.unloadSavedNPCs();
+			var oldSettings:* = settings.saveToObject();
 			CoC.instance.saves.resetSaveableStates();
-			mainView.eventTestInput.x = -10207.5;
-			mainView.eventTestInput.y = -1055.1;
+			settings.loadFromObject(oldSettings, true);
+			mainView.hideTestInputPanel();
 			hideStats();
 			hideUpDown();
-			mainView.nameBox.visible = true;
-			mainView.nameBox.width = 165;
 			mainView.hideMenuButton( MainView.MENU_NEW_MAIN );
 			mainView.hideMenuButton( MainView.MENU_DATA );
 			mainView.hideMenuButton( MainView.MENU_LEVEL );
 			mainView.hideMenuButton( MainView.MENU_PERKS );
 			//Hide perk boxes
 			mainView.hideComboBox();
-			mainView.setButtonText(0, "Newgame");
 
 			var showSpecialNames:Boolean = true; // achievements[kACHIEVEMENTS.STORY_FINALBOSS] > 0;
 
@@ -126,11 +124,7 @@ import classes.Scenes.Combat.CombatAbility;
 			outputText("What is your name?");
 			menu();
 			addButton(0, "OK", chooseName);
-			mainView.nameBox.x = mainView.mainText.x + 5;
-			mainView.nameBox.y = mainView.mainText.y + 3 + mainView.mainText.textHeight;
-			mainView.nameBox.text = "";
-			mainView.nameBox.maxChars = 16;
-			mainView.nameBox.restrict = null;
+			mainView.showNameBoxAfterText("Tim");
 
 			var preList:Array = [];
 			for (var t:int = 0; t < specialCharacters.customs.length; t++) preList.push( { label: specialCharacters.customs[t][0], data:specialCharacters.customs[t] } );
@@ -152,7 +146,6 @@ import classes.Scenes.Combat.CombatAbility;
                 player.autoSave = false;
             }
 
-			model.player = player;
 			player.strStat.core.value = 0;
 			player.touStat.core.value = 0;
 			player.speStat.core.value = 0;
@@ -166,7 +159,7 @@ import classes.Scenes.Combat.CombatAbility;
 			player.wisStat.train.value = 15;
 			player.libStat.train.value = 15;
 			player.sensStat.redefine({base:15});
-			player.cor = 15;
+			player.cor = 0;
 			player.soulforce = 50;
 			player.wrath = 0;
 			player.mana = 100;
@@ -217,106 +210,14 @@ import classes.Scenes.Combat.CombatAbility;
 			player.beardLength = 0;
 			player.beardStyle = 0;
 			//Inventory clear
-			player.itemSlot1.unlocked = true;
-			player.itemSlot1.emptySlot();
-			player.itemSlot2.unlocked = true;
-			player.itemSlot2.emptySlot();
-			player.itemSlot3.unlocked = true;
-			player.itemSlot3.emptySlot();
-			player.itemSlot4.unlocked = true;
-			player.itemSlot4.emptySlot();
-			player.itemSlot5.unlocked = true;
-			player.itemSlot5.emptySlot();
-			player.itemSlot6.unlocked = true;
-			player.itemSlot6.emptySlot();
-			player.itemSlot7.unlocked = false;
-			player.itemSlot7.emptySlot();
-			player.itemSlot8.unlocked = false;
-			player.itemSlot8.emptySlot();
-			player.itemSlot9.unlocked = false;
-			player.itemSlot9.emptySlot();
-			player.itemSlot10.unlocked = false;
-			player.itemSlot10.emptySlot();
-			player.itemSlot11.unlocked = false;
-			player.itemSlot11.emptySlot();
-			player.itemSlot12.unlocked = false;
-			player.itemSlot12.emptySlot();
-			player.itemSlot13.unlocked = false;
-			player.itemSlot13.emptySlot();
-			player.itemSlot14.unlocked = false;
-			player.itemSlot14.emptySlot();
-			player.itemSlot15.unlocked = false;
-			player.itemSlot15.emptySlot();
-			player.itemSlot16.unlocked = false;
-			player.itemSlot16.emptySlot();
-			player.itemSlot17.unlocked = false;
-			player.itemSlot17.emptySlot();
-			player.itemSlot18.unlocked = false;
-			player.itemSlot18.emptySlot();
-			player.itemSlot19.unlocked = false;
-			player.itemSlot19.emptySlot();
-			player.itemSlot20.unlocked = false;
-			player.itemSlot20.emptySlot();
-			player.itemSlot21.unlocked = false;
-			player.itemSlot21.emptySlot();
-			player.itemSlot22.unlocked = false;
-			player.itemSlot22.emptySlot();
-			player.itemSlot23.unlocked = false;
-			player.itemSlot23.emptySlot();
-			player.itemSlot24.unlocked = false;
-			player.itemSlot24.emptySlot();
-			player.itemSlot25.unlocked = false;
-			player.itemSlot25.emptySlot();
-			player.itemSlot26.unlocked = false;
-			player.itemSlot26.emptySlot();
-			player.itemSlot27.unlocked = false;
-			player.itemSlot27.emptySlot();
-			player.itemSlot28.unlocked = false;
-			player.itemSlot28.emptySlot();
-			player.itemSlot29.unlocked = false;
-			player.itemSlot29.emptySlot();
-			player.itemSlot30.unlocked = false;
-			player.itemSlot30.emptySlot();
-			player.itemSlot31.unlocked = false;
-			player.itemSlot31.emptySlot();
-			player.itemSlot32.unlocked = false;
-			player.itemSlot32.emptySlot();
-			player.itemSlot33.unlocked = false;
-			player.itemSlot33.emptySlot();
-			player.itemSlot34.unlocked = false;
-			player.itemSlot34.emptySlot();
-			player.itemSlot35.unlocked = false;
-			player.itemSlot35.emptySlot();
-			player.itemSlot36.unlocked = false;
-			player.itemSlot36.emptySlot();
-			player.itemSlot37.unlocked = false;
-			player.itemSlot37.emptySlot();
-			player.itemSlot38.unlocked = false;
-			player.itemSlot38.emptySlot();
-			player.itemSlot39.unlocked = false;
-			player.itemSlot39.emptySlot();
-			player.itemSlot40.unlocked = false;
-			player.itemSlot40.emptySlot();
-			player.itemSlot41.unlocked = false;
-			player.itemSlot41.emptySlot();
-			player.itemSlot42.unlocked = false;
-			player.itemSlot42.emptySlot();
-			player.itemSlot43.unlocked = false;
-			player.itemSlot43.emptySlot();
-			player.itemSlot44.unlocked = false;
-			player.itemSlot44.emptySlot();
-			player.itemSlot45.unlocked = false;
-			player.itemSlot45.emptySlot();
-			player.itemSlot46.unlocked = false;
-			player.itemSlot46.emptySlot();
-			player.itemSlot47.unlocked = false;
-			player.itemSlot47.emptySlot();
-			player.itemSlot48.unlocked = false;
-			player.itemSlot48.emptySlot();
-			player.itemSlot49.unlocked = false;
-			player.itemSlot49.emptySlot();
-			player.itemSlot50.unlocked = false;
-			player.itemSlot50.emptySlot();
+			for (i = 0; i < 6; i++) {
+				player.itemSlots[i].unlocked = true;
+				player.itemSlots[i].emptySlot();
+			}
+			for (i = 6; i < Player.MAX_NUM_ITEM_SLOTS; i++) {
+				player.itemSlots[i].unlocked = false;
+				player.itemSlots[i].emptySlot();
+			}
             //PIERCINGS
             player.nipplesPierced = 0;
             player.nipplesPShort = "";
@@ -353,7 +254,6 @@ import classes.Scenes.Combat.CombatAbility;
 			JojoScene.monk                               = JojoScene.JOJO_NOT_MET;
 			SandWitchScene.rapedBefore = false;
 			//Replaced by flag	CoC.instance.beeProgress = 0;
-			SceneLib.isabellaScene.isabellaOffspringData = []; //CLEAR!
 			//Lets get this bitch started
 			CoC.instance.inCombat = false;
 			inDungeon = false;
@@ -462,8 +362,8 @@ import classes.Scenes.Combat.CombatAbility;
             //keep settings flags
 			if (player.hasKeyItem("Ascension") >= 0) {
 				for each(var flag:int in [
-					kFLAGS.BACKGROUND_STYLE,
-					kFLAGS.CUSTOM_FONT_SIZE,
+					kFLAGS.BACKGROUND_STYLE, // moved to settings
+					kFLAGS.CUSTOM_FONT_SIZE, // moved to settings
                     kFLAGS.NEW_GAME_PLUS_LEVEL,
                     kFLAGS.HUNGER_ENABLED,
                     kFLAGS.SECONDARY_STATS_SCALING,
@@ -488,13 +388,13 @@ import classes.Scenes.Combat.CombatAbility;
                     kFLAGS.LOW_STANDARDS_FOR_ALL,
                     kFLAGS.HYPER_HAPPY,
                     kFLAGS.NEW_GAME_PLUS_BONUS_UNLOCKED_HERM,
-                    kFLAGS.LVL_UP_FAST,
-                    kFLAGS.MUTATIONS_SPOILERS,
-                    kFLAGS.INVT_MGMT_TYPE,
-                    kFLAGS.NEWPERKSDISPLAY,
-                    kFLAGS.CHARVIEW_STYLE,
-                    kFLAGS.CHARVIEW_ARMOR_HIDDEN,
-					kFLAGS.EXPLORE_MENU_STYLE,
+                    kFLAGS.LVL_UP_FAST, // moved to settings
+                    kFLAGS.MUTATIONS_SPOILERS, // moved to settings
+                    kFLAGS.INVT_MGMT_TYPE, // moved to settings
+                    kFLAGS.NEWPERKSDISPLAY, // moved to settings
+                    kFLAGS.CHARVIEW_STYLE, // moved to settings
+                    kFLAGS.CHARVIEW_ARMOR_HIDDEN, // moved to settings
+					kFLAGS.EXPLORE_MENU_STYLE, // moved to settings
                     kFLAGS.SPIRIT_STONES,
 					kFLAGS.HP_STATBAR_PERCENTAGE,
 					kFLAGS.LUST_STATBAR_PERCENTAGE,
@@ -520,12 +420,6 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 
 		private function chooseName():void {
-			if (CoC.instance.testingBlockExiting) {
-				// We're running under the testing script.
-				// Stuff a name in the box and go go go
-				mainView.nameBox.text = "Derpy";
-				return;
-			}
 			if (mainView.nameBox.text == "") {
 				//If part of newgame+, don't fully wipe.
 				if (player.XP > 0 && SceneLib.exploration.counters.explore == 0) {
@@ -540,6 +434,7 @@ import classes.Scenes.Combat.CombatAbility;
 				if (flags[kFLAGS.LETHICE_DEFEATED] > 0) renamePrompt();
 				else newGameGo();
 				outputText("\n\n\n<b>You must select a name.</b>");
+				flushOutputTextToGUI();
 				return;
 			}
 			clearOutput();
@@ -926,6 +821,7 @@ import classes.Scenes.Combat.CombatAbility;
 			addButton(4, "Set Height", setHeight);
 			if (player.hasCock()) addButton(5, "Cock Size", menuCockLength);
 			addButton(6, "Breast Size", menuBreastSize);
+			addButton(7, "StartCor", menuStartingCorruption);
 			addButton(9, "Done", chooseEndowment, true);
 		}
 
@@ -1047,12 +943,6 @@ import classes.Scenes.Combat.CombatAbility;
 		//-----------------
 		private function setHeight():void {
 			clearOutput();
-			if (CoC.instance.testingBlockExiting)
-			{
-				// We're running under the testing script.
-				// Stuff a number in the box and go go go
-				mainView.nameBox.text = "69";
-			}
 			outputText("Set your height in inches.");
 			outputText("\nYou can choose any height between 4 feet (48 inches) and 8 feet (96 inches).");
 			mainView.nameBox.visible = true;
@@ -1159,6 +1049,34 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 
 		//-----------------
+		//-- STARTING CORRUPTION
+		//-----------------
+		private function menuStartingCorruption():void {
+			clearOutput();
+			outputText("You can choose starting corruption.");
+			menu();
+			addButton(0, "-100", chooseStartingCorruption, -100);
+			addButton(1, "-90", chooseStartingCorruption, -90);
+			addButton(2, "-75", chooseStartingCorruption, -75);
+			addButton(3, "-60", chooseStartingCorruption, -60);
+			addButton(4, "-45", chooseStartingCorruption, -45);
+			addButton(5, "-30", chooseStartingCorruption, -30);
+			addButton(6, "-15", chooseStartingCorruption, -15);
+			addButton(7, "0", chooseStartingCorruption, 0);
+			addButton(8, "15", chooseStartingCorruption, 15);
+			addButton(9, "30", chooseStartingCorruption, 30);
+			addButton(10, "45", chooseStartingCorruption, 45);
+			addButton(11, "60", chooseStartingCorruption, 60);
+			addButton(12, "75", chooseStartingCorruption, 75);
+			addButton(13, "90", chooseStartingCorruption, 90);
+			addButton(14, "100", chooseStartingCorruption, 100);
+		}
+		private function chooseStartingCorruption(corr:int):void {
+			player.cor = corr;
+			genericStyleCustomizeMenu();
+		}
+
+		//-----------------
 		//-- STARTER PERKS
 		//-----------------
 		private function chooseEndowment(clear:Boolean):void {
@@ -1253,7 +1171,7 @@ import classes.Scenes.Combat.CombatAbility;
 		private function confirmEndowmentPerversion():void {
 			clearOutput();
 			clearOutput();
-			outputText("Are you unusually perverted?  (+5 Corruption)\n\Corruption affects certain scenes and having a higher corruption makes you more prone to Bad Ends.\n");
+			outputText("Are you unusually perverted?  (+5 Corruption)\nCorruption affects certain scenes and having a higher corruption makes you more prone to Bad Ends.\n");
 			menu();
 			addButton(0, "Yes", setEndowmentPerversion);
 			addButton(1, "No", chooseEndowment, true);
@@ -1319,7 +1237,7 @@ import classes.Scenes.Combat.CombatAbility;
 			player.tone += 5;
 			player.thickness += 5;
 			if (!player.hasPerk(PerkLib.Tough)) player.createPerk(PerkLib.Tough, 1, 0, 0, 0);
-			player.HP = EngineCore.maxHP();
+			player.HP = player.maxHP();
 			chooseBloodlineorNot();
 		}
 
@@ -1461,7 +1379,7 @@ import classes.Scenes.Combat.CombatAbility;
 			else addButtonDisabled(8, "Shark", "You already have this bloodline!");
 			if (!player.hasPerk(PerkLib.BloodlineSpider)) addButton(10, "Spider", confirmBloodline2, PerkLib.SpidersDescendant).hint("(+2 to spider score)");
 			else addButtonDisabled(10, "Spider", "You already have this bloodline!");
-			if (!player.hasPerk(PerkLib.BloodlineTroll)) addButton(11, "Troll", confirmBloodline2, PerkLib.TrollsDescendant).hint("(+2 to troll score)");
+			if (!player.hasPerk(PerkLib.BloodlineTroll)) addButton(11, "Troll", confirmBloodline2, PerkLib.TrollsDescendant).hint("(+2 to troll / glacial troll score)");
 			else addButtonDisabled(11, "Troll", "You already have this bloodline!");
 			if (!player.hasPerk(PerkLib.BloodlineBat)) addButton(12, "Bat", confirmBloodline2, PerkLib.BatsDescendant).hint("(+2 to bat score)");
 			else addButtonDisabled(12, "Bat", "You already have this bloodline!");
@@ -1489,12 +1407,14 @@ import classes.Scenes.Combat.CombatAbility;
 			else addButtonDisabled(7, "Cyclop", "You already have this bloodline!");
 			if (!player.hasPerk(PerkLib.BloodlineAvian)) addButton(8, "Avian", confirmBloodline3, PerkLib.AviansDescendant).hint("(+2 to avian score)");
 			else addButtonDisabled(8, "Avian", "You already have this bloodline!");
-			if (!player.hasPerk(PerkLib.BloodlineUrsine)) addButton(10, "Ursine", confirmBloodline3, PerkLib.UrsinesDescendant).hint("(+2 to bear / panda / red panda score)");
-			else addButtonDisabled(10, "Ursine", "You already have this bloodline!");
-			if (!player.hasPerk(PerkLib.BloodlineFeline)) addButton(11, "Feline", confirmBloodline3, PerkLib.FelinesDescendant).hint("(+2 to cat / hellcat / cheshire cat / displacer beast / nekomata score)");
-			else addButtonDisabled(11, "Feline", "You already have this bloodline!");
-			if (!player.hasPerk(PerkLib.BloodlineCanine)) addButton(12, "Canine", confirmBloodline3, PerkLib.CaninesDescendant).hint("(+2 to anubis / dog / wolf score)");
-			else addButtonDisabled(12, "Canine", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineCaveWyrm)) addButton(10, "C.Wyrm", confirmBloodline3, PerkLib.CaveWyrmsDescendant).hint("(+2 to cave wyrm score)");
+			else addButtonDisabled(10, "C.Wyrm", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineRhino)) addButton(11, "Rhino", confirmBloodline3, PerkLib.RhinosDescendant).hint("(+2 to rhino score)");
+			else addButtonDisabled(11, "Rhino", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineMoth)) addButton(12, "Moth", confirmBloodline3, PerkLib.MothsDescendant).hint("(+2 to moth score)");
+			else addButtonDisabled(12, "Moth", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineGhost)) addButton(13, "Ghost", confirmBloodline3, PerkLib.GhostsDescendant).hint("(+2 to poltergeist / banshee score)");
+			else addButtonDisabled(13, "Ghost", "You already have this bloodline!");
 			addButton(4, "-4-", chooseBloodline4);
 			addButton(9, "-2-", chooseBloodline2);
 			addButton(14, "None", noBloodlineAtAllCuzYouAscendedTooManyTimesAlready).hint("You either cannot add a new unstable bloodline, or you have a stable bloodline. (It mean you only will get some bonus perk points for start instead of new bloodline.)");
@@ -1507,15 +1427,17 @@ import classes.Scenes.Combat.CombatAbility;
 			else addButtonDisabled(1, "Werewolf", "You already have this bloodline!");
 			if (!player.hasPerk(PerkLib.BloodlineWereshark)) addButton(2, "Wereshark", confirmBloodline4, PerkLib.WeresharksDescendant).hint("(+2 to wereshark score)");
 			else addButtonDisabled(2, "Wereshark", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineWerespider)) addButton(3, "Werespider", confirmBloodline4, PerkLib.WerespidersDescendant).hint("(+2 to werespider score)");
+			else addButtonDisabled(3, "Werespider", "You already have this bloodline!");
 			//any future wereraces would go here
-			if (!player.hasPerk(PerkLib.BloodlineDemon)) addButton(3, "Demon", confirmBloodline4, PerkLib.DemonsDescendant).hint("(+2 to demon score)");
-			else addButtonDisabled(3, "Demon", "You already have this bloodline!");
-			if (!player.hasPerk(PerkLib.BloodlineDevil)) addButton(4, "Devil", confirmBloodline4, PerkLib.DevilsDescendant).hint("(+2 to devil score)");
-			else addButtonDisabled(4, "Demon", "You already have this bloodline!");
-			addButton(10, "-1-", chooseBloodline1);
-			addButton(11, "-2-", chooseBloodline2);
-			addButton(12, "-3-", chooseBloodline3);
-			addButton(13, "-5-", chooseBloodline5);
+			if (!player.hasPerk(PerkLib.BloodlinePrimate)) addButton(5, "Primate", confirmBloodline4, PerkLib.PrimatesDescendant).hint("(+2 to yeti score)");
+			else addButtonDisabled(5, "Primate", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineDemon)) addButton(10, "Demon", confirmBloodline4, PerkLib.DemonsDescendant).hint("(+2 to demon score)");
+			else addButtonDisabled(10, "Demon", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineDevil)) addButton(11, "Devil", confirmBloodline4, PerkLib.DevilsDescendant).hint("(+2 to devil score)");
+			else addButtonDisabled(11, "Devil", "You already have this bloodline!");
+			addButton(4, "-5-", chooseBloodline5);
+			addButton(9, "-3-", chooseBloodline3);
 			addButton(14, "None", noBloodlineAtAllCuzYouAscendedTooManyTimesAlready).hint("You either cannot add a new unstable bloodline, or you have a stable bloodline. (It mean you only will get some bonus perk points for start instead of new bloodline.)");
 		}
 		public function chooseBloodline5():void {
@@ -1540,10 +1462,20 @@ import classes.Scenes.Combat.CombatAbility;
 				else addButtonDisabled(3, "PrimarchB", "You not meet req. for this bloodline: 50+ human score and 14+ different human internal mutations.");
 			}
 			else addButtonDisabled(3, "PrimarchB", "You already have this bloodline!");
-			addButton(10, "-1-", chooseBloodline1);
-			addButton(11, "-2-", chooseBloodline2);
-			addButton(12, "-3-", chooseBloodline3);
-			addButton(13, "-4-", chooseBloodline4);
+			if (!player.hasPerk(PerkLib.BloodlineUrsine)) addButton(5, "Ursine", confirmBloodline5, PerkLib.UrsinesDescendant).hint("(+2 to bear / panda / red panda score)");
+			else addButtonDisabled(5, "Ursine", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineFeline)) addButton(6, "Feline", confirmBloodline5, PerkLib.FelinesDescendant).hint("(+2 to cat / hellcat / cheshire cat / displacer beast / nekomata score)");
+			else addButtonDisabled(6, "Feline", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineCanine)) addButton(7, "Canine", confirmBloodline5, PerkLib.CaninesDescendant).hint("(+2 to anubis / dog / wolf score)");
+			else addButtonDisabled(7, "Canine", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlinePlant)) addButton(8, "Plant", confirmBloodline5, PerkLib.PlantsDescendant).hint("(+2 to plant-morph / alraune / barometz score)");
+			else addButtonDisabled(8, "Plant", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineLamia)) addButton(10, "Lamia", confirmBloodline5, PerkLib.LamiasDescendant).hint("(+2 to apophis / couatl / gorgon / marilith / naga / vouivre score)");
+			else addButtonDisabled(10, "Lamia", "You already have this bloodline!");
+			if (!player.hasPerk(PerkLib.BloodlineMustelid)) addButton(11, "Mustelid", confirmBloodline5, PerkLib.MustelidsDescendant).hint("(+2 to ferret / kamaitachi score)");
+			else addButtonDisabled(11, "Mustelid", "You already have this bloodline!");
+			addButton(4, "-1-", chooseBloodline1);
+			addButton(9, "-4-", chooseBloodline4);
 			addButton(14, "None", noBloodlineAtAllCuzYouAscendedTooManyTimesAlready).hint("You either cannot add a new unstable bloodline, or you have a stable bloodline. (It mean you only will get some bonus perk points for start instead of new bloodline.)");
 		}
 
@@ -1668,14 +1600,17 @@ import classes.Scenes.Combat.CombatAbility;
 				case PerkLib.AviansDescendant:
 					outputText("Your ancestor was an avian?");
 					break;
-				case PerkLib.UrsinesDescendant:
-					outputText("Your ancestor was an ursine?");
+				case PerkLib.CaveWyrmsDescendant:
+					outputText("Your ancestor was a cave wyrm?");
 					break;
-				case PerkLib.FelinesDescendant:
-					outputText("Your ancestor was a feline race member?");
+				case PerkLib.RhinosDescendant:
+					outputText("Your ancestor was a rhino?");
 					break;
-				case PerkLib.CaninesDescendant:
-					outputText("Your ancestor was a canine race member?");
+				case PerkLib.MothsDescendant:
+					outputText("Your ancestor was a moth?");
+					break;
+				case PerkLib.GhostsDescendant:
+					outputText("Your ancestor was a ghost?");
 					break;
 				default:
 					outputText("Your ancestor was a cancer?");
@@ -1696,6 +1631,12 @@ import classes.Scenes.Combat.CombatAbility;
 					break;
 				case PerkLib.WeresharksDescendant:
 					outputText("Your ancestor was a wereshark?");
+					break;
+				case PerkLib.WerespidersDescendant:
+					outputText("Your ancestor was a werespider?");
+					break;
+				case PerkLib.PrimatesDescendant:
+					outputText("Your ancestor was a no human primate?");
 					break;
 				case PerkLib.DemonsDescendant:
 					outputText("Your ancestor was a demon?");
@@ -1725,6 +1666,24 @@ import classes.Scenes.Combat.CombatAbility;
 					break;
 				case PerkLib.PrimarchsDescendant:
 					outputText("Your ancestor was a Primarch?");
+					break;
+				case PerkLib.UrsinesDescendant:
+					outputText("Your ancestor was an ursine?");
+					break;
+				case PerkLib.FelinesDescendant:
+					outputText("Your ancestor was a feline race member?");
+					break;
+				case PerkLib.CaninesDescendant:
+					outputText("Your ancestor was a canine race member?");
+					break;
+				case PerkLib.PlantsDescendant:
+					outputText("Your ancestor was a plant race member?");
+					break;
+				case PerkLib.LamiasDescendant:
+					outputText("Your ancestor was a lamia race member?");
+					break;
+				case PerkLib.MustelidsDescendant:
+					outputText("Your ancestor was a mustelid race member?");
 					break;
 				default:
 					outputText("Your ancestor was a common human?");
@@ -2226,7 +2185,7 @@ import classes.Scenes.Combat.CombatAbility;
 			addButton(9, "DAYS-365", setTimescale, 365);
 
 			function setTimescale(val:int):void {
-				flags[kFLAGS.DAYS_PER_YEAR] = val;
+				settings.daysPerYear = val;
 				chooseGameModes();
 			}
 		}
@@ -2396,19 +2355,19 @@ import classes.Scenes.Combat.CombatAbility;
 		}
 
 		public function ascensionMenuChoice():void {
-			outputText("\n\nWould you like to ascend without increasing the New Game+ cycle (difficulty) or not?");
+			outputText("\n\nWould you like to ascend with increasing the New Game+ cycle (difficulty)?");
 			menu();
-			addButton(1, "Yes", ascensionMenu).hint("Ascend with increased difficulty.");
-			if (player.ascensionPerkPoints >= 50) addButton(3, "Maybe?", ascensionMenuChoiceMaybe).hint("Ascend without increasing difficulty.");
-			else addButtonDisabled(3, "Maybe?", "50 ascension points required.");
+			addButton(1, "Yes", ascensionMenu).hint("Ascend WITH increased difficulty.");
+			if (player.ascensionPerkPoints >= 50) addButton(3, "No", ascensionMenuChoiceMaybe).hint("Ascend WITHOUT increasing difficulty.");
+			else addButtonDisabled(3, "No", "50 ascension points required.");
 		}
 		public function darkAscensionMenuChoice():void {
-			outputText("\n\nWould you like to ascend without increasing the New Game+ cycle (difficulty) or not?");
+			outputText("\n\nWould you like to dark ascend with increasing the New Game+ cycle (difficulty)?");
 			if (player.perkv4(PerkLib.Soulless) < 1) player.addPerkValue(PerkLib.Soulless, 4, 1);
 			menu();
-			addButton(1, "Yes", darkAscensionMenu).hint("Ascend with increased difficulty.");
-			if (player.ascensionPerkPoints >= 50) addButton(3, "Maybe?", ascensionMenuChoiceMaybe).hint("Ascend without increasing difficulty.");
-			else addButtonDisabled(3, "Maybe?", "50 ascension points required.");
+			addButton(1, "Yes", darkAscensionMenu).hint("Ascend WITH increased difficulty.");
+			if (player.ascensionPerkPoints >= 50) addButton(3, "No", ascensionMenuChoiceMaybe).hint("Ascend WITHOUT increasing difficulty.");
+			else addButtonDisabled(3, "No", "50 ascension points required.");
 		}
 		public function ascensionMenuChoiceMaybe():void {
 			player.ascensionPerkPoints -= 50;
@@ -2789,13 +2748,13 @@ import classes.Scenes.Combat.CombatAbility;
 			} else {
 				perkAOMXCheck(1, btn);
 			}
-			btn++
+			btn++;
 			if (player.hasPerk(PerkLib.AscensionAdvTrainingX)){
 				perkAdvancedTrainingCheck(player.perkv1(PerkLib.AscensionAdvTrainingX) + 1, btn);
 			} else {
 				perkAdvancedTrainingCheck(1, btn);
 			}
-			btn++
+			btn++;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 3 && player.hasPerk(PerkLib.AscensionHerosLegacy)) {
 				if (player.ascensionPerkPoints >= 75 && !player.hasPerk(PerkLib.AscensionBloodlineHeritage)) addButton(btn, "BloodHeritage", perkBloodlineHeritage).hint("Perk giving you an additional 1 perk point, 1 super perk point and 5 stat points at the start of the game (scaling with current NG tier, for super perk points amount is reduced by 3). Also would increase any bloodline perk bonus by 2.\n\nCost: 75 points");
 				else if (player.ascensionPerkPoints < 75) button(btn).disable("You do not have enough ascension perk points!");
@@ -2809,7 +2768,7 @@ import classes.Scenes.Combat.CombatAbility;
 			} else {
 				perkBPCheck(1, btn);
 			}
-			btn++
+			btn++;
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1 && player.hasPerk(PerkLib.AscensionHybridTheory)) {
 				if (player.ascensionPerkPoints >= 20 && !player.hasPerk(PerkLib.AscensionCruelChimerasThesis)) addButton(btn, "C Chimera's T", perkCruelChimerasThesis).hint("Perk allowing you to receive race bonuses for one point less. (still req. min 8 race points to work).\n\nCost: 20 points");
 				else if (player.ascensionPerkPoints < 20) addButtonDisabled(btn, "C Chimera's T", "You do not have enough ascension perk points!");
@@ -3154,7 +3113,6 @@ import classes.Scenes.Combat.CombatAbility;
 		private function perkTGMEXCheck(tier:int, btn:int):void {
 			var NGPL:Array = [1, 3, 5, 7];
 			var pCost:int = 20;
-			var tier:int = player.perkv1(PerkLib.AscensionTrancendentalGeneticMemoryExStageX) + 1;
 			if (tier > 4) {
 				addButtonDisabled(btn, "T.G.M.Ex Rank "+ (tier-1).toString(),"You have the highest tier already.");
 			}
@@ -3422,6 +3380,11 @@ import classes.Scenes.Combat.CombatAbility;
 				player.createPerk(PerkLib.BloodlineWereshark,0,0,0,1);
 				bloodlineACQ2();
 			}
+			else if (player.hasPerk(PerkLib.WerespidersDescendant)) {
+				player.removePerk(PerkLib.WerespidersDescendant);
+				player.createPerk(PerkLib.BloodlineWerespider,0,0,0,1);
+				bloodlineACQ2();
+			}
 			else if (player.hasPerk(PerkLib.RatatoskrsDescendant)) {
 				player.removePerk(PerkLib.RatatoskrsDescendant);
 				player.createPerk(PerkLib.BloodlineRatatoskr,0,0,0,1);
@@ -3522,6 +3485,31 @@ import classes.Scenes.Combat.CombatAbility;
 				player.createPerk(PerkLib.BloodlineAvian,0,0,0,1);
 				bloodlineACQ2();
 			}
+			else if (player.hasPerk(PerkLib.CaveWyrmsDescendant)) {
+				player.removePerk(PerkLib.CaveWyrmsDescendant);
+				player.createPerk(PerkLib.BloodlineCaveWyrm,0,0,0,1);
+				bloodlineACQ2();
+			}
+			else if (player.hasPerk(PerkLib.RhinosDescendant)) {
+				player.removePerk(PerkLib.RhinosDescendant);
+				player.createPerk(PerkLib.BloodlineRhino,0,0,0,1);
+				bloodlineACQ2();
+			}
+			else if (player.hasPerk(PerkLib.PlantsDescendant)) {
+				player.removePerk(PerkLib.PlantsDescendant);
+				player.createPerk(PerkLib.BloodlinePlant,0,0,0,1);
+				bloodlineACQ2();
+			}
+			else if (player.hasPerk(PerkLib.MothsDescendant)) {
+				player.removePerk(PerkLib.MothsDescendant);
+				player.createPerk(PerkLib.BloodlineMoth,0,0,0,1);
+				bloodlineACQ2();
+			}
+			else if (player.hasPerk(PerkLib.GhostsDescendant)) {
+				player.removePerk(PerkLib.GhostsDescendant);
+				player.createPerk(PerkLib.BloodlineGhost,0,0,0,1);
+				bloodlineACQ2();
+			}
 			else if (player.hasPerk(PerkLib.UrsinesDescendant)) {
 				player.removePerk(PerkLib.UrsinesDescendant);
 				player.createPerk(PerkLib.BloodlineUrsine,0,0,0,1);
@@ -3535,6 +3523,21 @@ import classes.Scenes.Combat.CombatAbility;
 			else if (player.hasPerk(PerkLib.CaninesDescendant)) {
 				player.removePerk(PerkLib.CaninesDescendant);
 				player.createPerk(PerkLib.BloodlineCanine,0,0,0,1);
+				bloodlineACQ2();
+			}
+			else if (player.hasPerk(PerkLib.PrimatesDescendant)) {
+				player.removePerk(PerkLib.PrimatesDescendant);
+				player.createPerk(PerkLib.BloodlinePrimate,0,0,0,1);
+				bloodlineACQ2();
+			}
+			else if (player.hasPerk(PerkLib.LamiasDescendant)) {
+				player.removePerk(PerkLib.LamiasDescendant);
+				player.createPerk(PerkLib.BloodlineLamia,0,0,0,1);
+				bloodlineACQ2();
+			}
+			else if (player.hasPerk(PerkLib.MustelidsDescendant)) {
+				player.removePerk(PerkLib.MustelidsDescendant);
+				player.createPerk(PerkLib.BloodlineMustelid,0,0,0,1);
 				bloodlineACQ2();
 			}
 			else if (player.hasPerk(PerkLib.DemonsDescendant)) {
@@ -3833,11 +3836,11 @@ import classes.Scenes.Combat.CombatAbility;
 			menu();
 
 			const menusList: Array = [
-				{
+				/*{
 					name: "Complete",
 					func: accessCompleteMenu,
 					hint: "Requires 6 tiers of Genetic Memories bought"
-				},
+				},*/
 				{
 					name: "Hair",
 					func: accessHairMenu
@@ -4307,7 +4310,7 @@ import classes.Scenes.Combat.CombatAbility;
 		}	//ale potem zamienić to na specialne soulskills z każdego z klanów (but then replace it with special soulskills from each of the clans)
 
 		public static function hasAscensionSpell(spellCat:int):Boolean {
-			var spellsToCheck:/*StatusEffect*/Array;
+			var spellsToCheck:/*StatusEffectType*/Array;
 			switch(spellCat) {
 				case CombatAbility.CAT_SPELL_WHITE: spellsToCheck = [StatusEffects.KnowsMeteorShower];
 													break;

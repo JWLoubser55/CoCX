@@ -62,6 +62,7 @@ public class AlrauneRace extends Race {
 				.vaginaType(VaginaClass.ALRAUNE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 
+		addBloodline(PerkLib.PlantsDescendant, PerkLib.BloodlinePlant);
 		addMutation(IMutationsLib.FloralOvariesIM);
 		addMutation(IMutationsLib.PlantChlorophyllIM);
 

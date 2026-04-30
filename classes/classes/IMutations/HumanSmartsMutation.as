@@ -4,17 +4,18 @@
  */
 package classes.IMutations 
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Player;
 import classes.Races;
 
 public class HumanSmartsMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Human Smarts";
-        }
+		public static const MNAME:String = "Human Smarts";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -77,7 +78,7 @@ public class HumanSmartsMutation extends IMutationPerkType
 
         public function HumanSmartsMutation() 
 		{
-			super(mName + " IM", mName, SLOT_NERVSYS, 4);
+			super(MNAME, SLOT_NERVSYS, 4);
 		}
 		
 	}

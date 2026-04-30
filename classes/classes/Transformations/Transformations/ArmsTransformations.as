@@ -1261,7 +1261,7 @@ public class ArmsTransformations extends MutationsHelper {
 
 				player.arms.type = Arms.ABYSSAL_SHARK;
 				if (doOutput) outputText(desc);
-				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.ABYSSAL_SHARK));
+				//Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.ABYSSAL_SHARK));
 			},
 			// is present
 			function (): Boolean {
@@ -1329,7 +1329,7 @@ public class ArmsTransformations extends MutationsHelper {
 
 				player.arms.type = Arms.REINDEER;
 				if (doOutput) outputText(desc);
-				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.REINDEER));
+				//Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.REINDEER));
 			},
 			// is present
 			function (): Boolean {
@@ -1499,6 +1499,61 @@ public class ArmsTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.arms.type === Arms.HOLLOW;
+			}
+	);
+
+	public const ArmsLich: Transformation = new SimpleTransformation("Lich Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.arms.type = Arms.LICH;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.LICH));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.LICH;
+			}
+	);
+
+	public const ArmsBanshee: Transformation = new SimpleTransformation("Banshee Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
+
+				desc += "Something weird is happening to you. Ghastly soulforce is amassing in your hands the energy exploding at the tips of your digits as the soulforce coats them like a pair of enormous misshapen spectral gloves with vicious claws. These soulforce claws are semi see through allowing you to still watch the shape of the slander human hand within through you muse that physical contact will be very real and unpleasant for those you run them through. <b>You now have spectral claws!</b>!";
+				player.arms.type = Arms.SPECTRAL_CLAWS;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.SPECTRAL_CLAWS));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.SPECTRAL_CLAWS;
+			}
+	);
+
+	public const ArmsRhino: Transformation = new SimpleTransformation("Rhino Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
+
+				desc += "Your arms and hands skin start to thicken and as you poke at your palms you jolt up as they become extremely sensitive turning into paw pads heck your nails transformed into hoof like claws so no wonder you felt it that much. <b>You now have thick skinned arms.</b>";
+				player.arms.type = Arms.RHINO;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.RHINO));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.RHINO;
 			}
 	);
 	/*

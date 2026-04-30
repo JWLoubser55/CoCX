@@ -156,7 +156,7 @@ import classes.internals.*;
 		//Corrupted Aiko Attacks
 		private function aikoCorruptBasic():void
 		{
-			outputText("<i>\"Hack! Slash! Maim! Kill! Isn’t it the fucking greatest?!\"</i> Aiko yells with a psychotic laugh as she strikes out at you with reckless abandon. \n\n<i>\"\Lacerate! Eviscerate! Mutilate!\"</i> Aiko chants with each reckless swing. <i>\"Ever notice how all the best words end in -ate?!\"\n\n\"You know I’d bleed for you!\"</i> she yells, grinning crazily as she hacks at you with her billhook. <i>\"Now you’ll do the SAME!\"</i>  ");
+			outputText("<i>\"Hack! Slash! Maim! Kill! Isn’t it the fucking greatest?!\"</i> Aiko yells with a psychotic laugh as she strikes out at you with reckless abandon. \n\n<i>\"Lacerate! Eviscerate! Mutilate!\"</i> Aiko chants with each reckless swing. <i>\"Ever notice how all the best words end in -ate?!\"\n\n\"You know I’d bleed for you!\"</i> she yells, grinning crazily as she hacks at you with her billhook. <i>\"Now you’ll do the SAME!\"</i>  ");
 			var damage:int = int(str) + rand(15);
 			player.takePhysDamage(damage, true);
 			player.addCombatBuff("spe", -8, "Combat Debuff", "CombatDebuffSpe");

@@ -53,7 +53,7 @@ public class CombatMagic extends BaseCombatContent {
 	}
 
 	internal function cleanupAfterCombatImpl():void {
-		for each (var perkObj:Object in magicCounterPerks) {
+		for each (var perkObj:Object in values(magicCounterPerks)) {
 			if (player.hasStatusEffect(perkObj.counter)) player.removeStatusEffect(perkObj.counter);
 		}
 	}
@@ -452,7 +452,10 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.BloodDemonWisdom)) mod += .5;
 		//
 		if (player.hasPerk(PerkLib.VampiricMagic)) mod += .5;
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;
 		return mod;
@@ -473,7 +476,10 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.level < 18) mod += 1;
 			mod += 1;
 		}
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		return mod;
 	}
@@ -501,7 +507,10 @@ public class CombatMagic extends BaseCombatContent {
 			mod += 1;
 		}
 		if (player.weapon == weapons.PURITAS) mod *= 2.5;
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;
 		return mod;
@@ -524,7 +533,10 @@ public class CombatMagic extends BaseCombatContent {
 			mod += 1;
 		}
 		if (player.weapon == weapons.DEPRAVA) mod *= 2.5;
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;
 		return mod;
@@ -544,7 +556,10 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.checkNaturalOath()) mod *= 2;
 		if (player.weapon == weapons.QULIPOTH) mod *= 2;
 		if (player.weapon == weapons.ANCIENTO) mod *= 2;
-		if (player.hasStatusEffect(StatusEffects.SoulBurn)) mod *= 2;
+		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
+			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
+			else mod *= 2;
+		}
 		if (player.hasPerk(PerkLib.DeathlyPower) && monster.HP <= Math.round(monster.maxHP() * 0.5)) mod *= 2;
 		mod = Math.round(mod * 100) / 100;
 		return mod;
@@ -1053,8 +1068,8 @@ public class CombatMagic extends BaseCombatContent {
 			var five:Number = 0.05;
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 3) five += (0.01 * (player.perkv1(IMutationsLib.StillHeartIM) - 2));
 			if (player.perkv1(IMutationsLib.StillHeartIM) >= 1) numberOfProcs = Math.round(numberOfProcs * (1 + (0.25 * player.perkv1(IMutationsLib.StillHeartIM))));
-			if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) HPChange((player.maxHP() * numberOfProcs * five), false, true);
-			else HPChange((player.maxHP() * numberOfProcs * five), false, false);
+			if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) pc.HPChange((player.maxHP() * numberOfProcs * five), false, true);
+			else pc.HPChange((player.maxHP() * numberOfProcs * five), false, false);
 		}
 		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment2) && !monster.isImmuneToBleed() && CombatAbility.TAG_DAMAGING) {
 			if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
@@ -1139,7 +1154,7 @@ public class CombatMagic extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		statScreenRefresh();
 		if (player.hasPerk(PerkLib.ElementalBolt)) {
-			for each (var perkObj:Object in magicCounterPerks) {
+			for each (var perkObj:Object in values(magicCounterPerks)) {
 				maintainMagicCounter(perkObj);
 			}
 		}

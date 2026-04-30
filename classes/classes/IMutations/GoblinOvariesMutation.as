@@ -4,17 +4,17 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.PerkLib;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Player;
 
 public class GoblinOvariesMutation extends IMutationPerkType
 	{
+		public static const MNAME:String = "Goblin Ovaries";
 		override public function get mName():String {
-            return "Goblin Ovaries";
-        }
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -68,7 +68,7 @@ public class GoblinOvariesMutation extends IMutationPerkType
 
         public function GoblinOvariesMutation() 
 		{
-			super(mName + " IM", mName, SLOT_OVARIES, 4);
+			super(MNAME, SLOT_OVARIES, 4);
 		}
 		
 	}

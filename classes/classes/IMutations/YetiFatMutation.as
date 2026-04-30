@@ -11,9 +11,10 @@ import classes.Races;
 
 public class YetiFatMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Yeti Fat";
-        }
+		public static const MNAME:String = "Yeti Fat";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -28,7 +29,7 @@ public class YetiFatMutation extends IMutationPerkType
                 descS += ", the potency of Big Hand and Feet increases by 50%";
             }
             if (pTier >= 3){
-                descS += ", increases the duration of yeti breath stun by 1 round and reduce its cooldown by 3 rounds.";
+                descS += ", increases the duration of yeti breath stun by 1 round and reduce its cooldown by 1 increment.";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -63,7 +64,7 @@ public class YetiFatMutation extends IMutationPerkType
         }
 
         public function YetiFatMutation() {
-            super(mName + " IM", mName, SLOT_FAT, 3);
+            super(MNAME, SLOT_FAT, 3);
         }
     }
 }

@@ -43,6 +43,14 @@ public class HollowScene extends BaseContent
 		
 		public function wonWithWhite():void {
 			clearOutput();
+			outputText("(placeholder text (for now (until (somewhere in) 2026))). You about to win against enemy that would inflict slow acting forced tf effects on your PC that could be fixed if you recruited Evangeline. ");
+			outputText("It will happen no matter what you do or not do and only escaping from fight, which would be 100% successful, would make possible to avoid those.\n\n<b>Knowing about consequences: Do you still want proceed to end this encounter in your victory or you choose to RUUNNN????</b>\n\n\n\n");
+			menu();
+			addButton(1, "Continue", wonWithWhite1);
+			addButton(3 , "RUUNNN!!!!", wonWithWhite3);
+		}
+		public function wonWithWhite1():void {
+			clearOutput();
 		//	spriteSelect(SpriteDb.);
 			outputText("The final strike cracks her mask. A shockwave ripples across the wasteland, throwing dust and shards into the night air. The pale hollow staggers, her grin broken, the jagged mask splitting across her face.\n\n");
 			outputText("She drops to one knee, body heaving through an empty chest. Her tail lashes once, twice then falls limp. A sea of black with white points stare at you, burn into you, unblinking.\n\n");
@@ -52,6 +60,10 @@ public class HollowScene extends BaseContent
 			outputText("The world goes white.\n\n");
 			outputText("You feel something coursing below your skin—hot, jagged, venomous. A scream of \"<i>Mine. Mine. Mine.</i>\" bursts inside your head as the pale cloud disintegrates around you. When the ash settles, you are alone on the dunes.\n\n");
 			player.createStatusEffect(StatusEffects.ChainOfFate,0,24,0,1);
+			cleanupAfterCombat();
+		}
+		public function wonWithWhite3():void {
+			monster.createStatusEffect(StatusEffects.NoLoot, 0, 0, 0, 0);
 			cleanupAfterCombat();
 		}
 		

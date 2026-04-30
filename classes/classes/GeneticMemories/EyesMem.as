@@ -547,6 +547,28 @@ package classes.GeneticMemories {
 				return CoC.instance.transformations.EyesHollow;
 			}
 		});
+
+		public static const DEER:int = _partid++;
+		EnumValue.add(Memories, DEER, "DEER", {
+			id: "Deer Eyes",
+			name: "Deer Eyes",
+			cost: 100,
+			title: "Deer",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyesDeer;
+			}
+		});
+
+		public static const LICH:int = _partid++;
+		EnumValue.add(Memories, LICH, "LICH", {
+			id: "Lich Eyes",
+			name: "Lich Eyes",
+			cost: 100,
+			title: "Lich",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyesLich;
+			}
+		});
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

@@ -4,19 +4,17 @@
  */
 package classes.IMutations
 {
-import classes.BodyParts.Tail;
-import classes.PerkClass;
-import classes.PerkLib;
-import classes.IMutationPerkType;
 import classes.Creature;
-import classes.Player;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Races;
 
 public class StillHeartMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Still Heart";
-        }
+		public static const MNAME:String = "Still Heart";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -37,7 +35,7 @@ public class StillHeartMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireAdaptationsMutationSlot()
-                    .requireAnyRace(Races.JIANGSHI, Races.MUMMY, Races.LICH);
+                    .requireAnyRace(Races.JIANGSHI, Races.MUMMY, Races.LICH, Races.BANSHEE);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -60,7 +58,7 @@ public class StillHeartMutation extends IMutationPerkType
 
         public function StillHeartMutation() 
 		{
-			super(mName + " IM", mName, SLOT_ADAPTATIONS, 4);
+			super(MNAME, SLOT_ADAPTATIONS, 4);
 		}
         
     }

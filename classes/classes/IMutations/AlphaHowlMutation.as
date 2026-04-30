@@ -4,18 +4,19 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Player;
 import classes.Races;
 import classes.Scenes.NPCs.LunaFollower;
 
 public class AlphaHowlMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Alpha Howl";
-        }
+		public static const MNAME:String = "Alpha Howl";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -79,7 +80,7 @@ public class AlphaHowlMutation extends IMutationPerkType
         }
 
         public function AlphaHowlMutation() {
-            super(mName + " IM", mName, SLOT_LUNGS, 4);
+            super(MNAME, SLOT_LUNGS, 4);
         }
     }
 }

@@ -75,6 +75,7 @@ public class BarometzRace extends Race {
 				.vaginaType(VaginaClass.EQUINE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.PlantsDescendant, PerkLib.BloodlinePlant);
 		addMutation(IMutationsLib.TwinHeartIM, +2);
 		addMutation(IMutationsLib.PlantChlorophyllIM);
 		addMutation(IMutationsLib.EquineMuscleIM);

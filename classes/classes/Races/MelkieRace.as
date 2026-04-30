@@ -58,8 +58,8 @@ public class MelkieRace extends Race {
 				.height(AT_LEAST(73), +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
-		addMutation(IMutationsLib.MelkieLungIM);
 		addBloodline(PerkLib.MelkiesDescendant, PerkLib.BloodlineMelkie);
+		addMutation(IMutationsLib.MelkieLungIM);
 		
 		buildTier(18, "melkie")
 				.buffs({

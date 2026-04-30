@@ -89,7 +89,7 @@ public class IngramTavern extends BaseContent implements SaveableState {
         addButton(1, "Order Food", orderFood).hint("Buy some food" + (flags[kFLAGS.HUNGER_ENABLED] > 0 && player.hunger < 50 ? " and curb that hunger of yours!": ".") + "");
         if (IngramRumors < 3) addButton(2, "Stories", hearRumors).hint("Hear the stories the innkeeper has to offer.");
 		if (!player.hasStatusEffect(StatusEffects.ChainOfFate)) {
-			if (time.hours == 17) addButton(4, "Sollertia Rex", meetTotalyNotAizen).disableIf(!player.blockingBodyTransformations(), "Can't have any effect that block body transformations.");
+			if (time.hours == 17) addButton(4, "Sollertia Rex", meetTotalyNotAizen).disableIf(player.blockingBodyTransformations(), "Can't have any effect that block body transformations.");
 			else addButtonDisabled(4, "???", "Come to Tavern at 5 pm.");
 		}
         //if (player.hasPerk(PerkLib.HistoryWhore)) addButton(5, "Prostitute", whoreForGems).hint("Seek someone who's willing to have sex with you for profit.");
@@ -214,7 +214,7 @@ public class IngramTavern extends BaseContent implements SaveableState {
         outputText("\"<i>I'd like a glass of milk please,</i>\" you say. You hand over the two gems to the innkeeper and he pours you a glass of milk.");
         outputText("\n\nYou drink the cup of milk. You feel calm and refreshed. ");
         fatigue(-15);
-        HPChange(player.maxHP() / 4, false, false);
+        pc.HPChange(player.maxHP() / 4, false, false);
         player.refillHunger(10);
         cheatTime(1/12);
         doNext(menuTavern);
@@ -230,7 +230,7 @@ public class IngramTavern extends BaseContent implements SaveableState {
         outputText("\"<i>I'd like a glass of root beer please,</i>\" you say. You hand over the three gems to the innkeeper and he pours you a glass of root beer.");
         outputText("\n\nYou drink the cup of root beer. Refreshing! ");
         fatigue(-15);
-        HPChange(player.maxHP() / 4, false, false);
+        pc.HPChange(player.maxHP() / 4, false, false);
         player.refillHunger(10);
         cheatTime(1/12);
         doNext(menuTavern);
@@ -262,7 +262,7 @@ public class IngramTavern extends BaseContent implements SaveableState {
         player.gems -= 5;
         outputText("You tell the innkeeper that you would like a sandwich and toss five gems at him. \"<i>Certainly, " + player.mf("sir", "madam") + ",</i>\" he says as he quickly grabs a plate and assembles a sandwich. Hey, it's your favorite type!");
         outputText("\n\nYou eat the sandwich. Delicious!");
-        HPChange(player.maxHP() / 3, false, false);
+        pc.HPChange(player.maxHP() / 3, false, false);
         player.refillHunger(25);
         cheatTime(1/12);
         doNext(menuTavern);
@@ -278,7 +278,7 @@ public class IngramTavern extends BaseContent implements SaveableState {
         player.gems -= 3;
         outputText("You tell the innkeeper that you would like a bowl of soup and toss three gems at him. \"<i>Certainly, " + player.mf("sir", "madam") + ",</i>\" he says as he grabs a bowl and fills it with steaming soup. Hey, it's your favorite type!");
         outputText("\n\nYou take one spoonful at a time, blowing to make sure the soup isn't too hot. You eventually finish the soup. Delicious!");
-        HPChange(player.maxHP() / 3, false, false);
+        pc.HPChange(player.maxHP() / 3, false, false);
         player.refillHunger(20);
         cheatTime(1/12);
         doNext(menuTavern);

@@ -592,8 +592,8 @@ public class DomsDomain extends BaseContent implements SaveableState, TimeAwareI
         var gain:Number = player.maxHunger();
 		gain -= player.hunger;
 		player.refillHunger(gain);
-        HPChange(Math.round(player.maxHP() * .05), false, true);
-        EngineCore.ManaChange(player.maxMana() * 0.05);
+        pc.HPChange(Math.round(player.maxHP() * .05), false, true);
+        pc.ManaChange(player.maxMana() * 0.05);
         FishEaten += 1;
         doNext(FoodHall);
     }
@@ -607,8 +607,8 @@ public class DomsDomain extends BaseContent implements SaveableState, TimeAwareI
         var gain:Number = player.maxHunger();
 		gain -= player.hunger;
 		player.refillHunger(gain);
-        HPChange(Math.round(player.maxHP() * .05), false,true);
-        EngineCore.ManaChange(player.maxMana() * 0.05);
+        pc.HPChange(Math.round(player.maxHP() * .05), false,true);
+        pc.ManaChange(player.maxMana() * 0.05);
         SteakEaten +=1;
         doNext(FoodHall);
     }

@@ -84,7 +84,7 @@ public class BlinkSpell extends AbstractBlackSpell {
 			var tempSpe:Number       = calcBoost();
 			var BlinkDuration:Number = calcDuration();
 			var oldHPratio:Number    = player.hp100 / 100;
-			mainView.statsView.showStatUp('spe');
+			showStatUp('spe');
 			player.buff("Blink").setStats({"spe.mult": tempSpe / 100}).combatTemporary(BlinkDuration);
 			player.HP = oldHPratio * player.maxHP();
 		}

@@ -58,7 +58,7 @@ public class SpecialTransformations extends MutationsHelper {
 		},
 		// is possible
 		function ():Boolean {
-			return ((player.hasPerk(PerkLib.SpiderOvipositor) && (!player.isDrider() || player.tailType != Tail.SPIDER_ADBOMEN)) ||
+			return ((player.hasPerk(PerkLib.SpiderOvipositor) && !player.isDrider() && player.tailType != Tail.SPIDER_ADBOMEN && player.tailType != Tail.USHI_ONI) ||
 					(player.hasPerk(PerkLib.BeeOvipositor) && player.tailType != Tail.BEE_ABDOMEN) ||
 					(player.hasPerk(PerkLib.MantisOvipositor) && player.tailType != Tail.MANTIS_ABDOMEN) ||
 					(player.hasPerk(PerkLib.AntOvipositor) && player.tailType != Tail.ANT_ABDOMEN) ||
@@ -66,21 +66,23 @@ public class SpecialTransformations extends MutationsHelper {
 		}
 	);
 
-	public const GainOvipositor:Transformation = new SimpleTransformation("Remove Oviposition",
+	public const GainOvipositor:Transformation = new SimpleTransformation("Gain Oviposition",
 			// apply
 			function (doOutput:Boolean):void {
 				if (player.tailType === Tail.BEE_ABDOMEN)
 					TransformationUtils.applyTFIfNotPresent(transformations.OvipositorBee, doOutput);
-				if (player.tailType === Tail.SPIDER_ADBOMEN)
+				if (player.tailType === Tail.SPIDER_ADBOMEN || player.tailType == Tail.USHI_ONI)
 					TransformationUtils.applyTFIfNotPresent(transformations.OvipositorSpider, doOutput);
 				if (player.tailType === Tail.MANTIS_ABDOMEN)
 					TransformationUtils.applyTFIfNotPresent(transformations.OvipositorMantis, doOutput);
 				if (player.tailType === Tail.ANT_ABDOMEN)
 					TransformationUtils.applyTFIfNotPresent(transformations.OvipositorAnt, doOutput);
+				if (player.tailType === Tail.MOTH_ABDOMEN)
+					TransformationUtils.applyTFIfNotPresent(transformations.OvipositorMoth, doOutput);
 			},
 			// is present
 			function ():Boolean {
-				return !InCollection(player.tailType, Tail.BEE_ABDOMEN, Tail.SPIDER_ADBOMEN, Tail.MANTIS_ABDOMEN, Tail.ANT_ABDOMEN) ||
+				return !InCollection(player.tailType, Tail.BEE_ABDOMEN, Tail.SPIDER_ADBOMEN, Tail.MANTIS_ABDOMEN, Tail.ANT_ABDOMEN, Tail.MOTH_ABDOMEN, Tail.USHI_ONI) ||
 						player.hasPerk(PerkLib.SpiderOvipositor) || player.hasPerk(PerkLib.BeeOvipositor) || player.hasPerk(PerkLib.MantisOvipositor) || player.hasPerk(PerkLib.AntOvipositor) || player.hasPerk(PerkLib.MothOvipositor);
 			}
 	);
@@ -134,7 +136,7 @@ public class SpecialTransformations extends MutationsHelper {
 			},
 			// is possible
 			function ():Boolean {
-				return !player.hasPerk(PerkLib.SpiderOvipositor) && player.isDrider() && player.tailType == Tail.SPIDER_ADBOMEN;
+				return !player.hasPerk(PerkLib.SpiderOvipositor) && player.isDrider() && (player.tailType == Tail.SPIDER_ADBOMEN || player.tailType == Tail.USHI_ONI);
 			}
 	);
 
@@ -164,7 +166,7 @@ public class SpecialTransformations extends MutationsHelper {
 			}
 	);
 
-	public const OvipositorAnt:Transformation = new SimpleTransformation("Mantis Oviposition",
+	public const OvipositorAnt:Transformation = new SimpleTransformation("Ant Oviposition",
 			// apply
 			function (doOutput:Boolean):void {
 				var desc: String = "";

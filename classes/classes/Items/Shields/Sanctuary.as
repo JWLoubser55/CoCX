@@ -21,28 +21,28 @@ import classes.PerkLib;
 		
 		override public function get block():Number {
 			var block:int = 0;
-			var scal:Number = 10;
+			var scal:Number = 20;
 			if (game.player.str >= 125) {
 				block += 10;
-				scal -= 1;
+				scal -= 2;
 			}
 			if (game.player.str >= 100) {
 				block += 10;
-				scal -= 1;
+				scal -= 2;
 			}
 			if (game.player.str >= 75) {
 				block += 5;
-				scal -= 1;
+				scal -= 2;
 			}
 			if (game.player.str >= 50) {
 				block += 5;
-				scal -= 1;
+				scal -= 2;
 			}
 			if (game.player.str >= 25) {
 				block += 3;
-				scal -= 1;
+				scal -= 2;
 			}
-			block += Math.round((100 - game.player.cor) / 5);
+			block += Math.round((game.player.playerCorruption2() - game.player.playerCorruption()) / scal);
 			return (2 + block);
 		}
 	}

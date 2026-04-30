@@ -18,12 +18,13 @@ import classes.internals.Utils;
 
 		public function BodyLotion(id:String, adj:String, longAdj:String)
 		{
-			this._adj = adj.toLowerCase();
 			var shortName:String = adj + " Ltn";
-			var longName:String = "a flask of " + this._adj + " lotion";
 			var value:int = ConsumableLib.DEFAULT_VALUE;
 			var description:String = "A small wooden flask filled with a " + longAdj + " . A label across the front says, \"" + adj + " Lotion.\"";
+			adj = adj.toLowerCase();
+			var longName:String = "a flask of " + adj + " lotion";
 			super(id, shortName, longName, value, description);
+			this._adj = adj;
 			refineableInto([[1, AlchemyLib.AS_SKIN]],[]);
 		}
 
@@ -81,7 +82,7 @@ import classes.internals.Utils;
 		override public function useItem():Boolean {
 			if (game.player.skinAdj == _adj || player.blockingBodyTransformations()) {
 				outputText("You " + game.player.clothedOrNaked("take a second to disrobe before uncorking the flask of lotion and rubbing", "uncork the flask of lotion and rub") + " the " + liquidDesc() + " across your body. Once you’ve finished you feel reinvigorated. ");
-				EngineCore.HPChange(10, true, false);
+				pc.HPChange(10, true, false);
 			}
             else if (game.player.isGooSkin()) { //If skin is goo, don't change
                 outputText("You take the lotion and pour the " + liquidDesc() + " into yourself. The concoction dissolves, leaving your gooey epidermis unchanged. As a matter of fact nothing happens at all.");

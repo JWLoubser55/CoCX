@@ -66,6 +66,7 @@ public class MummyRace extends Race {
 		
 		addMutation(IMutationsLib.BlackBloodIM);
 		addMutation(IMutationsLib.StillHeartIM);
+		addMutation(IMutationsLib.UndeadMetabolismIM);
 		
 		buildTier(20, "Mummy")
                 .requirePerk(PerkLib.Undeath)

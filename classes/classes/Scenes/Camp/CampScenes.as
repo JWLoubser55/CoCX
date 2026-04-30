@@ -6,12 +6,10 @@ package classes.Scenes.Camp
 {
 import classes.*;
 import classes.GlobalFlags.kFLAGS;
-import classes.CoC;
 import classes.IMutations.IMutationsLib;
 import classes.Scenes.NPCs.*;
 import classes.Scenes.SceneLib;
 
-use namespace CoC;
 
 public class CampScenes extends NPCAwareContent{
 

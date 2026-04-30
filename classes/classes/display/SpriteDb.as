@@ -13,7 +13,7 @@ public class SpriteDb {
 	}
 
 	private static function get is8bit():Boolean {
-		return CoC.instance.flags[kFLAGS.SPRITE_STYLE] === 1;
+		return CoC.instance.settings.spriteStyle === 1;
 	}
 
 	[Embed(source="../../../res/sprites/aiko.png")]

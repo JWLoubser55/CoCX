@@ -224,14 +224,14 @@ public class HighMountains extends BaseContent {
 
     public function caveSceneGryphon():void {
         outputText("Picking the brass-forged statuette, you immediately feel how its energy rushes through your avian body, invigorating it with an unknown force. Carefully putting it on your bag, you see how the other one is stored away by the hidden mechanism.\n\n");
-        outputText("With nothing useful left to you here, you resume your walk and return to your camp with the gryphon idol on your bag.\n\n");
+        outputText("With nothing useful left to you here, you resume your walk and return to your camp with the gryphon idol on your bag. <b>Statuette can be found in Spend Time submenu of Camp Actions.</b>\n\n");
         player.createKeyItem("Gryphon Statuette", 0, 0, 0, 0);
         endEncounter();
     }
 
     public function caveScenePeacock():void {
         outputText("Picking the alabaster statuette, you immediately feel how its energy rushes through your avian body, invigorating it with an unknown force. Carefully putting it on your bag, you see how the other one is stored away by the hidden mechanism.\n\n");
-        outputText("With nothing useful left to you here, you resume your walk and return to your camp with the peacock idol on your bag.\n\n");
+        outputText("With nothing useful left to you here, you resume your walk and return to your camp with the peacock idol on your bag. <b>Statuette can be found in Spend Time submenu of Camp Actions.</b>\n\n");
         player.createKeyItem("Peacock Statuette", 0, 0, 0, 0);
         endEncounter();
     }

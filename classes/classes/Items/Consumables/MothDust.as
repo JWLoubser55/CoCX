@@ -130,7 +130,7 @@ public class MothDust extends Consumable {
 		//If no changes yay
         if (changes == 0) {
             outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");
-            EngineCore.HPChange(Math.round(20*player.postConsumptionMlt()), true, false);
+            pc.HPChange(Math.round(20*player.postConsumptionMlt()), true, false);
             dynStats("lus", Math.round(3*player.postConsumptionMlt()), "scale", false);
         }
         return false;

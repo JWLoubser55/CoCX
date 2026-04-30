@@ -592,9 +592,9 @@ public class AbstractEquinum extends Consumable {
 		//FAILSAFE CHANGE
 		if (changes == 0) {
 			outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");
-			if (type == 0) EngineCore.HPChange(20, true, false);
-			if (type == 1) EngineCore.HPChange(100, true, false);
-			if (type == 2) EngineCore.HPChange(500, true, false);
+			if (type == 0) pc.HPChange(20, true, false);
+			if (type == 1) pc.HPChange(100, true, false);
+			if (type == 2) pc.HPChange(500, true, false);
 			dynStats("lus", 3, "scale", false);
 		}
 		player.refillHunger(15);

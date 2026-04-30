@@ -1,4 +1,5 @@
 package classes.Races {
+import classes.BodyData;
 import classes.BodyParts.*;
 import classes.CockTypesEnum;
 import classes.IMutations.IMutationsLib;
@@ -7,6 +8,8 @@ import classes.Race;
 import classes.VaginaClass;
 
 public class DeerRace extends Race{
+    public static const DeerFurColors:/*String*/Array = ["brown", "white", "silver white"];
+    public static const DeerHairColors:/*String*/Array = ["snow white", "silver white", "platinum blonde", "quartz white"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -40,21 +43,31 @@ public class DeerRace extends Race{
 		
 		addScores()
 				.earType(Ears.DEER, +1)
-				.tailType(Tail.DEER, +1)
-				.faceType(Face.DEER, +1)
-				.armType(ANY(Arms.HUMAN, Arms.DEER), +1)
-				//.armType(Arms.REINDEER, +2)
+				.eyeTypeAndColor(Eyes.DEER, "golden", +2)
+				.faceType(ANY(Face.DEER, Face.DEER_BLUSH), +1)
+				.tongueType(Tongue.HUMAN, +1)
+				.armType(Arms.DEER, +1)
 				.armType(NOT(Arms.WENDIGO), 0, -5)
+				.armType(NOT(Arms.REINDEER), 0, -5)
+				.customRequirement("legs","shaggy centaur lower body",
+						function (body:BodyData): Boolean {
+							return body.legType == LowerBody.CLOVEN_HOOFED && body.player.isTaur();
+						}, +3)
 				.legType(LowerBody.CLOVEN_HOOFED, +1)
-				//.legType(LowerBody.CLOVEN_HOOFED_2, +2)
 				.legType(NOT(LowerBody.WENDIGO), 0, -5)
-				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(4), +1)
-				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(14), +1)
-				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(24), +1)
-				.hornTypeAndCount(Horns.ANTLERS, AT_LEAST(34), +1)
+				.legType(NOT(LowerBody.CLOVEN_HOOFED_2), 0, -5)
+				.tailType(Tail.DEER, +1)
+				.hornType(Horns.ANTLERS, +1)
 				.skinCoatType(Skin.FUR, +1)
-				.cockOrVaginaOfType(CockTypesEnum.HORSE, VaginaClass.EQUINE, +1)
+				.furColor1(ANY(DeerFurColors), +1)
+				.hairColor1(ANY(DeerHairColors), +1)
+				.skinBasePattern(Skin.PATTERN_ICEHEART_TATOO, +1)
+				.vaginaType(VaginaClass.EQUINE, +1)
+				.hasCockOfType(CockTypesEnum.HORSE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
+		addScoresAfter(6)
+				.armType(Arms.HUMAN, +1)
+				.biggestTitSize(GREATER_THAN(4), +1);
 		
 		addBloodline(PerkLib.DeersDescendant, PerkLib.BloodlineDeer);
 		addMutation(IMutationsLib.TwinHeartIM);
@@ -94,19 +107,19 @@ public class DeerRace extends Race{
 					"lib.mult": +1.00,
 					"sens": +200
 				})
-				.end();/*
+				.end();
 		
-		buildTier(12, "reindeer")
-				.namesMaleFemaleMorphTaur("reindeer-morph", "reindeer-girl", "reindeer-morph", "reindeer-taur")
+		buildTier(32, "grand cernos")
+				.namesTauric("grand cernos","grand cernos-taur")
+				.requirePreviousTier()
 				.buffs({
-					"str.mult": +0.25,
-					"tou.mult": +0.25,
-					"spe.mult": +0.50,
-					"int.mult": -0.20,
-					"wis.mult": +0.40
-					//"sens": +85
+					"str.mult": +2.00,
+					"tou.mult": +2.00,
+					"spe.mult": +1.65,
+					"lib.mult": +1.65,
+					"sens": +250
 				})
-				.end();*/
+				.end();
 	}
 }
 }

@@ -251,6 +251,39 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const FAIRY:int = _partid++;
+		EnumValue.add(Memories, FAIRY, "FAIRY", {
+			id: "Fairy Hair",
+			name: "Fairy Hair",
+			cost: 100,
+			title: "Fairy",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.HairFairy;
+			}
+		});
+
+		public static const QUILL:int = _partid++;
+		EnumValue.add(Memories, QUILL, "QUILL", {
+			id: "Quill Hair",
+			name: "Quill Hair",
+			cost: 100,
+			title: "Quill",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.HairQuill;
+			}
+		});
+
+		public static const DRIPPING:int = _partid++;
+		EnumValue.add(Memories, DRIPPING, "DRIPPING", {
+			id: "Driping Hair",
+			name: "Driping Hair",
+			cost: 100,
+			title: "Driping",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.HairDripping;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

@@ -42,7 +42,7 @@ public class FnHelpers extends BaseContent {
 	public function all(...chances):Function {
 		return function():Number {
 			for each (var chance:Object in chances) {
-				var c:*=chance;
+				var c:* = chance;
 				if (c is Function) c = c();
 				if (!Encounters.convertChance(c)) return 0;
 			}
@@ -56,7 +56,7 @@ public class FnHelpers extends BaseContent {
 	public function none(...chances):Function {
 		return function():Number {
 			for each (var chance:Object in chances) {
-				var c:*=chance;
+				var c:* = chance;
 				if (c is Function) c = c();
 				if (Encounters.convertChance(c)) return 0;
 			}
@@ -70,7 +70,7 @@ public class FnHelpers extends BaseContent {
 	public function any(...chances):Function {
 		return function():Number {
 			for each (var chance:Object in chances) {
-				var c:*=chance;
+				var c:* = chance;
 				if (c is Function) c = c();
 				if (Encounters.convertChance(c)) return 1;
 			}
@@ -164,7 +164,7 @@ public class FnHelpers extends BaseContent {
 	/**
 	 * @return Function returning `iftrue` if current time (in hours) is between `minimum` (0-23, INCLUSIVELY) and `maximum` (0-24, EXCLUSIVELY)
 	 */
-	public function ifTimeOfDay(minimum:int,maximum:int,iftrue:*=1,iffalse:*=0):Function {
+	public function ifTimeOfDay(minimum:int,maximum:int,iftrue:* =1,iffalse:* =0):Function {
 		return function():* {
 			var hours:Number = time.hours;
 			return (hours >= minimum && hours < maximum) ? iftrue : iffalse;
@@ -174,7 +174,7 @@ public class FnHelpers extends BaseContent {
 	/**
 	 * @return Function returning `iftrue` if NG+ level is at least `minimum`, `iffalse` otherwise
 	 */
-	public function ifNGplusMin(minimum:int,iftrue:*=1,iffalse:*=0):Function {
+	public function ifNGplusMin(minimum:int,iftrue:* =1,iffalse:* =0):Function {
 		return function():* {
 			return flags[kFLAGS.NEW_GAME_PLUS_LEVEL] > 0 ? iftrue : iffalse;
 		}
@@ -183,7 +183,7 @@ public class FnHelpers extends BaseContent {
 	public function FnHelpers() {
 	}
 
-	public function ifPregnantWith(pregnancyType:int,iftrue:*=1,iffalse:*=0):Function {
+	public function ifPregnantWith(pregnancyType:int,iftrue:* =1,iffalse:* =0):Function {
 		return function():* {
 			return ((player.pregnancyIncubation > 1 && player.pregnancyType == pregnancyType) || (player.pregnancy2Incubation > 1 && player.pregnancy2Type == pregnancyType)) ? iftrue : iffalse
 		}

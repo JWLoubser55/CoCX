@@ -248,13 +248,17 @@ public class Kiha extends Monster
 			this.createPerk(PerkLib.EnemyDragonType, 0, 0, 0, 0);
 			this.createPerk(PerkLib.BasicTranquilness, 0, 0, 0, 0);
 			this.createPerk(IMutationsLib.LizanMarrowIM, 1, 0, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 1 && flags[kFLAGS.KIHA_LVL_UP] < 5) this.createPerk(PerkLib.LizanRegeneration, 0, 0, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 5 && flags[kFLAGS.KIHA_LVL_UP] < 7) this.createPerk(PerkLib.LizanRegeneration, 0, 1, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 7 && flags[kFLAGS.KIHA_LVL_UP] < 15) this.createPerk(PerkLib.LizanRegeneration, 0, 2, 0, 0);
+			if (flags[kFLAGS.KIHA_LVL_UP] >= 15 && flags[kFLAGS.KIHA_LVL_UP] < 25) this.createPerk(PerkLib.LizanRegeneration, 0, 3, 0, 0);
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 11 && flags[kFLAGS.KIHA_LVL_UP] < 18) this.createPerk(PerkLib.EnemyEliteType, 0, 0, 0, 0);
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 1) {
 				this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 				this.createPerk(PerkLib.Lifeline, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 2) {
-				this.createPerk(PerkLib.LizanRegeneration, 0, 0, 0, 0);
+				this.createPerk(PerkLib.MonsterRegeneration, 1, 0, 0, 0);
 				this.createPerk(PerkLib.HalfStepToImprovedTranquilness, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.KIHA_LVL_UP] >= 3) {

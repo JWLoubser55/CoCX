@@ -8,9 +8,10 @@ public class EyeDye extends Consumable {
 	
 	public function EyeDye(id:String, params:Object) {
 		var color:String = params.color;
-		_color           = color.toLowerCase();
-		super(id, capitalizeFirstLetter(_color) + " EyDr", "a vial of " + _color + " eye drops", 50, "This vial will allow you to change the color of your irises.");
-		refineableInto([[1, AlchemyLib.AS_EYES]], [], [], [_color]);
+		color           = color.toLowerCase();
+		super(id, capitalizeFirstLetter(color) + " EyDr", "a vial of " + color + " eye drops", 50, "This vial will allow you to change the color of your irises.");
+		this._color = color;
+		refineableInto([[1, AlchemyLib.AS_EYES]], [], [], [color]);
 	}
 	
 	override public function canUse():Boolean {

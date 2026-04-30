@@ -71,6 +71,7 @@ public class PlantRace extends Race {
 						}, 0, -4)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 				
+		addBloodline(PerkLib.PlantsDescendant, PerkLib.BloodlinePlant);
 		addMutation(IMutationsLib.PlantChlorophyllIM);
 		
 		buildTier(7, "plant-morph")

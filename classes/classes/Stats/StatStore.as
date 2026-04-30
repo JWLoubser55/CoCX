@@ -159,10 +159,10 @@ public class StatStore implements IStatHolder {
 		},BuffableStat);
 	}
 
-	public function replaceBuffObject(buffs:Object, tag:String, options:*=null, evalContext:*=null):void {
+	public function replaceBuffObject(buffs:Object, tag:String, options:* =null, evalContext:* =null):void {
 		applyBuffObject(buffs, tag, options, evalContext, true);
 	}
-	public function addBuffObject(buffs:Object, tag:String, options:*=null, evalContext:*=null):void {
+	public function addBuffObject(buffs:Object, tag:String, options:* =null, evalContext:* =null):void {
 		applyBuffObject(buffs, tag, options, evalContext, false);
 	}
 	public function setBuffOptions(tag: String, options:*):void {

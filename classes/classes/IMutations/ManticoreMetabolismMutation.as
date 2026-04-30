@@ -4,16 +4,17 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Races;
 
 public class ManticoreMetabolismMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Manticore Metabolism";
-        }
+		public static const MNAME:String = "Manticore Metabolism";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -57,7 +58,7 @@ public class ManticoreMetabolismMutation extends IMutationPerkType
         }
 
         public function ManticoreMetabolismMutation() {
-            super(mName + " IM", mName, SLOT_METABOLISM, 3);
+            super(MNAME, SLOT_METABOLISM, 3);
         }
 
     }

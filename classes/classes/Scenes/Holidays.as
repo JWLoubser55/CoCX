@@ -24,7 +24,7 @@ import classes.internals.Utils;
 public class Holidays extends BaseContent {
     //Checker functions
     public static function checkDays():Boolean {
-        return CoC.instance.model.time.useRealDate() || flags[kFLAGS.DAYS_PER_YEAR] == 365;
+        return CoC.instance.model.time.useRealDate() || CoC.instance.settings.daysPerYear == 365;
     }
     public static function isAprilFools():Boolean {
         return flags[kFLAGS.ITS_EVERY_DAY] || date.month == 3 && (!checkDays() || date.date == 1);
@@ -1007,7 +1007,7 @@ public class Holidays extends BaseContent {
                 }
                 //HP set to full, fatigue to 0?
                 fatigue(-100);
-                HPChange(3000, false, false);
+                pc.HPChange(3000, false, false);
                 endEncounter(120);
             }
             else recallWakeUp();
@@ -2542,7 +2542,7 @@ public class Holidays extends BaseContent {
             outputText("You sigh... this really reminds you of back home... you only wish you had someone to share this feeling with... Well, there is no reason you shouldn't enjoy yourself while it snows, so you set about rolling a big ball of snow to make a snowman out of...");
             //Skip to next day...
             flags[kFLAGS.JACK_FROST_PROGRESS] = 0;
-            HPChange(player.maxHP(), false, false);
+            pc.HPChange(player.maxHP(), false, false);
             fatigue(-100);
             explorer.stopExploring();
             doNext(SceneLib.camp.returnToCampUseEightHours);
@@ -2908,7 +2908,7 @@ public class Holidays extends BaseContent {
                 outputText("You take care of the preparations and cooking, whipping up a delightful meal for you and your companions.  For a moment you look around - this small band you've formed feels enough like a family that you wouldn't mind having more days like this in the future.  You vow to work extra hard to make this a reality."
                     + "\n\nThe feast progresses without a hitch.  You cheer, eat and drink together (though you really don't have any appropriate alcohol for the evening).  As the feast progresses, you notice more than one pair of hungry eyes sizing you up... it seems your day is far from over...");
             }
-            HPChange(player.maxHP(), false, false);
+            pc.HPChange(player.maxHP(), false, false);
             fatigue(-100);
             flags[kFLAGS.JACK_FROST_PROGRESS] = 0;
             explorer.stopExploring();
@@ -3312,7 +3312,7 @@ public class Holidays extends BaseContent {
                 + "\n\n\"<i>Stop.  Stay right here.  I'll be right back.</i>\""
                 + "\n\nThe kanga girl rises and walks into the bakery storage room, appearing again only seconds later with a medium-sized present in her hands.  You'd almost be curious about it, but an even more intriguing 'surprise' catches your eyes directly beneath it in the form of a massive, protruding and honestly, quite blatant, wet bulge that presses against her garments gloriously.  Apparently this waitress is packing a little something extra."
                 + "\n\nShe places the present in your lap, then scoots backwards to await your response.  You notice her legs twitching agitatedly in anticipation, presumably from the lubricants dripping from between her well-formed thighs.  She's pretty damn aroused right now, by the looks of it.  You decide to open the present at once, opening the lid to reveal... a small, folded note.  You give the kangaroo girl one last glance before you thumb the little message open to see what the fuss is about.");
-            outputText("\n\nThe note reads: \"<i>\<i>Hey there " + player.mf("stud", "babe") + "\</i>.  My name's Kami.  Wanna come out the back and fuck?  It can be my special present to you.</i>\"  She signed it with a winking smiley face");
+            outputText("\n\nThe note reads: \"<i><i>Hey there " + player.mf("stud", "babe") + "</i>.  My name's Kami.  Wanna come out the back and fuck?  It can be my special present to you.</i>\"  She signed it with a winking smiley face");
             if (silly()) outputText(" and found space to scrawl a little penis in one corner. Clever");
             outputText("."
                 + "\n\nWow, well, that's pretty blunt.  What should you do now?");

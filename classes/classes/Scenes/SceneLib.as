@@ -296,6 +296,8 @@ public class SceneLib {
 
     public static var woodElves:WoodElves = new WoodElves();
 
+    public static var wraithScene:WraithScene = new WraithScene();
+
     public static var mindbreaker:Mindbreaker = new Mindbreaker();
 
     public static var zenjiScene:ZenjiScenes = new ZenjiScenes();

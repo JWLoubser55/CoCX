@@ -42,14 +42,8 @@ public class MatangoAttackSkill extends AbstractGeneral {
 		if (player.hasPerk(PerkLib.CommandingTone)) matangoamplification += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) matangoamplification += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) matangoamplification += 0.15;
-		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
-            matangoamplification += 0.1;
-            if (player.hasPerk(PerkLib.WispLieutenant)) matangoamplification += 0.2;
-            if (player.hasPerk(PerkLib.WispCaptain)) matangoamplification += 0.3;
-            if (player.hasPerk(PerkLib.WispMajor)) matangoamplification += 0.4;
-            if (player.hasPerk(PerkLib.WispColonel)) matangoamplification += 0.5;
-        }
-		//if (player.perkv2(PerkLib.MummyLord) > 0) matangoamplification *= 2;
+		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) matangoamplification += combat.wispAmplification();
+        //if (player.perkv2(PerkLib.MummyLord) > 0) matangoamplification *= 2;
         matangoDamage *= matangoamplification;
 
 		return Math.round(matangoDamage);

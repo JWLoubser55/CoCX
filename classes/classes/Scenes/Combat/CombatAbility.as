@@ -1,12 +1,11 @@
 package classes.Scenes.Combat {
+import classes.Appearance;
+import classes.GlobalFlags.kFLAGS;
 import classes.Monster;
-import classes.internals.EnumValue;
 import classes.StatusEffectType;
+import classes.internals.EnumValue;
 
 import coc.view.ButtonData;
-import classes.GlobalFlags.kFLAGS;
-import classes.Appearance;
-import mx.formatters.NumberFormatter;
 
 /**
  * A combat ability invokable by player (spell, special, skill, etc).
@@ -660,8 +659,7 @@ public class CombatAbility extends BaseCombatContent {
 	 * For printing out damage numbers on the main screen, combat.CommasForDigits() should be used instead
 	 */
 	public function numberFormat(damage:Number):String {
-		var numberformat:NumberFormatter = new NumberFormatter();
-        return numberformat.format(Math.floor(Math.abs(damage)));
+		return formatNumber(Math.floor(Math.abs(damage)));
 	}
 
 }

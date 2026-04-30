@@ -10,7 +10,7 @@ import classes.Stats.Buff;
 import classes.StatusEffects;
 import classes.internals.WeightedDrop;
 
-import coc.view.CoCButton;
+import coc.view.ButtonData;
 
 public class DriderIncubus extends AbstractSpiderMorph
 	{
@@ -119,7 +119,7 @@ if (this.lust < .65 * this.maxLust() && this.HP < .33 * this.maxHP()) {
 			
 		}
 
-		override public function postPlayerBusyBtnSpecial(btnSpecial1:CoCButton, btnSpecial2:CoCButton):void{
+		override public function postPlayerBusyBtnSpecial(btnSpecial1:ButtonData, btnSpecial2:ButtonData):void{
 			if (!goblinFree) btnSpecial1.show("Free Goblin", freeGoblin);
 		}
 

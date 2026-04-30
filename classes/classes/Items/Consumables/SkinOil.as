@@ -18,13 +18,14 @@ import classes.Scenes.SceneLib;
 		public function SkinOil(id:String, params:Object)
 		{
 			var color:String = params.color;
-			this._color = color.toLowerCase();
 			var shortName:String = capitalizeFirstLetter(color) + " Oil";
-			var longName:String = "a bottle of " + this._color + " oil";
-			var value:int = ConsumableLib.DEFAULT_VALUE;
 			var description:String = "A small glass bottle filled with a smooth clear liquid. A label across the front says, \"" + color + " Skin Oil.\"";
+			color = color.toLowerCase();
+			var longName:String = "a bottle of " + color + " oil";
+			var value:int = ConsumableLib.DEFAULT_VALUE;
 			super(id, shortName, longName, value, description);
-			refineableInto([[AlchemyLib.AS_SKIN]], [], [], [_color]);
+			_color = color.toLowerCase();
+			refineableInto([[1, AlchemyLib.AS_SKIN]], [], [], [_color]);
 		}
 		
 		override public function useItem():Boolean {

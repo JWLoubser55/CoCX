@@ -49,7 +49,7 @@ import coc.xxc.BoundStory;
 		{
 			_storyName = storyName;
 		}
-		public function display(toDisplay:String,locals:*=null):void
+		public function display(toDisplay:String,locals:* =null):void
 		{
 			story.display(toDisplay,locals);
 		}
@@ -83,7 +83,7 @@ import coc.xxc.BoundStory;
 		public function unload():void{
 			throw new Error("Must be overloaded by child class");
 		}
-		public function scene(ref:String,locals:*=null,next:Function=null):void{
+		public function scene(ref:String,locals:* =null,next:Function=null):void{
 			clearOutput();
 			display(ref,locals);
 			doNext(next!=null?next:camp.returnToCampUseOneHour);

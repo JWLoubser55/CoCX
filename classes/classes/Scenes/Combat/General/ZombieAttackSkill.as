@@ -46,14 +46,8 @@ public class ZombieAttackSkill extends AbstractGeneral {
 		if (player.hasPerk(PerkLib.CommandingTone)) zummyamplification += 0.1;
 		if (player.hasPerk(PerkLib.DiaphragmControl)) zummyamplification += 0.1;
 		if (player.hasPerk(PerkLib.VocalTactician)) zummyamplification += 0.15;
-		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) {
-            zummyamplification += 0.1;
-            if (player.hasPerk(PerkLib.WispLieutenant)) zummyamplification += 0.2;
-            if (player.hasPerk(PerkLib.WispCaptain)) zummyamplification += 0.3;
-            if (player.hasPerk(PerkLib.WispMajor)) zummyamplification += 0.4;
-            if (player.hasPerk(PerkLib.WispColonel)) zummyamplification += 0.5;
-        }
-		//if (player.perkv2(PerkLib.MummyLord) > 0) zummyamplification *= 2;
+		if (flags[kFLAGS.WILL_O_THE_WISP] == 2) zummyamplification += combat.wispAmplification();
+        if (player.perkv2(PerkLib.UndeadLord) > 0) zummyamplification *= 2;
         zummyDamage *= zummyamplification;
 
 		return Math.round(zummyDamage);
@@ -63,7 +57,6 @@ public class ZombieAttackSkill extends AbstractGeneral {
 		var zummyDamage1:Number = calcDamage(monster);
 		zummyDamage1 = combat.darknessTypeDamageBonus(zummyDamage1);
 		zummyDamage1 *= combat.darknessDamageBoostedByDao();
-
 		return Math.round(zummyDamage1);
 	}
 
@@ -84,14 +77,14 @@ public class ZombieAttackSkill extends AbstractGeneral {
 		damage = Math.round(damage);
 
 		if (display) outputText("\n\nYour zombie servants swarm, punch and bite at [themonster] trying to immobilize it so they can feast on [monster his] energy. ");
-		doPhysicalDamage(damage, true, display);
+		doMinionPhysDamage(damage, true, display);
 		if (display) {
 			if (crit) outputText(" <b>Critical! </b>");
 			if (!player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) outputText("\n\n");
 		}
 		if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment1)) {
 			outputText(" ");
-			doDarknessDamage(calcDamage1(monster), true, display);
+			doMinionDarknessDamage(calcDamage1(monster), true, display);
 			if (display) outputText("\n\n");
 		}
     }

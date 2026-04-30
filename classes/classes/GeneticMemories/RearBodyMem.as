@@ -271,7 +271,7 @@ import classes.CoC;
 		  transformation: function(): Transformation {
 			  return CoC.instance.transformations.RearBodyGhostlyAura;
 		  }
-	  });
+	  });/*
 
 		public static const ABYSSAL_SHARK_FIN:int = _partid++;
 		EnumValue.add(Memories, ABYSSAL_SHARK_FIN, "ABYSSAL_SHARK_FIN", {
@@ -282,7 +282,7 @@ import classes.CoC;
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.RearBodyAbyssalSharkFin;
 			}
-		});
+		});*/
 
 		public static const MOTH_COLLAR:int = _partid++;
 		EnumValue.add(Memories, MOTH_COLLAR, "MOTH_COLLAR", {

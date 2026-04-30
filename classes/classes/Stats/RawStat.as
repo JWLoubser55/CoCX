@@ -20,7 +20,7 @@ public class RawStat implements IStat,Jsonable {
 	 * min: default -Infinity
 	 * max: default +Infinity
 	 */
-	public function RawStat(owner:Creature, name:String, options:*=null) {
+	public function RawStat(owner:Creature, name:String, options:* =null) {
 		options = Utils.extend({
 			value:0.0,
 			min:-Infinity,

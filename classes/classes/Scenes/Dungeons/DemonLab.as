@@ -980,7 +980,10 @@ public class DemonLab extends DungeonAbstractContent implements SaveableState {
         outputText("You pick up the pace, slamming her back into the wall with each thrust of your glorious rod. Her moans quickly rise in pitch, and you feel her clamp down as the sex-demoness wails, sending femcum rolling past your shaft.\n\n");
         outputText("No longer able to hold back your orgasm, you grunt, burying yourself to the hilt as you paint the bitch’s womb white.\n\n");
         outputText("Breathing heavily, barely able to walk, Lucia flaps her wings, drunkenly flying out of the ballroom. Gasping from your own exertion, you pick up the key card, taking a moment to compose yourself before you continue.\n\n");
-        if (!recalling) player.sexReward("vaginalFluids", "Dick");
+        if (!recalling) {
+			player.sexReward("vaginalFluids", "Dick");
+			player.fuckingWithDemons(1);
+		}
         afterSucc();
     }
 

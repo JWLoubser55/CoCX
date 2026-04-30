@@ -4,17 +4,18 @@
  */
 package classes.IMutations
 {
-import classes.PerkClass;
-import classes.IMutationPerkType;
 import classes.Creature;
+import classes.IMutationPerkType;
+import classes.PerkClass;
 import classes.Player;
 import classes.Races;
 
 public class FrozenHeartMutation extends IMutationPerkType
     {
-        override public function get mName():String {
-            return "Frozen Heart";
-        }
+		public static const MNAME:String = "Frozen Heart";
+		override public function get mName():String {
+			return MNAME;
+		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
@@ -54,7 +55,7 @@ public class FrozenHeartMutation extends IMutationPerkType
                     this.requireHeartMutationSlot()
                     .requireCustomFunction(function (player:Player):Boolean {
                         return player.isRace(Races.YUKIONNA) || player.isRace(Races.YETI) || player.isRace(Races.DEER,2);
-                    }, "Yuki  race");
+                    }, "Yuki Onna, Yeti, Deer (tier 2+) race");
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -72,7 +73,7 @@ public class FrozenHeartMutation extends IMutationPerkType
         }
 
         public function FrozenHeartMutation() {
-            super(mName + " IM", mName, SLOT_HEART, 3);
+            super(MNAME, SLOT_HEART, 3);
         }
 
     }

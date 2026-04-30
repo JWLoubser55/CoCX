@@ -33,8 +33,6 @@ public class KangarooRace extends Race {
 	
 	public function KangarooRace(id:int) {
 		super("Kangaroo", id, []);//RaceBody);
-		chimeraTier = 0;
-		grandChimeraTier = 0;
 	}
 	
 	public override function setup():void {
@@ -42,7 +40,7 @@ public class KangarooRace extends Race {
 				.earType(Ears.KANGAROO, +1)
 				.tailType(Tail.KANGAROO, +1)
 				.legType(LowerBody.KANGAROO, +1)
-				.faceType(Face.KANGAROO,1)
+				.faceType(Face.KANGAROO, +1)
 				.skinCoatType(Skin.FUR, +1)
 				.hasCockOfType(CockTypesEnum.KANGAROO, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);

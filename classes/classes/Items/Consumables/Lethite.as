@@ -13,9 +13,9 @@ public class Lethite extends Consumable {
 
 	public function Lethite(id:String, shortName:String, longName:String, value:Number, demonGains:Number, hollowGains:Number) {
 		var descr:String = Utils.capitalizeFirstLetter(longName) + ". It's rare as lethicite is only produced when a mortal becomes a demon and cums their souls out. A demon's favorite treat."
+		super(id, shortName, longName, value, descr);
 		this.demonGains = demonGains;
 		this.hollowGains = hollowGains;
-		super(id, shortName, longName, value, descr);
 	}
 
 	//Checks if the perk is present before use. Also gives a prompt because why not.

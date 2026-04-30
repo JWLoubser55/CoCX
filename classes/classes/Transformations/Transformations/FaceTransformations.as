@@ -489,7 +489,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.ECHIDNA;
-				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.ECHIDNA));
+				//Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.ECHIDNA));
 			},
 			// is present
 			function (): Boolean {
@@ -980,6 +980,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.JIANGSHI;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.JIANGSHI));
 			},
 			// is present
 			function (): Boolean {
@@ -1032,6 +1033,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.USHI_ONI;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.USHI_ONI));
 			},
 			// is present
 			function (): Boolean {
@@ -1046,6 +1048,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.FAIRY;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.FAIRY));
 			},
 			// is present
 			function (): Boolean {
@@ -1150,7 +1153,7 @@ public class FaceTransformations extends MutationsHelper {
 
 				if (doOutput) outputText(desc);
 				player.faceType = Face.ABYSSAL_SHARK;
-				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.ABYSSAL_SHARK));
+				//Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.ABYSSAL_SHARK));
 			},
 			// is present
 			function (): Boolean {
@@ -1272,6 +1275,23 @@ public class FaceTransformations extends MutationsHelper {
 			// is present
 			function (): Boolean {
 				return player.faceType === Face.HOLLOW_MASK;
+			}
+	);
+
+	public const FaceDeerBlush: Transformation = new SimpleTransformation("Deer Blush Face",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You feel a sudden tickling across your face just beneath your eyes. When you go to check what is happening, you discover that you now have light freckles similar to the spots on a deer’s fur, <b>just like those of a cernos.</b>";
+
+				if (doOutput) outputText(desc);
+				player.faceType = Face.DEER_BLUSH;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.DEER_BLUSH));
+			},
+			// is present
+			function (): Boolean {
+				return player.faceType === Face.DEER_BLUSH;
 			}
 	);
 }

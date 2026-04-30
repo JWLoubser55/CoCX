@@ -937,6 +937,7 @@ public function nagaPlayerConstrict():void {
 			}
 			if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 4) monster.createStatusEffect(StatusEffects.Constricted, 2 + rand(4),0,0,0);
 			else monster.createStatusEffect(StatusEffects.Constricted, 1 + rand(4), 0, 0, 0);
+			if (player.hasPerk(PerkLib.Constrict)) nagaSqueeeezeDmg();
 		}
 		//Failure
 		else {
@@ -961,6 +962,7 @@ public function nagaPlayerConstrict():void {
 			}
 			if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 4) monster.createStatusEffect(StatusEffects.Constricted, 2 + rand(4), 0, 0, 0);
 			else monster.createStatusEffect(StatusEffects.Constricted, 1 + rand(4), 0, 0, 0);
+			if (player.hasPerk(PerkLib.Constrict)) nagaSqueeeezeDmg();
 		}
 		//Failure
 		else {
@@ -978,16 +980,7 @@ public function nagaPlayerConstrict():void {
 	outputText("\n\n");
     SceneLib.combat.enemyAIImpl();
 }
-
-public function nagaSqueeze():void {
-	clearOutput();
-	if (player.fatigue + combat.physicalCost(20) > player.maxOverFatigue()) {
-		outputText("You are too tired to squeeze " + monster.a + " [monster name].");
-		addButton(0, "Next", SceneLib.combat.combatMenu, false);
-		return;
-	}
-	//Squeeze -
-	outputText("Your coils wrap tighter around your prey, leaving [monster him] short of breath. You can feel it in your tail as [monster his] struggles are briefly intensified. ");
+private function nagaSqueeeezeDmg():void {
 	var damageBonus:int = 0;
 	var damage:int = monster.maxHP() * (.10 + rand(15) / 100);
 	if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 2) damage += combat.scalingBonusStrength() * 0.5 * (player.perkv1(IMutationsLib.MightyLowerHalfIM) - 1);
@@ -1001,9 +994,35 @@ public function nagaSqueeze():void {
 	if (player.hasPerk(PerkLib.UnbreakableBind)) damage *= 2;
 	if (player.hasStatusEffect(StatusEffects.ControlFreak)) damage *= player.statusEffectv1(StatusEffects.ControlFreak);
 	if (player.hasPerk(PerkLib.Sadomasochism)) damage *= player.sadomasochismBoost();
+	if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
+	if (player.hasPerk(PerkLib.Constrict)) damage *= 2;
 	if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.MightyLowerHalfIM)));
 	damage = damage+damageBonus;
+	if (player.hasPerk(PerkLib.CrushingCoil)) {
+		var crit:Boolean = false;
+		var critChance:int = 5;
+		var critMulti:Number = 1.75;
+		critChance += combat.combatPhysicalCritical();
+		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
+		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+		if (rand(100) < critChance) {
+			crit = true;
+			damage *= critMulti;
+		}
+	}
 	SceneLib.combat.doDamage(damage, true, true);
+}
+public function nagaSqueeze():void {
+	clearOutput();
+	if (player.fatigue + combat.physicalCost(20) > player.maxOverFatigue()) {
+		outputText("You are too tired to squeeze " + monster.a + " [monster name].");
+		addButton(0, "Next", SceneLib.combat.combatMenu, false);
+		return;
+	}
+	//Squeeze -
+	outputText("Your coils wrap tighter around your prey, leaving [monster him] short of breath. You can feel it in your tail as [monster his] struggles are briefly intensified. ");
+	nagaSqueeeezeDmg();
 	fatigue(20, USEFATG_PHYSICAL);
 	//Enemy faints -
 	if(monster.HP <= monster.minHP()) {
