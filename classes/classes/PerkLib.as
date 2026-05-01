@@ -344,9 +344,9 @@ public class PerkLib
 		public static const BloodlineCyclop:PerkType = mk("Bloodline: Cyclop", "Bloodline: Cyclop",
 				"Your Cyclop bloodline appears strongly within you. (+2 to cyclop score)", null, true);
 		public static const AviansDescendant:PerkType = mk("Avian's descendant", "Avian's descendant",
-				"You are a descendant of your ancestor, who was the child of a human and an Avian. (+2 to avian score)");
+				"You are a descendant of your ancestor, who was the child of a human and an Avian. (+2 to avian / gryphon / peafowl score)");
 		public static const BloodlineAvian:PerkType = mk("Bloodline: Avian", "Bloodline: Avian",
-				"Your Avian bloodline appears strongly within you. (+2 to avian score)", null, true);
+				"Your Avian bloodline appears strongly within you. (+2 to avian / gryphon / peafowl score)", null, true);
 		public static const UrsinesDescendant:PerkType = mk("Ursine's descendant", "Ursine's descendant",
 				"You are a descendant of your ancestor, who was the child of a human and an Ursine. (+2 to bear / panda / red panda score)");
 		public static const BloodlineUrsine:PerkType = mk("Bloodline: Ursine", "Bloodline: Ursine",
@@ -4844,7 +4844,7 @@ public class PerkLib
 		public static const WendigoCurse:PerkType = mk("Wendigo Curse", "Wendigo Curse",
 				"Your body and soul has been cursed by a wendigo. Transformative no longer have an effect on you.");
 		public static const WildDrake:PerkType = mk("Wild Drake", "Wild Drake",
-				".");
+				"You can use dragon breath specials slight sooner (All dragon breaths (excluding the most recent used) cooldowns are reduced by 1 increment).");
 		public static const VegetalAffinity:PerkType = mk("Vegetal Affinity", "Vegetal Affinity",
 				"Empower Green Magic by 50% weaken fire resistance by 50%.");
 		public static const VerdantMight:PerkType = mk("Verdant Might", "Verdant Might",

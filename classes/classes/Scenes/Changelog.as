@@ -375,8 +375,9 @@ public class Changelog extends BaseContent
 			outputText("-Internal Mutations that was lowering cooldown of breath/scream/shout type specials by x turns now would instead lower cooldown by 1 or 2 increments on cd chart (once per day > once per combat > 12 > 8 > 4 > 2 > 0).\n");
 			outputText("-New tier 5 misc lvl-up perk: Dovakhiin. Req. Thundering Echoes perk, 90+ str/tou/spe. Effect: Increase the potency of all breath weapons, shouts and sound based abilities by 25% for each consecutive usage after the first up to 100%. ");
 			outputText("All stacks of thundering echoes are lost if no breath weapons, shouts or sound based abilities are used within 2 rounds. Throat abilities cooldowns are reduced by 1 further increment.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-You can use dragon breath specials slight sooner (All dragon breaths (excluding the most recent used) cooldowns are reduced by 1 increment).\n");
+			outputText("-New event perk: Wild Drake. Gained by having any dragon race score at tier 1+. Effects: You can use dragon breath specials slight sooner (All dragon breaths (excluding the most recent used) cooldowns are reduced by 1 increment).\n");
+			outputText("-Vouivre dragon breath changed from fire to poison one.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -385,7 +386,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
-			outputText("-\n");//Wild Drake - event perk req. any dragon race rank 1+ possesed - lower by 4 turns duration for cd on other unused by pc dragon breath specials
 			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
 			outputText("-\n");
 			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .

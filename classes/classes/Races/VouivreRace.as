@@ -69,9 +69,8 @@ public class VouivreRace extends Race {
 									|| ApophisRace.isApophisLike(body)
 									|| MarilithRace.isMarilithLike(body));
 						}, 0, -1000)
+				.hasPerk(PerkLib.DragonPoisonBreath,+1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
-		addScoresAfter(11)
-				.hasPerk(PerkLib.DragonFireBreath,+1);
 		
 		addBloodline(PerkLib.LamiasDescendant, PerkLib.BloodlineLamia);
 		addMutation(IMutationsLib.VenomGlandsIM);

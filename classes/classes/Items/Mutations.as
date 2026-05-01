@@ -5648,10 +5648,10 @@ public final class Mutations extends MutationsHelper {
             }
             changes++;
         }
-        if (type == 1 && player.racialScore(Races.DRAGON, false) >= 4 && changes < changeLimit && !player.hasPerk(PerkLib.DragonFireBreath)) {
+        if (type == 1 && player.racialScore(Races.VOUIVRE, false) >= 4 && changes < changeLimit && !player.hasPerk(PerkLib.DragonPoisonBreath)) {
             outputText("[pg]You feel something awakening within you... then a sudden sensation of choking grabs hold of your throat, sending you to your knees as you clutch and gasp for breath.  It feels like there's something trapped inside your windpipe, clawing and crawling its way up.  You retch and splutter and then, with a feeling of almost painful relief, you expel a bellowing roar from deep inside of yourself... with enough force that clods of dirt and shattered gravel are sent flying all around.  You look at the small crater you have literally blasted into the landscape with a mixture of awe and surprise.");
-            outputText("[pg]It seems vouivre oil has awoken some kind of power within you... your throat and chest feel very sore. However, you doubt you'll be able to force out more than one such blast before resting.  (<b>Gained Perk: Dragon fire breath!</b>)");
-            player.createPerk(PerkLib.DragonFireBreath, 0, 0, 0, 0);
+            outputText("[pg]It seems vouivre oil has awoken some kind of power within you... your throat and chest feel very sore. However, you doubt you'll be able to force out more than one such blast before resting.  (<b>Gained Perk: Dragon poison breath!</b>)");
+            player.createPerk(PerkLib.DragonPoisonBreath, 0, 0, 0, 0);
             changes++;
         }
         if (type == 3 && player.isRace(Races.HYDRA, 1, false) && changes < changeLimit && !player.hasPerk(PerkLib.HydraAcidBreath)) {
@@ -18278,4 +18278,4 @@ public final class Mutations extends MutationsHelper {
     }
 }
 
-}
+}

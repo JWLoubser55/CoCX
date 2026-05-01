@@ -2510,47 +2510,84 @@ public class MagicSpecials extends BaseCombatContent {
 	//once a day or something
 	//Effect of attack: Damages and stuns the enemy for the turn you used this attack on, plus 2 more turns. High chance of success.
 	private function dragonBreathsCooldownManagement(type:Number):void {
-		var cooldown:Number = dragonBreathsCooldownManagement1();
-		//if (player.hasPerk(PerkLib.)) cooldown -= dragonBreathsCooldownManagement0();
-		//if (cooldown < 0) cooldown = 0;
 		if (type == 1) player.createStatusEffect(StatusEffects.DragonFireBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonFireBreathCooldown, cooldown, 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown)) player.changeStatusValue(StatusEffects.DragonFireBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonFireBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 		if (type == 2) player.createStatusEffect(StatusEffects.DragonIceBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonIceBreathCooldown, cooldown, 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonIceBreathCooldown)) player.changeStatusValue(StatusEffects.DragonIceBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonIceBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 		if (type == 3) player.createStatusEffect(StatusEffects.DragonLightningBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonLightningBreathCooldown, cooldown, 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonLightningBreathCooldown)) player.changeStatusValue(StatusEffects.DragonLightningBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonLightningBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 		if (type == 4) player.createStatusEffect(StatusEffects.DragonDarknessBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonDarknessBreathCooldown, cooldown, 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown)) player.changeStatusValue(StatusEffects.DragonDarknessBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonDarknessBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 		if (type == 5) player.createStatusEffect(StatusEffects.DragonPoisonBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonPoisonBreathCooldown, cooldown, 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonPoisonBreathCooldown)) player.changeStatusValue(StatusEffects.DragonPoisonBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonPoisonBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 		if (type == 6) player.createStatusEffect(StatusEffects.DragonWaterBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonWaterBreathCooldown, cooldown, 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonWaterBreathCooldown)) player.changeStatusValue(StatusEffects.DragonWaterBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonWaterBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 		if (type == 7) player.createStatusEffect(StatusEffects.DragonFaerieBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonFaerieBreathCooldown, cooldown, 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonFaerieBreathCooldown)) player.changeStatusValue(StatusEffects.DragonFaerieBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonFaerieBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 		if (type == 8) player.createStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown, cooldown, 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown)) player.changeStatusValue(StatusEffects.DragonPoisonousSapBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonPoisonousSapBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 		if (type == 9) player.createStatusEffect(StatusEffects.DragonRoyalBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonRoyalBreathCooldown, cooldown, 0, 0, 0);
-		if (type == 50) player.createStatusEffect(StatusEffects.DragonQuadElementBreathCooldown, dragonBreathsCooldownManagement2(), 0, 0, 0);
-		else player.createStatusEffect(StatusEffects.DragonQuadElementBreathCooldown, cooldown, 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonRoyalBreathCooldown)) player.changeStatusValue(StatusEffects.DragonRoyalBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonRoyalBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
+		if (type == 50) player.createStatusEffect(StatusEffects.DragonQuadElementBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown)) player.changeStatusValue(StatusEffects.DragonQuadElementBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonQuadElementBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 	}
 	private function dragonBreathsCooldownManagement0():Number {
-		var cooldown0:Number = 4;
-		//if (player.hasPerk(PerkLib.)) cooldown0 += 4;
+		var cooldown0:Number = 20;
+		var tier:Number = 0;
+		if (player.hasPerk(PerkLib.WildDrake)) tier += 1;
+		cooldown0 -= dragonBreathSpecialsCooldown(tier);
+		if (cooldown0 < 0) cooldown0 = 0;
 		return cooldown0;
 	}
 	private function dragonBreathsCooldownManagement1():Number {
 		var cooldown1:Number = 20;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) cooldown1 -= 4;
-		if (player.hasPerk(PerkLib.BoomingVoice)) cooldown1 -= 4;
-		if (player.hasPerk(PerkLib.ThunderingEchoes)) cooldown1 -= 4;
-		if (player.hasPerk(PerkLib.Dovakhiin)) cooldown1 -= 4;
+		cooldown1 -= dragonBreathSpecialsCooldown(0);
+		if (cooldown1 < 0) cooldown1 = 0;
 		return cooldown1;
 	}
-	private function dragonBreathsCooldownManagement2():Number {
-		var cooldown2:Number = 12;
-		//if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.hasPerk(PerkLib.)) cooldown2 -= 4;
-		return cooldown2;
+	private function dragonBreathSpecialsCooldown(tiers:Number):Number {
+		var bSC:Number = 0;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) tiers += 1;
+		if (player.hasPerk(PerkLib.BoomingVoice)) tiers += 1;
+		if (player.hasPerk(PerkLib.ThunderingEchoes)) tiers += 1;
+		if (player.hasPerk(PerkLib.Dovakhiin)) tiers += 1;
+		if (tiers > 0) bSC += 4;
+		if (tiers > 1) bSC += 4;
+		if (tiers > 2) bSC += 4;
+		if (tiers > 3) bSC += 4;
+		if (tiers > 4) bSC += 2;
+		if (tiers > 5) bSC += 2;
+		return bSC;
 	}
 	public function dragonfireBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;

@@ -57,6 +57,7 @@ public class GryphonRace extends Race{
 				.hasCockOfType(CockTypesEnum.GRYPHON, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.AviansDescendant, PerkLib.BloodlineAvian);
 		addMutation(IMutationsLib.HarpyHollowBonesIM);
 		
 		buildTier(9,"gryphon")
