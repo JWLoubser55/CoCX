@@ -2564,6 +2564,7 @@ public class MagicSpecials extends BaseCombatContent {
 	private function dragonBreathsCooldownManagement0():Number {
 		var cooldown0:Number = 20;
 		var tier:Number = 0;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && player.isAnyRaceCached(Races.DragonlikeRaces)) tier += 1;
 		if (player.hasPerk(PerkLib.WildDrake)) tier += 1;
 		cooldown0 -= dragonBreathSpecialsCooldown(tier);
 		if (cooldown0 < 0) cooldown0 = 0;
@@ -2577,7 +2578,7 @@ public class MagicSpecials extends BaseCombatContent {
 	}
 	private function dragonBreathSpecialsCooldown(tiers:Number):Number {
 		var bSC:Number = 0;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 1) tiers += 1;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 4 && player.isAnyRaceCached(Races.DragonlikeRaces)) tiers += 1;
 		if (player.hasPerk(PerkLib.BoomingVoice)) tiers += 1;
 		if (player.hasPerk(PerkLib.ThunderingEchoes)) tiers += 1;
 		if (player.hasPerk(PerkLib.Dovakhiin)) tiers += 1;
@@ -2589,12 +2590,34 @@ public class MagicSpecials extends BaseCombatContent {
 		if (tiers > 5) bSC += 2;
 		return bSC;
 	}
+	private function dragonLungsBreathMultis(damage:Number):Number {
+		var dlBMs:Number = damage;
+		var damult:Number = 1;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 4) {
+			if (monster.plural) {
+				if (monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 25;
+				else damage *= 5;
+			}
+			damage *= 2;
+		}
+		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
+		damage *= damult;
+		return dlBMs;
+	}
+	private function dragonLungsBreathMulti():Number {
+		var dlBM:Number = 3;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) dlBM += 6;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 4) dlBM += 9;
+		return dlBM;
+	}
 	public function dragonfireBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
 		var damage:Number = 0;
-		var damult:Number = 1;
 		dragonBreathsCooldownManagement(1);
 		damage += scalingBonusIntelligence() * 10;
 		damage += scalingBonusWisdom() * 10;
@@ -2604,16 +2627,11 @@ public class MagicSpecials extends BaseCombatContent {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 			damage *= 2;
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+		damage = dragonLungsBreathMultis(damage);
 		damage *= magicAbilitiesGoBrrr();
-		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage *= 4;
-		damage *= damult;
 		damage = Math.round(damage);
 		//Shell
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
@@ -2694,16 +2712,12 @@ public class MagicSpecials extends BaseCombatContent {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 			damage *= 2;
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		damage = dragonLungsBreathMultis(damage);
 		if (combat.wearingWinterScarf()) damage *= 1.2;
 		damage *= magicAbilitiesGoBrrr();
-		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
-		damage *= damult;
 		damage = Math.round(damage * combat.iceDamageBoostedByDao());
 		//Shell
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
@@ -2754,16 +2768,12 @@ public class MagicSpecials extends BaseCombatContent {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 			damage *= 2;
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		damage = dragonLungsBreathMultis(damage);
 		if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + (player.lust100 * 0.01));
 		damage *= magicAbilitiesGoBrrr();
-		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
-		damage *= damult;
 		damage = Math.round(damage * combat.lightningDamageBoostedByDao());
 		//Shell
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
@@ -2814,15 +2824,11 @@ public class MagicSpecials extends BaseCombatContent {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 			damage *= 2;
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		damage = dragonLungsBreathMultis(damage);
 		damage *= magicAbilitiesGoBrrr();
-		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
-		damage *= damult;
 		damage = Math.round(damage * combat.darknessDamageBoostedByDao());
 		//Shell
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
@@ -2873,15 +2879,11 @@ public class MagicSpecials extends BaseCombatContent {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 			damage *= 2;
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		damage = dragonLungsBreathMultis(damage);
 		damage *= magicAbilitiesGoBrrr();
-		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
-		damage *= damult;
 		damage = Math.round(damage * combat.poisonDamageBoostedByDao());
 		//Shell
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
@@ -2940,15 +2942,11 @@ public class MagicSpecials extends BaseCombatContent {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 			damage *= 2;
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		damage = dragonLungsBreathMultis(damage);
 		damage *= magicAbilitiesGoBrrr();
-		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
-		damage *= damult;
 		damage = Math.round(damage * combat.waterDamageBoostedByDao());
 		//Shell
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
@@ -2999,15 +2997,11 @@ public class MagicSpecials extends BaseCombatContent {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 			damage *= 2;
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		damage = dragonLungsBreathMultis(damage);
 		damage *= magicAbilitiesGoBrrr();
-		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 6;
-		damage *= damult;
 		damage = Math.round(damage);
 		//Shell
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
@@ -3104,15 +3098,11 @@ public class MagicSpecials extends BaseCombatContent {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 			damage *= 2;
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		damage = dragonLungsBreathMultis(damage);
 		damage *= magicAbilitiesGoBrrr();
-		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
-		damage *= damult;
 		damage = Math.round(damage * (combat.poisonDamageBoostedByDao() + combat.waterDamageBoostedByDao() + combat.earthDamageBoostedByDao() - 2));
 		//Shell
 		if(monster.hasStatusEffect(StatusEffects.Shell)) {
@@ -3167,15 +3157,11 @@ public class MagicSpecials extends BaseCombatContent {
 			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 			damage *= 2;
 		}
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		damage = dragonLungsBreathMultis(damage);
 		damage *= magicAbilitiesGoBrrr();
-		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-		if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
 		damage *= 4;
-		damage *= damult;
 		if (combat.checkConcentration()) return; //Amily concentration
 		outputText("You inhale deeply before releasing a roar so long it erupts into a shockwave of sound pushing debris away and blasting [monster him]! Leaving them stunned and confused and bleeding! ");
 		//Miss:
@@ -3273,8 +3259,8 @@ public class MagicSpecials extends BaseCombatContent {
 				player.removeStatusEffect(StatusEffects.DragonBreathBoost);
 				damage *= 3;
 			}
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += 3;
-			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) damult += 6;
+			if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += (dragonLungsBreathMulti() * 2);
+			damage = dragonLungsBreathMultis(damage);
 			if (player.hasPerk(PerkLib.FireAffinity) || player.hasPerk(PerkLib.FireShadowAffinity) || player.hasPerk(PerkLib.AffinityIgnis)) damage *= 1.25;
 			if (player.hasPerk(PerkLib.ColdMastery) || player.hasPerk(PerkLib.ColdAffinity)) damage *= 1.25;
 			if (player.hasPerk(PerkLib.LightningAffinity)) damage *= 1.25;
@@ -3282,12 +3268,8 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.ElectrifiedDesire)) damage *= (1 + ((player.lust100 * 0.01) * 0.25));
 			if (combat.wearingWinterScarf()) damage *= 1.05;
 			damage *= magicAbilitiesGoBrrr();
-			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-			if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 			if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
-			if (player.headJewelry === headjewelries.DRABLOH) damage *= 1.5;
-			damage *= 4;
-			damage *= damult;
+			damage *= 20;
 			damage = Math.round(damage * (combat.fireDamageBoostedByDao() + combat.iceDamageBoostedByDao() + combat.lightningDamageBoostedByDao() + combat.darknessDamageBoostedByDao() - 3));
 			//Shell
 			if(monster.hasStatusEffect(StatusEffects.Shell)) {
@@ -8088,4 +8070,4 @@ public class MagicSpecials extends BaseCombatContent {
 		enemyAI();
 	}
 }
-}
+}

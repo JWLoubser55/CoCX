@@ -21014,6 +21014,7 @@ public function ghostSpeed():Number {
     var ghostSpeMulti:Number = 0;
     if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) ghostSpeMulti += 0.05;
     if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 3) ghostSpeMulti += 0.1;
+    if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 4) ghostSpeMulti += 0.15;
     if (player.perkv1(IMutationsLib.ElvishPeripheralNervSysIM) >= 1) ghostSpeMulti += 0.05;
     if (player.perkv1(IMutationsLib.ElvishPeripheralNervSysIM) >= 2) ghostSpeMulti += 0.1;
     if (player.perkv1(IMutationsLib.ElvishPeripheralNervSysIM) >= 3) ghostSpeMulti += 0.15;
@@ -21236,4 +21237,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

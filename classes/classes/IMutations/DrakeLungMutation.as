@@ -19,15 +19,25 @@ public class DrakeLungMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+			var dbd:Number = 3;
+			var cSpS:Number = 5;
+			if (pTier >= 3) {
+				dbd += 6;
+				cSpS += 10;
+			}
+			if (pTier >= 4) {
+				dbd += 9;
+				cSpS += 15;
+			}
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
-                descS = "Allows you to use breath attacks more often. (All dragon breaths cooldowns are reduced by 1 increment)";
+                descS += "Allows you to use breath attacks more often. (All dragon breaths (excluding the most recent used) cooldowns are reduced by 1 increment as long PC is having any dragon race score on tier 1+)";
             }
             if (pTier >= 2){
-                descS = "Increases the power of dragon breath attacks threefold. (+300% to dragon breaths damage, +5% of max core Spe as phantom Spe)";
+                descS += " Increases the power of dragon breath attacks. (+"+dbd+"00% to dragon breaths damage, +"+cSpS+"% of max core Spe as phantom Spe)";
             }
-            if (pTier >= 3){
-                descS = "Increases dragon breath attacks power. (+900% to dragon breaths damage, +20% of max core Spe as phantom Spe)";
+            if (pTier >= 4){
+                descS += " Dragon breaths would deal higher damage against single and group enemies. The larger group the higher bonus damage. (2x/10x/50x) All dragon breaths cooldowns are reduced by 1 increment as long PC is having any dragon race score on tier 1+.";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -59,11 +69,12 @@ public class DrakeLungMutation extends IMutationPerkType
             if (pTier == 1) pBuffs['spe.mult'] = 0.05;
             if (pTier == 2) pBuffs['spe.mult'] = 0.15;
             if (pTier == 3) pBuffs['spe.mult'] = 0.35;
+            if (pTier == 3) pBuffs['spe.mult'] = 0.75;
             return pBuffs;
         }
 
         public function DrakeLungMutation() {
-            super(MNAME, SLOT_LUNGS, 3);
+            super(MNAME, SLOT_LUNGS, 4);
         }
 
     }
