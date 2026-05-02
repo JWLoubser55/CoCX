@@ -3519,6 +3519,8 @@ doNext(StripClub);
 
     private function GiveMeilaTF():void {
         clearOutput();
+        menu();
+        addButton (14, "Back", DDullahanStatus);
     }
 
     private function GiveMeilaGoblin():void {
@@ -3938,12 +3940,13 @@ doNext(FoodHall);
             outputText("“Ceraph brought me in to act as quartermaster for this operation of hers. Every business needs a logistics guy, and I’m the best.” He says this simply, no sense of bragging in his voice. “Instead of a gaggle of variously qualified merchants, I’m the only one selling shit here. Once you order something, my girls will grab what you ordered.” \n\n");
             outputText("You ask what Ceraph could be selling, and he grins. “While the biolabs have been shut down, there was a lot of other stuff being made here. Weapons, armor, that sort of thing.” He spreads his arms wide. “All that needs to be sorted, organized and logged before it can be sold.” He rubs his hands together, and his ladies fly back to him, still holding their clipboards. “Now, if you don’t mind, either buy something, or let me work. And no, the ladies aren’t for sale.” He gives one of the movers an annoyed glance. “As someone else has already found out”. \n\n");
             outputText("“My name is Jabba. I was one of the second generation of demons on Mareth.” He chuckles. “In the early days, there was more…diversity, shall we say, in demonkind. Not everyone turned for sexual pleasure, it’s just the most common.” \n\n");
-            //if PC is female
-            outputText("He looks you up and down, a greedy look on his face. “My, my…I must admit, I’m a little surprised at your beauty…Champion.” He pats a spare collar, dangling from his belt. “Such a stressful life, so much pressure on that pretty face.” You can see the bulge in his pants as he stands, licking his lips. “Should you feel the need to…Destress, my ladies here find that a few hours blissfully unaware can do wonders for one’s mental health.” \n\n");
+            if (player.gender == 2) {
+                outputText("He looks you up and down, a greedy look on his face. “My, my…I must admit, I’m a little surprised at your beauty…Champion.” He pats a spare collar, dangling from his belt. “Such a stressful life, so much pressure on that pretty face.” You can see the bulge in his pants as he stands, licking his lips. “Should you feel the need to…Destress, my ladies here find that a few hours blissfully unaware can do wonders for one’s mental health.” \n\n") ;
             outputText("Seeing your…less than enthusiastic reaction, he holds up both hands. “Oh, there’s no need to worry. This isn’t anything nefarious, my dear. The collars come off easily, and there are numerous safeties built in. Nothing untoward will happen to you without your permission…Aside from some potentially embarrassing exposure, but nothing we’re not seeing on a daily basis here.” \n\n");
-            //if PC is not female
-            outputText("“I offer my services to all demons welcome in the domain, as well as my connections to the various armories worldwide…Although perhaps my collars would be of interest to you. I am told that your life here on Mareth is…Quite stressful. A few hours wearing one of these, and you’ll feel much better.” \n\n");
-
+        }
+            if (player.gender != 2) {
+                outputText("“I offer my services to all demons welcome in the domain, as well as my connections to the various armories worldwide…Although perhaps my collars would be of interest to you. I am told that your life here on Mareth is…Quite stressful. A few hours wearing one of these, and you’ll feel much better.” \n\n");
+            }
             outputText("Crossing your arms, you tell him to tell you exactly what he means by that. He seems pleased by this, and he grins widely, revealing slightly stained teeth. \n\n" +
                     "“Simply put, dear champion, these collars temporarily numb the higher functions of your mind. Thoughts become harder to formulate, complex subjects become impossible to grasp. While you wear one, the collar will also nudge you towards things, tasks that have been predetermined.” \n\n");
             outputText("This sounds really suspect, and the look on your face says it all. Jabba rolls his eyes. “Perhaps a demonstration would suffice?” He motions, and an extremely muscular demon woman puts down the box she’s lifting and walks over. While she’s dressed in the same pasties and thong as the others, the black complementing her bright red skin, her muscles are extremely defined. She’s RIPPED. “This beauty here wants the body of an Amazonian Goddess, but struggles with holding the focus required to maintain such a physique. So, her collar nudges her towards physical tasks that require her strength. She’s a huge help around the Domain, maintains her ideal musculature, and gets paid on top of it.” \n\n");
@@ -4120,14 +4123,16 @@ doNext(FoodHall);
             NolanState = 3;
         }
         else if (NolanState ==3) {
-            outputText("As you approach, Nolan looks up, nodding at you. “Pull up a chair, [sir/ma’am]. I’ll be right with you.” He folds his laptop, looking you in the eyes. “What brings you to my desk?”\n\n");
+            outputText("As you approach, Nolan looks up, nodding at you. “Pull up a chair. I’ll be right with you.” He folds his laptop, looking you in the eyes. “What brings you to my desk?”\n\n");
         }
         menu();
         addButton(0, "Appearance", NolanAppearance);
         addButton(1, "Talk", NolanTalk);
         addButton(2, "Business", NolanQuestMenu);
-        addButton(3, "TakeOver", NolanTakeOverTalk);
-
+        if (NolanState == 4 && NolanQuest1State ==2 && NolanQuest2State ==2 && NolanQuest3State ==2 && NolanQuest4State ==2 && NolanQuest5State ==2 && NolanQuest6State ==2 && NolanQuest7State ==2 ) {
+            addButton(3, "TakeOver", NolanTakeOverTalk);
+        }
+        addButton(14, "Back", StripClub);
     }
 
     private function NolanAppearance():void {
@@ -4145,6 +4150,7 @@ doNext(FoodHall);
         if (NolanState == 4 && NolanQuest1State ==2 && NolanQuest2State ==2 && NolanQuest3State ==2 && NolanQuest4State ==2 && NolanQuest5State ==2 && NolanQuest6State ==2 && NolanQuest7State ==2 ) {
             addButton(3, "TakeOver", NolanTakeOverTalk);
         }
+        addButton(14, "Back", StripClub);
     }
 
     private function NolanQuestMenu():void {
@@ -4832,7 +4838,7 @@ doNext(FoodHall);
     private function GamerGobAssPlay():void {
         outputText("YFeeling a little kinky, you decide that the black toy shouldn’t remain unused. You line it up with your [asshole], and slowly pry yourself open, spreading your cheeks as you lower yourself down onto the seat. You hear a slight whistle, and turn your head, to see Akaassaa watching, nodding appreciatively.  \n\n");
         outputText("“Nice!” She declares, giving you a thumbs up. “I’ll just hook that up to your controller.” She does something on the computer, and you feel the dildo vibrate inside your ass.  \n\n");
-        outputText("Akaasaa watches your face as you finally insert it all the way, your [asscheeks] resting comfortably on the chair before returning. She grins, making sure your groin is exposed, before coming around the side. “Uh…Gimme a hand up, wouldya?”  \n\n");
+        outputText("Akaasaa watches your face as you finally insert it all the way, your asscheeks resting comfortably on the chair before returning. She grins, making sure your groin is exposed, before coming around the side. “Uh…Gimme a hand up, wouldya?”  \n\n");
         outputText(" \n\n");
         doNext(GameSelectGoblin);
     }
