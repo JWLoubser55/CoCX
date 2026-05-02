@@ -381,8 +381,8 @@ public class Changelog extends BaseContent
 			outputText("-Vouivre dragon breath changed from fire to poison one.\n");
 			outputText("-New mutation perk: Drake Lung (Final Form). Req. Drake Lung (Evolved) and lvl 90+. Effects: Allows you to use breath attacks more often. (All dragon breaths (excluding the most recent used) cooldowns are reduced by 1 increment as long PC is having any dragon race score on tier 1+) Increases the power of dragon breath attacks. ");
 			outputText("(+1800% to dragon breaths damage, +30% of max core Spe as phantom Spe) Dragon breaths would deal higher damage against single and group enemies. The larger group the higher bonus damage. (2x/10x/50x) All dragon breaths cooldowns are reduced by 1 increment as long PC is having any dragon race score on tier 1+.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Drake Bones (Final Form). Req. Drake Bones (Evolved) and lvl 90+. Effects: Increases toughness, increases unarmed attack damage by 70 + an additional 75%, 15% physical and magical damage reduction, +30% phantom toughness, receives +25 to DR from toughness, +25% OverMax HP.\n");
+			outputText("-New mutation perk: Drake Heart (Final Form). Req. Drake Heart (Evolved) and lvl 90+. Effects: Your heart metamorphosis reached drake level. (+20 SF & Mana / +4 Wrath & Fatigue regen; +2% HP, +1% SF / Mana, +0.25% Fatigue / Wrath regen (doubled when having Drake Blood (Final Form) IM); +30% of max core Str as phantom Str)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -438,8 +438,9 @@ public class Changelog extends BaseContent
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach without becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
 			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, Sidone ");
 			outputText("help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, cave wyrm tongue desc been draconic not cave wyrm, some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling weapons scaling on wrong values, Blade Grass missing tf effects ");
-			outputText("for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, Neisa interactable when she's training, Cold Affinity lost while been Wendigo, missing 2 more ");
-			outputText("feral combat claws attacks for Wendigo, Mindbreakers mind meld usable on unique NPC's, ignoring effects of perks like Natural Herbalism when crafting potions causing overfill storage bags\n\n");
+			outputText("for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, Neisa interactable when she's training, Cold Affinity lost while been Wendigo, missing 2 more feral combat claws attacks for Wendigo, ");
+			outputText("Mindbreakers mind meld usable on unique NPC's, ignoring effects of perks like Natural Herbalism when crafting potions causing overfill storage bags, Couatl Oil not giving yellow scales color");
+			outputText("\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9b:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");

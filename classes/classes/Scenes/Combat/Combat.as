@@ -9211,6 +9211,7 @@ public class Combat extends BaseContent {
         if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 1) unarmed += 10 * (1 + player.newGamePlusMod());
         if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 2) unarmed += 10 * (1 + player.newGamePlusMod());
         if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 3) unarmed += 20 * (1 + player.newGamePlusMod());
+        if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 4) unarmed += 30 * (1 + player.newGamePlusMod());
 		if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 1) {
 			if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 2) {
 				if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 3) {
@@ -9230,6 +9231,7 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.LegendaryBrawn)) unarmedMulti += .25;
         if (player.hasPerk(PerkLib.MythicalBrawn)) unarmedMulti += .3;
         if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 3) unarmedMulti += .5;
+        if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 4) unarmedMulti += .25;
         unarmed *= unarmedMulti;
         unarmed = Math.round(unarmed);
         return unarmed;
@@ -15072,6 +15074,10 @@ public class Combat extends BaseContent {
 			maxPercentRegen += lizanRegen;
 		}
 		if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) maxPercentRegen += 1;
+		if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 4) {
+			if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 4) maxPercentRegen += 3;
+			else maxPercentRegen += 1;
+		}
 		if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 1) maxPercentRegen += player.perkv1(IMutationsLib.DrakeBloodIM);
         if (player.perkv1(IMutationsLib.EclipticMindIM) >= 3) maxPercentRegen += 1.5;
         if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 1 && !player.hasStatusEffect(StatusEffects.WereraceRegenerationDisabled)) {
@@ -15187,6 +15193,10 @@ public class Combat extends BaseContent {
 			maxRegen += lizanRegenMax;
 		}
 		if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) maxRegen += 1;
+		if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 4) {
+			if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 4) maxRegen += 3;
+			else maxRegen += 1;
+		}
 		if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 1) maxRegen += player.perkv1(IMutationsLib.DrakeBloodIM);
         if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 1 && !player.hasStatusEffect(StatusEffects.WereraceRegenerationDisabled)) {
 			var hbr:Number = 0.5;
@@ -15298,6 +15308,11 @@ public class Combat extends BaseContent {
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 1) fatiguecombatrecovery += 1;
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 2) fatiguecombatrecovery += 1;
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) fatiguecombatrecovery += 1;
+		if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 4) {
+			fatiguecombatrecovery += 1;
+			if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 4) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.005);
+			else fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.0025);
+		}
 		if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 3) fatiguecombatrecovery += 5;
 		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.05 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
 		if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) fatiguecombatrecovery += 10;
@@ -15405,9 +15420,14 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.SoulKing)) soulforceregen += 10;
         if (player.hasPerk(PerkLib.SoulEmperor)) soulforceregen += 10;
         if (player.hasPerk(PerkLib.SoulAncestor)) soulforceregen += 12;
-        if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 1) soulforceregen += 4;
-        if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 2) soulforceregen += 4;
-        if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) soulforceregen += 4;
+        if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 1) soulforceregen += 5;
+        if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 2) soulforceregen += 5;
+        if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) soulforceregen += 5;
+        if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 4) {
+			soulforceregen += 5;
+			if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 4) soulforceregen += Math.round(player.maxSoulforce() * 0.02);
+			else soulforceregen += Math.round(player.maxSoulforce() * 0.01);
+		}
 		if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 1) soulforceregen += Math.round(player.maxSoulforce() * 0.01 * player.perkv1(IMutationsLib.DrakeBloodIM));
 		if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 2) soulforceregen += 40;
         if (player.perkv1(IMutationsLib.KitsuneParathyroidGlandsIM) >= 3 && player.hasPerk(PerkLib.StarSphereMastery)) soulforceregen += (player.perkv1(PerkLib.StarSphereMastery) * 4);
@@ -15519,6 +15539,11 @@ public class Combat extends BaseContent {
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 1) manaregen += 5;
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 2) manaregen += 5;
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) manaregen += 5;
+        if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 4) {
+			manaregen += 5;
+			if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 4) manaregen += Math.round(player.maxMana() * 0.02);
+			else manaregen += Math.round(player.maxMana() * 0.01);
+		}
 		if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 1) manaregen += Math.round(player.maxMana() * 0.01 * player.perkv1(IMutationsLib.DrakeBloodIM));
         if (player.perkv1(IMutationsLib.FeyArcaneBloodstreamIM) >= 1) manaregen += 5;
         if (player.perkv1(IMutationsLib.FeyArcaneBloodstreamIM) >= 2) manaregen += 10;
@@ -15647,6 +15672,11 @@ public class Combat extends BaseContent {
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 1) wrathregen += 1;
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 2) wrathregen += 1;
         if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) wrathregen += 1;
+        if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 4) {
+			wrathregen += 1;
+			if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 4) wrathregen += Math.round(player.maxWrath() * 0.005);
+			else wrathregen += Math.round(player.maxWrath() * 0.0025);
+		}
         if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 3) wrathregen += 4;
         if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) wrathregen += 4;
         if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4) wrathregen += 16;
@@ -20934,6 +20964,7 @@ public function ghostStrength():Number {
     if (player.hasPerk(PerkLib.MythicalBrawn)) ghostStrMulti2 += .35;
     if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 2) ghostStrMulti += 0.05;
     if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 3) ghostStrMulti += 0.1;
+	if (player.perkv1(IMutationsLib.DrakeHeartIM) >= 4) ghostStrMulti += 0.15;
     if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 1) ghostStrMulti += 0.05;
     if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 2) ghostStrMulti += 0.1;
     if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 3) ghostStrMulti += 0.15;
@@ -21037,6 +21068,7 @@ public function ghostToughness():Number {
     var ghostTouMulti:Number = 0;
     if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 2) ghostTouMulti += 0.05;
     if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 3) ghostTouMulti += 0.1;
+    if (player.perkv1(IMutationsLib.DrakeBonesIM) >= 4) ghostTouMulti += 0.15;
     if (player.perkv1(IMutationsLib.HumanFatIM) >= 2 && player.racialScore(Races.HUMAN) > 17) ghostTouMulti += 0.15;
     if (player.perkv1(IMutationsLib.HumanFatIM) >= 3 && player.racialScore(Races.HUMAN) > 17) ghostTouMulti += 0.3;
     if (player.perkv1(IMutationsLib.HumanFatIM) >= 4 && player.racialScore(Races.HUMAN) > 17) ghostTouMulti += 0.45;

@@ -52,7 +52,7 @@ public class DragonRace extends Race {
 				.scaleColors(NOT("pinkish purple"), 0, -10)
 				.hairColor1(NOT("pink"), 0, -10)
 				.eyeType(Eyes.DRACONIC, +1)
-				.eyeType(NOT(Eyes.CAT), 0, -10)
+				.eyeType(NONE(Eyes.CAT, Eyes.FERAL), 0, -10)
 				.earType(Ears.DRAGON, +1)
 				.earType(NOT(Ears.CAT), 0, -10)
 				.tailType(Tail.DRACONIC, +1)
@@ -70,7 +70,7 @@ public class DragonRace extends Race {
 				.skinCoatType(Skin.DRAGON_SCALES, +1)
 				.hornType(Horns.DRACONIC_X2, +1)
 				.hornType(Horns.DRACONIC_X4_12_INCH_LONG, +2)
-				.hornType(NOT(Horns.FROSTWYRM), 0, -3)
+				.hornType(NONE(Horns.FROSTWYRM, Horns.GOAT, Horns.GOATQUAD), 0, -3)
 				.hasCockOfType(CockTypesEnum.DRAGON, +1)
 				.gender(Gender.GENDER_FEMALE, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);

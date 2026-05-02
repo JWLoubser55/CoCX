@@ -527,6 +527,7 @@ import classes.Scenes.NPCs.Forgefather;
 			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) maxOver2 += 0.1;
 			if (perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxOver2 += 0.2;
 			if (perkv1(IMutationsLib.HumanBonesIM) >= 4) maxOver2 += 0.1;
+			if (perkv1(IMutationsLib.DrakeBonesIM) >= 4) maxOver2 += 0.25;
 			if (hasPerk(PerkLib.Soulless)) maxOver2 += (0.01 * level);
 			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
 			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));

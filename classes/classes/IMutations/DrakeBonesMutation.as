@@ -22,15 +22,30 @@ public class DrakeBonesMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+			var uad:Number = 10;
+			var uad2:Number = 50;
+			var pt:Number = 5;
+			if (pTier >= 2) uad += 10;
+			if (pTier >= 3) {
+				uad += 20;
+				pt += 10;
+			}
+            if (pTier >= 4) {
+				uad += 30;
+				pt += 15;
+			}
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
-                descS = "Increases toughness, increases unarmed attack damage by 10";
+                descS += "Increases toughness, increases unarmed attack damage by "+uad+"";
+            }
+			if (pTier >= 3){
+                descS += " + an additional "+uad2+"%";
             }
             if (pTier >= 2){
-                descS = "Increases toughness further, increases unarmed attack damage by 20, 5% damage reduction from physical and magical attacks, +5% phantom toughness";
+                descS += ", "+((pTier - 1) * 5)+"% physical and magical damage reduction, +"+pt+"% phantom toughness";
             }
-            if (pTier >= 3){
-                descS = "Increases toughness even further, increases unarmed attack damage by 40 + an additional 50%, 10% physical and magical damage reduction, +15% phantom toughness";
+            if (pTier >= 4){
+                descS += ", receives +25 to DR from toughness, +25% OverMax HP";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -70,11 +85,12 @@ public class DrakeBonesMutation extends IMutationPerkType
             if (pTier == 1) pBuffs['tou.mult'] = 0.05;
             if (pTier == 2) pBuffs['tou.mult'] = 0.15;
             if (pTier == 3) pBuffs['tou.mult'] = 0.35;
+            if (pTier == 4) pBuffs['tou.mult'] = 0.75;
             return pBuffs;
         }
 
         public function DrakeBonesMutation() {
-            super(MNAME, SLOT_BONE, 3);
+            super(MNAME, SLOT_BONE, 4);
         }
 
     }

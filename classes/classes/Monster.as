@@ -453,6 +453,8 @@ import flash.utils.getQualifiedClassName;
 			}
 			if (perkv1(IMutationsLib.LizanMarrowIM) >= 4) maxOver2 += 0.1;
 			if (perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxOver2 += 0.2;
+			if (perkv1(IMutationsLib.HumanBonesIM) >= 4) maxOver2 += 0.1;
+			if (perkv1(IMutationsLib.DrakeBonesIM) >= 4) maxOver2 += 0.25;
 			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
 			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
 			maxOver *= maxOver2;//~290%
@@ -3688,6 +3690,10 @@ import flash.utils.getQualifiedClassName;
 					healingPercent += lizanRegenM;
 				}
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) healingPercent += 1;
+				if (perkv1(IMutationsLib.DrakeHeartIM) >= 4) {
+					if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 4) healingPercent += 3;
+					else healingPercent += 1;
+				}
 				if (perkv1(IMutationsLib.DrakeBloodIM) >= 1) healingPercent += perkv1(IMutationsLib.DrakeBloodIM);
 				if (perkv1(IMutationsLib.FerasBirthrightIM) >= 1 && !hasStatusEffect(StatusEffects.WereraceRegenerationDisabled) && !hasStatusEffect(StatusEffects.RegenInhibitorPetrify)) {
 					var br:Number = 0.5;
@@ -3825,9 +3831,14 @@ import flash.utils.getQualifiedClassName;
 				if (hasPerk(PerkLib.DaoistMDHiFElderStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
 				if (hasPerk(PerkLib.DaoistMDHiFOverlordStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
 				if (hasPerk(PerkLib.DaoistMDHiFTyrantStage)) soulforceRecovery += Math.round(maxSoulforce() * 0.01);
-				if (perkv1(IMutationsLib.DrakeHeartIM) >= 1) soulforceRecovery += 4;
-				if (perkv1(IMutationsLib.DrakeHeartIM) >= 2) soulforceRecovery += 4;
-				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) soulforceRecovery += 4;
+				if (perkv1(IMutationsLib.DrakeHeartIM) >= 1) soulforceRecovery += 5;
+				if (perkv1(IMutationsLib.DrakeHeartIM) >= 2) soulforceRecovery += 5;
+				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) soulforceRecovery += 5;
+				if (perkv1(IMutationsLib.DrakeHeartIM) >= 4) {
+					soulforceRecovery += 5;
+					if (perkv1(IMutationsLib.DrakeBloodIM) >= 4) soulforceRecovery += Math.round(maxSoulforce() * 0.02);
+					else soulforceRecovery += Math.round(maxSoulforce() * 0.01);
+				}
 				if (perkv1(IMutationsLib.DrakeBloodIM) >= 1) soulforceRecovery += Math.round(maxSoulforce() * 0.01 * perkv1(IMutationsLib.DrakeBloodIM));
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 1) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
 				if (perkv1(IMutationsLib.WhiteFacedOneBirthrightIM) >= 2) soulforceRecovery += Math.round(maxSoulforce() * 0.0025 * this.tailCount);
@@ -3856,6 +3867,11 @@ import flash.utils.getQualifiedClassName;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 1) manaRecovery += 5;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 2) manaRecovery += 5;
 				if (perkv1(IMutationsLib.DrakeHeartIM) >= 3) manaRecovery += 5;
+				if (perkv1(IMutationsLib.DrakeHeartIM) >= 4) {
+					manaRecovery += 5;
+					if (perkv1(IMutationsLib.DrakeBloodIM) >= 4) manaRecovery += Math.round(maxMana() * 0.02);
+					else manaRecovery += Math.round(maxMana() * 0.01);
+				}
 				if (perkv1(IMutationsLib.DrakeBloodIM) >= 1) manaRecovery += Math.round(maxMana() * 0.01 * perkv1(IMutationsLib.DrakeBloodIM));
 				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3) manaRecovery += Math.round(maxMana() * 0.005 * (perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));
 				if (hasPerk(PerkLib.GreyMageApprentice)) manaRecoveryMulti += 0.25;

@@ -38,8 +38,10 @@ public class WeredragonRace extends Race {
     
     public override function setup():void {
         addScores()
-                //.start ctrl-spacing here
-                .hasPerk(PerkLib.GOBXChemical, -1000);
+                .eyeType(Eyes.FERAL, +2)
+				.eyeType(NOT(Eyes.DRACONIC), 0,-7)
+				.hasPerk(PerkLib.DragonFireBreath, +1)
+				.hasPerk(PerkLib.GOBXChemical, -1000);
 
         buildTier(12, "weredragon hatchling")
                 .buffs({

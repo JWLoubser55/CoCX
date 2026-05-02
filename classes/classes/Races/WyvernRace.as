@@ -38,8 +38,12 @@ public class WyvernRace extends Race {
     
     public override function setup():void {
         addScores()
-                //.start ctrl-spacing here
-                .hasPerk(PerkLib.GOBXChemical, -1000);
+                .skinCoatType(Skin.FEATHER, +1)
+				.wingType(Wings.FEATHERED_LARGE, +4)
+				.faceType(ANY(Face.DRAGON, Face.DRAGON_FANGS), +1)
+				.eyeType(Eyes.DRACONIC, +1)
+				.tongueType(Tongue.DRACONIC, +1)
+				.hasPerk(PerkLib.GOBXChemical, -1000);
 
         buildTier(12, "wyvern hatchling")
                 .buffs({
