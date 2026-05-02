@@ -236,9 +236,7 @@ public function MouseTownUpdate():void {
 		MousetownPopulation = MouseTownPopCap;
 	}
 
-	if (JojoyLitters) {
-		prosperityvar += 2;
-	}
+
 	prosperityvar += (MousetownPopulation / 20);
 	if (WellBuilt) {
 		prosperityvar += 1;
@@ -254,6 +252,9 @@ public function MouseTownUpdate():void {
 	}
 	if (TelAdreScouts == 1) {
 		prosperityvar += 1;
+	}
+	if (JojoyLitters) {
+		prosperityvar += 2;
 	}
 	if (FarmSeen) {
 		prosperityvar += 1;
