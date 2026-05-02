@@ -161,6 +161,7 @@ public class Races {
 	public static const CAVESTALKER:CaveStalkerRace		   		= new CaveStalkerRace(136);
 	public static const SUNPRAYINGMANTIS:SunPrayingMantisRace	= new SunPrayingMantisRace(137);
 	public static const MOONREINDEER:MoonReindeerRace			= new MoonReindeerRace(138);
+	//public static const WEREDRAGON:WereravenRace			   	= new (139);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [

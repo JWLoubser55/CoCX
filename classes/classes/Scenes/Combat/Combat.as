@@ -14797,6 +14797,11 @@ public class Combat extends BaseContent {
 				}
 			}
 		}
+		//Dovakhiin boost
+		if (player.hasStatusEffect(StatusEffects.Dovakhiin)) {
+			player.addStatusValue(StatusEffects.Dovakhiin, 2, -1);
+			if (player.statusEffectv2(StatusEffects.Dovakhiin) <= 0) player.removeStatusEffect(StatusEffects.Dovakhiin);
+		}
         //Punishing Kick
         if (player.hasStatusEffect(StatusEffects.CooldownPunishingKick)) {
             if (player.statusEffectv1(StatusEffects.CooldownPunishingKick) <= 0) {
@@ -17137,7 +17142,8 @@ public function SingDevastatingAria():void {
 	if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 	if (player.hasPerk(PerkLib.PerformancePower)) damage *= (1 + player.perkv1(PerkLib.PerformancePower));
 	if (player.hasPerk(PerkLib.WailOfTheBanshee) && player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 2) damage *= ectoplasmEsseBon();
-	if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
+	if (player.hasPerk(PerkLib.BoomingVoice)) damage *= boomingVoiceBoost();
+	if (player.hasPerk(PerkLib.Dovakhiin)) dovakhiinBoost();
     if (player.perkv1(IMutationsLib.MelkieLungIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.MelkieLungIM)));
 	if (player.weapon == weapons.HELLCAL) damage *= 1.5;
     damage = Math.round(damage);
@@ -20861,13 +20867,21 @@ public function hollowSkillsAndSoulskillsBoost():Number {
 public function boomingVoiceBoost():Number {
 	var booming:Number = 1.25;
 	if (player.hasPerk(PerkLib.ThunderingEchoes)) booming += 0.25;
-	//if (player.hasPerk(PerkLib.)) booming += 0.25;
+	if (player.hasPerk(PerkLib.Dovakhiin) && player.statusEffectv1(StatusEffects.Dovakhiin) > 0) booming += (0.25 * player.statusEffectv1(StatusEffects.Dovakhiin));
 	return booming;
+}
+public function dovakhiinBoost():void {
+	if (player.hasStatusEffect(StatusEffects.Dovakhiin)) {
+		if (player.statusEffectv1(StatusEffects.Dovakhiin) < 4) player.addStatusValue(StatusEffects.Dovakhiin, 1, 1);
+		player.changeStatusValue(StatusEffects.Dovakhiin, 2, 2);
+	}
+	else player.createStatusEffect(StatusEffects.Dovakhiin, 1, 2, 0, 0);
 }
 public function breathSpecialsCooldown(tiers:Number):Number {
 	var bSC:Number = 0;
 	if (player.hasPerk(PerkLib.BoomingVoice)) tiers += 1;
 	if (player.hasPerk(PerkLib.ThunderingEchoes)) tiers += 1;
+	if (player.hasPerk(PerkLib.Dovakhiin)) tiers += 1;
 	if (tiers > 0) bSC += 4;
 	if (tiers > 1) bSC += 4;
 	if (tiers > 2) bSC += 2;

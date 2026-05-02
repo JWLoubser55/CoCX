@@ -55,6 +55,7 @@ public class PeacockRace extends Race{
 				.hasCockOfType(CockTypesEnum.AVIAN, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.AviansDescendant, PerkLib.BloodlineAvian);
 		addMutation(IMutationsLib.HarpyHollowBonesIM);
 		
 		buildTier(9, "peafowl-morph")
