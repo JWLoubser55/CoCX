@@ -14,6 +14,7 @@ import classes.internals.SaveableState;
 		public static var CailinSeenState:int;
 		public static var CailinTitSize:int;
 		public static var CailinWingState:int;
+		public static var CailinLegsState:int;
 		public static var CailinHipState:int;
 		public static var CailinAssState:int;
 		public static var CailinAffection:int;
@@ -32,17 +33,18 @@ import classes.internals.SaveableState;
 		}
 
 		public function resetState():void {
-			CailinSeenState =0;
-			CailinTitSize =0;
-			CailinWingState =0;
-			CailinHipState =0;
-			CailinAssState =0;
-			CailinAffection =0;
-			CailinIgnamState =0;
-			CailinSeenBolthole =0;
-			CailinBurkerKingState =0;
-			CailinPreg =0;
-			CailinSnekKids =0;
+			CailinSeenState = 0;
+			CailinTitSize = 0;
+			CailinWingState = 0;
+			CailinLegsState = 1;
+			CailinHipState = 0;
+			CailinAssState = 0;
+			CailinAffection = 0;
+			CailinIgnamState = 0;
+			CailinSeenBolthole = 0;
+			CailinBurkerKingState = 0;
+			CailinPreg = 0;
+			CailinSnekKids = 0;
 		}
 
 		public function saveToObject():Object {
@@ -50,6 +52,7 @@ import classes.internals.SaveableState;
 				"CailinSeenState": CailinSeenState,
 				"CailinTitSize": CailinTitSize,
 				"CailinWingState": CailinWingState,
+				"CailinLegsState": CailinLegsState,
 				"CailinHipState": CailinHipState,
 				"CailinAssState": CailinAssState,
 				"CailinAffection": CailinAffection,
@@ -66,6 +69,7 @@ import classes.internals.SaveableState;
 				CailinSeenState = o["CailinSeenState"];
 				CailinTitSize= o["CailinTitSize"];
 				CailinWingState= o["CailinWingState"];
+				CailinLegsState= o["CailinLegsState"];
 				CailinHipState= o["CailinHipState"];
 				CailinAssState= o["CailinAssState"];
 				CailinAffection= o["CailinAffection"];
