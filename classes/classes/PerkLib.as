@@ -4517,6 +4517,8 @@ public class PerkLib
 				"Causes you to crave milk frequently.");
 		public static const Dracoforce:PerkType = mk("Dracoforce", "Dracoforce",
 				"Increase your total Strength and Toughness by 50%.");
+		public static const DragonBlackIceBreath:PerkType = mk("Dragon black ice breath", "Dragon black ice breath",
+				"Allows access to a dragon black ice breath attack.");
 		public static const DragonDarknessBreath:PerkType = mk("Dragon darkness breath", "Dragon darkness breath",
 				"Allows access to a dragon darkness breath attack.");
 		public static const DragonEarthBreath:PerkType = mk("Dragon earth breath", "Dragon earth breath",

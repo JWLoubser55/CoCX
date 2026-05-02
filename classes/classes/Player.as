@@ -3162,6 +3162,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.SecondWind)) dmmm += 13;
 			if (hasPerk(PerkLib.BrutalOpening)) dmmm += 14;
 			if (hasPerk(PerkLib.LingeringOpening)) dmmm += 15;
+			if (perkv1(IMutationsLib.DrakeBonesIM) >= 4) dmmm += 25;
 			dmm += dmmc;
 			dmm += dmmt;
 			dmm += dmmm;
@@ -3552,6 +3553,9 @@ use namespace CoC;
 			if (perkv1(IMutationsLib.DrakeBonesIM) >= 3) {
 				mult -= 5;
 			}
+			if (perkv1(IMutationsLib.DrakeBonesIM) >= 4) {
+				mult -= 5;
+			}
 			if (perkv1(IMutationsLib.WhaleFatIM) >= 1) {
 				mult -= 5;
 			}
@@ -3743,6 +3747,9 @@ use namespace CoC;
 				mult -= 5;
 			}
 			if (perkv1(IMutationsLib.DrakeBonesIM) >= 3) {
+				mult -= 5;
+			}
+			if (perkv1(IMutationsLib.DrakeBonesIM) >= 4) {
 				mult -= 5;
 			}
 			if (perkv1(IMutationsLib.MelkieLungIM) >= 1) {

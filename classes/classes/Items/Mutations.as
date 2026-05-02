@@ -5547,7 +5547,7 @@ public final class Mutations extends MutationsHelper {
             if (rand(10) == 0) {
                 colors = ["purple", "silver"];
             } else {
-                colors = ["red", "green", "white", "blue", "black"];
+                colors = ["red", "green", "white", "blue", "black", "yellow"];
             }
             outputText("[pg]");
             transformations.SkinScales(Skin.COVERAGE_LOW, {colors: colors}).applyEffect();
@@ -5706,7 +5706,7 @@ public final class Mutations extends MutationsHelper {
             if (rand(10) == 0) {
                 colors = ["purple", "silver"];
             } else {
-                colors = ["red", "green", "white", "blue", "black"];
+                colors = ["red", "green", "white", "blue", "black", "yellow"];
             }
             outputText("[pg]");
             transformations.SkinScales(Skin.COVERAGE_COMPLETE, {colors: colors}).applyEffect();
@@ -18278,4 +18278,4 @@ public final class Mutations extends MutationsHelper {
     }
 }
 
-}
+}

@@ -211,7 +211,8 @@ public class Changelog extends BaseContent
 			outputText("Encountered in Defiled Ravine. Gem Golem - lvl 66. Matango - lvl 48. Dark Elf Scout - lvl 60. Encountered in Caves. Adamantine Golem - lvl 89. Automaton - lvl 74. Werespider - lvl 83. Dark Elf Slaver - lvl 80. Encountered in Tunnels. True Lightning Golem - lvl 81. Encountered in Cliffs. True Darkness Golem - lvl 76, Primordial Displacer Beast - lvl 84. Encountered in Lightless Reach. ");
 			outputText("Barometz - lvl 50. Encountered in Deepwoods. Earth Elemental - lvl 16/26/106. Encountered in Outer Desert / Inner Desert / Tunnels (it temporaly traveled from bedrock region and req. lvl 88+ to encounter). Water Elemental - lvl 18/86/106. Encountered when using Lake Boat/Sea Boat. Wind Elemental - lvl 16/26/56/86. Encountered in Outer Desert / Inner Desert / Mountains / High Mountains. ");
 			outputText("Fire Elemental - lvl 76/106. Encountered in Ashlands / Outer Vulcanic Crag. Ice Elemental - lvl 70/100. Encountered in Tundra / Outer Glacial Rift. Lightning Elemental - lvl 100. Encountered in Cliffs. Lightning Elemental - lvl 90. Encountered in Lightless Reach. ");
-			outputText("Kasha - lvl 87. Encountered in Outer Vulcanic Crag. Hollow - lvl 19 / 31. Encountered in Outer Desert / Plains at night. Wraith - lvl 22 / 43. Encountered in Inner Forest / Deepwoods / Blight Ridge at night.");
+			outputText("Kasha - lvl 87. Encountered in Outer Vulcanic Crag. Hollow - lvl 19 / 31. Encountered in Outer Desert / Plains at night. Ushi Oni/Onna - lvl 54 / 55. Encountered in Bog. Wraith - lvl 22 / 43. ");
+			outputText("Encountered in Inner Forest / Deepwoods / Blight Ridge at night.");
 			outputText("\n");
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig); Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event); Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event); Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes, Huge Octuple Yggdrasil Wings (from transforming with World Tree help); Werespider eyes, Werespider arms, Werespider Legs, Werepspider fangs (from transforming after been bitten by werespider); Barometz Legs, Barometz Ears, Barometz Tail, Ram Horns, Verdant Ram Horns, Runic Patterns, ");
@@ -378,6 +379,25 @@ public class Changelog extends BaseContent
 			outputText("-You can use dragon breath specials slight sooner (All dragon breaths (excluding the most recent used) cooldowns are reduced by 1 increment).\n");
 			outputText("-New event perk: Wild Drake. Gained by having any dragon race score at tier 1+. Effects: You can use dragon breath specials slight sooner (All dragon breaths (excluding the most recent used) cooldowns are reduced by 1 increment).\n");
 			outputText("-Vouivre dragon breath changed from fire to poison one.\n");
+			outputText("-New mutation perk: Drake Lung (Final Form). Req. Drake Lung (Evolved) and lvl 90+. Effects: Allows you to use breath attacks more often. (All dragon breaths (excluding the most recent used) cooldowns are reduced by 1 increment as long PC is having any dragon race score on tier 1+) Increases the power of dragon breath attacks. ");
+			outputText("(+1800% to dragon breaths damage, +30% of max core Spe as phantom Spe) Dragon breaths would deal higher damage against single and group enemies. The larger group the higher bonus damage. (2x/10x/50x) All dragon breaths cooldowns are reduced by 1 increment as long PC is having any dragon race score on tier 1+.\n");
+			outputText("-New mutation perk: Drake Bones (Final Form). Req. Drake Bones (Evolved) and lvl 90+. Effects: Increases toughness, increases unarmed attack damage by 70 + an additional 75%, 15% physical and magical damage reduction, +30% phantom toughness, receives +25 to DR from toughness, +25% OverMax HP.\n");
+			outputText("-New mutation perk: Drake Heart (Final Form). Req. Drake Heart (Evolved) and lvl 90+. Effects: Your heart metamorphosis reached drake level. (+20 SF & Mana / +4 Wrath & Fatigue regen; +2% HP, +1% SF / Mana, +0.25% Fatigue / Wrath regen (doubled when having Drake Blood (Final Form) IM); +30% of max core Str as phantom Str)\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -402,24 +422,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -436,8 +438,9 @@ public class Changelog extends BaseContent
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach without becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
 			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, Sidone ");
 			outputText("help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, cave wyrm tongue desc been draconic not cave wyrm, some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling weapons scaling on wrong values, Blade Grass missing tf effects ");
-			outputText("for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, Neisa interactable when she's training, Cold Affinity lost while been Wendigo, missing 2 more ");
-			outputText("feral combat claws attacks for Wendigo, Mindbreakers mind meld usable on unique NPC's, ignoring effects of perks like Natural Herbalism when crafting potions causing overfill storage bags\n\n");
+			outputText("for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, Neisa interactable when she's training, Cold Affinity lost while been Wendigo, missing 2 more feral combat claws attacks for Wendigo, ");
+			outputText("Mindbreakers mind meld usable on unique NPC's, ignoring effects of perks like Natural Herbalism when crafting potions causing overfill storage bags, Couatl Oil not giving yellow scales color");
+			outputText("\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9b:</b>\n\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");

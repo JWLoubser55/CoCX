@@ -20,13 +20,16 @@ public class DraconicHeartMutation extends IMutationPerkType
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
-                descS = "Your heart was strengthened to better handle your changing body. (+1 Fatigue / +4 SF / +5 Mana / +1 Wrath regen)";
+                descS = "Your heart was strengthened to better handle your changing body. (+5 SF & Mana / +1 Wrath & Fatigue regen)";
             }
             if (pTier >= 2){
-                descS = "Each heartbeat fills your body with great power. (+2 Fatigue / +8 SF / +10 Mana / +2 Wrath regen, +5% of max core Str as phantom Str)";
+                descS = "Each heartbeat fills your body with great power. (+10 SF & Mana / +2 Wrath & Fatigue regen, +5% of max core Str as phantom Str)";
             }
             if (pTier >= 3){
-                descS = "Your heart metamorphosis reached pseudo-dragon level. (+3 Fatigue / +12 SF / +15 Mana / +3 Wrath regen, +1% HP regen, +15% of max core Str as phantom Str)";
+                descS = "Your heart metamorphosis reached pseudo-dragon level. (+15 SF & Mana / +3 Wrath & Fatigue regen, +1% HP regen, +15% of max core Str as phantom Str)";
+            }
+            if (pTier >= 3){
+                descS = "Your heart metamorphosis reached dragon level. (+20 SF & Mana / +4 Wrath & Fatigue regen; +2% HP, +1% SF / Mana, +0.25% Fatigue / Wrath regen (doubled when having Drake Blood (Final Form) IM); +30% of max core Str as phantom Str)";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -57,6 +60,7 @@ public class DraconicHeartMutation extends IMutationPerkType
             if (pTier == 1) pBuffs['str.mult'] = 0.05;
             if (pTier == 2) pBuffs['str.mult'] = 0.15;
             if (pTier == 3) pBuffs['str.mult'] = 0.35;
+            if (pTier == 4) pBuffs['str.mult'] = 0.75;
             return pBuffs;
         }
 

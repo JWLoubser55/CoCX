@@ -9,7 +9,7 @@ import classes.IMutationPerkType;
 import classes.PerkClass;
 import classes.Races;
 
-public class DrakeBloodMutation extends IMutationPerkType
+public class DraconicBloodMutation extends IMutationPerkType
     {
 		public static const MNAME:String = "Drake Blood";
 		override public function get mName():String {
@@ -19,7 +19,7 @@ public class DrakeBloodMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Drake strong vitality grants mana, soulforce and health regeneration " + pTier + "%";
+            if (pTier >= 1) descS += "Dragon strong vitality grants mana, soulforce and health regeneration " + pTier + "%";
 			if (pTier >= 2) descS += ". You take " + (pTier - 1) * 5 + "% less damage from magical attack";
             if (pTier >= 3) descS += ". Magic Effect from you are " + (pTier - 2) * 25 + "% more powerful";
             if (pTier >= 4) descS += ". Magic Ability are 100% Stronger";
@@ -56,9 +56,9 @@ public class DrakeBloodMutation extends IMutationPerkType
             return pBuffs;
         }
 
-        public function DrakeBloodMutation() 
+        public function DraconicBloodMutation() 
 		{
-			super(MNAME, SLOT_BLOODSTREAM, 4);
+			super(MNAME, SLOT_NONE, 1);//SLOT_BLOODSTREAM, 4);
         }
         
     }

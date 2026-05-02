@@ -4398,4 +4398,3 @@ public class EmberScene extends NPCAwareContent implements TimeAwareInterface {
     }
 }
 }
-

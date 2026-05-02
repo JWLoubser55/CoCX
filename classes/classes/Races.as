@@ -161,7 +161,10 @@ public class Races {
 	public static const CAVESTALKER:CaveStalkerRace		   		= new CaveStalkerRace(136);
 	public static const SUNPRAYINGMANTIS:SunPrayingMantisRace	= new SunPrayingMantisRace(137);
 	public static const MOONREINDEER:MoonReindeerRace			= new MoonReindeerRace(138);
-	//public static const WEREDRAGON:WereravenRace			   	= new (139);
+	public static const WEREDRAGON:WeredragonRace			   	= new WeredragonRace(139);
+	public static const DUSKDRAKE:DuskDrakeRace			   		= new DuskDrakeRace(140);
+	public static const KRAMPUS:KrampusRace			   			= new KrampusRace(141);
+	public static const WYVERN:WyvernRace			   			= new WyvernRace(142);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
@@ -189,10 +192,13 @@ public class Races {
 			PLANT, ALRAUNE, YGGDRASIL, BAROMETZ
 	];
 	public static const WerebeastRaces:/*Race*/Array = [
-			WEREWOLF, WEREFOX, WERESPIDER, WERESHARK, WEREBAT, WERECAT, WERERAVEN, WEREBEAR
+			WEREWOLF, WEREFOX, WERESPIDER, WERESHARK, WEREBAT, WERECAT, WERERAVEN, WEREBEAR, WEREDRAGON
 	];
 	public static const GhostlikeRaces:/*Race*/Array = [
 			POLTERGEIST, BANSHEE, WENDIGO, HOLLOW
+	];
+	public static const DragonlikeRaces:/*Race*/Array = [
+			DRAGON, YGGDRASIL, WEREDRAGON, FAERIEDRAGON, VOUIVRE, FROSTWYRM, DRAGONNE, DUSKDRAKE, KRAMPUS, JABBERWOCKY, SEA_DRAGON, WYVERN
 	];
 	public static const RacesForRandomEnchantments:/*Race*/Array = [
 			// populated in load() as AllVisibleRaces - RacesExcludedFromRandomEnchantments

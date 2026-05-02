@@ -3611,6 +3611,7 @@ import classes.Scenes.Combat.CombatAbility;
 				if (player.hasPerk(PerkLib.DarkCharm) && player.perkv4(PerkLib.DarkCharm) < 1) addButton(1, "DarkCharm", permanentizePerk1, PerkLib.DarkCharm);
 				else if (player.hasPerk(PerkLib.DarkCharm) && player.perkv4(PerkLib.DarkCharm) > 0) addButtonDisabled(1, "DarkCharm", "Dark Charm perk is already made permanent and will carry over in all subsequent ascensions.");
 				else addButtonDisabled(1, "DarkCharm", "Dark Charm");
+				//2 DragonBlackIceBreath
 				if (player.hasPerk(PerkLib.DragonDarknessBreath) && player.perkv4(PerkLib.DragonDarknessBreath) < 1) addButton(2, "D.DarknessB.", permanentizePerk1, PerkLib.DragonDarknessBreath);
 				else if (player.hasPerk(PerkLib.DragonDarknessBreath) && player.perkv4(PerkLib.DragonDarknessBreath) > 0) addButtonDisabled(2, "D.DarknessB.", "Dragon Darkness Breath perk is already made permanent and will carry over in all subsequent ascensions.");
 				else addButtonDisabled(2, "D.DarknessB.", "Dragon Darkness Breath");
