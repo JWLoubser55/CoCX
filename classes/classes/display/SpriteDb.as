@@ -484,6 +484,8 @@ public class SpriteDb {
 	public static function get s_kiha_preg(): Class {
 		return is8bit ? s_kiha_8bit : s_kiha_preg_16bit;
 	}
+	[Embed(source="../../../res/sprites/Kirin.png")]
+	public static var s_kirin:Class;
 	[Embed(source="../../../res/sprites/kitsune_black.png")]
 	public static var s_kitsune_black_16bit:Class;
 	[Embed(source="../../../res/sprites8bit/kitsune_black-old.png")]

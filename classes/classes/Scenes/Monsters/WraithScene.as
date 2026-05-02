@@ -27,7 +27,10 @@ public class WraithScene extends BaseContent
 		private function encounterWraith(area:Number):void {
 			clearOutput();
 		//	spriteSelect(SpriteDb.);
-			outputText("It's Information Noona here again (not Bashee just Abyssal Elf Maiden of 1k+ years) with info that Director Liadri would write text here... soon(tm) and now go fight that Wraith up there.\n\n");
+			outputText("While wandering the scene, you hear a screeching, pained wail as you reflexively duck. A distorted black claw narrowly misses your shoulder as you turn around to face your aggressor, quickly adopting a combative stance as you dodge another incoming scratch.\n\nBefore you, in the midst of the air, floats a ghastly apparition resembling that of a man's upper body, ");
+			outputText("or at least the remains of one. His ghoulish features have been distorted by madness, corruption and what appears to be gnawing hunger as his eyes glow red with malice. The man's arms end in oversized, distorted ectoplasmic claws, but the biggest feature is probably the 16 inch corrupted, throbbing penis and floating balls dancing beneath it, readily pulsing as if on the verge of imminent eruption.\n\n");
+			outputText("The man has no legs to speak of, everything beneath his waist has dissolved to nothing, leaving nothing but this embodiment of his ever-unsatisfied desire, one he intends to attempt to sate on your body. The man howls his frustration out loud for all of Mareth to hear.\n\n");
+			outputText("\"<i>SCREEEEEEEEEEEEEEEEEEEEEEEECH!</i>\"\n\n");
 			camp.codex.unlockEntry(kFLAGS.CODEX_ENTRY_WRAITH);
 			if (!player.hasStatusEffect(StatusEffects.WraithFace)) player.createStatusEffect(StatusEffects.WraithFace, 0, 0, 0, 0);
 			if (area == 1) player.changeStatusValue(StatusEffects.WraithFace, 2, 1);

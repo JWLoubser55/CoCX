@@ -3,6 +3,7 @@ package classes.Scenes.Areas.Plains
 import classes.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
+import classes.display.SpriteDb;
 
 public class KirinScene extends BaseContent
 	{
@@ -12,7 +13,7 @@ public class KirinScene extends BaseContent
 		}
 
 public function kirinEncounter():void {
-	//spriteSelect(SpriteDb.s_naga);
+	spriteSelect(SpriteDb.s_kirin);
 	//Create status if needed
 	var string:String = "";
 	var pRaiju_Check:Boolean = player.isRace(Races.RAIJU, 1, false);
@@ -56,7 +57,7 @@ public function kirinEncounter():void {
 
 // Whatever you are smoking lia
 public function kirinElectraEncounter():void {
-	//spriteSelect(SpriteDb.s_naga);
+	spriteSelect(SpriteDb.s_kirin);
 	//Create status if needed
 	var string:String = "";
 	

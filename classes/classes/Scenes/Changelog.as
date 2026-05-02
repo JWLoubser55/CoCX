@@ -332,7 +332,7 @@ public class Changelog extends BaseContent
 			outputText("-When below lvl 32 Giacomo selling Pure Peaches for Hollowfied PC's.\n");
 			outputText("-Necro set when completed increase all large sized skeletons control by 1. Each piece of Necro set would add now 3 to each normal sized skeletons caps.\n");
 			outputText("-Skeleton Giant ignore enemy DR. Bone Ballista Skelies deal increased damage to enemy groups or large enemies. Gigachad Skeletal Mages can have selected elemental damage they deal out of combat between any not complex element or pure magic damage.\n");
-			outputText("-New Sprite for Alvina by Liadri.\n");
+			outputText("-New Sprites: Alvina, Kirin (by Liadri).\n");
 			//outputText("-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: \n");
 			outputText("-Precision perk changed to lower enemy armor by 10% or 10 (whichever is greater) instead of just lower enemy armor value by 10.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence. Req. having free bloodstream mutation slot, one of races: Poltergeist, Banshee. Effects: Reduce Physical damage taken by 10% after damage reduction but increase magical damage taken by 40%.\n");
@@ -383,7 +383,7 @@ public class Changelog extends BaseContent
 			outputText("(+1800% to dragon breaths damage, +30% of max core Spe as phantom Spe) Dragon breaths would deal higher damage against single and group enemies. The larger group the higher bonus damage. (2x/10x/50x) All dragon breaths cooldowns are reduced by 1 increment as long PC is having any dragon race score on tier 1+.\n");
 			outputText("-New mutation perk: Drake Bones (Final Form). Req. Drake Bones (Evolved) and lvl 90+. Effects: Increases toughness, increases unarmed attack damage by 70 + an additional 75%, 15% physical and magical damage reduction, +30% phantom toughness, receives +25 to DR from toughness, +25% OverMax HP.\n");
 			outputText("-New mutation perk: Drake Heart (Final Form). Req. Drake Heart (Evolved) and lvl 90+. Effects: Your heart metamorphosis reached drake level. (+20 SF & Mana / +4 Wrath & Fatigue regen; +2% HP, +1% SF / Mana, +0.25% Fatigue / Wrath regen (doubled when having Drake Blood (Final Form) IM); +30% of max core Str as phantom Str)\n");
-			outputText("-\n");
+			//outputText("-New mutation perk: Mantislike Agility (Final Form). Req. Mantislike Agility (Evolved) and lvl 90+. Effects: Your agility is increased, and can be even further boosted if you have natural armor or thick skin, +60% max core spe as phantom spe\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

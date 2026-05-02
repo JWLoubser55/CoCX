@@ -18,12 +18,14 @@ public class MantislikeAgilityMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+			var mla:Number = 30;
+			if (pTier >= 3) mla += 60;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
                 descS += "Your agility is increased, and can be even further boosted if you have natural armor or thick skin";
             }
             if (pTier >= 3){
-                descS += ", +30% max core spe as phantom spe";
+                descS += ", +"+mla+"% max core spe as phantom spe";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -52,6 +54,10 @@ public class MantislikeAgilityMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
+            /*if (pTier == 1) pBuffs['spe.mult'] = 0.1;
+            if (pTier == 2) pBuffs['spe.mult'] = 0.3;
+            if (pTier == 3) pBuffs['spe.mult'] = 0.7;
+            if (pTier == 3) pBuffs['spe.mult'] = 1.5;*/
             return pBuffs;
         }
 

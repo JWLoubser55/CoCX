@@ -69,7 +69,7 @@ public class DrakeLungMutation extends IMutationPerkType
             if (pTier == 1) pBuffs['spe.mult'] = 0.05;
             if (pTier == 2) pBuffs['spe.mult'] = 0.15;
             if (pTier == 3) pBuffs['spe.mult'] = 0.35;
-            if (pTier == 3) pBuffs['spe.mult'] = 0.75;
+            if (pTier == 4) pBuffs['spe.mult'] = 0.75;
             return pBuffs;
         }
 

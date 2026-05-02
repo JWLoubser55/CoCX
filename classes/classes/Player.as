@@ -6636,7 +6636,9 @@ use namespace CoC;
 			else if (hasCoatOfType(Skin.SCALES)) factor += 1;
 			if (hasPerk(PerkLib.ThickSkin)) factor += 1;
 			score = perkv1(IMutationsLib.MantislikeAgilityIM);
-			if (score >= 3) {
+			if (score >= 4) {
+				buffSpe += 50*factor;
+			} else if (score >= 3) {
 				buffSpe += 30*factor;
 			} else if (score >= 2) {
 				buffSpe += 15*factor;
