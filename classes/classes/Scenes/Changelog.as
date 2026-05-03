@@ -383,8 +383,9 @@ public class Changelog extends BaseContent
 			outputText("(+1800% to dragon breaths damage, +30% of max core Spe as phantom Spe) Dragon breaths would deal higher damage against single and group enemies. The larger group the higher bonus damage. (2x/10x/50x) All dragon breaths cooldowns are reduced by 1 increment as long PC is having any dragon race score on tier 1+.\n");
 			outputText("-New mutation perk: Drake Bones (Final Form). Req. Drake Bones (Evolved) and lvl 90+. Effects: Increases toughness, increases unarmed attack damage by 70 + an additional 75%, 15% physical and magical damage reduction, +30% phantom toughness, receives +25 to DR from toughness, +25% OverMax HP.\n");
 			outputText("-New mutation perk: Drake Heart (Final Form). Req. Drake Heart (Evolved) and lvl 90+. Effects: Your heart metamorphosis reached drake level. (+20 SF & Mana / +4 Wrath & Fatigue regen; +2% HP, +1% SF / Mana, +0.25% Fatigue / Wrath regen (doubled when having Drake Blood (Final Form) IM); +30% of max core Str as phantom Str)\n");
-			//outputText("-New mutation perk: Mantislike Agility (Final Form). Req. Mantislike Agility (Evolved) and lvl 90+. Effects: Your agility is increased, and can be even further boosted if you have natural armor or thick skin, +60% max core spe as phantom spe\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Mantislike Agility (Final Form). Req. Mantislike Agility (Evolved) and lvl 90+. Effects: Your agility is increased, and can be even further boosted if you have natural armor or thick skin, +90% max core spe as phantom spe. ");
+			outputText("Increases maximum base/core and trainable Spe. All natural weapon and weapon damage is increased by an amount equal to sum of your speed stat core and train values.\n");
+			outputText("-Mantis Multi Strike special got *slight* re-touch to bring it up to modern standards :D\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

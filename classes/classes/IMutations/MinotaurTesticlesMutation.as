@@ -20,10 +20,10 @@ public class MinotaurTesticlesMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
 			var maxL:Number = 10;
-			if (pTier >= 3) maxL += 90;
 			var res:Number = 5;
-			if (pTier >= 4) maxL += 10;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
+			if (pTier >= 3) maxL += 90;
+			if (pTier >= 4) maxL += 10;
             if (pTier >= 1){
                 descS += "Allows you to keep Cum Cannon special even if minotaur score is lower than 9, max Lust increased by "+maxL+"";
             }

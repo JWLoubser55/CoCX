@@ -25,6 +25,7 @@ public class DraconicBonesMutation extends IMutationPerkType
 			var uad:Number = 10;
 			var uad2:Number = 50;
 			var pt:Number = 5;
+            pTier = (pTier == -1)? currentTier(this, player): pTier;
 			if (pTier >= 2) uad += 10;
 			if (pTier >= 3) {
 				uad += 20;
@@ -34,7 +35,6 @@ public class DraconicBonesMutation extends IMutationPerkType
 				uad += 30;
 				pt += 15;
 			}
-            pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
                 descS += "Increases toughness, increases unarmed attack damage by "+uad+"";
             }

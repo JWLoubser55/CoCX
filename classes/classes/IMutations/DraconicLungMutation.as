@@ -21,6 +21,7 @@ public class DraconicLungMutation extends IMutationPerkType
             var descS:String = "";
 			var dbd:Number = 3;
 			var cSpS:Number = 5;
+            pTier = (pTier == -1)? currentTier(this, player): pTier;
 			if (pTier >= 3) {
 				dbd += 6;
 				cSpS += 10;
@@ -29,7 +30,6 @@ public class DraconicLungMutation extends IMutationPerkType
 				dbd += 9;
 				cSpS += 15;
 			}
-            pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
                 descS += "Allows you to use breath attacks more often. (All dragon breaths (excluding the most recent used) cooldowns are reduced by 1 increment as long PC is having any dragon race score on tier 1+)";
             }

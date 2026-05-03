@@ -54,6 +54,7 @@ public class CoreStat extends RawStat{
 				if (host.perkv1(IMutationsLib.HumanBloodstreamIM) >= 1) base += 5;
 				if (host.perkv1(IMutationsLib.HumanBloodstreamIM) >= 2) base += 5;
 				if (host.perkv1(IMutationsLib.HumanBloodstreamIM) >= 4) base += 10;
+				if (host.perkv1(IMutationsLib.MantislikeAgilityIM) >= 4) base += 50;
 				if (host.hasStatusEffect(StatusEffects.WinterBellCollarA)) base += 50;
 				if (host is Player && JourneyToTheEast.EvelynnCoreLimitBreakerCounter > 0) base += JourneyToTheEast.EvelynnCoreLimitBreakerCounter;
 				var spe:Number = 1;

@@ -352,133 +352,95 @@ public class CombatSoulskills extends BaseCombatContent {
 		else enemyAI();
 	}*/
 	/*
-	 //Mantis Omni Slash (AoE attack) - przerobić to na soulskilla zużywającego jak inne soulforce z rosnącym kosztem im wyższy lvl postaci ^^ owinno wciąż jakoś być powiązane z posiadaniem mantis arms czy też ulepszonych mantis arms (czyt. versji 2.0 tych ramion z TF bdącego soul evolution of Mantis) ^^
-	 public function mantisOmniSlash():void {
-	 flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
-	 clearOutput();
-	 if (monster.plural) {
-	 if (player.fatigue + physicalCost(50) > player.maxOverFatigue()) {
-	 outputText("You are too tired to slash " + monster.a + " [monster name].");
-	 addButton(0, "Next", combatMenu, false);
-	 return;
-	 }
-	 }
-	 else {
-	 if (player.fatigue + physicalCost(20) > player.maxOverFatigue()) {
-	 outputText("You are too tired to slash " + monster.a + " [monster name].");
-	 addButton(0, "Next", combatMenu, false);
-	 return;
-	 }
-	 }
-	 if (monster.plural) {
-	 fatigue(60, USEFATG_PHYSICAL);
-	 }
-	 else fatigue(24, USEFATG_PHYSICAL);
-	if (combat.checkConcentration()) return; //Amily concentration
-	 outputText("You ready your wrist-mounted scythes and prepare to sweep them towards [themonster].\n\n");
-	 if ((player.playerIsBlinded() && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe-player.spe) / 4) + 80)) > 80)) {
-	 if (monster.spe - player.spe < 8) outputText(monster.capitalA + monster.short + " narrowly avoids your attacks!\n\n");
-	 if (monster.spe - player.spe >= 8 && monster.spe-player.spe < 20) outputText(monster.capitalA + monster.short + " dodges your attacks with superior quickness!\n\n");
-	 if (monster.spe - player.spe >= 20) outputText(monster.capitalA + monster.short + " deftly avoids your slow attacks.\n\n");
-	 enemyAI();
-	 return;
-	 if (monster.plural) {
-	 if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1) {
-	 if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2 && player.hasPerk(PerkLib.TrachealSystemEvolved)) flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 10;
-	 else flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 6;
-	 }
-	 else flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 3;
-	 }
-	 else flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 1;
-	 mantisMultipleAttacks();
-	 }
-	 public function mantisMultipleAttacks():void {
-	 var damage:Number = player.spe;
-	 damage += speedscalingbonus() * 0.5;
-	 if (damage < 10) damage = 10;
-	 //adjusting to be used 60/100% of base speed while attacking depending on insect-related perks possesed
-	 if (!player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1) damage *= 0.6;
-	 //bonuses if fighting multiple enemies
-	 if (monster.plural) {
-	 if (!player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1 && !player.hasPerk(PerkLib.TrachealSystemEvolved)) damage *= 1.1;
-	 if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1 && player.hasPerk(PerkLib.TrachealSystemEvolved)) damage *= 1.5;
-	 }
-	 //weapon bonus
-	 if (player.weaponAttack < 51) damage *= (1 + (player.weaponAttack * 0.04));
-	 else if (player.weaponAttack >= 51 && player.weaponAttack < 101) damage *= (3 + ((player.weaponAttack - 50) * 0.035));
-	 else if (player.weaponAttack >= 101 && player.weaponAttack < 151) damage *= (4.75 + ((player.weaponAttack - 100) * 0.03));
-	 else if (player.weaponAttack >= 151 && player.weaponAttack < 201) damage *= (6.25 + ((player.weaponAttack - 150) * 0.025));
-	 else damage *= (7.5 + ((player.weaponAttack - 200) * 0.02));
-	 //other bonuses
-	 if (player.hasPerk(PerkLib.ThunderousStrikes) && player.str >= 80) damage *= 1.2;
-	 if (player.hasPerk(PerkLib.HistoryFighter) || player.hasPerk(PerkLib.PastLifeFighter)) damage *= combat.historyFighterBonus();
-	 if (player.hasPerk(PerkLib.DemonSlayer) && monster.hasPerk(PerkLib.EnemyTrueDemon)) damage *= 1 + player.perkv1(PerkLib.DemonSlayer);
-	 if (player.hasPerk(PerkLib.FeralHunter) && monster.hasPerk(PerkLib.EnemyFeralType)) damage *= 1 + player.perkv1(PerkLib.FeralHunter);
-	 if (player.armor == armors.SPKIMO) damage *= 1.2;
-	 if (player.hasPerk(PerkLib.OniTyrantKimono)) damage *= 2;
-		if (player.hasPerk(PerkLib.OniEnlightenedKimono)) damage *= 1.5;
-		if (player.necklace == necklaces.OBNECK) damage *= 1.2;
-	 //Determine if critical hit!
-	 var crit:Boolean = false;
-	 var critChance:int = 5;
-	 if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) {
-	 if (player.inte <= 100) critChance += (player.inte - 50) / 50;
-	 if (player.inte > 100) critChance += 1;
-	 }
-	 if (player.hasPerk(PerkLib.ElvenSense) && && player.inte >= 50) critChance += 5;
-	 if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
-	 if (rand(100) < critChance) {
-	 crit = true;
-	 damage *= 1.75;
-	 }
-	 doDamage(damage);
-	 outputText("Your scythes swiftly sweeps against [themonster], dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
-	 if (crit == true) outputText(" <b>*Critical Hit!*</b>");
-	 outputText("\n");
-	 checkAchievementDamage(damage);
-	 combat.heroBaneProc(damage);
-	 combat.WrathGenerationPerHit2(5);
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 0) {
-	 outputText("\n");
-	 enemyAI();
-	 }
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 1) {
-	 flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
-	 mantisMultipleAttacks();
-	 }
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 2) {
-	 flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
-	 mantisMultipleAttacks();
-	 }
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 3) {
-	 flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
-	 mantisMultipleAttacks();
-	 }
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 4) {
-	 flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
-	 mantisMultipleAttacks();
-	 }
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 5) {
-	 flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
-	 mantisMultipleAttacks();
-	 }
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 6) {
-	 flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
-	 mantisMultipleAttacks();
-	 }
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 7) {
-	 flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
-	 mantisMultipleAttacks();
-	 }
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 8) {
-	 flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
-	 mantisMultipleAttacks();
-	 }
-	 if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] == 9) {
-	 flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
-	 mantisMultipleAttacks();
-	 }
-	 }
+	//Mantis Omni Slash (AoE attack) - przerobić to na soulskilla zużywającego jak inne soulforce z rosnącym kosztem im wyższy lvl postaci ^^ owinno wciąż jakoś być powiązane z posiadaniem mantis arms czy też ulepszonych mantis arms (czyt. versji 2.0 tych ramion z TF bdącego soul evolution of Mantis) ^^
+	public function mantisMultiSlash():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
+		clearOutput();
+		var mMSC:Number = 25;
+		var mMSAC:Number = 1;
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) mMSC *= 0.8;
+		if (player.hasPerk(PerkLib.PhantomStrike)) mMSC *= 2;
+		if (monster.plural) fatigue(physicalSpecialsCost(mMSC*3), USEFATG_PHYSICAL);
+		else fatigue(physicalSpecialsCost(mMSC), USEFATG_PHYSICAL);
+		if (combat.checkConcentration()) return; //Amily concentration
+		outputText("You ready your wrists mounted scythes and prepare to sweep them towards [themonster].\n\n");
+		if ((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) {
+			if (monster.spe - player.spe < 8) outputText("[Themonster] narrowly avoids your attacks!\n\n");
+			if (monster.spe - player.spe >= 8 && monster.spe-player.spe < 20) outputText("[Themonster] dodges your attacks with superior quickness!\n\n");
+			if (monster.spe - player.spe >= 20) outputText("[Themonster] deftly avoids your slow attacks.\n\n");
+			enemyAI();
+			return;
+		}
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 1) mMSAC += 1;
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 2) mMSAC += 1;
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 3 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 3) mMSAC += 2;
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 4 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 4) mMSAC += 4;
+		if (monster.plural) mMSAC *= 4;
+		flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = mMSAC;
+		mantisMultipleAttacks();
+	}
+	public function mantisMultipleAttacks():void {
+		var damage:Number = 0;
+		damage += combat.meleeUnarmedDamageNoLagSingle(2);
+		//adjusting to be used 60/105% of base speed while attacking depending on insect-related perks possesed
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1) damage *= 1.75;
+		//bonuses if fighting multiple enemies
+		if (monster.plural) {
+			if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 1) damage *= 1.75;
+			else damage *= 1.15;
+		}
+		//other bonuses
+		if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
+		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
+		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
+		damage = combat.gallopDamageBoost(damage);
+		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
+		//Determine if critical hit!
+		var crit:Boolean = false;
+		var critChance:int = 5;
+		if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) {
+			if (player.inte <= 100) critChance += (player.inte - 50) / 5;
+			if (player.inte > 100) critChance += 10;
+		}
+		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
+		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+		if (rand(100) < critChance) {
+			crit = true;
+			var buffMultiplier:Number = 0;
+			buffMultiplier += combat.bonusCriticalDamageFromMissingHP();
+			if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * combat.impaleMultiplier());
+			else damage *= (1.75 + buffMultiplier);
+		}
+		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
+		doDamage(damage);
+		outputText("Your scythes swiftly sweeps against [themonster], dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
+		if (crit) {
+			outputText(" <b>*Critical Hit!*</b>");
+			if (player.hasStatusEffect(StatusEffects.Rage)) player.removeStatusEffect(StatusEffects.Rage);
+		}
+		if (!crit && player.hasPerk(PerkLib.Rage) && (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking))) {
+			if (player.hasStatusEffect(StatusEffects.Rage) && player.statusEffectv1(StatusEffects.Rage) > 5 && player.statusEffectv1(StatusEffects.Rage) < 70) player.addStatusValue(StatusEffects.Rage, 1, 10);
+			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
+		}
+		if (player.hasPerk(PerkLib.PhantomStrike)) {
+			doDamage(damage);
+			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
+			damage *= 2;
+		}
+		outputText("\n");
+		combat.WrathGenerationPerHit2(5);
+		checkAchievementDamage(damage);
+		combat.heroBaneProc(damage);
+		combat.EruptingRiposte();
+		if (flags[kFLAGS.MULTIPLE_ATTACK_STYLE] >= 1) {
+			flags[kFLAGS.MULTIPLE_ATTACK_STYLE] -= 1;
+			mantisMultipleAttacks();
+			return;
+		}
+		outputText("\n");
+		enemyAI();
+	}
 	 public function tripleThrust():void {
 	 flags[kFLAGS.LAST_ATTACK_TYPE] = 4;//fizyczny atak
 	 clearOutput();

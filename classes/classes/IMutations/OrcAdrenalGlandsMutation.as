@@ -19,9 +19,9 @@ public class OrcAdrenalGlandsMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
-            pTier = (pTier == -1)? currentTier(this, player): pTier;
 			var fero:int = 1;
 			var phan:int = 5;
+            pTier = (pTier == -1)? currentTier(this, player): pTier;
 			if (pTier >= 2) {
 				fero += 2;
 				phan += 10;

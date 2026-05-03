@@ -1788,6 +1788,10 @@ use namespace CoC;
 				attack += (5 * newGamePlusMod);
 			}
 			if (perkv1(IMutationsLib.LivingWeaponIM) >= 1) attack += Math.round(armorDef * 0.25 * perkv1(IMutationsLib.LivingWeaponIM));
+			if (perkv1(IMutationsLib.MantislikeAgilityIM) >= 4) {
+				attack += speStat.core.value;
+				attack += speStat.train.value;
+			}
 			//Konstantine buff
 			if (hasStatusEffect(StatusEffects.KonstantinWeaponSharpening) && weaponName != "fists") {
 				attack *= 1 + (statusEffectv2(StatusEffects.KonstantinWeaponSharpening) / 100);

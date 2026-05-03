@@ -21,6 +21,7 @@ public class HumanDigestiveTractMutation extends IMutationPerkType
             var descS:String = "";
 			var perChg1:int = 1;
 			var perChg2:int = 10;
+            pTier = (pTier == -1)? currentTier(this, player): pTier;
 			if (pTier >= 2) {
 				perChg1 += 2;
 				perChg2 += 15;
@@ -33,7 +34,6 @@ public class HumanDigestiveTractMutation extends IMutationPerkType
 				perChg1 += 4;
 				perChg2 += 25;
 			}
-            pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1){
                 descS += "Your digestive tract has improved, allowing better nourishment from all ingested substances (+"+perChg1+"0%). Increases the weight gain limit when overeating by "+perChg2+"";
             }

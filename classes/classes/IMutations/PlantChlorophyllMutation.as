@@ -18,9 +18,9 @@ public class PlantChlorophyllMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
-            pTier = (pTier == -1)? currentTier(this, player): pTier;
 			var perkCent1:int = pTier;
 			var perkCent2:int = pTier - 1;
+            pTier = (pTier == -1)? currentTier(this, player): pTier;
 			if (pTier >= 4) perkCent1 += 1;
             if (pTier >= 1) descS += "For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by "+(pTier * 5)+"% while outdoors during daytime";
             if (pTier >= 2) descS += ". Plant abilities are increased by "+perkCent1+"0%";

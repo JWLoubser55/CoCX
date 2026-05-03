@@ -9222,6 +9222,10 @@ public class Combat extends BaseContent {
 			}
 			else unarmed += Math.round(player.armorDef * 0.25);
 		}
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 4) {
+			unarmed += player.speStat.core.value;
+			unarmed += player.speStat.train.value;
+		}
         if (player.hasKeyItem("Rocket Boots") >= 0) unarmed += 2;
         if (player.hasKeyItem("Nitro Boots") >= 0) unarmed += 4;
         if (player.hasPerk(PerkLib.Brawn)) unarmedMulti += .05;

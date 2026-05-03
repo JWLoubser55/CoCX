@@ -320,29 +320,17 @@ public class PhysicalSpecials extends BaseCombatContent {
 					} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 					favbd(bd, "Luststick Kiss");
 				}
-				if (player.arms.type == Arms.MANTIS && player.weapon.isNothing && !player.hasPerk(PerkLib.ElementalBody)) {
+				if (player.arms.type == Arms.MANTIS && !player.hasPerk(PerkLib.ElementalBody)) {
 					bd = buttons.add("Multi Slash", mantisMultiSlash);
-					if (player.hasPerk(PerkLib.PhantomStrike)) {
-						if (monster.plural) {
-							bd.hint("Attempt to slash your foes with your wrists scythes! \n");
-							if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) bd.requireFatigue(100);
-							else bd.requireFatigue(120);
-						} else {
-							bd.hint("Attempt to slash your foe with your wrists scythes! \n");
-							if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) bd.requireFatigue(40);
-							else bd.requireFatigue(48);
-						}
-					}
-					else {
-						if (monster.plural) {
-							bd.hint("Attempt to slash your foes with your wrists scythes! \n");
-							if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) bd.requireFatigue(50);
-							else bd.requireFatigue(60);
-						} else {
-							bd.hint("Attempt to slash your foe with your wrists scythes! \n");
-							if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) bd.requireFatigue(20);
-							else bd.requireFatigue(24);
-						}
+					var mMSC:Number = 25;
+					if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) mMSC *= 0.8;
+					if (player.hasPerk(PerkLib.PhantomStrike)) mMSC *= 2;
+					if (monster.plural) {
+						bd.hint("Attempt to slash your foes with your wrists scythes! \n");
+						bd.requireFatigue(mMSC*3);
+					} else {
+						bd.hint("Attempt to slash your foe with your wrists scythes! \n");
+						bd.requireFatigue(mMSC);
 					}
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 					favbd(bd, "Multi Slash");
@@ -6096,26 +6084,12 @@ public class PhysicalSpecials extends BaseCombatContent {
 	public function mantisMultiSlash():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
 		clearOutput();
-		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			if (monster.plural) {
-				if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) fatigue(physicalSpecialsCost(100), USEFATG_PHYSICAL);
-				else fatigue(physicalSpecialsCost(120), USEFATG_PHYSICAL);
-			}
-			else {
-				if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) fatigue(physicalSpecialsCost(40), USEFATG_PHYSICAL);
-				else fatigue(physicalSpecialsCost(48), USEFATG_PHYSICAL);
-			}
-		}
-		else {
-			if (monster.plural) {
-				if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) fatigue(physicalSpecialsCost(50), USEFATG_PHYSICAL);
-				else fatigue(physicalSpecialsCost(60), USEFATG_PHYSICAL);
-			}
-			else {
-				if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) fatigue(physicalSpecialsCost(20), USEFATG_PHYSICAL);
-				else fatigue(physicalSpecialsCost(24), USEFATG_PHYSICAL);
-			}
-		}
+		var mMSC:Number = 25;
+		var mMSAC:Number = 1;
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) mMSC *= 0.8;
+		if (player.hasPerk(PerkLib.PhantomStrike)) mMSC *= 2;
+		if (monster.plural) fatigue(physicalSpecialsCost(mMSC*3), USEFATG_PHYSICAL);
+		else fatigue(physicalSpecialsCost(mMSC), USEFATG_PHYSICAL);
 		if (combat.checkConcentration()) return; //Amily concentration
 		outputText("You ready your wrists mounted scythes and prepare to sweep them towards [themonster].\n\n");
 		if ((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) {
@@ -6125,32 +6099,23 @@ public class PhysicalSpecials extends BaseCombatContent {
 			enemyAI();
 			return;
 		}
-		if (monster.plural) {
-			if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1) {
-				if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 2) {
-					if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 3 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 3) flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 15;
-					else flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 10;
-				}
-				else flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 6;
-			}
-			else flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 3;
-
-		}
-		else {
-			if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 3 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 3) flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 2;
-			else flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = 1;
-		}
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 1) mMSAC += 1;
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 2 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 2) mMSAC += 1;
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 3 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 3) mMSAC += 2;
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 4 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 4) mMSAC += 4;
+		if (monster.plural) mMSAC *= 4;
+		flags[kFLAGS.MULTIPLE_ATTACK_STYLE] = mMSAC;
 		mantisMultipleAttacks();
 	}
 	public function mantisMultipleAttacks():void {
 		var damage:Number = 0;
 		damage += combat.meleeUnarmedDamageNoLagSingle(2);
-		//adjusting to be used 60/100% of base speed while attacking depending on insect-related perks possesed
-		if (!player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1) damage *= 0.6;
+		//adjusting to be used 60/105% of base speed while attacking depending on insect-related perks possesed
+		if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1) damage *= 1.75;
 		//bonuses if fighting multiple enemies
 		if (monster.plural) {
-			if (!player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1 && !player.perkv1(IMutationsLib.TrachealSystemIM) >= 2) damage *= 1.1;
-			if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 2) damage *= 1.5;
+			if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 1 && player.perkv1(IMutationsLib.TrachealSystemIM) >= 1) damage *= 1.75;
+			else damage *= 1.15;
 		}
 		//other bonuses
 		if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
