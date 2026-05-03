@@ -242,7 +242,7 @@ public class LowerBody extends SaveableBodyPart {
 		fur: true
 	});
 
-	public static const CHITINOUS_SPIDER_LEGS:int = 15;//button 0 on 2nd page of metamorph
+	public static const CHITINOUS_SPIDER_LEGS:int = 15;
 	EnumValue.add(Types, CHITINOUS_SPIDER_LEGS, "CHITINOUS_SPIDER_LEGS", {
 		name: "chitinous spider",
 		appearanceDesc: "Your {legCount} legs are covered in a reflective [chitin color1], insectile carapace up to your mid-thigh, looking more like a set of 'fuck-me-boots' than exoskeleton.",
@@ -392,7 +392,7 @@ public class LowerBody extends SaveableBodyPart {
 		canTaur: true
 	});
 
-	public static const GARGOYLE:int = 30;//button 0 on 3rd page of metamorph
+	public static const GARGOYLE:int = 30;
 	EnumValue.add(Types, GARGOYLE, "GARGOYLE", {
 		name: "gargoyle",
 		appearanceDesc: "Your {legCount} digitigrade [gargoylematerial] legs end in sharp-clawed stone feet. There are three long toes on the front, and a small hind claw on the back."
@@ -595,7 +595,7 @@ public class LowerBody extends SaveableBodyPart {
 		appearanceDesc: "While your legs are human in appearance your body is so rigid due to this pseudo rigor mortis that the only way you found for movement is by hopping around."
 	});
 
-	public static const YUKI_ONNA:int = 56;//button 0 on 5th page of metamorph
+	public static const YUKI_ONNA:int = 56;
 	EnumValue.add(Types, YUKI_ONNA, "YUKI_ONNA", {
 		name: "yuki onna",
 		appearanceDesc: "Your legs are human in appearance albeit for the bluish nails."
@@ -868,7 +868,7 @@ public class LowerBody extends SaveableBodyPart {
 		appearanceDesc: "Your {legCount} perfect lissom legs end in delicate, clawed feet allowing you to move with supernatural grace."
 	});
 
-	public static const CLOVEN_HOOFED_2:int = 83;//button 0 on 2nd page of metamorph
+	public static const CLOVEN_HOOFED_2:int = 83;
 	EnumValue.add(Types, CLOVEN_HOOFED_2, "CLOVEN_HOOFED_2", {
 		name: "reindeer",
 		legsPrefixes: ["deer-like", "cloven-hoofed", "", ""],
@@ -981,6 +981,16 @@ public class LowerBody extends SaveableBodyPart {
 
 			return desc;
 		},
+		canTaur: true,
+		fur: true
+	});
+	
+	public static const KRAMPUS:int = 97;
+	EnumValue.add(Types, KRAMPUS, "KRAMPUS", {
+		name: "krampus",
+		legsPrefixes: ["goat-like", "cloven-hoofed", "", ""],
+		appearanceDesc: "{legCount} digitigrade legs covered with thick [fur color] fur form below your knees, ending in cloven hooves.",
+		draconic: true,
 		canTaur: true,
 		fur: true
 	});

@@ -1056,6 +1056,17 @@ public final class ConsumableLib extends AlchemyLib
 						]
 				);
 		public const RIZZART:RizzaRoot			= new RizzaRoot();
+		public const RSLILY_: Consumable = mk("RSLily ", "RedSpiderLily", "a Red Spider Lily", 50, "A rare, infernaly beautiful flower. It could make an exquisite perfume. According to a legend, krampuses give this flower to the ones they intend to court. Are you sure it would be a smart idea to accept this?", m.redSpiderLily, ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_KRAMPUS),
+						[
+							[1, AR_STR],
+							[1, AR_INT],
+							[1, AR_WIS],
+							[1, AR_LIB]
+						]
+				);
 		public const RUBYCRY: Consumable = mk("RubyCry", "RubyCryst", "a ruby crystal", 6, "A shining teardrop-shaped jewel.  An eerie red fluid dances beneath the surface.", m.rubycrystal, ItemConstants.U_TF);
 		public const S_GOSSR: Consumable = mk("S.Gossr", "S.Gossr", "a bundle of pink, gossamer webbing", 6, "These strands of gooey pink gossamer seem quite unlike the normal silk that spider-morphs produce.  It smells sweet and is clearly edible, but who knows what it might do to you?", curry(m.sweetGossamer, 0), ItemConstants.U_TF)
 				.refineableInto(

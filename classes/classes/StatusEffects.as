@@ -360,6 +360,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const DevilPurificationScar:StatusEffectType          = mk("Devil Purification Scar");
 		public static const DinahGift:StatusEffectType                  	= mk("Dinah Gift");
 		public static const DominantAlpha:StatusEffectType                  = mk("Dominant Alpha");
+		public static const DragonBlackIceBreathCooldown:StatusEffectType       = mk("Dragon Black Ice Breath Cooldown");
 		public static const DragonBreathBoost:StatusEffectType              	= mk("Dragon Breath Boost");
 		public static const DragonBreathCooldown:StatusEffectType           	= mk("Dragon Breath Cooldown");
 		public static const DragonDarknessBreathCooldown:StatusEffectType   	= mk("Dragon Darkness Breath Cooldown");

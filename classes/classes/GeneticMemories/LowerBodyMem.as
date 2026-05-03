@@ -627,6 +627,13 @@ package classes.GeneticMemories {
           unlockText: "Now you can metamorph into the Taur variant of any lower body part you unlocked when available!",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyHoofedNoFurToggle(true)}});
 
+      public static const KRAMPUS: int = _partid++;
+      EnumValue.add(Memories, KRAMPUS, "KRAMPUS", {
+          id: "Krampus Lower Body",name: "Krampus Legs",
+          cost: 100,
+          title: "Krampus Legs",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyKrampusToggle(true)}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

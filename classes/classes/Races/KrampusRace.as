@@ -33,7 +33,6 @@ public class KrampusRace extends Race {
         
     public function KrampusRace(id:int) {
         super("Krampus", id, []);//RaceBody);
-		disabled = true;
     }
     
     public override function setup():void {
@@ -43,8 +42,11 @@ public class KrampusRace extends Race {
 				.hornType(Horns.GOATQUAD, +2)
 				.hornType(NONE(Horns.FROSTWYRM, Horns.DRACONIC_X2, Horns.DRACONIC_X4_12_INCH_LONG), 0, -3)
 				.earType(Ears.GOAT, +1)
+				.eyeType(Eyes.GOAT, +1)
 				.tongueType(Tongue.DRACONIC, +1)
 				.tongueType(NOT(Tongue.CAT), 0, -1000)
+				.armType(Arms.FROSTWYRM, +1)
+				.legType(LowerBody.KRAMPUS, +2)
 				.tailType(Tail.DRACONIC, +1)
 				.tailType(NONE(Tail.FEY_DRACONIC, Tail.CAT), 0, -10)
 				.wingType(Wings.DRACONIC_SMALL, +2)
@@ -55,9 +57,10 @@ public class KrampusRace extends Race {
 						function (body:BodyData):Boolean {
 							return body.hairColor2 == "white" &&
 									body.hairColor1 == "black"
-						}, +1)
-				.height(LESS_THAN(48), +1)
-				.height(GREATER_THAN(120), +1)
+						}, +2)
+				.height(GREATER_THAN(96), +1)
+				.hasPerk(PerkLib.DragonBlackIceBreath, +1)
+				.hasPerk(PerkLib.Dracoforce, +1)
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addMutation(IMutationsLib.DrakeLungsIM);
@@ -70,8 +73,8 @@ public class KrampusRace extends Race {
 					"tou.mult": +0.10,
 					"spe.mult": +0.10,
 					"int.mult": +0.50,
-					"wis.mult": +0.50,
-					"lib.mult": +0.50,
+					"wis.mult": +0.40,
+					"lib.mult": +0.60,
 					"sens": +60
                     })
                 .end();

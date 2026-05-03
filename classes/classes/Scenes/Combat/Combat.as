@@ -14599,6 +14599,13 @@ public class Combat extends BaseContent {
 					player.addStatusValue(StatusEffects.DragonQuadElementBreathCooldown, 1, -1);
 				}
 			}
+			if (player.hasStatusEffect(StatusEffects.DragonBlackIceBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonBlackIceBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonBlackIceBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonBlackIceBreathCooldown, 1, -1);
+				}
+			}
 			if (player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown)) {
 				if (player.statusEffectv1(StatusEffects.DragonDarknessBreathCooldown) <= 0) {
 					player.removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);

@@ -1977,7 +1977,7 @@ public class TestMenu extends BaseContent
 			addButton(3, "TGOGossamer", AddThickGreenOnnaGossamer).hint("Add 1 Thick Green Onna Gossamer.");
 			addButton(4, "Desert Berry", AddDesertBerry).hint("Add 1 werefox TF.");
 			addButton(5, "Enigmanium", AddEnigmanium).hint("Add 1 vial of Enigmanium.");
-			addButton(6, "dragonshit", AddDragonShit).hint("Add dragon stuff for jabberwocky test.");
+			addButton(6, "dragonshit", AddDragonShit).hint("Add dragon stuff for jabberwocky test. Plus 1 Krampus TF item.");
 			addButton(7, "Naga Oils", AddGorgonOil).hint("Add 1 vial of Gorgon, Vouivre and Couatl Oil.");
 			addButton(8, "VT RV WF", AddVoltageTopaz).hint("Add 1 Voltage Topaz, 1 vial of Red Blood (Bat TF) and 1 Wonder Fruit.");
 			addButton(9, "DSJ HS FSS", AddDarkSlimeJelly).hint("Add 1 Dark Slime Jelly, 1 Hydra Scale and 1 Fire Snail Saliva.");
@@ -2241,12 +2241,16 @@ public class TestMenu extends BaseContent
 		inventory.takeItem(consumables.VOLTTOP, AddRedBlood);
 	}
 	public function AddDragonShit():void {
-		outputText("\n\n<b>(Gained 1 dragon!)</b>\n\n");
+		outputText("\n\n<b>(Gained 1 Dragon!)</b>\n\n");
 		inventory.takeItem(consumables.DRAKHRT, AddJabbyShit);
 	}
 	public function AddJabbyShit():void {
 		outputText("\n\n<b>(Gained 1 Jabby!)</b>\n\n");
-		inventory.takeItem(consumables.JABBERS, curry(NonEquipmentMenu, 2));
+		inventory.takeItem(consumables.JABBERS, AddKrampusShit);
+	}
+	public function AddKrampusShit():void {
+		outputText("\n\n<b>(Gained 1 Krampus!)</b>\n\n");
+		inventory.takeItem(consumables.RSLILY_, curry(NonEquipmentMenu, 2));
 	}
 	public function AddRedBlood():void {
 		outputText("\n\n<b>(Gained 1 vial of red blood!)</b>\n\n");

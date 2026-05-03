@@ -217,7 +217,7 @@ public class Changelog extends BaseContent
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig); Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event); Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event); Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes, Huge Octuple Yggdrasil Wings (from transforming with World Tree help); Werespider eyes, Werespider arms, Werespider Legs, Werepspider fangs (from transforming after been bitten by werespider); Barometz Legs, Barometz Ears, Barometz Tail, Ram Horns, Verdant Ram Horns, Runic Patterns, ");
 			outputText("Barometz Cock (from Horned fruit), Automata Tail Cable (from automata event); Hollow Mask (Face), Hollow Eyes, Hollow Horns, Hollow Arms, Hollow Lower Body, Hollow Tail, Soulforce Scaring (from Hollowfication events); Deer Blush, Deer Eyes, Iceheart Tatoo (from Cervinium); Ushi Onna Face, Ushi Onna Horns, Ushi Onna Tail, Ushi Onna Arms, Ushi Onna Lower Body, Ushi Oni Tattoo (from Thick Green Onna Gossamer), ");
-			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf); Hoofed no fur Legs, Rhino Arms (from Rhino Steak)\n");
+			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf); Hoofed no fur Legs, Rhino Arms (from Rhino Steak); Krampus Legs (from Infernal Flower)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
 			//outputText("-New HB Mech upgrade options: Armor Plating (+armor), Leather Insulation (+magic resistance), Agility (+base melee atk dmg), Dragon's Breath Flamer (fire dmg special), Scatter Laser (lightning dmg special), Rapid Reload (+base ranged atk dmg), Internal Systems (increase mech SF capacity and lower it consumption during high activity)\n");
 			//outputText(", Camouflage Mode (allow to enter 1 turn long camouflage opening option to use Sneak Attack (melee & range) specials), Invisibility Mode (the same as Camouflage Mode but can last until PC run out of SF to keep it active or deactivate it manualy / upgrade to decrease SF consumption)");
@@ -386,13 +386,13 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Mantislike Agility (Final Form). Req. Mantislike Agility (Evolved) and lvl 90+. Effects: Your agility is increased, and can be even further boosted if you have natural armor or thick skin, +90% max core spe as phantom spe. ");
 			outputText("Increases maximum base/core and trainable Spe. All natural weapon and weapon damage is increased by an amount equal to sum of your speed stat core and train values.\n");
 			outputText("-Mantis Multi Strike special got *slight* re-touch to bring it up to modern standards :D\n");
+			outputText("-New TF item: Red Spider Lily. Founded in Vulcanic Crag (O). Using it will turn PC into Krampus. Their race bonuses for Krampus Hatchling (12): +70% to str multi, +10% to tou/spe multi, +50% to int multi, +40% to wis multi, +60% to lib multi, +60 to sens.\n");
+			outputText("-New event perk: Dragon Black Ice Breath. Gained by using Red Spider Lily item when having tier 1+ Krampus race score. Effects: Allows access to a dragon black ice breath attack.\n");
+			outputText("-New M. Special: Dragon Black Ice Breath. Usable by having Dragon Black Ice Breath perk. Effect: Like any others Dragon Breath, dealing Black Ice type damage.\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");// / Banshee / Unhallowed Banshee
+			outputText("-\n");///16/28
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

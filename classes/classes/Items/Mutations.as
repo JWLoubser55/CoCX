@@ -15802,7 +15802,7 @@ public final class Mutations extends MutationsHelper {
         }
 
         //Ears
-        if (rand(3) == 0 && changes < changeLimit && player.ears.type != Ears.GOAT && player.horns.type == Horns.GOAT) {
+        if (rand(3) == 0 && changes < changeLimit && player.ears.type != Ears.GOAT && (player.horns.type == Horns.GOAT || player.horns.type == Horns.GOATQUAD)) {
             outputText("[pg]");
 			transformations.EarsGoat.applyEffect();
             changes++;
@@ -15844,6 +15844,156 @@ public final class Mutations extends MutationsHelper {
         player.refillHunger(10);
         flags[kFLAGS.TIMES_TRANSFORMED] += changes;
     }
+	
+	public function redSpiderLily(player:Player):void {
+		player.slimeFeed();
+        //init variables
+        var changes:Number = 0;
+        var changeLimit:Number = 2;
+        //Temporary storage
+        var temp:Number = 0;
+        var temp2:Number = 0;
+        //var temp3:Number = 0;
+        //Randomly choose affects limit
+        if (rand(2) == 0) changeLimit++;
+        if (rand(2) == 0) changeLimit++;
+        if (rand(2) == 0) changeLimit++;
+        changeLimit += player.additionalTransformationChances;
+        //clear screen
+        clearOutput();
+        outputText("You bring the flower up to your nose and smell it. It has exquisite smell. You suddenly have the strange desire to eat it. You pop the flower into your mouth and chew. It tastes like caramel somehow. Before you know it, you're undergoing changes.");
+        dynStats("cor", 3 + rand(3));
+
+        //int change
+        if (changes < changeLimit && rand(3) == 0 && MutagenBonus("int", 1)) {
+            outputText("[pg]Arcane knowledge floods into your mind. You immediately imagine tons of new sinister ways to use this knowledge.");
+            changes++;
+        }
+        if (player.blockingBodyTransformations()) changeLimit = 0;
+		//sexual changes
+        //female
+		
+		//male
+		
+		//physical changes
+        //legs
+        if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.KRAMPUS) {
+            outputText("[pg]");
+            transformations.LowerBodyKrampus(2).applyEffect();
+            changes++;
+        }
+		//tail
+        if (rand(3) == 0 && changes < changeLimit && player.lowerBody == LowerBody.KRAMPUS && player.tailType != Tail.DRACONIC) {
+            outputText("[pg]");
+            transformations.TailDraconic.applyEffect();
+            changes++;
+        }
+        //wings
+        if (player.wings.type != Wings.DRACONIC_HUGE && changes < changeLimit && rand(3) == 0) {
+			if (player.wings.type == Wings.NONE) {
+				outputText("\n\n");
+				transformations.WingsDraconicSmall.applyEffect();
+			}
+			//(If Small Dragon Wings Present)
+			else if (player.wings.type == Wings.DRACONIC_SMALL) {
+				outputText("\n\n");
+				transformations.WingsDraconicLarge.applyEffect();
+			}
+			//even larger dragon wings ^^
+			else if (player.wings.type == Wings.DRACONIC_LARGE) {
+				outputText("\n\n");
+				transformations.WingsDraconicHuge.applyEffect();
+			}
+			//(If other wings present)
+			else {
+				outputText("\n\n");
+				transformations.WingsDraconicSmall.applyEffect();
+			}
+			changes++;
+		}
+		//arms
+        if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.DEVIL && (player.wings.type == Wings.BAT_LIKE_TINY || player.wings.type == Wings.BAT_LIKE_LARGE)) {
+            outputText("[pg]");
+            transformations.ArmsDevil.applyEffect();
+            changes++;
+        }
+		//Fix non human arms
+        if (changes < changeLimit && rand(3) == 0 && player.arms.type != Arms.FROSTWYRM && player.arms.type != Arms.HUMAN) {
+            outputText("[pg]");
+            transformations.ArmsHuman.applyEffect();
+            changes++;
+        }
+        //Gain frost wyrm Arms
+        if (changes < changeLimit && rand(3) == 0 && player.arms.type == Arms.HUMAN) {
+            outputText("[pg]");
+            transformations.ArmsFrostwyrm.applyEffect();
+            changes++;
+        }
+		//Gain Dragon Tongue
+        if (changes < changeLimit && rand(3) == 0 && player.tongue.type != Tongue.DRACONIC) {
+            outputText("[pg]");
+            transformations.TongueDraconic.applyEffect();
+            changes++;
+            //Note: This type of tongue should be eligible for all things you can do with demon tongue... Dunno if it's best attaching a boolean just to change the description or creating a whole new tongue type.
+        }
+		//Horns
+        if (rand(3) == 0 && changes < changeLimit && player.arms.type == Arms.FROSTWYRM) {
+            outputText("[pg]");
+            if (player.horns.type == Horns.GOAT) {
+                transformations.HornsGoatQuadruple.applyEffect();
+            } else {
+                transformations.HornsGoat.applyEffect();
+            }
+            changes++;
+        }
+        //Ears
+        if (rand(3) == 0 && changes < changeLimit && player.ears.type != Ears.GOAT && (player.horns.type == Horns.GOAT || player.horns.type == Horns.GOATQUAD)) {
+            outputText("[pg]");
+			transformations.EarsGoat.applyEffect();
+            changes++;
+        }
+        //Dragon or Devil Fangs
+        if (rand(3) == 0 && changes < changeLimit && player.ears.type == Ears.GOAT) {
+            outputText("[pg]");
+            if (rand(2) == 0) transformations.FaceDragonFangs.applyEffect();
+			else transformations.FaceDevilFangs.applyEffect();
+            changes++;
+        }
+        //Eyes
+        if (rand(3) == 0 && changes < changeLimit && (player.faceType == Face.DRAGON_FANGS && player.faceType == Face.DEVIL_FANGS)) {
+            outputText("[pg]");
+            transformations.EyesGoat.applyEffect();
+            changes++;
+        }
+        //Hair Color
+        if (rand(3) == 0 && changes < changeLimit) {
+            outputText("[pg]Your scalp begins to tingle, and you gently grasp a strand of hair, pulling it out to check it. Your hair has become black and white!");
+            player.hairColor1 = "black";
+            player.hairColor2 = "white";
+            changes++;
+        }
+        if (player.isRace(Races.KRAMPUS, 1, false) && changes < changeLimit && !player.hasPerk(PerkLib.DragonBlackIceBreath)) {
+            outputText("[pg]You feel something awakening within you... then a sudden sensation of choking grabs hold of your throat, sending you to your knees as you clutch and gasp for breath.  It feels like there's something trapped inside your windpipe, clawing and crawling its way up.  You retch and splutter and then, with a feeling of almost painful relief, you expel a bellowing roar from deep inside of yourself... with enough force that clods of dirt and shattered gravel are sent flying all around.  You look at the small crater you have literally blasted into the landscape with a mixture of awe and surprise.");
+            outputText("[pg]It seems the red spider lily has awaked some kind of power within you... your throat and chest feel very cold and at the same time very... strange and you can't put a finger what this feeling exactly is, however; you doubt you can force out more than one such blast before resting.  (<b>Gained Perk: Dragon black ice breath!</b>)");
+            player.createPerk(PerkLib.DragonBlackIceBreath, 0, 0, 0, 0);
+            changes++;
+        }
+		//grow up to 9 feet tall
+		if (changes < changeLimit && rand(2) == 0 && player.tallness < 109) {
+			temp = rand(5) + 3;
+			//Slow rate of growth after some thresholds
+			if (player.tallness >= 100) temp = Math.floor(temp / 3.5);
+			if (player.tallness >= 90 && player.tallness < 100) temp = Math.floor(temp / 2);
+			//Never 0
+			if (temp == 0) temp = 1;
+			if (temp < 5) outputText("\n\nYou shift uncomfortably as you realize you feel off balance.  Gazing down, you realize you have grown SLIGHTLY taller.");
+			if (temp >= 5 && temp < 7) outputText("\n\nYou feel dizzy and slightly off, but quickly realize it's due to a sudden increase in height.");
+			if (temp == 7) outputText("\n\nStaggering forwards, you clutch at your head dizzily.  You spend a moment getting your balance, and stand up, feeling noticeably taller.");
+			player.tallness += temp;
+			changes++;
+		}
+        flags[kFLAGS.TIMES_TRANSFORMED] += changes;
+	}
 	
 	public function jackalDate(player:Player):void {
 		player.slimeFeed();
