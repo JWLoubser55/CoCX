@@ -79,7 +79,7 @@ public class FrostWyrmRace extends Race {
 		
 		buildTier(18, "frost wyrm")
 				.buffs({
-					"maxhp_mult": +0.05,
+					"maxhp_mult": +0.10,
 					"str.mult": +1.30,
 					"tou.mult": +1.10,
 					"spe.mult": +0.70,
@@ -92,7 +92,7 @@ public class FrostWyrmRace extends Race {
 		
 		buildTier(26, "elder frost wyrm")
 				.buffs({
-					"maxhp_mult": +0.10,
+					"maxhp_mult": +0.20,
 					"str.mult": +1.80,
 					"tou.mult": +1.50,
 					"spe.mult": +0.90,
@@ -105,7 +105,7 @@ public class FrostWyrmRace extends Race {
 		
 		buildTier(32, "jormungandr")
 				.buffs({
-					"maxhp_mult": +0.15,
+					"maxhp_mult": +0.30,
 					"str.mult": +2.30,
 					"tou.mult": +1.80,
 					"spe.mult": +0.90,

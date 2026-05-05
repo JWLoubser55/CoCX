@@ -165,6 +165,11 @@ public class Races {
 	public static const DUSKDRAKE:DuskDrakeRace			   		= new DuskDrakeRace(140);
 	public static const KRAMPUS:KrampusRace			   			= new KrampusRace(141);
 	public static const WYVERN:WyvernRace			   			= new WyvernRace(142);
+	public static const SLOTHIEN:SlothienRace			   		= new SlothienRace(143);
+	public static const WASP:WaspRace			   				= new WaspRace(144);
+	public static const HORNET:HornetRace			   			= new HornetRace(145);
+	public static const TITANUSGOJIRA:TitanusGojiraRace			= new TitanusGojiraRace(146);
+	public static const MAGMAWYRM:MagmaWyrmRace			   		= new MagmaWyrmRace(147);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [

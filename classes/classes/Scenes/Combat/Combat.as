@@ -6488,6 +6488,8 @@ public class Combat extends BaseContent {
             switch(player.lowerBody){
                 case LowerBody.HOOFED:
                 case LowerBody.CLOVEN_HOOFED:
+                case LowerBody.CLOVEN_HOOFED_2:
+                case LowerBody.KRAMPUS:
                     outputText("You rear up and trample your opponent with your hooves.");
                     break;
                 default:

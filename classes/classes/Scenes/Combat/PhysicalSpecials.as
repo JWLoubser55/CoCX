@@ -1218,7 +1218,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
 				//Kick
-				if (player.isTaur() || player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.KIRIN || player.lowerBody == LowerBody.BAROMETZ || player.lowerBody == LowerBody.BUNNY || player.lowerBody == LowerBody.KANGAROO || player.lowerBody == LowerBody.HOLLOW || player.perkv1(IMutationsLib.MightyLegsIM) >= 1) {
+				if (player.isTaur() || player.lowerBodyPart.canUseKick() || player.perkv1(IMutationsLib.MightyLegsIM) >= 1) {
 					bd = buttons.add("Kick", kick).hint("Attempt to kick an enemy using your powerful lower body.");
 					if (player.hasStatusEffect(StatusEffects.CooldownKick)) {
 						bd.disable("<b>You need more time before you can perform Kick again.</b>\n\n");
@@ -7058,7 +7058,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//(bunbun kick)
 		else if (player.lowerBody == LowerBody.BUNNY) outputText("You leap straight into the air and lash out with both your furred feet simultaneously, slamming forward in a strong kick.  ");
 		//(centaur kick)
-		else if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED || player.lowerBody == LowerBody.HOLLOW)
+		else if (player.lowerBody == LowerBody.HOOFED || player.lowerBody == LowerBody.PONY || player.lowerBody == LowerBody.CLOVEN_HOOFED || player.lowerBody == LowerBody.CLOVEN_HOOFED_2 || player.lowerBody == LowerBody.KRAMPUS || player.lowerBody == LowerBody.HOLLOW)
 			if (player.isTaur()) outputText("You lurch up onto your backlegs, lifting your forelegs from the ground a split-second before you lash them out in a vicious kick.  ");
 			//(bipedal hoof-kick)
 			else outputText("You twist and lurch as you raise a leg and slam your hoof forward in a kick.  ");

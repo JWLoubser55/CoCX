@@ -48,6 +48,7 @@ public class LowerBody extends SaveableBodyPart {
 	 * - hasPincers: part has pincers and enables pincer actions
 	 * - hasTalons: part has talons and enables talon actions
 	 * - hasClaws: part enables claw actions
+	 * - canKick: part enable kick action
 	 *
 	 * - draconic: part counts as "dragon or variant"
 	 * - feline: part counts as "cat or variant"
@@ -89,6 +90,7 @@ public class LowerBody extends SaveableBodyPart {
 			return desc;
 		},
 		canTaur: true,
+		canKick: true,
 		fur: true
 	});
 
@@ -217,6 +219,7 @@ public class LowerBody extends SaveableBodyPart {
 		footPrefixes: ["large bunny", "rabbit", "large", ""],
 		appearanceDesc: "Your {legCount} legs thicken below the waist as they turn into soft-furred rabbit-like legs. You even have large bunny feet that make hopping around a little easier than walking.",
 		canTaur: true,
+		canKick: true,
 		fur: true
 	});
 
@@ -239,6 +242,7 @@ public class LowerBody extends SaveableBodyPart {
 		feet: "foot-paws",
 		foot: "foot-paw",
 		appearanceDesc: "Your {legCount} furry legs have short thighs and long calves, with even longer feet ending in prominently-nailed toes.",
+		canKick: true,
 		fur: true
 	});
 
@@ -808,6 +812,7 @@ public class LowerBody extends SaveableBodyPart {
 			return desc;
 		},
 		canTaur: true,
+		canKick: true,
 		fur: true
 	});
 
@@ -948,13 +953,15 @@ public class LowerBody extends SaveableBodyPart {
 			return desc;
 		},
 		canTaur: true,
+		canKick: true,
 		fur: true
 	});
 
 	public static const HOLLOW:int = 94;
 	EnumValue.add(Types, HOLLOW, "HOLLOW", {
 		name: "hollow",
-		appearanceDesc: "Two legs grow down from your [hips], muscles corded like braids pulse with soulforce under your thighs. From the calves down your feet are a strange combination of hoof and talon."
+		appearanceDesc: "Two legs grow down from your [hips], muscles corded like braids pulse with soulforce under your thighs. From the calves down your feet are a strange combination of hoof and talon.",
+		canKick: true
 	});
 
 	public static const SPECTRAL_SHROUD:int = 95;
@@ -982,6 +989,7 @@ public class LowerBody extends SaveableBodyPart {
 			return desc;
 		},
 		canTaur: true,
+		canKick: true,
 		fur: true
 	});
 	
@@ -992,6 +1000,7 @@ public class LowerBody extends SaveableBodyPart {
 		appearanceDesc: "{legCount} digitigrade legs covered with thick [fur color] fur form below your knees, ending in cloven hooves.",
 		draconic: true,
 		canTaur: true,
+		canKick: true,
 		fur: true
 	});
 
@@ -1141,9 +1150,13 @@ public class LowerBody extends SaveableBodyPart {
 		// driders have genitals on their human part, unlike usual taurs... this is actually bad way to check, but too many places to fix just now
 		return legCount == 4 && (type != PLANT_FLOWER && type != HYDRA);
 	}
+	
+	public function canUseKick():Boolean {
+		return Types[type].canTaur || false;
+	}
 
 	public function canTaur():Boolean {
-		return Types[type].canTaur || false;
+		return Types[type].canKick || false;
 	}
 
 	public function isDrider():Boolean {

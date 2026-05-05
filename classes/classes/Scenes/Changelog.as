@@ -217,7 +217,7 @@ public class Changelog extends BaseContent
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig); Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event); Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event); Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes, Huge Octuple Yggdrasil Wings (from transforming with World Tree help); Werespider eyes, Werespider arms, Werespider Legs, Werepspider fangs (from transforming after been bitten by werespider); Barometz Legs, Barometz Ears, Barometz Tail, Ram Horns, Verdant Ram Horns, Runic Patterns, ");
 			outputText("Barometz Cock (from Horned fruit), Automata Tail Cable (from automata event); Hollow Mask (Face), Hollow Eyes, Hollow Horns, Hollow Arms, Hollow Lower Body, Hollow Tail, Soulforce Scaring (from Hollowfication events); Deer Blush, Deer Eyes, Iceheart Tatoo (from Cervinium); Ushi Onna Face, Ushi Onna Horns, Ushi Onna Tail, Ushi Onna Arms, Ushi Onna Lower Body, Ushi Oni Tattoo (from Thick Green Onna Gossamer), ");
-			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf); Hoofed no fur Legs, Rhino Arms (from Rhino Steak); Krampus Legs (from Infernal Flower)\n");
+			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf); Hoofed no fur Legs, Rhino Arms (from Rhino Steak); Krampus Legs (from Red Spider Lily)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
 			//outputText("-New HB Mech upgrade options: Armor Plating (+armor), Leather Insulation (+magic resistance), Agility (+base melee atk dmg), Dragon's Breath Flamer (fire dmg special), Scatter Laser (lightning dmg special), Rapid Reload (+base ranged atk dmg), Internal Systems (increase mech SF capacity and lower it consumption during high activity)\n");
 			//outputText(", Camouflage Mode (allow to enter 1 turn long camouflage opening option to use Sneak Attack (melee & range) specials), Invisibility Mode (the same as Camouflage Mode but can last until PC run out of SF to keep it active or deactivate it manualy / upgrade to decrease SF consumption)");
@@ -386,13 +386,10 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Mantislike Agility (Final Form). Req. Mantislike Agility (Evolved) and lvl 90+. Effects: Your agility is increased, and can be even further boosted if you have natural armor or thick skin, +90% max core spe as phantom spe. ");
 			outputText("Increases maximum base/core and trainable Spe. All natural weapon and weapon damage is increased by an amount equal to sum of your speed stat core and train values.\n");
 			outputText("-Mantis Multi Strike special got *slight* re-touch to bring it up to modern standards :D\n");
-			outputText("-New TF item: Red Spider Lily. Founded in Vulcanic Crag (O). Using it will turn PC into Krampus. Their race bonuses for Krampus Hatchling (12): +70% to str multi, +10% to tou/spe multi, +50% to int multi, +40% to wis multi, +60% to lib multi, +60 to sens.\n");
+			outputText("-New TF item: Red Spider Lily. Founded in Vulcanic Crag (O). Using it will turn PC into Krampus. Their race bonuses for Krampus Hatchling / Krampus (12/18): +90%/+140% to str multi, +60%/+100% to tou multi, +10% to spe/int/wis multi, +60%/+70% to lib multi, +60/+70 to sens, +100/+200 to max lust, +5%/+10% to max hp.\n");
 			outputText("-New event perk: Dragon Black Ice Breath. Gained by using Red Spider Lily item when having tier 1+ Krampus race score. Effects: Allows access to a dragon black ice breath attack.\n");
 			outputText("-New M. Special: Dragon Black Ice Breath. Usable by having Dragon Black Ice Breath perk. Effect: Like any others Dragon Breath, dealing Black Ice type damage.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");// / Banshee / Unhallowed Banshee
-			outputText("-\n");///16/28
+			outputText("-Frost Wyrm max hp bonuses for each race tier increased to 10%/20%/30% from 5%/10%/15%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -405,6 +402,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");// / Unhallowed Banshee/28
 			outputText("-\n");
 			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
 			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
@@ -1099,7 +1099,7 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Human Secondary Heart. Req. having free heart mutation slot, human race (17+). Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased a bit (2%) as the new heart struggles to find its rhythm alongside your first.\n");
 			outputText("-New mutation perk: Hydra Blood. Req. having free bloodstream mutation slot, Hydra race and Hydra Regeneration perk. Effects: Improve existing Regeneration by 1% negated by fire damage.\n");
 			outputText("-New mutation perk: Living Weapon. Req. having free muscles related mutation slot, Gargoyle or Automata race. Effects: All natural weapon and weapon damage is increased by an amount equal to a quarter of your armor class.\n");
-			outputText("-New mutation perk: Mighty Legs. Req. having free adaptation mutation slot, one of races: Kangaro, Bunny, Easter Bunny, Laquine, Horse Morph, Centaur(The original centaur not the other ones), Cow, Minotaur, Jabberwocky, Satyr. Effects: Make Kick permanent no matter your leg type, Increase unarmed strike damage by 5 and grapple effect by 20%.\n");
+			outputText("-New mutation perk: Mighty Legs. Req. having free adaptation mutation slot, one of races: Kangaro, Bunny, Easter Bunny, Laquine, Horse Morph, Centaur(The original centaur not the other ones), Cow, Minotaur, Jabberwocky, Satyr, Deer, Ushi-onna/oni, Krampus. Effects: Make Kick permanent no matter your leg type, Increase unarmed strike damage by 5 and grapple effect by 20%.\n");
 			outputText("-New mutation perk: Mighty Lower Half. Req. having free adaptation mutation slot, one of races: Scylla, Naga, Gorgon, Couatl, Vouivre, Apophis, Frostwyrm, Mindbreaker. Effects: Tentacle and tail attack deals 25% more damage. Increase unarmed strike damage by 5 and grapple effect by 20%.\n");
 			outputText("-New mutation perk: Myconid Collective Consciousness. Req. having free nerv system mutation slot, Myconid race. Effects: Add 10% of your toughness to your spellcasting and Esper score.\n");
 			outputText("-New mutation perk: Myconid Spore. Req. having free ovaries mutation slot, Myconid race. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 25%.\n");

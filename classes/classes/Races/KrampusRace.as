@@ -59,23 +59,41 @@ public class KrampusRace extends Race {
 									body.hairColor1 == "black"
 						}, +2)
 				.height(GREATER_THAN(96), +1)
-				.hasPerk(PerkLib.DragonBlackIceBreath, +1)
-				.hasPerk(PerkLib.Dracoforce, +1)
+				.hasPerk(PerkLib.DragonBlackIceBreath, +1);
+		addScoresAfter(5)
+				.hasPerk(PerkLib.Phylactery, +5)
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 		
+		addBloodline(PerkLib.DragonsDescendant,PerkLib.BloodlineDragon);
 		addMutation(IMutationsLib.DrakeLungsIM);
+		addMutation(IMutationsLib.MightyLegsIM);
 
         buildTier(12, "krampus hatchling")
                 .buffs({
 					"maxhp_mult": +0.05,
 					"maxlust_base": +100,
-					"str.mult": +0.70,
-					"tou.mult": +0.10,
+					"str.mult": +0.90,
+					"tou.mult": +0.60,
 					"spe.mult": +0.10,
-					"int.mult": +0.50,
-					"wis.mult": +0.40,
+					"int.mult": +0.10,
+					"wis.mult": +0.10,
 					"lib.mult": +0.60,
 					"sens": +60
+                    })
+                .end();
+
+        buildTier(18, "krampus")
+				.requirePerk(PerkLib.Phylactery)
+                .buffs({
+					"maxhp_mult": +0.10,
+					"maxlust_base": +200,
+					"str.mult": +1.40,
+					"tou.mult": +1.00,
+					"spe.mult": +0.10,
+					"int.mult": +0.10,
+					"wis.mult": +0.10,
+					"lib.mult": +0.70,
+					"sens": +70
                     })
                 .end();
     }
