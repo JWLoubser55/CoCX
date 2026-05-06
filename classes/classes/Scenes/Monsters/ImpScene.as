@@ -1471,7 +1471,7 @@ use namespace CoC;
 				return;
 			}
             sceneHunter.print("Failed check: Alraune/Liliraune race");
-			if ((player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties)) && !player.isTaur() && player.hasVagina()) {
+			if ((player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties) || player.hasPerk(PerkLib.GentleGiant)) && !player.isTaur() && player.hasVagina()) {
 				impRapesBimbo();
 				return;
 			}

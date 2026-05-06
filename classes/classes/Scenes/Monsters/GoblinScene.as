@@ -419,7 +419,7 @@ public class GoblinScene extends BaseContent {
             return;
         }
         sceneHunter.print("Check failed: Alraune.")
-        if ((player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties)) && player.hasVagina()) {
+        if ((player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties) || player.hasPerk(PerkLib.GentleGiant)) && player.hasVagina()) {
             goblinRapesBimbo();
             return;
         }

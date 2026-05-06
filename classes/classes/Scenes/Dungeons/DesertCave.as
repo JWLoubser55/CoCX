@@ -3145,7 +3145,7 @@ public class DesertCave extends DungeonAbstractContent
 		public function moreCumWitchesPlease():void {
 			clearOutput();
 			//Bimbo version:
-			if(player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties)) {
+			if(player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties) || player.hasPerk(PerkLib.GentleGiant)) {
 				outputText("Wouldn't it be better if there were like, lots of cum witches, with yummy cocks that you could suck?");
 				outputText("\n\n\"<i>No, it wouldn't,</i>\" the Sand Mother retorts, ending the conversation.");
 				doNext(playerMenu);

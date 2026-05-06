@@ -219,7 +219,7 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				else addButtonDisabled(7, "Herb Bag (LowG)", "Herbs Bag (Low Grade) Req. lvl 5 in Farming.");
 			}
 			if (Garden.PotionsBagSlot01Cap == 0) addButton(8, "Pot Bag (LowG)", pitchPotionsBag).hint("Potion Bag (Lowest Grade)");
-			if (player.hasPerk(PerkLib.ExanimationI) && !player.hasPerk(PerkLib.ExanimationIII) && player.level < 32) addButton(9, "Torch", pitchPurePeach);
+			if (player.hasPerk(PerkLib.ExanimationI) && !player.hasPerk(PerkLib.ExanimationIII) && player.level < 32) addButton(9, "Peach", pitchPurePeach);
 			if (player.hasKeyItem("Tarnished Ore Bag (Lowest grade)") >= 0) addButton(10, "Ore Bag (LowG)", pitchOreBag).hint("Ore Bag (Lowest Grade)");
 			if (Holidays.nieveHoliday()) {
 				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 0) addButton(11, "Mysterious Seed", pitchMysteriousSeed);

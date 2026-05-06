@@ -222,6 +222,11 @@ use namespace CoC;
 				},
 				call: findSnowFlower
 			}, {
+				name: "findredspiderlily",
+				label : "Red Spider Lily",
+				kind  : 'item',
+				call: findRedSpiderLily
+			}, {
 				//Ornate Chest or cache of gems/pile of stones
 				name: "chest",
 				label : "Chest",
@@ -326,6 +331,12 @@ use namespace CoC;
 			clearOutput();
 			outputText("You stumble upon a strange white flower, which seems to grow in the rift heedless of the cold. You feel oddly drawn towards the plant, deciding to pick it up. ");
 			inventory.takeItem(consumables.SNOWFLO, explorer.done);
+		}
+
+		private function findRedSpiderLily():void {
+			clearOutput();
+			outputText("While you're minding your own business, you spot a flower. You walk over to it, pick it up and smell it. By Fera, it smells amazing! It looks like Red Spider Lily as the legends foretold. ");
+			inventory.takeItem(consumables.RSLILY_, explorer.done);
 		}
 		
 		public function encounterItem():void {

@@ -2558,6 +2558,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			needNext = player.gainOrLosePerk(PerkLib.Dracoforce, player.isRaceCached(Races.DRAGON, 3) || player.isRaceCached(Races.FAERIEDRAGON, 3) || player.isRaceCached(Races.FROSTWYRM, 3) || player.isRaceCached(Races.JABBERWOCKY, 4) || player.isRaceCached(Races.SEA_DRAGON, 2) || player.isRaceCached(Races.KRAMPUS, 4), "Your draconic blood boil with contained power as your body sturdiness and strength increase to match that of a great wyrm.", "As your body becomes less draconic you feel the might of the dragons within you wanes.") || needNext;
 			//Wild Drake
 			needNext = player.gainOrLosePerk(PerkLib.WildDrake, player.isAnyRaceCached(Races.DRAGON, Races.FAERIEDRAGON, Races.YGGDRASIL, Races.FROSTWYRM, Races.JABBERWOCKY, Races.SEA_DRAGON, Races.VOUIVRE, Races.DRAGONNE, Races.KRAMPUS), "Your draconic blood boil with contained power as your ability to unleash breath attacks increase to match that of a great drake.", "As your body becomes less draconic you feel the might of the drakes within you wanes.") || needNext;
+			//Wild Drake
+			needNext = player.gainOrLosePerk(PerkLib.GentleGiant, player.isAnyRaceCached(Races.ORCA, Races.FIRESNAILS, Races.SANDWORM, Races.FROSTWYRM, Races.KRAMPUS), "Director Lia laugh at your lack of imagination what text will appear here.", "Director Lia laugh at your lack of imagination what text will appear here.") || needNext;
 			//Hinezumi Coat
 			if (player.isRaceCached(Races.MOUSE, 2) && !player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
 				outputText("\nYour body suddenly coats itself with fire turning incandescent as your lust and body heat spikes up reaching a critical point, this must be the infamous hinezumi coat. You gasp as your lust begins to overwhelm you, the flare of desire burns in you and you need to vent it one way or another. ");
@@ -3257,7 +3259,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			if (player.hasPerk(PerkLib.BimboBody) || player.hasStatusEffect(StatusEffects.BimboChampagne)) { //Bimbo checks
 				if (player.breastRows[0].breastRating < 5) { //Tits!
 					player.breastRows[0].breastRating = 5;
-					if (player.hasPerk(PerkLib.BimboBrains) || player.hasStatusEffect(StatusEffects.BimboChampagne))
+					if (player.hasPerk(PerkLib.BimboBrains) || player.hasStatusEffect(StatusEffects.BimboChampagne) || player.hasPerk(PerkLib.GentleGiant))
 						outputText("\n<b>Your boobies like, get all big an' wobbly again!  You'll have lots of fun now that your tits are back to being big, yummy knockers!</b>\n");
 					else outputText("\n<b>Your " + player.breastDescript(0) + " have regained their former bimbo-like size.  It looks like you'll be stuck with large, sensitive breasts forever, but at least it'll help you tease your enemies into submission!</b>\n");
 					player.dynStats("int", -1, "lus", 15);
@@ -3265,13 +3267,13 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 				if (!player.hasVagina()) { //Vagoo
 					player.createVagina();
-					if (player.hasPerk(PerkLib.BimboBrains) || player.hasStatusEffect(StatusEffects.BimboChampagne))
+					if (player.hasPerk(PerkLib.BimboBrains) || player.hasStatusEffect(StatusEffects.BimboChampagne) || player.hasPerk(PerkLib.GentleGiant))
 						outputText("\n<b>Your crotch is like, all itchy an' stuff.  Omigawsh!  There's a wet little slit opening up, and it's all tingly!  It feels so good, maybe like, someone could put something inside there!</b>\n");
 					else outputText("\n<b>Your crotch tingles for a second, and when you reach down to feel, your [legs] fold underneath you, limp.  You've got a vagina - the damned thing won't go away and it feels twice as sensitive this time.  Fucking bimbo liqueur.</b>\n");
 					needNext = true;
 				}
 				if (player.hips.type < 12) {
-					if (player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties))
+					if (player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties) || player.hasPerk(PerkLib.GentleGiant))
 						outputText("\nWhoah!  As you move, your [hips] sway farther and farther to each side, expanding with every step, soft new flesh filling in as your hips spread into something more appropriate on a tittering bimbo.  You giggle when you realize you can't walk any other way.  At least it makes you look, like, super sexy!\n");
 					else outputText("\nOh, no!  As you move, your [hips] sway farther and farther to each side, expanding with every step, soft new flesh filling in as your hips spread into something more appropriate for a bimbo.  Once you realize that you can't walk any other way, you sigh heavily, your only consolation the fact that your widened hips can be used to tease more effectively.\n");
 					player.addCurse("int", 1, 1);
@@ -3279,7 +3281,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 				if (player.butt.type < 12) {
-					if (player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties))
+					if (player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties) || player.hasPerk(PerkLib.GentleGiant))
 						outputText("\nGradually warming, you find that your [butt] is practically sizzling with erotic energy.  You smile to yourself, imagining how much you wish you had a nice, plump, bimbo-butt again, your hands finding their way to the flesh on their own.  Like, how did they get down there?  You bite your lip when you realize how good your tush feels in your hands, particularly when it starts to get bigger.  Are butts supposed to do that?  Happy pink thoughts wash that concern away - it feels good, and you want a big, sexy butt!  The growth stops eventually, and you pout disconsolately when the lusty warmth's last lingering touches dissipate.  Still, you smile when you move and feel your new booty jiggling along behind you.  This will be fun!\n");
 					else outputText("\nGradually warming, you find that your [butt] is practically sizzling with erotic energy.  Oh, no!  You thought that having a big, bloated bimbo-butt was a thing of the past, but with how it's tingling under your groping fingertips, you have no doubt that you're about to see the second coming of your sexy ass.  Wait, how did your fingers get down there?  You pull your hands away somewhat guiltily as you feel your buttcheeks expanding.  Each time you bounce and shake your new derriere, you moan softly in enjoyment.  Damnit!  You force yourself to stop just as your ass does, but when you set off again, you can feel it bouncing behind you with every step.  At least it'll help you tease your foes a little more effectively...\n");
 					player.dynStats("int", -1, "lus", 10);

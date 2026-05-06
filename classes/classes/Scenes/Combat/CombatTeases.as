@@ -831,7 +831,7 @@ public class CombatTeases extends BaseCombatContent {
 				break;
 				//6 pussy flash
 			case 6:
-				if (player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties)) {
+				if (player.hasPerk(PerkLib.BimboBrains) || player.hasPerk(PerkLib.FutaFaculties) || player.hasPerk(PerkLib.GentleGiant)) {
 					if (display) outputText("You coyly open your [armor] and giggle, \"<i>Is this, like, what you wanted to see?</i>\"  ");
 				}
 				else {

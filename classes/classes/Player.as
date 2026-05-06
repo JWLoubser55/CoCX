@@ -6776,6 +6776,7 @@ use namespace CoC;
 			if (statStore.hasBuff('Titanic Strength')) statStore.removeBuffs('Titanic Strength');
 			if (statStore.hasBuff('Condensed Power')) statStore.removeBuffs('Condensed Power');
 			if (statStore.hasBuff('Dracoforce')) statStore.removeBuffs('Dracoforce');
+			if (statStore.hasBuff('Gentle Giant')) statStore.removeBuffs('Gentle Giant');
 			if (statStore.hasBuff('Exanimation')) statStore.removeBuffs('Exanimation');
 			if (statStore.hasBuff('Lusty Strength')) statStore.removeBuffs('Lusty Strength');
 			if (statStore.hasBuff('Sanguine Strength')) statStore.removeBuffs('Sanguine Strength');
@@ -6813,6 +6814,11 @@ use namespace CoC;
 			}
 			if ((hasPerk(PerkLib.EmptyVessel) || hasPerk(PerkLib.SpiritualHunger)) && hunger >= Math.round(maxHunger() * 0.7)) {
 				statStore.replaceBuffObject({'str': Math.round(strengthBase*0.2), 'tou': Math.round(toughnessBase*0.2), 'spe': Math.round(speedBase*0.2), 'int': Math.round(intelligenceBase*0.2), 'wis': Math.round(wisdomBase*0.2), 'lib': Math.round(libidoBase*0.2)}, 'Exanimation', { text: 'Exanimation' });
+			}
+			if (hasPerk(PerkLib.GentleGiant)) {
+				var strGG:Number = Math.round(strengthBase/4);
+				var intGG:Number = Math.round(intelligenceBase/4);
+				statStore.replaceBuffObject({'str': strGG, 'int': -intGG}, 'Gentle Giant', { text: 'Gentle Giant' });
 			}
 			if (hasPerk(PerkLib.CovenantOfTheSpirits)) {
 				statStore.replaceBuffObject({'spe':(0.01 * Math.round(inte/2))}, 'Covenant of the spirits', { text: 'Covenant of the spirits' });
@@ -8963,7 +8969,7 @@ use namespace CoC;
 			if (scale) {
 				//MOD CHANGES FOR PERKS
 				//Bimbos learn slower
-				if (hasPerk(PerkLib.FutaFaculties) || hasPerk(PerkLib.BimboBrains) || hasPerk(PerkLib.BroBrains)) {
+				if (hasPerk(PerkLib.FutaFaculties) || hasPerk(PerkLib.BimboBrains) || hasPerk(PerkLib.BroBrains) || hasPerk(PerkLib.GentleGiant)) {
 					if (dinte > 0) dinte /= 2;
 					if (dinte < 0) dinte *= 2;
 				}

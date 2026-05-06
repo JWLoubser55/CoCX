@@ -4624,6 +4624,8 @@ public class PerkLib
 				.withBuffs({'lib.mult':0.50,'sens':45,'maxlust_base':+60,'minlustx':0.2});
 		public static const GeneticMemory:PerkType = mk("Genetic Memory", "Genetic Memory",
 				"Your body can remember almost any transformation it undergoes.");
+		public static const GentleGiant:PerkType = mk("Gentle Giant", "Gentle Giant",
+				"You are a natural musclehead with very little brain to back it up. Who needs brawn when you got brawl?! Strength is increased by 25% of its total but reduce total intelligence by the same amount.");
 		public static const Ghostslinger:PerkType = mk("Ghost-slinger", "Ghost-slinger",
 				"Increases damage with guns and thrown weapons by 15%.");
 		public static const GiantMight:PerkType = mk("Giant might", "Giant might",

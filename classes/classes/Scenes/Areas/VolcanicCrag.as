@@ -109,11 +109,6 @@ public class VolcanicCrag extends BaseContent
 				},
 				call: findEmberFlower
 			}, {
-				name: "findredspiderlily",
-				label : "Red Spider Lily",
-				kind  : 'item',
-				call: findRedSpiderLily
-			}, {
 				name: "truefiregolem",
 				label : "True Fire Golems",
 				kind : 'monster',
@@ -269,12 +264,6 @@ public class VolcanicCrag extends BaseContent
 			clearOutput();
 			outputText("You stumble upon a strange red flower, which seems to grow in the crag heedless of the unbearable heat. You feel oddly drawn towards the plant, deciding to pick it up. ");
 			inventory.takeItem(consumables.EMBER_F, explorer.done);
-		}
-
-		private function findRedSpiderLily():void {
-			clearOutput();
-			outputText("While you're minding your own business, you spot a flower. You walk over to it, pick it up and smell it. By Fera, it smells amazing! It looks like Red Spider Lily as the legends foretold. ");
-			inventory.takeItem(consumables.RSLILY_, explorer.done);
 		}
 
 		private function fireGolemEncounter():void {
