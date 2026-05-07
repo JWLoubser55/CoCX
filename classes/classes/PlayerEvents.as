@@ -2558,7 +2558,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			needNext = player.gainOrLosePerk(PerkLib.Dracoforce, player.isRaceCached(Races.DRAGON, 3) || player.isRaceCached(Races.FAERIEDRAGON, 3) || player.isRaceCached(Races.FROSTWYRM, 3) || player.isRaceCached(Races.JABBERWOCKY, 4) || player.isRaceCached(Races.SEA_DRAGON, 2) || player.isRaceCached(Races.KRAMPUS, 4), "Your draconic blood boil with contained power as your body sturdiness and strength increase to match that of a great wyrm.", "As your body becomes less draconic you feel the might of the dragons within you wanes.") || needNext;
 			//Wild Drake
 			needNext = player.gainOrLosePerk(PerkLib.WildDrake, player.isAnyRaceCached(Races.DRAGON, Races.FAERIEDRAGON, Races.YGGDRASIL, Races.FROSTWYRM, Races.JABBERWOCKY, Races.SEA_DRAGON, Races.VOUIVRE, Races.DRAGONNE, Races.KRAMPUS), "Your draconic blood boil with contained power as your ability to unleash breath attacks increase to match that of a great drake.", "As your body becomes less draconic you feel the might of the drakes within you wanes.") || needNext;
-			//Wild Drake
+			//Gentle Giant
 			needNext = player.gainOrLosePerk(PerkLib.GentleGiant, player.isAnyRaceCached(Races.ORCA, Races.FIRESNAILS, Races.SANDWORM, Races.FROSTWYRM, Races.KRAMPUS), "Director Lia laugh at your lack of imagination what text will appear here.", "Director Lia laugh at your lack of imagination what text will appear here.") || needNext;
 			//Hinezumi Coat
 			if (player.isRaceCached(Races.MOUSE, 2) && !player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
@@ -3552,4 +3552,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}

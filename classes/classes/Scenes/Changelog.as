@@ -386,11 +386,12 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Mantislike Agility (Final Form). Req. Mantislike Agility (Evolved) and lvl 90+. Effects: Your agility is increased, and can be even further boosted if you have natural armor or thick skin, +90% max core spe as phantom spe. ");
 			outputText("Increases maximum base/core and trainable Spe. All natural weapon and weapon damage is increased by an amount equal to sum of your speed stat core and train values.\n");
 			outputText("-Mantis Multi Strike special got *slight* re-touch to bring it up to modern standards :D\n");
-			outputText("-New TF item: Red Spider Lily. Founded in Glacial Rift (O). Using it will turn PC into Krampus. Their race bonuses for Krampus Hatchling / Krampus (12/18): +90%/+140%/+140% to str multi, +60%/+100%/+100% to tou multi, +10% to spe/int/wis multi, +60%/+70% to lib multi, +60/+70 to sens, +100/+200 to max lust, +5%/+10% to max hp.\n");
+			outputText("-New TF item: Red Spider Lily. Founded in Glacial Rift (O). Using it will turn PC into Krampus. Their race bonuses for Krampus Hatchling / Krampus / Elder Krampus / Ancient Krumpus (12/18/24/32): +90%/+140%/+190%/+240% to str multi, +60%/+100%/+140%/+180% to tou multi, +10% to spe/int/wis multi, +60%/+70%/+80%/+90% to lib multi, +60/+70/+80/+90 to sens, +100/+200/+300/+400 to max lust, +5%/+10%/+15%/+20% to max hp.\n");
 			outputText("-New event perk: Dragon Black Ice Breath. Gained by using Red Spider Lily item when having tier 1+ Krampus race score. Effects: Allows access to a dragon black ice breath attack.\n");
-			outputText("-New M. Special: Dragon Black Ice Breath. Usable by having Dragon Black Ice Breath perk. Effect: Like any others Dragon Breath, dealing Black Ice type damage.\n");
+			outputText("-New M. Special: Dragon Black Ice Breath. Usable by having Dragon Black Ice Breath perk. Effect: Like any others Dragon Breaths, dealing Black Ice type damage.\n");
 			outputText("-Frost Wyrm max hp bonuses for each race tier increased to 10%/20%/30% from 5%/10%/15%.\n");
 			outputText("-New event perk: Gentle Giant. Gained by been Frost Wyrm, Sand Worm, Whale, Fire Snail, Krampus. Effects: You are a natural musclehead with very little brain to back it up. Who needs brawn when you got brawl?! Strength is increased by 25% of its total but reduce total intelligence by the same amount.\n");
+			outputText("-Yeti Legs/Feet now would give similar bonus to unarmed dmg as Yeti Arms. Yeti tier 2 bonuses req. now 20+ not 17+ pts and are slight improved.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -404,7 +405,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");// / Elder Krampus/24/+80%/+80/+300/+15%
 			outputText("-\n");
 			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
 			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials

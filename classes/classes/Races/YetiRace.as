@@ -74,14 +74,14 @@ public class YetiRace extends Race {
 				})
 				.end()
 		
-		buildTier(17,"true yeti")
+		buildTier(20,"true yeti")
 				.namesTauric("true yeti", "true yeti-taur")
 				.buffs({
-					"str.mult": +1.30,
-					"tou.mult": +1.00,
-					"spe.mult": +0.65,
+					"str.mult": +1.50,
+					"tou.mult": +1.10,
+					"spe.mult": +0.75,
 					"int.mult": -0.90,
-					"lib.mult": +0.50
+					"lib.mult": +0.55
 				})
 				.end()
 	}

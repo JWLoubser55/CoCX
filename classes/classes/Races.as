@@ -170,6 +170,11 @@ public class Races {
 	public static const HORNET:HornetRace			   			= new HornetRace(145);
 	public static const TITANUSGOJIRA:TitanusGojiraRace			= new TitanusGojiraRace(146);
 	public static const MAGMAWYRM:MagmaWyrmRace			   		= new MagmaWyrmRace(147);
+	public static const FROG:FrogRace			   				= new FrogRace(148);
+	public static const CHAMELEON:ChameleonRace	   				= new ChameleonRace(149);
+	public static const MOSQUITO:MosquitoRace	   				= new MosquitoRace(150);
+	public static const GLACIALCOW:GlacialCowRace	   			= new GlacialCowRace(151);
+	public static const GLACIALMINOTAUR:GlacialMinotaurRace	   	= new GlacialMinotaurRace(152);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
@@ -179,7 +184,7 @@ public class Races {
 			NAGA, GORGON, VOUIVRE, COUATL, HYDRA, APOPHIS, MARILITH
 	];
 	public static const InsectRaces:/*Race*/Array = [
-			BEE, MANTIS, SUNPRAYINGMANTIS, SCORPION, SPIDER, ANT, OOMUKADE, CANCER, ATLACH_NACHA, SANDWORM, WERESPIDER, MOTH
+			BEE, MANTIS, SUNPRAYINGMANTIS, SCORPION, SPIDER, ANT, OOMUKADE, CANCER, ATLACH_NACHA, SANDWORM, WERESPIDER, MOTH, MOSQUITO
 	];
 	public static const GoblinoidRaces:/*Race*/Array = [
 			GOBLIN, GREMLIN
@@ -203,7 +208,7 @@ public class Races {
 			POLTERGEIST, BANSHEE, WENDIGO, HOLLOW
 	];
 	public static const DragonlikeRaces:/*Race*/Array = [
-			DRAGON, YGGDRASIL, WEREDRAGON, FAERIEDRAGON, VOUIVRE, FROSTWYRM, DRAGONNE, DUSKDRAKE, KRAMPUS, JABBERWOCKY, SEA_DRAGON, WYVERN
+			DRAGON, YGGDRASIL, WEREDRAGON, FAERIEDRAGON, VOUIVRE, FROSTWYRM, DRAGONNE, DUSKDRAKE, KRAMPUS, JABBERWOCKY, SEA_DRAGON, WYVERN, MAGMAWYRM
 	];
 	public static const RacesForRandomEnchantments:/*Race*/Array = [
 			// populated in load() as AllVisibleRaces - RacesExcludedFromRandomEnchantments

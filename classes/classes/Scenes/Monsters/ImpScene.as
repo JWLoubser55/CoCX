@@ -1954,6 +1954,9 @@ use namespace CoC;
 			outputText("\n\nAfter a few moments of recovery, you slowly lift yourself off the imp.  Cum rushes out of your [vag], and you clamp your muscles down as best as you can to keep the warm substance inside of you.  You give your swollen, cum-filled belly a motherly rub, before gathering your [armor].");
 			player.sexReward("cum","Vaginal");
 			dynStats("cor", 1);
+			//Preggers chance!
+			if (!player.isGoblinoid()) player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
+			player.cuntChange(monster.cockArea(0), true, true, false);
 			player.fuckingWithDemons(1);
 			cleanupAfterCombat();
 		}
@@ -2503,4 +2506,4 @@ use namespace CoC;
 			cleanupAfterCombat();
 		}
 	}
-}
+}

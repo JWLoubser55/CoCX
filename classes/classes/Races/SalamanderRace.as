@@ -11,7 +11,7 @@ import classes.internals.Utils;
 
 public class SalamanderRace extends Race {
 	public static const SalamanderScaleColors:/*String*/Array = ["red", "blazing red", "orange", "reddish-orange"];
-	public static const SalamanderSkinColors:/*String*/Array = ["tan", "light", "dark", "mohagany", "russet"];
+	public static const SalamanderSkinColors:/*String*/Array = ["tan", "light", "dark", "mahogany", "russet"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",

@@ -96,6 +96,36 @@ public class KrampusRace extends Race {
 					"sens": +70
                     })
                 .end();
+
+        buildTier(24, "elder krampus")
+				.requirePreviousTier()
+                .buffs({
+					"maxhp_mult": +0.15,
+					"maxlust_base": +300,
+					"str.mult": +1.90,
+					"tou.mult": +1.40,
+					"spe.mult": +0.10,
+					"int.mult": +0.10,
+					"wis.mult": +0.10,
+					"lib.mult": +0.80,
+					"sens": +80
+                    })
+                .end();
+
+        buildTier(32, "ancient krampus")
+				.requirePreviousTier()
+                .buffs({
+					"maxhp_mult": +0.20,
+					"maxlust_base": +400,
+					"str.mult": +2.40,
+					"tou.mult": +1.80,
+					"spe.mult": +0.10,
+					"int.mult": +0.10,
+					"wis.mult": +0.10,
+					"lib.mult": +0.90,
+					"sens": +90
+                    })
+                .end();
     }
 }
 }
