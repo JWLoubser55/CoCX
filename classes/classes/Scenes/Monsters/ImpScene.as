@@ -2506,4 +2506,4 @@ use namespace CoC;
 			cleanupAfterCombat();
 		}
 	}
-}
+}

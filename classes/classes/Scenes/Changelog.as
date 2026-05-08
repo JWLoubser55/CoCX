@@ -390,7 +390,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Dragon Black Ice Breath. Gained by using Red Spider Lily item when having tier 1+ Krampus race score. Effects: Allows access to a dragon black ice breath attack.\n");
 			outputText("-New M. Special: Dragon Black Ice Breath. Usable by having Dragon Black Ice Breath perk. Effect: Like any others Dragon Breaths, dealing Black Ice type damage.\n");
 			outputText("-Frost Wyrm max hp bonuses for each race tier increased to 10%/20%/30% from 5%/10%/15%.\n");
-			outputText("-New event perk: Gentle Giant. Gained by been Frost Wyrm, Sand Worm, Whale, Fire Snail, Krampus. Effects: You are a natural musclehead with very little brain to back it up. Who needs brawn when you got brawl?! Strength is increased by 25% of its total but reduce total intelligence by the same amount.\n");
+			outputText("-New event perk: Gentle Giant. Gained by been Frost Wyrm, Sand Worm, Whale, Fire Snail, Krampus. Effects: You are a natural musclehead with very little brain to back it up. Who needs brawn when you got brawl?! Strength is increased by 25% of its total but reduces total intelligence by the same amount.\n");
 			outputText("-Yeti Legs/Feet now would give similar bonus to unarmed dmg as Yeti Arms. Yeti tier 2 bonuses req. now 20+ not 17+ pts and are slight improved.\n");
 			outputText("-\n");
 			outputText("-\n");

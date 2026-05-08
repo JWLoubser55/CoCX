@@ -1190,13 +1190,13 @@ public final class Mutations extends MutationsHelper {
 		player.demonicenergy += 50;
 		if (player.hasStatusEffect(StatusEffects.ArigeanInfected)) player.removeStatusEffect(StatusEffects.ArigeanInfected);
 		if (player.hasPerk(PerkLib.WendigoCurse)) player.removePerk(PerkLib.WendigoCurse);
-        outputText("That demon may have gotten you off, but it just wasn't enough.  Somehow, you're STILL hornier than you've ever been - you NEED to get off again.  Desperate, you begin ");
+        outputText("The demon may have banged you badly but this is not enough… you somehow still feel very horny and need to achieve release again right away. Desperate to achieve orgasm yet again you begin fiercely masturbating ");
 		if (player.hasCock()) outputText("your cock dripping bead after dead of pre but never fully gushing out "+(player.hasVagina()?"while ":"")+"");
 		if (player.hasVagina()) outputText("your pussy gushes around you pistoning finger yet you fail to reach your peak");
-		outputText(", but it just… won't… CUM!\n\n");
-		outputText("You keep pleasuring yourself, your need melting all other thoughts.  Your skin tingles, flushing to a new "+player.skinColor1+" hue; your eyes burn as well, but you ignore it and keep going.  You give a masochistic, pleasured whine as a pair of fleshy wings pushes out of your back.  A whimpering moan escapes you as ");
+		outputText(". You will not be denied you need to cum… you want to shoot everything out!\n\n");
+		outputText("You keep masturbating your brain away as your skin flush to a new "+player.skinColor1+"ish hue. You’re so close yet so far. You moan in delight as a pair of fleshy wings pushes out of your back ");
 		if (player.tailType == Tail.NONE) {
-			outputText("long sinuous tail grows out of your ass like a erect cock out of its sheath");
+			outputText("while a long sinuous tail grows out of your ass like a erect cock out of its sheath");
 			if (!player.isGenderless()) {
 				outputText(" to ");
 				if (player.hasCock()) outputText("wrap itself around your dick assisting your hand");
@@ -1204,34 +1204,10 @@ public final class Mutations extends MutationsHelper {
 			}
 		}
 		else outputText("your tail tingling with pleasure in sympathy as it is overcome by changing the sensitive tip changing shape to match its new form");
-		outputText(".  You vaguely notice the "+player.skinColor2+" shade of the demonic appendages before your vision turns white, two demonic horns pressing out of your skull as if fueled by the pleasure and need.\n\n");
-		outputText("Your body still feels STUCK, like something's right between your ");
-		if (player.gender == 1) outputText("[cock]");
-		if (player.gender == 2) outputText("[pussy]");
-		if (player.gender == 3) {
-			if (rand(2) == 0) outputText("[cock]");
-			else outputText("[pussy]");
-		}
-		outputText(" and your orgasm - you're so close, yet so far, and it's driving you MAD!  Nothing else matters - you NEED TO CUM, and NOTHING can ever be allowed to stop you again!  That thought seems to be what breaks the dam finally - and the orgasm leaves you SCREAMING as the bliss of release finally hits you!  You cum FAR more fluids than normal, and every twitch of your needy ");
-		if (player.gender == 1) outputText("[cock]");
-		if (player.gender == 2) outputText("[pussy]");
-		if (player.gender == 3) {
-			if (rand(2) == 0) outputText("[cock]");
-			else outputText("[pussy]");
-		}
-		outputText(" just hits you with another mini-orgasm.  You've never cum so hard, and you LOVE IT!\n\n");
-		outputText("As the orgasm finally winds down, you shiver happily - your whole life has been distilled into that one orgasm, and you barely even care.  You can smell more than just cum - you smell something else past it all, something delicious and powerful.  Your hand reaches down automatically and fumbles for the sensation, but you can't quite find it blind.  ");
-		outputText("Rolling onto your side, you see the purple ooze in the center of your own cum - an ooze that shimmers and pulls together into a little crystalline shape.\n\n");
-		outputText("You realize what you're seeing - that's your soul, after it melted out your ");
-		if (player.gender == 1) outputText("[cock]");
-		if (player.gender == 2) outputText("[pussy]");
-		if (player.gender == 3) {
-			if (rand(2) == 0) outputText("[cock]");
-			else outputText("[pussy]");
-		}
-		outputText(" during that delightful orgasm.  You're a demon now too - and honestly, you feel like that's an improvement.  Why did you even bother holding onto your purity?  Why did you try to fight this lust, this corruption?  With how good you feel, you kind of wish you'd done this sooner!  ");
-		outputText("Your hand picks up the little jewel of power - they call it lethicite, from what you recall - and you feel your [tongue] reach for it automatically.  With some effort, you pull back, deciding to at least get back to camp before you chow it down.\n\n");
-		outputText("After all, just because you're a demon now doesn't mean you're not a champion.  You just need to adjust your goals.  Your defeat was really just a temporary setback - taking over this world sounds good.  After the amount of bullshit it's put you through up until now, payback sounds like the best idea - after finding some additional souls to eat, of course~.\n\n");
+		outputText(". Your pleasure climbs up higher and higher and your vision turns white like cum as two large horns burst out of your skull as if growing straight out of your pleasure-addled brain.\n\n");
+		outputText("You seem to have struck a bottleneck unable to achieve release as your pleasure keep reaching intolerable heights but finally the dam breaks allowing you to release everything out. When you come down from your orgasm you finally realize what just happened. You didn’t just came you came your soul out now your no defrent from the demons who fucked you into this state. ");
+		outputText("You quickly adapt to the change however and take what's left of your soul from the ground eating it right away. It seems you’ve become a demon, there's no going back to having a soul now but that doesn’t mean your quest has to end there far from it, you’re going to turn this shity land into your playground and get back at it for everything that's been done to you. ");
+		outputText("The champion you is no more but you’ve got plenty of grievances with the place to address still and you will only rest until it's all under your demonic foot.\n\n");
 	}
 
     public function minotaurCum(purified:Boolean, player:Player):void {

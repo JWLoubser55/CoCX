@@ -38,10 +38,11 @@ public class SlothienRace extends Race {
     
     public override function setup():void {
         addScores()
-                //.start ctrl-spacing here
+                .skinCoatType(Skin.CHITIN, +1)
+				.skinCoverage(ANY(Skin.COVERAGE_HIGH, Skin.COVERAGE_COMPLETE), +1)
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
-        buildTier(1000, "tierName")
+        buildTier(10, "slothien")
                 .buffs({
                         "str.mult": +0.00,
                         "tou.mult": +0.00,

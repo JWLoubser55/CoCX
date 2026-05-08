@@ -6,6 +6,8 @@ import classes.PerkLib;
 import classes.Race;
 
 public class FrogRace extends Race {
+    public static const FrogSkinColors:/*String*/Array = ["green","yellow","blue","red","light green"];
+	public static const FrogEyesColors:/*String*/Array = ["yellow","orange"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -33,23 +35,33 @@ public class FrogRace extends Race {
         
     public function FrogRace(id:int) {
         super("Frog", id, []);//RaceBody);
-		disabled = true;
     }
     
     public override function setup():void {
         addScores()
-                //.start ctrl-spacing here
-                .hasPerk(PerkLib.GOBXChemical, -1000);
+                .eyeColor(ANY(FrogEyesColors), +1)
+				.skinColor1(ANY(FrogSkinColors), +1)
+				.noTail(+1)
+                .noWings( +1)
+				.height(GREATER_THAN(120), +1)
+				.hasPerk(PerkLib.GOBXChemical, -1000);
 
-        buildTier(1000, "tierName")
+        buildTier(10, "frog")
+				.namesMaleFemale("frog boy", "frog girl")
                 .buffs({
-                        "str.mult": +0.00,
-                        "tou.mult": +0.00,
-                        "spe.mult": +0.00,
-                        "int.mult": +0.00,
-                        "wis.mult": +0.00,
-                        "lib.mult": +0.00,
-                        "sens": +0
+                        "str.mult": +0.50,
+                        "tou.mult": -0.20,
+                        "spe.mult": +0.50,
+                        "wis.mult": +0.70
+                    })
+                .end();
+
+        buildTier(15, "swamp dragon")
+				.namesMaleFemale("swamp dragon boy", "swamp dragon girl")
+                .buffs({
+                        "str.mult": +1.00,
+                        "tou.mult": +0.75,
+                        "wis.mult": +0.50
                     })
                 .end();
     }

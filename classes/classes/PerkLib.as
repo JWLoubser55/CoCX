@@ -4625,7 +4625,7 @@ public class PerkLib
 		public static const GeneticMemory:PerkType = mk("Genetic Memory", "Genetic Memory",
 				"Your body can remember almost any transformation it undergoes.");
 		public static const GentleGiant:PerkType = mk("Gentle Giant", "Gentle Giant",
-				"You are a natural musclehead with very little brain to back it up. Who needs brawn when you got brawl?! Strength is increased by 25% of its total but reduce total intelligence by the same amount.");
+				"You are a natural musclehead with very little brain to back it up. Who needs brawn when you got brawl?! Strength is increased by 25% of its total but reduces total intelligence by the same amount.");
 		public static const Ghostslinger:PerkType = mk("Ghost-slinger", "Ghost-slinger",
 				"Increases damage with guns and thrown weapons by 15%.");
 		public static const GiantMight:PerkType = mk("Giant might", "Giant might",

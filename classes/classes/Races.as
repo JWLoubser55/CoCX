@@ -175,6 +175,11 @@ public class Races {
 	public static const MOSQUITO:MosquitoRace	   				= new MosquitoRace(150);
 	public static const GLACIALCOW:GlacialCowRace	   			= new GlacialCowRace(151);
 	public static const GLACIALMINOTAUR:GlacialMinotaurRace	   	= new GlacialMinotaurRace(152);
+	public static const SANDDRAKE:SandDrakeRace			   		= new SandDrakeRace(153);
+	public static const ORGANIAN:OrganianAbominationRace   		= new OrganianAbominationRace(154);
+	public static const MANDRAGORA:MandragoraRace			   	= new MandragoraRace(155);
+	public static const BAALZEBUB:BaalzebubRace			   		= new BaalzebubRace(156);
+	public static const TURTLE:TurtleRace			   			= new TurtleRace(157);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
@@ -184,7 +189,7 @@ public class Races {
 			NAGA, GORGON, VOUIVRE, COUATL, HYDRA, APOPHIS, MARILITH
 	];
 	public static const InsectRaces:/*Race*/Array = [
-			BEE, MANTIS, SUNPRAYINGMANTIS, SCORPION, SPIDER, ANT, OOMUKADE, CANCER, ATLACH_NACHA, SANDWORM, WERESPIDER, MOTH, MOSQUITO
+			BEE, MANTIS, SUNPRAYINGMANTIS, SCORPION, SPIDER, ANT, OOMUKADE, CANCER, ATLACH_NACHA, SANDWORM, WERESPIDER, MOTH, SLOTHIEN, MOSQUITO, BAALZEBUB
 	];
 	public static const GoblinoidRaces:/*Race*/Array = [
 			GOBLIN, GREMLIN
@@ -199,7 +204,7 @@ public class Races {
 			YUKIONNA, JIANGSHI, DRACULA, MUMMY, LICH
 	];
 	public static const PlantRaces:/*Race*/Array = [
-			PLANT, ALRAUNE, YGGDRASIL, BAROMETZ
+			PLANT, ALRAUNE, YGGDRASIL, BAROMETZ, MANDRAGORA
 	];
 	public static const WerebeastRaces:/*Race*/Array = [
 			WEREWOLF, WEREFOX, WERESPIDER, WERESHARK, WEREBAT, WERECAT, WERERAVEN, WEREBEAR, WEREDRAGON
@@ -208,7 +213,7 @@ public class Races {
 			POLTERGEIST, BANSHEE, WENDIGO, HOLLOW
 	];
 	public static const DragonlikeRaces:/*Race*/Array = [
-			DRAGON, YGGDRASIL, WEREDRAGON, FAERIEDRAGON, VOUIVRE, FROSTWYRM, DRAGONNE, DUSKDRAKE, KRAMPUS, JABBERWOCKY, SEA_DRAGON, WYVERN, MAGMAWYRM
+			DRAGON, YGGDRASIL, WEREDRAGON, FAERIEDRAGON, VOUIVRE, FROSTWYRM, DRAGONNE, DUSKDRAKE, KRAMPUS, JABBERWOCKY, SEA_DRAGON, WYVERN, MAGMAWYRM, SANDDRAKE
 	];
 	public static const RacesForRandomEnchantments:/*Race*/Array = [
 			// populated in load() as AllVisibleRaces - RacesExcludedFromRandomEnchantments

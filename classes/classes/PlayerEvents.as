@@ -2105,7 +2105,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				needNext = true;
 			}
 			//Lizan Regeneration perk
-			needNext = player.gainOrLosePerk(PerkLib.LizanRegeneration, player.perkv1(IMutationsLib.LizanMarrowIM) >= 1 || player.isAnyRaceCached(Races.LIZARD, Races.HYDRA), "You start to feel an unusual feeling somewhere within your body. Like tiny ripples moving inside your veins, making you feel so much more refreshed than a moment ago. Considering the fact that lizans are so much like lizards and that they usually possess a natural talent to regenerate from even severe injuries, you wonder if it could be that.", "All of a sudden, something changes inside your body. You think about it for a long time until it dawns on you. You can't feel that refreshing feeling inside your body anymore, meaning your recovery rate has reverted back to normal.", player.perkv4(PerkLib.LizanRegeneration) == 0) || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.LizanRegeneration, player.perkv1(IMutationsLib.LizanMarrowIM) >= 1 || player.isAnyRaceCached(Races.LIZARD, Races.HYDRA, Races.CHAMELEON), "You start to feel an unusual feeling somewhere within your body. Like tiny ripples moving inside your veins, making you feel so much more refreshed than a moment ago. Considering the fact that lizans are so much like lizards and that they usually possess a natural talent to regenerate from even severe injuries, you wonder if it could be that.", "All of a sudden, something changes inside your body. You think about it for a long time until it dawns on you. You can't feel that refreshing feeling inside your body anymore, meaning your recovery rate has reverted back to normal.", player.perkv4(PerkLib.LizanRegeneration) == 0) || needNext;
 			//Lustzerker perk
 			needNext = player.gainOrLosePerk(PerkLib.Lustzerker, player.isAnyRaceCached(Races.SALAMANDER, Races.PHOENIX, Races.KITSHOO) || player.hasMutation(IMutationsLib.SalamanderAdrenalGlandsIM), "You start to feel a weird, slightly unpleasant feeling inside your body. Like many tiny flames coursing through your veins, making you ponder what is happening with your body. Remembering about salamanders' natural talent for entering a berserk-like state, you guess that should be it.", "All of a sudden, something changes inside your body. You think about it for a long time until it dawns on you. You can't feel that fire in your veins anymore, meaning for now, no more lustzerking.", player.perkv4(PerkLib.Lustzerker) == 0) || needNext;
 			//Tech Overdrive perk
@@ -2559,7 +2559,19 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			//Wild Drake
 			needNext = player.gainOrLosePerk(PerkLib.WildDrake, player.isAnyRaceCached(Races.DRAGON, Races.FAERIEDRAGON, Races.YGGDRASIL, Races.FROSTWYRM, Races.JABBERWOCKY, Races.SEA_DRAGON, Races.VOUIVRE, Races.DRAGONNE, Races.KRAMPUS), "Your draconic blood boil with contained power as your ability to unleash breath attacks increase to match that of a great drake.", "As your body becomes less draconic you feel the might of the drakes within you wanes.") || needNext;
 			//Gentle Giant
-			needNext = player.gainOrLosePerk(PerkLib.GentleGiant, player.isAnyRaceCached(Races.ORCA, Races.FIRESNAILS, Races.SANDWORM, Races.FROSTWYRM, Races.KRAMPUS), "Director Lia laugh at your lack of imagination what text will appear here.", "Director Lia laugh at your lack of imagination what text will appear here.") || needNext;
+			if (player.isAnyRaceCached(Races.ORCA, Races.FIRESNAILS, Races.SANDWORM, Races.FROSTWYRM, Races.KRAMPUS) && !player.hasPerk(PerkLib.GentleGiant)) {
+				outputText("For a few seconds you stare vacantly in front of you lost in thought, a bit of drool falling from the side of your mouth recalling your most recent happy memory… uh wait what was it like again? Was it food or sex you can’t seem to remember, maybe it was just sleeping comfortably? The harder you try to remember the more foggy your memory gets. Thinking is getting harder but why would you need to think when that big strong body of yours can solve everything. ");
+				outputText("Problems are like bugs If something annoys you can just smack it away or step on it heck half the issues will just bounce off you naturally even if you do nothing. Passiveness and Ignorance is bliss, if they can’t harm you anyway then why worry about them? Just keep a happy dopey smile and raise your fist when they don’t get the hint. You begin to adopt a more relaxed and casual outlook on life though you can’t help but ponder if this lack of mental exercising also made you slightly dumber.\n");
+				outputText("\n\n<b>(Gained the Gentle Giant Perk!)</b>\n");
+				player.createPerk(PerkLib.GentleGiant, 0, 0, 0, 0);
+				needNext = true;
+			}
+			else if (!player.isAnyRaceCached(Races.ORCA, Races.FIRESNAILS, Races.SANDWORM, Races.FROSTWYRM, Races.KRAMPUS) && player.hasPerk(PerkLib.GentleGiant)) {
+				outputText("\nAs you weaken you become keenly aware that your inner strength and resilience can no longer shield you from everything if you keep ignoring issues and charge into walls brainlessly you will end up in deep trouble. More careful and aware of your surroundings you also realise your thinking capacity has improved.");
+				outputText("\n\n<b>(You lost the Gentle Giant Perk!)</b>\n");
+				player.removePerk(PerkLib.GentleGiant);
+				needNext = true;
+			}
 			//Hinezumi Coat
 			if (player.isRaceCached(Races.MOUSE, 2) && !player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
 				outputText("\nYour body suddenly coats itself with fire turning incandescent as your lust and body heat spikes up reaching a critical point, this must be the infamous hinezumi coat. You gasp as your lust begins to overwhelm you, the flare of desire burns in you and you need to vent it one way or another. ");
@@ -3552,4 +3564,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}

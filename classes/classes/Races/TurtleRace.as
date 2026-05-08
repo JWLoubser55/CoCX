@@ -5,8 +5,7 @@ import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 
-public class ChameleonRace extends Race {
-	public static const ChameleonEyesColors:/*String*/Array = ["yellow","orange"];
+public class TurtleRace extends Race {
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -32,33 +31,25 @@ public class ChameleonRace extends Race {
         /*Vagina*/		"Human",
         /*Perks*/		"Human"];
         
-    public function ChameleonRace(id:int) {
-        super("Chameleon", id, []);//RaceBody);
+    public function TurtleRace(id:int) {
+        super("Turtle", id, []);//RaceBody);
+		disabled = true;
     }
     
     public override function setup():void {
         addScores()
-                .armType(Arms.LIZARD, +2)
-				.legType(LowerBody.LIZARD, +2)
-				.earType(ANY(Ears.ELFIN, Ears.LIZARD), +1)//, Ears.ORCA
-				.faceType(ANY(Face.ANIMAL_TOOTHS, Face.LIZARD), +1)
-				//.tongueType(Tongue., +1)
-				.eyeType(Eyes.LIZARD, +1)
-				.eyeColor(ANY(ChameleonEyesColors), +1)
-				.skinCoatType(Skin.SCALES, +1)
-				.skinCoverage(ANY(Skin.COVERAGE_HIGH, Skin.COVERAGE_COMPLETE), +1)
-				.noWings(+1)
-				.noHorns(0,-10)
+                //.start ctrl-spacing here
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
-        addMutation(IMutationsLib.LizanMarrowIM);
-		
-		buildTier(11, "chameleon")
-				.namesMaleFemale("chameleon boy", "chameleon girl")
+        buildTier(1000, "tierName")
                 .buffs({
-                        "tou.mult": +0.50,
-                        "spe.mult": +0.65,
-                        "wis.mult": +0.50
+                        "str.mult": +0.00,
+                        "tou.mult": +0.00,
+                        "spe.mult": +0.00,
+                        "int.mult": +0.00,
+                        "wis.mult": +0.00,
+                        "lib.mult": +0.00,
+                        "sens": +0
                     })
                 .end();
     }
