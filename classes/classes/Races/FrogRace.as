@@ -41,12 +41,18 @@ public class FrogRace extends Race {
         addScores()
                 .eyeColor(ANY(FrogEyesColors), +1)
 				.skinColor1(ANY(FrogSkinColors), +1)
+				.plainSkinOfAdj(NOT("slippery"), +1)
 				.noTail(+1)
-                .noWings( +1)
+                .noWings(+1)
 				.height(GREATER_THAN(120), +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 
-        buildTier(10, "frog")
+        addMutation(IMutationsLib.DrakeHeartIM);
+		//
+		addMutation(IMutationsLib.DrakeBloodIM);
+		//
+		
+		buildTier(10, "frog")
 				.namesMaleFemale("frog boy", "frog girl")
                 .buffs({
                         "str.mult": +0.50,

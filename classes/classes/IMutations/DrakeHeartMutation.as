@@ -43,7 +43,7 @@ public class DrakeHeartMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireHeartMutationSlot()
-                    .requireAnyRace(Races.DRAGON,Races.FROSTWYRM, Races.YGGDRASIL,Races.SEA_DRAGON, Races.FAERIEDRAGON, Races.JABBERWOCKY);
+                    .requireAnyRace(Races.DRAGON,Races.FROSTWYRM, Races.YGGDRASIL,Races.SEA_DRAGON, Races.FAERIEDRAGON, Races.JABBERWOCKY, Races.FROG);
                 }
                 else{
                     var pLvl:int = pTier * 30;

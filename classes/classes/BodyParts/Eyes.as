@@ -322,6 +322,12 @@ public class Eyes extends BodyPart {
 		name:"deer",
 		appearanceDesc: "Your [eyecolor] eyes are like those of a deer with horizontally slit pupils at the center."
 	});
+	public static const SLOTHIEN: int = 54;
+	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {
+		name:"slothien",
+		appearanceDesc: "Your [eyecolor] eyes are solid spheres.",
+		Darkvision: true
+	});
 
 	public var count:int;
 	public var colour:String = "brown";

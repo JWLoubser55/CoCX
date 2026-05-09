@@ -6341,7 +6341,12 @@ public class Combat extends BaseContent {
 				ExtraNaturalWeaponAttack(1);
 			}
         }
-        //DOING EXTRA CLAW ATTACKS
+        //DOING BITE ATTACKS
+        if (player.hasATongueSnapAttack()) {
+			outputText("You snap your tongue at [themonster] viciously slapping it with your appendage.");
+			ExtraNaturalWeaponAttack(1);
+		}
+		//DOING EXTRA CLAW ATTACKS
         if (player.haveNaturalClaws()) {
             var ClawDamageMultiplier:Number = 1;
             if (player.hasMutation(IMutationsLib.EyeOfTheTigerIM)) ClawDamageMultiplier *= 1.5;

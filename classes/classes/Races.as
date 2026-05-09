@@ -180,16 +180,17 @@ public class Races {
 	public static const MANDRAGORA:MandragoraRace			   	= new MandragoraRace(155);
 	public static const BAALZEBUB:BaalzebubRace			   		= new BaalzebubRace(156);
 	public static const TURTLE:TurtleRace			   			= new TurtleRace(157);
+	public static const COCKROACH:CockroachRace			   		= new CockroachRace(158);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
 			CAT, NEKOMATA, DISPLACERBEAST, HELLCAT, CHESHIRE, SPHINX, MANTICORE, DRAGONNE
 	];
 	public static const SnakelikeRaces:/*Race*/Array = [
-			NAGA, GORGON, VOUIVRE, COUATL, HYDRA, APOPHIS, MARILITH
+			NAGA, GORGON, VOUIVRE, COUATL, HYDRA, APOPHIS, MARILITH, SLOTHIEN
 	];
 	public static const InsectRaces:/*Race*/Array = [
-			BEE, MANTIS, SUNPRAYINGMANTIS, SCORPION, SPIDER, ANT, OOMUKADE, CANCER, ATLACH_NACHA, SANDWORM, WERESPIDER, MOTH, SLOTHIEN, MOSQUITO, BAALZEBUB
+			BEE, MANTIS, SUNPRAYINGMANTIS, SCORPION, SPIDER, ANT, OOMUKADE, CANCER, ATLACH_NACHA, SANDWORM, WERESPIDER, MOTH, SLOTHIEN, MOSQUITO, BAALZEBUB, COCKROACH
 	];
 	public static const GoblinoidRaces:/*Race*/Array = [
 			GOBLIN, GREMLIN

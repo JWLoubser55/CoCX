@@ -422,7 +422,7 @@ public class BodyData {
 		},
 		phraseFn: function(operator:String, value:*):String {
 			if (operator == "eq" && value == Skin.COVERAGE_NONE) return "no coat";
-			return defaultPhrase(operator, value, this.nameFn, "covered skin");
+			return defaultPhrase(operator, value, Slots[SLOT_SKIN_COVERAGE].nameFn, " covered skin");
 		}
 	});
 	public function get skinCoverage():int {

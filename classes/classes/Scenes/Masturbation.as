@@ -1,6 +1,7 @@
 package classes.Scenes {
 import classes.*;
 import classes.BodyParts.Tail;
+import classes.BodyParts.Tongue;
 import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
 import classes.Scenes.Dungeons.DungeonAbstractContent;
@@ -115,6 +116,9 @@ public class Masturbation extends BaseContent {
 				addButton(6, "TentInButt", tentacleGoesUpYerPooperNewsAtEleven)
 					.hint("Fuck your ass with your tentacle dicks!")
 					.disableIf(player.countCocksWithType(CockTypesEnum.TENTACLE) == 0, "Req. tentacle cocks");
+				addButton(7, "Tonguesturbate", chameleonTonguesturbate)
+					.disableIf(!player.hasCock(), "You can't suck lick cock without having one.")
+					.disableIf(player.tongue.type != Tongue.CHAMELEON, "You can't suck lick without having chameleon tongue.");
 				addButton(13, "-2-", specialOptions, page + 1);
 				addButton(14, "Back", masturbateMenu);
 			}
@@ -3516,6 +3520,17 @@ public class Masturbation extends BaseContent {
 			player.gems += gems;
 			flags[kFLAGS.GILDED_JERKED]++;
 			statScreenRefresh();
+			endEncounter();
+		}
+		
+		private function chameleonTonguesturbate():void {
+			clearOutput();
+			outputText("Feeling horny yet bored of conventional sex you remember that you got a rather unconventional appendage in your mouth. In a creative mood today you wrap your long flexible tongue around your penis length.\n\n");
+			outputText("The warm hot and slimy feeling of your appendage constricting your hard throbbing member makes you moan in delight as you slowly jerk yourself. Who needs the right hand when one has a tongue that long? Aiming to improve the delightful sensation you flick the tip of your tongue against your urethra, falling on your back and pulling your leg up to sandwich your hard prick between your tight as you masturbate it to orgasm pulling your legs up with your hard cock aiming forward. Now in position you energetically jerk your dick using the tight coil of your tongue and get on your merry way to orgasm speeding up the rhythm of your oral ministration.\n\n");
+			outputText("Soon you are overwhelmed by the rampant pleasure. Your eyes glaze as you cum hard, unleashing shot after shot of semen from your bound cock and dying the ground ahead white. Curious you flick the tip of your flexible tongue along your urethra retrieving some of the still dripping cum to taste and cleaning your cock along the way. Retreating your organ back in, you savor the taste of your own cum basking in the afterglow of your well pumped penis. After laying down panting for a minute or two you prepare back for adventure.\n\n");
+			player.refillHunger(10);
+			flags[kFLAGS.TIMES_MASTURBATED]++;
+			masturGasm("Dick");
 			endEncounter();
 		}
 

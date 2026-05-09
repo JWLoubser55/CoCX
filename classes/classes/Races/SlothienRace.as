@@ -6,6 +6,7 @@ import classes.PerkLib;
 import classes.Race;
 
 public class SlothienRace extends Race {
+    public static const SlothienEyesColors:/*String*/Array = ["red","orange"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",
@@ -38,19 +39,34 @@ public class SlothienRace extends Race {
     
     public override function setup():void {
         addScores()
-                .skinCoatType(Skin.CHITIN, +1)
+                .eyeType(Eyes.SLOTHIEN, +1)
+				.eyeColor(ANY(SlothienEyesColors), +1)
+				.legType(LowerBody.SLOTHIEN, +3)
+				.skinCoatType(Skin.CHITIN, +1)
 				.skinCoverage(ANY(Skin.COVERAGE_HIGH, Skin.COVERAGE_COMPLETE), +1)
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
-        buildTier(10, "slothien")
+        addMutation(IMutationsLib.TrachealSystemIM);
+		
+		buildTier(10, "juvenile slothien")
                 .buffs({
-                        "str.mult": +0.00,
-                        "tou.mult": +0.00,
-                        "spe.mult": +0.00,
-                        "int.mult": +0.00,
-                        "wis.mult": +0.00,
-                        "lib.mult": +0.00,
-                        "sens": +0
+                        "str.mult": +0.20,
+                        "tou.mult": +0.30,
+                        "spe.mult": +1.00,
+                        "int.mult": -0.20,
+                        "wis.mult": +0.20
+                    })
+                .end();
+		
+		buildTier(16, "slothien")
+                .buffs({
+                        "str.mult": +0.40,
+                        "tou.mult": +0.50,
+                        "spe.mult": +1.50,
+                        "int.mult": -0.40,
+                        "wis.mult": +0.40,
+						"def": +1,
+						"mdef": +1
                     })
                 .end();
     }

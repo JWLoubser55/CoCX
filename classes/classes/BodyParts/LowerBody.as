@@ -1004,6 +1004,33 @@ public class LowerBody extends SaveableBodyPart {
 		fur: true
 	});
 
+	public static const SLOTHIEN:int = 98;
+	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {
+		name: "slothien",
+		legCount: 1,
+		legs: "snake-like coils",
+		leg: "snake-tail",
+		feet: "coils",
+		foot: "coiled tail",
+		appearanceDesc: "Below your waist, your flesh is fused together into a very long snake-like tail. Your entire tail length up to the waist is covered with thick [chitin color] chitin plates, harder than steel and capable of deflecting most weapons.",
+		crotchDescFunc: function(player: *): String {
+			var desc: String = "";
+
+			if(player.gender > 0) {
+				desc += "Your sex";
+				if(player.gender == 3 || player.cockTotal() > 1) desc += "es are ";
+				else desc += " is ";
+				desc += "concealed within a cavity in your tail when not in use, though when the need arises, you can part your concealing slit and reveal your true self.";
+			}
+
+			return desc;
+		},
+		tail: true,
+		tailSlam: true,
+		isNaga: true,
+		chitin: true
+	});
+
 	override public function set type(value:int):void {
 		super.type = value;
 		// Reset leg count

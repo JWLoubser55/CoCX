@@ -393,7 +393,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Gentle Giant. Gained by been Frost Wyrm, Sand Worm, Whale, Fire Snail, Krampus. Effects: You are a natural musclehead with very little brain to back it up. Who needs brawn when you got brawl?! Strength is increased by 25% of its total but reduces total intelligence by the same amount.\n");
 			outputText("-Yeti Legs/Feet now would give similar bonus to unarmed dmg as Yeti Arms. Yeti tier 2 bonuses req. now 20+ not 17+ pts and are slight improved.\n");
 			outputText("-New TF item (by Liadri): Shifting Flower. Droped by chameleon enemies. Using this item will turn PC into chameleon. Chameleon / Elder Chameleon racial bonuses (11+/19+): +50/75% to tou/wis multi, +65/105% to spe multi.\n");
-			outputText("-\n");
+			outputText("-New Masturbation option: Tonguesturbate. Req. to have chameleon tongue and cock.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
