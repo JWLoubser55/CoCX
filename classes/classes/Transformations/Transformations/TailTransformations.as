@@ -1801,6 +1801,29 @@ public class TailTransformations extends MutationsHelper {
 				return player.tailType === Tail.RHINO;
 			}
 	);
+
+	public const TailChameleon: Transformation = new SimpleTransformation("Chameleon Tail",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.removeLowerBodyIfIncompatible(player, doOutput);
+
+				if (player.tailType == Tail.NONE) desc += "You drop onto the ground as your spine twists and grows, forcing the flesh above your [ass] to bulge out. New bones form, one after another, building a tapered, prehensile tail onto the back of your body. Completing this transformation your tail curls on itself into a spiral like that of a chameleon. <b>You now have a chameleon tail!</b>";
+				else desc += "You drop to the ground as your tail twists and grows, changing its shape in order to gradually taper to a point. It flicks back and forth, prehensile and totally under your control. Completing this transformation your tail curls on itself into a spiral like that of a chameleon. <b>You now have a chameleon tail!</b>";
+				player.tailVenom = 0;
+				player.tailRecharge = 0;
+				player.tailType = Tail.CHAMELEON;
+				player.tailCount = 1;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.CHAMELEON));
+			},
+			// is present
+			function (): Boolean {
+				return player.tailType === Tail.CHAMELEON;
+			}
+	);
 	/*
   */
 }

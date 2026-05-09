@@ -342,7 +342,10 @@ private function impTomeGiveIn():void {
 public function triggerTerminalCorruptionTF():void {
 	clearOutput();
 	CoC.instance.mutations.terminalCorruption(player);
-	doNext(camp.returnToCampUseOneHour);
+	if (player.level < 25) inventory.takeItem(CoC.instance.consumables.LETH0TE, camp.returnToCampUseOneHour);
+	else if (player.level < 50) inventory.takeItem(CoC.instance.consumables.LETH1TE, camp.returnToCampUseOneHour);
+	else if (player.level < 75) inventory.takeItem(CoC.instance.consumables.LETH2TE, camp.returnToCampUseOneHour);
+	else inventory.takeItem(CoC.instance.consumables.LETH3TE, camp.returnToCampUseOneHour);
 }
 	}
 

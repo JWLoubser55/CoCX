@@ -109,6 +109,11 @@ public class Tongue extends BodyPart{
 		name:"automata",
 		appearanceDesc: "In your mouth sits a neon [eyecolor] tongue. Truthfully it acts mostly as a decoration seeing as an amp in your throat produces all the sounds you need to interact with organics. As for the kins, all messages are silently shared through the network thus rendering verbal communication obsolete. Still your tongue can be used along with your mouth as a toy for the user to play with. After all, you do have a full library of oral technique installed in your data bank."
 	});
+	public static const CHAMELEON: int = 19;
+	EnumValue.add(Types, CHAMELEON, "CHAMELEON", {
+		name:"chameleon",
+		appearanceDesc: "Director Lia laugh at you for beliving she care to write desc for this tongue type."
+	});
 
 	public function Tongue(creature:Creature) {
 		super(creature, null);

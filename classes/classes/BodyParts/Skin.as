@@ -338,6 +338,12 @@ public class Skin extends SaveableBodyPart {
 		appearanceDesc: "Esoteric sigils paint your [skin]. They disappear and reappear, all along your [chest], [arms], and [legs] - pulsing with spiritual energy.",
 		base:true
 	});
+	public static const PATTERN_CHAMELEON: int = 26;
+	EnumValue.add(PatternTypes, PATTERN_CHAMELEON, "PATTERN_CHAMELEON", {
+		name:"chameleon tattoo",
+		appearanceDesc: "Your body is covered with various colorful purple and yellowish patterns that changes based on your mood and environment.",
+		base:true
+	});
 	// Don't forget to add new types in DebugMenu.as lists SKIN_BASE_TYPES or SKIN_COAT_TYPES
 
 	public var base:SkinLayer;
@@ -631,6 +637,9 @@ public class Skin extends SaveableBodyPart {
 	}
 	public function hasIceheartTattoo():Boolean {
 		return base.pattern == PATTERN_ICEHEART_TATOO;
+	}
+	public function hasChameleonTattoo():Boolean {
+		return base.pattern == PATTERN_CHAMELEON;
 	}
 	override public function restore(keepTone:Boolean = true):void {
 		coverage = COVERAGE_NONE;

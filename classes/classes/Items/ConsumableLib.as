@@ -1090,6 +1090,16 @@ public final class ConsumableLib extends AlchemyLib
 		public const SATYR_W:SatyrWine        = new SatyrWine();
 		public const SAGEMED:SageMedicine     = new SageMedicine();
 		public const SCORICO:Scorpinum 		  = new Scorpinum();
+		public const SFLOWER: Consumable = mk("SFlower", "Shifting Flower", "a Shifting Flower", 6, "A special flower that constantly shits color, a favorite of the swamps chameleon.", m.shiftingFlower, ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_CHAMELEON),
+						[
+							[1, AR_TOU],
+							[1, AR_SPE],
+							[1, AR_WIS]
+						]
+				);
 		public const SHARK_T: Consumable = mk("Shark.T", "Shark.T", "a sharp shark tooth", 6, "A glinting white tooth, very sharp and intimidating.", curry(m.sharkTooth, 0), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,

@@ -79,32 +79,9 @@ public class DemonizeMe extends Consumable {
 		}
 
 		public function demonizePlayer():void {
-			if (player.hasCock()) CoC.instance.transformations.LowerBodyDemonClawed.applyEffect(false);
-			else {
-				if (rand(2) == 0) CoC.instance.transformations.LowerBodyDemonClawed.applyEffect(false);
-				else {
-					if (rand(2) == 0) CoC.instance.transformations.LowerBodyDemonHighHeels.applyEffect(false);
-					else CoC.instance.transformations.LowerBodyDemonGracefulFeet.applyEffect(false);
-				}
-			}
-			player.legCount = 2;
+			CoC.instance.mutations.terminalCorruption2(player);
 			player.skin.setBaseOnly({type:Skin.PLAIN, color1:"blue", pattern: Skin.PATTERN_DEMONIC_PLEASURE_RUNE});
-			CoC.instance.transformations.TailDemonic.applyEffect(false);
-			CoC.instance.transformations.HairHuman.applyEffect(false);
-			CoC.instance.transformations.FaceDemon.applyEffect(false);
-			CoC.instance.transformations.EyesDemon.applyEffect(false);
-			CoC.instance.transformations.ArmsDemon.applyEffect(false);
-			CoC.instance.transformations.TongueDemonic.applyEffect(false);
-			CoC.instance.transformations.EarsElfin.applyEffect(false);
-			CoC.instance.transformations.HornsDemonic.applyEffect(false);
-			CoC.instance.transformations.AntennaeNone.applyEffect(false);
-			CoC.instance.transformations.GillsNone.applyEffect(false);
-			CoC.instance.transformations.WingsDemonicLarge.applyEffect(false);
-			CoC.instance.transformations.RearBodyNone.applyEffect(false);
-			if (player.hasCock()) CoC.instance.transformations.CockDemon().applyEffect(false);
-			if (player.hasVagina()) CoC.instance.transformations.VaginaDemonic().applyEffect(false);
 			outputText("\n<b>Gained Perk: Soulless!</b> "+PerkLib.Soulless.desc());
-			player.createPerk(PerkLib.Soulless, 0, 0, 0, 0);
 			player.updateRacialParagon(Races.DEMON);
 			player.npcsThatLeaveSoullessPC();
 		}

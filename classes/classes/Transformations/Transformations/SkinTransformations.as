@@ -1002,6 +1002,23 @@ public class SkinTransformations extends MutationsHelper {
 				return player.skin.base.pattern === Skin.PATTERN_ICEHEART_TATOO;
 			}
 	);
+
+	public const SkinPatternChameleon: Transformation = new SimpleTransformation("Chameleon Skin Pattern",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Woa your skin is suddenly changing color. You watch as it covers with purple patterns with a yellowish orange underbelly. <b>Seems you really fully look like a chameleon now.</b>";
+				player.skin.base.pattern = Skin.PATTERN_CHAMELEON;
+
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(SkinPatternMem.getMemory(SkinPatternMem.CHAMELEON_TATTOO));
+			},
+			// is present
+			function (): Boolean {
+				return player.skin.base.pattern === Skin.PATTERN_CHAMELEON;
+			}
+	);
 	/*
   */
 }

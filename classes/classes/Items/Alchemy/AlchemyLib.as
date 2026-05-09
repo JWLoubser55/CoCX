@@ -813,6 +813,38 @@ public class AlchemyLib extends BaseContent {
 		short: "Wyvern",
 		name : "Wyvern"
 	});
+	public static const AE_SLOTHIEN:int       = EnumValue.add(Essences, 242, "SLOTHIEN", {
+		short: "Slothien",
+		name : "Slothien"
+	});
+	public static const AE_WASP:int       = EnumValue.add(Essences, 243, "WASP", {
+		short: "Wasp",
+		name : "Wasp"
+	});
+	public static const AE_HORNET:int       = EnumValue.add(Essences, 244, "HORNET", {
+		short: "Hornet",
+		name : "Hornet"
+	});
+	public static const AE_TITANUS_GOJIRA:int       = EnumValue.add(Essences, 245, "TITANUS_GOJIRA", {
+		short: "TGojira",
+		name : "TitanusGojira"
+	});
+	public static const AE_MAGMA_WYRM:int       = EnumValue.add(Essences, 246, "MAGMA_WYRM", {
+		short: "MWyrm",
+		name : "Magma wyrm"
+	});
+	public static const AE_FROG:int       = EnumValue.add(Essences, 247, "FROG", {
+		short: "Frog",
+		name : "Frog"
+	});
+	public static const AE_MOBOGO:int       = EnumValue.add(Essences, 248, "MOBOGO", {
+		short: "Mobogo",
+		name : "Mobogo"
+	});
+	public static const AE_CHAMELEON:int       = EnumValue.add(Essences, 249, "CHAMELEON", {
+		short: "Chameleon",
+		name : "Chameleon"
+	});
 	public static function DEFAULT_ESSENCE_DROP_TABLE(mainEssencee:int, withHuman:Boolean = false):Array {
 		var result:Array = [
 			[10, mainEssencee],

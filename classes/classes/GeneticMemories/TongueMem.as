@@ -186,6 +186,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const CHAMELEON:int = _partid++;
+		EnumValue.add(Memories, CHAMELEON, "CHAMELEON", {
+			id: "Chameleon Tongue",
+			name: "Chameleon Tongue",
+			cost: 100,
+			title: "Chameleon",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TongueChameleon;
+			}
+		});
+
 
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];

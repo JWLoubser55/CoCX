@@ -273,6 +273,22 @@ public class TongueTransformations extends MutationsHelper {
 				return player.tongue.type === Tongue.AUTOMATA;
 			}
 	);
+
+	public const TongueChameleon: Transformation = new SimpleTransformation("Chameleon Tongue",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Something weird happens in your mouth, at first you feel like you’re about to choke from a lack of air until you realise it's your tongue that's massively inflating. You stick it out in order to make space for air and to your absolute surprise it reaches 15 feet away. <b>Why now guess you will have to get used to that chameleon tongue of yours. At least you can now eat lunch several meters away from the table.</b>";
+				player.tongue.type = Tongue.CHAMELEON;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(TongueMem.getMemory(TongueMem.CHAMELEON));
+			},
+			// is present
+			function (): Boolean {
+				return player.tongue.type === Tongue.CHAMELEON;
+			}
+	);
 	/*
 */
 }

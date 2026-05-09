@@ -217,7 +217,7 @@ public class Changelog extends BaseContent
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig); Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event); Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event); Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes, Huge Octuple Yggdrasil Wings (from transforming with World Tree help); Werespider eyes, Werespider arms, Werespider Legs, Werepspider fangs (from transforming after been bitten by werespider); Barometz Legs, Barometz Ears, Barometz Tail, Ram Horns, Verdant Ram Horns, Runic Patterns, ");
 			outputText("Barometz Cock (from Horned fruit), Automata Tail Cable (from automata event); Hollow Mask (Face), Hollow Eyes, Hollow Horns, Hollow Arms, Hollow Lower Body, Hollow Tail, Soulforce Scaring (from Hollowfication events); Deer Blush, Deer Eyes, Iceheart Tatoo (from Cervinium); Ushi Onna Face, Ushi Onna Horns, Ushi Onna Tail, Ushi Onna Arms, Ushi Onna Lower Body, Ushi Oni Tattoo (from Thick Green Onna Gossamer), ");
-			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf); Hoofed no fur Legs, Rhino Arms (from Rhino Steak); Krampus Legs (from Red Spider Lily)\n");
+			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf); Hoofed no fur Legs, Rhino Arms (from Rhino Steak); Krampus Legs (from Red Spider Lily); Chameleon Tongue, Chameleon Tail, Chameleon Skin Pattern (from Shifting Flower)\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
 			//outputText("-New HB Mech upgrade options: Armor Plating (+armor), Leather Insulation (+magic resistance), Agility (+base melee atk dmg), Dragon's Breath Flamer (fire dmg special), Scatter Laser (lightning dmg special), Rapid Reload (+base ranged atk dmg), Internal Systems (increase mech SF capacity and lower it consumption during high activity)\n");
 			//outputText(", Camouflage Mode (allow to enter 1 turn long camouflage opening option to use Sneak Attack (melee & range) specials), Invisibility Mode (the same as Camouflage Mode but can last until PC run out of SF to keep it active or deactivate it manualy / upgrade to decrease SF consumption)");
@@ -392,7 +392,7 @@ public class Changelog extends BaseContent
 			outputText("-Frost Wyrm max hp bonuses for each race tier increased to 10%/20%/30% from 5%/10%/15%.\n");
 			outputText("-New event perk: Gentle Giant. Gained by been Frost Wyrm, Sand Worm, Whale, Fire Snail, Krampus. Effects: You are a natural musclehead with very little brain to back it up. Who needs brawn when you got brawl?! Strength is increased by 25% of its total but reduces total intelligence by the same amount.\n");
 			outputText("-Yeti Legs/Feet now would give similar bonus to unarmed dmg as Yeti Arms. Yeti tier 2 bonuses req. now 20+ not 17+ pts and are slight improved.\n");
-			outputText("-\n");
+			outputText("-New TF item (by Liadri): Shifting Flower. Droped by chameleon enemies. Using this item will turn PC into chameleon. Chameleon / Elder Chameleon racial bonuses (11+/19+): +50/75% to tou/wis multi, +65/105% to spe multi.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

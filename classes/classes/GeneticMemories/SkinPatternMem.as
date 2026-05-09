@@ -264,6 +264,16 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const CHAMELEON_TATTOO:int = _partid++;
+		EnumValue.add(Memories, CHAMELEON_TATTOO, "CHAMELEON_TATTOO", {
+			id: "Chameleon Pattern",
+			name: "Chameleon Tattoos",
+			cost: 100,
+			title: "Chameleon",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.SkinPatternChameleon
+			}
+		});
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

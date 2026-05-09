@@ -3,8 +3,9 @@ package classes.Scenes.Areas.Bog
 import classes.*;
 import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
-import classes.BodyParts.Skin;
+import classes.BodyParts.Tail;
 import classes.Scenes.SceneLib;
+import classes.internals.*;
 
 public class ChameleonGirl extends Monster
 	{
@@ -131,7 +132,6 @@ public class ChameleonGirl extends Monster
 			this.tallness = rand(2) + 68;
 			this.hips.type = Hips.RATING_AMPLE + 2;
 			this.butt.type = Butt.RATING_LARGE;
-			this.skin.setBaseOnly({color:skinToneAdj[0],adj:skinToneAdj[1],type:Skin.PLAIN});
 			this.hairColor = "black";
 			this.hairLength = 15;
 			initStrTouSpeInte(380, 380, 315, 285);
@@ -148,7 +148,10 @@ public class ChameleonGirl extends Monster
 			this.lustVuln = .25;
 			this.level = 48;
 			this.gems = 50 + rand(60);
-			this.drop = NO_DROP;
+			this.drop = new WeightedDrop().add(consumables.SFLOWER,4)
+					.add(consumables.OVIELIX,1);
+			this.tailType = Tail.CHAMELEON;
+			this.tailRecharge = 0;
 			this.createPerk(PerkLib.EnemyBeastOrAnimalMorphType, 0, 0, 0, 0);
 			checkMonster();
 		}

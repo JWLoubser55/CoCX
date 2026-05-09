@@ -1001,6 +1001,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const SkinPatternRunic:Transformation				= skin.SkinPatternRunic.registerTf(AS_SKIN_PATTERN, AE_BAROMETZ);
     public const SkinPatternSoulforceScaring:Transformation		= skin.SkinPatternSoulforceScaring.registerTf(AS_SKIN_PATTERN, AE_HOLLOW);
     public const SkinPatternIceheartTattoo:Transformation		= skin.SkinPatternIceheartTattoo.registerTf(AS_SKIN_PATTERN, AE_DEER);
+    public const SkinPatternChameleon:Transformation			= skin.SkinPatternChameleon.registerTf(AS_SKIN_PATTERN, AE_CHAMELEON);
 
 
 //TAIL
@@ -1074,6 +1075,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const TailBarometz: Transformation               	= tail.TailBarometz.registerTf(AS_TAIL, AE_BAROMETZ);
 	public const TailHollow: Transformation               		= tail.TailHollow.registerTf(AS_TAIL, AE_HOLLOW);
 	public const TailRhino: Transformation               		= tail.TailRhino.registerTf(AS_TAIL, AE_RHINO);
+	public const TailChameleon: Transformation               	= tail.TailChameleon.registerTf(AS_TAIL, AE_CHAMELEON);
 
 	/**
 	 * @param tailCount target tail count
@@ -1111,6 +1113,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const TongueImp: Transformation 			= tongue.TongueImp.registerTf(AS_TONGUE, AE_IMP);
 	public const TongueArigean: Transformation 		= tongue.TongueArigean.registerTf(AS_TONGUE, AE_ARIGEAN);
 	public const TongueAutomata: Transformation 	= tongue.TongueAutomata.registerTf(AS_TONGUE, AE_AUTOMATA);
+	public const TongueChameleon: Transformation 	= tongue.TongueChameleon.registerTf(AS_TONGUE, AE_CHAMELEON);
 
 
 //VAGINA

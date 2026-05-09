@@ -555,6 +555,14 @@ public class Tail extends SaveableBodyPart {
 		tailSlam: true,
 		isLong: true
 	});
+	public static const CHAMELEON: int = 68;
+	EnumValue.add(Types, CHAMELEON, "CHAMELEON", {
+		name:"chameleon",
+		appearanceDesc: "From your back sprouts a reptilian tail, like that of a chameleon, curl on itself in a spiral.",
+		tailSlam: true,
+		isLong: true,
+		scales: true
+	});
 
 	override public function set type(value:int):void {
 		var old:int = type;

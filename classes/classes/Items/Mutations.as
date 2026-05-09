@@ -1159,34 +1159,7 @@ public final class Mutations extends MutationsHelper {
 		var choice2:String = randomChoice(DemonRace.DemonSkin2Colors);
 		player.skinColor1 = choice1;
 		player.skinColor2 = choice2;
-		transformations.TailDemonic.applyEffect(false);
-        transformations.HornsDemonic.applyEffect(false);
-		if (player.faceType != Face.HUMAN && player.faceType != Face.DEMON) transformations.FaceHuman.applyEffect(false);
-        transformations.FaceDemon.applyEffect(false);
-        transformations.EarsElfin.applyEffect(false);
-		transformations.TongueDemonic.applyEffect(false);
-        transformations.EyesDemonColors.applyEffect(false);
-		if (rand(2) == 0) transformations.EyesDemon.applyEffect(false);
-		else transformations.EyesDevil.applyEffect(false);
-		if (!InCollection(player.arms.type, Arms.HUMAN, Arms.DEMON)) transformations.ArmsHuman.applyEffect(false);
-        transformations.ArmsDemon.applyEffect(false);
-        if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) transformations.LowerBodyDemonClawed.applyEffect(false);
-        else {
-            if (rand(2) == 0) transformations.LowerBodyDemonHighHeels.applyEffect(false);
-			else transformations.LowerBodyDemonGracefulFeet.applyEffect(false);
-        }
-		if (player.wings.type != Wings.NONE) transformations.WingsNone.applyEffect(false);
-        transformations.WingsDemonicTiny.applyEffect(false);
-		transformations.WingsDemonicLarge.applyEffect(false);
-		if (player.gender == 0) {
-			if (rand(2) == 0) transformations.VaginaDemonic().applyEffect(false);
-			else transformations.CockDemon(0).applyEffect(false);
-		}
-		else {
-			if (player.hasVagina()) transformations.VaginaDemonic().applyEffect(false);
-			if (player.hasCock()) transformations.CockDemon(0).applyEffect(false);
-		}
-		player.createPerk(PerkLib.Soulless, 0, 0, 0, 0);
+        terminalCorruption2(player);
 		player.demonicenergy += 50;
 		if (player.hasStatusEffect(StatusEffects.ArigeanInfected)) player.removeStatusEffect(StatusEffects.ArigeanInfected);
 		if (player.hasPerk(PerkLib.WendigoCurse)) player.removePerk(PerkLib.WendigoCurse);
@@ -1208,6 +1181,45 @@ public final class Mutations extends MutationsHelper {
 		outputText("You seem to have struck a bottleneck unable to achieve release as your pleasure keep reaching intolerable heights but finally the dam breaks allowing you to release everything out. When you come down from your orgasm you finally realize what just happened. You didn’t just came you came your soul out now your no defrent from the demons who fucked you into this state. ");
 		outputText("You quickly adapt to the change however and take what's left of your soul from the ground eating it right away. It seems you’ve become a demon, there's no going back to having a soul now but that doesn’t mean your quest has to end there far from it, you’re going to turn this shity land into your playground and get back at it for everything that's been done to you. ");
 		outputText("The champion you is no more but you’ve got plenty of grievances with the place to address still and you will only rest until it's all under your demonic foot.\n\n");
+	}
+	public function terminalCorruption2(player:Player):void {
+		if (player.hairType != Hair.NORMAL) transformations.HairHuman.applyEffect(false);
+		if (player.tailType != Tail.DEMONIC) transformations.TailDemonic.applyEffect(false);
+		if (!InCollection(player.horns.type, Horns.DEMON)) transformations.HornsDemonic.applyEffect(false);
+		if (player.faceType != Face.DEMON) {
+			if (player.faceType != Face.HUMAN) transformations.FaceHuman.applyEffect(false);
+			transformations.FaceDemon.applyEffect(false);
+		}
+        if (player.ears.type != Ears.ELFIN) transformations.EarsElfin.applyEffect(false);
+		if (player.tongue.type != Tongue.DEMONIC) transformations.TongueDemonic.applyEffect(false);
+		if (player.eyes.type != Eyes.DEMON && player.eyes.type != Eyes.DEVIL) {
+			if (rand(2) == 0) transformations.EyesDemon.applyEffect(false);
+			else transformations.EyesDevil.applyEffect(false);
+		}
+		transformations.EyesDemonColors.applyEffect(false);
+		if (!InCollection(player.wings.type, Wings.NONE, Wings.BAT_LIKE_TINY, Wings.BAT_LIKE_LARGE)) transformations.WingsNone.applyEffect(false);
+        if (player.wings.type == Wings.NONE) {
+			transformations.WingsDemonicTiny.applyEffect(false);
+			transformations.WingsDemonicLarge.applyEffect(false);
+		}
+		if (!InCollection(player.arms.type, Arms.HUMAN, Arms.DEMON)) {
+			transformations.ArmsHuman.applyEffect(false);
+			transformations.ArmsDemon.applyEffect(false);
+		}
+		if (player.lowerBody != LowerBody.DEMONIC_CLAWS && player.lowerBody != LowerBody.DEMONIC_HIGH_HEELS && player.lowerBody != LowerBody.DEMONIC_GRACEFUL_FEET) {
+			if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) transformations.LowerBodyDemonClawed.applyEffect(false);
+			else {
+				if (rand(2) == 0) transformations.LowerBodyDemonHighHeels.applyEffect(false);
+				else transformations.LowerBodyDemonGracefulFeet.applyEffect(false);
+			}
+		}
+		player.legCount = 2;
+		if (player.antennae.type != Antennae.NONE) transformations.AntennaeNone.applyEffect(false);
+        if (player.rearBody.type != RearBody.NONE) transformations.RearBodyNone.applyEffect(false);
+		if (player.hasGills()) transformations.GillsNone.applyEffect(false);
+		if (player.hasCock() && player.demonCocks() == 0) CoC.instance.transformations.CockDemon(0).applyEffect(false);
+		if (player.hasVagina() && player.vaginaType() != VaginaClass.DEMONIC) CoC.instance.transformations.VaginaDemonic().applyEffect(false);
+		player.createPerk(PerkLib.Soulless, 0, 0, 0, 0);
 	}
 
     public function minotaurCum(purified:Boolean, player:Player):void {
@@ -7264,19 +7276,19 @@ public final class Mutations extends MutationsHelper {
 
         //Statistical changes:
         //-Reduces speed down to 50.
-        if (player.spe > 50 && changes < changeLimit && rand(4) == 0) {
+        if (player.spe > 50 && changes < changeLimit && rand(2) == 0) {
             outputText("[pg]You start to feel sluggish and cold.  Lying down to bask in the sun might make you feel better.");
             player.addCurse("spe", 1, 1);
             changes++;
         }
         //-Reduces sensitivity.
-        if (player.sens > 20 && changes < changeLimit && rand(3) == 0) {
+        if (player.sens > 20 && changes < changeLimit && rand(2) == 0) {
             outputText("[pg]The sensation of prickly pins and needles moves over your body, leaving your senses a little dulled in its wake.");
             dynStats("sen", -1);
             changes++;
         }
         //Raises libido greatly to 50, then somewhat to 75, then slowly to 100.
-        if (changes < changeLimit && rand(3) == 0) {
+        if (changes < changeLimit && rand(2) == 0) {
             outputText("[pg]A knot of fire in your gut doubles you over but passes after a few moments.  As you straighten you can feel the heat seeping into you, ");
             //(DICK)
             if (player.cocks.length > 0 && (player.gender != 3 || rand(2) == 0)) {
@@ -7292,7 +7304,7 @@ public final class Mutations extends MutationsHelper {
                 changes++; //compromise for "fantasy". And you still get your debuff. Sounds fair.
         }
         //-Raises toughness
-        if (changes < changeLimit && rand(3) == 0 && MutagenBonus("tou", 2)) {
+        if (changes < changeLimit && rand(2) == 0 && MutagenBonus("tou", 2)) {
             if (player.tou < 40)
                 outputText("[pg]Your body and skin both thicken noticeably.  You pinch your [skin.type] experimentally and marvel at how much tougher your hide has gotten.");
             else if (player.tou < 55)
@@ -7421,7 +7433,7 @@ public final class Mutations extends MutationsHelper {
             }
         }
         //-Hair stops growing!
-        if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 0 && changes < changeLimit && rand(4) == 0) {
+        if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 0 && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]Your scalp tingles oddly.  In a panic, you reach up to your [hair], but thankfully it appears unchanged.[pg]");
             outputText("(<b>Your hair has stopped growing.</b>)");
             changes++;
@@ -7434,9 +7446,8 @@ public final class Mutations extends MutationsHelper {
             player.beardLength = 0;
             player.beardStyle = 0;
         }
-        //Big physical changes:
         //-Legs – Draconic, clawed feet
-        if (player.lowerBody != LowerBody.LIZARD && changes < changeLimit && rand(5) == 0) {
+        if (player.lowerBody != LowerBody.LIZARD && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
             transformations.LowerBodyLizard(2).applyEffect();
             changes++;
@@ -7448,7 +7459,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //-Tail – sinuous lizard tail
-        if (player.tailType != Tail.LIZARD && player.arms.type == Arms.LIZARD && changes < changeLimit && rand(5) == 0) {
+        if (player.tailType != Tail.LIZARD && player.arms.type == Arms.LIZARD && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
             transformations.TailLizard.applyEffect();
             changes++;
@@ -7459,19 +7470,19 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Remove odd eyes
-        if (changes < changeLimit && rand(5) == 0 && player.eyes.type > Eyes.HUMAN && player.eyes.type != Eyes.LIZARD) {
+        if (changes < changeLimit && rand(3) == 0 && player.eyes.type > Eyes.HUMAN && player.eyes.type != Eyes.LIZARD) {
             outputText("[pg]");
             transformations.EyesHuman.applyEffect();
             changes++;
         }
         //-Ears become smaller nub-like openings?
-        if (player.ears.type != Ears.LIZARD && player.tailType == Tail.LIZARD && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(5) == 0) {
+        if (player.ears.type != Ears.LIZARD && player.tailType == Tail.LIZARD && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
 			transformations.EarsLizard.applyEffect();
             changes++;
         }
         //-Scales – color changes to red, green, white, blue, or black.  Rarely: purple or silver.
-        if (!player.hasFullCoatOfType(Skin.SCALES) && player.ears.type == Ears.LIZARD && player.tailType == Tail.LIZARD && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(5) == 0) {
+        if (!player.hasFullCoatOfType(Skin.SCALES) && player.ears.type == Ears.LIZARD && player.tailType == Tail.LIZARD && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(3) == 0) {
             var colors: Array;
             if (rand(10) == 0) {
                 colors = ["purple", "silver"];
@@ -7483,13 +7494,13 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //-Lizard-like face.
-        if (player.faceType != Face.LIZARD && player.isScaleCovered() && player.ears.type == Ears.LIZARD && player.tailType == Tail.LIZARD && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(5) == 0) {
+        if (player.faceType != Face.LIZARD && player.isScaleCovered() && player.ears.type == Ears.LIZARD && player.tailType == Tail.LIZARD && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
             transformations.FaceLizard.applyEffect();
             changes++;
         }
         // Remove gills
-        if (rand(4) == 0 && player.hasGills() && changes < changeLimit) {
+        if (rand(3) == 0 && player.hasGills() && changes < changeLimit) {
             outputText("[pg]");
             transformations.GillsNone.applyEffect();
             changes++;
@@ -7504,7 +7515,155 @@ public final class Mutations extends MutationsHelper {
         flags[kFLAGS.TIMES_TRANSFORMED] += changes;
     }
 
-    public function salamanderfirewater(player:Player):void {
+    public function shiftingFlower(player:Player):void {
+		player.slimeFeed();
+        //init variables
+        var changes:Number = 0;
+        var changeLimit:Number = 2;
+        var temp2:Number = 0;
+        //Randomly choose affects limit
+        if (rand(2) == 0) changeLimit++;
+        if (rand(2) == 0) changeLimit++;
+        if (rand(2) == 0) changeLimit++;
+        changeLimit += player.additionalTransformationChances;
+        //clear screen
+        clearOutput();
+        outputText("You eat the flower one petal after another. At first nothing particular happened but a few seconds later your body is overcome with changes.");
+
+        //Statistical changes:
+		//Increase Toughness
+        if (changes < changeLimit && rand(2) == 0 && MutagenBonus("tou", 2)) {
+            if (player.tou < 40)
+                outputText("[pg]Your body and skin both thicken noticeably.  You pinch your [skin.type] experimentally and marvel at how much tougher your hide has gotten.");
+            else if (player.tou < 55)
+                outputText("[pg]You grin as you feel your form getting a little more solid.  It seems like your whole body is toughening up quite nicely, and by the time the sensation goes away, you feel ready to take a hit.");
+            else
+                outputText("[pg]You snarl happily as you feel yourself getting even tougher.  It's a barely discernible difference, but you can feel your [skin.type] getting tough enough to make you feel invincible.");
+            changes++;
+        }
+		//Increase Wisdom
+		if (rand(2) == 0 && changes < changeLimit && player.MutagenBonus("wis", 1)) {
+			outputText("[pg]You feel a tremendous rush of mental celerity, as if your mind were clear of all doubt.");
+			changes++;
+		}
+		//Increase Speed
+		if (rand(2) == 0 && changes < changeLimit && MutagenBonus("spe", 1)) {
+            outputText("[pg]You feel fleet and lighter on your toes; you sense you could dodge, dart or skip away from anything.");
+            changes++;
+        }
+
+        if (player.blockingBodyTransformations()) changeLimit = 0;
+		//Sexual Changes:
+		//-VAGs
+        if (player.hasVagina() && !player.hasPerk(PerkLib.Oviposition) && changes < changeLimit && rand(5) == 0 && player.racialScore(Races.CHAMELEON, false) > 3) {
+            transformations.GainOviposition.applyEffect();
+            changes++;
+        }
+
+        //Physical changes:
+		//-Hair stops growing!
+        if (flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD] == 0 && changes < changeLimit && rand(4) == 0) {
+            outputText("[pg]Your scalp tingles oddly.  In a panic, you reach up to your [hair], but thankfully it appears unchanged.[pg]");
+            outputText("(<b>Your hair has stopped growing.</b>)");
+            changes++;
+            flags[kFLAGS.HAIR_GROWTH_STOPPED_BECAUSE_LIZARD]++;
+        }
+        //-Legs – Draconic, clawed feet
+        if (player.lowerBody != LowerBody.LIZARD && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.LowerBodyLizard(2).applyEffect();
+            changes++;
+        }
+        //Arms
+        if (player.arms.type != Arms.LIZARD && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.ArmsLizard.applyEffect();
+            changes++;
+        }
+        //-Tail – sinuous lizard tail
+        if (player.tailType != Tail.CHAMELEON && player.arms.type == Arms.LIZARD && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.TailChameleon.applyEffect();
+            changes++;
+        }
+        //Lizard eyes
+        if (changes < changeLimit && rand(3) == 0 && player.eyes.type == Eyes.HUMAN) {
+            transformations.EyesLizard.applyEffect();
+            changes++;
+        }
+        //Remove odd eyes
+        if (changes < changeLimit && rand(3) == 0 && player.eyes.type > Eyes.HUMAN && player.eyes.type != Eyes.LIZARD) {
+            outputText("[pg]");
+            transformations.EyesHuman.applyEffect();
+            changes++;
+        }
+		if (changes < changeLimit && rand(3) == 0 && player.eyes.type == Eyes.LIZARD && (transformations.EyesChangeColor(["yellow", "orange"]).isPossible())) {
+            transformations.EyesChangeColor(["yellow", "orange"]).applyEffect(false);
+            outputText("[pg]Your eyes begin to water for a moment. When your view clears up you move on to a puddle and notice their coloration changed to [eyecolor]. <b>You now have [eyecolor] irises.</b>");
+            changes++;
+        }
+        //-Ears become smaller nub-like openings?
+        if (player.ears.type != Ears.LIZARD && player.ears.type != Ears.ELFIN && player.tailType == Tail.CHAMELEON && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+			if (rand(2) == 0) transformations.EarsLizard.applyEffect();
+			else transformations.EarsElfin.applyEffect();
+            changes++;
+        }
+        //-Scales – color changes to red, green, white, blue, or black.  Rarely: purple or silver.
+        if (!player.hasFullCoatOfType(Skin.SCALES) && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(3) == 0) {
+            var colors: Array;
+            if (rand(10) == 0) {
+                colors = ["purple", "silver"];
+            } else {
+                colors = ["red", "green", "white", "blue", "black"];
+            }
+            outputText("[pg]");
+            if (rand(2) == 0) transformations.SkinScales(Skin.COVERAGE_COMPLETE, {colors: colors}).applyEffect();
+            else transformations.SkinScales(Skin.COVERAGE_HIGH, {colors: colors}).applyEffect();
+            changes++;
+        }
+        //-Lizard-like face.
+        if (player.faceType != Face.LIZARD && player.faceType != Face.ANIMAL_TOOTHS && player.isScaleCovered() && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            if (rand(2) == 0) transformations.FaceLizard.applyEffect();
+			else transformations.FaceAnimalTeeth.applyEffect();
+            changes++;
+        }
+		//Skin pattern
+        if (!player.skin.hasChameleonTattoo() && rand(3) == 0 && changes < changeLimit) {
+            outputText("[pg]");
+            transformations.SkinPatternChameleon.applyEffect();
+            changes++;
+        }
+        // Remove gills
+        if (rand(4) == 0 && player.hasGills() && changes < changeLimit) {
+            outputText("[pg]");
+            transformations.GillsNone.applyEffect();
+            changes++;
+        }
+		//Remove wings
+        if (player.wings.type > Wings.NONE && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.WingsNone.applyEffect();
+            changes++;
+        }
+		//Removes horns
+        if (changes < changeLimit && player.horns.count > 0 && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.HornsNone.applyEffect();
+            changes++;
+        }
+        //FAILSAFE CHANGE
+        if (changes == 0) {
+            outputText("[pg]Inhuman vitality spreads through your body, invigorating you!\n");
+            pc.HPChange(50*player.postConsumptionMlt(), true, false);
+            dynStats("lus", Math.round(3*player.postConsumptionMlt()), "scale", false);
+        }
+        player.refillHunger(20);
+        flags[kFLAGS.TIMES_TRANSFORMED] += changes;
+	}
+	
+	public function salamanderfirewater(player:Player):void {
         player.slimeFeed();
         //init variables
         var changes:Number = 0;
@@ -9961,7 +10120,7 @@ public final class Mutations extends MutationsHelper {
             outputText("[pg]You groan softly as your head begins pounding something fierce.  Wincing in pain, you massage your temples as the throbbing continues, and soon, the pain begins to fade; in its place comes a strange sense of sureness and wit.");
             changes++;
         }
-        if (player.sens < 80 && rand(4) == 0 && changes < changeLimit) {
+        if (player.sens < 80 && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]Your body becomes overwhelmed by stimuli for a moment making you shiver with a moan of pleasure at the mere caress of the wind. The excess sensation eventually dies down but leaves you more sensitive than before.");
             player.addCurse("sen", 2, 1);
             if (player.sens < 40) player.addCurse("sen", 2, 1);

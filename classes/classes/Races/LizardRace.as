@@ -64,6 +64,7 @@ public class LizardRace extends Race {
 				.faceType(Face.LIZARD, +1)
 				.earType(Ears.LIZARD, +1)
 				.eyeType(Eyes.LIZARD, +1)
+				.tailType(NONE(Tail.CHAMELEON), 0, -10)
 				.tailType(Tail.LIZARD, +2)
 				.armType(Arms.LIZARD, +2)
 				.legType(LowerBody.LIZARD, +2)
