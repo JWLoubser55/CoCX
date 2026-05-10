@@ -5,6 +5,7 @@ import classes.CockTypesEnum;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.VaginaClass;
 
 public class FrostWyrmRace extends Race {
 	public static const FrostWyrmHairColors:/*String*/Array = ["white", "snow white", "glacial white", "silver", "platinum silver"];
@@ -59,7 +60,7 @@ public class FrostWyrmRace extends Race {
 				.hornType(NONE(Horns.DRACONIC_X4_12_INCH_LONG, Horns.DRACONIC_X2), 0, -2)
 				.hairColor1(ANY(FrostWyrmHairColors), +1)
 				.scaleColor1(ANY(FrostWyrmScaleColos), +1)
-				.hasCockOfType(CockTypesEnum.DRAGON, +1)
+				.cockOrVaginaOfType(CockTypesEnum.DRAGON, VaginaClass.DRAGON, +2)
 				.customRequirement("","male with big cock or female with big tits",
 						function (body:BodyData):Boolean {
 							return body.hasCock && body.biggestCockSize > 6

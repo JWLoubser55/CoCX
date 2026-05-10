@@ -569,6 +569,17 @@ package classes.GeneticMemories {
 				return CoC.instance.transformations.EyesLich;
 			}
 		});
+
+		public static const FROG:int = _partid++;
+		EnumValue.add(Memories, FROG, "FROG", {
+			id: "Frog Eyes",
+			name: "Frog Eyes",
+			cost: 100,
+			title: "Frog",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EyesFrog;
+			}
+		});
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

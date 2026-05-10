@@ -6,6 +6,7 @@ import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 import classes.lists.Gender;
+import classes.VaginaClass;
 
 public class JabberwockyRace extends Race {
 	public static const JabberwockyScaleColors:/*String*/Array = ["magenta", "pink"];
@@ -61,8 +62,7 @@ public class JabberwockyRace extends Race {
 				.legType(NONE(LowerBody.FROSTWYRM, LowerBody.FEY_DRAGON, LowerBody.LION), 0, -1000)
 				.armType(Arms.JABBERWOCKY, +1)
 				.armType(NONE(Arms.DRACONIC, Arms.FEY_DRACONIC, Arms.LION, Arms.YGGDRASIL), 0, -10)
-				.hasCockOfType(CockTypesEnum.DRAGON, +1)
-				.gender(Gender.GENDER_FEMALE, +1)
+				.cockOrVaginaOfType(CockTypesEnum.DRAGON, VaginaClass.DRAGON, +2)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		addScoresAfter(5)
 				.hasPerk(PerkLib.DragonLustPoisonBreath, +1)

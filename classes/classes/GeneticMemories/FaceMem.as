@@ -803,6 +803,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const FROG:int = _partid++;
+		EnumValue.add(Memories, FROG, "FROG", {
+			id: "Frog Face",
+			name: "Frog Face",
+			cost: 100,
+			title: "Frog Face",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.FaceFrog;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

@@ -946,6 +946,23 @@ public class EyesTransformations extends MutationsHelper {
 				return player.eyes.type === Eyes.LICH;
 			}
 	);
+	
+	public const EyesFrog: Transformation = new SimpleTransformation("Frog Eyes",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Your eyes begin to water and you begin to rub them in confusion. When your vision clear you notice little change at first. <b>It's only when you check them up by a puddle that your pupils are now horizontal like those of a frog.</b>";
+
+				player.eyes.type = Eyes.FROG;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EyesMem.getMemory(EyesMem.FROG));
+			},
+			// is present
+			function (): Boolean {
+				return player.eyes.type === Eyes.FROG;
+			}
+	);
 
 // EYE COLORS
 

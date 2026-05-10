@@ -1294,5 +1294,22 @@ public class FaceTransformations extends MutationsHelper {
 				return player.faceType === Face.DEER_BLUSH;
 			}
 	);
+
+	public const FaceFrog: Transformation = new SimpleTransformation("Frog Face",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Something weird happens with your mouth. At first you dismiss it, unable to find any noticeable difference, then realise what happened. <b>Seems your mouth is now slightly wider than it used to be, not unlike that of a frog.</b>";
+
+				if (doOutput) outputText(desc);
+				player.faceType = Face.FROG;
+				Metamorph.unlockMetamorph(FaceMem.getMemory(FaceMem.FROG));
+			},
+			// is present
+			function (): Boolean {
+				return player.faceType === Face.FROG;
+			}
+	);
 }
 }

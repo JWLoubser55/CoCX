@@ -4,6 +4,7 @@ import classes.BodyParts.*;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.VaginaClass;
 
 public class YgddrasilRace extends Race {
 	public static const YgddrasilSkinColors:/*String*/Array = ["mahogany", "brown", "black"];
@@ -65,6 +66,7 @@ public class YgddrasilRace extends Race {
 						function (body:BodyData):Boolean {
 							return body.player.tentacleCocks() > 0 || body.player.stamenCocks() > 0;
 						}, +1)
+				.vaginaType(VaginaClass.DRAGON, +1)
 				.legType(LowerBody.YGG_ROOT_CLAWS, +1)
 				.legType(NONE(LowerBody.FROSTWYRM, LowerBody.FEY_DRAGON, LowerBody.LION), 0, -10)
 				.customScoreRequirement("tail", "multiple yggdrasil tails, +1 per tail",

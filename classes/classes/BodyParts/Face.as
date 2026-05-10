@@ -755,6 +755,12 @@ public class Face extends SaveableBodyPart {
 		},
 		humanShaped: true
 	});
+	//71 - SLOTHIEN
+	public static const FROG: int = 72;
+	EnumValue.add(Types, FROG, "FROG", {
+		name: "frog",
+		appearanceDesc: "Your face is human in shape and structure with [skin]. Your mouth could pass for human, although it is slightly wider than normal giving you a funny facial expression."
+	});
 
 	public function Face(creature:Creature) {
 		super(creature,"facePart",[]);

@@ -193,6 +193,10 @@ public class WorldTree extends BaseContent
 					}
 				}
 			}
+			//Gain Dragon Pussy
+			if (player.hasVagina() && player.vaginaType() != VaginaClass.DRAGON && changes < changeLimit && rand(3) == 0) {
+				CoC.instance.transformations.VaginaDragon().applyEffect();
+			}
 			//{hair exists, no leaves/tentacle hair: leaves/tentacle hair tf}
 			if (player.hairColor == "green" && player.hairLength > 0 && (player.hairType != Hair.LEAF && player.hairType != Hair.GRASS && player.hairType != Hair.ANEMONE) && !player.isGargoyle() && changes < changeLimit)
 			{

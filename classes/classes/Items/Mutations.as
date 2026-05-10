@@ -7629,6 +7629,12 @@ public final class Mutations extends MutationsHelper {
 			else transformations.FaceAnimalTeeth.applyEffect();
             changes++;
         }
+		//Tongue
+		if (player.tongue.type != Tongue.CHAMELEON && changes < changeLimit && rand(3) == 0) {
+			outputText("[pg]");
+			transformations.TongueChameleon.applyEffect();
+			changes++;
+		}
 		//Skin pattern
         if (!player.skin.hasChameleonTattoo() && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
@@ -15399,6 +15405,10 @@ public final class Mutations extends MutationsHelper {
             player.addCurse("sen", 10, 1);
             changes++;
         }
+		//Gain Dragon Pussy
+		if (player.hasVagina() && player.vaginaType() != VaginaClass.DRAGON && changes < changeLimit && rand(3) == 0) {
+			transformations.VaginaDragon().applyEffect();
+		}
         //Increase player's breast size
         if (player.gender > 1 && player.biggestTitSize() <= 12 && changes < changeLimit && rand(3) == 0) {
             if (rand(2) == 0) outputText("[pg]Your [breasts] tingle for a moment before becoming larger.");
@@ -15563,6 +15573,211 @@ public final class Mutations extends MutationsHelper {
         player.refillHunger(5);
         flags[kFLAGS.TIMES_TRANSFORMED] += changes;
     }
+	
+	public function frogBogMucus(type:Number, player:Player):void {
+		//0 - frog
+		//1 - mogobo
+		player.slimeFeed();
+        //init variables
+        var changes:Number = 0;
+        var changeLimit:Number = 2;
+        var temp:Number = 0;
+        //Randomly choose affects limit
+        if (rand(2) == 0) changeLimit++;
+        if (rand(2) == 0) changeLimit++;
+        if (rand(2) == 0) changeLimit++;
+        changeLimit += player.additionalTransformationChances;
+		var Frog_Mobogo_SkinColor:Array = ["green", "yellow", "blue", "red", "light green"];
+        //clear screen
+        clearOutput();
+        if (type == 0) outputText("You open the bottle and dip a hand inside. You are unsure whether to apply the mucus-like mixture or taste it. As you apply it to your skin you begin feeling weird. ");
+		else outputText("You open the bottle and dip a hand inside. You are unsure whether to apply the mucus-like mixture or taste it. As you apply it to your skin you begin feeling weird. ");
+
+        //Statistical changes:
+
+        //Rais strength and speed
+        if (rand(3) == 0 && changes < changeLimit) {
+            outputText("[pg]You feel power pumping into your legs. You could jump forever with legs like these.");
+            MutagenBonus("str", 3);
+			MutagenBonus("spe", 3);
+            changes++;
+        }
+
+        //Rais libido and lust
+        if (rand(2) == 0 && changes < changeLimit) {
+            outputText("[pg]You feel your arousal spike up as the aphrodisiacs compound in the mucus soak into your skin.");
+            dynStats("lus", 25, "scale", false);
+			MutagenBonus("lib", 3);
+			changes++;
+        }
+
+        if (player.blockingBodyTransformations()) changeLimit = 0;
+        //Sexual Changes:
+
+        //Gain Dragon Dick
+        if (changes < changeLimit && player.dragonCocks() < player.cockTotal() && rand(3) == 0 && type == 1) {
+            temp = 0;
+            var choices:Array = [];
+            var select:int;
+            temp = player.cockTotal();
+            //Build an array of all the locations for TF'able cocks.
+            while (temp > 0) {
+                temp--;
+                if (player.cocks[temp].cockType != CockTypesEnum.DRAGON) choices[choices.length] = temp;
+            }
+            //Randomly choose one of those locations
+            select = choices[rand(choices.length)];
+            transformations.CockDragon(select).applyEffect();
+            //lose lust if sens>=50, gain lust if else
+            dynStats("lus", 10, "scale", false);
+            player.addCurse("sen", 10, 1);
+            changes++;
+        }
+		//Gain Dragon Pussy
+		if (player.hasVagina() && player.vaginaType() != VaginaClass.DRAGON && changes < changeLimit && rand(3) == 0 && type == 1) {
+			transformations.VaginaDragon().applyEffect();
+		}
+
+        //Normalchanges
+
+        //grow up to 11 feet tall
+        if (changes < changeLimit && rand(2) == 0 && player.tallness < 132 && type == 1) {
+            temp = rand(5) + 3;
+            //Slow rate of growth after some thresholds
+            if (player.tallness >= 120) temp = Math.floor(temp / 3.5);
+            if (player.tallness >= 96 && player.tallness < 120) temp = Math.floor(temp / 2);
+            //Never 0
+            if (temp == 0) temp = 1;
+            if (temp < 5) outputText("[pg]You shift uncomfortably as you realize you feel off balance.  Gazing down, you realize you have grown SLIGHTLY taller.");
+            if (temp >= 5 && temp < 7) outputText("[pg]You feel dizzy and slightly off, but quickly realize it's due to a sudden increase in height.");
+            if (temp == 7) outputText("[pg]Staggering forwards, you clutch at your head dizzily.  You spend a moment getting your balance, and stand up, feeling noticeably taller.");
+            player.tallness += temp;
+            changes++;
+        }
+		//Removes tail
+        if (player.tailType > Tail.NONE && rand(3) == 0 && changes < changeLimit) {
+            outputText("[pg]");
+            transformations.TailNone.applyEffect();
+            changes++;
+        }
+		//Remove wings
+        if (player.wings.type > Wings.NONE && rand(2) == 0 && changes < changeLimit && type == 0) {
+            outputText("[pg]");
+            transformations.WingsNone.applyEffect();
+            changes++;
+        }
+		//Plain skin
+        if (!player.hasPlainSkinOnly() && rand(2) == 0 && changes < changeLimit) {
+            outputText("[pg]");
+            transformations.SkinPlain.applyEffect();
+            changes++;
+        }
+		if (!InCollection(player.skinColor, Frog_Mobogo_SkinColor) && changes < changeLimit && rand(3) == 0) {
+			player.skinColor = randomChoice(Frog_Mobogo_SkinColor);
+            outputText("[pg]Your skin suddenly darkens. Doesn’t look like much, but darker skin will likely help soak up more sunlight and keep you warmer.<b> You now have " + player.skinColor + " skin.</b>");
+            changes++;
+        }
+		//Skin pattern
+		
+		//Eyes
+        if (changes < changeLimit && rand(3) == 0 && player.eyes.type != Eyes.FROG) {
+            outputText("[pg]");
+            transformations.EyesFrog.applyEffect();
+            changes++;
+        }
+        if (changes < changeLimit && rand(3) == 0 && player.eyes.type == Eyes.FROG && (transformations.EyesChangeColor(["yellow", "orange"]).isPossible())) {
+            transformations.EyesChangeColor(["yellow", "orange"]).applyEffect(false);
+            outputText("[pg]Your eyes begin to water for a moment. When your view clears up you move on to a puddle and notice their coloration changed to [eyecolor]. <b>You now have [eyecolor] irises.</b>");
+            changes++;
+        }
+		//Mouth TF
+		if (player.faceType != Face.FROG && rand(3) == 0 && changes < changeLimit) {
+			outputText("[pg]");
+			transformations.FaceFrog.applyEffect();
+			changes++;
+		}
+		//Tongue
+		if (player.tongue.type != Tongue.CHAMELEON && changes < changeLimit && rand(3) == 0) {
+			outputText("[pg]");
+			transformations.TongueChameleon.applyEffect();
+			changes++;
+		}
+		//Arms
+		
+		//Legs
+		
+		if (type == 1) {
+			//horns
+			if (player.horns.type != Horns.DRACONIC_X4_12_INCH_LONG && player.eyes.type == Eyes.FROG && changes < changeLimit && rand(3) == 0) {
+				//No dragon horns yet.
+				if (player.horns.type != Horns.DRACONIC_X2 && player.horns.type != Horns.DRACONIC_X4_12_INCH_LONG && player.horns.type != Horns.ORCHID) {
+					//Already have horns
+					if (player.horns.count > 0) {
+						//High quantity demon horns
+						if (player.horns.type == Horns.DEMON && player.horns.count > 4) {
+							outputText("[pg]");
+							transformations.HornsDraconicQuadruple.applyEffect();
+						} else {
+							outputText("[pg]");
+							transformations.HornsDraconicDual.applyEffect();
+						}
+						changes++;
+					}
+					//No horns
+					else {
+						//-If no horns, grow a pair
+						outputText("[pg]");
+						transformations.HornsDraconicDual.applyEffect();
+						changes++;
+					}
+				}
+				//ALREADY DRAGON
+				else {
+					if (player.horns.type == Horns.DRACONIC_X2) {
+						if (player.horns.count < 12) {
+							outputText("[pg]");
+							transformations.HornsDraconicDual.applyEffect();
+							changes++;
+						}
+						//maxxed out, new row
+						else {
+							//--Next horns growth adds second row and brings length up to 12\"
+							outputText("[pg]");
+							transformations.HornsDraconicQuadruple.applyEffect();
+							changes++;
+						}
+					}
+				}
+			}
+			//wings
+			if (player.wings.type != Wings.DRACONIC_HUGE && changes < changeLimit && rand(3) == 0) {
+				if (player.wings.type == Wings.NONE) {
+					outputText("[pg]");
+					transformations.WingsDraconicSmall.applyEffect();
+				}
+				//(If Small Dragon Wings Present)
+				else if (player.wings.type == Wings.DRACONIC_SMALL) {
+					outputText("[pg]");
+					transformations.WingsDraconicLarge.applyEffect();
+				}
+				//even larger dragon wings ^^
+				else if (player.wings.type == Wings.DRACONIC_LARGE) {
+					outputText("[pg]");
+					transformations.WingsDraconicHuge.applyEffect();
+				}
+				//(If other wings present)
+				else {
+					outputText("[pg]");
+					transformations.WingsDraconicSmall.applyEffect();
+				}
+				changes++;
+			}
+			//antenna
+			
+		}
+		player.refillHunger(5);
+        flags[kFLAGS.TIMES_TRANSFORMED] += changes;
+	}
 
     public function bladeGrass(player:Player):void {
         player.slimeFeed();

@@ -21,6 +21,7 @@ import classes.PerkLib;
 import classes.Races;
 import classes.Races.DragonRace;
 import classes.Scenes.SceneLib;
+import classes.VaginaClass;
 
 public class EmberTF extends BaseContent
 {
@@ -47,11 +48,15 @@ public function dragonTFeffects(drakesHeart:Boolean = false):void {
 		}
 		//Randomly choose one of those locations
 		select = choices[rand(choices.length)];
-		transformations.CockDragon(select).applyEffect();
+		CoC.instance.transformations.CockDragon(select).applyEffect();
 		//lose lust if sens>=50, gain lust if else
 		dynStats("lus", 10)
 		player.addCurse("sen", 10, 1);
 		changes++;
+	}
+	//Gain Dragon Pussy
+	if (player.hasVagina() && player.vaginaType() != VaginaClass.DRAGON && changes < changeLimit && rand(3) == 0) {
+		CoC.instance.transformations.VaginaDragon().applyEffect();
 	}
 	//-Existing horns become draconic, max of 4, max length of 1'
 	if (player.horns.type != Horns.DRACONIC_X4_12_INCH_LONG && changes < changeLimit && rand(5) == 0) {

@@ -328,6 +328,11 @@ public class Eyes extends BodyPart {
 		appearanceDesc: "Your [eyecolor] eyes are solid spheres.",
 		Darkvision: true
 	});
+	public static const FROG: int = 55;
+	EnumValue.add(Types, FROG, "FROG", {
+		name:"frog",
+		appearanceDesc: "Your [eyecolor] eyes have horizontal slits just like those of a frog and work well both on land and underwater."
+	});
 
 	public var count:int;
 	public var colour:String = "brown";

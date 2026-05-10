@@ -97,6 +97,11 @@ public class Bog extends BaseContent
 				call: encounterUshiOni,
 				chance: 0.5
 			}, {
+				name: "findfrogmucus",
+				label : "Frog Mucus",
+				kind  : 'item',
+				call: findFrogMucus
+			}, {
 				name: "findnothing",
 				label : "Walk",
 				kind:'walk',
@@ -200,6 +205,12 @@ public class Bog extends BaseContent
 			statScreenRefresh();
 			outputText("\n\n<b>You now have " + num2Text(inventory.itemStorageDirectGet().length) + " storage item slots at camp.</b>");
 			endEncounter();
+		}
+
+		private function findFrogMucus():void {
+			clearOutput();
+			outputText("You spot something on the ground. Taking a closer look, it's bottled mucus of a frog. ");
+			inventory.takeItem(consumables.F_MUCUS, explorer.done);
 		}
 
 		private function zenjiEncounterFn():void {

@@ -407,6 +407,17 @@ public final class ConsumableLib extends AlchemyLib
 							[1, AR_INT]
 						]
 				);
+		public const B_MUCUS: Consumable = mk("B.Mucus", "BogMucus", "a Bog mucus", 6, "The carefully harvested mucus of an unknown amphibian, bottled up for your convenience.", curry(m.frogBogMucus, 1), ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_MOBOGO),
+						[
+							[1, AR_STR],
+							[1, AR_TOU],
+							[1, AR_SPE],
+							[1, AR_WIS]
+						]
+				);
 		public const BAYRLEA: Consumable = mk("BayrLea", "Bayr leaf", "a Bayr leaf", 6, "This small leaf shaped like a bear paw can be made into a tea or used as a seasoning.", m.bayrleaf, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
@@ -620,6 +631,16 @@ public final class ConsumableLib extends AlchemyLib
 								GazerRace.GazerHairColors,
 								GazerRace.GazerSkinColors
 						)
+				);
+		public const F_MUCUS: Consumable = mk("F.Mucus", "FrogMucus", "a Frog mucus", 6, "The carefully harvested mucus of a frog, bottled up for your convenience.", curry(m.frogBogMucus, 0), ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_FROG),
+						[
+							[1, AR_STR],
+							[1, AR_SPE],
+							[1, AR_WIS]
+						]
 				);
 		public const F_TEAR: Consumable  = mk("F.Tear", "FafnirTear", "a Fafnir Tear", 15, "This beautiful flower only grows in the snow. It somehow digs its way and survives even in the harsh climate of the rift.", m.FafnirTear, ItemConstants.U_TF)
 				.refineableInto(
@@ -1072,16 +1093,6 @@ public final class ConsumableLib extends AlchemyLib
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						DEFAULT_ESSENCE_DROP_TABLE(AE_SPIDER)
-				);
-		public const F_MUCUS: Consumable = mk("F.Mucus", "FrogMucus", "a Frog mucus", 6, "The carefully harvested mucus of a frog, bottled up for your convenience.", curry(m.sweetGossamer, 0), ItemConstants.U_TF)
-				.refineableInto(
-						DEFAULT_SUBSTANCES_DROP_TABLE,
-						DEFAULT_ESSENCE_DROP_TABLE(AE_FROG)
-				);
-		public const B_MUCUS: Consumable = mk("B.Mucus", "BogMucus", "a Bog mucus", 6, "The carefully harvested mucus of an unknown amphibian, bottled up for your convenience.", curry(m.sweetGossamer, 0), ItemConstants.U_TF)
-				.refineableInto(
-						DEFAULT_SUBSTANCES_DROP_TABLE,
-						DEFAULT_ESSENCE_DROP_TABLE(AE_MOBOGO)
 				);
 		public const SALAMFW: Consumable = mk("SalamFW", "SalamFW", "a hip flask of Salamander Firewater", 6, "This hip flask contain high-proof beverage called 'Salamander Firewater', which one sip can makes your throat feel like it been set on fire.  What whould happen if you drink whole flask content?", m.salamanderfirewater, ItemConstants.U_TF)
 				.refineableInto(
