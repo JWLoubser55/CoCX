@@ -2030,6 +2030,7 @@ public class Appearance extends Utils
 				[
 					[VaginaClass.HUMAN, "human"],
 					[VaginaClass.EQUINE, "equine"],
+					[VaginaClass.DRAGON, "draconic"],
 					[VaginaClass.BLACK_SAND_TRAP, "black sandtrap"],
 					[VaginaClass.CAVE_WYRM, "acidic"],
 					[VaginaClass.VENOM_DRIPPING, "venom dripping"],

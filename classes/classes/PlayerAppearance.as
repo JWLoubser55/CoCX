@@ -918,6 +918,9 @@ public class PlayerAppearance extends BaseContent {
 			case VaginaClass.EQUINE:
 				pussyDesc += " is deep and wide just like that of a horse. Sometime you lament that most of your partners are no longer big enough to satisfy you. Inside you have a ";
 				break;
+			case VaginaClass.DRAGON:
+				pussyDesc += " have several tight fleshy rings made to mercilessly milk ribbed dicks and efficiently ensure the fertilization of your eggs just like that of a dragon. Inside you have a ";
+				break;
 			case VaginaClass.CANCER:
 				pussyDesc += " is constantly foaming, in anticipation for a potential mate. Hidden within is a ";
 				break;
@@ -1668,4 +1671,4 @@ public class PlayerAppearance extends BaseContent {
 		return cockSockDesc;
 	}
 }
-}
+}

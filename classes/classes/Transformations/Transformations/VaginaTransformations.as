@@ -204,6 +204,38 @@ public class VaginaTransformations extends MutationsHelper {
 		);
 	}
 
+	public function VaginaDragon(index:int = 0): Transformation {
+		return new SimpleTransformation("Draconic Vagina",
+				// apply effect
+				function (doOutput:Boolean):void {
+					var desc:String = "[pg]";
+					var vagina:int = vaginaIndex(index, VaginaClass.DRAGON);
+
+					if (player.vaginas.length > vagina){
+						desc += "You gasp in pleasure as you feel your pussy spasming and contracting as if to milk an invisible dick for what it's worth. Confused, you explore the insides of your still tingling vagina with a finger, feeling for multiple new consecutive sets of fleshy rings which instinctively grips and constricts your digits.\n\n" +
+								"Your mind wanders to the thought of throbbing veiny ribbed dragon cocks for which your newly enhanced cunt would be the perfect match. Not only is your pussy way deeper than it used to be, it's also primed for milking dicks dry, in particular dragon penises." +
+								"<b>  You now have a draconic vagina!</b>";
+					}
+					else {
+						desc += GrowVaginaGenericText();
+						desc += "You gasp in pleasure as you feel your new pussy spasming and contracting as if to milk an invisible dick for what it's worth. Confused, you explore the insides of your still tingling vagina with a finger, feeling for multiple new consecutive sets of fleshy rings which instinctively grips and constricts your digits.\n\n" +
+								"Your mind wanders to the thought of throbbing veiny ribbed dragon cocks for which your newly enhanced cunt would be the perfect match. Not only is your pussy way deeper than it used to be, it's also primed for milking dicks dry, in particular dragon penises." +
+								"<b>  You now have a draconic vagina!</b>";
+					}
+					if (doOutput) outputText(desc);
+					player.vaginaType(VaginaClass.DRAGON, vagina);
+					player.vaginas[vagina].vaginalLooseness = VaginaClass.LOOSENESS_GAPING;
+
+					transformations.UnlockVagina();
+					Metamorph.unlockMetamorphEx(VaginaMem.getMemory(VaginaMem.DRAGON));
+				},
+				// is present
+				function ():Boolean {
+					return isPresentVagina(index, VaginaClass.DRAGON);
+				}
+		);
+	}
+
 	public function VaginaKirin(index:int = 0): Transformation {
 		return new SimpleTransformation("Kirin Vagina",
 				// apply effect

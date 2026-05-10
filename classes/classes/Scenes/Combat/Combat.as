@@ -6345,6 +6345,8 @@ public class Combat extends BaseContent {
         if (player.hasATongueSnapAttack()) {
 			outputText("You snap your tongue at [themonster] viciously slapping it with your appendage.");
 			ExtraNaturalWeaponAttack(1);
+			ExtraNaturalWeaponAttack(1);
+			if (monster.hasStatusEffect(StatusEffects.Flying)) monster.removeStatusEffect(StatusEffects.Flying);
 		}
 		//DOING EXTRA CLAW ATTACKS
         if (player.haveNaturalClaws()) {
@@ -17985,6 +17987,135 @@ public function ScyllaTease():void {
 public function ScyllaLeggoMyEggo():void {
     clearOutput();
     outputText("You release [themonster] from [monster his] bonds, and [monster he] drops to the ground, catching [monster his] breath before [monster he] stands back up, apparently prepared to fight some more.");
+    outputText("\n\n");
+    monster.removeStatusEffect(StatusEffects.ConstrictedScylla);
+    enemyAIImpl();
+}
+
+public function TongueSqueeze():void {
+    clearOutput();
+	fatigue(30, USEFATG_PHYSICAL);
+    outputText("You begin to squeeze your victim with your tongue. ");//"+((If Frog mucus)?", your mucus dripping onto [monster his] skin":"")+"
+    var damage:int = monster.maxHP() * (.05 + rand(10) / 100) * 1.5;
+	damage = statusEffectBonusDamage(damage);
+    if (player.hasPerk(PerkLib.VladimirRegalia)) damage *= 2;
+    if (player.hasPerk(PerkLib.RacialParagon)) damage *= RacialParagonAbilityBoost();
+    if (monster.plural) damage *= 5;
+    if (player.hasPerk(PerkLib.UnbreakableBind)) damage *= 2;
+	if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
+	if (player.hasPerk(PerkLib.Constrict)) damage *= 2;
+    if (player.hasStatusEffect(StatusEffects.ControlFreak)) damage *= player.statusEffectv1(StatusEffects.ControlFreak);
+	if (player.hasPerk(PerkLib.CrushingCoil)) {
+		var crit:Boolean = false;
+		var critChance:int = 5;
+		var critMulti:Number = 1.75;
+		critChance += combat.combatPhysicalCritical();
+		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
+		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+		if (rand(100) < critChance) {
+			crit = true;
+			damage *= critMulti;
+		}
+	}
+	damage = Math.round(damage);
+    doPhysicalDamage(damage, true, true);
+    //Enemy faints -
+    if (monster.HP <= monster.minHP()) {
+        outputText("\n\nYou can feel [themonster]'s life signs beginning to fade, and before you crush all the life from [monster him], you let go, dropping [monster him] to the floor, unconscious but alive.  In no time, [monster his]'s eyelids begin fluttering, and you've no doubt they'll regain consciousness soon.  ");
+        if (monster.short == "demons")
+            outputText("The others quickly back off, terrified at the idea of what you might do to them.");
+        outputText("\n\n");
+        doNext(endHpVictory);
+        return;
+    }
+    outputText("\n\n");
+    postStrandleExtraActionsCheck();
+}
+
+public function TongueTease():void {
+    clearOutput();
+    if (player.isRaceCached(Races.FROG)) outputText("Taking advantage of this situation you lick [themonster] genitals, smearing mucus all over them. You can taste [monster his] arousal as your biological compound does its nasty work.\n\n");
+    if (player.isRaceCached(Races.CHAMELEON)) outputText("Taking advantage of this situation you lick [themonster] genitals rubbing and playing around with your tip.\n\n");
+    if (monster.lustVuln == 0) {
+        outputText("Your foe clearly does not experience lust in the same way as you.\n\n");
+        enemyAIImpl();
+        return;
+    }
+    //(Otherwise)
+    else {
+        var damage:Number;
+        var chance:Number;
+        //Tags used for bonus damage and chance later on
+        //If auto = true, set up bonuses using above flags
+        //==============================
+        //Determine basic success chance.
+        //==============================
+        chance = 60;
+        //1% chance for each tease level.
+        chance += player.teaseLevel;
+        //10% for seduction perk
+        if (player.hasPerk(PerkLib.Seduction)) chance += 10;
+        //10% for sexy armor types
+        if (player.teaseDmgStat.value > 0) chance += 10;
+        //10% for bimbo shits
+        if (player.hasPerk(PerkLib.BimboBody) || player.hasPerk(PerkLib.BroBody) || player.hasPerk(PerkLib.FutaForm)) {
+            chance += 10;
+        }
+        //2 & 2 for seductive valentines!
+        if (player.hasPerk(PerkLib.SensualLover)) {
+            chance += 2;
+        }
+        if (player.hasPerk(PerkLib.FlawlessBody)) chance += 10;
+        //==============================
+        //Determine basic damage.
+        //==============================
+        damage = combat.teases.teaseBaseLustDamage();
+		if (player.hasPerk(PerkLib.MagicalCharm) && flags[kFLAGS.COMBAT_MAGICAL_CHARM] == 0) damage += combat.scalingBonusIntelligence();
+        chance += 2;
+        //Land the hit!
+        if (rand(100) <= chance) {
+            //NERF TEASE DAMAGE
+            damage *= .9;
+            var damagemultiplier:Number = 1;
+            if (player.hasPerk(PerkLib.RacialParagon)) damage *= RacialParagonAbilityBoost();
+            if (player.hasPerk(PerkLib.UnbreakableBind)) damagemultiplier += 1;
+            if (player.hasStatusEffect(StatusEffects.ControlFreak)) damagemultiplier += (2 - player.statusEffectv1(StatusEffects.ControlFreak));
+            if (player.hasPerk(PerkLib.Sadomasochism)) damage *= player.sadomasochismBoost();
+			if (player.hasPerk(PerkLib.ImpossibleHandTechnique)) damage *= 4;
+            damage *= damagemultiplier;
+            damage = combat.teases.fueledByDesireDamageBonus(damage);
+            //Determine if critical tease!
+            var crit:Boolean = false;
+            var critChance:int = 5;
+            critChance += teases.combatTeaseCritical();
+            if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+            if (rand(100) < critChance) {
+                crit = true;
+                damage *= 1.75;
+                if (monster.lustVuln != 0 && player.hasPerk(PerkLib.SweepDefenses) && !player.enemiesImmuneToLustResistanceDebuff()) monster.lustVuln += 0.05;
+				if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
+            }
+            if (player.hasPerk(PerkLib.KrakenBlackDress)) damage *= 2;
+            monster.teased(Math.round(monster.lustVuln * damage));
+            if (crit) outputText(" <b>Critical!</b>");
+            teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
+        }
+        //Nuttin honey
+        else {
+            teaseXP(1);
+            outputText("[Themonster] seems unimpressed.");
+        }
+        outputText("\n\n");
+        combat.teases.fueledByDesireHeal();
+        monsterDefeatCheck();
+    }
+    postStrandleExtraActionsCheck();
+}
+
+public function TongueLeggoMyEggo():void {
+    clearOutput();
+    outputText("You release [themonster] from your tongue, and [monster he] drops to the ground, catching [monster his] breath before [monster he] stands back up, apparently prepared to fight some more.");
     outputText("\n\n");
     monster.removeStatusEffect(StatusEffects.ConstrictedScylla);
     enemyAIImpl();

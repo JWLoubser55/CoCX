@@ -56,6 +56,7 @@ public class IMutationsLib
 		public static const BlackBloodIM:BlackBloodMutation = new BlackBloodMutation();
 		public static const BlackHeartIM:IMutationPerkType = new BlackHeartMutation();
 		public static const BlazingHeartIM:IMutationPerkType = new BlazingHeartMutation();
+		public static const ChameleonSkinIM:IMutationPerkType = new ChameleonSkinMutation();
 		public static const CatLikeNimblenessIM:IMutationPerkType = new CatLikeNimblenessMutation();
 		public static const CaveWyrmAcidIM:IMutationPerkType = new CaveWyrmAcidMutation();
 		public static const CaveWyrmLungsIM:IMutationPerkType = new CaveWyrmLungsMutation();

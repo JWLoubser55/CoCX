@@ -18,7 +18,10 @@ public class VaginaClass implements IOrifice {
 		EnumValue.add(Types, EQUINE, "EQUINE", {
 			name: "equine"
 		});
-		//dragon	= 2;
+		public static const DRAGON:int          = 2;
+		EnumValue.add(Types, DRAGON, "DRAGON", {
+			name: "dragon"
+		});
 		//cat		= 3;
 		//			= 4;
 		public static const BLACK_SAND_TRAP:int = 5;

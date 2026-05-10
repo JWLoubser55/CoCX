@@ -1073,6 +1073,16 @@ public final class ConsumableLib extends AlchemyLib
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						DEFAULT_ESSENCE_DROP_TABLE(AE_SPIDER)
 				);
+		public const F_MUCUS: Consumable = mk("F.Mucus", "FrogMucus", "a Frog mucus", 6, "The carefully harvested mucus of a frog, bottled up for your convenience.", curry(m.sweetGossamer, 0), ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_FROG)
+				);
+		public const B_MUCUS: Consumable = mk("B.Mucus", "BogMucus", "a Bog mucus", 6, "The carefully harvested mucus of an unknown amphibian, bottled up for your convenience.", curry(m.sweetGossamer, 0), ItemConstants.U_TF)
+				.refineableInto(
+						DEFAULT_SUBSTANCES_DROP_TABLE,
+						DEFAULT_ESSENCE_DROP_TABLE(AE_MOBOGO)
+				);
 		public const SALAMFW: Consumable = mk("SalamFW", "SalamFW", "a hip flask of Salamander Firewater", 6, "This hip flask contain high-proof beverage called 'Salamander Firewater', which one sip can makes your throat feel like it been set on fire.  What whould happen if you drink whole flask content?", m.salamanderfirewater, ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,

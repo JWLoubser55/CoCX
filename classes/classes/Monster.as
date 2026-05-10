@@ -2235,6 +2235,7 @@ import flash.utils.getQualifiedClassName;
 				StatusEffects.Sleep,
 				StatusEffects.InvisibleOrStealth,
 				StatusEffects.Fascinated,
+				StatusEffects.Camouflage,
 			]
 			for each (var effect:StatusEffectType in effects) if (hasStatusEffect(effect)) return true;
 			return false;
@@ -2748,7 +2749,7 @@ import flash.utils.getQualifiedClassName;
 				if (plural) EngineCore.outputText("Your foes are fast asleep.");
 				else EngineCore.outputText("Your foe is fast asleep.");
 			}
-			else if (hasStatusEffect(StatusEffects.InvisibleOrStealth)) {
+			else if (hasStatusEffect(StatusEffects.InvisibleOrStealth) || hasStatusEffect(StatusEffects.Camouflage)) {
 				if (plural) EngineCore.outputText("Your foes are still looking for you, swearing in annoyance.");
 				else EngineCore.outputText("Your foe is still looking for you, swearing in annoyance.");
 			}
@@ -4005,6 +4006,14 @@ import flash.utils.getQualifiedClassName;
 				if(statusEffectv1(StatusEffects.InvisibleOrStealth) <= 0) {
 					outputText("<b>" + capitalA + short + (plural ? " have" : " has") + " found you!</b>\n\n");
 					handleStunEnd(StatusEffects.InvisibleOrStealth);
+				}
+				else outputText("<b>" + capitalA + short + (plural ? " are" : " is") + " looking for you!</b>\n\n");
+			}
+			if(hasStatusEffect(StatusEffects.Camouflage)) {
+				addStatusValue(StatusEffects.Camouflage,1,-1);
+				if(statusEffectv1(StatusEffects.Camouflage) <= 0) {
+					outputText("<b>" + capitalA + short + (plural ? " have" : " has") + " found you!</b>\n\n");
+					handleStunEnd(StatusEffects.Camouflage);
 				}
 				else outputText("<b>" + capitalA + short + (plural ? " are" : " is") + " looking for you!</b>\n\n");
 			}

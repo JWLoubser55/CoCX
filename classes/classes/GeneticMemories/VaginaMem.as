@@ -72,6 +72,17 @@ public class VaginaMem extends BaseContent {
 			}
 		});
 
+		public static const DRAGON:int = _partid++;
+		EnumValue.add(Memories, DRAGON, "DRAGON", {
+			id: "Draconic Vagina",
+			name: "Draconic Vagina",
+			cost: 200,
+			title: "Draconic",
+			transformation: function(vaginaIndex:int): Transformation {
+				return CoC.instance.transformations.VaginaDragon(vaginaIndex);
+			}
+		});
+
 		public static const BLACK_SAND_TRAP:int = _partid++;
 		EnumValue.add(Memories, BLACK_SAND_TRAP, "BLACK_SAND_TRAP", {
 			id: "Black Sand Trap Vagina",

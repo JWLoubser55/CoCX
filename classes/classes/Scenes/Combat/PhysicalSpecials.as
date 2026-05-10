@@ -654,6 +654,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 				} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				favbd(bd, "Terrifying Howl");
 			}
+			if (player.isRaceCached(Races.CHAMELEON)) {
+				bd = buttons.add("Camouflage", camouflage).hint("Alter your skin coloration to camouflage yourself and fade into the background, entering stealth.");
+				if (player.hasStatusEffect(StatusEffects.Camouflage)) bd.disable("You already using camouflage.");
+				favbd(bd, "Camouflage");
+			}
 			if (player.canFly() && !player.hasPerk(PerkLib.ElementalBody)) {
 				bd = buttons.add("Take Flight", takeFlight).hint("Make use of your wings to take flight into the air for up to " + combat.flightDurationNatural() + " turns. \n\nGives bonus to evasion, speed but also giving penalties to accuracy of range attacks or spells. Not to mention for non-spear users to attack in melee range.");
 				if (player.hasStatusEffect(StatusEffects.Tentagrappled) && monster is Barometz) {
@@ -1215,6 +1220,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 				//Grapple
 				if ((player.lowerBody == LowerBody.SCYLLA || player.lowerBody == LowerBody.KRAKEN || player.isRaceCached(Races.MMINDBREAKER) || player.isRaceCached(Races.FMINDBREAKER))) {
 					bd = buttons.add("Grapple", scyllaGrapple).hint("Attempt to grapple a foe with your tentacles.");
+					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Grapple
+				if (player.tongue.type == Tongue.CHAMELEON) {
+					bd = buttons.add("Tongue (Grab)", tongueGrapple).hint("Attempt to grapple a foe with your tongue.");
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 				}
 				//Kick
@@ -1923,6 +1933,15 @@ public class PhysicalSpecials extends BaseCombatContent {
 			monster.createStatusEffect(StatusEffects.Distracted, feintduration, 0, 0, 0);
 		}
 		outputText("\n\n");
+		enemyAI();
+	}
+
+	public function camouflage():void {
+		clearOutput();
+		outputText("You suddenly shift your skin color vanishing in your environment thanks to camouflage.\n\n");
+		var camouflageduration:Number = 4;
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 1) camouflageduration += player.perkv1(IMutationsLib.ChameleonSkinIM);
+		monster.createStatusEffect(StatusEffects.Camouflage, camouflageduration, 0, 0, 0);
 		enemyAI();
 	}
 
@@ -4920,6 +4939,79 @@ public class PhysicalSpecials extends BaseCombatContent {
 		else {
 			//Failure (-10 HPs) -
 			outputText("As you attempt to grapple your target it slips out of your reach delivering a glancing blow to your limbs. ");
+			player.takePhysDamage(5, true);
+			if(Math.round(player.HP) <= Math.round(player.minHP())) {
+				doNext(endHpLoss);
+				return;
+			}
+		}
+		outputText("\n\n");
+		enemyAI();
+	}
+	public function tongueGrapple():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 4;
+		clearOutput();
+		if(player.fatigue + physicalSpecialsCost(10) > player.maxOverFatigue()) {
+			clearOutput();
+			outputText("You just don't have the energy to wrap your tongue so tightly around someone right now...");
+			//Gone		menuLoc = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		if(monster is EncapsulationPod) {
+			clearOutput();
+			outputText("You can't constrict something you're trapped inside of!");
+			//Gone		menuLoc = 1;
+			menu();
+			addButton(0, "Next", combatMenu, false);
+			return;
+		}
+		fatigue(physicalSpecialsCost(10), USEFATG_PHYSICAL);
+		if (combat.checkConcentration()) return; //Amily concentration
+		outputText("You're sticky tongue darts out as you try to grab [monster a] [monster name]. ");
+		//WRAP IT UPPP
+		if((40 + rand(player.spe) > monster.spe) || player.perkv1(IMutationsLib.ScyllaInkGlandsIM) >= 3) {
+			outputText("You hit the target, wrapping your flexible organ around your prey.");
+			monster.createStatusEffect(StatusEffects.ConstrictedTongue, 3 + rand(3), 0, 0, 0);
+			if (player.hasPerk(PerkLib.Constrict)) {
+				var damage:int = monster.maxHP() * (.10 + rand(15) / 100) * 1.5;
+				if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 2) damage += scalingBonusStrength() * 0.5 * (player.perkv1(IMutationsLib.MightyLowerHalfIM) - 1);
+				if (player.isKraken()) {
+					damage *= player.effectiveTallness / 25;
+					damage += player.str;
+				}
+				damage = combat.statusEffectBonusDamage(damage);
+				if (player.hasPerk(PerkLib.VladimirRegalia)) damage *= 2;
+				if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
+				if (monster.plural) damage *= 5;
+				if (player.hasPerk(PerkLib.KrakenBlackDress)) damage *= 2;
+				if (player.hasPerk(PerkLib.UnbreakableBind)) damage *= 2;
+				if (player.hasPerk(PerkLib.ToxicRomance) && monster.monsterIsAcidBurned()) damage *= 1.35;
+				if (player.hasPerk(PerkLib.Constrict)) damage *= 2;
+				if (player.perkv1(IMutationsLib.ScyllaInkGlandsIM) >= 2 && player.isKraken()) damage *= player.perkv1(IMutationsLib.ScyllaInkGlandsIM);
+				if (player.hasStatusEffect(StatusEffects.ControlFreak)) damage *= player.statusEffectv1(StatusEffects.ControlFreak);
+				if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.MightyLowerHalfIM)));
+				if (player.hasPerk(PerkLib.CrushingCoil)) {
+					var crit:Boolean = false;
+					var critChance:int = 5;
+					var critMulti:Number = 1.75;
+					critChance += combat.combatPhysicalCritical();
+					if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
+					if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+					if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+					if (rand(100) < critChance) {
+						crit = true;
+						damage *= critMulti;
+					}
+				}
+				doPhysicalDamage(damage, true, true);
+			}
+		}
+		//Failure
+		else {
+			//Failure (-10 HPs) -
+			outputText("[monster He] twists away and manages to evade your attempt. ");
 			player.takePhysDamage(5, true);
 			if(Math.round(player.HP) <= Math.round(player.minHP())) {
 				doNext(endHpLoss);
@@ -8377,4 +8469,4 @@ public class PhysicalSpecials extends BaseCombatContent {
 	}
 }
 
-}
+}

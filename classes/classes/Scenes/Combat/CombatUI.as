@@ -508,17 +508,20 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 		//PC: is busy with something
 		else if (isPlayerBound()) {
 			mainMenuWhenBound();
-		} else if (isPlayerStunned() || isPlayerPowerStunned() || isPlayerFeared()) {
+		}
+		else if (isPlayerStunned() || isPlayerPowerStunned() || isPlayerFeared()) {
 			customMenu = true;
 			menu();
 			addButton(0, "Recover", combat.wait);
 			if (CombatAbilities.ClearMind.isKnown) CombatAbilities.ClearMind.createButton(monster).applyToSlot(1);
 			addButton(13, "Surrender(H)", combat.surrenderByHP).hint("Stop defending up to the point enemy would beat you down to minimal HP.");
 			addButton(14, "Surrender(L)", combat.surrenderByLust).hint("Fantasize about your opponent in a sexual way so much it would fill up your lust you'll end up getting raped.");
-		} else if (player.hasStatusEffect(StatusEffects.ChanneledAttack)) {
+		}
+		else if (player.hasStatusEffect(StatusEffects.ChanneledAttack)) {
 			customMenu = true;
 			mainMenuWhenChanneling();
-		} else if (player.hasStatusEffect(StatusEffects.KnockedBack)) {
+		}
+		else if (player.hasStatusEffect(StatusEffects.KnockedBack)) {
 			if (player.ammo <= 0 && (player.weaponRangeName == "flintlock pistol" || player.weaponRangeName == "blunderbuss rifle")){
 				btnMelee.show("Reload&Approach", combat.approachAfterKnockback1, "Reload your range weapon while approaching.", "Reload and Approach").icon("A_Melee");
 			} else if (player.ammo > 0 && (player.weaponRangeName == "flintlock pistol" || player.weaponRangeName == "blunderbuss rifle")) {
@@ -527,7 +530,6 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 				btnMelee.show("Approach", combat.approachAfterKnockback3, "Close some distance between you and your opponent.").icon("A_Melee");
 			}
 		}
-		//HYPNOSIS
 		else if (monster.hasStatusEffect(StatusEffects.HypnosisNaga) && !monster.hasStatusEffect(StatusEffects.Constricted)) {
 			customMenu = true;
 			menu();
@@ -548,7 +550,6 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			vampireBiteDuringGrappleBreakHypnosis(3);
 			addButton(4, "Maintain", combat.HypnosisMaintain);
 		}
-		//Naga grapple
 		else if (monster.hasStatusEffect(StatusEffects.Constricted) && !monster.hasStatusEffect(StatusEffects.HypnosisNaga)) {
 			customMenu = true;
 			menu();
@@ -556,14 +557,14 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			addButton(1, "Tease", SceneLib.desert.nagaScene.nagaTease);
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", SceneLib.desert.nagaScene.nagaLeggoMyEggo);
-		} else if (monster.hasStatusEffect(StatusEffects.CancerGrab)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.CancerGrab)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Guillotine", combat.Guillotine).hint("Crush your foe with your pincer and attempt to break it apart! \n\nFatigue Cost: " + physicalCost(20) + "");
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", combat.CrabLeggoMyEggo);
 		}
-		//Grappling scylla
 		else if (monster.hasStatusEffect(StatusEffects.ConstrictedScylla)) {
 			customMenu = true;
 			menu();
@@ -573,17 +574,26 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			} else {
 				button(0).hint("Squeeze your foe with your tentacle attempting to break it apart! \n\nFatigue Cost: " + physicalCost(20) + "");
 			}
-			addButton(1, "Tease", combat.ScyllaTease).hint("Use a free limb to caress and pleasure your grappled foe. \n\nFatigue Cost: " + physicalCost(20) + "");
+			addButton(1, "Tease", combat.ScyllaTease).hint("Use a free limb to caress and pleasure your grappled foe.");
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", combat.ScyllaLeggoMyEggo);
-		} else if (monster.hasStatusEffect(StatusEffects.ConstrictedWhip)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.ConstrictedTongue)) {
+			customMenu = true;
+			menu();
+			addButton(0, "Constrict", combat.TongueSqueeze).hint("Constrict your opponent with your wrapping. \n\nFatigue Cost: " + physicalCost(30) + "");
+			addButton(1, "Tease", combat.TongueTease).hint("Use your tongue to caress and pleasure your grappled foe.");
+			addButton(2, "Straddle", combat.Straddle, "Go to town on your opponent with devastating teases.");
+			vampireBiteDuringGrapple(3);
+			addButton(4, "Release", combat.TongueLeggoMyEggo);
+		}
+		else if (monster.hasStatusEffect(StatusEffects.ConstrictedWhip)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Strangulate", combat.WhipStrangulate);
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", combat.WhipLeggoMyEggo);
 		}
-		//Orca be playing rought
 		else if (monster.hasStatusEffect(StatusEffects.OrcaPlay)) {
 			customMenu = true;
 			menu();
@@ -595,32 +605,38 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			}
 			addButton(3, "Impale", combat.OrcaImpale).hint("End the game by viciously impaling your falling foe on your weapon. \n\nFatigue Cost: " + physicalCost(20) + "");
 			addButton(4, "Release", combat.OrcaLeggoMyEggo).hint("Stop playing early and let your prey fall to the ground.");
-		} else if (monster.hasStatusEffect(StatusEffects.Straddle)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.Straddle)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Tease", combat.StraddleTease).hint("Use a powerful teasing attack");
 			vampireBiteDuringGrappleBreakHypnosis(3);
 			addButton(4, "Release", combat.straddleLeggoMyEggo).hint("Release your opponent.");
-		} else if (monster.hasStatusEffect(StatusEffects.ManticorePlug)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.ManticorePlug)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Feed", combat.ManticoreFeed).hint("Milk your victim's cock with your powerful tail!");
-		} else if (monster.hasStatusEffect(StatusEffects.DisplacerPlug)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.DisplacerPlug)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Feed", combat.displacerFeedContinue).hint("Milk your victim's breast with your tentacles!");
-		} else if (monster.hasStatusEffect(StatusEffects.SlimeInsert)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.SlimeInsert)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Rape", combat.SlimeRapeFeed).hint("Violate your opponent from the inside!");
 			addButton(4, "Release", combat.SlimeRapeStop).hint("Release your opponent.");
-		} else if (monster.hasStatusEffect(StatusEffects.Swallowed)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.Swallowed)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Tease", combat.SwallowTease).hint("Use a powerful teasing attack").icon("A_Tease");
 			if (monster.lustVuln != 0 && player.hasPerk(PerkLib.Straddle) && monster.hasStatusEffect(StatusEffects.Stunned)) addButton(1, "Straddle", combat.Straddle).hint("Change position and initiate a straddling stance").icon("A_Tease");
 			addButton(4, "Release", combat.SwallowLeggoMyEggo).hint("Release your opponent.");
-		} else if (monster.hasStatusEffect(StatusEffects.Dig)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.Dig)) {
 			customMenu = true;
 			menu();
 			if (monster.statusEffectv1(StatusEffects.Dig) > 0){
@@ -643,8 +659,9 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			}
 			addButton(2, "Dig out", combat.DigOut).hint("Dig back out out of the ground.");
 			addButton(14, "Escape", combat.runAway).hint("Escape away from the battle through underground tunneling.");
+		}
 		//Singing
-		} else if (player.hasStatusEffect(StatusEffects.Sing)) {
+		else if (player.hasStatusEffect(StatusEffects.Sing)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Arouse", combat.SingArouse).hint("Arouse your opponent with lustful music.");
@@ -670,12 +687,14 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			menu();
 			addButton(0, "Tease", combat.GooTease).hint("Toy with your opponent");
 			addButton(4, "Release", combat.GooLeggoMyEggo).hint("Release your opponent.");
-		} else if (monster.hasStatusEffect(StatusEffects.EmbraceVampire)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.EmbraceVampire)) {
 			customMenu = true;
 			menu();
 			vampireBiteDuringGrappleV(0);
 			addButton(4, "Release", combat.VampireLeggoMyEggo);
-		} else if (monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
 			customMenu = true;
 			menu();
 			vampireBiteDuringGrappleV(0);
@@ -693,7 +712,8 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			if (player.hasStatusEffect(StatusEffects.OniRampage) || player.wrath > player.maxSafeWrathSpellcasting()) {
 				btnMagic.disable("You are too angry to think straight. Smash your puny opponents first and think later.\n\n").icon("A_Magic")
 			} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic")
-		} else if (monster.hasStatusEffect(StatusEffects.MysticWeb) || monster.hasStatusEffect(StatusEffects.BloodWeb)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.MysticWeb) || monster.hasStatusEffect(StatusEffects.BloodWeb)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Tease", combat.WebTease).hint("Toy with your opponent");
@@ -711,7 +731,8 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			if (player.hasStatusEffect(StatusEffects.OniRampage) || player.wrath > player.maxSafeWrathSpellcasting()) {
 				btnMagic.disable("You are too angry to think straight. Smash your puny opponents first and think later.\n\n").icon("A_Magic")
 			} else if (!combat.canUseMagic()) btnMagic.disable().icon("A_Magic")
-		} else if (monster.hasStatusEffect(StatusEffects.Pounce)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.Pounce)) {
 			customMenu = true;
 			menu();
 			if (player.arms.type == Arms.DISPLACER) addButton(0, "Ravage", combat.clawsRend).hint("Rend your enemy using your four sets of claws. \n\nFatigue Cost: " + physicalCost(20) + "");
@@ -726,13 +747,15 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			}
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", combat.PussyLeggoMyEggo);
-		} else if (monster.hasStatusEffect(StatusEffects.GrabBear)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.GrabBear)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Hug", combat.bearHug).hint("Crush your opponent with a bear hug. \n\nFatigue Cost: " + physicalCost(30) + "");
 			vampireBiteDuringGrapple(3);
 			addButton(4, "Release", combat.BearLeggoMyEggo);
-		} else if (monster.hasStatusEffect(StatusEffects.MummyBandage)) {
+		}
+		else if (monster.hasStatusEffect(StatusEffects.MummyBandage)) {
 			customMenu = true;
 			menu();
 			addButton(0, "Constrict", combat.mummyConstrict).hint("Constrict your opponent with your wrapping. \n\nFatigue Cost: " + physicalCost(30) + "");
@@ -764,7 +787,8 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 				meleeAtkKiha += (1 + (int)(meleeAtkKiha / 5)) * player.newGamePlusMod();
 				player.createStatusEffect(StatusEffects.CombatFollowerKiha, strKiha, meleeAtkKiha, 0, 0);
 				flags[nextCompanion] = "Kiha";
-			} else {
+			}
+			else {
 				outputText("As you call out, you can feel the heat rising around you. Kiha breathes fire with each exhale, and you can see steam rising from her body. Your dragon-wife is FURIOUS, and you almost feel a little sorry for your foe as Kiha flaps her wings, her axe a blur of motion. You mentally recoil from your ring, as Kiha’s red-hot fury spreads up your arm.[pg]");
 				outputText("<b>Kiha’s attacks have grown frenzied.</b> [pg]");
 				player.removeStatusEffect(StatusEffects.CallOutKiha);

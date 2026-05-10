@@ -39,12 +39,17 @@ public class FrogRace extends Race {
     
     public override function setup():void {
         addScores()
+				.tongueType(Tongue.CHAMELEON, +1)
+				.hornType(Horns.DRACONIC_X2, +1)
+				.hornType(Horns.DRACONIC_X4_12_INCH_LONG, +2)
                 .eyeColor(ANY(FrogEyesColors), +1)
 				.skinColor1(ANY(FrogSkinColors), +1)
 				.plainSkinOfAdj(NOT("slippery"), +1)
 				.noTail(+1)
                 .noWings(+1)
+				.wingType(ANY(Wings.DRACONIC_SMALL, Wings.DRACONIC_LARGE, Wings.DRACONIC_HUGE), +4)
 				.height(GREATER_THAN(120), +1)
+				.hasPerk(PerkLib.Dracoforce, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 
         addMutation(IMutationsLib.DrakeHeartIM);
@@ -64,10 +69,22 @@ public class FrogRace extends Race {
 
         buildTier(15, "swamp dragon")
 				.namesMaleFemale("swamp dragon boy", "swamp dragon girl")
+				.requireWingType(ANY(Wings.DRACONIC_SMALL, Wings.DRACONIC_LARGE, Wings.DRACONIC_HUGE))
                 .buffs({
                         "str.mult": +1.00,
                         "tou.mult": +0.75,
                         "wis.mult": +0.50
+                    })
+                .end();
+
+        buildTier(33, "mobogo")
+				.namesMaleFemale("mobogo boy", "mobogo girl")
+				.requirePreviousTier()
+                .buffs({
+                        "str.mult": +2.00,
+                        "tou.mult": +1.50,
+                        "spe.mult": +0.75,
+                        "wis.mult": +0.70
                     })
                 .end();
     }

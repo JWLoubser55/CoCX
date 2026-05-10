@@ -112,7 +112,7 @@ public class Tongue extends BodyPart{
 	public static const CHAMELEON: int = 19;
 	EnumValue.add(Types, CHAMELEON, "CHAMELEON", {
 		name:"chameleon",
-		appearanceDesc: "Director Lia laugh at you for beliving she care to write desc for this tongue type."
+	appearanceDesc: "Your tongue can dart up to 15 feet away like that of some giant amphibian to catch insects mid flight. It is both powerful and sticky ensuring your catch does not escape easily."
 	});
 
 	public function Tongue(creature:Creature) {

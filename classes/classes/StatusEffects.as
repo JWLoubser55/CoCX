@@ -875,6 +875,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const ConfusionM:StatusEffectType             = mk("ConfusionM");
 		public static const Constricted:StatusEffectType        	= mk("Constricted");
 		public static const ConstrictedScylla:StatusEffectType  	= mk("Constricted Scylla");
+		public static const ConstrictedTongue:StatusEffectType  	= mk("Constricted Tongue");
 		public static const ConstrictedWhip:StatusEffectType  		= mk("Constricted Whip");
 		public static const CoonWhip:StatusEffectType           	= mk("Coon Whip");
 		public static const Counter:StatusEffectType            	= mk("Counter");
@@ -1039,6 +1040,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const Bound:StatusEffectType                     = mkCombat("Bound");
 		public static const Briarthorn:StatusEffectType       	       = mkCombat("Briarthorn");
 		public static const BurnDoT:StatusEffectType                   = mkCombat("Burn DoT");
+		public static const Camouflage:StatusEffectType                = mkCombat("Camouflage");
 		public static const CancerMonsterGrab:StatusEffectType         = mkCombat("Cancer Grappled");
 		public static const CalledShot:StatusEffectType                = CalledShotDebuff.TYPE;
 		public static const CastedSpell:StatusEffectType               = mkCombat("Casted Spell");
@@ -1571,4 +1573,4 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 	}
 
-}
+}

@@ -7,6 +7,7 @@ import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
 import classes.lists.Gender;
+import classes.VaginaClass;
 
 /**
  * Tier 1: dragon
@@ -71,8 +72,7 @@ public class DragonRace extends Race {
 				.hornType(Horns.DRACONIC_X2, +1)
 				.hornType(Horns.DRACONIC_X4_12_INCH_LONG, +2)
 				.hornType(NONE(Horns.FROSTWYRM, Horns.GOAT, Horns.GOATQUAD), 0, -3)
-				.hasCockOfType(CockTypesEnum.DRAGON, +1)
-				.gender(Gender.GENDER_FEMALE, +1)
+				.cockOrVaginaOfType(CockTypesEnum.DRAGON, VaginaClass.DRAGON, +2)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		addScoresAfter(8)
 				.height(GREATER_THAN(120), +1)
