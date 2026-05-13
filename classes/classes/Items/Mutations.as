@@ -7625,8 +7625,11 @@ public final class Mutations extends MutationsHelper {
         //-Lizard-like face.
         if (player.faceType != Face.LIZARD && player.faceType != Face.ANIMAL_TOOTHS && player.isScaleCovered() && player.lowerBody == LowerBody.LIZARD && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
-            if (rand(2) == 0) transformations.FaceLizard.applyEffect();
-			else transformations.FaceAnimalTeeth.applyEffect();
+			if (rand(3) == 0) transformations.EarsChameleon.applyEffect();
+			else {
+				if (rand(2) == 0) transformations.FaceLizard.applyEffect();
+				else transformations.FaceAnimalTeeth.applyEffect();
+			}
             changes++;
         }
 		//Tongue
@@ -8756,9 +8759,10 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //DAH BUNBUN EARZ - requires poofbutt!
-        if (player.ears.type != Ears.BUNNY && changes < changeLimit && rand(3) == 0 && player.tailType == Tail.RABBIT) {
+        if (player.ears.type != Ears.BUNNY && player.ears.type != Ears.BUNNY_2 && changes < changeLimit && rand(3) == 0 && player.tailType == Tail.RABBIT) {
             outputText("[pg]");
-            transformations.EarsBunny.applyEffect();
+            if (rand(2) == 0) transformations.EarsBunny.applyEffect();
+			else transformations.EarsBunnyFloppy.applyEffect();
             changes++;
         }
         //DAH BUNBUNTAILZ

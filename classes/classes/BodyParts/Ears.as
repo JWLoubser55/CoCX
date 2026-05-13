@@ -319,6 +319,18 @@ public class Ears extends BodyPart {
 		appearanceDesc: "Your ears look similar to those of a sheep, minus the fur being moss instead. They flap from time to time in response to sounds.",
 		fur: true
 	});
+	public static const CHAMELEON: int = 53;
+	EnumValue.add(Types, CHAMELEON, "CHAMELEON", {
+		name: "chameleon",
+		appearanceDesc: "A pair of floppy scaly ears which drag all the way down to your chest sprouted from the side of your head. Their underside is [skin color2] while the top is [skin color1].",
+		fur: true
+	});
+	public static const BUNNY_2: int = 54;
+	EnumValue.add(Types, BUNNY_2, "BUNNY_2", {
+		name: "floppy bunny",
+		appearanceDesc: "A pair of floppy rabbit ears stick up from the top of your head, drooping to the side and swinging around as you walk.",
+		fur: true
+	});
 	
 	public static const HoleEars:/*String*/Array = [LIZARD, DRAGON, ORCA2, AVIAN, INSECT];
 	

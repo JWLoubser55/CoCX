@@ -425,6 +425,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const EarsAutomataBunny: Transformation 		= ears.EarsAutomataBunny.registerTf(AS_EARS, AE_AUTOMATA);
 	public const EarsBarometz: Transformation 			= ears.EarsBarometz.registerTf(AS_EARS, AE_BAROMETZ);
 	public const EarsRhino: Transformation 				= ears.EarsRhino.registerTf(AS_EARS, AE_RHINO);
+	public const EarsChameleon: Transformation			= ears.EarsChameleon.registerTf(AS_EARS, AE_CHAMELEON);
+	public const EarsBunnyFloppy: Transformation 		= ears.EarsBunnyFloppy.registerTf(AS_EARS, AE_BUNNY);
 
 
 //EYES
@@ -1344,4 +1346,4 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 		trace("\n"+dump.join("\n"));
 	}
 }
-}
+}

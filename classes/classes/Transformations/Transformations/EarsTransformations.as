@@ -930,6 +930,40 @@ public class EarsTransformations extends MutationsHelper {
 				return player.ears.type === Ears.RHINO;
 			}
 	);
+
+	public const EarsChameleon: Transformation = new SimpleTransformation("Chameleon Ears",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Your ears suddenly begin to lengthen, growing bigger and bigger until their length reaches your shoulders. When you examine them you discover they have grown into a pair of large floppy scale covered ears, easily twice as big as your head. <b>You now have a pair of cute floppy lizan ears.</b>";
+
+				player.ears.type = Ears.CHAMELEON;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EarsMem.getMemory(EarsMem.CHAMELEON));
+			},
+			// is present
+			function (): Boolean {
+				return player.ears.type === Ears.CHAMELEON;
+			}
+	);
+
+	public const EarsBunnyFloppy: Transformation = new SimpleTransformation("Floppy Bunny Ears",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Your ears twitch and curl in on themselves, sliding around on the flesh of your head. They grow warmer and warmer before they finally settle on the top of your head and unfurl into long, fluffy bunny-ears. They are a little too long and thick in fact which causes them to curl and fall to the side of your head atop your hair. <b>You now have a pair of floppy bunny ears.</b>";
+
+				player.ears.type = Ears.BUNNY_2;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(EarsMem.getMemory(EarsMem.BUNNY_2));
+			},
+			// is present
+			function (): Boolean {
+				return player.ears.type === Ears.BUNNY_2;
+			}
+	);
 	/*
   */
 }

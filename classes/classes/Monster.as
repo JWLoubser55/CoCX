@@ -4011,7 +4011,7 @@ import flash.utils.getQualifiedClassName;
 			}
 			if(hasStatusEffect(StatusEffects.Camouflage)) {
 				addStatusValue(StatusEffects.Camouflage,1,-1);
-				if(statusEffectv1(StatusEffects.Camouflage) <= 0) {
+				if(statusEffectv1(StatusEffects.Camouflage) <= 0 || (rand(inte + wis + level) > rand(player.spe + player.level))) {
 					outputText("<b>" + capitalA + short + (plural ? " have" : " has") + " found you!</b>\n\n");
 					handleStunEnd(StatusEffects.Camouflage);
 				}

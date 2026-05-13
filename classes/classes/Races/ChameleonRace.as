@@ -41,7 +41,7 @@ public class ChameleonRace extends Race {
                 .armType(Arms.LIZARD, +2)
 				.legType(LowerBody.LIZARD, +2)
 				.tailType(Tail.CHAMELEON, +2)
-				.earType(ANY(Ears.ELFIN, Ears.LIZARD), +1)//, Ears.ORCA
+				.earType(ANY(Ears.ELFIN, Ears.LIZARD, Ears.CHAMELEON), +1)
 				.faceType(ANY(Face.ANIMAL_TOOTHS, Face.LIZARD), +1)
 				.tongueType(Tongue.CHAMELEON, +1)
 				.eyeType(Eyes.LIZARD, +1)

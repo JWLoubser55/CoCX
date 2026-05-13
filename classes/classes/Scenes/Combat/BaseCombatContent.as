@@ -78,8 +78,8 @@ public class BaseCombatContent extends BaseContent {
 	protected function doEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doEarthDamage(damage, apply, display, ignoreDR);
 	}
-	protected function doAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doAcidDamage(damage, apply, display, ignoreDR);
+	protected function doAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {//, subtype:Number
+		return combat.doAcidDamage(damage, apply, display, ignoreDR);//, subtype
 	}
 	protected function doPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlasmaDamage(damage, apply, display, ignoreDR);
@@ -122,6 +122,15 @@ public class BaseCombatContent extends BaseContent {
 	}
 	protected function doMinionEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMinionEarthDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAcidDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraAcidDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTAcidDamage(damage, apply, display, ignoreDR);
 	}
 	protected function doMinionAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMinionAcidDamage(damage, apply, display, ignoreDR);

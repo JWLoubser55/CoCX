@@ -41,6 +41,7 @@ public class SlothienRace extends Race {
         addScores()
                 .eyeType(Eyes.SLOTHIEN, +1)
 				.eyeColor(ANY(SlothienEyesColors), +1)
+				.earType(Ears.INSECT, +1)
 				.legType(LowerBody.SLOTHIEN, +3)
 				.skinCoatType(Skin.CHITIN, +1)
 				.skinCoverage(ANY(Skin.COVERAGE_HIGH, Skin.COVERAGE_COMPLETE), +1)

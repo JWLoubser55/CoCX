@@ -10927,6 +10927,12 @@ public class Combat extends BaseContent {
 	}
 
     //DEAL DAMAGE
+    public function doPlayerTrueDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
+        return doTrueDamage(damage, apply, display);//0
+    }
+    public function doPlayerAuraTrueDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
+        return doTrueDamage(damage, apply, display);//1
+    }
     public function doTrueDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
 		if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1) damage *= doDamageAscensionModifer();
@@ -11008,7 +11014,13 @@ public class Combat extends BaseContent {
         return damage;
     }
 	
-	public function doPsychicDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
+	public function doPlayerPsychicDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
+        return doPsychicDamage(damage, apply, display);//0
+    }
+    public function doPlayerAuraPsychicDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
+        return doPsychicDamage(damage, apply, display);//1
+    }
+    public function doPsychicDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
 		MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
 		if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1) damage *= doDamageAscensionModifer();
         if (damage < 1) damage = 1;
@@ -11078,6 +11090,12 @@ public class Combat extends BaseContent {
         return damage;
 	}
 
+    public function doPlayerDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doDamage(damage, apply, display, ignoreDR);//0
+    }
+    public function doPlayerAuraDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doDamage(damage, apply, display, ignoreDR);//1
+    }
     public function doDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         if (!ignoreDR && !tinkerDeconstruct() && !(player.hasKeyItem("Caustic Goonade") >= 0 && monster.hasStatusEffect(StatusEffects.Grounded))) damage *= (monster.damagePercent() / 100);
@@ -11182,6 +11200,15 @@ public class Combat extends BaseContent {
         return damage;
     }
 
+	public function doPlayerPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doMagicDamage(damage, apply, display, ignoreDR);//0
+    }
+    public function doPlayerAuraPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doMagicDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doDamage(damage, apply, display, ignoreDR);//3
+    }
 	public function doPhysicalDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 1 && monster.monsterIsBleeding()) {
 			var ddd:Number = 1.1;
@@ -11228,11 +11255,7 @@ public class Combat extends BaseContent {
 		return doDamage(damage, apply, display, ignoreDR);
     }
 
-    public function doMinionPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doDamage(damage, apply, display, ignoreDR);
-    }
-	
-	public function doDamageAscensionModifer():Number {
+    public function doDamageAscensionModifer():Number {
 		var dDAM:Number = 1;
 		if (monster.hasPerk(PerkLib.EnemyForBeginnersType)) {
 			if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 12) dDAM *= (1 / 13);
@@ -11254,7 +11277,16 @@ public class Combat extends BaseContent {
 		return dDAM;
 	}
 
-    public function doMagicDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlayerMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doMagicDamage(damage, apply, display, ignoreDR);//0
+    }
+    public function doPlayerAuraMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doMagicDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doMagicDamage(damage, apply, display, ignoreDR);//3
+    }
+    public function doMagicDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {//, subtype:Number
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1) damage *= doDamageAscensionModifer();
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -11350,10 +11382,6 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doMagicDamage(damage, apply, display, ignoreDR);
-    }
-
     private function doElementalDamageMultiplier(damage:Number):Number {
 		if (flags[kFLAGS.NEW_GAME_PLUS_LEVEL] >= 1) damage *= doDamageAscensionModifer();
         if (damage < 1) damage = 1;
@@ -11398,6 +11426,15 @@ public class Combat extends BaseContent {
         return damage;
     }
 
+    public function doPlayerFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doMagicDamage(damage, apply, display, ignoreDR);//0
+    }
+    public function doPlayerAuraFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doMagicDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doFireDamage(damage, apply, display, ignoreDR);//3
+    }
     public function doFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11484,8 +11521,14 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doFireDamage(damage, apply, display, ignoreDR);
+    public function doPlayerIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doIceDamage(damage, apply, display, ignoreDR);//0
+    }
+    public function doPlayerAuraIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doIceDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doIceDamage(damage, apply, display, ignoreDR);//3
     }
 
     public function doIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
@@ -11560,10 +11603,15 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doIceDamage(damage, apply, display, ignoreDR);
+    public function doPlayerLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doLightningDamage(damage, apply, display, ignoreDR);//0
     }
-
+    public function doPlayerAuraLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doLightningDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doLightningDamage(damage, apply, display, ignoreDR);//3
+    }
     public function doLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11636,11 +11684,16 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doLightningDamage(damage, apply, display, ignoreDR);
+    public function doPlayerDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doDarknessDamage(damage, apply, display, ignoreDR);//0
     }
-
-    public function doDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlayerAuraDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doDarknessDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doDarknessDamage(damage, apply, display, ignoreDR);//3
+    }
+	public function doDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -11705,11 +11758,16 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doDarknessDamage(damage, apply, display, ignoreDR);
+    public function doPlayerPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doPoisonDamage(damage, apply, display, ignoreDR);//0
     }
-
-    public function doPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlayerAuraPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doPoisonDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doPoisonDamage(damage, apply, display, ignoreDR);//3
+    }
+	public function doPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -11768,11 +11826,16 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doPoisonDamage(damage, apply, display, ignoreDR);
+    public function doPlayerWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doWindDamage(damage, apply, display, ignoreDR);//0
     }
-
-    public function doWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlayerAuraWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doWindDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doWindDamage(damage, apply, display, ignoreDR);//3
+    }
+	public function doWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -11831,11 +11894,16 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWindDamage(damage, apply, display, ignoreDR);
+    public function doPlayerWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doWaterDamage(damage, apply, display, ignoreDR);//0
     }
-
-    public function doWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlayerAuraWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doWaterDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doWaterDamage(damage, apply, display, ignoreDR);//3
+    }
+	public function doWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -11894,11 +11962,16 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWaterDamage(damage, apply, display, ignoreDR);
+    public function doPlayerEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doEarthDamage(damage, apply, display, ignoreDR);//0
     }
-
-    public function doEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlayerAuraEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doEarthDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doMinionEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doEarthDamage(damage, apply, display, ignoreDR);//3
+    }
+	public function doEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -11957,11 +12030,19 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doEarthDamage(damage, apply, display, ignoreDR);
+    public function doPlayerAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doAcidDamage(damage, apply, display, ignoreDR);//0
     }
-
-    public function doAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlayerAuraAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doAcidDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doPlayerDoTAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doAcidDamage(damage, apply, display, ignoreDR);//2
+    }
+    public function doMinionAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doAcidDamage(damage, apply, display, ignoreDR);//3
+    }
+	public function doAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -12021,11 +12102,13 @@ public class Combat extends BaseContent {
         return damage;
     }
 
-    public function doMinionAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doAcidDamage(damage, apply, display, ignoreDR);
+    public function doPlayerPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doPlasmaDamage(damage, apply, display, ignoreDR);//0
     }
-	
-	public function doPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlayerAuraPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doPlasmaDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		var split:Number = (damage * 0.5);
 		var fdamage:Number = Math.round(split * fireDamageBoostedByDao());
 		var ldamage:Number = Math.round(split * lightningDamageBoostedByDao());
@@ -12034,7 +12117,13 @@ public class Combat extends BaseContent {
 		return split;
 	}
 	
-	public function doBlackIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+	public function doPlayerBlackIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doBlackIceDamage(damage, apply, display, ignoreDR);//0
+    }
+    public function doPlayerAuraBlackIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+        return doBlackIceDamage(damage, apply, display, ignoreDR);//1
+    }
+    public function doBlackIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		var split:Number = (damage * 0.5);
 		var idamage:Number = Math.round(split * iceDamageBoostedByDao());
 		var ddamage:Number = Math.round(split * darknessDamageBoostedByDao());

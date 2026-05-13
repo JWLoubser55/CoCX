@@ -42,7 +42,7 @@ public class EasterBunnyRace extends Race {
 		
 		addScores()
 				.faceType(ANY(Face.BUNNY,Face.BUCKTEETH), +1)
-				.earType(Ears.BUNNY, +1, -10)
+				.earType(ANY(Ears.BUNNY, Ears.BUNNY_2), +1, -10)
 				.legType(LowerBody.BUNNY, +1)
 				.skinCoatType(Skin.FUR, +1)
 				.tailType(Tail.RABBIT, +1)

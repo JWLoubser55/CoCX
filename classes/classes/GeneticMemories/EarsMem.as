@@ -581,6 +581,28 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const CHAMELEON:int = _partid++;
+		EnumValue.add(Memories, CHAMELEON, "CHAMELEON", {
+			id: "Chameleon Ears",
+			name: "Chameleon Ears",
+			cost: 100,
+			title: "Chameleon",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EarsChameleon;
+			}
+		});
+
+		public static const BUNNY_2:int = _partid++;
+		EnumValue.add(Memories, BUNNY_2, "BUNNY_2", {
+			id: "Floppy Bunny Ears",
+			name: "Floppy Bunny Ears",
+			cost: 100,
+			title: "Floppy Bunny",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.EarsBunnyFloppy;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

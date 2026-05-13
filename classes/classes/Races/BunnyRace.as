@@ -41,7 +41,7 @@ public class BunnyRace extends Race {
 	public override function setup():void {
 		addScores()
 				.faceType(ANY(Face.BUNNY, Face.BUCKTEETH), +1)
-				.earType(Ears.BUNNY, +1, -10)
+				.earType(ANY(Ears.BUNNY, Ears.BUNNY_2), +1, -10)
 				.eyeType(Eyes.HUMAN, +1)
 				.armType(Arms.HUMAN, +1)
 				.legType(LowerBody.BUNNY, +1)
