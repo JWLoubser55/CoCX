@@ -548,7 +548,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			lustDmg = Math.round(monster.lustVuln * lustDmg);
 			monster.teased(lustDmg);
 			outputText(" ");
-			doFireDamage(damageFF, true, true);
+			doMinionFireDamage(damageFF, true, true);
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			outputText("\n\n");
 		}
@@ -639,7 +639,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			damage1 += scalingBonusIntelligenceCompanion() * 4;
 			damage1 = Math.round(damage1 * increasedEfficiencyOfAttacks());
 			outputText("Alvina incants a spell and freezes the enemy solid, now's your chance! ");
-			doIceDamage(damage1, true, true);
+			doMinionIceDamage(damage1, true, true);
 			if (!monster.hasPerk(PerkLib.Resolute)) {
 				monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 			} else {
@@ -679,7 +679,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			damage2 = Math.round(damage2 * increasedEfficiencyOfAttacks());
 			if (monster.plural) damage2 *= 5;
 			outputText("Alvina sighs in annoyance and tosses a fireball which explodes on impact, setting "+(monster.plural ? "all ":"")+"the enem"+(monster.plural ? "ies ":"y")+" on fire!\n\n");
-			doFireDamage(damage2);
+			doMinionFireDamage(damage2);
 			if (!monster.hasPerk(PerkLib.Resolute)) {
 				monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 			} else {
@@ -694,7 +694,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			outputText("\"<i>[name] I am seriously going to fall asleep at this rate so if you would let me handle this...</i>\"\n\n");
 			outputText("Without any warning she opens both hands, her scythe floating by her side as she gets to work, tracing a pattern in the air as the very reality in front of you collapses! You watch in horror and awe as a swirling hole of empty blackness pulls your opponent into what looks to be a null space between dimensions. ");
 			outputText(monster.capitalA + monster.short + " reappears a few seconds later with gashes and wounds all over as the black hole, for what else could it be, collapses on itself and explodes in a deflagration of black magic so strong you are pushed back a few meters. ");
-			doMagicDamage(dmg, true, true);
+			doMinionMagDamage(dmg, true, true);
 			outputText("\n\n");
 		}
 		
@@ -748,7 +748,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function mitziCombatActions2():void {
 			outputText("Lildea pulls out a bubbling vial of a green liquid then tosses at [themonster]. The vial shatters on contact, causing the contents to spill onto [monster him]. ");
 			if (!monster.hasPerk(PerkLib.EnemyConstructType) || !monster.hasPerk(PerkLib.EnemyGhostType)) {
-				doPoisonDamage((((player.statusEffectv2(StatusEffects.CombatFollowerMitzi)/4)+20)*increasedEfficiencyOfAttacks()), true, true);
+				doMinionPoisonDamage((((player.statusEffectv2(StatusEffects.CombatFollowerMitzi)/4)+20)*increasedEfficiencyOfAttacks()), true, true);
 				outputText("\n\n");
 				if (monster.hasStatusEffect(StatusEffects.PoisonDoTH)) monster.addStatusValue(StatusEffects.PoisonDoTH, 1, 1);
 				else monster.createStatusEffect(StatusEffects.PoisonDoTH, 4, 0.02, 0, 0);
@@ -922,7 +922,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			doDamage(dmg6, true, true);
 			outputText(" ");
 			if (!monster.hasPerk(PerkLib.EnemyConstructType) || !monster.hasPerk(PerkLib.EnemyGhostType)) {
-				doPoisonDamage(((player.statusEffectv2(StatusEffects.CombatFollowerAmily)/4)+20), true, true);
+				doMinionPoisonDamage(((player.statusEffectv2(StatusEffects.CombatFollowerAmily)/4)+20), true, true);
 				outputText("\n\n");
 				if (!monster.isImmuneToBleed()) {
 				  if (monster.hasStatusEffect(StatusEffects.Hemorrhage2)) monster.addStatusValue(StatusEffects.Hemorrhage2, 1, 1);
@@ -1178,7 +1178,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			}
 			else monster.createStatusEffect(StatusEffects.AcidDoT,4,0.02,1,0);
 			outputText("Tyrantia turns her body around, spraying her acidic goop at the enemy. ");
-			doAcidDamage(dmg16, true, true);
+			doMinionAcidDamage(dmg16, true, true);
 			outputText("\n\n");
 		}
 		public function tyrantiaCombatActions4():void {
@@ -1255,7 +1255,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			if (player.hasStatusEffect(StatusEffects.FrenziedKiha))
 				dmg18 *= 1+ player.statusEffectv1(StatusEffects.FrenziedKiha)*0.2;
 			outputText("Kiha throws her trusty weapon into the sodden ground, building up balls of flame around her fists.  She runs towards [themonster], launching herself into action with a flurry of punches. ");
-			doFireDamage(dmg18, true, true);
+			doMinionFireDamage(dmg18, true, true);
 			outputText("\n\n");
 		}
 		public function kihaCombatActions3():void {
@@ -1265,7 +1265,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg19 = Math.round(dmg19 * increasedEfficiencyOfAttacks());
 			if (player.hasStatusEffect(StatusEffects.FrenziedKiha))
 				dmg19 *= 1+ player.statusEffectv1(StatusEffects.FrenziedKiha)*0.2;
-			doFireDamage(dmg19, true, true);
+			doMinionFireDamage(dmg19, true, true);
 			outputText("\n\n");
 		}
 		public function kihaCombatActions4():void {

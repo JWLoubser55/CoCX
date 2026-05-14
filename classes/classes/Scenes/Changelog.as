@@ -397,7 +397,7 @@ public class Changelog extends BaseContent
 			outputText("-New Masturbation option: Tonguesturbate. Req. to have chameleon tongue and cock.\n");
 			outputText("-New P. Special: Camouflage - usable by chameleon PC. Stealth PC for multiple rounds enemy cannot perceive the player unless it wins a perception check (it's repeated each turn) based on enemy intelligence, wisdom and level Versus PC speed and level. While camouflaged PCs benefit from sneak attack modifiers if they have the skill. Max duration 4 rounds.\n");
 			outputText("-New P. Special: Tongue (Grab) - usable by chameleon / frog / mobogo PC. You can initiate a grapple using your tongue.\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Chameleon skin. Req. having free adaptation mutation slot, Chameleon race. Effects: Increase sneak attack damage multiplier (+1x).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

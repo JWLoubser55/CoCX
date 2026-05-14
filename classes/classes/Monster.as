@@ -4527,7 +4527,7 @@ import flash.utils.getQualifiedClassName;
 					store2 = Math.round(store2 * SceneLib.combat.fireDamageBoostedByDao());
 					if(plural) outputText("[Themonster] burn from lingering immolination after-effect. ");
 					else outputText("[Themonster] burns from lingering immolination after-effect. ");
-					store2 = SceneLib.combat.doFireDamage(store2);
+					store2 = SceneLib.combat.doPlayerDoTFireDamage(store2);
 					outputText("\n\n");
 				}
 			}
@@ -4549,7 +4549,7 @@ import flash.utils.getQualifiedClassName;
 					store4 = SceneLib.combat.fixPercentDamage(store4);
 					if(plural) outputText("[Themonster] burn from lingering Burn after-effect. ");
 					else outputText("[Themonster] burns from lingering Burn after-effect. ");
-					store4 = SceneLib.combat.doFireDamage(store4, true, true);
+					store4 = SceneLib.combat.doPlayerDoTFireDamage(store4, true, true);
 					outputText("\n\n");
 				}
 			}
@@ -4569,7 +4569,7 @@ import flash.utils.getQualifiedClassName;
 					store6 = Math.round(store6 * SceneLib.combat.fireDamageBoostedByDao());
 					if(plural) outputText("[Themonster] burn from lingering Fire Punch after-effect. ");
 					else outputText("[Themonster] burns from lingering Fire Punch after-effect. ");
-					store6 = SceneLib.combat.doFireDamage(store6, true, true);
+					store6 = SceneLib.combat.doPlayerDoTFireDamage(store6, true, true);
 					outputText("\n\n");
 				}
 			}
@@ -4593,7 +4593,7 @@ import flash.utils.getQualifiedClassName;
 					store15 = SceneLib.combat.fixPercentDamage(store15);
 					if(plural) outputText(capitalA + short + " burn from lingering formic acid.");
 					else outputText(capitalA + short + " burns from lingering formic acid.");
-					store15 = SceneLib.combat.doAcidDamage(store15, true, true);
+					store15 = SceneLib.combat.doPlayerDoTAcidDamage(store15, true, true);
 					outputText("\n\n");
 				}
 			}
@@ -4613,7 +4613,7 @@ import flash.utils.getQualifiedClassName;
 					if (game.player.hasPerk(PerkLib.KingOfTheJungle)) store18 *= 1.2;
 					if (player.perkv1(IMutationsLib.HydraBloodIM) >= 2) store18 *= (1 + (0.25 * player.perkv1(IMutationsLib.HydraBloodIM)));
 					store18 = SceneLib.combat.fixPercentDamage(store18);
-					store18 = SceneLib.combat.doAcidDamage(store18, true, true);
+					store18 = SceneLib.combat.doPlayerDoTAcidDamage(store18, true, true);
 					if (!lustVuln <= 0) teased(SceneLib.combat.teases.teaseBaseLustDamage()  * lustVuln);
 					outputText("\n\n");
 				}
@@ -4675,7 +4675,7 @@ import flash.utils.getQualifiedClassName;
 						store12 = SceneLib.combat.fixPercentDamage(store12);
 						if(plural) outputText("[Themonster] are hurt by the lingering frostburn. ");
 						else outputText("[Themonster] is hurt by the lingering frostburn. ");
-						store12 = SceneLib.combat.doIceDamage(store12, true, true);
+						store12 = SceneLib.combat.doPlayerDoTIceDamage(store12, true, true);
 						outputText("\n\n");
 					}
 				}
@@ -4700,7 +4700,7 @@ import flash.utils.getQualifiedClassName;
 						store19 = SceneLib.combat.fixPercentDamage(store19);
 						if(plural) outputText("[Themonster] are hurt by the lingering electrocution. ");
 						else outputText("[Themonster] is hurt by the lingering electrocution. ");
-						store19 = SceneLib.combat.doLightningDamage(store19, true, true);
+						store19 = SceneLib.combat.doPlayerDoTLightningDamage(store19, true, true);
 						outputText("\n\n");
 					}
 				}
@@ -4725,7 +4725,7 @@ import flash.utils.getQualifiedClassName;
 						store20 = SceneLib.combat.fixPercentDamage(store20);
 						if(plural) outputText("[Themonster] are hurt by the lingering necrosis. ");
 						else outputText("[Themonster] is hurt by the lingering necrosis. ");
-						store20 = SceneLib.combat.doDarknessDamage(store20, true, true);
+						store20 = SceneLib.combat.doPlayerDoTDarknessDamage(store20, true, true);
 						outputText("\n\n");
 					}
 				}
@@ -4750,7 +4750,7 @@ import flash.utils.getQualifiedClassName;
 						store7 = SceneLib.combat.fixPercentDamage(store7);
 						if(plural) outputText("[Themonster] are hurt by lingering Acid after-effect. ");
 						else outputText("[Themonster] is hurt by lingering Acid after-effect. ");
-						store7 = SceneLib.combat.doAcidDamage(store7, true, true);
+						store7 = SceneLib.combat.doPlayerDoTAcidDamage(store7, true, true);
 						outputText("\n\n");
 					}
 				}
@@ -4775,7 +4775,7 @@ import flash.utils.getQualifiedClassName;
 						store10 = SceneLib.combat.fixPercentDamage(store10);
 						if(plural) outputText("[Themonster] are hurt by lingering Poison after-effect. ");
 						else outputText("[Themonster] is hurt by lingering Poison after-effect. ");
-						store10 = SceneLib.combat.doPoisonDamage(store10, true, true);
+						store10 = SceneLib.combat.doPlayerDoTPoisonDamage(store10, true, true);
 						outputText("\n\n");
 					}
 				}
@@ -4797,7 +4797,7 @@ import flash.utils.getQualifiedClassName;
 						store9 = SceneLib.combat.fixPercentDamage(store9);
 						if(plural) outputText("[Themonster] are hurt by lingering Poison after-effect. ");
 						else outputText("[Themonster] is hurt by lingering Poison after-effect. ");
-						store9 = SceneLib.combat.doPoisonDamage(store9, true, true);
+						store9 = SceneLib.combat.doMinionPoisonDamage(store9, true, true);
 						outputText("\n\n");
 					}
 				}

@@ -128,19 +128,19 @@ public class FusionSpecial5thSkill extends AbstractMagicSpecial {
     override public function advance(display:Boolean):void {
         switch(ElementalRace.getElement(player)) {
             case ElementalRace.ELEMENT_GNOME:   if (display) outputText("The aftershocks of your attack continues to stike [Themonster]! ");
-                                                doEarthDamage(calcDamage(monster), true, display);
+                                                doPlayerEarthDamage(calcDamage(monster), true, display);
                                                 if (display) outputText("\n\n");
                                                 break;
             case ElementalRace.ELEMENT_IGNIS:   if (display) outputText("A volanic vent sprews lava, burning [Themonster]! ");
-                                                doFireDamage(calcDamage(monster), true, display);
+                                                doPlayerFireDamage(calcDamage(monster), true, display);
                                                 if (display) outputText("\n\n");
                                                 break;
             case ElementalRace.ELEMENT_SYLPH:   if (display) outputText("[Themonster] continues to be struck by debris in the vortex! ");
-                                                doWindDamage(calcDamage(monster), true, display);
+                                                doPlayerWindDamage(calcDamage(monster), true, display);
                                                 if (display) outputText("\n\n");
                                                 break;
             case ElementalRace.ELEMENT_UNDINE:  if (display) outputText("Just as [Themonster] gathers their bearings, another wave crashes into them! ");
-                                                doWaterDamage(calcDamage(monster), true, display);
+                                                doPlayerWaterDamage(calcDamage(monster), true, display);
                                                 if (display) outputText("\n\n");
                                                 break;
             default:                            throw new Error("Should not be able to call ability when not fused");
@@ -187,7 +187,7 @@ public class FusionSpecial5thSkill extends AbstractMagicSpecial {
 
         switch(ElementalRace.getElement(player)) {
             case ElementalRace.ELEMENT_GNOME:   damage = calcQuakeMod(damage, true);
-                                                doEarthDamage(damage, true, display);
+                                                doPlayerEarthDamage(damage, true, display);
                                                 if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
                                                     if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
                                                         monster.addStatusValue(StatusEffects.AcidDoT,1,1);
@@ -197,21 +197,21 @@ public class FusionSpecial5thSkill extends AbstractMagicSpecial {
                                                 }
                                                 break;
             case ElementalRace.ELEMENT_IGNIS:   damage = calcInfernoMod(damage, true);
-                                                doFireDamage(damage, true, display);
+                                                doPlayerFireDamage(damage, true, display);
                                                 if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
                                                     if (monster.hasStatusEffect(StatusEffects.BurnDoT)) monster.addStatusValue(StatusEffects.BurnDoT,1,1);
                                                     else monster.createStatusEffect(StatusEffects.BurnDoT,10,0.02,0,0);
                                                 }
                                                 break;
             case ElementalRace.ELEMENT_SYLPH:   damage = calcGaleMod(damage, true);
-                                                doWindDamage(damage, true, display);
+                                                doPlayerWindDamage(damage, true, display);
                                                 if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
                                                     if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
                                                     else monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05*combat.BleedDamageBoost(), 0, 0);
                                                 }
                                                 break;
             case ElementalRace.ELEMENT_UNDINE:  damage = calcTideMod(damage, true);
-                                                doWaterDamage(damage, true, display);
+                                                doPlayerWaterDamage(damage, true, display);
                                                 if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
                                                     monster.statStore.addBuffObject({str:-10,spe:-10}, "Poison",{text:"Poison"});
                                                     if (monster.hasStatusEffect(StatusEffects.FrostburnDoT)) monster.addStatusValue(StatusEffects.FrostburnDoT,1,1);

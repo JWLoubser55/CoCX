@@ -53,7 +53,9 @@ public class ChameleonRace extends Race {
 				.noHorns(0,-10)
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
-        addMutation(IMutationsLib.LizanMarrowIM);
+        addBloodline(PerkLib.LizardsDescendant, PerkLib.BloodlineLizard);
+		addMutation(IMutationsLib.LizanMarrowIM);
+        addMutation(IMutationsLib.ChameleonSkinIM);
 		
 		buildTier(11, "chameleon")
 				.namesMaleFemale("chameleon boy", "chameleon girl")

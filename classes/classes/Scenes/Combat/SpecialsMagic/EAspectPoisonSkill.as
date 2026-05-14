@@ -67,7 +67,7 @@ public class EAspectPoisonSkill extends AbstractMagicSpecial {
         damage = Math.round(damage);
 
         if (display) outputText("Your poison elemental condenses aphrodisiac poison into spikes, striking your opponent with them ");
-		doPoisonDamage(damage, true, display);
+		doMinionPoisonDamage(damage, true, display);
 		if (crit && display) outputText(" <b>Critical!</b>");
 
         var lustDamage:Number = calcLustDamage(monster);

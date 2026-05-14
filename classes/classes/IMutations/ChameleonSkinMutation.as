@@ -19,20 +19,11 @@ public class ChameleonSkinMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Your body possesses a ";
-            if (pTier == 1){
-                descS += "rudimentary";
-            }
-            if (pTier == 2){
-                descS += "basic";
-            }
-            if (pTier == 3){
-                descS += "half developed";
-            }
-            if (pTier == 4){
-                descS += "fully developed";
-            }
-            if (descS != "")descS += " multi-functional self-sustain system modeled after the progenitor of all werespiders.";
+            if (pTier >= 1) descS += "Increase sneak attack damage multiplier by "+pTier+"x";
+            if (pTier >= 2) descS += ". The camouflage skill lasts "+(pTier-1)+" more round";
+            if (pTier >= 3) descS += "half developed";
+            if (pTier >= 4) descS += "fully developed";
+            if (descS != "")descS += ".";
             return descS;
         }
 
@@ -67,7 +58,7 @@ public class ChameleonSkinMutation extends IMutationPerkType
 
         public function ChameleonSkinMutation() 
 		{
-			super(MNAME, SLOT_NONE, 1);
+			super(MNAME, SLOT_ADAPTATIONS, 1);
         }
 
     }

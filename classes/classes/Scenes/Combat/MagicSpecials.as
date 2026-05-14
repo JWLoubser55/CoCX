@@ -1494,7 +1494,7 @@ public class MagicSpecials extends BaseCombatContent {
 				outputText("too resolute to be frozen by your attack.</b>");
 			}
 			outputText(" ");
-			doIceDamage(damage, true , true);
+			doPlayerIceDamage(damage, true , true);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -1564,7 +1564,7 @@ public class MagicSpecials extends BaseCombatContent {
 				outputText("too resolute to be frozen by your attack.</b>");
 			}
 			outputText(" ");
-			doIceDamage(damage, true, true);
+			doPlayerIceDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -1611,7 +1611,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (valaReflect(damage, "toxic breath", player.takePoisonDamage)) {}
 		else {
 			outputText(" ");
-			doPoisonDamage(damage, true, true);
+			doPlayerPoisonDamage(damage, true, true);
 			if (monster.hasStatusEffect(StatusEffects.PoisonDoT)) monster.addStatusValue(StatusEffects.PoisonDoT, 1, 1);
 			else monster.createStatusEffect(StatusEffects.PoisonDoT, 3, 0.02, 0, 0);
 		}
@@ -1737,7 +1737,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = Math.round(damage * combat.lightningDamageBoostedByDao());
-		doLightningDamage(damage, true, true);
+		doPlayerLightningDamage(damage, true, true);
 		outputText(" damage. ");
 		if (crit1) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
@@ -1843,7 +1843,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.FloralOvariesIM) >= 1) damage *= 1.25;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = Math.round(damage * combat.lightningDamageBoostedByDao());
-		doLightningDamage(damage, true, true);
+		doPlayerLightningDamage(damage, true, true);
 		outputText(" damage. ");
 		if (crit1) outputText(" <b>*Critical Hit!*</b>");
 		dynStats("lus", (Math.round(player.maxLust() * 0.02)), "scale", false);
@@ -1927,7 +1927,7 @@ public class MagicSpecials extends BaseCombatContent {
 		lustDmgF *= magicAbilitiesGoBrrr();
 		lustDmgF = Math.round(lustDmgF);
 		outputText("You let electricity build up in your body before unleashing it into the ambient sky, the clouds roaring with thunder. Here comes the storm! ");
-		doLightningDamage(damage, true, true);
+		doPlayerLightningDamage(damage, true, true);
 		if (crit1) outputText(" <b>*Critical!*</b>");
 		monster.teased(lustDmgF, false);
 		if (crit2) outputText(" <b>Critical!</b>");
@@ -1964,7 +1964,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage *= 1.2;
 			damage *= magicAbilitiesGoBrrr();
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-			doPlasmaDamage(damage, true, true);
+			doPlayerPlasmaDamage(damage, true, true);
 			if (monster.lustVuln > 0) {
 				outputText(" ");
 				var CumLustDmg:Number = combat.teases.teaseBaseLustDamage();
@@ -1985,7 +1985,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage *= 1.2;
 			damage *= magicAbilitiesGoBrrr();
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-			doPlasmaDamage(damage, true, true);
+			doPlayerPlasmaDamage(damage, true, true);
 			if (monster.lustVuln > 0) {
 				outputText(" ");
 				var MilkLustDmg:Number = combat.teases.teaseBaseLustDamage();
@@ -2008,7 +2008,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage *= (player.lust100 * 0.02);
 			damage *= magicAbilitiesGoBrrr();
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
-			doPlasmaDamage(damage, true, true);
+			doPlayerPlasmaDamage(damage, true, true);
 			if (monster.lustVuln > 0) {
 				outputText(" ");
 				var MilkCumLustDmg:Number = combat.teases.teaseBaseLustDamage();
@@ -2163,12 +2163,12 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText(" Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy [monster color] skin has lost some of its shimmer. ");
 			if (!monster.hasPerk(PerkLib.Acid)) monster.createPerk(PerkLib.Acid, 0, 0, 0, 0);
 			damage = Math.round(damage * 1.5 * combat.fireDamageBoostedByDao());
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 		}
 		else {
 			outputText(" ");
 			damage = Math.round(damage * combat.fireDamageBoostedByDao());
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 		}
 		if(!monster.hasPerk(PerkLib.Resolute)) {
 			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back.");
@@ -2211,7 +2211,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//if (monster.short == "goo-girl") damage = Math.round(damage * 1.5); - pomyśleć czy bdą dostawać bonusowe obrażenia
 		//if (monster.short == "tentacle beast") damage = Math.round(damage * 1.2); - tak samo przemyśleć czy bedą dodatkowo ranione
 		outputText("You thrust both hands forward, gathering moisture and freezing it in the shape of Icy dagger like shards. The wind whips past you, cold and carrying with it long pointed shards of ice. They crash against [themonster]. [monster he] screams in pain as [monster his] body is impaled multiple times by the barrage of projectiles. ");
-		doIceDamage(damage, true, true);
+		doPlayerIceDamage(damage, true, true);
 		//Using fire attacks on the goo]
 		//if(monster.short == "goo-girl") {
 		//outputText("  Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy [monster color] skin has lost some of its shimmer.");
@@ -2271,7 +2271,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//if (monster.short == "goo-girl") damage = Math.round(damage * 1.5); - pomyśleć czy bdą dostawać bonusowe obrażenia
 		//if (monster.short == "tentacle beast") damage = Math.round(damage * 1.2); - tak samo przemyśleć czy bedą dodatkowo ranione
 		outputText("You condense the natural humidity ambient in the air to a focal point and encase [themonster] in a solid block of ice! You can almost feel [monster him] shivering in there from the sudden temperature spike. ");
-		doIceDamage(damage, true, true);
+		doPlayerIceDamage(damage, true, true);
 		//Using fire attacks on the goo]
 		//if(monster.short == "goo-girl") {
 		//outputText("  Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy [monster color] skin has lost some of its shimmer.");
@@ -2317,7 +2317,7 @@ public class MagicSpecials extends BaseCombatContent {
 		monster.teased(Math.round(monster.lustVuln * lustDmg));
 		outputText("  ");
 		damage = Math.round(damage * combat.iceDamageBoostedByDao());
-		doIceDamage(damage, true, true);
+		doPlayerIceDamage(damage, true, true);
 		pc.HPChange(damage,false,false);
 		outputText("\n\n");
 		if (player.hasPerk(PerkLib.EromancyMaster)) combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
@@ -2401,7 +2401,7 @@ public class MagicSpecials extends BaseCombatContent {
 		else if (valaReflect(damage, "acid spit", player.takeAcidDamage)) {}
 		else {
 			outputText(" ");
-			doAcidDamage(damage, true, true);
+			doPlayerAcidDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
@@ -2489,7 +2489,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText(" Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy [monster color] skin has lost some of its shimmer. ");
 			if(!monster.hasPerk(PerkLib.Acid)) monster.createPerk(PerkLib.Acid,0,0,0,0);
 			damage = Math.round(damage * 1.5 * combat.fireDamageBoostedByDao());
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 			if (player.perkv1(IMutationsLib.CaveWyrmLungsIM) >= 3) monster.createStatusEffect(StatusEffects.Stunned,0,0,0,0);
 		}
 		else {
@@ -2506,7 +2506,7 @@ public class MagicSpecials extends BaseCombatContent {
 				}
 			}
 			damage = Math.round(damage * combat.fireDamageBoostedByDao());
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		monster.createStatusEffect(StatusEffects.BurnDoT,5,0.02,0,0);
@@ -2693,7 +2693,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText(" Your flames lick the girl's body and she opens her mouth in pained protest as you evaporate much of her moisture. When the fire passes, she seems a bit smaller and her slimy [monster color] skin has lost some of its shimmer. ");
 			if(!monster.hasPerk(PerkLib.Acid)) monster.createPerk(PerkLib.Acid,0,0,0,0);
 			damage = Math.round(damage * 1.5 * combat.fireDamageBoostedByDao());
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 			monster.createStatusEffect(StatusEffects.Stunned,0,0,0,0);
 		}
 		else {
@@ -2704,7 +2704,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			damage = Math.round(damage * combat.fireDamageBoostedByDao());
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -2761,7 +2761,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (rand(4) == 0) stutter += 1;
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
-			doIceDamage(damage, true, true);
+			doPlayerIceDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -2817,7 +2817,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (rand(4) == 0) stutter += 1;
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
-			doLightningDamage(damage, true, true);
+			doPlayerLightningDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -2872,7 +2872,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (rand(4) == 0) stutter += 1;
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
-			doDarknessDamage(damage, true, true);
+			doPlayerDarknessDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -2927,7 +2927,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (rand(4) == 0) stutter += 1;
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
-			doPoisonDamage(damage, true, true);
+			doPlayerPoisonDamage(damage, true, true);
 			var strDebuff:Number = 0;
 			if (monster.spe >= 21) strDebuff += 20;
 			else strDebuff += 20 - monster.spe;
@@ -2990,7 +2990,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (rand(4) == 0) stutter += 1;
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
-			doWaterDamage(damage, true, true);
+			doPlayerWaterDamage(damage, true, true);
 			monster.createStatusEffect(StatusEffects.DragonWaterBreath,0,0,0,0);
 		}
 		outputText("\n\n");
@@ -3148,9 +3148,9 @@ public class MagicSpecials extends BaseCombatContent {
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 2) damage *= (1 + player.plantChlorophyllBoost());
 			damage = Math.round(damage * 0.34);
-			doPoisonDamage(damage, true, true);
-			doWaterDamage(damage, true, true);
-			doEarthDamage(damage, true, true);
+			doPlayerPoisonDamage(damage, true, true);
+			doPlayerWaterDamage(damage, true, true);
+			doPlayerEarthDamage(damage, true, true);
 			monster.createStatusEffect(StatusEffects.DragonWaterBreath,0,0,0,0);
 		}
 		outputText("\n\n");
@@ -3249,8 +3249,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			damage = Math.round(damage * 0.34);
-			doIceDamage(damage, true, true);
-			doDarknessDamage(damage, true, true);
+			doPlayerBlackIceDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -3483,7 +3482,7 @@ public class MagicSpecials extends BaseCombatContent {
 				damage = Math.round(0.5 * damage);
 			}
 			damage = Math.round(damage * combat.fireDamageBoostedByDao());
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 			outputText("\n\n");
 			if(monster.short == "Holli" && !monster.hasStatusEffect(StatusEffects.HolliBurning)) (monster as Holli).lightHolliOnFireMagically();
 		}
@@ -3527,7 +3526,7 @@ public class MagicSpecials extends BaseCombatContent {
 			//Attack gains burn DoT for 2-3 turns.
 			outputText("You let loose a roiling cone of flames that wash over the horde of demons like a tidal wave, scorching at their tainted flesh with vigor unlike anything you've seen before. Screams of terror as much as, maybe more than, pain fill the air as the mass of corrupted bodies try desperately to escape from you! Though more demons pile in over the affected front ranks, you've certainly put the fear of your magic into them!");
 			monster.createStatusEffect(StatusEffects.OnFire, 2 + rand(2), 0, 0, 0);
-			doFireDamage(1, true, true);
+			doPlayerFireDamage(1, true, true);
 			monster.takeLustDamage(1, true);
 			/*damage = int(player.level * 8 + rand(10) + player.cor / 5);
 			damage *= 4;
@@ -3563,25 +3562,25 @@ public class MagicSpecials extends BaseCombatContent {
 				if(monster.cor >= 90) outputText("  Your foe cries out in surprise and then gives a sensual moan as the flames of your passion surround them and scorches their body with unnatural lust.");
 				else if(monster.cor <= 10) outputText("  Your foe lets out a shriek as their form is engulfed in the blistering flames, leaving them slightly aroused.");
 				else outputText("  Your foe lets out a shriek as their form is engulfed in the blistering flames searing their body while filling it with an unnatural lust.");
-				doFireDamage(fireDamage, true, true);
+				doPlayerFireDamage(fireDamage, true, true);
 				monster.takeLustDamage(lustDamage, true);
 				if (player.faceType == Face.CERBERUS) {
-					doFireDamage(fireDamage, true, true);
+					doPlayerFireDamage(fireDamage, true, true);
 					monster.takeLustDamage(lustDamage, true);
-					doFireDamage(fireDamage, true, true);
+					doPlayerFireDamage(fireDamage, true, true);
 					monster.takeLustDamage(lustDamage, true);
 					fireDamage *= 3;
 				}
 			}
 			else {
 				outputText("  Your foe lets out a shriek as their form is engulfed in the blistering flames, charring their body");
-				doFireDamage(fireDamage, true, true);
+				doPlayerFireDamage(fireDamage, true, true);
 			}
 			/* if(monster.inte < 10) {
 				outputText("  Your foe lets out a shriek as their form is engulfed in the blistering flames.");
 				damage = Math.round(damage * combat.fireDamageBoostedByDao());
 				damage = int(damage);
-				doFireDamage(damage, true, true);
+				doPlayerFireDamage(damage, true, true);
 				outputText("<b>([font-damage]+" + damage + "[/font])</b>\n");
 			}
 			else
@@ -4437,7 +4436,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage * combat.fireDamageBoostedByDao());
 		outputText("for ");
-		doFireDamage(damage, true, true);
+		doPlayerFireDamage(damage, true, true);
 		outputText(" damage.");
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		//Using fire attacks on the goo]
@@ -4535,7 +4534,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage * combat.fireDamageBoostedByDao());
 		outputText("for ");
-		doFireDamage(damage, true, true);
+		doPlayerFireDamage(damage, true, true);
 		outputText(" damage.");
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		//Using fire attacks on the goo]
@@ -4933,7 +4932,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = calcEclypseMod(Math.round(damage * combat.darknessDamageBoostedByDao()), true);
 		damage = Math.round(damage);
-		doDarknessDamage(damage, true, true);
+		doPlayerDarknessDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		if (!monster.hasStatusEffect(StatusEffects.Stunned)) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		checkAchievementDamage(damage);
@@ -5020,7 +5019,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
 		damage = calcCorrosionMod(damage, incAcidCounter);
 		damage = Math.round(damage);
-		doAcidDamage(damage, true, true);
+		doPlayerAcidDamage(damage, true, true);
 		if (monster.hasStatusEffect(StatusEffects.AcidDoT)) monster.addStatusValue(StatusEffects.AcidDoT, 4, 1); //More heads will produce more potent acid
 		else monster.createStatusEffect(StatusEffects.AcidDoT, 6, 0, 0, 1);
 		checkAchievementDamage(damage);
@@ -5108,8 +5107,8 @@ public class MagicSpecials extends BaseCombatContent {
 		lustDmg = Math.round(monster.lustVuln * lustDmg);
 		monster.teased(lustDmg);
 		outputText(" ");
-		doFireDamage(fireDamage, true, true);
-		doDarknessDamage(darknessDamage, true, true);
+		doPlayerFireDamage(fireDamage, true, true);
+		doPlayerDarknessDamage(darknessDamage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		statScreenRefresh();
@@ -5210,7 +5209,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage * combat.fireDamageBoostedByDao());
-		doFireDamage(damage, true, true);
+		doPlayerFireDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		statScreenRefresh();
@@ -5314,7 +5313,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage * combat.fireDamageBoostedByDao());
-		doFireDamage(damage, true, true);
+		doPlayerFireDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		statScreenRefresh();
@@ -5417,7 +5416,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage * combat.fireDamageBoostedByDao());
-		doFireDamage(damage, true, true);
+		doPlayerFireDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		statScreenRefresh();
@@ -5521,7 +5520,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage * combat.fireDamageBoostedByDao());
-		doFireDamage(damage, true, true);
+		doPlayerFireDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		statScreenRefresh();
@@ -6078,7 +6077,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage *= 1.75;
 		}
 
-		doLightningDamage(damage, true, true);
+		doPlayerLightningDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 	}
 	private function FaeStormAcid():void{
@@ -6314,7 +6313,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.MindbreakerBrain1toX)) damage*=1+(0.5*(1+player.perkv1(PerkLib.MindbreakerBrain1toX)));
 		damage = Math.round(damage);
 		outputText("Your third eye opens wide and glow a vicious green as you viciously impale [themonster]’s mind with a mental spike.");
-		doPsychicDamage(damage, true, true);
+		doPlayerPsychicDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText(".\n\n");
 		enemyAI();
@@ -6554,7 +6553,7 @@ public class MagicSpecials extends BaseCombatContent {
 		else if (valaReflect(damage, "acid spit", player.takeAcidDamage)) {}
 		else {
 			outputText(" ");
-			doAcidDamage(damage, true, true);
+			doPlayerAcidDamage(damage, true, true);
 		}
 		outputText("\n\n");
 		if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
@@ -6599,25 +6598,25 @@ public class MagicSpecials extends BaseCombatContent {
 				damage2 = damage * 0.7;
 				damage2 = calcCorrosionMod(damage2, true);
 				damage2 = Math.round(damage2);
-				doAcidDamage(damage2, true, true);
+				doPlayerAcidDamage(damage2, true, true);
 			}
 			if (player.hasPerk(PerkLib.LightningAffinity)) {
 				damage3 = damage * 0.7;
 				damage3 = calcVoltageMod(damage3, true);
 				damage3 = Math.round(damage3);
-				doLightningDamage(damage3, true, true);
+				doPlayerLightningDamage(damage3, true, true);
 			}
 			if (player.hasPerk(PerkLib.ColdAffinity)) {
 				damage4 = damage * 0.7;
 				damage4 = calcGlacialMod(damage4, true);
 				damage4 = Math.round(damage4);
-				doIceDamage(damage4, true, true);
+				doPlayerIceDamage(damage4, true, true);
 			}
 			if (player.hasPerk(PerkLib.FireAffinity)) {
 				damage5 = damage * 0.7;
 				damage5 = calcInfernoMod(damage5, true);
 				damage5 = Math.round(damage5);
-				doFireDamage(damage5, true, true);
+				doPlayerFireDamage(damage5, true, true);
 			}
 			outputText("\n\n");
 			if (damage2 > 0) damage += damage2;
@@ -6646,25 +6645,25 @@ public class MagicSpecials extends BaseCombatContent {
 					damage2 = damage * 0.7;
 					damage2 = calcCorrosionMod(damage2, true);
 					damage2 = Math.round(damage2);
-					doAcidDamage(damage2, true, true);
+					doPlayerAcidDamage(damage2, true, true);
 				}
 				if (player.hasPerk(PerkLib.LightningAffinity)) {
 					damage3 = damage * 0.7;
 					damage3 = calcVoltageMod(damage3, true);
 					damage3 = Math.round(damage3);
-					doLightningDamage(damage3, true, true);
+					doPlayerLightningDamage(damage3, true, true);
 				}
 				if (player.hasPerk(PerkLib.ColdAffinity)) {
 					damage4 = damage * 0.7;
 					damage4 = calcGlacialMod(damage4, true);
 					damage4 = Math.round(damage4);
-					doIceDamage(damage4, true, true);
+					doPlayerIceDamage(damage4, true, true);
 				}
 				if (player.hasPerk(PerkLib.FireAffinity)) {
 					damage5 = damage * 0.7;
 					damage5 = calcInfernoMod(damage5, true);
 					damage5 = Math.round(damage5);
-					doFireDamage(damage5, true, true);
+					doPlayerFireDamage(damage5, true, true);
 				}
 				player.removeStatusEffect(StatusEffects.ChanneledAttack);
 				player.removeStatusEffect(StatusEffects.ChanneledAttackType);
@@ -6745,7 +6744,7 @@ public class MagicSpecials extends BaseCombatContent {
 		doDamage(damage);//phys dmg
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage * combat.fireDamageBoostedByDao());
-		doFireDamage(damage, true, true);
+		doPlayerFireDamage(damage, true, true);
 		outputText(" fire damage. Reeling in pain [themonster] begins to bleed and burn at the same time.");
 		monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05*combat.BleedDamageBoost(true), 0, 0);
 		monster.createStatusEffect(StatusEffects.BurnDoT, 5, 0.05, 0, 0);
@@ -6921,7 +6920,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage = int(player.level * 8 + 25 + rand(10));
 			damage *= (1.75 * combat.windDamageBoostedByDao());
 			damage = Math.round(damage);
-			doWindDamage(damage, true, true);
+			doPlayerWindDamage(damage, true, true);
 			if (!monster.hasStatusEffect(StatusEffects.CouatlHurricane)) monster.createStatusEffect(StatusEffects.CouatlHurricane,3,0,0,0);
 			else {
 				monster.addStatusValue(StatusEffects.CouatlHurricane, 1, 1);
@@ -6955,7 +6954,7 @@ public class MagicSpecials extends BaseCombatContent {
 				else outputText("are");
 				outputText("too resolute to be stunned by your attack.</b> ");
 			}
-			doWindDamage(damage, true, true);
+			doPlayerWindDamage(damage, true, true);
 			if (!monster.hasStatusEffect(StatusEffects.CouatlHurricane)) monster.createStatusEffect(StatusEffects.CouatlHurricane,3,0,0,0);
 			else {
 				monster.addStatusValue(StatusEffects.CouatlHurricane, 1, 1);
@@ -7006,7 +7005,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage = int(player.level * 8 + 25 + rand(10));
 			damage *= (1.75 * combat.windDamageBoostedByDao());
 			damage = Math.round(damage);
-			doWindDamage(damage, true, true);
+			doPlayerWindDamage(damage, true, true);
 			if (!monster.hasStatusEffect(StatusEffects.KamaitachiBleed)) monster.createStatusEffect(StatusEffects.KamaitachiBleed,3,0,0,1);
 			else{
 				monster.addStatusValue(StatusEffects.KamaitachiBleed, 1, 1);
@@ -7040,7 +7039,7 @@ public class MagicSpecials extends BaseCombatContent {
 				else outputText("are");
 				outputText("too resolute to be stunned by your attack.</b> ");
 			}
-			doWindDamage(damage, true, true);
+			doPlayerWindDamage(damage, true, true);
 			if (!monster.hasStatusEffect(StatusEffects.KamaitachiBleed)) monster.createStatusEffect(StatusEffects.KamaitachiBleed,3,0,0,1);
 			else {
 				monster.addStatusValue(StatusEffects.KamaitachiBleed, 1, 1);
@@ -7087,20 +7086,20 @@ public class MagicSpecials extends BaseCombatContent {
 			case 0:
 				outputText("[Themonster] takes heavy electricity damage from the eyebeam! ");
 				damage = Math.round(damage * combat.lightningDamageBoostedByDao());
-				doLightningDamage((damage * 3), true, true);
+				doPlayerLightningDamage((damage * 3), true, true);
 				break;
 			case 1:
 				outputText("[Themonster] starts to burn as [monster his] body catches fire from the eyebeam! ");
 				if (player.armor == armors.SFLAREQ) damage *= 3;
 				damage = Math.round(damage * combat.fireDamageBoostedByDao());
-				doFireDamage(damage, true, true);
+				doPlayerFireDamage(damage, true, true);
 				if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned, 1, 1);
 				else monster.createStatusEffect(StatusEffects.BurnDoT, 2, 0.01, 0, 0);
 				break;
 			case 2:
 				outputText("[Themonster] turns green as a potent poison inflicted by the eyebeam saps [monster his] strength! ");
 				damage = Math.round(damage * combat.poisonDamageBoostedByDao());
-				doPoisonDamage(damage, true, true);
+				doPlayerPoisonDamage(damage, true, true);
 				var strDebuff:Number = 0;
 				if (monster.spe >= 6) strDebuff += 5;
 				else strDebuff += 5 - monster.spe;
@@ -7113,7 +7112,7 @@ public class MagicSpecials extends BaseCombatContent {
 			case 3:
 				outputText("[Themonster] skin is covered with ice from the eyebeam as the air surrounding [monster him] freezes solid! ");
 				damage = Math.round(damage * combat.iceDamageBoostedByDao());
-				doIceDamage(damage, true, true);
+				doPlayerIceDamage(damage, true, true);
 				if (!monster.hasPerk(PerkLib.Resolute)) {
 					if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned, 1, 1);
 					else monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
@@ -7124,7 +7123,7 @@ public class MagicSpecials extends BaseCombatContent {
 			case 4:
 				outputText("[Themonster] takes heavy cold damage! ");
 				damage = Math.round(damage * combat.iceDamageBoostedByDao());
-				doIceDamage((damage * 3), true, true);
+				doPlayerIceDamage((damage * 3), true, true);
 				break;
 			case 5:
 				outputText("[Themonster] is magically aroused by the eyebeam. ");
@@ -7155,7 +7154,7 @@ public class MagicSpecials extends BaseCombatContent {
 				outputText("[Themonster] takes heavy fire damage being seared by the ray shooting from one of your eyestalks! ");
 				if (player.armor == armors.SFLAREQ) damage *= 3;
 				damage = Math.round(damage * combat.fireDamageBoostedByDao());
-				doFireDamage((damage * 3), true, true);
+				doPlayerFireDamage((damage * 3), true, true);
 				break;
 			case 9:
 				outputText("[Themonster] is struck by your disintegration ray! ");
@@ -7334,7 +7333,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("too resolute to be stunned by your attack.</b>");
 		}*/
 		outputText("Your fire elemental douses your opponent with a torrent of fire ");
-		doFireDamage(damage, true, true);
+		doMinionFireDamage(damage, true, true);
 		outputText("\n\n");
 		//checkMinionsAchievementDamage(damage);
 		enemyAI();
@@ -7639,7 +7638,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("too resolute to be stunned by your attack.</b>");
 		}*/
 		outputText("Your elemental produces a ray of hyper condensed cold and aims it straight at [themonster] dealing ");
-		doIceDamage(damage, true, true);
+		doMinionIceDamage(damage, true, true);
 		outputText("\n\n");
 		//checkMinionsAchievementDamage(damage);
 		enemyAI();
@@ -7699,7 +7698,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("too resolute to be stunned by your attack.</b>");
 		}*/
 		outputText("Your elemental charges electricity, then discharges it with a blinding bolt doing ");
-		doLightningDamage(damage, true, true);
+		doMinionLightningDamage(damage, true, true);
 		outputText("\n\n");
 		//checkMinionsAchievementDamage(damage);
 		enemyAI();
@@ -7759,7 +7758,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("too resolute to be stunned by your attack.</b>");
 		}*/
 		outputText("Your darkness elemental condenses shadows into solid matter, striking your opponent with them ");
-		doDarknessDamage(damage, true, true);
+		doMinionDarknessDamage(damage, true, true);
 		outputText("\n\n");
 		//checkMinionsAchievementDamage(damage);
 		enemyAI();
@@ -7819,7 +7818,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("too resolute to be stunned by your attack.</b>");
 		}*/
 		outputText("Your poison elemental condenses aphrodisiac poison into spike, striking your opponent with them ");
-		doPoisonDamage(damage, true, true);
+		doMinionPoisonDamage(damage, true, true);
 
 		var lustdamage:Number = 20 + rand(player.statusEffectv2(StatusEffects.SummonedElementalsPoison) + 1);
 		if (player.statusEffectv2(StatusEffects.SummonedElementalsPoison) >= 2) lustdamage += 1 * (player.statusEffectv2(StatusEffects.SummonedElementalsPoison) - 1);
@@ -7983,7 +7982,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("You rub your palms together before unleashing the energy in the form of razor sharp winds. [Themonster] eyes grow wide in surprise as your attack leaves deep bleeding cuts in its flesh! ");
 			damage = calcGaleMod(damage, true);
 			damage = Math.round(damage * combat.windDamageBoostedByDao());
-			doWindDamage(damage, true, true);
+			doPlayerWindDamage(damage, true, true);
 			if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
 				if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage, 1, 1*combat.BleedDamageBoost());
 				else monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05*combat.BleedDamageBoost(), 0, 0);
@@ -7993,7 +7992,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("You smash both of your fists into the ground, causing vegetation to grow at an accelerated rate. [Themonster] is punched out of nowhere as a grown tree suddenly sprouts from beneath! ");
 			damage = calcQuakeMod(damage, true);
 			damage = Math.round(damage * combat.earthDamageBoostedByDao());
-			doEarthDamage(damage, true, true);
+			doPlayerEarthDamage(damage, true, true);
 			if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
 				if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
 					monster.addStatusValue(StatusEffects.AcidDoT,1,1);
@@ -8007,7 +8006,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage = calcInfernoMod(damage, true);
 			if (player.armor == armors.SFLAREQ) damage *= 3;
 			damage = Math.round(damage * combat.fireDamageBoostedByDao());
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 			if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
 				if (monster.hasStatusEffect(StatusEffects.BurnDoT)) monster.addStatusValue(StatusEffects.BurnDoT,1,1);
 				else monster.createStatusEffect(StatusEffects.BurnDoT,10,0.02,0,0);
@@ -8017,7 +8016,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("You push both of your palms toward your opponent, your arms turning to a pair of powerful water jets that batters [themonster] with rock crushing pressure! ");
 			damage = calcTideMod(damage, true);
 			damage = Math.round(damage * combat.waterDamageBoostedByDao());
-			doWaterDamage(damage, true, true);
+			doPlayerWaterDamage(damage, true, true);
 			if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
 				monster.statStore.addBuffObject({str:-10,spe:-10}, "Poison",{text:"Poison"});
 				if (monster.hasStatusEffect(StatusEffects.FrostburnDoT)) monster.addStatusValue(StatusEffects.FrostburnDoT,1,1);
@@ -8134,7 +8133,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var damage:int = int(100+(player.inte/2 + rand(player.inte)) * spellMod());
 		damage = calcGlacialMod(damage, true);
 		damage = Math.round(damage);
-		doIceDamage(damage);
+		doPlayerIceDamage(damage);
 		outputText(" <b>([font-damage]" + damage + "[/font])</b>\n\n");
 		player.removeStatusEffect(StatusEffects.IcePrisonSpell);
 		SceneLib.arianScene.clearTalisman();

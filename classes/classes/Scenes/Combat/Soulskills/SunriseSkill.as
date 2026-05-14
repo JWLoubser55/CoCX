@@ -87,7 +87,7 @@ public class SunriseSkill extends AbstractSoulSkill {
 		}
 
 		//final touches
-		doPlasmaDamage(damage, true, display);
+		doPlayerPlasmaDamage(damage, true, display);
 		if (display) outputText(" damage! ");
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		checkAchievementDamage(damage);

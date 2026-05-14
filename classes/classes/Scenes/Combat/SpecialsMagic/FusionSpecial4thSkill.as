@@ -151,7 +151,7 @@ public class FusionSpecial4thSkill extends AbstractMagicSpecial {
 
         switch(ElementalRace.getElement(player)) {
             case ElementalRace.ELEMENT_GNOME:   damage = calcQuakeMod(damage, true);
-                                                doEarthDamage(damage, true, display);
+                                                doPlayerEarthDamage(damage, true, display);
                                                 if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
                                                     if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
                                                         monster.addStatusValue(StatusEffects.AcidDoT,1,1);
@@ -161,21 +161,21 @@ public class FusionSpecial4thSkill extends AbstractMagicSpecial {
                                                 }
                                                 break;
             case ElementalRace.ELEMENT_IGNIS:   damage = calcInfernoMod(damage, true);
-                                                doFireDamage(damage, true, display);
+                                                doPlayerFireDamage(damage, true, display);
                                                 if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
                                                     if (monster.hasStatusEffect(StatusEffects.BurnDoT)) monster.addStatusValue(StatusEffects.BurnDoT,1,1);
                                                     else monster.createStatusEffect(StatusEffects.BurnDoT,10,0.02,0,0);
                                                 }
                                                 break;
             case ElementalRace.ELEMENT_SYLPH:   damage = calcGaleMod(damage, true);
-                                                doWindDamage(damage, true, display);
+                                                doPlayerWindDamage(damage, true, display);
                                                 if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
                                                     if (monster.hasStatusEffect(StatusEffects.Hemorrhage)) monster.addStatusValue(StatusEffects.Hemorrhage, 1, 1);
                                                     else monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05*combat.BleedDamageBoost(), 0, 0);
                                                 }
                                                 break;
             case ElementalRace.ELEMENT_UNDINE:  damage = calcTideMod(damage, true);
-                                                doWaterDamage(damage, true, display);
+                                                doPlayerWaterDamage(damage, true, display);
                                                 if (player.isFistOrFistWeapon() && player.hasPerk(PerkLib.ElementalTouch)) {
                                                     monster.statStore.addBuffObject({str:-10,spe:-10}, "Poison",{text:"Poison"});
                                                     if (monster.hasStatusEffect(StatusEffects.FrostburnDoT)) monster.addStatusValue(StatusEffects.FrostburnDoT,1,1);

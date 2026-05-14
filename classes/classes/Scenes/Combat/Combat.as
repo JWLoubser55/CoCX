@@ -2226,7 +2226,7 @@ public class Combat extends BaseContent {
             case EARTH:
             case EARTH_E:
                 elementalDamage *= 2;
-                doEarthDamage(elementalDamage, true, true);
+                doMinionEarthDamage(elementalDamage, true, true);
                 break;
             case WOOD:
                 elementalDamage *= 2;
@@ -2238,27 +2238,27 @@ public class Combat extends BaseContent {
                 break;
             case AIR:
             case AIR_E:
-                doWindDamage(elementalDamage, true, true);
+                doMinionWindDamage(elementalDamage, true, true);
                 break;
             case FIRE:
             case FIRE_E:
-                doFireDamage(elementalDamage, true, true);
+                doMinionFireDamage(elementalDamage, true, true);
                 break;
             case WATER:
             case WATER_E:
-                doWaterDamage(elementalDamage, true, true);
+                doMinionWaterDamage(elementalDamage, true, true);
                 break;
             case ICE:
-                doIceDamage(elementalDamage, true, true);
+                doMinionIceDamage(elementalDamage, true, true);
                 break;
             case LIGHTNING:
-                doLightningDamage(elementalDamage, true, true);
+                doMinionLightningDamage(elementalDamage, true, true);
                 break;
             case DARKNESS:
-                doDarknessDamage(elementalDamage, true, true);
+                doMinionDarknessDamage(elementalDamage, true, true);
                 break;
             case POISON:
-                doPoisonDamage(elementalDamage, true, true);
+                doMinionPoisonDamage(elementalDamage, true, true);
                 break;
             case PURITY:
                 elementalDamage *= purityScalingDA();
@@ -3966,7 +3966,7 @@ public class Combat extends BaseContent {
 			if (player.weapon == weapons.VGRAVEH) damage *= 1.25;
 			damage = Math.round(damage * fireDamageBoostedByDao());
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.weapon == weapons.VGRAVEH && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
 				if (monster.hasStatusEffect(StatusEffects.BurnDoT)) monster.addStatusValue(StatusEffects.BurnDoT,1,1);
@@ -3980,7 +3980,7 @@ public class Combat extends BaseContent {
 			if (player.weapon == weapons.GGRAVEA) damage *= 1.25;
             damage = Math.round(damage * iceDamageBoostedByDao());
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-            doIceDamage(damage, true, true);
+            doPlayerIceDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.weapon == weapons.GGRAVEA && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
 				if (monster.hasStatusEffect(StatusEffects.FrostburnDoT)) monster.addStatusValue(StatusEffects.FrostburnDoT,1,1);
@@ -3993,7 +3993,7 @@ public class Combat extends BaseContent {
 			if (player.weapon == weapons.SGRAVES) damage *= 1.25;
             damage = Math.round(damage * lightningDamageBoostedByDao());
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-            doLightningDamage(damage, true, true);
+            doPlayerLightningDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.weapon == weapons.SGRAVES && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
 				if (monster.hasStatusEffect(StatusEffects.ElectrocutionDoT)) monster.addStatusValue(StatusEffects.ElectrocutionDoT,1,1);
@@ -4006,7 +4006,7 @@ public class Combat extends BaseContent {
 			if (player.weapon == weapons.UGRAVES) damage *= 1.25;
             damage = Math.round(damage * darknessDamageBoostedByDao());
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-            doDarknessDamage(damage, true, true);
+            doPlayerDarknessDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.weapon == weapons.UGRAVES && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
 				if (monster.hasStatusEffect(StatusEffects.NecrosisDoT)) monster.addStatusValue(StatusEffects.NecrosisDoT,1,1);
@@ -4017,7 +4017,7 @@ public class Combat extends BaseContent {
         }
         else if (isPlasmaTypeWeaponMain()) {
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-            doPlasmaDamage(damage, true, true);
+            doPlayerPlasmaDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
@@ -4035,8 +4035,8 @@ public class Combat extends BaseContent {
 				}
 			}
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-			doFireDamage(damageF, true, true);
-			doAcidDamage(damageA, true, true);
+			doPlayerFireDamage(damageF, true, true);
+			doPlayerAcidDamage(damageA, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.weapon == weapons.TIDAR) (player.weapon as Tidarion).afterStrike();
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -4046,16 +4046,16 @@ public class Combat extends BaseContent {
             if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			damage = Math.round(damage * fireDamageBoostedByDao());
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 			if (player.hasFourArms()) {
-				doFireDamage(damage, true, true);
+				doPlayerFireDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
-				doFireDamage(damage, true, true);
+				doPlayerFireDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
@@ -4066,16 +4066,16 @@ public class Combat extends BaseContent {
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			damage = Math.round(damage * iceDamageBoostedByDao());
-            doIceDamage(damage, true, true);
+            doPlayerIceDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
-            doIceDamage(damage, true, true);
+            doPlayerIceDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 			if (player.hasFourArms()) {
-				doIceDamage(damage, true, true);
+				doPlayerIceDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
-				doIceDamage(damage, true, true);
+				doPlayerIceDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
@@ -4084,16 +4084,16 @@ public class Combat extends BaseContent {
 		else if (isUnarmedCombatButDealLightningDamage()) {
 			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			damage = Math.round(damage * lightningDamageBoostedByDao());
-            doLightningDamage(damage, true, true);
+            doPlayerLightningDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
-            doLightningDamage(damage, true, true);
+            doPlayerLightningDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 			if (player.hasFourArms()) {
-				doLightningDamage(damage, true, true);
+				doPlayerLightningDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
-				doLightningDamage(damage, true, true);
+				doPlayerLightningDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
@@ -4102,16 +4102,16 @@ public class Combat extends BaseContent {
 		else if (isUnarmedCombatButDealDarknessDamage()) {
 			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			damage = Math.round(damage * darknessDamageBoostedByDao());
-            doDarknessDamage(damage, true, true);
+            doPlayerDarknessDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
-            doDarknessDamage(damage, true, true);
+            doPlayerDarknessDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 			if (player.hasFourArms()) {
-				doDarknessDamage(damage, true, true);
+				doPlayerDarknessDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
-				doDarknessDamage(damage, true, true);
+				doPlayerDarknessDamage(damage, true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
@@ -4119,15 +4119,15 @@ public class Combat extends BaseContent {
 		}
         else if (player.weapon == weapons.MGSWORD) {
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-			doMagicDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 		}
         else if (player.weapon == weapons.MCLAWS) {
-			doMagicDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
-            doMagicDamage(damage, true, true);
+            doPlayerMagDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 		}
@@ -4139,7 +4139,7 @@ public class Combat extends BaseContent {
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
             else {
-                doPhysicalDamage(Math.round(damage * 0.75), true, true);
+                doPlayerPhysDamage(Math.round(damage * 0.75), true, true);
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.15), true, true);
                 if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(Math.round(monster.lustVuln * damage * 0.0125 * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25))));
 				else monster.teased(Math.round(monster.lustVuln * damage * 0.0125));
@@ -4149,29 +4149,29 @@ public class Combat extends BaseContent {
         }
 		else if (player.weapon == weapons.PRURUMI) {
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-			doPhysicalDamage(damage, true, true);
+			doPlayerPhysDamage(damage, true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-			if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
+			if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.spe >= 150) {
-				doPhysicalDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
+				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
 			if (player.spe >= 225) {
-				doPhysicalDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
+				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
 			if (player.spe >= 300) {
-				doPhysicalDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
+				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
@@ -4247,16 +4247,16 @@ public class Combat extends BaseContent {
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
 			damage = Math.round(damage * fireDamageBoostedByDao());
-            doFireDamage(damage, true, true);
+            doPlayerFireDamage(damage, true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 			if (player.hasPerk(PerkLib.FlurryOfBlows)) {
-				doFireDamage(damage, true, true);
+				doPlayerFireDamage(damage, true, true);
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
-				doFireDamage(damage, true, true);
+				doPlayerFireDamage(damage, true, true);
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
@@ -4270,16 +4270,16 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
 			damage = Math.round(damage * iceDamageBoostedByDao());
-            doIceDamage(damage, true, true);
+            doPlayerIceDamage(damage, true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 			if (player.hasPerk(PerkLib.FlurryOfBlows)) {
-				doIceDamage(damage, true, true);
+				doPlayerIceDamage(damage, true, true);
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
-				doIceDamage(damage, true, true);
+				doPlayerIceDamage(damage, true, true);
 				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
@@ -4299,10 +4299,10 @@ public class Combat extends BaseContent {
 			}
             doPhysicalDamage(damage, true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-			if (player.weapon == weapons.VGRAVEH) doFireDamage(Math.round(damage * fireDamageBoostedByDao() * 0.25), true, true);
-			if (player.weapon == weapons.GGRAVEA) doIceDamage(Math.round(damage * iceDamageBoostedByDao() * 0.25), true, true);
-			if (player.weapon == weapons.SGRAVES) doLightningDamage(Math.round(damage * lightningDamageBoostedByDao() * 0.25), true, true);
-			if (player.weapon == weapons.UGRAVES) doDarknessDamage(Math.round(damage * darknessDamageBoostedByDao() * 0.25), true, true);
+			if (player.weapon == weapons.VGRAVEH) doPlayerFireDamage(Math.round(damage * fireDamageBoostedByDao() * 0.25), true, true);
+			if (player.weapon == weapons.GGRAVEA) doPlayerIceDamage(Math.round(damage * iceDamageBoostedByDao() * 0.25), true, true);
+			if (player.weapon == weapons.SGRAVES) doPlayerLightningDamage(Math.round(damage * lightningDamageBoostedByDao() * 0.25), true, true);
+			if (player.weapon == weapons.UGRAVES) doPlayerDarknessDamage(Math.round(damage * darknessDamageBoostedByDao() * 0.25), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.weapon == weapons.DAISHO) {
@@ -4314,7 +4314,7 @@ public class Combat extends BaseContent {
 		}
 		if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) {
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-			doLightningDamage(Math.round(damage * 0.3), true, true);
+			doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 		}
@@ -4343,7 +4343,7 @@ public class Combat extends BaseContent {
 			if (player.weaponOff == weapons.VGRAVEH) damage *= 1.25;
 			damage = Math.round(damage * fireDamageBoostedByDao());
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
-			doFireDamage(damage, true, true);
+			doPlayerFireDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.weaponOff == weapons.VGRAVEH && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
 				if (monster.hasStatusEffect(StatusEffects.BurnDoT)) monster.addStatusValue(StatusEffects.BurnDoT,1,1);
@@ -4357,7 +4357,7 @@ public class Combat extends BaseContent {
 			if (player.weaponOff == weapons.GGRAVEA) damage *= 1.25;
             damage = Math.round(damage * iceDamageBoostedByDao());
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
-            doIceDamage(damage, true, true);
+            doPlayerIceDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.weaponOff == weapons.GGRAVEA && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
 				if (monster.hasStatusEffect(StatusEffects.FrostburnDoT)) monster.addStatusValue(StatusEffects.FrostburnDoT,1,1);
@@ -4370,7 +4370,7 @@ public class Combat extends BaseContent {
 			if (player.weaponOff == weapons.SGRAVES) damage *= 1.25;
             damage = Math.round(damage * lightningDamageBoostedByDao());
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
-            doLightningDamage(damage, true, true);
+            doPlayerLightningDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.weaponOff == weapons.SGRAVES && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
 				if (monster.hasStatusEffect(StatusEffects.ElectrocutionDoT)) monster.addStatusValue(StatusEffects.ElectrocutionDoT,1,1);
@@ -4383,7 +4383,7 @@ public class Combat extends BaseContent {
 			if (player.weaponOff == weapons.UGRAVES) damage *= 1.25;
             damage = Math.round(damage * darknessDamageBoostedByDao());
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
-            doDarknessDamage(damage, true, true);
+            doPlayerDarknessDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.weaponOff == weapons.UGRAVES && player.hasStatusEffect(StatusEffects.ChargeWeapon) && crit && rand(10) == 0) {
 				if (monster.hasStatusEffect(StatusEffects.NecrosisDoT)) monster.addStatusValue(StatusEffects.NecrosisDoT,1,1);
@@ -4394,7 +4394,7 @@ public class Combat extends BaseContent {
         }
         else if (isPlasmaTypeWeaponOff()) {
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
-            doPlasmaDamage(damage, true, true);
+            doPlayerPlasmaDamage(damage, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
         }
@@ -4402,8 +4402,8 @@ public class Combat extends BaseContent {
 			var damageF:Number = Math.round(damage * 0.5 * fireDamageBoostedByDao());
 			var damageA:Number = Math.round(damage * 0.5 * acidDamageBoostedByDao());
 			if (canLayerSwordIntentAuraMH()) damage += layerSwordIntentAuraOnThis(damage);
-			doFireDamage(damageF, true, true);
-			doAcidDamage(damageA, true, true);
+			doPlayerFireDamage(damageF, true, true);
+			doPlayerAcidDamage(damageA, true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 		}
@@ -4432,28 +4432,28 @@ public class Combat extends BaseContent {
 		else if (player.weaponOff == weapons.PRURUMI) {
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
 			doPhysicalDamage(damage, true, true);
-			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-			if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
+			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doPlayerMagDamage(Math.round(damage * 0.2), true, true);
+			if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.spe >= 150) {
 				doPhysicalDamage(damage, true, true);
-				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doPlayerMagDamage(Math.round(damage * 0.2), true, true);
+				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
 			if (player.spe >= 225) {
 				doPhysicalDamage(damage, true, true);
-				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doPlayerMagDamage(Math.round(damage * 0.2), true, true);
+				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
 			if (player.spe >= 300) {
 				doPhysicalDamage(damage, true, true);
-				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doLightningDamage(Math.round(damage * 0.3), true, true);
+				if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doPlayerMagDamage(Math.round(damage * 0.2), true, true);
+				if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 				if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			}
@@ -4469,10 +4469,10 @@ public class Combat extends BaseContent {
 			}
             doPhysicalDamage(damage, true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
-			if (player.weaponOff == weapons.VGRAVEH) doFireDamage(Math.round(damage * fireDamageBoostedByDao() * 0.25), true, true);
-			if (player.weaponOff == weapons.GGRAVEA) doIceDamage(Math.round(damage * iceDamageBoostedByDao() * 0.25), true, true);
-			if (player.weaponOff == weapons.SGRAVES) doLightningDamage(Math.round(damage * lightningDamageBoostedByDao() * 0.25), true, true);
-			if (player.weaponOff == weapons.UGRAVES) doDarknessDamage(Math.round(damage * darknessDamageBoostedByDao() * 0.25), true, true);
+			if (player.weaponOff == weapons.VGRAVEH) doPlayerFireDamage(Math.round(damage * fireDamageBoostedByDao() * 0.25), true, true);
+			if (player.weaponOff == weapons.GGRAVEA) doPlayerIceDamage(Math.round(damage * iceDamageBoostedByDao() * 0.25), true, true);
+			if (player.weaponOff == weapons.SGRAVES) doPlayerLightningDamage(Math.round(damage * lightningDamageBoostedByDao() * 0.25), true, true);
+			if (player.weaponOff == weapons.UGRAVES) doPlayerDarknessDamage(Math.round(damage * darknessDamageBoostedByDao() * 0.25), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 			if (player.weaponOff == weapons.DAISHO) {
@@ -4484,7 +4484,7 @@ public class Combat extends BaseContent {
 		}
 		if (player.hasStatusEffect(StatusEffects.AlchemicalThunderBuff)) {
 			if (canLayerSwordIntentAuraOH()) damage += layerSwordIntentAuraOnThis(damage);
-			doLightningDamage(Math.round(damage * 0.3), true, true);
+			doPlayerLightningDamage(Math.round(damage * 0.3), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 		}
@@ -4522,41 +4522,41 @@ public class Combat extends BaseContent {
     public function doArcheryDamage(damage:Number, type:Number = 0):void {
         var ignoreDR:Boolean = ((player.hasPerk(PerkLib.DeadlyAim) && (type == 0 || type == 2)) || (player.hasPerk(PerkLib.Penetrator) && type == 1));
         if (flags[kFLAGS.ELEMENTAL_ARROWS] == 1) {
-			doFireDamage(damage, true, true, ignoreDR);
+			doPlayerFireDamage(damage, true, true, ignoreDR);
 		}
         else if (flags[kFLAGS.ELEMENTAL_ARROWS] == 2) {
-			doIceDamage(damage, true, true, ignoreDR);
+			doPlayerIceDamage(damage, true, true, ignoreDR);
 		}
         else if (flags[kFLAGS.ELEMENTAL_ARROWS] == 3) {
-			doLightningDamage(damage, true, true, ignoreDR);
+			doPlayerLightningDamage(damage, true, true, ignoreDR);
 		}
         else if (flags[kFLAGS.ELEMENTAL_ARROWS] == 4) {
-			doDarknessDamage(damage, true, true, ignoreDR);
+			doPlayerDarknessDamage(damage, true, true, ignoreDR);
 		}
         else if (flags[kFLAGS.ELEMENTAL_ARROWS] == 5) {
-			doWaterDamage(damage, true, true, ignoreDR);
+			doPlayerWaterDamage(damage, true, true, ignoreDR);
 		}
         else if (flags[kFLAGS.ELEMENTAL_ARROWS] == 6) {
-			doWindDamage(damage, true, true, ignoreDR);
+			doPlayerWindDamage(damage, true, true, ignoreDR);
 		}
         else if (flags[kFLAGS.ELEMENTAL_ARROWS] == 7) {
-			doEarthDamage(damage, true, true, ignoreDR);
+			doPlayerEarthDamage(damage, true, true, ignoreDR);
 		}
         else if (flags[kFLAGS.ELEMENTAL_ARROWS] == 8) {
-			doAcidDamage(damage, true, true, ignoreDR);
+			doPlayerAcidDamage(damage, true, true, ignoreDR);
 		}
 		else if (type == 2) {
-			doMagicDamage(damage, true, true, ignoreDR);
+			doPlayerMagDamage(damage, true, true, ignoreDR);
 		}
         else {
-			doPhysicalDamage(damage, true, true, ignoreDR);
+			doPlayerPhysDamage(damage, true, true, ignoreDR);
 		}
 		if (player.statStore.hasBuff("FoxflamePelt")) {
-			doFireDamage((damage*2), true, true, ignoreDR);
+			doPlayerFireDamage((damage*2), true, true, ignoreDR);
 			monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 		}
         if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
-			doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
+			doPlayerMagDamage(Math.round(damage * 0.2), true, true, ignoreDR);
 		}
     }
 
@@ -4679,19 +4679,19 @@ public class Combat extends BaseContent {
 		if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
 			if (player.weaponRange == weaponsrange.RTKNIFE) {
 				damage = Math.round(damage * fireDamageBoostedByDao());
-				doFireDamage(damage, true, true);
+				doPlayerFireDamage(damage, true, true);
 			}
 			else if (player.weaponRange == weaponsrange.STKNIFE) {
 				damage = Math.round(damage * iceDamageBoostedByDao());
-				doIceDamage(damage, true, true);
+				doPlayerIceDamage(damage, true, true);
 			}
 			else if (player.weaponRange == weaponsrange.TTKNIFE) {
 				damage = Math.round(damage * lightningDamageBoostedByDao());
-				doLightningDamage(damage, true, true);
+				doPlayerLightningDamage(damage, true, true);
 			}
 			else if (player.weaponRange == weaponsrange.ATKNIFE) {
 				damage = Math.round(damage * darknessDamageBoostedByDao());
-				doDarknessDamage(damage, true, true);
+				doPlayerDarknessDamage(damage, true, true);
 			}
 			else {
 				doPhysicalDamage(damage, true, true);
@@ -4699,7 +4699,7 @@ public class Combat extends BaseContent {
 			}
 		}
 		else if (player.statStore.hasBuff("FoxflamePelt")) {
-			doFireDamage((damage * 2), true, true);
+			doPlayerFireDamage((damage * 2), true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true);
 			monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 		}
@@ -4781,39 +4781,39 @@ public class Combat extends BaseContent {
                 outputText("You form and unleash a wind blade. ");
                 damage = magic.calcGaleModImpl(damage, true);
                 damage *= windDamageBoostedByDao();
-				doWindDamage(damage, true, true);
+				doPlayerWindDamage(damage, true, true);
                 break;
             case ElementalRace.ELEMENT_GNOME:
                 outputText("You launch a huge rock. ");
                 damage = magic.calcQuakeModImpl(damage, true);
                 damage *= earthDamageBoostedByDao();
-				doEarthDamage(damage, true, true);
+				doPlayerEarthDamage(damage, true, true);
                 break;
             case ElementalRace.ELEMENT_IGNIS:
                 outputText("You charge and toss a fireball. ");
 				damage = magic.calcInfernoModImpl(damage, true);
                 damage *= fireDamageBoostedByDao();
-				doFireDamage(damage, true, true);
+				doPlayerFireDamage(damage, true, true);
                 break;
             case ElementalRace.ELEMENT_UNDINE:
                 outputText("You unleash an arrow of lethally pressurized water. ");
 				damage = magic.calcTideModImpl(damage, true);
                 damage *= waterDamageBoostedByDao();
-				doWaterDamage(damage, true, true);
+				doPlayerWaterDamage(damage, true, true);
                 break;
             case 5:
                 outputText("You form and unleash a wave of moonlight. ");
-				doMagicDamage(damage, true, true);
+				doPlayerMagDamage(damage, true, true);
                 break;
             case 6:
                 outputText("You point your flame sword at the enemy, shooting a searing ray from its tip. ");
                 damage *= fireDamageBoostedByDao();
-                doFireDamage(damage, true, true);
+                doPlayerFireDamage(damage, true, true);
                 break;
             default:
                 outputText("You form and unleash a wind blade. ");
                 damage *= windDamageBoostedByDao();
-				doWindDamage(damage, true, true);
+				doPlayerWindDamage(damage, true, true);
                 break;
         }
 		if (player.weapon == weapons.MGSWORD || player.weapon == weapons.MCLAWS || player.weapon is Tidarion) {
@@ -5270,7 +5270,7 @@ public class Combat extends BaseContent {
 					if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 				}
 				else if (player.statStore.hasBuff("FoxflamePelt")) {
-					doFireDamage((damage * 2), true, true, ignoreDR);
+					doPlayerFireDamage((damage * 2), true, true, ignoreDR);
 					if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
 					monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 					if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -5297,19 +5297,19 @@ public class Combat extends BaseContent {
                             if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
 								doPhysicalDamage(damage, true, true, ignoreDR);
 								doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
-								if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+								if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doPlayerFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
 								if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
-									doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
-									doAcidDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+									doPlayerFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+									doPlayerAcidDamage(Math.round(damage * 1.2), true, true, ignoreDR);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							}
 							else {
 								doPhysicalDamage(damage, true, true, ignoreDR);
-								if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(damage, true, true, ignoreDR);
+								if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doPlayerFireDamage(damage, true, true, ignoreDR);
 								if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
-									doFireDamage(damage, true, true, ignoreDR);
-									doAcidDamage(damage, true, true, ignoreDR);
+									doPlayerFireDamage(damage, true, true, ignoreDR);
+									doPlayerAcidDamage(damage, true, true, ignoreDR);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							}
@@ -5318,21 +5318,21 @@ public class Combat extends BaseContent {
 					}
 					else if (player.weaponRange == weaponsrange.ENERGYG || player.weaponRange == weaponsrange.TENERGYG) {
 						if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
-							doPlasmaDamage(damage, true, true, ignoreDR);
+							doPlayerPlasmaDamage(damage, true, true, ignoreDR);
 							doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
-							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doPlayerFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
 							if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
-								doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
-								doAcidDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+								doPlayerFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+								doPlayerAcidDamage(Math.round(damage * 1.2), true, true, ignoreDR);
 							}
 							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 						}
 						else {
-							doPlasmaDamage(damage, true, true, ignoreDR);
-							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(damage, true, true, ignoreDR);
+							doPlayerPlasmaDamage(damage, true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doPlayerFireDamage(damage, true, true, ignoreDR);
 							if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
-								doFireDamage(damage, true, true, ignoreDR);
-								doAcidDamage(damage, true, true, ignoreDR);
+								doPlayerFireDamage(damage, true, true, ignoreDR);
+								doPlayerAcidDamage(damage, true, true, ignoreDR);
 							}
 							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 						}
@@ -5342,19 +5342,19 @@ public class Combat extends BaseContent {
 						if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
 							doPhysicalDamage(damage, true, true, ignoreDR);
 							doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
-							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doPlayerFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
 							if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
-								doFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
-								doAcidDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+								doPlayerFireDamage(Math.round(damage * 1.2), true, true, ignoreDR);
+								doPlayerAcidDamage(Math.round(damage * 1.2), true, true, ignoreDR);
 							}
 							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 						}
 						else {
 							doPhysicalDamage(damage, true, true, ignoreDR);
-							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doFireDamage(damage, true, true, ignoreDR);
+							if (player.hasKeyItem("Improved Ammo Chemistry MK3") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK4") >= 0) doPlayerFireDamage(damage, true, true, ignoreDR);
 							if (player.hasKeyItem("Improved Ammo Chemistry MK5") >= 0 || player.hasKeyItem("Improved Ammo Chemistry MK6") >= 0) {
-								doFireDamage(damage, true, true, ignoreDR);
-								doAcidDamage(damage, true, true, ignoreDR);
+								doPlayerFireDamage(damage, true, true, ignoreDR);
+								doPlayerAcidDamage(damage, true, true, ignoreDR);
 							}
 							if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 						}
@@ -5368,18 +5368,18 @@ public class Combat extends BaseContent {
                         outputText(".  It's clearly very painful. ");
                         if (player.weaponRange == weaponsrange.HARKON1 || player.weaponRange == weaponsrange.HARKON2) {
 							if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
-								doTrueDamage(damage, true, true);
+								doPlayerTrueDamage(damage, true, true);
 								doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
 								if (player.statStore.hasBuff("FoxflamePelt")) {
-									doFireDamage((damage * 2), true, true, ignoreDR);
+									doPlayerFireDamage((damage * 2), true, true, ignoreDR);
 									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 							}
 							else {
-								doTrueDamage(damage, true, true);
+								doPlayerTrueDamage(damage, true, true);
 								if (player.statStore.hasBuff("FoxflamePelt")) {
-									doFireDamage((damage * 2), true, true, ignoreDR);
+									doPlayerFireDamage((damage * 2), true, true, ignoreDR);
 									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -5389,7 +5389,7 @@ public class Combat extends BaseContent {
 							if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
 								doMagicDamage(Math.round(damage * 1.2), true, true, ignoreDR);
 								if (player.statStore.hasBuff("FoxflamePelt")) {
-									doFireDamage((damage * 2), true, true, ignoreDR);
+									doPlayerFireDamage((damage * 2), true, true, ignoreDR);
 									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -5397,7 +5397,7 @@ public class Combat extends BaseContent {
 							else {
 								doMagicDamage(damage, true, true, ignoreDR);
 								if (player.statStore.hasBuff("FoxflamePelt")) {
-									doFireDamage((damage * 2), true, true, ignoreDR);
+									doPlayerFireDamage((damage * 2), true, true, ignoreDR);
 									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 								}
 								if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -5412,7 +5412,7 @@ public class Combat extends BaseContent {
 										if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 									}
 									else if (player.statStore.hasBuff("FoxflamePelt")) {
-										doFireDamage((damage * 2), true, true, ignoreDR);
+										doPlayerFireDamage((damage * 2), true, true, ignoreDR);
 										if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
 										monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 										if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -5430,7 +5430,7 @@ public class Combat extends BaseContent {
 									if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 								}
 								else if (player.statStore.hasBuff("FoxflamePelt")) {
-									doFireDamage((damage * 2), true, true, ignoreDR);
+									doPlayerFireDamage((damage * 2), true, true, ignoreDR);
 									if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) doMagicDamage(Math.round(damage * 0.2), true, true, ignoreDR);
 									monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
 									if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
@@ -5467,7 +5467,7 @@ public class Combat extends BaseContent {
 					}
 					if (player.weaponRange == weaponsrange.ENERGYG || player.weaponRange == weaponsrange.TENERGYG) {
 						outputText(" ");
-                        doPlasmaDamage(damage, true, true, ignoreDR);
+                        doPlayerPlasmaDamage(damage, true, true, ignoreDR);
 						if (player.hasStatusEffect(StatusEffects.GreasedLightning)) addGreasedLightning(damage);
 						if (crit) outputText(" <b>*Critical Hit!*</b>");
 					}
@@ -6882,7 +6882,7 @@ public class Combat extends BaseContent {
 			damage *= 0.1;
 			damage = Math.round(damage);
 			outputText("potent discharge ");
-			doLightningDamage(damage, true, true);
+			doPlayerLightningDamage(damage, true, true);
 			outputText(" damage!");
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			if (!monster.monsterIsStunned()) {
@@ -8062,8 +8062,8 @@ public class Combat extends BaseContent {
 								damageA *= 5;
 							}
 							outputText("  The fluids on your weapon ignite on impact creating a small explosion!");
-							doFireDamage(damageF, true, true);
-							doAcidDamage(damageA, true, true);
+							doPlayerFireDamage(damageF, true, true);
+							doPlayerAcidDamage(damageA, true, true);
 						}
 					}
                     //Weapon Procs!
@@ -8653,8 +8653,8 @@ public class Combat extends BaseContent {
 								damageA *= 5;
 							}
 							outputText("  The fluids on your weapon ignite on impact creating a small explosion!");
-							doFireDamage(damageF, true, true);
-							doAcidDamage(damageA, true, true);
+							doPlayerFireDamage(damageF, true, true);
+							doPlayerAcidDamage(damageA, true, true);
 						}
 					}
                     //Weapon Procs!
@@ -8962,7 +8962,7 @@ public class Combat extends BaseContent {
 	public function layerFoxflamePeltOnThis(damage:Number, display:Boolean = true):void {
 		var ectoB:Number = 2;
 		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM)) ectoB += 1;
-		doFireDamage(Math.round(damage * ectoB * fireDamageBoostedByDao()), true, display);
+		doPlayerFireDamage(Math.round(damage * ectoB * fireDamageBoostedByDao()), true, display);
 		var foxpunchlust:Number = ((5 + player.playerCorruption() / 16) * ectoB);
 		monster.teased((monster.lustVuln * foxpunchlust), false);
 	}
@@ -8999,7 +8999,7 @@ public class Combat extends BaseContent {
 	}
 	
 	public function addGreasedLightning(damage:Number, display:Boolean = true):void {
-		doLightningDamage(Math.round(damage * player.statusEffectv1(StatusEffects.GreasedLightning) * lightningDamageBoostedByDao()), true, display);
+		doPlayerLightningDamage(Math.round(damage * player.statusEffectv1(StatusEffects.GreasedLightning) * lightningDamageBoostedByDao()), true, display);
 		player.removeStatusEffect(StatusEffects.GreasedLightning);
 	}
 
@@ -9856,10 +9856,10 @@ public class Combat extends BaseContent {
             if (monster is Doppleganger) {
                 if (!monster.monsterIsStunned()) {
                     if (damage > 0) {
-						if (Forgefather.channelInlay == "ruby") doFireDamage(damage, false);
-						else if (Forgefather.channelInlay == "sapphire") doIceDamage(damage, false);
-						else if (Forgefather.channelInlay == "topaz") doLightningDamage(damage, false);
-						else if (Forgefather.channelInlay == "amethyst") doDarknessDamage(damage, false);
+						if (Forgefather.channelInlay == "ruby") doPlayerFireDamage(damage, false);
+						else if (Forgefather.channelInlay == "sapphire") doPlayerIceDamage(damage, false);
+						else if (Forgefather.channelInlay == "topaz") doPlayerLightningDamage(damage, false);
+						else if (Forgefather.channelInlay == "amethyst") doPlayerDarknessDamage(damage, false);
                         else doPhysicalDamage(damage, false);
                         (monster as Doppleganger).mirrorAttack(damage);
                     }
@@ -9894,29 +9894,29 @@ public class Combat extends BaseContent {
 				if (BelisaFollower.HolyBand6 > 0) damage *= 1.25;
                 switch(SpecialEffect){
                     case "fire":
-                        doFireDamage(damage, true, true);
+                        doPlayerFireDamage(damage, true, true);
                         break;
                     case "foxflame":
-                        doFireDamage((damage * 2), true, true);
+                        doPlayerFireDamage((damage * 2), true, true);
                         monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
                         break;
                     case "ice":
-                        doIceDamage(damage, true, true);
+                        doPlayerIceDamage(damage, true, true);
                         break;
                     case "lightning":
-                        doLightningDamage(damage, true, true);
+                        doPlayerLightningDamage(damage, true, true);
                         break;
                     case "darkness":
-                        doDarknessDamage(damage, true, true);
+                        doPlayerDarknessDamage(damage, true, true);
                         break;
                     case "acid":
-                        doAcidDamage(damage, true, true);
+                        doPlayerAcidDamage(damage, true, true);
                         break;
                     default:
-                        if (Forgefather.channelInlay == "ruby") doFireDamage(damage, true, true);
-						else if (Forgefather.channelInlay == "sapphire") doIceDamage(damage, true, true);
-						else if (Forgefather.channelInlay == "topaz") doLightningDamage(damage, true, true);
-						else if (Forgefather.channelInlay == "amethyst") doDarknessDamage(damage, true, true);
+                        if (Forgefather.channelInlay == "ruby") doPlayerFireDamage(damage, true, true);
+						else if (Forgefather.channelInlay == "sapphire") doPlayerIceDamage(damage, true, true);
+						else if (Forgefather.channelInlay == "topaz") doPlayerLightningDamage(damage, true, true);
+						else if (Forgefather.channelInlay == "amethyst") doPlayerDarknessDamage(damage, true, true);
                         else doPhysicalDamage(damage, true, true);
                 }
 				// Below down here are just for lust damage dont be confused by The Enemy I mean the damage variable
@@ -10047,7 +10047,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
         damage *= 2;
         damage = Math.round(damage);
-        doLightningDamage(damage, true, true);
+        doPlayerLightningDamage(damage, true, true);
         if (crit1) outputText(" <b>*Critical Hit!*</b>");
         dynStats("lus", (Math.round(player.maxLust() * 0.02)), "scale", false);
         var lustDmgF:Number = 20 + rand(6);
@@ -11210,16 +11210,16 @@ public class Combat extends BaseContent {
     }
 
 	public function doPlayerPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doMagicDamage(damage, apply, display, ignoreDR);//0
+        return doPhysicalDamage(damage, apply, display, ignoreDR);//0
     }
     public function doPlayerAuraPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doMagicDamage(damage, apply, display, ignoreDR);//1
+        return doPhysicalDamage(damage, apply, display, ignoreDR);//1
     }
     public function doPlayerDoTPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doDamage(damage, apply, display, ignoreDR);//2
+        return doPhysicalDamage(damage, apply, display, ignoreDR);//2
     }
     public function doMinionPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doDamage(damage, apply, display, ignoreDR);//3
+        return doPhysicalDamage(damage, apply, display, ignoreDR);//3
     }
 	public function doPhysicalDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 1 && monster.monsterIsBleeding()) {
@@ -11295,7 +11295,7 @@ public class Combat extends BaseContent {
     public function doPlayerAuraMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         return doMagicDamage(damage, apply, display, ignoreDR);//1
     }
-    public function doPlayerDoTMagicDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlayerDoTMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         return doMagicDamage(damage, apply, display, ignoreDR);//2
     }
     public function doMinionMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
@@ -11440,19 +11440,27 @@ public class Combat extends BaseContent {
 		if (player.perkv1(IMutationsLib.MyconidSporeIM) == 4 && player.hasStatusEffect(StatusEffects.SporeCloud)) damage *= (1 + (0.1 * player.statusEffectv1(StatusEffects.SporeCloud)));
         return damage;
     }
+	private function doCamouflageDamageMultiplier(damage:Number):Number {
+		var SAMulti:Number = 2;
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 1) SAMulti += player.perkv1(IMutationsLib.ChameleonSkinIM);
+		SAMulti *= 2;
+		damage *= SAMulti;
+		monster.removeStatusEffect(StatusEffects.Camouflage);
+		return damage;
+	}
 
     public function doPlayerFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doMagicDamage(damage, apply, display, ignoreDR);//0
+        return doFireDamage(damage, apply, display, ignoreDR);//0
     }
     public function doPlayerAuraFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doMagicDamage(damage, apply, display, ignoreDR);//1
+        return doFireDamage(damage, apply, display, ignoreDR);//1
     }
     public function doPlayerDoTFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         return doFireDamage(damage, apply, display, ignoreDR);//2
     }
     public function doMinionFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         return doFireDamage(damage, apply, display, ignoreDR);//3
-    }
+    }//, subtype:Number
     public function doFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11550,7 +11558,7 @@ public class Combat extends BaseContent {
     }
     public function doMinionIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         return doIceDamage(damage, apply, display, ignoreDR);//3
-    }
+    }//, subtype:Number
     public function doIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11634,7 +11642,7 @@ public class Combat extends BaseContent {
     }
     public function doMinionLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         return doLightningDamage(damage, apply, display, ignoreDR);//3
-    }
+    }//, subtype:Number
     public function doLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11718,7 +11726,7 @@ public class Combat extends BaseContent {
     }
     public function doMinionDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         return doDarknessDamage(damage, apply, display, ignoreDR);//3
-    }
+    }//, subtype:Number
 	public function doDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
@@ -11785,18 +11793,18 @@ public class Combat extends BaseContent {
     }
 
     public function doPlayerPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doPoisonDamage(damage, apply, display, ignoreDR);//0
+        return doPoisonDamage(damage, 0, apply, display, ignoreDR);
     }
     public function doPlayerAuraPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doPoisonDamage(damage, apply, display, ignoreDR);//1
+        return doPoisonDamage(damage, 1, apply, display, ignoreDR);
     }
     public function doPlayerDoTPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doPoisonDamage(damage, apply, display, ignoreDR);//2
+        return doPoisonDamage(damage, 2, apply, display, ignoreDR);
     }
     public function doMinionPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doPoisonDamage(damage, apply, display, ignoreDR);//3
+        return doPoisonDamage(damage, 3, apply, display, ignoreDR);
     }
-	public function doPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+	public function doPoisonDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -11804,6 +11812,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 1) doCamouflageDamageMultiplier(damage);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -11856,18 +11865,18 @@ public class Combat extends BaseContent {
     }
 
     public function doPlayerWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWindDamage(damage, apply, display, ignoreDR);//0
+        return doWindDamage(damage, 0, apply, display, ignoreDR);
     }
     public function doPlayerAuraWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWindDamage(damage, apply, display, ignoreDR);//1
+        return doWindDamage(damage, 1, apply, display, ignoreDR);
     }
     public function doPlayerDoTWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWindDamage(damage, apply, display, ignoreDR);//2
+        return doWindDamage(damage, 2, apply, display, ignoreDR);
     }
     public function doMinionWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWindDamage(damage, apply, display, ignoreDR);//3
+        return doWindDamage(damage, 3, apply, display, ignoreDR);
     }
-	public function doWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+	public function doWindDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -11875,6 +11884,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 1) doCamouflageDamageMultiplier(damage);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -11927,18 +11937,18 @@ public class Combat extends BaseContent {
     }
 
     public function doPlayerWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWaterDamage(damage, apply, display, ignoreDR);//0
+        return doWaterDamage(damage, 0, apply, display, ignoreDR);
     }
     public function doPlayerAuraWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWaterDamage(damage, apply, display, ignoreDR);//1
+        return doWaterDamage(damage, 1, apply, display, ignoreDR);
     }
     public function doPlayerDoTWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWaterDamage(damage, apply, display, ignoreDR);//2
+        return doWaterDamage(damage, 2, apply, display, ignoreDR);
     }
     public function doMinionWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doWaterDamage(damage, apply, display, ignoreDR);//3
+        return doWaterDamage(damage, 3, apply, display, ignoreDR);
     }
-	public function doWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+	public function doWaterDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -11946,6 +11956,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 1) doCamouflageDamageMultiplier(damage);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -11998,18 +12009,18 @@ public class Combat extends BaseContent {
     }
 
     public function doPlayerEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doEarthDamage(damage, apply, display, ignoreDR);//0
+        return doEarthDamage(damage, 0, apply, display, ignoreDR);
     }
     public function doPlayerAuraEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doEarthDamage(damage, apply, display, ignoreDR);//1
+        return doEarthDamage(damage, 1, apply, display, ignoreDR);
     }
     public function doPlayerDoTEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doEarthDamage(damage, apply, display, ignoreDR);//2
+        return doEarthDamage(damage, 2, apply, display, ignoreDR);
     }
     public function doMinionEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doEarthDamage(damage, apply, display, ignoreDR);//3
+        return doEarthDamage(damage, 3, apply, display, ignoreDR);
     }
-	public function doEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+	public function doEarthDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -12017,6 +12028,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 1) doCamouflageDamageMultiplier(damage);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -12069,18 +12081,18 @@ public class Combat extends BaseContent {
     }
 
     public function doPlayerAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doAcidDamage(damage, apply, display, ignoreDR);//0
+        return doAcidDamage(damage, 0, apply, display, ignoreDR);
     }
     public function doPlayerAuraAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doAcidDamage(damage, apply, display, ignoreDR);//1
+        return doAcidDamage(damage, 1, apply, display, ignoreDR);
     }
     public function doPlayerDoTAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doAcidDamage(damage, apply, display, ignoreDR);//2
+        return doAcidDamage(damage, 2, apply, display, ignoreDR);
     }
     public function doMinionAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doAcidDamage(damage, apply, display, ignoreDR);//3
+        return doAcidDamage(damage, 3, apply, display, ignoreDR);
     }
-	public function doAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+	public function doAcidDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
         MDOCount++; // for multipile attacks to prevent stupid repeating of damage messages
         damage = doElementalDamageMultiplier(damage);
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
@@ -12088,6 +12100,7 @@ public class Combat extends BaseContent {
 		if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
+		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 1) doCamouflageDamageMultiplier(damage);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.hasPerk(PerkLib.MeltingPot) && monster.monsterIsAcidBurned()) damage *= (1 + (0.1 * player.companionsInPcPartyCount()));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
@@ -12141,38 +12154,38 @@ public class Combat extends BaseContent {
     }
 
     public function doPlayerPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doPlasmaDamage(damage, apply, display, ignoreDR);//0
+        return doPlasmaDamage(damage, 0, apply, display, ignoreDR);
     }
     public function doPlayerAuraPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doPlasmaDamage(damage, apply, display, ignoreDR);//1
+        return doPlasmaDamage(damage, 1, apply, display, ignoreDR);
     }
     public function doPlayerDoTPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doPlasmaDamage(damage, apply, display, ignoreDR);//2
+        return doPlasmaDamage(damage, 2, apply, display, ignoreDR);
     }
-    public function doPlasmaDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doPlasmaDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		var split:Number = (damage * 0.5);
 		var fdamage:Number = Math.round(split * fireDamageBoostedByDao());
 		var ldamage:Number = Math.round(split * lightningDamageBoostedByDao());
-		doFireDamage(fdamage, apply, display, ignoreDR);
-		doLightningDamage(ldamage, apply, display, ignoreDR);
+		doPlayerFireDamage(fdamage, apply, display, ignoreDR);
+		doPlayerLightningDamage(ldamage, apply, display, ignoreDR);
 		return split;
 	}
 	
 	public function doPlayerBlackIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doBlackIceDamage(damage, apply, display, ignoreDR);//0
+        return doBlackIceDamage(damage, 0, apply, display, ignoreDR);
     }
     public function doPlayerAuraBlackIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doBlackIceDamage(damage, apply, display, ignoreDR);//1
+        return doBlackIceDamage(damage, 1, apply, display, ignoreDR);
     }
     public function doPlayerDoTBlackIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-        return doBlackIceDamage(damage, apply, display, ignoreDR);//2
+        return doBlackIceDamage(damage, 2, apply, display, ignoreDR);
     }
-    public function doBlackIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+    public function doBlackIceDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		var split:Number = (damage * 0.5);
 		var idamage:Number = Math.round(split * iceDamageBoostedByDao());
 		var ddamage:Number = Math.round(split * darknessDamageBoostedByDao());
-		doIceDamage(idamage, apply, display, ignoreDR);
-		doDarknessDamage(ddamage, apply, display, ignoreDR);
+		doPlayerIceDamage(idamage, apply, display, ignoreDR);
+		doPlayerDarknessDamage(ddamage, apply, display, ignoreDR);
 		return split;
 	}
 	
@@ -12949,7 +12962,7 @@ public class Combat extends BaseContent {
 			damagePA = Math.round(damagePA);
 			damagePA = fixPercentDamage(damagePA);
 			outputText("Your sheer overwhelming psychic aura slowly affects [themonster] causing [monster him] ");
-			doPsychicDamage(damagePA, true, true);
+			doPlayerAuraPsychicDamage(damagePA, true, true);
 			outputText(" damage!");
 			if (crit0) outputText(" <b>*Critical Hit!*</b>");
 			outputText("\n\n");
@@ -12973,7 +12986,7 @@ public class Combat extends BaseContent {
 				damageWG = Math.round(damageWG);
 				damageWG = fixPercentDamage(damageWG);
 				outputText("Your sheer overwhelming fost aura slowly affects [themonster] causing [monster him] ");
-				doIceDamage(damageWG, true, true);
+				doPlayerAuraIceDamage(damageWG, true, true);
 				outputText(" damage!");
 				if (critWG) outputText(" <b>*Critical Hit!*</b>");
 				outputText("\n\n");
@@ -13014,7 +13027,7 @@ public class Combat extends BaseContent {
                 damage = Math.round(damage);
                 damage = fixPercentDamage(damage);
                 outputText("Your aura of purity burns [themonster] with holy fire for ");
-                doFireDamage(damage, true, true);
+                doPlayerAuraFireDamage(damage, true, true);
                 outputText(" damage!");
                 if (crit) outputText(" <b>*Critical Hit!*</b>");
                 outputText("\n\n");
@@ -13156,7 +13169,7 @@ public class Combat extends BaseContent {
             lustDmgF = lustDmgF * monster.lustVuln;
             lustDmgF = Math.round(lustDmgF);
             outputText("Your opponent is struck by lightning as your lust storm rages on.")
-            damage0 = doLightningDamage(damage0, true, true);
+            damage0 = doPlayerAuraLightningDamage(damage0, true, true);
             if (crit1) outputText(" <b>*Critical!*</b>");
             monster.teased(lustDmgF, false);
             if (crit2) outputText(" <b>Critical!</b>");
@@ -13223,7 +13236,7 @@ public class Combat extends BaseContent {
                 damageBFA = Math.round(damageBFA * iceDamageBoostedByDao());
                 if (damageBFA > (monster.maxHP()/10)) damageBFA = Math.round(monster.maxHP()/10);
                 outputText("Your black frost aura chills [themonster] to the bone, dealing ");
-                doIceDamage(damageBFA, true, true);
+                doPlayerAuraIceDamage(damageBFA, true, true);
                 outputText(" damage!");
                 if (crit3) outputText(" <b>*Critical Hit!*</b>");
                 if (monster.plural) outputText(" Your opponents are affected by the freezing cold, slowing down their reflexes and thoughts as ice creeps on their body.");
@@ -15059,7 +15072,7 @@ public class Combat extends BaseContent {
 		}
 	}
 	private function repeatArcaneVenom2(dmg:Number, subtype:Number, poisonele:Number, crit:Boolean = true):void {
-		if (poisonele != 0) doPoisonDamage(poisonele, true, true);
+		if (poisonele != 0) doPlayerDoTPoisonDamage(poisonele, true, true);
 		dmg = Math.round(dmg * monster.lustVuln);
 		monster.teased(dmg, false);
 		if (crit) outputText(" <b>Critical!</b> " );
@@ -19285,7 +19298,7 @@ public function castPsychicBolt():void {
 	}
 	damage = Math.round(damage);
 	outputText(monster.capitalA + monster.short + " takes ");
-	doPsychicDamage(damage, true, true);
+	doPlayerPsychicDamage(damage, true, true);
 	outputText(" damage.");
 	if (crit) outputText(" <b>*Critical Hit!*</b>");
 	outputText("\n\n");
@@ -19311,7 +19324,7 @@ public function usePyrokinesis():void {
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
 	damage = Math.round(damage*fireDamageBoostedByDao());
-	doFireDamage(damage, true, true);
+	doPlayerFireDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function useHydrokinesis():void {
@@ -19327,7 +19340,7 @@ public function useHydrokinesis():void {
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
 	damage = Math.round(damage*waterDamageBoostedByDao());
-	doWaterDamage(damage, true, true);
+	doPlayerWaterDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function useCryokinesis():void {
@@ -19343,7 +19356,7 @@ public function useCryokinesis():void {
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
 	damage = Math.round(damage*iceDamageBoostedByDao());
-	doIceDamage(damage, true, true);
+	doPlayerIceDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function useGeokinesis():void {
@@ -19359,7 +19372,7 @@ public function useGeokinesis():void {
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
 	damage = Math.round(damage*earthDamageBoostedByDao());
-	doEarthDamage(damage, true, true);
+	doPlayerEarthDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function useElectrokinesis():void {
@@ -19375,7 +19388,7 @@ public function useElectrokinesis():void {
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
 	damage = Math.round(damage*lightningDamageBoostedByDao());
-	doLightningDamage(damage, true, true);
+	doPlayerLightningDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function useAerokinesis():void {
@@ -19391,7 +19404,7 @@ public function useAerokinesis():void {
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
 	damage = Math.round(damage*windDamageBoostedByDao());
-	doWindDamage(damage, true, true);
+	doPlayerWindDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function useUmbrakinesis():void {
@@ -19407,7 +19420,7 @@ public function useUmbrakinesis():void {
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
 	damage = Math.round(damage*darknessDamageBoostedByDao());
-	doDarknessDamage(damage, true, true);
+	doPlayerDarknessDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function useAcidokinesis():void {
@@ -19423,7 +19436,7 @@ public function useAcidokinesis():void {
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
 	damage = Math.round(damage*acidDamageBoostedByDao());
-	doAcidDamage(damage, true, true);
+	doPlayerAcidDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function useIonikinesis():void {
@@ -19438,7 +19451,7 @@ public function useIonikinesis():void {
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
-	doPlasmaDamage(damage, true, true);
+	doPlayerPlasmaDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function useCocytokinesis():void {
@@ -19453,7 +19466,7 @@ public function useCocytokinesis():void {
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
-	doBlackIceDamage(damage, true, true);
+	doPlayerBlackIceDamage(damage, true, true);
 	sharedKinesisEnding(damage, crit);
 }
 public function sharedKinesisMidpart(crit:Boolean):Number {

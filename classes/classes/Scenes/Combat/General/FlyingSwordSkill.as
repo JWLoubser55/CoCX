@@ -111,29 +111,29 @@ public class FlyingSwordSkill extends AbstractGeneral {
 
 		var damageFunc:Function;
 		switch(player.weaponFlyingSwords.element) {
-			case TAG_FIRE: 				damageFunc = doFireDamage;
+			case TAG_FIRE: 				damageFunc = doPlayerFireDamage;
 										break;
-			case TAG_ICE: 				damageFunc = doIceDamage;
+			case TAG_ICE: 				damageFunc = doPlayerIceDamage;
 										break;
-			case TAG_LIGHTNING: 		damageFunc = doLightningDamage;
+			case TAG_LIGHTNING: 		damageFunc = doPlayerLightningDamage;
 										break;
-			case TAG_DARKNESS: 			damageFunc = doDarknessDamage;
+			case TAG_DARKNESS: 			damageFunc = doPlayerDarknessDamage;
 										break;
-			case TAG_POISON: 			damageFunc = doPoisonDamage;
+			case TAG_POISON: 			damageFunc = doPlayerPoisonDamage;
 										break;
-			case TAG_WIND: 				damageFunc = doWindDamage;
+			case TAG_WIND: 				damageFunc = doPlayerWindDamage;
 										break;
-			case TAG_WATER: 			damageFunc = doWaterDamage;
+			case TAG_WATER: 			damageFunc = doPlayerWaterDamage;
 										break;
-			case TAG_EARTH: 			damageFunc = doEarthDamage;
+			case TAG_EARTH: 			damageFunc = doPlayerEarthDamage;
 										break;
-			case TAG_ACID: 				damageFunc = doAcidDamage;
+			case TAG_ACID: 				damageFunc = doPlayerAcidDamage;
 										break;
-			case TAG_PLASMA: 			damageFunc = doPlasmaDamage;
+			case TAG_PLASMA: 			damageFunc = doPlayerPlasmaDamage;
 										break;
-			case TAG_BLACKICE: 			damageFunc = doBlackIceDamage;
+			case TAG_BLACKICE: 			damageFunc = doPlayerBlackIceDamage;
 										break;
-			default: 					damageFunc = doPhysicalDamage;
+			default: 					damageFunc = doPlayerPhysDamage;
 										break;
 		}
 

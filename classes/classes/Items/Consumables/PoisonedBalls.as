@@ -42,7 +42,7 @@ package classes.Items.Consumables
 				}
 				if (game.monster.hasPerk(PerkLib.EnemyGroupType) || game.monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 5;
 				outputText(game.monster.capitalA + game.monster.short + " is hit with the Poisoned Balls!  They break apart, leaving " + game.monster.pronoun2 + " in a cloud of poison. ");
-				damage = SceneLib.combat.doPoisonDamage(damage, true, true);
+				damage = SceneLib.combat.doPlayerPoisonDamage(damage, true, true);
 				if (game.monster.HP < game.monster.minHP()) game.monster.HP = game.monster.minHP() - 1;
 			}
 			return(false);

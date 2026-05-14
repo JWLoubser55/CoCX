@@ -112,35 +112,35 @@ public class CreateElementSkill extends AbstractSoulSkill {
 		switch (element) {
 			case "Fire":
 				damage = Math.round(damage*combat.fireDamageBoostedByDao());
-				doFireDamage(damage, true, display);
+				doPlayerFireDamage(damage, true, display);
 				break;
 			case "Water":
 				damage = Math.round(damage*combat.waterDamageBoostedByDao());
-				doWaterDamage(damage, true, display);
+				doPlayerWaterDamage(damage, true, display);
 				break;
 			case "Air":
 				damage = Math.round(damage*combat.windDamageBoostedByDao());
-				doWindDamage(damage, true, display);
+				doPlayerWindDamage(damage, true, display);
 				break;
 			case "Earth":
 				damage = Math.round(damage*combat.earthDamageBoostedByDao());
-				doEarthDamage(damage, true, display);
+				doPlayerEarthDamage(damage, true, display);
 				break;
 			case "Ice":
 				damage = Math.round(damage*combat.iceDamageBoostedByDao());
-				doIceDamage(damage, true, display);
+				doPlayerIceDamage(damage, true, display);
 				break;
 			case "Lightning":
 				damage = Math.round(damage*combat.lightningDamageBoostedByDao());
-				doLightningDamage(damage, true, display);
+				doPlayerLightningDamage(damage, true, display);
 				break;
 			case "Darkness":
 				damage = Math.round(damage*combat.darknessDamageBoostedByDao());
-				doDarknessDamage(damage, true, display);
+				doPlayerDarknessDamage(damage, true, display);
 				break;
 			default:
 				damage = Math.round(damage*combat.fireDamageBoostedByDao());
-				doFireDamage(damage, true, display);
+				doPlayerFireDamage(damage, true, display);
 				break;
 		}
 		if (display) outputText(" damage! ");

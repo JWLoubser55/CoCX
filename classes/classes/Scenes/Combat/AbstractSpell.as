@@ -684,35 +684,35 @@ public class AbstractSpell extends CombatAbility {
 		var damageFn:Function;
 		switch (damageType) {
 			case DamageType.FIRE:
-				damageFn = doFireDamage;
+				damageFn = doPlayerFireDamage;
 				break;
 			case DamageType.DARKNESS:
-				damageFn = doDarknessDamage;
+				damageFn = doPlayerDarknessDamage;
 				break;
 			case DamageType.ICE:
-				damageFn = doIceDamage;
+				damageFn = doPlayerIceDamage;
 				break;
 			case DamageType.LIGHTNING:
-				damageFn = doLightningDamage;
+				damageFn = doPlayerLightningDamage;
 				break;
 			case DamageType.WATER:
-				damageFn = doWaterDamage;
+				damageFn = doPlayerWaterDamage;
 				break;
 			case DamageType.WIND:
-				damageFn = doWindDamage;
+				damageFn = doPlayerWindDamage;
 				break;
 			case DamageType.EARTH:
-				damageFn = doEarthDamage;
+				damageFn = doPlayerEarthDamage;
 				break;
 			case DamageType.ACID:
-				damageFn = doAcidDamage;
+				damageFn = doPlayerAcidDamage;
 				break;
 			case DamageType.MAGICAL:
-				damageFn = doMagicDamage;
+				damageFn = doPlayerMagDamage;
 				break;
 			case DamageType.PHYSICAL:
 			default:
-				damageFn = doDamage;
+				damageFn = doPlayerPhysDamage;
 		}
 		var repeats:int = omnicasterRepeat ? omnicasterRepeatCount() : 1;
 		if (convergenceRepeat && player.hasPerk(PerkLib.Convergence) && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType) && !monster.hasPerk(PerkLib.Enemy300Type)) {

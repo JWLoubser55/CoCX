@@ -93,7 +93,7 @@ public class KillingIntentSkill extends AbstractSoulSkill {
 			damage *= 1.75;
 		}
 		if (display) outputText("Your intent slams into [themonster], sending them reeling from your bloodlust! ");
-		doTrueDamage(damage, true, display);
+		doPlayerTrueDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		if (rand(5) == 0 && monster.level <= player.level) {
 			monster.createStatusEffect(StatusEffects.Fear,1,0,0,0);
