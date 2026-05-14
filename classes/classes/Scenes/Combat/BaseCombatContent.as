@@ -48,35 +48,167 @@ public class BaseCombatContent extends BaseContent {
 	protected function doDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doDamage(damage, apply, display, ignoreDR);
 	}
+	protected function doPlayerPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerPhysDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraPhysDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTPhysDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionPhysDamage(damage, apply, display, ignoreDR);
+	}
 	protected function doPhysicalDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPhysicalDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerMagDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraMagDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTMagicDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTMagicDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionMagDamage(damage, apply, display, ignoreDR);
 	}
 	protected function doMagicDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMagicDamage(damage, apply, display, ignoreDR);
 	}
+	protected function doPlayerFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerFireDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraFireDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTFireDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionFireDamage(damage, apply, display, ignoreDR);
+	}
 	protected function doFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doFireDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerIceDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraIceDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTIceDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionIceDamage(damage, apply, display, ignoreDR);
 	}
 	protected function doIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doIceDamage(damage, apply, display, ignoreDR);
 	}
+	protected function doPlayerLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerLightningDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraLightningDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTLightningDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionLightningDamage(damage, apply, display, ignoreDR);
+	}
 	protected function doLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doLightningDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDarknessDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraDarknessDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTDarknessDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionDarknessDamage(damage, apply, display, ignoreDR);
 	}
 	protected function doDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doDarknessDamage(damage, apply, display, ignoreDR);
 	}
+	protected function doPlayerPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerPoisonDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraPoisonDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTPoisonDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionPoisonDamage(damage, apply, display, ignoreDR);
+	}
 	protected function doPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPoisonDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerWindDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraWindDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTWindDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionWindDamage(damage, apply, display, ignoreDR);
 	}
 	protected function doWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doWindDamage(damage, apply, display, ignoreDR);
 	}
+	protected function doPlayerWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerWaterDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraWaterDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTWaterDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionWaterDamage(damage, apply, display, ignoreDR);
+	}
 	protected function doWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doWaterDamage(damage, apply, display, ignoreDR);
 	}
+	protected function doPlayerEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerEarthDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraEarthDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTEarthDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionEarthDamage(damage, apply, display, ignoreDR);
+	}
 	protected function doEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doEarthDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAcidDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerAuraAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerAuraAcidDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPlayerDoTAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPlayerDoTAcidDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doMinionAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionAcidDamage(damage, apply, display, ignoreDR);
 	}
 	protected function doAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {//, subtype:Number
 		return combat.doAcidDamage(damage, apply, display, ignoreDR);//, subtype
@@ -92,48 +224,6 @@ public class BaseCombatContent extends BaseContent {
 	}
 	protected function doTrueDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
 		return combat.doTrueDamage(damage, apply, display);
-	}
-	protected function doMinionPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionPhysDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionMagDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionFireDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionIceDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionLightningDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionDarknessDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionPoisonDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionWindDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionWindDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionWaterDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionWaterDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionEarthDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionEarthDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doPlayerAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doPlayerAcidDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doPlayerAuraAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doPlayerAuraAcidDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doPlayerDoTAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doPlayerDoTAcidDamage(damage, apply, display, ignoreDR);
-	}
-	protected function doMinionAcidDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMinionAcidDamage(damage, apply, display, ignoreDR);
 	}
 	protected function combatParry():Boolean {
 		return combat.combatParry();
