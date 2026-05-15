@@ -21,8 +21,8 @@ public class ChameleonSkinMutation extends IMutationPerkType
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1) descS += "Increase sneak attack damage multiplier by "+pTier+"x";
             if (pTier >= 2) descS += ". The camouflage skill lasts "+(pTier-1)+" more round";
-            if (pTier >= 3) descS += "half developed";
-            if (pTier >= 4) descS += "fully developed";
+            if (pTier >= 3) descS += "s. While camouflaged, increases all damage by "+((pTier -2) * 25)+"%";
+            if (pTier >= 4) descS += ". Double all recovery while camouflaged";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -58,7 +58,7 @@ public class ChameleonSkinMutation extends IMutationPerkType
 
         public function ChameleonSkinMutation() 
 		{
-			super(MNAME, SLOT_ADAPTATIONS, 1);
+			super(MNAME, SLOT_ADAPTATIONS, 4);
         }
 
     }

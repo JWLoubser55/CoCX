@@ -10925,12 +10925,15 @@ public class Combat extends BaseContent {
 		}
 		return EOTHDBonus;
 	}
-	private function doCamouflageDamageMultiplier(damage:Number):Number {
-		var SAMulti:Number = 2;
-		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 1) SAMulti += player.perkv1(IMutationsLib.ChameleonSkinIM);
-		SAMulti *= 2;
-		damage *= SAMulti;
-		monster.removeStatusEffect(StatusEffects.Camouflage);
+	private function doCamouflageDamageMultiplier(damage:Number, subtype:Number):Number {
+		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) {
+			var SAMulti:Number = 2;
+			if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 1) SAMulti += player.perkv1(IMutationsLib.ChameleonSkinIM);
+			SAMulti *= 2;
+			damage *= SAMulti;
+			monster.removeStatusEffect(StatusEffects.Camouflage);
+		}
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 3) damage *= (1 + (0.25 * (player.perkv1(IMutationsLib.ChameleonSkinIM) - 2)));
 		return damage;
 	}
 
@@ -10988,7 +10991,7 @@ public class Combat extends BaseContent {
 		}
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
         damage *= doDamageReduction();
 		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer) && CombatAbility.TAG_AOE) {
@@ -11070,7 +11073,7 @@ public class Combat extends BaseContent {
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		if (monster.hasPerk(PerkLib.HiveMind)) damage *= (1 - monster.perkv1(PerkLib.HiveMind));
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.perkv1(IMutationsLib.MyconidCollectiveConsciousnessIM) >= 4) damage *= 1.25;
         damage *= doDamageReduction();
 		if (monster.tou > 1000) damage *= 1/(1 + Math.round((monster.tou-500)/1000));
@@ -11157,7 +11160,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.SharedPower) && player.perkv1(PerkLib.SharedPower) > 0) damage *= (1+(0.1*player.perkv1(PerkLib.SharedPower)));
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv1(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv1(StatusEffects.ArtfulDestruction)));
 		if ((monster.hasPerk(PerkLib.EnemyGhostType) || monster.hasPerk(PerkLib.PhysicalDamageResistance)) && !canLayerSwordIntentAuraMH()) damage = 0;
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
@@ -11354,7 +11357,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -11481,7 +11484,7 @@ public class Combat extends BaseContent {
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		if (player.armor == armors.ARCHNECC) damage *= 0.5;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
         if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.hasMutation(IMutationsLib.HellhoundFireBallsIM) && player.perkv1(IMutationsLib.HellhoundFireBallsIM) >= 2) {
             var cumQM:Number = 0.01 * player.lust100;
@@ -11581,7 +11584,7 @@ public class Combat extends BaseContent {
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		if (player.armor == armors.ARCHNECC) damage *= 2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -11666,7 +11669,7 @@ public class Combat extends BaseContent {
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		if (player.armor == armors.ARCHNECC) damage *= 0.5;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -11748,7 +11751,7 @@ public class Combat extends BaseContent {
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		if (player.armor == armors.ARCHNECC) damage *= 2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -11820,7 +11823,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -11892,7 +11895,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -11964,7 +11967,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -12036,7 +12039,7 @@ public class Combat extends BaseContent {
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
 			damage *= 2;
@@ -12108,7 +12111,7 @@ public class Combat extends BaseContent {
 		if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
-		if (monster.hasStatusEffect(StatusEffects.Camouflage) && subtype == 0) doCamouflageDamageMultiplier(damage);
+		doCamouflageDamageMultiplier(damage, subtype);
 		if (player.hasStatusEffect(StatusEffects.ArtfulDestruction) && player.statusEffectv2(StatusEffects.ArtfulDestruction) > 0) damage *= (1 + (0.05 * player.statusEffectv2(StatusEffects.ArtfulDestruction)));
 		if (player.hasPerk(PerkLib.MeltingPot) && monster.monsterIsAcidBurned()) damage *= (1 + (0.1 * player.companionsInPcPartyCount()));
 		if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 3 && monster.monsterIsBurned()) {
@@ -15327,7 +15330,8 @@ public class Combat extends BaseContent {
 		}
         if ((player.internalChimeraRating() >= 1 && player.hunger < 1 && flags[kFLAGS.HUNGER_ENABLED] > 0) || (player.internalChimeraRating() >= 1 && flags[kFLAGS.HUNGER_ENABLED] <= 0)) maxPercentRegen -= (0.5 * player.internalChimeraRating());
 		if (player.perkv1(IMutationsLib.BlackBloodIM) >= 3) maxPercentRegen += (player.perkv1(IMutationsLib.BlackBloodIM) - 2);
-		if (player.perkv1(IMutationsLib.BlackBloodIM) >= 2 && player.hunger >= (player.maxHunger() * 0.1 * ((6-player.perkv1(IMutationsLib.BlackBloodIM))*2))) maxPercentRegen *= 2;
+		if (player.perkv1(IMutationsLib.BlackBloodIM) >= 2 && player.hunger >= (player.maxHunger() * 0.1 * ((6 - player.perkv1(IMutationsLib.BlackBloodIM)) * 2))) maxPercentRegen *= 2;
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) maxPercentRegen *= 2;
 		if (maxPercentRegen > maximumRegeneration()) maxPercentRegen = maximumRegeneration();
 		return maxPercentRegen;
     }
@@ -15348,6 +15352,7 @@ public class Combat extends BaseContent {
 		if (player.hasPerk(PerkLib.FleshBodySoDElderStage)) maxNonPercentRegen += 3 * player.level * player.humanBodyCultivators() * (1 + player.newGamePlusMod());;
 		if (player.hasPerk(PerkLib.FleshBodySoDOverlordStage)) maxNonPercentRegen += 4 * player.level * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
 		if (player.hasPerk(PerkLib.FleshBodySoDTyrantStage)) maxNonPercentRegen += 5 * player.level * player.humanBodyCultivators() * (1 + player.newGamePlusMod());
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) maxNonPercentRegen *= 2;
 		if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1) maxNonPercentRegen *= 2;
         return maxNonPercentRegen;
     }
@@ -15447,7 +15452,8 @@ public class Combat extends BaseContent {
 			maxRegen *= 2;
 		}
 		if (player.perkv1(IMutationsLib.BlackBloodIM) >= 3) maxRegen += (player.perkv1(IMutationsLib.BlackBloodIM) - 2);
-		if (player.perkv1(IMutationsLib.BlackBloodIM) >= 2 && player.hunger >= (player.maxHunger() * 0.1 * ((6-player.perkv1(IMutationsLib.BlackBloodIM))*2))) maxRegen *= 2;
+		if (player.perkv1(IMutationsLib.BlackBloodIM) >= 2 && player.hunger >= (player.maxHunger() * 0.1 * ((6 - player.perkv1(IMutationsLib.BlackBloodIM)) * 2))) maxRegen *= 2;
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) maxRegen *= 2;
         return maxRegen;
     }
 
@@ -15544,6 +15550,7 @@ public class Combat extends BaseContent {
         if (player.perkv1(IMutationsLib.TwinHeartIM) >= 1 && (player.isTaur() || player.isDrider())) multi += (0.6 * player.perkv1(IMutationsLib.TwinHeartIM));
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 4 && player.racialScore(Races.HUMAN) > 17) multi += 2;
 		if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 2 && player.racialScore(Races.HUMAN) > 17 && player.hp100 < (10 * (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) + 2))) multi += 1;
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) multi *= 2;
 		if (flags[kFLAGS.IN_COMBAT_USE_PLAYER_WAITED_FLAG] == 1 || (player.hasStatusEffect(StatusEffects.Defend) && player.hasPerk(PerkLib.DefenceStance))) multi *= 2;
         return multi;
     }
@@ -15652,6 +15659,7 @@ public class Combat extends BaseContent {
 			else multi += 1;
 		}
 		multi += SceneLib.soulforce.sfRegenRacialMult();
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) multi *= 2;
         return multi;
     }
 
@@ -15777,6 +15785,7 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.HumanParathyroidGlandIM) >= 4) multi += 2;
 			else multi += 1;
 		}
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) multi *= 2;
         return multi;
     }
 
@@ -15891,6 +15900,7 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.HumanAdrenalGlandsIM) >= 4) BonusWrathMult += 4;
 		}
 		if (player.perkv1(IMutationsLib.HumanBloodstreamIM) >= 4 && player.racialScore(Races.HUMAN) > 17) BonusWrathMult += 2;
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) BonusWrathMult *= 2;
         //if (player.hasPerk(PerkLib.HiddenJobAsura)) BonusWrathMult *= 2;
 		return wrathregen*BonusWrathMult;
     }
@@ -15974,6 +15984,7 @@ public class Combat extends BaseContent {
 				venomCRecharge += 3;
 				if (player.hasPerk(PerkLib.AscensionSkyPoisonPearlMasteryStageX)) venomCRecharge += (3 * player.perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX));
 			}
+			if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) venomCRecharge *= 2;
 			venomCRecharge = Math.round(venomCRecharge);
 		}
 		return venomCRecharge;
