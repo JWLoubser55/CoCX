@@ -140,7 +140,7 @@ public class NightOfBrotherhoodSkill extends AbstractSoulSkill implements Saveab
 			outputText("You start concentrate on the wrath flowing in your body, your veins while imaging a joy of sharing storm of sisterhood with enemy. Shortly after that wrath starts to gather around your hands till it envelop your hands in ligthing.\n\n");
     		outputText("With joy, you sends a mass of ligthing toward [themonster] while mumbling about 'sharing the storm of sisterhood'. ");
 		}
-		doDarknessDamage(damage, true, display);
+		doPlayerDarknessDamage(damage, true, display);
 		if (display) outputText("\n\n");
 		if (player.hasPerk(PerkLib.BrutalSpells) && monster.armorMDef > 0) {
 			outputText("Your soulskills are so brutal that you damage [themonster]'s magical resistance!\n\n");

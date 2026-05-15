@@ -59,7 +59,7 @@ public class EAspectIceSkill extends AbstractMagicSpecial {
         damage = Math.round(damage);
 
         if (display) outputText("Your elemental produces a ray of hyper condensed cold and aims it straight at [themonster] dealing ");
-		doIceDamage(damage, true, display);
+		doMinionIceDamage(damage, true, display);
 		if (crit && display) outputText(" <b>Critical!</b>");
 		outputText("\n\n");
     }

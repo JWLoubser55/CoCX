@@ -62,7 +62,7 @@ public class ConsumingDarknessSpell extends AbstractHexSpell {
 			store11 += monster.statusEffectv2(StatusEffects.ConsumingDarkness);
 			store11 *= 0.2;
 			if (player.hasPerk(PerkLib.Necromancy)) store11 *= 1.5;
-			combat.doDarknessDamage(store11, true, display);
+			combat.doPlayerDarknessDamage(store11, true, display);
 			if (display) {
 				outputText(" damage.\n\n");
 			}
@@ -96,7 +96,7 @@ public class ConsumingDarknessSpell extends AbstractHexSpell {
 			outputText("You call on the power of primordial darkness, which is all too happy to oblige your request of ripping your foe to shreds. The shadows all around you sprouting countless mouths and claws to do just that. [Themonster] can only scream in surprise, then in pain, at the sudden assault. ");
 			var consumingdarkness:Number = calcDamage(monster, true, true);
 			monster.createStatusEffect(StatusEffects.ConsumingDarkness, calcDuration(), consumingdarkness, 0, 0);
-			doDarknessDamage(consumingdarkness, true, true);
+			doPlayerDarknessDamage(consumingdarkness, true, true);
 		}
 	}
 }

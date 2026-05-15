@@ -59,7 +59,7 @@ public class EAspectPuritySkill extends AbstractMagicSpecial {
         damage = Math.round(damage);
 
         if (display) outputText("Your purity elemental produces a ray of hyper condensed and pure light and aims it straight at [themonster] ");
-		doMagicDamage(damage, true, display);
+		doMinionMagDamage(damage, true, display);
 		if (crit && display) outputText(" <b>Critical!</b>");
 		outputText("\n\n");
     }

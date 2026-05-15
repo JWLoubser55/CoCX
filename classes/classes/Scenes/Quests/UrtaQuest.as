@@ -1305,7 +1305,7 @@ private function urtaComboAttack():void {
 	if (damage > 0) {
 		if(player.hasPerk(PerkLib.HistoryFighter)) damage *= 1.1;
 		if(player.hasPerk(PerkLib.JobWarrior)) damage *= 1.05;
-		damage = SceneLib.combat.doDamage(damage);
+		damage = SceneLib.combat.doPlayerPhysDamage(damage);
 	}
 	if (damage <= 0) {
 		outputText("Your attacks are deflected or blocked by [themonster].");
@@ -1413,7 +1413,7 @@ private function urtaSidewinder():void {
 	if (damage > 0) {
 		if(player.hasPerk(PerkLib.HistoryFighter)) damage *= 1.1;
 		if(player.hasPerk(PerkLib.JobWarrior)) damage *= 1.05;
-		damage = SceneLib.combat.doDamage(damage);
+		damage = SceneLib.combat.doPlayerPhysDamage(damage);
 	}
 	if (damage <= 0) {
 		damage = 0;
@@ -1508,7 +1508,7 @@ private function urtaVaultAttack():void {
 	if (damage > 0) {
 		if(player.hasPerk(PerkLib.HistoryFighter)) damage *= 1.1;
 		if(player.hasPerk(PerkLib.JobWarrior)) damage *= 1.05;
-		damage = SceneLib.combat.doDamage(damage);
+		damage = SceneLib.combat.doPlayerPhysDamage(damage);
 	}
 	if (damage <= 0) {
 		outputText("Your attacks are deflected or blocked by [themonster].");

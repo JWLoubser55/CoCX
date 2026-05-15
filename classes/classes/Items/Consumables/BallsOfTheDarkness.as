@@ -43,7 +43,7 @@ package classes.Items.Consumables
 				}
 				if (game.monster.hasPerk(PerkLib.EnemyGroupType) || game.monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 5;
 				outputText(game.monster.capitalA + game.monster.short + " is hit with the Balls of the Darkness!  They shatter, completely engulfing " + game.monster.pronoun2 + " in darkness. ");
-				damage = SceneLib.combat.doDarknessDamage(damage, true, true);
+				damage = SceneLib.combat.doPlayerDarknessDamage(damage, true, true);
 				if (game.monster.HP < game.monster.minHP()) game.monster.HP = game.monster.minHP() - 1;
 			}
 			return(false);

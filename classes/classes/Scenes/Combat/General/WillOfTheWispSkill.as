@@ -74,7 +74,7 @@ public class WillOfTheWispSkill extends AbstractGeneral {
 		damage = Math.round(damage);
 
 		if (display) outputText("\n\nYour will-o'-the-wisp hits [themonster]! ");
-		doMagicDamage(damage, true, display);
+		doMinionMagDamage(damage, true, display);
 		if (display) {
 			if (crit) outputText(" <b>Critical! </b>");
 			outputText("\n\n");

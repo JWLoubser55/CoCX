@@ -71,13 +71,13 @@ public class BloodDewdropsSkill extends AbstractBloodSoulSkill {
 			damage *= 1.75;
 		}
 		if (display && display) outputText("[Themonster] takes ");
-		doDamage(damage, true, display);
+		doPlayerPhysDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
-		doDamage(damage, true, display);
+		doPlayerPhysDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
-		doDamage(damage, true, display);
+		doPlayerPhysDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
-		doDamage(damage, true, display);
+		doPlayerPhysDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		if (display) outputText(" damage.");
 		endTurnByBloodSkillUse(damage);

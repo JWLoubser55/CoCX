@@ -108,7 +108,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			else dmg1 *= (5.5 + ((weaponNeisa - 200) * 0.01));
 			dmg1 = Math.round(dmg1 * increasedEfficiencyOfAttacks());
 			outputText("Neisa slashes at [themonster] with her sword. ");
-			doDamage(dmg1, true, true);
+			doMinionPhysDamage(dmg1, true, true);
 			outputText("\n\n");
 		}
 		public function neisaCombatActions2():void {
@@ -237,7 +237,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg2 += scalingBonusStrengthCompanion() * 0.5;
 			dmg2 = Math.round(dmg2 * increasedEfficiencyOfAttacks());
 			outputText("Etna dives at [themonster], mauling [monster his] viciously with her claws before taking flight again. ");
-			doDamage(dmg2, true, true);
+			doMinionPhysDamage(dmg2, true, true);
 			outputText("\n\n");
 		}
 		public function etnaCombatActions3():void {
@@ -300,7 +300,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			else dmg01 *= (5.5 + ((weaponAurora1 - 200) * 0.01));
 			dmg01 = Math.round(dmg01 * increasedEfficiencyOfAttacks());
 			outputText("Aurora thrust her hand at [themonster]. ");
-			doDamage(dmg01, true, true);
+			doMinionPhysDamage(dmg01, true, true);
 			outputText("\n\n");
 		}
 		public function auroraCombatActions2():void {
@@ -319,14 +319,14 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg3 *= 3;
 			dmg3 = Math.round(dmg3 * increasedEfficiencyOfAttacks());
 			outputText("Aurora thrust her hand at [themonster]. Her claws hits thrice against [themonster], dealing ");
-			doDamage(dmg3, true, true);
+			doMinionPhysDamage(dmg3, true, true);
 			outputText(" damage!\n\n");
 		}
 		public function auroraCombatActions4():void {
 			var dmg3a:Number = (scalingBonusStrengthCompanion() + scalingBonusToughnessCompanion()) / 6;
 			dmg3a = Math.round(dmg3a * increasedEfficiencyOfAttacks());
 			outputText("Aurora flaps her huge bat wings at [themonster] trying to knock it down. ");
-			doDamage(dmg3a, true, true);
+			doMinionPhysDamage(dmg3a, true, true);
 			if (!monster.hasPerk(PerkLib.Resolute)) {
 				monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 				outputText("\n\n");
@@ -358,7 +358,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg02 *= (1 + (weaponGhoul1 * 0.03));
 			dmg02 = Math.round(dmg02 * increasedEfficiencyOfAttacks());
 			outputText(flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+" leaps into the fray, delivering a deadly slash with "+(SceneLib.ghoulishVampireServant.ghoulGender()?"her":"his")+" clawed hand. [Themonster] begins to bleed ");
-			doDamage(dmg02, true, true);
+			doMinionPhysDamage(dmg02, true, true);
 			if (monster.canMonsterBleed()) {
 				outputText(" profusely");
 				if (monster.hasStatusEffect(StatusEffects.Hemorrhage))  monster.removeStatusEffect(StatusEffects.Hemorrhage);
@@ -384,7 +384,7 @@ import classes.StatusEffects.VampireThirstEffect;
 				var dmg03:Number = scalingBonusStrengthCompanion() * 0.4;
 				dmg03 = Math.round(dmg03 * increasedEfficiencyOfAttacks());
 				outputText("[Themonster] is pinned under your ghoulish partner's body!");
-				doDamage(dmg03, true, true);
+				doMinionPhysDamage(dmg03, true, true);
 				if (!monster.hasPerk(PerkLib.Resolute)) {
 					monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 				} else {
@@ -400,7 +400,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg04 *= (1 + (weaponGhoul2 * 0.02));
 			dmg04 = Math.round(dmg04 * increasedEfficiencyOfAttacks());
 			outputText(flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+" charges from a wide angle, surprising your opponent and biting straight into "+(monster.hasCock()?"his":"her")+" flesh to extract some of its soul force. The ghoul is pushed back, but still manages to steal a bite and some soul force from "+(SceneLib.ghoulishVampireServant.ghoulGender()?"her":"his")+" victim! ");
-			doDamage(dmg04, true, true);
+			doMinionPhysDamage(dmg04, true, true);
 			pc.HPChange(dmg04, true, false);
 			pc.SoulforceChange(Math.round(dmg04 * 0.2));
 			var thirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
@@ -666,7 +666,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			else dmg1 *= (5.5 + ((weaponAlvina - 200) * 0.01));
 			dmg1 = Math.round(dmg1 * increasedEfficiencyOfAttacks());
 			outputText("Alvina slices at [themonster] with her scythe, leaving deep wounds. ");
-			doDamage(dmg1, true, true);
+			doMinionPhysDamage(dmg1, true, true);
 			outputText("\n\n");
 			if (!monster.isImmuneToBleed()) {
 				if (monster.hasStatusEffect(StatusEffects.Hemorrhage2)) monster.addStatusValue(StatusEffects.Hemorrhage2, 1, 1);
@@ -742,7 +742,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg4 += scalingBonusStrengthCompanion() * 0.5;
 			dmg4 = Math.round(dmg4 * increasedEfficiencyOfAttacks());
 			outputText("Mitzi takes a couple needles from her belt then hurls them at [themonster]. ");
-			doDamage(dmg4, true, true);
+			doMinionPhysDamage(dmg4, true, true);
 			outputText("\n\n");
 		}
 		public function mitziCombatActions2():void {
@@ -815,7 +815,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg7 += scalingBonusStrengthCompanion() * 0.5;
 			dmg7 = Math.round(dmg7 * increasedEfficiencyOfAttacks());
 			outputText("Excellia moos out as she charges at [themonster] at full force, delivering a devastating blow. ");
-			doDamage(dmg7, true, true);
+			doMinionPhysDamage(dmg7, true, true);
 			outputText("\n\n");
 		}
 		public function excelliaCombatActions2():void {
@@ -823,13 +823,13 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg8 += scalingBonusStrengthCompanion() * 0.7;
 			dmg8 = Math.round(dmg8 * increasedEfficiencyOfAttacks());
 			outputText("Excellia lunges at [themonster], throwing her full weight at [monster him] for ");
-			doDamage(dmg8, true, true);
+			doMinionPhysDamage(dmg8, true, true);
 			outputText(" damage.\n\n");
 		}
 		public function excelliaCombatActions3():void {
 			var dmg9:Number = Math.round(player.statusEffectv2(StatusEffects.CombatFollowerExcellia) * increasedEfficiencyOfAttacks());
 			outputText("Excellia smirks as she stares down [themonster]. She lunges at [monster him] with a hip check, effectively knocking back and dazing [monster him]. ");
-			doDamage(dmg9, true, true);
+			doMinionPhysDamage(dmg9, true, true);
 			outputText("\n\n");
 			if (!monster.hasStatusEffect(StatusEffects.LoweredAccuracy)) monster.createStatusEffect(StatusEffects.LoweredAccuracy, 40, 0, 0, 0);
 		}
@@ -841,7 +841,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg10 += unarmedExcellia * 2;
 			dmg10 = Math.round(dmg10 * increasedEfficiencyOfAttacks());
 			outputText("Excellia lets out a battle cry as she charges at [themonster]. She thrashes, headbutts, and kicks [monster him] with one powerful blow after another. ");
-			doDamage(dmg10, true, true);
+			doMinionPhysDamage(dmg10, true, true);
 			outputText("\n\n");
 		}
 		public function excelliaCombatActions5():void {
@@ -897,7 +897,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg5 += scalingBonusStrengthCompanion() * 0.5;
 			dmg5 = Math.round(dmg5 * increasedEfficiencyOfAttacks());
 			outputText("Amily peeks out from her cover before shooting a blowdart at [themonster]. ");
-			doDamage(dmg5, true, true);
+			doMinionPhysDamage(dmg5, true, true);
 			outputText("\n\n");
 		}
 		public function amilyCombatActions2():void {
@@ -919,7 +919,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg6 += scalingBonusStrengthCompanion() * 2;
 			dmg6 = Math.round(dmg6 * increasedEfficiencyOfAttacks());
 			outputText("Amily rushes out with her dagger. Blitzing through, she slices through them with a flurry of swift cuts before leaping off of them, away from view. ");
-			doDamage(dmg6, true, true);
+			doMinionPhysDamage(dmg6, true, true);
 			outputText(" ");
 			if (!monster.hasPerk(PerkLib.EnemyConstructType) || !monster.hasPerk(PerkLib.EnemyGhostType)) {
 				doMinionPoisonDamage(((player.statusEffectv2(StatusEffects.CombatFollowerAmily)/4)+20), true, true);
@@ -1030,7 +1030,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			else dmg11 *= (5.5 + ((weaponZenji - 200) * 0.01));
 			dmg11 = Math.round(dmg11 * increasedEfficiencyOfAttacks());
 			outputText("Seeing an opening, Zenji thrusts his spear at [themonster]. ");
-			doDamage(dmg11, true, true);
+			doMinionPhysDamage(dmg11, true, true);
 			outputText("\n\n");
 		}
 		public function zenjiCombatActions2():void {
@@ -1044,7 +1044,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			else dmg12 *= (5.5 + ((weaponZenji - 200) * 0.01));
 			dmg12 = Math.round(dmg12 * increasedEfficiencyOfAttacks());
 			outputText("Zenji charges at [themonster] with his spear in a feint before bashing them with his tusks. ");
-			doDamage(dmg12, true, true);
+			doMinionPhysDamage(dmg12, true, true);
 			outputText(" [Themonster]");
 			if (monster.hasPerk(PerkLib.Resolute) || rand(4) == 0) outputText(" remains focused despite Zenji’s brutal strikes");
 			else {
@@ -1071,7 +1071,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			else dmg13 *= (5.5 + ((weaponZenji - 200) * 0.01));
 			dmg13 = Math.round(dmg13 * increasedEfficiencyOfAttacks());
 			outputText("Zenji charges at [themonster], knocking them down and pinning them beneath him with his spear. ");
-			doDamage(dmg13, true, true);
+			doMinionPhysDamage(dmg13, true, true);
 			if (!monster.hasPerk(PerkLib.Resolute)) {
 				outputText(" Zenji has [themonster] pinned beneath him. \"<i>And stay down!</i>\" Zenji shouts.\n\n");
 				monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
@@ -1146,9 +1146,9 @@ import classes.StatusEffects.VampireThirstEffect;
 			else if (weaponTyrantia >= 151 && weaponTyrantia < 201) dmg14 *= (4.75 + ((weaponTyrantia - 150) * 0.015));
 			else dmg14 *= (5.5 + ((weaponTyrantia - 200) * 0.01));
 			dmg14 = Math.round(dmg14 * increasedEfficiencyOfAttacks());
-			doDamage(dmg14, true, true);
-			doDamage(dmg14, true, true);
-			doDamage(dmg14, true, true);
+			doMinionPhysDamage(dmg14, true, true);
+			doMinionPhysDamage(dmg14, true, true);
+			doMinionPhysDamage(dmg14, true, true);
 			monster.teased(Math.round(monster.lustVuln * lustDmg));
 			outputText("\n\n");
 		}
@@ -1165,7 +1165,7 @@ import classes.StatusEffects.VampireThirstEffect;
 				if (monster.hasStatusEffect(StatusEffects.Hemorrhage2)) monster.addStatusValue(StatusEffects.Hemorrhage2, 1, 1);
 				else monster.createStatusEffect(StatusEffects.Hemorrhage2, 3, 0.1, 0, 0);
 			}
-			doDamage(dmg15, true, true);
+			doMinionPhysDamage(dmg15, true, true);
 			outputText("\n\n");
 		}
 		public function tyrantiaCombatActions3():void {
@@ -1245,7 +1245,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			if (player.hasStatusEffect(StatusEffects.FrenziedKiha))
 				dmg17 *= 1+ player.statusEffectv1(StatusEffects.FrenziedKiha)*0.2;
 			outputText("Seeing an opening, Kiha swings her battleaxe, smashing [themonster]. ");
-			doDamage(dmg17, true, true);
+			doMinionPhysDamage(dmg17, true, true);
 			outputText("\n\n");
 		}
 		public function kihaCombatActions2():void {
@@ -1326,7 +1326,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			else dmg17 *= (5.5 + ((weaponMidoka - 200) * 0.01));
 			dmg17 = Math.round(dmg17 * increasedEfficiencyOfAttacks());
 			outputText("[midokaname] attack 1 ");
-			doDamage(dmg17, true, true);
+			doMinionPhysDamage(dmg17, true, true);
 			outputText("\n\n");
 		}
 		public function midokaCombatActions2():void {
@@ -1334,7 +1334,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			dmg18 += scalingBonusStrengthCompanion() * 0.5;
 			dmg18 = Math.round(dmg18 * increasedEfficiencyOfAttacks());
 			outputText("[midokaname] attack 2 ");
-			doDamage(dmg18, true, true);
+			doMinionPhysDamage(dmg18, true, true);
 			outputText("\n\n");
 		}
 		public function midokaCombatActions3():void {
@@ -1342,7 +1342,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			var dmg19:Number = player.statusEffectv1(StatusEffects.CombatFollowerMidoka);
 			dmg19 += scalingBonusStrengthCompanion();
 			dmg19 = Math.round(dmg19 * increasedEfficiencyOfAttacks());
-			doDamage(dmg19, true, true);
+			doMinionPhysDamage(dmg19, true, true);
 			outputText("\n\n");
 		}
 		public function midokaCombatActions4():void {

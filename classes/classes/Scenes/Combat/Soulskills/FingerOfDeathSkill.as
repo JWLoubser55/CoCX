@@ -94,7 +94,7 @@ public class FingerOfDeathSkill extends AbstractSoulSkill {
 		}
 		if (display) outputText(" ");
 
-		doDarknessDamage(damage, true, display);
+		doPlayerDarknessDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		monster.statStore.addBuffObject({str:-10*(monster.str/100),tou:-10*(monster.tou/100)}, "Finger of death",{text:"Finger of death"});
 

@@ -104,7 +104,7 @@ public class SoulDrainSkill extends AbstractSoulSkill {
 			crit = true;
 			damage *= 1.75;
 		}
-		doDarknessDamage(damage, true, display);
+		doPlayerDarknessDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		checkAchievementDamage(damage);
 		if (player.perkv1(IMutationsLib.StillHeartIM) >= 2) pc.HPChange(calcHealAmount(), display, true);

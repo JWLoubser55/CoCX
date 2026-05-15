@@ -413,7 +413,7 @@ public class CombatSoulskills extends BaseCombatContent {
 			else damage *= (1.75 + buffMultiplier);
 		}
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("Your scythes swiftly sweeps against [themonster], dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (crit) {
 			outputText(" <b>*Critical Hit!*</b>");
@@ -424,7 +424,7 @@ public class CombatSoulskills extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
@@ -477,7 +477,7 @@ public class CombatSoulskills extends BaseCombatContent {
 	 damage *= 3;
 	 //soulskill mod effect
 	 damage *= soulskillPhysicalMod();
-	 doDamage(damage);
+	 doPlayerPhysDamage(damage);
 	 outputText("Your [weapon] hits thrice against [themonster], dealing <b>[font-damage]" + damage + "[/font]</b> damage! ");
 	 checkAchievementDamage(damage);
 	 combat.WrathGenerationPerHit2(5);

@@ -3045,7 +3045,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (rand(4) == 0) stutter += 1;
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
-			doMagicDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
 		}
 		//Randomising effects
 		var EffectList:Array = [];
@@ -3190,7 +3190,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (rand(4) == 0) stutter += 1;
 			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
-			doDamage(damage, true, true);
+			doPlayerPhysDamage(damage, true, true);
 			monster.createStatusEffect(StatusEffects.ConfusionM,5,0,0,0);
 			monster.createStatusEffect(StatusEffects.Hemorrhage, 5, 0.05*combat.BleedDamageBoost(true), 0, 0);
 		}
@@ -3371,7 +3371,7 @@ public class MagicSpecials extends BaseCombatContent {
 				if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
 				else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 				outputText(" takes ");
-				doMagicDamage(damage, true, true);
+				doPlayerMagDamage(damage, true, true);
 				outputText(" from the immense blast.");
 			}
 			outputText("\n\n");
@@ -4268,7 +4268,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		damage = Math.round(damage);
 		outputText("You purposely utter a sentence so weird and messed up [themonster] grabs [monster his] head with both hands in pain. Ouch, that’s what one calls harmful information. ");
-		doMagicDamage(damage, true, true);
+		doPlayerMagDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		enemyAI();
@@ -4299,7 +4299,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.NukiNutsIM) >= 3) damage *= 2;
 		damage = Math.round(damage);
 		outputText("You grab some of your gems imbuing your Tanuki golden magics in them before throwing them at your foe, the gems your makeshift projectiles exploding upon impact.");
-		doDamage(damage, true, true);
+		doPlayerPhysDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		if (player.weapon == weapons.DEMSCYT && player.cor < 90) dynStats("cor", 0.3);
@@ -4599,7 +4599,7 @@ public class MagicSpecials extends BaseCombatContent {
 
 		if (damage > 0) {
 			outputText("for ");
-			doDamage(damage, true, true);
+			doPlayerPhysDamage(damage, true, true);
 			outputText(" damage.");
 		}
 		outputText("\n\n");
@@ -4725,7 +4725,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.perkv1(IMutationsLib.ArigeanAssociationCortexIM) >= 1) damage *= arigeanAssociationCortexBoost();
 			damage = Math.round(damage);
 			outputText("It hits its mark dealing ");
-			doMagicDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			outputText(" damage!\n\n");
 			if (player.armor == armors.P_REGAL) pc.HPChange(Math.round(damage*0.15), true, false);
@@ -4792,11 +4792,11 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.perkv1(IMutationsLib.ArigeanAssociationCortexIM) >= 1) damage *= arigeanAssociationCortexBoost();
 			damage = Math.round(damage);
 			outputText("Your target is unable to avoid the barrage of blasts and takes ");
-			doMagicDamage(damage, true, true);
-			doMagicDamage(damage, true, true);
-			doMagicDamage(damage, true, true);
-			doMagicDamage(damage, true, true);
-			doMagicDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			outputText(" damage!\n\n");
 			damage *= 5;
@@ -4844,7 +4844,7 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.perkv1(IMutationsLib.ArigeanAssociationCortexIM) >= 1) damage *= arigeanAssociationCortexBoost();
 			damage *= 20;
 			damage = Math.round(damage);
-			doMagicDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
 			if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.CooldownChargedShot,3,0,0,0);
 			else player.createStatusEffect(StatusEffects.CooldownChargedShot,4,0,0,0);
 			player.removeStatusEffect(StatusEffects.ChanneledAttack);
@@ -4965,7 +4965,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage = calcEclypseMod(Math.round(damage * combat.darknessDamageBoostedByDao()), true);
 		damage = Math.round(damage);
 		if (monster.cor > 0) {
-			doMagicDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			if (!monster.hasStatusEffect(StatusEffects.Stunned)) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
@@ -5844,7 +5844,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		damage = Math.round(damage);
 		outputText(" ");
-		doMagicDamage(damage, true, true);
+		doPlayerMagDamage(damage, true, true);
 		if (critP) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		checkAchievementDamage(damage);
@@ -5903,7 +5903,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage *= magicAbilitiesGoBrrr();
 			if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 			damage = Math.round(damage);
-			doMagicDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			//Lust damage dealth
 			if (monster.lustVuln > 0) {
@@ -5950,7 +5950,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		if (player.perkv1(IMutationsLib.FeyArcaneBloodstreamIM) >= 3) damage *= 1.50;
 		damage = Math.round(damage);
-		doMagicDamage(damage, true, true);
+		doPlayerMagDamage(damage, true, true);
 		if (crit) outputText(" <b>*Critical Hit!*</b>. ");
 		//Randomising secondary effects
 		var EffectList:Array = [];
@@ -6483,7 +6483,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.BoomingVoice)) damage *= combat.boomingVoiceBoost();
 		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
 		damage = Math.round(damage);
-		doMagicDamage(damage, true, true);
+		doPlayerMagDamage(damage, true, true);
 		var intDebuff:Number = 0;
 		var wisDebuff:Number = 0;
 		intDebuff += Math.round(0.1 * monster.inte);
@@ -6510,7 +6510,7 @@ public class MagicSpecials extends BaseCombatContent {
 		damage = Math.round(damage);
 		var rounds:Number = 4;
 		if (player.level > 8) rounds += Math.round((player.level - 4) / 9);
-		while (rounds-->0) doMagicDamage(damage, true, true);
+		while (rounds-->0) doPlayerMagDamage(damage, true, true);
 		var pc:Number = 5;
 		if (player.hasPerk(PerkLib.NaturalInstincts)) pc -= 1;
 		player.createStatusEffect(StatusEffects.CooldownSagitta,pc,0,0,0);
@@ -6593,7 +6593,7 @@ public class MagicSpecials extends BaseCombatContent {
 			damage *= soulskillMagicalMod();
 			damage *= combat.hollowSkillsAndSoulskillsBoost();
 			damage = Math.round(damage);
-			doMagicDamage(damage, true, true);
+			doPlayerMagDamage(damage, true, true);
 			if (player.hasPerk(PerkLib.AcidAffinity)) {
 				damage2 = damage * 0.7;
 				damage2 = calcCorrosionMod(damage2, true);
@@ -6640,7 +6640,7 @@ public class MagicSpecials extends BaseCombatContent {
 				damage *= soulskillMagicalMod();
 				damage *= combat.hollowSkillsAndSoulskillsBoost();
 				damage = Math.round(damage);
-				doMagicDamage(damage, true, true);
+				doPlayerMagDamage(damage, true, true);
 				if (player.hasPerk(PerkLib.AcidAffinity)) {
 					damage2 = damage * 0.7;
 					damage2 = calcCorrosionMod(damage2, true);
@@ -6741,7 +6741,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = Math.round(damage);
 		outputText("You growl as you unsheath your claws, enhancing them with a dash of fire magic. You leap forward and viciously rend your opponent for " + damage + " physical and ");
-		doDamage(damage);//phys dmg
+		doPlayerPhysDamage(damage);//phys dmg
 		if (player.armor == armors.SFLAREQ) damage *= 3;
 		damage = Math.round(damage * combat.fireDamageBoostedByDao());
 		doPlayerFireDamage(damage, true, true);
@@ -7160,11 +7160,11 @@ public class MagicSpecials extends BaseCombatContent {
 				outputText("[Themonster] is struck by your disintegration ray! ");
 				if (rand(2) == 0) {
 					outputText("It manages to avoid most of the beam damage. ");
-					doMagicDamage((damage * 2), true, true);
+					doPlayerMagDamage((damage * 2), true, true);
 				}
 				else {
 					outputText("It takes tremendous damage as the beam creates a hole in [monster his] body! ");
-					doMagicDamage((damage * 10), true, true);
+					doPlayerMagDamage((damage * 10), true, true);
 				}
 				break;
 		}
@@ -7449,7 +7449,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("too resolute to be stunned by your attack.</b>");
 		}*/
 		outputText("Your elemental unleash a barrage of star shaped bolts of arcane energy, blasting your opponent. ");
-		doMagicDamage(damage, true, true);
+		doMinionMagDamage(damage, true, true);
 		outputText("\n\n");
 		//checkMinionsAchievementDamage(damage);
 		enemyAI();
@@ -7887,7 +7887,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("too resolute to be stunned by your attack.</b>");
 		}*/
 		outputText("Your purity elemental produces a ray of hyper condensed and pure light and aims it straight at [themonster] ");
-		doMagicDamage(damage, true, true);
+		doMinionMagDamage(damage, true, true);
 		outputText("\n\n");
 		//checkMinionsAchievementDamage(damage);
 		enemyAI();
@@ -7948,7 +7948,7 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("too resolute to be stunned by your attack.</b>");
 		}*/
 		outputText("Your corruption elemental condenses corruption from air into solid matter, striking your opponent with them ");
-		doMagicDamage(damage, true, true);
+		doMinionMagDamage(damage, true, true);
 		outputText("\n\n");
 		//checkMinionsAchievementDamage(damage);
 		enemyAI();
@@ -8108,7 +8108,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (monster.hasPerk(PerkLib.FireNature)) damage *= 0.2;
 //	if (player.hasPerk(PerkLib.FireAffinity)) damage *= 2;
 		damage = Math.round(damage);
-		doDamage(damage);
+		doPlayerFireDamage(damage);
 		outputText(" <b>([font-damage]" + damage + "[/font])</b>\n\n");
 		player.removeStatusEffect(StatusEffects.ImmolationSpell);
 		SceneLib.arianScene.clearTalisman();

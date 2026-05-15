@@ -74,7 +74,7 @@ public class BloodReqiuemSkill extends AbstractBloodSoulSkill {
 		}
 		
 		if (display) outputText("[Themonster] takes ");
-		doDamage(damage, true, display);
+		doPlayerPhysDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		if (display) outputText(" damage.");
 		if (monster.hasStatusEffect(StatusEffects.BloodRequiem)) monster.addStatusValue(StatusEffects.BloodRequiem, 1, 4);

@@ -59,7 +59,7 @@ public class EAspectDarknessSkill extends AbstractMagicSpecial {
         damage = Math.round(damage);
 
         if (display) outputText("Your darkness elemental condenses shadows into solid matter, striking your opponent with them ");
-		doDarknessDamage(damage, true, display);
+		doMinionDarknessDamage(damage, true, display);
 		if (crit && display) outputText(" <b>Critical!</b>");
 		outputText("\n\n");
     }

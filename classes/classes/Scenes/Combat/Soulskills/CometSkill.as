@@ -76,7 +76,7 @@ public class CometSkill extends AbstractSoulSkill {
 		}
 		//final touches
 		if (display) outputText("Comet fragments hits [themonster], dealing ");
-		doMagicDamage(damage, true, display);
+		doPlayerMagDamage(damage, true, display);
 		if (display) outputText(" damage! ");
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		checkAchievementDamage(damage);

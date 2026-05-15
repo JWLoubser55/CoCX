@@ -68,7 +68,7 @@ public class MatangoAttackSkill extends AbstractGeneral {
 		damage = Math.round(damage);
 
 		if (display) outputText("\n\nYour matango servants attempt to hurt and restrain your opponent"+(monster.plural?"s":"")+" punching and grabbing at [monster him]. ");
-		doPhysicalDamage(damage, true, display);
+		doMinionPhysDamage(damage, true, display);
 		if (display) {
 			if (crit) outputText(" <b>Critical! </b>");
 			if (!stunned) outputText("\n\n");

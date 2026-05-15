@@ -65,7 +65,7 @@ public class MummyAttackSkill extends AbstractGeneral {
 		damage = Math.round(damage);
 
 		if (display) outputText("\n\nYour mummy servants swarm, punch and bite at [themonster] trying to immobilize it so they can feast on [monster his] energy. ");
-		doPhysicalDamage(damage, true, display);
+		doMinionPhysDamage(damage, true, display);
 		if (display) {
 			if (crit) outputText(" <b>Critical! </b>");
 			outputText("\n\n");

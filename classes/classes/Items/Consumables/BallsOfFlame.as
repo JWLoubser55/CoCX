@@ -43,7 +43,7 @@ package classes.Items.Consumables
 				}
 				if (game.monster.hasPerk(PerkLib.EnemyGroupType) || game.monster.hasPerk(PerkLib.EnemyLargeGroupType)) damage *= 5;
 				outputText(game.monster.capitalA + game.monster.short + " is hit with the Balls of Flame! They shatter into embers as they burn " + game.monster.pronoun2 + ". ");
-				damage = SceneLib.combat.doFireDamage(damage, true, true);
+				damage = SceneLib.combat.doPlayerFireDamage(damage, true, true);
 				if (game.monster.HP < game.monster.minHP()) game.monster.HP = game.monster.minHP() - 1;
 			}
 			return(false);

@@ -75,7 +75,7 @@ public class CurseOfWeepingSpell extends AbstractHexSpell {
 			hemorrhage3Damage *= 0.2;
 			if (player.hasPerk(PerkLib.Necromancy)) hemorrhage3Damage *= 1.5;
 			hemorrhage3Damage = Math.round(hemorrhage3Damage);
-			combat.doDamage(hemorrhage3Damage, true, display);
+			combat.doPlayerPhysDamage(hemorrhage3Damage, true, display);
 			if (display) {
 				outputText("\n\n");
 			}
@@ -107,7 +107,7 @@ public class CurseOfWeepingSpell extends AbstractHexSpell {
 			pc.HPChange(-hpCost(), false, false);
 			var CurseOfWeepingMod:Number = calcDamage(monster, true, true);
 			monster.createStatusEffect(StatusEffects.CurseOfWeeping, calcDuration(), CurseOfWeepingMod, 0, 0);
-			doDamage(CurseOfWeepingMod, true, true);
+			doPlayerPhysDamage(CurseOfWeepingMod, true, true);
 		}
 	}
 }

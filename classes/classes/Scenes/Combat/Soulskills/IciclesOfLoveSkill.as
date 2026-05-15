@@ -140,7 +140,7 @@ public class IciclesOfLoveSkill extends AbstractSoulSkill implements SaveableSta
 			outputText("You start concentrate on the lust flowing in your body, your veins while imaging a joy of sharing icicles of love with enemy. Shortly after that lust starts to gather around your hands getting colder and colder till it envelop your hands in icicles.\n\n");
     		outputText("And with almost orgasmic joy, you sends a wave of ice shards toward [themonster] while mumbling about 'sharing the icicles of love'. ");
 		}
-		doIceDamage(damage, true, display);
+		doPlayerIceDamage(damage, true, display);
 		if (display) outputText("\n\n");
 		if (player.hasPerk(PerkLib.BrutalSpells) && monster.armorMDef > 0) {
 			outputText("Your soulskills are so brutal that you damage [themonster]'s magical resistance!\n\n");

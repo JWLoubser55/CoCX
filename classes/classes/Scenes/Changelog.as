@@ -395,7 +395,7 @@ public class Changelog extends BaseContent
 			outputText("-Yeti Legs/Feet now would give similar bonus to unarmed dmg as Yeti Arms. Yeti tier 2 bonuses req. now 20+ not 17+ pts and are slight improved.\n");
 			outputText("-New TF item (by Liadri): Shifting Flower. Droped by chameleon enemies. Using this item will turn PC into chameleon. Chameleon / Elder Chameleon racial bonuses (11+/19+): +50/75% to tou/wis multi, +65/105% to spe multi.\n");
 			outputText("-New Masturbation option: Tonguesturbate. Req. to have chameleon tongue and cock.\n");
-			outputText("-New P. Special: Camouflage - usable by chameleon PC. Stealth PC for multiple rounds enemy cannot perceive the player unless it wins a perception check (it's repeated each turn) based on enemy intelligence, wisdom and level Versus PC speed and level. While camouflaged PCs benefit from sneak attack modifiers if they have the skill. Max duration 4 rounds.\n");
+			outputText("-New P. Special: Camouflage - usable by chameleon PC. Stealth PC for multiple rounds enemy cannot perceive the player unless it wins a perception check (it's repeated each turn) based on enemy intelligence, wisdom and level Versus PC speed and level. While camouflaged PCs benefit from sneak attack modifiers if they have the skill. Max duration 4 rounds. (Attacking by PC directly would end Camouflage instantly)\n");
 			outputText("-New P. Special: Tongue (Grab) - usable by chameleon / frog / mobogo PC. You can initiate a grapple using your tongue.\n");
 			outputText("-New mutation perk: Chameleon skin. Req. having free adaptation mutation slot, Chameleon race. Effects: Increase sneak attack damage multiplier (+1x).\n");
 			outputText("-\n");

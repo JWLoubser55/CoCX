@@ -45,8 +45,8 @@ public class BaseCombatContent extends BaseContent {
 	// ==================
 	// APPLY EFFECTS
 	// ==================
-	protected function doDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doDamage(damage, apply, display, ignoreDR);
+	protected function doDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doDamage(damage, subtype, apply, display, ignoreDR);
 	}
 	protected function doPlayerPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerPhysDamage(damage, apply, display, ignoreDR);
@@ -60,8 +60,11 @@ public class BaseCombatContent extends BaseContent {
 	protected function doMinionPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMinionPhysDamage(damage, apply, display, ignoreDR);
 	}
-	protected function doPhysicalDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doPhysicalDamage(damage, apply, display, ignoreDR);
+	protected function doEnemySelfPhysDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doEnemySelfPhysDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPhysicalDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doPhysicalDamage(damage, subtype, apply, display, ignoreDR);
 	}
 	protected function doPlayerMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerMagDamage(damage, apply, display, ignoreDR);
@@ -75,8 +78,8 @@ public class BaseCombatContent extends BaseContent {
 	protected function doMinionMagDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMinionMagDamage(damage, apply, display, ignoreDR);
 	}
-	protected function doMagicDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doMagicDamage(damage, apply, display, ignoreDR);
+	protected function doMagicDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMagicDamage(damage, subtype, apply, display, ignoreDR);
 	}
 	protected function doPlayerFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerFireDamage(damage, apply, display, ignoreDR);
@@ -90,8 +93,8 @@ public class BaseCombatContent extends BaseContent {
 	protected function doMinionFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMinionFireDamage(damage, apply, display, ignoreDR);
 	}
-	protected function doFireDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doFireDamage(damage, apply, display, ignoreDR);
+	protected function doFireDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doFireDamage(damage, subtype, apply, display, ignoreDR);
 	}
 	protected function doPlayerIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerIceDamage(damage, apply, display, ignoreDR);
@@ -105,8 +108,8 @@ public class BaseCombatContent extends BaseContent {
 	protected function doMinionIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMinionIceDamage(damage, apply, display, ignoreDR);
 	}
-	protected function doIceDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doIceDamage(damage, apply, display, ignoreDR);
+	protected function doIceDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doIceDamage(damage, subtype, apply, display, ignoreDR);
 	}
 	protected function doPlayerLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerLightningDamage(damage, apply, display, ignoreDR);
@@ -120,8 +123,8 @@ public class BaseCombatContent extends BaseContent {
 	protected function doMinionLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMinionLightningDamage(damage, apply, display, ignoreDR);
 	}
-	protected function doLightningDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doLightningDamage(damage, apply, display, ignoreDR);
+	protected function doLightningDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doLightningDamage(damage, subtype, apply, display, ignoreDR);
 	}
 	protected function doPlayerDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerDarknessDamage(damage, apply, display, ignoreDR);
@@ -135,8 +138,8 @@ public class BaseCombatContent extends BaseContent {
 	protected function doMinionDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doMinionDarknessDamage(damage, apply, display, ignoreDR);
 	}
-	protected function doDarknessDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
-		return combat.doDarknessDamage(damage, apply, display, ignoreDR);
+	protected function doDarknessDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doDarknessDamage(damage, subtype, apply, display, ignoreDR);
 	}
 	protected function doPlayerPoisonDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerPoisonDamage(damage, apply, display, ignoreDR);
@@ -246,8 +249,11 @@ public class BaseCombatContent extends BaseContent {
 	protected function doPlayerDoTPsychicDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerDoTPsychicDamage(damage, apply, display);
 	}
-	protected function doPsychicDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
-		return combat.doPsychicDamage(damage, apply, display);
+	protected function doMinionPsychicDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionPsychicDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doPsychicDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false):Number {
+		return combat.doPsychicDamage(damage, subtype, apply, display);
 	}
 	protected function doPlayerTrueDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerTrueDamage(damage, apply, display);
@@ -258,8 +264,11 @@ public class BaseCombatContent extends BaseContent {
 	protected function doPlayerDoTTrueDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
 		return combat.doPlayerDoTTrueDamage(damage, apply, display);
 	}
-	protected function doTrueDamage(damage:Number, apply:Boolean = true, display:Boolean = false):Number {
-		return combat.doTrueDamage(damage, apply, display);
+	protected function doMinionTrueDamage(damage:Number, apply:Boolean = true, display:Boolean = false, ignoreDR:Boolean = false):Number {
+		return combat.doMinionTrueDamage(damage, apply, display, ignoreDR);
+	}
+	protected function doTrueDamage(damage:Number, subtype:Number, apply:Boolean = true, display:Boolean = false):Number {
+		return combat.doTrueDamage(damage, subtype, apply, display);
 	}
 	protected function combatParry():Boolean {
 		return combat.combatParry();

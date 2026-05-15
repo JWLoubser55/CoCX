@@ -139,7 +139,7 @@ public class FlamesOfLoveSkill extends AbstractSoulSkill implements SaveableStat
 			outputText("You concentrate on the lust flowing in your body, your veins heating up rapidly. With every beat of your heart, the heat rises, the heat in your groin transferring to the palm of your hands. \n\n");
 			outputText("With almost orgasmic joy, you send a wave of flames toward [themonster]. ");
 		}
-		doFireDamage(damage, true, display);
+		doPlayerFireDamage(damage, true, display);
 		if (display) outputText("\n\n");
 		if (player.hasPerk(PerkLib.BrutalSpells) && monster.armorMDef > 0) {
 			outputText("Your soulskills are so brutal that you damage [themonster]'s magical resistance!\n\n");

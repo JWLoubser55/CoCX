@@ -1661,11 +1661,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage = Math.round(damage);
 		if (player.weapon == weapons.PRURUMI) {
-			if (player.spe >= 150) doDamage(damage, true, true);
+			if (player.spe >= 150) doPlayerPhysDamage(damage, true, true);
 			combat.WrathGenerationPerHit2(5);
-			if (player.spe >= 225) doDamage(damage, true, true);
+			if (player.spe >= 225) doPlayerPhysDamage(damage, true, true);
 			combat.WrathGenerationPerHit2(5);
-			if (player.spe >= 300) doDamage(damage, true, true);
+			if (player.spe >= 300) doPlayerPhysDamage(damage, true, true);
 			combat.WrathGenerationPerHit2(5);
 		}
 		combat.checkForElementalEnchantmentAndDoDamageMain(damage, false, false);
@@ -1718,6 +1718,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.weapon == weapons.ANGSTD1 || player.weapon == weapons.ANGSTD) SAMulti += 2;
 		if (player.hasPerk(PerkLib.DeadlySneaker)) SAMulti += 2;
 		if (player.hasPerk(PerkLib.Slayer)) SAMulti += 3;
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 1) SAMulti += player.perkv1(IMutationsLib.ChameleonSkinIM);
 		if (combat.flyingSwordForRangeSneakAttack()) SAMulti += 1;
 		if (monster.hasStatusEffect(StatusEffects.InvisibleOrStealth)) SAMulti *= 2;
 		damage += combat.meleeDamageNoLagSingle();
@@ -1971,6 +1972,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.weaponRange == weaponsrange.SNIPPLE) SAMulti += 6;
 		//if (player.weaponRange == weaponsrange.Sakuno M2) SAMulti += 8;
 		//if (player.hasPerk(PerkLib.DeadlySneaker)) SAMulti += 2;
+		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 1) SAMulti += player.perkv1(IMutationsLib.ChameleonSkinIM);
 		if (combat.calculateRangeDamageMultiplier() > 1) SAMulti += (combat.calculateRangeDamageMultiplier() - 1);
 		if (combat.flyingSwordForRangeSneakAttack()) SAMulti += 1;
 		if (monster.hasStatusEffect(StatusEffects.InvisibleOrStealth)) SAMulti *= 2;
@@ -2019,7 +2021,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage = Math.round(damage);
 		var ignoreDR:Boolean = (player.hasPerk(PerkLib.DeadlyAim) && player.weaponRangePerk == "Bow");
-		doDamage(damage, true, true, ignoreDR);
+		doPlayerPhysDamage(damage, true, true, ignoreDR);
 		outputText(" ");
 		if (crit) outputText("<b>Critical!</b>");
 		if (combat.flyingSwordForRangeSneakAttack()) outputText(" At the same time " + player.weaponFlyingSwordsName+" impales your target" + (monster.plural?"s":"") + ".");
@@ -2142,8 +2144,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 			} else {
 				outputText("Not satisfied with your weapon alone you also impale your target on your horns, delivering massive damage.");
 			}
-			doDamage(damage / 2, true, true);
-			if (player.hasPerk(PerkLib.PhantomStrike)) doDamage(damage / 2, true, true);
+			doPlayerPhysDamage(damage / 2, true, true);
+			if (player.hasPerk(PerkLib.PhantomStrike)) doPlayerPhysDamage(damage / 2, true, true);
 			if (player.horns.type == Horns.KIRIN) {
 				doPlayerLightningDamage(damage / 2, true, true);
 				if (player.hasPerk(PerkLib.PhantomStrike)) doPlayerLightningDamage(damage / 2, true, true);
@@ -2444,13 +2446,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 			doPlayerFireDamage(damage, true, true);
 		}
 		else if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
-			doDamage(damage, true, true);
+			doPlayerPhysDamage(damage, true, true);
 			damage = Math.round(damage * combat.fireDamageBoostedByDao());
 			doPlayerFireDamage(Math.round(damage*0.1), true, true);
 			if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 			damage = Math.round(damage * 1.1);
 		}
-		else doDamage(damage, true, true);
+		else doPlayerPhysDamage(damage, true, true);
 		outputText(" damage! ");
 		if (crit) {
 			outputText(" <b>*Critical Hit!*</b>");
@@ -2731,11 +2733,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 			damage *= monster.damagePercent() / 100;
 			if (damage < 5) damage = 5;
-			doPhysicalDamage(damage, true, true);
+			doPlayerPhysDamage(damage, true, true);
 			if (crit) outputText(" <b>*Critical Hit!*</b>");
 			if (player.hasPerk(PerkLib.PhantomStrike)) {
 				outputText("  Phantom strike dealing additional ");
-				doPhysicalDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 				outputText(" damage! ");
 				if (crit) outputText(" <b>*Critical Hit!*</b>");
 				damage *= 2;
@@ -2824,7 +2826,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		damage = Math.round(damage);
 		if (damage < 1) damage = 1;
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("<b>([font-damage]" + damage + "[/font])</b>");
 		if (player.perkv1(IMutationsLib.LactaBovinaOvariesIM) >= 3) player.lust -= 200;
 		else player.lust -= 100;
@@ -2868,7 +2870,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		if (player.perkv1(IMutationsLib.FiendishBallsIM) >= 4) damage *= 4;
 		damage = Math.round(damage);
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("<b>([font-damage]" + damage + "[/font])</b>");
 		if (player.perkv1(IMutationsLib.MinotaurTesticlesIM) >= 3) player.lust -= 200;
 		else player.lust -= 100;
@@ -2940,7 +2942,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) slamDmg *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
 		slamDmg *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		slamDmg = Math.round(slamDmg);
-		doDamage(slamDmg);
+		doPlayerPhysDamage(slamDmg);
 		outputText("<b>([font-damage]" + slamDmg + "[/font])</b>");
 		if (!monster.hasPerk(PerkLib.Resolute) && rand(10) == 0) {
 			var stunDura:Number = 1;
@@ -3289,22 +3291,22 @@ public class PhysicalSpecials extends BaseCombatContent {
 				doPlayerFireDamage(damage, true, true);
 			}
 			else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
-				doDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 				damage = Math.round(damage * combat.fireDamageBoostedByDao());
 				doPlayerFireDamage(Math.round(damage*0.1), true, true);
 				if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 				damage = Math.round(damage * 1.1);
 			}
-			else doDamage(damage, true, true);
+			else doPlayerPhysDamage(damage, true, true);
 			if (player.hasPerk(PerkLib.PhantomStrike)) {
 				if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) doPlayerFireDamage(damage, true, true);
 				else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
-					doDamage(damage, true, true);
+					doPlayerPhysDamage(damage, true, true);
 					doPlayerFireDamage(Math.round(damage*0.1), true, true);
 					if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 					damage = Math.round(damage * 1.1);
 				}
-				else doDamage(damage, true, true);
+				else doPlayerPhysDamage(damage, true, true);
 			}
 			outputText(" damage! ");
 			checkAchievementDamage(damage);
@@ -3382,7 +3384,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage *= dmgamp;
 		damage = Math.round(damage);
 		outputText("Your stone golem slam into [themonster]. ");
-		doDamage(damage, true, true);
+		doMinionPhysDamage(damage, true, true);
 		if (shatter) outputText(" <b>*Golem Core shattered!*</b>");
 		if (overloadedGolemCoresBag) outputText(" <b>*Golem Core wasn't picked due to lack of space to store them!*</b>");
 		outputText("\n\n");
@@ -3435,7 +3437,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage *= dmgamp;
 		damage = Math.round(damage);
 		outputText("Your stone golems slams into [themonster]. ");
-		doDamage(damage, true, true);
+		doMinionPhysDamage(damage, true, true);
 		if (shatter) outputText(" <b>*Golem Cores shattered!*</b>");
 		if (overloadedGolemCoresBag) outputText(" <b>*None of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		if (partialyoverloadedGolemCoresBag) outputText(" <b>*Some of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
@@ -3489,7 +3491,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage *= dmgamp;
 		damage = Math.round(damage);
 		outputText("Your stone golems slams into [themonster]. ");
-		doDamage(damage, true, true);
+		doMinionPhysDamage(damage, true, true);
 		if (shatter) outputText(" <b>*Golem Cores shattered!*</b>");
 		if (overloadedGolemCoresBag) outputText(" <b>*None of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		if (partialyoverloadedGolemCoresBag) outputText(" <b>*Some of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
@@ -3520,7 +3522,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage *= dmgamp;
 		damage = Math.round(damage);
 		outputText("Your stone golems slams into [themonster]. ");
-		doDamage(damage, true, true);
+		doMinionPhysDamage(damage, true, true);
 		if (overloadedGolemCoresBag) outputText(" <b>*None of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		if (partialyoverloadedGolemCoresBag) outputText(" <b>*Some of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		outputText("\n\n");
@@ -3550,7 +3552,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage *= dmgamp;
 		damage = Math.round(damage);
 		outputText("Your stone golems slams into [themonster]. ");
-		doDamage(damage, true, true);
+		doMinionPhysDamage(damage, true, true);
 		if (overloadedGolemCoresBag) outputText(" <b>*None of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		if (partialyoverloadedGolemCoresBag) outputText(" <b>*Some of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		outputText("\n\n");
@@ -3580,7 +3582,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage *= dmgamp;
 		damage = Math.round(damage);
 		outputText("Your stone golems slams into [themonster]. ");
-		doDamage(damage, true, true);
+		doMinionPhysDamage(damage, true, true);
 		if (overloadedGolemCoresBag) outputText(" <b>*None of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		if (partialyoverloadedGolemCoresBag) outputText(" <b>*Some of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		outputText("\n\n");
@@ -3614,7 +3616,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage *= dmgamp;
 		damage = Math.round(damage);
 		outputText("Your stone golems slams into [themonster]. ");
-		doDamage(damage, true, true);
+		doMinionPhysDamage(damage, true, true);
 		if (overloadedGolemCoresBag) outputText(" <b>*None of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		if (partialyoverloadedGolemCoresBag) outputText(" <b>*Some of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
 		outputText("\n\n");
@@ -3677,27 +3679,27 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 4) doMinionLightningDamage(damage, true, true);
 			else if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 3) doMinionIceDamage(damage, true, true);
 			else if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 2) doMinionFireDamage(damage, true, true);
-			else doDamage(damage, true, true);
+			else doMinionPhysDamage(damage, true, true);
 		}
-		else doDamage(damage, true, true);
+		else doMinionPhysDamage(damage, true, true);
 		if (player.hasStatusEffect(StatusEffects.GolemUpgrades1) && player.statusEffectv1(StatusEffects.GolemUpgrades1) > 0) {
 			if (player.hasStatusEffect(StatusEffects.GolemUpgrades1) && player.statusEffectv3(StatusEffects.GolemUpgrades1) > 0) {
 				if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 5) doMinionDarknessDamage(damage, true, true);
 				else if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 4) doMinionLightningDamage(damage, true, true);
 				else if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 3) doMinionIceDamage(damage, true, true);
 				else if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 2) doMinionFireDamage(damage, true, true);
-				else doDamage(damage, true, true);
+				else doMinionPhysDamage(damage, true, true);
 			}
-			else doDamage(damage, true, true);
+			else doMinionPhysDamage(damage, true, true);
 			if (player.statusEffectv1(StatusEffects.GolemUpgrades1) > 1) {
 				if (player.hasStatusEffect(StatusEffects.GolemUpgrades1) && player.statusEffectv3(StatusEffects.GolemUpgrades1) > 0) {
 					if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 5) doMinionDarknessDamage(damage, true, true);
 					else if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 4) doMinionLightningDamage(damage, true, true);
 					else if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 3) doMinionIceDamage(damage, true, true);
 					else if (player.statusEffectv3(StatusEffects.GolemUpgrades1) == 2) doMinionFireDamage(damage, true, true);
-					else doDamage(damage, true, true);
+					else doMinionPhysDamage(damage, true, true);
 				}
-				else doDamage(damage, true, true);
+				else doMinionPhysDamage(damage, true, true);
 			}
 		}
 	}
@@ -3937,7 +3939,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.SnowLily)) doPlayerIceDamage(Math.round(damage * combat.iceDamageBoostedByDao()), true, true);
 		else if (player.hasPerk(PerkLib.Cinderbloom)) doPlayerFireDamage(Math.round(damage * combat.fireDamageBoostedByDao()), true, true);
 		else if (player.hasPerk(PerkLib.Nightshade)) doPlayerDarknessDamage(Math.round(damage * combat.darknessDamageBoostedByDao()), true, true);
-		else doDamage(damage, true, true);
+		else doPlayerPhysDamage(damage, true, true);
 		outputText(" damage for their trouble.\n\n");
 		combat.WrathGenerationPerHit2(5);
 		enemyAI();
@@ -3982,7 +3984,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.SelfImprovement)) damage *= 5;
 		damage = Math.round(damage);
 		outputText(" ");
-		doDamage(damage, true, true);
+		doPlayerPhysDamage(damage, true, true);
 		doPlayerFireDamage(damage, true, true);
 		damage *= 2;
 		if (player.hasKeyItem("Nitro Boots") >= 0) {
@@ -4227,15 +4229,15 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage *= 1.75;
 		}
 		damage = Math.round(damage);
-		doDamage(damage, true, true, ignoreDR);
+		doMinionPhysDamage(damage, true, true, ignoreDR);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
-		doDamage(damage, true, true, ignoreDR);
+		doMinionPhysDamage(damage, true, true, ignoreDR);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
-		doDamage(damage, true, true, ignoreDR);
+		doMinionPhysDamage(damage, true, true, ignoreDR);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
-		doDamage(damage, true, true, ignoreDR);
+		doMinionPhysDamage(damage, true, true, ignoreDR);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
-		doDamage(damage, true, true, ignoreDR);
+		doMinionPhysDamage(damage, true, true, ignoreDR);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		if (!monster.hasPerk(PerkLib.Resolute)) {
@@ -4425,7 +4427,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		damage = Math.round(damage);
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("You slash your adversary with your sharp stone claws, dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (crit) {
 			outputText(" <b>*Critical Hit!*</b>");
@@ -4436,7 +4438,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
@@ -4502,7 +4504,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		damage = Math.round(damage);
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("You punch your adversary with your stone fist, dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (!monster.hasPerk(PerkLib.Resolute)) {
 			outputText(" [Themonster] recoil under the blow!");
@@ -4518,7 +4520,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
@@ -4578,7 +4580,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		damage = Math.round(damage);
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		if (!monster.hasStatusEffect(StatusEffects.TailSlamWhip)) monster.createStatusEffect(StatusEffects.TailSlamWhip,monster.armorDef,5,0,0);
 		//monster.armorDef == 0;
 		outputText("You slam your mace-like tail on your foe, dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
@@ -4596,7 +4598,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
@@ -4656,7 +4658,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		damage = Math.round(damage);
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		var multikulti:String = (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyLargeGroupType)) ? "s" : "";
 		outputText("You swipe the field with your axe-bladed tail, slicing your foe" + multikulti + ", dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (!monster.isImmuneToBleed()) {
@@ -4673,7 +4675,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
@@ -4728,7 +4730,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		damage = Math.round(damage);
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("You buffet your foe with your massive wings, dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (crit) {
 			outputText(" <b>*Critical Hit!*</b>");
@@ -4739,7 +4741,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
@@ -4797,7 +4799,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.Rage)) player.removeStatusEffect(StatusEffects.Rage);
 		}
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
@@ -4932,7 +4934,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 						damage *= critMulti;
 					}
 				}
-				doPhysicalDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 			}
 		}
 		//Failure
@@ -5005,7 +5007,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 						damage *= critMulti;
 					}
 				}
-				doPhysicalDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 			}
 		}
 		//Failure
@@ -5071,7 +5073,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					}
 				}
 				damage = Math.round(damage);
-				doPhysicalDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 			}
 		}
 		//Failure
@@ -5409,7 +5411,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 			damage = Math.round(damage);
-			doDamage(damage, true, true);
+			doPlayerPhysDamage(damage, true, true);
 			outputText(" damage!");
 			if (monster.hasStatusEffect(StatusEffects.DefPDebuff)) monster.addStatusValue(StatusEffects.DefPDebuff, 1, 1);
 			else {
@@ -5456,7 +5458,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage = combat.movementPhysicalSpecialsBoost(damage);
 			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 			damage = Math.round(damage);
-			doDamage(damage, true, true);
+			doPlayerPhysDamage(damage, true, true);
 			outputText(" damage! You also are hurt from the recoil. ");
 			player.takePhysDamage(Math.round(player.maxHP() * 0.1), true);
 			outputText("\n\n");
@@ -5581,10 +5583,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		damage = Math.round(damage);
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("You slam [themonster] with your full strength, crushing it under your weight. [Themonster] tries to recover but is stunned and grievously wounded by your assault. (<b>[font-damage]" + damage + "[/font]</b>)");
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
@@ -5705,9 +5707,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 			damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 			damage = Math.round(damage);
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			if (player.hasPerk(PerkLib.PhantomStrike)) {
-				doDamage(damage);
+				doPlayerPhysDamage(damage);
 				damage *= 2;
 			}
 			outputText("You growl menacingly, and fold your wings, as you dive into [themonster] clawing at [monster him] body and leaving deep bleeding wounds dealing <b>[font-damage]" + damage + "[/font]</b> damage!. You’re now grappling with your target ready to tear it to shreds.");
@@ -5805,7 +5807,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.HydraBloodIM) >= 4) HBD *= 1.5;
 		HBD *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		HBD = Math.round(HBD);
-		doDamage(HBD, true, true);
+		doPlayerPhysDamage(HBD, true, true);
 		combat.WrathGenerationPerHit2(5);
 	}
 	public function nagaBiteAttack():void {
@@ -6063,7 +6065,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage = Math.round(damage);
 			var totalDamage:Number;
 			if (player.hasPerk(PerkLib.HellfireCoat)) totalDamage = doPlayerFireDamage(damage);
-			else totalDamage = doDamage(damage);
+			else totalDamage = doPlayerPhysDamage(damage);
 		}
 		if(totalDamage <= 0) {
 			totalDamage = 0;
@@ -6159,7 +6161,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				if (player.perkv1(IMutationsLib.HydraBloodIM) >= 4) damage *= 1.5;
 				damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 				damage = Math.round(damage);
-				doDamage(damage);
+				doPlayerPhysDamage(damage);
 			}
 		}
 		else {
@@ -6233,7 +6235,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else damage *= (1.75 + buffMultiplier);
 		}
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("Your scythes swiftly sweeps against [themonster], dealing <b>[font-damage]" + damage + "[/font]</b> damage!");
 		if (crit) {
 			outputText(" <b>*Critical Hit!*</b>");
@@ -6244,7 +6246,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			outputText(" (<b>[font-damage]" + damage + "[/font]</b>)");
 			damage *= 2;
 		}
@@ -6366,22 +6368,22 @@ public class PhysicalSpecials extends BaseCombatContent {
 				doPlayerFireDamage(damage, true, true);
 			}
 			else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
-				doDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 				damage = Math.round(damage * combat.fireDamageBoostedByDao());
 				doPlayerFireDamage(Math.round(damage*0.1), true, true);
 				if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 				damage = Math.round(damage * 1.1);
 			}
-			else doDamage(damage, true, true);
+			else doPlayerPhysDamage(damage, true, true);
 			if (player.hasPerk(PerkLib.PhantomStrike)) {
 				if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) doPlayerFireDamage(damage, true, true);
 				else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
-					doDamage(damage, true, true);
+					doPlayerPhysDamage(damage, true, true);
 					doPlayerFireDamage(Math.round(damage*0.1), true, true);
 					if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 					damage = Math.round(damage * 1.1);
 				}
-				else doDamage(damage, true, true);
+				else doPlayerPhysDamage(damage, true, true);
 				damage *= 2;
 			}
 			outputText(" damage.");
@@ -6514,10 +6516,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 				else damage *= 1.5;
 			}
 			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
-			doDamage(damage, true, true);
+			doPlayerPhysDamage(damage, true, true);
 			doPlayerLightningDamage(Math.round(damage*0.1), true, true);
 			if (player.hasPerk(PerkLib.PhantomStrike)) {
-				doDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 				doPlayerLightningDamage(Math.round(damage*0.1), true, true);
 				damage *= 2;
 			}
@@ -6606,22 +6608,22 @@ public class PhysicalSpecials extends BaseCombatContent {
 				doPlayerFireDamage(damage, true, true);
 			}
 			else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
-				doDamage(damage, true, true);
+				doPlayerPhysDamage(damage, true, true);
 				damage = Math.round(damage * combat.fireDamageBoostedByDao());
 				doPlayerFireDamage(Math.round(damage*0.1), true, true);
 				if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 				damage = Math.round(damage * 1.1);
 			}
-			else doDamage(damage, true, true);
+			else doPlayerPhysDamage(damage, true, true);
 			if (player.hasPerk(PerkLib.PhantomStrike)) {
 				if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) doPlayerFireDamage(damage, true, true);
 				else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
-					doDamage(damage, true, true);
+					doPlayerPhysDamage(damage, true, true);
 					doPlayerFireDamage(Math.round(damage*0.1), true, true);
 					if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 					damage = Math.round(damage * 1.1);
 				}
-				else doDamage(damage, true, true);
+				else doPlayerPhysDamage(damage, true, true);
 				damage *= 2;
 			}
 			if (crit) outputText("<b>Critical hit! </b>");
@@ -6785,7 +6787,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		//Do all damage
 		damage = Math.round(damage);
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("<b>([font-damage]" + damage + "[/font])</b>"); //Damage
 		var dBd1c:Number = 1;
 		if (player.hasPerk(PerkLib.ImprovedVenomGlandSu)) dBd1c *= 2;
@@ -7048,14 +7050,14 @@ public class PhysicalSpecials extends BaseCombatContent {
 			var totalDamage:Number;
 			if (player.hasPerk(PerkLib.HellfireCoat))
 				totalDamage = doPlayerFireDamage(damage);
-			else totalDamage = doDamage(damage);
+			else totalDamage = doPlayerPhysDamage(damage);
 			if (player.faceType == Face.CERBERUS) {
 				if (player.hasPerk(PerkLib.HellfireCoat)) {
 					totalDamage += doPlayerFireDamage(damage);
 					totalDamage += doPlayerFireDamage(damage);
 				} else {
-					totalDamage += doDamage(damage);
-					totalDamage += doDamage(damage);
+					totalDamage += doPlayerPhysDamage(damage);
+					totalDamage += doPlayerPhysDamage(damage);
 				}
 			}
 		}
@@ -7243,10 +7245,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 			outputText(monster.capitalA + monster.short);
 			if(!monster.plural) outputText(" reels from the damaging impact! ");
 			else outputText(" reel from the damaging impact! ");
-			doDamage(damage, true);
+			doPlayerPhysDamage(damage, true);
 			if (player.hasPerk(PerkLib.PhantomStrike)) {
 				outputText(" ");
-				doDamage(damage, true);
+				doPlayerPhysDamage(damage, true);
 				damage *= 2;
 			}
 			if (!monster.isImmuneToBleed()) {
@@ -7292,9 +7294,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		var damage:int = 10 + (player.str / 1.5) + rand(player.str / 2);
 		damage = combat.statusEffectBonusDamage(damage);
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		if (player.hasPerk(PerkLib.PhantomStrike)) {
-			doDamage(damage);
+			doPlayerPhysDamage(damage);
 			damage *= 2;
 		}
 		outputText("You successfully bash your opponent with your tusks");
@@ -7375,8 +7377,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		damage *= (1 + (0.01 * combat.masteryFeralCombatLevel()));
 		damage = Math.round(damage);
-		doDamage(damage, true, true);
-		if (player.hasPerk(PerkLib.PhantomStrike)) doDamage(damage, true, true);
+		doPlayerPhysDamage(damage, true, true);
+		if (player.hasPerk(PerkLib.PhantomStrike)) doPlayerPhysDamage(damage, true, true);
 		outputText("\n\n");
 		enemyAI();
 	}
@@ -7400,7 +7402,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.shieldPerk == "Massive") damage *= 5;
 		var chance:int = Math.floor(monster.statusEffectv1(StatusEffects.TimesBashed) + 1);
 		if (chance > 10) chance = 10;
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText("Your [shield] slams against [themonster], dealing <b>[font-damage]" + damage + "[/font]</b> damage! ");
 		if (player.hasPerk(PerkLib.BrutalOpening)) {
 			if (!monster.hasStatusEffect(StatusEffects.TimesBashed)) monster.createStatusEffect(StatusEffects.TimesBashed, 0, 2, 0, 0);
@@ -7832,7 +7834,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage = Math.round(damage);
 		outputText("Holding your weapon horizontally, you shoot them all, spraying [themonster] with a projectile. ");
 		var ignoreDR:Boolean = (player.hasPerk(PerkLib.DeadlyAim))
-		doPhysicalDamage(damage, true, true, ignoreDR);
+		doPlayerPhysDamage(damage, true, true, ignoreDR);
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
 		combat.cupidArrowsEffect();
@@ -8128,7 +8130,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		if (half) damage *= 0.5;
 		damage = Math.round(damage);
-		doDamage(damage, true, true, ignoreDR);
+		doPlayerPhysDamage(damage, true, true, ignoreDR);
 		outputText(" damage!");
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		outputText("\n\n");
@@ -8424,7 +8426,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.JobBeastWarrior)) damage *= 1.1;
 		if (player.hasPerk(PerkLib.Heroism) && (monster.hasPerk(PerkLib.EnemyBossType) || monster.hasPerk(PerkLib.EnemyHugeType))) damage *= 2;
 		if (player.hasPerk(PerkLib.ZenjisInfluence3)) damage *= 1.5;
-		doDamage(damage);
+		doPlayerPhysDamage(damage);
 		outputText(" <b>([font-damage]" + damage + "[/font])</b> damage");
 		if (!monster.hasPerk(PerkLib.Resolute)) {
 			outputText(" stunning [monster his] for the round");

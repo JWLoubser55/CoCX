@@ -1141,7 +1141,7 @@ public class CombatMagic extends BaseCombatContent {
 		}
 		damage = Math.round(damage);
 		outputText(monster.capitalA + monster.short + " takes ");
-		doMagicDamage(damage, true, true);
+		doPlayerMagDamage(damage, true, true);
 		outputText(" damage.");
 		if (crit) outputText(" <b>*Critical Hit!*</b>");
 		MagicAddonEffect();

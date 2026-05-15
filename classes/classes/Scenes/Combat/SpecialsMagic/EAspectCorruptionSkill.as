@@ -59,7 +59,7 @@ public class EAspectCorruptionSkill extends AbstractMagicSpecial {
         damage = Math.round(damage);
 
         if (display) outputText("Your corruption elemental condenses corruption from air into solid matter, striking your opponent with them ");
-		doMagicDamage(damage, true, display);
+		doMinionMagDamage(damage, true, display);
 		if (crit && display) outputText(" <b>Critical!</b>");
 		outputText("\n\n");
     }

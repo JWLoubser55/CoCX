@@ -54,9 +54,9 @@ public class HeartSeekerPuppiesSkill extends AbstractBloodSoulSkill {
 			crit = true;
 			damage *= ((bloodPuppiesDamageBonusMod() / 2) + 1.25);
 		}
-		doTrueDamage(damage, true, display);
+		doMinionTrueDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
-		doTrueDamage(damage, true, display);
+		doMinionTrueDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		if (flags[kFLAGS.IN_COMBAT_PLAYER_BLOOD_PUPPIES_ATTACKED] != 1) flags[kFLAGS.IN_COMBAT_PLAYER_BLOOD_PUPPIES_ATTACKED] = 1;
 		endTurnByBloodSkillUse(damage, display, false);

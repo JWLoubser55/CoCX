@@ -68,7 +68,7 @@ public class EAspectEtherSkill extends AbstractMagicSpecial {
         damage = Math.round(damage);
 
         if (display) outputText("Your elemental unleash a barrage of star shaped bolts of arcane energy, blasting your opponent. ");
-		doMagicDamage(damage, true, display);
+		doMinionMagDamage(damage, true, display);
 		if (crit && display) outputText(" <b>Critical!</b>");
 		outputText("\n\n");
     }

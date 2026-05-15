@@ -208,8 +208,8 @@ import classes.StatusEffects;
 			if (no == 7) outputText(""+flags[kFLAGS.TAMED_07_NAME]+"");
 			if (no == 8) outputText(""+flags[kFLAGS.TAMED_08_NAME]+"");
 			outputText(" attacks [themonster]. ");
-			doDamage(dmg, true, true);
-			if (repeat > 0) doDamage(dmg, true, true);
+			doMinionPhysDamage(dmg, true, true);
+			if (repeat > 0) doMinionPhysDamage(dmg, true, true);
 			outputText("\n\n");
 			SceneLib.combat.enemyAIImpl();
 		}
@@ -257,8 +257,8 @@ import classes.StatusEffects;
 			if (no == 7) outputText(""+flags[kFLAGS.TAMED_07_NAME]+"");
 			if (no == 8) outputText(""+flags[kFLAGS.TAMED_08_NAME]+"");
 			outputText(" shoot a magic bolt toward [themonster]. ");
-			doMagicDamage(dmg, true, true);
-			if (repeat > 0) doMagicDamage(dmg, true, true);
+			doMinionMagDamage(dmg, true, true);
+			if (repeat > 0) doMinionMagDamage(dmg, true, true);
 			outputText("\n\n");
 			SceneLib.combat.enemyAIImpl();
 		}

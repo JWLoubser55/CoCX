@@ -45,7 +45,7 @@ public class ThunderstormSpell extends AbstractDivineSpell {
 		if (display) {
 			outputText("<b>A bolt of divine lightning falls from the sky and strikes [themonster]</b>. ");
 		}
-		doLightningDamage(player.statusEffectv1(StatusEffects.Thunderstorm), true, display);
+		doPlayerDoTLightningDamage(player.statusEffectv1(StatusEffects.Thunderstorm), true, display);
 		if (display) {
 			outputText("\n\n");
 		}

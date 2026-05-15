@@ -1011,7 +1011,7 @@ private function nagaSqueeeezeDmg():void {
 			damage *= critMulti;
 		}
 	}
-	SceneLib.combat.doDamage(damage, true, true);
+	SceneLib.combat.doPlayerPhysDamage(damage, true, true);
 }
 public function nagaSqueeze():void {
 	clearOutput();

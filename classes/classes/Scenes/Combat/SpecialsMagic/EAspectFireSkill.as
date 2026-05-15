@@ -59,7 +59,7 @@ public class EAspectFireSkill extends AbstractMagicSpecial {
         damage = Math.round(damage);
 
         if (display) outputText("Your fire elemental douses your opponent with a torrent of fire ");
-		doFireDamage(damage, true, display);
+		doMinionFireDamage(damage, true, display);
 		if (crit && display) outputText(" <b>Critical!</b>");
 		outputText("\n\n");
     }

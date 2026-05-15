@@ -80,12 +80,12 @@ public class ManyBirdsSkill extends AbstractSoulSkill {
 				outputText("You snap your fingers, and at once every bird lends their high pitched voice to a unified, glass shattering cry:");
 				outputText("\n\n\"<i>AAAAAAAAAAAAAAAAAAAAAAAAAAAAA</i>\" ([themonster] takes ");
 			}
-			doMagicDamage(damage, true, display);
+			doPlayerMagDamage(damage, true, display);
 			if (display) outputText(" damage) ");
 		}
 		else {
 			if (display) outputText("The crystals hit [themonster], dealing ");
-			doMagicDamage(damage, true, display);
+			doPlayerMagDamage(damage, true, display);
 			if (display) outputText(" damage! ");
 		}
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");

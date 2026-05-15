@@ -66,7 +66,7 @@ public class HeartSeekerSkill extends AbstractBloodSoulSkill {
 		if (player.hasPerk(PerkLib.BloodMastery)) damage *= 2;
 		damage = Math.round(damage * combat.bloodDamageBoostedByDao());
 		if (display) outputText("[Themonster] takes ");
-		doTrueDamage(damage, true, display);
+		doPlayerTrueDamage(damage, true, display);
 		if (crit && display) outputText(" <b>*Critical Hit!*</b>");
 		if (display) outputText(" damage.");
 		endTurnByBloodSkillUse(damage);

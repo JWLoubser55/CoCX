@@ -65,7 +65,7 @@ public class BloodMissilesSpell extends AbstractBloodSpell {
 		}
 		var n:int=5;
 		while (n-->0) {
-			doMagicDamage(damage,true,true);
+			doPlayerMagDamage(damage,true,true);
 			if (display && crit) {
 				outputText(" <b>*Critical Hit!*</b>");
 			}
