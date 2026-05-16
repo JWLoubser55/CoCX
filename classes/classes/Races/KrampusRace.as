@@ -1,9 +1,11 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
+import classes.CockTypesEnum;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.VaginaClass;
 
 public class KrampusRace extends Race {
     public static const RaceBody:/*String*/Array = [
@@ -58,6 +60,7 @@ public class KrampusRace extends Race {
 							return body.hairColor2 == "white" &&
 									body.hairColor1 == "black"
 						}, +2)
+				.cockOrVaginaOfType(CockTypesEnum.DEMON, VaginaClass.DRAGON, +2)
 				.height(GREATER_THAN(96), +1)
 				.hasPerk(PerkLib.DragonBlackIceBreath, +1);
 		addScoresAfter(5)

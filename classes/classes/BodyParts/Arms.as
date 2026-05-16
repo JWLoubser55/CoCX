@@ -636,6 +636,18 @@ public class Arms extends SaveableBodyPart {
 	EnumValue.add(Types, RHINO, "RHINO", {
 		name:"rhino",
 		appearanceDesc: "Your arms are covered by extremely thick, tough skin, ending in hands with paw pads and three fingers ending with hoof-like fingernails."
+	});/*
+
+	public static const :int = 83;
+	EnumValue.add(Types, , "", {
+		name:"rhino",
+		appearanceDesc: "Your arms are covered by extremely thick, tough skin, ending in hands with paw pads and three fingers ending with hoof-like fingernails."
+	});*/
+
+	public static const FROG:int = 84;
+	EnumValue.add(Types, FROG, "FROG", {
+		name:"frog",
+		appearanceDesc: "Your arms are fairly human at least up to the hands. Your hands are slightly bigger than normal, the fingers connected by a set of webbing to ease your swimming."
 	});
 
 	public static function canFly(id: int): Boolean {

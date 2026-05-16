@@ -41,6 +41,8 @@ public class FrogRace extends Race {
     
     public override function setup():void {
         addScores()
+				.legType(LowerBody.FROG, +1)
+				.armType(Arms.FROG, +1)
 				.faceType(Face.FROG, +1)
 				.tongueType(Tongue.CHAMELEON, +1)
 				.hornType(Horns.DRACONIC_X2, +1)

@@ -56,7 +56,7 @@ public class VouivreRace extends Race {
 				.wingType(Wings.DRACONIC_SMALL, +2)
 				.wingType(Wings.DRACONIC_LARGE, +4)
 				.wingType(Wings.DRACONIC_HUGE, +6)
-				.cockOrVaginaOfType(CockTypesEnum.LIZARD, VaginaClass.NAGA, +1)
+				.cockOrVaginaOfType(CockTypesEnum.LIZARD, VaginaClass.NAGA, +2)
 				.customRequirement("","Must have dragon wings",
 						hasDragonWing,0,-1000
 				)

@@ -634,6 +634,13 @@ package classes.GeneticMemories {
           title: "Krampus Legs",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyKrampusToggle(true)}});
 
+      public static const FROG: int = _partid++;
+      EnumValue.add(Memories, FROG, "FROG", {
+          id: "Frog Lower Body",name: "Frog Legs",
+          cost: 100,
+          title: "Frog Legs",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyFrog}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

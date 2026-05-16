@@ -1031,6 +1031,12 @@ public class LowerBody extends SaveableBodyPart {
 		chitin: true
 	});
 
+	public static const FROG:int = 99;
+	EnumValue.add(Types, FROG, "FROG", {
+		name: "frog",
+		appearanceDesc: "Your two powerful frog legs are mostly human in shape up to your feet, way larger than normal. The webbing between your toes assists you in swimming."
+	});
+
 	override public function set type(value:int):void {
 		super.type = value;
 		// Reset leg count

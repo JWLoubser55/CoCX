@@ -15147,6 +15147,11 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
 
+		//Gain Dragon Pussy
+		if (player.hasVagina() && player.vaginaType() != VaginaClass.DRAGON && changes < changeLimit && rand(3) == 0) {
+			transformations.VaginaDragon().applyEffect();
+		}
+
         if ((player.gender >= 2 || player.gender == 3) && player.biggestTitSize() < 30 && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]You are suddenly pulled forward as you feel a loss of balance on your front. Looking down you notice your [breasts] have increased by a full cup.");
             player.growTits(5 + rand(5), 1, false, 3);
@@ -15707,9 +15712,17 @@ public final class Mutations extends MutationsHelper {
 			changes++;
 		}
 		//Arms
-		
+		if (changes < changeLimit && rand(3) == 0 && player.arms.type != Arms.FROG) {
+            outputText("[pg]");
+            transformations.ArmsFrog.applyEffect();
+            changes++;
+        }
 		//Legs
-		
+		if (player.lowerBody != LowerBody.FROG && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.LowerBodyFrog.applyEffect();
+            changes++;
+        }
 		if (type == 1) {
 			//horns
 			if (player.horns.type != Horns.DRACONIC_X4_12_INCH_LONG && player.eyes.type == Eyes.FROG && changes < changeLimit && rand(3) == 0) {
@@ -16226,8 +16239,21 @@ public final class Mutations extends MutationsHelper {
         if (player.blockingBodyTransformations()) changeLimit = 0;
 		//sexual changes
         //female
-		
+		//Gain Dragon Pussy
+		if (player.hasVagina() && player.vaginaType() != VaginaClass.DRAGON && changes < changeLimit && rand(3) == 0) {
+			transformations.VaginaDragon().applyEffect();
+		}
 		//male
+		//Gain Demon Dick
+        if (player.cocks.length > 0 && rand(3) == 0) {
+            if (player.smallestCockLength() < 12 && changes < changeLimit) {
+                var i2:int = player.growCock(player.smallestCockIndex(), rand(2) + 1);
+            }
+            var x:int = player.findFirstCockNotInType([CockTypesEnum.DEMON]);
+            if (x >= 0 && rand(5) == 0 && changes < changeLimit) {
+                transformations.CockDemon(x).applyEffect();
+            }
+        }
 		
 		//physical changes
         //legs

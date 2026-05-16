@@ -2654,6 +2654,29 @@ public class LowerBodyTransformations extends MutationsHelper {
 			}
 	);
 	
+	//slothien
+
+	public const LowerBodyFrog: Transformation = new SimpleTransformation("Frog lower body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (doOutput) {
+					var desc: String = "";
+
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyHuman, doOutput);
+					desc += "Something weird happens in your legs as your muscles buff up and increase in density. Your muscle ain’t the only thing changing as some webbing forms between your lengthening toes. Before you even fully realize what's going on you are left with a <b>pair of powerful frog legs capable of swimming and jumping height impossible to any humans. (Unlock escape or leap)</b>";
+
+					if (doOutput) outputText(desc);
+					player.legCount = 2;
+				}
+				player.lowerBody = LowerBody.FROG;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.FROG));
+			},
+			// is present
+			function (): Boolean {
+				return player.lowerBody === LowerBody.FROG;
+			}
+	);
+	
 	/*
   */
 }

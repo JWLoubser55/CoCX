@@ -879,6 +879,17 @@ import classes.CoC;
 			}
 		});
 
+		public static const FROG:int = _partid++;
+		EnumValue.add(Memories, FROG, "FROG", {
+			id: "Frog Arms",
+			name: "Frog Arms",
+			cost: 100,
+			title: "Frog",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.ArmsFrog;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

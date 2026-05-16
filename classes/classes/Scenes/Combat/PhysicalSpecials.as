@@ -294,6 +294,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 						if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 						favbd(bd, "Arigean Ram");
 					}
+					//Leap (Escape)
+					if (player.lowerBody == LowerBody.FROG) {
+						bd = buttons.add("Leap (Escape)", combat.LeapEscape).hint("Leap away from fight.");
+						favbd(bd, "Leap (Escape)");
+					}
 				}
 				//Grab & Slam
 				if ((player.isRaceCached(Races.BEARANDPANDA) || player.isRaceCached(Races.REDPANDA)) && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType)) {

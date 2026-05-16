@@ -1,9 +1,11 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
+import classes.CockTypesEnum;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
+import classes.VaginaClass;
 
 public class SeaDragonRace extends Race{
 	public static const SeaDragonEyeColors:/*String*/Array = ["orange","yellow","light green"];
@@ -61,6 +63,7 @@ public class SeaDragonRace extends Race{
 							return body.player.tone < 10;
 						}, +1)
 				.height(AT_LEAST(84), +1)
+				.cockOrVaginaOfType(CockTypesEnum.DRAGON, VaginaClass.DRAGON, +2)
 				.customRequirement("","big breasted female or futa; or big dragon cock",
 						function (body:BodyData):Boolean {
 							return body.hasVagina && body.player.biggestTitSize() > 19 ||

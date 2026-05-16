@@ -1556,6 +1556,25 @@ public class ArmsTransformations extends MutationsHelper {
 				return player.arms.type === Arms.RHINO;
 			}
 	);
+	
+	//slothien
+
+	public const ArmsFrog: Transformation = new SimpleTransformation("Frog Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "Something weird happens in your hands. At first you dismiss the effect as there is no apparent change then realise your fingers are now connected by a fleshy membrane just like those of a frog. Ain’t just that, they are slightly bigger too. <b>Guess you will have no issue swimming in the marshy waters with your webbed frog hands.</b>";
+
+				player.arms.type = Arms.FROG;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.FROG));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.FROG;
+			}
+	);
 	/*
   */
 }

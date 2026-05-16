@@ -199,6 +199,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const ArmsLich: Transformation 				= arms.ArmsLich.registerTf(AS_ARMS, AE_LICH);
     public const ArmsBanshee: Transformation 			= arms.ArmsBanshee.registerTf(AS_ARMS, AE_BANSHEE);
     public const ArmsRhino: Transformation 				= arms.ArmsRhino.registerTf(AS_ARMS, AE_RHINO);
+    public const ArmsFrog: Transformation 				= arms.ArmsFrog.registerTfMultiple(AS_ARMS, AE_FROG, AE_MOBOGO);
 
 
 //ASS
@@ -852,6 +853,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const LowerBodyHollow: Transformation 				= lowerBody.LowerBodyHollow.registerTf(AS_LEGS, AE_HOLLOW);
     public const LowerBodyLich: Transformation 					= lowerBody.LowerBodyLich.registerTf(AS_LEGS, AE_LICH);
     public const LowerBodyBanshee: Transformation 				= lowerBody.LowerBodyBanshee.registerTf(AS_LEGS, AE_BANSHEE);
+    public const LowerBodyFrog: Transformation 					= lowerBody.LowerBodyFrog.registerTfMultiple(AS_LEGS, AE_FROG, AE_MOBOGO);
 
 
 //OTHER ( SPECIAL )

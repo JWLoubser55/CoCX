@@ -20008,6 +20008,23 @@ public function onlyZenjiRunnawayTrain():Boolean {
     if (flags[kFLAGS.PLAYER_COMPANION_3] != "") partySize += 1;
     return (player.hasStatusEffect(StatusEffects.CombatFollowerZenji) && partySize == 2);
 }
+public function LeapEscape():void {
+	if (flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID] != 0){
+        //outputText("Now that the fight's over, you go and retrieve your melee weapon from the ground where they knocked it out your hands.\n");
+        player.setWeapon(ItemType.lookupItem(flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID]) as Weapon);
+        flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID] = 0;
+    }
+    if(flags[kFLAGS.PLAYER_DISARMED_WEAPON_R_ID] != 0){
+        //outputText("Now that the fight's over, you go and retrieve your ranged weapon from the ground where they knocked it out your hands.\n");
+        player.setWeaponRange(ItemType.lookupItem(flags[kFLAGS.PLAYER_DISARMED_WEAPON_R_ID]) as WeaponRange);
+        flags[kFLAGS.PLAYER_DISARMED_WEAPON_R_ID] = 0;
+    }
+    clearOutput();
+	outputText("You decide enough is enough and leap a fair 30 meters off in the distance beginning to jump away back to camp. Too fast for your opponent to give chase you manage back safely.");
+	inCombat = false;
+	clearStatuses(false);
+	endEncounter();
+}
 
 public function struggleCreepingDoom():void {
     outputText("You shake away the pests in disgust, managing to get rid of them for a time.\n\n");

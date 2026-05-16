@@ -1,12 +1,13 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
-//import classes.CockTypesEnum;
+import classes.CockTypesEnum;
 import classes.GeneticMemories.RaceMem;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
-//import classes.lists.Gender;
+import classes.lists.Gender;
+import classes.VaginaClass;
 
 public class DragonneRace extends Race{
 	public static const DragonneScaleColors:Array = ["yellow", "golden", "golden blonde"];
@@ -66,6 +67,7 @@ public class DragonneRace extends Race{
 				.skinCoatType(Skin.DRAGON_SCALES, +1)
 				.scaleColor1(ANY(DragonneScaleColors), +1)
 				.furColor01(ANY(DragonneFurColors), +1)
+				.cockOrVaginaOfType(CockTypesEnum.CAT, VaginaClass.DRAGON, +2)
 				.customRequirement("",'vagina and C+ tits or 16\"+ long cock',
 						function (body:BodyData):Boolean {
 							return body.hasVagina && body.biggestTitSize >= 3 || body.biggestCockSize > 16
