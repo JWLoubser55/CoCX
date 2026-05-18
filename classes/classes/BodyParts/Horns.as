@@ -424,6 +424,8 @@ public class Horns extends BodyPart {
 		gore: true
 	});
 
+	//public static const SLOTHIEN: int = 32; - bone growns ala crest like maybe with some small spikes on them
+
 	public function Horns(creature:Creature) {
 		super(creature, null);
 	}

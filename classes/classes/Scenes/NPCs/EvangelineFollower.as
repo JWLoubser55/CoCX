@@ -439,7 +439,7 @@ private function evangelineAlchemyMenu(page:int = 1):void {
 	}
 	if (page == 2) {
 		// [Centaur ] [Thunderb] [Sphinx  ] [        ] [        ]
-		// [Leviathn] [        ] [        ] [        ] [        ]
+		// [Leviathn] [BogMucus] [        ] [        ] [        ]
 		// [GreyAInk] [WhiteAIn] [        ] [  -1-   ] [ Back   ]
 		addButton(0, "Centaurinum", MakingCentaurPotion).hint("Ask her to brew a special potion that could aid in becoming a centaur. \n\nCost: 10 Gems \nNeeds 1 Equinum and 1 Minotaur Blood.");
 		addButton(1, "Storm Seed", MakingStormSeed).hint("Ask her to brew a special potion that could aid in becoming a thunderbird. \n\nCost: 10 Gems \nNeeds 1 Magically-enhanced Golden Seed and 1 Voltage topaz.");//Hybrid race TF
@@ -447,7 +447,7 @@ private function evangelineAlchemyMenu(page:int = 1):void {
 		//3
 		//4
 		addButton(5, "LeviSun", MakingLevisunPotion).hint("Ask her to brew a special potion that could aid in becoming a sea dragon. \n\n\nCost: 100 Gems \nNeeds 1 Drake flower and 1 Orca sunscreen.");
-		//6
+		addButton(6, "BogMucus", MakingBogMucusPotion).hint("Ask her to brew a special potion that could aid in becoming a mobogo. \n\n\nCost: 100 Gems \nNeeds 1 Drake flower and 1 Frog mucus.");
 		//7
 		//8
 		//9
@@ -783,6 +783,27 @@ private function MakingLevisunPotion():void {
 	outputText("You hand over one vial of Orca sunscreen, a drake heart flower and a hundred gems to Evangeline, which she gingerly takes them and proceeds to make potion for you.");
 	outputText("\n\nAfter a while, she hands you a vial labeled \"Leviathan Sunscreen\".  ");
 	inventory.takeItem(consumables.LEVISUN, curry(evangelineAlchemyMenu, 2));
+	cheatTime(1/6);
+}
+private function MakingBogMucusPotion():void {
+	clearOutput();
+	if (player.gems < 100) {
+		outputText("\"<i>I'm sorry but you don't have the gems for this potion,</i>\" Evangeline says.");
+		doNext(evangelineAlchemyMenu);
+		return;
+	}
+	else if (!(player.hasItem(consumables.F_MUCUS, 1) && player.hasItem(consumables.DRAKHRT, 1))) {
+		outputText("\"<i>I'm sorry but you don't have the materials I need. I need a vial of Frog mucus and a drake heart flower,</i>\" Evangeline says.");
+		doNext(evangelineAlchemyMenu);
+		return;
+	}
+	player.destroyItems(consumables.F_MUCUS, 1);
+	player.destroyItems(consumables.DRAKHRT, 1);
+	player.gems -= 100;
+	statScreenRefresh();
+	outputText("You hand over one vial of Frog mucus, a drake heart flower and a hundred gems to Evangeline, which she gingerly takes them and proceeds to make potion for you.");
+	outputText("\n\nAfter a while, she hands you a vial labeled \"Bog mucus\".  ");
+	inventory.takeItem(consumables.B_MUCUS, curry(evangelineAlchemyMenu, 2));
 	cheatTime(1/6);
 }
 private function MakingGreyAbyssalInkPotion():void {

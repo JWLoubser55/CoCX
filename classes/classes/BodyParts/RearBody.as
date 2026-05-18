@@ -223,7 +223,9 @@ public class RearBody extends BodyPart {
 	EnumValue.add(Types, WERESPIDER, "WERESPIDER", {
 		name: "An extra pair of spider legs",
 		appearanceDesc: "Pairs of chitinous, black spider legs sprout from your shoulders and back."
-	});*/
+	});
+	public static const SLOTHIEN: int = 38; - sorta like overgrown shoulder pads that house many spikes they shoot
+	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {*/
 
 	public function RearBody(creature:Creature) {
 		super(creature, null);
