@@ -2196,6 +2196,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			//Compelling Aria
 			needNext = player.gainOrLosePerk(PerkLib.HarpySong, player.isAnyRaceCached(Races.SIREN, Races.HARPY, Races.PHOENIX, Races.THUNDERBIRD) || player.hasMutation(IMutationsLib.HarpyHollowBonesIM), "Your voice sound like magically entrancing music to your ears now, it would seem you have gained the infamous magically compelling voices common to harpies.", "Your voice no longer carries the magical power it used to and thus you are no longer able to use your compelling aria.") || needNext;
 			needNext = player.gainOrLosePerk(PerkLib.MelkieSong, player.tongue.type == Tongue.MELKIE || player.hasMutation(IMutationsLib.MelkieLungIM), "Your words are notes, your sentence a melody. Your voice is like music to your ears and you realize it is because your body became closer to that of a Melkie adapting even your tongue and voice. Well, you could always go sit on a rock and sing in case some sailor came by.", "Your voice no longer carries the magical power it used to and thus you are no longer able to use your compelling aria.") || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.SongOfTheSwamps, player.isAnyRaceCached(Races.FROG), "Your voice sound like magically entrancing music to your ears now, it would seem you have gained the infamous magically compelling voices common to the frog folks from the swamps allowing you to use your voice to compel others.", "Your voice no longer carries the magical power it used to and thus you are no longer able to use the sing ability.") || needNext;
 			//Soul drain
 			needNext = player.gainOrLosePerk(PerkLib.SoulDrain, player.isRaceCached(Races.JIANGSHI, 2) || player.isRaceCached(Races.MUMMY), ".", ".") || needNext;
 			//Alraune perks
@@ -3564,4 +3565,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}

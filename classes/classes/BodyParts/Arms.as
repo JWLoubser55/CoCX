@@ -636,13 +636,13 @@ public class Arms extends SaveableBodyPart {
 	EnumValue.add(Types, RHINO, "RHINO", {
 		name:"rhino",
 		appearanceDesc: "Your arms are covered by extremely thick, tough skin, ending in hands with paw pads and three fingers ending with hoof-like fingernails."
-	});/*
+	});
 
 	public static const SLOTHIEN:int = 83;
-	EnumValue.add(Types, , "", {
-		name:"",3 blades per arm
-		appearanceDesc: "Your arms are covered by extremely thick, tough skin, ending in hands with paw pads and three fingers ending with hoof-like fingernails."
-	});*/
+	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {
+		name:"slothien",
+		appearanceDesc: "Your arms are covered by extremely thick, [chitin color1] exoskeleton, with three long and sharp scythes growing fomr the forearms with first largest extending from the wrists."
+	});
 
 	public static const FROG:int = 84;
 	EnumValue.add(Types, FROG, "FROG", {

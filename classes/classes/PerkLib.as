@@ -2865,8 +2865,6 @@ public class PerkLib
 		public static const Medicine:PerkType = mk("Medicine", "Medicine",
 				"Grants 15% chance per round of cleansing poisons/drugs from your body. Increases HP restoration on rest.",
 				"You've chosen the 'Medicine' perk, giving you a chance to remove debilitating poisons automatically! Also, increases HP restoration on rest.");
-		public static const MelkieSong:PerkType = mk("Melkie Song", "Melkie Song",
-				"Your voice is supernaturaly enhanced and may be used during battle to arouse foes.");
 		public static const MeleeWeaponsAttackMultiplier:PerkType = mk("Melee Weapons Attack Multiplier", "Skilled Fighter",
 				"+5% melee physical attacks multiplier and then adds 50% on top of final result.",
 				"You've chosen the 'Melee Weapons Attack Multiplier' perk. +5% melee physical attacks multiplier and then adds 50% on top of final result.");
@@ -4726,6 +4724,8 @@ public class PerkLib
 				"Causes you to crave cum frequently.  Yet at the same time grants you immunity to Minotaur Cum addiction.");
 		public static const MantisOvipositor:PerkType = mk("Mantis Ovipositor", "Mantis Ovipositor",
 				"Allows you to lay eggs through a special organ on your insect abdomen, though you need at least 10 eggs to lay.");
+		public static const MelkieSong:PerkType = mk("Melkie Song", "Melkie Song",
+				"Your voice is supernaturaly enhanced and may be used during battle to arouse foes.");
 		public static const MeltingPot:PerkType = mk("Melting Pot", "Melting Pot",
 				"All companions/henchmen deal 30% more damage to a foe affected by an acid dot and for the pc to 10% boost in acid amount applied to foe for every companion/henchmen in the party.");
 		public static const MilkMaid:MilkMaidPerk = new MilkMaidPerk();
@@ -4757,8 +4757,6 @@ public class PerkLib
 		public static const NinetailsKitsuneOfBalance:PerkType = mk("Nine-tails Kitsune of Balance", "Nine-tails Kitsune of Balance",
 				"The mystical energy of the nine-tails surges through you, filling you with phenomenal cosmic power!  You tread the narrow path between corruption and true enlightment maintaining a balance that allows you to fuse both sides powers.",null,true);
 		public static const OneWiththeForest:OneWithTheForest = new OneWithTheForest();
-		public static const TrueSeeing:PerkType = mk("True seeing", "True seeing",
-				"Your vision is magical in nature and see the world as it truly is defeating glamors, illusions and spatial displacement. You also have a +20% to your base accuracy from your peerless view.");
 		public static const Omnicaster:PerkType = mk("Omnicaster", "Omnicaster",
 				"Your magic power is as manyfold as the number of your eyes. Deal less individual damage but cast multiple spells at the same time.");
 		public static const Oviposition:PerkType = mk("Oviposition", "Oviposition",
@@ -4796,6 +4794,8 @@ public class PerkLib
 				"Naturally small species have better evasion");
 		public static const SnowLily:PerkType = mk("Snow Lily", "Snow Lily",
 				"Your alraune abilities are now considered to be Cold Elements effect and your vine attack delivers extra cold damage.");
+		public static const SongOfTheSwamps:PerkType = mk("Song of the swamps", "Song of the swamps",
+				"Your voice is supernaturaly enhanced and may be used during battle to arouse foes.");
 		public static const SoulDrain:PerkType = mk("Soul drain", "Soul drain",
 				"Leeching from others' souls can permanently improve your own. Sex permanently raises all stats but toughness/sensitivity by 1% when used on target with souls and is twice as strong when using the unique racial sex scenes.");
 		public static const SoulDrainingScream:PerkType = mk("Soul Draining Scream", "Soul Draining Scream",
@@ -4838,6 +4838,8 @@ public class PerkLib
 				"Reduces the likelihood of undergoing a transformation. Disables Bad Ends from transformative items.");
 		public static const TrollRegeneration:PerkType = mk("Troll Regeneration", "Troll Regeneration",
 				"3% health and 3 points of fatigue regeneration but double hunger decaying speed. Stops for 2 rounds when damaged by fire.");
+		public static const TrueSeeing:PerkType = mk("True seeing", "True seeing",
+				"Your vision is magical in nature and see the world as it truly is defeating glamors, illusions and spatial displacement. You also have a +20% to your base accuracy from your peerless view.");
 		public static const UndeadLord:PerkType = mk("Undead lord", "Undead lord",
 				"When defeating certain humanoid enemies you can drain the life out of them and turn them into obedient zombies under your control. Your zombies will periodically inflict damage to your foes when in combat harvesting soul force in the process. "+
 				"You periodically drain any excess soulforce from your pet so that they never achieve true sentience and rebel against your rule remaining ravenous and somewhat mindless.");

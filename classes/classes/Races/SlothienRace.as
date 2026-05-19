@@ -42,10 +42,14 @@ public class SlothienRace extends Race {
                 .eyeType(Eyes.SLOTHIEN, +1)
 				.eyeColor(ANY(SlothienEyesColors), +1)
 				.earType(Ears.INSECT, +1)
-				.legType(LowerBody.SLOTHIEN, +3)
+				//head +1
+				//horns +1-? (few stages of bone creast)
+				//rear body +1 (neck slot +1 too?)
+				.armType(Arms.SLOTHIEN, +2)
+				.legType(LowerBody.SLOTHIEN, +4)
 				.skinCoatType(Skin.CHITIN, +1)
 				.skinCoverage(ANY(Skin.COVERAGE_HIGH, Skin.COVERAGE_COMPLETE), +1)
-                .hasPerk(PerkLib.GOBXChemical, -1000);
+                .hasPerk(PerkLib.GOBXChemical, -1000);//skin pattern?
 
         addMutation(IMutationsLib.TrachealSystemIM);
 		

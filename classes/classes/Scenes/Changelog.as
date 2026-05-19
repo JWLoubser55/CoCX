@@ -402,7 +402,7 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Chameleon skin (Evolved). Req. Chameleon skin (Primitive) and lvl 60+. Effects: Increase sneak attack damage multiplier (+3x). The camouflage skill lasts 2 more rounds. While camouflaged, increases all damage by 25%.\n");
 			outputText("-New mutation perk: Chameleon skin (Final Form). Req. Chameleon skin (Evolved) and lvl 90+. Effects: Increase sneak attack damage multiplier by (+4x). The camouflage skill lasts 3 more rounds. While camouflaged, increase all damage by 50%. Double all recovery while camouflaged.\n");
 			outputText("-New P. Special: Leap (Escape) - usable by having frog legs. Allow to run away from fight.\n");
-			outputText("-\n");
+			outputText("-New event perk: Song of the swamps. Gained by becoming Frog/Mobogo. Effects: Giving access to Sing m. special and all related subspecials.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

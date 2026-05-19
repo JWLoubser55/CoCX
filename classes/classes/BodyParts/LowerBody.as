@@ -1011,8 +1011,8 @@ public class LowerBody extends SaveableBodyPart {
 		legs: "snake-like coils",
 		leg: "snake-tail",
 		feet: "coils",
-		foot: "coiled tail",//add part on `ventral scales or gastrosteges`
-		appearanceDesc: "Below your waist, your flesh is fused together into a very long snake-like tail. Your entire tail length up to the waist is covered with thick [chitin color] chitin plates, harder than steel and capable of deflecting most weapons.",
+		foot: "coiled tail",
+		appearanceDesc: "Below your waist, your flesh is fused together into a very long snake-like tail. Your entire tail length up to the waist is covered with thick [chitin color] chitin plates, many pairs of ventral scale-like appendixes on sides, harder than steel and capable of deflecting most weapons.",
 		crotchDescFunc: function(player: *): String {
 			var desc: String = "";
 

@@ -1341,9 +1341,9 @@ public class MagicSpecials extends BaseCombatContent {
 			}
 			favbd(bd, "Mirror Image");
 		}
-		//Sing
-		if (player.hasPerk(PerkLib.MelkieSong) || player.hasPerk(PerkLib.HarpySong) || player.hasPerk(PerkLib.PanLabyrinth) || player.hasPerk(PerkLib.PrestigeJobBard) || player.hasPerk(PerkLib.WailOfTheBanshee)) {
-			if (player.weapon.isMusicInstrument()) bd = buttons.add("Perform", SingInitiate).hint("Players begin a musical performance. While performing, players may add various mystical effects to the tune.\n.");
+		//Sing & Perform
+		if (player.hasPerk(PerkLib.MelkieSong) || player.hasPerk(PerkLib.HarpySong) || player.hasPerk(PerkLib.PanLabyrinth) || player.hasPerk(PerkLib.WailOfTheBanshee) || player.hasPerk(PerkLib.SongOfTheSwamps) || player.hasPerk(PerkLib.PrestigeJobBard) || player.weapon.isMusicInstrument()) {
+			if (player.weapon.isMusicInstrument()) bd = buttons.add("Perform", curry(SingInitiate, false, true)).hint("Players begin a musical performance. While performing, players may add various mystical effects to the tune.\n.");
 			else bd = buttons.add("Sing", SingInitiate).hint("Begin singing. While singing, you may add various powerful effects to your tune.\n.");
 			favbd(bd, "Perform/Sing");
 		}
@@ -1621,11 +1621,11 @@ public class MagicSpecials extends BaseCombatContent {
 		checkLethiceAndCombatRoundOver();
 	}
 
-	public function SingInitiate(Bee:Boolean = false):void {
+	public function SingInitiate(Bee:Boolean = false, MusicInstrument:Boolean = false):void {
 		clearOutput();
 		if (Bee) outputText("You start singing an enrapturing song. Buzzing over enticingly.");
 		else {
-			if (player.weapon.isMusicInstrument()) outputText("You start an enrapturing musical performance using your [weaponName].");
+			if (MusicInstrument) outputText("You start an enrapturing musical performance using your [weaponName].");
 			else outputText("You start singing an enrapturing song.");
 		}
 		if (player.hasPerk(PerkLib.EmpoweredAria)) player.createStatusEffect(StatusEffects.Sing,5,0,0,0);
