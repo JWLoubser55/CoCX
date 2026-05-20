@@ -14407,6 +14407,14 @@ public class Combat extends BaseContent {
                 player.addStatusValue(StatusEffects.CooldownKick, 1, -1);
             }
         }
+        //Leap
+        if (player.hasStatusEffect(StatusEffects.CooldownLeap)) {
+            if (player.statusEffectv1(StatusEffects.CooldownLeap) <= 0) {
+                player.removeStatusEffect(StatusEffects.CooldownLeap);
+            } else {
+                player.addStatusValue(StatusEffects.CooldownLeap, 1, -1);
+            }
+        }
         //Green Covenant
         if (player.hasStatusEffect(StatusEffects.CooldownGreenCovenant)) {
             if (player.statusEffectv1(StatusEffects.CooldownGreenCovenant) <= 0) {

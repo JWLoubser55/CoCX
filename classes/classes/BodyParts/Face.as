@@ -754,9 +754,13 @@ public class Face extends SaveableBodyPart {
 			return desc;
 		},
 		humanShaped: true
-	});/*
-	public static const SLOTHIEN: int = 71; - insect mandibles on sides of the mouth
-	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {*/
+	});
+	public static const SLOTHIEN: int = 71;
+	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {
+		name: "slothien",
+		appearanceDesc: "Your face looks largely human, except for the arthropod-like mandibles growing from your cheeks near your ears.",
+		bite:true
+	});
 	public static const FROG: int = 72;
 	EnumValue.add(Types, FROG, "FROG", {
 		name: "frog",

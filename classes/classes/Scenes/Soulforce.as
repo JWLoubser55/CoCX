@@ -1657,7 +1657,7 @@ public class Soulforce extends BaseContent
 	}
 	public function accessDemonicEnergyMenuReSoul():void {
 		clearOutput();
-		outputText("Only NOW, for a LIMITED TIME, can you reclaim your SOUL! For the LOW price of 2100de, it can be YOURS! Again! What are you waiting for? Get YOUR SOUL back NOW before it's gone!\n");
+		outputText("Only NOW, for a LIMITED TIME, you can reclaim your SOUL! For the LOW price of 2100de, it can be YOURS! Again! What are you waiting for? Get YOUR SOUL back NOW before it's gone!\n");
 		menu();
 		addButtonIfTrue(1, "Yes", accessDemonicEnergyMenuReSoulYes, "You not have enough demonic energy (2,100)", player.demonicenergy >= 2100);
 		addButton(3, "Yes?", accessDemonicEnergyMenu);
@@ -1670,6 +1670,7 @@ public class Soulforce extends BaseContent
 			player.perkPoints += 1;
 		}
 		if (player.hasKeyItem("Dimensional Pocket") >= 0) player.removeKeyItem("Dimensional Pocket");
+		if (player.hasStatusEffect(StatusEffects.SoulCohesion) && player.statusEffectv1(StatusEffects.SoulCohesion) > 0) player.changeStatusValue(StatusEffects.SoulCohesion, 1, 0);
 		doNext(playerMenu);
 	}
 	public function demonicEnergyCorruptElement():void {

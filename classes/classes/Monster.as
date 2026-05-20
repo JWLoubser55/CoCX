@@ -4086,6 +4086,9 @@ import flash.utils.getQualifiedClassName;
 			if(hasStatusEffect(StatusEffects.Stunned)) {
 				outputText("<b>[Themonster] is still stunned!</b>\n\n");
 			}
+			if(player.hasStatusEffect(StatusEffects.ChanneledAttackType) && player.statusEffectv1(StatusEffects.ChanneledAttackType) == 10) {
+				outputText("<b>[Themonster] is currently unable to reach you.</b>\n\n");
+			}
 			if(hasStatusEffect(StatusEffects.Shell)) {
 				if(statusEffectv1(StatusEffects.Shell) >= 0) {
 					outputText("<b>A wall of many hues shimmers around [themonster].</b>\n\n");

@@ -424,7 +424,21 @@ public class Horns extends BodyPart {
 		gore: true
 	});
 
-	//public static const SLOTHIEN: int = 32; - bone growns ala crest like maybe with some small spikes on them
+	public static const SLOTHIEN: int = 32;
+	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {
+		name:"slothien head crest",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = "";
+
+			desc += " From back of your head grows a ";
+			if (player.horns.count > 8) desc += "very large";
+			else if (player.horns.count > 4) desc += "large";
+			else desc += "medium sized";
+			desc += " head crest, which is getting more thin and wider toward the end, made of solid plates of chitin.";
+
+			return desc;
+		}
+	});
 
 	public function Horns(creature:Creature) {
 		super(creature, null);

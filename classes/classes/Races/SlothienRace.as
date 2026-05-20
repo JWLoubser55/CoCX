@@ -42,14 +42,23 @@ public class SlothienRace extends Race {
                 .eyeType(Eyes.SLOTHIEN, +1)
 				.eyeColor(ANY(SlothienEyesColors), +1)
 				.earType(Ears.INSECT, +1)
-				//head +1
-				//horns +1-? (few stages of bone creast)
-				//rear body +1 (neck slot +1 too?)
+				.faceType(Face.SLOTHIEN, +1)
+				.tongueType(Tongue.SLOTHIEN, +1)
+				.hornType(Horns.SLOTHIEN, +1)
+				.customRequirement("","horns size > 4",
+						function (body:BodyData):Boolean {
+							return body.player.horns.count > 4
+						}, +1)
+				.customRequirement("","horns size > 8",
+						function (body:BodyData):Boolean {
+							return body.player.horns.count > 8
+						}, +1)
+				.rearType(RearBody.SLOTHIEN, +2)//+1 for rear and +1 for neck
 				.armType(Arms.SLOTHIEN, +2)
 				.legType(LowerBody.SLOTHIEN, +4)
-				.skinCoatType(Skin.CHITIN, +1)
-				.skinCoverage(ANY(Skin.COVERAGE_HIGH, Skin.COVERAGE_COMPLETE), +1)
-                .hasPerk(PerkLib.GOBXChemical, -1000);//skin pattern?
+				.skinCoatType(Skin.CHITIN, +2)//skin pattern?
+				.skinCoverage(Skin.COVERAGE_COMPLETE, +1)
+                .hasPerk(PerkLib.GOBXChemical, -1000);
 
         addMutation(IMutationsLib.TrachealSystemIM);
 		
@@ -70,8 +79,8 @@ public class SlothienRace extends Race {
                         "spe.mult": +1.50,
                         "int.mult": -0.40,
                         "wis.mult": +0.40,
-						"def": +1,
-						"mdef": +1
+						"def": +3,
+						"mdef": +3
                     })
                 .end();
     }

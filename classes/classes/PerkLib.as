@@ -1015,6 +1015,9 @@ public class PerkLib
 		public static const Dovakhiin:PerkType = mk("Dovakhiin", "Dovakhiin",
 				"Increase the potency of all breath weapons, shouts and sound based abilities by 25% for each consecutive usage after the first up to 100%. All stacks of thundering echoes are lost if no breath weapons, shouts or sound based abilities are used within 2 rounds. Throat abilities cooldowns are reduced by 1 further increment.",
 				"You've chosen the 'Dovakhiin' perk. Increase the potency of all breath weapons, shouts and sound based abilities by 25% for each consecutive usage after the first up to 100%. All stacks of thundering echoes are lost if no breath weapons, shouts or sound based abilities are used within 2 rounds. Throat abilities cooldowns are reduced by 1 further increment.");
+		public static const DragoonLeap:PerkType = mk("Dragoon Leap", "Dragoon Leap",
+				"Gain the Leap skill, should you gain the leap skill from a different source increase the damage of leap by 100%.",
+				"You've chosen the 'Dragoon Leap' perk. Gain the Leap skill, should you gain the leap skill from a different source increase the damage of leap by 100%.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1029,9 +1032,6 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -5904,6 +5904,8 @@ public class PerkLib
             ChallengingShoutSu.requireLevel(12)
                     .requireStr(75)
                     .requirePerk(ChallengingShoutEx);
+            DragoonLeap.requirePerk(PowerAttack)
+					.requireLevel(12);
             ImprovedTranquilness.requireStr(90)
                     .requireTou(30)
                     .requireSpe(30)

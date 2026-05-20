@@ -299,6 +299,17 @@ public class PhysicalSpecials extends BaseCombatContent {
 						bd = buttons.add("Leap (Escape)", combat.LeapEscape).hint("Leap away from fight.");
 						favbd(bd, "Leap (Escape)");
 					}
+					//Leap
+					if ((player.lowerBody == LowerBody.FROG && player.racialScore(Races.FROG) >= 15) || player.hasPerk(PerkLib.DragoonLeap)) {
+						bd = buttons.add("Leap", makeLeap).hint("Power stun enemy for the current turn and deliver a doubled damage power attack on the next one. Only work outdoors.");
+						if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Shot (below 1%)");
+						else if (player.hasStatusEffect(StatusEffects.CooldownLeap)) {
+							bd.disable("<b>You need more time before you can perform Kick again.</b>\n\n");
+						}
+						else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+						else if (combat.isOutside()) bd.disable("You can't use it indoor.");
+						favbd(bd, "Leap");
+					}
 				}
 				//Grab & Slam
 				if ((player.isRaceCached(Races.BEARANDPANDA) || player.isRaceCached(Races.REDPANDA)) && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType)) {
@@ -1255,6 +1266,22 @@ public class PhysicalSpecials extends BaseCombatContent {
 					bd = buttons.add("Ram", arigeanRam).hint("A physical attack that scales off of speed, does recoil damage to the user (10% of max HP).");
 					bd.requireFatigue(physicalCost(100));
 					if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+				}
+				//Leap (Escape)
+				if (player.lowerBody == LowerBody.FROG) {
+					bd = buttons.add("Leap (Escape)", combat.LeapEscape).hint("Leap away from fight.");
+					favbd(bd, "Leap (Escape)");
+				}
+				//Leap
+				if ((player.lowerBody == LowerBody.FROG && player.racialScore(Races.FROG) >= 15) || player.hasPerk(PerkLib.DragoonLeap)) {
+					bd = buttons.add("Leap", makeLeap).hint("Power stun enemy for the current turn and deliver a doubled damage power attack on the next one. Only work outdoors.");
+					if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Shot (below 1%)");
+					else if (player.hasStatusEffect(StatusEffects.CooldownLeap)) {
+						bd.disable("<b>You need more time before you can perform Kick again.</b>\n\n");
+					}
+					else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					else if (combat.isOutside()) bd.disable("You can't use it indoor.");
+					favbd(bd, "Leap");
 				}
 			}
 		}
@@ -5195,6 +5222,102 @@ public class PhysicalSpecials extends BaseCombatContent {
 			player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
 			player.createStatusEffect(StatusEffects.ChanneledAttackType, 7, 0, 0, 0);
 			outputText("\n\n");
+			enemyAI();
+		}
+	}
+
+	public function makeLeap():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		if (player.statusEffectv1(StatusEffects.ChanneledAttack) == 1) {
+			outputText("You dive back down plunging your [weapon] right into your opponent, your considerable strength assisted by the law of gravity.");
+			player.removeStatusEffect(StatusEffects.ChanneledAttack);
+			player.removeStatusEffect(StatusEffects.ChanneledAttackType);
+			var damage:Number = 0;
+			var PAMulti:Number = 1;
+			PAMulti += combat.PASPAS(1);
+			if ((player.weapon == weapons.PRURUMI && player.spe >= 150) || player.jewelry1 == jewelries.UNDKINS || player.jewelry3 == jewelries.UNDKINS) {
+				if (player.weapon == weapons.PRURUMI && player.spe >= 150) {
+					PAMulti += 0.5;
+					if (player.spe >= 225) PAMulti += 0.5;
+					if (player.spe >= 300) PAMulti += 0.5;
+				}
+				if (player.jewelry1 == jewelries.UNDKINS || player.jewelry3 == jewelries.UNDKINS) {
+					PAMulti += 0.5;
+				}
+			}
+			damage += combat.meleeDamageNoLagSingle();
+			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment7)) {
+				damage += player.inte;
+				damage += scalingBonusIntelligence() * 0.2;
+			}
+			if (player.calculateMultiAttacks() > 1) damage *= player.calculateMultiAttacks();
+			if (player.hasPerk(PerkLib.PowerAttackEx)) {
+				PAMulti += Math.round(PAMulti*0.3);
+				damage *= 2;
+			}
+			if (player.hasPerk(PerkLib.ZenjisInfluence3)) damage *= 1.5;
+			damage = combat.gallopDamageBoost(damage);
+			if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
+			damage *= PAMulti;
+			var crit:Boolean = false;
+			var critChance:int = 5;
+			critChance += combat.combatPhysicalCritical();
+			if (player.hasPerk(PerkLib.WeaponMastery) && (player.weapon.isSingleLarge() || player.weaponOff.isSingleLarge()) && player.str >= 100) critChance += 10;
+			if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weapon.isSingleLarge() && player.weaponOff.isSingleLarge() && player.str >= 140) critChance += 10;
+			if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isSingleMassive() || player.weaponOff.isSingleMassive())) {
+				if (player.str >= 100) {
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					else critChance += 10;
+				}
+				if (player.str >= 140) {
+					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 20;
+					else critChance += 10;
+				}
+			}
+			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
+			if (rand(100) < critChance) {
+				crit = true;
+				var buffMultiplier:Number = 0;
+				buffMultiplier += combat.bonusCriticalDamageFromMissingHP();
+				if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) buffMultiplier += 1;
+				if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * combat.impaleMultiplier());
+				else damage *= 1.75 + buffMultiplier;
+			}
+			damage *= 2;
+			if (player.lowerBody == LowerBody.FROG && player.racialScore(Races.FROG) >= 15 && player.hasPerk(PerkLib.DragoonLeap)) damage *= 2;
+			combat.checkForElementalEnchantmentAndDoDamageMain(damage);
+			if (player.hasPerk(PerkLib.TwinThunder) && player.weapon.isDualWielded()) combat.checkForElementalEnchantmentAndDoDamageOff(damage);
+			outputText(" damage. ");
+			if (crit) {
+				outputText("<b>Critical! </b>");
+				if (player.hasStatusEffect(StatusEffects.Rage)) player.removeStatusEffect(StatusEffects.Rage);
+			}
+			if (!crit && player.hasPerk(PerkLib.Rage) && (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking))) {
+				if (player.hasStatusEffect(StatusEffects.Rage) && player.statusEffectv1(StatusEffects.Rage) > 5 && player.statusEffectv1(StatusEffects.Rage) < 70) player.addStatusValue(StatusEffects.Rage, 1, 10);
+				else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
+			}
+			outputText("\n\n");
+			var PAC:Number = 0;
+			if (player.hasPerk(PerkLib.PowerAttackSu)) PAC += Math.round(player.wrath * 0.5);
+			else {
+				if (player.wrath > player.maxWrath()) PAC += player.maxWrath();
+				else PAC += player.wrath;
+			}
+			pc.WrathChange(-PAC);
+			combat.heroBaneProc(damage);
+			combat.EruptingRiposte();
+			enemyAI();
+		}
+		else {
+			fatigue(100, USEFATG_MAGIC_NOBM);
+			clearOutput();
+			outputText("You leap high up in the air way out of your opponent's attack range.\n\n");
+			var leapCooldown:Number = 8;
+			//if (player.perkv1(IMutationsLib.OniMusculatureIM) >= 1) leapCooldown -= player.perkv1(IMutationsLib.);
+			player.createStatusEffect(StatusEffects.CooldownLeap,leapCooldown,0,0,0);
+			player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
+			player.createStatusEffect(StatusEffects.ChanneledAttackType, 10, 0, 0, 0);
 			enemyAI();
 		}
 	}

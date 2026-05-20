@@ -212,7 +212,7 @@ public class RearBody extends BodyPart {
 	public static const BRA_AND_NECK: int = 35;
 	EnumValue.add(Types, BRA_AND_NECK, "BRA_AND_NECK", {
 		name: "bra and neck",
-		appearanceDesc: "Your thighs and breast regularly produce a sticky substance which creates the illusion of a small mesh of  clothes over them. You have what appears to be a frilly choker at the level of your neck."
+		appearanceDesc: "Your thighs and breast regularly produce a sticky substance which creates the illusion of a small mesh of clothes over them. You have what appears to be a frilly choker at the level of your neck."
 	});
 	public static const SERIAL_CODE: int = 36;
 	EnumValue.add(Types, SERIAL_CODE, "SERIAL_CODE", {
@@ -223,9 +223,12 @@ public class RearBody extends BodyPart {
 	EnumValue.add(Types, WERESPIDER, "WERESPIDER", {
 		name: "An extra pair of spider legs",
 		appearanceDesc: "Pairs of chitinous, black spider legs sprout from your shoulders and back."
+	});*/
+	public static const SLOTHIEN: int = 38;
+	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {
+		name: "chitin",
+		appearanceDesc: "Many spike-like shaped chitin plates grows out of your upper back, providing excellent defence. Around your neck and on your shoulders you have many heavy, overlapping plates. Underneath these you storing hundreds of grooved needle spines, which can be shot."
 	});
-	public static const SLOTHIEN: int = 38; - sorta like overgrown shoulder pads that house many spikes they shoot
-	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {*/
 
 	public function RearBody(creature:Creature) {
 		super(creature, null);

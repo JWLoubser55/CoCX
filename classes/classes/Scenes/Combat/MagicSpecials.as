@@ -2097,7 +2097,6 @@ public class MagicSpecials extends BaseCombatContent {
 		} else return false;
 	}
 
-
 	public function phoenixfireBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();

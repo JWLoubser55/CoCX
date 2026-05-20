@@ -78,6 +78,7 @@ public class IMutationsLib
 		public static const FiendishMetabolismIM:IMutationPerkType = new FiendishMetabolismMutation();
 		public static const FiendishOvariesIM:IMutationPerkType = new FiendishOvariesMutation();
 		public static const FloralOvariesIM:IMutationPerkType = new FloralOvariesMutation();
+		public static const FrogJumpingLegsIM:IMutationPerkType = new FrogJumpingLegsMutation();
 		public static const FrozenHeartIM:IMutationPerkType = new FrozenHeartMutation();
 		public static const FungusTramaIM:IMutationPerkType = new FungusTramaMutation();
 		public static const GazerEyesIM:IMutationPerkType = new GazerEyesMutation();

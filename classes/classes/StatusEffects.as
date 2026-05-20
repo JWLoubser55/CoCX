@@ -1453,6 +1453,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const CooldownInfernalClaw:StatusEffectType        		= mkCombat("Cooldown Infernal Claw");
 		public static const CooldownInkSpray:StatusEffectType            		= mkCombat("Cooldown Ink Spray");
 		public static const CooldownJetpack:StatusEffectType            		= mkCombat("Cooldown Jetpack");
+		public static const CooldownLeap:StatusEffectType                		= mkCombat("Cooldown Leap");
 		public static const CooldownLustnadeLauncher:StatusEffectType      		= mkCombat("Cooldown Lustnade Launcher");
 		public static const CooldownKick:StatusEffectType                		= mkCombat("Cooldown Kick");
 		public static const CooldownKnowledgeOverload:StatusEffectType          = mkCombat("Cooldown Knowledge overload");

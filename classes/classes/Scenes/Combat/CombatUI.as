@@ -1514,14 +1514,20 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 						break;
 					case 9:
 						btnContinue.show("Continue", combat.mspecials.CeroHollow, "Continue gathering energy.");
-						break;/*
-					case 10:
-						btnContinue.show("Continue", combat.magic., "Continue casting  spell.");
 						break;
+					case 10:
+						btnContinue.show("Continue", combat.pspecials.makeLeap, "Continue leap.");
+						break;/*
 					case 11:
 						btnContinue.show("Continue", combat.magic., "Continue casting  spell.");
 						break;
 					case 12:
+						btnContinue.show("Continue", combat.magic., "Continue casting  spell.");
+						break;
+					case 13:
+						btnContinue.show("Continue", combat.magic., "Continue casting  spell.");
+						break;
+					case 14:
 						btnContinue.show("Continue", combat.magic., "Continue casting  spell.");
 						break;*/
 				}
