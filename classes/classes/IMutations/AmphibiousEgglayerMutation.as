@@ -10,35 +10,22 @@ import classes.PerkClass;
 import classes.Player;
 import classes.Races;
 
-public class FrogJumpingLegsMutation extends IMutationPerkType
-	{
-		public static const MNAME:String = "Frog jumping legs";
+public class AmphibiousEgglayerMutation extends IMutationPerkType
+    {
+		public static const MNAME:String = "Amphibious Egglayer";
 		override public function get mName():String {
 			return MNAME;
 		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
-            var perkCent1:int = 5;
-            var perkCent2:int = 75;
+            var maxL:Number = 10;
+			var res:Number = 5;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-			if (pTier >= 3) perkCent1 += 5;
-			if (pTier >= 4) {
-				perkCent1 += 10;
-				perkCent2 -= 25;
-			}
-			if (pTier >= 1){
-				descS += "Reduce the cooldown of leap by "+pTier+" round";
-			}
-            if (pTier >= 2){
-                descS += "s. Leap damage is increased by "+perkCent1+"0%";
-            }
-            if (pTier >= 3){
-                descS += ". Physical ability that stuns do so for one extra round";
-            }
-            if (pTier >= 4){
-                descS += ". While Galloping gain +10% evasion against ranged attack";
-            }
+			if (pTier >= 1) descS += "Allows you to keep the Milk Blast special even if cow score is lower than 9, max lust increased by "+maxL+"";
+            if (pTier >= 2) descS += ", +"+res+"% to lust resistance, ";
+            if (pTier == 3) descS += ", increase milk production by ~150%";
+            if (pTier == 4) descS += ", increase milk production by ~200%";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -50,8 +37,8 @@ public class FrogJumpingLegsMutation extends IMutationPerkType
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireMusclesMutationSlot()
-                    .requireRace(Races.FROG);
+                    this.requireOvariesMutationSlot()
+                    .requireRace(Races.FROG)
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -65,18 +52,16 @@ public class FrogJumpingLegsMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
-            if (pTier == 1) pBuffs['str.mult'] = 0.05;
-            if (pTier == 2) pBuffs['str.mult'] = 0.10;
-            if (pTier == 3) pBuffs['str.mult'] = 0.15;
-            if (pTier == 4) pBuffs['str.mult'] = 0.20;
+            if (pTier == 2) pBuffs['lib.mult'] = 0.1;
+            if (pTier == 3) pBuffs['lib.mult'] = 0.2;
+            if (pTier == 4) pBuffs['lib.mult'] = 0.4;
             return pBuffs;
         }
 
-        public function FrogJumpingLegsMutation() 
+        public function AmphibiousEgglayerMutation() 
 		{
-			super(MNAME, SLOT_MUSCLE, 2);
-		}
-		
-	}
+			super(MNAME, SLOT_NONE, 1);//SLOT_OVARIES
+        }
 
+    }
 }

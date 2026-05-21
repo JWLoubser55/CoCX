@@ -5285,6 +5285,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 				else damage *= 1.75 + buffMultiplier;
 			}
 			damage *= 2;
+			if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 2) {
+				if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 3) {
+					if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 4) damage *= 3;
+					else damage *= 2;
+				}
+				else damage *= 1.5;
+			}
 			if (player.lowerBody == LowerBody.FROG && player.racialScore(Races.FROG) >= 15 && player.hasPerk(PerkLib.DragoonLeap)) damage *= 2;
 			combat.checkForElementalEnchantmentAndDoDamageMain(damage);
 			if (player.hasPerk(PerkLib.TwinThunder) && player.weapon.isDualWielded()) combat.checkForElementalEnchantmentAndDoDamageOff(damage);
@@ -5314,7 +5321,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			clearOutput();
 			outputText("You leap high up in the air way out of your opponent's attack range.\n\n");
 			var leapCooldown:Number = 8;
-			//if (player.perkv1(IMutationsLib.OniMusculatureIM) >= 1) leapCooldown -= player.perkv1(IMutationsLib.);
+			if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 1) leapCooldown -= player.perkv1(IMutationsLib.FrogJumpingLegsIM);
 			player.createStatusEffect(StatusEffects.CooldownLeap,leapCooldown,0,0,0);
 			player.createStatusEffect(StatusEffects.ChanneledAttack, 1, 0, 0, 0);
 			player.createStatusEffect(StatusEffects.ChanneledAttackType, 10, 0, 0, 0);
@@ -8599,4 +8606,4 @@ public class PhysicalSpecials extends BaseCombatContent {
 	}
 }
 
-}
+}
