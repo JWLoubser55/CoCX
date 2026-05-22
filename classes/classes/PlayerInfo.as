@@ -207,7 +207,7 @@ public class PlayerInfo extends BaseContent {
 				miscStats += "<b>Mindbreaker Goal:</b> " + Mindbreaker.MindBreakerConvertGoal + "\n";
 			}
 			if (player.isAnyRaceCached(Races.WEREWOLF, Races.CERBERUS) && player.hasMutation(IMutationsLib.AlphaHowlIM)) miscStats += "<b>Female Werewolfs:</b> " + LunaFollower.WerewolfPackMember + "\n";
-			if (player.isRaceCached(Races.CERBERUS) && player.hasMutation(IMutationsLib.AlphaHowlIM) && player.hasMutation(IMutationsLib.HellhoundFireBallsIM)) miscStats += "<b>Hellhounds:</b> " + LunaFollower.HellhoundPackMember + "\n";
+			if (player.isRaceCached(Races.CERBERUS) && player.hasMutation(IMutationsLib.AlphaHowlIM) && player.hasMutation(IMutationsLib.HellhoundFireBallsIM) && player.perkv1(IMutationsLib.HellhoundFireBallsIM) >= 2) miscStats += "<b>Hellhounds:</b> " + LunaFollower.HellhoundPackMember + "\n";
 			if (player.hasPerk(PerkLib.MummyLord)) miscStats += "<b>Mummies:</b> " + player.perkv1(PerkLib.MummyLord) + " / " + player.mummyControlLimit() + "\n";
 			if (player.hasPerk(PerkLib.UndeadLord)) miscStats += "<b>Zombies:</b> " + player.perkv1(PerkLib.UndeadLord) + " / " + player.zombieControlLimit() + "\n";
 			if (player.hasPerk(PerkLib.FungalNobility)) miscStats += "<b>Matango:</b> " + player.perkv1(PerkLib.FungalNobility) + " / " + player.matangoControlLimit() + "\n";

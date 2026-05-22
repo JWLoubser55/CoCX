@@ -1077,6 +1077,10 @@ import classes.Scenes.NPCs.Forgefather;
 				else if (thickness > 50) maxven += 100;
 				else maxven += 50;
 			}
+			if (game.player.hasKeyItem("Sky Poison Pearl") >= 0) {
+				maxven += 300;
+				multimaxven += perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX);
+			}
 			if (hasPerk(PerkLib.JobSoulCultivator)) {
 				if (hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) multimaxven += 0.1;
 				if (hasPerk(PerkLib.GclassHeavenTribulationSurvivor)) multimaxven += 0.15;
@@ -1085,8 +1089,6 @@ import classes.Scenes.NPCs.Forgefather;
 				if (hasPerk(PerkLib.EclassHeavenTribulationSurvivor)) multimaxven += 0.3;
 			}
 			if (perkv1(IMutationsLib.ArachnidBookLungIM) > 0) multimaxven += perkv1(IMutationsLib.ArachnidBookLungIM);
-			if (game.player.hasKeyItem("Sky Poison Pearl") >= 0 && maxven > 0) maxven += 300;
-			if (hasPerk(PerkLib.AscensionSkyPoisonPearlMasteryStageX) && maxven > 0) multimaxven += perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX);
 			maxven *= multimaxven;
 			maxven = Math.round(maxven);
 			return maxven;

@@ -67,6 +67,7 @@ use namespace CoC;
 			var x:int = 14;
 			var y:Number = 0;
 			if (player.hasPerk(PerkLib.AscensionSkyPoisonPearlMasteryStageX)) y += (6 * player.perkv1(PerkLib.AscensionSkyPoisonPearlMasteryStageX));
+			if (player.hasKeyItem("Sky Poison Pearl") < 0) y = 0;
 			if (player.level >= (6 - y)) x += 14;
 			if (player.level >= (12 - y)) x += 14;
 			if (player.level >= (18 - y)) x += 14;

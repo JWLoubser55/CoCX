@@ -33,10 +33,8 @@ public class HellHoundFireBallsMutation extends IMutationPerkType
             if (pTier >= 4){
                 descS += "Double your cum production. ";
             }
-            if (pTier >= 4){
-                descS += "If you have the Alpha howl perk you may now forcibly recruit hellhounds into your pack equal to the number of werewolves you may control.";
-            } else if (pTier >= 2){
-                descS += "If you have the Alpha howl perk you may now forcibly recruit hellhounds into your pack equal to half the number of werewolves you may control.";
+            if (pTier >= 2){
+                descS += "If you have the Alpha howl perk as Cerberus you may now forcibly recruit hellhounds into your pack equal to"+(pTier >= 4?"":" half")+" the number of werewolves you may control. ()";
             }
             return descS;
         }
