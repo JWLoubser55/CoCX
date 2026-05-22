@@ -245,8 +245,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 strength lvl-up perk: Dragoon Leap. Req. Power Attack perk. Effect: Gain the Leap skill, should you gain the leap skill from a different source increase the damage of leap by 100%.\n");
 			outputText("-New mutation perk: Frog jumping legs. Req. having free musculature mutation slot, Frog race. Effects: Reduce the cooldown of leap by 1 round.\n");
 			outputText("-New mutation perk: Frog jumping legs (Primitive). Req. Frog jumping legs and lvl 30+. Effects: Reduce the cooldown of leap by 2 rounds. Leap damage is increased by 50%.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Frog jumping legs (Evolved). Req. Frog jumping legs (Primitive) and lvl 60+. Effects: Reduce the cooldown of leap by 3 rounds. Leap damage is increased by 100%. Leap only consumes 75% of the wrath it should.\n");
+			outputText("-New mutation perk: Frog jumping legs (Final Form). Req. Frog jumping legs (Evolved) and lvl 90+. Effects: Reduce the cooldown of leap by 4 rounds. Leap damage is increased by 200%. Leap only consumes 50% of the wrath it should. Leap has a 100% increased chance of critical strike.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -378,8 +378,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -419,6 +425,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

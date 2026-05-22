@@ -5263,6 +5263,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			var crit:Boolean = false;
 			var critChance:int = 5;
 			critChance += combat.combatPhysicalCritical();
+			if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 4) critChance += 100;
 			if (player.hasPerk(PerkLib.WeaponMastery) && (player.weapon.isSingleLarge() || player.weaponOff.isSingleLarge()) && player.str >= 100) critChance += 10;
 			if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.weapon.isSingleLarge() && player.weaponOff.isSingleLarge() && player.str >= 140) critChance += 10;
 			if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isSingleMassive() || player.weaponOff.isSingleMassive())) {
@@ -5310,6 +5311,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else {
 				if (player.wrath > player.maxWrath()) PAC += player.maxWrath();
 				else PAC += player.wrath;
+			}
+			if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 3) {
+				if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 4) PAC = Math.round(PAC * 0.5);
+				else PAC = Math.round(PAC * 0.75);
 			}
 			pc.WrathChange(-PAC);
 			combat.heroBaneProc(damage);

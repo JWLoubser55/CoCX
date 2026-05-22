@@ -34,10 +34,10 @@ public class FrogJumpingLegsMutation extends IMutationPerkType
                 descS += "s. Leap damage is increased by "+perkCent1+"0%";
             }
             if (pTier >= 3){
-                descS += ". Physical ability that stuns do so for one extra round";
+                descS += ". Leap only consumes "+perkCent2+"% of the wrath it should";
             }
             if (pTier >= 4){
-                descS += ". While Galloping gain +10% evasion against ranged attack";
+                descS += ". Leap has a 100% increased chance of critical strike";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -74,7 +74,7 @@ public class FrogJumpingLegsMutation extends IMutationPerkType
 
         public function FrogJumpingLegsMutation() 
 		{
-			super(MNAME, SLOT_MUSCLE, 2);
+			super(MNAME, SLOT_MUSCLE, 4);
 		}
 		
 	}
