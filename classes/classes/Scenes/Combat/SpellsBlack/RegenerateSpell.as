@@ -60,21 +60,26 @@ public class RegenerateSpell extends AbstractBlackSpell {
 	
 	override public function advance(display:Boolean):void {
 		if (player.statusEffectv1(StatusEffects.PlayerRegenerate) <= 0) {
-			player.removeStatusEffect(StatusEffects.PlayerRegenerate);
 			if (display) {
-				outputText("<b>Regenerate effect wore off!</b>\n\n");
+				if (player.statusEffectv4(StatusEffects.PlayerRegenerate) == 1) outputText("<b>Lingering recovery effect wore off!</b>\n\n");
+				else outputText("<b>Regenerate effect wore off!</b>\n\n");
 			}
+			player.removeStatusEffect(StatusEffects.PlayerRegenerate);
 		} else {
 			player.addStatusValue(StatusEffects.PlayerRegenerate, 1, -1);
-			if (player.hasStatusEffect(StatusEffects.CombatWounds)) {
+			if (player.hasStatusEffect(StatusEffects.CombatWounds) && player.statusEffectv2(StatusEffects.PlayerRegenerate) == 0) {
 				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.01) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.01);
 				else player.removeStatusEffect(StatusEffects.CombatWounds);
 			}
 			var hpChange2:Number = calcHeal();
-			if (display) {
+			if (display && player.statusEffectv2(StatusEffects.PlayerRegenerate) == 1) {
 				outputText("<b>Regenerate healing power spreading in your body. ([font-heal]+" + hpChange2 + "[/font])</b>\n\n");
+				pc.HPChange(hpChange2, false, false);
 			}
-			pc.HPChange(hpChange2, false, false);
+			if (display && player.statusEffectv4(StatusEffects.PlayerRegenerate) == 1) {
+				outputText("<b>Lingering recovery power spreading in your body. ([font-heal]+" + Math.round(hpChange2*0.25) + "[/font])</b>\n\n");
+				pc.HPChange(Math.round(hpChange2*0.25), false, false);
+			}
 		}
 	}
 	
@@ -88,7 +93,7 @@ public class RegenerateSpell extends AbstractBlackSpell {
 				player.addStatusValue(StatusEffects.PlayerRegenerate, 1, calcDuration());
 				outputText("more ");
 			}
-			else player.createStatusEffect(StatusEffects.PlayerRegenerate, calcDuration(), 0, 0, 0);
+			else player.createStatusEffect(StatusEffects.PlayerRegenerate, calcDuration(), 1, 0, 0);
 			outputText("rounds.");
 		}
 		

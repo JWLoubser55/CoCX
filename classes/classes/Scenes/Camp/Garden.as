@@ -1477,7 +1477,8 @@ import classes.Scenes.SceneLib;
 				outputText("<b>This text should not appear. Please let Ormael/Aimozg know.</b>");
 				break;
 		}
-		doNext(playerMenu);
+		if (potion == "Poultice" && player.hasPerk(PerkLib.SwiftConsume)) doNext(curry(combat.combatMenu, false));
+		else doNext(playerMenu);
 	}
 
 	}

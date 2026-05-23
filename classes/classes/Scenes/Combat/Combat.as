@@ -1624,7 +1624,11 @@ public class Combat extends BaseContent {
 		}
         pc.HPChange(power,false, false);
         outputText("You apply the poultice, your wounds closing at high speed. Healed for ");
-        CommasForDigits(power*-1);
+        CommasForDigits(power *-1);
+		if (player.hasPerk(PerkLib.LingeringRecovery)) {
+			if (player.hasStatusEffect(StatusEffects.PlayerRegenerate)) player.addStatusValue(StatusEffects.PlayerRegenerate, 1, 3);
+			else player.createStatusEffect(StatusEffects.PlayerRegenerate, 3, 0, 0, 1);
+		}
     }
     public function EnergyDrink():void {
         clearOutput();
@@ -1709,7 +1713,8 @@ public class Combat extends BaseContent {
         var duration:Number = Math.round(power/100)+5;
         //strength then Duration in hours
         player.createStatusEffect(StatusEffects.AttackPotion,power,duration,0,0);
-        outputText("You drink up the medicine, feeling stronger and more agile already. "+power+" "+duration+"");
+        outputText("You drink up the medicine, feeling stronger and more agile already. " + power + " " + duration + "");
+		if (player.hasPerk(PerkLib.ChemicalRage)) pc.WrathChange(Math.round(player.maxWrath() * 0.2));
     }
     public function Perfume():void {
         clearOutput();
@@ -21609,4 +21614,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

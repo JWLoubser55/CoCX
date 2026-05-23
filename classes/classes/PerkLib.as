@@ -1018,6 +1018,15 @@ public class PerkLib
 		public static const DragoonLeap:PerkType = mk("Dragoon Leap", "Dragoon Leap",
 				"Gain the Leap skill, should you gain the leap skill from a different source increase the damage of leap by 100%.",
 				"You've chosen the 'Dragoon Leap' perk. Gain the Leap skill, should you gain the leap skill from a different source increase the damage of leap by 100%.");
+		public static const SwiftConsume:PerkType = mk("Swift Consume", "Swift Consume",
+				"Healing items from the potion bag no longer require an action to be consumed!",
+				"You've chosen the 'Swift Consume' perk. Healing items from the potion bag no longer require an action to be consumed!");
+		public static const LingeringRecovery:PerkType = mk("Lingering recovery", "Lingering recovery",
+				"The poultice now adds a lesser healing over time effect after its consumption.",
+				"You've chosen the 'Lingering recovery' perk. The poultice now adds a lesser healing over time effect after its consumption.");
+		public static const ChemicalRage:PerkType = mk("Chemical rage", "Chemical rage",
+				"Stimulants now also induce the generation of an extra 20% wrath.",
+				"You've chosen the 'Chemical rage' perk. Stimulants now also induce the generation of an extra 20% wrath.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1032,6 +1041,9 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8563,6 +8575,9 @@ public class PerkLib
             WisenedHealer.requireLevel(6)
                     .requirePerk(JobHealer)
                     .requireWis(50);
+            SwiftConsume.requireLevel(6)
+                    .requirePerk(JobHealer)
+                    .requireWis(50);
 			DeathPlunge.requireLevel(6)
                     .requirePerk(AerialCombat);
 			SpiritedDive.requireLevel(6)
@@ -8742,6 +8757,18 @@ public class PerkLib
                     .requirePerk(JobHealer)
                     .requireInt(50)
                     .requireWis(50);
+            LingeringRecovery.requireLevel(12)
+                    .requirePerk(JobHealer)
+                    .requireWis(75)
+                    .requireCustomFunction(function (player:Player):Boolean {
+						return player.herbalismLevel >= 5;
+					}, "Herbalism skill at lvl 5");
+            ChemicalRage.requireLevel(12)
+                    .requirePerk(JobHealer)
+                    .requireWis(75)
+                    .requireCustomFunction(function (player:Player):Boolean {
+						return player.herbalismLevel >= 5;
+					}, "Herbalism skill at lvl 5");
 			AdvancedAerialCombat.requireLevel(12)
 					.requirePerk(AerialCombat)
 					.requireStr(35)
