@@ -15294,7 +15294,10 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 3 && player.statStore.hasBuff("CrinosShape")) hbr *= 2;
 			maxPercentRegen += (hbr * mp);
 		}
-		if (player.perkv1(IMutationsLib.LunaticMindIM) >= 2 && !player.hasStatusEffect(StatusEffects.WereraceRegenerationDisabled)) maxPercentRegen += (0.5 * player.perkv1(IMutationsLib.LunaticMindIM));
+		if (player.perkv1(IMutationsLib.LunaticMindIM) >= 2 && !player.hasStatusEffect(StatusEffects.WereraceRegenerationDisabled)) {
+			if (player.perkv1(IMutationsLib.LunaticMindIM) >= 4 && isNightTime) maxPercentRegen += (player.perkv1(IMutationsLib.LunaticMindIM) - 1);
+			else maxPercentRegen += (0.5 * (player.perkv1(IMutationsLib.LunaticMindIM) - 1));
+		}
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 3 && player.mana100 >= 50) {
 			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxPercentRegen += 2;
 			maxPercentRegen += 2;
@@ -15415,7 +15418,10 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 3 && player.statStore.hasBuff("CrinosShape")) hbr *= 2;
 			maxRegen += (hbr * mp);
 		}
-		if (player.perkv1(IMutationsLib.LunaticMindIM) >= 2 && !player.hasStatusEffect(StatusEffects.WereraceRegenerationDisabled)) maxRegen += (0.5 * player.perkv1(IMutationsLib.LunaticMindIM));
+		if (player.perkv1(IMutationsLib.LunaticMindIM) >= 2 && !player.hasStatusEffect(StatusEffects.WereraceRegenerationDisabled)) {
+			if (player.perkv1(IMutationsLib.LunaticMindIM) >= 4 && isNightTime) maxRegen += (player.perkv1(IMutationsLib.LunaticMindIM) - 1);
+			else maxRegen += (0.5 * (player.perkv1(IMutationsLib.LunaticMindIM) - 1));
+		}
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 3 && player.mana100 >= 50) {
 			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxRegen += 2;
 			maxRegen += 2;

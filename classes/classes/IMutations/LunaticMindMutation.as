@@ -23,7 +23,7 @@ public class LunaticMindMutation extends IMutationPerkType
 			if (pTier >= 1) descS += "Gain a static percentage bonus to speed and strength based on moon phase between "+(pTier*5)+"0 and -50";
 			if (pTier >= 2) descS += ". Gain "+((pTier-1)*0.5)+"% regeneration";
 			if (pTier >= 3) descS += ". Sneak attack is improved by +"+(pTier-2)+"x";
-			if (pTier >= 4) descS += "";
+			if (pTier >= 4) descS += ". Double all these bonuses at night";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -59,7 +59,7 @@ public class LunaticMindMutation extends IMutationPerkType
 
         public function LunaticMindMutation() 
 		{
-			super(MNAME, SLOT_NERVSYS, 2);
+			super(MNAME, SLOT_NERVSYS, 4);
         }
 
     }
