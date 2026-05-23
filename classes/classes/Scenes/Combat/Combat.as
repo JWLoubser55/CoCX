@@ -1654,8 +1654,15 @@ public class Combat extends BaseContent {
 					player.removeCurse(stat, 3,2);
 				}
 				if (stat != "sens") {
-					player.removeCurse(stat+".mult", 0.06,1);
-					player.removeCurse(stat+".mult", 0.03,2);
+					if (player.hasPerk(PerkLib.DivineCure)) {
+						player.removeCurse(stat+".mult", 0.16,1);
+						player.removeCurse(stat+".mult", 0.13,2);
+						player.removeCurse(stat+".mult", 0.10,3);
+					}
+					else {
+						player.removeCurse(stat+".mult", 0.06,1);
+						player.removeCurse(stat+".mult", 0.03,2);
+					}
 				}
 			}
 		}

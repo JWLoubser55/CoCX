@@ -8072,7 +8072,11 @@ use namespace CoC;
 
 		public function maxHerbalismLevel():Number {
 			var maxLevel:Number = 2;
-			if (hasPerk(PerkLib.SkilledHerbalist)) {
+			if (hasPerk(PerkLib.ExpertHerbalist)) {
+				if (level < 58) maxLevel += level;
+				else maxLevel += 58;
+			}
+			else if (hasPerk(PerkLib.SkilledHerbalist)) {
 				if (level < 38) maxLevel += level;
 				else maxLevel += 38;
 			}
@@ -8749,6 +8753,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.Creationism)) cap += 2;
 			if (hasPerk(PerkLib.TransformationAcclimation)) cap += 2;
 			if (hasPerk(PerkLib.MutagenMaster)) cap += 20;
+			if (hasPerk(PerkLib.MutagenGrandmaster)) cap += 60;
 			if (hasPerk(PerkLib.MunchkinAtGym)) cap += 5;
 			return cap
 		}

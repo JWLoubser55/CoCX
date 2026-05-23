@@ -1376,6 +1376,7 @@ import classes.Scenes.SceneLib;
 	}
 	private function skilledHerbalistExtraChance():Number {
 		var sHEC:Number = 90;
+		if (player.hasPerk(PerkLib.ExpertHerbalist)) sHEC -= 10;
 		return sHEC;
 	}
 	

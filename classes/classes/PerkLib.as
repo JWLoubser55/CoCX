@@ -1036,6 +1036,15 @@ public class PerkLib
 		public static const MutagenMaster:PerkType = mk("Mutagen master", "Mutagen master",
 				"The bonus you gain from mutagen can now go up 20% higher.",
 				"You've chosen the 'Mutagen master' perk. The bonus you gain from mutagen can now go up 20% higher.");
+		public static const ExpertHerbalist:PerkType = mk("Expert Herbalist", "Expert Herbalist",
+				"When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 60.",
+				"You've chosen the 'Expert Herbalist' perk. When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 60.");
+		public static const DivineCure:PerkType = mk("Divine Cure", "Divine Cure",
+				"All cures now heals additional 10 percent of stat damage on use, alleviating even the vilest curse.",
+				"You've chosen the 'Divine Cure' perk. All cures now heals additional 10 percent of stat damage on use, alleviating even the vilest curse.");
+		public static const MutagenGrandmaster:PerkType = mk("Mutagen grandmaster", "Mutagen grandmaster",
+				"The bonus you gain from mutagen can now go up 60% higher.",
+				"You've chosen the 'Mutagen grandmaster' perk. The bonus you gain from mutagen can now go up 60% higher.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1050,6 +1059,9 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8583,13 +8595,14 @@ public class PerkLib
                     .requireWis(30);
             SpellpowerHealing.requireLevel(6)
                     .requirePerk(JobHealer)
-                    .requireWis(50);
+                    .requireInt(50);
             WisenedHealer.requireLevel(6)
                     .requirePerk(JobHealer)
                     .requireWis(50);
             SwiftConsume.requireLevel(6)
                     .requirePerk(JobHealer)
-                    .requireWis(50);
+                    .requireInt(30)
+                    .requireWis(30);
 			DeathPlunge.requireLevel(6)
                     .requirePerk(AerialCombat);
 			SpiritedDive.requireLevel(6)
@@ -8771,25 +8784,29 @@ public class PerkLib
                     .requireWis(50);
             LingeringRecovery.requireLevel(12)
                     .requirePerk(JobHealer)
-                    .requireWis(75)
+                    .requireInt(45)
+                    .requireWis(45)
                     .requireCustomFunction(function (player:Player):Boolean {
 						return player.herbalismLevel >= 5;
 					}, "Herbalism skill at lvl 5");
             ChemicalRage.requireLevel(12)
                     .requirePerk(JobHealer)
-                    .requireWis(75)
+                    .requireInt(45)
+                    .requireWis(45)
                     .requireCustomFunction(function (player:Player):Boolean {
 						return player.herbalismLevel >= 5;
 					}, "Herbalism skill at lvl 5");
             SkilledHerbalist.requireLevel(12)
                     .requirePerk(JobHealer)
-                    .requireWis(75)
+                    .requireInt(45)
+                    .requireWis(45)
                     .requireCustomFunction(function (player:Player):Boolean {
 						return player.herbalismLevel >= 10;
 					}, "Herbalism skill at lvl 10");
             TrueCure.requireLevel(12)
                     .requirePerk(JobHealer)
-                    .requireWis(75)
+                    .requireInt(45)
+                    .requireWis(45)
                     .requireCustomFunction(function (player:Player):Boolean {
 						return player.herbalismLevel >= 5;
 					}, "Herbalism skill at lvl 5");
@@ -8895,6 +8912,13 @@ public class PerkLib
                     .requirePerk(NaturalHealingMinor)
                     .requireInt(20)
                     .requireWis(80);
+            MutagenMaster.requireLevel(22)
+                    .requirePerk(JobHealer)
+                    .requireInt(60)
+                    .requireWis(60)
+                    .requireCustomFunction(function (player:Player):Boolean {
+						return player.herbalismLevel >= 10;
+					}, "Herbalism skill at lvl 10");
             NaturalArsenal.requireLevel(18)
 					.requireStr(60)
 					.requireSpe(60)
@@ -9019,12 +9043,20 @@ public class PerkLib
                     .requirePerk(CloseToDeath)
                     .requireInt(100)
                     .requireWis(100);
-            MutagenMaster.requireLevel(24)
-                    .requirePerk(JobHealer)
-                    .requireWis(125)
+            ExpertHerbalist.requireLevel(24)
+                    .requirePerk(SkilledHerbalist)
+                    .requireInt(90)
+                    .requireWis(90)
                     .requireCustomFunction(function (player:Player):Boolean {
-						return player.herbalismLevel >= 10;
-					}, "Herbalism skill at lvl 10");
+						return player.herbalismLevel >= 20;
+					}, "Herbalism skill at lvl 20");
+            DivineCure.requireLevel(24)
+                    .requirePerk(TrueCure)
+                    .requireInt(90)
+                    .requireWis(90)
+                    .requireCustomFunction(function (player:Player):Boolean {
+						return player.herbalismLevel >= 20;
+					}, "Herbalism skill at lvl 20");
 			GreaterAerialCombat.requireLevel(24)
 					.requirePerk(AdvancedAerialCombat)
 					.requireStr(50)
@@ -9360,7 +9392,14 @@ public class PerkLib
             GolemArmyMajor.requireLevel(66)
                     .requireInt(185)
                     .requireWis(185)
-                    .requirePerks(GolemArmyCaptain, EpicGolemMaker2ndCircle);
+                    .requirePerks(GolemArmyCaptain, EpicGolemMaker2ndCircle);/*
+            MutagenGrandmaster.requireLevel(66)
+                    .requirePerk(MutagenMaster)
+                    .requireInt(180)
+                    .requireWis(180)
+                    .requireCustomFunction(function (player:Player):Boolean {
+						return player.herbalismLevel >= 30;
+					}, "Herbalism skill at lvl 30");*/
 			LimitBreakerSoul1stStage.requireLevel(66)
 					.requirePerk(LimitBreakerPsyche1stStage);
             //Tier 12
