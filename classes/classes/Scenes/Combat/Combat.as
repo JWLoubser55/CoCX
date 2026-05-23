@@ -11520,6 +11520,7 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.BlazingHeartIM) >= 4 && !monster.hasStatusEffect(StatusEffects.BurnDoT) && rand(5) == 0) monster.createStatusEffect(StatusEffects.BurnDoT,5,0.02,0,0);
 		}
 		if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 4 && player.hasStatusEffect(StatusEffects.Lustzerking)) damage *= 1.5;
+		if (player.hasMutation(IMutationsLib.HellcatParathyroidGlandsIM) && (player.inHeat || player.inRut)) damage *= (1 + (0.5 * player.perkv1(IMutationsLib.HellcatParathyroidGlandsIM)));
 		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
@@ -11777,6 +11778,7 @@ public class Combat extends BaseContent {
 			player.takeLustDamage(Math.round(player.maxLust() * 0.005), true, false);
 			player.takeLustDamage((5 + int(player.effectiveSensitivity()) / 10), true);
 		}
+		if (player.hasMutation(IMutationsLib.HellcatParathyroidGlandsIM) && (player.inHeat || player.inRut)) damage *= (1 + (0.5 * player.perkv1(IMutationsLib.HellcatParathyroidGlandsIM)));
 		if (player.hasPerk(PerkLib.HeraldOfDeath) && monster.hp100 < 50) damage *= 2;
         // Uma's Massage Bonuses
         var sac:StatusEffectClass = player.statusEffectByType(StatusEffects.UmasMassage);
@@ -12590,15 +12592,14 @@ public class Combat extends BaseContent {
         //Manage cumulative magic damage counter degradation
         for each (var perkObj:Object in values(CombatMagic.magicCounterPerks)) {
             if (player.hasStatusEffect(perkObj.counter)) {
-            if (player.statusEffectv1(perkObj.counter) > 0 && player.statusEffectv2(perkObj.counter) == 0 && player.statusEffectv3(perkObj.counter) == 0) {
-				if (player.hasPerk(perkObj.tier3) || player.hasPerk(perkObj.tier4)) player.addStatusValue(perkObj.counter, 1, -4);
-				else if (player.hasPerk(perkObj.tier2)) player.addStatusValue(perkObj.counter, 1, -6);
-				player.addStatusValue(perkObj.counter, 1, -8);
+				if (player.statusEffectv1(perkObj.counter) > 0 && player.statusEffectv2(perkObj.counter) == 0 && player.statusEffectv3(perkObj.counter) == 0) {
+					if (player.hasPerk(perkObj.tier3) || player.hasPerk(perkObj.tier4)) player.addStatusValue(perkObj.counter, 1, -4);
+					else if (player.hasPerk(perkObj.tier2)) player.addStatusValue(perkObj.counter, 1, -6);
+					player.addStatusValue(perkObj.counter, 1, -8);
+				}
+				if (player.statusEffectv2(perkObj.counter) > 0) player.addStatusValue(perkObj.counter, 2, -1);
 			}
-			if (player.statusEffectv2(perkObj.counter) > 0) player.addStatusValue(perkObj.counter, 2, -1);
         }
-        }
-        
 		if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 3 && player.HP < 1 && !player.hasStatusEffect(StatusEffects.RegenSurge)) {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) == 3) player.createStatusEffect(StatusEffects.RegenSurge,3,0,0,0);
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) == 4) player.createStatusEffect(StatusEffects.RegenSurge,4,0,0,0);
@@ -15293,6 +15294,7 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 3 && player.statStore.hasBuff("CrinosShape")) hbr *= 2;
 			maxPercentRegen += (hbr * mp);
 		}
+		if (player.perkv1(IMutationsLib.LunaticMindIM) >= 2 && !player.hasStatusEffect(StatusEffects.WereraceRegenerationDisabled)) maxPercentRegen += (0.5 * player.perkv1(IMutationsLib.LunaticMindIM));
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 3 && player.mana100 >= 50) {
 			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxPercentRegen += 2;
 			maxPercentRegen += 2;
@@ -15413,6 +15415,7 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 3 && player.statStore.hasBuff("CrinosShape")) hbr *= 2;
 			maxRegen += (hbr * mp);
 		}
+		if (player.perkv1(IMutationsLib.LunaticMindIM) >= 2 && !player.hasStatusEffect(StatusEffects.WereraceRegenerationDisabled)) maxRegen += (0.5 * player.perkv1(IMutationsLib.LunaticMindIM));
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 3 && player.mana100 >= 50) {
 			if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) maxRegen += 2;
 			maxRegen += 2;

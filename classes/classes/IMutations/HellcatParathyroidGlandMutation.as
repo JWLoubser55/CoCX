@@ -7,6 +7,7 @@ package classes.IMutations
 import classes.Creature;
 import classes.IMutationPerkType;
 import classes.PerkClass;
+import classes.Races;
 
 public class HellcatParathyroidGlandMutation extends IMutationPerkType
     {
@@ -18,15 +19,9 @@ public class HellcatParathyroidGlandMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1){
-                descS += "";
-            }
-            if (pTier >= 2){
-                descS += ", ";
-            }
-            if (pTier >= 3){
-                descS += ", ";
-            }
+            if (pTier >= 1) descS += "Increase Fire and dark damage by "+(pTier*5)+"0% when in rut or in heat";
+            if (pTier >= 2) descS += ", ";
+            if (pTier >= 3) descS += ", ";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -38,7 +33,8 @@ public class HellcatParathyroidGlandMutation extends IMutationPerkType
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireHeartMutationSlot();
+                    this.requireParathyroidGlandMutationSlot()
+                    .requireRace(Races.HELLCAT);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -53,11 +49,15 @@ public class HellcatParathyroidGlandMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
+            if (pTier == 1) pBuffs['lib.mult'] = 0.05;
+			if (pTier == 2) pBuffs['lib.mult'] = 0.10;
+			if (pTier == 3) pBuffs['lib.mult'] = 0.15;
+            if (pTier == 4) pBuffs['lib.mult'] = 0.20;
             return pBuffs;
         }
 
         public function HellcatParathyroidGlandMutation() {
-            super(MNAME, SLOT_NONE, 3);
+            super(MNAME, SLOT_PARATHYROID, 1);
         }
 
     }

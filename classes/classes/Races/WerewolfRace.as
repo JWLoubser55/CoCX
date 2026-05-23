@@ -63,6 +63,7 @@ public class WerewolfRace extends Race {
 		addBloodline(PerkLib.WerewolfsDescendant,PerkLib.BloodlineWerewolf);
 		addMutation(IMutationsLib.FerasBirthrightIM);
 		addMutation(IMutationsLib.AlphaHowlIM);
+		addMutation(IMutationsLib.LunaticMindIM);
 		
 		buildTier(12, "werewolf")
 				.require("Lycanthropy or Dormant Lycanthropy perk", 

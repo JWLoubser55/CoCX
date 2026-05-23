@@ -68,6 +68,7 @@ public class WeresharkRace extends Race {
 		addBloodline(PerkLib.WeresharksDescendant,PerkLib.BloodlineWereshark);
 		addMutation(IMutationsLib.FerasBirthrightIM);
 		addMutation(IMutationsLib.SharkOlfactorySystemIM);
+		addMutation(IMutationsLib.LunaticMindIM);
 		
 		buildTier(12, "wereshark")
 				.require("Selachimorphanthropy or Dormant Selachimorphanthropy perk", 
