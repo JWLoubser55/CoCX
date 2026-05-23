@@ -8072,7 +8072,11 @@ use namespace CoC;
 
 		public function maxHerbalismLevel():Number {
 			var maxLevel:Number = 2;
-			if (hasPerk(PerkLib.ExpertHerbalist)) {
+			if (hasPerk(PerkLib.MasterHerbalist)) {
+				if (level < 78) maxLevel += level;
+				else maxLevel += 78;
+			}
+			else if (hasPerk(PerkLib.ExpertHerbalist)) {
 				if (level < 58) maxLevel += level;
 				else maxLevel += 58;
 			}

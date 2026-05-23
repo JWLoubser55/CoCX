@@ -255,9 +255,9 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 misc lvl-up perk: Mutagen master. Req. Job: Healer perk, lvl 22+, 60+ int/wis and Herbalism lvl 10+. Effect: The bonus you gain from mutagen can now go up 20% higher.\n");
 			outputText("-New tier 4 misc lvl-up perk: Expert Herbalist. Req. Skilled Herbalist perk, 75+ int/wis and Herbalism lvl 20+. Effect: When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 60.\n");
 			outputText("-New tier 4 misc lvl-up perk: Divine Cure. Req. True Cure perk, 75+ int/wis and Herbalism lvl 20+. Effect: All cures now heals additional 10 percent of stat damage on use, alleviating even the vilest curse.\n");
-			outputText("-\n");
-			//outputText("-New tier 11 misc lvl-up perk: Mutagen grandmaster. Req. Mutagen master perk, 180+ int/wis and Herbalism lvl 30+. Effect: The bonus you gain from mutagen can now go up 60% higher.\n");
-			outputText("-\n");
+			outputText("-New tier 8 misc lvl-up perk: Master Herbalist. Req. Expert Herbalist perk, 135+ int/wis and Herbalism lvl 40+. Effect: When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 80.\n");
+			outputText("-New tier 11 misc lvl-up perk: Mutagen grandmaster. Req. Mutagen master perk, 180+ int/wis and Herbalism lvl 30+. Effect: The bonus you gain from mutagen can now go up 60% higher.\n");
+			outputText("-Potions (Lowest grade) Bag cost increased (300 > 600) times but so do slot capacity (5 > 10) ^^\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

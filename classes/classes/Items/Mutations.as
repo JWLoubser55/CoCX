@@ -18706,7 +18706,7 @@ public final class Mutations extends MutationsHelper {
         var duration:Number = Math.round(power/100)+5;
         //strength then Duration in hours
         player.createStatusEffect(StatusEffects.TeasePotion,power,duration,0,0);
-        outputText("You eat the ginseng and gulp it down. Your breath will now smells like ginseng for a while wich should increase your appeal.");
+        outputText("You eat the ginseng and gulp it down. Your breath will now smell like ginseng for a while which should increase your appeal.");
         player.refillHunger(15);
         var HE:Number = 5 + player.level;
 		HE *= player.HerbalismMulti();
@@ -18808,4 +18808,4 @@ public final class Mutations extends MutationsHelper {
     }
 }
 
-}
+}

@@ -212,13 +212,17 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
 			menu();
-			addButton(5, "MiningProdigyBag", pitchMiningProdigyBag);
-			if (Garden.IngrediantBagSlot01Cap == 0) addButton(6, "Herb Bag (LLowG)", pitchLLHerbsBag).hint("Herbs Bag (Lowest Grade)");
+			addButton(0, "MiningProdigyBag", pitchMiningProdigyBag);
+			if (Garden.IngrediantBagSlot01Cap == 0) addButton(1, "Herb Bag (LLowG)", pitchLLHerbsBag).hint("Herbs Bag (Lowest Grade)");
 			if (Garden.IngrediantBagSlot07Cap == 0) {
-				if (player.farmingLevel >= 5) addButton(7, "Herb Bag (LowG)", pitchLHerbsBag).hint("Herbs Bag (Low Grade)");
-				else addButtonDisabled(7, "Herb Bag (LowG)", "Herbs Bag (Low Grade) Req. lvl 5 in Farming.");
+				if (player.farmingLevel >= 5) addButton(2, "Herb Bag (LowG)", pitchLHerbsBag).hint("Herbs Bag (Low Grade)");
+				else addButtonDisabled(2, "Herb Bag (LowG)", "Herbs Bag (Low Grade) Req. lvl 5 in Farming.");
 			}
-			if (Garden.PotionsBagSlot01Cap == 0) addButton(8, "Pot Bag (LowG)", pitchPotionsBag).hint("Potion Bag (Lowest Grade)");
+			if (Garden.PotionsBagSlot01Cap == 0) addButton(3, "Pot Bag (LLowG)", pitchLLPotionsBag).hint("Potion Bag (Lowest Grade)");/*
+			if (Garden.PotionsBagSlot07Cap == 0) {
+				if (player.herbalismLevel >= 5) addButton(4, "Pot Bag (LowG)", pitchLPotionsBag).hint("Potion Bag (Low Grade)");
+				else addButtonDisabled(2, "Pot Bag (LowG)", "Potion Bag (Low Grade) Req. lvl 5 in Herbalism.");
+			}*/
 			if (player.hasPerk(PerkLib.ExanimationI) && !player.hasPerk(PerkLib.ExanimationIII) && player.level < 32) addButton(9, "Peach", pitchPurePeach);
 			if (player.hasKeyItem("Tarnished Ore Bag (Lowest grade)") >= 0) addButton(10, "Ore Bag (LowG)", pitchOreBag).hint("Ore Bag (Lowest Grade)");
 			if (Holidays.nieveHoliday()) {
@@ -594,7 +598,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			outputText("Giacomo holds up a bag.  \"<i>While you may not find value in this as a simple bag,</i>\", Giacomo opens, \"<i>you would find use of items that mining prodigy that owned this before you gatherted!  Maybe even gain profficency in mining faster or never failt to find ores!  I will offer the super-cheap price of 800 gems!</i>\"");
 			doYesNo(buyMiningProdigyBag, miscMenu);
 		}
-		
 		private function buyMiningProdigyBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
@@ -615,7 +618,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			outputText("\"<i>I see you keep herbs between your other stuff. Why not you buy this one bag that is much better to keep them in one place? Only 300 gems and i assure you not gonna find such good offer anywhere else...</i>\"");
 			doYesNo(buyLLHerbsBag, miscMenu);
 		}
-		
 		private function buyLLHerbsBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
@@ -643,12 +645,11 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			outputText("\"<i>I see you keep herbs between your other stuff. Why not you buy this one bag that is much better then the one you already have to keep them in one place? Only 500 gems and i assure you not gonna find such good offer anywhere else...</i>\"");
 			doYesNo(buyLHerbsBag, miscMenu);
 		}
-		
 		private function buyLHerbsBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
 			if (player.gems < 500) {
-				outputText("\n\nGiacomo sighs, indicating you need 400 gems to purchase this item.");
+				outputText("\n\nGiacomo sighs, indicating you need 500 gems to purchase this item.");
 				doNext(miscMenu);
 			}
 			else {
@@ -668,30 +669,59 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			}
 		}
 		
-		private function pitchPotionsBag():void {
+		private function pitchLLPotionsBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
-			outputText("\"<i>I see you keep potions between your other stuff. Why not you buy this one bag that is much better to organize them? Only 300 gems and i assure you not gonna find such good offer anywhere else...</i>\"");
-			doYesNo(buyPotionsBag, miscMenu);
+			outputText("\"<i>I see you keep potions between your other stuff. Why not you buy this one bag that is much better to organize them? Only 600 gems and i assure you not gonna find such good offer anywhere else...</i>\"");
+			doYesNo(buyLLPotionsBag, miscMenu);
 		}
-		
-		private function buyPotionsBag():void {
+		private function buyLLPotionsBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
-			if (player.gems < 300) {
-				outputText("\n\nGiacomo sighs, indicating you need 300 gems to purchase this item.");
+			if (player.gems < 600) {
+				outputText("\n\nGiacomo sighs, indicating you need 600 gems to purchase this item.");
 				doNext(miscMenu);
 			}
 			else {
 				outputText("\n\nYou decided to buy the bag. <b>You acquired Potion Bag (Lowest grade).</b>");
-				player.gems -= 300;
+				player.gems -= 600;
 				player.createKeyItem("Potion Bag (Lowest grade)", 0, 0, 0, 0);
-				Garden.PotionsBagSlot01Cap = 5;
-				Garden.PotionsBagSlot02Cap = 5;
-				Garden.PotionsBagSlot03Cap = 5;
-				Garden.PotionsBagSlot04Cap = 5;
-				Garden.PotionsBagSlot05Cap = 5;
-				Garden.PotionsBagSlot06Cap = 5;
+				Garden.PotionsBagSlot01Cap = 10;
+				Garden.PotionsBagSlot02Cap = 10;
+				Garden.PotionsBagSlot03Cap = 10;
+				Garden.PotionsBagSlot04Cap = 10;
+				Garden.PotionsBagSlot05Cap = 10;
+				Garden.PotionsBagSlot06Cap = 10;
+				doNext(miscMenu);
+			}
+		}
+		
+		private function pitchLPotionsBag():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			outputText("\"<i>I see you keep potions between your other stuff. Why not you buy this one bag that is much better to organize them? Only 1,000 gems and i assure you not gonna find such good offer anywhere else...</i>\"");
+			doYesNo(buyLPotionsBag, miscMenu);
+		}
+		private function buyLPotionsBag():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			if (player.gems < 1000) {
+				outputText("\n\nGiacomo sighs, indicating you need 1,000 gems to purchase this item.");
+				doNext(miscMenu);
+			}
+			else {
+				outputText("\n\nYou decided to buy the bag. <b>You acquired Potion Bag (Lowest grade).</b>");
+				player.gems -= 1000;
+				player.removeKeyItem("Potion Bag (Lowest grade)");
+				player.createKeyItem("Potion Bag (Low grade)", 0, 0, 0, 0);
+				Garden.PotionsBagSlot01Cap = 20;
+				Garden.PotionsBagSlot02Cap = 20;
+				Garden.PotionsBagSlot03Cap = 20;
+				Garden.PotionsBagSlot04Cap = 20;
+				Garden.PotionsBagSlot05Cap = 20;
+				Garden.PotionsBagSlot06Cap = 20;
+				Garden.PotionsBagSlot07Cap = 20;
+				Garden.PotionsBagSlot08Cap = 20;
 				doNext(miscMenu);
 			}
 		}
@@ -702,7 +732,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			outputText("\"<i>I see you have some pretty tarnished bag to store ores. Why not you buy this new one bag that is much better even if it's not better grade than the one you have now? Only 600 gems and i even gonna take your current bag. I assure you not gonna find such good offer anywhere else...</i>\"");
 			doYesNo(buyOreBag, miscMenu);
 		}
-		
 		private function buyOreBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();

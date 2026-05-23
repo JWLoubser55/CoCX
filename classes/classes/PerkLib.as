@@ -1045,6 +1045,9 @@ public class PerkLib
 		public static const MutagenGrandmaster:PerkType = mk("Mutagen grandmaster", "Mutagen grandmaster",
 				"The bonus you gain from mutagen can now go up 60% higher.",
 				"You've chosen the 'Mutagen grandmaster' perk. The bonus you gain from mutagen can now go up 60% higher.");
+		public static const MasterHerbalist:PerkType = mk("Master Herbalist", "Master Herbalist",
+				"When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 80.",
+				"You've chosen the 'Master Herbalist' perk. When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 80.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1059,9 +1062,6 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -9288,6 +9288,13 @@ public class PerkLib
                     .requireInt(150)
                     .requireWis(150)
                     .requirePerks(GrandMasterGolemMaker, AdvancedGolemancyTheory);
+            MasterHerbalist.requireLevel(48)
+                    .requirePerk(ExpertHerbalist)
+                    .requireInt(135)
+                    .requireWis(135)
+                    .requireCustomFunction(function (player:Player):Boolean {
+						return player.herbalismLevel >= 40;
+					}, "Herbalism skill at lvl 40");
 			LimitBreakerHeart1stStage.requireLevel(48)
 					.requirePerk(LimitBreakerBody1stStage);
 			ArcaneVenom.requireLevel(48)
@@ -9392,14 +9399,14 @@ public class PerkLib
             GolemArmyMajor.requireLevel(66)
                     .requireInt(185)
                     .requireWis(185)
-                    .requirePerks(GolemArmyCaptain, EpicGolemMaker2ndCircle);/*
+                    .requirePerks(GolemArmyCaptain, EpicGolemMaker2ndCircle);
             MutagenGrandmaster.requireLevel(66)
                     .requirePerk(MutagenMaster)
                     .requireInt(180)
                     .requireWis(180)
                     .requireCustomFunction(function (player:Player):Boolean {
 						return player.herbalismLevel >= 30;
-					}, "Herbalism skill at lvl 30");*/
+					}, "Herbalism skill at lvl 30");
 			LimitBreakerSoul1stStage.requireLevel(66)
 					.requirePerk(LimitBreakerPsyche1stStage);
             //Tier 12
