@@ -1027,6 +1027,15 @@ public class PerkLib
 		public static const ChemicalRage:PerkType = mk("Chemical rage", "Chemical rage",
 				"Stimulants now also induce the generation of an extra 20% wrath.",
 				"You've chosen the 'Chemical rage' perk. Stimulants now also induce the generation of an extra 20% wrath.");
+		public static const SkilledHerbalist:PerkType = mk("Skilled Herbalist", "Skilled Herbalist",
+				"When creating an herbalism consumable there is a 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 40.",
+				"You've chosen the 'Skilled Herbalist' perk. When creating an herbalism consumable there is a 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 40.");
+		public static const TrueCure:PerkType = mk("True Cure", "True Cure",
+				"All Cures now also heals additional 10 points of stat drain on use.",
+				"You've chosen the 'True Cure' perk. All Cures now also heals additional 10 points of stat drain on use.");
+		public static const MutagenMaster:PerkType = mk("Mutagen master", "Mutagen master",
+				"The bonus you gain from mutagen can now go up 20% higher.",
+				"You've chosen the 'Mutagen master' perk. The bonus you gain from mutagen can now go up 20% higher.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1041,6 +1050,9 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8769,6 +8781,18 @@ public class PerkLib
                     .requireCustomFunction(function (player:Player):Boolean {
 						return player.herbalismLevel >= 5;
 					}, "Herbalism skill at lvl 5");
+            SkilledHerbalist.requireLevel(12)
+                    .requirePerk(JobHealer)
+                    .requireWis(75)
+                    .requireCustomFunction(function (player:Player):Boolean {
+						return player.herbalismLevel >= 10;
+					}, "Herbalism skill at lvl 10");
+            TrueCure.requireLevel(12)
+                    .requirePerk(JobHealer)
+                    .requireWis(75)
+                    .requireCustomFunction(function (player:Player):Boolean {
+						return player.herbalismLevel >= 5;
+					}, "Herbalism skill at lvl 5");
 			AdvancedAerialCombat.requireLevel(12)
 					.requirePerk(AerialCombat)
 					.requireStr(35)
@@ -8995,6 +9019,12 @@ public class PerkLib
                     .requirePerk(CloseToDeath)
                     .requireInt(100)
                     .requireWis(100);
+            MutagenMaster.requireLevel(24)
+                    .requirePerk(JobHealer)
+                    .requireWis(125)
+                    .requireCustomFunction(function (player:Player):Boolean {
+						return player.herbalismLevel >= 10;
+					}, "Herbalism skill at lvl 10");
 			GreaterAerialCombat.requireLevel(24)
 					.requirePerk(AdvancedAerialCombat)
 					.requireStr(50)

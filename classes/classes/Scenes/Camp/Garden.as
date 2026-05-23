@@ -1206,9 +1206,10 @@ import classes.Scenes.SceneLib;
 				outputText("<b>This text should not appear. Please let Ormael/Aimozg know.</b>");
 				doNext(playerMenu);
 		}
+		if (player.hasPerk(PerkLib.SkilledHerbalist) && rand(100) >= skilledHerbalistExtraChance()) count += 1;
 		clearOutput();
 		outputText("You spend the better part of the next hour refining the "+Ingredient+" into a "+CraftingResult+" adding it to your potion bag.");
-		if (player.hasPerk(PerkLib.NaturalHerbalism)) outputText("Your natural knowledge of herbalism allowed you to craft two additional " + CraftingResult + ".");
+		if (player.hasPerk(PerkLib.NaturalHerbalism)) outputText("Your natural knowledge of herbalism allowed you to craft three times as many "+CraftingResult+".");
 		var HE:Number = 20 + player.level;
 		HE *= player.HerbalismMulti();
 		player.herbXP(HE);
@@ -1334,6 +1335,13 @@ import classes.Scenes.SceneLib;
 				outputText("<b>This text should not appear. Please let Ormael/Aimozg know.</b>");
 				doNext(playerMenu);
 		}
+		if (player.hasPerk(PerkLib.SkilledHerbalist)) {
+			if (rand(100) >= skilledHerbalistExtraChance()) count += 1;
+			if (rand(100) >= skilledHerbalistExtraChance()) count += 1;
+			if (rand(100) >= skilledHerbalistExtraChance()) count += 1;
+			if (rand(100) >= skilledHerbalistExtraChance()) count += 1;
+			if (rand(100) >= skilledHerbalistExtraChance()) count += 1;
+		}
 		if (player.hasPerk(PerkLib.NaturalHerbalism)) count *= 3;
 		switch (Item2) {
 			case 1:
@@ -1365,6 +1373,10 @@ import classes.Scenes.SceneLib;
 				doNext(playerMenu);
 		}
 		doNext(herbalismMenu);
+	}
+	private function skilledHerbalistExtraChance():Number {
+		var sHEC:Number = 90;
+		return sHEC;
 	}
 	
 	public function justForTestBuildsAdjustingBagsCapacityCuzINotWannaWasteSaveUpdateForThat():void {

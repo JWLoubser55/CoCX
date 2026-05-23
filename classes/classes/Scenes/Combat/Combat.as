@@ -1644,8 +1644,15 @@ public class Combat extends BaseContent {
 		for each (var type:StatusEffectType in CurableEffects) player.removeStatusEffect(type);
 		if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained")) {
 			for each (var stat:String in ["str","spe","tou","int","wis","lib","sens"]) {
-				player.removeCurse(stat, 6,1);
-				player.removeCurse(stat, 3,2);
+				if (player.hasPerk(PerkLib.TrueCure)) {
+					player.removeCurse(stat, 16,1);
+					player.removeCurse(stat, 13,2);
+					player.removeCurse(stat, 10,3);
+				}
+				else {
+					player.removeCurse(stat, 6,1);
+					player.removeCurse(stat, 3,2);
+				}
 				if (stat != "sens") {
 					player.removeCurse(stat+".mult", 0.06,1);
 					player.removeCurse(stat+".mult", 0.03,2);

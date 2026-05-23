@@ -248,8 +248,11 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Frog jumping legs (Evolved). Req. Frog jumping legs (Primitive) and lvl 60+. Effects: Reduce the cooldown of leap by 3 rounds. Leap damage is increased by 100%. Leap only consumes 75% of the wrath it should.\n");
 			outputText("-New mutation perk: Frog jumping legs (Final Form). Req. Frog jumping legs (Evolved) and lvl 90+. Effects: Reduce the cooldown of leap by 4 rounds. Leap damage is increased by 200%. Leap only consumes 50% of the wrath it should. Leap has a 100% increased chance of critical strike.\n");
 			outputText("-New tier 1 misc lvl-up perk: Swift Consume. Req. Job: Healer perk and 50+ wis. Effect: Healing items from the potion bag no longer require an action to be consumed!\n");
-			outputText("-New tier 2 misc lvl-up perk: Lingering recovery. Req. Job: Healer perk, 50+ wis and Herbalism lvl 5+. Effect: The poultice now adds a lesser healing over time effect after its consumption.\n");
-			outputText("-New tier 2 misc lvl-up perk: Chemical rage. Req. Job: Healer perk, 50+ wis and Herbalism lvl 5+. Effect: Stimulants now also induce the generation of an extra 20% wrath.\n");
+			outputText("-New tier 2 misc lvl-up perk: Lingering recovery. Req. Job: Healer perk, 75+ wis and Herbalism lvl 5+. Effect: The poultice now adds a lesser healing over time effect after its consumption.\n");
+			outputText("-New tier 2 misc lvl-up perk: Chemical rage. Req. Job: Healer perk, 75+ wis and Herbalism lvl 5+. Effect: Stimulants now also induce the generation of an extra 20% wrath.\n");
+			outputText("-New tier 2 misc lvl-up perk: Skilled Herbalist. Req. Job: Healer perk, 75+ wis and Herbalism lvl 10+. Effect: When creating an herbalism consumable there is a 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 40.\n");
+			outputText("-New tier 2 misc lvl-up perk: True Cure. Req. Job: Healer perk, 75+ wis and Herbalism lvl 5+. Effect: All Cures now also heals additional 10 points of stat drain on use.\n");
+			outputText("-New tier 4 misc lvl-up perk: Mutagen master. Req. Job: Healer perk, 125+ wis and Herbalism lvl 10+. Effect: The bonus you gain from mutagen can now go up 20% higher.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -270,6 +273,21 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
+			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
+			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");
+			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
+			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
@@ -280,15 +298,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
-			outputText("-\n");
-			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
-			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
-			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");
-			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
-			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
-			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -378,14 +387,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -425,9 +428,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
