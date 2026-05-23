@@ -1133,6 +1133,44 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						player.createStatusEffect(StatusEffects.PCDaughtersWorkshopSpareParts,nails,metalpieces,mechanism,energycore);
 					}
 				}
+				//Lunatic mind
+				if (player.perkv1(IMutationsLib.LunaticMindIM) >= 1 && (player.hasPerk(PerkLib.Lycanthropy) || player.hasPerk(PerkLib.Selachimorphanthropy))) {
+					var ngMultLM:Number = (player.newGamePlusMod() + 1);
+					var changeV1:Number = -50;
+					var changeV2:Number = 1;
+					var changeV3:Number = 1;
+					if (player.perkv1(IMutationsLib.LunaticMindIM) >= 2) changeV2 += 0.5;
+					if (player.perkv1(IMutationsLib.LunaticMindIM) >= 3) changeV2 += 0.5;
+					if (player.perkv1(IMutationsLib.LunaticMindIM) >= 4) changeV2 += 0.5;
+					if (player.perkv1(IMutationsLib.LunaticMindIM) >= 4 && isNightTime) changeV3 += 1;
+					switch (flags[kFLAGS.LUNA_MOON_CYCLE]) {
+						case 1:
+							changeV1 = ((75 * changeV2) - (50 * changeV3));
+							break;
+						case 2:
+							changeV1 = ((50 * changeV2) - (50 * changeV3));
+							break;
+						case 3:
+							changeV1 = ((25 * changeV2) - (50 * changeV3));
+							break;
+						case 4:
+							changeV1 = ((0 * changeV2) - (50 * changeV3));
+							break;
+						case 5:
+							changeV1 = ((25 * changeV2) - (50 * changeV3));;
+							break;
+						case 6:
+							changeV1 = ((50 * changeV2) - (50 * changeV3));
+							break;
+						case 7:
+							changeV1 = ((75 * changeV2) - (50 * changeV3));
+							break;
+						case 8:
+							changeV1 = ((100 * changeV2) - (50 * changeV3));
+							break;
+					}
+					player.statStore.replaceBuffObject({ 'str.mult': changeV1*0.01*ngMultLM,'tou.mult': changeV1*0.01*ngMultLM}, 'Lunatic mind', { text: 'Lunatic mind'});
+				}
 
 				for each (var pPerks:IMutationPerkType in IMutationsLib.mutationsArray("")){
 					if (pPerks.trueMutation){
@@ -1352,59 +1390,45 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasPerk(PerkLib.Lycanthropy) || player.hasPerk(PerkLib.Vulpesthropy) || player.hasPerk(PerkLib.Selachimorphanthropy) || player.hasPerk(PerkLib.Araneathropy)) {
 					var ngMult:Number = (player.newGamePlusMod() + 1);
 					var changeV:Number = 0;
-					var changeV2:Number = -50;
-					var changeV3:Number = 1;
-					//var changeV4:Number = 1;
 					var textA:String = "";
 					if (player.hasPerk(PerkLib.Lycanthropy)) textA = "lupine";
 					if (player.hasPerk(PerkLib.Vulpesthropy)) textA = "vulpine";
 					if (player.hasPerk(PerkLib.Selachimorphanthropy)) textA = "selachii";
 					if (player.hasPerk(PerkLib.Araneathropy)) textA = "arachne";
-					if (player.perkv1(IMutationsLib.LunaticMindIM) >= 2) changeV3 += 0.5;
-					if (player.perkv1(IMutationsLib.LunaticMindIM) >= 3) changeV3 += 0.5;
-					if (player.perkv1(IMutationsLib.LunaticMindIM) >= 4) changeV3 += 0.5;
 					switch (flags[kFLAGS.LUNA_MOON_CYCLE]) {
 						case 1:
 							changeV = 30;
-							changeV2 = ((75 * changeV3) - 50);
 							outputText("<b>\nThe moon is waning, you are feeling less powerful.</b>\n");
 							break;
 						case 2:
 							changeV = 20;
-							changeV2 = ((50 * changeV3) - 50);
 							outputText("<b>\nThe moon is waning, you are feeling less powerful.</b>\n");
 							break;
 						case 3:
 							changeV = 10;
-							changeV2 = ((25 * changeV3) - 50);
 							outputText("<b>\nThe moon is waning, you are feeling less powerful.</b>\n");
 							break;
 						case 4:
 							changeV = 0;
-							changeV2 = ((0 * changeV3) - 50);
 							outputText("<b>\nIt's a new moon tonight, you feel somewhat weak.</b>\n");
 							break;
 						case 5:
 							changeV = 10;
-							changeV2 = ((25 * changeV3) - 50);
 							outputText("<b>\nYou can’t help but notice the waxing moon as it rises up.  It seems transfixing like it is calling to you.");
 							outputText("\n\nYou feel your might increasing as the moon draws closer to fullness.</b>\n");
 							break;
 						case 6:
 							changeV = 20;
-							changeV2 = ((50 * changeV3) - 50);
 							outputText("<b>\nWhen the half-moon appears it causes your heart to race with excitement.  You hearing seems better than ever.  Every breath brings a rush of smells through your nose that seem much more pronounced than they should.");
 							outputText("\n\nYou feel your might increasing as the moon draws closer to fullness.</b>\n");
 							break;
 						case 7:
 							changeV = 30;
-							changeV2 = ((75 * changeV3) - 50);
 							outputText("<b>\nYou gaze at the moon and it seems to gaze back into you.   Something is coming and it won’t be long now.   You feel like your skin is crawling.  It feels like tear out of your body and be born anew.");
 							outputText("\n\nYou feel your might increasing as the moon draws closer to fullness. It's almost time.</b>\n");
 							break;
 						case 8:
 							changeV = 40;
-							changeV2 = ((100 * changeV3) - 50);
 							outputText("<b>\nYou are at the peak of your strength, it's a full moon tonight and you feel yourself burning with maddening desire as you go ");
 							outputText("into " + player.mf("rut your cock hardening and dripping precum at the prospect of impregnating a bitch womb full of your " + textA + " seeds", "heat your womb aching for the fresh semen of a virile male.") + "</b>\n.");
 							if (player.hasCock() || (player.gender == 3 && rand(2) == 0)) player.goIntoRut(false);
@@ -1426,9 +1450,6 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					if (player.hasPerk(PerkLib.Araneathropy)) {
 						player.statStore.replaceBuffObject({ 'str.mult': changeV*0.05*ngMult,'tou.mult': changeV*0.075*ngMult,'spe.mult': changeV*0.075*ngMult, 'minlustx': changeV * 0.005}, 'Araneathropy', { text: 'Araneathropy'});
 						player.setPerkValue(PerkLib.Selachimorphanthropy,1,changeV);
-					}
-					if (player.perkv1(IMutationsLib.LunaticMindIM) >= 1 && (player.hasPerk(PerkLib.Lycanthropy) || player.hasPerk(PerkLib.Selachimorphanthropy))) {
-						player.statStore.replaceBuffObject({ 'str.mult': changeV2*0.01*ngMult,'tou.mult': changeV2*0.01*ngMult}, 'Lunatic mind', { text: 'Lunatic mind'});
 					}
 					needNext = true;
 				}
@@ -3582,4 +3603,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}

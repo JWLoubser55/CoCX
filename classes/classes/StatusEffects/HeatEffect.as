@@ -1,4 +1,5 @@
 package classes.StatusEffects {
+import classes.IMutations.IMutationsLib;
 import classes.StatusEffectClass;
 import classes.StatusEffectType;
 
@@ -13,7 +14,8 @@ import classes.StatusEffectType;
         }
 
         public function ApplyEffect():void {
-            host.buff("Heat").setStats({"lib.mult":value2, "sens":value2*100/2}).withText("Heat");
+            if (host.perkv1(IMutationsLib.HellcatParathyroidGlandsIM) >= 4) host.buff("Rut").setStats({"int.mult":value2,"lib.mult":value2,"sens":value2*100/2}).withText("Rut");
+			else host.buff("Heat").setStats({"lib.mult":value2, "sens":value2*100/2}).withText("Heat");
         }
 
         override public function onRemove():void {

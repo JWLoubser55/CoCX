@@ -13649,14 +13649,14 @@ public class Combat extends BaseContent {
         }
         if (player.inHeat && player.vaginas.length > 0 && monster.cockTotal() > 0) {
 			var HeatLustDot:Number = (rand(player.lib / 5) + 3 + rand(5));
-			if (TyrantiaFollower.TyrantiaTrainingSessions >= 35) HeatLustDot *= 0.5;
+			if (TyrantiaFollower.TyrantiaTrainingSessions >= 35) HeatLustDot = Math.round(HeatLustDot * 0.5);
             player.takeLustDamage(HeatLustDot, true);
             outputText("Your " + vaginaDescript(0) + " clenches with an instinctual desire to be touched and filled.  ");
             outputText("If you don't end this quickly you'll give in to your heat.\n\n");
         }
         if (player.inRut && player.cockTotal() > 0 && monster.hasVagina()) {
             var RutLustDot:Number = (rand(player.lib / 5) + 3 + rand(5));
-			if (TyrantiaFollower.TyrantiaTrainingSessions >= 35) RutLustDot *= 0.5;
+			if (TyrantiaFollower.TyrantiaTrainingSessions >= 35) RutLustDot = Math.round(RutLustDot * 0.5);
             player.takeLustDamage(RutLustDot, true);
             if (player.cockTotal() > 1) outputText("Each of y");
             else outputText("Y");
@@ -15779,6 +15779,7 @@ public class Combat extends BaseContent {
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 1) manaregen += Math.round(player.maxMana() * 0.01 * player.perkv1(IMutationsLib.SoulCoreIM));
 		if (player.perkv1(IMutationsLib.SoulCoreIM) >= 4) manaregen += Math.round(player.maxMana() * 0.01);
 		if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 1 && isOutsideDuringDaytime()) manaregen += Math.round(player.maxMana() * 0.05 * player.perkv1(IMutationsLib.PlantChlorophyllIM));
+		if (player.perkv1(IMutationsLib.HellcatParathyroidGlandsIM) >= 3 && (player.inHeat || player.inRut)) manaregen += Math.round(player.maxMana() * 0.01 * (player.perkv1(IMutationsLib.HellcatParathyroidGlandsIM) - 2));
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 3 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005);
 		if (player.perkv1(IMutationsLib.HumanSmartsIM) >= 4 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005);
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 3 && player.racialScore(Races.HUMAN) > 17) manaregen += Math.round(player.maxMana() * 0.005 * (player.perkv1(IMutationsLib.HumanThyroidGlandIM) - 2));

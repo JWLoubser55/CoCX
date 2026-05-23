@@ -260,9 +260,9 @@ public class Changelog extends BaseContent
 			outputText("-Potions (Lowest grade) Bag cost increased (300 > 600) times but so do slot capacity (5 > 10) ^^\n");
 			outputText("-Added to Giacomo offer: Potions (Low/Mid grade) Bag and Herbs (Mid grade) Bag. Cost 1,000 / 2,000 / 1,000 gems and have 8 / 10 / 10 slots for items (potions or herbs) with stack size of 20 / 40 / 20.\n");
 			outputText("-New mutation perk: Hellcat Parathyroid Glands. Req. having free parathyroid glands mutation slot, Hellcat race. Effects: Increase Fire and dark damage by 50% when in rut or in heat.\n");
-			//outputText("-New mutation perk: Hellcat Parathyroid Glands (Primitive). Req. Hellcat Parathyroid Glands and lvl 30+. Effects: \n");
-			//outputText("-\n");
-			//outputText("-\n");
+			outputText("-New mutation perk: Hellcat Parathyroid Glands (Primitive). Req. Hellcat Parathyroid Glands and lvl 30+. Effects: Increase Fire and dark damage by 100% when in rut or in heat. Increase the libido gain from heat and rut by 50%.\n");
+			outputText("-New mutation perk: Hellcat Parathyroid Glands (Evolved). Req. Hellcat Parathyroid Glands (Primitive) and lvl 60+. Effects: Increase Fire and dark damage by 150% when in rut or in heat. Increase the libido gain from heat and rut by 100%. Gain 1% mana regeneration when in heat or in rut.\n");
+			outputText("-New mutation perk: Hellcat Parathyroid Glands (Final Form). Req. Hellcat Parathyroid Glands (Evolved) and lvl 90+. Effects: Increase Fire and dark damage by 200% when in rut or in heat. Increase the libido gain from heat and rut by 150%. Gain 2% mana regeneration when in heat or in rut. Add the bonus from heat and rut to intelligence as well.\n");
 			outputText("-New mutation perk: Lunatic mind. Req. having free nerv system mutation slot, All Lunar attuned species (Wererace, Moon Rabbit). Effects: Gain a static percentage bonus to speed and strength based on moon phase between 50 and -50.\n");
 			outputText("-New mutation perk: Lunatic mind (Primitive). Req. Lunatic mind and lvl 30+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 100 and -50. Gain 0.5% regeneration.\n");
 			outputText("-New mutation perk: Lunatic mind (Evolved). Req. Lunatic mind (Primitive) and lvl 60+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 150 and -50. Gain 1% regeneration. Sneak attack is improved by +1x.\n");

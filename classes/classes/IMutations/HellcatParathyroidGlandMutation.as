@@ -20,9 +20,9 @@ public class HellcatParathyroidGlandMutation extends IMutationPerkType
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1) descS += "Increase Fire and dark damage by "+(pTier*5)+"0% when in rut or in heat";
-            if (pTier >= 2) descS += ", ";
-            if (pTier >= 3) descS += ", ";
-            if (descS != "")descS += ".";
+            if (pTier >= 2) descS += ". Increase the libido gain from heat and rut by "+((pTier-1)*5)+"0%";
+            if (pTier >= 3) descS += ". Gain "+(pTier-2)+"% mana regeneration when in heat or in rut";
+            if (descS != "")descS += ". Add the bonus from heat and rut to intelligence as well";
             return descS;
         }
 
@@ -57,7 +57,7 @@ public class HellcatParathyroidGlandMutation extends IMutationPerkType
         }
 
         public function HellcatParathyroidGlandMutation() {
-            super(MNAME, SLOT_PARATHYROID, 1);
+            super(MNAME, SLOT_PARATHYROID, 4);
         }
 
     }
