@@ -41,13 +41,13 @@ public class IMutationsLib
 		public static const MutationsTemplateIM:IMutationPerkType = new MutationTemplate();
 		//Disabled mutations here. The contents are not filled. Please fill them in first.
 		public static const NekomataThyroidGlandIM:IMutationPerkType = new NekomataThyroidGlandMutation();
-		public static const HellcatParathyroidGlandsIM:IMutationPerkType = new HellcatParathyroidGlandMutation();
 		public static const HengeyokaiBirthrightIM:IMutationPerkType = new HengeyokaiBirthrightMutation();
 		public static const AnanasaBirthrightIM:IMutationPerkType = new AnanasaBirthrightMutation();
 		public static const DraconicBonesIM:IMutationPerkType = new DraconicBonesMutation();
 		public static const DraconicHeartIM:IMutationPerkType = new DraconicHeartMutation();
 		public static const DraconicLungIM:IMutationPerkType = new DraconicLungMutation();
 		public static const MalleablePhysiologyIM:IMutationPerkType = new MalleablePhysiologyMutation();
+		public static const LunaticMindIM:IMutationPerkType = new LunaticMindMutation();
 		//Mutations start here.
 		public static const AlphaHowlIM:IMutationPerkType = new AlphaHowlMutation();
 		public static const AmphibiousEgglayerIM:IMutationPerkType = new AmphibiousEgglayerMutation();
@@ -87,6 +87,7 @@ public class IMutationsLib
 		public static const GorgonEyesIM:IMutationPerkType = new GorgonEyesMutation();
 		public static const HarpyHollowBonesIM:IMutationPerkType = new HarpyHollowBonesMutation();
 		public static const HeartOfTheStormIM:IMutationPerkType = new HeartOfTheStormMutation();
+		public static const HellcatParathyroidGlandsIM:IMutationPerkType = new HellcatParathyroidGlandMutation();
 		public static const HellhoundFireBallsIM:IMutationPerkType = new HellHoundFireBallsMutation();
 		public static const HinezumiBurningBloodIM:IMutationPerkType = new HinezumiBurningBloodMutation();
 		public static const HollowFangsIM:IMutationPerkType = new HollowFangsMutation();

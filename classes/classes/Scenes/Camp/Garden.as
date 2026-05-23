@@ -82,8 +82,10 @@ import classes.Scenes.SceneLib;
 		public static var PotionsBagSlot08Potion:String;
 		public static var PotionsBagSlot09:Number;
 		public static var PotionsBagSlot09Cap:Number;
+		public static var PotionsBagSlot09Potion:String;
 		public static var PotionsBagSlot10:Number;
 		public static var PotionsBagSlot10Cap:Number;
+		public static var PotionsBagSlot10Potion:String;
 		public static var PotionsBagSlot11:Number;
 		public static var PotionsBagSlot11Cap:Number;
 		public static var PotionsBagSlot12:Number;
@@ -240,8 +242,10 @@ import classes.Scenes.SceneLib;
 			PotionsBagSlot08Potion = "";
 			PotionsBagSlot09 = 0;
 			PotionsBagSlot09Cap = 0;
+			PotionsBagSlot09Potion = "";
 			PotionsBagSlot10 = 0;
 			PotionsBagSlot10Cap = 0;
+			PotionsBagSlot10Potion = "";
 			PotionsBagSlot11 = 0;
 			PotionsBagSlot11Cap = 0;
 			PotionsBagSlot12 = 0;
@@ -396,8 +400,10 @@ import classes.Scenes.SceneLib;
 				"PotionsBagSlot08Potion": PotionsBagSlot08Potion,
 				"PotionsBagSlot09": PotionsBagSlot09,
 				"PotionsBagSlot09Cap": PotionsBagSlot09Cap,
+				"PotionsBagSlot08Potion": PotionsBagSlot09Potion,
 				"PotionsBagSlot10": PotionsBagSlot10,
 				"PotionsBagSlot10Cap": PotionsBagSlot10Cap,
+				"PotionsBagSlot08Potion": PotionsBagSlot10Potion,
 				"PotionsBagSlot11": PotionsBagSlot11,
 				"PotionsBagSlot11Cap": PotionsBagSlot11Cap,
 				"PotionsBagSlot12": PotionsBagSlot12,
@@ -553,8 +559,10 @@ import classes.Scenes.SceneLib;
 				PotionsBagSlot08Potion = valueOr(o["PotionsBagSlot08Potion"], "");
 				PotionsBagSlot09 = o["PotionsBagSlot09"];
 				PotionsBagSlot09Cap = o["PotionsBagSlot09Cap"];
+				PotionsBagSlot09Potion = valueOr(o["PotionsBagSlot09Potion"], "");
 				PotionsBagSlot10 = o["PotionsBagSlot10"];
 				PotionsBagSlot10Cap = o["PotionsBagSlot10Cap"];
+				PotionsBagSlot10Potion = valueOr(o["PotionsBagSlot10Potion"], "");
 				PotionsBagSlot11 = o["PotionsBagSlot11"];
 				PotionsBagSlot11Cap = o["PotionsBagSlot11Cap"];
 				PotionsBagSlot12 = o["PotionsBagSlot12"];
@@ -664,6 +672,8 @@ import classes.Scenes.SceneLib;
 		outputText("Alraune nectar: "+IngrediantBagSlot06+"/"+IngrediantBagSlot06Cap+"\n");
 		if (IngrediantBagSlot07Cap > 0) outputText("Ginseng: "+IngrediantBagSlot07+"/"+IngrediantBagSlot07Cap+"\n");
 		//if (IngrediantBagSlot08Cap > 0) outputText("???: "+IngrediantBagSlot08+"/"+IngrediantBagSlot08Cap+"\n");
+		//if (IngrediantBagSlot09Cap > 0) outputText("???: "+IngrediantBagSlot09+"/"+IngrediantBagSlot09Cap+"\n");
+		//if (IngrediantBagSlot10Cap > 0) outputText("???: "+IngrediantBagSlot10+"/"+IngrediantBagSlot10Cap+"\n");
 		outputText("\n<b>Fields</b>\n");
 		outputText("-01-: "+(GardenSlot01 != "" ? ""+GardenSlot01+" (Time until harvest: "+GardenSlot01Time+" hours)":"empty")+"");
 		outputText("\n-02-: "+(GardenSlot02 != "" ? ""+GardenSlot02+" (Time until harvest: "+GardenSlot02Time+" hours)":"empty")+"");
@@ -1121,8 +1131,12 @@ import classes.Scenes.SceneLib;
 		if (PotionsBagSlot06Cap > 0) outputText("Slot 6 - "+(PotionsBagSlot06Potion == "" ? "EMPTY":""+PotionsBagSlot06Potion+" "+PotionsBagSlot06+" / "+PotionsBagSlot06Cap+"")+"\n");
 		if (PotionsBagSlot07Cap > 0) outputText("Slot 7 - "+(PotionsBagSlot07Potion == "" ? "EMPTY":""+PotionsBagSlot07Potion+" "+PotionsBagSlot07+" / "+PotionsBagSlot07Cap+"")+"\n");
 		if (PotionsBagSlot08Cap > 0) outputText("Slot 8 - "+(PotionsBagSlot08Potion == "" ? "EMPTY":""+PotionsBagSlot08Potion+" "+PotionsBagSlot08+" / "+PotionsBagSlot08Cap+"")+"\n");
-		//if (PotionsBagSlot09Cap > 0) outputText("Slot 9 - "+(PotionsBagSlot09Potion == "" ? "EMPTY":""+PotionsBagSlot09Potion+" "+PotionsBagSlot09+" / "+PotionsBagSlot09Cap+"")+"\n");
-		//if (PotionsBagSlot10Cap > 0) outputText("Slot 10 - "+(PotionsBagSlot10Potion == "" ? "EMPTY":""+PotionsBagSlot10Potion+" "+PotionsBagSlot10+" / "+PotionsBagSlot10Cap+"")+"\n");
+		if (PotionsBagSlot09Cap > 0) outputText("Slot 9 - "+(PotionsBagSlot09Potion == "" ? "EMPTY":""+PotionsBagSlot09Potion+" "+PotionsBagSlot09+" / "+PotionsBagSlot09Cap+"")+"\n");
+		if (PotionsBagSlot10Cap > 0) outputText("Slot 10 - "+(PotionsBagSlot10Potion == "" ? "EMPTY":""+PotionsBagSlot10Potion+" "+PotionsBagSlot10+" / "+PotionsBagSlot10Cap+"")+"\n");
+		//if (PotionsBagSlot11Cap > 0) outputText("Slot 11 - "+(PotionsBagSlot11Potion == "" ? "EMPTY":""+PotionsBagSlot11Potion+" "+PotionsBagSlot11+" / "+PotionsBagSlot11Cap+"")+"\n");
+		//if (PotionsBagSlot12Cap > 0) outputText("Slot 12 - "+(PotionsBagSlot12Potion == "" ? "EMPTY":""+PotionsBagSlot12Potion+" "+PotionsBagSlot12+" / "+PotionsBagSlot12Cap+"")+"\n");
+		//if (PotionsBagSlot13Cap > 0) outputText("Slot 13 - "+(PotionsBagSlot13Potion == "" ? "EMPTY":""+PotionsBagSlot13Potion+" "+PotionsBagSlot13+" / "+PotionsBagSlot13Cap+"")+"\n");
+		//if (PotionsBagSlot14Cap > 0) outputText("Slot 14 - "+(PotionsBagSlot14Potion == "" ? "EMPTY":""+PotionsBagSlot14Potion+" "+PotionsBagSlot14+" / "+PotionsBagSlot14Cap+"")+"\n");
 		//Poultice
 		addButton(0, "Poultice", HerbalismCraftItem, 1, "healing herb", "Poultice").hint("Craft a Poultice using healing herb.\n\nHealing herbs currently in Ingredient Bag "+IngrediantBagSlot01+"")
 			.disableIf(IngrediantBagSlot01 == 0, "You lack the ingredients to craft this item.\n\nHealing herbs currently in Ingredient Bag "+IngrediantBagSlot01+"");
@@ -1180,12 +1194,18 @@ import classes.Scenes.SceneLib;
 		addButton(5, "-06-", HerbalismCraftItem2a, Item, 6, CraftingResult).hint("Put crafted potion in the 6th slot of potion bag.")
 			.disableIf((PotionsBagSlot06Potion != CraftingResult && PotionsBagSlot06Potion != ""), "You already keep a different type of the potion in this slot.")
 			.disableIf((PotionsBagSlot06 + multi > PotionsBagSlot06Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
-		addButton(6, "-06-", HerbalismCraftItem2a, Item, 7, CraftingResult).hint("Put crafted potion in the 7th slot of potion bag.")
+		addButton(6, "-07-", HerbalismCraftItem2a, Item, 7, CraftingResult).hint("Put crafted potion in the 7th slot of potion bag.")
 			.disableIf((PotionsBagSlot07Potion != CraftingResult && PotionsBagSlot07Potion != ""), "You already keep a different type of the potion in this slot.")
 			.disableIf((PotionsBagSlot07 + multi > PotionsBagSlot07Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
-		addButton(7, "-06-", HerbalismCraftItem2a, Item, 8, CraftingResult).hint("Put crafted potion in the 8th slot of potion bag.")
+		addButton(7, "-08-", HerbalismCraftItem2a, Item, 8, CraftingResult).hint("Put crafted potion in the 8th slot of potion bag.")
 			.disableIf((PotionsBagSlot08Potion != CraftingResult && PotionsBagSlot08Potion != ""), "You already keep a different type of the potion in this slot.")
 			.disableIf((PotionsBagSlot08 + multi > PotionsBagSlot08Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
+		addButton(8, "-09-", HerbalismCraftItem2a, Item, 9, CraftingResult).hint("Put crafted potion in the 9th slot of potion bag.")
+			.disableIf((PotionsBagSlot09Potion != CraftingResult && PotionsBagSlot09Potion != ""), "You already keep a different type of the potion in this slot.")
+			.disableIf((PotionsBagSlot09 + multi > PotionsBagSlot09Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
+		addButton(9, "-10-", HerbalismCraftItem2a, Item, 10, CraftingResult).hint("Put crafted potion in the 10th slot of potion bag.")
+			.disableIf((PotionsBagSlot10Potion != CraftingResult && PotionsBagSlot10Potion != ""), "You already keep a different type of the potion in this slot.")
+			.disableIf((PotionsBagSlot10 + multi > PotionsBagSlot10Cap), "You do not have any space left to store the crafted potion in this potion bag slot.");
 		addButton(14, "Back", herbalismMenu);
 	}
 	private function HerbalismCraftItem2a(Item:Number, Item2:Number, CraftingResult:String):void {
@@ -1284,6 +1304,12 @@ import classes.Scenes.SceneLib;
 			addButton(7, "-08-", HerbalismCraftItem3a, Item, 8, CraftingResult).hint("Put crafted potions in eighth slot of potion bag.")
 				.disableIf((PotionsBagSlot08Potion != CraftingResult && PotionsBagSlot08Potion != ""), "You already keep different type of the potions in this slot.")
 				.disableIf((PotionsBagSlot08 + (5 * multi) > PotionsBagSlot08Cap), "You not have left any space to store crafted potions in this potion bag slot.");
+			addButton(8, "-09-", HerbalismCraftItem3a, Item, 9, CraftingResult).hint("Put crafted potions in ninth slot of potion bag.")
+				.disableIf((PotionsBagSlot09Potion != CraftingResult && PotionsBagSlot09Potion != ""), "You already keep different type of the potions in this slot.")
+				.disableIf((PotionsBagSlot09 + (5 * multi) > PotionsBagSlot09Cap), "You not have left any space to store crafted potions in this potion bag slot.");
+			addButton(9, "-10-", HerbalismCraftItem3a, Item, 10, CraftingResult).hint("Put crafted potions in tenth slot of potion bag.")
+				.disableIf((PotionsBagSlot10Potion != CraftingResult && PotionsBagSlot10Potion != ""), "You already keep different type of the potions in this slot.")
+				.disableIf((PotionsBagSlot10 + (5 * multi) > PotionsBagSlot10Cap), "You not have left any space to store crafted potions in this potion bag slot.");
 		}
 		else {
 			outputText("\n\n<b>You do not have enough ingredients to make this potion!</b>");
@@ -1388,6 +1414,22 @@ import classes.Scenes.SceneLib;
 				PotionsBagSlot06 += count;
 				if (PotionsBagSlot06Potion == "") PotionsBagSlot06Potion = resultName;
 				break;
+			case 7:
+				PotionsBagSlot07 += count;
+				if (PotionsBagSlot07Potion == "") PotionsBagSlot07Potion = resultName;
+				break;
+			case 8:
+				PotionsBagSlot08 += count;
+				if (PotionsBagSlot08Potion == "") PotionsBagSlot08Potion = resultName;
+				break;
+			case 9:
+				PotionsBagSlot09 += count;
+				if (PotionsBagSlot09Potion == "") PotionsBagSlot09Potion = resultName;
+				break;
+			case 10:
+				PotionsBagSlot10 += count;
+				if (PotionsBagSlot10Potion == "") PotionsBagSlot10Potion = resultName;
+				break;
 			default:
 				outputText("<b>This text should not appear. Please let Ormael/Aimozg know.</b>");
 				doNext(playerMenu);
@@ -1438,6 +1480,7 @@ import classes.Scenes.SceneLib;
 			PotionsBagSlot05Cap = 10;
 			PotionsBagSlot06Cap = 10;
 		}
+		doNext(camp.campActions);
 	}
 
 	public function PotionMenu(page:int = 1):void {

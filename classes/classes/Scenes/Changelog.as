@@ -258,8 +258,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 8 misc lvl-up perk: Master Herbalist. Req. Expert Herbalist perk, 135+ int/wis and Herbalism lvl 40+. Effect: When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 80.\n");
 			outputText("-New tier 11 misc lvl-up perk: Mutagen grandmaster. Req. Mutagen master perk, 180+ int/wis and Herbalism lvl 30+. Effect: The bonus you gain from mutagen can now go up 60% higher.\n");
 			outputText("-Potions (Lowest grade) Bag cost increased (300 > 600) times but so do slot capacity (5 > 10) ^^\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Added to Giacomo offer: Potions (Low/Mid grade) Bag and Herbs (Mid grade) Bag. Cost 1,000 / 2,000 / 1,000 gems and have 8 / 10 / 10 slots for items (potions or herbs) with stack size of 20 / 40 / 20.\n");
+			//outputText("-New mutation perk: Frog jumping legs. Req. having free musculature mutation slot, Frog race. Effects: \n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
