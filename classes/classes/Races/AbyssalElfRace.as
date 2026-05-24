@@ -38,8 +38,9 @@ public class AbyssalElfRace extends Race {
     
     public override function setup():void {
         addScores()
-                //.start ctrl-spacing here
-                .hasPerk(PerkLib.DantianPhylactery, +1, -10)
+                .gillType(Gills.FISH, +1)
+				.skinBasePattern(Skin.PATTERN_BIOLUMINESCENCE, +1)
+				.hasPerk(PerkLib.DantianPhylactery, +1, -10)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 
         buildTier(11, "abyssal elf")

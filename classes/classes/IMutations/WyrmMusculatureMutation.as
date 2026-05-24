@@ -7,11 +7,12 @@ package classes.IMutations
 import classes.Creature;
 import classes.IMutationPerkType;
 import classes.PerkClass;
+import classes.Player;
 import classes.Races;
 
-public class HellcatParathyroidGlandMutation extends IMutationPerkType
-    {
-		public static const MNAME:String = "Hellcat Parathyroid Glands";
+public class WyrmMusculatureMutation extends IMutationPerkType
+	{
+		public static const MNAME:String = "Wyrm Musculature";
 		override public function get mName():String {
 			return MNAME;
 		}
@@ -19,10 +20,19 @@ public class HellcatParathyroidGlandMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Increase Fire and dark damage by "+(pTier*5)+"0% when in rut or in heat";
-            if (pTier >= 2) descS += ". Increase the libido gain from heat and rut by "+((pTier-1)*5)+"0%";
-            if (pTier >= 3) descS += ". Gain "+(pTier-2)+"% mana regeneration when in rut or in heat";
-            if (descS != "")descS += ". Add the bonus from heat and rut to intelligence as well";
+			if (pTier >= 1){
+				descS += "Reduce the cooldown of leap by "+pTier+" round";
+			}
+            if (pTier >= 2){
+                descS += "s. Leap damage is increased by "+pTier+"0%";
+            }
+            if (pTier >= 3){
+                descS += ". Leap only consumes "+pTier+"% of the wrath it should";
+            }
+            if (pTier >= 4){
+                descS += ". Leap has a 100% increased chance of critical strike";
+            }
+            if (descS != "")descS += ".";
             return descS;
         }
 
@@ -33,32 +43,33 @@ public class HellcatParathyroidGlandMutation extends IMutationPerkType
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireParathyroidGlandMutationSlot()
-                    .requireRace(Races.HELLCAT);
+                    this.requireMusclesMutationSlot()
+                    .requireAnyRace(Races.FROSTWYRM, Races.MAGMAWYRM, Races.SANDDRAKE);
                 }
                 else{
                     var pLvl:int = pTier * 30;
-                   this.requireLevel(pLvl);
+                    this.requireLevel(pLvl);
                 }
             }catch(e:Error){
                 trace(e.getStackTrace());
             }
         }
 
-
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
-            if (pTier == 1) pBuffs['lib.mult'] = 0.05;
-			if (pTier == 2) pBuffs['lib.mult'] = 0.10;
-			if (pTier == 3) pBuffs['lib.mult'] = 0.15;
-            if (pTier == 4) pBuffs['lib.mult'] = 0.20;
+            if (pTier == 1) pBuffs['str.mult'] = 0.05;
+            if (pTier == 2) pBuffs['str.mult'] = 0.10;
+            if (pTier == 3) pBuffs['str.mult'] = 0.15;
+            if (pTier == 4) pBuffs['str.mult'] = 0.20;
             return pBuffs;
         }
 
-        public function HellcatParathyroidGlandMutation() {
-            super(MNAME, SLOT_PARATHYROID, 4);
-        }
+        public function WyrmMusculatureMutation() 
+		{
+			super(MNAME, SLOT_NONE, 1);//SLOT_MUSCLE
+		}
+		
+	}
 
-    }
 }

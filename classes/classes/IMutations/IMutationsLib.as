@@ -146,6 +146,7 @@ public class IMutationsLib
 		public static const WendigoMetabolismIM:IMutationPerkType = new WendigoMetabolismMutation();
 		public static const WhaleFatIM:IMutationPerkType = new WhaleFatMutation();
 		public static const WhiteFacedOneBirthrightIM:IMutationPerkType = new WhiteFacedOneBirthrightMutation();
+		public static const WyrmMusculatureIM:IMutationPerkType = new WyrmMusculatureMutation();
 		public static const YetiFatIM:IMutationPerkType = new YetiFatMutation();
 
 		/**

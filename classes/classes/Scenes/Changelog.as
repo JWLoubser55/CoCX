@@ -166,17 +166,26 @@ public class Changelog extends BaseContent
 			outputText("-New tier 1 misc lvl-up perk: Binary Fission. Req. Job: Leader perk, 25+ int, 25+ wis. Effect: You wisp divided itself into two. (Double effect of attack or command mode)\n");
 			outputText("-New tier 1 misc lvl-up perk: Constrict. Req. Job: Feral Champion perk, 30+ str/tou/spe. Effect: Double damage dealt by grappling and inflict twice your grapple damage when first initiating a grapple.\n");
 			outputText("-New tier 1 misc lvl-up perk: Booming Voice. Req. Job: Feral Champion perk, 30+ str/tou/spe. Effect: Increase the potency of all breath weapons, shout and sound based ability by 25% when outdoors. Throat abilities cooldowns are reduced by 1 increment.\n");
+			outputText("-New tier 1 misc lvl-up perk: Swift Consume. Req. Job: Healer perk and 30+ int/wis. Effect: Healing items from the potion bag no longer require an action to be consumed!\n");
 			outputText("-New tier 2 misc lvl-up perk: I don't have minions, I got family. Req. Wisp Lieutenant perk, 65+ int, 65+ wis and 4+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 400% (400% in total) and decrease wisp own attack damage by 50% (50% in total).\n");
 			outputText("-New tier 2 misc lvl-up perk: One Wisp Army (Minor). Req. Binary Fission perk, 65+ int, 65+ wis. Effect: Increase wisp own attack damage by 400% (400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 50% (50% in total).\n");
 			outputText("-New tier 2 misc lvl-up perk: Crushing Coil. Req. Constrict perk, 45+ str/tou/spe. Effect: Grapple now has a chance for critical damage.\n");
+			outputText("-New tier 2 strength lvl-up perk: Dragoon Leap. Req. Power Attack perk. Effect: Gain the Leap skill, should you gain the leap skill from a different source increase the damage of leap by 100%.\n");
+			outputText("-New tier 2 misc lvl-up perk: Lingering recovery. Req. Job: Healer perk, 45+ int/wis and Herbalism lvl 5+. Effect: The poultice now adds a lesser healing over time effect after its consumption.\n");
+			outputText("-New tier 2 misc lvl-up perk: Chemical rage. Req. Job: Healer perk, 45+ int/wis and Herbalism lvl 5+. Effect: Stimulants now also induce the generation of an extra 20% wrath.\n");
+			outputText("-New tier 2 misc lvl-up perk: Skilled Herbalist. Req. Job: Healer perk, 45+ int/wis and Herbalism lvl 10+. Effect: When creating an herbalism consumable there is a 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 40.\n");
+			outputText("-New tier 2 misc lvl-up perk: True Cure. Req. Job: Healer perk, 45+ int/wis and Herbalism lvl 5+. Effect: All Cures now also heals additional 10 points of stat drain on use.\n");
 			outputText("-New tier 3 misc lvl-up perk: Bone Century. Req. Skeleton Lord perk, 75+ int, 75+ wis. Effect: You may now control up to 12 normal size skeletons of each type.\n");
 			outputText("-New tier 3 misc lvl-up perk: Greatest Harvest. Req. Greater Harvest perk, 80+ int, 80+ wis. Effect: Harvesting bones from demons would give now 20 to 25 bones.\n");
 			outputText("-New tier 3 misc lvl-up perk: Boney Bag. Req. Greatest Harvest perk, 85+ intelligence and 100+ wisdom. Effect: Increase limit of stored demonic bones by 100.\n");
 			outputText("-New tier 3 misc lvl-up perk: Thundering Echoes. Req. Booming Voice perk, 60+ str/tou/spe. Effect: Further Increase the potency of all breath weapons, shout and sound based ability by 25%. Throat abilities cooldowns are reduced by 1 further increment.\n");
+			outputText("-New tier 3 misc lvl-up perk: Mutagen master. Req. Job: Healer perk, lvl 22+, 60+ int/wis and Herbalism lvl 10+. Effect: The bonus you gain from mutagen can now go up 20% higher.\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Efficiency. Req. Greatest Harvest perk, 110+ int, 110+ wis. Effect: You improved efficiency of making skeletons leading to less wasted bones or SF/Mana. (-50% costs)\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Giants. Req. Boney Bow OR Boney Wand perk, 100+ intelligence and 100+ wisdom. Effect: You can now make (max 1) skeleton giant out of demon bones.\n");
 			outputText("-New tier 4 misc lvl-up perk: Gigachad Skeletal Mages. Req. Boney Wand perk, 120+ intelligence and 120+ wisdom. Effect: You can now make (max 1) gigachad skeleton mage out of demon bones.\n");
 			outputText("-New tier 4 misc lvl-up perk: Bone Ballista Skelies. Req. Boney Bow perk, 120+ intelligence and 120+ wisdom. Effect: You can now make (max 1) bone ballista skeleton out of demon bones.\n");
+			outputText("-New tier 4 misc lvl-up perk: Expert Herbalist. Req. Skilled Herbalist perk, 75+ int/wis and Herbalism lvl 20+. Effect: When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 60.\n");
+			outputText("-New tier 4 misc lvl-up perk: Divine Cure. Req. True Cure perk, 75+ int/wis and Herbalism lvl 20+. Effect: All cures now heals additional 10 percent of stat damage on use, alleviating even the vilest curse.\n");
 			outputText("-New tier 5 misc lvl-up perk: Bone Cohort. Req. Bone Century perk, 125+ int, 125+ wis. Effect: You may now control up to 24 normal size skeletons of each type.\n");
 			outputText("-New tier 5 misc lvl-up perk: I don't have 2 fast minions, I got 2 furious family. Req. I don't have minions, I got family perk, 115+ int, 115+ wis and 7+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 1200% (1600% in total) and decrease wisp own attack damage by 25% (75% in total).\n");
 			outputText("-New tier 5 misc lvl-up perk: One Wisp Army (Major). Req. One Wisp Army (Minor) perk, 115+ int, 115+ wis. Effect: Increase wisp own attack damage by 1200% (1600% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 25% (75% in total).\n");
@@ -184,8 +193,10 @@ public class Changelog extends BaseContent
 			outputText("All stacks of thundering echoes are lost if no breath weapons, shouts or sound based abilities are used within 2 rounds. Throat abilities cooldowns are reduced by 1 further increment.\n");
 			outputText("-New tier 6 misc lvl-up perk: Skeleton High Lord. Req. Skeleton Lord and Bone Efficiency perks, 150+ int, 150+ wis. Effect: You may now control additional 9 normal and 2 large skeletons of each type. Allows you to save 40% of skeletons SF/Mana costs.\n");
 			outputText("-New tier 7 misc lvl-up perk: Bone Legion. Req. Bone Cohort perk, 175+ int, 175+ wis. Effect: You may now control up to 48 normal size skeletons of each type.\n");
+			outputText("-New tier 8 misc lvl-up perk: Master Herbalist. Req. Expert Herbalist perk, 135+ int/wis and Herbalism lvl 40+. Effect: When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 80.\n");
 			outputText("-New tier 10 misc lvl-up perk: I don't have minions, I got family: Mareth Drift. Req. I don't have 2 fast minions, I got 2 furious family perk, 175+ int, 175+ wis and 11+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 4800% (6400% in total) and decrease wisp own attack damage by 12,5% (87,5% in total).\n");
 			outputText("-New tier 10 misc lvl-up perk: One Wisp Army (Epic). Req. One Wisp Army (Major) perk, 175+ int, 175+ wis. Effect: Increase wisp own attack damage by 4800% (6400% in total) and decrease wisp commanding aura boosting other summoned pets/minions attack power effects by 12,5% (87,5% in total).\n");
+			outputText("-New tier 11 misc lvl-up perk: Mutagen grandmaster. Req. Mutagen master perk, 180+ int/wis and Herbalism lvl 30+. Effect: The bonus you gain from mutagen can now go up 60% higher.\n");
 			outputText("-New tier 17 misc lvl-up perk: Wisp Brigadier General. Req. Wisp Colonel perk, 260+ in, 260+ wis and 21+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 60% (210% in total).\n");
 			outputText("-New tier 21 misc lvl-up perk: Wisp Major General. Req. Wisp Brigadier General perk, 310+ int, 310+ wis and 28+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 70% (280% in total).\n");
 			outputText("-New tier 25 misc lvl-up perk: Wisp Lieutenant General. Req. Wisp Major General perk, 360+ int, 360+ wis and 36+ other minions/pet aside wisp. Effect: Increase wisp commanding aura boosting other summoned pets/minions attack power effects by 80% (360% in total).\n");
@@ -242,27 +253,16 @@ public class Changelog extends BaseContent
 			outputText("-New P. Special: Leap (Escape) - usable by having frog legs. Allow to run away from fight.\n");
 			outputText("-New event perk: Song of the swamps. Gained by becoming Frog/Mobogo. Effects: Giving access to Sing m. special and all related subspecials.\n");
 			outputText("-New P. Special: Leap - usable by having frog legs and frog race score 15+. Power stun enemy for the current turn and deliver a doubled damage power attack on the next one. Only work outdoors.\n");
-			outputText("-New tier 2 strength lvl-up perk: Dragoon Leap. Req. Power Attack perk. Effect: Gain the Leap skill, should you gain the leap skill from a different source increase the damage of leap by 100%.\n");
 			outputText("-New mutation perk: Frog jumping legs. Req. having free musculature mutation slot, Frog race. Effects: Reduce the cooldown of leap by 1 round.\n");
 			outputText("-New mutation perk: Frog jumping legs (Primitive). Req. Frog jumping legs and lvl 30+. Effects: Reduce the cooldown of leap by 2 rounds. Leap damage is increased by 50%.\n");
 			outputText("-New mutation perk: Frog jumping legs (Evolved). Req. Frog jumping legs (Primitive) and lvl 60+. Effects: Reduce the cooldown of leap by 3 rounds. Leap damage is increased by 100%. Leap only consumes 75% of the wrath it should.\n");
 			outputText("-New mutation perk: Frog jumping legs (Final Form). Req. Frog jumping legs (Evolved) and lvl 90+. Effects: Reduce the cooldown of leap by 4 rounds. Leap damage is increased by 200%. Leap only consumes 50% of the wrath it should. Leap has a 100% increased chance of critical strike.\n");
-			outputText("-New tier 1 misc lvl-up perk: Swift Consume. Req. Job: Healer perk and 30+ int/wis. Effect: Healing items from the potion bag no longer require an action to be consumed!\n");
-			outputText("-New tier 2 misc lvl-up perk: Lingering recovery. Req. Job: Healer perk, 45+ int/wis and Herbalism lvl 5+. Effect: The poultice now adds a lesser healing over time effect after its consumption.\n");
-			outputText("-New tier 2 misc lvl-up perk: Chemical rage. Req. Job: Healer perk, 45+ int/wis and Herbalism lvl 5+. Effect: Stimulants now also induce the generation of an extra 20% wrath.\n");
-			outputText("-New tier 2 misc lvl-up perk: Skilled Herbalist. Req. Job: Healer perk, 45+ int/wis and Herbalism lvl 10+. Effect: When creating an herbalism consumable there is a 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 40.\n");
-			outputText("-New tier 2 misc lvl-up perk: True Cure. Req. Job: Healer perk, 45+ int/wis and Herbalism lvl 5+. Effect: All Cures now also heals additional 10 points of stat drain on use.\n");
-			outputText("-New tier 3 misc lvl-up perk: Mutagen master. Req. Job: Healer perk, lvl 22+, 60+ int/wis and Herbalism lvl 10+. Effect: The bonus you gain from mutagen can now go up 20% higher.\n");
-			outputText("-New tier 4 misc lvl-up perk: Expert Herbalist. Req. Skilled Herbalist perk, 75+ int/wis and Herbalism lvl 20+. Effect: When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 60.\n");
-			outputText("-New tier 4 misc lvl-up perk: Divine Cure. Req. True Cure perk, 75+ int/wis and Herbalism lvl 20+. Effect: All cures now heals additional 10 percent of stat damage on use, alleviating even the vilest curse.\n");
-			outputText("-New tier 8 misc lvl-up perk: Master Herbalist. Req. Expert Herbalist perk, 135+ int/wis and Herbalism lvl 40+. Effect: When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 80.\n");
-			outputText("-New tier 11 misc lvl-up perk: Mutagen grandmaster. Req. Mutagen master perk, 180+ int/wis and Herbalism lvl 30+. Effect: The bonus you gain from mutagen can now go up 60% higher.\n");
 			outputText("-Potions (Lowest grade) Bag cost increased (300 > 600) times but so do slot capacity (5 > 10) ^^\n");
 			outputText("-Added to Giacomo offer: Potions (Low/Mid grade) Bag and Herbs (Mid grade) Bag. Cost 1,000 / 2,000 / 1,000 gems and have 8 / 10 / 10 slots for items (potions or herbs) with stack size of 20 / 40 / 20.\n");
 			outputText("-New mutation perk: Hellcat Parathyroid Glands. Req. having free parathyroid glands mutation slot, Hellcat race. Effects: Increase Fire and dark damage by 50% when in rut or in heat.\n");
 			outputText("-New mutation perk: Hellcat Parathyroid Glands (Primitive). Req. Hellcat Parathyroid Glands and lvl 30+. Effects: Increase Fire and dark damage by 100% when in rut or in heat. Increase the libido gain from heat and rut by 50%.\n");
-			outputText("-New mutation perk: Hellcat Parathyroid Glands (Evolved). Req. Hellcat Parathyroid Glands (Primitive) and lvl 60+. Effects: Increase Fire and dark damage by 150% when in rut or in heat. Increase the libido gain from heat and rut by 100%. Gain 1% mana regeneration when in heat or in rut.\n");
-			outputText("-New mutation perk: Hellcat Parathyroid Glands (Final Form). Req. Hellcat Parathyroid Glands (Evolved) and lvl 90+. Effects: Increase Fire and dark damage by 200% when in rut or in heat. Increase the libido gain from heat and rut by 150%. Gain 2% mana regeneration when in heat or in rut. Add the bonus from heat and rut to intelligence as well.\n");
+			outputText("-New mutation perk: Hellcat Parathyroid Glands (Evolved). Req. Hellcat Parathyroid Glands (Primitive) and lvl 60+. Effects: Increase Fire and dark damage by 150% when in rut or in heat. Increase the libido gain from heat and rut by 100%. Gain 1% mana regeneration when in rut or in heat.\n");
+			outputText("-New mutation perk: Hellcat Parathyroid Glands (Final Form). Req. Hellcat Parathyroid Glands (Evolved) and lvl 90+. Effects: Increase Fire and dark damage by 200% when in rut or in heat. Increase the libido gain from heat and rut by 150%. Gain 2% mana regeneration when in rut or in heat. Add the bonus from heat and rut to intelligence as well.\n");
 			outputText("-New mutation perk: Lunatic mind. Req. having free nerv system mutation slot, All Lunar attuned species (Wererace, Moon Rabbit). Effects: Gain a static percentage bonus to speed and strength based on moon phase between 50 and -50.\n");
 			outputText("-New mutation perk: Lunatic mind (Primitive). Req. Lunatic mind and lvl 30+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 100 and -50. Gain 0.5% regeneration.\n");
 			outputText("-New mutation perk: Lunatic mind (Evolved). Req. Lunatic mind (Primitive) and lvl 60+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 150 and -50. Gain 1% regeneration. Sneak attack is improved by +1x.\n");
@@ -298,6 +298,24 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -381,20 +399,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -428,12 +434,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
