@@ -1575,6 +1575,48 @@ public class ArmsTransformations extends MutationsHelper {
 				return player.arms.type === Arms.FROG;
 			}
 	);
+
+	public const ArmsThunderMantis: Transformation = new SimpleTransformation("Thunder Mantis Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You watch, spellbound, while your forearms gradually become shiny. The entire outer structure of your arms tingles while it divides into segments, turning the [skin.type] into a shiny green carapace.";
+				desc += "\nA moment later the pain fades and you are able to turn your gaze down to your beautiful new arms, covered in shining green chitin from the upper arm down.";
+				desc += "\nThe transformation nearly ends as down the length of your forearms you grow a pair of massive scythe like appendage just like a mantis.";
+				desc += "\nYou shiver in delight as high voltage running along your newly growned appendages. Before you know they turned to vicious looking massive scythes coated with electricity.";
+				desc += "\nYou nonchalantly run them across a young tree slicing the plant trunk in half. This might prove a deadly weapon if used as part of your unarmed strikes. <b>You now have thunder mantis arms.</b>";
+				player.arms.type = Arms.MANTIS;
+
+				if (doOutput) outputText(desc);
+				//Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.MANTIS));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.THUNDER_MANTIS;
+			}
+	);
+	
+	//sun praying mantis
+
+	public const ArmsStoneRhino: Transformation = new SimpleTransformation("Stone Rhino Arms",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
+
+				desc += "Your arms and hands skin start to thicken into layer of stone and as you poke at your palms you jolt up as they become extremely sensitive turning into paw pads heck your nails transformed into hoof like claws so no wonder you felt it that much. <b>You now have stone rhino arms.</b>";
+				player.arms.type = Arms.RHINO;
+
+				if (doOutput) outputText(desc);
+				//Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.RHINO));
+			},
+			// is present
+			function (): Boolean {
+				return player.arms.type === Arms.STONE_RHINO;
+			}
+	);
 	/*
   */
 }

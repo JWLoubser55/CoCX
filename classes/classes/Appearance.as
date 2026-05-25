@@ -527,14 +527,14 @@ public class Appearance extends Utils
 			}
 			else if (cockType == CockTypesEnum.SCYLLATENTACLE) {
 				return randomChoice("twisting tentacle-prick",
-						"wriggling tentacle-shaft",
-						"sinuous tentacle-cock",
-						"squirming cock-tendril",
-						"writhing tentacle-pecker",
-						"wriggling tentacle-prick",
-						"smooth shaft",
-						"undulating tentacle-dick",
-						"slithering tentacle-prick");
+					"wriggling tentacle-shaft",
+					"sinuous tentacle-cock",
+					"squirming cock-tendril",
+					"writhing tentacle-pecker",
+					"wriggling tentacle-prick",
+					"smooth shaft",
+					"undulating tentacle-dick",
+					"slithering tentacle-prick");
 			}
 			else if (cockType == CockTypesEnum.STAMEN) {
 				return randomChoice("squirming cock-stamen",
@@ -725,6 +725,11 @@ public class Appearance extends Utils
 					"verdant equine dong",
 					"verdant beast cock",
 					"flared verdant stallion-cock");
+			}
+			else if (cockType == CockTypesEnum.INSECT) {
+				return randomChoice("bee prick",
+					"insectoid prick",
+					"insectoid cock");
 			}
 			return randomChoice("cock",
 				"prick",
@@ -1017,6 +1022,18 @@ public class Appearance extends Utils
 					"vine-like cock"];
 				description += randomChoice(options);
 			}
+			else if (cockType == CockTypesEnum.SCYLLATENTACLE) {
+				options = ["twisting tentacle-prick",
+					"wriggling tentacle-shaft",
+					"sinuous tentacle-cock",
+					"squirming cock-tendril",
+					"writhing tentacle-pecker",
+					"wriggling tentacle-prick",
+					"smooth shaft",
+					"undulating tentacle-dick",
+					"slithering tentacle-prick"];
+				description += randomChoice(options);
+			}
 			else if (cockType == CockTypesEnum.STAMEN) {
 				options = ["squirming cock-stamen",
 					"plant-like stamen",
@@ -1067,6 +1084,90 @@ public class Appearance extends Utils
 					"luminescent snake dick"];
 				description += randomChoice(options);
 			}
+			else if (cockType == CockTypesEnum.ANEMONE) {
+				options = ["anemone dick",
+					"tentacle-ringed cock",
+					"blue member",
+					"stinger-laden shaft",
+					"pulsating prick",
+					"anemone prick",
+					"stinger-coated member",
+					"blue cock",
+					"tentacle-ringed dick",
+					"near-transparent shaft",
+					"squirming shaft"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.KANGAROO) {
+				options = ["kangaroo-like dick",
+					"pointed cock",
+					"marsupial member",
+					"tapered shaft",
+					"curved pecker",
+					"pointed prick",
+					"squirming kangaroo-cock",
+					"marsupial cock",
+					"tapered kangaroo-dick",
+					"curved kangaroo-cock",
+					"squirming shaft"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.DRAGON) {
+				options = ["dragon-like dick",
+					"segmented shaft",
+					"pointed prick",
+					"knotted dragon-cock",
+					"mythical mast",
+					"segmented tool",
+					"draconic dick",
+					"draconic cock",
+					"tapered dick",
+					"unusual endowment",
+					"scaly shaft"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.DISPLACER) {
+				options = ["coerl cock",
+					"tentacle-tipped phallus",
+					"starfish-tipped shaft",
+					"alien member",
+					"almost-canine dick",
+					"bizarre prick",
+					"beastly cock",
+					"cthulhu-tier cock",
+					"coerl cock",
+					"animal dong",
+					"star-capped tool",
+					"knotted erection"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.AVIAN) {
+				options = ["bird cock",
+					"bird dick",
+					"bird pecker",
+					"avian cock",
+					"avian dick",
+					"avian penis",
+					"avian prick",
+					"avian pecker",
+					"tapered cock",
+					"tapered prick"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.PIG) {
+				options = ["pig cock",
+					"pig dick",
+					"pig penis",
+					"pig-like cock",
+					"pig-like dick",
+					"swine cock",
+					"swine penis",
+					"corkscrew-tipped cock",
+					"hoggish cock",
+					"pink pig-cock",
+					"pink pecker"];
+				description += randomChoice(options);
+			}
 			else if (cockType == CockTypesEnum.RHINO) {
 				options = ["oblong cock",
 					"rhino dick",
@@ -1077,6 +1178,72 @@ public class Appearance extends Utils
 					"oblong penis",
 					"oblong dong",
 					"oblong dick"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.ECHIDNA) {
+				options = ["strange echidna dick",
+					"strange echidna cock",
+					"echidna dick",
+					"echidna penis",
+					"echidna cock",
+					"exotic endowment",
+					"four-headed prick",
+					"four-headed penis",
+					"four-headed cock",
+					"four-headed dick"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.USHI_ONI) {
+				options = ["starfish tipped shaft",
+					"starfish tipped cock",
+					"starfish tipped dick",
+					"starfish tipped penis"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.MINDBREAKER) {
+				options = ["dripping eldritch dick",
+					"eldritch cock",
+					"dripping inhuman cock",
+					"dripping eldritch prick",
+					"eldritch member",
+					"green goo dripping member",
+					"dripping eldritch shaft",
+					"tapered eldritch shaft"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.ARIGEAN) {
+				options = ["light blue dick",
+					"light blue cock",
+					"light blue prick",
+					"light blue member",
+					"light blue shaft"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.SHROOM) {
+				options = ["glowing fungal clit cock",
+					"mushroom futa dick"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.AUTOMATA) {
+				options = ["steel hard dick",
+					"steel hard plug",
+					"steel hard shaft"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.BAROMETZ) {
+				options = ["flared verdant horse-cock",
+					"verdant equine prick",
+					"bestial verdant horse-shaft",
+					"flat-tipped verdant horse-member",
+					"animalistic verdant stallion-prick",
+					"verdant equine dong",
+					"verdant beast cock",
+					"flared verdant stallion-cock"];
+				description += randomChoice(options);
+			}
+			else if (cockType == CockTypesEnum.INSECT) {
+				options = ["insectoid prick",
+					"insectoid cock"];
 				description += randomChoice(options);
 			}
 			else {

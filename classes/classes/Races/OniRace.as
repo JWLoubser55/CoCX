@@ -39,7 +39,7 @@ public class OniRace extends Race {
 		addScores()
 				.earType(Ears.ONI, +1)
 				.faceType(Face.ONI_TEETH, +1)
-				.hornType(ANY(Horns.ONI, Horns.ONI_X2), +1)
+				.hornType(ANY(Horns.ONI, Horns.ONI_X2), +2)
 				.armType(Arms.ONI, +1)
 				.legType(LowerBody.ONI, +1)
 				.eyeTypeAndColor(Eyes.ONI, ANY(OniEyeColors), +1)
@@ -49,7 +49,7 @@ public class OniRace extends Race {
 						function (body:BodyData):Boolean {
 							return body.hasVagina && body.biggestTitSize >= 19 || body.biggestCockSize > 18
 						}, +1)
-				.height(AT_LEAST(108), +1)
+				.height(AT_LEAST(108), +2)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		addScoresAfter(4)
 				.noRearBody(+1)

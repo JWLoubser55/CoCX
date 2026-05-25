@@ -50,8 +50,9 @@ public class Arms extends SaveableBodyPart {
 
 	public static const MANTIS:int = 3;
 	EnumValue.add(Types, MANTIS, "MANTIS", {
-		name:"mantis", scythe: true,
+		name:"mantis",
 		appearanceDesc: "A shining [chitin color1] exoskeleton covers your arms from the biceps down, with long and sharp scythes extending from the wrists.",
+		scythe: true,
 		chitin: true
 	});
 
@@ -641,13 +642,37 @@ public class Arms extends SaveableBodyPart {
 	public static const SLOTHIEN:int = 83;
 	EnumValue.add(Types, SLOTHIEN, "SLOTHIEN", {
 		name:"slothien",
-		appearanceDesc: "Your arms are covered by extremely thick, [chitin color1] exoskeleton, with three long and sharp scythes growing fomr the forearms with first largest extending from the wrists."
+		appearanceDesc: "Your arms are covered by extremely thick, [chitin color1] exoskeleton, with three long and sharp scythes growing fomr the forearms with first largest extending from the wrists.",
+		scythe: true
 	});
 
 	public static const FROG:int = 84;
 	EnumValue.add(Types, FROG, "FROG", {
 		name:"frog",
 		appearanceDesc: "Your arms are fairly human at least up to the hands. Your hands are slightly bigger than normal, the fingers connected by a set of webbing to ease your swimming."
+	});
+
+	public static const THUNDER_MANTIS:int = 85;
+	EnumValue.add(Types, THUNDER_MANTIS, "THUNDER_MANTIS", {
+		name:"t.mantis",
+		appearanceDesc: "A shining [chitin color1] exoskeleton covers your arms from the biceps down, with long and sharp scythes extending from the wrists upon which an electric current runs free.",
+		scythe: true,
+		chitin: true
+	});
+
+	public static const SUN_PRAYING_MANTIS:int = 86;
+	EnumValue.add(Types, SUN_PRAYING_MANTIS, "SUN_PRAYING_MANTIS", {
+		name:"s.p.mantis",
+		appearanceDesc: "A shining [chitin color1] exoskeleton covers your arms from the biceps down, with long and sharp scythes extending from the wrists.",
+		fourArms: true,
+		scythe: true,
+		chitin: true
+	});
+
+	public static const STONE_RHINO:int = 87;
+	EnumValue.add(Types, STONE_RHINO, "STONE_RHINO", {
+		name:"s.rhino",
+		appearanceDesc: "Your arms are covered by extremely thick, tough stone, ending in hands with paw pads and three fingers ending with hoof-like fingernails."
 	});
 
 	public static function canFly(id: int): Boolean {

@@ -74,6 +74,7 @@ public class Skin extends SaveableBodyPart {
 		name:"scales",
 		appearanceDesc: "Your [skin base] is {partiallyOrCompletely} covered by [skin coat].",
 		plural: true,
+		coat:true,
 		material: BodyMaterial.SCALES
 	});
 	public static const GOO: int = 3;

@@ -1,6 +1,7 @@
 package classes.Races {
 import classes.BodyData;
 import classes.BodyParts.*;
+import classes.CockTypesEnum;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
@@ -58,6 +59,7 @@ public class SlothienRace extends Race {
 				.legType(LowerBody.SLOTHIEN, +4)
 				.skinCoatType(Skin.CHITIN, +2)//skin pattern?
 				.skinCoverage(Skin.COVERAGE_COMPLETE, +1)
+				.hasCockOfType(CockTypesEnum.INSECT, +1)
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 
         addMutation(IMutationsLib.TrachealSystemIM);

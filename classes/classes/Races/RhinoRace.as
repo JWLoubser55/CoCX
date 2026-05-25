@@ -45,9 +45,11 @@ public class RhinoRace extends Race {
 				.hornTypeAndCount(Horns.RHINO, AT_LEAST(2), +1)
 				.hornTypeAndCount(Horns.RHINO, AT_LEAST(3), +1)
 				.tailType(Tail.RHINO, +1)
-				.armType(Arms.RHINO, +1)//(evo) arms (+2)
+				.armType(Arms.RHINO, +1)
+				.armType(Arms.STONE_RHINO, +2)
 				.legType(LowerBody.HOOFED_NO_FUR, +1)//(evo) legs (+2)
 				.skinColor1("gray", +1)
+				.skinBaseType(Skin.STONE, +1)
 				.hasCockOfType(CockTypesEnum.RHINO, +1)
 				.hasPerk(PerkLib.ThickSkin, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
@@ -66,34 +68,34 @@ public class RhinoRace extends Race {
 					"def": +5,
 					"mdef": +2
 				})
-				.end();/*
+				.end();
 		
 		buildTier(14, "stone rhino")
 				.namesMaleFemaleMorphTaur("stone rhino-man","stone rhino-girl","stone rhino-morph","stone rhino-morph")
-				.requireArmType(Arms.HINEZUMI)
-				.requireLegType(LowerBody.HINEZUMI)
+				.requireArmType(Arms.STONE_RHINO)
+				//.requireLegType(LowerBody.HINEZUMI)
 				.buffs({
-					"str.mult": +0.90,
-					"tou.mult": +0.90,
-					"int.mult": -0.20,
-					"sens": -40,
-					"maxhp_base": +200,
-					"def": +10,
-					"mdef": +4
+					"str.mult": +1.35,
+					"tou.mult": +1.35,
+					"int.mult": -0.30,
+					"sens": -50,
+					"maxhp_base": +400,
+					"def": +20,
+					"mdef": +8
 				})
-				.end();
+				.end();/*
 		
 		buildTier(20, "rhino")
 				.namesMaleFemaleMorphTaur("rhino-man","rhino-girl","rhino-morph","rhino-morph")
 				.requirePreviousTier()
 				.buffs({
-					"str.mult": +0.90,
-					"tou.mult": +0.90,
-					"int.mult": -0.20,
-					"sens": -40,
-					"maxhp_base": +300,
-					"def": +15,
-					"mdef": +6
+					"str.mult": +1.80,
+					"tou.mult": +1.80,
+					"int.mult": -0.40,
+					"sens": -60,
+					"maxhp_base": +600,
+					"def": +30,
+					"mdef": +12
 				})
 				.end();*/
 	}

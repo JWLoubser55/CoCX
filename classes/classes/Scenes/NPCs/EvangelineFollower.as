@@ -1411,6 +1411,10 @@ private function curingBanshee():void {
 		outputText("<b>(Lost Perk: Undeath"+(player.hasPerk(PerkLib.Ethereal)?", Ethereal":"")+")</b>\n\n");
 		if (player.hasPerk(PerkLib.Ethereal)) player.removePerk(PerkLib.Ethereal);
 		if (player.hasPerk(PerkLib.Undeath)) player.removePerk(PerkLib.Undeath);
+		CoC.instance.transformations.FaceHuman.applyEffect(false);
+		player.eyes.type = Eyes.HUMAN;
+		player.arms.type = Arms.HUMAN;
+		player.lowerBody = LowerBody.HUMAN;
 		player.updateRacialAndPerkBuffs();
 		doNext(camp.returnToCampUseTwoHours);
 	}

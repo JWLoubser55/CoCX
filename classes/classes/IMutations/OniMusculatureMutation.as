@@ -19,16 +19,20 @@ public class OniMusculatureMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+			var tone:Number = 10;
+			var dmgMult:Number = 4;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier == 1){
-                descS = "Your altered musculature allows you to increase your natural strength and tone. Oni Rampage and Drunker Power can be used at Half-Oni score";
-            }
-            if (pTier == 2){
-                descS = "Your musculature continues to increase your natural strength and tone gained from previous changes. Oni Rampage and Drunker Power req. only 3+ pts in Oni score and dmg multi from Oni Rampage increased to 4x";
-            }
-            if (pTier == 3){
-                descS = "Your musculature once again increases your natural strength and tone limit. Dmg multi from Oni Rampage increased to 6x, its duration is increased by 3 turns and its cooldown is decreased by 3 turns. Drunken Power boost increased to 6x";
-            }
+			if (pTier >= 2) tone += 20;
+			if (pTier >= 3) {
+				tone += 30;
+				dmgMult += 2;
+			}
+            if (pTier >= 1) descS += "Your altered musculature allows you to increase your natural strength and tone (+"+tone+"). Oni Rampage and Drunker Power req. only ";
+			if (pTier == 1) descS += "6";
+			if (pTier >= 2) descS += "3";
+			if (pTier >= 1) descS += "+ pts in Oni score";
+            if (pTier >= 2) descS += " and dmg multi from Oni Rampage increased to "+dmgMult+"x";
+            if (pTier >= 3) descS += ", its duration is increased by 3 turns and its cooldown is decreased by 3 turns. Drunken Power boost increased to 6x";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -61,6 +65,7 @@ public class OniMusculatureMutation extends IMutationPerkType
             if (pTier == 1) pBuffs['str.mult'] = 0.05;
             if (pTier == 2) pBuffs['str.mult'] = 0.15;
             if (pTier == 3) pBuffs['str.mult'] = 0.3;
+            if (pTier == 4) pBuffs['str.mult'] = 0.7;
             return pBuffs;
         }
 

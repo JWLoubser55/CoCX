@@ -1267,15 +1267,15 @@ public class CockTransformations extends MutationsHelper {
 					var cock:int = cockIndex(index, CockTypesEnum.INSECT);
 
 					if (player.cocks.length > cock){
-						desc += "Your " + num2Text2(cock+1) + " penis itches, and you idly scratch at it.  As you do, it begins to grow longer and longer";
-						desc += player.hasSheath()? "" : " out of its new sheath";
-						desc += ", all the way to the ground before you realize something is wrong.  You pull open your [armor] and look down, discovering your [cock "+(cock+1)+"] has become a tentacle!  As you watch, it withdraws back into its sheath; it's colored a dull white, and evidence seems to suggest you can make it extend out at will.  <b>You now have a";
-						if(player.tentacleCocks() > 0) desc += "nother";
-						desc += " tentacle-cock!</b>";
+						desc += "Your huge [cock "+(cock+1)+"] suddenly starts to hurt, especially the tip of the thing.  At the same time, you feel your length start to get incredibly sensitive and the base of your shaft starts to itch.  You tear off your [armor] and watch in fascination as your [cock] starts to change.  The shaft turns black, while becoming hard and smooth to the touch, while the base develops a mane of two inch long black insect hair.  ";
+						desc += "As the transformation continues, your member grows even larger than before.  However, it is the tip that keeps your attention the most, as a much finer layer of short black hairs grow around it.  When the changes stop, the tip is shaped like a typical human mushroom cap covered in fine insect hair, but it feels nothing like what you’d expect a human dick to feel like.  ";
+						desc += "Your whole length is incredibly sensitive, and touching it gives you incredible stimulation, but you’re sure that no matter how much you rub it, you aren’t going to cum by yourself.  <b>You now have an insect cock!</b>";
 					}
 					else {
 						desc += GrowCockGenericText();
-						desc += "Your feel it bending and flexing of its own volition... looking down, you see it morph into a white vine-like shape.  <b>You now have an insect cock!</b>";
+						desc += "the shaft turns black, while becoming hard and smooth to the touch, while the base develops a mane of two inch long black insect hair.  ";
+						desc += "As the transformation continues, your member grows even larger than before.  However, it is the tip that keeps your attention the most, as a much finer layer of short black hairs grow around it.  When the changes stop, the tip is shaped like a typical human mushroom cap covered in fine insect hair, but it feels nothing like what you’d expect a human dick to feel like.  ";
+						desc += "Your whole length is incredibly sensitive, and touching it gives you incredible stimulation, but you’re sure that no matter how much you rub it, you aren’t going to cum by yourself.  <b>You now have an insect cock!</b>";
 						player.createCock();
 					}
 					if (doOutput) outputText(desc);
