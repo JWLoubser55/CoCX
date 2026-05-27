@@ -501,6 +501,12 @@ public class Mountain extends BaseContent
 				},
 				call: chickenHarpy
 			}, {
+				name: "SalamanderOreMerchants",
+				label : "OreMerchants",
+				kind  : 'npc',
+				chance: 0.5,
+				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "low mountains")
+			}, {
 				name: "demonProjects",
 				label : "DemLab Subject",
 				kind  : 'monster',
@@ -676,6 +682,12 @@ public class Mountain extends BaseContent
 					return player.itemCount(consumables.OVIELIX);
 				},
 				call: chickenHarpy
+			}, {
+				name: "SalamanderOreMerchants",
+				label : "OreMerchants",
+				kind  : 'npc',
+				chance: 0.5,
+				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "mountain")
 			}, {
 				name: "demonProjects",
 				label : "DemLab Subject",

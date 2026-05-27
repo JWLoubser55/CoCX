@@ -13,6 +13,7 @@ import classes.Scenes.Areas.GlacialRift.YuWinterGearShop;
 import classes.Scenes.Areas.LightlessReach.DisplacerBeastScene;
 import classes.Scenes.Areas.Ocean.ScyllaScene;
 import classes.Scenes.Areas.Plains.ZombieMummyScenes;
+import classes.Scenes.Areas.VolcanicCrag.SalamanderOreMerchants;
 import classes.Scenes.Camp.*;
 import classes.Scenes.Combat.Combat;
 import classes.Scenes.Dungeons.AnzuPalace.AnzuScene;
@@ -369,6 +370,8 @@ public class SceneLib {
     public static var phyllaScene:PhyllaScene = new PhyllaScene();
 
     public static var templeofdivine:TempleOfTheDivine = new TempleOfTheDivine();
+
+    public static var salamanderOreMerchants:SalamanderOreMerchants = new SalamanderOreMerchants();
 
     public static var uniqueSexScene:UniqueSexScenes = new UniqueSexScenes();
 

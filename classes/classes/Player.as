@@ -6783,6 +6783,7 @@ use namespace CoC;
 			if (statStore.hasBuff('Lusty Strength')) statStore.removeBuffs('Lusty Strength');
 			if (statStore.hasBuff('Sanguine Strength')) statStore.removeBuffs('Sanguine Strength');
 			if (statStore.hasBuff('Photosynthesis')) statStore.removeBuffs('Photosynthesis');
+			if (statStore.hasBuff('Wyrm Musculature')) statStore.removeBuffs('Wyrm Musculature');
 			var strengthBase:Number = str;
 			var toughnessBase:Number = tou;
 			var speedBase:Number = spe;
@@ -6914,6 +6915,11 @@ use namespace CoC;
 			if (hasStatusEffect(StatusEffects.UndeadMetabolism)) {
 				var libUM:Number = statusEffectv1(StatusEffects.UndeadMetabolism);
 				statStore.replaceBuffObject({'lib.multi': libUM}, 'Undead Metabolism', { text: 'Undead Metabolism' });
+			}
+			if (perkv1(IMutationsLib.WyrmMusculatureIM) >= 1) {
+				var strWM:Number = Math.round(str*0.05*perkv1(IMutationsLib.WyrmMusculatureIM));
+				var inteWM:Number = Math.round(inte*0.05*perkv1(IMutationsLib.WyrmMusculatureIM));
+				statStore.replaceBuffObject({'str': strWM, 'int': -inteWM}, 'Wyrm Musculature', { text: 'Wyrm Musculature' });
 			}
 			var buffs:Object = calcRacialBuffs(true);
 			statStore.removeBuffs("Racials");
@@ -9251,4 +9257,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}

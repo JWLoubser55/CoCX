@@ -158,6 +158,12 @@ public class HighMountains extends BaseContent {
             },
             call: nekobakeInn.encounterNekobakeInn
         }, {
+			name: "SalamanderOreMerchants",
+			label : "OreMerchants",
+			kind  : 'npc',
+			chance: 0.5,
+			call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "high mountains")
+		}, {
             name: "demonProjects",
 			label : "DemLab Subject",
 			kind  : 'monster',

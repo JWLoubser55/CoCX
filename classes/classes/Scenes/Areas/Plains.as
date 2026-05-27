@@ -356,6 +356,12 @@ use namespace CoC;
 				chance: 0.5,
 				call: SceneLib.sheilaScene.sheilaEncounterRouter
 			}, {
+				name: "SalamanderOreMerchants",
+				label : "OreMerchants",
+				kind  : 'npc',
+				chance: 0.5,
+				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "plains")
+			}, {
 				name: "demonProjects",
 				label : "DemLab Subject",
 				kind  : 'monster',

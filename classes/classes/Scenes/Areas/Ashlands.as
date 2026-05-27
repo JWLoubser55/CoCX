@@ -27,7 +27,6 @@ public class Ashlands extends BaseContent
 	public var alrauneScene:AlrauneScene = new AlrauneScene();
 	public var hellcatScene:HellCatScene = new HellCatScene();
 	public var swordInStone:SwordInStone = new SwordInStone();
-	public var oreMerchants:SalamanderOreMerchants = new SalamanderOreMerchants();
 
 	public function Ashlands() {
 		onGameInit(init);
@@ -121,7 +120,7 @@ public class Ashlands extends BaseContent
 			label : "OreMerchants",
 			kind  : 'npc',
 			chance: 0.5,
-			call: oreMerchants.introOreMerchant
+			call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "ashlands")
 		}, {
 			name: "nothing",
 			call: findNothing,

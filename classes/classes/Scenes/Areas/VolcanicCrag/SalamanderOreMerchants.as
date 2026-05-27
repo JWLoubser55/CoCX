@@ -35,10 +35,9 @@ public class SalamanderOreMerchants extends BaseContent implements SaveableState
     public function SalamanderOreMerchants() {
     }
 
-    public function introOreMerchant():void {
-        clearOutput();
-		boughtStuff = false;
-        outputText("As you explore the crag you run into a group of salamanders, a single male and two females. ");
+    public function introOreMerchant(area:String=""):void {
+        boughtStuff = false;
+        outputText("As you explore the "+area+" you run into a group of salamanders, a single male and two females. ");
         if (VisitedCount == 0 && flags[kFLAGS.HEL_TIMES_ENCOUNTERED] > 0) {
             outputText("At first you expected them to draw their scimitar and run at you screaming savagely like Helia but turns out that’s not as common a thing as you thought. ");
 			VisitedCount++;

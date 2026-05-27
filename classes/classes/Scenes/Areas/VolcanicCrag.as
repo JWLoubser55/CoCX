@@ -22,7 +22,6 @@ public class VolcanicCrag extends BaseContent
 		public var behemothScene:BehemothScene = new BehemothScene();
 		public var phoenixScene:PhoenixScene = new PhoenixScene();
 		//public var lavaHotsprings:LavaHotspring = new LavaHotspring();
-		public var oreMerchants:SalamanderOreMerchants = new SalamanderOreMerchants();
 		
 		public function VolcanicCrag() {
 			onGameInit(init);
@@ -188,7 +187,7 @@ public class VolcanicCrag extends BaseContent
 				chance: 0.5,
 				call: function ():void {
 					VolcanicCragConditions();
-					oreMerchants.introOreMerchant()
+					SceneLib.salamanderOreMerchants.introOreMerchant("crag")
 				}
 //			}, {
 //				name: "LavaHotspring",

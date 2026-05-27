@@ -133,6 +133,12 @@ use namespace CoC;
 					gemGolemEncount();
 				}
 			}, {
+				name: "SalamanderOreMerchants",
+				label : "OreMerchants",
+				kind  : 'npc',
+				chance: 0.5,
+				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "caves")
+			}, {
 				name: "",
 				label : 'Walk',
 				kind : 'walk',
@@ -256,6 +262,12 @@ use namespace CoC;
 				kind  : 'monster',
 				when: fn.ifLevelMin(88),
 				call: bedrockEarthElemental
+			}, {
+				name: "SalamanderOreMerchants",
+				label : "OreMerchants",
+				kind  : 'npc',
+				chance: 0.5,
+				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "tunnels")
 			}, {
 				name: "",
 				label : 'Walk',

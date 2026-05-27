@@ -7,12 +7,11 @@ package classes.IMutations
 import classes.Creature;
 import classes.IMutationPerkType;
 import classes.PerkClass;
-import classes.Player;
 import classes.Races;
 
-public class WyrmMusculatureMutation extends IMutationPerkType
-	{
-		public static const MNAME:String = "Wyrm Musculature";
+public class WyrmCursedBloodMutation extends IMutationPerkType
+    {
+		public static const MNAME:String = "Wyrm Cursed Blood";
 		override public function get mName():String {
 			return MNAME;
 		}
@@ -20,18 +19,10 @@ public class WyrmMusculatureMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-			if (pTier >= 1){
-				descS += "Increase total strength by "+(pTier*5)+"% but reduce intelligence by the same amount";
-			}
-            if (pTier >= 2){
-                descS += "s. Leap damage is increased by "+pTier+"0%";
-            }
-            if (pTier >= 3){
-                descS += ". Leap only consumes "+pTier+"% of the wrath it should";
-            }
-            if (pTier >= 4){
-                descS += ". Leap has a 100% increased chance of critical strike";
-            }
+            if (pTier >= 1) descS += "Your undead blood gives you a "+pTier+"0% resistance to cold";
+			if (pTier >= 2) descS += ". When hunger is sated above "+((6-pTier)*2)+"0% you gain doubled health generation from all sources";
+            if (pTier >= 3) descS += ". You gain regeneration "+(pTier-2)+"%";
+            if (pTier >= 4) descS += ". You recover from all stat damage except intelligence / libido every full moon night";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -43,7 +34,7 @@ public class WyrmMusculatureMutation extends IMutationPerkType
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireMusclesMutationSlot()
+                    this.requireBloodsteamMutationSlot()
                     .requireAnyRace(Races.FROSTWYRM, Races.MAGMAWYRM, Races.SANDDRAKE);
                 }
                 else{
@@ -58,18 +49,17 @@ public class WyrmMusculatureMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
-            if (pTier == 1) pBuffs['str.mult'] = 0.05;
-            if (pTier == 2) pBuffs['str.mult'] = 0.10;
-            if (pTier == 3) pBuffs['str.mult'] = 0.15;
-            if (pTier == 4) pBuffs['str.mult'] = 0.20;
+            if (pTier == 1) pBuffs['tou.mult'] = 0.05;
+            if (pTier == 2) pBuffs['tou.mult'] = 0.1;
+            if (pTier == 3) pBuffs['tou.mult'] = 0.15;
+            if (pTier == 4) pBuffs['tou.mult'] = 0.2;
             return pBuffs;
         }
 
-        public function WyrmMusculatureMutation() 
+        public function WyrmCursedBloodMutation() 
 		{
-			super(MNAME, SLOT_MUSCLE, 1);
-		}
-		
-	}
-
+			super(MNAME, SLOT_NONE, 1);
+        }
+        
+    }
 }
