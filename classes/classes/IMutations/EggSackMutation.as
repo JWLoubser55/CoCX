@@ -2,27 +2,30 @@
  * Original code by aimozg on 27.01.14.
  * Extended for Mutations by Jtecx on 14.03.22.
  */
-package classes.IMutations
+package classes.IMutations 
 {
 import classes.Creature;
 import classes.IMutationPerkType;
 import classes.PerkClass;
+import classes.Player;
 import classes.Races;
 
-public class WyrmCursedBloodMutation extends IMutationPerkType
+public class EggSackMutation extends IMutationPerkType
     {
-		public static const MNAME:String = "Wyrm Cursed Blood";
+		public static const MNAME:String = "Egg sack";
 		override public function get mName():String {
 			return MNAME;
 		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+            var maxL:Number = 10;
+			var res:Number = 5;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a "+(pTier*2)+"% strength drain as a backlash";
-			if (pTier >= 2) descS += ". When hunger is sated above "+((6-pTier)*2)+"0% you gain doubled health generation from all sources";
-            if (pTier >= 3) descS += ". You gain regeneration %";
-            if (pTier >= 4) descS += ". You recover from all stat damage";
+			if (pTier >= 1) descS += "Allows you to keep the Milk Blast special even if cow score is lower than 9, max lust increased by "+maxL+"";
+            if (pTier >= 2) descS += ", +"+res+"% to lust resistance, ";
+            if (pTier == 3) descS += ", increase milk production by ~150%";
+            if (pTier == 4) descS += ", increase milk production by ~200%";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -34,8 +37,8 @@ public class WyrmCursedBloodMutation extends IMutationPerkType
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireBloodsteamMutationSlot()
-                    .requireAnyRace(Races.FROSTWYRM, Races.MAGMAWYRM, Races.SANDDRAKE);
+                    this.requireOvariesMutationSlot()
+                    .requireRace(Races.FROG)
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -49,17 +52,16 @@ public class WyrmCursedBloodMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
-            if (pTier == 1) pBuffs['tou.mult'] = 0.05;
-            if (pTier == 2) pBuffs['tou.mult'] = 0.1;
-            if (pTier == 3) pBuffs['tou.mult'] = 0.15;
-            if (pTier == 4) pBuffs['tou.mult'] = 0.2;
+            if (pTier == 2) pBuffs['lib.mult'] = 0.1;
+            if (pTier == 3) pBuffs['lib.mult'] = 0.2;
+            if (pTier == 4) pBuffs['lib.mult'] = 0.4;
             return pBuffs;
         }
 
-        public function WyrmCursedBloodMutation() 
+        public function EggSackMutation() 
 		{
-			super(MNAME, SLOT_BLOODSTREAM, 1);
+			super(MNAME, SLOT_NONE, 1);//SLOT_OVARIES
         }
-        
+
     }
 }

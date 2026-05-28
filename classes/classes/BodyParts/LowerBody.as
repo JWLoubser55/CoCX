@@ -989,8 +989,7 @@ public class LowerBody extends SaveableBodyPart {
 			return desc;
 		},
 		canTaur: true,
-		canKick: true,
-		fur: true
+		canKick: true
 	});
 	
 	public static const KRAMPUS:int = 97;
@@ -1035,6 +1034,30 @@ public class LowerBody extends SaveableBodyPart {
 	EnumValue.add(Types, FROG, "FROG", {
 		name: "frog",
 		appearanceDesc: "Your two powerful frog legs are mostly human in shape up to your feet, way larger than normal. The webbing between your toes assists you in swimming."
+	});
+	
+	//public static const :int = 100;sun praying mantis legs
+
+	public static const STONE_HOOFED_NO_FUR:int = 101;
+	EnumValue.add(Types, STONE_HOOFED_NO_FUR, "STONE_HOOFED_NO_FUR", {
+		name: "stone hoofed no fur",
+		feet: "stone hooves",
+		foot: "stone hoof",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = ""
+
+			if (player.isBiped()) {
+				desc += "Your two legs are muscled and jointed oddly, covered in extremely thick, tough stone and end in bestial hooves.";
+			}
+
+			if (player.isTaur()) {
+				desc += "From the waist down, you have the body of a horse, with four muscled legs which are jointed oddly, covered in extremely thick, tough stone and end in bestial hooves."
+			}
+
+			return desc;
+		},
+		canTaur: true,
+		canKick: true
 	});
 
 	override public function set type(value:int):void {

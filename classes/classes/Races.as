@@ -181,6 +181,7 @@ public class Races {
 	public static const BAALZEBUB:BaalzebubRace			   		= new BaalzebubRace(156);
 	public static const TURTLE:TurtleRace			   			= new TurtleRace(157);
 	public static const COCKROACH:CockroachRace			   		= new CockroachRace(158);
+	public static const KOBOLD:KoboldRace			   			= new KoboldRace(159);
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [
@@ -214,7 +215,7 @@ public class Races {
 			POLTERGEIST, BANSHEE, WENDIGO, HOLLOW
 	];
 	public static const DragonlikeRaces:/*Race*/Array = [
-			DRAGON, YGGDRASIL, WEREDRAGON, FAERIEDRAGON, VOUIVRE, FROSTWYRM, DRAGONNE, DUSKDRAKE, KRAMPUS, JABBERWOCKY, SEA_DRAGON, WYVERN, MAGMAWYRM, SANDDRAKE
+			DRAGON, YGGDRASIL, WEREDRAGON, FAERIEDRAGON, VOUIVRE, FROSTWYRM, DRAGONNE, DUSKDRAKE, KRAMPUS, JABBERWOCKY, SEA_DRAGON, WYVERN, MAGMAWYRM, SANDDRAKE, KOBOLD
 	];
 	public static const RacesForRandomEnchantments:/*Race*/Array = [
 			// populated in load() as AllVisibleRaces - RacesExcludedFromRandomEnchantments

@@ -42,12 +42,17 @@ public class RhinoRace extends Race {
 				.earType(Ears.RHINO, +1)
 				.faceType(Face.RHINO, +1)
 				.hornTypeAndCount(Horns.RHINO, AT_LEAST(1), +1)
+				.hornTypeAndCount(Horns.STONE_RHINO, AT_LEAST(1), +2)
 				.hornTypeAndCount(Horns.RHINO, AT_LEAST(2), +1)
+				.hornTypeAndCount(Horns.STONE_RHINO, AT_LEAST(2), +2)
 				.hornTypeAndCount(Horns.RHINO, AT_LEAST(3), +1)
+				.hornTypeAndCount(Horns.STONE_RHINO, AT_LEAST(3), +2)
 				.tailType(Tail.RHINO, +1)
+				.tailType(Tail.STONE_RHINO, +2)
 				.armType(Arms.RHINO, +1)
 				.armType(Arms.STONE_RHINO, +2)
-				.legType(LowerBody.HOOFED_NO_FUR, +1)//(evo) legs (+2)
+				.legType(LowerBody.HOOFED_NO_FUR, +1)
+				.legType(LowerBody.STONE_HOOFED_NO_FUR, +2)
 				.skinColor1("gray", +1)
 				.skinBaseType(Skin.STONE, +1)
 				.hasCockOfType(CockTypesEnum.RHINO, +1)
@@ -73,7 +78,7 @@ public class RhinoRace extends Race {
 		buildTier(14, "stone rhino")
 				.namesMaleFemaleMorphTaur("stone rhino-man","stone rhino-girl","stone rhino-morph","stone rhino-morph")
 				.requireArmType(Arms.STONE_RHINO)
-				//.requireLegType(LowerBody.HINEZUMI)
+				.requireLegType(LowerBody.STONE_HOOFED_NO_FUR)
 				.buffs({
 					"str.mult": +1.35,
 					"tou.mult": +1.35,
@@ -83,10 +88,9 @@ public class RhinoRace extends Race {
 					"def": +20,
 					"mdef": +8
 				})
-				.end();/*
+				.end();
 		
-		buildTier(20, "rhino")
-				.namesMaleFemaleMorphTaur("rhino-man","rhino-girl","rhino-morph","rhino-morph")
+		buildTier(20, "petrokheros")
 				.requirePreviousTier()
 				.buffs({
 					"str.mult": +1.80,
@@ -97,7 +101,7 @@ public class RhinoRace extends Race {
 					"def": +30,
 					"mdef": +12
 				})
-				.end();*/
+				.end();
 	}
 }
 }

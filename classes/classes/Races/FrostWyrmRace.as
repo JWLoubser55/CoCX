@@ -78,6 +78,7 @@ public class FrostWyrmRace extends Race {
 		addMutation(IMutationsLib.DrakeLungsIM);
 		addMutation(IMutationsLib.MightyLowerHalfIM);
 		addMutation(IMutationsLib.WyrmMusculatureIM);
+		addMutation(IMutationsLib.WyrmCursedBloodIM);
 		
 		buildTier(18, "frost wyrm")
 				.buffs({

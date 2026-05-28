@@ -267,13 +267,13 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Lunatic mind (Primitive). Req. Lunatic mind and lvl 30+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 100 and -50. Gain 0.5% regeneration.\n");
 			outputText("-New mutation perk: Lunatic mind (Evolved). Req. Lunatic mind (Primitive) and lvl 60+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 150 and -50. Gain 1% regeneration. Sneak attack is improved by +1x.\n");
 			outputText("-New mutation perk: Lunatic mind (Final Form). Req. Lunatic mind (Evolved) and lvl 90+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 200 and -50. Gain 1.5% regeneration. Sneak attack is improved by +2x. Double all these bonuses at night.\n");
-			outputText("-New mutation perk: Wyrm Musculature. Req. having free musculature mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake race. Effects: Increase total strength by 5% but reduce intelligence by the same amount.\n");
+			outputText("-New mutation perk: Wyrm Musculature. Req. having free musculature mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake races. Effects: Increase total strength by 5% but reduce intelligence by the same amount.\n");
+			outputText("-New mutation perk: Wyrm Cursed Blood. Req. having free bloodstream mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake races. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 2% strength drain as a backlash.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New mutation perk: Wyrm Cursed Blood. Req. having free bloodstream mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake race. Effects: 
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -502,7 +502,7 @@ public class Changelog extends BaseContent
 			outputText("-Automata PC have 'Remodel' option added to camp actions where it can change some of it bodyparts to other types or remove/add some of the bodyparts/genitalia. Using those options would also replace any missing bodyparts and heal any stat damage (weakened, drained, damaged).\n");
 			outputText("-Perks from Advanced Job: Guardian / Advanced Job: Knight / Advanced Job: Defender / Prestige Job: Sentinel tree would now add 1-3 / 2-6 / 3-9 / 10-15 points in calculation of damage reduction based on player core and trained tou.\n");
 			outputText("-Milf kitsune grand elder from Obssesive Love sect no longer would wait for any needy rogue cultivators to spread dao. Now she would have lectures only once a week at the afternoon of 8th moon cycle day.\n");
-			outputText("-When exploring: Ashlands, Vulcanic Crag, Caves, Tunnels, Low Mountians, Mountains, High Mountains, Plains can meet Salamander Ore Merchants. They provide for only small extra fee all possible to mine normaly ores in quarry/mines across the Mareth. Something right for filthy rich and miningphobic PC's ;) They also can sell various pickaxes to increase effective mining level and/or mine more rare ores. (part of coding them was done by Jtecx))\n");
+			outputText("-When exploring: Ashlands, Vulcanic Crag, Caves, Tunnels, Hills, Low Mountians, Mountains, High Mountains, Plains can meet Salamander Ore Merchants. They provide for only small extra fee all possible to mine normaly ores in quarry/mines across the Mareth. Something right for filthy rich and miningphobic PC's ;) They also can sell various pickaxes to increase effective mining level and/or mine more rare ores. (part of coding them was done by Jtecx))\n");
 			outputText("-Req. mining level to find tin / copper ores (1 > 0), iron (2> 5) and moonstones (3 > 10) was adjusted. Iron and Moonstone are Liadri certified changes of level not mines.\n");
 			outputText("-Shira of the east will now not sending PC back to Narnia errr.... camp after each meal.\n");
 			outputText("-White and Black magic self buffing spells mana cost would be now only affected by their base mana cost and each spell own cost multiplier. (No more more mana for no extra punch from spell)\n");

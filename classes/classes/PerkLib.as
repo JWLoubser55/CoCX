@@ -1062,9 +1062,9 @@ public class PerkLib
 		public static const ForeleadersBearWitness:PerkType = mk("Foreleaders, bear witness", "Foreleaders, bear witness",
 				".",
 				"You've chosen the 'Foreleaders, bear witness' perk. .");
-		public static const :PerkType = mk("", "",
+		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
-				"You've chosen the '' perk. .");
+				"You've chosen the 'Deadly fluids' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");

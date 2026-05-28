@@ -246,7 +246,7 @@ public class Tail extends SaveableBodyPart {
 	public static const RHINO: int = 22;
 	EnumValue.add(Types, RHINO, "RHINO", {
 		name:"rhino",
-		appearanceDesc: "A ropey rhino tail sprouts from just above your butt, swishing from time to time."
+		appearanceDesc: "A ropey rhino tail sprouts from just above your [butt], swishing from time to time."
 	});
 	public static const ECHIDNA: int = 23;
 	EnumValue.add(Types, ECHIDNA, "ECHIDNA", {
@@ -562,6 +562,12 @@ public class Tail extends SaveableBodyPart {
 		tailSlam: true,
 		isLong: true,
 		scales: true
+	});
+	//69 - sun praying mantis
+	public static const STONE_RHINO: int = 70;
+	EnumValue.add(Types, STONE_RHINO, "STONE_RHINO", {
+		name:"s.rhino",
+		appearanceDesc: "A ropey stone rhino tail, covered with stone on the back of it, sprouts from just above your [butt], swishing from time to time."
 	});
 
 	override public function set type(value:int):void {

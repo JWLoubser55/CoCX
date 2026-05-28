@@ -1824,7 +1824,29 @@ public class TailTransformations extends MutationsHelper {
 				return player.tailType === Tail.CHAMELEON;
 			}
 	);
+
+	public const TailStoneRhino: Transformation = new SimpleTransformation("Stone Rhino Tail",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				TransformationUtils.removeLowerBodyIfIncompatible(player, doOutput);
+
+				if (player.tailType > 0) desc += "You [tail] suddenly goes numb. Looking back you see it changing, twisting and reforming into a long ropy tail covered with stone on the back of the tail with a little [fur color] tuft at the end. <b>You now have a stone rhino tail.</b>";
+				else desc += "You feel an odd itchy sensation just above your [ass]. Twisting around to inspect it you find a long ropy tail covered with stone on the back of the tail with a little [fur color] tuft on the end. <b>You now have a stone rhino tail.</b>";
+				player.tailType = Tail.RHINO;
+				player.tailCount = 1;
+
+				if (doOutput) outputText(desc);
+				//Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.RHINO));
+			},
+			// is present
+			function (): Boolean {
+				return player.tailType === Tail.STONE_RHINO;
+			}
+	);
 	/*
   */
 }
 }
+

@@ -440,6 +440,25 @@ public class Horns extends BodyPart {
 		}
 	});
 
+	public static const STONE_RHINO: int = 33;
+	EnumValue.add(Types, STONE_RHINO, "STONE_RHINO", {
+		name:"s.rhino",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = "";
+
+			if (player.horns.count >= 2) {
+				if (CoC.instance.transformations.FaceRhino.isPresent()) desc += "A second horns sprouts from your forehead just above the horns on your nose.";
+				else desc += "A single horn sprouts from your forehead. It is conical and resembles a rhino's horn.";
+				desc += " You estimate it to be about " + (player.horns.count >= 3 ? "nine":"seven") + " inches long.";
+			} else {
+				desc += "A single horn sprouts from your forehead. It is conical and resembles a rhino's horn. You estimate it to be about six inches long.";
+			}
+
+			return desc;
+		},
+		gore: true
+	});
+
 	public function Horns(creature:Creature) {
 		super(creature, null);
 	}
