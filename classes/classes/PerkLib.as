@@ -4859,7 +4859,7 @@ public class PerkLib
 		public static const Telekinesis:PerkType = mk("Telekinesis", "Telekinesis",
 				"You have the power to wield and throw objects with your mind alone. Gain a bonus to damage based on intelligence when using various -kinesis specials, using thrown weapons and aquire additional attacks based on character level.");
 		public static const ThickSkin:PerkType = mk("Thick Skin", "Thick Skin",
-				"Toughens your dermis to provide 2 points of armor and 1 point of magic resistance.");
+				"Toughens your dermis to provide 2 points of armor and magic resistance.");
 		public static const TitanicMight:PerkType = mk("Titan might", "Titan might",
 				"You count as four times taller than your effective base size for the purpose of perk effects.");
 		public static const TitanicSize:PerkType = mk("Titan size", "Titan size",

@@ -789,7 +789,7 @@ public final class ConsumableLib extends AlchemyLib
 							GremlinRace.GremlinSkinColors
 						)
 				);
-		public const GRHINOS: Consumable = mk("GRhinoS", "GrilledRhinoSteak", "a grilled Rhino Steak", 50, "Nerly burned steak.  Looks like it was too long grilled.  According to a legend, earth attuned races may found it delicious.", curry(m.grilledRhinoSteak), ItemConstants.U_TF)
+		public const GRHINOS: Consumable = mk("GRhinoS", "SteakGrilledByRhino", "a Steak grilled by rhino", 50, "Steak cooked by petrokheros.  Looks like it was too long grilled and there is too much salt added causing it to look like a piece of rock.  But according to natives, earth attuned races found it delicious.", curry(m.grilledRhinoSteak), ItemConstants.U_TF)
 				.refineableInto(
 						DEFAULT_SUBSTANCES_DROP_TABLE,
 						DEFAULT_ESSENCE_DROP_TABLE(AE_RHINO),

@@ -194,8 +194,8 @@ public function rhinoTFeffects(grilled:Boolean = false):void {
 	//Removes antennaes!
 	if (rand(3) == 0 && changes < changeLimit && player.antennae.type > Antennae.NONE) {
 		outputText("\n\nYour " + hairDescript() + " itches so you give it a scratch, only to have your [antennae] fall to the ground. What a relief. <b>You've lost your [antennae]!</b>");
-		changes++;
 		player.antennae.type = Antennae.NONE;
+		changes++;
 	}
 	//Hair turns back to normal
 	if (rand(3) == 0 && changes < changeLimit && CoC.instance.transformations.HairHuman.isPossible()) {
@@ -349,6 +349,7 @@ public function rhinoTFeffects(grilled:Boolean = false):void {
 		changes++;
 	}
 	flags[kFLAGS.TIMES_TRANSFORMED] += changes;
+	if (grilled) player.refillHunger(40);
 }
 }
 }

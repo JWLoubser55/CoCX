@@ -15333,7 +15333,7 @@ public final class Mutations extends MutationsHelper {
     }
 	
 	public function grilledRhinoSteak(player:Player):void {
-        outputText("You bring the steak up to your nose and smell it. It has exquisite smell. You suddenly have the strange desire to eat it. You pop piece of the steak into your mouth and chew. Then another piece and another until you ate it whole. It tastes like something was burned badly. Before you know it, you're undergoing changes.");
+        outputText("You bring the steak up to your nose and smell it. "+(player.hasPerk(PerkLib.EarthAffinity)?"It has exquisite smell. ":"")+"You suddenly have the strange desire to eat it. You pop piece of the steak into your mouth and chew. Then another piece and another until you ate it whole. It tastes like something was burned badly. Before you know it, you're undergoing changes.");
         rhinoTFchanges.rhinoTFeffects(true);
     }
 
@@ -18815,4 +18815,4 @@ public final class Mutations extends MutationsHelper {
     }
 }
 
-}
+}

@@ -1849,4 +1849,3 @@ public class TailTransformations extends MutationsHelper {
   */
 }
 }
-

@@ -2028,4 +2028,4 @@ import classes.lists.Gender;
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 	}
-}
+}

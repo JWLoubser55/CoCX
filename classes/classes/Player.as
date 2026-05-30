@@ -635,7 +635,8 @@ use namespace CoC;
 			}
 			//Skin armor perk
 			if (hasPerk(PerkLib.ThickSkin)) {
-				armorDef += (2 * newGamePlusMod);
+				if (skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL)) armorDef += (10 * newGamePlusMod);
+				else armorDef += (2 * newGamePlusMod);
 			}
 			//Stacks on top of Thick Skin perk.
 			var p:Boolean = skin.isCoverLowMid();
@@ -904,7 +905,8 @@ use namespace CoC;
 			}
 			//Skin armor perk
 			if (hasPerk(PerkLib.ThickSkin)) {
-				armorMDef += (1 * newGamePlusMod);
+				if (skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL)) armorMDef += (10 * newGamePlusMod);
+				else armorMDef += (2 * newGamePlusMod);
 			}
 			//Stacks on top of Thick Skin perk.
 			var p:Boolean = skin.isCoverLowMid();
@@ -913,11 +915,9 @@ use namespace CoC;
 			if (skin.isChitinCovered()) armorMDef += (p?2:4)*newGamePlusMod;
 			if (skin.isScaleCovered()) armorMDef += (p?3:6)*newGamePlusMod; //bee-morph (), mantis-morph (), scorpion-morph (wpisane), spider-morph (wpisane)
 			if (skin.hasBark() || skin.isDragonScaleCovered()) armorMDef += (p?4:8)*newGamePlusMod;
-			if (skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL)) armorMDef += (10 * newGamePlusMod);/*
+			if (skin.hasBaseOnly(Skin.STONE) || skin.hasBaseOnly(Skin.STEEL)) armorMDef += (10 * newGamePlusMod);
 			//'Thick' dermis descriptor adds 1!
-			if (skinAdj == "smooth") armorMDef += (1 * newGamePlusMod);/*
-			*/
-			
+			//if (skinAdj == "smooth") armorMDef += (1 * newGamePlusMod);
 			//Bonus defense
 			if (arms.type == Arms.YETI || arms.type == Arms.USHI_ONI) armorMDef += (1 * newGamePlusMod);
 			if (arms.type == Arms.SPIDER || arms.type == Arms.MANTIS || arms.type == Arms.BEE || arms.type == Arms.SALAMANDER || arms.type == Arms.FEY_DRACONIC) armorMDef += (2 * newGamePlusMod);
@@ -3104,13 +3104,29 @@ use namespace CoC;
 			}
 			else CoC.instance.monster.createStatusEffect(StatusEffects.NagaVenom,d1Bdcc,2,0,0);
 		}
-		public function wyrmRuinousBloodSplash():void {
+		public function wyrmRuinousBlood():void {
 			var wRBS:Number = 0.02;
 			if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 2) wRBS += 0.02;
 			if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 3) wRBS += 0.04;
 			if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 4) wRBS += 0.08;
 			wRBS *= CoC.instance.monster.str;
-			CoC.instance.monster.statStore.addBuffObject({str:-wRBS}, "Ruinous Blood",{text:"Ruinous Blood"});
+			CoC.instance.monster.statStore.addBuffObject({str: -wRBS}, "Ruinous Blood", {text:"Ruinous Blood"});
+			if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 2) {
+				if (!CoC.instance.monster.hasStatusEffect(StatusEffects.WyrmRuinousBlood)) CoC.instance.monster.createStatusEffect(StatusEffects.WyrmRuinousBlood,5,1,0,0);
+				else {
+					CoC.instance.monster.addStatusValue(StatusEffects.WyrmRuinousBlood,2,1);
+					CoC.instance.monster.changeStatusValue(StatusEffects.WyrmRuinousBlood,1,5);
+				}
+			}
+			if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 3) {
+				var wRBS2:Number = 1;
+				if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 4) wRBS2 += 1;
+				if (CoC.instance.monster.hasStatusEffect(StatusEffects.CorpseExplosion)) {
+					if (CoC.instance.monster.statusEffectv1(StatusEffects.CorpseExplosion) + wRBS2 > 99) CoC.instance.monster.changeStatusValue(StatusEffects.CorpseExplosion, 1, 99);
+					else CoC.instance.monster.addStatusValue(StatusEffects.CorpseExplosion, 1, wRBS2);
+				}
+				else CoC.instance.monster.createStatusEffect(StatusEffects.CorpseExplosion, wRBS2, 0, 0, 0);
+			}
 		}
 		public function toughnessDamageMultiplier():Number {
 			var dmmc:Number = 0;
@@ -3214,7 +3230,7 @@ use namespace CoC;
 			if (CoC.instance.monster.hasStatusEffect(StatusEffects.EnergyDrain)) damage *= 0.75;
 			if (hasStatusEffect(StatusEffects.GreenCovenant)) damage *= 0.25;
 			if (CoC.instance.monster.hasStatusEffect(StatusEffects.BloodShower)) damage *= 0.2;
-			if (CoC.instance.monster.hasStatusEffect(StatusEffects.CorpseExplosion)) damage *= (1 - (0.2 * CoC.instance.monster.statusEffectv1(StatusEffects.CorpseExplosion)));
+			if (CoC.instance.monster.hasStatusEffect(StatusEffects.CorpseExplosion)) damage *= (1 - (0.01 * CoC.instance.monster.statusEffectv1(StatusEffects.CorpseExplosion)));
 			if (hasPerk(PerkLib.Comradery) && companionsInPCParty()) {
 				if (companionsInPcPartyCount() < 10) damage *= (1 - (0.1 * companionsInPcPartyCount()));
 				else damage *= 0;
@@ -3278,7 +3294,7 @@ use namespace CoC;
 								CoC.instance.monster.teased(SceneLib.combat.teases.teaseBaseLustDamage() * CoC.instance.monster.lustVuln);
 							}
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							// Bookmark
 							if (damagePercentArmor() > 1){
@@ -3296,7 +3312,7 @@ use namespace CoC;
 							break;
 						case 4: // magical
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3313,7 +3329,7 @@ use namespace CoC;
 							break;
 						case 5: // fire
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3331,7 +3347,7 @@ use namespace CoC;
 							break;
 						case 6: // ice
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3348,7 +3364,7 @@ use namespace CoC;
 							break;
 						case 7: // lightning
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3365,7 +3381,7 @@ use namespace CoC;
 							break;
 						case 8: // darkness
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3382,7 +3398,7 @@ use namespace CoC;
 							break;
 						case 9: // poison
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3399,7 +3415,7 @@ use namespace CoC;
 							break;
 						case 10: // wind
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3416,7 +3432,7 @@ use namespace CoC;
 							break;
 						case 11: // water
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3433,7 +3449,7 @@ use namespace CoC;
 							break;
 						case 12: // earth
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3450,7 +3466,7 @@ use namespace CoC;
 							break;
 						case 13: // acid
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentMRes() > 1){
 								armorMod = 1 / damagePercentMRes();
@@ -3467,7 +3483,7 @@ use namespace CoC;
 							break;
 						case 14: // psychic
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 						//	if (damagePercentMRes() > 1){
 						//		armorMod = 1 / damagePercentMRes();
@@ -3484,7 +3500,7 @@ use namespace CoC;
 							break;
 						case 15: // true
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							for(i =0; i < remainingHit.length; i++){
 								remainingHit[i] *= armorMod;
@@ -3497,7 +3513,7 @@ use namespace CoC;
 							break;
 						default:
 							if (perkv1(IMutationsLib.HydraBloodIM) >= 3) hydraBloodSplash();
-							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBloodSplash();
+							if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 1) wyrmRuinousBlood();
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							if (damagePercentArmor() > 1){
 								armorMod = 1 / damagePercentArmor();

@@ -253,7 +253,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 						favbd(bd, "Thunder Gore");
 					}
 					//Upheaval - requires rhino horns
-					if (player.horns.type == Horns.RHINO && player.horns.count >= 2 && player.faceType == Face.RHINO) {
+					if ((player.horns.type == Horns.RHINO || player.horns.type == Horns.STONE_RHINO) && player.horns.count >= 2 && player.faceType == Face.RHINO) {
 						bd = buttons.add("Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n");
 						if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(60));
 						else bd.requireFatigue(physicalSpecialsCost(30));
@@ -1227,7 +1227,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					}
 				}
 				//Upheaval - requires rhino horns
-				if (player.horns.type == Horns.RHINO && player.horns.count >= 2 && player.faceType == Face.RHINO) {
+				if ((player.horns.type == Horns.RHINO || player.horns.type == Horns.STONE_RHINO) && player.horns.count >= 2 && player.faceType == Face.RHINO) {
 					bd = buttons.add("Upheaval", upheavalAttack).hint("Send your foe flying with your dual nose mounted horns. \n");
 					if (player.hasPerk(PerkLib.PhantomStrike)) bd.requireFatigue(physicalSpecialsCost(60));
 					else bd.requireFatigue(physicalSpecialsCost(30));
@@ -6695,7 +6695,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 	//Upheaval Attack
 	public function upheavalAttack():void {
 		clearOutput();
-	//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
+		//This is now automatic - newRound arg defaults to true:	menuLoc = 0;
 		if (monster is WormMass) {
 			outputText("Taking advantage of your new natural weapon, you quickly charge at the freak of nature. Sensing impending danger, the creature willingly drops its cohesion, causing the mass of worms to fall to the ground with a sick, wet 'thud', leaving your horns to stab only at air.\n\n");
 			enemyAI();
@@ -6704,6 +6704,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.PhantomStrike)) fatigue(physicalSpecialsCost(60), USEFATG_PHYSICAL);
 		else fatigue(physicalSpecialsCost(30), USEFATG_PHYSICAL);
 		var damage:Number = 0;
+		var damageFire:Number = 0;
+		var damageEarth:Number = 0;
 		if (combat.checkConcentration()) return; //Amily concentration
 		var chance:Number = 70;
 		if (player.horns.count >= 3) chance += 20;
@@ -6752,30 +6754,55 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 			damage = combat.physicalAbilityDamageAmplification(damage);
 			if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) {
-				damage = Math.round(damage * combat.fireDamageBoostedByDao());
-				doPlayerFireDamage(damage, true, true);
+				if (player.horns.type == Horns.STONE_RHINO) {
+					damageEarth = Math.round(damage * combat.earthDamageBoostedByDao());
+					doPlayerEarthDamage(damageEarth, true, true);
+				}
+				damageFire = Math.round(damage * combat.fireDamageBoostedByDao());
+				doPlayerFireDamage(damageFire, true, true);
 			}
 			else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
 				doPlayerPhysDamage(damage, true, true);
-				damage = Math.round(damage * combat.fireDamageBoostedByDao());
-				doPlayerFireDamage(Math.round(damage*0.1), true, true);
+				if (player.horns.type == Horns.STONE_RHINO) {
+					damageEarth = Math.round(damage * combat.earthDamageBoostedByDao());
+					doPlayerEarthDamage(damageEarth, true, true);
+				}
+				damageFire = Math.round(damage * combat.fireDamageBoostedByDao());
+				doPlayerFireDamage(Math.round(damageFire*0.1), true, true);
 				if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 				damage = Math.round(damage * 1.1);
 			}
-			else doPlayerPhysDamage(damage, true, true);
+			else {
+				doPlayerPhysDamage(damage, true, true);
+				if (player.horns.type == Horns.STONE_RHINO) {
+					damageEarth = Math.round(damage * combat.earthDamageBoostedByDao());
+					doPlayerEarthDamage(damageEarth, true, true);
+				}
+			}
 			if (player.hasPerk(PerkLib.PhantomStrike)) {
-				if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) doPlayerFireDamage(damage, true, true);
+				if (player.hasStatusEffect(StatusEffects.BlazingBattleSpirit)) {
+					if (player.horns.type == Horns.STONE_RHINO) doPlayerEarthDamage(damageEarth, true, true);
+					doPlayerFireDamage(damage, true, true);
+				}
 				else if (player.hasStatusEffect(StatusEffects.HinezumiCoat)) {
 					doPlayerPhysDamage(damage, true, true);
+					if (player.horns.type == Horns.STONE_RHINO) doPlayerEarthDamage(damageEarth, true, true);
 					doPlayerFireDamage(Math.round(damage*0.1), true, true);
 					if (player.lust > player.lust100 * 0.5) dynStats("lus", -1);
 					damage = Math.round(damage * 1.1);
 				}
-				else doPlayerPhysDamage(damage, true, true);
+				else {
+					doPlayerPhysDamage(damage, true, true);
+					if (player.horns.type == Horns.STONE_RHINO) doPlayerEarthDamage(damageEarth, true, true);
+				}
 				damage *= 2;
+				if (damageFire > 0) damageFire *= 2;
+				if (damageEarth > 0) damageEarth *= 2;
 			}
 			if (crit) outputText("<b>Critical hit! </b>");
 			outputText("\n\n");
+			if (damageFire > 0) damage += damageFire;
+			if (damageEarth > 0) damage += damageEarth;
 		}
 		//Miss
 		else {

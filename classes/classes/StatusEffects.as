@@ -579,6 +579,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const MartialTraining:StatusEffectType                = mk("Martial Training");
 		public static const MeanToNaga:StatusEffectType                     = mk("MeanToNaga");
 		public static const Meditated:StatusEffectType                      = mk("Meditated"); // DEPRECATED
+		public static const MeetRocksteady:StatusEffectType                 = mk("meet rocksteady");
 		public static const MeetWanderer:StatusEffectType                   = mk("meet wanderer");
 		public static const MeetXuviel:StatusEffectType                   	= mk("meet xuviel");
 		public static const MeetXuviel2:StatusEffectType                   	= mk("meet xuviel 2");
@@ -1575,4 +1576,4 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 	}
 
-}
+}

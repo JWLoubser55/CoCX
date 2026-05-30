@@ -458,7 +458,7 @@ import flash.utils.getQualifiedClassName;
 			if (hasStatusEffect(StatusEffects.CrimsonOverflowImperfect)) maxOver2 += 0.1;
 			if (hasStatusEffect(StatusEffects.CrimsonOverflow)) maxOver2 += (0.05 * statusEffectv1(StatusEffects.CrimsonOverflow));
 			maxOver *= maxOver2;//~290%
-			if (hasStatusEffect(StatusEffects.CorpseExplosion)) maxOver *= (1 - (0.2 * statusEffectv1(StatusEffects.CorpseExplosion)));
+			if (hasStatusEffect(StatusEffects.CorpseExplosion)) maxOver *= (1 - (0.01 * statusEffectv1(StatusEffects.CorpseExplosion)));
 			if (hasStatusEffect(StatusEffects.CombatWounds)) maxOver *= (1 - (0.01 * statusEffectv1(StatusEffects.CombatWounds)));
 			maxOver = Math.round(maxOver);
 			return maxOver;
@@ -4338,7 +4338,7 @@ import flash.utils.getQualifiedClassName;
 				}
 				//Deal damage if still wounded.
 				else {
-					game.player.wyrmRuinousBloodSplash();/*
+					game.player.wyrmRuinousBlood();/*
 					if(plural) outputText("[Themonster] bleed profusely from the jagged wounds your bite left behind. ");
 					else outputText("[Themonster] bleeds profusely from the jagged wounds your bite left behind. ");
 					SceneLib.combat.CommasForDigits(store3);
@@ -5434,3 +5434,4 @@ import flash.utils.getQualifiedClassName;
 	}
 
 }
+

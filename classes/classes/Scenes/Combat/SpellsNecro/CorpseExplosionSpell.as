@@ -36,7 +36,7 @@ public class CorpseExplosionSpell extends AbstractNecroSpell {
 				|| !monster.hasPerk(PerkLib.EnemyLargeGroupType)) && monster.HP > monster.maxHP() * 0.8) {
 			return "You can only use that spell on enemy groups that have less than 80% of members left.";
 		}
-		if (monster.statusEffectv1(StatusEffects.CorpseExplosion) >= 4) {
+		if (monster.statusEffectv1(StatusEffects.CorpseExplosion) >= 80) {
 			return "You can't use that spell on enemy groups that have less than 20% of members left.";
 		}
 		return super.usabilityCheck();
@@ -69,8 +69,8 @@ public class CorpseExplosionSpell extends AbstractNecroSpell {
 		var damage:Number = calcDamage(monster, true, true);
 		damage = critAndRepeatDamage(display, damage, DamageType.TRUE);
 		checkAchievementDamage(damage);
-		if (monster.hasStatusEffect(StatusEffects.CorpseExplosion)) monster.addStatusValue(StatusEffects.CorpseExplosion, 1, 1);
-		else monster.createStatusEffect(StatusEffects.CorpseExplosion, 1, 0, 0, 0);
+		if (monster.hasStatusEffect(StatusEffects.CorpseExplosion)) monster.addStatusValue(StatusEffects.CorpseExplosion, 1, 20);
+		else monster.createStatusEffect(StatusEffects.CorpseExplosion, 20, 0, 0, 0);
 	}
 }
 }
