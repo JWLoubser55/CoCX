@@ -706,6 +706,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const HornsVerdantRam: Transformation 			= horns.HornsVerdantRam.registerTf(AS_HORNS, AE_BAROMETZ);
     public const HornsHollow: Transformation 				= horns.HornsHollow.registerTf(AS_HORNS, AE_HOLLOW);
     public const HornsRhino: Transformation 				= horns.HornsRhino.registerTf(AS_HORNS, AE_RHINO);
+    public const HornsStoneRhino: Transformation 			= horns.HornsStoneRhino.registerTf(AS_HORNS, AE_RHINO);
 
 
 //LOWER BODY ( LEGS )
@@ -790,6 +791,9 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public function LowerBodyHoofedNoFur(legCount: int = undefined): Transformation 			{ return lowerBody.LowerBodyHoofedNoFur(legCount); }
 	public const LowerBodyHoofedNoFurBipedal:Transformation = LowerBodyHoofedNoFur(2).registerTf(AS_LEGS, AE_RHINO);
     public function LowerBodyHoofedNoFurToggle(toggleTaur:Boolean = false): Transformation 		{ return lowerBody.LowerBodyHoofedNoFur(player.legCount, toggleTaur); }
+    public function LowerBodyStoneHoofedNoFur(legCount: int = undefined): Transformation 			{ return lowerBody.LowerBodyStoneHoofedNoFur(legCount); }
+	public const LowerBodyStoneHoofedNoFurBipedal:Transformation = LowerBodyStoneHoofedNoFur(2).registerTf(AS_LEGS, AE_RHINO);
+    public function LowerBodyStoneHoofedNoFurToggle(toggleTaur:Boolean = false): Transformation 		{ return lowerBody.LowerBodyStoneHoofedNoFur(player.legCount, toggleTaur); }
     public function LowerBodyKrampus(legCount: int = undefined): Transformation 				{ return lowerBody.LowerBodyKrampus(legCount); }
     public const LowerBodyvBipedal:Transformation = LowerBodyKrampus(2).registerTf(AS_LEGS, AE_KRAMPUS);
     public function LowerBodyKrampusToggle(toggleTaur:Boolean = false): Transformation 			{ return lowerBody.LowerBodyKrampus(player.legCount, toggleTaur); }

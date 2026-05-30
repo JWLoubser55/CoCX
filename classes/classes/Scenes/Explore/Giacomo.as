@@ -135,17 +135,20 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			merchantMenu.addItem(consumables.SMART_T, 15);
 			merchantMenu.addItem(consumables.CERUL_P, 75);
 			merchantMenu.addLineBreak();
+			merchantMenu.addItem(useables.CONDOM, 10);
 			merchantMenu.addItem(consumables.SAPILL_);
 			merchantMenu.addItem(consumables.MAPILL_).disableIf(player.level < 24, "Req. lvl 24+", true);
 			merchantMenu.addItem(consumables.BAPILL_).disableIf(player.level < 42, "Req. lvl 42+", true);
-			merchantMenu.addItem(useables.CONDOM, 10);
 			merchantMenu.addLineBreak();
 			merchantMenu.addItem(consumables.W__BOOK, 100);
 			merchantMenu.addItem(consumables.G__BOOK, 500);
 			merchantMenu.addItem(consumables.B__BOOK, 100);
+			merchantMenu.addLineBreak();
 			merchantMenu.addItem(consumables.RMANUSC, 125);
 			merchantMenu.addItem(weaponsrange.E_TOME_, 1000);
 			merchantMenu.addItem(consumables.CRIMS_J, 125);
+			merchantMenu.addLineBreak();
+			merchantMenu.addItem(consumables.GRHINOS, 25);
 			merchantMenu.show(giacomoEncounter);
 		}
 	

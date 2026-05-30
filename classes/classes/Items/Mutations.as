@@ -8,6 +8,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
 import classes.Items.Consumables.Centaurinum;
 import classes.Items.Consumables.EmberTF;
+import classes.Items.Consumables.RhinoTF;
 import classes.Races.*;
 import classes.Scenes.Camp.CampStatsAndResources;
 import classes.Scenes.Metamorph;
@@ -27,6 +28,7 @@ public final class Mutations extends MutationsHelper {
     //const BIKINI_ARMOR_BONUS:int = 769;
 
     public var emberTFchanges:EmberTF = new EmberTF();
+	public var rhinoTFchanges:RhinoTF = new RhinoTF();
 	public var saveUpdater:SaveUpdater = new SaveUpdater();
 
     public function DrunkenPowerEmpower():void {
@@ -15328,6 +15330,11 @@ public final class Mutations extends MutationsHelper {
         //FAILSAFE CHANGE
         if (changes == 0) outputText("[pg]Remarkably, the sunscreen has no effect.  Maybe next time?");
         flags[kFLAGS.TIMES_TRANSFORMED] += changes;
+    }
+	
+	public function grilledRhinoSteak(player:Player):void {
+        outputText("You bring the steak up to your nose and smell it. It has exquisite smell. You suddenly have the strange desire to eat it. You pop piece of the steak into your mouth and chew. Then another piece and another until you ate it whole. It tastes like something was burned badly. Before you know it, you're undergoing changes.");
+        rhinoTFchanges.rhinoTFeffects(true);
     }
 
     public function drakeHeart(player:Player):void {

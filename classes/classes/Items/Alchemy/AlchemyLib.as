@@ -773,11 +773,11 @@ public class AlchemyLib extends BaseContent {
 		short: "AElf",
 		name : "Abyssal Elf"
 	});
-	public static const AE_HOLLOW:int     = EnumValue.add(Essences, 232, "HOLLOW", {
+	public static const AE_HOLLOW:int     	   = EnumValue.add(Essences, 232, "HOLLOW", {
 		short: "Hollow",
 		name : "Hollow"
 	});
-	public static const AE_CERNOS:int        = EnumValue.add(Essences, 233, "CERNOS", {
+	public static const AE_CERNOS:int          = EnumValue.add(Essences, 233, "CERNOS", {
 		short: "Cernos",
 		name : "Cernos"
 	});
@@ -785,31 +785,31 @@ public class AlchemyLib extends BaseContent {
 		short: "SPMantis",
 		name : "Sup Praying Mantis"
 	});
-	public static const AE_MOON_REINDEER:int        = EnumValue.add(Essences, 235, "MOON_REINDEER", {
+	public static const AE_MOON_REINDEER:int   = EnumValue.add(Essences, 235, "MOON_REINDEER", {
 		short: "MRdeer",
 		name : "Moon Reindeer"
 	});
-	public static const AE_CAVE_STALKER:int        = EnumValue.add(Essences, 236, "CAVE_STALKER", {
+	public static const AE_CAVE_STALKER:int    = EnumValue.add(Essences, 236, "CAVE_STALKER", {
 		short: "CStal",
 		name : "Cave stalker"
 	});
-	public static const AE_BANSHEE:int        = EnumValue.add(Essences, 237, "BANSHEE", {
+	public static const AE_BANSHEE:int         = EnumValue.add(Essences, 237, "BANSHEE", {
 		short: "Banshee",
 		name : "Banshee"
 	});
-	public static const AE_WEREDRAGON:int       = EnumValue.add(Essences, 238, "WEREDRAGON", {
+	public static const AE_WEREDRAGON:int      = EnumValue.add(Essences, 238, "WEREDRAGON", {
 		short: "WDragon",
 		name : "Weredragon"
 	});
-	public static const AE_DUSK_DRAKE:int       = EnumValue.add(Essences, 239, "DUSK_DRAKE", {
+	public static const AE_DUSK_DRAKE:int      = EnumValue.add(Essences, 239, "DUSK_DRAKE", {
 		short: "DDrake",
 		name : "Dusk Drake"
 	});
-	public static const AE_KRAMPUS:int       = EnumValue.add(Essences, 240, "KRAMPUS", {
+	public static const AE_KRAMPUS:int        = EnumValue.add(Essences, 240, "KRAMPUS", {
 		short: "Krampus",
 		name : "Krampus"
 	});
-	public static const AE_WYVERN:int       = EnumValue.add(Essences, 241, "WYVERN", {
+	public static const AE_WYVERN:int         = EnumValue.add(Essences, 241, "WYVERN", {
 		short: "Wyvern",
 		name : "Wyvern"
 	});
@@ -817,11 +817,11 @@ public class AlchemyLib extends BaseContent {
 		short: "Slothien",
 		name : "Slothien"
 	});
-	public static const AE_WASP:int       = EnumValue.add(Essences, 243, "WASP", {
+	public static const AE_WASP:int       	  = EnumValue.add(Essences, 243, "WASP", {
 		short: "Wasp",
 		name : "Wasp"
 	});
-	public static const AE_HORNET:int       = EnumValue.add(Essences, 244, "HORNET", {
+	public static const AE_HORNET:int         = EnumValue.add(Essences, 244, "HORNET", {
 		short: "Hornet",
 		name : "Hornet"
 	});
@@ -829,19 +829,19 @@ public class AlchemyLib extends BaseContent {
 		short: "TGojira",
 		name : "TitanusGojira"
 	});
-	public static const AE_MAGMA_WYRM:int       = EnumValue.add(Essences, 246, "MAGMA_WYRM", {
+	public static const AE_MAGMA_WYRM:int    = EnumValue.add(Essences, 246, "MAGMA_WYRM", {
 		short: "MWyrm",
 		name : "Magma wyrm"
 	});
-	public static const AE_FROG:int       = EnumValue.add(Essences, 247, "FROG", {
+	public static const AE_FROG:int       	 = EnumValue.add(Essences, 247, "FROG", {
 		short: "Frog",
 		name : "Frog"
 	});
-	public static const AE_MOBOGO:int       = EnumValue.add(Essences, 248, "MOBOGO", {
+	public static const AE_MOBOGO:int        = EnumValue.add(Essences, 248, "MOBOGO", {
 		short: "Mobogo",
 		name : "Mobogo"
 	});
-	public static const AE_CHAMELEON:int       = EnumValue.add(Essences, 249, "CHAMELEON", {
+	public static const AE_CHAMELEON:int     = EnumValue.add(Essences, 249, "CHAMELEON", {
 		short: "Chameleon",
 		name : "Chameleon"
 	});

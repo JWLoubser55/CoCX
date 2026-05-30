@@ -641,6 +641,14 @@ package classes.GeneticMemories {
           title: "Frog Legs",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyFrog}});
 
+      public static const STONE_HOOFED_NO_FUR: int = _partid++;
+      EnumValue.add(Memories, STONE_HOOFED_NO_FUR, "STONE_HOOFED_NO_FUR", {
+          id: "S.Hoofed w/o fur Lower Body",name: "Stone Hooves no fur (Legs)",
+          cost: 100,
+          title: "Stone Hoofed no fur",
+          unlockText: "Now you can metamorph into the Taur variant of any lower body part you unlocked when available!",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyStoneHoofedNoFurToggle(true)}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

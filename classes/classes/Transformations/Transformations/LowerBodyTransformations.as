@@ -1219,7 +1219,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 				if (doOutput) outputText(desc);
 				player.lowerBody = LowerBody.STONE_HOOFED_NO_FUR;
 				player.legCount = legCount;
-				//Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.HOOFED_NO_FUR));
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.STONE_HOOFED_NO_FUR));
 			},
 			// is present
 			function (): Boolean {

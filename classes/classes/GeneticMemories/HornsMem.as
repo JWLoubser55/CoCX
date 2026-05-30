@@ -328,6 +328,17 @@ package classes.GeneticMemories {
 		  }
 	  });
 
+	  public static const STONE_RHINO:int = _partid++;
+	  EnumValue.add(Memories, STONE_RHINO, "STONE_RHINO", {
+		  id: "S.Rhino Horns",
+		  name: "Stone Rhino Horns",
+		  cost: 200,
+		  title: "Stone Rhino Horns",
+		  transformation: function(): Transformation {
+			  return CoC.instance.transformations.HornsStoneRhino;
+		  }
+	  });
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

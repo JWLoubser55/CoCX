@@ -447,11 +447,11 @@ public class Horns extends BodyPart {
 			var desc: String = "";
 
 			if (player.horns.count >= 2) {
-				if (CoC.instance.transformations.FaceRhino.isPresent()) desc += "A second horns sprouts from your forehead just above the horns on your nose.";
-				else desc += "A single horn sprouts from your forehead. It is conical and resembles a rhino's horn.";
+				if (CoC.instance.transformations.FaceRhino.isPresent()) desc += "A second diamond horns sprouts from your forehead just above the horns on your nose.";
+				else desc += "A single diamond horn sprouts from your forehead. It is conical and resembles a rhino's horn.";
 				desc += " You estimate it to be about " + (player.horns.count >= 3 ? "nine":"seven") + " inches long.";
 			} else {
-				desc += "A single horn sprouts from your forehead. It is conical and resembles a rhino's horn. You estimate it to be about six inches long.";
+				desc += "A single horn sprouts from your forehead. It is conical and resembles a rhino's horn covered with layer of stone. You estimate it to be about six inches long.";
 			}
 
 			return desc;

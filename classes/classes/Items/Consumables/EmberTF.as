@@ -159,20 +159,20 @@ public function dragonTFeffects(drakesHeart:Boolean = false):void {
 	//Gain Dragon Legs
 	if (player.lowerBody != LowerBody.DRAGON && changes < changeLimit && rand(3) == 0) {
 		outputText("\n\n");
-		transformations.LowerBodyDraconic(2).applyEffect();
+		CoC.instance.transformations.LowerBodyDraconic(2).applyEffect();
 		changes++;
 	}
 	//Arms
 	if (player.arms.type != Arms.DRACONIC && player.lowerBody == LowerBody.DRAGON && changes < changeLimit && rand(3) == 0) {
 		outputText("\n\n");
 		CoC.instance.transformations.ArmsDraconic.applyEffect();
-    changes++;
+		changes++;
 	}
 	//Gain Dragon Tail
 	if (player.tailType != Tail.DRACONIC && changes < changeLimit && rand(3) == 0) {
 		outputText("\n\n");
 		CoC.instance.transformations.TailDraconic.applyEffect();
-    changes++
+		changes++
 	}
 	/*
 	//9999 - prolly not gonna do this!
