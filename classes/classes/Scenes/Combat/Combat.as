@@ -6313,6 +6313,17 @@ public class Combat extends BaseContent {
                         outputText("\n");
                     }
                     break;
+                case Face.DRAGON:
+                case Face.DRAGON_FANGS:
+					if (player.perkv1(IMutationsLib.WyrmCursedBloodIM) >= 2) {
+						player.wyrmRuinousBloodSplash();
+						if (!monster.hasStatusEffect(StatusEffects.WyrmRuinousBlood)) monster.createStatusEffect(StatusEffects.WyrmRuinousBlood,5,0,0,0);
+                        else {
+                            monster.removeStatusEffect(StatusEffects.WyrmRuinousBlood);
+                            monster.createStatusEffect(StatusEffects.WyrmRuinousBlood,5,0,0,0);
+                        }
+					}
+                    break;
                 default:
             }
             outputText(".");
@@ -21311,6 +21322,13 @@ public function movementPhysicalSpecialsBoost(baseValue:Number):Number {
 	if (player.hasStatusEffect(StatusEffects.WinterBellCollarA)) moveBoost += 1;
 	if (Holidays.isChristmas() || player.hasStatusEffect(StatusEffects.ColdEnvironment)) moveBoost += 0.5;
 	baseValue *= moveBoost;
+	return baseValue;
+}
+public function physicalAbilityDamageAmplification(baseValue:Number):Number {
+	var pADA:Number = 1;
+	if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) pADA *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
+	if (player.perkv1(IMutationsLib.WyrmMusculatureIM) >= 2) pADA *= (1 + (0.5 * (player.perkv1(IMutationsLib.WyrmMusculatureIM)) - 1));
+	baseValue *= pADA;
 	return baseValue;
 }
 

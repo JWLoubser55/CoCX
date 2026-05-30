@@ -269,8 +269,8 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Lunatic mind (Final Form). Req. Lunatic mind (Evolved) and lvl 90+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 200 and -50. Gain 1.5% regeneration. Sneak attack is improved by +2x. Double all these bonuses at night.\n");
 			outputText("-New mutation perk: Wyrm Musculature. Req. having free musculature mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake races. Effects: Increase total strength by 5% but reduce intelligence by the same amount.\n");
 			outputText("-New mutation perk: Wyrm Cursed Blood. Req. having free bloodstream mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake races. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 2% strength drain as a backlash.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Wyrm Musculature (Primitive). Req. Wyrm Musculature and lvl 30+. Effects: Increase total strength by 10% but reduce intelligence by the same amount. Physical ability damage is increased by 50%.\n");
+			outputText("-New mutation perk: Wyrm Cursed Blood (Primitive). Req. Wyrm Cursed Blood and lvl 30+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 4% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 4% drain as a continuous poison effect.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

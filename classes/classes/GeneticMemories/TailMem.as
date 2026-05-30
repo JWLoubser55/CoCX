@@ -926,6 +926,28 @@ import classes.CoC;
 			transformation: function(): Transformation {
 				return CoC.instance.transformations.TailChameleon;
 			}
+		});/*
+
+		public static const MANTIS_ABDOMEN:int = _partid++;
+		EnumValue.add(Memories, MANTIS_ABDOMEN, "MANTIS_ABDOMEN", {
+			id: "S.P.Mantis Tail",
+			name: "Sun Praying Mantis Tail",
+			cost: function():Number { return getTailCost(player.tailCount, 1);},
+			title: "Sun Praying Mantis",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TailMantis;
+			}
+		});*/
+
+		public static const STONE_RHINO:int = _partid++;
+		EnumValue.add(Memories, STONE_RHINO, "STONE_RHINO", {
+			id: "S.Rhino Tail",
+			name: "Stone Rhino Tail",
+			cost: function():Number { return getTailCost(player.tailCount, 1);},
+			title: "Stone Rhino",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.TailStoneRhino;
+			}
 		});
 
 		public static function getTailCost(startTails:int, endTails:int):int {

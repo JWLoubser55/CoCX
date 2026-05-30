@@ -43,6 +43,10 @@ public class SunPrayingMantisRace extends Race {
 				.wingType(Wings.MANTIS_LARGE_2, +4)
                 .hasPerk(PerkLib.MantisOvipositor, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
+		
+		//Thunder Mantis score
+		//4 eyes - adj spider 4 eyes desc
+		//var. of arms, legs, wings, tail, ears
 
         buildTier(1000, "tierName")
                 .buffs({

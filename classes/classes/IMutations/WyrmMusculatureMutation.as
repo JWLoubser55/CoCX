@@ -24,7 +24,7 @@ public class WyrmMusculatureMutation extends IMutationPerkType
 				descS += "Increase total strength by "+(pTier*5)+"% but reduce intelligence by the same amount";
 			}
             if (pTier >= 2){
-                descS += "s. Leap damage is increased by "+pTier+"0%";
+                descS += ". Physical ability damage is increased by "+((pTier-1)*5)+"0%";
             }
             if (pTier >= 3){
                 descS += ". Leap only consumes "+pTier+"% of the wrath it should";
@@ -67,7 +67,7 @@ public class WyrmMusculatureMutation extends IMutationPerkType
 
         public function WyrmMusculatureMutation() 
 		{
-			super(MNAME, SLOT_MUSCLE, 1);
+			super(MNAME, SLOT_MUSCLE, 2);
 		}
 		
 	}

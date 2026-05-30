@@ -43,6 +43,7 @@ public class MantisRace extends Race {
 				.faceType(Face.HUMAN, +1)
 				.earType(Ears.INSECT, +1)
 				.armType(Arms.MANTIS, +1)
+				.armType(Arms.THUNDER_MANTIS, +2)
 				.legType(LowerBody.MANTIS, +1)
 				.tailType(Tail.MANTIS_ABDOMEN, +1)
 				.wingType(Wings.MANTIS_SMALL, +1)
@@ -51,7 +52,6 @@ public class MantisRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		//Thunder Mantis score
-		//4 eyes - adj spider 4 eyes desc
 		//var. of arms, legs, wings, tail, ears
 		
 		addBloodline(PerkLib.MantisesDescendant, PerkLib.BloodlineMantis);
@@ -66,17 +66,18 @@ public class MantisRace extends Race {
 					"spe.mult": +1.40,
 					"int.mult": +0.20
 				})
-				.end();/*
+				.end();
 		
-		buildTier(16, "thunder mantis")
+		buildTier(18, "thunder mantis")
 				.namesTauric("thunder mantis","thunder mantis-taur")
+				.requireArmType(Arms.THUNDER_MANTIS)
 				.buffs({
-					"str.mult": -0.40,
-					"tou.mult": +0.60,
-					"spe.mult": +1.40,
-					"int.mult": +0.20
+					"str.mult": -0.60,
+					"tou.mult": +0.80,
+					"spe.mult": +2.20,
+					"int.mult": +0.30
 				})
-				.end();*/
+				.end();
 	}
 }
 }

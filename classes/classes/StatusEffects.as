@@ -1282,6 +1282,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const WinterRider:StatusEffectType       		   = mkCombat("WinterRider");
 		public static const WolfHold:StatusEffectType                  = mkCombat("Wolf Hold");
 		public static const WoundPoison:StatusEffectType               = mkCombat("Wound Poison");
+		public static const WyrmRuinousBlood:StatusEffectType          = mkCombat("Wyrm Ruinous Blood");
 		// For the following: 1 - modifier (1=5%), 2 - "spell cast in the current turn, no decreasing", 3 - "spell is being channeled, no decrease for (Su)"
 		public static const CounterEclipsingShadow:StatusEffectType    = mkCombat("Counter Eclipsing Shadow");
 		public static const CounterGlacialStorm:StatusEffectType       = mkCombat("Counter Glacial Storm");
@@ -1574,4 +1575,4 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 	}
 
-}
+}

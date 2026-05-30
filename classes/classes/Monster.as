@@ -4177,7 +4177,7 @@ import flash.utils.getQualifiedClassName;
 			if(hasStatusEffect(StatusEffects.SharkBiteBleed)) {
 				//Countdown to heal
 				if (hasPerk(PerkLib.EnemyFleshConstructType)) addStatusValue(StatusEffects.SharkBiteBleed, 1, -2);
-				else addStatusValue(StatusEffects.SharkBiteBleed,1,-1);
+				else addStatusValue(StatusEffects.SharkBiteBleed, 1, -1);
 				//Heal wounds
 				if(statusEffectv1(StatusEffects.SharkBiteBleed) <= 0) {
 					outputText("The bite wounds you left on [themonster] stop bleeding so profusely.\n\n");
@@ -4325,6 +4325,24 @@ import flash.utils.getQualifiedClassName;
 					bloodfield = SceneLib.combat.fixPercentDamage(bloodfield);
 					bloodfield = SceneLib.combat.doPlayerPhysDamage(bloodfield);
 					pc.HPChange(bloodfield, false, false);
+				}
+			}
+			if(hasStatusEffect(StatusEffects.WyrmRuinousBlood)) {
+				//Countdown to heal
+				if (hasPerk(PerkLib.EnemyFleshConstructType)) addStatusValue(StatusEffects.WyrmRuinousBlood, 1, -2);
+				else addStatusValue(StatusEffects.WyrmRuinousBlood, 1, -1);
+				//Heal wounds
+				if(statusEffectv1(StatusEffects.WyrmRuinousBlood) <= 0) {
+					//outputText("The bite wounds you left on [themonster] stop bleeding so profusely.\n\n");
+					removeStatusEffect(StatusEffects.WyrmRuinousBlood);
+				}
+				//Deal damage if still wounded.
+				else {
+					game.player.wyrmRuinousBloodSplash();/*
+					if(plural) outputText("[Themonster] bleed profusely from the jagged wounds your bite left behind. ");
+					else outputText("[Themonster] bleeds profusely from the jagged wounds your bite left behind. ");
+					SceneLib.combat.CommasForDigits(store3);
+					outputText("[pg]");*/
 				}
 			}
 			if (hasStatusEffect(StatusEffects.BloodRequiem)) {

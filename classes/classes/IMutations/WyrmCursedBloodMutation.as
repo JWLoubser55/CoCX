@@ -18,9 +18,13 @@ public class WyrmCursedBloodMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+			var ruin:Number = 2;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a "+(pTier*2)+"% strength drain as a backlash";
-			if (pTier >= 2) descS += ". When hunger is sated above "+((6-pTier)*2)+"0% you gain doubled health generation from all sources";
+			if (pTier >= 2) ruin += 2;
+			if (pTier >= 3) ruin += 4;
+			if (pTier >= 4) ruin += 8;
+            if (pTier >= 1) descS += "Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a "+ruin+"% strength drain as a backlash";
+			if (pTier >= 2) descS += ". If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing "+ruin+"% drain as a continuous poison effect";
             if (pTier >= 3) descS += ". You gain regeneration %";
             if (pTier >= 4) descS += ". You recover from all stat damage";
             if (descS != "")descS += ".";

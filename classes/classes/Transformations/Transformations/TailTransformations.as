@@ -1838,7 +1838,7 @@ public class TailTransformations extends MutationsHelper {
 				player.tailCount = 1;
 
 				if (doOutput) outputText(desc);
-				//Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.RHINO));
+				Metamorph.unlockMetamorph(TailMem.getMemory(TailMem.STONE_RHINO));
 			},
 			// is present
 			function (): Boolean {
@@ -1849,4 +1849,4 @@ public class TailTransformations extends MutationsHelper {
   */
 }
 }
-
+

@@ -3106,6 +3106,9 @@ use namespace CoC;
 		}
 		public function wyrmRuinousBloodSplash():void {
 			var wRBS:Number = 0.02;
+			if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 2) wRBS += 0.02;
+			if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 3) wRBS += 0.04;
+			if (perkv1(IMutationsLib.WyrmCursedBloodIM) >= 4) wRBS += 0.08;
 			wRBS *= CoC.instance.monster.str;
 			CoC.instance.monster.statStore.addBuffObject({str:-wRBS}, "Ruinous Blood",{text:"Ruinous Blood"});
 		}

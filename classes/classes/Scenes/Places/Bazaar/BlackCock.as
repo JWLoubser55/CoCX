@@ -157,7 +157,7 @@ import classes.lists.Gender;
 			switch(foodName) {
 				case "Rhino Steak":
 					player.refillHunger(40);
-					rhinoTFs();
+					rhinoTFs(0);
 					break;
 				case "Echidna Cake":
 					player.refillHunger(40);
@@ -1553,7 +1553,7 @@ import classes.lists.Gender;
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 
-		public function rhinoTFs():void {
+		public function rhinoTFs(type:Number):void {
 			var changes:int = 0;
 			var changeLimit:int = 3 + player.additionalTransformationChances;
 			// Stats Changes
@@ -1760,6 +1760,12 @@ import classes.lists.Gender;
 				changes++;
 			}
 			//Change tail to rhino
+			/*if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.lowerBody != LowerBody.GARGOYLE && player.tailType != Tail.STONE_RHINO) {
+				outputText("\n\n");
+				CoC.instance.transformations.TailStoneRhino.applyEffect();
+				player.tailType = Tail.STONE_RHINO;
+				changes++;
+			}*/
 			if (rand(3) == 0 && changes < changeLimit && player.isBiped() && player.lowerBody != LowerBody.GARGOYLE && player.tailType != Tail.RHINO) {
 				outputText("\n\n");
 				CoC.instance.transformations.TailRhino.applyEffect();
@@ -1767,12 +1773,22 @@ import classes.lists.Gender;
 				changes++;
 			}
 			//Change legs to rhino
+			/*if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.STONE_HOOFED_NO_FUR) {
+				outputText("\n\n");
+				CoC.instance.transformations..applyEffect();
+				changes++;
+			}*/
 			if (rand(3) == 0 && changes < changeLimit && player.lowerBody != LowerBody.HOOFED_NO_FUR) {
 				outputText("\n\n");
 				CoC.instance.transformations.LowerBodyHoofedNoFurBipedal.applyEffect();
 				changes++;
 			}
 			//Change arms to rhino
+			/*if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.STONE_RHINO) {
+				outputText("\n\n");
+				CoC.instance.transformations.ArmsStoneRhino.applyEffect();
+				changes++;
+			}*/
 			if (rand(3) == 0 && changes < changeLimit && player.arms.type != Arms.RHINO) {
 				outputText("\n\n");
 				CoC.instance.transformations.ArmsRhino.applyEffect();
@@ -2311,4 +2327,4 @@ import classes.lists.Gender;
 			flags[kFLAGS.TIMES_TRANSFORMED] += changes;
 		}
 	}
-}
+}

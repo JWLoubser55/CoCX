@@ -1589,7 +1589,7 @@ public class ArmsTransformations extends MutationsHelper {
 				player.arms.type = Arms.MANTIS;
 
 				if (doOutput) outputText(desc);
-				//Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.MANTIS));
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.THUNDER_MANTIS));
 			},
 			// is present
 			function (): Boolean {
@@ -1610,7 +1610,7 @@ public class ArmsTransformations extends MutationsHelper {
 				player.arms.type = Arms.RHINO;
 
 				if (doOutput) outputText(desc);
-				//Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.RHINO));
+				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.STONE_RHINO));
 			},
 			// is present
 			function (): Boolean {

@@ -200,6 +200,9 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const ArmsBanshee: Transformation 			= arms.ArmsBanshee.registerTf(AS_ARMS, AE_BANSHEE);
     public const ArmsRhino: Transformation 				= arms.ArmsRhino.registerTf(AS_ARMS, AE_RHINO);
     public const ArmsFrog: Transformation 				= arms.ArmsFrog.registerTfMultiple(AS_ARMS, AE_FROG, AE_MOBOGO);
+	public const ArmsThunderMantis: Transformation 		= arms.ArmsThunderMantis.registerTf(AS_ARMS, AE_MANTIS);
+	//public const ArmsSunPrayingMantis: Transformation 	= arms..registerTf(AS_ARMS, AE_SUN_PRAYING_MANTIS);
+    public const ArmsStoneRhino: Transformation 		= arms.ArmsStoneRhino.registerTf(AS_ARMS, AE_RHINO);
 
 
 //ASS
@@ -1082,6 +1085,8 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const TailHollow: Transformation               		= tail.TailHollow.registerTf(AS_TAIL, AE_HOLLOW);
 	public const TailRhino: Transformation               		= tail.TailRhino.registerTf(AS_TAIL, AE_RHINO);
 	public const TailChameleon: Transformation               	= tail.TailChameleon.registerTf(AS_TAIL, AE_CHAMELEON);
+	//public const TailSunPrayingMantis: Transformation 			= tail..registerTf(AS_TAIL, AE_SUN_PRAYING_MANTIS);
+	public const TailStoneRhino: Transformation               	= tail.TailStoneRhino.registerTf(AS_TAIL, AE_RHINO);
 
 	/**
 	 * @param tailCount target tail count

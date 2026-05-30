@@ -890,6 +890,39 @@ import classes.CoC;
 			}
 		});
 
+        public static const THUNDER_MANTIS:int = _partid++;
+        EnumValue.add(Memories, THUNDER_MANTIS, "THUNDER_MANTIS", {
+            id: "T.Mantis Arms",
+            name: "Thunder Mantis Arms",
+            cost: 100,
+            title: "Thunder Mantis",
+            transformation: function(): Transformation {
+                return CoC.instance.transformations.ArmsThunderMantis;
+            }
+        });/*
+
+        public static const SUN_PRAYING_MANTIS:int = _partid++;
+        EnumValue.add(Memories, SUN_PRAYING_MANTIS, "SUN_PRAYING_MANTIS", {
+            id: "S.P.Mantis Arms",
+            name: "Sun Praying Mantis Arms",
+            cost: 200,
+            title: "Sun Praying Mantis",
+            transformation: function(): Transformation {
+                return CoC.instance.transformations.;
+            }
+        });*/
+
+		public static const STONE_RHINO:int = _partid++;
+		EnumValue.add(Memories, STONE_RHINO, "STONE_RHINO", {
+			id: "S.Rhino Arms",
+			name: "Stone Rhino Arms",
+			cost: 100,
+			title: "Stone Rhino",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.ArmsStoneRhino;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

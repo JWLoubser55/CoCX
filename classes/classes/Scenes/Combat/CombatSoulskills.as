@@ -394,7 +394,7 @@ public class CombatSoulskills extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.NaturalArsenal)) damage *= 2;
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = combat.gallopDamageBoost(damage);
-		if (player.perkv1(IMutationsLib.EquineMuscleIM) >= 1) damage *= (1 + (0.25 * player.perkv1(IMutationsLib.EquineMuscleIM)));
+		damage = combat.physicalAbilityDamageAmplification(damage);
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
