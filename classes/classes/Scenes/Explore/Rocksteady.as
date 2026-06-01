@@ -26,7 +26,7 @@ public class Rocksteady extends BaseContent {
 			//addButton(0, "Potions", potionMenu);
 			//addButton(1, "Books", bookMenu);
 			//addButton(2, "Erotica", eroticaMenu);
-			//addButton(3, "Misc", miscMenu);
+			addButton(3, "Misc", miscMenu);
 			//addButton(4, "Trade", tradeMenu);
 			addButton(14, "Leave", explorer.done);
 			statScreenRefresh();
@@ -34,12 +34,12 @@ public class Rocksteady extends BaseContent {
 		
 		private function firstEncounter():void {
 			outputText("As you travel, you see another person on the road.  He is tethered to a small cart that is overloaded with a hodgepodge of items.  He is dressed in a very garish manner, having a broad, multicolored hat, brocaded coat and large, striped pantaloons.  His appearance is almost comical and contrasts with his severe and hawkish facial features.  The man sees you, smiles and stops his cart.\n");
-			outputText("\"<i>Greetings, traveler! My name is Giacomo.  I am, as you can see, a humble purveyor of items, curios and other accoutrements.  While I am not in a position to show you my full wares as my shop is packed on this push-cart, I do offer some small trinkets for travelers I meet.</i>\"\n\n");
+			outputText("\"<i>Greetings, traveler! My name is Rocksteady.  I am, as you can see, a humble purveyor of items, curios and other accoutrements.  While I am not in a position to show you my full wares as my shop is packed on this push-cart, I do offer some small trinkets for travelers I meet.</i>\"\n\n");
 			outputText("The merchant looks at you sharply and cracks a wide, toothy smile you find... unnerving.  The merchant twists his way around to access a sack he has around his back.  After a moment, he swings the sack from his back to have better access to its contents.  Inquisitively, the merchant turns back to you.\n");
 			outputText("\"<i>So stranger, be you interested in some drafts to aid you in your travels, some quick pamphlets to warn you of dangers on journeys or...</i>\"\n\n");
-			outputText("Giacomo pauses and turns his head in both directions in a mocking gesture of paranoid observation.  His little bit of theatrics does make you wonder what he is about to offer.\n");
+			outputText("Rocksteady pauses and turns his head in both directions in a mocking gesture of paranoid observation.  His little bit of theatrics does make you wonder what he is about to offer.\n");
 			outputText("\"<i>...maybe you would be interested in some items that enhance the pleasures of the flesh?  Hmmm?</i>\"\n\n");
-			outputText("Giacomo's grin is nothing short of creepy as he offers his wares to you.  What are you interested in?");
+			outputText("Rocksteady's grin is nothing short of creepy as he offers his wares to you.  What are you interested in?");
 			player.createStatusEffect(StatusEffects.MeetRocksteady, 0, 0, 0, 0);
 		}
 		
@@ -50,12 +50,6 @@ public class Rocksteady extends BaseContent {
 			var merchantMenu:MerchantMenu = new MerchantMenu();
 			merchantMenu.playerCanSell = true;
 			merchantMenu.playerSellFactor = merchantMenu.greedCheck() ? 0.8 : 0.4;
-			merchantMenu.addItem(consumables.MANUP_B, 15);
-			merchantMenu.addItem(consumables.VITAL_T, 15);
-			merchantMenu.addItem(consumables.SMART_T, 15);
-			merchantMenu.addItem(consumables.CERUL_P, 75);
-			merchantMenu.addLineBreak();
-			merchantMenu.addItem(useables.CONDOM, 10);
 			merchantMenu.addItem(consumables.SAPILL_);
 			merchantMenu.addItem(consumables.MAPILL_).disableIf(player.level < 24, "Req. lvl 24+", true);
 			merchantMenu.addItem(consumables.BAPILL_).disableIf(player.level < 42, "Req. lvl 42+", true);
@@ -70,12 +64,12 @@ public class Rocksteady extends BaseContent {
 			merchantMenu.addLineBreak();
 			merchantMenu.addItem(consumables.GRHINOS, 25);
 			merchantMenu.show(rocksteadyEncounter);
-		}/*
+		}
 		
 		private function miscMenu():void {
-			spriteSelect(SpriteDb.s_giacomo);
+			//spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
-			menu();
+			menu();/*
 			addButton(0, "MiningProdigyBag", pitchMiningProdigyBag);
 			if (player.hasKeyItem("Tarnished Ore Bag (Lowest grade)") >= 0) addButton(1, "Ore Bag (LowG)", pitchLLOreBag).hint("Ore Bag (Lowest Grade)");
 			if (Garden.IngrediantBagSlot01Cap == 0) addButton(4, "Herb Bag (LLowG)", pitchLLHerbsBag).hint("Herbs Bag (Lowest Grade)");
@@ -101,10 +95,10 @@ public class Rocksteady extends BaseContent {
 				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 0) addButton(11, "Mysterious Seed", pitchMysteriousSeed);
 				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 5) addButton(12, "Decorations", pitchDecorations);
 			}
-			addButton(13, "Torch", pitchTorch);
+			addButton(13, "Torch", pitchTorch);*/
 			addButton(14, "Back", rocksteadyEncounter);
 			statScreenRefresh();
-		}
+		}/*
 		
 		private function itemBuy2(itype:ItemType):void {
 			clearOutput();
@@ -122,6 +116,73 @@ public class Rocksteady extends BaseContent {
 			player.gems -= itype.value;
 			statScreenRefresh();
 			inventory.takeItem(itype, potionMenu);
+		}
+		
+		private function pitchPurePeach():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			outputText("Giacomo holds up a peach.  \"<i>While you may not find value in this as a fruit,</i>\", Giacomo opens, \"<i>you never know what you may gain from eating it!  I will offer the super-cheap price of 25 gems!</i>\"");
+			doYesNo(buyPurePeach, miscMenu);
+		}
+		
+		private function buyPurePeach():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			if (player.gems < 25) {
+				outputText("Giacomo sighs, indicating you need 25 gems to purchase this item.");
+				doNext(miscMenu);
+			}
+			else {
+				outputText("The crazy merchant nods satisfied when you hand him over a twenty five gems and in exchange gives you a yellowy-orange peach.");
+				player.gems -= 25;
+				inventory.takeItem(consumables.PURPEAC, miscMenu);
+			}
+		}
+		
+		private function pitchMysteriousSeed():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			outputText("\"<i>Ah, that. That's just a seed I acquired from someone on my travels. They said planting it will result in something truly extraordinary to happen but I haven't really had the time to get around to it. Perhaps it'll be better suited for someone with more time on their hands? Maybe for let's say… 30 gems?</i>\"");
+			doYesNo(buyMysteriousSeed, miscMenu);
+		}
+		
+		private function buyMysteriousSeed():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			if (player.gems < 30) {
+				outputText("\n\nGiacomo sighs, indicating you need 30 gems to purchase this item.");
+				doNext(miscMenu);
+			}
+			else {
+				outputText("\n\nYou decided to buy the seed. It’s actually fairly large and light brown in color. Other than that it just looks like an ordinary seed. Maybe you'll plant it later to see what it'll grow into. <b>You acquired the Mysterious Seed.</b>");
+				player.gems -= 30;
+				flags[kFLAGS.CHRISTMAS_TREE_LEVEL] = 1;
+				player.createKeyItem("Mysterious Seed", 0, 0, 0, 0);
+				doNext(miscMenu);
+			}
+		}
+		
+		private function pitchDecorations():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			outputText("\"<i>Ah, yes! I make sure to keep these in stock for the season! Though not many people around here really buy these anymore… I can sell these to you for a decent price. Let's say about 100 gems?</i>\"");
+			doYesNo(buyDecorations, miscMenu);
+		}
+		
+		private function buyDecorations():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			if (player.gems < 100) {
+				outputText("\n\nGiacomo sighs, indicating you need 100 gems to purchase this item.");
+				doNext(miscMenu);
+			}
+			else {
+				outputText("\n\nYou decided to buy the seed. It’s actually fairly large and light brown in color. Other than that it just looks like an ordinary seed. Maybe you'll plant it later to see what it'll grow intoYou buy the package filled with holiday decorations. Inside are shiny, colorful ornaments, garland, and lights. You can't help but think this will be perfect for decorating the tree back at camp. <b>You acquired Holiday Decorations.</b>");
+				player.gems -= 100;
+				flags[kFLAGS.CHRISTMAS_TREE_LEVEL] = 7;
+				player.createKeyItem("Decorations", 0, 0, 0, 0);
+				doNext(miscMenu);
+			}
 		}*/
 		
 	}

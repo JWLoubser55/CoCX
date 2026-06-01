@@ -287,7 +287,7 @@ public class KitsuneScene extends BaseContent
 			clearOutput();
 			outputText("\"<i>We hope you enjoyed the feast we prepared,</i>\" says the one with jet-black hair, as she and her sisters crowd around you in the water, fully nude.  \"<i>Now, it's </i>our<i> turn.</i>\"\n\n");
 			outputText("\"<i>Just relax,</i>\" the redhead whispers into your ear in a warm tone that seems to demolish any vestige of resistance.  \"<i>We'll take care of everything...</i>\"  Up to your waist in the warm water of the hot springs, you can't help but surrender to their will, your worries flowing out of you.  Enveloped on all sides by their unearthly warm flesh, you lean into their arms and sigh blissfully as every touch and caress sends shivers down your spine.\n\n");
-			if (player.countCocksWithType(CockTypesEnum.TENTACLE, 30, -1, "length") >= 3 || player.countCocksWithType(CockTypesEnum.STAMEN, 30, -1, "length") >= 3)
+			if (player.countCocksWithType(CockTypesEnum.TENTACLE, 3, -1, "length") >= 3 || player.countCocksWithType(CockTypesEnum.STAMEN, 3, -1, "length") >= 3)
 				doNext(alrauneVSKitsune);
 			else {
                 sceneHunter.print("Check failed: 3 long tentacle cocks");

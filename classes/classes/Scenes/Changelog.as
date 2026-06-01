@@ -281,7 +281,7 @@ public class Changelog extends BaseContent
 			outputText("The ruinous blood now also decays the opponent's total health by 2%. Poisoning an opponent with ruinous blood through any means now raises your damage dealt by 10% permanently against that opponent.\n");
 			outputText("-Upheaval p.special when used with stone horn(s) would deal additional earth damage instance.\n");
 			outputText("-Having Thick Skin perk and Stone/Steel skin would increase bonus from perk by 5x. Also base bonus from perk to m.res is increased to match bonus to armor.\n");
-			outputText("-\n");
+			outputText("-New event perk: Earth Affinity. Gained by having rhino score tier 2+. Effects: You have high resistance to earth effects, and mastery over earth abilities and magic. (2x dmg for earth element attacks, +50% to earth resistance)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -1607,7 +1607,7 @@ public class ArmsTransformations extends MutationsHelper {
 				TransformationUtils.applyTFIfNotPresent(transformations.ArmsHuman, doOutput);
 
 				desc += "Your arms and hands skin start to thicken into layer of stone and as you poke at your palms you jolt up as they become extremely sensitive turning into paw pads heck your nails transformed into hoof like claws so no wonder you felt it that much. <b>You now have stone rhino arms.</b>";
-				player.arms.type = Arms.RHINO;
+				player.arms.type = Arms.STONE_RHINO;
 
 				if (doOutput) outputText(desc);
 				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.STONE_RHINO));

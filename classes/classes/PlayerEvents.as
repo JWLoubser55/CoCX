@@ -2375,6 +2375,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				if (player.hasPerk(PerkLib.Nightshade)) player.removePerk(PerkLib.Nightshade);
 				if (player.hasPerk(PerkLib.DarknessAffinity) && player.perkv3(PerkLib.DarknessAffinity) == 1) player.removePerk(PerkLib.DarknessAffinity);
 			}
+			//Earth Affinity
+			needNext = player.gainOrLosePerk(PerkLib.EarthAffinity, player.isRaceCached(Races.RHINO, 2), "Your head spins, you feel the need to sit...and when you do, you close your eyes instinctively. You... <i>feel</i> the warm earth below you. It shifts and moves...and you can feel it in your bones, with every step you take, vibrations through the soil and down into the bones of the earth.", "As your body shifts, you feel lightheaded. Your connection to the earth withers, like a bad root being pulled out. You shudder as your perception shifts, leaving you alone in your body once more...and slightly colder without the earth's embrace.") || needNext;
 			//Hollow affinity related perks
 			//needNext = player.gainOrLosePerk(PerkLib., (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
 			needNext = player.gainOrLosePerk(PerkLib.ToxicRomance, (player.hasPerk(PerkLib.ExanimationIV) && player.hasPerk(PerkLib.AcidAffinity)), "", "") || needNext;
