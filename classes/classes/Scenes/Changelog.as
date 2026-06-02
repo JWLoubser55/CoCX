@@ -113,7 +113,7 @@ public class Changelog extends BaseContent
 			outputText("-New Area: Ocean (92-111). Exploring coastal waters allows now to find it. For all that want know what is down there in depth whenever it's Deep One nest, Arigean settlements, Abyssal Cities or just marvels of Gopture, we're one step closer to find out.\n");
 			outputText("-New Area: Tunnels (71-95). Exploring caves allows now to find it.\n");
 			outputText("-New Area: Cliffs (81-101). Exploring tunnels allows now to find it. Req. to be able to fly to explore this area.\n");
-			outputText("-New Area: Lightless Reach (76-96). Exploring tunnels allows now to find it. Req. to have any way to see in dark be it darkness / fireshadow affinity, eyes with darkvision or having torch from Giacomo.\n");
+			outputText("-New Area: Lightless Reach (76-96). Exploring tunnels allows now to find it. Req. to have any way to see in dark be it darkness / fireshadow affinity, eyes with darkvision or having torch from Rocksteady.\n");
 			outputText("-New sprite: Tripxi.\n");
 			
 			outputText("-Losing to Werespider in tunnels would TF PC (without currently pernament tf) into werespider. Their race bonuses for Werespider / Elder Werespider (12/18): +50%/+80% to str multi, +80%/+110% to tou multi, +80%/+110% to spe multi, -30% to lib multi, -20% max lust multi, -80% max wrath multi\n");
@@ -206,7 +206,7 @@ public class Changelog extends BaseContent
 			outputText("-First Attack: Skeletons perk tier was changed (9 > 4) and req. now only Skeleton Lord perk.\n");
 			outputText("-Prestige Job: Necromancer req. for Job: Golemancer replaced by Skeleton Lord. Bone Soul perk tier lowered by 1.\n");
 			outputText("-Bone Soul perk effects slight changed: max bones stored increased to +150, max cap of bonus spellpower from having over 50 bones increased to +300%.\n");
-			outputText("-When below lvl 32 Giacomo selling Pure Peaches for Hollowfied PC's.\n");
+			outputText("-When below lvl 32 Rocksteady selling Pure Peaches for Hollowfied PC's.\n");
 			outputText("-Necro set when completed increase all large sized skeletons control by 1. Each piece of Necro set would add now 3 to each normal sized skeletons caps.\n");
 			outputText("-Skeleton Giant ignore enemy DR. Bone Ballista Skelies deal increased damage to enemy groups or large enemies. Gigachad Skeletal Mages can have selected elemental damage they deal out of combat between any not complex element or pure magic damage.\n");
 			outputText("-New Sprites: Alvina, Kirin (by Liadri).\n");
@@ -272,7 +272,7 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Wyrm Cursed Blood. Req. having free bloodstream mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake races. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 2% strength drain as a backlash.\n");
 			outputText("-New mutation perk: Wyrm Musculature (Primitive). Req. Wyrm Musculature and lvl 30+. Effects: Increase total strength by 10% but reduce intelligence by the same amount. Physical ability damage is increased by 50%.\n");
 			outputText("-New mutation perk: Wyrm Cursed Blood (Primitive). Req. Wyrm Cursed Blood and lvl 30+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 4% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 4% drain as a continuous poison effect.\n");
-			outputText("-New TF item (by Ormael): Steak grilled by rhino. Sold by Giacomo. Using this item will turn PC into stone rhino if rhino score reached tier 1 of race bonuses. Stone Rhino / Petrokheros racial bonuses (14+/20+): +135/180% to str/tou multi, -30/40% to int multi, -50/60 to sens, +400/600 to max hp, +20/30 to armor, +8/12 to m.res.\n");
+			outputText("-New TF item (by Ormael): Steak grilled by rhino. Sold by Rocksteady. Using this item will turn PC into stone rhino if rhino score reached tier 1 of race bonuses. Stone Rhino / Petrokheros racial bonuses (14+/20+): +135/180% to str/tou multi, -30/40% to int multi, -50/60 to sens, +400/600 to max hp, +20/30 to armor, +8/12 to m.res.\n");
 			//outputText("-New mutation perk: Wyrm Musculature (Evolved). Req. Wyrm Musculature (Primitive) and lvl 60+. Effects: \n");
 			outputText("-New mutation perk: Wyrm Cursed Blood (Evolved). Req. Wyrm Cursed Blood (Primitive) and lvl 60+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 8% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 8% strength drain as a continuous poison effect. ");
 			outputText("The ruinous blood now also decays the opponent's total health by 1%.\n");
@@ -282,7 +282,7 @@ public class Changelog extends BaseContent
 			outputText("-Upheaval p.special when used with stone horn(s) would deal additional earth damage instance.\n");
 			outputText("-Having Thick Skin perk and Stone/Steel skin would increase bonus from perk by 5x. Also base bonus from perk to m.res is increased to match bonus to armor.\n");
 			outputText("-New event perk: Earth Affinity. Gained by having rhino score tier 2+. Effects: You have high resistance to earth effects, and mastery over earth abilities and magic. (2x dmg for earth element attacks, +50% to earth resistance)\n");
-			outputText("-\n");
+			outputText("-When using general Explore there is another merchant (but not twin) that deal with similar stuff like Giacomo. He's steady, he's rock (hard?) so call him Rocksteady ;) And we all love is sharing so Giacomo (un)willingly gave some of stuff he been dealing with to his coworker merchant that travel same ways.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -1004,7 +1004,7 @@ public class Changelog extends BaseContent
 			outputText("-New bottom underwear (by Liadri): Arch-Necromancer panty - buyable at Kaiba shop in Tel'Adre. Cost 200 gems. A panty made of silk and ornamental bones plated in silver. Increase minion damage by 20%.\n");
 			outputText("-New necklace (by Ormael): Skull Necklace - buyable at Felix in Journey to the East inn. Cost 800 spirit stones. +2%(+4%)/-2%(-4%) HP regeneration (below 0 HP)(undead / others), +5% diehard for undead\n");
 			outputText("-New necklace (by Ormael): Tree of Life Necklace - buyable at Felix in Journey to the East inn. Cost 800 spirit stones. +2%(+4%)/-2%(-4%) HP regeneration (below 0 HP)(others / undead), +5% diehard for living beings\n");
-			outputText("-New necklace (by Liadri): Silver cross necklace - obtained radomly after any defeat as herm / female OR bought from Giacomo. Cost 400 gems. Effect: +50% to tease and magical damage when used by PC with soulless perk.\n");
+			outputText("-New necklace (by Liadri): Silver cross necklace - obtained radomly after any defeat as herm / female OR bought from Rocksteady. Cost 400 gems. Effect: +50% to tease and magical damage when used by PC with soulless perk.\n");
 			outputText("-New necklace (by Liadri): Winter Bell Collar - obtained from X-mas event with Cernos girl. Cost 1600 gems. Effect: Grant the Skywalk ability if you are tauric. Increase all movement based P.Ability by 100% as well as increases core speed value by 50. The effects of this necklace are increased by an extra 50% during winter or when in an area of intense cold.\n");
 			outputText("-New head jewelery/accesory/misc (by Ormael): Skull Crown - buyable at Felix in Journey to the East inn. Cost 800 spirit stones. +2%(+4%)/-2%(-4%) HP regeneration (below 0 HP)(undead / others), +5% diehard for undead\n");
 			outputText("-New head jewelery/accesory/misc (by Ormael): Tree of Life Crown - buyable at Felix in Journey to the East inn. Cost 800 spirit stones. +2%(+4%)/-2%(-4%) HP regeneration (below 0 HP)(others / undead), +5% diehard for living beings\n");

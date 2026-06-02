@@ -39,6 +39,8 @@ public class Exploration extends BaseContent implements SaveableState
 	{
 		public var exploreDebug:ExploreDebug = new ExploreDebug();
 		public var hiddencave:HiddenCave = new HiddenCave();
+		public var rocksteadyShop:Rocksteady = new Rocksteady();
+		public var giacomoShop:Giacomo = new Giacomo();
 		
 		// Discovering an area counts as exploring it for the 1st time
 		// It is safe to add/remove areas to this object without changing loadFromObject
@@ -1404,7 +1406,12 @@ public class Exploration extends BaseContent implements SaveableState
 						name  : "Giacomo",
 						kind  : "npc",
 						unique: true,
-						call  : SceneLib.giacomoShop.giacomoEncounter
+						call  : giacomoShop.giacomoEncounter
+					}, {
+						name  : "Rocksteady",
+						kind  : "npc",
+						unique: true,
+						call  : rocksteadyShop.rocksteadyEncounter
 					}, {
 						name  : "Dinah",
 						kind  : "npc",

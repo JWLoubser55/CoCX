@@ -106,8 +106,7 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			addButton(1, "Books", bookMenu);
 			addButton(2, "Erotica", eroticaMenu);
 			addButton(3, "Misc", miscMenu);
-			addButton(4, "Trade", tradeMenu);
-			if (player.hasStatusEffect(StatusEffects.WormOffer) && player.hasStatusEffect(StatusEffects.Infested)) addButton(5, "Worm Cure", wormRemovalOffer);
+			if (player.hasStatusEffect(StatusEffects.WormOffer) && player.hasStatusEffect(StatusEffects.Infested)) addButton(4, "Worm Cure", wormRemovalOffer);
 			addButton(14, "Leave", explorer.done);
 			statScreenRefresh();
 		}
@@ -122,35 +121,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			outputText("Giacomo's grin is nothing short of creepy as he offers his wares to you.  What are you interested in?");
 			flags[kFLAGS.GIACOMO_MET] = 1;
 		}
-		
-		private function tradeMenu():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			menu();
-			var merchantMenu:MerchantMenu = new MerchantMenu();
-			merchantMenu.playerCanSell = true;
-			merchantMenu.playerSellFactor = merchantMenu.greedCheck() ? 0.8 : 0.4;
-			merchantMenu.addItem(consumables.MANUP_B, 15);
-			merchantMenu.addItem(consumables.VITAL_T, 15);
-			merchantMenu.addItem(consumables.SMART_T, 15);
-			merchantMenu.addItem(consumables.CERUL_P, 75);
-			merchantMenu.addLineBreak();
-			merchantMenu.addItem(useables.CONDOM, 10);
-			merchantMenu.addItem(consumables.SAPILL_);
-			merchantMenu.addItem(consumables.MAPILL_).disableIf(player.level < 24, "Req. lvl 24+", true);
-			merchantMenu.addItem(consumables.BAPILL_).disableIf(player.level < 42, "Req. lvl 42+", true);
-			merchantMenu.addLineBreak();
-			merchantMenu.addItem(consumables.W__BOOK, 100);
-			merchantMenu.addItem(consumables.G__BOOK, 500);
-			merchantMenu.addItem(consumables.B__BOOK, 100);
-			merchantMenu.addLineBreak();
-			merchantMenu.addItem(consumables.RMANUSC, 125);
-			merchantMenu.addItem(weaponsrange.E_TOME_, 1000);
-			merchantMenu.addItem(consumables.CRIMS_J, 125);
-			merchantMenu.addLineBreak();
-			merchantMenu.addItem(consumables.GRHINOS, 25);
-			merchantMenu.show(giacomoEncounter);
-		}
 	
 		private function potionMenu():void {
 			spriteSelect(SpriteDb.s_giacomo);
@@ -161,11 +131,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			addButton(1, "Vitality T.", pitchVitailtyTincture);
 			addButton(2, "Scholars T.", pitchScholarsTea);
 			if (player.gender != 2 || player.gender != 0) addButton(3, "Cerulean P.", pitchCeruleanPotion);
-			addButton(11, consumables.SAPILL_.shortName, itemBuy2, consumables.SAPILL_);
-			if (player.level >= 24) addButton(12, consumables.MAPILL_.shortName, itemBuy2, consumables.MAPILL_);
-			else addButtonDisabled(12, "???", "Req. lvl 24+");
-			if (player.level >= 42) addButton(13, consumables.BAPILL_.shortName, itemBuy2, consumables.BAPILL_);
-			else addButtonDisabled(13, "???", "Req. lvl 42+");
 			addButton(14, "Back", giacomoEncounter);
 			statScreenRefresh();
 		}
@@ -179,16 +144,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			addButton(1, "Traveler's Guide", pitchTravellersGuide);
 			addButton(2, "Hentai Comic", pitchHentaiComic);
 			if (flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER] > 0) addButton(3, "Yoga Guide", pitchYogaGuide);
-			addButton(4, "E. Tome", pitchElementalistsTome).hint("Elementalist’s Tome");
-			addButton(5, "White Book", pitchWhiteBook);
-			addButton(6, "Black Book", pitchBlackBook);
-			addButton(7, "Grey Book", pitchGreyBook);
-			addButton(8, "Red Manuscript", pitchRedManuscript);
-			addButton(9, "Crimson Jade", pitchCrimsonJade);
-			addButton(10, "TelAdreMagI2", pitchTelAdreMagazineIssue2).hint("Tel'Adre Magazine Issue 2");
-			addButton(11, "TelAdreMagI5", pitchTelAdreMagazineIssue5).hint("Tel'Adre Magazine Issue 5");
-			addButton(12, "TelAdreMagI8", pitchTelAdreMagazineIssue8).hint("Tel'Adre Magazine Issue 8");
-			addButton(13, "TelAdreMagI10", pitchTelAdreMagazineIssue10).hint("Tel'Adre Magazine Issue 10");
 			addButton(14, "Back", giacomoEncounter);
 			statScreenRefresh();
 		}
@@ -206,7 +161,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			if (player.hasCock() && player.hasVagina()) addButton(5, "Dual Belt", pitchDualStimulationBelt);
 			if (player.hasCock() && player.hasVagina()) addButton(6, "AN Onahole", pitchAllNaturalOnahole);
 			addButton(7, "Condom", pitchCondom);
-			addButton(10, "S.C.N.", pitchSilverCrossNecklace).hint("Silver cross necklace");
 			addButton(14, "Back", giacomoEncounter);
 			statScreenRefresh();
 		}
@@ -235,12 +189,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				if (player.herbalismLevel >= 10) addButton(9, "Pot Bag (MidG)", pitchMPotionsBag).hint("Potion Bag (Mid Grade)");
 				else addButtonDisabled(9, "Pot Bag (MidG)", "Potion Bag (Mid Grade) Req. lvl 10 in Herbalism.");
 			}
-			if (player.hasPerk(PerkLib.ExanimationI) && !player.hasPerk(PerkLib.ExanimationIII) && player.level < 32) addButton(10, "Peach", pitchPurePeach);
-			if (Holidays.nieveHoliday()) {
-				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 0) addButton(11, "Mysterious Seed", pitchMysteriousSeed);
-				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 5) addButton(12, "Decorations", pitchDecorations);
-			}
-			addButton(13, "Torch", pitchTorch);
 			addButton(14, "Back", giacomoEncounter);
 			statScreenRefresh();
 		}
@@ -325,24 +273,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			}
 		}
 		
-		private function itemBuy2(itype:ItemType):void {
-			clearOutput();
-			outputText("\"<i>Interested? It’s yours for only " + itype.value + " gems.</i>\"");
-			if(player.gems < itype.value) {
-				outputText("\n\nYou count out your gems and realize it's beyond your price range.");
-				doNext(potionMenu);
-				return;
-			}
-			else outputText("\n\nDo you buy it?\n\n");
-			doYesNo(curry(debitWeapon2,itype), potionMenu);
-		}
-		
-		private function debitWeapon2(itype:ItemType):void {
-			player.gems -= itype.value;
-			statScreenRefresh();
-			inventory.takeItem(itype, potionMenu);
-		}
-		
 		public function pitchCondom():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
@@ -362,30 +292,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			{
 				player.gems -= 10;
 				inventory.takeItem(useables.CONDOM, eroticaMenu);
-			}
-		}
-		
-		public function pitchSilverCrossNecklace():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("The trader smiles wide as you look at the strange jewelry on his table.\n\n");
-			outputText("\"<i>Oh this? This necklace is magical. Tell me friend, do you believe in eternal love? This necklace can lead you to it, all for the modest sum of 400 gems.</i>\"\n\n");
-			outputText("This sounds AND looks like a scam but do you buy it anyway?");
-			doYesNo(buySilverCrossNecklace, eroticaMenu);
-		}
-		
-		public function buySilverCrossNecklace():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			if (player.gems < 400)
-			{
-				clearOutput();
-				outputText("\n\nGiacomo sighs, indicating you need " + String(400 - player.gems) + " more gems to purchase this item.");
-				doNext(eroticaMenu);
-			}
-			else
-			{
-				player.gems -= 400;
-				inventory.takeItem(necklaces.SILCNEC, eroticaMenu);
 			}
 		}
 		
@@ -493,114 +399,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				player.gems -= 100;
 			}
 			doNext(bookMenu);
-		}
-		
-		private function pitchTelAdreMagazineIssue2():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.hasKeyItem("Tel'Adre Magazine Issue 2") >= 0) {
-				outputText("<b>You already own the magazine 'Tel'Adre Magazine Issue 2'.</b>");
-				doNext(bookMenu);
-				return;
-			}
-			outputText("Giacomo holds up the magazine with a small degree of reverence.  \"<i>This, my friend,</i>\" begins Giacomo, \"<i>is a 2nd issue of Tel'Adre Magazine.  It dive into matters of distilling moonshine and mixing dyes... I mean, refining alchemical ingredients and medicine-crafting.  Because of its rarity and usefulness, I simply cannot let it go for less than 100 gems and believe me, at this price I'm practically cutting my own throat.  Care to broaden your alchemic horizons?</i>\"");
-			doYesNo(buyTelAdreMagazineIssue2, bookMenu);
-		}
-		
-		private function buyTelAdreMagazineIssue2():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 100) {
-				outputText("Giacomo sighs, indicating you need " + String(100 - player.gems) + " more gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("You consider yourself fortunate to be quite literate in this day and age.  It certainly comes in handy with this magazine.  Obviously written by well-informed, would help you in producing stinky goo... and sometimes, alchemical products. ");
-				doNext(bookMenu);
-				player.gems -= 100;
-				player.createKeyItem("Tel'Adre Magazine Issue 2", 0, 0, 0, 0);
-			}
-		}
-		
-		private function pitchTelAdreMagazineIssue5():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.hasKeyItem("Tel'Adre Magazine Issue 5") >= 0) {
-				outputText("<b>You already own the magazine 'Tel'Adre Magazine Issue 5'.</b>");
-				doNext(bookMenu);
-				return;
-			}
-			outputText("Giacomo holds up the magazine with a small degree of reverence.  \"<i>This, my friend,</i>\" begins Giacomo, \"<i>is a 5th issue of Tel'Adre Magazine.  It dive into matters of so called fifth finger or green thumb.  Because of its rarity and usefulness, I simply cannot let it go for less than 100 gems and believe me, at this price I'm practically cutting my own throat.  Care to broaden your herbalism horizons?</i>\"");
-			doYesNo(buyTelAdreMagazineIssue5, bookMenu);
-		}
-		
-		private function buyTelAdreMagazineIssue5():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 100) {
-				outputText("Giacomo sighs, indicating you need " + String(100 - player.gems) + " more gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("You consider yourself fortunate to be quite literate in this day and age.  It certainly comes in handy with this magazine.  Obviously written by well-informed, would help you in herb cultivation. ");
-				doNext(bookMenu);
-				player.gems -= 100;
-				player.createKeyItem("Tel'Adre Magazine Issue 5", 0, 0, 0, 0);
-			}
-		}
-		
-		private function pitchTelAdreMagazineIssue8():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.hasKeyItem("Tel'Adre Magazine Issue 8") >= 0) {
-				outputText("<b>You already own the magazine 'Tel'Adre Magazine Issue 8'.</b>");
-				doNext(bookMenu);
-				return;
-			}
-			outputText("Giacomo holds up the magazine with a small degree of reverence.  \"<i>This, my friend,</i>\" begins Giacomo, \"<i>is a 8th issue of Tel'Adre Magazine.  It dive into matters of so benefits of having all ten fingers... err well sometimes just eight to hold your farming tools.  Because of its rarity and usefulness, I simply cannot let it go for less than 100 gems and believe me, at this price I'm practically cutting my own throat.  Care to broaden your farming horizons?</i>\"");
-			doYesNo(buyTelAdreMagazineIssue8, bookMenu);
-		}
-		
-		private function buyTelAdreMagazineIssue8():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 100) {
-				outputText("Giacomo sighs, indicating you need " + String(100 - player.gems) + " more gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("You consider yourself fortunate to be quite literate in this day and age.  It certainly comes in handy with this magazine.  Obviously written by well-informed, would help you in.... not cutting any of your fingers when you try to use farming tools. ");
-				doNext(bookMenu);
-				player.gems -= 100;
-				player.createKeyItem("Tel'Adre Magazine Issue 8", 0, 0, 0, 0);
-			}
-		}
-		
-		private function pitchTelAdreMagazineIssue10():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.hasKeyItem("Tel'Adre Magazine Issue 10") >= 0) {
-				outputText("<b>You already own the magazine 'Tel'Adre Magazine Issue 10'.</b>");
-				doNext(bookMenu);
-				return;
-			}
-			outputText("Giacomo holds up the magazine with a small degree of reverence.  \"<i>This, my friend,</i>\" begins Giacomo, \"<i>is a 10th issue of Tel'Adre Magazine.  It dive into matters of so benefits of having all ten fingers... like to hold your pickaxe.  Because of its rarity and usefulness, I simply cannot let it go for less than 100 gems and believe me, at this price I'm practically cutting my own throat.  Care to broaden your mining horizons?</i>\"");
-			doYesNo(buyTelAdreMagazineIssue10, bookMenu);
-		}
-		
-		private function buyTelAdreMagazineIssue10():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 100) {
-				outputText("Giacomo sighs, indicating you need " + String(100 - player.gems) + " more gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("You consider yourself fortunate to be quite literate in this day and age.  It certainly comes in handy with this magazine.  Obviously written by well-informed, would help you in diggin the hole.... err mining to your heart content. ");
-				doNext(bookMenu);
-				player.gems -= 100;
-				player.createKeyItem("Tel'Adre Magazine Issue 10", 0, 0, 0, 0);
-			}
 		}
 		
 		private function pitchMiningProdigyBag():void {
@@ -826,226 +624,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				Crafting.BagSlot06Cap = 10;
 				Crafting.BagSlot07Cap = 10;
 				doNext(miscMenu);
-			}
-		}
-		
-		private function pitchPurePeach():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("Giacomo holds up a peach.  \"<i>While you may not find value in this as a fruit,</i>\", Giacomo opens, \"<i>you never know what you may gain from eating it!  I will offer the super-cheap price of 25 gems!</i>\"");
-			doYesNo(buyPurePeach, miscMenu);
-		}
-		
-		private function buyPurePeach():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 25) {
-				outputText("Giacomo sighs, indicating you need 25 gems to purchase this item.");
-				doNext(miscMenu);
-			}
-			else {
-				outputText("The crazy merchant nods satisfied when you hand him over a twenty five gems and in exchange gives you a yellowy-orange peach.");
-				player.gems -= 25;
-				inventory.takeItem(consumables.PURPEAC, miscMenu);
-			}
-		}
-		
-		private function pitchMysteriousSeed():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("\"<i>Ah, that. That's just a seed I acquired from someone on my travels. They said planting it will result in something truly extraordinary to happen but I haven't really had the time to get around to it. Perhaps it'll be better suited for someone with more time on their hands? Maybe for let's say… 30 gems?</i>\"");
-			doYesNo(buyMysteriousSeed, miscMenu);
-		}
-		
-		private function buyMysteriousSeed():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 30) {
-				outputText("\n\nGiacomo sighs, indicating you need 30 gems to purchase this item.");
-				doNext(miscMenu);
-			}
-			else {
-				outputText("\n\nYou decided to buy the seed. It’s actually fairly large and light brown in color. Other than that it just looks like an ordinary seed. Maybe you'll plant it later to see what it'll grow into. <b>You acquired the Mysterious Seed.</b>");
-				player.gems -= 30;
-				flags[kFLAGS.CHRISTMAS_TREE_LEVEL] = 1;
-				player.createKeyItem("Mysterious Seed", 0, 0, 0, 0);
-				doNext(miscMenu);
-			}
-		}
-		
-		private function pitchDecorations():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("\"<i>Ah, yes! I make sure to keep these in stock for the season! Though not many people around here really buy these anymore… I can sell these to you for a decent price. Let's say about 100 gems?</i>\"");
-			doYesNo(buyDecorations, miscMenu);
-		}
-		
-		private function buyDecorations():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 100) {
-				outputText("\n\nGiacomo sighs, indicating you need 100 gems to purchase this item.");
-				doNext(miscMenu);
-			}
-			else {
-				outputText("\n\nYou decided to buy the seed. It’s actually fairly large and light brown in color. Other than that it just looks like an ordinary seed. Maybe you'll plant it later to see what it'll grow intoYou buy the package filled with holiday decorations. Inside are shiny, colorful ornaments, garland, and lights. You can't help but think this will be perfect for decorating the tree back at camp. <b>You acquired Holiday Decorations.</b>");
-				player.gems -= 100;
-				flags[kFLAGS.CHRISTMAS_TREE_LEVEL] = 7;
-				player.createKeyItem("Decorations", 0, 0, 0, 0);
-				doNext(miscMenu);
-			}
-		}
-		
-		private function pitchTorch():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.hasKeyItem("Torch") > 0) {
-				outputText("<b>Trying to cope with that pyromania? You already have a torch!</b>");
-				doNext(miscMenu);
-				return;
-			}
-			outputText("Giacomo shrugs.  \"<i>You may think this item to be unnecessary but it’s in the kit of any smart adventurers wishing to explore nowadays, who knows it might even save your life. Only 100 gems, I recommend it, really.</i>\"");
-			doYesNo(buyTorch, miscMenu);
-		}
-		
-		private function buyTorch():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 100) {
-				outputText("\n\nGiacomo sighs, indicating you need 100 gems to purchase this item.");
-				doNext(miscMenu);
-			}
-			else {
-				outputText("The crazy merchant nods satisfied when you hand him over hundred gems and in exchange gives you a torch.");
-				player.gems -= 100;
-				player.createKeyItem("Torch", 0, 0, 0, 0);
-				doNext(miscMenu);
-			}
-		}
-		
-		private function pitchWhiteBook():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("Giacomo holds up a white book.  \"<i>While you may not find value in this as a simple book,</i>\", Giacomo opens, \"<i>you never know what you may learn from it!  Maybe even some useful spell!  I will offer the super-cheap price of 100 gems!</i>\"");
-			doYesNo(buyWhiteBook, bookMenu);
-		}
-		
-		private function buyWhiteBook():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 100) {
-				outputText("Giacomo sighs, indicating you need 100 gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("The crazy merchant nods satisfied when you hand him over a hundred gems and in exchange gives you a white book.");
-				player.gems -= 100;
-				inventory.takeItem(consumables.W__BOOK, bookMenu);
-			}
-		}
-		
-		private function pitchGreyBook():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("Giacomo holds up a grey book.  \"<i>While you may not find value in this as a simple book,</i>\", Giacomo opens, \"<i>you never know what you may learn from it!  Maybe even some useful spell!  I will offer the super-cheap price of 500 gems!</i>\"");
-			doYesNo(buyGreyBook, bookMenu);
-		}
-		
-		private function buyGreyBook():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 500) {
-				outputText("Giacomo sighs, indicating you need 500 gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("The crazy merchant nods satisfied when you hand him over five hundred gems and in exchange gives you a grey book.");
-				player.gems -= 500;
-				inventory.takeItem(consumables.G__BOOK, bookMenu);
-			}
-		}
-		
-		private function pitchBlackBook():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("Giacomo holds up a black book.  \"<i>While you may not find value in this as a simple book,</i>\", Giacomo opens, \"<i>you never know what you may learn from it!  Maybe even some useful spell!  I will offer the super-cheap price of 100 gems!</i>\"");
-			doYesNo(buyBlackBook, bookMenu);
-		}
-		
-		private function buyBlackBook():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 100) {
-				outputText("Giacomo sighs, indicating you need 100 gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("The crazy merchant nods satisfied when you hand him over a hundred gems and in exchange gives you a black book.");
-				player.gems -= 100;
-				inventory.takeItem(consumables.B__BOOK, bookMenu);
-			}
-		}
-		
-		private function pitchRedManuscript():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("Giacomo holds up a red manuscript.  \"<i>While you may not find value in this as a simple manuscript,</i>\", Giacomo opens, \"<i>you never know what you may learn from it!  Maybe even some useful spell!  I will offer the super-cheap price of 125 gems!</i>\"");
-			doYesNo(buyRedManuscript, bookMenu);
-		}
-		
-		private function buyRedManuscript():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 125) {
-				outputText("Giacomo sighs, indicating you need 125 gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("The crazy merchant nods satisfied when you hand him over a one hundred twenty five gems and in exchange gives you a red manuscript.");
-				player.gems -= 125;
-				inventory.takeItem(consumables.RMANUSC, bookMenu);
-			}
-		}
-		
-		private function pitchCrimsonJade():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("Giacomo holds up a crimson jade.  \"<i>While you may not find value in this as a simple jade,</i>\", Giacomo waves, \"<i>you never know what you may learn from it!  Maybe even some useful soulskill!  I will offer the super-cheap price of 125 gems!</i>\"");
-			doYesNo(buyCrimsonJade, bookMenu);
-		}
-		
-		private function buyCrimsonJade():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 125) {
-				outputText("Giacomo sighs, indicating you need 125 gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("The crazy merchant nods satisfied when you hand him over a one hundred twenty five gems and in exchange gives you a Crimson Jade.");
-				player.gems -= 125;
-				inventory.takeItem(consumables.CRIMS_J, bookMenu);
-			}
-		}
-		
-		private function pitchElementalistsTome():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("Giacomo holds up an Elementalist’s Tome.  \"<i>While you may not find value in this as a simple tome,</i>\", Giacomo opens, \"<i>you never know what you may learn from it!  I will offer the super-cheap price of 1,000 gems!</i>\"");
-			doYesNo(buyElementalistsTome, bookMenu);
-		}
-		
-		private function buyElementalistsTome():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 1000) {
-				outputText("Giacomo sighs, indicating you need 1,000 gems to purchase this item.");
-				doNext(bookMenu);
-			}
-			else {
-				outputText("The crazy merchant nods satisfied when you hand him over thousand gems and in exchange gives you an Elementalist’s Tome.");
-				player.gems -= 1000;
-				inventory.takeItem(weaponsrange.E_TOME_, bookMenu);
 			}
 		}
 		

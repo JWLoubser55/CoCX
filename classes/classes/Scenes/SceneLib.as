@@ -105,8 +105,6 @@ public class SceneLib {
 
     public static var lumi:Lumi = new Lumi();
 
-    public static var giacomoShop:Giacomo = new Giacomo();
-
     public static var angelScene:AngelScene = new AngelScene();
 
     public static var impScene:ImpScene = new ImpScene();
