@@ -29,7 +29,6 @@ import classes.BodyParts.*;
 import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.API.MerchantMenu;
 import classes.Scenes.Camp.Garden;
-import classes.Scenes.Crafting;
 import classes.Scenes.Holidays;
 import classes.Scenes.SceneLib;
 import classes.display.SpriteDb;
@@ -105,9 +104,9 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			addButton(0, "Potions", potionMenu);
 			addButton(1, "Books", bookMenu);
 			addButton(2, "Erotica", eroticaMenu);
-			addButton(3, "Misc", miscMenu);
-			if (player.hasStatusEffect(StatusEffects.WormOffer) && player.hasStatusEffect(StatusEffects.Infested)) addButton(4, "Worm Cure", wormRemovalOffer);
-			addButton(14, "Leave", explorer.done);
+			if (player.hasStatusEffect(StatusEffects.WormOffer) && player.hasStatusEffect(StatusEffects.Infested)) addButton(3, "Worm Cure", wormRemovalOffer);
+			addButton(4, "Leave", explorer.done);
+			addButton(5, "Misc", miscMenu);
 			statScreenRefresh();
 		}
 		
@@ -161,6 +160,7 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			if (player.hasCock() && player.hasVagina()) addButton(5, "Dual Belt", pitchDualStimulationBelt);
 			if (player.hasCock() && player.hasVagina()) addButton(6, "AN Onahole", pitchAllNaturalOnahole);
 			addButton(7, "Condom", pitchCondom);
+			addButton(10, "S.C.N.", pitchSilverCrossNecklace).hint("Silver cross necklace");
 			addButton(14, "Back", giacomoEncounter);
 			statScreenRefresh();
 		}
@@ -169,8 +169,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
 			menu();
-			addButton(0, "MiningProdigyBag", pitchMiningProdigyBag);
-			if (player.hasKeyItem("Tarnished Ore Bag (Lowest grade)") >= 0) addButton(1, "Ore Bag (LowG)", pitchLLOreBag).hint("Ore Bag (Lowest Grade)");
 			if (Garden.IngrediantBagSlot01Cap == 0) addButton(4, "Herb Bag (LLowG)", pitchLLHerbsBag).hint("Herbs Bag (Lowest Grade)");
 			if (Garden.IngrediantBagSlot07Cap == 0) {
 				if (player.farmingLevel >= 5) addButton(5, "Herb Bag (LowG)", pitchLHerbsBag).hint("Herbs Bag (Low Grade)");
@@ -295,6 +293,30 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			}
 		}
 		
+		public function pitchSilverCrossNecklace():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			outputText("The trader smiles wide as you look at the strange jewelry on his table.\n\n");
+			outputText("\"<i>Oh this? This necklace is magical. Tell me friend, do you believe in eternal love? This necklace can lead you to it, all for the modest sum of 400 gems.</i>\"\n\n");
+			outputText("This sounds AND looks like a scam but do you buy it anyway?");
+			doYesNo(buySilverCrossNecklace, eroticaMenu);
+		}
+		
+		public function buySilverCrossNecklace():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			if (player.gems < 400)
+			{
+				clearOutput();
+				outputText("\n\nGiacomo sighs, indicating you need " + String(400 - player.gems) + " more gems to purchase this item.");
+				doNext(eroticaMenu);
+			}
+			else
+			{
+				player.gems -= 400;
+				inventory.takeItem(necklaces.SILCNEC, eroticaMenu);
+			}
+		}
+		
 		private function pitchDangerousPlantsBook():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
@@ -399,26 +421,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				player.gems -= 100;
 			}
 			doNext(bookMenu);
-		}
-		
-		private function pitchMiningProdigyBag():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("Giacomo holds up a bag.  \"<i>While you may not find value in this as a simple bag,</i>\", Giacomo opens, \"<i>you would find use of items that mining prodigy that owned this before you gatherted!  Maybe even gain profficency in mining faster or never failt to find ores!  I will offer the super-cheap price of 800 gems!</i>\"");
-			doYesNo(buyMiningProdigyBag, miscMenu);
-		}
-		private function buyMiningProdigyBag():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 800) {
-				outputText("Giacomo sighs, indicating you need 800 gems to purchase this item.");
-				doNext(miscMenu);
-			}
-			else {
-				outputText("The crazy merchant nods satisfied when you hand him over an eight hundred gems and in exchange gives you a mining prodigy bag.");
-				player.gems -= 800;
-				inventory.takeItem(miscjewelries.MINPBAG, miscMenu);
-			}
 		}
 		
 		private function pitchLLHerbsBag():void {
@@ -595,34 +597,6 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				Garden.PotionsBagSlot08Cap = 40;
 				Garden.PotionsBagSlot09Cap = 40;
 				Garden.PotionsBagSlot10Cap = 40;
-				doNext(miscMenu);
-			}
-		}
-		
-		private function pitchLLOreBag():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("\"<i>I see you have some pretty tarnished bag to store ores. Why not you buy this new one bag that is much better even if it's not better grade than the one you have now? Only 600 gems and i even gonna take your current bag. I assure you not gonna find such good offer anywhere else...</i>\"");
-			doYesNo(buyLLOreBag, miscMenu);
-		}
-		private function buyLLOreBag():void {
-			spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			if (player.gems < 600) {
-				outputText("\n\nGiacomo sighs, indicating you need 600 gems to purchase this item.");
-				doNext(miscMenu);
-			}
-			else {
-				outputText("\n\nYou decided to buy the bag. It looking much better the one you had and checking inside it appears to have bit more space. As part of the deal you hand over current one to Giacomo. <b>You acquired Ore Bag (Lowest grade).</b>");
-				player.gems -= 600;
-				player.removeKeyItem("Tarnished Ore Bag (Lowest grade)");
-				player.createKeyItem("Ore Bag (Lowest grade)", 0, 0, 0, 0);
-				Crafting.BagSlot01Cap = 10;
-				Crafting.BagSlot02Cap = 10;
-				Crafting.BagSlot03Cap = 10;
-				Crafting.BagSlot04Cap = 10;
-				Crafting.BagSlot06Cap = 10;
-				Crafting.BagSlot07Cap = 10;
 				doNext(miscMenu);
 			}
 		}

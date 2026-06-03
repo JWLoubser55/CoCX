@@ -3,6 +3,7 @@ import classes.BaseContent;
 import classes.GlobalFlags.kFLAGS;
 import classes.Items.Useable;
 import classes.Scenes.API.MultiBuy;
+import classes.Scenes.Crafting;
 import classes.internals.SaveableState;
 
 public class SalamanderOreMerchants extends BaseContent implements SaveableState {
@@ -71,9 +72,10 @@ public class SalamanderOreMerchants extends BaseContent implements SaveableState
 		addButton(6, useables.ORICHAL.shortName, sellItem, useables.ORICHAL);
 		addButton(7, useables.ADAMANT.shortName, sellItem, useables.ADAMANT);
 		addButton(8, useables.SKYMETA.shortName, sellItem, useables.SKYMETA);
-		addButton(12, consumables.COAL___.shortName, sellItem2, consumables.COAL___);
-		addButtonIfTrue(13, "Pickaxes", pickaxes, "Req. to have Old Pickaxe.", player.hasKeyItem("Old Pickaxe") >= 0, "Better Pickaxes then Old Pickaxe.");
-        addButton(14, "Finished!", unShop, true);
+		addButton(11, consumables.COAL___.shortName, sellItem2, consumables.COAL___);
+		addButtonIfTrue(12, "Pickaxes", pickaxes, "Req. to have Old Pickaxe.", player.hasKeyItem("Old Pickaxe") >= 0, "Better Pickaxes then Old Pickaxe.");
+        addButton(13, "Misc", miscOffers);
+		addButton(14, "Finished!", unShop, true);
     }
 	private function sellItem(item:Useable,cost:int = -1,buy:Boolean=false):void {
 		var priceRate:Number = 10;
@@ -177,6 +179,58 @@ public class SalamanderOreMerchants extends BaseContent implements SaveableState
 				break;
 		}
 		doNext(pickaxes);
+	}
+	
+	public function miscOffers():void {
+		clearOutput();
+		menu();
+		addButton(0, "MiningProdigyBag", pitchMiningProdigyBag);
+		if (player.hasKeyItem("Tarnished Ore Bag (Lowest grade)") >= 0) addButton(1, "Ore Bag (LLowG)", pitchLLOreBag).hint("Ore Bag (Lowest Grade)");
+		addButton(14, "Back", shopSalamanderWares);
+	}
+	
+	private function pitchMiningProdigyBag():void {
+		clearOutput();
+		outputText("Salamander holds up a bag.  \"<i>While you may not find value in this as a simple bag,</i>\", Salamander opens, \"<i>you would find use of items that mining prodigy that owned this before you gatherted!  Maybe even gain profficency in mining faster or never failt to find ores!  I will offer the super-cheap price of 800 gems!</i>\"");
+		doYesNo(buyMiningProdigyBag, miscOffers);
+	}
+	private function buyMiningProdigyBag():void {
+		clearOutput();
+		if (player.gems < 800) {
+			outputText("Salamander sighs, indicating you need 800 gems to purchase this item.");
+			doNext(miscOffers);
+		}
+		else {
+			outputText("The salamander merchant nods satisfied when you hand him over an eight hundred gems and in exchange gives you a mining prodigy bag.");
+			player.gems -= 800;
+			inventory.takeItem(miscjewelries.MINPBAG, miscOffers);
+		}
+	}
+	
+	private function pitchLLOreBag():void {
+		clearOutput();
+		outputText("\"<i>I see you have some pretty tarnished bag to store ores. Why not you buy this new one bag that is much better even if it's not better grade than the one you have now? Only 600 gems and i even gonna take your current bag. I assure you not gonna find such good offer anywhere else...</i>\"");
+		doYesNo(buyLLOreBag, miscOffers);
+	}
+	private function buyLLOreBag():void {
+		clearOutput();
+		if (player.gems < 600) {
+			outputText("\n\nSalamander sighs, indicating you need 600 gems to purchase this item.");
+			doNext(miscOffers);
+		}
+		else {
+			outputText("\n\nYou decided to buy the bag. It looking much better the one you had and checking inside it appears to have bit more space. As part of the deal you hand over current one to salamander. <b>You acquired Ore Bag (Lowest grade).</b>");
+			player.gems -= 600;
+			player.removeKeyItem("Tarnished Ore Bag (Lowest grade)");
+			player.createKeyItem("Ore Bag (Lowest grade)", 0, 0, 0, 0);
+			Crafting.BagSlot01Cap = 10;
+			Crafting.BagSlot02Cap = 10;
+			Crafting.BagSlot03Cap = 10;
+			Crafting.BagSlot04Cap = 10;
+			Crafting.BagSlot06Cap = 10;
+			Crafting.BagSlot07Cap = 10;
+			doNext(miscOffers);
+		}
 	}
 }
 }

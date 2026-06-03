@@ -25,9 +25,8 @@ public class Rocksteady extends BaseContent {
 			menu();
 			//addButton(0, "Potions", potionMenu);
 			addButton(1, "Books", bookMenu);
-			//addButton(2, "Erotica", eroticaMenu);
-			addButton(3, "Misc", miscMenu);
-			addButton(4, "Trade", tradeMenu);
+			addButton(2, "Misc", miscMenu);
+			addButton(3, "Trade", tradeMenu);
 			addButton(14, "Leave", explorer.done);
 			statScreenRefresh();
 		}
@@ -83,8 +82,7 @@ public class Rocksteady extends BaseContent {
 				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 0) addButton(1, "Mysterious Seed", pitchMysteriousSeed);
 				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 5) addButton(2, "Decorations", pitchDecorations);
 			}
-			addButton(3, "S.C.N.", pitchSilverCrossNecklace).hint("Silver cross necklace");
-			addButton(4, "E. Tome", pitchElementalistsTome).hint("Elementalist’s Tome");
+			addButton(3, "E. Tome", pitchElementalistsTome).hint("Elementalist’s Tome");
 			if (player.hasPerk(PerkLib.ExanimationI) && !player.hasPerk(PerkLib.ExanimationIII) && player.level < 32) addButton(13, "Peach", pitchPurePeach);
 			addButton(14, "Back", rocksteadyEncounter);
 			statScreenRefresh();
@@ -290,30 +288,6 @@ public class Rocksteady extends BaseContent {
 				flags[kFLAGS.CHRISTMAS_TREE_LEVEL] = 7;
 				player.createKeyItem("Decorations", 0, 0, 0, 0);
 				doNext(miscMenu);
-			}
-		}
-		
-		public function pitchSilverCrossNecklace():void {
-			//spriteSelect(SpriteDb.s_giacomo);
-			clearOutput();
-			outputText("The trader smiles wide as you look at the strange jewelry on his table.\n\n");
-			outputText("\"<i>Oh this? This necklace is magical. Tell me friend, do you believe in eternal love? This necklace can lead you to it, all for the modest sum of 400 gems.</i>\"\n\n");
-			outputText("This sounds AND looks like a scam but do you buy it anyway?");
-			doYesNo(buySilverCrossNecklace, miscMenu);
-		}
-		
-		public function buySilverCrossNecklace():void {
-			//spriteSelect(SpriteDb.s_giacomo);
-			if (player.gems < 400)
-			{
-				clearOutput();
-				outputText("\n\nRocksteady sighs, indicating you need " + String(400 - player.gems) + " more gems to purchase this item.");
-				doNext(miscMenu);
-			}
-			else
-			{
-				player.gems -= 400;
-				inventory.takeItem(necklaces.SILCNEC, miscMenu);
 			}
 		}
 		
