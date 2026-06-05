@@ -19030,9 +19030,15 @@ public function VampiricBite():void {
 
 public function VampireLeggoMyEggo():void {
     clearOutput();
-    outputText("You let your opponent free, ending your embrace.");
-    outputText("\n\n");
+    outputText("You let your opponent free, ending your embrace.\n\n");
     monster.removeStatusEffect(StatusEffects.EmbraceVampire);
+    enemyAIImpl();
+}
+
+public function TelekineticGrabLeggoMyEggo():void {
+    clearOutput();
+    outputText("You let your opponent free, ending your telekinetic grab.\n\n");
+    monster.removeStatusEffect(StatusEffects.TelekineticGrab);
     enemyAIImpl();
 }
 

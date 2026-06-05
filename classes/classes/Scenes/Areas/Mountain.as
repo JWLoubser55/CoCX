@@ -505,6 +505,7 @@ public class Mountain extends BaseContent
 				label : "OreMerchants",
 				kind  : 'npc',
 				chance: 0.5,
+				unique: true,
 				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "low mountains")
 			}, {
 				name: "demonProjects",
@@ -687,6 +688,7 @@ public class Mountain extends BaseContent
 				label : "OreMerchants",
 				kind  : 'npc',
 				chance: 0.5,
+				unique: true,
 				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "mountain")
 			}, {
 				name: "demonProjects",

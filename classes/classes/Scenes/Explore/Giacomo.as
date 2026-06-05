@@ -106,7 +106,8 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			addButton(2, "Erotica", eroticaMenu);
 			if (player.hasStatusEffect(StatusEffects.WormOffer) && player.hasStatusEffect(StatusEffects.Infested)) addButton(3, "Worm Cure", wormRemovalOffer);
 			addButton(4, "Leave", explorer.done);
-			addButton(5, "Misc", miscMenu);
+			addButton(5, "Trade", tradeMenu);
+			addButton(6, "Misc", miscMenu);
 			statScreenRefresh();
 		}
 		
@@ -189,6 +190,20 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			}
 			addButton(14, "Back", giacomoEncounter);
 			statScreenRefresh();
+		}
+		
+		private function tradeMenu():void {
+			spriteSelect(SpriteDb.s_giacomo);
+			clearOutput();
+			menu();
+			var merchantMenu:MerchantMenu = new MerchantMenu();
+			merchantMenu.playerCanSell = true;
+			merchantMenu.playerSellFactor = merchantMenu.greedCheck() ? 0.2 : 0.1;
+			merchantMenu.addItem(consumables.MANUP_B, 15);
+			merchantMenu.addItem(consumables.VITAL_T, 15);
+			merchantMenu.addItem(consumables.SMART_T, 15);
+			merchantMenu.addItem(consumables.CERUL_P, 75).disableIf((player.gender == 2 || player.gender == 0), "Req. to be Male or Herm", true);
+			merchantMenu.show(giacomoEncounter);
 		}
 		
 		private function pitchManUpBeer():void {

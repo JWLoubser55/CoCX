@@ -185,6 +185,7 @@ public class VolcanicCrag extends BaseContent
 				label : "OreMerchants",
 				kind  : 'npc',
 				chance: 0.5,
+				unique: true,
 				call: function ():void {
 					VolcanicCragConditions();
 					SceneLib.salamanderOreMerchants.introOreMerchant("crag")

@@ -700,7 +700,7 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 			vampireBiteDuringGrappleV(0);
 			CombatAbilities.Tease.createButton(monster).copyTo(btnTease);
 			btnTease.hint("Attempt to make an enemy more aroused by striking a seductive pose and exposing parts of your body.");
-			//addButton(4, "Release", combat.VampireLeggoMyEggo);
+			addButton(4, "Release", combat.TelekineticGrabLeggoMyEggo);
 			//combat.mspecials.buildMenu(magspButtons);
 			if (magspButtons.length > 0) btnMSpecials.show("M. Specials", submenuMagSpecials, "Mental and supernatural special attack menu.", "Magical Specials");
 			if (combat.isPlayerSilenced()) {

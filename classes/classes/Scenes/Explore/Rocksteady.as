@@ -94,7 +94,7 @@ public class Rocksteady extends BaseContent {
 			menu();
 			var merchantMenu:MerchantMenu = new MerchantMenu();
 			merchantMenu.playerCanSell = true;
-			merchantMenu.playerSellFactor = merchantMenu.greedCheck() ? 0.8 : 0.4;
+			merchantMenu.playerSellFactor = merchantMenu.greedCheck() ? 0.4 : 0.8;
 			merchantMenu.addItem(consumables.GRHINOS, 25);
 			merchantMenu.addItem(consumables.SAPILL_);
 			merchantMenu.addItem(consumables.MAPILL_).disableIf(player.level < 24, "Req. lvl 24+", true);

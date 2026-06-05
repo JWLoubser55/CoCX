@@ -360,6 +360,7 @@ use namespace CoC;
 				label : "OreMerchants",
 				kind  : 'npc',
 				chance: 0.5,
+				unique: true,
 				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "plains")
 			}, {
 				name: "demonProjects",

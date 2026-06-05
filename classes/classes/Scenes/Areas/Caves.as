@@ -137,6 +137,7 @@ use namespace CoC;
 				label : "OreMerchants",
 				kind  : 'npc',
 				chance: 0.5,
+				unique: true,
 				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "caves")
 			}, {
 				name: "",
@@ -267,6 +268,7 @@ use namespace CoC;
 				label : "OreMerchants",
 				kind  : 'npc',
 				chance: 0.5,
+				unique: true,
 				call: curry(SceneLib.salamanderOreMerchants.introOreMerchant, "tunnels")
 			}, {
 				name: "",
