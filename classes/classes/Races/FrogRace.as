@@ -56,6 +56,7 @@ public class FrogRace extends Race {
 				.wingType(ANY(Wings.DRACONIC_SMALL, Wings.DRACONIC_LARGE, Wings.DRACONIC_HUGE), +4)
 				.height(GREATER_THAN(120), +1)
 				.cockOrVaginaOfType(CockTypesEnum.DRAGON, VaginaClass.DRAGON, +2)
+				.hasPerk(PerkLib.DragonAcidBreath, +1)
 				.hasPerk(PerkLib.Dracoforce, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 

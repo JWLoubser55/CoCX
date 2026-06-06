@@ -10129,6 +10129,8 @@ public final class Mutations extends MutationsHelper {
     }
 
     public function elfears(player:Player):void {
+        //0 == light elf
+        //1 == dark elf
         player.slimeFeed();
         clearOutput();
         var changes:Number = 0;

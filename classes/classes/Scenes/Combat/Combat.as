@@ -508,8 +508,7 @@ public class Combat extends BaseContent {
             combatMenu(false);
 		}
         else if (player.hasPerk(PerkLib.Immortality) || player.hasPerk(PerkLib.WhatIsReality)) {
-            if (player.hasPerk(PerkLib.Immortality)) player.takeLustDamage((Math.round(player.maxOverLust() * 0.4)), true, false);
-			else player.takeLustDamage((Math.round(player.maxOverLust() * 0.8)), true, false);
+            player.takeLustDamage((Math.round(player.maxOverLust() * 0.4)), true, false);
             player.HP = player.minHP() + 1;
             combatMenu(false);
         }

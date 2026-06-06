@@ -287,11 +287,11 @@ public class Changelog extends BaseContent
 			outputText("-Small, Medium and Big Angry Pill felt they not keepin up to modern % meta so they now have added max wrath % to effect. 2% for small, 4% for medium and 6% for big.\n");
 			outputText("-New consumable (by Ormael): Large Angry Pill - buyable at Rocksteady shop after PC reach lvl 78+. Costs 300 gems and gives 540 wrath + 8% of max wrath.\n");
 			outputText("-New consumable (by Ormael): Huge Angry Pill - buyable at Rocksteady shop after PC reach lvl 150+. Costs 700 gems and gives 1620 wrath + 10% of max wrath.\n");
-			outputText("-What Is Reality? and Immortality perks effect that giving PC lust damage when HP drops below min HP threshold would now deal lust damage equal to 80%/40% of max over lust without any reduction from lust resistance.\n");
+			outputText("-What Is Reality? and Immortality perks effect that giving PC lust damage when HP drops below min HP threshold would now deal lust damage equal to 40% of max over lust without any reduction from lust resistance.\n");
 			outputText("-Some of Undefeated King's Signet effects required it to be equipped in specific ring slot been lifted and now they activate when it's equipped in any ring slot.\n");
 			outputText("-New event perk: Dragon Acid Breath. Gained by using Bog Mucus item. Effects: Allows access to a dragon acid breath attack.\n");
 			outputText("-New M. Special: Dragon Acid Breath. Usable by having Dragon Acid Breath perk. Effect: Like any others Dragon Breaths, dealing Acid type damage.\n");
-			outputText("-\n");
+			outputText("-Wrath generated from lost HP been with us for ages at this point all way back from times it was ONLY source of getting wrath. But times change and now we got way more options from IM's, throu items to even specials. So now ratio for HP lost to Wrath gained is changed from 1:10 to 1:100.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

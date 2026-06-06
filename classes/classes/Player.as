@@ -3022,7 +3022,7 @@ use namespace CoC;
 		public function wrathFromBeenPunchingBag(damage:Number):void {
 			if (damage > 0) {
 				var gainedWrath:Number = 0;
-				gainedWrath += Math.sqrt(damage / 10);
+				gainedWrath += Math.sqrt(damage / 100);
 				gainedWrath = Math.round(gainedWrath * wrathFromHPmulti());
 				if (gainedWrath > 0) pc.WrathChange(gainedWrath);
 			}
@@ -3561,7 +3561,6 @@ use namespace CoC;
 				}
 				//Prevent negatives
 				if (HP < minHP()){
-					if (hasPerk(PerkLib.Immortality)) takeLustDamage(minHP() - HP);
 					HP = minHP();
 					//This call did nothing. There is no event 5010: if (game.inCombat) game.doNext(5010);
 				}
