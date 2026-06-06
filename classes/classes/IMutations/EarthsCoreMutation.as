@@ -7,12 +7,11 @@ package classes.IMutations
 import classes.Creature;
 import classes.IMutationPerkType;
 import classes.PerkClass;
-import classes.Player;
 import classes.Races;
 
-public class WyrmMusculatureMutation extends IMutationPerkType
-	{
-		public static const MNAME:String = "Wyrm Musculature";
+public class EarthsCoreMutation extends IMutationPerkType
+    {
+		public static const MNAME:String = "Earth's Core";
 		override public function get mName():String {
 			return MNAME;
 		}
@@ -20,17 +19,16 @@ public class WyrmMusculatureMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-			if (pTier >= 1){
-				descS += "Increase total strength by "+(pTier*5)+"% but reduce intelligence by the same amount";
-			}
-            if (pTier >= 2){
-                descS += ". Physical ability damage is increased by "+((pTier-1)*5)+"0%";
+            if (pTier >= 1){
+                descS += "Increase the power of all Wind and Lightning racial abilities";
             }
             if (pTier >= 3){
-                descS += ". Grapples are "+((pTier-2)*5)+"0% more powerful";
+                descS += ", you can fly continuously as long as you yourself can fly, if you have energy attacks they now include a chance to stun";
             }
-            if (pTier >= 4){
-                descS += ". You may inflict grapple damage as part of a full feral combat attack so long as you got a tail";
+            if (pTier >=2){
+                descS += " and you increase wind and electricity resistance by ";
+                if (pTier == 2) descS += "10%";
+                if (pTier == 3) descS += "30%";
             }
             if (descS != "")descS += ".";
             return descS;
@@ -43,8 +41,8 @@ public class WyrmMusculatureMutation extends IMutationPerkType
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireMusclesMutationSlot()
-                    .requireAnyRace(Races.FROSTWYRM, Races.MAGMAWYRM, Races.SANDDRAKE);
+                    this.requireHeartMutationSlot()
+                        .requireAnyRace(Races.RAIJU, Races.THUNDERBIRD, Races.KAMAITACHI, Races.COUATL, Races.KIRIN);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -58,16 +56,15 @@ public class WyrmMusculatureMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
-            if (pTier == 1) pBuffs['str.mult'] = 0.05;
-            if (pTier == 2) pBuffs['str.mult'] = 0.10;
-            if (pTier == 3) pBuffs['str.mult'] = 0.15;
-            if (pTier == 4) pBuffs['str.mult'] = 0.20;
+            if (pTier == 1) pBuffs['spe.mult'] = 0.05;
+            if (pTier == 2) pBuffs['spe.mult'] = 0.15;
+            if (pTier == 3) pBuffs['spe.mult'] = 0.35;
             return pBuffs;
         }
 
-        public function WyrmMusculatureMutation() 
+        public function EarthsCoreMutation() 
 		{
-			super(MNAME, SLOT_MUSCLE, 4);
+			super(MNAME, SLOT_NONE, 1);//SLOT_ADAPTATIONS
 		}
 		
 	}

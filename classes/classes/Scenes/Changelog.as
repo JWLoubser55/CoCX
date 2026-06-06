@@ -273,10 +273,10 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Wyrm Musculature (Primitive). Req. Wyrm Musculature and lvl 30+. Effects: Increase total strength by 10% but reduce intelligence by the same amount. Physical ability damage is increased by 50%.\n");
 			outputText("-New mutation perk: Wyrm Cursed Blood (Primitive). Req. Wyrm Cursed Blood and lvl 30+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 4% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 4% drain as a continuous poison effect.\n");
 			outputText("-New TF item (by Ormael): Steak grilled by rhino. Sold by Rocksteady. Using this item will turn PC into stone rhino if rhino score reached tier 1 of race bonuses. Stone Rhino / Petrokheros racial bonuses (14+/20+): +135/180% to str/tou multi, -30/40% to int multi, -50/60 to sens, +400/600 to max hp, +20/30 to armor, +8/12 to m.res.\n");
-			//outputText("-New mutation perk: Wyrm Musculature (Evolved). Req. Wyrm Musculature (Primitive) and lvl 60+. Effects: \n");
+			outputText("-New mutation perk: Wyrm Musculature (Evolved). Req. Wyrm Musculature (Primitive) and lvl 60+. Effects: Increase total strength by 15% but reduce intelligence by the same amount. Physical ability damage is increased by 100%. Grapples are 50% more powerful.\n");
 			outputText("-New mutation perk: Wyrm Cursed Blood (Evolved). Req. Wyrm Cursed Blood (Primitive) and lvl 60+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 8% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 8% strength drain as a continuous poison effect. ");
 			outputText("The ruinous blood now also decays the opponent's total health by 1%.\n");
-			//outputText("-New mutation perk: Wyrm Musculature (Final Form). Req. Wyrm Musculature (Evolved) and lvl 90+. Effects: \n");
+			outputText("-New mutation perk: Wyrm Musculature (Final Form). Req. Wyrm Musculature (Evolved) and lvl 90+. Effects: Increase total strength by 20% but reduce intelligence by the same amount. Physical ability damage is increased by 150%. Grapples are 100% more powerful. You may inflict grapple damage as part of a full feral combat attack so long as you got a tail.\n");
 			outputText("-New mutation perk: Wyrm Cursed Blood (Final Form). Req. Wyrm Cursed Blood (Evolved) and lvl 90+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 16% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 16% strength drain as a continuous poison effect. ");
 			outputText("The ruinous blood now also decays the opponent's total health by 2%. Poisoning an opponent with ruinous blood through any means now raises your damage dealt by 10% permanently against that opponent.\n");
 			outputText("-Upheaval p.special when used with stone horn(s) would deal additional earth damage instance.\n");
@@ -287,10 +287,10 @@ public class Changelog extends BaseContent
 			outputText("-Small, Medium and Big Angry Pill felt they not keepin up to modern % meta so they now have added max wrath % to effect. 2% for small, 4% for medium and 6% for big.\n");
 			outputText("-New consumable (by Ormael): Large Angry Pill - buyable at Rocksteady shop after PC reach lvl 78+. Costs 300 gems and gives 540 wrath + 8% of max wrath.\n");
 			outputText("-New consumable (by Ormael): Huge Angry Pill - buyable at Rocksteady shop after PC reach lvl 150+. Costs 700 gems and gives 1620 wrath + 10% of max wrath.\n");
-			outputText("-What Is Reality? and Immortality perks effect that giving PC lust damage when HP drops below min HP trehsold would now deal lust damage equal to 80%/40% of max over lust without any reduction from lust resistance.\n");
+			outputText("-What Is Reality? and Immortality perks effect that giving PC lust damage when HP drops below min HP threshold would now deal lust damage equal to 80%/40% of max over lust without any reduction from lust resistance.\n");
 			outputText("-Some of Undefeated King's Signet effects required it to be equipped in specific ring slot been lifted and now they activate when it's equipped in any ring slot.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New event perk: Dragon Acid Breath. Gained by using Bog Mucus item. Effects: Allows access to a dragon acid breath attack.\n");
+			outputText("-New M. Special: Dragon Acid Breath. Usable by having Dragon Acid Breath perk. Effect: Like any others Dragon Breaths, dealing Acid type damage.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

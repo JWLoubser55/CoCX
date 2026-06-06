@@ -748,6 +748,16 @@ public class MagicSpecials extends BaseCombatContent {
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 			favbd(bd, "Wind Scythe");
 		}
+		if (player.hasPerk(PerkLib.DragonAcidBreath)) {
+			bd = buttons.add("Dragon(Acid)", dragonAcidBreath);
+			bd.hint("Unleash acid from your mouth. \n", "Dragon Acid Breath");
+			bd.requireFatigue(spellCost(50));
+			//Not Ready Yet:
+			if(player.hasStatusEffect(StatusEffects.DragonAcidBreathCooldown)) {
+				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
+			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+			favbd(bd, "Dragon Acid");
+		}
 		if (player.hasPerk(PerkLib.DragonBlackIceBreath)) {
 			bd = buttons.add("Dragon(Black Ice)", dragonBlackIceBreath);
 			bd.hint("Unleash black ice from your mouth. \n", "Dragon Black Ice Breath");
@@ -756,10 +766,10 @@ public class MagicSpecials extends BaseCombatContent {
 			if(player.hasStatusEffect(StatusEffects.DragonBlackIceBreathCooldown)) {
 				bd.disable("You try to tap into the power within you, but your aching throat reminds you that you're not yet ready to unleash it again...");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
-			favbd(bd, "Dragon Fire");
+			favbd(bd, "Dragon Black Ice");
 		}
 		if (player.hasPerk(PerkLib.DragonFireBreath)) {
-			bd = buttons.add("Dragon(Fire)", dragonfireBreath);
+			bd = buttons.add("Dragon(Fire)", dragonFireBreath);
 			bd.hint("Unleash fire from your mouth. \n", "Dragon Fire Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
@@ -769,7 +779,7 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Dragon Fire");
 		}
 		if (player.hasPerk(PerkLib.DragonIceBreath)) {
-			bd = buttons.add("Dragon(Ice)", dragoniceBreath);
+			bd = buttons.add("Dragon(Ice)", dragonIceBreath);
 			bd.hint("Unleash ice from your mouth. \n", "Dragon Ice Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
@@ -779,7 +789,7 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Dragon Ice");
 		}
 		if (player.hasPerk(PerkLib.DragonLightningBreath)) {
-			bd = buttons.add("Dragon(Light)", dragonlightningBreath);
+			bd = buttons.add("Dragon(Light)", dragonLightningBreath);
 			bd.hint("Unleash lightning from your mouth. \n", "Dragon Lightning Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
@@ -789,7 +799,7 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Dragon Lightning");
 		}
 		if (player.hasPerk(PerkLib.DragonDarknessBreath)) {
-			bd = buttons.add("Dragon(Dark)", dragondarknessBreath);
+			bd = buttons.add("Dragon(Dark)", dragonDarknessBreath);
 			bd.hint("Unleash darkness from your mouth. \n", "Dragon Darkness Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
@@ -799,7 +809,7 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Dragon Darkness");
 		}
 		if (player.hasPerk(PerkLib.DragonPoisonBreath)) {
-			bd = buttons.add("Dragon(Poison)", dragonpoisonBreath);
+			bd = buttons.add("Dragon(Poison)", dragonPoisonBreath);
 			bd.hint("Unleash poison from your mouth. \n", "Dragon Poison Breath");
 			bd.requireFatigue(spellCost(50));
 			//Not Ready Yet:
@@ -2569,6 +2579,11 @@ public class MagicSpecials extends BaseCombatContent {
 			if (player.hasStatusEffect(StatusEffects.DragonBlackIceBreathCooldown)) player.changeStatusValue(StatusEffects.DragonBlackIceBreathCooldown, 1, dragonBreathsCooldownManagement0());
 			else player.createStatusEffect(StatusEffects.DragonBlackIceBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
 		}
+		if (type == 11) player.createStatusEffect(StatusEffects.DragonAcidBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
+		else {
+			if (player.hasStatusEffect(StatusEffects.DragonAcidBreathCooldown)) player.changeStatusValue(StatusEffects.DragonAcidBreathCooldown, 1, dragonBreathsCooldownManagement0());
+			else player.createStatusEffect(StatusEffects.DragonAcidBreathCooldown, dragonBreathsCooldownManagement0(), 0, 0, 0);
+		}
 		if (type == 50) player.createStatusEffect(StatusEffects.DragonQuadElementBreathCooldown, dragonBreathsCooldownManagement1(), 0, 0, 0);
 		else {
 			if (player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown)) player.changeStatusValue(StatusEffects.DragonQuadElementBreathCooldown, 1, dragonBreathsCooldownManagement0());
@@ -2627,7 +2642,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 4) dlBM += 9;
 		return dlBM;
 	}
-	public function dragonfireBreath():void {
+	public function dragonFireBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
@@ -2711,7 +2726,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (monster is Holli && !monster.hasStatusEffect(StatusEffects.HolliBurning)) (monster as Holli).lightHolliOnFireMagically();
 		checkLethiceAndCombatRoundOver();
 	}
-	public function dragoniceBreath():void {
+	public function dragonIceBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
@@ -2767,7 +2782,7 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-	public function dragonlightningBreath():void {
+	public function dragonLightningBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
@@ -2823,7 +2838,7 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-	public function dragondarknessBreath():void {
+	public function dragonDarknessBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
@@ -2878,7 +2893,7 @@ public class MagicSpecials extends BaseCombatContent {
 		combat.heroBaneProc(damage);
 		checkLethiceAndCombatRoundOver();
 	}
-	public function dragonpoisonBreath():void {
+	public function dragonPoisonBreath():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		fatigue(50, USEFATG_MAGIC_NOBM);
@@ -2991,6 +3006,66 @@ public class MagicSpecials extends BaseCombatContent {
 			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
 			doPlayerWaterDamage(damage, true, true);
 			monster.createStatusEffect(StatusEffects.DragonWaterBreath,0,0,0,0);
+		}
+		outputText("\n\n");
+		checkAchievementDamage(damage);
+		combat.heroBaneProc(damage);
+		checkLethiceAndCombatRoundOver();
+	}
+	public function dragonAcidBreath():void {
+		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
+		clearOutput();
+		fatigue(50, USEFATG_MAGIC_NOBM);
+		var damage:Number = 0;
+		var damult:Number = 1;
+		dragonBreathsCooldownManagement(11);
+		damage += scalingBonusIntelligence() * 10;
+		damage += scalingBonusWisdom() * 10;
+		damage *= 1.25 + (rand(76) / 100);
+		damage = calcCorrosionMod(damage, true);
+		if(player.hasStatusEffect(StatusEffects.DragonBreathBoost)) {
+			player.removeStatusEffect(StatusEffects.DragonBreathBoost);
+			damage *= 2;
+		}
+		if (player.perkv1(IMutationsLib.DrakeLungsIM) >= 2) damult += dragonLungsBreathMulti();
+		damage = dragonLungsBreathMultis(damage);
+		damage *= magicAbilitiesGoBrrr();
+		if (player.hasPerk(PerkLib.Dovakhiin)) combat.dovakhiinBoost();
+		damage *= 4;
+		damage = Math.round(damage * combat.acidDamageBoostedByDao());
+		//Shell
+		if(monster.hasStatusEffect(StatusEffects.Shell)) {
+			outputText("As soon as your magic touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your magic!\n\n");
+			enemyAI();
+			return;
+		}
+		if (combat.checkConcentration()) return; //Amily concentration
+		if (monster is LivingStatue)
+		{
+			outputText("The acid courses by the stone skin harmlessly. Thou it does leave the surface of the statue with a thin layer of dark glow.");
+			enemyAI();
+			return;
+		}
+		outputText("Tapping into the power deep within you, you let loose a bellowing roar at your enemy, so forceful that even the environs crumble around [monster him].  [Themonster] does [monster his] best to avoid it, but the wave of force is too fast.");
+		//Miss:
+		if((player.playerIsBlinded() && rand(2) == 0) || (monster.spe - player.spe > 0 && int(Math.random() * (((monster.spe - player.spe) / 4) + 80)) > 80)) {
+			outputText("  Despite the heavy impact caused by your roar, [themonster] manages to take it at an angle and remain on [monster his] feet and focuses on you, ready to keep fighting.");
+		}
+		//Special enemy avoidances
+		else if (valaReflect(damage, "acid breath", player.takeAcidDamage)) {}
+		else {
+			outputText("  [Themonster] reels as your wave of force slams into [monster him] like a ton of rock!  The impact sends [monster him] crashing to the ground, too dazed to strike back. ");
+			var stutter:Number = 1;
+			if (rand(2) == 0) stutter += 1;
+			if (rand(4) == 0) stutter += 1;
+			if (monster.hasStatusEffect(StatusEffects.Stunned)) monster.addStatusValue(StatusEffects.Stunned,1,stutter);
+			else monster.createStatusEffect(StatusEffects.Stunned,stutter,0,0,0);
+			doPlayerAcidDamage(damage, true, true);
+			if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
+				monster.addStatusValue(StatusEffects.AcidDoT,1,1);
+				monster.addStatusValue(StatusEffects.AcidDoT,3,2);
+			}
+			else monster.createStatusEffect(StatusEffects.AcidDoT,4,0.05,2,0);
 		}
 		outputText("\n\n");
 		checkAchievementDamage(damage);

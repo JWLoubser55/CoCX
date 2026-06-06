@@ -106,7 +106,7 @@ public class Rocksteady extends BaseContent {
 			merchantMenu.addItem(consumables.MAPILL_).disableIf(player.level < 24, "Req. lvl 24+", true);
 			merchantMenu.addItem(consumables.BAPILL_).disableIf(player.level < 42, "Req. lvl 42+", true);
 			merchantMenu.addItem(consumables.LAPILL_).disableIf(player.level < 78, "Req. lvl 78+", true);
-			merchantMenu.addItem(consumables.HAPILL_).disableIf(player.level < 150, "Req. lvl 150", true);
+			merchantMenu.addItem(consumables.HAPILL_).disableIf(player.level < 150, "Req. lvl 150+", true);
 			merchantMenu.show(rocksteadyEncounter);
 		}
 		

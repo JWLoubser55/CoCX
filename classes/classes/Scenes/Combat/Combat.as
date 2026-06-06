@@ -6634,6 +6634,7 @@ public class Combat extends BaseContent {
                     } else {
                         ExtraNaturalWeaponAttack(TailDamageMultiplier);
                     }
+					if (player.perkv1(IMutationsLib.WyrmMusculatureIM) >= 4) SceneLib.desert.nagaScene.nagaSqueeeezeDmg();
                     outputText("\n");
                     break;
                 case LowerBody.SANDWORM:
@@ -14802,6 +14803,13 @@ public class Combat extends BaseContent {
 					player.removeStatusEffect(StatusEffects.DragonQuadElementBreathCooldown);
 				} else {
 					player.addStatusValue(StatusEffects.DragonQuadElementBreathCooldown, 1, -1);
+				}
+			}
+			if (player.hasStatusEffect(StatusEffects.DragonAcidBreathCooldown)) {
+				if (player.statusEffectv1(StatusEffects.DragonAcidBreathCooldown) <= 0) {
+					player.removeStatusEffect(StatusEffects.DragonAcidBreathCooldown);
+				} else {
+					player.addStatusValue(StatusEffects.DragonAcidBreathCooldown, 1, -1);
 				}
 			}
 			if (player.hasStatusEffect(StatusEffects.DragonBlackIceBreathCooldown)) {

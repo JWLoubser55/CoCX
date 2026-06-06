@@ -131,6 +131,8 @@ public class SceneLib {
 
     public static var kidAScene:KidAScene = new KidAScene();
 
+    public static var amaryllisFollower:AmaryllisFollower = new AmaryllisFollower();
+
     public static var ariaScene:AriaFollower = new AriaFollower();
 
     public static var arianScene:ArianScene = new ArianScene();

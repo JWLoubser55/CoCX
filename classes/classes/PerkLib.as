@@ -4551,6 +4551,8 @@ public class PerkLib
 				"Causes you to crave milk frequently.");
 		public static const Dracoforce:PerkType = mk("Dracoforce", "Dracoforce",
 				"Increase your total Strength and Toughness by 50%.");
+		public static const DragonAcidBreath:PerkType = mk("Dragon acid breath", "Dragon acid breath",
+				"Allows access to a dragon acid breath attack.");
 		public static const DragonBlackIceBreath:PerkType = mk("Dragon black ice breath", "Dragon black ice breath",
 				"Allows access to a dragon black ice breath attack.");
 		public static const DragonDarknessBreath:PerkType = mk("Dragon darkness breath", "Dragon darkness breath",
@@ -6991,7 +6993,8 @@ public class PerkLib
                                 || player.hasStatusEffect(StatusEffects.KnowsAcidRain)
 								|| player.hasStatusEffect(StatusEffects.KnowsCorrosiveWave)
 								|| player.hasStatusEffect(StatusEffects.KnowsHydroAcid)
-                                || player.hasPerk(PerkLib.AcidSpit);
+                                || player.hasPerk(AcidSpit)
+                                || player.hasPerk(DragonAcidBreath);
                     }, "Any acid spell")
                     .requireLevel(12)
                     .requireInt(75);

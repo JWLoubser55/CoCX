@@ -1265,6 +1265,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				}
 				//Clear dragon breath cooldowns!
 				if (player.hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 3 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonQuadElementBreathCooldown);
+				if (player.hasStatusEffect(StatusEffects.DragonAcidBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonAcidBreathCooldown);
 				if (player.hasStatusEffect(StatusEffects.DragonBlackIceBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonBlackIceBreathCooldown);
 				if (player.hasStatusEffect(StatusEffects.DragonDarknessBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonDarknessBreathCooldown);
 				if (player.hasStatusEffect(StatusEffects.DragonFireBreathCooldown) && !player.perkv1(IMutationsLib.DrakeLungsIM) >= 1 && !player.hasPerk(PerkLib.BoomingVoice)) player.removeStatusEffect(StatusEffects.DragonFireBreathCooldown);

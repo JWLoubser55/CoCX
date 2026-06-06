@@ -980,10 +980,11 @@ public function nagaPlayerConstrict():void {
 	outputText("\n\n");
     SceneLib.combat.enemyAIImpl();
 }
-private function nagaSqueeeezeDmg():void {
+public function nagaSqueeeezeDmg():void {
 	var damageBonus:int = 0;
 	var damage:int = monster.maxHP() * (.10 + rand(15) / 100);
 	if (player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 2) damage += combat.scalingBonusStrength() * 0.5 * (player.perkv1(IMutationsLib.MightyLowerHalfIM) - 1);
+	if (player.perkv1(IMutationsLib.WyrmMusculatureIM) >= 3) damage *= (1 + (0.5 * (player.perkv1(IMutationsLib.WyrmMusculatureIM)) - 2));
     damage = combat.statusEffectBonusDamage(damage);
 	if (player.hasPerk(PerkLib.VladimirRegalia)) damage *= 2;
 	if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
@@ -1109,6 +1110,7 @@ public function nagaTease():void {
 		var damagemultiplier:Number = 1;
 		if (player.hasPerk(PerkLib.UnbreakableBind)) damagemultiplier += 1;
 		if (player.hasStatusEffect(StatusEffects.ControlFreak)) damagemultiplier += (2 - player.statusEffectv1(StatusEffects.ControlFreak));
+		if (player.perkv1(IMutationsLib.WyrmMusculatureIM) >= 3) damage *= (1 + (0.5 * (player.perkv1(IMutationsLib.WyrmMusculatureIM)) - 2));
 		damage *= damagemultiplier;
         if (player.hasPerk(PerkLib.Sadomasochism)) damage *= player.sadomasochismBoost();
 

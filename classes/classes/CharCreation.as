@@ -3611,7 +3611,9 @@ import classes.Scenes.Combat.CombatAbility;
 				if (player.hasPerk(PerkLib.DarkCharm) && player.perkv4(PerkLib.DarkCharm) < 1) addButton(1, "DarkCharm", permanentizePerk1, PerkLib.DarkCharm);
 				else if (player.hasPerk(PerkLib.DarkCharm) && player.perkv4(PerkLib.DarkCharm) > 0) addButtonDisabled(1, "DarkCharm", "Dark Charm perk is already made permanent and will carry over in all subsequent ascensions.");
 				else addButtonDisabled(1, "DarkCharm", "Dark Charm");
-				//2 DragonAcidBreath
+				if (player.hasPerk(PerkLib.DragonAcidBreath) && player.perkv4(PerkLib.DragonAcidBreath) < 1) addButton(3, "D.AcidB.", permanentizePerk1, PerkLib.DragonAcidBreath);
+				else if (player.hasPerk(PerkLib.DragonAcidBreath) && player.perkv4(PerkLib.DragonAcidBreath) > 0) addButtonDisabled(3, "D.AcidB.", "Dragon Acid Breath perk is already made permanent and will carry over in all subsequent ascensions.");
+				else addButtonDisabled(2, "D.AcidB.", "Dragon Acid Breath");
 				if (player.hasPerk(PerkLib.DragonBlackIceBreath) && player.perkv4(PerkLib.DragonBlackIceBreath) < 1) addButton(3, "D.BlackIceB.", permanentizePerk1, PerkLib.DragonBlackIceBreath);
 				else if (player.hasPerk(PerkLib.DragonBlackIceBreath) && player.perkv4(PerkLib.DragonBlackIceBreath) > 0) addButtonDisabled(3, "D.BlackIceB.", "Dragon Black Ice Breath perk is already made permanent and will carry over in all subsequent ascensions.");
 				else addButtonDisabled(3, "D.BlackIceB.", "Dragon Black Ice Breath");

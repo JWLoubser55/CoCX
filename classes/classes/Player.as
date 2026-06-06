@@ -7145,6 +7145,9 @@ use namespace CoC;
 			if(hasStatusEffect(StatusEffects.DragonQuadElementBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 3 || (perkv1(IMutationsLib.DrakeLungsIM) >= 1 && hasPerk(PerkLib.BoomingVoice)))) {
 				removeStatusEffect(StatusEffects.DragonQuadElementBreathCooldown);
 			}
+			if(hasStatusEffect(StatusEffects.DragonAcidBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
+				removeStatusEffect(StatusEffects.DragonAcidBreathCooldown);
+			}
 			if(hasStatusEffect(StatusEffects.DragonBlackIceBreathCooldown) && (perkv1(IMutationsLib.DrakeLungsIM) >= 1 || hasPerk(PerkLib.BoomingVoice))) {
 				removeStatusEffect(StatusEffects.DragonBlackIceBreathCooldown);
 			}
