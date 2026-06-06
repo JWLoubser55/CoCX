@@ -284,6 +284,11 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Earth Affinity. Gained by having rhino score tier 2+. Effects: You have high resistance to earth effects, and mastery over earth abilities and magic. (2x dmg for earth element attacks, +50% to earth resistance)\n");
 			outputText("-When using general Explore there is another merchant (but not twin) that deal with similar stuff like Giacomo. He's steady, he's rock (hard?) so call him Rocksteady ;) And we all love is sharing so Giacomo (un)willingly gave some of stuff he been dealing with to his coworker merchant that travel same ways.\n");
 			outputText("-Change to Giacomo buy back prices (so he can be more scummy merchant that rip off player xD) and his totaly not twin merchant would not give player prefference for having greedy passive and actualy give less money to greedy PC's for all stuff sold to him :D\n");
+			outputText("-Small, Medium and Big Angry Pill felt they not keepin up to modern % meta so they now have added max wrath % to effect. 2% for small, 4% for medium and 6% for big.\n");
+			outputText("-New consumable (by Ormael): Large Angry Pill - buyable at Rocksteady shop after PC reach lvl 78+. Costs 300 gems and gives 540 wrath + 8% of max wrath.\n");
+			outputText("-New consumable (by Ormael): Huge Angry Pill - buyable at Rocksteady shop after PC reach lvl 150+. Costs 700 gems and gives 1620 wrath + 10% of max wrath.\n");
+			outputText("-What Is Reality? and Immortality perks effect that giving PC lust damage when HP drops below min HP trehsold would now deal lust damage equal to 80%/40% of max over lust without any reduction from lust resistance.\n");
+			outputText("-Some of Undefeated King's Signet effects required it to be equipped in specific ring slot been lifted and now they activate when it's equipped in any ring slot.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -302,13 +307,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
-			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
-			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
@@ -320,13 +320,13 @@ public class Changelog extends BaseContent
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");
+			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
+			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
 			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
+			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");

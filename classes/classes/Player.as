@@ -2170,6 +2170,12 @@ use namespace CoC;
 			return jewelry4.value;
 		}
 
+		//Undefeated King's Signet equipped
+		public function isUdefeatedKingSignetEquipped():Boolean
+		{
+			return jewelry1 == game.jewelries.UNDKINS || jewelry2 == game.jewelries.UNDKINS || jewelry3 == game.jewelries.UNDKINS || jewelry4 == game.jewelries.UNDKINS;
+		}
+
 		//override public function get vehicle.
 		override public function get vehiclesName():String {
 			return vehicles.name;

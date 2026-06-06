@@ -57,8 +57,6 @@ public class Rocksteady extends BaseContent {
 			//spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
 			menu();/*
-			addButton(0, "MiningProdigyBag", pitchMiningProdigyBag);
-			if (player.hasKeyItem("Tarnished Ore Bag (Lowest grade)") >= 0) addButton(1, "Ore Bag (LowG)", pitchLLOreBag).hint("Ore Bag (Lowest Grade)");
 			if (Garden.IngrediantBagSlot01Cap == 0) addButton(4, "Herb Bag (LLowG)", pitchLLHerbsBag).hint("Herbs Bag (Lowest Grade)");
 			if (Garden.IngrediantBagSlot07Cap == 0) {
 				if (player.farmingLevel >= 5) addButton(5, "Herb Bag (LowG)", pitchLHerbsBag).hint("Herbs Bag (Low Grade)");
@@ -96,10 +94,6 @@ public class Rocksteady extends BaseContent {
 			merchantMenu.playerCanSell = true;
 			merchantMenu.playerSellFactor = merchantMenu.greedCheck() ? 0.4 : 0.8;
 			merchantMenu.addItem(consumables.GRHINOS, 25);
-			merchantMenu.addItem(consumables.SAPILL_);
-			merchantMenu.addItem(consumables.MAPILL_).disableIf(player.level < 24, "Req. lvl 24+", true);
-			merchantMenu.addItem(consumables.BAPILL_).disableIf(player.level < 42, "Req. lvl 42+", true);
-			merchantMenu.addLineBreak();
 			merchantMenu.addItem(consumables.W__BOOK, 100);
 			merchantMenu.addItem(consumables.G__BOOK, 500);
 			merchantMenu.addItem(consumables.B__BOOK, 100);
@@ -107,6 +101,12 @@ public class Rocksteady extends BaseContent {
 			merchantMenu.addItem(consumables.RMANUSC, 125);
 			merchantMenu.addItem(weaponsrange.E_TOME_, 1000);
 			merchantMenu.addItem(consumables.CRIMS_J, 125);
+			merchantMenu.addLineBreak();
+			merchantMenu.addItem(consumables.SAPILL_);
+			merchantMenu.addItem(consumables.MAPILL_).disableIf(player.level < 24, "Req. lvl 24+", true);
+			merchantMenu.addItem(consumables.BAPILL_).disableIf(player.level < 42, "Req. lvl 42+", true);
+			merchantMenu.addItem(consumables.LAPILL_).disableIf(player.level < 78, "Req. lvl 78+", true);
+			merchantMenu.addItem(consumables.HAPILL_).disableIf(player.level < 150, "Req. lvl 150", true);
 			merchantMenu.show(rocksteadyEncounter);
 		}
 		

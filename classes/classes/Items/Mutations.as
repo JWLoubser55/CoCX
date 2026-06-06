@@ -235,29 +235,48 @@ public final class Mutations extends MutationsHelper {
 
     public function smallangrypill(player:Player):void {
         clearOutput();
-        outputText("You pop the small pill into your mouth and swallow. You feel a bit angrier now. So would you kindly go and kill something now?[pg](Gained wrath: " + ((player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) ? "40" : "20") + ")");
-        if (player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) player.wrath += (40*player.postConsumptionMlt());
-        else player.wrath += (20*player.postConsumptionMlt());
+        outputText("You pop small pill into your mouth and swallow. You feel angrier now. So would you kindly go and kill something now?");
+        var sapW:Number = (20 + Math.round(player.maxWrath() * 0.02 * player.postConsumptionMlt()));
+		if (player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) sapW *= 2;
         if (player.wrath > player.maxOverWrath()) player.wrath = player.maxOverWrath();
+        outputText("[pg](Gained wrath: " + sapW + ")");
         statScreenRefresh();
     }
-
     public function mediumangrypill(player:Player):void {
         clearOutput();
-        outputText("You pop the medium pill into your mouth and swallow. You feel a bit angrier now. So would you kindly go and kill something now?[pg](Gained wrath: " + ((player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) ? "120" : "60") + ")");
-        if (player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) player.wrath += (120*player.postConsumptionMlt());
-        else player.wrath += (60*player.postConsumptionMlt());
+        outputText("You pop medium pill into your mouth and swallow. You feel angrier now. So would you kindly go and kill something now?");
+        var mapW:Number = (60 + Math.round(player.maxWrath() * 0.04 * player.postConsumptionMlt()));
+		if (player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) mapW *= 2;
         if (player.wrath > player.maxOverWrath()) player.wrath = player.maxOverWrath();
-        statScreenRefresh();
+        outputText("[pg](Gained wrath: " + mapW + ")");
+		statScreenRefresh();
     }
-
     public function bigangrypill(player:Player):void {
         clearOutput();
-        outputText("You pop the big pill into your mouth and swallow. You feel a bit angrier now. So would you kindly go and kill something now?[pg](Gained wrath: " + ((player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) ? "360" : "180") + ")");
-        if (player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) player.wrath += (360*player.postConsumptionMlt());
-        else player.wrath += (180*player.postConsumptionMlt());
+        outputText("You pop big pill into your mouth and swallow. You feel angrier now. So would you kindly go and kill something now?");
+        var bapW:Number = (180 + Math.round(player.maxWrath() * 0.06 * player.postConsumptionMlt()));
+		if (player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) bapW *= 2;
         if (player.wrath > player.maxOverWrath()) player.wrath = player.maxOverWrath();
-        statScreenRefresh();
+        outputText("[pg](Gained wrath: " + bapW + ")");
+		statScreenRefresh();
+    }
+    public function largeangrypill(player:Player):void {
+        clearOutput();
+        outputText("You pop large pill into your mouth and swallow. You feel angrier now. So would you kindly go and kill something now?");
+        var lapW:Number = (540 + Math.round(player.maxWrath() * 0.08 * player.postConsumptionMlt()));
+		if (player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) lapW *= 2;
+        if (player.wrath > player.maxOverWrath()) player.wrath = player.maxOverWrath();
+        outputText("[pg](Gained wrath: " + lapW + ")");
+		statScreenRefresh();
+    }
+    public function hugeangrypill(player:Player):void {
+        clearOutput();
+        outputText("You pop huge pill into your mouth and swallow. You feel angrier now. So would you kindly go and kill something now?");
+        var hapW:Number = (1620 + Math.round(player.maxWrath() * 0.1 * player.postConsumptionMlt()));
+		if (player.hasPerk(PerkLib.GoblinoidBlood) && player.perkv1(IMutationsLib.NaturalPunchingBagIM) >= 3) hapW *= 2;
+        if (player.wrath > player.maxOverWrath()) player.wrath = player.maxOverWrath();
+        outputText("[pg](Gained wrath: " + hapW + ")");
+		statScreenRefresh();
     }
 
     public function mediumhealpill(player:Player):void {

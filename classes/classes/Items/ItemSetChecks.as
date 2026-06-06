@@ -123,7 +123,23 @@ public function equipTreeOfLifeItemsSet():void {
 public function unequipTreeOfLifeItemsSet():void {
 	var count:int = equippedTreeOfLifeSetItems();
 	if (count == 1) player.removeStatusEffect(StatusEffects.BonusEffectsTreeOfLifeSet);
+}/*
+
+public function equippedUndefeatedKingSetItems():int {
+	var eUKSI:int = 0;
+	if (player.isUdefeatedKingSignetEquipped()) eUKSI++;
+	if (player.headJewelry == headjewelries.CUNDKIN) eUKSI++;
+	if (player.weapon == weapons.UDKDEST || player.weaponOff == weapons.UDKDEST) eNSI++;
+	return eToLSI;
 }
+public function equipUndefeatedKingItemsSet():void {
+	var count:int = equippedUndefeatedKingSetItems();
+	if (count == 2) player.createStatusEffect(StatusEffects.BonusEffectsUndefeatedKingSet, 0, 0, 0, 0);
+}
+public function unequipUndefeatedKingItemsSet():void {
+	var count:int = equippedUndefeatedKingSetItems();
+	if (count == 1) player.removeStatusEffect(StatusEffects.BonusEffectsUndefeatedKingSet);
+}*/
 
 }
 }

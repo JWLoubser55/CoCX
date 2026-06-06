@@ -285,6 +285,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const BonusEffectsNecroSet:StatusEffectType           = mk("Bonus Effects: Necro Set");
 		public static const BonusEffectsSkullSet:StatusEffectType           = mk("Bonus Effects: Skull Set");
 		public static const BonusEffectsTreeOfLifeSet:StatusEffectType      = mk("Bonus Effects: Tree of Life Set");
+		public static const BonusEffectsUndefeatedKingSet:StatusEffectType  = mk("Bonus Effects: Undefeated King Set");
 		public static const BonusVCapacity:StatusEffectType                 = mk("Bonus vCapacity");
 		public static const BottledMilk:StatusEffectType                    = mk("Bottled Milk");
 		public static const BreastsMilked:StatusEffectType                  = mk("Breasts Milked");

@@ -290,7 +290,7 @@ public final class ConsumableLib extends AlchemyLib
 		public const BANGBM1:BangBallMk1      = new BangBallMk1();
 		public const BANGBM2:BangBallMk2      = new BangBallMk2();
 		public const BANGBM3:BangBallMk3      = new BangBallMk3();
-		public const BAPILL_: Consumable = mk("BAPill", "Big Angry Pill", "a big angry pill", 125, "A big pill that's guaranteed to makes you a bit more angry.", m.bigangrypill);
+		public const BAPILL_: Consumable = mk("BAPill", "Big Angry Pill", "a big angry pill", 125, "A big pill that's guaranteed to makes you more angry.", m.bigangrypill);
 		public const BCHCAKE: Consumable = mk("BChCake", "BigChocolateCake", "a Big chocolate cake", 30, "A decadent-looking chocolate cake found primarily in wonderland.", m.bigChocolateCake);
 		public const BH_PILL: Consumable = mk("BH.Pill", "B.Heal Pill", "a big healing pill", 42, "A big healing pill that's guaranteed to heal you by a bit.", m.bighealpill);
 		public const C__MINT:Consumable       = new Mint();
@@ -303,11 +303,13 @@ public final class ConsumableLib extends AlchemyLib
 		public const F_DRAFT: Consumable = mk("F.Draft", "FuckDraft", "a vial of roiling red fluid labeled \"Fuck Draft\"", 6, "This vial of red fluid bubbles constantly inside the glass, as if eager to escape.  It smells very strongly, though its odor is difficult to identify.  The word \"Fuck\" is inscribed on the side of the vial.", curry(m.lustDraft, true));
 		public const FROZENB:FrozenBalls      = new FrozenBalls();
 		public const H_PILL:Consumable        = new HealPill();
+		public const HAPILL_: Consumable = mk("HAPill", "Huge Angry Pill", "a huge angry pill", 700, "A huge pill that's guaranteed to makes you more angry.", m.hugeangrypill);
 		public const HM_FRAG:HollowMaskFrag	  = new HollowMaskFrag();
 		public const HRBCNT:Consumable        = new HerbalContraceptive();
 		public const INCOINS: Consumable = mk("IncOIns", "IncenOfIns", "an incense of Insight", 15, "These sticks, when burned, are rumored to fill an area with an incense that allows for deep meditation and granting greater insight.", m.incenseOfInsight);
 		public const ICICLE_:Consumable       = new IceShard();
 		public const KITGIFT:KitsuneGift	  = new KitsuneGift();
+		public const LAPILL_: Consumable = mk("LAPill", "Large Angry Pill", "a large angry pill", 300, "A large pill that's guaranteed to makes you more angry.", m.largeangrypill);
 		public const LETH0TE:Leth0te	      = new Leth0te();
 		public const LETH1TE:Leth1te	      = new Leth1te();
 		public const LETH2TE:Leth2te	      = new Leth2te();
@@ -317,7 +319,7 @@ public final class ConsumableLib extends AlchemyLib
 		public const LUSTSTK:LustStick        = new LustStick();
 		public const MADMENK: Consumable = mk("MadmenK", "MadmenKnowledge", "a Madmen knowledge", 100, "A bottle filled with the raw knowledge of an insane person. Every now and then insane people speak a truth unavailable to sane folks, having glimpsed into something only they can see. Knowledge is power but power is corrupt and can, with time, break even the most steeled of minds.", m.madmenKnowledge);
 		public const MANUP_B: Consumable = mk("ManUp B", "ManUp B.", "a ManUp beer", 6, "A beverage made for people who believe brawn is better than brains.", m.manUpBeer);
-		public const MAPILL_: Consumable = mk("MAPill", "Medium Angry Pill", "a medium angry pill", 50, "A medium pill that's guaranteed to makes you a bit more angry.", m.mediumangrypill);
+		public const MAPILL_: Consumable = mk("MAPill", "Medium Angry Pill", "a medium angry pill", 50, "A medium pill that's guaranteed to makes you more angry.", m.mediumangrypill);
 		public const MH_PILL: Consumable = mk("MH.Pill", "M.Heal Pill", "a medium healing pill", 15, "A medium healing pill that's guaranteed to heal you by a bit.", m.mediumhealpill);
 		public const MILKPTN:Consumable       = new MilkPotion();
 		public const MIND_UP:MindUp           = new MindUp();
@@ -332,7 +334,7 @@ public final class ConsumableLib extends AlchemyLib
 		public const PONAILS: Consumable = mk("PONails", "pack of nails", "a pack of nails", 20, "It looks like a pack of nails that may still have between 10 and 30 nails inside.", m.packOfNails);
 		public const PPHILTR:Consumable       = new PurityPhilter();
 		public const PRNPKR :Consumable       = new PrincessPucker();
-		public const SAPILL_: Consumable = mk("SAPill", "Small Angry Pill", "a small angry pill", 20, "A small pill that's guaranteed to makes you a bit more angry.", m.smallangrypill);
+		public const SAPILL_: Consumable = mk("SAPill", "Small Angry Pill", "a small angry pill", 20, "A small pill that's guaranteed to makes you more angry.", m.smallangrypill);
 		public const SENSDRF:Consumable       = new SensitivityDraft();
 		public const SMART_T:Consumable       = new ScholarsTea();
 		public const STRASCA: Consumable = mk("StraSCa", "StrawberryShortcake", "a Strawberry shortcake", 30, "A delicious-looking shortcake found primarily in wonderland.", m.strawberryShortcake);

@@ -1477,13 +1477,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var damage:Number = 0;
 		var PAMulti:Number = 1;
 		PAMulti += combat.PASPAS(1);
-		if ((player.weapon == weapons.PRURUMI && player.spe >= 150) || player.jewelry1 == jewelries.UNDKINS || player.jewelry3 == jewelries.UNDKINS) {
+		if ((player.weapon == weapons.PRURUMI && player.spe >= 150) || player.isUdefeatedKingSignetEquipped()) {
 			if (player.weapon == weapons.PRURUMI && player.spe >= 150) {
 				PAMulti += 0.5;
 				if (player.spe >= 225) PAMulti += 0.5;
 				if (player.spe >= 300) PAMulti += 0.5;
 			}
-			if (player.jewelry1 == jewelries.UNDKINS || player.jewelry3 == jewelries.UNDKINS) {
+			if (player.isUdefeatedKingSignetEquipped()) {
 				PAMulti += 0.5;
 			}
 		}
@@ -5244,13 +5244,13 @@ public class PhysicalSpecials extends BaseCombatContent {
 			var damage:Number = 0;
 			var PAMulti:Number = 1;
 			PAMulti += combat.PASPAS(1);
-			if ((player.weapon == weapons.PRURUMI && player.spe >= 150) || player.jewelry1 == jewelries.UNDKINS || player.jewelry3 == jewelries.UNDKINS) {
+			if ((player.weapon == weapons.PRURUMI && player.spe >= 150) || player.isUdefeatedKingSignetEquipped()) {
 				if (player.weapon == weapons.PRURUMI && player.spe >= 150) {
 					PAMulti += 0.5;
 					if (player.spe >= 225) PAMulti += 0.5;
 					if (player.spe >= 300) PAMulti += 0.5;
 				}
-				if (player.jewelry1 == jewelries.UNDKINS || player.jewelry3 == jewelries.UNDKINS) {
+				if (player.isUdefeatedKingSignetEquipped()) {
 					PAMulti += 0.5;
 				}
 			}

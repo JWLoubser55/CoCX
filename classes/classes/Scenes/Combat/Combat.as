@@ -507,7 +507,13 @@ public class Combat extends BaseContent {
 			player.HP = player.minHP() + 1;
             combatMenu(false);
 		}
-        else if (player.hasPerk(PerkLib.Immortality) || player.hasPerk(PerkLib.WhatIsReality) || (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH)) {
+        else if (player.hasPerk(PerkLib.Immortality) || player.hasPerk(PerkLib.WhatIsReality)) {
+            if (player.hasPerk(PerkLib.Immortality)) player.takeLustDamage((Math.round(player.maxOverLust() * 0.4)), true, false);
+			else player.takeLustDamage((Math.round(player.maxOverLust() * 0.8)), true, false);
+            player.HP = player.minHP() + 1;
+            combatMenu(false);
+        }
+        else if (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH) {
             player.takeLustDamage((player.HP - player.minHP()), true);
             player.HP = player.minHP() + 1;
             combatMenu(false);
@@ -15925,7 +15931,7 @@ public class Combat extends BaseContent {
         if (player.jewelry3 == jewelries.INMORNG) wrathregen += 1;
         if (player.jewelry4 == jewelries.FLLIRNG) wrathregen += 1;
         if (player.jewelry4 == jewelries.INMORNG) wrathregen += 1;
-        if (player.jewelry4 == jewelries.UNDKINS || player.jewelry3 == jewelries.UNDKINS || player.jewelry2 == jewelries.UNDKINS || player.jewelry1 == jewelries.UNDKINS) wrathregen += 3;
+        if (player.isUdefeatedKingSignetEquipped()) wrathregen += 3;
 		if (player.hasPerk(PerkLib.AsuraStrength)) wrathregen += Math.round(player.maxWrath() * 0.005);
 		if (player.hasPerk(PerkLib.AsuraToughness)) wrathregen += Math.round(player.maxWrath() * 0.005);
         if (player.perkv1(IMutationsLib.OrcAdrenalGlandsIM) >= 4) wrathregen += Math.round(player.maxWrath() * 0.005);
