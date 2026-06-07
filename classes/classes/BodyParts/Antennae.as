@@ -66,6 +66,11 @@ public class Antennae extends BodyPart {
 		name: "automata",
 		appearanceDesc: "A small metal rod on the side of your headset allows you to obtain information on the network from anywhere in Mareth."
 	});
+	public static const THIRD_EYE: int = 11;
+	EnumValue.add(Types, THIRD_EYE, "THIRD_EYE", {
+		name: "3rd eye",
+		appearanceDesc: "A [eyecolor] third eye rests on your forehead granting you a measure of arcane power as well as true sight piercing through illusions and falsehood."
+	});
 
 	public function Antennae(creature:Creature) {
 		super(creature, null);

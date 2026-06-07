@@ -143,6 +143,17 @@ package classes.GeneticMemories {
 			}
 		});
 
+		public static const THIRD_EYE:int = _partid++;
+		EnumValue.add(Memories, THIRD_EYE, "THIRD_EYE", {
+			id: "Third Eye",
+			name: "Third Eye",
+			cost: 100,
+			title: "3rdEye",
+			transformation: function(): Transformation {
+				return CoC.instance.transformations.AntennaeThirdEye;
+			}
+		});
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

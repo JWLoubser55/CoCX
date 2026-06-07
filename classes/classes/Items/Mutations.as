@@ -15818,6 +15818,11 @@ public final class Mutations extends MutationsHelper {
 				changes++;
 			}
 			//antenna
+			if (changes < changeLimit && rand(3) == 0 && player.antennae.type != Antennae.THIRD_EYE) {
+				outputText("\n\n");
+				transformations.AntennaeThirdEye.applyEffect();
+				changes++;
+			}
 			if (player.isRace(Races.FROG, 2, false) && changes < changeLimit && !player.hasPerk(PerkLib.DragonAcidBreath)) {
 				outputText("[pg]You feel something awakening within you... then a sudden sensation of choking grabs hold of your throat, sending you to your knees as you clutch and gasp for breath.  It feels like there's something trapped inside your windpipe, clawing and crawling its way up.  You retch and splutter and then, with a feeling of almost painful relief, you expel a bellowing roar from deep inside of yourself... with enough force that clods of dirt and shattered gravel are sent flying all around.  You look at the small crater you have literally blasted into the landscape with a mixture of awe and surprise.");
 				outputText("[pg]It seems the bog mucus has awaked some kind of power within you... your throat and chest feel as if you drank mouthful of acid; you doubt you can force out more than one such blast before resting.  (<b>Gained Perk: Dragon acid breath!</b>)");

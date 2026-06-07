@@ -186,6 +186,21 @@ public class AntennaeTransformations extends MutationsHelper {
 				return player.antennae.type === Antennae.AUTOMATA;
 			}
 	);
+	public const AntennaeThirdEye: Transformation = new SimpleTransformation("Third Eye",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "You grab your forehead in pain as a slit forms across the skin. You gasp as the slit opens revealing a third frog like eyes with horizontal pupils. <b>You now have a third eye on your forehead!</b>";
+				player.antennae.type = Antennae.THIRD_EYE;
+				if (doOutput) outputText(desc);
+				Metamorph.unlockMetamorph(AntennaeMem.getMemory(AntennaeMem.THIRD_EYE));
+			},
+			// is present
+			function (): Boolean {
+				return player.antennae.type === Antennae.THIRD_EYE;
+			}
+	);
 	/*
   */
 }

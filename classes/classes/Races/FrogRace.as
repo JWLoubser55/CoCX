@@ -49,6 +49,7 @@ public class FrogRace extends Race {
 				.hornType(Horns.DRACONIC_X4_12_INCH_LONG, +2)
                 .eyeType(Eyes.FROG, +1)
 				.eyeColor(ANY(FrogEyesColors), +1)
+				.antennaeType(Antennae.THIRD_EYE, +1)
 				.skinColor1(ANY(FrogSkinColors), +1)
 				.plainSkinOfAdj(NOT("slippery"), +1)
 				.noTail(+1)

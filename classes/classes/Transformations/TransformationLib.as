@@ -109,6 +109,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 	public const AntennaeSeaDragon: Transformation 		= antennae.AntennaeSeaDragon.registerTf(AS_ANTENNAE, AE_SEA_DRAGON);
     public const AntennaeMoth: Transformation           = antennae.AntennaeMoth.registerTf(AS_ANTENNAE, AE_MOTH);
     public const AntennaeAutomata: Transformation       = antennae.AntennaeAutomata.registerTf(AS_ANTENNAE, AE_AUTOMATA);
+    public const AntennaeThirdEye: Transformation       = antennae.AntennaeThirdEye.registerTf(AS_ANTENNAE, AE_MOBOGO);
 
 //ARMS
 //======================================================================================================================
