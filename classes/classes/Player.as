@@ -4136,7 +4136,8 @@ use namespace CoC;
 				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
 			}
 			if (perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) mult -= 10;
-			if (perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) mult -= 30;
+			if (perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) mult -= 20;
+			if (perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) mult -= 10;
 			if (hasPerk(PerkLib.AquaticAffinity) || hasPerk(PerkLib.AffinityUndine)) mult += 100;
 			if (hasPerk(PerkLib.DarknessAffinity) || hasPerk(PerkLib.FireShadowAffinity) || hasPerk(PerkLib.Circuit)) mult += 100;
 			if (headjewelryEffectId == HeadJewelryLib.MODIFIER_LIGH_R) mult -= headjewelryEffectMagnitude;
@@ -4389,7 +4390,10 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.DaoistKoGTyrantStage)) {
 				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
-			}/*
+			}
+			if (perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) mult -= 10;
+			if (perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) mult -= 20;
+			if (perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) mult -= 10;/*
 			if (jewelryEffectId == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude;
 			if (jewelryEffectId2 == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude2;
 			if (jewelryEffectId3 == JewelryLib.MODIFIER_POIS_R) mult -= jewelryEffectMagnitude3;
@@ -9213,7 +9217,7 @@ use namespace CoC;
 			if ((isRace(Races.RAIJU, 2) || isRace(Races.THUNDERBIRD) || isRace(Races.KIRIN)) && lust100 >= 75) {
 				if (!statStore.hasBuff("Supercharged")){
 					var buff:Number = 1;
-					if (perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2
+					if (perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2;
 					statStore.replaceBuffObject({'spe.mult':Math.round(speStat.mult.value)*buff}, 'Supercharged', { text: 'Supercharged!' });
 					CoC.instance.mainViewManager.refreshStats();
 					CoC.instance.mainViewManager.showStatUp('spe');

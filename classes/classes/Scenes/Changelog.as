@@ -292,8 +292,10 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Dragon Acid Breath. Gained by using Bog Mucus item. Effects: Allows access to a dragon acid breath attack.\n");
 			outputText("-New M. Special: Dragon Acid Breath. Usable by having Dragon Acid Breath perk. Effect: Like any others Dragon Breaths, dealing Acid type damage.\n");
 			outputText("-Wrath generated from lost HP been with us for ages at this point all way back from times it was ONLY source of getting wrath. But times change and now we got way more options from IM's, throu items to even specials. So now ratio for HP lost to Wrath gained is changed from 1:10 to 1:100.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Heart Of The Storm (Final Form). Req. Heart Of The Storm (Evolved) and lvl 90+. Effects: Increase the power of all Wind and Lightning racial abilities, you can fly continuously as long as you yourself can fly, if you have energy attacks they now include a chance to stun and ");
+			outputText("you increase wind and electricity resistance by 40%. While in supercharged states feedback damage from lust damage that would defeat you is reduced by half!\n");
+			outputText("-New mutation perk: Raiju Cathode (Final Form). Req. Raiju Cathode (Evolved) and lvl 90+. Effects: Your Raiju Cathode provides an increase in speed by 50% and increases lust damage from weapons and natural weapons by 300%, All lightning damage is increased by 40%, Supercharged bonuses are twice as strong. ");
+			outputText("While Supercharged all natural weapons inflict 25% of their total damage as extra lightning damage.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

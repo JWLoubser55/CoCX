@@ -4509,7 +4509,7 @@ import flash.utils.getQualifiedClassName;
 								if (silly()) outputText("It was at this moment that the mushroom girl realized… she fucked up. ");
 								player.lust = Math.round(player.maxLust()*0.81);
 								var buff:Number = 1;
-								if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2
+								if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2;
 								player.statStore.replaceBuffObject({'spe.mult':Math.round(speStat.mult.value)*buff}, 'Supercharged', { text: 'Supercharged!' });
 								CoC.instance.mainViewManager.refreshStats();
 								CoC.instance.mainViewManager.showStatUp('spe');

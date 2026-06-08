@@ -4809,9 +4809,16 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//spe bonuses
 		damage += player.spe;
 		damage += scalingBonusSpeed();
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) damage *= 1.5;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) damage *= 1.5;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) damage *= 1.5;
+		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) damage *= 3;
+					damage *= 2.5;
+				}
+				damage *= 2;
+			}
+			damage *= 1.5;
+		}
 		//other bonuses
 		if (player.hasPerk(PerkLib.Heroism) && (monster.hasPerk(PerkLib.EnemyBossType) || monster.hasPerk(PerkLib.EnemyHugeType))) damage *= 2;
 		//Determine if critical hit!

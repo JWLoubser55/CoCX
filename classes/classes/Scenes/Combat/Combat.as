@@ -508,7 +508,9 @@ public class Combat extends BaseContent {
             combatMenu(false);
 		}
         else if (player.hasPerk(PerkLib.Immortality) || player.hasPerk(PerkLib.WhatIsReality)) {
-            player.takeLustDamage((Math.round(player.maxOverLust() * 0.4)), true, false);
+			var amount:Number = 0.4;
+            if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4 && player.statStore.hasBuff("Supercharged")) amount *= 0.5;
+			player.takeLustDamage((Math.round(player.maxOverLust() * amount)), true, false);
             player.HP = player.minHP() + 1;
             combatMenu(false);
         }
@@ -7939,6 +7941,7 @@ public class Combat extends BaseContent {
                             if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 1) damagemultiplier += 0.5;
                             if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 2) damagemultiplier += 0.5;
                             if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 3) damagemultiplier += 1;
+                            if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4) damagemultiplier += 1;
                             if (player.armorName == "desert naga pink and black silk dress") damagemultiplier += 0.1;
                             if (player.headjewelryName == "pair of Golden Naga Hairpins") damagemultiplier += 0.1;
                             if (player.armor == armors.ELFDRES && player.isElf()) damagemultiplier += 2;
@@ -9811,6 +9814,7 @@ public class Combat extends BaseContent {
         if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 1) enwa_lustMultiplier += 0.5;
         if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 2) enwa_lustMultiplier += 0.5;
         if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 3) enwa_lustMultiplier += 1;
+        if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4) enwa_lustMultiplier += 1;
 
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)){
             enwa_lustCritChance = 0;
@@ -9889,7 +9893,10 @@ public class Combat extends BaseContent {
 						else if (Forgefather.channelInlay == "sapphire") doPlayerIceDamage(damage, false);
 						else if (Forgefather.channelInlay == "topaz") doPlayerLightningDamage(damage, false);
 						else if (Forgefather.channelInlay == "amethyst") doPlayerDarknessDamage(damage, false);
-                        else doPlayerPhysDamage(damage, false);
+                        else {
+							doPlayerPhysDamage(damage, false);
+							if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4 && player.statStore.hasBuff("Supercharged")) doPlayerLightningDamage(Math.round(damage*0.25), false);
+						}
                         (monster as Doppleganger).mirrorAttack(damage);
                     }
                     return;
@@ -9924,29 +9931,38 @@ public class Combat extends BaseContent {
                 switch(SpecialEffect){
                     case "fire":
                         doPlayerFireDamage(damage, true, true);
+						if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4 && player.statStore.hasBuff("Supercharged")) doPlayerLightningDamage(Math.round(damage*0.25), false);
                         break;
                     case "foxflame":
                         doPlayerFireDamage((damage * 2), true, true);
                         monster.teased((monster.lustVuln * (10 + player.playerCorruption() / 8)), false);
+						if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4 && player.statStore.hasBuff("Supercharged")) doPlayerLightningDamage(Math.round(damage*0.25), false);
                         break;
                     case "ice":
                         doPlayerIceDamage(damage, true, true);
+						if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4 && player.statStore.hasBuff("Supercharged")) doPlayerLightningDamage(Math.round(damage*0.25), false);
                         break;
                     case "lightning":
                         doPlayerLightningDamage(damage, true, true);
+						if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4 && player.statStore.hasBuff("Supercharged")) doPlayerLightningDamage(Math.round(damage*0.25), false);
                         break;
                     case "darkness":
                         doPlayerDarknessDamage(damage, true, true);
+						if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4 && player.statStore.hasBuff("Supercharged")) doPlayerLightningDamage(Math.round(damage*0.25), false);
                         break;
                     case "acid":
                         doPlayerAcidDamage(damage, true, true);
+						if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4 && player.statStore.hasBuff("Supercharged")) doPlayerLightningDamage(Math.round(damage*0.25), false);
                         break;
                     default:
                         if (Forgefather.channelInlay == "ruby") doPlayerFireDamage(damage, true, true);
 						else if (Forgefather.channelInlay == "sapphire") doPlayerIceDamage(damage, true, true);
 						else if (Forgefather.channelInlay == "topaz") doPlayerLightningDamage(damage, true, true);
 						else if (Forgefather.channelInlay == "amethyst") doPlayerDarknessDamage(damage, true, true);
-                        else doPlayerPhysDamage(damage, true, true);
+                        else {
+							doPlayerPhysDamage(damage, true, true);
+							if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4 && player.statStore.hasBuff("Supercharged")) doPlayerLightningDamage(Math.round(damage*0.25), false);
+						}
                 }
 				// Below down here are just for lust damage dont be confused by The Enemy I mean the damage variable
                 if (player.hasPerk(PerkLib.LightningClaw)) {
@@ -10129,10 +10145,20 @@ public class Combat extends BaseContent {
         }
         if (player.hasPerk(PerkLib.ChiReflowLust)) lustDmgF *= UmasShop.NEEDLEWORK_LUST_TEASE_DAMAGE_MULTI;
         if (player.hasPerk(PerkLib.ArouseTheAudience) && (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyLargeGroupType))) lustDmgF *= 1.5;
-        if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) lustDmgF *= 1.1;
-        if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) lustDmgF *= 1.2;
-        if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) lustDmgF *= 1.3;
-        if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 2) lustDmgF *= 1.2;
+        if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) lustDmgF *= 1.4;
+					lustDmgF *= 1.3;
+				}
+				lustDmgF *= 1.2;
+			}
+			lustDmgF *= 1.1;
+		}
+        if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 2) {
+			if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4) lustDmgF *= 1.4;
+			else lustDmgF *= 1.2;
+		}
         if (player.hasPerk(PerkLib.RacialParagon)) lustDmgF *= RacialParagonAbilityBoost();
         if (player.hasPerk(PerkLib.NaturalArsenal)) lustDmgF *= 2;
         if (player.armor == armors.ELFDRES && player.isElf()) lustDmgF *= 2;
@@ -11691,10 +11717,20 @@ public class Combat extends BaseContent {
         damage = lightningTypeDamageBonus(damage);
 		if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
         if (monster.hasStatusEffect(StatusEffects.DragonWaterBreath)) damage *= 5;
-        if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 2) damage *= 1.20;
-        if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) damage *= 1.1;
-        if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) damage *= 1.2;
-        if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) damage *= 1.3;
+        if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 2) {
+			if (player.perkv1(IMutationsLib.RaijuCathodeIM) >= 4) damage *= 1.4;
+			else damage *= 1.2;
+		}
+		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) damage *= 1.4;
+					damage *= 1.3;
+				}
+				damage *= 1.2;
+			}
+			damage *= 1.1;
+		}
         if (player.hasPerk(PerkLib.IceQueenGown)) damage *= 2;
         if (player.hasPerk(PerkLib.WalpurgisIzaliaRobe)) damage = damage / 100;
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;

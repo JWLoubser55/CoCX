@@ -1796,9 +1796,16 @@ public class MagicSpecials extends BaseCombatContent {
 				crit = true;
 				lustDmgF *= 1.75;
 			}
-			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) lustDmgF *= 1.1;
-			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) lustDmgF *= 1.2;
-			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) lustDmgF *= 1.3;
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+						if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) lustDmgF *= 3;
+						lustDmgF *= 2.5;
+					}
+					lustDmgF *= 2;
+				}
+				lustDmgF *= 1.5;
+			}
 			lustDmgF *= magicAbilitiesGoBrrr();
 			lustDmgF = Math.round(monster.lustVuln * lustDmgF);
 			monster.teased(lustDmgF);
@@ -1874,9 +1881,16 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.ChiReflowLust)) lustDmgF *= UmasShop.NEEDLEWORK_LUST_TEASE_DAMAGE_MULTI;
 		if (player.hasPerk(PerkLib.ArouseTheAudience) && (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyLargeGroupType))) lustDmgF *= 1.5;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) damage *= 1.1;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) damage *= 1.2;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) damage *= 1.3;
+		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) damage *= 1.4;
+					damage *= 1.3;
+				}
+				damage *= 1.2;
+			}
+			damage *= 1.1;
+		}
 		lustDmgF *= magicAbilitiesGoBrrr();
 		lustDmgF = lustDmgF * monster.lustVuln;
 		lustDmgF = Math.round(lustDmgF);
@@ -1930,9 +1944,16 @@ public class MagicSpecials extends BaseCombatContent {
 			crit2 = true;
 			lustDmgF *= 1.75;
 		}
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) lustDmgF *= 1.1;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) lustDmgF *= 1.2;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) lustDmgF *= 1.3;
+		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) lustDmgF *= 1.4;
+					lustDmgF *= 1.3;
+				}
+				lustDmgF *= 1.2;
+			}
+			lustDmgF *= 1.1;
+		}
 		lustDmgF = lustDmgF * monster.lustVuln;
 		lustDmgF *= magicAbilitiesGoBrrr();
 		lustDmgF = Math.round(lustDmgF);
@@ -1980,9 +2001,16 @@ public class MagicSpecials extends BaseCombatContent {
 				var CumLustDmg:Number = combat.teases.teaseBaseLustDamage();
 				CumLustDmg += player.cumQ()/100;
 				CumLustDmg *= (player.lust100 * 0.01);
-				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) CumLustDmg *= 1.20;
-				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) CumLustDmg *= 1.20;
-				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) CumLustDmg *= 1.20;
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+						if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+							if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) CumLustDmg *= 1.7;
+							CumLustDmg *= 1.6;
+						}
+						CumLustDmg *= 1.4;
+					}
+					CumLustDmg *= 1.2;
+				}
 				monster.teased(Math.round(monster.lustVuln * CumLustDmg));
 				combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
 			}
@@ -2001,9 +2029,16 @@ public class MagicSpecials extends BaseCombatContent {
 				var MilkLustDmg:Number = combat.teases.teaseBaseLustDamage();
 				MilkLustDmg += player.lactationQ()/100;
 				MilkLustDmg *= (player.lust100 * 0.01);
-				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) MilkLustDmg *= 1.20;
-				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) MilkLustDmg *= 1.20;
-				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) MilkLustDmg *= 1.20;
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+						if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+							if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) MilkLustDmg *= 1.7;
+							MilkLustDmg *= 1.6;
+						}
+						MilkLustDmg *= 1.4;
+					}
+					MilkLustDmg *= 1.2;
+				}
 				monster.teased(Math.round(monster.lustVuln * MilkLustDmg));
 				combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
 			}
@@ -2024,9 +2059,16 @@ public class MagicSpecials extends BaseCombatContent {
 				var MilkCumLustDmg:Number = combat.teases.teaseBaseLustDamage();
 				MilkCumLustDmg += player.lactationQ()/100;
 				MilkCumLustDmg += player.cumQ()/100;
-				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) MilkCumLustDmg *= 1.20;
-				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) MilkCumLustDmg *= 1.20;
-				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) MilkCumLustDmg *= 1.20;
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+						if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+							if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) MilkCumLustDmg *= 1.7;
+							MilkCumLustDmg *= 1.6;
+						}
+						MilkCumLustDmg *= 1.4;
+					}
+					MilkCumLustDmg *= 1.2;
+				}
 				monster.teased(Math.round(monster.lustVuln * MilkCumLustDmg));
 				combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
 			}
@@ -3941,6 +3983,7 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) electrifyWeaponDuration += 1;
 		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) electrifyWeaponDuration += 2;
 		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) electrifyWeaponDuration += 7;
+		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) electrifyWeaponDuration += 10;
 		outputText("Your lift your weapon toward the sky, drawing bolts of lightning towards it.\n\n");
 		player.createStatusEffect(StatusEffects.ElectrifyWeapon,electrifyWeaponDuration,0,0,0);
 		statScreenRefresh();
@@ -6967,9 +7010,16 @@ public class MagicSpecials extends BaseCombatContent {
 		damage += scalingBonusSpeed() * 2;
 		damage += scalingBonusIntelligence() * 2;
 		damage += rand(player.level + player.racialScore(Races.COUATL));
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) damage *= 1.5;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) damage *= 1.5;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) damage *= 1.5;
+		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) damage *= 3;
+					damage *= 2.5;
+				}
+				damage *= 2;
+			}
+			damage *= 1.5;
+		}
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = calcGaleMod(damage, true);
@@ -7052,9 +7102,16 @@ public class MagicSpecials extends BaseCombatContent {
 		damage += scalingBonusSpeed() * 2;
 		damage += scalingBonusWisdom() * 2;
 		damage += rand(player.level + player.racialScore(Races.KAMAITACHI));
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) damage *= 1.5;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) damage *= 1.5;
-		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) damage *= 1.5;
+		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) damage *= 3;
+					damage *= 2.5;
+				}
+				damage *= 2;
+			}
+			damage *= 1.5;
+		}
 		damage *= magicAbilitiesGoBrrr();
 		if (player.hasPerk(PerkLib.LionHeart)) damage *= 2;
 		damage = calcGaleMod(damage, true);

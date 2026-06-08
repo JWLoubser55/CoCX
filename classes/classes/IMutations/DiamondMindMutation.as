@@ -7,37 +7,29 @@ package classes.IMutations
 import classes.Creature;
 import classes.IMutationPerkType;
 import classes.PerkClass;
+import classes.Player;
 import classes.Races;
 
-public class RaijuCathodeMutation extends IMutationPerkType
+public class DiamondMindMutation extends IMutationPerkType
     {
-		public static const MNAME:String = "Raiju Cathode";
+		public static const MNAME:String = "Diamond Mind";
 		override public function get mName():String {
 			return MNAME;
 		}
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
-			var speed:Number = 10;
-			var lust:Number = 5;
-			var light:Number = 2;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-			if (pTier >= 2) {
-				speed += 15;
-				lust += 5;
-			}
-			if (pTier >= 3) {
-				speed += 25;
-				lust += 10;
-			}
-			if (pTier >= 4) {
-				lust += 10;
-				light += 2;
-			}
-            if (pTier >= 1) descS += "Your Raiju Cathode provides an increase in speed by "+speed+"% and increase lust damage from weapons and natural weapons by "+lust+"0%";
-            if (pTier >= 2) descS += ", All lightning damage is increased by "+light+"0%";
-            if (pTier >= 3) descS += ", Supercharged bonuses are twice as strong";
-            if (pTier >= 4) descS += ". While Supercharged all natural weapons inflict 25% of their total damage as extra lightning damage";
+            if (pTier >= 1) descS += "Allows you to retain an aura at all time, gaining whichever corresponds to your alignment. Empower the effect of your aura based on your purity or corruption score";
+            if (pTier >= 3){
+                descS += " x3";
+            }
+            else if (pTier >= 2){
+                descS += " x2";
+            }
+            else {
+                descS += "";
+            }
             if (descS != "")descS += ".";
             return descS;
         }
@@ -50,7 +42,9 @@ public class RaijuCathodeMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requirePeripheralNervSysMutationSlot()
-                    .requireAnyRace(Races.RAIJU, Races.KIRIN);
+                    .requireCustomFunction(function (player:Player):Boolean {
+                        return player.isRace(Races.ALICORN, 2) || player.isRace(Races.UNICORN, 2);
+                    }, "Any unicorn race");
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -64,16 +58,12 @@ public class RaijuCathodeMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
-            if (pTier == 1) pBuffs['spe.mult'] = 0.1;
-            else if (pTier == 2) pBuffs['spe.mult'] = 0.25;
-            else if (pTier == 3) pBuffs['spe.mult'] = 0.5;
-            else if (pTier == 4) pBuffs['spe.mult'] = 1.0;
             return pBuffs;
         }
 
-        public function RaijuCathodeMutation() {
-            super(MNAME, SLOT_NERVSYS, 4);
+        public function DiamondMindMutation() {
+            super(MNAME, SLOT_NONE, 1);//SLOT_NERVSYS
         }
-        
+
     }
 }
