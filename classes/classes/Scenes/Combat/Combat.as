@@ -509,10 +509,11 @@ public class Combat extends BaseContent {
 		}
         else if (player.hasPerk(PerkLib.Immortality) || player.hasPerk(PerkLib.WhatIsReality)) {
 			var amount:Number = 0.4;
-            if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4 && player.statStore.hasBuff("Supercharged")) amount *= 0.5;
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4 && player.statStore.hasBuff("Supercharged")) amount *= 0.5;
+			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment13)) amount *= 0.5;
 			player.takeLustDamage((Math.round(player.maxOverLust() * amount)), true, false);
-            player.HP = player.minHP() + 1;
-            combatMenu(false);
+			player.HP = player.minHP() + 1;
+			combatMenu(false);
         }
         else if (player.hasPerk(PerkLib.Ethereal) && player.armor == armors.FUNERSH) {
             player.takeLustDamage((player.HP - player.minHP()), true);

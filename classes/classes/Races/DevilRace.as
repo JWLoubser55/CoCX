@@ -62,6 +62,7 @@ public class DevilRace extends Race {
 		
 		addBloodline(PerkLib.DevilsDescendant, PerkLib.BloodlineDevil);
 		addMutation(IMutationsLib.ObsidianHeartIM);
+		addMutation(IMutationsLib.DiabolicMindIM);
 		
 		buildTier(11, "devilkin")
 				.namesTauric("devilkin", "devilkin-taur")

@@ -20,7 +20,7 @@ public class DiabolicMindMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Allows you to retain an aura at all time, gaining whichever corresponds to your alignment. Empower the effect of your aura based on your purity or corruption score";
+            if (pTier >= 1) descS += "While lust is above "+(8 - pTier)+"0% increase all spell damage by "+(5 * pTier)+"0%";
             if (pTier >= 3){
                 descS += " x3";
             }
@@ -42,9 +42,7 @@ public class DiabolicMindMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requirePeripheralNervSysMutationSlot()
-                    .requireCustomFunction(function (player:Player):Boolean {
-                        return player.isRace(Races.ALICORN, 2) || player.isRace(Races.UNICORN, 2);
-                    }, "Any unicorn race");
+                    .requireCor(100).requireRace(Races.DEVIL);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -62,7 +60,7 @@ public class DiabolicMindMutation extends IMutationPerkType
         }
 
         public function DiabolicMindMutation() {
-            super(MNAME, SLOT_NONE, 1);//SLOT_NERVSYS
+            super(MNAME, SLOT_NERVSYS, 1);
         }
 
     }

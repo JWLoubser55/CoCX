@@ -57,11 +57,13 @@ public class IMutationsLib
 		public static const BlackBloodIM:IMutationPerkType = new BlackBloodMutation();
 		public static const BlackHeartIM:IMutationPerkType = new BlackHeartMutation();
 		public static const BlazingHeartIM:IMutationPerkType = new BlazingHeartMutation();
+		public static const CelestialBloodIM:IMutationPerkType = new CelestialBloodMutation();
 		public static const ChameleonSkinIM:IMutationPerkType = new ChameleonSkinMutation();
 		public static const CatLikeNimblenessIM:IMutationPerkType = new CatLikeNimblenessMutation();
 		public static const CaveWyrmAcidIM:IMutationPerkType = new CaveWyrmAcidMutation();
 		public static const CaveWyrmLungsIM:IMutationPerkType = new CaveWyrmLungsMutation();
 		public static const DiabolicMindIM:IMutationPerkType = new DiabolicMindMutation();
+		public static const DiagonalMindIM:IMutationPerkType = new DiagonalMindMutation();
 		public static const DiamondHeartIM:IMutationPerkType = new DiamondHeartMutation();
 		public static const DiamondMindIM:IMutationPerkType = new DiamondMindMutation();
 		public static const DisplacerMetabolismIM:IMutationPerkType = new DisplacerMetabolismMutation();
@@ -79,6 +81,7 @@ public class IMutationsLib
 		public static const FerasBirthrightIM:IMutationPerkType = new FerasBirthrightMutation();
 		public static const FeyArcaneBloodstreamIM:IMutationPerkType = new FeyArcaneBloodstreamMutation();
 		public static const FiendishBallsIM:IMutationPerkType = new FiendishBallsMutation();
+		public static const FiendishBloodIM:IMutationPerkType = new FiendishBloodMutation();
 		public static const FiendishMetabolismIM:IMutationPerkType = new FiendishMetabolismMutation();
 		public static const FiendishOvariesIM:IMutationPerkType = new FiendishOvariesMutation();
 		public static const FloralOvariesIM:IMutationPerkType = new FloralOvariesMutation();

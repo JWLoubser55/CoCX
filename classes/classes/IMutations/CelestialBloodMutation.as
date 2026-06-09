@@ -7,12 +7,11 @@ package classes.IMutations
 import classes.Creature;
 import classes.IMutationPerkType;
 import classes.PerkClass;
-import classes.Player;
 import classes.Races;
 
-public class DiamondMindMutation extends IMutationPerkType
+public class CelestialBloodMutation extends IMutationPerkType
     {
-		public static const MNAME:String = "Diamond Mind";
+		public static const MNAME:String = "Celestial Blood";
 		override public function get mName():String {
 			return MNAME;
 		}
@@ -20,16 +19,10 @@ public class DiamondMindMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "While lust is above "+(8 - pTier)+"0% increase all spell damage by "+(5 * pTier)+"0%";
-            if (pTier >= 3){
-                descS += " x3";
-            }
-            else if (pTier >= 2){
-                descS += " x2";
-            }
-            else {
-                descS += "";
-            }
+            if (pTier >= 1) descS += "Your undead blood gives you a "+pTier+"0% resistance to cold";
+			if (pTier >= 2) descS += ". When hunger is sated above "+((6-pTier)*2)+"0% you gain doubled health generation from all sources";
+            if (pTier >= 3) descS += ". You gain regeneration "+(pTier-2)+"%";
+            if (pTier >= 4) descS += ". You recover from all stat damage except intelligence / libido every full moon night";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -41,8 +34,8 @@ public class DiamondMindMutation extends IMutationPerkType
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requirePeripheralNervSysMutationSlot()
-                    .requireCor(-100).requireRace(Races.AZAZEL);
+                    this.requireBloodsteamMutationSlot()
+                    .requireAnyRace(Races.JIANGSHI, Races.MUMMY, Races.LICH);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -55,13 +48,18 @@ public class DiamondMindMutation extends IMutationPerkType
 
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
-            var pBuffs:Object = {};
+            var pBuffs:Object = {};/*
+            if (pTier == 1) pBuffs['lib.mult'] = 0.05;
+            if (pTier == 2) pBuffs['lib.mult'] = 0.1;
+            if (pTier == 3) pBuffs['lib.mult'] = 0.15;
+            if (pTier == 4) pBuffs['lib.mult'] = 0.2;*/
             return pBuffs;
         }
 
-        public function DiamondMindMutation() {
-            super(MNAME, SLOT_NERVSYS, 1);
+        public function CelestialBloodMutation() 
+		{
+			super(MNAME, SLOT_NONE, 1);//SLOT_BLOODSTREAM
         }
-
+        
     }
 }

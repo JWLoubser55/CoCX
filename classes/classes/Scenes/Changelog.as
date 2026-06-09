@@ -296,9 +296,9 @@ public class Changelog extends BaseContent
 			outputText("you increase wind and electricity resistance by 40%. While in supercharged states feedback damage from lust damage that would defeat you is reduced by half!\n");
 			outputText("-New mutation perk: Raiju Cathode (Final Form). Req. Raiju Cathode (Evolved) and lvl 90+. Effects: Your Raiju Cathode provides an increase in speed by 50% and increases lust damage from weapons and natural weapons by 300%, All lightning damage is increased by 40%, Supercharged bonuses are twice as strong. ");
 			outputText("While Supercharged all natural weapons inflict 25% of their total damage as extra lightning damage.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New option in Phylactery Enchantment: Eternity rune Imbuement -> Reduce lust backlash from damage defeat denial by half.\n");
+			outputText("-New mutation perk: Diabolic Mind. Req. having free nerv system mutation slot, 100 corruption, Devil race. Effects: While lust is above 70% increase all spell damage by 50%.\n");
+			outputText("-New mutation perk: Diamond Mind. Req. having free nerv system mutation slot, -100 corruption, Azazel race. Effects: While lust is above 70% increase all spell damage by 50%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

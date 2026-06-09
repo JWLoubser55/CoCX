@@ -45,7 +45,7 @@ public class DiamondHeartMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireHeartMutationSlot()
-                    .requireCor(0).requireRace(Races.AZAZEL);
+                    .requireCor(-100).requireRace(Races.AZAZEL);
                 }
                 else{
                     var pLvl:int = pTier * 30;

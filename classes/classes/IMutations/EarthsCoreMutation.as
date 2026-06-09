@@ -41,8 +41,8 @@ public class EarthsCoreMutation extends IMutationPerkType
                 //This helps keep the requirements output clean.
                 this.requirements = [];
                 if (pTier == 0){
-                    this.requireHeartMutationSlot()
-                        .requireAnyRace(Races.RAIJU, Races.THUNDERBIRD, Races.KAMAITACHI, Races.COUATL, Races.KIRIN);
+					this.requireHeartMutationSlot()
+					.requireRace(Races.RHINO);//.requireAnyRace(Races.RHINO, Races., Races., Races., Races.)
                 }
                 else{
                     var pLvl:int = pTier * 30;

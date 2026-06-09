@@ -16716,11 +16716,17 @@ public final class Mutations extends MutationsHelper {
         outputText("You became a shining light in the darkness, an ascendant who transcended and triumphed over evil that of yours and others. A being beyond the demons power with none of the flaws. You are now an Azazel.\n\n");
         player.consumeItem(item);
         if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 1) {
-            outputText("[pg]Your Obsidian Heart mutation has transformed to Diamond heart!");
+            outputText("[pg]Your Obsidian Heart mutation has transformed to Diamond Heart!");
             player.createPerk(IMutationsLib.DiamondHeartIM, player.perkv1(IMutationsLib.ObsidianHeartIM),0,0,0);
             player.removePerk(IMutationsLib.ObsidianHeartIM);
         }
         IMutationsLib.DiamondHeartIM.trueMutation = true;
+        if (player.perkv1(IMutationsLib.DiabolicMindIM) >= 1) {
+            outputText("[pg]Your Diabolic Mind mutation has transformed to Diamond Mind!");
+            player.createPerk(IMutationsLib.DiamondMindIM, player.perkv1(IMutationsLib.DiabolicMindIM),0,0,0);
+            player.removePerk(IMutationsLib.DiabolicMindIM);
+        }
+        IMutationsLib.DiamondMindIM.trueMutation = true;
         //TODO add Azazel perks effects
         outputText("\n<b>Obtained ability: Judgement Flare</b>  The counterpart to infernal flare.");
         outputText("\n<b>Obtained ability: Exorcism</b>  Damage any creature above 25% corruption for 50% of its hit point total. Can be used only once per battle.");

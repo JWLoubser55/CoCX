@@ -621,6 +621,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const PhylacteryEnchantment10:StatusEffectType        = mk("Phylactery Enchantment 10");
 		public static const PhylacteryEnchantment11:StatusEffectType        = mk("Phylactery Enchantment 11");
 		public static const PhylacteryEnchantment12:StatusEffectType        = mk("Phylactery Enchantment 12");
+		public static const PhylacteryEnchantment13:StatusEffectType        = mk("Phylactery Enchantment 13");
 		public static const PlainOnaholeUsed:StatusEffectType               = mk("plain onahole used");
 		public static const Photosynthesis:StatusEffectType                 = mk("Photosynthesis");
 		public static const PhoukaWhiskeyAffect:StatusEffectType            = mk("PhoukaWhiskeyAffect");

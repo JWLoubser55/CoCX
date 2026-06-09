@@ -73,6 +73,7 @@ public class AzazelRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 
 		addMutation(IMutationsLib.DiamondHeartIM);
+		addMutation(IMutationsLib.DiamondMindIM);
 		
 		buildTier(11, "azazelkin")
 				.requireWingType(Wings.PUREDEVILFEATHER)

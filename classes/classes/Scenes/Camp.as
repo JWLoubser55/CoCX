@@ -3566,7 +3566,8 @@ public class Camp extends NPCAwareContent{
 			[StatusEffects.PhylacteryEnchantment9, "Soul rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment10, "Body rune Imbuement"],
 			[StatusEffects.PhylacteryEnchantment11, "Corruption rune Imbuement"],
-			[StatusEffects.PhylacteryEnchantment12, "Corruption rune Imbuement"],
+			[StatusEffects.PhylacteryEnchantment12, "Vessel rune Imbuement"],
+			[StatusEffects.PhylacteryEnchantment13, "Eternity rune Imbuement"],
 		];
 		var i:int;
 		clearOutput();
@@ -3598,6 +3599,7 @@ public class Camp extends NPCAwareContent{
 		outputText("Body rune Imbuement -> <i>Add half your libido to your strength and speed score.</i>\n");
 		outputText("Corruption rune Imbuement -> <i>Add your libido to your magic modifier but take lust damage when spellcasting. (As sadist for lust dmg)</i>\n");
 		outputText("Vessel rune Imbuement -> <i>When training soulforce may increase demonic energy capacity by up to "+Soulforce.cultivationBonusMaxSF_maxPossible+"%.</i>\n");
+		outputText("Eternity rune Imbuement -> <i>Reduce lust backlash from damage defeat denial by half.</i>\n");
 		menu();
 		for (i = 0; i < statusNames.length; ++i) {
 			addButton(i, statusNames[i][1], phylacteryEnchantmentToggle, statusNames[i][0]);

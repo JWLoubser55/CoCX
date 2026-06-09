@@ -10,9 +10,9 @@ import classes.PerkClass;
 import classes.Player;
 import classes.Races;
 
-public class DiamondMindMutation extends IMutationPerkType
+public class DiagonalMindMutation extends IMutationPerkType
     {
-		public static const MNAME:String = "Diamond Mind";
+		public static const MNAME:String = "Diagonal Mind";
 		override public function get mName():String {
 			return MNAME;
 		}
@@ -42,7 +42,7 @@ public class DiamondMindMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requirePeripheralNervSysMutationSlot()
-                    .requireCor(-100).requireRace(Races.AZAZEL);
+                    .requireCor(100).requireRace(Races.DEVIL);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -59,8 +59,8 @@ public class DiamondMindMutation extends IMutationPerkType
             return pBuffs;
         }
 
-        public function DiamondMindMutation() {
-            super(MNAME, SLOT_NERVSYS, 1);
+        public function DiagonalMindMutation() {
+            super(MNAME, SLOT_NONE, 1);//SLOT_NERVSYS
         }
 
     }
