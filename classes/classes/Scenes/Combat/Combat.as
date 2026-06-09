@@ -9873,11 +9873,8 @@ public class Combat extends BaseContent {
             // switch statement is slightly faster than if
             switch(SpecialEffect){
                 case "KamaitachiScythe":
-                    if (!monster.hasStatusEffect(StatusEffects.KamaitachiBleed)) monster.createStatusEffect(StatusEffects.KamaitachiBleed,1,0,0,1);
-                    else {
-                        monster.addStatusValue(StatusEffects.KamaitachiBleed, 1, 1);
-                        monster.addStatusValue(StatusEffects.KamaitachiBleed, 4, 1);
-                    }
+                    if (!monster.hasStatusEffect(StatusEffects.KamaitachiBleed)) monster.createStatusEffect(StatusEffects.KamaitachiBleed,1,0,0,0);
+                    else monster.addStatusValue(StatusEffects.KamaitachiBleed, 1, 1);
                     break;
                 case "WendigoClaw":
 					outputText("Your maddening hunger gives you strength allowing you to attack two more times, your strike delivering cursed wounds.");
@@ -11962,6 +11959,16 @@ public class Combat extends BaseContent {
 		if (!ignoreDR && !tinkerDeconstruct()) damage *= (monster.damageMagicalPercent() / 100);
         damage = windTypeDamageBonus(damage);
         if (monster.hasPerk(PerkLib.TrollResistance)) damage *= 0.85;
+		if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 1) {
+			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 2) {
+				if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 3) {
+					if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4) damage *= 1.4;
+					damage *= 1.3;
+				}
+				damage *= 1.2;
+			}
+			damage *= 1.1;
+		}
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		damage *= EyesOfTheHunterDamageBonus();
 		doCamouflageAndRuinousBloodDamageMultiplier(damage, subtype);

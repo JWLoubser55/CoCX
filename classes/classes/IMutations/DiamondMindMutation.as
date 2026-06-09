@@ -21,15 +21,8 @@ public class DiamondMindMutation extends IMutationPerkType
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1) descS += "While lust is above "+(8 - pTier)+"0% increase all spell damage by "+(5 * pTier)+"0%";
-            if (pTier >= 3){
-                descS += " x3";
-            }
-            else if (pTier >= 2){
-                descS += " x2";
-            }
-            else {
-                descS += "";
-            }
+            if (pTier >= 2) descS += ". Decrease lust damage taken after lust resistance by "+(15 * (pTier - 1))+"%";
+            if (pTier >= 3) descS += " x3";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -60,7 +53,7 @@ public class DiamondMindMutation extends IMutationPerkType
         }
 
         public function DiamondMindMutation() {
-            super(MNAME, SLOT_NERVSYS, 1);
+            super(MNAME, SLOT_NERVSYS, 2);
         }
 
     }

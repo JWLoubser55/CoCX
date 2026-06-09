@@ -4127,7 +4127,7 @@ import flash.utils.getQualifiedClassName;
 						pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 					}
 					store14 = SceneLib.combat.fixPercentDamage(store14, false);
-					store14 = SceneLib.combat.doPlayerDoTPhysDamage(store14);
+					store14 = SceneLib.combat.doPlayerDoTWindDamage(store14, true, false, true);
 					if(plural) outputText("[Themonster] is violently struck by the ever intensifying windstorm. ");
 					else outputText("[Themonster] are violently struck by the ever intensifying windstorm. ");
 					SceneLib.combat.CommasForDigits(store14);
@@ -4167,7 +4167,7 @@ import flash.utils.getQualifiedClassName;
 					}
 					store *= SceneLib.combat.BleedDamageBoost();
 					store = SceneLib.combat.fixPercentDamage(store);
-					store = SceneLib.combat.doPlayerDoTPhysDamage(store);
+					store = SceneLib.combat.doPlayerDoTPhysDamage(store, true, false, true);
 					if (plural) outputText("[Themonster] bleed profusely from the jagged wounds your weapon left behind. ");
 					else outputText("[Themonster] bleeds profusely from the jagged wounds your weapon left behind. ");
 					SceneLib.combat.CommasForDigits(store);
@@ -4194,7 +4194,7 @@ import flash.utils.getQualifiedClassName;
 					store3 *= SceneLib.combat.BleedDamageBoost(true);
 					if (statusEffectv2(StatusEffects.SharkBiteBleed) > 0) store3 *= statusEffectv2(StatusEffects.SharkBiteBleed);
 					store3 = SceneLib.combat.fixPercentDamage(store3, false);
-					store3 = SceneLib.combat.doPlayerDoTPhysDamage(store3);
+					store3 = SceneLib.combat.doPlayerDoTPhysDamage(store3, true, false, true);
 					if(plural) outputText("[Themonster] bleed profusely from the jagged wounds your bite left behind. ");
 					else outputText("[Themonster] bleeds profusely from the jagged wounds your bite left behind. ");
 					SceneLib.combat.CommasForDigits(store3);
@@ -4211,19 +4211,15 @@ import flash.utils.getQualifiedClassName;
 					pc.HPChange(Math.round(player.maxHP() * 0.02), false, false);
 				}
 				store13 *= SceneLib.combat.BleedDamageBoost(true);
-				store13 = Math.round(store13);
-				
 				//Gain 20% per stack for regular Kamaitachi and 40% for Greater Kamaitachi
 				var kamMultiplier:Number = 0.2 * player.racialTierCached(Races.KAMAITACHI);
 				store13 *= 1 + (kamMultiplier * statusEffectv1(StatusEffects.KamaitachiBleed)); //Kamaitachi bleed stacks on itself growing ever stronger
-				store13 = SceneLib.combat.doPlayerDoTMagDamage(store13);
+				store13 = SceneLib.combat.doPlayerDoTPhysDamage(store13, true, false, true);
+				store13 = SceneLib.combat.doPlayerDoTWindDamage(store13, true, false, true);
 				if(plural) outputText("[Themonster] bleed profusely from the deep wounds your scythes left behind. ");
 				else outputText("[Themonster] bleeds profusely from the deep wounds your scythes left behind. ");
 				SceneLib.combat.CommasForDigits(store13);
 				outputText("[pg]");
-				//Decay Kamaitachi stacks for each turn the effect is not applied
-				if (statusEffectv4(StatusEffects.KamaitachiBleed) == 0 && statusEffectv1(StatusEffects.KamaitachiBleed) > 1) addStatusValue(StatusEffects.KamaitachiBleed, 1, -1);
-				changeStatusValue(StatusEffects.KamaitachiBleed, 4, 0);
 			}
 			if(hasStatusEffect(StatusEffects.GoreBleed)) {
 				//Countdown to heal
@@ -4247,7 +4243,7 @@ import flash.utils.getQualifiedClassName;
 					}
 					store5 *= SceneLib.combat.BleedDamageBoost();
 					store5 = SceneLib.combat.fixPercentDamage(store5, false);
-					store5 = SceneLib.combat.doPlayerDoTPhysDamage(store5);
+					store5 = SceneLib.combat.doPlayerDoTPhysDamage(store5, true, false, true);
 					if (plural) outputText("[Themonster] bleed profusely from the jagged ");
 					else outputText("[Themonster] bleeds profusely from the jagged ")
 					if (player.horns.type == Horns.COW_MINOTAUR) outputText("wounds your horns");
@@ -4283,7 +4279,7 @@ import flash.utils.getQualifiedClassName;
 					}
 					hemorrhage1 *= SceneLib.combat.BleedDamageBoost();
 					hemorrhage1 = SceneLib.combat.fixPercentDamage(hemorrhage1);
-					hemorrhage1 = SceneLib.combat.doPlayerDoTPhysDamage(hemorrhage1);
+					hemorrhage1 = SceneLib.combat.doPlayerDoTPhysDamage(hemorrhage1, true, false, true);
 					if (plural) outputText("[Themonster] bleed profusely from the jagged wounds your attack left behind. ");
 					else outputText("[Themonster] bleeds profusely from the jagged wounds your attack left behind. ");
 					SceneLib.combat.CommasForDigits(hemorrhage1);
@@ -5433,4 +5429,4 @@ import flash.utils.getQualifiedClassName;
 		}
 	}
 
-}
+}

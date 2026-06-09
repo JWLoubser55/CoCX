@@ -57,6 +57,7 @@ public class MantisRace extends Race {
 		addBloodline(PerkLib.MantisesDescendant, PerkLib.BloodlineMantis);
 		addMutation(IMutationsLib.MantislikeAgilityIM);
 		addMutation(IMutationsLib.TrachealSystemIM);
+		addMutation(IMutationsLib.HeartOfTheStormIM);
 		
 		buildTier(12, "mantis-morph")
 				.namesTauric("mantis-morph","mantis-taur")
