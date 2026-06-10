@@ -511,6 +511,10 @@ public class Combat extends BaseContent {
 			var amount:Number = 0.4;
 			if (player.perkv1(IMutationsLib.HeartOfTheStormIM) >= 4 && player.statStore.hasBuff("Supercharged")) amount *= 0.5;
 			if (player.hasStatusEffect(StatusEffects.PhylacteryEnchantment13)) amount *= 0.5;
+			if (player.perkv1(IMutationsLib.DiagonalMindIM) >= 1) {
+				if (player.perkv1(IMutationsLib.DiagonalMindIM) >= 4) amount = 0;
+				else amount *= (0.2 * player.perkv1(IMutationsLib.DiagonalMindIM));
+			}
 			player.takeLustDamage((Math.round(player.maxOverLust() * amount)), true, false);
 			player.HP = player.minHP() + 1;
 			combatMenu(false);

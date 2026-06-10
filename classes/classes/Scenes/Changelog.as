@@ -304,9 +304,9 @@ public class Changelog extends BaseContent
 			outputText("-Kamaitachi scythe attack/natural weapon attack effects, stacking, etc. been changed including: no more decay of bleed applied with them, bleed been physical + wind dmg dot not magic dot.\n");
 			outputText("-New mutation perk: Diabolic Mind (Evolved). Req. Diabolic Mind (Primitive) and lvl 60+. Effects: While lust is above 50% increase all spell damage by 150%. Decrease lust damage taken after lust resistance by 30%. Black magic potency is empowered by 100% against opponents of pure alignment.\n");
 			outputText("-New mutation perk: Diamond Mind (Evolved). Req. Diamond Mind (Primitive) and lvl 60+. Effects: While lust is below 70% increase all spell damage by 150%. Decrease lust damage taken after lust resistance by 30%. White magic potency is empowered by 100% against opponents of corrupt alignment.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Diabolic Mind (Final Form). Req. Diabolic Mind (Evolved) and lvl 90+. Effects: While lust is above 40% increase all spell damage by 200%. Decrease lust damage taken after lust resistance by 45%. Black magic potency is empowered by 200% against opponents of pure alignment. Reduce Feedback lust damage from health defeat denial by half.\n");
+			outputText("-New mutation perk: Diamond Mind (Final Form). Req. Diamond Mind (Evolved) and lvl 90+. Effects: While lust is below 80% increase all spell damage by 200%. Decrease lust damage taken after lust resistance by 45%. White magic potency is empowered by 200% against opponents of corrupt alignment. Reduce Feedback lust damage from health defeat denial by half.\n");
+			outputText("-New mutation perk: Diagonal Mind. Req. having free nerv system mutation slot, Cheshire Cat race. Effects: When you deny defeat by damage you instead take 20% less lust damage as a recoil.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -416,8 +416,20 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -445,6 +457,12 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

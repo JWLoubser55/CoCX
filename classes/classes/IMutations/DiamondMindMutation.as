@@ -23,7 +23,7 @@ public class DiamondMindMutation extends IMutationPerkType
             if (pTier >= 1) descS += "While lust is below "+(4 - pTier)+"0% increase all spell damage by "+(5 * pTier)+"0%";
             if (pTier >= 2) descS += ". Decrease lust damage taken after lust resistance by "+(15 * (pTier - 1))+"%";
             if (pTier >= 3) descS += ". White magic potency is empowered by "+(pTier - 2)+"00% against opponents of corrupt alignment";
-            if (pTier >= 4) descS += " x3";
+            if (pTier >= 4) descS += ". Reduce Feedback lust damage from health defeat denial by half";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -50,11 +50,15 @@ public class DiamondMindMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
+            if (pTier == 1) pBuffs['int.mult'] = 0.05;
+            if (pTier == 2) pBuffs['int.mult'] = 0.1;
+            if (pTier == 3) pBuffs['int.mult'] = 0.15;
+            if (pTier == 4) pBuffs['int.mult'] = 0.2;
             return pBuffs;
         }
 
         public function DiamondMindMutation() {
-            super(MNAME, SLOT_NERVSYS, 3);
+            super(MNAME, SLOT_NERVSYS, 4);
         }
 
     }

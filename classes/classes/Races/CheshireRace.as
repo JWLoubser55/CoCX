@@ -63,6 +63,7 @@ public class CheshireRace extends Race{
 		addBloodline(PerkLib.FelinesDescendant, PerkLib.BloodlineFeline);
 		addMutation(IMutationsLib.CatLikeNimblenessIM);
 		addMutation(IMutationsLib.EyeOfTheTigerIM);
+		addMutation(IMutationsLib.DiagonalMindIM);
 		
 		buildTier(13, "trickster cat")
 				.buffs({

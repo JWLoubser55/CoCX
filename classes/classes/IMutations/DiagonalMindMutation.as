@@ -20,16 +20,10 @@ public class DiagonalMindMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "While lust is above "+(8 - pTier)+"0% increase all spell damage by "+(5 * pTier)+"0%";
-            if (pTier >= 3){
-                descS += " x3";
-            }
-            else if (pTier >= 2){
-                descS += " x2";
-            }
-            else {
-                descS += "";
-            }
+            if (pTier >= 1 && pTier < 4) descS += "When you deny defeat by damage you instead take "+(pTier * 2)+"0% less lust damage as a recoil";
+            if (pTier >= 2) descS += " x2";
+            if (pTier >= 3) descS += " x3";
+            if (pTier >= 4) descS += " x2";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -42,7 +36,7 @@ public class DiagonalMindMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requirePeripheralNervSysMutationSlot()
-                    .requireCor(100).requireRace(Races.DEVIL);
+                    .requireRace(Races.CHESHIRE);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -56,11 +50,15 @@ public class DiagonalMindMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
+            if (pTier == 1) pBuffs['lib.mult'] = 0.05;
+            if (pTier == 2) pBuffs['lib.mult'] = 0.1;
+            if (pTier == 3) pBuffs['lib.mult'] = 0.15;
+            if (pTier == 4) pBuffs['lib.mult'] = 0.2;
             return pBuffs;
         }
 
         public function DiagonalMindMutation() {
-            super(MNAME, SLOT_NONE, 1);//SLOT_NERVSYS
+            super(MNAME, SLOT_NERVSYS, 1);
         }
 
     }

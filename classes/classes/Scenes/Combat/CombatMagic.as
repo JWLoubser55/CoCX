@@ -508,8 +508,8 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.level < 18) mod += 1;
 			mod += 1;
 		}
-		if (player.perkv1(IMutationsLib.DiamondMindIM) >= 3 && monster.cor > 0) mod += (1 * (player.perkv1(IMutationsLib.DiamondMindIM) - 2));
 		if (player.weapon == weapons.PURITAS) mod *= 2.5;
+		if (player.perkv1(IMutationsLib.DiamondMindIM) >= 3 && monster.cor > 0) mod *= (player.perkv1(IMutationsLib.DiamondMindIM) - 1);
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
 			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
 			else mod *= 2;
@@ -535,8 +535,8 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.level < 18) mod += 1;
 			mod += 1;
 		}
-		if (player.perkv1(IMutationsLib.DiabolicMindIM) >= 3 && monster.cor < 0) mod += (1 * (player.perkv1(IMutationsLib.DiabolicMindIM) - 2));
 		if (player.weapon == weapons.DEPRAVA) mod *= 2.5;
+		if (player.perkv1(IMutationsLib.DiabolicMindIM) >= 3 && monster.cor < 0) mod *= (player.perkv1(IMutationsLib.DiabolicMindIM) - 1);
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
 			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
 			else mod *= 2;
