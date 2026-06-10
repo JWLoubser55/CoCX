@@ -240,8 +240,8 @@ public class CombatMagic extends BaseCombatContent {
 			if (mTPCur > mTPCap) mTPCur = mTPCap;
 			mod += (0.1 * mTPCur);
 		}
-		if (player.perkv1(IMutationsLib.DiabolicMindIM) >= 1 && player.lust >= Math.round(player.maxLust() * (0.8 - (0.1 * player.perkv1(IMutationsLib.DiabolicMindIM))))) mod += (0.5 * player.perkv1(IMutationsLib.DiabolicMindIM));
-		if (player.perkv1(IMutationsLib.DiamondMindIM) >= 1 && player.lust >= Math.round(player.maxLust() * (0.8 - (0.1 * player.perkv1(IMutationsLib.DiamondMindIM))))) mod += (0.5 * player.perkv1(IMutationsLib.DiamondMindIM));
+		if (player.perkv1(IMutationsLib.DiabolicMindIM) >= 1 && player.lust > Math.round(player.maxLust() * (0.8 - (0.1 * player.perkv1(IMutationsLib.DiabolicMindIM))))) mod += (0.5 * player.perkv1(IMutationsLib.DiabolicMindIM));
+		if (player.perkv1(IMutationsLib.DiamondMindIM) >= 1 && player.lust < Math.round(player.maxLust() * (0.4 + (0.1 * player.perkv1(IMutationsLib.DiamondMindIM))))) mod += (0.5 * player.perkv1(IMutationsLib.DiamondMindIM));
 		if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 3) mod += (0.25 * (player.perkv1(IMutationsLib.DrakeBloodIM) - 2));
 		if (player.countCockSocks("blue") > 0) mod += (player.countCockSocks("blue") * .05);
         if (player.hasPerk(PerkLib.ChiReflowMagic)) mod += UmasShop.NEEDLEWORK_MAGIC_SPELL_MULTI;
@@ -508,6 +508,7 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.level < 18) mod += 1;
 			mod += 1;
 		}
+		if (player.perkv1(IMutationsLib.DiamondMindIM) >= 3 && monster.cor > 0) mod += (1 * (player.perkv1(IMutationsLib.DiamondMindIM) - 2));
 		if (player.weapon == weapons.PURITAS) mod *= 2.5;
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
 			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);
@@ -534,6 +535,7 @@ public class CombatMagic extends BaseCombatContent {
 			if (player.level < 18) mod += 1;
 			mod += 1;
 		}
+		if (player.perkv1(IMutationsLib.DiabolicMindIM) >= 3 && monster.cor < 0) mod += (1 * (player.perkv1(IMutationsLib.DiabolicMindIM) - 2));
 		if (player.weapon == weapons.DEPRAVA) mod *= 2.5;
 		if (player.hasStatusEffect(StatusEffects.SoulBurn)) {
 			if (player.perkv1(IMutationsLib.UndeadMetabolismIM) >= 2) mod *= ((1+player.perkv1(IMutationsLib.UndeadMetabolismIM))*2);

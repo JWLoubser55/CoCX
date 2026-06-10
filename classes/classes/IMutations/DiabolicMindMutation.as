@@ -22,7 +22,8 @@ public class DiabolicMindMutation extends IMutationPerkType
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1) descS += "While lust is above "+(8 - pTier)+"0% increase all spell damage by "+(5 * pTier)+"0%";
             if (pTier >= 2) descS += ". Decrease lust damage taken after lust resistance by "+(15 * (pTier - 1))+"%";
-            if (pTier >= 3) descS += " x3";
+            if (pTier >= 3) descS += ". Black magic potency is empowered by "+(pTier - 2)+"00% against opponents of pure alignment";
+            if (pTier >= 4) descS += " x3";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -53,7 +54,7 @@ public class DiabolicMindMutation extends IMutationPerkType
         }
 
         public function DiabolicMindMutation() {
-            super(MNAME, SLOT_NERVSYS, 2);
+            super(MNAME, SLOT_NERVSYS, 3);
         }
 
     }
