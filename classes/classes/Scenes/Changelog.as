@@ -307,10 +307,10 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Diabolic Mind (Final Form). Req. Diabolic Mind (Evolved) and lvl 90+. Effects: While lust is above 40% increase all spell damage by 200%. Decrease lust damage taken after lust resistance by 45%. Black magic potency is empowered by 200% against opponents of pure alignment. Reduce Feedback lust damage from health defeat denial by half.\n");
 			outputText("-New mutation perk: Diamond Mind (Final Form). Req. Diamond Mind (Evolved) and lvl 90+. Effects: While lust is below 80% increase all spell damage by 200%. Decrease lust damage taken after lust resistance by 45%. White magic potency is empowered by 200% against opponents of corrupt alignment. Reduce Feedback lust damage from health defeat denial by half.\n");
 			outputText("-New mutation perk: Diagonal Mind. Req. having free nerv system mutation slot, Cheshire Cat race. Effects: When you deny defeat by damage you instead take 20% less lust damage as a recoil.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Fiendish Blood. Req. having free bloodstream mutation slot, 100 corruption, Devil race. Effects: Increase mana regeneration by 50% of its total regeneration rate but double spell cost.\n");
+			outputText("-New mutation perk: Celestial Blood. Req. having free bloodstream mutation slot, -100 corruption, Azazel race. Effects: Increase mana regeneration by 50% of its total regeneration rate but double spell cost.\n");
+			outputText("-New mutation perk: Diagonal Mind (Primitive). Req. Diagonal Mind and lvl 30+. Effects: When you deny defeat by damage you instead take 40% less lust damage as a recoil. Increase the duration of everywhere and nowhere by 2 rounds.\n");
+			outputText("-Werewolf pity system made cerberus jealous and demanded to have pity system too so it finaly got it (seems that 50% chance to beat hellhound into joining pack was still not enough to get any of them).\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -339,6 +339,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -419,14 +428,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -457,9 +460,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

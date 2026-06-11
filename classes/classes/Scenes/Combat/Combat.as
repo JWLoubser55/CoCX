@@ -15889,6 +15889,8 @@ public class Combat extends BaseContent {
 			else multi += 1;
 		}
 		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) multi *= 2;
+		if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 1) multi *= (1 + (0.5 * player.perkv1(IMutationsLib.FiendishBloodIM)));
+		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 1) multi *= (1 + (0.5 * player.perkv1(IMutationsLib.CelestialBloodIM)));
         return multi;
     }
 

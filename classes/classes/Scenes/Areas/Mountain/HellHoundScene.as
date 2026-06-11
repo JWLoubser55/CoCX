@@ -474,11 +474,15 @@ public class HellHoundScene extends BaseContent
 				if (player.perkv1(IMutationsLib.HellhoundFireBallsIM) >= 4) size *= 2;
 				if (LunaFollower.WerewolfPackMember < size*player.perkv1(IMutationsLib.AlphaHowlIM)) {
 					outputText("With his ass thoroughly bred the hellhound got two choices right now, either to yield to your overwhelming supremacy and maleness or go back to his old pack in shame. The hellhound hesitates for a moment before ");
-					if (rand(2) == 0) {
+					if (rand(2) == 0 || flags[kFLAGS.CERBERUS_PACK_PITY_SYSTEM] > 0) {
 						outputText("following you back to your camp, betraying his old pack to join yours as your subservient new member. Well, you didn't expect him to be a subby bitch but so long as he's willing to take you in once in a while you don't mind keeping him around.");
+						if (flags[kFLAGS.CERBERUS_PACK_PITY_SYSTEM] > 0) flags[kFLAGS.CERBERUS_PACK_PITY_SYSTEM] = 0;
 						LunaFollower.HellhoundPackMember++;
 					}
-					else outputText("running off in shame back to his old pack. The poor guy is going to be chastised by his alpha, you would pity him if not for the fact that you don't care in the first place, he will inevitably meet you again and the next time you will make sure to fuck subserviance into his subby ass properly.");
+					else {
+						outputText("running off in shame back to his old pack. The poor guy is going to be chastised by his alpha, you would pity him if not for the fact that you don't care in the first place, he will inevitably meet you again and the next time you will make sure to fuck subserviance into his subby ass properly.");
+						flags[kFLAGS.CERBERUS_PACK_PITY_SYSTEM]++;
+					}
 				}
 			}
 			outputText("You head out to camp snarling in satisfaction.[pg]");

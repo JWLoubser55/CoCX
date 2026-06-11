@@ -4286,7 +4286,9 @@ public class MagicSpecials extends BaseCombatContent {
 		clearOutput();
 		fatigue(30, USEFATG_PHYSICAL);
 		outputText("You smirk as you start to phase in and out of existence. Good luck to whoever going to try and hit you because they will have to try extra hard.\n\n");
-		player.createStatusEffect(StatusEffects.EverywhereAndNowhere,6,0,0,0);
+		var duran:Number = 6;
+		if (player.perkv1(IMutationsLib.DiagonalMindIM) >= 2) duran += (2 * (player.perkv1(IMutationsLib.DiagonalMindIM) - 1));
+		player.createStatusEffect(StatusEffects.EverywhereAndNowhere,duran,0,0,0);
 		if (player.hasPerk(PerkLib.NaturalInstincts)) player.createStatusEffect(StatusEffects.EverywhereAndNowhere,9,0,0,0);
 		else player.createStatusEffect(StatusEffects.CooldownEveryAndNowhere,10,0,0,0);
 		enemyAI();

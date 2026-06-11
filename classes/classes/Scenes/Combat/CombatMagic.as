@@ -75,6 +75,7 @@ public class CombatMagic extends BaseCombatContent {
         if (player.weapon == weapons.N_STAFF) costPercent += 200;
 		if (player.weapon == weapons.U_STAFF) costPercent -= 50;
 		if (player.weapon == weapons.ASCENSU) costPercent -= 25;
+		if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 1 || player.perkv1(IMutationsLib.CelestialBloodIM) >= 1) costPercent *= 2;
         return costPercent;
     }
 

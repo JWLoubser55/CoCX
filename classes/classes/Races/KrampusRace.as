@@ -68,6 +68,7 @@ public class KrampusRace extends Race {
                 .hasPerk(PerkLib.GOBXChemical, -1000);
 		
 		addBloodline(PerkLib.DragonsDescendant,PerkLib.BloodlineDragon);
+		addMutation(IMutationsLib.DrakeBloodIM);
 		addMutation(IMutationsLib.DrakeLungsIM);
 		addMutation(IMutationsLib.MightyLegsIM);
 

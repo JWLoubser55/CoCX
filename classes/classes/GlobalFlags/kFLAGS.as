@@ -2780,7 +2780,7 @@ public static const WEREWOLF_PACK_PITY_SYSTEM:int                               
 public static const IN_COMBAT_PLAYER_USED_SHARK_BITE:int                            = 2771;
 public static const IN_COMBAT_BETTER_GRAPPLE:int                                    = 2773;
 public static const IN_COMBAT_PLAYER_USED_SECONDARY_HUMAN_HEART:int                 = 2774;
-public static const UNKNOWN_FLAG_NUMBER_02775:int                                   = 2775;
+public static const CERBERUS_PACK_PITY_SYSTEM:int                                   = 2775;
 public static const UNKNOWN_FLAG_NUMBER_02776:int                                   = 2776;
 public static const UNKNOWN_FLAG_NUMBER_02777:int                                   = 2777;
 public static const UNKNOWN_FLAG_NUMBER_02778:int                                   = 2778;

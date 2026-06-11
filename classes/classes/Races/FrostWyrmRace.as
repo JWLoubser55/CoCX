@@ -72,7 +72,6 @@ public class FrostWyrmRace extends Race {
 				.hasPerk(PerkLib.Dracoforce, +1);
 		
 		addBloodline(PerkLib.DragonsDescendant,PerkLib.BloodlineDragon);
-		addMutation(IMutationsLib.DrakeBloodIM);
 		addMutation(IMutationsLib.DrakeBonesIM);
 		addMutation(IMutationsLib.DrakeHeartIM);
 		addMutation(IMutationsLib.DrakeLungsIM);

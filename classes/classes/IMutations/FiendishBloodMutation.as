@@ -19,7 +19,7 @@ public class FiendishBloodMutation extends IMutationPerkType
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1) descS += "Your undead blood gives you a "+pTier+"0% resistance to cold";
+            if (pTier >= 1) descS += "Increase mana regeneration by "+(pTier*5)+"0% of its total regeneration rate but double spell cost";
 			if (pTier >= 2) descS += ". When hunger is sated above "+((6-pTier)*2)+"0% you gain doubled health generation from all sources";
             if (pTier >= 3) descS += ". You gain regeneration "+(pTier-2)+"%";
             if (pTier >= 4) descS += ". You recover from all stat damage except intelligence / libido every full moon night";
@@ -48,8 +48,8 @@ public class FiendishBloodMutation extends IMutationPerkType
 
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
-            var pBuffs:Object = {};/*
-            if (pTier == 1) pBuffs['lib.mult'] = 0.05;
+            var pBuffs:Object = {};
+            if (pTier == 1) pBuffs['lib.mult'] = 0.05;/*
             if (pTier == 2) pBuffs['lib.mult'] = 0.1;
             if (pTier == 3) pBuffs['lib.mult'] = 0.15;
             if (pTier == 4) pBuffs['lib.mult'] = 0.2;*/
@@ -58,7 +58,7 @@ public class FiendishBloodMutation extends IMutationPerkType
 
         public function FiendishBloodMutation() 
 		{
-			super(MNAME, SLOT_NONE, 1);//SLOT_BLOODSTREAM
+			super(MNAME, SLOT_BLOODSTREAM, 1);
         }
         
     }

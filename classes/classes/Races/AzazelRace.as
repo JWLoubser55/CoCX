@@ -74,6 +74,7 @@ public class AzazelRace extends Race {
 
 		addMutation(IMutationsLib.DiamondHeartIM);
 		addMutation(IMutationsLib.DiamondMindIM);
+		addMutation(IMutationsLib.CelestialBloodIM);
 		
 		buildTier(11, "azazelkin")
 				.requireWingType(Wings.PUREDEVILFEATHER)
