@@ -35,7 +35,7 @@ public class CelestialBloodMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireBloodsteamMutationSlot()
-                    .requireAnyRace(Races.JIANGSHI, Races.MUMMY, Races.LICH);
+                    .requireCor(-100).requireRace(Races.AZAZEL);
                 }
                 else{
                     var pLvl:int = pTier * 30;

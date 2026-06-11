@@ -35,7 +35,7 @@ public class FiendishBloodMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireBloodsteamMutationSlot()
-                    .requireAnyRace(Races.JIANGSHI, Races.MUMMY, Races.LICH);
+                    .requireCor(100).requireRace(Races.DEVIL);
                 }
                 else{
                     var pLvl:int = pTier * 30;
