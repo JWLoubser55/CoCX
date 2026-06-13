@@ -14,11 +14,19 @@ public class Changelog extends BaseContent
 		{}
 		
 		public function accessChangelogMenu():void {
-			Changelog62();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, status effect, key item, item, consumable, usable, material, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene, masturbation scene
+			Changelog63();//new: lvl-up perk, rare asc perk, event perk, items perk, super perk, enemy perk, internal mutation, status effect, key item, item, consumable, usable, material, minions type, damage type, p.special, m.special, spell, soulskill, bodypart, enemies, descendant/bloodline, camp upgrades, unique sex scene, masturbation scene
 		}
 		//zrobić do 2022 na świeta event z reniferami i nie odblokowywać go do ok. 20-24 grudnia 2021 xD
+		private function Changelog65():void {
+			clearOutput();
+			menu();
+			addButton(0, "Next", Changelog64);
+			//addButton(1, "Previous", Changelog66);
+			addButton(2, "Back", CoC.instance.mainMenu.mainMenu);
+		}
 		private function Changelog64():void {
 			clearOutput();
+			outputText("(Part 12/12) <b>Version 0.9a:</b>\n\n");
 			menu();
 			addButton(0, "Next", Changelog63);
 			//addButton(1, "Previous", Changelog65);
@@ -27,40 +35,6 @@ public class Changelog extends BaseContent
 		private function Changelog63():void {
 			clearOutput();
 			outputText("(Part 11/11) <b>Version 0.9a:</b>\n\n");
-			menu();
-			addButton(0, "Next", Changelog62);
-			//addButton(1, "Previous", Changelog64);
-			addButton(2, "Back", CoC.instance.mainMenu.mainMenu);
-		}
-		private function Changelog62():void {
-			clearOutput();
-			outputText("(Part 10/10) <b>Version 0.9a:</b>\n\n");
-			outputText("-Made Lust Strike's combat hint easier to read, and added new lines to it's combat text. (Edward Darksong)\n");
-			outputText("-Buffed Lust Strike's scaling from 10% libido, lust, intelligence, wisdom and sensitivity, to 25% libido, intelligence, wisdom, sensitivity and 25-100% lust (based on Black Heart tier). (Edward Darksong)\n");
-			outputText("-Added a side effect to Lust Strike: Lowers enemy's lust resist(if not immune) by 10-30%(based on Black Heart tier), applies the lust vulnerability limits of perks Corrupt The Body, Corrupt The Heart, Corrupt The Mind and Corrupt The Soul. (Edward Darksong)\n");
-			outputText("-Made Slime race's 'Rape' attack boosted by the perks Improved Grapple and Greater Grapple. (Edward Darksong)\n");
-			outputText("-Fixed 'Slime Insert' not being counted as a constricting status effect. (Edward Darksong)\n");
-			outputText("-Added a 'Release' option after inserting your self into a enemy as a slime. (Edward Darksong)\n");
-			outputText("-Fixed Elemental auto attacks causing the player's turn to be skipped. (Edward Darksong)\n");
-			outputText("-Fixed Elemental basic attacks(E.Attack) not working unless click twice. (Edward Darksong)\n");
-			outputText("-Changed stat bar number display to show 'k', 'm', 'b', 't' and 'q' as shorthand, replacing larger numbers. (Example: 100,952,521 would be displayed as 100.9m) (Edward Darksong)\n");
-			outputText("-Added 3 new tiers to 'Dark Slime' (Edward Darksong)\n");
-			outputText("-Added new Special for slime races 'Spread' (Edward Darksong)\n");
-			outputText("-Added new Specials for Dark Slimes(once requirements are fulfilled): 'Form Slimes' and 'Slimes Attack' (Edward Darksong)\n");
-			outputText("-Changed 'Engulf' so it can consume 1-3 stack of 'Spread' rather than being the move dodged (amount is based on if the enemy is a group or not) (Edward Darksong)\n");
-			outputText("-Updated Dark Slime Empress boss with conditional dialog, new conditional rewards, and 1 new scene (Edward Darksong)\n");
-			//1 of 11 pages
-			outputText("-Lowered Exp reward from the Dark Slime Empress (Edward Darksong)\n");
-			outputText("-Added another way to get 'Dark Slime Core' perk (Edward Darksong)\n");
-			outputText("-Added 'Empress's Dark Essence' to the permanent perk menu (Edward Darksong)\n");
-			outputText("-Fixed 'RearBodyTentacleEyestalks' being gained when transformations should be blocked. (Edward Darksong)\n");
-			outputText("-Fix for small weapons giving wrong weapons mastery. (Imperfect Spell)\n");
-			outputText("-Dynamically display the name of a racial requirement. (PhillipDaisySeventh)\n");
-			outputText("-Added a toggle in Interface Game settings to alternate between current charviewer model and the one that's being developed (Only human body added for now, the other finished sprites will be added gradually) (Cangsz)\n");
-			outputText("-Fixing some of PC's rejected on Marae 1st visit still not getting scene to progress main storyline. (DallagenXYZ)\n");
-			outputText("-Typo fixes. (klorpa)\n");
-			outputText("-Spelling Fixes and Tweaks. (klorpa)\n");
-			outputText("-Fixes for vagina 2 and metamorph. (Akaku-Keninari)\n");
 			//outputText("-New tier 8 intelligence lvl-up perk: Trance. Req. Prestige Job: Seer perk and 200+. Effect: \n");
 			//outputText("-2nd and further sections of Sky Poison Pearl unlocks each level instead each six levels (so to unlock all of them need to reach lvl 6 not 42).\n");
 			//outputText("-\n");
@@ -77,8 +51,8 @@ public class Changelog extends BaseContent
 			outputText("-New bodyparts: Troll Arms, Troll lower body, Troll Tusks, Troll Ears, Troll Tail (from Troll Fig); Glacial Troll Arms, Glacial Troll lower body, Glacial Troll Tusks, Glacial Troll Ears, Glacial Troll Tail (from Icy Fig); Bandaged Head(horn), Mummy Arms, Mummy Legs (from mumification event); Myconid Cap, Myconid Hair, Myconid Arms, Myconid Skirt/Pants Legs, Myconid Bra and neck (rearbody), ");
 			outputText("Myconid Pussy, Myconid Cock (from shroomification event); Huge Sextuple Yggdrasil Wings, Yggdrasil Arms, Yggdrasil Eyes, Huge Octuple Yggdrasil Wings (from transforming with World Tree help); Werespider eyes, Werespider arms, Werespider Legs, Werepspider fangs (from transforming after been bitten by werespider); Barometz Legs, Barometz Ears, Barometz Tail, Ram Horns, Verdant Ram Horns, Runic Patterns, ");
 			outputText("Barometz Cock (from Horned fruit), Automata Tail Cable (from automata event); Hollow Mask (Face), Hollow Eyes, Hollow Horns, Hollow Arms, Hollow Lower Body, Hollow Tail, Soulforce Scaring (from Hollowfication events); Deer Blush, Deer Eyes, Iceheart Tatoo (from Cervinium); Ushi Onna Face, Ushi Onna Horns, Ushi Onna Tail, Ushi Onna Arms, Ushi Onna Lower Body, Ushi Oni Tattoo (from Thick Green Onna Gossamer), ");
-			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf); Hoofed no fur Legs, Rhino Arms (from Rhino Steak); Krampus Legs (from Red Spider Lily); Chameleon Tongue, Chameleon Tail, Chameleon Skin Pattern, Chameleon Ears (from Shifting Flower); Dragon Vagina (from Dragon, Frost Wyrm, Mobogo TF items; Yggdrasil tf scene); Frog Eyes, Frog Face, Frog Legs, Frog Arms, Third Eye (antennae) ");
-			outputText("(from Frog Mucus / Bog Mucus); Floopy Bunny Ears (from Neon Pink Egg or Flared Carrot); Stone Hoofed no fur Legs, Stone Rhino Arms, Stone Rhino Tail, Stone Rhino Horn (from Grilled Rhino Steak)");
+			outputText("Spectral Claws, Spectral Shroud (from losing to wraith enemy as elf); Hoofed no fur Legs, Rhino Arms (from Rhino Steak); Krampus Legs (from Red Spider Lily); Chameleon Tongue, Chameleon Tail, Chameleon Skin Pattern, Chameleon Ears (from Shifting Flower); Dragon Vagina (from Dragon, Frost Wyrm, Mobogo TF items; Yggdrasil tf scene); Frog Eyes, Frog Face, Frog Legs, Frog Arms, Third Eye (antennae), ");
+			outputText("Mucus dripping skin (enable Waterbreathing) (from Frog Mucus / Bog Mucus); Floopy Bunny Ears (from Neon Pink Egg or Flared Carrot); Stone Hoofed no fur Legs, Stone Rhino Arms, Stone Rhino Tail, Stone Rhino Horn (from Grilled Rhino Steak)");
 			outputText("\n");
 			outputText("-Dinah upgrade options for HB mech now have 3 more tiers of Armor Plating, Leather Insulation & Dragon's Breath Flamer upgrades.\n");
 			//outputText("-New HB Mech upgrade options: Armor Plating (+armor), Leather Insulation (+magic resistance), Agility (+base melee atk dmg), Dragon's Breath Flamer (fire dmg special), Scatter Laser (lightning dmg special), Rapid Reload (+base ranged atk dmg), Internal Systems (increase mech SF capacity and lower it consumption during high activity)\n");
@@ -247,38 +221,12 @@ public class Changelog extends BaseContent
 			outputText("-New Masturbation option: Tonguesturbate. Req. to have chameleon tongue and cock.\n");
 			outputText("-New P. Special: Camouflage - usable by chameleon PC. Stealth PC for multiple rounds enemy cannot perceive the player unless it wins a perception check (it's repeated each turn) based on enemy intelligence, wisdom and level Versus PC speed and level. While camouflaged PCs benefit from sneak attack modifiers if they have the skill. Max duration 4 rounds. (Attacking by PC directly would end Camouflage instantly)\n");
 			outputText("-New P. Special: Tongue (Grab) - usable by chameleon / frog / mobogo PC. You can initiate a grapple using your tongue.\n");
-			outputText("-New mutation perk: Chameleon skin. Req. having free adaptation mutation slot, Chameleon race. Effects: Increase sneak attack damage multiplier (+1x).\n");
-			outputText("-New mutation perk: Chameleon skin (Primitive). Req. Chameleon skin and lvl 30+. Effects: Increase sneak attack damage multiplier (+2x). The camouflage skill lasts 1 more round.\n");
-			outputText("-New mutation perk: Chameleon skin (Evolved). Req. Chameleon skin (Primitive) and lvl 60+. Effects: Increase sneak attack damage multiplier (+3x). The camouflage skill lasts 2 more rounds. While camouflaged, increases all damage by 25%.\n");
-			outputText("-New mutation perk: Chameleon skin (Final Form). Req. Chameleon skin (Evolved) and lvl 90+. Effects: Increase sneak attack damage multiplier by (+4x). The camouflage skill lasts 3 more rounds. While camouflaged, increase all damage by 50%. Double all recovery while camouflaged.\n");
 			outputText("-New P. Special: Leap (Escape) - usable by having frog legs. Allow to run away from fight.\n");
 			outputText("-New event perk: Song of the swamps. Gained by becoming Frog/Mobogo. Effects: Giving access to Sing m. special and all related subspecials.\n");
 			outputText("-New P. Special: Leap - usable by having frog legs and frog race score 15+. Power stun enemy for the current turn and deliver a doubled damage power attack on the next one. Only work outdoors.\n");
-			outputText("-New mutation perk: Frog jumping legs. Req. having free musculature mutation slot, Frog race. Effects: Reduce the cooldown of leap by 1 round.\n");
-			outputText("-New mutation perk: Frog jumping legs (Primitive). Req. Frog jumping legs and lvl 30+. Effects: Reduce the cooldown of leap by 2 rounds. Leap damage is increased by 50%.\n");
-			outputText("-New mutation perk: Frog jumping legs (Evolved). Req. Frog jumping legs (Primitive) and lvl 60+. Effects: Reduce the cooldown of leap by 3 rounds. Leap damage is increased by 100%. Leap only consumes 75% of the wrath it should.\n");
-			outputText("-New mutation perk: Frog jumping legs (Final Form). Req. Frog jumping legs (Evolved) and lvl 90+. Effects: Reduce the cooldown of leap by 4 rounds. Leap damage is increased by 200%. Leap only consumes 50% of the wrath it should. Leap has a 100% increased chance of critical strike.\n");
 			outputText("-Potions (Lowest grade) Bag cost increased (300 > 600) times but so do slot capacity (5 > 10) ^^\n");
 			outputText("-Added to Giacomo offer: Potions (Low/Mid grade) Bag and Herbs (Mid grade) Bag. Cost 1,000 / 2,000 / 1,000 gems and have 8 / 10 / 10 slots for items (potions or herbs) with stack size of 20 / 40 / 20.\n");
-			outputText("-New mutation perk: Hellcat Parathyroid Glands. Req. having free parathyroid glands mutation slot, Hellcat race. Effects: Increase Fire and dark damage by 50% when in rut or in heat.\n");
-			outputText("-New mutation perk: Hellcat Parathyroid Glands (Primitive). Req. Hellcat Parathyroid Glands and lvl 30+. Effects: Increase Fire and dark damage by 100% when in rut or in heat. Increase the libido gain from heat and rut by 50%.\n");
-			outputText("-New mutation perk: Hellcat Parathyroid Glands (Evolved). Req. Hellcat Parathyroid Glands (Primitive) and lvl 60+. Effects: Increase Fire and dark damage by 150% when in rut or in heat. Increase the libido gain from heat and rut by 100%. Gain 1% mana regeneration when in rut or in heat.\n");
-			outputText("-New mutation perk: Hellcat Parathyroid Glands (Final Form). Req. Hellcat Parathyroid Glands (Evolved) and lvl 90+. Effects: Increase Fire and dark damage by 200% when in rut or in heat. Increase the libido gain from heat and rut by 150%. Gain 2% mana regeneration when in rut or in heat. Add the bonus from heat and rut to intelligence as well.\n");
-			outputText("-New mutation perk: Lunatic mind. Req. having free nerv system mutation slot, All Lunar attuned species (Wererace, Moon Rabbit). Effects: Gain a static percentage bonus to speed and strength based on moon phase between 50 and -50.\n");
-			outputText("-New mutation perk: Lunatic mind (Primitive). Req. Lunatic mind and lvl 30+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 100 and -50. Gain 0.5% regeneration.\n");
-			outputText("-New mutation perk: Lunatic mind (Evolved). Req. Lunatic mind (Primitive) and lvl 60+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 150 and -50. Gain 1% regeneration. Sneak attack is improved by +1x.\n");
-			outputText("-New mutation perk: Lunatic mind (Final Form). Req. Lunatic mind (Evolved) and lvl 90+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 200 and -50. Gain 1.5% regeneration. Sneak attack is improved by +2x. Double all these bonuses at night.\n");
-			outputText("-New mutation perk: Wyrm Musculature. Req. having free musculature mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake races. Effects: Increase total strength by 5% but reduce intelligence by the same amount.\n");
-			outputText("-New mutation perk: Wyrm Cursed Blood. Req. having free bloodstream mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake races. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 2% strength drain as a backlash.\n");
-			outputText("-New mutation perk: Wyrm Musculature (Primitive). Req. Wyrm Musculature and lvl 30+. Effects: Increase total strength by 10% but reduce intelligence by the same amount. Physical ability damage is increased by 50%.\n");
-			outputText("-New mutation perk: Wyrm Cursed Blood (Primitive). Req. Wyrm Cursed Blood and lvl 30+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 4% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 4% drain as a continuous poison effect.\n");
 			outputText("-New TF item (by Ormael): Steak grilled by rhino. Sold by Rocksteady. Using this item will turn PC into stone rhino if rhino score reached tier 1 of race bonuses. Stone Rhino / Petrokheros racial bonuses (14+/20+): +135/180% to str/tou multi, -30/40% to int multi, -50/60 to sens, +400/600 to max hp, +20/30 to armor, +8/12 to m.res.\n");
-			outputText("-New mutation perk: Wyrm Musculature (Evolved). Req. Wyrm Musculature (Primitive) and lvl 60+. Effects: Increase total strength by 15% but reduce intelligence by the same amount. Physical ability damage is increased by 100%. Grapples are 50% more powerful.\n");
-			outputText("-New mutation perk: Wyrm Cursed Blood (Evolved). Req. Wyrm Cursed Blood (Primitive) and lvl 60+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 8% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 8% strength drain as a continuous poison effect. ");
-			outputText("The ruinous blood now also decays the opponent's total health by 1%.\n");
-			outputText("-New mutation perk: Wyrm Musculature (Final Form). Req. Wyrm Musculature (Evolved) and lvl 90+. Effects: Increase total strength by 20% but reduce intelligence by the same amount. Physical ability damage is increased by 150%. Grapples are 100% more powerful. You may inflict grapple damage as part of a full feral combat attack so long as you got a tail.\n");
-			outputText("-New mutation perk: Wyrm Cursed Blood (Final Form). Req. Wyrm Cursed Blood (Evolved) and lvl 90+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 16% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 16% strength drain as a continuous poison effect. ");
-			outputText("The ruinous blood now also decays the opponent's total health by 2%. Poisoning an opponent with ruinous blood through any means now raises your damage dealt by 10% permanently against that opponent.\n");
 			outputText("-Upheaval p.special when used with stone horn(s) would deal additional earth damage instance.\n");
 			outputText("-Having Thick Skin perk and Stone/Steel skin would increase bonus from perk by 5x. Also base bonus from perk to m.res is increased to match bonus to armor.\n");
 			outputText("-New event perk: Earth Affinity. Gained by having rhino score tier 2+. Effects: You have high resistance to earth effects, and mastery over earth abilities and magic. (2x dmg for earth element attacks, +50% to earth resistance)\n");
@@ -310,10 +258,10 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Fiendish Blood. Req. having free bloodstream mutation slot, 100 corruption, Devil race. Effects: Increase mana regeneration by 50% of its total regeneration rate but double spell cost.\n");
 			outputText("-New mutation perk: Celestial Blood. Req. having free bloodstream mutation slot, -100 corruption, Azazel race. Effects: Increase mana regeneration by 50% of its total regeneration rate but double spell cost.\n");
 			outputText("-New mutation perk: Diagonal Mind (Primitive). Req. Diagonal Mind and lvl 30+. Effects: When you deny defeat by damage you instead take 40% less lust damage as a recoil. Increase the duration of everywhere and nowhere by 2 rounds.\n");
-			outputText("-Werewolf pity system made cerberus jealous and demanded to have pity system too so it finaly got it (seems that 50% chance to beat hellhound into joining pack was still not enough to get any of them).\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Werewolf pity system made Cerberus jealous and demanded to have pity system too so it finaly got it (seems that 50% chance to beat hellhound into joining pack was still not enough to get any of them).\n");
+			outputText("-New event perk: Toxic mucus. Gained by using having mucus dripping skin. Effects: Unarmed strikes, straddle and grapple smear some of your mucus on your opponent weakening their strength, speed, tease resistance and arousing it each time.\n");
+			//outputText("-New mutation perk: Fiendish Blood (Primitive). Req. Fiendish Blood and lvl 30+. Effects: Increase mana regeneration by 100% of its total regeneration rate but double spell cost. While Mana is above 40% Increase spell damage by 50%.\n");
+			//outputText("-New mutation perk: Celestial Blood (Primitive). Req. Celestial Blood and lvl 30+. Effects: Increase mana regeneration by 100% of its total regeneration rate but double spell cost. While Mana is above 40% Increase spell damage by 50%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -434,8 +382,20 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -499,6 +459,12 @@ public class Changelog extends BaseContent
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");*/
 			outputText("\n\n\n");
 			outputText("Plans for future builds (I know some of them are HUGE ones but without dreams to chase how can one change?):\n");
@@ -511,8 +477,42 @@ public class Changelog extends BaseContent
 			outputText("-More camp build options (involving using stones and etc.)\n");
 			outputText("-Make use of Metamorph perk (ofc all TF would be powered by soulforce ^^)\n");
 			menu();
+			addButton(0, "Next", Changelog62);
+			//addButton(1, "Previous", Changelog64);
+			addButton(2, "Back", CoC.instance.mainMenu.mainMenu);
+		}
+		private function Changelog62():void {
+			clearOutput();
+			outputText("(Part 10/10) <b>Version 0.9a:</b>\n\n");
+			outputText("-Made Lust Strike's combat hint easier to read, and added new lines to it's combat text. (Edward Darksong)\n");
+			outputText("-Buffed Lust Strike's scaling from 10% libido, lust, intelligence, wisdom and sensitivity, to 25% libido, intelligence, wisdom, sensitivity and 25-100% lust (based on Black Heart tier). (Edward Darksong)\n");
+			outputText("-Added a side effect to Lust Strike: Lowers enemy's lust resist(if not immune) by 10-30%(based on Black Heart tier), applies the lust vulnerability limits of perks Corrupt The Body, Corrupt The Heart, Corrupt The Mind and Corrupt The Soul. (Edward Darksong)\n");
+			outputText("-Made Slime race's 'Rape' attack boosted by the perks Improved Grapple and Greater Grapple. (Edward Darksong)\n");
+			outputText("-Fixed 'Slime Insert' not being counted as a constricting status effect. (Edward Darksong)\n");
+			outputText("-Added a 'Release' option after inserting your self into a enemy as a slime. (Edward Darksong)\n");
+			outputText("-Fixed Elemental auto attacks causing the player's turn to be skipped. (Edward Darksong)\n");
+			outputText("-Fixed Elemental basic attacks(E.Attack) not working unless click twice. (Edward Darksong)\n");
+			outputText("-Changed stat bar number display to show 'k', 'm', 'b', 't' and 'q' as shorthand, replacing larger numbers. (Example: 100,952,521 would be displayed as 100.9m) (Edward Darksong)\n");
+			outputText("-Added 3 new tiers to 'Dark Slime' (Edward Darksong)\n");
+			outputText("-Added new Special for slime races 'Spread' (Edward Darksong)\n");
+			outputText("-Added new Specials for Dark Slimes(once requirements are fulfilled): 'Form Slimes' and 'Slimes Attack' (Edward Darksong)\n");
+			outputText("-Changed 'Engulf' so it can consume 1-3 stack of 'Spread' rather than being the move dodged (amount is based on if the enemy is a group or not) (Edward Darksong)\n");
+			outputText("-Updated Dark Slime Empress boss with conditional dialog, new conditional rewards, and 1 new scene (Edward Darksong)\n");
+			//1 of 11 pages
+			outputText("-Lowered Exp reward from the Dark Slime Empress (Edward Darksong)\n");
+			outputText("-Added another way to get 'Dark Slime Core' perk (Edward Darksong)\n");
+			outputText("-Added 'Empress's Dark Essence' to the permanent perk menu (Edward Darksong)\n");
+			outputText("-Fixed 'RearBodyTentacleEyestalks' being gained when transformations should be blocked. (Edward Darksong)\n");
+			outputText("-Fix for small weapons giving wrong weapons mastery. (Imperfect Spell)\n");
+			outputText("-Dynamically display the name of a racial requirement. (PhillipDaisySeventh)\n");
+			outputText("-Added a toggle in Interface Game settings to alternate between current charviewer model and the one that's being developed (Only human body added for now, the other finished sprites will be added gradually) (Cangsz)\n");
+			outputText("-Fixing some of PC's rejected on Marae 1st visit still not getting scene to progress main storyline. (DallagenXYZ)\n");
+			outputText("-Typo fixes. (klorpa)\n");
+			outputText("-Spelling Fixes and Tweaks. (klorpa)\n");
+			outputText("-Fixes for vagina 2 and metamorph. (Akaku-Keninari)\n");
+			menu();
 			addButton(0, "Next", Changelog61);
-			//addButton(1, "Previous", Changelog63);
+			addButton(1, "Previous", Changelog63);
 			addButton(2, "Back", CoC.instance.mainMenu.mainMenu);
 		}
 		private function Changelog61():void {
@@ -956,6 +956,37 @@ public class Changelog extends BaseContent
 		private function Changelog58():void {
 			clearOutput();
 			outputText("(Part 6/10) <b>Version 0.9a:</b>\n\n");
+			outputText("-New mutation perk: Wyrm Cursed Blood (Final Form). Req. Wyrm Cursed Blood (Evolved) and lvl 90+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 16% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 16% strength drain as a continuous poison effect. ");
+			outputText("The ruinous blood now also decays the opponent's total health by 2%. Poisoning an opponent with ruinous blood through any means now raises your damage dealt by 10% permanently against that opponent.\n");
+			outputText("-New mutation perk: Wyrm Musculature (Final Form). Req. Wyrm Musculature (Evolved) and lvl 90+. Effects: Increase total strength by 20% but reduce intelligence by the same amount. Physical ability damage is increased by 150%. Grapples are 100% more powerful. You may inflict grapple damage as part of a full feral combat attack so long as you got a tail.\n");
+			outputText("-New key Item (by Liadri): Upgraded Armor plating 4.0 - req. Upgraded Armor plating 3.0 - +20 armor/magic resistance to the mech. +80% Health.\n");
+			outputText("-New key Item (by Liadri): Upgraded Armor plating 5.0 - req. Upgraded Armor plating 4.0 - +25 armor/magic resistance to the mech. +100% Health.\n");
+			outputText("-New key Item (by Liadri): Upgraded Armor plating 6.0 - req. Upgraded Armor plating 5.0 - +30 armor/magic resistance to the mech. +120% Health.\n");
+			outputText("-New key Item (by Liadri): Machine Gun MK4 - req. Machine Gun MK3 - Increase range attack by 125% if using a firearm. Change the firearm text to a goblin machine gun text.\n");
+			outputText("-New key Item (by Liadri): Machine Gun MK5 - req. Machine Gun MK4 - Increase range attack by 150% if using a firearm. Change the firearm text to a goblin machine gun text.\n");
+			outputText("-New key Item (by Liadri): Machine Gun MK6 - req. Machine Gun MK5 - Increase range attack by 200% if using a firearm. Change the firearm text to a goblin machine gun text.\n");
+			outputText("-New key Item (by Liadri): Artificial Intelligence - req. Toolbelt - Add an artificial intelligence to your mech which will greet you when you board. Aside from the friendliness of this new interface feature it cannot do much on its own yet.\n");
+			outputText("-New key Item (by Liadri): Improved Artificial Intelligence - req. Artificial Intelligence - The mech can now use an auto turret.\n");
+			outputText("-New key Item (by Liadri): Improved Artificial Intelligence MK2 - req. Improved Artificial Intelligence - The mech will randomly activate one of its weapon functions every round on its own at half power value.\n");
+			outputText("-New key Item (by Liadri): Improved Artificial Intelligence MK3 - req. Improved Artificial Intelligence MK2 - The mech will randomly activate one of its weapon functions every round on its own at full power.\n");
+			outputText("-New key Item (by Liadri): Improved Artificial Intelligence MK4 - req. Improved Artificial Intelligence MK3 - The mech will randomly activate two of its weapon functions every round on its own.\n");
+			outputText("-New key Item (by Liadri): Auto turret - req. Improved Artificial Intelligence - Add passive ranged attack per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Auto turret MK2 - req. Auto turret - Add two passive ranged attacks per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Auto turret MK3 - req. Auto turret MK2 - Add three passive ranged attacks per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Auto turret MK4 - req. Auto turret MK3 - Add four passive ranged attacks per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Auto turret MK5 - req. Auto turret MK4 - Add five passive ranged attacks per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Auto turret MK6 - req. Auto turret MK5 - Add six passive ranged attacks per round to your AI routine no matter your action choice.\n");
+			outputText("-New key Item (by Liadri): Hydraulics - req. Toolbelt - Mechs gain 25% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus.\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK2 - req. Hydraulics - Mechs gain 50% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus.\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK3 - req. Hydraulics MK2 - Mechs gain 75% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK4 - req. Hydraulics MK3 - Mechs gain 100% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK5 - req. Hydraulics MK4 - Mechs gain 125% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
+			outputText("-New key Item (by Liadri): Hydraulics MK6 - req. Hydraulics MK5 - Mechs gain 150% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry - req. Toolbelt - Add one extra attack to the mech ranged weapon.\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK2 - req. Improved Ammo Chemistry - Add two extra attacks to the mech ranged weapon.\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK3 - req. Improved Ammo Chemistry MK2 - Add three extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire.\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK4 - req. Improved Ammo Chemistry MK3 - Add four extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire.\n");
+			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK5 - req. Improved Ammo Chemistry MK4 - Add five extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire. Ammo now has a caustic property dealing tripled damage as acid.\n");
 			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK6 - req. Improved Ammo Chemistry MK5 - Add six extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire. Ammo now has a caustic property dealing tripled damage as acid.\n");
 			outputText("-New key Item (by Liadri): Flasherbang - req. Toolbelt - Toss a grenade that overloads the brain with lewd images and light rendering one blind, aroused and increasingly susceptible to lust chemicals.\n");
 			outputText("-New key Item (by Liadri): Flasherbang II - req. Flasherbang - The images flow doesn’t stop after the initial flash periodically arousing the opponent further and weakening its lust resistance for 6 more rounds\n");
@@ -1059,17 +1090,35 @@ public class Changelog extends BaseContent
 		}
 		private function Changelog57():void {
 			clearOutput();
-			outputText("(Part 5/10) <b>Version 0.9a:</b>\n\n");
+			outputText("(Part 5/11) <b>Version 0.9a:</b>\n\n");
+			outputText("-New mutation perk: Human Secondary Heart (Evolved). Req. Human Secondary Heart (Primitive) and lvl 60+. Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased (5%) as the new heart has adapted to the rhythm of the original.\n");
+			outputText("-New mutation perk: Hydra Blood (Evolved). Req. Hydra Blood (Primitive) and lvl 60+. Effects: Improve existing Regeneration by 3% negated by fire damage and increase acid and poison effects by 75%. Your blood is ruinous and inflicts your fang venom when damaged.\n");
+			outputText("-New mutation perk: Living Weapon (Evolved). Req. Living Weapon (Primitive) and lvl 60+. Effects: All natural weapon and weapon damage is increased by an amount equal to 3/4 of your armor class. Your body is always considered naked and free of constraint no longer hindered by armors if able to wear any. Base Armor value prior to perks is increased by 25%.\n");
+			outputText("-New mutation perk: Lunatic mind (Evolved). Req. Lunatic mind (Primitive) and lvl 60+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 150 and -50. Gain 1% regeneration. Sneak attack is improved by +1x.\n");
+			outputText("-New mutation perk: Mighty Legs (Evolved). Req. Mighty Legs (Primitive) and lvl 60+. Effects: Make Kick permanent no matter your leg type, Increase unarmed strike damage by 15 and grapple effect by 60%. Kick is 100% stronger. Kick stun lasts 1 round longer.\n");
+			outputText("-New mutation perk: Mighty Lower Half (Evolved). Req. Mighty Lower Half (Primitive) and lvl 60+. Effects: Tentacle and tail attack deals 75% more damage. Increase unarmed strike damage by 15 and grapple effect by 60%. Grapple damage gains 100% more bonus from your strength. Racial physical ability stun lasts 1 round longer.\n");
+			outputText("-New mutation perk: Myconid Collective Consciousness (Evolved). Req. Myconid Collective Consciousness (Primitive) and lvl 60+. Effects: Add 30% of your toughness to your spellcasting and Esper score. Take 50% less damage from mental attacks and Esper ability. Gain 1% mana regeneration.\n");
+			outputText("-New mutation perk: Myconid Spore (Evolved). Req. Myconid Spore (Primitive) and lvl 60+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 75%. While in your own spore cloud, you become empowered and increase your strength by 30% of their total value, but increase tease damage taken by 50%. ");
+			outputText("Spore cloud now inflicts a stacking 5% lust vulnerability but only to your opponent.\n");
+			outputText("-New mutation perk: Plant Chlorophyll (Evolved). Req. Plant Chlorophyll (Primitive) and lvl 60+. Effects: For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by 15% while outdoors during daytime. Plant abilities are increased by 30%. Photosynthesis is 25% stronger.\n");
+			outputText("-New mutation perk: Poison Gland (Evolved). Req. Poison Gland (Primitive) and lvl 60+. Effects: Double the efficiency of poison damage, applied poisons now has a 75% chance of dealing its effect twice per turn. All poison becomes deadlier inflicting 2% toughness damage per round.\n");
+			outputText("-New mutation perk: Soul Core (Evolved). Req. Soul Core (Primitive) and lvl 60+. Effects: Gain 3% mana regeneration. While above 50% of your total mana gain a 50% increase to all physical damage. While under 50% of your total fatigue gain a 50% increase to all magical damage. Gain regeneration 2% while mana is above 50%.\n");
+			outputText("-New mutation perk: Scylla Ink Glands (Evolved). Req. Scylla Ink Glands (Primitive) and lvl 60+. Effects: Your Scylla Ink Glands increase rate at which your body produce ink, duration ink spray affect enemies and lust damage by ((current i. mutation tier - 1) * 100)%, boost to your natural strength, speed and toughness, ");
+			outputText("Scylla Squeeze damage during grapple as Kraken would be multiplied by current i.mutation tier, scylla grapple will always succeed, when in an aquatic battle boost from Aquatic Affinity is 2x larger.\n");
 			outputText("-New mutation perk: Still Heart (Evolved). Req. Still Heart (Primitive) and lvl 30+. Effects: Energy draining effect and spells and ability that drain health are 75% stronger. When stealing health beyond your total hp you may add up to 30% of your total health as temporary hit point stacking over your maximum health. Energy draining attacks heals for 1% of your total health in addition to their initial amount.\n");
 			outputText("-New mutation perk: Undead Metabolism (Evolved). Req. Undead Metabolism (Primitive) and lvl 60+. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 15% bonus to libido up to 150% and heal all libido damage. ");
 			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 200% stronger. You permanently gain the Darkness Affinity perk.\n");
 			outputText("-New mutation perk: Wendigo metabolism (Evolved). Req. Wendigo metabolism (Primitive) and lvl 60+. Effects: Gain High regeneration (2%) but make Endless hunger permanent. Regeneration is further increased (2%) but so is the hunger (30%). Feeding now increases toughness and strength up to 150% more and the increment increased to 4% per stack. ");
 			outputText("Increase the duration of spectral scream to 3 rounds. Spectral Scream and Possess gains an increased modifier based on your combined strength and toughness and have their cooldowns reduced by one round.\n");
+			outputText("-New mutation perk: Wyrm Musculature (Evolved). Req. Wyrm Musculature (Primitive) and lvl 60+. Effects: Increase total strength by 15% but reduce intelligence by the same amount. Physical ability damage is increased by 100%. Grapples are 50% more powerful.\n");
+			outputText("-New mutation perk: Wyrm Cursed Blood (Evolved). Req. Wyrm Cursed Blood (Primitive) and lvl 60+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 8% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 8% strength drain as a continuous poison effect. ");
+			outputText("The ruinous blood now also decays the opponent's total health by 1%.\n");
 			outputText("-New mutation perk: Black Blood (Final Form). Req. Black Blood (Evolved) and lvl 90+. Effects: Your undead blood gives you a 40% resistance to cold. When hunger is sated above 40% you gain doubled health generation from all sources. You gain regeneration 2%. You recover from all stat damage except intelligence / libido every full moon night.\n");
 			outputText("-New mutation perk: Blazing Heart (Final Form). Req. Blazing Heart (Evolved) and lvl 90+. Effects: Gain permanent weakness to cold and fire resistance. Increase fire damage by 100%. Heat and Rut also grants you a bonus equal to 20% of the libido bonus to strength. ");
 			outputText("Setting an enemy on fire emboldens and arouses you, increasing damage dealt to burn enemies by 100% but also making you take lust damage as a recoil. Fire active and passive abilities have a 20% chance to apply the burning status effect if they do not already.\n");
 			outputText("-New mutation perk: Cave Wyrm Acid (Final Form). Req. Cave Wyrm Acid (Evolved) and lvl 90+. Effects: Your fluids are a highly volatile acidic compound. You can burn hp to gain wrath periodically at the rate of 6% to 12%. While wrath is above 90% increases physical damage by 75%. Increase Nitroblade damage by 200%. ");
 			outputText("While affected by Nitroblade the acid sharpens the edge and cleans it of grime increasing critical damage by 1x. Nitroblade acid is even more volatile, increasing the chance of explosion by 10%.\n");
+			outputText("-New mutation perk: Chameleon skin (Final Form). Req. Chameleon skin (Evolved) and lvl 90+. Effects: Increase sneak attack damage multiplier by (+4x). The camouflage skill lasts 3 more rounds. While camouflaged, increase all damage by 50%. Double all recovery while camouflaged.\n");
 			outputText("-New mutation perk: Drake Blood (Final Form). Req. Drake Blood (Evolved) and lvl 90+. Effects: Dragon strong vitality grants mana soulforce and health regeneration 4%. You take 15% less damage from magical attack. Magic Effect from you are 50% more powerful. Magic Ability are 100% Stronger.\n");
 			outputText("-New mutation perk: Drake Bones (Final Form). Req. Drake Bones (Evolved) and lvl 90+. Effects: Increases toughness, increases unarmed attack damage by 70 + an additional 75%, 15% physical and magical damage reduction, +30% phantom toughness, receives +25 to DR from toughness, +25% OverMax HP.\n");
 			outputText("-New mutation perk: Drake Heart (Final Form). Req. Drake Heart (Evolved) and lvl 90+. Effects: Your heart metamorphosis reached drake level. (+20 SF & Mana / +4 Wrath & Fatigue regen; +2% HP, +1% SF / Mana, +0.25% Fatigue / Wrath regen (doubled when having Drake Blood (Final Form) IM); +30% of max core Str as phantom Str)\n");
@@ -1081,8 +1130,10 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Fiendish Metabolism (Final Form). Req. Fiendish Metabolism (Evolved) and lvl 90+. Effects: You may no longer gain nourishment from anything short of cum, milk and girl juice. If you have the demonic hunger perk, gain a stacking bonus of 10% to tease damage up to 200%. You may gain Fiendish metabolism bonus even without demonic hunger but gain half of the bonus. ");
 			outputText("Gain immunity to all fluid negative effects and allow you to feed from sexual fluids. Satisfying your crave for sex also raises your spell power for an amount equivalent to the tease damage bonus granted by this mutation. Double all recovery from demonic hunger.\n");
 			outputText("-New mutation perk: Fiendish Ovaries (Final Form). Req. Fiendish Ovaries (Evolved) and lvl 90+. Effects: increase Fertility by 100%, all born children from your womb will either be born as imps or greatly corrupted, while pregnant with imps tease is 50% stronger. May benefit from pregomania when pregnant with imps.\n");
+			outputText("-New mutation perk: Frog jumping legs (Final Form). Req. Frog jumping legs (Evolved) and lvl 90+. Effects: Reduce the cooldown of leap by 4 rounds. Leap damage is increased by 200%. Leap only consumes 50% of the wrath it should. Leap has a 100% increased chance of critical strike.\n");
 			outputText("-New mutation perk: Fungus Trama (Final Form). Req. Fungus Trama (Evolved) and lvl 90+. Effects: For fungal creatures increase damage reduction by 20%. While indoor or at night time increases regeneration by 3%. Take 20% less damage from magical effects. Spore abilities can be auto cast.\n");
 			outputText("-New mutation perk: Goblin Ovaries (Final Form). Req. Goblin Ovaries (Evolved) and lvl 90+. Effects: Increase fertility rating by 40, While pregnant increase total libido by 40%. Double the number of kids you birth. Increase physical damage done while pregnant by 50%. Lust damage against male opponents increased by 50%. Add your fertility score as a bonus to libido.\n");
+			outputText("-New mutation perk: Hellcat Parathyroid Glands (Final Form). Req. Hellcat Parathyroid Glands (Evolved) and lvl 90+. Effects: Increase Fire and dark damage by 200% when in rut or in heat. Increase the libido gain from heat and rut by 150%. Gain 2% mana regeneration when in rut or in heat. Add the bonus from heat and rut to intelligence as well.\n");
 			outputText("-New mutation perk: Human Bloodstream (Final Form). Req. Human Bloodstream (Evolved) and lvl 90+. Effects: Increases maximum base/core Spe/Lib by 20, maximum trainable Spe/Lib by 30%. Increase fatigue recovery (+15), wrath generation (+6) and +2 to fatigue recovery/wrath gains multiplier. +5% to max overfatigue/overwrath.\n");
 			outputText("-New mutation perk: Human Bones (Final Form). Req. Human Bones (Evolved) and lvl 90+. Effects: Increases maximum base/core Str/Tou by 20, maximum trainable Str/Tou by 30%. Increase effects of body cultivation by 150%. Increase p.soulskill power by 100% and +10% to max overhp.\n");
 			outputText("-New mutation perk: Human Digestive Tract (Final Form). Req. Human Digestive Tract (Evolved) and lvl 90+. Effects: Your digestive tract improved allowing to get better nourishment from all the ingested substances (+100%). Increase limit when PC gain weight from eating too much by 70+10% of max hunger. ");
@@ -1101,6 +1152,7 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Human Versatility (Final Form). Req. Human Versatility (Evolved) and lvl 90+. Effects: Mastery gains increased by 4 points or in case of multiplier +4 to multiplier. Decrease needed exp to lvl up weapon/lifeskill masteries and have 40% chance to gain 4x more XP for Mastery. 50% chance to gain 2 levels instead of 1 when leveling weapon/lifeskill mastery.\n");
 			outputText("-New mutation perk: Hydra Blood (Final Form). Req. Hydra Blood (Evolved) and lvl 90+. Effects: Improve existing Regeneration by 4% negated by fire damage and increase acid and poison effects by 100%. Your blood is ruinous and inflicts your fang venom when damaged. Bite attacks deals 50% more damage.\n");
 			outputText("-New mutation perk: Living Weapon (Final Form). Req. Living Weapon (Evolved) and lvl 90+. Effects: All natural weapon and weapon damage is increased by an amount equal to your armor class. Your body is always considered naked and free of constraint no longer hindered by armors if able to wear any. Base Armor value prior to perks is increased by 50%. Stuns last one more round.\n");
+			outputText("-New mutation perk: Lunatic mind (Final Form). Req. Lunatic mind (Evolved) and lvl 90+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 200 and -50. Gain 1.5% regeneration. Sneak attack is improved by +2x. Double all these bonuses at night.\n");
 			outputText("-New mutation perk: Mantislike Agility (Final Form). Req. Mantislike Agility (Evolved) and lvl 90+. Effects: Your agility is increased, and can be even further boosted if you have natural armor or thick skin, +90% max core spe as phantom spe. ");
 			outputText("Increases maximum base/core and trainable Spe. All natural weapon and weapon damage is increased by an amount equal to sum of your speed stat core and train values.\n");
 			outputText("-New mutation perk: Mighty Legs (Final Form). Req. Mighty Legs (Evolved) and lvl 90+. Effects: Make Kick permanent no matter your leg type, Increase unarmed strike damage by 20 and grapple effect by 80%. Kick is 150% stronger. Kick stun lasts 1 round longer. Straddle and Grapples duration is extended by 1 additional round.\n");
@@ -1120,34 +1172,6 @@ public class Changelog extends BaseContent
 			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 300% stronger. You permanently gain the Darkness Affinity perk. Draining effects you cause also inflict toughness damage based on your level: 1% toughness damage per 10 levels.\n");
 			outputText("-New mutation perk: Wendigo metabolism (Final Form). Req. Wendigo metabolism (Evolved) and lvl 90+. Effects: Gain High regeneration (2%) but make Endless hunger permanent. Regeneration is further increased (3%) but so is the hunger (45%). Feeding now increases toughness and strength up to 200% more and the increment increased to 5% per stack. ");
 			outputText("Increase the duration of spectral scream to 3 rounds. Spectral Scream and Possess gains an increased modifier based on your combined strength and toughness and have their cooldowns reduced by two rounds. Do four more claw attacks when hunger is mostly sated (90%+).\n");
-			outputText("-New key Item (by Liadri): Upgraded Armor plating 4.0 - req. Upgraded Armor plating 3.0 - +20 armor/magic resistance to the mech. +80% Health.\n");
-			outputText("-New key Item (by Liadri): Upgraded Armor plating 5.0 - req. Upgraded Armor plating 4.0 - +25 armor/magic resistance to the mech. +100% Health.\n");
-			outputText("-New key Item (by Liadri): Upgraded Armor plating 6.0 - req. Upgraded Armor plating 5.0 - +30 armor/magic resistance to the mech. +120% Health.\n");
-			outputText("-New key Item (by Liadri): Machine Gun MK4 - req. Machine Gun MK3 - Increase range attack by 125% if using a firearm. Change the firearm text to a goblin machine gun text.\n");
-			outputText("-New key Item (by Liadri): Machine Gun MK5 - req. Machine Gun MK4 - Increase range attack by 150% if using a firearm. Change the firearm text to a goblin machine gun text.\n");
-			outputText("-New key Item (by Liadri): Machine Gun MK6 - req. Machine Gun MK5 - Increase range attack by 200% if using a firearm. Change the firearm text to a goblin machine gun text.\n");
-			outputText("-New key Item (by Liadri): Artificial Intelligence - req. Toolbelt - Add an artificial intelligence to your mech which will greet you when you board. Aside from the friendliness of this new interface feature it cannot do much on its own yet.\n");
-			outputText("-New key Item (by Liadri): Improved Artificial Intelligence - req. Artificial Intelligence - The mech can now use an auto turret.\n");
-			outputText("-New key Item (by Liadri): Improved Artificial Intelligence MK2 - req. Improved Artificial Intelligence - The mech will randomly activate one of its weapon functions every round on its own at half power value.\n");
-			outputText("-New key Item (by Liadri): Improved Artificial Intelligence MK3 - req. Improved Artificial Intelligence MK2 - The mech will randomly activate one of its weapon functions every round on its own at full power.\n");
-			outputText("-New key Item (by Liadri): Improved Artificial Intelligence MK4 - req. Improved Artificial Intelligence MK3 - The mech will randomly activate two of its weapon functions every round on its own.\n");
-			outputText("-New key Item (by Liadri): Auto turret - req. Improved Artificial Intelligence - Add passive ranged attack per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Auto turret MK2 - req. Auto turret - Add two passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Auto turret MK3 - req. Auto turret MK2 - Add three passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Auto turret MK4 - req. Auto turret MK3 - Add four passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Auto turret MK5 - req. Auto turret MK4 - Add five passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Auto turret MK6 - req. Auto turret MK5 - Add six passive ranged attacks per round to your AI routine no matter your action choice.\n");
-			outputText("-New key Item (by Liadri): Hydraulics - req. Toolbelt - Mechs gain 25% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus.\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK2 - req. Hydraulics - Mechs gain 50% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus.\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK3 - req. Hydraulics MK2 - Mechs gain 75% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK4 - req. Hydraulics MK3 - Mechs gain 100% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK5 - req. Hydraulics MK4 - Mechs gain 125% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
-			outputText("-New key Item (by Liadri): Hydraulics MK6 - req. Hydraulics MK5 - Mechs gain 150% of your intelligence modifier as a melee bonus. If wearing heavy/ayo armor, melee weapons gain half of this bonus\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry - req. Toolbelt - Add one extra attack to the mech ranged weapon.\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK2 - req. Improved Ammo Chemistry - Add two extra attacks to the mech ranged weapon.\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK3 - req. Improved Ammo Chemistry MK2 - Add three extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire.\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK4 - req. Improved Ammo Chemistry MK3 - Add four extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire.\n");
-			outputText("-New key Item (by Liadri): Improved Ammo Chemistry MK5 - req. Improved Ammo Chemistry MK4 - Add five extra attacks to the mech ranged weapon. Ammo now has an incendiary property dealing doubled damage as fire. Ammo now has a caustic property dealing tripled damage as acid.\n");
 			menu();
 			addButton(0, "Next", Changelog56);
 			addButton(1, "Previous", Changelog58);
@@ -1155,7 +1179,7 @@ public class Changelog extends BaseContent
 		}
 		private function Changelog56():void {
 			clearOutput();
-			outputText("(Part 4/10) <b>Version 0.9a:</b>\n\n");
+			outputText("(Part 4/11) <b>Version 0.9a:</b>\n\n");
 			outputText("-New perk for enemies: Champion type enemy. Bonuses for are: Diehard effect of 5% of max HP + 1,500 HP * NG tier, OverMax HP / Lust effect of 10% magnitude.\n");
 			outputText("-New perk for enemies: Dragon type enemy. Would be used when some pc attacks could be more or less effective when used on dragon type enemies.\n");
 			outputText("-New perk for enemies: Physical Damage Resistance. It works similary to Ghost type enemy perk giving monster full immunity to physical damages.\n");
@@ -1166,20 +1190,24 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Black Blood. Req. having free bloodstream mutation slot, one of races: Jiangshi, Mummy, Lich. Effects: Your undead blood gives you a 10% resistance to cold.\n");
 			outputText("-New mutation perk: Blazing Heart. Req. having free heart mutation slot, Hinezumi, Salamander, Phoenix, Hellcat and Fire Snail race. Effects: Gain permanent weakness to cold and fire resistance. Increase fire damage by 25%.\n");
 			outputText("-New mutation perk: Cave Wyrm Acid. Req. having free bloodstream mutation slot, Cave Wyrm race. Effects: Your fluids are a highly volatile acidic compound. You can burn hp to gain wrath periodically at the rate of 1% to 2%.\n");
+			outputText("-New mutation perk: Chameleon skin. Req. having free adaptation mutation slot, Chameleon race. Effects: Increase sneak attack damage multiplier (+1x).\n");
 			outputText("-New mutation perk: Drake Blood. Req. having free bloodstream mutation slot; Dragon, Frost Wyrm, Sea Dragon and Jabberwocky race. Effects: Dragon strong vitality grants mana, soulforce and health regeneration 1%.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence. Req. having free bloodstream mutation slot, one of races: Poltergeist, Banshee. Effects: Reduce Physical damage taken by 10% after damage reduction but increase magical damage taken by 40%.\n");
 			outputText("-New mutation perk: Equine Muscle. Req. having free musculature mutation slot, one of races: horse-morph, centaur, unicorn, bicorn, alicorn, nightmare, laquine, barometz, deer, rhino. Effects: +25% to all Physical Ability damage. Gallop cost 10% less fatigue.\n");
 			outputText("-New mutation perk: Fiendish Balls. Req. having free metabolism mutation slot, demon or imp race. Effects: Increase Virility by 40%.\n");
 			outputText("-New mutation perk: Fiendish Metabolism. Req. having free metabolism mutation slot, demon or imp race. Effects: You may no longer gain nourishment from anything short of cum, milk and girl juice. If you have the demonic hunger perk, gain a stacking bonus of 10% to tease damage up to 50%.\n");
 			outputText("-New mutation perk: Fiendish Ovaries. Req. having free metabolism mutation slot, demon race. Effects: Increase Fertility by 40%.\n");
+			outputText("-New mutation perk: Frog jumping legs. Req. having free musculature mutation slot, Frog race. Effects: Reduce the cooldown of leap by 1 round.\n");
 			outputText("-New mutation perk: Fungus Trama. Req. having free fat tissue mutation slot, Myconid race. Effects: For fungal creatures increase damage reduction by 5%.\n");
 			outputText("-New mutation perk: Goblin Ovaries. Req. having free ovaries mutation slot, one of goblinoid races. Effects: Increase fertility rating by 10, While pregnant increase total libido by 10%. Double the number of kids you birth.\n");
+			outputText("-New mutation perk: Hellcat Parathyroid Glands. Req. having free parathyroid glands mutation slot, Hellcat race. Effects: Increase Fire and dark damage by 50% when in rut or in heat.\n");
 			outputText("-New mutation perk: Human Digestive Tract. Req. having free mouth mutation slot, human race (17+). Effect: Your digestive tract improved allowing to get better nourishment from all the ingested substances (+10%). Increase limit when PC gain weight from eating too much by 10.\n");
 			outputText("-New mutation perk: Human Lungs. Req. having free lungs mutation slot, human race (17+). Effects: Your lungs have been enhanced in both size and strength, increasing your endurance slightly (2%), as well as aiding your metabolism in filtering toxins.\n");
 			outputText("-New mutation perk: Human Metabolism. Req. having free metabolism mutation slot, human race (17+). Effect: Your metabolism changes allowing to slowly detoxification of poisons (10% chance to instantly remove some of toxic substance from body, -1% of lust per turn)\n");
 			outputText("-New mutation perk: Human Secondary Heart. Req. having free heart mutation slot, human race (17+). Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased a bit (2%) as the new heart struggles to find its rhythm alongside your first.\n");
 			outputText("-New mutation perk: Hydra Blood. Req. having free bloodstream mutation slot, Hydra race and Hydra Regeneration perk. Effects: Improve existing Regeneration by 1% negated by fire damage.\n");
 			outputText("-New mutation perk: Living Weapon. Req. having free muscles related mutation slot, Gargoyle or Automata race. Effects: All natural weapon and weapon damage is increased by an amount equal to a quarter of your armor class.\n");
+			outputText("-New mutation perk: Lunatic mind. Req. having free nerv system mutation slot, All Lunar attuned species (Wererace, Moon Rabbit). Effects: Gain a static percentage bonus to speed and strength based on moon phase between 50 and -50.\n");
 			outputText("-New mutation perk: Mighty Legs. Req. having free adaptation mutation slot, one of races: Kangaro, Bunny, Easter Bunny, Laquine, Horse Morph, Centaur(The original centaur not the other ones), Cow, Minotaur, Jabberwocky, Satyr, Deer, Ushi-onna/oni, Krampus. Effects: Make Kick permanent no matter your leg type, Increase unarmed strike damage by 5 and grapple effect by 20%.\n");
 			outputText("-New mutation perk: Mighty Lower Half. Req. having free adaptation mutation slot, one of races: Scylla, Naga, Gorgon, Couatl, Vouivre, Apophis, Frostwyrm, Mindbreaker. Effects: Tentacle and tail attack deals 25% more damage. Increase unarmed strike damage by 5 and grapple effect by 20%.\n");
 			outputText("-New mutation perk: Myconid Collective Consciousness. Req. having free nerv system mutation slot, Myconid race. Effects: Add 10% of your toughness to your spellcasting and Esper score.\n");
@@ -1190,9 +1218,12 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Still Heart. Req. having free adaptation mutation slot, one of races: Jiangshi, Mummy, Lich. Effects: Energy draining effect and spells and ability that drain health are 25% stronger.\n");
 			outputText("-New mutation perk: Undead Metabolism. Req. having free metabolism mutation slot, one of races: Zombie, Mummy, Jiangshi, Lich. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it, but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 5% bonus to libido up to 50% and heal libido damage from starvation. These bonuses decay over time.\n");
 			outputText("-New mutation perk: Wendigo metabolism. Req. having free metabolism mutation slot, wendigo race. Effects: Gain High regeneration (2%) but make Endless hunger permanent. Feeding now increases toughness and strength up to 50% more and the increment increased to 2% per stack.\n");
+			outputText("-New mutation perk: Wyrm Cursed Blood. Req. having free bloodstream mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake races. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 2% strength drain as a backlash.\n");
+			outputText("-New mutation perk: Wyrm Musculature. Req. having free musculature mutation slot; Frost Wyrm, Magma Wyrm, Sand Drake races. Effects: Increase total strength by 5% but reduce intelligence by the same amount.\n");
 			outputText("-New mutation perk: Black Blood (Primitive). Req. Black Blood and lvl 30+. Effects: Your undead blood gives you a 20% resistance to cold. When hunger is sated above 80% you gain doubled health generation from all sources.\n");
 			outputText("-New mutation perk: Blazing Heart (Primitive). Req. Blazing Heart and lvl 30+. Effects: Gain permanent weakness to cold and fire resistance. Increase fire damage by 50%. Heat and Rut also grants you a bonus equal to 10% of the libido bonus to strength.\n");
 			outputText("-New mutation perk: Cave Wyrm Acid (Primitive). Req. Cave Wyrm Acid and lvl 30+. Effects: Your fluids are a highly volatile acidic compound. You can burn hp to gain wrath periodically at the rate of 2% to 4%. While wrath is above 90% increases physical damage by 25%.\n");
+			outputText("-New mutation perk: Chameleon skin (Primitive). Req. Chameleon skin and lvl 30+. Effects: Increase sneak attack damage multiplier (+2x). The camouflage skill lasts 1 more round.\n");
 			outputText("-New mutation perk: Drake Blood (Primitive). Req. Drake Blood and lvl 30+. Effects: Dragon strong vitality grants mana soulforce and health regeneration 2%. You take 5% less damage from magical attack.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence (Primitive). Req. Ectoplasmic Essence and lvl 30+. Effects: Reduce Physical damage taken by 15% after damage reduction but increase magical damage taken by 20%. Increase the potency of M.Ability with a soulforce cost by 50%.\n");
 			outputText("-New mutation perk: Equine Muscle (Primitive). Req. Equine Muscle and lvl 30+. Effects: +50% to all Physical Ability damage. Gallop cost 20% less fatigue. Physical ability consumes 5% less fatigue.\n");
@@ -1200,14 +1231,17 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Fiendish Metabolism (Primitive). Req. Fiendish Metabolism and lvl 30+. Effects: You may no longer gain nourishment from anything short of cum, milk and girl juice. If you have the demonic hunger perk, gain a stacking bonus of 10% to tease damage up to 100%. ");
 			outputText("You may gain Fiendish metabolism bonus even without demonic hunger but gain half of the bonus. Gain immunity to all fluid negative effects and allows you to feed from sexual fluids.\n");
 			outputText("-New mutation perk: Fiendish Ovaries (Primitive). Req. Fiendish Ovaries and lvl 30+. Effects: Increase Fertility by 60%, all born children from your womb will either be born as imps or greatly corrupted.\n");
+			outputText("-New mutation perk: Frog jumping legs (Primitive). Req. Frog jumping legs and lvl 30+. Effects: Reduce the cooldown of leap by 2 rounds. Leap damage is increased by 50%.\n");
 			outputText("-New mutation perk: Fungus Trama (Primitive). Req. Fungus Trama. and lvl 30+. Effects: For fungal creatures increase damage reduction by 10%. While indoor or at night time increases regeneration by 1%.\n");
 			outputText("-New mutation perk: Goblin Ovaries (Primitive). Req. Goblin Ovaries and lvl 30+. Effects: Increase fertility rating by 20, While pregnant increase total libido by 20%. Double the number of kids you birth. Increase physical damage done while pregnant by 30%.\n");
+			outputText("-New mutation perk: Hellcat Parathyroid Glands (Primitive). Req. Hellcat Parathyroid Glands and lvl 30+. Effects: Increase Fire and dark damage by 100% when in rut or in heat. Increase the libido gain from heat and rut by 50%.\n");
 			outputText("-New mutation perk: Human Digestive Tract (Primitive). Req. Human Digestive Tract and lvl 30+. Effects: Your digestive tract improved allowing to get better nourishment from all the ingested substances (+30%). Increase limit when PC gain weight from eating too much by 25.\n");
 			outputText("-New mutation perk: Human Lungs (Primitive). Req. Human Lungs and lvl 30+. Effects: Your lungs have been enhanced in both size and strength, increasing your endurance somewhat (3%), as well as aiding your metabolism in filtering toxins.\n");
 			outputText("-New mutation perk: Human Metabolism (Primitive). Req. Human Metabolism and lvl 30+. Effects: Your metabolism changes allowing to slowly detoxification of poisons (20% chance to instantly remove some of toxic substance from body, -2% of lust per turn, 2x shorter elemental dot effects duration)\n");
 			outputText("-New mutation perk: Human Secondary Heart (Primitive). Req. Human Secondary Heart and lvl 30+. Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased slightly (3%) as the new heart begins to find its rhythm alongside your first.\n");
 			outputText("-New mutation perk: Hydra Blood (Primitive). Req. Hydra Blood and lvl 30+. Effects: Improve existing Regeneration by 2% negated by fire damage and increase acid and poison effects by 50%.\n");
 			outputText("-New mutation perk: Living Weapon (Primitive). Req. Living Weapon and lvl 30+. Effects: All natural weapon and weapon damage is increased by an amount equal to half of your armor class. Your body is always considered naked and free of constraint no longer hindered by armors if able to wear any.\n");
+			outputText("-New mutation perk: Lunatic mind (Primitive). Req. Lunatic mind and lvl 30+. Effects: Gain a static percentage bonus to speed and strength based on moon phase between 100 and -50. Gain 0.5% regeneration.\n");
 			outputText("-New mutation perk: Mighty Legs (Primitive). Req. Mighty Legs and lvl 30+. Effects: Make Kick permanent no matter your leg type, Increase unarmed strike damage by 10 and grapple effect by 40%. Kick is 50% stronger.\n");
 			outputText("-New mutation perk: Mighty Lower Half (Primitive). Req. Mighty Lower Half and lvl 30+. Effects: Tentacle and tail attack deals 50% more damage. Increase unarmed strike damage by 10 and grapple effect by 40%. Grapple damage gains 50% more bonus from your strength.\n");
 			outputText("-New mutation perk: Myconid Collective Consciousness (Primitive). Req. Myconid Collective Consciousness and lvl 30+. Effects: Add 20% of your toughness to your spellcasting and Esper score. Take 25% less damage from mental attacks and Esper ability.\n");
@@ -1219,9 +1253,12 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Undead Metabolism (Primitive). Req. Undead Metabolism and lvl 30+. Effects: Your hunger is now sated by sex. You cannot die of hunger or lose weight from it but take libido damage instead of regular stat damage when your hunger bar is empty. When overeating instead of gaining weight gain a stacking 10% bonus to libido up to 100% and heal all libido damage. ");
 			outputText("These bonuses decay over time. All of your undead racial abilities and necromancy skills are 100% stronger.\n");
 			outputText("-New mutation perk: Wendigo metabolism (Primitive). Req. Wendigo metabolism and lvl 30+. Effects: Gain High regeneration (2%) but make Endless hunger permanent. Regeneration is further increased (1%) but so is the hunger (15%). Feeding now increases toughness and strength up to 100% more and the increment increased to 3% per stack. Increase the duration of spectral scream to 3 rounds.\n");
+			outputText("-New mutation perk: Wyrm Cursed Blood (Primitive). Req. Wyrm Cursed Blood and lvl 30+. Effects: Your blood becomes ruinous cursing those who wound you with ill fate. When taking damage, inflict a 4% strength drain as a backlash. If you got a dragon mouth or fang you can inject your blood into opponents as part of your natural attack dealing 4% drain as a continuous poison effect.\n");
+			outputText("-New mutation perk: Wyrm Musculature (Primitive). Req. Wyrm Musculature and lvl 30+. Effects: Increase total strength by 10% but reduce intelligence by the same amount. Physical ability damage is increased by 50%.\n");
 			outputText("-New mutation perk: Black Blood (Evolved). Req. Black Blood (Primitive) and lvl 60+. Effects: Your undead blood gives you a 30% resistance to cold. When hunger is sated above 60% you gain doubled health generation from all sources. You gain regeneration 1%.\n");
 			outputText("-New mutation perk: Blazing Heart (Evolved). Req. Blazing Heart (Primitive) and lvl 60+. Effects: Gain permanent weakness to cold and fire resistance. Increase fire damage by 100%. Heat and Rut also grants you a bonus equal to 20% of the libido bonus to strength. Setting an enemy on fire emboldens and arouses you, increasing damage dealt to burn enemies by 100% but also making you take lust damage as a recoil.\n");
 			outputText("-New mutation perk: Cave Wyrm Acid (Evolved). Req. Cave Wyrm Acid (Primitive) and lvl 60+. Effects: Your fluids are a highly volatile acidic compound. You can burn hp to gain wrath periodically at the rate of 4% to 8%. While wrath is above 90% increases physical damage by 50%. Increase Nitroblade damage by 100%.\n");
+			outputText("-New mutation perk: Chameleon skin (Evolved). Req. Chameleon skin (Primitive) and lvl 60+. Effects: Increase sneak attack damage multiplier (+3x). The camouflage skill lasts 2 more rounds. While camouflaged, increases all damage by 25%.\n");
 			outputText("-New mutation perk: Drake Blood (Evolved). Req. Drake Blood (Primitive) and lvl 60+. Effects: Dragon strong vitality grants mana soulforce and health regeneration 3%. You take 10% less damage from magical attack. Magic Effect from you are 25% more powerful.\n");
 			outputText("-New mutation perk: Ectoplasmic Essence (Evolved). Req. Ectoplasmic Essence (Primitive) and lvl 60+. Effects: Reduce Physical damage taken by 20% after damage reduction but increase magical damage taken by 10%. Increase the potency of M.Ability with a soulforce cost by 100%. Increase tease modifier by a percentage equal to half of current lust percentage.\n");
 			outputText("-New mutation perk: Equine Muscle (Evolved). Req. Equine Muscle (Primitive) and lvl 60+. Effects: +75% to all Physical Ability damage. Gallop cost 30% less fatigue. Physical ability consumes 10% less fatigues. Physical ability that stuns do so for one extra round.\n");
@@ -1229,24 +1266,13 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Fiendish Metabolism (Evolved). Req. Fiendish Metabolism (Primitive) and lvl 60+. Effects: You may no longer gain nourishment from anything short of cum, milk and girl juice. If you have the demonic hunger perk, gain a stacking bonus of 10% to tease damage up to 150%. You may gain Fiendish metabolism bonus even without demonic hunger but gain half of the bonus. ");
 			outputText("Gain immunity to all fluid negative effects and allow you to feed from sexual fluids. Satisfying your crave for sex also raises your spell power for an amount equivalent to the tease damage bonus granted by this mutation.\n");
 			outputText("-New mutation perk: Fiendish Ovaries (Evolved). Req. Fiendish Ovaries (Primitive) and lvl 60+. Effects: Increase Fertility by 80%, all born children from your womb will either be born as imps or greatly corrupted, while pregnant with imps tease is 25% stronger.\n");
+			outputText("-New mutation perk: Frog jumping legs (Evolved). Req. Frog jumping legs (Primitive) and lvl 60+. Effects: Reduce the cooldown of leap by 3 rounds. Leap damage is increased by 100%. Leap only consumes 75% of the wrath it should.\n");
 			outputText("-New mutation perk: Fungus Trama (Evolved). Req. Fungus Trama. (Primitive) and lvl 60+. Effects: For fungal creatures increase damage reduction by 15%. While indoor or at night time increases regeneration by 2%. Take 10% less damage from magical effects.\n");
 			outputText("-New mutation perk: Goblin Ovaries (Evolved). Req. Goblin Ovaries (Primitive) and lvl 60+. Effects: Increase fertility rating by 30, While pregnant increase total libido by 30%. Double the number of kids you birth. Increase physical damage done while pregnant by 40%. Lust damage against male opponents increased by 25%.\n");
+			outputText("-New mutation perk: Hellcat Parathyroid Glands (Evolved). Req. Hellcat Parathyroid Glands (Primitive) and lvl 60+. Effects: Increase Fire and dark damage by 150% when in rut or in heat. Increase the libido gain from heat and rut by 100%. Gain 1% mana regeneration when in rut or in heat.\n");
 			outputText("-New mutation perk: Human Digestive Tract (Evolved). Req. Human Digestive Tract (Primitive) and lvl 60+. Effects: Your digestive tract improved allowing to get better nourishment from all the ingested substances (+60%). Increase limit when PC gain weight from eating too much by 45. Can slowly remove harmful substances (-1% of lust per turn)\n");
 			outputText("-New mutation perk: Human Lungs (Evolved). Req. Human Lungs (Primitive) and lvl 60+. Effects: Your lungs have been enhanced in both size and strength, increasing your endurance (4%), as well as aiding your metabolism in filtering toxins.\n");
 			outputText("-New mutation perk: Human Metabolism (Evolved). Req. Human Metabolism (Primitive) and lvl 60+. Effects: Your metabolism changes allowing to slowly detoxification of poisons or slight faster fatigue recovery (30% chance to instantly remove some of toxic substance from body, -3% of lust / -1% of fatigue per turn, 2x shorter elemental dot effects duration)\n");
-			outputText("-New mutation perk: Human Secondary Heart (Evolved). Req. Human Secondary Heart (Primitive) and lvl 60+. Effects: You’ve been given a secondary heart, the newly added organ pumping in tandem with the original. Your health and fatigue recovery are increased (5%) as the new heart has adapted to the rhythm of the original.\n");
-			outputText("-New mutation perk: Hydra Blood (Evolved). Req. Hydra Blood (Primitive) and lvl 60+. Effects: Improve existing Regeneration by 3% negated by fire damage and increase acid and poison effects by 75%. Your blood is ruinous and inflicts your fang venom when damaged.\n");
-			outputText("-New mutation perk: Living Weapon (Evolved). Req. Living Weapon (Primitive) and lvl 60+. Effects: All natural weapon and weapon damage is increased by an amount equal to 3/4 of your armor class. Your body is always considered naked and free of constraint no longer hindered by armors if able to wear any. Base Armor value prior to perks is increased by 25%.\n");
-			outputText("-New mutation perk: Mighty Legs (Evolved). Req. Mighty Legs (Primitive) and lvl 60+. Effects: Make Kick permanent no matter your leg type, Increase unarmed strike damage by 15 and grapple effect by 60%. Kick is 100% stronger. Kick stun lasts 1 round longer.\n");
-			outputText("-New mutation perk: Mighty Lower Half (Evolved). Req. Mighty Lower Half (Primitive) and lvl 60+. Effects: Tentacle and tail attack deals 75% more damage. Increase unarmed strike damage by 15 and grapple effect by 60%. Grapple damage gains 100% more bonus from your strength. Racial physical ability stun lasts 1 round longer.\n");
-			outputText("-New mutation perk: Myconid Collective Consciousness (Evolved). Req. Myconid Collective Consciousness (Primitive) and lvl 60+. Effects: Add 30% of your toughness to your spellcasting and Esper score. Take 50% less damage from mental attacks and Esper ability. Gain 1% mana regeneration.\n");
-			outputText("-New mutation perk: Myconid Spore (Evolved). Req. Myconid Spore (Primitive) and lvl 60+. Effects: Spore cloud becomes a permanent ability. Furthermore, all tease damage induced by poison is increased by 75%. While in your own spore cloud, you become empowered and increase your strength by 30% of their total value, but increase tease damage taken by 50%. ");
-			outputText("Spore cloud now inflicts a stacking 5% lust vulnerability but only to your opponent.\n");
-			outputText("-New mutation perk: Plant Chlorophyll (Evolved). Req. Plant Chlorophyll (Primitive) and lvl 60+. Effects: For plants, increase all recovery effects (mana, hp, sf, wrath, fatigue) by 15% while outdoors during daytime. Plant abilities are increased by 30%. Photosynthesis is 25% stronger.\n");
-			outputText("-New mutation perk: Poison Gland (Evolved). Req. Poison Gland (Primitive) and lvl 60+. Effects: Double the efficiency of poison damage, applied poisons now has a 75% chance of dealing its effect twice per turn. All poison becomes deadlier inflicting 2% toughness damage per round.\n");
-			outputText("-New mutation perk: Soul Core (Evolved). Req. Soul Core (Primitive) and lvl 60+. Effects: Gain 3% mana regeneration. While above 50% of your total mana gain a 50% increase to all physical damage. While under 50% of your total fatigue gain a 50% increase to all magical damage. Gain regeneration 2% while mana is above 50%.\n");
-			outputText("-New mutation perk: Scylla Ink Glands (Evolved). Req. Scylla Ink Glands (Primitive) and lvl 60+. Effects: Your Scylla Ink Glands increase rate at which your body produce ink, duration ink spray affect enemies and lust damage by ((current i. mutation tier - 1) * 100)%, boost to your natural strength, speed and toughness, ");
-			outputText("Scylla Squeeze damage during grapple as Kraken would be multiplied by current i.mutation tier, scylla grapple will always succeed, when in an aquatic battle boost from Aquatic Affinity is 2x larger.\n");
 			menu();
 			addButton(0, "Next", Changelog55);
 			addButton(1, "Previous", Changelog57);
@@ -1254,7 +1280,7 @@ public class Changelog extends BaseContent
 		}
 		private function Changelog55():void {
 			clearOutput();
-			outputText("(Part 3/10) <b>Version 0.9a:</b>\n\n");
+			outputText("(Part 3/11) <b>Version 0.9a:</b>\n\n");
 			outputText("-New event perk: Empty Vessel. Gained by reaching Demi-Hollow tier of Hollow race. Effects: You will no longer gain nourishment from anything with the exception of Breast milk (Marble's bottled milk is allowed, and drinking Ember's blood is allowed - counts as breastfeeding) and soul-draining humanoids. The Hollow may drain soulforce or consume the souls of defeated foes to restore vitality and accumulate Soulforce. ");
 			outputText("(When dropping below 50% of max satiety would cause drain of 20% of max soulforce per hour (if lacking soulforce would drain health 15% of max HP per hour). When dropping below 30% of max satiety would cause drain of 20% of max health per hour. At 70% and above satiety, the pc will get a 20% boost to all stats (excluding sensitivity), 20% boost to Soulforce skills and Hollow skills.)\n");
 			outputText("-New event perk: Touch of the Damned. Gained by reaching Hollow tier of Hollow race. Effects: All unarmed attacks and natural weapons: inflicts acid damage for 3 turns. This acid damage stacks on top of other acid attacks and DOTs. (5% / 15% of foes Total hp) Also generate soulforce equivalent to 5% / 15% of damage done to foe and fill satiety by 1 / 3.\n");
@@ -1345,7 +1371,7 @@ public class Changelog extends BaseContent
 		}
 		private function Changelog54():void {
 			clearOutput();
-			outputText("(Part 2/10) <b>Version 0.9a:</b>\n\n");
+			outputText("(Part 2/11) <b>Version 0.9a:</b>\n\n");
 			outputText("-New tier 8 libido lvl-up perk: Greater Grapple. Req. Improved Grapple perk and 250+ lib. Effect: Attack three action per straddle or grappling turn. Increase straddle damage by another 20%.\n");
 			outputText("-New tier 8 misc lvl-up perk: All-Rounder Training ( Advanced ). Req. All-Rounder Training ( Intermediate ) perk. Effect: Limit of train caps for stats is increased by 5.\n");
 			outputText("-New tier 8 misc lvl-up perk: Shillelagh. Req. Nature Mage perk, Intelligence 180+, Libido 180+, Corruption 50+. Effect: Increase staves base attack value by 30. Staves count as the same size class spears with 40% armorpen when used as melee weapons.\n");
@@ -1454,7 +1480,7 @@ public class Changelog extends BaseContent
 		}
 		private function Changelog53():void {
 			clearOutput();
-			outputText("(Part 1/10) <b>Version 0.9a:</b>\n\n");
+			outputText("(Part 1/11) <b>Version 0.9a:</b>\n\n");
 			outputText("-New tier 0 misc lvl-up perk: Job: Feral Champion. Req. Job: Beast Warrior perk, free advanced job slot, 25+ in tou/spe. Effect: A wild animal in both name and behavior the feral champion focus on mastering natural weapon such as tooth and claws and delivering deadly status effect. A specialization used best when fighting naked.\n");
 			outputText("-New tier 0 misc lvl-up perk: (Basic) Job: Tinker. Req. 10+ wisdom and 10+ intelligence. Effect: Increase damage of consumable items / technologic weapons by 5%.\n");
 			outputText("-New tier 0 wisdom lvl-up perk: (Basic) Job: Tamer. Req. 10+ wisdom. Effect: Allow to tame 1 beast with feral level of intelligence.\n");

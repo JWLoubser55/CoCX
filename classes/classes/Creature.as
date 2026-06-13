@@ -3274,7 +3274,7 @@ public class Creature extends Utils
 		public function canSwimUnderwater():Boolean
 		{
 			if (gills.type != Gills.NONE || lowerBody == LowerBody.SCYLLA || lowerBody == LowerBody.KRAKEN || lowerBody == LowerBody.MELKIE || tailType == Tail.ARIGEAN_GREEN || tailType == Tail.ARIGEAN_RED || tailType == Tail.ARIGEAN_YELLOW || tailType == Tail.ARIGEAN_PRINCESS ||
-				rearBody.type == RearBody.ORCA_BLOWHOLE || hasStatusEffect(StatusEffects.Airweed) || game.player.necklaceName == "Magic coral and pearl necklace" || game.player.headjewelryName == "Aqua breather" ||
+				rearBody.type == RearBody.ORCA_BLOWHOLE || skin.type == Skin.MUCUS || hasStatusEffect(StatusEffects.Airweed) || game.player.necklaceName == "Magic coral and pearl necklace" || game.player.headjewelryName == "Aqua breather" ||
 				(game.player.isInGoblinMech() && game.player.hasKeyItem("Safety bubble") >= 0) || (perkv1(IMutationsLib.HumanLungsIM) >= 4 && game.player.racialScore(Races.HUMAN) > 17) || game.player.hasPerk(PerkLib.AffinityUndine) || game.player.hasPerk(PerkLib.Undeath))
 				return true;	//efekt of itemów dające oddych. pod wodą
 			return false;
@@ -3799,6 +3799,7 @@ public class Creature extends Utils
 		}
 		public function hasPartialCoat(coat_type:int):Boolean { return skin.hasPartialCoatOfType(coat_type); }
 		public function hasAnyPartialCoat():Boolean { return skin.hasPartialCoat(); }
+		public function hasMucusSkin():Boolean { return skin.hasMucusSkin(); }
 		public function hasRubberSkin():Boolean { return skin.hasRubberSkin(); }
 		public function hasPlainSkin():Boolean { return skin.hasPlainSkin(); }
 		public function isGooSkin():Boolean { return skin.isGooSkin(); }

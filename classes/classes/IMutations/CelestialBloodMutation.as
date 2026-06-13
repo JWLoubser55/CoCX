@@ -20,7 +20,7 @@ public class CelestialBloodMutation extends IMutationPerkType
             var descS:String = "";
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1) descS += "Increase mana regeneration by "+(pTier*5)+"0% of its total regeneration rate but double spell cost";
-			if (pTier >= 2) descS += ". When hunger is sated above "+((6-pTier)*2)+"0% you gain doubled health generation from all sources";
+			if (pTier >= 2) descS += ". While Mana is above "+(5-pTier)+"0% Increase spell damage by "+((pTier-1)*5)+"0%";
             if (pTier >= 3) descS += ". You gain regeneration "+(pTier-2)+"%";
             if (pTier >= 4) descS += ". You recover from all stat damage except intelligence / libido every full moon night";
             if (descS != "")descS += ".";
@@ -49,10 +49,10 @@ public class CelestialBloodMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
-            if (pTier == 1) pBuffs['lib.mult'] = 0.05;/*
+            if (pTier == 1) pBuffs['lib.mult'] = 0.05;
             if (pTier == 2) pBuffs['lib.mult'] = 0.1;
             if (pTier == 3) pBuffs['lib.mult'] = 0.15;
-            if (pTier == 4) pBuffs['lib.mult'] = 0.2;*/
+            if (pTier == 4) pBuffs['lib.mult'] = 0.2;
             return pBuffs;
         }
 

@@ -15703,7 +15703,12 @@ public final class Mutations extends MutationsHelper {
             transformations.WingsNone.applyEffect();
             changes++;
         }
-		//Plain skin
+		//Mucus dripping skin
+		if (!player.hasMucusSkin() && player.hasPlainSkinOnly() && rand(2) == 0 && changes < changeLimit) {
+            outputText("[pg]");
+            transformations.SkinMucus.applyEffect();
+            changes++;
+        }
         if (!player.hasPlainSkinOnly() && rand(2) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.SkinPlain.applyEffect();
@@ -15714,8 +15719,11 @@ public final class Mutations extends MutationsHelper {
             outputText("[pg]Your skin suddenly darkens. Doesn’t look like much, but darker skin will likely help soak up more sunlight and keep you warmer.<b> You now have " + player.skinColor + " skin.</b>");
             changes++;
         }
-		//Skin pattern
-		
+        if (!player.hasPlainSkinOnly() && changes < changeLimit && rand(3) == 0) {
+            outputText("[pg]");
+            transformations.SkinPlain.applyEffect();
+            changes++;
+        }
 		//Eyes
         if (changes < changeLimit && rand(3) == 0 && player.eyes.type != Eyes.FROG) {
             outputText("[pg]");

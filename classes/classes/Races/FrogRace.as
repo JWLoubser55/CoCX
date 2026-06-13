@@ -50,8 +50,10 @@ public class FrogRace extends Race {
                 .eyeType(Eyes.FROG, +1)
 				.eyeColor(ANY(FrogEyesColors), +1)
 				.antennaeType(Antennae.THIRD_EYE, +1)
-				.skinColor1(ANY(FrogSkinColors), +1)
-				.plainSkinOfAdj(NOT("slippery"), +1)
+				.skinColor1(ANY(FrogSkinColors), +1).customRequirement("","mucus dripping skin",
+						function (body:BodyData):Boolean {
+							return body.player.hasMucusSkin();
+						}, +3)
 				.noTail(+1)
                 .noWings(+1)
 				.wingType(ANY(Wings.DRACONIC_SMALL, Wings.DRACONIC_LARGE, Wings.DRACONIC_HUGE), +4)
@@ -61,7 +63,7 @@ public class FrogRace extends Race {
 				.hasPerk(PerkLib.Dracoforce, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 
-        addMutation(IMutationsLib.DrakeHeartIM);
+        addMutation(IMutationsLib.DrakeLungsIM);
 		addMutation(IMutationsLib.FrogJumpingLegsIM);
 		addMutation(IMutationsLib.DrakeBloodIM);
 		//

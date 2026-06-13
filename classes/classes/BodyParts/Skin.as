@@ -176,6 +176,14 @@ public class Skin extends SaveableBodyPart {
 		base:true,
 		material: BodyMaterial.SKIN
 	});
+	public static const MUCUS: int = 24;
+	EnumValue.add(SkinTypes, MUCUS, "MUCUS", {
+		name:"mucus dripping skin",
+		appearanceDesc: "Your [skin base] covered with [skin base.color1] and [skin base.color2] frog like pattern.",
+		plural: false,
+		base:true,
+		material: BodyMaterial.SKIN
+	});
 
 	/**
 	 * Entry properties:
@@ -572,6 +580,9 @@ public class Skin extends SaveableBodyPart {
 	}
 	public function hasRubberSkin():Boolean {
 		return base.isAny(AQUA_RUBBER_LIKE);
+	}
+	public function hasMucusSkin():Boolean {
+		return base.isAny(MUCUS);
 	}
 	public function isGhostSkin():Boolean {
 		return base.isAny(TRANSPARENT);

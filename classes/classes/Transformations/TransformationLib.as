@@ -945,6 +945,9 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
 			AE_HUMAN, AE_ELF, AE_FAIRY, AE_GAZER, AE_GOBLIN, AE_GREMLIN, AE_IMP, AE_KITSUNE, AE_OOMUKADE, AE_ORC, AE_ORCA)
 												.withAlchemyNames("PlainSkin", "Plain skin");
     public const SkinSlippery: Transformation = skin.SkinSlippery;
+    public const SkinMucus: Transformation = skin.SkinMucus.registerTfMultiple(AS_SKIN,
+			AE_FROG)
+													   .withAlchemyNames("Mucus.Skin", "Mucus Drip. skin");
     public const SkinTransparent: Transformation = skin.SkinTransparent.registerTfMultiple(AS_SKIN,
 			AE_POLTERGEIST)
 													   .withAlchemyNames("Transp.Skin", "Transparent skin");

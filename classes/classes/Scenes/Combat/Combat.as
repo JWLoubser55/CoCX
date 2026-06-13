@@ -78,7 +78,9 @@ public class Combat extends BaseContent {
     public var MDOCount:int = 0; // count of how many times damage was deal
     public var MSGControll:Boolean = false; // need to correctly display damage MSG
     public var MSGControllForEvasion:Boolean = false; // need to correctly display damage MSG. This way as i use it game will show just first damage msg.
+	public var strDmg:Number = 0;
 	public var touDmg:Number = 0;
+	public var speDmg:Number = 0;
 	public var martialTrain:Number = 0;
 	public var mTSpinningKick:Boolean = false;
 	public var mTWayOfTheSilentStorm:Boolean = false;
@@ -4090,6 +4092,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			mTWayOfTheSilentStormChance += 1;
         }
 		else if (isUnarmedCombatButDealIceDamage()) {
@@ -4110,6 +4113,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (isUnarmedCombatButDealLightningDamage()) {
@@ -4128,6 +4132,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (isUnarmedCombatButDealDarknessDamage()) {
@@ -4146,6 +4151,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			mTWayOfTheSilentStormChance += 1;
 		}
         else if (player.weapon == weapons.MGSWORD) {
@@ -4229,6 +4235,7 @@ public class Combat extends BaseContent {
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
 			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
+			if (player.hasPerk(PerkLib.ToxicMucus) && (player.isUnarmedCombat() || IsFeralCombat)) SceneLib.combat.effectToxicMucus();
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 1) {
@@ -4250,6 +4257,7 @@ public class Combat extends BaseContent {
 				damage *= 3;
 			}
 			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 2) {
@@ -4271,6 +4279,7 @@ public class Combat extends BaseContent {
 				damage *= 3;
 			}
 			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 3) {
@@ -4295,6 +4304,7 @@ public class Combat extends BaseContent {
 			}
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
 			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			mTWayOfTheSilentStormChance += 1;
 		}
 		else if (INeedOnlyOneFistOrKick == 4) {
@@ -4317,6 +4327,7 @@ public class Combat extends BaseContent {
 				damage *= 3;
 			}
 			if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(damage);
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			mTWayOfTheSilentStormChance += 1;
 		}
         else {
@@ -9058,7 +9069,8 @@ public class Combat extends BaseContent {
 				mTWayOfTheSilentStormChance += 1;
 				outputText("Using the momentum of your previous attack, you spin on yourself, chaining with a mighty kick to your opponent.\n\n");
 				pc.SoulforceChange(basecost2);
-				CombatAbilities.PunishingKick.perform(true,true);
+				CombatAbilities.PunishingKick.perform(true, true);
+				if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			}
 		}
 		if (player.hasPerk(PerkLib.SuddenPunch)) {
@@ -9084,6 +9096,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);*/
 				if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) if (player.lust > player.lust100 * 0.5) dynStats("lus", -1, "scale", false);
 				if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(temp1);
+				if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 			}
 		}
 		if (player.hasPerk(PerkLib.WayOfTheSilentStorm)) {
@@ -9118,6 +9131,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp2);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(temp2);
+				if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 				outputText("\n\n");
 			}
 		}
@@ -9137,6 +9151,7 @@ public class Combat extends BaseContent {
 				if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(temp3);
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(temp3);
+				if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 				outputText("\n\n");
 			}
 		}
@@ -17284,6 +17299,7 @@ public function CancerGrab():void {
 			}
 		}
 		doPlayerPhysDamage(damage, true, true);
+		if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 	}
     outputText("\n\n");
     enemyAIImpl();
@@ -17535,6 +17551,7 @@ public function Straddle():void {
         }
         else outputText("You take hold of your dazed opponent and gently pull [monster him] to the ground, straddling [monster him] as you get into position.");
         if (player.hasPerk(PerkLib.StraddleImproved)) player.addStatusValue(StatusEffects.StraddleRoundLeft, 1, +2);
+		if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
         enemyAIImpl();
 }
 
@@ -17636,6 +17653,7 @@ private function StraddleTeaseRe():void {
     chosenTease(straddleDamage, randomcrit);
     combat.teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
     outputText("\n\n");
+	if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
     combat.teases.fueledByDesireHeal();
     if (player.hasPerk(PerkLib.DemonEnergyThirst) || player.hasPerk(PerkLib.KitsuneEnergyThirst)) {
         outputText("You gasp in delight as you drink on your victim's energy to replenish your own, feeding of [monster his] pleasure. ");
@@ -18058,6 +18076,7 @@ public function Guillotine():void {
     outputText("You begin to crush your foe with your pincer, aiming to squeeze it to death in your mighty grip. You can feel it in your claw as [monster his] struggles intensify, smacking your armored pincher as hard as they can. \n\n[Themonster] takes ");
     doPlayerPhysDamage(damage, true, true);
     outputText(" damage.");
+	if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
     //Enemy faints -
     if (monster.HP <= monster.minHP()) {
         outputText("\n\nYou can feel [themonster]'s life signs beginning to fade, and before you crush all the life from [monster him], you let go, dropping [monster him] to the floor, unconscious but alive.  In no time, [monster his]'s eyelids begin fluttering, and you've no doubt they'll regain consciousness soon.\n\n");
@@ -18132,6 +18151,7 @@ public function ScyllaSqueeze():void {
     outputText(", leaving [monster him] short of breath. You can feel it in your tentacles as [monster his] struggles intensify. \n\n[Themonster] takes ");
     doPlayerPhysDamage(damage, true, true);
     outputText(" damage.");
+	if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
 	if (player.perkv1(IMutationsLib.ScyllaInkGlandsIM) >= 4 && player.isKraken()) {
 		if (monster.hasStatusEffect(StatusEffects.CombatWounds)) {
 			monster.addStatusValue(StatusEffects.CombatWounds, 1, 5);
@@ -18240,6 +18260,7 @@ public function ScyllaTease():void {
             if (player.hasPerk(PerkLib.KrakenBlackDress)) damage *= 2;
             monster.teased(Math.round(monster.lustVuln * damage));
             if (crit) outputText(" <b>Critical!</b>");
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
             teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
         }
         //Nuttin honey
@@ -18265,7 +18286,7 @@ public function ScyllaLeggoMyEggo():void {
 public function TongueSqueeze():void {
     clearOutput();
 	fatigue(30, USEFATG_PHYSICAL);
-    outputText("You begin to squeeze your victim with your tongue. ");//"+((If Frog mucus)?", your mucus dripping onto [monster his] skin":"")+"
+    outputText("You begin to squeeze your victim with your tongue"+(player.hasMucusSkin()?", your mucus dripping onto [monster his] skin":"")+". ");
     var damage:int = monster.maxHP() * (.05 + rand(10) / 100) * 1.5;
 	damage = statusEffectBonusDamage(damage);
     if (player.hasPerk(PerkLib.VladimirRegalia)) damage *= 2;
@@ -18290,6 +18311,7 @@ public function TongueSqueeze():void {
 	}
 	damage = Math.round(damage);
     doPlayerPhysDamage(damage, true, true);
+	if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
     //Enemy faints -
     if (monster.HP <= monster.minHP()) {
         outputText("\n\nYou can feel [themonster]'s life signs beginning to fade, and before you crush all the life from [monster him], you let go, dropping [monster him] to the floor, unconscious but alive.  In no time, [monster his]'s eyelids begin fluttering, and you've no doubt they'll regain consciousness soon.  ");
@@ -18369,6 +18391,7 @@ public function TongueTease():void {
             if (player.hasPerk(PerkLib.KrakenBlackDress)) damage *= 2;
             monster.teased(Math.round(monster.lustVuln * damage));
             if (crit) outputText(" <b>Critical!</b>");
+			if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
             teaseXP(1 + combat.bonusExpAfterSuccesfullTease());
         }
         //Nuttin honey
@@ -20317,6 +20340,7 @@ public function greatDive():void {
         outputText("<b>Critical! </b>");
         if (player.hasStatusEffect(StatusEffects.Rage)) player.removeStatusEffect(StatusEffects.Rage);
     }
+	if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
     if (!crit && player.hasPerk(PerkLib.Rage) && (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking))) {
         if (player.hasStatusEffect(StatusEffects.Rage) && player.statusEffectv1(StatusEffects.Rage) > 5 && player.statusEffectv1(StatusEffects.Rage) < 70) player.addStatusValue(StatusEffects.Rage, 1, 10);
         else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
@@ -21364,6 +21388,17 @@ public function breathSpecialsCooldown(tiers:Number):Number {
 public function aPoisonGlandsMyconidSpores():void {
 	if (player.perkv1(IMutationsLib.MyconidSporeIM) >= 1) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln * (1 + (player.perkv1(IMutationsLib.MyconidSporeIM) * 0.25)), false);
 	else monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln, false);
+}
+
+public function effectToxicMucus():void {
+	strDmg += (monster.str * 0.01);
+	speDmg += (monster.spe * 0.01);
+	monster.statStore.addBuffObject({str: -strDmg, spe: -speDmg}, "Toxic Mucus", {text:"Toxic mucus"});
+	if (monster.lustVuln > 0 && !player.enemiesImmuneToLustResistanceDebuff()) {
+		monster.lustVuln += 0.01;
+		if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
+	}
+	monster.teased(combat.teases.teaseBaseLustDamage() * 0.1 * monster.lustVuln, false);
 }
 
 public function ectoplasmEsseBon():Number {

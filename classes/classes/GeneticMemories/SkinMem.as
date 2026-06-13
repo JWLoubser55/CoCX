@@ -179,6 +179,18 @@ package classes.GeneticMemories {
 		  }
 	  });
 
+	  public static const MUCUS:int = _partid++;
+	  EnumValue.add(Memories, MUCUS, "MUCUS", {
+		  id: "Mucus Skin",
+		  name: "Mucus skin",
+		  cost: 100,
+		  title: "Mucus",
+		  availableCoverages: [Skin.COVERAGE_COMPLETE],
+		  transformationCoverage: function(coverage: int): Transformation {
+              return CoC.instance.transformations.SkinMucus;
+		  }
+	  });
+
 		public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

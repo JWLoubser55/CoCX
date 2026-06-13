@@ -1013,6 +1013,7 @@ public function nagaSqueeeezeDmg():void {
 		}
 	}
 	SceneLib.combat.doPlayerPhysDamage(damage, true, true);
+	if (player.hasPerk(PerkLib.ToxicMucus)) SceneLib.combat.effectToxicMucus();
 }
 public function nagaSqueeze():void {
 	clearOutput();
@@ -1128,6 +1129,7 @@ public function nagaTease():void {
 		if (player.hasPerk(PerkLib.RacialParagon)) damage *= combat.RacialParagonAbilityBoost();
 		monster.teased(Math.round(monster.lustVuln * damage));
         if (crit) outputText(" <b>Critical!</b>");
+		if (player.hasPerk(PerkLib.ToxicMucus)) SceneLib.combat.effectToxicMucus();
         SceneLib.combat.teaseXP(1 + SceneLib.combat.bonusExpAfterSuccesfullTease());
     }
     //Nuttin honey

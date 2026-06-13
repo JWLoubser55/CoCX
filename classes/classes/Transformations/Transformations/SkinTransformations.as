@@ -133,6 +133,26 @@ public class SkinTransformations extends MutationsHelper {
 			}
 	);
 
+	public const SkinMucus: Transformation = new SimpleTransformation("Mucus Skin",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+				player.skinColor1 = "black";
+				player.skinColor2 = randomChoice("green", "yellow", "blue", "red");
+
+				desc += "You begin sweating profusely. Thinking that you are due for a bath you take a dip in the nearby stream. To your absolute annoyance no matter how your try the layer of mucus on your skin simply does not want to go. You suspect there's more to this mucus then just keeping your skin from drying up. <b>Seems your skin is now covered with mucus like that of a frog. (Unlock toxic mucus)</b>";
+				desc += "[pg]Wow your skin is suddenly changing color. You watch as [skin color1] and [skin color2] patterns appear along with a white underbelly. <b>Seems you really fully look like a frog now.</b>";
+
+				if (doOutput) outputText(desc);
+				player.skin.setBaseOnly({ type: Skin.MUCUS, adj: "mucus dripping", desc: "skin" });
+				Metamorph.unlockMetamorph(SkinMem.getMemory(SkinMem.MUCUS));
+			},
+			// is present
+			function (): Boolean {
+				return player.skinType === Skin.MUCUS && player.skin.coverage == Skin.COVERAGE_NONE;
+			}
+	);
+
 	/**
 	 * @param options = {color/colors,color2/colors2,pattern,adj,desc}
 	 */

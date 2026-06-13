@@ -4868,6 +4868,8 @@ public class PerkLib
 				"You are five times taller than your effective base size.");
 		public static const TouchOfTheDamned:PerkType = mk("Touch of the Damned", "Touch of the Damned",
 				"All unarmed attacks and natural weapons: inflicts acid damage for 3 turns. This acid damage stacks on top of other acid attacks and DOTs. (5% / 15% of foes Total hp) Also generate soulforce equivalent to 5% / 15% of damage done to foe and fill satiety by 1 / 3.");
+		public static const ToxicMucus:PerkType = mk("Toxic mucus", "Toxic mucus",
+				"Unarmed strikes, straddle and grapple smear some of your mucus on your opponent weakening their strength, speed, tease resistance and arousing it each time.");
 		public static const ToxicRomance:PerkType = mk("Toxic Romance", "Toxic Romance",
 				"Grapples/Tease attacks/Whip attack/Throws receive 35% increase in damage to foes affected by Acid dot.");
 		public static const TransformationAcclimation:PerkType = mk("Transformation Acclimation", "Transformation Acclimation",

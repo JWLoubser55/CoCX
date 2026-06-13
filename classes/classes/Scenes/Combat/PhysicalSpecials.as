@@ -4982,6 +4982,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					}
 				}
 				doPlayerPhysDamage(damage, true, true);
+				if (player.hasPerk(PerkLib.ToxicMucus)) SceneLib.combat.effectToxicMucus();
 			}
 		}
 		//Failure
@@ -5055,6 +5056,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 					}
 				}
 				doPlayerPhysDamage(damage, true, true);
+				if (player.hasPerk(PerkLib.ToxicMucus)) SceneLib.combat.effectToxicMucus();
 			}
 		}
 		//Failure

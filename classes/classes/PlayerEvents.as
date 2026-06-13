@@ -2818,6 +2818,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 			needNext = player.gainOrLosePerk(PerkLib.QueenOfTheFairies, player.isRaceCached(Races.FAIRY, 2), "You sense a change in yourself, a faint calling from the forest. "+PerkLib.QueenOfTheFairies.desc()) || needNext;
 			needNext = player.gainOrLosePerk(PerkLib.WhatIsReality, player.isRaceCached(Races.CHESHIRE), "You gain a sense of invulnerability as you are now an Cheshire.", "You lose your sense of invulnerability as you are no longer an Cheshire.") || needNext;
 			needNext = player.gainOrLosePerk(PerkLib.VorpalClaw, player.isRaceCached(Races.CHESHIRE)) || needNext;
+			needNext = player.gainOrLosePerk(PerkLib.ToxicMucus, player.hasMucusSkin()) || needNext;
 			//Gain venomancy if utterly toxic
 			needNext = player.gainPerk(PerkLib.Venomancy, player.isRaceCached(Races.APOPHIS) && player.cor > 50, "Your inborn toxicity has reached such a peak that even your spells are now charged with venom.") || needNext;
 			needNext = player.losePerk(PerkLib.Venomancy, !player.isRaceCached(Races.APOPHIS) && player.cor < 89, "Your mystical powers over poison and toxins have waned.") || needNext;
