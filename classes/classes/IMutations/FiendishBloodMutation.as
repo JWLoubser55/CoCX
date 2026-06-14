@@ -58,7 +58,7 @@ public class FiendishBloodMutation extends IMutationPerkType
 
         public function FiendishBloodMutation() 
 		{
-			super(MNAME, SLOT_BLOODSTREAM, 1);
+			super(MNAME, SLOT_BLOODSTREAM, 2);
         }
         
     }

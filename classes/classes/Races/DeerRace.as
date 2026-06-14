@@ -70,7 +70,7 @@ public class DeerRace extends Race{
 				.biggestTitSize(GREATER_THAN(4), +1);
 		
 		addBloodline(PerkLib.DeersDescendant, PerkLib.BloodlineDeer);
-		addMutation(IMutationsLib.TwinHeartIM);
+		addMutation(IMutationsLib.TwinHeartIM, +2);
 		addMutation(IMutationsLib.MightyLegsIM);
 		addMutation(IMutationsLib.FrozenHeartIM);
 		addMutation(IMutationsLib.EquineMuscleIM);

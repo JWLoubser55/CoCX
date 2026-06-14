@@ -57,9 +57,9 @@ public class SandWormRace extends Race {
 				.legType(LowerBody.SANDWORM, +9)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 
-		addMutation(IMutationsLib.TrachealSystemIM);
-		addMutation(IMutationsLib.TwinHeartIM, +2);
-		addMutation(IMutationsLib.PoisonGlandIM);
+		addMutation(IMutationsLib.TrachealSystemIM, +3);
+		addMutation(IMutationsLib.TwinHeartIM, +6);
+		addMutation(IMutationsLib.PoisonGlandIM, +3);
 
 		buildTier(23, "sand worm")
 				.requireLegType(LowerBody.SANDWORM)

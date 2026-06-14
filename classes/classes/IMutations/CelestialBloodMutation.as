@@ -58,7 +58,7 @@ public class CelestialBloodMutation extends IMutationPerkType
 
         public function CelestialBloodMutation() 
 		{
-			super(MNAME, SLOT_BLOODSTREAM, 1);
+			super(MNAME, SLOT_BLOODSTREAM, 2);
         }
         
     }

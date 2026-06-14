@@ -260,8 +260,8 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Diagonal Mind (Primitive). Req. Diagonal Mind and lvl 30+. Effects: When you deny defeat by damage you instead take 40% less lust damage as a recoil. Increase the duration of everywhere and nowhere by 2 rounds.\n");
 			outputText("-Werewolf pity system made Cerberus jealous and demanded to have pity system too so it finaly got it (seems that 50% chance to beat hellhound into joining pack was still not enough to get any of them).\n");
 			outputText("-New event perk: Toxic mucus. Gained by using having mucus dripping skin. Effects: Unarmed strikes, straddle and grapple smear some of your mucus on your opponent weakening their strength, speed, tease resistance and arousing it each time.\n");
-			//outputText("-New mutation perk: Fiendish Blood (Primitive). Req. Fiendish Blood and lvl 30+. Effects: Increase mana regeneration by 100% of its total regeneration rate but double spell cost. While Mana is above 40% Increase spell damage by 50%.\n");
-			//outputText("-New mutation perk: Celestial Blood (Primitive). Req. Celestial Blood and lvl 30+. Effects: Increase mana regeneration by 100% of its total regeneration rate but double spell cost. While Mana is above 40% Increase spell damage by 50%.\n");
+			outputText("-New mutation perk: Fiendish Blood (Primitive). Req. Fiendish Blood and lvl 30+. Effects: Increase mana regeneration by 100% of its total regeneration rate but double spell cost. While Mana is above 40% Increase spell damage by 50%.\n");
+			outputText("-New mutation perk: Celestial Blood (Primitive). Req. Celestial Blood and lvl 30+. Effects: Increase mana regeneration by 100% of its total regeneration rate but double spell cost. While Mana is above 40% Increase spell damage by 50%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
