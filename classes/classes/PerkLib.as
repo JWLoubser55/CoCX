@@ -4402,15 +4402,15 @@ public class PerkLib
 		public static const HclassHeavenTribulationSurvivor:PerkType = mk("H class Heaven Tribulation Survivor", "H class Heaven Tribulation Survivor",
 				"You have survived the first trial on cultivation path: H class Heaven Tribulation. +10% to all stats multi.").withBuffs({'str.mult':0.10,'tou.mult':0.10,'spe.mult':0.10,'int.mult':0.10,'wis.mult':0.10,'lib.mult':0.10,'sens':50}, false);
 		public static const HeartforceHEApprenticeStage:PerkType = mk("Heartforce (HE): Apprentice Stage", "Heartforce (HE): Apprentice Stage",
-				"You've reached the first stage of Heartforce path. (+50% m.soulskill power, -10% soulskills cost, +50 max SF at S.Apprentice, S.Personage, S.Warrior stages; +0.5% Soulforce regen)");
+				"You've reached the first stage of Heartforce path. (+5% psychic resistance at S.Apprentice, S.Personage, S.Warrior stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks (caps at 25%))");
 		public static const HeartforceHEElderStage:PerkType = mk("Heartforce (HE): Elder Stage", "Heartforce (HE): Elder Stage",
-				"You've reached the third stage of Heartforce path. (+150% m.soulskill power, -10% soulskills cost, +200 max SF at S.Elder, S.Exalt, S.Overlord stages; +0.5% Soulforce regen)");
+				"You've reached the third stage of Heartforce path. (+15% psychic resistance at S.Elder, S.Exalt, S.Overlord stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks)");
 		public static const HeartforceHEOverlordStage:PerkType = mk("Heartforce (HE): Overlord Stage", "Heartforce (HE): Overlord Stage",
-				"You've reached the fourth stage of Heartforce path. (+200% m.soulskill power, -10% soulskills cost, +300 max SF at S.Tyrant, S.King, S.Emperor stages; +0.5% Soulforce regen)");
+				"You've reached the fourth stage of Heartforce path. (+20% psychic resistance at S.Tyrant, S.King, S.Emperor stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks (doubled bonus from excess resistance))");
 		public static const HeartforceHETyrantStage:PerkType = mk("Heartforce (HE): Tyrant Stage", "Heartforce (HE): Tyrant Stage",
 				"You've reached the fifth stage of Heartforce path. (+250% m.soulskill power, +70 max SF at S.Ancestor, S.Sage stages; +0.5% Soulforce regen)");
 		public static const HeartforceHEWarriorStage:PerkType = mk("Heartforce (HE): Warrior Stage", "Heartforce (HE): Warrior Stage",
-				"You've reached the second stage of Heartforce path. (+100% m.soulskill power, +100 max SF at S.Sprite, S.Scholar, S.Grandmaster stages; +0.5% Soulforce regen)");
+				"You've reached the second stage of Heartforce path. (+10% psychic resistance at S.Sprite, S.Scholar, S.Grandmaster stages; any excess psychic resistance above 100% would be turned into bonus % dmg to psychic attacks (caps at 100%))");
 
 		public static const SoulAncestor:PerkType = mk("Soul Ancestor", "Soul Ancestor",
 				"You have reached 13th stage of soul cultivation. (+66 max Hunger, +750 max SF at lvl 126, 129, 132, 135, 138; +30% to max SF)")
