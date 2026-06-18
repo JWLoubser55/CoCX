@@ -18,10 +18,12 @@ public class FiendishBloodMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+			var below:Number = 50;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
+			if (pTier >= 4) below -= 25;
             if (pTier >= 1) descS += "Increase mana regeneration by "+(pTier*5)+"0% of its total regeneration rate but double spell cost";
 			if (pTier >= 2) descS += ". While Mana is above "+(5-pTier)+"0% Increase spell damage by "+((pTier-1)*5)+"0%";
-            if (pTier >= 3) descS += ". You gain regeneration "+(pTier-2)+"%";
+            if (pTier >= 3) descS += ". While mana is above "+below+"% increase health regeneration by "+(pTier-2)+"%";
             if (pTier >= 4) descS += ". You recover from all stat damage except intelligence / libido every full moon night";
             if (descS != "")descS += ".";
             return descS;
@@ -58,7 +60,7 @@ public class FiendishBloodMutation extends IMutationPerkType
 
         public function FiendishBloodMutation() 
 		{
-			super(MNAME, SLOT_BLOODSTREAM, 2);
+			super(MNAME, SLOT_BLOODSTREAM, 3);
         }
         
     }

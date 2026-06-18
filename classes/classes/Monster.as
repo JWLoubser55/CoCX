@@ -3667,9 +3667,10 @@ import flash.utils.getQualifiedClassName;
 			if (this.mana > maxOverMana()) this.mana = maxMana();
 			//health, soulforce and mana regeneration for monsters
 			if (((hasPerk(PerkLib.Regeneration) || hasPerk(PerkLib.LizanRegeneration) || hasPerk(PerkLib.LustyRegeneration) || perkv1(IMutationsLib.LizanMarrowIM) >= 1 || perkv1(IMutationsLib.DrakeHeartIM) >= 3 || perkv1(IMutationsLib.DrakeBloodIM) >= 1 || perkv1(IMutationsLib.FerasBirthrightIM) >= 1 || perkv1(IMutationsLib.HydraBloodIM) >= 1
-			|| perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 || hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodyFoMApprenticeStage) || hasPerk(PerkLib.FleshBodySoDApprenticeStage) || hasPerk(PerkLib.FleshBodyVoLApprenticeStage) || hasPerk(PerkLib.FleshBodyApprenticeStage) || hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration)
-			|| hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline) || hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor) || hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor)
-			|| hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor) || hasStatusEffect(StatusEffects.PostfluidIntakeRegen) || hasStatusEffect(StatusEffects.MonsterRegen) || hasStatusEffect(StatusEffects.MonsterRegen2) || hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP())
+			|| perkv1(IMutationsLib.FiendishBloodIM) >= 3 || perkv1(IMutationsLib.CelestialBloodIM) >= 3 || perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 || hasPerk(PerkLib.EnemyPlantType) || hasPerk(PerkLib.FleshBodyFoMApprenticeStage) || hasPerk(PerkLib.FleshBodySoDApprenticeStage) || hasPerk(PerkLib.FleshBodyVoLApprenticeStage) || hasPerk(PerkLib.FleshBodyApprenticeStage)
+			|| hasPerk(PerkLib.MonsterRegeneration) || hasPerk(PerkLib.HydraRegeneration) || hasPerk(PerkLib.TrollRegeneration) || hasPerk(PerkLib.Lifeline) || hasPerk(PerkLib.ImprovedLifeline) || hasPerk(PerkLib.GreaterLifeline) || hasPerk(PerkLib.EpicLifeline) || hasPerk(PerkLib.IcyFlesh) || hasPerk(PerkLib.HclassHeavenTribulationSurvivor)
+			|| hasPerk(PerkLib.GclassHeavenTribulationSurvivor) || hasPerk(PerkLib.FclassHeavenTribulationSurvivor)	|| hasPerk(PerkLib.FFclassHeavenTribulationSurvivor) || hasPerk(PerkLib.EclassHeavenTribulationSurvivor) || hasStatusEffect(StatusEffects.PostfluidIntakeRegen) || hasStatusEffect(StatusEffects.MonsterRegen) || hasStatusEffect(StatusEffects.MonsterRegen2)
+			|| hasPerk(PerkLib.EnemyTrueAngel) || hasPerk(PerkLib.EnemyTrueDemon)) && this.HP < maxOverHP())
 			|| (hasStatusEffect(StatusEffects.MonsterVPT) && (this.HP < maxOverHP()) && (this.HP > minHP()))) {
 				var healingPercent:Number = 0;
 				var temp2:Number = 0;
@@ -3708,6 +3709,14 @@ import flash.utils.getQualifiedClassName;
 				if (hasStatusEffect(StatusEffects.CrinosShape) && hasPerk(PerkLib.ImprovingNaturesBlueprintsApexPredator)) {
 					if (perkv1(IMutationsLib.FerasBirthrightIM) >= 3) healingPercent += 2;
 					healingPercent += 2;
+				}
+				if (perkv1(IMutationsLib.FiendishBloodIM) >= 3 && mana100 >= 50) {
+					if (perkv1(IMutationsLib.FiendishBloodIM) >= 4 && mana100 >= 25) healingPercent += 2;
+					else healingPercent += 1;
+				}
+				if (perkv1(IMutationsLib.CelestialBloodIM) >= 3 && mana100 >= 50) {
+					if (perkv1(IMutationsLib.CelestialBloodIM) >= 4 && mana100 >= 25) healingPercent += 2;
+					else healingPercent += 1;
 				}
 				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1) healingPercent += perkv1(IMutationsLib.HumanThyroidGlandIM);
 				if (hasStatusEffect(StatusEffects.PostfluidIntakeRegen)) healingPercent += 1 * (perkv1(IMutationsLib.SlimeMetabolismIM)-2);
@@ -5429,4 +5438,4 @@ import flash.utils.getQualifiedClassName;
 		}
 	}
 
-}
+}

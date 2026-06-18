@@ -15398,6 +15398,14 @@ public class Combat extends BaseContent {
 			maxPercentRegen -= player.perkv1(IMutationsLib.CaveWyrmAcidIM);
 			if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 3) maxPercentRegen -= (player.perkv1(IMutationsLib.CaveWyrmAcidIM) - 2);
 		}
+		if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 3 && player.mana100 >= 50) {
+			if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 4 && player.mana100 >= 25) maxPercentRegen += 2;
+			else maxPercentRegen += 1;
+		}
+		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 3 && player.mana100 >= 50) {
+			if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 4 && player.mana100 >= 25) maxPercentRegen += 2;
+			else maxPercentRegen += 1;
+		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxPercentRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
 			var hshim1:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
@@ -15514,6 +15522,14 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.FerasBirthrightIM) >= 4) maxRegen += 10;
 		}
 		if (player.perkv1(IMutationsLib.WendigoMetabolismIM) >= 1) maxRegen += (1 + player.perkv1(IMutationsLib.WendigoMetabolismIM));
+		if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 3 && player.mana100 >= 50) {
+			if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 4 && player.mana100 >= 25) maxRegen += 2;
+			else maxRegen += 1;
+		}
+		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 3 && player.mana100 >= 50) {
+			if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 4 && player.mana100 >= 25) maxRegen += 2;
+			else maxRegen += 1;
+		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
 			var hshim2:Number = (1 + player.perkv1(IMutationsLib.HumanSecondaryHeartIM));
