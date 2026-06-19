@@ -21,10 +21,10 @@ public class CelestialBloodMutation extends IMutationPerkType
 			var below:Number = 50;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
 			if (pTier >= 4) below -= 25;
-            if (pTier >= 1) descS += "Increase mana regeneration by "+(pTier*5)+"0% of its total regeneration rate but double spell cost";
-			if (pTier >= 2) descS += ". While Mana is above "+(5-pTier)+"0% Increase spell damage by "+((pTier-1)*5)+"0%";
-            if (pTier >= 3) descS += ". While mana is above "+below+"% increase health regeneration by "+(pTier-2)+"%";
-            if (pTier >= 4) descS += ". While Mana is at 75% or above, spell total damage is Increased by 100%";
+            if (pTier >= 1) descS += "Increase mana regeneration by "+(pTier*10)+"0% of its total regeneration rate but double spell cost";
+			if (pTier >= 2) descS += ". While Mana is above "+(5-pTier)+"0% increase spellpower by "+pTier+"x";
+            if (pTier >= 3) descS += ". While mana is above "+below+"% increase health regeneration by "+((pTier-2)*2)+"%";
+			if (pTier >= 4) descS += ". While Mana is at 75% or above, spell total damage is increased by 200%";
             if (descS != "")descS += ".";
             return descS;
         }

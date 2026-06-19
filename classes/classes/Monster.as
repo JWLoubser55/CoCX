@@ -3715,8 +3715,8 @@ import flash.utils.getQualifiedClassName;
 					else healingPercent += 1;
 				}
 				if (perkv1(IMutationsLib.CelestialBloodIM) >= 3 && mana100 >= 50) {
-					if (perkv1(IMutationsLib.CelestialBloodIM) >= 4 && mana100 >= 25) healingPercent += 2;
-					else healingPercent += 1;
+					if (perkv1(IMutationsLib.CelestialBloodIM) >= 4 && mana100 >= 25) healingPercent += 4;
+					else healingPercent += 2;
 				}
 				if (perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1) healingPercent += perkv1(IMutationsLib.HumanThyroidGlandIM);
 				if (hasStatusEffect(StatusEffects.PostfluidIntakeRegen)) healingPercent += 1 * (perkv1(IMutationsLib.SlimeMetabolismIM)-2);

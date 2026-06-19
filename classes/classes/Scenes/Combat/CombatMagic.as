@@ -244,8 +244,6 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DiabolicMindIM) >= 1 && player.lust > Math.round(player.maxLust() * (0.8 - (0.1 * player.perkv1(IMutationsLib.DiabolicMindIM))))) mod += (0.5 * player.perkv1(IMutationsLib.DiabolicMindIM));
 		if (player.perkv1(IMutationsLib.DiamondMindIM) >= 1 && player.lust < Math.round(player.maxLust() * (0.4 + (0.1 * player.perkv1(IMutationsLib.DiamondMindIM))))) mod += (0.5 * player.perkv1(IMutationsLib.DiamondMindIM));
 		if (player.perkv1(IMutationsLib.DrakeBloodIM) >= 3) mod += (0.25 * (player.perkv1(IMutationsLib.DrakeBloodIM) - 2));
-		if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 2 && player.mana100 > (40 - (10 * (player.perkv1(IMutationsLib.FiendishBloodIM) - 2)))) mod += (0.5 * (player.perkv1(IMutationsLib.FiendishBloodIM) - 1));
-		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 2 && player.mana100 > (40 - (10 * (player.perkv1(IMutationsLib.CelestialBloodIM) - 2)))) mod += (0.5 * (player.perkv1(IMutationsLib.CelestialBloodIM) - 1));
 		if (player.countCockSocks("blue") > 0) mod += (player.countCockSocks("blue") * .05);
         if (player.hasPerk(PerkLib.ChiReflowMagic)) mod += UmasShop.NEEDLEWORK_MAGIC_SPELL_MULTI;
 		// hope it doesn't lag too much
@@ -255,6 +253,8 @@ public class CombatMagic extends BaseCombatContent {
 	    for each (var f:ItemEffect in player.allItemEffects(IELib.Spellpower_RaceX2)) {
 		    mod += f.power * (player.isRaceCached(f.value1 as Race) ? 2 : 1) / 100;
 	    }
+		if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 2 && player.mana100 > (40 - (10 * (player.perkv1(IMutationsLib.FiendishBloodIM) - 2)))) mod *= (1 + (0.5 * (player.perkv1(IMutationsLib.FiendishBloodIM) - 1)));
+		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 2 && player.mana100 > (40 - (10 * (player.perkv1(IMutationsLib.CelestialBloodIM) - 2)))) mod *= player.perkv1(IMutationsLib.CelestialBloodIM);
         return mod;
     }
 

@@ -253,7 +253,7 @@ public class AbstractSpell extends CombatAbility {
 		
 		damage *= spellModByCat(category);
 		if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 4 && player.mana100 > 75) damage *= 2;
-		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 4 && player.mana100 > 75) damage *= 2;
+		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 4 && player.mana100 > 75) damage *= 3;
 		
 		switch (damageType) {
 			case DamageType.GENERIC: {

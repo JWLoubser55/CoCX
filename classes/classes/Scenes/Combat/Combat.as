@@ -15403,8 +15403,8 @@ public class Combat extends BaseContent {
 			else maxPercentRegen += 1;
 		}
 		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 3 && player.mana100 >= 50) {
-			if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 4 && player.mana100 >= 25) maxPercentRegen += 2;
-			else maxPercentRegen += 1;
+			if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 4 && player.mana100 >= 25) maxPercentRegen += 4;
+			else maxPercentRegen += 2;
 		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxPercentRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
@@ -15527,8 +15527,8 @@ public class Combat extends BaseContent {
 			else maxRegen += 1;
 		}
 		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 3 && player.mana100 >= 50) {
-			if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 4 && player.mana100 >= 25) maxRegen += 2;
-			else maxRegen += 1;
+			if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 4 && player.mana100 >= 25) maxRegen += 4;
+			else maxRegen += 2;
 		}
 		if (player.perkv1(IMutationsLib.HumanThyroidGlandIM) >= 1 && player.racialScore(Races.HUMAN) > 17) maxRegen += player.perkv1(IMutationsLib.HumanThyroidGlandIM);
 		if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) {
@@ -15921,7 +15921,7 @@ public class Combat extends BaseContent {
 		}
 		if (player.perkv1(IMutationsLib.ChameleonSkinIM) >= 4 && monster.hasStatusEffect(StatusEffects.Camouflage)) multi *= 2;
 		if (player.perkv1(IMutationsLib.FiendishBloodIM) >= 1) multi *= (1 + (0.5 * player.perkv1(IMutationsLib.FiendishBloodIM)));
-		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 1) multi *= (1 + (0.5 * player.perkv1(IMutationsLib.CelestialBloodIM)));
+		if (player.perkv1(IMutationsLib.CelestialBloodIM) >= 1) multi *= (1 + player.perkv1(IMutationsLib.CelestialBloodIM));
         return multi;
     }
 
@@ -21770,4 +21770,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}
