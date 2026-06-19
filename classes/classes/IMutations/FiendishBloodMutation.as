@@ -24,7 +24,7 @@ public class FiendishBloodMutation extends IMutationPerkType
             if (pTier >= 1) descS += "Increase mana regeneration by "+(pTier*5)+"0% of its total regeneration rate but double spell cost";
 			if (pTier >= 2) descS += ". While Mana is above "+(5-pTier)+"0% Increase spell damage by "+((pTier-1)*5)+"0%";
             if (pTier >= 3) descS += ". While mana is above "+below+"% increase health regeneration by "+(pTier-2)+"%";
-            if (pTier >= 4) descS += ". You recover from all stat damage except intelligence / libido every full moon night";
+            if (pTier >= 4) descS += ". While Mana is at 75% or above, spell total damage is Increased by 100%";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -60,7 +60,7 @@ public class FiendishBloodMutation extends IMutationPerkType
 
         public function FiendishBloodMutation() 
 		{
-			super(MNAME, SLOT_BLOODSTREAM, 3);
+			super(MNAME, SLOT_BLOODSTREAM, 4);
         }
         
     }

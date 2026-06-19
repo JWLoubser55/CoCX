@@ -264,8 +264,8 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Celestial Blood (Primitive). Req. Celestial Blood and lvl 30+. Effects: Increase mana regeneration by 100% of its total regeneration rate but double spell cost. While Mana is above 40% Increase spell damage by 50%.\n");
 			outputText("-New mutation perk: Fiendish Blood (Evolved). Req. Fiendish Blood (Primitive) and lvl 60+. Effects: Increase mana regeneration by 150% of its total regeneration rate but double spell cost. While Mana is above 30% Increase spell damage by 100%. While mana is above 50% increase health regeneration by 1%.\n");
 			outputText("-New mutation perk: Celestial Blood (Evolved). Req. Celestial Blood (Primitive) and lvl 60+. Effects: Increase mana regeneration by 150% of its total regeneration rate but double spell cost. While Mana is above 30% Increase spell damage by 100%. While mana is above 50% increase health regeneration by 1%.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Fiendish Blood (Final Form). Req. Fiendish Blood (Evolved) and lvl 90+. Effects: Increase mana regeneration by 200% of its total regeneration rate but double spell cost. While Mana is above 20% Increase spell damage by 150%. While mana is above 25% increase health regeneration by 2%. While Mana is at 75% or above, spell total damage is Increased by 100%.\n");
+			outputText("-New mutation perk: Celestial Blood (Final Form). Req. Celestial Blood (Evolved) and lvl 90+. Effects: Increase mana regeneration by 200% of its total regeneration rate but double spell cost. While Mana is above 20% Increase spell damage by 150%. While mana is above 25% increase health regeneration by 2%. While Mana is at 75% or above, spell total damage is Increased by 100%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
