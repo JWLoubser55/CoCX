@@ -187,6 +187,7 @@ public class UniqueSexScenes extends BaseContent
 				USSAnubiMummyCurse(),
 				USSHollowSouldrainingHumanoids(),
 				USSHollowSouleatingHumanoids(),
+				USSFemalesLayEggs(),
 				USSTrueDemonSuccubusFeast(),
 				USSTrueDemonIncubusFeast()];
 
@@ -458,6 +459,18 @@ public class UniqueSexScenes extends BaseContent
 		private function HollowNotWrongEnemyType():Boolean{
 			return (!monster.hasPerk(PerkLib.UniqueNPC) && !monster.hasPerk(PerkLib.EnemyBeastOrAnimalMorphType) && !monster.hasPerk(PerkLib.EnemyConstructType) && !monster.hasPerk(PerkLib.EnemyElementalType) && !monster.hasPerk(PerkLib.EnemyFleshConstructType)
 				 && !monster.hasPerk(PerkLib.EnemyGroupType) && !monster.hasPerk(PerkLib.EnemyLargeGroupType) && !monster.hasPerk(PerkLib.Enemy300Type) && !monster.hasPerk(PerkLib.Soulless) && !monster.hasPerk(PerkLib.EnemyTrueDemon));
+		}
+		private function USSFemalesLayEggs():Array{
+			var btnSet:Array = ["Lay Eggs"];
+			if (FemalesLayEggsNotWrongEnemyType()) {
+				if (player.hasPerk(PerkLib.EggCarrier) && player.canOvipositFrog()) btnSet.push(FemalesLayEggs, "Lay Eggs in your foe.");
+				btnSet.push(false, "You need to have Egg Carrier perk and have 10+ eggs.");
+			}
+			else btnSet.push(false, "Req. enemy to be female.");
+			return btnSet;
+		}
+		private function FemalesLayEggsNotWrongEnemyType():Boolean{
+			return monster.hasVagina();
 		}
         private function USSTrueDemonSuccubusFeast():Array{
             var btnSet:Array = ["Succubus Feast"];
@@ -1120,6 +1133,25 @@ public class UniqueSexScenes extends BaseContent
 			}
 		}
 
+		public function FemalesLayEggs():void {
+			clearOutput();
+			outputText("You’re heavy with an urgent, egg-laden ache deep in your belly and a low, throbbing pressure that’s been building for hours. The egg cargo inside you shifts as you move, a soft, squishy mass demanding release. And you know exactly how to unload it.\n\n");
+			outputText("You sing a happy nursery rhyme as you approach your would-be incubator, but your voice carries a hidden resonance, a hypnotic undertone that slithers into your victim's ears like honey. You smile warmly, stepping toward them with a slow, rolling sway of your hips. Your body gleaming with slick, mucus, already seeping from every pore.\n\n");
+			outputText("[Themonster] is still breathing hard from the fight, muscles trembling, eyes wide and wary as you walk toward them with ill intent. Normally they’d at least try and struggle but thanks to your hypnotic song that's about to change. Their resistance crumbles within seconds and their body relaxes with the telltale sign of compliance. Eager to get down to business you reach out, pulling them into your embrace. Your skin meets theirs, and the first point of contact triggers an instant reaction: ");
+			outputText("a shiver runs through their body as your aphrodisiac-laden mucus starts working against their bare flesh. You pull them into a deep kiss, your tongue sliding against theirs as your body coats them with your slick, aphrodisiac laden frog sweat.\n\n");
+			outputText("Your hands roam, spreading the mucus across their shoulders, down their back, over their "+monster.breastDescript(0)+" and thighs. [Themonster] moans into your mouth, their body melting against yours. Your legs part, and you press your slimy, swollen pussy against their equally slick, dripping cunt. The contact is smooth, wet, and impossibly hot. You grind together, your clits rubbing through the wetness, your hips rocking together. ");
+			outputText("You don’t need hypnosis support anymore since your opponent is completely lost in pleasure now, eyes rolled back, mouth slacking and drooling as your aphrodisiacs flood their system. The world must look like a swirling kaleidoscope of colors to them.\n\n");
+			outputText("You let out a low moan as you feel the first egg slide forward, pushing down your love canal. You push, and it slips out of you, sliding through your parted folds and into your opponent's gaping, ready cunt. They gasp, their body arching, as the egg settles deep inside them. Another follows, and another. Each one leaves you slightly lighter. You thrust your hips forward with each transfer, your gushing pussy sending each egg to their new home. ");
+			outputText("Your opponent clings to you for dear life, trembling and moaning, their cunt clenching around each new sticky soft frog egg you let out.\n\n");
+			outputText("Finally you feel the last egg go past your gaping lips. You moan, pushing hard, and it pops out, sliding into your opponent's overflowing cunt. The release hits you like a wave: your orgasm crashes through you, your pussy spasm around nothing, gushing a final torrent of slick mucus against your opponent's thighs. ");
+			outputText("They convulse too, climaxing from the pressure and the aphrodisiac, their pussy milking your last egg deeper inside them. You hold them for a moment longer, breathing hard, your bodies glistening and sticky. Then you pull back, looking down at them as they crumple to the ground, still twitching, still soaked, their belly now subtly rounded with your egg load.\n\n");
+			outputText("You give [themonster] a final glance before heading out. This is not your problem anymore. With your eggs duty dumped onto someone else you can go back to adventuring with peace of mind though maybe you should feel ashamed as a mother for your somewhat lackluster parenting.\n\n");
+			player.statStore.replaceBuffObject({'lib': Math.round(player.lib * 0.2)}, 'EggCarrier', { text: 'Egg Carrier' });
+			player.dumpEggs();
+			player.sexReward("vaginalFluids","Default",true,false);
+			cleanupAfterCombat();
+		}
+
 		public function trueDemonSuccubusFeast():void {
 			clearOutput();
 			outputText("You eye [themonster]'s " + monster.cockDescriptShort() + " with a hungry smile, licking your lips. You can practically feel it in your drooling demon-twat already...but first, you need to establish your dominion. Your hand lifts [themonster]'s chin to stare into your eyes, and you feel [monster his] " + monster.cockDescriptShort() + " lift and aim for your [vagina] automatically.\n\n");
@@ -1228,4 +1260,4 @@ public class UniqueSexScenes extends BaseContent
 			!monster.hasPerk(PerkLib.EnemyLargeGroupType) && !monster.hasPerk(PerkLib.EnemyTrueDemon) && !monster.hasPerk(PerkLib.EnemyUndeadType) && !monster.hasPerk(PerkLib.UniqueNPC));
 		}
 }
-}
+}

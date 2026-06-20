@@ -4583,6 +4583,8 @@ public class PerkLib
 				"You have high resistance to earth effects, and mastery over earth abilities and magic.");
 		public static const EasterBunnyBalls:PerkType = mk("Easter bunny balls", "Easter bunny balls",
 				"Your balls constantly grows until emptied through your cock, producing eggs.");
+		public static const EggCarrier:PerkType = mk("Egg Carrier", "Egg Carrier",
+				"Regularly go pregnant with eggs which must be fertilised. Eggs must then be carried to maturity or transferred to a surrogate mother. Transferring the eggs or giving birth grants a libido bonus.");
 		public static const ElectrifiedDesire:PerkType = mk("Electrified Desire", "Electrified Desire",
 				"Masturbating only makes you hornier. Furthermore, your ability to entice, tease and zap things is enhanced the more horny you are.");
 		public static const ElementalConjurerMindAndBodyDedication:PerkType = mk("Elemental Conjurer Mind and Body Dedication", "Elemental Conjurer Mind and Body Dedication",
@@ -5120,6 +5122,14 @@ public class PerkLib
 				"When slaying or purifying demons their corrupted power is purified and sent back to you.");
 		public static const RagingInfernoMastered:PerkType = mk("Raging Inferno (Mastered)", "Raging Inferno (Mastered)",
 				"Cumulative 120% damage increase for every subsequent fire spell. Each turn without cast fire spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling fire based attack. Maximum 50 stacks. (+140% spellpower bonus)");
+		public static const RampagingBunnyStyleHipDestroyer:PerkType = mk("Rampaging Bunny Style: Hip Destroyer", "Rampaging Bunny Style: Hip Destroyer",
+				".");
+		public static const RampagingBunnyStyleHyperdrive:PerkType = mk("Rampaging Bunny Style: Hyperdrive", "Rampaging Bunny Style: Hyperdrive",
+				".");
+		public static const RampagingBunnyStyleLewdStrikes:PerkType = mk("Rampaging Bunny Style: Lewd Strikes", "Rampaging Bunny Style: Lewd Strikes",
+				".");
+		public static const RampagingBunnyStyleTeasingAttack:PerkType = mk("Rampaging Bunny Style: Teasing Attack", "Rampaging Bunny Style: Teasing Attack",
+				".");
 		public static const RumblingQuakeMastered:PerkType = mk("Rumbling Quake (Mastered)", "Rumbling Quake (Mastered)",
 				"Cumulative 120% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling earth based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const SageMedicine:PerkType = mk("Sage Medicine", "Sage Medicine",
@@ -9670,4 +9680,4 @@ public class PerkLib
 	}
 }
 
-}
+}

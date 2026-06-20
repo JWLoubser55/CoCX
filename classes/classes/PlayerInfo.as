@@ -1277,6 +1277,9 @@ public class PlayerInfo extends BaseContent {
 		if (flags[kFLAGS.ELDEST_GOBLIN_DAUGHTER] != "")
 			childStats += "<b>Eldest goblin name:</b> " + flags[kFLAGS.ELDEST_GOBLIN_DAUGHTER] + "\n";
 
+		if (flags[kFLAGS.FROG_KIDS] > 0)
+			childStats += "<b>[name] frog tadpoles:</b> " + flags[kFLAGS.FROG_KIDS] + "\n";
+
 		if (flags[kFLAGS.AMILY_MET] > 0)
 			childStats += "<b>Litters With Amily:</b> " + (flags[kFLAGS.AMILY_BIRTH_TOTAL] + flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS]) + "\n";
 
@@ -3070,4 +3073,4 @@ public class PlayerInfo extends BaseContent {
 		doNext(superPerkBuyMenu, 6);
 	}
 }
-}
+}

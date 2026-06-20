@@ -2857,6 +2857,12 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 				player.createPerk(PerkLib.HarpyQueen,0,0,0,0);
 				needNext = true;
 			}
+			if(!player.hasPerk(PerkLib.EggCarrier) && player.racialScore(Races.FROG, false) >= 10){
+				outputText("\nAs you become more frog-like, something shifts deep within your guts. You can feel it, the slow accumulation of eggs awaiting fertilisation." +
+						" <b>Like a frog you will now have to fertilise and carry your eggs to term as you gained the Egg Carrier perk.</b>\n");
+				player.createPerk(PerkLib.EggCarrier,0,0,0,0);
+				needNext = true;
+			}
 
 			//Levitation wing slot
 			if (player.wings.type == Wings.LEVITATION && player.rearBody.type != RearBody.GLACIAL_AURA && player.lowerBody != LowerBody.WENDIGO && player.lowerBody != LowerBody.GAZER && player.lowerBody != LowerBody.LICH) {
@@ -3115,7 +3121,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
-			if (player.hasPerk(PerkLib.SpiderOvipositor) || (player.hasPerk(PerkLib.BeeOvipositor) && !player.hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) || player.hasPerk(PerkLib.MantisOvipositor) || player.hasPerk(PerkLib.AntOvipositor) || player.hasPerk(PerkLib.MothOvipositor)) { //Spider, Bee, Mantis, Ant and Moth ovipositor updates
+			//Spider, Bee, Mantis, Ant and Moth ovipositor updates + Frog/Mobogo egg carrier updates
+			if (player.hasPerk(PerkLib.SpiderOvipositor) || (player.hasPerk(PerkLib.BeeOvipositor) && !player.hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) || player.hasPerk(PerkLib.MantisOvipositor) || player.hasPerk(PerkLib.AntOvipositor) || player.hasPerk(PerkLib.MothOvipositor) || player.hasPerk(PerkLib.EggCarrier)) {
 				if (transformations.RemoveOvipositor.isPossible()) { //Remove dat shit!
 						transformations.RemoveOvipositor.applyEffect();
 				}
@@ -3134,17 +3141,24 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						if (player.hasPerk(PerkLib.SpiderOvipositor)) {
 							outputText("\nYou feel a certain fullness building in your spider-half's abdomen.");
 						}
+						else if (player.hasPerk(PerkLib.EggCarrier)) {
+							outputText("\nYour belly grows with the weight of fresh unfertilised eggs. It's about time you went and found a mate.");
+						}
 						else {
 							outputText("\nYou feel a certain fullness building in your insectile abdomen.  You have some eggs ready... and you feel a strange urge to have them fertilized.");
 							if (!player.hasVagina()) outputText("  Wait, how would you even go about that?");
 						}
 						outputText("  <b>You have enough eggs to lay!</b>\n");
+						if (player.statStore.hasBuff('EggCarrier')) player.statStore.removeBuffs('EggCarrier');
 						needNext = true;
 					}
 					else if (prevEggs < 20 && player.eggs() >= 20) { //Stage 2 egg message
 						if (player.hasPerk(PerkLib.SpiderOvipositor)) {
 							outputText("\nYour spider body feels like it's stretched taut, and a heavy warmth has spread throughout it.  The sensation of eggs piling up inside you is enough to drive you to distraction.  It would be a good idea to find somewhere to deposit them - but, oh, how great it would feel to get them fertilized by a nice hard cock first!");
 							if (!player.hasVagina()) outputText("  Wait, that's not right...");
+						}
+						else if (player.hasPerk(PerkLib.EggCarrier)) {
+							outputText("\nYour fertilised eggs feel heavy in your pregnant belly. You can either carry them yourself or find a surrogate mother to do it for you.");
 						}
 						else {
 							outputText("\nYour abdomen feels like it's stretched taut, and a heavy warmth has spread throughout it.  It swings pendulously with every movement you make, and the sensation of eggs piling up inside you is enough to drive you to distraction.");
@@ -3165,11 +3179,22 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						else if (player.hasPerk(PerkLib.MothOvipositor)) {
 							outputText("\nYour moth half has become so heavy that it's difficult to move now, the weight of your eggs bearing down on your lust-addled frame.  Your ovipositor pokes from its hiding place, dripping its sweet, slick lubrication in anticipation of filling something, anything with its burden.  You're going to have to find someone to help relieve you of your load, and soon...");
 						}
+						else if (player.hasPerk(PerkLib.EggCarrier)) {
+							outputText("\nThe heavy weight of your eggs slows you down at least there isn’t much time left before you give birth.");
+						}
 						else {
 							outputText("\nYour bee half has become so heavy that it's difficult to move now, the weight of your eggs bearing down on your lust-addled frame.  Your ovipositor pokes from its hiding place, dripping its sweet, slick lubrication in anticipation of filling something, anything with its burden.  You're going to have to find someone to help relieve you of your load, and soon...");
 						}
 						outputText("\n\n<b>Minimum Lust raised!</b>\n");
 						player.addCurse("spe", 1, 1);
+						needNext = true;
+					}
+					else if (prevEggs < 80 && player.eggs() >= 80 && player.hasPerk(PerkLib.EggCarrier)) {
+						outputText("\nYou gasp as you suddenly feel something slowly poking at the entrance of your womb; it looks like you are indeed about to finally give birth. Ugh those unfilial childrens in such a hurry to leave after you carried them for so long. Whether this was your responsibility as a mother or not all along doesn’t matter to you, you're just eager to be rid of them now.");
+						outputText("\n\nYou rush to the stream and lay down into the water in order to hatch your young one by one. After what seems like an eternity of pushing, cumming eggs then pushing again the last of your kids is finally out swimming in the pond. Well it'll take your tadpoles some time before they form proper limbs but that part is no longer your job. Exhausted, you rest in the stream for a few minutes before heading back to camp.");
+						player.statStore.replaceBuffObject({'lib': Math.round(player.lib * 0.2)}, 'EggCarrier', { text: 'Egg Carrier' });
+						flags[kFLAGS.FROG_KIDS] += player.perkv1(PerkLib.EggCarrier);
+						player.dumpEggs();
 						needNext = true;
 					}
 				}

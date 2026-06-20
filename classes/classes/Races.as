@@ -182,6 +182,7 @@ public class Races {
 	public static const TURTLE:TurtleRace			   			= new TurtleRace(157);//NYI
 	public static const COCKROACH:CockroachRace			   		= new CockroachRace(158);//NYI
 	public static const KOBOLD:KoboldRace			   			= new KoboldRace(159);//NYI
+	public static const DARK_ELF:DarkElfRace                    = new DarkElfRace(160);//NYI
 
 	// Racial groups
 	public static const CatlikeRaces:/*Race*/Array   = [

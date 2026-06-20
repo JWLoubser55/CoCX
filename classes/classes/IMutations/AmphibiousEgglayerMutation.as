@@ -22,10 +22,10 @@ public class AmphibiousEgglayerMutation extends IMutationPerkType
             var maxL:Number = 10;
 			var res:Number = 5;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-			if (pTier >= 1) descS += "Allows you to keep the Milk Blast special even if cow score is lower than 9, max lust increased by "+maxL+"";
+			if (pTier >= 1) descS += "Make the Egg Carrier ability permanent and gain a +"+(pTier*25)+"% toughness while carrying Eggs or "+(pTier*25)+"% Speed while Empty";
             if (pTier >= 2) descS += ", +"+res+"% to lust resistance, ";
-            if (pTier == 3) descS += ", increase milk production by ~150%";
-            if (pTier == 4) descS += ", increase milk production by ~200%";
+            if (pTier >= 3) descS += ", increase milk production by ~150%";
+            if (pTier >= 4) descS += ", increase milk production by ~200%";
             if (descS != "")descS += ".";
             return descS;
         }

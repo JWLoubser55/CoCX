@@ -49,6 +49,10 @@ public class SpecialTransformations extends MutationsHelper {
 				desc += "<b>Your ovipositor (and eggs) vanish since your body has become less moth-like.</b>";
 				player.removePerk(PerkLib.MothOvipositor);
 			}
+			else if (player.hasPerk(PerkLib.EggCarrier)) { //Remove dat shit!
+				desc += "You feel a strange emptiness within your guts as your anatomy becomes less frog-like. <b>You fully stopped creating eggs and thus lost the Egg Carrier perk.</b>";
+				player.removePerk(PerkLib.EggCarrier);
+			}
 
 			if (doOutput) outputText(desc);
 		},
@@ -62,7 +66,8 @@ public class SpecialTransformations extends MutationsHelper {
 					(player.hasPerk(PerkLib.BeeOvipositor) && player.tailType != Tail.BEE_ABDOMEN) ||
 					(player.hasPerk(PerkLib.MantisOvipositor) && player.tailType != Tail.MANTIS_ABDOMEN) ||
 					(player.hasPerk(PerkLib.AntOvipositor) && player.tailType != Tail.ANT_ABDOMEN) ||
-					(player.hasPerk(PerkLib.MothOvipositor) && player.tailType != Tail.MOTH_ABDOMEN));
+					(player.hasPerk(PerkLib.MothOvipositor) && player.tailType != Tail.MOTH_ABDOMEN) ||
+					(player.hasPerk(PerkLib.EggCarrier) && player.racialScore(Races.FROG, false) < 10));
 		}
 	);
 

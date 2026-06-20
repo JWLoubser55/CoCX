@@ -22,7 +22,7 @@ public class DiagonalMindMutation extends IMutationPerkType
             pTier = (pTier == -1)? currentTier(this, player): pTier;
             if (pTier >= 1 && pTier < 4) descS += "When you deny defeat by damage you instead take "+(pTier * 2)+"0% less lust damage as a recoil";
             if (pTier >= 2) descS += ". Increase the duration of everywhere and nowhere by "+((pTier - 1) * 2)+" rounds";
-            if (pTier >= 3) descS += " x3";
+            if (pTier >= 3) descS += ". Increase Sneak Attack Damage multiplier by "+(pTier - 2)+"";
             if (pTier >= 4) descS += " x2";
             if (descS != "")descS += ".";
             return descS;

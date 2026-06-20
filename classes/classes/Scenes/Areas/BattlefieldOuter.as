@@ -50,7 +50,7 @@ public class BattlefieldOuter extends BaseContent
 			name: "discoverInner",
 			chance: 30,
 			when: function ():Boolean {
-				return flags[kFLAGS.DISCOVERED_INNER_BATTLEFIELD] <= 0 && (player.level + combat.playerLevelAdjustment()) >= 19
+				return flags[kFLAGS.FROG_KIDS] <= 0 && (player.level + combat.playerLevelAdjustment()) >= 19
 			},
 			call: discoverInner
 		},*/ /*{
@@ -235,7 +235,7 @@ public class BattlefieldOuter extends BaseContent
 	}
 
 	private function discoverInner():void {
-		flags[kFLAGS.DISCOVERED_INNER_BATTLEFIELD] = 1;
+		flags[kFLAGS.FROG_KIDS] = 1;
 		clearOutput();
 		outputText("As you explore the boundary of the endless field, you cautiously step over countless remains of fallen and golem husks littered across the ground. Treading further, you reach a part of the battlefield you haven't seen yet. The air is thick, and it constantly feels like you're being watched by something. Perhaps the war isn't quite finished yet...\n\n<b>You've discovered the (Outer) Battlefield!</b>");
 		explorer.stopExploring();

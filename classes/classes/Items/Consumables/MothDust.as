@@ -127,6 +127,11 @@ public class MothDust extends Consumable {
             CoC.instance.transformations.HornsNone.applyEffect();
             changes++;
         }
+		//oviposition
+        if (changes < changeLimit && player.hasCoatOfType(Skin.CHITIN) && CoC.instance.transformations.OvipositorMoth.isPossible() && rand(2) == 0) {
+            CoC.instance.transformations.OvipositorMoth.applyEffect();
+            changes++;
+        }
 		//If no changes yay
         if (changes == 0) {
             outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n");

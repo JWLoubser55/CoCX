@@ -28,15 +28,15 @@ public class Jungle extends BaseContent
 		}
 
 		public function isDiscovered():Boolean {
-			return false;//flags[kFLAGS.DISCOVERED_INNER_BATTLEFIELD] > 0;
+			return false;//flags[kFLAGS.FROG_KIDS] > 0;
 		}
 		public function timesExplored():int {
-			return 0; //flags[kFLAGS.DISCOVERED_INNER_BATTLEFIELD];
+			return 0; //flags[kFLAGS.FROG_KIDS];
 		}
 
 		public function exploreJungle():void {
 			clearOutput();
-			//flags[kFLAGS.DISCOVERED_INNER_BATTLEFIELD]++;
+			//flags[kFLAGS.FROG_KIDS]++;
 			doNext(camp.returnToCampUseOneHour);
 			jungleEncounter.execEncounter();
 			flushOutputTextToGUI();

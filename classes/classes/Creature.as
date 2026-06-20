@@ -3879,14 +3879,19 @@ public class Creature extends Utils
 			return eggs() >= 10 && hasPerk(PerkLib.MothOvipositor) && tail.type == Tail.MOTH_ABDOMEN;
 		}
 
+		public function canOvipositFrog():Boolean
+		{
+			return eggs() >= 10 && hasPerk(PerkLib.EggCarrier);
+		}
+
 		public function canOviposit():Boolean
 		{
-			return canOvipositSpider() || canOvipositBee() || canOvipositMantis() || canOvipositAnt() || canOvipositMoth();
+			return canOvipositSpider() || canOvipositBee() || canOvipositMantis() || canOvipositAnt() || canOvipositMoth() || canOvipositFrog();
 		}
 
 		public function eggs():int
 		{
-			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor))
+			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor) && !hasPerk(PerkLib.EggCarrier))
 				return -1;
 			else if (hasPerk(PerkLib.SpiderOvipositor))
 				return perkv1(PerkLib.SpiderOvipositor);
@@ -3896,6 +3901,8 @@ public class Creature extends Utils
 				return perkv1(PerkLib.MantisOvipositor);
 			else if (hasPerk(PerkLib.MothOvipositor))
 				return perkv1(PerkLib.MothOvipositor);
+			else if (hasPerk(PerkLib.EggCarrier))
+				return perkv1(PerkLib.EggCarrier);
 			else
 				return perkv1(PerkLib.AntOvipositor);
 			}

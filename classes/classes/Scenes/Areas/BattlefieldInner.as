@@ -91,15 +91,15 @@ public class BattlefieldInner extends BaseContent
 	}
 
 	public function isDiscovered():Boolean {
-		return flags[kFLAGS.DISCOVERED_INNER_BATTLEFIELD] > 0;
+		return flags[kFLAGS.FROG_KIDS] > 0;
 	}
 	public function timesExplored():int {
-		return flags[kFLAGS.DISCOVERED_INNER_BATTLEFIELD];
+		return flags[kFLAGS.FROG_KIDS];
 	}
 
 	public function exploreInnerBattlefield():void {
 		clearOutput();
-		flags[kFLAGS.DISCOVERED_INNER_BATTLEFIELD]++;
+		flags[kFLAGS.FROG_KIDS]++;
 		doNext(camp.returnToCampUseOneHour);
 		battlefieldInnerEncounter.execEncounter();
 		flushOutputTextToGUI();

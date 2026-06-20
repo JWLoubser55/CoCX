@@ -5,10 +5,10 @@ import classes.GeneticMemories.RaceMem;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.Race;
-public class ElfRace extends Race {
-	public static const ElfEyesColors:/*String*/Array = ["blue", "pink", "gray", "silver", "gold"];
-	public static const ElfHairColors:/*String*/Array = ["black", "leaf green", "gold"];
-	public static const ElfSkinColors:/*String*/Array = ["light", "tan", "silver", "olive", "white", "marble white"];
+public class DarkElfRace extends Race {
+	public static const DarkElfEyesColors:/*String*/Array = ["red", "lilac", "pink", "silver", "light blue"];
+	public static const DarkElfHairColors:/*String*/Array = ["white", "golden blonde", "silver"];
+	public static const DarkElfSkinColors:/*String*/Array = ["dark", "midnight blue", "black", "deep purple", "grey", "ebony"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Elf",
@@ -34,8 +34,8 @@ public class ElfRace extends Race {
         /*Vagina*/		"Human",
         /*Perks*/		"Elf"];
 	
-	public function ElfRace(id:int) {
-		super("Elf", id, RaceBody);
+	public function DarkElfRace(id:int) {
+		super("Dark Elf", id, RaceBody);
 	}
 	
 	public override function setup():void {
@@ -47,22 +47,22 @@ public class ElfRace extends Race {
 				.armType(Arms.ELF, +1)
 				.legType(LowerBody.ELF, +1)
 				.hairType(Hair.SILKEN, +1)
-				.hairColor1(ANY(ElfHairColors), +1, -1)
-				.skinColor1(ANY(ElfSkinColors), +1, -1)
+				.hairColor1(ANY(DarkElfHairColors), +1, -1)
+				.skinColor1(ANY(DarkElfSkinColors), +1, -1)
 				.noWings(+1)
-				.tone(AT_MOST(60), +1)
+				.tone(AT_LEAST(60), +1)
 				.thickness(AT_MOST(50), +1)
 				.plainSkinOfAdj("flawless", +1)
 				.hasPerk(PerkLib.FlawlessBody, +1)
 				.hasPerk(PerkLib.ElvenSense, +1)
 				.hasPerk(PerkLib.NaturalSpellcasting, +1)
-				.customRequirement("","small cock",
+				.customRequirement("","big cock",
 						function (body:BodyData):Boolean {
-							return body.hasCock && body.biggestCockSize < 6
+							return body.hasCock && body.biggestCockSize > 12
 						}, +1)
-				.customRequirement("","vagina and big tits",
+				.customRequirement("","vagina and small tits",
 						function (body:BodyData):Boolean {
-							return body.hasVagina && body.biggestTitSize >= 6
+							return body.hasVagina && body.biggestTitSize < 3
 						}, +1)
 				.customRequirement("","not a wood elf",
 						function (body:BodyData):Boolean {
@@ -73,8 +73,8 @@ public class ElfRace extends Race {
 		addBloodline(PerkLib.ElfsDescendant, PerkLib.BloodlineElf);
 		addMutation(IMutationsLib.ElvishPeripheralNervSysIM);
 		
-		buildTier(11, "light elf")
-                .namesTauric("light elf", "light elf-taur")
+		buildTier(11, "dark elf")
+                .namesTauric("dark elf", "dark elf-taur")
 				.require("elf ears", function (body:BodyData):Boolean {
 					return body.earType == Ears.ELVEN
 				})
@@ -88,8 +88,8 @@ public class ElfRace extends Race {
                     "sens": +30
                 })
                 .end();
-        buildTier(17, "high light elf")
-                .namesTauric("high light elf", "high light elf-taur")
+        buildTier(17, "high dark elf")
+                .namesTauric("high dark elf", "high dark elf-taur")
 				.requirePreviousTier()
                 .buffs({
                     "str.mult": -0.20,
