@@ -266,9 +266,11 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Celestial Blood (Evolved). Req. Celestial Blood (Primitive) and lvl 60+. Effects: Increase mana regeneration by 300% of its total regeneration rate but double spell cost. While Mana is above 30% increase spellpower by 3x. While mana is above 50% increase health regeneration by 2%.\n");
 			outputText("-New mutation perk: Fiendish Blood (Final Form). Req. Fiendish Blood (Evolved) and lvl 90+. Effects: Increase mana regeneration by 200% of its total regeneration rate but double spell cost. While Mana is above 20% increase spellpower by 2.5x. While mana is above 25% increase health regeneration by 2%. While Mana is at 75% or above, spell total damage is increased by 100%.\n");
 			outputText("-New mutation perk: Celestial Blood (Final Form). Req. Celestial Blood (Evolved) and lvl 90+. Effects: Increase mana regeneration by 400% of its total regeneration rate but double spell cost. While Mana is above 20% increase spellpower by 4x. While mana is above 25% increase health regeneration by 4%. While Mana is at 75% or above, spell total damage is increased by 200%.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Obsidian Heart (Final Form). Req. Obsidian Heart (Evolved) and lvl 90+. Effects: Devil special abilities are available even if you do not qualify as Devilkin but will increase your corruption on each use until it reaches 60. Maleficium's duration is increased by 10 turns and spellpower is boosted by 300% while it only lowers lust resistance by 15%, ");
+			outputText("Infernal Flare is empowered by 150% and has 20% higher chance to crit. Magic scales damage with your Libido as well as your intelligence, the true power of want.\n");
+			outputText("-New mutation perk: Diamond Heart (Final Form). Req. Diamond Heart (Evolved) and lvl 90+. Effects: Your Judgment flare makes enemies 200% more vulnerable to magic for 8 rounds. Perfect Clarity's duration is increased by 10 turns and spellpower is boosted by 300% while it only lowers physical resistance reduction by 10%, ");
+			outputText("Judgment Flare is empowered by 150% and has 20% higher chance to crit. Magic scales damage with your Libido as well as your intelligence, the true power of want.\n");
+			outputText("-Diamond Heart tier 1-3 effect of keeping Azazel specials even when no longer Azazel was replaced with Your Judgment flare makes enemies 50/100/150% more vulnerable to magic for 2/4/6 rounds.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -305,6 +307,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -391,14 +402,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -435,9 +440,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

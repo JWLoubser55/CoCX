@@ -1154,6 +1154,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const IzmaBleed:StatusEffectType                 = mkCombat("Izma Bleed");
 		public static const JabberwockyVenom:StatusEffectType          = mkCombat("Jabberwocky Venom");
 		public static const JabbingStyle:StatusEffectType              = mkCombat("Jabbing Style");
+		public static const JudgmentFlareMResDebuff:StatusEffectType   = mkCombat("Judgment flare Magic Res debuff");
 		public static const KamaitachiBleed:StatusEffectType           = mkCombat("Kamaitachi Bleed");
 		public static const KashaCapture:StatusEffectType              = mkCombat("Kasha Capture");
 		public static const KissOfDeath:StatusEffectType               = mkCombat("Kiss of Death");

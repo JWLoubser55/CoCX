@@ -2932,8 +2932,14 @@ use namespace CoC;
 			}
 			if(statusEffectv1(StatusEffects.Maleficium) > 0) {
 				if (perkv1(IMutationsLib.ObsidianHeartIM) >= 3) {
-					if (lust >= 70) lust = 100;
-					else lust += 30;
+					if (perkv1(IMutationsLib.ObsidianHeartIM) >= 3) {
+						if (lust >= 85) lust = 100;
+						else lust += 15;
+					}
+					else {
+						if (lust >= 70) lust = 100;
+						else lust += 30;
+					}
 				}
 				else {
 					if (lust >= 50) lust = 100;
@@ -3711,7 +3717,8 @@ use namespace CoC;
 			}
 			if(statusEffectv1(StatusEffects.PerfectClarity) > 0) {
 				if (perkv1(IMutationsLib.DiamondHeartIM) >= 3) {
-					mult += 20;
+					if (perkv1(IMutationsLib.DiamondHeartIM) >= 4) mult += 10;
+					else mult += 20;
 				}
 				else {
 					mult += 35;

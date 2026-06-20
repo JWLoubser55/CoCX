@@ -623,7 +623,7 @@ public class MagicSpecials extends BaseCombatContent {
 			else bd.requireFatigue(spellCost(40),true);
 			favbd(bd, "Transference");
 		}
-		if (player.isRaceCached(Races.AZAZEL) || player.perkv1(IMutationsLib.DiamondHeartIM) >= 1) {
+		if (player.isRaceCached(Races.AZAZEL)) {
 			bd = buttons.add("Exorcism",exorcism).disableIf(player.hasStatusEffect(StatusEffects.Exorcism), "Already used in this fight.").hint("Damage any creature above 25% corruption for 50% of its hit point total. Can be used only once per battle. \n");
 			if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) bd.requireMana(spellCost(100),true);
 			else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -637,7 +637,7 @@ public class MagicSpecials extends BaseCombatContent {
 			else bd.requireMana(spellCost(40),true);
 			favbd(bd, "Infernal Flare");
 		}
-		if (player.isRaceCached(Races.AZAZEL) || player.perkv1(IMutationsLib.DiamondHeartIM) >= 1) {
+		if (player.isRaceCached(Races.AZAZEL)) {
 			bd = buttons.add("JudgementFlare",judgementflare).hint("Unleash a burst of holy fire. \n");
 			if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) bd.requireMana(spellCost(50),true);
 			else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -1211,7 +1211,7 @@ public class MagicSpecials extends BaseCombatContent {
 			}
 			favbd(bd, "Maleficium");
 		}
-		if (player.isRaceCached(Races.AZAZEL) || player.perkv1(IMutationsLib.DiamondHeartIM) >= 1) {
+		if (player.isRaceCached(Races.AZAZEL)) {
 			bd = buttons.add("PerfectClarity", perfectclarity).hint("Infuse yourself with holy power empowering your magic but reducing your resistance to physical assault.");
 			if(player.hasStatusEffect(StatusEffects.PerfectClarity)) {
 				bd.disable("You already empowered with holy power!");
@@ -4499,6 +4499,7 @@ public class MagicSpecials extends BaseCombatContent {
 		player.lust += 50;
 		var maleficiumDuration:Number = 10;
 		if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 2) maleficiumDuration += 5;
+		if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 4) maleficiumDuration += 5;
 		outputText("You moan in delight as your body fills with profane powers, empowering your spells and making you blush with barely contained desire.\n\n");
 		if (player.cor < 60 && player.perkv1(IMutationsLib.ObsidianHeartIM) >= 1) dynStats("cor", 0.3);
 		player.createStatusEffect(StatusEffects.Maleficium,maleficiumDuration,0,0,0);
@@ -4533,6 +4534,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var damage:Number = scalingBonusIntelligence() * 3.2;
 		if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 2) damage += scalingBonusIntelligence() * 0.8;
 		if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 3) damage += scalingBonusIntelligence() * 1.6;
+		if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 4) damage += scalingBonusLibido() * 5.6;
 		damage *= spellMod();
 		//Determine if critical hit!
 		var crit:Boolean = false;
@@ -4599,8 +4601,8 @@ public class MagicSpecials extends BaseCombatContent {
 		player.lust += 50;
 		var clarityDuration:Number = 10;
 		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 2) clarityDuration += 5;
+		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 4) clarityDuration += 5;
 		outputText("You gasp as your body fills with holy powers, empowering your spells but making you feel more fragile.\n\n");
-		//if (player.cor < 60 && player.perkv1(IMutationsLib.DiamondHeartIM) >= 1) dynStats("cor", 0.3);
 		player.createStatusEffect(StatusEffects.PerfectClarity,clarityDuration,0,0,0);
 		enemyAI();
 	}
@@ -4611,7 +4613,6 @@ public class MagicSpecials extends BaseCombatContent {
 		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) useMana(50, Combat.USEMANA_MAGIC);
 		else useMana(40, Combat.USEMANA_MAGIC);
 		combat.darkRitualCheckDamage();
-		//if (player.cor < 60 && player.perkv1(IMutationsLib.ObsidianHeartIM) >= 1) dynStats("cor", 0.3);
 		if (monster.hasStatusEffect(StatusEffects.Shell)) {
 			outputText("As soon as your attack touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your attack!\n\n");
 			flags[kFLAGS.SPELLS_CAST]++;
@@ -4631,6 +4632,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var damage:Number = scalingBonusIntelligence() * 3.2;
 		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 2) damage += scalingBonusIntelligence() * 0.8;
 		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) damage += scalingBonusIntelligence() * 1.6;
+		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 4) damage += scalingBonusLibido() * 5.6;
 		damage *= spellMod();
 		//Determine if critical hit!
 		var crit:Boolean = false;
@@ -4665,6 +4667,10 @@ public class MagicSpecials extends BaseCombatContent {
 		outputText("\n\n");
 		checkAchievementDamage(damage);
 		flags[kFLAGS.SPELLS_CAST]++;
+		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 1) {
+			if (player.hasStatusEffect(StatusEffects.JudgmentFlareMResDebuff)) player.addStatusValue(StatusEffects.JudgmentFlareMResDebuff, 2, 1);
+			else player.createStatusEffect(StatusEffects.JudgmentFlareMResDebuff, (1 + (player.perkv1(IMutationsLib.DiamondHeartIM) * 0.5)), (player.perkv1(IMutationsLib.DiamondHeartIM) * 2), 0, 0);
+		}
 	//	if(!player.hasStatusEffect(StatusEffects.CastedSpell)) player.createStatusEffect(StatusEffects.CastedSpell,0,0,0,0);
 	//	spellPerkUnlock();
 		combat.heroBaneProc(damage);
@@ -4691,7 +4697,6 @@ public class MagicSpecials extends BaseCombatContent {
 		doNext(combatMenu);
 		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) useMana(100, Combat.USEMANA_MAGIC);
 		else useMana(80, Combat.USEMANA_MAGIC);
-		//if (player.cor < 60 && player.perkv1(IMutationsLib.ObsidianHeartIM) >= 1) dynStats("cor", 0.3);
 		if (monster.hasStatusEffect(StatusEffects.Shell)) {
 			outputText("As soon as your attack touches the multicolored shell around [themonster], it sizzles and fades to nothing.  Whatever that thing is, it completely blocks your attack!\n\n");
 			flags[kFLAGS.SPELLS_CAST]++;

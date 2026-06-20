@@ -18,16 +18,27 @@ public class DiamondHeartMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+			var PCd:Number = 5;
+			var PCb:Number = 25;
+			var JF:Number = 25;
+			var PDR:Number = 20;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-            if (pTier >= 1){
-                descS += "Azazel.M Specials are available even if you do not qualify as Azazel";
-            }
-            if (pTier == 2){
-                descS += ", Perfect Clarity duration is increased by 5 turns and spellpower is boosted by 25%, Judgement Flare +~25%";
-            }
-            if (pTier == 3){
-                descS += ", Perfect Clarity duration is increased by 5 turns and spellpower is boosted by 150% + lowers physical resistance reduction by 15%, Judgement Flare +~65% and 20% higher chance to crit";
-            }
+            if (pTier >= 3) {
+				PCb += 125;
+				JF += 40;
+			}
+            if (pTier >= 4) {
+				PCd += 5;
+				PCb += 150;
+				JF += 85;
+				PDR -= 10;
+			}
+			if (pTier >= 1) descS += "Your Judgment flare makes enemies "+(pTier*5)+"0% more vulnerable to magic for "+(pTier*2)+" rounds";
+            if (pTier >= 2) descS += ". Perfect Clarity's duration is increased by "+PCd+" turns and spellpower is boosted by "+PCb+"%";
+            if (pTier >= 3) descS += " while it only lowers physical resistance reduction by "+PDR+"%";
+            if (pTier >= 2) descS += ", Infernal Flare is empowered by "+JF+"%";
+            if (pTier >= 3) descS += " and has 20% higher chance to crit";
+            if (pTier >= 4) descS += ". Magic scales damage with your Libido as well as your intelligence, the true power of want";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -59,16 +70,31 @@ public class DiamondHeartMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
+            if (pTier == 1) {
+                pBuffs['str.mult'] = 0.01;
+                pBuffs['tou.mult'] = 0.01;
+                pBuffs['spe.mult'] = 0.01;
+            }
+            if (pTier == 2) {
+                pBuffs['str.mult'] = 0.03;
+                pBuffs['tou.mult'] = 0.03;
+                pBuffs['spe.mult'] = 0.03;
+            }
             if (pTier == 3) {
                 pBuffs['str.mult'] = 0.05;
                 pBuffs['tou.mult'] = 0.05;
                 pBuffs['spe.mult'] = 0.05;
             }
+            if (pTier == 4) {
+                pBuffs['str.mult'] = 0.07;
+                pBuffs['tou.mult'] = 0.07;
+                pBuffs['spe.mult'] = 0.07;
+            }
             return pBuffs;
         }
 
         public function DiamondHeartMutation() {
-            super(MNAME, SLOT_HEART, 3);
+            super(MNAME, SLOT_HEART, 4);
         }
 
     }

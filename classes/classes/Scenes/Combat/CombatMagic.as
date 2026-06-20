@@ -300,13 +300,19 @@ public class CombatMagic extends BaseCombatContent {
 		if (player.headJewelry == headjewelries.SPHINXAS) mod += .5;
         if (player.hasStatusEffect(StatusEffects.Maleficium)) {
 			if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 2) {
-				if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 3) mod += 2.5;
+				if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 3) {
+					if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 4) mod += 4;
+					else mod += 2.5;
+				}
 				else mod += 1.25;
 			} else mod += 1;
 		}
         if (player.hasStatusEffect(StatusEffects.PerfectClarity)) {
 			if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 2) {
-				if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) mod += 2.5;
+				if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) {
+					if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 4) mod += 4;
+					else mod += 2.5;
+				}
 				else mod += 1.25;
 			} else mod += 1;
 		}
