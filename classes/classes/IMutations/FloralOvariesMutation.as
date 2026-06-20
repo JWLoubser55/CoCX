@@ -7,6 +7,7 @@ package classes.IMutations
 import classes.Creature;
 import classes.IMutationPerkType;
 import classes.PerkClass;
+import classes.Player;
 import classes.Races;
 
 public class FloralOvariesMutation extends IMutationPerkType
@@ -40,6 +41,12 @@ public class FloralOvariesMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireOvariesMutationSlot()
+                    requireCustomFunction(function (player:Player):Boolean {
+                        return player.hasVagina();
+                    }, "is Female")
+                    .requireCustomFunction(function (player:Player):Boolean {
+                        return player.femininity >= 95;
+                    }, "95+ feminity")
                     .requireRace(Races.ALRAUNE);
                 }
                 else{

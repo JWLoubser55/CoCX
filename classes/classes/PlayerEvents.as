@@ -3189,7 +3189,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						player.addCurse("spe", 1, 1);
 						needNext = true;
 					}
-					else if (prevEggs < 80 && player.eggs() >= 80 && player.hasPerk(PerkLib.EggCarrier)) {
+					else if (prevEggs < (player.maxEggs - 5) && player.eggs() >= (player.maxEggs - 5) && player.hasPerk(PerkLib.EggCarrier)) {
 						outputText("\nYou gasp as you suddenly feel something slowly poking at the entrance of your womb; it looks like you are indeed about to finally give birth. Ugh those unfilial childrens in such a hurry to leave after you carried them for so long. Whether this was your responsibility as a mother or not all along doesn’t matter to you, you're just eager to be rid of them now.");
 						outputText("\n\nYou rush to the stream and lay down into the water in order to hatch your young one by one. After what seems like an eternity of pushing, cumming eggs then pushing again the last of your kids is finally out swimming in the pond. Well it'll take your tadpoles some time before they form proper limbs but that part is no longer your job. Exhausted, you rest in the stream for a few minutes before heading back to camp.");
 						player.statStore.replaceBuffObject({'lib': Math.round(player.lib * 0.2)}, 'EggCarrier', { text: 'Egg Carrier' });

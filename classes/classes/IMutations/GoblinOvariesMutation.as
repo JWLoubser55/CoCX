@@ -43,6 +43,12 @@ public class GoblinOvariesMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireOvariesMutationSlot()
+                    requireCustomFunction(function (player:Player):Boolean {
+                        return player.hasVagina();
+                    }, "is Female")
+                    .requireCustomFunction(function (player:Player):Boolean {
+                        return player.femininity >= 95;
+                    }, "95+ feminity")
                     .requireCustomFunction(function (player:Player):Boolean {
                         return player.isGoblinoid();
                     }, "Goblin race");

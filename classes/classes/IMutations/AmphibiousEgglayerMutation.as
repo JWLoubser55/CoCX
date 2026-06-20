@@ -22,7 +22,7 @@ public class AmphibiousEgglayerMutation extends IMutationPerkType
             var maxL:Number = 10;
 			var res:Number = 5;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
-			if (pTier >= 1) descS += "Make the Egg Carrier ability permanent and gain a +"+(pTier*25)+"% toughness while carrying Eggs or "+(pTier*25)+"% Speed while Empty";
+			if (pTier >= 1) descS += "Make the Egg Carrier ability permanent and gain a +"+(pTier*25)+"% toughness while carrying Eggs or +"+(pTier*25)+"% Speed while Empty";
             if (pTier >= 2) descS += ", +"+res+"% to lust resistance, ";
             if (pTier >= 3) descS += ", increase milk production by ~150%";
             if (pTier >= 4) descS += ", increase milk production by ~200%";
@@ -38,7 +38,13 @@ public class AmphibiousEgglayerMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireOvariesMutationSlot()
-                    .requireRace(Races.FROG)
+                    requireCustomFunction(function (player:Player):Boolean {
+                        return player.hasVagina();
+                    }, "is Female")
+                    .requireCustomFunction(function (player:Player):Boolean {
+                        return player.femininity >= 95;
+                    }, "95+ feminity")
+                    .requireRace(Races.FROG);
                 }
                 else{
                     var pLvl:int = pTier * 30;
@@ -52,6 +58,7 @@ public class AmphibiousEgglayerMutation extends IMutationPerkType
         //Mutations Buffs
         override public function buffsForTier(pTier:int, target:Creature):Object {
             var pBuffs:Object = {};
+			if (pTier == 1) pBuffs['lib.mult'] = 0.05;
             if (pTier == 2) pBuffs['lib.mult'] = 0.1;
             if (pTier == 3) pBuffs['lib.mult'] = 0.2;
             if (pTier == 4) pBuffs['lib.mult'] = 0.4;

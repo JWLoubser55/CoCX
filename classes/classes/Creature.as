@@ -3920,7 +3920,7 @@ public class Creature extends Utils
 		}
 
 		public function dumpEggs():void {
-			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor))
+			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor) && !hasPerk(PerkLib.EggCarrier))
 				return;
 			if (hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) {
 				addPerkValue(PerkLib.BeeOvipositor, 1, -25);
@@ -3933,14 +3933,16 @@ public class Creature extends Utils
 		}
 
 		private function getOviPerk():PerkType {
-			var oviPerks:Array = [PerkLib.SpiderOvipositor, PerkLib.BeeOvipositor, PerkLib.MantisOvipositor, PerkLib.AntOvipositor, PerkLib.MothOvipositor];
+			var oviPerks:Array = [PerkLib.SpiderOvipositor, PerkLib.BeeOvipositor, PerkLib.MantisOvipositor, PerkLib.AntOvipositor, PerkLib.MothOvipositor, PerkLib.EggCarrier];
 			for each (var perk:PerkType in oviPerks)
 				if (hasPerk(perk)) return perk;
 			return null;
 		}
 
 		public function get maxEggs():int {
-			return hasPerk(PerkLib.TransformationImmunityBeeHandmaiden) ? 100 : 50;
+			var mEs:Number = 50;
+			if (hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) mEs *= 2;
+			return mEs;
 		}
 
 		public function setEggs(arg:int = 0):int {
@@ -5046,4 +5048,4 @@ public class Creature extends Utils
 			//Do nothing
 		}
 	}
-}
+}
