@@ -273,8 +273,8 @@ public class Changelog extends BaseContent
 			outputText("-Diamond Heart tier 1-3 effect of keeping Azazel specials even when no longer Azazel was replaced with Your Judgment flare makes enemies 50/100/150% more vulnerable to magic for 2/4/6 rounds.\n");
 			outputText("-New event perk: Egg Carrier. Gained by becoming Frog/Mobogo. Effects: Regularly go pregnant with eggs which must be fertilised. Eggs must then be carried to maturity or transferred to a surrogate mother. Transferring the eggs or giving birth grants a libido bonus.\n");
 			outputText("-All frog eggs that wasn't transfered and PC ended giving birth to thenm would be showed on Children subpage of Stats tab.\n");
-			//outputText("-New mutation perk: Diagonal Mind (Evolved). Req. Diagonal Mind (Primitive) and lvl 60+. Effects: When you deny defeat by damage you instead take 60% less lust damage as a recoil. Increase the duration of everywhere and nowhere by 4 rounds. Increase Sneak Attack Damage multiplier by 1.\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Diagonal Mind (Evolved). Req. Diagonal Mind (Primitive) and lvl 60+. Effects: When you deny defeat by damage you instead take 60% less lust damage as a recoil. Increase the duration of everywhere and nowhere by 4 rounds. Increase Sneak Attack Damage multiplier by 1.\n");
+			outputText("-New mutation perk: Fiendish Blood. Req. having free ovaries mutation slot, is Female, 95+ feminity, Frog race. Effects: Make the Egg Carrier ability permanent and gain a +25% toughness while carrying Eggs or +25% speed while empty.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

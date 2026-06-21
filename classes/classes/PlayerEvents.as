@@ -3150,6 +3150,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						}
 						outputText("  <b>You have enough eggs to lay!</b>\n");
 						if (player.statStore.hasBuff('EggCarrier')) player.statStore.removeBuffs('EggCarrier');
+						if (player.statStore.hasBuff('EggCarrierEmpty')) player.statStore.removeBuffs('EggCarrierEmpty');
+						if (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 1) player.statStore.replaceBuffObject({'tou': Math.round(player.tou * 0.2)}, 'EggCarrierCarrying', { text: 'Egg Carrier (Carrying)' });
 						needNext = true;
 					}
 					else if (prevEggs < 20 && player.eggs() >= 20) { //Stage 2 egg message
@@ -3193,6 +3195,8 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						outputText("\nYou gasp as you suddenly feel something slowly poking at the entrance of your womb; it looks like you are indeed about to finally give birth. Ugh those unfilial childrens in such a hurry to leave after you carried them for so long. Whether this was your responsibility as a mother or not all along doesn’t matter to you, you're just eager to be rid of them now.");
 						outputText("\n\nYou rush to the stream and lay down into the water in order to hatch your young one by one. After what seems like an eternity of pushing, cumming eggs then pushing again the last of your kids is finally out swimming in the pond. Well it'll take your tadpoles some time before they form proper limbs but that part is no longer your job. Exhausted, you rest in the stream for a few minutes before heading back to camp.");
 						player.statStore.replaceBuffObject({'lib': Math.round(player.lib * 0.2)}, 'EggCarrier', { text: 'Egg Carrier' });
+						if (player.statStore.hasBuff('EggCarrierCarrying')) player.statStore.removeBuffs('EggCarrierCarrying');
+						if (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 1) player.statStore.replaceBuffObject({'spe': Math.round(player.spe * 0.2)}, 'EggCarrierEmpty', { text: 'Egg Carrier (Empty)' });
 						flags[kFLAGS.FROG_KIDS] += player.perkv1(PerkLib.EggCarrier);
 						player.dumpEggs();
 						needNext = true;
@@ -3632,4 +3636,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}

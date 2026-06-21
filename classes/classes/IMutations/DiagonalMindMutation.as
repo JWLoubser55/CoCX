@@ -58,7 +58,7 @@ public class DiagonalMindMutation extends IMutationPerkType
         }
 
         public function DiagonalMindMutation() {
-            super(MNAME, SLOT_NERVSYS, 2);
+            super(MNAME, SLOT_NERVSYS, 3);
         }
 
     }

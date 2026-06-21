@@ -65,7 +65,7 @@ public class FrogRace extends Race {
 				.hasPerk(PerkLib.GOBXChemical, -1000);
 
         addMutation(IMutationsLib.FrogJumpingLegsIM);
-		//addMutation(IMutationsLib.);
+		addMutation(IMutationsLib.AmphibiousEgglayerIM);
 		addMutation(IMutationsLib.DrakeBloodIM);
 		addMutation(IMutationsLib.DrakeLungsIM);
 		
