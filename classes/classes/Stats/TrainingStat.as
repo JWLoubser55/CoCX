@@ -42,6 +42,7 @@ public class TrainingStat extends RawStat {
 				var spe:Number = 1;
 				if (host.perkv1(IMutationsLib.HumanBloodstreamIM) >= 3) spe += 0.2;
 				if (host.perkv1(IMutationsLib.HumanBloodstreamIM) >= 4) spe += 0.1;
+				if (host.perkv1(IMutationsLib.TrachealSystemIM) >= 4) spe += 0.3;
 				if (host.perkv1(IMutationsLib.MantislikeAgilityIM) >= 4) spe += 0.5;
 				train *= spe;
 				train = Math.round(train);

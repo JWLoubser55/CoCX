@@ -18,21 +18,26 @@ public class TrachealSystemMutation extends IMutationPerkType
         //v1 contains the mutation tier
         override public function mDesc(params:PerkClass, pTier:int = -1):String {
             var descS:String = "";
+			var ml1:Number = 5;
+			var ml2:Number = 15;
             pTier = (pTier == -1)? currentTier(this, player): pTier;
+			if (pTier >= 2) ml1 += 10;
+            if (pTier >= 3) ml1 += 15;
+            if (pTier >= 4) {
+				ml1 += 20;
+				ml2 += 30;
+			}
             if (pTier >= 1) descS += "Your body possesses a ";
-            if (pTier == 1){
-                descS += "rudimentary";
-            }
-            if (pTier == 2){
-                descS += "basic";
-            }
-            if (pTier == 3){
-                descS += "half developed";
-            }
-            if (pTier == 4){
-                descS += "fully developed";
-            }
-            if (descS != "")descS += " respiratory system modeled after insects.";
+            if (pTier == 1) descS += "rudimentary";
+            if (pTier == 2) descS += "basic";
+            if (pTier == 3) descS += "half developed";
+            if (pTier == 4) descS += "fully developed";
+            if (pTier >= 1) descS += " respiratory system modeled after insects";
+            if (descS != "")descS += ".";
+			if (pTier >= 1) descS += " (+"+ml1+"% to Spe";
+			if (pTier >= 3) descS += ", +"+ml2+"% max core spe as phantom spe";
+			if (pTier >= 4) descS += ". Increases maximum base/core (30) and trainable Spe (30%)";
+			if (pTier >= 1) descS += ")";
             return descS;
         }
 

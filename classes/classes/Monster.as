@@ -5079,6 +5079,10 @@ import flash.utils.getQualifiedClassName;
 		}
 		public function prepareForCombat():void {
 			var bonusStatsAmp:Number = 0.6;
+			if (perkv1(IMutationsLib.TrachealSystemIM) >= 1) this.speStat.core.value += (5 * (1 + newGamePlusMod()));
+			if (perkv1(IMutationsLib.TrachealSystemIM) >= 2) this.speStat.core.value += (10 * (1 + newGamePlusMod()));
+			if (perkv1(IMutationsLib.TrachealSystemIM) >= 3) this.speStat.core.value += (15 * (1 + newGamePlusMod()));
+			if (perkv1(IMutationsLib.TrachealSystemIM) >= 4) this.speStat.core.value += (20 * (1 + newGamePlusMod()));
 			if (perkv1(IMutationsLib.MantislikeAgilityIM) >= 1) this.speStat.core.value += (10 * (1 + newGamePlusMod()));
 			if (perkv1(IMutationsLib.MantislikeAgilityIM) >= 2) this.speStat.core.value += (20 * (1 + newGamePlusMod()));
 			if (level > 25) bonusStatsAmp += 0.3*((int)(level-1)/25);

@@ -6695,7 +6695,8 @@ use namespace CoC;
 			if (hasCoatOfType(Skin.CHITIN)) factor += 2;
 			else if (hasCoatOfType(Skin.SCALES)) factor += 1;
 			if (hasPerk(PerkLib.ThickSkin)) factor += 1;
-			score = perkv1(IMutationsLib.MantislikeAgilityIM);
+			//score = perkv1(IMutationsLib.MantislikeAgilityIM);
+			score = perkv1(IMutationsLib.TrachealSystemIM);
 			if (score >= 4) {
 				buffSpe += 50*factor;
 			} else if (score >= 3) {

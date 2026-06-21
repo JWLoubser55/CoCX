@@ -21549,6 +21549,8 @@ public function ghostSpeed():Number {
     if (player.perkv1(IMutationsLib.ElvishPeripheralNervSysIM) >= 1) ghostSpeMulti += 0.05;
     if (player.perkv1(IMutationsLib.ElvishPeripheralNervSysIM) >= 2) ghostSpeMulti += 0.1;
     if (player.perkv1(IMutationsLib.ElvishPeripheralNervSysIM) >= 3) ghostSpeMulti += 0.15;
+    if (player.perkv1(IMutationsLib.TrachealSystemIM) >= 3) ghostSpeMulti += 0.15;
+    if (player.perkv1(IMutationsLib.TrachealSystemIM) >= 4) ghostSpeMulti += 0.3;
     if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 3) ghostSpeMulti += 0.3;
     if (player.perkv1(IMutationsLib.MantislikeAgilityIM) >= 4) ghostSpeMulti += 0.6;
     if (player.perkv1(IMutationsLib.CatLikeNimblenessIM) >= 4) ghostSpeMulti += 0.1;

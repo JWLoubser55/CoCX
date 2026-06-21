@@ -28,7 +28,7 @@ public class MantislikeAgilityMutation extends IMutationPerkType
                 descS += ", +"+mla+"% max core spe as phantom spe";
             }
 			if (pTier >= 4){
-				descS += ". Increases maximum base/core and trainable Spe. All natural weapon and weapon damage is increased by an amount equal to sum of your speed stat core and train values";
+				descS += ". Increases maximum base/core (50) and trainable Spe (50%). All natural weapon and weapon damage is increased by an amount equal to sum of your speed stat core and train values";
 			}
             if (descS != "")descS += ".";
             return descS;

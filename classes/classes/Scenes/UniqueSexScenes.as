@@ -1263,4 +1263,4 @@ public class UniqueSexScenes extends BaseContent
 			!monster.hasPerk(PerkLib.EnemyLargeGroupType) && !monster.hasPerk(PerkLib.EnemyTrueDemon) && !monster.hasPerk(PerkLib.EnemyUndeadType) && !monster.hasPerk(PerkLib.UniqueNPC));
 		}
 }
-}
+}

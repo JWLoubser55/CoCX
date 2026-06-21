@@ -1297,9 +1297,12 @@ public class PlayerAppearance extends BaseContent {
 		if (player.hasCoatOfType(Skin.CHITIN)) factor += 2;
 		else if (player.hasCoatOfType(Skin.SCALES)) factor += 1;
 		if (player.hasPerk(PerkLib.ThickSkin)) factor += 1;
-		score = player.perkv1(IMutationsLib.MantislikeAgilityIM);
+		//score = player.perkv1(IMutationsLib.MantislikeAgilityIM);
+		score = player.perkv1(IMutationsLib.TrachealSystemIM);
 		var bonus:Number = 0;
-		if (score >= 3) {
+		if (score >= 4) {
+			bonus = 50*factor;
+		} else if (score >= 3) {
 			bonus = 30*factor;
 		} else if (score >= 2) {
 			bonus += 15*factor;

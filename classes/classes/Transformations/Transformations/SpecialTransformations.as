@@ -68,7 +68,7 @@ public class SpecialTransformations extends MutationsHelper {
 					(player.hasPerk(PerkLib.MantisOvipositor) && player.tailType != Tail.MANTIS_ABDOMEN) ||
 					(player.hasPerk(PerkLib.AntOvipositor) && player.tailType != Tail.ANT_ABDOMEN) ||
 					(player.hasPerk(PerkLib.MothOvipositor) && player.tailType != Tail.MOTH_ABDOMEN) ||
-					(player.hasPerk(PerkLib.EggCarrier) && player.racialScore(Races.FROG, false) < 10 && !player.hasMutation(IMutationsLib.AmphibiousEgglayerIM)));
+					(player.hasPerk(PerkLib.EggCarrier) && player.racialScore(Races.FROG, false) < 10));
 		}
 	);
 
