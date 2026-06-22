@@ -1148,8 +1148,6 @@ public class UniqueSexScenes extends BaseContent
 			outputText("They convulse too, climaxing from the pressure and the aphrodisiac, their pussy milking your last egg deeper inside them. You hold them for a moment longer, breathing hard, your bodies glistening and sticky. Then you pull back, looking down at them as they crumple to the ground, still twitching, still soaked, their belly now subtly rounded with your egg load.\n\n");
 			outputText("You give [themonster] a final glance before heading out. This is not your problem anymore. With your eggs duty dumped onto someone else you can go back to adventuring with peace of mind though maybe you should feel ashamed as a mother for your somewhat lackluster parenting.\n\n");
 			player.statStore.replaceBuffObject({'lib': Math.round(player.lib * 0.2)}, 'EggCarrier', { text: 'Egg Carrier' });
-			if (player.statStore.hasBuff('EggCarrierCarrying')) player.statStore.removeBuffs('EggCarrierCarrying');
-			if (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 1) player.statStore.replaceBuffObject({'spe': Math.round(player.spe * 0.2)}, 'EggCarrierEmpty', { text: 'Egg Carrier (Empty)' });
 			player.dumpEggs();
 			player.sexReward("vaginalFluids","Default",true,false);
 			cleanupAfterCombat();

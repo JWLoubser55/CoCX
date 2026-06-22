@@ -902,6 +902,8 @@ private function laySomeEggsInThatWitchFinally():void {
 			pregnancy.knockUpForce(PregnancyStore.PREGNANCY_ANT_EGGS, 192);
 		else if (player.canOvipositMoth())
 			pregnancy.knockUpForce(PregnancyStore.PREGNANCY_MOTH_EGGS, 192);
+		else if (player.canOvipositFrog())
+			pregnancy.knockUpForce(PregnancyStore.PREGNANCY_FROG_EGGS, 192);
 		else outputText ("A little ghost pops up. \"<i>Looks like something went wrong determining what kind of ovipositor you have. You should report this to the coders, along with what race you are.</i>\"");
 	}
 	player.dumpEggs();

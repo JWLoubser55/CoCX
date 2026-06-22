@@ -3922,6 +3922,8 @@ public class Creature extends Utils
 		public function dumpEggs():void {
 			if (!hasPerk(PerkLib.SpiderOvipositor) && !hasPerk(PerkLib.BeeOvipositor) && !hasPerk(PerkLib.MantisOvipositor) && !hasPerk(PerkLib.AntOvipositor) && !hasPerk(PerkLib.MothOvipositor) && !hasPerk(PerkLib.EggCarrier))
 				return;
+			if (statStore.hasBuff('EggCarrierCarrying')) statStore.removeBuffs('EggCarrierCarrying');
+			if (perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 1) statStore.replaceBuffObject({'spe': Math.round(spe * (0.25 * perkv1(IMutationsLib.AmphibiousEgglayerIM)))}, 'EggCarrierEmpty', { text: 'Egg Carrier (Empty)' });
 			if (hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) {
 				addPerkValue(PerkLib.BeeOvipositor, 1, -25);
 				if (getPerkValue(PerkLib.BeeOvipositor, 1) > 0) EngineCore.outputText("\n\nWith no further space left to unload within your current incubator you sigh and stand up to be on your way. You will need more incubators in which to deliver your remaining eggs.");

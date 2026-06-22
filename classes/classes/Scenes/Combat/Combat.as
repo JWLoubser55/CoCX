@@ -11351,6 +11351,7 @@ public class Combat extends BaseContent {
 			if (player.hasPerk(PerkLib.EarthAndSkyEx)) damage *= 3;
 			else damage *= 2;
 		}
+		if (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 2 && (player.isPregnant() || player.eggs() >= 10)) damage *= (1 + (0.5 * (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) - 1)));
 		return doDamage(damage, subtype, apply, display, ignoreDR);
     }
 
@@ -11399,6 +11400,7 @@ public class Combat extends BaseContent {
 		if (monster.hasStatusEffect(StatusEffects.Swarmbringer)) damage *= 0.5;
 		if (tinkerDeconstruct()) damage *= 1.5;
 		if (player.hasStatusEffect(StatusEffects.AutomataOverdrive)) damage *= 2;
+		if (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 2 && (!player.isPregnant() && player.eggs() < 10)) damage *= (1 + (0.5 * (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) - 1)));
 		if (damage < 1) damage = 1;
         if (player.hasPerk(PerkLib.Sadist)) {
             damage *= 3;
@@ -11526,6 +11528,7 @@ public class Combat extends BaseContent {
 		if (player.perkv1(IMutationsLib.SoulCoreIM) == 3 && player.fatigue100 < 50) damage *= 1.5;
 		if (player.perkv1(IMutationsLib.SoulCoreIM) == 4 && player.mana100 < 75) damage *= 2;
 		if (player.perkv1(IMutationsLib.MyconidSporeIM) == 4 && player.hasStatusEffect(StatusEffects.SporeCloud)) damage *= (1 + (0.1 * player.statusEffectv1(StatusEffects.SporeCloud)));
+		if (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 2 && (!player.isPregnant() && player.eggs() < 10)) damage *= (1 + (0.5 * (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) - 1)));
         return damage;
     }
 

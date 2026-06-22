@@ -59,7 +59,7 @@ public class SpecialTransformations extends MutationsHelper {
 		},
 		// is present
 		function ():Boolean {
-			return !player.hasPerk(PerkLib.BeeOvipositor) && !player.hasPerk(PerkLib.SpiderOvipositor) && !player.hasPerk(PerkLib.MantisOvipositor) && !player.hasPerk(PerkLib.AntOvipositor) && !player.hasPerk(PerkLib.MothOvipositor);
+			return !player.hasPerk(PerkLib.BeeOvipositor) && !player.hasPerk(PerkLib.SpiderOvipositor) && !player.hasPerk(PerkLib.MantisOvipositor) && !player.hasPerk(PerkLib.AntOvipositor) && !player.hasPerk(PerkLib.MothOvipositor) && !player.hasPerk(PerkLib.EggCarrier);
 		},
 		// is possible
 		function ():Boolean {

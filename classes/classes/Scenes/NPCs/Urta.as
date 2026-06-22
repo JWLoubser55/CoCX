@@ -3676,9 +3676,11 @@ public function giveTheFoxSomeEggs():void {
 		pregnancy.knockUpForce(PregnancyStore.PREGNANCY_MANTIS_EGGS, 72);
 	else if (player.hasPerk(PerkLib.MothOvipositor))
 		pregnancy.knockUpForce(PregnancyStore.PREGNANCY_MOTH_EGGS, 72);
+	else if (player.hasPerk(PerkLib.EggCarrier))
+		pregnancy.knockUpForce(PregnancyStore.PREGNANCY_FROG_EGGS, 72);
 	flags[kFLAGS.URTA_FLATBELLY_NOTICE] = 0;
 	//First time, tag for triggering freakout!
-	if(flags[kFLAGS.URTA_EGG_FORCE_EVENT] == 0) flags[kFLAGS.URTA_EGG_FORCE_EVENT] = 48;
+	if (flags[kFLAGS.URTA_EGG_FORCE_EVENT] == 0) flags[kFLAGS.URTA_EGG_FORCE_EVENT] = 48;
 	player.dumpEggs();
 	player.sexReward("Default","Default",true,false);
 	doNext(camp.returnToCampUseOneHour);

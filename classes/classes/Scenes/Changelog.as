@@ -276,7 +276,7 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Diagonal Mind (Evolved). Req. Diagonal Mind (Primitive) and lvl 60+. Effects: When you deny defeat by damage you instead take 60% less lust damage as a recoil. Increase the duration of everywhere and nowhere by 4 rounds. Increase Sneak Attack Damage multiplier by 1.\n");
 			outputText("-New mutation perk: Amphibious Egglayer. Req. having free ovaries mutation slot, is Female, 95+ feminity, Frog race. Effects: Gain a +25% toughness while carrying Eggs through any means or +25% speed while empty.\n");
 			outputText("-Tracheal System IM gained small additional effects: +5/15/30/50% to Spe (T1-4), +15/45% max core spe as phantom spe (T3-4), Increases maximum base/core (30) and trainable Spe (30%) (T4)\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Amphibious Egglayer (Primitive). Req. Amphibious Egglayer and lvl 30+. Effects: Gain a +50% toughness while carrying Eggs through any means or +50% speed while empty. Increase magical damage by 50% while pregnant or carrying eggs and raise physical damage by 50% while empty.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -315,6 +315,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
@@ -402,14 +411,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -446,9 +449,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
