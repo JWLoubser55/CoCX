@@ -24,7 +24,7 @@ public class AmphibiousEgglayerMutation extends IMutationPerkType
             pTier = (pTier == -1)? currentTier(this, player): pTier;
 			if (pTier >= 1) descS += "Gain a +"+(pTier*25)+"% toughness while carrying Eggs or +"+(pTier*25)+"% speed while empty";
             if (pTier >= 2) descS += ". Increase magical damage by "+((pTier-1)*5)+"0% while pregnant or carrying eggs and raise physical damage by "+((pTier-1)*5)+"0% while empty";
-            if (pTier >= 3) descS += ", increase milk production by ~150%";
+            if (pTier >= 3) descS += ". Increase the amount of children produced by egg laying by "+((pTier-2)*25)+"";
             if (pTier >= 4) descS += ", increase milk production by ~200%";
             if (descS != "")descS += ".";
             return descS;

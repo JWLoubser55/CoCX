@@ -3943,6 +3943,7 @@ public class Creature extends Utils
 
 		public function get maxEggs():int {
 			var mEs:Number = 50;
+			if (perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 3) mEs += (25 * (perkv1(IMutationsLib.AmphibiousEgglayerIM) - 2));
 			if (hasPerk(PerkLib.TransformationImmunityBeeHandmaiden)) mEs *= 2;
 			return mEs;
 		}
