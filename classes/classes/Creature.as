@@ -1028,6 +1028,7 @@ public class Creature extends Utils
 		public function maxLust_mult():Number {
 			var maxmult:Number = 1;
 			if (TyrantiaFollower.TyrantiaTrainingSessions > 0.5) maxmult += 0.01 * TyrantiaFollower.TyrantiaTrainingSessions;
+			if (perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 4 && (game.player.isPregnant() || eggs() >= 10)) maxmult += 0.25;
 			return maxmult;
 		}
 		public function maxLust():Number {

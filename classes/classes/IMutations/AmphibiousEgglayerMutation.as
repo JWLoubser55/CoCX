@@ -25,7 +25,7 @@ public class AmphibiousEgglayerMutation extends IMutationPerkType
 			if (pTier >= 1) descS += "Gain a +"+(pTier*25)+"% toughness while carrying Eggs or +"+(pTier*25)+"% speed while empty";
             if (pTier >= 2) descS += ". Increase magical damage by "+((pTier-1)*5)+"0% while pregnant or carrying eggs and raise physical damage by "+((pTier-1)*5)+"0% while empty";
             if (pTier >= 3) descS += ". Increase the amount of children produced by egg laying by "+((pTier-2)*25)+"";
-            if (pTier >= 4) descS += ", increase milk production by ~200%";
+            if (pTier >= 4) descS += ". While pregnant or carrying eggs raise maximum lust by 25% and while empty raise total libido by 25%";
             if (descS != "")descS += ".";
             return descS;
         }
@@ -67,7 +67,7 @@ public class AmphibiousEgglayerMutation extends IMutationPerkType
 
         public function AmphibiousEgglayerMutation() 
 		{
-			super(MNAME, SLOT_OVARIES, 2);
+			super(MNAME, SLOT_OVARIES, 4);
         }
 
     }

@@ -3151,6 +3151,7 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						outputText("  <b>You have enough eggs to lay!</b>\n");
 						if (player.statStore.hasBuff('EggCarrier')) player.statStore.removeBuffs('EggCarrier');
 						if (player.statStore.hasBuff('EggCarrierEmpty')) player.statStore.removeBuffs('EggCarrierEmpty');
+						if (player.statStore.hasBuff('EggCarrierEmpty2')) player.statStore.removeBuffs('EggCarrierEmpty2');
 						if (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 1) player.statStore.replaceBuffObject({'tou': Math.round(player.tou * (0.25 * player.perkv1(IMutationsLib.AmphibiousEgglayerIM)))}, 'EggCarrierCarrying', { text: 'Egg Carrier (Carrying)' });
 						needNext = true;
 					}
@@ -3200,6 +3201,10 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 						needNext = true;
 					}
 				}
+			}
+			if (player.perkv1(IMutationsLib.AmphibiousEgglayerIM) >= 4) {
+				if (!player.isPregnant() && player.eggs() < 10) player.statStore.replaceBuffObject({'lib': Math.round(player.lib * 0.25)}, 'EggCarrierEmpty2', { text: 'Egg Carrier (Empty)' });
+				if (player.isPregnant() && player.statStore.hasBuff('EggCarrierEmpty2')) player.statStore.removeBuffs('EggCarrierEmpty2');
 			}
 			if (player.hasPerk(PerkLib.Oviposition) || player.hasPerk(PerkLib.BunnyEggs)) { //Oviposition perk for lizard and bunny folks
 				if ((player.racialScore(Races.NAGA) + player.racialScore(Races.LIZARD) < 3) && player.hasPerk(PerkLib.Oviposition) && !player.hasPerk(PerkLib.BasiliskWomb)) { //--Lose Oviposition perk if lizard score gets below 3.
@@ -3634,4 +3639,4 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 		}
 		//End of Interface Implementation
 	}
-}
+}

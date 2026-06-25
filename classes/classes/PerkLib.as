@@ -3532,8 +3532,8 @@ public class PerkLib
 				"Add a part of your toughness to your weapon and shield damage. (+11 to tou based DR)",
 				"You've chosen the 'Steel Impact' perk. Increasing damage of your weapon and shield. (+11 to tou based DR)");
 		public static const SteelStorm:PerkType = mk("Steel Storm", "Steel Storm",
-				"Gain extra melee attacks equal to current used mutliattack option when dual wielding.",
-				"You've chosen the 'Steel Storm' perk. Gain extra melee attacks equal to current used mutliattack option when dual wielding.");
+				"Gain extra melee attacks equal to current used multiattack option when dual wielding.",
+				"You've chosen the 'Steel Storm' perk. Gain extra melee attacks equal to current used multiattack option when dual wielding.");
 		public static const Straddle:PerkType = mk("Straddle", "Straddle",
 				"You may now perform the straddle action in battle against stunned foes. Initiating a grappling stance. This grapple efficiency is based on libido and only function on single target humanoids.",
 				"You've chosen the 'Straddle' perk, allowing you to further tease your stunned foe through devastating grappling techniques.");

@@ -278,7 +278,8 @@ public class Changelog extends BaseContent
 			outputText("-Tracheal System IM gained small additional effects: +5/15/30/50% to Spe (T1-4), +15/45% max core spe as phantom spe (T3-4), Increases maximum base/core (30) and trainable Spe (30%) (T4)\n");
 			outputText("-New mutation perk: Amphibious Egglayer (Primitive). Req. Amphibious Egglayer and lvl 30+. Effects: Gain a +50% toughness while carrying Eggs through any means or +50% speed while empty. Increase magical damage by 50% while pregnant or carrying eggs and raise physical damage by 50% while empty.\n");
 			outputText("-New mutation perk: Amphibious Egglayer (Evolved). Req. Amphibious Egglayer (Primitive) and lvl 60+. Effects: Gain a +75% toughness while carrying Eggs through any means or +75% speed while empty. Increase magical damage by 100% while pregnant or carrying eggs and raise physical damage by 100% while empty. Increase the amount of children produced by egg laying by 25.\n");
-			outputText("-\n");
+			outputText("-New mutation perk: Amphibious Egglayer (Final Form). Req. Amphibious Egglayer (Evolved) and lvl 90+. Effects: Gain a +100% toughness bonus while carrying Eggs through any means or +100% speed bonus while empty. Increase magical damage by 150% while pregnant or carrying eggs and raise physical damage by 150% while empty. Increase the amount of children produced by egg laying by 50. ");
+			outputText("While pregnant or carrying eggs raise maximum lust by 25% and while empty raise total libido by 25%.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
