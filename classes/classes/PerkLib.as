@@ -1048,6 +1048,15 @@ public class PerkLib
 		public static const MasterHerbalist:PerkType = mk("Master Herbalist", "Master Herbalist",
 				"When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 80.",
 				"You've chosen the 'Master Herbalist' perk. When creating an herbalism consumable there is an additional 10% chance to create an additional item. Furthermore Herbalism level cap is increased to 80.");
+		public static const WolfTooth:PerkType = mk("Wolf Tooth", "Wolf Tooth",
+				"Against bleeding enemies axe base critical hits are raised by 15%.",
+				"You've chosen the 'Wolf Tooth' perk. Against bleeding enemies axe base critical hits are raised by 15%.");
+		public static const MightyWeapon:PerkType = mk("Mighty Weapon", "Mighty Weapon",
+				"Wrath weapon base attack is increased by 3/6/9/12.",
+				"You've chosen the 'Mighty Weapon' perk. Wrath weapon base attack is increased by 3/6/9/12.");
+		public static const Chivalry:PerkType = mk("Chivalry", "Chivalry",
+				"Regular swords (sword-type weapons) base attack is increased by 10.",
+				"You've chosen the 'Chivalry' perk. Regular swords (sword-type weapons) base attack is increased by 10.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1065,15 +1074,6 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -5922,6 +5922,12 @@ public class PerkLib
             KnightlySword.requireLevel(12)
                     .requireStr(100)
                     .requirePerk(JobWarrior);
+            WolfTooth.requireLevel(12)
+                    .requireStr(100)
+                    .requirePerk(JobWarrior);
+            MightyWeapon.requireLevel(12)
+                    .requireStr(100)
+                    .requirePerk(JobWarrior);
             IronFistsIV.requireNGPlus(3)
                     .requireLevel(12)
                     .requireStr(105)
@@ -6277,12 +6283,12 @@ public class PerkLib
             ShieldMastery.requirePerk(JobKnight)
                     .requireTou(50)
                     .requireLevel(6);
+            ArmorMaster.requirePerk(JobKnight)
+                    .requireTou(50)
+                    .requireLevel(6);
             HalfStepToImprovedEndurance.requireTou(60)
                     .requireStr(40)
                     .requirePerk(BasicEndurance)
-                    .requireLevel(6);
-            ArmorMaster.requirePerk(JobKnight)
-                    .requireTou(50)
                     .requireLevel(6);
             //Tier 2 Toughness Perks
             JobDefender.requireAdvancedJobSlot()
@@ -6297,6 +6303,9 @@ public class PerkLib
                     .requireLevel(12);
             HeavyArmorProficiency.requirePerk(JobKnight)
                     .requireTou(75)
+                    .requireLevel(12);
+            ShieldExpertise.requirePerk(JobKnight)
+                    .requireTou(70)
                     .requireLevel(12);
             IronMan.requireTou(60)
                     .requireLevel(12);
@@ -6316,15 +6325,15 @@ public class PerkLib
                     .requireStr(60)
                     .requirePerk(HalfStepToImprovedEndurance)
                     .requireLevel(12);
-            ShieldExpertise.requirePerk(JobKnight)
-                    .requireTou(70)
-                    .requireLevel(12);
             AyoArmorMaster.requireTou(75)
 					.requirePerk(JobArtificier)
                     .requireLevel(12);
             //Tier 3 Toughness Perks
             Juggernaut.requireTou(100)
                     .requirePerk(HeavyArmorProficiency)
+                    .requireLevel(18);
+            Chivalry.requireStr(100)
+					.requirePerk(JobKnight)
                     .requireLevel(18);
             AyoArmorProficiency.requireTou(100)
 					.requirePerk(AyoArmorMaster)

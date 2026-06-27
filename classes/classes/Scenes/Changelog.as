@@ -280,9 +280,9 @@ public class Changelog extends BaseContent
 			outputText("-New mutation perk: Amphibious Egglayer (Evolved). Req. Amphibious Egglayer (Primitive) and lvl 60+. Effects: Gain a +75% toughness while carrying Eggs through any means or +75% speed while empty. Increase magical damage by 100% while pregnant or carrying eggs and raise physical damage by 100% while empty. Increase the amount of children produced by egg laying by 25.\n");
 			outputText("-New mutation perk: Amphibious Egglayer (Final Form). Req. Amphibious Egglayer (Evolved) and lvl 90+. Effects: Gain a +100% toughness bonus while carrying Eggs through any means or +100% speed bonus while empty. Increase magical damage by 150% while pregnant or carrying eggs and raise physical damage by 150% while empty. Increase the amount of children produced by egg laying by 50. ");
 			outputText("While pregnant or carrying eggs raise maximum lust by 25% and while empty raise total libido by 25%.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New tier 2 strength lvl-up perk: Wolf Tooth. Req. Job: Warrior perk, 100+ str. Effect: Against bleeding enemies axe base critical hits are raised by 15%.\n");
+			outputText("-New tier 2 strength lvl-up perk: Mighty Weapon. Req. Job: Warrior perk, 100+ str. Effect: Wrath weapon base attack is increased by 3/6/9/12.\n");
+			outputText("-New tier 3 toughness lvl-up perk: Chivalry. Req. Job: Knight perk, 100+ tou. Effect: Regular swords (sword-type weapons) base attack is increased by 10.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

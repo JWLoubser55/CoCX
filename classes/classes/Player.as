@@ -1292,6 +1292,22 @@ use namespace CoC;
 		{
 			return ;
 		}*/
+		public function isWrathWeaponMain():Boolean
+		{
+			return weapon.isLGWrath() || weapon.isMGWrath();
+		}
+		public function isDualWrathWeaponMain():Boolean
+		{
+			return weapon.isLGWrath() || weapon.isMGWrath();
+		}
+		public function isWrathWeaponOff():Boolean
+		{
+			return weaponOff.isLGWrath() || weaponOff.isMGWrath();
+		}
+		public function isDualWrathWeaponOff():Boolean
+		{
+			return weaponOff.isLGWrath() || weaponOff.isMGWrath();
+		}
 		//Free off-hand for spellcasting and etc.
 		public function isHavingFreeOffHand():Boolean
 		{
@@ -1756,6 +1772,24 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.SteelImpact)) {
 				attack += (tou * 0.5);
+			}
+			if (hasPerk(PerkLib.MightyWeapon) && (isWrathWeaponMain() || isDualWrathWeaponMain() || isWrathWeaponOff() || isDualWrathWeaponOff())) {
+				if (offhand && (isWrathWeaponOff() || isDualWrathWeaponOff())) {
+					if (weaponOff.isMassive()) attack += 12;
+					else if (weaponOff.isLarge()) attack += 9;
+					else if (weaponOff.isMedium()) attack += 6;
+					else attack += 3;
+				}
+				else {
+					if (weapon.isMassive()) attack += 12;
+					else if (weapon.isLarge()) attack += 9;
+					else if (weapon.isMedium()) attack += 6;
+					else attack += 3;
+				}
+			}
+			if (hasPerk(PerkLib.Chivalry) && (weapon.isSwordType() || weaponOff.isSwordType())) {
+				if (offhand && weaponOff.isSwordType()) attack += 10;
+				else attack += 10;
 			}
 			if (isFistOrFistWeapon()) {
 				if (hasPerk(PerkLib.IronFistsI) && str >= 50) {
