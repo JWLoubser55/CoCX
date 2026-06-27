@@ -9128,7 +9128,7 @@ use namespace CoC;
 				raijuSuperchargedCheck();
 				checkFinalCandle();
 			}
-			if (!isRace(Races.RAIJU, 2) && !isRace(Races.THUNDERBIRD) && !isRace(Races.KIRIN) && !isRace(Races.MANTIS, 2) && statStore.hasBuff('Supercharged')) statStore.removeBuffs('Supercharged');
+			if (!isRace(Races.RAIJU, 2) && !isRace(Races.THUNDERBIRD) && !isRace(Races.KIRIN) && statStore.hasBuff('Supercharged')) statStore.removeBuffs('Supercharged');
 			if (hasStatusEffect(StatusEffects.FinalCandle) && !isRaceCached(Races.SALAMANDER,2) && !isRaceCached(Races.MOUSE,3) /*&& !isRaceCached(Races.phoenix,2) */&& !isRaceCached(Races.HELLCAT,2) && !isRaceCached(Races.FIRESNAILS)) {
 				outputText("Sexually sated, your burning body finally calms down returning to a more tolerable yet still melting temperature. <b>You are no longer in the Final Candle state!</b>\n\n");
 				removeStatusEffect(StatusEffects.FinalCandle);
@@ -9256,7 +9256,7 @@ use namespace CoC;
 		}
 		
 		public function raijuSuperchargedCheck():void {
-			if ((isRace(Races.RAIJU, 2) || isRace(Races.THUNDERBIRD) || isRace(Races.KIRIN) || isRace(Races.MANTIS, 2)) && lust100 >= 75) {
+			if ((isRace(Races.RAIJU, 2) || isRace(Races.THUNDERBIRD) || isRace(Races.KIRIN)) && lust100 >= 75) {
 				if (!statStore.hasBuff("Supercharged")){
 					var buff:Number = 1;
 					if (perkv1(IMutationsLib.RaijuCathodeIM) >= 3) buff *= 2;

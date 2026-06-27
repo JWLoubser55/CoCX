@@ -1586,7 +1586,7 @@ public class ArmsTransformations extends MutationsHelper {
 				desc += "\nThe transformation nearly ends as down the length of your forearms you grow a pair of massive scythe like appendage just like a mantis.";
 				desc += "\nYou shiver in delight as high voltage running along your newly growned appendages. Before you know they turned to vicious looking massive scythes coated with electricity.";
 				desc += "\nYou nonchalantly run them across a young tree slicing the plant trunk in half. This might prove a deadly weapon if used as part of your unarmed strikes. <b>You now have thunder mantis arms.</b>";
-				player.arms.type = Arms.MANTIS;
+				player.arms.type = Arms.THUNDER_MANTIS;
 
 				if (doOutput) outputText(desc);
 				Metamorph.unlockMetamorph(ArmsMem.getMemory(ArmsMem.THUNDER_MANTIS));

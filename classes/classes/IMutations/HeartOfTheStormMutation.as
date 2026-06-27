@@ -41,7 +41,7 @@ public class HeartOfTheStormMutation extends IMutationPerkType
                 this.requirements = [];
                 if (pTier == 0){
                     this.requireHeartMutationSlot()
-                    .requireAnyRace(Races.RAIJU, Races.THUNDERBIRD, Races.KAMAITACHI, Races.COUATL, Races.KIRIN, Races.MANTIS);
+                    .requireAnyRace(Races.RAIJU, Races.THUNDERBIRD, Races.KAMAITACHI, Races.COUATL, Races.KIRIN);
                 }
                 else{
                     var pLvl:int = pTier * 30;

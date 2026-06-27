@@ -10733,7 +10733,8 @@ public class Combat extends BaseContent {
     }
 
     public function combatPhysicalCritical():Number {
-        var critPChance:int = 0;
+        var critPChance:Number = 0;
+		var critPMultiplier:Number = 0;
         if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) {
             if (player.inte <= 100) critPChance += (player.inte - 50) / 5;
             if (player.inte > 100) critPChance += 10;
@@ -10787,7 +10788,8 @@ public class Combat extends BaseContent {
     }
 
     public function combatMagicalCritical():Number {
-        var critMChance:int = 0;
+        var critMChance:Number = 0;
+		var critMMultiplier:Number = 0;
         if (player.hasPerk(PerkLib.MagiculesTheory) && player.wis >= 50) {
             if (player.wis <= 100) critMChance += (player.wis - 50) / 5;
             if (player.wis > 100) critMChance += 10;
