@@ -7599,7 +7599,7 @@ public class Combat extends BaseContent {
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
         else {
             critChance += combatPhysicalCritical();
-            if (player.weapon.isSwordType()) critChance += 10;
+            if (player.weapon.isSwordType() || player.weapon.isDaggerType()) critChance += 10;
             if (player.weapon.isDuelingType()) critChance += 20;
             if (player.hasPerk(PerkLib.JobDervish) && (!player.weapon.isLarge() || !player.weapon.isStaffType())) critChance += 10;
             if (player.hasPerk(PerkLib.WeaponMastery) && player.weapon.isSingleLarge() && player.str >= 100) critChance += 10;
@@ -7624,7 +7624,7 @@ public class Combat extends BaseContent {
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
         else {
             critChance += combatPhysicalCritical();
-            if (player.weaponOff.isSwordType()) critChance += 10;
+            if (player.weaponOff.isSwordType() || player.weaponOff.isDaggerType()) critChance += 10;
             if (player.weaponOff.isDuelingType()) critChance += 20;
             if (player.hasPerk(PerkLib.JobDervish) && (!player.weaponOff.isLarge() || !player.weaponOff.isStaffType())) critChance += 10;
             if (player.hasPerk(PerkLib.WeaponMastery) && player.weaponOff.isSingleLarge() && player.str >= 100) critChance += 10;
@@ -7660,7 +7660,7 @@ public class Combat extends BaseContent {
         return critDamage;
     }
     private function calculateCritDamageOff():Number{
-        var critDamage:Number = 1.75;
+        var critDamage:Number = 2;
         critDamage += bonusCriticalDamageFromMissingHP();
         if ((player.weaponOff == weapons.WG_GAXE && monster.cor > 66) || (player.weaponOff == weapons.DE_GAXE && monster.cor < 33)) critDamage += 0.1;
         if (player.weaponOff == weapons.MACSPEA) critDamage += 0.25;
@@ -7691,7 +7691,7 @@ public class Combat extends BaseContent {
         return critChance;
     }
     private function calculateCritDamageRange():Number{
-        var critDamage:Number = 1.75;
+        var critDamage:Number = 2;
         if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "Bow") critDamage += 2;
 		if (player.weaponRangePerk == "Throwing") {
 			if (player.hasPerk(PerkLib.AnatomyExpert)) critDamage += 0.5;
@@ -7715,7 +7715,7 @@ public class Combat extends BaseContent {
         return critChance;
     }
     private function calculateCritDamageFirearms():Number{
-        var critDamage:Number = 1.75;
+        var critDamage:Number = 2;
         if (player.hasPerk(PerkLib.SilverForMonsters) && monster.hasPerk(PerkLib.EnemyTrueDemon)) critDamage += 0.5;
 		if (player.hasPerk(PerkLib.SkilledGunslingerEx) && calculateCrit() > 100) {
 			if (calculateCrit() > 200) critDamage *= 3;
@@ -7863,6 +7863,7 @@ public class Combat extends BaseContent {
         var critCounter:int = 0;
         var critChance:Number = calculateCrit();
         var critDamage:Number = calculateCritDamage();
+		var critColor:int = 0;
         var hitCounter:int = 0;
         if (player.weapon is Tidarion) meleeDamageNoLagMain = 0; //recalc damage for current mana.. okay, get it, multi-attackers-fuckers!
         var boolSwiftCast:Boolean = player.hasPerk(PerkLib.SwiftCasting) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && (player.isOneHandedWeapons() || player.weapon == weapons.ATWINSCY || player.weaponOff == weapons.ATWINSCY || (player.weapon == weapons.HATWINSCY && player.weaponOff == weapons.HATWINSCY) ||
@@ -8526,6 +8527,7 @@ public class Combat extends BaseContent {
         var critCounter:int = 0;
         var critChance:Number = calculateCritOff();
         var critDamage:Number = calculateCritDamageOff();
+        var critColor:int = 0;
         var hitCounter:int = 0;
         if (player.weaponOff is Tidarion) meleeDamageNoLagOff = 0; //recalc damage for current mana.. okay, get it, multi-attackers-fuckers!
         var boolFiendishConcentration2b:Boolean = !player.weapon.isDual() && !player.weaponOff.isDual() && !player.isOneHandedWeapons();
@@ -10733,23 +10735,17 @@ public class Combat extends BaseContent {
     }
 
     public function combatPhysicalCritical():Number {
-        var critPChance:Number = 0;
+        var critPChance:Number = 1;
 		var critPMultiplier:Number = 0;
-        if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) {
-            if (player.inte <= 100) critPChance += (player.inte - 50) / 5;
-            if (player.inte > 100) critPChance += 10;
-        }
-        if (player.hasPerk(PerkLib.GrandTactician) && player.inte >= 150) {
-            if (player.inte <= 300) critPChance += (player.inte - 150) / 5;
-            if (player.inte > 300) critPChance += 30;
-        }
+        if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) critPMultiplier += 0.5;
+        if (player.hasPerk(PerkLib.GrandTactician) && player.inte >= 150) critPMultiplier += 0.5;
         if (player.hasPerk(PerkLib.WarCaster) && player.inte >= 50) {
             if (player.inte <= 300) critPChance += (player.inte - 50) / 10;
             if (player.inte > 300) critPChance += 25;
         }
         if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critPChance += 5;
-        if (player.hasPerk(PerkLib.Blademaster) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) critPChance += 5;
-        if (player.hasPerk(PerkLib.GrandBlademaster) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) critPChance += 15;
+        if (player.hasPerk(PerkLib.Blademaster) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) critPMultiplier += 0.5;
+        if (player.hasPerk(PerkLib.GrandBlademaster) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) critPMultiplier += 1.5;
         if (player.armor == armors.R_CHANG || player.armor == armors.R_QIPAO || player.armor == armors.G_CHANG || player.armor == armors.G_QIPAO || player.armor == armors.B_CHANG || player.armor == armors.B_QIPAO || player.armor == armors.P_CHANG || player.armor == armors.P_QIPAO) critPChance += 5;
         if (player.headJewelry == headjewelries.SCANGOG) critPChance += 5;
         if (player.headJewelry == headjewelries.SATGOG) critPChance += 10;
@@ -10784,20 +10780,15 @@ public class Combat extends BaseContent {
 		}
         if (player.perkv1(IMutationsLib.EyeOfTheTigerIM) >= 2) critPChance += 5;
 		if (player.statStore.hasBuff("Atavism")) critPChance += 35;
+		critPChance *= critPMultiplier;
         return critPChance;
     }
 
     public function combatMagicalCritical():Number {
-        var critMChance:Number = 0;
+        var critMChance:Number = 1;
 		var critMMultiplier:Number = 0;
-        if (player.hasPerk(PerkLib.MagiculesTheory) && player.wis >= 50) {
-            if (player.wis <= 100) critMChance += (player.wis - 50) / 5;
-            if (player.wis > 100) critMChance += 10;
-        }
-        if (player.hasPerk(PerkLib.AdvancedMagiculesTheory) && player.wis >= 150) {
-            if (player.wis <= 300) critMChance += (player.wis - 150) / 5;
-            if (player.wis > 300) critMChance += 30;
-        }
+        if (player.hasPerk(PerkLib.MagiculesTheory) && player.wis >= 50) critMMultiplier += 0.5;
+        if (player.hasPerk(PerkLib.AdvancedMagiculesTheory) && player.wis >= 150) critMMultiplier += 0.5;
         if (player.hasPerk(PerkLib.WarCaster) && player.inte >= 50) {
             if (player.inte <= 300) critMChance += (player.inte - 50) / 10;
             if (player.inte > 300) critMChance += 25;
@@ -10834,6 +10825,7 @@ public class Combat extends BaseContent {
 				else critMChance += 2 * Math.round((player.sens - 25) / 5);
 			}
 		}
+		critMChance *= critMMultiplier;
         return critMChance;
     }
 	
@@ -20057,7 +20049,7 @@ public function runAway(callHook:Boolean = true):void {
 		}
 	}
     //SUCCESSFUL FLEE
-    if ((player.spe > rand(monster.spe + escapeMod)) || monster.hasPerk(PerkLib.AlwaysSuccesfullRunaway)) {
+    if ((player.spe > rand(monster.spe + escapeMod)) || monster.monsterIsStunned() || monster.hasPerk(PerkLib.AlwaysSuccesfullRunaway)) {
         //Fliers flee!
         if (player.canFly() && !player.hasStatusEffect(StatusEffects.FlyingDisabled)) outputText("[Themonster] can't catch you.");
         //sekrit benefit: if you have coon ears, coon tail, and Runner perk, change normal Runner escape to flight-type escape

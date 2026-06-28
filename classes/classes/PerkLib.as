@@ -1135,7 +1135,7 @@ public class PerkLib
 				"You've chosen the 'Advanced Golemancy Theory' perk, allowing you to make steel golems.");
 		public static const AdvancedMagiculesTheory:PerkType = mk("Advanced Magicules Theory", "Advanced Magicules Theory",
 				"[if(player.wis>=150)" +
-						"Increases magical critical hit chance by up to 30% (Wisdom-based)." +
+						"Increases magical critical hit chance multiplier by 50%." +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
@@ -1393,8 +1393,8 @@ public class PerkLib
 				"Chance to parry is further increased by 10%/20%/30%/40% when dual wielding. (each small/medium/large/massive adds 5/10/15/20%)",
 				"You've chosen the 'Blade Barrier' perk. Chance to parry is further increased by 10%/20%/30%/40% when dual wielding. (each small/medium/large/massive adds 5/10/15/20%)");
 		public static const Blademaster:PerkType = mk("Blademaster", "Blademaster",
-				"Gain +5% to critical strike chance when wielding a bladed weapon (sword, dueling sword, axe, dagger, scythe) and not using a shield.",
-				"You've chosen the 'Blademaster' perk.  Your chance of a critical hit is increased by 5% as long as you're wielding a weapon with a blade (sword, dueling sword, axe, dagger, scythe) and not using a shield.");
+				"Gain 50% to critical strike chance multiplier when wielding a bladed weapon (sword, dueling sword, axe, dagger, scythe) and not using a shield.",
+				"You've chosen the 'Blademaster' perk. Your chance of a critical hit multiplier is increased by 50% as long as you're wielding a weapon with a blade (sword, dueling sword, axe, dagger, scythe) and not using a shield.");
 		public static const BlessedByLadyGodiva:PerkType = mk("Blessed by Lady Godiva", "Blessed by Lady Godiva",
 				"Oh now she blesses you? As it's painfully obvious you have the Goddess of chance's favor... you get even more money upon victory... yay... (15% more gems from victories)",
 				"You've chosen the 'Blessed by Lady Godiva' perk, increasing gem gains from victories by 15%.");
@@ -2139,8 +2139,8 @@ public class PerkLib
 				"You've chosen the 'Grand Archmage (3rd Circle)' perk, increasing base spell strength by 60%, mana pool by 315 and lust bar by 390. (+35% spellpower bonus)")
 				.withBuffs({'maxlust_base':+90});
 		public static const GrandBlademaster:PerkType = mk("Grand Blademaster", "Grand Blademaster",
-				"Gain +15% to critical strike chance when wielding a bladed weapon (sword, dueling sword, axe, dagger, scythe) and not using a shield.",
-				"You've chosen the 'Grand Blademaster' perk.  Your chance of a critical hit is increased by 15% as long as you're wielding a weapon with a blade (sword, dueling sword, axe, dagger, scythe) and not using a shield.");
+				"Gain 150% to critical strike chance multiplier when wielding a bladed weapon (sword, dueling sword, axe, dagger, scythe) and not using a shield.",
+				"You've chosen the 'Grand Blademaster' perk.  Your chance of a critical hit multiplier is increased by 150% as long as you're wielding a weapon with a blade (sword, dueling sword, axe, dagger, scythe) and not using a shield.");
 		public static const GrandGreyArchmage:PerkType = mk("Grand Grey Archmage", "Grand Grey Archmage",
 				"[if (player.inte>=225)" +
 						"Increases grey spell strength by 40%, mana pool by 600, lust bar by 160, regain mana 100% faster. Grey spells can be cast without limitation due to current lust. (+45% spellpower bonus)" +
@@ -2176,7 +2176,7 @@ public class PerkLib
 				"You've chosen the 'Grand-Master Golem Maker' perk, increasing your proficiency in making golems.");
 		public static const GrandTactician:PerkType = mk("Grand Tactician", "Grand Tactician",
 				"[if(player.inte>=150)" +
-						"Increases physical critical hit chance by up to 30% (Intelligence-based)." +
+						"Increases physical critical hit chance multiplier by 50%." +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
@@ -2835,7 +2835,7 @@ public class PerkLib
 				"You've chosen the 'Precision' perk.  Thanks to your wisdom, you're now more adept at finding and striking an enemy's weak points, reducing their magic resistance by 10% or 10 (whichever is greater).  If your wisdom ever drops below 25 you'll no longer be wise enough to benefit from this perk.");
 		public static const MagiculesTheory:PerkType = mk("Magicules Theory", "Magicules Theory",
 				"[if(player.wis>=50)" +
-						"Increases magical critical hit chance by up to 10% (Wisdom-based)." +
+						"Increases magical critical hit chance multiplier by 50%." +
 						"|" +
 						"<b>You are too dumb to gain benefit from this perk.</b>" +
 						"]",
@@ -3628,7 +3628,7 @@ public class PerkLib
 				"You've chosen the 'Swift casting' perk, allowing you to cast one of your simple spells after a melee attack.");
 		public static const Tactician:PerkType = mk("Tactician", "Tactician",
 				"[if(player.inte>=50)" +
-						"Increases physical critical hit chance by up to 10% (Intelligence-based)." +
+						"Increases physical critical hit chance multiplier by 50%." +
 						"|" +
 						"<b>You are too dumb to gain any benefit from this perk.</b>" +
 						"]",
