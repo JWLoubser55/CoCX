@@ -8761,20 +8761,20 @@ public final class Mutations extends MutationsHelper {
             }
         }
         //Bunny feet! - requirez earz
-        if (player.lowerBody != LowerBody.BUNNY && changes < changeLimit && rand(3) == 0 && player.ears.type == Ears.BUNNY) {
+        if (player.lowerBody != LowerBody.BUNNY && changes < changeLimit && rand(3) == 0 && (player.ears.type == Ears.BUNNY || player.ears.type == Ears.BUNNY_2)) {
             outputText("[pg]");
             transformations.LowerBodyBunny.applyEffect();
             changes++;
         }
         //get teeth - from human, bunny, coonmask, or other humanoid teeth faces
-        if (player.ears.type == Ears.BUNNY && player.faceType != Face.BUCKTEETH && rand(3) == 0 && changes < changeLimit) {
+        if ((player.ears.type == Ears.BUNNY || player.ears.type == Ears.BUNNY_2) && player.faceType != Face.BUCKTEETH && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             if (player.faceType == Face.HUMAN || player.faceType == Face.SHARK_TEETH) outputText("You catch your nose twitching on its own at the bottom of your vision, but as soon as you focus on it, it stops.  A moment later, some of your teeth tingle and brush past your lips, exposing a white pair of buckteeth! <b>Your mouth has taken on some rabbit-like characteristics!</b>[pg]");
             transformations.FaceBuckteeth.applyEffect();
             changes++;
         }
         //FULL BUN FACE!  REQUIREZ EARZ
-        if (player.ears.type == Ears.BUNNY && player.faceType == Face.BUCKTEETH && rand(3) == 0 && changes < changeLimit) {
+        if ((player.ears.type == Ears.BUNNY || player.ears.type == Ears.BUNNY_2) && player.faceType == Face.BUCKTEETH && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.FaceBunny.applyEffect();
             changes++;

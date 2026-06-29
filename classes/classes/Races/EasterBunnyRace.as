@@ -58,7 +58,7 @@ public class EasterBunnyRace extends Race {
 						}, 0, -10)
 				.customRequirement("","No equine vagina",
 						function (body:BodyData): Boolean {
-							return !body.player.vaginaType() != VaginaClass.EQUINE
+							return body.player.vaginaType() != VaginaClass.EQUINE
 						}, 0, -10)
 				.hasPerk(PerkLib.EasterBunnyBalls, +1)
 				.hasPerk(PerkLib.GOBXChemical, -1000);
