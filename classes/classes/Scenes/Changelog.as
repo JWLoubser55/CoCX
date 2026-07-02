@@ -283,7 +283,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 strength lvl-up perk: Wolf Tooth. Req. Job: Warrior perk, 100+ str. Effect: Against bleeding enemies axe base critical hits are raised by 15%.\n");
 			outputText("-New tier 2 strength lvl-up perk: Mighty Weapon. Req. Job: Warrior perk, 100+ str. Effect: Wrath weapon base attack is increased by 3/6/9/12.\n");
 			outputText("-New tier 3 toughness lvl-up perk: Chivalry. Req. Job: Knight perk, 100+ tou. Effect: Regular swords (sword-type weapons) base attack is increased by 10.\n");
-			outputText("-Perks: Tactician, Grand Tactician, Blademaster, Grand Blademaster, Magicules Theory, Advanced Magicules Theory have their effects changed from increasing crit chance (phys or mag) to multiply base crit chance.\n");
+			outputText("-Perks: Tactician, Grand Tactician, Blademaster, Grand Blademaster, War caster, Elven Sense, Magicules Theory, Advanced Magicules Theory have their effects changed from increasing crit chance (phys or mag) to multiply base crit chance.\n");
 			outputText("-Dagger type weapons have now additinal 10% to base crit chance.\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -49,6 +49,7 @@ public class NagaRace extends Race {
 				.skinCoatType(Skin.SCALES, +1)
 				.earType(Ears.SNAKE, +1)
 				.eyeType(Eyes.SNAKE, +1)
+				.wingType(Wings.NONE, 0, -10)
 				.cockOrVaginaOfType(CockTypesEnum.LIZARD, VaginaClass.NAGA, +1)
 				.customRequirement("","not another snake-like race",
 						function (body:BodyData):Boolean {

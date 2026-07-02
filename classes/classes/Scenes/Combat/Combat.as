@@ -10739,11 +10739,8 @@ public class Combat extends BaseContent {
 		var critPMultiplier:Number = 0;
         if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) critPMultiplier += 0.5;
         if (player.hasPerk(PerkLib.GrandTactician) && player.inte >= 150) critPMultiplier += 0.5;
-        if (player.hasPerk(PerkLib.WarCaster) && player.inte >= 50) {
-            if (player.inte <= 300) critPChance += (player.inte - 50) / 10;
-            if (player.inte > 300) critPChance += 25;
-        }
-        if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critPChance += 5;
+        if (player.hasPerk(PerkLib.WarCaster) && player.inte >= 50) critPMultiplier += 0.5;
+        if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critPMultiplier += 0.25;
         if (player.hasPerk(PerkLib.Blademaster) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) critPMultiplier += 0.5;
         if (player.hasPerk(PerkLib.GrandBlademaster) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) critPMultiplier += 1.5;
         if (player.armor == armors.R_CHANG || player.armor == armors.R_QIPAO || player.armor == armors.G_CHANG || player.armor == armors.G_QIPAO || player.armor == armors.B_CHANG || player.armor == armors.B_QIPAO || player.armor == armors.P_CHANG || player.armor == armors.P_QIPAO) critPChance += 5;
@@ -10789,11 +10786,8 @@ public class Combat extends BaseContent {
 		var critMMultiplier:Number = 0;
         if (player.hasPerk(PerkLib.MagiculesTheory) && player.wis >= 50) critMMultiplier += 0.5;
         if (player.hasPerk(PerkLib.AdvancedMagiculesTheory) && player.wis >= 150) critMMultiplier += 0.5;
-        if (player.hasPerk(PerkLib.WarCaster) && player.inte >= 50) {
-            if (player.inte <= 300) critMChance += (player.inte - 50) / 10;
-            if (player.inte > 300) critMChance += 25;
-        }
-        if (player.hasPerk(PerkLib.ElvenSense) && player.wis >= 50) critMChance += 5;
+        if (player.hasPerk(PerkLib.WarCaster) && player.inte >= 50) critMMultiplier += 0.5;
+        if (player.hasPerk(PerkLib.ElvenSense) && player.wis >= 50) critMMultiplier += 0.25;
         if (player.armor == armors.R_CHANG || player.armor == armors.R_QIPAO || player.armor == armors.G_CHANG || player.armor == armors.G_QIPAO || player.armor == armors.B_CHANG || player.armor == armors.B_QIPAO || player.armor == armors.P_CHANG || player.armor == armors.P_QIPAO) critMChance += 5;
         if (player.headJewelry == headjewelries.SCANGOG) critMChance += 5;
         if (player.headJewelry == headjewelries.SATGOG) critMChance += 10;

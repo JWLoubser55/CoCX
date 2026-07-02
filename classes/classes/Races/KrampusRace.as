@@ -48,7 +48,7 @@ public class KrampusRace extends Race {
 				.tongueType(Tongue.DRACONIC, +1)
 				.tongueType(NOT(Tongue.CAT), 0, -1000)
 				.armType(Arms.FROSTWYRM, +1)
-				.legType(LowerBody.KRAMPUS, +2)
+				.legType(LowerBody.KRAMPUS, +2, -5)
 				.tailType(Tail.DRACONIC, +1)
 				.tailType(NONE(Tail.FEY_DRACONIC, Tail.CAT), 0, -10)
 				.wingType(Wings.DRACONIC_SMALL, +2)

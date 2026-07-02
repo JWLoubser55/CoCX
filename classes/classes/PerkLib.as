@@ -3855,8 +3855,8 @@ public class PerkLib
 				"Gain a +10% chance to do a critical strike with arrows. (+5% range physical attacks multiplier)",
 				"You've chosen the 'Vital Shot' perk, gaining an additional +10% chance to cause a critical hit with arrows. (+5% range physical attacks multiplier)");
 		public static const WarCaster:PerkType = mk("War caster", "War caster",
-				"Increases magical and physical critical chance by up to 25% based on intelligence. (+20% melee physical attacks multiplier)",
-				"You've chosen the 'War caster' perk, increasing your magical and physical critical chance by up to 25% based on intelligence. (+20% melee physical attacks multiplier)");
+				"Increases magical and physical critical hit chance multiplier by 50%. (+20% melee physical attacks multiplier)",
+				"You've chosen the 'War caster' perk, increasing your magical and physical critical hit chance multiplier by 50%. (+20% melee physical attacks multiplier)");
 		public static const WarMageNovice:PerkType = mk("Novice War Mage", "War Mage ( Novice )",
 				"Decrease mana costs of spells by 10%. Safe limit for spellcasting increased by 5%. (+5% spellpower bonus)",
 				"You've chosen the 'War Mage ( Novice )' perk, increasing maximum wrath by 50, decrease mana costs of spells by 10% and safe the limit for spellcasting increases by 5%. (+5% spellpower bonus)")

@@ -45,8 +45,6 @@ public class FrogRace extends Race {
 				.armType(Arms.FROG, +1)
 				.faceType(Face.FROG, +1)
 				.tongueType(Tongue.CHAMELEON, +1, -5)
-                .hornType(Horns.DRACONIC_X2, +1)
-				.hornType(Horns.DRACONIC_X4_12_INCH_LONG, +2)
                 .eyeType(Eyes.FROG, +1)
 				.eyeColor(ANY(FrogEyesColors), +1)
 				.antennaeType(Antennae.THIRD_EYE, +1)
@@ -56,13 +54,16 @@ public class FrogRace extends Race {
 						}, +3)
 				.noTail(+1)
                 .noWings(+1)
-				.wingType(ANY(Wings.DRACONIC_SMALL, Wings.DRACONIC_LARGE, Wings.DRACONIC_HUGE), +4)
 				.height(GREATER_THAN(120), +1)
 				.cockOrVaginaOfType(CockTypesEnum.DRAGON, VaginaClass.DRAGON, +2)
 				.hasPerk(PerkLib.EggCarrier, +2)
+				.hasPerk(PerkLib.GOBXChemical, -1000);
+		addScoresAfter(10)
+				.hornType(Horns.DRACONIC_X2, +1)
+				.hornType(Horns.DRACONIC_X4_12_INCH_LONG, +2)
+				.wingType(ANY(Wings.DRACONIC_SMALL, Wings.DRACONIC_LARGE, Wings.DRACONIC_HUGE), +4)
 				.hasPerk(PerkLib.DragonAcidBreath, +1)
-				.hasPerk(PerkLib.Dracoforce, +1)
-				.hasPerk(PerkLib.GOBXChemical, -1000);;
+				.hasPerk(PerkLib.Dracoforce, +1);
 
         addMutation(IMutationsLib.FrogJumpingLegsIM);
 		addMutation(IMutationsLib.AmphibiousEgglayerIM);
