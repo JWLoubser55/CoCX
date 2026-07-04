@@ -91,7 +91,7 @@ public class FlyingSwordSkill extends AbstractGeneral {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 25;
-		critChance += combatPhysicalCritical();
+		critChance *= combatPhysicalCritical();
 		if (player.weaponFlyingSwords == weaponsflyingswords.ASAUCHI) critChance -= 15;
 		if (rand(100) < critChance) {
 			crit = true;

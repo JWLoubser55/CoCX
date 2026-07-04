@@ -67,7 +67,7 @@ public class ZombieAttackSkill extends AbstractGeneral {
         var crit:Boolean = false;
         var critChance:int = 5;
         var critChanceMulti:Number = 1.75;
-        critChance += combatMagicalCritical();
+        critChance *= combatMagicalCritical();
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
         if (rand(100) < critChance) {
             crit = true;

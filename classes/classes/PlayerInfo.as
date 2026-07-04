@@ -681,8 +681,10 @@ public class PlayerInfo extends BaseContent {
 		combatStats += "<b>Base evasion:</b> " + player.getEvasionChance() + " %\n";
 		combatStats += "<b>Base block chance:</b> " + combat.combatBlock2() + " %\n";
 		combatStats += "<b>Base parry chance:</b> " + combat.combatParry2() + " %\n";
-		combatStats += "<b>Base physical attacks critical chance:</b> " + combat.combatPhysicalCritical() + " %\n";
-		combatStats += "<b>Base magical attacks critical chance:</b> " + combat.combatMagicalCritical() + " %\n";
+		combatStats += "<b>Base physical attacks critical chance:</b> " + (5 * combat.combatPhysicalCritical()) + " %\n";
+		combatStats += "<b>Base magical attacks critical chance:</b> " + (5 * combat.combatMagicalCritical()) + " %\n";
+		combatStats += "<b>Base main hand critical chance:</b> " + (5 * combat.calculateCrit2()) + " %\n";
+		combatStats += "<b>Base off hand critical chance:</b> " + (5 * combat.calculateCritOff2()) + " %\n";
 		var vthirst:VampireThirstEffect = player.statusEffectByType(StatusEffects.VampireThirst) as VampireThirstEffect;
 		if (vthirst != null) {
 			combatStats += "<b>Vampire Thirst:</b> " + vthirst.value1 + "/" + vthirst.maxThirst() + " ";

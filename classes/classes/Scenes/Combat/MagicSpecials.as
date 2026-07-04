@@ -1735,7 +1735,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit1:Boolean = false;
 		var critChance1:int = 5;
-		critChance1 += combatMagicalCritical();
+		critChance1 *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance1 = 0;
 		if (rand(100) < critChance1) {
 			crit1 = true;
@@ -1847,7 +1847,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit1:Boolean = false;
 		var critChance1:int = 5;
-		critChance1 += combatMagicalCritical();
+		critChance1 *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance1 = 0;
 		if (rand(100) < critChance1) {
 			crit1 = true;
@@ -1915,7 +1915,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit1:Boolean = false;
 		var critChance1:int = 5;
-		critChance1 += combatMagicalCritical();
+		critChance1 *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance1 = 0;
 		if (rand(100) < critChance1) {
 			crit1 = true;
@@ -2247,7 +2247,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -2307,7 +2307,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -4379,7 +4379,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -4404,7 +4404,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -4539,7 +4539,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (player.perkv1(IMutationsLib.ObsidianHeartIM) >= 3) critChance += 20;
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -4637,7 +4637,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (player.perkv1(IMutationsLib.DiamondHeartIM) >= 3) critChance += 20;
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -4835,7 +4835,7 @@ public class MagicSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combatMagicalCritical();
+			critChance *= combatMagicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -4902,7 +4902,7 @@ public class MagicSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combatMagicalCritical();
+			critChance *= combatMagicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -4954,7 +4954,7 @@ public class MagicSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combatMagicalCritical();
+			critChance *= combatMagicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -5044,7 +5044,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -5077,7 +5077,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -5171,7 +5171,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -5270,7 +5270,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -5370,7 +5370,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -5473,7 +5473,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -5576,7 +5576,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -5960,7 +5960,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var critP:Boolean = false;
 		var critChanceP:int = 5;
-		critChanceP += combatMagicalCritical();
+		critChanceP *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChanceP = 0;
 		if (rand(100) < critChanceP) {
 			critP = true;
@@ -6019,7 +6019,7 @@ public class MagicSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combatMagicalCritical();
+			critChance *= combatMagicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				damage *= 1.75;
@@ -6064,7 +6064,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -6194,7 +6194,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -6424,7 +6424,7 @@ public class MagicSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -6461,7 +6461,7 @@ public class MagicSpecials extends BaseCombatContent {
 		var lustDmg:Number = 0;
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) crit = true;
 		lustDmg += combat.sharedKinesisMidpart(crit);

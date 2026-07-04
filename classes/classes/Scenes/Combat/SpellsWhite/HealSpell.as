@@ -58,7 +58,7 @@ public class HealSpell extends AbstractWhiteSpell {
 		//Determine if critical heal!
 		var crit:Boolean = false;
 		var critHeal:int = 5;
-		critHeal += combatMagicalCritical();
+		critHeal *= combatMagicalCritical();
 		if (rand(100) < critHeal) {
 			crit = true;
 			heal *= 1.75;

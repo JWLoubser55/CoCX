@@ -1585,7 +1585,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var critChance:int = 5;
 		critChance += combat.combatPhysicalCritical();
 		if (player.hasPerk(PerkLib.VitalShot) && player.inte >= 50) critChance += 10;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
 		if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "Bow") critChance += 10;
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -1773,7 +1772,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var critChance:int = 5;
 		var critMulti:Number = 1.75;//coś innego tu wpisać jako perk pozwalający na wyższy mnożnik krytyków
 		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
 		if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "Bow") critChance += 10;
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -2051,7 +2049,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var critMulti:Number = 1.75;//coś innego tu wpisać jako perk pozwalający na wyższy mnożnik krytyków
 		critChance += combat.combatPhysicalCritical();
 		if (player.hasPerk(PerkLib.VitalShot) && player.inte >= 50) critChance += 10;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50 && player.weaponRangePerk == "Bow") critChance += 5;
 		if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "bow") critChance += 10;
 		critChance *= 2;
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
@@ -2157,8 +2154,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		critChance += combat.combatPhysicalCritical();
 		critMulti += combat.bonusCriticalDamageFromMissingHP();
 		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveMain()) critMulti += 1;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) critMulti *= combat.impaleMultiplier();
 		if (rand(100) < critChance) {
@@ -2374,8 +2369,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.CycloneStage3)) critChance += 20;
 		if (player.hasPerk(PerkLib.CycloneStage4)) critChance += 20;
 		if (player.hasPerk(PerkLib.CycloneStage5)) critChance += 25;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -2461,8 +2454,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.CycloneStage3)) critChance += 20;
 		if (player.hasPerk(PerkLib.CycloneStage4)) critChance += 20;
 		if (player.hasPerk(PerkLib.CycloneStage5)) critChance += 25;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -2767,7 +2758,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 25;
-			critChance += combatPhysicalCritical();
+			critChance *= combatPhysicalCritical();
 			if (player.weaponFlyingSwords == weaponsflyingswords.ASAUCHI) critChance -= 15;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -4174,7 +4165,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combatMagicalCritical();
+			critChance *= combatMagicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -4221,7 +4212,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combatMagicalCritical();
+			critChance *= combatMagicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -4455,10 +4446,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.Blademaster)) critChance += 5;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance += combat.combatPhysicalCritical(true);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -4532,10 +4520,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.Blademaster)) critChance += 5;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance += combat.combatPhysicalCritical(true);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -4608,10 +4593,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.Blademaster)) critChance += 5;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance += combat.combatPhysicalCritical(true);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -4686,10 +4668,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.Blademaster)) critChance += 5;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance += combat.combatPhysicalCritical(true);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -4758,10 +4737,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.Blademaster)) critChance += 5;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance += combat.combatPhysicalCritical(true);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -4826,11 +4802,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) {
-			if (player.inte <= 100) critChance += (player.inte - 50) / 5;
-			if (player.inte > 100) critChance += 10;
-		}
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
+		critChance += combat.combatPhysicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -4975,8 +4947,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 					var critChance:int = 5;
 					var critMulti:Number = 1.75;
 					critChance += combat.combatPhysicalCritical();
-					if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-					if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
 					if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 					if (rand(100) < critChance) {
 						crit = true;
@@ -5049,8 +5019,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 					var critChance:int = 5;
 					var critMulti:Number = 1.75;
 					critChance += combat.combatPhysicalCritical();
-					if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-					if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
 					if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 					if (rand(100) < critChance) {
 						crit = true;
@@ -5115,8 +5083,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 					var critChance:int = 5;
 					var critMulti:Number = 1.75;
 					critChance += combat.combatPhysicalCritical();
-					if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-					if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
 					if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 					if (rand(100) < critChance) {
 						crit = true;
@@ -5556,10 +5522,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combat.combatPhysicalCritical();
-			if (player.hasPerk(PerkLib.Blademaster)) critChance += 5;
-			if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-			if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+			critChance += combat.combatPhysicalCritical(true);
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -5728,10 +5691,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.Blademaster)) critChance += 5;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance += combat.combatPhysicalCritical(true);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -5852,10 +5812,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combat.combatPhysicalCritical();
-			if (player.hasPerk(PerkLib.Blademaster)) critChance += 5;
-			if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-			if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+			critChance += combat.combatPhysicalCritical(true);
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -6379,12 +6336,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) {
-			if (player.inte <= 100) critChance += (player.inte - 50) / 5;
-			if (player.inte > 100) critChance += 10;
-		}
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance += combat.combatPhysicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -6739,11 +6691,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//Critical
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) {
-				if (player.inte <= 100) critChance += (player.inte - 50) / 5;
-				if (player.inte > 100) critChance += 10;
-			}
-			if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
+			critChance += combat.combatPhysicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -7550,10 +7498,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.Blademaster)) critChance += 5;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance += combat.combatPhysicalCritical(true);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -7691,9 +7636,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combatPhysicalCritical();
+			critChance *= combatPhysicalCritical();
 			if (player.hasPerk(PerkLib.VitalShot) && player.inte >= 50) critChance += 10;
-			if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
 			if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "Bow") critChance += 10;
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
@@ -7806,7 +7750,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var critChance:int = 5;
 		critChance += combat.combatPhysicalCritical();
 		if (player.hasPerk(PerkLib.VitalShot) && player.inte >= 50) critChance += 10;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
 		if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "Bow") critChance += 10;
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -8008,7 +7951,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var critChance:int = 5;
 		critChance += combat.combatPhysicalCritical();
 		if (player.hasPerk(PerkLib.VitalShot) && player.inte >= 50) critChance += 10;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
 		if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "Bow") critChance += 10;
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -8048,7 +7990,6 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var critChance:int = 5;
 		critChance += combat.combatPhysicalCritical();
 		if (player.hasPerk(PerkLib.VitalShot) && player.inte >= 50) critChance += 10;
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
 		if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "Bow") critChance += 20;
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
@@ -8089,7 +8030,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -8164,7 +8105,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -8213,7 +8154,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -8244,7 +8185,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combatMagicalCritical();
+			critChance *= combatMagicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -8308,7 +8249,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatPhysicalCritical();
+		critChance *= combatPhysicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -8352,7 +8293,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical heal!
 		var crit:Boolean = false;
 		var critHeal:int = 5;
-		critHeal += combatMagicalCritical();
+		critHeal *= combatMagicalCritical();
 		if (rand(100) < critHeal) {
 			crit = true;
 			heal *= 1.75;
@@ -8389,7 +8330,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -8434,7 +8375,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -8490,7 +8431,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -8534,7 +8475,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		//Determine if critical hit!
 		var crit:Boolean = false;
 		var critChance:int = 5;
-		critChance += combatMagicalCritical();
+		critChance *= combatMagicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -8597,7 +8538,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		var crit:Boolean = false;
 		var critChance:int = 15;
 		var critDamage:Number = 1.75;
-		critChance += combatPhysicalCritical();
+		critChance *= combatPhysicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;

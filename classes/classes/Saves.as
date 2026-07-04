@@ -46,7 +46,7 @@ CONFIG::AIR
 }
 
 public class Saves extends BaseContent {
-	public static const SLOT_COUNT:int = 36;
+	public static const SLOT_COUNT:int = 60;
 
 	private static const SAVE_FILE_CURRENT_INTEGER_FORMAT_VERSION:int		= 816;
 		//Didn't want to include something like this, but an integer is safer than depending on the text version number from the CoC class.
@@ -418,7 +418,7 @@ public function confirmOverwrite(slot:String):void {
 	mainView.nameBox.visible = false;
 	clearOutput();
 	outputText("You are about to overwrite the following save slot: " + slot + ".");
-	outputText("\n\n<i>If you choose to overwrite a save file from the original CoC, it will no longer be playable on the original version. I recommend you use slots 10-14 for saving on the mod.</i>");
+	outputText("\n\n<i>If you choose to overwrite a save file from the original CoC, it will no longer be playable on the original version. I recommend you use slots 10-" + SLOT_COUNT + " for saving on the mod.</i>");
 	outputText("\n\n<b>ARE YOU SURE?</b>");
 	doYesNo(createCallBackFunction(saveGameToSharedObject, slot), saveToSlotScreen);
 }

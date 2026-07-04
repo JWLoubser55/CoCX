@@ -2234,7 +2234,7 @@ public class Combat extends BaseContent {
         //Determine if critical hit!
         var crit:Boolean = false;
         var critChance:int = 5;
-        critChance += combatMagicalCritical();
+        critChance *= combatMagicalCritical();
         if (elementType == AIR || elementType == AIR_E || elementType == WATER || elementType == WATER_E || elementType == METAL || elementType == ETHER) critChance += 10;
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
         if (rand(100) < critChance) {
@@ -2521,7 +2521,7 @@ public class Combat extends BaseContent {
         //Determine if critical hit!
         var crit:Boolean = false;
         var critChance:int = 5;
-        critChance += combatPhysicalCritical();
+        critChance *= combatPhysicalCritical();
         if (player.hasPerk(PerkLib.WeaponMastery)) {
 			if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
 			else critChance += 10;
@@ -4758,7 +4758,7 @@ public class Combat extends BaseContent {
 		var crit:Boolean = false;
 		var critChance:int = 5;
 		var critDmg:Number = 1.75;
-		critChance += combatPhysicalCritical();
+		critChance *= combatPhysicalCritical();
 		if (player.weapon == weapons.MGSWORD || player.weapon == weapons.MCLAWS || player.weapon is Tidarion) {
             if (player.weapon is Tidarion) meleeDamageNoLagMain = 0; //recalc damage
             if (meleeDamageNoLagMain != 0) damage += meleeDamageNoLagMain;
@@ -4798,7 +4798,6 @@ public class Combat extends BaseContent {
 			//Determine if critical hit!
 			if (player.hasPerk(PerkLib.VitalShot) && player.inte >= 50) critChance += 10;
 			if (player.hasPerk(PerkLib.AnatomyExpert)) critChance += 10;
-			if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -6913,7 +6912,7 @@ public class Combat extends BaseContent {
 			//Determine if critical hit!
 			var crit:Boolean = false;
 			var critChance:int = 5;
-			critChance += combatMagicalCritical();
+			critChance *= combatMagicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -7597,52 +7596,58 @@ public class Combat extends BaseContent {
     private function calculateCrit():int{
         var critChance:Number = 5;
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
-        else {
-            critChance += combatPhysicalCritical();
-            if (player.weapon.isSwordType() || player.weapon.isDaggerType()) critChance += 10;
-            if (player.weapon.isDuelingType()) critChance += 20;
-            if (player.hasPerk(PerkLib.JobDervish) && (!player.weapon.isLarge() || !player.weapon.isStaffType())) critChance += 10;
-            if (player.hasPerk(PerkLib.WeaponMastery) && player.weapon.isSingleLarge() && player.str >= 100) critChance += 10;
-            if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weapon.isSingleLarge() || player.weapon.isDualLarge()) && player.str >= 140) critChance += 10;
-            if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isMassive() || player.weapon.isDualMassive())) {
-                if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
-					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
-					else critChance += 10;
-				}
-                if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
-					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
-					else critChance += 10;
-				}
-            }
-            if (player.weapon == weapons.MASAMUN || (player.weapon == weapons.WG_GAXE && monster.cor > 66) || (player.weapon == weapons.DE_GAXE && monster.cor < 33)) critChance += 10;
-			if (player.weapon == weapons.YAMARG && monster.cor < 33) critChance += 20;
-        }
+        else critChance = calculateCrit2();
         return critChance;
     }
+	public function calculateCrit2():int{
+		var critChance2:Number = 5;
+		if (player.weapon.isSwordType() || player.weapon.isDaggerType()) critChance2 += 10;
+		if (player.weapon.isDuelingType()) critChance2 += 20;
+		critChance2 *= combatPhysicalCritical();
+		if (player.hasPerk(PerkLib.JobDervish) && (!player.weapon.isLarge() || !player.weapon.isStaffType())) critChance2 += 10;
+		if (player.hasPerk(PerkLib.WeaponMastery) && player.weapon.isSingleLarge() && player.str >= 100) critChance2 += 10;
+		if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weapon.isSingleLarge() || player.weapon.isDualLarge()) && player.str >= 140) critChance2 += 10;
+		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isMassive() || player.weapon.isDualMassive())) {
+			if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance2 += 25;
+				else critChance2 += 10;
+			}
+			if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance2 += 25;
+				else critChance2 += 10;
+			}
+		}
+		if (player.weapon == weapons.MASAMUN || (player.weapon == weapons.WG_GAXE && monster.cor > 33) || (player.weapon == weapons.DE_GAXE && monster.cor < -33)) critChance2 += 10;
+		if (player.weapon == weapons.YAMARG && monster.cor < -33) critChance2 += 20;
+		return critChance2;
+	}
     private function calculateCritOff():int{
         var critChance:Number = 5;
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
-        else {
-            critChance += combatPhysicalCritical();
-            if (player.weaponOff.isSwordType() || player.weaponOff.isDaggerType()) critChance += 10;
-            if (player.weaponOff.isDuelingType()) critChance += 20;
-            if (player.hasPerk(PerkLib.JobDervish) && (!player.weaponOff.isLarge() || !player.weaponOff.isStaffType())) critChance += 10;
-            if (player.hasPerk(PerkLib.WeaponMastery) && player.weaponOff.isSingleLarge() && player.str >= 100) critChance += 10;
-            if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weaponOff.isSingleLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance += 10;
-            if (player.hasPerk(PerkLib.GigantGripEx) && (player.weaponOff.isMassive() || player.weaponOff.isDualMassive())) {
-                if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
-					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
-					else critChance += 10;
-				}
-                if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
-					if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance += 25;
-					else critChance += 10;
-				}
-            }
-            if (player.weaponOff == weapons.MASAMUN || (player.weaponOff == weapons.WG_GAXE && monster.cor > 66) || (player.weaponOff == weapons.DE_GAXE && monster.cor < 33)) critChance += 10;
-        }
+        else critChance = calculateCritOff2();
         return critChance;
     }
+	public function calculateCritOff2():int{
+		var critChance2:Number = 5;
+		if (player.weaponOff.isSwordType() || player.weaponOff.isDaggerType()) critChance2 += 10;
+		if (player.weaponOff.isDuelingType()) critChance2 += 20;
+		critChance2 *= combatPhysicalCritical();
+		if (player.hasPerk(PerkLib.JobDervish) && (!player.weaponOff.isLarge() || !player.weaponOff.isStaffType())) critChance2 += 10;
+		if (player.hasPerk(PerkLib.WeaponMastery) && player.weaponOff.isSingleLarge() && player.str >= 100) critChance2 += 10;
+		if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weaponOff.isSingleLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance2 += 10;
+		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weaponOff.isMassive() || player.weaponOff.isDualMassive())) {
+			if (player.hasPerk(PerkLib.WeaponMastery) && player.str >= 100) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance2 += 25;
+				else critChance2 += 10;
+			}
+			if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
+				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance2 += 25;
+				else critChance2 += 10;
+			}
+		}
+		if (player.weaponOff == weapons.MASAMUN || (player.weaponOff == weapons.WG_GAXE && monster.cor > 33) || (player.weaponOff == weapons.DE_GAXE && monster.cor < -33)) critChance2 += 10;
+		return critChance2;
+	}
     private function calculateCritDamage():Number{
         var critDamage:Number = 1.75;
         critDamage += bonusCriticalDamageFromMissingHP();
@@ -7679,9 +7684,8 @@ public class Combat extends BaseContent {
         var critChance:Number = 5;
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
         else {
-            critChance += combatPhysicalCritical();
+            critChance *= combatPhysicalCritical();
             if (player.hasPerk(PerkLib.VitalShot) && player.inte >= 50) critChance += 10;
-			if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
 			if (player.hasStatusEffect(StatusEffects.ElvenEye) && player.weaponRangePerk == "bow") critChance += 20;
 			if (player.weaponRangePerk == "Throwing") {
 				if (player.weaponRangeName == "gnoll throwing axes") critChance += 10;
@@ -7708,9 +7712,8 @@ public class Combat extends BaseContent {
         var critChance:Number = 5;
         if ((monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) || player.weaponRange == weaponsrange.TRFATBI) critChance = 0;
         else {
-            critChance += combatPhysicalCritical();
+            critChance *= combatPhysicalCritical();
             if (player.hasPerk(PerkLib.VitalShot) && player.inte >= 50) critChance += 10;
-            if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
         }
         return critChance;
     }
@@ -9721,7 +9724,7 @@ public class Combat extends BaseContent {
         var crit:Boolean = false;
         var critChance:int = 5;
         critChance += BonusCritChance;
-        critChance += combatPhysicalCritical();
+        critChance *= combatPhysicalCritical();
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
         if (rand(100) < critChance) {
             crit = true;
@@ -9804,7 +9807,7 @@ public class Combat extends BaseContent {
         }
         else{
             enwa_critChance = 5;
-            enwa_critChance += combatPhysicalCritical();
+            enwa_critChance *= combatPhysicalCritical();
         }
 
         enwa_lustClawDamage = 6;
@@ -10098,7 +10101,7 @@ public class Combat extends BaseContent {
         //Determine if critical hit!
         var crit1:Boolean = false;
         var critChance1:int = 5;
-        critChance1 += combatMagicalCritical();
+        critChance1 *= combatMagicalCritical();
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance1 = 0;
         if (rand(100) < critChance1) {
             crit1 = true;
@@ -10734,49 +10737,49 @@ public class Combat extends BaseContent {
         return parryChance2;
     }
 
-    public function combatPhysicalCritical():Number {
+    public function combatPhysicalCritical(blademater:Boolean = false):Number {
         var critPChance:Number = 1;
 		var critPMultiplier:Number = 0;
         if (player.hasPerk(PerkLib.Tactician) && player.inte >= 50) critPMultiplier += 0.5;
         if (player.hasPerk(PerkLib.GrandTactician) && player.inte >= 150) critPMultiplier += 0.5;
         if (player.hasPerk(PerkLib.WarCaster) && player.inte >= 50) critPMultiplier += 0.5;
         if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critPMultiplier += 0.25;
-        if (player.hasPerk(PerkLib.Blademaster) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) critPMultiplier += 0.5;
-        if (player.hasPerk(PerkLib.GrandBlademaster) && player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) critPMultiplier += 1.5;
-        if (player.armor == armors.R_CHANG || player.armor == armors.R_QIPAO || player.armor == armors.G_CHANG || player.armor == armors.G_QIPAO || player.armor == armors.B_CHANG || player.armor == armors.B_QIPAO || player.armor == armors.P_CHANG || player.armor == armors.P_QIPAO) critPChance += 5;
-        if (player.headJewelry == headjewelries.SCANGOG) critPChance += 5;
-        if (player.headJewelry == headjewelries.SATGOG) critPChance += 10;
-        if (player.hasStatusEffect(StatusEffects.Rage)) critPChance += player.statusEffectv1(StatusEffects.Rage);
+        if (player.hasPerk(PerkLib.Blademaster) && ((player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) || blademater)) critPMultiplier += 0.5;
+        if (player.hasPerk(PerkLib.GrandBlademaster) && ((player.isNotHavingShieldCuzPerksNotWorkingOtherwise() && (player.weapon.isSwordType() || player.weapon.isDuelingType() || player.weapon.isAxeType() || player.weapon.isDaggerType() || player.weapon.isScytheType())) || blademater)) critPMultiplier += 1.5;
+        if (player.armor == armors.R_CHANG || player.armor == armors.R_QIPAO || player.armor == armors.G_CHANG || player.armor == armors.G_QIPAO || player.armor == armors.B_CHANG || player.armor == armors.B_QIPAO || player.armor == armors.P_CHANG || player.armor == armors.P_QIPAO) critPMultiplier += 0.5;
+        if (player.headJewelry == headjewelries.SCANGOG) critPMultiplier += 0.25;
+        if (player.headJewelry == headjewelries.SATGOG) critPMultiplier += 0.5;
+        if (player.hasStatusEffect(StatusEffects.Rage)) critPMultiplier += (0.1 * player.statusEffectv1(StatusEffects.Rage));
 		if (player.eyesOfTheHunterAdeptBoost()) {
-			if (player.hasPerk(PerkLib.EyesOfTheHunterAdept) && player.sens >= 50) critPChance += 5;
+			if (player.hasPerk(PerkLib.EyesOfTheHunterAdept) && player.sens >= 50) critPMultiplier += 0.25;
 			if (player.hasPerk(PerkLib.EyesOfTheHunterSu) && player.sens >= 30) {
-				if (player.sens >= 500) critPChance += 95;
-				else critPChance += 2 * Math.round((player.sens - 25) / 5);
+				if (player.sens >= 500) critPMultiplier += 4.75;
+				else critPMultiplier += 0.1 * Math.round((player.sens - 25) / 5);
 			}
 		}
 		if (player.eyesOfTheHunterExpertBoost()) {
-			if (player.hasPerk(PerkLib.EyesOfTheHunterExpert) && player.sens >= 75) critPChance += 5;
+			if (player.hasPerk(PerkLib.EyesOfTheHunterExpert) && player.sens >= 75) critPMultiplier += 0.25;
 			if (player.hasPerk(PerkLib.EyesOfTheHunterSu) && player.sens >= 30) {
-				if (player.sens >= 500) critPChance += 95;
-				else critPChance += 2 * Math.round((player.sens - 25) / 5);
+				if (player.sens >= 500) critPMultiplier += 4.75;
+				else critPMultiplier += 0.1 * Math.round((player.sens - 25) / 5);
 			}
 		}
 		if (player.eyesOfTheHunterMasterBoost()) {
-			if (player.hasPerk(PerkLib.EyesOfTheHunterMaster) && player.sens >= 100) critPChance += 5;
+			if (player.hasPerk(PerkLib.EyesOfTheHunterMaster) && player.sens >= 100) critPMultiplier += 0.25;
 			if (player.hasPerk(PerkLib.EyesOfTheHunterSu) && player.sens >= 30) {
-				if (player.sens >= 500) critPChance += 95;
-				else critPChance += 2 * Math.round((player.sens - 25) / 5);
+				if (player.sens >= 500) critPMultiplier += 4.75;
+				else critPMultiplier += 0.1 * Math.round((player.sens - 25) / 5);
 			}
 		}
 		if (player.eyesOfTheHunterGrandMasterBoost()) {
-			if (player.hasPerk(PerkLib.EyesOfTheHunterGrandMaster) && player.sens >= 125) critPChance += 5;
+			if (player.hasPerk(PerkLib.EyesOfTheHunterGrandMaster) && player.sens >= 125) critPMultiplier += 0.25;
 			if (player.hasPerk(PerkLib.EyesOfTheHunterSu) && player.sens >= 30) {
-				if (player.sens >= 500) critPChance += 95;
-				else critPChance += 2 * Math.round((player.sens - 25) / 5);
+				if (player.sens >= 500) critPMultiplier += 4.75;
+				else critPMultiplier += 0.1 * Math.round((player.sens - 25) / 5);
 			}
 		}
-        if (player.perkv1(IMutationsLib.EyeOfTheTigerIM) >= 2) critPChance += 5;
-		if (player.statStore.hasBuff("Atavism")) critPChance += 35;
+        if (player.perkv1(IMutationsLib.EyeOfTheTigerIM) >= 2) critPMultiplier += 0.25;
+		if (player.statStore.hasBuff("Atavism")) critPMultiplier += 2;
 		critPChance *= critPMultiplier;
         return critPChance;
     }
@@ -10788,35 +10791,35 @@ public class Combat extends BaseContent {
         if (player.hasPerk(PerkLib.AdvancedMagiculesTheory) && player.wis >= 150) critMMultiplier += 0.5;
         if (player.hasPerk(PerkLib.WarCaster) && player.inte >= 50) critMMultiplier += 0.5;
         if (player.hasPerk(PerkLib.ElvenSense) && player.wis >= 50) critMMultiplier += 0.25;
-        if (player.armor == armors.R_CHANG || player.armor == armors.R_QIPAO || player.armor == armors.G_CHANG || player.armor == armors.G_QIPAO || player.armor == armors.B_CHANG || player.armor == armors.B_QIPAO || player.armor == armors.P_CHANG || player.armor == armors.P_QIPAO) critMChance += 5;
-        if (player.headJewelry == headjewelries.SCANGOG) critMChance += 5;
-        if (player.headJewelry == headjewelries.SATGOG) critMChance += 10;
+        if (player.armor == armors.R_CHANG || player.armor == armors.R_QIPAO || player.armor == armors.G_CHANG || player.armor == armors.G_QIPAO || player.armor == armors.B_CHANG || player.armor == armors.B_QIPAO || player.armor == armors.P_CHANG || player.armor == armors.P_QIPAO) critMMultiplier += 0.5;
+        if (player.headJewelry == headjewelries.SCANGOG) critMMultiplier += 0.25;
+        if (player.headJewelry == headjewelries.SATGOG) critMMultiplier += 0.5;
 		if (player.eyesOfTheHunterAdeptBoost()) {
-			if (player.hasPerk(PerkLib.EyesOfTheHunterAdept) && player.sens >= 50) critMChance += 5;
+			if (player.hasPerk(PerkLib.EyesOfTheHunterAdept) && player.sens >= 50) critMMultiplier += 0.25;
 			if (player.hasPerk(PerkLib.EyesOfTheHunterSu) && player.sens >= 30) {
-				if (player.sens >= 500) critMChance += 95;
-				else critMChance += 2 * Math.round((player.sens - 25) / 5);
+				if (player.sens >= 500) critMMultiplier += 4.75;
+				else critMMultiplier += 0.1 * Math.round((player.sens - 25) / 5);
 			}
 		}
 		if (player.eyesOfTheHunterExpertBoost()) {
-			if (player.hasPerk(PerkLib.EyesOfTheHunterExpert) && player.sens >= 75) critMChance += 5;
+			if (player.hasPerk(PerkLib.EyesOfTheHunterExpert) && player.sens >= 75) critMMultiplier += 0.25;
 			if (player.hasPerk(PerkLib.EyesOfTheHunterSu) && player.sens >= 30) {
-				if (player.sens >= 500) critMChance += 95;
-				else critMChance += 2 * Math.round((player.sens - 25) / 5);
+				if (player.sens >= 500) critMMultiplier += 4.75;
+				else critMMultiplier += 0.1 * Math.round((player.sens - 25) / 5);
 			}
 		}
 		if (player.eyesOfTheHunterMasterBoost()) {
-			if (player.hasPerk(PerkLib.EyesOfTheHunterMaster) && player.sens >= 100) critMChance += 5;
+			if (player.hasPerk(PerkLib.EyesOfTheHunterMaster) && player.sens >= 100) critMMultiplier += 0.25;
 			if (player.hasPerk(PerkLib.EyesOfTheHunterSu) && player.sens >= 30) {
-				if (player.sens >= 500) critMChance += 95;
-				else critMChance += 2 * Math.round((player.sens - 25) / 5);
+				if (player.sens >= 500) critMMultiplier += 4.75;
+				else critMMultiplier += 0.1 * Math.round((player.sens - 25) / 5);
 			}
 		}
 		if (player.eyesOfTheHunterGrandMasterBoost()) {
-			if (player.hasPerk(PerkLib.EyesOfTheHunterGrandMaster) && player.sens >= 125) critMChance += 5;
+			if (player.hasPerk(PerkLib.EyesOfTheHunterGrandMaster) && player.sens >= 125) critMMultiplier += 0.25;
 			if (player.hasPerk(PerkLib.EyesOfTheHunterSu) && player.sens >= 30) {
-				if (player.sens >= 500) critMChance += 95;
-				else critMChance += 2 * Math.round((player.sens - 25) / 5);
+				if (player.sens >= 500) critMMultiplier += 4.75;
+				else critMMultiplier += 0.1 * Math.round((player.sens - 25) / 5);
 			}
 		}
 		critMChance *= critMMultiplier;
@@ -13051,7 +13054,7 @@ public class Combat extends BaseContent {
 			//Determine if critical hit!
 			var crit0:Boolean = false;
 			var critChance0:int = 5;
-			critChance0 += combatMagicalCritical();
+			critChance0 *= combatMagicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance0 = 0;
 			if (rand(100) < critChance0) {
 				crit0 = true;
@@ -13072,7 +13075,7 @@ public class Combat extends BaseContent {
 				//Determine if critical hit!
 				var critWG:Boolean = false;
 				var critChanceWG:int = 5;
-				critChanceWG += combatMagicalCritical();
+				critChanceWG *= combatMagicalCritical();
 				if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChanceWG = 0;
 				if (rand(100) < critChanceWG) {
 					critWG = true;
@@ -13100,7 +13103,7 @@ public class Combat extends BaseContent {
                 //Determine if critical hit!
                 var crit:Boolean = false;
                 var critChance:int = 5;
-                critChance += combatMagicalCritical();
+                critChance *= combatMagicalCritical();
                 if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
                 if (rand(100) < critChance) {
                     crit = true;
@@ -13236,7 +13239,7 @@ public class Combat extends BaseContent {
             //Determine if critical hit!
             var crit1:Boolean = false;
             var critChance1:int = 5;
-            critChance1 += combatMagicalCritical();
+            critChance1 *= combatMagicalCritical();
             if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance1 = 0;
             if (rand(100) < critChance1) {
                 crit1 = true;
@@ -13319,7 +13322,7 @@ public class Combat extends BaseContent {
                 //Determine if critical hit!
                 var crit3:Boolean = false;
                 var critChance3:int = 5;
-                critChance3 += combatMagicalCritical();
+                critChance3 *= combatMagicalCritical();
                 if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance3 = 0;
                 if (rand(100) < critChance3) {
                     crit3 = true;
@@ -13529,7 +13532,7 @@ public class Combat extends BaseContent {
             //Determine if critical hit!
             var crit4:Boolean = false;
             var critChance5:int = 5;
-            critChance5 += combatMagicalCritical();
+            critChance5 *= combatMagicalCritical();
             if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance5 = 0;
             if (rand(100) < critChance5) {
                 crit4 = true;
@@ -17116,9 +17119,7 @@ public function OrcaImpale():void {
         var crit:Boolean = false;
         var critChance:int = 5;
         var critMulti:Number = 1.75;
-        critChance += combatPhysicalCritical();
-        if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-        if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+        critChance *= combatPhysicalCritical();
         if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
         if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) critMulti += 0.75;
         if (rand(100) < critChance) {
@@ -17298,9 +17299,7 @@ public function CancerGrab():void {
 			var crit:Boolean = false;
 			var critChance:int = 5;
 			var critMulti:Number = 1.75;
-			critChance += combat.combatPhysicalCritical();
-			if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-			if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+			critChance *= combatPhysicalCritical();
 			if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 			if (rand(100) < critChance) {
 				crit = true;
@@ -17476,7 +17475,7 @@ public function SingDevastatingAria():void {
     //Determine if critical hit!
     var crit:Boolean = false;
     var critChance:int = 5;
-    critChance += combatMagicalCritical();
+    critChance *= combatMagicalCritical();
     if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
     if (rand(100) < critChance) {
         crit = true;
@@ -18072,9 +18071,7 @@ public function Guillotine():void {
 		var crit:Boolean = false;
 		var critChance:int = 5;
 		var critMulti:Number = 1.75;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance *= combatPhysicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -18135,9 +18132,7 @@ public function ScyllaSqueeze():void {
 		var crit:Boolean = false;
 		var critChance:int = 5;
 		var critMulti:Number = 1.75;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance *= combatPhysicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -18309,9 +18304,7 @@ public function TongueSqueeze():void {
 		var crit:Boolean = false;
 		var critChance:int = 5;
 		var critMulti:Number = 1.75;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance *= combatPhysicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -18604,9 +18597,7 @@ public function WhipStrangulate():void {
 		var crit:Boolean = false;
 		var critChance:int = 5;
 		var critMulti:Number = 1.75;
-		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
+		critChance *= combatPhysicalCritical();
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
@@ -19452,7 +19443,7 @@ public function castPsychicBolt():void {
 	//Determine if critical hit!
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) {
 		crit = true;
@@ -19481,7 +19472,7 @@ public function usePyrokinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -19497,7 +19488,7 @@ public function useHydrokinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -19513,7 +19504,7 @@ public function useCryokinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -19529,7 +19520,7 @@ public function useGeokinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -19545,7 +19536,7 @@ public function useElectrokinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -19561,7 +19552,7 @@ public function useAerokinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -19577,7 +19568,7 @@ public function useUmbrakinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -19593,7 +19584,7 @@ public function useAcidokinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -19609,7 +19600,7 @@ public function useIonikinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -19624,7 +19615,7 @@ public function useCocytokinesis():void {
 	var damage:Number = 0;
 	var crit:Boolean = false;
 	var critChance:int = 5;
-	critChance += combatMagicalCritical();
+	critChance *= combatMagicalCritical();
 	if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 	if (rand(100) < critChance) crit = true;
 	damage += sharedKinesisMidpart(crit);
@@ -20317,8 +20308,7 @@ public function greatDive():void {
 	damage = movementPhysicalSpecialsBoost(damage);
     var crit:Boolean = false;
     var critChance:int = 5;
-    critChance += combatPhysicalCritical();
-    if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
+    critChance *= combatPhysicalCritical();
     if (player.hasPerk(PerkLib.DeathPlunge)) {
         if (player.hasPerk(PerkLib.WeaponMastery) && (player.weapon.isSingleLarge() || player.weaponOff.isSingleLarge()) && player.str >= 100) critChance += 10;
         if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weapon.isDualLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance += 10;
@@ -20333,7 +20323,6 @@ public function greatDive():void {
 			}
         }
     }
-    if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
     if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
     if (rand(100) < critChance) {
         crit = true;
@@ -20526,7 +20515,7 @@ public function asurasHowl():void {
     //Determine if critical heal!
     var crit:Boolean = false;
     var critHeal:int = 5;
-    critHeal += combatMagicalCritical();
+    critHeal *= combatMagicalCritical();
     if (rand(100) < critHeal) {
         crit = true;
         heal *= 2.5;
@@ -20570,7 +20559,7 @@ public function asurasXFingersOfDestruction(fingercount:String):void {
     damage *= (1 + FoDMulti);
     var crit:Boolean = false;
     var critChance:int = 65;
-    critChance += combatPhysicalCritical();
+    critChance *= combatPhysicalCritical();
     if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
     if (rand(100) < critChance) {
         crit = true;
@@ -20641,7 +20630,7 @@ public function sendSkeletonToFight():void {
 	if (player.hasStatusEffect(StatusEffects.BonusEffectsNecroSet)) damage *= (1 + (0.1 * player.statusEffectv2(StatusEffects.BonusEffectsNecroSet)));
     //Determine if critical hit!
     var critChance:int = 5;
-    critChance += combatPhysicalCritical();
+    critChance *= combatPhysicalCritical();
     if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
     if (rand(100) < critChance)
         damage *= 1.75;
@@ -20792,7 +20781,7 @@ public function skeletonSmash():void {
 	damage *= muli;
     //Determine if critical hit!
     var critChance:int = 5;
-    critChance += combatPhysicalCritical();
+    critChance *= combatPhysicalCritical();
     if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
     if (rand(100) < critChance)
 	damage *= 1.75;
@@ -21765,4 +21754,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

@@ -1004,8 +1004,6 @@ public function nagaSqueeeezeDmg():void {
 		var critChance:int = 5;
 		var critMulti:Number = 1.75;
 		critChance += combat.combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.ElvenSense) && player.inte >= 50) critChance += 5;
-		if (player.hasStatusEffect(StatusEffects.Rage)) critChance += player.statusEffectv1(StatusEffects.Rage);
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;
