@@ -8474,7 +8474,7 @@ public class PerkLib
 					.requireInt(30)
 					.requireWis(30);
             UtilitySkillsBeginner.requireCustomFunction(function (player:Player):Boolean {
-						return (Crafting.alembicLevel >= 1 || player.herbalismLevel >= 1 || player.farmingLevel >= 1 || player.miningLevel >= 1);
+						return (player.alchemySkillStat.level >= 1 || player.herbalismLevel >= 1 || player.farmingLevel >= 1 || player.miningLevel >= 1);
 					}, "Any non combat skill at lvl 1");
 			Metabolization.requireCustomFunction(function (player:Player):Boolean {
                         return player.isAnyRaceCached(Races.SLIME, Races.DARKSLIME, Races.MAGMASLIME, Races.MANTICORE, Races.DISPLACERBEAST, Races.VAMPIRE, Races.DRACULA) || CoC.instance.flags[kFLAGS.HUNGER_ENABLED] > 0;
@@ -8991,12 +8991,12 @@ public class PerkLib
             AlchemicalTolerance.requirePerk(JobSoulCultivator)
 					.requireLevel(18)
 					.requireCustomFunction(function (player:Player):Boolean {
-						return Crafting.alembicLevel >= 1;
+						return player.alchemySkillStat.level >= 1;
 					}, "Alchemy Level 1 or higher");
 			UtilitySkillsApprentice.requireLevel(18)
                     .requirePerk(UtilitySkillsBeginner)
 					.requireCustomFunction(function (player:Player):Boolean {
-						return (Crafting.alembicLevel >= 4 || player.herbalismLevel >= 4 || player.farmingLevel >= 4 || player.miningLevel >= 4);
+						return (player.alchemySkillStat.level >= 4 || player.herbalismLevel >= 4 || player.farmingLevel >= 4 || player.miningLevel >= 4);
 					}, "Any non combat skill at lvl 4");
             //Tier 4
 			ChimericalBodySemiImprovedStage.requirePerk(ChimericalBodyBasicStage)
@@ -9241,7 +9241,7 @@ public class PerkLib
             UtilitySkillsSkilled.requireLevel(36)
                     .requirePerk(UtilitySkillsApprentice)
 					.requireCustomFunction(function (player:Player):Boolean {
-						return (Crafting.alembicLevel >= 7 || player.herbalismLevel >= 7 || player.farmingLevel >= 7 || player.miningLevel >= 7);
+						return (player.alchemySkillStat.level >= 7 || player.herbalismLevel >= 7 || player.farmingLevel >= 7 || player.miningLevel >= 7);
 					}, "Any non combat skill at lvl 7");
             //Tier 7
             ChimericalBodyAdvancedStage.requirePerk(ChimericalBodySemiAdvancedStage)
@@ -9373,7 +9373,7 @@ public class PerkLib
             UtilitySkillsProfessional.requireLevel(54)
                     .requirePerk(UtilitySkillsSkilled)
 					.requireCustomFunction(function (player:Player):Boolean {
-						return (Crafting.alembicLevel >= 10 || player.herbalismLevel >= 10 || player.farmingLevel >= 10 || player.miningLevel >= 10);
+						return (player.alchemySkillStat.level >= 10 || player.herbalismLevel >= 10 || player.farmingLevel >= 10 || player.miningLevel >= 10);
 					}, "Any non combat skill at lvl 10");
             GrandMasterAllRounderEducation.requireLevel(54)
                     .requirePerk(MasterAllRounderEducation);
@@ -9479,7 +9479,7 @@ public class PerkLib
             UtilitySkillsArtisan.requireLevel(72)
                     .requirePerk(UtilitySkillsProfessional)
 					.requireCustomFunction(function (player:Player):Boolean {
-						return (Crafting.alembicLevel >= 13 || player.herbalismLevel >= 13 || player.farmingLevel >= 13 || player.miningLevel >= 13);
+						return (player.alchemySkillStat.level >= 13 || player.herbalismLevel >= 13 || player.farmingLevel >= 13 || player.miningLevel >= 13);
 					}, "Any non combat skill at lvl 13");
             //Tier 13
             ChimericalBodyEpicStage.requireAnyPerk(ChimericalBodySemiEpicStage, ChimericalBodySemiEpicStageEx)
