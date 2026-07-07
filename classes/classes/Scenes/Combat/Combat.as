@@ -7601,10 +7601,12 @@ public class Combat extends BaseContent {
     }
 	public function calculateCrit2():int{
 		var critChance2:Number = 5;
+		var critChance2a:Number = combatPhysicalCritical();
 		if (player.weapon.isSwordType() || player.weapon.isDaggerType()) critChance2 += 10;
 		if (player.weapon.isDuelingType()) critChance2 += 20;
-		critChance2 *= combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.JobDervish) && (!player.weapon.isLarge() || !player.weapon.isStaffType())) critChance2 += 10;
+		if (player.hasPerk(PerkLib.JobDervish) && !player.weapon.isLarge() && !player.weapon.isMassive() && !player.weapon.isStaffType()) critChance2 += 10;
+		if (player.weapon == weapons.MASAMUN || (player.weapon == weapons.WG_GAXE && monster.cor > 33) || (player.weapon == weapons.DE_GAXE && monster.cor < -33)) critChance2 += 10;
+		if (player.weapon == weapons.YAMARG && monster.cor < -33) critChance2 += 20;/*
 		if (player.hasPerk(PerkLib.WeaponMastery) && player.weapon.isSingleLarge() && player.str >= 100) critChance2 += 10;
 		if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weapon.isSingleLarge() || player.weapon.isDualLarge()) && player.str >= 140) critChance2 += 10;
 		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isMassive() || player.weapon.isDualMassive())) {
@@ -7612,13 +7614,12 @@ public class Combat extends BaseContent {
 				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance2 += 25;
 				else critChance2 += 10;
 			}
-			if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
+			if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {			//they will now give biiigeeer crit dmg multiplier not biger chance to crit
 				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance2 += 25;
 				else critChance2 += 10;
 			}
-		}
-		if (player.weapon == weapons.MASAMUN || (player.weapon == weapons.WG_GAXE && monster.cor > 33) || (player.weapon == weapons.DE_GAXE && monster.cor < -33)) critChance2 += 10;
-		if (player.weapon == weapons.YAMARG && monster.cor < -33) critChance2 += 20;
+		}*/
+		critChance2 *= critChance2a;
 		return critChance2;
 	}
     private function calculateCritOff():int{
@@ -7629,10 +7630,12 @@ public class Combat extends BaseContent {
     }
 	public function calculateCritOff2():int{
 		var critChance2:Number = 5;
+		var critChance2a:Number = combatPhysicalCritical();
 		if (player.weaponOff.isSwordType() || player.weaponOff.isDaggerType()) critChance2 += 10;
 		if (player.weaponOff.isDuelingType()) critChance2 += 20;
-		critChance2 *= combatPhysicalCritical();
-		if (player.hasPerk(PerkLib.JobDervish) && (!player.weaponOff.isLarge() || !player.weaponOff.isStaffType())) critChance2 += 10;
+		if (player.hasPerk(PerkLib.JobDervish) && !player.weaponOff.isLarge() && !player.weaponOff.isMassive() && !player.weaponOff.isStaffType()) critChance2 += 10;
+		if (player.weaponOff == weapons.MASAMUN || (player.weaponOff == weapons.WG_GAXE && monster.cor > 33) || (player.weaponOff == weapons.DE_GAXE && monster.cor < -33)) critChance2 += 10;
+		critChance2 *= critChance2a;/*
 		if (player.hasPerk(PerkLib.WeaponMastery) && player.weaponOff.isSingleLarge() && player.str >= 100) critChance2 += 10;
 		if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weaponOff.isSingleLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance2 += 10;
 		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weaponOff.isMassive() || player.weaponOff.isDualMassive())) {
@@ -7640,16 +7643,15 @@ public class Combat extends BaseContent {
 				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance2 += 25;
 				else critChance2 += 10;
 			}
-			if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {
+			if (player.hasPerk(PerkLib.WeaponGrandMastery) && player.str >= 140) {			//they will now give biiigeeer crit dmg multiplier not biger chance to crit
 				if (player.hasPerk(PerkLib.MassiveSynergyEx)) critChance2 += 25;
 				else critChance2 += 10;
 			}
-		}
-		if (player.weaponOff == weapons.MASAMUN || (player.weaponOff == weapons.WG_GAXE && monster.cor > 33) || (player.weaponOff == weapons.DE_GAXE && monster.cor < -33)) critChance2 += 10;
+		}*/
 		return critChance2;
 	}
     private function calculateCritDamage():Number{
-        var critDamage:Number = 1.75;
+        var critDamage:Number = 2;
         critDamage += bonusCriticalDamageFromMissingHP();
         if ((player.weapon == weapons.WG_GAXE && monster.cor > 66) || (player.weapon == weapons.DE_GAXE && monster.cor < 33)) critDamage += 0.1;
         if (player.weapon == weapons.MACSPEA) critDamage += 0.25;
@@ -7673,8 +7675,8 @@ public class Combat extends BaseContent {
 		if (player.hasStatusEffect(StatusEffects.AlterBindScroll4)) critDamage += 1;
 		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveOff()) critDamage += 1;
 		if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) critDamage *= impaleMultiplier();
-        if (player.hasPerk(PerkLib.SkilledFighterEx) && calculateCrit() > 100) {
-			if (calculateCrit() > 200) critDamage *= 3;
+        if (player.hasPerk(PerkLib.SkilledFighterEx) && calculateCritOff() > 100) {
+			if (calculateCritOff() > 200) critDamage *= 3;
 			else critDamage *= 2;
 		}
         return critDamage;
@@ -7701,8 +7703,8 @@ public class Combat extends BaseContent {
 			if (player.hasPerk(PerkLib.AnatomyExpert)) critDamage += 0.5;
 			if (player.hasPerk(PerkLib.PrestigeJobStalker)) critDamage += 0.2;
 		}
-		if (player.hasPerk(PerkLib.SkilledRangerEx) && calculateCrit() > 100) {
-			if (calculateCrit() > 200) critDamage *= 3;
+		if (player.hasPerk(PerkLib.SkilledRangerEx) && calculateCritRange() > 100) {
+			if (calculateCritRange() > 200) critDamage *= 3;
 			else critDamage *= 2;
 		}
         return critDamage;
@@ -7720,8 +7722,8 @@ public class Combat extends BaseContent {
     private function calculateCritDamageFirearms():Number{
         var critDamage:Number = 2;
         if (player.hasPerk(PerkLib.SilverForMonsters) && monster.hasPerk(PerkLib.EnemyTrueDemon)) critDamage += 0.5;
-		if (player.hasPerk(PerkLib.SkilledGunslingerEx) && calculateCrit() > 100) {
-			if (calculateCrit() > 200) critDamage *= 3;
+		if (player.hasPerk(PerkLib.SkilledGunslingerEx) && calculateCritFirearms() > 100) {
+			if (calculateCritFirearms() > 200) critDamage *= 3;
 			else critDamage *= 2;
 		}
         return critDamage;
@@ -21754,4 +21756,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}
