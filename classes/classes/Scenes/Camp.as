@@ -2548,8 +2548,8 @@ public class Camp extends NPCAwareContent{
 			else addButtonDisabled(2, "Watch Sky", "The option to watch the sunset is available at 7pm, \n\nStargazing 8pm-5am.");
 		}
 		addButton(3, "Read Codex", codex.accessCodexMenu).hint("Read any codex entries you have unlocked.");
-		addButtonIfTrue(10, "Heal", useHealAtCamp, "Req. knowing Heal spell and have 30+ mana.", player.hasStatusEffect(StatusEffects.KnowsHeal) && player.mana >= 30);
-		addButtonIfTrue(11, "Cure", useCureAtCamp, "Req. knowing Cure spell and have 500+ mana.", player.hasStatusEffect(StatusEffects.KnowsCure) && player.mana >= 500);
+		addButtonIfTrue(10, "Heal", useHealAtCamp, "Req. knowing Heal spell and have at least 30+ mana.", player.hasStatusEffect(StatusEffects.KnowsHeal) && player.mana >= 30);
+		addButtonIfTrue(11, "Cure", useCureAtCamp, "Req. knowing Cure spell and have at least 500+ mana.", player.hasStatusEffect(StatusEffects.KnowsCure) && player.mana >= 500);
 		addButton(14, "Back", campActions);
 	}
 
@@ -4292,8 +4292,21 @@ public class Camp extends NPCAwareContent{
 		clearOutput();
 		pc.ManaChange(-30);
 		CombatAbilities.Heal.doEffect();
+		if (player.mana >= 30 && player.HP < player.maxOverHP()) useHealAtCamp1();
+		else useHealAtCamp0();
+	}
+	private function useHealAtCamp0():void {
 		advanceMinutes(15);
 		doNext(playerMenu);
+	}
+	private function useHealAtCamp1():void {
+		if (player.mana >= 30 && player.HP < player.maxOverHP()) useHealAtCamp2();
+		else useHealAtCamp0();
+	}
+	private function useHealAtCamp2():void {
+		pc.ManaChange(-30);
+		CombatAbilities.Heal.doEffect(false);
+		useHealAtCamp1();
 	}
 	private function useCureAtCamp():void {
 		clearOutput();outputText("You channel white magic to rid yourself of all negative effects affecting you.");
