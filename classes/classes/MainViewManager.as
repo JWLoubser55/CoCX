@@ -98,7 +98,7 @@ public class MainViewManager extends Utils {
 	// REFRESH
 	//------------
 	public function hungerBarVisible():Boolean {
-		return flags[kFLAGS.HUNGER_ENABLED] > 0 && flags[kFLAGS.URTA_QUEST_STATUS] != 0.75;
+		return (flags[kFLAGS.HUNGER_ENABLED] > 0 || player.hasPerk(PerkLib.EndlessHunger) || player.hasPerk(PerkLib.ExanimationI)) && flags[kFLAGS.URTA_QUEST_STATUS] != 0.75;
 	}
 	public function refreshStats():void {
 		if (hungerBarVisible()) {
