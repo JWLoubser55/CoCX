@@ -153,7 +153,7 @@ public class EbonLabyrinth extends DungeonAbstractContent {
         addButtonIfTrue(0, "Sleep", doSleepEL, "It's still too early to go to sleep.",
                 isNightTime,  "Turn yourself in for the night. May result in monster ambush!");
         SceneLib.masturbation.masturButton(5);
-		if (room == 1) addButtonIfTrue(7, "Cat", shortcuts, "you've not even beaten ANY boss yet.", flags[kFLAGS.EBON_LABYRINTH_RECORD] >= 50, "Talk to the cat only if you plan skip some rooms.");
+		if (room == 1) addButtonIfTrue(7, "Cat", shortcuts, "You've not even beaten ANY boss yet.", flags[kFLAGS.EBON_LABYRINTH_RECORD] >= 50, "Talk to the cat only if you plan skip some rooms.");
         addButton(9, "Inventory", inventory.inventoryMenu);
         addButton(14, "Exit", confirmExit);
         dungeons.setTopButtons();
@@ -178,6 +178,7 @@ public class EbonLabyrinth extends DungeonAbstractContent {
 		addButtonIfTrue(4, "250", navigateToRoomEL250, "you've not even beaten 5 bosses yet.", flags[kFLAGS.EBON_LABYRINTH_RECORD] >= 250, "Skip 250 rooms but beware of the boss at the end of this detour.");
 		addButtonIfTrue(5, "300", navigateToRoomEL300, "you've not even beaten 6 bosses yet.", flags[kFLAGS.EBON_LABYRINTH_RECORD] >= 300, "Skip 300 rooms but beware of the boss at the end of this detour.");
 		addButtonIfTrue(6, "350", navigateToRoomEL350, "you've not even beaten 7 bosses yet.", flags[kFLAGS.EBON_LABYRINTH_RECORD] >= 350, "Skip 350 rooms but beware of the boss at the end of this detour.");
+		if (player.hasStatusEffect(StatusEffects.UpgradeFountain)) addButton(14, "Fountain", navigateToRoomELUpgradeFountain);
 	}
 
 	public function returnFromDraculinaRoom():void {
@@ -279,11 +280,21 @@ public class EbonLabyrinth extends DungeonAbstractContent {
         fountainRoom = false;
         navigateToXRoom(350);
 	}
+	public function navigateToRoomELUpgradeFountain():void {
+		fountainRoom = true;
+		navigateToXRoom(51);
+	}
 	private function navigateToXRoom(rooms:Number = 50):void {
 		//move
         room += rooms;
-		resetEncChance();
-        bossSelector(0);
+		if (room == 51) {
+			fountainCorrupt = rand(2) == 0;
+			encountersUpgradeFountain();
+		}
+		else {
+			resetEncChance();
+			bossSelector(0);
+		}
 	}
 
     //if a new highscore is set, checks achievements
@@ -380,6 +391,7 @@ public class EbonLabyrinth extends DungeonAbstractContent {
             incEncChance();
             fountainRoom = true;
             fountainCorrupt = rand(2) == 0;
+			if (!player.hasStatusEffect(StatusEffects.UpgradeFountain)) player.createStatusEffect(StatusEffects.UpgradeFountain, 0, 0, 0, 0);
             encountersUpgradeFountain();
             return true;
         }
