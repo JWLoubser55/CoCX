@@ -218,6 +218,9 @@ public class Races {
 	public static const DragonlikeRaces:/*Race*/Array = [
 			DRAGON, YGGDRASIL, WEREDRAGON, FAERIEDRAGON, VOUIVRE, FROSTWYRM, DRAGONNE, DUSKDRAKE, KRAMPUS, JABBERWOCKY, SEA_DRAGON, WYVERN, MAGMAWYRM, SANDDRAKE, KOBOLD
 	];
+	public static const BunnylikeRaces:/*Race*/Array = [
+			BUNNY, EASTERBUNNY, LAQUINE
+	];
 	public static const RacesForRandomEnchantments:/*Race*/Array = [
 			// populated in load() as AllVisibleRaces - RacesExcludedFromRandomEnchantments
 	];

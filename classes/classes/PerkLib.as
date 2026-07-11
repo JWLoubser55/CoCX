@@ -5129,7 +5129,7 @@ public class PerkLib
 		public static const RampagingBunnyStyleLewdStrikes:PerkType = mk("Rampaging Bunny Style: Lewd Strikes", "Rampaging Bunny Style: Lewd Strikes",
 				".");
 		public static const RampagingBunnyStyleTeasingAttack:PerkType = mk("Rampaging Bunny Style: Teasing Attack", "Rampaging Bunny Style: Teasing Attack",
-				".");
+				"When not using a weapon the Tease skill now also inflicts your unarmed strike damage multiplied by tease modifier.");
 		public static const RumblingQuakeMastered:PerkType = mk("Rumbling Quake (Mastered)", "Rumbling Quake (Mastered)",
 				"Cumulative 120% damage increase for every subsequent earth spell. Each turn without cast earth spell lower damage by 40% down to normal (100%) damage. Prevent decay of cumulative damage increase bonus when channeling earth based attack. Maximum 50 stacks. (+140% spellpower bonus)");
 		public static const SageMedicine:PerkType = mk("Sage Medicine", "Sage Medicine",

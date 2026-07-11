@@ -286,8 +286,8 @@ public class Changelog extends BaseContent
 			outputText("-Perks: Tactician, Grand Tactician, Blademaster, Grand Blademaster, Rage, Eyes of the Hunter (Adept), Eyes of the Hunter (Expert), Eyes of the Hunter (Master), Eyes of the Hunter (Grand Master), Eyes of the Hunter (Su), War caster, Elven Sense, Magicules Theory, Advanced Magicules Theory have their effects changed from increasing crit chance (phys or mag) to multiply base crit chance.\n");
 			outputText("-Dagger type weapons have now additinal 10% to base crit chance.\n");
 			outputText("-Added to Stats combat subpage `base main hand critical chance` and `Base off hand critical chance` stat.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-After reaching upgrade fountain in Ebon Labyrinth cat can lead pc to first fountains (type of fountain still would be radomized)\n");
+			outputText("-New event perk: Rampaging Bunny Style: Teasing Attack. Gained at the end of Loppe sex scene if Training Libido level of 25+, bunny race or the rutting/heat status. Effects: When not using a weapon the Tease skill now also inflicts your unarmed strike damage multiplied by tease modifier.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -342,8 +342,9 @@ public class Changelog extends BaseContent
 			outputText("camp building menu, Slime Metabolism restoring wrong amount of mana, Female Mindbreaker possible to reach without becoming perm tf'd, fox-morphs not able reach stat bonuses as pure male, Vapula/Amily or Vapula/JoJo threesome scene error conditions, Kiha tentacle sex scene parser bug, Dracula/lina race not counted toward Vampiric IM check for increasing vampire thirst stacks, ");
 			outputText("some errors in checks for all the minions (or potential ones) that may blocked access to minions tab in camp, common succubus post fight scenes giving demon dick permanently (now they only trigger temporal change), Protein Shake not longer confused if it increase or decrease thickness, Aether Sin Twin not triggering bleed when used in correct form during shield bash, Sidone ");
 			outputText("help for woodcutting decreasing gained amount of wood in most cases, large gauntlets using and gaining medium size mastery effects, Fire Snail saliva not giving fire snail eyes, cave wyrm tongue desc been draconic not cave wyrm, some of purity scaling weapons scaling on corruption and two feminity/masculinity scaling weapons scaling on wrong values, Blade Grass missing tf effects ");
-			outputText("for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, Neisa interactable when she's training, Cold Affinity lost while been Wendigo, missing 2 more feral combat claws attacks for Wendigo, ");
-			outputText("Mindbreakers mind meld usable on unique NPC's, ignoring effects of perks like Natural Herbalism when crafting potions causing overfill storage bags, Couatl Oil not giving yellow scales color");
+			outputText("for face or ears, kirin horns tf effect super hard to trigger from kirin tf item, Ebony Destroyer missing wrath weapon tag, Neisa interactable when she's training, Cold Affinity lost while been Wendigo, missing 2 more feral combat claws attacks for Wendigo, Mindbreakers mind meld usable on unique NPC's, ");
+			outputText("ignoring effects of perks like Natural Herbalism when crafting potions causing overfill storage bags, Couatl Oil not giving yellow scales color, Endless Hunger or Exanimation I perks would enable hunger/satiety bar showing on UI without need to turn on Hunger on");
+			outputText("");
 			outputText("\n\n");
 			/*ostatni punkt changelogu
 			outputText("(Part 2/2) <b>Version 0.9b:</b>\n\n");

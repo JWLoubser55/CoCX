@@ -1199,10 +1199,7 @@ private function loppeRidesPCCockFinal():void {
 	if(flags[kFLAGS.PC_FETISH] > 0) outputText("; it gives you something of a thrill, though nowhere near as much as taking them off for her in the first place did");
 	outputText(".  Finished, you depart.");
 	player.sexReward("vaginalFluids", "Dick");
-	dynStats("tou", .5, "lib", .5, "sen", -4);
-	player.trainStat("lib", +1, player.trainStatCap("lib",100));
-	player.trainStat("tou", +1, player.trainStatCap("tou",75));
-	flags[kFLAGS.LOPPE_TIMES_SEXED]++;
+	sharedStatsAndEtcChanges();
 	loppeKnockupAttempt();
 	//3 hours pass.
 	explorer.stopExploring();
@@ -1294,10 +1291,7 @@ private function loppeWorshipsDicks():void {
 
 	outputText("\n\nA familiar feeling emanates from your crotch... a distinct sucking and bobbing feeling.  Your eyes open and you awaken with a gasp as you blast a fresh batch of cum into Loppe's eager mouth.  She withdraws with a slurp and smiles gleefully at you.  \"<i>Morning, sleepyhead!  Rest well?  Want me to wake you up some more?</i>\" she asks, licking her lips.  \"<i>I placed your stuff on the chair over there.  And don't worry, it's all cleaned too.  See you later on?  For more 'appreciation', of course...</i>\"");
 	player.sexReward("saliva");
-	dynStats("tou", .5, "lib", .5, "sen", -4);
-	player.trainStat("lib", +1, player.trainStatCap("lib",100));
-	player.trainStat("tou", +1, player.trainStatCap("tou",75));
-	flags[kFLAGS.LOPPE_TIMES_SEXED]++;
+	sharedStatsAndEtcChanges();
 	explorer.stopExploring();
 	doNext(camp.returnToCampUseFourHours);
 }
@@ -1450,12 +1444,9 @@ private function getFuckedInYerTwatYaCunt():void {
 	outputText("\n\nYou slide out from beneath the covers and start redressing yourself.  Once you're done, Loppe steals a quick peck on the lips before you head out.");
 	//3 hours pass.
 	player.sexReward("cum","Vaginal");
-	flags[kFLAGS.LOPPE_TIMES_SEXED]++;
+	sharedStatsAndEtcChanges();
 	loppeKnockupAttempt(true);
 	player.orgasm();
-	dynStats("tou", .5, "lib", .5, "sen", -4);
-	player.trainStat("lib", +1, player.trainStatCap("lib",100));
-	player.trainStat("tou", +1, player.trainStatCap("tou",75));
 	explorer.stopExploring();
 	doNext(camp.returnToCampUseFourHours);
 }
@@ -1619,11 +1610,8 @@ private function getButtFuckedNonHoarseByLoppe():void {
 
 	outputText("\n\nFeeling clean and refreshed, not to mention much lighter, you leave Loppe's bathroom with a thank-you.  The girl laughs nervously.  \"<i>Again, sorry about that, sugar.  Anyways, I'm in need of a bath of my own.</i>\"");
 	player.sexReward("cum","Anal");
-	flags[kFLAGS.LOPPE_TIMES_SEXED]++;
+	sharedStatsAndEtcChanges();
 	//3 hours pass
-	dynStats("tou", .5, "lib", .5, "sen", -4);
-	player.trainStat("lib", +1, player.trainStatCap("lib",100));
-	player.trainStat("tou", +1, player.trainStatCap("tou",75));
 	explorer.stopExploring();
 	doNext(camp.returnToCampUseFourHours);
 }
@@ -1768,10 +1756,7 @@ private function getAssFuckedByLoppeAsACentaur():void {
 
 	outputText("\n\nYou nod and head to her room to fetch your [armor].");
 	player.sexReward("cum","Anal");
-	dynStats("tou", .5, "lib", .5, "sen", -4);
-	player.trainStat("lib", +1, player.trainStatCap("lib",100));
-	player.trainStat("tou", +1, player.trainStatCap("tou",75));
-	flags[kFLAGS.LOPPE_TIMES_SEXED]++;
+	sharedStatsAndEtcChanges();
 	explorer.stopExploring();
 	doNext(camp.returnToCampUseFourHours);
 }
@@ -2036,13 +2021,40 @@ private function boobjobLoppe():void {
 		if ((player.str < 50 && !player.isTaur()) || (player.str < 30 && player.isTaur())) outputText("- while your stomach is still heavily swollen and gurgles in protest, it's not bad enough to impair you - ");
 		outputText("before going over and dressing yourself.  Loppe waves goodbye to you as you head out once again.");
 		player.sexReward("cum");
-		flags[kFLAGS.LOPPE_TIMES_SEXED]++;
-		dynStats("tou", .5, "lib", .5, "sen", -4);
-		player.trainStat("lib", +1, player.trainStatCap("lib",100));
-		player.trainStat("tou", +1, player.trainStatCap("tou",75));
+		sharedStatsAndEtcChanges();
 		explorer.stopExploring();
 		doNext(camp.returnToCampUseFourHours);
 	}
+}
+
+private function sharedStatsAndEtcChanges():void {
+	flags[kFLAGS.LOPPE_TIMES_SEXED]++;
+	dynStats("tou", .5, "lib", .5, "sen", -4);
+	player.trainStat("lib", +1, player.trainStatCap("lib",100));
+	player.trainStat("tou", +1, player.trainStatCap("tou",75));
+	if (loppeTrainingPerksCheck()) {
+		outputText("\n\nThe long session with Loppe taught you a few new skills in the art of lovemaking. You even learned a new technique. <b>Acquired ");
+		if (player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
+			player.createPerk(PerkLib.RampagingBunnyStyleTeasingAttack, 0, 0, 0, 0);
+			outputText("Rampaging Bunny Style: Teasing Attack");
+		}/*
+		if (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
+			player.createPerk(PerkLib., 0, 0, 0, 0);
+			outputText("Rampaging Bunny Style: ");
+		}
+		if (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.)) {
+			player.createPerk(PerkLib., 0, 0, 0, 0);
+			outputText("Rampaging Bunny Style: ");
+		}
+		if (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.)) {
+			player.createPerk(PerkLib., 0, 0, 0, 0);
+			outputText("Rampaging Bunny Style: ");
+		}*/
+		outputText("!</b>");
+	}
+}
+private function loppeTrainingPerksCheck():Boolean {
+	return ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)));// || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
 }
 
 //Leave (edited)

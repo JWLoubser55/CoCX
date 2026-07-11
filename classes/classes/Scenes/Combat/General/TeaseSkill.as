@@ -153,6 +153,15 @@ public class TeaseSkill extends AbstractGeneral {
 				}
 				player.takeLustDamage(7 + rand(6), true);
 			}
+			if (combat.teases.checkRampagingBunnyStyleTeasingAttack()) {
+				var damagee:Number = (combat.meleeUnarmedDamageNoLagSingle() * combat.teases.masteryBonusDamageTease());
+				if (player.biggestTitSize() > 4) damagee *= (1 + (0.5 * (player.biggestTitSize() - 4)));
+				if (player.hasCock() && player.biggestCockLength() > 15) {
+					if (player.biggestCockLength() > 30) damagee *= 4;
+					else damagee *= (1 + (0.2 * (player.biggestCockLength() - 15)));
+				}
+				combat.doPlayerPhysDamage(damagee);
+			}
 			// Similar to fetish check, only add XP if the player IS the player...
 			if (!SceneLib.urtaQuest.isUrta()) player.SexXP(1 + combat.teases.bonusExpAfterSuccesfullTease());
 
@@ -206,7 +215,6 @@ public class TeaseSkill extends AbstractGeneral {
             var damageMod:Number = teaseOpt.damage + rand(teaseOpt.bonusDamage)
             lustDmg *= 1 + (1 * damageMod / 20);
 			if (player.perkv1(IMutationsLib.FiendishBallsIM) >= 4) 
-
             //Determine if critical tease!
 			var crit:Boolean = false;
 			var critChance:int = 5;
@@ -218,25 +226,31 @@ public class TeaseSkill extends AbstractGeneral {
 				if (monster.lustVuln != 0 && player.hasPerk(PerkLib.SweepDefenses) && !player.enemiesImmuneToLustResistanceDebuff()) monster.lustVuln += 0.05;
 				if (monster.lustVuln > monster.lustVulnCap()) monster.lustVuln = monster.lustVulnCap();
 			}
-
             if (player.hasPerk(PerkLib.DazzlingDisplay) && rand(100) < 20 && !monster.hasPerk(PerkLib.Resolute)) {
 				if (display) outputText("\n[themonster] is so mesmerised by your show that it stands there gawking.");
 				monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
 			}
-
 			//Handle any possible enemy interruptions
 			if (monster.handleTease(lustDmg, true, display)) {
 				monster.teased(lustDmg, false, display);
 				if (crit && display) outputText(" <b>Critical!</b>");
 				combat.teases.fueledByDesireHeal(display);
 			}
-
             if (flags[kFLAGS.PC_FETISH] >= 1 && !SceneLib.urtaQuest.isUrta()) {
 				if (display) {
                     if (player.lust < (player.maxLust() * 0.75)) outputText("\nFlaunting your body in such a way gets you a little hot and bothered.");
                     else outputText("\nIf you keep exposing yourself you're going to get too horny to fight back.  This exhibitionism fetish makes it hard to resist just stripping naked and giving up.");
                 }
                 player.takeLustDamage(7 + rand(6), true);
+			}
+			if (combat.teases.checkRampagingBunnyStyleTeasingAttack()) {
+				var damagee:Number = (combat.meleeUnarmedDamageNoLagSingle() * combat.teases.masteryBonusDamageTease());
+				if (player.biggestTitSize() > 4) damagee *= (1 + (0.5 * (player.biggestTitSize() - 4)));
+				if (player.hasCock() && player.biggestCockLength() > 15) {
+					if (player.biggestCockLength() > 30) damagee *= 4;
+					else damagee *= (1 + (0.2 * (player.biggestCockLength() - 15)));
+				}
+				combat.doPlayerPhysDamage(damagee);
 			}
 			// Similar to fetish check, only add XP if the player IS the player...
 			if (!SceneLib.urtaQuest.isUrta()) player.SexXP(1 + combat.teases.bonusExpAfterSuccesfullTease());

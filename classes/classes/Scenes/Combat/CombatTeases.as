@@ -19,11 +19,9 @@ public class CombatTeases extends BaseCombatContent {
 		tBLD += player.lib;
 		tBLD += scalingBonusLibido() * 0.2;
 		tBLD += (2 * player.teaseDmgStat.value);
-
 		if (player.hasPerk(PerkLib.BimboBody) || player.hasPerk(PerkLib.BroBody) || player.hasPerk(PerkLib.FutaForm)) tBLD *= 1.75;
 		if (player.hasPerk(PerkLib.SensualLover)) tBLD *= 1.3;
 		if (player.hasPerk(PerkLib.Seduction)) tBLD *= 1.75;
-		
 		//partial skins bonuses
 		switch (player.coatType()) {
 			case Skin.FUR:
@@ -44,7 +42,6 @@ public class CombatTeases extends BaseCombatContent {
 		if (player.isElf() && player.hasPerk(PerkLib.ELFElvenSpearDancingTechnique) && player.isSpearTypeWeapon()) tBLD += scalingBonusSpeed() * 0.1;
 		tBLD *= masteryBonusDamageTease();
 		if (player.hasPerk(PerkLib.JobCourtesan) && monster.hasPerk(PerkLib.EnemyBossType)) tBLD *= 1.2;
-
 		var damagemultiplier:Number = 1;
 		if (player.hasPerk(PerkLib.ElectrifiedDesire)) damagemultiplier += player.lust100 * 0.01;
 		if (player.hasPerk(PerkLib.HistoryWhore) || player.hasPerk(PerkLib.PastLifeWhore)) damagemultiplier += combat.historyWhoreBonus();
@@ -91,6 +88,13 @@ public class CombatTeases extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.ArouseTheAudience) && (monster.hasPerk(PerkLib.EnemyGroupType) || monster.hasPerk(PerkLib.EnemyLargeGroupType))) tBLD *= 1.5;
 		if (player.perkv1(PerkLib.ImpNobility) > 0) {
 			tBLD *= (100 + player.perkv1(PerkLib.ImpNobility))/100;
+		}
+		if (checkRampagingBunnyStyleTeasingAttack()) {
+			if (player.biggestTitSize() > 4) tBLD *= (1 + (0.5 * (player.biggestTitSize() - 4)));
+			if (player.hasCock() && player.biggestCockLength() > 15) {
+				if (player.biggestCockLength() > 30) tBLD *= 4;
+				else tBLD *= (1 + (0.2 * (player.biggestCockLength() - 15)));
+			}
 		}
 		for each (var f:ItemEffect in player.allItemEffects(IELib.Tease_RaceX2)) {
 			tBLD *= 1 + f.power * (player.isRaceCached(f.value1 as Race)? 2:1) / 100;
@@ -193,6 +197,10 @@ public class CombatTeases extends BaseCombatContent {
 		if (player.armor == armors.FMDRESS && player.isWoodElf()) lustDmg *= 2;
 		return lustDmg;
 	}
+	
+	public function checkRampagingBunnyStyleTeasingAttack():Boolean {
+		return player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack) && player.isUnarmedCombat() && player.gender > 0 && (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);
+	}
 
 	/**
 	 * For use in touchThatFluffyHorn function to only generate the text of a tease while not applying any effects
@@ -211,6 +219,10 @@ public class CombatTeases extends BaseCombatContent {
 		if (player.hasStatusEffect(StatusEffects.AlrauneEntangle)) {
 			selectedTease = 46;
 		}
+		if (checkRampagingBunnyStyleTeasingAttack()) {
+			selectedTease = 49;
+		}
+		
 
 		applySelectedTease(selectedTease, true);
 	}
@@ -697,7 +709,6 @@ public class CombatTeases extends BaseCombatContent {
 			choices[choices.length] = 48;
 			choices[choices.length] = 48;
 		}
-
 		return choices;
 	}
 
@@ -1335,6 +1346,25 @@ public class CombatTeases extends BaseCombatContent {
 				if (!monster.hasPerk(PerkLib.Resolute)) monster.createStatusEffect(StatusEffects.Stunned, 0, 0, 0, 0);
 				options.chance += 9;
 				options.damage += 9;
+				break;
+			case 49:
+				if (player.biggestTitSize() >= 4) {
+					if (display) outputText("You rush forward slamming your breast into your opponent and smothering [enemy him] with your milkers. The attack leaves [themonster] greatly aroused.");
+					options.breasts = true;
+				}
+				else if (player.hasCock() && player.biggestCockLength() > 15) {
+					if (display) outputText("You smirk before leaping up in the air as you spin about and smack your opponent in the face hard with your erect [cock].");
+					options.penis = true;
+				}
+				else if (player.hasVagina()) {
+					if (display) outputText("You leap forward wrapping your legs around your enemy neck and shoving your pussy right into [enemy his] face causing [enemy him] to choke as amidst the confusion you cartwheel back and suplex your foe unto the ground.");
+					options.vagina  = true;
+				}
+				else {
+					if (display) {
+						outputText("You go for a mighty kick "+(player.isNaked()?"":"the rush of air exposing your ")+(player.hasCock()?"erect [cock]":"")+(player.gender == 3?" and":"")+(player.hasVagina()?" dripping pussy":"")+" for your opponent to get a glance off.");
+					}
+				}
 				break;
 			default:
 				outputText("You shimmy and shake sensually. (An error occurred.)");
