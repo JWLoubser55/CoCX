@@ -5,6 +5,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
 import classes.PerkLib;
 import classes.PregnancyStore;
+import classes.Races;
 import classes.Saves;
 import classes.Scenes.NPCs.NPCAwareContent;
 import classes.StatusEffects;
@@ -2054,7 +2055,7 @@ private function sharedStatsAndEtcChanges():void {
 	}
 }
 private function loppeTrainingPerksCheck():Boolean {
-	return ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)));// || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
+	return ((player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut) && ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack))));// || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
 }
 
 //Leave (edited)
