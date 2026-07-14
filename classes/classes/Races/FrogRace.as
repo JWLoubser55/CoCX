@@ -48,7 +48,8 @@ public class FrogRace extends Race {
                 .eyeType(Eyes.FROG, +1)
 				.eyeColor(ANY(FrogEyesColors), +1)
 				.antennaeType(Antennae.THIRD_EYE, +1)
-				.skinColor1(ANY(FrogSkinColors), +1).customRequirement("","mucus dripping skin",
+				.skinColor1(ANY(FrogSkinColors), +1)
+				.customRequirement("","mucus dripping skin",
 						function (body:BodyData):Boolean {
 							return body.player.hasMucusSkin();
 						}, +3)

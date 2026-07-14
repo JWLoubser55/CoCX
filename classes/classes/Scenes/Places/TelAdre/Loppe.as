@@ -2033,29 +2033,35 @@ private function sharedStatsAndEtcChanges():void {
 	dynStats("tou", .5, "lib", .5, "sen", -4);
 	player.trainStat("lib", +1, player.trainStatCap("lib",100));
 	player.trainStat("tou", +1, player.trainStatCap("tou",75));
-	if (loppeTrainingPerksCheck()) {
-		outputText("\n\nThe long session with Loppe taught you a few new skills in the art of lovemaking. You even learned a new technique. <b>Acquired ");
-		if (player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
-			player.createPerk(PerkLib.RampagingBunnyStyleTeasingAttack, 0, 0, 0, 0);
-			outputText("Rampaging Bunny Style: Teasing Attack");
-		}/*
-		if (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
-			player.createPerk(PerkLib., 0, 0, 0, 0);
-			outputText("Rampaging Bunny Style: ");
+	if (loppeTrainingPerksCheckStats()) {
+		if (loppeTrainingPerksCheckRest()) {
+			outputText("\n\nThe long session with Loppe taught you a few new skills in the art of lovemaking. You even learned a new technique. <b>Acquired ");
+			if (player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
+				player.createPerk(PerkLib.RampagingBunnyStyleTeasingAttack, 0, 0, 0, 0);
+				outputText("Rampaging Bunny Style: Teasing Attack");
+			}/*
+			if (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
+				player.createPerk(PerkLib., 0, 0, 0, 0);
+				outputText("Rampaging Bunny Style: ");
+			}
+			if (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.)) {
+				player.createPerk(PerkLib., 0, 0, 0, 0);
+				outputText("Rampaging Bunny Style: ");
+			}
+			if (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.)) {
+				player.createPerk(PerkLib., 0, 0, 0, 0);
+				outputText("Rampaging Bunny Style: ");
+			}*/
+			outputText("!</b>");
 		}
-		if (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.)) {
-			player.createPerk(PerkLib., 0, 0, 0, 0);
-			outputText("Rampaging Bunny Style: ");
-		}
-		if (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.)) {
-			player.createPerk(PerkLib., 0, 0, 0, 0);
-			outputText("Rampaging Bunny Style: ");
-		}*/
-		outputText("!</b>");
+		else outputText("\n\nThe long session with Loppe broadened your horizons about the art of lovemaking. It occurs to you that if you had been a bunny or at least some form of bunny and maybe in heat or rutting like one you might have learned something more out of this session.");
 	}
 }
-private function loppeTrainingPerksCheck():Boolean {
-	return ((player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut) && ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack))));// || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
+private function loppeTrainingPerksCheckStats():Boolean {
+	return ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)));// || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
+}
+private function loppeTrainingPerksCheckRest():Boolean {
+	return (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);
 }
 
 //Leave (edited)
