@@ -285,10 +285,11 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 toughness lvl-up perk: Chivalry. Req. Job: Knight perk, 100+ tou. Effect: Regular swords (sword-type weapons) base attack is increased by 10.\n");
 			outputText("-Perks: Tactician, Grand Tactician, Blademaster, Grand Blademaster, Rage, Eyes of the Hunter (Adept), Eyes of the Hunter (Expert), Eyes of the Hunter (Master), Eyes of the Hunter (Grand Master), Eyes of the Hunter (Su), War caster, Elven Sense, Magicules Theory, Advanced Magicules Theory have their effects changed from increasing crit chance (phys or mag) to multiply base crit chance.\n");
 			outputText("-Dagger type weapons have now additinal 10% to base crit chance.\n");
-			outputText("-Added to Stats combat subpage `base main hand critical chance` and `Base off hand critical chance` stat.\n");
+			outputText("-Added to Stats combat subpage `Base main hand critical chance` and `Base off hand critical chance` stat.\n");
 			outputText("-After reaching upgrade fountain in Ebon Labyrinth cat can lead pc to first fountains (type of fountain still would be radomized)\n");
 			outputText("-New event perk: Rampaging Bunny Style: Teasing Attack. Gained at the end of Loppe sex scene if Training Libido level of 25+, bunny race or the rutting/heat status. Effects: When not using a weapon the Tease skill now also inflicts your unarmed strike damage multiplied by tease modifier.\n");
-			outputText("-\n");
+			outputText("-New event perk: Rampaging Bunny Style: Lewd Strikes. Gained at the end of Loppe sex scene if Training Libido level of 50+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Teasing Attack perk. Effects: Add Unarmed strike weapon value to tease damage and tease damage is increased by a percentage based on the enemy total lost health. ");
+			outputText("Inversely unarmed and feral combat damage is increased by a percentage based on accumulated lust and gain a bonus on damage based on tease multiplier.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

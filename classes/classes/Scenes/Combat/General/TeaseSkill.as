@@ -76,8 +76,8 @@ public class TeaseSkill extends AbstractGeneral {
         if (player.hasPerk(PerkLib.BroadSelection) && player.differentTypesOfCocks() > 1) lustDmg *= (1 + (0.25 * player.differentTypesOfCocks()));
 		lustDmg = combat.teases.fueledByDesireDamageBonus(lustDmg);
 		if (SceneLib.urtaQuest.isUrta()) lustDmg *= 2;
+		if (combat.teases.checkRampagingBunnyStyleLewdStrikes()) lustDmg *= (1 + (0.01 * monster.hp100));
 		if (monster) lustDmg *= monster.lustVuln;
-
 		return Math.round(lustDmg);
 	}
 

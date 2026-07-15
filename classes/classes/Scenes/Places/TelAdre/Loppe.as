@@ -2039,12 +2039,12 @@ private function sharedStatsAndEtcChanges():void {
 			if (player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
 				player.createPerk(PerkLib.RampagingBunnyStyleTeasingAttack, 0, 0, 0, 0);
 				outputText("Rampaging Bunny Style: Teasing Attack");
-			}/*
-			if (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
-				player.createPerk(PerkLib., 0, 0, 0, 0);
-				outputText("Rampaging Bunny Style: ");
 			}
-			if (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.)) {
+			if (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes) && player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
+				player.createPerk(PerkLib.RampagingBunnyStyleLewdStrikes, 0, 0, 0, 0);
+				outputText("Rampaging Bunny Style: Lewd Strikes");
+			}/*
+			if (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes)) {
 				player.createPerk(PerkLib., 0, 0, 0, 0);
 				outputText("Rampaging Bunny Style: ");
 			}
@@ -2058,7 +2058,7 @@ private function sharedStatsAndEtcChanges():void {
 	}
 }
 private function loppeTrainingPerksCheckStats():Boolean {
-	return ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)));// || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
+	return ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes)));// || (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
 }
 private function loppeTrainingPerksCheckRest():Boolean {
 	return (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);
@@ -2605,4 +2605,4 @@ public function pcGivesBirthToLoppeKits(womb:int = 0):void {
 	doNext(playerMenu);
 }
 }
-}
+}

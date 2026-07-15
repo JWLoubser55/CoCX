@@ -5127,7 +5127,7 @@ public class PerkLib
 		public static const RampagingBunnyStyleHyperdrive:PerkType = mk("Rampaging Bunny Style: Hyperdrive", "Rampaging Bunny Style: Hyperdrive",
 				".");
 		public static const RampagingBunnyStyleLewdStrikes:PerkType = mk("Rampaging Bunny Style: Lewd Strikes", "Rampaging Bunny Style: Lewd Strikes",
-				".");
+				"Add Unarmed strike weapon value to tease damage and tease damage is increased by a percentage based on the enemy total lost health. Inversely unarmed and feral combat damage is increased by a percentage based on accumulated lust and gain a bonus on damage based on tease multiplier.");
 		public static const RampagingBunnyStyleTeasingAttack:PerkType = mk("Rampaging Bunny Style: Teasing Attack", "Rampaging Bunny Style: Teasing Attack",
 				"When not using a weapon the Tease skill now also inflicts your unarmed strike damage multiplied by tease modifier.");
 		public static const RumblingQuakeMastered:PerkType = mk("Rumbling Quake (Mastered)", "Rumbling Quake (Mastered)",

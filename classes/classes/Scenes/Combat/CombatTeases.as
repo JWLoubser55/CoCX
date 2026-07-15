@@ -201,6 +201,9 @@ public class CombatTeases extends BaseCombatContent {
 	public function checkRampagingBunnyStyleTeasingAttack():Boolean {
 		return player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack) && player.isUnarmedCombat() && player.gender > 0 && (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);
 	}
+	public function checkRampagingBunnyStyleLewdStrikes():Boolean {
+		return player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes) && player.gender > 0 && (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);
+	}
 
 	/**
 	 * For use in touchThatFluffyHorn function to only generate the text of a tease while not applying any effects

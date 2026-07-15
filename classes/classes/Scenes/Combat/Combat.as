@@ -4217,6 +4217,7 @@ public class Combat extends BaseContent {
 			if (player.hasStatusEffect(StatusEffects.SoulFist)) damage += scalingBonusWisdom();
 			if (player.isFistOrFistWeapon() && player.hasStatusEffect(StatusEffects.HinezumiCoat)) damage += Math.round(damage * 0.1);
 			if (player.armor == armors.SFLAREQ) damage *= 1.2;
+			if (combat.teases.checkRampagingBunnyStyleLewdStrikes()) damage *= (1 + (0.1 * monster.lust100));
 			doPlayerPhysDamage(damage, true, true);
 			if (player.hasStatusEffect(StatusEffects.ChargeWeapon)) doPlayerMagDamage(Math.round(damage * 0.2), true, true);
 			if (player.statStore.hasBuff("FoxflamePelt")) layerFoxflamePeltOnThis(damage);
