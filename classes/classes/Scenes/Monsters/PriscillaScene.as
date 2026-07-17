@@ -8,7 +8,7 @@ import classes.display.SpriteDb;
 public class PriscillaScene extends BaseContent
 	{
 		public function goblinElderEncounter():void {
-			var canFuck:Boolean = player.cor < 60 + player.corruptionTolerance;
+			var canFuck:Boolean = ((player.cor < 20 + player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight));
 
 			clearOutput();
 			spriteSelect(SpriteDb.s_priscilla);

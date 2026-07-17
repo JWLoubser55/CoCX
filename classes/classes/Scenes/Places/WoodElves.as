@@ -693,10 +693,10 @@ public class WoodElves extends BaseContent implements SaveableState {
 			if (flags[kFLAGS.FACTORY_SHUTDOWN] > 0) outputText(" Well, what's left of it… it's hard to get any sun with those damn clouds covering the sky.");
 			menu();
 			addButton(0, "River", River)
-				.disableIf(!player.isRace(Races.ELF, 1, false) && !player.isRace(Races.WOODELF, 1, false),"You need to be an elf in order to go bath with the girls.")
+				.disableIf(!player.isElf(),"You need to be an elf in order to go bath with the girls.")
 				.disableIf(!player.hasVagina(), "You can't seriously go back naked with girls as a guy! Just what were you thinking, You degenerate pervert!?");
 			addButton(1, "Tent", Tent)
-				.disableIf((!player.isRace(Races.ELF, 1, false) && !player.isRace(Races.WOODELF, 1, false)),"You need to be an elf.")
+				.disableIf(!player.isElf(),"You need to be an elf.")
 				.disableIf(!player.hasVagina(), "You need to be female or herm in order to use the tents.");
 			addButton(2, "Fletching table", Fletching);
 			addButton(3, "Elenwen", Elenwen)

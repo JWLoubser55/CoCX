@@ -3834,9 +3834,7 @@ public class Creature extends Utils
 		public function isKraken():Boolean { return lowerBodyPart.isKraken(); }
 		public function isAlraune():Boolean { return lowerBodyPart.isAlraune(); }
 		public function isLiliraune():Boolean { return lowerBodyPart.isLiliraune(); }
-		public function isElf():Boolean {
-			return perkv1(IMutationsLib.ElvishPeripheralNervSysIM) >= 3 || game.player.isRace(Races.ELF) || game.player.isRace(Races.WOODELF);
-		}
+		public function isElf():Boolean { return game.player.isRace(Races.ELF) || game.player.isRace(Races.WOODELF) || game.player.isRace(Races.DARK_ELF) || game.player.isRace(Races.ABYSSAL_ELF); }
 		public function isWoodElf():Boolean { return  game.player.isRace(Races.WOODELF); }
 		public function isHellHound():Boolean { return ((faceType == Face.DOG && cor >= 60) && dogCocks() >= 2 && ((tail.type == Tail.DOG ? 1 : 0) ||
 				(lowerBody == LowerBody.DOG) ||

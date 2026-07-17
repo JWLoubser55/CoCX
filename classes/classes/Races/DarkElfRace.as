@@ -79,26 +79,24 @@ public class DarkElfRace extends Race {
 					return body.earType == Ears.ELVEN
 				})
                 .buffs({
-                    "str.mult": -0.10,
-                    "tou.mult": -0.15,
-                    "spe.mult": +0.80,
-                    "int.mult": +0.80,
-                    "wis.mult": +0.60,
-                    "maxmana_mult": +0.2,
-                    "sens": +30
+                    "tou.mult": -0.10,
+                    "spe.mult": +0.85,
+                    "int.mult": +0.50,
+                    "wis.mult": +0.85,
+                    "maxmana_mult": +0.3,
+                    "sens": +45
                 })
                 .end();
         buildTier(17, "dark high elf")
                 .namesTauric("dark high elf", "dark high elf-taur")
 				.requirePreviousTier()
                 .buffs({
-                    "str.mult": -0.20,
-                    "tou.mult": -0.30,
-                    "spe.mult": +1.60,
-                    "int.mult": +1.60,
-                    "wis.mult": +1.20,
-                    "maxmana_mult": +0.4,
-                    "sens": +60
+                    "tou.mult": -0.20,
+                    "spe.mult": +1.70,
+                    "int.mult": +1.00,
+                    "wis.mult": +1.70,
+                    "maxmana_mult": +0.6,
+                    "sens": +90
                 })
                 .end();
 	}

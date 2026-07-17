@@ -34,7 +34,7 @@ public function encounterKiha():void {
 	clearOutput();
 	kihaFollower.kihaSprite();
 	//kihaBitchesOutCorruptPCs()
-	if(flags[kFLAGS.KIHA_AFFECTION_LEVEL] > 0 && player.cor >= 66 + player.corruptionTolerance && !player.hasPerk(PerkLib.FalseLight) && flags[kFLAGS.KIHA_CORRUPTION_BITCH] != 1) {
+	if(flags[kFLAGS.KIHA_AFFECTION_LEVEL] > 0 && player.cor >= 33 + player.corruptionTolerance && !player.hasPerk(PerkLib.FalseLight) && flags[kFLAGS.KIHA_CORRUPTION_BITCH] != 1) {
 		kihaFollower.kihaBitchesOutCorruptPCs();
 		return;
 	}
