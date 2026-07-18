@@ -610,7 +610,7 @@ public function fightWin():void {
 		+ "\n"
 		+ "You look behind you and notice the kitsune sitting on a nearby rock giving you a quizzical look. When you look back to what you catched you realise you’re only holding a wooden twig. Was she just playing with you this whole time?\n"
 		+ "\n"
-		+ "“<i>Hey, don’t hold it against me, but I have places to be, so see you later. " + ayaName("Ayane", "By the way, my name is Ayane and if you're ever interested I hold a shop at the kitsune shrine. Do pay me a visit, I could always trade you some services and wares. ") + "This said, you seriously should just let me win next time, it will be way more pleasant.</i>” \n"
+		+ "“<i>Hey, don’t hold it against me, but I have places to be, so see you later. " + ayaName("Ayane ", "By the way, my name is Ayane and if you're ever interested I hold a shop at the kitsune shrine. Do pay me a visit, I could always trade you some services and wares. ") + "This said, you seriously should just let me win next time, it will be way more pleasant.</i>” \n"
 		+ "\n"
 		+ "She leaps back into the shadow with a final teasing laughter disappearing for now. On the ground you notice she left a beautiful jewel.\n");
 	flags[kFLAGS.KITSUNE_SHRINE_UNLOCKED] = 1;

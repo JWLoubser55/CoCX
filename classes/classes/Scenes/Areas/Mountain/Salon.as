@@ -253,20 +253,23 @@ private function gloryholeImp():void {
 	player.slimeFeed();
 	clearOutput();
 	outputText("You walk over to the hole in the wall, looking at the erect demon-member you'll have to service.  Judging by the height and constant bobbing up and down it does, the imp must be hovering on the other side, trying pretty damn hard to stay in the hole.\n\n");
-	if(player.cor < 33) {
+	if(player.cor < -33) {
 		outputText("You struggle to force your mouth onto the abomination in front of you, wondering why you chose to do such a thing.  Your head bobs up and down, trying to match the motions of the thick demonic tool as you grab hold and guide it into your mouth.  It's hot, hotter than you'd expect, and dripping with sickly sweet pre-cum that makes you tingle.  You throw yourself into the wretched task, intent on finishing it as quickly as possible.  You circle your tongue over the nodules, holding on as it swells in your mouth, unloading a sticky batch of spooge into your throat.  You cough and sputter, swallowing most of it, but you manage to hang on to enough for your pay.\n\n");
-		dynStats("lus", 15, "cor", .5);
+		dynStats("lus", 30, "cor", 1);
 	}
-	else if(player.cor < 66) {
+	else if(player.cor < 33) {
 		outputText("You open wide, bobbing up and down in an effort to match the strange dick that wobbles in front of you.  In the end you wrap both hands around its bumpy base, steadying it as you engulf the throbbing demon dick, taking as much as you can into your mouth.  You squeeze and caress it, licking the ridge of nodules that surround the crown as sticky spoo begins to erupt from it.  The little guy didn't have much endurance, but he must have been pretty backed up, as he's flooding your mouth and throat with his seed.  You struggle to swallow enough to keep up, but when he finishes, you're panting and covered in white.\n\n");
-		dynStats("lus", 35, "cor", 1);
+		dynStats("lus", 60, "cor", 2);
 	}
 	else {
 		outputText("You immediately dive forwards, relishing the idea of taking in another load of demonic cum.  Your groin tingles as your lips make their way down the oddly textured shaft, engulphing nearly 10 inches of demon-cock, feeling it press down your throat.  You curl your tongue around and begin sliding back and forth, immediately rewarded with a thick dribble of pre-cum.  The imp on the other end loses it immediately, blasting waves of cum directly into your belly as you shove forwards, taking him into the hilt.  You feel him pulsing and pull back in time to take the last few loads in your mouth, saving your payment for the goblins.\n\n");
-		dynStats("lus", 45, "cor", 2);
+		dynStats("lus", 120, "cor", 4);
 	}
-	player.refillHunger(25);
+	player.refillHunger(50);
+	player.sexReward("cum", "Lips");
+	player.fuckingWithDemons(1);
 	outputText("Abruptly, the demon-dong slips through your grasp and out the hole.  You hear a loud thump as something lands on the ground. Poor thing.\n\n");
+	statScreenRefresh();
 	doNext(hairDressingMainMenu);
 }
 
@@ -276,38 +279,40 @@ private function gloryholeDoggie():void {
 	player.slimeFeed();
 	clearOutput();
 	outputText("You sigh and kneel down to bring yourself level with the dog-dick hanging out of the wall.  It's pointed at the tip with a swollen circular bulb at the base.  As a matter of fact, the dog-dick's owner must be pretty excited to be here - it's dripping cum, and the knot has swollen so large that it can't fit back through the hole.\n\n");
-	if(player.cor < 33) {
+	if(player.cor < -33) {
 		outputText("It's a struggle to force your lips apart and take the strange thing in your mouth.  You feel like a freak, but make yourself get to work servicing the male who'll be covering your hair treatment today.  It tastes salty and sweaty and has a potent musky scent that excites you in spite of your better judgment.  You find yourself starting to get into it as you lick and slurp, humming with pleasure.  You reach up to touch the knot, and the dog-cock jumps in your mouth, spurting a wad of thick cum into your throat.  You pull back most of the way and pump the cock, collecting the jism in your mouth.\n\n");
-		dynStats("lus", 15, "cor", .25);
+		dynStats("lus", 30, "cor", 1);
 	}
-	else if (player.cor < 66) {
+	else if (player.cor < 33) {
 		outputText("You open wide and take as much of the pointed dick as you can into your mouth.  A few times you nearly gag yourself, but you manage to get most of the way down to the thick swollen knot.  You start sliding back and forth, breathing in the musky animalistic scent of your 'client' and become aroused by the situation more and more.  You reach up and caress the knot, squeezing gently and stroking the dick until it unloads a thick wad of cum into your mouth.  You pull back and catch the fruits of your labor in your mouth, milking the dick with your hands until it's finished, and the dick pops back through the hole.\n\n");
-		dynStats("lus", 25, "cor", .25);
+		dynStats("lus", 50, "cor", 1);
 	}
 	else {
 		outputText("You throw yourself onto the swollen dog-cock and easily engulf the whole thing, spreading your lips wide around the thick knot.  You can feel it bouncing the uvula in your throat around, but you manage to suppress your gag reflex like a good slut while you work the sweaty dick, giving it a thorough tongue bath.  You wrap your lips around the base of the knot, feeling it start to stretch your jaws apart.  You pull back before it can lock you like that, and squeeze the knot in your hands.  It cums, unloading thick wads of gooey cum into your mouth.\n\n");
-		dynStats("lus", 30, "cor", .3);
+		dynStats("lus", 70, "cor", 2);
 	}
-	player.refillHunger(10);
+	player.refillHunger(20);
+	player.sexReward("cum", "Lips");
 	outputText("A young goblin comes by with a bowl for you to make your payment into.  You spit out the gunk and wipe your mouth, as the goblin carries the seed away.  You notice a trail of clear drops on the ground behind her.  She must be anticipating something...");
+	statScreenRefresh();
 	doNext(hairDressingMainMenu);
 }
 private function gloryholeIncubus():void {
 	player.slimeFeed();
 	clearOutput();
 	outputText("You kneel down in front of the throbbing demonic dick, ready to earn your pay.\n\n");
-	if(player.cor < 33) {
+	if(player.cor < -33) {
 		outputText("You picked this dick hoping that a male lust demon would be the most pleasurable to service, and judging by the pleasant spicy scent the member gives off, you're right.  You open wide and take it inside your mouth, feeling the ridges around the crown pressing back against your lips. A drop of pre-cum hits your tongue, and it tastes divine, spurring you on to please the tainted member.  You grab it with both hands and pump it, feeling the corrupted nodules under your fingers as you lick and suck on the head, eager for more.  You get your reward soon enough, and you eagerly start drinking down the copious waves of fluid.  Thankfully, the incubus' orgasm seems to last forever, and when he finishes, you have a full belly and a mouth full of cream.  You manage to resist this last swallow, as you still need to pay.\n\n");
-		dynStats("lus", 1, "cor", 1.5);
-		player.lust = 99;
+		dynStats("lus", 150, "cor", 6);
 	}
 	else {
 		outputText("You take the corrupted cock in your hands and guide it into your waiting mouth, eager to try a walk on the wild side.  The incubus-cock does not disappoint, quickly dripping a steady flow of wonderful tasting pre-cum that only whets your appetite for the demon's cum.  You lean forwards, taking most of the bumpy purple dick inside your mouth and running your tongue all over it, paying special attention to the ring of nodules around the bottom edge of his crown.  You're quickly rewarded with a blast of heavenly demonic seed.  You gulp it down, craving more of it, and thankfully the incubus has plenty for you.  You're shivering and horny by the time he finishes, but thankfully you have enough willpower to keep a mouthful of cum for payment.\n\n");
-		dynStats("lus", 1, "cor", 1);
-		player.lust = 99;
+		dynStats("lus", 150, "cor", 3);
 
 	}
-	player.refillHunger(35);
+	player.refillHunger(70);
+	player.sexReward("cum", "Lips");
+	player.fuckingWithDemons(1);
 	statScreenRefresh();
 	doNext(hairDressingMainMenu);
 }
@@ -322,9 +327,11 @@ private function gloryholeMinotaur(): void {
 	else outputText("arch your back to expose ");
 	outputText("your [chest] as cum rains down upon you. By the time his orgasm stops and his dick goes limp, your face and [chest] are covered in a thick layer of spooge.\n\n");
 	outputText("Your head spins from the minotaur's musk, and you idly mop up and swallow the cum on your [face]. A goblin aide comes in with a bowl, and gently scrapes the cum off your tits with a smooth, flat rock. Once you're cleaned up and dressed, the aide leads you back to Lynnette.\n\n");
-	dynStats("lus", 33, "cor", 1);
-	player.refillHunger(30);
+	dynStats("lus", 250, "cor", 3);
+	player.refillHunger(60);
+	player.sexReward("cum", "Lips");
 	player.minoCumAddiction(10);
+	statScreenRefresh();
 	doNext(hairDressingMainMenu);
 }
 
