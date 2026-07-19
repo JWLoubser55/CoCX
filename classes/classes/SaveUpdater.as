@@ -2849,6 +2849,10 @@ public class SaveUpdater extends NPCAwareContent {
 					player.removePerk(PerkLib.BoneSoul);
 					player.perkPoints += 1;
 				}
+			}
+			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.596) {
+				flags[kFLAGS.MOD_SAVE_VERSION] = 36.596;
+				if (flags[kFLAGS.NADIA_FOLLOWER] == 6) NadiaFollower.NadiaCupSize = 28;
 			}/*
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.60) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.60;

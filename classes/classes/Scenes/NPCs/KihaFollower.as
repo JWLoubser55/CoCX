@@ -403,7 +403,7 @@ public class KihaFollower extends NPCAwareContent implements TimeAwareInterface,
             warmLoverKihaIntro(output);
             return;
         }
-        if (output && flags[kFLAGS.KIHA_TALK_STAGE] == 6 && (player.cor <= 30 + player.corruptionTolerance || sceneHunter.other && player.cor < 66 + player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight)) {
+        if (output && flags[kFLAGS.KIHA_TALK_STAGE] == 6 && ((player.cor <= (33 + player.corruptionTolerance)) || (sceneHunter.other && player.cor < (33 + player.corruptionTolerance)) || player.hasPerk(PerkLib.FalseLight))) {
             //Talk to Friendly Kiha - Fourth Time (requires <=30 corruption on account of making the PC act like a bitch) (Z)
             //(SPECIAL: Play next time the PC encounters Kiha after Talk 3 if he meets reqs, skipping the main menu)
             outputText("As you wander through the swamp, you eventually come to the familiar territory of your friend, Kiha.  Remembering her hasty departure the last time you talked, a pang of worry takes hold in your chest.  She mentioned taking the fight to the demons… . Surely she didn't, did she? Grimacing at the thought, you pick up the pace and make your way to her little islet.");
@@ -439,9 +439,7 @@ public class KihaFollower extends NPCAwareContent implements TimeAwareInterface,
                 flags[kFLAGS.KIHA_NEED_SPIDER_TEXT] = 0;
             }
             outputText("You walk over to the ring of trees and call out for the dragoness.");
-
             outputText("[pg]A moment later and she explodes from the treetops, landing in front of you with enough force to shake the ground.  She stands, fiery greataxe held at the ready, but when she recognizes you, however, she visibly relaxes.");
-
             outputText("[pg]\"<i>Oh, uh, hey, [name],</i>\" she says leaning on her greataxe.  \"<i>It's… good to see you again, I guess.  Did you, uh, want something?</i>\"");
         }
         //(Display Options: [Talk] [Spar] [Hug] [Leave]
@@ -2136,7 +2134,7 @@ private function warmLoverKihaIntro(output:Boolean = true):void {
 
     private function kihaPregUpdate():Boolean {
         switch (pregnancy.eventTriggered()) {
-            case 1: //
+            case 1:
                 outputText("\nKiha's belly bulges notably, but not with any real prominence.  You'd think she'd simply had a big meal recently if you didn't know better.  You almost wonder if Kiha's pregnancy took or if she's just being slow in getting rid of her unfertilised eggs… \n");
                 return true;
             case 2:

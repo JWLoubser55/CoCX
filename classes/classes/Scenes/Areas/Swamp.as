@@ -97,7 +97,7 @@ use namespace CoC;
 				kind  : 'event',
 				unique: true,
 				when: function ():Boolean {
-					return !SceneLib.kihaFollower.followerKiha() && player.cor < 60 + player.corruptionTolerance && flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.HEL_FUCKBUDDY] > 0 && player.hasCock() && flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] == 0
+					return !SceneLib.kihaFollower.followerKiha() && ((player.cor < 60 + player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight)) && flags[kFLAGS.KIHA_AFFECTION_LEVEL] >= 1 && flags[kFLAGS.HEL_FUCKBUDDY] > 0 && player.hasCock() && flags[kFLAGS.KIHA_AND_HEL_WHOOPIE] == 0
 				},
 				chance: swampChance2,
 				call: SceneLib.kihaFollower.kihaXSalamander

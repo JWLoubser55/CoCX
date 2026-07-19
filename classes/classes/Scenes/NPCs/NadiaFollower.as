@@ -16,29 +16,13 @@ public class NadiaFollower extends NPCAwareContent implements TimeAwareInterface
 		public var pregnancy:PregnancyStore;
 
 		public function timeChange():Boolean {
+			var needNext:Boolean = false;
 			pregnancy.pregnancyAdvance();
-			return false;
+			if (pregnancy.isPregnant && NadiaPregAnnouncement()) needNext = true;
+			return needNext;
 		}
 
 		public function timeChangeLarge():Boolean {
-			if (pregnancy.isPregnant) {
-				switch (pregnancy.eventTriggered()) {
-					case 1:
-						NadiaPregAnnouncement();
-						return true;
-					case 2:
-						NadiaPreg1();
-						return true;
-					case 3:
-						NadiaPreg2();
-						return true;
-					case 4:
-						NadiaPreg3();
-						return true;
-				}
-				return false;
-			}
-
 			if (pregnancy.isPregnant && pregnancy.incubation == 0) {
 				NadiaGivesBirth();
 				pregnancy.knockUpForce(); //Clear Pregnancy
@@ -48,8 +32,8 @@ public class NadiaFollower extends NPCAwareContent implements TimeAwareInterface
 		}
 
 		public function NadiaFollower() {
-			pregnancy = new PregnancyStore(kFLAGS.NADIA_PREGNANCY_TYPE, kFLAGS.NADIA_INCUBATION,0, 0);
-			pregnancy.addPregnancyEventSet(PregnancyStore.PREGNANCY_PLAYER,  240, 175, 125, 50);
+			pregnancy = new PregnancyStore(kFLAGS.NADIA_PREGNANCY_TYPE, kFLAGS.NADIA_INCUBATION, 0, 0);
+			pregnancy.addPregnancyEventSet(PregnancyStore.PREGNANCY_PLAYER, 240, 175, 125, 50);
 			EventParser.timeAwareClassAdd(this);
 			Saves.registerSaveableState(this);
 		}
@@ -86,6 +70,7 @@ DIANA_FOLLOWER - status:
 		public static var NadiaDaughtersNum:Number;
 		public static var NadiaHermKidsNum:Number;
 		public static var NadiaTotalKidsNum:Number;
+		public static var NadiaCupSize:Number;
 
 		public function stateObjectName():String {
 			return "NadiaFollower";
@@ -96,6 +81,7 @@ DIANA_FOLLOWER - status:
 			NadiaDaughtersNum = 0;
 			NadiaHermKidsNum = 0;
 			NadiaTotalKidsNum = 0;
+			NadiaCupSize = 0;
 		}
 
 		public function saveToObject():Object {
@@ -103,7 +89,8 @@ DIANA_FOLLOWER - status:
 				"NadiaSonsNum": NadiaSonsNum,
 				"NadiaDaughtersNum": NadiaDaughtersNum,
 				"NadiaHermKidsNum": NadiaHermKidsNum,
-				"NadiaTotalKidsNum": NadiaTotalKidsNum
+				"NadiaTotalKidsNum": NadiaTotalKidsNum,
+				"NadiaCupSize": NadiaCupSize
 			}
 		}
 
@@ -113,6 +100,7 @@ DIANA_FOLLOWER - status:
 				NadiaDaughtersNum = o["NadiaDaughtersNum"];
 				NadiaHermKidsNum = o["NadiaHermKidsNum"];
 				NadiaTotalKidsNum = o["NadiaTotalKidsNum"];
+				NadiaCupSize = valueOr(o["NadiaCupSize"], 0);
 
 			} else {
 				// loading from old save
@@ -703,7 +691,7 @@ public function breakingInYourMare():void {
 			outputText("\"<i>Hehe, it’ll be a miracle if I don’t end up pregnant with this much cum inside me,</i>\" Nadia giggles, rubbing her bloated belly, \"<i>Even my ass looks like it could pop out a baby...</i>\"\n\n");
 		}
 		else {
-			outputText("earning a happy moan from Nadia as she feels your hot seed filling her holes. Your cock twitches, your baby batter pooling at her cervix and entering her womb. Nadia's pussy spasms, droplets of your spooge trickling down her legs. \n\n");
+			outputText("earning a happy moan from Nadia as she feels your hot seed filling her holes. Your cock twitches, your baby batter pooling at her cervix and entering her womb. Nadia's pussy spasms, droplets of your spooge trickling down her legs.\n\n");
 			outputText("\"<i>Thank you, I just hope I end up pregnant,</i>\" Nadia says, smiling happily, \"<i>That...Would make this just...perfect</i>\"\n\n");
 		}
 	}
@@ -724,6 +712,7 @@ public function breakingInYourMare2():void {
 	else player.createKeyItem("Radiant shard", 1,0,0,0);
 	outputText("\n\n<b>Before fully settling in your camp, as if remembering something, Nadia pulls a shining shard from her inventory and hands it over to you as a gift. You acquired a Radiant shard!</b>");
 	flags[kFLAGS.NADIA_FOLLOWER] = 6;
+	NadiaCupSize = 28;
 	explorer.stopExploring();
 	doNext(playerMenu);
 }
@@ -836,7 +825,7 @@ public function uncurseEquippedItem(item:ItemType):void {
 public function nadiaAppearance():void {
 	clearOutput();
 	outputText("Nadia is a 7-foot-tall Alicorn with long white hair. Her body is well-muscled, and covered with soft, white fur. Her green eyes look at you, wisdom in her gaze. She's currently looking at you curiously, one of her large herbology books in her hands.\n\n");
-	outputText("Your eyes dip to her J cup breasts. You quickly look back up at her eyes, but if she noticed, she doesn't seem to care. Her legs, as with all horse morphs ends in hooves. Bound in iron, like the horseshoes back home, you know that those can be lethal weapons in a pinch. Her snow-white tail sits across her legs right now, strands of white hair covering her most intimate parts. You know Nadia protected her virginity up to becoming an Alicorn, though now since you are her stallion, she is before anything your girlfriend.\n\n");
+	outputText("Your eyes dip to her " + Appearance.breastCup(NadiaCupSize) + " cup breasts. You quickly look back up at her eyes, but if she noticed, she doesn't seem to care. Her legs, as with all horse morphs ends in hooves. Bound in iron, like the horseshoes back home, you know that those can be lethal weapons in a pinch. Her snow-white tail sits across her legs right now, strands of white hair covering her most intimate parts. You know Nadia protected her virginity up to becoming an Alicorn, though now since you are her stallion, she is before anything your girlfriend.\n\n");
 	menu();
 	addButton(14, "Back", mainCampMenu);
 }
@@ -959,7 +948,7 @@ public function SexMenuVaginal():void {
 		outputText("As soon as your hand runs across her lower lips you can already feel her growing dampness. You probably don’t even need to do much foreplay, since Nadia gets wet so easily, but your mare deserves the full treatment. You start rubbing against her sex, making her moan as your fingers press and move along her thick lower lips, giving her clit a little flick once they reach the top, sending a bolt of pleasure up Nadia’s spine and earning a gasp from her.\n\n");
 		outputText("When you pull your fingers away, your fingers are covered in her sticky juices, you show them to Nadia, showing her how wet she is already. She moans softly, before taking the offered fingers in her mouth, licking and sucking them, cleaning them with her mouth, while with your other hand, you press a finger into her soaked cunt. She lets out a muffled moan through your fingers as your other fingers begin to thrust into her, causing more juices to spill down her legs.\n\n");
 		outputText("Once you deemed her ready, you pull your finger out of her, earning a muffled whimper, maybe she was close. You also remove your fingers from her mouth, which are now covered in her saliva and offer her your other finger to clean, which she does, greedy licking and sucking off her own juices before you also remove it.\n\n");
-		outputText("You get your " + (player.cocks[x].cockLength >= 25 ? "monsterous" : "average") + " [cock] ready, which stands erect and aligning it up with her dripping sex. In trying to tempt you into coming in quicker, begins rubbing her hungry pussy against your hard rod, but you remain dominant, pulling back until she stops, which she soon does, letting out a pathetic whimpering noise. You know she's turned herself on further. \n\n");
+		outputText("You get your " + (player.cocks[x].cockLength >= 25 ? "monsterous" : "average") + " [cock] ready, which stands erect and aligning it up with her dripping sex. In trying to tempt you into coming in quicker, begins rubbing her hungry pussy against your hard rod, but you remain dominant, pulling back until she stops, which she soon does, letting out a pathetic whimpering noise. You know she's turned herself on further.\n\n");
 		outputText("You stay still for a while, giving Nadia a moment to reflect on her mistakes, before slamming your cock into her as hard as you can. " + (player.cocks[x].cockLength >= 20 ? "Nadia doesn’t even have time to scream as your huge cock spreads her tight pussy as it spears both her pussy and womb, bulging out her belly in your shape, causing her to let out surprised gasp as her body shudders from the sudden orgasm you gave her" : "Nadia doesn’t even have time to scream as your cock spears into her pussy and slams against her womb") + ". ");
 		outputText("You hit her with such force that her elbows buckle, pitching her forward. her face is now in the dirt, where you plan to keep it, as you start pounding her pussy with your " + (player.cocks[x].cockLength >= 25 ? "monsterous" : "average") + " [cock], making her moan loudly into the ground as you force orgasm after orgasm on her.\n\n");
 		outputText("You ask her what she thinks of your cock pounding her pussy, but all she can do is moan, a sluttish look on her face, with her eyes rolled up and her tongue hanging out of her mouth as your rub her face against the dirt with your powerful thrusts. You can feel her cunt tighten around your " + (player.cocks[x].cockLength >= 25 ? "monsterous" : "average") + " [cock] with every thrust, " + (player.cocks[x].cockLength >= 25 ? "your [cockhead] slamming against her breasts through her belly, making her moan like a whore every time" : "your [cockhead] slamming against her womb") + ".\n\n");
@@ -988,7 +977,7 @@ public function SexMenuAnal():void {
 		outputText("\"<i>Hey don’t go enjoying too much,</i>\" you say, your fingers stick playing with her hot hole.\n\n");
 		outputText("\"<i>Sorry, but your fingers feel so good!</i>\" she moans, moving a hand down to her pussy, but you slap it away.\n\n");
 		outputText("\"<i>None of that either,</i>\" you say, giving her arse another hard smack.\n\n");
-		outputText("\"<i>Sorry!</i>\" Nadia moans happily, very much enjoying the rough treatment. Her body trembles, barely able to keep herself from collapsing. \n\n");
+		outputText("\"<i>Sorry!</i>\" Nadia moans happily, very much enjoying the rough treatment. Her body trembles, barely able to keep herself from collapsing.\n\n");
 		outputText("Thinking that she is ready enough, even though you’re kind of curious how many fingers she can take, you remove your fingers. Nadia lets out a sad whimper at the absence of your fingers, although that quickly changes when she feels your " + (player.cocks[x].cockLength >= 25 ? "monsterous" : "average") + " [cock] press against her rear. Wasting no time, and knowing that she is ready, you slam all your cock into her at once, ");
 		outputText("earning you a loud scream of pleasure from Nadia, " + (player.cocks[x].cockLength >= 20 ? "as your cock stretches her tight little rear beyond normal" : "as your cock fills her tight little rear") + ", her eyes rolling back into her head and her face locked a sluttish grin as your cock begins to pound her arse hard " + (player.cocks[x].cockLength >= 20 ? "making her belly bulge out with your size" : "") + ".\n\n");
 		outputText("She is barely able to support her upper body as she tries her best to straighten up, but every time your hips smash into her arse, your cock slamming deep inside her, she loses all strength and she is back on her elbows. Eventually she loses all strength whatsoever, and falls face first onto the ground, moaning happily.\n\n");
@@ -1003,7 +992,7 @@ public function SexMenuAnal():void {
 			outputText("After promising you will later, you head back to your adventure, while Nadia rests for a while.\n\n");
 		}
 		else {
-			outputText("spraying her intestines with your thick spunk, before removing your cock with a wet sound. Some of your spooge follows, trickling from her now gaping asshole. \n\n");
+			outputText("spraying her intestines with your thick spunk, before removing your cock with a wet sound. Some of your spooge follows, trickling from her now gaping asshole.\n\n");
 			outputText("Nadia rolls onto her side, panting from exhaustion, before giving you a loving look.\n\n");
 			outputText("\"<i>Thank you so much for properly punishing me,</i>\" she giggles, rubbing her well fucked arsehole, \"<i>I don’t think I’ll be able to sit down for a while though. Though please come back soon, otherwise my other hole will get lonely.</i>\"\n\n");
 			outputText("After promising you will later, you head back to your adventure, while Nadia rests for a while.\n\n");
@@ -1104,58 +1093,53 @@ private function BelisaNadiaTalk():void {
 	BelisaFollower.BelisaQuestComp = true;
 	endEncounter();
 }
-	public function NadiaPregAnnouncement():void {
-		outputText("Your mare is waiting for you back at camp, with a smile on her face, nearly jumping from joy. Her eyes gleam as she sees you, and she nearly skips over, her J-cup breasts bouncing with each step. She breaks into a run, and you brace yourself as Nadia tackles you, Smothering you in her massive mammaries. \n\n");
-		outputText("\"<i>Oh, my stallion, you wonderful, wonderful lover!</i>\" She gives you a big smack on the lips. You look at her, confused, then the penny drops. You bring a hand to her belly, and she nods, her horn glowing, and her eyes flashing with excitement. \n\n");
-		outputText("\"<i>I’m pregnant</i>\", she says simply, cheeks red, and a huge grin on her face. \"<i>You’re going to be a father, [Name].</i>\" She puts a hand on her stomach.  \n\n");
-		outputText("You congratulate Nadia, knowing that this has been what she wanted for a long time. She cuddles you for a minute or so, before letting you go. You excuse yourself, going about your day…but you can feel Nadia’s eyes on your back as you go about your work around camp.  \n\n");
-		outputText(" \n\n");
-		doNext(playerMenu);
-	}
-
-	public function NadiaPreg1():void {
-		outputText("Nadia’s stomach is noticeably larger than before, but barely. She pats her stomach occasionally, a huge, dopey smile on her face. You notice that she keeps a small bag of oats on her hip. She sees you looking, and gives you a smile.  \n\n");
-		outputText(" \n\n");
-		doNext(playerMenu);
-	}
-
-	public function NadiaPreg2():void {
-		outputText("Nadia’s belly hasn’t grown much more, but she’s moving slower than before. Occasionally, you can see her wince, and she seems to rub her pregnant belly more than usual.\n\n");
-		doNext(playerMenu);
-	}
-
-	public function NadiaPreg3():void {
-		outputText("Nadia’s stomach is distended, and it’s clear to anyone with eyes that she’s heavily pregnant. You notice her stomach jerk, getting a startled cry from Nadia. Rushing over, you ask her if she’s alright, and your unicorn lover sighs. \"<i>I’ll be fine…But your kid is kicking hard, my stallion.</i>\" She guides your hand to her belly, and you can feel a sudden impact. Nadia groans, and you gently rub her stomach, trying to ease her pain a little. Before long, the kicks subside, and she leans into you.  \n\n");
-		outputText("\"<i>Thank you for that.</i>\" She whispers, all but falling asleep on you. You help her over to her bed, and she sighs, lying down.  \n\n");
-		doNext(playerMenu);
+	private function NadiaPregAnnouncement():Boolean {
+		switch (pregnancy.eventTriggered()) {
+			case 1:
+                outputText("\nYour mare is waiting for you back at camp, with a smile on her face, nearly jumping from joy. Her eyes gleam as she sees you, and she nearly skips over, her " + Appearance.breastCup(NadiaCupSize) + "-cup breasts bouncing with each step. She breaks into a run, and you brace yourself as Nadia tackles you, Smothering you in her massive mammaries.\n");
+                outputText("\n\"<i>Oh, my stallion, you wonderful, wonderful lover!</i>\" She gives you a big smack on the lips. You look at her, confused, then the penny drops. You bring a hand to her belly, and she nods, her horn glowing, and her eyes flashing with excitement.\n");
+                outputText("\n\"<i>I’m pregnant</i>\", she says simply, cheeks red, and a huge grin on her face. \"<i>You’re going to be a father, [Name].</i>\" She puts a hand on her stomach.\n");
+                outputText("\nYou congratulate Nadia, knowing that this has been what she wanted for a long time. She cuddles you for a minute or so, before letting you go. You excuse yourself, going about your day…but you can feel Nadia’s eyes on your back as you go about your work around camp.\n");
+                return true;
+            case 2:
+                outputText("\nNadia’s stomach is noticeably larger than before, but barely. She pats her stomach occasionally, a huge, dopey smile on her face. You notice that she keeps a small bag of oats on her hip. She sees you looking, and gives you a smile.\n");
+                return true;
+            case 3:
+                outputText("\nNadia’s belly hasn’t grown much more, but she’s moving slower than before. Occasionally, you can see her wince, and she seems to rub her pregnant belly more than usual.\n");
+                return true;
+            case 4:
+                outputText("\nNadia’s stomach is distended, and it’s clear to anyone with eyes that she’s heavily pregnant. You notice her stomach jerk, getting a startled cry from Nadia. Rushing over, you ask her if she’s alright, and your unicorn lover sighs. \"<i>I’ll be fine…But your kid is kicking hard, my stallion.</i>\" She guides your hand to her belly, and you can feel a sudden impact. Nadia groans, and you gently rub her stomach, trying to ease her pain a little. Before long, the kicks subside, and she leans into you.\n");
+                outputText("\n\"<i>Thank you for that.</i>\" She whispers, all but falling asleep on you. You help her over to her bed, and she sighs, lying down.\n");
+                return true;
+		}
+        return false; //If there's no update then return false so needNext is not set to true
 	}
 
 	public function NadiaGivesBirth():void {
-		outputText("You hear a choking cry from Nadia’s part of camp, and you rush over, seeing your unicorn lover, doubled over, with a small pool of clear fluid at her hooved feet.  \n\n");
-		outputText("\"<i>O-oh, [Name]!</i>\" Nadia cries, reaching a hand out to you. You run over, catching her before she loses her balance entirely. \"<i>T-the baby’s coming!</i>\"  \n\n");
-		outputText("You tell her that you kind of guessed that, and she grits her teeth, grunting as a contraction hits. \"<i>Sm-smartass.</i>\" She grunts, and points to her bedroll. \"<i>Lay me down there, please.</i>\"  \n\n");
-		outputText("You half-drag, half-carry Nadia over to her bedroll, and as she groans, you grab a towel, gently spreading your unicorn lover’s legs. Nadia covers herself with her tail, but you gently take it, pushing it out of your way. \n\n");
-		outputText("\"<i>S-sorry…Force of habit.</i>\" Nadia grunts. You shake your head slightly, telling her not to worry. Just focus on the birth. She whinneys as a contraction hits, and you position yourself between Nadia’s legs, ready to receive your newborn foal.  \n\n");
-		outputText("It takes about a half hour before you can see a head, crowning. Nadia gasps in pain as the horn passes through, and you take her hand, telling her to breathe. Slowly, Nadia pushes, and you take the newborn Unicorn into your arms. \n\n");
+		outputText("You hear a choking cry from Nadia’s part of camp, and you rush over, seeing your unicorn lover, doubled over, with a small pool of clear fluid at her hooved feet.\n\n");
+		outputText("\"<i>O-oh, [Name]!</i>\" Nadia cries, reaching a hand out to you. You run over, catching her before she loses her balance entirely. \"<i>T-the baby’s coming!</i>\"\n\n");
+		outputText("You tell her that you kind of guessed that, and she grits her teeth, grunting as a contraction hits. \"<i>Sm-smartass.</i>\" She grunts, and points to her bedroll. \"<i>Lay me down there, please.</i>\"\n\n");
+		outputText("You half-drag, half-carry Nadia over to her bedroll, and as she groans, you grab a towel, gently spreading your unicorn lover’s legs. Nadia covers herself with her tail, but you gently take it, pushing it out of your way.\n\n");
+		outputText("\"<i>S-sorry…Force of habit.</i>\" Nadia grunts. You shake your head slightly, telling her not to worry. Just focus on the birth. She whinneys as a contraction hits, and you position yourself between Nadia’s legs, ready to receive your newborn foal.\n\n");
+		outputText("It takes about a half hour before you can see a head, crowning. Nadia gasps in pain as the horn passes through, and you take her hand, telling her to breathe. Slowly, Nadia pushes, and you take the newborn Unicorn into your arms.\n\n");
 		switch (rand(3)) {
 			case 0:
-				outputText("It's a boy, and as he looks into your eyes, he stares, horn glowing ever so slightly. He coughs, taking in his first breath, and you sigh happily, swaddling your boy. \n\n");
+				outputText("It's a boy, and as he looks into your eyes, he stares, horn glowing ever so slightly. He coughs, taking in his first breath, and you sigh happily, swaddling your boy.\n\n");
 				NadiaTotalKidsNum += 1;
 				NadiaSonsNum += 1;
 				break;
 			case 1:
 				// 25% chance
-				outputText("It's a little girl. She opens her eyes, then quickly closes them again, burbling. She inhales deeply, then begins to cry loudly. You rock her, wrapping her up, and she turns her head, trying to put something between her eyes and the light. \n\n");
+				outputText("It's a little girl. She opens her eyes, then quickly closes them again, burbling. She inhales deeply, then begins to cry loudly. You rock her, wrapping her up, and she turns her head, trying to put something between her eyes and the light.\n\n");
 				NadiaTotalKidsNum += 1;
 				NadiaDaughtersNum += 1;
 				break;
 			case 2:
-				outputText("You notice that your newborn Unicorn is a hermaphrodite, with both male and female genitals. You swaddle them in cloth, and they look around curiously, their eyes wandering. You hold their head, and they look at you curiously, before breaking out into an innocent smile. \n\n");
+				outputText("You notice that your newborn Unicorn is a hermaphrodite, with both male and female genitals. You swaddle them in cloth, and they look around curiously, their eyes wandering. You hold their head, and they look at you curiously, before breaking out into an innocent smile.\n\n");
 				NadiaHermKidsNum +=1;
 				NadiaTotalKidsNum += 1;
 		}
-		outputText("Nadia’s barely conscious, but she holds her arms out for them, bringing your newborn to her sizable bosom to feed. You stay with Nadia and the baby for another hour, just to make sure they’re both alright, before excusing yourself.  \n\n");
-
+		outputText("Nadia’s barely conscious, but she holds her arms out for them, bringing your newborn to her sizable bosom to feed. You stay with Nadia and the baby for another hour, just to make sure they’re both alright, before excusing yourself.\n\n");
 		doNext(playerMenu);
 	}
 

@@ -184,7 +184,7 @@ public function corruptCampJojo():void {
 			return;
 		}
 		//Offer lethicite jojo tf if the player is ready
-		if(!player.hasStatusEffect(StatusEffects.JojoTFOffer) && player.hasKeyItem("Marae's Lethicite") >= 0 && player.keyItemvX("Marae's Lethicite", 1) > 0 && ((player.cor >= 50 - player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight)) && player.gender > 0) {
+		if(!player.hasStatusEffect(StatusEffects.JojoTFOffer) && player.hasKeyItem("Marae's Lethicite") >= 0 && player.keyItemvX("Marae's Lethicite", 1) > 0 && player.cor >= (50 - player.corruptionTolerance) && player.gender > 0) {
 			jojoMutationOffer();
 			player.createStatusEffect(StatusEffects.JojoTFOffer,0,0,0,0);
 			return;
@@ -1506,7 +1506,7 @@ public function jojoFollowerMeditate(doClear:Boolean = true):void {
 				}
 			}
 			function sharedEnd(vag:Boolean):void {
-				if(player.lib > 60 && ((player.cor > 0 - player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight))) {
+				if(player.lib > 60 && player.cor > 0 - player.corruptionTolerance) {
 					if (!vag) outputText("You smile as you hear him begin masturbating in the background.  There can be no doubt, you are tainting him more and more...");
 					else outputText("You lean down and whisper strange un-words as you stroke his cock.  It spasms and grows, cum pumping from it slowly but constantly.  You walk away, leaving him in a growing puddle of what was once his morals.  You don't know where the words came from, but you do know you're getting better at tempting and corrupting.");
 					if (!recalling) {
@@ -1558,7 +1558,7 @@ public function jojoFollowerMeditate(doClear:Boolean = true):void {
 				if(player.cumQ() >= 250 && player.cumQ() < 500) outputText("You spasm against him as you orgasm, the pleasure erupting into the slut-mouse's throat as he tries to swallow it all.  Excess cum dribbles from the corners of his mouth as you fully spend yourself.");
 				if(player.cumQ() >= 500) outputText("You buck against him as you orgasm, the slutty mouse's cheeks bulging in surprise as your cum explodes into his mouth.  Thick streams escape from the corners of his muzzle, your seed pouring into him faster than he can swallow.  Eventually you finish, and see the mouse dripping with your spunk nearly to the waist, a small bulge in his belly.");
 				outputText("  Jojo leans back, panting for breath, a dull smile on his face.  He spits a load of your cum into his paw and begins jerking himself off with it, lewdly putting on a show for you.\n\n");
-				if(player.lib > 50 && ((player.cor > 40 - player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight)) && !JojoRapeRoleplay) {
+				if(player.lib > 50 && player.cor > 40 - player.corruptionTolerance && !JojoRapeRoleplay) {
 					outputText("<b>You feel a familiar power growing within you and decide to unleash it.</b>  You grab the prayer beads from his outfit and spit on them, making them slick and wet.  Holding them below your flagging cock, you focus on the demonic visions in your mind, slowly but constantly milking larger and larger dollops of cum onto the once holy beads.  Jojo moans as he comes to understand your intent, and turns around, shaking his lithe mouse-bum at you.  You lean over him, whispering into his ear, \"<i>Each defiled bead I push into you is going to make you more of a willing slut.  More of a willing receptacle for demon cum.  More of a fountain of desire waiting to be tapped by Succubi.  More my toy.</i>\"\n\n");
 					outputText("He whimpers as you slide the first bead in, his eyes growing foggy and his bum wiggling more eagerly.  You push the second bead inside him, and feel his asshole stretch and loosen, welcoming the corruption.  The third bead slips right in, and he moans, \"<i>sluuuut</i>,\" His cock grows longer and thicker throughout the moan, stopping at over a foot long and 3 inches thick, dribbling cum.  You whisper, \"<i>Cum, my Toy,</i>\" and push the remaining beads inside him.  His eyes roll back as his paws frantically milk his [monster cockshort], cum spraying from him like a fountain.  Jojo trembles, losing complete control and falling away from you.  You still hold the end of his beads, and smile as they pop out, stained almost as dark as the poor mouse's soul.\n\n");
 					outputText("You walk away, leaving your new pet to explore his outlook on life, and to test your awakened powers.  ");
@@ -1568,7 +1568,7 @@ public function jojoFollowerMeditate(doClear:Boolean = true):void {
 						dynStats("lib", -10, "cor", 10);
 					}
 				}
-				if (player.lib < 50 && ((player.cor < 40 - player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight)) && !JojoRapeRoleplay) {
+				if (player.lib < 50 && player.cor < 40 - player.corruptionTolerance && !JojoRapeRoleplay) {
 					outputText("Jojo eventually cums violently, collapsing into a puddle of spent jizz.  You smile and walk away, hoping to encounter him again. ");
 					outputText("Seems like that still wasn't enough... maybe you need to be more corrupted or have higher libido?");
 					if (!recalling) dynStats("lib", 2, "cor", 1);
@@ -1658,7 +1658,7 @@ public function jojoFollowerMeditate(doClear:Boolean = true):void {
 					if (player.hasUniquePregnancy()) player.impregnationRacialCheck();
 					else player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
 				}
-				if(player.lib > 50 && ((player.cor > 40 - player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight))) {
+				if(player.lib > 50 && player.cor > 40 - player.corruptionTolerance) {
 					outputText("\n\n<b>You feel a familiar power growing within you and decide to unleash it.</b>  You grab the prayer beads from his outfit and spit on them, making them slick and wet.  Holding them below his flagging cock, you focus on the demonic visions in your mind, slowly but constantly milking larger and larger dollops of cum onto the once holy beads.  Jojo moans as he comes to understand your intent, and turns around, shaking his lithe mouse-bum at you.  You lean over him, whispering into his ear, \"<i>Each defiled bead I push into you is going to make you more of a willing slut.  More of a willing receptacle for demon cum.  More of a fountain of desire waiting to be tapped by Succubi.  More my toy.</i>\"\n\n");
 					outputText("He whimpers as you slide the first bead in, his eyes growing foggy and his bum wiggling more eagerly.  You push the second bead inside him, and feel his asshole stretch and loosen, welcoming the corruption.  The third bead slips right in, and he moans, \"<i>sluuuut</i>,\" His cock grows longer and thicker throughout the moan, stopping at over a foot long and 3 inches thick, dribbling cum.  You whisper, \"<i>Cum, my Toy,</i>\" and push the remaining beads inside him.  His eyes roll back as his paws frantically milk his [monster cockshort], cum spraying from him like a fountain.  Jojo trembles, losing complete control and falling away from you.  You still hold the end of his beads, and smile as they pop out, stained almost as dark as the poor mouse's soul.\n\n");
 					outputText("You walk away, leaving your new pet to explore his outlook on life, and to test your awakened powers.  ");
@@ -1669,7 +1669,7 @@ public function jojoFollowerMeditate(doClear:Boolean = true):void {
 					}
 				}
 
-				if(player.lib < 50 && ((player.cor < 40 - player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight)) && !JojoRapeRoleplay) {
+				if(player.lib < 50 && player.cor < 40 - player.corruptionTolerance && !JojoRapeRoleplay) {
 					outputText("\n\nExhausted, you pull yourself free from the mouse, drained of lust but feeling VERY naughty.  Jojo doesn't even bother getting up, he just keeps masturbating, lost in the scents of your slick juices and his cum.  As you walk away with a sexy wiggle, the sexual fluids are absorbed into the ground.");
 					outputText("Seems like that still wasn't enough... maybe you need to be more corrupted or have higher libido?");
 					if (!recalling) dynStats("lib", 2, "cor", 1);
@@ -2420,7 +2420,7 @@ public function talkMenu():void
 	if (flags[kFLAGS.UNLOCKED_JOJO_TRAINING] == 0 && flags[kFLAGS.TIMES_TALKED_WITH_JOJO] >= 4) addButton(7, "Training", apparantlyJojoDOESlift).hint("Ask him if he's willing to train you.");
 	if (flags[kFLAGS.MINERVA_PURIFICATION_JOJO_TALKED] == 1 && flags[kFLAGS.MINERVA_PURIFICATION_PROGRESS] < 10) addButton(8, "Purification", SceneLib.mountain.minervaScene.minervaPurification.purificationByJojoPart1).hint("Ask him if he can exorcise the demonic parasite infesting Minerva.");
 	//Sex button
-	if ((player.cor <= (10 + player.corruptionTolerance) || player.hasPerk(PerkLib.FalseLight)) && player.lust >= 33) {
+	if (player.cor <= (10 + player.corruptionTolerance) && player.lust >= 33) {
 		addButton(9, "Sex?", offerSexFirstTime).hint("Ask him if he's willing to have sex with you.");
 		if (flags[kFLAGS.TIMES_TALKED_WITH_JOJO] < 4) addButtonDisabled(9, "Sex?", "You should socialize with Jojo a bit more.");
 		//if (player.hasStatusEffect(StatusEffects.EverRapedJojo)) addButtonDisabled(9, "Sex?". "You've raped Jojo in the past, now you can't ask him out.");
@@ -2548,7 +2548,7 @@ private function TyrantiaEggQuestJoJo():void {
 		{
 			outputText("You slide an arm around " + (flags[kFLAGS.JOJO_BIMBO_STATE] ==5? "Joy": flags[kFLAGS.JOJO_BIMBO_STATE] !=5? "Jojo":"")  + "’s shoulders in an attempt to reassure the monk.  " + (flags[kFLAGS.JOJO_BIMBO_STATE] ==5? "she": flags[kFLAGS.JOJO_BIMBO_STATE] !=5? "he":"") + "manages a smile in response as " + (flags[kFLAGS.JOJO_BIMBO_STATE] ==5? "she": flags[kFLAGS.JOJO_BIMBO_STATE] !=5? "he":"") + "looks up at you.  A single tear manages to slide down  muzzle as " + (flags[kFLAGS.JOJO_BIMBO_STATE] ==5? "she": flags[kFLAGS.JOJO_BIMBO_STATE] !=5? "he":"") + "says, \"<i>Thank you, my friend.</i>\"\n\n");
 		}
-		else if (player.cor >= 35 && (player.cor <= 75 || player.hasPerk(PerkLib.FalseLight)))
+		else if (player.cor >= 35 && player.cor <= 75)
 		{
 			outputText("You try to further console the distressed monk by moving your hand to  back and giving " + (flags[kFLAGS.JOJO_BIMBO_STATE] ==5? "her": flags[kFLAGS.JOJO_BIMBO_STATE] !=5? "him":"") + " a few friendly taps.  " + (flags[kFLAGS.JOJO_BIMBO_STATE] ==5? "Joy": flags[kFLAGS.JOJO_BIMBO_STATE] !=5? "Jojo":"")  + " visibly pulls " + (flags[kFLAGS.JOJO_BIMBO_STATE] ==5? "her": flags[kFLAGS.JOJO_BIMBO_STATE] !=5? "him":"") + "self together. \"Thank you, I’m alright now,\" he tells you as he looks up and gives you a weak smile.\n\n");
 		}
@@ -2764,7 +2764,7 @@ public function apparantlyJojoDOESlift():void
 		flags[kFLAGS.UNLOCKED_JOJO_TRAINING] = 1;
 		outputText("You ask Jojo if he can teach you how to fight like a monk.\n\n");
 		outputText("Jojo considers you for a moment before saying, \"<i>Yes I can teach you the forms, skills and techniques I was taught by my order. Plus...</i>\" Jojo gazes off into the distance, his attention drifing for a moment before he continues, \"<i>since I am all that is left, it is up to me to bestow this knowledge upon a worthy soul.</i>\"\n\n");
-		if ((player.cor >= (25 + player.corruptionTolerance)) || player.hasPerk(PerkLib.FalseLight))
+		if (player.cor >= (25 + player.corruptionTolerance))
 		{
 			outputText("Jojo frowns, \"<i>I am willing to teach you [name], when I can.  However I am no master, therefore I am unworthy of taking a disciple.  But as your friend, I will teach you what I know so that you may protect yourself.  I believe our time would be better spent meditating.  There is very little you can do with these techniques without first finding your center.</i>\"\n\n");
 			// Kick back to previous menu
@@ -2789,7 +2789,7 @@ public function apparantlyJojoDOESlift():void
 			doNext(jojoCamp);
 			return;
 		}
-		if ((player.cor >= (25 + player.corruptionTolerance)) || player.hasPerk(PerkLib.FalseLight))
+		if (player.cor >= (25 + player.corruptionTolerance))
 		{
 			outputText("You ask the monk to continue your training; but he shakes his head.\n\n");
 			outputText("\"<i>I fear that your time would be better spend meditating before we continue your training. Would you like to do so now?</i>\"\n\n");
@@ -3801,3 +3801,4 @@ public function afterDebimboTalk():void {
 	}
 }
 }
+

@@ -76,7 +76,6 @@ public class TeaseSkill extends AbstractGeneral {
         if (player.hasPerk(PerkLib.BroadSelection) && player.differentTypesOfCocks() > 1) lustDmg *= (1 + (0.25 * player.differentTypesOfCocks()));
 		lustDmg = combat.teases.fueledByDesireDamageBonus(lustDmg);
 		if (SceneLib.urtaQuest.isUrta()) lustDmg *= 2;
-		if (combat.teases.checkRampagingBunnyStyleLewdStrikes()) lustDmg *= (1 + (0.01 * monster.hp100));
 		if (monster) lustDmg *= monster.lustVuln;
 		return Math.round(lustDmg);
 	}
@@ -119,6 +118,7 @@ public class TeaseSkill extends AbstractGeneral {
 		if (rand(100) <= baseChance + rand(teaseOpt.bonusChance)) {
 			var lustDmg:Number = calcLustDamage(monster);
 			var damageMod:Number = teaseOpt.damage + rand(teaseOpt.bonusDamage);
+			if (combat.teases.checkRampagingBunnyStyleLewdStrikes()) lustDmg *= (1 + (0.01 * monster.hp100));
 			if (player.perkv1(IMutationsLib.FiendishBallsIM) >= 4 && (selectedTease == 3 || selectedTease == 10 || selectedTease == 11 || selectedTease == 23 || selectedTease == 33 || selectedTease == 35)) lustDmg *= 4;
 			lustDmg *= 1 + (1 * damageMod/20);
 
@@ -212,7 +212,8 @@ public class TeaseSkill extends AbstractGeneral {
 
         if (rand(100) <= baseChance + rand(teaseOpt.bonusChance)) {
             var lustDmg:Number = calcLustDamage(monster);
-            var damageMod:Number = teaseOpt.damage + rand(teaseOpt.bonusDamage)
+            var damageMod:Number = teaseOpt.damage + rand(teaseOpt.bonusDamage);
+			if (combat.teases.checkRampagingBunnyStyleLewdStrikes()) lustDmg *= (1 + (0.01 * monster.hp100));
             lustDmg *= 1 + (1 * damageMod / 20);
 			if (player.perkv1(IMutationsLib.FiendishBallsIM) >= 4) 
             //Determine if critical tease!

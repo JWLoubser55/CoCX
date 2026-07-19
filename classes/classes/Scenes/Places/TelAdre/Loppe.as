@@ -2605,4 +2605,4 @@ public function pcGivesBirthToLoppeKits(womb:int = 0):void {
 	doNext(playerMenu);
 }
 }
-}
+}
