@@ -632,7 +632,7 @@ public class GoblinScene extends BaseContent {
             addButton(10, "Mindbreak", mindbreakGoblin).hint("Although the green slut isn't too smart, her mind would suffice too.").disableIf(Mindbreaker.MindBreakerQuest != Mindbreaker.QUEST_STAGE_ISMB, "Mindbreakers only!");
             addButton(11, "Convert Elf", SceneLib.woodElves.CaptureGoblin).hint("Take the short slut to the Sacred Tree to become a new sister!").disableIf(!player.isWoodElf(), "Wood elves only!");
             addButton(12, "Kill", killGoblin);
-            if (player.lust >= 33) SceneLib.uniqueSexScene.pcUSSPreChecksV2(rapeMenu); //the last!
+            SceneLib.uniqueSexScene.pcUSSPreChecksV2(rapeMenu); //the last!
         }
     }
 

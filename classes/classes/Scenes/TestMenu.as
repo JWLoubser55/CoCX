@@ -56,7 +56,8 @@ public class TestMenu extends BaseContent
 		clearOutput();
 		outputText("Collection of different cheats that can be used by the players.");
 		outputText("\n\nAscension points: " + player.ascensionPerkPoints + "");
-		outputText("\n\nCorruption: "+player.cor+"");
+		outputText("\n\nCorruption: " + player.cor + "");
+		outputText("\n\nSoul drain perk v1: "+player.perkv1(PerkLib.SoulDrain)+"");
 		var bd:ButtonDataList = new ButtonDataList();
 		bd.add("StatsAdj/Ascen", StatsAscensionMenu, "For more precisely adjusting each of the 8 main stats and Ascension related stuff.");
 		bd.add("P/G/XP", PerksGemsEXP, "Adding/Removing perk points and adding gems/exp.");
