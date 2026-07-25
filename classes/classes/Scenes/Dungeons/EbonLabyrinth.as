@@ -288,6 +288,7 @@ public class EbonLabyrinth extends DungeonAbstractContent {
 		//move
         room += rooms;
 		if (room == 51) {
+			fountainRoom = true;
 			fountainCorrupt = rand(2) == 0;
 			encountersUpgradeFountain();
 		}

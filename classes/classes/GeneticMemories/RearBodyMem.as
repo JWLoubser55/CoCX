@@ -302,7 +302,7 @@ import classes.CoC;
 			cost: 100,
 			title: "Myconid",
 			transformation: function(): Transformation {
-				return CoC.instance.transformations.RearBodyAbyssalSharkFin;
+				return CoC.instance.transformations.RearBodyMyconidBraAndNeck;
 			}
 		});
 
