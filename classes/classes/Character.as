@@ -1117,6 +1117,7 @@ import classes.Scenes.NPCs.Forgefather;
 			if (flags[kFLAGS.SOUL_CULTIVATION] >= 58) max += 10 * (flags[kFLAGS.SOUL_CULTIVATION] - 57);//Soul Saint
 			//if (flags[kFLAGS.SOUL_CULTIVATION] >= ) max += 10 * (flags[kFLAGS.SOUL_CULTIVATION] - );//Soul Paragon
 			//if (flags[kFLAGS.SOUL_CULTIVATION] >= ) max += 10 * (flags[kFLAGS.SOUL_CULTIVATION] - );//Soul Immortal
+			if (maxDemonicEnergy() > 0) max += maxDemonicEnergy();
 			tier = game.player.racialTier(Races.DRAGON);
 			if (tier == 1) max += 50;
 			else if (tier == 2) max += 100;
