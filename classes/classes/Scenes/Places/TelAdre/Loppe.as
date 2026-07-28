@@ -2043,8 +2043,12 @@ private function sharedStatsAndEtcChanges():void {
 			if (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes) && player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
 				player.createPerk(PerkLib.RampagingBunnyStyleLewdStrikes, 0, 0, 0, 0);
 				outputText("Rampaging Bunny Style: Lewd Strikes");
+			}
+			if (player.libStat.train.value >= 60 && !player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer) && player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes)) {
+				player.createPerk(PerkLib.RampagingBunnyStyleHipDestroyer, 0, 0, 0, 0);
+				outputText("Rampaging Bunny Style: Hip Destroyer");
 			}/*
-			if (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes)) {
+			if (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer)) {
 				player.createPerk(PerkLib., 0, 0, 0, 0);
 				outputText("Rampaging Bunny Style: ");
 			}
@@ -2058,7 +2062,7 @@ private function sharedStatsAndEtcChanges():void {
 	}
 }
 private function loppeTrainingPerksCheckStats():Boolean {
-	return ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes)));// || (player.libStat.train.value >= 75 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
+	return ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes)) || (player.libStat.train.value >= 60 && !player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer)));// || (player.libStat.train.value >= 80 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
 }
 private function loppeTrainingPerksCheckRest():Boolean {
 	return (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);

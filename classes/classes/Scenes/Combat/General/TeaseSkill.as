@@ -245,13 +245,23 @@ public class TeaseSkill extends AbstractGeneral {
                 player.takeLustDamage(7 + rand(6), true);
 			}
 			if (combat.teases.checkRampagingBunnyStyleTeasingAttack()) {
-				var damagee:Number = (combat.meleeUnarmedDamageNoLagSingle() * combat.teases.masteryBonusDamageTease());
-				if (player.biggestTitSize() > 4) damagee *= (1 + (0.5 * (player.biggestTitSize() - 4)));
+				var damage1:Number = (combat.meleeUnarmedDamageNoLagSingle() * combat.teases.masteryBonusDamageTease());
+				if (player.biggestTitSize() > 4) damage1 *= (1 + (0.5 * (player.biggestTitSize() - 4)));
 				if (player.hasCock() && player.biggestCockLength() > 15) {
-					if (player.biggestCockLength() > 30) damagee *= 4;
-					else damagee *= (1 + (0.2 * (player.biggestCockLength() - 15)));
+					if (player.biggestCockLength() > 30) damage1 *= 4;
+					else damage1 *= (1 + (0.2 * (player.biggestCockLength() - 15)));
 				}
-				combat.doPlayerPhysDamage(damagee);
+				combat.doPlayerPhysDamage(damage1);
+			}
+			if (combat.teases.checkRampagingBunnyStyleHipDestroyer()) {
+				var damage2:Number = (combat.meleeUnarmedDamageNoLagSingle() * combat.teases.masteryBonusDamageTease());
+				if (display) outputText("\nAdding injury to insult, you deliver "+(player.hasPerk(PerkLib.RampagingBunnyStyleHyperdrive)?"three sudden punches":"a sudden punch")+" to [monster his] face.");
+				combat.doPlayerPhysDamage(damage2);
+				if (player.hasPerk(PerkLib.RampagingBunnyStyleHyperdrive)) {
+					combat.doPlayerPhysDamage(damage2);
+					combat.doPlayerPhysDamage(damage2);
+				}
+				if (combat.boolFistingIs300Bucks()) combat.boolFistingIs301Bucks();
 			}
 			// Similar to fetish check, only add XP if the player IS the player...
 			if (!SceneLib.urtaQuest.isUrta()) player.SexXP(1 + combat.teases.bonusExpAfterSuccesfullTease());
