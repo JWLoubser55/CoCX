@@ -290,15 +290,16 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Rampaging Bunny Style: Teasing Attack. Gained at the end of Loppe sex scene if Training Libido level of 25+, bunny race or the rutting/heat status. Effects: When not using a weapon the Tease skill now also inflicts your unarmed strike damage multiplied by tease modifier.\n");
 			outputText("-New event perk: Rampaging Bunny Style: Lewd Strikes. Gained at the end of Loppe sex scene if Training Libido level of 50+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Teasing Attack perk. Effects: Add Unarmed strike weapon value to tease damage and tease damage is increased by a percentage based on the enemy total lost health. ");
 			outputText("Inversely unarmed and feral combat damage is increased by a percentage based on accumulated lust and gain a bonus on damage based on tease multiplier.\n");
-			outputText("-True Demons been jelaous of soul cultivators when compaing their tiny e-hunger bars and decided they must act. So now max demonic energy cap would be added to their max hunger cap.\n");
+			outputText("-True Demons been jealous of soul cultivators when compaing their tiny e-hunger bars and decided they must act. So now max demonic energy cap would be added to their max hunger cap.\n");
+			outputText("-New event perk: Rampaging Bunny Style: Hip Destroyer. Gained at the end of Loppe sex scene if Training Libido level of 60+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Lewd Strikes perk. Effects: When straddling or teasing inflict unarmed strike damage multiplied by tease modifier ");
+			outputText("(This may apply multiple times if straddle has iteratives). Add Hip squeeze as a straddle attack.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New event perk: Rampaging Bunny Style: Rabbit Punch. Gained at the end of Loppe sex scene if Training Libido level of 80+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Hip Destroyer perk. Effects: 
+			outputText("-\n");//New event perk: Rampaging Bunny Style: Hyperdrive. Gained at the end of Loppe sex scene if Training Libido level of 100+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Rabbit Punch perk. Effects: 
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -327,6 +328,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -411,14 +421,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -452,9 +456,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

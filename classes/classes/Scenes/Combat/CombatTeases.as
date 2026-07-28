@@ -204,6 +204,9 @@ public class CombatTeases extends BaseCombatContent {
 	public function checkRampagingBunnyStyleLewdStrikes():Boolean {
 		return player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes) && player.gender > 0 && (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);
 	}
+	public function checkRampagingBunnyStyleHipDestroyer():Boolean {
+		return player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer) && player.gender > 0 && (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);
+	}
 
 	/**
 	 * For use in touchThatFluffyHorn function to only generate the text of a tease while not applying any effects
@@ -286,6 +289,8 @@ public class CombatTeases extends BaseCombatContent {
 		//46 Alraune and Liliraune Tease
 		//47 Manticore Tailpussy Tease
 		//48 Belly Dance (Naga races)
+		//49 Teasing attack
+		//50 Hip Destroyer
 		//==============================
 		//BUILD UP LIST OF TEASE CHOICES!
 		//==============================
@@ -711,6 +716,20 @@ public class CombatTeases extends BaseCombatContent {
 			choices[choices.length] = 48;
 			choices[choices.length] = 48;
 			choices[choices.length] = 48;
+		}
+		//49 - Teasing attack
+		if (checkRampagingBunnyStyleTeasingAttack()) {
+			choices[choices.length] = 49;
+			choices[choices.length] = 49;
+			choices[choices.length] = 49;
+			choices[choices.length] = 49;
+		}
+		//50 - Hip Destroyer (when strandle)
+		if (checkRampagingBunnyStyleHipDestroyer()) {
+			choices[choices.length] = 50;
+			choices[choices.length] = 50;
+			choices[choices.length] = 50;
+			choices[choices.length] = 50;
 		}
 		return choices;
 	}
@@ -1368,6 +1387,16 @@ public class CombatTeases extends BaseCombatContent {
 						outputText("You go for a mighty kick "+(player.isNaked()?"":"the rush of air exposing your ")+(player.hasCock()?"erect [cock]":"")+(player.gender == 3?" and":"")+(player.hasVagina()?" dripping pussy":"")+" for your opponent to get a glance off.");
 					}
 				}
+				break;
+			case 50:
+				if (display) outputText("You tightly squeeze your opponent between your strong legs forcing [enemy his] face and nose right into contact with your genitals. You can practically see smoke rising from the growing arousal of [themonster].");
+				var damage:Number = (combat.meleeUnarmedDamageNoLagSingle() * combat.teases.masteryBonusDamageTease());
+				combat.doPlayerPhysDamage(damage);
+				if (player.hasPerk(PerkLib.RampagingBunnyStyleHyperdrive)) {
+					combat.doPlayerPhysDamage(damage);
+					combat.doPlayerPhysDamage(damage);
+				}
+				if (combat.boolFistingIs300Bucks()) combat.boolFistingIs301Bucks();
 				break;
 			default:
 				outputText("You shimmy and shake sensually. (An error occurred.)");

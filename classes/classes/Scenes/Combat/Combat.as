@@ -7838,7 +7838,71 @@ public class Combat extends BaseContent {
         else weaponNormalMastery(meleeMasteryEXPgains);
     }
 
-    /**
+    public function boolFistingIs300Bucks():Boolean {
+		return (player.isFistOrFistWeapon() && (player.shield.isNothing || (player.shield == shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dagger and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dual Daggers")) || player.isFeralCombat());
+	}
+	public function boolFistingIs301Bucks():void {
+		var extraHitChance:Number;
+        var extraHitDamage:Number;
+        var extraHitDamage2:Number;
+		if (player.hasPerk(PerkLib.JabbingStyle)){
+            if (player.hasPerk(PerkLib.JabbingGrandmaster)){
+                extraHitChance = 10;
+                if (player.hasPerk(PerkLib.MeteorStrike)) extraHitChance = 20;
+                if (rand(100) < extraHitChance){
+                    if (player.hasPerk(PerkLib.SpeedDemon) && !player.weapon.isDualLarge() && !player.weapon.isSingleLarge() && !player.weapon.isDualMassive() && !player.weapon.isSingleMassive() && !player.weapon.isStaffType()) {
+                        if(player.hasStatusEffect(StatusEffects.JabbingStyle)){
+                            extraHitDamage += player.spe*player.statusEffectv1(StatusEffects.JabbingStyle);
+                        }
+                    }
+                    //var critJab:Boolean = false;
+                    var critJab:Boolean = CritRoll()
+                    extraHitDamage = CritDamage(extraHitDamage, critJab);
+                    //Deal the fellow up blow!
+                    outputText("You chain up the jab with a second blow! ");
+                    extraHitDamage2 = Math.round(extraHitDamage);
+                    doPlayerPhysDamage(extraHitDamage, true ,true);
+                    if (critJab) outputText("<b>Critical! </b>");
+                    outputText("\n\n");
+                    JabbingStyleIncrement();
+                }
+            }
+        }
+        if (player.hasPerk(PerkLib.GrabbingStyle)){
+            extraHitChance = 10;
+            var playerMaxCarry:Number = player.str+(player.effectiveTallness/12*100);
+            if (player.hasPerk(PerkLib.GrabbingMaster)) playerMaxCarry += player.str;
+            var ennemyMaxSize:Boolean = playerMaxCarry > (monster.tallness/12*100);
+            if (player.hasPerk(PerkLib.GrabbingMaster)) extraHitChance = 20;
+            if (rand(100) < extraHitChance && ennemyMaxSize){
+                if (player.hasPerk(PerkLib.SpeedDemon) && !player.weaponOff.isDualLarge() && !player.weaponOff.isSingleLarge() && !player.weaponOff.isDualMassive() && !player.weaponOff.isSingleMassive() && !player.weaponOff.isStaffType()) {
+                    if(player.hasStatusEffect(StatusEffects.JabbingStyle)){
+                        extraHitDamage2 += player.spe*player.statusEffectv1(StatusEffects.JabbingStyle);
+                    }
+                }
+                //Determine if critical hit!
+                var critGrab:Boolean = CritRoll();
+                extraHitDamage2 = CritDamage(extraHitDamage2, critJab);
+                //Deal the fellow up blow!
+                outputText("You grab your opponent mid swing and supplex it against the ground! ");
+                if (player.hasPerk(PerkLib.MeteorStrike)) extraHitDamage2 *= 2;
+                extraHitDamage2 = Math.round(extraHitDamage2);
+                doPlayerPhysDamage(extraHitDamage2, true ,true);
+                if (critGrab) outputText("<b>Critical! </b>");
+                if (player.hasPerk(PerkLib.GrabbingGrandmaster)){
+                    var extraHitStunChance:Number = 20;
+                    if (rand(100) < extraHitStunChance){
+                        outputText("The concusion leaves your opponent dazed! ");
+                        if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
+						else monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
+                    }
+                }
+                outputText("\n\n");
+                JabbingStyleIncrement();
+            }
+        }
+	}
+	/**
      * Do melee attack
      * 1. Check accuracy
      * 2. Attack
@@ -7875,8 +7939,7 @@ public class Combat extends BaseContent {
         var boolSwiftCast:Boolean = player.hasPerk(PerkLib.SwiftCasting) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && (player.isOneHandedWeapons() || player.weapon == weapons.ATWINSCY || player.weaponOff == weapons.ATWINSCY || (player.weapon == weapons.HATWINSCY && player.weaponOff == weapons.HATWINSCY) ||
 									(player.weapon.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weapon.isSingleMassive() && player.isAbleToOneHandWieldMassiveWeapon())) && player.isHavingFreeOffHand() && !player.isFeralCombat();
         var boolLifeLeech:Boolean = player.hasPerk(PerkLib.LifeLeech) && player.isFistOrFistWeapon();
-        var boolFistingIs300Bucks:Boolean = (player.isFistOrFistWeapon() && (player.shield.isNothing || (player.shield == shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dagger and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dual Daggers")) || player.isFeralCombat());
-		var boolFiendishConcentration1b:Boolean = !player.weapon.isDual() && !player.weaponOff.isDual() && !player.isOneHandedWeapons();
+        var boolFiendishConcentration1b:Boolean = !player.weapon.isDual() && !player.weaponOff.isDual() && !player.isOneHandedWeapons();
 		var boolFiendishConcentration1a:Boolean = !player.weapon.isNothing && player.weaponOff.isNothing && (player.weapon.isSingleSmall() || player.weapon.isSingleMedium() || (player.weapon.isSingleLarge() && player.isAbleToOneHandWieldLargeWeapon()) || (player.weapon.isSingleMassive() && player.isAbleToOneHandWieldMassiveWeapon()));
 		var boolFiendishConcentration1:Boolean = player.hasPerk(PerkLib.FiendishConcentration) && flags[kFLAGS.ELEMENTAL_MELEE] > 0 && player.hasFourArms() && ((player.weapon.isDualWielded() && (!player.weapon.isDual() || !player.weaponOff.isDual())) || boolFiendishConcentration1a || boolFiendishConcentration1b) && !player.isFeralCombat(); 
 		for(var i:int = 1; i <= flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND]; i++){
@@ -8425,64 +8488,7 @@ public class Combat extends BaseContent {
                     extraHitDamage = damage;
                     extraHitDamage2 = damage;
                 }
-                if (boolFistingIs300Bucks){
-                    if (player.hasPerk(PerkLib.JabbingStyle)){
-                        if (player.hasPerk(PerkLib.JabbingGrandmaster)){
-                            extraHitChance = 10;
-                            if (player.hasPerk(PerkLib.MeteorStrike)) extraHitChance = 20
-                            if (rand(100) < extraHitChance){
-                                if (player.hasPerk(PerkLib.SpeedDemon) && !player.weapon.isDualLarge() && !player.weapon.isSingleLarge() && !player.weapon.isDualMassive() && !player.weapon.isSingleMassive() && !player.weapon.isStaffType()) {
-                                    if(player.hasStatusEffect(StatusEffects.JabbingStyle)){
-                                        extraHitDamage += player.spe*player.statusEffectv1(StatusEffects.JabbingStyle);
-                                    }
-                                }
-                                //var critJab:Boolean = false;
-                                var critJab:Boolean = CritRoll()
-                                extraHitDamage = CritDamage(extraHitDamage, critJab);
-                                //Deal the fellow up blow!
-                                outputText("You chain up the jab with a second blow! ");
-                                extraHitDamage2 = Math.round(extraHitDamage);
-                                doPlayerPhysDamage(extraHitDamage, true ,true);
-                                if (critJab) outputText("<b>Critical! </b>");
-                                outputText("\n\n");
-                                JabbingStyleIncrement();
-                            }
-                        }
-                    }
-                    if (player.hasPerk(PerkLib.GrabbingStyle)){
-                        extraHitChance = 10;
-                        var playerMaxCarry:Number = player.str+(player.effectiveTallness/12*100);
-                        if (player.hasPerk(PerkLib.GrabbingMaster)) playerMaxCarry += player.str;
-                        var ennemyMaxSize:Boolean = playerMaxCarry > (monster.tallness/12*100);
-                        if (player.hasPerk(PerkLib.GrabbingMaster)) extraHitChance = 20;
-                        if (rand(100) < extraHitChance && ennemyMaxSize){
-                            if (player.hasPerk(PerkLib.SpeedDemon) && !player.weaponOff.isDualLarge() && !player.weaponOff.isSingleLarge() && !player.weaponOff.isDualMassive() && !player.weaponOff.isSingleMassive() && !player.weaponOff.isStaffType()) {
-                                if(player.hasStatusEffect(StatusEffects.JabbingStyle)){
-                                    extraHitDamage2 += player.spe*player.statusEffectv1(StatusEffects.JabbingStyle);
-                                }
-                            }
-                            //Determine if critical hit!
-                            var critGrab:Boolean = CritRoll();
-                            extraHitDamage2 = CritDamage(extraHitDamage2, critJab);
-                            //Deal the fellow up blow!
-                            outputText("You grab your opponent mid swing and supplex it against the ground! ");
-                            if (player.hasPerk(PerkLib.MeteorStrike)) extraHitDamage2 *= 2;
-                            extraHitDamage2 = Math.round(extraHitDamage2);
-                            doPlayerPhysDamage(extraHitDamage2, true ,true);
-                            if (critGrab) outputText("<b>Critical! </b>");
-                            if (player.hasPerk(PerkLib.GrabbingGrandmaster)){
-                                var extraHitStunChance:Number = 20;
-                                if (rand(100) < extraHitStunChance){
-                                    outputText("The concusion leaves your opponent dazed! ");
-                                    if (player.perkv1(IMutationsLib.LivingWeaponIM) >= 4) monster.createStatusEffect(StatusEffects.Stunned,2,0,0,0);
-									else monster.createStatusEffect(StatusEffects.Stunned,1,0,0,0);
-                                }
-                            }
-                            outputText("\n\n");
-                            JabbingStyleIncrement();
-                        }
-                    }
-                }
+                if (boolFistingIs300Bucks()) boolFistingIs301Bucks();
             }
             else { //MISSED THE TARGET THUS DAMAGE = 0;
                 // Migrate DisplacerBeast custom evade text and default evade text
@@ -17593,6 +17599,16 @@ public function Straddle():void {
 public function StraddleTease():void {
     clearOutput();
     StraddleTeaseRe();
+	if (player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer)) {
+		var damage2:Number = (combat.meleeUnarmedDamageNoLagSingle() * combat.teases.masteryBonusDamageTease());
+		outputText("\nAdding injury to insult, you deliver "+(player.hasPerk(PerkLib.RampagingBunnyStyleHyperdrive)?"three sudden punches":"a sudden punch")+" to [monster his] face.");
+		doPlayerPhysDamage(damage2);
+		if (player.hasPerk(PerkLib.RampagingBunnyStyleHyperdrive)) {
+			doPlayerPhysDamage(damage2);
+			doPlayerPhysDamage(damage2);
+		}
+		if (boolFistingIs300Bucks()) boolFistingIs301Bucks();
+	}
     if (player.hasStatusEffect(StatusEffects.StraddleRoundLeft)) {
         player.addStatusValue(StatusEffects.StraddleRoundLeft, 1, -1);
         if (player.statusEffectv1(StatusEffects.StraddleRoundLeft) <= 0) {
