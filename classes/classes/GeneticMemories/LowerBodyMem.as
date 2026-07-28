@@ -161,7 +161,7 @@ package classes.GeneticMemories {
           id: "Demon Clawed Lower Body",name: "Demonic Clawed Feet",
           cost: 100,
           title: "Dem. Claws",
-          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyDemonClawed}});
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyDemonClawedToggle(true)}});
 
       public static const DEMONIC_HIGH_HEELS: int = _partid++;
       EnumValue.add(Memories, DEMONIC_HIGH_HEELS, "DEMONIC_HIGH_HEELS", {

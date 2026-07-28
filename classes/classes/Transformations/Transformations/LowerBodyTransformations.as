@@ -347,6 +347,80 @@ public class LowerBodyTransformations extends MutationsHelper {
 		)
 	}
 
+	public function LowerBodyDemonClawed(legCount: int = undefined, toggleTaur: Boolean = false): Transformation {
+		return new SimpleTransformation("Demon Clawed Lower Body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (!legCount) legCount = player.legCount;
+				var desc: String = "";
+				if(Metamorph.checkTaurUnlock() && player.lowerBody == LowerBody.DEMONIC_CLAWS ){
+					if (toggleTaur && legCount === 2) legCount = 4;
+					else if (toggleTaur && legCount >= 4) legCount = 2;
+					else if (legCount === 1) legCount = 2;
+				}
+
+				desc += "\n\n";
+				// Case 1: Morph Taur legs without changing leg count
+				if (player.isTaur() && legCount >= 4) {
+					desc += "Every muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your [feet]. Something hard breaks through your sole from the inside out as your toes splinter and curve cruelly. The pain slowly diminishes and your eyes look along a human leg that splinters at the foot into a claw with sharp black nails. When you relax, your feet grip the ground easily. <b>Your feet are now formed into demonic claws.</b>";
+				}
+				// Case 2: Bipedal TF
+				else if (legCount === 2) {
+					if (player.isTaur()) {
+						desc += "You cry out as spasms of pain suddenly rip through your quadrupedal body, bringing you crashing onto the ground. Words cannot define the agony as muscles and bones twist and shift and collapse violently. When it's all over, you stagger upright, finding yourself standing on two legs again. Though covered in scales and with the paws of some monster lizard instead of [feet], they otherwise look like your old human legs. <b>You now have two dragon feet.</b>";
+					} else if (player.lowerBody == LowerBody.DRIDER) {
+						desc += "A disquieting feeling ripples through your arachnid abdomen, and you find yourself losing control of your body from the waist down. Your spidery legs flail madly as your abdomen visibly swells, chitin cracking ominously as the pressure builds up inside of you... and then explodes! You wipe the gore from your face in disgust, wondering why you feel no pain. Rolling over, you see that, caked with spider-slime, you now have a new pair of legs, human-like save for the scales and the bestial paws that serve as feet. <b>You now have dragon feet.</b>";
+					} else if (player.isNaga()) {
+						desc += "You fall on your face to the ground, hissing and screeching in pain - it feels like someone has grabbed the tip of your tail, pulled it viciously straight, and is now splitting it up the middle with a knife! Paralyzed from the waist down, you claw desperately at the earth to try and alleviate the pain, and can only think to thank your lucky stars when it fades away. Looking down where your tail was, though the scales remain, you realize you've become a biped again, your new feet sporting bestial claws on their toes. <b>You now have dragon feet.</b>";
+					} else if (player.isGoo()) {
+						desc += "A strange tingling sensation fills you, and you watch as your gooey blob of a body begins to ripple and shudder; you try to make it stop, but you can't control it. Before your eyes, it shapes itself into the appearance of legs, the colored slime growing denser and thicker, the surface membrane texturing itself to look like scales. Before you've quite realized what's happened, the slime has set like water freezing, leaving you with humanoid legs once again, though tipped with claws and very reptilian in appearance. <b>You now have dragon feet.</b>";
+					} else if (player.lowerBody == LowerBody.HOOFED) {
+						desc += "You bellow in pain as your legs break and reform and your hooves seem to suddenly explode, the bones within twisting themselves into monstrous three-toed appendages, more like those of some terrible lizard-thing than anything else. <b>You now have dragon feet.</b>";
+					} else if (player.isScylla()) {
+						desc += "Something weird happens in your tentacles as your limbs coil into two pillars of flesh and fuse together, your ";
+						if (player.gender == 1) {
+							desc += "[vagina]";
+						} else if (player.gender == 3) {
+							desc += " and ";
+						}
+						if (player.cocks.length > 0) {
+							desc += "[cock],";
+						}
+						desc += " moving back up between your leg to where it used to be. Bones starts to form in your limb and, before you know it, you are staring at a pair of normal human legs. The changes does not end there however. When the pain is over, you realize that you still stand atop human-looking legs, but your [feet] have become like those of some bipedal reptilian killer, with powerful claws meant for gripping the ground. <b>You now have dragon [feet].</b>";
+					} else if (player.isAlraune()) {
+						desc += "Your petals all withers and fall off as your pitch and flower turn to dust leaving you with normal human legs. The changes does not stop there however. When the pain is over, you realize that you still stand atop human-looking legs, but your [feet] have become like those of some bipedal reptilian killer, with powerful claws meant for gripping the ground. <b>You now have dragon [feet].</b>";
+					}
+
+					if (!player.isBiped()){
+						player.lowerBody = LowerBody.DEMONIC_CLAWS;
+						transformations.LowerBodyBipedal.applyEffect(false);
+					}
+
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyBipedal, doOutput);
+
+					// Display TF text if the player is obtaining this part instead of only changing leg count and didn't hit any special text
+					if (player.lowerBody !== LowerBody.DEMONIC_CLAWS) {
+						desc += "Every muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your [feet]. Something hard breaks through your sole from the inside out as your toes splinter and curve cruelly. The pain slowly diminishes and your eyes look along a human leg that splinters at the foot into a claw with sharp black nails. When you relax, your feet grip the ground easily. <b>Your feet are now formed into demonic claws.</b>";
+					}
+				}
+				// Case 3: Taur TF
+				else if (!player.isTaur() && legCount >= 4) {
+					transformations.LowerBodyTaur(LowerBody.DEMONIC_CLAWS).applyEffect(doOutput);
+				}
+
+				if (doOutput) outputText(desc);
+				player.lowerBody = LowerBody.DEMONIC_CLAWS;
+				player.legCount = legCount;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.DRAGON));
+			},
+			// is present
+			function (): Boolean {
+				return !Metamorph.checkTaurUnlock() && player.lowerBody === LowerBody.DEMONIC_CLAWS;
+			}
+		)
+	}
+
+
 	public function LowerBodyDraconic(legCount: int = undefined, toggleTaur: Boolean = false): Transformation {
 		return new SimpleTransformation("Draconic Lower Body",
 			// apply effect
@@ -1340,25 +1414,6 @@ public class LowerBodyTransformations extends MutationsHelper {
 		// is present
 		function (): Boolean {
 			return player.lowerBody === LowerBody.DEMONIC_HIGH_HEELS;
-		}
-	);
-
-	public const LowerBodyDemonClawed: Transformation = new SimpleTransformation("Demon Clawed Lower Body",
-		// apply effect
-		function (doOutput: Boolean): void {
-			var desc: String = "";
-
-			TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyHuman, doOutput);
-
-			desc += "Every muscle and sinew below your hip tingles and you begin to stagger. Seconds after you sit down, pain explodes in your [feet]. Something hard breaks through your sole from the inside out as your toes splinter and curve cruelly. The pain slowly diminishes and your eyes look along a human leg that splinters at the foot into a claw with sharp black nails. When you relax, your feet grip the ground easily. <b>Your feet are now formed into demonic claws.</b>";
-
-			if (doOutput) outputText(desc);
-			player.lowerBody = LowerBody.DEMONIC_CLAWS;
-			Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.DEMONIC_CLAWS));
-		},
-		// is present
-		function (): Boolean {
-			return player.lowerBody === LowerBody.DEMONIC_CLAWS;
 		}
 	);
 

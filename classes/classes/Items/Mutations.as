@@ -1228,7 +1228,7 @@ public final class Mutations extends MutationsHelper {
 			transformations.ArmsDemon.applyEffect(false);
 		}
 		if (player.lowerBody != LowerBody.DEMONIC_CLAWS && player.lowerBody != LowerBody.DEMONIC_HIGH_HEELS && player.lowerBody != LowerBody.DEMONIC_GRACEFUL_FEET) {
-			if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) transformations.LowerBodyDemonClawed.applyEffect(false);
+			if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) transformations.LowerBodyDemonClawedBipedal.applyEffect(false);
 			else {
 				if (rand(2) == 0) transformations.LowerBodyDemonHighHeels.applyEffect(false);
 				else transformations.LowerBodyDemonGracefulFeet.applyEffect(false);
@@ -13382,7 +13382,7 @@ public final class Mutations extends MutationsHelper {
             if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) {
                 if (player.lowerBody != LowerBody.DEMONIC_CLAWS) {
                     outputText("[pg]");
-                    transformations.LowerBodyDemonClawed.applyEffect();
+                    transformations.LowerBodyDemonClawedBipedal.applyEffect();
                 }
             }
             //Females/futa get high heels

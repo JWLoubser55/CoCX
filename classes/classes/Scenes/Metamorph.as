@@ -1746,7 +1746,7 @@ package classes.Scenes {
 			}
 			switch(arr[11]) {// Lower Body ( Legs )
 				case "DemonHighHeels": 	CoC.instance.transformations.LowerBodyDemonHighHeels.applyEffect();	break;
-				case "DemonClawed": 	CoC.instance.transformations.LowerBodyDemonClawed.applyEffect();	break;
+				case "DemonClawed": 	CoC.instance.transformations.LowerBodyDemonClawedBipedal.applyEffect();	break;
 				case "Bee": 			CoC.instance.transformations.LowerBodyBee.applyEffect();			break;
 				case "Spider":          CoC.instance.transformations.LowerBodySpider.applyEffect();			break;
 				case "Drider": CoC.instance.transformations.LowerBodyDrider.applyEffect();					break;

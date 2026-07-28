@@ -4282,7 +4282,14 @@
 				<show part="legs_fg/Wereshark"/>
 			</case>
 			<!--<case values="LowerBody.DEMONIC_HIGH_HEELS">TODO </case>-->
-			<!--<case values="LowerBody.DEMONIC_CLAWS"">TODO </case>-->
+			<case values="LowerBody.DEMONIC_CLAWS">
+				<if test="legCount==4">
+					<hide part="legs/*"/>
+					<show part="legs/reptaur"/>
+					<show part="legs_fg/reptaur"/>
+				<!--<else/> TODO -->
+				</if>
+			</case>
 			<case values="LowerBody.BEE,LowerBody.CRAB">
 				<hide part="legs/*"/>
 				<show part="legs/chitin2"/>

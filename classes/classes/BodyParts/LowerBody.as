@@ -150,7 +150,8 @@ public class LowerBody extends SaveableBodyPart {
 	EnumValue.add(Types, DEMONIC_CLAWS, "DEMONIC_CLAWS", {
 		name: "demonic claws",
 		feet: "demonic foot-claws",
-		appearanceDesc: "Your {legCount} lithe legs are capped with flexible clawed feet. Sharp black nails grow where once you had toe-nails, giving you fantastic grip."
+		appearanceDesc: "Your {legCount} lithe legs are capped with flexible clawed feet. Sharp black nails grow where once you had toe-nails, giving you fantastic grip.",
+		canTaur: true
 	});
 
 	public static const BEE:int = 7;
