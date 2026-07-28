@@ -2,6 +2,7 @@ package classes.Items.Consumables
 {
 import classes.BodyParts.BodyMaterial;
 import classes.BodyParts.Skin;
+import classes.BodyParts.LowerBody;
 import classes.CoC;
 import classes.EngineCore;
 import classes.ItemType;
@@ -63,6 +64,12 @@ public class HairDye extends Consumable
 					}
 					
 					var present:Boolean = player.hasBodyMaterial(type);
+					// Workaround for demonic taur lowerbodies using reptaur (scales) or centaur (fur) lower Body.
+					// Remove me, if we have separate sprites for demon taurs!
+					if (player.legCount == 4 && (type == BodyMaterial.SCALES && player.lowerBody == LowerBody.DEMONIC_CLAWS)
+					                         /*|| (type == BodyMaterial.FUR && InCollection(player.lowerBody, LowerBody.DEMONIC_HOOFS, LowerBody.DEMONIC_CLOVEN_HOOFS)*/)
+						present = true;
+					// /Workaround
 					if (present) {
 						outputText("\nYou have " + player.bodyMaterialColor(type) + " " + name + ". ");
 					} else {
